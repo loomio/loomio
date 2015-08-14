@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'DiscussionForm', (Records) ->
+angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
   controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService) ->
 
@@ -20,6 +20,5 @@ angular.module('loomioApp').factory 'DiscussionForm', (Records) ->
       _.sortBy groups, (g) -> g.fullName()
 
     $scope.showPrivacyForm = ->
-      if $scope.discussion.groupId
-        $scope.discussion.group().privacy == 'public_or_private'
+      $scope.discussion.groupId && $scope.discussion.group().privacy == 'public_or_private'
 

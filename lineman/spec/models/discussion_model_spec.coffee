@@ -60,25 +60,6 @@ describe 'DiscussionModel', ->
     it "returns the discussion reader associated with this discussion", ->
       expect(discussion.reader()).toBe(discussionReader)
 
-  describe 'isUnsaved', ->
-    it 'should be false on an empty record', ->
-      discussion = recordStore.discussions.build()
-      expect(discussion.isModified()).toBe(false)
-
-    it 'should be true on modified empty record', ->
-      discussion = recordStore.discussions.build()
-      discussion.title = 'modified'
-      expect(discussion.isModified()).toBe(true)
-
-    it 'should be false on imported record', ->
-      discussion = recordstore.discussions.import(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'hi', created_at: "2015-01-01t00:00:00z" )
-      expect(discussion.isModified()).tobe(false)
-
-    it 'should be true on imported modified record', ->
-      discussion = recordstore.discussions.import(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'hi', created_at: "2015-01-01t00:00:00z" )
-      discussion.title = 'modified'
-      expect(discussion.isModified()).tobe(1)
-
   describe 'clone()', ->
     beforeEach ->
       window.Loomio =
