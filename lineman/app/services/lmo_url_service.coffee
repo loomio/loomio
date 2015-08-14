@@ -1,13 +1,13 @@
 angular.module('loomioApp').factory 'LmoUrlService', ->
   new class LmoUrlService
 
-    route: ({model, path, params}) ->
-      if model? and path?
-        @[model.constructor.singular](model, {}, {noStub: true}) + @routePath(path)
+    route: ({model, action, params}) ->
+      if model? and action?
+        @[model.constructor.singular](model, {}, {noStub: true}) + @routePath(action)
       else if model?
         @[model.constructor.singular](model)
       else
-        @routePath(path)
+        @routePath(action)
 
     routePath: (route) ->
       "/".concat(route).replace('//', '/')

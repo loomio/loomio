@@ -8,5 +8,5 @@
         .media-body
           %span.membership-requests-card__requestor-name {{membershipRequest.actor().name}}
           .lmo-truncate.membership-requests-card__requestor-introduction {{membershipRequest.introduction}}
-    %a.membership-requests-card__link{lmo-href-for: 'group', lmo-href-path: '/membership_requests'}
+    %a.membership-requests-card__link{lmo-href-for: 'group', lmo-href-action: 'membership_requests'}
       %span{translate: 'membership_requests_card.manage_requests', translate-value-count: '{{group.pendingMembershipRequests().length}}'}
