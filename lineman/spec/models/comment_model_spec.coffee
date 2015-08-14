@@ -1,4 +1,5 @@
 describe 'CommentModel', ->
+
   discussionModel = null
   commentModel = null
   comment = null

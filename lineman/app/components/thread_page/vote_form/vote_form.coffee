@@ -1,11 +1,10 @@
 angular.module('loomioApp').factory 'VoteForm', ->
   templateUrl: 'generated/components/thread_page/vote_form/vote_form.html'
-  controller: ($scope, vote, CurrentUser, FlashService) ->
-    $scope.vote = vote
-    $scope.editing = false
+  controller: ($scope, vote, CurrentUser, FlashService, FormService) ->
+    $scope.vote = vote.clone()
 
-    $scope.changeVote = ->
-      $scope.editing = true
+    $scope.$on 'modal.closing', (event) ->
+      FormService.confirmDiscardChanges(event, $scope.vote)
 
     $scope.submit = ->
       $scope.vote.save().then ->
