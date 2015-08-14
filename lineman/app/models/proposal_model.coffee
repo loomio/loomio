@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     defaultValues: ->
       voteCounts: {yes: 0, no: 0, abstain: 0, block: 0}
-      closingAt: moment().add(3, 'days')
+      closingAt: moment().add(3, 'days').startOf('hour')
 
     setupViews: ->
       @setupView 'votes'

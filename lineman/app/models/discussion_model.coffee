@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
           when 'public_or_private' then undefined
           when 'public_only' then false
       else
-        true
+        undefined
 
     defaultValues: =>
       private: @privateDefaultValue()
@@ -101,9 +101,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
 
     isStarred: ->
       @reader().starred
-
-    isUnsaved: ->
-      true
 
     unreadItemsCount: ->
       (@itemsCount - @reader().readItemsCount)
