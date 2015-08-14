@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, FlashService, Records, CurrentUser) ->
+  controller: ($scope, FlashService, Records, CurrentUser, KeyEventService) ->
     group = $scope.comment.discussion().group()
     discussion = $scope.comment.discussion()
 
@@ -34,3 +34,5 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.fetchByNameFragment = (fragment) ->
       $scope.updateMentionables(fragment)
       Records.memberships.fetchByNameFragment(fragment, group.key).then -> $scope.updateMentionables(fragment)
+
+    KeyEventService.submitOnEnter $scope

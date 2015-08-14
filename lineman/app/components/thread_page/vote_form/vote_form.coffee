@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'VoteForm', ->
   templateUrl: 'generated/components/thread_page/vote_form/vote_form.html'
-  controller: ($scope, vote, CurrentUser, FlashService) ->
+  controller: ($scope, vote, CurrentUser, FlashService, KeyEventService) ->
     $scope.vote = vote
     $scope.editing = false
 
@@ -15,3 +15,5 @@ angular.module('loomioApp').factory 'VoteForm', ->
 
     $scope.yourLastVote = ->
       $scope.vote.proposal().lastVoteByUser(CurrentUser)
+
+    KeyEventService.submitOnEnter $scope
