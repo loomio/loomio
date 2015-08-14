@@ -1,5 +1,13 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, $filter) ->
   new class FormService
+
+    confirmDiscardChanges: (event, record) ->
+      if record.isModified()
+        console.log record.modifiedAttributes()
+        if !confirm($filter('translate')('common.confirm_discard_changes'))
+          return event.preventDefault()
+      #if record.isModified() && !confirm($filter('translate')('common.confirm_discard_changes'))
+        #return event.preventDefault()
 
     errorTypes =
       400: 'badRequest'

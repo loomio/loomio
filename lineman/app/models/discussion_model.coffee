@@ -4,11 +4,23 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     @plural: 'discussions'
     @indices: ['id', 'key', 'groupId', 'authorId']
 
-    defaultValues: ->
+    privateDefaultValue: =>
+      if @group()
+        switch @group().discussionPrivacyOptions
+          when 'private_only' then true
+          when 'public_or_private' then undefined
+          when 'public_only' then false
+      else
+        true
+
+    defaultValues: =>
+      private: @privateDefaultValue()
       usesMarkdown: true
       lastSequenceId: 0
       firstSequenceId: 0
       lastItemAt: null
+      title: ''
+      description: ''
 
     setupViews: ->
       @setupView 'comments'
