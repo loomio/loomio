@@ -155,7 +155,6 @@ hu:
         membership_is_invitation_by_admin_only: A belépéshez egy koordinátor meghívójára van szükséged.
     description: Leírás
     discussions: Szálak
-    manage_members: Tagok menedzselése
     invite_people: Hívj meg embereket
     options_label: Lehetőségek
     options:

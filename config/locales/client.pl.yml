@@ -280,10 +280,8 @@ pl:
     description_placeholder: Opisz cel grupy aby członkowie wiedzieli czemu się w niej znajdują.
     discussions: Dyskusje
     discussions_placeholder: Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.
-    members: "Członkowie ({{count}}) "
     members_placeholder: "Jesteś jedynym członkiem: zaproś inne osoby!"
     member_options: Opcje członka
-    manage_members: Zarządzanie członkami
     subgroups: Podgrupy
     subgroups_placeholder: Podgrupy pozwalają dzielić grupy na różne zespoły
     invite_people: Zaproś ludzi

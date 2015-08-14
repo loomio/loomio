@@ -55,7 +55,7 @@ en:
     registrations:
       sign_up: 'Create account'
     sessions:
-      signed_out: ''
+      signed_out: 'Signed out successfully'
 
   error:
     access_denied: "You do not have permission to do this."

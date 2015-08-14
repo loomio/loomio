@@ -101,7 +101,6 @@ sr-RS:
         membership_is_invitation_by_admin_only: Да бисте се придружили овој групи морате бити позвани од стране координатора.
     description: Опис
     discussions: Низови
-    manage_members: Управљање члановима
     invite_people: Позови људе
     options_label: Опције
     options:

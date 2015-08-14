@@ -135,8 +135,6 @@ fr:
     group_logo: Logo du groupe
     description: Description
     discussions: Discussions
-    members: "({{count}}) membres"
-    manage_members: Gérer les membres
     invite_people: Inviter des personnes
     visibility_label: Visibilité
     options_label: Options

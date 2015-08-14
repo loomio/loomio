@@ -229,8 +229,22 @@ label.label-with-details{
   width: 75%
 }
 
-.lmo-markdown-wrapper img {
-  max-width: 100%;
+.lmo-markdown-wrapper {
+  img { max-width: 100%; }
+  h1 {
+    @include fontGrande;
+    @include fontHelveticaBold;
+  }
+  h2 {
+    @include fontLarge;
+    @include fontHelveticaBold;
+  }
+  h3 {
+    @include fontHelveticaBold;
+  }
+  h4 {
+    @include fontHelveticaBold;
+  }
 }
 
 .lmo-disabled-form {

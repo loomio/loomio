@@ -7,6 +7,7 @@ class API::SessionsController < Devise::SessionsController
 
   def destroy
     sign_out resource_name
+    flash[:notice] = t(:'devise.sessions.signed_out')
     head :ok
   end
 
