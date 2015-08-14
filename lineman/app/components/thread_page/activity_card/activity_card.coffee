@@ -54,8 +54,8 @@ angular.module('loomioApp').directive 'activityCard', ->
       per = $scope.pageSize unless per?
 
       Records.events.fetchByDiscussion($scope.discussion.key, {from: from, comment_id: commentId, per: per}).then ->
-        $scope.firstLoadedSequenceId = Records.events.minLoadedSequenceIdByDiscussion($scope.discussion)
-        $scope.lastLoadedSequenceId  = Records.events.maxLoadedSequenceIdByDiscussion($scope.discussion)
+        $scope.firstLoadedSequenceId = $scope.discussion.minLoadedSequenceId()
+        $scope.lastLoadedSequenceId  = $scope.discussion.maxLoadedSequenceId()
 
     $scope.loadEventsForwards = ({commentId, sequenceId}) ->
       $scope.loadEvents(commentId: commentId, from: sequenceId)

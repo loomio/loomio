@@ -281,10 +281,8 @@ es:
     description_placeholder: "Usa este espacio para describir el propósito del grupo, de manera que los miembros sepan por qué están aquí."
     discussions: Hilos
     discussions_placeholder: Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.
-    members: "({{count}}) miembros"
     members_placeholder: "Estás solo aquí: ¡invita a algunas personas para unirse a ti! "
     member_options: Opciones de membresía
-    manage_members: Gestionar miembros
     subgroups: Subgrupos
     subgroups_placeholder: Los subgrupos te permiten dividir el grupo en diferentes equipos
     invite_people: Invitar personas

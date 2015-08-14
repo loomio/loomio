@@ -148,7 +148,6 @@ nl-NL:
         membership_is_invitation_by_admin_only: Om lid te worden van deze groep moet je uitgenodigd zijn door een coördinator.
     description: Omschrijving
     discussions: Discussies
-    manage_members: Beheer leden
     invite_people: Mensen uitnodigen
     visibility_label: Zichtbaarheid
     options_label: Opties

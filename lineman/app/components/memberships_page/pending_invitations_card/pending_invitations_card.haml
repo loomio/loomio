@@ -6,7 +6,7 @@
         %tr
           %th{translate: 'pending_invitations_card.email'}
           %th{translate: 'pending_invitations_card.invitation_link'}
-          %th.hidden-xs{translate: 'pending_invitations_card.cancel'}
+          %th
       %tbody
         %tr{ng-repeat: 'invitation in group.pendingInvitations() track by invitation.id'}
           %td.pending-invitations-card__recipient-email

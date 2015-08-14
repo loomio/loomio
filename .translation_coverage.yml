@@ -12,7 +12,7 @@ be-BY:
   frontpage: 58
   help docs: 10
   main: 96
-  main_1_0: 31
+  main_1_0: 30
 bg-BG:
   frontpage: 9
   help docs: 2
@@ -22,7 +22,7 @@ ca:
   frontpage: 49
   help docs: 7
   main: 75
-  main_1_0: 27
+  main_1_0: 26
 cmn:
   frontpage: 1
   help docs: 1
@@ -32,17 +32,17 @@ cs:
   frontpage: 76
   help docs: 44
   main: 80
-  main_1_0: 70
+  main_1_0: 69
 da:
   frontpage: 52
   help docs: 11
   main: 89
   main_1_0: 42
 de:
-  frontpage: 75
-  help docs: 45
+  frontpage: 100
+  help docs: 49
   main: 96
-  main_1_0: 85
+  main_1_0: 100
 el:
   frontpage: 78
   help docs: 42
@@ -87,12 +87,12 @@ ga-IE:
   frontpage: 69
   help docs: 9
   main: 61
-  main_1_0: 92
+  main_1_0: 91
 gl:
   frontpage: 29
   help docs: 8
   main: 69
-  main_1_0: 21
+  main_1_0: 20
 he:
   frontpage: 55
   help docs: 8
@@ -185,7 +185,7 @@ pl:
   frontpage: 100
   help docs: 56
   main: 59
-  main_1_0: 95
+  main_1_0: 94
 pt-BR:
   frontpage: 100
   help docs: 100
@@ -240,7 +240,7 @@ tr:
   frontpage: 52
   help docs: 10
   main: 89
-  main_1_0: 40
+  main_1_0: 39
 uk:
   frontpage: 64
   help docs: 8
