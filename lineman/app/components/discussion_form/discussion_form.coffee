@@ -1,11 +1,10 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService) ->
+  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService, KeyEventService) ->
+    $scope.discussion = discussion.clone()
 
     $scope.$on 'modal.closing', (event) ->
       FormService.confirmDiscardChanges(event, $scope.discussion)
-
-    $scope.discussion = discussion.clone()
 
     actionName = if $scope.discussion.isNew() then 'created' else 'updated'
 
@@ -22,3 +21,4 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     $scope.showPrivacyForm = ->
       $scope.discussion.groupId && $scope.discussion.group().privacy == 'public_or_private'
 
+    KeyEventService.submitOnEnter $scope
