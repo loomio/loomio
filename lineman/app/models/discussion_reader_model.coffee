@@ -12,17 +12,6 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       volume: null
       lastReadSequenceId: -1
 
-    initialize: (data) ->
-      @baseInitialize(data)
-
-      if data.discussion_id
-        @id = data.discussion_id
-
-    serialize: ->
-      data = @baseSerialize()
-      data.discussion_id = @id
-      data
-
     discussion: ->
       @recordStore.discussions.find(@id)
 
