@@ -16,4 +16,4 @@ angular.module('loomioApp').factory 'NotificationRecordsInterface', (BaseRecords
         n.viewed = true
         @collection.update(n)
 
-      @restfulClient.post 'viewed' if any
+      @remote.post 'viewed' if any

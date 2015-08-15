@@ -21,32 +21,18 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       'user_mentioned':              'comment'
     }
 
+    relationships: ->
+      @belongsTo 'group'
+      @belongsTo 'membership'
+      @belongsTo 'membershipRequests'
+      @belongsTo 'discussion'
+      @belongsTo 'comment'
+      @belongsTo 'proposal'
+      @belongsTo 'vote'
+      @belongsTo 'actor', from: 'users'
+
     delete: ->
       @deleted = true
-
-    membership: ->
-      @recordStore.memberships.find(@membershipId)
-
-    membershipRequest: ->
-      @recordStore.membershipRequests.find(@membershipRequestId)
-
-    group: ->
-      @recordStore.groups.find(@groupId)
-
-    discussion: ->
-      @recordStore.discussions.find(@discussionId)
-
-    comment: ->
-      @recordStore.comments.find(@commentId)
-
-    proposal: ->
-      @recordStore.proposals.find(@proposalId)
-
-    vote: ->
-      @recordStore.votes.find(@voteId)
-
-    actor: ->
-      @recordStore.users.find(@actorId)
 
     relevantRecordType: ->
       @constructor.eventTypeMap[@kind]

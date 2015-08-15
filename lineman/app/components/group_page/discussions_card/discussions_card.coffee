@@ -23,7 +23,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
 
     $scope.openDiscussionForm = ->
       ModalService.open DiscussionForm,
-                        discussion: -> Records.discussions.build(group_id: $scope.group.id)
+                        discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
     $scope.showThreadsPlaceholder = ->
       AbilityService.canAdministerGroup($scope.group) and $scope.group.discussions().length <= 1

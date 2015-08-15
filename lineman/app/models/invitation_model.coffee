@@ -4,8 +4,8 @@ angular.module('loomioApp').factory 'InvitationModel', (BaseModel) ->
     @plural: 'invitations'
     @indices: ['id', 'groupId']
 
+    relationships: ->
+      @belongsTo 'group'
+
     isPending: ->
       !@cancelledAt? && !@acceptedAt?
-
-    group: ->
-      @recordStore.groups.find(@groupId)

@@ -5,18 +5,13 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
     @indices: ['id', 'userId', 'groupId']
     @searchableFields: ['userName', 'userUsername']
 
-    group: ->
-      @recordStore.groups.find(@groupId)
-
-    user: ->
-      @recordStore.users.find(@userId)
+    relationships: ->
+      @belongsTo 'group'
+      @belongsTo 'user'
+      @belongsTo 'inviter', from: 'users'
 
     userName: ->
       @user().name
 
     userUsername: ->
       @user().username
-
-    inviter: ->
-      @recordStore.users.find(@inviterId)
-

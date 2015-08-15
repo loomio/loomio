@@ -126,7 +126,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
     vendorjs:
       files: ["<%= files.js.vendor %>"]
-      tasks: ["concat_sourcemap:vendor"]
+      tasks: ["concat_sourcemap:vendor", "concat_sourcemap:app"]
 
     jsSpecs:
       files: ["<%= files.js.specHelpers %>", "<%= files.js.spec %>"]

@@ -4,48 +4,50 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     @plural: 'discussions'
     @indices: ['id', 'key', 'groupId', 'authorId']
 
-    defaultValues: ->
+    # works out if new records are private
+    privateDefaultValue: =>
+      if @group()
+        switch @group().discussionPrivacyOptions
+          when 'private_only' then true
+          when 'public_or_private' then undefined
+          when 'public_only' then false
+      else
+        undefined
+
+    defaultValues: =>
+      private: null
       usesMarkdown: true
       lastSequenceId: 0
       firstSequenceId: 0
       lastItemAt: null
+      title: ''
+      description: ''
 
-    setupViews: ->
-      @setupView 'comments'
-      @setupView 'events', 'sequenceId'
-      @setupView 'proposals', 'createdAt', true
+    relationships: ->
+      @belongsTo 'group'
+      @belongsTo 'author', from: 'users'
+
+      @hasMany 'comments', dynamicView: false
+      @hasMany 'events', sortBy: 'sequenceId'
+      @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
+      # not ready @hasOne 'reader', from: 'discussionReaders', with: 'id'
 
     translationOptions: ->
       title:     @title
       groupName: @groupName()
 
-    author: ->
-      @recordStore.users.find(@authorId)
-
     authorName: ->
       @author().name
-
-    group: ->
-      @recordStore.groups.find(@groupId)
 
     groupName: ->
       @group().name if @group()
 
-    events: ->
-      @eventsView.data()
-
-    comments: ->
-      @commentsView.data()
-
-    proposals: ->
-      @proposalsView.data()
-
     activeProposals: ->
-      _.filter @proposalsView.data(), (proposal) ->
+      _.filter @proposals(), (proposal) ->
         proposal.isActive()
 
     closedProposals: ->
-      _.reject @proposalsView.data(), (proposal) ->
+      _.reject @proposals(), (proposal) ->
         proposal.isActive()
 
     anyClosedProposals: ->
@@ -70,7 +72,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       proposal.lastVoteAt if proposal?
 
     reader: ->
-      @recordStore.discussionReaders.import(id: @id)
+      @recordStore.discussionReaders.find(@id)
 
     readerNotLoaded: ->
       !@reader().discussionId?

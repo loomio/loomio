@@ -4,8 +4,6 @@ angular.module('loomioApp').factory 'DidNotVoteModel', (BaseModel) ->
     @plural: 'didNotVotes'
     @indices: ['id', 'proposalId']
 
-    user: ->
-      @recordStore.users.find(@userId)
-
-    proposal: ->
-      @recordStore.proposals.find(@proposalId)
+    relationships: ->
+      @belongsTo 'user'
+      @belongsTo 'proposal'

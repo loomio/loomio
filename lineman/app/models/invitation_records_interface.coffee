@@ -4,4 +4,4 @@ angular.module('loomioApp').factory 'InvitationRecordsInterface', (BaseRecordsIn
 
     fetchPendingByGroup: (groupKey, options = {}) ->
       options['group_key'] = groupKey
-      @restfulClient.get('/pending', options)
+      @remote.get('/pending', options)

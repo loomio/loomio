@@ -4,14 +4,14 @@ angular.module('loomioApp').directive 'commentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
   controller: ($scope, FlashService, Records, CurrentUser) ->
-    group = $scope.comment.discussion().group()
     discussion = $scope.comment.discussion()
+    group = $scope.comment.group()
 
     $scope.submit = ->
       $scope.isDisabled = true
       $scope.comment.save().then ->
         $scope.isDisabled = false
-        $scope.comment = Records.comments.build(discussion_id: discussion.id)
+        $scope.comment = Records.comments.build(discussionId: discussion.id)
         FlashService.success('comment_form.messages.created')
       , ->
         $scope.isDisabled = false

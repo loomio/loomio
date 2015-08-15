@@ -4,11 +4,12 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
     @plural: 'votes'
     @indices: ['id', 'proposalId']
 
-    author: ->
-      @recordStore.users.find(@authorId)
+    defaultValues: ->
+      statement: ''
 
-    proposal: ->
-      @recordStore.proposals.find(@proposalId)
+    relationships: ->
+      @belongsTo 'author', from: 'users'
+      @belongsTo 'proposal'
 
     authorName: ->
       @author().name

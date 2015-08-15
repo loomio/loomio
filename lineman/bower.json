@@ -10,7 +10,6 @@
     "faye": "latest",
     "angular-translate": "~2.7.2",
     "angular-translate-loader-url": "~2.7.2",
-    "angular-bootstrap": "0.11.2",
     "ng-file-upload": "~3.2.4",
     "ment.io": "~0.9.15",
     "lokijs": "techfort/lokijs#v1.3.4",

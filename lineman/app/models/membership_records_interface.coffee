@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
     model: MembershipModel
 
     joinGroup: (group) ->
-      @restfulClient.post 'join_group', group_id: group.id
+      @remote.post 'join_group', group_id: group.id
 
     fetchMyMemberships: ->
       @fetch
@@ -27,7 +27,7 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
           per: options['per']
 
     makeAdmin: (membership) ->
-      @restfulClient.postMember membership.id, "make_admin"
+      @remote.postMember membership.id, "make_admin"
 
     removeAdmin: (membership) ->
-      @restfulClient.postMember membership.id, "remove_admin"
+      @remote.postMember membership.id, "remove_admin"

@@ -12,19 +12,8 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
       volume: null
       lastReadSequenceId: -1
 
-    initialize: (data) ->
-      @baseInitialize(data)
-
-      if data.discussion_id
-        @id = data.discussion_id
-
-    serialize: ->
-      data = @baseSerialize()
-      data.discussion_id = @id
-      data
-
-    discussion: ->
-      @recordStore.discussions.find(@id)
+    relationships: ->
+      @belongsTo 'discussion', by: 'id'
 
     changeVolume: (volume) ->
       @volume = volume
@@ -39,5 +28,5 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
         sequenceId = @discussion().lastSequenceId
 
       if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
-        @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
+        @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
         @lastReadSequenceId = sequenceId
