@@ -2,7 +2,8 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
   class ProposalModel extends BaseModel
     @singular: 'proposal'
     @plural: 'proposals'
-    @indices: ['id', 'key', 'discussionId']
+    @uniqueIndices: ['id', 'key']
+    @indices: ['discussionId']
 
     defaultValues: ->
       voteCounts: {yes: 0, no: 0, abstain: 0, block: 0}

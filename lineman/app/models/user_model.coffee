@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
   class UserModel extends BaseModel
     @singular: 'user'
     @plural: 'users'
-    @indices: ['id']
+    @uniqueIndices: ['id', 'key']
 
     relationships: ->
       # note we should move these to a CurrentUser extends User so that all our authors dont get views created

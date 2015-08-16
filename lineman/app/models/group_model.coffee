@@ -2,7 +2,8 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
   class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
-    @indices: ['id', 'key', 'parentId']
+    @uniqueIndices: ['id', 'key']
+    @indices: ['parentId']
 
     defaultValues: ->
       parentId: null

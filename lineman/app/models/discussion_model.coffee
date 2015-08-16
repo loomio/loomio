@@ -2,7 +2,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
   class DiscussionModel extends BaseModel
     @singular: 'discussion'
     @plural: 'discussions'
-    @indices: ['id', 'key', 'groupId', 'authorId']
+    @uniqueIndices: ['id', 'key']
+    @indices: ['groupId', 'authorId']
 
     # works out if new records are private
     privateDefaultValue: =>
