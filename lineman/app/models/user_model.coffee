@@ -2,7 +2,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
   class UserModel extends BaseModel
     @singular: 'user'
     @plural: 'users'
-    @uniqueIndices: ['id', 'key']
     @apiEndPoint: 'profile'
 
     relationships: ->
