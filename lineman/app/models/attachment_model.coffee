@@ -1,9 +1,9 @@
-angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
+angular.module('loomioApp').factory 'AttachmentModel', (BaseModel, AppConfig) ->
   class AttachmentModel extends BaseModel
     @singular: 'attachment'
     @plural: 'attachments'
     @indices: ['id', 'commentId']
-    @serializableAttributes: window.Loomio.permittedParams.attachment
+    @serializableAttributes: AppConfig.permittedParams.attachment
 
     relationships: ->
       @belongsTo 'author', from: 'users', by: 'authorId'

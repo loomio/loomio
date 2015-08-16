@@ -1,9 +1,9 @@
-angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
+angular.module('loomioApp').factory 'VoteModel', (BaseModel, AppConfig) ->
   class VoteModel extends BaseModel
     @singular: 'vote'
     @plural: 'votes'
     @indices: ['id', 'proposalId']
-    @serializableAttributes: window.Loomio.permittedParams.vote
+    @serializableAttributes: AppConfig.permittedParams.vote
 
     defaultValues: ->
       statement: ''

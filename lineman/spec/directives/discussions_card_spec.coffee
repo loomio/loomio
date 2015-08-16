@@ -1,4 +1,4 @@
-describe 'Discussions Card Component', ->
+ddescribe 'Discussions Card Component', ->
 
   beforeEach module 'loomioApp'
   beforeEach useFactory

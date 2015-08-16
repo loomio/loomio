@@ -1,10 +1,10 @@
-angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
+angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
   class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
     @uniqueIndices: ['id', 'key']
     @indices: ['parentId']
-    @serializableAttributes: window.Loomio.permittedParams.group
+    @serializableAttributes: AppConfig.permittedParams.group
 
     defaultValues: ->
       parentId: null

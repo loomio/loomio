@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'ContactMessageModel', (BaseModel) ->
+angular.module('loomioApp').factory 'ContactMessageModel', (BaseModel, AppConfig) ->
   class ContactMessageModel extends BaseModel
     @singular: 'contactMessage'
     @plural: 'contactMessages'
-    @serializableAttributes: window.Loomio.permittedParams.contact_message
+    @serializableAttributes: AppConfig.permittedParams.contact_message

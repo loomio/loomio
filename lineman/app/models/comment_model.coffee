@@ -1,9 +1,9 @@
-angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
+angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
     @indices: ['id', 'discussionId', 'authorId']
-    @serializableAttributes: window.Loomio.permittedParams.comment
+    @serializableAttributes: AppConfig.permittedParams.comment
 
     defaultValues: ->
       usesMarkdown: true

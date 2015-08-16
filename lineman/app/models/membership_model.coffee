@@ -1,10 +1,10 @@
-angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
+angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
   class MembershipModel extends BaseModel
     @singular: 'membership'
     @plural: 'memberships'
     @indices: ['id', 'userId', 'groupId']
     @searchableFields: ['userName', 'userUsername']
-    @serializableAttributes: window.Loomio.permittedParams.membership
+    @serializableAttributes: AppConfig.permittedParams.membership
 
     relationships: ->
       @belongsTo 'group'

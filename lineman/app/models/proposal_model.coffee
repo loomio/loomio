@@ -1,11 +1,11 @@
-angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
+angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig) ->
   class ProposalModel extends BaseModel
     @singular: 'proposal'
     @plural: 'proposals'
     @uniqueIndices: ['id', 'key']
     @indices: ['discussionId']
     @serializationRoot: 'motion'
-    @serializableAttributes: window.Loomio.permittedParams.motion
+    @serializableAttributes: AppConfig.permittedParams.motion
 
     defaultValues: ->
       voteCounts: {yes: 0, no: 0, abstain: 0, block: 0}

@@ -1,9 +1,9 @@
-angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
+angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel, AppConfig) ->
   class MembershipRequestModel extends BaseModel
     @singular: 'membershipRequest'
     @plural: 'membershipRequests'
     @indices: ['id', 'groupId']
-    @serializableAttributes: window.Loomio.permittedParams.membership_request
+    @serializableAttributes: AppConfig.permittedParams.membership_request
 
     # this needs a rethink with more brain power
     initialize: (data) ->

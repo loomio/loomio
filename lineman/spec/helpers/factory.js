@@ -8,7 +8,7 @@ window.useFactory = function() {
         attrs.id = this.currentIds[model] || 1;
         attrs.key = "key" + attrs.id
         this.currentIds[model] = attrs.id + 1;
-        return Records[_.camelCase(model)].import(_.extend(fixtures[model], attrs));
+        return Records[_.camelCase(model)].importJSON(_.extend(fixtures[model], attrs));
       },
 
       update: function(model, id, attrs) {
