@@ -1,7 +1,6 @@
 angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterface, UserModel, RestfulClient) ->
   class UserRecordsInterface extends BaseRecordsInterface
     model: UserModel
-    apiEndPoint: 'profile'
 
     updateProfile: (user) =>
       @remote.post 'update_profile', user.serialize()
