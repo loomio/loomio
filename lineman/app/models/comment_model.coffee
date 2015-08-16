@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
     @singular: 'comment'
     @plural: 'comments'
     @indices: ['id', 'discussionId', 'authorId']
+    @serializableAttributes: window.Loomio.permittedParams.comment
 
     defaultValues: ->
       usesMarkdown: true

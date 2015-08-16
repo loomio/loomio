@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'InvitationModel', (BaseModel) ->
     @singular: 'invitation'
     @plural: 'invitations'
     @indices: ['id', 'groupId']
+    @serializableAttributes: window.Loomio.permittedParams.invitation
 
     relationships: ->
       @belongsTo 'group'

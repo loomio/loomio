@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     @singular: 'user'
     @plural: 'users'
     @apiEndPoint: 'profile'
+    @serializableAttributes: window.Loomio.permittedParams.user
 
     relationships: ->
       # note we should move these to a CurrentUser extends User so that all our authors dont get views created

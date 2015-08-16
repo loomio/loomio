@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel) ->
     @plural: 'memberships'
     @indices: ['id', 'userId', 'groupId']
     @searchableFields: ['userName', 'userUsername']
+    @serializableAttributes: window.Loomio.permittedParams.membership
 
     relationships: ->
       @belongsTo 'group'

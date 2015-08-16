@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'DiscussionReaderModel', (BaseModel) ->
     @singular: 'discussionReader'
     @plural: 'discussionReaders'
     @indices: ['id', 'discussionId']
+    @serializableAttributes: window.Loomio.permittedParams.discussion_reader
 
     defaultValues: ->
       readItemsCount:  0

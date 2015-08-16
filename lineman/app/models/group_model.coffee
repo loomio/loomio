@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
     @plural: 'groups'
     @uniqueIndices: ['id', 'key']
     @indices: ['parentId']
+    @serializableAttributes: window.Loomio.permittedParams.group
 
     defaultValues: ->
       parentId: null

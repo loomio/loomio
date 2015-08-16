@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
     @singular: 'membershipRequest'
     @plural: 'membershipRequests'
     @indices: ['id', 'groupId']
+    @serializableAttributes: window.Loomio.permittedParams.membership_request
 
     # this needs a rethink with more brain power
     initialize: (data) ->

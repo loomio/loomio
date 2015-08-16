@@ -4,6 +4,8 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
     @plural: 'proposals'
     @uniqueIndices: ['id', 'key']
     @indices: ['discussionId']
+    @serializationRoot: 'motion'
+    @serializableAttributes: window.Loomio.permittedParams.motion
 
     defaultValues: ->
       voteCounts: {yes: 0, no: 0, abstain: 0, block: 0}

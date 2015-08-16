@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
     @singular: 'attachment'
     @plural: 'attachments'
     @indices: ['id', 'commentId']
+    @serializableAttributes: window.Loomio.permittedParams.attachment
 
     relationships: ->
       @belongsTo 'author', from: 'users', by: 'authorId'

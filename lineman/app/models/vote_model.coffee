@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
     @singular: 'vote'
     @plural: 'votes'
     @indices: ['id', 'proposalId']
+    @serializableAttributes: window.Loomio.permittedParams.vote
 
     defaultValues: ->
       statement: ''

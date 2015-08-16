@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     @plural: 'discussions'
     @uniqueIndices: ['id', 'key']
     @indices: ['groupId', 'authorId']
+    @serializableAttributes: window.Loomio.permittedParams.discussion
 
     # works out if new records are private
     privateDefaultValue: =>
