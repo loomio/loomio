@@ -44,3 +44,7 @@ strong{
     outline-style: none;
   }
 }
+
+.badge {
+  @include box_shadow(1);
+}

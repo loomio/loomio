@@ -92,11 +92,15 @@
   position: relative;
 }
 
+.lmo-navbar__btn.has-badge i {
+  position: relative;
+}
+
 .lmo-navbar__btn.has-badge .badge {
   font-size: 10px;
   position: absolute;
   left: 16px;
-  top: 1px;
+  top: -10px;
   background: #4A90E2;
   border-radius: 10px;
   padding: 5px;
