@@ -3,6 +3,17 @@
   max-width: $main-max-width;
 }
 
+.thread-backdrop {
+  /*@include box-shadow(0 0 3px $mid-gray inset);*/
+  background: rgba(0, 0, 0, 0.69);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .thread-context__heading {
   .lmo-card-heading {
     display: inline-block;
