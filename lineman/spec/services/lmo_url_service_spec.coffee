@@ -17,12 +17,12 @@ describe 'LmoUrlService', ->
         expect(@subject.route({model: @thread})).toBe("/d/#{@thread.key}/discussion-title")
 
       it 'can accept a route', ->
-        expect(@subject.route({path: '/dashboard'})).toBe("/dashboard")
-        expect(@subject.route({path: 'dashboard'})).toBe("/dashboard")
+        expect(@subject.route({action: '/dashboard'})).toBe("/dashboard")
+        expect(@subject.route({action: 'dashboard'})).toBe("/dashboard")
 
       it 'can accept a model and a route', ->
-        expect(@subject.route({model: @group, path: 'memberships'})).toBe("/g/#{@group.key}/memberships")
-        expect(@subject.route({model: @group, path: '/memberships'})).toBe("/g/#{@group.key}/memberships")
+        expect(@subject.route({model: @group, action: 'memberships'})).toBe("/g/#{@group.key}/memberships")
+        expect(@subject.route({model: @group, action: '/memberships'})).toBe("/g/#{@group.key}/memberships")
 
     describe 'group', ->
       it 'gives a group path', ->
