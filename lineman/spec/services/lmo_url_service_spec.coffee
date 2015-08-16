@@ -11,6 +11,19 @@ describe 'LmoUrlService', ->
       @proposal = @factory.create 'proposals', discussion_id: @thread.id, name: 'Proposal Name', key: 'pkey'
       @comment = @factory.create 'comments', discussion_id: @thread.id, key: 'ckey'
 
+    describe 'route', ->
+      it 'can accept a model', ->
+        expect(@subject.route({model: @group})).toBe("/g/#{@group.key}/group-name")
+        expect(@subject.route({model: @thread})).toBe("/d/#{@thread.key}/discussion-title")
+
+      it 'can accept a route', ->
+        expect(@subject.route({action: '/dashboard'})).toBe("/dashboard")
+        expect(@subject.route({action: 'dashboard'})).toBe("/dashboard")
+
+      it 'can accept a model and a route', ->
+        expect(@subject.route({model: @group, action: 'memberships'})).toBe("/g/#{@group.key}/memberships")
+        expect(@subject.route({model: @group, action: '/memberships'})).toBe("/g/#{@group.key}/memberships")
+
     describe 'group', ->
       it 'gives a group path', ->
         expect(@subject.group(@group)).toBe("/g/#{@group.key}/group-name")

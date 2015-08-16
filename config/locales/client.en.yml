@@ -400,8 +400,8 @@ en:
       success: 'Group updated'
 
   membership_requests_card:
-    heading: 'Membership Requests ({{count}})'
-    manage_requests: Manage requests
+    heading: 'Membership Requests'
+    manage_requests: Manage requests ({{count}})
 
   membership_requests_page:
     heading: Membership Requests

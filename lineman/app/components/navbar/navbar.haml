@@ -1,17 +1,17 @@
 %header.lmo-navbar{role: 'navigation'}
   .lmo-navbar-item-container.lmo-navbar-item-container--left
     .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "dashboardPage"}'}
-      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon{href: '/dashboard', title: "{{ 'navbar.recent_title' | translate }}", tabindex: 1, ng-click: 'homePageClicked()'}
+      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon{lmo-href: '/dashboard', title: "{{ 'navbar.recent_title' | translate }}", tabindex: 1, ng-click: 'homePageClicked()'}
         %i.fa.fa-lg.fa-clock-o>
         %span.lmo-navbar__btn-label{translate: 'navbar.recent'}
     .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "inboxPage"}'}
-      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon.has-badge{href: '/inbox', title: "{{ 'navbar.unread_title' | translate }}", tabindex: 2}
+      %a.btn.lmo-navbar__btn.lmo-navbar__btn-icon.has-badge{lmo-href: '/inbox', title: "{{ 'navbar.unread_title' | translate }}", tabindex: 2}
         %i.fa.fa-lg.fa-inbox>
         %span.lmo-navbar__btn-label{translate: 'navbar.unread'}
         %span.badge{ng-show: 'unreadThreadCount() > 0'}
           {{unreadThreadCount()}}
     .lmo-navbar__item{ng-class: '{"lmo-navbar__item--selected": selected == "groupsPage"}'}
-      %a.groups-item.btn.lmo-navbar__btn-icon.lmo-navbar__btn{href: '/groups', title: "{{ 'navbar.groups_title' | translate }}", tabindex: 3}
+      %a.groups-item.btn.lmo-navbar__btn-icon.lmo-navbar__btn{lmo-href: '/groups', title: "{{ 'navbar.groups_title' | translate }}", tabindex: 3}
         %i.fa.fa-lg.fa-group>
         %span.lmo-navbar__btn-label{translate: 'navbar.groups'}
   .lmo-navbar-item-container.lmo-navbar-item-container--right
