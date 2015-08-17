@@ -7,10 +7,10 @@
       .group-page__name-and-actions
         .group-page__name
           %h1.lmo-h1
-            %a{ng_show: 'membershipsPage.group.parentId', href: '/g/{{membershipsPage.group.parent().key}}'}
+            %a{lmo-href-for: 'membershipsPage.group.parent()', ng-show: 'membershipsPage.group.parentId'}
               {{membershipsPage.group.parentName()}}
             %span{ng_show: 'membershipsPage.group.parentId'}> \-
-            %a{href: '/g/{{membershipsPage.group.key}}'}
+            %a{lmo-href-for: 'membershipsPage.group'}
               {{membershipsPage.group.name}}
       .memberships-page__memberships
         %h2.lmo-h2{translate: 'memberships_page.members'}

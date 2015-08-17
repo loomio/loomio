@@ -6,7 +6,7 @@
       .subgroups-card__list-item-logo
         %group_avatar{group: 'subgroup', size: 'medium'}
       .subgroups-card__list-item-name
-        %a{href: '/g/{{subgroup.key}}'} {{ subgroup.name }}
+        %a{lmo-href-for: 'subgroup'} {{ subgroup.name }}
       .subgroups-card__list-item-description {{ subgroup.description | words:10 }}
 
   .card-minor-action{ng-if: '::canCreateSubgroups()'}

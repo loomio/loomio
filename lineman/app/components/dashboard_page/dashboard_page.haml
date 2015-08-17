@@ -50,6 +50,6 @@
         %section{ng-if: 'dashboardPage.views.groups[group.key].any()', role: 'region', aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
           %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
           %h2.dashboard-page__group-name
-            %a{href: '/g/{{group.key}}'} {{group.name}}
+            %a{lmo-href-for: 'group'} {{group.name}}
           .dashboard-groups.thread-previews-container
             %thread_preview_collection{query: 'dashboardPage.views.groups[group.key]', limit: 'dashboardPage.groupThreadLimit'}

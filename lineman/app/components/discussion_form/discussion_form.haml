@@ -21,12 +21,12 @@
     .discussion-group-selected{ng_show: 'discussion.groupId'}
       .form-group
         %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
-        %input.form-control.discussion-form__title-input{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true', maxlength: '255'}
+        %input.form-control.discussion-form__title-input.lmo-primary-form-input{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true', maxlength: '255'}
         %validation_errors{subject: 'discussion', field: 'title'}
 
       .form-group
         %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
-        %textarea.form-control.discussion-form__description-input{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+        %textarea.form-control.discussion-form__description-input.lmo-primary-form-input{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
       .form-group{ng_show: 'showPrivacyForm()'}
         .privacy-form-option
