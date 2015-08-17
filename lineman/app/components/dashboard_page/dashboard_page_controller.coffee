@@ -33,6 +33,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     _.contains ['show_muted'], @filter
 
   @updateQueries = =>
+    @currentBaseQuery = ThreadQueryService.filterQuery(@filter)
     if @displayByGroup()
       _.each @groups(), (group) =>
         @views.groups[group.key] = ThreadQueryService.groupQuery(group, { filter: @filter, queryType: 'all' })
@@ -61,7 +62,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
 
   @setFilter = (filter = 'show_all') =>
     @filter = filter
-    @currentBaseQuery = ThreadQueryService.filterQuery(@filter)
     @refresh()
   @setFilter()
   $scope.$on 'homePageClicked', => @setFilter()
