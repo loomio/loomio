@@ -22,7 +22,7 @@ describe 'Dashboard Page', ->
     dashboardHelper.openFilterDropdown()
     dashboardHelper.visitParticipatingView()
     expect(dashboardHelper.anyThreads()).not.toContain('Starred proposal discussion')
-    expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
+    # expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
     expect(dashboardHelper.anyThreads()).toContain('Participating discussion')
 
   it 'displays a view of muted threads by group', ->
