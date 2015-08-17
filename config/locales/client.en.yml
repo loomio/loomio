@@ -115,7 +115,7 @@ en:
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
     user_options:
-      label: 'User options menu'
+      label: 'User options'
       contact_us: 'Contact us'
       new_thread: 'New thread'
       new_group: 'New group'
@@ -318,8 +318,8 @@ en:
       archive_group_success: 'This group has been deactivated'
     group_logo: 'Group logo'
     header:
-      aria_label: 'Group page header'
-    description: 'Description'
+      aria_label: 'Group header'
+    description: 'Group description'
     description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
@@ -358,9 +358,9 @@ en:
       mute_aria_description: Your notification volume for this group is set to Mute. You won't be emailed unless someone mentions you, and group activity will not be displayed on your Dashboard.
       updated: Group volume updated.
     privacy:
-      private: 'This group is only visible to members'
-      parent_members: 'This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
-      public: 'This group is visible on the web'
+      private: 'Privacy: This group is only visible to members'
+      parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
+      public: 'Privacy: This group is visible on the web'
 
   edit_group_form:
     title: 'Edit Group Settings'
@@ -538,6 +538,7 @@ en:
     mark_as_read: Mark as read
     filtering:
       filter_threads: Filter Threads
+      filter_threads_aria_label: Filter Threads
       dropdown_heading: Filter dashboard
       all: Recent Threads
       all_aria_label: Currently showing recent threads
