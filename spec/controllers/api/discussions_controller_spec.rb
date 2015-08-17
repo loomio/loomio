@@ -150,6 +150,30 @@ describe API::DiscussionsController do
     end
   end
 
+  describe 'mark_as_read' do
+    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+
+    before do
+      group.add_admin! user
+      sign_in user
+      reader.save
+      reader.reload
+    end
+
+    it "Marks context/discusion as read" do
+      patch :mark_as_read, id: discussion.key, sequence_id: 0
+      expect(reader.reload.last_read_at).to eq discussion.reload.last_activity_at
+      expect(reader.last_read_sequence_id).to eq 0
+    end
+
+    it "Marks thread item as read" do
+      event = CommentService.create(comment: comment, actor: discussion.author)
+      patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
+      expect(reader.reload.last_read_at).to eq event.created_at
+      expect(reader.last_read_sequence_id).to eq 1
+    end
+  end
+
   describe 'index' do
     let(:another_discussion)    { create :discussion, group: another_group }
 

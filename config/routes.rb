@@ -96,12 +96,9 @@ Loomio::Application.routes.draw do
     resources :events, only: :index
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
+      patch :mark_as_read, on: :member
       get :dashboard, on: :collection
       get :inbox, on: :collection
-    end
-
-    resources :discussion_readers, only: :update do
-      patch :mark_as_read, on: :member
     end
 
     resources :motions,     only: [:show, :index, :create, :update], path: :proposals do
