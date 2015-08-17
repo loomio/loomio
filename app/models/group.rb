@@ -168,6 +168,8 @@ class Group < ActiveRecord::Base
            class_name: 'Group',
            foreign_key: :parent_id
 
+  has_many :webhooks, as: :hookable
+
   has_one :subscription, dependent: :destroy
 
   delegate :include?, to: :users, prefix: true

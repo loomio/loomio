@@ -70,6 +70,7 @@ gem 'oj_mimic_json'
 #gem 'activeuuid', '>= 0.5.0'
 
 gem 'snorlax'
+gem 'rest-client'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
