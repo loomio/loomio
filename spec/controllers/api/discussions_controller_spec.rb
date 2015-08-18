@@ -149,6 +149,13 @@ describe API::DiscussionsController do
       expect(json.keys).to include *(%w[users groups proposals discussions])
       expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
     end
+
+    it 'returns the reader fields' do
+      DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
+      get :show, id: discussion.key
+      json = JSON.parse(response.body)
+      expect(json['discussions'][0]['starred']).to eq true
+    end
   end
 
   describe 'mark_as_read' do

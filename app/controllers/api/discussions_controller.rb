@@ -2,27 +2,28 @@ class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read]
   load_resource only: [:create, :update]
 
-  def index
-    instantiate_collection
-    respond_with_collection scope: { user: current_user }
-  end
-
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
-    respond_with_collection scope: { user: current_user }
+    respond_with_collection
   end
 
   def inbox
     instantiate_collection { |collection| collection_for_inbox collection }
-    respond_with_collection scope: { user: current_user }
+    respond_with_collection
   end
 
   def mark_as_read
     DiscussionReader.for(user: current_user, discussion: resource).viewed! (discussion_event || resource).created_at
-    respond_with_resource scope: { user: current_user }
+    respond_with_resource
   end
 
   private
+
+  def respond_with_collection(**args)
+    args[:scope] ||= {}
+    args[:scope][:user] = current_user
+    super args
+  end
 
   def visible_records
     Queries::VisibleDiscussions.new(user: current_user, groups: visible_groups)
