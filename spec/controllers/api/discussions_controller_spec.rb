@@ -258,6 +258,13 @@ describe API::DiscussionsController do
         expect(response).to be_success
         expect(discussion.reload.title).to eq discussion_params[:title]
       end
+
+      it 'updates a discussion reader' do
+        discussion_params[:starred] = true
+        put :update, id: discussion.id, discussion: discussion_params, format: :json
+        expect(response).to be_success
+        expect(DiscussionReader.for(user: user, discussion: discussion).starred).to eq true
+      end
     end
 
     context 'failures' do
