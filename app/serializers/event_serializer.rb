@@ -100,6 +100,7 @@ class EventSerializer < ActiveModel::Serializer
   def proposal_kinds
     ['motion_blocked',
      'motion_closing_soon',
+     'motion_closed',
      'motion_outcome_created',
      'motion_outcome_updated',
      'new_motion'] +

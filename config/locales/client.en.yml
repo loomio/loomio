@@ -634,6 +634,9 @@ en:
   new_proposal_item:
     author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
 
+  proposal_closed_item:
+    proposal_closed: 'Proposal closed:'
+
   contact_message_form:
     contact_us: 'Contact Us'
     name_label: 'Your name'
