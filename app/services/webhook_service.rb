@@ -1,12 +1,8 @@
-require 'rest-client'
-
 class WebhookService
 
   def self.publish!(webhook:, event:)
     return false unless webhook.event_types.include? event.kind
-    RestClient.post webhook.uri,
-                    payload_for(webhook, event),
-                    webhook.headers
+    HTTParty.post webhook.uri, body: payload_for(webhook, event), headers: webhook.headers
   end
 
   private
