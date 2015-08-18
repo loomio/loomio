@@ -396,7 +396,7 @@ en:
 
     members_defaults: "With the default settings, members can:"
     m1: Delete their own comments.
-    m3: Edit the title and description of proposals they start, until someone has stated their position. 
+    m3: Edit the title and description of proposals they start, until someone has stated their position.
     m4: Edit the closing date of proposals they start, until they close.
     m5: Edit the title and context of any discussion.
     m6: Start a subgroup, which they become the coordinator of.
@@ -1447,3 +1447,11 @@ en:
     health: "Health"
 
   start_your_group: Start your group
+
+  webhooks:
+    slack:
+      motion_closing_soon: "*%{name}* has a proposal closing in 24 hours"
+      motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
+      motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
+      new_motion: "*%{author}* started a new proposal in *%{name}*"
+      view_it_on_loomio: "View it on Loomio"
