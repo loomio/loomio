@@ -2,7 +2,10 @@ class DiscussionSerializer < ActiveModel::Serializer
 
   def self.attributes_from_reader(*attrs)
     attrs.each do |attr|
-      define_method attr,                 -> { reader.send(attr) if has_valid_reader? }
+      case attr
+      when :discussion_reader_id then define_method attr, -> { reader.id if has_valid_reader? }
+      else                            define_method attr, -> { reader.send(attr) if has_valid_reader? }
+      end
       define_method :"#{attr}_included?", -> { has_valid_reader? }
     end
     attributes *attrs
@@ -28,7 +31,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :first_sequence_id,
              :last_sequence_id
 
-  attributes_from_reader :last_read_at,
+  attributes_from_reader :discussion_reader_id,
+                         :last_read_at,
                          :read_comments_count,
                          :read_items_count,
                          :read_salient_items_count,

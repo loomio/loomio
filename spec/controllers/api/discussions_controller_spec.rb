@@ -180,6 +180,19 @@ describe API::DiscussionsController do
       expect(response.status).to eq 403
       expect(reader.reload.last_read_sequence_id).to eq 0
     end
+
+    it 'responds with reader fields' do
+      event = CommentService.create(comment: comment, actor: discussion.author)
+      patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
+      json = JSON.parse(response.body)
+      reader.reload
+
+      expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
+      expect(json['discussions'][0]['starred']).to eq reader.starred
+      expect(json['discussions'][0]['volume']).to eq reader.volume
+      expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
+      expect(json['discussions'][0]['participating']).to eq reader.participating
+    end
   end
 
   describe 'index' do
