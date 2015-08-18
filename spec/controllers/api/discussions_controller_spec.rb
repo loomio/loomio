@@ -7,6 +7,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
@@ -171,6 +172,13 @@ describe API::DiscussionsController do
       patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
       expect(reader.reload.last_read_at).to eq event.created_at
       expect(reader.last_read_sequence_id).to eq 1
+    end
+
+    it 'does not mark an inaccessible discussion as read' do
+      event = CommentService.create(comment: build(:comment, discussion: another_discussion), actor: another_discussion.author)
+      patch :mark_as_read, id: another_discussion.key, sequence_id: event.reload.sequence_id
+      expect(response.status).to eq 403
+      expect(reader.reload.last_read_sequence_id).to eq 0
     end
   end
 

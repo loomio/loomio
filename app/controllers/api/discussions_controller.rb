@@ -1,6 +1,6 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :set_volume]
-  load_resource only: [:create, :update, :mark_as_read]
+  load_and_authorize_resource only: [:show, :mark_as_read]
+  load_resource only: [:create, :update]
 
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
