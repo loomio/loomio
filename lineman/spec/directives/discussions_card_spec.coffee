@@ -1,4 +1,4 @@
-ddescribe 'Discussions Card Component', ->
+describe 'Discussions Card Component', ->
 
   beforeEach module 'loomioApp'
   beforeEach useFactory
@@ -69,7 +69,7 @@ ddescribe 'Discussions Card Component', ->
     expect(@$scope.showThreadsPlaceholder()).toBe(false)
 
   it 'does not display a placeholder when the CurrentUser is not a coordinator', ->
-    @membership.update(admin: false)
+    @membership.updateFromJSON admin: false
     prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
       parent.group = @group
     expect(@$scope.showThreadsPlaceholder()).toBe(false)

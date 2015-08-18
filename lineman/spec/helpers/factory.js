@@ -1,34 +1,4 @@
 window.useFactory = function() {
-  inject(function(Records) {
-    this.factory = {
-      currentIds: {},
-      create: function(model, attrs) {
-        attrs = attrs || {}
-        this.currentIds[model] = this.currentIds[model] || 1
-        attrs.id = this.currentIds[model] || 1;
-        attrs.key = "key" + attrs.id
-        this.currentIds[model] = attrs.id + 1;
-        return Records[_.camelCase(model)].importJSON(_.extend(fixtures[model], attrs));
-      },
-
-      update: function(model, id, attrs) {
-        return this.find(model, id).updateFromJSON(attrs || {});
-      },
-
-      createMany: function(model, attrs, n) {
-        result = []
-        for(var i = 0; i < n; i++) {
-          result.push(this.create(model, attrs || {}));
-        }
-        return result;
-      },
-
-      find: function(model, id) {
-        return Records[model].find(id);
-      }
-    }
-  })
-
   fixtures = {
     users: {
       name: "Max Von Sydow",
@@ -90,5 +60,37 @@ window.useFactory = function() {
       name: 'Wop Van Gool',
       email: 'wop@vangool.com'
     }
-  }
+  };
+  factory = null;
+
+  inject(function(Records) {
+    factory = {
+      currentIds: {},
+      create: function(model, attrs) {
+        attrs = attrs || {}
+        this.currentIds[model] = this.currentIds[model] || 1
+        attrs.id = this.currentIds[model] || 1;
+        attrs.key = "key" + attrs.id
+        this.currentIds[model] = attrs.id + 1;
+        return Records[_.camelCase(model)].import(_.extend(fixtures[model], attrs));
+      },
+
+      update: function(model, id, attrs) {
+        return this.find(model, id).updateFromJSON(attrs || {});
+      },
+
+      createMany: function(model, attrs, n) {
+        result = []
+        for(var i = 0; i < n; i++) {
+          result.push(this.create(model, attrs || {}));
+        }
+        return result;
+      },
+
+      find: function(model, id) {
+        return Records[model].find(id);
+      }
+    }
+  });
+  return factory;
 }
