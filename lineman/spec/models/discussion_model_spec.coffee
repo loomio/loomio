@@ -55,11 +55,6 @@ describe 'DiscussionModel', ->
     it 'does not return events for another discussion', ->
       expect(discussion.events()).not.toContain(otherEvent)
 
-  describe 'reader', ->
-
-    it "returns the discussion reader associated with this discussion", ->
-      expect(discussion.reader()).toBe(discussionReader)
-
   describe 'clone()', ->
     beforeEach ->
       window.Loomio =
