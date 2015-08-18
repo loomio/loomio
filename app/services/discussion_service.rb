@@ -31,8 +31,14 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+
     [:private, :title, :description, :uses_markdown].each do |attr|
       discussion.send("#{attr}=", params[attr]) if params.has_key?(attr)
+    end
+
+    [:starred, :volume].each do |attr|
+      reader.send("#{attr}=", params[attr]) if params.has_key?(attr)
     end
 
     if actor.ability.can? :update, discussion.group
@@ -53,6 +59,7 @@ class DiscussionService
     end
 
     discussion.save!
+    reader.save!
 
     ThreadSearchService.index! discussion.id if update_search_vector
     DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!

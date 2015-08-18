@@ -12,13 +12,11 @@ describe 'DiscussionService' do
                          destroy: true,
                          author: user) }
   let(:event) { double(:event) }
-  let(:discussion_reader) { double(:discussion_reader, set_volume_as_required!: true, viewed!: true) }
   let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
 
 
   before do
     Events::NewDiscussion.stub(:publish!).and_return(event)
-    allow(DiscussionReader).to receive(:for) { discussion_reader }
   end
 
 
@@ -111,6 +109,13 @@ describe 'DiscussionService' do
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
+      end
+
+      it 'can save reader attributes' do
+        DiscussionService.update discussion: discussion,
+                                 params: { starred: true },
+                                 actor: user
+        expect(DiscussionReader.for(user: user, discussion: discussion).starred).to eq true
       end
     end
 
