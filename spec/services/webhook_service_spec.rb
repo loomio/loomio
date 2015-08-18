@@ -18,17 +18,17 @@ describe WebhookService do
     end
 
     it 'should publish an event within its event kinds' do
-      expect(RestClient).to receive(:post)
+      expect(HTTParty).to receive(:post)
       MotionService.create actor: user, motion: motion
     end
 
     it 'should not publish an event outside of its event kinds' do
-      expect(RestClient).to_not receive(:post)
+      expect(HTTParty).to_not receive(:post)
       MotionService.create_outcome actor: user, motion: motion, params: { outcome: 'outcome' }
     end
 
     it 'should not publish an event or error for events which do not have serializers' do
-      expect(RestClient).to_not receive(:post)
+      expect(HTTParty).to_not receive(:post)
       CommentService.create comment: comment, actor: user
     end
 
