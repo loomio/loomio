@@ -1,4 +1,34 @@
 window.useFactory = function() {
+  inject(function(Records) {
+    this.factory = {
+      currentIds: {},
+      create: function(model, attrs) {
+        attrs = attrs || {}
+        this.currentIds[model] = this.currentIds[model] || 1
+        attrs.id = this.currentIds[model] || 1;
+        attrs.key = "key" + attrs.id
+        this.currentIds[model] = attrs.id + 1;
+        return Records[_.camelCase(model)].importJSON(_.extend(fixtures[model], attrs));
+      },
+
+      update: function(model, id, attrs) {
+        return this.find(model, id).update(attrs || {});
+      },
+
+      createMany: function(model, attrs, n) {
+        result = []
+        for(var i = 0; i < n; i++) {
+          result.push(this.create(model, attrs || {}));
+        }
+        return result;
+      },
+
+      find: function(model, id) {
+        return Records[model].find(id);
+      }
+    }
+  })
+
   fixtures = {
     users: {
       name: "Max Von Sydow",
@@ -15,19 +45,19 @@ window.useFactory = function() {
     groups: {
       name: 'Venus: ...Ladies.',
       description: '',
-      created_at: moment().subtract(2, 'day'),
-      updated_at: moment().subtract(2, 'day'),
+      created_at: moment().subtract(2, 'day').format(),
+      updated_at: moment().subtract(2, 'day').format(),
       has_discussions: false
     },
 
     discussions: {
       title: 'Earth: The Most Recent Frontier',
       description: '',
-      last_item_at: moment(),
-      last_comment_at: moment(),
-      last_activity_at: moment(),
-      created_at: moment().subtract(2, 'day'),
-      updated_at: moment().subtract(2, 'day'),
+      last_item_at: moment().format(),
+      last_comment_at: moment().format(),
+      last_activity_at: moment().format(),
+      created_at: moment().subtract(2, 'day').format(),
+      updated_at: moment().subtract(2, 'day').format(),
       first_sequence_id: 0,
       last_sequence_id: 50,
       salient_items_count: 50,
@@ -60,37 +90,5 @@ window.useFactory = function() {
       name: 'Wop Van Gool',
       email: 'wop@vangool.com'
     }
-  };
-  factory = null;
-
-  inject(function(Records) {
-    factory = {
-      currentIds: {},
-      create: function(model, attrs) {
-        attrs = attrs || {}
-        this.currentIds[model] = this.currentIds[model] || 1
-        attrs.id = this.currentIds[model] || 1;
-        attrs.key = "key" + attrs.id
-        this.currentIds[model] = attrs.id + 1;
-        return Records[_.camelCase(model)].import(_.extend(fixtures[model], attrs));
-      },
-
-      update: function(model, id, attrs) {
-        return this.find(model, id).updateFromJSON(attrs || {});
-      },
-
-      createMany: function(model, attrs, n) {
-        result = []
-        for(var i = 0; i < n; i++) {
-          result.push(this.create(model, attrs || {}));
-        }
-        return result;
-      },
-
-      find: function(model, id) {
-        return Records[model].find(id);
-      }
-    }
-  });
-  return factory;
+  }
 }
