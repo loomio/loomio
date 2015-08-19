@@ -8,11 +8,7 @@ angular.module('loomioApp').directive 'navbar', ->
       $scope.selected = component.page
 
     $scope.unreadThreadCount = ->
-      ThreadQueryService.filterQuery('show_unread').length()
+      ThreadQueryService.filterQuery('show_unread', queryType: 'inbox').length()
 
     $scope.homePageClicked = ->
       $rootScope.$broadcast 'homePageClicked'
-
-    if !$scope.inboxLoaded
-      Records.discussions.fetchInbox().then ->
-        $scope.inboxLoaded = true

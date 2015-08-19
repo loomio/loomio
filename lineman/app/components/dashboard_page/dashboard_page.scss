@@ -14,7 +14,7 @@
 .dashboard-page__date-range{
   @include fontSmall;
   color: $grey-on-grey;
-  margin-left: 13px;
+  padding: 0 $cardPaddingSize;
 }
 
 .dashboard-page__no-threads {

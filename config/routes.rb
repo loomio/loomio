@@ -2,6 +2,8 @@ Loomio::Application.routes.draw do
 
   namespace :development do
     get 'last_email'
+    get 'setup_dashboard'
+    get 'setup_inbox'
     get 'setup_group'
     get 'setup_group_for_invitations'
     get 'setup_group_to_join'
@@ -95,6 +97,7 @@ Loomio::Application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       get :dashboard, on: :collection
+      get :inbox, on: :collection
     end
 
     resources :discussion_readers, only: :update do
