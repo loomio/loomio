@@ -1,0 +1,10 @@
+%article.thread-item{ng-controller: 'MotionCloseDateEditedItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
+  .thread-item__header.media
+    .media-left
+      .thread-item__proposal-icon
+    .media-body
+      %h3.thread-item__header{id: 'proposal-{{proposal.id}}', translate: "proposal_close_date_edited_item.proposal_close_date_edited", translate-value-name: '{{event.actorName()}}', translate-value-title: '{{proposal.name}}'}
+
+  .thread-item__footer
+    .thread-item__actions
+      %timeago{timestamp: 'event.createdAt'}

@@ -637,11 +637,14 @@ en:
   proposal_closed_item:
     proposal_closed: 'Proposal closed:'
 
+  proposal_close_date_edited_item:
+    proposal_close_date_edited: '<strong>{{name}}</strong> updated the close date for the proposal: {{title}}'
+
   discussion_title_edited_item:
-    discussion_title_edited: '<strong>{{name}}</strong> updated the thread title.'
+    discussion_title_edited: '<strong>{{name}}</strong> updated the thread title'
 
   discussion_description_edited_item:
-    discussion_description_edited: '<strong>{{name}}</strong> updated the thread context.'
+    discussion_description_edited: '<strong>{{name}}</strong> updated the thread context'
 
   contact_message_form:
     contact_us: 'Contact Us'

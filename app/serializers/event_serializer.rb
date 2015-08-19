@@ -103,6 +103,7 @@ class EventSerializer < ActiveModel::Serializer
     ['motion_blocked',
      'motion_closing_soon',
      'motion_closed',
+     'motion_close_date_edited',
      'motion_outcome_created',
      'motion_outcome_updated',
      'new_motion'] +

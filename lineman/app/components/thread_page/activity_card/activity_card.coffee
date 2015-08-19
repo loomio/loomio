@@ -79,6 +79,7 @@ angular.module('loomioApp').directive 'activityCard', ->
                   'new_motion',
                   'new_vote',
                   'motion_closed',
+                  'motion_close_date_edited',
                   'discussion_title_edited',
                   'discussion_description_edited'], kind
 
