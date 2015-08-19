@@ -1,0 +1,10 @@
+%article.thread-item{ng-controller: 'DiscussionDescriptionEditedItemController', aria-labelledby: 'discussion-{{discussion.id}}'}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: 'event.actor()', size: 'small'}
+    .media-body
+      %h3.thread-item__header{id: 'discussion-{{discussion.id}}', translate: "discussion_description_edited_item.discussion_description_edited", translate-value-name: '{{event.actorName()}}'}
+
+  .thread-item__footer
+    .thread-item__actions
+      %timeago{timestamp: 'event.createdAt'}

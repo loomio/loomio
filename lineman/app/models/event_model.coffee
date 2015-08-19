@@ -48,5 +48,8 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     actor: ->
       @recordStore.users.find(@actorId)
 
+    actorName: ->
+      @actor().name
+
     relevantRecordType: ->
       @constructor.eventTypeMap[@kind]

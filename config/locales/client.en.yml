@@ -632,10 +632,13 @@ en:
     block: '<strong>{{name}}</strong> blocked'
 
   new_proposal_item:
-    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
+    author_created_proposal: '<strong>{{name}}</strong> started a proposal: {{title}}'
 
   proposal_closed_item:
     proposal_closed: 'Proposal closed:'
+
+  discussion_description_edited_item:
+    discussion_description_edited: '<strong>{{name}}</strong> updated the thread context.'
 
   contact_message_form:
     contact_us: 'Contact Us'
