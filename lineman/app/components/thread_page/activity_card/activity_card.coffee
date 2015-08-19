@@ -79,6 +79,7 @@ angular.module('loomioApp').directive 'activityCard', ->
                   'new_motion',
                   'new_vote',
                   'motion_closed',
+                  'discussion_title_edited',
                   'discussion_description_edited'], kind
 
     $scope.events = ->

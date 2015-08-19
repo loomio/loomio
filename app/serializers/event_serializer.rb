@@ -86,6 +86,7 @@ class EventSerializer < ActiveModel::Serializer
 
   def discussion_kinds
     ['new_discussion',
+     'discussion_title_edited',
      'discussion_description_edited'] +
     comment_kinds +
     proposal_kinds
