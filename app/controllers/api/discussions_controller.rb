@@ -21,7 +21,7 @@ class API::DiscussionsController < API::RestfulController
 
   def respond_with_collection(**args)
     args[:scope] ||= {}
-    args[:scope][:user] = current_user
+    args[:scope][:reader_cache] = DiscussionReaderCache.new(user: current_user, discussions: collection)
     super args
   end
 

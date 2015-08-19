@@ -75,15 +75,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       else
         true
 
-    isMuted: ->
-      @volume == 'mute'
-
-    isParticipating: ->
-      @participating
-
-    isStarred: ->
-      @starred
-
     isImportant: ->
       @starred or @hasActiveProposal()
 

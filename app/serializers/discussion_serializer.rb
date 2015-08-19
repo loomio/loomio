@@ -3,10 +3,10 @@ class DiscussionSerializer < ActiveModel::Serializer
   def self.attributes_from_reader(*attrs)
     attrs.each do |attr|
       case attr
-      when :discussion_reader_id then define_method attr, -> { reader.id if has_valid_reader? }
-      else                            define_method attr, -> { reader.send(attr) if has_valid_reader? }
+      when :discussion_reader_id then define_method attr, -> { reader.try(:id) }
+      else                            define_method attr, -> { reader.try(attr) }
       end
-      define_method :"#{attr}_included?", -> { has_valid_reader? }
+      define_method :"#{attr}_included?", -> { reader.present? }
     end
     attributes *attrs
   end
@@ -63,11 +63,7 @@ class DiscussionSerializer < ActiveModel::Serializer
   end
 
   def reader
-    @reader ||= DiscussionReader.for(user: scope[:user], discussion: object)
-  end
-
-  def has_valid_reader?
-    @has_valid_reader ||= reader.present? && reader.user.present?
+    @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
   end
 
 end
