@@ -66,4 +66,11 @@ class DiscussionService
     DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required! if set_volume_as_required
     event
   end
+
+  def self.mark_as_read(discussion:, params:, actor:)
+    actor.ability.authorize! :show, discussion
+
+    target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]) || discussion
+    DiscussionReader.for(user: actor, discussion: resource).viewed! target_to_read.created_at
+  end
 end

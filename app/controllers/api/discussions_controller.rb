@@ -13,7 +13,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def mark_as_read
-    DiscussionReader.for(user: current_user, discussion: resource).viewed! (discussion_event || resource).created_at
+    service.mark_as_read discussion: resource, params: params, actor: current_user
     respond_with_resource
   end
 
@@ -44,10 +44,6 @@ class API::DiscussionsController < API::RestfulController
 
   def collection_for_inbox(collection)
     collection.not_muted.unread.sorted_by_latest_activity
-  end
-
-  def discussion_event
-    Event.where(discussion_id: resource.id, sequence_id: params[:sequence_id]).first
   end
 
 end
