@@ -101,7 +101,6 @@ sr:
       empty:
         membership_is_invitation_only: Da biste se priključili ovoj grupi morate biti pozvani od strane nekog člana.
         membership_is_invitation_by_admin_only: Da biste se pridružili ovoj grupi morate biti pozvani od strane koordinatora.
-    description: Opis
     discussions: Nizovi
     invite_people: Pozovi ljude
     options_label: Opcije

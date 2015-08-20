@@ -97,19 +97,20 @@ de:
     recent: Aktuell
     unread: Ungelesen
     groups: Gruppen
-    recent_title: Gehe zum Schreibtisch
-    unread_title: Ungelesene Meldungen lesen
+    recent_title: Aktuelle Diskussionen sehen
+    unread_title: Diskussionen mit ungelesenen Beiträgen lesen
     groups_title: Deine Gruppen sehen
     start_thread: Beginne eine neue Diskussion
     notifications: Benachrichtigungspanel
     user_options:
-      label: Benutzeroptionen-Menü
+      label: Benutzereinstellungen
       contact_us: Kontaktiere uns
       new_thread: Neuer Strang
       new_group: Neue Gruppe
       profile: Profil
       email_settings: eMail-Einstellungen
       help: Hilfe
+      sign_out: Abmelden
     search:
       close: Suchabfrage schließen
       placeholder: Suche
@@ -283,8 +284,8 @@ de:
       archive_group_success: Diese Gruppe wurde deaktiviert
     group_logo: Gruppen-Logo
     header:
-      aria_label: Gruppenseiter-Kopfleiste
-    description: Beschreibung
+      aria_label: Gruppen-Kopfzeile
+    description: Gruppenbeschreibung
     description_placeholder: "Nutze diesen Platz um den Zweck der Gruppe zu erläutern, damit Mitglieder wissen, warum sie da sind."
     discussions: Themen
     discussions_placeholder: In einer Diskussion kann jeder diskutieren und es können gemeinsam Entscheidungen getroffen werden.
@@ -323,9 +324,9 @@ de:
       mute_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Stumm\". Du wirst nur per eMail informiert, wenn Du @angesprochen wirst. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt."
       updated: Gruppenbenachrichtigung aktualisiert.
     privacy:
-      private: Diese Gruppe ist nur für Gruppenmitglieder sichtbar
-      parent_members: "Diese Gruppe ist nur sichtbar für Mitglieder von {{parentGroupName}} und von {{groupName}}"
-      public: Diese Diskussion ist im Web sichtbar
+      private: "Privatsphäre: Diese Gruppe ist nur für Mitglieder sichtbar"
+      parent_members: "Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar."
+      public: "Privatsphäre: Diese Gruppe ist im Web sichtbar"
   edit_group_form:
     title: Gruppeneinstellungen bearbeiten
     profile:
@@ -339,7 +340,7 @@ de:
       organisation_visibility: "Organisation - nicht öffentlich gelistet, aber für Mitglieder von {{parentGroupName}} sichtbar"
       private_visibility: Mitglieder - nur Mitglieder können diese Gruppe sehen
       membership_granted_upon: Wie kann jemand teilnehmen?
-      membership_by_request: "Offen <span>jedeR kann der Gruppe beitreten</span>"
+      membership_by_request: "Offen - jedeR kann der Gruppe beitreten</span>"
       membership_by_request_subgroup: "Offen für Mitglider von {{parentGroupName}}"
       membership_by_approval: Auf Anfrage - jedeR kann eine Mitgliedschaft beantragen
       membership_by_approval_subgroup: "Auf Anfrage von Mitgliedern der Gruppe {{parentGroupName}}"
@@ -351,7 +352,7 @@ de:
       private_discussions: Nur Mitglieder können Diskussionen sehen
     permissions:
       label: Berechtigungen
-      helptext: Was Mitglieder tun können?
+      helptext: Was können Mitglieder tun?
       members_can_add_members: Neue Mitglieder einladen und annehmen
       members_can_create_subgroups: Untergruppen erstellen
       members_can_start_discussions: Diskussionen eröffnen
@@ -363,13 +364,14 @@ de:
     messages:
       success: Gruppe aktualisiert
   membership_requests_card:
-    heading: "Mitgliedschaftsanfragen ({{count}})"
-    manage_requests: Anfragen bearbeiten
+    heading: Mitgliedschaftsanfragen
+    manage_requests: "Mitgliedschaftsanfragen ({{count}})"
   membership_requests_page:
     heading: Mitgliedschaftsanfragen
     approve: Zustimmen
     ignore: Ignorieren
-    no_pending_requests: Im Moment gibt es keine offenen Mitgliedschaftsanfragen.
+    no_pending_requests: Im Moment gibt es keine offenen Mitgliedschaftsanfragen für diese Gruppe.
+    no_previous_requests: Im Moment gibt es keine älteren Mitgliedschaftsanfragen für diese Gruppe.
     previous_requests: Bisherige Anfragen
     previous_request_response: "{{response}} von {{responder}} "
     messages:
@@ -422,7 +424,6 @@ de:
     heading: Ausstehende Einladungen
     email: eMail
     invitation_link: Link zur Einladung
-    cancel: Abbrechen
   cancel_invitation_form:
     heading: Einladung abbrechen
     question: "Sicher, dass Du diese Einladung löschen willst?"
@@ -443,7 +444,7 @@ de:
       use_uploaded: Neues Bild hochladen
     change_password:
       title: Passwort ändern
-      helptext: "Passwörter müssen mindest 8 Zeichen entalten. Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie \"passwort\" und ähnliches verboten."
+      helptext: "Passwörter müssen mindestens 8 Zeichen entalten. Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie \"passwort\" und ähnliches verboten."
       current_password_label: Aktuelles Passwort
       new_password_label: Neues Passwort
       password_confirmation_label: Neues Passwort erneut eingeben
@@ -493,14 +494,15 @@ de:
     mark_as_read: Als gelesen markieren
     filtering:
       filter_threads: Themen filtern
-      dropdown_heading: Statusleiste filtern
+      filter_threads_aria_label: Themen filtern
+      dropdown_heading: Aktuelles filtern
       all: Aktuelle Diskussionen
       all_aria_label: Momentan werden alle aktuellen Diskussionen angezeigt
       all_description: Aktuelle Diskussionen anzeigen
       starred: Favorisierte Diskussionen
       starred_aria_label: "Momentan werden alle Diskussionen angezeigt, die ich als wichtig markiert habe"
-      starred_description: "Nur Diskussionen anzeigen, die Du als wichtig markiert hast"
-      participating: Beteiligungs-Diskussionen
+      starred_description: "Nur Diskussionen anzeigen, die Du als wichtig (Stern) markiert hast"
+      participating: Diskussionsbeteiligungen
       participating_aria_label: "Momentan werden alle Diskussionen angezeigt, an denen ich teilgenommen habe"
       participating_description: "Nur Diskussionen anzeigen, an denen Du teilgenommen hast"
       proposals: Vorschläge
@@ -516,13 +518,15 @@ de:
       you_voted: "Du hast folgendermaßen abgestimmt: {{position}}."
     threads_from:
       group: Diskussionen von
+      proposals: Vorschläge
+      starred: Favorisiert
       today: Heute
       yesterday: Gestern
       thisweek: In dieser Woche
       thismonth: Diesen Monat
       older: Älter als einen Monat
   inbox_page:
-    no_threads: "Woohoo! Du hast alle Diskussionen in Deiner Inbox gelesen."
+    no_threads: "Yippie! Du hast alle Diskussionen in Deinem Posteingang gelesen."
     unread_threads: Ungelesene Diskussionen
     view_more: Mehr anzeigen
   groups_page:
@@ -542,11 +546,11 @@ de:
     liked_by_names_and_name: "Gefällt {{joinedNames}} und {{name}}."
     started_by: "Eröffnet von <strong>{{name}}</strong>"
     volume:
-      loud: "E-Mail, sobald es Aktuelles in diese Diskussion gibt."
+      loud: "eMail, sobald es Neues in dieser Diskussion gibt."
       loud_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf Laut. Das bedeutet, dass Du bei jedem/r neuen Beitrag/Meldung in dieser Diskussion eine eMail erhältst"
       normal: "Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht."
       normal_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Normal\". Du wirst per eMail informiert, wenn eine Vorschlag eröffnet oder beendet wird oder ein Ergebnis bekanntgegeben wird."
-      quiet: Keine E-Mail nicht zu diesem Thema.
+      quiet: Keine eMail zu diesem Thema.
       quiet_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Leise\". Du wirst nur per eMail benachrichtigt, wenn Du erwähnt wirst."
       mute: Ausblenden dieses Thema aus dem Armaturenbrett und nicht benachrichtigen
       mute_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Stumm\". Du wirst erst wieder per eMail benachrichtigt, wenn Du erwähnt wirst. Diese Diskussion wird nicht in der Statusleiste erscheinen."
@@ -578,6 +582,8 @@ de:
     block: "<strong>{{name}}</strong> legt Veto ein"
   new_proposal_item:
     author_created_proposal: "<strong>{{name}}</strong> erstellte folgenden Vorschlag:"
+  proposal_closed_item:
+    proposal_closed: "Vorschlag geschlossen:"
   contact_message_form:
     contact_us: Kontaktiere uns
     name_label: Dein Name

@@ -146,7 +146,6 @@ nl-NL:
       empty:
         membership_is_invitation_only: Om lid te worden van deze groep moet je uitgenodigd zijn door een lid.
         membership_is_invitation_by_admin_only: Om lid te worden van deze groep moet je uitgenodigd zijn door een coördinator.
-    description: Omschrijving
     discussions: Discussies
     invite_people: Mensen uitnodigen
     visibility_label: Zichtbaarheid

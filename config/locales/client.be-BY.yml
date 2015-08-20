@@ -100,7 +100,6 @@ be-BY:
       empty:
         membership_is_invitation_only: "Патрэбна атрымаць запрашэнне ад удзельніка групы каб далучыцца да яе. "
         membership_is_invitation_by_admin_only: "Патрэбна атрымаць запрашэнне ад каардынатара групы каб далучыцца да яе. "
-    description: Апісанне
     discussions: Абмеркаванні
     invite_people: Запрасіць людзей
     options_label: Опцыі

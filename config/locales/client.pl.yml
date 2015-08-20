@@ -102,7 +102,6 @@ pl:
     start_thread: Rozpoczęcie nowego wątku
     notifications: Panel powiadomień
     user_options:
-      label: Menu opcji użytkownika
       contact_us: Kontakt
       new_thread: Nowy wątek
       new_group: Nowa grupa
@@ -274,9 +273,6 @@ pl:
         public: Ta grupa jest teraz publiczna
       leave_group_success: Opuściłeś/aś tę grupę
     group_logo: Logo grupy
-    header:
-      aria_label: Nagłówek strony grupy
-    description: Opis
     description_placeholder: Opisz cel grupy aby członkowie wiedzieli czemu się w niej znajdują.
     discussions: Dyskusje
     discussions_placeholder: Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.
@@ -312,10 +308,6 @@ pl:
       mute: "Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek"
       mute_aria_description: "Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie."
       updated: Poziom powiadamiania Grupy zmieniono.
-    privacy:
-      private: Ta grupa jest widoczna tylko dla członków
-      parent_members: "Ta grupa jest widoczna dla członków {{parentGroupName}} oraz {{groupName}}"
-      public: Ta grupa jest widoczna publicznie
   edit_group_form:
     title: Edycja Ustawień Grupy
     profile:
@@ -352,14 +344,10 @@ pl:
     submit: Zmiana ustawień
     messages:
       success: Grupa zaktualizowana
-  membership_requests_card:
-    heading: "Złoszenia Członkostwa ({{count}})"
-    manage_requests: Zarządzanie zgłoszeniami
   membership_requests_page:
     heading: Zgłoszenia Członkostwa
     approve: Akceptacja
     ignore: Ignoruj
-    no_pending_requests: Brak oczekujących zgłoszeń.
     previous_requests: Poprzednie zgłoszenia
     previous_request_response: "{{response}} od {{responder}} "
     messages:

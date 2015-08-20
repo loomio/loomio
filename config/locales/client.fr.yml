@@ -133,7 +133,6 @@ fr:
     messages:
       leave_group_success: Vous avez quitté ce groupe
     group_logo: Logo du groupe
-    description: Description
     discussions: Discussions
     invite_people: Inviter des personnes
     visibility_label: Visibilité
