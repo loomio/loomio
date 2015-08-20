@@ -17,11 +17,13 @@ class Event < ActiveRecord::Base
   after_destroy :call_thread_item_destroyed
 
   after_create :publish_message
+  after_create :notify_webhooks!, if: :discussion
 
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
+
 
 
   def notify!(user)
@@ -35,6 +37,14 @@ class Event < ActiveRecord::Base
   def publish_message
     MessageChannelService.publish_event(self)
   end
+
+  def notify_webhooks!
+    group = self.discussion.group
+    self.discussion.webhooks.each { |webhook| WebhookService.publish! webhook: webhook, event: self }
+    group.webhooks.each           { |webhook| WebhookService.publish! webhook: webhook, event: self }
+    group.parent.webhooks.each    { |webhook| WebhookService.publish! webhook: webhook, event: self } if group.is_subgroup? && group.is_visible_to_parent_members
+  end
+  handle_asynchronously :notify_webhooks!
 
   private
 

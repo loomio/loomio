@@ -3,7 +3,7 @@
     .media-left
       .thread-item__proposal-icon
     .media-body
-      %h3.new-motion__heading{id: 'proposal-{{proposal.id}}', translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
+      %h3.thread-item__header{id: 'proposal-{{proposal.id}}', translate: "new_proposal_item.author_created_proposal", translate-value-name: '{{proposal.authorName()}}'}
   .thread-item__body
     {{proposal.name}}
 

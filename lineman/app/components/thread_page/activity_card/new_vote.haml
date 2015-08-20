@@ -3,7 +3,7 @@
     .media-left
       .thread-item__vote-icon{class: 'thread-item__vote-icon--{{vote.position}}'}
     .media-body
-      %h3.new-vote__heading{id: 'vote-{{vote.id}}'}
+      %h3.thread-item__header{id: 'vote-{{vote.id}}'}
         %span{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
         %span{ng-if: '!vote.hasStatement()'}.
         %span{ng-if: 'vote.hasStatement()'}:
