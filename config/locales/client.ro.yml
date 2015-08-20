@@ -102,7 +102,6 @@ ro:
       empty:
         membership_is_invitation_only: Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui membru.
         membership_is_invitation_by_admin_only: "Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui coordonator. "
-    description: Descrierea
     discussions: Discutii
     invite_people: Invita oameni
     options_label: Optiuni

@@ -93,7 +93,6 @@ sk:
       empty:
         membership_is_invitation_only: Na získanie členstva v tejto skupine vás musí pozvať jej člen.
         membership_is_invitation_by_admin_only: Na získanie členstva v tejto skupine vás musí pozvať jej koordinátor.
-    description: Popis
     discussions: Diskusie
     invite_people: Pozvať ďalších
     options_label: Nastavenia

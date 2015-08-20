@@ -100,7 +100,6 @@ da:
     start_thread: Start en ny tråd
     notifications: Meddelelsespanel
     user_options:
-      label: Brugerindstillingsmenu
       contact_us: Kontakt os
       new_thread: Ny tråd
       new_group: Ny gruppe
@@ -172,7 +171,6 @@ da:
       empty:
         membership_is_invitation_only: For at blive medlem af denne gruppe skal du inviteres af et andet medlem.
         membership_is_invitation_by_admin_only: For at blive medlem af denne gruppe skal du inviteres af en koordinator.
-    description: Beskrivelse
     discussions: Diskussioner
     invite_people: Inviter folk
     options_label: Indstillinger

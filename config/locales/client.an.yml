@@ -93,7 +93,6 @@ an:
       empty:
         membership_is_invitation_only: Ta unir-te a iste grupo amenestes estar convidau por bell miembro.
         membership_is_invitation_by_admin_only: Ta unir-te a iste grupo amenestes estar convidau por un coordinador.
-    description: Descripción
     discussions: Discusions
     invite_people: Convidar a personas
     options_label: Opcions

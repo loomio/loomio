@@ -223,9 +223,6 @@ cs:
       leave_group_success: Tuto skupinu jste opustil(a)
       archive_group_success: Tato skupina byla deaktivována
     group_logo: Logo skupiny
-    header:
-      aria_label: Záhlaví stránek skupiny
-    description: Popis
     discussions: Diskuze
     members_placeholder: "Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!"
     subgroups: Podskupiny
@@ -276,14 +273,10 @@ cs:
     submit: Aktualizovat nastavení
     messages:
       success: Skupina aktualizována
-  membership_requests_card:
-    heading: "Žádosti o členství ({{count}})"
-    manage_requests: Spravovat žádosti
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
     ignore: Ignorovat
-    no_pending_requests: Nemáte zatím žádné nevyřízené žádosti.
     previous_requests: Minulé žádosti
     messages:
       request_approved_success: Žádost o členství schválena

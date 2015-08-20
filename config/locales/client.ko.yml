@@ -72,7 +72,6 @@ ko:
     introduction_label: 자기소개
     submit_button: 그룹에 가입신청하기
   group_page:
-    description: 설명
     discussions: 토론
     invite_people: 초대 명단
     options_label: 선택사항

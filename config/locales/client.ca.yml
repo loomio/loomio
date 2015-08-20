@@ -86,7 +86,6 @@ ca:
     introduction_label: "Presenta't"
     submit_button: Demana unir-te al grup
   group_page:
-    description: Descripció
     discussions: Discussions
     invite_people: Convida gent
     options_label: Opcions

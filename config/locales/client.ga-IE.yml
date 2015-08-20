@@ -103,7 +103,6 @@ ga-IE:
     start_thread: Cuir tús le snáithe nua
     notifications: Clár na bhfógraí
     user_options:
-      label: Roghchlár roghanna an úsáideora
       contact_us: Déan teagmháil linn
       new_thread: Snáith nua
       new_group: Baicle nua
@@ -275,9 +274,6 @@ ga-IE:
         public: Tá an saol mór in ann an bhaicle seo a fheiceáil anois
       leave_group_success: "D'fhág tú an bhaicle seo"
     group_logo: Lógó na baicle
-    header:
-      aria_label: Ceanntásc leathanach na baicle
-    description: Cur síos
     description_placeholder: Bain feidhm as an áit seo chun cur síos a dhéanamh ar an mbaicle le go mbeidh a fhios ag na comhaltaí cén fáth a bhfuil siad anseo.
     discussions: Pléití
     discussions_placeholder: Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.
@@ -310,10 +306,6 @@ ga-IE:
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
       mute: "Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom."
       updated: Nuashonraíodh airde na baicle.
-    privacy:
-      private: Is na comhaltaí amháin ar féidir leo an bhaicle seo a fheiceáil
-      parent_members: "Is féidir le comhaltaí {{parentGroupName}} agus comhaltaí {{groupName}} seo a fheiceáil"
-      public: Tá an bhaicle seo le feiceáil ar an ngréasán domhanda
   edit_group_form:
     title: Cuir socruithe na baicle in eagar
     profile:
@@ -350,14 +342,10 @@ ga-IE:
     submit: Nuashonraigh na Socruithe
     messages:
       success: Nuashonraíodh an bhaicle
-  membership_requests_card:
-    heading: "Iarratais le bheith mar chomhalta ({{count}})"
-    manage_requests: Riar na hiarratais
   membership_requests_page:
     heading: Iarratais le bheith mar chomhalta
     approve: Ceadaigh
     ignore: Déan neamhaird de
-    no_pending_requests: Níl aon iarratas le bheith mar chomhalta ann faoi láthair.
     previous_requests: Iarratais a bhí ann cheana
     previous_request_response: "{{response}} ó {{responder}} "
     messages:
@@ -410,7 +398,6 @@ ga-IE:
     heading: Cuirí ar feitheamh
     email: Ríomhphost
     invitation_link: Nasc chuig an cuireadh
-    cancel: Cealaigh
   cancel_invitation_form:
     heading: Cealaigh an cuireadh
     question: An bhfuil tú cinnte gur mian leat an cuireadh seo a chur ar ceal?

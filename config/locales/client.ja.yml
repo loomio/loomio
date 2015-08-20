@@ -78,7 +78,6 @@ ja:
       empty:
         membership_is_invitation_only: このグループに参加するためには、メンバーに招待される必要があります
         membership_is_invitation_by_admin_only: このグループに参加するためには、コーディネーターに招待される必要があります
-    description: 情報
     discussions: ディスカッション
     invite_people: メンバーを招待する
     options_label: オプション

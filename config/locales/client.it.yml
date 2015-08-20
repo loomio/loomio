@@ -3,6 +3,7 @@ it:
     time:
       am: am
       pm: pm
+    closing_in: "chiude in {{time}}"
     volume: Volume
     notification_volume: Volume delle notifiche
     group: Gruppo
@@ -79,6 +80,7 @@ it:
       destroyed: Commento cancellato.
     edit_comment: Modifica commento
     delete_comment: Cancella il commento
+    cancel_reply: Annulla risposta
     confirm_delete_message: Sei sicuro che vuoi cancellare questo commento?
     confirm_delete: "Si, sono sicuro/a."
     in_reply_to: "Rispondendo a <strong>{{name}}</strong>:"
@@ -94,7 +96,6 @@ it:
     start_thread: Lancia una nuova discussione
     notifications: Pannello delle notifiche
     user_options:
-      label: menu utente
       contact_us: Contattaci
       new_thread: Nuova discussione
       new_group: Nuovo gruppo
@@ -230,6 +231,9 @@ it:
     group_payment_reminder: "In 30 giorni, quando avrai verificato come Loomio può migliorare l'efficacia del tuo gruppo, ti chiederemo di scegliere il  <a href='#'>payment plan</a> migliore per te."
     name_label: Nome del gruppo
     submit: Crea un gruppo
+    messages:
+      success: Gruppo creato
+      success_when_subgroup: Sottogruppo creato.
   join_group_button:
     join_group: Unisciti al gruppo
     ask_to_join_group: Chiedi di unirti al gruppo
@@ -260,13 +264,13 @@ it:
         parent_members: Il gruppo è ora visibile solo ai membri della tua organizzazione.
         public: "Ora il gruppo è pubblico "
       leave_group_success: Hai lasciato il gruppo.
+      archive_group_success: Gruppo disattivato
     group_logo: Logo del gruppo
-    header:
-      aria_label: Intestazione della pagina del gruppo
-    description: Descrizione
+    description: Descrizione del gruppo
     description_placeholder: Usa questo spazio per descrivere lo scopo del gruppo in modo che i suoi membri sappiano il motivo per cui sono qui.
     discussions: Discussioni
     discussions_placeholder: Il thread (discussione) è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
+    members: Membri
     members_placeholder: "Sei da solo qui: invita altre persone!"
     subgroups: Sottogruppi
     subgroups_placeholder: I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.
@@ -319,13 +323,13 @@ it:
     messages:
       success: Gruppo aggiornato
   membership_requests_card:
-    heading: "({{count}}) Richieste di partecipazione"
-    manage_requests: Gestisci le richieste
+    manage_requests: "Gestisci  ({{count}}) richieste"
   membership_requests_page:
     heading: Richieste di partecipazione
     approve: Approva
     ignore: Ignora
-    no_pending_requests: Non ci sono richieste di partecipazione inevase.
+    no_pending_requests: Attualmente per questo gruppo non sono presenti richieste di adesione in sospeso.
+    previous_request_response: "{{response}} da {{responder}} "
     messages:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
@@ -373,7 +377,13 @@ it:
       question: "Sei sicuro/a di volere rimuovere {{name}} dal gruppo {{group}}?"
       submit: Rimuovi
   pending_invitations_card:
+    heading: Inviti in sospeso
     email: Email
+    invitation_link: Link di invito
+  cancel_invitation_form:
+    heading: Revoca invito
+    question: Sicuro/a di volere revocare questo invito?
+    submit: Revoca invito
   profile_page:
     messages:
       updated: Profilo aggiornato
