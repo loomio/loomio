@@ -43,6 +43,14 @@ class Queries::VisibleDiscussions < Delegator
     end
   end
 
+  def join_to_starred_motions
+    unless @joined_to_starred_motions
+      join_to_discussion_readers
+      @relation = @relation.joins("LEFT OUTER JOIN motions smo ON smo.discussion_id = discussions.id AND smo.closed_at IS NULL AND dv.starred = true")
+      @joined_to_starred_motions = true
+    end
+  end
+
   def with_active_motions
     join_to_motions
     @relation = @relation.where('mo.id IS NOT NULL')
@@ -69,7 +77,7 @@ class Queries::VisibleDiscussions < Delegator
 
   def muted
     join_to_discussion_readers && join_to_memberships
-    @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ', 
+    @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ',
                                 {mute: DiscussionReader.volumes[:mute]})
     self
   end
@@ -86,10 +94,9 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
-  def sorted_by_latest_motions
-    @relation = @relation.joined_to_current_motion
-                         .preload(:current_motion, {group: :parent})
-                         .order('motions.closing_at ASC, last_activity_at DESC')
+  def sorted_by_importance
+    join_to_starred_motions && join_to_motions
+    @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred DESC NULLS LAST, last_activity_at DESC')
     self
   end
 

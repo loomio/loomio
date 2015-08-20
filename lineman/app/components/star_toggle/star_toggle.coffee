@@ -3,5 +3,7 @@ angular.module('loomioApp').directive 'starToggle', ->
   restrict: 'E'
   templateUrl: 'generated/components/star_toggle/star_toggle.html'
   replace: true
-  controller: ($scope) ->
-    
+  controller: ($scope, $rootScope) ->
+    $scope.toggle = ->
+      $scope.thread.reader().toggleStar()
+      $rootScope.$broadcast 'starToggled', $scope.thread

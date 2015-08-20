@@ -35,4 +35,5 @@ class DiscussionSerializer < ActiveModel::Serializer
     keys.delete(:active_proposal) unless object.current_motion.present?
     keys
   end
+
 end

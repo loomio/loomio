@@ -4,6 +4,7 @@ describe 'LmoUrlService', ->
   subgroup = null
   proposal = null
   comment = null
+  thread = null
 
   describe 'group', ->
 
@@ -20,16 +21,16 @@ describe 'LmoUrlService', ->
 
     describe 'route', ->
       it 'can accept a model', ->
-        expect(@subject.route({model: @group})).toBe("/g/#{@group.key}/group-name")
-        expect(@subject.route({model: @thread})).toBe("/d/#{@thread.key}/discussion-title")
+        expect(service.route({model: group})).toBe("/g/#{group.key}/group-name")
+        expect(service.route({model: thread})).toBe("/d/#{thread.key}/discussion-title")
 
       it 'can accept a route', ->
-        expect(@subject.route({action: '/dashboard'})).toBe("/dashboard")
-        expect(@subject.route({action: 'dashboard'})).toBe("/dashboard")
+        expect(service.route({action: '/dashboard'})).toBe("/dashboard")
+        expect(service.route({action: 'dashboard'})).toBe("/dashboard")
 
       it 'can accept a model and a route', ->
-        expect(@subject.route({model: @group, action: 'memberships'})).toBe("/g/#{@group.key}/memberships")
-        expect(@subject.route({model: @group, action: '/memberships'})).toBe("/g/#{@group.key}/memberships")
+        expect(service.route({model: group, action: 'memberships'})).toBe("/g/#{group.key}/memberships")
+        expect(service.route({model: group, action: '/memberships'})).toBe("/g/#{group.key}/memberships")
 
     describe 'group', ->
       it 'gives a group path', ->
@@ -51,11 +52,11 @@ describe 'LmoUrlService', ->
 
     describe 'proposal', ->
       it 'gives a proposal path', ->
-        expect(service.proposal(@proposal)).toBe("/m/#{@proposal.key}/proposal-name")
+        expect(service.proposal(proposal)).toBe("/m/#{proposal.key}/proposal-name")
 
       it 'can pass query parameters', ->
-        expect(service.proposal(@proposal, { position: 'yes', utm_medium: 'medium'})).toBe("/m/#{@proposal.key}/proposal-name?position=yes&utm_medium=medium")
+        expect(service.proposal(proposal, { position: 'yes', utm_medium: 'medium'})).toBe("/m/#{proposal.key}/proposal-name?position=yes&utm_medium=medium")
 
     describe 'comment', ->
       it 'gives a comment path', ->
-        expect(service.comment(@comment)).toBe("/d/#{@thread.key}/discussion-title?comment=#{@comment.key}")
+        expect(service.comment(comment)).toBe("/d/#{thread.key}/discussion-title?comment=#{comment.key}")

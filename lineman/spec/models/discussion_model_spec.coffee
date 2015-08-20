@@ -22,7 +22,7 @@ describe 'DiscussionModel', ->
 
     event = recordStore.events.importJSON(id: 1, sequence_id: 1, discussion_id: 1)
     otherEvent = recordStore.events.importJSON(id: 2, sequence_id: 2, discussion_id: 2)
-    discussionReader = recordStore.discussionReaders.importJSON(discussion_id: 1)
+    discussionReader = recordStore.discussionReaders.importJSON(id: 1, discussion_id: 1)
 
   describe 'author()', ->
     it 'returns the discussion author', ->
@@ -72,8 +72,8 @@ describe 'DiscussionModel', ->
 
     it 'does not create a new entry in the record store', ->
       discussion.clone()
-      expect(recordStore.discussions.where(id: discussion.id).length).toBe(1)
-      expect(recordStore.discussions.where(title: discussion.title).length).toBe(1)
+      expect(recordStore.discussions.find(id: discussion.id).length).toBe(1)
+      expect(recordStore.discussions.find(title: discussion.title).length).toBe(1)
 
     it 'inherits key and id from the original record', ->
       clone = discussion.clone()

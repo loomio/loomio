@@ -3,3 +3,11 @@ angular.module('loomioApp').directive 'threadPreviewCollection', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_preview_collection/thread_preview_collection.html'
   replace: true
+  controller: ($scope) ->
+
+      $scope.importance = (thread) ->
+        multiplier = if thread.hasActiveProposal() and thread.isStarred() then -100000
+        else if         thread.hasActiveProposal() then -10000
+        else if         thread.isStarred() then -1000
+        else            -1
+        multiplier * thread.lastActivityAt

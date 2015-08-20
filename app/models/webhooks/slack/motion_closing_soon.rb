@@ -5,7 +5,7 @@ class Webhooks::Slack::MotionClosingSoon < Webhooks::Slack::Base
   end
 
   def attachment_title
-    eventable.name
+    proposal_link(eventable)
   end
 
   def attachment_text

@@ -563,6 +563,8 @@ en:
       you_voted: 'You voted: {{position}}.'
     threads_from:
       group: 'Threads from'
+      proposals: 'Proposals'
+      starred: 'Starred'
       today: 'Today'
       yesterday: 'Yesterday'
       thisweek: 'This week'

@@ -23,6 +23,7 @@ describe 'DiscussionReaderModel', ->
       expect(reader.lastReadSequenceId).toBe(0)
 
     it "it does not lower the last read sequenceId", ->
-      reader.lastReadSequenceId = 1
+      reader.lastReadAt = 1
+      reader.lastReadSequenceId = 2
       reader.markAsRead(0)
-      expect(reader.lastReadSequenceId).toBe(1)
+      expect(reader.lastReadSequenceId).toBe(2)

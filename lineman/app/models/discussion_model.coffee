@@ -29,7 +29,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
       @belongsTo 'group'
       @belongsTo 'author', from: 'users'
 
-      @hasMany 'comments', dynamicView: false
+      @hasMany 'comments', sortBy: 'createdAt'
       @hasMany 'events', sortBy: 'sequenceId'
       @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
       # not ready @hasOne 'reader', from: 'discussionReaders', with: 'id'
@@ -93,6 +93,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
 
     isStarred: ->
       @reader().starred
+
+    isImportant: ->
+      @isStarred() or @hasActiveProposal()
 
     unreadItemsCount: ->
       (@itemsCount - @reader().readItemsCount)

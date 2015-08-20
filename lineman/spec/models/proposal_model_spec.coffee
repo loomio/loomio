@@ -21,9 +21,9 @@ describe 'ProposalModel', ->
     voter1 = recordStore.users.importJSON(id: 1, name: 'sam')
     voter2 = recordStore.users.importJSON(id: 2, name: 'han')
     undecidedMember =  recordStore.users.importJSON(id: 3, name: 'jam')
-    recordStore.memberships.importJSON(userId: 1, groupId: 1)
-    recordStore.memberships.importJSON(userId: 2, groupId: 1)
-    recordStore.memberships.importJSON(userId: 3, groupId: 1)
+    recordStore.memberships.import(id: 1, userId: 1, groupId: 1)
+    recordStore.memberships.import(id: 2, userId: 2, groupId: 1)
+    recordStore.memberships.import(id: 3, userId: 3, groupId: 1)
     vote1 = recordStore.votes.importJSON(id: 1, proposal_id: proposal.id, author_id: voter1.id)
     vote2 = recordStore.votes.importJSON(id: 2, proposal_id: proposal.id, author_id: voter1.id)
 

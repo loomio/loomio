@@ -1,24 +1,29 @@
-angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope, Records, CurrentUser, LoadingService, ThreadQueryService) ->
+angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope, Records, CurrentUser, AppConfig, LoadingService, ThreadQueryService) ->
   $rootScope.$broadcast('currentComponent', {page: 'inboxPage'})
   $rootScope.$broadcast('setTitle', 'Inbox')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  @threadLimit = 5
+  @threadLimit = 50
+  @views =
+    groups: {}
+
+  @loading = -> !(AppConfig.inboxLoaded and AppConfig.membershipsLoaded)
 
   @groups = ->
     CurrentUser.parentGroups()
 
   @init = =>
+    return if @loading()
     _.each @groups(), (group) =>
-      @["group#{group.id}"] = ThreadQueryService.groupQuery(group)
-    @baseQuery = ThreadQueryService.filterQuery('show_unread')
-  @init()
+      @views.groups[group.key] = ThreadQueryService.groupQuery(group)
   $scope.$on 'currentUserMembershipsLoaded', @init
+  $scope.$on 'currentUserInboxLoaded', @init
+  @init()
 
-  @queryFor = (group) ->
-    @["group#{group.id}"]
+  @hasThreads = ->
+    ThreadQueryService.filterQuery('show_unread', queryType: 'inbox').any()
 
   @moreForThisGroup = (group) ->
-    @queryFor(group).length() > @threadLimit
+    @views.groups[group.key].length() > @threadLimit
 
   return

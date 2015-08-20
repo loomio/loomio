@@ -1,18 +1,12 @@
 require 'rails_helper'
 describe API::DiscussionsController do
 
+  let(:subgroup) { create :group, parent: group }
+  let(:another_group) { create :group }
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:group) { create :group }
-  let(:subgroup) { create :group, parent: group }
-  let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:participating_discussion) { create :discussion, group: group }
-  let(:subgroup_discussion) { create :discussion, group: subgroup }
-  let(:muted_discussion) { create :discussion, group: group }
-  let(:starred_discussion) { create :discussion, group: group }
-  let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
-  let(:motionless_discussion) { create :discussion, group: group }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
@@ -24,76 +18,125 @@ describe API::DiscussionsController do
 
   before do
     group.add_admin! user
-    another_group.add_member! user
-    subgroup.add_member! user
     sign_in user
-    discussion.reload
-    DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
-    DiscussionReader.for(user: user, discussion: starred_discussion).update starred: true
   end
 
+
   describe 'dashboard' do
-    it 'does not return muted discussions by default' do
-      muted_discussion.reload
-      get :dashboard
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to_not include muted_discussion.id
+
+    describe 'filtering' do
+      let(:participating_discussion) { create :discussion, group: group }
+      let(:subgroup_discussion) { create :discussion, group: subgroup }
+      let(:muted_discussion) { create :discussion, group: group }
+      let(:starred_discussion) { create :discussion, group: group }
+      let(:old_discussion) { create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago }
+      let(:motionless_discussion) { create :discussion, group: group }
+
+      before do
+        another_group.add_member! user
+        subgroup.add_member! user
+        discussion.reload
+        DiscussionReader.for(user: user, discussion: muted_discussion).set_volume! 'mute'
+        DiscussionReader.for(user: user, discussion: starred_discussion).update starred: true
+      end
+
+      it 'does not return muted discussions by default' do
+        muted_discussion.reload
+        get :dashboard
+        json = JSON.parse(response.body)
+        ids = json['discussions'].map { |v| v['id'] }
+        expect(ids).to_not include muted_discussion.id
+      end
+
+      it 'can filter by participating' do
+        CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
+        get :dashboard, filter: :show_participating
+        json = JSON.parse(response.body)
+        ids = json['discussions'].map { |v| v['id'] }
+        expect(ids).to include participating_discussion.id
+        expect(ids).to_not include discussion.id
+      end
+
+      it 'can filter by muted' do
+        muted_discussion.reload
+        get :dashboard, filter: :show_muted
+        json = JSON.parse(response.body)
+        ids = json['discussions'].map { |v| v['id'] }
+        expect(ids).to include muted_discussion.id
+        expect(ids).to_not include discussion.id
+      end
+
+      it 'can filter since a certain date' do
+        old_discussion.reload
+        get :dashboard, since: 3.months.ago
+        json = JSON.parse(response.body)
+        ids = json['discussions'].map { |v| v['id'] }
+        expect(ids).to include discussion.id
+        expect(ids).to_not include old_discussion.id
+      end
+
+      it 'can filter until a certain date' do
+        old_discussion.reload
+        get :dashboard, until: 3.months.ago
+        json = JSON.parse(response.body)
+        ids = json['discussions'].map { |v| v['id'] }
+        expect(ids).to_not include discussion.id
+        expect(ids).to include old_discussion.id
+      end
+
+      it 'can limit collection size' do
+        get :dashboard, limit: 2
+        json = JSON.parse(response.body)
+        expect(json['discussions'].count).to eq 2
+      end
     end
 
-    it 'can filter by active proposals' do
-      proposal.reload
-      motionless_discussion.reload
-      get :dashboard, filter: :show_proposals
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to include discussion.id
-      expect(ids).to_not include motionless_discussion.id
-    end
+    describe 'sorting' do
+      let(:starred_with_proposal) { create :discussion, group: group, title: 'starred_with_proposal' }
+      let(:with_proposal) { create :discussion, group: group, title: 'with_proposal' }
+      let(:starred) { create :discussion, group: group, title: 'starred', last_activity_at: 20.days.ago }
+      let(:recent) { create :discussion, group: group, last_activity_at: 1.day.ago, title: 'recent' }
+      let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
 
-    it 'can filter by participating' do
-      CommentService.create actor: user, comment: build(:comment, discussion: participating_discussion)
-      get :dashboard, filter: :show_participating
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to include participating_discussion.id
-      expect(ids).to_not include discussion.id  
-    end
+      before do
+        recent; not_recent
+      end
 
-    it 'can filter by muted' do
-      muted_discussion.reload
-      get :dashboard, filter: :show_muted
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to include muted_discussion.id
-      expect(ids).to_not include discussion.id
-    end
+      it 'sorts by starred w/ proposals first' do
+        DiscussionReader.for(user: user, discussion: starred_with_proposal).update starred: true
+        DiscussionReader.for(user: user, discussion: starred).update starred: true
+        starred_with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
+        with_proposal.motions         << create(:motion, closing_at: 2.days.from_now)
+        get :dashboard
 
-    it 'can filter by starred' do
-      starred_discussion.reload
-      get :dashboard, filter: :show_starred
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to include starred_discussion.id
-      expect(ids).to_not include discussion.id
-    end
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['id']).to eq starred_with_proposal.id
+      end
 
-    it 'can filter since a certain date' do
-      old_discussion.reload
-      get :dashboard, since: 3.months.ago
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to include discussion.id
-      expect(ids).to_not include old_discussion.id
-    end
+      it 'sorts by proposals second' do
+        DiscussionReader.for(user: user, discussion: starred).update starred: true
+        with_proposal.motions << create(:motion, closing_at: 2.days.from_now)
+        get :dashboard
 
-    it 'can filter until a certain date' do
-      old_discussion.reload
-      get :dashboard, until: 3.months.ago
-      json = JSON.parse(response.body)
-      ids = json['discussions'].map { |v| v['id'] }
-      expect(ids).to_not include discussion.id
-      expect(ids).to include old_discussion.id
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['id']).to eq with_proposal.id
+      end
+
+      it 'sorts by starred third' do
+        DiscussionReader.for(user: user, discussion: starred).update starred: true
+        get :dashboard
+
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['id']).to eq starred.id
+      end
+
+      it 'sorts by recent activity fourth' do
+        not_recent.update last_activity_at: 10.days.ago
+        get :dashboard
+
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['id']).to eq recent.id
+      end
     end
   end
 
