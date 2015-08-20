@@ -100,6 +100,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.submit = ->
       $scope.isDisabled = true
+      console.log invitationsParams()
       Records.invitations.create(invitationsParams()).then ->
         FlashService.success $scope.successMessage(), members: $scope.memberCount(), emails: $scope.emailCount()
         $scope.$close()

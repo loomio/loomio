@@ -6,15 +6,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
     @indices: ['groupId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.discussion
 
-    # works out if new records are private
-    privateDefaultValue: =>
-      if @group()
-        switch @group().discussionPrivacyOptions
-          when 'private_only' then true
-          when 'public_or_private' then undefined
-          when 'public_only' then false
-      else
-        undefined
+    afterConstruction: ->
+      @private = @privateDefaultValue()
 
     defaultValues: =>
       private: null
@@ -25,14 +18,21 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
       title: ''
       description: ''
 
-    relationships: ->
-      @belongsTo 'group'
-      @belongsTo 'author', from: 'users'
+    privateDefaultValue: =>
+      if @group()
+        switch @group().discussionPrivacyOptions
+          when 'private_only' then true
+          when 'public_or_private' then true
+          when 'public_only' then false
+      else
+        null
 
+    relationships: ->
       @hasMany 'comments', sortBy: 'createdAt'
       @hasMany 'events', sortBy: 'sequenceId'
       @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
-      # not ready @hasOne 'reader', from: 'discussionReaders', with: 'id'
+      @belongsTo 'group'
+      @belongsTo 'author', from: 'users'
 
     translationOptions: ->
       title:     @title
@@ -74,7 +74,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
       proposal.lastVoteAt if proposal?
 
     reader: ->
-      @recordStore.discussionReaders.find(@id)
+      @recordStore.discussionReaders.import(id: @id)
 
     readerNotLoaded: ->
       !@reader().discussionId?

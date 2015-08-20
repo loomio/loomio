@@ -40,7 +40,7 @@
           %label.label-with-details{for: 'private-option'}
             %i.fa.fa-lock>
             %span.label-with-details-label{translate: 'common.privacy.private'}
-            %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: '{{discussion_form.privacy.will_be_private_to_parent_group}}', translate-value-group-name: 'discussion.groupName()', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}>
+            %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}>
             %span.label-with-details-details{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}>
 
       .privacy-notice{ng_hide: 'showPrivacyForm()'}

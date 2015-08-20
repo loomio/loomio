@@ -19,6 +19,6 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
       _.sortBy groups, (g) -> g.fullName()
 
     $scope.showPrivacyForm = ->
-      $scope.discussion.groupId && $scope.discussion.group().privacy == 'public_or_private'
+      $scope.discussion.group()? and $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
 
     KeyEventService.submitOnEnter $scope

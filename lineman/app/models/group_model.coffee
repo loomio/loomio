@@ -125,6 +125,5 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       else
         '/img/default-cover-photo.png'
 
-    archive: ->
-      # is this broken (group null right?)
-      @restfulClient.postMember(group.key, 'archive')
+    archive: =>
+      @remote.patchMember(@key, 'archive')
