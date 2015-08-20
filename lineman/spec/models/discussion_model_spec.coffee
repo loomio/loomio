@@ -1,6 +1,5 @@
 describe 'DiscussionModel', ->
   discussion = null
-  discussionReader = null
   author = null
   recordStore = null
   proposal = null
@@ -18,11 +17,10 @@ describe 'DiscussionModel', ->
     group = recordStore.groups.import(id: 1, name: 'group')
     author = recordStore.users.import(id: 1, name: 'Sam')
 
-    discussion = recordStore.discussions.import(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'Hi', created_at: "2015-01-01T00:00:00Z" )
+    discussion = recordStore.discussions.import(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'Hi', created_at: "2015-01-01T00:00:00Z", last_read_sequence_id: -1)
 
     event = recordStore.events.import(id: 1, sequence_id: 1, discussion_id: 1)
     otherEvent = recordStore.events.import(id: 2, sequence_id: 2, discussion_id: 2)
-    discussionReader = recordStore.discussionReaders.import(discussion_id: 1)
 
   describe 'author()', ->
     it 'returns the discussion author', ->
@@ -54,6 +52,18 @@ describe 'DiscussionModel', ->
 
     it 'does not return events for another discussion', ->
       expect(discussion.events()).not.toContain(otherEvent)
+
+  describe 'markItemAsRead', ->
+
+    it "it sets lastReadSequenceId to the passed value", ->
+      expect(discussion.lastReadSequenceId).toBe(-1)
+      discussion.markAsRead(0)
+      expect(discussion.lastReadSequenceId).toBe(0)
+
+    it "it does not lower the last read sequenceId", ->
+      discussion.lastReadSequenceId = 1
+      discussion.markAsRead(0)
+      expect(discussion.lastReadSequenceId).toBe(1)
 
   describe 'clone()', ->
     beforeEach ->
