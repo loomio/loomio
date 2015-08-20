@@ -1,10 +1,6 @@
 class API::GroupsController < API::RestfulController
   load_and_authorize_resource only: :show, find_by: :key
 
-  def show
-    respond_with_resource
-  end
-
   def archive
     load_resource
     GroupService.archive(group: @group, actor: current_user)
