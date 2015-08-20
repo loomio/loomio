@@ -1,30 +1,36 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :set_volume]
+  load_and_authorize_resource only: [:show, :mark_as_read]
   load_resource only: [:create, :update]
 
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
-    respond_with_collection serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+    respond_with_collection
   end
 
   def inbox
     instantiate_collection { |collection| collection_for_inbox collection }
-    respond_with_collection serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+    respond_with_collection
   end
 
-  def index
-    load_and_authorize :group if params[:group_id] || params[:group_key]
-    instantiate_collection
-    respond_with_collection serializer: DiscussionWrapperSerializer, root: 'discussion_wrappers'
+  def mark_as_read
+    service.mark_as_read discussion: resource, params: params, actor: current_user
+    respond_with_resource
   end
 
   private
+
+  def respond_with_collection(**args)
+    args[:scope] ||= {}
+    args[:scope][:reader_cache] = DiscussionReaderCache.new(user: current_user, discussions: collection)
+    super args
+  end
 
   def visible_records
     Queries::VisibleDiscussions.new(user: current_user, groups: visible_groups)
   end
 
   def visible_groups
+    load_and_authorize :group if params[:group_id] || params[:group_key]
     Array(@group).presence || current_user.groups
   end
 
@@ -40,7 +46,4 @@ class API::DiscussionsController < API::RestfulController
     collection.not_muted.unread.sorted_by_latest_activity
   end
 
-  def collection=(value)
-    @discussions = DiscussionWrapper.new_collection user: current_user, discussions: value
-  end
 end

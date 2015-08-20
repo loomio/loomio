@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
     group = self.discussion.group
     self.discussion.webhooks.each { |webhook| WebhookService.publish! webhook: webhook, event: self }
     group.webhooks.each           { |webhook| WebhookService.publish! webhook: webhook, event: self }
-    group.parent.webhooks.each    { |webhook| WebhookService.publish! webhook: webhook, event: self } if group.is_subgroup?
+    group.parent.webhooks.each    { |webhook| WebhookService.publish! webhook: webhook, event: self } if group.is_subgroup? && group.is_visible_to_parent_members
   end
   handle_asynchronously :notify_webhooks!
 

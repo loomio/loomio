@@ -69,47 +69,29 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       proposal = @activeProposal()
       proposal.lastVoteAt if proposal?
 
-    reader: ->
-      @recordStore.discussionReaders.import(id: @id)
-
-    readerNotLoaded: ->
-      !@reader().discussionId?
-
     isUnread: ->
-      if @reader().lastReadAt?
+      if @lastReadAt?
         @unreadActivityCount() > 0
       else
         true
 
-    isMuted: ->
-      @reader().volume == 'mute'
-
-    isParticipating: ->
-      @reader().participating
-
-    isStarred: ->
-      @reader().starred
-
     isImportant: ->
-      @isStarred() or @hasActiveProposal()
+      @starred or @hasActiveProposal()
 
     unreadItemsCount: ->
-      (@itemsCount - @reader().readItemsCount)
+      @itemsCount - @readItemsCount
 
     unreadActivityCount: ->
-      @salientItemsCount - @reader().readSalientItemsCount
+      @salientItemsCount - @readSalientItemsCount
 
     unreadCommentsCount: ->
-      @commentsCount - @reader().readCommentsCount
+      @commentsCount - @readCommentsCount
 
     lastInboxActivity: ->
       @activeProposalClosingAt() or @lastActivityAt
 
     unreadPosition: ->
-      @reader().lastReadSequenceId + 1
-
-    markAsRead: (sequenceId) ->
-      @reader().markAsRead(sequenceId)
+      @lastReadSequenceId + 1
 
     minLoadedSequenceId: ->
       item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
@@ -118,3 +100,19 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
     maxLoadedSequenceId: ->
       item = _.max @events(), (event) -> event.sequenceId or 0
       item.sequenceId
+
+    changeVolume: (volume) ->
+      @volume = volume
+      @save()
+
+    toggleStar: ->
+      @starred = !@starred
+      @save()
+
+    markAsRead: (sequenceId) ->
+      if isNaN(sequenceId)
+        sequenceId = @lastSequenceId
+
+      if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
+        @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
+        @lastReadSequenceId = sequenceId

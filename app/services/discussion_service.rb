@@ -31,8 +31,14 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
+    reader = DiscussionReader.for(user: actor, discussion: discussion)
+
     [:private, :title, :description, :uses_markdown].each do |attr|
       discussion.send("#{attr}=", params[attr]) if params.has_key?(attr)
+    end
+
+    [:starred, :volume].each do |attr|
+      reader.send("#{attr}=", params[attr]) if params.has_key?(attr)
     end
 
     if actor.ability.can? :update, discussion.group
@@ -42,6 +48,7 @@ class DiscussionService
     return false unless discussion.valid?
 
     update_search_vector = discussion.title_changed? || discussion.description_changed?
+    set_volume_as_required = params[:volume].blank?
 
     event = true
     if discussion.title_changed?
@@ -53,9 +60,17 @@ class DiscussionService
     end
 
     discussion.save!
+    reader.save!
 
     ThreadSearchService.index! discussion.id if update_search_vector
-    DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
+    reader.set_volume_as_required! if set_volume_as_required
     event
+  end
+
+  def self.mark_as_read(discussion:, params:, actor:)
+    actor.ability.authorize! :show, discussion
+
+    target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]) || discussion
+    DiscussionReader.for(user: actor, discussion: resource).viewed! target_to_read.created_at
   end
 end

@@ -38,7 +38,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
         @proposalToFocus = @discussion.activeProposal()
 
-      @sequenceIdToFocus = @discussion.reader().lastReadSequenceId # or location hash when we put it back in.
+      @sequenceIdToFocus = @discussion.lastReadSequenceId # or location hash when we put it back in.
 
       $rootScope.$broadcast 'currentComponent', { page: 'threadPage'}
       $rootScope.$broadcast 'viewingThread', @discussion

@@ -18,14 +18,14 @@ describe 'Dashboard Page', ->
     expect(dashboardHelper.anyThreads()).not.toContain('Muted discussion')
     expect(dashboardHelper.anyThreads()).not.toContain('Old discussion')
 
-  xit 'displays a view of participating threads', ->
+  it 'displays a view of participating threads', ->
     dashboardHelper.openFilterDropdown()
     dashboardHelper.visitParticipatingView()
     expect(dashboardHelper.anyThreads()).not.toContain('Starred proposal discussion')
     expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
     expect(dashboardHelper.anyThreads()).toContain('Participating discussion')
 
-  xit 'displays a view of muted threads by group', ->
+  it 'displays a view of muted threads by group', ->
     dashboardHelper.openFilterDropdown()
     dashboardHelper.visitMutedView()
     browser.driver.sleep(10000)
