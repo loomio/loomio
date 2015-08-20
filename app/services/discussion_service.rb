@@ -48,6 +48,7 @@ class DiscussionService
     return false unless discussion.valid?
 
     update_search_vector = discussion.title_changed? || discussion.description_changed?
+    set_volume_as_required = params[:volume].blank?
 
     event = true
     if discussion.title_changed?
@@ -62,7 +63,7 @@ class DiscussionService
     reader.save!
 
     ThreadSearchService.index! discussion.id if update_search_vector
-    DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
+    DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required! if set_volume_as_required
     event
   end
 end
