@@ -1,4 +1,4 @@
-class Popolo::DiscussionSerializer < ActiveModel::Serializer
+class Public::DiscussionSerializer < ActiveModel::Serializer
   attributes :key,
              :group_key,
              :title,

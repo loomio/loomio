@@ -45,7 +45,7 @@ class API::RestfulController < API::BaseController
     if current_user.present?
       "#{resource_name.classify}Serializer"
     else
-      "Popolo::#{resource_name.classify}Serializer"
+      "Public::#{resource_name.classify}Serializer"
     end.constantize
   end
 

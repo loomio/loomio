@@ -1,4 +1,4 @@
-class Popolo::GroupSerializer < ActiveModel::Serializer
+class Public::GroupSerializer < ActiveModel::Serializer
 
   attributes :organisation_id,
              :key,
