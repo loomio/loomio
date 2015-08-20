@@ -46,7 +46,8 @@
         .row#keep-up-to-date
           .col-md-8
             %h2.lmo-h2{translate: "help_page.keep_up_to_date"}
-              %a{href: '/email', translate: "help_page.keep_up_to_date_html"}
+              %a{lmo-href: '/email'}
+                %span{translate: "help_page.keep_up_to_date_html"}
         .row#images-and-text-formatting
           .col-md-8
             %h2.lmo-h2{translate: "help_page.images_and_text_formatting"}
@@ -88,7 +89,7 @@
           %h1.lmo-h1{translate: "help_page.get_in_touch"}
         .row
           .col-md-8
-            %a{href: '/contact'}
+            %a{lmo-href: '/contact'}
               %p.extra-margin{translate: "help_page.get_in_touch_description_html"}
         .row#join-the-community
           %h1.lmo-h1{translate: "help_page.join_the_community"}

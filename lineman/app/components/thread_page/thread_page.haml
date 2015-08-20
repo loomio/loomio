@@ -6,10 +6,10 @@
       .media-left.thread-group__icon{aria-hidden: 'true'}
         %img.thread-group-logo{ng-src: "{{threadPage.group.logoUrl()}}"}
       .media-body.thread-group__name
-        %a{ng_show: 'threadPage.group.parentId', href: '/g/{{threadPage.group.parent().key}}'}
+        %a{ng_show: 'threadPage.group.parentId', lmo-href-for: 'threadPage.group.parent()'}
           {{threadPage.group.parentName()}}
         %span{ng_show: 'threadPage.group.parentId', aria-label: '-'}> >
-        %a{href: '/g/{{threadPage.group.key}}'}
+        %a{lmo-href-for: 'threadPage.group'}
           {{threadPage.group.name}}
 
     %section.thread-context{aria-labelledby: "thread-context__heading"}

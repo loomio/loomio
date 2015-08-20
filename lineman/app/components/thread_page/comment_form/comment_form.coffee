@@ -25,10 +25,11 @@ angular.module('loomioApp').directive 'commentForm', ->
       Records.attachments.destroy(attachment.id)
 
     $scope.updateMentionables = (fragment) ->
-      regex = new RegExp(fragment, 'i')
-      $scope.mentionables = _.filter group.members(), (member) ->
+      regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
+      allMembers = _.filter group.members(), (member) ->
         return false if member.id == CurrentUser.id
-        (member.name.test(regex) or member.username.test(regex))
+        (regex.test(member.name) or regex.test(member.username))
+      $scope.mentionables = allMembers.slice(0, 5)
 
     $scope.fetchByNameFragment = (fragment) ->
       $scope.updateMentionables(fragment)

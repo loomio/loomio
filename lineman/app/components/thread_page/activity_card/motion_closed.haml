@@ -1,0 +1,12 @@
+%article.thread-item{ng-controller: 'MotionClosedItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
+  .thread-item__header.media
+    .media-left
+      .thread-item__proposal-icon
+    .media-body
+      %h3.thread-item__header{id: 'proposal-{{proposal.id}}', translate: "proposal_closed_item.proposal_closed"}
+  .thread-item__body
+    {{proposal.name}}
+
+  .thread-item__footer
+    .thread-item__actions
+      %timeago{timestamp: 'proposal.closedAt'}

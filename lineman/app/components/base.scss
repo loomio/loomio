@@ -39,4 +39,8 @@ strong{
   &:hover {
     @include box_shadow(2);
   }
+
+  &:focus {
+    outline-style: none;
+  }
 }

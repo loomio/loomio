@@ -11,9 +11,8 @@
       %i.fa.fa-times>
       %span{translate: 'volume_levels.mute'}
 
-  %a.thread-preview__link{href: '/d/{{ thread.key }}'}
+  %a.thread-preview__link{lmo-href-for: 'thread'}
     .thread-preview__icon
-      -#.thread-preview__avatar{}
       %user_avatar{ng-if: '!thread.activeProposal()', user: 'thread.author()', size: 'medium'}
       .thread-preview__pie-container{ng-if: 'thread.activeProposal()'}
         %pie_chart.thread-preview__pie-canvas{votes: 'thread.activeProposal().voteCounts', ng-if: 'thread.activeProposal()'}

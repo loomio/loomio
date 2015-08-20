@@ -5,5 +5,5 @@ angular.module('loomioApp').factory 'MembershipRequestForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.membershipRequest,
       flashSuccess: 'membership_request_form.messages.membership_requested'
-      flashSuccessOptions:
+      flashOptions:
         group: group.fullName()

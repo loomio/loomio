@@ -28,7 +28,7 @@ describe 'CommentModel', ->
 
     describe 'comment is not a reply', ->
       it 'returns null', ->
-        expect(comment.parent()).toBe(null)
+        expect(comment.parent()).toBe(undefined)
 
   describe 'author()', ->
     it 'returns the comment author', ->
