@@ -63,7 +63,7 @@ class DiscussionService
     reader.save!
 
     ThreadSearchService.index! discussion.id if update_search_vector
-    DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required! if set_volume_as_required
+    reader.set_volume_as_required! if set_volume_as_required
     event
   end
 
