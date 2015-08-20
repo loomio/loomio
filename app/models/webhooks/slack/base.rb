@@ -11,7 +11,7 @@ Webhooks::Slack::Base = Struct.new(:event) do
   end
 
   def text
-    I18n.t :"webhooks.slack.#{event.kind}", author: author.name, name: eventable_name
+    I18n.t :"webhooks.slack.#{event.kind}", author: author.name, name: proposal_link(eventable)
   end
 
   def attachments
@@ -27,17 +27,13 @@ Webhooks::Slack::Base = Struct.new(:event) do
 
   private
 
-  def eventable_name
-    eventable.discussion.title
-  end
-
   def motion_vote_field
     {
       title: "Vote on this proposal",
-      value: "#{vote_on_this("yes")} · " +
-             "#{vote_on_this("abstain")} · " +
-             "#{vote_on_this("no")} · " +
-             "#{vote_on_this("block")}"
+      value: "#{proposal_link(eventable, "yes")} · " +
+             "#{proposal_link(eventable, "abstain")} · " +
+             "#{proposal_link(eventable, "no")} · " +
+             "#{proposal_link(eventable, "block")}"
     }
   end
 
@@ -49,8 +45,8 @@ Webhooks::Slack::Base = Struct.new(:event) do
     { value: discussion_link(I18n.t(:"webhooks.slack.view_it_on_loomio"), params) }
   end
 
-  def vote_on_this(position)
-    discussion_link position, { proposal: eventable.key, position: position }
+  def proposal_link(proposal, position = nil)
+    discussion_link position || proposal.name, { proposal: proposal.key, position: position }
   end
 
   def discussion_link(text = nil, params = {})

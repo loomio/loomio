@@ -25,4 +25,40 @@ describe Events::NewMotion do
       expect(Events::NewMotion.publish!(motion)).to eq event
     end
   end
+
+  describe 'notify_webhooks!' do
+
+    let(:motion) { build(:motion) }
+
+    before do
+      @event = Events::NewMotion.publish! motion
+    end
+
+    it 'calls publish on the eventable' do
+      webhook = create :webhook, hookable: @event.eventable.discussion
+      expect(WebhookService).to receive(:publish!).with({ event: @event, webhook: webhook })
+      @event.reload.send(:notify_webhooks!)
+    end
+
+    it 'calls publish with the eventable''s group' do
+      webhook = create :webhook, hookable: @event.eventable.group
+      expect(WebhookService).to receive(:publish!).with({ event: @event, webhook: webhook })
+      @event.reload.send(:notify_webhooks!)
+    end
+
+    it 'calls publish with the eventable''s parent group' do
+      parent = @event.eventable.group.parent = create(:group)
+      @event.eventable.group.update is_visible_to_parent_members: true
+      webhook = create :webhook, hookable: parent
+      expect(WebhookService).to receive(:publish!).with({ event: @event, webhook: webhook })
+      @event.reload.send(:notify_webhooks!)
+    end
+
+    it 'calls publish with the eventable''s parent group' do
+      parent = @event.eventable.group.parent = create(:group)
+      webhook = create :webhook, hookable: parent
+      expect(WebhookService).not_to receive(:publish!).with({ event: @event, webhook: webhook })
+      @event.reload.send(:notify_webhooks!)
+    end
+  end
 end
