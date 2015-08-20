@@ -41,7 +41,7 @@
       %a{ng-show: 'dashboardPage.filter != "show_all"', translate: 'dashboard_page.view_recent', href: '', ng-click: 'dashboardPage.setFilter("show_all")'}>
     .dashboard-page__collections{ng-if: '!dashboardPage.displayByGroup()'}
       %section.thread-preview-collection__container{ng-if: 'dashboardPage.views.recent[viewName].any()', class: 'dashboard-page__{{viewName}}', ng-repeat: 'viewName in dashboardPage.recentViewNames'}
-        .dashboard-page__date-range{translate: 'dashboard_page.threads_from.{{viewName}}'}
+        %h2.dashboard-page__date-range{translate: 'dashboard_page.threads_from.{{viewName}}'}
         %thread_preview_collection.thread-previews-container{query: 'dashboardPage.views.recent[viewName]'}
       .dashboard-page__footer{in-view: '$inview && dashboardPage.loadMore()', in-view-options: '{debounce: 200}'} .
       %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
