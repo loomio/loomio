@@ -20,13 +20,24 @@ class API::DiscussionsController < API::RestfulController
   private
 
   def respond_with_collection(**args)
-    args[:scope] ||= {}
-    args[:scope][:reader_cache] = DiscussionReaderCache.new(user: current_user, discussions: collection)
+    if current_user
+      args[:scope] ||= {}
+      args[:scope][:reader_cache] = DiscussionReaderCache.new(user: current_user, discussions: collection)
+    end
     super args
   end
 
   def visible_records
     Queries::VisibleDiscussions.new(user: current_user, groups: visible_groups)
+  end
+
+  def public_records
+    load_and_authorize :group if params[:group_id] || params[:group_key]
+    if @group
+      super.where(group: @group)
+    else
+      super
+    end
   end
 
   def visible_groups
