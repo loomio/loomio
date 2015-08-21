@@ -3,12 +3,12 @@
 
   .form-group
     %label{for: 'contact-name-field', translate: 'contact_message_form.name_label'}
-    %input#contact-name-field.form-control{ng-model: 'message.name', ng_required: 'true', placeholder: '{{contact_message_form.name_placeholder | translate}}'}
+    %input.form-control#contact-name-field{ng-model: 'message.name', ng_required: 'true', placeholder: '{{contact_message_form.name_placeholder | translate}}'}
 
     %label{for: 'contact-email-field', translate: 'contact_message_form.email_label'}
-    %input#contact-email-field.form-control{ng-model: 'message.email', ng_required: 'true', placeholder: '{{contact_message_form.email_placeholder | translate}}'}      
+    %input.form-control#contact-email-field{ng-model: 'message.email', ng_required: 'true', placeholder: '{{contact_message_form.email_placeholder | translate}}'}
 
     %label{for: 'contact-message-field', translate: 'contact_message_form.message_label'}
-    %textarea#group-description-field.form-control{ng-model: 'message.message', placeholder: '{{contact_message_form.message_placeholder | translate}}'}
+    %textarea#contact-message-field{ng-model: 'message.message', placeholder: '{{contact_message_form.message_placeholder | translate}}'}
 
   %button.btn.btn-primary{type: 'submit', translate: 'contact_message_form.send_message'}

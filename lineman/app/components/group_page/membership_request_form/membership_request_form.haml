@@ -9,15 +9,15 @@
     %fieldset
       .form-group
         %label{for: 'membership-request-name', translate: 'membership_request_form.name_label'}
-        %input.membership-request-form__name#membership-request-name.form-control{ng-model: 'membershipRequest.actor().name', ng-required: 'true', ng-disabled: 'true'}
+        %input.membership-request-form__name.form-control#membership-request-name{ng-model: 'membershipRequest.actor().name', ng-required: 'true', ng-disabled: 'true'}
 
       .form-group
         %label{for: 'membership-request-email', translate: 'membership_request_form.email_label'}
-        %input.membership-request-form__email#membership-request-email.form-control{ng-model: 'membershipRequest.actor().email', ng-required: 'true', ng-disabled: 'true'}
+        %input.membership-request-form__email.form-control#membership-request-email{ng-model: 'membershipRequest.actor().email', ng-required: 'true', ng-disabled: 'true'}
 
       .form-group
         %label{for: 'membership-request-introduction', translate: 'membership_request_form.introduction_label'}
-        %textarea.membership-request-form__introduction#membership-request-introduction.form-control{ng-model: 'membershipRequest.introduction', ng-required: 'false'}
+        %textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: 'membershipRequest.introduction', ng-required: 'false'}
 
   .modal-footer
     %button.btn.btn-primary.membership-request-form__submit-btn{type: 'submit', translate: 'membership_request_form.submit_button'}

@@ -14,7 +14,7 @@
     %fieldset
       .form-group
         %label{for: 'proposal-outcome-field', translate: 'proposal_outcome_form.outcome_label'}
-        %textarea.form-control.proposal-form__outcome-field{placeholder: "{{ 'proposal_outcome_form.outcome_placeholder' | translate }}", ng-model: 'proposal.outcome', ng-required: 'true'}
+        %textarea.proposal-form__outcome-field.form-control#proposal-outcome-field{placeholder: "{{ 'proposal_outcome_form.outcome_placeholder' | translate }}", ng-model: 'proposal.outcome', ng-required: 'true'}
 
   .modal-footer
     %button.btn.btn-primary.proposal-outcome-form__publish-outcome-btn{type: 'submit', translate: 'proposal_outcome_form.publish_outcome'}
