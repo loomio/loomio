@@ -2,7 +2,6 @@
   @include box_shadow(2);
   z-index: 1000;
   background: white;
-  border-bottom: 1px solid $border-color;
   padding: 0 6px;
   width: 100%;
   position: fixed;
@@ -57,7 +56,7 @@
 
 .lmo-navbar__item--user {
   .lmo-navbar__btn{
-    padding: 6px;
+    padding: 6px 7px;
   }
 }
 
