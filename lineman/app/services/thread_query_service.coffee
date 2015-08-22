@@ -44,10 +44,15 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
       moment().startOf('day').subtract(parseInt(parts[0]), parts[1])
 
     applyFilters = (view, filters, queryType) ->
+
+      view.applyFind(discussionReaderId: { $ne: null })
+
       switch queryType
         when 'important' then view.applyWhere (thread) -> thread.isImportant()
         when 'timeframe' then view.applyWhere (thread) -> !thread.isImportant()
-        when 'inbox'     then view.applyWhere (thread) -> thread.isUnread()
+        when 'inbox'
+          view.applyFind(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
+          view.applyWhere (thread) -> thread.isUnread()
 
       if _.contains(filters, 'show_muted')
         view.applyFind(volume: { $eq: 'mute' })
