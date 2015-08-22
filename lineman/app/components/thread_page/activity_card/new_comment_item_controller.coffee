@@ -74,3 +74,9 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
 
   $scope.reply = ->
     $rootScope.$broadcast 'replyToCommentClicked', $scope.comment
+
+  $scope.canTranslate = ->
+    CurrentUser.locale != $scope.comment.author().locale
+
+  $scope.translate = ->
+    Records.translations.fetchTranslation($scope.comment, CurrentUser.locale)

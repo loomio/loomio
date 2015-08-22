@@ -30,6 +30,9 @@
       %a{href: '', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
       %a.thread-item__action--reply{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
+      %span.thread-item__inline-translation{ng-if: 'canTranslate()'}
+        %span{aria-hidden: 'true'}·
+        %a{href: '', ng-click: 'translate()', translate: 'common.action.translate'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

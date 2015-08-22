@@ -35,6 +35,7 @@ en:
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
       loading: 'Loading'
+      translate: 'Translate'
 
   error_page:
     forbidden: 'You do not have permission to do this.'
