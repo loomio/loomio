@@ -41,4 +41,12 @@ class API::RestfulController < API::BaseController
     end
   end
 
+  def resource_serializer
+    if current_user.present?
+      "#{resource_name.classify}Serializer"
+    else
+      "Public::#{resource_name.classify}Serializer"
+    end.constantize
+  end
+
 end
