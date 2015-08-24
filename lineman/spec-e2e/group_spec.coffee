@@ -88,7 +88,7 @@ describe 'Group Page', ->
       groupsHelper.openMemberOptionsDropdown()
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.clickAddCoordinatorButton()
-      expect(membershipsHelper.membershipsPageHeader().isDisplayed()).toBeTruthy
+      expect(membershipsHelper.membershipsPageHeader().isDisplayed()).toBeTruthy()
 
   describe 'archiving a group', ->
 
