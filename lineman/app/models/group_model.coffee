@@ -126,4 +126,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
         '/img/default-cover-photo.png'
 
     archive: =>
-      @remote.patchMember(@key, 'archive')
+      @remote.patchMember(@key, 'archive').then =>
+        @recordsInterface.collection.remove(@)
+

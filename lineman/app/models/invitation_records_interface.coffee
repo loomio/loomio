@@ -2,9 +2,6 @@ angular.module('loomioApp').factory 'InvitationRecordsInterface', (BaseRecordsIn
   class InvitationRecordsInterface extends BaseRecordsInterface
     model: InvitationModel
 
-    create: (params) ->
-      @remote.create(params)
-
     fetchPendingByGroup: (groupKey, options = {}) ->
       options['group_key'] = groupKey
       @remote.get('/pending', options)
