@@ -26,11 +26,6 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
       if data.event?
         data.events = [] unless _.isArray(data.events)
         data.events.push(data.event)
-        if data.event.kind == 'new_discussion'
-          # this needs to evolve into something more general
-          # but insert a blank reader.. as we know what it will be
-          discussionId = data.discussions[0].id
-          Records.discussionReaders.import({id: discussionId, discussion_id: discussionId})
 
       if data.notification?
         data.notifications = [] unless _.isArray(data.notifications)

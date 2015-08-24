@@ -18,7 +18,7 @@ describe 'Dashboard Page', ->
     expect(dashboardHelper.anyThreads()).not.toContain('Muted discussion')
     expect(dashboardHelper.anyThreads()).not.toContain('Old discussion')
 
-  xit 'displays a view of participating threads', ->
+  it 'displays a view of participating threads', ->
     dashboardHelper.openFilterDropdown()
     dashboardHelper.visitParticipatingView()
     expect(dashboardHelper.anyThreads()).not.toContain('Starred proposal discussion')

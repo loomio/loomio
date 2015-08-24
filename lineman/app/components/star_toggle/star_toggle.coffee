@@ -5,5 +5,5 @@ angular.module('loomioApp').directive 'starToggle', ->
   replace: true
   controller: ($scope, $rootScope) ->
     $scope.toggle = ->
-      $scope.thread.reader().toggleStar()
+      $scope.thread.toggleStar()
       $rootScope.$broadcast 'starToggled', $scope.thread
