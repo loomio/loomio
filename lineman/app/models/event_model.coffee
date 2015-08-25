@@ -24,7 +24,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'group'
       @belongsTo 'membership'
-      @belongsTo 'membershipRequests'
+      @belongsTo 'membershipRequest'
       @belongsTo 'discussion'
       @belongsTo 'comment'
       @belongsTo 'proposal'
