@@ -1,3 +1,3 @@
 window.useCurrentUser = function(user) {
-  window.Loomio = { seedRecords: [], currentUserId: user.id }
+  window.Loomio = { permittedParams: {'user': []},  seedRecords: [], currentUserId: user.id }
 }

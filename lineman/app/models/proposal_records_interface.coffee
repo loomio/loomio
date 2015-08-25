@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'ProposalRecordsInterface', (BaseRecordsInte
         cacheKey: "proposalsFor#{discussion.key}"
 
     createOutcome: (proposal) =>
-      @restfulClient.postMember proposal.id, "create_outcome",
+      @remote.postMember proposal.id, "create_outcome",
         motion:
           outcome: proposal.outcome
 

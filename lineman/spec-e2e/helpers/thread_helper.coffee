@@ -71,7 +71,7 @@ module.exports = new class ThreadHelper
 
   mentionList: ->
     element(By.css('ul.list-group.user-search'))
-    
+
   firstMentionOption: ->
     @mentionList().element(By.css('li'))
 
@@ -111,3 +111,10 @@ module.exports = new class ThreadHelper
 
   activityItemList: ->
     element(By.css('.activity-card')).getText()
+
+  openEditThreadForm: ->
+    element(By.css('.thread-context__dropdown-button')).click()
+    element(By.css('.thread-context__dropdown-options-edit')).click()
+
+  discussionTitle: ->
+    element(By.css('.thread-context'))

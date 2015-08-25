@@ -1,5 +1,5 @@
-.notification-volume.dropdown
-  %button.btn.lmo-btn-nude.notification-volume__button.dropdown-toggle{href: ''}
+.notification-volume{dropdown: ''}
+  %button.btn.lmo-btn-nude.notification-volume__button{dropdown-toggle: ''}
     .screen-only{aria-hidden: 'true'}
       %i.fa.fa-lg.fa-fw{ng-class: 'iconClassForLevel(model.volume)'}>
       %span{translate: 'volume_levels.loud', ng-show: 'model.volume == "loud"'}
@@ -17,10 +17,10 @@
     %form{novalidate: ''}
       %ul.dropdown-menu-items
         %li.dropdown-menu-item{ng-repeat: 'level in volumeLevels'}
-          %label{for: 'volume.{{level}}'}
+          %label{for: 'volume-{{level}}'}
             .dropdown-menu-item-label
               %i.fa.fa-lg{ng-class: "iconClassForLevel(level)", aria-hidden: 'true'}>
-              %input.sr-only{id: 'volume.{{level}}', type: 'radio', ng-model: 'model.volume', name: 'volume', value: '{{level}}', ng-change: 'saveVolume()'}
+              %input.sr-only{id: 'volume-{{level}}', type: 'radio', ng-model: 'model.volume', name: 'volume', value: '{{level}}', ng-change: 'saveVolume()'}
               %span{translate: 'volume_levels.{{level}}'}
               .sr-only .
               %i.fa.fa-lg.fa-check{aria-hidden: 'true', ng-show: "level == model.volume"}

@@ -1,17 +1,15 @@
-angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
+angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
   class UserModel extends BaseModel
     @singular: 'user'
     @plural: 'users'
-    @indices: ['id']
+    @apiEndPoint: 'profile'
+    @serializableAttributes: AppConfig.permittedParams.user
 
-    initialize: (data) ->
-      @baseInitialize(data)
-      @label = data.username
-
-    setupViews: ->
-      @membershipsView   = @recordStore.memberships.belongingTo(userId: @id)
-      @notificationsView = @recordStore.notifications.belongingTo(userId: @id)
-      @contactsView      = @recordStore.contacts.belongingTo(userId: @id)
+    relationships: ->
+      # note we should move these to a CurrentUser extends User so that all our authors dont get views created
+      @hasMany 'memberships'
+      @hasMany 'notifications'
+      @hasMany 'contacts'
 
     membershipFor: (group) ->
       _.first @recordStore.memberships
@@ -22,20 +20,8 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
     isMemberOf: (group) ->
       @membershipFor(group)?
 
-    memberships: ->
-      @membershipsView.data()
-
     groupIds: ->
       _.map(@memberships(), 'groupId')
-
-    notifications: ->
-      @notificationsView.data()
-
-    contacts: ->
-      @contactsView.data() 
-      # we can just assume all contacts are CurrentUser... but this still feels nice.
-      # also it's feeling more and more like we need to separate out CurrentUser concerns
-      # (like abilities) from regular other user concerns.
 
     groups: ->
       _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()

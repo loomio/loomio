@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope, Records, CurrentUser, LoadingService, ThreadQueryService) ->
+angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScope, Records, CurrentUser, AppConfig, LoadingService, ThreadQueryService) ->
   $rootScope.$broadcast('currentComponent', {page: 'inboxPage'})
   $rootScope.$broadcast('setTitle', 'Inbox')
   $rootScope.$broadcast('analyticsClearGroup')
@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
   @views =
     groups: {}
 
-  @loading = -> !(CurrentUser.inboxLoaded and CurrentUser.membershipsLoaded)
+  @loading = -> !(AppConfig.inboxLoaded and AppConfig.membershipsLoaded)
 
   @groups = ->
     CurrentUser.parentGroups()

@@ -4,6 +4,6 @@ angular.module('loomioApp').factory 'ArchiveGroupForm', ->
     $scope.group = group
 
     $scope.submit = FormService.submit $scope, $scope.group,
-      submitFn: Records.groups.archive
+      submitFn: $scope.group.archive
       flashSuccess: 'group_page.messages.archive_group_success'
       successCallback: -> $location.path '/dashboard'

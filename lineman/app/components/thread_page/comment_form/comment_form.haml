@@ -14,6 +14,6 @@
         %span{aria-hidden: 'true'}&times;
     .thread-comment-form-actions
       %button.btn.btn-default.btn-primary.submit.comment-form__submit-button{type: 'submit', translate: 'comment_form.submit_button.label'}
-      %button.btn.btn-default.comment-form-button{translate: 'comment_form.cancel_reply', ng-show: 'comment.parentId', ng-click: 'comment.parentId = null'}
+      %button.btn.btn-default.comment-form-button{type: 'button', translate: 'comment_form.cancel_reply', ng-show: 'comment.parentId', ng-click: 'comment.parentId = null'}
       %attachment_form{comment: 'comment'}
       %button#post-comment-cancel.btn.btn-default{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}

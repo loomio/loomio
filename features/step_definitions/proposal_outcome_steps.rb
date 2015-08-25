@@ -30,7 +30,6 @@ end
 # end
 
 When(/^I specify a proposal outcome$/) do
-  view_screenshot
   fill_in :motion_outcome, with: "Let's talk to hank about doing that thing."
 end
 
@@ -45,7 +44,7 @@ end
 
 When(/^I edit the proposal outcome$/) do
   visit discussion_path(@discussion)
-  find('#edit-outcome').click
+  click_on(:'edit-outcome')
   fill_in :motion_outcome, with: "Let's talk to Hank about doing that thing."
   find('#add-outcome-submit').click
 end

@@ -32,7 +32,7 @@ class Discussion < ActiveRecord::Base
   validate :privacy_is_permitted_by_group
 
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
-  has_paper_trail :only => [:title, :description]
+  has_paper_trail only: [:title, :description]
 
   belongs_to :group, counter_cache: true
   belongs_to :author, class_name: 'User'

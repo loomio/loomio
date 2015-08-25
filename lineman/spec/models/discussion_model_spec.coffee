@@ -14,13 +14,12 @@ describe 'DiscussionModel', ->
     inject (Records) ->
       recordStore = Records
 
-    group = recordStore.groups.import(id: 1, name: 'group')
-    author = recordStore.users.import(id: 1, name: 'Sam')
+    group = recordStore.groups.importJSON(id: 1, name: 'group')
+    author = recordStore.users.importJSON(id: 1, name: 'Sam')
 
-    discussion = recordStore.discussions.import(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'Hi', created_at: "2015-01-01T00:00:00Z", last_read_sequence_id: -1)
-
-    event = recordStore.events.import(id: 1, sequence_id: 1, discussion_id: 1)
-    otherEvent = recordStore.events.import(id: 2, sequence_id: 2, discussion_id: 2)
+    discussion = recordStore.discussions.importJSON(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'Hi', created_at: "2015-01-01T00:00:00Z", last_read_sequence_id: -1)
+    event = recordStore.events.importJSON(id: 1, sequence_id: 1, discussion_id: 1)
+    otherEvent = recordStore.events.importJSON(id: 2, sequence_id: 2, discussion_id: 2)
 
   describe 'author()', ->
     it 'returns the discussion author', ->
@@ -29,14 +28,14 @@ describe 'DiscussionModel', ->
 
   describe 'comments()', ->
     beforeEach ->
-      comment = recordStore.comments.import(id:5, discussion_id: discussion.id)
+      comment = recordStore.comments.importJSON(id:5, discussion_id: discussion.id)
 
     it 'returns comments', ->
       expect(discussion.comments()).toContain(comment)
 
   describe 'proposals()', ->
     beforeEach ->
-      proposal = recordStore.proposals.import(id:7, discussion_id: discussion.id)
+      proposal = recordStore.proposals.importJSON(id:7, discussion_id: discussion.id)
 
     it 'returns proposals', ->
       expect(discussion.proposals()).toContain(proposal)
@@ -66,11 +65,6 @@ describe 'DiscussionModel', ->
       expect(discussion.lastReadSequenceId).toBe(1)
 
   describe 'clone()', ->
-    beforeEach ->
-      window.Loomio =
-        permittedParams:
-          discussion: ['title', 'author_id']
-
     it 'copies all of the attributes of the object being cloned', ->
       expect(discussion.clone().title).toBe(discussion.title)
 
@@ -82,8 +76,8 @@ describe 'DiscussionModel', ->
 
     it 'does not create a new entry in the record store', ->
       discussion.clone()
-      expect(recordStore.discussions.where(id: discussion.id).length).toBe(1)
-      expect(recordStore.discussions.where(title: discussion.title).length).toBe(1)
+      expect(recordStore.discussions.find(id: discussion.id).length).toBe(1)
+      expect(recordStore.discussions.find(title: discussion.title).length).toBe(1)
 
     it 'inherits key and id from the original record', ->
       clone = discussion.clone()
