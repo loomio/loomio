@@ -50,4 +50,22 @@ class DiscussionService
     DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
     event
   end
+
+  def self.update_reader(discussion:, params:, actor:)
+    reader = DiscussionReader.for(discussion: discussion, user: actor)
+    actor.ability.authorize! :show, discussion
+
+    [:starred, :volume].each do |attr|
+      reader.send("#{attr}=", params[attr]) if params.has_key?(attr)
+    end
+
+    reader.save!
+  end
+
+  def self.mark_as_read(discussion:, params:, actor:)
+    actor.ability.authorize! :show, discussion
+
+    target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]).first || discussion
+    DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at
+  end
 end

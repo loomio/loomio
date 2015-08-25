@@ -1,4 +1,5 @@
 Given(/^the discussion has a proposal$/) do
+  @discussion = FactoryGirl.create :discussion, author: @user
   @motion = FactoryGirl.create :motion, discussion: @discussion, author: @user
   @group_member = FactoryGirl.create :user
   @group.add_member!(@group_member)
