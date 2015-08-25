@@ -5,11 +5,6 @@ class VersionSerializer < ActiveModel::Serializer
 
   has_one :discussion
   has_one :proposal
-  has_one :author, root: 'users'
-
-  def author
-    User.find_by_id(object.whodunnit.to_i)
-  end
 
   def changes
     object.object_changes
