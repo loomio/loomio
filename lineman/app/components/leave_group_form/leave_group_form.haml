@@ -12,6 +12,6 @@
       %span{ng-if: '!canLeaveGroup()', translate: 'group_page.leave_group.cannot_leave_group'}
     .modal-footer
       %button.btn.btn-primary.leave-group-form__submit{ng-if: 'canLeaveGroup()', type: 'submit', translate: 'group_page.leave_group.submit'}
-      %a.btn.btn-primary.leave-group-form__add-coordinator{ng-if: '!canLeaveGroup()', lmo-href-for: 'group', lmo-href-action: 'memberships'}', ng-click: '$close()'}
+      %a.btn.btn-primary.leave-group-form__add-coordinator{ng-if: '!canLeaveGroup()', lmo-href-for: 'group', lmo-href-action: 'memberships', ng-click: '$close()'}
         %span{translate: 'group_page.leave_group.add_coordinator'}
       %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

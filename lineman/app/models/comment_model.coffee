@@ -1,16 +1,20 @@
-angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
+angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
-    @indices: ['id', 'discussionId', 'authorId']
+    @indices: ['discussionId', 'authorId']
+    @serializableAttributes: AppConfig.permittedParams.comment
 
     defaultValues: ->
-      uses_markdown: true
+      usesMarkdown: true
+      newAttachmentIds: []
+      discussionId: null
       body: ''
 
-    initialize: (data) ->
-      @baseInitialize(data)
-      @newAttachmentIds = []
+    relationships: ->
+      @belongsTo 'author', from: 'users'
+      @belongsTo 'discussion'
+      @belongsTo 'parent', from: 'comments', by: 'parentId'
 
     serialize: ->
       data = @baseSerialize()
@@ -34,15 +38,6 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
 
     attachments: ->
       @recordStore.attachments.find(commentId: @id)
-
-    author: ->
-      @recordStore.users.find(@authorId)
-
-    parent: ->
-      @recordStore.comments.find(@parentId)
-
-    discussion: ->
-      @recordStore.discussions.find(@discussionId)
 
     authorName: ->
       @author().name

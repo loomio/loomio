@@ -1,6 +1,6 @@
 %article.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', aria-labelledby: 'comment-{{comment.id}}', id: 'comment-{{comment.id}}' }
-  .dropdown.pull-right{ng-if: 'showContextMenu()'}
-    %button.thread-item__dropdown-button.btn.lmo-btn-nude.dropdown-toggle{href:''}
+  .pull-right{dropdown: '', ng-if: 'showContextMenu()'}
+    %button.thread-item__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
       %i.fa.fa-chevron-down{aria-hidden: 'true'}
       .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
     .dropdown-menu.dropdown-menu-right

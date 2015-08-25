@@ -1,11 +1,11 @@
-angular.module('loomioApp').factory '$exceptionHandler', ->
+angular.module('loomioApp').factory '$exceptionHandler', (AppConfig) ->
   (exception, cause) ->
-    if window.Loomio.reportErrors
+    if AppConfig.reportErrors
       Airbrake.push
         error:
           message : exception.toString()
           stack : exception.stack
         params:
-          user_id: window.Loomio.currentUserId
+          user_id: AppConfig.currentUserId
 
     console.error "LoomioApp exception:", exception, cause

@@ -3,12 +3,9 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     @singular: 'notification'
     @plural: 'notifications'
 
+    relationships: ->
+      @belongsTo 'event'
+      @belongsTo 'user'
+
     createdAt: ->
       @event().createdAt
-
-    event: ->
-      @recordStore.events.find(@eventId)
-
-    user: ->
-      @recordStore.users.find(@userId)
-

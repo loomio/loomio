@@ -17,18 +17,6 @@ module.exports = new class GroupsHelper
   clickStartThreadButton: ->
     @startThreadButton().click()
 
-  fillInDiscussionTitle: (title)->
-    element(By.css('.discussion-form__title-input')).sendKeys(title)
-
-  fillInDiscussionDescription: (description) ->
-    element(By.css('.discussion-form__description-input')).sendKeys(description)
-
-  submitDiscussionForm: ->
-    element.all(By.css('.discussion-form__submit')).first().click()
-
-  discussionTitle: ->
-    element(By.css('.thread-context'))
-
   memberOptionsDropdown: ->
     element(By.css('.group-page-actions button'))
 
