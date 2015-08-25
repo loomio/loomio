@@ -14,19 +14,19 @@
 
       .profile-page__profile-fieldset.lmo-vertical-spacer
         %label{for: 'user-name-field', translate: 'profile_page.name_label'}
-        %input.form-control.profile-page__name-input{ng-required: true, ng-model: 'profilePage.user.name'}
+        %input.profile-page__name-input.form-control#user-name-field{ng-required: true, ng-model: 'profilePage.user.name'}
         %validation_errors{subject: 'profilePage.user', field: 'name'}
 
         %label{for: 'user-username-field', translate: 'profile_page.username_label'}
-        %input.form-control.profile-page__username-input{ng-required: true, ng-model: 'profilePage.user.username'}
+        %input.profile-page__username-input.form-control#user-username-field{ng-required: true, ng-model: 'profilePage.user.username'}
         %validation_errors{subject: 'profilePage.user', field: 'username'}
 
         %label{for: 'user-email-field', translate: 'profile_page.email_label'}
-        %input.form-control.profile-page__email-input{ng-required: true, ng-model: 'profilePage.user.email'}
+        %input.profile-page__email-input.form-control#user-email-field{ng-required: true, ng-model: 'profilePage.user.email'}
         %validation_errors{subject: 'profilePage.user', field: 'email'}
 
         %label{for: 'user-locale-field', translate: 'profile_page.locale_label'}
-        %select.form-control.profile-page__language-input{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()'}
+        %select.profile-page__language-input.form-control#user-locale-field{ng-model: 'profilePage.user.selectedLocale', ng-required: 'true', ng-options: 'locale.key as locale.name for locale in profilePage.availableLocales()'}
         %validation_errors{subject: 'profilePage.user', field: 'selectedLocale'}
 
       .profile-page__update-account.lmo-vertical-spacer

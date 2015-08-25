@@ -17,10 +17,10 @@
     %form{novalidate: ''}
       %ul.dropdown-menu-items
         %li.dropdown-menu-item{ng-repeat: 'level in volumeLevels'}
-          %label{for: 'volume.{{level}}'}
+          %label{for: 'volume-{{level}}'}
             .dropdown-menu-item-label
               %i.fa.fa-lg{ng-class: "iconClassForLevel(level)", aria-hidden: 'true'}>
-              %input.sr-only{id: 'volume.{{level}}', type: 'radio', ng-model: 'model.volume', name: 'volume', value: '{{level}}', ng-change: 'saveVolume()'}
+              %input.sr-only{id: 'volume-{{level}}', type: 'radio', ng-model: 'model.volume', name: 'volume', value: '{{level}}', ng-change: 'saveVolume()'}
               %span{translate: 'volume_levels.{{level}}'}
               .sr-only .
               %i.fa.fa-lg.fa-check{aria-hidden: 'true', ng-show: "level == model.volume"}
