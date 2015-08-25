@@ -102,7 +102,6 @@ el:
       empty:
         membership_is_invitation_only: Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από ένα μέλος.
         membership_is_invitation_by_admin_only: Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από έναν συντονιστή.
-    description: Περιγραφή
     discussions: Θέματα
     invite_people: Προσκαλέστε άτομα
     options_label: Ρυθμίσεις

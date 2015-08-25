@@ -153,7 +153,6 @@ hu:
       empty:
         membership_is_invitation_only: A belépéshez meghívóra van szükséged egy csoporttagtól.
         membership_is_invitation_by_admin_only: A belépéshez egy koordinátor meghívójára van szükséged.
-    description: Leírás
     discussions: Szálak
     invite_people: Hívj meg embereket
     options_label: Lehetőségek

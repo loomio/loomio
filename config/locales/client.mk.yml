@@ -78,7 +78,6 @@ mk:
       empty:
         membership_is_invitation_only: За да и се приклучите на групата треба да бидете поканети од страна на неко член.
         membership_is_invitation_by_admin_only: За да и се приклучите на групата треба да бидете поканети од координатор.
-    description: Опис
     discussions: Дискусии
     invite_people: Покани луѓе
     options_label: Опции

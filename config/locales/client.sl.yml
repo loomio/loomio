@@ -122,7 +122,6 @@ sl:
       empty:
         membership_is_invitation_only: Za pridružitev tej skupini moraš biti povabljen/a s strani člana.
         membership_is_invitation_by_admin_only: Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja.
-    description: Opis
     discussions: Razprave
     invite_people: Povabi še koga
     options_label: Možnosti

@@ -92,7 +92,6 @@ eo:
       empty:
         membership_is_invitation_only: Por aliĝi al ĉi tiu grupo vi devas esti invitita de membro.
         membership_is_invitation_by_admin_only: Por aliĝi al ĉi tiu grupo vi devas esti invitita de kunordiganto.
-    description: Priskribo
     discussions: Diskutoj
     invite_people: Inviti personojn
     options_label: Opcioj

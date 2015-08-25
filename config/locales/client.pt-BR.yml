@@ -21,7 +21,7 @@ pt-BR:
       thismonth: Este Mês
       older: Antigos
     models:
-      proposal: Proposição
+      proposal: Proposta
     action:
       save: Salvar
       save_changes: Salvar mudanças
@@ -103,13 +103,14 @@ pt-BR:
     start_thread: Iniciar um novo tópico
     notifications: Painel de notificações
     user_options:
-      label: Menu de opções do usuário
+      label: Opçoes de usuário
       contact_us: Contacte-nos
       new_thread: Novo tópico
       new_group: Novo grupo
       profile: Perfil
       email_settings: Configurações de e-mail
       help: Ajuda
+      sign_out: Sair
     search:
       close: Fechar painel de pesquisa
       placeholder: Pesquisar
@@ -171,7 +172,7 @@ pt-BR:
   proposal_pie_chart:
     participation_statement: "{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})"
   close_proposal_form:
-    close_proposal: Encerrar proposição
+    close_proposal: Encerrar proposta
     helptext: Tem certeza de que deseja encerrar esta proposta agora?
     close_proposal_submit: "Sim, encerrar proposta"
     messages:
@@ -184,7 +185,7 @@ pt-BR:
     messages:
       created: Proposta iniciada
       updated: Proposta atualizada
-    start_proposal: Iniciar proposição
+    start_proposal: Iniciar proposta
     start_a_proposal: Iniciar uma proposta
     edit_proposal: Editar proposta
     what_does_a_proposal_do: Propostas permitem que você veja como todos se sentem sobre um determinado curso de ação.
@@ -225,7 +226,7 @@ pt-BR:
     only_voter_is_you: Nenhum outro membro ainda votou.
     extend_proposal: Mudar hora de encerramento
     edit_proposal: Editar proposta
-    close_proposal: Encerrar proposição
+    close_proposal: Encerrar proposta
     closed_badge: Fechado
   proposal_position_yes: Concordar
   proposal_position_abstain: Abster
@@ -283,8 +284,8 @@ pt-BR:
       archive_group_success: Este grupo foi desativado
     group_logo: Logo do grupo
     header:
-      aria_label: Título da página do grupo
-    description: Descrição
+      aria_label: Nome do grupo
+    description: Descrição do grupo
     description_placeholder: "Utilize este espaço para descrever a finalidade do grupo, para que seus membros saibam por que estão aqui."
     discussions: Tópicos
     discussions_placeholder: Um tópico é o lugar onde todos podem discutir um tema e tomar decisões juntos.
@@ -323,9 +324,9 @@ pt-BR:
       mute_aria_description: "O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel."
       updated: Volume do grupo atualizado
     privacy:
-      private: Este grupo está visível apenas para membros
-      parent_members: "Este grupo está visível para membros de {{parentGroupName}} e membros de {{groupName}}"
-      public: Este grupo é visível na web
+      private: "Privacidade: Este grupo é visível apenas para membros"
+      parent_members: "Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}"
+      public: "Privacidade: Este grupo é visível na web"
   edit_group_form:
     title: Editar Configurações do Grupo
     profile:
@@ -363,13 +364,14 @@ pt-BR:
     messages:
       success: Grupo atualizado
   membership_requests_card:
-    heading: "Solicitações para inclusão de membros ({{count}})"
-    manage_requests: Gerenciar solicitações
+    heading: Pedidos para inclusão de membros
+    manage_requests: "Gerenciar pedidos ({{count}})"
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
     ignore: "Ignorar "
-    no_pending_requests: Não existem novos pedidos de inclusão de membros.
+    no_pending_requests: Não há novos pedidos de inclusão de membros para este grupo.
+    no_previous_requests: Não há pedidos anteriores de inclusão de membros para este grupo.
     previous_requests: Pedidos Anteriores
     previous_request_response: "{{response}} por {{responder}}"
     messages:
@@ -422,7 +424,6 @@ pt-BR:
     heading: Convites pendentes
     email: E-mail
     invitation_link: Link do convite
-    cancel: Cancelar
   cancel_invitation_form:
     heading: Cancelar convite
     question: Tem certeza de que deseja cancelar este convite?
@@ -493,6 +494,7 @@ pt-BR:
     mark_as_read: Marcar como lida
     filtering:
       filter_threads: Filtrar Tópicos
+      filter_threads_aria_label: Filtrar Tópicos
       dropdown_heading: Filtrar painel
       all: Tópicos Recentes
       all_aria_label: "No momento, mostrando tópicos recentes"
@@ -516,6 +518,8 @@ pt-BR:
       you_voted: "Você votou: {{position}}."
     threads_from:
       group: Tópicos de
+      proposals: Propostas
+      starred: Com Estrela
       today: Hoje
       yesterday: Ontem
       thisweek: Esta semana
@@ -578,6 +582,8 @@ pt-BR:
     block: "<strong>{{name}}</strong> bloqueou"
   new_proposal_item:
     author_created_proposal: "<strong>{{name}}</strong> criou uma proposta:"
+  proposal_closed_item:
+    proposal_closed: "Proposta encerrada:"
   contact_message_form:
     contact_us: Contacte-nos
     name_label: Seu nome
@@ -592,9 +598,9 @@ pt-BR:
     coordinating: Coordenando o seu grupo do Loomio
     coordinating_details: "Como coordenador(a), você é responsável por configurar o seu grupo do Loomio e \nconvidar as pessoas para entrar. Além de aprender a usar uma nova plataforma, o seu grupo\naprenderá novos processos para colaborar mais efetivamente e tomar boas decisões\nem conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar certo:\n"
     different_ways: Diferentes formas de usar o Loomio
-    engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposição na mesa. Uma boa proposição contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação</p>\n<p>Outra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isto vai enviá-las um e-mail para avisá-las que elas foram mencionadas em um comentário.</p>\n"
-    example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposição.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para especificar a solução. Quando as pessoas \nchegam a participar do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
-    example2_html: "<h3>Você já tem uma proposição em mente e gostaria de obter validação do grupo para seguir adiante.</h3>\n<p>Estratégia: Iniciar uma discussão sobra uma decisão específica e abrir uma proposição imediatamente.</p>\n<p>Se você já tem claro em sua mente um resultado, mas que assegurar que não restam questões críticas,\nvocê pode usar a proposição para rapidamente ter um feedback sobre uma decisão.</p>\n<p>Você pode fazer coisas como finalizar um documento, aprovar uma aplicação ou validar um trabalho feito.</p>\n"
+    engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposta na mesa. Uma boa proposta contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação</p>\n<p>Outra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isso faz enviá-las um e-mail para avisá-las que foram mencionadas em um comentário.</p>\n"
+    example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposta.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para uma solução específica. Quando as pessoas participam do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
+    example2_html: "<h3>Você já tem uma proposta em mente e gostaria de obter validação do grupo para seguir adiante.</h3>\n<p>Estratégia: Iniciar uma discussão sobra uma decisão específica e abrir uma proposta imediatamente.</p>\n<p>Se você já tem claro em sua mente um resultado, mas quer assegurar que não restam questões críticas,\nvocê pode usar a proposta para rapidamente ter um feedback sobre uma decisão.</p>\n<p>Você pode fazer coisas como finalizar um documento, aprovar uma aplicação ou validar um trabalho já feito.</p>\n"
     get_in_touch: Entre em contato
     get_in_touch_description_html: "Se tiver qualquer pergunta ou sugestão, <a href='%{link}'>fale conosco</a>."
     getting_started: Primeiros passos
@@ -623,8 +629,8 @@ pt-BR:
     positions_block_description: "<span>Bloqueio</span> significa que você tem sérias objeções à proposta e ficará muito insatisfeita/o se ela for aprovada."
     start_discussion: Iniciar uma discussão envolvente
     start_discussion_html: "<p>Quando você iniciar uma discussão, certifique-se de que o título comunica o tópico\nde maneira sucinta. Use o Painel de Contexto para fornecer toda informação necessária\npara que o grupo tenha uma discussão produtiva e embasada.</p>\n<p>Durante a discussão, o Painel de Contexto pode ser atualizado de acordo com a\nchegada de novas informações. Além de esclarecer o tópico, você pode usar esse espaço\npara compartilhar recursos, resumir a discussão enquanto ela avança ou explicar os\nprotocolos de tomada de decisão que seu grupo está usando.</p>\n"
-    start_proposal: Escrevendo uma proposição clara
-    start_proposal_html: "<p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente com o que exatamente \nirão concordar ou discordar.</p>\n<p>Não será o fim do mundo se uma proposta não obtiver concordândia clara imediatamente.\nSe o grupo não amar a primeira proposta, qualquer membro pode iniciar uma nova proposta para\nlidar com os problemas levantados e fazer com que o processo siga adiante.</p>\n<p>Através desse processo dinâmico, a sabedoria coletiva do grupo pode gerar ideias melhores\ndo que as que um membro sozinho poderia ter.</p>\n<p>O prazo em uma proposição pode ser estendido a qualquer momento, caso pareça que a decisão\nprecise disso. Todos membros receberão uma notificação por e-mail 24 horas antes de uma proposição fechar.</p>\n\n"
+    start_proposal: Escrever uma proposta clara
+    start_proposal_html: "<p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente com o que exatamente \nirão concordar ou discordar.</p>\n<p>Não será o fim do mundo se uma proposta não obtiver concordândia clara imediatamente.\nSe o grupo não amar a primeira proposta, qualquer membro pode iniciar uma nova proposta para\nlidar com os problemas levantados e fazer com que o processo siga adiante.</p>\n<p>Através desse processo dinâmico, a sabedoria coletiva do grupo pode gerar idéias melhores\ndo que as que um membro sozinho poderia ter.</p>\n<p>O prazo de uma proposta pode ser estendido a qualquer momento, caso pareça que a decisão\nprecise disso. Todos membros receberão uma notificação por e-mail 24 horas antes de uma proposta fechar.</p>\n\n"
     video_id: "52025402"
     video_tutorial: Vídeo-tutorial
     video_tutorial_description: Assista ao vídeo para uma rápida demonstração de como usar o Loomio.
@@ -632,7 +638,7 @@ pt-BR:
     context: Dicas para usar o painel de contexto
     discussion: Dicas para iniciar uma discussão envolvente
     invitation: Dicas para escrever um ótimo convite
-    proposal: Dicas para escrever uma proposição clara
+    proposal: Dicas para escrever uma proposta clara
     vote: Você pode mudar sua posição a qualquer momento
   pricing_page:
     intro: "Grupos com recursos pagam uma taxa mensal para usar a ferramenta.\nGrupos que não possuem recursos para pagar essa taxa usam o modelo \nPague o Que Puder: seus membros são convidados a fazer contribuições voluntárias. Sua contribuição significa que podemos manter o Loomio independente, livre de anúncios e comandado pela nossa comunidade.\n"

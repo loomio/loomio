@@ -58,7 +58,6 @@ ar:
     name_label: الإسم
     email_label: البريد الإلكتروني
   group_page:
-    description: الوصف
     invite_people: قم بدعوة الناس
     options_label: الخيارات
     options:

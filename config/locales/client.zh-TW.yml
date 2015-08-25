@@ -103,13 +103,14 @@ zh-TW:
     start_thread: 啟動新的討論串
     notifications: 通知面板
     user_options:
-      label: 使用者選項選單
+      label: 使用者選項
       contact_us: 聯絡我們
       new_thread: 新討論串
       new_group: 新增群組
       profile: 簡歷
       email_settings: 電子郵件設定
       help: 教學文件
+      sign_out: 登出
     search:
       close: 關閉搜尋面板
       placeholder: 搜尋
@@ -283,8 +284,8 @@ zh-TW:
       archive_group_success: 這個群組已被停用
     group_logo: 群組標誌
     header:
-      aria_label: 群組頁面標題
-    description: 描述
+      aria_label: 群組標題
+    description: 群組描述
     description_placeholder: 使用這個地方來描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     discussions: 討論
     discussions_placeholder: 討論串是供每個人討論主題並共同作出決策的地方。
@@ -323,9 +324,9 @@ zh-TW:
       mute_aria_description: 您在此群組的通知音量設定為靜音。您將不會收到任何電子郵件，除非有人提及您，且群組動態將不會顯示在您的儀表板上。
       updated: 群組音量已更新
     privacy:
-      private: 這個群組只對成員可見
-      parent_members: "這個群組對 {{parentGroupName}} 的成員與 {{groupName}} 的成員可見"
-      public: 這個群組對網路公開
+      private: 隱私：這個群組現在只對成員可見
+      parent_members: "隱私：討論串將會對 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員可見。"
+      public: 隱私：這個群組現在被全網路可見
   edit_group_form:
     title: 編輯群組設定
     profile:
@@ -363,13 +364,14 @@ zh-TW:
     messages:
       success: 群組已更新
   membership_requests_card:
-    heading: "申請成員資格 ({{count}})"
-    manage_requests: 管理申請
+    heading: 申請成員資格
+    manage_requests: "管理申請 ({{count}})"
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
     ignore: 忽略
-    no_pending_requests: 目前沒有待審核的成員申請。
+    no_pending_requests: 此群組目前沒有待審核的會員申請。
+    no_previous_requests: 此群組目前沒有待審核的會員申請。
     previous_requests: 前一個申請
     previous_request_response: "{{response}} 由 {{responder}} "
     messages:
@@ -422,7 +424,6 @@ zh-TW:
     heading: 擱置中的邀請函
     email: 電子郵件
     invitation_link: 邀請連結
-    cancel: 取消
   cancel_invitation_form:
     heading: 取消邀請函
     question: 您確定您想要取消此邀請函嗎？
@@ -493,6 +494,7 @@ zh-TW:
     mark_as_read: 設為已讀
     filtering:
       filter_threads: 過濾討論串
+      filter_threads_aria_label: 過濾討論串
       dropdown_heading: 過濾儀表板
       all: 最近的討論串
       all_aria_label: 目前正在顯示最近的討論串
@@ -578,6 +580,8 @@ zh-TW:
     block: "<strong>{{name}}</strong> 已阻擋"
   new_proposal_item:
     author_created_proposal: "<strong>{{name}}</strong> 已建立提案："
+  proposal_closed_item:
+    proposal_closed: 定案的提議：
   contact_message_form:
     contact_us: 聯絡我們
     name_label: 您的大名

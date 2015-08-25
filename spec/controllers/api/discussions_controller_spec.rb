@@ -7,6 +7,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
@@ -148,6 +149,57 @@ describe API::DiscussionsController do
       expect(json.keys).to include *(%w[users groups proposals discussions])
       expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
     end
+
+    it 'returns the reader fields' do
+      DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
+      get :show, id: discussion.key
+      json = JSON.parse(response.body)
+      expect(json['discussions'][0]['starred']).to eq true
+    end
+  end
+
+  describe 'mark_as_read' do
+    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+
+    before do
+      group.add_admin! user
+      sign_in user
+      reader.save
+      reader.reload
+    end
+
+    it "Marks context/discusion as read" do
+      patch :mark_as_read, id: discussion.key, sequence_id: 0
+      expect(reader.reload.last_read_at).to eq discussion.reload.last_activity_at
+      expect(reader.last_read_sequence_id).to eq 0
+    end
+
+    it "Marks thread item as read" do
+      event = CommentService.create(comment: comment, actor: discussion.author)
+      patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
+      expect(reader.reload.last_read_at).to eq event.created_at
+      expect(reader.last_read_sequence_id).to eq 1
+    end
+
+    it 'does not mark an inaccessible discussion as read' do
+      event = CommentService.create(comment: build(:comment, discussion: another_discussion), actor: another_discussion.author)
+      patch :mark_as_read, id: another_discussion.key, sequence_id: event.reload.sequence_id
+      expect(response.status).to eq 403
+      expect(reader.reload.last_read_sequence_id).to eq 0
+    end
+
+    it 'responds with reader fields' do
+      event = CommentService.create(comment: comment, actor: discussion.author)
+      patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
+      json = JSON.parse(response.body)
+      reader.reload
+
+      expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
+      expect(json['discussions'][0]['starred']).to eq reader.starred
+      expect(json['discussions'][0]['volume']).to eq reader.volume
+      expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
+      expect(json['discussions'][0]['participating']).to eq reader.participating
+    end
   end
 
   describe 'index' do
@@ -202,6 +254,68 @@ describe API::DiscussionsController do
         discussions = json['discussions'].map { |v| v['id'] }
         expect(discussions).to include four_months_ago.id
         expect(discussions).to_not include two_months_ago.id
+      end
+    end
+  end
+
+  describe 'star' do
+    context 'success' do
+      it 'stars a thread' do
+        put :star, id: discussion.id, format: :json
+        expect(response).to be_success
+        expect(DiscussionReader.for(user: user, discussion: discussion).starred).to eq true
+      end
+    end
+
+    context 'failure' do
+      it 'does not star a thread' do
+        put :star, id: another_discussion.id, format: :json
+        expect(response).to_not be_success
+        expect(DiscussionReader.for(user: user, discussion: another_discussion).starred).to eq false
+      end
+    end
+  end
+
+  describe 'unstar' do
+    context 'success' do
+      it 'unstars a thread' do
+        reader = DiscussionReader.for(user: user, discussion: discussion)
+        reader.update starred: true
+        put :unstar, id: discussion.id, format: :json
+        expect(response).to be_success
+        expect(reader.reload.starred).to eq false
+      end
+    end
+
+    context 'failure' do
+      it 'does not update a reader' do
+        reader = DiscussionReader.for(user: user, discussion: another_discussion)
+        reader.update starred: true
+        put :unstar, id: another_discussion.id, format: :json
+        expect(response).not_to be_success
+        expect(reader.reload.starred).to eq true
+      end
+    end
+  end
+
+  describe 'set_volume' do
+    context 'success' do
+      it 'sets the volume of a thread' do
+        reader = DiscussionReader.for(user: user, discussion: discussion)
+        reader.update volume: :loud
+        put :set_volume, id: discussion.id, volume: :mute, format: :json
+        expect(response).to be_success
+        expect(reader.reload.volume.to_sym).to eq :mute
+      end
+    end
+
+    context 'failure' do
+      it 'does not update a reader' do
+        reader = DiscussionReader.for(user: user, discussion: another_discussion)
+        reader.update volume: :loud
+        put :set_volume, id: another_discussion.id, volume: :mute, format: :json
+        expect(response).not_to be_success
+        expect(reader.reload.volume.to_sym).not_to eq :mute
       end
     end
   end
