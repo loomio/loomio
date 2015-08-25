@@ -98,8 +98,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def discussion_kinds
-    ['new_discussion',
-     'discussion_edited'] +
+    ['new_discussion'] +
     comment_kinds +
     proposal_kinds
   end
@@ -116,7 +115,6 @@ class EventSerializer < ActiveModel::Serializer
      'motion_closing_soon',
      'motion_closed',
      'motion_closed_by_user',
-     'motion_edited',
      'motion_outcome_created',
      'motion_outcome_updated',
      'new_motion'] +
