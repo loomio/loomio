@@ -7,6 +7,7 @@ describe API::MembershipsController do
   let(:user_named_bang) { create :user, name: "Bang Whamfist" }
   let(:alien_named_biff) { create :user, name: "Biff Beef", email: 'beef@biff.com' }
   let(:alien_named_bang) { create :user, name: 'Bang Beefthrong' }
+
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
@@ -49,17 +50,34 @@ describe API::MembershipsController do
   end
 
   describe 'autocomplete' do
+    let(:emrob_jones) { create :user, name: 'emrob jones' }
+    let(:rob_jones) { create :user, name: 'rob jones' }
+    let(:jim_robinson) { create :user, name: 'jim robinson' }
+    let(:jim_emrob) { create :user, name: 'jim emrob' }
+    let(:rob_othergroup) { create :user, name: 'rob othergroup' }
+
     context 'success' do
-      it 'returns users filtered by query' do
-        get :autocomplete, group_id: group.id, q: 'biff', format: :json
-        json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[users memberships groups])
-        users = json['users'].map { |c| c['id'] }
-        groups = json['groups'].map { |g| g['id'] }
-        expect(users).to include user_named_biff.id
-        expect(users).to_not include user_named_bang.id
-        expect(users).to_not include alien_named_biff.id
-        expect(groups).to include group.id
+      before do
+        emrob_jones
+        rob_jones
+        jim_robinson
+        jim_emrob
+        group.add_member!(emrob_jones)
+        group.add_member!(rob_jones)
+        group.add_member!(jim_robinson)
+        group.add_member!(jim_emrob)
+        another_group.add_member!(rob_othergroup)
+      end
+      it 'returns users filtered by query', focus: true do
+        get :autocomplete, group_id: group.id, q: 'rob', format: :json
+
+        user_ids = JSON.parse(response.body)['users'].map{|c| c['id']}
+
+        expect(user_ids).to_not include emrob_jones.id
+        expect(user_ids).to include rob_jones.id
+        expect(user_ids).to include jim_robinson.id
+        expect(user_ids).to_not include jim_emrob.id
+        expect(user_ids).to_not include rob_othergroup.id
       end
     end
 

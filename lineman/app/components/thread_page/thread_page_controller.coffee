@@ -34,7 +34,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     if discussion and !@discussion?
       @discussion = discussion
       @group      = @discussion.group()
-      @comment    = Records.comments.build(discussion_id: @discussion.id)
+      @comment    = Records.comments.build(discussionId: @discussion.id)
       if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
         @proposalToFocus = @discussion.activeProposal()
 
@@ -48,7 +48,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       MessageChannelService.subscribeTo "/discussion-#{@discussion.key}"
 
   @init Records.discussions.find $routeParams.key
-  Records.discussions.findOrFetchByKey($routeParams.key).then @init, (error) ->
+  Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageEventsLoaded',    (event) =>

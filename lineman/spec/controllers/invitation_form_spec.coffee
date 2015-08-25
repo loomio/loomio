@@ -1,5 +1,4 @@
 describe 'InvitationFormController', ->
-
   beforeEach module 'loomioApp'
   beforeEach useFactory
 
@@ -9,13 +8,14 @@ describe 'InvitationFormController', ->
 
   beforeEach ->
     @currentUser = @factory.create 'users'
+    window.Loomio.currentUserId = @currentUser.id
     @group       = @factory.create 'groups', name: 'whoopdeedoo'
     @membership  = @factory.create 'memberships', userId: @currentUser.id, groupId: @group.id, admin: true
     window.useCurrentUser @currentUser
 
-  beforeEach inject (InvitationForm, $rootScope, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService) ->
+  beforeEach inject (InvitationForm, $rootScope, Records, CurrentUser, AbilityService, LoadingService) ->
     @scope = $rootScope.$new()
-    @controller = InvitationForm.controller(@scope, $rootScope, @group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService)
+    @controller = InvitationForm.controller(@scope, $rootScope, @group, Records, CurrentUser, AbilityService, LoadingService)
     @scope.fragmentIsValidEmail = -> false
 
   describe 'basics', ->

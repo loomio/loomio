@@ -11,5 +11,9 @@ class DiscussionReaderSerializer < ActiveModel::Serializer
              :last_read_sequence_id,
              :volume,
              :participating,
-             :starred                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+             :starred
+
+  def id
+    object.discussion_id
+  end
 end

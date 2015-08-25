@@ -1,12 +1,12 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate) ->
-  @init = ->
-    @user = Records.users.find(window.Loomio.currentUserId)
-    $translate.use(@user.locale)
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, CurrentUser, AppConfig) ->
+  @user = CurrentUser
 
+  @init = ->
+    $translate.use(@user.locale)
   @init()
 
   @availableLocales = ->
-    window.Loomio.locales
+    AppConfig.locales
 
   @submit = FormService.submit @, @user,
     flashSuccess: 'profile_page.messages.updated'

@@ -12,7 +12,7 @@ describe 'UserModel', ->
 
     user = recordStore.users.import(id: 1, name: 'sam')
     group = recordStore.groups.import(id: 1, name: 'pals')
-    membership = recordStore.memberships.import(id:1, group_id: 1, user_id: 1)
+    membership = recordStore.memberships.import(id:1, groupId: 1, userId: 1)
 
   describe 'memberships', ->
     it 'lists users memberships', ->
@@ -21,7 +21,6 @@ describe 'UserModel', ->
   describe 'membershipFor', ->
     it 'returns the membership of the user and group', ->
       expect(user.membershipFor(group)).toBe(membership)
-
 
   describe 'groups', ->
     it 'returns groups the user belongs to', ->

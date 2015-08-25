@@ -24,7 +24,7 @@ class API::MembershipsController < API::RestfulController
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
                                                      group: @group,
                                                      current_user: current_user,
-                                                     limit: 5)
+                                                     limit: 10)
     respond_with_collection
   end
 

@@ -30,7 +30,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
           # this needs to evolve into something more general
           # but insert a blank reader.. as we know what it will be
           discussionId = data.discussions[0].id
-          Records.discussionReaders.import({id: discussionId, discussion_id: discussionId})
+          Records.discussionReaders.import({id: discussionId, discussionId: discussionId})
 
       if data.notification?
         data.notifications = [] unless _.isArray(data.notifications)
