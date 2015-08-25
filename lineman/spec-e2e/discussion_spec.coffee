@@ -1,46 +1,77 @@
 describe 'Discussion Page', ->
 
-  threadHelper = require './helpers/thread_helper.coffee'
+  groupsHelper = require './helpers/groups_helper.coffee'
+  discussionForm = require './helpers/discussion_form_helper.coffee'
+  threadPage = require './helpers/thread_helper.coffee'
 
   beforeEach ->
-    threadHelper.load()
+    threadPage.load()
+
+  describe 'edit thread', ->
+    it 'lets you edit title and context', ->
+      threadPage.openEditThreadForm()
+      discussionForm.fillInTitle('better title')
+      discussionForm.fillInDescription("improved description")
+      discussionForm.clickUpdate()
+      expect(threadPage.discussionTitle().getText()).toContain('better title')
+      expect(threadPage.discussionTitle().getText()).toContain("improved description")
+
+    it 'lets you accidentally cancel then save', ->
+      threadPage.openEditThreadForm()
+      discussionForm.fillInTitle('even better title')
+      discussionForm.fillInDescription("more improved description")
+      discussionForm.clickCancel()
+      alert = browser.switchTo().alert()
+      alert.dismiss()
+      discussionForm.clickUpdate()
+      expect(threadPage.discussionTitle().getText()).toContain('even better title')
+      expect(threadPage.discussionTitle().getText()).toContain("more improved description")
+
+    it 'confirms you really want to cancel', ->
+      threadPage.openEditThreadForm()
+      discussionForm.fillInTitle('dumb title')
+      discussionForm.fillInDescription("rubbish description")
+      discussionForm.clickCancel()
+      alert = browser.switchTo().alert()
+      alert.accept()
+      expect(threadPage.discussionTitle().getText()).toContain('What star sign are you?')
 
   it 'adds a comment', ->
-    threadHelper.addComment('hi this is my comment')
-    expect(threadHelper.mostRecentComment().getText()).toContain('hi this is my comment')
+    threadPage.addComment('hi this is my comment')
+    expect(threadPage.mostRecentComment().getText()).toContain('hi this is my comment')
 
   it 'replies to a comment', ->
-    threadHelper.addComment('original comment right heerrr')
-    threadHelper.replyLinkOnMostRecentComment().click()
-    threadHelper.addComment('hi this is my comment')
-    expect(threadHelper.inReplyToOnMostRecentComment().getText()).toContain('in reply to')
-    # threadHelper.openNotificationDropdown()
-    # expect(threadHelper.notificationDropdown().getText()).toContain('replied to your comment')
+    threadPage.addComment('original comment right heerrr')
+    threadPage.replyLinkOnMostRecentComment().click()
+    threadPage.addComment('hi this is my comment')
+    expect(threadPage.inReplyToOnMostRecentComment().getText()).toContain('in reply to')
+    # threadPage.openNotificationDropdown()
+    # expect(threadPage.notificationDropdown().getText()).toContain('replied to your comment')
 
   it 'likes a comment', ->
-    threadHelper.addComment('hi')
-    threadHelper.likeLinkOnMostRecentComment().click()
-    expect(threadHelper.likedByOnMostRecentComment().getText()).toContain('You like this.')
+    threadPage.addComment('hi')
+    threadPage.likeLinkOnMostRecentComment().click()
+    expect(threadPage.likedByOnMostRecentComment().getText()).toContain('You like this.')
 
   it 'mentions a user', ->
-    threadHelper.enterCommentText('@jennifer')
-    expect(threadHelper.mentionList().getText()).toContain('Jennifer Grey')
-    threadHelper.firstMentionOption().click()
-    threadHelper.submitComment()
-    expect(threadHelper.mostRecentComment().getText()).toContain('@jennifergrey')
+    threadPage.enterCommentText('@jennifer')
+    expect(threadPage.mentionList().getText()).toContain('Jennifer Grey')
+    threadPage.firstMentionOption().click()
+    threadPage.submitComment()
+    expect(threadPage.mostRecentComment().getText()).toContain('@jennifergrey')
 
   it 'edits a comment', ->
-    threadHelper.addComment('original comment right hur')
-    threadHelper.clickThreadItemOptionsButton()
-    threadHelper.selectEditCommentOption()
-    threadHelper.editCommentText('edited comment right thur')
-    threadHelper.submitEditedComment()
-    expect(threadHelper.mostRecentComment().getText()).toContain('edited comment right thur')
+    threadPage.addComment('original comment right hur')
+    threadPage.clickThreadItemOptionsButton()
+    threadPage.selectEditCommentOption()
+    threadPage.editCommentText('edited comment right thur')
+    threadPage.submitEditedComment()
+    expect(threadPage.mostRecentComment().getText()).toContain('edited comment right thur')
 
   it 'deletes a comment', ->
-    threadHelper.addComment('original comment right hur')
-    threadHelper.clickThreadItemOptionsButton()
-    threadHelper.selectDeleteCommentOption()
-    threadHelper.confirmCommentDeletion()
-    expect(threadHelper.activityPanel().getText()).not.toContain('original comment right thur')
+    threadPage.addComment('original comment right hur')
+    threadPage.clickThreadItemOptionsButton()
+    threadPage.selectDeleteCommentOption()
+    threadPage.confirmCommentDeletion()
+    expect(threadPage.activityPanel().getText()).not.toContain('original comment right thur')
 

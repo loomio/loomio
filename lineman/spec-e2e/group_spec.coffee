@@ -3,6 +3,8 @@ describe 'Group Page', ->
   groupsHelper = require './helpers/groups_helper.coffee'
   membershipsHelper = require './helpers/memberships_helper.coffee'
   flashHelper = require './helpers/flash_helper.coffee'
+  discussionForm = require './helpers/discussion_form_helper.coffee'
+  threadPage = require './helpers/thread_helper.coffee'
 
   describe 'starting a discussion', ->
     beforeEach ->
@@ -10,11 +12,22 @@ describe 'Group Page', ->
 
     it 'successfully starts a discussion', ->
       groupsHelper.clickStartThreadButton()
-      groupsHelper.fillInDiscussionTitle('Nobody puts baby in a corner')
-      groupsHelper.fillInDiscussionDescription("I've had the time of my life")
-      groupsHelper.submitDiscussionForm()
-      expect(groupsHelper.discussionTitle().getText()).toContain('Nobody puts baby in a corner')
-      expect(groupsHelper.discussionTitle().getText()).toContain("I've had the time of my life")
+      discussionForm.fillInTitle('Nobody puts baby in a corner')
+      discussionForm.fillInDescription("I've had the time of my life")
+      discussionForm.clickSubmit()
+      expect(threadPage.discussionTitle().getText()).toContain('Nobody puts baby in a corner')
+      expect(threadPage.discussionTitle().getText()).toContain("I've had the time of my life")
+
+    it 'prevents losing form content if you accidentally cancel', ->
+      groupsHelper.clickStartThreadButton()
+      discussionForm.fillInTitle('Nobody puts baby in a corner')
+      discussionForm.fillInDescription("I've had the time of my life")
+      discussionForm.clickCancel()
+      alert = browser.switchTo().alert()
+      alert.dismiss()
+      discussionForm.clickSubmit()
+      expect(threadPage.discussionTitle().getText()).toContain('Nobody puts baby in a corner')
+      expect(threadPage.discussionTitle().getText()).toContain("I've had the time of my life")
 
   describe 'starting a subgroup', ->
     beforeEach ->
