@@ -69,7 +69,7 @@ describe 'Discussions Card Component', ->
     expect(@$scope.showThreadsPlaceholder()).toBe(false)
 
   it 'does not display a placeholder when the CurrentUser is not a coordinator', ->
-    @membership.updateFromJSON admin: false
+    @membership.update admin: false
     prepareDirective @, 'discussions_card', { group: 'group' }, (parent) =>
       parent.group = @group
     expect(@$scope.showThreadsPlaceholder()).toBe(false)

@@ -1,8 +1,8 @@
-angular.module('loomioApp').factory 'AnalyticsService', ($location, $rootScope, $timeout) ->
+angular.module('loomioApp').factory 'AnalyticsService', ($location, $rootScope, $timeout, AppConfig) ->
   class AnalyticsService
     data =
-      dimension4: window.Loomio.version
-      dimension5: window.Loomio.currentUserId
+      dimension4: AppConfig.version
+      dimension5: AppConfig.currentUserId
       dimension6: 1
 
     setVersion: (version) ->

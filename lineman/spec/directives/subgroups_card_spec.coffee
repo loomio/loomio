@@ -28,7 +28,7 @@ describe 'Subgroups Card Component', ->
     expect(@$scope.showSubgroupsPlaceholder()).toBe(false)
 
   it 'does not display a placeholder when the CurrentUser is not a coordinator', ->
-    @membership.updateFromJSON admin: false
+    @membership.update admin: false
     @factory.create 'groups', parentId: @group.id
     prepareDirective @, 'subgroups_card', { group: 'group' }, (parent) =>
       parent.group = @group

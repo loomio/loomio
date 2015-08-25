@@ -1,28 +1,24 @@
-angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
+angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
   class GroupModel extends BaseModel
     @singular: 'group'
     @plural: 'groups'
-    @indices: ['id', 'key', 'parentId']
+    @uniqueIndices: ['id', 'key']
+    @indices: ['parentId']
+    @serializableAttributes: AppConfig.permittedParams.group
 
     defaultValues: ->
       parentId: null
 
-    setupViews: ->
-      @setupView 'discussions', 'createdAt', true
-      @setupView 'membershipRequests', 'createdAt', true
-      @setupView 'invitations', 'createdAt', true
-
-    discussions: ->
-      @discussionsView.data()
-
-    membershipRequests: ->
-      @membershipRequestsView.data()
-
-    invitations: ->
-      @invitationsView.data()
+    relationships: ->
+      @hasMany 'discussions'
+      @hasMany 'membershipRequests'
+      @hasMany 'memberships'
+      @hasMany 'invitations'
+      @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
+      @belongsTo 'parent', from: 'groups'
 
     pendingMembershipRequests: ->
-      _.filter @membershipRequestsView.data(), (membershipRequest) ->
+      _.filter @membershipRequests(), (membershipRequest) ->
         membershipRequest.isPending()
 
     hasPendingMembershipRequests: ->
@@ -33,14 +29,14 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
         request.requestorId == user.id
 
     previousMembershipRequests: ->
-      _.filter @membershipRequestsView.data(), (membershipRequest) ->
+      _.filter @membershipRequests(), (membershipRequest) ->
         !membershipRequest.isPending()
 
     hasPreviousMembershipRequests: ->
       _.some @previousMembershipRequests()
 
     pendingInvitations: ->
-      _.filter @invitationsView.data(), (invitation) ->
+      _.filter @invitations(), (invitation) ->
         invitation.isPending()
 
     hasPendingInvitations: ->
@@ -56,13 +52,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       if @isSubgroup()
         @parent().subdomain
       else
-        @subdomain  
-
-    subgroups: ->
-      if @isParent()
-        @recordStore.groups.find(parentId: @id)
-      else
-        []
+        @subdomain
 
     memberships: ->
       @recordStore.memberships.find(groupId: @id)
@@ -95,18 +85,20 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       else
         @name
 
-    parent: ->
-      @recordStore.groups.find(@parentId)
-
     parentName: ->
       @parent().name if @parent()?
 
     parentIsHidden: ->
       @parent().visibleToPublic() if @parentId?
 
-    visibleToPublic: ->       @visibleTo == 'public'
-    visibleToOrganisation: -> @visibleTo == 'parent_members'
-    visibleToMembers: ->      @visibleTo == 'members'
+    visibleToPublic: ->
+      @visibleTo == 'public'
+
+    visibleToOrganisation: ->
+      @visibleTo == 'parent_members'
+
+    visibleToMembers: ->
+      @visibleTo == 'members'
 
     isSubgroup: ->
       @parentId?
@@ -133,6 +125,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       else
         '/img/default-cover-photo.png'
 
-    archive: ->
-      # is this broken (group null right?)
-      @restfulClient.postMember(group.key, 'archive')
+    archive: =>
+      @remote.patchMember(@key, 'archive').then =>
+        @recordsInterface.collection.remove(@)
+

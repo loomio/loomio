@@ -1,9 +1,11 @@
-angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
+angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel, AppConfig) ->
   class MembershipRequestModel extends BaseModel
     @singular: 'membershipRequest'
     @plural: 'membershipRequests'
     @indices: ['id', 'groupId']
+    @serializableAttributes: AppConfig.permittedParams.membership_request
 
+    # this needs a rethink with more brain power
     initialize: (data) ->
       @baseInitialize(data)
       if !@byExistingUser()
@@ -13,14 +15,10 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel) ->
           avatarKind: 'initials'
           avatarInitials: _.map(@name.split(' '), (t) -> t[0]).join('')
 
-    group: ->
-      @recordStore.groups.find(@groupId)
-
-    requestor: ->
-      @recordStore.users.find(@requestorId)
-
-    responder: ->
-      @recordStore.users.find(@responderId)
+    relationships: ->
+      @belongsTo 'group'
+      @belongsTo 'requestor', from: 'users'
+      @belongsTo 'responder', from: 'users'
 
     actor: ->
       if @byExistingUser()

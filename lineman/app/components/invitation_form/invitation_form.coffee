@@ -1,10 +1,8 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $rootScope, group, InvitationsClient, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
+  controller: ($scope, $rootScope, group, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
     $scope.group = group
     $scope.invitations = []
-
-    invitationsClient = new InvitationsClient()
 
     $scope.hasInvitations = ->
       $scope.invitations.length > 0
@@ -102,7 +100,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.submit = ->
       $scope.isDisabled = true
-      invitationsClient.create(invitationsParams()).then ->
+      Records.invitations.remote.create(invitationsParams()).then ->
         FlashService.success $scope.successMessage(), members: $scope.memberCount(), emails: $scope.emailCount()
         $scope.$close()
         Records.memberships.fetchByGroup $scope.group.key, per: 25

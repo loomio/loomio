@@ -1,5 +1,6 @@
 en:
   common:
+    confirm_discard_changes: Discard your changes?
     time:
       am: am
       pm: pm

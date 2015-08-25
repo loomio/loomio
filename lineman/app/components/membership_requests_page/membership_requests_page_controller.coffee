@@ -6,7 +6,7 @@ angular.module('loomioApp').controller 'MembershipRequestsPageController', ($rou
     Records.membershipRequests.fetchPendingByGroup(group.key, per: 100)
     Records.membershipRequests.fetchPreviousByGroup(group.key, per: 100)
 
-  Records.groups.findOrFetchByKey($routeParams.key).then @init, (error) ->
+  Records.groups.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error, group)
 
   @pendingRequests = =>

@@ -1,8 +1,13 @@
-angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
+angular.module('loomioApp').factory 'AttachmentModel', (BaseModel, AppConfig) ->
   class AttachmentModel extends BaseModel
     @singular: 'attachment'
     @plural: 'attachments'
     @indices: ['id', 'commentId']
+    @serializableAttributes: AppConfig.permittedParams.attachment
+
+    relationships: ->
+      @belongsTo 'author', from: 'users', by: 'authorId'
+      @belongsTo 'comment', from: 'comments', by: 'commentId'
 
     formattedFilesize: ->
       if isNaN(@filesize) then return "(invalid file size)"
@@ -22,8 +27,3 @@ angular.module('loomioApp').factory 'AttachmentModel', (BaseModel) ->
 
       "(#{size.toFixed(1)} #{denom})"
 
-    author: ->
-      @recordStore.users.get(@authorId)
-
-    comment: ->
-      @recordStore.comments.get(@commentId)
