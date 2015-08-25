@@ -1,7 +1,4 @@
-FactoryGirl.define do  factory :record_edit do
-    
-  end
-
+FactoryGirl.define do
   factory :blacklisted_password do
     string "MyString"
   end

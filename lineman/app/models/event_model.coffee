@@ -32,7 +32,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @belongsTo 'proposal'
       @belongsTo 'vote'
       @belongsTo 'actor', from: 'users'
-      @belongsTo 'recordEdit'
+      @belongsTo 'version'
 
     delete: ->
       @deleted = true

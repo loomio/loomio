@@ -16,13 +16,11 @@ class MotionService
     end
 
     motion.attributes = params
-
     actor.ability.authorize! :update, motion
-
     return false unless motion.valid?
 
-    event = Events::MotionEdited.publish!(motion, actor)
     motion.save!
+    event = Events::MotionEdited.publish!(motion, actor)
     ThreadSearchService.index! motion.discussion_id
     event
   end

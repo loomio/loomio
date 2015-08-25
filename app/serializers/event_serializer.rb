@@ -9,7 +9,7 @@ class EventSerializer < ActiveModel::Serializer
   has_one :discussion, serializer: DiscussionSerializer
   has_one :proposal, serializer: MotionSerializer, root: 'proposals'
   has_one :vote, serializer: VoteSerializer
-  has_one :record_edit, serializer: RecordEditSerializer
+  has_one :version, serializer: VersionSerializer
 
   def actor
     object.user || object.eventable.try(:user)
@@ -27,7 +27,7 @@ class EventSerializer < ActiveModel::Serializer
     object.eventable
   end
 
-  def record_edit
+  def version
     object.eventable
   end
 
@@ -51,7 +51,7 @@ class EventSerializer < ActiveModel::Serializer
     object.eventable
   end
 
-  def include_record_edit?
+  def include_version?
     ['discussion_edited', 'motion_edited'].include? object.kind
   end
 

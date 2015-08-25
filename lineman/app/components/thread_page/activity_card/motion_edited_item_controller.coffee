@@ -1,11 +1,11 @@
 angular.module('loomioApp').controller 'MotionEditedItemController', ($scope) ->
-  $scope.proposal = $scope.event.recordEdit().proposal()
-  recordEdit = $scope.event.recordEdit()
+  $scope.proposal = $scope.event.version().proposal()
+  version = $scope.event.version()
   $scope.proposalName =
-    if _.include(_.keys(recordEdit.newValues), 'name')
-      recordEdit.newValues.name
+    if version.attributeEdited('name')
+      version.changes.name[1]
     else
       $scope.proposal.name
 
   $scope.translationKey =
-    recordEdit.editedAttributeNames().join('_')
+    version.editedAttributeNames().join('_')
