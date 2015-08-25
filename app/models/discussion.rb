@@ -1,7 +1,7 @@
 class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   SALIENT_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created]
-  SAFE_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created]
+  SAFE_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created motion_outcome_updated]
   paginates_per PER_PAGE
 
   include ReadableUnguessableUrls

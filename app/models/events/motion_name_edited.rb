@@ -2,8 +2,7 @@ class Events::MotionNameEdited < Event
   def self.publish!(motion, editor)
     create!(kind: "motion_name_edited",
             eventable: motion,
-            user: editor,
-            discussion_id: motion.discussion_id)
+            user: editor)
   end
 
   def group_key
