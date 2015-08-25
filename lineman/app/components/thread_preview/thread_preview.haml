@@ -3,10 +3,10 @@
     %star_toggle{thread: 'thread'}
 
   .thread-preview__actions.hidden-xs
-    %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.reader().markAsRead()', ng-class: '{disabled: !thread.isUnread()}'}>
+    %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.markAsRead()', ng-class: '{disabled: !thread.isUnread()}'}>
       %i.fa.fa-check>
       %span{translate: 'dashboard_page.mark_as_read'}
-    %button.btn.btn-default.btn-sm.thread-preview__mute{ng-click: 'thread.reader().changeVolume("mute")', ng-class: '{disabled: thread.isMuted()}'}>
+    %button.btn.btn-default.btn-sm.thread-preview__mute{ng-click: 'thread.changeVolume("mute")', ng-class: '{disabled: thread.volume == "mute"}'}>
       %i.fa.fa-volume-off
       %i.fa.fa-times>
       %span{translate: 'volume_levels.mute'}

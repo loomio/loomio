@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'notifications', ->
   restrict: 'E'
   templateUrl: 'generated/components/notifications/notifications.html'
   replace: true
-  controller: ($scope, UserAuthService, Records, CurrentUser, MessageChannelService) ->
+  controller: ($scope, Records, CurrentUser, MessageChannelService) ->
 
     MessageChannelService.subscribeToNotifications()
     Records.notifications.fetchMyNotifications()
