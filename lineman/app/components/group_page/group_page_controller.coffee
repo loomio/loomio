@@ -1,8 +1,5 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams, Records, CurrentUser, ScrollService, ModalService, MessageChannelService, GroupWelcomeModal, AbilityService) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams, Records, CurrentUser, ScrollService, MessageChannelService, AbilityService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
-
-  $rootScope.$on 'newGroupCreated', ->
-    ModalService.open GroupWelcomeModal
 
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
