@@ -43,4 +43,3 @@ describe 'Discussion Page', ->
     threadHelper.selectDeleteCommentOption()
     threadHelper.confirmCommentDeletion()
     expect(threadHelper.activityPanel().getText()).not.toContain('original comment right thur')
-

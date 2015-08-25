@@ -1,6 +1,7 @@
 class Discussion < ActiveRecord::Base
   PER_PAGE = 50
   SALIENT_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created]
+  SAFE_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created]
   paginates_per PER_PAGE
 
   include ReadableUnguessableUrls
@@ -47,7 +48,7 @@ class Discussion < ActiveRecord::Base
 
   has_many :events, -> { includes :user }, as: :eventable, dependent: :destroy
 
-  has_many :items, -> { includes(eventable: :user).order('created_at ASC') }, class_name: 'Event'
+  has_many :items, -> { includes(eventable: :user).where(kind: SAFE_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
   has_many :salient_items, -> { includes(eventable: :user).where(kind: SALIENT_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
 
   has_many :discussion_readers

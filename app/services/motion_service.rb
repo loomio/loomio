@@ -19,26 +19,12 @@ class MotionService
 
     actor.ability.authorize! :update, motion
 
-    if motion.valid?
-      sync_search_vector = motion.name_changed? || motion.description_changed?
+    return false unless motion.valid?
 
-      if motion.name_changed?
-        Events::MotionNameEdited.publish!(motion, actor)
-      end
-
-      if motion.description_changed?
-        Events::MotionDescriptionEdited.publish!(motion, actor)
-      end
-
-      if motion.closing_at_changed?
-        Events::MotionCloseDateEdited.publish!(motion, actor)
-      end
-
-      motion.save
-      ThreadSearchService.index! motion.discussion_id if sync_search_vector
-    else
-      false
-    end
+    event = Events::MotionEdited.publish!(motion, actor)
+    motion.save!
+    ThreadSearchService.index! motion.discussion_id
+    event
   end
 
   def self.close_all_lapsed_motions

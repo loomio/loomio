@@ -40,21 +40,13 @@ class DiscussionService
     end
 
     return false unless discussion.valid?
-
-    update_search_vector = discussion.title_changed? || discussion.description_changed?
-
-    event = true
-    if discussion.title_changed?
-      event = Events::DiscussionTitleEdited.publish!(discussion, actor)
-    end
-
-    if discussion.description_changed?
-      event = Events::DiscussionDescriptionEdited.publish!(discussion, actor)
-    end
-
+    return discussion if discussion.changed == ['uses_markdown']
+    return discussion unless discussion.changed?
+    
+    event = Events::DiscussionEdited.publish!(discussion, actor)
     discussion.save!
 
-    ThreadSearchService.index! discussion.id if update_search_vector
+    ThreadSearchService.index! discussion.id
     DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
     event
   end

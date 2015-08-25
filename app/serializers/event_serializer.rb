@@ -9,9 +9,10 @@ class EventSerializer < ActiveModel::Serializer
   has_one :discussion, serializer: DiscussionSerializer
   has_one :proposal, serializer: MotionSerializer, root: 'proposals'
   has_one :vote, serializer: VoteSerializer
+  has_one :record_edit, serializer: RecordEditSerializer
 
   def actor
-    object.eventable.try(:user)
+    object.user || object.eventable.try(:user)
   end
 
   def group
@@ -26,12 +27,20 @@ class EventSerializer < ActiveModel::Serializer
     object.eventable
   end
 
+  def record_edit
+    object.eventable
+  end
+
   def discussion
     object.eventable.try(:discussion) || object.eventable
   end
 
   def proposal
-    object.eventable.try(:motion) || object.eventable
+    case object.kind
+    when 'motion_updated' then object.eventable.record
+    else 
+      object.eventable.try(:motion) || object.eventable
+    end
   end
 
   def comment
@@ -40,6 +49,10 @@ class EventSerializer < ActiveModel::Serializer
 
   def vote
     object.eventable
+  end
+
+  def include_record_edit?
+    ['discussion_edited', 'motion_edited'].include? object.kind
   end
 
   def include_membership?
@@ -85,7 +98,9 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def discussion_kinds
-    ['new_discussion'] +
+    ['new_discussion',
+     'discussion_title_edited',
+     'discussion_description_edited'] +
     comment_kinds +
     proposal_kinds
   end
@@ -101,6 +116,10 @@ class EventSerializer < ActiveModel::Serializer
     ['motion_blocked',
      'motion_closing_soon',
      'motion_closed',
+     'motion_closed_by_user',
+     'motion_name_edited',
+     'motion_description_edited',
+     'motion_close_date_edited',
      'motion_outcome_created',
      'motion_outcome_updated',
      'new_motion'] +

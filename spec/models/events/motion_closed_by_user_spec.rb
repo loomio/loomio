@@ -12,7 +12,8 @@ describe Events::MotionClosedByUser do
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'motion_closed_by_user',
                                           eventable: motion,
-                                          user: closer)
+                                          user: closer,
+                                          discussion_id: nil)
       Events::MotionClosedByUser.publish!(motion, closer)
     end
 
