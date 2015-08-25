@@ -19,6 +19,7 @@
         %h3.new-comment__author-name {{ ::comment.authorName() }}
 
   .thread-item__body.lmo-markdown-wrapper{marked: 'comment.body' }
+  .lmo-translated.lmo-markdown-wrapper{ng-if: 'translated', marked: 'translated'}
 
   .thread-item__attachments
     .thread-item__attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}
@@ -30,9 +31,10 @@
       %a{href: '', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
       %a.thread-item__action--reply{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
-      %span.thread-item__inline-translation{ng-if: 'canTranslate()'}
-        %span{aria-hidden: 'true'}·
-        %a{href: '', ng-click: 'translate()', translate: 'common.action.translate'}>
+      %span{aria-hidden: 'true', ng-if: 'canTranslate() || translateExecuting || translated'}·
+      %a.thread-item__translate{ng-if: 'canTranslate()', href: '', ng-click: 'translate()', translate: 'common.action.translate'}>
+      %loading.lmo-translation-loading{ng-show: 'translateExecuting'}
+      %span.thread-item__translation{ng-if: 'translated', translate: 'common.action.translated'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

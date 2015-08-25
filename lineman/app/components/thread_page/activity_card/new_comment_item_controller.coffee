@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $rootScope, $translate, Records, CurrentUser, ModalService, EditCommentForm, DeleteCommentForm, AbilityService) ->
+angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $rootScope, $translate, Records, CurrentUser, ModalService, EditCommentForm, DeleteCommentForm, AbilityService, LoadingService) ->
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, CurrentUser.id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -76,7 +76,11 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
     $rootScope.$broadcast 'replyToCommentClicked', $scope.comment
 
   $scope.canTranslate = ->
-    CurrentUser.locale != $scope.comment.author().locale
+    CurrentUser.locale != $scope.comment.author().locale and
+    !$scope.translateExecuting and
+    !$scope.translated
 
   $scope.translate = ->
-    Records.translations.fetchTranslation($scope.comment, CurrentUser.locale)
+    Records.translations.fetchTranslation($scope.comment, CurrentUser.locale).then (data) ->
+      $scope.translated = data.translations[0].fields.body
+  LoadingService.applyLoadingFunction $scope, 'translate'

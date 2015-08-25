@@ -36,6 +36,7 @@ en:
       add_subgroup: 'Add subgroup'
       loading: 'Loading'
       translate: 'Translate'
+      translated: 'Translation by Bing Translator'
 
   error_page:
     forbidden: 'You do not have permission to do this.'
