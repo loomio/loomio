@@ -18,7 +18,27 @@ describe API::MotionsController do
     sign_in user
   end
 
-   describe 'index' do
+  describe 'test time zone' do
+    let(:motion_params) {{
+      name: 'hello',
+      closing_at: '2015-01-02 00:00',
+      discussion_id: discussion.id
+    }}
+
+    before do
+      user.update_attribute(:time_zone, 'Pacific/Auckland')
+    end
+
+    it 'does something', focus: true do
+      post :create, motion: motion_params
+      expect(response).to be_success
+      p motion_params
+      p JSON.parse(response.body)['proposals'][0]
+      expect(Motion.last).to be_present
+    end
+  end
+
+  describe 'index' do
     let(:another_discussion)    { create :discussion }
     let(:another_motion)      { create :motion, discussion: another_discussion }
 
