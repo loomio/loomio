@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
   $rootScope.$on 'newGroupCreated', ->
     ModalService.open GroupWelcomeModal
 
-  Records.groups.findOrFetchByKey($routeParams.key).then (group) =>
+  Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
     $rootScope.$broadcast 'currentComponent', { page: 'groupPage' }
     $rootScope.$broadcast 'viewingGroup', @group

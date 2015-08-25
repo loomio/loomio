@@ -28,7 +28,7 @@ describe 'Members Card Component', ->
     expect(@$scope.showMembersPlaceholder()).toBe(false)
 
   it 'does not display a placeholder when the CurrentUser is not a coordinator', ->
-    @membership.updateFromJSON admin: false
+    @membership.update admin: false
     prepareDirective @, 'members_card', { group: 'group' }, (parent) =>
       parent.group = @group
     expect(@$scope.showMembersPlaceholder()).toBe(false)

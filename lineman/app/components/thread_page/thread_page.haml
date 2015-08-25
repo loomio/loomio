@@ -18,14 +18,14 @@
         .thread-notification-level.lmo-btn-wrapper
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
         %star_toggle{thread: 'threadPage.discussion'}
-        %span.lmo-btn-wrapper.dropdown{ng-if: 'threadPage.showContextMenu()'}
-          %button.btn.lmo-btn-nude.dropdown-toggle{href:''}
+        %span.lmo-btn-wrapper{dropdown: '',  ng-if: 'threadPage.showContextMenu()'}
+          %button.thread-context__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
             .sr-only{translate: 'thread_context.thread_options'}
             %i.fa.fa-fw.fa-chevron-down{aria-hidden: 'true'}
           .dropdown-menu.dropdown-menu-right
             %ul.dropdown-menu-items
               %li.dropdown-menu-item
-                %a.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
+                %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'common.action.edit', ng-if: 'threadPage.canEditDiscussion()'}
       .clearfix
       %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}

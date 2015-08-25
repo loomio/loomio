@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'flash', ->
+angular.module('loomioApp').directive 'flash', (AppConfig) ->
   restrict: 'E'
   templateUrl: 'generated/components/flash/flash.html'
   replace: true
@@ -17,9 +17,9 @@ angular.module('loomioApp').directive 'flash', ->
     $scope.display = -> $scope.flash.visible
     $scope.dismiss = -> $scope.flash.visible = false
 
-    FlashService.success window.Loomio.flash.success if window.Loomio.flash.success?
-    FlashService.info    window.Loomio.flash.notice  if window.Loomio.flash.notice?
-    FlashService.warning window.Loomio.flash.warning if window.Loomio.flash.warning?
-    FlashService.error   window.Loomio.flash.error   if window.Loomio.flash.error?
+    FlashService.success AppConfig.flash.success if AppConfig.flash.success?
+    FlashService.info    AppConfig.flash.notice  if AppConfig.flash.notice?
+    FlashService.warning AppConfig.flash.warning if AppConfig.flash.warning?
+    FlashService.error   AppConfig.flash.error   if AppConfig.flash.error?
 
     return

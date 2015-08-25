@@ -1,14 +1,16 @@
-angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
+angular.module('loomioApp').factory 'VoteModel', (BaseModel, AppConfig) ->
   class VoteModel extends BaseModel
     @singular: 'vote'
     @plural: 'votes'
     @indices: ['id', 'proposalId']
+    @serializableAttributes: AppConfig.permittedParams.vote
 
-    author: ->
-      @recordStore.users.find(@authorId)
+    defaultValues: ->
+      statement: ''
 
-    proposal: ->
-      @recordStore.proposals.find(@proposalId)
+    relationships: ->
+      @belongsTo 'author', from: 'users'
+      @belongsTo 'proposal'
 
     authorName: ->
       @author().name

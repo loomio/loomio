@@ -10,7 +10,7 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
     Records.memberships.fetchByNameFragment(@fragment, @group.key) if @fragment
 
   @init Records.discussions.find $routeParams.key
-  Records.groups.findOrFetchByKey($routeParams.key).then @init, (error) ->
+  Records.groups.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error, group)
 
   @canAdministerGroup = ->

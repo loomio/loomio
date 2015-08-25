@@ -15,17 +15,17 @@ describe 'ProposalModel', ->
     inject (Records) ->
       recordStore = Records
 
-    group = recordStore.groups.import(id: 1, name: 'group')
-    discussion = recordStore.discussions.import(id: 1, group_id: group.id, title: 'discussion')
-    proposal = recordStore.proposals.import(id: 1, discussion_id: discussion.id, name: 'proposal')
-    voter1 = recordStore.users.import(id: 1, name: 'sam')
-    voter2 = recordStore.users.import(id: 2, name: 'han')
-    undecidedMember =  recordStore.users.import(id: 3, name: 'jam')
-    recordStore.memberships.import(userId: 1, groupId: 1)
-    recordStore.memberships.import(userId: 2, groupId: 1)
-    recordStore.memberships.import(userId: 3, groupId: 1)
-    vote1 = recordStore.votes.import(id: 1, proposal_id: proposal.id, author_id: voter1.id)
-    vote2 = recordStore.votes.import(id: 2, proposal_id: proposal.id, author_id: voter1.id)
+    group = recordStore.groups.importJSON(id: 1, name: 'group')
+    discussion = recordStore.discussions.importJSON(id: 1, group_id: group.id, title: 'discussion')
+    proposal = recordStore.proposals.importJSON(id: 1, discussion_id: discussion.id, name: 'proposal')
+    voter1 = recordStore.users.importJSON(id: 1, name: 'sam')
+    voter2 = recordStore.users.importJSON(id: 2, name: 'han')
+    undecidedMember =  recordStore.users.importJSON(id: 3, name: 'jam')
+    recordStore.memberships.import(id: 1, userId: 1, groupId: 1)
+    recordStore.memberships.import(id: 2, userId: 2, groupId: 1)
+    recordStore.memberships.import(id: 3, userId: 3, groupId: 1)
+    vote1 = recordStore.votes.importJSON(id: 1, proposal_id: proposal.id, author_id: voter1.id)
+    vote2 = recordStore.votes.importJSON(id: 2, proposal_id: proposal.id, author_id: voter1.id)
 
   describe 'votes()', ->
     it 'returns votes', ->
@@ -52,6 +52,7 @@ describe 'ProposalModel', ->
       expect(proposal.isActive()).toBe(true)
 
   describe 'userHasVoted', ->
+    # okokok
     it 'is false when the user has not voted', ->
       expect(proposal.userHasVoted({id: 2})).toBe(false)
 

@@ -9,4 +9,4 @@ angular.module('loomioApp').directive 'startProposalButton', ->
       AbilityService.canStartProposal($scope.discussion)
 
     $scope.startProposal = ->
-      ModalService.open ProposalForm, proposal: -> Records.proposals.build(discussion_id: $scope.discussion.id)
+      ModalService.open ProposalForm, proposal: -> Records.proposals.build(discussionId: $scope.discussion.id)

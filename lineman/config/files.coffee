@@ -23,8 +23,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "node_modules/loomio-angular-router/dist/router.es5.js",
              "vendor/bower_components/angular-translate/angular-translate.js",
              "vendor/bower_components/angular-translate-loader-url/angular-translate-loader-url.js",
-             "vendor/bower_components/angular-bootstrap/ui-bootstrap.js",
-             "vendor/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+             "node_modules/angular-ui-bootstrap/ui-bootstrap.js",
+             "node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js",
              "vendor/bower_components/marked/lib/marked.js",
              "vendor/bower_components/angular-marked/angular-marked.js",
              "vendor/bower_components/ng-file-upload/angular-file-upload.js",
@@ -38,7 +38,4 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "files",
              "vendor/bower_components/angular-truncate/src/truncate.js",
              "vendor/bower_components/angular-scroll/angular-scroll.js",
              "vendor/bower_components/svg.js/dist/svg.js",
-             "node_modules/angular_record_store/standalone.js" ]
-
-    app: ["app/app.js",
-          "app/**/*.js"]
+             "node_modules/angular_record_store/dist/standalone.js" ]

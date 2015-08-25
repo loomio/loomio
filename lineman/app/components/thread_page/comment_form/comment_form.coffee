@@ -4,14 +4,14 @@ angular.module('loomioApp').directive 'commentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
   controller: ($scope, FlashService, Records, CurrentUser, KeyEventService) ->
-    group = $scope.comment.discussion().group()
     discussion = $scope.comment.discussion()
+    group = $scope.comment.group()
 
     $scope.submit = ->
       $scope.isDisabled = true
       $scope.comment.save().then ->
         $scope.isDisabled = false
-        $scope.comment = Records.comments.build(discussion_id: discussion.id)
+        $scope.comment = Records.comments.build(discussionId: discussion.id)
         FlashService.success('comment_form.messages.created')
       , ->
         $scope.isDisabled = false
@@ -25,14 +25,15 @@ angular.module('loomioApp').directive 'commentForm', ->
       Records.attachments.destroy(attachment.id)
 
     $scope.updateMentionables = (fragment) ->
-      allMentionables = _.filter group.members(), (member) ->
-        member.id != CurrentUser.id and \
-        (~member.name.search(new RegExp(fragment, 'i')) or \
-         ~member.label.search(new RegExp(fragment, 'i')))
-      $scope.mentionables = _.take allMentionables, 5 # filters are being annoying
+      regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
+      allMembers = _.filter group.members(), (member) ->
+        return false if member.id == CurrentUser.id
+        (regex.test(member.name) or regex.test(member.username))
+      $scope.mentionables = allMembers.slice(0, 5)
 
     $scope.fetchByNameFragment = (fragment) ->
       $scope.updateMentionables(fragment)
-      Records.memberships.fetchByNameFragment(fragment, group.key).then -> $scope.updateMentionables(fragment)
+      Records.memberships.fetchByNameFragment(fragment, group.key).then ->
+        $scope.updateMentionables(fragment)
 
     KeyEventService.submitOnEnter $scope

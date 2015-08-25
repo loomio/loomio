@@ -1,2 +1,2 @@
 angular.module('loomioApp').factory 'RecordStore', () ->
-  AngularRecordStore.RecordStore()
+  AngularRecordStore.RecordStoreFn()
