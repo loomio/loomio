@@ -2,7 +2,7 @@ class Events::UserMentioned < Event
   def self.publish!(comment, mentioned_user)
     event = create!(kind: 'user_mentioned',
                     eventable: comment,
-                    user: mentioned_user,
+                    user: comment.author,
                     created_at: comment.created_at)
 
 
