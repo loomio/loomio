@@ -36,7 +36,7 @@ class Motion < ActiveRecord::Base
   delegate :locale, to: :user
   delegate :followers, to: :discussion
   delegate :title, to: :discussion, prefix: :discussion
-  has_paper_trail only: [:name, :description, :closing_at]
+  has_paper_trail only: [:name, :description, :closing_at, :outcome]
 
   after_initialize :set_default_closing_at
 

@@ -2,12 +2,13 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
   class CommentModel extends BaseModel
     @singular: 'comment'
     @plural: 'comments'
-    @indices: ['id', 'discussionId', 'authorId']
+    @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.comment
 
     defaultValues: ->
       usesMarkdown: true
       newAttachmentIds: []
+      discussionId: null
       body: ''
 
     relationships: ->

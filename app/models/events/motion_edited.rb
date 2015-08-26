@@ -1,8 +1,8 @@
 class Events::MotionEdited < Event
   def self.publish!(motion, editor)
-    record_edit = RecordEdit.capture!(motion, editor)
+    version = motion.versions.last
     create!(kind: "motion_edited",
-            eventable: record_edit,
+            eventable: version,
             user: editor,
             discussion_id: motion.discussion_id)
   end

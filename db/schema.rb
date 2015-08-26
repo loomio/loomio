@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824225220) do
+ActiveRecord::Schema.define(version: 20150825231543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -617,18 +617,6 @@ ActiveRecord::Schema.define(version: 20150824225220) do
   add_index "organisation_visits", ["organisation_id"], name: "index_organisation_visits_on_organisation_id", using: :btree
   add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
-  create_table "record_edits", force: :cascade do |t|
-    t.hstore   "previous_values"
-    t.string   "record_type"
-    t.integer  "record_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "author_id"
-    t.hstore   "new_values"
-  end
-
-  add_index "record_edits", ["record_type", "record_id"], name: "index_record_edits_on_record_type_and_record_id", using: :btree
-
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "group_id"
     t.decimal  "amount",                 precision: 8, scale: 2
@@ -720,12 +708,13 @@ ActiveRecord::Schema.define(version: 20150824225220) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",  limit: 255, null: false
-    t.integer  "item_id",                null: false
-    t.string   "event",      limit: 255, null: false
-    t.string   "whodunnit",  limit: 255
+    t.string   "item_type",      limit: 255, null: false
+    t.integer  "item_id",                    null: false
+    t.string   "event",          limit: 255, null: false
+    t.string   "whodunnit",      limit: 255
     t.text     "object"
     t.datetime "created_at"
+    t.jsonb    "object_changes"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree

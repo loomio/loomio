@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   include Twitter::Extractor
   include Translatable
 
-  has_paper_trail
+  has_paper_trail only: [:body]
   acts_as_tree
   is_translatable on: :body
 

@@ -106,15 +106,15 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
       item.sequenceId
 
     changeVolume: (volume) ->
-      @restfulClient.patchMember @keyOrId(), 'set_volume', { volume: volume }
+      @remote.patchMember @keyOrId(), 'set_volume', { volume: volume }
 
     toggleStar: ->
-      @restfulClient.patchMember @keyOrId(), if @starred then 'unstar' else 'star'
+      @remote.patchMember @keyOrId(), if @starred then 'unstar' else 'star'
 
     markAsRead: (sequenceId) ->
       if isNaN(sequenceId)
         sequenceId = @lastSequenceId
 
       if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
-        @restfulClient.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
+        @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
         @lastReadSequenceId = sequenceId

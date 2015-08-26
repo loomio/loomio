@@ -26,14 +26,14 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'group'
       @belongsTo 'membership'
-      @belongsTo 'membershipRequests'
+      @belongsTo 'membershipRequest'
       @belongsTo 'discussion'
       @belongsTo 'comment'
       @belongsTo 'proposal'
       @belongsTo 'vote'
       @belongsTo 'actor', from: 'users'
+      @belongsTo 'version'
 
-    # im dubious about this
     delete: ->
       @deleted = true
 
@@ -42,6 +42,3 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     relevantRecordType: ->
       @constructor.eventTypeMap[@kind]
-
-    recordEdit: ->
-      @recordStore.recordEdits.find(@recordEditId)

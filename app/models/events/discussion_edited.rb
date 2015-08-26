@@ -1,8 +1,8 @@
 class Events::DiscussionEdited < Event
   def self.publish!(discussion, editor)
-    record_edit = RecordEdit.capture!(discussion, editor)
+    version = discussion.versions.last
     create!(kind: "discussion_edited",
-            eventable: record_edit,
+            eventable: version,
             user: editor,
             discussion_id: discussion.id)
   end

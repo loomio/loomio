@@ -42,9 +42,9 @@ class DiscussionService
     return false unless discussion.valid?
     return discussion if discussion.changed == ['uses_markdown']
     return discussion unless discussion.changed?
-    
-    event = Events::DiscussionEdited.publish!(discussion, actor)
+
     discussion.save!
+    event = Events::DiscussionEdited.publish!(discussion, actor)
 
     ThreadSearchService.index! discussion.id
     DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
