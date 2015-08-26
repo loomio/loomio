@@ -1,0 +1,65 @@
+.pricing-table {
+  margin: 0 auto;
+  max-width: 750px;
+}
+
+.pricing-table__header {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.pricing-table__option {
+  background-color: $pages-background;
+  min-height: 300px;
+  padding: 15px 15px;
+  position: relative;
+  h2 {
+    text-align: center;
+  }
+  ul {
+    list-style: none !important;
+    line-height: 26px;
+    i {
+      font-size: 16px;
+    }
+  }
+}
+
+.pricing-table__option--gift {
+  p {
+    text-align: center;
+  }
+}
+
+.pricing-table__col {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  width: 250px;
+  float: left;
+}
+
+.pricing-table__price {
+  left: 30%;
+  position: absolute;
+  bottom: 0;
+  font-weight: bold;
+  strong {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  span {
+    font-weight: normal;
+  }
+}
+
+.pricing-table__gift-price {
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+}
+
+.pricing-table__get-started {
+  margin-left: 10px;
+}

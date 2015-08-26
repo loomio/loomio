@@ -844,14 +844,25 @@ en:
     vote: 'You can change your position at any time'
 
   pricing_page:
-    header: 'Pricing'
-    social_mission_html: "Our pricing model is driven by our social mission: <strong>making it easy for anyone, anywhere to participate in decisions that affect them</strong>."
-    loomio_for_organisations: "Loomio for organisations"
-    organisations_deal_html: "If you're using Loomio in a company, formal organisation or workplace, you'll be charged a monthly subscription of US$1 per person after a <strong>30-day free trial</strong>."
-    discuss_options_html: "If you'd like to discuss pricing options to suit your organisation, <a href=/contact#contact-form target='_blank'>contact us</a>."
-    loomio_for_communities: "Loomio for communities"
-    communities_deal: "Money will never be a barrier for people using Loomio to do great stuff in their communities. If your group doesn't have the budget to pay for software, you don't need to pay a subscription. However, we will occasionally ask your group members for a voluntary donation."
-
+    header: Pricing
+    gift: Gift
+    standard: Standard
+    plus: Plus
+    gift_body_html: |
+      <p>If you can't pay a subscription, you can still use all the great features of Loomio.</p>
+      <p>If you need support, you can ask questions in the <a href="https://www.loomio.org/g/WmPCB3IR/loomio-community">Loomio Community</a>.</p>
+    gift_donation_ask: We'll occasionally ask your group members for a donation.
+    unlimited_members: unlimited members
+    unlimited_decisions: unlimited decisions
+    email_support: email support
+    standard_price_html: |
+      <strong>$19</strong>/month<br><span>or</span> $190/year
+    plus_body: 'Everything in Standard, plus:'
+    premium_support: premium support
+    custom_url: custom URL
+    usage_statistics: usage statistics
+    plus_price_html: |
+      <strong>$179</strong>/month<br><span>or</span> $1790/year
 
   #
   # CONTRIBUTIONS
