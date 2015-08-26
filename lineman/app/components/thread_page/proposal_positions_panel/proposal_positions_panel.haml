@@ -22,7 +22,7 @@
       .media-left
         .thread-item__vote-icon{class: 'thread-item__vote-icon--{{vote.position}}'}
       .media-body
-        %span.proposal-positions-panel__name-and-position{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-name: '{{vote.authorName()}}'}
+        %span.proposal-positions-panel__name-and-position{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-actor: '{{vote.authorName()}}'}
         %span{ng-if: '!vote.hasStatement()'}.
         %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
         %a.proposal-positions-panel__change-your-vote{href: '', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}

@@ -21,10 +21,11 @@ describe 'Proposals', ->
     beforeEach ->
       threadHelper.loadWithActiveProposal()
 
-    it 'successfully votes on a proposal', ->
+    iit 'successfully votes on a proposal', ->
       proposalsHelper.clickAgreeBtn()
       proposalsHelper.setVoteStatement('This is a good idea')
       proposalsHelper.submitVoteForm()
+      expect(proposalsHelper.positionsList()).toContain('Patrick Swayze')
       expect(proposalsHelper.positionsList()).toContain('agreed')
       expect(proposalsHelper.positionsList()).toContain('This is a good idea')
 
