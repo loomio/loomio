@@ -263,11 +263,9 @@ en:
 
   group_welcome_modal:
     heading: "Welcome to your new group"
-    instructions: "You're the group coordinator, which means it is your job to set up the group and invite people in"
-    what_next: "Here's what to do next:"
-    first_step: "Set the group description, logo and cover photo"
-    second_step: "Read the example thread and practice making a decision"
-    third_step: "Invite people in to join your group"
+    first_step: "You are the group coordinator, which is like being a host."
+    second_step: "Have a look around - check out the example threads and have a play with the settings."
+    third_step: "When you're ready, you can invite people in."
     ok_got_it: 'Ok, got it!'
 
   start_group_form:
