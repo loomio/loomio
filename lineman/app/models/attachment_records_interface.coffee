@@ -14,7 +14,7 @@ angular.module('loomioApp').factory 'AttachmentRecordsInterface', ($upload, Base
 
     getCredentials: ->
       if !@credentials?
-        @restfulClient.get('credentials').then (response) => @credentials = response
+        @remote.get('credentials').then (response) => @credentials = response
       else
         $.Deferred().resolve() # resolve an empty promise to return
 

@@ -358,7 +358,7 @@ class DevelopmentController < ApplicationController
   def test_proposal
     unless @test_proposal
       @test_proposal = Motion.new(name: 'lets go hiking to the moon and never ever ever come back!',
-                                closing_at: 3.days.from_now,
+                                closing_at: 3.days.from_now.beginning_of_hour,
                                 discussion: test_discussion)
       MotionService.create(motion: @test_proposal, actor: jennifer)
     end
