@@ -8,6 +8,7 @@ describe 'InvitationFormController', ->
 
   beforeEach ->
     @currentUser = @factory.create 'users'
+    window.Loomio.currentUserId = @currentUser.id
     @group       = @factory.create 'groups', name: 'whoopdeedoo'
     @membership  = @factory.create 'memberships', userId: @currentUser.id, groupId: @group.id, admin: true
 
