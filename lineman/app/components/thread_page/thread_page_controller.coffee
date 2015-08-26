@@ -53,7 +53,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   $scope.$on 'threadPageEventsLoaded',    (event) =>
     @eventsLoaded = true
-    @commentToFocus = Records.comments.find parseInt($location.search().comment)
+    commentId = parseInt($location.search().comment)
+    @commentToFocus = Records.comments.find(commentId) unless isNaN(commentId)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
   $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
