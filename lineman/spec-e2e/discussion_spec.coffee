@@ -74,4 +74,3 @@ describe 'Discussion Page', ->
     threadPage.selectDeleteCommentOption()
     threadPage.confirmCommentDeletion()
     expect(threadPage.activityPanel().getText()).not.toContain('original comment right thur')
-

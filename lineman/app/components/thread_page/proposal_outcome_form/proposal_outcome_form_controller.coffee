@@ -3,5 +3,9 @@ angular.module('loomioApp').controller 'ProposalOutcomeFormController', ($scope,
   $scope.hasOutcome = proposal.hasOutcome()
 
   $scope.submit = FormService.submit $scope, $scope.proposal,
-    submitFn: Records.proposals.createOutcome
-    flashSuccess: 'proposal_outcome_form.messages.created'
+    if !$scope.hasOutcome
+      submitFn: Records.proposals.createOutcome
+      flashSuccess: 'proposal_outcome_form.messages.created'
+    else
+      submitFn: Records.proposals.updateOutcome
+      flashSuccess: 'proposal_outcome_form.messages.updated'
