@@ -1,0 +1,11 @@
+%article.thread-item{ng-controller: 'MotionEditedItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
+  .thread-item__header.media
+    .media-left
+      .thread-item__proposal-icon
+    .media-body
+      %h3.thread-item__title{id: 'proposal-{{proposal.id}}', translate: "proposal_edited_item.{{translationKey}}", translate-value-actor: '{{event.actorName()}}'}
+  .thread-item__body
+    {{proposalName}}
+  .thread-item__footer
+    .thread-item__actions
+      %timeago{timestamp: 'event.createdAt'}
