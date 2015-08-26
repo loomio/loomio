@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include CurrentUserHelper
   include ApplicationHelper
   include ProtectedFromForgery
+  include TimeZoneHelper
 
   helper :analytics_data
   helper :locales
@@ -73,10 +74,6 @@ class ApplicationController < ActionController::Base
 
   def invalid_return_urls
     [nil, root_url, new_user_password_url, profile_url]
-  end
-
-  def user_time_zone(&block)
-    Time.use_zone(current_user.time_zone_city, &block)
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?

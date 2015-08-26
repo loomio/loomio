@@ -6,7 +6,7 @@ class API::RestfulController < API::BaseController
   end
 
   def update_action
-    service.update({resource_symbol => resource, params: resource_params, actor: current_user})
+    @event = service.update({resource_symbol => resource, params: resource_params, actor: current_user})
   end
 
   def destroy_action

@@ -1,0 +1,11 @@
+%article.thread-item{ng-controller: 'DiscussionEditedItemController', aria-labelledby: 'discussion-{{discussion.id}}'}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: 'event.actor()', size: 'small'}
+    .media-body
+      %h3.thread-item__title{id: 'discussion-{{discussion.id}}', translate: "discussion_edited_item.{{translationKey}}", translate-value-actor: '{{event.actorName()}}'}
+  .thread-item__body{ng-if: 'titleEdited'}
+    {{version.changes.title[1]}}
+  .thread-item__footer
+    .thread-item__actions
+      %timeago{timestamp: 'event.createdAt'}
