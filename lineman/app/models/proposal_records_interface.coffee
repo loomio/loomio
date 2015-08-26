@@ -8,13 +8,3 @@ angular.module('loomioApp').factory 'ProposalRecordsInterface', (BaseRecordsInte
           discussion_key: discussion.key
         cacheKey: "proposalsFor#{discussion.key}"
 
-    createOutcome: (proposal) =>
-      @remote.postMember proposal.id, "create_outcome",
-        motion:
-          outcome: proposal.outcome
-
-    fetchUndecidedMembers: (proposal) ->
-      if proposal.isActive()
-        @recordStore.memberships.fetchByGroup(proposal.group().key, {per: 500})
-      else
-        @recordStore.didNotVotes.fetchByProposal(proposal.key, {per: 500})

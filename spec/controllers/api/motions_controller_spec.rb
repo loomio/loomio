@@ -18,7 +18,7 @@ describe API::MotionsController do
     sign_in user
   end
 
-   describe 'index' do
+  describe 'index' do
     let(:another_discussion)    { create :discussion }
     let(:another_motion)      { create :motion, discussion: another_discussion }
 

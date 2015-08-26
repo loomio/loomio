@@ -28,23 +28,23 @@ module.exports = new class ProposalsHelper
   positionsList: ->
     element(By.css('.proposal-positions-panel__list')).getText()
 
-  proposalActionsDropdown: ->
-    element(By.css('.proposal-actions-dropdown__btn'))
+  clickProposalActionsDropdown: ->
+    element(By.css('.proposal-actions-dropdown__btn')).click()
 
-  proposalActionsDropdownEdit: ->
-    element(By.css('.proposal-actions-dropdown__edit-link'))
+  clickProposalActionsDropdownEdit: ->
+    element(By.css('.proposal-actions-dropdown__edit-link')).click()
 
-  proposalActionsDropdownClose: ->
-    element(By.css('.proposal-actions-dropdown__close-link'))
+  clickProposalActionsDropdownClose: ->
+    element(By.css('.proposal-actions-dropdown__close-link')).click()
 
-  closeProposalButton: ->
-    element(By.css('.close-proposal-form__submit-btn'))
+  clickCloseProposalButton: ->
+    element(By.css('.close-proposal-form__submit-btn')).click()
 
   previousProposalsList: ->
     element(By.css('.previous-proposals-card')).getText()
 
-  saveProposalChangesBtn: ->
-    element(By.css('.proposal-form__save-changes-btn'))
+  clickSaveProposalChangesButton: ->
+    element(By.css('.proposal-form__save-changes-btn')).click()
 
   currentProposalHeading: ->
     element(By.css('.proposal-expanded__proposal-name')).getText()
@@ -58,8 +58,8 @@ module.exports = new class ProposalsHelper
   setProposalOutcomeBtn: ->
     element(By.css('.proposal-outcome-panel__set-outcome-btn'))
 
-  fillInProposalOutcomeForm: (params) ->
-    element(By.css('.proposal-form__outcome-field')).sendKeys(params.body)
+  fillInProposalOutcome: (body) ->
+    element(By.css('.proposal-form__outcome-field')).clear().sendKeys(body)
 
   submitProposalOutcomeForm: ->
     element(By.css('.proposal-outcome-form__publish-outcome-btn')).click()
@@ -69,9 +69,6 @@ module.exports = new class ProposalsHelper
 
   editOutcomeLink: ->
     element(By.css('.proposal-outcome-panel__edit-outcome-link'))
-
-  editProposalOutcomeForm: (params) ->
-    element(By.css('.proposal-form__outcome-field')).clear().sendKeys(params.body)
 
   voteFormPositionSelect: ->
     element(By.css('.vote-form__select-position'))
@@ -87,3 +84,26 @@ module.exports = new class ProposalsHelper
 
   positionButtons: ->
     element(By.css('.position-buttons-panel'))
+
+  proposalNameInput: ->
+    element(By.css('.proposal-form__title-field'))
+
+  editProposalName: ->
+    @clickProposalActionsDropdown()
+    @clickProposalActionsDropdownEdit()
+    element(By.css('.proposal-form__title-field')).clear().sendKeys('Edited proposal title')
+    @clickSaveProposalChangesButton()
+
+  editProposalDescription: ->
+    @clickProposalActionsDropdown()
+    @clickProposalActionsDropdownEdit()
+    element(By.css('.proposal-form__details-field')).clear().sendKeys('Edited proposal description')
+    @clickSaveProposalChangesButton()
+
+  editProposalNameAndDescription: ->
+    @clickProposalActionsDropdown()
+    @clickProposalActionsDropdownEdit()
+    element(By.css('.proposal-form__title-field')).clear().sendKeys('New edited proposal title')
+    element(By.css('.proposal-form__details-field')).clear().sendKeys('New edited proposal description')
+    @clickSaveProposalChangesButton()
+

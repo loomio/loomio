@@ -60,6 +60,7 @@ en:
     publish_outcome: Publish outcome
     messages:
       created: Outcome published
+      updated: Outcome updated
 
   previous_proposals_card:
     heading: Previous Proposals
@@ -627,16 +628,39 @@ en:
     in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
 
   new_vote_item:
-    agree: '<strong>{{name}}</strong> agreed'
-    abstain: '<strong>{{name}}</strong> abstained'
-    disagree: '<strong>{{name}}</strong> disagreed'
-    block: '<strong>{{name}}</strong> blocked'
+    agree: '<strong>{{actor}}</strong> agreed'
+    abstain: '<strong>{{actor}}</strong> abstained'
+    disagree: '<strong>{{actor}}</strong> disagreed'
+    block: '<strong>{{actor}}</strong> blocked'
 
   new_proposal_item:
-    author_created_proposal: '<strong>{{name}}</strong> created a proposal:'
+    author_created_proposal: '<strong>{{actor}}</strong> started a proposal:'
 
   proposal_closed_item:
-    proposal_closed: 'Proposal closed:'
+    proposal_closed: 'The proposal has closed:'
+
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal:'
+
+  proposal_edited_item:
+    name: '<strong>{{actor}}</strong> updated the proposal title:'
+    description: '<strong>{{actor}}</strong> updated the description of the proposal:'
+    closing_at: '<strong>{{actor}}</strong> updated the closing time of the proposal:'
+    description_name: '<strong>{{actor}}</strong> updated the title and description of the proposal:'
+    closing_at_name: '<strong>{{actor}}</strong> updated the title and closing time of the proposal:'
+    closing_at_description: '<strong>{{actor}}</strong> updated the description and closing time of the proposal:'
+    closing_at_description_name: '<strong>{{actor}}</strong> updated the title, description and closing time of the proposal:'
+
+  proposal_outcome_created_item:
+    proposal_outcome_created: '<strong>{{actor}}</strong> published an outcome for the proposal:'
+
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: '<strong>{{actor}}</strong> updated the outcome for the proposal:'
+
+  discussion_edited_item:
+    title: '<strong>{{actor}}</strong> updated the thread title:'
+    description: '<strong>{{actor}}</strong> updated the thread description'
+    description_title: '<strong>{{actor}}</strong> updated the thread title and description'
 
   contact_message_form:
     contact_us: 'Contact Us'

@@ -88,3 +88,19 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig) ->
         _.difference(@group().members(), @voters())
       else
         @recordStore.users.find(_.pluck(@didNotVotes(), 'userId'))
+
+    createOutcome: =>
+      @remote.postMember @id, "create_outcome",
+        motion:
+          outcome: @outcome
+
+    updateOutcome: =>
+      @remote.postMember @id, "update_outcome",
+        motion:
+          outcome: @outcome
+
+    fetchUndecidedMembers: ->
+      if @isActive()
+        @recordStore.memberships.fetchByGroup(@group().key, {per: 500})
+      else
+        @recordStore.didNotVotes.fetchByProposal(@key, {per: 500})
