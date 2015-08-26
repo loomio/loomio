@@ -74,13 +74,6 @@ describe 'DiscussionService' do
                                actor: user
     end
 
-    it 'saves the discussion' do
-      discussion.should_receive(:save!).and_return(true)
-      DiscussionService.update discussion: discussion,
-                               params: discussion_params,
-                               actor: user
-    end
-
     context 'the discussion is valid' do
       before { discussion.stub(:valid?).and_return(true) }
 
@@ -90,15 +83,8 @@ describe 'DiscussionService' do
                                  actor: user
       end
 
-      it 'publishes a title changed event' do
-        expect(Events::DiscussionTitleEdited).to receive :publish!
-        DiscussionService.update discussion: discussion,
-                                 params: discussion_params,
-                                 actor: user
-      end
-
-      it 'publishes a description changed event' do
-        expect(Events::DiscussionTitleEdited).to receive :publish!
+      it 'publishes a discussion edited event' do
+        expect(Events::DiscussionEdited).to receive :publish!
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user

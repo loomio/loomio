@@ -13,6 +13,11 @@ angular.module('loomioApp').factory 'ProposalRecordsInterface', (BaseRecordsInte
         motion:
           outcome: proposal.outcome
 
+    updateOutcome: (proposal) =>
+      @restfulClient.postMember proposal.id, "update_outcome",
+        motion:
+          outcome: proposal.outcome
+
     fetchUndecidedMembers: (proposal) ->
       if proposal.isActive()
         @recordStore.memberships.fetchByGroup(proposal.group().key, {per: 500})

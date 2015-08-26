@@ -75,6 +75,43 @@ module.exports = new class ThreadHelper
   firstMentionOption: ->
     @mentionList().element(By.css('li'))
 
+  clickThreadOptionsDropdownButton: ->
+    element(By.css('.thread-context__dropdown-button')).click()
+
+  clickThreadOptionsDropdownEdit: ->
+    element(By.css('.thread-context__dropdown-options-edit')).click()
+
+  threadTitleInput: ->
+    element(By.css('.discussion-form__title-input')).clear().sendKeys('Edited thread title')
+
+  descriptionInput: ->
+    element(By.css('.discussion-form__description-input'))
+
+  clickUpdateThreadButton: ->
+    element(By.buttonText('Update thread')).click()
+
+  editThreadTitle: ->
+    @clickThreadOptionsDropdownButton()
+    @clickThreadOptionsDropdownEdit()
+    @threadTitleInput().clear().sendKeys('Edited thread title')
+    @clickUpdateThreadButton()
+
+  editThreadDescription: ->
+    @clickThreadOptionsDropdownButton()
+    @clickThreadOptionsDropdownEdit()
+    @descriptionInput().clear().sendKeys('Edited thread description')
+    @clickUpdateThreadButton()
+
+  editThreadTitleAndDescription: ->
+    @clickThreadOptionsDropdownButton()
+    @clickThreadOptionsDropdownEdit()
+    @threadTitleInput().clear().sendKeys('New edited thread title')
+    @descriptionInput().clear().sendKeys('New edited thread description')
+    @clickUpdateThreadButton()
+
+  activityItemList: ->
+    element(By.css('.activity-card')).getText()
+
   openEditThreadForm: ->
     element(By.css('.thread-context__dropdown-button')).click()
     element(By.css('.thread-context__dropdown-options-edit')).click()

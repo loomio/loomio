@@ -46,10 +46,10 @@ describe 'Proposals', ->
       threadHelper.loadWithActiveProposal()
 
     it 'successfully edits a proposal when there are no votes', ->
-      proposalsHelper.proposalActionsDropdown().click()
-      proposalsHelper.proposalActionsDropdownEdit().click()
+      proposalsHelper.clickProposalActionsDropdown()
+      proposalsHelper.clickProposalActionsDropdownEdit()
       proposalsHelper.fillInProposalForm({ title: 'Edited proposal' })
-      proposalsHelper.saveProposalChangesBtn().click()
+      proposalsHelper.clickSaveProposalChangesButton()
       expect(proposalsHelper.currentProposalHeading()).toContain('Edited proposal')
 
   describe 'closing a proposal', ->
@@ -58,9 +58,9 @@ describe 'Proposals', ->
       threadHelper.loadWithActiveProposal()
 
     it 'successfully closes a proposal', ->
-      proposalsHelper.proposalActionsDropdown().click()
-      proposalsHelper.proposalActionsDropdownClose().click()
-      proposalsHelper.closeProposalButton().click()
+      proposalsHelper.clickProposalActionsDropdown()
+      proposalsHelper.clickProposalActionsDropdownClose()
+      proposalsHelper.clickCloseProposalButton()
       expect(flashHelper.flashMessage()).toContain('Proposal closed')
       expect(proposalsHelper.previousProposalsList()).toContain('lets go hiking')
       expect(proposalsHelper.previousProposalsList()).toContain('Closed')
@@ -89,7 +89,7 @@ describe 'Proposals', ->
       proposalsHelper.editOutcomeLink().click()
       proposalsHelper.editProposalOutcomeForm({ body: 'Gonna make things happen!' })
       proposalsHelper.submitProposalOutcomeForm()
-      expect(flashHelper.flashMessage()).toContain('Outcome published')
+      expect(flashHelper.flashMessage()).toContain('Outcome updated')
       expect(proposalsHelper.currentExpandedProposalOutcome()).toContain('Gonna make things happen!')
 
   describe 'voting by email', ->
