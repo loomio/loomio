@@ -11,7 +11,7 @@
           %p.pricing-table__gift-price
             = t :"pricing_page.gift_donation_ask"
       .pricing-table__col
-        .pricing-table__option
+        .pricing-table__option.pricing-table__option--standard
           %h2= t :"pricing_page.standard"
           %ul
             %li
@@ -23,7 +23,7 @@
             %li
               %i.fa.fa-check
               = t :"pricing_page.email_support"
-          %p.pricing-table__price 
+          %p.pricing-table__price
             = t :"pricing_page.standard_price_html"
       .pricing-table__col
         .pricing-table__option
@@ -32,15 +32,17 @@
           %ul
             %li
               %i.fa.fa-check
-              = t :"pricing_page.unlimited_members"
+              = t :"pricing_page.premium_support"
             %li
               %i.fa.fa-check
               = t :"pricing_page.custom_url"
             %li
               %i.fa.fa-check
-              = t :"pricing_pahe.usage_statistics"
-          %p.pricing-table__price 
+              = t :"pricing_page.usage_statistics"
+          %p.pricing-table__price
             = t :"pricing_page.plus_price_html"
     .clearfix
-    %p
-    %a.pricing-table__get-started.btn.btn-success.btn-lg#pricing-page-start-link{href: start_group_path}= t :"common.get_started"
+    %p.pricing-table__free-trial
+      = t :"pricing_page.free_trial_html"
+    %p.pricing-table__get-started
+      %a.pricing-table__get-started.btn.btn-success.btn-lg#pricing-page-start-link{href: start_group_path}= t :"pricing_page.get_started_for_free"
