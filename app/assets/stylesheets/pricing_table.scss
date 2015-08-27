@@ -9,7 +9,7 @@
 }
 
 .pricing-table__option {
-  background-color: $pages-background;
+  background-color: #e2e1de;
   min-height: 300px;
   padding: 15px 15px;
   position: relative;
@@ -39,6 +39,16 @@
   float: left;
 }
 
+.pricing-table__free-trial, .pricing-table__get-started {
+  text-align: center;
+  span{
+    font-weight: bold;
+  }
+}
+.pricing-table__option--standard{
+  background-color: rgba(255, 117, 0, 0.41);
+  border: 1px solid #b16a1a;
+}
 .pricing-table__price {
   left: 30%;
   position: absolute;
