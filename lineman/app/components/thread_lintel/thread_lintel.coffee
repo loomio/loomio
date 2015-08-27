@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'threadLintel', ->
       $scope.showLintel && $scope.discussion
 
     $scope.scrollToThread = ->
-      ScrollService.scrollTo 'h1:first'
+      ScrollService.scrollTo 'h1'
 
     $scope.scrollToProposal = ->
       ScrollService.scrollTo 'section.current-proposal-card'
