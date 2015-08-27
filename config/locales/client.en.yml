@@ -570,6 +570,9 @@ en:
       thismonth: 'This month'
       older: 'Older than a month'
 
+  star_toggle:
+    star: Star thread
+
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads

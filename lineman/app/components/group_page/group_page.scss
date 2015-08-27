@@ -1,6 +1,7 @@
-.group-page .main-container{
+.group-page {
   max-width: $large-max-width;
   margin: 0 auto;
+  padding-top: 48px;
   /* over-riding bootstrap */
   .media:first-child{
     margin-top: 10px;
