@@ -2,7 +2,7 @@
   margin-bottom: 25px;
 }
 
-.thread-item__title {
+.thread-item__header {
   strong {
     color: $primary-text-color;
     @include fontHelveticaBold;
