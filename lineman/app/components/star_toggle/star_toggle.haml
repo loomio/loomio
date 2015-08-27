@@ -1,4 +1,7 @@
 .star-toggle
-  %a{ng-click: 'toggle()'}
-    %i.fa.fa-star{ng-show: 'thread.starred'}
-    %i.fa.fa-star-o{ng-hide: 'thread.starred'}
+  %input.star-checkbox.sr-only{type: 'checkbox', id: 'star-thread-{{thread.id}}', ng-change: 'thread.toggleStar()', ng-model: 'thread.starred'}
+  %label.fa{for: 'star-thread-{{thread.id}}'}
+    %span.sr-only{translate: 'star_toggle.star'}
+    / %span.sr-only{translate: 'star_toggle.star'}
+    / %i.fa.fa-star{ng-show: 'thread.starred'}
+    / %i.fa.fa-star-o{ng-hide: 'thread.starred'}
