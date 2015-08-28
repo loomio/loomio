@@ -249,7 +249,8 @@ en:
   proposal_expanded:
     collapse: Collapse
     current_votes: Current votes
-    started_by: 'Started by <strong>{{name}}</strong>'
+    started_by_open: 'Started by <strong>{{name}}</strong> {{created}}. Closing {{closing}}'
+    started_by_closed: 'Started by <strong>{{name}}</strong> {{created}}. Closed {{closing}}'
     only_voter_is_you: 'No other members have voted yet.'
     extend_proposal: 'Change closing time'
     edit_proposal: 'Edit proposal'
