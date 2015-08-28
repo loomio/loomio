@@ -79,6 +79,17 @@
 
 .btn.lmo-btn-icon{ padding: 6px 12px 6px 9px;}
 
+.lmo-btn-link {
+  background: none;
+  border: none;
+  color: #337ab7;
+  padding: 0;
+}
+
+.lmo-btn-link:hover {
+  text-decoration: underline;
+}
+
 .lmo-btn-nude{
   box-shadow: none;
   color: $grey-on-grey;

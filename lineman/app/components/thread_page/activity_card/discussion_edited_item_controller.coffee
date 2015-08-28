@@ -1,9 +1,14 @@
 angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope) ->
-  $scope.discussion = $scope.event.discussion()
-  $scope.version = $scope.event.version()
+  discussion = $scope.event.discussion()
+  version = $scope.event.version()
 
-  $scope.titleEdited =
-    $scope.version.attributeEdited('title')
+  $scope.title =
+    if version.attributeEdited('title')
+      version.changes.title[1]
+    else
+      ''
+
+  $scope.actorName = $scope.event.actorName()
 
   $scope.translationKey =
-    $scope.version.editedAttributeNames().join('_')
+    version.editedAttributeNames().join('_')

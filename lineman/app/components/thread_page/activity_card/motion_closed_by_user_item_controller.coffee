@@ -1,2 +1,3 @@
 angular.module('loomioApp').controller 'MotionClosedItemController', ($scope) ->
-  $scope.proposal = $scope.event.proposal()
+  $scope.actorName = event.actorName()
+  $scope.title = $scope.event.proposal().name

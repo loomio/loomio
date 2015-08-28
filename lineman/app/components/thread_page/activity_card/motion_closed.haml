@@ -1,9 +1,9 @@
-%article.thread-item{ng-controller: 'MotionClosedItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
+.thread-item{ng-controller: 'MotionClosedItemController'}
   .thread-item__header.media
     .media-left
       .thread-item__proposal-icon
     .media-body
-      %h3.thread-item__title{id: 'proposal-{{proposal.id}}', translate: "proposal_closed_item.proposal_closed"}
+      %h3.thread-item__title{id: 'event-{{event.id}}', translate: "proposal_closed_item.proposal_closed"}
   .thread-item__body
     {{proposal.name}}
   .thread-item__footer

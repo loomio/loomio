@@ -14,7 +14,7 @@ angular.module('loomioApp', ['ngNewRouter',
   #configure markdown
   renderer = new marked.Renderer()
   renderer.link = (href, title, text) ->
-    "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
+    "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>";
 
   markedProvider.setOptions
     renderer: renderer

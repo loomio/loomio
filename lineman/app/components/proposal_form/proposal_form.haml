@@ -2,7 +2,7 @@
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: '$close($event)'}
-      %span{aria-hidden: true} &times;
+      %span{aria-hidden: 'true'} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1.lmo-h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
     %h1.lmo-h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_proposal'}

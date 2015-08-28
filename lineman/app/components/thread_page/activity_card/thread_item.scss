@@ -7,6 +7,9 @@
     color: $primary-text-color;
     @include fontHelveticaBold;
   }
+  span {
+    color: $primary-text-color;
+  }
   color: $grey-on-white;
   margin-bottom: 5px;
   .media-body, .media-left{
