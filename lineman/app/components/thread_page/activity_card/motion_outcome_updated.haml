@@ -1,11 +1,11 @@
-%article.thread-item{ng-controller: 'MotionOutcomeUpdatedItemController', aria-labelledby: 'proposal-{{proposal.id}}'}
+.thread-item{ng-controller: 'MotionOutcomeUpdatedItemController'}
   .thread-item__header.media
     .media-left
       .thread-item__proposal-icon
     .media-body
-      %h3.thread-item__title{id: 'proposal-{{proposal.id}}', translate: "proposal_outcome_updated_item.proposal_outcome_updated", translate-value-actor: '{{event.actorName()}}'}
+      %h3.thread-item__title{id: 'event-{{event.id}}', translate: "proposal_outcome_updated_item.proposal_outcome_updated", translate-value-actor: '{{event.actorName()}}'}
   .thread-item__body
-    {{proposal.name}}
+    {{proposal.outcome}}
   .thread-item__footer
     .thread-item__actions
       %timeago{timestamp: 'event.createdAt'}

@@ -26,8 +26,7 @@ angular.module('loomioApp').directive 'notifications', ->
       _.contains(kinds, notification.event().kind)
 
     $scope.toggled = (open) ->
-      if open
-        Records.notifications.viewed()
+      Records.notifications.viewed() if open
 
     $scope.count = =>
       notificationsView.data().length

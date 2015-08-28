@@ -1,6 +1,6 @@
-%article.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', aria-labelledby: 'comment-{{comment.id}}', id: 'comment-{{comment.id}}' }
+.thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', id: 'comment-{{comment.id}}' }
   .pull-right{dropdown: '', ng-if: 'showContextMenu()'}
-    %button.thread-item__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
+    %button.thread-item__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: '', type: 'button'}
       %i.fa.fa-chevron-down{aria-hidden: 'true'}
       .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
     .dropdown-menu.dropdown-menu-right
@@ -14,9 +14,9 @@
     .media-left
       %user_avatar{user: "comment.author()", size: 'small'}
     .media-body
-      %span.new-comment__in-reply-to{ng-if: 'comment.parentId', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName}'}
-      %span{ng-if: '!comment.parentId'}
-        %h3.new-comment__author-name {{ ::comment.authorName() }}
+      %h3.new-comment__in-reply-to{ng-if: 'comment.parentId', id: 'event-{{event.id}}', translate: 'new_comment_item.in_reply_to', translate-values: '{author: comment.authorName(), recipient: comment.parentAuthorName}'}
+      %h3.new-comment__author-name{ng-if: '!comment.parentId'} {{ ::comment.authorName() }}
+      .sr-only{ng-if: '!comment.parentId', id: 'event-{{event.id}}', translate: 'new_comment_item.aria_label', translate-value-author: '{{comment.authorName()}}'}
 
   .thread-item__body.lmo-markdown-wrapper{marked: 'comment.body' }
 
@@ -26,10 +26,10 @@
 
   .thread-item__footer
     .thread-item__actions
-      %a.thread-item__action--like{href: '', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
-      %a{href: '', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
+      %button.thread-item__action--like.lmo-btn-link{type: 'button', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
+      %button.lmo-btn-link{type: 'button', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
-      %a.thread-item__action--reply{translate: 'common.action.reply', href: '', ng_click: 'reply()'}>
+      %button.thread-item__action--reply.lmo-btn-link{translate: 'common.action.reply', type: 'button', ng_click: 'reply()'}>
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

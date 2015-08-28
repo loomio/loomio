@@ -1,4 +1,4 @@
-.blank{dropdown: ''}
+.blank{dropdown: '', on-toggle: 'toggled(open)'}
   %button.btn.lmo-btn-nude.lmo-navbar__btn.lmo-navbar__btn--notifications.lmo-navbar__btn-icon.notifications__button.has-badge{dropdown-toggle: '', tabindex: 4}
     .sr-only{translate: 'navbar.notifications'}
     %i.fa.fa-lg.fa-fw{aria-hidden: 'true', ng-class: '{"fa-bell": unread(), "fa-bell-o": !unread()}'}

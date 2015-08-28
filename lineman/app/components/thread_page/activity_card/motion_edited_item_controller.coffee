@@ -1,11 +1,18 @@
 angular.module('loomioApp').controller 'MotionEditedItemController', ($scope) ->
-  $scope.proposal = $scope.event.version().proposal()
   version = $scope.event.version()
-  $scope.proposalName =
+  proposal = version.proposal()
+
+  $scope.closingAt =
+    if version.attributeEdited('closing_at')
+      moment(version.changes.closing_at[1]).format("ha dddd, Do MMMM YYYY");
+    else
+      null
+
+  $scope.title =
     if version.attributeEdited('name')
       version.changes.name[1]
     else
-      $scope.proposal.name
+      proposal.name
 
   $scope.translationKey =
     version.editedAttributeNames().join('_')
