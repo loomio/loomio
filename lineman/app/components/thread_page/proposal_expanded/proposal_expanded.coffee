@@ -6,6 +6,12 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
   controller: ($scope, $modal, Records, CurrentUser, AbilityService) ->
     Records.votes.fetchByProposal($scope.proposal)
 
+    $scope.created =
+      $scope.proposal.createdAt.fromNow()
+
+    $scope.closing =
+      $scope.proposal.closingAt.fromNow()
+
     $scope.collapse = ->
       $scope.$emit('collapseProposal')
 
