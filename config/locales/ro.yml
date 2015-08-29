@@ -680,9 +680,6 @@ ro:
     vote: Poti sa-ti modifici pozitia oricand doresti
   pricing_page:
     header: Tarifare
-    loomio_for_organisations: Loomio pentru organizatii
-    loomio_for_communities: Loomio pentru comunitati
-    communities_deal: "Banii nu vor fi niciodata o bariera in calea oamenilor care doresc sa foloseasca Loomio in scopul de a imbunatati comunitatea lor. Daca grupul vostru nu are bani pentru a plati acest program, nu va fi nevoie sa platiti abonamentul. Totusi, ne vom permite sa intrebam din cand in cand pe membrii grupului despre posibilitatea unor donatii."
   contribution:
     any_amount: sau o contributie aleasa de tine
     currency_desc: Sumele sunt in USD

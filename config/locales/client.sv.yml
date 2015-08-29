@@ -90,7 +90,6 @@ sv:
       empty:
         membership_is_invitation_only: För att gå med i denna grupp måste du bli inbjuden av en medlem.
         membership_is_invitation_by_admin_only: För att gå med i denna grupp måste du bli inbjuden av en koordinator.
-    description: Beskrivning
     discussions: Diskussioner
     invite_people: Bjud in deltagare
     options_label: Alternativ

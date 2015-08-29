@@ -1,5 +1,6 @@
 pt-BR:
   common:
+    confirm_discard_changes: Descartar suas alterações?
     time:
       am: am
       pm: pm
@@ -55,6 +56,7 @@ pt-BR:
     publish_outcome: Publicar resultado
     messages:
       created: Resultado publicado
+      updated: Resultado atualizado
   previous_proposals_card:
     heading: Propostas anteriores
   proposal_collapsed:
@@ -234,11 +236,9 @@ pt-BR:
   proposal_position_block: Bloquear
   group_welcome_modal:
     heading: Bem-vindo ao seu novo grupo
-    instructions: "Você é o coordenador do grupo, o que significa que é sua função configurar o grupo e convidar pessoas"
-    what_next: "Eis o que fazer a seguir:"
-    first_step: "Defina a descrição do grupo, logo e foto da capa"
-    second_step: Leia o exemplo de discussão e pratique tomando uma decisão
-    third_step: Convide pessoas para participar do seu grupo
+    first_step: "Você é o coordenador do grupo, que é como ser um anfitrião."
+    second_step: Dê uma olhada ao redor - confira os exemplos de tópicos e brinque com as definições.
+    third_step: "Quando estiver pronto, você pode convidar pessoas."
     ok_got_it: "OK, entendi!"
   start_group_form:
     heading: Iniciar um grupo
@@ -525,6 +525,8 @@ pt-BR:
       thisweek: Esta semana
       thismonth: Este mês
       older: Mais de um mês
+  star_toggle:
+    star: Tópico estrela
   inbox_page:
     no_threads: "Legal! Você leu todos os tópicos na sua caixa de entrada."
     unread_threads: Tópicos Não Lidos
@@ -570,20 +572,43 @@ pt-BR:
     question: Tem certeza que quer apagar este comentário?
     confirm: Apagar comentário
   new_comment_item:
+    aria_label: "Comentado por {{author}}"
     context_menu:
       aria_label: Opções de comentários
       edit_comment: Editar comentários
       delete_comment: Apagar comentário
     in_reply_to: "<strong>{{author}}</strong> em resposta a <strong>{{recipient}}</strong>"
   new_vote_item:
-    agree: "<strong>{{name}}</strong> concordou"
-    abstain: "<strong>{{name}}</strong> absteve-se"
-    disagree: "<strong>{{name}}</strong> discordou"
-    block: "<strong>{{name}}</strong> bloqueou"
+    agree: "<strong>{{actor}}</strong> concordou"
+    abstain: "<strong>{{actor}}</strong> absteve-se"
+    disagree: "<strong>{{actor}}</strong> discordou"
+    block: "<strong>{{actor}}</strong> bloqueou"
+    agree_with_statement: "<strong>{{actor}}</strong> concordou: <span>{{statement}}</span>"
+    abstain_with_statement: "<strong>{{actor}}</strong> absteve-se: <span>{{statement}}</span>"
+    disagree_with_statement: "<strong>{{actor}}</strong> discordou: <span>{{statement}}</span>"
+    block_with_statement: "<strong>{{actor}}</strong> bloqueou: <span>{{statement}}"
   new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> criou uma proposta:"
+    author_created_proposal: "<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>"
   proposal_closed_item:
-    proposal_closed: "Proposta encerrada:"
+    proposal_closed: "A proposta foi encerrada:"
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: "<strong>{{actor}}</strong> fechou a proposta: <span>{{title}}</span>"
+  proposal_edited_item:
+    name: "<strong>{{actor}}</strong> atualizou o título da proposta: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> atualizou a descrição da proposta"
+    closing_at: "<strong>{{actor}}</strong> atualizou a proposta para encerrar em <span>{{time}}</span>"
+    description_name: "<strong>{{actor}}</strong> atualizou o título e a descrição da proposta"
+    closing_at_name: "<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento"
+    closing_at_description: "<strong>{{actor}}</strong> atualizou a descrição e o tempo para encerramento da proposta"
+    closing_at_description_name: "<strong>{{actor}}</strong> atualizou título, descrição e tempo para encerramento da proposta"
+  proposal_outcome_created_item:
+    proposal_outcome_created: "<strong>{{actor}}</strong> publicou um resultado para a proposta:"
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: "<strong>{{actor}}</strong> atualizou o resultado da proposta:"
+  discussion_edited_item:
+    title: "<strong>{{actor}}</strong> atualizou o título do tópico: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> atualizou a descrição do tópico"
+    description_title: "<strong>{{actor}}</strong> atualizou o título e a descrição do tópico"
   contact_message_form:
     contact_us: Contacte-nos
     name_label: Seu nome

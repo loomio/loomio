@@ -234,11 +234,6 @@ de:
   proposal_position_block: Veto
   group_welcome_modal:
     heading: Willkommen in Deiner neuen Gruppe
-    instructions: "Du bist der Gruppen-Koordinator. Das bedeutet, dass Du die Gruppe aufbauen und Menschen einladen musst."
-    what_next: "Was als nächstes zu tun ist:"
-    first_step: "Erstelle die Gruppen-Beschreibung, ein Logo und ein Titelbild"
-    second_step: Lese die Beispiel-Diskussion und übe Entscheidungsfindung
-    third_step: Lade Leute zu deiner Gruppe ein
     ok_got_it: "Okay, ich hab´s!"
   start_group_form:
     heading: Gründen Sie eine Gruppe
@@ -575,15 +570,6 @@ de:
       edit_comment: Kommentar bearbeiten
       delete_comment: Kommentar löschen
     in_reply_to: "<strong>{{author}}</strong> antwortet <strong>{{recipient}}</strong>"
-  new_vote_item:
-    agree: "<strong>{{name}}</strong> stimmt zu"
-    abstain: "<strong>{{name}}</strong> enthält sich"
-    disagree: "<strong>{{name}}</strong> lehnt ab"
-    block: "<strong>{{name}}</strong> legt Veto ein"
-  new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> erstellte folgenden Vorschlag:"
-  proposal_closed_item:
-    proposal_closed: "Vorschlag geschlossen:"
   contact_message_form:
     contact_us: Kontaktiere uns
     name_label: Dein Name

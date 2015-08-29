@@ -185,9 +185,6 @@ cs:
   proposal_position_block: Zamítnout
   group_welcome_modal:
     heading: Vítejte ve své nové skupině
-    instructions: "Jste koordinátorem skupiny, což zmená, že je Vaším úkolem skupinu připravit a pozvat lidi"
-    first_step: "Nastavte popis, logo a úvodní fotku skupiny"
-    third_step: "Pozvěte lidi, aby se přidali k vaší skupině"
     ok_got_it: "OK, chápu!"
   start_group_form:
     heading: Vytvořit skupinu
@@ -409,13 +406,6 @@ cs:
     context_menu:
       edit_comment: Upravit komentář
       delete_comment: Odstranit komentář
-  new_vote_item:
-    agree: "<strong>{{name}}</strong> souhlasil(a)"
-    abstain: "<strong>{{name}}</strong> se zdržel(a)"
-    disagree: "<strong>{{name}}</strong> nesouhlasil(a)"
-    block: "<strong>{{name}}</strong> zamítl(a)"
-  new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> vytvořil(a) návrh:"
   contact_message_form:
     contact_us: Kontakt
     name_label: Vaše jméno

@@ -46,6 +46,8 @@ pt-BR:
         subject: Alguém convidou você para um grupo no Loomio
     registrations:
       sign_up: Criar conta
+    sessions:
+      signed_out: Sessão terminada com sucesso
   error:
     access_denied: Você não tem permissão para fazer isso.
     cant_join_subgroup: Você não pode entrar em um subgrupo se não é membro do grupo principal.
@@ -669,12 +671,22 @@ pt-BR:
     vote: Você pode mudar sua posição a qualquer momento
   pricing_page:
     header: Preço
-    social_mission_html: "Nosso modelo de precificação é conduzido por nossa missão social: <strong>tornar mais fácil para qualquer um, em qualquer lugar, participar nas decisões que os afetam </strong>."
-    loomio_for_organisations: Loomio para organizações
-    organisations_deal_html: "Se você estiver usando Loomio em uma empresa, organização formal ou local de trabalho, será cobrada uma assinatura mensal de US$ 1 por pessoa após um <strong>teste gratuito de 30 dias</strong>."
-    discuss_options_html: "Se você gostaria de discutir opções de preços para atender a sua organização, <a href=/contact#contact-form target='_blank'>entre em contato conosco</a>."
-    loomio_for_communities: Loomio para comunidades
-    communities_deal: "Dinheiro nunca será uma barreira para as pessoas que utilizam Loomio fazerem grandes coisas em suas comunidades. Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. No entanto, ocasionalmente, vamos pedir aos membros do seu grupo por uma doação voluntária."
+    gift: Presente
+    standard: Padrão
+    plus: Plus
+    free_trial_html: "Vamos pedir que escolha o seu plano de preços após um período de <span>30 dias de teste grátis</span>. Não é necessário cartão de crédito."
+    get_started_for_free: Comece gratuitamente
+    gift_body_html: "<p>Para os grupos que não têm o orçamento para pagar uma assinatura.</p>\n<p>Doações são aceitas, sem exigência de pagamento.</p>\n"
+    gift_donation_ask: Vamos pedir aos membros do seu grupo por uma doação.
+    unlimited_members: membros ilimitados
+    unlimited_decisions: decisões ilimitadas
+    email_support: suporte via e-mail
+    standard_price_html: "<strong>U$19</strong>/mês<br><span>ou</span> U$190/ano\n"
+    plus_body: "Tudo no Padrão, mais:"
+    premium_support: suporte premium
+    custom_url: URL personalizada
+    usage_statistics: estatísticas de uso
+    plus_price_html: "strong>U$179</strong>/mês<br><span>ou</span> U$1790/ano\n"
   contribution:
     any_amount: ou uma contribuição única de
     currency_desc: Os valores estão em Dólares Americanos
@@ -1159,3 +1171,10 @@ pt-BR:
     media: Mídia
     health: Saúde
   start_your_group: Inicie o seu grupo
+  webhooks:
+    slack:
+      motion_closing_soon: "*%{name}* tem uma proposta encerrando em 24 horas"
+      motion_outcome_created: "%{author}* publicou um resultado em *%{name}*"
+      motion_outcome_updated: "*%{author}* atualizou o resultado para *%{name}*"
+      new_motion: "*%{author}* iniciou uma nova proposta em *%{name}*"
+      view_it_on_loomio: Ver no Loomio

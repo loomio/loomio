@@ -128,7 +128,6 @@ tr:
         membership_is_invitation_only: Bu gruba katılmak için bir üye tarafından davet edilmelisin.
         membership_is_invitation_by_admin_only: Bu gruba katılmak için koordinatör tarafından davet edilmelisin.
     group_logo: Grup logosu
-    description: Açıklama
     discussions: Müzakereler
     invite_people: Kişileri davet et
     options_label: Seçenekler
@@ -177,7 +176,6 @@ tr:
       submit: Kaldır
   pending_invitations_card:
     email: E-posta
-    cancel: İptal et
   profile_page:
     change_picture:
       use_initials: Baş harfleri kullan

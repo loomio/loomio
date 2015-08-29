@@ -149,11 +149,6 @@ lt:
   proposal_position_no: Nepritariu
   group_welcome_modal:
     heading: Sveikiname atvykus į savo naują grupę
-    instructions: "Tu koordinuoji grupę, o tai reiškia, kad tavo darbas yra nustatyti grupę ir pakviesti į ją žmones"
-    what_next: "Štai ką daryti toliau:"
-    first_step: "Nustatyk grupės aprašą, logotipą ir viršelio nuotrauką"
-    second_step: Perskaityk pavyzdinę giją ir pasipraktikuok priimti sprendimus
-    third_step: Pakviesk žmones prisijungti prie tavo grupės
     ok_got_it: "Gerai, supratau!"
   start_group_form:
     name_label: Grupės Pavadinimas
@@ -344,12 +339,6 @@ lt:
     context_menu:
       edit_comment: Redaguoti komentarą
       delete_comment: Ištrinti komentarą
-  new_vote_item:
-    agree: "<strong>{{name}}</strong> pritarė"
-    abstain: "<strong>{{name}}</strong> susilaikė"
-    disagree: "<strong>{{name}}</strong> nepritarė"
-  new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> pateikė pasiūlymą:"
   contact_message_form:
     email_label: Tavo el. pašto adresas
     email_placeholder: Įvesk savo el. pašto adresą...

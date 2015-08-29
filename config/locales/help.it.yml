@@ -26,6 +26,7 @@ it:
         group_privacy_html: Privacy del gruppo
         group_permissions_html: Permessi del gruppo
       coordination:
+        title_html: Coordinare il proprio gruppo
         adding_cover_photo_html: Aggiungere una foto di copertina
         managing_membership_html: Gestisci le modalità di partecipazione
         deactivating_groups_html: Attivare/disattivare un gruppo
@@ -121,6 +122,7 @@ it:
           vote_on_proposals:
             title: Vota delle proposte
     coordination:
+      title: Coordinare il proprio gruppo
       adding_cover_photo:
         title: Aggiungere una foto di copertina
       manage_membership:

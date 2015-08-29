@@ -54,3 +54,5 @@ fr:
       gift:
         header: Économie du don
         desc: "Loomio est soutenu par ceux qui paient, selon leurs moyens. Cela permet à la plateforme de ne pas imposer de publicité et d'être accessible aux groupes sans moyens."
+  about_page:
+    our_story_1_html: "<h2>Notre histoire</h2><p>Loomio est un outil collaboratif en ligne d'aide à la décision, réalisé par une équipe de techniciens, d'activistes, et d'entrepreneurs sociaux de Nouvelle Zélande.</p> "
