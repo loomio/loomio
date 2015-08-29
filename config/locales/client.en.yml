@@ -639,7 +639,7 @@ en:
     agree_with_statement: '<strong>{{actor}}</strong> agreed: <span>{{statement}}</span>'
     abstain_with_statement: '<strong>{{actor}}</strong> abstained: <span>{{statement}}</span>'
     disagree_with_statement: '<strong>{{actor}}</strong> disagreed: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> blocked: <span>{{statement}}'
+    block_with_statement: '<strong>{{actor}}</strong> blocked: <span>{{statement}}</span>'
 
   new_proposal_item:
     author_created_proposal: '<strong>{{actor}}</strong> started a proposal: <span>{{title}}</span>'
