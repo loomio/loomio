@@ -132,7 +132,6 @@ en:
       discussions: 'Threads'
       proposals: 'Proposals'
       comments: 'Comments'
-      no_results: 'No results found'
 
   start_menu:
     start_group: 'Start Group'

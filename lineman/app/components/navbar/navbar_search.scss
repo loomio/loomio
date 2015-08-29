@@ -34,6 +34,7 @@
   position: absolute;
   background-color: white;
 
+  width: 100%;
   top: $navbar-height;
   text-align: left;
   max-width: 320px;
@@ -41,6 +42,10 @@
   box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;
   max-height: 800px;
+}
+
+.no-results-found {
+  text-align: center;
 }
 
 .navbar-search-list-item {
