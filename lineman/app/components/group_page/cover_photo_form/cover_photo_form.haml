@@ -3,10 +3,12 @@
     %button{type: 'button', class: 'close', ng-click: '$close()'}
       %span{aria-hidden: true} &times;
       %span.sr-only{translate: 'common.action.cancel'}
-    %h1.lmo-h1.modal-title{translate: 'logo_photo_form.heading'}
+    %h1.lmo-h1.modal-title{translate: 'group_cover_modal.heading'}
 
   .modal-body
-    WARK
+    %span{translate: 'group_cover_modal.upload_link'}
+    %p{translate: 'group_cover_modal.helptext'}
+    %p{translate: 'group_cover_modal.image_size_helptext'}
 
   .modal-footer.lmo-clearfix
     %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

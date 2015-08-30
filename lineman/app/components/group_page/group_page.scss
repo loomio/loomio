@@ -63,7 +63,10 @@
   position: relative;
   left: 5px;
   top: 5px;
-  color: white;
   cursor: pointer;
+}
+
+.group-page__upload-photo i {
+  color: white;
   text-shadow: 1px 1px 4px $grey-on-grey;
 }

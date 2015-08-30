@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'uploadPhotoButton', ->
-  scope: {for: '@'}
+  scope: {group: '=', for: '@'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/upload_photo_button/upload_photo_button.html'
   replace: true
@@ -11,4 +11,4 @@ angular.module('loomioApp').directive 'uploadPhotoButton', ->
         when 'logo'  then LogoPhotoForm
 
     $scope.openUploadModal = ->
-      ModalService.open $scope.photoType()
+      ModalService.open $scope.photoType(), group: -> $scope.group
