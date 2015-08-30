@@ -1,0 +1,12 @@
+.group-cover-photo-modal
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: true} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title{translate: 'logo_photo_form.heading'}
+
+  .modal-body
+    WARK
+
+  .modal-footer.lmo-clearfix
+    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
