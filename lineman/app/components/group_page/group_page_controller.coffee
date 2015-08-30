@@ -20,4 +20,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
 
+  @canUploadPhotos = ->
+    AbilityService.canAdministerGroup(@group)
+
   return

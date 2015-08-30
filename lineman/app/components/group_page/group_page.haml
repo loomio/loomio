@@ -2,9 +2,11 @@
   %loading{ng-if: '!groupPage.group'}
   %main.group-page{ng-if: 'groupPage.group'}
     .group-page__cover{style:'background-image:url({{groupPage.group.coverUrl()}})'}
+      %upload_photo_button{ng-show: 'groupPage.canUploadPhotos()'}
     %main.container.main-container
       %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
         .group-page__logo{style:'background-image:url({{groupPage.group.logoUrl()}})', alt: "{{ 'group_page.group_logo' | translate }}"}
+          %upload_photo_button{ng-show: 'groupPage.canUploadPhotos()'}
         .group-page__name-and-actions
           .group-page__name
             %h1.lmo-h1
