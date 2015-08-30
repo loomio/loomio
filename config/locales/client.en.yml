@@ -273,12 +273,12 @@ en:
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
     helptext: 'Looking for inspiration? Check out <a href="https://unsplash.com/">Unsplash</a>, a gallery of beautiful, free images'
-    image_size_helptext: 'Ideal image size is 1400px x 320px'
+    image_size_helptext: 'Ideal image size is 1400 x 320px'
 
   group_logo_modal:
     heading: 'New group logo'
     upload_link: 'Upload new group logo'
-    image_size_helptext: 'Ideal image size is 100px x 100px'
+    image_size_helptext: 'Ideal image size is 100 x 100px'
 
   start_group_form:
     heading: 'Start a group'

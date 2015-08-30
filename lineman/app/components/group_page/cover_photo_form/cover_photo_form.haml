@@ -6,12 +6,12 @@
     %h1.lmo-h1.modal-title{translate: 'group_cover_modal.heading'}
 
   .modal-body
-    %li.change-picture-form__option
-      %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
-        .user-avatar.lmo-box--small.option-icon
-          .user-avatar__initials--small
-            %i.fa.fa-lg.fa-camera
-        %span{translate: 'group_cover_modal.upload_link'}
+    %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
+      .user-avatar.lmo-box--small.option-icon
+        .user-avatar__initials--small
+          %i.fa.fa-lg.fa-camera
+      %span{translate: 'group_cover_modal.upload_link'}
+      %input.hidden.group-cover-photo-modal__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
     %p{translate: 'group_cover_modal.helptext'}
     %p{translate: 'group_cover_modal.image_size_helptext'}
 

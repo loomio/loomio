@@ -6,7 +6,12 @@
     %h1.lmo-h1.modal-title{translate: 'group_logo_modal.heading'}
 
   .modal-body
-    %span{translate: 'group_logo_modal.upload_link'}
+    %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
+      .user-avatar.lmo-box--small.option-icon
+        .user-avatar__initials--small
+          %i.fa.fa-lg.fa-camera
+      %span{translate: 'group_logo_modal.upload_link'}
+      %input.hidden.group-logo-modal__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
     %p{translate: 'group_logo_modal.image_size_helptext'}
 
   .modal-footer.lmo-clearfix
