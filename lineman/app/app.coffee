@@ -22,12 +22,7 @@ angular.module('loomioApp', ['ngNewRouter',
     sanitize: true
     breaks: true
 
-  # TODO: I was secretly broken. Do I need to exist?
-  # consume the csrf token from the page so form submissions can work
-  # authToken = document.querySelector("meta[name=\"csrf-token\"]").attr("content")
-  # $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
-
-  # enabled html5 pushstate mode
+  # enable html5 pushstate mode
   $locationProvider.html5Mode(true)
 
   if window.Loomio?
@@ -37,13 +32,14 @@ angular.module('loomioApp', ['ngNewRouter',
 
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 
-  # stuff that only runs in production environment
+  # disable angular debug stuff in production
   if window.Loomio? and window.Loomio.environment == 'production'
-    # disable angular debug stuff in production
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService) ->
+  IntercomService.boot()
+
   $scope.currentComponent = 'nothing yet'
 
   $scope.$on 'currentComponent', (event, options = {}) ->

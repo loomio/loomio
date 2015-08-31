@@ -8,15 +8,8 @@
     %base{href: '/'}
     = stylesheet_link_tag lineman_css_path
 
-    -# google analytics code for production
-    - if Rails.env.production? and ENV['GOOGLE_ANALYTICS_ID']
-      :javascript
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', '#{ENV["GOOGLE_ANALYTICS_ID"]}', 'auto');
+    = render 'angular/google_analytics'
+    = render 'angular/intercom'
 
   %body{'ng-keydown' => 'keyDown($event)'}
     %flash
@@ -25,34 +18,17 @@
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu
 
-
-    -#- if Rails.env.production?
     #turn-off-angular{'aria-hidden' => 'true'}
       =link_to t(:'angular.switch_back'), angular_url, target: "_self"
       %br
       =link_to t(:'angular.give_feedback'), 'https://docs.google.com/a/enspiral.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform', target: '_blank'
       .lmo-version= link_to "v#{Loomio::Version.current}", 'https://github.com/loomio/loomio/releases', target: '_blank'
 
-
     :javascript
-      window.Loomio = {};
-      window.Loomio.version = #{Loomio::Version.current.to_json}
-      window.Loomio.reportErrors = false
-      window.Loomio.environment = #{Rails.env.to_json};
-      window.Loomio.flash = #{flash.to_h.to_json};
-      window.Loomio.currentUserId = #{current_user.id.to_json};
-      window.Loomio.currentUserLocale = #{current_user.locale.to_json}
-      window.Loomio.seedRecords = #{CurrentUserSerializer.new(current_user).to_json}
-      window.Loomio.permittedParams = #{PermittedParamsSerializer.new({}).to_json}
-      window.Loomio.locales = #{angular_locales.to_json}
-      window.Loomio.baseUrl = #{root_url.to_json}
-
-    -#- if Rails.env.production? and ENV['ERRBIT_HOST']
-      -#%script{src: '/js/airbrake-shim.js', 'data-airbrake-host' => "http://#{ENV['ERRBIT_HOST']}", 'data-airbrake-project-id' => ENV['ERRBIT_KEY'],  'data-airbrake-project-key' => ENV['ERRBIT_KEY']}
+      window.Loomio = #{@appConfig.to_json.html_safe}
 
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
-
 
     - if ENV['FAYE_URL']
       %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
