@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'CoverPhotoForm', ->
   templateUrl: 'generated/components/group_page/cover_photo_form/cover_photo_form.html'
-  controller: ($scope, $timeout, group, Records, FlashService) ->
+  controller: ($scope, $rootScope, $timeout, group, Records, FlashService) ->
 
     $scope.selectFile = ->
       $timeout -> document.querySelector('.group-cover-photo-modal__file-input').click()
@@ -9,4 +9,5 @@ angular.module('loomioApp').factory 'CoverPhotoForm', ->
       if _.any files
         Records.groups.uploadPhoto(group, files[0], 'cover_photo').then ->
           FlashService.success 'group_cover_modal.upload_success'
+          $rootScope.$broadcast 'groupPhotoUploaded'
           $scope.$close()
