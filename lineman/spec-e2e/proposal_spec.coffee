@@ -21,7 +21,7 @@ describe 'Proposals', ->
     beforeEach ->
       threadHelper.loadWithActiveProposal()
 
-    iit 'successfully votes on a proposal', ->
+    it 'successfully votes on a proposal', ->
       proposalsHelper.clickAgreeBtn()
       proposalsHelper.setVoteStatement('This is a good idea')
       proposalsHelper.submitVoteForm()
