@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
       $scope.query = ''
 
     highlightables = ->
-      angular.element('.navbar-search-list-option:visible')
+      document.querySelectorAll('.navbar-search-list-option')
 
     $scope.highlightedSelection = ->
       highlightables()[$scope.highlighted]
@@ -27,7 +27,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
         # scroll to newly highlighted element?
 
     $scope.searchField = ->
-      angular.element('#primary-search-input')[0]
+      angular.element(document.querySelector('#primary-search-input'))
 
     $scope.shouldExecuteWithSearchField = (active, event) ->
       active == $scope.searchField() or KeyEventService.defaultShouldExecute(active, event)
@@ -75,7 +75,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
 
     $scope.clearAndFocusInput = ->
       $scope.query = ''
-      angular.element('.navbar-search-input input').focus()
+      document.querySelector('.navbar-search-input').focus()
 
     $scope.queryPresent = ->
       $scope.query.length > 0
