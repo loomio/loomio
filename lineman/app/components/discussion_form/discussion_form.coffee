@@ -1,7 +1,11 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
   controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService, KeyEventService) ->
+    $scope.showGroupSelect = true
     $scope.discussion = discussion.clone()
+
+    if $scope.discussion.isNew() and $scope.discussion.groupId?
+      $scope.showGroupSelect = false
 
     $scope.$on 'modal.closing', (event) ->
       FormService.confirmDiscardChanges(event, $scope.discussion)

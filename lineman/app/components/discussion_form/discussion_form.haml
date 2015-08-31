@@ -13,7 +13,7 @@
 
     .thread-helptext{translate: 'discussion_form.discussion_helptext', ng_show: 'discussion.isNew()'}
 
-    .form-group
+    .form-group{ng-show: 'showGroupSelect'}
       %label{for: 'discussion-group-field', translate: 'discussion_form.group_label'}
       %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName() for group in availableGroups()', ng-change: 'setCurrentPrivacy()'}
         %option{value: '', translate: 'discussion_form.group_placeholder' }
