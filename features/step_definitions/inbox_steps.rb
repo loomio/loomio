@@ -89,7 +89,7 @@ Given(/^I have read the discussion but there is a new comment$/) do
   @discussion.group.add_member!(@discussion.author)
   DiscussionReader.for(user:@user, discussion: @discussion).viewed!
   @comment = FactoryGirl.build(:comment, discussion: @discussion)
-  CommentService.create(comment: @comment, actor: @user, mark_as_read: false)
+  CommentService.create(comment: @comment, actor: @author)
 end
 
 Given(/^I belong to a group with more than max per inbox group discussions$/) do

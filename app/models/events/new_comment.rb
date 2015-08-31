@@ -5,10 +5,6 @@ class Events::NewComment < Event
                     discussion: comment.discussion,
                     created_at: comment.created_at)
 
-    DiscussionReader.for(user: comment.author,
-                         discussion: comment.discussion).
-                     set_volume_as_required!
-
     Events::CommentRepliedTo.publish! comment if comment.is_reply?
 
     comment.mentioned_group_members.
@@ -16,14 +12,11 @@ class Events::NewComment < Event
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
-    DiscussionReader.for(user: comment.author, discussion: comment.discussion).participate!
-
     UsersToEmailQuery.new_comment(comment).find_each do |user|
       ThreadMailer.delay.new_comment(user, event)
     end
 
     event
-
   end
 
   def group_key

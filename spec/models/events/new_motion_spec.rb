@@ -12,13 +12,9 @@ describe Events::NewMotion do
     it 'creates an event' do
       Event.should_receive(:create!).with(kind: 'new_motion',
                                           eventable: motion,
-                                          discussion: motion.discussion)
+                                          discussion: motion.discussion,
+                                          created_at: motion.created_at)
       Events::NewMotion.publish!(motion)
-    end
-
-    it 'marks the discussion reader as participating' do
-      Events::NewMotion.publish!(motion)
-      expect(DiscussionReader.for(user: motion.author, discussion: discussion).participating).to be_truthy
     end
 
     it 'returns an event' do

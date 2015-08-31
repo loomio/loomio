@@ -1,6 +1,7 @@
 class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read]
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
+  include UsesDiscussionReaders
 
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
@@ -33,12 +34,6 @@ class API::DiscussionsController < API::RestfulController
   end
 
   private
-
-  def respond_with_collection(**args)
-    args[:scope] ||= {}
-    args[:scope][:reader_cache] = DiscussionReaderCache.new(user: current_user, discussions: collection)
-    super args
-  end
 
   def visible_records
     Queries::VisibleDiscussions.new(user: current_user, groups: visible_groups)

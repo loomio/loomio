@@ -1,26 +1,29 @@
 require 'rails_helper'
 
 describe 'VoteService' do
-  before do
-    Events::NewVote.stub(:publish!)
-  end
 
-  let(:vote) { double(:vote, position: 'yes', motion: motion, 'author=' => true, save!: true, valid?: true)}
-  let(:ability) { double(:ability, :authorize! => true) }
-  let(:user) { double(:user, ability: ability) }
-  let(:motion) { double(:motion) }
+  let(:group) { create :group }
+  let(:discussion) { create :discussion, group: group }
+  let(:motion) { create(:motion, discussion: discussion) }
+  let(:vote) { build(:vote, motion: motion, author: user) }
+  let(:user) { create(:user, email_on_participation: true) }
+  let(:another_user) { create :user }
+  let(:comment) { create :comment, discussion: discussion }
+  let(:reader) { DiscussionReader.for(discussion: discussion, user: user) }
 
   describe 'create' do
     after do
-      VoteService.create(vote: vote, actor: user)
+      group.add_member! user
     end
 
     it 'authorizes the user can vote' do
-      ability.should_receive(:authorize!).with(:create, vote)
+      user.ability.should_receive(:authorize!).with(:create, vote)
+      VoteService.create(vote: vote, actor: user)
     end
 
     it 'saves the vote' do
       vote.should_receive(:save!).and_return(true)
+      VoteService.create(vote: vote, actor: user)
     end
 
     context 'vote is valid' do
@@ -31,6 +34,21 @@ describe 'VoteService' do
       context 'vote position is yes' do
         it 'fires the NewVote event and returns it' do
           Events::NewVote.should_receive(:publish!).with(vote)
+          VoteService.create(vote: vote, actor: user)
+        end
+
+        it 'ensures a discussion stays read' do
+          group.add_member! another_user
+          CommentService.create(comment: comment, actor: another_user)
+          reader.viewed!
+          VoteService.create(vote: vote, actor: user)
+          expect(reader.reload.last_read_sequence_id).to eq discussion.reload.last_sequence_id
+        end
+
+        it 'updates the discussion reader' do
+          VoteService.create(vote: vote, actor: user)
+          expect(reader.reload.participating).to eq true
+          expect(reader.reload.volume.to_sym).to eq :loud
         end
       end
     end
@@ -42,6 +60,7 @@ describe 'VoteService' do
 
       it 'fires no events' do
         Events::NewVote.should_not_receive(:publish!)
+        VoteService.create(vote: vote, actor: user)
       end
     end
   end

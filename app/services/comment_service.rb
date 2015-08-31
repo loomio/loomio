@@ -24,20 +24,18 @@ class CommentService
     Events::CommentLiked.publish!(comment_vote)
   end
 
-  def self.create(comment:, actor:, mark_as_read: true)
+  def self.create(comment:, actor:)
     comment.author = actor
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
     comment.attachment_ids = [comment.attachment_ids, comment.new_attachment_ids].compact.flatten
     comment.save!
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
+
     ThreadSearchService.index! comment.discussion_id
 
     event = Events::NewComment.publish!(comment)
-
-    if mark_as_read
-      DiscussionReader.for(user: actor, discussion: comment.discussion).viewed!(comment.created_at)
-    end
+    DiscussionReader.for(user: actor, discussion: comment.discussion).author_thread_item!(comment.created_at)
     event
   end
 

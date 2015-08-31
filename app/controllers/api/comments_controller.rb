@@ -1,4 +1,5 @@
 class API::CommentsController < API::RestfulController
+  include UsesDiscussionReaders
   before_filter :authenticate_user_by_email_api_key, only: :create
 
   load_resource only: [:like, :unlike]

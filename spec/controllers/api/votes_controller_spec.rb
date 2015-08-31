@@ -73,7 +73,7 @@ describe API::VotesController do
         expect(json.keys).to include *(%w[votes])
         motions = json['votes'].map { |v| v['id'] }
         expect(motions).to include my_vote.id
-        expect(motions).to_not include my_older_vote.id        
+        expect(motions).to_not include my_older_vote.id
       end
     end
   end
@@ -98,13 +98,19 @@ describe API::VotesController do
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users votes])
         expect(json['votes'][0].keys).to include *(%w[
-          id 
+          id
           position
           statement
           proposal_id
           author_id
           created_at
         ])
+      end
+
+      it 'responds with a discussion with a reader' do
+        post :create, vote: vote_params
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['discussion_reader_id']).to be_present
       end
     end
 
