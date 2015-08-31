@@ -2,11 +2,13 @@
   %loading{ng-if: '!groupPage.group'}
   %main.group-page{ng-if: 'groupPage.group'}
     .group-page__cover{ng-style:'groupPage.coverStyle()'}
-      %upload_photo_button{for: 'cover', group: 'groupPage.group', ng-show: 'groupPage.canUploadPhotos()'}
+      %a.group-page__upload-photo{href: '', ng-click: 'groupPage.openUploadCoverForm()', ng-show: 'groupPage.canUploadPhotos()'}
+        %i.fa.fa-lg.fa-camera
     %main.container.main-container
       %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
         .group-page__logo{ng-style:'groupPage.logoStyle()', alt: "{{ 'group_page.group_logo' | translate }}"}
-          %upload_photo_button{for: 'logo', group: 'groupPage.group', ng-show: 'groupPage.canUploadPhotos()'}
+          %a.group-page__upload-photo{href: '', ng-click: 'groupPage.openUploadLogoForm()', ng-show: 'groupPage.canUploadPhotos()'}
+            %i.fa.fa-lg.fa-camera
         .group-page__name-and-actions
           .group-page__name
             %h1.lmo-h1

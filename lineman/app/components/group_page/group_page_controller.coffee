@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($scope, $rootScope, $routeParams, Records, CurrentUser, ScrollService, MessageChannelService, AbilityService) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $routeParams, Records, CurrentUser, ScrollService, MessageChannelService, AbilityService, ModalService, CoverPhotoForm, LogoPhotoForm) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
@@ -28,5 +28,11 @@ angular.module('loomioApp').controller 'GroupPageController', ($scope, $rootScop
 
   @canUploadPhotos = ->
     AbilityService.canAdministerGroup(@group)
+
+  @openUploadCoverForm = ->
+    ModalService.open CoverPhotoForm, group: => @group
+
+  @openUploadLogoForm = ->
+    ModalService.open LogoPhotoForm, group: => @group
 
   return
