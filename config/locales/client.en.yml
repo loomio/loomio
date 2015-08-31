@@ -334,6 +334,7 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
+      manage_members: 'Manage members'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     deactivate_group:

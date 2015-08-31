@@ -10,6 +10,10 @@
         %a.group-page-actions__edit-group-link{href: '', ng-click: 'groupActions.editGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
           .dropdown-menu-item-details
+      %li.dropdown-menu-item{ng-if: 'groupActions.canAdministerGroup()'}
+        %a.group-page-actions__manage-memberships-link{lmo-href-for: 'group', lmo-href-action: 'memberships'}
+          .dropdown-menu-item-label{translate: 'group_page.options.manage_members'}
+        .dropdown-menu-item-details
       %li.dropdown-menu-item
         %a.group-page-actions__leave-group{href: '', ng-click: 'groupActions.leaveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
