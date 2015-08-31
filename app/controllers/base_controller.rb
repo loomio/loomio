@@ -18,6 +18,19 @@ class BaseController < ApplicationController
   protected
 
   def boot_angular_ui
+    @appConfig = {
+      version: Loomio::Version.current,
+      reportErrors: false,
+      environment: Rails.env,
+      flash: flash.to_h,
+      currentUserId: current_user.id,
+      currentUserLocale: current_user.locale,
+      seedRecords: CurrentUserSerializer.new(current_user),
+      permittedParams: PermittedParamsSerializer.new({}),
+      locales: angular_locales,
+      baseUrl: root_url
+    }
+
     render 'layouts/angular', layout: false
   end
 

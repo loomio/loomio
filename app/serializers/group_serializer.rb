@@ -6,6 +6,7 @@ class GroupSerializer < ActiveModel::Serializer
              :key,
              :name,
              :created_at,
+             :creator_id,
              :description,
              :members_can_add_members,
              :members_can_create_subgroups,

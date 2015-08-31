@@ -1,11 +1,10 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, ScrollService, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
-  handleCommentHash = (->
+  handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
       $location.search().comment = match[1]
       $location.hash('')
-  )()
 
   @performScroll = ->
     ScrollService.scrollTo @elementToFocus(), 150
