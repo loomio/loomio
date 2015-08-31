@@ -7,6 +7,6 @@ angular.module('loomioApp').factory 'CoverPhotoForm', ->
 
     $scope.upload = (files) ->
       if _.any files
-        Records.groups.uploadCoverPhoto(group, files[0]).then ->
+        Records.groups.uploadPhoto(group, files[0], 'cover_photo').then ->
           FlashService.success 'group_cover_modal.upload_success'
           $scope.$close()

@@ -7,8 +7,5 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
         path: "#{parentGroup.id}/subgroups"
         cacheKey: "subgroupsFor#{parentGroup.key}"
 
-    uploadCoverPhoto: (group, file) =>
-      @remote.upload "groups/#{group.key}/upload_cover_photo", file
-
-    uploadLogo: (group, file) =>
-      @remote.upload "groups/#{group.key}/upload_logo", file
+    uploadPhoto: (group, file, kind) =>
+      @remote.upload "#{group.key}/upload_photo/#{kind}", file

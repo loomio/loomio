@@ -57,6 +57,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
+      post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
