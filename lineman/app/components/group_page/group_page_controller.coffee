@@ -8,14 +8,14 @@ angular.module('loomioApp').controller 'GroupPageController', ($scope, $rootScop
     $rootScope.$broadcast 'setTitle', @group.fullName()
     $rootScope.$broadcast 'analyticsSetGroup', @group
     MessageChannelService.subscribeTo("/group-#{@group.key}")
-    @setPhotos()
   , (error) ->
     $rootScope.$broadcast('pageError', error)
 
-  @setPhotos = =>
-    @coverStyle = {"background-image": "url(#{@group.coverUrl()})"}
-    @logoStyle = {"background-image": "url(#{@group.logoUrl()})"}
-  $scope.$on 'groupPhotoUploaded', @setPhotos
+  @logoStyle = ->
+    { 'background-image': "url(#{@group.logoUrl()})" }
+
+  @coverStyle = ->
+    { 'background-image': "url(#{@group.coverUrl()})" }
 
   @isMember = ->
     CurrentUser.membershipFor(@group)?

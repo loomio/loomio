@@ -1,7 +1,7 @@
 angular.module('loomioApp').factory 'LogoPhotoForm', ->
   scope: {group: '='}
   templateUrl: 'generated/components/group_page/logo_photo_form/logo_photo_form.html'
-  controller: ($scope, $rootScope, $timeout, group, Records, FormService) ->
+  controller: ($scope, $timeout, group, Records, FormService) ->
 
     $scope.selectFile = ->
       $timeout -> document.querySelector('.group-logo-modal__file-input').click()
@@ -10,5 +10,3 @@ angular.module('loomioApp').factory 'LogoPhotoForm', ->
       uploadKind:   'logo'
       submitFn:     Records.groups.uploadPhoto
       flashSuccess: 'group_logo_modal.upload_success'
-      successCallback: ->
-        $rootScope.$broadcast 'groupPhotoUploaded'

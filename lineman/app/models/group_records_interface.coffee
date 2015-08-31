@@ -8,4 +8,4 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
         cacheKey: "subgroupsFor#{parentGroup.key}"
 
     uploadPhoto: (group, file, kind) =>
-      @remote.upload "#{group.key}/upload_photo/#{kind}", file
+      @remote.upload("#{group.key}/upload_photo/#{kind}", file).then @remote.onSuccess, @remote.onFailure
