@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'ScrollService', ($timeout, $document) ->
 
   scrollTo: (target, offset = 50, speed = 100) ->
     $timeout ->
-      elem = angular.element(target)
-      if elem.length
+      elem = document.querySelector(target)
+      if elem
         $document.scrollToElement(elem, offset, speed)
-        angular.element().focus(elem)
+        # TODO: angular.element().focus(elem)

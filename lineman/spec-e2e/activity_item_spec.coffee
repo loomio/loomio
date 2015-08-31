@@ -13,12 +13,9 @@ describe 'Activity Items', ->
     proposalsHelper.editProposalNameAndDescription()
 
   it 'dispays thread and proposal activity items correctly', ->
-    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread title:')
-    expect(threadHelper.activityItemList()).toContain('Edited thread title')
+    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread title: Edited thread title')
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread description')
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread title and description')
-    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal title:')
-    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the description of the proposal:')
-    expect(threadHelper.activityItemList()).toContain('Edited proposal title')
-    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the title and description of the proposal:')
-    expect(threadHelper.activityItemList()).toContain('New edited proposal title')
+    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal title: Edited proposal title')
+    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal description')
+    expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal title and description')

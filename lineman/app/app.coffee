@@ -14,7 +14,7 @@ angular.module('loomioApp', ['ngNewRouter',
   #configure markdown
   renderer = new marked.Renderer()
   renderer.link = (href, title, text) ->
-    "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
+    "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>";
 
   markedProvider.setOptions
     renderer: renderer
@@ -22,9 +22,10 @@ angular.module('loomioApp', ['ngNewRouter',
     sanitize: true
     breaks: true
 
+  # TODO: I was secretly broken. Do I need to exist?
   # consume the csrf token from the page so form submissions can work
-  authToken = $("meta[name=\"csrf-token\"]").attr("content")
-  $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
+  # authToken = document.querySelector("meta[name=\"csrf-token\"]").attr("content")
+  # $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken
 
   # enabled html5 pushstate mode
   $locationProvider.html5Mode(true)
@@ -47,10 +48,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
-    ScrollService.scrollTo(options['scrollTo'] or 'h1:first')
+    ScrollService.scrollTo(options['scrollTo'] or 'h1')
 
   $scope.$on 'setTitle', (event, title) ->
-    angular.element.find('title')[0].text = _.trunc(title, 300) + ' | Loomio'
+    document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error

@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'pieChart', ->
     votes: '='
   restrict: 'E'
   controller: ($scope, $element) ->
-    size = $element.width()
+    size = $element[0].offsetWidth
     draw = SVG($element[0]).size('100%', '100%')
     half = size / 2.0
     radius = half

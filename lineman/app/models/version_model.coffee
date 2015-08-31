@@ -4,12 +4,12 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
     @plural: 'versions'
     @indices: ['discussionId']
 
+    relationships: ->
+      @belongsTo 'proposal'
+
     editedAttributeNames: ->
       _.filter _.keys(@changes).sort(), (key) ->
         _.include ['title', 'name', 'description', 'closing_at'], key
 
     attributeEdited: (name) ->
        _.include(_.keys(@changes), name)
-
-    proposal: ->
-      @recordStore.proposals.find(@proposalId)

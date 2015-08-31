@@ -132,7 +132,6 @@ en:
       discussions: 'Threads'
       proposals: 'Proposals'
       comments: 'Comments'
-      no_results: 'No results found'
 
   start_menu:
     start_group: 'Start Group'
@@ -581,6 +580,9 @@ en:
       thismonth: 'This month'
       older: 'Older than a month'
 
+  star_toggle:
+    star: Star thread
+
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
@@ -632,6 +634,7 @@ en:
     confirm: 'Delete comment'
 
   new_comment_item:
+    aria_label: 'Comment by {{author}}'
     context_menu:
       aria_label: 'Comment options'
       edit_comment: 'Edit comment'
@@ -643,33 +646,37 @@ en:
     abstain: '<strong>{{actor}}</strong> abstained'
     disagree: '<strong>{{actor}}</strong> disagreed'
     block: '<strong>{{actor}}</strong> blocked'
+    agree_with_statement: '<strong>{{actor}}</strong> agreed: <span>{{statement}}</span>'
+    abstain_with_statement: '<strong>{{actor}}</strong> abstained: <span>{{statement}}</span>'
+    disagree_with_statement: '<strong>{{actor}}</strong> disagreed: <span>{{statement}}</span>'
+    block_with_statement: '<strong>{{actor}}</strong> blocked: <span>{{statement}}</span>'
 
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> started a proposal:'
+    author_created_proposal: '<strong>{{actor}}</strong> started a proposal: <span>{{title}}</span>'
 
   proposal_closed_item:
     proposal_closed: 'The proposal has closed:'
 
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal:'
+    proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal: <span>{{title}}</span>'
 
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong> updated the proposal title:'
-    description: '<strong>{{actor}}</strong> updated the description of the proposal:'
-    closing_at: '<strong>{{actor}}</strong> updated the closing time of the proposal:'
-    description_name: '<strong>{{actor}}</strong> updated the title and description of the proposal:'
-    closing_at_name: '<strong>{{actor}}</strong> updated the title and closing time of the proposal:'
-    closing_at_description: '<strong>{{actor}}</strong> updated the description and closing time of the proposal:'
-    closing_at_description_name: '<strong>{{actor}}</strong> updated the title, description and closing time of the proposal:'
+    name: '<strong>{{actor}}</strong> updated the proposal title: <span>{{title}}</span>'
+    description: '<strong>{{actor}}</strong> updated the proposal description'
+    closing_at: '<strong>{{actor}}</strong> updated the proposal to close at <span>{{time}}</span>'
+    description_name: '<strong>{{actor}}</strong> updated the proposal title and description'
+    closing_at_name: '<strong>{{actor}}</strong> updated the proposal title and closing time'
+    closing_at_description: '<strong>{{actor}}</strong> updated the proposal description and closing time'
+    closing_at_description_name: '<strong>{{actor}}</strong> updated the proposal title, description and closing time'
 
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> published an outcome for the proposal:'
+    proposal_outcome_created: '<strong>{{actor}}</strong> published a proposal outcome:'
 
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> updated the outcome for the proposal:'
+    proposal_outcome_updated: '<strong>{{actor}}</strong> updated the proposal outcome:'
 
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong> updated the thread title:'
+    title: '<strong>{{actor}}</strong> updated the thread title: <span>{{title}}</span>'
     description: '<strong>{{actor}}</strong> updated the thread description'
     description_title: '<strong>{{actor}}</strong> updated the thread title and description'
 

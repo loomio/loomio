@@ -2,7 +2,7 @@
   %form{ng-submit: 'submit()',  ng-disabled: 'comment.processing', name: 'deleteCommentForm' }
     .modal-header
       %button{type: 'button', class: 'close', ng-click: '$close()'}
-        %span{aria-hidden: true} &times;
+        %span{aria-hidden: 'true'} &times;
         %span.sr-only{translate: 'common.action.cancel'}
       %h3.modal-title{translate: 'comment_form.delete_comment'}
     .modal-body

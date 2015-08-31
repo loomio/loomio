@@ -12,8 +12,8 @@
         %a{lmo-href-for: 'threadPage.group'}
           {{threadPage.group.name}}
 
-    %section.thread-context{aria-labelledby: "thread-context__heading"}
-      %h2.lmo-card-heading{translate: 'context_card.heading'}
+    %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+      %h2.lmo-card-heading{aria-hidden: 'true', translate: 'context_card.heading'}
       .thread-actions.lmo-btn-group.pull-right
         .thread-notification-level.lmo-btn-wrapper
           %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}

@@ -2,7 +2,7 @@
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: true} &times;
+      %span{aria-hidden: 'true'} &times;
       %span.sr-only{translate: 'common.action.cancel'}
     %h1.lmo-h1.modal-title{ng-if: 'group.isParent()', translate: 'start_group_form.heading'}
     %h1.lmo-h1.modal-title{ng-if: 'group.isSubgroup()', translate: 'start_group_form.heading_when_subgroup'}
