@@ -21,7 +21,8 @@
               {{ group.name }}
 
     %ul.thread-list.selector-list{ng-show: 'query'}
-      %li.navbar-search-list-item.selector-list-item.search-loading{ng-show: 'searching', translate: 'navbar.search.loading'}
+      %li.navbar-search-list-item.selector-list-item.search-loading{ng-show: 'searching'}
+        %loading
       %li.navbar-search-list-item.selector-list-item.no-results-found{ng-show: 'noResultsFound()', translate: 'navbar.search.no_results'}
       %div{ng-hide: 'searching || noResultsFound()'}
         %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults'}

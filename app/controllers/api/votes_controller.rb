@@ -1,4 +1,5 @@
 class API::VotesController < API::RestfulController
+  include UsesDiscussionReaders
 
   alias :update :create
 

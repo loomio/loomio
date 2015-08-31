@@ -5,8 +5,10 @@ class MotionService
     return false unless motion.valid?
     motion.save!
     ThreadSearchService.index! motion.discussion_id
-    DiscussionReader.for(discussion: motion.discussion, user: actor).set_volume_as_required!
-    Events::NewMotion.publish!(motion)
+
+    event = Events::NewMotion.publish!(motion)
+    DiscussionReader.for(discussion: motion.discussion, user: motion.author).author_thread_item!(motion.created_at)
+    event
   end
 
   def self.update(motion:, params:, actor:)

@@ -29,6 +29,12 @@ describe API::EventsController do
         expect(event_ids).to_not include @another_event.id
       end
 
+      it 'responds with a discussion with a reader' do
+        get :index, discussion_id: discussion.id, format: :json
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['discussion_reader_id']).to be_present
+      end
+
     end
 
     context 'with comment' do

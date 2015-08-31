@@ -17,11 +17,6 @@ describe Events::NewComment do
       Events::NewComment.publish!(comment)
     end
 
-    it 'marks the discussion reader as participating' do
-      Events::NewComment.publish!(comment)
-      expect(DiscussionReader.for(user: comment.author, discussion: comment.discussion).participating).to be_truthy
-    end
-
     it 'returns an event' do
       expect(Events::NewComment.publish!(comment)).to eq event
     end

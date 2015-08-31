@@ -117,6 +117,12 @@ describe API::CommentsController do
                                user_id: user.id)).to exist
         end
 
+        it 'responds with a discussion with a reader' do
+          post :create, comment: comment_params
+          json = JSON.parse(response.body)
+          expect(json['discussions'][0]['discussion_reader_id']).to be_present
+        end
+
         it 'responds with json' do
           post :create, comment: comment_params
           json = JSON.parse(response.body)

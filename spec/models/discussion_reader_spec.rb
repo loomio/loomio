@@ -38,7 +38,7 @@ describe DiscussionReader do
 
     context '0 read, 1 unread' do
       before do
-        CommentService.create comment: build(:comment, discussion: discussion), actor: user, mark_as_read: false
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
       end
       it {should == 1}
     end
@@ -46,7 +46,7 @@ describe DiscussionReader do
     context '1 read, 1 unread' do
       before do
         CommentService.create comment: build(:comment, discussion: discussion), actor: user
-        CommentService.create comment: build(:comment, discussion: discussion), actor: user, mark_as_read: false
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
       end
       it {should == 1}
     end
@@ -65,7 +65,7 @@ describe DiscussionReader do
         2.times do
           CommentService.create comment: build(:comment, discussion: discussion), actor: user
         end
-        CommentService.create comment: build(:comment, discussion: discussion), actor: user, mark_as_read: false
+        CommentService.create comment: build(:comment, discussion: discussion), actor: user
       end
 
       it {should == 2}
@@ -74,4 +74,3 @@ describe DiscussionReader do
 
 
 end
-

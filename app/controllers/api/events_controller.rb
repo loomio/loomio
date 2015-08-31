@@ -1,4 +1,5 @@
 class API::EventsController < API::RestfulController
+  include UsesDiscussionReaders
 
   private
 
