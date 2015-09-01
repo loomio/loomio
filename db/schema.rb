@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826233305) do
+ActiveRecord::Schema.define(version: 20150901215014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,7 +140,6 @@ ActiveRecord::Schema.define(version: 20150826233305) do
   end
 
   add_index "comments", ["created_at"], name: "index_comments_on_created_at", using: :btree
-  add_index "comments", ["discussion_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["discussion_id"], name: "index_comments_on_discussion_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
@@ -253,6 +252,8 @@ ActiveRecord::Schema.define(version: 20150826233305) do
   add_index "discussions", ["is_deleted", "id"], name: "index_discussions_on_is_deleted_and_id", using: :btree
   add_index "discussions", ["is_deleted"], name: "index_discussions_on_is_deleted", using: :btree
   add_index "discussions", ["key"], name: "index_discussions_on_key", unique: true, using: :btree
+  add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", using: :btree
+  add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "kind",           limit: 255
@@ -430,6 +431,7 @@ ActiveRecord::Schema.define(version: 20150826233305) do
   add_index "groups", ["key"], name: "index_groups_on_key", unique: true, using: :btree
   add_index "groups", ["name"], name: "index_groups_on_name", using: :btree
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
+  add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.string   "recipient_email", limit: 255,                 null: false
@@ -491,6 +493,7 @@ ActiveRecord::Schema.define(version: 20150826233305) do
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["inviter_id"], name: "index_memberships_on_inviter_id", using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
+  add_index "memberships", ["volume"], name: "index_memberships_on_volume", using: :btree
 
   create_table "motion_readers", force: :cascade do |t|
     t.integer  "motion_id"
@@ -527,6 +530,8 @@ ActiveRecord::Schema.define(version: 20150826233305) do
   end
 
   add_index "motions", ["author_id"], name: "index_motions_on_author_id", using: :btree
+  add_index "motions", ["closed_at"], name: "index_motions_on_closed_at", using: :btree
+  add_index "motions", ["closing_at"], name: "index_motions_on_closing_at", using: :btree
   add_index "motions", ["created_at"], name: "index_motions_on_created_at", using: :btree
   add_index "motions", ["discussion_id", "closed_at"], name: "index_motions_on_discussion_id_and_closed_at", order: {"closed_at"=>:desc}, using: :btree
   add_index "motions", ["discussion_id"], name: "index_motions_on_discussion_id", using: :btree
