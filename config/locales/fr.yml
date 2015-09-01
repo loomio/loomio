@@ -664,8 +664,6 @@ fr:
     vote: Vous pouvez changer votre position à tout moment
   pricing_page:
     header: Tarification
-    loomio_for_organisations: Loomio pour les organisations
-    loomio_for_communities: Loomio pour les communautés
   contribution:
     any_amount: "ou un don ponctuel de "
     currency_desc: Les montants sont en Dollars US

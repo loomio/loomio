@@ -669,12 +669,6 @@ es:
     vote: Puedes cambiar tu posición en cualquier momento
   pricing_page:
     header: Precio
-    social_mission_html: "Nuestro modelo de pago está enfocado a nuestra misión social: <strong>facilitar a todas las personas, en cualquier parte, participar en las decisiones que les afectan </strong>."
-    loomio_for_organisations: "Loomio para organizaciones "
-    organisations_deal_html: "Si estás usando Loomio en una empresa, organización formal o negocio, el precio es de 1$ US mensual por persona, tras el <strong> periodo de prueba gratuito de 30 días </strong>."
-    discuss_options_html: "Si quieres discutir las opciones de pago para que encajen con tu organización, <a href=/contact#contact-form target='_blank'>contacta con nosotros</a>."
-    loomio_for_communities: "Loomio para comunidades "
-    communities_deal: "El dinero nunca sera una barrera para personas usando Loomio para hacer mejoras en sus comunidades. Si tu grupo no tiene presupuesto para pagar el software, no tienes que pagar la suscripción. Sin embrago, les pediremos ocasionalmente, a los miembros de tu grupo una donación voluntaria."
   contribution:
     any_amount: "Cualquier contribución única "
     currency_desc: La suma está en dólares americanos

@@ -1,9 +1,11 @@
 it:
   common:
+    confirm_discard_changes: Rinunci ai cambiamenti?
     time:
       am: am
       pm: pm
     closing_in: "chiude in {{time}}"
+    closed_ago: "chiuso alle {{time}}"
     volume: Volume
     notification_volume: Volume delle notifiche
     group: Gruppo
@@ -29,12 +31,14 @@ it:
       like: Like
       unlike: Unlike
       cancel: Annulla
+      show_more: Mostra di più
       view_all: Vedi tutti
       new_thread: Nuova discussione
       add_subgroup: Aggiungi un sottogruppo
       loading: In caricamento...
   error_page:
     forbidden: "Non hai l'autorizzazione per farlo."
+    page_not_found: Oggetto non trovato. Potrebbe essere stato rimosso o cancellato.
     internal_server_error: "Spiacenti, ma qualcosa è andato storto. Riprova più tardi "
   start_proposal_card:
     title: Lancia una proposta
@@ -42,12 +46,17 @@ it:
   proposal_outcome_panel:
     heading: Risultato
     set_outcome_hint: "Usa questo spazio per fare conoscere a tutti l'esito della proposta."
+    set_outcome_btn: "Stabilisci l'esito della discussione sulla proposta"
+    edit_outcome_link: "Modifica l'esito della discussione sulla proposta"
   proposal_outcome_form:
+    set_outcome: "Stabilisci l'esito della discussione sulla proposta"
+    update_outcome: "Aggiorna l'esito della discussione sulla proposta"
     outcome_label: Risultato della proposta
     outcome_placeholder: Rendi noto il risultato della proposta.
     publish_outcome: Pubblica risultato
     messages:
       created: Risultato pubblicato.
+      updated: Esito aggiornato
   previous_proposals_card:
     heading: Proposte precedenti
   proposal_collapsed:
@@ -96,12 +105,14 @@ it:
     start_thread: Lancia una nuova discussione
     notifications: Pannello delle notifiche
     user_options:
+      label: Opzioni utente
       contact_us: Contattaci
       new_thread: Nuova discussione
       new_group: Nuovo gruppo
       profile: Profilo
       email_settings: Impostazioni Email
       help: Aiuto
+      sign_out: Esci
     search:
       close: Chiudi ricerca
       placeholder: Ricerca
@@ -179,10 +190,12 @@ it:
     start_proposal: Lancia una proposta
     start_a_proposal: Lancia una proposta
     edit_proposal: Modifica proposta
+    what_does_a_proposal_do: "Le proposte permettono di vedere l'opinione di tutti su un particolare corso d'azione."
     editing_title_and_description_forbidden: "Non puoi cambiare il titolo di una proposta dopo che altre persone hanno espresso il loro voto su di essa. Se qualcosa è cambiato, chiudi questa proposta e fanne iniziare un'altra"
     title_placeholder: "Ad esempio: andiamo sulla Luna"
     title_label: Titolo
     closes_at_label: Chiude a
+    closes: Chiude
     details_label: Dettagli
     details_placeholder: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
   discussion_record:
@@ -209,27 +222,29 @@ it:
     new_discussion_submit: Inizia una discussione
     edit_discussion_submit: Modifica il nome della discussione
   proposal_expanded:
+    collapse: Minimizza
+    current_votes: Voti espressi finora
     started_by: "Iniziato da <strong>{{name}}</strong>"
     only_voter_is_you: Nessun altro membro ha ancora votato.
+    extend_proposal: Cambia il momento della chiusura
     edit_proposal: Modifica proposta
     close_proposal: Chiudi la proposta
+    closed_badge: Chiuso
   proposal_position_yes: favorevole
   proposal_position_abstain: astenuto
   proposal_position_no: contrario
   proposal_position_block: blocco
   group_welcome_modal:
     heading: "Benvenuto/a nel tuo nuovo gruppo!"
-    instructions: "Sei il coordinatore o la coordinatrice del gruppo, questo significa che sta a te configurare il gruppo e invitare in esso altre persone"
-    what_next: "Ecco cosa c'è ancora da fare:"
-    first_step: "Inserisci la descrizione del gruppo, il logo e la foto di copertina"
-    second_step: Leggi la discussione di esempio e fai pratica sul come prendere una decisione
-    third_step: Invita altre persone a unirsi al gruppo
+    first_step: "Sei il coordinatore del gruppo, che è come essere il padrone di casa."
     ok_got_it: "E vai!"
   start_group_form:
     heading: Crea un gruppo
+    heading_when_subgroup: Crea un sottogruppo
     group_helptext: "Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo"
     group_payment_reminder: "In 30 giorni, quando avrai verificato come Loomio può migliorare l'efficacia del tuo gruppo, ti chiederemo di scegliere il  <a href='#'>payment plan</a> migliore per te."
     name_label: Nome del gruppo
+    subgroup_name_label: Nome del sottogruppo
     submit: Crea un gruppo
     messages:
       success: Gruppo creato
@@ -266,12 +281,16 @@ it:
       leave_group_success: Hai lasciato il gruppo.
       archive_group_success: Gruppo disattivato
     group_logo: Logo del gruppo
+    header:
+      aria_label: Intestazione del gruppo
     description: Descrizione del gruppo
     description_placeholder: Usa questo spazio per descrivere lo scopo del gruppo in modo che i suoi membri sappiano il motivo per cui sono qui.
     discussions: Discussioni
     discussions_placeholder: Il thread (discussione) è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
     members: Membri
     members_placeholder: "Sei da solo qui: invita altre persone!"
+    member_options: Opzioni dei membri del gruppo
+    all_members: "Tutti i  ({{count}}) membri"
     subgroups: Sottogruppi
     subgroups_placeholder: I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.
     invite_people: Invita persone
@@ -297,6 +316,15 @@ it:
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
       normal: "Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc."
       normal_aria_description: "Il volume delle tue notifiche è settato su Normale. Verrai indormato/a via email sulle attività più importanti, ad esempio quando qualcuno lancia una nuova discussione, una proposta oppure stabilisce un esito."
+      quiet: Non inviare email su questo gruppo. Le attività verranno mostrate nella bacheca.
+      quiet_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Quieto. Non riceverai email da questo gruppo e le sue attività verranno mostrate sulla tua bacheca.
+      mute: "Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato."
+      mute_aria_description: "Il tuo livello delle notifiche per questo gruppo è settato su Muto. Non riceverai email da questo gruppo a meno che qualcuno non ti @menzioni e le sue attività non verranno mostrate sulla tua bacheca."
+      updated: Livello del volume del gruppo aggiornato.
+    privacy:
+      private: "Privacy: questo gruppo è visibile solo ai suoi membri."
+      parent_members: "Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}"
+      public: "Privacy: Questo gruppo è visibile sul web"
   edit_group_form:
     title: Modifica le impostazioni del gruppo
     profile:
@@ -305,9 +333,15 @@ it:
       description: Descrizione
     privacy:
       label: Privacy
+      visible_to_members: Chi può vedere questo gruppo?
+      public_visibility: Chiunque - il gruppo è pubblico
+      organisation_visibility: "Organizzazione - non compare nelle liste pubbliche, ma è visibile ai membri di {{parentGroupName}}"
       private_visibility: Gruppo chiuso - non sarà presente nella lista
+      membership_granted_upon: Come si uniscono al gruppo le persone?
       membership_by_request: Aperto - chiunque può unirsi al gruppo
       membership_by_request_subgroup: "Aperto ai membri del gruppo {{parentGroupName}}"
+      membership_by_approval: Richiedendolo - chiunque può chiedere di unirsi al gruppo
+      membership_by_approval_subgroup: "Su richiesta di un membro di {{parentGroupName}}"
       membership_by_invitation: Solo su invito - i nuovi membri devono essere invitati
       discussion_privacy_options: Chi può vedere le discussioni?
       public_discussions_subgroup: "Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni"
@@ -318,17 +352,24 @@ it:
       helptext: Cosa possono fare i membri del gruppo?
       members_can_add_members: Invita ed approva nuovi membri
       members_can_create_subgroups: Crea sottogruppi
+      members_can_start_discussions: Lancia una discussione
+      members_can_edit_discussions: Edita il titolo e il contesto di qualsiasi discussione
+      members_can_edit_comments: Edita i loro commenti in qualsiasi momento
       members_can_raise_motions: Lancia nuove proposte
       members_can_vote: Vota le proposte
+    submit: Aggiorna impostazioni
     messages:
       success: Gruppo aggiornato
   membership_requests_card:
+    heading: Richieste di partecipazione
     manage_requests: "Gestisci  ({{count}}) richieste"
   membership_requests_page:
     heading: Richieste di partecipazione
     approve: Approva
     ignore: Ignora
     no_pending_requests: Attualmente per questo gruppo non sono presenti richieste di adesione in sospeso.
+    no_previous_requests: Attualmente non ci sono richieste di partecipazione in sospeso per questo gruppo.
+    previous_requests: Richieste precedenti
     previous_request_response: "{{response}} da {{responder}} "
     messages:
       request_approved_success: Richiesta di partecipazione approvata
@@ -384,6 +425,8 @@ it:
     heading: Revoca invito
     question: Sicuro/a di volere revocare questo invito?
     submit: Revoca invito
+    messages:
+      success: Invito cancellato
   profile_page:
     messages:
       updated: Profilo aggiornato
@@ -424,6 +467,8 @@ it:
     email: Posta elettronica
     daily_summary_label: "Sommario giornaliero "
     proposal_closing_soon_label: Prima della chiusura di una proposta
+    mentioned_label: "Quando vengo @menzionato"
+    mentioned_description: "Quando qualcun* vorrà attrarre la tua attenzione allora ti @menzionerà. Ti raccomandiamo di mantenere attiva questa opzione in modo da ricevere una email qualora accadesse."
     update_settings: Aggiorna le impostazioni della posta elettronica
     messages:
       updated: Impostazioni della posta elettronica aggiornate.
@@ -434,6 +479,7 @@ it:
     mark_as_read: Contrassegnato come letto
     filtering:
       filter_threads: Filtra discussioni
+      filter_threads_aria_label: Filtra discussioni
       all: Discussioni recenti
       participating_description: Visualizza solo le discussioni cui hai partecipato
       proposals: Proposte
@@ -447,6 +493,7 @@ it:
       you_voted: "Il tuo voto: {{position}}."
     threads_from:
       group: Discussioni da
+      proposals: Proposte
       today: Oggi
       yesterday: Ieri
       thisweek: Questa Settimana
@@ -455,6 +502,7 @@ it:
   inbox_page:
     no_threads: "Woohoo! Hai letto tutte le discussioni nella tua casella di posta.."
     unread_threads: Discussioni non lette
+    view_more: Mostra di più
   groups_page:
     page_header: I tuoi gruppi
   discussion:
@@ -500,13 +548,6 @@ it:
       edit_comment: Modifica commento
       delete_comment: Cancella il commento
     in_reply_to: "<strong>{{author}}</strong> risponde a <strong>{{recipient}}</strong>"
-  new_vote_item:
-    agree: "<strong>{{name}}</strong> è d'accordo"
-    abstain: "<strong>{{name}}</strong> si astiene"
-    disagree: "<strong>{{name}}</strong> non è d'accordo"
-    block: "<strong>{{name}}</strong> blocca"
-  new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> ha creato una proposta:"
   contact_message_form:
     contact_us: Contattaci
     name_label: Nominativo
@@ -576,6 +617,8 @@ it:
     enable:
       invite: "Prova il nuovo Loomio!"
       title: Prova il nuovo Loomio
+      intro: Abbiamo riscritto Loomio e abbiamo bisogno del vostro aiuto per essere sicuri che sia perfetto prima di rilasciarlo pubblicamente.
+      body_html: "<p></p>\n<h3>Qual'è la differenza?</h3>\n\n<p>\n  la nuova interfaccia è simile alla vecchia ma più moderna:\n  <ul>\n    <li>le modifiche vengono visualizzate in tempo reale;</li>\n    <li>funziona con tutti i tuoi dispositivi, dallo smartphone al pc desktop;</li>\n    <li>è accessibile a persone non vedenti ed è tradotta in  <a href=\"https://www.loomio.org/translation\">miriadi di lingue</a>\n  </ul>\n</p>\n\n<p>Usa la stesa base dati della vecchia interfaccia, conservando quindi tutti i tuoi gruppi e le tue discussioni precedenti. Puoi tornare in qualsiasi momento alla vecchia interfaccia.</p>\n<p>Ci saranno graduali cambiamenti man mano che implementeremo i consigli ricevuti. Potrebbero scomparire alcune delle funzioni meno usate.</p>\n<p>Il collegamento  \"Torna al vecchio Loomio\" nell'angolo in basso a sinistra della nuova app. Cliccando su quel collegamento verrete portati alla interfaccia cui siete maggiormente abituati. C'è anche un modulo di feeedback a vostra disposizione.</p>\n<p>Aspettiamo di ricevere i vostri commenti e vi ringraziamo per il vostro tempo e per il vostro sostegno..</p>\n"
       button_text: Attiva il nuovo Loomio
     disable:
       title: Grazie per avere provato il nuovo Loomio

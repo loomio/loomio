@@ -12,6 +12,7 @@ lt:
     terms: Nuostatos
   notifications:
     header: Pranešimai
+  sign_out: Atsijungti
   user_profile:
     deactivate_account: Pasyvinti paskyrą
   start_group_form:
@@ -54,6 +55,7 @@ lt:
     quiet_description: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
   discussion_list:
     empty:
+      membership_is_invitation_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti šios grupės narys."
       membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
   delete_comment: Ištrinti komentarą
   confirm_delete_comment: Tu tikrai nori ištrinti šį komentarą?
@@ -63,6 +65,8 @@ lt:
   yes_position: Aš sutinku
   abstain_position: Aš neapsisprendžiau
   no_position: Aš nesutinku
+  edit_comment:
+    edit_comment: Redaguoti komentarą
   help:
     getting_started: Darbo pradžia
     have_your_say: Tarkite savo žodį
@@ -101,6 +105,7 @@ lt:
       motion:
         create: Pateikti pasiūlymą
   about_loomio: Apie Loomio
+  cancel: Atšaukti
   coordinator: Koordinatorius
   details: Išsamesnė Informacija
   edit: Redaguoti

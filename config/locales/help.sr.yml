@@ -13,6 +13,8 @@ sr:
         pending_invitations_html: Pozivi u toku
       discussion_threads:
         discussion_privacy_html: Privatnost diskusije
+      comments:
+        title_html: Komentari
       proposals:
         title_html: Predlozi
       subgroups:
@@ -54,6 +56,8 @@ sr:
     discussion_threads:
       discussion_privacy:
         title: Privatnost diskusije
+    comments:
+      title: Komentari
     proposals:
       title: Predlozi
     subgroups:

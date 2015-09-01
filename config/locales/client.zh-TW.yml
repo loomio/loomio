@@ -1,5 +1,6 @@
 zh-TW:
   common:
+    confirm_discard_changes: 丟棄您的變更？
     time:
       am: am
       pm: pm
@@ -55,6 +56,7 @@ zh-TW:
     publish_outcome: 發表成果
     messages:
       created: 結果公佈
+      updated: 結果已更新
   previous_proposals_card:
     heading: 上一個提案
   proposal_collapsed:
@@ -234,11 +236,9 @@ zh-TW:
   proposal_position_block: 阻擋
   group_welcome_modal:
     heading: 歡迎來到您的新群組
-    instructions: 您是這個群組的協調者，這代表了您的工作是管理好這個群組並邀請夥伴們進來
-    what_next: 這是您接下來要作的事情：
-    first_step: 設定群組描述、標誌與封面照片
-    second_step: 閱讀範例討論串並練習作出決策
-    third_step: 邀請夥伴加入您的群組
+    first_step: 您是群組的協調者，就像是主持人。
+    second_step: 四處看看 ── 看看這個範例討論串，順便玩一玩設定吧。
+    third_step: 當您準備好的時候，您可以邀請夥伴們進來。
     ok_got_it: 好的，了解了！
   start_group_form:
     heading: 啟動群組
@@ -518,11 +518,15 @@ zh-TW:
       you_voted: "您已經投票：{{position}}."
     threads_from:
       group: 討論串從
+      proposals: 提議
+      starred: 已標記星號
       today: 今天
       yesterday: 昨日
       thisweek: 本週
       thismonth: " 本月"
       older: 早於一個月
+  star_toggle:
+    star: 對討論串標記星號
   inbox_page:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
@@ -568,20 +572,43 @@ zh-TW:
     question: 您確定要刪除這個意見嗎？
     confirm: 刪除意見
   new_comment_item:
+    aria_label: "{{author}} 的意見"
     context_menu:
       aria_label: 意見選項
       edit_comment: 編輯意見
       delete_comment: 刪除意見
     in_reply_to: "<strong>{{author}}</strong> 在回覆 <strong>{{recipient}}</strong>"
   new_vote_item:
-    agree: "<strong>{{name}}</strong> 已贊成"
-    abstain: "<strong>{{name}}</strong> 已棄權"
-    disagree: "<strong>{{name}}</strong> 已反對"
-    block: "<strong>{{name}}</strong> 已阻擋"
+    agree: "<strong>{{actor}}</strong> 已同意"
+    abstain: "<strong>{{actor}}</strong> 已棄權"
+    disagree: "<strong>{{actor}}</strong> 已反對"
+    block: "<strong>{{actor}}</strong> 已阻擋"
+    agree_with_statement: "<strong>{{actor}}</strong>已同意：<span>{{statement}}</span>"
+    abstain_with_statement: "<strong>{{actor}}</strong>已棄權：<span>{{statement}}</span>"
+    disagree_with_statement: "<strong>{{actor}}</strong>已反對：<span>{{statement}}</span>"
+    block_with_statement: "<strong>{{actor}}</strong>已阻擋：<span>{{statement}}"
   new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> 已建立提案："
+    author_created_proposal: "<strong>{{actor}}</strong>已啟動一個提案：<span>{{title}}</span>"
   proposal_closed_item:
-    proposal_closed: 定案的提議：
+    proposal_closed: 此提案已經定案：
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: "<strong>{{actor}}</strong>已定案了一個提案：<span>{{title}}</span>"
+  proposal_edited_item:
+    name: "<strong>{{actor}}</strong>已更新提案標題：<span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong>已更新了提案的描述"
+    closing_at: "<strong>{{actor}}</strong>已經更新了在<span>{{time}}</span>定案的提案"
+    description_name: "<strong>{{actor}}</strong>已經更新提案的標題與描述"
+    closing_at_name: "<strong>{{actor}}</strong>已經更新了提案的標題與定案時間"
+    closing_at_description: "<strong>{{actor}}</strong>已經更新了提案的描述與定案時間"
+    closing_at_description_name: "<strong>{{actor}}</strong>已經更新了提案的標題、描述與關閉時間"
+  proposal_outcome_created_item:
+    proposal_outcome_created: "<strong>{{actor}}</strong>已公佈了提案的結果："
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: "<strong>{{actor}}</strong>已更新了提案的結果："
+  discussion_edited_item:
+    title: "<strong>{{actor}}</strong>已更新討論串的標題：<span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> 已經更新了此討論串的描述"
+    description_title: "<strong>{{actor}}</strong> 已經更新了此討論串的標題及描述"
   contact_message_form:
     contact_us: 聯絡我們
     name_label: 您的大名

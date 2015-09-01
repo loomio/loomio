@@ -103,7 +103,6 @@ es:
     start_thread: Comienza un nuevo hilo
     notifications: Panel de notificaciones
     user_options:
-      label: Menú de opciones de usuario
       contact_us: Contáctanos
       new_thread: Nuevo hilo
       new_group: Nuevo grupo
@@ -232,11 +231,6 @@ es:
   proposal_position_block: Bloquear
   group_welcome_modal:
     heading: Bienvenido/a a tu nuevo grupo
-    instructions: "Eres el coordinador del grupo, lo que significa que tu trabajo es configurar el grupo e invitar a gente a unirse"
-    what_next: "Esto es lo que hacer a continuación:"
-    first_step: "Ver la descripción del grupo, el logo y la foto de portada"
-    second_step: Lee el hilo de ejemplo y practica la toma de decisiones
-    third_step: Invita a gente a unirse a tu grupo
     ok_got_it: "Bien, ¡lo tengo!"
   start_group_form:
     heading: Empieza un grupo
@@ -275,9 +269,6 @@ es:
         public: Ahora este grupo es visible para el público
       leave_group_success: Has dejado este grupo
     group_logo: Logo del grupo
-    header:
-      aria_label: Cabecera de página del grupo
-    description: Descripción
     description_placeholder: "Usa este espacio para describir el propósito del grupo, de manera que los miembros sepan por qué están aquí."
     discussions: Hilos
     discussions_placeholder: Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.
@@ -313,10 +304,6 @@ es:
       mute: "Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado."
       mute_aria_description: "El volumen de notificaciones para este grupo está establecido como Silenciado. No se te enviarán correos electrónicos a menos que alguien te mencione, y la actividad del grupo no se mostrará en tu escritorio."
       updated: Volumen del grupo actualizado.
-    privacy:
-      private: Este grupo es sólo visible para miembros
-      parent_members: "Este grupo es visible para miembros de {{parentGroupName}} y de {{groupName}}"
-      public: Este grupo es visible en la web
   edit_group_form:
     title: Editar Configuraciones del Grupo
     profile:
@@ -353,14 +340,10 @@ es:
     submit: Actualizar configuración
     messages:
       success: Grupo actualizado
-  membership_requests_card:
-    heading: "Solicitudes de ingreso ({{count}})"
-    manage_requests: Gestionar solicitudes
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: "Aprobar "
     ignore: Ignorar
-    no_pending_requests: "Actualmente, no hay solicitudes de ingreso pendientes"
     previous_requests: Solicitudes anteriores
     previous_request_response: "{{response}} de {{responder}} "
     messages:
@@ -413,7 +396,6 @@ es:
     heading: Invitaciones pendientes
     email: "correo electrónico "
     invitation_link: "enlace de invitación "
-    cancel: cancelar
   cancel_invitation_form:
     heading: "cancelar invitación "
     question: Estas seguro de que quieres cancelar esta invitación?
@@ -562,13 +544,6 @@ es:
       edit_comment: Editar comentario
       delete_comment: Borrar comentario
     in_reply_to: "<strong>{{author}}</strong> en respuesta a <strong>{{recipient}}</strong>"
-  new_vote_item:
-    agree: "<strong>{{name}}</strong> está de acuerdo"
-    abstain: "<strong>{{name}}</strong> se abstiene"
-    disagree: "<strong>{{name}}</strong> no está de acuerdo"
-    block: "<strong>{{name}}</strong> ha bloqueado"
-  new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> ha creado una propuesta:"
   contact_message_form:
     contact_us: Contáctanos
     name_label: Tu nombre

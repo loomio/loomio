@@ -2,16 +2,16 @@ de:
   email_settings:
     title: eMail-Einstellungen
     group_volume: Gruppenlautstärke
-    group_volume_description: "Die Luatstärke steuert, wie viele E-Mails Sie von einer Gruppe erhalten. Lautstärke einstellen für alle Gruppen:"
-    to_change_one_group: "Um die Lautstärke von nur einer Ihrer Gruppen zu ändern, besuchen Sie die Seite dieser Gruppe."
+    group_volume_description: "Die Lautstärke steuert, wie viele eMails Du von einer Gruppe erhältst. Lautstärke einstellen für alle Gruppen:"
+    to_change_one_group: "Um die Lautstärke von nur einer Deiner Gruppen zu ändern, besuche die Seite dieser Gruppe."
     discussion_activity: "Diskussionslautstärke ändern, wenn ich teilnehme"
-    discussion_activity_description: "Wenn Sie sich an einer Diskussion beteiligen, wird die Lautstärkeeinstellung auf 'Laut' geändert werden, so dass Ihnen alle weiteren Aktivitäten gemailt werden."
+    discussion_activity_description: "Wenn Du Dich an einer Diskussion beteiligst, wird die Lautstärkeeinstellung auf 'Laut' geändert werden, so dass Dir alle weiteren Aktivitäten gemailt werden."
     yesterday_on_loomio: Täglich eine Zusammenfassung der Aktivitäten per eMail schicken
-    yesterday_on_loomio_description: "Täglich um 6.00 Uhr eine E-Mail mit allen ungelesenen Aktivitäten des vorigen Tages erhalten. Dies ist eine gute Möglichkeit um in Deinen Gruppen auf dem Laufenden zu bleiben und sie enthält alles was nicht auf 'stumm' gesetzt ist."
-    email_when_mentioned: "Sende mir eine E-Mail, wenn mich jemand @erwähnt."
+    yesterday_on_loomio_description: "Täglich um 6.00 Uhr eine eMail mit allen ungelesenen Aktivitäten des vorigen Tages erhalten. Dies ist eine gute Möglichkeit um in Deinen Gruppen auf dem Laufenden zu bleiben und sie enthält alles was nicht auf 'stumm' gesetzt ist."
+    email_when_mentioned: "Sende mir eine eMail, wenn mich jemand @erwähnt."
     email_when_mentioned_description: "Wenn jemand Deine Aufmerksamkeit erhalten will, wirst Du @erwähnt. Wir empfehlen diese Einstellung aktiv zu setzen, damit andere Dich ansprechen können."
-    proposal_closing_soon: Erinnere mich bevor der Vorschlag schließt.
-    proposal_closing_soon_description: "24 Stunden vor Schließung eines Vorschlag, unabhängig von der Lautstärke, wirst Du eine E-Mail mit den neuesten Informationen über den Vorschlag erhalten."
+    proposal_closing_soon: Erinnere mich bevor der Vorschlag endet.
+    proposal_closing_soon_description: "24 Stunden vor Ende eines Vorschlags, unabhängig von der Lautstärke, wirst Du eine eMail mit den neuesten Informationen über den Vorschlag erhalten."
     submit: Update-Einstellungen
     no_change: Keine Änderung
     no_change_description: Lautstärke meiner Gruppen unverändert lassen.
@@ -24,7 +24,7 @@ de:
         invalid: ist kein gültiger Wert
   errors:
     messages:
-      email: Keine gültige E-Mail-Adresse
+      email: Keine gültige eMail-Adresse
   attachment:
     error:
       too_large: "Die Datei, die Du anhängen möchtest, ist größer als 50 MB. Bitte wähle eine kleinere Datei aus."
@@ -43,9 +43,11 @@ de:
       no_invitations_remaining: Keine verbleibenden Einladungen
     mailer:
       invitation_instructions:
-        subject: Jemand hat dich eingeladen einer Loomio-Gruppe beizutreten
+        subject: Jemand hat Dich eingeladen einer Loomio-Gruppe beizutreten
     registrations:
       sign_up: Konto erstellen
+    sessions:
+      signed_out: Erfolgreich ausgeloggt
   error:
     access_denied: "Du bist nicht berechtigt, das zu tun."
     cant_join_subgroup: "Du kannst keiner Untergruppe beitreten, solange Du kein Mitglied der Hauptgruppe bist."
@@ -53,7 +55,7 @@ de:
     cant_state_position: Dieser Vorschlag wurde geschlossen.
     cant_view_member_profile: "Du kannst das Profil dieses Mitglieds nicht sehen, weil ihr nicht in der gleichen Gruppe seid."
     contribution: "Melde Dich an, um eine Spende zu leisten."
-    discussion_not_created: Diskussion konnte nicht erstellt werden.
+    discussion_not_created: Die Diskussion konnte nicht erstellt werden.
     discussion_not_moved: "Du bist nicht berechtigt, diese Diskussion in die Gruppe %{destination_group.name} zu verschieben"
     group_not_archived: Gruppe konnte nicht archiviert werden.
     invalid_close_date: "Ungültiges Enddatum. Bitte stelle sicher, dass das Datum nicht in der Vergangenheit liegt."
@@ -71,8 +73,10 @@ de:
     group_request_invalid_token: "Sorry, dieses Token ist ungültig."
     group_private_or_not_found: "Gruppe nicht gefunden.\n\nDiese Gruppe ist möglicherweise privat. Wenn dir jemand diesen Link gegeben hat, bitte ihn, dich in die Gruppe einzuladen."
     group_already_setup: "Die Gruppe, die Du einrichten möchtest, existiert schon."
+    current_password_did_not_match: "Entschuldige, wir können Dein jetziges Passwort nicht bestätigen"
     passwords_did_not_match: Passwort stimmt nicht mit Bestätigung überein.
     proposal_already_exists: Es gibt schon einen offenen Vorschlag in dieser Diskussion.
+    username_must_be_alphanumeric: "Der Benutzername darf nur 'kleinbuchstaben' und Ziffern enthalten."
     user_with_email_address_already_in_group: Ein Benutzer mit dieser eMail-Adresse gehört schon zu dieser Gruppe.
     you_have_already_requested_membership: Du hast die Mitgliedschaft dieser Gruppe schon angefragt.
     you_are_already_a_member_of_this_group: Du bist schon Mitglied dieser Gruppe.
@@ -128,6 +132,7 @@ de:
     added_to_group: "Du wurdest zu %{which_group} hinzugefügt."
     close_date_changed: Enddatum erfolgreich geändert.
     discussion_created: Diskussion erfolgreich erstellt.
+    discussion_updated: Diskussion erfolgreich aktualisiert.
     discussion_deleted: Diskussion erfolgreich gelöscht.
     discussion_moved: "Diskussion erfolgreich in die Gruppe %{group_name} verschoben"
     emails_sending: eMails werden versendet.
@@ -210,6 +215,7 @@ de:
     new_vote: "%{position} zum Vorschlag"
     new_comment: kommentierte die Diskussion
     comment_liked: gefällt dein Kommentar zur Diskussion
+    comment_replied_to: antwortete auf Deinen Kommentar in
     user_mentioned: erwähnte dich in einem Kommentar in
     membership_requested: möchte der Gruppe beitreten
     membership_request_approved: hat Deine Mitgliedschaftsanfrage angenommen
@@ -273,10 +279,20 @@ de:
       emails: Wir werden keine weiteren Loomio eMails schicken.
   start_group_form:
     header: Gründe eine Gruppe
+    form_error: Etwas fehlt oder ist nicht korrekt.
     name: Dein Name
+    name_error: Name wird benötigt
+    email: Deine eMail
+    email_error: Keine gültige E-Mail-Adresse.
     group_name: Gruppenname
+    group_name_error: Gruppenname wird benötigt
+    pricing_html: "Nach 30 Tagen, wenn Du erlebt hast, wie Loomio die Entscheidungsprozesse in Deiner Gruppe verbessert hat, werden wir Dich bitten ein<a href='%{link}' target='_blank'>Vergütungsmodell</a> zu wählen, das Dir gefällt."
+    terms_html: "Sobald Du eine Gruppe gründest stimmst Du Loomio's <a href='%{link}' target='_blank'>Geschäftsbedingungen</a> zu."
     success:
       header: "Du bist fast fertig! Prüfe Deine eMails."
+      email_delivered: "Wir haben eine eMail an %{email} gesendet. Bitte folge dem darin enthaltenen Link um Deine neue Gruppe einzurichten."
+      email_not_arrived: Kam die eMail nicht an?
+      please_hold: Bitte gib der eMail 5 Minuten Zeit und prüfe auch Deinen Spam-Ordner.
     start_making_decisions: "Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:"
   group_form:
     name: Gruppenname
@@ -370,7 +386,7 @@ de:
   subject_placeholder: Schreibe einen Betreff
   message_error: Bitte füge eine Nachricht hinzu
   message_placeholder: "Schreibe eine Nachricht an die Mitglieder von %{which_group}."
-  email_group_members: eMail an Gruppenmitglieder verfassen
+  email_group_members: eMail an Gruppe
   edit_group_settings: Gruppeneinstellungen bearbeiten
   manage_members: Mitglieder organisieren
   leave_group: Gruppe verlassen
@@ -392,6 +408,7 @@ de:
   approved_by_person: "Von %{person} bestätigt"
   ignored_by_perosn: "Von %{person} ignoriert"
   join_group_btn: Der Gruppe beitreten
+  membership_by_invitation_only: Mitgliedschaft in dieser Gruppe ist nur auf Einladung möglich
   you_have_joined_group: "Du bist %{group_name} beigetreten"
   confirm_approve_membership_request: "Bist Du sicher, dass Du %{which_user} der Gruppe hinzufügen möchtest?"
   cancel_membership_request: Anfrage abbrechen
@@ -528,6 +545,7 @@ de:
       log_in_html: "Bist Du ein Mitglied, dann <a href='%{href}'>melde Dich an</a> um die nichtöffentllichen Diskussionen zu sehen."
   discussion_context:
     started_html: "Gestartet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Eröffnet %{when} von %{who}"
     last_edited_html: "Zuletzt bearbeitet vor %{when} von <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: Änderungsverlauf ansehen
     see_history: Verlauf
@@ -557,6 +575,7 @@ de:
   move_discussion_where: Wohin möchtest Du diese Diskussion verschieben?
   delete_discussion: Diskussion löschen
   confirm_delete_discussion: "Bist Du sicher, dass Du diese Diskussion unwiderruflich löschen willst?"
+  print_tooltip_info: Drucken
   new_proposal: Neuer Vorschlag
   edit_proposal: Vorschlag bearbeiten
   close_proposal: Vorschlag schließen
@@ -565,10 +584,12 @@ de:
   change_proposal_close_date_header: "Ändere das Enddatum für den Vorschlag '%{which}'"
   proposal: Vorschlag
   proposals: Vorschläge
+  closed_at: Geschlossen am/um
   proposal_close_date_error: "Bitte gib einen Enddatum an, das in der Zukunft liegt"
   proposal_closing_when: "Endet in %{when}"
   proposal_closed_when: "Endete vor %{when}"
   proposed_when_by_who: "Vorgeschlagen von %{who} vor %{when}"
+  proposed_by_who_on: "Vorgeschlagen von: %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% der Mitglieder haben ihre Meinung abgegeben (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% der Mitglieder haben ihre Meinung angegeben (%{numerator}/%{denominator})"
   state_your_position: Gib deine Meinung ab
@@ -695,6 +716,11 @@ de:
   inactive_html: "Dieses Konto wurde deaktiviert. Falls Du noch Fragen haben solltest <a href='%{path_to_contact}'>melde Dich bei uns</a>."
   create_an_account_html: Ein Konto für die Loomio Beta erstellen
   log_in: Anmelden
+  password_reset:
+    email_guidelines_html: "<p>Gib die eMail-Adresse Deines Loomio-Konto's in das untenstehende Feld ein und Du wirst einen Link gesendet bekommen, um das Passwort zurückzusetzen.</p>\n<p>Falls Du Dich üblicherweise mit Facebook, Google, Twitter oder Persona einloggst, gib die dementsprechende eMail-Adresse ein.</p>\n"
+    reset_email_timeframe: "Es wird bis zu 5 Minuten dauern, bis die eMail Dich erreicht. Bitte prüfe gegebenenfalls auch Deinen Spam-Ordner."
+    length_restriction: Passwörter müssen mindestens 8 Zeichen enthalten.
+    forbidden_passwords: "Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie \"passwort\" und ähnliches verboten."
   join_group:
     log_in: "Melde dich an, um der Gruppe %{group_name} beizutreten"
     create_account_to_join_group: "Erstelle eine Konto, um der Gruppe %{group_name} beizutreten."
@@ -741,6 +767,9 @@ de:
     description: "Der Loomio Hilferoboter möchte euch überzeugen, in eine Reise zum Mond zu investieren. Anscheinend ist der Weltraumkäse sehr gut. Leider sind die Auswirkungen auf euren CO2-Fußabdruck besorgniserregend.\nIst das eine gute Idee? Der Loomio Hilferoboter möchte wissen, was Du darüber denkst!\nWenn Du Dir Deiner Meinung sicher bist, klicke auf eines der Symbole unten (lege den Mauszeiger über den Button um Dir eine Beschreibung anzusehen, was die einzelnen Buttons bedeuten).\nDu wirst dann aufgefordert werden, kurz anzugeben, warum Du diese Entscheidung getroffen. Das ergibt eine kurze Zusammenfassung davon, was jeder denkt und warum. Du kannst Dich noch umentscheiden und Deine Meinung bearbeiten bis der Vorschlag beendet wird.\n"
   contact_page:
     contact_us: Kontaktiere uns
+    faq_prompt_html: "Du hast eine Frage an das Loomio Team? Bevor Du uns kontaktierst, prüfe, ob Du die Antwort in unseren meistgestellten Fragen (faq's) findest. "
+    contact_information: "Wenn Du nichts gefunden hast, findest Du unsere Kontaktinformationen am Ende dieser Seite"
+    contact_form: Kontaktformular
     labels:
       name: Dein Name
       email: Deine eMail-Adresse
@@ -748,6 +777,7 @@ de:
       submit: Nachricht abschicken
     messages:
       email_html: "Fülle dieses Formular aus oder schicke eine eMail an <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Du kannst Dich uns auch auf<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, und <a href='%{twitter}' target='_blank'>twitter</a> anschließen!\n"
   discussion_form:
     new:
       header: Beginne eine Diskussion
@@ -939,6 +969,7 @@ de:
   about_loomio: Über Loomio
   ago: "vor %{quantity_of_time}"
   approve: Zustimmen
+  attachments: "Anhänge:"
   author: Autor
   back: Zurück
   cancel: Abbrechen
@@ -995,6 +1026,7 @@ de:
   start_a_group: Eröffne eine Gruppe
   starting: Wird gestartet
   subject: Betreff
+  tos_html: "Sobald Du Dich einloggst, stimmst Du Loomio's <a href='%{link_path}' target='_blank'>Geschäftsbedingungen</a> zu"
   thanks: Danke
   unlike: Gefällt mir nicht
   time_until_close: "%{quantity_of_time} verbleiben"
@@ -1015,6 +1047,7 @@ de:
   sign_up_with_twitter: Registrierung mit Twitter
   common:
     profile: Profil
+    welcome_back: "Schön Dich wiederzusehen!"
     email_settings: Email Einstellungen
     markdown_help_tooltip: Lerne die Grundlagen des Textformatierens mit Markdown
     settings: Einstellungen
@@ -1026,6 +1059,7 @@ de:
     not_following: Nicht gefolgt
     back_to_discussion: Zurück zur Diskussion
     edited: Bearbeitet
+    get_started: Loslegen
     groups: Gruppen
     select_error: Bitte wähle eine Option
     today: Heute
@@ -1108,6 +1142,7 @@ de:
     online_community: Online Community
     religious_group: Religiös/spirituell
     event: Veranstaltung
+    open_source_software: Gratis und Open Source Software
     political_initiative: Politische Initiative
     social_enterprise: Social Enterprise
     social_justice: Soziale Gerechtigkeit
@@ -1120,3 +1155,10 @@ de:
     media: Medien
     health: Gesundheit
   start_your_group: Starte Deine Gruppe
+  webhooks:
+    slack:
+      motion_closing_soon: "Der Vorschlag in *%{name}* endet in 24 Stunden"
+      motion_outcome_created: "*%{author}* veröffentlichte ein Ergebnis bezüglich *%{name}*"
+      motion_outcome_updated: "*%{author}* aktualisierte das Ergebnis bezüglich *%{name}*"
+      new_motion: "*%{author}* hat einen neuen Vorschlag in *%{name}* erstellt"
+      view_it_on_loomio: Auf Loomio ansehen

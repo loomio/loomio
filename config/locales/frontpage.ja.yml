@@ -1,6 +1,6 @@
 ja:
   frontpage:
-    view_this_in_your_language: "このサイトを %{language} 語で見る"
+    view_this_in_your_language: "このサイトを %{language} 語で表示"
     title:
       collaborative_decision_making: 共同意思決定
     link:
@@ -19,7 +19,9 @@ ja:
       services: サービス
     hero:
       header_html: "Loomioは一番安い,<br /><strong>オンライン共同意思決定過程</strong>です。"
+      lead_html: "Loomioは、コミュニティや団体の参加者がどこにいても<strong>議論に加わって、行動に移す</strong>ことができるようにします。"
     product:
+      header_html: "参加しているみんなから<strong>あらゆる声</strong>を聞くことができたら、それは<strong>もっと素敵な判断</strong>につながります。"
       step1:
         header: 徹底的に議論する。
         desc: どのトピックでもいいので、ディスカッションを初めて正しい人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。
@@ -43,3 +45,5 @@ ja:
         desc: Loomioのコードは誰でも動かし、読み、学び、改良でき、再分配できるパブリックのリソースです。
       gift:
         header: ギフト･エコノミー
+  about_page:
+    ben_bio: 共同創始者、ディレクター、コミュニティオーガナイザー、集合知研究者

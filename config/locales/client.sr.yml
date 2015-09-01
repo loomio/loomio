@@ -3,30 +3,62 @@ sr:
     time:
       am: am
       pm: pm
+    closing_in: "Ističe {{time}}"
+    closed_ago: "Isteklo {{time}}"
     volume: Obim
+    notification_volume: Obim Notifikacija
     group: Grupa
     groups: Grupe
     privacy:
       private: Privatno
       public: Javno
+      organisation: Organizacija
     selected: Označeno
     date_range:
       today: Danas
+      yesterday: Juče
+      thisweek: Ove Nedelje
+      thismonth: Ovog Meseca
+      older: Starije
     models:
       proposal: Predlog
     action:
       save: Snimi
+      save_changes: Sačuvaj promene
+      reply: Odgovori
       edit: Uredi
       like: Sviđa mi se
       unlike: Ne Sviđa
       cancel: Otkaži
+      show_more: Prikaži više
+      view_all: Vidi Sve
+      new_thread: Nova nit
+      add_subgroup: Dodaj podgrupu
+      loading: Učitavanje
   error_page:
     forbidden: Nemate dozvolu da ovo uradite.
+    page_not_found: Nismo u mogućnosti da to pronađemo. Možda je obrisano ili premešteno.
+    internal_server_error: "Žao nam je, ali nešto je pošlo naopako. Molim pokušajte ponovo."
+  start_proposal_card:
+    title: Kreiraj predlog
+    helptext: Spremni da donesete odluku? Predlozi omogućavaju da vidite kako se svi osećaju o određenom pravcu akcije.
   proposal_outcome_panel:
     heading: Ishod
+    set_outcome_hint: Koristi ovaj prostor da obavestiš sve o ishodu predloga.
+    set_outcome_btn: Odredi ishod predloga
+    edit_outcome_link: Izmeni ishod predloga
   proposal_outcome_form:
+    set_outcome: Odredi ishod predloga
+    update_outcome: Osveži ishod predloga
     outcome_label: Ishod predloga
+    outcome_placeholder: Neka svi znaju ishod predloga
     publish_outcome: Objavi ishod
+    messages:
+      created: Ishod je objavljen
+  previous_proposals_card:
+    heading: Prethodni Predlozi
+  proposal_collapsed:
+    expand: Proširi
   context_card:
     heading: Kontekst
   volume_levels:
@@ -36,30 +68,71 @@ sr:
     mute: Isključeno
   inbox:
     clear: Očisti
+    latest: Poslednje
     unread: Nepročitano
+    closing_in: Zatvaranje
+  session_form:
+    email_label: "eAdresa:"
+    password_label: "Lozinka:"
+    remember_me: Zapamti Me
+    sign_in: Prijava
   comment_form:
+    aria_label: Dodaj komentar
+    attachments:
+      aria_label: Prikači datoteku
+      remove_attachment: Ukloni dodatak
+    messages:
+      created: Komentar je dodat
+      updated: Komentar je osvežen
+      destroyed: Komentar je obrisan
     edit_comment: Izmeni komentar
     delete_comment: Obriši komentar
+    cancel_reply: Otkaži Odgovor
     confirm_delete_message: Da li ste sigurni da želite obrisati ovaj komentar?
+    confirm_delete: "Da, sigurno"
+    in_reply_to: "U odgovoru na <strong>{{name}}</strong>:"
+    submit_button:
+      label: Upiši
   navbar:
+    recent: Poslednje
     unread: Nepročitano
     groups: Grupe
+    recent_title: Idi na radnu površinu
+    unread_title: Vidi nepročitane aktivnosti
+    groups_title: Vidi svoje grupe
+    start_thread: Kreiraj novu nit
+    notifications: Tabla obaveštenja
     user_options:
+      label: Korisničke opcije
       contact_us: Kontaktirajte nas
+      new_thread: Nova nit
       new_group: Nova grupa
       profile: Profil
+      email_settings: Podešavanje ePoruka
       help: Pomoć
+      sign_out: Odjava
     search:
+      close: Zatvori tablu pretrage
       placeholder: Traži
+      loading: Učitavanje rezultata...
       discussions: Nizovi
       proposals: Predlozi
+      comments: Komentari
+      no_results: Nisu pronađeni rezultati
+  start_menu:
+    start_group: Kreiraj Grupu
+    start_subgroup: Kreiraj Podgrupu
+    start_thread: Kreiraj nit
+    invite_people: Pozovi Ljude
   notifications:
     header: Obaveštenja
   position_buttons_panel:
     heading: Recite šta imate
   vote_form:
     heading: Recite šta imate
+    no_statement: Nema izjava.
     i_agree: Slažem se
+    i_agree_details: Podržavam ovo i želim da se nastavi.
     i_abstain: Suzdržan
     i_abstain_details: Nemam problem s tim da grupa odluči bez mene.
     i_disagree: Ne slažem se
@@ -67,40 +140,127 @@ sr:
     i_block: Blokiram
     i_block_details: Imam ozbiljne primedbe na ovaj predlog i nije mi u interesu da ovo bude primenjeno.
     submit_position: Iznesi stav
+    change_position: Promeni poziciju
+    select_position: Odaberi poziciju
+    statement_placeholder: Podeli svoje mišljenje sa grupom.
+    aria_statement_label: Opciono unesi izjavu da bude zabeležana sa tvojom pozicijom
+    messages:
+      created: Glas dodat
   proposal_positions_panel:
     heading: Pozicije
+    no_votes_yet: Niko nije glasao o ovom predlogu još uvek.
+    change_your_vote: Izmeni svoj glas.
+  undecided_panel:
+    show_undecided: Prikaži neodlučne članove
+    hide_undecided: Sakrij neodlučne članove
+  proposal_pie_chart:
+    participation_statement: "{{percentage}}% članova je odredilo svoju poziciju ({{number}}/{{total}})"
   close_proposal_form:
     close_proposal: Zatvori predlog
+    helptext: Da li ste sigurni da želite zatvoriti predlog?
+    close_proposal_submit: "Da, zatvori predlog"
+    messages:
+      success: Predlog je zatvoren
+  extend_proposal_form:
+    title: Promeni vreme isteka
+    success: Vreme zatvaranja predloga je osveženo
+    submit: Promeni vreme zatvaranja
   proposal_form:
+    messages:
+      created: Predlog kreiran
+      updated: Predlog izmenjen
     start_proposal: Početni predlog
+    start_a_proposal: Kreiraj predlog
     edit_proposal: Izmeni predlog
+    what_does_a_proposal_do: Predlozi omogućavaju da vidite kako se svi osećaju po pitanju određenog kursa akcije.
+    title_placeholder: Npr. Idemo na mars
     title_label: Naslov
     closes_at_label: "Zatvara se "
+    closes: Zatvaranja
     details_label: Detalji
+    details_placeholder: Dajte dovoljno detalja tako da svi tačno znaju šta znači složiti se ili ne složiti se ili šta god
+  discussion_record:
+    created: "Nit {{title}} je uspešno kreirana u {{groupName}}"
+    updated: "Sačuvane promene za {{title}}"
   discussion_form:
+    messages:
+      created: Nit kreirana
+      updated: Nit izmenjena
+    new_discussion_title: Kreiraj novu nit
+    edit_discussion_title: Izmeni nit
+    discussion_helptext: Niti su gde svako može diskutovati o temi i zajednički donositi odluke.
     group_label: Grupa
+    group_placeholder: Odaberi grupu
     title_label: Naslov
+    title_placeholder: Koja je tema o kojoj želiš diskutovati?
     context_label: Kontekst
+    context_placeholder: Daj dovoljno pozadinskih informacija za grupu da bi diskusija bila produktivna. Ovo može biti izmenjeno kako diskusija bude napredovala
     privacy_label: Privatnost
+    privacy:
+      will_be_private_to_group: "Nit će biti vidljiva samo članovima {{groupName}}."
+      will_be_private_to_parent_group: "Nit će biti vidljiva članovima {{parentGroupName}} i članovima {{groupName}}."
+      will_be_public: Svako može videti ovu nit.
+    new_discussion_submit: Kreiraj nit
+    edit_discussion_submit: Izmeni nit
   proposal_expanded:
+    collapse: Skrati
+    current_votes: Trenutni glasovi
+    started_by: "Kreirano od strane <strong>{{name}}</strong>"
+    only_voter_is_you: Drugi članovi još nisu glasali.
+    extend_proposal: Promeni vreme zatvaranja
     edit_proposal: Izmeni predlog
     close_proposal: Zatvori predlog
+    closed_badge: Zatvoreno
+  proposal_position_yes: Saglasnost
+  proposal_position_abstain: Uzdražanost
+  proposal_position_no: Nesaglasnost
+  proposal_position_block: Blokiranje
+  group_welcome_modal:
+    heading: Dobrodošli u svoju novu grupu
+    ok_got_it: "U redu, shvatam!"
   start_group_form:
     heading: Kreiraj grupu
+    heading_when_subgroup: Kreiraj podgrupu
+    name_label: Naziv Grupe
+    subgroup_name_label: Naziv podgrupe
+    submit: Kreiraj Grupu
+    messages:
+      success: Grupa kreirana
+      success_when_subgroup: Podgrupa kreirana
   join_group_button:
     join_group: Pridruži se grupi
     ask_to_join_group: Pitaj da se pridružiš grupi
+    messages:
+      joined_group: "Vi ste sada član {{group}}"
   membership_request_form:
     heading: Pitaj da se pridružiš grupi
     name_label: Ime
     email_label: ePošta
     introduction_label: Predstavite se
     submit_button: Pitaj da se pridružiš grupi
+    messages:
+      membership_requested: "Zahtevali ste članstvo u {{group}}"
   group_page:
     thread_list:
       empty:
+        no_discussions_in_group: Ova grupa nema niti još uvek.
+        no_discussions_matching_filters_html: "Nema niti koje se poklapaju sa filterom. <a href='%{link}'>Ukloni filtere</a>."
+        no_public_discussions: Nema javnih niti u ovoj grupi.
+        discussions_are_private: Sve niti u ovoj grupi su privatne.
+        join_group: "Da vidite privatne niti, morate se pridružiti grupi."
+        request_membership: "Da vidite privatne niti, zahtevajte da se priključite grupi."
         membership_is_invitation_only: Da biste se priključili ovoj grupi morate biti pozvani od strane nekog člana.
         membership_is_invitation_by_admin_only: Da biste se pridružili ovoj grupi morate biti pozvani od strane koordinatora.
+    messages:
+      privacy:
+        members: Ova grupa je sada vidljiva samo za članove
+        parent_members: Ova grupa je sada vidljiva samo članovima Vaše organizacije
+        public: Ova grupa je javno vidljiva
+      leave_group_success: Napustili ste ovu grupu
+      archive_group_success: Ova grupa je bila deaktivirana
+    group_logo: Logo grupe
+    header:
+      aria_label: Zaglavlje grupe
     discussions: Nizovi
     invite_people: Pozovi ljude
     options_label: Opcije
@@ -116,10 +276,14 @@ sr:
     approve: Odobri
     ignore: Ignoriši
   group_form:
+    messages:
+      new_group: Grupa kreirana
     profile_label: Profil
     name_label: Ime
     description_label: Opis
     category_label: Kategorija
+  invitation:
+    invite_people: Pozovi Ljude
   memberships_page:
     members: Članovi
     name_label: Ime
@@ -143,6 +307,8 @@ sr:
     username_label: Korisničko Ime
     email_label: ePošta
     locale_label: Jezik
+  email_settings_page:
+    header: Podešavanje ePoruka
   dashboard_page:
     aria_label: Tabla
     mark_as_read: Označi kao pročitano
@@ -150,8 +316,11 @@ sr:
       proposals: Predlozi
     threads_from:
       today: Danas
+      yesterday: Juče
   discussion:
     proposals: Predlozi
+    previous_proposals: Prethodni Predlozi
+    started_by: "Kreirano od strane <strong>{{name}}</strong> "
     volume:
       loud: Obavesti kada god ima aktivnosti u ovom nizu.
       normal: "Samo obavesti kada je predlog kreiran, pred zatvaranjem ili je ishod kreiran."

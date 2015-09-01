@@ -46,6 +46,8 @@ zh-TW:
         subject: 有人邀請您加入他們的 Loomio 群組
     registrations:
       sign_up: 建立帳號
+    sessions:
+      signed_out: 登出成功
   error:
     access_denied: 您沒有足夠的權限。
     cant_join_subgroup: 假如您不是父群組的成員，您就不能加入子群組。
@@ -655,12 +657,22 @@ zh-TW:
     vote: 任何時候您都能改變您的立場
   pricing_page:
     header: 價格
-    social_mission_html: "我們的定價模式是由我們的社會使命所驅動： <strong>任何人都能輕鬆參與、討論決策、影響他人</strong>。"
-    loomio_for_organisations: 組織用的 Loomio
-    organisations_deal_html: 若您正在公司、正式組織或是職場中使用 Loomio，在 30 天的免費試用後，您將會被收取每月每人美金 1 元的訂閱費。
-    discuss_options_html: "若您想要討論適合您組織的價格選項，<a href=/contact#contact-form target='_blank'>連絡我們</a>。"
-    loomio_for_communities: 社群用的 Loomio
-    communities_deal: 錢永遠不會是人們在他們的社群中使用 Loomio 做大事的阻礙。如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。但是，我們偶爾會詢問您的群組成員是否有自願性的捐款。
+    gift: 禮物
+    standard: 標準
+    plus: 白金
+    free_trial_html: "我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。"
+    get_started_for_free: 免費開始
+    gift_body_html: "<p>對於沒有預算支付訂閱費的群組。</p>\n<p>也支援捐款，不需要付任何費用。</p>\n"
+    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
+    unlimited_members: 無限的成員
+    unlimited_decisions: 無限的決策
+    email_support: 電子郵件支援
+    standard_price_html: "<strong>$19</strong>/月<br><span>或</span> $190/年\n"
+    plus_body: 在標準價格中的每樣東西，再加上：
+    premium_support: 進階支援
+    custom_url: 自定義 URL
+    usage_statistics: 使用統計
+    plus_price_html: "<strong>$179</strong>/月<br><span>or</span> $1790/年\n"
   contribution:
     any_amount: 或是自訂的單次贊助：
     currency_desc: 以美元作為單位
@@ -1145,3 +1157,10 @@ zh-TW:
     media: 媒體
     health: 健康
   start_your_group: 啟動您的群組
+  webhooks:
+    slack:
+      motion_closing_soon: "*%{name}* 有一個即將在 24 小時內定案的提案"
+      motion_outcome_created: "*%{author}* 在 *%{name}* 中公佈了結果"
+      motion_outcome_updated: "*%{author}* 在 *%{name}* 中更新了結果"
+      new_motion: "*%{author}* 在 *%{name}* 中開始了一個新提議"
+      view_it_on_loomio: 在 Loomio 上檢視

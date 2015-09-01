@@ -1,53 +1,53 @@
 an:
   frontpage: 52
   help docs: 8
-  main: 88
-  main_1_0: 28
+  main: 87
+  main_1_0: 27
 ar:
   frontpage: 52
   help docs: 7
-  main: 49
-  main_1_0: 15
+  main: 48
+  main_1_0: 14
 be-BY:
   frontpage: 58
   help docs: 10
-  main: 96
-  main_1_0: 30
+  main: 95
+  main_1_0: 29
 bg-BG:
   frontpage: 9
   help docs: 2
   main: 41
-  main_1_0: 19
+  main_1_0: 18
 ca:
   frontpage: 49
   help docs: 7
-  main: 74
-  main_1_0: 26
+  main: 73
+  main_1_0: 25
 cmn:
   frontpage: 1
   help docs: 1
-  main: 30
-  main_1_0: 12
+  main: 29
+  main_1_0: 11
 cs:
   frontpage: 76
   help docs: 44
   main: 79
-  main_1_0: 68
+  main_1_0: 64
 da:
   frontpage: 52
   help docs: 11
-  main: 88
-  main_1_0: 41
+  main: 87
+  main_1_0: 39
 de:
   frontpage: 100
-  help docs: 55
-  main: 100
-  main_1_0: 100
+  help docs: 61
+  main: 98
+  main_1_0: 94
 el:
   frontpage: 78
   help docs: 42
-  main: 95
-  main_1_0: 31
+  main: 94
+  main_1_0: 30
 en-BE:
   frontpage: 0
   help docs: 0
@@ -61,13 +61,13 @@ en-NL:
 eo:
   frontpage: 52
   help docs: 8
-  main: 86
-  main_1_0: 27
+  main: 85
+  main_1_0: 26
 es:
   frontpage: 100
   help docs: 85
-  main: 99
-  main_1_0: 93
+  main: 97
+  main_1_0: 88
 fa-IR:
   frontpage: 60
   help docs: 41
@@ -79,25 +79,25 @@ fi:
   main: 6
   main_1_0: 0
 fr:
-  frontpage: 58
+  frontpage: 60
   help docs: 29
-  main: 97
-  main_1_0: 36
+  main: 96
+  main_1_0: 35
 ga-IE:
   frontpage: 69
   help docs: 9
   main: 60
-  main_1_0: 89
+  main_1_0: 84
 gl:
   frontpage: 29
   help docs: 8
-  main: 68
-  main_1_0: 20
+  main: 67
+  main_1_0: 19
 he:
   frontpage: 55
   help docs: 8
-  main: 64
-  main_1_0: 18
+  main: 63
+  main_1_0: 17
 he-IL: {}
 hi:
   frontpage: 0
@@ -112,8 +112,8 @@ hr:
 hu:
   frontpage: 63
   help docs: 74
-  main: 96
-  main_1_0: 39
+  main: 95
+  main_1_0: 38
 id:
   frontpage: 29
   help docs: 2
@@ -123,7 +123,7 @@ it:
   frontpage: 60
   help docs: 41
   main: 89
-  main_1_0: 86
+  main_1_0: 90
 it-CH:
   frontpage: 0
   help docs: 0
@@ -131,25 +131,25 @@ it-CH:
   main_1_0: 0
 it-IT: {}
 ja:
-  frontpage: 44
+  frontpage: 49
   help docs: 4
-  main: 62
-  main_1_0: 24
+  main: 61
+  main_1_0: 23
 km:
   frontpage: 7
   help docs: 2
-  main: 49
-  main_1_0: 20
+  main: 48
+  main_1_0: 19
 ko:
   frontpage: 52
   help docs: 3
-  main: 56
-  main_1_0: 21
+  main: 55
+  main_1_0: 20
 lt:
   frontpage: 23
   help docs: 9
   main: 9
-  main_1_0: 50
+  main_1_0: 47
 lv:
   frontpage: 0
   help docs: 0
@@ -163,12 +163,12 @@ mi:
 mk:
   frontpage: 52
   help docs: 3
-  main: 54
+  main: 53
   main_1_0: 18
 ml:
   frontpage: 9
   help docs: 3
-  main: 52
+  main: 51
   main_1_0: 20
 ml-IN:
   frontpage: 0
@@ -179,13 +179,13 @@ nl: {}
 nl-NL:
   frontpage: 100
   help docs: 47
-  main: 93
-  main_1_0: 41
+  main: 92
+  main_1_0: 40
 pl:
   frontpage: 100
   help docs: 56
   main: 59
-  main_1_0: 92
+  main_1_0: 87
 pt-BR:
   frontpage: 100
   help docs: 100
@@ -199,53 +199,53 @@ pt-PT:
 ro:
   frontpage: 100
   help docs: 53
-  main: 98
-  main_1_0: 31
+  main: 97
+  main_1_0: 30
 ru:
   frontpage: 60
   help docs: 10
   main: 64
-  main_1_0: 29
-sk:
-  frontpage: 52
-  help docs: 8
-  main: 88
   main_1_0: 28
-sl:
-  frontpage: 58
-  help docs: 10
-  main: 91
-  main_1_0: 36
-sr:
-  frontpage: 58
-  help docs: 11
-  main: 95
-  main_1_0: 30
-sr-RS:
-  frontpage: 58
-  help docs: 10
-  main: 94
-  main_1_0: 30
-sv:
+sk:
   frontpage: 52
   help docs: 8
   main: 87
   main_1_0: 27
+sl:
+  frontpage: 58
+  help docs: 10
+  main: 90
+  main_1_0: 35
+sr:
+  frontpage: 58
+  help docs: 11
+  main: 94
+  main_1_0: 54
+sr-RS:
+  frontpage: 58
+  help docs: 10
+  main: 93
+  main_1_0: 29
+sv:
+  frontpage: 52
+  help docs: 8
+  main: 86
+  main_1_0: 26
 te:
   frontpage: 15
   help docs: 2
   main: 28
-  main_1_0: 13
+  main_1_0: 12
 tr:
   frontpage: 52
   help docs: 10
-  main: 88
-  main_1_0: 39
+  main: 87
+  main_1_0: 37
 uk:
   frontpage: 64
   help docs: 8
-  main: 75
-  main_1_0: 26
+  main: 74
+  main_1_0: 25
 ur:
   frontpage: 0
   help docs: 0
@@ -259,10 +259,10 @@ ur-PK:
 vi:
   frontpage: 7
   help docs: 2
-  main: 44
-  main_1_0: 19
+  main: 43
+  main_1_0: 18
 zh-TW:
   frontpage: 100
   help docs: 46
   main: 100
-  main_1_0: 99
+  main_1_0: 100

@@ -230,11 +230,6 @@ pl:
   proposal_position_block: Blokuję
   group_welcome_modal:
     heading: Witamy w Twojej nowej grupie
-    instructions: "Jesteś koordynatorem grupy, do Twoich obowiązków należy skonfigurowanie grupy i zaproszenie osób"
-    what_next: "Oto co należy dalej zrobić:"
-    first_step: "Ustaw opis grupy, logo i zdjęcie"
-    second_step: Przeczytaj wątek przykładowy i przećwicz podejmowanie decyzji
-    third_step: Zaproś ludzi aby dołączyli do grupy
     ok_got_it: "OK, zrobione!"
   start_group_form:
     heading: Uruchomienie grupy
@@ -538,13 +533,6 @@ pl:
       edit_comment: Edycja komentarza
       delete_comment: Usuń komentarz
     in_reply_to: "<strong>{{author}}</strong> w odpowiedzi na <strong>{{recipient}}</strong>"
-  new_vote_item:
-    agree: "<strong>{{name}}</strong> zgodził/a się"
-    abstain: "<strong>{{name}}</strong> wstrzymał/a się"
-    disagree: "<strong>{{name}}</strong> nie zgodził/a się"
-    block: "<strong>{{name}}</strong> zablokował/a"
-  new_proposal_item:
-    author_created_proposal: "<strong>{{name}}</strong> utworzył rekomendację:"
   contact_message_form:
     contact_us: Kontakt
     name_label: Twoja nazwa

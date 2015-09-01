@@ -231,11 +231,6 @@ ga-IE:
   proposal_position_block: Cros
   group_welcome_modal:
     heading: Fáilte go dtí do bhaicle nua
-    instructions: Is tusa an té atá i gceannas ar chomheagar a chur ar rudaí sa bhaicle. Ciallaíonn sin is fútsa atá sé an bhaicle a chur ar bun agus cuireadh a thabhairt do dhaoine bheith ann
-    what_next: "Seo an chéad rud eile atá le déanamh:"
-    first_step: "Déan cur síos ar an mbaicle, agus cuir lógó agus grianghraf cumhdaigh uirthi"
-    second_step: Léigh an tsnáithe shamplach agus cleachtaigh conas cinneadh a dhéanamh
-    third_step: Tabhair cuireadh do dhaoine teacht isteach i do bhaicle
     ok_got_it: "Maith go leor, tuigim é!"
   start_group_form:
     heading: Cuir baicle ar bun
@@ -541,13 +536,6 @@ ga-IE:
       edit_comment: Déan eagarthóireacht ar an trácht
       delete_comment: Scrios an trácht
     in_reply_to: "<strong>{{author}}</strong> mar fhreagra ar <strong>{{recipient}}</strong>"
-  new_vote_item:
-    agree: "D'aontaigh <strong>{{name}}</strong>"
-    abstain: "Staoin <strong>{{name}}</strong>"
-    disagree: "D'easaontaigh <strong>{{name}}</strong>"
-    block: "Chros <strong>{{name}}</strong> é"
-  new_proposal_item:
-    author_created_proposal: "Chruthaigh <strong>{{name}}</strong> togra:"
   contact_message_form:
     contact_us: Déan teagmháil linn
     name_label: "D'ainm"

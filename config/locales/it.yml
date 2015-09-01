@@ -437,6 +437,8 @@ it:
     mute_description: "Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned."
   group_volume:
     loud_description: Invia una mail in caso di qualsiasi tipo di attività.
+    quiet_description: Non inviare email su questo gruppo. Le attività verranno mostrate nella bacheca.
+    mute_description: "Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato."
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> si è detto/a favorevole alla proposta."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> si è astenuto/a sulla proposta."
