@@ -1,14 +1,12 @@
-%H1 AAARRR
+%H1 AAARRRRR
 
 %ul
-  %li Awareness - homepage visits to www.loomio.org during cohort period
+  %li Awareness - homepage visits to www.loomio.org during cohort period (measurements started during cohort 4)
   %li Acquisition - number of organisations created during the cohort period
-  %li Activation - number of organisations which had at least 5 sessions
-  %li Retention - number of organisations which had at least 20 new sessions between their 20th and 40th day.
+  %li Activation - number of organisations which were ever active (had at least 5 sessions)
+  %li Retention - R30 is number of organisations which were active in the month starting day 30 (R60 is the next month, etc). The percentage shows the proportion of activated groups that meet this criteria
   %li Revenue - number of organisations from this cohort that decided to pay
   / %li Referral - number of organisations started by users who are part of a group in this cohort?
-
-%p FYI: "Awareness" measurement started part way through cohort 4
 
 %table.table
   %thead
@@ -19,7 +17,10 @@
       %th Awareness
       %th Acquisition
       %th Activation
-      %th Retention
+      %th R30
+      %th R60
+      %th R90
+      %th R120
       %th Revenue
       / %th Referral
 
@@ -40,7 +41,16 @@
           = activated_count = cohort.activated_organisations.count
           (#{safe_pct(activated_count, org_count)}%)
         %td
-          = retained_count = cohort.retained_organisations.count
+          = retained_count = cohort.retained_organisations(30, 60).count
+          (#{safe_pct(retained_count, activated_count)}%)
+        %td
+          = retained_count = cohort.retained_organisations(60, 90).count
+          (#{safe_pct(retained_count, activated_count)}%)
+        %td
+          = retained_count = cohort.retained_organisations(90, 120).count
+          (#{safe_pct(retained_count, activated_count)}%)
+        %td
+          = retained_count = cohort.retained_organisations(120, 150).count
           (#{safe_pct(retained_count, activated_count)}%)
         %td
           = revenue[cohort.id]

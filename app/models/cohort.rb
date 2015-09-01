@@ -18,10 +18,8 @@ class Cohort < ActiveRecord::Base
     organisations.where("id in (#{subquery.to_sql})")
   end
 
-  def retained_organisations
-    min_age = 20
-    max_age = 40
-    min_activity = 20
+  def retained_organisations(min_age, max_age)
+    min_activity = 5
     q = "SELECT DISTINCT group_id
          FROM group_measurements o_gm
          JOIN groups o_g on o_gm.group_id = o_g.id
