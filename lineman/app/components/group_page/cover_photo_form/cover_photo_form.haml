@@ -7,11 +7,12 @@
     %h1.lmo-h1.modal-title{translate: 'group_cover_modal.heading'}
 
   .modal-body
-    %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
-      .user-avatar.lmo-box--small.option-icon
+    %a.lmo-link{href: '', ng-click: 'selectFile()'}
+      .lmo-box--small.lmo-float--left
         .user-avatar__initials--small
           %i.fa.fa-lg.fa-camera
-      %span{translate: 'group_cover_modal.upload_link'}
+      %span.lmo-option-text{translate: 'group_cover_modal.upload_link'}
+    .lmo-clearfix
     %input.hidden.group-cover-photo-modal__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
     %p{translate: 'group_cover_modal.helptext'}
     %p{translate: 'group_cover_modal.image_size_helptext'}
