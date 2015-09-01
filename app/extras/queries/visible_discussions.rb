@@ -6,7 +6,11 @@ class Queries::VisibleDiscussions < Delegator
       group_ids = Array(groups).map(&:id)
     end
 
-    @relation = Discussion.joins(:group).where('groups.archived_at IS NULL').published
+    @relation = Discussion.
+                  joins(:group).
+                  where('groups.archived_at IS NULL').
+                  published.
+                  includes(:author, {group: [:parent]})
     @relation = self.class.apply_privacy_sql(user: @user, group_ids: group_ids, relation: @relation)
 
     super(@relation)
