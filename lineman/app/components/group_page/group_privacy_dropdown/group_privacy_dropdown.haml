@@ -18,6 +18,7 @@
   .dropdown-menu.dropdown-menu-with-labels{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
     .dropdown-heading{translate: 'group_page.visibility_label', role: 'heading'}
     %form{novalidate: ''}
+      .lmo-disabled-form{ng-show: '!canEditGroup()'}
       %ul.dropdown-menu-items
         %li.dropdown-menu-item
           %label{for: 'visible-to-members'}
