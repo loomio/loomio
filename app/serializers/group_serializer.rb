@@ -36,10 +36,8 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def cover_url_desktop
-    if object.cover_photo.present?
+    if object.cover_photo.present? || object.default_group_cover.present?
       object.cover_photo.url(:desktop)
-    elsif object.default_group_cover.present?
-      URI.decode(object.cover_photo.url(:desktop))
     else
       'img/default-cover-photo.png'
     end

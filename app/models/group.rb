@@ -183,8 +183,7 @@ class Group < ActiveRecord::Base
 
   has_attached_file    :cover_photo,
                        styles: { desktop: "970x200#", card: "460x94#"},
-                       default_url: Proc.new { |a| a.instance.default_group_cover.try(:cover_photo).try(:url) || 'default-cover-photo.png' }
-
+                       default_url: :default_cover_photo
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
                        default_url: 'default-logo-:style.png'
@@ -604,5 +603,13 @@ class Group < ActiveRecord::Base
 
   def self.with_one_coordinator
     published.select{ |g| g.admins.count == 1 }
+  end
+
+  def default_cover_photo
+    if self.default_group_cover
+      /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
+    else
+      'default-cover-photo.png'
+    end
   end
 end
