@@ -25,6 +25,7 @@ class Group < ActiveRecord::Base
   validate :validate_discussion_privacy_options
 
   before_save :update_full_name_if_name_changed
+  before_create :apply_default_group_cover
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
   include PgSearch
@@ -440,6 +441,14 @@ class Group < ActiveRecord::Base
 
   def mark_as_setup!
     update_attribute(:setup_completed_at, Time.zone.now.utc)
+  end
+
+  def apply_default_group_cover
+    return unless default = DefaultGroupCover.order('random()').first
+    self.cover_photo_file_name    = default.cover_photo_file_name
+    self.cover_photo_file_size    = default.cover_photo_file_size
+    self.cover_photo_content_type = default.cover_photo_content_type
+    self.cover_photo_updated_at   = default.cover_photo_updated_at
   end
 
   def update_full_name_if_name_changed
