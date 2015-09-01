@@ -96,6 +96,7 @@ en:
       remove_attachment: 'Remove attachment'
     messages:
       created: 'Comment added'
+      replied: '{{name}} notified of reply'
       updated: 'Comment updated'
       destroyed: 'Comment deleted'
     edit_comment: 'Edit comment'
