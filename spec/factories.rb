@@ -194,4 +194,11 @@ FactoryGirl.define do
     event_types { ['motion_closing_soon', 'new_motion', 'motion_outcome_created'] }
   end
 
+  factory :default_group_cover do
+    cover_photo_file_name { "test.jpg" }
+    cover_photo_file_size { 10000 }
+    cover_photo_content_type { "image/jpeg" }
+    cover_photo_updated_at { 10.days.ago }
+  end
+
 end

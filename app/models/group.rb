@@ -137,7 +137,7 @@ class Group < ActiveRecord::Base
            as: :invitable,
            class_name: 'Invitation',
            dependent: :destroy
- 
+
   has_many :comments, through: :discussions
 
   after_initialize :set_defaults
@@ -155,6 +155,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
+  belongs_to :default_group_cover
 
   has_many :subgroups,
            -> { where(archived_at: nil).order(:name) },
@@ -182,8 +183,7 @@ class Group < ActiveRecord::Base
 
   has_attached_file    :cover_photo,
                        styles: { desktop: "970x200#", card: "460x94#"},
-                       default_url: 'default-cover-photo.png'
-
+                       default_url: :default_cover_photo
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
                        default_url: 'default-logo-:style.png'
@@ -603,5 +603,13 @@ class Group < ActiveRecord::Base
 
   def self.with_one_coordinator
     published.select{ |g| g.admins.count == 1 }
+  end
+
+  def default_cover_photo
+    if self.default_group_cover
+      /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
+    else
+      'default-cover-photo.png'
+    end
   end
 end
