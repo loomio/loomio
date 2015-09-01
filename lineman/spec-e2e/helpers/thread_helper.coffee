@@ -43,7 +43,7 @@ module.exports = new class ThreadHelper
     element(By.css('.delete-comment-form__delete-button')).click()
 
   activityPanel: ->
-    element(By.css('.activity-card')).click()
+    element(By.css('.activity-card')).getText()
 
   openNotificationDropdown: ->
     element(By.css('.dropdown-toggle')).click()
@@ -52,19 +52,19 @@ module.exports = new class ThreadHelper
     element(By.css('.lmo-navbar__btn--notifications'))
 
   mostRecentComment: ->
-    element.all(By.css('.thread-item--comment')).last()
+    element.all(By.css('.thread-item--comment')).last().getText()
 
   replyLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--reply')).last()
 
   inReplyToOnMostRecentComment: ->
-    element.all(By.css('.new-comment__in-reply-to')).last()
+    element.all(By.css('.new-comment__in-reply-to')).last().getText()
 
   likeLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--like')).last()
 
   likedByOnMostRecentComment: ->
-    element.all(By.css('.thread-item__liked-by')).last()
+    element.all(By.css('.thread-item__liked-by')).last().getText()
 
   flashMessageText: ->
     element(By.css('.flash-container')).getText()
@@ -117,4 +117,4 @@ module.exports = new class ThreadHelper
     element(By.css('.thread-context__dropdown-options-edit')).click()
 
   discussionTitle: ->
-    element(By.css('.thread-context'))
+    element(By.css('.thread-context')).getText()

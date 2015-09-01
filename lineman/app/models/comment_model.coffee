@@ -30,6 +30,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
     isReply: ->
       @parentId?
 
+    parent: ->
+      @recordStore.comments.find(@parentId)
+
     likers: ->
       @recordStore.users.find(@likerIds)
 

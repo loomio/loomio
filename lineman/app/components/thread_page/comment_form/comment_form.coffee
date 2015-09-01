@@ -11,8 +11,11 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.isDisabled = true
       $scope.comment.save().then ->
         $scope.isDisabled = false
+        if $scope.comment.isReply()
+          FlashService.success('comment_form.messages.replied', name: $scope.comment.parent().authorName())
+        else
+          FlashService.success('comment_form.messages.created')
         $scope.comment = Records.comments.build(discussionId: discussion.id)
-        FlashService.success('comment_form.messages.created')
       , ->
         $scope.isDisabled = false
 
