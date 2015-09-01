@@ -2,6 +2,7 @@ class GroupService
   def self.create(group:, actor:)
     group.creator = actor
     actor.ability.authorize! :create, group
+    group.default_group_cover = DefaultGroupCover.order('random()').first
     group.save && group.mark_as_setup! && group.add_admin!(actor)
     group
   end

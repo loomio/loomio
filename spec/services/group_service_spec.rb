@@ -8,7 +8,7 @@ describe 'DiscussionService' do
     it 'assigns a default group cover' do
       default = create(:default_group_cover)
       GroupService.create(group: group, actor: user)
-      expect(group.reload.cover_photo.url).to eq default.cover_photo.url.gsub('default_group_covers', 'groups')
+      expect(group.reload.cover_photo.url).to eq default.cover_photo.url
     end
 
     it 'does not assign a default group cover if none have been defined' do

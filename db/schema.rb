@@ -428,12 +428,14 @@ ActiveRecord::Schema.define(version: 20150901000845) do
     t.boolean  "is_commercial"
     t.boolean  "is_referral",                                    default: false,          null: false
     t.integer  "cohort_id"
+    t.integer  "default_group_cover_id"
   end
 
   add_index "groups", ["archived_at", "id"], name: "index_groups_on_archived_at_and_id", using: :btree
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
   add_index "groups", ["cohort_id"], name: "index_groups_on_cohort_id", using: :btree
   add_index "groups", ["created_at"], name: "index_groups_on_created_at", using: :btree
+  add_index "groups", ["default_group_cover_id"], name: "index_groups_on_default_group_cover_id", using: :btree
   add_index "groups", ["full_name"], name: "index_groups_on_full_name", using: :btree
   add_index "groups", ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public", using: :btree
   add_index "groups", ["key"], name: "index_groups_on_key", unique: true, using: :btree

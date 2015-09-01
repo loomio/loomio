@@ -25,7 +25,6 @@ class Group < ActiveRecord::Base
   validate :validate_discussion_privacy_options
 
   before_save :update_full_name_if_name_changed
-  before_create :apply_default_group_cover
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
   include PgSearch
@@ -156,6 +155,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
+  belongs_to :default_group_cover
 
   has_many :subgroups,
            -> { where(archived_at: nil).order(:name) },
@@ -183,7 +183,7 @@ class Group < ActiveRecord::Base
 
   has_attached_file    :cover_photo,
                        styles: { desktop: "970x200#", card: "460x94#"},
-                       default_url: 'default-cover-photo.png'
+                       default_url: Proc.new { |a| a.instance.default_group_cover.try(:cover_photo).try(:url) || 'default-cover-photo.png' }
 
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
