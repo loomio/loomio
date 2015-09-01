@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
       @buildModelRoute('m', p.key, p.name, params, options)
 
     comment: (c, params = {}, options = {}) ->
-      @discussion c.discussion(), _.merge(params, {comment: c.key})
+      @discussion c.discussion(), _.merge(params, {comment: c.id})
 
     buildModelRoute: (path, key, name, params, options) ->
       result = "/#{path}/#{key}"
