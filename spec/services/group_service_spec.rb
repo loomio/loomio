@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'DiscussionService' do
+describe 'GroupService' do
   let(:user) { create(:user) }
   let(:group) { build(:group) }
 
