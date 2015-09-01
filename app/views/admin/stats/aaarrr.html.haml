@@ -40,18 +40,31 @@
         %td
           = activated_count = cohort.activated_organisations.count
           (#{safe_pct(activated_count, org_count)}%)
-        %td
-          = retained_count = cohort.retained_organisations(30, 60).count
-          (#{safe_pct(retained_count, activated_count)}%)
-        %td
-          = retained_count = cohort.retained_organisations(60, 90).count
-          (#{safe_pct(retained_count, activated_count)}%)
-        %td
-          = retained_count = cohort.retained_organisations(90, 120).count
-          (#{safe_pct(retained_count, activated_count)}%)
-        %td
-          = retained_count = cohort.retained_organisations(120, 150).count
-          (#{safe_pct(retained_count, activated_count)}%)
+
+        - retained_count = cohort.retained_organisations(30, 60).count
+        - pct = safe_pct(retained_count, activated_count)
+        %td{style: "background-color: rgba(0,0,0,0.#{pct})"}
+          = retained_count
+          (#{pct}%)
+
+        - retained_count = cohort.retained_organisations(60, 90).count
+        - pct = safe_pct(retained_count, activated_count)
+        %td{style: "background-color: rgba(0,0,0,0.#{pct})"}
+          = retained_count
+          (#{pct}%)
+
+        - retained_count = cohort.retained_organisations(90, 120).count
+        - pct = safe_pct(retained_count, activated_count)
+        %td{style: "background-color: rgba(0,0,0,0.#{pct})"}
+          = retained_count
+          (#{pct}%)
+
+        - retained_count = cohort.retained_organisations(120, 150).count
+        - pct = safe_pct(retained_count, activated_count)
+        %td{style: "background-color: rgba(0,0,0,0.#{pct})"}
+          = retained_count
+          (#{pct}%)
+
         %td
           = revenue[cohort.id]
           -# cohort.paying_organisations.count
