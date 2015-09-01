@@ -137,7 +137,7 @@ class Group < ActiveRecord::Base
            as: :invitable,
            class_name: 'Invitation',
            dependent: :destroy
- 
+
   has_many :comments, through: :discussions
 
   after_initialize :set_defaults
@@ -441,14 +441,6 @@ class Group < ActiveRecord::Base
 
   def mark_as_setup!
     update_attribute(:setup_completed_at, Time.zone.now.utc)
-  end
-
-  def apply_default_group_cover
-    return unless default = DefaultGroupCover.order('random()').first
-    self.cover_photo_file_name    = default.cover_photo_file_name
-    self.cover_photo_file_size    = default.cover_photo_file_size
-    self.cover_photo_content_type = default.cover_photo_content_type
-    self.cover_photo_updated_at   = default.cover_photo_updated_at
   end
 
   def update_full_name_if_name_changed
