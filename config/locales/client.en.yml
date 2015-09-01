@@ -126,6 +126,7 @@ en:
       help: 'Help'
       sign_out: 'Sign out'
     search:
+      no_results: 'No threads found'
       close: 'Close search panel'
       placeholder: 'Search'
       loading: 'Loading results...'

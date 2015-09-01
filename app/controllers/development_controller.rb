@@ -307,7 +307,8 @@ class DevelopmentController < ApplicationController
 
   def test_discussion
     unless @test_discussion
-      @test_discussion = Discussion.create!(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
+      @test_discussion = Discussion.create(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
+      DiscussionService.create(discussion: @test_discussion, actor: @test_discussion.author)
     end
     @test_discussion
   end
