@@ -149,6 +149,11 @@ label.label-with-details{
   @include fontHelveticaMedium;
   @include fontGrande;
 }
+
+.lmo-h1:focus, .lmo-h1-medium:focus{
+  outline: none;
+}
+
 .lmo-h2 {
   @include fontHelveticaBold;
   @include fontLarge;
