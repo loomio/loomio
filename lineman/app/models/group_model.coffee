@@ -127,5 +127,5 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
 
     archive: =>
       @remote.patchMember(@key, 'archive').then =>
-        @recordsInterface.collection.remove(@)
-
+        @remove()
+        _.each @memberships(), (m) -> m.remove()

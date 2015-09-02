@@ -3,7 +3,7 @@ angular.module('loomioApp').controller 'GroupsPageController', ($rootScope, Curr
   $rootScope.$broadcast('setTitle', 'Groups')
 
   @parentGroups = =>
-    _.unique _.map CurrentUser.memberships(), (membership) =>
+    _.unique _.compact _.map CurrentUser.memberships(), (membership) =>
       if membership.group().isParent()
         membership.group()
       else if !CurrentUser.isMemberOf(membership.group().parent())
