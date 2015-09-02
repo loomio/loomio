@@ -1,8 +1,8 @@
 <h1><a href="https://www.loomio.org"> <img src="app/assets/images/logo-orange.png" alt="Loomio"/></a> </h1>
- 
-[![Build Status](https://img.shields.io/travis/loomio/loomio.svg)](https://travis-ci.org/loomio/loomio) 
-[![Code Climate](https://img.shields.io/codeclimate/github/loomio/loomio.svg)](https://codeclimate.com/github/loomio/loomio) 
-[![Dependency Status](https://img.shields.io/gemnasium/loomio/loomio.svg)](https://gemnasium.com/loomio/loomio) 
+
+[![Build Status](https://img.shields.io/travis/loomio/loomio.svg)](https://travis-ci.org/loomio/loomio)
+[![Code Climate](https://img.shields.io/codeclimate/github/loomio/loomio.svg)](https://codeclimate.com/github/loomio/loomio)
+[![Dependency Status](https://img.shields.io/gemnasium/loomio/loomio.svg)](https://gemnasium.com/loomio/loomio)
 
 Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
 
@@ -56,7 +56,7 @@ My ‘my dev env is totally b0rked’ checklist:
 ## Updating to the latest loomio code
 TODO: explain how to update your fork from loomio master
 We regularly change and update the node modules and bower dependencies.
-If you just updated and things are broken then you need to 
+If you just updated and things are broken then you need to
 
 ```
 cd lineman
@@ -105,29 +105,29 @@ running at the same time:
 # Production Configuration
 
 ### Domain name settings
-CANONICAL_HOST - Hostname of the loomio instance. For us it's "www.loomio.org"
-TLD_LENGTH - length of the top level part of your domain name.
-DEFAULT_SUBDOMAIN - we use www
-ALLOW_ROBOTS - Set to 1 if you want to search engines to crawl the public discussions and groups.
+CANONICAL_HOST - Hostname of the loomio instance. For us it's "www.loomio.org"  
+TLD_LENGTH - length of the top level part of your domain name.  
+DEFAULT_SUBDOMAIN - we use www  
+ALLOW_ROBOTS - Set to 1 if you want to search engines to crawl the public discussions and groups.  
 
-Examples:
-  www.loomio.org
-  CANONICAL_HOST = www.loomio.org
-  TLD_LENGTH = 1
-  DEFAULT_SUBDOMAIN = www
- 
-  loomio.somewhereelse.com
-  CANONICAL_HOST = loomio.somewhereelse.com
-  TLD_LENGTH = 2
-  DEFAULT_SUBDOMAIN should not be set
+Examples:  
+  www.loomio.org  
+  CANONICAL_HOST = www.loomio.org  
+  TLD_LENGTH = 1  
+  DEFAULT_SUBDOMAIN = www  
 
-SECRET_COOKIE_TOKEN -  run 'rake secret' to generate your own SECRET_COOKIE_TOKEN
-DEVISE_SECRET - run 'rake secret' to generate your own DEVISE_SECRET
-FORCE_SSL - if true, only HTTPS connections will be permitted
-FAYE_URL - the url for your FAYE instance - see https://github.com/loomio/private_pub
-MAX_THREADS - optional puma configuration
-MIN_THREADS - optional puma configuration
-PUMA_WORKERS - optional puma configuration
+  loomio.somewhereelse.com  
+  CANONICAL_HOST = loomio.somewhereelse.com  
+  TLD_LENGTH = 2  
+  DEFAULT_SUBDOMAIN should not be set  
+
+SECRET_COOKIE_TOKEN -  run 'rake secret' to generate your own SECRET_COOKIE_TOKEN  
+DEVISE_SECRET - run 'rake secret' to generate your own DEVISE_SECRET  
+FORCE_SSL - if true, only HTTPS connections will be permitted  
+FAYE_URL - the url for your FAYE instance - see https://github.com/loomio/private_pub  
+MAX_THREADS - optional puma configuration  
+MIN_THREADS - optional puma configuration  
+PUMA_WORKERS - optional puma configuration  
 
 ### Email configuration
 
@@ -169,7 +169,7 @@ ERRBIT_KEY
 ERRBIT_HOST  
 ERRBIT_PORT  
 
-#### find the ENV currently in use in the app using : 
+#### find the ENV currently in use in the app using :
 `grep -rIso -P "(?<=ENV)(\.fetch\(|\[).[A-Z_]+.(\)|\])"`
 
 #### for a uniq ordered list of env vars:
