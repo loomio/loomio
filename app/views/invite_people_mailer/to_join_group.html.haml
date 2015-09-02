@@ -3,7 +3,7 @@
   %head
     = stylesheet_link_tag 'email'
   %body
-    %p=@message_body
+    = simple_format @message_body
 
     %p
       =t(:"invitation.link_help", group: @invitation.invitable_name)
