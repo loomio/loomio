@@ -198,6 +198,15 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
+  # default_cover_photo is the name of the proc used to determine the url for the default cover photo
+  # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
+  def default_cover_photo
+    if is_subgroup?
+      self.parent.default_cover_photo
+    else
+      /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
+    end
+  end
 
   before_save :set_creator_if_blank
 
@@ -603,11 +612,5 @@ class Group < ActiveRecord::Base
 
   def self.with_one_coordinator
     published.select{ |g| g.admins.count == 1 }
-  end
-
-  # default_cover_photo is the name of the proc used to determine the url for the default cover photo
-  # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
-  def default_cover_photo
-    /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
   end
 end
