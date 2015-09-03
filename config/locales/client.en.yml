@@ -188,6 +188,7 @@ en:
     change_your_vote: Change your vote.
 
   undecided_panel:
+    aria_label: 'Undecided members'
     show_undecided: Show undecided members
     hide_undecided: Hide undecided members
 
@@ -565,7 +566,7 @@ en:
     threads_from:
       group: 'Threads from'
       proposals: 'Proposals'
-      starred: 'Starred'
+      starred: 'Starred threads'
       today: 'Today'
       yesterday: 'Yesterday'
       thisweek: 'This week'

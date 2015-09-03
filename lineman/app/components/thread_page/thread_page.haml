@@ -40,7 +40,7 @@
           %i.fa.fa-globe{aria-hidden: 'true'}>
           %span{translate: 'common.privacy.public'}
 
-      %article.thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+      .thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
 
     %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
       %h2.lmo-card-heading{translate: 'common.models.proposal'}

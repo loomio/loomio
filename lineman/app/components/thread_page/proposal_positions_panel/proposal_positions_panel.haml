@@ -5,8 +5,8 @@
     .proposal-pie-chart__pie.media-left
       %pie_chart.proposal-positions-panel__pie-chart{votes: 'proposal.voteCounts'}
     .proposal-pie-chart__legend.media-body
-      %label.sr-only{translate: 'proposal_expanded.current_votes'}
-      %table
+      %table#proposal-current-positions{role: 'presentation'}
+        %caption.sr-only{translate: 'proposal_expanded.current_votes'}
         %tbody
           %tr{ng-repeat: 'position in proposal.positions'}
             %td
