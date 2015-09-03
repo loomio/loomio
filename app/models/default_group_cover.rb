@@ -5,4 +5,10 @@ class DefaultGroupCover < ActiveRecord::Base
   def self.sample
     all.order('random()').first
   end
+
+  def self.store(file)
+    file = open(file) if file.is_a? String
+    create! cover_photo: file
+  end
+
 end
