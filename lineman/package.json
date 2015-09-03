@@ -10,7 +10,7 @@
   "dependencies": {
     "angular": "^1.4.4",
     "angular-ui-bootstrap": "0.13.3",
-    "angular_record_store": "git://github.com/loomio/angular_record_store.git#2.3.0",
+    "angular_record_store": "git://github.com/loomio/angular_record_store.git#2.3.1",
     "bootstrap": "^3.3.5",
     "coffee-script": "^1.8.0",
     "loomio-angular-router": "0.5.6"

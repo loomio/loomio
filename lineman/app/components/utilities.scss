@@ -276,18 +276,22 @@ label.label-with-details{
 }
 
 .lmo-box--tiny {
+  text-align: center;
   @include boxTiny;
 }
 
 .lmo-box--small {
+  text-align: center;
   @include boxSmall;
 }
 
 .lmo-box--medium {
+  text-align: center;
   @include boxMedium;
 }
 
 .lmo-box--large {
+  text-align: center;
   @include boxLarge;
 }
 
@@ -309,4 +313,20 @@ label.label-with-details{
 
 .lmo-clearfix {
   clear: both;
+}
+
+.lmo-float--left {
+  float: left;
+}
+
+.lmo-float--right {
+  float: right;
+}
+
+.lmo-option-text {
+  float: left;
+  margin-left: 5px;
+  display: inline-block;
+  line-height: 35px;
+  text-decoration: underline;
 }

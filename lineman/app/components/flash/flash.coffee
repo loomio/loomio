@@ -8,6 +8,7 @@ angular.module('loomioApp').directive 'flash', (AppConfig) ->
 
     $scope.$on 'flashMessage', (event, flash) =>
       $scope.flash = _.merge flash, { visible: true }
+      $scope.flash.message = $scope.flash.message or 'common.action.loading' if $scope.loading()
       $interval.cancel $scope.pendingDismiss if $scope.pendingDismiss?
       $scope.pendingDismiss = $interval($scope.dismiss, flash.duration, 1)
 
