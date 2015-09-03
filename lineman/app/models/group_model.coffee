@@ -129,3 +129,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       @remote.patchMember(@key, 'archive').then =>
         @remove()
         _.each @memberships(), (m) -> m.remove()
+
+    uploadPhoto: (file, kind) =>
+      @remote.upload("#{@key}/upload_photo/#{kind}", file)

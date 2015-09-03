@@ -13,23 +13,49 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, $f
       422: 'unprocessableEntity'
       500: 'internalServerError'
 
+    prepare = (scope, model, options) ->
+      FlashService.loading(options.loadingMessage)
+      scope.isDisabled = true
+      model.setErrors()
+
+    success = (scope, model, options) ->
+      (response) ->
+        FlashService.dismiss()
+        FlashService.success options.flashSuccess, options.flashOptions if options.flashSuccess?
+        scope.$close()                                                  if typeof scope.$close is 'function'
+        options.successCallback(response)                               if typeof options.successCallback is 'function'
+
+    failure = (scope, model, options) ->
+      (response) ->
+        FlashService.dismiss()
+        model.setErrors response.data.errors                            if response.status == 422
+        $rootScope.$broadcast errorTypes[response.status] or 'unknownError',
+          model: model
+          response: response
+
+    cleanup = (scope) ->
+      ->
+        scope.isDisabled = false
+
     submit: (scope, model, options = {}) ->
       submitFn = options.submitFn or model.save
       ->
-        FlashService.loading()
-        scope.isDisabled = true
-        model.setErrors()
+        prepare(scope, model, options)
+        submitFn(model).then(
+          success(scope, model, options),
+          failure(scope, model, options),
+        ).finally(
+          cleanup(scope)
+        )
 
-        submitFn(model).then( (response) ->
-          FlashService.dismiss()
-          FlashService.success options.flashSuccess, options.flashOptions if options.flashSuccess?
-          scope.$close()                                                  if typeof scope.$close is 'function'
-          options.successCallback(response)                               if typeof options.successCallback is 'function'
-        , (response) ->
-          FlashService.dismiss()
-          model.setErrors response.data.errors                            if response.status == 422
-          $rootScope.$broadcast errorTypes[response.status] or 'unknownError',
-            model: model
-            response: response
-        ).finally ->
-          scope.isDisabled = false
+    upload: (scope, model, options = {}) ->
+      submitFn = options.submitFn
+      (files) ->
+        if _.any files
+          prepare(scope, model, options)
+          submitFn(files[0], options.uploadKind).then(
+            success(scope, model, options),
+            failure(scope, model, options)
+          ).finally(
+            cleanup(scope)
+          )

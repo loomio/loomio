@@ -36,6 +36,7 @@ en:
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
       loading: 'Loading'
+      uploading: 'Uploading'
 
   error_page:
     forbidden: 'You do not have permission to do this.'
@@ -270,6 +271,19 @@ en:
     second_step: "Have a look around - check out the example threads and have a play with the settings."
     third_step: "When you're ready, you can invite people in."
     ok_got_it: 'Ok, got it!'
+
+  group_cover_modal:
+    heading: 'New cover photo'
+    upload_link: 'Upload new cover photo'
+    helptext: 'Looking for inspiration? Check out <a href="https://unsplash.com/">Unsplash</a>, a gallery of beautiful, free images'
+    image_size_helptext: 'Ideal image size is 1400 x 320px'
+    upload_success: 'Cover photo successfully updated'
+
+  group_logo_modal:
+    heading: 'New group logo'
+    upload_link: 'Upload new group logo'
+    image_size_helptext: 'Ideal image size is 100 x 100px'
+    upload_success: 'Logo successfully updated'
 
   start_group_form:
     heading: 'Start a group'
