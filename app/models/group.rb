@@ -605,11 +605,9 @@ class Group < ActiveRecord::Base
     published.select{ |g| g.admins.count == 1 }
   end
 
+  # default_cover_photo is the name of the proc used to determine the url for the default cover photo
+  # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
   def default_cover_photo
-    if self.default_group_cover
-      /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
-    else
-      'default-cover-photo.png'
-    end
+    /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
   end
 end
