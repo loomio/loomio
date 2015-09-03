@@ -1,7 +1,7 @@
 .comment-form-attachments
-  %button.btn.btn-default#comment-form-attachment-button{type: 'button', ng-hide: 'files', aria-label: "{{ 'comment_form.attachments.aria_label' | translate }}"}
+  %button.btn.btn-default{type: 'button', ng-click: 'selectFile()', ng-hide: 'files', aria-label: "{{ 'comment_form.attachments.aria_label' | translate }}"}
     %i.fa.fa-lg.fa-paperclip{aria-hidden: 'true'}
-   %input.hidden{type: 'file', ng-model: 'files', ng_file_select: 'upload(files)'}
+   %input.attachment-form__file-input.hidden{type: 'file', ng-model: 'files', ng_file_select: 'upload(files)'}
   .attachment-form-in-progress{ng-repeat: 'file in files'}
     .progress.active.attachment-form-progress-field
       %span.attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
