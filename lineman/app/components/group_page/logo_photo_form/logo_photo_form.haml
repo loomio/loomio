@@ -1,4 +1,4 @@
-.group-logo-modal
+.logo-photo-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: '$close()'}
@@ -13,7 +13,7 @@
           %i.fa.fa-lg.fa-camera
       %span.lmo-option-text{translate: 'group_logo_modal.upload_link'}
     .lmo-clearfix
-    %input.hidden.group-logo-modal__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
+    %input.hidden.logo-photo-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
     %p{translate: 'group_logo_modal.image_size_helptext'}
 
   .modal-footer.lmo-clearfix

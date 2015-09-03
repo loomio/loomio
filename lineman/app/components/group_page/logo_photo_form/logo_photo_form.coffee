@@ -4,7 +4,7 @@ angular.module('loomioApp').factory 'LogoPhotoForm', ->
   controller: ($scope, $timeout, group, Records, FormService) ->
 
     $scope.selectFile = ->
-      $timeout -> document.querySelector('.group-logo-modal__file-input').click()
+      $timeout -> document.querySelector('.logo-photo-form__file-input').click()
 
     $scope.upload = FormService.upload $scope, group,
       uploadKind:     'logo'

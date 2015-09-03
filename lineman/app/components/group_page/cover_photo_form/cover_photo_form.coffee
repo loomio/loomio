@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'CoverPhotoForm', ->
   controller: ($scope, $timeout, group, Records, FormService) ->
 
     $scope.selectFile = ->
-      $timeout -> document.querySelector('.group-cover-photo-modal__file-input').click()
+      $timeout -> document.querySelector('.cover-photo-form__file-input').click()
 
     $scope.upload = FormService.upload $scope, group,
       uploadKind:     'cover_photo'

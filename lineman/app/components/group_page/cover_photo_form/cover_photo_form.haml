@@ -1,4 +1,4 @@
-.group-cover-photo-modal
+.cover-photo-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
     %button{type: 'button', class: 'close', ng-click: '$close()'}
@@ -13,7 +13,7 @@
           %i.fa.fa-lg.fa-camera
       %span.lmo-option-text{translate: 'group_cover_modal.upload_link'}
     .lmo-clearfix
-    %input.hidden.group-cover-photo-modal__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
+    %input.hidden.cover-photo-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
     %p{translate: 'group_cover_modal.helptext'}
     %p{translate: 'group_cover_modal.image_size_helptext'}
 
