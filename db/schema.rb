@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903092626) do
+ActiveRecord::Schema.define(version: 20150903161434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,15 @@ ActiveRecord::Schema.define(version: 20150903092626) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "default_group_covers", force: :cascade do |t|
+    t.string   "cover_photo_file_name"
+    t.string   "cover_photo_content_type"
+    t.integer  "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",               default: 0
@@ -421,11 +430,13 @@ ActiveRecord::Schema.define(version: 20150903092626) do
     t.boolean  "is_commercial"
     t.boolean  "is_referral",                                    default: false,          null: false
     t.integer  "cohort_id"
+    t.integer  "default_group_cover_id"
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
   add_index "groups", ["cohort_id"], name: "index_groups_on_cohort_id", using: :btree
   add_index "groups", ["created_at"], name: "index_groups_on_created_at", using: :btree
+  add_index "groups", ["default_group_cover_id"], name: "index_groups_on_default_group_cover_id", using: :btree
   add_index "groups", ["full_name"], name: "index_groups_on_full_name", using: :btree
   add_index "groups", ["is_visible_to_public"], name: "index_groups_on_is_visible_to_public", using: :btree
   add_index "groups", ["key"], name: "index_groups_on_key", unique: true, using: :btree
