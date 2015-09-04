@@ -7,8 +7,7 @@ class DefaultGroupCover < ActiveRecord::Base
   end
 
   def self.store(file)
-    file = open(file) if file.is_a? String
-    create! cover_photo: file
+    open(file) { |f| create! cover_photo: f }
   end
 
 end
