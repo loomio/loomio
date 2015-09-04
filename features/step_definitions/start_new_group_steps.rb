@@ -2,6 +2,10 @@ Given(/^I want to show the loomio\.org marketing$/) do
   ENV['HOSTED_BY_LOOMIO'] = '1'
 end
 
+Given(/^There are default group covers available$/) do
+  FactoryGirl.create(:default_group_cover)
+end
+
 Given(/^I am a logged out user$/) do
   @user = FactoryGirl.create(:user, name: "Herby Hancock", email: "herb@home.com")
 end

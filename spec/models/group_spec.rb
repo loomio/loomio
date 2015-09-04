@@ -18,6 +18,27 @@ describe Group do
     end
   end
 
+  context 'default cover photo' do
+
+    it 'returns an uploaded cover url if one exists' do
+      cover_photo_stub = OpenStruct.new(url: 'test.jpg')
+      group = create :group, default_group_cover: create(:default_group_cover)
+      group.stub(:cover_photo).and_return(cover_photo_stub)
+      expect(cover_photo_stub.url).to match group.cover_photo.url
+    end
+
+    it 'returns the default cover photo for the group if it is a parent group' do
+      group = create :group, default_group_cover: create(:default_group_cover)
+      expect(group.default_group_cover.cover_photo.url).to match group.cover_photo.url
+    end
+
+    it 'returns the parents default cover photo if it is a subgroup' do
+      parent = create :group, default_group_cover: create(:default_group_cover)
+      group = create :group, parent: parent
+      expect(parent.default_group_cover.cover_photo.url).to match group.cover_photo.url
+    end
+  end
+
   context "children counting" do
 
     describe "#motions_count" do
@@ -65,7 +86,7 @@ describe Group do
       end
 
       it "returns a count of discussions" do
-        expect { 
+        expect {
           @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
         }.to change { @group.reload.discussions_count }.by(1)
       end
