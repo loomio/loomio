@@ -2,7 +2,7 @@ require 'rails_helper'
 describe UserService do
   describe 'delete_spam' do
     let(:spam_user) { FactoryGirl.create :user }
-    let(:spam_group) { FactoryGirl.build :group }
+    let(:spam_group) { FactoryGirl.create :group }
     let(:innocent_group) { FactoryGirl.create :group }
     let(:discussion_in_spam_group) { FactoryGirl.build :discussion, group: spam_group }
     let(:spam_discussion_in_innocent_group) { FactoryGirl.build :discussion, group: innocent_group }
@@ -44,7 +44,7 @@ describe UserService do
     it 'destroys spammy discussions in innocent groups' do
       expect(Discussion.exists?(spam_discussion_in_innocent_group.id)).to be false
     end
-    
+
     it 'destroys spammy comments in innocent groups' do
       expect(Comment.exists?(spam_comment.id)).to be false
     end

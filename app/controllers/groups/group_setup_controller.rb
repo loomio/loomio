@@ -10,6 +10,7 @@ class Groups::GroupSetupController < GroupBaseController
   def finish
     if @group.update_attributes(permitted_params.group)
       @group.mark_as_setup!
+      @group.update default_group_cover: DefaultGroupCover.sample
       redirect_to @group
     else
       render 'setup'

@@ -5,6 +5,7 @@ Feature: Start new group
 
 Background:
   Given I want to show the loomio.org marketing
+  And There are default group covers available
 
 Scenario: Guest submits invalid start group form
   Given I click 'Try Loomio' from the front page
