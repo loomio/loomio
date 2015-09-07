@@ -118,12 +118,10 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
         '/img/default-logo-medium.png'
 
     coverUrl: ->
-      if @coverUrlDesktop
-        @coverUrlDesktop
-      else if @isSubgroup()
+      if @isSubgroup() && !@hasCustomCover
         @parent().coverUrl()
       else
-        '/img/default-cover-photo.png'
+        @coverUrlDesktop
 
     archive: =>
       @remote.patchMember(@key, 'archive').then =>

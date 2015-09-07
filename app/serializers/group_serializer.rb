@@ -40,6 +40,10 @@ class GroupSerializer < ActiveModel::Serializer
     object.cover_photo.url(:desktop)
   end
 
+  def has_custom_cover
+    object.cover_photo.present?
+  end
+
   def members_can_raise_proposals
     object.members_can_raise_motions
   end
