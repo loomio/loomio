@@ -46,6 +46,8 @@ sr:
         subject: Neko Vas je pozvao da se pridružite Lumio grupi
     registrations:
       sign_up: Napravi nalog
+    sessions:
+      signed_out: Odjavili ste se uspešno
   error:
     access_denied: Nemate dozvolu da ovo uradite.
     cant_join_subgroup: Ne možete se pridružiti podgrupi ako niste član glavne grupe.
@@ -71,8 +73,10 @@ sr:
     group_request_invalid_token: "Izvinite! Ovo je nevažeći objekt"
     group_private_or_not_found: "Grupa nije pronađena.\n\nOva grupa je možda privatna. Ako Vam je neko dao ovaj link, zamolite da Vas pozove u grupu."
     group_already_setup: Grupa koju pokušavate da napravite već postoji.
+    current_password_did_not_match: "Izvinite, nismo u mogućnosti da potvrdimo Vašu trenutnu lozinku "
     passwords_did_not_match: Lozinka se ne poklapa sa potvrdom
     proposal_already_exists: Ovde je već jedan otvoreni predlog u diskusiji.
+    username_must_be_alphanumeric: Korisničko ime mora sadržati samo mala slova i brojeve.
     user_with_email_address_already_in_group: Korisnik sa ovom adresom ePošte već pripada ovoj grupi.
     you_have_already_requested_membership: Već ste zatražili članstvo u ovoj grupi.
     you_are_already_a_member_of_this_group: Već ste član ove grupe.
@@ -131,6 +135,7 @@ sr:
     added_to_group: "Dodati ste u %{which_group}."
     close_date_changed: Datum zatvaranja je uspešno izmenjen.
     discussion_created: Diskusija je uspešno kreirana.
+    discussion_updated: Diskusija je uspešno izmenjena.
     discussion_deleted: Diskusija je uspešno obrisana.
     discussion_moved: "Diskusija je uspešno premeštena u %{group_name}"
     emails_sending: ePoruke se šalju.
@@ -224,6 +229,7 @@ sr:
     new_vote: "%{position} na predlogu"
     new_comment: komentarisao/la diskusiju
     comment_liked: se sviđa Vaš komentar u diskusiji
+    comment_replied_to: odgovorio/la na Vaš komentar u
     user_mentioned: te je pomenuo/la u komentaru u
     membership_requested: zatražio/la članstvo u
     membership_request_approved: je odobrio/la tvoj zahtev da se pridružiš
@@ -287,14 +293,21 @@ sr:
       emails: Prestaćemo da Vam šaljemo ePoruke u vezi sa Lumijem.
   start_group_form:
     header: Započni novu grupu
+    form_error: Neka informacija nedostaje ili je netačna.
     name: Tvoje ime
     name_error: Ime je neophodno
     email: Tvoja ePošta
     email_error: Neispravna adresa ePošte
     group_name: Naziv grupe
     group_name_error: Naziv grupe je neophodan
+    pricing_html: "Za 30 dana, kada vidite kako Loomio pomaže grupnom donošenju odluka, pitaćemo Vas da odaberete <a href='%{link}' target='_blank'>plan plaćanja</a> koji je primeren za Vas."
+    terms_html: "Pokretanjem grupe, slažete se sa Loomio <a href='%{link}' target='_blank'>pravilima korišćenja</a>."
     success:
       header: "Još malo pa gotovo! Proverite ePoštu."
+      email_delivered: "Poslata Vam je jedna ePoruka na %{email}. Molim pratite vezu u njoj da postavite svoju novu grupu."
+      email_not_arrived: ePoruka nije stigla?
+      please_hold: Molim sačekajte do 5 minuta da ePoruka stigne i uverite se da ste proverili i svoj spam direktorijum.
+    start_making_decisions: "Da počnete donositi odluke zajedno na Lumiju, kreirajte grupu besplatno:"
   group_form:
     name: Naziv grupe
     description: Opis
@@ -409,6 +422,7 @@ sr:
   approved_by_person: "Odobreno od %{person}"
   ignored_by_perosn: "Ignorisano od %{person}"
   join_group_btn: Pridruži se grupi
+  membership_by_invitation_only: Članstvo u ovoj grupi je isključivo uz pozivnicu
   you_have_joined_group: "Priključili ste se %{group_name}"
   confirm_approve_membership_request: "Da li ste sigurni da želite da dodate %{which_user} u grupu?"
   cancel_membership_request: Poništi zahtev
@@ -545,6 +559,7 @@ sr:
       log_in_html: "Ako ste član, <a href='%{href}'>prijavite se</a> da vidite bilo koju od privatnih diskusija."
   discussion_context:
     started_html: "Započeto pre %{when} od strane <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Kreirano %{when} od strane %{who}"
     last_edited_html: "Poslednji put promenjeno pre %{when} od strane <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: Vidi istoriju revizija
     see_history: Vidi istoriju
@@ -670,8 +685,22 @@ sr:
     vote: Možete promeniti svoj stav bilo kada
   pricing_page:
     header: Cenovnik
-    loomio_for_organisations: Loomio za organizacije
-    loomio_for_communities: Loomio za zajednice
+    gift: Poklon
+    standard: Standardno
+    plus: Plus
+    free_trial_html: "Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije neophodna."
+    get_started_for_free: Počni besplatno
+    gift_body_html: "<p>Za grupe koje nemaju budžet da plate pretplatu.</p>\n<p>Podržano donacijom, bez obaveze plaćanja.</p>\n"
+    gift_donation_ask: Pitaćemo članove Vaše grupe za donaciju.
+    unlimited_members: neograničeno članova
+    unlimited_decisions: neograničene odluke
+    email_support: podrška ePorukom
+    standard_price_html: "<strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje\n"
+    plus_body: "Sve u Standardno, plus:"
+    premium_support: premijum podrška
+    custom_url: poseban URL
+    usage_statistics: statistika korišćenja
+    plus_price_html: "<strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje\n"
   contribution:
     any_amount: ili proizvoljni jednokratni prilog od
     currency_desc: Iznosi su u SAD dolarima
@@ -718,6 +747,8 @@ sr:
   create_an_account_html: Napravite Lumio Beta nalog
   log_in: Prijavi se
   password_reset:
+    email_guidelines_html: "<p>Unesite adresu ePošte za svoj Loomio nalog u polje ispod i poslaćemo Vam vezu za resetovanje lozinke.</p>\n<p>Ako se normalno prijavljujete preko Facebook, Google, Twitter ili Persona, unesite adresu ePošte koja je povezana sa tim nalogom.</p>\n"
+    reset_email_timeframe: "Molim sačekajte do 5 minuta da ePoruka stigne. Ako se ne pojavi, uverite se da ste proverili i svoj spam direktorijum."
     length_restriction: Lozinke moraju biti najmanje 8 znakova duge.
     forbidden_passwords: "Česte lozinke kao što je \"lozinka\" su zabranjene kako bi Vaš nalog bio siguran."
   join_group:
@@ -766,6 +797,8 @@ sr:
     description: "Lumio Pomoćni Bot je zaista oduševljen odlukom vaše grupe da investira u putovanje na mesec. Očigledno je svemirski sir veoma ukusan. Ali, Vaši problemi sa emisijom ugljen-dioksida su zabrinjavajući.\nDa li je to dobra ideja? Lumio Pomoćni Bot želi da zna šta mislite!\nUkoliko ste sigurni u svoj stav, pritisnite jednu od ikonica ispod (ako vam je neophodno objašnjenje značenja ikona, jednostavno prevucite miša preko željene opcije i sačekajte malo da vidite opis koji će se pojaviti).\nBiće vam zatraženo da napišete kratko obrazloženje Vaše odluke. Ovo olakšava da se stekne uvid u to šta svako misli i zašto. Možete se slobodno predomisliti i izmeniti svoju odluku u vremenskom okviru koji je određen trajanjem predloga.\n"
   contact_page:
     contact_us: Kontaktirajte nas
+    faq_prompt_html: "Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima."
+    contact_information: "Ako ne pronađete ono što tražite, možete videti kontakt informacije na dnu stranice."
     contact_form: Kontakt formular
     labels:
       name: Tvoje ime
@@ -774,6 +807,7 @@ sr:
       submit: Pošalji poruku
     messages:
       email_html: "Popunite ovaj obrazac, ili pošaljite ePoruku na <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Možete nam se pridružiti na<br/><a href='%{facebook}' target='_blank'>facebook-u</a>, <a href='%{google}' target='_blank'>google+-u</a>, i <a href='%{twitter}' target='_blank'>twitter-u</a>!\n"
   discussion_form:
     new:
       header: Započni diskusiju
@@ -965,6 +999,7 @@ sr:
   about_loomio: O Lumiju
   ago: "pre %{quantity_of_time} "
   approve: Odobri
+  attachments: "Prilozi:"
   author: Autor
   back: Nazad
   cancel: Otkaži
@@ -1030,8 +1065,19 @@ sr:
   yahoo: Yahoo
   google: Google
   persona: Osoba
+  log_in_with_third_party: "Ili se prijavite pomoću naloga sa:"
+  log_in_with_google: Prijavi se sa Google
+  log_in_with_facebook: Prijavi se sa Facebook
+  log_in_with_persona: Prijavi se sa Persona
+  log_in_with_twitter: Prijavi se sa Twitter
+  sign_up_with_third_party: "Ili se registrujte pomoću naloga sa:"
+  sign_up_with_google: Registracija sa Google
+  sign_up_with_facebook: Registracija sa Facebook
+  sign_up_with_persona: Registracija sa Persona
+  sign_up_with_twitter: Registracija sa Twitter
   common:
     profile: Profil
+    welcome_back: "Dobrodošli nazad!"
     email_settings: Podešavanja ePoruka
     markdown_help_tooltip: Naučite osnove formatiranja teksta pomoću Markdown-a
     settings: Podešavanja
@@ -1043,6 +1089,7 @@ sr:
     not_following: Bez praćenja
     back_to_discussion: Nazad na diskusiju
     edited: Izmenjeno
+    get_started: Počni
     groups: Grupe
     select_error: Molim odaberite jednu opciju
     today: Danas
@@ -1125,6 +1172,7 @@ sr:
     online_community: Umrežena zajednica
     religious_group: Religija/duhovnost
     event: Događaj
+    open_source_software: Besplatan softver otvorenog koda
     political_initiative: Politička inicijativa
     social_enterprise: Socijalna preduzuća
     social_justice: Socijalna pravda
@@ -1137,3 +1185,10 @@ sr:
     media: Mediji
     health: Zdravstvo
   start_your_group: Započnite svoju grupu
+  webhooks:
+    slack:
+      motion_closing_soon: "*%{name}* je predložio/la zatvaranje predloga kroz 24 časa"
+      motion_outcome_created: "*%{author}* je objavio/la jedan ishod u *%{name}*"
+      motion_outcome_updated: "*%{author}* izmenio/la ishod za *%{name}*"
+      new_motion: "*%{author}* je predložio/la u *%{name}*"
+      view_it_on_loomio: Vidi na Lumiju

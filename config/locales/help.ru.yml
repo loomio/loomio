@@ -57,6 +57,7 @@ ru:
       volume:
         title: Громкость
         body:
+          loud_title: Громко
           normal_title: Нориальный
           quiet_title: Ограниченный
           mute_title: Заглушен

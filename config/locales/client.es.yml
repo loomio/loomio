@@ -116,7 +116,6 @@ es:
       discussions: Hilos
       proposals: Propuestas
       comments: "Comentarios "
-      no_results: No hemos encontrado nada
   start_menu:
     start_group: Crear un grupo nuevo
     start_subgroup: Crear subgrupo nuevo
