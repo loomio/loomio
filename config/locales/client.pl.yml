@@ -115,7 +115,6 @@ pl:
       discussions: Wątki
       proposals: Rekomendacje
       comments: Komentarze
-      no_results: Nie znaleziono
   start_menu:
     start_group: Uruchomienie Grupy
     start_subgroup: Uruchomienie Podgrupy

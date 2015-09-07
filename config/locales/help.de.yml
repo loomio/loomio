@@ -210,10 +210,19 @@ de:
           body: "Ein weiterer, einfacher Weg, um Menschen zur Beteiligung an Diskussionen zu ermutigen, ist die Verwendung des @erwähnen-Features, um einzelne Personen anzusprechen; dadurch wird diesen Personen eine eMail geschickt, welche beschreibt, dass sie in einem Beitrag erwähnt wurden."
     inviting_members:
       title: Neue Mitglieder einladen
+      body:
+        intro_html: "Abhänging von Deinen <a href=\"#group-settings\">Gruppeneinstellungen</a> können neue Mitglieder von jedem Gruppenmitglied oder eben nur von den Gruppenkoordinatoren eingeladen werden.\nDie <strong>Einladungen</strong>-Seite kann über den <strong>\"Leute einladen\"</strong>-Button auf Deiner Gruppenseite erreicht werden.\n"
+        invitation_instructions_html: "Um neue Leute in Deine Gruppe einzuladen gib deren eMail-Adressen durch Kommata getrennt ein.\nDu kannst Loomio's Nachrichtenentwurf verwenden oder eine eigene Nachricht schreiben.\n"
+        customising_invitations_html: "Die Einladungsnachricht persönlich zu formulieren, kann helfen neue Mitglieder von Anfang an zur Mitarbeit zu motivieren.\nDie erste Frage, die jedes neue Mitglied haben wird, ist <strong><i>\"für was ist diese Gruppe?\"</i></strong>.\nDenke über den einfachsten Weg nach, mit dem Du die Gruppe beschreiben kannst: <strong><i>Was wollt ihr gemeinsam erreichen?\nWelche Art von Entscheidungen sollen getroffen werden? Wer sollte beteiligt sein?</i></strong> Menschen wollen wissen, warum sie eingeladen wurden, was von ihnen erwartet wird und warum es Sinn macht ein neues Werkzeug kennen zu lernen.\n"
+        invitation_link: "Wenn Du die Einladungen verschickst, wird an jede eingegebene eMail-Adresse eine eMail mit Deiner Nachricht und einem individuellen Einladungslink versendet:"
       importing_contacts:
         title: Kontakte importieren
+        body:
+          intro_html: "Wenn Du Deine Google-Kontakte in Loomio importierst, wird es für Dich viel leichter Leute in Deine Gruppen einzuladen.\nSobald Deine Kontakte importiert sind musst Du keine eMail-Adressen eingeben, es genügt einfach Namen einzutragen und es werden Vorschläge aus Deinen Kontakten angezeigt.\nDu kannst Deine Google-Kontakte auf der <strong>\"Leute einladen\"</strong>-Seite importieren.\n"
+          instructions_html: "Klicke auf den <strong>“Importiere Deine Kontakte von Google”</strong>-Link unterhalb des eMail-Adressen-Feldes.\nDu wirst gebeten Loomio Deine Erlaubnis zu geben Deine Kontakt-Liste sehen zu dürfen.\nLoomio wird diese Informationen nur nutzen, um Dir beim Leute in Deine Gruppen einladen zu helfen.\n"
       pending_invitations:
         title: Unbestätigte Einladungen
+        body_html: "Du kannst Dir am Ende Deiner <strong>\"Mitglieder\"</strong>-Seite unter dem Punkt <strong>\"Ausstehende Einladungen\"</strong> eine Liste von Leuten anzeigen lassen, die in Deine Gruppe eingeladen wurden, die Einladung aber noch nicht angenommen haben.\nUm die <strong>\"Mitglieder\"</strong>-Seite zu erreichen und die ausstehenden Einladungen zu sehen, klicke die<strong>\"Alle Mitglieder...\"</strong>-Link im <strong>\"Mitglieder\"</strong>-Bereich am rechten Rand Deiner Gruppen-Seite.\n"
     discussion_threads:
       title: Diskussionsstränge
       starting_discussions:

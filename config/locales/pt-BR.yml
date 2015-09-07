@@ -51,8 +51,8 @@ pt-BR:
   error:
     access_denied: Você não tem permissão para fazer isso.
     cant_join_subgroup: Você não pode entrar em um subgrupo se não é membro do grupo principal.
-    cant_modify_position: Esta proposição foi encerrada.
-    cant_state_position: Esta proposição foi encerrada.
+    cant_modify_position: Esta proposta foi encerrada.
+    cant_state_position: Esta proposta foi encerrada.
     cant_view_member_profile: Você não pode ver o perfil da/do integrante por não fazer parte do mesmo grupo.
     contribution: Por favor faça login para dar uma contribuição.
     discussion_not_created: A discussão não pôde ser criada.
@@ -75,7 +75,7 @@ pt-BR:
     group_already_setup: O grupo que você está tentando criar já existe.
     current_password_did_not_match: "Desculpe-nos, não fomos capazes de confirmar sua senha atual"
     passwords_did_not_match: A senha não confere com a confirmação
-    proposal_already_exists: Já existe uma proposição aberta nesta discussão.
+    proposal_already_exists: Já existe uma proposta aberta nesta discussão.
     username_must_be_alphanumeric: O nome de usuário deve conter apenas letras minúsculas e dígitos.
     user_with_email_address_already_in_group: Um usuário com esse endereço de e-mail já pertence a este grupo.
     you_have_already_requested_membership: Você já solicitou adesão à este grupo
@@ -124,7 +124,7 @@ pt-BR:
     membership_request_already_ignored: Solicitação de inclusão de membro já havia sido ignorada.
     membership_request_already_canceled: Solicitação de inclusão de membro já havia sido cancelada.
     position_not_submitted: Sua posição não pôde ser enviada
-    proposal_not_created: Proposição não pôde ser criada
+    proposal_not_created: Proposta não pôde ser criada
     user_already_admin: "%{which_user} já é coordenador(a) deste grupo."
     user_already_member: "%{which_user} já é integrante deste grupo."
     user_not_admin: "Desculpe, %{which_user} precisa ser coordenador(a) deste grupo para acessar isto."
@@ -141,8 +141,8 @@ pt-BR:
     members_added: Membros adicionados ao grupo.
     membership_requested: "Você foi solicitou entrada no grupo %{which_group}. Você será noticado assim que sua solicitação for aprovada."
     motion_closed: "Proposta encerrada. Se vocẽ quiser, pode definir um resultado abaixo e mandar ao teu grupo."
-    motion_outcome_created: "Parabéns, você criou um resultado para a proposição e os membros de seu grupo foram notificados."
-    motion_outcome_updated: O resultado da proposição foi atualizado.
+    motion_outcome_created: "Parabéns, você criou um resultado para a proposta e os membros de seu grupo foram notificados."
+    motion_outcome_updated: O resultado da proposta foi atualizado.
     password_updated: Sua senha foi alterada com sucesso
     position_submitted: Posição enviada
     position_updated: Posição atualizada.
@@ -210,9 +210,9 @@ pt-BR:
     new_discussion: iniciou uma discussão
     new_motion: criou uma proposta
     motion_closed:
-      by_user: encerrou a proposição
-      by_expiry: Proposição encerrada
-    new_vote: "%{position} na proposição"
+      by_user: encerrou a proposta
+      by_expiry: Proposta encerrada
+    new_vote: "%{position} na proposta"
     new_comment: comentou na discussão
     comment_liked: curtiu seu comentário na discussão
     comment_replied_to: respondeu ao seu comentário em
@@ -220,10 +220,10 @@ pt-BR:
     membership_requested: requisitou inclusão de membro para
     membership_request_approved: aprovou seu pedido de entrada
     user_added_to_group: adicionou você ao grupo
-    motion_closing_soon: A proposição será encerrada em breve
-    motion_blocked: bloqueou a proposição
-    motion_outcome_created: publicou um resultado para a proposição
-    motion_outcome_updated: atualizou o resultado da proposição
+    motion_closing_soon: A proposta será encerrada em breve
+    motion_blocked: bloqueou a proposta
+    motion_outcome_created: publicou um resultado para a proposta
+    motion_outcome_updated: atualizou o resultado da proposta
     email_actions:
       following_thread: "Você agora está seguindo o tópico: %{thread_title}"
       not_following_thread: "Você não está seguindo mais o tópico: %{thread_title}"
@@ -248,7 +248,7 @@ pt-BR:
   generic_confirm: Você tem certeza?
   discussion_helper_text:
     header: Boas vindas à sua primeira discussão
-    message: "<p>O assunto fica no topo da página, com um contexto abaixo dele.</p><p>A discussão está na esquerda, e as decisões aparecem na direita. Se você acha que o grupo está pronto para tomar alguma decisão, você pode fazer uma proposição para o grupo considerar.</p>"
+    message: "<p>O assunto fica no topo da página, com um contexto abaixo dele.</p><p>A discussão está na esquerda, e as decisões aparecem na direita. Se você acha que o grupo está pronto para tomar alguma decisão, você pode fazer uma proposta para o grupo considerar.</p>"
   group_helper_text:
     header: "Seja bem-vinda(o) ao seu novo grupo!"
     message: "<p>Esta é a <strong>página do grupo</strong>. Na esquerda está uma lista de todas as discussões neste grupo.</p><p>Quando você quiser que o grupo discuta outro assunto, inicie uma nova discussão.</p>"
@@ -307,9 +307,9 @@ pt-BR:
       edit_discussions: Editar o contexto de qualquer discussão no grupo
       start_discussions: Iniciar discussões
       raise_motions: Levantar propostas
-      vote: Votar em propostas
+      vote: Votar propostas
       create_subgroups: Criar subgrupos
-    motions_can_be_edited: Editar suas propostas após a votação ter sido iniciada
+    motions_can_be_edited: Editar as propostas deles após a votação ser iniciada
     visible_to:
       label: Quem pode encontrar esse grupo?
       public_html: "Qualquer um <span>listar o grupo publicamente</span>"
@@ -502,16 +502,16 @@ pt-BR:
     user_blocked_on_proposal_with_statement_html: "<strong>%{name}</strong> bloqueou a proposta:"
   discussion_items:
     new_discussion: criou a discussão
-    new_motion: criou uma proposição
+    new_motion: criou uma proposta
     motion_closed:
-      by_user: encerrou a proposição
-      by_expiry: Proposição encerrada
-    motion_close_date_edited: alterou a data de encerramento da proposição
-    motion_outcome_created: publicou o resultado da proposição
-    motion_outcome_updated: atualizou o resultado da proposição
+      by_user: encerrou a proposta
+      by_expiry: Proposta encerrada
+    motion_close_date_edited: alterou a data de encerramento da proposta
+    motion_outcome_created: publicou o resultado da proposta
+    motion_outcome_updated: atualizou o resultado da proposta
     discussion_title_edited: alterou o título da discussão
     discussion_description_edited: alterou a descrição da discussão
-    motion_name_edited: editou o título proposta
+    motion_name_edited: editou o título da proposta
     motion_description_edited: editou a descrição da proposta
   discussion: Discussão
   current_decision: Decisão atual
@@ -519,7 +519,7 @@ pt-BR:
   see_previous_decisions: Ver decisões anteriores
   see_more: Saiba mais
   create_new_proposal: Criar uma proposta
-  empty_decision_list_html: "Pronta(o) para tomar uma decisão? <br> Qualquer pessoa pode iniciar uma proposição."
+  empty_decision_list_html: "Pronta(o) para tomar uma decisão? <br> Qualquer pessoa pode iniciar uma proposta."
   empty_decision_index: Este grupo não tomou nenhuma decisão ainda.
   empty_discussion_list: Não há atividades nesta discussão ainda.
   go_to_add_comment_html: "Para adicionar um comentário, <a href='%{href}'>vá para o final da discussão</a>."
@@ -576,13 +576,13 @@ pt-BR:
   delete_discussion: Apagar discussão
   confirm_delete_discussion: Tem certeza que quer apagar permanentemente esta discussão?
   print_tooltip_info: Imprimir
-  new_proposal: Nova Proposição
+  new_proposal: Nova Proposta
   edit_proposal: Editar Proposta
-  close_proposal: Encerrar proposição
-  confirm_close_proposal: Tem certeza de que quer encerrar esta proposição?
+  close_proposal: Encerrar proposta
+  confirm_close_proposal: Tem certeza de que quer encerrar essa proposta?
   change_proposal_close_date: Mudar data de encerramento
-  change_proposal_close_date_header: "Mudar data de encerramento para a proposição '%{which}'"
-  proposal: Proposição
+  change_proposal_close_date_header: "Mudar data de encerramento da proposta '%{which}'"
+  proposal: Proposta
   proposals: Propostas
   closed_at: Fechou em
   proposal_close_date_error: "Por favor, defina uma data de encerramento futura"
@@ -603,7 +603,7 @@ pt-BR:
   block_position: Eu veto
   block_details: Eu tenho fortes objeções a esta proposta e NÃO concordo que vá adiante.
   not_voted: "[Mostrar usuários que ainda não decidiram]"
-  outcome_placeholder: Qual foi o resultado desta proposição?
+  outcome_placeholder: Qual foi o resultado desta proposta?
   outcome_submit: Publicar resultado
   position_verbs:
     "yes": de acordo
@@ -625,9 +625,9 @@ pt-BR:
     coordinating: Coordenando o seu grupo do Loomio
     coordinating_details: "Como coordenador(a), você é responsável por configurar o seu grupo do Loomio e \nconvidar as pessoas para entrar. Além de aprender a usar uma nova plataforma, o seu grupo\naprenderá novos processos para colaborar mais efetivamente e tomar boas decisões\nem conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar certo:\n"
     different_ways: Diferentes formas de usar o Loomio
-    engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposição na mesa. Uma boa proposição contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação</p>\n<p>Outra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isto vai enviá-las um e-mail para avisá-las que elas foram mencionadas em um comentário.</p>\n"
-    example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposição.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para especificar a solução. Quando as pessoas \nchegam a participar do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
-    example2_html: "<h3>Você já tem uma proposição em mente e gostaria de obter validação do grupo para seguir adiante.</h3>\n<p>Estratégia: Iniciar uma discussão sobra uma decisão específica e abrir uma proposição imediatamente.</p>\n<p>Se você já tem claro em sua mente um resultado, mas que assegurar que não restam questões críticas,\nvocê pode usar a proposição para rapidamente ter um feedback sobre uma decisão.</p>\n<p>Você pode fazer coisas como finalizar um documento, aprovar uma aplicação ou validar um trabalho feito.</p>\n"
+    engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposta na mesa. Uma boa proposta contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação</p>\n<p>Outra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isto vai enviá-las um e-mail para avisá-las que elas foram mencionadas em um comentário.</p>\n"
+    example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposta.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para especificar a solução. Quando as pessoas \nchegam a participar do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
+    example2_html: "<h3>Você já tem uma proposta em mente e gostaria de obter validação do grupo para seguir adiante.</h3>\n<p>Estratégia: Iniciar uma discussão sobre uma decisão específica e abrir uma proposta imediatamente.</p>\n<p>Se você já tem claro em sua mente um resultado, mas quer assegurar que não restam questões críticas,\nvocê pode usar a proposta para ter um feedback sobre uma decisão.</p>\n<p>Você pode fazer coisas como finalizar um documento, aprovar uma aplicação ou validar um trabalho feito.</p>\n"
     get_in_touch: Entre em contato
     get_in_touch_description_html: "Se tiver qualquer pergunta ou sugestão, <a href='%{link}'>fale conosco</a>."
     getting_started: Primeiros passos
@@ -656,7 +656,7 @@ pt-BR:
     positions_block_description: "<span>Bloqueio</span> significa que você tem sérias objeções à proposta e ficará muito insatisfeita/o se ela for aprovada."
     start_discussion: Iniciar uma discussão envolvente
     start_discussion_html: "<p>Quando você iniciar uma discussão, certifique-se de que o título comunica o tópico\nde maneira sucinta. Use o Painel de Contexto para fornecer toda informação necessária\npara que o grupo tenha uma discussão produtiva e embasada.</p>\n<p>Durante a discussão, o Painel de Contexto pode ser atualizado de acordo com a\nchegada de novas informações. Além de esclarecer o tópico, você pode usar esse espaço\npara compartilhar recursos, resumir a discussão enquanto ela avança ou explicar os\nprotocolos de tomada de decisão que seu grupo está usando.</p>\n"
-    start_proposal: Escrevendo uma proposição clara
+    start_proposal: Escrevendo uma proposta clara
     start_proposal_html: "<p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente com o que exatamente \nirão concordar ou discordar.</p>\n<p>Não será o fim do mundo se uma proposta não obtiver concordândia clara imediatamente.\nSe o grupo não amar a primeira proposta, qualquer membro pode iniciar uma nova proposta para\nlidar com os problemas levantados e fazer com que o processo siga adiante.</p>\n<p>Através desse processo dinâmico, a sabedoria coletiva do grupo pode gerar ideias melhores\ndo que as que um membro sozinho poderia ter.</p>\n<p>O prazo em uma proposição pode ser estendido a qualquer momento, caso pareça que a decisão\nprecise disso. Todos membros receberão uma notificação por e-mail 24 horas antes de uma proposição fechar.</p>\n\n"
     video_id: "52025402"
     video_tutorial: Vídeo-tutorial
@@ -667,7 +667,7 @@ pt-BR:
     context: Dicas para usar o painel de contexto
     discussion: Dicas para iniciar uma discussão envolvente
     invitation: Dicas para escrever um ótimo convite
-    proposal: Dicas para escrever uma proposição clara
+    proposal: Dicas para escrever uma proposta clara
     vote: Você pode mudar sua posição a qualquer momento
   pricing_page:
     header: Preço
@@ -686,7 +686,7 @@ pt-BR:
     premium_support: suporte premium
     custom_url: URL personalizada
     usage_statistics: estatísticas de uso
-    plus_price_html: "strong>U$179</strong>/mês<br><span>ou</span> U$1790/ano\n"
+    plus_price_html: "<strong>U$179</strong>/mês<br><span>ou</span> U$1790/ano\n"
   contribution:
     any_amount: ou uma contribuição única de
     currency_desc: Os valores estão em Dólares Americanos
@@ -769,7 +769,7 @@ pt-BR:
     no_pending_invitations: Não há novos convites pendentes
     import_contacts_html: "Não consegue lembrar de um endereço de e-mail? Importe seus contatos do %{google_link}"
   search:
-    description: "Abaixo estão listadas as dicussões e proposições que possuem '%{query}' no título ou descrição."
+    description: "Abaixo estão listadas as dicussões e propostas que possuem '%{query}' no título ou descrição."
     header: "Resultados da busca por '%{query}'"
     placeholder: Pesquisar
     empty_search: Nada na busca
@@ -780,7 +780,7 @@ pt-BR:
     description: "Bem vinda/o ao Loomio, uma nova ferramenta para tomadas de decisão em grupo.\nAo se envolver com um assunto, discutir as várias perspectivas e informações, e lidar com as questões que surjam, o seu grupo pode trabalhar em conjunto para encontrar o melhor caminho para avançar.\nVocê pode usar esta discussão de exemplo para brincar com as funcionalidades da ferramenta.\nPara começar, o Robô de Ajuda do Loomio acredita que é uma ideia genial para o seu grupo que passem as férias juntos. O gráfico na direita mostra como o seu grupo se sente com relação à proposta. Você pode dar sua opinião clicando em qualquer um dos botões de decisão abaixo do gráfico.\n"
   example_motion:
     name: "Nós devíamos passar as férias na lua!"
-    description: "O Robô de Ajuda do Loomio está realmente afim que o seu grupo invista em uma viagem para a lua. Aparentemente o <i>queijo espacial</i> é delicioso. Mas as implicações para a sua pegada de carbono são preocupantes.\nSerá que é uma boa ideia? O Robô de Ajuda do Loomio quer saber o que você pensa sobre isso!\nSe você já tem clareza sobre sua posição, clique em um dos ícones abaixo (passe o mouse por cima dos botões de decisão para ver a descrição sobre cada um deles).\nAo clicar num dos botões, aparecerá uma oportunidade para você justificar brevemente a sua decisão. Isso faz com que seja fácil ver um resumo do que cada um(a) pensa e o porque. Você pode mudar de ideia e editar a sua decisão livremente até que a proposição se encerre.\n"
+    description: "O Robô de Ajuda do Loomio está realmente afim que o seu grupo invista em uma viagem para a lua. Aparentemente o <i>queijo espacial</i> é delicioso. Mas as implicações para a sua pegada de carbono são preocupantes.\nSerá que é uma boa ideia? O Robô de Ajuda do Loomio quer saber o que você pensa sobre isso!\nSe você já tem clareza sobre sua posição, clique em um dos ícones abaixo (passe o mouse por cima dos botões de decisão para ver a descrição sobre cada um deles).\nAo clicar num dos botões, aparecerá uma oportunidade para você justificar brevemente a sua decisão. Isso faz com que seja fácil ver um resumo do que cada um pensa e o porque. Você pode mudar de ideia e editar a sua decisão livremente até que a proposta se encerre.\n"
   contact_page:
     contact_us: Contacte-nos
     faq_prompt_html: "Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta nas nossas perguntas frequentes."
@@ -881,7 +881,7 @@ pt-BR:
         create: Iniciar discussão
         update: Atualizar discussão
       motion:
-        create: Iniciar proposição
+        create: Iniciar proposta
       user:
         create: Criar conta
         update: Atualizar configurações
@@ -905,13 +905,13 @@ pt-BR:
     view_comment: Clique aqui para ver o comentário no Loomio
     view_discussion: Clique aqui para ver esta discussão
     view_group: Clique aqui para ver o grupo no Loomio
-    view_proposal: Ver esta proposição no Loomio
+    view_proposal: Ver esta proposta no Loomio
     create_discussion:
       intro: "%{who} iniciou uma discussão em %{which_group}:"
     create_proposal:
-      intro: Uma nova proposição foi criada em um dos grupos do Loomio dos quais você faz parte.
+      intro: Uma nova proposta foi criada em um dos grupos do Loomio dos quais você faz parte.
       closes_in: Encerra em
-      subject: "Nova proposição: %{which}"
+      subject: "Nova proposta: %{which}"
     daily_activity:
       heading: Suas atividades no Loomio
       intro: Exibindo o que tem acontecido nos seus grupos no Loomio nas últimas 24 horas
@@ -945,23 +945,23 @@ pt-BR:
       subject: "%{who} mencionou você no grupo %{which} no Loomio"
     new_motion_created:
       subject: "Proposta: %{proposal_title}"
-      context: "%{author} criou uma proposição no grupo %{group_full_name}:"
+      context: "%{author} criou uma proposta no grupo %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: A proposta foi encerrada.
       specify_outcome_and_notify_group: "Crie um resultado e envie para seu grupo!"
       specify_outcome_and_notify_group_html: "Crie um resultado e envie para seu grupo!"
-      subject: "Proposição encerrada - %{which}"
+      subject: "Proposta encerrada - %{which}"
     proposal_outcome:
-      subject: Resultado da proposição
+      subject: Resultado da proposta
     proposal_blocked:
-      intro: Uma proposição que você está encaminhando foi bloqueada.
+      intro: Uma proposta que você está facilitando foi bloqueada.
       subject: "Proposta bloqueada - %{which}"
     proposal_closing_soon:
       closes_on: Encerra em
       closes_at: Encerra em
       closes_in: Encerra em
       subject: "Encerrando em 24 horas: %{proposal_title}"
-      headline: "A proposição de %{author} no grupo %{group} encerrará em breve:"
+      headline: "A proposta de %{author} no grupo %{group} encerrará em breve:"
       summary: Resumo
     thread_mailer:
       footer_text: "Responda este e-mail diretamente ou veja em %{hostname}:"
@@ -1173,6 +1173,7 @@ pt-BR:
   start_your_group: Inicie o seu grupo
   webhooks:
     slack:
+      motion_closed: "*%{name}* encerrou"
       motion_closing_soon: "*%{name}* tem uma proposta encerrando em 24 horas"
       motion_outcome_created: "%{author}* publicou um resultado em *%{name}*"
       motion_outcome_updated: "*%{author}* atualizou o resultado para *%{name}*"

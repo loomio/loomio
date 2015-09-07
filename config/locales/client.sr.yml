@@ -1,5 +1,6 @@
 sr:
   common:
+    confirm_discard_changes: Otkaži učinjene promene?
     time:
       am: am
       pm: pm
@@ -55,6 +56,7 @@ sr:
     publish_outcome: Objavi ishod
     messages:
       created: Ishod je objavljen
+      updated: Ishod izmenjen
   previous_proposals_card:
     heading: Prethodni Predlozi
   proposal_collapsed:
@@ -118,7 +120,6 @@ sr:
       discussions: Nizovi
       proposals: Predlozi
       comments: Komentari
-      no_results: Nisu pronađeni rezultati
   start_menu:
     start_group: Kreiraj Grupu
     start_subgroup: Kreiraj Podgrupu
@@ -126,6 +127,17 @@ sr:
     invite_people: Pozovi Ljude
   notifications:
     header: Obaveštenja
+    new_discussion: "<strong>{{name}}</strong> je počeo/la diskusiju <strong>{{discussion}}</strong>"
+    new_motion: "<strong>{{name}}</strong> je kreirao/la predlog <strong>{{proposal}}</strong>"
+    motion_closed_by_user: "<strong>{{name}}</strong> je zatvorio/la predlog <strong>{{proposal}}</strong>"
+    motion_closed_by_expiry: "Predlog je istekao <strong>{{proposal}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} o predlogu <strong>{{proposal}}</strong>"
+    new_comment: "<strong>{{name}}</strong> je komentarisao/la na <strong>{{discussion}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong> je odgovorio/la na tvoj komentar u <strong>{{discussion}}</strong>"
+    comment_liked: "<strong>{{name}}</strong> se sviđa tvoj komentar u <strong>{{discussion}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> te je pomenuo/la u <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> želi biti član u <strong>{{group}}</strong>"
+    membership_request_approved: "<strong>{{name}}</strong> je odobrio/la tvoj zahtev da se priključiš u <strong>{{group}}</strong>"
   position_buttons_panel:
     heading: Recite šta imate
   vote_form:
@@ -221,6 +233,7 @@ sr:
   start_group_form:
     heading: Kreiraj grupu
     heading_when_subgroup: Kreiraj podgrupu
+    group_helptext: "Da počnete donositi odluke zajedno na Lumiju, kreirajte grupu besplatno:"
     name_label: Naziv Grupe
     subgroup_name_label: Naziv podgrupe
     submit: Kreiraj Grupu

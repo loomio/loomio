@@ -1,5 +1,6 @@
 de:
   common:
+    confirm_discard_changes: Deine Änderungen ververfen?
     time:
       am: am
       pm: pm
@@ -35,6 +36,7 @@ de:
       new_thread: Neuer Strang
       add_subgroup: Untergruppe anlegen
       loading: Laden
+      uploading: Hochladen
   error_page:
     forbidden: "Du bist nicht berechtigt, das zu tun."
     page_not_found: Das konnten wir nicht finden. Es wurden entweder gelöscht oder verschoben.
@@ -55,6 +57,7 @@ de:
     publish_outcome: Ergebnis bekanntgeben
     messages:
       created: Ergebnis ist veröffentlicht
+      updated: Beschluss aktualisiert
   previous_proposals_card:
     heading: Vorherige Vorschläge
   proposal_collapsed:
@@ -83,6 +86,7 @@ de:
       remove_attachment: Anhang entfernen
     messages:
       created: Kommentar hinzugefügt
+      replied: "{{name}} wurde benachrichtigt"
       updated: Kommentar aktualisiert
       destroyed: Kommenar gelöscht
     edit_comment: Kommentar bearbeiten
@@ -112,13 +116,13 @@ de:
       help: Hilfe
       sign_out: Abmelden
     search:
+      no_results: Keine Diskussionen gefunden
       close: Suchabfrage schließen
       placeholder: Suche
       loading: Lade Ergebnisse...
       discussions: Themen
       proposals: Vorschläge
       comments: Kommentare
-      no_results: Keine Ergebnisse gefunden
   start_menu:
     start_group: Gruppe gründen
     start_subgroup: Untergruppe gründen
@@ -167,6 +171,7 @@ de:
     no_votes_yet: Niemand hat bisher für diesen Vorschalg abgestimmt.
     change_your_vote: Ändere Deine Stimmabgabe
   undecided_panel:
+    aria_label: Unentschlossene Mitglieder
     show_undecided: Zeige unentschlossen Mitglieder
     hide_undecided: Verstecke unentschlossen Mitglieder
   proposal_pie_chart:
@@ -234,7 +239,21 @@ de:
   proposal_position_block: Veto
   group_welcome_modal:
     heading: Willkommen in Deiner neuen Gruppe
+    first_step: "Du bist der Gruppenkoordinator, das ist so was wie ein Gastgeber."
+    second_step: Schau Dich um - schau Dir die Beispieldiskussionen an und spiel mit den Einstellungen.
+    third_step: "Wenn Du fertig bist, kannst Du Menschen einladen."
     ok_got_it: "Okay, ich hab´s!"
+  group_cover_modal:
+    heading: Neues Cover-Foto
+    upload_link: Neues Cover-Foto hochladen
+    helptext: "Suchst Du Ideen? Schau mal bei <a href=\"https://unsplash.com/\">Unsplash</a>, eine Gallerie voll schöner, freier Bilder"
+    image_size_helptext: Ideale Bildgröße ist 1400 x 320 px
+    upload_success: Cover-Foto erfolgreich aktualisiert
+  group_logo_modal:
+    heading: Neues Gruppenlogo
+    upload_link: Neues Gruppenlogo hochladen
+    image_size_helptext: Ideale Bildgröße ist 100 x 100 px
+    upload_success: Logo erfolgreich aktualisiert
   start_group_form:
     heading: Gründen Sie eine Gruppe
     heading_when_subgroup: Gründe eine Untergruppe
@@ -296,6 +315,7 @@ de:
     options:
       label: Optionen
       edit_group: Gruppeneinstellungen bearbeiten
+      manage_members: Mitglieder verwalten
       leave_group: Gruppe verlassen
       deactivate_group: Gruppe deaktivieren
     deactivate_group:
@@ -514,12 +534,14 @@ de:
     threads_from:
       group: Diskussionen von
       proposals: Vorschläge
-      starred: Favorisiert
+      starred: Favorisierte Diskussionen
       today: Heute
       yesterday: Gestern
       thisweek: In dieser Woche
       thismonth: Diesen Monat
       older: Älter als einen Monat
+  star_toggle:
+    star: Diskussion favorisieren
   inbox_page:
     no_threads: "Yippie! Du hast alle Diskussionen in Deinem Posteingang gelesen."
     unread_threads: Ungelesene Diskussionen
@@ -565,11 +587,43 @@ de:
     question: "Bist Du sicher, dass Du diesen Kommentar löschen willst?"
     confirm: Kommentar löschen
   new_comment_item:
+    aria_label: "Kommentar von {{author}}"
     context_menu:
       aria_label: Kommentar-Optionen
       edit_comment: Kommentar bearbeiten
       delete_comment: Kommentar löschen
     in_reply_to: "<strong>{{author}}</strong> antwortet <strong>{{recipient}}</strong>"
+  new_vote_item:
+    agree: "<strong>{{actor}}</strong> stimmte zu"
+    abstain: "<strong>{{actor}}</strong> enthielt sich"
+    disagree: "<strong>{{actor}}</strong> lehnte ab"
+    block: "<strong>{{actor}}</strong> legte Veto ein"
+    agree_with_statement: "<strong>{{actor}}</strong> stimmte zu: <span>{{statement}}</span>"
+    abstain_with_statement: "<strong>{{actor}}</strong> enthielt sich: <span>{{statement}}</span>"
+    disagree_with_statement: "<strong>{{actor}}</strong> lehnte ab: <span>{{statement}}</span>"
+    block_with_statement: "<strong>{{actor}}</strong> lehnte Veto ein: <span>{{statement}}</span>"
+  new_proposal_item:
+    author_created_proposal: "<strong>{{actor}}</strong> schlägt vor: <span>{{title}}</span>"
+  proposal_closed_item:
+    proposal_closed: "Der Vorschlag ist geschlossen:"
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: "<strong>{{actor}}</strong> schloss den Vorschlag: <span>{{title}}</span>"
+  proposal_edited_item:
+    name: "<strong>{{actor}}</strong> aktualisierte den Vorschlagtitel: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> aktualisierte die Vorschlagsbeschreibung"
+    closing_at: "<strong>{{actor}}</strong> aktualisierte das Ende des Vorschlags auf <span>{{time}}</span>"
+    description_name: "<strong>{{actor}}</strong> aktualisierte Vorschlagtitel und -beschreibung"
+    closing_at_name: "<strong>{{actor}}</strong> aktualisierte Vorschlagtitel und -Endzeit"
+    closing_at_description: "<strong>{{actor}}</strong> aktualisierte Vorschlagsbeschreibung und -Endzeit"
+    closing_at_description_name: "<strong>{{actor}}</strong> aktualisierte Vorschlagtitel, -beschreibung und -Endzeit"
+  proposal_outcome_created_item:
+    proposal_outcome_created: "<strong>{{actor}}</strong> veröffentlichte ein Vorschlagsbeschluss:"
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: "<strong>{{actor}}</strong> aktualisierte den Vorschlagsbeschluss:"
+  discussion_edited_item:
+    title: "<strong>{{actor}}</strong> aktualisierte den Diskussionstitel: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> aktualisierte die Diskussionsbeschreibung"
+    description_title: "<strong>{{actor}}</strong> aktualisiert Diskussionstitel und -beschreibung"
   contact_message_form:
     contact_us: Kontaktiere uns
     name_label: Dein Name
@@ -638,7 +692,7 @@ de:
     give_feedback: Feedback geben
     enable:
       invite: "Das neue Loomio testen!"
-      title: Das neue Loomie testen
+      title: Das neue Loomio testen
       intro: "Wir haben Loomio erneuert und wir benötigen Deine Hilfe, damit wir sicher sein können, dass es grandios ist bevor wir es der Öffentlichkeit präsentieren."
       body_html: "<p></p>\n<h3>Was ist denn eigentlich der Unterschied?</h3>\n\n<p>\n  Das neue Interface ist wie das Alte, nur neuer:\n  <ul>\n    <li>Alles wird in Echtzeit aktualisiert.</li>\n    <li>Es ist für alle Endgeräte konzipiert: vom Smartphone bis zum Desktop-PC</li>\n    <li>Es ist zugänglich für Menschen mit Sehbehinderung und in einen <a href=\"https://www.loomio.org/translation\">Haufen Sprachen</a> übersetzt\n  </ul>\n</p>\n\n<p>Es benutzt die gleiche Datenbank wie das alte Interface, was heißt, dass alle Deine Gruppen und Diskussionen enthalten sind. Du kannst jederzeit zum alten Interface wechseln.</p>\n<p>Dinge werden sich schleichend ändern, in dem Zuge, wie wir Euer Feedback implementieren. Einige kaum genutzte Features wird es noch nicht geben.</p>\n<p>Es gibt einen Link \"Zum alten Loomio wechseln\" am unteren, linken Eck der neuen App. Klicke diesen Link und Du kannst zum alten, Dir bekannten Loomio wechseln. Dort gibt es auch ein Feedback-Formular in welches Du Rückmeldungen eingeben kannst, falls Du welche hast.</p>\n<p>Wir würden uns sehr über Dein Feedback freuen. Vielen Dank für Deine Zeit und Deine Unterstützung.</p>\n"
       button_text: Das neue Loomio einrichten

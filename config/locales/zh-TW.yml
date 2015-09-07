@@ -1159,6 +1159,7 @@ zh-TW:
   start_your_group: 啟動您的群組
   webhooks:
     slack:
+      motion_closed: "*%{name}* 已定案"
       motion_closing_soon: "*%{name}* 有一個即將在 24 小時內定案的提案"
       motion_outcome_created: "*%{author}* 在 *%{name}* 中公佈了結果"
       motion_outcome_updated: "*%{author}* 在 *%{name}* 中更新了結果"

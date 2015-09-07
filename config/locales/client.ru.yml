@@ -1,5 +1,6 @@
 ru:
   common:
+    confirm_discard_changes: Отменить изменения?
     time:
       am: дп
       pm: пп
@@ -13,6 +14,7 @@ ru:
       private: Приватная
       public: Публичная
       organisation: Организация
+    selected: Выбранные
     date_range:
       today: Сегодня
       yesterday: Вчера
@@ -24,30 +26,54 @@ ru:
     action:
       save: Сохранить
       save_changes: Сохранить изменения
+      reply: Ответить
       edit: Редактировать
       like: Нравится
       unlike: Не нравится
       cancel: Отмена
       show_more: Показать больше
       view_all: Показать все
+      new_thread: Новая тема
       add_subgroup: Добавить подгруппу
       loading: Загрузка
   error_page:
     forbidden: У вас недостаточно прав
+    page_not_found: Не найдено. Возможно было удалено или перемещено.
+    internal_server_error: "Извините, что-то не так. Попробуйте снова."
+  start_proposal_card:
+    title: Создать голосование
+    helptext: Готовы принять решение? Голосование поможет вам определиться с дальнейшими действиями.
   proposal_outcome_panel:
     heading: Итог
+    set_outcome_btn: Подвести итоги голосования
+    edit_outcome_link: Редактировать итоги голосования
   proposal_outcome_form:
+    set_outcome: "Подвести итоги голосования "
+    update_outcome: Обновить итоги голосования
+    outcome_label: Результат голосования
+    outcome_placeholder: Сообщить всем результат голосования
     publish_outcome: Опубликовать результат
+    messages:
+      created: Результат опубликован
+      updated: Результат обновлен
+  previous_proposals_card:
+    heading: Предыдущие голосования
+  proposal_collapsed:
+    expand: Расширить
   context_card:
     heading: Описание
   volume_levels:
+    loud: Заметный
     normal: Нормальный
     quiet: Ограниченный
     mute: Заглушен
   inbox:
     clear: Очистить
+    latest: Последний
     unread: Непрочитанные
+    closing_in: Закрывается
   session_form:
+    email_label: Email
     password_label: "Пароль:"
     remember_me: Запомнить меня
     sign_in: Логин
@@ -69,6 +95,7 @@ ru:
     groups: Группы
     user_options:
       contact_us: Наши контакты
+      new_thread: Новая тема
       new_group: Новая группа
       profile: Профиль
       email_settings: Настройки email
@@ -87,20 +114,30 @@ ru:
   vote_form:
     heading: Выразить свое мнение
     i_agree: Я согласен
+    i_agree_details: Всецело поддерживаю
     i_abstain: Я воздерживаюсь
     i_abstain_details: "Я был бы рад, если группа примет решение без меня."
     i_disagree: Я не соласен
+    i_disagree_details: Я думаю что есть более подходящее решение
     i_block: Я блокирую
+    i_block_details: Я категорически против данного предложения
+    submit_position: Высказать позицию
     change_position: Изменить позицию
     select_position: Выбрать позицию
+    statement_placeholder: Поделитесь своим мнением с группой
     messages:
       created: Голос добавлен
   proposal_positions_panel:
     heading: Позиция
+    no_votes_yet: Еще никто не проголосовал по этому предложению
     change_your_vote: Изменить ваш голос
   close_proposal_form:
     close_proposal: Закрыть предложение
+    close_proposal_submit: "Да, закрыть голосование"
+    messages:
+      success: Голосование закрыто
   proposal_form:
+    start_a_proposal: Создать голосование
     title_label: Название
     details_label: Детали
   discussion_form:
@@ -167,6 +204,8 @@ ru:
     threads_from:
       today: Сегодня
       yesterday: Вчера
+  discussion:
+    previous_proposals: Предыдущие голосования
   thread_group:
     aria_label: Название группы
   delete_comment_dialog:

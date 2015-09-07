@@ -1,9 +1,13 @@
 be-BY:
   common:
+    confirm_discard_changes: Скасаваць змены?
     time:
       am: am
       pm: pm
+    closing_in: "Закрываецца {{time}}"
+    closed_ago: "Закрыта {{time}}"
     volume: Гучнасць
+    notification_volume: Гучнасць апавяшчэнняў
     group: Група
     groups: Групы
     privacy:
@@ -41,6 +45,7 @@ be-BY:
     delete_comment: Выдаліць каментар
     confirm_delete_message: "Вы ўпэўнены, што хаціце выдаліць гэты каментар?"
   navbar:
+    recent: Нядаўнія
     unread: Непрачытаныя
     groups: Групы
     user_options:
@@ -145,6 +150,8 @@ be-BY:
   dashboard_page:
     aria_label: Галоўная
     mark_as_read: Адзначыць як прачытанае
+    filtering:
+      all: Нядаўнія абмеркаванні
     threads_from:
       today: Сёння
   discussion:

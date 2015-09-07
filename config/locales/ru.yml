@@ -441,6 +441,7 @@ ru:
       title: "Почти готово! Проверьте почту."
   volume:
     volume: Громкость
+    loud: Громко
     normal: Нориальный
     quiet: Ограниченный
     mute: Заглушен
@@ -510,7 +511,9 @@ ru:
   abstain_position: Я воздерживаюсь
   abstain_details: "Я был бы рад, если группа примет решение без меня."
   no_position: Я не соласен
+  no_details: Я думаю что есть более подходящее решение
   block_position: Я блокирую
+  block_details: Я категорически против данного предложения
   not_voted: "[Показать членов группы, которые ещё не определились]"
   outcome_placeholder: Каков результат предложения?
   outcome_submit: Опубликовать результат
@@ -597,6 +600,8 @@ ru:
   motion_form:
     new:
       header: Новое предложение
+  vote_form:
+    submit: Высказать позицию
   group_setup:
     set_up_your_group: Настройки вашей группы
   simple_form:
@@ -633,6 +638,8 @@ ru:
       subject: "Участие подтверждено. "
     invitation:
       hi: "Здравствуйте, %{name},"
+    proposal_outcome:
+      subject: Результат голосования
     thread_mailer:
       change_preferences: "Измените настройки уведомлений:"
       new_motion: "%{who} предложил:"

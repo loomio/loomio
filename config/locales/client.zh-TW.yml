@@ -36,6 +36,7 @@ zh-TW:
       new_thread: 新討論串
       add_subgroup: 新增子群組
       loading: 讀取中
+      uploading: 正在上傳
   error_page:
     forbidden: 您沒有足夠的權限。
     page_not_found: 我們找不到它。它可能已經被刪除或移動了。
@@ -85,6 +86,7 @@ zh-TW:
       remove_attachment: 移除附件
     messages:
       created: 意見已加入
+      replied: "{{name}} 回覆通知"
       updated: 意見已更新
       destroyed: 意見已刪除
     edit_comment: 編輯意見
@@ -114,13 +116,13 @@ zh-TW:
       help: 教學文件
       sign_out: 登出
     search:
+      no_results: 找不到討論串
       close: 關閉搜尋面板
       placeholder: 搜尋
       loading: 正在載入結果...
       discussions: 討論
       proposals: 提議
       comments: 意見
-      no_results: 找不到結果
   start_menu:
     start_group: 啟動群組
     start_subgroup: 啟動子群組
@@ -169,6 +171,7 @@ zh-TW:
     no_votes_yet: 尚未有人在此提案上投票。
     change_your_vote: 變更您的投票。
   undecided_panel:
+    aria_label: 尚未決定的成員
     show_undecided: 顯示未決定的成員
     hide_undecided: 隱藏未決定的成員
   proposal_pie_chart:
@@ -240,6 +243,17 @@ zh-TW:
     second_step: 四處看看 ── 看看這個範例討論串，順便玩一玩設定吧。
     third_step: 當您準備好的時候，您可以邀請夥伴們進來。
     ok_got_it: 好的，了解了！
+  group_cover_modal:
+    heading: 新的封面圖片
+    upload_link: 上傳新的封面圖片
+    helptext: "正在尋找靈感嗎？看看 <a href=\"https://unsplash.com/\">Unsplash</a> 吧，這是一個有著免費的美麗圖片的藝廊網站"
+    image_size_helptext: 理想的圖片尺寸是 1400 x 320 像素
+    upload_success: 成功更新封面圖片
+  group_logo_modal:
+    heading: 新的群組圖示
+    upload_link: 上傳新的群組圖示
+    image_size_helptext: 理想的圖片尺寸是 100 x 100 像素
+    upload_success: 成功更新圖示
   start_group_form:
     heading: 啟動群組
     heading_when_subgroup: 啟動子群組
@@ -301,6 +315,7 @@ zh-TW:
     options:
       label: 選項
       edit_group: 編輯群組設定
+      manage_members: 管理成員
       leave_group: 離開群組
       deactivate_group: 停用群組
     deactivate_group:
@@ -519,7 +534,7 @@ zh-TW:
     threads_from:
       group: 討論串從
       proposals: 提議
-      starred: 已標記星號
+      starred: 已標記星號的討論串
       today: 今天
       yesterday: 昨日
       thisweek: 本週
@@ -586,7 +601,7 @@ zh-TW:
     agree_with_statement: "<strong>{{actor}}</strong>已同意：<span>{{statement}}</span>"
     abstain_with_statement: "<strong>{{actor}}</strong>已棄權：<span>{{statement}}</span>"
     disagree_with_statement: "<strong>{{actor}}</strong>已反對：<span>{{statement}}</span>"
-    block_with_statement: "<strong>{{actor}}</strong>已阻擋：<span>{{statement}}"
+    block_with_statement: "<strong>{{actor}}</strong>已阻擋：<span>{{statement}}</span>"
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong>已啟動一個提案：<span>{{title}}</span>"
   proposal_closed_item:

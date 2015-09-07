@@ -36,6 +36,7 @@ pt-BR:
       new_thread: Novo tópico
       add_subgroup: Adicionar subgrupo
       loading: Carregando
+      uploading: Carregando
   error_page:
     forbidden: Você não tem permissão para fazer isso.
     page_not_found: Não fomos capazes de encontrar. Pode ter sido excluído ou movido.
@@ -51,7 +52,7 @@ pt-BR:
   proposal_outcome_form:
     set_outcome: Definir resultado da proposta
     update_outcome: Atualizar resultado da proposta
-    outcome_label: Resultado da proposição
+    outcome_label: Resultado da proposta
     outcome_placeholder: Diga para todos o resultado da proposta.
     publish_outcome: Publicar resultado
     messages:
@@ -85,6 +86,7 @@ pt-BR:
       remove_attachment: Remover anexo
     messages:
       created: Comentário adicionado
+      replied: "{{name}} recebeu notificação"
       updated: Comentário atualizado
       destroyed: Comentário apagado
     edit_comment: Editar comentários
@@ -114,13 +116,13 @@ pt-BR:
       help: Ajuda
       sign_out: Sair
     search:
+      no_results: Nenhum tópico encontrado
       close: Fechar painel de pesquisa
       placeholder: Pesquisar
       loading: Carregando resultados...
       discussions: Tópicos
       proposals: Propostas
       comments: Comentários
-      no_results: Nenhum resultado encontrado
   start_menu:
     start_group: Iniciar Grupo
     start_subgroup: Iniciar Subgrupo
@@ -169,6 +171,7 @@ pt-BR:
     no_votes_yet: Ninguém votou nesta proposta ainda.
     change_your_vote: Modifique seu voto.
   undecided_panel:
+    aria_label: Membros indecisos
     show_undecided: Mostrar membros indecisos
     hide_undecided: Ocultar membros indecisos
   proposal_pie_chart:
@@ -240,6 +243,17 @@ pt-BR:
     second_step: Dê uma olhada ao redor - confira os exemplos de tópicos e brinque com as definições.
     third_step: "Quando estiver pronto, você pode convidar pessoas."
     ok_got_it: "OK, entendi!"
+  group_cover_modal:
+    heading: Nova foto da capa
+    upload_link: Carregar nova foto da capa
+    helptext: "Buscando inspiração? Dê uma olhada em <a href=\"https://unsplash.com/\">Unsplash</a>, uma galeria de lindas imagens gratuitas"
+    image_size_helptext: O tamanho ideal da magem é 1400 x 320px
+    upload_success: Foto da capa atualizada com sucesso
+  group_logo_modal:
+    heading: Nova logo do grupo
+    upload_link: Carregar nova logo do grupo
+    image_size_helptext: O tamanho ideal da imagem é 100 x 100px
+    upload_success: Logo atualizada com sucesso
   start_group_form:
     heading: Iniciar um grupo
     heading_when_subgroup: Iniciar um subgrupo
@@ -301,6 +315,7 @@ pt-BR:
     options:
       label: Opções
       edit_group: Editar Configurações do Grupo
+      manage_members: Gerenciar membros
       leave_group: Sair do Grupo
       deactivate_group: Desativar Grupo
     deactivate_group:
@@ -519,7 +534,7 @@ pt-BR:
     threads_from:
       group: Tópicos de
       proposals: Propostas
-      starred: Com Estrela
+      starred: Tópicos com estrela
       today: Hoje
       yesterday: Ontem
       thisweek: Esta semana
@@ -586,7 +601,7 @@ pt-BR:
     agree_with_statement: "<strong>{{actor}}</strong> concordou: <span>{{statement}}</span>"
     abstain_with_statement: "<strong>{{actor}}</strong> absteve-se: <span>{{statement}}</span>"
     disagree_with_statement: "<strong>{{actor}}</strong> discordou: <span>{{statement}}</span>"
-    block_with_statement: "<strong>{{actor}}</strong> bloqueou: <span>{{statement}}"
+    block_with_statement: "<strong>{{actor}}</strong> bloqueou: <span>{{statement}}</span>"
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>"
   proposal_closed_item:
@@ -598,7 +613,7 @@ pt-BR:
     description: "<strong>{{actor}}</strong> atualizou a descrição da proposta"
     closing_at: "<strong>{{actor}}</strong> atualizou a proposta para encerrar em <span>{{time}}</span>"
     description_name: "<strong>{{actor}}</strong> atualizou o título e a descrição da proposta"
-    closing_at_name: "<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento"
+    closing_at_name: "<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento da proposta"
     closing_at_description: "<strong>{{actor}}</strong> atualizou a descrição e o tempo para encerramento da proposta"
     closing_at_description_name: "<strong>{{actor}}</strong> atualizou título, descrição e tempo para encerramento da proposta"
   proposal_outcome_created_item:

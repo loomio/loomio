@@ -671,6 +671,22 @@ de:
     vote: Du kannst Deine Meinung jederzeit ändern.
   pricing_page:
     header: Preisgestaltung
+    gift: Geschenk
+    standard: Standard
+    plus: Plus
+    free_trial_html: "Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Preisplan fragen. Es ist keine Kreditkarte notwendig."
+    get_started_for_free: Starte nun kostenlos
+    gift_body_html: "<p>Für Gruppen, die kein Budget für ein Abonnement haben</p>\n<p>Spendenfinanziert, ohne Zahlungsverpflichtung.</p>\n"
+    gift_donation_ask: Wir werden Deine Gruppenmitglieder um Spenden bitten.
+    unlimited_members: unbegrenzte Mitglieder
+    unlimited_decisions: unbegrenzte Abstimmungen
+    email_support: eMail-Support
+    standard_price_html: "<strong>$19</strong>/Monat<br><span>oder</span> $190/Jahr\n"
+    plus_body: "Wie in Standard, zusätzlich:"
+    premium_support: Premium Support
+    custom_url: benutzerspezifische URL
+    usage_statistics: Nutzerstatistiken
+    plus_price_html: "<strong>$179</strong>/Monat<br><span>oder</span> $1790/Jahr\n"
   contribution:
     any_amount: "oder einen individuellen, einmaligen Beitrag von "
     currency_desc: Beträge sind in US Dollar angegeben
@@ -1157,6 +1173,7 @@ de:
   start_your_group: Starte Deine Gruppe
   webhooks:
     slack:
+      motion_closed: "*%{name}* hat geschlossen"
       motion_closing_soon: "Der Vorschlag in *%{name}* endet in 24 Stunden"
       motion_outcome_created: "*%{author}* veröffentlichte ein Ergebnis bezüglich *%{name}*"
       motion_outcome_updated: "*%{author}* aktualisierte das Ergebnis bezüglich *%{name}*"
