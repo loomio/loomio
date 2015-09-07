@@ -4,34 +4,33 @@
     .group-page__cover{ng-style:'groupPage.coverStyle()'}
       %button.lmo-btn-link.group-page__upload-photo{ng-click: 'groupPage.openUploadCoverForm()', ng-show: 'groupPage.canUploadPhotos()'}
         %i.fa.fa-lg.fa-camera
-    .container.main-container
-      %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
-        .group-page__logo{ng-style:'groupPage.logoStyle()', alt: "{{ 'group_page.group_logo' | translate }}"}
-          %button.lmo-btn-link.group-page__upload-photo{ng-click: 'groupPage.openUploadLogoForm()', ng-show: 'groupPage.canUploadPhotos()'}
-            %i.fa.fa-lg.fa-camera
-        .group-page__name-and-actions
-          .group-page__name
-            %h1.lmo-h1
-              %a{ng_show: 'groupPage.group.parentId', href: '/g/{{groupPage.group.parent().key}}'}
-                {{groupPage.group.parentName()}}
-              %span{ng_show: 'groupPage.group.parentId'}> \-
-              {{groupPage.group.name}}
-          %group_privacy_dropdown{group: 'groupPage.group'}
-          .group-page__member-actions.lmo-btn-group.lmo-btn-group-right{ng-if: 'groupPage.isMember()'}
-            .lmo-btn-wrapper
-              %group_actions_dropdown{group: 'groupPage.group'}
-            .lmo-btn-wrapper
-              %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
-          %join_group_button{group: 'groupPage.group'}
-          .clearfix
-      .row
-        .col-sm-8
-          %section.group-page__description{aria-labelledby: 'description-card-title'}
-            %h2#description-card-title.lmo-card-heading{ translate: 'group_page.description'}
-            .group-page__description-placeholder.lmo-placeholder.lmo-hint-text{translate: 'group_page.description_placeholder', ng-if: 'groupPage.showDescriptionPlaceholder()' }
-            .group-page__description-text.lmo-last.lmo-markdown-wrapper{ marked: 'groupPage.group.description' }
-          %discussions_card{group: 'groupPage.group'}
-        .col-sm-4
-          %membership_requests_card{group: 'groupPage.group'}
-          %members_card{group: 'groupPage.group'}
-          %subgroups_card{group: 'groupPage.group'}
+    %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
+      .group-page__logo{ng-style:'groupPage.logoStyle()', alt: "{{ 'group_page.group_logo' | translate }}"}
+        %button.lmo-btn-link.group-page__upload-photo{ng-click: 'groupPage.openUploadLogoForm()', ng-show: 'groupPage.canUploadPhotos()'}
+          %i.fa.fa-lg.fa-camera
+      .group-page__name-and-actions
+        .group-page__name
+          %h1.lmo-h1
+            %a{ng_show: 'groupPage.group.parentId', href: '/g/{{groupPage.group.parent().key}}'}
+              {{groupPage.group.parentName()}}
+            %span{ng_show: 'groupPage.group.parentId'}> \-
+            {{groupPage.group.name}}
+        %group_privacy_dropdown{group: 'groupPage.group'}
+        .group-page__member-actions.lmo-btn-group.lmo-btn-group-right{ng-if: 'groupPage.isMember()'}
+          .lmo-btn-wrapper
+            %group_actions_dropdown{group: 'groupPage.group'}
+          .lmo-btn-wrapper
+            %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
+        %join_group_button{group: 'groupPage.group'}
+        .clearfix
+    .row
+      .col-sm-8
+        %section.group-page__description{aria-labelledby: 'description-card-title'}
+          %h2#description-card-title.lmo-card-heading{ translate: 'group_page.description'}
+          .group-page__description-placeholder.lmo-placeholder.lmo-hint-text{translate: 'group_page.description_placeholder', ng-if: 'groupPage.showDescriptionPlaceholder()' }
+          .group-page__description-text.lmo-last.lmo-markdown-wrapper{ marked: 'groupPage.group.description' }
+        %discussions_card{group: 'groupPage.group'}
+      .col-sm-4
+        %membership_requests_card{group: 'groupPage.group'}
+        %members_card{group: 'groupPage.group'}
+        %subgroups_card{group: 'groupPage.group'}
