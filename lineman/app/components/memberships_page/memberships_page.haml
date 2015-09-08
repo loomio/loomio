@@ -1,7 +1,7 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!membershipsPage.group'}
   .group-page__cover{style:'background-image:url({{membershipsPage.group.coverUrl()}})'}
-  %main.memberships-page{ng-if: 'membershipsPage.group'}
+  %main.memberships-page.main-container{ng-if: 'membershipsPage.group'}
     %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
       .group-page__logo{style:'background-image:url({{membershipsPage.group.logoUrl()}})', alt: "{{ 'group_page.group_logo' | translate }}"}
       .group-page__name-and-actions
