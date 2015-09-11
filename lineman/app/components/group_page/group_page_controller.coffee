@@ -35,4 +35,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
   @openUploadLogoForm = ->
     ModalService.open LogoPhotoForm, group: => @group
 
+  @showSubgroupsCard = ->
+    @group.subgroups().length or AbilityService.canCreateSubgroups(@group)
+
   return
