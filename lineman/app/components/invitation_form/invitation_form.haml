@@ -1,14 +1,15 @@
 .invitation-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
-    %h3.pull-left {{ 'invitation.invite_people' | translate }}
-    %a.close.pull-right{href: '', ng-click: '$close()'} ×
-    .clearfix
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: 'true'} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title {{ 'invitation.invite_people' | translate }}
   .modal-body
-    %h4{translate: 'common.group'}
+    %label{translate: 'common.group', for: ' '}
     %select.form-control.invitation-form__group-dropdown{ng-model: 'group', ng-required: true, ng-options: 'group as group.fullName() for group in availableGroups()'}
     .lmo-wrap{ng-show: 'group.id'}
-      %h4{translate: 'invitation.instructions'}
+      %label{translate: 'invitation.instructions'}
       .invitation-form__invitables-input
         %input.form-control.invitation-form__invitable-input{type: 'text', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables()', typeahead-template-url: 'generated/components/invitation_form/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
         %loading.invitation-form__loading{ng-show: 'getInvitablesExecuting'}
@@ -16,12 +17,12 @@
         %input.hidden.form-control{type: 'email', ng-model: 'fragment'}
 
     .lmo-wrap{ng-show: 'hasInvitations()'}
-      %h4{translate: 'invitation.to'}
-      .current-invitations{ng-repeat: 'invitation in invitations track by invitation.id'}
+      %label{translate: 'invitation.to'}
+      .invitation-form__to{ng-repeat: 'invitation in invitations track by invitation.id'}
         %span {{invitation.name}}
         %span{ng-show: 'invitation.subtitle'} ({{invitation.subtitle}})
 
-      %h4{translate: 'invitation.invitation_message'}
+      %label{translate: 'invitation.invitation_message'}
       %textarea.form-control{ng-model: 'message'}
 
   .modal-footer
