@@ -3,6 +3,11 @@ class API::DiscussionsController < API::RestfulController
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 
+  def index
+    instantiate_collection { |collection| collection.sorted_by_importance }
+    respond_with_collection
+  end
+
   def dashboard
     instantiate_collection { |collection| collection_for_dashboard collection }
     respond_with_collection
@@ -40,8 +45,9 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def visible_groups
-    load_and_authorize :group if params[:group_id] || params[:group_key]
-    Array(@group).presence || current_user.groups
+    return current_user.groups unless params[:group_id] || params[:group_key]
+    load_and_authorize :group
+    [@group, @group.subgroups].flatten
   end
 
   def collection_for_dashboard(collection, filter: params[:filter])

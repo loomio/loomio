@@ -43,7 +43,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       _.some @pendingInvitations()
 
     organisationDiscussions: ->
-      @recordStore.discussions.find(groupId: { $in: @organisationIds()})
+      @recordStore.discussions.find(groupId: { $in: @organisationIds() }, discussionReaderId: { $ne: null })
 
     organisationIds: ->
       _.pluck(@subgroups(), 'id').concat(@id)

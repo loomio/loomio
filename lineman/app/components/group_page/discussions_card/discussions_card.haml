@@ -7,17 +7,18 @@
     %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}
     .lmo-placeholder{translate: 'group_page.discussions_placeholder', ng-if: 'showThreadsPlaceholder()' }
 
-    .discussions-card__list--empty{ng-if: '!loadMoreExecuting && group.organisationDiscussions().length == 0'}
+    .discussions-card__list--empty{ng-if: '!loadMoreExecuting && !views.base.any()'}
       .discussions-card__list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
       .discussions-card__how-to-gain-access{ng-if: 'howToGainAccess()'}
         %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
 
   .discussions-card__list
-
-    .blank{ng-repeat: 'thread in group.organisationDiscussions() | orderBy: "-lastActivityAt" track by thread.id | limitTo:loaded'}
-      %thread_preview{thread: 'thread'}
-
-    %loading{ng-show: 'loadMoreExecuting'}
-
+    %section.thread-preview-collection__container{ng-if: 'views.proposals.any()'}
+      %thread_preview_collection.thread-previews-container{query: 'views.proposals'}
+    %section.thread-preview-collection__container{ng-if: 'views.starred.any()'}
+      %thread_preview_collection.thread-previews-container{query: 'views.starred'}
+    %section.thread-preview-collection__container{ng-if: 'views.recent.any()'}
+      %thread_preview_collection.thread-previews-container{query: 'views.recent'}
     .lmo-show-more{ng-if: 'canLoadMoreDiscussions'}
-      %a{ng-hide: 'loadMoreExecuting || !group.hasDiscussions', ng-click: 'loadMore()', href: '', translate: 'common.action.show_more'}
+      %a{ng-hide: 'loadMoreExecuting', ng-click: 'loadMore()', href: '', translate: 'common.action.show_more'}
+    %loading{ng-show: 'loadMoreExecuting'}

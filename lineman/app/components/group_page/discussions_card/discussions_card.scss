@@ -1,7 +1,3 @@
-.discussions-card{
-  @include cardNoPadding;
-}
-
 .discussions-card__new-thread-button{
   @include fontSmall;
   float: right;
@@ -14,6 +10,5 @@
 }
 
 .discussions-card__list{
-  border-top: 1px solid $border-color;
   clear: both;
 }
