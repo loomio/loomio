@@ -45,7 +45,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def visible_groups
-    return unless params[:group_id] || params[:group_key]
+    return current_user.groups unless params[:group_id] || params[:group_key]
     load_and_authorize :group
     [@group, @group.subgroups].flatten
   end
