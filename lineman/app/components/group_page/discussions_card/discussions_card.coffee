@@ -3,20 +3,26 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, Records, ModalService, DiscussionForm, KeyEventService, LoadingService, AbilityService, CurrentUser) ->
+  controller: ($scope, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService, CurrentUser) ->
     $scope.loaded = 0
     $scope.perPage = 25
     $scope.canLoadMoreDiscussions = true
+    $scope.views = {}
+
+    $scope.updateViews = (data = {}) ->
+      $scope.views.base      = ThreadQueryService.groupQuery($scope.group, { filter: 'all', queryType: 'all' })
+      $scope.views.proposals = ThreadQueryService.groupQuery($scope.group, { filter: 'show_proposals', queryType: 'important' })
+      $scope.views.starred   = ThreadQueryService.groupQuery($scope.group, { filter: ['show_starred', 'hide_proposals'], queryType: 'important' })
+      $scope.views.recent    = ThreadQueryService.groupQuery($scope.group, { filter: 'all',  queryType: 'timeframe' })
+      if (data.discussions or []).length < $scope.perPage
+        $scope.canLoadMoreDiscussions = false
 
     $scope.loadMore = ->
       options =
-        group_id: $scope.group.id
         from:     $scope.loaded
         per:      $scope.perPage
       $scope.loaded += $scope.perPage
-      Records.discussions.fetchByGroup(options).then (data) ->
-        if (data.discussions or []).length < $scope.perPage
-          $scope.canLoadMoreDiscussions = false
+      Records.discussions.fetchByGroup($scope.group.key, options).then $scope.updateViews
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
     $scope.loadMore()

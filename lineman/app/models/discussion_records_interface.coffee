@@ -2,7 +2,8 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
   class DiscussionRecordsInterface extends BaseRecordsInterface
     model: DiscussionModel
 
-    fetchByGroup: (options = {}) ->
+    fetchByGroup: (groupKey, options = {}) ->
+      options['group_id'] = groupKey
       @fetch
         params: options
 
