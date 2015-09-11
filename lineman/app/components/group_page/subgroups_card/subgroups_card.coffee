@@ -13,4 +13,4 @@ angular.module('loomioApp').directive 'subgroupsCard', ->
       AbilityService.canAdministerGroup($scope.group) and $scope.group.subgroups().length == 0
 
     $scope.startSubgroup = ->
-       ModalService.open StartGroupForm, group: -> Records.groups.build(parent_id: $scope.group.id)
+       ModalService.open StartGroupForm, group: -> Records.groups.build(parentId: $scope.group.id)
