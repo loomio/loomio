@@ -3,7 +3,6 @@
   %ul.start-menu__options.start-menu__over-modal{ng-show: 'startMenuOpen'}
     %start_menu_option{text: 'invite_people', icon: 'user', action: 'invitePeople', group: 'currentGroup', hotkey: 'pressedI'}
     %start_menu_option{text: 'start_group', icon: 'group', action: 'startGroup', group: 'currentGroup', hotkey: 'pressedG'}
-    %start_menu_option{text: 'start_subgroup', icon: 'group', action: 'startSubgroup', group: 'currentGroup', ng-show: 'showSubgroupAction()'}
     %start_menu_option{text: 'start_thread', icon: 'pencil', action: 'startThread', group: 'currentGroup', hotkey: 'pressedT'}
 
   %a.start-menu__start-button.start-menu__menu-button.start-menu__over-modal{href: '', ng-click: 'toggleStartMenu()'}
