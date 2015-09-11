@@ -17,3 +17,5 @@
       %button.btn.btn-default.comment-form-button{type: 'button', translate: 'comment_form.cancel_reply', ng-show: 'comment.parentId', ng-click: 'comment.parentId = null'}
       %attachment_form{comment: 'comment'}
       %button#post-comment-cancel.btn.btn-default{type: 'button', translate: 'common.action.cancel', ng-click: 'cancel($event)', ng-hide: 'comment.isNew()'}
+      %a.comment-form-button{lmo-href: '/markdown', target: '_blank', title: "{{ 'common.formatting_help.title' | translate }}"}
+        %span{translate: 'common.formatting_help.label'}

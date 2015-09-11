@@ -37,6 +37,10 @@ en:
       add_subgroup: 'Add subgroup'
       loading: 'Loading'
       uploading: 'Uploading'
+    formatting_help:
+      label: 'Formatting help'
+      title: 'Learn how to use Markdown to format your text on Loomio'
+
 
   error_page:
     forbidden: 'You do not have permission to do this.'
