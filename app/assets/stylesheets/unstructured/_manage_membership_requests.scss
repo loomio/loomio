@@ -12,5 +12,9 @@ body.manage_membership_requests {
       margin-bottom: 50px;
     }
     .approve-or-ignore{ min-width: 100px;}
+    td p{
+      max-width: 300px;
+      word-wrap: break-word;
+    }
   }
 }
