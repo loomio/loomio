@@ -12,11 +12,18 @@ describe 'Invitations', ->
       invitationsHelper.openInvitationsModal()
       expect(invitationsHelper.groupDropdown().isPresent()).toBe(true)
 
-    it 'successfully opens a model for a specific group', ->
+    it 'successfully opens a modal for a specific group', ->
       groupsHelper.load()
       invitationsHelper.openInvitationsModal()
       expect(invitationsHelper.groupDropdown().getText()).toContain('Dirty')
       expect(invitationsHelper.invitableInput().isPresent()).toBe(true)
+
+    it 'lets the inviter provide a custom message', ->
+      invitationsHelper.load()
+      invitationsHelper.openInvitationsModal()
+      invitationsHelper.invite('max')
+      invitationsHelper.clickAddCustomMessageLink()
+      expect(invitationsHelper.customMessageField().isDisplayed()).toBe(true)
 
   describe 'inviting a Loomio user', ->
     beforeEach ->

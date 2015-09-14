@@ -20,8 +20,8 @@
       .invitation-form__current-invitations{ng-repeat: 'invitation in invitations track by invitation.id'}
         %span {{invitation.name}}
         %span{ng-show: 'invitation.subtitle'} ({{invitation.subtitle}})
-      %a{href: '', ng-click: 'isCollapsed = !isCollapsed', ng-show: '!isCollapsed', translate: 'invitation.add_custom_message'}
-      .invitation-form__message-input{ng-show: 'isCollapsed'}
+      %button.invitation-form__add-message-button.lmo-btn-link{ng-show: 'isCollapsed', ng-click: 'toggleCollapse()', translate: 'invitation.add_custom_message'}
+      .invitation-form__message-input{ng-show: '!isCollapsed'}
         %label{for: 'message_input', translate: 'invitation.invitation_message'}
         %textarea.form-control#message_input{ng-model: 'message'}
 
