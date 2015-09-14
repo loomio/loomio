@@ -460,6 +460,7 @@ en:
     invitation_message: 'Invitation Message'
     send_invite: 'Send {{count}} invites'
     to: 'to: '
+    add_custom_message: '+ add custom message'
     default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
     messages:
       members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
