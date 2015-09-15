@@ -3,10 +3,10 @@ angular.module('loomioApp').factory 'InvitationForm', ->
   controller: ($scope, $rootScope, group, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
     $scope.group = group
     $scope.invitations = []
-    $scope.isCollapsed = true
+    $scope.messageFieldHidden = true
 
-    $scope.toggleCollapse = ->
-      $scope.isCollapsed = false
+    $scope.showMessageField = ->
+      $scope.messageFieldHidden = false
 
     $scope.hasInvitations = ->
       $scope.invitations.length > 0

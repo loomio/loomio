@@ -18,13 +18,6 @@ describe 'Invitations', ->
       expect(invitationsHelper.groupDropdown().getText()).toContain('Dirty')
       expect(invitationsHelper.invitableInput().isPresent()).toBe(true)
 
-    it 'lets the inviter provide a custom message', ->
-      invitationsHelper.load()
-      invitationsHelper.openInvitationsModal()
-      invitationsHelper.invite('max')
-      invitationsHelper.clickAddCustomMessageLink()
-      expect(invitationsHelper.customMessageField().isDisplayed()).toBe(true)
-
   describe 'inviting a Loomio user', ->
     beforeEach ->
       invitationsHelper.load()
