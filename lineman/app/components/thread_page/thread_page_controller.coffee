@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, ScrollService, AbilityService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, DeleteThreadForm, ScrollService, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   handleCommentHash = do ->
@@ -66,6 +66,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @editDiscussion = ->
     ModalService.open DiscussionForm, discussion: => @discussion
 
+  @deleteDiscussion = ->
+    ModalService.open DeleteThreadForm, discussion: => @discussion
+
   @showContextMenu = =>
     @canEditDiscussion(@discussion)
 
@@ -74,6 +77,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @canEditDiscussion = =>
     AbilityService.canEditThread(@discussion)
+
+  @canDeleteDiscussion = =>
+    AbilityService.canDeleteThread(@discussion)
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview

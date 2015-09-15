@@ -70,7 +70,7 @@ describe 'Group Page', ->
       groupsHelper.visitEditGroupPage()
       groupsHelper.changeGroupVisibilitySettings()
       groupsHelper.submitEditGroupForm()
-      expect(groupsHelper.groupPage().getText()).toContain('This group is only visible to members')
+      expect(groupsHelper.groupPage()).toContain('This group is only visible to members')
 
     it 'successfully edits group permissions', ->
       groupsHelper.visitEditGroupPage()

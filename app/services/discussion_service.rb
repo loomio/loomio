@@ -28,6 +28,12 @@ class DiscussionService
     Events::NewDiscussion.publish!(discussion)
   end
 
+  def self.destroy(discussion:, actor:)
+    actor.ability.authorize!(:destroy, discussion)
+    discussion.comments.destroy_all
+    discussion.delayed_destroy
+  end
+
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
