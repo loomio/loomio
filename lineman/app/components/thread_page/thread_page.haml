@@ -24,10 +24,10 @@
             %i.fa.fa-fw.fa-chevron-down{aria-hidden: 'true'}
           .dropdown-menu.dropdown-menu-right
             %ul.dropdown-menu-items
-              %li.dropdown-menu-item
-                %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'thread_context.edit_thread', ng-if: 'threadPage.canEditDiscussion()'}
-              %li.dropdown-menu-item
-                %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteDiscussion()', translate: 'thread_context.delete_thread', ng-if: 'threadPage.canDeleteDiscussion()'}
+              %li.dropdown-menu-item{ng-if: 'threadPage.canEditDiscussion()'}
+                %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'thread_context.edit_thread'}
+              %li.dropdown-menu-item{ng-if: 'threadPage.canDeleteDiscussion()'}
+                %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteDiscussion()', translate: 'thread_context.delete_thread'}
       .clearfix
       %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}
