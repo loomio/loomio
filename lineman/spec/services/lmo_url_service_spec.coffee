@@ -59,4 +59,4 @@ describe 'LmoUrlService', ->
 
     describe 'comment', ->
       it 'gives a comment path', ->
-        expect(service.comment(comment)).toBe("/d/#{thread.key}/discussion-title?comment=#{comment.key}")
+        expect(service.comment(comment)).toBe("/d/#{thread.key}/discussion-title?comment=#{comment.id}")
