@@ -52,10 +52,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
 
-  $scope.$on 'currentUserMembershipsLoaded', ->
-    _.each CurrentUser.groups(), (group) ->
-      MessageChannelService.subscribeTo "/group-#{group.key}"
-
+  MessageChannelService.subscribeToUser()
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
