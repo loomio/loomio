@@ -37,6 +37,16 @@ describe 'Discussion Page', ->
       alert.accept()
       expect(threadPage.discussionTitle()).toContain('What star sign are you?')
 
+  describe 'delete thread', ->
+
+    it 'lets coordinators and thread authors delete threads', ->
+      threadPage.openThreadOptionsDropdown()
+      threadPage.selectDeleteThreadOption()
+      threadPage.confirmThreadDeletion()
+      expect(flashHelper.flashMessage()).toContain('Thread deleted')
+      expect(groupsHelper.groupName().isPresent()).toBe(true)
+      expect(groupsHelper.groupPage()).not.toContain('What star sign are you?')
+
   it 'adds a comment', ->
     threadPage.addComment('hi this is my comment')
     expect(threadPage.mostRecentComment()).toContain('hi this is my comment')

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'DiscussionService' do
   let(:user) { create(:user) }
+  let(:another_user) { create(:user) }
   let(:discussion) { create(:discussion, author: user) }
   let(:comment) { double(:comment,
                          save!: true,
@@ -122,6 +123,27 @@ describe 'DiscussionService' do
       another_discussion = create(:discussion)
       expect { DiscussionService.update_reader discussion: another_discussion, params: { starred: true }, actor: user }.to raise_error CanCan::AccessDenied
       expect(DiscussionReader.for(user: user, discussion: another_discussion).starred).to eq false
+    end
+  end
+
+  describe 'destroy' do
+
+    it 'checks the actor has permission' do
+      user.ability.should_receive(:authorize!).with(:destroy, discussion)
+      DiscussionService.destroy(discussion: discussion, actor: user)
+    end
+
+    context 'actor is permitted' do
+      it 'deletes the discussion' do
+        discussion.should_receive :destroy
+        DiscussionService.destroy(discussion: discussion, actor: user)
+      end
+    end
+
+    context 'actor is not permitted' do
+      it 'does not delete the discussion' do
+        expect { DiscussionService.destroy discussion: discussion, actor: another_user }.to raise_error CanCan::AccessDenied
+      end
     end
   end
 end

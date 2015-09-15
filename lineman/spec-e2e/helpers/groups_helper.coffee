@@ -69,7 +69,7 @@ module.exports = new class GroupsHelper
     element(By.css('.edit-group-form__submit-button')).click()
 
   groupPage: ->
-    element(By.css('.group-page'))
+    element(By.css('.group-page')).getText()
 
   groupPageHeader: ->
     element(By.css('.group-page__name h1'))

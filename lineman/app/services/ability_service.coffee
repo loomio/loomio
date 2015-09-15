@@ -12,6 +12,10 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
          CurrentUser.isAuthorOf(thread) or
          thread.group().membersCanEditDiscussions)
 
+    canDeleteThread: (thread) ->
+      @canAdministerGroup(thread.group()) or
+      CurrentUser.isAuthorOf(thread)
+
     canVoteOn: (proposal) ->
       proposal.isActive() and
       CurrentUser.isMemberOf(proposal.group()) and
