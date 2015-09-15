@@ -37,3 +37,9 @@ module.exports = new class InvitationsHelper
   cancelPendingInvitation: ->
     element(By.css('.pending-invitations-card__cancel-link')).click()
     element(By.css('.cancel-invitation-form__submit')).click()
+
+  clickAddCustomMessageLink: ->
+    element(By.css('.invitation-form__add-message-button')).click()
+
+  customMessageField: ->
+    element(By.css('.invitation-form__message-input'))
