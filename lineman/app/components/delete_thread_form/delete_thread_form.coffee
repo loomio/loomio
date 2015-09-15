@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'DeleteThreadForm', ->
   templateUrl: 'generated/components/delete_thread_form/delete_thread_form.html'
-  controller: ($scope, $location, discussion, FormService) ->
+  controller: ($scope, $location, discussion, FormService, LmoUrlService) ->
     $scope.discussion = discussion
     $scope.group = discussion.group()
 
@@ -8,4 +8,4 @@ angular.module('loomioApp').factory 'DeleteThreadForm', ->
       submitFn: $scope.discussion.destroy
       flashSuccess: 'delete_thread_form.messages.success'
       successCallback: ->
-        $location.path '/g/' + $scope.group.key
+        $location.path LmoUrlService.group($scope.group)

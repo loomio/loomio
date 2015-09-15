@@ -30,7 +30,6 @@ class DiscussionService
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
-    discussion.comments.destroy_all
     discussion.delayed_destroy
   end
 
