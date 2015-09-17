@@ -12,8 +12,8 @@ angular.module('loomioApp').directive 'membersCard', ->
     $scope.isAdmin = ->
       AbilityService.canAdministerGroup($scope.group)
 
-    $scope.isMember = ->
-      CurrentUser.membershipFor($scope.group)?
+    $scope.canViewMemberships = ->
+      AbilityService.canViewMemberships($scope.group)
 
     $scope.memberIsAdmin = (member) ->
       $scope.group.membershipFor(member).admin
