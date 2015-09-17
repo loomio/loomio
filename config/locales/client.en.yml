@@ -481,6 +481,8 @@ en:
       title: 'Remove member'
       question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
       submit: 'Remove'
+    remove_admin_from_self:
+      question: 'Are you sure you no longer want to be a coordinator?'
 
   pending_invitations_card:
     heading: Pending invitations
