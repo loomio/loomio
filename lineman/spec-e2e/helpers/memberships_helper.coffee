@@ -39,3 +39,6 @@ module.exports = new class MembershipsHelper
   makeJenniferCoordinator: ->
     @fillInSearchInput('Jennifer')
     @checkCoordinatorCheckbox()
+
+  confirmRemoval: ->
+    browser.switchTo().alert().accept()
