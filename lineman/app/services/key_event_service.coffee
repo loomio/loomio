@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
       40:  'pressedDownArrow'
 
     broadcast: (event) ->
-      if key = @keyboardShortcuts[event.which]
+      if !(event.ctrlKey or event.metaKey) and key = @keyboardShortcuts[event.which]
         $rootScope.$broadcast key, event, angular.element(document.activeElement)[0]
 
     registerKeyEvent: (scope, eventCode, execute, shouldExecute) ->
