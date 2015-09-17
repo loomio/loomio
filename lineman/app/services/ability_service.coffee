@@ -48,8 +48,9 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
       (CurrentUser.isMemberOf(group) and group.membersCanAddMembers)
 
     canCreateSubgroups: (group) ->
-      @canAdministerGroup(group) or
-      (CurrentUser.isMemberOf(group) and group.membersCanCreateSubgroups)
+      group.isParent() and
+      (@canAdministerGroup(group) or
+      (CurrentUser.isMemberOf(group) and group.membersCanCreateSubgroups))
 
     canEditGroup: (group) ->
       @canAdministerGroup(group)
