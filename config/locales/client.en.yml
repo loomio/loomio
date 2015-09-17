@@ -701,8 +701,8 @@ en:
 
   discussion_edited_item:
     title: '<strong>{{actor}}</strong> updated the thread title: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> updated the thread description'
-    description_title: '<strong>{{actor}}</strong> updated the thread title and description'
+    description: '<strong>{{actor}}</strong> updated the thread context'
+    description_title: '<strong>{{actor}}</strong> updated the thread title and context'
 
   contact_message_form:
     contact_us: 'Contact Us'
