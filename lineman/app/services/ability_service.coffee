@@ -82,6 +82,9 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
       CurrentUser.isMemberOf(group) or
       (group.visibleToOrganisation() and CurrentUser.isMemberOf(group.parent()))
 
+    canViewMemberships: (group) ->
+      CurrentUser.isMemberOf(group)
+
     canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and
       @canViewGroup(group) and

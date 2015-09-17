@@ -1,5 +1,5 @@
 .blank
-  %section.members-card{ng-if: 'isMember()', aria-labelledby: 'members-card-title'}
+  %section.members-card{ng-if: 'canViewMemberships()', aria-labelledby: 'members-card-title'}
     %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members'}
     .members-card__list
       .members-card__avatar{ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
