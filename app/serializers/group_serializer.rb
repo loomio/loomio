@@ -5,6 +5,7 @@ class GroupSerializer < ActiveModel::Serializer
              :cohort_id,
              :key,
              :name,
+             :full_name,
              :created_at,
              :creator_id,
              :description,

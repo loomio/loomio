@@ -79,12 +79,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
     adminIds: ->
       _.map @adminMemberships(), (membership) -> membership.userId
 
-    fullName: (separator = '-') ->
-      if @parentId?
-        "#{@parentName()} #{separator} #{@name}"
-      else
-        @name
-
     parentName: ->
       @parent().name if @parent()?
 

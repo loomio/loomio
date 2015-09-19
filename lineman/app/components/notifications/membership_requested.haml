@@ -4,10 +4,10 @@
       %user_avatar{user: "event.membershipRequest().actor()", size: 'small'}
       %img.lmo-box--small.lmo-rounded-corners{src: "{{group.logoUrl()}}", aria-hidden: 'true'}
     .media-body
-      %span{translate: 'notifications.membership_requested', translate-value-name: '{{event.membershipRequest().actor().name}}', translate-value-group: '{{event.membershipRequest().group().fullName()}}' }
+      %span{translate: 'notifications.membership_requested', translate-value-name: '{{event.membershipRequest().actor().name}}', translate-value-group: '{{event.membershipRequest().group().fullName}}' }
 
   .media{ng-if: "!event.membershipRequest().byExistingUser()"}
     .media-left
       %img.lmo-box--small.lmo-rounded-corners{src: "{{event.membershipRequest().group().logoUrl()}}", aria-hidden: 'true'}
     .media-body
-      %span{translate: 'notifications.membership_requested', translate-value-name: '{{event.membershipRequest().name}}', translate-value-group: '{{event.membershipRequest().group().fullName()}}' }
+      %span{translate: 'notifications.membership_requested', translate-value-name: '{{event.membershipRequest().name}}', translate-value-group: '{{event.membershipRequest().group().fullName}}' }

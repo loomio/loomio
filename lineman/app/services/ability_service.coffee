@@ -43,6 +43,9 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canAdministerGroup: (group) ->
       CurrentUser.isAdminOf(group)
 
+    canStartThread: (group) ->
+      group.membersCanStartDiscussions or @canAdministerGroup(group)
+
     canAddMembers: (group) ->
       @canAdministerGroup(group) or
       (CurrentUser.isMemberOf(group) and group.membersCanAddMembers)
