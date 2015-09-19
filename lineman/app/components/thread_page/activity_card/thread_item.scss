@@ -10,11 +10,14 @@
   span {
     color: $primary-text-color;
   }
-  color: $grey-on-white;
   margin-bottom: 5px;
   .media-body, .media-left{
     vertical-align: middle;
   }
+}
+
+.thread-item__title {
+  color: $grey-on-white;
 }
 
 .thread-item__body {

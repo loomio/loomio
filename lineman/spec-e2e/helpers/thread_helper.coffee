@@ -84,7 +84,7 @@ module.exports = new class ThreadHelper
   threadTitleInput: ->
     element(By.css('.discussion-form__title-input')).clear().sendKeys('Edited thread title')
 
-  descriptionInput: ->
+  contextInput: ->
     element(By.css('.discussion-form__description-input'))
 
   clickUpdateThreadButton: ->
@@ -96,17 +96,17 @@ module.exports = new class ThreadHelper
     @threadTitleInput().clear().sendKeys('Edited thread title')
     @clickUpdateThreadButton()
 
-  editThreadDescription: ->
+  editThreadContext: ->
     @clickThreadOptionsDropdownButton()
     @clickThreadOptionsDropdownEdit()
-    @descriptionInput().clear().sendKeys('Edited thread description')
+    @contextInput().clear().sendKeys('Edited thread context')
     @clickUpdateThreadButton()
 
-  editThreadTitleAndDescription: ->
+  editThreadTitleAndContext: ->
     @clickThreadOptionsDropdownButton()
     @clickThreadOptionsDropdownEdit()
     @threadTitleInput().clear().sendKeys('New edited thread title')
-    @descriptionInput().clear().sendKeys('New edited thread description')
+    @contextInput().clear().sendKeys('New edited thread context')
     @clickUpdateThreadButton()
 
   activityItemList: ->
