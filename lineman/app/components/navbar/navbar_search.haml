@@ -1,31 +1,31 @@
 .navbar-search
   .navbar-search-input-wrapper
     %label.sr-only{ translate: 'navbar.search.placeholder' }
-    %input.navbar-search-input.form-control#primary-search-input{ng-click: '$event.stopPropagation()', ng-model: 'query', ng-model-options: '{debounce: {default: 400, blur: 200}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'setFocused(true)', ng-blur: 'setFocused(false)', tabindex: 2}
+    %input.navbar-search-input.form-control#primary-search-input{ng-model: 'query', ng-model-options: '{debounce: {default: 400, blur: 200}}', ng-change: 'getSearchResults(query)', placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: 'focused = true', ng-blur: 'handleSearchBlur()', tabindex: 2}
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query', aria-hidden: 'true'}
     %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clearAndFocusInput()', title: "{{ 'navbar.search.close' | translate }}"}
 
-  .navbar-search-results{ng-show: 'showDropdown()'}
+  .navbar-search-results{ng-show: 'focused'}
     %ul.group-selector-list.selector-list
       %li.navbar-search-list-item.selector-list-header{ng-show: 'groups().length > 0'}
         %h3{translate: "common.groups"}
       %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-repeat: 'group in groups() track by group.id | orderBy: "fullName()"', ng-class:'{"selector-list-item-no-bottom-line": (queryEmpty()), "selector-list-item-top-line": (queryEmpty() && group.isParent())}'}
-        %a.selector-list-item-link{lmo-href-for: 'group'}
+        %a.selector-list-item-link{lmo-href-for: 'group', ng-mousedown: 'closeSearchDropdown($event)', ng-blur: 'handleSearchBlur()'}
           .media-left
             .selector-list-item-group-logo{ng-if: 'group.isSubgroup() && queryEmpty()'}
             %img.selector-list-item-group-logo{ng-if: 'group.isParent() || queryPresent()', ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}
           .selector-list-item-group-name.media-body
-            .noop{ng-if: 'queryPresent()' }
+            .blank{ng-if: 'queryPresent()' }
               {{ group.fullName() }}
-            .noop{ng-if: 'queryEmpty()', ng-class: '{"font-bold": group.isParent()}' }
+            .blank{ng-if: 'queryEmpty()', ng-class: '{"font-bold": group.isParent()}' }
               {{ group.name }}
 
     %ul.thread-list.selector-list{ng-show: 'query'}
       %li.navbar-search-list-item.selector-list-item.search-loading{ng-show: 'searching'}
         %loading
       %li.navbar-search-list-item.selector-list-item.no-results-found{ng-show: 'noResultsFound()', translate: 'navbar.search.no_results'}
-      %div{ng-hide: 'searching || noResultsFound()'}
-        %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults'}
-          %h3{translate: "navbar.search.discussions"}
-        %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-hide: 'searching', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority", "lastActivityAt"]'}
+      %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults && !(searching || noResultsFound())'}
+        %h3{translate: "navbar.search.discussions"}
+      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-show: '!(searching || noResultsFound())', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority", "lastActivityAt"]'}
+        %a.search-result.selector-list-item-link{lmo-href-for: 'searchResult.discussion()', ng-mousedown: 'closeSearchDropdown($event)', ng-blur: 'handleSearchBlur()'}
           %search_result{result: 'searchResult'}

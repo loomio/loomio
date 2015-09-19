@@ -1,26 +1,24 @@
-%a.search-result.selector-list-item-link{ng-href: '/d/{{result.discussion.key}}', ng-click: 'clear(false)'}
+.blank
   .pull-right
-    %smart_time{time: 'result.discussion.last_activity_at'}>
+    %smart_time{time: 'result.discussion().lastActivityAt'}>
   .search-result-item
-    .search-result-title
-      {{result.discussion.title}}
-    .search-result-group-name {{result.discussion.group_full_name }}
-    .search-result-blurb{ng-bind-html: 'result.discussion.blurb'}
+    .search-result-title {{ result.discussion().title }}
+    .search-result-group-name {{ result.discussion().groupName() }}
+    .search-result-blurb{ng-if: 'result.discussionBlurb'}
+      %span.search-result__leader{ng-if: 'showBlurbLeader()'} …
+      %span.search-result__blurb{ng-bind-html: 'result.discussionBlurb'}
+      %span.search-result__trailer{ng-if: 'showBlurbTrailer()'} …
 
-
-  .search-result-item.media{ng-repeat: 'proposal in result.proposals track by proposal.id'}
-    .media-left{ng-init: 'proposal.voteCounts = proposal.vote_counts'}
-      %pie_chart.lmo-box--small{votes: 'proposal.voteCounts'}
-    .media-body
-      .search-result-child-title {{proposal.name}}
-      .search-result-blurb{ng-bind-html: 'proposal.blurb'}
-
-  .search-result-item.media{ng-repeat: 'comment in result.comments track by comment.id'}
+  .search-result-item.media{ng-if: 'result.proposal()'}
     .media-left
-      .user-avatar.lmo-box--small
-        .user-avatar__initials--small{ng-if: '::(comment.author.avatar_kind == "initials")'}
-          {{::comment.author.avatar_initials}}
-        %img.lmo-box--small{alt: "{{::comment.author.name}}", ng-src: '{{::comment.author.avatar_url}}', ng-if: '::(comment.author.avatar_kind != "initials")'}
+      %pie_chart.lmo-box--small{votes: 'result.proposal().voteCounts'}
     .media-body
-      .search-result-child-title {{comment.author.name}}
-      .search-result-blurb{ng-bind-html: 'comment.blurb'}
+      .search-result-child-title {{ result.proposal().name }}
+      .search-result-blurb{ng-bind-html: 'result.proposal_blurb'}
+
+  .search-result-item.media{ng-if: 'result.comment()'}
+    .media-left
+      %user_avatar{user: 'result.comment().author()', size: 'small'}
+    .media-body
+      .search-result-child-title {{ result.comment().authorName() }}
+      .search-result-blurb{ng-bind-html: 'result.comment_blurb'}

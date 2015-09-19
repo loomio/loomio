@@ -6,3 +6,4 @@ angular.module('loomioApp').factory 'SearchResultRecordsInterface', (BaseRecords
       @fetch
         params:
           q: fragment
+          per: 5
