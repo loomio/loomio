@@ -144,6 +144,7 @@ Loomio::Application.routes.draw do
 
     namespace :message_channel do
       post :subscribe
+      post :subscribe_user
     end
 
     namespace :sessions do
