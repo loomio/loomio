@@ -5,18 +5,18 @@ describe SearchResult do
   let(:comment) { create(:comment, discussion: discussion) }
   let(:motion) { create(:motion, discussion: discussion) }
 
-  it "stores a search result child of the discussion" do
-    result = build(:search_result, discussion_id: discussion.id)
-    expect(result.discussion).to be_a SearchResultChild
-    expect(result.discussion.result).to eq discussion
+  it "can set models" do
+    result = build(:search_result, discussion: discussion, motion: motion, comment: comment)
+    expect(result.discussion).to eq discussion
+    expect(result.motion).to eq motion
+    expect(result.comment).to eq comment
   end
 
-  it "responds to comments" do
-    expect(build(:search_result, comments: [comment]).comments). to include comment
-  end
-
-  it "responds to motions" do
-    expect(build(:search_result, motions: [motion]).motions). to include motion
+  it "can set blurbs" do
+    result = build(:search_result, discussion_blurb: 'dblurb', motion_blurb: 'mblurb', comment_blurb: 'cblurb')
+    expect(result.discussion_blurb).to eq 'dblurb'
+    expect(result.motion_blurb).to eq 'mblurb'
+    expect(result.comment_blurb).to eq 'cblurb'
   end
 
   it "responds to query" do
@@ -33,4 +33,3 @@ describe SearchResult do
   end
 
 end
-

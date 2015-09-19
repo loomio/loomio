@@ -1,36 +1,45 @@
 class ThreadSearchQuery
-  def self.search(query, user: nil, limit: 10)
-    return [] if (visible_ids = visible_results_for(user)).empty?
 
-    SearchVector.execute_search_query(
-      search_sql(visible_ids),
-      query: query,
-      limit: limit
-    ).map { |result| build_search_result result }
+  def initialize(query, user: nil, offset: 0, limit: 5, since: nil, till: nil)
+    @query, @user, @offset, @limit, @since, @until  = query, user, offset, limit, since, till
+  end
+
+  def search_results
+    return [] if visible_results.empty?
+    @search_results ||= top_results.map { |result| build_search_result result }
   end
 
   private
 
-  def self.visible_results_for(user)
-    Queries::VisibleDiscussions.new(user: user, groups: user.groups).pluck(:id)
+  def model_cache
+    @model_cache ||= ModelCache.new discussions: top_results,
+                                    motions:     relevant_records_for(:motions),
+                                    comments:    relevant_records_for(:comments)
   end
 
-  def self.build_search_result(result)
-    SearchResult.new(result['id'],
+  def build_search_result(result)
+    discussion_id = result['id']
+    SearchResult.new model_cache.discussion_for(discussion_id),
+                     model_cache.motion_for(discussion_id),
+                     model_cache.comment_for(discussion_id),
+                     model_cache.discussion_blurb_for(discussion_id),
+                     model_cache.motion_blurb_for(discussion_id),
+                     model_cache.comment_blurb_for(discussion_id),
                      result['query'],
-                     result['rank'],
-                     result['blurb'],
-                     relevant_models(:motion, result['id'], result['query']),
-                     relevant_models(:comment, result['id'], result['query']))
+                     result['rank']
   end
 
-  def self.relevant_models(model, discussion_id, query, limit: 1)
-    SearchVector.execute_search_query(
-      send(:"relevant_#{model.to_s.pluralize}_sql"),
-      id: discussion_id,
-      query: query,
-      limit: limit
-    ).map { |result| SearchResultChild.new model, result['id'], result['blurb'] }
+  def top_results
+    @top_results ||= SearchVector.execute_search_query self.class.search_sql(visible_results), query: @query, offset: @offset, limit: @limit
+  end
+
+  def visible_results
+    @visible_results ||= Queries::VisibleDiscussions.new(user: @user, groups: @user.groups).pluck(:id)
+  end
+
+  def relevant_records_for(model)
+    return [] unless ENV['ADVANCED_SEARCH_ENABLED']
+    SearchVector.execute_search_query self.class.send(:"relevant_#{model}_sql", top_results.map { |d| d['id'] }), query: @query
   end
 
   def self.index_thread_sql
@@ -49,17 +58,18 @@ class ThreadSearchQuery
      WHERE    id = :id"
   end
 
-  def self.search_sql(visible_ids = [])
+  def self.search_sql(visible_ids)
     "SELECT id,
             rank,
-            #{field_as_blurb_sql('discussions.description')},
-            :query as query
+            :query as query,
+            #{field_as_blurb_sql('discussions.description')}
      FROM (
         SELECT   discussion_id, search_vector, ts_rank_cd(search_vector, plainto_tsquery(:query)) as rank
         FROM     discussion_search_vectors
         WHERE    search_vector @@ plainto_tsquery(:query)
         AND      discussion_id IN (#{visible_ids.join(',')})
         ORDER BY rank DESC
+        OFFSET   :offset
         LIMIT    :limit
      ) vectors
      INNER JOIN discussions ON discussions.id = vectors.discussion_id
@@ -67,29 +77,34 @@ class ThreadSearchQuery
      ORDER BY   rank DESC, last_activity_at DESC"
   end
 
-  def self.relevant_motions_sql
-    "SELECT   id,
+  def self.relevant_motions_sql(top_ids)
+    "SELECT   DISTINCT ON (discussion_id)
+              id,
+              discussion_id,
               name,
+              ts_rank_cd(#{field_weights_sql(motion_field_weights)}, plainto_tsquery(:query)) as rank,
               #{field_as_blurb_sql('description')}
      FROM     motions
-     WHERE    motions.discussion_id = :id
+     WHERE    motions.discussion_id IN (#{top_ids.join(',')})
      AND      #{field_weights_sql(motion_field_weights)} @@ plainto_tsquery(:query)
-     ORDER BY created_at DESC
-     LIMIT    :limit"
+     ORDER BY discussion_id, rank DESC"
   end
 
-  def self.relevant_comments_sql
-    "SELECT   id,
+  def self.relevant_comments_sql(top_ids)
+    "SELECT   DISTINCT ON (discussion_id)
+              id,
+              discussion_id,
               user_id,
+              ts_rank_cd(#{field_weights_sql(comment_field_weights)}, plainto_tsquery(:query)) as rank,
               #{field_as_blurb_sql('body')}
      FROM     comments
-     WHERE    comments.discussion_id = :id
+     WHERE    comments.discussion_id IN (#{top_ids.join(',')})
      AND      #{field_weights_sql(comment_field_weights)} @@ plainto_tsquery(:query)
-     ORDER BY created_at DESC
-     LIMIT    :limit"
+     ORDER BY discussion_id, rank DESC"
   end
 
   private
+
   def self.field_as_blurb_sql(field)
     "ts_headline(#{field}, plainto_tsquery(:query), 'ShortWord=0') as blurb"
   end
