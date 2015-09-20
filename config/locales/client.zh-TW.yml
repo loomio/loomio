@@ -37,6 +37,9 @@ zh-TW:
       add_subgroup: 新增子群組
       loading: 讀取中
       uploading: 正在上傳
+    formatting_help:
+      label: 格式化說明
+      title: 學習如何使用 Markdown 來格式化您在 Loomio 上的文字
   error_page:
     forbidden: 您沒有足夠的權限。
     page_not_found: 我們找不到它。它可能已經被刪除或移動了。
@@ -415,6 +418,7 @@ zh-TW:
     invitation_message: 邀請訊息
     send_invite: "寄送 {{count}} 個邀請"
     to: 到
+    add_custom_message: + 新增自訂訊息
     default_message: 嗨各位，快來和我們一同作決策！我們正在使用一套叫作 Loomio 的協同決策制定工具。
     messages:
       members_added_and_emails_sent: "{{members}} 位成員已加入，且 {{emails}} 封邀請已寄出"
@@ -435,6 +439,8 @@ zh-TW:
       title: 移除成員
       question: "您確定您想要移除 {{group}} 的成員 {{name}} 嗎？"
       submit: 移除
+    remove_admin_from_self:
+      question: 您確定您真的不想要再當協調者？
   pending_invitations_card:
     heading: 擱置中的邀請函
     email: 電子郵件
@@ -577,6 +583,14 @@ zh-TW:
   thread_context:
     aria_label: 討論串內容
     thread_options: 討論串選項
+    edit_thread: 編輯討論串
+    delete_thread: 刪除討論串
+  delete_thread_form:
+    title: 刪除討論串
+    body: 您確定要刪除這個討論串嗎？
+    confirm: 是的，刪除討論串
+    messages:
+      success: 討論串已刪除
   activity_card:
     new_activity: 新動態
     attachment_display:
@@ -622,8 +636,8 @@ zh-TW:
     proposal_outcome_updated: "<strong>{{actor}}</strong>已更新了提案的結果："
   discussion_edited_item:
     title: "<strong>{{actor}}</strong>已更新討論串的標題：<span>{{title}}</span>"
-    description: "<strong>{{actor}}</strong> 已經更新了此討論串的描述"
-    description_title: "<strong>{{actor}}</strong> 已經更新了此討論串的標題及描述"
+    description: "<strong>{{actor}}</strong> 已經更新了此討論串的內容"
+    description_title: "<strong>{{actor}}</strong> 已經更新了此討論串的標題與內容"
   contact_message_form:
     contact_us: 聯絡我們
     name_label: 您的大名

@@ -17,12 +17,12 @@ bg-BG:
   frontpage: 9
   help docs: 2
   main: 41
-  main_1_0: 18
+  main_1_0: 17
 ca:
   frontpage: 49
   help docs: 7
   main: 73
-  main_1_0: 25
+  main_1_0: 24
 cmn:
   frontpage: 1
   help docs: 1
@@ -32,7 +32,7 @@ cs:
   frontpage: 76
   help docs: 44
   main: 79
-  main_1_0: 63
+  main_1_0: 61
 da:
   frontpage: 52
   help docs: 11
@@ -40,14 +40,14 @@ da:
   main_1_0: 38
 de:
   frontpage: 100
-  help docs: 63
+  help docs: 64
   main: 100
-  main_1_0: 100
+  main_1_0: 99
 el:
   frontpage: 78
   help docs: 42
   main: 94
-  main_1_0: 29
+  main_1_0: 33
 en-BE:
   frontpage: 0
   help docs: 0
@@ -62,12 +62,12 @@ eo:
   frontpage: 52
   help docs: 8
   main: 85
-  main_1_0: 26
+  main_1_0: 25
 es:
   frontpage: 100
-  help docs: 85
+  help docs: 87
   main: 97
-  main_1_0: 86
+  main_1_0: 85
 fa-IR:
   frontpage: 60
   help docs: 41
@@ -82,12 +82,12 @@ fr:
   frontpage: 60
   help docs: 29
   main: 96
-  main_1_0: 34
+  main_1_0: 38
 ga-IE:
   frontpage: 69
   help docs: 9
   main: 60
-  main_1_0: 82
+  main_1_0: 81
 gl:
   frontpage: 29
   help docs: 8
@@ -97,7 +97,7 @@ he:
   frontpage: 55
   help docs: 8
   main: 63
-  main_1_0: 17
+  main_1_0: 16
 he-IL: {}
 hi:
   frontpage: 0
@@ -113,7 +113,7 @@ hu:
   frontpage: 63
   help docs: 74
   main: 95
-  main_1_0: 37
+  main_1_0: 36
 id:
   frontpage: 29
   help docs: 2
@@ -123,7 +123,7 @@ it:
   frontpage: 60
   help docs: 41
   main: 89
-  main_1_0: 88
+  main_1_0: 87
 it-CH:
   frontpage: 0
   help docs: 0
@@ -144,12 +144,12 @@ ko:
   frontpage: 52
   help docs: 3
   main: 55
-  main_1_0: 20
+  main_1_0: 19
 lt:
   frontpage: 23
   help docs: 9
   main: 9
-  main_1_0: 46
+  main_1_0: 45
 lv:
   frontpage: 0
   help docs: 0
@@ -180,12 +180,12 @@ nl-NL:
   frontpage: 100
   help docs: 47
   main: 92
-  main_1_0: 39
+  main_1_0: 38
 pl:
   frontpage: 100
   help docs: 56
   main: 58
-  main_1_0: 85
+  main_1_0: 83
 pt-BR:
   frontpage: 100
   help docs: 100
@@ -205,7 +205,7 @@ ru:
   frontpage: 60
   help docs: 10
   main: 64
-  main_1_0: 33
+  main_1_0: 32
 sk:
   frontpage: 52
   help docs: 8
@@ -220,7 +220,7 @@ sr:
   frontpage: 100
   help docs: 11
   main: 99
-  main_1_0: 55
+  main_1_0: 54
 sr-RS:
   frontpage: 58
   help docs: 10
@@ -230,7 +230,7 @@ sv:
   frontpage: 52
   help docs: 8
   main: 86
-  main_1_0: 26
+  main_1_0: 25
 te:
   frontpage: 15
   help docs: 2
@@ -245,7 +245,7 @@ uk:
   frontpage: 64
   help docs: 8
   main: 74
-  main_1_0: 25
+  main_1_0: 24
 ur:
   frontpage: 0
   help docs: 0
@@ -260,7 +260,7 @@ vi:
   frontpage: 7
   help docs: 2
   main: 43
-  main_1_0: 18
+  main_1_0: 17
 zh-TW:
   frontpage: 100
   help docs: 46

@@ -37,6 +37,9 @@ pt-BR:
       add_subgroup: Adicionar subgrupo
       loading: Carregando
       uploading: Carregando
+    formatting_help:
+      label: Ajuda para formatação
+      title: Aprenda como utilizar Remarcação -- Markdown -- para formatar seu texto no Loomio
   error_page:
     forbidden: Você não tem permissão para fazer isso.
     page_not_found: Não fomos capazes de encontrar. Pode ter sido excluído ou movido.
@@ -92,7 +95,7 @@ pt-BR:
     edit_comment: Editar comentários
     delete_comment: Apagar comentário
     cancel_reply: Cancelar Resposta
-    confirm_delete_message: Tem certeza que quer apagar este comentário?
+    confirm_delete_message: Você tem certeza que deseja apagar este comentário?
     confirm_delete: "Sim, tenho certeza"
     in_reply_to: "Em resposta a <strong>{{name}}</strong>:"
     submit_button:
@@ -108,7 +111,7 @@ pt-BR:
     notifications: Painel de notificações
     user_options:
       label: Opçoes de usuário
-      contact_us: Contacte-nos
+      contact_us: Contato
       new_thread: Novo tópico
       new_group: Novo grupo
       profile: Perfil
@@ -178,7 +181,7 @@ pt-BR:
     participation_statement: "{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})"
   close_proposal_form:
     close_proposal: Encerrar proposta
-    helptext: Tem certeza de que deseja encerrar esta proposta agora?
+    helptext: Você tem certeza que deseja encerrar esta proposta agora?
     close_proposal_submit: "Sim, encerrar proposta"
     messages:
       success: Proposta encerrada
@@ -320,11 +323,11 @@ pt-BR:
       deactivate_group: Desativar Grupo
     deactivate_group:
       title: Desativar grupo
-      question: Tem certeza de que deseja desativar este grupo?
+      question: Você tem certeza que deseja desativar este grupo?
       submit: "Sim, Desative este grupo"
     leave_group:
       title: Sair do grupo
-      question: Tem certeza de que deseja sair deste grupo?
+      question: Você tem certeza que deseja sair deste grupo?
       submit: "Sim, sair deste grupo"
       cannot_leave_group: Você não pode deixar este grupo porque você é o último coordenador. Você precisa escolher um outro coordenador ou desativar o grupo.
       add_coordinator: Adicionar um coordenador
@@ -415,6 +418,7 @@ pt-BR:
     invitation_message: Mensagem Convite
     send_invite: "Enviar {{count}} convites"
     to: "para:"
+    add_custom_message: + adicionar mensagem personalizada
     default_message: "Ei você aí, venha tomar decisões com a gente! Estamos usando uma ferramenta de tomada de decisão colaborativa chamada Loomio"
     messages:
       members_added_and_emails_sent: "{{members}} membro(s) adicionados e {{emails}} convite(s) enviado(s)"
@@ -435,13 +439,15 @@ pt-BR:
       title: Remover membro
       question: "Você tem certeza que deseja remover {{name}} como membro de {{group}}?"
       submit: Remover
+    remove_admin_from_self:
+      question: Você tem certeza que não deseja mais ser coordenador?
   pending_invitations_card:
     heading: Convites pendentes
     email: E-mail
     invitation_link: Link do convite
   cancel_invitation_form:
     heading: Cancelar convite
-    question: Tem certeza de que deseja cancelar este convite?
+    question: Você tem certeza que deseja cancelar este convite?
     submit: Cancelar convite
     messages:
       success: Convite cancelado
@@ -577,6 +583,14 @@ pt-BR:
   thread_context:
     aria_label: Contexto do tópico
     thread_options: Opções do tópico
+    edit_thread: Editar tópico
+    delete_thread: Apagar tópico
+  delete_thread_form:
+    title: Apagar tópico
+    body: Você tem certeza de que deseja apagar este tópico?
+    confirm: "Sim, apague este tópico"
+    messages:
+      success: Tópico apagado
   activity_card:
     new_activity: Nova Atividade
     attachment_display:
@@ -584,7 +598,7 @@ pt-BR:
       image_alt: Imagem anexa
   delete_comment_dialog:
     title: Apagar comentário
-    question: Tem certeza que quer apagar este comentário?
+    question: Você tem certeza que deseja apagar este comentário?
     confirm: Apagar comentário
   new_comment_item:
     aria_label: "Comentado por {{author}}"
@@ -622,10 +636,10 @@ pt-BR:
     proposal_outcome_updated: "<strong>{{actor}}</strong> atualizou o resultado da proposta:"
   discussion_edited_item:
     title: "<strong>{{actor}}</strong> atualizou o título do tópico: <span>{{title}}</span>"
-    description: "<strong>{{actor}}</strong> atualizou a descrição do tópico"
-    description_title: "<strong>{{actor}}</strong> atualizou o título e a descrição do tópico"
+    description: "<strong>{{actor}}</strong> atualizou o contexto do tópico"
+    description_title: "<strong>{{actor}}</strong> atualizou o título e o contexto do tópico"
   contact_message_form:
-    contact_us: Contacte-nos
+    contact_us: Contato
     name_label: Seu nome
     name_placeholder: Digite o seu nome...
     email_label: Seu endereço de e-mail
@@ -656,7 +670,7 @@ pt-BR:
     join_the_community: Faça parte da comunidade
     join_the_community_description_html: "Todos estão convidados a se juntar à Comunidade Loomio, onde falamos sobre como tirar o máximo da ferramenta e como ela pode ser melhorada.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Clique aqui para ir ao grupo da Comunidade Loomio</a>."
     images_and_text_formatting: Formatação de imagens e texto
-    images_and_text_formatting_html: "<p>Loomio utiliza código 'Markdown' para formatação de texto e inserção de imagens.\nVocê pode ativar Markdown pelo pequeno ícone cinza embaixo da caixa de comentários.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Clique aqui</a>\npara informações sobre como usar Markdown.</p>\n"
+    images_and_text_formatting_html: "<p>Loomio utiliza o código 'Markdown' -- Remarcação -- para formatação de texto e inserção de imagens.\nVocê pode ativar a Remarcação pelo pequeno ícone cinza embaixo da caixa de comentários.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Clique aqui</a>\npara informações sobre como utilizar Remarcação.</p>\n"
     keep_up_to_date: Manter atualizado
     keep_up_to_date_html: "<p>Clicar no nome do grupo na parte superior da tela levará à Página do Grupo, \nonde você pode ver uma lista de todas as discussões e decisões desse grupo. \nSe você está em mais de um grupo, pode ver toda as atividades em todos os seus \ngrupos de uma vez na Página Inicial.</p>\n<p>Você receberá notificações por e-mail quando coisas importantes acontecerem\nem seu grupo. Você pode modificar suas preferências de e-mail <a href=\"%{link}\"\">aqui</a>.</p>\n"
     make_a_decision: Tomar uma decisão
