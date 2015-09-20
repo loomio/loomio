@@ -13,8 +13,8 @@ describe 'LmoUrlService', ->
     beforeEach inject (LmoUrlService) -> service = LmoUrlService
     beforeEach ->
       inject (Records) ->
-        group = Records.groups.importJSON id: 1, name: 'Group Name', key: 'gkey'
-        subgroup = Records.groups.importJSON id: 2, parent_id: group.id, name: 'Subgroup Name', key: 'sgkey'
+        group = Records.groups.importJSON id: 1, name: 'Group Name', full_name: 'Group Name', key: 'gkey'
+        subgroup = Records.groups.importJSON id: 2, parent_id: group.id, name: 'Subgroup Name', full_name: 'Group Name - Subgroup Name', key: 'sgkey'
         thread = Records.discussions.importJSON id: 1, title: 'Discussion Title', key: 'dkey'
         proposal = Records.proposals.importJSON id: 1, discussion_id: thread.id, name: 'Proposal Name', key: 'pkey'
         comment = Records.comments.importJSON id:1, discussion_id: thread.id, key: 'ckey'
