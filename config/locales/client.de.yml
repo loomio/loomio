@@ -37,6 +37,9 @@ de:
       add_subgroup: Untergruppe anlegen
       loading: Laden
       uploading: Hochladen
+    formatting_help:
+      label: Formatierungshilfe
+      title: "Lerne, wie Du Markdown nutzen kannst um Deinen Text auf Loomio zu formatieren"
   error_page:
     forbidden: "Du bist nicht berechtigt, das zu tun."
     page_not_found: Das konnten wir nicht finden. Es wurden entweder gelöscht oder verschoben.
@@ -415,6 +418,7 @@ de:
     invitation_message: Einladungstext
     send_invite: "Schicke {{count}} Einladung/en"
     to: "An:"
+    add_custom_message: + persönliche Nachricht hinzügen
     default_message: "Hallo ihr, kommt und trefft Entscheidungen mit uns! Wir nutzen ein Werkzeug namens Loomio, dass uns bei der kollektiven Entscheidungsfindung hilft"
     messages:
       members_added_and_emails_sent: "{{members}} Mitglied(er) hinzugefügt und {{emails}} Einladung(en) verschickt"
@@ -435,6 +439,8 @@ de:
       title: Mitglied entfernen
       question: "Bist Du sicher, dass Du {{name}} aus {{group}} entfernen möchtest?"
       submit: entfernen
+    remove_admin_from_self:
+      question: "Bist Du sicher, dass Du nicht mehr Koordinator bleiben willst?"
   pending_invitations_card:
     heading: Ausstehende Einladungen
     email: eMail
@@ -577,6 +583,14 @@ de:
   thread_context:
     aria_label: Diskussionsbeschreibung
     thread_options: Diskussionsoptionen
+    edit_thread: Diskussion bearbeiten
+    delete_thread: Diskussion löschen
+  delete_thread_form:
+    title: Diskussion löschen
+    body: "Sicher, dass Du diese Diskussion löschen willst?"
+    confirm: "Ja, Diskussion löschen"
+    messages:
+      success: Diskussion gelöscht
   activity_card:
     new_activity: Neue Beiträge
     attachment_display:
@@ -622,8 +636,6 @@ de:
     proposal_outcome_updated: "<strong>{{actor}}</strong> aktualisierte den Vorschlagsbeschluss:"
   discussion_edited_item:
     title: "<strong>{{actor}}</strong> aktualisierte den Diskussionstitel: <span>{{title}}</span>"
-    description: "<strong>{{actor}}</strong> aktualisierte die Diskussionsbeschreibung"
-    description_title: "<strong>{{actor}}</strong> aktualisiert Diskussionstitel und -beschreibung"
   contact_message_form:
     contact_us: Kontaktiere uns
     name_label: Dein Name

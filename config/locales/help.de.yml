@@ -239,6 +239,8 @@ de:
         title: Diskussion löschen
     comments:
       title: Kommentare
+      markdown:
+        title: Markdown
       attaching_files:
         title: Dateien anhängen
       mentioning_group_members:
@@ -257,6 +259,8 @@ de:
         title: Einen Vorschlag bearbeiten
       stating_positions:
         title: Deine Meinung abgeben
+        body:
+          intro_html: "Klicke einen der vier Entscheidungs buttons unter dem Vorschlag, wenn du bereit bist deine Stimme abzugeben"
       changing_positions:
         title: Deine Meinung ändern
       setting_outcome:

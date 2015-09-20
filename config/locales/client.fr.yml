@@ -1,14 +1,18 @@
 fr:
   common:
+    confirm_discard_changes: Annuler vos modifications ?
     time:
       am: am
       pm: pm
-    volume: Niveau de notification
+    volume: Volume
+    notification_volume: Volume de notification
     group: Groupe
     groups: Groupes
     privacy:
       private: Privé
       public: Public
+      organisation: Organisation
+    selected: Sélectionné
     date_range:
       today: "Aujourd'hui"
       yesterday: Hier
@@ -19,6 +23,7 @@ fr:
       proposal: Proposition
     action:
       save: Enregistrer
+      save_changes: Sauvegarder les modifications
       reply: Répondre
       edit: Modifier
       like: "J'aime"
@@ -26,13 +31,28 @@ fr:
       cancel: Annuler
       show_more: En voir plus
       view_all: Tout voir
+      add_subgroup: Ajouter un sous-groupe
+      loading: Chargement
+      uploading: Téléchargement
+    formatting_help:
+      title: Apprenez à utiliser Markdown pour formater votre texte sur Loomio
   error_page:
     forbidden: "Vous n'avez pas la permission de faire cela."
+    page_not_found: "Nous n'avons pas pu trouver cela. Cela a pu être supprimé ou déplacé."
+    internal_server_error: "Nous sommes désolé mais quelque chose s'est mal passé. Veuillez essayer à nouveau."
+  start_proposal_card:
+    title: Lancer une proposition
+    helptext: Prêt à prendre une décision ? Les propositions vous laissent voir comment chacun ressent une action particulière.
   proposal_outcome_panel:
     heading: Résultat
+    set_outcome_hint: Utilisez cet espace pour faire connaître les conséquences de cette proposition.
   proposal_outcome_form:
     outcome_label: Résultat de la proposition
     publish_outcome: Publier le résultat
+  previous_proposals_card:
+    heading: Proposition précédente
+  proposal_collapsed:
+    expand: Étendre
   context_card:
     heading: Contexte
   volume_levels:
@@ -42,10 +62,13 @@ fr:
     mute: Désactivé
   inbox:
     clear: Vider
+    latest: Dernier
     unread: Non lu
+    closing_in: Fermeture
   session_form:
     email_label: "Courriel :"
     password_label: "Mot de passe :"
+    remember_me: Se souvenir de moi
     sign_in: Connexion
   comment_form:
     aria_label: Ajouter un commentaire
@@ -98,6 +121,7 @@ fr:
     close_proposal: Fermer la proposition
   proposal_form:
     start_proposal: Commencez la proposition
+    start_a_proposal: Démarrer une proposition
     edit_proposal: Modifier la proposition
     title_placeholder: "Ex : Aller sur la Lune"
     title_label: Titre
@@ -189,6 +213,7 @@ fr:
       yesterday: Hier
   discussion:
     proposals: Propositions
+    previous_proposals: Proposition précédente
     volume:
       loud: "Envoie un courrier électronique dès qu'il y a de l'activité dans cette discussion."
       normal: "Envoie un courrier uniquement lorsqu'une proposition est créée, s'apprête à fermer, ou qu'un résultat est publié."
@@ -260,3 +285,9 @@ fr:
     informal_groups: Groupes informels
     informal_groups_desc: Nous demanderons aux membres de votre groupe de faire des dons.
     informal_groups_examples: "par exemple: familles, mouvements sociaux, collectifs"
+  angular:
+    enable:
+      button_text: Activer le nouveau Loomio
+    disable:
+      title: "Merci d'essayer le nouveau Loomio"
+      button_text: "Basculer vers l'ancien Loomio"
