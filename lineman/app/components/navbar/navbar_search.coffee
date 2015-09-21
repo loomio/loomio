@@ -87,7 +87,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
       # match groups where all words are present in group name
       _.filter CurrentUser.groups(), (group) ->
         _.all _.words($scope.query), (word) ->
-          _.contains(group.fullName().toLowerCase(), word.toLowerCase())
+          _.contains(group.fullName.toLowerCase(), word.toLowerCase())
 
     $scope.getSearchResults = (query) ->
       if query?

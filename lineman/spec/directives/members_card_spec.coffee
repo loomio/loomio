@@ -5,6 +5,7 @@ describe 'Members Card Component', ->
 
   beforeEach inject ($httpBackend) ->
     $httpBackend.whenGET(/api\/v1\/translations/).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/discussions/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/memberships/).respond(200, {})
     @currentUser = @factory.create 'users'
     @group       = @factory.create 'groups', name: 'whoopdeedoo'

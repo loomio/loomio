@@ -44,6 +44,7 @@ window.useFactory = function() {
 
     groups: {
       name: 'Venus: ...Ladies.',
+      fullName: 'Mars: ....Gentleman',
       description: '',
       created_at: moment().subtract(2, 'day').format(),
       updated_at: moment().subtract(2, 'day').format(),

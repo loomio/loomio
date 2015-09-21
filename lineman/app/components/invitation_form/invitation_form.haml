@@ -6,7 +6,7 @@
     .clearfix
   .modal-body
     %label{for: 'group-dropdown', translate: 'common.group'}
-    %select.invitation-form__group-dropdown.form-control#group-dropdown{ng-model: 'group', ng-required: true, ng-options: 'group as group.fullName() for group in availableGroups()'}
+    %select.invitation-form__group-dropdown.form-control#group-dropdown{ng-model: 'group', ng-required: true, ng-options: 'group as group.fullName for group in availableGroups() | orderBy: "fullName"'}
     .lmo-wrap{ng-show: 'group.id'}
       %label{for: 'invitable-input', translate: 'invitation.instructions'}
       .invitation-form__invitables-input

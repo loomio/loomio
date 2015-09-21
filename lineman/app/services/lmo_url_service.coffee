@@ -13,7 +13,7 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
       "/".concat(route).replace('//', '/')
 
     group: (g, params = {}, options = {}) ->
-      @buildModelRoute('g', g.key, g.fullName(), params, options)
+      @buildModelRoute('g', g.key, g.fullName, params, options)
 
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
