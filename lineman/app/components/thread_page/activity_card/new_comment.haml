@@ -25,11 +25,12 @@
       %attachment{attachment: 'attachment'}
 
   .thread-item__footer
-    .thread-item__actions
+    .thread-item__actions{ng-if: 'showCommentActions()'}
       %button.thread-item__action--like.lmo-btn-link{type: 'button', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
       %button.lmo-btn-link{type: 'button', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
       %button.thread-item__action--reply.lmo-btn-link{translate: 'common.action.reply', type: 'button', ng_click: 'reply()'}>
+    .thread-item__timestamp
       %span{aria-hidden: 'true'}·
       %timeago{timestamp: 'comment.createdAt' }>
 

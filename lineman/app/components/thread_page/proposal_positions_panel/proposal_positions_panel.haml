@@ -25,7 +25,7 @@
         %span.proposal-positions-panel__name-and-position{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-actor: '{{vote.authorName()}}'}
         %span{ng-if: '!vote.hasStatement()'}.
         %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
-        %a.proposal-positions-panel__change-your-vote{href: '', ng-click: 'changeVote()', ng-show: 'proposal.isActive() && voteIsMine(vote)'}
+        %button.proposal-positions-panel__change-your-vote.lmo-btn-link{ng-if: 'showChangeVoteOption(vote)', href: '', ng-click: 'changeVote()'}
           %i.fa.fa-exchange{aria-hidden: 'true'}>
           %span{translate: 'proposal_positions_panel.change_your_vote'}
   %undecided_panel{proposal: 'proposal'}
