@@ -2,6 +2,9 @@ module.exports = new class ThreadHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_discussion')
 
+  loadWithPublicContent: ->
+    browser.get('http://localhost:8000/development/setup_public_group_with_public_content')
+
   loadWithActiveProposal: ->
     browser.get('http://localhost:8000/development/setup_proposal')
 
@@ -18,8 +21,11 @@ module.exports = new class ThreadHelper
     @enterCommentText(body)
     @submitComment()
 
+  commentForm: ->
+    element(By.css('.comment-form__comment-field'))
+
   enterCommentText: (body) ->
-    element(By.css('.comment-form__comment-field')).sendKeys(body or 'I am a comment')
+    @commentForm().sendKeys(body or 'I am a comment')
 
   submitComment: ->
     element(By.css('.comment-form__submit-button')).click()
@@ -127,3 +133,9 @@ module.exports = new class ThreadHelper
 
   confirmThreadDeletion: ->
     element(By.css('.delete_thread_form__submit')).click()
+
+  threadOptionsDropdown: ->
+    element(By.css('.thread-context__dropdown'))
+
+  volumeOptions: ->
+    element(By.css('.notification-volume'))

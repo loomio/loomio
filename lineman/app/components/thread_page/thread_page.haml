@@ -22,7 +22,7 @@
           %button.thread-context__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
             .sr-only{translate: 'thread_context.thread_options'}
             %i.fa.fa-fw.fa-chevron-down{aria-hidden: 'true'}
-          .dropdown-menu.dropdown-menu-right
+          .thread-context__dropdown.dropdown-menu.dropdown-menu-right
             %ul.dropdown-menu-items
               %li.dropdown-menu-item{ng-if: 'threadPage.canEditDiscussion()'}
                 %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'thread_context.edit_thread'}

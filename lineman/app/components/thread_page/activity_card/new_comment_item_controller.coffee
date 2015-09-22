@@ -52,6 +52,9 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
   $scope.canDeleteComment = ->
     AbilityService.canDeleteComment($scope.comment)
 
+  $scope.showCommentActions = ->
+    AbilityService.canRespondToComment($scope.comment)
+
   $scope.like = ->
     Records.comments.like(CurrentUser, $scope.comment, renderLikedBySentence)
 

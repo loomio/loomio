@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/proposal_positions_panel/proposal_positions_panel.html'
   replace: true
-  controller: ($scope, Records, CurrentUser, ModalService, VoteForm) ->
+  controller: ($scope, Records, CurrentUser, ModalService, VoteForm, AbilityService) ->
 
     $scope.undecidedPanelOpen = false
 
@@ -23,6 +23,9 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
 
     $scope.voteIsMine = (vote) ->
       vote.authorId == CurrentUser.id
+
+    $scope.showChangeVoteOption = (vote) ->
+      AbilityService.canVoteOn($scope.proposal) and $scope.voteIsMine(vote)
 
     $scope.showUndecided = ->
       $scope.undecidedPanelOpen = true

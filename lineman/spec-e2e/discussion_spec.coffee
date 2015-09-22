@@ -84,3 +84,9 @@ describe 'Discussion Page', ->
     threadPage.selectDeleteCommentOption()
     threadPage.confirmCommentDeletion()
     expect(threadPage.activityPanel()).not.toContain('original comment right thur')
+
+  it 'hides member actions from visitors', ->
+    threadPage.loadWithPublicContent()
+    expect(threadPage.commentForm().isPresent()).toBe(false)
+    expect(threadPage.threadOptionsDropdown().isPresent()).toBe(false)
+    expect(threadPage.volumeOptions().isPresent()).toBe(false)

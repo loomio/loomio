@@ -3,7 +3,11 @@ angular.module('loomioApp').directive 'notificationVolumeDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/notification_volume/notification_volume_dropdown.html'
   replace: true
-  controller: ($scope, FlashService, Records, CurrentUser) ->
+  controller: ($scope, FlashService, Records, CurrentUser, AbilityService) ->
+
+    $scope.showVolumeDropdown = ->
+      AbilityService.canChangeThreadVolume($scope.model)
+
     $scope.saveVolume = ->
       $scope.model.changeVolume($scope.model.volume).then ->
         FlashService.success "#{$scope.translateRoot}.volume.updated"

@@ -22,6 +22,7 @@ Loomio::Application.routes.draw do
     get 'setup_all_notifications'
     get 'setup_group_with_pending_invitation'
     get 'setup_group_with_subgroups'
+    get 'setup_public_group_with_public_content'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do

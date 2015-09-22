@@ -1,20 +1,29 @@
 angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
   new class AbilityService
+
+    canAddComment: (thread) ->
+      CurrentUser.isMemberOf(thread.group())
+
+    canRespondToComment: (comment) ->
+      CurrentUser.isMemberOf(comment.group())
+
     canStartProposal: (thread) ->
       thread and
       !thread.hasActiveProposal() and
-      (@canAdministerGroup(thread.group()) or
-       thread.group().membersCanRaiseProposals)
+      @canAdministerGroup(thread.group()) or
+      (CurrentUser.isMemberOf(thread.group()) and thread.group().membersCanRaiseProposals)
 
     canEditThread: (thread) ->
+      @canAdministerGroup(thread.group()) or
       CurrentUser.isMemberOf(thread.group()) and
-        (@canAdministerGroup(thread.group()) or
-         CurrentUser.isAuthorOf(thread) or
-         thread.group().membersCanEditDiscussions)
+      (CurrentUser.isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
     canDeleteThread: (thread) ->
       @canAdministerGroup(thread.group()) or
       CurrentUser.isAuthorOf(thread)
+
+    canChangeThreadVolume: (thread) ->
+      CurrentUser.isMemberOf(thread.group())
 
     canVoteOn: (proposal) ->
       proposal.isActive() and
@@ -28,7 +37,7 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canEditProposal: (proposal) ->
       proposal.isActive() and
       proposal.canBeEdited() and
-      (@canAdministerGroup(proposal.group()) or CurrentUser.isAuthorOf(proposal))
+      @canAdministerGroup(proposal.group()) or (CurrentUser.isMemberOf(proposal.group()) and CurrentUser.isAuthorOf(proposal))
 
     canCreateOutcomeFor: (proposal) ->
       @canSetOutcomeFor(proposal) and !proposal.hasOutcome()
@@ -62,11 +71,13 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
       @canAdministerGroup(group)
 
     canEditComment: (comment) ->
+      CurrentUser.isMemberOf(comment.group()) and
       CurrentUser.isAuthorOf(comment) and
       (comment.isMostRecent() or comment.group().membersCanEditComments)
 
     canDeleteComment: (comment) ->
-      CurrentUser.isAuthorOf(comment) or
+      (CurrentUser.isMemberOf(comment.group()) and
+      CurrentUser.isAuthorOf(comment)) or
       @canAdministerGroup(comment.group())
 
     canRemoveMembership: (membership) ->
