@@ -28,7 +28,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       email: $scope.fragment
 
     $scope.invitableGroups = ->
-      groups = _.filter $scope.availableGroups(), (group) ->
+      groups = _.filter $scope.userGroups(), (group) ->
         group.id != $scope.group.id and
         matchesFragment(group.name) and
         !existsAlready('group', 'id', group.id)
@@ -42,20 +42,20 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         count:    group.membershipsCount
 
     $scope.invitableUsers = ->
-      memberIds = _.uniq _.flatten _.map $scope.availableGroups(), (group) -> group.memberIds()
+      memberIds = _.uniq _.flatten _.map $scope.userGroups(), (group) -> group.memberIds()
       memberIds = _.filter memberIds, (memberId) ->
         !_.contains $scope.group.memberIds(), memberId
       users = _.filter Records.users.find(memberIds), (user) ->
-        !user.membershipFor($scope.group) and
+        !user.isMemberOf($scope.group) and
         matchesFragment(user.searchFragment, user.name, user.username) and
         !existsAlready('user', 'id', user.id)
 
       _.map users, (user) ->
         id:       user.id
         type:     'user'
+        user:     user
         name:     user.name
         subtitle: "@#{user.username}"
-        image:    user.avatarUrl
 
     $scope.invitableContacts = ->
       contacts = _.filter CurrentUser.contacts(), (contact) ->
@@ -66,7 +66,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         type:     'contact'
         name:     contact.name
         email:    contact.email
-        subtitle: "<#{contact.email}>"
+        subtitle: "<#{contact.email}> (#{contact.source})"
         image:    contact.avatarUrl
 
     matchesFragment = (fields...) ->
@@ -76,7 +76,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     existsAlready = (type, uniqueField, value) ->
       _.some _.map $scope.invitations, (invitation) ->
-        invitation.type == type and invitation[uniqueField] = value
+        invitation.type == type and invitation[uniqueField] == value
 
     $scope.getInvitables = ->
       return if $scope.fragment == ''
@@ -95,12 +95,18 @@ angular.module('loomioApp').factory 'InvitationForm', ->
                      _.compact([$scope.invitableEmail() if $scope.fragmentIsValidEmail()])), 5
 
     $scope.availableGroups = ->
-      _.filter CurrentUser.groups(), (group) ->
+      _.filter $scope.userGroups(), (group) ->
         AbilityService.canAddMembers(group)
+
+    $scope.userGroups = ->
+      CurrentUser.groups()
 
     $scope.addInvitation = (invitation) ->
       $scope.fragment = ''
       $scope.invitations.push invitation
+
+    $scope.removeInvitation = (invitation) ->
+      _.remove $scope.invitations, invitation
 
     $scope.submit = ->
       $scope.isDisabled = true

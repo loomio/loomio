@@ -41,7 +41,7 @@ describe 'InvitationFormController', ->
 
   describe 'contacts', ->
     beforeEach ->
-      @contact = @factory.create 'contacts', name: 'RickDazo', email: 'dick@razo.com', user_id: @currentUser.id
+      @contact = @factory.create 'contacts', name: 'RickDazo', email: 'dick@razo.com', source: 'gmail', user_id: @currentUser.id
 
     it 'can find a contact with no search query', ->
       expect(@scope.invitables().length).toBe(1)
@@ -55,7 +55,7 @@ describe 'InvitationFormController', ->
     it 'displays a contact as an invitable if it matches the search query by email', ->
       @scope.fragment = 'dick'
       expect(@scope.invitables().length).toBe(1)
-      expect(@scope.invitables()[0].subtitle).toBe '<dick@razo.com>'
+      expect(@scope.invitables()[0].subtitle).toBe '<dick@razo.com> (gmail)'
 
     it 'does not display a contact as an invitable if it does not match the search query', ->
       @scope.fragment = 'rizzo'

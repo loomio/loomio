@@ -9,7 +9,7 @@ class API::MembershipsController < API::RestfulController
 
   def invitables
     @memberships = page_collection visible_invitables
-    respond_with_collection scope: { q: params[:q] }
+    respond_with_collection scope: { q: params[:q], include_inviter: false }
   end
 
   def my_memberships

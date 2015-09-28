@@ -121,6 +121,20 @@ describe API::MembershipsController do
         expect(users).to include alien_named_biff.id
       end
 
+      it 'does not return duplicate users' do
+        third_group = create(:group)
+        third_group.users << user
+        third_group.users << user_named_biff
+        another_group.users << user_named_biff
+
+        get :invitables, group_id: group.id, q: 'biff', format: :json
+        json = JSON.parse(response.body)
+        memberships = json['memberships'].map { |m| m['id'] }
+        users = json['users'].map { |u| u['id'] }
+        expect(users).to include user_named_biff.id
+        expect(users.length).to eq memberships.length
+      end
+
     end
   end
 
