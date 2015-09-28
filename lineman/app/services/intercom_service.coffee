@@ -10,6 +10,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
        email: CurrentUser.email
        user_id: CurrentUser.id
        created_at: CurrentUser.createdAt
+       angular_ui: true
 
     shutdown: ->
       return unless window? and window.Intercom?
