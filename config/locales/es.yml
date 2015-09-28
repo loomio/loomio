@@ -46,6 +46,8 @@ es:
         subject: Alguien te ha invitado a unirte a su grupo en Loomio
     registrations:
       sign_up: Crear cuenta
+    sessions:
+      signed_out: "Sesión cerrada satisfactoriamente "
   error:
     access_denied: No tienes permisos para hacer esto.
     cant_join_subgroup: No puedes unirte a un subgrupo si no eres miembro del grupo superior.
@@ -669,6 +671,22 @@ es:
     vote: Puedes cambiar tu posición en cualquier momento
   pricing_page:
     header: Precio
+    gift: Regalo
+    standard: "Estándar "
+    plus: Más
+    free_trial_html: "Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No requiere tarjeta de crédito. "
+    get_started_for_free: "Comienza gratis "
+    gift_body_html: "<p> Para grupos que no tienen el presupuesto para pagar una suscripción.</p>\n<p> Usándolo a donación, sin un pago regular requerido.</p>\n"
+    gift_donation_ask: Le pediremos a los miembros de tu grupo por una donación.
+    unlimited_members: Cantidad ilimitada de miembros
+    unlimited_decisions: "Cantidad ilimitada de decisiones "
+    email_support: "soporte por correo electrónico "
+    standard_price_html: "<strong>$19</strong>/al mes<br><span>o</span>$190/al año\n"
+    plus_body: "Todo en Estándar, más: "
+    premium_support: "soporte especial "
+    custom_url: "URL personalizado "
+    usage_statistics: Estadísticas de uso
+    plus_price_html: "<strong>$179</strong>/al mes<br><span>o</span> $1790/al año\n"
   contribution:
     any_amount: "Cualquier contribución única "
     currency_desc: La suma está en dólares americanos
@@ -1153,3 +1171,11 @@ es:
     media: Medios de comunicación
     health: Salud
   start_your_group: Empieza un grupo
+  webhooks:
+    slack:
+      motion_closed: "*%{name}* ha cerrado"
+      motion_closing_soon: "*%{name}* tiene una propuesta cerrando en 24 horas"
+      motion_outcome_created: "*%{author}* publico un resultado en *%{name}*"
+      motion_outcome_updated: "*%{author}* actualizo el resultado para *%{name}*"
+      new_motion: "*%{author}* comenzó una nueva propuesta en *%{name}*"
+      view_it_on_loomio: Velo en Loomio
