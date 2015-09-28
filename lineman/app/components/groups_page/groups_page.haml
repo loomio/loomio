@@ -13,5 +13,5 @@
             %h2.groups-page__parent-group-name{id: '{{group.key}}'}
               %a{lmo-href-for: 'group'} {{group.name}}
           %ul.groups-page__subgroups{ng-if: 'group.subgroups().length > 0'}
-            %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups() track by subgroup.id | orderBy:groupsPage.groupName'}
+            %li.groups-page__subgroup{ng-repeat: 'subgroup in group.subgroups() | orderBy:"name" track by subgroup.id'}
               %a{lmo-href-for: 'subgroup'} {{subgroup.name}}
