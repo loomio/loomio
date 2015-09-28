@@ -17,6 +17,9 @@ module.exports = new class ThreadHelper
   loadWithSetOutcome: ->
     browser.get('http://localhost:8000/development/setup_closed_proposal_with_outcome')
 
+  loadWithMultipleDiscussions: ->
+    browser.get('http://localhost:8000/development/setup_multiple_discussions')
+
   addComment: (body) ->
     @enterCommentText(body)
     @submitComment()
@@ -87,14 +90,23 @@ module.exports = new class ThreadHelper
   clickThreadOptionsDropdownEdit: ->
     element(By.css('.thread-context__dropdown-options-edit')).click()
 
+  clickThreadOptionsDropdownMove: ->
+    element(By.css('.thread-context__dropdown-options-move')).click()
+
   threadTitleInput: ->
     element(By.css('.discussion-form__title-input')).clear().sendKeys('Edited thread title')
+
+  threadDestinationInput: ->
+    element(By.css('.move-thread-form__group-dropdown'))
 
   contextInput: ->
     element(By.css('.discussion-form__description-input'))
 
   clickUpdateThreadButton: ->
     element(By.buttonText('Update thread')).click()
+
+  clickMoveThreadButton: ->
+    element(By.buttonText('Move thread')).click()
 
   editThreadTitle: ->
     @clickThreadOptionsDropdownButton()
@@ -115,6 +127,12 @@ module.exports = new class ThreadHelper
     @contextInput().clear().sendKeys('New edited thread context')
     @clickUpdateThreadButton()
 
+  moveThread: (groupName) ->
+    @clickThreadOptionsDropdownButton()
+    @clickThreadOptionsDropdownMove()
+    @threadDestinationInput().sendKeys(groupName)
+    @clickMoveThreadButton()
+
   activityItemList: ->
     element(By.css('.activity-card')).getText()
 
@@ -124,6 +142,9 @@ module.exports = new class ThreadHelper
   openEditThreadForm: ->
     @openThreadOptionsDropdown()
     element(By.css('.thread-context__dropdown-options-edit')).click()
+
+  groupTitle: ->
+    element(By.css('.thread-group__name')).getText()
 
   discussionTitle: ->
     element(By.css('.thread-context')).getText()

@@ -37,6 +37,13 @@ describe 'Discussion Page', ->
       alert.accept()
       expect(threadPage.discussionTitle()).toContain('What star sign are you?')
 
+  describe 'move thread', ->
+    it 'lets you move a thread', ->
+      threadPage.loadWithMultipleDiscussions()
+      threadPage.moveThread('Point Break')
+      expect(threadPage.groupTitle()).toContain('Point Break')
+      expect(flashHelper.flashMessage()).toContain('Thread has been moved to Point Break')
+
   describe 'delete thread', ->
 
     it 'lets coordinators and thread authors delete threads', ->

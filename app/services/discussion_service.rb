@@ -56,6 +56,15 @@ class DiscussionService
     event
   end
 
+  def self.move(discussion:, params:, actor:)
+    destination = Group.find_by id: params[:group_id]
+    actor.ability.authorize! :move_discussions_to, destination
+    actor.ability.authorize! :move, discussion
+
+    discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
+    discussion
+  end
+
   def self.update_reader(discussion:, params:, actor:)
     reader = DiscussionReader.for(discussion: discussion, user: actor)
     actor.ability.authorize! :show, discussion
@@ -73,4 +82,13 @@ class DiscussionService
     target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]).first || discussion
     DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at
   end
+
+  def self.moved_discussion_privacy_for(discussion, destination)
+    case destination.discussion_privacy_options
+    when 'public_only'  then false
+    when 'private_only' then true
+    else                     discussion.private
+    end
+  end
+
 end

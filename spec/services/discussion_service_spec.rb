@@ -3,7 +3,9 @@ require 'rails_helper'
 describe 'DiscussionService' do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
-  let(:discussion) { create(:discussion, author: user) }
+  let(:group) { create(:group) }
+  let(:another_group) { create(:group, is_visible_to_public: false) }
+  let(:discussion) { create(:discussion, author: user, group: group) }
   let(:comment) { double(:comment,
                          save!: true,
                          valid?: true,
@@ -123,6 +125,62 @@ describe 'DiscussionService' do
       another_discussion = create(:discussion)
       expect { DiscussionService.update_reader discussion: another_discussion, params: { starred: true }, actor: user }.to raise_error CanCan::AccessDenied
       expect(DiscussionReader.for(user: user, discussion: another_discussion).starred).to eq false
+    end
+  end
+
+  describe 'move' do
+    it 'can move a discussion to another group the user is a member of' do
+      group.users << user
+      another_group.users << user
+      DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
+      expect(discussion.reload.group).to eq another_group
+    end
+
+    it 'updates the privacy for private discussion only groups' do
+      group.users << user
+      another_group.users << user
+      another_group.update_column :discussion_privacy_options, 'public_only'
+      discussion.update private: true
+      DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
+      expect(discussion.reload.private).to eq false
+    end
+
+    it 'updates the privacy for public discussion only groups' do
+      group.users << user
+      another_group.users << user
+      another_group.update_column :discussion_privacy_options, 'private_only'
+      discussion.update private: false
+      DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
+      expect(discussion.reload.private).to eq true
+    end
+
+    it 'can move a discussion the user is author of' do
+      group.admins << user
+      another_group.users << user
+      discussion.update author: another_user
+      DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
+      expect(discussion.reload.group).to eq another_group
+    end
+
+    it 'does not update other discussion attributes' do
+      group.admins << user
+      another_group.users << user
+      DiscussionService.move(discussion: discussion, params: { group_id: another_group.id, title: 'teehee!' }, actor: user)
+      expect(discussion.reload.title).not_to eq 'teehee!'
+    end
+
+    it 'does not move a discussion the user cannot move' do
+      group.users << user
+      another_group.users << user
+      discussion.update author: another_user
+      expect { DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user) }.to raise_error CanCan::AccessDenied
+      expect(discussion.reload.group).to_not eq another_group.id
+    end
+
+    it 'does not move a discussion to a group the user is not a member of' do
+      group.users << user
+      expect { DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user) }.to raise_error CanCan::AccessDenied
+      expect(discussion.reload.group).to_not eq another_group.id
     end
   end
 

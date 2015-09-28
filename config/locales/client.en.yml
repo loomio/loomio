@@ -636,6 +636,7 @@ en:
     aria_label: 'Thread context'
     thread_options: 'Thread options'
     edit_thread: 'Edit thread'
+    move_thread: 'Move thread'
     delete_thread: 'Delete thread'
 
   delete_thread_form:
@@ -645,6 +646,12 @@ en:
     messages:
       success: Thread deleted
 
+  move_thread_form:
+    title: Move thread
+    body: 'Destination group:'
+    confirm: Move thread
+    messages:
+      success: Thread has been moved to {{name}}
 
   activity_card:
     new_activity: New Activity
