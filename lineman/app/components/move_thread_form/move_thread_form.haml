@@ -1,0 +1,16 @@
+%form{ng-submit: 'submit()'}
+  .lmo-disabled-form{ng-show: 'isDisabled'}
+  .move-thread-form
+    .modal-header
+      %button{type: 'button', class: 'close', ng-click: '$close()'}
+        %span{aria-hidden: 'true'} &times;
+        %span.sr-only{translate: 'common.action.cancel'}
+      %h1.lmo-h1{translate: 'move_thread_form.title'}
+
+    .modal-body
+      %label{for: 'group-dropdown', translate: 'move_thread_form.body'}
+      %select.move-thread-form__group-dropdown.form-control#group-dropdown{ng-model: 'discussion.groupId', ng-required: true, ng-options: 'group.id as group.fullName for group in availableGroups() | orderBy: "fullName"'}
+
+    .modal-footer
+      %button.btn.btn-primary.move-thread-form__submit{type: 'submit', translate: 'move_thread_form.confirm'}
+      %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

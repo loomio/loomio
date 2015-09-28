@@ -22,9 +22,10 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, $f
     success = (scope, model, options) ->
       (response) ->
         FlashService.dismiss()
-        FlashService.success options.flashSuccess, options.flashOptions if options.flashSuccess?
-        scope.$close()                                                  if typeof scope.$close is 'function'
-        options.successCallback(response)                               if typeof options.successCallback is 'function'
+        if options.flashSuccess?
+          FlashService.success options.flashSuccess, calculateFlashOptions(options.flashOptions)
+        scope.$close()                                          if typeof scope.$close is 'function'
+        options.successCallback(response)                       if typeof options.successCallback is 'function'
 
     failure = (scope, model, options) ->
       (response) ->
@@ -60,3 +61,8 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, $f
           ).finally(
             cleanup(scope)
           )
+
+    calculateFlashOptions = (options) ->
+      _.each _.keys(options), (key) ->
+        options[key] = options[key]() if typeof options[key] is 'function'
+      options

@@ -4,13 +4,13 @@
 
     %section.media.thread-group{aria-label: "{{ 'thread_group.aria_label' | translate }}"}
       .media-left.thread-group__icon{aria-hidden: 'true'}
-        %img.thread-group-logo{ng-src: "{{threadPage.group.logoUrl()}}"}
+        %img.thread-group-logo{ng-src: "{{threadPage.group().logoUrl()}}"}
       .media-body.thread-group__name
-        %a{ng_show: 'threadPage.group.parentId', lmo-href-for: 'threadPage.group.parent()'}
-          {{threadPage.group.parentName()}}
-        %span{ng_show: 'threadPage.group.parentId', aria-label: '-'}> >
-        %a{lmo-href-for: 'threadPage.group'}
-          {{threadPage.group.name}}
+        %a{ng_show: 'threadPage.group().parentId', lmo-href-for: 'threadPage.group().parent()'}
+          {{threadPage.group().parentName()}}
+        %span{ng_show: 'threadPage.group().parentId', aria-label: '-'}> >
+        %a{lmo-href-for: 'threadPage.group()'}
+          {{threadPage.group().name}}
 
     %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
       %h2.lmo-card-heading{aria-hidden: 'true', translate: 'context_card.heading'}
@@ -24,10 +24,12 @@
             %i.fa.fa-fw.fa-chevron-down{aria-hidden: 'true'}
           .thread-context__dropdown.dropdown-menu.dropdown-menu-right
             %ul.dropdown-menu-items
-              %li.dropdown-menu-item{ng-if: 'threadPage.canEditDiscussion()'}
-                %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editDiscussion()', translate: 'thread_context.edit_thread'}
-              %li.dropdown-menu-item{ng-if: 'threadPage.canDeleteDiscussion()'}
-                %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteDiscussion()', translate: 'thread_context.delete_thread'}
+              %li.dropdown-menu-item{ng-if: 'threadPage.canEditThread()'}
+                %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread'}
+              %li.dropdown-menu-item{ng-if: 'threadPage.canMoveThread()'}
+                %a.thread-context__dropdown-options-move.dropdown-menu-item-label{href: '', ng-click: 'threadPage.moveThread()', translate: 'thread_context.move_thread'}
+              %li.dropdown-menu-item{ng-if: 'threadPage.canDeleteThread()'}
+                %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteThread()', translate: 'thread_context.delete_thread'}
       .clearfix
       %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
         {{threadPage.discussion.title}}

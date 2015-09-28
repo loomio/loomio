@@ -102,6 +102,7 @@ Loomio::Application.routes.draw do
       patch :set_volume, on: :member
       patch :star, on: :member
       patch :unstar, on: :member
+      patch :move, on: :member
       get :dashboard, on: :collection
       get :inbox, on: :collection
     end

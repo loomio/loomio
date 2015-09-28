@@ -71,7 +71,7 @@ class Ability
       (user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export'))
     end
 
-    can [:members_autocomplete, :set_volume, :see_members], Group do |group|
+    can [:members_autocomplete, :set_volume, :see_members, :move_discussions_to], Group do |group|
       user_is_member_of?(group.id)
     end
 
@@ -276,4 +276,3 @@ class Ability
 
   end
 end
-

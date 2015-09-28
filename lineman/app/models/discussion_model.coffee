@@ -118,3 +118,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
       if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
         @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
         @lastReadSequenceId = sequenceId
+
+    move: =>
+      @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
