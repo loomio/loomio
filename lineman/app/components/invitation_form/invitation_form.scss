@@ -27,6 +27,17 @@
   &:last { padding-bottom: 0 };
 }
 
-.invitation-form__current-invitations {
-  margin-bottom: 10px;
+.invitation-form__invitations {
+  padding: 15px;
+  background: white;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  border-radius: 5px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.invitation-form__avatar-image img {
+  width: 50px;
+  height: 50px;
 }

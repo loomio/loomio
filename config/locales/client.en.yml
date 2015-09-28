@@ -458,6 +458,7 @@ en:
     import_contacts: 'Import contacts'
     instructions: 'Enter names or email addresses'
     invitation_message: 'Invitation Message'
+    remove_invite: 'Remove invitation'
     send_invite: 'Send {{count}} invites'
     to: 'to: '
     add_custom_message: '+ add custom message'

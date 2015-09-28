@@ -10,16 +10,19 @@
     .lmo-wrap{ng-show: 'group.id'}
       %label{for: 'invitable-input', translate: 'invitation.instructions'}
       .invitation-form__invitables-input
-        %input.invitation-form__invitable-input.form-control#invitable-input{type: 'text', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables()', typeahead-template-url: 'generated/components/invitation_form/invitable_menu.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
+        %input.invitation-form__invitable-input.form-control#invitable-input{type: 'text', ng-model: 'fragment', typeahead: 'invitable for invitable in getInvitables()', typeahead-template-url: 'generated/components/invitation_form/invitable.html', typeahead-on-select: 'addInvitation($item)', typeahead-wait-ms: '300'}
         %loading.invitation-form__loading{ng-show: 'getInvitablesExecuting'}
       %form{name: 'emailValidation'}
         %input.hidden.form-control{type: 'email', ng-model: 'fragment'}
 
     .lmo-wrap{ng-show: 'hasInvitations()'}
       %strong{translate: 'invitation.to'}
-      .invitation-form__current-invitations{ng-repeat: 'invitation in invitations track by invitation.id'}
-        %span {{invitation.name}}
-        %span{ng-show: 'invitation.subtitle'} ({{invitation.subtitle}})
+      .invitation-form__invitations
+        .invitation-form__invitation{ng-repeat: 'invitation in invitations'}
+          %button{type: 'button', class: 'close', ng-click: 'removeInvitation(invitation)'}
+            %span{aria-hidden: 'true'} &times;
+            %span.sr-only{translate: 'invitation.remove_invitation'}
+          %invitable.invitation-form__invitation{invitable: 'invitation'}
       %button.invitation-form__add-message-button.lmo-btn-link{ng-show: 'messageFieldHidden', ng-click: 'showMessageField()', translate: 'invitation.add_custom_message'}
       .invitation-form__message-input{ng-show: '!messageFieldHidden'}
         %label{for: 'message_input', translate: 'invitation.invitation_message'}
