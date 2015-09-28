@@ -424,6 +424,11 @@ en:
     heading: 'Membership Requests'
     manage_requests: Manage requests ({{count}})
 
+  group_help_card:
+    title: Help
+    ten_tips_article_title: 10 tips for making great decisions with Loomio
+    nine_ways_to_use_proposals: 9 ways to use a Loomio proposal to turn a conversation into action
+
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
