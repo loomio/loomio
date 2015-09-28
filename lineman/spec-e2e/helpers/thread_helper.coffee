@@ -139,3 +139,6 @@ module.exports = new class ThreadHelper
 
   volumeOptions: ->
     element(By.css('.notification-volume'))
+
+  angularFeedbackCard: ->
+    element(By.css('#angular-feedback-card'))
