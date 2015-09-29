@@ -52,10 +52,6 @@ class PagesController < ApplicationController
        link: "http://www.google.com/intl/en/policies/",
        description: 'Tracks page views and other usage statistics. Google gets user IP addresses and other session metadata and urls of pages being visited which have discussion titles and group names.'},
 
-      {name: "Heap Analytics",
-       link: "https://heapanalytics.com/privacy",
-       description: 'Used to measure how people are interacting with the software and identify points of the user experience that can be improved.'},
-
       {name: "Intercom",
        link: "http://docs.intercom.io/privacy",
        description: 'Our CRM system, a way for our customer support to keep in touch with users. They receive user and group names and session metadata.'},
