@@ -7,11 +7,8 @@ angular.module('loomioApp').factory 'VoteForm', ->
     $scope.$on 'modal.closing', (event) ->
       FormService.confirmDiscardChanges(event, $scope.vote)
 
-    $scope.submit = ->
-      $scope.vote.save().then ->
-        FlashService.success 'vote_form.messages.created'
-        $scope.editing = false
-        $scope.$close()
+    $scope.submit = FormService.submit $scope, $scope.vote,
+      flashSuccess: 'vote_form.messages.created'
 
     $scope.yourLastVote = ->
       $scope.vote.proposal().lastVoteByUser(CurrentUser)
