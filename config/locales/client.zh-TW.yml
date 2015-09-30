@@ -384,6 +384,10 @@ zh-TW:
   membership_requests_card:
     heading: 申請成員資格
     manage_requests: "管理申請 ({{count}})"
+  group_help_card:
+    title: 教學文件
+    ten_tips_article_title: 10 個使用 Loomio 做出好決策的祕訣
+    nine_ways_to_use_proposals: 9 個使用 Loomio 提案把討論化為行動的方法
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -416,6 +420,7 @@ zh-TW:
     import_contacts: 匯入聯絡人
     instructions: 輸入名稱或電子郵件地址
     invitation_message: 邀請訊息
+    remove_invite: 移除邀請函
     send_invite: "寄送 {{count}} 個邀請"
     to: 到
     add_custom_message: + 新增自訂訊息
@@ -584,6 +589,7 @@ zh-TW:
     aria_label: 討論串內容
     thread_options: 討論串選項
     edit_thread: 編輯討論串
+    move_thread: 移動討論串
     delete_thread: 刪除討論串
   delete_thread_form:
     title: 刪除討論串
@@ -591,6 +597,12 @@ zh-TW:
     confirm: 是的，刪除討論串
     messages:
       success: 討論串已刪除
+  move_thread_form:
+    title: 移動討論串
+    body: 目標群組：
+    confirm: 移動討論串
+    messages:
+      success: "討論串已被移動到 {{name}}"
   activity_card:
     new_activity: 新動態
     attachment_display:
