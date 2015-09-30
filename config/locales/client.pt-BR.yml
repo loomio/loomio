@@ -384,6 +384,10 @@ pt-BR:
   membership_requests_card:
     heading: Pedidos para inclusão de membros
     manage_requests: "Gerenciar pedidos ({{count}})"
+  group_help_card:
+    title: Ajuda
+    ten_tips_article_title: 10 dicas para fazer grandes decisões com Loomio
+    nine_ways_to_use_proposals: 9 maneiras de usar uma proposta no Loomio para transformar uma conversa em ação
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
@@ -416,6 +420,7 @@ pt-BR:
     import_contacts: Importar contatos
     instructions: Digite nomes ou endereços de e-mail
     invitation_message: Mensagem Convite
+    remove_invite: Retirar convite
     send_invite: "Enviar {{count}} convites"
     to: "para:"
     add_custom_message: + adicionar mensagem personalizada
@@ -584,6 +589,7 @@ pt-BR:
     aria_label: Contexto do tópico
     thread_options: Opções do tópico
     edit_thread: Editar tópico
+    move_thread: Mover tópico
     delete_thread: Apagar tópico
   delete_thread_form:
     title: Apagar tópico
@@ -591,6 +597,12 @@ pt-BR:
     confirm: "Sim, apague este tópico"
     messages:
       success: Tópico apagado
+  move_thread_form:
+    title: Mover tópico
+    body: "Grupo de destino:"
+    confirm: Mover tópico
+    messages:
+      success: "Tópico foi movido para {{name}}"
   activity_card:
     new_activity: Nova Atividade
     attachment_display:
