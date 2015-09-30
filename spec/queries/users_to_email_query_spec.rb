@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe UsersToEmailQuery do
   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
+  let(:user_left_group) { FactoryGirl.create :user, all_emails_disabled }
   let(:user_thread_loud) { FactoryGirl.create :user, all_emails_disabled }
   let(:user_thread_normal) { FactoryGirl.create :user, all_emails_disabled }
   let(:user_thread_quiet) { FactoryGirl.create :user, all_emails_disabled }
@@ -23,6 +24,10 @@ describe UsersToEmailQuery do
     parent_comment
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
+
+    m = discussion.group.add_member!(user_left_group)
+    DiscussionReader.for(discussion: discussion, user: user_left_group).set_volume! :loud
+    m.destroy
 
     discussion.group.add_member!(user_thread_loud).set_volume! :mute
     discussion.group.add_member!(user_thread_normal).set_volume! :mute
@@ -48,6 +53,8 @@ describe UsersToEmailQuery do
     users = UsersToEmailQuery.new_comment(comment)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
+
+    users.should_not include user_left_group
 
     users.should_not include user_membership_normal
     users.should_not include user_thread_normal
