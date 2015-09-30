@@ -43,7 +43,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
     applyFilters = (view, filters, queryType) ->
       filters = [].concat filters
 
-      view.applyFind(discussionReaderId: { $ne: null })
+      view.applyFind(discussionReaderId: { $gt: 0 })
 
       switch queryType
         when 'important' then view.applyWhere (thread) -> thread.isImportant()
