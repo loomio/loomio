@@ -1,6 +1,7 @@
 class InboxController < BaseController
   include DiscussionIndexCacheHelper
   after_filter :clear_discussion_index_caches, only: :index
+  skip_before_filter :boot_angular_ui
 
   def index
     load_inbox
