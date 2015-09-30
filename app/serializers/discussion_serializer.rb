@@ -3,10 +3,10 @@ class DiscussionSerializer < ActiveModel::Serializer
   def self.attributes_from_reader(*attrs)
     attrs.each do |attr|
       case attr
-      when :discussion_reader_id then define_method attr, -> { reader.try(:id) }
-      else                            define_method attr, -> { reader.try(attr) }
+      when :discussion_reader_id then define_method attr, -> { reader.id }
+      else                            define_method attr, -> { reader.send(attr) }
       end
-      define_method :"#{attr}_included?", -> { reader.present? }
+      define_method :"include_#{attr}?", -> { reader.present? }
     end
     attributes *attrs
   end
