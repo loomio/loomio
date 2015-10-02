@@ -12,7 +12,7 @@
   color: $primary-text-color;
   display: inline-block;
   margin-bottom: 0px;
-  @media (min-width: $screen-xs-min){width: 250px;}
+  @media (min-width: $screen-xs-min){width: 200px;}
 }
 
 .navbar-search-input::-webkit-input-placeholder,
