@@ -28,6 +28,7 @@ GIT
 GIT
   remote: git://github.com/loomio/private_pub.git
   revision: 48feb4b0eaead7480157a41719efbb438bdb425e
+  tag: 1.0.4
   specs:
     private_pub (1.0.3)
       faye
