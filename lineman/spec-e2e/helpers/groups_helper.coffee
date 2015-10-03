@@ -72,7 +72,7 @@ module.exports = new class GroupsHelper
     element(By.css('.group-page')).getText()
 
   groupPageHeader: ->
-    element(By.css('.group-page__name h1'))
+    element(By.css('.group-theme__name h1'))
 
   clickJoinGroupButton: ->
     element(By.css('.join-group-button__join-group')).click()
@@ -133,4 +133,4 @@ module.exports = new class GroupsHelper
     element(By.css('.start-group-form__submit')).click()
 
   groupName: ->
-    element(By.css('.group-page__name')).getText()
+    element(By.css('.group-theme__name')).getText()

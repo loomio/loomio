@@ -144,7 +144,7 @@ module.exports = new class ThreadHelper
     element(By.css('.thread-context__dropdown-options-edit')).click()
 
   groupTitle: ->
-    element(By.css('.thread-group__name')).getText()
+    element(By.css('.group-theme__name--compact')).getText()
 
   discussionTitle: ->
     element(By.css('.thread-context')).getText()
