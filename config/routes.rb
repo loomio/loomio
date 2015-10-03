@@ -222,6 +222,7 @@ Loomio::Application.routes.draw do
 
   get 'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
+  post 'enable_angular' => 'start_group#enable_angular'
 
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do

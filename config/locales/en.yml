@@ -312,6 +312,11 @@ en:
   #
 
   start_group_form:
+    enable_angular:
+      header: New groups start in Loomio 1.0
+      subtitle: "To start a new group, you'll need to switch to the brand new version of Loomio:"
+      switch_to_angular: Start a group in the new Loomio
+      helptext: "We've rebuilt Loomio from the ground up. You can read about what's new <a href=\"/angular\">here</a>.<br/>You'll be able to switch back to the old version any time you like."
     header: "Start a new group"
     form_error: "Some information is missing or incorrect."
     name: "Your name"
