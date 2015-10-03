@@ -1,5 +1,7 @@
-.container.main-container
-  %main.membership-requests-page{ng-if: 'membershipRequestsPage.group'}
+.loading-wrapper.container.main-container
+  %loading{ng-if: '!membershipRequestsPage.group'}
+  %main.memberships-request-page.main-container{ng-if: 'membershipRequestsPage.group'}
+    %group_theme{group: 'membershipRequestsPage.group'}
     .membership-requests-page__pending-requests
       %h2.lmo-h2{translate: 'membership_requests_page.heading'}
       %ul{ng-if: 'membershipRequestsPage.group.hasPendingMembershipRequests()'}
