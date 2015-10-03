@@ -1,16 +1,7 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!threadPage.discussion'}
   %main.thread-page{ng-if: 'threadPage.discussion'}
-
-    %section.media.thread-group{aria-label: "{{ 'thread_group.aria_label' | translate }}"}
-      .media-left.thread-group__icon{aria-hidden: 'true'}
-        %img.thread-group-logo{ng-src: "{{threadPage.group().logoUrl()}}"}
-      .media-body.thread-group__name
-        %a{ng_show: 'threadPage.group().parentId', lmo-href-for: 'threadPage.group().parent()'}
-          {{threadPage.group().parentName()}}
-        %span{ng_show: 'threadPage.group().parentId', aria-label: '-'}> >
-        %a{lmo-href-for: 'threadPage.group()'}
-          {{threadPage.group().name}}
+    %group_theme{group: 'threadPage.discussion.group()', compact: 'true'}
 
     %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
       %h2.lmo-card-heading{aria-hidden: 'true', translate: 'context_card.heading'}

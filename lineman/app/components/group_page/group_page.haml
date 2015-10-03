@@ -1,28 +1,7 @@
 .loading-wrapper.container.main-container
   %loading{ng-if: '!groupPage.group'}
   %main.group-page{ng-if: 'groupPage.group'}
-    .group-page__cover{ng-style:'groupPage.coverStyle()'}
-      %button.lmo-btn-link.group-page__upload-photo{ng-click: 'groupPage.openUploadCoverForm()', ng-show: 'groupPage.canUploadPhotos()'}
-        %i.fa.fa-lg.fa-camera
-    %section.group-page__header{aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
-      .group-page__logo{ng-style:'groupPage.logoStyle()', alt: "{{ 'group_page.group_logo' | translate }}"}
-        %button.lmo-btn-link.group-page__upload-photo{ng-click: 'groupPage.openUploadLogoForm()', ng-show: 'groupPage.canUploadPhotos()'}
-          %i.fa.fa-lg.fa-camera
-      .group-page__name-and-actions
-        .group-page__name
-          %h1.lmo-h1
-            %a{ng_show: 'groupPage.group.parentId', href: '/g/{{groupPage.group.parent().key}}'}
-              {{groupPage.group.parentName()}}
-            %span{ng_show: 'groupPage.group.parentId'}> \-
-            {{groupPage.group.name}}
-        %group_privacy_dropdown{group: 'groupPage.group'}
-        .group-page__member-actions.lmo-btn-group.lmo-btn-group-right{ng-if: 'groupPage.isMember()'}
-          .lmo-btn-wrapper
-            %group_actions_dropdown{group: 'groupPage.group'}
-          .lmo-btn-wrapper
-            %notification_volume_dropdown{translate-root: 'group_page', group: 'groupPage.group'}
-        %join_group_button{group: 'groupPage.group'}
-        .clearfix
+    %group_theme{group: 'groupPage.group', home-page: 'true'}
     .row
       .col-sm-8
         %section.group-page__description{aria-labelledby: 'description-card-title'}
