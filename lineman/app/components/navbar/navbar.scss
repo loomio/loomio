@@ -40,6 +40,18 @@
   margin: 0;
 }
 
+.lmo-navbar__logo {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+}
+
+.lmo-navbar__logo img {
+  height: 30px;
+  position: relative;
+  right: 44px;
+}
+
 .lmo-navbar__item--selected {
   a{ color: $primary-text-color; }
   position: relative;
