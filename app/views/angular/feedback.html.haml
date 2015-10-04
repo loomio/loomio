@@ -1,0 +1,10 @@
+.container
+  %section.first
+    .inner-container
+      .row
+        .col-md-12
+          %h1= t(:"angular.disable.title")
+          %p= t(:'angular.feedback.give_feedback')
+          = semantic_form_for @feedback, url: angular_save_feedback_path do |f|
+            = f.input :feedback, as: :text, label: false, placeholder: t(:"angular.feedback.placeholder"), html_options: { class: 'feedback-form' }
+            = f.submit t(:"angular.feedback.button_text"), class: 'btn btn-primary'

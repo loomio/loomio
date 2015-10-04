@@ -1469,6 +1469,3 @@ en:
       motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
       new_motion: "*%{author}* started a new proposal in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
-
-  feedback_form:
-    placeholder: "We'd love to hear your feedback!"

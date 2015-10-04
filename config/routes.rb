@@ -27,8 +27,10 @@ Loomio::Application.routes.draw do
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
     get '/' => 'angular#index'
+    get :feedback
     post :on
     post :off
+    post :save_feedback
   end
 
   slug_regex = /[a-z0-9\-\_]*/i

@@ -13,5 +13,5 @@
             = t(:"angular.disable.body_html")
             %p= t(:'angular.disable.give_feedback')
             = semantic_form_for @feedback, url: angular_off_path do |f|
-              = f.input :feedback, as: :text, label: false, placeholder: t(:"feedback_form.placeholder"), html_options: { class: 'feedback-form' }
+              = f.input :feedback, as: :text, label: false, placeholder: t(:"angular.feedback.placeholder"), html_options: { class: 'feedback-form' }
               = f.submit t(:"angular.disable.button_text"), class: 'btn btn-primary'
