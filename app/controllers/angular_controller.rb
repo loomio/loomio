@@ -13,7 +13,7 @@ class AngularController < ApplicationController
 
   def save_feedback
     store_feedback
-    redirect_to root_url
+    redirect_to dashboard_path(feedback_given: true)
   end
 
   def on
