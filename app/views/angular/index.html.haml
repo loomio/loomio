@@ -11,12 +11,7 @@
           - else
             %h1= t(:"angular.disable.title")
             = t(:"angular.disable.body_html")
-
-            = button_to t(:"angular.disable.button_text"), angular_off_path, class: 'btn btn-primary'
-
-          %p &nbsp;
-
-          - if @enabled
             %p= t(:'angular.disable.give_feedback')
-            <iframe src="https://docs.google.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-
+            = semantic_form_for @feedback, url: angular_off_path do |f|
+              = f.input :feedback, as: :text, label: false
+              = f.submit t(:"angular.disable.button_text"), class: 'btn btn-primary'

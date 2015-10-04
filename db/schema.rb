@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903161434) do
+ActiveRecord::Schema.define(version: 20151003231231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -281,6 +281,13 @@ ActiveRecord::Schema.define(version: 20150903161434) do
   add_index "events", ["discussion_id"], name: "index_events_on_discussion_id", using: :btree
   add_index "events", ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id", using: :btree
   add_index "events", ["sequence_id"], name: "index_events_on_sequence_id", using: :btree
+
+  create_table "feedback_responses", force: :cascade do |t|
+    t.text    "feedback"
+    t.string  "version"
+    t.integer "visit_id"
+    t.integer "user_id"
+  end
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
