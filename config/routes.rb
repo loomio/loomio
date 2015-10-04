@@ -45,6 +45,7 @@ Loomio::Application.routes.draw do
       get :weekly_activity
       get :cohorts
       get :aaarrr
+      get :feedback_responses
     end
   end
 

@@ -5,6 +5,7 @@ class AddFeedback < ActiveRecord::Migration
       t.string :version
       t.references :visit
       t.references :user
+      t.boolean :processed, default: false
     end
   end
 end

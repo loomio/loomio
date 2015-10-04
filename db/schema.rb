@@ -287,6 +287,7 @@ ActiveRecord::Schema.define(version: 20151003231231) do
     t.string  "version"
     t.integer "visit_id"
     t.integer "user_id"
+    t.boolean "processed", default: false
   end
 
   create_table "group_hierarchies", id: false, force: :cascade do |t|
