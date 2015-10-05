@@ -24,18 +24,18 @@
   margin-bottom: 10px;
 }
 
-.thread-item__attachments {
-}
-
-.thread-item__attachment {
-}
-
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
 }
 
 .thread-item__actions {
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.thread-item__timestamp {
+  display: inline-block;
 }
 
 .thread-item__vote-icon {
