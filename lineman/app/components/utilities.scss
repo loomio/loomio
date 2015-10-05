@@ -261,6 +261,15 @@ label.label-with-details{
   h4 {
     @include fontHelveticaBold;
   }
+  ul{
+    padding: 0 0 10px 24px;
+  }
+  ul li{
+    list-style: disc;
+  }
+  blockquote{
+    font-size: inherit;
+  }
 }
 
 .lmo-disabled-form {
