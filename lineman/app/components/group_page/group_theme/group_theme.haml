@@ -5,7 +5,8 @@
 
   %section.group-theme__header--compact{ng-if: 'compact', aria-label: "{{ 'thread_group.aria_label | translate'}}"}
     .group-theme__logo--compact{aria-hidden: 'true'}
-      %img{ng-src: "{{group.logoUrl()}}"}
+      %a{lmo-href-for: 'group'}
+        %img{ng-src: "{{group.logoUrl()}}"}
     .group-theme__name--compact
       %a{ng-if: 'group.isSubgroup()', lmo-href-for: 'group.parent()'}
         {{group.parentName()}}
