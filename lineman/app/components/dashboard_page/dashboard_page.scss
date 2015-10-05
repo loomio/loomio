@@ -31,7 +31,7 @@
 
 .dashboard-page__group-name a{
   @include fontHelveticaMedium;
-  @include fontCrapName;
+  @include fontMedium;
   line-height: 30px;
   color: $grey-on-grey;
   margin-left: 16px;

@@ -248,11 +248,11 @@ label.label-with-details{
 .lmo-markdown-wrapper {
   img { max-width: 100%; }
   h1 {
-    @include fontGrande;
+    @include fontLarge;
     @include fontHelveticaBold;
   }
   h2 {
-    @include fontLarge;
+    @include fontMedLarge;
     @include fontHelveticaBold;
   }
   h3 {

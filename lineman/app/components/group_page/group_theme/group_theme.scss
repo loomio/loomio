@@ -75,8 +75,8 @@
 }
 
 .group-theme__name--compact a {
+  @include fontHelveticaMedium;
   color: white;
-  font-weight: bold;
 }
 
 .group-theme__privacy{

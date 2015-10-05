@@ -38,13 +38,13 @@ $block-border-color: darken($block-color, 10%);
 }
 
 @mixin fontMedium {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 20px;
 }
 
-@mixin fontCrapName{
-  font-size: 15px;
-  line-height: 20px;
+@mixin fontMedLarge {
+  font-size: 18px;
+  line-height: 25px;
 }
 
 @mixin fontLarge {
@@ -56,7 +56,6 @@ $block-border-color: darken($block-color, 10%);
   font-size: 24px;
   line-height: 32px;
 }
-
 
 @mixin fontHelvetica {
   font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
