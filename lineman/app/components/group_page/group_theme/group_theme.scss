@@ -35,6 +35,7 @@
 
 .group-theme__header--compact img {
   @include smallIcon;
+  border-radius: 3px 0 0 3px;
 }
 
 .group-theme__logo{
@@ -70,6 +71,7 @@
   background: rgba(0,0,0,.5);
   color: white;
   padding: 0 10px;
+  border-radius: 0 3px 3px 0;
 }
 
 .group-theme__name--compact a {
