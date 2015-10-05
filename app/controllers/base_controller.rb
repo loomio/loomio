@@ -28,7 +28,8 @@ class BaseController < ApplicationController
       seedRecords: CurrentUserSerializer.new(current_user),
       permittedParams: PermittedParamsSerializer.new({}),
       locales: angular_locales,
-      baseUrl: root_url
+      baseUrl: root_url,
+      safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS
     }
 
     render 'layouts/angular', layout: false
