@@ -1,0 +1,59 @@
+.choose-plan-modal
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: 'true'} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title{ng-if: '!group.trialIsOverdue()', translate: 'choose_plan_modal.heading'}
+    %h1.lmo-h1.modal-title{ng-if: 'group.trialIsOverdue()', translate: 'choose_plan_modal.overdue_heading'}
+
+  .modal-body
+    .choose-plan-modal__pricing-table
+      .choose-plan-modal__col
+        .choose-plan-modal__option.choose-plan-modal__option--gift
+          %h2.lmo-h2{translate: "choose_plan_modal.gift"}
+          .blank{translate: "choose_plan_modal.gift_body_html"}
+          %p.choose-plan-modal__gift-price{translate: "choose_plan_modal.gift_donation_ask"}
+          %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift.btn{ng-disabled: 'group.subscriptionKind == "gift"', ng-click: 'chooseGiftPlan()', translate: "choose_plan_modal.select"}
+      .choose-plan-modal__col
+        .choose-plan-modal__option.choose-plan-modal__option--standard
+          %h2.lmo-h2{translate: "choose_plan_modal.standard"}
+          %ul.choose-plan-modal__features-list
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.unlimited_members" | translate}}
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.unlimited_decisions" | translate}}
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.email_support" | translate}}
+          %p.choose-plan-modal__price{translate: "choose_plan_modal.standard_price_html"}
+          %button.choose-plan-modal__select-button.btn{ng-click: 'choosePaidPlan("standard")', translate: "choose_plan_modal.select"}
+      .choose-plan-modal__col
+        .choose-plan-modal__option
+          %h2.lmo-h2{translate: "choose_plan_modal.plus"}
+          %p{translate: "choose_plan_modal.plus_body"}
+          %ul.choose-plan-modal__features-list
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.premium_support" | translate}}
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.custom_url" | translate}}
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.usage_statistics" | translate}}
+          %p.choose-plan-modal__price{translate: "choose_plan_modal.plus_price_html"}
+          .choose-plan-modal__select
+            %button.choose-plan-modal__select-button.btn{ng-click: 'choosePaidPlan("plus")', translate: "choose_plan_modal.select"}
+
+  .modal-footer.lmo-clearfix
+    .row
+      .col-md-7.choose-plan-modal__support
+        %img{src: '/img/mhjb.png', alt: 'Mathew from Loomio'}
+        %p
+          %span{translate: 'choose_plan_modal.support_before'}>
+          %a{href: '', translate: 'choose_plan_modal.support_link', ng-click: 'openIntercom()'}>
+          %span{translate: 'choose_plan_modal.support_after'}>
+      .col-md-3.col-md-offset-2.choose-plan-modal__cancel
+        %button.btn.btn.btn-success{type: 'button', ng-click: '$close()', translate: 'choose_plan_modal.remind_me_later'}

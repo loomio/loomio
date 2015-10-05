@@ -1,0 +1,30 @@
+.modal-dialog.modal-confirm-gift-plan-modal {
+  max-width: 450px;
+  width: auto;
+}
+
+.confirm-gift-plan-modal__gift-plan-card {
+  max-width: 310px;
+  margin: 20px auto;
+}
+
+.confirm-gift-plan-modal__confirm-button {
+  color: #fff;
+  background-color: #4185DE;
+  color: #fff;
+  i.fa { color: #fff; }
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}
+
+.confirm-gift-plan-modal__cancel-button {
+  float: left;
+}
+
+.confirm-gift-plan-modal__submit-button {
+  color: #fff;
+  background-color: #4185DE;
+  color: #fff;
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}

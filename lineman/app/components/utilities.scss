@@ -315,6 +315,14 @@ label.label-with-details{
   clear: both;
 }
 
+.lmo-subscription-button {
+  color: #fff;
+  background-color: #4185DE;
+  i.fa { color: #fff; }
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}
+
 .lmo-float--left {
   float: left;
 }

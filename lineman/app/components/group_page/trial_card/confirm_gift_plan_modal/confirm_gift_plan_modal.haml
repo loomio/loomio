@@ -1,0 +1,17 @@
+.confirm-gift-plan-modal
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: 'true'} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title{translate: 'confirm_gift_plan_modal.heading'}
+
+  .modal-body
+    .confirm-gift-plan-modal__body
+      %span{translate: 'confirm_gift_plan_modal.body'}
+      .confirm-gift-plan-modal__gift-plan-card
+        %gift_card{group: 'group'}
+
+  .modal-footer.lmo-clearfix
+    %button.confirm-gift-plan-modal__cancel-button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
+    %button.confirm-gift-plan-modal__submit-button.btn{type: 'button', ng-click: 'submit()', translate: 'confirm_gift_plan_modal.got_it'}
+

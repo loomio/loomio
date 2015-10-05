@@ -24,5 +24,12 @@ describe 'GroupService' do
       GroupService.create(group: group, actor: user)
       expect(group.reload.cover_photo).to be_blank
     end
+
+    it 'creates a new trial subscription' do
+      GroupService.create(group: group, actor: user)
+      subscription = group.reload.subscription
+      expect(subscription.kind.to_sym).to eq :trial
+      expect(subscription.expires_at.to_date).to eq 30.days.from_now.to_date
+    end
   end
 end

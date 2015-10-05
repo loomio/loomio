@@ -1,0 +1,15 @@
+- if ENV['CHARGIFY_APP_NAME']
+  - @appConfig['chargify'] = {}
+  - @appConfig['chargify']['appName'] = ENV['CHARGIFY_APP_NAME']
+  - @appConfig['chargify']['host'] = "http://#{ENV['CHARGIFY_APP_NAME']}.chargify.com/"
+
+  - @appConfig['chargify']['plans'] = {}
+  - @appConfig['chargify']['plans']['standard'] = {}
+  - @appConfig['chargify']['plans']['standard']['name'] = ENV['CHARGIFY_STANDARD_PLAN_NAME']
+  - @appConfig['chargify']['plans']['standard']['path'] = "subscribe/#{ENV['CHARGIFY_STANDARD_PLAN_KEY']}/#{ENV['CHARGIFY_STANDARD_PLAN_NAME']}"
+  - @appConfig['chargify']['plans']['plus'] = {}
+  - @appConfig['chargify']['plans']['plus']['name'] = ENV['CHARGIFY_PLUS_PLAN_NAME']
+  - @appConfig['chargify']['plans']['plus']['path'] = "subscribe/#{ENV['CHARGIFY_PLUS_PLAN_KEY']}/#{ENV['CHARGIFY_PLUS_PLAN_NAME']}"
+  - @appConfig['chargify']['nagCache'] = {}
+
+  - @appConfig['chargify']['donation_url'] = ENV['CHARGIFY_DONATION_URL']
