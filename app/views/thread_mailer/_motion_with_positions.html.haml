@@ -5,7 +5,7 @@
     %td
       = render 'motion_pie', motion: @motion
     %td
-      = render_rich_text(@motion.description, false)
+      = render_rich_text(@motion.description, true)
 %p
   = t(:proposed_when_by_who,
     when: time_ago_in_words(@motion.created_at),

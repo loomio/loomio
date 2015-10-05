@@ -4,7 +4,7 @@
   %p= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
 %h4= link_to @motion.name, motion_url(@motion, @utm_hash)
 
-= render_rich_text(@motion.description, false)
+= render_rich_text(@motion.description, true)
 
 %p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@recipient)
 
