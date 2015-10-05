@@ -48,13 +48,13 @@
 }
 
 .thread-preview__title{
-  @include fontCrapName;
   padding-left: $thinPaddingSize;
   vertical-align: top;
   @include truncateText;
 }
 
 .thread-preview__proposal-name{
+  font-size: 93%;
   padding-left: $thinPaddingSize;
   @include truncateText;
 }
@@ -72,7 +72,6 @@
 }
 
 .thread-preview__unread-count {
-  @include fontCrapName;
   color: $grey-on-white;
   min-width: 33px;
   padding-left: 5px;
