@@ -6,12 +6,10 @@
   @include fontHelveticaBold;
   margin-bottom: 0.4em;
 }
-.previous-proposals-card{
-  .proposal-expanded{
-    border-bottom: 1px solid $border-color;
-    margin: 0 -17px;
-    padding: 10px 17px 17px 17px;
-  }
+
+.proposal-expanded {
+  border-bottom: 1px solid $border-color;
+  padding: 10px 17px 17px 17px;
 }
 
 .proposal-expanded__collapse{

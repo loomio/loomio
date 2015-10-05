@@ -14,6 +14,13 @@ angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterfac
           discussion_key: discussion.key
         cacheKey: "myVotesFor#{discussion.key}" 
 
+    fetchMyVotesByProposals: (proposals) ->
+      proposalIds = _.map proposals, (proposal) -> proposal.id
+      @fetch
+        path: 'my_votes'
+        params:
+          proposal_ids: proposalIds
+
     fetchByProposal: (proposal) ->
       @fetch
         params:

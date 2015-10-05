@@ -44,7 +44,7 @@
 
     %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
 
-    %previous_proposals_card{ng-if: 'threadPage.discussion.anyClosedProposals()', discussion: 'threadPage.discussion'}
+    %previous_proposals_card{discussion: 'threadPage.discussion'}
 
     %activity_card{discussion: 'threadPage.discussion'}
     %comment_form{comment: 'threadPage.comment'}

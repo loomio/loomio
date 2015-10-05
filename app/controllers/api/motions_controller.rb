@@ -3,7 +3,7 @@ class API::MotionsController < API::RestfulController
   load_and_authorize_resource only: [:show], find_by: :key
 
   def close
-    load_resource
+    load_and_authorize(:motion, :close)
     @event = MotionService.close_by_user(@motion, current_user)
     respond_with_resource
   end
@@ -24,13 +24,22 @@ class API::MotionsController < API::RestfulController
     respond_with_resource
   end
 
+  def index
+    load_and_authorize :discussion
+    instantiate_collection { |collection| collection.where(discussion: @discussion).order(:created_at) }
+    respond_with_collection
+  end
+
+  def closed
+    load_and_authorize :group, :view_previous_proposals
+    instantiate_collection { |collection| collection.closed.where(discussion_id: @group.discussion_ids).order(closed_at: :desc) }
+    respond_with_collection
+  end
+
   private
 
   def visible_records
-    load_and_authorize :discussion
     Queries::VisibleMotions.new(user: current_user, groups: current_user.groups)
-                           .where(discussion: @discussion)
-                           .order(:created_at)
   end
 
   def serializer_root

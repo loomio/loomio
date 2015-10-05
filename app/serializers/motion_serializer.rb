@@ -2,7 +2,6 @@ class MotionSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id,
              :key,
-             :discussion_id,
              :name,
              :description,
              :outcome,
@@ -14,7 +13,9 @@ class MotionSerializer < ActiveModel::Serializer
              :closed_at,
              :last_vote_at,
              :vote_counts,
-             :activity_count
+             :activity_count,
+             :group_id,
+             :discussion_id
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :outcome_author, serializer: UserSerializer, root: 'users'

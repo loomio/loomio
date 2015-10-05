@@ -1,28 +1,7 @@
 Loomio::Application.routes.draw do
 
   namespace :development do
-    get 'last_email'
-    get 'setup_dashboard'
-    get 'setup_inbox'
-    get 'setup_group'
-    get 'setup_group_for_invitations'
-    get 'setup_group_to_join'
-    get 'setup_group_with_multiple_coordinators'
-    get 'setup_discussion'
-    get 'setup_multiple_discussions'
-    get 'setup_busy_discussion'
-    get 'setup_discussion_with_comment'
-    get 'setup_proposal'
-    get 'setup_proposal_with_votes'
-    get 'setup_proposal_closing_soon'
-    get 'setup_closed_proposal'
-    get 'setup_closed_proposal_with_outcome'
-    get 'setup_membership_requests'
-    get 'setup_user_email_settings'
-    get 'setup_all_notifications'
-    get 'setup_group_with_pending_invitation'
-    get 'setup_group_with_subgroups'
-    get 'setup_public_group_with_public_content'
+    get ':action'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
@@ -111,6 +90,7 @@ Loomio::Application.routes.draw do
       post :close, on: :member
       post :create_outcome, on: :member
       post :update_outcome, on: :member
+      get  :closed, on: :collection
     end
 
     resources :votes,       only: [       :index, :create, :update] do
@@ -235,6 +215,7 @@ Loomio::Application.routes.draw do
       post :edit_description
       delete :leave_group
       get :members_autocomplete
+      get :previous_proposals, to: :show 
     end
 
     resources :motions,     only: [:index]
