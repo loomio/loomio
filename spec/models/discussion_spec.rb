@@ -360,5 +360,12 @@ describe Discussion do
         expect(discussion.last_sequence_id).to be @event1.sequence_id
       end
     end
+
+    it "does not increment when creating a non thread-kind item" do
+      stub_const("Discussion::THREAD_ITEM_KINDS", ['new_motion', 'new_discussion']) # not new_comment
+      old_items_count = discussion.items_count
+      CommentService.create(comment: build(:comment, discussion: discussion), actor: discussion.author)
+      expect(discussion.reload.items_count).to eq old_items_count
+    end
   end
 end

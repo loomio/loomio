@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'activityCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $rootScope, $location, $document, $timeout, Records, LoadingService) ->
+  controller: ($scope, $rootScope, $location, $document, $timeout, Records, AppConfig, LoadingService) ->
 
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
@@ -75,15 +75,7 @@ angular.module('loomioApp').directive 'activityCard', ->
       item.sequenceId < $scope.discussion.lastSequenceId
 
     $scope.safeEvent = (kind) ->
-      _.contains ['new_comment',
-                  'new_motion',
-                  'new_vote',
-                  'motion_closed',
-                  'motion_closed_by_user',
-                  'motion_edited',
-                  'motion_outcome_created',
-                  'motion_outcome_updated',
-                  'discussion_edited'], kind
+      _.contains AppConfig.safeThreadItemKinds, kind
 
     $scope.events = ->
       _.filter $scope.discussion.events(), (event) -> $scope.safeEvent(event.kind)
