@@ -13,6 +13,10 @@
           %a.navbar-user-options__email-settings-link{lmo-href: '/email_preferences'}
             %i.fa.fa-envelope>
             %span{translate: 'navbar.user_options.email_settings'}
+        %li.dropdown-menu-item{ng-if: 'showContactUs()'}
+          %a.navbar-user-options__email-settings-link{ng-click: 'contactUs()'}
+            %i.fa.fa-question>
+            %span{translate: 'navbar.user_options.contact_us'}
         %li.dropdown-menu-item
           %a.navbar-user-options__sign-out-link{href: '', ng-click: 'signOut()'}
             %i.fa.fa-lg.fa-sign-out>
