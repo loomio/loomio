@@ -1,8 +1,11 @@
 angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppConfig, CurrentUser) ->
   currentGroup = null
   service = new class IntercomService
+    available: ->
+      window? and window.Intercom?
+
     boot: ->
-      return unless window? and window.Intercom?
+      return unless @available()
       window.Intercom 'boot',
        app_id: AppConfig.intercomAppId
        user_id: CurrentUser.id
@@ -13,13 +16,13 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
        angular_ui: true
 
     shutdown: ->
-      return unless window? and window.Intercom?
+      return unless @available()
       window.Intercom('shutdown')
 
     updateWithGroup: (group) ->
       return if currentGroup == group
       currentGroup = group
-      return unless window? and window.Intercom?
+      return unless @available()
       window.Intercom 'update',
         email: CurrentUser.email
         user_id: CurrentUser.id
@@ -31,6 +34,10 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
           creator_id: group.creatorId
           visible_to: group.visibleTo
           cohort_id: group.cohortId
+
+    contactUs: ->
+      return unless @available()
+      window.Intercom.public_api.showNewMessage()
 
   $rootScope.$on 'analyticsSetGroup', (event, group) ->
     service.updateWithGroup(group)
