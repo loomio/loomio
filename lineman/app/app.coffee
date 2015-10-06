@@ -37,7 +37,7 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, AppConfig, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService, ModalService, ChoosePlanModal) ->
   IntercomService.boot()
 
   $scope.currentComponent = 'nothing yet'
@@ -51,6 +51,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
+
+  $scope.$on 'trialIsOverdue', (event, group) ->
+    if CurrentUser.id == group.creatorId and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
+      ModalService.open ChoosePlanModal, group: -> group
+      AppConfig.chargify.nagCache[group.key] = true
 
   MessageChannelService.subscribeToUser()
 

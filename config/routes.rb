@@ -37,6 +37,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
+      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
@@ -181,6 +182,10 @@ Loomio::Application.routes.draw do
     match 'mark_as_read', via: [:get, :post]
     match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
     match 'unfollow', via: [:get, :post]
+  end
+
+  namespace :subscriptions do
+    post :webhook
   end
 
   resources :invitations, only: [:show, :create, :destroy]

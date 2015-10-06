@@ -1,8 +1,7 @@
 class Subscription < ActiveRecord::Base
+  has_one :group
+  validates :kind, presence: true
+  validates :group, presence: true
+  validates_inclusion_of :kind, in: ['trial', 'gift', 'paid']
 
-  belongs_to :group
-
-  validates_presence_of :amount, :group
-  scope :non_zero, -> { where('amount > 0') }
-  scope :zero, -> { where('amount = 0') }
 end

@@ -1,5 +1,6 @@
 class StartGroupService
   def self.start_group(group)
+    group.subscription = Subscription.new(kind: 'trial', expires_at: 30.days.from_now.to_date)
     group.is_visible_to_public = false
     group.discussion_privacy_options = 'private_only'
     group.save!

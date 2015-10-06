@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903161434) do
+ActiveRecord::Schema.define(version: 20150906185423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -431,6 +431,7 @@ ActiveRecord::Schema.define(version: 20150903161434) do
     t.boolean  "is_referral",                                    default: false,          null: false
     t.integer  "cohort_id"
     t.integer  "default_group_cover_id"
+    t.integer  "subscription_id"
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -635,14 +636,15 @@ ActiveRecord::Schema.define(version: 20150903161434) do
   add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer  "group_id"
-    t.decimal  "amount",                 precision: 8, scale: 2
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.string   "profile_id", limit: 255
+    t.string  "kind"
+    t.date    "expires_at"
+    t.date    "trial_ended_at"
+    t.date    "activated_at"
+    t.integer "chargify_subscription_id"
+    t.string  "plan"
   end
 
-  add_index "subscriptions", ["group_id"], name: "index_subscriptions_on_group_id", using: :btree
+  add_index "subscriptions", ["kind"], name: "index_subscriptions_on_kind", using: :btree
 
   create_table "themes", force: :cascade do |t|
     t.text     "style"
