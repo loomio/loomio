@@ -6,7 +6,7 @@ class GroupService
     group.save && group.mark_as_setup! && group.add_admin!(actor)
     if group.is_parent?
       group.update default_group_cover: DefaultGroupCover.sample,
-                   subscription: Subscription.new(kind: :trial, expires_at: 30.days.from_now)
+                   subscription: Subscription.new_trial
     end
     group
   end

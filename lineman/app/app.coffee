@@ -57,8 +57,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
       ModalService.open ChoosePlanModal, group: -> group
       AppConfig.chargify.nagCache[group.key] = true
 
-  MessageChannelService.subscribeToUser()
-
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
   $router.config([
