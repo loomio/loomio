@@ -1,0 +1,11 @@
+.previous-proposals-page {
+  margin: 0px auto;
+  max-width: $main-max-width;
+  .align-center { text-align: center; }
+}
+
+.previous-proposals-page__previous-proposals {
+  @include cardNoPadding;
+  padding-top: 10px;
+  clear: both;
+}

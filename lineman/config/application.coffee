@@ -71,9 +71,6 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       files:
         'generated/css/main.css': 'app/css/main.scss'
 
-    options:
-      includePaths: ['vendor/bower_components/']
-
   ngtemplates:
     loomioApp:
       src: "generated/**/*.html"

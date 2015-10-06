@@ -74,6 +74,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
     {path: '/g/:key/memberships', component: 'membershipsPage'},
     {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
+    {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' }
   ])

@@ -186,6 +186,14 @@ label.label-with-details{
   @include cardPadding;
 }
 
+.lmo-card-heading-padding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-left-right-padding {
+  padding: 0 $cardPaddingSize 0 $cardPaddingSize;
+}
+
 .lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
@@ -248,11 +256,11 @@ label.label-with-details{
 .lmo-markdown-wrapper {
   img { max-width: 100%; }
   h1 {
-    @include fontGrande;
+    @include fontLarge;
     @include fontHelveticaBold;
   }
   h2 {
-    @include fontLarge;
+    @include fontMedLarge;
     @include fontHelveticaBold;
   }
   h3 {
@@ -260,6 +268,15 @@ label.label-with-details{
   }
   h4 {
     @include fontHelveticaBold;
+  }
+  ul{
+    padding: 0 0 10px 24px;
+  }
+  ul li{
+    list-style: disc;
+  }
+  blockquote{
+    font-size: inherit;
   }
 }
 

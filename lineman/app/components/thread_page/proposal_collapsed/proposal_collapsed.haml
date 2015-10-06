@@ -1,13 +1,11 @@
-%a.proposal-collapsed.media{href: '', id: 'proposal-{{proposal.key}}'}
+%a.proposal-collapsed{href: '', id: 'proposal-{{proposal.key}}'}
   .sr-only
     {{proposal.name}}.
     %proposal_closing_time{proposal: 'proposal'}.
-  .screen-only{aria-hidden: 'true'}
-    %proposal_closing_time.pull-right{proposal: 'proposal'}.
-    .proposal-collapsed-expand.pull-right{translate: 'proposal_collapsed.expand'}
-    .media-left
-      %pie_chart.lmo-box--medium{votes: 'proposal.voteCounts'}
-    .proposal-collapsed-body.media-body
-      .proposal-collapsed-title
+  .screen-only.proposal-collapsed__flex{aria-hidden: 'true'}
+    %pie_with_position{proposal: 'proposal'}
+    .proposal-collapsed__body
+      %proposal_closing_time.proposal-collapsed__closed-at{proposal: 'proposal'}.
+      .proposal-collapsed__title
         {{proposal.name}}
-    .clearfix
+      .proposal-collapsed__outcome{ng-if: 'proposal.hasOutcome()', translate: 'proposal_collapsed.outcome', translate-value-outcome: '{{proposal.outcome}}'}

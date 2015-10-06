@@ -1,7 +1,7 @@
 module DiscussionsHelper
   def filter_discussion_events(activity)
     last_item = nil
-    ignored_event_kinds = %w[motion_closing_soon user_mentioned comment_liked]
+    ignored_event_kinds = %w[motion_closing_soon user_mentioned comment_liked motion_edited discussion_edited]
     deduplicate_kinds = %w[discussion_description_edited discussion_title_edited motion_close_date_edited]
 
     activity.
