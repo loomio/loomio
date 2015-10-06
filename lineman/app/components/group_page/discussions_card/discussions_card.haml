@@ -1,7 +1,7 @@
 %section.discussions-card{aria-labelledby: 'threads-card-title'}
   .lmo-card-padding
     %a.discussions-card__new-thread-button.btn.btn-success.lmo-btn-icon{ng-if: 'isMemberOfGroup()', href: '', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
-      %i.fa.fa-plus{aria-hidden: 'true'}>
+      %i.fa.fa-plus>
       %span{translate: 'navbar.start_thread'}
 
     %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}

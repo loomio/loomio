@@ -1,6 +1,6 @@
 .comment-form-attachments
   %button.btn.btn-default{type: 'button', ng-click: 'selectFile()', ng-hide: 'files', aria-label: "{{ 'comment_form.attachments.aria_label' | translate }}"}
-    %i.fa.fa-lg.fa-paperclip{aria-hidden: 'true'}
+    %i.fa.fa-lg.fa-paperclip
    %input.attachment-form__file-input.hidden{type: 'file', ng-model: 'files', ng_file_select: 'upload(files)'}
   .attachment-form-in-progress{ng-repeat: 'file in files'}
     .progress.active.attachment-form-progress-field
