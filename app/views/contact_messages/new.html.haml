@@ -1,7 +1,7 @@
 .container#contact-message
   %section.first
     .inner-container
-      - if !current_user.angular_ui_enabled? && hosted_by_loomio?
+      - if hosted_by_loomio? && !current_user.try(:angular_ui_enabled)
         %h1= t(:"contact_page.contact_us")
         %p= t(:"contact_page.faq_prompt_html")
         %p= t(:"contact_page.contact_information")
