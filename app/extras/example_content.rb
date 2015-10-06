@@ -46,7 +46,7 @@ class ExampleContent
 
   def first_vote_content(proposal)
     {
-      position: I18n.t('first_vote.position'),
+      position: 'yes',
       motion: proposal,
       statement: I18n.t('first_vote.statement')
     }

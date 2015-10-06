@@ -28,7 +28,7 @@ class StartGroupService
     how_it_works_thread = example_content.how_it_works_thread(group)
     example_content.first_comment(how_it_works_thread)
     first_proposal = example_content.first_proposal(how_it_works_thread)
-    example_content.first_vote(first_proposal)
+    first_vote = example_content.first_vote(first_proposal)
     bot_membership.destroy
   end
 end
