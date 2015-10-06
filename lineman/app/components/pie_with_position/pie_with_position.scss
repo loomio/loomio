@@ -1,0 +1,47 @@
+.pie-with-position {
+  @include boxMedium;
+  position: relative;
+}
+
+.pie-with-position__pie-canvas {
+  @include boxMedium;
+}
+
+.pie-with-position__position-icon-container {
+  @include boxTiny;
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+}
+
+.pie-with-position__position-icon {
+  background-repeat: no-repeat;
+  height: 18px;
+  margin: 3px 0 0 3px;
+  width: 18px;
+}
+
+.pie-with-position__position-icon--yes {
+  background-image: url(/img/green_thumb_15.png);
+  margin: 2px 0 0 2px;
+}
+
+.pie-with-position__position-icon--no {
+  background-image: url(/img/pink_thumb_15.png);
+}
+
+.pie-with-position__position-icon--block {
+  background-image: url(/img/red_flag_15.png);
+}
+
+.pie-with-position__position-icon--abstain {
+  background-image: url(/img/yellow_thumb_15.png);
+}
+
+.pie-with-position__undecided-icon {
+  font-size: 16px;
+  margin-top: 0px;
+  text-align: center;
+}

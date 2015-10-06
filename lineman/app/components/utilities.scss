@@ -186,6 +186,14 @@ label.label-with-details{
   @include cardPadding;
 }
 
+.lmo-card-heading-padding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-left-right-padding {
+  padding: 0 $cardPaddingSize 0 $cardPaddingSize;
+}
+
 .lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;

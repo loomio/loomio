@@ -70,8 +70,12 @@ en:
   previous_proposals_card:
     heading: Previous Proposals
 
+  previous_proposals_page:
+    heading: Previous proposals
+
   proposal_collapsed:
     expand: Expand
+    outcome: 'Outcome: {{outcome}}'
 
   context_card:
     heading: Context
@@ -440,6 +444,10 @@ en:
     messages:
       request_approved_success: Membership request approved
       request_ignored_success: Membership request ignored
+
+  group_previous_proposals_card:
+    heading: Previous proposals
+    see_more: See more
 
   group_form:
     messages:
