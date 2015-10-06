@@ -37,7 +37,7 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $location, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService, AppConfig) ->
   IntercomService.boot()
 
   $scope.currentComponent = 'nothing yet'
@@ -55,6 +55,9 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   MessageChannelService.subscribeToUser()
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
+
+  if $location.search().feedback_given?
+    AppConfig.flash.success = 'angular.feedback.success'
 
   $router.config([
     {path: '/dashboard', component: 'dashboardPage' },

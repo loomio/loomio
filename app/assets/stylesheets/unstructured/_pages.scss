@@ -641,6 +641,14 @@ body.pages.crowdfunding_celebration {
     font-size: 18px;
     line-height: 24px;
   }
+
+  li.input {
+    list-style-type: none;
+    textarea {
+      width: 500px;
+      padding: 10px;
+    }
+  }
 }
 
 body.passwords {

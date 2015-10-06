@@ -890,3 +890,9 @@ en:
       body_html: "<p>Yikes, did we do something wrong? We're sorry if you had a bad time in the new Loomio.</p>"
       give_feedback: "Before you go please consider sharing your feedback so we can improve."
       button_text: 'Switch back to the old Loomio'
+
+    feedback:
+      give_feedback: "Have some feedback for us? We're working really hard to improve the new Loomio, and we'd love to hear your input."
+      placeholder: "We'd love to hear your thoughts!"
+      button_text: "Give feedback"
+      success: "Thanks for sharing!  ❤"
