@@ -18,6 +18,7 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :name, length: { maximum: 250 }
+  validates :subscription, absence: true, if: :is_subgroup?
 
   validate :limit_inheritance
   validate :validate_parent_members_can_see_discussions
@@ -171,7 +172,7 @@ class Group < ActiveRecord::Base
 
   has_many :webhooks, as: :hookable
 
-  has_one :subscription, dependent: :destroy
+  belongs_to :subscription, dependent: :destroy
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
@@ -477,11 +478,6 @@ class Group < ActiveRecord::Base
 
   def has_manual_subscription?
     payment_plan == 'manual_subscription'
-  end
-
-  def is_paying?
-    (payment_plan == 'manual_subscription') ||
-    (subscription.present? && subscription.amount > 0)
   end
 
   def group_request_description

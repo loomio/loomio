@@ -355,7 +355,8 @@ en:
     options:
       label: 'Options'
       edit_group: 'Edit Group Settings'
-      manage_members: 'Manage members'
+      manage_members: 'Manage Members'
+      manage_subscription: 'Manage Group Subscription'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     deactivate_group:
@@ -382,6 +383,59 @@ en:
       private: 'Privacy: This group is only visible to members'
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'Privacy: This group is visible on the web'
+
+  confirm_gift_plan_modal:
+    heading: Gift plan selected
+    body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will see a card like this one when they visit your group:"
+    got_it: "Ok, got it!"
+
+  gift_card:
+    heading: Gift plan
+    body: "<strong>{{name}}</strong> is a gift-supported group. If you'd like to help Loomio achieve our mission, click this button:"
+    make_a_contribution: Make a contribution
+
+  trial_card:
+    title: '30-day trial'
+    choose_plan: 'Choose your pricing plan'
+    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that works for you at any time.'
+    expired_body_html: "<strong>{{name}}</strong> has now reached the end of it's Loomio trial. If you'd like to keep using it, you'll need to pick a pricing plan that suits. If you'd like to talk to someone about this, just <a href=''>get in touch</a>."
+
+  choose_plan_modal:
+    heading: 'Choose your pricing plan'
+    overdue_heading: 'To continue using Loomio, please choose a payment plan'
+    gift: Gift
+    standard: Standard
+    plus: Plus
+    free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
+    get_started_for_free: "Get started for free"
+    gift_body_html: |
+      <p>For groups that don't have the budget to pay a subscription.</p>
+      <p>Donation supported, with no requirement to pay.</p>
+    support_before: I'm happy to
+    support_link: talk with you
+    support_after: about extending your trial, or with any other questions you may have.
+    remind_me_later: Remind me later
+    gift_donation_ask: We'll ask your group members for a donation.
+    unlimited_members: unlimited members
+    unlimited_decisions: unlimited decisions
+    email_support: email support
+    standard_price_html: |
+      <strong>$19</strong>/month<br><span>or</span> $190/year
+    plus_body: 'Everything in Standard, plus:'
+    premium_support: premium support
+    custom_url: custom URL
+    usage_statistics: usage statistics
+    plus_price_html: |
+      <strong>$179</strong>/month<br><span>or</span> $1790/year
+    select: Select
+
+  subscription_success_modal:
+    heading: Thanks for setting up your subscription!
+    body_html: |
+      <p>You'll get an email with a receipt.</p>
+      <p>Give us a yell if you ever want to change or cancel your subscription.</p>
+      <p>Nice doing business with you.</>
+    ok_got_it: 'Ok, got it!'
 
   edit_group_form:
     title: 'Edit Group Settings'

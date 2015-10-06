@@ -52,6 +52,13 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
 
+  $scope.$on 'trialIsOverdue', (event, group) ->
+    if CurrentUser.id == group.creatorId and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
+      ModalService.open ChoosePlanModal, group: -> group
+      AppConfig.chargify.nagCache[group.key] = true
+
+  MessageChannelService.subscribeToUser()
+
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
   $router.config([

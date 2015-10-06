@@ -48,6 +48,14 @@ RSpec.configure do |config|
 
   config.before(:each) do
 
+    stub_request(:get, /loomio-test.chargify.com/).
+      to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
+    stub_request(:put, /loomio-test.chargify.com/).
+      to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
+    stub_request(:delete, /loomio-test.chargify.com/).
+      to_return(status: 200, body: '{"subscription":{"product":{"handle":"test-handle"}}}', headers: {})
+
+
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
 
     stub_request(:head, /www.gravatar.com/).
