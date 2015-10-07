@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906185423) do
+ActiveRecord::Schema.define(version: 20151007013914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -715,7 +715,7 @@ ActiveRecord::Schema.define(version: 20150906185423) do
     t.boolean  "email_missed_yesterday",                       default: true,       null: false
     t.string   "email_api_key",                    limit: 255
     t.boolean  "email_when_mentioned",                         default: true,       null: false
-    t.boolean  "angular_ui_enabled",                           default: false,      null: false
+    t.boolean  "angular_ui_enabled",                           default: true,       null: false
     t.boolean  "email_on_participation",                       default: true,       null: false
   end
 
