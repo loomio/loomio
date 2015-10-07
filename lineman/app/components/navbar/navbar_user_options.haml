@@ -13,9 +13,13 @@
           %a.navbar-user-options__email-settings-link{lmo-href: '/email_preferences'}
             %i.fa.fa-envelope>
             %span{translate: 'navbar.user_options.email_settings'}
+        %li.dropdown-menu-item
+          %a.navbar-user-options__help-link{lmo-href: 'https://help.loomio.org', target: '_blank'}
+            %i.fa.fa-info-circle>
+            %span{translate: 'navbar.user_options.help'}
         %li.dropdown-menu-item{ng-if: 'showContactUs()'}
-          %a.navbar-user-options__email-settings-link{ng-click: 'contactUs()'}
-            %i.fa.fa-question>
+          %a.navbar-user-options__contact-us-link{ng-click: 'contactUs()'}
+            %i.fa.fa-question-circle>
             %span{translate: 'navbar.user_options.contact_us'}
         %li.dropdown-menu-item
           %a.navbar-user-options__sign-out-link{href: '', ng-click: 'signOut()'}

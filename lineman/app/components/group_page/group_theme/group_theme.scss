@@ -2,10 +2,6 @@
   max-width: $large-max-width;
   margin: 0 auto;
   padding-top: 48px;
-  /* over-riding bootstrap */
-  .media:first-child{
-    margin-top: 10px;
-  }
 }
 
 .group-theme__cover{
