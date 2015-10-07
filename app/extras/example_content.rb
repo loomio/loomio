@@ -1,6 +1,18 @@
 class ExampleContent
   include Routing
 
+  def self.add_to_group(group)
+    example_content = self.new
+    bot = example_content.helper_bot
+    bot_membership = group.add_member! bot
+    example_content.introduction_thread(group)
+    how_it_works_thread = example_content.how_it_works_thread(group)
+    example_content.first_comment(how_it_works_thread)
+    first_proposal = example_content.first_proposal(how_it_works_thread)
+    first_vote = example_content.first_vote(first_proposal)
+    bot_membership.destroy
+  end
+
   def helper_bot
     bot = User.find_by_email('contact@loomio.org')
     unless bot

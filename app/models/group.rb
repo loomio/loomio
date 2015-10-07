@@ -446,14 +446,6 @@ class Group < ActiveRecord::Base
     members.count
   end
 
-  def is_setup?
-    setup_completed_at.present?
-  end
-
-  def mark_as_setup!
-    update_attribute(:setup_completed_at, Time.zone.now.utc)
-  end
-
   def update_full_name_if_name_changed
     if changes.include?('name')
       update_full_name
