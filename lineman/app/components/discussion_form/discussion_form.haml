@@ -34,7 +34,7 @@
           %label.label-with-details{for: 'public-option'}
             %i.fa.fa-globe>
             %span.label-with-details-label{translate: 'common.privacy.public' }>
-            %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public'}
+            %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public', translate-value-group-name: '{{discussion.groupName()}}'}
         .privacy-form-option
           %input#private-option{type: 'radio', ng-model: 'discussion.private', ng-value: 'true'}
           %label.label-with-details{for: 'private-option'}
@@ -44,10 +44,11 @@
             %span.label-with-details-details{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}>
 
       .privacy-notice{ng_hide: 'showPrivacyForm()'}
+        /* craziness here. discussion.private returns different results on new thread and edit thread*/
         .public-discussion.label-with-details{ng_hide: 'discussion.private'}
           %i.fa.fa-globe>
           %span.label-with-details-label{translate: 'common.privacy.public'}
-          %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public'}
+          %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public', translate-value-group-name: '{{discussion.groupName()}}'}
         .private-discussion.label-with-details{ng_show: 'discussion.private'}
           %i.fa.fa-lock>
           %span.label-with-details-label{translate: 'common.privacy.private'}
