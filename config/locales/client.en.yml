@@ -21,6 +21,7 @@ en:
       thisweek: 'This Week'
       thismonth: 'This Month'
       older: 'Older'
+    more_help: 'More help'
     models:
       proposal: 'Proposal'
     action:
@@ -427,7 +428,8 @@ en:
 
   membership_requests_card:
     heading: 'Membership Requests'
-    manage_requests: Manage requests ({{count}})
+    manage_requests: Manage requests
+    manage_requests_with_count: Manage requests ({{count}})
 
   group_help_card:
     title: Help
