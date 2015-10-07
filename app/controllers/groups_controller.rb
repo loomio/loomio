@@ -70,7 +70,6 @@ class GroupsController < GroupBaseController
     @group = Group.new(permitted_params.group)
     authorize!(:create, @group)
     if @group.save
-      @group.mark_as_setup!
       @group.add_admin! current_user
       @group.creator = current_user
       flash[:success] = t("success.group_created")
@@ -157,7 +156,7 @@ class GroupsController < GroupBaseController
   private
     def ensure_group_is_setup
       if user_signed_in? && @group.admins.include?(current_user)
-        unless @group.is_setup? || @group.is_subgroup?
+        unless @group.is_subgroup?
           redirect_to setup_group_path(@group)
         end
       end
