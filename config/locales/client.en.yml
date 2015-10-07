@@ -126,6 +126,7 @@ en:
     groups_title: 'View your groups'
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
+    user_actions: 'User actions'
     user_options:
       label: 'User options'
       contact_us: 'Contact us'
