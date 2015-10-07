@@ -1,5 +1,9 @@
 .discussions-card{
-  @include card;
+  @include cardNoPadding;
+}
+
+.discussions-card__header{
+  margin: $cardPaddingSize;
 }
 
 .discussions-card__new-thread-button{
