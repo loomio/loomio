@@ -3,3 +3,10 @@
   margin-bottom: $cardPaddingSize;
   margin-top: $thinPaddingSize;
 }
+
+.discussions-card__list .thread-previews-container{
+  @include cardNoPadding;
+  margin: $thinPaddingSize (-1 * $cardPaddingSize);
+  border-width: 1px 0 0 0;
+  box-shadow: none;
+}
