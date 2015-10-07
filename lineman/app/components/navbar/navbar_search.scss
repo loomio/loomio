@@ -36,6 +36,7 @@
 
   width: 100%;
   top: $navbar-height;
+  right: 93px; /*overridden on small screens by media query below*/
   text-align: left;
   max-width: 320px;
   margin-top: 2px;
