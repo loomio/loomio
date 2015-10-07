@@ -5,11 +5,6 @@ Given(/^I complete the group setup form$/) do
   find('#group_form_submit').click
 end
 
-Then(/^the group should be setup$/) do
-  @group.reload
-  @group.is_setup?.should be true
-end
-
 Then(/^I should be on the group page$/) do
   page.should have_css('.groups.show')
 end
