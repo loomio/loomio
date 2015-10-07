@@ -11,7 +11,7 @@ class StartGroupService
   end
 
   def self.invite_admin_to_group(group: , name:, email:)
-    inviter = find_or_create_helper_bot
+    inviter = ExampleContent.new.helper_bot
     invitation = InvitationService.create_invite_to_start_group(group: group,
                                                                 inviter: inviter,
                                                                 recipient_email: email,

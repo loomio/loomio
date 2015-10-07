@@ -14,11 +14,12 @@ class ExampleContent
   end
 
   def helper_bot
-    bot = User.find_by_email('contact@loomio.org')
+    email = ENV['HELPER_BOT_EMAIL'] || 'helperbot@example.com'
+    bot = User.find_by_email(email)
     unless bot
       bot = User.new
       bot.name = 'Loomio Helper Bot'
-      bot.email = 'contact@loomio.org'
+      bot.email = email
       bot.password = SecureRandom.hex(20)
       bot.uses_markdown = true
       bot.save!

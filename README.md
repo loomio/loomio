@@ -109,6 +109,7 @@ CANONICAL_HOST - Hostname of the loomio instance. For us it's "www.loomio.org"
 TLD_LENGTH - length of the top level part of your domain name.  
 DEFAULT_SUBDOMAIN - we use www  
 ALLOW_ROBOTS - Set to 1 if you want to search engines to crawl the public discussions and groups.  
+HELPER_BOT_EMAIL - the email address for the helper bot (we use contact@loomio.org)
 
 Examples:  
   www.loomio.org  
