@@ -5,7 +5,7 @@ class Events::MotionOutcomeCreated < Event
             discussion: motion.discussion,
             user: user)
 
-    UsersToEmailQuery.motion_outcome(motion).find_each do |user|
+    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.motion_outcome(motion)) do |user|
       ThreadMailer.delay.motion_outcome_created(user, event)
     end
 
