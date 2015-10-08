@@ -12,7 +12,7 @@ class Events::NewComment < Event
       Events::UserMentioned.publish!(comment, mentioned_user)
     end
 
-    UsersToEmailQuery.new_comment(comment).find_each do |user|
+    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.new_comment(comment)) do |user|
       ThreadMailer.delay.new_comment(user, event)
     end
 
