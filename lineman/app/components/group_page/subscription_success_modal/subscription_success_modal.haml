@@ -1,0 +1,13 @@
+.subscription-success-modal
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: 'true'} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1.modal-title{translate: 'subscription_success_modal.heading'}
+
+  .modal-body
+    %img.subscription-success-modal__mascot{src:'img/mascot.png'}
+    .subscription-success-modal__message{translate: 'subscription_success_modal.body_html'}
+
+  .modal-footer.lmo-clearfix
+    %button.btn.btn-primary{type: 'button', ng-click: '$close()', translate: 'subscription_success_modal.ok_got_it'}

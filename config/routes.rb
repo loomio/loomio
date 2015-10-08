@@ -37,6 +37,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
+      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
@@ -183,6 +184,10 @@ Loomio::Application.routes.draw do
     match 'unfollow', via: [:get, :post]
   end
 
+  namespace :subscriptions do
+    post :webhook
+  end
+
   resources :invitations, only: [:show, :create, :destroy]
 
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
@@ -202,6 +207,7 @@ Loomio::Application.routes.draw do
 
   get 'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
+  post 'enable_angular' => 'start_group#enable_angular'
 
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do
