@@ -50,9 +50,8 @@
   color: $grey-on-white;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 767px) and (max-width: 991px) {
   .proposal-pie-chart__legend{
     display: block;
-    padding: 0 0 0 165px;
   }
 }

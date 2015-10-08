@@ -359,3 +359,17 @@ label.label-with-details{
 .dropdown-menu i.fa {
   width: 30px;
 }
+
+@media (min-width: 768px) {
+  .lmo-column-left {
+    width: 59%;
+    float: left;
+    clear: left;
+  }
+
+  .lmo-column-right {
+    width: 40%;
+    float: right;
+    clear: right;
+  }
+}
