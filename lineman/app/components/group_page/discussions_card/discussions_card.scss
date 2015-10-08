@@ -1,3 +1,11 @@
+.discussions-card{
+  @include cardNoPadding;
+}
+
+.discussions-card__header{
+  margin: $cardPaddingSize;
+}
+
 .discussions-card__new-thread-button{
   @include fontSmall;
   float: right;

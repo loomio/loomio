@@ -4,7 +4,7 @@
   %ul.undecided-panel__list{ng-if: 'undecidedPanelOpen'}
     %li.media{ng-repeat: 'user in proposal.undecidedMembers() track by user.id'}
       .media-left
-        %i.fa.fa-question-circle.undecided-panel__icon{aria-hidden: 'true'}
+        %i.fa.fa-question-circle.undecided-panel__icon
       .media-body
         %span.undecided-panel__user {{user.name}}
   %a.undecided-panel__hide-undecided-link{href: '', ng-click: 'hideUndecided()', ng-show: 'undecidedPanelOpen', translate: 'undecided_panel.hide_undecided'}

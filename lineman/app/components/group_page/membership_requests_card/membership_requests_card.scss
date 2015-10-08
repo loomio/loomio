@@ -8,11 +8,18 @@
 }
 
 .membership-requests-card__requestor-name{
-  font-weight: 600;
-  font-size: 12px;
+  @include fontSmall;
+  @include fontHelveticaBold;
+  color: $primary-text-color;
 }
 
 .membership-requests-card__requestor-introduction{
+  @include fontSmall;
   color: $grey-on-white;
-  font-size: 12px;
+}
+.membership-requests-card__pending-requests a{
+  color: $grey-on-white;
+}
+.membership-requests-card__pending-requests a:hover{
+  text-decoration: none;
 }

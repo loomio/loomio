@@ -22,6 +22,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
         AbilityService.canStartThread(group)
 
     $scope.showPrivacyForm = ->
-      $scope.discussion.group()? and $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
+      return unless $scope.discussion.group()
+      $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
 
     KeyEventService.submitOnEnter $scope

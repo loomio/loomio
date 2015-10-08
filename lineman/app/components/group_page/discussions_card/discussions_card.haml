@@ -1,16 +1,16 @@
 %section.discussions-card{aria-labelledby: 'threads-card-title'}
-  .lmo-card-padding
+  .discussions-card__header
     %a.discussions-card__new-thread-button.btn.btn-success.lmo-btn-icon{ng-if: 'isMemberOfGroup()', href: '', ng_click: 'openDiscussionForm()', title: "{{ 'navbar.start_thread' | translate }}"}
-      %i.fa.fa-plus{aria-hidden: 'true'}>
+      %i.fa.fa-plus>
       %span{translate: 'navbar.start_thread'}
 
     %h2#threads-card-title.lmo-card-heading{ translate: 'group_page.discussions'}
     .lmo-placeholder{translate: 'group_page.discussions_placeholder', ng-if: 'showThreadsPlaceholder()' }
 
-    .discussions-card__list--empty{ng-if: '!loadMoreExecuting && !discussions.any()'}
-      .discussions-card__list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
-      .discussions-card__how-to-gain-access{ng-if: 'howToGainAccess()'}
-        %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
+  .discussions-card__list--empty{ng-if: '!loadMoreExecuting && !discussions.any()'}
+    .discussions-card__list-empty-reason{translate: 'group_page.thread_list.empty.{{whyImEmpty()}}'}
+    .discussions-card__how-to-gain-access{ng-if: 'howToGainAccess()'}
+      %span{translate: 'group_page.thread_list.empty.{{howToGainAccess()}}'}
 
   .discussions-card__list
     %section.thread-preview-collection__container{ng-if: 'discussions.any()'}
