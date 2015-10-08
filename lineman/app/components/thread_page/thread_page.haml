@@ -37,6 +37,7 @@
             %span{translate: 'common.privacy.public'}
 
         .thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+        %a.lmo-card-minor-action{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread', ng-if: 'threadPage.canEditThread()'}
 
     .lmo-column-right
       %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}

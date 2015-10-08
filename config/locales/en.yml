@@ -319,8 +319,10 @@ en:
     email: "Your email"
     email_error: "Not a valid email address."
     group_name: "Group name"
+    group_description: "Group description"
+    group_description_placeholder: "Describe the purpose of your group so your group members know why they are here."
     group_name_error: "Group name is required"
-    pricing_html: "In 30 days, when you've seen how Loomio improves your group's decision-making, we'll ask you to choose the <a href='%{link}' target='_blank'>payment plan</a> that works for you."
+    pricing_html: "In 30 days, we'll ask you to choose a <a href='%{link}' target='_blank'>pricing plan</a>."
     terms_html: "By starting a group, you agree to Loomio's <a href='%{link}' target='_blank'>terms of service</a>."
     success:
       header: "You're almost done! Check your email."
