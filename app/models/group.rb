@@ -183,7 +183,7 @@ class Group < ActiveRecord::Base
   paginates_per 20
 
   has_attached_file    :cover_photo,
-                       styles: { desktop: "970x200#", card: "460x94#"},
+                       styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
                        default_url: :default_cover_photo
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
@@ -415,6 +415,7 @@ class Group < ActiveRecord::Base
   def add_admin!(user, inviter = nil)
     membership = find_or_create_membership(user, inviter)
     membership.make_admin! && save
+    self.creator = user if creator.blank?
     membership
   end
 
@@ -582,7 +583,8 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
-    self.discussion_privacy_options ||= 'public_or_private'
+    self.is_visible_to_public ||= false
+    self.discussion_privacy_options ||= 'private_only'
     self.membership_granted_upon ||= 'approval'
   end
 

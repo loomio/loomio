@@ -2,12 +2,10 @@ class StartGroupService
 
   def self.start_group(group)
     group.subscription = Subscription.new_trial
-    group.is_visible_to_public = false
-    group.discussion_privacy_options = 'private_only'
+    group.default_group_cover = DefaultGroupCover.sample
     group.save!
 
-    # do not create example discussion if the group is public discussions only
-    ExampleContent.add_to_group(group) if group.discussion_privacy_options != 'public_only'
+    ExampleContent.add_to_group(group)
   end
 
   def self.invite_admin_to_group(group: , name:, email:)

@@ -3,12 +3,15 @@ class GroupService
     group.creator = actor
     actor.ability.authorize! :create, group
 
-    group.save && group.add_admin!(actor)
+    group.save! or return false
+
     if group.is_parent?
       group.update default_group_cover: DefaultGroupCover.sample,
                    subscription: Subscription.new_trial
       ExampleContent.add_to_group(group)
     end
+
+    group.add_admin!(actor)
     group
   end
 

@@ -53,7 +53,8 @@ class ExampleContent
     {
       name: I18n.t('first_proposal.name'),
       description: I18n.t('first_proposal.description'),
-      discussion: thread
+      discussion: thread,
+      closing_at: (Time.zone.now + 7.days).at_beginning_of_hour
     }
   end
 

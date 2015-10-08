@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
   MED_LARGE_IMAGE = 70
-  MEDIUM_IMAGE = 35
-  SMALL_IMAGE = 25
+  MEDIUM_IMAGE = 50
+  SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
