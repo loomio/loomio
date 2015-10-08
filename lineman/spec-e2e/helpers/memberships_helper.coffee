@@ -1,7 +1,7 @@
 module.exports = new class MembershipsHelper
 
   visitMembershipsPage: ->
-    element(By.css('.members-card__manage-members a')).click()
+    element(By.css('.members-card__manage-members')).click()
 
   searchInput: ->
     element(By.css('.membership-page__search-filter'))
