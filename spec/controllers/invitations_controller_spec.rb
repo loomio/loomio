@@ -1,41 +1,31 @@
 require 'rails_helper'
 
 describe InvitationsController do
+  let(:group) { FactoryGirl.create(:group) }
+  let(:user) { FactoryGirl.create(:user) }
+
   before do
-    @group = FactoryGirl.create(:group)
-    @user = FactoryGirl.create(:user)
-    @group.add_admin!(@user)
+    group.add_admin!(user)
   end
 
   describe 'destroy' do
-    let(:invitation){double(:invitation,
-                            id: 1,
-                            recipient_email: 'jim@jam.com',
-                            cancel!: true,
-                            group: @group)}
+    let(:invitation){create(:invitation, invitable: group)}
 
     before do
-      sign_in @user
-      Invitation.stub(:find_by_token!).and_return(invitation)
+      sign_in user
     end
 
     it 'cancels the invitation' do
-      controller.should_receive(:authorize!).with(:cancel, invitation)
-      invitation.should_receive(:cancel!).with(canceller: @user)
-      delete :destroy, id: invitation.id, group_id: @group.key
-      response.should redirect_to group_memberships_path(@group)
+      delete :destroy, id: invitation.token, group_id: group.key
+      response.should redirect_to group_memberships_path(group)
+      invitation.reload
+      expect(invitation.cancelled?).to be true
     end
   end
 
   describe "GET 'show'" do
-    let(:group) { stub_model(Group, key: 'AaBC1256', full_name: "Gertrude's Emportium") }
-    let(:invitation) {double(:invitation,
-                             :invitable => group,
-                             :invitable_type => 'Group',
-                             :recipient_email => 'jim@bob.com',
-                             :intent => 'join_group',
-                             :cancelled? => false,
-                             :accepted? => false)}
+    let(:group) { create(:group) }
+    let(:invitation) { create(:invitation, token: 'abc', invitable: group) }
 
     context 'invitation not found' do
       render_views
@@ -45,14 +35,25 @@ describe InvitationsController do
       end
     end
 
+    context 'invitation used' do
+      render_views
+      before do
+        invitation.update_attribute(:accepted_at, Time.now)
+      end
+
+      it 'says sorry invitatino already used' do
+        get :show, id: invitation.token
+        expect(response.body).to match(/This invitation has already been used/i)
+      end
+    end
+
     context "user not signed in" do
       before do
-        Invitation.should_receive(:find_by_token!).and_return(invitation)
-        get :show, :id => 'AaBC1256'
+        get :show, id: invitation.token
       end
 
       it "sets session attribute of the invitation token" do
-        expect(session[:invitation_token]).to eq "AaBC1256"
+        expect(session[:invitation_token]).to eq invitation.token
       end
 
       it "redirects to sign up" do
@@ -67,15 +68,16 @@ describe InvitationsController do
 
     context "user is signed in" do
       before do
-        Invitation.stub(:find_by_token!).and_return(invitation)
         sign_in @user = FactoryGirl.create(:user)
       end
 
       context 'get with invitation token in query' do
 
         it "accepts invitation and redirects to group " do
-          AcceptInvitation.should_receive(:and_grant_access!).with(invitation, @user)
-          get :show, :id => 'AaBC1256'
+          get :show, id: invitation.token
+          invitation.reload
+          expect(invitation.accepted?).to be true
+          expect(group.has_member?(user)).to be true
           response.should redirect_to group_path(group)
         end
 
@@ -83,13 +85,15 @@ describe InvitationsController do
 
       context 'and has invitation_token in session' do
         before do
-          session[:invitation_token] = 'abcdefg'
+          session[:invitation_token] = invitation.token
         end
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
-          AcceptInvitation.should_receive(:and_grant_access!).with(invitation, @user)
-          get :show, :id => 'AaBC1256'
+          get :show, id: invitation.token
           response.should redirect_to group_path(group)
+          invitation.reload
+          expect(invitation.accepted?).to be true
+          expect(group.has_member?(user)).to be true
           session[:invitation_token].should be_nil
         end
       end
