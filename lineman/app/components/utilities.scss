@@ -360,6 +360,12 @@ label.label-with-details{
   width: 30px;
 }
 
+.lmo-column-container {
+  margin: auto;
+  max-width: $large-max-width;
+  padding: 0 10px;
+}
+
 @media (min-width: 768px) {
   .lmo-column-left {
     width: 59%;
