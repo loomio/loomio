@@ -294,5 +294,10 @@ body.start_group {
     line-height: 32px;
     font-weight: 300;
   }
-  .pricing { margin: 15px 0 30px; }
+  form textarea, form textarea.form-control { height: 100px; }
+  .pricing {
+    font-size: 22px;
+    text-align: right;
+    font-weight: 300;
+  }
 }
