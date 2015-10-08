@@ -55,15 +55,17 @@ deploy:
     api_key:
       secure: Vuc1b8+YURceog2aecwYxHEvdQDHEY2QnNKTcvGzAl7/4FPJ4ZJeEGwURm825BgQwe8LBs9mrAb+VdXboXG6d82HxyTeNKEwhhPqxOmcIGS9Wb9SQpZrSkk6p5Ldtf0VT1dcn8rCPbMu2gxr5L1o30+HClWMEPe62llZloBCALs=
     app: loomio-clone
+    skip_cleanup: true
     on:
       branch: master
     run:
-      - "rake db:migrate"
+      - "bundle exec rake db:migrate"
   - provider: heroku
     api_key:
       secure: Vuc1b8+YURceog2aecwYxHEvdQDHEY2QnNKTcvGzAl7/4FPJ4ZJeEGwURm825BgQwe8LBs9mrAb+VdXboXG6d82HxyTeNKEwhhPqxOmcIGS9Wb9SQpZrSkk6p5Ldtf0VT1dcn8rCPbMu2gxr5L1o30+HClWMEPe62llZloBCALs=
       app: loomio-test
+      skip_cleanup: true
       on:
         branch: user-testing
     run:
-      - "rake db:migrate"
+      - "bundle exec rake db:migrate"
