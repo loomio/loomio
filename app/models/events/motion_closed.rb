@@ -4,7 +4,7 @@ class Events::MotionClosed < Event
                     eventable: motion,
                     discussion_id: motion.discussion_id)
 
-    UsersToEmailQuery.motion_closed(motion).find_each do |user|
+    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.motion_closed(motion)) do |user|
       ThreadMailer.delay.motion_closed(user, event)
     end
 
