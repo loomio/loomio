@@ -57,9 +57,13 @@ deploy:
     app: loomio-clone
     on:
       branch: master
+    run:
+      - "rake db:migrate"
   - provider: heroku
     api_key:
       secure: Vuc1b8+YURceog2aecwYxHEvdQDHEY2QnNKTcvGzAl7/4FPJ4ZJeEGwURm825BgQwe8LBs9mrAb+VdXboXG6d82HxyTeNKEwhhPqxOmcIGS9Wb9SQpZrSkk6p5Ldtf0VT1dcn8rCPbMu2gxr5L1o30+HClWMEPe62llZloBCALs=
       app: loomio-test
       on:
         branch: user-testing
+    run:
+      - "rake db:migrate"
