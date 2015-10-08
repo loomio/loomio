@@ -49,3 +49,17 @@ addons:
   code_climate:
     repo_token:
       secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
+
+deploy:
+  - provider: heroku
+    api_key:
+      secure: Vuc1b8+YURceog2aecwYxHEvdQDHEY2QnNKTcvGzAl7/4FPJ4ZJeEGwURm825BgQwe8LBs9mrAb+VdXboXG6d82HxyTeNKEwhhPqxOmcIGS9Wb9SQpZrSkk6p5Ldtf0VT1dcn8rCPbMu2gxr5L1o30+HClWMEPe62llZloBCALs=
+    app: loomio-clone
+    on:
+      branch: master
+  - provider: heroku
+    api_key:
+      secure: Vuc1b8+YURceog2aecwYxHEvdQDHEY2QnNKTcvGzAl7/4FPJ4ZJeEGwURm825BgQwe8LBs9mrAb+VdXboXG6d82HxyTeNKEwhhPqxOmcIGS9Wb9SQpZrSkk6p5Ldtf0VT1dcn8rCPbMu2gxr5L1o30+HClWMEPe62llZloBCALs=
+      app: loomio-test
+      on:
+        branch: user-testing
