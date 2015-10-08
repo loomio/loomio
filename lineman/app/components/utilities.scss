@@ -103,6 +103,9 @@
 
 .label-with-details{
   font-weight: bold;
+  display: inline;
+  line-height: 24px;
+  cursor: pointer;
 }
 
 .label-with-details-label:after{

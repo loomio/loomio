@@ -34,7 +34,7 @@
           %label.label-with-details{for: 'public-option'}
             %i.fa.fa-globe>
             %span.label-with-details-label{translate: 'common.privacy.public' }>
-            %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public'}
+            %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public', translate-value-group-name: '{{discussion.groupName()}}'}
         .privacy-form-option
           %input#private-option{type: 'radio', ng-model: 'discussion.private', ng-value: 'true'}
           %label.label-with-details{for: 'private-option'}
