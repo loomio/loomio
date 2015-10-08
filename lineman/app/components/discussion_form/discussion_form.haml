@@ -28,7 +28,7 @@
         %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
         %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context-field{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
-      .form-group{ng_show: 'showPrivacyForm()'}
+      .form-group{ng-show: 'showPrivacyForm()'}
         .privacy-form-option
           %input#public-option{type: 'radio', ng-model: 'discussion.private', ng-value: 'false'}
           %label.label-with-details{for: 'public-option'}
@@ -43,13 +43,12 @@
             %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}>
             %span.label-with-details-details{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}>
 
-      .privacy-notice{ng_hide: 'showPrivacyForm()'}
-        /* craziness here. discussion.private returns different results on new thread and edit thread*/
+      .privacy-notice{ng-show: '!showPrivacyForm()'}
         .public-discussion.label-with-details{ng_hide: 'discussion.private'}
           %i.fa.fa-globe>
           %span.label-with-details-label{translate: 'common.privacy.public'}
-          %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public', translate-value-group-name: '{{discussion.groupName()}}'}
-        .private-discussion.label-with-details{ng_show: 'discussion.private'}
+          %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public'}
+        .private-discussion.label-with-details{ng-show: 'discussion.private'}
           %i.fa.fa-lock>
           %span.label-with-details-label{translate: 'common.privacy.private'}
           %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{::discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}

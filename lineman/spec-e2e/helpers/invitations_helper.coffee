@@ -23,7 +23,7 @@ module.exports = new class InvitationsHelper
     element(By.css('.invitation-form__submit')).click()
 
   clickManageMembers: ->
-    element(By.css('.members-card__manage-members a')).click()
+    element(By.css('.members-card__manage-members')).click()
 
   pendingInvitationsPanel: ->
     element(By.css('.pending-invitations-card'))
