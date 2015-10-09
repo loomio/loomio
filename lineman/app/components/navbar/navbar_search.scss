@@ -53,7 +53,7 @@
   background: white;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $medium-max-width) {
   .navbar-search-input{
     width: 100%;
   }
