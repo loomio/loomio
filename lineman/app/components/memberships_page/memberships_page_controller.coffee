@@ -2,16 +2,19 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   $rootScope.$broadcast('currentComponent', { page: 'membershipsPage'})
 
   @init = (group) =>
-    if group and !@group?
-      @group      = group
+    return if @group? or !group?
+    if AbilityService.canViewMemberships(group)
+      @group = group
       Records.memberships.fetchByGroup(@group.key, per: 100)
+    else
+      $rootScope.$broadcast 'pageError', { status: 403 }, group
 
   @fetchMemberships = =>
     Records.memberships.fetchByNameFragment(@fragment, @group.key) if @fragment
 
   @init Records.discussions.find $routeParams.key
   Records.groups.findOrFetchById($routeParams.key).then @init, (error) ->
-    $rootScope.$broadcast('pageError', error, group)
+    $rootScope.$broadcast('pageError', error)
 
   @canAdministerGroup = ->
     AbilityService.canAdministerGroup(@group)

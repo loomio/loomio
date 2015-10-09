@@ -1,7 +1,7 @@
 module.exports = new class MembershipsHelper
 
   visitMembershipsPage: ->
-    element(By.css('.members-card__manage-members a')).click()
+    element(By.css('.members-card__manage-members')).click()
 
   searchInput: ->
     element(By.css('.membership-page__search-filter'))
@@ -39,3 +39,6 @@ module.exports = new class MembershipsHelper
   makeJenniferCoordinator: ->
     @fillInSearchInput('Jennifer')
     @checkCoordinatorCheckbox()
+
+  confirmRemoval: ->
+    browser.switchTo().alert().accept()

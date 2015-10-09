@@ -1,27 +1,52 @@
 el:
   common:
+    confirm_discard_changes: Απορρίψτε τις αλλαγές σας;
     time:
       am: π.μ.
       pm: μ.μ.
+    closing_in: "Κλείνει {{time}}"
+    closed_ago: "Έκλεισε {{time}}"
     volume: Ένταση
+    notification_volume: Ένταση ειδοποιήσεων
     group: Ομάδα
     groups: Ομάδες
     privacy:
       private: Ιδιωτικό
       public: Δημόσιο
       organisation: Οργανισμός
+    selected: Επιλεγμένα
     date_range:
       today: Σήμερα
+      yesterday: Εχθές
+      thisweek: Αυτή την εβδομάδα
+      thismonth: Αυτό το μήνα
+      older: Παλιότερα
     models:
       proposal: Πρόταση
     action:
       save: Αποθήκευση
+      save_changes: Αποθήκευση αλλαγών
+      reply: Απάντηση
       edit: Επεξεργασία
       like: Αρέσει
       unlike: "Δεν μ'άρέσει"
       cancel: Ακύρωση
+      show_more: Δείξε περισσότερα
+      view_all: Εμφάνιση όλων
+      new_thread: Νέο θέμα
+      add_subgroup: Προσθήκη υπο-ομάδας
+      loading: Φορτώνει
+      uploading: Φορτώνει
+    formatting_help:
+      label: Βοήθεια μορφοποίησης
+      title: Μάθετε πως να χρησιμοποιείτε το Markdown για να μορφωποιήσετε το κείμενο σας στο Loomio
   error_page:
     forbidden: Δεν έχετε το δικαίωμα για να το κάνετε αυτό.
+    page_not_found: Ήταν αδύνατον να βρούμε αυτό. Πιθανώς έχει διαγραφεί ή μετακινηθεί.
+    internal_server_error: "Συγνώμη, αλλά κάτι πήγε λάθος. Παρακαλούμε προσπαθήστε ξανά."
+  start_proposal_card:
+    title: Ξεκινήστε μια πρόταση
+    helptext: Είστε έτοιμοι να δημιουργήσετε μια απόφαση; Οι προτάσεις σας επιτρέπουν να βλέπετε πως αισθάνεται ο καθένας για μια συγκεκριμένη πορεία δράσης.
   proposal_outcome_panel:
     heading: Αποτέλεσμα
   proposal_outcome_form:
@@ -38,7 +63,7 @@ el:
     clear: Καθάρισμα
     unread: Αδιάβαστα
   comment_form:
-    edit_comment: Επεξεργαστείτε σχόλιο
+    edit_comment: Επεξεργασία σχόλιου
     delete_comment: Διαγραφή σχόλιου
     confirm_delete_message: Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?
   navbar:
@@ -46,6 +71,7 @@ el:
     groups: Ομάδες
     user_options:
       contact_us: Επικοινωνήστε με μας
+      new_thread: Νέο θέμα
       new_group: Νέα ομάδα
       profile: Προφίλ
       help: Βοήθεια
@@ -74,6 +100,7 @@ el:
     close_proposal: Κλείστε την πρόταση
   proposal_form:
     start_proposal: Ξεκινήστε μια πρόταση
+    start_a_proposal: Ξεκινήστε μια πρόταση
     edit_proposal: Επεξεργασία πρότασης
     title_label: Τίτλος
     closes_at_label: Κλείνει στις
@@ -151,6 +178,7 @@ el:
       proposals: Προτάσεις
     threads_from:
       today: Σήμερα
+      yesterday: Εχθές
   discussion:
     proposals: Προτάσεις
     volume:

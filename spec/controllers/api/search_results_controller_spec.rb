@@ -11,11 +11,17 @@ describe API::SearchResultsController do
     before do
       group.admins << user
       sign_in user
+      @search_setting = ENV['ADVANCED_SEARCH_ENABLED']
+      ENV['ADVANCED_SEARCH_ENABLED'] = 'Y'
+    end
+
+    after do
+      ENV['ADVANCED_SEARCH_ENABLED'] = @search_setting
     end
 
     it 'does not find irrelevant threads' do
       json = search_for('find')
-      discussion_ids = fields_for(json, 'search_results', 'discussion').map { |d| d['id'].to_i }
+      discussion_ids = fields_for(json, 'discussion', 'id')
       expect(discussion_ids).to_not include discussion.id
     end
 
@@ -74,6 +80,7 @@ describe API::SearchResultsController do
 end
 
 def fields_for(json, name, field)
+  return [] unless json[name]
   json[name].map { |f| f[field] }
 end
 
@@ -81,9 +88,9 @@ def search_for(term)
   get :index, q: term, format: :json
   JSON.parse(response.body).tap do |json|
     expect(json.keys).to include *(%w[search_results])
-    @discussion_ids = fields_for(json, 'search_results', 'discussion').map { |d| d['id'].to_i }
-    @motion_ids     = fields_for(json, 'search_results', 'proposals').flatten.map { |p| p['id'].to_i }
-    @comment_ids    = fields_for(json, 'search_results', 'comments').flatten.map { |c| c['id'].to_i }
+    @discussion_ids = fields_for(json, 'discussions', 'id')
+    @motion_ids     = fields_for(json, 'proposals', 'id')
+    @comment_ids    = fields_for(json, 'comments', 'id')
     @priorities     = fields_for(json, 'search_results', 'priority').map(&:to_f)
   end
 end

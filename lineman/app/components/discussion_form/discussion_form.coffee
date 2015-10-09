@@ -1,11 +1,10 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, FormService, KeyEventService) ->
-    $scope.showGroupSelect = true
+  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, AbilityService, FormService, KeyEventService) ->
     $scope.discussion = discussion.clone()
 
-    if $scope.discussion.isNew() and $scope.discussion.groupId?
-      $scope.showGroupSelect = false
+    if $scope.discussion.isNew() and !$scope.discussion.groupId?
+      $scope.showGroupSelect = true
 
     $scope.$on 'modal.closing', (event) ->
       FormService.confirmDiscardChanges(event, $scope.discussion)
@@ -18,11 +17,11 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
         $location.path "/d/#{response.discussions[0].key}" if actionName == 'created'
 
     $scope.availableGroups = ->
-      groups = _.filter CurrentUser.groups(), (group) ->
-        group.membersCanStartDiscussions or group.admins().include? CurrentUser
-      _.sortBy groups, (g) -> g.fullName()
+      _.filter CurrentUser.groups(), (group) ->
+        AbilityService.canStartThread(group)
 
     $scope.showPrivacyForm = ->
-      $scope.discussion.group()? and $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
+      return unless $scope.discussion.group()
+      $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
 
     KeyEventService.submitOnEnter $scope

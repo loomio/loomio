@@ -13,11 +13,11 @@
         - if motion.closed?
           %b= t(:closed) + " " + time_formatted_relative_to_age(motion.closing_at)
           - if motion.outcome.present?
-            = render_email_plaintext motion.outcome
+            = render_rich_text(motion.outcome, true)
           - else
-            = render_email_plaintext motion.description
+            = render_rich_text(motion.description, true)
         - else
-          = render_email_plaintext motion.description
+          = render_rich_text(motion.description, true)
         - unless motion.user_has_voted?(@recipient)
           %h4.have-say-title= t(:"help.have_your_say")
           =render 'thread_mailer/vote_buttons', motion: motion

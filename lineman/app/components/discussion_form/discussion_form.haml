@@ -15,7 +15,7 @@
 
     .form-group{ng-show: 'showGroupSelect'}
       %label{for: 'discussion-group-field', translate: 'discussion_form.group_label'}
-      %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName() for group in availableGroups()', ng-change: 'setCurrentPrivacy()'}
+      %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName for group in availableGroups() | orderBy: "fullName"', ng-change: 'setCurrentPrivacy()'}
         %option{value: '', translate: 'discussion_form.group_placeholder' }
 
     .discussion-group-selected{ng_show: 'discussion.groupId'}
@@ -28,13 +28,13 @@
         %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
         %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context-field{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
-      .form-group{ng_show: 'showPrivacyForm()'}
+      .form-group{ng-show: 'showPrivacyForm()'}
         .privacy-form-option
           %input#public-option{type: 'radio', ng-model: 'discussion.private', ng-value: 'false'}
           %label.label-with-details{for: 'public-option'}
             %i.fa.fa-globe>
             %span.label-with-details-label{translate: 'common.privacy.public' }>
-            %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public'}
+            %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public', translate-value-group-name: '{{discussion.groupName()}}'}
         .privacy-form-option
           %input#private-option{type: 'radio', ng-model: 'discussion.private', ng-value: 'true'}
           %label.label-with-details{for: 'private-option'}
@@ -43,12 +43,12 @@
             %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}>
             %span.label-with-details-details{ng_hide: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_group', translate-value-group-name: '{{discussion.groupName()}}'}>
 
-      .privacy-notice{ng_hide: 'showPrivacyForm()'}
+      .privacy-notice{ng-show: '!showPrivacyForm()'}
         .public-discussion.label-with-details{ng_hide: 'discussion.private'}
           %i.fa.fa-globe>
           %span.label-with-details-label{translate: 'common.privacy.public'}
           %span.label-with-details-details{translate: 'discussion_form.privacy.will_be_public'}
-        .private-discussion.label-with-details{ng_show: 'discussion.private'}
+        .private-discussion.label-with-details{ng-show: 'discussion.private'}
           %i.fa.fa-lock>
           %span.label-with-details-label{translate: 'common.privacy.private'}
           %span.label-with-details-details{ng_show: 'discussion.group().isVisibleToParentMembers', translate: 'discussion_form.privacy.will_be_private_to_parent_group', translate-value-group-name: '{{::discussion.groupName()}}', translate-value-parent-group-name: '{{discussion.group().parentName()}}'}

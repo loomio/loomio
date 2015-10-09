@@ -5,7 +5,7 @@
   %li Acquisition - number of organisations created during the cohort period
   %li Activation - number of organisations which were ever active (had at least 5 sessions)
   %li Retention - R30 is number of organisations which were active in the month starting day 30 (R60 is the next month, etc). The percentage shows the proportion of activated groups that meet this criteria
-  %li Revenue - number of organisations from this cohort that decided to pay
+  %li Revenue - the total number of paying groups, and the total recurring revenue from each cohort. Includes one-off donations, divided by 12 (i.e. assumes we could get them to donate a similar level once per year)
   / %li Referral - number of organisations started by users who are part of a group in this cohort?
 
 %table.table
@@ -25,7 +25,7 @@
       / %th Referral
 
   / manual hack to use until we have hooked up cohort.paying_organisations.count
-  - revenue = ["0", "7: $46/mo", "6: $100/mo", "0: $0/mo", "2: $12/mo", "3: $20/mo", "5: $53/mo", "3: $43/mo", "2: $22/mo", "0: 0/mo", "1: $27/mo"]
+  - revenue = ["0", "9: $86/mo", "6: $152/mo", "1: $2/mo", "2: $12/mo", "4: $142/mo", "6: $41/mo", "3: $45/mo", "4: $25/mo", "4: 21/mo", "2: $30/mo"]
   %tbody
     - @cohorts.each do |cohort|
 

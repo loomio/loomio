@@ -5,6 +5,8 @@ describe 'InvitationFormController', ->
   beforeEach inject ($httpBackend, $routeParams) ->
     $httpBackend.whenGET(/api\/v1\/contacts/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/users\/invitables\//).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/discussions\/inbox/).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/memberships\/my_memberships/).respond(200, {})
 
   beforeEach ->
     @currentUser = @factory.create 'users'
@@ -39,7 +41,7 @@ describe 'InvitationFormController', ->
 
   describe 'contacts', ->
     beforeEach ->
-      @contact = @factory.create 'contacts', name: 'RickDazo', email: 'dick@razo.com', user_id: @currentUser.id
+      @contact = @factory.create 'contacts', name: 'RickDazo', email: 'dick@razo.com', source: 'gmail', user_id: @currentUser.id
 
     it 'can find a contact with no search query', ->
       expect(@scope.invitables().length).toBe(1)
@@ -53,7 +55,7 @@ describe 'InvitationFormController', ->
     it 'displays a contact as an invitable if it matches the search query by email', ->
       @scope.fragment = 'dick'
       expect(@scope.invitables().length).toBe(1)
-      expect(@scope.invitables()[0].subtitle).toBe '<dick@razo.com>'
+      expect(@scope.invitables()[0].subtitle).toBe '<dick@razo.com> (gmail)'
 
     it 'does not display a contact as an invitable if it does not match the search query', ->
       @scope.fragment = 'rizzo'
@@ -72,7 +74,7 @@ describe 'InvitationFormController', ->
       @user = @factory.create 'users', name: 'RickDazo', username: 'dazzricko'
       @someOtherGroup = @factory.create 'groups'
       @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @user.id
-      @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @currentUser.id      
+      @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @currentUser.id
 
     it 'can find a user with no search query', ->
       expect(_.pluck(@scope.invitables(), 'name')).toContain('RickDazo')

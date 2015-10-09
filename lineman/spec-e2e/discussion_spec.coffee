@@ -37,6 +37,23 @@ describe 'Discussion Page', ->
       alert.accept()
       expect(threadPage.discussionTitle()).toContain('What star sign are you?')
 
+  describe 'move thread', ->
+    it 'lets you move a thread', ->
+      threadPage.loadWithMultipleDiscussions()
+      threadPage.moveThread('Point Break')
+      expect(threadPage.groupTitle()).toContain('Point Break')
+      expect(flashHelper.flashMessage()).toContain('Thread has been moved to Point Break')
+
+  describe 'delete thread', ->
+
+    it 'lets coordinators and thread authors delete threads', ->
+      threadPage.openThreadOptionsDropdown()
+      threadPage.selectDeleteThreadOption()
+      threadPage.confirmThreadDeletion()
+      expect(flashHelper.flashMessage()).toContain('Thread deleted')
+      expect(groupsHelper.groupName().isPresent()).toBe(true)
+      expect(groupsHelper.groupPage()).not.toContain('What star sign are you?')
+
   it 'adds a comment', ->
     threadPage.addComment('hi this is my comment')
     expect(threadPage.mostRecentComment()).toContain('hi this is my comment')
@@ -74,3 +91,15 @@ describe 'Discussion Page', ->
     threadPage.selectDeleteCommentOption()
     threadPage.confirmCommentDeletion()
     expect(threadPage.activityPanel()).not.toContain('original comment right thur')
+
+  it 'hides member actions from visitors', ->
+    threadPage.loadWithPublicContent()
+    expect(threadPage.commentForm().isPresent()).toBe(false)
+    expect(threadPage.threadOptionsDropdown().isPresent()).toBe(false)
+    expect(threadPage.volumeOptions().isPresent()).toBe(false)
+
+  it 'hides the feedback form on comment form focus', ->
+    threadPage.enterCommentText('Hello')
+    expect(threadPage.angularFeedbackCard().isDisplayed()).toBe(false)
+    threadPage.submitComment(' how are you?')
+    expect(threadPage.angularFeedbackCard().isDisplayed()).toBe(true)

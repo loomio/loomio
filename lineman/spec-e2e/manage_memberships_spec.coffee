@@ -36,6 +36,7 @@ describe 'Managing memberships', ->
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(2)
       membershipsHelper.fillInSearchInput('Patrick')
       membershipsHelper.checkCoordinatorCheckbox()
+      membershipsHelper.confirmRemoval()
       expect(flashHelper.flashMessage()).toContain('Patrick Swayze is no longer a coordinator')
       membershipsHelper.clearSearchInput()
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(1)

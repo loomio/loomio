@@ -12,7 +12,7 @@
   color: $primary-text-color;
   display: inline-block;
   margin-bottom: 0px;
-  @media (min-width: $screen-xs-min){width: 250px;}
+  @media (min-width: $screen-xs-min){width: 200px;}
 }
 
 .navbar-search-input::-webkit-input-placeholder,
@@ -36,12 +36,13 @@
 
   width: 100%;
   top: $navbar-height;
+  right: 93px; /*overridden on small screens by media query below*/
   text-align: left;
   max-width: 320px;
   margin-top: 2px;
   box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;
-  max-height: 800px;
+  max-height: 91vh;
 }
 
 .no-results-found {
@@ -52,7 +53,7 @@
   background: white;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $medium-max-width) {
   .navbar-search-input{
     width: 100%;
   }

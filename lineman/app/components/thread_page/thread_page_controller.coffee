@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, ScrollService, AbilityService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   handleCommentHash = do ->
@@ -32,7 +32,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      @group      = @discussion.group()
       @comment    = Records.comments.build(discussionId: @discussion.id)
       if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
         @proposalToFocus = @discussion.activeProposal()
@@ -44,7 +43,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'setTitle', @discussion.title
       $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
 
-      MessageChannelService.subscribeTo "/discussion-#{@discussion.key}"
+      MessageChannelService.subscribeToDiscussion(@discussion)
 
   @init Records.discussions.find $routeParams.key
   Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
@@ -60,20 +59,35 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @proposalToFocus = Records.proposals.find $location.search().proposal
     @performScroll() if @eventsLoaded
 
+  @group = ->
+    @discussion.group()
+
   @showLintel = (bool) ->
     $rootScope.$broadcast('showThreadLintel', bool)
 
-  @editDiscussion = ->
+  @editThread = ->
     ModalService.open DiscussionForm, discussion: => @discussion
 
+  @moveThread = ->
+    ModalService.open MoveThreadForm, discussion: => @discussion
+
+  @deleteThread = ->
+    ModalService.open DeleteThreadForm, discussion: => @discussion
+
   @showContextMenu = =>
-    @canEditDiscussion(@discussion)
+    @canEditThread(@discussion)
 
   @canStartProposal = ->
     AbilityService.canStartProposal(@discussion)
 
-  @canEditDiscussion = =>
+  @canEditThread = =>
     AbilityService.canEditThread(@discussion)
+
+  @canMoveThread = =>
+    AbilityService.canMoveThread(@discussion)
+
+  @canDeleteThread = =>
+    AbilityService.canDeleteThread(@discussion)
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview

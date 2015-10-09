@@ -52,10 +52,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
 
-  $scope.$on 'currentUserMembershipsLoaded', ->
-    _.each CurrentUser.groups(), (group) ->
-      MessageChannelService.subscribeTo "/group-#{group.key}"
-
+  MessageChannelService.subscribeToUser()
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
@@ -72,6 +69,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
     {path: '/g/:key/memberships', component: 'membershipsPage'},
     {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
+    {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' }
   ])

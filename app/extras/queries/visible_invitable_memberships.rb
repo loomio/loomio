@@ -17,15 +17,19 @@ class Queries::VisibleInvitableMemberships < Delegator
   private
 
   def visible_memberships_filtered
-    Membership.where(id: visible_membership_ids)
+    Membership.select("DISTINCT ON (user_id) memberships.*")
+              .where(user_id: visible_user_ids, group_id: @user.group_ids, archived_at: nil, is_suspended: false)
               .search_for(@query)
               .limit(@limit)
   end
 
-  def visible_membership_ids
-    @visible_member_ids ||= @user.groups.flat_map { |g| g.membership_ids }
-                                        .reject   { |id| group_membership_ids.include? id }
-                                        .uniq
+  def visible_user_ids
+    Membership.connection.execute(
+      "SELECT DISTINCT memberships.user_id
+       FROM memberships
+       LEFT OUTER JOIN users u ON u.id = memberships.user_id AND memberships.group_id = #{@group.id}
+       WHERE memberships.group_id IN (#{@user.group_ids.join(', ')})
+       AND   u.id IS NULL").values.flatten.map(&:to_i)
   end
 
   def group_membership_ids

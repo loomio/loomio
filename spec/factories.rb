@@ -185,7 +185,16 @@ FactoryGirl.define do
     fields {{ body: 'Successful translation' }}
   end
 
-  factory :search_result
+  factory :search_result do
+    discussion
+    motion
+    comment
+    discussion_blurb "discussion blurb"
+    motion_blurb "motion blurb"
+    comment_blurb "comment blurb"
+    priority 1.0
+    query "test query"
+  end
 
   factory :webhook do
     association :hookable, factory: :discussion

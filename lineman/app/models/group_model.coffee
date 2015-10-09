@@ -11,11 +11,19 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
 
     relationships: ->
       @hasMany 'discussions'
+      @hasMany 'proposals'
       @hasMany 'membershipRequests'
       @hasMany 'memberships'
       @hasMany 'invitations'
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
+
+    closedProposals: ->
+      _.filter @proposals(), (proposal) ->
+        proposal.isClosed()
+
+    hasPreviousProposals: ->
+      _.some @closedProposals()
 
     pendingMembershipRequests: ->
       _.filter @membershipRequests(), (membershipRequest) ->
@@ -78,12 +86,6 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
 
     adminIds: ->
       _.map @adminMemberships(), (membership) -> membership.userId
-
-    fullName: (separator = '-') ->
-      if @parentId?
-        "#{@parentName()} #{separator} #{@name}"
-      else
-        @name
 
     parentName: ->
       @parent().name if @parent()?

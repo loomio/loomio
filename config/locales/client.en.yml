@@ -21,6 +21,7 @@ en:
       thisweek: 'This Week'
       thismonth: 'This Month'
       older: 'Older'
+    more_help: 'More help'
     models:
       proposal: 'Proposal'
     action:
@@ -70,8 +71,12 @@ en:
   previous_proposals_card:
     heading: Previous Proposals
 
+  previous_proposals_page:
+    heading: Previous proposals
+
   proposal_collapsed:
     expand: Expand
+    outcome: 'Outcome: {{outcome}}'
 
   context_card:
     heading: Context
@@ -122,6 +127,7 @@ en:
     groups_title: 'View your groups'
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
+    user_actions: 'User actions'
     user_options:
       label: 'User options'
       contact_us: 'Contact us'
@@ -249,7 +255,7 @@ en:
     privacy:
       will_be_private_to_group: 'The thread will only be visible to members of {{groupName}}.'
       will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
-      will_be_public: 'Anyone can see the thread.'
+      will_be_public: 'Anyone can see the thread. Only members of {{groupName}} can participate.'
     new_discussion_submit: 'Start thread'
     edit_discussion_submit: 'Update thread'
 
@@ -293,8 +299,10 @@ en:
     heading: 'Start a group'
     heading_when_subgroup: 'Start a subgroup'
     group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
-    group_payment_reminder: "In 30 days, when you've seen how Loomio improves your group's decision making, we'll ask you to choose the <a href='#'>payment plan</a> that works for you."
-    name_label: 'Group Name'
+    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='#'>pricing plan</a>."
+    name_label: 'Group name'
+    description_label: 'Group description'
+    description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     subgroup_name_label: 'Subgroup name'
     submit: 'Start Group'
     messages:
@@ -422,7 +430,13 @@ en:
 
   membership_requests_card:
     heading: 'Membership Requests'
-    manage_requests: Manage requests ({{count}})
+    manage_requests: Manage requests
+    manage_requests_with_count: Manage requests ({{count}})
+
+  group_help_card:
+    title: Help
+    ten_tips_article_title: 10 tips for making great decisions with Loomio
+    nine_ways_to_use_proposals: 9 ways to use a Loomio proposal to turn a conversation into action
 
   membership_requests_page:
     heading: Membership Requests
@@ -435,6 +449,10 @@ en:
     messages:
       request_approved_success: Membership request approved
       request_ignored_success: Membership request ignored
+
+  group_previous_proposals_card:
+    heading: Previous proposals
+    see_more: See more
 
   group_form:
     messages:
@@ -458,8 +476,10 @@ en:
     import_contacts: 'Import contacts'
     instructions: 'Enter names or email addresses'
     invitation_message: 'Invitation Message'
+    remove_invite: 'Remove invitation'
     send_invite: 'Send {{count}} invites'
     to: 'to: '
+    add_custom_message: '+ add custom message'
     default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
     messages:
       members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
@@ -480,6 +500,8 @@ en:
       title: 'Remove member'
       question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
       submit: 'Remove'
+    remove_admin_from_self:
+      question: 'Are you sure you no longer want to be a coordinator?'
 
   pending_invitations_card:
     heading: Pending invitations
@@ -632,6 +654,23 @@ en:
   thread_context:
     aria_label: 'Thread context'
     thread_options: 'Thread options'
+    edit_thread: 'Edit thread'
+    move_thread: 'Move thread'
+    delete_thread: 'Delete thread'
+
+  delete_thread_form:
+    title: Delete thread
+    body: Are you sure you want to delete this thread?
+    confirm: 'Yes, delete the thread'
+    messages:
+      success: Thread deleted
+
+  move_thread_form:
+    title: Move thread
+    body: 'Destination group:'
+    confirm: Move thread
+    messages:
+      success: Thread has been moved to {{name}}
 
   activity_card:
     new_activity: New Activity
@@ -688,8 +727,8 @@ en:
 
   discussion_edited_item:
     title: '<strong>{{actor}}</strong> updated the thread title: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> updated the thread description'
-    description_title: '<strong>{{actor}}</strong> updated the thread title and description'
+    description: '<strong>{{actor}}</strong> updated the thread context'
+    description_title: '<strong>{{actor}}</strong> updated the thread title and context'
 
   contact_message_form:
     contact_us: 'Contact Us'

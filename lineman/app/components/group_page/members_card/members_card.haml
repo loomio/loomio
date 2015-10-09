@@ -1,5 +1,5 @@
 .blank
-  %section.members-card{ng-if: 'isMember()', aria-labelledby: 'members-card-title'}
+  %section.members-card{ng-if: 'canViewMemberships()', aria-labelledby: 'members-card-title'}
     %h2#members-card-title.lmo-card-heading{ translate: 'group_page.members'}
     .members-card__list
       .members-card__avatar{ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
@@ -9,6 +9,5 @@
       %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }
-    .members-card__manage-members.card-minor-action
-      %a{lmo-href-for: 'group', lmo-href-action: 'memberships'}
-        %span{translate: 'group_page.all_members', translate-value-count: '{{group.membershipsCount}}'}
+    %a.members-card__manage-members.lmo-card-minor-action{lmo-href-for: 'group', lmo-href-action: 'memberships'}
+      %span{translate: 'group_page.all_members', translate-value-count: '{{group.membershipsCount}}'}

@@ -5,7 +5,6 @@ angular.module('loomioApp').directive 'notifications', ->
   replace: true
   controller: ($scope, Records, CurrentUser, MessageChannelService) ->
 
-    MessageChannelService.subscribeToNotifications()
     Records.notifications.fetchMyNotifications()
 
     kinds = [

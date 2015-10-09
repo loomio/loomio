@@ -266,7 +266,7 @@ pt-BR:
     change_password: Altere sua senha
     deactivate_account: Desativar conta
     about_deactivation: O que isso significará?
-    confirm_account_deactivation: Tem certeza de que deseja desativar sua conta?
+    confirm_account_deactivation: Você tem certeza que deseja desativar sua conta?
     reactivation_html: "Você vai precisar entrar em <a href='%{link}'>contato conosco</a> para reativar sua conta."
     deactivation:
       title: Desativando sua conta
@@ -390,18 +390,18 @@ pt-BR:
   edit_group_settings: Editar configurações do grupo
   manage_members: Gerenciar membros
   leave_group: Sair do grupo
-  confirm_leave_hidden_group: "Tem certeza de que deseja sair de %{which_group}? Você também será removido(a) dos subgrupos."
-  confirm_leave_group: "Tem certeza de que deseja abandonar %{which_group}?"
+  confirm_leave_hidden_group: "Você tem certeza que deseja sair de %{which_group}? Você também será removido dos subgrupos."
+  confirm_leave_group: "Você tem certeza que deseja abandonar %{which_group}?"
   deactivate_group: Desativar grupo
-  confirm_deactivate_group: "Espere!!! Tem certeza de que quer desativar %{which_group}? Você não poderá mais ver o grupo. Entretanto, caso deseje ter o grupo de volta, pode pedir para reativá-lo enviando um e-mail para contact@loomio.org."
+  confirm_deactivate_group: "Espere!!! Tem certeza que deseja desativar %{which_group}? Você não poderá mais ver o grupo. Entretanto, caso deseje ter o grupo de volta, pode pedir para reativá-lo enviando um e-mail para contact@loomio.org."
   invited_users: Membros convidados
   members: Membros
-  confirm_remove_user: "Tem certeza de que deseja remover %{which_user} do grupo?"
+  confirm_remove_user: "Você tem certeza que deseja remover %{which_user} do grupo?"
   remove_coordinator: Remover coordenador(a)
-  confirm_remove_coordinator: "Tem certeza que não quer mais que %{which_user} seja um(a) coordenador(a) deste grupo?"
+  confirm_remove_coordinator: "Você tem certeza que não deseja mais que %{which_user} seja um coordenador deste grupo?"
   make_coordinator: Tornar coordenador(a)
-  confirm_make_coordinator: "Tem certeza que deseja tornar %{which_user} coordenador(a) do grupo?"
-  confirm_remove_member: Tem certeza de que deseja remover esta/e integrante do grupo?
+  confirm_make_coordinator: "Você tem certeza que deseja tornar %{which_user} coordenador do grupo?"
+  confirm_remove_member: Você tem certeza que deseja remover esta/e integrante do grupo?
   want_to_invite_html: "Gostaria de <a href='%{link}'>convidar pessoas</a> para este grupo?"
   membership_requests: Solicitações de inclusão de membro
   previous_requests: Pedidos anteriores
@@ -410,15 +410,15 @@ pt-BR:
   join_group_btn: Entrar no grupo
   membership_by_invitation_only: A inscrição neste grupo é apenas por convite
   you_have_joined_group: "Você entrou em %{group_name}"
-  confirm_approve_membership_request: "Tem certeza de que quer adicionar %{which_user} ao grupo?"
+  confirm_approve_membership_request: "Você tem certeza que deseja adicionar %{which_user} ao grupo?"
   cancel_membership_request: Cancelar solicitação
   ignore_request: Ignorar solicitação
   ignore: "Ignorar "
-  confirm_ignore_membership_request: "Tem certeza de que quer ignorar a solicitação de inclusão de membro de %{which_user}?"
+  confirm_ignore_membership_request: "Você tem certeza de que deseja ignorar a solicitação de inclusão de membro de %{which_user}?"
   membership_requested: Inclusão de membro solicitada
   request_membership: Solicitar inclusão de membro
   ask_to_join_group: Pedir para entrar no grupo
-  confirm_remove_membership_request: Tem certeza de que deseja retirar sua solicitação de inclusão de membro para este grupo?
+  confirm_remove_membership_request: Você tem certeza que deseja retirar sua solicitação de inclusão de membro para este grupo?
   no_pending_membership_requests: Não existem novos pedidos de inclusão de membros para este grupo.
   subgroups: Subgrupos
   create_a_subgroup: Criar um subgrupo
@@ -566,7 +566,7 @@ pt-BR:
   comment_form_submit_button: Postar comentário
   liked_by: "Curtido por %{who}"
   delete_comment: Apagar comentário
-  confirm_delete_comment: Tem certeza que quer apagar este comentário?
+  confirm_delete_comment: Você tem certeza que deseja apagar este comentário?
   markdown_settings_more_info: Mais informações...
   edit_discussion: Editar discussão
   move_discussion: Mover discussão
@@ -574,12 +574,12 @@ pt-BR:
   move_discussion_to_public_group: Esta discussão é atualmente privada. Movê-la para este grupo público irá torná-la pública.
   move_discussion_where: Para onde você gostaria de mover esta discussão?
   delete_discussion: Apagar discussão
-  confirm_delete_discussion: Tem certeza que quer apagar permanentemente esta discussão?
+  confirm_delete_discussion: Você tem certeza que deseja apagar permanentemente esta discussão?
   print_tooltip_info: Imprimir
   new_proposal: Nova Proposta
   edit_proposal: Editar Proposta
   close_proposal: Encerrar proposta
-  confirm_close_proposal: Tem certeza de que quer encerrar essa proposta?
+  confirm_close_proposal: Você tem certeza de que deseja encerrar essa proposta?
   change_proposal_close_date: Mudar data de encerramento
   change_proposal_close_date_header: "Mudar data de encerramento da proposta '%{which}'"
   proposal: Proposta
@@ -643,7 +643,7 @@ pt-BR:
     join_the_community: Faça parte da comunidade
     join_the_community_description_html: "Todos(as) são bem-vindos(as) a juntar-se à Comunidade Loomio, onde nós conversamos sobre como tirar o máximo da ferramenta e sobre como ela pode ser melhorada.<br /><br /><a href='https://www.loomio.org/groups/3'> Clique aqui para ir para o grupo da Comunidade Loomio</a>. "
     images_and_text_formatting: Formatação de imagens e texto
-    images_and_text_formatting_html: "<p>Loomio utiliza código 'Markdown' para formatação de texto e inserção de imagens.\nVocê pode ativar Markdown pelo pequeno ícone cinza embaixo da caixa de comentários.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Clique aqui</a>\npara informações sobre como usar Markdown.</p>\n"
+    images_and_text_formatting_html: "<p>Loomio utiliza o código 'Markdown' -- Remarcação -- para formatação de texto e inserção de imagens.\nVocê pode ativar a Remarcação pelo pequeno ícone cinza embaixo da caixa de comentários.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Clique aqui</a>\npara informações sobre como utilizar Remarcação.</p>\n"
     keep_up_to_date: Manter atualizado
     keep_up_to_date_html: "<p>Clicar no nome do grupo na parte superior da tela levará à Página do Grupo, \nonde você pode ver uma lista de todas as discussões e decisões desse grupo. \nSe você está em mais de um grupo, pode ver toda as atividades em todos os seus \ngrupos de uma vez na Página Inicial.</p>\n<p>Você receberá notificações por e-mail quando coisas importantes acontecerem\nem seu grupo. Você pode modificar suas preferências de e-mail <a href=\"%{link}\"\">aqui</a>.</p>\n"
     make_a_decision: Tomar uma decisão
@@ -782,8 +782,8 @@ pt-BR:
     name: "Nós devíamos passar as férias na lua!"
     description: "O Robô de Ajuda do Loomio está realmente afim que o seu grupo invista em uma viagem para a lua. Aparentemente o <i>queijo espacial</i> é delicioso. Mas as implicações para a sua pegada de carbono são preocupantes.\nSerá que é uma boa ideia? O Robô de Ajuda do Loomio quer saber o que você pensa sobre isso!\nSe você já tem clareza sobre sua posição, clique em um dos ícones abaixo (passe o mouse por cima dos botões de decisão para ver a descrição sobre cada um deles).\nAo clicar num dos botões, aparecerá uma oportunidade para você justificar brevemente a sua decisão. Isso faz com que seja fácil ver um resumo do que cada um pensa e o porque. Você pode mudar de ideia e editar a sua decisão livremente até que a proposta se encerre.\n"
   contact_page:
-    contact_us: Contacte-nos
-    faq_prompt_html: "Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta nas nossas perguntas frequentes."
+    contact_us: Contato
+    faq_prompt_html: "Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta na nossa seção de perguntas frequentes."
     contact_information: "Se você não achar o que está procurando, você pode encontrar o nosso contato para informações na parte inferior da página."
     contact_form: Formulário de contato
     labels:
@@ -1065,7 +1065,7 @@ pt-BR:
     profile: Perfil
     welcome_back: "Bem vindo de volta!"
     email_settings: Configurações de e-mail
-    markdown_help_tooltip: Aprenda os conceitos básicos de formatação do seu texto com Markdown
+    markdown_help_tooltip: Aprenda os conceitos básicos de formatação do seu texto com Remarcação -- Markdown
     settings: Configurações
     dashboard: Painel
     unread: Não lida

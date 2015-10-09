@@ -103,6 +103,9 @@
 
 .label-with-details{
   font-weight: bold;
+  display: inline;
+  line-height: 24px;
+  cursor: pointer;
 }
 
 .label-with-details-label:after{
@@ -186,6 +189,14 @@ label.label-with-details{
   @include cardPadding;
 }
 
+.lmo-card-heading-padding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-left-right-padding {
+  padding: 0 $cardPaddingSize 0 $cardPaddingSize;
+}
+
 .lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
@@ -248,11 +259,11 @@ label.label-with-details{
 .lmo-markdown-wrapper {
   img { max-width: 100%; }
   h1 {
-    @include fontGrande;
+    @include fontLarge;
     @include fontHelveticaBold;
   }
   h2 {
-    @include fontLarge;
+    @include fontMedLarge;
     @include fontHelveticaBold;
   }
   h3 {
@@ -260,6 +271,15 @@ label.label-with-details{
   }
   h4 {
     @include fontHelveticaBold;
+  }
+  ul{
+    padding: 0 0 10px 24px;
+  }
+  ul li{
+    list-style: disc;
+  }
+  blockquote{
+    font-size: inherit;
   }
 }
 
@@ -329,4 +349,36 @@ label.label-with-details{
   display: inline-block;
   line-height: 35px;
   text-decoration: underline;
+}
+
+.lmo-card-minor-action{
+  @include fontHelveticaLight;
+  color: $grey-on-white;
+  text-decoration: underline;
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+.dropdown-menu i.fa {
+  width: 30px;
+}
+
+.lmo-column-container {
+  margin: auto;
+  max-width: $large-max-width;
+  padding: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .lmo-column-left {
+    width: 59%;
+    float: left;
+    clear: left;
+  }
+
+  .lmo-column-right {
+    width: 40%;
+    float: right;
+    clear: right;
+  }
 }

@@ -23,7 +23,7 @@ module.exports = new class InvitationsHelper
     element(By.css('.invitation-form__submit')).click()
 
   clickManageMembers: ->
-    element(By.css('.members-card__manage-members a')).click()
+    element(By.css('.members-card__manage-members')).click()
 
   pendingInvitationsPanel: ->
     element(By.css('.pending-invitations-card'))
@@ -37,3 +37,9 @@ module.exports = new class InvitationsHelper
   cancelPendingInvitation: ->
     element(By.css('.pending-invitations-card__cancel-link')).click()
     element(By.css('.cancel-invitation-form__submit')).click()
+
+  clickAddCustomMessageLink: ->
+    element(By.css('.invitation-form__add-message-button')).click()
+
+  customMessageField: ->
+    element(By.css('.invitation-form__message-input'))

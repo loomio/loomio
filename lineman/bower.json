@@ -17,7 +17,7 @@
     "jquery": "~> 2.1.1",
     "jstimezonedetect": "~1.0.5",
     "lodash": "~> 3.9.3",
-    "lokijs": "techfort/lokijs#v1.3.8",
+    "lokijs": "techfort/lokijs#v1.3.10",
     "ment.io": "~0.9.15",
     "moment": "latest",
     "ng-file-upload": "~3.2.4",

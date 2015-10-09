@@ -1,29 +1,31 @@
-.modal-header
-  %button{type: 'button', class: 'close', ng-click: '$close()'}
-    %span{aria-hidden: 'true'} &times;
-    %span.sr-only{translate: 'common.action.cancel'}
-  %h1.lmo-h1{translate: 'profile_page.change_picture.title'}
+.change-picture-form
+  .lmo-disabled-form{ng-show: 'isDisabled'}
+  .modal-header
+    %button{type: 'button', class: 'close', ng-click: '$close()'}
+      %span{aria-hidden: 'true'} &times;
+      %span.sr-only{translate: 'common.action.cancel'}
+    %h1.lmo-h1{translate: 'profile_page.change_picture.title'}
 
-.modal-body
-  .change-picture-form__helptext{translate: 'profile_page.change_picture.helptext'}
-  %ul.change-picture-form__options-list
-    %li.change-picture-form__option
-      %a.lmo-link{href: '', ng-click: 'submit("initials")'}
-        .user-avatar.lmo-box--small.option-icon
-          .user-avatar__initials--small
-            {{user.avatarInitials}}
-        %span{translate: 'profile_page.change_picture.use_initials'}
-    %li.change-picture-form__option
-      %a.lmo-link{href: '', ng-click: 'submit("gravatar")'}
-        .user-avatar.lmo-box--small.option-icon
-          %img.user-avatar__image--small{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
-        %span{translate: 'profile_page.change_picture.use_gravatar'}
-    %li.change-picture-form__option
-      %a.lmo-link.change-picture-form__upload-button{href: '', ng-click: 'selectFile()'}
-        .user-avatar.lmo-box--small.option-icon
-          .user-avatar__initials--small
-            %i.fa.fa-lg.fa-camera
-        %span{translate: 'profile_page.change_picture.use_uploaded'}
-      %input.hidden.change-picture-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
-.modal-footer
-  %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+  .modal-body
+    .change-picture-form__helptext{translate: 'profile_page.change_picture.helptext'}
+    %ul.change-picture-form__options-list
+      %li.change-picture-form__option
+        %button.lmo-btn-link{ng-click: 'submit("initials")'}
+          .user-avatar.lmo-box--small.option-icon.lmo-float--left
+            .user-avatar__initials--small
+              {{user.avatarInitials}}
+          %span.lmo-option-text{translate: 'profile_page.change_picture.use_initials'}
+      %li.change-picture-form__option
+        %button.lmo-btn-link{ng-click: 'submit("gravatar")'}
+          .user-avatar.lmo-box--small.option-icon.lmo-float--left
+            %img.user-avatar__image--small{gravatar-src-once: 'user.gravatarMd5', alt: "{{::user.name}}"}
+          %span.lmo-option-text{translate: 'profile_page.change_picture.use_gravatar'}
+      %li.change-picture-form__option
+        %button.lmo-btn-link.change-picture-form__upload-button{ng-click: 'selectFile()'}
+          .user-avatar.lmo-box--small.option-icon.lmo-float--left
+            .user-avatar__initials--small
+              %i.fa.fa-lg.fa-camera
+          %span.lmo-option-text{translate: 'profile_page.change_picture.use_uploaded'}
+        %input.hidden.change-picture-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
+  .modal-footer
+    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

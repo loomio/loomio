@@ -7,6 +7,9 @@ class API::VotesController < API::RestfulController
     @votes = if params[:discussion_id]
       load_and_authorize :discussion
       @discussion.votes.includes({motion: [:author, :outcome_author]}, :user).for_user(current_user).most_recent
+    elsif params[:proposal_ids]
+      ids = params[:proposal_ids].split(',').map(&:to_i)
+      current_user.votes.where(motion_id: ids)
     else
       current_user.votes.most_recent.since(3.months.ago).most_recent
     end

@@ -24,6 +24,10 @@ class DevelopmentController < ApplicationController
     "http://localhost:8000/inbox"
   end
 
+  def previous_proposal_url(group)
+    "http://localhost:8000/g/#{group.key}/previous_proposals"
+  end
+
   def setup_dashboard
     cleanup_database
     sign_in patrick
@@ -47,11 +51,20 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_public_group_with_public_content
+    cleanup_database
+    another_test_group
+    public_test_proposal
+    sign_in jennifer
+    redirect_to discussion_url(public_test_discussion)
+  end
+
   def setup_multiple_discussions
     cleanup_database
     sign_in patrick
-    test_discussions
-    redirect_to group_url(test_group)
+    test_discussion
+    public_test_discussion
+    redirect_to discussion_url(test_discussion)
   end
 
   def setup_group_with_multiple_coordinators
@@ -139,6 +152,14 @@ class DevelopmentController < ApplicationController
     test_proposal
     MotionService.close(test_proposal)
     redirect_to discussion_url(test_discussion)
+  end
+
+  def setup_previous_proposal
+    cleanup_database
+    sign_in patrick
+    test_proposal
+    MotionService.close(test_proposal)
+    redirect_to previous_proposal_url(test_group)
   end
 
   def setup_proposal_closing_soon
@@ -307,19 +328,10 @@ class DevelopmentController < ApplicationController
 
   def test_discussion
     unless @test_discussion
-      @test_discussion = Discussion.create(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
+      @test_discussion = Discussion.create(title: 'What star sign are you?', group: test_group, author: jennifer, private: false)
       DiscussionService.create(discussion: @test_discussion, actor: @test_discussion.author)
     end
     @test_discussion
-  end
-
-  def test_discussions
-    100.times do
-      Discussion.create!(title: Faker::Company.bs,
-                         group: test_group,
-                         author: jennifer,
-                         private: true)
-    end
   end
 
   def public_test_discussion
@@ -364,6 +376,16 @@ class DevelopmentController < ApplicationController
       MotionService.create(motion: @test_proposal, actor: jennifer)
     end
     @test_proposal
+  end
+
+  def public_test_proposal
+    unless @public_test_proposal
+      @public_test_proposal = Motion.new(name: 'Lets holiday on Earth instead',
+                                         closing_at: 3.days.from_now.beginning_of_hour,
+                                         discussion: public_test_discussion)
+      MotionService.create(motion: @public_test_proposal, actor: patrick)
+    end
+    @public_test_proposal
   end
 
   def test_vote

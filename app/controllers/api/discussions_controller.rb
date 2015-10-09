@@ -1,5 +1,5 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read]
+  load_and_authorize_resource only: [:show, :mark_as_read, :move]
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 
@@ -16,6 +16,11 @@ class API::DiscussionsController < API::RestfulController
   def inbox
     instantiate_collection { |collection| collection_for_inbox collection }
     respond_with_collection
+  end
+
+  def move
+    service.move discussion: resource, params: params, actor: current_user
+    respond_with_resource
   end
 
   def mark_as_read

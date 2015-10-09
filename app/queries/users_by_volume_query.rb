@@ -1,11 +1,6 @@
 class UsersByVolumeQuery
   def self.normal_or_loud(discussion)
-    User.
-      active.
-      distinct.
-      joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{discussion.id})").
-      joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{discussion.group_id})").
-      where('dr.volume >= :normal OR (dr.volume IS NULL AND m.volume >= :normal)', { normal: DiscussionReader.volumes[:normal] })
+    base_query(discussion).where('dr.volume >= :normal OR (dr.volume IS NULL AND m.volume >= :normal)', { normal: DiscussionReader.volumes[:normal] })
   end
 
   def self.loud(discussion)
@@ -25,12 +20,16 @@ class UsersByVolumeQuery
   end
 
   private
-  def self.volume_and_discussion(volume, discussion)
+  def self.base_query(discussion)
     User.
       active.
       distinct.
       joins("LEFT OUTER JOIN discussion_readers dr ON (dr.user_id = users.id AND dr.discussion_id = #{discussion.id})").
       joins("LEFT OUTER JOIN memberships m ON (m.user_id = users.id AND m.group_id = #{discussion.group_id})").
-      where('dr.volume = :volume OR (dr.volume IS NULL AND m.volume = :volume)', { volume: DiscussionReader.volumes[volume] })
+      where('m.id IS NOT NULL AND m.archived_at IS NULL')
+  end
+
+  def self.volume_and_discussion(volume, discussion)
+    base_query(discussion).where('dr.volume = :volume OR (dr.volume IS NULL AND m.volume = :volume)', { volume: DiscussionReader.volumes[volume] })
   end
 end
