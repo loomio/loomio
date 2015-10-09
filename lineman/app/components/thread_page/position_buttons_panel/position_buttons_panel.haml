@@ -1,16 +1,17 @@
-.position-buttons-panel{ng-show: 'proposal.isActive() && undecided()'}
-  %h4.lmo-card-subheading{translate: 'position_buttons_panel.heading'}
+.blank
+  .position-buttons-panel{ng-if: 'showPositionButtons()'}
+    %h4.lmo-card-subheading{translate: 'position_buttons_panel.heading'}
 
-  .position_buttons_panel__buttons
-    %button.btn.position-button.position-button--yes{ng-click: 'select("yes")'}
-      .sr-only{translate: 'vote_form.i_agree'}
+    .position_buttons_panel__buttons
+      %button.btn.position-button.position-button--yes{ng-click: 'select("yes")'}
+        .sr-only{translate: 'vote_form.i_agree'}
 
-    %button.btn.position-button.position-button--abstain{ng-click: 'select("abstain")'}
-      .sr-only{translate: 'vote_form.i_abstain'}
+      %button.btn.position-button.position-button--abstain{ng-click: 'select("abstain")'}
+        .sr-only{translate: 'vote_form.i_abstain'}
 
-    %button.btn.position-button.position-button--no{ng-click: 'select("no")'}
-      .sr-only{translate: 'vote_form.i_disagree'}
+      %button.btn.position-button.position-button--no{ng-click: 'select("no")'}
+        .sr-only{translate: 'vote_form.i_disagree'}
 
-    %button.btn.position-button.position-button--block{ng-click: 'select("block")'}
-      .sr-only{translate: 'vote_form.i_block'}
+      %button.btn.position-button.position-button--block{ng-click: 'select("block")'}
+        .sr-only{translate: 'vote_form.i_block'}
 

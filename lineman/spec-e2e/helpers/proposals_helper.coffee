@@ -107,3 +107,5 @@ module.exports = new class ProposalsHelper
     element(By.css('.proposal-form__details-field')).clear().sendKeys('New edited proposal description')
     @clickSaveProposalChangesButton()
 
+  positionButtons: ->
+    element(By.css('.position_buttons_panel__buttons'))
