@@ -16,7 +16,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
     handleSubscriptions = (subscriptions) ->
       _.each subscriptions.data, (subscription) ->
         PrivatePub.sign(subscription)
-        PrivatePub.subscription subscription.channel, (data) ->
+        PrivatePub.subscribe subscription.channel, (data) ->
           if data.memo?
             switch data.memo.kind
               when 'comment_destroyed'
