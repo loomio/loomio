@@ -53,10 +53,9 @@ class DevelopmentController < ApplicationController
 
   def setup_public_group_with_public_content
     cleanup_database
-    sign_in patrick
     another_test_group
-    public_test_discussion
-    patrick.memberships.first.destroy
+    public_test_proposal
+    sign_in jennifer
     redirect_to discussion_url(public_test_discussion)
   end
 
@@ -329,7 +328,7 @@ class DevelopmentController < ApplicationController
 
   def test_discussion
     unless @test_discussion
-      @test_discussion = Discussion.create(title: 'What star sign are you?', group: test_group, author: jennifer, private: true)
+      @test_discussion = Discussion.create(title: 'What star sign are you?', group: test_group, author: jennifer, private: false)
       DiscussionService.create(discussion: @test_discussion, actor: @test_discussion.author)
     end
     @test_discussion
@@ -377,6 +376,16 @@ class DevelopmentController < ApplicationController
       MotionService.create(motion: @test_proposal, actor: jennifer)
     end
     @test_proposal
+  end
+
+  def public_test_proposal
+    unless @public_test_proposal
+      @public_test_proposal = Motion.new(name: 'Lets holiday on Earth instead',
+                                         closing_at: 3.days.from_now.beginning_of_hour,
+                                         discussion: public_test_discussion)
+      MotionService.create(motion: @public_test_proposal, actor: patrick)
+    end
+    @public_test_proposal
   end
 
   def test_vote

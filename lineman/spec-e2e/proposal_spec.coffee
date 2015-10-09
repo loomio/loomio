@@ -129,3 +129,9 @@ describe 'Proposals', ->
           # threadHelper.visitDiscussionPage()
           # proposalsHelper.clickShowUndecidedLink()
           # expect(proposalsHelper.undecidedPanel().getText()).not.toContain('Max')
+
+  describe 'visibility', ->
+
+    it 'hides member actions from visitors', ->
+      threadHelper.loadWithPublicContent()
+      expect(proposalsHelper.positionButtons().isPresent()).toBe(false)
