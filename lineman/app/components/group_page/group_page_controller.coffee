@@ -10,6 +10,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
     MessageChannelService.subscribeToGroup(@group)
     if AppConfig.chargify and $location.search().chargify_success?
+      $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
   , (error) ->
     $rootScope.$broadcast('pageError', error)
