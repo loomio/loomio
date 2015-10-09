@@ -25,7 +25,6 @@ angular.module('loomioApp').factory 'AnalyticsService', ($location, $rootScope, 
       # timeout is used as first page load of app has timing issues
       $timeout ->
         data.page = $location.path()
-        console.log data
         if ga?
           ga 'set', data
           ga 'send', 'pageview'
