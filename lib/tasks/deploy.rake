@@ -26,7 +26,6 @@ task :deploy do
     puts "building assets and deploying to #{remote}/#{branch}..."
     build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
     run_commands ["git config user.email $DEPLOY_EMAIL && git config user.name $DEPLOY_NAME",       # setup git commit user
-                  "sudo wget -O- https://toolbelt.heroku.com/install.sh | sh",                      # install heroku toolbelt
                   "sh script/heroku_login.sh $DEPLOY_EMAIL $DEPLOY_PASSWORD",                       # login to heroku
                   "git checkout #{branch}",                                                         # checkout branch
                   "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
