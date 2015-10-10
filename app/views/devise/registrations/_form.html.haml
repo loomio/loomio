@@ -10,11 +10,14 @@
     .radio
       = f.radio_button :gender, "Male"
       = f.label :gender, "Male"
+    .radio 
+      = f.radio_button :gender, "Other"
+      = f.label :gender, "Other"
 
   .form-group.optional.user_race
     = label_tag :race, "Race", class: "optional"
     %div
-      = f.select :race, [["American Indian or Alaska Native", :Native], ["White", :White], ["Black or African American", :Black], ["Asian", :Asian], ["Native Hawaiian or Other Pacific Islander", :Pacific_Islander]], class: "form-control"
+      = f.select :race, [["American Indian or Alaska Native", :Native], ["White", :White], ["Black or African American", :Black], ["Asian", :Asian], ["Native Hawaiian or Other Pacific Islander", :Pacific_Islander], ["Other", :Other]], class: "form-control"
 
   = f.input :age
 
