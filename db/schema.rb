@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903161434) do
+ActiveRecord::Schema.define(version: 20151010034645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -715,6 +715,9 @@ ActiveRecord::Schema.define(version: 20150903161434) do
     t.boolean  "email_when_mentioned",                         default: true,       null: false
     t.boolean  "angular_ui_enabled",                           default: false,      null: false
     t.boolean  "email_on_participation",                       default: true,       null: false
+    t.string   "gender"
+    t.string   "race"
+    t.integer  "age"
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
