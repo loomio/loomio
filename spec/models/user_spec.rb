@@ -86,6 +86,17 @@ describe User do
     expect(user.avatar_kind).to eq 'initials'
   end
 
+  # Julia's tests
+
+  it "age should be a number between 0 and 100" do 
+    user = User.new
+    user.age = 43
+    user.valid?
+    user.should have(0).errors_on(:age)
+  end
+
+  #####
+
   it "email can have an apostrophe" do
     user = User.new
     user.email = "mr.d'arcy@gumby.com"

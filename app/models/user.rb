@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot
 
+  # validates_numericality_of :age, only_integer: true, greater_than: 0, less_than: 100
+
   validates :email, presence: true, uniqueness: true, email: true
   #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
