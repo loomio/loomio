@@ -50,7 +50,7 @@ en:
 
   start_proposal_card:
     title: 'Start a proposal'
-    helptext: Ready to make a decision? Proposals let you see how everyone feels about a particular course of action.
+    helptext: Ready to make a decision?
 
   proposal_outcome_panel:
     heading: Outcome
