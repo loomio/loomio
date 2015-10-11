@@ -68,4 +68,11 @@ class PagesController < ApplicationController
 
   def translation
   end
+
+
+  #amrita's contribution to the demographics graph page
+  def demographics 
+    @users = User.all
+  end
+
 end

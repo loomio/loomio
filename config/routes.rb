@@ -392,6 +392,8 @@ Loomio::Application.routes.draw do
       get :wallets
       get :browser_not_supported
       get :crowdfunding_celebration
+#amrita's route for user demoraphics on index page in footer
+      get :demographics 
     end
   end
 
