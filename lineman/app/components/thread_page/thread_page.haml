@@ -42,8 +42,9 @@
     .lmo-column-right
       %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
         %h2.lmo-card-heading{translate: 'common.models.proposal'}
-        %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
-        %span.lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+        .lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+        .start-proposal-card__start-proposal-button
+          %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
       %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
       %previous_proposals_card{discussion: 'threadPage.discussion'}
 

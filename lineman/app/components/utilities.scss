@@ -90,6 +90,18 @@
   text-decoration: underline;
 }
 
+.lmo-btn-link-no-underline {
+  background: none;
+  border: none;
+  color: #337ab7;
+  padding: 0;
+  text-decoration: none;
+}
+
+.lmo-btn-link-no-underline:hover {
+  text-decoration: none;
+}
+
 .lmo-btn-nude{
   box-shadow: none;
   color: $grey-on-grey;

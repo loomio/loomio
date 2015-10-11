@@ -82,12 +82,25 @@
 
 .group-theme__upload-photo {
   position: relative;
-  left: 5px;
-  top: 5px;
   cursor: pointer;
+  top: 2px;
+  left: 2px;
+  width: 95px;
+  height: 30px;
+  i {
+    margin: 8px 5px 5px 5px;
+  }
+  &:hover {
+    background-color: $list-hover-color;
+  }
 }
 
 .group-theme__upload-photo i {
   color: white;
   text-shadow: 1px 1px 4px $grey-on-grey;
+}
+
+.group-theme__upload-help-text {
+  @include fontTiny;
+  color: $primary-text-color;
 }
