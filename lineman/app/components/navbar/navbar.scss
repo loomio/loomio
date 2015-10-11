@@ -5,6 +5,7 @@
   padding: 0 6px;
   width: 100%;
   position: fixed;
+  top: 0;
 }
 
 .lmo-navbar-item-container{
@@ -116,7 +117,7 @@
   text-align: center;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $medium-max-width) {
   .lmo-navbar__item {
     display: inline-block;
     text-align: center;

@@ -1,52 +1,55 @@
-.loading-wrapper.container.main-container
+.loading-wrapper.lmo-column-container.main-container
   %loading{ng-if: '!threadPage.discussion'}
   %main.thread-page{ng-if: 'threadPage.discussion'}
     %group_theme{group: 'threadPage.discussion.group()', compact: 'true'}
 
-    %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
-      %h2.lmo-card-heading{aria-hidden: 'true', translate: 'context_card.heading'}
-      .thread-actions.lmo-btn-group.pull-right
-        .thread-notification-level.lmo-btn-wrapper
-          %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
-        %star_toggle{thread: 'threadPage.discussion'}
-        %span.lmo-btn-wrapper{dropdown: '',  ng-if: 'threadPage.showContextMenu()'}
-          %button.thread-context__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
-            .sr-only{translate: 'thread_context.thread_options'}
-            %i.fa.fa-fw.fa-chevron-down
-          .thread-context__dropdown.dropdown-menu.dropdown-menu-right
-            %ul.dropdown-menu-items
-              %li.dropdown-menu-item{ng-if: 'threadPage.canEditThread()'}
-                %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread'}
-              %li.dropdown-menu-item{ng-if: 'threadPage.canMoveThread()'}
-                %a.thread-context__dropdown-options-move.dropdown-menu-item-label{href: '', ng-click: 'threadPage.moveThread()', translate: 'thread_context.move_thread'}
-              %li.dropdown-menu-item{ng-if: 'threadPage.canDeleteThread()'}
-                %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteThread()', translate: 'thread_context.delete_thread'}
-      .clearfix
-      %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
-        {{threadPage.discussion.title}}
-      .thread-context__details
-        %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}
-        %timeago.nowrap{timestamp: '::threadPage.discussion.createdAt' }>
-        %span{aria-hidden: 'true'}·
-        %span.nowrap.discussion-privacy__is-private{ng-show: 'threadPage.discussion.private'}>
-          %i.fa.fa-lock>
-          %span{translate: 'common.privacy.private'}
-        %span.nowrap.discussion-privacy__is-public{ng-show: '!threadPage.discussion.private'}>
-          %i.fa.fa-globe>
-          %span{translate: 'common.privacy.public'}
+    .lmo-column-left
+      %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
+        %h2.lmo-card-heading{aria-hidden: 'true', translate: 'context_card.heading'}
+        .thread-actions.lmo-btn-group.pull-right
+          .thread-notification-level.lmo-btn-wrapper
+            %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
+          %star_toggle{thread: 'threadPage.discussion'}
+          %span.lmo-btn-wrapper{dropdown: '',  ng-if: 'threadPage.showContextMenu()'}
+            %button.thread-context__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
+              .sr-only{translate: 'thread_context.thread_options'}
+              %i.fa.fa-fw.fa-chevron-down
+            .thread-context__dropdown.dropdown-menu.dropdown-menu-right
+              %ul.dropdown-menu-items
+                %li.dropdown-menu-item{ng-if: 'threadPage.canEditThread()'}
+                  %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread'}
+                %li.dropdown-menu-item{ng-if: 'threadPage.canMoveThread()'}
+                  %a.thread-context__dropdown-options-move.dropdown-menu-item-label{href: '', ng-click: 'threadPage.moveThread()', translate: 'thread_context.move_thread'}
+                %li.dropdown-menu-item{ng-if: 'threadPage.canDeleteThread()'}
+                  %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteThread()', translate: 'thread_context.delete_thread'}
+        .clearfix
+        %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
+          {{threadPage.discussion.title}}
+        .thread-context__details
+          %span{translate: 'discussion.started_by', translate-value-name: '{{::threadPage.discussion.authorName()}}'}
+          %timeago.nowrap{timestamp: '::threadPage.discussion.createdAt' }>
+          %span{aria-hidden: 'true'}·
+          %span.nowrap.discussion-privacy__is-private{ng-show: 'threadPage.discussion.private'}>
+            %i.fa.fa-lock>
+            %span{translate: 'common.privacy.private'}
+          %span.nowrap.discussion-privacy__is-public{ng-show: '!threadPage.discussion.private'}>
+            %i.fa.fa-globe>
+            %span{translate: 'common.privacy.public'}
 
-      .thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+        .thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+        %a.lmo-card-minor-action{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread', ng-if: 'threadPage.canEditThread()'}
 
-    %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
-      %h2.lmo-card-heading{translate: 'common.models.proposal'}
-      %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
-      %span.lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+    .lmo-column-right
+      %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
+        %h2.lmo-card-heading{translate: 'common.models.proposal'}
+        .lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+        .start-proposal-card__start-proposal-button
+          %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
+      %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
+      %previous_proposals_card{discussion: 'threadPage.discussion'}
 
-    %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
-
-    %previous_proposals_card{discussion: 'threadPage.discussion'}
-
-    %activity_card{discussion: 'threadPage.discussion'}
-    %comment_form{comment: 'threadPage.comment'}
+    .lmo-column-left
+      %activity_card{discussion: 'threadPage.discussion'}
+      %comment_form{comment: 'threadPage.comment'}
 
     %thread_lintel

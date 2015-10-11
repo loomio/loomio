@@ -108,13 +108,11 @@ class ThreadMailer < BaseMailer
     headers['X-Auto-Response-Suppress'] = 'OOF'
     headers['Auto-Submitted'] = 'auto-generated'
 
-    locale = locale_fallback(@recipient.locale, @author.locale)
-    I18n.with_locale(locale) do
-      mail  to: @recipient.email,
-            from: from_user_via_loomio(@author),
-            reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
-            subject: thread_subject(alternative_subject)
-    end
+    send_single_mail  to: @recipient.email,
+                      from: from_user_via_loomio(@author),
+                      reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
+                      subject: thread_subject(alternative_subject),
+                      locale: locale_fallback(@recipient.locale, @author.locale)
   end
 
   def message_id_header
@@ -134,4 +132,3 @@ class ThreadMailer < BaseMailer
     end
   end
 end
-

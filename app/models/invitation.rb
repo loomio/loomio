@@ -70,7 +70,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def accepted?
-    accepted_by.present?
+    accepted_at.present?
   end
 
   def to_start_group?

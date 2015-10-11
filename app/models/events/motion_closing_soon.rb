@@ -3,7 +3,7 @@ class Events::MotionClosingSoon < Event
     event = create!(kind: "motion_closing_soon",
                     eventable: motion)
 
-    UsersToEmailQuery.motion_closing_soon(motion).find_each do |user|
+    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.motion_closing_soon(motion)) do |user|
       ThreadMailer.delay.motion_closing_soon(user, event)
     end
 

@@ -50,7 +50,7 @@ en:
 
   start_proposal_card:
     title: 'Start a proposal'
-    helptext: Ready to make a decision? Proposals let you see how everyone feels about a particular course of action.
+    helptext: Ready to make a decision?
 
   proposal_outcome_panel:
     heading: Outcome
@@ -255,7 +255,7 @@ en:
     privacy:
       will_be_private_to_group: 'The thread will only be visible to members of {{groupName}}.'
       will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
-      will_be_public: 'Anyone can see the thread.'
+      will_be_public: 'Anyone can see the thread. Only members of {{groupName}} can participate.'
     new_discussion_submit: 'Start thread'
     edit_discussion_submit: 'Update thread'
 
@@ -299,8 +299,10 @@ en:
     heading: 'Start a group'
     heading_when_subgroup: 'Start a subgroup'
     group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
-    group_payment_reminder: "In 30 days, when you've seen how Loomio improves your group's decision making, we'll ask you to choose the <a href='#'>payment plan</a> that works for you."
-    name_label: 'Group Name'
+    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='#'>pricing plan</a>."
+    name_label: 'Group name'
+    description_label: 'Group description'
+    description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     subgroup_name_label: 'Subgroup name'
     submit: 'Start Group'
     messages:

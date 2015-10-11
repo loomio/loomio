@@ -7,7 +7,7 @@ class Events::NewDiscussion < Event
     dr.set_volume_as_required!
     dr.participate!
 
-    UsersToEmailQuery.new_discussion(discussion).find_each do |user|
+    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.new_discussion(discussion)) do |user|
       ThreadMailer.delay.new_discussion(user, event)
     end
 

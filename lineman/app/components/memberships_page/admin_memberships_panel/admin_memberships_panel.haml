@@ -1,10 +1,10 @@
 .blank
   .row.memberships-page__table-row
-    .col-xs-8
-    .lmo-bold.col-xs-2.hidden-xs.align-center{translate: 'memberships_page.coordinator_label'}
+    .col-xs-7
+    .lmo-bold.col-xs-3.hidden-xs.align-center{translate: 'memberships_page.coordinator_label'}
     .lmo-bold.col-xs-2.hidden-xs.align-center{translate: 'memberships_page.remove_member_label'}
   .row.memberships-page__table-row.memberships-page__membership{ng-repeat: 'membership in memberships() track by membership.id'}
-    .col-xs-8
+    .col-xs-7
       .media
         .media-left
           %user_avatar{user: 'membership.user()', size: 'medium', coordinator: 'membership.admin'}
@@ -12,7 +12,7 @@
           .memberships-page__member-info
             %div {{::membership.user().name}}
             %div @{{::membership.user().username}}
-    .col-xs-2.align-center
+    .col-xs-3.align-center
       %input.memberships-page__make-coordinator{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'toggleAdmin(membership)', ng-disabled: '!canToggleAdmin(membership)'}
     .col-xs-2.align-center
       %a.memberships-page__remove-link{href: '', ng-click: 'openRemoveForm(membership)', ng-show: 'canRemoveMembership(membership)'}

@@ -25,7 +25,7 @@ describe Invitation do
 
     context 'accepted_by present' do
       before do
-        @invitation.accepted_by = FactoryGirl.create(:user)
+        @invitation.accepted_at = Time.now
       end
       it {should be true}
     end
