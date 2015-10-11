@@ -13,6 +13,12 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.showCommentForm = ->
       AbilityService.canAddComment(discussion)
 
+    $scope.threadIsPublic = ->
+      discussion.private == false
+
+    $scope.threadIsPrivate = ->
+      discussion.private == true
+
     $scope.submit = ->
       $scope.isDisabled = true
       $scope.comment.save().then ->

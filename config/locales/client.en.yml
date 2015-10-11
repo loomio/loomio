@@ -117,6 +117,8 @@ en:
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
     submit_button:
       label: 'Post'
+    private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
+    public_privacy_notice: 'Your comment will be visible to anyone on the web.'
 
   navbar:
     recent: 'Recent'
