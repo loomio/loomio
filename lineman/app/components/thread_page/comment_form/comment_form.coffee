@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FlashService, Records, CurrentUser, KeyEventService, AbilityService) ->
+  controller: ($scope, $rootScope, FlashService, Records, CurrentUser, KeyEventService, AbilityService, ScrollService) ->
     discussion = $scope.comment.discussion()
     group = $scope.comment.group()
 
@@ -33,6 +33,7 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
+      ScrollService.scrollTo('.comment-form__comment-field')
 
     $scope.removeAttachment = (attachment) ->
       ids = $scope.comment.newAttachmentIds
