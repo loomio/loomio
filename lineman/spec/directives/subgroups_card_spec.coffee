@@ -17,21 +17,3 @@ describe 'Subgroups Card Component', ->
     prepareDirective @, 'subgroups_card', { group: 'group' }, (parent) =>
       parent.group = @group
     expect(@$scope.group.name).toBe('whoopdeedoo')
-
-  it 'displays a placeholder when there are no subgroups', ->
-    prepareDirective @, 'subgroups_card', { group: 'group' }, (parent) =>
-      parent.group = @group
-    expect(@$scope.showSubgroupsPlaceholder()).toBe(true)
-
-  it 'does not display a placeholder when there are subgroups', ->
-    @factory.create 'groups', parentId: @group.id
-    prepareDirective @, 'subgroups_card', { group: 'group' }, (parent) =>
-      parent.group = @group
-    expect(@$scope.showSubgroupsPlaceholder()).toBe(false)
-
-  it 'does not display a placeholder when the CurrentUser is not a coordinator', ->
-    @membership.update admin: false
-    @factory.create 'groups', parentId: @group.id
-    prepareDirective @, 'subgroups_card', { group: 'group' }, (parent) =>
-      parent.group = @group
-    expect(@$scope.showSubgroupsPlaceholder()).toBe(false)
