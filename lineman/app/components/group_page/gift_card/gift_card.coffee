@@ -16,3 +16,7 @@ angular.module('loomioApp').directive 'giftCard', ->
         email: CurrentUser.email
         organization: $scope.group.name
         reference: $scope.group.key
+
+      _.map(_.keys(params), (key) ->
+        encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
+      ).join('&')
