@@ -70,9 +70,95 @@ class PagesController < ApplicationController
   end
 
 
-  #amrita's contribution to the demographics graph page
-  def demographics 
+  #amrita's contribution to the demographics graph page race by gender
+  def user_data
+    p "YOUR IN THE USER DATA" 
+
+    @maleUsersNativeCount = User.where(gender: "Male", race: "Native").count
+    @maleUsersWhiteCount = User.where(gender: "Male", race: "White").count
+    @maleUsersBlackCount = User.where(gender: "Male", race: "Black").count
+    @maleUsersAsianCount = User.where(gender: "Male", race: "Asian").count
+    @maleUsersPacificIslanderCount = User.where(gender: "Male", race: "Pacific_Islander").count
+    @maleUsersOtherCount = User.where(gender: "Male", race: "Other").count
+
+    @femaleUsersNativeCount = User.where(gender: "Female", race: "Native").count
+    @femaleUsersWhiteCount = User.where(gender: "Female", race: "White").count
+    @femaleUsersBlackCount = User.where(gender: "Female", race: "Black").count
+    @femaleUsersAsianCount = User.where(gender: "Female", race: "Asian").count
+    @femaleUsersPacificIslanderCount = User.where(gender: "Female", race: "Pacific_Islander").count
+    @femaleUsersOtherCount = User.where(gender: "Female", race: "Other").count    
+    
     @users = User.all
+    respond_to do |format| 
+      format.json {
+        render :json =>      [
+     {
+     gender: "Male",
+     race: "Native",
+     count: @maleUsersNativeCount
+     },
+     {
+     gender: "Male",
+     race: "White",
+     count: @maleUsersWhiteCount
+     },
+     {
+     gender: "Male",
+     race: "Black",
+     count: @maleUsersBlackCount
+     },
+     {
+     gender: "Male",
+     race: "Asian",
+     count: @maleUsersAsianCount
+     },
+     {
+     gender: "Male",
+     race: "Pacific_Islander",
+     count: @maleUsersPacificIslanderCount
+     },
+     {
+     gender: "Male",
+     race: "Other",
+     count: @maleUsersOtherCount
+     },
+     {
+     gender: "Female",
+     race: "Native",
+     count: @femaleUsersNativeCount
+     },
+     {
+     gender: "Female",
+     race: "White",
+     count: @femaleUsersWhiteCount
+     },
+     {
+     gender: "Female",
+     race: "Black",
+     count: @femaleUsersBlackCount
+     },
+     {
+     gender: "Female",
+     race: "Asian",
+     count: @femaleUsersAsianCount
+     },
+     {
+     gender: "Female",
+     race: "Pacific_Islander",
+     count: @femaleUsersPacificIslanderCount
+     },
+     {
+     gender: "Female",
+     race: "Other",
+     count: @femaleUsersOtherCount
+     }
+     ]  
+   }
+      
+    end
+  end
+
+  def demographics 
   end
 
 end
