@@ -5,9 +5,9 @@ class ExampleContent
     example_content = self.new
     bot = example_content.helper_bot
     bot_membership = group.add_member! bot
-    example_content.introduction_thread(group)
+    introduction_thread = example_content.introduction_thread(group)
     how_it_works_thread = example_content.how_it_works_thread(group)
-    example_content.first_comment(how_it_works_thread)
+    example_content.first_comment(how_it_works_thread, introduction_thread)
     first_proposal = example_content.first_proposal(how_it_works_thread)
     first_vote = example_content.first_vote(first_proposal)
     bot_membership.destroy
@@ -78,11 +78,11 @@ class ExampleContent
     thread
   end
 
-  def first_comment(thread)
+  def first_comment(how_it_works_thread, introduction_thread)
     comment = Comment.new(body: I18n.t('first_comment.body',
-                                        thread_url: discussion_url(thread),
-                                        group_name: thread.group.name),
-                          discussion: thread)
+                                        thread_url: discussion_url(introduction_thread),
+                                        group_name: how_it_works_thread.group.name),
+                          discussion: how_it_works_thread)
     CommentService.create(comment: comment, actor: helper_bot)
     comment
   end
