@@ -13,6 +13,8 @@
           {{attachment.formattedFilesize()}}
         %a.close.remove-upload{href: '', ng_click: 'removeAttachment(attachment)', title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
           %span{aria-hidden: 'true'}&times;
+      .comment-form__privacy-notice{ng-if: 'threadIsPublic()', translate: 'comment_form.public_privacy_notice'}
+      .comment-form__privacy-notice{ng-if: 'threadIsPrivate()', translate: 'comment_form.private_privacy_notice', translate-value-group-name: '{{comment.group().fullName}}'}
       .thread-comment-form-actions
         %button.btn.btn-default.btn-primary.submit.comment-form__submit-button{type: 'submit', translate: 'comment_form.submit_button.label'}
         %button.btn.btn-default.comment-form-button{type: 'button', translate: 'comment_form.cancel_reply', ng-show: 'comment.parentId', ng-click: 'comment.parentId = null'}
