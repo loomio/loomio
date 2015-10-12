@@ -364,10 +364,11 @@ en:
     options_label: 'Options'
     options:
       label: 'Options'
-      edit_group: 'Edit Group Settings'
+      edit_group: 'Edit group settings'
+      add_subgroup: 'Add subgroup'
       manage_members: 'Manage members'
-      leave_group: 'Leave Group'
-      deactivate_group: 'Deactivate Group'
+      leave_group: 'Leave group'
+      deactivate_group: 'Deactivate group'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'

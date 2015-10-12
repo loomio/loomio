@@ -134,3 +134,6 @@ module.exports = new class GroupsHelper
 
   groupName: ->
     element(By.css('.group-theme__name')).getText()
+
+  clickAddSubgroupLink: ->
+    element(By.css('.group-page-actions__add-subgroup-link')).click()
