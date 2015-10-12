@@ -53,3 +53,4 @@
             %a{lmo-href-for: 'group'} {{group.name}}
           .dashboard-groups.thread-previews-container
             %thread_preview_collection{query: 'dashboardPage.views.groups[group.key]', limit: 'dashboardPage.groupThreadLimit'}
+      %loading{ng-show: 'dashboardPage.loadMoreExecuting'}
