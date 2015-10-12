@@ -68,4 +68,23 @@ class PagesController < ApplicationController
 
   def translation
   end
+
+
+  #amrita's contribution to the demographics graph page race by gender
+  #Ben refactored it
+  def user_data
+
+    @users = User.all
+
+    demographics_stats = @users.map { |user| { gender: user.gender, race: user.race, count: User.where(gender: user.gender, race: user.race).count } }.uniq!
+
+    respond_to do |format|
+      format.json { render :json => demographics_stats.to_json }
+    end
+
+  end
+
+  def demographics
+  end
+
 end

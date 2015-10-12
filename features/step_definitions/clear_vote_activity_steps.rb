@@ -1,3 +1,4 @@
+
 Given /^there is proposal activity on the discussion$/ do
   user = FactoryGirl.create :user
   @vote = FactoryGirl.create :vote, :statement => "I like it!", :motion => @motion, :user => user
