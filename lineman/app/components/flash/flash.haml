@@ -3,3 +3,5 @@
     .flash-root__message
       %loading.flash-root__loading{ng-if: 'loading()'}
       {{ flash.message | translate:flash.options }}
+    .flash-root__action{ng-if: 'flash.actionFn'}
+      %a{ng-click: 'flash.actionFn()', translate: '{{flash.action}}'}
