@@ -20,6 +20,7 @@
 //= require lib/jquery.netchanger.min
 //= require lib/jquery.safetynet
 //= require lib/bootstrap-datetimepicker
+//= require lib/d3.min
 //= require lib/Chart
 //= require modernizr
 //= require bootstrap
