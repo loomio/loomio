@@ -10,7 +10,6 @@
   span {
     color: $primary-text-color;
   }
-  margin-bottom: 5px;
   .media-body, .media-left{
     vertical-align: middle;
   }
@@ -21,12 +20,13 @@
 }
 
 .thread-item__body {
-  margin-bottom: 10px;
+  margin: 0 0 10px 40px;
 }
 
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
+  margin-left: 40px;
 }
 
 .thread-item__actions {
@@ -39,8 +39,8 @@
 }
 
 .thread-item__vote-icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   background-repeat: no-repeat;
 }
 
@@ -52,16 +52,20 @@
 
 .thread-item__vote-icon--yes {
   background-image: url(/img/green_thumb_22.png);
+  background-position: 6px 2px;
 }
 
 .thread-item__vote-icon--abstain {
   background-image: url(/img/yellow_thumb_22.png);
+  background-position: 4px 6px;
 }
 
 .thread-item__vote-icon--no {
   background-image: url(/img/pink_thumb_22.png);
+  background-position: 5px 8px;
 }
 
 .thread-item__vote-icon--block {
   background-image: url(/img/red_flag_22.png);
+  background-position: 5px 7px;
 }
