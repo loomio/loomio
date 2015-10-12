@@ -22,19 +22,25 @@ task :deploy do
                   'git push origin master']
   end
 
+  def setup_heroku_and_remote(remote)
+    puts "logging into heroku and adding remote #{remote}"
+    run_commands ["git config user.email $DEPLOY_EMAIL && git config user.name $DEPLOY_NAME",       # setup git commit user
+                  "sh script/heroku_login.sh $DEPLOY_EMAIL $DEPLOY_PASSWORD",                       # login to heroku
+                  "git remote add #{remote} https://git.heroku.com/#{remote}.git",                  # add https heroku remote
+                  "echo \"Host heroku.com\n  StrictHostKeyChecking no\" > ~/.ssh/config"           # don't prompt for confirmation of heroku.com host
+                  ]
+
+  end
+
   def build_and_push_branch(remote, branch)
     puts "building assets and deploying to #{remote}/#{branch}..."
     build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
-    run_commands ["git config user.email $DEPLOY_EMAIL && git config user.name $DEPLOY_NAME",       # setup git commit user
-                  "sh script/heroku_login.sh $DEPLOY_EMAIL $DEPLOY_PASSWORD",                       # login to heroku
-                  "git checkout #{branch}",                                                         # checkout branch
+    run_commands ["git checkout #{branch}",                                                         # checkout branch
                   "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
                   "cd lineman && npm install && bower install && lineman build && cd ../",          # build the app via lineman
                   "cp -R lineman/dist/* public/",                                                   # move build assets to public/ folder
                   "git add public/img public/css public/js public/fonts",                           # add lineman assets to commit
                   "git commit -m 'Add assets for production push'",                                 # commit lineman assets
-                  "git remote add #{remote} https://git.heroku.com/#{remote}.git",                  # add https heroku remote
-                  "echo \"Host heroku.com\n  StrictHostKeyChecking no\" > ~/.ssh/config",           # don't prompt for confirmation of heroku.com host
                   "git push #{remote} #{build_branch}:master -f",                                   # DEPLOY!
                   "git checkout #{branch}",                                                         # switch back to original branch
                   "git branch -D #{build_branch}"]                                                  # delete production branch
@@ -42,8 +48,8 @@ task :deploy do
 
   def heroku_migrate_and_restart(remote)
     puts "migrating and restarting heroku app #{remote}..."
-    run_commands ["/usr/local/heroku/bin/heroku run rake db:migrate -a #{remote}",
-                  "/usr/local/heroku/bin/heroku restart -a #{remote}"]
+    run_commands ["ruby /usr/local/heroku/bin/heroku run rake db:migrate -a #{remote}",
+                  "ruby /usr/local/heroku/bin/heroku restart -a #{remote}"]
   end
 
   remote = ARGV[1] || 'loomio-production'
