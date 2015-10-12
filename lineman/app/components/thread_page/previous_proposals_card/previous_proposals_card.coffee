@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
   replace: true
   controller: ($scope, $rootScope, $location, Records, ProposalFormService) ->
 
-    Records.votes.fetchMyVotesByDiscussion($scope.discussion)
+    Records.votes.fetchMyVotes($scope.discussion.closedProposals())
     Records.proposals.fetchByDiscussion($scope.discussion).then ->
       if proposal = Records.proposals.find($location.search().proposal)
         $scope.selectProposal(proposal)

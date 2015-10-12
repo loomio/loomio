@@ -44,26 +44,26 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :group, serializer: GroupSerializer, root: 'groups'
   has_one :active_proposal, serializer: MotionSerializer, root: 'proposals'
+  has_one :active_proposal_vote, serializer: VoteSerializer, root: 'votes'
 
-  def author
-    object.author
+  def include_active_proposal_vote?
+    reader.present? && active_proposal.present?
+  end
+
+  def active_proposal_vote
+    active_proposal.votes.find_by(user_id: reader.user_id)
   end
 
   def active_proposal
-    object.current_motion
-  end
-
-  def filter(keys)
-    keys.delete(:active_proposal) unless object.current_motion.present?
-    keys
-  end
-
-  def scope
-    super || {}
+    @active_proposal ||= object.current_motion
   end
 
   def reader
     @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]
+  end
+
+  def scope
+    super || {}
   end
 
 end
