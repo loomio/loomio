@@ -49,7 +49,7 @@
 // hey no ids in BEM, mate
 
 #thread-context__heading{
-  margin: 2px 0 4px 0 !important;
+  margin: 0px 0 4px 0;
 }
 
 .thread-context__details{
@@ -101,6 +101,10 @@
 .start-proposal-card {
   @include card;
   i { color: white; }
+}
+
+.start-proposal-card__start-proposal-button {
+  margin-top: 10px;
 }
 
 .thread-start-proposal-button {
