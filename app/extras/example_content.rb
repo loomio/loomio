@@ -15,17 +15,12 @@ class ExampleContent
 
   def helper_bot
     email = ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
-    bot = User.find_by_email(email)
-    unless bot
-      bot = User.new
-      bot.name = 'Loomio Helper Bot'
-      bot.email = email
-      bot.password = SecureRandom.hex(20)
-      bot.uses_markdown = true
-      bot.avatar_kind = 'gravatar'
-      bot.save!
-    end
-    bot
+    bot = User.find_by(email: email) ||
+          User.create!(email: email,
+                       name: 'Loomio Helper Bot',
+                       password: SecureRandom.hex(20),
+                       uses_markdown: true,
+                       avatar_kind: 'gravatar')
   end
 
   def introduction_thread_content(group)
