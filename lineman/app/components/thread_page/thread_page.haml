@@ -5,7 +5,6 @@
 
     .lmo-column-left
       %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
-        %h2.lmo-card-heading{aria-hidden: 'true', translate: 'context_card.heading'}
         .thread-actions.lmo-btn-group.pull-right
           .thread-notification-level.lmo-btn-wrapper
             %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
@@ -22,7 +21,9 @@
                   %a.thread-context__dropdown-options-move.dropdown-menu-item-label{href: '', ng-click: 'threadPage.moveThread()', translate: 'thread_context.move_thread'}
                 %li.dropdown-menu-item{ng-if: 'threadPage.canDeleteThread()'}
                   %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteThread()', translate: 'thread_context.delete_thread'}
-        .clearfix
+
+
+        %user_avatar.pull-left.thread-context__avatar{user: "threadPage.discussion.author()", size: 'medium'}
         %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
           {{threadPage.discussion.title}}
         .thread-context__details
@@ -42,8 +43,9 @@
     .lmo-column-right
       %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
         %h2.lmo-card-heading{translate: 'common.models.proposal'}
-        %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
-        %span.lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+        .lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
+        .start-proposal-card__start-proposal-button
+          %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
       %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
       %previous_proposals_card{discussion: 'threadPage.discussion'}
 

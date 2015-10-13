@@ -3,8 +3,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   $rootScope.$broadcast('setTitle', 'Dashboard')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  Records.votes.fetchMyRecentVotes()
-
   @perPage = 50
   @loaded =
     show_all:           0

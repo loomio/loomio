@@ -82,12 +82,24 @@
 .lmo-btn-link {
   background: none;
   border: none;
-  color: #337ab7;
+  color: $link-color;
   padding: 0;
 }
 
 .lmo-btn-link:hover {
   text-decoration: underline;
+}
+
+.lmo-btn-link-no-underline {
+  background: none;
+  border: none;
+  color: $link-color;
+  padding: 0;
+  text-decoration: none;
+}
+
+.lmo-btn-link-no-underline:hover {
+  text-decoration: none;
 }
 
 .lmo-btn-nude{
@@ -203,8 +215,8 @@ label.label-with-details{
   display: inline-block;
   text-transform: uppercase;
   color: $grey-on-white;
-  margin-top: 0;
   margin-bottom: 10px;
+  letter-spacing: .3px;
 }
 
 .lmo-card-subheading{
@@ -239,7 +251,7 @@ label.label-with-details{
 .lmo-placeholder {
   font-style: italic;
   color: $grey-on-white;
-  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .lmo-hint-text{
@@ -261,6 +273,7 @@ label.label-with-details{
   h1 {
     @include fontLarge;
     @include fontHelveticaBold;
+    margin: 20px 0 10px 0;
   }
   h2 {
     @include fontMedLarge;
@@ -354,9 +367,10 @@ label.label-with-details{
 .lmo-card-minor-action{
   @include fontHelveticaLight;
   color: $grey-on-white;
-  text-decoration: underline;
-  margin: 10px 0 0 0;
+  margin: 20px 0 0 0;
   display: block;
+  text-decoration: underline;
+  clear: both;
 }
 
 .dropdown-menu i.fa {
@@ -366,7 +380,12 @@ label.label-with-details{
 .lmo-column-container {
   margin: auto;
   max-width: $large-max-width;
-  padding: 0 10px;
+}
+
+@media (min-width: 480px) {
+  .lmo-column-container {
+    padding: 0 10px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -381,4 +400,14 @@ label.label-with-details{
     float: right;
     clear: right;
   }
+}
+
+.timeago{
+  @include fontTiny();
+  color: $grey-on-white;
+  white-space: nowrap;
+}
+
+.timeago--inline{
+  padding-left: 5px;
 }

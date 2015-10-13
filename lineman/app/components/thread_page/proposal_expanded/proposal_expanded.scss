@@ -1,15 +1,13 @@
 .proposal-expanded {
   background-color: #fff;
+  border-bottom: 1px solid $border-color;
+  padding: 0 15px 15px 15px;
 }
+
 .proposal-expanded__proposal-name{
   @include fontLarge;
   @include fontHelveticaBold;
   margin-bottom: 0.4em;
-}
-
-.proposal-expanded {
-  border-bottom: 1px solid $border-color;
-  padding: 10px 17px 17px 17px;
 }
 
 .proposal-expanded__collapse{

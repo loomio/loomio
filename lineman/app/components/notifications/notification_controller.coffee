@@ -12,11 +12,8 @@ angular.module('loomioApp').controller 'NotificationController', ($scope, LmoUrl
       when 'motion_closing_soon' then LmoUrlService.proposal($scope.event.proposal())
       when 'motion_outcome_created' then LmoUrlService.proposal($scope.event.proposal())
       when 'user_mentioned' then LmoUrlService.comment($scope.event.comment())
-      when 'membership_requested' then LmoUrlService.group($scope.event.membershipRequest().group())
+      when 'membership_requested' then LmoUrlService.route(model: $scope.event.membershipRequest().group(), action: 'membership_requests')
       when 'user_added_to_group' then LmoUrlService.group($scope.event.membership().group())
       when 'membership_request_approved' then LmoUrlService.group($scope.event.membership().group())
-      else
-        console.log $scope.event.kind, 'no link case yet'
-
 
   return

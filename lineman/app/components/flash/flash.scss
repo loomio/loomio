@@ -14,6 +14,24 @@
   padding: 15px;
   width: 100%;
   border-radius: 6px;
+  @include displayFlex;
+}
+
+.flash-root__message {
+  padding-right: 10px;
+}
+
+.flash-root__action {
+  padding-left: 10px;
+  border-left: 2px solid white;
+  font-weight: bold;
+  text-transform: uppercase;
+  word-break: keep-all;
+}
+
+.flash-root__action a {
+  color: white;
+  cursor: pointer;
 }
 
 .flash-root__loading.page-loading {

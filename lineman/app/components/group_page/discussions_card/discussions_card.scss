@@ -9,6 +9,7 @@
 .discussions-card__new-thread-button{
   @include fontSmall;
   float: right;
+  margin-bottom: 10px;
 }
 
 .discussions-card__list--empty {

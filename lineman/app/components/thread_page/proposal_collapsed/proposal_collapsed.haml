@@ -5,7 +5,7 @@
   .screen-only.proposal-collapsed__flex{aria-hidden: 'true'}
     %pie_with_position{proposal: 'proposal'}
     .proposal-collapsed__body
-      %proposal_closing_time.proposal-collapsed__closed-at{proposal: 'proposal'}.
       .proposal-collapsed__title
         {{proposal.name}}
+        %proposal_closing_time.proposal-collapsed__closed-at{proposal: 'proposal'}.
       .proposal-collapsed__outcome{ng-if: 'proposal.hasOutcome()', translate: 'proposal_collapsed.outcome', translate-value-outcome: '{{proposal.outcome}}'}

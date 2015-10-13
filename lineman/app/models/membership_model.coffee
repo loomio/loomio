@@ -17,6 +17,9 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
     userUsername: ->
       @user().username
 
+    groupName: ->
+      @group().name
+
     changeVolume: (volume) ->
       @volume = volume
       @save()

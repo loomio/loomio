@@ -8,6 +8,7 @@ $list-hover-transparent-color: rgba(224,224,224,0.8);
 $background-color: #ebebeb;
 $card-background-color: #fff;
 $highlight-red: #D0021B;
+$link-color: #337ab7;
 
 $item-highlight-color: #FFFFE8;
 $progress-bar-color: #176EE3;
@@ -35,12 +36,12 @@ $block-border-color: darken($block-color, 10%);
 
 @mixin fontSmall {
   font-size: 13px;
-  line-height: 15px;
+  line-height: 19px;
 }
 
 @mixin fontMedium {
   font-size: 15px;
-  line-height: 20px;
+  line-height: 23px;
 }
 
 @mixin fontMedLarge {
@@ -50,7 +51,7 @@ $block-border-color: darken($block-color, 10%);
 
 @mixin fontLarge {
   font-size: 20px;
-  line-height: 30px;
+  line-height: 28px;
 }
 
 @mixin fontGrande {
@@ -96,8 +97,8 @@ $block-border-color: darken($block-color, 10%);
 
 @mixin smallIcon {
   @include roundedCorners;
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
 }
 
 @mixin boxTiny {
@@ -184,13 +185,14 @@ $cardPaddingSize: 15px;
 
 
 #angular-feedback-card {
+  @include fontSmall;
   z-index: 100;
   position: fixed;
   left: 11px;
   bottom: 10px;
   width: 120px;
   text-align: center;
-  padding: 3px;
+  padding: 8px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }

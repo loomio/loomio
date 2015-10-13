@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'proposalsCard', ->
   controllerAs: 'proposalsCard'
   controller: (Records, ProposalFormService, CurrentUser) ->
     Records.proposals.fetchByDiscussion @discussion
-    Records.votes.fetchMyVotesByDiscussion @discussion
+    Records.votes.fetchMyVotes @discussion.closedProposals()
 
     @isExpanded = (proposal) ->
       if @selectedProposal?

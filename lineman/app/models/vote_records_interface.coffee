@@ -2,19 +2,7 @@ angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterfac
   class VoteRecordsInterface extends BaseRecordsInterface
     model: VoteModel
 
-    fetchMyRecentVotes: ->
-      @fetch
-        path: 'my_votes'
-        cacheKey: 'myVotes'
-
-    fetchMyVotesByDiscussion: (discussion) ->
-      @fetch
-        path: 'my_votes'
-        params:
-          discussion_key: discussion.key
-        cacheKey: "myVotesFor#{discussion.key}" 
-
-    fetchMyVotesByProposals: (proposals) ->
+    fetchMyVotes: (proposals) ->
       proposalIds = _.map proposals, (proposal) -> proposal.id
       @fetch
         path: 'my_votes'
@@ -25,4 +13,3 @@ angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterfac
       @fetch
         params:
           motion_id: proposal.id
-        cacheKey: "votesFor#{proposal.key}"

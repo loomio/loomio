@@ -34,11 +34,11 @@ describe 'Group Page', ->
       groupsHelper.load()
 
     it 'successfully starts a subgroup', ->
-      groupsHelper.clickStartSubgroupLink()
+      groupsHelper.openMemberOptionsDropdown()
+      groupsHelper.clickAddSubgroupLink()
       groupsHelper.fillInSubgroupName('The Breakfast Club')
       groupsHelper.submitSubgroupForm()
-      #expect(flashHelper.flashMessage()).toContain('Subgroup created')
-      #expect(groupsHelper.groupName()).toContain('Dirty Dancing Shoes')
+      expect(groupsHelper.groupName()).toContain('Dirty Dancing Shoes')
       expect(groupsHelper.groupName()).toContain('The Breakfast Club')
 
   describe 'editing group settings', ->

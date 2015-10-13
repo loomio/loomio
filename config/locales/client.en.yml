@@ -50,7 +50,7 @@ en:
 
   start_proposal_card:
     title: 'Start a proposal'
-    helptext: Ready to make a decision? Proposals let you see how everyone feels about a particular course of action.
+    helptext: Ready to make a decision?
 
   proposal_outcome_panel:
     heading: Outcome
@@ -78,14 +78,12 @@ en:
     expand: Expand
     outcome: 'Outcome: {{outcome}}'
 
-  context_card:
-    heading: Context
-
   volume_levels:
     loud: 'Loud'
     normal: 'Normal'
     quiet: 'Quiet'
     mute: 'Mute'
+    unmute: 'Unmute'
 
   inbox:
     clear: 'Clear'
@@ -117,6 +115,8 @@ en:
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
     submit_button:
       label: 'Post'
+    private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
+    public_privacy_notice: 'Your comment will be visible to anyone on the web.'
 
   navbar:
     recent: 'Recent'
@@ -299,7 +299,7 @@ en:
     heading: 'Start a group'
     heading_when_subgroup: 'Start a subgroup'
     group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
-    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='#'>pricing plan</a>."
+    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='https://www.loomio.org/pricing' target='blank'>pricing plan</a>."
     name_label: 'Group name'
     description_label: 'Group description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
@@ -362,10 +362,11 @@ en:
     options_label: 'Options'
     options:
       label: 'Options'
-      edit_group: 'Edit Group Settings'
+      edit_group: 'Edit group settings'
+      add_subgroup: 'Add subgroup'
       manage_members: 'Manage members'
-      leave_group: 'Leave Group'
-      deactivate_group: 'Deactivate Group'
+      leave_group: 'Leave group'
+      deactivate_group: 'Deactivate group'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
@@ -379,13 +380,16 @@ en:
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
+      loud_message: You will be emailed about all activity in "{{name}}."
       normal: 'Just email important activity: New threads and proposals, outcomes etc.'
       normal_aria_description: Your notification volume for this group is set to Normal. You will just be emailed important activity, such as when someone starts a new thread, raises a proposal, or sets an outcome.
+      normal_message: 'You will only be emailed about important events in "{{name}}".'
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
       quiet_aria_description: Your notification volume for this group is set to Quiet. You won't be emailed about activity in this group. Group activity will be displayed on your Dashboard.
+      quiet_message: 'You won''t be emailed about activity in "{{name}}".'
       mute: Hide this group from the dashboard and do not notify unless @mentioned.
       mute_aria_description: Your notification volume for this group is set to Mute. You won't be emailed unless someone mentions you, and group activity will not be displayed on your Dashboard.
-      updated: Group volume updated.
+      mute_message: '"{{name}}" has been removed from your dashboard.'
     privacy:
       private: 'Privacy: This group is only visible to members'
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
@@ -641,14 +645,16 @@ en:
     volume:
       loud: Email whenever there is activity in this thread.
       loud_aria_description: Your notification volume for this thread is set to Loud. This means you will be emailed whenever there is activity in this thread.
+      loud_message: 'You will be emailed about all activity in "{{name}}"'
       normal: 'Just email when a proposal is created, about to close, or an outcome is posted.'
       normal_aria_description: 'Your notification volume for this thread is set to Normal. You will be emailed when a proposal is created, about to close, or an outcome is posted.'
+      normal_message: 'You will only be emailed with important events for "{{name}}".'
       quiet: Don't email about this thread.
       quiet_aria_description: Your notification volume for this thread is set to Quiet. You won't be emailed about this thread unless someone mentions you.
+      quiet_message: 'You won''t be emailed about "{{name}}" unless someone mentions you'
       mute: Hide this thread from the dashboard and do not notify unless @mentioned.
       mute_aria_description: Your notification volume for this thread is set to Mute. You won't be emailed about this thread unless someone mentions you, and this thread will be removed from your dashboard.
-      updated: Thread volume updated.
-
+      mute_message: '"{{name}}" has been removed from your dashboard.'
   thread_group:
     aria_label: 'Group name'
   thread_context:
@@ -705,7 +711,7 @@ en:
     author_created_proposal: '<strong>{{actor}}</strong> started a proposal: <span>{{title}}</span>'
 
   proposal_closed_item:
-    proposal_closed: 'The proposal has closed:'
+    proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
 
   proposal_closed_by_user_item:
     proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal: <span>{{title}}</span>'

@@ -57,18 +57,25 @@ describe API::VotesController do
     end
 
     context 'success' do
-      it 'returns votes filtered by discussion and current user' do
-        get :my_votes, discussion_id: discussion.id, format: :json
+
+      let(:other_discussion)         { create :discussion, group: group }
+      let(:other_discussion_motion)  { create :motion, discussion: other_discussion }
+      let(:my_other_discussion_vote) { create :vote, motion: other_discussion_motion }
+
+      it 'returns votes filtered by proposal id and current user' do
+        my_other_discussion_vote
+        get :my_votes, proposal_ids: discussion.motion_ids.join(','), format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[votes])
         motions = json['votes'].map { |v| v['id'] }
         expect(motions).to include my_vote.id
         expect(motions).to include my_other_vote.id
         expect(motions).to_not include other_guys_vote.id
+        expect(motions).to_not include my_other_discussion_vote.id
       end
 
       it 'returns only the most recent vote' do
-        get :my_votes, discussion_id: discussion.id, format: :json
+        get :my_votes, proposal_ids: discussion.motion_ids.join(','), format: :json
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[votes])
         motions = json['votes'].map { |v| v['id'] }
