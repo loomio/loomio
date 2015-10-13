@@ -3,7 +3,6 @@
     .media-left
       .thread-item__proposal-icon
     .media-body
-      %h3.thread-item__title{id: 'event-{{event.id}}', translate: "proposal_closed_by_user_item.proposal_closed_by_user", translate-values: '{actor: event.actorName(), title: event.proposal().name}'}
-  .thread-item__footer
-    .thread-item__actions
-      %timeago{timestamp: 'proposal.createdAt'}
+      %h3.thread-item__title
+        %span{id: 'event-{{event.id}}', translate: "proposal_closed_by_user_item.proposal_closed_by_user", translate-values: '{actor: event.actorName(), title: event.proposal().name}'}
+        %timeago.timeago--inline{timestamp: 'proposal.createdAt'}
