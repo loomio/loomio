@@ -37,6 +37,13 @@ Webhooks::Slack::Base = Struct.new(:event) do
     }
   end
 
+  def user_vote_field
+    {
+      title: "Add your vote on this proposal",
+      value: "yes, no, abstain, block."
+    }
+  end
+
   def view_motion_on_loomio
     view_discussion_on_loomio({ proposal: eventable.key })
   end
