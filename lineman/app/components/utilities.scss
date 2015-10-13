@@ -365,13 +365,11 @@ label.label-with-details{
 }
 
 .lmo-card-minor-action{
-  @include fontHelvetica;
-  @include fontSmall;
-  color: $link-color;
+  @include fontHelveticaLight;
+  color: $grey-on-white;
   margin: 20px 0 0 0;
   display: block;
-  text-transform: uppercase;
-  letter-spacing: .3px;
+  text-decoration: underline;
 }
 
 .dropdown-menu i.fa {
