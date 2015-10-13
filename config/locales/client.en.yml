@@ -714,7 +714,7 @@ en:
     author_created_proposal: '<strong>{{actor}}</strong> started a proposal: <span>{{title}}</span>'
 
   proposal_closed_item:
-    proposal_closed: 'The proposal has closed:'
+    proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
 
   proposal_closed_by_user_item:
     proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal: <span>{{title}}</span>'
