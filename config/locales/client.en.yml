@@ -118,6 +118,8 @@ en:
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
     submit_button:
       label: 'Post'
+    private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
+    public_privacy_notice: 'Your comment will be visible to anyone on the web.'
 
   navbar:
     recent: 'Recent'
@@ -300,7 +302,7 @@ en:
     heading: 'Start a group'
     heading_when_subgroup: 'Start a subgroup'
     group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
-    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='#'>pricing plan</a>."
+    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='https://www.loomio.org/pricing' target='blank'>pricing plan</a>."
     name_label: 'Group name'
     description_label: 'Group description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
@@ -363,10 +365,11 @@ en:
     options_label: 'Options'
     options:
       label: 'Options'
-      edit_group: 'Edit Group Settings'
+      edit_group: 'Edit group settings'
+      add_subgroup: 'Add subgroup'
       manage_members: 'Manage members'
-      leave_group: 'Leave Group'
-      deactivate_group: 'Deactivate Group'
+      leave_group: 'Leave group'
+      deactivate_group: 'Deactivate group'
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
