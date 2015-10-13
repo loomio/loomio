@@ -17,19 +17,19 @@
 }
 
 .proposal-pie-chart__label--yes{
-  border-color: $agree-border-color;
+  border-color: $agree-color;
 }
 
 .proposal-pie-chart__label--abstain{
-  border-color: $abstain-border-color;
+  border-color: $abstain-color;
 }
 
 .proposal-pie-chart__label--no{
-  border-color: $disagree-border-color;
+  border-color: $disagree-color;
 }
 
 .proposal-pie-chart__label--block{
-  border-color: $block-border-color;
+  border-color: $block-color;
 }
 
 .proposal-pie-chart__participation-statement {
@@ -38,8 +38,8 @@
   color: $grey-on-white;
 }
 
-@media (max-width: $medium-max-width) {
-  .proposal-pie-chart__legend {
-    float: left;
+@media (max-width: $small-max-width), (min-width: $medium-max-width) and (max-width: $large-max-width) {
+  .proposal-pie-chart__legend{
+    display: block;
   }
 }
