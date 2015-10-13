@@ -49,6 +49,7 @@
 .thread-preview__text-container{
   @include displayFlex;
   line-height: 22px;
+  margin-right: 17px;
 }
 
 .thread-preview__title{
@@ -71,7 +72,6 @@
 }
 
 .thread-preview__proposal-closing-container {
-  padding-left: $thinPaddingSize;
   min-width: 130px;
 }
 
