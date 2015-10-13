@@ -5,26 +5,22 @@ class ExampleContent
     example_content = self.new
     bot = example_content.helper_bot
     bot_membership = group.add_member! bot
-    example_content.introduction_thread(group)
+    introduction_thread = example_content.introduction_thread(group)
     how_it_works_thread = example_content.how_it_works_thread(group)
-    example_content.first_comment(how_it_works_thread)
+    example_content.first_comment(how_it_works_thread, introduction_thread)
     first_proposal = example_content.first_proposal(how_it_works_thread)
     first_vote = example_content.first_vote(first_proposal)
     bot_membership.destroy
   end
 
   def helper_bot
-    email = ENV['HELPER_BOT_EMAIL'] || 'helperbot@example.com'
-    bot = User.find_by_email(email)
-    unless bot
-      bot = User.new
-      bot.name = 'Loomio Helper Bot'
-      bot.email = email
-      bot.password = SecureRandom.hex(20)
-      bot.uses_markdown = true
-      bot.save!
-    end
-    bot
+    email = ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
+    bot = User.find_by(email: email) ||
+          User.create!(email: email,
+                       name: 'Loomio Helper Bot',
+                       password: SecureRandom.hex(20),
+                       uses_markdown: true,
+                       avatar_kind: 'gravatar')
   end
 
   def introduction_thread_content(group)
@@ -78,11 +74,11 @@ class ExampleContent
     thread
   end
 
-  def first_comment(thread)
+  def first_comment(how_it_works_thread, introduction_thread)
     comment = Comment.new(body: I18n.t('first_comment.body',
-                                        thread_url: discussion_url(thread),
-                                        group_name: thread.group.name),
-                          discussion: thread)
+                                        thread_url: discussion_url(introduction_thread),
+                                        group_name: how_it_works_thread.group.name),
+                          discussion: how_it_works_thread)
     CommentService.create(comment: comment, actor: helper_bot)
     comment
   end
