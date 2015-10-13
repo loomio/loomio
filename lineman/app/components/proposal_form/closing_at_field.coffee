@@ -16,6 +16,10 @@ angular.module('loomioApp').directive 'closingAtField', ->
 
     $scope.$watch 'closingHour', updateClosingAt
 
+    $scope.formatTime = (hour) ->
+      moment("2015-01-01 #{hour}:00").format('h a')
+
+
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.timeZone = jstz.determine().name()
     $scope.closeDateTimePicker = ->
