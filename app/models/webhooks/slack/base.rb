@@ -37,6 +37,16 @@ Webhooks::Slack::Base = Struct.new(:event) do
     }
   end
 
+  def user_vote_field
+    {
+      title: "Vote on this proposal",
+      value: "#{vote_proposal_link(eventable, "yes")} · " +
+             "#{vote_proposal_link(eventable, "abstain")} · " +
+             "#{vote_proposal_link(eventable, "no")} · " +
+             "#{vote_proposal_link(eventable, "block")}"
+    }
+  end
+
   def view_motion_on_loomio
     view_discussion_on_loomio({ proposal: eventable.key })
   end
@@ -51,6 +61,14 @@ Webhooks::Slack::Base = Struct.new(:event) do
 
   def discussion_link(text = nil, params = {})
     "<#{discussion_url(eventable.discussion, params)}|#{text || eventable.discussion.title}>"
+  end
+
+  def vote_proposal_link(vote, position = nil)
+    vote_discussion_link position || vote.motion_name, { proposal: vote.proposal.key, position: vote.position }
+  end 
+
+  def vote_discussion_link(text = nil, params = {})
+    "<#{discussion_url(eventable.motion.discussion, params)}|#{text || eventable.motion.discussion.title}>"
   end
 
   def eventable

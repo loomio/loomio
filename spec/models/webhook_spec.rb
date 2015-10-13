@@ -16,7 +16,7 @@ describe Webhook do
     expect(build(:webhook, event_types: [])).to_not be_valid
   end
 
-  it 'should validates the webhook kind' do
+  it 'should validate the webhook kind' do
     expect(build(:webhook, kind: 'notakind')).to_not be_valid
   end
 end

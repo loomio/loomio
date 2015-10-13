@@ -1470,4 +1470,5 @@ en:
       motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
       motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
       new_motion: "*%{author}* started a new proposal in *%{name}*"
+      new_vote: "*%{author}* voted *%{position}* in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
