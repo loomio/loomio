@@ -380,7 +380,12 @@ label.label-with-details{
 .lmo-column-container {
   margin: auto;
   max-width: $large-max-width;
-  padding: 0 10px;
+}
+
+@media (min-width: 480px) {
+  .lmo-column-container {
+    padding: 0 10px;
+  }
 }
 
 @media (min-width: 768px) {

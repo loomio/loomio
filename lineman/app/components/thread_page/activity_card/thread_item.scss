@@ -19,12 +19,21 @@
 }
 
 .thread-item__body {
-  margin: 10px 0 10px 0px;
+  margin: 10px 0 10px 0;
 }
 
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
+}
+
+@media (min-width: 480px){
+  .thread-item__body, .thread-item__footer{
+    margin-left: 40px;
+  }
+  .thread-item__body{
+    margin-top: 0;
+  }
 }
 
 .thread-item__actions {
