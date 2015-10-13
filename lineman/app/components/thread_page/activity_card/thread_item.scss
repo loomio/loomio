@@ -3,21 +3,23 @@
 }
 
 .thread-item__header {
+  /* these styles break with BEM but they keep the translations clean*/
   strong {
     color: $primary-text-color;
     @include fontHelveticaBold;
   }
-  span {
+  span span {
     color: $primary-text-color;
   }
 }
 
 .thread-item__title {
   color: $grey-on-white;
+  display: inline-block;
 }
 
 .thread-item__body {
-  margin: 0 0 10px 0px;
+  margin: 10px 0 10px 0px;
 }
 
 .thread-item__footer {

@@ -396,3 +396,13 @@ label.label-with-details{
     clear: right;
   }
 }
+
+.timeago{
+  @include fontTiny();
+  color: $grey-on-white;
+  white-space: nowrap;
+}
+
+.timeago--inline{
+  padding-left: 5px;
+}
