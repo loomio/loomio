@@ -30,7 +30,9 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
           id: group.id
           key: group.key
           name: group.name
-          description: group.description
+          subscription_kind: group.subscriptionKind
+          subscription_plan: group.subscriptionPlan
+          subscription_expires_at: group.subscriptionExpiresAt
           creator_id: group.creatorId
           visible_to: group.visibleTo
           cohort_id: group.cohortId
