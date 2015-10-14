@@ -20,7 +20,8 @@ Webhooks::Slack::Base = Struct.new(:event) do
       text:        attachment_text,
       fields:      attachment_fields,
       fallback:    attachment_fallback,
-      color:       attachment_color
+      color:       attachment_color,
+      mrkdwn_in:   [:text]
     }]
   end
 
@@ -30,7 +31,7 @@ Webhooks::Slack::Base = Struct.new(:event) do
 
   def motion_vote_field
     {
-      title: "Have your say", 
+      title: "Have your say",
       value: "#{proposal_link(eventable, "agree")} · " +
              "#{proposal_link(eventable, "abstain")} · " +
              "#{proposal_link(eventable, "disagree")} · " +

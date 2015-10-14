@@ -59,14 +59,14 @@ describe WebhookService do
       expect(payload['text']).to match /#{user.name}.*updated the outcome for.*#{motion.name}/
     end
 
-    it 'serializes a new vote' do 
+    it 'serializes a new vote' do
       event = VoteService.create actor: user, vote: vote
       def vote_position
         case vote.position
         when "yes"
           "agreed on"
         when "no"
-          "disagreed on"  
+          "disagreed on"
         when "abstain"
           "abstained on"
         else
@@ -78,6 +78,14 @@ describe WebhookService do
       expect(payload['text']).to match /#{user.name}.* .*#{vote_position}.* .*#{vote.proposal.name}.* in .*#{discussion.title}/
     end
   end
+
+    it 'serializes a comment created' do
+      motion.save
+      event = CommentService.create actor: user, comment: comment
+      payload = JSON.parse WebhookService.send(:payload_for, webhook, event)
+      expect(payload['username']).to eq 'Loomio Bot'
+      expect(payload['text']).to match /"*#{author.name}.* commented in .*#{discussion.title}*"/
+    end
 
   describe '#webhook_object_for' do
     it 'should create a struct based on the event''s kind' do

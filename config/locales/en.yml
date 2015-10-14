@@ -1472,3 +1472,4 @@ en:
       new_motion: "*%{author}* started a new proposal in *%{name}*"
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
+      new_comment: "*%{author}* commented in *%{name}*"
