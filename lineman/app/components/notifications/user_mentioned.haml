@@ -1,5 +1,4 @@
-%a.selector-list-item-link{ng-href: '{{link()}}', ng-controller: 'NotificationController'}
-  .media-left
-    %user_avatar{user: "actor", size: 'small'}
-  .media-body
-    %span{translate: 'notifications.user_mentioned', translate-value-name: '{{actor.name}}', translate-value-title: '{{event.comment().discussion().title}}' }
+.media-left
+  %user_avatar{user: "notification.actor()", size: 'small'}
+.media-body
+  %span{translate: 'notifications.user_mentioned', translate-value-name: '{{notification.actor().name}}', translate-value-title: '{{notification.event().comment().discussion().title}}' }

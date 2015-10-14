@@ -51,10 +51,6 @@
 
 .selector-list .media{ margin-top: 0; }
 .selector-list .media-left { margin-right: 8px; }
-.selector-list-item.is-active{
-  background-color: $item-highlight-color;
-  border-left: 4px solid $loomio-orange;
-}
 
 .is-subgroup-true .selector-list-item-link{
   padding-left: 53px;
