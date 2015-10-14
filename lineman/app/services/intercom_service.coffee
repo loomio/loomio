@@ -14,6 +14,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
        user_id: CurrentUser.id
        created_at: CurrentUser.createdAt
        angular_ui: true
+       locale: CurrentUser.locale
 
     shutdown: ->
       return unless @available()
@@ -36,6 +37,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
           creator_id: group.creatorId
           visible_to: group.visibleTo
           cohort_id: group.cohortId
+          created_at: group.createdAt
 
     contactUs: ->
       return unless @available()
