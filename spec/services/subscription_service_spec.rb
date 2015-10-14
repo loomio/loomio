@@ -2,10 +2,10 @@ require 'rails_helper'
 describe SubscriptionService do
   let (:response_subscription) { {
     id: group.subscription.chargify_subscription_id,
-    activated_at: Date.today,
-    expires_at: (Date.today + 30),
+    activated_at: Time.zone.now.to_date,
+    expires_at: (30.minutes.from_now.to_date),
     product: { handle: 'test-product' },
-    canceled_at: Date.yesterday
+    canceled_at: 1.day.ago.to_date
   }.with_indifferent_access }
   let(:user) { create(:user) }
   let(:group) { create(:group) }
@@ -23,8 +23,8 @@ describe SubscriptionService do
       SubscriptionService.new(group, user).start_gift!
       group.subscription.reload
       expect(group.subscription.kind).to eq 'gift'
-      expect(group.subscription.trial_ended_at).to eq Date.today
-      expect(group.subscription.activated_at).to eq Date.today
+      expect(group.subscription.trial_ended_at).to eq Time.zone.now.to_date
+      expect(group.subscription.activated_at).to eq Time.zone.now.to_date
       expect(group.subscription.expires_at).to be_blank
       expect(group.subscription.plan).to be_blank
       expect(group.subscription.chargify_subscription_id).to be_blank
