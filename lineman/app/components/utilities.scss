@@ -388,6 +388,11 @@ label.label-with-details{
   }
 }
 
+.lmo-active {
+  background-color: $item-highlight-color;
+  border-left: 4px solid $loomio-orange;
+}
+
 @media (min-width: 768px) {
   .lmo-column-left {
     width: 59%;

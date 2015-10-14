@@ -52,10 +52,10 @@ describe 'LmoUrlService', ->
 
     describe 'proposal', ->
       it 'gives a proposal path', ->
-        expect(service.proposal(proposal)).toBe("/m/#{proposal.key}/proposal-name")
+        expect(service.proposal(proposal)).toBe("/d/#{proposal.discussion().key}/discussion-title?proposal=#{proposal.key}")
 
       it 'can pass query parameters', ->
-        expect(service.proposal(proposal, { position: 'yes', utm_medium: 'medium'})).toBe("/m/#{proposal.key}/proposal-name?position=yes&utm_medium=medium")
+        expect(service.proposal(proposal, { position: 'yes', utm_medium: 'medium'})).toBe("/d/#{proposal.discussion().key}/discussion-title?position=yes&utm_medium=medium&proposal=#{proposal.key}")
 
     describe 'comment', ->
       it 'gives a comment path', ->
