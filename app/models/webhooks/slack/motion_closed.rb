@@ -15,4 +15,9 @@ class Webhooks::Slack::MotionClosed < Webhooks::Slack::Base
   def attachment_fields
     [view_motion_on_loomio]
   end
+
+  def attachment_color
+    "#F6B936"
+  end
+  
 end

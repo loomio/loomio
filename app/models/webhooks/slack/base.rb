@@ -19,7 +19,8 @@ Webhooks::Slack::Base = Struct.new(:event) do
       title:       attachment_title,
       text:        attachment_text,
       fields:      attachment_fields,
-      fallback:    attachment_fallback
+      fallback:    attachment_fallback,
+      color:       attachment_color
     }]
   end
 
@@ -29,21 +30,11 @@ Webhooks::Slack::Base = Struct.new(:event) do
 
   def motion_vote_field
     {
-      title: "Vote on this proposal",
-      value: "#{proposal_link(eventable, "yes")} · " +
+      title: "Have your say", 
+      value: "#{proposal_link(eventable, "agree")} · " +
              "#{proposal_link(eventable, "abstain")} · " +
-             "#{proposal_link(eventable, "no")} · " +
+             "#{proposal_link(eventable, "disagree")} · " +
              "#{proposal_link(eventable, "block")}"
-    }
-  end
-
-  def user_vote_field
-    {
-      title: "Vote on this proposal",
-      value: "#{vote_proposal_link(eventable, "yes")} · " +
-             "#{vote_proposal_link(eventable, "abstain")} · " +
-             "#{vote_proposal_link(eventable, "no")} · " +
-             "#{vote_proposal_link(eventable, "block")}"
     }
   end
 
@@ -55,24 +46,25 @@ Webhooks::Slack::Base = Struct.new(:event) do
     { value: discussion_link(I18n.t(:"webhooks.slack.view_it_on_loomio"), params) }
   end
 
-  def proposal_link(proposal, position = nil)
-    discussion_link position || proposal.name, { proposal: proposal.key, position: position }
+  def proposal_link(event, position = nil)
+    discussion_link position || proposal_name(event), { proposal: event.key, position: position }
   end
 
   def discussion_link(text = nil, params = {})
     "<#{discussion_url(eventable.discussion, params)}|#{text || eventable.discussion.title}>"
   end
 
-  def vote_proposal_link(vote, position = nil)
-    vote_discussion_link position || vote.motion_name, { proposal: vote.proposal.key, position: vote.position }
-  end 
-
-  def vote_discussion_link(text = nil, params = {})
-    "<#{discussion_url(eventable.motion.discussion, params)}|#{text || eventable.motion.discussion.title}>"
-  end
-
   def eventable
     @eventable ||= event.eventable
+  end
+
+  def proposal_name(event)
+    # Access proposal name as new events are added
+    if event.is_a?(Motion)
+      event.name
+    else # event.is_a?(Vote)
+      event.motion_name
+    end
   end
 
   def author
