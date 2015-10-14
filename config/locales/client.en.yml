@@ -410,7 +410,7 @@ en:
 
   confirm_gift_plan_modal:
     heading: Gift plan selected
-    body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will see a card like this one when they visit your group:"
+    body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will periodically be invited to make a voluntary donation."
     got_it: "Ok, got it!"
 
   gift_card:
