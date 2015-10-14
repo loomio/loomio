@@ -584,7 +584,7 @@ class Group < ActiveRecord::Base
 
   def set_defaults
     self.is_visible_to_public ||= false
-    self.discussion_privacy_options ||= 'private_only'
+    self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
   end
 
