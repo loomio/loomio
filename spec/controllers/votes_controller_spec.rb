@@ -20,7 +20,7 @@ describe VotesController do
       expect(flash[:notice]).to match(/motion has already closed/)
     end
 
-    it 'calls MotionService::cast_vote', focus: true do
+    it 'calls MotionService::cast_vote' do
       VoteService.should_receive :create
       post :create, {motion_id: motion.id, vote: {position: 'yes'}}
     end
