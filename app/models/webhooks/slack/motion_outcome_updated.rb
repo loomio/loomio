@@ -17,7 +17,6 @@ class Webhooks::Slack::MotionOutcomeUpdated < Webhooks::Slack::Base
   end
 
   def attachment_color
-    "#F6B936"
   end
 
   private

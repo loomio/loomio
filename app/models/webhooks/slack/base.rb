@@ -46,8 +46,8 @@ Webhooks::Slack::Base = Struct.new(:event) do
     { value: discussion_link(I18n.t(:"webhooks.slack.view_it_on_loomio"), params) }
   end
 
-  def proposal_link(event, position = nil)
-    discussion_link position || proposal_name(event), { proposal: event.key, position: position }
+  def proposal_link(model, position = nil)
+    discussion_link position || proposal_name(model), { model: model.key, position: position }
   end
 
   def discussion_link(text = nil, params = {})
@@ -58,12 +58,10 @@ Webhooks::Slack::Base = Struct.new(:event) do
     @eventable ||= event.eventable
   end
 
-  def proposal_name(event)
-    # Access proposal name as new events are added
-    if event.is_a?(Motion)
-      event.name
-    else # event.is_a?(Vote)
-      event.motion_name
+  def proposal_name(model)
+    case model
+    when Motion then model.name
+    when Vote then model.motion_name
     end
   end
 

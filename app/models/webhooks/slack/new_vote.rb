@@ -20,30 +20,15 @@ class Webhooks::Slack::NewVote < Webhooks::Slack::Base
 
   def attachment_color
     case eventable.position
-    when "yes"
-      "#94D587"
-    when "no"
-      "#D1908F"
-    when "abstain"
-      "#EEBC57"
-    else
-      "#D80D00"
+    when "yes" then SiteSettings.colors[:agree]
+    when "no" then SiteSettings.colors[:disagree]
+    when "abstain" then SiteSettings.colors[:abstain]
+    else SiteSettings.colors[:block]
     end
   end
 
-  private
-
   def vote_position
-    case eventable.position
-    when "yes"
-      "agreed on"
-    when "no"
-      "disagreed on"  
-    when "abstain"
-      "abstained on"
-    else
-      "blocked"
-    end
+    I18n.t :"webhooks.slack.position_verbs.#{eventable.position}"
   end
 
 end
