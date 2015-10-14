@@ -1,7 +1,6 @@
 Given(/^I have a proposal which has expired$/) do
   @motion = FactoryGirl.create :motion, author: @user
-  @motion.closing_at = 2.days.ago
-  @motion.save
+  @motion.update_attribute(:closing_at, 2.days.ago)
   MotionService.close_all_lapsed_motions
 end
 

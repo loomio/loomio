@@ -5,9 +5,10 @@
     .closing-at-group
       %input.closing-at-field__date#proposal-close-date-field{type: 'date', min: "{{dateToday}}", ng-model: 'closingDate'}
 
+      {{dateToday}}
       %select.closing-at-field__time{ng-model: 'closingHour'}
         %option{ng-repeat: 'hour in hours', value: '{{hour}}', ng-selected: 'hour == closingHour'}
-          {{ formatTime(hour) }}
+          {{ times[hour] }}
 
       %span.closing-at-field__zone
         {{ timeZone }}

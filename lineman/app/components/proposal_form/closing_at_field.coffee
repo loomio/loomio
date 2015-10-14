@@ -16,9 +16,10 @@ angular.module('loomioApp').directive 'closingAtField', ->
 
     $scope.$watch 'closingHour', updateClosingAt
 
-    $scope.formatTime = (hour) ->
-      moment("2015-01-01 #{hour}:00").format('h a')
+    $scope.hours = _.times 24, (i) -> i
 
+    $scope.times = _.times 24, (i) ->
+      moment("2015-01-01 #{i}:00").format('h a')
 
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.timeZone = jstz.determine().name()
