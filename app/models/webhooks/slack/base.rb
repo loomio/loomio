@@ -24,6 +24,9 @@ Webhooks::Slack::Base = Struct.new(:event) do
     }]
   end
 
+  def attachment_color
+  end
+
   alias :read_attribute_for_serialization :send
 
   private

@@ -1473,7 +1473,7 @@ en:
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
       position_verbs:
-        yes: "agreed on"
-        no: "disagreed on"
+        "yes": "agreed on"
+        "no": "disagreed on"
         abstain: "abstained on"
         block: "blocked"

@@ -16,9 +16,6 @@ class Webhooks::Slack::MotionOutcomeCreated < Webhooks::Slack::Base
     [view_motion_on_loomio]
   end
 
-  def attachment_color
-  end
-
   private
 
   def eventable_name

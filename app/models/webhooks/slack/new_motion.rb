@@ -20,7 +20,4 @@ class Webhooks::Slack::NewMotion < Webhooks::Slack::Base
     [motion_vote_field]
   end
 
-  def attachment_color
-  end
-
 end
