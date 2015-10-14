@@ -113,3 +113,13 @@ describe 'Group Page', ->
       expect(flashHelper.flashMessage()).toContain('This group has been deactivated')
       groupsHelper.visitGroupPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')
+
+  describe 'changing group volume', ->
+
+    it 'lets you change group notification volume', ->
+      groupsHelper.load()
+      expect(groupsHelper.groupVolumeCard()).toContain('You will be emailed about new threads and proposals in this group.')
+      groupsHelper.clickChangeInGroupVolumeCard()
+      groupsHelper.changeGroupVolumeToLoud()
+      groupsHelper.submitChangeVolumeForm()
+      expect(groupsHelper.groupVolumeCard()).toContain('Email everything')

@@ -31,6 +31,7 @@ en:
       edit: 'Edit'
       like: 'Like'
       unlike: 'Unlike'
+      update: 'Update'
       cancel: 'Cancel'
       show_more: "Show more"
       view_all: "View All"
@@ -84,6 +85,58 @@ en:
     quiet: 'Quiet'
     mute: 'Mute'
     unmute: 'Unmute'
+
+  thread_volume_card:
+    heading: "Thread notifications"
+    body:
+      loud: "Email everything: you will be emailed whenever there is activity in this thread."
+      normal: "Email proposals: you will be emailed when a proposal is started, about to close, or an outcome is posted."
+      quiet: "No emails: you won't be emailed about activity in this thread."
+      mute: "Thread muted: you won't be emailed about this thread, and it will be removed from your Recent Threads and Unread pages."
+    change_volume_link: "Change"
+
+  thread_volume_form:
+    header: "Thread notifications"
+    loud_label: "Email everything"
+    loud_description: "You will be emailed whenever there is activity in this thread."
+    normal_label: "Email proposals"
+    normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
+    quiet_label: "No emails"
+    quiet_description: "You won't be emailed about this thread."
+    mute_label: "Mute thread"
+    mute_description: "You won't be emailed about this thread, and it will be removed from your Recent Threads and Unread pages."
+    submit: "Update"
+    messages:
+      loud: "You will be emailed activity in this thread."
+      normal: "You will be emailed about proposals in this thread."
+      quiet: "You won't be emailed about this thread."
+      mute: "This thread is muted."
+
+  group_volume_card:
+    heading: "Group notifications"
+    body:
+      loud: "Email everything: you will be emailed whenever there is activity in this group."
+      normal: "You will be emailed about new threads and proposals in this group."
+      quiet: "No emails: you won't be emailed about activity in this group."
+      mute: "Group muted: you won't be emailed about this group, and it will be removed from your Recent Threads and Unread pages."
+    change_volume_link: "Change"
+
+  group_volume_form:
+    header: "Group notifications"
+    loud_label: "Email everything"
+    loud_description: "You will be emailed whenever there is activity in this group."
+    normal_label: "Email new threads and proposals"
+    normal_description: "You will be emailed about new threads and proposals in this group."
+    quiet_label: "No emails"
+    quiet_description: "You won't be emailed about activity in this group."
+    mute_label: "Mute group"
+    mute_description: "You won't be emailed about this group, and it will be removed from your Recent Threads and Unread pages."
+    submit: "Update"
+    messages:
+      loud: "You will be emailed activity in this thread."
+      normal: "You will be emailed about proposals in this thread."
+      quiet: "You won't be emailed about this thread."
+      mute: "This thread is muted."
 
   inbox:
     clear: 'Clear'
