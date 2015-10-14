@@ -18,6 +18,10 @@ class BaseController < ApplicationController
   protected
 
   def boot_angular_ui
+    if browser.ie? && browser.version.to_i < 10
+      redirect_to :browser_not_supported and return
+    end
+
     @appConfig = {
       version: Loomio::Version.current,
       reportErrors: false,

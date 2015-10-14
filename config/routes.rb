@@ -164,6 +164,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
+  get "/browser_not_supported", to: "application#browser_not_supported"
 
   resource :search, only: :show
 

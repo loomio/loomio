@@ -362,24 +362,12 @@ en:
     options_label: 'Options'
     options:
       label: 'Options'
-<<<<<<< HEAD
       edit_group: 'Edit Group Settings'
       manage_members: 'Manage Members'
+      add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
-||||||| merged common ancestors
-      edit_group: 'Edit Group Settings'
-      manage_members: 'Manage members'
-      leave_group: 'Leave Group'
-      deactivate_group: 'Deactivate Group'
-=======
-      edit_group: 'Edit group settings'
-      add_subgroup: 'Add subgroup'
-      manage_members: 'Manage members'
-      leave_group: 'Leave group'
-      deactivate_group: 'Deactivate group'
->>>>>>> master
     deactivate_group:
       title: 'Deactivate group'
       question: 'Are you sure you want to deactivate this group?'
