@@ -967,7 +967,7 @@ en:
   #
 
   invitation:
-    angular_warning_html: '<small> Anyone that accepts your invitation will use the new Loomio interface: <a href="TODO ADD LINK TO BLOG POST" target="_blank">find out more</a>.</small>'
+    angular_warning_html: '<small> Anyone that accepts your invitation will use the new Loomio interface: <a href="http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/" target="_blank">find out more</a>.</small>'
     alternate: "Alternatively, share this link and anyone can ask to join:"
     by_email: "Invite by email"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
