@@ -7,9 +7,7 @@
 
       %select.closing-at-field__time{ng-model: 'closingHour'}
         %option{ng-repeat: 'hour in hours', value: '{{hour}}', ng-selected: 'hour == closingHour'}
-          {{(hour > 12) ? (hour - 12): hour }}
-          &nbsp;
-          {{(hour > 12) ? ('common.time.pm' | translate ) : ('common.time.am' | translate ) }}
+          {{ formatTime(hour) }}
 
       %span.closing-at-field__zone
         {{ timeZone }}

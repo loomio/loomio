@@ -20,6 +20,10 @@
         %a.group-page-actions__manage-subscription-link{ng-if: 'group.subscriptionKind == "gift"', ng-click: 'groupActions.choosePlan()'}
           .dropdown-menu-item-label{translate: 'group_page.options.manage_subscription'}
         .dropdown-menu-item-details
+      %li.dropdown-menu-item{ng-if: 'groupActions.canAddSubgroup()'}
+        %a.group-page-actions__add-subgroup-link{href: '', ng-click: 'groupActions.addSubgroup()'}
+          .dropdown-menu-item-label{translate: 'group_page.options.add_subgroup'}
+        .dropdown-menu-item-details
       %li.dropdown-menu-item
         %a.group-page-actions__leave-group{href: '', ng-click: 'groupActions.leaveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}

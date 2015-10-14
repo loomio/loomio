@@ -306,6 +306,7 @@ class DevelopmentController < ApplicationController
   def patrick
     @patrick ||= User.create!(name: 'Patrick Swayze',
                               email: 'patrick_swayze@example.com',
+                              is_admin: true,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               detected_locale: 'en',

@@ -3,8 +3,10 @@
     .media-left
       .thread-item__vote-icon{class: 'thread-item__vote-icon--{{vote.position}}'}
     .media-body
-      %h3.thread-item__title{ng-if: '!vote.hasStatement()', id: 'event-{{event.id}}', translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-actor: '{{vote.authorName()}}'}
-      %h3.thread-item__title{ng-if: 'vote.hasStatement()', id: 'event-{{event.id}}', translate: "new_vote_item.{{vote.positionVerb()}}_with_statement", translate-values: '{actor: vote.authorName(), statement: vote.statement}'}
-  .thread-item__footer
-    .thread-item__actions
-      %timeago{timestamp: 'vote.createdAt'}
+      %h3.thread-item__title{ng-if: '!vote.hasStatement()', id: 'event-{{event.id}}'}
+        %span{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-actor: '{{vote.authorName()}}'}
+        %timeago.timeago--inline{timestamp: 'vote.createdAt'}
+      %h3.thread-item__title{ng-if: 'vote.hasStatement()', id: 'event-{{event.id}}'}
+        %span{ translate: "new_vote_item.{{vote.positionVerb()}}_with_statement", translate-values: '{actor: vote.authorName(), statement: vote.statement}'}
+        %timeago.timeago--inline{timestamp: 'vote.createdAt'}
+

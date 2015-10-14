@@ -2,10 +2,13 @@
   margin: 0px auto;
 }
 
-.thread-context__heading {
-  .lmo-card-heading {
-    display: inline-block;
-  }
+
+.thread-context__avatar{
+  margin-right: 10px;
+}
+
+.thread-actions{
+  margin-right: -10px;
 }
 
 .thread-actions .star-toggle {
@@ -40,16 +43,9 @@
 
 .thread-context{
   @include card;
-  padding-top: 10px;
   .lmo-card-heading {
     margin-top: 7px;
   }
-}
-
-// hey no ids in BEM, mate
-
-#thread-context__heading{
-  margin: 2px 0 4px 0 !important;
 }
 
 .thread-context__details{
@@ -101,6 +97,10 @@
 .start-proposal-card {
   @include card;
   i { color: white; }
+}
+
+.start-proposal-card__start-proposal-button {
+  margin-top: 10px;
 }
 
 .thread-start-proposal-button {

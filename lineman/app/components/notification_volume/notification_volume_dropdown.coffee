@@ -10,7 +10,8 @@ angular.module('loomioApp').directive 'notificationVolumeDropdown', ->
 
     $scope.saveVolume = ->
       $scope.model.changeVolume($scope.model.volume).then ->
-        FlashService.success "#{$scope.translateRoot}.volume.updated"
+        FlashService.success "#{$scope.translateRoot}.volume.#{$scope.model.volume}_message",
+          name: $scope.model.title or $scope.model.groupName()
 
     $scope.volumeLevels = ["loud", "normal", "quiet", "mute"]
 

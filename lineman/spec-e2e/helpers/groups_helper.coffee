@@ -137,3 +137,6 @@ module.exports = new class GroupsHelper
 
   visitFirstGroup: ->
     element.all(By.css('.groups-page__parent-group-name a')).first().click()
+
+  clickAddSubgroupLink: ->
+    element(By.css('.group-page-actions__add-subgroup-link')).click()

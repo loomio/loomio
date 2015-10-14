@@ -3,30 +3,37 @@
 }
 
 .thread-item__header {
+  /* these styles break with BEM but they keep the translations clean*/
   strong {
     color: $primary-text-color;
     @include fontHelveticaBold;
   }
-  span {
+  span span {
     color: $primary-text-color;
-  }
-  margin-bottom: 5px;
-  .media-body, .media-left{
-    vertical-align: middle;
   }
 }
 
 .thread-item__title {
   color: $grey-on-white;
+  display: inline-block;
 }
 
 .thread-item__body {
-  margin-bottom: 10px;
+  margin: 10px 0 10px 0;
 }
 
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
+}
+
+@media (min-width: 480px){
+  .thread-item__body, .thread-item__footer{
+    margin-left: 40px;
+  }
+  .thread-item__body{
+    margin-top: 0;
+  }
 }
 
 .thread-item__actions {
@@ -39,8 +46,8 @@
 }
 
 .thread-item__vote-icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   background-repeat: no-repeat;
 }
 
@@ -52,16 +59,20 @@
 
 .thread-item__vote-icon--yes {
   background-image: url(/img/green_thumb_22.png);
+  background-position: 6px 0px;
 }
 
 .thread-item__vote-icon--abstain {
   background-image: url(/img/yellow_thumb_22.png);
+  background-position: 4px 4px;
 }
 
 .thread-item__vote-icon--no {
   background-image: url(/img/pink_thumb_22.png);
+  background-position: 5px 6px;
 }
 
 .thread-item__vote-icon--block {
   background-image: url(/img/red_flag_22.png);
+  background-position: 5px 5px;
 }
