@@ -615,7 +615,7 @@ en:
     daily_summary_label: Daily summary email
     daily_summary_description: "Each morning, send an email with yesterday's unread activity. This email provides an easy routine for staying up to date with Loomio activity."
     on_participation_label: Activity from the threads I participate in
-    on_participation_description: "When you participate in a thread, the volume setting will be changes to 'High', so all further activity will be emailed to you immediately."
+    on_participation_description: "When you participate in a thread, the volume setting will be changed to 'High', so all further activity will be emailed to you immediately."
     proposal_closing_soon_label: Before a proposal closes
     proposal_closing_soon_description: '24 hours before a proposal closes, regardless of volume, you will get an email with the latest information about the proposal.'
     mentioned_label: When I am @mentioned
@@ -629,7 +629,7 @@ en:
     options:
       aria_label: 'Dashboard filtering options'
     no_threads:
-      show_all: You don't have any recent threads.
+      show_all: "To get started, click 'Groups' and start a new group."
       show_participating: You haven't participated in any threads recently.
       show_starred: You don't have any starred threads.
       show_proposals: There are no proposals currently active.
