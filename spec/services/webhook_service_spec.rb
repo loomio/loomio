@@ -61,9 +61,21 @@ describe WebhookService do
 
     it 'serializes a new vote' do 
       event = VoteService.create actor: user, vote: vote
+      def vote_position
+        case vote.position
+        when "yes"
+          "agreed on"
+        when "no"
+          "disagreed on"  
+        when "abstain"
+          "abstained on"
+        else
+          "blocked"
+        end
+      end
       payload = JSON.parse WebhookService.send(:payload_for, webhook, event)
       expect(payload['username']).to eq 'Loomio Bot'
-      expect(payload['text']).to match /#{user.name}.* voted .*#{vote.position}.* in .*#{discussion.title}/
+      expect(payload['text']).to match /#{user.name}.* .*#{vote_position}.* .*#{vote.proposal.name}.* in .*#{discussion.title}/
     end
   end
 
