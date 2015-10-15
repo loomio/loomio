@@ -27,7 +27,7 @@
   color: $grey-on-white;
 }
 
-@media (min-width: 480px){
+@media (min-width: $tiny-max-px){
   .thread-item__body, .thread-item__footer{
     margin-left: 40px;
   }

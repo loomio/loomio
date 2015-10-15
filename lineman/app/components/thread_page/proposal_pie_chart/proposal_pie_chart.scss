@@ -38,7 +38,7 @@
   color: $grey-on-white;
 }
 
-@media (max-width: $small-max-width), (min-width: $medium-max-width) and (max-width: $large-max-width) {
+@media (max-width: $tiny-max-px) {
   .proposal-pie-chart__legend{
     display: block;
   }
