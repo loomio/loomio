@@ -1,7 +1,7 @@
 class SubscriptionService
 
   def self.available?
-    ENV['CHARGIFY_APP_NAME'].present? && ENV['CHARGIFY_API_KEY'].present?
+    Rails.application.secrets.chargify_app_name && Rails.application.secrets.chargify_api_key
   end
 
   def initialize(group, actor)
