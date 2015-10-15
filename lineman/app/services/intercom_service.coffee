@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppConfig, CurrentUser) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppConfig, CurrentUser, $location, LmoUrlService) ->
   currentGroup = null
   service = new class IntercomService
     available: ->
@@ -40,8 +40,10 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
           created_at: group.createdAt
 
     contactUs: ->
-      return unless @available()
-      window.Intercom.public_api.showNewMessage()
+      if @available()
+        window.Intercom.public_api.showNewMessage()
+      else
+        window.location = LmoUrlService.contactForm()
 
   $rootScope.$on 'analyticsSetGroup', (event, group) ->
     service.updateWithGroup(group)

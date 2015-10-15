@@ -1,8 +1,8 @@
 angular.module('loomioApp').factory 'SubscriptionSuccessModal', ->
   templateUrl: 'generated/components/group_page/subscription_success_modal/subscription_success_modal.html'
   size: 'subscription-success-modal'
-  controller: ($scope, $window) ->
+  controller: ($scope, IntercomService) ->
 
     $scope.openIntercom = ->
-      $window.Intercom.public_api.showNewMessage()
+      IntercomService.contactUs()
       $scope.$close()
