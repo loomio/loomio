@@ -1,7 +1,7 @@
 require 'rails_helper'
-describe Popolo::MotionsController do
+describe Popolo::MotionsController, focus: true do
 
-  let(:public_group) { create :group, is_visible_to_public: true }
+  let(:public_group) { create :group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private' }
   let(:private_group) { create :group, is_visible_to_public: false }
 
   let(:public_discussion) { create :discussion, group: public_group, private: false }

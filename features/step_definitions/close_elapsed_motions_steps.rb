@@ -1,5 +1,7 @@
 Given(/^there is an unclosed motion with closing_at in the past$/) do
-  @motion = FactoryGirl.create :motion, closing_at: Date.yesterday
+  @motion = FactoryGirl.create :motion
+  @motion.update_attribute(:closing_at, 1.day.ago)
+
   @motion.closed?.should be false
   @motion.voting?.should be true
 end

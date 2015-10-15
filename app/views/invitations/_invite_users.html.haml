@@ -13,3 +13,5 @@
     = form.input :message_body, label: t("invitation.message_body"), as: :text, input_html: { value: t("invitation.body_editable_discussion", group: group.name) }
   - else
     = form.input :message_body, label: t("invitation.message_body"), as: :text, input_html: { value: t("invitation.body_editable", group: group.name) }
+
+  %p= t(:'invitation.angular_warning_html')

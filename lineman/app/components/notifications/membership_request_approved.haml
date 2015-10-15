@@ -1,5 +1,4 @@
-%a.selector-list-item-link{ng-href: '{{link()}}', ng-controller: 'NotificationController'}
-  .media-left
-    %user_avatar{user: "actor", size: 'small'}
-  .media-body
-    %span{translate: 'notifications.membership_request_approved', translate-value-name: '{{actor.name}}', translate-value-group: '{{event.membership().group().fullName}}' }
+.media-left
+  %user_avatar{user: "notification.actor()", size: 'small'}
+.media-body
+  %span{translate: 'notifications.membership_request_approved', translate-value-name: '{{notification.actor().name}}', translate-value-group: '{{notification.event().membership().group().fullName}}' }

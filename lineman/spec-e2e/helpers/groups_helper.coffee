@@ -110,7 +110,7 @@ module.exports = new class GroupsHelper
   confirmArchiveGroup: ->
     element(By.css('.archive-group-form__submit')).click()
 
-  visitGroupPage: ->
+  visitGroupsPage: ->
     element(By.css('.groups-item')).click()
 
   groupsList: ->
@@ -134,3 +134,9 @@ module.exports = new class GroupsHelper
 
   groupName: ->
     element(By.css('.group-theme__name')).getText()
+
+  visitFirstGroup: ->
+    element.all(By.css('.groups-page__parent-group-name a')).first().click()
+
+  clickAddSubgroupLink: ->
+    element(By.css('.group-page-actions__add-subgroup-link')).click()

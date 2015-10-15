@@ -1,5 +1,5 @@
-.container.main-container
-  %main.dashboard-page
+.lmo-one-column-layout
+  %main.dashboard-page.lmo-row
     %section.dashboard-page__options{aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
       .lmo-btn-group.lmo-btn-group-right
         .lmo-btn-wrapper
@@ -53,3 +53,4 @@
             %a{lmo-href-for: 'group'} {{group.name}}
           .dashboard-groups.thread-previews-container
             %thread_preview_collection{query: 'dashboardPage.views.groups[group.key]', limit: 'dashboardPage.groupThreadLimit'}
+      %loading{ng-show: 'dashboardPage.loadMoreExecuting'}

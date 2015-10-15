@@ -108,6 +108,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
     changeVolume: (volume) ->
       @remote.patchMember @keyOrId(), 'set_volume', { volume: volume }
 
+    isMuted: ->
+      @volume == 'mute'
+
     saveStar: ->
       @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
 

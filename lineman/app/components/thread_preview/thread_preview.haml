@@ -1,16 +1,4 @@
 .thread-preview
-  .thread-preview__star
-    %star_toggle{thread: 'thread'}
-
-  .thread-preview__actions.hidden-xs
-    %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.markAsRead()', ng-class: '{disabled: !thread.isUnread()}'}>
-      %i.fa.fa-check>
-      %span{translate: 'dashboard_page.mark_as_read'}
-    %button.btn.btn-default.btn-sm.thread-preview__mute{ng-click: 'thread.changeVolume("mute")', ng-class: '{disabled: thread.volume == "mute"}'}>
-      %i.fa.fa-volume-off
-      %i.fa.fa-times>
-      %span{translate: 'volume_levels.mute'}
-
   %a.thread-preview__link{lmo-href-for: 'thread'}
     .thread-preview__icon
       %user_avatar{ng-if: '!thread.activeProposal()', user: 'thread.author()', size: 'medium'}
@@ -43,3 +31,15 @@
         .thread-preview__group-name
           {{ thread.group().fullName }} ·
           %smart_time{time: 'thread.lastActivityAt'}>
+
+  .thread-preview__star
+    %star_toggle{thread: 'thread'}
+
+  .thread-preview__actions.hidden-xs
+    %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.markAsRead()', ng-class: '{disabled: !thread.isUnread()}', title: "{{'dashboard_page.mark_as_read' | translate }}"}>
+      %i.fa.fa-check>
+    %button.btn.btn-default.btn-sm.thread-preview__mute{ng-click: 'changeVolume("mute")', ng-show: '!thread.isMuted()', title: "{{ 'volume_levels.mute' | translate }}" }>
+      %i.fa.fa-volume-off
+      %i.fa.fa-times>
+    %button.btn.btn-default.btn-sm.thread-preview__mute{ng-click: 'changeVolume("normal")', ng-show: 'thread.isMuted()', title: "{{ 'volume_levels.unmute' | translate }}"}>
+      %i.fa.fa-volume-down>

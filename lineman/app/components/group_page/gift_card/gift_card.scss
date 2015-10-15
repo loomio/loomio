@@ -1,0 +1,13 @@
+.gift-card {
+  @include card;
+  p { color: $grey-on-white; }
+}
+
+.gift-card__confirm-button {
+  color: #fff;
+  background-color: #4185DE;
+  color: #fff;
+  i.fa { color: #fff; }
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}

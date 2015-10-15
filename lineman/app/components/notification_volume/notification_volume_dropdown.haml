@@ -3,10 +3,6 @@
     %button.btn.lmo-btn-nude.notification-volume__button{dropdown-toggle: ''}
       .screen-only{aria-hidden: 'true'}
         %i.fa.fa-lg.fa-fw{ng-class: 'iconClassForLevel(model.volume)'}>
-        %span{translate: 'volume_levels.loud', ng-show: 'model.volume == "loud"'}
-        %span{translate: 'volume_levels.normal', ng-show: 'model.volume == "normal"'}
-        %span{translate: 'volume_levels.quiet', ng-show: 'model.volume == "quiet"'}
-        %span{translate: 'volume_levels.mute', ng-show: 'model.volume == "mute"'}
       .sr-only
         %span{translate: "{{translateRoot}}.volume.loud_aria_description", ng-show: 'model.volume == "loud"'}
         %span{translate: "{{translateRoot}}.volume.normal_aria_description", ng-show: 'model.volume == "normal"'}

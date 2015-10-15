@@ -8,7 +8,6 @@
       {{proposal.createdAt | timeFromNowInWords}}
     %span{aria-hidden: 'true'}·
     %proposal_closing_time{proposal: 'proposal'}>
-    .badge.pull-right{ng-show: '!proposal.isActive()', translate: 'proposal_expanded.closed_badge'}
   .proposal-expanded-description.lmo-markdown-wrapper{marked: 'proposal.description' }
   %proposal_outcome_panel{ng-if: 'showOutcomePanel()', proposal: 'proposal'}
 

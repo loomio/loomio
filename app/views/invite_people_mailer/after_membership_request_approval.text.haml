@@ -1,4 +1,4 @@
 = t("email.group_membership_approved.intro", group_name: @group.name)
 \
-= t(:"invitation.link_help", group: @invitation.invitable_name)
+= t(:"invitation.link_help", group_name: @invitation.invitable_name)
 = invitation_url(@invitation, @utm_hash)
