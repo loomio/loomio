@@ -84,7 +84,7 @@ describe WebhookService do
       event = CommentService.create actor: user, comment: comment
       payload = JSON.parse WebhookService.send(:payload_for, webhook, event)
       expect(payload['username']).to eq 'Loomio Bot'
-      expect(payload['text']).to match /"*#{author.name}.* commented in .*#{discussion.title}*"/
+      expect(payload['text']).to match /#{user.name}.*commented in.*#{discussion.title}/
     end
 
   describe '#webhook_object_for' do
