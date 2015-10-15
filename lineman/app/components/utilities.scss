@@ -399,3 +399,7 @@ label.label-with-details{
 .align-center {
   text-align: center;
 }
+
+textarea.form-control {
+  max-height: 400px;
+}
