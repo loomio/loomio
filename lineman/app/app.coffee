@@ -9,7 +9,8 @@ angular.module('loomioApp', ['ngNewRouter',
                              'angular-inview',
                              'ui.gravatar',
                              'truncate',
-                             'duScroll']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
+                             'duScroll',
+                             'monospaced.elastic']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
 
   #configure markdown
   renderer = new marked.Renderer()
@@ -37,8 +38,8 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService) ->
-  IntercomService.boot()
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $location, $filter, $rootScope, $router, KeyEventService, ScrollService, CurrentUser, BootService, AppConfig, ModalService, ChoosePlanModal) ->
+  BootService.boot()
 
   $scope.currentComponent = 'nothing yet'
 
@@ -52,7 +53,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
 
-  MessageChannelService.subscribeToUser()
+  $scope.$on 'trialIsOverdue', (event, group) ->
+    if CurrentUser.id == group.creatorId and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
+      ModalService.open ChoosePlanModal, group: -> group
+      AppConfig.chargify.nagCache[group.key] = true
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 

@@ -9,18 +9,19 @@ angular.module('loomioApp').directive 'closingAtField', ->
     $scope.closingDate = $scope.proposal.closingAt.toDate()
 
     updateClosingAt = ->
-      date = $scope.closingDate.toISOString().slice(0,10)
-      $scope.proposal.closingAt = moment(date).add($scope.closingHour, 'hours')
+      $scope.proposal.closingAt = moment($scope.closingDate).startOf('day').add($scope.closingHour, 'hours')
 
     $scope.$watch 'closingDate', updateClosingAt
 
     $scope.$watch 'closingHour', updateClosingAt
 
-    $scope.formatTime = (hour) ->
-      moment("2015-01-01 #{hour}:00").format('h a')
+    $scope.hours = _.times 24, (i) -> i
 
+    $scope.times = _.times 24, (i) ->
+      moment("2015-01-01 #{i}:00").format('h a')
 
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.timeZone = jstz.determine().name()
+
     $scope.closeDateTimePicker = ->
       $scope.dropdownIsOpen = false

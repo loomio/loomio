@@ -38,13 +38,6 @@ When(/^I sign in to Loomio$/) do
   find('#sign-in-btn').click()
 end
 
-When(/^I setup the group$/) do
-  fill_in :group_description, with: "A collection of the finest herbs"
-  click_on 'Next'
-  click_on 'Next'
-  click_on 'Take me to my group!'
-end
-
 When(/^I click start group without filling in any fields$/) do
  click_on "sign-up-submit"
 end
@@ -81,8 +74,8 @@ end
 
 Then(/^the example content should be present$/) do
   @group = Group.where(name: @group_name).first
-  expect(@group.discussions.first.title).to eq I18n.t('example_discussion.title')
-  expect(@group.motions.first.name).to eq I18n.t('example_motion.name')
+  expect(@group.discussions.first.title).to eq I18n.t('introduction_thread.title', group_name: @group_name)
+  expect(@group.motions.first.name).to eq I18n.t('first_proposal.name')
 end
 
 When(/^I click 'Try Loomio' from the front page$/) do
@@ -106,4 +99,10 @@ end
 
 When(/^I choose to create an account now$/) do
   pending # express the regexp above with the code you wish you had
+end
+
+Then(/^the group should be on a trial subscription$/) do
+  @group = Group.where(name: @group_name).first
+  expect(@group.subscription.kind).to eq 'trial'
+  expect(@group.subscription.expires_at).to eq 30.days.from_now.to_date
 end

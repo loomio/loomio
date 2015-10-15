@@ -14,10 +14,14 @@ $item-highlight-color: #FFFFE8;
 $progress-bar-color: #176EE3;
 $loomio-orange: #F6A82B;
 
-$main-max-width: 640px;
-$medium-max-width: 767px;
-$large-max-width: 960px;
 $navbar-height: 44px;
+$tiny-max:      480;
+$small-max:     768;
+$medium-max:    992;
+$tiny-max-px:   $tiny-max   + px;
+$small-max-px:  $small-max  + px;
+$medium-max-px: $medium-max + px;
+$max-container-size: 1120px;
 
 $agree-color: hsl(148, 40, 52);
 $abstain-color: hsl(37, 92, 61);
@@ -135,7 +139,7 @@ $boxLargeSize: 80px;
   @include box_shadow(1);
   border: 1px solid $border-color;
   background: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   i{ color: $grey-on-white; }
 }
 

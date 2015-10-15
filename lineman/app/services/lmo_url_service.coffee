@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'LmoUrlService', ->
+angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
   new class LmoUrlService
 
     route: ({model, action, params}) ->
@@ -19,10 +19,13 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
     proposal: (p, params = {}, options = {}) ->
-      @buildModelRoute('m', p.key, p.name, params, options)
+      @discussion p.discussion(), _.merge(params, {proposal: p.key})
 
     comment: (c, params = {}, options = {}) ->
       @discussion c.discussion(), _.merge(params, {comment: c.id})
+
+    contactForm: ->
+      AppConfig.baseUrl + '/contact'
 
     buildModelRoute: (path, key, name, params, options) ->
       result = "/#{path}/#{key}"

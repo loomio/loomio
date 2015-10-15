@@ -225,6 +225,7 @@ label.label-with-details{
   text-transform: uppercase;
   color: $grey-on-white;
   margin-top: 1.5em;
+  margin-bottom: .8em;
 }
 
 .lmo-link {
@@ -348,6 +349,14 @@ label.label-with-details{
   clear: both;
 }
 
+.lmo-subscription-button {
+  color: #fff;
+  background-color: #4185DE;
+  i.fa { color: #fff; }
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}
+
 .lmo-float--left {
   float: left;
 }
@@ -377,31 +386,6 @@ label.label-with-details{
   width: 30px;
 }
 
-.lmo-column-container {
-  margin: auto;
-  max-width: $large-max-width;
-}
-
-@media (min-width: 480px) {
-  .lmo-column-container {
-    padding: 0 10px;
-  }
-}
-
-@media (min-width: 768px) {
-  .lmo-column-left {
-    width: 59%;
-    float: left;
-    clear: left;
-  }
-
-  .lmo-column-right {
-    width: 40%;
-    float: right;
-    clear: right;
-  }
-}
-
 .timeago{
   @include fontTiny();
   color: $grey-on-white;
@@ -410,4 +394,12 @@ label.label-with-details{
 
 .timeago--inline{
   padding-left: 5px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+textarea.form-control {
+  max-height: 400px;
 }

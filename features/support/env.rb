@@ -8,6 +8,7 @@ Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.default_wait_time = 5
+ENV['LOOMIO_NEW_USERS_ON_BETA'] = '1'
 
 polter_options = {
   :phantomjs_options => ['--load-images=no'],

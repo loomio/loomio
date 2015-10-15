@@ -51,6 +51,47 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_group_on_trial_admin
+    cleanup_database
+    sign_in patrick
+    GroupService.create(group: test_group, actor: current_user)
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_on_trial
+    cleanup_database
+    sign_in jennifer
+    GroupService.create(group: test_group, actor: current_user)
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_expired_trial
+    cleanup_database
+    GroupService.create(group: test_group, actor: current_user)
+    sign_in patrick
+    subscription = test_group.subscription
+    subscription.update_attribute :expires_at, 1.day.ago
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_overdue_trial
+    cleanup_database
+    GroupService.create(group: test_group, actor: patrick)
+    sign_in patrick
+    subscription = test_group.subscription
+    subscription.update_attribute :expires_at, 20.days.ago
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_on_paid_plan
+    cleanup_database
+    GroupService.create(group: test_group, actor: patrick)
+    sign_in patrick
+    subscription = test_group.subscription
+    subscription.update_attribute :kind, 'paid'
+    redirect_to group_url(test_group)
+  end
+
   def setup_public_group_with_public_content
     cleanup_database
     another_test_group

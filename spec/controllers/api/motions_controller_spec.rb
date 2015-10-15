@@ -9,7 +9,6 @@ describe API::MotionsController do
   let(:motion_params) {{
     name: 'hello',
     description: 'is it me you\'re looking for?',
-    closing_at: '2013-05-05 02:00',
     discussion_id: discussion.id
   }}
 
@@ -34,6 +33,24 @@ describe API::MotionsController do
         motion_ids = json['proposals'].map { |v| v['id'] }
         expect(motion_ids).to include motion.id
         expect(motion_ids).to_not include another_motion.id
+      end
+    end
+  end
+
+  describe 'close' do
+    context 'success' do
+      it "closes a motion" do
+        post :close, id: motion.id, format: :json
+        expect(response).to be_success
+        expect(motion.reload.closed_at).not_to eq nil
+      end
+    end
+
+    context 'failure' do
+      it "responds with an error when the user is unauthorized" do
+        sign_in another_user
+        post :close, id: motion.id
+        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
     end
   end

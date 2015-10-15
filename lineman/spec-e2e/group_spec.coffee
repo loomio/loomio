@@ -87,7 +87,7 @@ describe 'Group Page', ->
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.confirmLeaveGroup()
       expect(flashHelper.flashMessage()).toContain('You have left this group')
-      groupsHelper.visitGroupPage()
+      groupsHelper.visitGroupsPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')
 
     it 'prevents last coordinator from leaving the group', ->
@@ -111,5 +111,5 @@ describe 'Group Page', ->
       groupsHelper.clickArchiveGroupButton()
       groupsHelper.confirmArchiveGroup()
       expect(flashHelper.flashMessage()).toContain('This group has been deactivated')
-      groupsHelper.visitGroupPage()
+      groupsHelper.visitGroupsPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')

@@ -12,7 +12,7 @@
     "angular-translate-loader-url": "~2.7.2",
     "angular-truncate": "latest",
     "bootstrap-sass-official": "~> 3.3.5",
-    "components-font-awesome": "~> 4.2.0",
+    "components-font-awesome": "~> 4.4.0",
     "faye": "latest",
     "jquery": "~> 2.1.1",
     "jstimezonedetect": "~1.0.5",
@@ -21,7 +21,8 @@
     "ment.io": "~0.9.15",
     "moment": "latest",
     "ng-file-upload": "~3.2.4",
-    "svg.js": "latest"
+    "svg.js": "latest",
+    "angular-elastic": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.4.0-rc.0"
