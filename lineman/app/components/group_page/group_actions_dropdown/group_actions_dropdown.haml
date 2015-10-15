@@ -24,6 +24,12 @@
         %a.group-page-actions__add-subgroup-link{href: '', ng-click: 'groupActions.addSubgroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.add_subgroup'}
         .dropdown-menu-item-details
+
+      %li.dropdown-menu-item{ng-if: 'groupActions.canChangeVolume()'}
+        %a.group-page-actions__change-volume-link{href: '', ng-click: 'groupActions.openChangeVolumeForm()'}
+          .dropdown-menu-item-label{translate: 'group_volume_card.heading'}
+        .dropdown-menu-item-details
+
       %li.dropdown-menu-item
         %a.group-page-actions__leave-group{href: '', ng-click: 'groupActions.leaveGroup()'}
           .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
