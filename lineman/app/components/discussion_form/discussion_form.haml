@@ -26,7 +26,7 @@
 
       .form-group
         %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
-        %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context-field{ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+        %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context-field{msd-elastic: 'true', ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
       .form-group{ng-show: 'showPrivacyForm()'}
         .privacy-form-option

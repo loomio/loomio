@@ -21,7 +21,8 @@
     "ment.io": "~0.9.15",
     "moment": "latest",
     "ng-file-upload": "~3.2.4",
-    "svg.js": "latest"
+    "svg.js": "latest",
+    "angular-elastic": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.4.0-rc.0"

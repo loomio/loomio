@@ -19,7 +19,7 @@
 
     .form-group
       %label{for: 'group-description', translate: 'start_group_form.description_label'}
-      %textarea.start-group-form__description.form-control#group-description{ng-model: 'group.description', placeholder: "{{ 'start_group_form.description_placeholder' | translate }}"}
+      %textarea.start-group-form__description.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description', placeholder: "{{ 'start_group_form.description_placeholder' | translate }}"}
 
     .group-payment-notice{ng-if: 'group.isParent()', translate: 'start_group_form.group_payment_reminder'}
 
