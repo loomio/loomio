@@ -1513,4 +1513,10 @@ en:
       motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
       motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
       new_motion: "*%{author}* started a new proposal in *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
+      position_verbs:
+        "yes": "agreed on"
+        "no": "disagreed on"
+        abstain: "abstained on"
+        block: "blocked"

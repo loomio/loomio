@@ -6,7 +6,7 @@ describe WebhookService do
   let(:comment) { build(:comment, discussion: discussion, author: user) }
   let(:motion) { build(:motion, discussion: discussion, author: user) }
   let(:vote) { build(:vote, motion: motion, author: user) }
-  let(:webhook) { create :webhook, hookable: discussion, event_types: ['new_motion']}
+  let(:webhook) { create :webhook, hookable: discussion, event_types: ['new_motion', 'new_vote']}
 
   before do
     discussion.group.add_member!(user)
@@ -58,10 +58,18 @@ describe WebhookService do
       expect(payload['username']).to eq 'Loomio Bot'
       expect(payload['text']).to match /#{user.name}.*updated the outcome for.*#{motion.name}/
     end
+
+    it 'serializes a new vote' do 
+      event = VoteService.create actor: user, vote: vote
+      payload = JSON.parse WebhookService.send(:payload_for, webhook, event)
+      expect(payload['username']).to eq 'Loomio Bot'
+      vote_position = I18n.t :"webhooks.slack.position_verbs.#{vote.position}"
+      expect(payload['text']).to match /#{user.name}.* .*#{vote_position}.* .*#{vote.proposal.name}.* in .*#{discussion.title}/
+    end
   end
 
   describe '#webhook_object_for' do
-    it 'should create a struct based on the event''s kind' do
+    it 'should create a struct based on the event\'s kind' do
       event = MotionService.create_outcome actor: user, motion: motion, params: { outcome: 'new outcome' }
       webhook_event = WebhookService.send(:webhook_object_for, webhook, event)
       expect(webhook_event).to be_a Webhooks::Slack::MotionOutcomeCreated
