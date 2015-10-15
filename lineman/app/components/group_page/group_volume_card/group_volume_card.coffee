@@ -10,4 +10,7 @@ angular.module('loomioApp').directive 'groupVolumeCard', ->
     $scope.openChangeVolumeForm = ->
       ModalService.open ChangeVolumeForm, model: -> $scope.membership
 
+    $scope.canChangeVolume = ->
+      CurrentUser.isMemberOf($scope.group)
+
     return
