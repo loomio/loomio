@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
   MED_LARGE_IMAGE = 70
-  MEDIUM_IMAGE = 35
-  SMALL_IMAGE = 25
+  MEDIUM_IMAGE = 50
+  SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
 
   include Gravtastic
   gravtastic rating: :pg, default: :none
+  before_create :set_interface
 
 
   has_many :contacts, dependent: :destroy
@@ -348,6 +349,12 @@ class User < ActiveRecord::Base
   end
 
   private
+  def set_interface
+    if ENV['LOOMIO_NEW_USERS_ON_BETA']
+      self.angular_ui_enabled = false
+    end
+    true
+  end
 
   def set_default_avatar_kind
     if has_gravatar?

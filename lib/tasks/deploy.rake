@@ -56,7 +56,6 @@ task :deploy do
   #   rake deploy remote-name branch-name  # build, deploy, migrate with alternate remote and branch.
   #                                        # Eg: rake deploy loomio-clone master
 
-
   remote = ARGV[1] || 'loomio-production'
   branch = ARGV[2] || 'master'
 

@@ -119,13 +119,4 @@ class InvitationsController < ApplicationController
       redirect_to @invitable
     end
   end
-
-  def join_or_setup_group_path
-    group = @invitation.invitable
-    if group.admins.include? current_user
-      setup_group_path(group)
-    else
-      group_path(group)
-    end
-  end
 end

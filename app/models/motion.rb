@@ -17,6 +17,7 @@ class Motion < ActiveRecord::Base
   has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
+  validate :closes_in_future_unless_closed
 
   validates_length_of :name, maximum: 250
 
@@ -244,13 +245,21 @@ class Motion < ActiveRecord::Base
   end
 
   private
+    def closes_in_future_unless_closed
+      unless self.closed?
+        if closing_at < Time.zone.now
+          errors.add(:closing_at, "Proposal must close in the future")
+        end
+      end
+    end
+
     def one_motion_voting_at_a_time
       if voting? and discussion.current_motion.present? and discussion.current_motion != self
         errors.add(:discussion, 'already has a motion in progress')
       end
     end
 
-  def set_default_closing_at
-    self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
-  end
+    def set_default_closing_at
+      self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
+    end
 end

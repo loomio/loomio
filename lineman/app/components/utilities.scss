@@ -229,6 +229,7 @@ label.label-with-details{
   text-transform: uppercase;
   color: $grey-on-white;
   margin-top: 1.5em;
+  margin-bottom: .8em;
 }
 
 .lmo-link {
@@ -352,6 +353,14 @@ label.label-with-details{
   clear: both;
 }
 
+.lmo-subscription-button {
+  color: #fff;
+  background-color: #4185DE;
+  i.fa { color: #fff; }
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}
+
 .lmo-float--left {
   float: left;
 }
@@ -390,6 +399,11 @@ label.label-with-details{
   .lmo-column-container {
     padding: 0 10px;
   }
+}
+
+.lmo-active {
+  background-color: $item-highlight-color;
+  border-left: 4px solid $loomio-orange;
 }
 
 @media (min-width: 768px) {

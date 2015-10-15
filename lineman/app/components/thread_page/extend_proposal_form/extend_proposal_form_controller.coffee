@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'ExtendProposalFormController', ($scope, $modalInstance, proposal, FlashService) ->
-  $scope.proposal = proposal
+  $scope.proposal = proposal.clone()
 
   $scope.submit = ->
     $scope.proposal.save().then ->
@@ -7,4 +7,4 @@ angular.module('loomioApp').controller 'ExtendProposalFormController', ($scope, 
       FlashService.success 'extend_proposal_form.success'
 
   $scope.cancel = ($event) ->
-    $modalInstance.dismiss('cancel')
+    $scope.$close()

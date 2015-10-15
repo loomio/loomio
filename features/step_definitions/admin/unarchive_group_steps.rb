@@ -1,7 +1,7 @@
 Given(/^there is a user in an archived group$/) do
   @user = FactoryGirl.create :user
   @user.save!
-  @group = FactoryGirl.create :group
+  @group = FactoryGirl.create :group, discussion_privacy_options: 'public_or_private'
   @membership = @group.add_member! @user
   @discussion = FactoryGirl.create :discussion, group: @group, private: false
   @subgroup = FactoryGirl.create :group, parent: @group

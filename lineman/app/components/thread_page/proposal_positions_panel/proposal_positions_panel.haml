@@ -10,11 +10,8 @@
         %tbody
           %tr{ng-repeat: 'position in proposal.positions'}
             %td
-              .proposal-pie-chart__icon{class: 'proposal-pie-chart__icon--{{position}}'}
-                &nbsp;
-            %td
-              .proposal-pie-chart__label
-                {{ "proposal_position_"+position | translate}} ({{ proposal.voteCounts[position] }})
+              .proposal-pie-chart__label{class: 'proposal-pie-chart__label--{{position}}'}
+                {{ proposal.voteCounts[position] }} {{ "proposal_position_"+position | translate}}
   .proposal-pie-chart__participation-statement{translate: 'proposal_pie_chart.participation_statement', translate-value-percentage: '{{proposal.percentVoted()}}', translate-value-number: '{{proposal.numberVoted()}}', translate-value-total: '{{proposal.groupSizeWhenVoting()}}'}
 
   %ul.proposal-positions-panel__list

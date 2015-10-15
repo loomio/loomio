@@ -9,7 +9,6 @@ describe API::MotionsController do
   let(:motion_params) {{
     name: 'hello',
     description: 'is it me you\'re looking for?',
-    closing_at: '2013-05-05 02:00',
     discussion_id: discussion.id
   }}
 

@@ -12,7 +12,7 @@
     "angular-translate-loader-url": "~2.7.2",
     "angular-truncate": "latest",
     "bootstrap-sass-official": "~> 3.3.5",
-    "components-font-awesome": "~> 4.2.0",
+    "components-font-awesome": "~> 4.4.0",
     "faye": "latest",
     "jquery": "~> 2.1.1",
     "jstimezonedetect": "~1.0.5",

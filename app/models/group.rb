@@ -18,6 +18,7 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :name, length: { maximum: 250 }
+  validates :subscription, absence: true, if: :is_subgroup?
 
   validate :limit_inheritance
   validate :validate_parent_members_can_see_discussions
@@ -171,7 +172,7 @@ class Group < ActiveRecord::Base
 
   has_many :webhooks, as: :hookable
 
-  has_one :subscription, dependent: :destroy
+  belongs_to :subscription, dependent: :destroy
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
@@ -182,7 +183,7 @@ class Group < ActiveRecord::Base
   paginates_per 20
 
   has_attached_file    :cover_photo,
-                       styles: { desktop: "970x200#", card: "460x94#"},
+                       styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
                        default_url: :default_cover_photo
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
@@ -414,6 +415,7 @@ class Group < ActiveRecord::Base
   def add_admin!(user, inviter = nil)
     membership = find_or_create_membership(user, inviter)
     membership.make_admin! && save
+    self.creator = user if creator.blank?
     membership
   end
 
@@ -445,14 +447,6 @@ class Group < ActiveRecord::Base
     members.count
   end
 
-  def is_setup?
-    setup_completed_at.present?
-  end
-
-  def mark_as_setup!
-    update_attribute(:setup_completed_at, Time.zone.now.utc)
-  end
-
   def update_full_name_if_name_changed
     if changes.include?('name')
       update_full_name
@@ -477,11 +471,6 @@ class Group < ActiveRecord::Base
 
   def has_manual_subscription?
     payment_plan == 'manual_subscription'
-  end
-
-  def is_paying?
-    (payment_plan == 'manual_subscription') ||
-    (subscription.present? && subscription.amount > 0)
   end
 
   def group_request_description
@@ -594,6 +583,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
+    self.is_visible_to_public ||= false
     self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
   end

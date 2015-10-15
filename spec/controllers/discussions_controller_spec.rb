@@ -5,7 +5,7 @@ describe DiscussionsController do
   let(:user) { FactoryGirl.create(:user) }
   let(:other_user) { FactoryGirl.create(:user) }
   let(:motion) { mock_model(Motion).as_null_object }
-  let(:group) { create :group }
+  let(:group) { create :group, visible_to: 'public', is_visible_to_public: true, discussion_privacy_options: 'public_or_private' }
   let(:discussion) { stub_model(Discussion,
                                 title: "Top ten",
                                 key: 'abc123',
@@ -48,7 +48,7 @@ describe DiscussionsController do
       context "from a public group to a private group" do 
         it "makes the discussion private" do 
           g = FactoryGirl.create :group, discussion_privacy_options: 'private_only'
-          d = FactoryGirl.create :discussion, private: false
+          d = FactoryGirl.create :discussion, group: group, private: false
           Group.stub(:find).with(g.key).and_return(g)
           Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
 

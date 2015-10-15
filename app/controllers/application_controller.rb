@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def browser_not_supported
+    render layout: false
+  end
+
   protected
   def permitted_params
     @permitted_params ||= PermittedParams.new(params)

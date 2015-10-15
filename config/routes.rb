@@ -37,6 +37,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
+      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
@@ -163,6 +164,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
+  get "/browser_not_supported", to: "application#browser_not_supported"
 
   resource :search, only: :show
 
@@ -181,6 +183,10 @@ Loomio::Application.routes.draw do
     match 'mark_as_read', via: [:get, :post]
     match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
     match 'unfollow', via: [:get, :post]
+  end
+
+  namespace :subscriptions do
+    post :webhook
   end
 
   resources :invitations, only: [:show, :create, :destroy]
@@ -202,6 +208,7 @@ Loomio::Application.routes.draw do
 
   get 'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
+  post 'enable_angular' => 'start_group#enable_angular'
 
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do
