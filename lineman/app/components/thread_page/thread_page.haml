@@ -1,9 +1,9 @@
-.loading-wrapper.lmo-column-container.main-container
+.loading-wrapper.lmo-two-column-layout
   %loading{ng-if: '!threadPage.discussion'}
   %main.thread-page{ng-if: 'threadPage.discussion'}
     %group_theme{group: 'threadPage.discussion.group()', compact: 'true'}
 
-    .lmo-column-left
+    .lmo-thread-column-left
       %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
         .thread-actions.lmo-btn-group.pull-right
           %star_toggle{thread: 'threadPage.discussion'}
@@ -24,7 +24,6 @@
                   %a.thread-context__dropdown-options-delete.dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteThread()', translate: 'thread_context.delete_thread'}
 
 
-        %user_avatar.pull-left.thread-context__avatar{user: "threadPage.discussion.author()", size: 'medium'}
         %h1.lmo-h1#thread-context__heading{in-view: 'threadPage.showLintel(!$inview)'}
           {{threadPage.discussion.title}}
         .thread-context__details
@@ -41,7 +40,7 @@
         .thread-context__description.lmo-markdown-wrapper{marked: 'threadPage.discussion.description', aria-label: "{{ 'thread_context.aria_label' | translate }}" }
         %a.lmo-card-minor-action{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread', ng-if: 'threadPage.canEditThread()'}
 
-    .lmo-column-right
+    .lmo-thread-column-right
       %section.start-proposal-card{in-view: 'threadPage.proposalButtonInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.canStartProposal()', aria-label: '{{ "start_proposal_card.title" | translate }}'}
         %h2.lmo-card-heading{translate: 'common.models.proposal'}
         .lmo-placeholder.lmo-hint-text.table-cell{translate: 'start_proposal_card.helptext'}
@@ -51,8 +50,9 @@
       %previous_proposals_card{discussion: 'threadPage.discussion'}
       %thread_volume_card{thread: 'threadPage.discussion'}
 
-    .lmo-column-left
+    .lmo-thread-column-left
       %activity_card{discussion: 'threadPage.discussion'}
       %comment_form{comment: 'threadPage.comment'}
 
-    %thread_lintel
+    %thread_lintel.lmo-row
+    .clearfix

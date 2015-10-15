@@ -6,7 +6,22 @@ body {
 }
 
 h1, h2, h3, h4{
-  @include fontReset; /* Y U SO RESET? */
+  @include fontReset;
+
+  /*
+  We reset styles on headings for accessibility.
+
+  Semantically we want to enforce a strict hierarchy...
+  h1
+   - h2
+   - h2
+     - h3
+  -h2
+
+  ...but we don't always want the style to match that structure.
+
+  Use .lmo-h1, .lmo-h2 etc to get the styles you want.
+  */
 }
 
 input, select, textarea{
@@ -26,12 +41,6 @@ strong{
   @include fontHelveticaBold;
 }
 
-.main-container{
-  padding-top: 48px;
-  z-index: 0;
-  min-width: 320px;
-}
-
 .btn {
   @include box_shadow(1);
   border: none;
@@ -46,4 +55,5 @@ strong{
 }
 
 a {
-  color: $link-color; }
+  color: $link-color;
+}

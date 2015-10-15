@@ -1,7 +1,7 @@
 angular.module('loomioApp').factory 'ChoosePlanModal', ->
   templateUrl: 'generated/components/group_page/trial_card/choose_plan_modal/choose_plan_modal.html'
   size: 'choose-plan-modal'
-  controller: ($scope, group, ModalService, ConfirmGiftPlanModal, CurrentUser, AppConfig, $window) ->
+  controller: ($scope, group, ModalService, ConfirmGiftPlanModal, CurrentUser, AppConfig, $window, IntercomService) ->
     $scope.group = group
 
     $scope.chooseGiftPlan = ->
@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'ChoosePlanModal', ->
       $window.location = "#{AppConfig.chargify.host}#{AppConfig.chargify.plans[kind].path}?#{encodedChargifyParams()}"
 
     $scope.openIntercom = ->
-      $window.Intercom.public_api.showNewMessage()
+      IntercomService.contactUs()
       $scope.$close()
 
     encodedChargifyParams = ->

@@ -9,7 +9,8 @@ angular.module('loomioApp', ['ngNewRouter',
                              'angular-inview',
                              'ui.gravatar',
                              'truncate',
-                             'duScroll']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
+                             'duScroll',
+                             'monospaced.elastic']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
 
   #configure markdown
   renderer = new marked.Renderer()

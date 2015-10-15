@@ -1,6 +1,6 @@
 class ChargifyService
-  STANDARD_PLAN_URL = "http://#{ENV['CHARGIFY_APP_NAME']}.chargify.com/subscribe/#{ENV['CHARGIFY_STANDARD_PLAN_KEY']}/#{ENV['CHARGIFY_STANDARD_PLAN_NAME']}"
-  PLUS_PLAN_URL = "http://#{ENV['CHARGIFY_APP_NAME']}.chargify.com/subscribe/#{ENV['CHARGIFY_PLUS_PLAN_KEY']}/#{ENV['CHARGIFY_PLUS_PLAN_NAME']}"
+  STANDARD_PLAN_URL = "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscribe/#{ENV['CHARGIFY_STANDARD_PLAN_KEY']}/#{ENV['CHARGIFY_STANDARD_PLAN_NAME']}"
+  PLUS_PLAN_URL = "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscribe/#{ENV['CHARGIFY_PLUS_PLAN_KEY']}/#{ENV['CHARGIFY_PLUS_PLAN_NAME']}"
 
   def self.params_of(hash)
     "?"+hash.map{|k, v| "#{k}=#{CGI.escape(v)}"}.join('&')
@@ -38,12 +38,12 @@ class ChargifyService
   end
 
   def chargify_api_endpoint
-    "http://#{ENV['CHARGIFY_APP_NAME']}.chargify.com/subscriptions/#{@subscription_id}.json"
+    "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
   end
 
   def basic_auth
     {
-      username: ENV['CHARGIFY_API_KEY'],
+      username: Rails.application.secrets.chargify_api_key,
       password: :x # that's Mister X to you
     }
   end

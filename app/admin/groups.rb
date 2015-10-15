@@ -80,7 +80,7 @@ ActiveAdmin.register Group do
     attributes_table do
       row :group_request
       row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
-      row :plus_plan_link do link_to("plus subscription link", ChargifyService.standard_plan_url(group), target: '_blank') end
+      row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
       group.attributes.each do |k,v|
         row k, v.inspect
       end

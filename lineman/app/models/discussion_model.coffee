@@ -74,10 +74,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
       proposal.lastVoteAt if proposal?
 
     isUnread: ->
-      if @lastReadAt?
-        @unreadActivityCount() > 0
-      else
-        true
+      @discussionReaderId? and (!@lastReadAt? or @unreadActivityCount() > 0)
 
     isImportant: ->
       @starred or @hasActiveProposal()
