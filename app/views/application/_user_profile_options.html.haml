@@ -11,9 +11,9 @@
     %i.fa.fa-star
     = t :"help.help"
 
-- if ENV["INTERCOM_APP_ID"].present?
+- if Rails.application.secrets.intercom_app_id.present?
   %li
-    %a.intercom-proxy{href: "mailto:#{ENV["INTERCOM_APP_ID"]}@incoming.intercom.io"}
+    %a.intercom-proxy{href: "mailto:#{Rails.application.secrets.intercom_app_id}@incoming.intercom.io"}
       %i.fa.fa-question-circle
       = t :"contact_page.contact_us"
 %li
