@@ -3,6 +3,7 @@
   border-bottom: 1px solid $border-color;
   position: relative;
   &:hover {
+    .thread-preview__title { width: 80% }
     .thread-preview__actions { display: block; }
     background-color: $list-hover-color;
   }
