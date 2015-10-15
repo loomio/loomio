@@ -386,36 +386,6 @@ label.label-with-details{
   width: 30px;
 }
 
-.lmo-column-container {
-  margin: auto;
-  max-width: $large-max-width;
-}
-
-@media (min-width: 480px) {
-  .lmo-column-container {
-    padding: 0 10px;
-  }
-}
-
-.lmo-active {
-  background-color: $item-highlight-color;
-  border-left: 4px solid $loomio-orange;
-}
-
-@media (min-width: 768px) {
-  .lmo-column-left {
-    width: 59%;
-    float: left;
-    clear: left;
-  }
-
-  .lmo-column-right {
-    width: 40%;
-    float: right;
-    clear: right;
-  }
-}
-
 .timeago{
   @include fontTiny();
   color: $grey-on-white;
@@ -424,4 +394,8 @@ label.label-with-details{
 
 .timeago--inline{
   padding-left: 5px;
+}
+
+.align-center {
+  text-align: center;
 }

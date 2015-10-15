@@ -1,9 +1,28 @@
+@media (max-width: 480px){
+  .thread-lintel__wrapper {
+  }
+}
+@media (min-width: 480px) and (max-width: 768px){
+  .thread-lintel__wrapper{
+    max-width: 768px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px){
+  .thread-lintel__wrapper{
+    max-width: 992px;
+  }
+}
+@media (min-width: 992px){
+  .thread-lintel__wrapper{
+    max-width: 1120px;
+  }
+}
+
 .thread-lintel__wrapper {
   @include fontMedium;
   position: fixed;
   top: $navbar-height;
-  left: 0;
-  width: 100% ;
+  width: 100%;
 }
 
 .thread-lintel__content {
@@ -11,8 +30,6 @@
   border: 1px solid $border-color;
   background-color: $card-background-color;
   clear: both;
-  margin: 0 auto;
-  max-width: $large-max-width;
   overflow: hidden;
 }
 
@@ -33,7 +50,7 @@
 }
 
 .thread-lintel__proposal {
-  font-weight: 400px;
+  font-weight: 400;
   cursor: pointer;
 }
 
@@ -60,10 +77,4 @@
   left: 0;
   position: absolute;
   top: 0;
-}
-
-@media (max-width: 480px) {
-  .thread-lintel__content {
-    margin: 0 10px;
-  }
 }
