@@ -5,7 +5,7 @@
 
         git clone git://github.com/loomio/loomio.git
 
-######2. Create an outbox branch with your Github account:
+######2. Create an outbox remote with your Github account:
 
         cd loomio
         git remote add outbox git@github.com:your_github_handle/loomio.git
