@@ -1,5 +1,6 @@
 class NotificationsController < BaseController
   helper_method :unread_count
+  skip_before_filter :boot_angular_ui, only: [:groups_tree_dropdown, :dropdown_items, :mark_as_viewed]
 
   def groups_tree_dropdown
     render layout: false

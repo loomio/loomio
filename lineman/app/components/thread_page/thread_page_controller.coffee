@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeVolumeForm) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   handleCommentHash = do ->
@@ -79,6 +79,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @canStartProposal = ->
     AbilityService.canStartProposal(@discussion)
+
+  @openChangeVolumeForm = ->
+    ModalService.open ChangeVolumeForm, model: => @discussion
+
+  @canChangeVolume = ->
+    CurrentUser.isMemberOf(@discussion.group())
 
   @canEditThread = =>
     AbilityService.canEditThread(@discussion)

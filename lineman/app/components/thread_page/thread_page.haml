@@ -6,8 +6,6 @@
     .lmo-thread-column-left
       %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
         .thread-actions.lmo-btn-group.pull-right
-          .thread-notification-level.lmo-btn-wrapper
-            %notification_volume_dropdown{translate-root: 'discussion', discussion: 'threadPage.discussion'}
           %star_toggle{thread: 'threadPage.discussion'}
           %span.lmo-btn-wrapper{dropdown: '',  ng-if: 'threadPage.showContextMenu()'}
             %button.thread-context__dropdown-button.btn.lmo-btn-nude{dropdown-toggle: ''}
@@ -15,6 +13,9 @@
               %i.fa.fa-fw.fa-chevron-down
             .thread-context__dropdown.dropdown-menu.dropdown-menu-right
               %ul.dropdown-menu-items
+                %li.dropdown-menu-item{ng-if: 'threadPage.canChangeVolume()'}
+                  %a.thread-context__dropdown-options-notifications.dropdown-menu-item-label{href: '', ng-click: 'threadPage.openChangeVolumeForm()', translate: 'thread_context.notifications'}
+
                 %li.dropdown-menu-item{ng-if: 'threadPage.canEditThread()'}
                   %a.thread-context__dropdown-options-edit.dropdown-menu-item-label{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread'}
                 %li.dropdown-menu-item{ng-if: 'threadPage.canMoveThread()'}
@@ -47,6 +48,7 @@
           %start_proposal_button.table-cell.thread-start-proposal-button{discussion: 'threadPage.discussion'}
       %current_proposal_card{in-view: 'threadPage.proposalInView($inview)', in-view-options: '{debounce: 200}', ng-if: 'threadPage.discussion.hasActiveProposal()', proposal: 'threadPage.discussion.activeProposal()'}
       %previous_proposals_card{discussion: 'threadPage.discussion'}
+      %thread_volume_card{thread: 'threadPage.discussion'}
 
     .lmo-thread-column-left
       %activity_card{discussion: 'threadPage.discussion'}

@@ -1,5 +1,5 @@
-- if ENV['INTERCOM_APP_ID']
-  - @appConfig['intercomAppId'] = ENV['INTERCOM_APP_ID']
+- if Rails.application.secrets.intercom_app_id.present?
+  - @appConfig['intercomAppId'] = Rails.application.secrets.intercom_app_id
   - @appConfig['intercomUserHash'] = Digest::SHA1.hexdigest(Rails.application.secrets.intercom_app_secret+current_user.id.to_s)
 
   :javascript
