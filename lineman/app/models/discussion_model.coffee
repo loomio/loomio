@@ -7,7 +7,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
     @serializableAttributes: AppConfig.permittedParams.discussion
 
     afterConstruction: ->
-      @private = @privateDefaultValue()
+      if @isNew()
+        @private = @privateDefaultValue()
 
     defaultValues: =>
       private: null
