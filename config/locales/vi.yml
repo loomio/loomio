@@ -366,19 +366,12 @@ vi:
     message_body: Nội dung thư mời
     invites_more_help2: "<p>Bạn có thể gửi lời mời đến những người mà bạn muốn họ tham gia vào nhóm của mình bất cứ lúc nào.</p><p>Bạn có thể bắt đầu việc đó ngay bây giờ, hoặc bạn chỉ cần gửi lời mời tham gia đến những người thân trong nhóm của mình.</p>"
     invitation_link: Đường dẫn liên kết đến lời mời
-    link_help: "Click vào liên kết này để tham gia vào %{group} trên Loomio:"
     copy: "Nếu một ai đó không nhận được email xác nhận lời mời, xin vui lòng sao chép đường dẫn liên kết phía trên và gửi cho chính bạn."
     pending_invitations: Đang đợi thư mời
   search:
     description: "Bên dưới là danh sách các phần thảo luận và lời đề nghị có thông tin liên quan về '%{query}' trong phần tiêu đề và mô tả."
     header: "Tìm kiếm kết quả về '%{query}'"
     placeholder: Tìm kiếm
-  example_discussion:
-    title: "Phần thảo luận mẫu: Xin chào và hoan nghênh bạn đã sử dụng Loomio"
-    description: "Chào mừng bạn đã đến với Loomio, một website hỗ trợ việc đưa ra quyết định trong nhóm.\nVới việc tham gia và chủ đề, thảo luận nhiều khía cạnh và thông tin, cũng như diễn đạt các mối quan tâm, nhóm của bạn sẽ có thể hoạt động hiệu quả hơn theo cách tốt nhất có thể.\nBạn có thể xem sơ qua phần ví dụ mẫu kèm theo các công cụ và các tính năng.\nĐể mọi việc có thể được suôn sẻ, Rôbốt Trợ Giúp Loomio nghĩ rằng sẽ tốt hơn nếu cả nhóm bạn cùng tham gia vào một kỳ nghỉ nào đó. Biểu đồ phần trăm bên phải hiển thị cảm nhận từ lời đề nghị trong nhóm của bạn. Bạn có thể phát biểu bằng cách click vào một trong các nút đưa ra quyết định ở bên dưới.\n"
-  example_motion:
-    name: "Chúng ta có lẽ nên bàn thảo về một chuyến du lịch đến mặt trăng chẳng hạn!"
-    description: "Rôbốt Trợ Giúp Loomio sẵn sàng hỗ trợ nhóm của bạn một phần đầu tư về một chuyến đi lên mặt trăng. Chắc có lẽ nghe hơi kỳ kỳ. Nhưng mục tiêu của chúng ta là nhằm thảo luận về một đề tài nào đó.\nĐây có phải là một ý kiến tốt hay không? Rôbốt Trợ Giúp Loomio muốn biết bạn nghĩ gì về điều này!\nNếu bạn đã biết rõ kiến nghị của mình, hãy click vào một trong số các biểu tượng bên dưới (rê chuột qua nút quyết định để có được mô tả về mỗi đối tượng mà bạn muốn biết ý nghĩa của chúng).\nBạn sẽ được thông báo một phát biểu ngắn gọn về nguyên nhân đối với việc đưa ra quyết định của mình. Phần này hoàn toàn dễ dàng nhằm tóm lược thông tin về điều mọi người đang suy nghĩ cũng như lý do tại sao. Bạn có thể thay đổi suy nghĩ của mình và thậm chí là chỉnh sửa việc đưa ra quyết định theo cách tự do nhất có thể miễn là trước khi thời hạn dành cho lời đề nghị chưa bị đóng lại.\n"
   discussion_form:
     new:
       header: Bắt đầu một cuộc thảo luận

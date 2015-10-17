@@ -285,8 +285,10 @@ de:
     email: Deine eMail
     email_error: Keine gültige E-Mail-Adresse.
     group_name: Gruppenname
+    group_description: Gruppenbeschreibung
+    group_description_placeholder: "Beschreibe den Zweck Deiner Gruppe, damit Mitglieder wissen, warum sie mitmachen sollten."
     group_name_error: Gruppenname wird benötigt
-    pricing_html: "Nach 30 Tagen, wenn Du erlebt hast, wie Loomio die Entscheidungsprozesse in Deiner Gruppe verbessert hat, werden wir Dich bitten ein<a href='%{link}' target='_blank'>Vergütungsmodell</a> zu wählen, das Dir gefällt."
+    pricing_html: "In 30 Tagen werden wir Dich bitten ein <a href='%{link}' target='_blank'>Vertragsmodell</a> zu wählen."
     terms_html: "Sobald Du eine Gruppe gründest stimmst Du Loomio's <a href='%{link}' target='_blank'>Geschäftsbedingungen</a> zu."
     success:
       header: "Du bist fast fertig! Prüfe Deine eMails."
@@ -674,7 +676,7 @@ de:
     gift: Geschenk
     standard: Standard
     plus: Plus
-    free_trial_html: "Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Preisplan fragen. Es ist keine Kreditkarte notwendig."
+    free_trial_html: "Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Vertragsmodell fragen. Es ist keine Kreditkarte notwendig."
     get_started_for_free: Starte nun kostenlos
     gift_body_html: "<p>Für Gruppen, die kein Budget für ein Abonnement haben</p>\n<p>Spendenfinanziert, ohne Zahlungsverpflichtung.</p>\n"
     gift_donation_ask: Wir werden Deine Gruppenmitglieder um Spenden bitten.
@@ -763,7 +765,6 @@ de:
     invites_more_help2: "<p>Du kannst zu jeder Zeit Leute in deine Gruppe einladen.</p><p>Wenn Du magst, dann kannst Du alle Leute Deines Teams einladen oder nur die Leute, mit denen Du am engsten zusammenarbeitest.</p>"
     invitation_link: Link zur Einladung
     discussion_link: "An der Diskussion teilnehmen:"
-    link_help: "Klicke auf diesen Link um der %{group} auf Loomio beizutreten:"
     copy: "Wenn jemand den Link zur Einladung nicht erhalten hat, kopiere den oben angegebenen Link und schicke diesen selbst an den Empfänger."
     pending_invitations: Unbestätigte Einladungen
     no_pending_invitations: Im Moment gibt es keine unbestätigten Einladungen.
@@ -775,12 +776,6 @@ de:
     empty_search: Kein Suchtext
     please_enter_a_search: Bitte gib einen oder mehrere Begriffe in die Suchzeile ein
     no_match: Deine Suchanfrage erzielte keine Treffer
-  example_discussion:
-    title: "Beispieldiskussion: Willkommen und Einführung zu Loomio"
-    description: "Willkommen bei Loomio, einem neuen Werkzeug um Entscheidungen in Gruppen zu treffen.\nIndem ihr euch mit einem Thema beschäftigt, über verschiedene Aspekte und Informationen diskutiert und euch mit aufkommenden Zweifeln auseinander setzt, kann eure Gruppe den besten Weg nach vorne finden.\nIhr könnt diese Beispieldiskussion benutzen um mit den Möglichkeiten bei Loomio herumzuspielen.\nUm den Stein ins Rollen zu bringen, schlägt der Loomio Hilferoboter vor, zusammen Urlaub zu machen. Das Kuchendiagramm auf der rechten Seite zeigt, wie der Gruppe der Vorschlag gefällt. Du kannst deine Meinung äußern, indem du auf einen der Buttons unter dem Diagramm klickst.\n"
-  example_motion:
-    name: "Wir sollten Urlaub auf dem Mond machen!"
-    description: "Der Loomio Hilferoboter möchte euch überzeugen, in eine Reise zum Mond zu investieren. Anscheinend ist der Weltraumkäse sehr gut. Leider sind die Auswirkungen auf euren CO2-Fußabdruck besorgniserregend.\nIst das eine gute Idee? Der Loomio Hilferoboter möchte wissen, was Du darüber denkst!\nWenn Du Dir Deiner Meinung sicher bist, klicke auf eines der Symbole unten (lege den Mauszeiger über den Button um Dir eine Beschreibung anzusehen, was die einzelnen Buttons bedeuten).\nDu wirst dann aufgefordert werden, kurz anzugeben, warum Du diese Entscheidung getroffen. Das ergibt eine kurze Zusammenfassung davon, was jeder denkt und warum. Du kannst Dich noch umentscheiden und Deine Meinung bearbeiten bis der Vorschlag beendet wird.\n"
   contact_page:
     contact_us: Kontaktiere uns
     faq_prompt_html: "Du hast eine Frage an das Loomio Team? Bevor Du uns kontaktierst, prüfe, ob Du die Antwort in unseren meistgestellten Fragen (faq's) findest. "

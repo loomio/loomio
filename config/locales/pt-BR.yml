@@ -278,6 +278,11 @@ pt-BR:
       group_contributions: "Comentários, propostas e discussões feitas por você em grupos vão ficar, mas vamos retirar o seu nome destes."
       emails: Vamos parar de enviar-lhe e-mails relacionados ao Loomio.
   start_group_form:
+    enable_angular:
+      header: Início de novos grupos no Loomio 1.0
+      subtitle: "Para iniciar um novo grupo, você vai precisar mudar para a nova versão do Loomio:"
+      switch_to_angular: Iniciar um grupo no novo Loomio
+      helptext: "Nós reconstruímos o Loomio a partir do zero. Você pode ler sobre as novidades <a href=\"/angular\">aqui</a>.<br/>Você pode voltar para a versão antiga quando quiser."
     header: Iniciar um novo grupo
     form_error: Algumas informações estão ausentes ou incorretas.
     name: Seu nome
@@ -285,8 +290,10 @@ pt-BR:
     email: Seu e-mail
     email_error: Não é um endereço de e-mail válido
     group_name: Nome do grupo
+    group_description: Descrição do grupo
+    group_description_placeholder: Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.
     group_name_error: Nome do grupo é necessário
-    pricing_html: "Em 30 dias, quando você tiver visto como Loomio melhora a tomada de decisão do seu grupo, vamos pedir-lhe para escolher o <a href='%{link}' target='_blank'>plano de pagamento</a> que funciona para você."
+    pricing_html: "Em 30 dias, vamos pedir-lhe para escolher um <a href='%{link}' target='_blank'>plano de preços</a>."
     terms_html: "Ao iniciar um grupo, você concorda com os <a href='%{link}' target='_blank'>termos de serviço</a> do Loomio."
     success:
       header: "Você está quase lá! Verifique seu e-mail."
@@ -745,6 +752,7 @@ pt-BR:
     create_account_to_start_group: "Por favor, crie uma conta para começar o seu grupo %{group_name}"
     create_account: "Por favor, crie uma conta"
   invitation:
+    angular_warning_html: "<small> Qualquer um que aceitar seu convite vai usar a nova interface do Loomio: <a href=\"http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/\" target=\"_blank\">saiba mais</a>.</small>"
     alternate: "Ou compartilhe esse link e qualquer um poderá solicitar entrada:"
     by_email: Convidar por e-mail
     invitation_not_found: Não localizamos um convite com este código. Por favor peça um novo convite a quem lhe enviou da outra vez.
@@ -763,7 +771,8 @@ pt-BR:
     invites_more_help2: "<p>Você pode convidar pessoas do seu grupo a qualquer momento.</p><p>Talvez queira convidar todos os membros imediatamente, ou então começar convidando apenas as pessoas mais próximas a você.</p>"
     invitation_link: Link de convite
     discussion_link: "Participar da discussão:"
-    link_help: "Clique neste link para entrar em %{group} no Loomio:"
+    link_help: "Clique no link para se unir-se ao grupo %{group_name} e começar:"
+    thanks: "Obrigado,"
     copy: "Se alguém não receber o e-mail de convite, sinta-se à vontade para copiar o link de convite acima e mandar diretamente ao destinatário."
     pending_invitations: Convites pendentes
     no_pending_invitations: Não há novos convites pendentes
@@ -775,12 +784,19 @@ pt-BR:
     empty_search: Nada na busca
     please_enter_a_search: "Por favor, faça uma consulta na barra de busca acima"
     no_match: Nenhum resultado correspondente à sua consulta
-  example_discussion:
-    title: "Discussão de exemplo: Boas vindas e Introdução ao Loomio"
-    description: "Bem vinda/o ao Loomio, uma nova ferramenta para tomadas de decisão em grupo.\nAo se envolver com um assunto, discutir as várias perspectivas e informações, e lidar com as questões que surjam, o seu grupo pode trabalhar em conjunto para encontrar o melhor caminho para avançar.\nVocê pode usar esta discussão de exemplo para brincar com as funcionalidades da ferramenta.\nPara começar, o Robô de Ajuda do Loomio acredita que é uma ideia genial para o seu grupo que passem as férias juntos. O gráfico na direita mostra como o seu grupo se sente com relação à proposta. Você pode dar sua opinião clicando em qualquer um dos botões de decisão abaixo do gráfico.\n"
-  example_motion:
-    name: "Nós devíamos passar as férias na lua!"
-    description: "O Robô de Ajuda do Loomio está realmente afim que o seu grupo invista em uma viagem para a lua. Aparentemente o <i>queijo espacial</i> é delicioso. Mas as implicações para a sua pegada de carbono são preocupantes.\nSerá que é uma boa ideia? O Robô de Ajuda do Loomio quer saber o que você pensa sobre isso!\nSe você já tem clareza sobre sua posição, clique em um dos ícones abaixo (passe o mouse por cima dos botões de decisão para ver a descrição sobre cada um deles).\nAo clicar num dos botões, aparecerá uma oportunidade para você justificar brevemente a sua decisão. Isso faz com que seja fácil ver um resumo do que cada um pensa e o porque. Você pode mudar de ideia e editar a sua decisão livremente até que a proposta se encerre.\n"
+  introduction_thread:
+    title: "Bem-vindo ao %{group_name}"
+    description: "Por favor, tire um momento para se apresentar e compartilhar um pouco sobre como você se encaixa neste grupo de pessoas.\n\nSe você tem intenções claras para este grupo Loomio, você pode compartilhá-las aqui para que todos nós tenhamos uma idéia clara do que queremos alcançar juntos.\n"
+  how_it_works_thread:
+    title: Como Utilizar o Loomio
+    description: "Bem-vindo ao Loomio, um lugar online para tomar decisões em conjunto.\n\nEste é um exemplo de discussão. Você pode usar este espaço para explorar os recursos da ferramenta.\n\nAtualmente você está lendo o segmento «contexto». Normalmente você usaria esse espaço para fornecer informações básicas que o grupo precise para uma discussão produtiva. Esta seção pode ser atualizada à medida que a discussão avança.\n\nA seção 'proposta' é onde você toma decisões. Você pode iniciar e participar de propostas nesta seção.\n\nA seção 'atividade' contém todos os eventos que acontecem dentro do segmento. Quando as pessoas fazem comentários, atualizam o contexto de segmento, ou iniciam uma nova proposta, você vai vê-los nesta seção.\n"
+  first_comment:
+    body: "Oi pessoal, eu sou o Loomio Helper Bott.\n\nSe você quiser chamar a atenção de uma pessoa específica no seu grupo, tecle @ no campo de comentário, seguido do nome dela :)\n\nAqui estão algumas coisas que você pode querer tentar fazer para pôr as coisas em andamento:\n\n- Configure sua [profile photo](https://www.loomio.org/profile)\n- Configure seu [email settings](https://www.loomio.org/email_preferences)\n- Apresente-se ao grupo em [Welcome to %{group_name} thread](%{thread_url})\n\nSe você tem alguma dúvida, o primeiro lugar para verificar é o [Loomio help manual](http://help.loomio.org).\n"
+  first_proposal:
+    name: "Proposta demonstração: vamos lá!"
+    description: "Esta é a descrição da proposta. Você pode explicar o curso de ação proposto e dar detalhes suficientes para que todos possam tomar uma decisão bem informada.\n\nPara participar da proposta, você pode escolher uma das quatro opções:\n\n- Concordar: \"Eu concordo com isso e quero que siga em frente.\"\n\n- Abster-se: \"Estou feliz pelo grupo decidir sem mim.\"\n\n- Discordar: \"Eu acho que nós provavelmente podemos fazer melhor.\"\n\n- Bloquear: \"Eu tenho fortes objecções a esta proposta e não estou OK se ela seguir ir em frente.\"\n\nQuando você tiver escolhido uma das quatro opções, você será solicitado para uma breve declaração para explicar sua posição e porque você se sente dessa maneira. Você pode mudar sua posição a qualquer momento enquanto a proposta ainda está em aberto.\n"
+  first_vote:
+    statement: Entendo como propostas funcionam
   contact_page:
     contact_us: Contato
     faq_prompt_html: "Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta na nossa seção de perguntas frequentes."

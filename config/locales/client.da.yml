@@ -56,8 +56,6 @@ da:
     heading: Tidligere Forslag
   proposal_collapsed:
     expand: Fold ud
-  context_card:
-    heading: Kontekst
   volume_levels:
     loud: Høj
     normal: Normal

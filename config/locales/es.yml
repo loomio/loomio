@@ -286,7 +286,6 @@ es:
     email_error: No es una dirección de correo electrónico valida.
     group_name: Nombre del grupo
     group_name_error: "Se requiere el nombre del grupo. "
-    pricing_html: "En 30 días, cuando hayas visto cómo Loomio mejora la forma de organizarse de tu grupo, te pediremos que elijas la <a href='%{link}' target='_blank'>forma de pago</a> que consideres oportuna."
     terms_html: "Al empezar un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
     success:
       header: "¡Ya casi has terminado! Revisa tu correo electrónico. "
@@ -763,7 +762,6 @@ es:
     invites_more_help2: "<p>Puedes invitar a personas a tu grupo en cualquier momento.</p><p>Podrías invitar a todos los miembros del grupo de una sola vez, o puedes empezar invitando solo a los que trabajan contigo diariamente.</p>"
     invitation_link: Enlace a la invitación
     discussion_link: "Participa en la discusión:"
-    link_help: "Haz clic en este enlace para unirte a %{group} en loomio:"
     copy: "Si alguien no ha recibido la invitación electrónica, no dudes en copiar el enlace de arriba y enviarlo personalmente."
     pending_invitations: Invitaciones pendientes
     no_pending_invitations: "Actualmente, no hay invitaciones pendientes"
@@ -775,12 +773,6 @@ es:
     empty_search: Búsqueda vacía
     please_enter_a_search: "Por favor, introduce una consulta en la barra de búsqueda superior"
     no_match: No hubo resultados que coincidan con tu consulta
-  example_discussion:
-    title: "Discusión de ejemplo: Bienvenida e introducción a Loomio"
-    description: "Bienvenidos a Loomio, una herramienta para la toma de decisiones en grupo.⏎ \nAl participar en un tema, discutiendo diferentes puntos de vista e información, haciendo frente a cualquier problema que se presente, tu grupo puede juntarse  y encontrar el mejor camino a seguir. ⏎\nPuedes utilizar la discusión de ejemplo y jugar con las de la herramienta. ⏎\n"
-  example_motion:
-    name: "¡Deberíamos irnos de vacaciones a la luna!"
-    description: "Loomio Helper Bot está muy interesado en que tu grupo invierta en un viaje a la luna. Al parecer, el espacio queso es delicioso. Pero las implicaciones por la huella de carbono son preocupantes. ⏎\n¿Es una buena idea? Loomio Helper Bot quiere saber lo que piensas! ⏎\nSi estás convencido de tu posición, haz clic en uno de los iconos de abajo (pulsa el cursor sobre los botones de decisiones para una descripción de lo que cada uno de ellos significa). ⏎\nSe te pedirá que realices una breve declaración sobre la razón de tu decisión. Esto hace que sea fácil de ver en forma de resumen de lo que todos piensan y por qué. Puedes cambiar de opinión y editar tu decisión libremente hasta que la propuesta se cierra. ⏎ \n"
   contact_page:
     contact_us: Contáctanos
     faq_prompt_html: "Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes."

@@ -37,8 +37,6 @@ sl:
   proposal_outcome_form:
     outcome_label: Izid predloga
     publish_outcome: Objavi izid
-  context_card:
-    heading: Opis
   volume_levels:
     loud: Glasno
     normal: Normalno

@@ -14,8 +14,6 @@ ar:
     forbidden: ليس لديك صلاحية للقيام بذلك.
   proposal_outcome_panel:
     heading: النتيجة
-  context_card:
-    heading: سياق النقاش
   comment_form:
     delete_comment: احذف التعليق
     confirm_delete_message: هل أنت متأكد من أنك تريد حذف هذا التعليق؟

@@ -32,8 +32,6 @@ tr:
   proposal_outcome_form:
     outcome_label: Öneri sonucu
     publish_outcome: Sonuç yayınla
-  context_card:
-    heading: İçerik
   volume_levels:
     normal: Normal
   inbox:
@@ -133,7 +131,6 @@ tr:
     options_label: Seçenekler
     options:
       label: Seçenekler
-      leave_group: Gruptan Ayrıl
     leave_group:
       title: Gruptan ayrıl
       submit: "Evet, bu gruptan ayrıl"

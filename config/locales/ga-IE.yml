@@ -413,8 +413,6 @@ ga-IE:
     empty_search: Cuardach folamh
     please_enter_a_search: Cuir aon cheist sa bharra cuardach thuas
     no_match: Ní raibh aon torthaí beachta ar do cheist
-  example_motion:
-    name: "Ba chóir dúinn saoire a ghlacadh ar an ngealach!"
   contact_page:
     contact_us: Déan teagmháil linn
     contact_form: An fhoirm teagmhála

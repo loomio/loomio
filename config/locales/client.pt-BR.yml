@@ -21,6 +21,7 @@ pt-BR:
       thisweek: Esta Semana
       thismonth: Este Mês
       older: Antigos
+    more_help: Mais ajuda
     models:
       proposal: Proposta
     action:
@@ -46,7 +47,7 @@ pt-BR:
     internal_server_error: "Lamentamos, mas algo deu errado. Por favor, tente novamente."
   start_proposal_card:
     title: Iniciar uma proposta
-    helptext: Pronto para tomar uma decisão? Propostas permitem que você veja como todos se sentem sobre um curso particular de ação.
+    helptext: Pronto para tomar uma decisão?
   proposal_outcome_panel:
     heading: Resultado
     set_outcome_hint: Utilize este espaço para que todos saibam o resultado da proposta.
@@ -63,15 +64,17 @@ pt-BR:
       updated: Resultado atualizado
   previous_proposals_card:
     heading: Propostas anteriores
+  previous_proposals_page:
+    heading: Propostas anteriores
   proposal_collapsed:
     expand: Expandir
-  context_card:
-    heading: Contexto
+    outcome: "Resultado: {{outcome}}"
   volume_levels:
     loud: Alto
     normal: Normal
     quiet: Quieto
     mute: Mudo
+    unmute: Com som
   inbox:
     clear: Limpar
     latest: Último
@@ -100,6 +103,8 @@ pt-BR:
     in_reply_to: "Em resposta a <strong>{{name}}</strong>:"
     submit_button:
       label: Postagem
+    private_privacy_notice: "Seu comentário será visível apenas para os membros de {{groupName}}."
+    public_privacy_notice: Seu comentário será visível para qualquer pessoa na web
   navbar:
     recent: Recente
     unread: Não lida
@@ -109,6 +114,7 @@ pt-BR:
     groups_title: Ver seus grupos
     start_thread: Iniciar um novo tópico
     notifications: Painel de notificações
+    user_actions: Ações dos usuários
     user_options:
       label: Opçoes de usuário
       contact_us: Contato
@@ -224,7 +230,7 @@ pt-BR:
     privacy:
       will_be_private_to_group: "A discussão será visível apenas para os membros de {{groupName}}."
       will_be_private_to_parent_group: "A discussão será visível para os membros de {{parentGroupName}} e membros de {{groupName}}."
-      will_be_public: Qualquer pessoa pode ver o tópico.
+      will_be_public: "Qualquer um pode ver o tópico. Apenas membros de {{groupName}} podem participar."
     new_discussion_submit: Iniciar tópico
     edit_discussion_submit: Atualizar tópico
   proposal_expanded:
@@ -261,8 +267,10 @@ pt-BR:
     heading: Iniciar um grupo
     heading_when_subgroup: Iniciar um subgrupo
     group_helptext: "Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:"
-    group_payment_reminder: "Em 30 dias, quando você ver como Loomio melhora a tomada de decisão do seu grupo, vamos pedir-lhe para escolher o <a href='#'>plano de pagamento</a> que seja melhor pra você."
-    name_label: Nome do Grupo
+    group_payment_reminder: "Em 30 dias, vamos pedir-lhe para escolher um <a href='https://www.loomio.org/pricing' target='blank'>plano de preço</a>."
+    name_label: Nome do grupo
+    description_label: Descrição do grupo
+    description_placeholder: Descreva o propósito do seu grupo para que os membros saibam a razão de estarem aqui.
     subgroup_name_label: Nome do subgrupo
     submit: Iniciar Grupo
     messages:
@@ -318,7 +326,9 @@ pt-BR:
     options:
       label: Opções
       edit_group: Editar Configurações do Grupo
-      manage_members: Gerenciar membros
+      manage_members: Gerenciar Membros
+      add_subgroup: Adicionar Subgrupo
+      manage_subscription: "Gerenciar Inscrições do Grupo "
       leave_group: Sair do Grupo
       deactivate_group: Desativar Grupo
     deactivate_group:
@@ -334,17 +344,64 @@ pt-BR:
     volume:
       loud: Enviar e-mail sempre que houver atividade.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Você receberá um e-mail sempre que houver atividade.
+      loud_message: "Você receberá um e-mail sobre todas as atividades em \"{{name}}.\""
       normal: "Enviar apenas e-mails de atividades importantes: Novos tópicos e propostas, resultados etc."
       normal_aria_description: "O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando houver atividades importantes, como quando alguém inicia um novo tópico, faz uma proposta ou define um resultado."
+      normal_message: "Você só receberá e-mail sobre eventos importantes em \"{{name}}\"."
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       quiet_aria_description: O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo. Eles serão mostradas no seu Painel.
+      quiet_message: "Você não receberá e-mail sobre as atividades em \"{{name}}\"."
       mute: "Esconder este grupo do painel e não notificar a não ser quando @mencionado."
       mute_aria_description: "O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel."
-      updated: Volume do grupo atualizado
+      mute_message: "\"{{name}}\" foi removido do seu painel."
     privacy:
       private: "Privacidade: Este grupo é visível apenas para membros"
       parent_members: "Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}"
       public: "Privacidade: Este grupo é visível na web"
+  confirm_gift_plan_modal:
+    heading: Plano Presente selecionado
+    body: "Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária."
+    got_it: "Ok, entendi!"
+  gift_card:
+    heading: Plano Presente
+    body: "<strong>{{name}}</strong> é um grupo suportado por presente. Se você gostaria de ajudar o Loomio a alcançar a nossa missão, clique neste botão:"
+    make_a_contribution: Faça uma contribuição
+  trial_card:
+    title: Teste de 30 dias
+    choose_plan: Escolha seu plano de pagamento
+    in_progress_body: "Obrigado por testar o Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de pagamento que funcione para você a qualquer momento."
+    expired_body_html: "<strong>{{name}}</strong> já atingiu o fim do seu teste no Loomio. Se você gostaria de continuar a usá-lo, precisa escolher um plano de pagamento que lhe caiba. Se você quizer falar com alguém sobre isso, basta <a href=''>entre em contato</a>."
+  choose_plan_modal:
+    heading: Escolha seu plano de pagamento
+    overdue_heading: "Para continuar a utilizar o Loomio, por favor, escolha um plano de pagamento"
+    gift: Presente
+    standard: Padrão
+    plus: Plus
+    free_trial_html: "Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito."
+    get_started_for_free: Comece de graça
+    gift_body_html: "<p>Para os grupos que não têm orçamento para pagar uma assinatura.</p>\n<p>Suporte para doações, sem exigência de pagamento.</p>\n"
+    support_before: Estou feliz por
+    support_link: falar com você
+    support_after: "sobre como estender o seu teste, ou com quaisquer outras perguntas você pode ter."
+    remind_me_later: Lembrar-me mais tarde
+    gift_donation_ask: Vamos pedir aos membros do seu grupo por uma doação.
+    unlimited_members: membros ilimitados
+    unlimited_decisions: decisões ilimitadas
+    email_support: suporte por e-mail
+    standard_price_html: "<strong>U$19</strong>/mês<br><span>ou</span> U$190/ano\n"
+    plus_body: "Tudo do Padrão, mais:"
+    premium_support: suporte premium
+    custom_url: URL personalizada
+    usage_statistics: estatísticas de uso
+    plus_price_html: "<strong>U$179</strong>/mês<br><span>ou</span> U$1790/ano\n"
+    select: Selecione
+  subscription_success_modal:
+    heading: "Obrigado por configurar sua inscrição!"
+    social_mission: "A sua contribuição nos ajuda a cumprir nossa missão social: tornar mais fácil para qualquer um, em qualquer lugar, participar de decisões que os afetam."
+    receipt: "Se você quiser alterar ou cancelar a sua assinatura, ou se você tiver quaisquer outras consultas,"
+    contact_link: "por favor, entre em contato conosco"
+    sign_off: ❤ da equipe Loomio
+    ok_got_it: "Ok, entendi!"
   edit_group_form:
     title: Editar Configurações do Grupo
     profile:
@@ -383,7 +440,8 @@ pt-BR:
       success: Grupo atualizado
   membership_requests_card:
     heading: Pedidos para inclusão de membros
-    manage_requests: "Gerenciar pedidos ({{count}})"
+    manage_requests: Gerenciar solicitações
+    manage_requests_with_count: "Gerenciar solicitações ({{count}})"
   group_help_card:
     title: Ajuda
     ten_tips_article_title: 10 dicas para fazer grandes decisões com Loomio
@@ -399,6 +457,9 @@ pt-BR:
     messages:
       request_approved_success: Inclusão de membro aprovada
       request_ignored_success: Solicitação de inclusão de membro ignorada
+  group_previous_proposals_card:
+    heading: Propostas anteriores
+    see_more: Veja mais
   group_form:
     messages:
       new_group: Grupo criado
@@ -576,21 +637,21 @@ pt-BR:
     volume:
       loud: Enviar e-mail sempre que houver atividade neste tópico.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Isso significa que você receberá um e-mail sempre que houver atividade neste tópico.
+      loud_message: "Você receberá um e-mail sobre todas as atividades em \"{{name}}\""
       normal: "Apenas enviar e-mail quando uma proposta for criada, estiver perto do encerramento ou um resultado for publicado."
       normal_aria_description: "O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando uma proposta for criada, estiver perto de encerrar ou um resultado for definido."
+      normal_message: "Você só receberá e-mails com eventos importantes de \"{{name}}\"."
       quiet: Não enviar e-mails sobre este tópico.
       quiet_aria_description: "O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo, a não ser que mencionem você."
+      quiet_message: "Você não receberá e-mails sobre \"{{name}}\" a não ser que alguém mencione você."
       mute: "Esconder este tópico do painel e não notificar a não ser quando @mencionado."
       mute_aria_description: "O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail sobre este tópico, a não ser que mencionem você, e este tópico será removido do seu painel"
-      updated: Volume do tópico atualizado.
+      mute_message: "\"{{name}}\" foi removido do seu painel."
   thread_group:
     aria_label: Nome do grupo
   thread_context:
     aria_label: Contexto do tópico
     thread_options: Opções do tópico
-    edit_thread: Editar tópico
-    move_thread: Mover tópico
-    delete_thread: Apagar tópico
   delete_thread_form:
     title: Apagar tópico
     body: Você tem certeza de que deseja apagar este tópico?
@@ -631,7 +692,7 @@ pt-BR:
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>"
   proposal_closed_item:
-    proposal_closed: "A proposta foi encerrada:"
+    proposal_closed: "A proposta foi encerrada: <span>{{title}}</span>"
   proposal_closed_by_user_item:
     proposal_closed_by_user: "<strong>{{actor}}</strong> fechou a proposta: <span>{{title}}</span>"
   proposal_edited_item:

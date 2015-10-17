@@ -26,8 +26,6 @@ sr-RS:
   proposal_outcome_form:
     outcome_label: Исход предлога
     publish_outcome: Објави исход
-  context_card:
-    heading: Контекст
   volume_levels:
     loud: Гласно
     normal: Нормално

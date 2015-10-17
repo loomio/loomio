@@ -756,7 +756,6 @@ ro:
     invites_more_help2: "<p> Poti invita oameni la grup in orice moment.</p><p> Poti sa-i inviti pe toti deodata, sau poti sa-i adaugi doar pe cei cu care lucrezi mai des.</p>"
     invitation_link: Linkul invitatiei
     discussion_link: "Participa la discutie:"
-    link_help: "Apasa acest link pentru a intra in %{group} pe Loomio:"
     copy: "Daca cineva nu a primit emailul cu invitatia, poti sa copiezi linkul invitatiei de mai sus si sa-l trimiti personal."
     pending_invitations: Invitatii fara raspuns
     no_pending_invitations: Nu sunt invitatii fara raspuns.
@@ -768,12 +767,6 @@ ro:
     empty_search: Cautarea nu  dat nici un raspuns.
     please_enter_a_search: Te rugam sa introduci o interogare in bara de cautare de mai sus
     no_match: Nu exista rezultate care se potrivesc interogarii
-  example_discussion:
-    title: "Discutie Exemplu: Bine ai venit si Introducere pentru Loomio"
-    description: "Bine ai venit in Loomio, un nou instrument pentru adoptarea de decizii colaborative.\nImplicandu-te intr-o tema, discutand diverse perspective si informatii, si discutand toate aspectele care apar, grupul tau poate sa reuseasca sa ajunga la cea mai buna cale de a progresa.\nPoti folosi aceasta discutie-exemplu pentru a te juca cu functiile acestui instrument.\nPentru inceput, Ajutorul Loomio crede ca ar fi o idee minunanta ca grupul tau sa mearga intr-o vacanta impreuna. Graficul din partea dreapta arata ce crede grupul tau despre aceasta propunere. Poti sa-ti spui parerea si tu apasand pe unul din butoanele de decizie de dedesubt. \n"
-  example_motion:
-    name: "Ar trebui sa avem o vacanta pe luna!"
-    description: "Echipa de intretinere Loomio asteapta cu nerabdare ca grupul tau sa investeasca intr-o excursie pe Luna. Se pare ca branza din spatiu este delicioasa. Dar implicatiile pentru mediu ale excursiei sunt un motiv de ingrijorare.\nE o idee buna? Ajutorul Loomio vrea sa stie ce crezi!\nDaca stii ce vrei, apasa pe unul din butoanele de mai jos (poti sa mergi cu mouse-ul deasupra lor pentru o descriere a fiecaruia)\nVei fi invitat sa adaugi o propozitie scurta continand motivul deciziei tale. Aceasta usureaza intelegerea rapida a ce doreste fiecare si de ce. Poti sa-ti schimbi parerea si sa-ti modifici decizia de cate ori vrei pana cand propunerea este inchisa.\n"
   contact_page:
     contact_us: Contacteaza-ne
     faq_prompt_html: "Ai o intrebare pentru echipa Loomio? Inainte de a ne contacta, poate vei gasi raspunsul in Intrebari Frecvente."

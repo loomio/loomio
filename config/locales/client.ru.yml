@@ -42,7 +42,6 @@ ru:
     internal_server_error: "Извините, что-то не так. Попробуйте снова."
   start_proposal_card:
     title: Создать голосование
-    helptext: Готовы принять решение? Голосование поможет вам определиться с дальнейшими действиями.
   proposal_outcome_panel:
     heading: Итог
     set_outcome_btn: Подвести итоги голосования
@@ -60,8 +59,6 @@ ru:
     heading: Предыдущие голосования
   proposal_collapsed:
     expand: Расширить
-  context_card:
-    heading: Описание
   volume_levels:
     loud: Заметный
     normal: Нормальный

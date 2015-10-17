@@ -25,8 +25,6 @@ sk:
   proposal_outcome_form:
     outcome_label: Výsledok návrhu
     publish_outcome: Publikovať výsledok
-  context_card:
-    heading: Kontext
   inbox:
     clear: Vyčistiť
     unread: Neprečítané

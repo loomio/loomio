@@ -594,7 +594,6 @@ cs:
     invites_more_help2: "<p>Do této skupiny můžete kdykoliv pozvat lidi.</p><p>Možná chcete rovnou pozvat všechny členy, nebo můžete začít pozváním jen těch, s kterými pracujete nejvíce.</p>"
     invitation_link: Odkaz na pozvánku
     discussion_link: "Zapojte se do diskuze:"
-    link_help: "Kilkněte sem, abyste se přidali k %{group} na Loomiu:"
     copy: "Pokud někdo neobdržel svou pozvánku, neváhejte zkopírovat odkaz na pozvánku výše a poskytnout jej příjemci."
     pending_invitations: Nevyřízené pozvánky
     no_pending_invitations: Nemáte zatím žádné nevyřízené pozvánky
@@ -605,10 +604,6 @@ cs:
     empty_search: Prázdné vyhledávání
     please_enter_a_search: Prosím zadejte výraz do vyhledávacího pole výše
     no_match: Žádné výsledky neodpovídali vašemu výrazu
-  example_discussion:
-    title: "Ukázková diskuze: Úvítání a úvod do Loomio"
-  example_motion:
-    name: "Měli bychom mít dovolenou na měsíci!"
   contact_page:
     contact_us: Kontaktujte nás
     labels:

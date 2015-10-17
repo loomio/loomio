@@ -51,8 +51,6 @@ hu:
       created: Javaslat közzétéve
   previous_proposals_card:
     heading: Előző javaslatok
-  context_card:
-    heading: Leírás
   volume_levels:
     loud: Hangos
     normal: Normál
