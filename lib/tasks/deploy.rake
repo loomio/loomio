@@ -74,7 +74,6 @@ namespace :deploy do
     setup_heroku
     setup_git_remote(remote)
 
-    setup_git_remote_and_heroku(remote, branch)
     (remote != 'loomio-production' || bump_version_and_push_origin_master) &&
     build_and_push_branch(remote, branch) &&
     heroku_migrate_and_restart(remote)
