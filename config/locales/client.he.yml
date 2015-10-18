@@ -24,8 +24,6 @@ he:
     heading: תוצאה
   proposal_outcome_form:
     outcome_label: תוצאת ההצעה
-  context_card:
-    heading: הקשר
   inbox:
     clear: נקה/י
     unread: לא-נקרא

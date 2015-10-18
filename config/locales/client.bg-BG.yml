@@ -14,8 +14,6 @@ bg-BG:
     forbidden: Нямате права да правите това.
   proposal_outcome_panel:
     heading: Резултат
-  context_card:
-    heading: Контекст
   comment_form:
     delete_comment: Изтрий коментар
     confirm_delete_message: "Сигурни ли сте, че искате да изтриете този коментар?"

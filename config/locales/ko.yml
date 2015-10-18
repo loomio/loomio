@@ -448,7 +448,6 @@ ko:
     invites_more_help2: "<p>언제든지 여러분의 그룹에 초대를 할 수 있습니다.</p><p> 아마도 모든 멤버를 바로 초대하기를 원하거나 가장 가깝게 일하고 있는 분들 부터 초대를 시작할 수 있습니다.</p>"
     invitation_link: 초대 링크
     discussion_link: 토론에 참여하기
-    link_help: "이 링크를 클릭하면 루미도 %{group} 그룹에 가입됩니다. "
     copy: "초대 이메일을 받지 못한 경우, 위의 초대 링크를 복사해서 전달해도 괜찮습니다."
     pending_invitations: 보류중인 초대
     no_pending_invitations: 보류중인 초대가 없습니다.
@@ -459,8 +458,6 @@ ko:
     empty_search: 검색결과가 없습니다.
     please_enter_a_search: 검색어를 검색창에 입력해 주세요.
     no_match: 검색어와 일치하는 검색결과가 없습니다.
-  example_discussion:
-    title: "토론 예시 : 루미오 소개에 오신것을 환영합니다."
   contact_page:
     labels:
       name: 이름

@@ -30,8 +30,6 @@ be-BY:
   proposal_outcome_form:
     outcome_label: Вынік прапановы
     publish_outcome: Апублікаваць вынік
-  context_card:
-    heading: Апісанне
   volume_levels:
     loud: Гучна
     normal: Нармальна

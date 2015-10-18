@@ -727,7 +727,6 @@ hu:
     invites_more_help2: "<p>Bármikor meghívhatsz résztvevőket a csoportba</p><p>Meghívhatsz most mindenkit egyszerre, vagy kezdheted azokkal, akikkel a legszorosabban dolgozol együtt.</p>"
     invitation_link: Meghívó link
     discussion_link: "Részt vesz a megbeszélésen:"
-    link_help: "Kattints erre a linkre, hogy csatlakozz a(z) %{group} csoporthoz a Loomión:"
     copy: "Ha valaki nem kapta meg a meghívóját, nyugodtan küld el neki a meghívó linket magad."
     pending_invitations: Függőben levő meghívók
     no_pending_invitations: Nincs függőben levő meghívó.
@@ -739,12 +738,6 @@ hu:
     empty_search: Eredménytelen
     please_enter_a_search: Írj be egy kérdést az alábbi kereső mezőbe
     no_match: Nem találtunk választ erre a kérdésre
-  example_discussion:
-    title: "Példa téma: Üdvözlet és bevezetés a Loomióba"
-    description: "Üdvözöl a Loomio az új döntéshozó-rendszer.\n\nHa megtárgyaltok egy témát, körbejárjátok a felvetülő kérdéseket és meghallgatjátok mindenki véleményét, közösen telálhatják meg a legjobb döntéseket.\n\nEzt a példa témát használhatod arra, hogy kipróbáld a Loomio lehetőségeit.\n\nHogy lásd miről is van szó, a Loomio Segéd felvetette, hogy nyaraljunk együtt. A jobboldali kördiagramon láthatod, hogy mit gondol erről a csoport. Te is hozzájárulhatsz a döntéshez ha valamelyik álláspont gombra kattintasz.\n"
-  example_motion:
-    name: "Menjünk nyaralni a Holdra!"
-    description: "Loomio Segéd nagyon szeretné együtt nyaraljunk a Holdon. Szó se róla, nagy kaland lenne. De vajon, mekkora lenne a környezeti terhelés egy ilyen út miatt?\n\nJó ötlet? Loomio Segéd szeretné tudni a te véleményedet is!\n\nHa tudod már, hogy mi az álláspontod, kattints valamelyik ikonra (ha az ikon fölé viszed az egeret, elolvashatod, mit is jelent az az álláspont).\n\nlehetőséged van arra is, hogy megindokold a választásodat, így könnyen átlátható, hogy ki mit és miért gondol a javaslatról. A javaslat lezárulta előtt még lehetőséged van változtatni az álláspontodon.\n"
   contact_page:
     contact_us: Értesíts minket
     labels:

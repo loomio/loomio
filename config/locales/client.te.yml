@@ -12,8 +12,6 @@ te:
       like: ఇష్టం
       unlike: అయిష్టం
       cancel: రద్దుచేయి
-  context_card:
-    heading: సందర్భం
   comment_form:
     delete_comment: వ్యాఖ్యను తొలగించు
   navbar:

@@ -22,8 +22,6 @@ gl:
     forbidden: Non tes permisos para facer iso.
   proposal_outcome_panel:
     heading: Resultado
-  context_card:
-    heading: Contexto
   inbox:
     clear: Eliminar
     unread: Sin ler

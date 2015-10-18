@@ -299,8 +299,8 @@ sr:
     email: Tvoja ePošta
     email_error: Neispravna adresa ePošte
     group_name: Naziv grupe
+    group_description: Opis grupe
     group_name_error: Naziv grupe je neophodan
-    pricing_html: "Za 30 dana, kada vidite kako Loomio pomaže grupnom donošenju odluka, pitaćemo Vas da odaberete <a href='%{link}' target='_blank'>plan plaćanja</a> koji je primeren za Vas."
     terms_html: "Pokretanjem grupe, slažete se sa Loomio <a href='%{link}' target='_blank'>pravilima korišćenja</a>."
     success:
       header: "Još malo pa gotovo! Proverite ePoštu."
@@ -777,7 +777,6 @@ sr:
     invites_more_help2: "<p>Bilo kada možeš pozvati ljude u svoju grupu.</p><p>Možeš poželeti da pozoveš sve svoje članove odmah ili pak možeš početi pozivanjem samo onih sa kojima najtesnije sarađuješ.</p>"
     invitation_link: Link do pozivnice
     discussion_link: "Učestvujete u diskusiji:"
-    link_help: "Škljocni na ovaj link da se priključiš %{group} na Lumiju:"
     copy: "Ako neko nije dobio svoju pozivnicu, budite slobodni da kopirate pozivni link iznad i da ga prosledite lično primaocu."
     pending_invitations: Pozivi u toku
     no_pending_invitations: Ovde trenutno nema pozivnica na čekanju.
@@ -789,12 +788,6 @@ sr:
     empty_search: Prazna pretraga
     please_enter_a_search: Molim unesite upit u polje pretrage iznad
     no_match: Nema rezultata koji odgovaraju vašem upitu
-  example_discussion:
-    title: "Primer Diskusije: Dobrodošli i upoznavanje sa Lumiom"
-    description: "Dobrodošli na Lumio, nov alat za grupno donošenje odluka.\nAngažovanjem u temama, diskutovanjem o različitim perspektivama i informacijama i iznošenjem bilo kakvih zabrinutosti koje se javljaju, Vaša grupa može spojiti razmišljanja da pronađe najbolji put napred.\nMožete koristite ovaj primer diskusije i poigrati se mogućnostima alata. \nDa se​​ lopta zakotrlja, Lumio Bot Pomoćnik misli da bi bila dobra ideja za vašu grupu da uzme zajednički odmor. Grafikon sa desne strane pokazuje kako se vaša grupa oseća o tom predlogu . Možete imati svoju reč tako što ćete izneti svoj stav o ovom predlogu, odabirom neke od opcija koje vidite ispod grafika koji predstavlja rezultat stava članova grupe.\n"
-  example_motion:
-    name: "Trebalo bi da jedan godišnji odmor provedemo na Mesecu!"
-    description: "Lumio Pomoćni Bot je zaista oduševljen odlukom vaše grupe da investira u putovanje na mesec. Očigledno je svemirski sir veoma ukusan. Ali, Vaši problemi sa emisijom ugljen-dioksida su zabrinjavajući.\nDa li je to dobra ideja? Lumio Pomoćni Bot želi da zna šta mislite!\nUkoliko ste sigurni u svoj stav, pritisnite jednu od ikonica ispod (ako vam je neophodno objašnjenje značenja ikona, jednostavno prevucite miša preko željene opcije i sačekajte malo da vidite opis koji će se pojaviti).\nBiće vam zatraženo da napišete kratko obrazloženje Vaše odluke. Ovo olakšava da se stekne uvid u to šta svako misli i zašto. Možete se slobodno predomisliti i izmeniti svoju odluku u vremenskom okviru koji je određen trajanjem predloga.\n"
   contact_page:
     contact_us: Kontaktirajte nas
     faq_prompt_html: "Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima."

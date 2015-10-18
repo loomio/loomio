@@ -25,8 +25,6 @@ uk:
   proposal_outcome_form:
     outcome_label: Результат пропозиції
     publish_outcome: Опублікувати результат
-  context_card:
-    heading: Контекст
   inbox:
     clear: Очистити
     unread: Непрочитані

@@ -678,7 +678,6 @@ sk:
     invites_more_help2: "<p>Do tejto skupiny môžete kedykoľvek pozvať ľudí.</p><p>Možno chcete priamo pozvať všetkých členov, alebo môžte začať pozvaním len tých, s ktorými pracujete najviac.</p>"
     invitation_link: Odkaz na pozvánku
     discussion_link: "Zapojte sa do diskusie:"
-    link_help: "Kliknite sem, aby ste sa pridali k %{group} na Loomiu:"
     copy: "Pokiaľ niekto neobdržal svoju pozvánku, neváhajte skopírovať odkaz na pozvánku vyššie a poskytnúť ju príjemcovi."
     pending_invitations: Nevybavené pozvánky
     no_pending_invitations: Nemáte zatiaľ žiadne nevybavené pozvánky
@@ -690,12 +689,6 @@ sk:
     empty_search: Prázdna vyhľadávanie
     please_enter_a_search: Prosím zadajte výraz do vyhľadávacieho poľa
     no_match: Žiadne výsledky neobsahujú výraz ktorý ste uviedli
-  example_discussion:
-    title: "Ukážková diskusia: Privítanie a úvod do Loomio"
-    description: "Vitajte v aplikácii Loomio, nástroji na dosahovanie kolektívnych rozhodnutí.\nÚčasťou na diskusiách o témach ktoré zvolíte sa prostredníctvom rozličných pohľadov \nna daný problém dopracujete k riešeniam vyhovujúcich väčšine členov skupiny.\nNasledovný príklad vám umožní pochopiť ako Loomio používať.\nLoomio robot-pomocník si myslí, že by bolo skvelé zorganizovať skupinovú dovolenku. \nGraf napravo prezentuje súčasný postoj skupiny ako celku na daný návrh. \nSvoj vlastný postoj môžte vyjadriť kliknutím na hlasovacie tlačidlá pod ním.\n"
-  example_motion:
-    name: "Mali by sme dostať dovolenku na mesiaci!"
-    description: "Loomio robot-pomocník navrhuj investovať do výletu na Mesiac - vraj tam majú skvelý vesmírny syr. Veľkosť karbónovej stopy, ktorá by takýto výlet sprevádzala je však problémom. Je tento návrh \npre vás prijateľný? Pomôžte Loomio robotovi-pomocníkovi v rozhodovaní!\nPo stlačení hlasovacieho tlačidla (položte kurzor nad tlačidlo aby ste sa dozvedeli jeho význam) \npodľa vašej voľby budete môcť poskytnúť opis dôvodu pre vašu voľbu. Takto sa \nväčšina hlasujúcich môže rychlo dozvedieť postoje ostatných, ako aj ich\nzdôvodnenie. Svoje postoje môžte kedykoľvek zmeniť, pokiaľ návrh ostáva otvorený.\n"
   contact_page:
     contact_us: Kontaktujte nás
     labels:

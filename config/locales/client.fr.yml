@@ -42,7 +42,6 @@ fr:
     internal_server_error: "Nous sommes désolé mais quelque chose s'est mal passé. Veuillez essayer à nouveau."
   start_proposal_card:
     title: Lancer une proposition
-    helptext: Prêt à prendre une décision ? Les propositions vous laissent voir comment chacun ressent une action particulière.
   proposal_outcome_panel:
     heading: Résultat
     set_outcome_hint: Utilisez cet espace pour faire connaître les conséquences de cette proposition.
@@ -53,8 +52,6 @@ fr:
     heading: Proposition précédente
   proposal_collapsed:
     expand: Étendre
-  context_card:
-    heading: Contexte
   volume_levels:
     loud: Élevé
     normal: Normal
@@ -139,7 +136,6 @@ fr:
     close_proposal: Fermer la proposition
   start_group_form:
     heading: Créer un groupe
-    name_label: Nom du groupe
   join_group_button:
     join_group: Rejoindre le groupe
     ask_to_join_group: Demander à rejoindre le groupe
@@ -163,7 +159,6 @@ fr:
     options_label: Options
     options:
       label: Options
-      leave_group: Quitter le groupe
     leave_group:
       title: Quitter le groupe
     volume:

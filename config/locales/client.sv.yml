@@ -22,8 +22,6 @@ sv:
   proposal_outcome_form:
     outcome_label: Resultat av förslaget
     publish_outcome: publicera status
-  context_card:
-    heading: Kontext
   inbox:
     clear: Klar
     unread: Olästa

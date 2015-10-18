@@ -1,5 +1,6 @@
 lt:
   common:
+    confirm_discard_changes: Atmesti tavo pakeitimus?
     time:
       am: am
       pm: pm
@@ -39,8 +40,6 @@ lt:
     heading: Ankstesni Pasiūlymai
   proposal_collapsed:
     expand: Išskleisti
-  context_card:
-    heading: Kontekstas
   volume_levels:
     loud: Garsus
     normal: Normalus
@@ -74,7 +73,9 @@ lt:
     groups_title: Žiūrėti savo grupes
     start_thread: Kurti naują giją
     notifications: Pranešimų skydelis
+    user_actions: Naudotojo veiksmai
     user_options:
+      label: Naudotojo parinktys
       contact_us: Susisiekti su mumis
       new_thread: Nauja gija
       new_group: Nauja grupė
@@ -83,6 +84,7 @@ lt:
       help: Pagalba
       sign_out: Atsijungti
     search:
+      no_results: Gijų nerasta
       loading: Įkeliami rezultatai...
       discussions: Gijos
       proposals: Pasiūlymai
@@ -138,7 +140,6 @@ lt:
     privacy_label: Privatumas
     privacy:
       will_be_private_to_group: "Gija bus matoma tik {{groupName}} grupės nariams."
-      will_be_public: Bet kas gali matyti šią giją.
     new_discussion_submit: Kurti giją
   proposal_expanded:
     collapse: Suskleisti
@@ -149,8 +150,10 @@ lt:
   group_welcome_modal:
     heading: Sveikiname atvykus į savo naują grupę
     ok_got_it: "Gerai, supratau!"
-  start_group_form:
-    name_label: Grupės Pavadinimas
+  group_cover_modal:
+    image_size_helptext: Tobulas paveikslo dydis yra 1400 x 320tšk
+  group_logo_modal:
+    image_size_helptext: Tobulas paveikslo dydis yra 100 x 100tšk
   join_group_button:
     messages:
       joined_group: "Dabar tu esi {{group}} grupės narys"
@@ -182,9 +185,6 @@ lt:
     options_label: Parinktys
     options:
       label: Parinktys
-      edit_group: Redaguoti Grupės Nustatymus
-      leave_group: Palikti Grupę
-      deactivate_group: Pasyvinti Grupę
     deactivate_group:
       title: Pasyvinti grupę
       question: Ar tikrai nori pasyvinti šią grupę?
@@ -199,7 +199,6 @@ lt:
       loud_aria_description: "Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla."
       quiet: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
       quiet_aria_description: Tavo pranešimų garsumas šiai grupei yra nustatytas į Tylus. Tau nebus siunčiami el. laiškai apie šioje grupėje vykstančią veiklą. Grupės veikla bus rodoma tavo Skydelyje.
-      updated: Grupės garsumas atnaujintas.
   edit_group_form:
     title: Redaguoti Grupės Nustatymus
     profile:
@@ -278,6 +277,7 @@ lt:
       submit: Atnaujinti slaptažodį
     deactivate_user:
       title: Pasyvinti paskyrą
+      placeholder: "Atsakinėti į klausimą nėra privaloma. Bet kokia informacija, kuria pasidalinsi, padės mums tobulinti Loomio :)"
       submit: Pasyvinti paskyrą
     change_picture_link: Keisti paveikslą
     change_password_link: Keisti slaptažodį
@@ -328,6 +328,11 @@ lt:
     aria_label: Grupės pavadinimas
   thread_context:
     thread_options: Gijos parinktys
+  delete_thread_form:
+    body: Ar tikrai nori ištrinti šią giją?
+    confirm: "Taip, ištrinti giją"
+    messages:
+      success: Gija ištrinta
   activity_card:
     new_activity: Nauja Veikla
   delete_comment_dialog:

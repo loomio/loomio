@@ -21,6 +21,7 @@ de:
       thisweek: In dieser Woche
       thismonth: Diesen Monat
       older: Älter
+    more_help: Weitere Hilfe
     models:
       proposal: Vorschlag
     action:
@@ -46,7 +47,6 @@ de:
     internal_server_error: Entschuldige bitte. Etwas lief falsch. Bitte erneut versuchen.
   start_proposal_card:
     title: Einen Vorschlag machen
-    helptext: "Bereit eine Entscheidung zu treffen? Vorschläge lassen Dich sehen, wie sich jeder zu einem Punkt im Ablauf der Diskussion fühlt."
   proposal_outcome_panel:
     heading: Ergebnis
     set_outcome_hint: Benutze dieses Feld um jedem das Ergebnis des Vorschlages mitzuteilen
@@ -63,10 +63,11 @@ de:
       updated: Beschluss aktualisiert
   previous_proposals_card:
     heading: Vorherige Vorschläge
+  previous_proposals_page:
+    heading: Frühere Vorschläge
   proposal_collapsed:
     expand: Erweitern
-  context_card:
-    heading: Kontext
+    outcome: "Ergebnis: {{outcome}}"
   volume_levels:
     loud: Laut
     normal: Normal
@@ -109,6 +110,7 @@ de:
     groups_title: Deine Gruppen sehen
     start_thread: Beginne eine neue Diskussion
     notifications: Benachrichtigungspanel
+    user_actions: Benutzeraktionen
     user_options:
       label: Benutzereinstellungen
       contact_us: Kontaktiere uns
@@ -224,7 +226,7 @@ de:
     privacy:
       will_be_private_to_group: "Die Diskussion wird nur für Mitglieder von {{groupName}} sichtbar sein."
       will_be_private_to_parent_group: "Diese Diskussion wird nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar sein."
-      will_be_public: Jeder kann die Diskussion sehen.
+      will_be_public: "Jede.r kann die Diskussion sehen. Nur Mitglieder von {{groupName}} können teilnehmen."
     new_discussion_submit: Diskussion eröffnen
     edit_discussion_submit: Diskussion aktualisieren
   proposal_expanded:
@@ -261,8 +263,9 @@ de:
     heading: Gründen Sie eine Gruppe
     heading_when_subgroup: Gründe eine Untergruppe
     group_helptext: "Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:"
-    group_payment_reminder: "Nach 30 Tagen, wenn Du erlebt hast, wie Loomio die Entscheidungsprozesse in Deiner Gruppe verbessert hat, werden wir Dich bitten ein <a href='#'>Vergütungsmodell</a> zu wählen, das Dir gefällt."
     name_label: Gruppenname
+    description_label: Gruppenbeschreibung
+    description_placeholder: "Beschreibe den Zweck Deiner Gruppe, damit Mitglieder wissen, warum sie mitmachen sollten."
     subgroup_name_label: Untergruppenname
     submit: "Gruppe gründen!"
     messages:
@@ -317,10 +320,6 @@ de:
     options_label: Optionen
     options:
       label: Optionen
-      edit_group: Gruppeneinstellungen bearbeiten
-      manage_members: Mitglieder verwalten
-      leave_group: Gruppe verlassen
-      deactivate_group: Gruppe deaktivieren
     deactivate_group:
       title: Gruppe deaktivieren
       question: "Sicher, dass Du diese Gruppe deaktivieren willst?"
@@ -340,7 +339,6 @@ de:
       quiet_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Leise\". Du erhältst keine eMail bezüglich Meldungen in dieser Gruppe. Meldungen werden auf der Startseite angezeigt."
       mute: Verstecke diese Gruppe aus dem Armaturenbrett und nicht benachrichtigen
       mute_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Stumm\". Du wirst nur per eMail informiert, wenn Du @angesprochen wirst. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt."
-      updated: Gruppenbenachrichtigung aktualisiert.
     privacy:
       private: "Privatsphäre: Diese Gruppe ist nur für Mitglieder sichtbar"
       parent_members: "Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar."
@@ -383,7 +381,12 @@ de:
       success: Gruppe aktualisiert
   membership_requests_card:
     heading: Mitgliedschaftsanfragen
-    manage_requests: "Mitgliedschaftsanfragen ({{count}})"
+    manage_requests: Anfragen verwalten
+    manage_requests_with_count: "({{count}}) Anfragen verwalten"
+  group_help_card:
+    title: Hilfe
+    ten_tips_article_title: "10 Tipps, um mit Loomio großartige Entscheidungen zu herbeizuführen"
+    nine_ways_to_use_proposals: "9 Wege, um mit Loomio Vorschläge von der Diskussion zur Tat werden zu lassen"
   membership_requests_page:
     heading: Mitgliedschaftsanfragen
     approve: Zustimmen
@@ -395,6 +398,9 @@ de:
     messages:
       request_approved_success: Mitgliedschaftsanfrage bestätigt
       request_ignored_success: Mitgliedschaftsanfrage ignoriert.
+  group_previous_proposals_card:
+    heading: Frühere Vorschläge
+    see_more: Mehr erfahren
   group_form:
     messages:
       new_group: Gruppe erstellt
@@ -416,6 +422,7 @@ de:
     import_contacts: Kontakte importieren
     instructions: Gib Namen oder eMail-Adressen ein
     invitation_message: Einladungstext
+    remove_invite: Einladung entfernen
     send_invite: "Schicke {{count}} Einladung/en"
     to: "An:"
     add_custom_message: + persönliche Nachricht hinzügen
@@ -577,20 +584,23 @@ de:
       quiet_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Leise\". Du wirst nur per eMail benachrichtigt, wenn Du erwähnt wirst."
       mute: Ausblenden dieses Thema aus dem Armaturenbrett und nicht benachrichtigen
       mute_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Stumm\". Du wirst erst wieder per eMail benachrichtigt, wenn Du erwähnt wirst. Diese Diskussion wird nicht in der Statusleiste erscheinen."
-      updated: Benachrichtigungseinstellung aktualsisiert.
   thread_group:
     aria_label: Gruppenname
   thread_context:
     aria_label: Diskussionsbeschreibung
     thread_options: Diskussionsoptionen
-    edit_thread: Diskussion bearbeiten
-    delete_thread: Diskussion löschen
   delete_thread_form:
     title: Diskussion löschen
     body: "Sicher, dass Du diese Diskussion löschen willst?"
     confirm: "Ja, Diskussion löschen"
     messages:
       success: Diskussion gelöscht
+  move_thread_form:
+    title: Diskussion verschieben
+    body: "Zielgruppe:"
+    confirm: Diskussion verschieben
+    messages:
+      success: "Diskussion wurde nach {{name}} verschoben"
   activity_card:
     new_activity: Neue Beiträge
     attachment_display:
@@ -618,8 +628,6 @@ de:
     block_with_statement: "<strong>{{actor}}</strong> lehnte Veto ein: <span>{{statement}}</span>"
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong> schlägt vor: <span>{{title}}</span>"
-  proposal_closed_item:
-    proposal_closed: "Der Vorschlag ist geschlossen:"
   proposal_closed_by_user_item:
     proposal_closed_by_user: "<strong>{{actor}}</strong> schloss den Vorschlag: <span>{{title}}</span>"
   proposal_edited_item:
@@ -636,6 +644,8 @@ de:
     proposal_outcome_updated: "<strong>{{actor}}</strong> aktualisierte den Vorschlagsbeschluss:"
   discussion_edited_item:
     title: "<strong>{{actor}}</strong> aktualisierte den Diskussionstitel: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> aktualisierte die Diskussionsbeschreibung"
+    description_title: "<strong>{{actor}}</strong> aktualisierte den Diskussionstitel und die Diskussionsbeschreibung"
   contact_message_form:
     contact_us: Kontaktiere uns
     name_label: Dein Name

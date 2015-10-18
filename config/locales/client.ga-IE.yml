@@ -41,7 +41,6 @@ ga-IE:
     internal_server_error: Is dona linn seo. Tá rud éigin cearr. Déan arís é le do thoil.
   start_proposal_card:
     title: Tosaigh togra
-    helptext: An bhfuil tú réidh chun cinneadh a dhéanamh? Ligeann tograí duit a fhionnadh conas mar a bhraitheann gach duine faoi ghníomhartha faoi leith.
   proposal_outcome_panel:
     heading: Toradh
     set_outcome_hint: Bain feidhm as an áit seo chun toradh an togra a chur in iúl do chách.
@@ -59,8 +58,6 @@ ga-IE:
     heading: Tograí Roimhe Seo
   proposal_collapsed:
     expand: Fairsingigh
-  context_card:
-    heading: Comhthéacs
   volume_levels:
     loud: Ard
     normal: Gnáth
@@ -213,7 +210,6 @@ ga-IE:
     privacy:
       will_be_private_to_group: "Is iad na comhaltaí de {{groupName}} amháin ar féidir leo an tsnáithe a fheiceáil."
       will_be_private_to_parent_group: "Beidh comhaltaí {{parentGroupName}} agus comhaltaí {{groupName}} in ann an tsnáithe a fheiceáil."
-      will_be_public: Tig le cách an tsnáithe a fheiceáil.
     new_discussion_submit: Cur snáithe ar bun
     edit_discussion_submit: Nuashonraigh an tsnáithe
   proposal_expanded:
@@ -234,8 +230,6 @@ ga-IE:
   start_group_form:
     heading: Cuir baicle ar bun
     group_helptext: "Chun tosú ag déanamh cinntí le chéile ar Loomio, cuir baicle ar bun saor in aisce:"
-    group_payment_reminder: "I gceann 30 lá, nuair atá eolas curtha agaibh ar an dóigh a fheabhsaíonn Loomio cinnteoireacht bhur mbaicle, iarraimid oraibh an <a href='#'>beart íocaíochta</a> is fearr daoibhse a roghnú."
-    name_label: Ainm na Baicle
     submit: Tosaigh Baicle
   join_group_button:
     join_group: Cláraigh leis an mbaicle
@@ -280,9 +274,6 @@ ga-IE:
     options_label: Roghanna
     options:
       label: Roghanna
-      edit_group: Cuir socruithe na baicle in eagar
-      leave_group: Fág an bhaicle
-      deactivate_group: Cuir deireadh leis an mbaicle
     deactivate_group:
       title: Cuir deireadh leis an mbaicle
       question: An bhfuil tú cinnte gur mian leat an bhaicle seo a scoir?
@@ -299,7 +290,6 @@ ga-IE:
       normal: "Seol an ghníomhaíocht is tábhachtaí chugam i ríomhphost: Snáitheanna agus tograí nua, torthaí agus araile."
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
       mute: "Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom."
-      updated: Nuashonraíodh airde na baicle.
   edit_group_form:
     title: Cuir socruithe na baicle in eagar
     profile:

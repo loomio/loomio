@@ -46,7 +46,6 @@ es:
     internal_server_error: "Lo sentimos, pero algo ha ido mal. Por favor, inténtalo otra vez."
   start_proposal_card:
     title: Empezar una propuesta
-    helptext: ¿Lista/o para tomar una decisión? Las propuestas te permiten ver qué opina todo el mundo acerca de un tema en particular.
   proposal_outcome_panel:
     heading: Resultado
     set_outcome_hint: Usa este espacio para dar a conocer tu propuesta a todo el mundo.
@@ -65,8 +64,6 @@ es:
     heading: Propuestas anteriores
   proposal_collapsed:
     expand: Expandir
-  context_card:
-    heading: Contexto
   volume_levels:
     loud: Alto
     normal: Normal
@@ -224,7 +221,6 @@ es:
     privacy:
       will_be_private_to_group: "El hilo sólo será visible para miembros de {{groupName}}."
       will_be_private_to_parent_group: "El hilo será visible para miembros de {{parentGroupName}} y de {{groupName}}."
-      will_be_public: Cualquiera puede ver el hilo.
     new_discussion_submit: Empezar un hilo
     edit_discussion_submit: Actualizar hilo
   proposal_expanded:
@@ -261,8 +257,6 @@ es:
     heading: Empieza un grupo
     heading_when_subgroup: "Comienza un sub-grupo "
     group_helptext: "Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis."
-    group_payment_reminder: "Dentro de 30 días, cuando hayas visto cómo Loomio mejora la toma de decisiones de tu grupo, te pediremos que elijas la <a href='#'>forma de pago</a> que consideres oportuna."
-    name_label: Nombre del Grupo
     subgroup_name_label: "Nombre del sub-grupo "
     submit: Crea un grupo nuevo
     messages:
@@ -317,10 +311,6 @@ es:
     options_label: Opciones
     options:
       label: Opciones
-      edit_group: Editar Configuraciones del Grupo
-      manage_members: "Administrar miembros "
-      leave_group: Dejar el grupo
-      deactivate_group: Desactivar el grupo
     deactivate_group:
       title: Desactivar el grupo
       question: ¿Estás seguro de que quieres desactivar este grupo?
@@ -340,7 +330,6 @@ es:
       quiet_aria_description: El volumen de notificaciones para este grupo está establecido como Bajo. No se te enviarán correos electrónicos con la actividad de este grupo. Dicha actividad se mostrará en tu escritorio.
       mute: "Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado."
       mute_aria_description: "El volumen de notificaciones para este grupo está establecido como Silenciado. No se te enviarán correos electrónicos a menos que alguien te mencione, y la actividad del grupo no se mostrará en tu escritorio."
-      updated: Volumen del grupo actualizado.
     privacy:
       private: "Privacidad: Este grupo es solo visible para miembros"
       parent_members: "Privacidad: Este grupo es visible para los miembros de {{parentGroupName}} y miembros de {{groupName}} "
@@ -383,7 +372,6 @@ es:
       success: Grupo actualizado
   membership_requests_card:
     heading: "Pedidos de membresía "
-    manage_requests: "Administrar pedidos ({{count}})"
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: "Aprobar "
@@ -577,14 +565,11 @@ es:
       quiet_aria_description: El volumen de notificaciones para este hilo está establecido como Bajo. No se te enviarán correos electrónicos sobre este hilo a menos que alguien te mencione.
       mute: "Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado."
       mute_aria_description: "El volumen de notificaciones para este hilo está establecido como Silenciado. No se te enviarán correos electrónicos sobre él, a menos que alguien te mencione, y se eliminará de tu escritorio."
-      updated: Volumen del hilo atualizado
   thread_group:
     aria_label: Nombre del grupo
   thread_context:
     aria_label: Contexto del hilo
     thread_options: Preferencias del hilo
-    edit_thread: Editar hilo
-    delete_thread: "Borrar hilo "
   delete_thread_form:
     title: "Borrar hilo "
     body: Estas seguro que quieres borrar este hilo?
@@ -618,8 +603,6 @@ es:
     block_with_statement: "<strong>{{actor}}</strong> bloquea: <span>{{statement}}</span>"
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong> comenzó una propuesta: <span>{{title}}</span>"
-  proposal_closed_item:
-    proposal_closed: "La propuesta ha cerrado:"
   proposal_closed_by_user_item:
     proposal_closed_by_user: "<strong>{{actor}}</strong> ha cerrado la propuesta: <span>{{title}}</span>"
   proposal_edited_item:

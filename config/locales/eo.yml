@@ -651,7 +651,6 @@ eo:
     invites_more_help2: "<p>Vi povas inviti personojn al via grupo iam ajn.</p><p>Vi eble volos inviti ĉiujn membrojn tuj, aŭ vi povos komenci invitante nur la personojn kun kiuj vi plej proksime laboras.</p>"
     invitation_link: Invitligilo
     discussion_link: "Partopreni en la diskuto:"
-    link_help: "Klaku ĉi tiun ligilon por aliĝi al %{group} en Loomio:"
     copy: "Se iu ne ricevis la invitmesaĝon, sentu vin libera kopii la invitligilon ĉi-supre kaj doni ĝin mem al la ricevanto."
     pending_invitations: Esperataj invitakceptoj
     no_pending_invitations: Momente ne estas invitoj esperantaj akceptiĝon.
@@ -663,12 +662,6 @@ eo:
     empty_search: Malplena serĉo
     please_enter_a_search: Bonvolu enigi serĉpeton en la serĉbreto supre
     no_match: Ne troviĝis rezultoj kiuj kongruas kun via peto
-  example_discussion:
-    title: "Ekzempla diskuto: bonvenon kaj enkonduko al Loomio"
-    description: "Bonvenon al Loomio, nova ilo por grupa decidado.\nInteragante pri temo, diskutante pri diversaj vidpunktoj kaj informoj, kaj albordante ĉiujn dubojn kiuj venas, via grupo povas kunigi fortojn por trovi la plej bonan vojon antaŭen.\nVi povas uzi ĉi tiun ekzemplan diskuton por ludi pri la ebloj de la ilo.\nPor ekkomenci la aferon, la Loomio-helproboto pensas ke estus bona ideo ke via grupo iru feriumi kune. La tortgrafiko dekstre montras kiel via grupo pensas pri la propono. Vi povas diri ion pri tio klakante unu el la decidbutonojn sube.\n"
-  example_motion:
-    name: "Ni feriumu sur la luno!"
-    description: "La Loomio-helproboto vere ŝatos ke via grupo investu en vojaĝo al la luno. Ŝajne la spaco-fromaĝo bongustegas. Sed la implikoj pol via karbon-impakto estas zorgigaj.\nĈu estas bona ideo? La Loomio-helproboto volas scii kion vi pensas!\nSe vi certas pri via pozicio, alklaku unu el la simboloj malsupre (movu la muŝon super la decidbutonojn por priskribo de la signifo de ĉiuj).\nAl vi estos petate skribi mallonge pri via kialo por via decido. Tio helpos vidi resumon de ĉies pensoj kaj kialoj. Vi povas ŝanĝi vian opinion kaj redakti vian decidon libere ĝis kiam la propono fermiĝas.\n"
   contact_page:
     contact_us: Kontakti nin
     labels:

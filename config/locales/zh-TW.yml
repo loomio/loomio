@@ -264,6 +264,11 @@ zh-TW:
       group_contributions: 您在群組中作出的意見、提案與討論串會留下，但我們會從中移除您的大名。
       emails: 我們會停止寄送給您有關 Loomio 的電子郵件。
   start_group_form:
+    enable_angular:
+      header: 在 Loomio 1.0 中啟動的新群組
+      subtitle: 要啟動一個新群組，您將會需要切換到全新版本的 Loomio：
+      switch_to_angular: 在新的 Loomio 中啟動群組
+      helptext: "我們已從頭開始重建 Loomio。您可以 <a href=\"/angular\">在這裡</a> 閱讀有什麼新東西。<br/>您可以在任何時候切換回舊版的 Loomio。"
     header: 啟動新的群組
     form_error: 有一些資訊遺失或不正確。
     name: 您的大名
@@ -271,8 +276,10 @@ zh-TW:
     email: 您的電子郵件
     email_error: 並非有效的電子郵件地址。
     group_name: 群組名稱
+    group_description: 群組描述
+    group_description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     group_name_error: 群組名稱必填
-    pricing_html: "在 30 天內，當您發現 Loomio 可以為您的團隊在作決策上帶來超棒的改進時，我們將會問您是否要選擇適合您的 <a href='%{link}' target='_blank'>付費方案</a>。"
+    pricing_html: "在 30 天內，我們將會詢問您要選取哪一個 <a href='%{link}' target='_blank'>定價方案</a>。"
     terms_html: "要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。"
     success:
       header: 您就快完成了！請確認您的電子郵件信箱。
@@ -731,6 +738,7 @@ zh-TW:
     create_account_to_start_group: "請建立帳號，啟動您的群組「%{group_name}」"
     create_account: 請建立帳號
   invitation:
+    angular_warning_html: "<small> 任何接受您邀請的人都將會使用新的 Loomio 介面：<a href=\"http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/\" target=\"_blank\">了解更多</a>。</small>"
     alternate: 或者，分享這個連結讓別人能要求加入：
     by_email: 以電子郵件邀請
     invitation_not_found: 無法在該邀請碼內找到邀請函。請要求寄件者給一封新的。
@@ -749,7 +757,8 @@ zh-TW:
     invites_more_help2: "<p>您可以在任何時候邀請夥伴加入您的群組。</p><p>您可能想要馬上把所有的成員都邀請進來，或是一開始只邀請合作最緊密的那些夥伴。</p>"
     invitation_link: 邀請連結
     discussion_link: 參與討論串：
-    link_help: "點此連結加入 Loomio %{group}"
+    link_help: "點選連結以加入 %{group_name} 並開始："
+    thanks: 謝謝，
     copy: 若您並未收到邀請信件，您可以自行複製連結並且寄給您想邀請的人！
     pending_invitations: 擱置中的邀請函
     no_pending_invitations: 目前沒有擱置的邀請函。
@@ -761,12 +770,12 @@ zh-TW:
     empty_search: 空白搜尋
     please_enter_a_search: 請在上方的搜尋列中輸入搜尋字串
     no_match: 沒有任何搜尋結果符合您的搜尋字串
-  example_discussion:
-    title: "討論範例: 歡迎並介紹 Loomio"
-    description: "歡迎來到 Loomio，一套嶄新的群組決策制定工具。\n藉著激動人心的主題、討論各種觀點與資訊、針對出現的任何疑慮，您的群組能夠集思廣益，找出最佳的方式來前進。\n您能利用這個討論範例，玩轉此工具的各種功能特性。\n\n現在就讓世界轉動，Loomio 小幫手認為您的群組在假日聚在一起會是個很棒的主意。右邊的圓餅圖顯示您的群組有關這個提案的感想。您能藉著點擊下方的決策按鈕之一有發言權。\n"
-  example_motion:
-    name: 您應該去月球度個假！
-    description: "Loomio 小幫手真的熱切希望您的群組投資月球之旅。據說宇宙乳酪美味可口。但這麼做的話，您的碳足跡影響令人擔憂。\n這是一個好主意嗎？Loomio 小幫手要知道您怎麼想！\n假如您的立場是明確的，點擊以下的決策圖示之一 (移動滑鼠游標停在每個按鈕上會出現描述)。\n您會被提示要作出有關您決定的簡短聲明。這是讓大家能輕鬆看見您想法原由的摘要。您能自由改變您的心意、編輯您的決定直到這個提案結束。\n"
+  introduction_thread:
+    title: "歡迎來到 %{group_name}"
+    description: "請花一點時間來介紹您自己，並分享您是如何配合這個群組的夥伴們的。\n\n若您對這個 Loomio 群組有清楚的想法，您可以在此分享，這樣我們就可以有對如何一起實現有較清楚的想法。\n"
+  how_it_works_thread:
+    title: 如何使用 Loomio
+    description: "歡迎來到 Loomio，一個線上協同討論的地方。\n\n這是一個範例討論串。您可以使用這個空間來探索工具的功能。\n\n您目前正在閱讀討論串「內容」。您通常會使用此空間來給予群組背景資訊來進行一個有生產力的討論。這個區塊可以隨著討論的進度更新。\n\n「提案」區塊是您要做出決定的地方。您可以啟動並參與在此區塊的提案。\n\n「動態」區塊包含了所有在該討論串發生的活動。當夥伴作出評論、更新討論串內容、或是啟動新的提案時，您將會在此區塊看到它們。\n"
   contact_page:
     contact_us: 聯絡我們
     faq_prompt_html: 對 Loomio 團隊有任何問題？在聯絡我們之前，您應該先在我們的常見問題中找尋答案。

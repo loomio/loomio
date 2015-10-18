@@ -719,7 +719,6 @@ sl:
     invites_more_help2: "<p>Kadarkoli lahko v svojo skupino povabiš nove člane.</p><p>Lahko takoj povabiš vse člane, ali pa začneš z vabljenjem tistih, s katerimi najbolj tesno sodeluješ.</p>"
     invitation_link: Povezava z vabilom
     discussion_link: "Sodeluj v razpravi:"
-    link_help: "Klikni na povezavo in se pridruži %{group} na Loomiu:"
     copy: "Če kdo ni prejel emaila z vabilom, lahko kopiraš zgornjo povezavo z vabilom in jo sam/a pošlješ prejemniku."
     pending_invitations: "Vabila, ki čakajo odgovor"
     no_pending_invitations: "Trenutno ni vabil, ki bi čakala odgovor."
@@ -731,12 +730,6 @@ sl:
     empty_search: Pobriši iskanje
     please_enter_a_search: Vnesi poizvedbo v iskalno vrstico zgoraj
     no_match: "Ni rezultatov, ki bi se ujemali s tvojim iskanjem"
-  example_discussion:
-    title: "Primer Razprave: Pozdravni nagovor in uvodna predstavitev Loomia"
-    description: "Dobrodošel/la v Loomio, novo orodje za skupinsko odločanje.\nZ aktivnim sodelovanjem pri neki temi, razpravljanjem o različnih pogledih in informacijah ter obravnavanjem pomislekov, ki se ob tem porajajo, lahko vaša skupina strni svoje glave in najde najboljši način naprej.\nTa vzorčni primer razprave lahko uporabiš za raziskovanje funkcij Loomia.\nNpr. Loomio Pomočnik predlaga, da bi bila izvrstna ideja za vašo skupino, da greste skupaj na počitnice. Tortni diagram na desni prikazuje kaj vaša skupina o tem predlogu meni. Svoje mnenje lahko sporočiš s klikom na enega od spodnjih gumbov za odločanje.\n"
-  example_motion:
-    name: "Morali bi na počitnice na luno!"
-    description: "Loomio Asistent si res želi, da bi vaša skupina investirala v potovanje na Luno. Menda je Galaktični sir odličen. Toda posledice vašega ogljičnega odtisa so zaskrbljujoče.\nJe ta ideja dobra? Loomio Asistent želi zvedeti tvoje mnenje!\nČe imaš jasno stališču, klikni eno od spodnjih ikon (z lebdenjem nad gumbi za odločanje vidiš njihov opis).\nPozvan/a boš, da podaš kratko pojasnilo svoje odločitve. To omogoča enostaven povzetek vseh vaših mnenj in razlogov zanje. Lahko si premisliš in kadarkoli spremeniš svojo odločitev, dokler se predlog ne zaključi.\n"
   contact_page:
     contact_us: Kontaktiraj nas
     labels:
