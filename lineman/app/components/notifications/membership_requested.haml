@@ -9,3 +9,4 @@
     %img.lmo-box--small.lmo-rounded-corners{ng-src: "{{notification.event().membershipRequest().group().logoUrl()}}", aria-hidden: 'true'}
   .media-body
     %span{translate: 'notifications.membership_requested', translate-value-name: '{{notification.event().membershipRequest().name}}', translate-value-group: '{{notification.event().membershipRequest().group().fullName}}' }
+    %timeago{timestamp: 'notification.createdAt' }>

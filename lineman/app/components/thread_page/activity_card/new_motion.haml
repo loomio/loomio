@@ -5,4 +5,4 @@
     .media-body
       %h3.thread-item__title{id: 'event-{{event.id}}'}
         %span{translate: "new_proposal_item.author_created_proposal", translate-values: '{actor: event.actorName(), title: event.proposal().name}'}
-        %timeago.timeago--inline{timestamp: 'proposal.createdAt'}
+        %timeago.timeago--inline{timestamp: 'event.createdAt'}

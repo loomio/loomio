@@ -6,3 +6,4 @@
     %user_avatar{user: "notification.event().membership().inviter()", size: 'small'}
   .media-body
     %span{translate: 'notifications.user_added_to_group', translate-value-name: '{{notification.event().membership().inviter().name}}', translate-value-group: '{{notification.event().membership().group().fullName}}' }
+    %timeago{timestamp: 'notification.createdAt' }>
