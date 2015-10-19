@@ -3,11 +3,10 @@ angular.module('loomioApp').directive 'positionButtonsPanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/position_buttons_panel/position_buttons_panel.html'
   replace: true
-  controller: ($scope, ModalService, VoteForm, CurrentUser, Records) ->
+  controller: ($scope, ModalService, VoteForm, CurrentUser, Records, AbilityService) ->
 
     $scope.showPositionButtons = ->
-      CurrentUser.isMemberOf($scope.proposal.group()) and
-      $scope.proposal.isActive() and $scope.undecided()
+      AbilityService.canVoteOn($scope.proposal) and $scope.undecided()
 
     $scope.undecided = ->
       !($scope.proposal.lastVoteByUser(CurrentUser)?)
