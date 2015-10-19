@@ -76,6 +76,7 @@ class ExampleContent
 
   def first_comment(how_it_works_thread, introduction_thread)
     comment = Comment.new(body: I18n.t('first_comment.body',
+                                        hostname: ENV['CANONICAL_HOST'],
                                         thread_url: discussion_url(introduction_thread),
                                         group_name: how_it_works_thread.group.name),
                           discussion: how_it_works_thread)
