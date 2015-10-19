@@ -20,8 +20,6 @@ ml:
   proposal_outcome_form:
     outcome_label: പദ്ധതിഫലം
     publish_outcome: ഫലം പ്രസിദ്ധീകരിയ്ക്കുക
-  context_card:
-    heading: പശ്ചാത്തലം
   comment_form:
     delete_comment: അഭിപ്രായം നീക്കം ചെയ്യുക
     confirm_delete_message: "തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? "

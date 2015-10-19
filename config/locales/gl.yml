@@ -535,7 +535,6 @@ gl:
     message_body: Mensaxe de invitación
     invitation_link: Enlace da invitación
     discussion_link: "Participar no debate:"
-    link_help: "Pinche neste enlace para unirse a %{group} en Loomio"
     pending_invitations: Invitacións pendentes
     no_pending_invitations: Non hai invitacións pendentes.
   search:
@@ -543,12 +542,6 @@ gl:
     header: "Resultados da búsqueda para '%{query}'"
     placeholder: Buscar
     empty_search: Búsqueda baldeira
-  example_discussion:
-    title: "Debate de exemplo: Benvida e introdución a Loomio"
-    description: "Benvido a Loomio, unha nova ferramenta para a toma de decisións en grupo.\nParticipando nun asunto, debatendo varias perspectivas e información, atallando cal-quera problema que apareza, o teu grupo pode pór os seus maxíns xuntos para atopar o mellor camiño a seguir.\nPodes usar este debate de exemplo para probar as capacidades da ferramenta.\nPara empezar a rodar, Loomio Helper Bot pensa que sería unha boa idea para o teu grupo que fixera unha excursión. O gráfico de tarta na dereita amosa como se sinte o grupo xobre a proposta. Podes dicir o que pensas premendo un dos botóns de decisión de embaixo.\n"
-  example_motion:
-    name: "Deberíamos ter unhas vacacións na lúa!"
-    description: "Loomio Helper Bot está moi interesado en que o teu grupo invirta nunha viaxe á lúa. Semella que o queixo no espacio é delicioso. Pero as implicacións pola túa pegada de carbono son preocupantes.\nÉ unha boa idea? Loomio Helper Bot quere saber o que estás a pensar!\nSe andas seguro do teu posicionamento, fai click nunha das iconas de embaixo (pasa por enriba dos botóns de decisión para ver unha descripción do que veñen significando).\nPediráseche que fagas unha pequena declaración sobre a razón da túa decisión. Isto fai que sexa doado de ver un resumo do que cadaquén pensa e por que. Podes trocar de opinión e editar a túa decisión libremente ata que a proposta sexa pechada.\n"
   contact_page:
     contact_us: Contáctenos
     labels:

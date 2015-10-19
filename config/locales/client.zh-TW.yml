@@ -21,6 +21,7 @@ zh-TW:
       thisweek: 本週
       thismonth: " 本月"
       older: 較舊的
+    more_help: 詳細說明
     models:
       proposal: 提案
     action:
@@ -46,7 +47,7 @@ zh-TW:
     internal_server_error: 很抱歉，但是有些事情不太對勁。請再試一次。
   start_proposal_card:
     title: 啟動提案
-    helptext: 準備好作決策了嗎？提案讓您可以看到每個人對於特定行動的感受。
+    helptext: 準備好作出決策了嗎？
   proposal_outcome_panel:
     heading: 成果
     set_outcome_hint: 使用這個空間讓每個人知道提案的結果。
@@ -63,15 +64,17 @@ zh-TW:
       updated: 結果已更新
   previous_proposals_card:
     heading: 上一個提案
+  previous_proposals_page:
+    heading: 上一個提案
   proposal_collapsed:
     expand: 展開
-  context_card:
-    heading: 論述
+    outcome: "結果：{{outcome}}"
   volume_levels:
     loud: 大聲
     normal: 普通
     quiet: 安靜
     mute: 靜音
+    unmute: 解除靜音
   inbox:
     clear: 清除
     latest: 最新
@@ -100,6 +103,8 @@ zh-TW:
     in_reply_to: "回覆給 <strong>{{name}}</strong>："
     submit_button:
       label: 貼文
+    private_privacy_notice: "您的意見將只會對 {{groupName}}. 群組的成員可見。"
+    public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
   navbar:
     recent: 最近
     unread: 未讀
@@ -109,6 +114,7 @@ zh-TW:
     groups_title: 檢視您的群組
     start_thread: 啟動新的討論串
     notifications: 通知面板
+    user_actions: 使用者動作
     user_options:
       label: 使用者選項
       contact_us: 聯絡我們
@@ -224,7 +230,7 @@ zh-TW:
     privacy:
       will_be_private_to_group: "討論串將只會對 {{groupName}}. 群組的成員可見。"
       will_be_private_to_parent_group: "討論串將會對 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員可見。"
-      will_be_public: 任何人都可以看見此討論串。
+      will_be_public: "任何人都可以看到此討論串。只有 {{groupName}} 的成員才能參與。"
     new_discussion_submit: 啟動討論串
     edit_discussion_submit: 更新討論串
   proposal_expanded:
@@ -261,8 +267,10 @@ zh-TW:
     heading: 啟動群組
     heading_when_subgroup: 啟動子群組
     group_helptext: 要開始在 Loomio 上共同作出決策，先免費設定一個群組：
-    group_payment_reminder: "在 30 天內，當您發現 Loomio 可以為您的團隊在作決策上帶來超棒的改進時，我們將會問您是否要選擇適合您的 <a href='#'>付費方案</a>。"
+    group_payment_reminder: "在 30 天內，我們將會詢問您要選取哪一個 <a href='https://www.loomio.org/pricing' target='blank'>定價方案</a>。"
     name_label: 群組名稱
+    description_label: 群組描述
+    description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     subgroup_name_label: 子群組名稱
     submit: 啟動群組
     messages:
@@ -317,10 +325,6 @@ zh-TW:
     options_label: 選項
     options:
       label: 選項
-      edit_group: 編輯群組設定
-      manage_members: 管理成員
-      leave_group: 離開群組
-      deactivate_group: 停用群組
     deactivate_group:
       title: 停用群組
       question: 您確定您想要停用此群組嗎？
@@ -334,13 +338,16 @@ zh-TW:
     volume:
       loud: 只要有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此群組的通知音量設定為大聲。只要一有動態，您就會收到電子郵件。
+      loud_message: "您將會被以電子郵件的方式通知所有在「{{name}}」中的活動。"
       normal: 只在有重要的動態時寄發電子郵件：新討論串及提案、結果等等。
       normal_aria_description: 您在此群組的通知音量設定為普通。您將只會在有重要動態時收到電子郵件，像是當某人啟動新討論串、提出提案或是結果定案。
+      normal_message: "您將只會被以電子郵件的方式通知在「{{name}}」中重要的活動。"
       quiet: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
       quiet_aria_description: 您在此群組的通知音量設定為安靜。您將不會收到任何有關此群組動態的電子郵件。群組動態將會顯示在您的儀表板上。
+      quiet_message: "您將不會被以電子郵件通知在「{{name}}」中的活動。"
       mute: "從儀表板上隱藏此群組，除非 @提及，否則將不會通知。"
       mute_aria_description: 您在此群組的通知音量設定為靜音。您將不會收到任何電子郵件，除非有人提及您，且群組動態將不會顯示在您的儀表板上。
-      updated: 群組音量已更新
+      mute_message: "「{{name}}」已從您的儀表板中移除。"
     privacy:
       private: 隱私：這個群組現在只對成員可見
       parent_members: "隱私：討論串將會對 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員可見。"
@@ -383,7 +390,8 @@ zh-TW:
       success: 群組已更新
   membership_requests_card:
     heading: 申請成員資格
-    manage_requests: "管理申請 ({{count}})"
+    manage_requests: 管理申請
+    manage_requests_with_count: "管理申請 ({{count}})"
   group_help_card:
     title: 教學文件
     ten_tips_article_title: 10 個使用 Loomio 做出好決策的祕訣
@@ -399,6 +407,9 @@ zh-TW:
     messages:
       request_approved_success: 成員資格申請已批准
       request_ignored_success: 成員資格申請已忽略
+  group_previous_proposals_card:
+    heading: 上一個提案
+    see_more: 查看詳細資訊
   group_form:
     messages:
       new_group: 群組已建立
@@ -576,21 +587,21 @@ zh-TW:
     volume:
       loud: 只要這個討論串有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此討論串的通知音量設定為大聲。這意味著您會收到任何關於此動態的電子郵件。
+      loud_message: "您將會被以電子郵件的方式通知所有在「{{name}}」中的活動"
       normal: 只當提議被建立、將要關閉、或是結果公佈時才寄發電子郵件。
       normal_aria_description: 您在此討論串的通知音量設定為普通。您將會在提案被建立、將要定案或是結果已被貼出時收到電子郵件。
+      normal_message: "您將只會被以電子郵件的方式通知在「{{name}}」的重要活動。"
       quiet: 不要寄發關於這個討論串的電子郵件。
       quiet_aria_description: 您在此討論串的通知音量設定為安靜。您將不會收到任何有關於此討論串的電子郵件，除非有人提及您。
+      quiet_message: "您將不會收到關於「{{name}}」的電子郵件，除非有人提及您"
       mute: "從儀表板上隱藏此討論串，除非 @提及，否則將不會通知。"
       mute_aria_description: 您在此討論串的通知音量設定為靜音。您將不會收到任何有關於此討論串的電子郵件，除非有人提及您，且此討論串將會從您的儀表板上移除。
-      updated: 討論串音量已更新
+      mute_message: "「{{name}}」已從您的儀表板中移除。"
   thread_group:
     aria_label: 群組名稱
   thread_context:
     aria_label: 討論串內容
     thread_options: 討論串選項
-    edit_thread: 編輯討論串
-    move_thread: 移動討論串
-    delete_thread: 刪除討論串
   delete_thread_form:
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？
@@ -631,7 +642,7 @@ zh-TW:
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong>已啟動一個提案：<span>{{title}}</span>"
   proposal_closed_item:
-    proposal_closed: 此提案已經定案：
+    proposal_closed: "提案已定案：<span>{{title}}</span>"
   proposal_closed_by_user_item:
     proposal_closed_by_user: "<strong>{{actor}}</strong>已定案了一個提案：<span>{{title}}</span>"
   proposal_edited_item:

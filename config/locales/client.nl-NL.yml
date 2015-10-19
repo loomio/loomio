@@ -38,7 +38,6 @@ nl-NL:
     internal_server_error: "Helaas, er ging iets fout. Probeer het opnieuw."
   start_proposal_card:
     title: Kom met een voorstel.
-    helptext: Klaar om een besluit te nemen? Voorstellen laten zien hoe iedereen denkt over een bepaalde aanpak.
   proposal_outcome_panel:
     heading: Uitkomst
     set_outcome_hint: Laat op deze plek iedereen weten wat de uitkomst is van het voorstel.
@@ -47,8 +46,6 @@ nl-NL:
     publish_outcome: Publiceer uitkomst
   proposal_collapsed:
     expand: Uitbreiden
-  context_card:
-    heading: Beschrijving
   volume_levels:
     loud: Luid
     normal: Normaal

@@ -570,7 +570,6 @@ ca:
     message_body: "missatge d'invitació"
     invites_more_help2: "<p>Pots convidar gent al teu grup en qualsevol moment.</p><p>Pots convidar tots els teus membres de cop o començar convidant aquells amb qui estàs treballant més estretament.</p>"
     invitation_link: "Enllaç d'invitació"
-    link_help: "Clica aquest enllaç per unir-te al grup %{group} a Loomio:"
     copy: "Si algú no ha rebut el correu electrònic d'invitació, pots copiar el link de més amunt i passar-lo tu mateix si vols."
     pending_invitations: Invitacions pendents
     no_pending_invitations: Actualment no hi ha invitacions pendents.
@@ -581,12 +580,6 @@ ca:
     empty_search: Cerca buida
     please_enter_a_search: Entra una cerca al camp de dalt
     no_match: "No s'ha trobat res que coincideixi amb la teva cerca"
-  example_discussion:
-    title: "Exemple de discussió: Benvinguda i introducció a Loomio."
-    description: "Benvingudes a Loomio, una nova eina per prendre decissions en grup.\nEn participar d'un tema, debatre punts de vista i informacions, fer front a qualsevol polèmica, el teu grup pot posar les idees en comú per trobar les millors solucions.\nPots fer servir aquesta discussió d'exemple per provar les funcionalitats de l'eina.\nPer començar a rodar, el Bot d'Ajuda de Loomio us proposa que organitzeu unes vacances plegades. El gràfic pastís a la dreta mostra què en pensa el grup de la proposta. Pots deixar la teva opinió prement un dels butons de sota.\n"
-  example_motion:
-    name: "Hauríem d'anar de vacances a la Lluna!"
-    description: "El Bot d'Ajuda de Loomio vol que organitzeu un viatge a la lluna. Segons sembla, el formatge de l'espai és deliciós. Malauradament, el cost de CO2 és preocupant.\nCreus que és una bona idea? El Bot d'Ajuda vol saber que en penses!\nSi ho tens clar, prem alguna de les icones de sota (apropa el cursor als botons per veure una descripció de cadascun)\nSe't demanarà que facis un petit raonament sobre la teva decissió. Així serà més fàcil veure un resum de que pensa cadascú i perquè. Pots canviar d'opinió i editar la teva decissió fins que la proposta es tanqui.\n"
   contact_page:
     labels:
       name: El teu nom

@@ -25,8 +25,6 @@ an:
   proposal_outcome_form:
     outcome_label: "Resultau d'a propuesta"
     publish_outcome: Publicar o resultau
-  context_card:
-    heading: Contexto
   inbox:
     clear: Limpiar
     unread: No leyiu

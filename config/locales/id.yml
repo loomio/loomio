@@ -438,7 +438,6 @@ id:
     message_body: Pesan undangan
     invites_more_help2: "<p>Anda dapat mengundang teman ke dalam kelompok Anda setiap saat.</p><p>Anda dapat mengundang seluruh anggota secara bersamaan, atau undang setiap orang yang dekat dengan Anda.</p>"
     invitation_link: Pranala undangan
-    link_help: "Klik tautan ini untuk bergabung dengan %{group} di Loomio:"
     copy: "Apabila penerima tidak mendapatkan surel undangan, Anda dapat menyalin tautan undangan di atas dan mengirimkannya kepada penerima."
     pending_invitations: Undangan tertunda
   search:
@@ -446,12 +445,6 @@ id:
     header: "Cari hasil dari '%{query}'"
     placeholder: Cari
     empty_search: Kosongkan pencarian
-  example_discussion:
-    title: "Contoh Diskusi: Selamat datang dan perkenalan kepada Loomio"
-    description: "Selamat datang di Loomio, alat baru untuk membuat keputusan kolektif dalam kelompok.\nDengan mendiskusikan sebuah topik, berbagai cara pandang dan informasi, serta mengutarakan permasalahan yang muncul, kelompok Anda dapat secara bersama-sama mencari pemecahan yang terbaik.\nAnda dapat menggunakan contoh diskusi ini untuk mencoba fitur alat yang ada.\nUntuk memulai, Loomio Helper Bot merasa kelompok Anda perlu untuk berlibur bersama. Grafik di sebelah kanan menunjukkan bagaimana tanggapan kelompok Anda terhadap usulan ini. Anda dapat mengutarakan pendapat dengan memilih salah satu tombol keputusan di bawah.\n"
-  example_motion:
-    name: "Kita harus berlibur ke bulan!"
-    description: "Loomio Helper Bot ingin kelompok Anda menabung untuk berlibur ke bulan. Ruang angkasa adalah tempat terbaik. Namun jejak karbon Anda cukup mengkhawatirkan.\nApakah usulan ini menarik? Loomio Helper Bot ingin mengetahui pendapat Anda!\nApabila Anda telah memiliki pendapat, klik salah satu dari ikon di bawah ini (tunjuk salah satu tombol keputusan untuk melihat deskripsinya).\nAnda akan diminta untuk menuliskan pernyataan ringkas mengenai alasan keputusan Anda. Hal ini akan mempermudah untuk membuat ringkasan pendapat setiap orang. Anda dapat mengubah pikiran dan mengubah keputusan Anda sampai usulan ditutup.\n"
   discussion_form:
     new:
       header: Mulai diskusi

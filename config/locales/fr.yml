@@ -738,7 +738,6 @@ fr:
     invites_more_help2: "<p>Vous pouvez inviter des personnes dans votre groupe à n'importe quel moment.</p><p>Vous pouvez décider d'inviter tous les membres tout de suite, ou vous pouvez démarrer avec un groupe plus restreint de personnes avec qui vous travaillez souvent.</p>"
     invitation_link: "Lien d'invitation"
     discussion_link: "Participer à la discussion :"
-    link_help: "Cliquer sur ce lien pour rejoindre %{group}  sur Loomio:"
     copy: "Si quelqu'un ne reçoit pas son e-mail d'invitation, merci de recopier le lien d'invitation ci dessus et de le transmettre directement."
     pending_invitations: Invitations en attente
     no_pending_invitations: "Il n'y a pas d'invitations en attente pour l'instant."
@@ -750,12 +749,6 @@ fr:
     empty_search: Vider la recherche
     please_enter_a_search: Veuillez entrer une requête dans la barre de recherche ci-dessus
     no_match: Aucun résultat ne correspond à votre recherche
-  example_discussion:
-    title: "Exemple de Discussion : Bienvenue et introduction sur Loomio"
-    description: "Bienvenue sur Loomio, un nouvel outil pour des prises de décision collectives.\nEn vous engageant sur un sujet, en discutant des différentes possibilités, en vous adressant aux personnes intéressées, votre groupe peut mettre vos intelligences en commun pour trouver la meilleure voie.\nVous pouvez utiliser cet exemple de discussion pour découvrir les possibilités de Loomio.\nPour continuer d'avancer, le Robot d'Aide de Loomio pense que votre groupe devrait passer des vacances ensemble. Le diagramme sur la droite vous montre comment votre groupe juge la proposition. Vous pouvez participer en cliquant sur un des boutons de décision en dessous.\n"
-  example_motion:
-    name: "Nous devrions passer nos vacances sur la Lune !"
-    description: "Le Robot d'Aide de Loomio est vraiment motivé pour que vous investissiez dans un voyage sur la Lune. Apparemment, le brownie de l'espace est délicieux. Mais les implications pour votre empreinte carbone vous inquiètent.\nEst ce une bonne idée ? Le Robot d'Aide de Loomio veut savoir ce que vous en pensez !\nSi vous connaissez déjà votre position, cliquez sur l'une des icônes ci dessous (survolez les boutons de décision pour une description de la signification de chacun d'eux).\nVous êtes invités à laisser un bref commentaire sur la raison de votre choix. Ceci permet de rendre plus facile la synthèse de ce que chacun pense et pourquoi. Vous pouvez changer d'avis et revoter sans souci, tant que la proposition n'est pas close.\n"
   contact_page:
     contact_us: Contactez-nous
     contact_form: Formulaire de contact

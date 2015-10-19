@@ -20,8 +20,6 @@ id:
   proposal_outcome_form:
     outcome_label: Hasil usulan
     publish_outcome: Tayangkan hasil
-  context_card:
-    heading: Konteks
   comment_form:
     delete_comment: Hapus komentar
     confirm_delete_message: Apakah Anda ingin menghapus komentar ini?

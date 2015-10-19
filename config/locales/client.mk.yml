@@ -20,8 +20,6 @@ mk:
     heading: Исход
   proposal_outcome_form:
     outcome_label: Исход на предлогот
-  context_card:
-    heading: Контекст
   comment_form:
     edit_comment: Измени го коментарот
     delete_comment: Избриши го коментарот

@@ -26,8 +26,6 @@ ro:
   proposal_outcome_form:
     outcome_label: Rezultatul propunerii
     publish_outcome: Publica rezultatul
-  context_card:
-    heading: Context
   volume_levels:
     loud: Tare
     normal: Normal
@@ -87,7 +85,6 @@ ro:
     close_proposal: Inchide propunerea
   start_group_form:
     heading: Creaza un grup
-    name_label: Numele Grupului
   join_group_button:
     join_group: Alatură-te grupului
     ask_to_join_group: Cere sa fi inclus in grup

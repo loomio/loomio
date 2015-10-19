@@ -685,7 +685,6 @@ it:
     invites_more_help2: "<p>Puoi invitare gente al tuo gruppo in qualsiasi momento.</p><p>Puoi invitare tutti i membri assieme, oppure puoi cominciare invitando solamente quelle persone con cui lavori a stretto contatto.</p>"
     invitation_link: Link invito
     discussion_link: "Partecipa alla discussione:"
-    link_help: "Clicca su questo link per unirti a %{group} su Loomio:"
     copy: "Se qualcuno non ha ricevuto la mail di invito, copia pure il link qui sopra e mandalo direttamente al destinatario in questione."
     pending_invitations: Inviti in sospeso
     no_pending_invitations: Attualmente non ci sono inviti in sospeso.
@@ -697,12 +696,6 @@ it:
     empty_search: Ricerca vuota
     please_enter_a_search: "Per favore, fai la richiesta nella barra di ricerca qui sopra"
     no_match: Non ci sono risultati che soddisfano la tua richiesta
-  example_discussion:
-    title: "Discussione Esempio: Benvenuto e introduzione a Loomio"
-    description: "Benvenuto in Loomio, un nuovo tool per il decision-making di gruppo.\nImpegnandosi su un argomento, discutendo prospettive e informazioni, e affrontando qualsiasi problema si presenti, il tuo gruppo può unire gli sforzi per trovare, in ogni circostanza, la migliore cosa da fare.\nPuoi usare questa discussione di esempio per smanettare un po' con le funzioni del tool.\nPer cominciare, il Piccolo Aiutante di Loomio pensa che sarebbe un'idea grandiosa se il gruppo facesse una vacanza tutti assieme. Il grafico a torta sulla destra riassume quello che pensano della proposta i membri del gruppo. Puoi dire la tua cliccando su uno dei bottoni appena sotto.\n"
-  example_motion:
-    name: "Dovremmo andare in vacanza sulla Luna!"
-    description: "Al Piccolo Aiutante di Loomio piacerebbe davvero molto che il gruppo investisse in una gita sulla Luna. Pare che il formaggio spaziale sia delizioso. Le emissioni di CO2 dovute al viaggio, però, sarebbero enormi.\nÈ una buona idea? Il Piccolo Aiutante di Loomio vuole sapere come la pensi!\nSe hai un'opinione formata, clicca su una delle icone sotto (passa il mouse sopra i bottoni per vedere cosa significano).\nTi chiederanno di fare una piccola dichiarazione circa le ragioni della tua decisione. Questo rende più semplice capire, in breve, cosa pensa ognuno e perché. Puoi comunque cambiare idea e modificare la tua decisione liberamente fino a quando la proposta non sarà chiusa.\n"
   contact_page:
     contact_us: Contattaci
     labels:
