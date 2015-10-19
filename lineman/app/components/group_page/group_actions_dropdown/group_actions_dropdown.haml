@@ -3,38 +3,38 @@
     %span{translate: 'group_page.options.label'}>
     %i.fa.fa-lg.fa-angle-down
 
-  .dropdown-menu.dropdown-menu-with-labels.dropdown-menu-right{role: 'menu'}
-    .dropdown-heading{translate: 'group_page.options_label', role: 'heading'}
+  .dropdown-menu.dropdown-menu--with-icons{role: 'menu'}
     %ul.dropdown-menu-items
       %li.dropdown-menu-item{ng-if: 'groupActions.canEditGroup()'}
         %a.group-page-actions__edit-group-link{href: '', ng-click: 'groupActions.editGroup()'}
-          .dropdown-menu-item-label{translate: 'group_page.options.edit_group'}
-          .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-cog>
+          %span{translate: 'group_page.options.edit_group'}
       %li.dropdown-menu-item{ng-if: 'groupActions.canAdministerGroup()'}
         %a.group-page-actions__manage-memberships-link{lmo-href-for: 'group', lmo-href-action: 'memberships'}
-          .dropdown-menu-item-label{translate: 'group_page.options.manage_members'}
-        .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-users>
+          %span{translate: 'group_page.options.manage_members'}
       %li.dropdown-menu-item{ng-if: 'groupActions.canManageGroupSubscription()'}
         %a.group-page-actions__manage-subscription-link{ng-if: 'group.subscriptionKind == "paid"', ng-click: 'groupActions.manageSubscriptions()'}
-          .dropdown-menu-item-label{translate: 'group_page.options.manage_subscription'}
+          %i.fa.fa-lg.fa-calendar-check-o>
+          %span{translate: 'group_page.options.manage_subscription'}
         %a.group-page-actions__manage-subscription-link{ng-if: 'group.subscriptionKind == "gift"', ng-click: 'groupActions.choosePlan()'}
-          .dropdown-menu-item-label{translate: 'group_page.options.manage_subscription'}
-        .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-gift>
+          %span{translate: 'group_page.options.manage_subscription'}
       %li.dropdown-menu-item{ng-if: 'groupActions.canAddSubgroup()'}
         %a.group-page-actions__add-subgroup-link{href: '', ng-click: 'groupActions.addSubgroup()'}
-          .dropdown-menu-item-label{translate: 'group_page.options.add_subgroup'}
-        .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-plus>
+          %span{translate: 'group_page.options.add_subgroup'}
 
       %li.dropdown-menu-item{ng-if: 'groupActions.canChangeVolume()'}
         %a.group-page-actions__change-volume-link{href: '', ng-click: 'groupActions.openChangeVolumeForm()'}
-          .dropdown-menu-item-label{translate: 'group_volume_card.heading'}
-        .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-bell>
+          %span{translate: 'group_volume_card.heading'}
 
       %li.dropdown-menu-item
         %a.group-page-actions__leave-group{href: '', ng-click: 'groupActions.leaveGroup()'}
-          .dropdown-menu-item-label{translate: 'group_page.options.leave_group'}
-        .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-sign-out>
+          %span{translate: 'group_page.options.leave_group'}
       %li.dropdown-menu-item{ng-if: 'groupActions.canArchiveGroup()'}
         %a.group-page-actions__archive-group{href: '', ng-click: 'groupActions.archiveGroup()'}
-          .dropdown-menu-item-label{translate: 'group_page.options.deactivate_group'}
-        .dropdown-menu-item-details
+          %i.fa.fa-lg.fa-ban>
+          %span{translate: 'group_page.options.deactivate_group'}

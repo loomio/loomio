@@ -4,7 +4,7 @@
     %i.fa.fa-lg.fa-fw{aria-hidden: 'true', ng-class: '{"fa-bell": hasUnread(), "fa-bell-o": !hasUnread()}'}
     %span.badge.notifications__activity{ng-if: 'hasUnread()'}
       {{unreadCount()}}
-  .dropdown-menu.dropdown-menu-right.dropdown-menu-with-selector-list.notifications__dropdown{role: 'menu'}
+  .dropdown-menu.dropdown-menu--with-selector-list.notifications__dropdown{role: 'menu'}
     .navbar-notifications
       %ul.selector-list
         %li.selector-list-header{translate: "notifications.header", role: 'heading'}

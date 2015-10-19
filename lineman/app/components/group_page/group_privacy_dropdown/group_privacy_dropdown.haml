@@ -15,7 +15,7 @@
       .screen-only{aria-hidden:'true'}
         %i.fa.fa-lg.fa-lock>
         %span{translate: 'common.privacy.private'}
-  .dropdown-menu.dropdown-menu-with-labels{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
+  .dropdown-menu.dropdown-menu--with-details{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
     .dropdown-heading{translate: 'group_page.visibility_label', role: 'heading'}
     %form{novalidate: ''}
       .lmo-disabled-form{ng-show: '!canEditGroup()'}
