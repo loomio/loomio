@@ -29,5 +29,5 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
     submitOnEnter: (scope) ->
       @registerKeyEvent scope, 'pressedEnter', scope.submit, (active, event) =>
         (event.ctrlKey or event.metaKey) and
-        angular.element(active).scope() == scope and
+        angular.element(active).scope().$$isolateBindings == scope.$$isolateBindings and
         _.contains(active.classList, 'lmo-primary-form-input')
