@@ -386,10 +386,6 @@ label.label-with-details{
   clear: both;
 }
 
-.dropdown-menu i.fa {
-  width: 30px;
-}
-
 .timeago{
   @include fontTiny();
   color: $grey-on-white;

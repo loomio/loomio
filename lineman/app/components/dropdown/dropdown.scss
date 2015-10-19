@@ -1,22 +1,49 @@
 .dropdown-menu{
-  min-width: 320px;
   padding: 15px;
-}
-
-.dropdown-menu-with-selector-list{
-  padding: 0;
+  right: 0;
+  left: auto;
 }
 
 .dropdown-menu label {
-  font-weight: normal;
   cursor: pointer;
 }
 
-.dropdown-menu-with-labels a{
+.dropdown-menu--with-selector-list{
+  padding: 0;
+  min-width: 320px;
+}
+
+.dropdown-menu--with-details{
+  min-width: 320px;
+}
+
+.dropdown-menu--with-icons{
+  min-width: 200px;
+  padding: 15px 10px 15px 0;
+}
+
+.dropdown-menu-item a, .dropdown-menu-item label{
+  display: block;
+  margin: -13px;
+  padding: 13px;
   color: $primary-text-color;
 }
 
-.dropdown-menu-with-labels .fa-check{
+.dropdown-menu--with-icons a{
+  margin: -13px -10px -13px 0px;
+}
+
+.dropdown-menu--with-icons i.fa {
+  width: 25px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.dropdown-menu--with-details a{
+  color: $primary-text-color;
+}
+
+.dropdown-menu--with-details .fa-check{
   margin-left: 5px;
 }
 
@@ -24,6 +51,11 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  @include fontHelveticaMedium;
+}
+.dropdown-menu-item-details{
+  @include fontHelvetica;
+  font-weight: normal;
 }
 
 .dropdown-menu-item{
@@ -39,13 +71,6 @@ form .dropdown-menu-item{
   margin-right: -26px;
 }
 
-.dropdown-menu-item a, .dropdown-menu-item label{
-  display: block;
-  margin: -13px;
-  padding: 13px;
-  color: $primary-text-color;
-}
-
 .dropdown-menu-item a:hover, .dropdown-menu-item label:hover{
   display: block;
   text-decoration: none;
@@ -59,7 +84,6 @@ form .dropdown-menu-item{
   text-align: center;
 }
 
-
 .disabled .dropdown-menu-item{
   cursor: auto;
 }
@@ -69,8 +93,8 @@ form .dropdown-menu-item{
 }
 
 li .dropdown-menu-item-label{
-  font-weight: bold;
   line-height: 24px;
+  white-space: nowrap;
   i{
     font-weight: normal;
     width: 18px;
@@ -93,8 +117,10 @@ li .dropdown-menu-item-label{
   border-bottom: 1px solid $border-color;
 }
 
-.dropdown-menu-right{
-  right: 0;
+.dropdown-menu--with-selector-list .dropdown-heading{
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
 }
 
 .dropdown{
