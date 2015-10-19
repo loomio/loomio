@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'navbar', ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
 
-    $scope.officialLoomio = AppConfig.baseUrl == 'https://www.loomio.org/'
+    $scope.officialLoomio = AppConfig.isLoomioDotOrg
 
     $scope.hostName = parser.hostname
 
