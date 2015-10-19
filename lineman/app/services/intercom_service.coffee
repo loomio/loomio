@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
   currentGroup = null
   service = new class IntercomService
     available: ->
-      $window? and $window.Intercom?
+      $window? and $window.Intercom? and $window.Intercom.public_api?
 
     boot: ->
       return unless @available()
