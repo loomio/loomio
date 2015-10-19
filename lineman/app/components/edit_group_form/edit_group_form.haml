@@ -12,11 +12,11 @@
       %h2.lmo-h2{translate: 'edit_group_form.profile.label'}
 
       %label{for: 'group-name', translate: 'edit_group_form.profile.name'}
-      %input.edit-group-form__name.form-control#group-name{ng-required: true, ng-model: 'group.name', maxlength: '255'}
+      %input.edit-group-form__name.lmo-primary-form-input.form-control#group-name{ng-required: true, ng-model: 'group.name', maxlength: '255'}
       %validation_errors{subject: 'group', field: 'name'}
 
       %label{for: 'group-description', translate: 'edit_group_form.profile.description'}
-      %textarea.edit-group-form__description.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description'}
+      %textarea.edit-group-form__description.lmo-primary-form-input.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description'}
 
       %h2.lmo-h2{translate: 'edit_group_form.privacy.label'}
 

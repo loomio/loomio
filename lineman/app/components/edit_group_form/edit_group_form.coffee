@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'EditGroupForm', ->
   templateUrl: 'generated/components/edit_group_form/edit_group_form.html'
-  controller: ($scope, $rootScope, group, FormService, Records) ->
+  controller: ($scope, $rootScope, group, FormService, Records, KeyEventService) ->
     $scope.group = group.clone()
 
     $scope.submit = FormService.submit $scope, $scope.group,
@@ -44,5 +44,7 @@ angular.module('loomioApp').factory 'EditGroupForm', ->
 
     $scope.privacyTranslation = (value) =>
       if $scope.group.parentId then "#{value}_subgroup" else value
+
+    KeyEventService.submitOnEnter $scope
 
     return
