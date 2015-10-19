@@ -7,6 +7,9 @@ angular.module('loomioApp').directive 'commentForm', ->
     discussion = $scope.comment.discussion()
     group = $scope.comment.group()
 
+    $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
+    $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
+
     $scope.formInFocus = ->   $rootScope.$broadcast 'hideFeedbackForm'
     $scope.formLostFocus = -> $rootScope.$broadcast 'showFeedbackForm'
 
