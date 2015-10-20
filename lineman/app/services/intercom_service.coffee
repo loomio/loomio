@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     boot: ->
       return unless $window? and $window.Intercom?
       $window.Intercom 'boot',
+       admin_link: AppConfig.baseUrl+"/admin/users/#{CurrentUser.id}"
        app_id: AppConfig.intercomAppId
        user_id: CurrentUser.id
        user_hash: AppConfig.intercomUserHash
@@ -31,6 +32,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
           id: group.id
           key: group.key
           name: group.name
+          admin_link: AppConfig.baseUrl+"/admin/groups/#{group.key}"
           subscription_kind: group.subscriptionKind
           subscription_plan: group.subscriptionPlan
           subscription_expires_at: group.subscriptionExpiresAt
@@ -38,6 +40,10 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
           visible_to: group.visibleTo
           cohort_id: group.cohortId
           created_at: group.createdAt
+          locale: CurrentUser.locale
+          proposals_count: group.proposals_count
+          discussions_count: group.discussions_count
+          memberships_count: group.memberships_count
 
     contactUs: ->
       if @available()
