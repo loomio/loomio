@@ -5,7 +5,7 @@
       .members-card__avatar{ng-if: 'group.memberships().length > 1', ng-repeat: 'membership in group.memberships() | orderBy: "-admin" | limitTo:10'}
         %user_avatar{user: 'membership.user()', coordinator: 'membership.admin', size: 'medium'}
       .lmo-placeholder{translate: 'group_page.members_placeholder', ng-if: 'showMembersPlaceholder()' }
-    .members-card__invite-members{ng-if: '::canAddMembers()'}
+    .members-card__invite-members{ng-if: 'canAddMembers()'}
       %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }
