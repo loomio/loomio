@@ -7,9 +7,6 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
       @belongsTo 'event'
       @belongsTo 'user'
 
-    createdAt: ->
-      @event().createdAt
-
     actor: ->
       @event().actor()
 
