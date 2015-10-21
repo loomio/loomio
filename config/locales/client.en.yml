@@ -331,8 +331,8 @@ en:
   group_welcome_modal:
     heading: "Welcome to your new group"
     first_step: "You are the group coordinator, which is like being a host."
-    second_step: "Have a look around - check out the example threads and have a play with the settings."
-    third_step: "When you're ready, you can invite people in."
+    second_step: "Have a look around &ndash; check out the example threads and have a play with the settings."
+    third_step: "When you’re ready, you can invite people in."
     ok_got_it: 'Ok, got it!'
 
   group_cover_modal:
