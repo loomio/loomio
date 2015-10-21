@@ -200,6 +200,7 @@ en:
       comments: 'Comments'
 
   start_menu:
+    title: 'Start menu'
     start_group: 'Start Group'
     start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
