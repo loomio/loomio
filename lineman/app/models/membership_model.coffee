@@ -23,3 +23,7 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
     changeVolume: (volume) ->
       @volume = volume
       @save()
+
+    isMuted: ->
+      @volume == 'mute'
+

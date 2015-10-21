@@ -23,6 +23,18 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     groupIds: ->
       _.map(@memberships(), 'groupId')
 
+    mutedMemberships: ->
+      _.select(@memberships(), (membership) -> membership.isMuted())
+
+    notMutedMemberships: ->
+      _.reject(@memberships(), (membership) -> membership.isMuted())
+
+    mutedGroupIds: ->
+      _.map(@mutedMemberships(), 'groupId')
+
+    notMutedGroupIds: ->
+      _.map(@notMutedMemberships(), 'groupId')
+
     groups: ->
       _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
 
