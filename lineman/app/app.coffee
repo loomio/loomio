@@ -10,7 +10,11 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ui.gravatar',
                              'truncate',
                              'duScroll',
-                             'monospaced.elastic']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
+                             'monospaced.elastic']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider) ->
+
+  # this should make stuff faster but you need to add "animated" class to animated things.
+  # http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm
+  $animateProvider.classNameFilter( /\banimated\b/ );
 
   #configure markdown
   renderer = new marked.Renderer()
