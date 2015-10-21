@@ -1060,9 +1060,6 @@ en:
 
       When you have chosen one of the four options, you will be prompted for a short statement to explain your position and why you feel the way you do. You can change your position at any time while the proposal is still open. 
 
-  first_vote:
-    position: Yes
-    statement: I understand how proposals work
   #
   # CONTACT PAGE
   #

@@ -9,7 +9,6 @@ class ExampleContent
     how_it_works_thread = example_content.how_it_works_thread(group)
     example_content.first_comment(how_it_works_thread, introduction_thread)
     first_proposal = example_content.first_proposal(how_it_works_thread)
-    first_vote = example_content.first_vote(first_proposal)
     bot_membership.destroy
   end
 
@@ -51,14 +50,6 @@ class ExampleContent
       description: I18n.t('first_proposal.description'),
       discussion: thread,
       closing_at: (Time.zone.now + 7.days).at_beginning_of_hour
-    }
-  end
-
-  def first_vote_content(proposal)
-    {
-      position: 'yes',
-      motion: proposal,
-      statement: I18n.t('first_vote.statement')
     }
   end
 
