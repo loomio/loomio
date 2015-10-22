@@ -24,12 +24,15 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     comment: (c, params = {}, options = {}) ->
       @discussion c.discussion(), _.merge(params, {comment: c.id})
 
+    user: (u, params = {}, options = {}) ->
+      @buildModelRoute('u', u.username, null, params, options)
+
     contactForm: ->
       AppConfig.baseUrl + '/contact'
 
     buildModelRoute: (path, key, name, params, options) ->
       result = "/#{path}/#{key}"
-      result += "/" + @stub(name) unless options.noStub?
+      result += "/" + @stub(name) unless !name? or options.noStub?
       result += "?" + @queryStringFor(params) if Object.keys(params).length
       result
 

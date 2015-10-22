@@ -1,14 +1,14 @@
 angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, Records, CommentModel, EventModel, CurrentUser) ->
   new class MessageChannelService
 
-    subscribeTo: (channel) ->
-      $http.post('/api/v1/message_channel/subscribe', channel: channel).then handleSubscriptions
+    subscribe: (options = {}) ->
+      $http.post('/api/v1/message_channel/subscribe', options).then handleSubscriptions
 
     subscribeToGroup: (group) ->
-      @subscribeTo "/group-#{group.key}"
+      @subscribe { group_key: group.key }
 
     subscribeToDiscussion: (discussion) ->
-      @subscribeTo "/discussion-#{discussion.key}"
+      @subscribe { discussion_key: discussion.key }
 
     subscribeToUser: ->
       $http.post('/api/v1/message_channel/subscribe_user').then handleSubscriptions
