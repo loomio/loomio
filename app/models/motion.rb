@@ -7,8 +7,10 @@ class Motion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, class_name: 'User'
-  belongs_to :discussion, counter_cache: true
-  # has_one :group, through: :discussion
+
+  belongs_to :discussion
+  update_counter_cache :discussion, :motions_count
+
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
   has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
@@ -49,7 +51,7 @@ class Motion < ActiveRecord::Base
   scope :closed,                   -> { where('closed_at IS NOT NULL').order(closed_at: :desc) }
   scope :order_by_latest_activity, -> { order('last_vote_at desc') }
   scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.visible_to_public) }
-  scope :voting_or_closed_after,   ->(time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
+  scope :voting_or_closed_after,   -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
   scope :chronologically, -> { order('created_at asc') }
 

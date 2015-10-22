@@ -28,6 +28,7 @@ class Group < ActiveRecord::Base
   before_save :update_full_name_if_name_changed
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
+
   include PgSearch
   pg_search_scope :search_full_name, against: [:name, :description],
     using: {tsearch: {dictionary: "english"}}
@@ -198,6 +199,10 @@ class Group < ActiveRecord::Base
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+
+  define_counter_cache(:motions_count)     { |group| group.discussions.sum(:motions_count) }
+  define_counter_cache(:discussions_count) { |group| group.discussions.published.count }
+  define_counter_cache(:memberships_count) { |group| group.memberships.count }
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
@@ -444,7 +449,7 @@ class Group < ActiveRecord::Base
   end
 
   def members_count
-    members.count
+    memberships_count
   end
 
   def update_full_name_if_name_changed

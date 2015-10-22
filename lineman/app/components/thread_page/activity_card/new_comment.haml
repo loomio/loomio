@@ -32,7 +32,8 @@
       %button.thread-item__action--reply.lmo-btn-link{translate: 'common.action.reply', type: 'button', ng_click: 'reply()'}>
     .thread-item__timestamp
       %span{aria-hidden: 'true'}·
-      %timeago{timestamp: 'comment.createdAt' }>
+      %a{lmo-href-for: 'comment'}>
+        %timeago{timestamp: 'comment.createdAt' }>
 
     .thread-item__liked-by{ng_show: 'anybodyLikesIt()'}
       {{ likedBySentence }}

@@ -5,7 +5,7 @@ class Membership < ActiveRecord::Base
   validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
 
-  belongs_to :group, counter_cache: true
+  belongs_to :group
   belongs_to :user, counter_cache: true
   belongs_to :inviter, class_name: 'User'
   has_many :events, as: :eventable, dependent: :destroy
@@ -29,6 +29,8 @@ class Membership < ActiveRecord::Base
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
 
   after_destroy :leave_subgroups_of_hidden_parents
+
+  update_counter_cache :group, :memberships_count
 
   def suspend!
     update_attribute(:is_suspended, true)

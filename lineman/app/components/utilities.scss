@@ -371,7 +371,6 @@ label.label-with-details{
 
 .lmo-option-text {
   float: left;
-  margin-left: 5px;
   display: inline-block;
   line-height: 35px;
   text-decoration: underline;
@@ -392,14 +391,30 @@ label.label-with-details{
   white-space: nowrap;
 }
 
-.timeago--inline{
-  padding-left: 5px;
-}
-
 .align-center {
   text-align: center;
 }
 
 textarea.form-control {
   max-height: 400px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

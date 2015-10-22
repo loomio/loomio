@@ -1015,22 +1015,22 @@ en:
   introduction_thread:
     title: "Welcome to %{group_name}"
     description: |
-      Please take a moment to introduce yourself and share a bit about how you fit with this group of people.
+      Please take a moment to introduce yourself. You might like to share how you fit with this group of people.
 
-      If you have clear intentions for this Loomio group, you could share them here so we’ve all got a clear idea of what we want to achieve together.
+      If you have clear intentions for this Loomio group, you could share them here so everyone has an idea of what they want to achieve together.
 
   how_it_works_thread:
     title: How To Use Loomio
     description: |
       Welcome to Loomio, an online place to make decisions together.
 
-      This is an example discussion thread. You can use this space to explore the features of the tool.
+      This is an example discussion **thread**. Why not use this space to try out Loomio’s features?
 
-      You are currently reading the thread ‘context’. You would usually use this space to give the background information the group needs for a productive discussion. This section can be updated as the discussion progresses.
+      You are currently reading the thread **context**. Use this space to give the background information the group needs for a productive discussion.
 
-      The ‘proposal’ section is where you make decisions. You can start and participate in proposals in this section.
+      The **proposal** panel is where you make decisions. You can start proposals and participated in them there.
 
-      The ‘activity’ section contains all the events that happen within the thread. When people make comments, update the thread context, or start a new proposal, you’ll see them in this section.
+      The **activity** panel below shows everything that’s happened in this thread.
 
   first_comment:
     body: |
@@ -1040,7 +1040,7 @@ en:
 
       Here are some things you might want to try to get things under way:
 
-      - Set your [profile photo](%{hostname}/profile)
+      - Set your [profile picture](%{hostname}/profile)
       - Configure your [email settings](%{hostname}/email_preferences)
       - Introduce yourself to the group in the [Welcome to %{group_name} thread](%{thread_url})
 
@@ -1049,20 +1049,17 @@ en:
   first_proposal:
     name: 'Demonstration proposal: let’s go!'
     description: |
-      This the proposal description. You can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
+      This the proposal **description**. Here you can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
 
-      To participate in the proposal, you can choose one of the four options:
+      To participate in the proposal, choose one of these options:
 
-      - agree: "I agree with this and want it to go ahead."
-      - abstain: "I am happy for the group to decide without me."
-      - disagree: "I think we can probably do better."
-      - block: "I have strong objections to this proposal and am not OK with it going ahead."
+      - **Agree**: “I agree with this and want it to go ahead.”
+      - **Abstain**: “I am happy for the group to decide without me.”
+      - **Disagree**: “I think we can probably do better.”
+      - **Block**: “I have strong objections to this proposal and am not OK with it going ahead.”
 
-      When you have chosen one of the four options, you will be prompted for a short statement to explain your position and why you feel the way you do. You can change your position at any time while the proposal is still open. 
+      When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
 
-  first_vote:
-    position: Yes
-    statement: I understand how proposals work
   #
   # CONTACT PAGE
   #

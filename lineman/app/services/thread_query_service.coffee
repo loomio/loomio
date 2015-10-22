@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
+angular.module('loomioApp').factory 'ThreadQueryService', (Records, CurrentUser) ->
   new class ThreadQueryService
 
     filterQuery: (filter, options = {}) ->
@@ -52,16 +52,20 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records) ->
           view.applyFind(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
           view.applyWhere (thread) -> thread.isUnread()
 
-      if _.contains(filters, 'show_muted')
-        view.applyFind(volume: { $eq: 'mute' })
-      else
-        view.applyFind(volume: { $ne: 'mute' })
-
       _.each filters, (filter) ->
         switch filter
-          when 'show_participating' then view.applyFind(participating: true)
-          when 'show_starred'       then view.applyFind(starred: true)
-          when 'show_proposals'     then view.applyWhere (thread) -> thread.hasActiveProposal()
-          when 'hide_proposals'     then view.applyWhere (thread) -> !thread.hasActiveProposal()
+          when 'show_muted'
+            view.applyFind($or: [{volume:  { $eq: 'mute' }},
+                                 {groupId: { $in: CurrentUser.mutedGroupIds()}}])
+            #view.applyWhere (thread) -> thread.isMuted() or thread.group().membershipFor(CurrentUser).isMuted()
+
+          when 'show_not_muted'
+            view.applyFind(groupId: {$in: CurrentUser.notMutedGroupIds()})
+            view.applyFind(volume: { $ne: 'mute' })
+          when 'only_threads_in_my_groups' then view.applyFind(groupId: {$in: CurrentUser.groupIds()})
+          when 'show_participating'        then view.applyFind(participating: true)
+          when 'show_starred'              then view.applyFind(starred: true)
+          when 'show_proposals'            then view.applyWhere (thread) -> thread.hasActiveProposal()
+          when 'hide_proposals'            then view.applyWhere (thread) -> !thread.hasActiveProposal()
 
       view
