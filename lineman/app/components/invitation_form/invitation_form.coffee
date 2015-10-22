@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $rootScope, group, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
+  controller: ($scope, $rootScope, $q, group, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
     $scope.group = group
     $scope.invitations = []
     $scope.messageFieldHidden = true
@@ -81,7 +81,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.getInvitables = ->
       return if $scope.fragment == ''
       $scope.getInvitablesExecuting = true
-      Promise.all([
+      $q.all([
         Records.contacts.fetchInvitables($scope.fragment, $scope.group.key),
         Records.memberships.fetchInvitables($scope.fragment, $scope.group.key)
       ]).then ->
