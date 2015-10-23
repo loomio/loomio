@@ -33,7 +33,7 @@
           %smart_time{time: 'thread.lastActivityAt'}>
 
   .thread-preview__star
-    %star_toggle{thread: 'thread'}
+    %star_toggle{thread: 'thread', aria-hidden: 'true'}
 
   .thread-preview__actions.hidden-xs
     %button.btn.btn-default.btn-sm.thread-preview__mark-as-read{ng-click: 'thread.markAsRead()', ng-class: '{disabled: !thread.isUnread()}', title: "{{'dashboard_page.mark_as_read' | translate }}"}>

@@ -179,6 +179,22 @@ $cardPaddingSize: 15px;
 
 }
 
+@mixin cardMinorAction {
+  @include fontHelveticaLight;
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
+
+@mixin btnLink {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 @mixin displayFlex {
   display: flex;
   /*display: -webkit-box;*/

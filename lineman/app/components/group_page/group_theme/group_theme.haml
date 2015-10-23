@@ -1,12 +1,12 @@
 .group-theme.lmo-row
   .group-theme__cover{ng-style:'coverStyle()'}
     .group-theme__upload-photo{ng-mouseover: 'themeHoverIn()', ng-mouseleave: 'themeHoverOut()'}
-      %button.lmo-btn-link-no-underline{ng-click: 'openUploadCoverForm()', ng-if: 'canUploadPhotos()'}
+      %button.lmo-btn-link.lmo-no-underline{ng-click: 'openUploadCoverForm()', ng-if: 'canUploadPhotos()', title: "{{ 'group_page.new_photo' | translate }}"}
         %i.fa.fa-lg.fa-camera
         %span.group-theme__upload-help-text{ng-show: 'themeHover'} new photo
 
 
-  %section.group-theme__header--compact{ng-if: 'compact', aria-label: "{{ 'thread_group.aria_label | translate'}}"}
+  .group-theme__header--compact{ng-if: 'compact'}
     .group-theme__logo--compact{aria-hidden: 'true'}
       %a{lmo-href-for: 'group'}
         %img{ng-src: "{{group.logoUrl()}}"}
@@ -17,20 +17,20 @@
       %a{lmo-href-for: 'group'}
         {{group.name}}
 
-  %section.group-theme__header{ng-if: '!compact', aria-label: "{{ 'group_page.header.aria_label' | translate }}"}
+  .group-theme__header{ng-if: '!compact'}
     .group-theme__logo{ng-style:'logoStyle()', alt: "{{ 'group_page.group_logo' | translate }}"}
       .group-theme__upload-photo{ng-mouseover: 'logoHoverIn()', ng-mouseleave: 'logoHoverOut()'}
-        %button.lmo-btn-link-no-underline{ng-click: 'openUploadLogoForm()', ng-if: 'canUploadPhotos()'}
+        %button.lmo-btn-link.lmo-no-underline{ng-click: 'openUploadLogoForm()', ng-if: 'canUploadPhotos()', title: "{{ 'group_page.new_photo' | translate }}"}
           %i.fa.fa-lg.fa-camera
-          %span.group-theme__upload-help-text{ng-show: 'logoHover'} new photo
+          %span.group-theme__upload-help-text{ng-show: 'logoHover', translate: 'group_page.new_photo'}
 
     .group-theme__name-and-actions
       .group-theme__name
-        %h1.lmo-h1
-          %a{ng-if: 'group.isSubgroup()', lmo-href-for: 'group.parent()'}
+        %h1.lmo-h1{aria-label: 'breadcrumb', role: 'navigation'}
+          %a{ng-if: 'group.isSubgroup()', lmo-href-for: 'group.parent()', aria-level: '1'}
             {{group.parentName()}}
           %span{ng-if: 'group.isSubgroup()'}> \-
-          %a{lmo-href-for: 'group'}
+          %a{lmo-href-for: 'group', aria-level: '2'}
             {{group.name}}
       .group-theme__actions{ng-if: 'homePage'}
         .group-theme__member-actions.lmo-btn-group.lmo-btn-group-right{ng-if: 'isMember()'}
