@@ -239,8 +239,6 @@ es:
   group_welcome_modal:
     heading: Bienvenido/a a tu nuevo grupo
     first_step: "Tu eres el coordinador del grupo, que es como ser el anfitrión."
-    second_step: "Hecha un vistazo - mira los hilos de ejemplo y juega con las configuraciones. "
-    third_step: Puedes invitar gente cuando estés listo.
     ok_got_it: "Bien, ¡lo tengo!"
   group_cover_modal:
     heading: "Nueva foto de portada "

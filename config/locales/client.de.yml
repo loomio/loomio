@@ -245,8 +245,6 @@ de:
   group_welcome_modal:
     heading: Willkommen in Deiner neuen Gruppe
     first_step: "Du bist der Gruppenkoordinator, das ist so was wie ein Gastgeber."
-    second_step: Schau Dich um - schau Dir die Beispieldiskussionen an und spiel mit den Einstellungen.
-    third_step: "Wenn Du fertig bist, kannst Du Menschen einladen."
     ok_got_it: "Okay, ich hab´s!"
   group_cover_modal:
     heading: Neues Cover-Foto

@@ -249,8 +249,6 @@ pt-BR:
   group_welcome_modal:
     heading: Bem-vindo ao seu novo grupo
     first_step: "Você é o coordenador do grupo, que é como ser um anfitrião."
-    second_step: Dê uma olhada ao redor - confira os exemplos de tópicos e brinque com as definições.
-    third_step: "Quando estiver pronto, você pode convidar pessoas."
     ok_got_it: "OK, entendi!"
   group_cover_modal:
     heading: Nova foto da capa
