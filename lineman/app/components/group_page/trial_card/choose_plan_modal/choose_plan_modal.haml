@@ -1,8 +1,6 @@
 .choose-plan-modal
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1.modal-title{ng-if: '!group.trialIsOverdue()', translate: 'choose_plan_modal.heading'}
     %h1.lmo-h1.modal-title{ng-if: 'group.trialIsOverdue()', translate: 'choose_plan_modal.overdue_heading'}
 
@@ -53,7 +51,7 @@
         %img{src: '/img/mhjb.png', alt: 'Mathew from Loomio'}
         %p
           %span{translate: 'choose_plan_modal.support_before'}>
-          %a{href: '', translate: 'choose_plan_modal.support_link', ng-click: 'openIntercom()'}>
+          %button.choose-plan-modal__contact-link{translate: 'choose_plan_modal.support_link', ng-click: 'openIntercom()'}>
           %span{translate: 'choose_plan_modal.support_after'}>
       .col-md-3.col-md-offset-2.choose-plan-modal__cancel
         %button.lmo-btn--featured{type: 'button', ng-click: '$close()', translate: 'choose_plan_modal.remind_me_later'}

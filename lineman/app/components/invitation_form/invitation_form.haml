@@ -1,9 +1,8 @@
 .invitation-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
-    %h1.lmo-h1.modal-title.pull-left {{ 'invitation.invite_people' | translate }}
-    %a.close.pull-right{href: '', ng-click: '$close()'} ×
-    .clearfix
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title {{ 'invitation.invite_people' | translate }}
   .modal-body
     %label{for: 'group-dropdown', translate: 'common.group'}
     %select.invitation-form__group-dropdown.form-control#group-dropdown{ng-model: 'group', ng-required: true, ng-options: 'group as group.fullName for group in availableGroups() | orderBy: "fullName"'}

@@ -104,3 +104,8 @@
     margin-right: 10px;
   }
 }
+
+.choose-plan-modal__contact-link {
+  @include btnLink;
+  color: $link-color;
+}

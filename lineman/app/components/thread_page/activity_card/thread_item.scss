@@ -42,6 +42,11 @@
   display: inline-block;
 }
 
+.thread-item__action {
+  @include btnLink;
+  color: $link-color;
+}
+
 .thread-item__timestamp {
   display: inline-block;
 }

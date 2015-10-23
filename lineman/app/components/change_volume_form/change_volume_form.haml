@@ -2,9 +2,7 @@
   .lmo-disabled-form{ng-show: 'isDisabled'}
   %form{ng-submit: 'submit()'}
     .modal-header
-      %button{type: 'button', class: 'close', ng-click: '$close()'}
-        %span{aria-hidden: 'true'} &times;
-        %span.sr-only{translate: 'common.action.cancel'}
+      %modal_header_cancel_button
       %h1.lmo-h1{translate: '{{translateRoot}}.header'}
     .modal-body
       %ul.change-volume-form__list

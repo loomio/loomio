@@ -200,6 +200,7 @@ en:
       comments: 'Comments'
 
   start_menu:
+    title: 'Action button'
     start_group: 'Start Group'
     start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
@@ -398,8 +399,7 @@ en:
       leave_group_success: 'You have left this group'
       archive_group_success: 'This group has been deactivated'
     group_logo: 'Group logo'
-    header:
-      aria_label: 'Group header'
+    new_photo: 'new photo'
     description: 'Group description'
     description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
     discussions: 'Threads'

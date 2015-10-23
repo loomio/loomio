@@ -18,6 +18,12 @@ angular.module('loomioApp').directive 'flash', (AppConfig) ->
     $scope.display = -> $scope.flash.visible
     $scope.dismiss = -> $scope.flash.visible = false
 
+    $scope.ariaLive = ->
+      if $scope.loading()
+        'polite'
+      else
+        'assertive'
+
     FlashService.success AppConfig.flash.success if AppConfig.flash.success?
     FlashService.info    AppConfig.flash.notice  if AppConfig.flash.notice?
     FlashService.warning AppConfig.flash.warning if AppConfig.flash.warning?

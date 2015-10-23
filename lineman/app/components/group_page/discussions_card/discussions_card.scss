@@ -23,3 +23,8 @@
 .discussions-card__list{
   clear: both;
 }
+
+.discussions-card__show-more {
+  @include cardMinorAction;
+  @include btnLink;
+}

@@ -9,5 +9,5 @@
           %a{lmo-href-for: 'subgroup'} {{ subgroup.name }}
         .subgroups-card__list-item-description {{ subgroup.description | words:10 }}
 
-    %a.subgroups-card__add-subgroup-link.lmo-card-minor-action{href: '', ng-click: 'startSubgroup()', ng-if: 'canCreateSubgroups()'}
+    %button.subgroups-card__add-subgroup-link{ng-click: 'startSubgroup()', ng-if: 'canCreateSubgroups()'}
       %span{ translate: 'common.action.add_subgroup' }
