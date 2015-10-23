@@ -13,6 +13,10 @@
   min-width: 320px;
 }
 
+.lmo-row{
+  @include lmoRow;
+}
+
 @media (max-width: $tiny-max-px){
   /* applied to tiny phone screens */
 
@@ -65,9 +69,7 @@
 
 @media (min-width: $tiny-max-px){
   /* applied to everything bigger than a tiny screen */
-  .lmo-row{
-    padding: 0 10px;
-  }
+
 }
 
 @media (max-width: $small-max-px){

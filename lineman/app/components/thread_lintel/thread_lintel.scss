@@ -19,6 +19,7 @@
 }
 
 .thread-lintel__wrapper {
+  @include lmoRow;
   @include fontMedium;
   position: fixed;
   top: $navbar-height;
