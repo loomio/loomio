@@ -20,5 +20,5 @@
         %textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: 'membershipRequest.introduction', ng-required: 'false'}
 
   .modal-footer
-    %button.btn.btn-primary.membership-request-form__submit-btn{type: 'submit', translate: 'membership_request_form.submit_button'}
-    %button.btn.btn-warning.membership-request-form__cancel-btn{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    %button.membership-request-form__cancel-btn{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    %button.membership-request-form__submit-btn{type: 'submit', translate: 'membership_request_form.submit_button'}

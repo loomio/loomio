@@ -13,3 +13,7 @@
 .email-settings-page__input-description {
   margin-left: 25px;
 }
+
+.email_settings_page__update-button{
+  @include lmoBtnPrimary;
+}

@@ -15,7 +15,8 @@
   min-height: 335px;
 }
 
-.group-theme__header .btn{
+.group-theme__member-actions button{
+  @include fontHelveticaBold;
   @include fontSmall;
 }
 
@@ -45,8 +46,10 @@
   margin-top: 175px;
 }
 
+.group-theme__member-actions{
+  float: right;
+}
 .group-theme__nonmember-actions { float: right; }
-.group-theme__member-actions .btn { @include fontHelveticaBold; }
 
 .group-theme__name {
   float: left;

@@ -84,15 +84,10 @@
 }
 
 .choose-plan-modal__select-button {
+  @include lmoBtnOffer;
   position: absolute;
   bottom: 10px;
   left: 30%;
-  background-color: #4185DE;
-  color: #fff;
-  width: 90px;
-  &:hover { color: #fff }
-  &:visited { color: #fff }
-  &:visited { color: #fff }
 }
 
 .choose-plan-modal__features-list {

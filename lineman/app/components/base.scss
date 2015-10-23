@@ -41,19 +41,6 @@ strong{
   @include fontHelveticaBold;
 }
 
-.btn {
-  @include box_shadow(1);
-  border: none;
-
-  &:hover {
-    @include box_shadow(2);
-  }
-
-  &:focus {
-    outline-style: none;
-  }
-}
-
 a {
   color: $link-color;
 }

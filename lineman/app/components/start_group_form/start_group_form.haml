@@ -24,5 +24,5 @@
     .group-payment-notice{ng-if: 'group.isParent()', translate: 'start_group_form.group_payment_reminder'}
 
   .modal-footer
-    %button.btn.btn-primary.start-group-form__submit{type: 'submit', translate: 'start_group_form.submit'}
-    %button.btn.btn-warning{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
+    %button.lmo-btn--cancel{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}
+    %button.lmo-btn--submit.start-group-form__submit{type: 'submit', translate: 'start_group_form.submit'}
