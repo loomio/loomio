@@ -20,27 +20,22 @@ class MessageChannelService
                          discussion_description_edited
                          motion_description_edited)
 
-  def self.subscribe_to(user:, channel: )
-    raise AccessDeniedError.new unless can_subscribe?(user: user, channel: channel)
-    PrivatePub.subscription(channel: channel, server: ENV['FAYE_URL'])
+  def self.subscribe_to(user:, model:)
+    raise AccessDeniedError.new unless can_subscribe?(user: user, model: model)
+    PrivatePub.subscription(channel: channel_for(model), server: ENV['FAYE_URL'])
   end
 
-  def self.can_subscribe?(user:, channel:)
-    key = channel_key(channel)
-    case channel_type(channel)
-    when 'group'         then user.ability.can? :see_private_content, Group.find(key)
-    when 'discussion'    then user.ability.can? :show, Discussion.find(key)
-    when 'notifications' then key.to_i == user.id
-    else                      raise UnknownChannelError.new
+  def self.can_subscribe?(user:, model:)
+    case model
+    when Group      then user.ability.can? :see_private_content, model
+    when Discussion then user.ability.can? :show, model
+    when User       then user.ability.can? :see_notifications_for, model
+    else                 raise UnknownChannelError.new
     end
   end
 
-  def self.channel_type(channel)
-    /\/(\w+)-(\w+)/.match(channel)[1]
-  end
-
-  def self.channel_key(channel)
-    /\/(\w+)-(\w+)/.match(channel)[2]
+  def self.channel_for(model)
+    "/#{model.class.to_s.downcase}-#{model.key}"
   end
 
   def self.channel_for_event(event)
@@ -56,16 +51,12 @@ class MessageChannelService
     publish channel, EventSerializer.new(event).as_json
   end
 
-  def self.publish_notification(notification)
-    publish "/notifications-#{notification.user_id}", NotificationSerializer.new(notification).as_json
-  end
-
-  def self.publish(channel, data)
+  def self.publish(model, data)
     return if Rails.env.test? or !ENV.has_key?('FAYE_URL')
     if ENV['DELAY_FAYE']
-      PrivatePub.delay(priority: 10).publish_to(channel, data)
+      PrivatePub.delay(priority: 10).publish_to(channel_for(model), data)
     else
-      PrivatePub.publish_to(channel, data)
+      PrivatePub.publish_to(channel_for(model), data)
     end
   end
 end

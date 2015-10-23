@@ -49,6 +49,24 @@ describe API::MembershipsController do
     end
   end
 
+  describe 'for_user' do
+    let(:public_group) { create :group, is_visible_to_public: true }
+    let(:private_group) { create :group, is_visible_to_public: false }
+
+    it 'returns visible groups for the given user' do
+      public_group
+      private_group.users << another_user
+      group.users << another_user
+
+      get :for_user, user_id: another_user.id
+      json = JSON.parse(response.body)
+      group_ids = json['groups'].map { |g| g['id'] }
+      expect(group_ids).to include group.id
+      expect(group_ids).to_not include public_group.id
+      expect(group_ids).to_not include private_group.id
+    end
+  end
+
   describe 'autocomplete' do
     let(:emrob_jones) { create :user, name: 'emrob jones' }
     let(:rob_jones) { create :user, name: 'rob jones' }

@@ -1,5 +1,17 @@
 class API::MembershipsController < API::RestfulController
 
+  def index
+    load_and_authorize :group
+    instantiate_collection { |collection| collection.where(group_id: @group.id).order('users.name') }
+    respond_with_collection
+  end
+
+  def for_user
+    load_and_authorize :user
+    instantiate_collection { |collection| collection.where(user_id: @user.id).order('groups.full_name') }
+    respond_with_collection
+  end
+
   def join_group
     @group = Group.find(params[:group_id])
     event = MembershipService.join_group group: @group, actor: current_user
@@ -43,8 +55,12 @@ class API::MembershipsController < API::RestfulController
   private
 
   def visible_records
-    load_and_authorize :group
-    Queries::VisibleMemberships.new(user: current_user, group: @group)
+    visible = resource_class.includes(:user, :group, :inviter)
+    if current_user.group_ids.any?
+      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
+    else
+      visible.where("groups.is_visible_to_public = 't'")
+    end
   end
 
   def visible_invitables

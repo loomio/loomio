@@ -129,6 +129,12 @@ $boxLargeSize: 80px;
   height: $boxLargeSize;
 }
 
+$boxFeaturedSize: 175px;
+@mixin boxFeatured {
+  width: $boxFeaturedSize;
+  height: $boxFeaturedSize;
+}
+
 @mixin card{
   @include cardNoPadding;
   @include cardPadding;

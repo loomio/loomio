@@ -41,10 +41,13 @@ Loomio::Application.routes.draw do
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
+    resources :users, only: :show
+
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
         post :join_group
         get :autocomplete
+        get :for_user
         get :my_memberships
         get :invitables
       end
@@ -68,7 +71,7 @@ Loomio::Application.routes.draw do
       get :pending, on: :collection
     end
 
-    resources :profile, only: [] do
+    resources :profile, only: [:show] do
       post :update_profile, on: :collection
       post :upload_avatar, on: :collection
       post :change_password, on: :collection
@@ -222,7 +225,7 @@ Loomio::Application.routes.draw do
       post :edit_description
       delete :leave_group
       get :members_autocomplete
-      get :previous_proposals, to: :show 
+      get :previous_proposals, action: :show
     end
 
     resources :motions,     only: [:index]

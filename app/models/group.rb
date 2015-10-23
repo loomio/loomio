@@ -239,7 +239,7 @@ class Group < ActiveRecord::Base
   end
 
   def creator_id
-    self[:creator_id] || creator.id
+    self[:creator_id] || creator.try(:id)
   end
 
   def coordinators
@@ -449,7 +449,7 @@ class Group < ActiveRecord::Base
   end
 
   def members_count
-    memberships_count
+    self.memberships_count
   end
 
   def update_full_name_if_name_changed
