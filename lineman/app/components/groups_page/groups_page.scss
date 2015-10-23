@@ -11,6 +11,8 @@
 
 .groups-page__new-group{
   float: right;
+  @include lmoBtnFeatured;
+  @include lmoBtnIcon;
 }
 
 .groups-page__groups {

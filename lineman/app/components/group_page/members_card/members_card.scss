@@ -11,3 +11,8 @@
   clear: both;
   padding-top: 10px;
 }
+
+.members-card__manage-members {
+  @include cardMinorAction;
+  @include lmoBtnLink;
+}
