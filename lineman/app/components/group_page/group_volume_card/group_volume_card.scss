@@ -4,5 +4,5 @@
 
 .group-volume-card__change-volume-link {
   @include cardMinorAction;
-  @include btnLink;
+  @include lmoBtnLink;
 }

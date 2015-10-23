@@ -7,7 +7,7 @@
 
 .proposal-positions-panel__change-your-vote{
   @include fontSmall;
-  @include btnLink;
+  @include lmoBtnLink;
   color: $link-color;
   span{ text-decoration: underline; }
 }

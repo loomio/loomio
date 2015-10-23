@@ -1,11 +1,3 @@
-//
-// Buttons
-// --------------------------------------------------
-
-
-// Base styles
-// --------------------------------------------------
-
 @mixin lmoBtn{
   display: inline-block;
   margin-bottom: 0; // For input.btn
@@ -53,15 +45,6 @@
     cursor: $cursor-disabled;
     @include opacity(.65);
     @include box-shadow(none);
-  }
-
-  // [converter] extracted a& to a.btn
-}
-
-a.btn {
-  &.disabled,
-  fieldset[disabled] & {
-    pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
   }
 }
 
@@ -141,8 +124,6 @@ a.btn {
   @include lmoBtnOffer;
 }
 
-
-
 @mixin lmoBtnNude{
   @include lmoBtn;
   @include button-variant($grey-on-grey, transparent, transparent);
@@ -165,73 +146,41 @@ a.btn {
   @include lmoBtnIcon;
 }
 
-
-
 /* horizontally space out sequential buttons */
 .modal-footer button + button{
   margin-left: 5px;
 }
 
-// Link buttons
-// -------------------------
-
-// Make a button look and behave like a link
-.btn-link {
-  color: $link-color;
-  font-weight: normal;
-  border-radius: 0;
-
-  &,
-  &:active,
-  &.active,
-  &[disabled],
-  fieldset[disabled] & {
-    background-color: transparent;
-    @include box-shadow(none);
-  }
-  &,
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
-  &:hover,
-  &:focus {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-    background-color: transparent;
-  }
-  &[disabled],
-  fieldset[disabled] & {
-    &:hover,
-    &:focus {
-      color: $btn-link-disabled-color;
-      text-decoration: none;
-    }
-  }
+@mixin lmoBtnLink {
+  background: none;
+  border: none;
+  padding: 0;
+  &:hover{ text-decoration: underline; }
+}
+.lmo-btn-link {
+  @include lmoBtnLink;
 }
 
-
-// Button Sizes
-// --------------------------------------------------
-
-.btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
+@mixin lmoBtnLg {
   @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $btn-border-radius-large);
 }
+.lmo-btn-lg{
+  @include lmoBtnLg;
+}
+
 @mixin lmoBtnSm{
   @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
 }
 .lmo-btn-sm {
   @include lmoBtnSm;
 }
-.btn-xs {
+
+@mixin lmoBtnXs {
   @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
 }
-
-
-// Block button
-// --------------------------------------------------
+.lmo-btn-xs{
+  @include lmoBtnXs;
+}
 
 @mixin lmoBtnBlock{
   display: block;
@@ -253,27 +202,4 @@ input[type="button"] {
   &.lmo-btn--block {
     width: 100%;
   }
-}
-
-.lmo-btn-link {
-  background: none;
-  border: none;
-  color: $link-color;
-  padding: 0;
-}
-
-.lmo-btn-link:hover {
-  text-decoration: underline;
-}
-
-.lmo-btn-link-no-underline {
-  background: none;
-  border: none;
-  color: $link-color;
-  padding: 0;
-  text-decoration: none;
-}
-
-.lmo-btn-link-no-underline:hover {
-  text-decoration: none;
 }

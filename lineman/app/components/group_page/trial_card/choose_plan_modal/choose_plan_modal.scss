@@ -106,6 +106,6 @@
 }
 
 .choose-plan-modal__contact-link {
-  @include btnLink;
+  @include lmoBtnLink;
   color: $link-color;
 }

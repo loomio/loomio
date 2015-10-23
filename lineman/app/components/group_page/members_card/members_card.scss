@@ -20,5 +20,5 @@
 
 .members-card__manage-members {
   @include cardMinorAction;
-  @include btnLink;
+  @include lmoBtnLink;
 }

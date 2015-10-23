@@ -26,5 +26,5 @@
 
 .discussions-card__show-more {
   @include cardMinorAction;
-  @include btnLink;
+  @include lmoBtnLink;
 }

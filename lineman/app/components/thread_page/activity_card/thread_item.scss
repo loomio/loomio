@@ -43,7 +43,7 @@
 }
 
 .thread-item__action {
-  @include btnLink;
+  @include lmoBtnLink;
   color: $link-color;
 }
 

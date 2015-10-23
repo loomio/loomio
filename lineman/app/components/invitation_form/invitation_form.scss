@@ -43,6 +43,6 @@
 }
 
 .invitation-form__add-message-button {
-  @include btnLink;
+  @include lmoBtnLink;
   color: $link-color;
 }

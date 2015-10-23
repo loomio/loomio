@@ -22,7 +22,7 @@
             %span{aria-hidden: 'true'} &times;
             %span.sr-only{translate: 'invitation.remove_invitation'}
           %invitable.invitation-form__invitation{invitable: 'invitation'}
-      %button.invitation-form__add-message-button.lmo-btn-link{ng-show: 'messageFieldHidden', ng-click: 'showMessageField()', translate: 'invitation.add_custom_message'}
+      %button.invitation-form__add-message-button{ng-show: 'messageFieldHidden', ng-click: 'showMessageField()', translate: 'invitation.add_custom_message'}
       .invitation-form__message-input{ng-show: '!messageFieldHidden'}
         %label{for: 'message_input', translate: 'invitation.invitation_message'}
         %textarea.form-control#message_input{ng-model: 'message'}

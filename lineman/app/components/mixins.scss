@@ -189,12 +189,6 @@ $cardPaddingSize: 15px;
 }
 
 
-@mixin btnLink {
-  background: none;
-  border: none;
-  padding: 0;
-}
-
 @mixin displayFlex {
   display: flex;
   /*display: -webkit-box;*/
