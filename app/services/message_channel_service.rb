@@ -52,12 +52,12 @@ class MessageChannelService
     publish channel, EventSerializer.new(event).as_json
   end
 
-  def self.publish(model, data)
+  def self.publish(channel, data)
     return if Rails.env.test? or !ENV.has_key?('FAYE_URL')
     if ENV['DELAY_FAYE']
-      PrivatePub.delay(priority: 10).publish_to(channel_for(model), data)
+      PrivatePub.delay(priority: 10).publish_to(channel, data)
     else
-      PrivatePub.publish_to(channel_for(model), data)
+      PrivatePub.publish_to(channel, data)
     end
   end
 end
