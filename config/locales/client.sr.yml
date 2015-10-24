@@ -31,6 +31,7 @@ sr:
       edit: Uredi
       like: Sviđa mi se
       unlike: Ne Sviđa
+      update: Ažuriraj
       cancel: Otkaži
       show_more: Prikaži više
       view_all: Vidi Sve
@@ -47,6 +48,7 @@ sr:
     internal_server_error: "Žao nam je, ali nešto je pošlo naopako. Molim pokušajte ponovo."
   start_proposal_card:
     title: Kreiraj predlog
+    helptext: Odluči
   proposal_outcome_panel:
     heading: Ishod
     set_outcome_hint: Koristi ovaj prostor da obavestiš sve o ishodu predloga.
@@ -73,6 +75,35 @@ sr:
     normal: Normalno
     quiet: Tiho
     mute: Isključeno
+    unmute: Uključi
+  thread_volume_card:
+    heading: Obaveštenja
+    body:
+      loud: "Obavesti o svemu: bićete obavešteni ePorukom kada god ima aktivnosti u ovoj niti."
+    change_volume_link: Promeni
+  thread_volume_form:
+    header: Obaveštenja
+    loud_label: Pošalji sve
+    normal_label: Pošalji predloge
+    quiet_label: Nema ePoruka
+    mute_label: Pauziraj nit
+    submit: Ažuriraj
+    messages:
+      loud: Bićete obaveštavani o aktivnostima u ovoj niti.
+      quiet: Nećete biti obaveštavani o ovoj niti.
+      mute: Nit utišana.
+  group_volume_card:
+    heading: Obaveštenja
+    change_volume_link: Promeni
+  group_volume_form:
+    header: Obaveštenja
+    loud_label: Pošalji sve
+    normal_label: Pošalji nove niti i predloge
+    quiet_label: Nema ePoruka
+    mute_label: Utišaj grupu
+    submit: Ažuriraj
+    messages:
+      mute: Grupa utišana.
   inbox:
     clear: Očisti
     latest: Poslednje
@@ -243,8 +274,6 @@ sr:
   group_welcome_modal:
     heading: Dobrodošli u svoju novu grupu
     first_step: "Ti si koordinator grupe, što je kao da si domaćin/ca."
-    second_step: Pogledaj okolo - vidi primere niti i poigraj se sa opcijama.
-    third_step: "Kada si spreman/a, možeš pozvati ljude unutra."
     ok_got_it: "U redu, shvatam!"
   group_cover_modal:
     heading: Nova pokrivna slika
@@ -315,6 +344,11 @@ sr:
     options_label: Opcije
     options:
       label: Opcije
+      edit_group: Podešavanja Grupe
+      manage_members: Upravljanje Članovima
+      add_subgroup: Dodaj Podgrupu
+      leave_group: Napusti Grupu
+      deactivate_group: Deaktiviraj Grupu
     deactivate_group:
       title: Deaktiviraj grupu
       question: Da li ste sigurni da želite deaktivirati ovu grupu?
@@ -333,6 +367,39 @@ sr:
       private: "Privatnost: Ova grupa je vidljiva samo članovima"
       parent_members: "Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}"
       public: "Privatnost: Ova grupa je vidljiva na mreži"
+  confirm_gift_plan_modal:
+    heading: Odabran je poklon plan
+    got_it: "U redu, shvatam!"
+  gift_card:
+    heading: Poklon plan
+    make_a_contribution: Doniraj
+  trial_card:
+    title: 30-odnevna proba
+    choose_plan: Odaberi svoj plan plaćanja
+  choose_plan_modal:
+    heading: Odaberi svoj plan plaćanja
+    gift: Poklon
+    standard: Standardno
+    plus: Plus
+    get_started_for_free: Počni besplatno
+    support_before: Imam čast da
+    support_link: pričam sa tobom
+    support_after: o produženju probnog perioda ili o bilo kom pitanju koje možda imaš.
+    remind_me_later: Podseti me kasnije
+    gift_donation_ask: Pitaćemo članove Vaše grupe za donaciju.
+    unlimited_members: neograničeno članova
+    unlimited_decisions: neograničeno odluka
+    email_support: podrška ePorukom
+    plus_body: "Sve u Standardno, plus:"
+    premium_support: premijum podrška
+    custom_url: poseban URL
+    usage_statistics: statistika korišćenja
+    select: Odaberi
+  subscription_success_modal:
+    heading: "Hvala za postavljanje tvoje pretplate!"
+    contact_link: molim kontaktirajte nas.
+    sign_off: ❤ od Loomio tima
+    ok_got_it: "U redu, shvatam!"
   edit_group_form:
     title: Izmeni Postavke Grupe
     profile:
@@ -519,13 +586,42 @@ sr:
       starred_description: Vidi samo nizove koji su označeni kao važni
       participating: Nizovi u kojima učestvujem
       participating_aria_label: Trenutno prikazuje nizove u kojima učestvujem
+      participating_description: Vidi samo niti u kojima si
       proposals: Predlozi
+      proposals_aria_label: Trenutno prikazuje niti sa aktivnim predlozima
+      proposals_description: Vidi samo niti sa aktivnim predlozima
+      muted: Utišano
+      muted_aria_label: Trenutno prikazuje utišane niti
+      muted_description: Vidi samo niti koje su utišane
+    aria_thread:
+      title: "Naslov niti: {{title}}."
+      unread: "{{count}} nepročitanih stavki."
+      current_proposal: "Trenutni predlog: {{name}}."
+      you_voted: "Vaš glas: {{position}}."
     threads_from:
+      group: Niti od
+      proposals: Predlozi
+      starred: Omiljeni nizovi
       today: Danas
       yesterday: Juče
+      thisweek: Ove nedelje
+      thismonth: Ovog meseca
+      older: Starije od jednog meseca
+  star_toggle:
+    star: Dodaj u omiljene
+  inbox_page:
+    no_threads: "Juhu! Pročitali ste sve niti u svom sandučetu."
+    unread_threads: Nepročitane Niti
+    view_more: Vidi Više
+  groups_page:
+    page_header: Tvoje grupe
   discussion:
+    activity: Aktivnost
     proposals: Predlozi
     previous_proposals: Prethodni Predlozi
+    load_previous: Učitaj ranije aktivnosti
+    you_like_this: Sviđa ti se ovo.
+    liked_by_you_and_someone: "Tebi i {{name}} se sviđa ovo."
     started_by: "Kreirano od strane <strong>{{name}}</strong> "
     volume:
       loud: Obavesti kada god ima aktivnosti u ovom nizu.

@@ -31,6 +31,7 @@ zh-TW:
       edit: 編輯
       like: 讚
       unlike: 收回讚
+      update: 更新
       cancel: 取消
       show_more: 顯示詳細內容
       view_all: 檢視所有
@@ -75,6 +76,54 @@ zh-TW:
     quiet: 安靜
     mute: 靜音
     unmute: 解除靜音
+  thread_volume_card:
+    heading: 討論串通知
+    body:
+      loud: 寄送一切的電子郵件：您將會在這個討論串有任何動態時收到電子郵件。
+      normal: 寄送關於提案的電子郵件：您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
+      quiet: 無電子郵件：您將不會收到任何關於此討論串動態的電子郵件。
+      mute: 討論串靜音：您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
+    change_volume_link: 更改
+  thread_volume_form:
+    header: 討論串通知
+    loud_label: 寄送一切的電子郵件
+    loud_description: 您將會在這個討論串有任何動態時收到電子郵件。
+    normal_label: 寄送關於提案的電子郵件
+    normal_description: 您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
+    quiet_label: 無電子郵件
+    quiet_description: 您將不會收到任何關於此討論串動態的電子郵件。
+    mute_label: 討論串靜音
+    mute_description: 您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
+    submit: 更新
+    messages:
+      loud: 您將會收到關於此討論串動態的電子郵件。
+      normal: 您將會收到關於此討論串提案的電子郵件。
+      quiet: 您將不會收到任何關於此討論串的電子郵件。
+      mute: 討論串已靜音。
+  group_volume_card:
+    heading: 群組通知
+    body:
+      loud: 寄送一切的電子郵件：您將會在這個群組有任何動態時收到電子郵件。
+      normal: 您將會收到關於此群組新討論串與提案的電子郵件。
+      quiet: 無電子郵件：您將不會收到任何關於此群組動態的電子郵件。
+      mute: 群組靜音：您將不會收到關於此群組的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
+    change_volume_link: 更改
+  group_volume_form:
+    header: 群組通知
+    loud_label: 寄送一切的電子郵件
+    loud_description: 您將會在這個群組有任何動態時收到電子郵件。
+    normal_label: 發送關於新討論串與提案的電子郵件
+    normal_description: 您將會收到關於此群組新討論串與提案的電子郵件。
+    quiet_label: 無電子郵件
+    quiet_description: 您將不會收到任何關於此群組動態的電子郵件，除非有人提及您。
+    mute_label: 群組靜音
+    mute_description: 您將不會收到關於此群組的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
+    submit: 更新
+    messages:
+      loud: 您將會收到關於此群組所有動態的電子郵件。
+      normal: 您將會收到關於此群組提案的電子郵件。
+      quiet: 您將不會收到任何關於此群組的電子郵件。
+      mute: 群組靜音。
   inbox:
     clear: 清除
     latest: 最新
@@ -250,7 +299,7 @@ zh-TW:
     heading: 歡迎來到您的新群組
     first_step: 您是群組的協調者，就像是主持人。
     second_step: 四處看看 ── 看看這個範例討論串，順便玩一玩設定吧。
-    third_step: 當您準備好的時候，您可以邀請夥伴們進來。
+    third_step: 當您準備好時，您可以邀請伙伴們進來。
     ok_got_it: 好的，了解了！
   group_cover_modal:
     heading: 新的封面圖片
@@ -325,6 +374,12 @@ zh-TW:
     options_label: 選項
     options:
       label: 選項
+      edit_group: 編輯群組設定
+      manage_members: 管理成員
+      add_subgroup: 新增子群組
+      manage_subscription: 管理群組訂閱
+      leave_group: 離開群組
+      deactivate_group: 停用群組
     deactivate_group:
       title: 停用群組
       question: 您確定您想要停用此群組嗎？
@@ -352,6 +407,50 @@ zh-TW:
       private: 隱私：這個群組現在只對成員可見
       parent_members: "隱私：討論串將會對 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員可見。"
       public: 隱私：這個群組現在被全網路可見
+  confirm_gift_plan_modal:
+    heading: 已選取禮物計畫
+    body: 如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。您的群組成員是否有自願性的捐款。
+    got_it: 好的，知道了！
+  gift_card:
+    heading: 禮物計畫
+    body: "<strong>{{name}}</strong> 是一個禮物支援的群組。若您想要協助 Loomio 完成我們的使命，請點選這個按鈕："
+    make_a_contribution: 作出貢獻
+  trial_card:
+    title: 30 天試用
+    choose_plan: 選擇您的定價方案
+    in_progress_body: "感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的定價方案。"
+    expired_body_html: "<strong>{{name}}</strong> 已經結束了其 Loomio 的試用期。若您想要持續使用它，您將會需要挑選一個適合的定價方案。若您想要與某人講講有關於此的事情，<a href=''>取得聯繫</a>。"
+  choose_plan_modal:
+    heading: 選擇您的定價方案
+    overdue_heading: 要繼續使用 Loomio，請選擇一個付款方案
+    gift: 禮物
+    standard: 標準
+    plus: 白金
+    free_trial_html: "我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。"
+    get_started_for_free: 免費開始
+    gift_body_html: "<p>對於沒有預算支付訂閱費的群組。</p>\n<p>也支援捐款，不需要付任何費用。</p>\n"
+    support_before: 我很高興的
+    support_link: 告訴您
+    support_after: 關於延長您的試用期，或是任何其有您可能會有的需求。
+    remind_me_later: 稍後提醒我
+    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
+    unlimited_members: 無限的成員
+    unlimited_decisions: 無限的決策
+    email_support: 電子郵件支援
+    standard_price_html: "<strong>$19</strong>/月<br><span>或</span> $190/年\n"
+    plus_body: 在標準價格中的每樣東西，再加上：
+    premium_support: 進階支援
+    custom_url: 自定義 URL
+    usage_statistics: 使用統計
+    plus_price_html: "<strong>$179</strong>/月<br><span>or</span> $1790/年\n"
+    select: 選取
+  subscription_success_modal:
+    heading: 感謝您決定訂閱！
+    social_mission: 您的貢獻協助傳遞了我們的社會使命： 任何人都能輕鬆參與、討論決策、影響他人。
+    receipt: 若您想要變更或是取消您的訂閱，或是若您有其他疑問。
+    contact_link: 請聯絡我們。
+    sign_off: 從 Loomio 團隊而來的 ❤
+    ok_got_it: 好的，了解了！
   edit_group_form:
     title: 編輯群組設定
     profile:
@@ -602,6 +701,10 @@ zh-TW:
   thread_context:
     aria_label: 討論串內容
     thread_options: 討論串選項
+    notifications: 通知
+    edit_thread: 編輯
+    move_thread: 移動
+    delete_thread: 刪除
   delete_thread_form:
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？
