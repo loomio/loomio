@@ -58,6 +58,10 @@ describe MessageChannelService do
   end
 
   describe 'publish' do
+    before do
+      expect(Rails.application.secrets).to receive(:faye_url).and_return('fayeurl')
+    end
+
     it 'publishes data to a user model' do
       expect(PrivatePub).to receive(:publish_to).with("/user-#{user.key}", data)
       MessageChannelService.publish(data, to: user)
