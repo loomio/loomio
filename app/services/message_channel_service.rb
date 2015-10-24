@@ -23,7 +23,7 @@ class MessageChannelService
 
   def self.subscribe_to(user:, model:)
     raise AccessDeniedError.new unless can_subscribe?(user: user, model: model)
-    PrivatePub.subscription(channel: channel_for(model), server: ENV['FAYE_URL'])
+    PrivatePub.subscription(channel: channel_for(model), server: Rails.application.secrets.faye_url)
   end
 
   def self.can_subscribe?(user:, model:)
@@ -53,7 +53,7 @@ class MessageChannelService
   end
 
   def self.publish(channel, data)
-    return if Rails.env.test? or !ENV.has_key?('FAYE_URL')
+    return if Rails.application.secrets.faye_url.present?
     if ENV['DELAY_FAYE']
       PrivatePub.delay(priority: 10).publish_to(channel, data)
     else

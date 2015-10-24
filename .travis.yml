@@ -40,7 +40,11 @@ before_script:
 
 script:
   - bundle exec rake travis
-  - RAILS_ENV=test bundle exec rails server > /dev/null &
+  #- RAILS_ENV=test FAYE_URL="http://localhost:9292/faye" PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rails server > /dev/null &
+  #- PRIVATE_PUB_SECRET_TOKEN="abc123" rackup private_pub.ru -E production > /dev/null &
+  # temporarily keep the output on stdout/err
+  - RAILS_ENV=test FAYE_URL="http://localhost:9292/faye" PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rails server &
+  - PRIVATE_PUB_SECRET_TOKEN="abc123" rackup private_pub.ru -E production &
   - cd lineman && lineman spec-ci
   - lineman run & sleep 10
   - lineman grunt spec-e2e
