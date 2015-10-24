@@ -22,6 +22,12 @@ describe Events::NewMotion do
     end
   end
 
+  describe 'channel_object' do
+    it 'uses its group as the channel to publish to' do
+      expect(Events::NewMotion.publish!(motion).send(:channel_object)).to eq discussion.group
+    end
+  end
+
   describe 'notify_webhooks!' do
 
     let(:motion) { build(:motion) }

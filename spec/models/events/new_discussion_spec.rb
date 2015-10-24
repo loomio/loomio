@@ -23,4 +23,10 @@ describe Events::NewDiscussion do
       expect(Events::NewDiscussion.publish!(discussion)).to eq event
     end
   end
+
+  describe 'channel_object' do
+    it 'uses the discussions group as a channel object' do
+      expect(Events::NewDiscussion.publish!(discussion).send(:channel_object)).to eq discussion.group
+    end
+  end
 end
