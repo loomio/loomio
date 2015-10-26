@@ -56,11 +56,11 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def cover_url_desktop
-    object.cover_photo.url(:desktop)
+    cover_photo.url(:desktop)
   end
 
   def has_custom_cover
-    object.cover_photo.present?
+    cover_photo.present?
   end
 
   def members_can_raise_proposals
@@ -73,5 +73,9 @@ class GroupSerializer < ActiveModel::Serializer
 
   def has_multiple_admins
     object.admins.count > 1
+  end
+
+  def cover_photo
+    @cover_photo ||= object.cover_photo
   end
 end

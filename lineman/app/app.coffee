@@ -20,6 +20,9 @@ angular.module('loomioApp', ['ngNewRouter',
   renderer = new marked.Renderer()
   renderer.link = (href, title, text) ->
     "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>";
+  renderer.paragraph = (text) ->
+    text = text.replace(/([\s(\[]+|^)@([a-zA-Z0-9]+)([\s)\]\,\?]|$)/g, "$1<a class='lmo-user-mention' href='/u/$2'>@$2</a>$3")
+    "<p>#{text}</p>"
 
   markedProvider.setOptions
     renderer: renderer
@@ -80,6 +83,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' }
+    {path: '/u/:key', component: 'userPage' }
+    {path: '/u/:key/:stub', component: 'userPage' }
   ])
 
   return

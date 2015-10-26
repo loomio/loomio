@@ -7,7 +7,7 @@
           %user_avatar{user: 'membership.user()', size: 'medium', coordinator: 'membership.admin'}
         .media-body
           .memberships-page__member-info
-            %div {{::membership.user().name}}
+            %a{lmo-href-for: 'membership.user()'} {{::membership.user().name}}
             %div @{{::membership.user().username}}
   .row.memberships-page__table-row
     .members-card__invite-members.col-xs-6{ng-if: 'membershipsPage.canAddMembers()'}

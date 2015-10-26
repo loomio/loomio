@@ -12,7 +12,7 @@ class Notification < ActiveRecord::Base
   scope :unviewed, -> { where(viewed: false) }
 
   def publish_message
-    MessageChannelService.publish_notification(self)
+    MessageChannelService.publish(NotificationSerializer.new(self).as_json, to: self.user)
   end
 end
 

@@ -280,6 +280,8 @@ fr:
     email: Votre courriel
     email_error: "N'est pas une adresse de courriel valide"
     group_name: Nom du groupe
+    group_description: Description du groupe
+    group_description_placeholder: Décrivez le but de votre groupe pour que les membres sachent pourquoi ils sont là.
     group_name_error: Le nom du groupe est requis
     terms_html: "En créant un groupe, vous acceptez les  <a href='%{link}' target='_blank'>termes d'utilisation</a> de Loomio"
     success:
@@ -287,6 +289,7 @@ fr:
       email_delivered: "Nous avons envoyé un courriel à %{email}. S'il vous plaît suivez le lien à l'intérieur de celui-ci afin de configurer votre nouveau groupe."
       email_not_arrived: "Le courriel n'est pas arrivé ?"
       please_hold: "S'il vous plaît prévoir jusqu'à cinq 5 minutes pour la livraison du courriel  et veuillez vérifier votre dossier spam."
+    start_making_decisions: "Pour commencer à prendre des décisions collectives sur Loomio, créez un groupe gratuitement:"
   group_form:
     name: Nom du groupe
     description: Description
@@ -664,6 +667,22 @@ fr:
     vote: Vous pouvez changer votre position à tout moment
   pricing_page:
     header: Tarification
+    gift: Cadeau
+    standard: Standard
+    plus: Plus
+    free_trial_html: "Nous vous demanderons de choisir votre plan tarifaire après une <span>période d'essai gratuite de 30 jours</span>. Pas besoin de carte bancaire."
+    get_started_for_free: Commencez gratuitement
+    gift_body_html: "<p>Pour les groupes qui n'ont pas le budget pour payer une souscription.</p>\n<p>Dons acceptés, sans obligation de paiement.</p>\n"
+    gift_donation_ask: Nous proposerons à votre membres de faire un don.
+    unlimited_members: membres illimités
+    unlimited_decisions: décisions illimitées
+    email_support: Support courriel
+    standard_price_html: "<strong>$19</strong>/mois<br><span>ou</span> $190/an\n"
+    plus_body: "Tout ce qui est compris dans Standard, plus:"
+    premium_support: support Premium
+    custom_url: lien URL personnalisé
+    usage_statistics: "statistiques d'utilisation"
+    plus_price_html: "<strong>$179</strong>/mois<br><span>ou</span> $1790/an\n"
   contribution:
     any_amount: "ou un don ponctuel de "
     currency_desc: Les montants sont en Dollars US
