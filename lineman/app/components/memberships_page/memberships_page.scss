@@ -22,6 +22,14 @@
   clear: both;
 }
 
+.memberships-page__remove-link {
+  @include lmoBtnNude;
+}
+
+.memberships-page__make-coordinator {
+  @include lmoBtnNude;
+}
+
 .memberships-page__member-info {
   padding-left: 10px;
 }

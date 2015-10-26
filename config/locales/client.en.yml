@@ -622,7 +622,8 @@ en:
   cancel_invitation_form:
     heading: Cancel invitation
     question: Are you sure you want to cancel this invitation?
-    submit: Cancel invitation
+    submit: "Yes, cancel invitation"
+    cancel: 'No'
     messages:
       success: Invitation cancelled
 

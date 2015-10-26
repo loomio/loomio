@@ -9,5 +9,5 @@
       %button.btn.btn-success.btn-block.lmo-btn-icon{ng_click: 'invitePeople()'}
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }
-    %button.members-card__manage-members{lmo-href-for: 'group', lmo-href-action: 'memberships'}
+    %a.members-card__manage-members{lmo-href-for: 'group', lmo-href-action: 'memberships'}
       %span{translate: 'group_page.all_members', translate-value-count: '{{group.membershipsCount}}'}

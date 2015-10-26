@@ -36,10 +36,10 @@
     %star_toggle{thread: 'thread', aria-hidden: 'true'}
 
   .thread-preview__actions.hidden-xs
-    %button.lmo-btn--default.lmo-btn-sm.thread-preview__mark-as-read{ng-click: 'thread.markAsRead()', ng-class: '{disabled: !thread.isUnread()}', title: "{{'dashboard_page.mark_as_read' | translate }}"}>
+    %button.thread-preview__mark-as-read{ng-click: 'thread.markAsRead()', ng-class: '{disabled: !thread.isUnread()}', title: "{{'dashboard_page.mark_as_read' | translate }}"}>
       %i.fa.fa-check>
-    %button.lmo-btn--default.lmo-btn-sm.thread-preview__mute{ng-click: 'changeVolume("mute")', ng-show: '!thread.isMuted()', title: "{{ 'volume_levels.mute' | translate }}" }>
+    %button.thread-preview__mute{ng-click: 'changeVolume("mute")', ng-show: '!thread.isMuted()', title: "{{ 'volume_levels.mute' | translate }}" }>
       %i.fa.fa-volume-off
       %i.fa.fa-times>
-    %button.lmo-btn--default.lmo-btn-sm.thread-preview__mute{ng-click: 'changeVolume("normal")', ng-show: 'thread.isMuted()', title: "{{ 'volume_levels.unmute' | translate }}"}>
+    %button.thread-preview__mute{ng-click: 'changeVolume("normal")', ng-show: 'thread.isMuted()', title: "{{ 'volume_levels.unmute' | translate }}"}>
       %i.fa.fa-volume-down>
