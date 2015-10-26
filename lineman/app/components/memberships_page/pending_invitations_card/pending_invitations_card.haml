@@ -12,7 +12,7 @@
           %td.pending-invitations-card__recipient-email
             {{invitation.recipientEmail}}
           %td.pending-invitations-card__invitation-url
-            {{baseUrl}}/invitations/{{invitation.token}}
+            {{baseUrl}}invitations/{{invitation.token}}
           %td.align-center
             %a.pending-invitations-card__cancel-link{href: '', ng-click: 'openCancelForm(invitation)'}
               %i.fa.fa-lg.fa-times-circle
