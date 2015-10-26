@@ -9,6 +9,10 @@
   margin-bottom: 16px;
 }
 
+.dashboard-page__filter-dropdown{
+  float: right;
+}
+
 .dashboard-page__date-range{
   @include fontSmall;
   color: $grey-on-grey;

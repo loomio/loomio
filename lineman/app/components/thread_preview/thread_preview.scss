@@ -25,6 +25,21 @@
   margin-top: $thinPaddingSize;
 }
 
+.thread-preview__mark-as-read{
+  @include lmoBtnDefault;
+  @include lmoBtnSm;
+}
+
+.thread-preview__mute{
+  @include lmoBtnDefault;
+  @include lmoBtnSm;
+}
+
+.thread-preview__mute{
+  @include lmoBtnDefault;
+  @include lmoBtnSm;
+}
+
 .thread-preview__link {
   display: block;
   padding: $thinPaddingSize $cardPaddingSize;
