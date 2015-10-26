@@ -7,7 +7,7 @@ class MessageChannelService
 
   def self.subscribe_to(user:, model:)
     raise AccessDeniedError.new unless can_subscribe?(user: user, model: model)
-    PrivatePub.subscription(channel: channel_for(model), server: ENV['FAYE_URL'])
+    PrivatePub.subscription(channel: channel_for(model), server: Rails.application.secrets.faye_url)
   end
 
   def self.can_subscribe?(user:, model:)
