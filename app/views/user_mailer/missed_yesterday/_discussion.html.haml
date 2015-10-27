@@ -13,7 +13,8 @@
     = render 'thread_mailer/motion', motion: motion
 
   .activity-feed
-    - discussion.items.where('created_at > ?', @time_start).order('created_at').each do |item|
+    - reader = @reader_cache.get_for(discussion)
+    - discussion.items.where('created_at > ?', reader.last_read_at || @time_start).order('created_at').each do |item|
       - next unless ['new_comment', 'new_vote' ].include? item.kind
       = render "thread_mailer/#{item.kind}", item: item
 
