@@ -22,6 +22,3 @@ angular.module('loomioApp').directive 'closingAtField', ->
 
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.timeZone = jstz.determine().name()
-
-    $scope.closeDateTimePicker = ->
-      $scope.dropdownIsOpen = false
