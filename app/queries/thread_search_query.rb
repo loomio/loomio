@@ -45,7 +45,7 @@ class ThreadSearchQuery
   end
 
   def relevant_records_for(model)
-    return [] unless ENV['ADVANCED_SEARCH_ENABLED']
+    return [] unless Rails.application.secrets.advanced_search_enabled
     SearchVector.execute_search_query self.class.send(:"relevant_#{model}_sql", top_results.map { |d| d['id'] }), query: @query
   end
 

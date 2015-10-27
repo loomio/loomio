@@ -21,7 +21,7 @@ class ModelCache
   end
 
   def motion_for(discussion_id)
-    motions.select { |m| m.discussion_id == discusison_id.to_i }.first
+    motions.select { |m| m.discussion_id == discussion_id.to_i }.first
   end
 
   def comment_for(discussion_id)

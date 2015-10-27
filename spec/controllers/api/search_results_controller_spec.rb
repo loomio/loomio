@@ -11,12 +11,7 @@ describe API::SearchResultsController do
     before do
       group.admins << user
       sign_in user
-      @search_setting = ENV['ADVANCED_SEARCH_ENABLED']
-      ENV['ADVANCED_SEARCH_ENABLED'] = 'Y'
-    end
-
-    after do
-      ENV['ADVANCED_SEARCH_ENABLED'] = @search_setting
+      Rails.application.secrets.stub(:advanced_search_enabled).and_return(true)
     end
 
     it 'does not find irrelevant threads' do
@@ -30,7 +25,7 @@ describe API::SearchResultsController do
       search_for('find')
 
       expect(@discussion_ids).to include discussion.id
-      expect(@priorities).to include 1
+      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[3]
     end
 
     it "can find a discussion by description" do
@@ -38,7 +33,7 @@ describe API::SearchResultsController do
       search_for('find')
 
       expect(@discussion_ids).to include discussion.id
-      expect(@priorities).to include 0.2
+      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[1]
     end
 
     it "can find a discussion by proposal name" do
@@ -48,7 +43,7 @@ describe API::SearchResultsController do
 
       expect(@discussion_ids).to include discussion.id
       expect(@motion_ids).to include motion.id
-      expect(@priorities).to include 0.4
+      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[2]
     end
 
     it "can find a discussion by proposal description" do
@@ -58,7 +53,7 @@ describe API::SearchResultsController do
 
       expect(@discussion_ids).to include discussion.id
       expect(@motion_ids).to include motion.id
-      expect(@priorities).to include 0.2
+      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[1]
     end
 
     it "can find a discussion by comment body" do
@@ -67,7 +62,7 @@ describe API::SearchResultsController do
       result = search_for('find')
       expect(@discussion_ids).to include discussion.id
       expect(@comment_ids).to include comment.id
-      expect(@priorities).to include 0.1
+      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[0]
     end
 
     it "does not display content the user does not have access to" do
