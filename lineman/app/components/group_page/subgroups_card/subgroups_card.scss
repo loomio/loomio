@@ -24,6 +24,12 @@
   @include fontHelveticaBold;
   margin-left: 60px;
 }
+
 .subgroups-card__list-item-description{
   margin-left: 60px;
+}
+
+.subgroups-card__add-subgroup-link {
+  @include cardMinorAction;
+  @include lmoBtnLink;
 }
