@@ -61,6 +61,7 @@
 .thread-preview__proposal-name{
   font-size: 93%;
   padding-left: $thinPaddingSize;
+  padding-right: 5px;
   @include truncateText;
 }
 
