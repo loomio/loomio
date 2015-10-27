@@ -185,6 +185,16 @@ $cardPaddingSize: 15px;
 
 }
 
+@mixin cardMinorAction {
+  @include fontHelveticaLight;
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
+
 @mixin displayFlex {
   display: flex;
   /*display: -webkit-box;*/

@@ -1,5 +1,9 @@
 @import 'bootstrap_overrides';
 @import 'bootstrap';
-@import '../components/mixins';
+@import '0_mixins.scss';
+@import '1_base.scss';
+@import '1_buttons.scss';
+@import '1_layout.scss';
+@import '1_utilities.scss';
 @import 'modules';
 

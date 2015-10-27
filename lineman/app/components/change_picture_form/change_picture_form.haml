@@ -1,9 +1,7 @@
 .change-picture-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1{translate: 'profile_page.change_picture.title'}
 
   .modal-body
@@ -28,4 +26,4 @@
           %span.lmo-option-text{translate: 'profile_page.change_picture.use_uploaded'}
         %input.hidden.change-picture-form__file-input{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
   .modal-footer
-    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    %button.lmo-btn--cancel{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

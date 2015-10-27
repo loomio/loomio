@@ -1,8 +1,6 @@
 .subscription-success-modal
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1.modal-title{translate: 'subscription_success_modal.heading'}
 
   .modal-body
@@ -12,8 +10,8 @@
       %p
         %span{translate: 'subscription_success_modal.receipt'}
         %span
-          %a{href: '', translate: 'subscription_success_modal.contact_link', ng-click: 'openIntercom()'}
+          %button.subscription-success-modal__contact-link{translate: 'subscription_success_modal.contact_link', ng-click: 'openIntercom()'}
       %p{translate: 'subscription_success_modal.sign_off'}
 
   .modal-footer.lmo-clearfix
-    %button.btn.btn-primary{type: 'button', ng-click: '$close()', translate: 'subscription_success_modal.ok_got_it'}
+    %button.lmo-btn--submit{type: 'button', ng-click: '$close()', translate: 'subscription_success_modal.ok_got_it'}

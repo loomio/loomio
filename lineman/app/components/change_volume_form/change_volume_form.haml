@@ -2,9 +2,7 @@
   .lmo-disabled-form{ng-show: 'isDisabled'}
   %form{ng-submit: 'submit()'}
     .modal-header
-      %button{type: 'button', class: 'close', ng-click: '$close()'}
-        %span{aria-hidden: 'true'} &times;
-        %span.sr-only{translate: 'common.action.cancel'}
+      %modal_header_cancel_button
       %h1.lmo-h1{translate: '{{translateRoot}}.header'}
     .modal-body
       %ul.change-volume-form__list
@@ -14,5 +12,5 @@
             %strong{translate: '{{translateRoot}}.{{level}}_label'}
             %p.change-volume-form__description{translate: '{{translateRoot}}.{{level}}_description'}
     .modal-footer
-      %button.btn.btn-default.change-volume-form__cancel{type: 'button', translate: 'common.action.cancel', ng-click: '$close()'}
-      %button.btn.btn-primary.change-volume-form__submit{type: 'submit', ng-disabled: 'isDisabled', translate: 'common.action.update'}
+      %button.change-volume-form__cancel{type: 'button', translate: 'common.action.cancel', ng-click: '$close()'}
+      %button.change-volume-form__submit{type: 'submit', ng-disabled: 'isDisabled', translate: 'common.action.update'}

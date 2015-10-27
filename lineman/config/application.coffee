@@ -13,7 +13,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       enabled: true
       port: 3000
 
-  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-cucumber', 'grunt-contrib-copy', 'grunt-exec']
+  loadNpmTasks: ["grunt-angular-templates", "grunt-concat-sourcemap", "grunt-ng-annotate", "grunt-haml", 'grunt-sass', 'grunt-contrib-copy', 'grunt-exec']
 
   removeTasks:
     #dist: ['uglify']

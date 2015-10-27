@@ -30,7 +30,7 @@
         %validation_errors{subject: 'profilePage.user', field: 'selectedLocale'}
 
       .profile-page__update-account.lmo-vertical-spacer
-        %button.btn.btn-primary.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
+        %button.lmo-btn--submit.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
 
       .profile-page__change-password.lmo-vertical-spacer
         %a.lmo-link{href: '', ng-click: 'profilePage.changePassword()', translate: 'profile_page.change_password_link'}

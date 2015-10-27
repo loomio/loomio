@@ -1,13 +1,11 @@
 .cover-photo-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1.modal-title{translate: 'group_cover_modal.heading'}
 
   .modal-body
-    %button.lmo-btn-link{href: '', ng-click: 'selectFile()'}
+    %button.lmo-btn-link{ng-click: 'selectFile()'}
       .lmo-box--small.lmo-float--left
         .user-avatar__initials--small
           %i.fa.fa-lg.fa-camera
@@ -18,4 +16,4 @@
     %p{translate: 'group_cover_modal.image_size_helptext'}
 
   .modal-footer.lmo-clearfix
-    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    %button.lmo-btn--cancel{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
