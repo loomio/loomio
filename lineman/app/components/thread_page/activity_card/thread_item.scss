@@ -10,13 +10,15 @@
   }
   span span {
     color: $primary-text-color;
-    padding-right: 5px;
   }
 }
 
 .thread-item__title {
   color: $grey-on-white;
   display: inline-block;
+  & > span {
+    padding-right: 5px;
+  }
 }
 
 .thread-item__body {
