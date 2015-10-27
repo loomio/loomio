@@ -15,10 +15,10 @@
     .col-xs-3.align-center
       %input.memberships-page__make-coordinator{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'toggleAdmin(membership)', ng-disabled: '!canToggleAdmin(membership)'}
     .col-xs-2.align-center
-      %a.memberships-page__remove-link{href: '', ng-click: 'openRemoveForm(membership)', ng-show: 'canRemoveMembership(membership)'}
+      %button.memberships-page__remove-link{href: '', ng-click: 'openRemoveForm(membership)', ng-show: 'canRemoveMembership(membership)'}
         %i.fa.fa-lg.fa-times-circle
   .row.memberships-page__table-row
     .members-card__invite-members.col-xs-6{ng-if: 'canAddMembers()'}
-      %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'invitePeople()'}
+      %button.lmo-btn--featured.lmo-btn--block.lmo-btn--icon{href: '', ng_click: 'invitePeople()'}
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }

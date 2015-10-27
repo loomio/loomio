@@ -11,3 +11,13 @@
   clear: both;
   padding-top: 10px;
 }
+
+.members-card__invite-members-btn{
+  @include lmoBtnFeatured;
+  @include lmoBtnBlock;
+  @include lmoBtnIcon;
+}
+
+.members-card__manage-members {
+  @include cardMinorAction;
+}

@@ -11,6 +11,6 @@
             %div @{{::membership.user().username}}
   .row.memberships-page__table-row
     .members-card__invite-members.col-xs-6{ng-if: 'membershipsPage.canAddMembers()'}
-      %a.btn.btn-success.btn-block.lmo-btn-icon{href: '', ng_click: 'membershipsPage.invitePeople()'}
+      %a.lmo-btn--featured.lmo-btn--block.lmo-btn--icon{href: '', ng_click: 'membershipsPage.invitePeople()'}
         %i.fa.fa-lg.fa-plus>
         %span{translate: 'group_page.invite_people' }

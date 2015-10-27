@@ -5,6 +5,6 @@
     %start_menu_option{text: 'start_group', icon: 'group', action: 'startGroup', group: 'currentGroup', hotkey: 'pressedG'}
     %start_menu_option{text: 'start_thread', icon: 'pencil', action: 'startThread', group: 'currentGroup', hotkey: 'pressedT'}
 
-  %a.start-menu__start-button.start-menu__menu-button.start-menu__over-modal{href: '', ng-click: 'toggleStartMenu()'}
+  %button.start-menu__start-button.start-menu__menu-button.start-menu__over-modal{ng-click: 'toggleStartMenu()', title: "{{'start_menu.title' | translate}}"}
     %i.fa.fa-plus.fa-2x{ng-if: '!startMenuOpen'}
     %i.fa.fa-times.fa-2x{ng-if: 'startMenuOpen'}

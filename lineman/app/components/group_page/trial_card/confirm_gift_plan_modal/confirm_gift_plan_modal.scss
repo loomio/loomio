@@ -4,13 +4,10 @@
 }
 
 .confirm-gift-plan-modal__cancel-button {
+  @include lmoBtnCancel;
   float: left;
 }
 
 .confirm-gift-plan-modal__submit-button {
-  color: #fff;
-  background-color: #4185DE;
-  color: #fff;
-  &:hover { color: #fff; }
-  &:focus { color: #fff; }
+  @include lmoBtnFeatured;
 }

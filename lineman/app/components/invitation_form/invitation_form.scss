@@ -41,3 +41,8 @@
   width: 50px;
   height: 50px;
 }
+
+.invitation-form__add-message-button {
+  @include lmoBtnLink;
+  color: $link-color;
+}
