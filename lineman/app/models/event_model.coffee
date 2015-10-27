@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @eventTypeMap: {
       'user_added_to_group':            'group',
       'membership_request_approved':    'group',
-      'membership_requested':           'group',
+      'membership_requested':           'membershipRequest',
       'new_discussion':                 'discussion',
       'discussion_edited':              'discussion',
       'new_motion':                     'proposal',

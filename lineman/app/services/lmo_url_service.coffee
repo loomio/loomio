@@ -12,6 +12,10 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     routePath: (route) ->
       "/".concat(route).replace('//', '/')
 
+    membershipRequest: (mr, params = {}, options = {}) ->
+      #@buildModelRoute('g', mr.group().key, 'membership_requests', params, options)
+      @route model: mr.group(), action: 'membership_requests', params: params
+
     group: (g, params = {}, options = {}) ->
       @buildModelRoute('g', g.key, g.fullName, params, options)
 
