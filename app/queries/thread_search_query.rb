@@ -1,7 +1,7 @@
 class ThreadSearchQuery
 
   WEIGHT_VALUES = [
-    0.05, # D
+    0.03, # D
     0.1,  # C
     0.3,  # B
     1.0   # A
