@@ -8,3 +8,8 @@
 .subscription-success-modal__message {
   margin-top: 20px;
 }
+
+.subscription-success-modal__contact-link {
+  @include lmoBtnLink;
+  color: $link-color;
+}

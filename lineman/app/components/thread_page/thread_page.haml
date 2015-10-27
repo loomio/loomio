@@ -5,10 +5,10 @@
 
     .lmo-thread-column-left
       %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
-        .thread-actions.lmo-btn-group.pull-right
+        .thread-actions.pull-right
           %star_toggle{thread: 'threadPage.discussion'}
-          %span.lmo-btn-wrapper{uib-dropdown: '',  ng-if: 'threadPage.showContextMenu()'}
-            %button.thread-context__dropdown-button.btn.lmo-btn-nude{uib-dropdown-toggle: ''}
+          %span{uib-dropdown: '',  ng-if: 'threadPage.showContextMenu()'}
+            %button.thread-context__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: ''}
               .sr-only{translate: 'thread_context.thread_options'}
               %i.fa.fa-fw.fa-chevron-down
             .thread-context__dropdown.uib-dropdown-menu.lmo-dropdown-menu

@@ -1,8 +1,6 @@
 .group-welcome-modal
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1.modal-title{translate: 'group_welcome_modal.heading'}
 
   .modal-body
@@ -12,4 +10,4 @@
     %p{translate: 'group_welcome_modal.third_step'}
 
   .modal-footer.lmo-clearfix
-    %button.btn.btn-primary{type: 'button', ng-click: '$close()', translate: 'group_welcome_modal.ok_got_it'}
+    %button.lmo-btn--primary{type: 'button', ng-click: '$close()', translate: 'group_welcome_modal.ok_got_it'}

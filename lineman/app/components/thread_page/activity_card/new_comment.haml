@@ -1,6 +1,6 @@
 .thread-item.thread-item--comment{ng_controller: 'NewCommentItemController', id: 'comment-{{comment.id}}' }
   .pull-right{uib-dropdown: '', ng-if: 'showContextMenu()'}
-    %button.thread-item__dropdown-button.btn.lmo-btn-nude{uib-dropdown-toggle: '', type: 'button'}
+    %button.thread-item__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: '', type: 'button'}
       %i.fa.fa-chevron-down
       .sr-only{translate: 'new_comment_item.context_menu.aria_label'}
     .uib-dropdown-menu.lmo-dropdown-menu
@@ -26,10 +26,10 @@
 
   .thread-item__footer
     .thread-item__actions{ng-if: 'showCommentActions()'}
-      %button.thread-item__action--like.lmo-btn-link{type: 'button', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
-      %button.lmo-btn-link{type: 'button', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
+      %button.thread-item__action.thread-item__action--like{type: 'button', translate: 'common.action.like', ng-show: '!currentUserLikesIt()', ng_click: 'like()'}>
+      %button.thread-item__action{type: 'button', translate: 'common.action.unlike', ng_click: 'unlike()', ng-show: 'currentUserLikesIt()'}>
       %span{aria-hidden: 'true'}·
-      %button.thread-item__action--reply.lmo-btn-link{translate: 'common.action.reply', type: 'button', ng_click: 'reply()'}>
+      %button.thread-item__action.thread-item__action--reply{translate: 'common.action.reply', type: 'button', ng_click: 'reply()'}>
     .thread-item__timestamp
       %span{aria-hidden: 'true'}·
       %a{lmo-href-for: 'comment'}>
