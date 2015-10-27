@@ -61,7 +61,9 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @setFilter = (filter = 'show_all') =>
     @filter = filter
     @refresh()
+
   @setFilter()
+  $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
   $scope.$on 'homePageClicked', => @setFilter()
   $scope.$on 'starToggled', @refresh
 
