@@ -17,15 +17,15 @@ class ModelCache
   end
 
   def discussion_for(discussion_id)
-    discussions.select { |d| d.id == discussion_id.to_i }
+    discussions.select { |d| d.id == discussion_id.to_i }.first
   end
 
   def motion_for(discussion_id)
-    motions.select { |m| m.discussion_id == discusison_id.to_i }
+    motions.select { |m| m.discussion_id == discusison_id.to_i }.first
   end
 
   def comment_for(discussion_id)
-    comments.select { |c| c.discussion_id == discussion_id.to_i }
+    comments.select { |c| c.discussion_id == discussion_id.to_i }.first
   end
 
   def discussion_blurb_for(discussion_id)
