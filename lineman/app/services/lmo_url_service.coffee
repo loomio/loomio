@@ -13,7 +13,6 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
       "/".concat(route).replace('//', '/')
 
     membershipRequest: (mr, params = {}, options = {}) ->
-      #@buildModelRoute('g', mr.group().key, 'membership_requests', params, options)
       @route model: mr.group(), action: 'membership_requests', params: params
 
     group: (g, params = {}, options = {}) ->
