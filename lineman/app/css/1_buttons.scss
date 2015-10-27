@@ -103,6 +103,7 @@
 
 @mixin lmoBtnCancel{
   @include lmoBtnDefault;
+  float: left;
 }
 .lmo-btn--cancel{
   @include lmoBtnCancel;
