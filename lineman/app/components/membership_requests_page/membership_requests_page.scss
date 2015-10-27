@@ -1,4 +1,5 @@
 .membership-requests-page {
+  @include lmoRow;
 }
 
 .membership-requests-page__pending-requests,

@@ -1,7 +1,7 @@
 .lmo-one-column-layout{
   margin: auto;
   max-width: $small-max-px;
-  padding-top: 96px;
+  padding-top: 48px;
   z-index: 0;
   min-width: 320px;
 }
@@ -11,6 +11,10 @@
   padding-top: 48px;
   z-index: 0;
   min-width: 320px;
+}
+
+.lmo-row{
+  @include lmoRow;
 }
 
 @media (max-width: $tiny-max-px){
@@ -65,9 +69,7 @@
 
 @media (min-width: $tiny-max-px){
   /* applied to everything bigger than a tiny screen */
-  .lmo-row{
-    padding: 0 10px;
-  }
+
 }
 
 @media (max-width: $small-max-px){

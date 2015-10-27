@@ -1,5 +1,5 @@
-.group-page {
-  padding-top: 48px;
+.group-page{
+  @include lmoRow;
 }
 
 .group-page__description {
