@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
     setLastClosedProposal = ->
       return unless $scope.anyProposals() and !$scope.discussion.hasActiveProposal()
       proposal = $scope.discussion.closedProposals()[0]
-      proposal if moment.add(-1, 'month') < proposal.closedAt
+      proposal if moment().add(-1, 'month') < proposal.closedAt
 
     $scope.$on 'setSelectedProposal', $scope.setSelectedProposal
 
