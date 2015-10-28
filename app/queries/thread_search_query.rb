@@ -1,5 +1,12 @@
 class ThreadSearchQuery
 
+  WEIGHT_VALUES = [
+    0.03, # D
+    0.1,  # C
+    0.3,  # B
+    1.0   # A
+  ]
+
   def initialize(query, user: nil, offset: 0, limit: 5, since: nil, till: nil)
     @query, @user, @offset, @limit, @since, @until  = query, user, offset, limit, since, till
   end
@@ -38,7 +45,7 @@ class ThreadSearchQuery
   end
 
   def relevant_records_for(model)
-    return [] unless ENV['ADVANCED_SEARCH_ENABLED']
+    return [] unless Rails.application.secrets.advanced_search_enabled
     SearchVector.execute_search_query self.class.send(:"relevant_#{model}_sql", top_results.map { |d| d['id'] }), query: @query
   end
 
@@ -62,9 +69,9 @@ class ThreadSearchQuery
     "SELECT id,
             rank,
             :query as query,
-            #{field_as_blurb_sql('discussions.description')}
+            #{field_as_blurb_sql('discussions.description')} as blurb
      FROM (
-        SELECT   discussion_id, search_vector, ts_rank_cd(search_vector, plainto_tsquery(:query)) as rank
+        SELECT   discussion_id, search_vector, #{rank_sql} as rank
         FROM     discussion_search_vectors
         WHERE    search_vector @@ plainto_tsquery(:query)
         AND      discussion_id IN (#{visible_ids.join(',')})
@@ -82,8 +89,8 @@ class ThreadSearchQuery
               id,
               discussion_id,
               name,
-              ts_rank_cd(#{field_weights_sql(motion_field_weights)}, plainto_tsquery(:query)) as rank,
-              #{field_as_blurb_sql('description')}
+              #{rank_sql(motion_field_weights)} as rank,
+              #{field_as_blurb_sql('description')} as blurb
      FROM     motions
      WHERE    motions.discussion_id IN (#{top_ids.join(',')})
      AND      #{field_weights_sql(motion_field_weights)} @@ plainto_tsquery(:query)
@@ -95,8 +102,8 @@ class ThreadSearchQuery
               id,
               discussion_id,
               user_id,
-              ts_rank_cd(#{field_weights_sql(comment_field_weights)}, plainto_tsquery(:query)) as rank,
-              #{field_as_blurb_sql('body')}
+              #{rank_sql(comment_field_weights)} as rank,
+              #{field_as_blurb_sql('body')} as blurb
      FROM     comments
      WHERE    comments.discussion_id IN (#{top_ids.join(',')})
      AND      #{field_weights_sql(comment_field_weights)} @@ plainto_tsquery(:query)
@@ -105,22 +112,27 @@ class ThreadSearchQuery
 
   private
 
+  def self.rank_sql(search_vector = nil, search_vector_column = 'search_vector')
+    "ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', #{field_weights_sql(search_vector) || search_vector_column}, plainto_tsquery(:query))"
+  end
+
   def self.field_as_blurb_sql(field)
-    "ts_headline(#{field}, plainto_tsquery(:query), 'ShortWord=0') as blurb"
+    "ts_headline(#{field}, plainto_tsquery(:query), 'ShortWord=0')"
   end
 
   def self.field_weights_sql(vector)
-    vector.map do |field, weight|
-      "setweight(to_tsvector(coalesce(#{field}, '')), '#{weight}')"
-    end.join ' || '
+    return unless vector
+    vector.map { |field, weight| "setweight(to_tsvector(coalesce(#{field}, '')), '#{weight}')" }.join ' || '
   end
 
   def self.discussion_field_weights
-    {'discussions.title'        => :A,
-     'motion_names'             => :B,
-     'discussions.description'  => :C,
-     'motion_descriptions'      => :C,
-     'comment_bodies'           => :D}
+    {
+      'discussions.title'        => :A,
+      'motion_names'             => :B,
+      'discussions.description'  => :C,
+      'motion_descriptions'      => :C,
+      'comment_bodies'           => :D
+   }
   end
 
   def self.motion_field_weights
