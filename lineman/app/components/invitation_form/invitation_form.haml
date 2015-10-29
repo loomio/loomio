@@ -28,5 +28,5 @@
         %textarea.form-control#message_input{ng-model: 'message'}
 
   .modal-footer
-    %button.lmo-btn--cancel{ng-click: '$close()', translate: 'common.action.cancel'}
     %button.invitation-form__submit.lmo-btn--submit{ng-click: 'submit()', ng-disabled: 'isDisabled', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
+    %button.lmo-btn--cancel{ng-click: '$close()', translate: 'common.action.cancel'}
