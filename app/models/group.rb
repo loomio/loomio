@@ -200,7 +200,7 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
-  define_counter_cache(:motions_count)     { |group| group.discussions.sum(:motions_count) }
+  define_counter_cache(:motions_count)     { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:discussions_count) { |group| group.discussions.published.count }
   define_counter_cache(:memberships_count) { |group| group.memberships.count }
 
@@ -268,10 +268,6 @@ class Group < ActiveRecord::Base
 
   def closed_motions
     motions.closed
-  end
-
-  def motions_count
-    discussions.published.sum :motions_count
   end
 
   def archive!
