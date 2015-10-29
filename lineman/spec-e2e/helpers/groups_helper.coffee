@@ -2,6 +2,9 @@ module.exports = new class GroupsHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_group')
 
+  loadNew: ->
+    browser.get('http://localhost:8000/development/setup_new_group')
+
   loadToJoin: (value) ->
     browser.get("http://localhost:8000/development/setup_group_to_join?membership_granted_upon=#{value}")
 
@@ -152,3 +155,15 @@ module.exports = new class GroupsHelper
 
   submitChangeVolumeForm: ->
     element(By.css('.change-volume-form__submit')).click()
+
+  welcomeModal: ->
+    element(By.css('.group-welcome-modal'))
+
+  dismissWelcomeModal: ->
+    element(By.css('.lmo-btn--primary')).click()
+
+  visitMembersPage: ->
+    element(By.css('.members-card__manage-members')).click()
+
+  returnToGroupPage: ->
+    element(By.css('.lmo-h1')).click()

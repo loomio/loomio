@@ -107,6 +107,20 @@ describe Group do
         }.to change { @group.reload.discussions_count }.by(-1)
       end
     end
+
+    describe 'invitations_count' do
+      before do
+        @group = create(:group)
+        @user  = create(:user)
+      end
+
+      it 'increments when a new invitation is created' do
+        InvitationService.invite_to_group(recipient_emails: [@user.email],
+                                          group: @group,
+                                          inviter: @group.creator)
+        expect(@group.invitations_count).to eq 1
+      end
+    end
   end
 
   describe "#voting_motions" do

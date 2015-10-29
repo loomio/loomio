@@ -6,6 +6,16 @@ describe 'Group Page', ->
   discussionForm = require './helpers/discussion_form_helper.coffee'
   threadPage = require './helpers/thread_helper.coffee'
 
+  describe 'starting a group', ->
+
+    it 'shows the welcome modal once per session', ->
+      groupsHelper.loadNew()
+      expect(groupsHelper.welcomeModal().isDisplayed()).toBe(true)
+      groupsHelper.dismissWelcomeModal()
+      groupsHelper.visitMembersPage()
+      groupsHelper.returnToGroupPage()
+      expect(groupsHelper.welcomeModal().isPresent()).toBe(false)
+
   describe 'starting a discussion', ->
     beforeEach ->
       groupsHelper.load()
