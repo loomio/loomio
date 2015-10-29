@@ -59,3 +59,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
 
     removeLikerId: (id) ->
       @likerIds = _.without(@likerIds, id)
+
+    cookedBody: ->
+      cooked = @body
+      _.each @mentionedUsernames, (username) ->
+        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+      cooked

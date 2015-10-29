@@ -21,7 +21,7 @@ angular.module('loomioApp', ['ngNewRouter',
   renderer.link = (href, title, text) ->
     "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>";
   renderer.paragraph = (text) ->
-    text = text.replace(/([\s(\[]+|^)@([a-zA-Z0-9]+)([\s)\]\,\?]|$)/g, "$1<a class='lmo-user-mention' href='/u/$2'>@$2</a>$3")
+    text = text.replace(/\[\[@([a-zA-Z0-9]+)\]\]/g, "<a class='lmo-user-mention' href='/u/$1'>@$1</a>")
     "<p>#{text}</p>"
 
   markedProvider.setOptions

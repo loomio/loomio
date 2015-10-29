@@ -49,12 +49,17 @@ class CommentService
   end
 
   def self.update(comment:, params:, actor:)
+    new_mentions = Comment.new(params).mentioned_usernames - comment.mentioned_usernames
+
     comment.edited_at = Time.zone.now
     comment.body = params[:body]
+
     return false unless comment.valid?
     actor.ability.authorize! :create, comment
     ThreadSearchService.index! comment.discussion_id
     comment.save!
+
+    User.where(username: new_mentions).each { |user| Events::UserMentioned.publish!(comment, user) } if new_mentions.any?
     Memos::CommentUpdated.publish!(comment)
     true
   end
