@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
   controller: ($scope, $controller, $location, discussion, CurrentUser, Records, AbilityService, FormService, KeyEventService) ->
     $scope.discussion = discussion.clone()
 
-    if $scope.discussion.isNew() and !$scope.discussion.groupId?
+    if $scope.discussion.isNew()
       $scope.showGroupSelect = true
 
     $scope.$on 'modal.closing', (event) ->
