@@ -164,7 +164,7 @@ describe API::DiscussionsController do
     before do
       group.add_admin! user
       sign_in user
-      reader.save
+      reader.update(volume: DiscussionReader.volumes[:normal])
       reader.reload
     end
 
@@ -195,8 +195,8 @@ describe API::DiscussionsController do
       reader.reload
 
       expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
+      expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
       expect(json['discussions'][0]['starred']).to eq reader.starred
-      expect(json['discussions'][0]['volume']).to eq reader.volume
       expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
       expect(json['discussions'][0]['participating']).to eq reader.participating
     end

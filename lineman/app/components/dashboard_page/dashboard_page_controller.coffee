@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, CurrentUser, LoadingService, ThreadQueryService) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, CurrentUser, LoadingService, ThreadQueryService, AppConfig) ->
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
   $rootScope.$broadcast('setTitle', 'Dashboard')
   $rootScope.$broadcast('analyticsClearGroup')
@@ -54,17 +54,15 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
       per:    @perPage).then @updateQueries
   LoadingService.applyLoadingFunction @, 'loadMore'
 
-  @refresh = =>
-    @updateQueries()
-    @loadMore() if @loaded[@filter] == 0
+  @loading = -> !AppConfig.membershipsLoaded
 
   @setFilter = (filter = 'show_all') =>
     @filter = filter
-    @refresh()
+    @updateQueries()
+    @loadMore() if @loaded[@filter] == 0
+  @setFilter() unless @loading()
 
-  @setFilter()
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
   $scope.$on 'homePageClicked', => @setFilter()
-  $scope.$on 'starToggled', @refresh
 
   return

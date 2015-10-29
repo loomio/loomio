@@ -67,7 +67,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig) ->
 
     groupSizeWhenVoting: ->
       if @isActive()
-        @group().membersCount
+        @group().membershipsCount
       else
         @numberVoted() + parseInt(@didNotVotesCount)
 

@@ -7,6 +7,7 @@ describe 'Discussions Card Component', ->
     $httpBackend.whenGET(/api\/v1\/translations/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/discussions/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/memberships/).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/notifications/).respond(200, {})
     @currentUser = @factory.create 'users'
     useCurrentUser @currentUser
     @group       = @factory.create 'groups'

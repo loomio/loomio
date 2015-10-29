@@ -7,6 +7,7 @@ describe 'InvitationFormController', ->
     $httpBackend.whenGET(/api\/v1\/users\/invitables\//).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/discussions\/inbox/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/memberships\/my_memberships/).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/notifications/).respond(200, {})
 
   beforeEach ->
     @currentUser = @factory.create 'users'
