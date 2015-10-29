@@ -19,22 +19,7 @@ class Webhooks::Slack::NewComment < Webhooks::Slack::Base
   end
 
   def attachment_color
-    "#F6B936"
+    SiteSettings.colors[:primary]
   end
-
-  # private
-
-  # def vote_position
-  #   case eventable.position
-  #   when "yes"
-  #     "agreed on"
-  #   when "no"
-  #     "disagreed on"
-  #   when "abstain"
-  #     "abstained on"
-  #   else
-  #     "blocked"
-  #   end
-  # end
 
 end
