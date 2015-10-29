@@ -18,6 +18,7 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :name, length: { maximum: 250 }
+  validates :subscription, absence: true, if: :is_subgroup?
 
   validate :limit_inheritance
   validate :validate_parent_members_can_see_discussions
@@ -26,6 +27,7 @@ class Group < ActiveRecord::Base
 
   before_save :update_full_name_if_name_changed
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
+
 
   include PgSearch
   pg_search_scope :search_full_name, against: [:name, :description],
@@ -171,7 +173,7 @@ class Group < ActiveRecord::Base
 
   has_many :webhooks, as: :hookable
 
-  has_one :subscription, dependent: :destroy
+  belongs_to :subscription, dependent: :destroy
 
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
@@ -182,7 +184,7 @@ class Group < ActiveRecord::Base
   paginates_per 20
 
   has_attached_file    :cover_photo,
-                       styles: { desktop: "970x200#", card: "460x94#"},
+                       styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
                        default_url: :default_cover_photo
   has_attached_file    :logo,
                        styles: { card: "67x67", medium: "100x100" },
@@ -197,6 +199,11 @@ class Group < ActiveRecord::Base
     size: { in: 0..10.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
+
+  define_counter_cache(:motions_count)     { |group| group.discussions.published.sum(:motions_count) }
+  define_counter_cache(:discussions_count) { |group| group.discussions.published.count }
+  define_counter_cache(:memberships_count) { |group| group.memberships.count }
+  define_counter_cache(:invitations_count) { |group| group.invitations.count }
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
@@ -233,7 +240,7 @@ class Group < ActiveRecord::Base
   end
 
   def creator_id
-    self[:creator_id] || creator.id
+    self[:creator_id] || creator.try(:id)
   end
 
   def coordinators
@@ -262,10 +269,6 @@ class Group < ActiveRecord::Base
 
   def closed_motions
     motions.closed
-  end
-
-  def motions_count
-    discussions.published.sum :motions_count
   end
 
   def archive!
@@ -414,6 +417,7 @@ class Group < ActiveRecord::Base
   def add_admin!(user, inviter = nil)
     membership = find_or_create_membership(user, inviter)
     membership.make_admin! && save
+    self.creator = user if creator.blank?
     membership
   end
 
@@ -442,15 +446,7 @@ class Group < ActiveRecord::Base
   end
 
   def members_count
-    members.count
-  end
-
-  def is_setup?
-    setup_completed_at.present?
-  end
-
-  def mark_as_setup!
-    update_attribute(:setup_completed_at, Time.zone.now.utc)
+    self.memberships_count
   end
 
   def update_full_name_if_name_changed
@@ -477,11 +473,6 @@ class Group < ActiveRecord::Base
 
   def has_manual_subscription?
     payment_plan == 'manual_subscription'
-  end
-
-  def is_paying?
-    (payment_plan == 'manual_subscription') ||
-    (subscription.present? && subscription.amount > 0)
   end
 
   def group_request_description
@@ -594,6 +585,7 @@ class Group < ActiveRecord::Base
   end
 
   def set_defaults
+    self.is_visible_to_public ||= false
     self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
   end

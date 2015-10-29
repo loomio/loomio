@@ -609,8 +609,8 @@ describe "User abilities" do
     it { should_not be_able_to(:show, another_user_vote) }
   end
 
-  context "non member of public group" do
-    let(:group) { create(:group, is_visible_to_public: true) }
+  context "non member of public group", focus: true do
+    let(:group) { create(:group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private') }
     let(:private_discussion) { create :discussion, group: group, private: true }
     let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
     let(:public_discussion) { create :discussion, group: group, private: false }

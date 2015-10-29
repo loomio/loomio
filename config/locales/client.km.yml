@@ -19,8 +19,6 @@ km:
   proposal_outcome_form:
     outcome_label: លទ្ធផលសំណើរ
     publish_outcome: លទ្ធផលបោះពុម្ពផ្សាយ​
-  context_card:
-    heading: "បរិបទ "
   comment_form:
     delete_comment: "លុបមតិយោបល់ "
     confirm_delete_message: តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?

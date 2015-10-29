@@ -16,9 +16,9 @@ describe 'InvitationFormController', ->
     inject (AppConfig) ->
       AppConfig.currentUserId = @currentUser.id
 
-  beforeEach inject (InvitationForm, $rootScope, Records, CurrentUser, AbilityService, LoadingService) ->
+  beforeEach inject (InvitationForm, $rootScope, $q, Records, CurrentUser, AbilityService, LoadingService) ->
     @scope = $rootScope.$new()
-    @controller = InvitationForm.controller(@scope, $rootScope, @group, Records, CurrentUser, AbilityService, LoadingService)
+    @controller = InvitationForm.controller(@scope, $rootScope, $q, @group, Records, CurrentUser, AbilityService, LoadingService)
     @scope.fragmentIsValidEmail = -> false
 
   describe 'basics', ->

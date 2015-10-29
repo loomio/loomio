@@ -27,6 +27,7 @@ sr:
     getting_started:
       title: Odakle početi
     group_settings:
+      title: Podešavanja Grupe
       group_privacy:
         who_can_find_this_group:
           title: Ko može naći ovu grupu?

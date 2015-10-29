@@ -7,8 +7,11 @@
 }
 
 .discussions-card__new-thread-button{
+  @include lmoBtnFeatured;
+  @include lmoBtnIcon;
   @include fontSmall;
   float: right;
+  margin-bottom: 10px;
 }
 
 .discussions-card__list--empty {
@@ -19,4 +22,9 @@
 
 .discussions-card__list{
   clear: both;
+}
+
+.discussions-card__show-more {
+  @include cardMinorAction;
+  @include lmoBtnLink;
 }

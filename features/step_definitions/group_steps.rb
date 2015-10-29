@@ -96,7 +96,7 @@ Given /^there is a discussion in a public group$/ do
 end
 
 Given /^there is a public discussion in a public group$/ do
-  @group = FactoryGirl.create :group, :is_visible_to_public => true
+  @group = FactoryGirl.create :group, visible_to: 'public'
   @discussion = create_discussion :group => @group, private: false
 end
 

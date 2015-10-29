@@ -1,5 +1,5 @@
-.group-theme__privacy{dropdown: ''}
-  %button.btn.lmo-btn-nude{dropdown-toggle:''}
+.group-theme__privacy{uib-dropdown: ''}
+  %button.lmo-btn--nude{uib-dropdown-toggle:''}
     .group-visibility-public{ng_show: 'group.visibleToPublic()'}
       .sr-only{translate: 'group_page.privacy.public'}
       .screen-only{aria-hidden:'true'}
@@ -15,37 +15,37 @@
       .screen-only{aria-hidden:'true'}
         %i.fa.fa-lg.fa-lock>
         %span{translate: 'common.privacy.private'}
-  .dropdown-menu.dropdown-menu-with-labels{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
-    .dropdown-heading{translate: 'group_page.visibility_label', role: 'heading'}
+  .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-details{role: 'menu', ng-class: '{disabled: !canEditGroup()}'}
+    .lmo-dropdown-heading{translate: 'group_page.visibility_label', role: 'heading'}
     %form{novalidate: ''}
       .lmo-disabled-form{ng-show: '!canEditGroup()'}
-      %ul.dropdown-menu-items
-        %li.dropdown-menu-item
+      %ul.lmo-dropdown-menu-items
+        %li.lmo-dropdown-menu-item
           %label{for: 'visible-to-members'}
-            .dropdown-menu-item-label
+            .lmo-dropdown-menu-item-label
               %i.fa.fa-lg.fa-lock{aria-hidden:'true'}>
               %input.sr-only#visible-to-members{type: 'radio', ng-model: 'group.visibleTo', name: 'visibleTo', value: 'members', ng-change: 'savePrivacy()'}
               %span{translate: 'common.privacy.private'}
               %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToMembers()'}
-            .dropdown-menu-item-details
+            .lmo-dropdown-menu-item-details
               %span{translate: 'group_page.privacy.private'}
 
-        %li.dropdown-menu-item{ng_show: 'group.parentId'}
+        %li.lmo-dropdown-menu-item{ng_show: 'group.parentId'}
           %label{for: 'visible-to-parent-members'}
-            .dropdown-menu-item-label
+            .lmo-dropdown-menu-item-label
               %i.fa.fa-lg.fa-users{aria-hidden:'true'}>
               %input.sr-only#visible-to-parent-members{type: 'radio', ng-model: 'group.visibleTo', name: 'visibleTo', value: 'parent_members', ng-change: 'savePrivacy()'}
               %span{translate: 'common.privacy.organisation'}
               %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToorganisation()'}
-            .dropdown-menu-item-details
+            .lmo-dropdown-menu-item-details
               %span{translate: 'group_page.privacy.parent_members', translate-value-group-name: '{{group.name}}', translate-value-parent-group-name: '{{group.parentName()}}'}
 
-        %li.dropdown-menu-item.lmo-last
+        %li.lmo-dropdown-menu-item.lmo-last
           %label{for: 'visible-to-public'}
-            .dropdown-menu-item-label
+            .lmo-dropdown-menu-item-label
               %i.fa.fa-lg.fa-globe{aria-hidden:'true'}>
               %input.sr-only#visible-to-public{type: 'radio', ng-model: 'group.visibleTo', name: 'visibleTo', value: 'public', ng-change: 'savePrivacy()'}
               %span{translate: 'common.privacy.public'}
               %i.fa.fa-lg.fa-check{ng_show: 'group.visibleToPublic()'}
-            .dropdown-menu-item-details
+            .lmo-dropdown-menu-item-details
               %span{translate: 'group_page.privacy.public'}

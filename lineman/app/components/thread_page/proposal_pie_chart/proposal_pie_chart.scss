@@ -7,41 +7,29 @@
   color: $grey-on-white;
   padding-top: 16px;
   padding-left: 20px;
-  td {
-    padding-bottom: 10px;
-  }
+  table { min-width: 110px; }
+  td { padding-bottom: 10px; }
 }
 
 .proposal-pie-chart__label{
-  padding-left: 10px;
+  border-width: 2px;
+  border-bottom-style: solid;
 }
 
-.proposal-pie-chart__icon{
-  width: 18px;
-  height: 18px;
-  border-width: 1px;
-  border-style: solid;
-  @include roundedCorners;
+.proposal-pie-chart__label--yes{
+  border-color: $agree-color;
 }
 
-.proposal-pie-chart__icon--yes{
-  background-color: $agree-color;
-  border-color: $agree-border-color;
+.proposal-pie-chart__label--abstain{
+  border-color: $abstain-color;
 }
 
-.proposal-pie-chart__icon--abstain{
-  background-color: $abstain-color;
-  border-color: $abstain-border-color;
+.proposal-pie-chart__label--no{
+  border-color: $disagree-color;
 }
 
-.proposal-pie-chart__icon--no{
-  background-color: $disagree-color;
-  border-color: $disagree-border-color;
-}
-
-.proposal-pie-chart__icon--block{
-  background-color: $block-color;
-  border-color: $block-border-color;
+.proposal-pie-chart__label--block{
+  border-color: $block-color;
 }
 
 .proposal-pie-chart__participation-statement {
@@ -50,7 +38,7 @@
   color: $grey-on-white;
 }
 
-@media (min-width: $medium-max-width) and (max-width: $large-max-width) {
+@media (max-width: $tiny-max-px) {
   .proposal-pie-chart__legend{
     display: block;
   }

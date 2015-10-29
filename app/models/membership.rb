@@ -5,7 +5,9 @@ class Membership < ActiveRecord::Base
   validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
 
-  belongs_to :group, counter_cache: true
+  belongs_to :group
+  update_counter_cache :group, :memberships_count
+
   belongs_to :user, counter_cache: true
   belongs_to :inviter, class_name: 'User'
   has_many :events, as: :eventable, dependent: :destroy

@@ -298,7 +298,6 @@ pl:
     email_error: Niepoprawny adres email.
     group_name: Nazwa grupy
     group_name_error: Nazwa grupy jest wymagana
-    pricing_html: "Po 30 dniach, w których mogłeś/aś obserwować jak Loomio pomaga podejmowanie decyzji przez grupy, poprosimy Cię o wybór <a href='%{link}' target='_blank'>planu płatności</a> który jest dla Ciebie odpowiedni."
     terms_html: "Uruchamiając grupę, zgadzasz się na określone przez Loomio  <a href='%{link}' target='_blank'>zasady usług</a>."
     success:
       header: "Prawie zakończone! Odbierz pocztę."

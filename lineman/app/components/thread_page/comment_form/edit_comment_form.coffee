@@ -1,14 +1,7 @@
 angular.module('loomioApp').factory 'EditCommentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/edit_comment_form.html'
-  controller: ($scope, comment, FlashService) ->
+  controller: ($scope, comment, FormService) ->
     $scope.comment = comment.clone()
 
-    $scope.submit = ->
-      $scope.processing = true
-      $scope.comment.save().then ->
-        $scope.processing = false
-        FlashService.success 'comment_form.messages.updated'
-        $scope.$close()
-      , ->
-        $scope.processing = false
-        $rootScope.$broadcast 'pageError', 'cantEditComment'
+    $scope.submit = FormService.submit $scope, $scope.comment,
+      flashSuccess: 'comment_form.messages.updated'

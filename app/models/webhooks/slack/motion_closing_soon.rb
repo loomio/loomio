@@ -16,8 +16,4 @@ class Webhooks::Slack::MotionClosingSoon < Webhooks::Slack::Base
     [motion_vote_field]
   end
 
-  def attachment_color
-    "#F6B936"
-  end
-  
 end

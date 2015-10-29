@@ -33,6 +33,28 @@ describe Motion do
     end
   end
 
+  describe "must close in future", focus: true do
+    let(:motion) { build(:motion, discussion: discussion) }
+    it "is invalid if closing in past" do
+      motion.closing_at = 1.day.ago
+      motion.valid?
+      expect(motion.errors.keys).to eq [:closing_at]
+    end
+
+    it "is valid if closing in future" do
+      motion.closing_at = 1.day.from_now
+      motion.valid?
+      expect(motion.errors.keys).to eq []
+    end
+
+    it "closing at can be in past if already closed" do
+      motion.closing_at = 1.day.ago
+      motion.closed_at = 1.day.ago
+      motion.valid?
+      expect(motion.errors.keys).to eq []
+    end
+  end
+
   describe "#user_has_voted?(user)" do
     it "returns true if the given user has voted on motion" do
       @user = create(:user)

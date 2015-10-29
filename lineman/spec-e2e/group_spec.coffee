@@ -6,6 +6,16 @@ describe 'Group Page', ->
   discussionForm = require './helpers/discussion_form_helper.coffee'
   threadPage = require './helpers/thread_helper.coffee'
 
+  describe 'starting a group', ->
+
+    it 'shows the welcome modal once per session', ->
+      groupsHelper.loadNew()
+      expect(groupsHelper.welcomeModal().isDisplayed()).toBe(true)
+      groupsHelper.dismissWelcomeModal()
+      groupsHelper.visitMembersPage()
+      groupsHelper.returnToGroupPage()
+      expect(groupsHelper.welcomeModal().isPresent()).toBe(false)
+
   describe 'starting a discussion', ->
     beforeEach ->
       groupsHelper.load()
@@ -34,11 +44,11 @@ describe 'Group Page', ->
       groupsHelper.load()
 
     it 'successfully starts a subgroup', ->
-      groupsHelper.clickStartSubgroupLink()
+      groupsHelper.openMemberOptionsDropdown()
+      groupsHelper.clickAddSubgroupLink()
       groupsHelper.fillInSubgroupName('The Breakfast Club')
       groupsHelper.submitSubgroupForm()
-      #expect(flashHelper.flashMessage()).toContain('Subgroup created')
-      #expect(groupsHelper.groupName()).toContain('Dirty Dancing Shoes')
+      expect(groupsHelper.groupName()).toContain('Dirty Dancing Shoes')
       expect(groupsHelper.groupName()).toContain('The Breakfast Club')
 
   describe 'editing group settings', ->
@@ -87,7 +97,7 @@ describe 'Group Page', ->
       groupsHelper.clickLeaveGroupButton()
       groupsHelper.confirmLeaveGroup()
       expect(flashHelper.flashMessage()).toContain('You have left this group')
-      groupsHelper.visitGroupPage()
+      groupsHelper.visitGroupsPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')
 
     it 'prevents last coordinator from leaving the group', ->
@@ -111,5 +121,15 @@ describe 'Group Page', ->
       groupsHelper.clickArchiveGroupButton()
       groupsHelper.confirmArchiveGroup()
       expect(flashHelper.flashMessage()).toContain('This group has been deactivated')
-      groupsHelper.visitGroupPage()
+      groupsHelper.visitGroupsPage()
       expect(groupsHelper.groupsList().getText()).not.toContain('Dirty Dancing Shoes')
+
+  describe 'changing group volume', ->
+
+    it 'lets you change group notification volume', ->
+      groupsHelper.load()
+      expect(groupsHelper.groupVolumeCard()).toContain('You will be emailed about new threads and proposals in this group.')
+      groupsHelper.clickChangeInGroupVolumeCard()
+      groupsHelper.changeGroupVolumeToLoud()
+      groupsHelper.submitChangeVolumeForm()
+      expect(groupsHelper.groupVolumeCard()).toContain('Email everything')

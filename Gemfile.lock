@@ -159,6 +159,8 @@ GEM
       mime-types (>= 1.16, < 3)
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
+    custom_counter_cache (0.1.7)
+      rails (>= 3.1)
     daemons (1.2.2)
     dalli (2.7.4)
     database_cleaner (1.4.1)
@@ -677,6 +679,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   cucumber-rails
+  custom_counter_cache
   dalli
   database_cleaner
   delayed-plugins-airbrake

@@ -4,6 +4,9 @@ module.exports = new class ProfileHelper
     element(By.css('.navbar-user-options button')).click()
     element(By.css('.navbar-user-options__profile-link')).click()
 
+  visitUserPage: (username) ->
+    browser.get("http://localhost:8000/u/#{username}")
+
   updateProfile: (name, username, email) ->
     @changeName(name)
     @changeUsername(username)
@@ -30,3 +33,12 @@ module.exports = new class ProfileHelper
 
   submitForm: ->
     element(By.css('.profile-page__update-button')).click()
+
+  nameText: ->
+    element(By.css('.user-page__name')).getText()
+
+  usernameText: ->
+    element(By.css('.user-page__username')).getText()
+
+  groupsText: ->
+    element(By.css('.user-page__groups')).getText()

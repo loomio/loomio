@@ -1,0 +1,13 @@
+.modal-dialog.modal-confirm-gift-plan-modal {
+  max-width: 450px;
+  width: auto;
+}
+
+.confirm-gift-plan-modal__cancel-button {
+  @include lmoBtnCancel;
+  float: left;
+}
+
+.confirm-gift-plan-modal__submit-button {
+  @include lmoBtnFeatured;
+}

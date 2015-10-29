@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/proposal_expanded/proposal_expanded.html'
   replace: true
-  controller: ($scope, $modal, Records, CurrentUser, AbilityService) ->
+  controller: ($scope, Records, CurrentUser, AbilityService) ->
     Records.votes.fetchByProposal($scope.proposal)
 
     $scope.collapse = ->

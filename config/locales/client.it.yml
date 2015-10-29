@@ -42,7 +42,6 @@ it:
     internal_server_error: "Spiacenti, ma qualcosa è andato storto. Riprova più tardi "
   start_proposal_card:
     title: Lancia una proposta
-    helptext: "Pronto a prendere una decisione? Le proposte ti permettono di conoscere l'opinione di tutti su un particolare corso d'azione."
   proposal_outcome_panel:
     heading: Risultato
     set_outcome_hint: "Usa questo spazio per fare conoscere a tutti l'esito della proposta."
@@ -61,8 +60,6 @@ it:
     heading: Proposte precedenti
   proposal_collapsed:
     expand: Espandi
-  context_card:
-    heading: Contesto
   volume_levels:
     loud: Alto
     normal: Normale
@@ -217,7 +214,6 @@ it:
     privacy:
       will_be_private_to_group: "La discussione sarà visibile solo ai membri del gruppo {{groupName}}."
       will_be_private_to_parent_group: "La discussione sarà visibile ai componenti del sottogruppo {{parentGroupName}}  e del gruppo {{groupName}}."
-      will_be_public: Tutti possono vedere questa discussione
     new_discussion_submit: Inizia una discussione
     edit_discussion_submit: Modifica il nome della discussione
   proposal_expanded:
@@ -241,8 +237,6 @@ it:
     heading: Crea un gruppo
     heading_when_subgroup: Crea un sottogruppo
     group_helptext: "Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo"
-    group_payment_reminder: "In 30 giorni, quando avrai verificato come Loomio può migliorare l'efficacia del tuo gruppo, ti chiederemo di scegliere il  <a href='#'>payment plan</a> migliore per te."
-    name_label: Nome del gruppo
     subgroup_name_label: Nome del sottogruppo
     submit: Crea un gruppo
     messages:
@@ -297,9 +291,6 @@ it:
     options_label: Opzioni
     options:
       label: Opzioni
-      edit_group: Modifica le impostazioni del gruppo
-      leave_group: Abbandona il gruppo
-      deactivate_group: Disattiva il gruppo
     deactivate_group:
       title: Disattiva il gruppo
       question: Sei sicuro/a di volere disattivare il gruppo?
@@ -319,7 +310,6 @@ it:
       quiet_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Quieto. Non riceverai email da questo gruppo e le sue attività verranno mostrate sulla tua bacheca.
       mute: "Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato."
       mute_aria_description: "Il tuo livello delle notifiche per questo gruppo è settato su Muto. Non riceverai email da questo gruppo a meno che qualcuno non ti @menzioni e le sue attività non verranno mostrate sulla tua bacheca."
-      updated: Livello del volume del gruppo aggiornato.
     privacy:
       private: "Privacy: questo gruppo è visibile solo ai suoi membri."
       parent_members: "Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}"
@@ -361,7 +351,6 @@ it:
       success: Gruppo aggiornato
   membership_requests_card:
     heading: Richieste di partecipazione
-    manage_requests: "Gestisci  ({{count}}) richieste"
   membership_requests_page:
     heading: Richieste di partecipazione
     approve: Approva
@@ -526,7 +515,6 @@ it:
       quiet_aria_description: Il volume delle notifiche di questa discussione è impostato su Basso. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a.
       mute: "Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned."
       mute_aria_description: "Il volume delle notifiche di questa discussione è impostato su Muto. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a, e questa discussione verrà rimossa dalla tua dashboard."
-      updated: Volume della discussione aggiornato.
   thread_group:
     aria_label: Nome gruppo
   thread_context:

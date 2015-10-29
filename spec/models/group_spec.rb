@@ -107,6 +107,20 @@ describe Group do
         }.to change { @group.reload.discussions_count }.by(-1)
       end
     end
+
+    describe 'invitations_count' do
+      before do
+        @group = create(:group)
+        @user  = create(:user)
+      end
+
+      it 'increments when a new invitation is created' do
+        InvitationService.invite_to_group(recipient_emails: [@user.email],
+                                          group: @group,
+                                          inviter: @group.creator)
+        expect(@group.invitations_count).to eq 1
+      end
+    end
   end
 
   describe "#voting_motions" do
@@ -314,40 +328,6 @@ describe Group do
 
       it 'restores the memberships of the group' do
         group.memberships.all?{|m| m.archived_at.should be_nil}
-      end
-    end
-  end
-
-  describe 'is_paying?', focus: true do
-    subject do
-      group.is_paying?
-    end
-
-    context 'payment_plan is manual' do
-      before do
-        group.payment_plan = "manual_subscription"
-      end
-      it {should be true}
-    end
-
-    context 'payment_plan is pwyc or undetermined' do
-      it {should be false}
-    end
-
-    context 'group has online subscription' do
-      before do
-        group.subscription = Subscription.create(group: group, amount: 0)
-      end
-
-      context 'with amount 0' do
-        it {should be false}
-      end
-
-      context 'with amount > 0' do
-        before do
-          group.subscription.amount = 1
-        end
-        it {should be true}
       end
     end
   end

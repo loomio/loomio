@@ -312,6 +312,11 @@ en:
   #
 
   start_group_form:
+    enable_angular:
+      header: New groups start in Loomio 1.0
+      subtitle: "To start a new group, you'll need to switch to the brand new version of Loomio:"
+      switch_to_angular: Start a group in the new Loomio
+      helptext: "We've rebuilt Loomio from the ground up. You can read about what's new <a href=\"/angular\">here</a>.<br/>You'll be able to switch back to the old version any time you like."
     header: "Start a new group"
     form_error: "Some information is missing or incorrect."
     name: "Your name"
@@ -861,13 +866,13 @@ en:
     unlimited_decisions: unlimited decisions
     email_support: email support
     standard_price_html: |
-      <strong>$19</strong>/month<br><span>or</span> $190/year
+      US <strong>$19</strong>/month<br><span>or</span> $190/year
     plus_body: 'Everything in Standard, plus:'
     premium_support: premium support
     custom_url: custom URL
     usage_statistics: usage statistics
     plus_price_html: |
-      <strong>$179</strong>/month<br><span>or</span> $1790/year
+      US <strong>$179</strong>/month<br><span>or</span> $1790/year
   #
   # CONTRIBUTIONS
   #
@@ -962,6 +967,7 @@ en:
   #
 
   invitation:
+    angular_warning_html: '<small> Anyone that accepts your invitation will use the new Loomio interface: <a href="http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/" target="_blank">find out more</a>.</small>'
     alternate: "Alternatively, share this link and anyone can ask to join:"
     by_email: "Invite by email"
     invitation_not_found:  'Could not find invitation with that token. Please ask for a new invitation from the sender.'
@@ -982,7 +988,8 @@ en:
     invites_more_help2: "<p>You can invite people to your group at any time.</p><p>You might want to invite all your members in right away, or you could start by inviting just the people you’re working most closely with.</p>"
     invitation_link: "Invitation link"
     discussion_link: "Participate in the discussion:"
-    link_help: "Click this link to join %{group} on Loomio:"
+    link_help: "Click the link to join %{group_name} and get started:"
+    thanks: "Thanks,"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
     pending_invitations: 'Pending invitations'
     no_pending_invitations: "There are currently no pending invitations."
@@ -1005,21 +1012,54 @@ en:
   # EXAMPLE CONTENT
   #
 
-  example_discussion:
-    title: "Example Discussion: Welcome and introduction to Loomio"
+  introduction_thread:
+    title: "Welcome to %{group_name}"
     description: |
-      Welcome to Loomio, a new tool for group decision-making.
-      By engaging on a topic, discussing various perspectives and information, and addressing any concerns that arise, your group can put their heads together to find the best way forward.
-      You can use this example discussion to play around with the features of the tool.
-      To get the ball rolling, Loomio Helper Bot thinks it would be a great idea for your group to take a holiday together. The pie graph on the right shows how your group feels about the proposal. You can have your say by clicking on one of the decision buttons underneath.
+      Please take a moment to introduce yourself. You might like to share how you fit with this group of people.
 
-  example_motion:
-    name: "We should have a holiday on the moon!"
+      If you have clear intentions for this Loomio group, you could share them here so everyone has an idea of what they want to achieve together.
+
+  how_it_works_thread:
+    title: How To Use Loomio
     description: |
-      Loomio Helper Bot is really keen for your group to invest in a trip to the moon. Apparently the space-cheese is delicious. But the implications for your carbon footprint are worrying.
-      Is it a good idea? Loomio Helper Bot wants to know what you think!
-      If you’re clear about your position, click one of the icons below (hover over the decision buttons for a description of what each one means).
-      You’ll be prompted to make a short statement about the reason for your decision. This makes it easy to see a summary of what everyone thinks and why. You can change your mind and edit your decision freely until the proposal closes.
+      Welcome to Loomio, an online place to make decisions together.
+
+      This is an example discussion **thread**. Why not use this space to try out Loomio’s features?
+
+      You are currently reading the thread **context**. Use this space to give the background information the group needs for a productive discussion.
+
+      The **proposal** panel is where you make decisions. You can start proposals and participated in them there.
+
+      The **activity** panel below shows everything that’s happened in this thread.
+
+  first_comment:
+    body: |
+      Hi folks, I’m the Loomio Helper Bot.
+
+      If you want to get the attention of a specific person in your group, type @ into the comment field, followed by their name :)
+
+      Here are some things you might want to try to get things under way:
+
+      - Set your [profile picture](%{hostname}/profile)
+      - Configure your [email settings](%{hostname}/email_preferences)
+      - Introduce yourself to the group in the [Welcome to %{group_name} thread](%{thread_url})
+
+      If you’ve got any questions, the first place to check is the [Loomio help manual](http://help.loomio.org).
+
+  first_proposal:
+    name: 'Demonstration proposal: let’s go!'
+    description: |
+      This the proposal **description**. Here you can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
+
+      To participate in the proposal, choose one of these options:
+
+      - **Agree**: “I agree with this and want it to go ahead.”
+      - **Abstain**: “I am happy for the group to decide without me.”
+      - **Disagree**: “I think we can probably do better.”
+      - **Block**: “I have strong objections to this proposal and am not OK with it going ahead.”
+
+      When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
+
   #
   # CONTACT PAGE
   #
@@ -1473,3 +1513,8 @@ en:
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
       new_comment: "*%{author}* commented in *%{name}*"
+      position_verbs:
+        "yes": "agreed on"
+        "no": "disagreed on"
+        abstain: "abstained on"
+        block: "blocked"

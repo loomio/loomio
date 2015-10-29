@@ -42,7 +42,7 @@ class Discussion < ActiveRecord::Base
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description]
 
-  belongs_to :group, counter_cache: true
+  belongs_to :group
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy
@@ -75,6 +75,13 @@ class Discussion < ActiveRecord::Base
 
   after_create :set_last_activity_at_to_created_at
 
+  define_counter_cache :motions_count do |discussion|
+    discussion.motions.count
+  end
+
+  update_counter_cache :group, :discussions_count
+  update_counter_cache :group, :motions_count
+
   def published_at
     created_at
   end
@@ -85,8 +92,7 @@ class Discussion < ActiveRecord::Base
 
   def archive!
     return if is_archived?
-    self.update_attribute(:archived_at, Time.now) and
-      Group.update_counters(group_id, discussions_count: -1)
+    self.update_attribute(:archived_at, Time.zone.now)
   end
 
   def is_archived?

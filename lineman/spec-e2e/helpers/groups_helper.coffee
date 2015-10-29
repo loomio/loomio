@@ -2,6 +2,9 @@ module.exports = new class GroupsHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_group')
 
+  loadNew: ->
+    browser.get('http://localhost:8000/development/setup_new_group')
+
   loadToJoin: (value) ->
     browser.get("http://localhost:8000/development/setup_group_to_join?membership_granted_upon=#{value}")
 
@@ -110,7 +113,7 @@ module.exports = new class GroupsHelper
   confirmArchiveGroup: ->
     element(By.css('.archive-group-form__submit')).click()
 
-  visitGroupPage: ->
+  visitGroupsPage: ->
     element(By.css('.groups-item')).click()
 
   groupsList: ->
@@ -134,3 +137,33 @@ module.exports = new class GroupsHelper
 
   groupName: ->
     element(By.css('.group-theme__name')).getText()
+
+  visitFirstGroup: ->
+    element.all(By.css('.groups-page__parent-group-name a')).first().click()
+
+  clickAddSubgroupLink: ->
+    element(By.css('.group-page-actions__add-subgroup-link')).click()
+
+  groupVolumeCard: ->
+    element(By.css('.group-volume-card')).getText()
+
+  clickChangeInGroupVolumeCard: ->
+    element(By.css('.group-volume-card__change-volume-link')).click()
+
+  changeGroupVolumeToLoud: ->
+    element(By.id('volume-loud')).click()
+
+  submitChangeVolumeForm: ->
+    element(By.css('.change-volume-form__submit')).click()
+
+  welcomeModal: ->
+    element(By.css('.group-welcome-modal'))
+
+  dismissWelcomeModal: ->
+    element(By.css('.lmo-btn--primary')).click()
+
+  visitMembersPage: ->
+    element(By.css('.members-card__manage-members')).click()
+
+  returnToGroupPage: ->
+    element(By.css('.lmo-h1')).click()

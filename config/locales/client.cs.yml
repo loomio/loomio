@@ -36,7 +36,6 @@ cs:
     forbidden: K této akci nemáte oprávnění.
   start_proposal_card:
     title: Vytvořit návrh
-    helptext: "Jste připraven(a) učinit rozhodnutí? Návrhy Vám umožní vidět, jaký má každý pocit o určitém možném postupu."
   proposal_outcome_panel:
     heading: Výsledek
     set_outcome_btn: Stanovit výsledek návrhu
@@ -51,8 +50,6 @@ cs:
       created: Výsledek publikován
   previous_proposals_card:
     heading: Předchozí návrhy
-  context_card:
-    heading: Souvislost
   inbox:
     clear: Vyčistit
     latest: Nejnovější
@@ -189,7 +186,6 @@ cs:
     heading: Vytvořit skupinu
     heading_when_subgroup: Vytvořit podskupinu
     group_helptext: "Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:"
-    name_label: Název skupiny
     subgroup_name_label: Název podskupiny
     submit: Vytvořit skupinu
     messages:
@@ -228,9 +224,6 @@ cs:
     options_label: Nastavení
     options:
       label: Nastavení
-      edit_group: Upravit nastavení skupiny
-      leave_group: Opustit skupinu
-      deactivate_group: Deaktivovat skupinu
     deactivate_group:
       title: Deaktivovat skupinu
       question: Opravdu chcete deaktivovat tuto skupinu?

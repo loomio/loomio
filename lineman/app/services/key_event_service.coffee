@@ -12,7 +12,8 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
       40:  'pressedDownArrow'
 
     broadcast: (event) ->
-      if !(event.ctrlKey or event.metaKey) and key = @keyboardShortcuts[event.which]
+      key = @keyboardShortcuts[event.which]
+      if key == 'pressedEnter' or (key and !event.ctrlKey and !event.metaKey)
         $rootScope.$broadcast key, event, angular.element(document.activeElement)[0]
 
     registerKeyEvent: (scope, eventCode, execute, shouldExecute) ->
@@ -28,5 +29,5 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
     submitOnEnter: (scope) ->
       @registerKeyEvent scope, 'pressedEnter', scope.submit, (active, event) =>
         (event.ctrlKey or event.metaKey) and
-        angular.element(active).scope() == scope and
+        angular.element(active).scope().$$isolateBindings == scope.$$isolateBindings and
         _.contains(active.classList, 'lmo-primary-form-input')

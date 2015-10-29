@@ -671,7 +671,6 @@ da:
     invites_more_help2: "<p>Du kan når som helst invitere folk til din gruppe.</p><p>Du ønsker måske at invitere alle dine medlemmer med det samme, eller du kan starte med kun at invitere de folk som du arbejder tættest sammen med.</p>"
     invitation_link: Invitationslink
     discussion_link: "Deltag i diskussionen:"
-    link_help: "Klik på dette link for at blive medlem af %{group} på Loomio:"
     copy: "Hvis nogen ikke modtog deres invitationsmail, kan du kopiere invitationslinket ovenfor og selv give det til modtageren."
     pending_invitations: Afventende invitationer
     no_pending_invitations: Der er i øjeblikket inden afventende invitationer.
@@ -683,12 +682,6 @@ da:
     empty_search: Slet søgning
     please_enter_a_search: Indtast venligst noget at søge efter i søgelinjen ovenfor
     no_match: Der var ingen resultater der passede til din forespørgsel
-  example_discussion:
-    title: "Eksempeldiskussion: Velkommen og introduktion til Loomio"
-    description: "Velkommen til Loomio, et nyt værktøj for gruppers beslutningsproces.\nVed at engagere sig i et emne, diskutere forskellige perspektiver og informaiton, og adressere enhver bekymring der måtte opstå, kan din gruppe stikke hovederne sammen for at finde den bedste vej fremad.\nDu kan bruge denne eksempel-diskussion til at lege med værktøjets funktioner.\nFor at komme i gang har Loomio's hjælpebot ment at det ville være en fantastisk idé for din gruppe at tage en ferie sammen. Tærtediagrammet til højre viser hvad din gruppe mener om forslaget. Du kan angive dit standpunkt ved at klikke på en af beslutningsknapperne nedenunder.\n"
-  example_motion:
-    name: "Vi burde tage på ferie til Månen!"
-    description: "Loomio's Hjælpebot er virkelig ivrig efter at få din gruppe til at invistere i en tur til Månen. Tilsyneladende er den grønne ost lækker. Men konsekvenserne for jeres CO2-udslip er bekymrende.\nEr det en god ide? Loomio's Hjælpebot vil vide hvad du synes!\nHvis du har et klart standpunkt så klik på et af ikonerne herunder (hold musen over beslutningsknapperne for at få en beskrivelse af hvad de hver især betyder).\nDu vil blive bedt om at give en kort begrundelse for din beslutning. Dette gør det nemt at se en opsummering af hvad alle tænker og hvorfor. Du kan skifte mening og ændre din beslutning helt frit indtil forslaget lukket.\n"
   contact_page:
     contact_us: Kontakt os
     labels:

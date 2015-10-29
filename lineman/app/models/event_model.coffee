@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @eventTypeMap: {
       'user_added_to_group':            'group',
       'membership_request_approved':    'group',
-      'membership_requested':           'group',
+      'membership_requested':           'membershipRequest',
       'new_discussion':                 'discussion',
       'discussion_edited':              'discussion',
       'new_motion':                     'proposal',
@@ -24,7 +24,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     }
 
     relationships: ->
-      @belongsTo 'group'
       @belongsTo 'membership'
       @belongsTo 'membershipRequest'
       @belongsTo 'discussion'
@@ -34,6 +33,11 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @belongsTo 'actor', from: 'users'
       @belongsTo 'version'
 
+    group: ->
+      return @membership().group()        if @membership()
+      return @membershipRequest().group() if @membershipRequest()
+      return @discussion.group()          if @discussion()
+
     delete: ->
       @deleted = true
 
@@ -42,3 +46,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     relevantRecordType: ->
       @constructor.eventTypeMap[@kind]
+
+    relevantRecord: ->
+      @[@relevantRecordType()]()

@@ -715,7 +715,6 @@ nl-NL:
     invites_more_help2: "<p>Je kan ten alle tijde mensen uitnodigen voor je groep.</p><p>Mogelijk wil je gelijk alle leden in een keer uitnodigen of alleen de mensen met wie je het meeste samenwerkt.</p>"
     invitation_link: Uitnodigingslink
     discussion_link: "Doe mee aan de discussie:"
-    link_help: "Klik op deze link om je aan te sluiten bij %{group} op Loomio:"
     copy: "Als iemand de e-mail met een uitnodiging niet heeft gekregen, dan kan je bovenstaande uitnodigingslink kopiëren en zelf aan de ontvanger sturen."
     pending_invitations: Uitnodigingsverzoeken
     no_pending_invitations: Er zijn op het moment geen uitnodigingsverzoeken.
@@ -727,12 +726,6 @@ nl-NL:
     empty_search: Lege zoekopdracht
     please_enter_a_search: Typ een vraag in de zoekbalk hierboven
     no_match: Geen resultaten gevonden die aan je zoekopdracht voldoen.
-  example_discussion:
-    title: "Voorbeeld Discussie: Welkom en introductie tot Loomio"
-    description: "Welkom bij Loomio, een nieuw instrument om groepsbeslissingen te maken.\nDoor deel te nemen aan een onderwerp, verschillende perspectieven en informatie te bespreken en het benoemen van eventuele problemen die zich voordoen, kan jouw groep de hoofden bij elkaar steken en zo de beste manier vinden om vooruit te komen.\nJe kan deze voorbeelddiscussie gebruiken om wat te spelen met dit gereedschap.\nOm jullie op gang te helpen, doet de Loomio Helper Bot het geweldige voorstel om samen op vakantie te gaan. Het taartdiagram rechts laat zien hoe je groep denkt over dit voorstel. Je kan je zegje doen door te klikken op één van de beslissingsknoppen eronder.\n"
-  example_motion:
-    name: "We zouden een vakantie op de maan moeten houden!"
-    description: "Loomio Helper Bot probeert jouw groep enthousiast te krijgen voor een reis naar de maan. Schijnbaar is de ruimte-kaas heerlijk. Echter, de gevolgen van je co2-voetafdruk zijn zorgelijk. Is het een goed idee? Loomio Helper Bot wil graag weten wat jij denkt!\nAls je je standpunt ten opzichte van dit voorstel helder voor ogen hebt, klik dan op een van icoontjes hieronder (zweef over de beslis-icoontjes heen om een uitleg te krijgen over wat ze betekenen).\nJe wordt gevraagd om een korte uitleg te geven over de reden van je beslissing. Dat maakt het gemakkelijk om een samenvatting te zien van wat iedereen denkt en waarom. Je kan van gedachten veranderen en je standpunt bewerken tot het voorstel sluit.\n"
   contact_page:
     contact_us: Neem contact op
     labels:

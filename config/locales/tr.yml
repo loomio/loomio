@@ -670,7 +670,6 @@ tr:
     invites_more_help2: "<p>İstediğin zaman kişileri grubuna davet edebilirsin.</p><p>İstersen tüm üyeleri hemen davet edebilir ya da sadece yakın calıştığın kişileri davet etmekle başlayabilirsin.</p>"
     invitation_link: Davetiye linki
     discussion_link: "Tartışmaya katıl:"
-    link_help: "Loomio üzerineki %{group} grubuna katılmak için bu linki tıkla:"
     copy: "Eğer gönderdiğin kişi davetiye e-postasını almadıysa, aşağıdaki davetiye linkini kopyalayarak bu kişiye tekrar gönderebilirsin."
     pending_invitations: Bekleyen davetler
     no_pending_invitations: Şu anda bekleyen hiçbir davetiye bulunmamaktadır.
@@ -682,12 +681,6 @@ tr:
     empty_search: Boş arama
     please_enter_a_search: Lütfen yukarıdaki arama çubuğunda bir sorgu girin
     no_match: Sorgunuzla eşleşen hiçbir sonuç bulunamadı
-  example_discussion:
-    title: "Örnek Tartışma: Karşılama ve Loomio tanıtımı"
-    description: "Gruplar için yeni bir karar verme platformu olan Loomio'ya hoşgeldin.\nBir konu üzerinde katılım yaparak, çeşitli bakış açılarını ve bilgileri tartışarak ve ortaya çıkan endişeleri ele alarak, grubun kafa kafaya verip ileriye doğru en iyi yolu bulacak.\nBu platformun özelliklerini keşfetmek için bu örnek müzakereyi inceleyebilirsin.\nİyi bir baslangıç yapmak için, grubunla birlikte bir tatil yapmaya ne dersin? Sağdaki grafik, grubun öneri hakkında ne hissettiğini gösterir. Karar butonlarından birine tıklayarak sen de söz sahibi olabilirsin.\n"
-  example_motion:
-    name: "Ay üzerinde bir tatil yapmalıyız!"
-    description: "Loomio Yardım Robotu sen ve grubunun ayda bir tatile yatırım yapması için epey istekli. Görünüşe göre uzay-peyniri epey lezzetliymiş. Ancak karbon ayakizinize etkileri hakkında endişeleri yok değil.\nSence bu nasıl bir fikir? Loomio Yardım Robotu ne düşündüğünü merak ediyor!\nEger konumun hakkında net isen, aşağıdaki ikonlardan birini tıkla (ikonların ne anlama geldiklerinin açıklaması için fareni karar düğmelerin üzerinde gezdir).\nVerdiğin kararın nedeni hakkında kısa bir açıklama yapmanı rica ediyoruz. Böylece herkesin ne düşündüğünü ve neden bu karara vardığını rahatça görebileceksin. Eğer fikrini değiştirirsen, öneri kapanana kadar özgürce kararını yeniden düzenleyebilirsin.\n"
   contact_page:
     contact_us: Bize yazın
     labels:

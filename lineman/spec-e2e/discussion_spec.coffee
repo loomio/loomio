@@ -54,6 +54,15 @@ describe 'Discussion Page', ->
       expect(groupsHelper.groupName().isPresent()).toBe(true)
       expect(groupsHelper.groupPage()).not.toContain('What star sign are you?')
 
+  describe 'changing thread volume', ->
+
+    it 'lets you change thread notification volume', ->
+      expect(threadPage.threadVolumeCard()).toContain('Email proposals')
+      threadPage.clickChangeInThreadVolumeCard()
+      threadPage.changeThreadVolumeToLoud()
+      threadPage.submitChangeVolumeForm()
+      expect(threadPage.threadVolumeCard()).toContain('Email everything')
+
   it 'adds a comment', ->
     threadPage.addComment('hi this is my comment')
     expect(threadPage.mostRecentComment()).toContain('hi this is my comment')

@@ -9,12 +9,20 @@ angular.module('loomioApp', ['ngNewRouter',
                              'angular-inview',
                              'ui.gravatar',
                              'truncate',
-                             'duScroll']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider) ->
+                             'duScroll',
+                             'monospaced.elastic']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider) ->
+
+  # this should make stuff faster but you need to add "animated" class to animated things.
+  # http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm
+  $animateProvider.classNameFilter( /\banimated\b/ );
 
   #configure markdown
   renderer = new marked.Renderer()
   renderer.link = (href, title, text) ->
     "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>";
+  renderer.paragraph = (text) ->
+    text = text.replace(/\[\[@([a-zA-Z0-9]+)\]\]/g, "<a class='lmo-user-mention' href='/u/$1'>@$1</a>")
+    "<p>#{text}</p>"
 
   markedProvider.setOptions
     renderer: renderer
@@ -37,8 +45,8 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, AnalyticsService, CurrentUser, MessageChannelService, IntercomService) ->
-  IntercomService.boot()
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $location, $filter, $rootScope, $router, KeyEventService, ScrollService, CurrentUser, BootService, AppConfig, ModalService, ChoosePlanModal) ->
+  BootService.boot()
 
   $scope.currentComponent = 'nothing yet'
 
@@ -52,7 +60,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
 
-  MessageChannelService.subscribeToUser()
+  $scope.$on 'trialIsOverdue', (event, group) ->
+    if CurrentUser.id == group.creatorId and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
+      ModalService.open ChoosePlanModal, group: -> group
+      AppConfig.chargify.nagCache[group.key] = true
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
@@ -72,6 +83,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
     {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' }
+    {path: '/u/:key', component: 'userPage' }
+    {path: '/u/:key/:stub', component: 'userPage' }
   ])
 
   return

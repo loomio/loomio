@@ -29,10 +29,10 @@ angular.module('loomioApp').directive 'navbarSearch', ->
 
     $scope.updateHighlighted = (index) ->
       $scope.highlighted = index
-      _.map highlightables(), (element) -> element.classList.remove("is-active")
+      _.map highlightables(), (element) -> element.classList.remove("lmo-active")
       if $scope.highlightedSelection()?
         $scope.highlightedSelection().firstChild.focus()
-        $scope.highlightedSelection().classList.add("is-active")
+        $scope.highlightedSelection().classList.add("lmo-active")
         # scroll to newly highlighted element?
 
     $scope.searchField = ->

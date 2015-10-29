@@ -1,8 +1,6 @@
 %form.membership-request-form{ng-submit: 'submit()', ng-disabled: 'membership_request.processing'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1{translate: 'membership_request_form.heading'}
 
   .modal-body
@@ -20,5 +18,5 @@
         %textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: 'membershipRequest.introduction', ng-required: 'false'}
 
   .modal-footer
-    %button.btn.btn-primary.membership-request-form__submit-btn{type: 'submit', translate: 'membership_request_form.submit_button'}
-    %button.btn.btn-warning.membership-request-form__cancel-btn{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    %button.membership-request-form__submit-btn{type: 'submit', translate: 'membership_request_form.submit_button'}
+    %button.membership-request-form__cancel-btn{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

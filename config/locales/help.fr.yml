@@ -65,6 +65,7 @@ fr:
     getting_started:
       title: Démarrage
     group_settings:
+      title: Réglages du groupe
       group_privacy:
         who_can_find_this_group:
           title: Qui peut voir ce groupe ?

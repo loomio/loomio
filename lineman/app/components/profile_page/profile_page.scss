@@ -1,6 +1,5 @@
 .profile-page {
-  max-width: $main-max-width;
-  margin: 0px auto;
+  @include lmoRow;
 }
 
 .profile-page-card {

@@ -11,6 +11,7 @@ FactoryGirl.define do
   factory :user do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }
+    angular_ui_enabled false
     password 'complex_password'
     time_zone "Pacific/Tarawa"
 
@@ -40,6 +41,7 @@ FactoryGirl.define do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
     visible_to 'public'
+    discussion_privacy_options 'public_or_private'
     members_can_add_members true
     after(:create) do |group, evaluator|
       user = FactoryGirl.create(:user)
@@ -47,6 +49,7 @@ FactoryGirl.define do
       if group.parent.present?
         group.parent.admins << user
       end
+      group.subscription = build(:subscription) if group.is_parent?
       group.admins << user
       group.save!
     end
@@ -208,6 +211,10 @@ FactoryGirl.define do
     cover_photo_file_size { 10000 }
     cover_photo_content_type { "image/jpeg" }
     cover_photo_updated_at { 10.days.ago }
+  end
+
+  factory :subscription do
+    kind :trial
   end
 
 end

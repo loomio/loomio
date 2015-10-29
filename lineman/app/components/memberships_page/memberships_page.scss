@@ -1,7 +1,4 @@
 .memberships-page {
-  margin: 0px auto;
-  max-width: $main-max-width;
-  .align-center { text-align: center; }
 }
 
 .memberships-page__search-filter {
@@ -23,6 +20,14 @@
   @include card;
   padding-top: 10px;
   clear: both;
+}
+
+.memberships-page__remove-link {
+  @include lmoBtnNude;
+}
+
+.memberships-page__make-coordinator {
+  @include lmoBtnNude;
 }
 
 .memberships-page__member-info {

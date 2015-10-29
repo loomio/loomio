@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'LmoUrlService', ->
+angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
   new class LmoUrlService
 
     route: ({model, action, params}) ->
@@ -12,6 +12,9 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
     routePath: (route) ->
       "/".concat(route).replace('//', '/')
 
+    membershipRequest: (mr, params = {}, options = {}) ->
+      @route model: mr.group(), action: 'membership_requests', params: params
+
     group: (g, params = {}, options = {}) ->
       @buildModelRoute('g', g.key, g.fullName, params, options)
 
@@ -19,14 +22,20 @@ angular.module('loomioApp').factory 'LmoUrlService', ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
     proposal: (p, params = {}, options = {}) ->
-      @buildModelRoute('m', p.key, p.name, params, options)
+      @discussion p.discussion(), _.merge(params, {proposal: p.key})
 
     comment: (c, params = {}, options = {}) ->
       @discussion c.discussion(), _.merge(params, {comment: c.id})
 
+    user: (u, params = {}, options = {}) ->
+      @buildModelRoute('u', u.username, null, params, options)
+
+    contactForm: ->
+      AppConfig.baseUrl + '/contact'
+
     buildModelRoute: (path, key, name, params, options) ->
       result = "/#{path}/#{key}"
-      result += "/" + @stub(name) unless options.noStub?
+      result += "/" + @stub(name) unless !name? or options.noStub?
       result += "?" + @queryStringFor(params) if Object.keys(params).length
       result
 

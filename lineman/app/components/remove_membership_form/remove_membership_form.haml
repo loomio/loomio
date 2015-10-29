@@ -1,12 +1,10 @@
 %form{ng-submit: 'submit()'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close()'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1{translate: 'memberships_page.remove_membership.title'}
 
   .modal-body
     %span{translate: 'memberships_page.remove_membership.question', translate-value-name: '{{membership.userName()}}', translate-value-group: '{{membership.group().name}}'}
   .modal-footer
-    %button.btn.btn-danger.memberships-page__remove-membership-confirm{type: 'submit', translate: 'memberships_page.remove_membership.submit'}
-    %button.btn.btn-warning{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}
+    %button.lmo-btn--danger.memberships-page__remove-membership-confirm{type: 'submit', translate: 'memberships_page.remove_membership.submit'}
+    %button.lmo-btn--cancel{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

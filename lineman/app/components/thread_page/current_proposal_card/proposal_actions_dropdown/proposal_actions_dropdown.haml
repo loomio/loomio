@@ -1,16 +1,16 @@
-.proposal-actions-dropdown.pull-right{dropdown: ''}
-  %button.btn.lmo-btn-nude.proposal-actions-dropdown__btn{href:'', dropdown-toggle: ''}
+.proposal-actions-dropdown.pull-right{uib-dropdown: ''}
+  %button.lmo-btn--nude.proposal-actions-dropdown__btn{uib-dropdown-toggle: ''}
     %i.fa.fa-chevron-down
-  .dropdown-menu.dropdown-menu-right{role: 'menu'}
-    %ul.dropdown-menu-items
-      %li.dropdown-menu-item{ng-if: 'canEditProposal()'}
-        %a.dropdown-menu-item-label.proposal-actions-dropdown__edit-link{ng_click: 'editProposal()'}
+  .uib-dropdown-menu.lmo-dropdown-menu{role: 'menu'}
+    %ul.lmo-dropdown-menu-items
+      %li.lmo-dropdown-menu-item{ng-if: 'canEditProposal()'}
+        %a.lmo-dropdown-menu-item-label.proposal-actions-dropdown__edit-link{ng_click: 'editProposal()'}
           %span{translate: 'proposal_expanded.edit_proposal'}
 
-      %li.dropdown-menu-item{ng-if: '!canEditProposal() && canCloseOrExtendProposal()'}
-        %a.dropdown-menu-item-label.proposal-actions-dropdown__extend-link{href:'#', ng_click: 'extendProposal()'}
+      %li.lmo-dropdown-menu-item{ng-if: '!canEditProposal() && canCloseOrExtendProposal()'}
+        %a.lmo-dropdown-menu-item-label.proposal-actions-dropdown__extend-link{href:'#', ng_click: 'extendProposal()'}
           %span{translate: 'proposal_expanded.extend_proposal'}
 
-      %li.dropdown-menu-item{ng-if: 'canCloseOrExtendProposal()'}
-        %a.dropdown-menu-item-label.proposal-actions-dropdown__close-link{href:'#', ng_click: 'closeProposal()'}
+      %li.lmo-dropdown-menu-item{ng-if: 'canCloseOrExtendProposal()'}
+        %a.lmo-dropdown-menu-item-label.proposal-actions-dropdown__close-link{href:'#', ng_click: 'closeProposal()'}
           %span{translate: 'proposal_expanded.close_proposal'}

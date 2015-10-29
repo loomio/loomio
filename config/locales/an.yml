@@ -664,7 +664,6 @@ an:
     invites_more_help2: "<p>Puetz convidar a personas a o tuyo grupo en qualsiquier momento.</p><p>Podrías convidar a totz os miembros d'o grupo d'una sola vegada, u puetz empecipiar convidando nomás a os que treballan con tu diariament.</p>"
     invitation_link: Vinclo ta la invitación
     discussion_link: "Participa en a discusión:"
-    link_help: "Fe clic en iste vinclo ta unir-te a %{group} en loomio:"
     copy: "Si belún no ha recibiu a invitación electronica, no dubdes en copiar o vinclo d'alto y ninviar-le-ne personalment."
     pending_invitations: Invitacions pendients
     no_pending_invitations: "Actualment, no i hai invitacions pendients"
@@ -676,12 +675,6 @@ an:
     empty_search: Busca sin resultaus
     please_enter_a_search: "Por favor, escribe una consulta en a barra de busca superior"
     no_match: No i ha habiu resultaus que coincidan con a tuya consulta
-  example_discussion:
-    title: "Discusión d'eixemplo: Bienvenida y introducción a Loomio"
-    description: "Bienvenius a Loomio, una ferramienta ta la presa de decisions en grupo.\nEn participar en un tema, discutindo diferents puntos de vista y información, fendo frent a qualsiquier problema que se presente, o tuyo grupo puede unir-se y trobar o millor camín a seguir. \nPuedes utilizar a discusión d'eixemplo y chugar con as d''a ferramienta.\nTa empecipiar, o Loomio Helper Bot piensa que sería una buena ideya que o tuyo grupo se prenese unas vacanzas chuntos. A tarta d'a dreita amuestra o que piensa o tuyo grupo d'a propuesta. Puetz decir a tuya fendo clic en uno d'os botons de decisión d'o cobaixo.\n"
-  example_motion:
-    name: "Habríanos d'ir-nos de vacanzas ta la luna!"
-    description: "Loomio Helper Bot ye muit interesau en que o tuyo grupo invierta en un viache a la luna. Por o que pareix, o queso d'o espacio ye sobrebueno. Pero as implicacions medioambientals son preocupants. \nYe una buena ideya? Loomio Helper Bot quiere saber o que piensas! \nSi yes convenciu d'a tuya posición, fe clic en un d'os iconos d''abaixo (preta o cursor sobre os botons de decisions ta una descripción d'o que cada un d'ells significa). \nSe te pedirá que faigas una breu declaración sobre a razón d'a tuya decisión. Isto fa que sía facil de veyer en forma de resumen d''o que totz piensan y por qué. Puetz cambiar d'opinión y editar a tuya decisión librement dica que a propuesta se zarra.\n"
   contact_page:
     contact_us: Contacta con nusatros
     labels:

@@ -5,11 +5,24 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
   replace: true
   controller: ($scope, $rootScope, $location, Records, ProposalFormService) ->
 
-    Records.votes.fetchMyVotesByDiscussion($scope.discussion)
+    Records.votes.fetchMyVotes($scope.discussion.closedProposals())
     Records.proposals.fetchByDiscussion($scope.discussion).then ->
-      if proposal = Records.proposals.find($location.search().proposal)
-        $scope.selectProposal(proposal)
+      $scope.setSelectedProposal()
       $rootScope.$broadcast 'threadPageProposalsLoaded'
+
+    $scope.setSelectedProposal = ->
+      $scope.selectedProposalId = setProposalFromQueryParameter() or setLastClosedProposal()
+
+    setProposalFromQueryParameter = ->
+      proposal = Records.proposals.find($location.search().proposal)
+      proposal.id if proposal
+
+    setLastClosedProposal = ->
+      return unless $scope.anyProposals() and !$scope.discussion.hasActiveProposal()
+      proposal = $scope.discussion.closedProposals()[0]
+      proposal if moment().add(-1, 'month') < proposal.closedAt
+
+    $scope.$on 'setSelectedProposal', $scope.setSelectedProposal
 
     $scope.anyProposals = ->
       $scope.discussion.closedProposals().length > 0

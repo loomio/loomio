@@ -21,18 +21,18 @@ Scenario: Guest creates group
   And I should recieve an email with an invitation link
   When I click the invitation link
   And I sign up as a new user
-  And I setup the group
   Then I should be taken to the new group
   And the example content should be present
   And I should be the creator of the group
   And the group should be non referral
+  And the group should be on a trial subscription
 
 @javascript
 Scenario: User creates group
   Given I am logged in
   When I go to start a new group from the navbar
   And I fill in my group name and choose subscription and submit
-  And I setup the group
   Then I should be taken to the new group
   And the example content should be present
   And I should be the creator of the group
+  And the group should be on a trial subscription

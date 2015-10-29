@@ -10,6 +10,7 @@
 
     = render 'angular/google_analytics'
     = render 'angular/intercom'
+    = render 'angular/chargify'
 
   %body{'ng-keydown' => 'keyDown($event)'}
     %flash
@@ -25,5 +26,5 @@
     = javascript_include_tag lineman_vendorjs_path
     = javascript_include_tag lineman_appjs_path
 
-    - if ENV['FAYE_URL']
-      %script{src: "#{ENV['FAYE_URL']}/client.js", type: 'text/javascript'}
+    - if Rails.application.secrets.faye_url.present?
+      %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}

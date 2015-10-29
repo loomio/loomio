@@ -1,6 +1,5 @@
-.group-page {
-  max-width: $large-max-width;
-  margin: 0 auto;
+.group-theme{
+  @include lmoRow;
   padding-top: 48px;
 }
 
@@ -21,7 +20,8 @@
   min-height: 335px;
 }
 
-.group-theme__header .btn{
+.group-theme__member-actions button{
+  @include fontHelveticaBold;
   @include fontSmall;
 }
 
@@ -51,8 +51,10 @@
   margin-top: 175px;
 }
 
+.group-theme__member-actions{
+  float: right;
+}
 .group-theme__nonmember-actions { float: right; }
-.group-theme__member-actions .btn { @include fontHelveticaBold; }
 
 .group-theme__name {
   float: left;
@@ -82,12 +84,25 @@
 
 .group-theme__upload-photo {
   position: relative;
-  left: 5px;
-  top: 5px;
   cursor: pointer;
+  top: 2px;
+  left: 2px;
+  width: 95px;
+  height: 30px;
+  i {
+    margin: 8px 5px 5px 5px;
+  }
+  &:hover {
+    background-color: $list-hover-color;
+  }
 }
 
 .group-theme__upload-photo i {
   color: white;
   text-shadow: 1px 1px 4px $grey-on-grey;
+}
+
+.group-theme__upload-help-text {
+  @include fontTiny;
+  color: $primary-text-color;
 }

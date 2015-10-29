@@ -44,10 +44,70 @@ class DevelopmentController < ApplicationController
     redirect_to inbox_url
   end
 
+  def setup_new_group
+    cleanup_database
+    group = Group.new(name: 'Fresh group')
+    StartGroupService.start_group(group)
+    group.add_admin! patrick
+    sign_in patrick
+    redirect_to group_url(group)
+  end
+
   def setup_group
     cleanup_database
     sign_in patrick
     test_group.add_member! emilio
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_many_discussions
+    cleanup_database
+    sign_in patrick
+    test_group.add_member! emilio
+    50.times do
+      DiscussionService.create(discussion: FactoryGirl.build(:discussion, group: test_group, author: emilio), actor: emilio)
+    end
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_on_trial_admin
+    cleanup_database
+    sign_in patrick
+    GroupService.create(group: test_group, actor: current_user)
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_on_trial
+    cleanup_database
+    sign_in jennifer
+    GroupService.create(group: test_group, actor: current_user)
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_expired_trial
+    cleanup_database
+    GroupService.create(group: test_group, actor: current_user)
+    sign_in patrick
+    subscription = test_group.subscription
+    subscription.update_attribute :expires_at, 1.day.ago
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_overdue_trial
+    cleanup_database
+    GroupService.create(group: test_group, actor: patrick)
+    sign_in patrick
+    subscription = test_group.subscription
+    subscription.update_attribute :expires_at, 20.days.ago
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_on_paid_plan
+    cleanup_database
+    GroupService.create(group: test_group, actor: patrick)
+    sign_in patrick
+    subscription = test_group.subscription
+    subscription.update_attribute :kind, 'paid'
     redirect_to group_url(test_group)
   end
 
@@ -265,6 +325,7 @@ class DevelopmentController < ApplicationController
   def patrick
     @patrick ||= User.create!(name: 'Patrick Swayze',
                               email: 'patrick_swayze@example.com',
+                              is_admin: true,
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               detected_locale: 'en',

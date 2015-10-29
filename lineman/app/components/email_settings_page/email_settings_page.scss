@@ -1,6 +1,5 @@
 .email-settings-page {
-  max-width: $main-max-width;
-  margin: 0px auto;
+  @include lmoRow;
 }
 
 .email-settings-page__email-settings {
@@ -8,10 +7,14 @@
 }
 
 .email-settings-page__field {
-  label { margin: 0 0 0 15px; }
+  label { margin: 0 0 0 13px; }
   margin-bottom: 15px;
 }
 
 .email-settings-page__input-description {
   margin-left: 25px;
+}
+
+.email_settings_page__update-button{
+  @include lmoBtnPrimary;
 }

@@ -50,10 +50,11 @@
   border: 1px solid #b16a1a;
 }
 .pricing-table__price {
-  left: 30%;
   position: absolute;
   bottom: 0;
   font-weight: bold;
+  text-align: center;
+  width: 90%;
   strong {
     font-size: 30px;
     line-height: 36px;

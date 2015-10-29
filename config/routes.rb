@@ -37,13 +37,17 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
+      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
+
+    resources :users, only: :show
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
         post :join_group
         get :autocomplete
+        get :for_user
         get :my_memberships
         get :invitables
       end
@@ -67,7 +71,7 @@ Loomio::Application.routes.draw do
       get :pending, on: :collection
     end
 
-    resources :profile, only: [] do
+    resources :profile, only: [:show] do
       post :update_profile, on: :collection
       post :upload_avatar, on: :collection
       post :change_password, on: :collection
@@ -163,6 +167,7 @@ Loomio::Application.routes.draw do
   get "/explore", to: 'explore#index', as: :explore
   get "/explore/search", to: "explore#search", as: :search_explore
   get "/explore/category/:id", to: "explore#category", as: :category_explore
+  get "/browser_not_supported", to: "application#browser_not_supported"
 
   resource :search, only: :show
 
@@ -181,6 +186,10 @@ Loomio::Application.routes.draw do
     match 'mark_as_read', via: [:get, :post]
     match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
     match 'unfollow', via: [:get, :post]
+  end
+
+  namespace :subscriptions do
+    post :webhook
   end
 
   resources :invitations, only: [:show, :create, :destroy]
@@ -202,6 +211,7 @@ Loomio::Application.routes.draw do
 
   get 'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
+  post 'enable_angular' => 'start_group#enable_angular'
 
   resources :groups, path: 'g', only: [:create, :edit, :update] do
     member do
@@ -215,7 +225,7 @@ Loomio::Application.routes.draw do
       post :edit_description
       delete :leave_group
       get :members_autocomplete
-      get :previous_proposals, to: :show 
+      get :previous_proposals, action: :show
     end
 
     resources :motions,     only: [:index]

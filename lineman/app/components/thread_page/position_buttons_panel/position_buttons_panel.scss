@@ -8,7 +8,7 @@
 }
 
 .position-button {
-  @include box_shadow(1);
+  @include lmoBtn;
   margin-right: 5px;
   display: inline-block;
   width: 55px;

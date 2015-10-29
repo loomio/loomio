@@ -9,16 +9,35 @@
 }
 
 .thread-preview__star{
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
   margin-right: $cardPaddingSize;
   margin-top: $thinPaddingSize;
 }
 
 .thread-preview__actions{
+  position: absolute;
+  right: 40px;
+  top: -4px;
   display: none;
-  float: right;
   margin-right: $thinPaddingSize;
   margin-top: $thinPaddingSize;
+}
+
+.thread-preview__mark-as-read{
+  @include lmoBtnDefault;
+  @include lmoBtnSm;
+}
+
+.thread-preview__mute{
+  @include lmoBtnDefault;
+  @include lmoBtnSm;
+}
+
+.thread-preview__mute{
+  @include lmoBtnDefault;
+  @include lmoBtnSm;
 }
 
 .thread-preview__link {
@@ -45,6 +64,7 @@
 .thread-preview__text-container{
   @include displayFlex;
   line-height: 22px;
+  margin-right: 17px;
 }
 
 .thread-preview__title{
@@ -56,6 +76,7 @@
 .thread-preview__proposal-name{
   font-size: 93%;
   padding-left: $thinPaddingSize;
+  padding-right: 5px;
   @include truncateText;
 }
 
@@ -67,7 +88,6 @@
 }
 
 .thread-preview__proposal-closing-container {
-  padding-left: $thinPaddingSize;
   min-width: 130px;
 }
 
@@ -126,13 +146,12 @@
   text-align: center;
 }
 
-
-.thread-preview__mark-as-read{
-  margin-right: 5px;
+.thread-preview__actions button {
+  width: 40px;
 }
 
 .thread-preview__mute{
-  margin-right: 5px;
+  margin-left: 5px;
   .fa-volume-off{
     padding-right: 9px;
   }

@@ -1,0 +1,378 @@
+.menu-image { padding: 15px; }
+
+.underlined-link {
+  text-decoration: underline;
+}
+
+.debug {
+  border: 1px solid #000;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+/* use .first if your heading is the first child */
+.first{
+  margin-top: 0;
+}
+
+.lmo-grey {
+  color: $grey-on-white;
+}
+
+.lmo-last{
+  /* utility class to use when you want to fix up
+     the margins on your card, e.g. if the last
+     element in the card is a paragraph */
+  margin-bottom: -10px;
+}
+
+.lmo-validation-error {
+  color: $highlight-red;
+  display: block;
+  @include fontSmall;
+}
+
+.lmo-bold {
+  font-weight: bold;
+}
+
+.nowrap{
+  white-space: nowrap;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.fat-finger{
+  /*utility class to increase the target size of a link*/
+  min-width: 30px;
+  min-height: 30px;
+  display: block;
+  text-align: right;
+  cursor: pointer;
+  line-height: 32px;
+  i{ line-height: 32px; }
+}
+
+.action{
+  color: $grey-on-grey;
+  text-decoration: underline;
+}
+
+.small-action{
+  color: $grey-on-grey;
+  text-decoration: underline;
+  @include fontSmall;
+}
+
+.label-with-details{
+  font-weight: bold;
+  display: inline;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.label-with-details-label:after{
+  content: ": ";
+}
+
+.label-with-details-details{
+  font-weight: normal;
+}
+
+label.label-with-details{
+  margin-left: 5px;
+}
+
+.fa-volume-off-padded{margin: 0 6px 0 3px;}
+
+.form-card{
+  @include card;
+  max-width: 480px;
+  margin: 10px auto;
+}
+
+.form-group{
+  margin-top: 20px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.page-loading {
+  color: $grey-on-grey;
+  text-align: center;
+  padding: 10px;
+}
+
+.lmo-h1{
+  @include fontHelveticaBold;
+  @include fontGrande;
+  padding: 0;
+  margin: 0;
+}
+.lmo-h1-medium{
+  @include fontHelveticaMedium;
+  @include fontGrande;
+}
+
+.lmo-h1:focus, .lmo-h1-medium:focus{
+  outline: none;
+}
+
+.lmo-h2 {
+  @include fontHelveticaBold;
+  @include fontLarge;
+  margin: 8px 0;
+}
+.lmo-h3{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  color: $grey-on-white;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.lmo-h4{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  color: $grey-on-white;
+  margin-top: 22px;
+}
+
+.lmo-card {
+  @include card;
+}
+
+.lmo-card--no-padding {
+  @include cardNoPadding;
+}
+
+.lmo-card-padding {
+  @include cardPadding;
+}
+
+.lmo-card-heading-padding {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-left-right-padding {
+  padding: 0 $cardPaddingSize 0 $cardPaddingSize;
+}
+
+.lmo-card-heading{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  display: inline-block;
+  text-transform: uppercase;
+  color: $grey-on-white;
+  margin-bottom: 10px;
+  letter-spacing: .3px;
+}
+
+.lmo-card-subheading{
+  @include fontSmall;
+  @include fontHelveticaMedium;
+  text-transform: uppercase;
+  color: $grey-on-white;
+  margin-top: 1.5em;
+  margin-bottom: .8em;
+}
+
+.lmo-link {
+  color: $grey-on-white;
+  text-decoration: underline;
+}
+
+.lmo-vertical-spacer {
+  padding: 5px 0;
+}
+
+.lmo-vertical-spacer-lg {
+  padding: 15px 0;
+}
+
+.lmo-placeholder {
+  font-style: italic;
+  color: $grey-on-white;
+  margin-bottom: 10px;
+}
+
+.lmo-hint-text{
+  font-style: italic;
+  color: $grey-on-white;
+}
+
+.lmo-truncate {
+  @include truncateText;
+}
+
+.lmo-width-75 {
+  width: 75%
+}
+
+.lmo-markdown-wrapper {
+  img { max-width: 100%; }
+  h1 {
+    @include fontLarge;
+    @include fontHelveticaBold;
+    margin: 20px 0 10px 0;
+  }
+  h2 {
+    @include fontMedLarge;
+    @include fontHelveticaBold;
+  }
+  h3 {
+    @include fontHelveticaBold;
+  }
+  h4 {
+    @include fontHelveticaBold;
+  }
+  ul{
+    padding: 0 0 10px 24px;
+  }
+  ul li{
+    list-style: disc;
+  }
+  blockquote{
+    font-size: inherit;
+  }
+}
+
+.lmo-disabled-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  border-radius: 6px;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+.lmo-box--tiny {
+  text-align: center;
+  @include boxTiny;
+}
+
+.lmo-box--small {
+  text-align: center;
+  @include boxSmall;
+}
+
+.lmo-box--medium {
+  text-align: center;
+  @include boxMedium;
+}
+
+.lmo-box--large {
+  text-align: center;
+  @include boxLarge;
+}
+
+.lmo-box--featured {
+  text-align: center;
+  @include boxFeatured;
+}
+
+.lmo-rounded-corners {
+  @include roundedCorners;
+}
+
+.lmo-show-more {
+  padding: $cardPaddingSize;
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: $grey-on-white;
+    text-decoration: underline;
+  }
+}
+
+.lmo-clearfix {
+  clear: both;
+}
+
+.lmo-subscription-button {
+  color: #fff;
+  background-color: #4185DE;
+  i.fa { color: #fff; }
+  &:hover { color: #fff; }
+  &:focus { color: #fff; }
+}
+
+.lmo-float--left {
+  float: left;
+}
+
+.lmo-float--right {
+  float: right;
+}
+
+.lmo-option-text {
+  float: left;
+  display: inline-block;
+  line-height: 35px;
+  text-decoration: underline;
+}
+
+.lmo-card-minor-action{
+  @include cardMinorAction;
+}
+
+.dropdown-menu i.fa {
+  width: 30px;
+}
+
+.lmo-user-mention {
+  font-weight: bold;
+  color: black;
+}
+
+.timeago{
+  @include fontTiny();
+  color: $grey-on-white;
+  white-space: nowrap;
+}
+
+.align-center {
+  text-align: center;
+}
+
+textarea.form-control {
+  max-height: 400px;
+}
+
+.option-icon {
+  /* a helper class to display inline icons and avatars */
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

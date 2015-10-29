@@ -10,8 +10,6 @@ cmn:
       cancel: 取消
   proposal_outcome_panel:
     heading: 结果
-  context_card:
-    heading: 上下文
   comment_form:
     delete_comment: 删掉评论
     confirm_delete_message: 你确定你想要删掉这条评论吗？

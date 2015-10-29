@@ -2,6 +2,7 @@ ActiveAdmin.register User do
 
   actions :index, :edit, :update, :show
   filter :name
+  filter :username
   filter :email
   filter :created_at
 

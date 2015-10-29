@@ -1,12 +1,13 @@
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppConfig, CurrentUser) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, CurrentUser, LmoUrlService) ->
   currentGroup = null
   service = new class IntercomService
     available: ->
-      window? and window.Intercom?
+      $window? and $window.Intercom? and $window.Intercom.booted?
 
     boot: ->
-      return unless @available()
-      window.Intercom 'boot',
+      return unless $window? and $window.Intercom?
+      $window.Intercom 'boot',
+       admin_link: AppConfig.baseUrl+"/admin/users/#{CurrentUser.id}"
        app_id: AppConfig.intercomAppId
        user_id: CurrentUser.id
        user_hash: AppConfig.intercomUserHash
@@ -14,30 +15,41 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $http, AppCo
        user_id: CurrentUser.id
        created_at: CurrentUser.createdAt
        angular_ui: true
+       locale: CurrentUser.locale
 
     shutdown: ->
       return unless @available()
-      window.Intercom('shutdown')
+      $window.Intercom('shutdown')
 
     updateWithGroup: (group) ->
       return if currentGroup == group
       currentGroup = group
       return unless @available()
-      window.Intercom 'update',
+      $window.Intercom 'update',
         email: CurrentUser.email
         user_id: CurrentUser.id
         company:
           id: group.id
           key: group.key
           name: group.name
-          description: group.description
+          admin_link: AppConfig.baseUrl+"/admin/groups/#{group.key}"
+          subscription_kind: group.subscriptionKind
+          subscription_plan: group.subscriptionPlan
+          subscription_expires_at: group.subscriptionExpiresAt
           creator_id: group.creatorId
           visible_to: group.visibleTo
           cohort_id: group.cohortId
+          created_at: group.createdAt
+          locale: CurrentUser.locale
+          proposals_count: group.proposals_count
+          discussions_count: group.discussions_count
+          memberships_count: group.memberships_count
 
     contactUs: ->
-      return unless @available()
-      window.Intercom.public_api.showNewMessage()
+      if @available()
+        $window.Intercom.public_api.showNewMessage()
+      else
+        $window.location = LmoUrlService.contactForm()
 
   $rootScope.$on 'analyticsSetGroup', (event, group) ->
     service.updateWithGroup(group)

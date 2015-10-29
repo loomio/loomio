@@ -3,9 +3,6 @@
     .media-left
       .thread-item__proposal-icon
     .media-body
-      %h3.thread-item__title{id: 'event-{{event.id}}', translate: "proposal_closed_item.proposal_closed"}
-  .thread-item__body
-    {{proposal.name}}
-  .thread-item__footer
-    .thread-item__actions
-      %timeago{timestamp: 'proposal.closedAt'}
+      %h3.thread-item__title{id: 'event-{{event.id}}'}
+        %span{translate: "proposal_closed_item.proposal_closed", translate-values: '{title: proposal.name}'}
+        %timeago.timeago--inline{timestamp: 'proposal.closedAt'}

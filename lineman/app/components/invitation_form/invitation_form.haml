@@ -1,9 +1,8 @@
 .invitation-form
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
-    %h1.lmo-h1.modal-title.pull-left {{ 'invitation.invite_people' | translate }}
-    %a.close.pull-right{href: '', ng-click: '$close()'} ×
-    .clearfix
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title {{ 'invitation.invite_people' | translate }}
   .modal-body
     %label{for: 'group-dropdown', translate: 'common.group'}
     %select.invitation-form__group-dropdown.form-control#group-dropdown{ng-model: 'group', ng-required: true, ng-options: 'group as group.fullName for group in availableGroups() | orderBy: "fullName"'}
@@ -23,11 +22,11 @@
             %span{aria-hidden: 'true'} &times;
             %span.sr-only{translate: 'invitation.remove_invitation'}
           %invitable.invitation-form__invitation{invitable: 'invitation'}
-      %button.invitation-form__add-message-button.lmo-btn-link{ng-show: 'messageFieldHidden', ng-click: 'showMessageField()', translate: 'invitation.add_custom_message'}
+      %button.invitation-form__add-message-button{ng-show: 'messageFieldHidden', ng-click: 'showMessageField()', translate: 'invitation.add_custom_message'}
       .invitation-form__message-input{ng-show: '!messageFieldHidden'}
         %label{for: 'message_input', translate: 'invitation.invitation_message'}
         %textarea.form-control#message_input{ng-model: 'message'}
 
   .modal-footer
-    %button.invitation-form__submit.btn.btn-primary{ng-click: 'submit()', ng-disabled: 'isDisabled', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
-    %button.btn.btn-warning{ng-click: '$close()', translate: 'common.action.cancel'}
+    %button.invitation-form__submit.lmo-btn--submit{ng-click: 'submit()', ng-disabled: 'isDisabled', ng-show: 'hasInvitations()', translate: 'invitation.send_invite', translate-value-count: '{{invitationsCount()}}'}
+    %button.lmo-btn--cancel{ng-click: '$close()', translate: 'common.action.cancel'}

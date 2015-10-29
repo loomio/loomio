@@ -79,9 +79,15 @@ ActiveAdmin.register Group do
   show do |group|
     attributes_table do
       row :group_request
+      row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
+      row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
       group.attributes.each do |k,v|
         row k, v.inspect
       end
+    end
+
+    panel('Subscription links') do
+      table
     end
 
     panel("Group Admins") do

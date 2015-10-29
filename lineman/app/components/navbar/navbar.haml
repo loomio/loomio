@@ -16,6 +16,8 @@
         %span.lmo-navbar__btn-label{translate: 'navbar.groups'}
     .lmo-navbar__item.lmo-navbar__logo
       %img{src: 'img/logo.png'}
+      %span{ng-if: '!officialLoomio'}
+        {{hostName}}
   .lmo-navbar-item-container.lmo-navbar-item-container--right
     %section.lmo-navbar-item-container__sub.lmo-navbar-item-container__sub--left{role: 'search'}
       .lmo-navbar__item

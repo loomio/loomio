@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "angular": "^1.4.4",
-    "angular-ui-bootstrap": "0.13.3",
+    "angular-ui-bootstrap": "0.14.3",
     "angular_record_store": "git://github.com/loomio/angular_record_store.git#2.3.1",
     "bootstrap": "^3.3.5",
     "coffee-script": "^1.8.0",
-    "loomio-angular-router": "0.5.6"
+    "loomio-angular-router": "0.5.9"
   },
   "engines": {
     "node": "~>0.10.5",
@@ -31,6 +31,6 @@
     "grunt-haml": "^0.9.0",
     "grunt-ng-annotate": "latest",
     "grunt-sass": "1.1.0-beta",
-    "lineman": "^0.36.0"
+    "lineman": "^0.36.6"
   }
 }

@@ -1,9 +1,7 @@
 %form.proposal-form{ng-submit: 'submit()', ng-disabled: 'proposal.processing'}
   .lmo-disabled-form{ng-show: 'isDisabled'}
   .modal-header
-    %button{type: 'button', class: 'close', ng-click: '$close($event)'}
-      %span{aria-hidden: 'true'} &times;
-      %span.sr-only{translate: 'common.action.cancel'}
+    %modal_header_cancel_button
     %h1.lmo-h1{ng-if: 'proposal.isNew()', translate: 'proposal_form.start_a_proposal'}
     %h1.lmo-h1{ng-if: '!proposal.isNew()', translate: 'proposal_form.edit_proposal'}
 
@@ -26,6 +24,6 @@
       %closing_at_field{proposal: 'proposal'}
 
   .modal-footer
-    %button.btn.btn-primary.proposal-form__start-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
-    %button.btn.btn-primary.proposal-form__save-changes-btn{ng-if: '!proposal.isNew()', type: 'submit', translate: 'common.action.save_changes'}
-    %button.btn.btn-warning.proposal-form__cancel-btn{ng-click: '$close($event)', type: 'button', translate: 'common.action.cancel'}
+    %button.lmo-btn--submit.proposal-form__start-btn{ng-if: 'proposal.isNew()', type: 'submit', translate: 'proposal_form.start_proposal'}
+    %button.lmo-btn--submit.proposal-form__save-changes-btn{ng-if: '!proposal.isNew()', type: 'submit', translate: 'common.action.save_changes'}
+    %button.lmo-btn--cancel.proposal-form__cancel-btn{ng-click: '$close($event)', type: 'button', translate: 'common.action.cancel'}

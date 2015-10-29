@@ -40,7 +40,6 @@ pl:
     internal_server_error: "Przykro nam, ale coś poszło źle. Spróbuj jeszcze raz."
   start_proposal_card:
     title: Uruchom rekomendację
-    helptext: Gotowy/a aby podjąć decyzję? Rekomendacje pozwalają sprawdzić co inni myślą o konkretnym kierunku działania.
   proposal_outcome_panel:
     heading: Wynik
     set_outcome_hint: Użyj tego miejsca aby inni poznali wynik rekomendacji.
@@ -58,8 +57,6 @@ pl:
     heading: Poprzednie rekomendacje
   proposal_collapsed:
     expand: Rozwiń
-  context_card:
-    heading: Kontekst
   volume_levels:
     loud: Głośno
     normal: Normalnie
@@ -212,7 +209,6 @@ pl:
     privacy:
       will_be_private_to_group: "Wątek będzie widoczny tylko dla członków grupy  {{groupName}}."
       will_be_private_to_parent_group: "Wątek będzie widoczny dla członków grupy {{parentGroupName}} oraz członków {{groupName}}."
-      will_be_public: Wszyscy mogą zobaczyc wątek
     new_discussion_submit: Rozpoczęcie wątku
     edit_discussion_submit: Zmiana wątku
   proposal_expanded:
@@ -233,8 +229,6 @@ pl:
   start_group_form:
     heading: Uruchomienie grupy
     group_helptext: "Aby rozpocząć wspólne podejmowanie decyzji z użyciem Loomio, ustaw bezpłatną grupę:"
-    group_payment_reminder: "Po 30 dniach Twojego sprawdzania jak Loomio wspiera podejmowanie grupowych decyzji, spytamy Cię o wybór <a href='#'>planu płatności</a> odpowiedniego dla Ciebie."
-    name_label: Nazwa Grupy
     submit: Uruchomienie Grupy
   join_group_button:
     join_group: Dołączenie do grupy
@@ -279,9 +273,6 @@ pl:
     options_label: Opcje
     options:
       label: Opcje
-      edit_group: Edycja Ustawień Grupy
-      leave_group: Opuszczenie Grupy
-      deactivate_group: Deaktywacja Grupy
     deactivate_group:
       title: Deaktywacja Grupy
       question: Czy na pewno chcesz deaktywować tę grupę?
@@ -301,7 +292,6 @@ pl:
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       mute: "Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek"
       mute_aria_description: "Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie."
-      updated: Poziom powiadamiania Grupy zmieniono.
   edit_group_form:
     title: Edycja Ustawień Grupy
     profile:
@@ -511,7 +501,6 @@ pl:
       quiet_aria_description: Poziom powiadomienia dla tego wątku jest ustawiony na Cisza. Nie otrzymasz wiadomości z tego wątku dopóki ktoś nie wspomni o Tobie.
       mute: "Ukryj ten wątek na pulpicie i nie powiadamiaj dopóki nie @wspomniano."
       mute_aria_description: Poziom powiadamiania dla tego wątku ustawiono na Wyciszone. Nie będziesz otrzymywać wiadomości z tego wątki dopóki ktoś nie wspomni o tobie i ten wątek nie będzie usuniętu z Twojego pulpitu.
-      updated: Zmieniono poziom powiadamiania wątku.
   thread_group:
     aria_label: Nazwa grupy
   thread_context:

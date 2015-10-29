@@ -1,4 +1,4 @@
-.loading-wrapper.container.main-container
+.loading-wrapper.lmo-one-column-layout
   %loading{ng-if: '!profilePage.user'}
   %main.profile-page{ng-if: 'profilePage.user'}
     %h1.lmo-h1.lmo-vertical-spacer-lg{translate: 'profile_page.profile'}
@@ -7,7 +7,7 @@
       %h3.lmo-h3{translate: 'profile_page.edit_profile'}
 
       %label{for: 'user-picture-field', translate: 'profile_page.picture_label'}
-      %user_avatar{user: 'profilePage.user', size: 'large'}
+      %user_avatar{user: 'profilePage.user', size: 'featured'}
 
       .profile-page__change-picture.lmo-vertical-spacer
         %a.lmo-link{href: '', ng-click: 'profilePage.changePicture()', translate: 'profile_page.change_picture_link'}
@@ -30,7 +30,7 @@
         %validation_errors{subject: 'profilePage.user', field: 'selectedLocale'}
 
       .profile-page__update-account.lmo-vertical-spacer
-        %button.btn.btn-primary.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
+        %button.lmo-btn--submit.profile-page__update-button{ng-click: 'profilePage.submit()', ng-disabled: 'isDisabled', translate: 'profile_page.update_profile'}
 
       .profile-page__change-password.lmo-vertical-spacer
         %a.lmo-link{href: '', ng-click: 'profilePage.changePassword()', translate: 'profile_page.change_password_link'}

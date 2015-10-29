@@ -664,7 +664,6 @@ sv:
     invites_more_help2: "<p>Du kan bjuda in personer till din grupp när som helst.</p><p>Du kanske vill bjuda in alla medlemmar på en gång, eller börja med att bara bjuda in dem du arbetar närmast med.</p>"
     invitation_link: Inbjudningslänk
     discussion_link: "Delta i diskussionen:"
-    link_help: "Klicka på denna länk för att gå med %{group} i Loomio:"
     copy: "Om någon inte skulle ha fått sitt email med en inbjudan, kopiera då länken ovan och ge direkt till mottagaren."
     pending_invitations: Utestående inbjudningar
     no_pending_invitations: Det finns för närvarande inga utestående inbjudningar.
@@ -676,12 +675,6 @@ sv:
     empty_search: Ingen träff på sökningen
     please_enter_a_search: Skriv in en fråga i sökfältet ovan
     no_match: Det fanns inga resultat som matchade din fråga
-  example_discussion:
-    title: "Diskussionsexempel: Välkommen och en introduktion till Loomio"
-    description: "Välkommen till Loomio, ett nytt verktyg för att stötta grupper att fatta beslut.\nGenom att engagera sig i ett ämne, diskutera olika perspektiv och information, samt att beakta eventuella invändningar som dyker upp, kan din grupp slå sina huvuden samman och hitta bästa vägen framåt. \nDu kan använda detta diskussionsexempel för att utforska verktygets olika funktioner.\nFör att komma igång, tycker Loomios Hjälpbot att det vore en bra idé att din grupp tar en semester ihop. Cirkeldiagrammet till höger visar vad din grupp anser om förslaget. Du kan lämna din kommentar genom att klicka på en av beslutsknapparna nedan.\n"
-  example_motion:
-    name: "Vi borde åka på semester till månen!"
-    description: "Loomios Hjälpbot tycker verkligen att din grupp borde åka till månen. Det sägs att rymdosten där är riktigt god. Men konsekvenserna för er klimatpåverkan är oroande. \nÄr detta en bra idé? Loomios Hjälpbot vill veta vad du tycker! \nOm du vet din ståndpunkt, klicka på någon av ikonerna nedan (hovra över beslutsknapparna för en beskrivning av vad var och en betyder). \nDu blir ombedd att göra ett kort uttalande om orsaken till ditt beslut. Detta gör det lätt att se en sammanfattning av vad alla tycker och varför. Du kan ångra dig eller ändra ditt beslut när som fram till att förslaget stängs.\n"
   contact_page:
     contact_us: Kontakta oss
     labels:
