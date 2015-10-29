@@ -866,13 +866,13 @@ en:
     unlimited_decisions: unlimited decisions
     email_support: email support
     standard_price_html: |
-      <strong>$19</strong>/month<br><span>or</span> $190/year
+      US <strong>$19</strong>/month<br><span>or</span> $190/year
     plus_body: 'Everything in Standard, plus:'
     premium_support: premium support
     custom_url: custom URL
     usage_statistics: usage statistics
     plus_price_html: |
-      <strong>$179</strong>/month<br><span>or</span> $1790/year
+      US <strong>$179</strong>/month<br><span>or</span> $1790/year
   #
   # CONTRIBUTIONS
   #
