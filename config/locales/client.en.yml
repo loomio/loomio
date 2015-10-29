@@ -463,7 +463,7 @@ en:
     title: '30-day trial'
     choose_plan: 'Choose your pricing plan'
     in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that works for you at any time.'
-    expired_body_html: "<strong>{{name}}</strong> has now reached the end of it's Loomio trial. If you'd like to keep using it, you'll need to pick a pricing plan that suits. If you'd like to talk to someone about this, just <a href=''>get in touch</a>."
+    expired_body_html: "<strong>{{name}}</strong> has now reached the end of its Loomio trial. If you'd like to keep using it, you'll need to pick a pricing plan that suits. If you'd like to talk to someone about this, just <a href=''>get in touch</a>."
 
   choose_plan_modal:
     heading: 'Choose your pricing plan'
@@ -485,13 +485,13 @@ en:
     unlimited_decisions: unlimited decisions
     email_support: email support
     standard_price_html: |
-      <strong>$19</strong>/month<br><span>or</span> $190/year
+      US <strong>$19</strong>/month<br><span>or</span> $190/year
     plus_body: 'Everything in Standard, plus:'
     premium_support: premium support
     custom_url: custom URL
     usage_statistics: usage statistics
     plus_price_html: |
-      <strong>$179</strong>/month<br><span>or</span> $1790/year
+      US <strong>$179</strong>/month<br><span>or</span> $1790/year
     select: Select
 
   subscription_success_modal:
