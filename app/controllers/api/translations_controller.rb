@@ -1,11 +1,14 @@
-class API::TranslationsController < API::BaseController
+class API::TranslationsController < API::RestfulController
+
   def show
-    locale = params[:lang]
+    render json: translations_for(:en, params[:lang])
+  end
 
-    source = YAML.load_file("config/locales/client.#{locale}.yml")[locale]
-    fallback = YAML.load_file('config/locales/client.en.yml')['en']
+  private
 
-    dest = fallback.deep_merge(source)
-    render json: dest
+  def translations_for(*locales)
+    locales.map(&:to_s).uniq.reduce({}) do |translations, locale|
+      translations.deep_merge YAML.load_file("config/locales/client.#{locale}.yml")[locale]
+    end
   end
 end
