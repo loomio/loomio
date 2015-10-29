@@ -2,7 +2,7 @@ class CommentSerializer < ActiveModel::Serializer
   include Twitter::Autolink
 
   embed :ids, include: true
-  attributes :id, :body, :created_at, :updated_at, :parent_id, :parent_author_name
+  attributes :id, :body, :mentioned_usernames, :created_at, :updated_at, :parent_id, :parent_author_name
 
   has_one :author, serializer: UserSerializer, root: 'users'
   has_one :discussion, serializer: DiscussionSerializer
