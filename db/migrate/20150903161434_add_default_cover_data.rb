@@ -1,7 +1,7 @@
 class AddDefaultCoverData < ActiveRecord::Migration
 
   def up
-    if !Rails.env.test?
+    if Rails.application.secrets.aws_bucket.present?
       File.readlines(File.join(__dir__, "../default_group_covers.txt")).map do |url|
         DefaultGroupCover.store(url.chomp)
       end
