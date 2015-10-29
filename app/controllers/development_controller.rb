@@ -44,6 +44,15 @@ class DevelopmentController < ApplicationController
     redirect_to inbox_url
   end
 
+  def setup_new_group
+    cleanup_database
+    group = Group.new(name: 'Fresh group')
+    StartGroupService.start_group(group)
+    group.add_admin! patrick
+    sign_in patrick
+    redirect_to group_url(group)
+  end
+
   def setup_group
     cleanup_database
     sign_in patrick

@@ -203,6 +203,7 @@ class Group < ActiveRecord::Base
   define_counter_cache(:motions_count)     { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:discussions_count) { |group| group.discussions.published.count }
   define_counter_cache(:memberships_count) { |group| group.memberships.count }
+  define_counter_cache(:invitations_count) { |group| group.invitations.count }
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
