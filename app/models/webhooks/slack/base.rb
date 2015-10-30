@@ -20,11 +20,9 @@ Webhooks::Slack::Base = Struct.new(:event) do
       text:        attachment_text,
       fields:      attachment_fields,
       fallback:    attachment_fallback,
-      color:       attachment_color
+      color:       attachment_color,
+      mrkdwn_in: [:text]
     }]
-  end
-
-  def attachment_color
   end
 
   alias :read_attribute_for_serialization :send
