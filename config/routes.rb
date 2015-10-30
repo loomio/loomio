@@ -1,5 +1,6 @@
 Loomio::Application.routes.draw do
 
+  get '/development' => 'development#index'
   namespace :development do
     get ':action'
   end
