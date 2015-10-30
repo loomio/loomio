@@ -1,1 +1,1 @@
-Loomio::Version::MINOR = 16
+Loomio::Version::MINOR = 17
