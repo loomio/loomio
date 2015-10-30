@@ -1,5 +1,7 @@
-class API::RestfulController < API::BaseController
+class API::RestfulController < ActionController::Base
   snorlax_used_rest!
+
+  include ::ProtectedFromForgery
 
   def create_action
     @event = service.create({resource_symbol => resource, actor: current_user})
@@ -14,6 +16,10 @@ class API::RestfulController < API::BaseController
   end
 
   private
+
+  def permitted_params
+    @permitted_params ||= PermittedParams.new(params)
+  end
 
   def load_and_authorize(model, action = :show)
     instance_variable_set :"@#{model}", ModelLocator.new(model, params).locate
