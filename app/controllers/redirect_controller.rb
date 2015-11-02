@@ -1,6 +1,6 @@
 class RedirectController < ActionController::Base
   def group_subdomain
-    moved_to group_url(Group.find_by(subdomain: request.subdomain), subdomain: ENV['DEFAULT_SUBDOMAIN'])
+    moved_to group_url(Group.find_by!(subdomain: request.subdomain), subdomain: ENV['DEFAULT_SUBDOMAIN'])
   end
 
   def group_key
