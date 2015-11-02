@@ -680,12 +680,10 @@ es:
     unlimited_members: Cantidad ilimitada de miembros
     unlimited_decisions: "Cantidad ilimitada de decisiones "
     email_support: "soporte por correo electrónico "
-    standard_price_html: "<strong>$19</strong>/al mes<br><span>o</span>$190/al año\n"
     plus_body: "Todo en Estándar, más: "
     premium_support: "soporte especial "
     custom_url: "URL personalizado "
     usage_statistics: Estadísticas de uso
-    plus_price_html: "<strong>$179</strong>/al mes<br><span>o</span> $1790/al año\n"
   contribution:
     any_amount: "Cualquier contribución única "
     currency_desc: La suma está en dólares americanos

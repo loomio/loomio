@@ -311,6 +311,7 @@ es:
           editing_settings_html: "Editar la configuración del sub-grupo esta restringido a los coordinadores.\nSi eres un coordinador del sub-grupo y quieres cambiar la configuración del mismo, haz clic en <strong>\"Opciones\"</strong> en la parte derecha de la pagina de tu grupo, y selecciona <strong>\"Editar la configuración del grupo\"</strong> en el menú desplegable.\n"
     dashboard:
       title: "Tu panel de control "
+      body: "El tablero es tu pagina principal. Te dará una idea de lo que esta pasando en tus grupos.\nEs lo que veras la primera vez que ingreses a Loomio. El tablero muestra el contenido de tus grupos en una lista de prioridades.\nLas propuestas abiertas están arriba, seguidas por la actividad reciente de todos los hilos de discusión de los grupos donde eres miembro.\nSi una discusión o propuesta aparece en gris significa que hubo nueva actividad desde la ultima vez que lo viste.\nLos números sobre los comentarios reflejan cuantos han sido posteados desde la ultima visita a la pagina.\nUn gráfico de torta refleja el estado de la propuesta correspondiente.\nCuando aparecen números sobre el gráfico de torta, estos reflejan cuantas nuevas posiciones han sido tomadas desde tu la ultima visita.\nSi has tomado partido en una propuesta en particular, veras un icono que representa tu posición, frente al titulo de la propuesta.\n"
     keeping_up_to_date:
       title: "Mantenerse al día "
       volume:
@@ -325,6 +326,7 @@ es:
           quiet_description: "- desactiva todos los envíos de correos electrónicos. Verás la actividad nueva del grupo desde el Escritorio."
           mute_title: "Silenciado "
           mute_description_html: " - desactiva todos los envíos de correos electrónicos. Sólo se te notificará si alguien te @menciona. También retirará el grupo de tu Escritorio y del boletín por correo electrónico: <a href=\"#yesterday-on-loomio\">“Ayer en Loomio”</a>."
+          upon_joining_group_html: "Cuando te unís a un grupo nuevo tu configuración para ses grupo sera <strong>Normal</strong>Esto significa de recibiras un mail cuando una nueva discucion es abierta, una propuesta es evaluada, o establecida.\n"
           set_all_group_volume_html: "Puedes ver el volumen de todos tus grupos en la página <strong><a href=\"#email-settings\">\"Configuración de correo electrónico\"</a></strong>."
       email_settings:
         title: Configuración de correo electrónico

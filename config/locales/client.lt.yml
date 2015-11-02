@@ -257,7 +257,6 @@ lt:
   cancel_invitation_form:
     heading: Atšaukti pakvietimą
     question: Ar tikrai nori atšaukti šį pakvietimą?
-    submit: Atšaukti pakvietimą
     messages:
       success: Pakvietimas atšauktas
   profile_page:

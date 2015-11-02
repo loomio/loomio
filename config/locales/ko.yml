@@ -31,6 +31,7 @@ ko:
       sign_up: 계정 만들기
   error:
     access_denied: "권한을 가지고 있지 않습니다. "
+    cant_join_subgroup: 상위 그룹의 회원이 아니면 하위 그룹에 참여할 수 없습니다.
     cant_modify_position: 이 제안은 종료되었습니다.
     cant_state_position: 이 제안은 종료되었습니다.
     cant_view_member_profile: 같은 그룹에 멤버가 아니기 때문에 그룹 멤버들을 볼 수 없습니다.
