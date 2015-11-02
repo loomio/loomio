@@ -3,7 +3,7 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
   $rootScope.$broadcast('setTitle', 'Inbox')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  filters = ['only_threads_in_my_groups', 'show_unread']
+  filters = ['only_threads_in_my_groups', 'show_unread', 'show_not_muted']
   @threadLimit = 50
   @views =
     groups: {}
