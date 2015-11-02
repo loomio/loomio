@@ -6,6 +6,17 @@ describe Group do
   let(:group) { create(:group) }
   let(:discussion) { create :discussion }
 
+  context "is_referral" do
+    it "is false for first group" do
+      expect(group.is_referral).to be false
+    end
+
+    it "is true for second group" do
+      group2 = create(:group, creator: group.creator)
+      expect(group2.is_referral).to be true
+    end
+  end
+
   context "group creator" do
     it "stores the admin as a creator" do
       expect(group.creator).to eq group.admins.first
