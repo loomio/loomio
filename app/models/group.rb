@@ -143,6 +143,7 @@ class Group < ActiveRecord::Base
   has_many :comments, through: :discussions
 
   after_initialize :set_defaults
+  after_create :guess_cohort
 
   alias :users :members
 
@@ -588,6 +589,13 @@ class Group < ActiveRecord::Base
     self.is_visible_to_public ||= false
     self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
+  end
+
+  def guess_cohort
+    if self.cohort_id.blank?
+      cohort_id = Group.where('cohort_id is not null').order('cohort_id desc').first.try(:cohort_id)
+      self.update_attribute(:cohort_id, cohort_id) if cohort_id
+    end
   end
 
   def calculate_full_name
