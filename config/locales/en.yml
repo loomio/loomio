@@ -1040,8 +1040,8 @@ en:
 
       Here are some things you might want to try to get things under way:
 
-      - Set your [profile picture](%{hostname}/profile)
-      - Configure your [email settings](%{hostname}/email_preferences)
+      - Set your [profile picture](http://%{hostname}/profile)
+      - Configure your [email settings](http://%{hostname}/email_preferences)
       - Introduce yourself to the group in the [Welcome to %{group_name} thread](%{thread_url})
 
       If you’ve got any questions, the first place to check is the [Loomio help manual](http://help.loomio.org).
