@@ -26,6 +26,6 @@
       %li.navbar-search-list-item.selector-list-item.no-results-found{ng-show: 'noResultsFound()', translate: 'navbar.search.no_results'}
       %li.navbar-search-list-item.selector-list-header{ng-show: 'searchResults && !(searching || noResultsFound())'}
         %h3.lmo-dropdown-heading{translate: "navbar.search.discussions"}
-      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-show: '!(searching || noResultsFound())', ng-repeat: 'searchResult in searchResults | orderBy: ["-priority", "lastActivityAt"]'}
-        %a.search-result.selector-list-item-link{lmo-href-for: 'searchResult.discussion()', ng-mousedown: 'closeSearchDropdown($event)', ng-blur: 'handleSearchBlur()'}
+      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-show: '!(searching || noResultsFound())', ng-repeat: 'searchResult in searchResults | orderBy: ["-rank", "-lastActivityAt"]'}
+        %a.search-result.selector-list-item-link{lmo-href-for: 'searchResult', ng-mousedown: 'closeSearchDropdown($event)', ng-blur: 'handleSearchBlur()'}
           %search_result{result: 'searchResult'}

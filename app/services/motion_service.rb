@@ -4,7 +4,7 @@ class MotionService
     actor.ability.authorize! :create, motion
     return false unless motion.valid?
     motion.save!
-    ThreadSearchService.index! motion.discussion_id
+    SearchVector.index! motion.discussion_id
 
     event = Events::NewMotion.publish!(motion)
     DiscussionReader.for(discussion: motion.discussion, user: motion.author).author_thread_item!(motion.created_at)
@@ -23,7 +23,7 @@ class MotionService
 
     motion.save!
     event = Events::MotionEdited.publish!(motion, actor)
-    ThreadSearchService.index! motion.discussion_id
+    SearchVector.index! motion.discussion_id
     event
   end
 

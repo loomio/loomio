@@ -48,6 +48,7 @@ class Discussion < ActiveRecord::Base
   has_many :motions, dependent: :destroy
   has_one :current_motion, -> { where('motions.closed_at IS NULL') }, class_name: 'Motion'
   has_one :most_recent_motion, -> { order('motions.created_at DESC') }, class_name: 'Motion'
+  has_one :search_vector
   has_many :votes, through: :motions
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :comment_votes
@@ -64,6 +65,17 @@ class Discussion < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, against: [:title, :description],
     using: {tsearch: {dictionary: "english"}}
+
+
+  scope :search_for, ->(query, user, opts = {}) do
+    query = sanitize(query)
+     select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query} as query")
+    .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
+    .from(SearchVector.search_for(query, user, opts))
+    .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
+    .where('rank > 0')
+    .order('rank DESC, last_activity_at DESC')
+  end
 
   delegate :name, to: :group, prefix: :group
   delegate :name, to: :author, prefix: :author
