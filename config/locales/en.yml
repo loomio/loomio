@@ -1511,6 +1511,7 @@ en:
       motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
       new_motion: "*%{author}* started a new proposal in *%{name}*"
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
+      new_discussion: "*%{author}* started a new discussion in *%{group}*"
       view_it_on_loomio: "View it on Loomio"
       position_verbs:
         "yes": "agreed on"
