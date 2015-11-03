@@ -695,12 +695,10 @@ sr:
     unlimited_members: neograničeno članova
     unlimited_decisions: neograničene odluke
     email_support: podrška ePorukom
-    standard_price_html: "<strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje\n"
     plus_body: "Sve u Standardno, plus:"
     premium_support: premijum podrška
     custom_url: poseban URL
     usage_statistics: statistika korišćenja
-    plus_price_html: "<strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje\n"
   contribution:
     any_amount: ili proizvoljni jednokratni prilog od
     currency_desc: Iznosi su u SAD dolarima

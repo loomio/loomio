@@ -31,6 +31,7 @@ de:
       edit: Bearbeiten
       like: Gefällt mir
       unlike: Gefällt mir nicht
+      update: Aktualisierung
       cancel: Abbrechen
       show_more: Mehr zeigen
       view_all: Zeige alle
@@ -47,6 +48,7 @@ de:
     internal_server_error: Entschuldige bitte. Etwas lief falsch. Bitte erneut versuchen.
   start_proposal_card:
     title: Einen Vorschlag machen
+    helptext: "Bereit, um eine Entscheidung zu trefffen?"
   proposal_outcome_panel:
     heading: Ergebnis
     set_outcome_hint: Benutze dieses Feld um jedem das Ergebnis des Vorschlages mitzuteilen
@@ -73,6 +75,55 @@ de:
     normal: Normal
     quiet: Leise
     mute: Stumm
+    unmute: Laut
+  thread_volume_card:
+    heading: Diskussions-Benachrichtigungen
+    body:
+      loud: "eMail für alles: Du wirst per eMail benachrichtigt, sobald in dieser Diskussion etwas passiert."
+      normal: "eMail für Vorschläge: Du wirst per eMail benachrichtigt, sobald ein Vorschlag eröffnet wurde oder demnächst beendet wird oder ein Ergebnis veröffentlicht wurde."
+      quiet: "Keine eMails: Du wirst über nichts in dieser Diskussion benachrichtigt."
+      mute: "Diskussion stumm: Du wirst nicht per eMail benachrichtigt, sie wird nicht in Deiner Aktuell-Liste oder Deiner \"Ungelesen\"-Liste stehen."
+    change_volume_link: Ändern
+  thread_volume_form:
+    header: Diskussions-Benachrichtigungen
+    loud_label: eMail für alles
+    loud_description: "Du wirst benachrichtigt, sobald in dieser Diskussion etwas passiert."
+    normal_label: eMail für Vorschläge
+    normal_description: "Du wirst per eMail benachrichtigt, sobald ein Vorschlag eröffnet wurde oder demnächst beendet wird oder ein Ergebnis veröffentlicht wurde."
+    quiet_label: Keine eMails
+    quiet_description: "Du wirst nur per eMail benachrichtigt, wenn Du @erwähnt wirst."
+    mute_label: Diskussion stumm schalten
+    mute_description: "Du wirst nicht per eMail benachrichtigt, sie wird nicht in Deiner Aktuell-Liste oder Deiner \"Ungelesen\"-Liste stehen."
+    submit: Aktualisierung
+    messages:
+      loud: "Du wirst per eMail benachrichtigt, sobald in dieser Diskussion etwas passiert."
+      normal: Du wirst per eMail über Vorschläge in dieser Diskussion benachrichtigt.
+      quiet: Du wirst zu dieser Diskussion nicht per eMail benachrichtigt
+      mute: Diskussion stumm geschaltet
+  group_volume_card:
+    heading: Gruppen-Benachrichtigungen
+    body:
+      loud: "eMail für alles: Du wirst per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert."
+      normal: Du wirst per eMail über Diskussionen und Vorschläge in dieser Gruppe benachrichtigt.
+      quiet: "Keine eMails: Du wirst über nichts in dieser Gruppe benachrichtigt."
+      mute: "Gruppe stumm: Du wirst nicht per eMail benachrichtigt, die Gruppe wird nicht in Deiner Aktuell-Liste oder Deiner \"Ungelesen\"-Liste stehen."
+    change_volume_link: Ändern
+  group_volume_form:
+    header: Gruppen-Benachrichtigungen
+    loud_label: eMail für alles
+    loud_description: "Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert."
+    normal_label: eMail zu neuen Diskussionen und Vorschlägen
+    normal_description: Du wirst per eMail über Diskussionen und Vorschläge in dieser Gruppe benachrichtigt.
+    quiet_label: Keine eMails
+    quiet_description: "Du wirst zu dieser Gruppe per eMail nur informiert, sobald Dich jemand @erwähnt."
+    mute_label: Gruppe stumm schalten
+    mute_description: "Du wirst nicht per eMail benachrichtigt, die Gruppe wird nicht in Deiner Aktuell-Liste oder Deiner \"Ungelesen\"-Liste stehen."
+    submit: Aktualisierung
+    messages:
+      loud: "Du wirst über alles per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert."
+      normal: Du wirst per eMail über Vorschläge in dieser Gruppe benachrichtigt.
+      quiet: Du wirst über nichts in dieser Gruppe benachrichtigt.
+      mute: Gruppe stumm geschalten.
   inbox:
     clear: Leeren
     latest: Letzte
@@ -101,6 +152,8 @@ de:
     in_reply_to: "In Antwort zu <strong>{{name}}</strong>:"
     submit_button:
       label: Veröffentlichen
+    private_privacy_notice: "Dein Kommentar wird nur für Mitglieder von {{groupName}} zu lesen sein."
+    public_privacy_notice: Dein Kommentar wird für alle im Web sichtbar sein.
   navbar:
     recent: Aktuell
     unread: Ungelesen
@@ -129,6 +182,7 @@ de:
       proposals: Vorschläge
       comments: Kommentare
   start_menu:
+    title: Aktions-Button
     start_group: Gruppe gründen
     start_subgroup: Untergruppe gründen
     start_thread: Diskussion eröffnen
@@ -245,6 +299,8 @@ de:
   group_welcome_modal:
     heading: Willkommen in Deiner neuen Gruppe
     first_step: "Du bist der Gruppenkoordinator, das ist so was wie ein Gastgeber."
+    second_step: "Schau Dich um &ndash; schau Dir die Beispiele an und teste die Einstellungen."
+    third_step: "Wenn Du bereit bist, kannst Du Menschen einladen."
     ok_got_it: "Okay, ich hab´s!"
   group_cover_modal:
     heading: Neues Cover-Foto
@@ -261,6 +317,7 @@ de:
     heading: Gründen Sie eine Gruppe
     heading_when_subgroup: Gründe eine Untergruppe
     group_helptext: "Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:"
+    group_payment_reminder: "In 30 Tagen werden wir Dich bitten ein <a href='https://www.loomio.org/pricing' target='blank'>Vertragsmodell</a> zu wählen."
     name_label: Gruppenname
     description_label: Gruppenbeschreibung
     description_placeholder: "Beschreibe den Zweck Deiner Gruppe, damit Mitglieder wissen, warum sie mitmachen sollten."
@@ -301,8 +358,7 @@ de:
       leave_group_success: Du hast diese Gruppe verlassen
       archive_group_success: Diese Gruppe wurde deaktiviert
     group_logo: Gruppen-Logo
-    header:
-      aria_label: Gruppen-Kopfzeile
+    new_photo: Neues Foto
     description: Gruppenbeschreibung
     description_placeholder: "Nutze diesen Platz um den Zweck der Gruppe zu erläutern, damit Mitglieder wissen, warum sie da sind."
     discussions: Themen
@@ -318,6 +374,12 @@ de:
     options_label: Optionen
     options:
       label: Optionen
+      edit_group: Gruppeneinstellungen bearbeiten
+      manage_members: Mitglieder organisieren
+      add_subgroup: Untergruppe anlegen
+      manage_subscription: Gruppenabonnement verwalten
+      leave_group: Gruppe verlassen
+      deactivate_group: Gruppe deaktivieren
     deactivate_group:
       title: Gruppe deaktivieren
       question: "Sicher, dass Du diese Gruppe deaktivieren willst?"
@@ -331,16 +393,64 @@ de:
     volume:
       loud: "E-Mail, sobald es Aktuelles gibt."
       loud_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Laut\". Du wirst per eMail informiert, sobald etwas in der Gruppe geschieht."
+      loud_message: "Du wirst über alles in \"{{name}}\" per eMail benachrichtigt."
       normal: "Nur wichtige Neuigkeiten per E-Mail senden: neue Diskussionen, neue Vorschläge, neue Ergebnisse etc."
       normal_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe stehen auf \"Normal\". Du wirst per E-Mail über wichtige Meldungen informiert, z.B. wenn jemand eine neue Diskussion beginnt, einen Vorschlag eröffnet oder ein Ergebnis bekanntgibt."
+      normal_message: "Du wirst in \"{{name}}\" nur über wichtige Geschehnisse per eMail benachrichtigt."
       quiet: Keine E-Mail über diese Gruppe. Meldungen werden auf dem Statusleiste angezeigt.
       quiet_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Leise\". Du erhältst keine eMail bezüglich Meldungen in dieser Gruppe. Meldungen werden auf der Startseite angezeigt."
+      quiet_message: "Du wirst über nichts in \"{{name}}\" per eMail benachrichtigt."
       mute: Verstecke diese Gruppe aus dem Armaturenbrett und nicht benachrichtigen
       mute_aria_description: "Deine Benachrichtigungseinstellungen für diese Gruppe steht auf \"Stumm\". Du wirst nur per eMail informiert, wenn Du @angesprochen wirst. Meldungen aus dieser Gruppe werden in der Statusleiste nicht angezeigt."
+      mute_message: "\"{{name}}\" wurde von Deiner \"Aktuell\"-Liste entfernt."
     privacy:
       private: "Privatsphäre: Diese Gruppe ist nur für Mitglieder sichtbar"
       parent_members: "Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar."
       public: "Privatsphäre: Diese Gruppe ist im Web sichtbar"
+  confirm_gift_plan_modal:
+    heading: Geschenk-Plan gewählt
+    body: "Wenn Deine Gruppe keine Finanzen hat, um Software zu bezahlen, dann müsst ihr kein Abo zahlen. Wir werden gelegentlich eure Gruppenmitglieder um freiwillige Spenden bitten."
+    got_it: "Okay, ich hab´s!"
+  gift_card:
+    heading: Geschenk-Plan
+    body: "<strong>{{name}}</strong> ist eine spenden-gestützte Gruppe. Wenn Du Loomio helfen mächtest, ihre Mission zu erfüllen, bitte klicke diesen Button:"
+    make_a_contribution: Mache eine Spende
+  trial_card:
+    title: 30-Tage-Probe
+    choose_plan: Wähle dein Vertragsmodell
+    in_progress_body: "Danke für das Testen von Loomio mit <strong>{{name}}</strong>. Du kannst jederzeit ein Vertragsmodell wählen, dass Dir passt."
+    expired_body_html: "<strong>{{name}}</strong> hat nun das Ende des Loomio-Probezeitraums erreicht. Wenn Du es weiter nutzen willst, musst Du ein Vertragsmodell wählen, dass zu Dir passt. Wenn Du mit jemandem von uns darüber reden willst, dann <a href=''>kontaktiere uns</a>."
+  choose_plan_modal:
+    heading: Wähle dein Vertragsmodell
+    overdue_heading: "Um Loomio weiterhin zu nutzen, wähle bitte ein Vertragsmodell aus"
+    gift: Geschenk
+    standard: Standard
+    plus: Plus
+    free_trial_html: "Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Vertragsmodell fragen. Es ist keine Kreditkarte notwendig."
+    get_started_for_free: Starte nun kostenlos
+    gift_body_html: "<p>Für Gruppen, die kein Budget für ein Abonnement haben</p>\n<p>Spendenfinanziert, ohne Zahlungsverpflichtung.</p>\n"
+    support_before: Ich freue mich
+    support_link: mit Dir zu reden
+    support_after: "um Deinen Probezeitraum zu verlängern oder wegen anderer Fragen, die Du hast."
+    remind_me_later: Errinere mich später
+    gift_donation_ask: Wir werden Deine Gruppenmitglieder um Spenden bitten.
+    unlimited_members: unbegrenzte Mitglieder
+    unlimited_decisions: unbegrenzte Abstimmungen
+    email_support: eMail-Support
+    standard_price_html: "US-<strong>$19</strong>/Monat<br><span>or</span> $190/Jahr\n"
+    plus_body: "Wie in Standard, zusätzlich:"
+    premium_support: Premium Support
+    custom_url: benutzerspezifische URL
+    usage_statistics: Nutzerstatistiken
+    plus_price_html: "US-<strong>$179</strong>/Monat<br><span>or</span> $1790/Jahr\n"
+    select: Wähle
+  subscription_success_modal:
+    heading: "Danke für Dein Abonnement!"
+    social_mission: "Deine Unterstützung macht es uns möglich unsere soziale Mission zu verbreiten: es für jeden überall einfach möglich zu machen, an Entscheidungen teilzuhaben, die ihn betreffen."
+    receipt: "Wenn Du Dein Abonnement ändern oder stornieren möchtest oder wenn Du andere Fragen hast,"
+    contact_link: kontaktiere uns bitte.
+    sign_off: ❤ vom Loomio-Team
+    ok_got_it: "Okay, ich hab´s!"
   edit_group_form:
     title: Gruppeneinstellungen bearbeiten
     profile:
@@ -453,7 +563,8 @@ de:
   cancel_invitation_form:
     heading: Einladung abbrechen
     question: "Sicher, dass Du diese Einladung löschen willst?"
-    submit: Einladung abbrechen
+    submit: "Ja, Einladung abbrechen"
+    cancel: Nein
     messages:
       success: Einladung gelöscht
   profile_page:
@@ -576,17 +687,25 @@ de:
     volume:
       loud: "eMail, sobald es Neues in dieser Diskussion gibt."
       loud_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf Laut. Das bedeutet, dass Du bei jedem/r neuen Beitrag/Meldung in dieser Diskussion eine eMail erhältst"
+      loud_message: "Du wirst über alles per eMail benachrichtigt, sobald in \"{{name}}\" etwas passiert."
       normal: "Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht."
       normal_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Normal\". Du wirst per eMail informiert, wenn eine Vorschlag eröffnet oder beendet wird oder ein Ergebnis bekanntgegeben wird."
+      normal_message: "Du wirst in \"{{name}}\" nur über wichtige Geschehnisse per eMail benachrichtigt."
       quiet: Keine eMail zu diesem Thema.
       quiet_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Leise\". Du wirst nur per eMail benachrichtigt, wenn Du erwähnt wirst."
+      quiet_message: "Du wirst über nichts in \"{{name}}\" per eMail benachrichtigt, außer jemand @erwähnt Dich."
       mute: Ausblenden dieses Thema aus dem Armaturenbrett und nicht benachrichtigen
       mute_aria_description: "Deine Benachrichtigungseinstellung für diese Diskussion steht auf \"Stumm\". Du wirst erst wieder per eMail benachrichtigt, wenn Du erwähnt wirst. Diese Diskussion wird nicht in der Statusleiste erscheinen."
+      mute_message: "\"{{name}}\" wurde von Deiner \"Aktuell\"-Liste entfernt."
   thread_group:
     aria_label: Gruppenname
   thread_context:
     aria_label: Diskussionsbeschreibung
     thread_options: Diskussionsoptionen
+    notifications: Benachrichtigungen
+    edit_thread: Bearbeiten
+    move_thread: Verschieben
+    delete_thread: Löschen
   delete_thread_form:
     title: Diskussion löschen
     body: "Sicher, dass Du diese Diskussion löschen willst?"
@@ -626,6 +745,8 @@ de:
     block_with_statement: "<strong>{{actor}}</strong> lehnte Veto ein: <span>{{statement}}</span>"
   new_proposal_item:
     author_created_proposal: "<strong>{{actor}}</strong> schlägt vor: <span>{{title}}</span>"
+  proposal_closed_item:
+    proposal_closed: "Der Vorschlag ist geschlossen: <span>{{title}}</span>"
   proposal_closed_by_user_item:
     proposal_closed_by_user: "<strong>{{actor}}</strong> schloss den Vorschlag: <span>{{title}}</span>"
   proposal_edited_item:

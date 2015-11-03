@@ -278,6 +278,11 @@ de:
       group_contributions: "Die Kommentare, Vorschläge und Diskussionen, die Du gemacht und erstellt hast, werden bleiben, Dein Name wird jedoch gelöscht."
       emails: Wir werden keine weiteren Loomio eMails schicken.
   start_group_form:
+    enable_angular:
+      header: Neue Gruppen beginnen in Loomio 1.0
+      subtitle: "Um eine neue Gruppe zu gründen musst Du zur brandneuen Version von Loomio wechseln:"
+      switch_to_angular: Gründe eine Gruppe im neuen Loomio
+      helptext: "Wir haben Loomio komplett überarbeitet. Alles was neu ist kannst Du hier <a href=\"/angular\">here</a> lesen.<br/>Du kannst zur alten Version jederzeit zurück wechseln."
     header: Gründe eine Gruppe
     form_error: Etwas fehlt oder ist nicht korrekt.
     name: Dein Name
@@ -683,12 +688,12 @@ de:
     unlimited_members: unbegrenzte Mitglieder
     unlimited_decisions: unbegrenzte Abstimmungen
     email_support: eMail-Support
-    standard_price_html: "<strong>$19</strong>/Monat<br><span>oder</span> $190/Jahr\n"
+    standard_price_html: "US-<strong>$19</strong>/Monat<br><span>or</span> $190/Jahr\n"
     plus_body: "Wie in Standard, zusätzlich:"
     premium_support: Premium Support
     custom_url: benutzerspezifische URL
     usage_statistics: Nutzerstatistiken
-    plus_price_html: "<strong>$179</strong>/Monat<br><span>oder</span> $1790/Jahr\n"
+    plus_price_html: "US-<strong>$179</strong>/Monat<br><span>or</span> $1790/Jahr\n"
   contribution:
     any_amount: "oder einen individuellen, einmaligen Beitrag von "
     currency_desc: Beträge sind in US Dollar angegeben
@@ -747,6 +752,7 @@ de:
     create_account_to_start_group: "Bitte erstelle ein Konto um Deine Gruppe %{group_name} zu starten"
     create_account: Bitte erstelle ein Konto
   invitation:
+    angular_warning_html: "<small> Jede.r, der Deine Einladung akzeptiert, wird das neue Loomio nutzen: <a href=\"http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/\" target=\"_blank\">mehr darüber lernen</a>.</small>"
     alternate: "Stattdessen kannst Du diesen Link teilen, damit jeder um Aufnahme bitten kann:"
     by_email: Per eMail einladen
     invitation_not_found: Es konnte keine Einladung mit diesem Token gefunden werden. Bitte frage den Absender nach einer neuen Einladung.
@@ -765,6 +771,8 @@ de:
     invites_more_help2: "<p>Du kannst zu jeder Zeit Leute in deine Gruppe einladen.</p><p>Wenn Du magst, dann kannst Du alle Leute Deines Teams einladen oder nur die Leute, mit denen Du am engsten zusammenarbeitest.</p>"
     invitation_link: Link zur Einladung
     discussion_link: "An der Diskussion teilnehmen:"
+    link_help: "Klicke auf den Link um %{group_name} beizutreten und los zu legen:"
+    thanks: "Danke,"
     copy: "Wenn jemand den Link zur Einladung nicht erhalten hat, kopiere den oben angegebenen Link und schicke diesen selbst an den Empfänger."
     pending_invitations: Unbestätigte Einladungen
     no_pending_invitations: Im Moment gibt es keine unbestätigten Einladungen.
@@ -776,6 +784,11 @@ de:
     empty_search: Kein Suchtext
     please_enter_a_search: Bitte gib einen oder mehrere Begriffe in die Suchzeile ein
     no_match: Deine Suchanfrage erzielte keine Treffer
+  introduction_thread:
+    title: "Willkommen bei %{group_name}"
+    description: "Bitte nimm Dir einen Moment Zeit, um Dich vorzustellen. Du könntest mitteilen, warum Du zu dieser Gruppe passt.\n\nWenn Du klare Vorstellungen für diese Loomio-Gruppe hast, könntest Du sie mitteilen, damit alle anderen hier erkennen können, was euer gemeinsames Ziel sein könnte.\n"
+  how_it_works_thread:
+    title: Wie man Loomio benutzen kann
   contact_page:
     contact_us: Kontaktiere uns
     faq_prompt_html: "Du hast eine Frage an das Loomio Team? Bevor Du uns kontaktierst, prüfe, ob Du die Antwort in unseren meistgestellten Fragen (faq's) findest. "
@@ -1173,4 +1186,10 @@ de:
       motion_outcome_created: "*%{author}* veröffentlichte ein Ergebnis bezüglich *%{name}*"
       motion_outcome_updated: "*%{author}* aktualisierte das Ergebnis bezüglich *%{name}*"
       new_motion: "*%{author}* hat einen neuen Vorschlag in *%{name}* erstellt"
+      new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       view_it_on_loomio: Auf Loomio ansehen
+      position_verbs:
+        "yes": hat zugestimmt in
+        "no": hat abgelehnt in
+        abstain: hat sich enthalten in
+        block: hat ein Veto eingelegt

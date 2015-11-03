@@ -1,5 +1,6 @@
 cs:
   common:
+    confirm_discard_changes: Zahodit změny?
     time:
       am: dop.
       pm: odp.
@@ -26,6 +27,7 @@ cs:
       edit: Upravit
       like: To se mi líbí
       unlike: To se mi nelíbí
+      update: Aktualizovat
       cancel: Zrušit
       show_more: Zobrazit více
       view_all: Zobrazit vše
@@ -50,6 +52,12 @@ cs:
       created: Výsledek publikován
   previous_proposals_card:
     heading: Předchozí návrhy
+  thread_volume_form:
+    quiet_label: Žádné e-maily
+    submit: Aktualizovat
+  group_volume_form:
+    quiet_label: Žádné e-maily
+    submit: Aktualizovat
   inbox:
     clear: Vyčistit
     latest: Nejnovější
@@ -58,6 +66,7 @@ cs:
     email_label: "Email:"
     password_label: "Heslo:"
     remember_me: Pamatovat si mě
+    sign_in: Přihlásit
   comment_form:
     aria_label: Přidat komentář
     attachments:
@@ -79,6 +88,8 @@ cs:
     recent: Aktuální
     unread: Nepřečteno
     groups: Skupiny
+    recent_title: Přejít na ovládací panel
+    unread_title: Zobrazit nepřečtené aktivity
     groups_title: Zobrazit Vaše skupiny
     start_thread: Vytvořit nové vlákno
     user_options:
@@ -87,6 +98,7 @@ cs:
       new_group: Nová skupina
       profile: Profil
       help: Nápověda
+      sign_out: Odhlásit se
     search:
       close: Zavřít vyhledávací panel
       placeholder: Vyhledávat
@@ -449,3 +461,6 @@ cs:
     informal_groups: neformální skupiny
     informal_groups_desc: Členové vaší skupiny budou vyzváni aby zaplatili co mohou
     informal_groups_examples: "např. rodiny, sociální hnutí, kolektivy"
+  angular:
+    disable:
+      button_text: Přepnout zpět na staré Loomio

@@ -688,12 +688,12 @@ pt-BR:
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte via e-mail
-    standard_price_html: "<strong>U$19</strong>/mês<br><span>ou</span> U$190/ano\n"
+    standard_price_html: "US <strong>$19</strong>/mês<br><span>ou</span> $190/ano\n"
     plus_body: "Tudo no Padrão, mais:"
     premium_support: suporte premium
     custom_url: URL personalizada
     usage_statistics: estatísticas de uso
-    plus_price_html: "<strong>U$179</strong>/mês<br><span>ou</span> U$1790/ano\n"
+    plus_price_html: "US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano\n"
   contribution:
     any_amount: ou uma contribuição única de
     currency_desc: Os valores estão em Dólares Americanos
@@ -786,10 +786,15 @@ pt-BR:
     no_match: Nenhum resultado correspondente à sua consulta
   introduction_thread:
     title: "Bem-vindo ao %{group_name}"
+    description: "Por favor, apresente-se. Você pode querer compartilhar como você se encaixa neste grupo de pessoas.\n\nSe você tem intenções claras para este grupo Loomio, você pode compartilhá-las aqui para que todos tenham uma idéia do que querem alcançar juntos.\n"
   how_it_works_thread:
     title: Como Utilizar o Loomio
+    description: "Bem-vindo ao Loomio, um local online para tomar decisões em conjunto.\n\nEste é um exemplo de discussão **thread**. Por que não usar este espaço para experimentar os recursos do Loomio?\n\nVocê está lendo atualmente o tópico **context**. Utilize este espaço para fornecer as informações necessárias que o grupo precisa para uma discussão produtiva.\n\nO painel **proposta** é onde você tomar decisões. Você pode começar propostas e participar das que estão lá.\n\nO painel **atividade** abaixo mostra tudo o que aconteceu neste tópico.\n"
+  first_comment:
+    body: "Oi gente, eu sou o Loomio Helper Bot.\n\nSe você quiser chamar a atenção para uma pessoa específica no seu grupo, digite @ no campo de comentário, seguido do nome dela :)\n\nAqui estão algumas coisas que você pode querer tentar para fazer as coisas andarem:\n\n- Configure sua [profile picture](%{hostname}/profile)\n- Configure seu [email settings](%{hostname}/email_preferences)\n- Apresente-se para o grupo em [Welcome to %{group_name} thread](%{thread_url})\n\nSe você tem alguma dúvida, o primeiro lugar para verificar é o [Loomio help manual](http://help.loomio.org).\n"
   first_proposal:
     name: "Proposta demonstração: vamos lá!"
+    description: "Esta é a **descrição** da proposta. Aqui você pode explicar o curso de ação proposto e dar detalhes suficientes para que todos possam tomar uma decisão bem informada.\n\nPara participar da proposta, escolha uma destas opções:\n\n-**Concordar**: \"Eu concordo com isso e quero que siga em frente.\"\n-**Abster**: \"Eu estou contente pelo grupo escolher por mim.\"\n-**Discordar**: \"Eu acho que provavelmente podemos fazer melhor.\"\n-**Bloquear**: \"Eu tenho fortes objeções a esta proposta e não estou bem com isso seguindo em frente\".\n\nQuando você tiver escolhido, você será solicitado a dar uma breve declaração para explicar porque você sente dessa forma. Você pode mudar sua posição a qualquer momento enquanto a proposta ainda estiver aberta.\n"
   contact_page:
     contact_us: Contato
     faq_prompt_html: "Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta na nossa seção de perguntas frequentes."
@@ -1187,4 +1192,10 @@ pt-BR:
       motion_outcome_created: "%{author}* publicou um resultado em *%{name}*"
       motion_outcome_updated: "*%{author}* atualizou o resultado para *%{name}*"
       new_motion: "*%{author}* iniciou uma nova proposta em *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* em *%{name}*"
       view_it_on_loomio: Ver no Loomio
+      position_verbs:
+        "yes": concordou
+        "no": discordou
+        abstain: absteve-se
+        block: bloqueou

@@ -274,8 +274,6 @@ it:
       leave_group_success: Hai lasciato il gruppo.
       archive_group_success: Gruppo disattivato
     group_logo: Logo del gruppo
-    header:
-      aria_label: Intestazione del gruppo
     description: Descrizione del gruppo
     description_placeholder: Usa questo spazio per descrivere lo scopo del gruppo in modo che i suoi membri sappiano il motivo per cui sono qui.
     discussions: Discussioni
@@ -412,7 +410,6 @@ it:
   cancel_invitation_form:
     heading: Revoca invito
     question: Sicuro/a di volere revocare questo invito?
-    submit: Revoca invito
     messages:
       success: Invito cancellato
   profile_page:

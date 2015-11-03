@@ -674,12 +674,12 @@ zh-TW:
     unlimited_members: 無限的成員
     unlimited_decisions: 無限的決策
     email_support: 電子郵件支援
-    standard_price_html: "<strong>$19</strong>/月<br><span>或</span> $190/年\n"
+    standard_price_html: "美元 <strong>$19</strong>/月<br><span>或</span> $190/年\n"
     plus_body: 在標準價格中的每樣東西，再加上：
     premium_support: 進階支援
     custom_url: 自定義 URL
     usage_statistics: 使用統計
-    plus_price_html: "<strong>$179</strong>/月<br><span>or</span> $1790/年\n"
+    plus_price_html: "美元 <strong>$179</strong>/month<br><span>or</span> $1790/year\n"
   contribution:
     any_amount: 或是自訂的單次贊助：
     currency_desc: 以美元作為單位

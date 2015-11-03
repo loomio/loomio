@@ -292,8 +292,6 @@ es:
       leave_group_success: Has dejado este grupo
       archive_group_success: "Este grupo ha sido desactivado "
     group_logo: Logo del grupo
-    header:
-      aria_label: Encabezamiento del grupo
     description: "Descripción del grupo "
     description_placeholder: "Usa este espacio para describir el propósito del grupo, de manera que los miembros sepan por qué están aquí."
     discussions: Hilos
@@ -434,7 +432,6 @@ es:
   cancel_invitation_form:
     heading: "cancelar invitación "
     question: Estas seguro de que quieres cancelar esta invitación?
-    submit: cancelar invitación
     messages:
       success: "invitación cancelada "
   profile_page:
