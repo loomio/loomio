@@ -5,7 +5,6 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
   replace: true
   controllerAs: 'groupActions'
   controller: ($scope, $window, AppConfig, AbilityService, CurrentUser, ChangeVolumeForm, ModalService, EditGroupForm, StartGroupForm, LeaveGroupForm, ArchiveGroupForm, Records, ChoosePlanModal) ->
-    console.log "yeah"
 
     @canAdministerGroup = ->
       AbilityService.canAdministerGroup($scope.group)
