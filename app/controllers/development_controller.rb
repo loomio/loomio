@@ -61,8 +61,10 @@ class DevelopmentController < ApplicationController
   def setup_group_on_trial_admin
     cleanup_database
     sign_in patrick
-    GroupService.create(group: test_group, actor: current_user)
-    redirect_to group_url(test_group)
+    group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
+    GroupService.create(group: group_on_trial, actor: patrick)
+    group_on_trial.add_member! jennifer
+    redirect_to group_url(group_on_trial)
   end
 
   def setup_group_on_trial
