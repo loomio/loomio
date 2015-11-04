@@ -30,7 +30,7 @@ describe 'MotionService' do
       end
 
       it "syncs the discussion's search vector" do
-        expect(ThreadSearchService).to receive(:index!).with(motion.discussion_id)
+        expect(SearchVector).to receive(:index!).with(motion.discussion_id)
         MotionService.create(motion: motion, actor: user)
       end
 

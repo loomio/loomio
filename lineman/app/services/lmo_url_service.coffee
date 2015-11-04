@@ -21,6 +21,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
+    searchResult: (r, params = {}, options = {}) ->
+      @discussion(r, params, options)
+
     proposal: (p, params = {}, options = {}) ->
       @discussion p.discussion(), _.merge(params, {proposal: p.key})
 
