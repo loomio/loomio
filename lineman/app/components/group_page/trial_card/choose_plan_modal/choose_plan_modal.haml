@@ -54,4 +54,6 @@
           %button.choose-plan-modal__contact-link{translate: 'choose_plan_modal.support_link', ng-click: 'openIntercom()'}>
           %span{translate: 'choose_plan_modal.support_after'}>
       .col-md-3.col-md-offset-2.choose-plan-modal__cancel
-        %button.lmo-btn--featured{type: 'button', ng-click: '$close()', translate: 'choose_plan_modal.remind_me_later'}
+        %button.lmo-btn--featured{type: 'button', ng-click: '$close()'}
+          %i.fa.fa-lg.fa-calendar-check-o>
+          %span{translate: 'choose_plan_modal.remind_me_later'}
