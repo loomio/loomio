@@ -27,6 +27,10 @@ module Development::DashboardHelper
     create_discussion!(:muted_discussion) { |discussion| mute!(discussion) }
   end
 
+  def muted_group_discussion
+    create_discussion!(:muted_group_discussion, group: muted_test_group)
+  end
+
   private
 
   def create_discussion!(name, group: test_group, author: patrick)

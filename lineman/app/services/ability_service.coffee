@@ -29,6 +29,9 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canChangeThreadVolume: (thread) ->
       CurrentUser.isMemberOf(thread.group())
 
+    canChangeGroupVolume: (group) ->
+      CurrentUser.isMemberOf(group)
+
     canVoteOn: (proposal) ->
       proposal.isActive() and
       CurrentUser.isMemberOf(proposal.group()) and

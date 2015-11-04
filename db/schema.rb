@@ -433,6 +433,7 @@ ActiveRecord::Schema.define(version: 20151028230049) do
     t.integer  "default_group_cover_id"
     t.integer  "subscription_id"
     t.integer  "motions_count",                                  default: 0,              null: false
+    t.integer  "admin_memberships_count",                        default: 0,              null: false
     t.integer  "invitations_count",                              default: 0,              null: false
   end
 

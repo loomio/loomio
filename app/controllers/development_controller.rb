@@ -20,7 +20,7 @@ class DevelopmentController < ApplicationController
     cleanup_database
     sign_in patrick
     starred_proposal_discussion; proposal_discussion; starred_discussion
-    recent_discussion; old_discussion; participating_discussion; muted_discussion
+    recent_discussion; old_discussion; participating_discussion; muted_discussion; muted_group_discussion
     redirect_to dashboard_url
   end
 
@@ -384,6 +384,18 @@ class DevelopmentController < ApplicationController
       @test_group.add_member! emilio
     end
     @test_group
+  end
+
+  def muted_test_group
+    unless @muted_test_group
+      @muted_test_group = Group.create!(name: 'Grosse Point Blank',
+                                        membership_granted_upon: 'approval',
+                                        is_visible_to_public: true,
+                                        is_visible_to_parent_members: false)
+      @muted_test_group.add_admin! patrick
+      Membership.find_by(group: @muted_test_group, user: patrick).set_volume! :mute
+    end
+    @muted_test_group
   end
 
   def another_test_group

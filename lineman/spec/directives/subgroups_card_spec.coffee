@@ -8,6 +8,7 @@ describe 'Subgroups Card Component', ->
     $httpBackend.whenGET(/api\/v1\/groups\/\d+\/subgroups/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/discussions/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/memberships/).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/notifications/).respond(200, {})
     @currentUser = @factory.create 'users'
     @group       = @factory.create 'groups', name: 'whoopdeedoo'
     @membership  = @factory.create 'memberships', userId: @currentUser.id, groupId: @group.id, admin: true

@@ -8,6 +8,7 @@ describe 'Activity Card Component', ->
     $httpBackend.whenGET(/api\/v1\/events/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/discussions\/inbox/).respond(200, {})
     $httpBackend.whenGET(/api\/v1\/memberships\/my_memberships/).respond(200, {})
+    $httpBackend.whenGET(/api\/v1\/notifications/).respond(200, {})
 
   it 'passes the discussion', ->
     prepareDirective @, 'activity_card', { discussion: 'discussion' }, (parent) =>
