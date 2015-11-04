@@ -10,12 +10,12 @@ angular.module('loomioApp').directive 'searchResult', ->
       str.replace(/\/|\?|\*|\.|\(|\)/g, '')
 
     $scope.rawDiscussionBlurb = ->
-      escapeForRegex $scope.result.discussionBlurb.replace(/\<\/?b\>/g, '')
+      escapeForRegex $scope.result.blurb.replace(/\<\/?b\>/g, '')
 
     $scope.showBlurbLeader = ->
-      !escapeForRegex($scope.result.discussion().description).match ///^#{$scope.rawDiscussionBlurb()}///
+      !escapeForRegex($scope.result.description).match ///^#{$scope.rawDiscussionBlurb()}///
 
     $scope.showBlurbTrailer = ->
-      !escapeForRegex($scope.result.discussion().description).match ///#{$scope.rawDiscussionBlurb()}$///
+      !escapeForRegex($scope.result.description).match ///#{$scope.rawDiscussionBlurb()}$///
 
     return

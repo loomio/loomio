@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::SearchResultsController do
+describe API::SearchController do
 
   let(:user)    { create :user }
   let(:group)   { create :group }
@@ -11,65 +11,61 @@ describe API::SearchResultsController do
     before do
       group.admins << user
       sign_in user
-      Rails.application.secrets.stub(:advanced_search_enabled).and_return(true)
     end
 
     it 'does not find irrelevant threads' do
       json = search_for('find')
-      discussion_ids = fields_for(json, 'discussion', 'id')
-      expect(discussion_ids).to_not include discussion.id
+      result_keys = fields_for(json, 'search_results', 'key')
+      expect(result_keys).to_not include discussion.key
     end
 
     it "can find a discussion by title" do
       DiscussionService.update discussion: discussion, params: { title: 'find me' }, actor: user
       search_for('find')
 
-      expect(@discussion_ids).to include discussion.id
-      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[3]
+      expect(@result_keys).to include discussion.key
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
     end
 
     it "can find a discussion by description" do
       DiscussionService.update discussion: discussion, params: { description: 'find me' }, actor: user
       search_for('find')
 
-      expect(@discussion_ids).to include discussion.id
-      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[1]
+      expect(@result_keys).to include discussion.key
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
     end
 
     it "can find a discussion by proposal name" do
       motion.update name: 'find me'
-      ThreadSearchService.index! motion.discussion_id
+      SearchVector.index! motion.discussion_id
       search_for('find')
 
-      expect(@discussion_ids).to include discussion.id
-      expect(@motion_ids).to include motion.id
-      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[2]
+      expect(@result_keys).to include discussion.key
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[2]
     end
 
     it "can find a discussion by proposal description" do
       motion.update description: 'find me'
-      ThreadSearchService.index! motion.discussion_id
+      SearchVector.index! motion.discussion_id
       search_for('find')
 
-      expect(@discussion_ids).to include discussion.id
-      expect(@motion_ids).to include motion.id
-      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[1]
+      expect(@result_keys).to include discussion.key
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
     end
 
     it "can find a discussion by comment body" do
       comment.update body: 'find me'
-      ThreadSearchService.index! comment.discussion_id
+      SearchVector.index! comment.discussion_id
       result = search_for('find')
-      expect(@discussion_ids).to include discussion.id
-      expect(@comment_ids).to include comment.id
-      expect(@priorities).to include ThreadSearchQuery::WEIGHT_VALUES[0]
+      expect(@result_keys).to include discussion.key
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[0]
     end
 
     it "does not display content the user does not have access to" do
       DiscussionService.update discussion: discussion, params: { group: create(:group) }, actor: user
       search_for('find')
 
-      expect(@discussion_ids).to_not include discussion.id
+      expect(@result_keys).to_not include discussion.key
     end
   end
 end
@@ -83,9 +79,7 @@ def search_for(term)
   get :index, q: term, format: :json
   JSON.parse(response.body).tap do |json|
     expect(json.keys).to include *(%w[search_results])
-    @discussion_ids = fields_for(json, 'discussions', 'id')
-    @motion_ids     = fields_for(json, 'proposals', 'id')
-    @comment_ids    = fields_for(json, 'comments', 'id')
-    @priorities     = fields_for(json, 'search_results', 'priority').map(&:to_f)
+    @result_keys = fields_for(json, 'search_results', 'key')
+    @ranks      = fields_for(json, 'search_results', 'rank').map(&:to_f)
   end
 end

@@ -3,21 +3,37 @@ eo:
     time:
       am: atm
       pm: ptm
+    closing_in: "Fermiĝos {{time}}"
+    closed_ago: "Fermiĝis {{time}}"
+    notification_volume: Sciiga abundeco
     group: Grupo
     groups: Grupoj
     privacy:
       private: Privata
       public: Publika
+      organisation: Organizo
+    selected: Elektita
     date_range:
       today: Hodiaŭ
+      yesterday: Hieraŭ
+      thisweek: Ĉi-semajne
+      thismonth: Ĉi-monate
+      older: Antaŭ pli da tempo
+    more_help: Plia helpo
     models:
       proposal: Propono
     action:
-      save: Savi
+      save: Konservi
+      save_changes: Konservi ŝanĝojn
+      reply: Respondi
       edit: Redakti
       like: Ŝati
       unlike: Ne ŝati
+      update: Ĝisdatigi
       cancel: Nuligi
+      show_more: Montri pli
+      view_all: Vidi ĉiujn
+      new_thread: Nova fadeno
   error_page:
     forbidden: Vi ne havas permeson fari ĉi tion
   proposal_outcome_panel:
@@ -25,6 +41,18 @@ eo:
   proposal_outcome_form:
     outcome_label: Propona rezulto
     publish_outcome: Publikigi rezulton
+  thread_volume_card:
+    body:
+      mute: "Fadeno mutiĝis: vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu fadeno kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj."
+  thread_volume_form:
+    mute_description: Vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu fadeno kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj.
+    submit: Ĝisdatigi
+  group_volume_card:
+    body:
+      mute: "Grupo mutiĝis: vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu grupo kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj."
+  group_volume_form:
+    mute_description: Vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu grupo kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj.
+    submit: Ĝisdatigi
   inbox:
     unread: Nelegitaj
   comment_form:
@@ -32,10 +60,12 @@ eo:
     delete_comment: Forigi komenton
     confirm_delete_message: "Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?"
   navbar:
+    recent: Lastaj
     unread: Nelegitaj
     groups: Grupoj
     user_options:
       contact_us: Kontakti nin
+      new_thread: Nova fadeno
       new_group: Nova grupo
       profile: Profilo
       help: Helpo
@@ -129,9 +159,18 @@ eo:
     locale_label: Lingvo
   dashboard_page:
     aria_label: Supervidpanelo
+    no_threads:
+      show_all: Vi ne havas lastatempajn fadenojn.
+      show_participating: Vi laste ne partoprenis en ajnaj fadenoj.
+    view_recent: Ĉu vidi ĉiujn lastatempajn fadenojn?
     mark_as_read: Marki kiel legita
+    filtering:
+      all: Lastatempaj fadenoj
+      all_aria_label: Nun montras lastatempajn fadenojn
+      all_description: Montri lastatempajn fadenojn
     threads_from:
       today: Hodiaŭ
+      yesterday: Hieraŭ
   thread_group:
     aria_label: Grupnomo
   delete_comment_dialog:

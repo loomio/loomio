@@ -55,7 +55,6 @@ class Motion < ActiveRecord::Base
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
   scope :chronologically, -> { order('created_at asc') }
 
-
   def proposal_title
     name
   end

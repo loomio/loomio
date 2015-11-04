@@ -24,7 +24,9 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     @group.subscriptionKind == 'trial' and AbilityService.canAdministerGroup(@group) and AppConfig.chargify?
 
   @showGiftCard = ->
-    @group.subscriptionKind == 'gift' and AppConfig.chargify?
+    CurrentUser.isMemberOf(@group) and
+    @group.subscriptionKind == 'gift' and
+    AppConfig.chargify?
 
   @canUploadPhotos = ->
     AbilityService.canAdministerGroup(@group)
@@ -42,7 +44,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       ModalService.open SubscriptionSuccessModal
 
   @handleWelcomeModal = ->
-    if @group.noInvitationsSent() and !@group.trialIsOverdue() and !GroupWelcomeModal.shownToGroup[@group.id]?
+    if CurrentUser.isAdminOf(@group) and @group.noInvitationsSent() and !@group.trialIsOverdue() and !GroupWelcomeModal.shownToGroup[@group.id]?
       GroupWelcomeModal.shownToGroup[@group.id] = true
       ModalService.open GroupWelcomeModal
 

@@ -46,6 +46,8 @@ fr:
         subject: Vous avez été invité à rejoindre un groupe Loomio
     registrations:
       sign_up: Créer un compte
+    sessions:
+      signed_out: Déconnecté avec succès
   error:
     access_denied: "Vous n'avez pas la permission de faire cela."
     cant_join_subgroup: "Vous ne pouvez pas rejoindre un sous-groupe si vous n'êtes pas membre du groupe parent."
@@ -71,8 +73,10 @@ fr:
     group_request_invalid_token: "Désolé, c'est un token invalide"
     group_private_or_not_found: "Groupe non trouvé.\n\nCe groupe est peut-être privé. Si quelqu'un vous a donné ce lien, demandez-lui de vous inviter dans ce groupe."
     group_already_setup: Le groupe que vous essayez de créer existe déjà.
+    current_password_did_not_match: "Désolé, nous n'avons pas été capable de confirmer votre mot de passe actuel"
     passwords_did_not_match: Les mots de passe ne correspondent pas
     proposal_already_exists: Il y a déjà une proposition en cours dans cette discussion.
+    username_must_be_alphanumeric: "Le nom d'utilisateur doit contenir seulement des lettres en minuscules et des chiffres."
     user_with_email_address_already_in_group: Un utilisateur avec cette adresse e-mail appartient déjà à ce groupe.
     you_have_already_requested_membership: "Vous avez déjà demandé l'accès à ce groupe."
     you_are_already_a_member_of_this_group: Vous êtes déjà membre de ce groupe.
@@ -211,6 +215,7 @@ fr:
     new_vote: "%{position} sur la proposition"
     new_comment: a commenté sur la discussion
     comment_liked: a aimé votre commentaire dans la discussion
+    comment_replied_to: a répondu à votre commentaire dans
     user_mentioned: vous a mentionné dans un commentaire dans
     membership_requested: "a demandé l'adhésion à"
     membership_request_approved: "a accepté votre demande d'adhésion"
@@ -273,6 +278,11 @@ fr:
       group_contributions: "Les commentaires, les propositions et les discussions que vous avez faites dans les groupes resteront, mais nous allons retirer votre nom de ceux-ci."
       emails: Nous arrêterons de vous envoyer des courriels relatifs à Loomio.
   start_group_form:
+    enable_angular:
+      header: Les nouveaux groupes commencent dans Loomio 1.0
+      subtitle: "Pour commencer un nouveau groupe, vous aurez besoin de passer à la nouvelle version de Loomio:"
+      switch_to_angular: Démarrer un groupe dans le nouveau Loomio
+      helptext: "Nous avons reconstruit Loomio à partir de la base. Vous pouvez voir ce qui est nouveau <a href=\"/angular\">ici</a>.<br/>Vous serez en mesure de revenir à l' ancienne version à tout moment si vous le souhaitez."
     header: Créer un nouveau groupe
     form_error: Quelques informations sont manquantes ou incorrectes.
     name: Votre nom
@@ -283,6 +293,7 @@ fr:
     group_description: Description du groupe
     group_description_placeholder: Décrivez le but de votre groupe pour que les membres sachent pourquoi ils sont là.
     group_name_error: Le nom du groupe est requis
+    pricing_html: "Dans 30 jours, nous vous demanderons de choisir un <a href='%{link}' target='_blank'>plan de tarification</a>."
     terms_html: "En créant un groupe, vous acceptez les  <a href='%{link}' target='_blank'>termes d'utilisation</a> de Loomio"
     success:
       header: "Vous avez presque fini ! Consultez votre e-mail."
@@ -677,12 +688,12 @@ fr:
     unlimited_members: membres illimités
     unlimited_decisions: décisions illimitées
     email_support: Support courriel
-    standard_price_html: "<strong>$19</strong>/mois<br><span>ou</span> $190/an\n"
+    standard_price_html: "US <strong>$19</strong>/mois<br><span>ou</span> $190/an\n"
     plus_body: "Tout ce qui est compris dans Standard, plus:"
     premium_support: support Premium
     custom_url: lien URL personnalisé
     usage_statistics: "statistiques d'utilisation"
-    plus_price_html: "<strong>$179</strong>/mois<br><span>ou</span> $1790/an\n"
+    plus_price_html: "US <strong>$179</strong>/mois<br><span>ou</span> $1790/an\n"
   contribution:
     any_amount: "ou un don ponctuel de "
     currency_desc: Les montants sont en Dollars US
@@ -729,6 +740,8 @@ fr:
   create_an_account_html: Créer un compte sur Loomio Beta
   log_in: Se connecter
   password_reset:
+    email_guidelines_html: "<p>Entrez l'adresse email de votre compte Loomio dans le champ ci-dessous et vous recevrez un lien de réinitialisation de votre mot de passe.</p>\n<p>Si vous vous connectez normalement via Facebook , Google , Twitter ou Persona , entrez l'adresse e-mail associée à ce compte</p>\n"
+    reset_email_timeframe: "Cela peut prendre jusqu'à 5 minutes à l'e-mail pour arriver. S'il n’apparaît pas, vérifier votre dossier pourriel."
     length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
     forbidden_passwords: "Les mots de passe communs tels que \"motdepasse\" (password) sont interdits afin de garder votre compte sécurisé."
   join_group:
@@ -739,6 +752,7 @@ fr:
     create_account_to_start_group: "Créez un compte pour commencer votre groupe %{group_name}"
     create_account: Merci de créer un compte
   invitation:
+    angular_warning_html: "<small> Quiconque accepte votre invitation utilisera la nouvelle interface de Loomio: <a href=\"http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/\" target=\"_blank\">en savoir plus</a>.</small>"
     alternate: "Alternativement, partagez ce lien et n'importe qui peut demander à rejoindre :"
     by_email: Inviter par e-mail
     invitation_not_found: "Impossible de trouver une invitation sous cette référence. Merci de demander une nouvelle invitation à celui qui vous l'a envoyé."
@@ -757,6 +771,8 @@ fr:
     invites_more_help2: "<p>Vous pouvez inviter des personnes dans votre groupe à n'importe quel moment.</p><p>Vous pouvez décider d'inviter tous les membres tout de suite, ou vous pouvez démarrer avec un groupe plus restreint de personnes avec qui vous travaillez souvent.</p>"
     invitation_link: "Lien d'invitation"
     discussion_link: "Participer à la discussion :"
+    link_help: "Cliquer sur le lien pour rejoindre %{group_name} et démarrer:"
+    thanks: "Merci,"
     copy: "Si quelqu'un ne reçoit pas son e-mail d'invitation, merci de recopier le lien d'invitation ci dessus et de le transmettre directement."
     pending_invitations: Invitations en attente
     no_pending_invitations: "Il n'y a pas d'invitations en attente pour l'instant."
@@ -768,8 +784,18 @@ fr:
     empty_search: Vider la recherche
     please_enter_a_search: Veuillez entrer une requête dans la barre de recherche ci-dessus
     no_match: Aucun résultat ne correspond à votre recherche
+  introduction_thread:
+    title: "Bienvenue dans %{group_name}"
+    description: "S'il vous plaît prenez un moment pour vous présenter. Vous pourriez aimer partager la manière dont vous correspondez avec ce groupe de personnes.\n\nSi vous avez des intentions claires pour ce groupe Loomio , vous pouvez les partager ici, chacun a une idée de ce qu'ils veulent faire avec les autres.\n"
+  how_it_works_thread:
+    title: Comment utiliser Loomio
+    description: "Bienvenue sur Loomio , une plateforme en ligne pour prendre des décisions ensemble.\n\nCeci est un exemple de ** fil de discussion ** . Pourquoi ne pas utiliser cet espace pour essayer les fonctions de Loomio?\n\nVous lisez actuellement le fil de discussion ** contexte **. Utilisez cet espace pour fournir l'information de fond dont le groupe a besoin pour une discussion productive.\n\nLe panneau **proposition** est l'endroit où vous prenez les décisions. Vous pouvez démarrer des propositions et y contribuer.\n\nLe panneau **activité** ci-dessous montre tout ce qu'il s'est passé dans la discussion.\n"
+  first_proposal:
+    name: "Proposition de démonstration: c'est parti!"
   contact_page:
     contact_us: Contactez-nous
+    faq_prompt_html: "Vous avez une question pour l'équipe de Loomio? Avant de nous contacter, vous pourriez trouver la réponse dans notre FAQ"
+    contact_information: Si vous ne trouvez pas ce que vous cherchez vous pouvez notre formulaire de contact en bas de la page.
     contact_form: Formulaire de contact
     labels:
       name: Votre nom
@@ -778,6 +804,7 @@ fr:
       submit: Envoyer le message
     messages:
       email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Vous pouvez aussi nous rejoindre sur<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, et <a href='%{twitter}' target='_blank'>twitter</a>!\n"
   discussion_form:
     new:
       header: Démarrer une discussion
@@ -1155,3 +1182,17 @@ fr:
     media: Média
     health: Santé
   start_your_group: Créer votre groupe
+  webhooks:
+    slack:
+      motion_closed: "*%{name}* est fermée"
+      motion_closing_soon: "*%{name}* a une proposition qui ferme dans 24 heures"
+      motion_outcome_created: "*%{author}* a publié(e) un résultat dans *%{name}*"
+      motion_outcome_updated: "*%{author}* a mis(e) à jour le résultat pour *%{name}*"
+      new_motion: "*%{author}* a démarré(e) une nouvelle proposition dans *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* dans *%{name}*"
+      view_it_on_loomio: Voir çà ur Loomio
+      position_verbs:
+        "yes": "est d'accord sur"
+        "no": "n'est pas d'accord sur"
+        abstain: "s'abstient sur"
+        block: "s'oppose sur"

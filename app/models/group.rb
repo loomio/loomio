@@ -144,6 +144,9 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  after_create :set_is_referral
+  after_create :guess_cohort
+
   alias :users :members
 
   has_many :requested_users, through: :membership_requests, source: :user
@@ -584,10 +587,23 @@ class Group < ActiveRecord::Base
     end
   end
 
+  def set_is_referral
+    if creator && creator.groups.size > 0
+      update_attribute(:is_referral, true)
+    end
+  end
+
   def set_defaults
     self.is_visible_to_public ||= false
     self.discussion_privacy_options ||= 'public_or_private'
     self.membership_granted_upon ||= 'approval'
+  end
+
+  def guess_cohort
+    if self.cohort_id.blank?
+      cohort_id = Group.where('cohort_id is not null').order('cohort_id desc').first.try(:cohort_id)
+      self.update_attribute(:cohort_id, cohort_id) if cohort_id
+    end
   end
 
   def calculate_full_name

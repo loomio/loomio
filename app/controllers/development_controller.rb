@@ -3,30 +3,18 @@ class DevelopmentController < ApplicationController
 
   around_filter :ensure_testing_environment
 
+  def index
+    @routes = DevelopmentController.action_methods.select do |action|
+      action.starts_with? 'setup'
+    end
+    render layout: false
+  end
+
   def last_email
     @email = ActionMailer::Base.deliveries.last
     render layout: false
   end
 
-  def discussion_url(discussion)
-    "http://localhost:8000/d/#{discussion.key}/"
-  end
-
-  def group_url(group)
-    "http://localhost:8000/g/#{group.key}/"
-  end
-
-  def dashboard_url
-    "http://localhost:8000/dashboard"
-  end
-
-  def inbox_url
-    "http://localhost:8000/inbox"
-  end
-
-  def previous_proposal_url(group)
-    "http://localhost:8000/g/#{group.key}/previous_proposals"
-  end
 
   def setup_dashboard
     cleanup_database
@@ -73,8 +61,10 @@ class DevelopmentController < ApplicationController
   def setup_group_on_trial_admin
     cleanup_database
     sign_in patrick
-    GroupService.create(group: test_group, actor: current_user)
-    redirect_to group_url(test_group)
+    group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
+    GroupService.create(group: group_on_trial, actor: patrick)
+    group_on_trial.add_member! jennifer
+    redirect_to group_url(group_on_trial)
   end
 
   def setup_group_on_trial
@@ -271,6 +261,26 @@ class DevelopmentController < ApplicationController
   end
 
   private
+
+  def discussion_url(discussion)
+    "http://localhost:8000/d/#{discussion.key}/"
+  end
+
+  def group_url(group)
+    "http://localhost:8000/g/#{group.key}/"
+  end
+
+  def dashboard_url
+    "http://localhost:8000/dashboard"
+  end
+
+  def inbox_url
+    "http://localhost:8000/inbox"
+  end
+
+  def previous_proposal_url(group)
+    "http://localhost:8000/g/#{group.key}/previous_proposals"
+  end
 
   def setup_all_notifications_work
     #'comment_liked'

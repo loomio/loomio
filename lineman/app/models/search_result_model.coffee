@@ -3,7 +3,4 @@ angular.module('loomioApp').factory 'SearchResultModel', (BaseModel) ->
     @singular: 'searchResult'
     @plural: 'searchResults'
 
-    relationships: ->
-      @belongsTo 'discussion'
-      @belongsTo 'motion'
-      @belongsTo 'comment'
+    @apiEndPoint: 'search'

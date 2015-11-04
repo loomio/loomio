@@ -1,28 +1,44 @@
 be-BY:
   new_help:
     how_loomio_works:
+      title: Як працуе Loomio
       start_group_link: Стварыць групу
       invite_people_link: Запрасіць людзей
       start_discussion_link: Распачаць абмеркаванне
+      make_proposal_link: Зрабіць прапанову
+      decide_together_link: "Вырашаць разам:"
     contents:
+      what_is_loomio:
+        title: Пра Loomio
+      how_loomio_works:
+        title: Як працуе Loomio
       getting_started:
         title_html: Першыя крокі
       group_settings:
+        group_profile_html: Профіль групы
         group_permissions_html: Правы ўдзельнікаў
       inviting_members:
-        pending_invitations_html: "Запрашэнні, якія яшчэ разглядаюцца"
+        pending_invitations_html: Актуальныя запрашэнні
       discussion_threads:
-        discussion_privacy_html: Канфеденціяльнасць абмеркавання
+        discussion_privacy_html: Канфідэнцыяльнасць абмеркавання
+      comments:
+        editing_comments_html: Рэдагаваць каментар
+        deleting_comments_html: Выдаліць каментар
+      proposals:
+        title_html: Прапановы
       subgroups:
         title_html: Падгрупы
       keeping_up_to_date:
         volume_html: Гучнасць
         email_settings_html: Налады email
       user_profile:
+        language_settings_html: Налады мовы
         account_deactivation_html: Адключаем акаунт
     getting_started:
       title: Першыя крокі
     group_settings:
+      group_profile:
+        title: Профіль групы
       group_privacy:
         who_can_find_this_group:
           title: Хто можа знайсці гэту групу?
@@ -31,27 +47,34 @@ be-BY:
         who_can_see_discussions:
           title: Хто можа бачыць абмеркаванні?
       group_permissions:
-        title: Правы ўдзельнікаў
+        title: Правы ўдзельнікаў групы
         what_can_members_do:
-          title: Што удзельнікі здольны рабіць?
+          title: Што могуць рабіць удзельнікі групы?
           invite_and_approve_new_members:
-            title: Запрасіць і зацвердзіць новых удзельнікаў
+            title: Запрасіць і ўхваліць новых удзельнікаў
           start_discussions:
             title: Распачаць абмеркаванні
           edit_discussion_context:
             title: Рэдагаваць кантэкст любога абмеркавання ў групе
           edit_comments:
-            title: Рэдагуйце іх каментары ў любы час
+            title: Рэдагаваць свае каментары ў любы час
           raise_proposals:
-            title: Падымаць прапановы
+            title: Рабіць прапановы
           vote_on_proposals:
             title: Галасаваць за прапановы
     inviting_members:
       pending_invitations:
-        title: "Запрашэнні, якія яшчэ разглядаюцца"
+        title: Актуальныя запрашэнні
     discussion_threads:
       discussion_privacy:
-        title: Канфеденціяльнасць абмеркавання
+        title: Канфідэнцыяльнасць абмеркавання
+    comments:
+      editing_comments:
+        title: Рэдагаваць каментар
+      deleting_comments:
+        title: Выдаліць каментар
+    proposals:
+      title: Прапановы
     subgroups:
       title: Падгрупы
     keeping_up_to_date:
@@ -67,5 +90,7 @@ be-BY:
       yesterday_on_loomio:
         title: Учора на Loomio
     user_profile:
+      language_settings:
+        title: Налады мовы
       account_deactivation:
         title: Адключаем акаунт

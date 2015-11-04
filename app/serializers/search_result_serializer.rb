@@ -1,10 +1,6 @@
 class SearchResultSerializer < ActiveModel::Serializer
   embed :id, include: true
-  attributes :id, :priority, :query, :discussion_blurb, :motion_blurb, :comment_blurb
-
-  has_one :discussion
-  has_one :motion, root: :proposals
-  has_one :comment
+  attributes :id, :key, :description, :result_group_name, :title, :last_activity_at, :rank, :query, :blurb
 
   def id
     SecureRandom.hex(8)

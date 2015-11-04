@@ -1,13 +1,13 @@
 .proposal-expanded{ng-show: 'proposal' id: 'proposal-{{proposal.key}}'}
   %proposal_actions_dropdown{proposal: 'proposal', ng-if: 'showActionsDropdown()'}
-  %h3.proposal-expanded__proposal-name {{proposal.name}}
+  %a.proposal-expanded__proposal-name-link{lmo-href-for: 'proposal'}
+    %h3.proposal-expanded__proposal-name {{proposal.name}}
 
   .proposal-expanded__started-by
     %span{translate: 'proposal_expanded.started_by', translate-values: '{name: proposal.authorName()}'}
-    %span.time-ago>
-      {{proposal.createdAt | timeFromNowInWords}}
-    %span{aria-hidden: 'true'}·
-    %proposal_closing_time{proposal: 'proposal'}>
+    %span{aria-hidden: 'true'}>·
+    %a{lmo-href-for: 'proposal'}
+      %proposal_closing_time{proposal: 'proposal'}>
   .proposal-expanded-description.lmo-markdown-wrapper{marked: 'proposal.description' }
   %proposal_outcome_panel{ng-if: 'showOutcomePanel()', proposal: 'proposal'}
 

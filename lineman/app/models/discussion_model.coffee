@@ -115,6 +115,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
     markAsRead: (sequenceId) ->
       if isNaN(sequenceId)
         sequenceId = @lastSequenceId
+        @update(readItemsCount: @itemsCount,
+                readSalientItemsCount: @salientItemsCount,
+                readCommentsCount: @commentsCount,
+                lastReadAt: moment())
 
       if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
         @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})

@@ -385,7 +385,6 @@ ga-IE:
   cancel_invitation_form:
     heading: Cealaigh an cuireadh
     question: An bhfuil tú cinnte gur mian leat an cuireadh seo a chur ar ceal?
-    submit: "Cealaigh an cuireadh "
     messages:
       success: Cuireadh curtha ar ceal
   profile_page:

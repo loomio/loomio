@@ -5,16 +5,16 @@ fr:
       am: am
       pm: pm
     closing_in: "Fermeture à {{time}}"
-    closed_ago: "Fermé à {{time}}"
+    closed_ago: "Fermée à {{time}}"
     volume: Volume
-    notification_volume: Volume de notification
+    notification_volume: Fréquence de notification
     group: Groupe
     groups: Groupes
     privacy:
       private: Privé
       public: Publique
       organisation: Organisation
-    selected: Sélectionné
+    selected: Sélectionnée
     date_range:
       today: "Aujourd'hui"
       yesterday: Hier
@@ -182,6 +182,7 @@ fr:
       proposals: Propositions
       comments: Commentaires
   start_menu:
+    title: "Bouton d'action"
     start_group: Créer un groupe
     start_subgroup: Créer un sous-groupe
     start_thread: Démarrer une discussion
@@ -208,6 +209,7 @@ fr:
     heading: Prenez la parole
   vote_form:
     heading: Prenez la parole
+    no_statement: Pas de déclaration
     i_agree: "Je suis d'accord"
     i_agree_details: Je soutiens cela et souhaite que cela avance.
     i_abstain: "Je m'abstiens"
@@ -356,8 +358,7 @@ fr:
       leave_group_success: Vous avez quitté ce groupe
       archive_group_success: Ce groupe a été désactivé
     group_logo: Logo du groupe
-    header:
-      aria_label: En-tête du groupe
+    new_photo: Nouvelle photo
     description: Description du groupe
     description_placeholder: Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.
     discussions: Discussions
@@ -418,7 +419,7 @@ fr:
     title: "30 jours d'essai"
     choose_plan: Choisissez votre plan tarifaire
     in_progress_body: "Merci d'essayer Loomio avec <strong>{{name}}</strong>. Vous pouvez choisir le plan tarifaire qui vous convient à n'importe quel moment."
-    expired_body_html: "<strong>{{name}}</strong> a atteint la fin de l'essai gratuit sur Loomio. Si vous voulez continuer à l'utiliser, vous devez choisir un plan tarifaire qui vous convient. Si vous souhaitez discuter de ça avec quelqu'un, n'hésitez pas à <a href=''>nous contacter</a>."
+    expired_body_html: "<strong>{{name}}</strong> a désormais atteint la fin de son essai à Loomio. Si vous souhaitez continuer à l'utiliser, vous aurez besoin de choisir un plan d'abonnement. Si vous souhaitez en discuter avec quelqu'un, simplement <a href=''>obtenir un contact</a>."
   choose_plan_modal:
     heading: Choisissez votre plan tarifaire
     overdue_heading: "Pour continuer à utiliser Loomio, choisissez votre modalité de paiment"
@@ -436,12 +437,12 @@ fr:
     unlimited_members: membres illimités
     unlimited_decisions: décisions illimitées
     email_support: Support courriel
-    standard_price_html: "<strong>$19</strong>/mois<br><span>ou</span> $190/an\n"
+    standard_price_html: "US <strong>$19</strong>/mois<br><span>ou</span> $190/an\n"
     plus_body: "Tout ce qui est compris dans Standard, plus:"
     premium_support: support Premium
     custom_url: lien URL personnalisé
     usage_statistics: "statistiques d'utilisation"
-    plus_price_html: "<strong>$179</strong>/mois<br><span>ou</span> $1790/an\n"
+    plus_price_html: "US <strong>$179</strong>/mois<br><span>ou</span> $1790/an\n"
     select: Sélectionner
   subscription_success_modal:
     heading: "Merci pour votre souscription !"
@@ -562,7 +563,8 @@ fr:
   cancel_invitation_form:
     heading: "Annuler l'invitation"
     question: Êtes-vous certain de vouloir annuler cette invitation ?
-    submit: "Annuler l'invitation"
+    submit: "Oui, annuler l'invitation"
+    cancel: Non
     messages:
       success: Invitation annulée
   profile_page:
@@ -644,33 +646,135 @@ fr:
       proposals_aria_label: Voici les discussions avec des propositions en cours
       proposals_description: Voir uniquement les discussions avec des propositions en cours
       muted: Désactivé
+      muted_aria_label: Montre actuellement les discussions muettes
+      muted_description: Voir seulement les discussions qui ont été mise en sourdine
+    aria_thread:
+      title: "Titre de la discussion: {{title}}."
+      unread: "{{count}} élément(s) non-lu(s)."
+      current_proposal: "Proposition actuelle: {{name}}."
+      you_voted: "Vous votez: {{position}}."
     threads_from:
+      group: Discussions depuis
+      proposals: Propositions
+      starred: Discussions favorites
       today: "Aujourd'hui"
       yesterday: Hier
+      thisweek: Cette semaine
+      thismonth: Ce mois
+      older: "Plus d'un mois"
+  star_toggle:
+    star: Mettre la discussion en tant que favoris
+  inbox_page:
+    no_threads: "Woohoo! Vous avez lu toutes les discussions dans votre boîte de réception."
+    unread_threads: Discussions non-lues
+    view_more: Voir plus
+  groups_page:
+    page_header: Vos groupes
   discussion:
+    activity: Activité
     proposals: Propositions
     previous_proposals: Proposition précédente
+    load_previous: "Charger l'activité récente"
+    you_like_this: Vous aimez çà
+    liked_by_you_and_someone: "Vous et {{name}} aimez çà."
+    liked_by_you_and_others: "Aimé par vous, {{joinedNames}} et {{name}}."
+    liked_by_someone: "{{name}} aime cà."
+    liked_by_two_others: "{{name_1}} et {{name_2}} aiment çà."
+    liked_by_many_others: "Aimé par {{joinedNames}} et {{name}}."
+    liked_by_name: "Aimé par {{name}}."
+    liked_by_names_and_name: "Aimé par {{joinedNames}} et {{name}}."
     started_by: "Démarrée par <strong>{{name}}</strong>"
     volume:
       loud: "Envoie un courrier électronique dès qu'il y a de l'activité dans cette discussion."
+      loud_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Forte. Cela signifie que vous recevrez des e-mails à chaque fois qu'ils y a de l'activité dans cette discussion."
+      loud_message: "Vous recevrez des e-mails à propos de toutes les activités dans \"{{name}}\""
       normal: "Envoie un courrier uniquement lorsqu'une proposition est créée, s'apprête à fermer, ou qu'un résultat est publié."
+      normal_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Normale. Cela signifie que vous recevrez des e-mails à chaque fois qu'une discussion est créée, fermée ou qu'un résultat est publié."
+      normal_message: "Vous recevrez seulement des e-mails pour les événements importants à propos de {{name}}\"."
       quiet: "N'envoie aucun courrier à propos de cette discussion."
+      quiet_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez pas d'e-mails à à propos de cette discussion à moins que quelqu'un vous mentionne."
+      quiet_message: "Vous ne recevrez pas d'e-mail à propos de \"{{name}}\" à moins que quelqu'un vous mentionne"
       mute: "Cache cette discussion du tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
+      mute_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez pas d'e-mails à à propos de cette discussion à moins que quelqu'un vous mentionne, et cette discussion sera retirée de votre tableau de bord."
       mute_message: "\"{{name}}\" a été retiré de votre Tableau de Bord."
   thread_group:
     aria_label: Nom du groupe
+  thread_context:
+    aria_label: Contexte de la discussion
+    thread_options: Options de la discussion
+    notifications: Notifications
+    edit_thread: Editer
+    move_thread: Déplacer
+    delete_thread: Supprimer
+  delete_thread_form:
+    title: Supprimer la discussion
+    body: Êtes vous sûr de vouloir supprimer cette discussion?
+    confirm: "Oui, supprimer la discussion"
+    messages:
+      success: Discussion supprimée
+  move_thread_form:
+    title: Déplacer la discussion
+    body: "Groupe de destination:"
+    confirm: Déplacer la discussion
+    messages:
+      success: "La discussion a été déplacée vers {{name}}"
+  activity_card:
+    new_activity: Nouvelle Activité
+    attachment_display:
+      aria_label: "Pièce jointe:"
+      image_alt: Image jointe
   delete_comment_dialog:
     title: Effacer le commentaire
     question: Etes vous sur de vouloir effacer ce commentaire ?
     confirm: Effacer le commentaire
   new_comment_item:
+    aria_label: "Commenté par {{author}}"
     context_menu:
+      aria_label: Options du commentaire
       edit_comment: Modifier le commentaire
       delete_comment: Effacer le commentaire
+    in_reply_to: "<strong>{{author}}</strong> en réponse à <strong>{{recipient}}</strong>"
+  new_vote_item:
+    agree: "<strong>{{actor}}</strong> est d'accord"
+    abstain: "<strong>{{actor}}</strong> s'abstient"
+    disagree: "<strong>{{actor}}</strong> n'est pas d'accord"
+    block: "<strong>{{actor}}</strong> s'oppose"
+    agree_with_statement: "<strong>{{actor}}</strong> est d'accord à propos de: <span>{{statement}}</span>"
+    abstain_with_statement: "<strong>{{actor}}</strong> s'abstient à propos de: <span>{{statement}}</span>"
+    disagree_with_statement: "<strong>{{actor}}</strong> n'est pas d'accord à propos de: <span>{{statement}}</span>"
+    block_with_statement: "<strong>{{actor}}</strong> s'oppose à propos de: <span>{{statement}}</span>"
+  new_proposal_item:
+    author_created_proposal: "<strong>{{actor}}</strong> a démarré une proposition: <span>{{title}}</span>"
+  proposal_closed_item:
+    proposal_closed: "La proposition <span>{{title}}</span> est fermée"
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: "<strong>{{actor}}</strong> a fermé(e) la proposition: <span>{{title}}</span>"
+  proposal_edited_item:
+    name: "<strong>{{actor}}</strong> a mis(e) à jour le titre de la proposition: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> a mis(e) à jour la description de la proposition"
+    closing_at: "<strong>{{actor}}</strong> a mis(e) à jour l'heure de fermeture de la proposition à <span>{{time}}</span>"
+    description_name: "<strong>{{actor}}</strong> a mis(e) à jour le titre et la description de la discussion"
+    closing_at_name: "<strong>{{actor}}</strong> a mis(e) à jour le titre et l'heure de fermture de la discussion"
+    closing_at_description: "<strong>{{actor}}</strong> a mis(e) à jour la description et l'heure de fermeture de la discussion"
+    closing_at_description_name: "<strong>{{actor}}</strong> a mis(e) à jour le titre, la description et l'heure de fermeture de la discussion"
+  proposal_outcome_created_item:
+    proposal_outcome_created: "<strong>{{actor}}</strong> a publié(e) le résultat de la discussion:"
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: "<strong>{{actor}}</strong> a mis(e) à jour le résultat de la discussion:"
+  discussion_edited_item:
+    title: "<strong>{{actor}}</strong> a mis(e) à jour le titre de la discussion: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> a mis(e) à jour le contexte de la discussion"
+    description_title: "<strong>{{actor}}</strong> a mis(e) à jour le titre et le context de la discussion"
   contact_message_form:
+    contact_us: Contactez Nous
     name_label: Votre nom
+    name_placeholder: Entrez votre nom...
     email_label: Votre adresse e-mail
+    email_placeholder: Entrez votre adresse e-mail...
     message_label: Votre message
+    message_placeholder: Votre message...
+    send_message: Envoyer le Message
+    new_contact_message: "Merci de votre message; nous serons bientôt en contact!"
   help_page:
     coordinating: Coordonner vos groupes Loomio
     coordinating_details: "En tant que coordinateur, vous êtes responsables du paramétrage du groupe Loomio et des \ninvitations. Tout en apprenant à utiliser un nouveau logiciel, votre groupe va\napprendre un nouveau processus pour collaborer plus efficacement et prendre de bonnes décisions ensemble. Voilà quelques trucs pour aider votre groupe :\n\n"
@@ -691,6 +795,7 @@ fr:
     how_it_works: Comment ca marche
     invitation_html: "<h2>Rédiger une belle invitation</h2>\n<p>La première question que tout nouveau membre aura est \"à quoi sert ce groupe ?’</p>\n<p>Pensez à la façon la plus simple de décrire ce groupe : Que voulez vous faire ensemble ?\nquel type de décisions voulez vous prendre ? qui est concerné ?</p>\n<p>Cela peut être une bonne idée de discuter avec votre groupe avant de les inviter à rejoindre Loomio.</p>\n<p>Ils voudront savoir pourquoi ils ont été invités,  ce que l'on attend d'eux,\net pourquoi ils doivent apprendre à utiliser un nouvel outil.</p>\n"
     join_the_community: Rejoindre la communauté
+    join_the_community_description_html: "Tout le monde est bienvenu dans la communauté Loomio, où nous parlons des améliorations de l'outil, et comment les mettre en oeuvre.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Cliquer ici pour aller dans le groupe de la communauté Loomio</a>."
     images_and_text_formatting: Formatage des images et du texte
     images_and_text_formatting_html: "<p>Loomio utilise \"Markdown\"  pour l'intégration de l'image et la mise en forme du texte. \nVous pouvez activer \"Markdown\" avec la petite icône grise sous la boîte de commentaires.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Cliquez ici</a>\npour des informations sur l'utilisation de \"Markdown\".</p>\n"
     keep_up_to_date: Rester à jour
@@ -724,8 +829,16 @@ fr:
     informal_groups_desc: Nous demanderons aux membres de votre groupe de faire des dons.
     informal_groups_examples: "par exemple: familles, mouvements sociaux, collectifs"
   angular:
+    switch_back: "Retourner à l'ancienne version de Loomio"
+    give_feedback: Donner votre avis
     enable:
+      invite: "Essayer le nouveau Loomio!"
+      title: Essayer le nouveau Loomio
+      intro: "Nous avons conçu Loomio et nous avons besoin de votre aide pour être sûr que c'est incroyable avant de le mettre à disposition du grand public."
+      body_html: "<p></p>\n<h3>Quelles sont les différences ?</h3>\n\n<p>\n  La nouvelle interface est comme l'ancienne mais avec quelques nouveautés:\n  <ul>\n    <li>Toutes les mises à jours apparaissent en direct sur la page</li>\n    <li>C'est prévu pour l'ensemble de vos périphériques, du téléphone mobile à l'ordinateur de bureau</li>\n    <li>c'est accessible aux personnes aveugles, et traduit dans <a href=\"https://www.loomio.org/translation\"> un tas de langage</a>\n  </ul>\n</p>\n\n<p>Il utilise la même base que l'ancienne interface , ce qui signifie qu'il y aura tous vos groupes et les discussions existantes . Vous pouvez revenir à l'ancienne interface à tout moment.</p>\n<p>Les choses vont changer légèrement chaque jour au fur et à meure que nous implémentons les suggestions. Certaines fonctions moins fréquemment utilisées peuvent ne pas être encore présentes.</p>\n<p>Il existe un lien \"Revenir à l'ancienne version de Loomio\" dans le coin inférieur gauche de la nouvelle application. Cliquez sur ce lien et vous pourrez revenir à la version de Loomio à laquelle vous êtes plus habitué. Il est aussi un formulaire de suggestion pour vous permettre d'ajouter vos commentaires.</p>\n<p>Nous avons vraiment hâte d'entendre vos commentaires , merci pour votre temps et de soutien.</p>\n"
       button_text: Activer le nouveau Loomio
     disable:
       title: "Merci d'essayer le nouveau Loomio"
+      body_html: "<p>Oups, Avons nous mal fait quelque chose ? Nous sommes désolés si vous avez eu une mauvaise expérience avec le nouveau Loomio.</p>"
+      give_feedback: Avant de partir merci de nous partager vos impressions pour que nous puissions améliorer le service.
       button_text: "Basculer vers l'ancien Loomio"
