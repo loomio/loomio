@@ -1,8 +1,6 @@
 
 .user-page__name {
-  @include fontHelveticaBold;
-  @include fontLarge;
-  margin: 0;
+  @include lmoH1;
 }
 
 .user-page__profile {
