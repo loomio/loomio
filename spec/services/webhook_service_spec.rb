@@ -67,7 +67,7 @@ describe WebhookService do
       expect(payload['text']).to match /#{user.name}.* .*#{vote_position}.* .*#{vote.proposal.name}.* in .*#{discussion.title}/
     end
 
-    it 'serializes a new discussion' do 
+    it 'serializes a new discussion' do
       event = DiscussionService.create actor: user, discussion: discussion
       payload = JSON.parse WebhookService.send(:payload_for, webhook, event)
       expect(payload['username']).to eq 'Loomio Bot'

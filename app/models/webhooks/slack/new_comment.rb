@@ -12,7 +12,7 @@ class Webhooks::Slack::NewComment < Webhooks::Slack::Base
   end
 
   def attachment_text
-    "#{eventable.body}\n"
+    "#{eventable.body}"
   end
 
   def attachment_fields

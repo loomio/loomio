@@ -1512,8 +1512,8 @@ en:
       new_motion: "*%{author}* started a new proposal in *%{name}*"
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       new_discussion: "*%{author}* started a new discussion in *%{group}*"
+      new_comment: "*%{author}* commented in *%{name}*"
       view_it_on_loomio: "View it on Loomio"
-      new_comment: "*%{author}* commented on *%{name}*"
       position_verbs:
         "yes": "agreed on"
         "no": "disagreed on"
