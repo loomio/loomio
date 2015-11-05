@@ -16,6 +16,7 @@ describe 'Dashboard Page', ->
     expect(dashboardHelper.todayThreads()).toContain('Recent discussion')
 
     expect(dashboardHelper.anyThreads()).not.toContain('Muted discussion')
+    expect(dashboardHelper.anyThreads()).not.toContain('Muted group discussion')
     expect(dashboardHelper.anyThreads()).not.toContain('Old discussion')
 
   it 'displays a view of participating threads', ->
@@ -31,4 +32,5 @@ describe 'Dashboard Page', ->
     browser.driver.sleep(10000)
     expect(dashboardHelper.firstGroupTitle()).toContain('Dirty Dancing Shoes')
     expect(dashboardHelper.anyThreads()).toContain('Muted discussion')
+    expect(dashboardHelper.anyThreads()).toContain('Muted group discussion')
     expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')

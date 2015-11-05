@@ -18,7 +18,6 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :motions_count,
              :discussions_count,
-             :members_count,
              :memberships_count,
              :invitations_count,
              :visible_to,
@@ -73,7 +72,7 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def has_multiple_admins
-    object.admins.count > 1
+    object.admin_memberships_count > 1
   end
 
   def cover_photo

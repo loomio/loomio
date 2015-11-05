@@ -54,6 +54,7 @@ window.useFactory = function() {
     discussions: {
       title: 'Earth: The Most Recent Frontier',
       description: '',
+      discussion_reader_volume: 'quiet',
       last_item_at: moment().format(),
       last_comment_at: moment().format(),
       last_activity_at: moment().format(),

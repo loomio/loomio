@@ -137,5 +137,4 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       @subscriptionKind == 'trial' && @subscriptionExpiresAt.clone().add(15, 'days') < moment()
 
     noInvitationsSent: ->
-      @membersCount < 2 and @invitationsCount < 2
-
+      @membershipsCount < 2 and @invitationsCount < 2
