@@ -666,6 +666,10 @@ ko:
     email_settings: 이메일 설정
     find_out_more: 좀 더 알아보기
     groups: 그룹
+    today: 오늘
+    meridians:
+      am: 오전
+      pm: 오후
     privacy: 개인정보
     private: 비공개
     public: 공개

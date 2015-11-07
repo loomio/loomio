@@ -13,6 +13,8 @@ sr-RS:
         pending_invitations_html: Позиви у току
       discussion_threads:
         discussion_privacy_html: Приватност дискусије
+      proposals:
+        title_html: Предлози
       subgroups:
         title_html: Подгрупе
       keeping_up_to_date:
@@ -52,6 +54,8 @@ sr-RS:
     discussion_threads:
       discussion_privacy:
         title: Приватност дискусије
+    proposals:
+      title: Предлози
     subgroups:
       title: Подгрупе
     keeping_up_to_date:

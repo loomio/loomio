@@ -46,6 +46,8 @@ sr-RS:
         subject: Неко Вас је позвао да се придружите Лумио групи
     registrations:
       sign_up: Направи налог
+    sessions:
+      signed_out: Одјавили сте се успешно
   error:
     access_denied: Немате дозволу да ово урадите.
     cant_join_subgroup: Не можете се придружити подгрупи ако нисте члан главне групе.
@@ -71,8 +73,10 @@ sr-RS:
     group_request_invalid_token: "Извините! Ово је неважећи објект"
     group_private_or_not_found: "Група није пронађена.\n\nОва група је можда приватна. Ако Вам је неко дао овај линк, замолите да Вас позове у групу."
     group_already_setup: Група коју покушавате да направите већ постоји.
+    current_password_did_not_match: "Жао нам је, нисмо у могућности да потврдимо твоју тренутну лозинку"
     passwords_did_not_match: Лозинка се не поклапа са потврдном
     proposal_already_exists: Овде је већ један отворен предлог у дискусији.
+    username_must_be_alphanumeric: Корисничко име мора садржати искључиво мала слова и бројеве
     user_with_email_address_already_in_group: Корисник са овом адресом еПоште већ припада овој групи.
     you_have_already_requested_membership: Већ сте затражили чланство у овој групи.
     you_are_already_a_member_of_this_group: Већ сте члан ове групе.
@@ -131,6 +135,7 @@ sr-RS:
     added_to_group: "Додати сте у %{which_group}."
     close_date_changed: Датум затварања је успешно измењен.
     discussion_created: Дискусија је успешно креирана.
+    discussion_updated: Дискусија је успешно измењена.
     discussion_deleted: Дискусија је успешно обрисана.
     discussion_moved: "Дискусија је успешно премештена у %{group_name}"
     emails_sending: еПоруке се шаљу.
@@ -224,6 +229,7 @@ sr-RS:
     new_vote: "%{position} на предлогу"
     new_comment: коментарисао/ла дискусију
     comment_liked: се свиђа Ваш коментар у дискусији
+    comment_replied_to: је одговорио/ла на твој коментар у
     user_mentioned: те је поменуо/ла у коментару у
     membership_requested: затражио/ла чланство у
     membership_request_approved: је одобрио/ла твој захтев да се придружиш
@@ -286,11 +292,29 @@ sr-RS:
       group_contributions: "Коментари, предлози и дискусије које сте направили у групама ће остати, али ћемо уклонити Ваше име са њих."
       emails: Престаћемо да Вам шаљемо Лумио еПоруке.
   start_group_form:
+    enable_angular:
+      header: Нове групе се покрећу у Лумио 1.0
+      subtitle: "Да креирате нову групу, морате се пребацити на најновију верзију Лумија:"
+      switch_to_angular: Креирајте групу у новом Лумију
+      helptext: "Изградили смо изнова Лумио, од нуле. Можеш прочитати о новинама <a href=\"/angular\">овде</a>.<br/>Имаш могућност да се вратиш на стару верзију у сваком тренутку."
     header: Започни нову групу
+    form_error: Неке информације недостају или су неправилне.
     name: Твоје име
+    name_error: Име је неопходно
+    email: Твоја еАдреса
+    email_error: Неисправна адреса еПоште
     group_name: Назив групе
+    group_description: Опис групе
+    group_description_placeholder: Опиши сврху своје групе тако да чланови групе знају зашто су овде.
+    group_name_error: Назив групе је неопходан
+    pricing_html: "Кроз 30 дана, питаћемо те да одабереш <a href='%{link}' target='_blank'>plan плаћања</a>."
+    terms_html: "Креирањем групе, слажеш се са Лумијевим <a href='%{link}' target='_blank'>условима коришћења</a>."
     success:
       header: "Још мало па готово! Проверите еПошту."
+      email_delivered: "Послали смо једну еПоруку на %{email}. Молимо Вас пратите везу у њој да креирате своју нову групу."
+      email_not_arrived: еПорука није пристигла?
+      please_hold: Молимо допустите до 5 минута да еПорука пристигне и будите сигурни да сте проверили фасциклу са нежељеним порукама.
+    start_making_decisions: "Да почнете доносити одлуке заједно на Лумију, креирајте групу бесплатно:"
   group_form:
     name: Назив групе
     description: Опис
@@ -405,6 +429,7 @@ sr-RS:
   approved_by_person: "Одобрено од %{person}"
   ignored_by_perosn: "Игнорисано од %{person}"
   join_group_btn: Придружи се групи
+  membership_by_invitation_only: Чланство у овој групи је искључиво на основу позива
   you_have_joined_group: "Прикључили сте се %{group_name}"
   confirm_approve_membership_request: "Да ли сте сигурни да желите да додате %{which_user} у групу?"
   cancel_membership_request: Поништи захтев
@@ -541,6 +566,7 @@ sr-RS:
       log_in_html: "Ако сте члан, <a href='%{href}'>пријавите се</a> да видите било коју од приватних дискусија."
   discussion_context:
     started_html: "Започето пре %{when} од стране <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_print: "Креирано %{when} од стране %{who}"
     last_edited_html: "Последњи пут промењено пре %{when} од стране <a href='%{link}' class='%{link_class}'>%{who}</a>"
     see_revision_history: Види историју ревизија
     see_history: Види историју
@@ -570,6 +596,7 @@ sr-RS:
   move_discussion_where: Где желите да преместите ову дискусију?
   delete_discussion: Обриши дискусију
   confirm_delete_discussion: Да ли сте сигурни да желите трајно обрисати ову дискусију?
+  print_tooltip_info: Штампа
   new_proposal: Нови предлог
   edit_proposal: Измени Предлог
   close_proposal: Затвори предлог
@@ -577,10 +604,13 @@ sr-RS:
   change_proposal_close_date: Промени датум затварања
   change_proposal_close_date_header: "Промени датум затварања за предлог '%{which}'"
   proposal: Предлог
+  proposals: Предлози
+  closed_at: Важи до
   proposal_close_date_error: Молим одредите будући датум затварања
   proposal_closing_when: "Затвара се кроз %{when}"
   proposal_closed_when: "Затворен пре %{when}"
   proposed_when_by_who: "Предложено од %{who}, пре %{when}"
+  proposed_by_who_on: "Предложено од %{who}, %{when}"
   engagement_on_open_proposal: "%{percent}%% чланова је до сада изнело свој став (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% чланова који су изнели свој став (%{numerator}/%{denominator})"
   state_your_position: Реци свој став
@@ -662,6 +692,22 @@ sr-RS:
     vote: Можете променити свој став било када
   pricing_page:
     header: Ценовник
+    gift: Поклон
+    standard: Стандард
+    plus: Плус
+    free_trial_html: "Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна."
+    get_started_for_free: Почни бесплатно
+    gift_body_html: "<p>За групе које немају буџет за плаћање претплате.</p>\n<p>Донацијом подржано, без обавезе плаћања.</p>\n"
+    gift_donation_ask: Питаћемо Ваше чланове за донацију.
+    unlimited_members: неограничено чланова
+    unlimited_decisions: неограничено одлука
+    email_support: подршка еПорукама
+    standard_price_html: "US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње\n"
+    plus_body: "Све у Стандард, плус:"
+    premium_support: премијум подршка
+    custom_url: наменски URL
+    usage_statistics: статистика коришћења
+    plus_price_html: "US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње\n"
   contribution:
     any_amount: или произвољни једнократни прилог од
     currency_desc: Износи су у САД доларима
@@ -707,6 +753,9 @@ sr-RS:
   inactive_html: "Овај налог је деактивиран. Ако имате било каква питања молимо <a href='%{path_to_contact}'>јавите нам се</a>."
   create_an_account_html: Направите Лумио Бета налог
   log_in: Пријави се
+  password_reset:
+    length_restriction: Лозинка мора бити најмање 8 знакова дуга.
+    forbidden_passwords: Уобичајене лозинке као што је ”лозинка” су забрањене да би твој налог био безбедан.
   join_group:
     log_in: "Пријавите се да бисте се придружили %{group_name}"
     create_account_to_join_group: "Молимо направите налог да би сте се придружили %{group_name}"
@@ -733,6 +782,8 @@ sr-RS:
     invites_more_help2: "<p>Било када можеш позвати људе у своју групу.</p><p>Можеш пожелети да позовеш све своје чланове одмах или пак можеш почети позивањем само оних са којима најтесније сарађујеш.</p>"
     invitation_link: Линк до позивнице
     discussion_link: "Учествујете у дискусији:"
+    link_help: "Шкљоцните на везу да се придружите %{group_name} и почнете:"
+    thanks: "Хвала,"
     copy: "Ако неко није добио своју позивницу, будите слободни да копирате позивни линк изнад и да га проследите лично примаоцу."
     pending_invitations: Позиви у току
     no_pending_invitations: Овде тренутно нема позивница на чекању.
@@ -744,8 +795,16 @@ sr-RS:
     empty_search: Празна претрага
     please_enter_a_search: Молим унесите упит у поље претраге изнад
     no_match: Нема резултата који одговарају вашем упиту
+  introduction_thread:
+    title: "Добродошли у %{group_name}"
+  how_it_works_thread:
+    title: Како користити Лумио
+  first_proposal:
+    name: "Показни предлог: почнимо!"
   contact_page:
     contact_us: Контактирајте нас
+    contact_information: "Ако не пронађеш оно што тражиш, можеш видети наше контакт информације на дну стране."
+    contact_form: Контакт формулар
     labels:
       name: Твоје име
       email: Твоја адреса еПоште
@@ -944,6 +1003,7 @@ sr-RS:
   about_loomio: О Лумију
   ago: "пре %{quantity_of_time} "
   approve: Одобри
+  attachments: "Прилози:"
   author: Аутор
   back: Назад
   cancel: Откажи
@@ -1000,6 +1060,7 @@ sr-RS:
   start_a_group: Започните групу
   starting: Почиње
   subject: Тема
+  tos_html: "Пријављивањем, слажеш се са Лумијевим <a href='%{link_path}' target='_blank'>Условима коришћења</a>"
   thanks: "Хвала!"
   unlike: Не Свиђа
   time_until_close: "%{quantity_of_time} до затварања"
@@ -1008,8 +1069,19 @@ sr-RS:
   yahoo: Yahoo
   google: Google
   persona: Особа
+  log_in_with_third_party: "Или се пријавите помоћу налога са:"
+  log_in_with_google: Пријави се са Гугл
+  log_in_with_facebook: Пријави се са Фејсбук
+  log_in_with_persona: Пријави се са Персона
+  log_in_with_twitter: Пријави се са Твитер
+  sign_up_with_third_party: "Или се региструјте помоћу налога са:"
+  sign_up_with_google: Региструјте се са Гугл
+  sign_up_with_facebook: Региструјте се са Фејсбук
+  sign_up_with_persona: Региструјте се са Персона
+  sign_up_with_twitter: Региструјте се са Твитер
   common:
     profile: Профил
+    welcome_back: "Добродошли назад!"
     email_settings: Подешавања еПорука
     markdown_help_tooltip: Научи основе уређивања свог текста са Markdown
     settings: Подешавања
@@ -1021,6 +1093,7 @@ sr-RS:
     not_following: Не прати се
     back_to_discussion: Назад на дискусију
     edited: Измењено
+    get_started: Почнимо
     groups: Групе
     select_error: Молим одаберите једну опцију
     today: Данас
@@ -1103,6 +1176,7 @@ sr-RS:
     online_community: Умрежена заједница
     religious_group: Религија/духовност
     event: Догађај
+    open_source_software: Бесплатно и отвореног кода
     political_initiative: Политичка иницијатива
     social_enterprise: Социјална предузећа
     social_justice: Социјална правда
@@ -1115,3 +1189,18 @@ sr-RS:
     media: Медији
     health: Здравство
   start_your_group: Оснуј своју групу
+  webhooks:
+    slack:
+      motion_closed: "*%{name}* је затворио/ла"
+      motion_closing_soon: "*%{name}* има предлог који истиче кроз 24 сата"
+      motion_outcome_created: "*%{author}* је објавио/ла један исход у *%{name}*"
+      motion_outcome_updated: "*%{author}* је ажурирао/ла исход за *%{name}*"
+      new_motion: "*%{author}* је изнео/ла нови предлог у *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* у *%{name}*"
+      new_discussion: "*%{author}* је покренуо/ла нову дискусију у *%{group}*"
+      view_it_on_loomio: Погледај на Лумију
+      position_verbs:
+        "yes": слаже се са
+        "no": не слаже се са
+        abstain: уздржава се о
+        block: блокира

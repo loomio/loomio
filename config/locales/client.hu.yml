@@ -77,6 +77,7 @@ hu:
     delete_comment: Hozzászólás törlése
     confirm_delete_message: Biztosan törölni akarod ezt a hozzászólást?
     confirm_delete: "Igen, biztos vagyok benne"
+    private_privacy_notice: "A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható."
   navbar:
     unread: Olvasatlan
     groups: Csoportok
@@ -131,6 +132,7 @@ hu:
     context_label: Leírás
     privacy_label: Adatvédelem
   proposal_expanded:
+    started_by: "<strong>{{name}}</strong> indította"
     edit_proposal: Javaslat szerkesztése
     close_proposal: Javaslat lezárása
   start_group_form:
@@ -204,6 +206,8 @@ hu:
   discussion:
     proposals: Javaslatok
     previous_proposals: Előző javaslatok
+    liked_by_someone: "{{name}} kedveli ezt."
+    started_by: "<strong>{{name}}</strong> indította"
     volume:
       loud: Emailezz ha aktivitás van ezen a szálon.
       normal: "Csak akkor emailezz, ha egy javaslat született, ha zárás következik vagy ha összegzést tettek közzé."

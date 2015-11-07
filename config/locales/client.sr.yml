@@ -40,7 +40,7 @@ sr:
       loading: Učitavanje
       uploading: Prosleđivanje
     formatting_help:
-      label: Uređivanje pomoći
+      label: Pomoć o formatiranju
       title: Nauči kako da koristiš Markdown za uređivanje teksta na Lumiju
   error_page:
     forbidden: Nemate dozvolu da ovo uradite.
@@ -80,29 +80,47 @@ sr:
     heading: Obaveštenja
     body:
       loud: "Obavesti o svemu: bićete obavešteni ePorukom kada god ima aktivnosti u ovoj niti."
+      normal: "Prosledi predloge: bićete obavešteni ePorukom kada je iznet predlog, kada se zatvara ili kada je ishod određen."
+      quiet: "Bez ePoruka: nećete dobijati ePoruke o aktivnostima u ovoj niti."
+      mute: "Nit utišana: nećete dobijati ePoruke o ovoj niti i ona će biti uklonjena iz Poslednje niti i Nepročitane stranice."
     change_volume_link: Promeni
   thread_volume_form:
     header: Obaveštenja
     loud_label: Pošalji sve
+    loud_description: Dobičete ePoruku kada god ima aktivnosti u ovoj niti.
     normal_label: Pošalji predloge
+    normal_description: "Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen."
     quiet_label: Nema ePoruka
+    quiet_description: "Nećete biti obavešteni ePorukom o ovoj niti osim ako vas neko ne @pomene."
     mute_label: Pauziraj nit
+    mute_description: Nećete biti obaveštavani ePorukom o ovoj niti i ona će biti uklonjena iz Vaših Najnovije Niti i Nepročitane strane.
     submit: Ažuriraj
     messages:
       loud: Bićete obaveštavani o aktivnostima u ovoj niti.
+      normal: Bićete obavešteni ePorukom o predlozima u ovoj niti.
       quiet: Nećete biti obaveštavani o ovoj niti.
       mute: Nit utišana.
   group_volume_card:
     heading: Obaveštenja
+    body:
+      loud: "Obavesti o svemu: dobićete ePoruku kada god ima aktivnosti u ovoj grupi."
+      normal: Bićete obavešteni ePorukom o novim nitovima i predlozima u ovoj grupi.
+      quiet: "Bez ePoruka: nećeš dobijati ePoruke o aktivnostima u ovoj grupi."
     change_volume_link: Promeni
   group_volume_form:
     header: Obaveštenja
     loud_label: Pošalji sve
+    loud_description: Bičete obavešteni ePorukom kada ima aktivnosti u ovoj grupi.
     normal_label: Pošalji nove niti i predloge
+    normal_description: Bićete obavešteni ePorukom o novim nitovima i predlozima u ovoj grupi.
     quiet_label: Nema ePoruka
+    quiet_description: "Nećete biti obaveštavani ePorukom o aktivnostima u ovoj grupi, dok Vas neko ne pomene."
     mute_label: Utišaj grupu
     submit: Ažuriraj
     messages:
+      loud: Bićete obaveštavani ePorukama o aktivnostima u ovoj grupi.
+      normal: Bićete obavešteni ePorukom o predlozima u ovoj grupi.
+      quiet: Nećete biti obaveštavani ePorukom o ovoj grupi.
       mute: Grupa utišana.
   inbox:
     clear: Očisti
@@ -132,6 +150,8 @@ sr:
     in_reply_to: "U odgovoru na <strong>{{name}}</strong>:"
     submit_button:
       label: Upiši
+    private_privacy_notice: "Vaš komentar će biti vidljiv samo za članove {{groupName}}."
+    public_privacy_notice: Vaš komentar će biti vidljiv svima na mreži.
   navbar:
     recent: Poslednje
     unread: Nepročitano
@@ -156,10 +176,11 @@ sr:
       close: Zatvori tablu pretrage
       placeholder: Traži
       loading: Učitavanje rezultata...
-      discussions: Nizovi
+      discussions: Niti
       proposals: Predlozi
       comments: Komentari
   start_menu:
+    title: Dugme akcije
     start_group: Kreiraj Grupu
     start_subgroup: Kreiraj Podgrupu
     start_thread: Kreiraj nit
@@ -230,6 +251,7 @@ sr:
     start_a_proposal: Kreiraj predlog
     edit_proposal: Izmeni predlog
     what_does_a_proposal_do: Predlozi omogućavaju da vidite kako se svi osećaju po pitanju određenog kursa akcije.
+    editing_title_and_description_forbidden: "Ne možete promeniti naslov ili opis predloga nakon što su ljudi glasali. Ako su se detalji promenili, molimo Vas zatvorite predlog i iznesite novi."
     title_placeholder: Npr. Idemo na mars
     title_label: Naslov
     closes_at_label: "Zatvara se "
@@ -256,6 +278,7 @@ sr:
     privacy:
       will_be_private_to_group: "Nit će biti vidljiva samo članovima {{groupName}}."
       will_be_private_to_parent_group: "Nit će biti vidljiva članovima {{parentGroupName}} i članovima {{groupName}}."
+      will_be_public: "Svako može videti ovu nit. Samo članovi {{groupName}} se mogu pridružiti."
     new_discussion_submit: Kreiraj nit
     edit_discussion_submit: Izmeni nit
   proposal_expanded:
@@ -274,6 +297,8 @@ sr:
   group_welcome_modal:
     heading: Dobrodošli u svoju novu grupu
     first_step: "Ti si koordinator grupe, što je kao da si domaćin/ca."
+    second_step: "Razgledajte okolo &ndash; pogledajte primer niti i poigrajte se sa opcijama."
+    third_step: "Kada ste spremni, možete pozvati ljude."
     ok_got_it: "U redu, shvatam!"
   group_cover_modal:
     heading: Nova pokrivna slika
@@ -290,8 +315,10 @@ sr:
     heading: Kreiraj grupu
     heading_when_subgroup: Kreiraj podgrupu
     group_helptext: "Da počnete donositi odluke zajedno na Lumiju, kreirajte grupu besplatno:"
+    group_payment_reminder: "Kroz 30 dana, pitaćemo te da odabereš <a href='https://www.loomio.org/pricing' target='blank'>plan plaćanja</a>."
     name_label: Naziv grupe
     description_label: Opis grupe
+    description_placeholder: Opiši svrhu svoje grupe tako da članovi grupe znaju zašto su ovde.
     subgroup_name_label: Naziv podgrupe
     submit: Kreiraj Grupu
     messages:
@@ -329,8 +356,11 @@ sr:
       leave_group_success: Napustili ste ovu grupu
       archive_group_success: Ova grupa je bila deaktivirana
     group_logo: Logo grupe
+    new_photo: nova fotografija
     description: Opis grupe
-    discussions: Nizovi
+    description_placeholder: Koristi ovo mesto da opišeš svrhu grupe tako da tvoji članovi znaju zašto su ovde.
+    discussions: Niti
+    discussions_placeholder: Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.
     members: Članovi
     members_placeholder: "Samo si ti ovde: pozovi neke ljude da ti se pridruže!"
     member_options: Opcije člana
@@ -345,6 +375,7 @@ sr:
       edit_group: Podešavanja Grupe
       manage_members: Upravljanje Članovima
       add_subgroup: Dodaj Podgrupu
+      manage_subscription: Upravljaj Praćenjem Grupa
       leave_group: Napusti Grupu
       deactivate_group: Deaktiviraj Grupu
     deactivate_group:
@@ -359,8 +390,14 @@ sr:
       add_coordinator: Dodaj koordinatora
     volume:
       loud: ePoruka kada god ima aktivnosti.
+      loud_aria_description: Obim tvojih obaveštenja za ovu grupu je postavljen na Glasno. Dobijaćeš ePoruke kada god ima aktivnosti ovde.
+      loud_message: "Bićete obavešteni ePorukom o svim aktivnostima u \"{{name}}.\""
+      normal: "Obavesti samo o važnim aktivnostima: Nove niti i predlozi, ishodi itd"
+      normal_message: "Bićete obaveteni samo o važnim događajima u \"{{name}}\"."
       quiet: Ne obaveštavaj o ovoj grupi. Aktivnost će biti prikazana na početnoj strani.
+      quiet_message: "Nećete primati ePoruke o aktivnostima u \"{{name}}\"."
       mute: "Sakrij ovu grupu i ne obaveštavaj dok ne budem @naznačen/a."
+      mute_message: "\"{{name}}\" je uklonjeno sa Vaše radne table."
     privacy:
       private: "Privatnost: Ova grupa je vidljiva samo članovima"
       parent_members: "Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}"
@@ -376,6 +413,7 @@ sr:
     choose_plan: Odaberi svoj plan plaćanja
   choose_plan_modal:
     heading: Odaberi svoj plan plaćanja
+    overdue_heading: "Da nastavite koristiti Lumio, molimo Vas odaberite plan plaćanja"
     gift: Poklon
     standard: Standardno
     plus: Plus
@@ -388,13 +426,16 @@ sr:
     unlimited_members: neograničeno članova
     unlimited_decisions: neograničeno odluka
     email_support: podrška ePorukom
+    standard_price_html: "US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje\n"
     plus_body: "Sve u Standardno, plus:"
     premium_support: premijum podrška
     custom_url: poseban URL
     usage_statistics: statistika korišćenja
+    plus_price_html: "US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje\n"
     select: Odaberi
   subscription_success_modal:
     heading: "Hvala za postavljanje tvoje pretplate!"
+    receipt: "Ako ikada poželite da promenite ili otkažete pretplatu ili ako imate bilo kakvih drugih zahteva,"
     contact_link: molim kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: "U redu, shvatam!"
@@ -416,10 +457,10 @@ sr:
       membership_by_approval: Zahtevom - svako može zatražiti da se priključi
       membership_by_approval_subgroup: "Zahtevom članova iz {{parentGroupName}}"
       membership_by_invitation: Isključivo pozivom - novi članovi moraju biti pozvani
-      discussion_privacy_options: Ko može videti nizove?
-      public_discussions: Samo javni nizovi
+      discussion_privacy_options: Ko može videti niti?
+      public_discussions: Samo javne niti
       public_discussions_subgroup: "Svako iz {{parentGroupName}} može videti diskusije"
-      public_or_private_discussions: Omogući javne i privatne nizove
+      public_or_private_discussions: Omogući javne i privatne niti
       private_discussions: Samo članovi mogu videti diskusije
     permissions:
       label: Dozvole
@@ -510,6 +551,8 @@ sr:
   cancel_invitation_form:
     heading: Otkaži pozivnicu
     question: Da li ste sigurni da želite otkazati ovu pozivnicu?
+    submit: "Da, otkaži pozivnicu"
+    cancel: Ne
     messages:
       success: Poziv otkazan
   profile_page:
@@ -551,8 +594,8 @@ sr:
     email: ePoruka
     daily_summary_label: Dnevni izveštaj ePorukom
     daily_summary_description: "Svakog jutra, šalje jednu ePoruku sa jučerašnjim neporočitanim aktivnostima. Ova ePoruka pruža jednu laku rutinu da ostaneš u toku sa aktivnostima na Loomio"
-    on_participation_label: Aktivnosti sa nizova u kojima sam uključen/a
-    on_participation_description: "Kada se priključite nizu, obim obaveštenja će se promeniti u 'Glasno', tako da će se sve dalje aktivnosti u njemu manifestovati kao obaveštenje ePorukom istog časa."
+    on_participation_label: Aktivnosti sa niti u kojima sam uključen/a
+    on_participation_description: "Kada se priključite niti, obim obaveštenja će se promeniti u 'Glasno', tako da će se sve dalje aktivnosti u njoj manifestovati kao obaveštenje ePorukom istog časa."
     proposal_closing_soon_label: Pre isteka predloga
     mentioned_label: "Kada sam @pomenut/a"
     update_settings: Podešavanje ePoruka
@@ -563,26 +606,26 @@ sr:
     options:
       aria_label: Opcije filtriranja
     no_threads:
-      show_all: Nemate skorih nizova
-      show_participating: Niste se pridružili u skorije vreme nekom nizu.
-      show_starred: Nemate omiljenih nizova.
+      show_all: Nemate skorih niti
+      show_participating: Niste se pridružili u skorije vreme nekoj niti.
+      show_starred: Nemate omiljenih niti.
       show_proposals: Nema trenutno aktivnih predloga.
-      show_muted: Nemate utišanih nizova.
-    view_recent: Vidi sve skorije nizove?
-    load_more: Učitaj još nizova
+      show_muted: Nemate utišanih niti.
+    view_recent: Vidi sve skorije niti?
+    load_more: Učitaj još niti
     mark_as_read: Označi kao pročitano
     filtering:
-      filter_threads: Filtriraj Nizove
-      filter_threads_aria_label: Filtriraj Nizove
+      filter_threads: Filtriraj Niti
+      filter_threads_aria_label: Filtriraj Niti
       dropdown_heading: Filtriraj radnu površinu
-      all: Skorašnji Nizovi
-      all_aria_label: Trenutno prikazuje najnovije nizove
-      all_description: Vidi novije nizove
-      starred: Omiljeni Nizovi
-      starred_aria_label: Trenutno prikazuje nizove označene kao važne
-      starred_description: Vidi samo nizove koji su označeni kao važni
-      participating: Nizovi u kojima učestvujem
-      participating_aria_label: Trenutno prikazuje nizove u kojima učestvujem
+      all: Skorašnjw niti
+      all_aria_label: Trenutno prikazuje najnovije niti
+      all_description: Vidi novije niti
+      starred: Omiljene Niti
+      starred_aria_label: Trenutno prikazuje niti označene kao važne
+      starred_description: Vidi samo niti koje su označene kao važne
+      participating: Niti u kojima učestvujem
+      participating_aria_label: Trenutno prikazuje niti u kojima učestvujem
       participating_description: Vidi samo niti u kojima si
       proposals: Predlozi
       proposals_aria_label: Trenutno prikazuje niti sa aktivnim predlozima
@@ -598,7 +641,7 @@ sr:
     threads_from:
       group: Niti od
       proposals: Predlozi
-      starred: Omiljeni nizovi
+      starred: Omiljene niti
       today: Danas
       yesterday: Juče
       thisweek: Ove nedelje
@@ -619,26 +662,100 @@ sr:
     load_previous: Učitaj ranije aktivnosti
     you_like_this: Sviđa ti se ovo.
     liked_by_you_and_someone: "Tebi i {{name}} se sviđa ovo."
+    liked_by_you_and_others: "Sviđa se tebi, {{joinedNames}} i {{name}}."
+    liked_by_someone: "{{name}} voli ovo."
+    liked_by_two_others: "{{name_1}} i {{name_2}} vole ovo."
+    liked_by_many_others: "Sviđa se {{joinedNames}} i {{name}}."
+    liked_by_name: "Sviđa se {{name}}."
+    liked_by_names_and_name: "Sviđa se {{joinedNames}} i {{name}}."
     started_by: "Kreirano od strane <strong>{{name}}</strong> "
     volume:
-      loud: Obavesti kada god ima aktivnosti u ovom nizu.
+      loud: Obavesti kada god ima aktivnosti u ovoj niti.
+      loud_message: "Bićete obavešteni ePorukom o svim aktivnostima u \"{{name}}\""
       normal: "Samo obavesti kada je predlog kreiran, pred zatvaranjem ili je ishod kreiran."
-      quiet: Ne šalji ePoruke o ovom nizu.
-      mute: "Sakrij ovaj niz i ne obaveštavaj me dok ne budem @naznačen/a"
+      normal_message: "Bićete obavešteni ePorukom o važnim događajima za \"{{name}}\"."
+      quiet: Ne šalji ePoruke o ovoj niti.
+      quiet_message: "Nećete biti obaveštavani ePorukom o \"{{name}}\" osim ako Vas neko ne pomene"
+      mute: "Sakrij ovu nit i ne obaveštavaj me dok ne budem @naznačen/a"
+      mute_message: "\"{{name}}\" je uklonjeno sa Vaše radne table."
   thread_group:
     aria_label: Naziv grupe
+  thread_context:
+    aria_label: Kontekst niti
+    thread_options: Opcije niti
+    notifications: Obaveštenja
+    edit_thread: Izmene
+    move_thread: Premesti
+    delete_thread: Obriši
+  delete_thread_form:
+    title: Obriši nit
+    body: Da li ste sigurni da želite obrisati ovu nit?
+    confirm: "Da, obriši nit"
+    messages:
+      success: Nit je obrisana
+  move_thread_form:
+    title: Premesti nit
+    body: "Odredišna grupa:"
+    confirm: Premesti nit
+    messages:
+      success: "Nit je premeštena u {{name}}"
+  activity_card:
+    new_activity: Nova Aktivnost
+    attachment_display:
+      aria_label: "Prateće datoteke:"
+      image_alt: Prateća slika
   delete_comment_dialog:
     title: Obriši komentar
     question: Da li ste sigurni da želite obrisati ovaj komentar?
     confirm: Obriši komentar
   new_comment_item:
+    aria_label: "Komentar od {{author}}"
     context_menu:
+      aria_label: Opcije komentara
       edit_comment: Izmeni komentar
       delete_comment: Obriši komentar
+    in_reply_to: "<strong>{{author}}</strong> u odgovoru <strong>{{recipient}}</strong>"
+  new_vote_item:
+    agree: "<strong>{{actor}}</strong> se slaže"
+    abstain: "<strong>{{actor}}</strong> se uzdržava"
+    disagree: "<strong>{{actor}}</strong> se ne slaže"
+    block: "<strong>{{actor}}</strong> blokira"
+    agree_with_statement: "<strong>{{actor}}</strong> se slaže sa: <span>{{statement}}</span>"
+    abstain_with_statement: "<strong>{{actor}}</strong> se uzdržava o: <span>{{statement}}</span>"
+    disagree_with_statement: "<strong>{{actor}}</strong> se ne slaže sa: <span>{{statement}}</span>"
+    block_with_statement: "<strong>{{actor}}</strong> blokira: <span>{{statement}}</span>"
+  new_proposal_item:
+    author_created_proposal: "<strong>{{actor}}</strong> predlaže: <span>{{title}}</span>"
+  proposal_closed_item:
+    proposal_closed: "Predlog je istekao: <span>{{title}}</span>"
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: "<strong>{{actor}}</strong> je zatvorio/la predlog: <span>{{title}}</span>"
+  proposal_edited_item:
+    name: "<strong>{{actor}}</strong> je izmenio/la naslov predloga: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> je izmenio/la opis predloga"
+    closing_at: "<strong>{{actor}}</strong> je izmenio/la rok predloga tako da isktekne  <span>{{time}}</span>"
+    description_name: "<strong>{{actor}}</strong> je izmenio/la naslov i opis predloga"
+    closing_at_name: "<strong>{{actor}}</strong> je izmenio/la naslov i rok predloga"
+    closing_at_description: "<strong>{{actor}}</strong> je izmenio/la opis predloga i rok"
+    closing_at_description_name: "<strong>{{actor}}</strong> je izmenio/la naslov predloga, opis i rok"
+  proposal_outcome_created_item:
+    proposal_outcome_created: "<strong>{{actor}}</strong> je objavio/la ishod predloga:"
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: "<strong>{{actor}}</strong> je izmenio/la ishod predloga:"
+  discussion_edited_item:
+    title: "<strong>{{actor}}</strong> je izmenio/la naslov niti: <span>{{title}}</span>"
+    description: "<strong>{{actor}}</strong> je izmenio/la kontekst niti"
+    description_title: "<strong>{{actor}}</strong> je izmenio/la naslov i kontekst niti"
   contact_message_form:
+    contact_us: Kontakiraj nas
     name_label: Tvoje ime
+    name_placeholder: Upiši svoje ime...
     email_label: Tvoja adresa ePošte
+    email_placeholder: Upiši svoju adresu ePošte
     message_label: Tvoja poruka
+    message_placeholder: Vaša poruka...
+    send_message: Pošalji Poruku
+    new_contact_message: "Hvala za poruku; uskoro ćemo Vam se javiti!"
   help_page:
     coordinating: Koordiniranje svoje Lumio grupe
     coordinating_details: "Kao koordinator, Vi ste odgovorni za podešavanja svoje Lumio grupe i pozivanje\nljudi u nju. Kao i za proces upoznavanja kako koristiti novi softver, Vaša grupa će\nučiti nove procese o efikasnijoj saradnji i pravljenju dobrih zajedničkih\nodluka. Evo nekih saveta kako da podržavate svoju grupu tako da uspe:\n"
@@ -659,6 +776,7 @@ sr:
     how_it_works: Kako radi
     invitation_html: "<h2>Pisanje sjajne pozivnice</h2>\n<p>Prvo pitanje koje će svaki novi član postaviti je 'čemu služi ova grupa'?</p>\n<p>Osmislite najjednostavniji opis za grupu: Šta želite da\npostignete zajedno? Kakve vrste odluka ćete donositi? Ko će biti uključen?</p>\n<p>Bilo bi dobro da prvo popričate sa svojom grupom pre nego što ih pozovete da se pridruže Lumiju.</p>\n<p>Ljudi će želeti da znaju zbog čega su pozvani, šta se od njih očekuje\ni zbog čega će im značiti da ulože svoje vreme u izučavanje toga kako Lumio radi.</p>\n"
     join_the_community: Pridruži se zajednici
+    join_the_community_description_html: "Svako je dobrodošao da se priključi Lumio zajednici, gde razgovaramo o tome kako napraviti veći deo alata i kako on može butu unapređen.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Škljocni ovde da odeš u Lumio Zajednica grupu</a>."
     images_and_text_formatting: Uređivanje slika i teksta
     images_and_text_formatting_html: "<p>Lumio koristi ‘Markdown’ za ubacivanje slika i formatiranje teksta.\nMožete uključiti sa malom sivom ikonom ispod polja za komentar.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Škljocni ovde</a>\nza informacije o tome kako koristiti Markdown.</p>\n"
     keep_up_to_date: Budite u toku
@@ -692,6 +810,7 @@ sr:
     informal_groups_desc: Članovi Vaše grupe će biti zamoljeni da plate koliko mogu
     informal_groups_examples: "npr. porodice, društveni pokreti, kolektivi"
   angular:
+    switch_back: Vrati se na stari Lumio
     give_feedback: Objasnite nam
     enable:
       invite: "Probaj novi Loomio!"

@@ -16,6 +16,7 @@ eo:
       subgroups:
         title_html: Subgrupoj
       keeping_up_to_date:
+        volume_html: Laŭteco
         email_settings_html: Retpoŝtaj agordoj
       user_profile:
         account_deactivation_html: Malaktivigi vian konton
@@ -54,6 +55,8 @@ eo:
     subgroups:
       title: Subgrupoj
     keeping_up_to_date:
+      volume:
+        title: Laŭteco
       email_settings:
         title: Retpoŝtaj agordoj
       yesterday_on_loomio:
