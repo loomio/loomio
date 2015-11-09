@@ -42,7 +42,7 @@ angular.module('loomioApp', ['ngNewRouter',
     $translateProvider.useUrlLoader("/api/v1/translations").
                        preferredLanguage(locale)
 
-    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+    $translateProvider.useSanitizeValueStrategy('escapeParameters');
 
   # disable angular debug stuff in production
   if window.Loomio? and window.Loomio.environment == 'production'
