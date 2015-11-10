@@ -28,3 +28,4 @@ bin/
 /lineman/app/css/modules.scss
 .powenv
 /lineman/app/css/modules.scss
+/lineman/app/components.scss
