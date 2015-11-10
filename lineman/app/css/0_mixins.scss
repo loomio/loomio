@@ -215,19 +215,12 @@ $cardPaddingSize: 15px;
 #angular-feedback-card {
   @include fontSmall;
   z-index: 100;
-  position: fixed;
   left: 11px;
   bottom: 10px;
   width: 120px;
   text-align: center;
   padding: 8px;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-#angular-feedback-card.ng-hide-add    { animation:0.1s fadeOut ease-in; }
-#angular-feedback-card.ng-hide-remove { animation:0.1s fadeIn ease-in; }
-
-
 
 .lmo-version {
   color: #666;

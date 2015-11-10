@@ -106,9 +106,3 @@ describe 'Discussion Page', ->
     expect(threadPage.commentForm().isPresent()).toBe(false)
     expect(threadPage.threadOptionsDropdown().isPresent()).toBe(false)
     expect(threadPage.volumeOptions().isPresent()).toBe(false)
-
-  it 'hides the feedback form on comment form focus', ->
-    threadPage.enterCommentText('Hello')
-    expect(threadPage.angularFeedbackCard().isDisplayed()).toBe(false)
-    threadPage.submitComment(' how are you?')
-    expect(threadPage.angularFeedbackCard().isDisplayed()).toBe(true)
