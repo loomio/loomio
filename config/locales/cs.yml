@@ -389,6 +389,7 @@ cs:
     declined: "Odmítnul %{name}"
     threads: Diskuze
     groups: Skupiny
+    join: Připojit se
   group_request:
     header: Vytvořit skupinu
     commercial_use_option: "ve firmě, formální organizaci nebo na pracovišti"
@@ -455,6 +456,7 @@ cs:
   move_discussion_where: Kam chcete tuto diskuzi přesunout?
   delete_discussion: Odstranit diskuzi
   confirm_delete_discussion: Opravdu chcete navždy odstranit tuto diskuzi?
+  print_tooltip_info: Ttisk
   new_proposal: Nový návrh
   edit_proposal: Upravit návrh
   close_proposal: Uzavřít návrh
@@ -535,6 +537,10 @@ cs:
     vote: Můžete kdykoliv svůj postoj změnit
   pricing_page:
     header: Ceník
+    email_support: e-mailová podpora
+    premium_support: prémiová podpora
+    custom_url: vlastní URL
+    usage_statistics: statistiky využití
   contribution:
     any_amount: nebo jednorázový příspěvek
     currency_desc: Částky jsou uvedeny v amerických dolarech
@@ -606,6 +612,7 @@ cs:
     no_match: Žádné výsledky neodpovídali vašemu výrazu
   contact_page:
     contact_us: Kontaktujte nás
+    contact_form: Kontaktní formulář
     labels:
       name: Vaše jméno
       email: Vaše emailová adresa
@@ -774,6 +781,7 @@ cs:
   about_loomio: O Loomio
   ago: "před %{quantity_of_time}"
   approve: Schválit
+  attachments: "Přílohy:"
   author: Autor
   back: Zpět
   cancel: Zrušit
@@ -952,3 +960,6 @@ cs:
     women: Ženy
     media: Média
     health: Zdraví
+  webhooks:
+    slack:
+      view_it_on_loomio: Zobrazení na Loomio

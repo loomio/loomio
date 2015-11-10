@@ -49,6 +49,7 @@ sr-RS:
     search:
       placeholder: Тражи
       discussions: Низови
+      proposals: Предлози
   notifications:
     header: Обавештења
   position_buttons_panel:
@@ -83,6 +84,9 @@ sr-RS:
     close_proposal: Затвори предлог
   start_group_form:
     heading: Креирај групу
+    group_helptext: "Да почнете доносити одлуке заједно на Лумију, креирајте групу бесплатно:"
+    description_label: Опис групе
+    description_placeholder: Опиши сврху своје групе тако да чланови групе знају зашто су овде.
   join_group_button:
     join_group: Придружи се групи
     ask_to_join_group: Питај да се придружиш групи
@@ -97,6 +101,7 @@ sr-RS:
       empty:
         membership_is_invitation_only: Да бисте се прикључили овој групи морате бити позвани од стране неког члана.
         membership_is_invitation_by_admin_only: Да бисте се придружили овој групи морате бити позвани од стране координатора.
+    description: Опис групе
     discussions: Низови
     invite_people: Позови људе
     options_label: Опције
@@ -108,6 +113,23 @@ sr-RS:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: "Сакриј ову групу и не обавештавај док ме неко не @означи."
+  choose_plan_modal:
+    gift: Поклон
+    standard: Стандард
+    plus: Плус
+    free_trial_html: "Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна."
+    get_started_for_free: Почни бесплатно
+    gift_body_html: "<p>За групе које немају буџет за плаћање претплате.</p>\n<p>Донацијом подржано, без обавезе плаћања.</p>\n"
+    gift_donation_ask: Питаћемо Ваше чланове за донацију.
+    unlimited_members: неограничено чланова
+    unlimited_decisions: неограничено одлука
+    email_support: подршка еПорукама
+    standard_price_html: "US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње\n"
+    plus_body: "Све у Стандард, плус:"
+    premium_support: премијум подршка
+    custom_url: наменски URL
+    usage_statistics: статистика коришћења
+    plus_price_html: "US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње\n"
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши
@@ -142,9 +164,13 @@ sr-RS:
   dashboard_page:
     aria_label: Радна табла
     mark_as_read: Означи као прочитано
+    filtering:
+      proposals: Предлози
     threads_from:
+      proposals: Предлози
       today: Данас
   discussion:
+    proposals: Предлози
     volume:
       loud: Обавести када год има активности у овом низу.
       normal: "Обавести само када је предлог креиран, пред затварањем или је један исход одређен."

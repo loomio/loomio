@@ -789,6 +789,12 @@ de:
     description: "Bitte nimm Dir einen Moment Zeit, um Dich vorzustellen. Du könntest mitteilen, warum Du zu dieser Gruppe passt.\n\nWenn Du klare Vorstellungen für diese Loomio-Gruppe hast, könntest Du sie mitteilen, damit alle anderen hier erkennen können, was euer gemeinsames Ziel sein könnte.\n"
   how_it_works_thread:
     title: Wie man Loomio benutzen kann
+    description: "Willkommen bei Loomio, ein Online-Patz, um gemeinsam Entscheidungen zu treffen.\n\nDies ist ein beispielhafter **Diskussionsstrang**. Warum nicht einfach mal hier die verschiedenen Loomio Features ausprobieren?\n\nMomentan liest Du die **Beschreibung** der Diskussion. Nutze diesen Bereich, um der Gruppe die Hintergrund-Informationen zur Verfügung zu stellen, die sie für eine produktive Diskssion benötigt.\n\nIm Bereich **Vorschlag** werden die Entsccheidungen gefällt. Hier kannst Du Vorschläge einbringen und daran teilnehmen.\n\nIm Bereich **Beiträge** wird alles aufgeführt, was in dieser Diskussion bereits passiert ist.\n"
+  first_comment:
+    body: "Hi Leute, ich bin der Loomio Hilfe-Roboter.\n\nWenn Du die Aufmerksamkeit einer bestimmten Person in der Gruppe haben willst, gib ein @ und anschließend den Namen der Person ein :)\n\nHier sind ein paar Hinweise, was Du alles ausprobieren könntest, um ein bisschen vertrauter zu werden:\n\n- Richte Dein [Profilbild](/profile) ein\n- Richte Deine [eMail Einstellungen](/email_preferences) ein\n- Stelle Dich im [Willkommen in der %{group_name} Forum](%{thread_url}) vor\n\nWenn Du weitere Fragen hast, dann prüfe erst mal in der [Loomio Hilfe-Anleitung](http://help.loomio.org).\n"
+  first_proposal:
+    name: "Versuchsvorschlag: letz gouuu!"
+    description: "Dies ist die **Beschreibung** des Vorschlags. Hier kannst Du den zur Diskussion gestellten Vorschlag genau beschreiben, damit jedes Mitglied der Gruppe eine Entscheidung treffen kann.\n\nUm an einem Vorschlag teilzunehmen, wähle eine der folgenden Optionen:\n\n- **Zustimmen**: \"I stimme dem zu und möchte, dass es weitergeht.\"\n- **Enthalten**: Ich kann gut damit leben, wenn die Gruppe das ohne mich entscheidet.\"\n- **Ablehnen**: \"Ich glaube wir können das besser.\"\n- **Veto**: \"Ich habe erhebliche Einwände gegen diesen Vorschlag und möchte nicht, dass auf dieser Basis weiterdiskutiert wird.\"\n\nWenn Du Dich entschieden hast, wirst Du um einen kurzen Kommentar zu Deiner Entscheidung gebeten. Du kannst Deine Meinung jederzeit ändern, solange der Vorschlag noch offen ist.\n"
   contact_page:
     contact_us: Kontaktiere uns
     faq_prompt_html: "Du hast eine Frage an das Loomio Team? Bevor Du uns kontaktierst, prüfe, ob Du die Antwort in unseren meistgestellten Fragen (faq's) findest. "
@@ -1187,6 +1193,7 @@ de:
       motion_outcome_updated: "*%{author}* aktualisierte das Ergebnis bezüglich *%{name}*"
       new_motion: "*%{author}* hat einen neuen Vorschlag in *%{name}* erstellt"
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
+      new_discussion: "*%{author}* hat eine neue Diskussion in *%{group}* gestartet"
       view_it_on_loomio: Auf Loomio ansehen
       position_verbs:
         "yes": hat zugestimmt in

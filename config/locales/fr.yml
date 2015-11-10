@@ -789,7 +789,6 @@ fr:
     description: "S'il vous plaît prenez un moment pour vous présenter. Vous pourriez aimer partager la manière dont vous correspondez avec ce groupe de personnes.\n\nSi vous avez des intentions claires pour ce groupe Loomio , vous pouvez les partager ici, chacun a une idée de ce qu'ils veulent faire avec les autres.\n"
   how_it_works_thread:
     title: Comment utiliser Loomio
-    description: "Bienvenue sur Loomio , une plateforme en ligne pour prendre des décisions ensemble.\n\nCeci est un exemple de ** fil de discussion ** . Pourquoi ne pas utiliser cet espace pour essayer les fonctions de Loomio?\n\nVous lisez actuellement le fil de discussion ** contexte **. Utilisez cet espace pour fournir l'information de fond dont le groupe a besoin pour une discussion productive.\n\nLe panneau **proposition** est l'endroit où vous prenez les décisions. Vous pouvez démarrer des propositions et y contribuer.\n\nLe panneau **activité** ci-dessous montre tout ce qu'il s'est passé dans la discussion.\n"
   first_proposal:
     name: "Proposition de démonstration: c'est parti!"
   contact_page:

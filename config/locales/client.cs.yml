@@ -38,6 +38,7 @@ cs:
     forbidden: K této akci nemáte oprávnění.
   start_proposal_card:
     title: Vytvořit návrh
+    helptext: Připraveni učinit rozhodnutí?
   proposal_outcome_panel:
     heading: Výsledek
     set_outcome_btn: Stanovit výsledek návrhu
@@ -246,6 +247,11 @@ cs:
       submit: "Ano, opustit tuto skupinu"
       cannot_leave_group: "Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat."
       add_coordinator: Přidat koordinátora
+  choose_plan_modal:
+    email_support: e-mailová podpora
+    premium_support: prémiová podpora
+    custom_url: vlastní URL
+    usage_statistics: statistiky využití
   edit_group_form:
     title: Upravit nastavení skupiny
     profile:
@@ -462,5 +468,12 @@ cs:
     informal_groups_desc: Členové vaší skupiny budou vyzváni aby zaplatili co mohou
     informal_groups_examples: "např. rodiny, sociální hnutí, kolektivy"
   angular:
+    switch_back: Přepnout zpět na staré Loomio
+    give_feedback: Sdělte nám svůj názor
+    enable:
+      invite: "Vyzkoušejte nové Loomio!"
+      title: Vyzkoušet nové Loomio
+      button_text: Povolit nové Loomio
     disable:
+      title: Děkujeme za vyzkoušení nového Loomia
       button_text: Přepnout zpět na staré Loomio

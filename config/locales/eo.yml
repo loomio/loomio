@@ -417,6 +417,8 @@ eo:
     confirmation:
       title: "Vi preskaŭ pretas! Kontrolu vian retpoŝton."
       body_html: "Ni sendis retpoŝtaĵon kun invito por komenci vian grupon.\n\nSe vi nenion vidas en via poŝtkesto en kelkaj minutoj, retpoŝtu nin je <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+  volume:
+    volume: Laŭteco
   discussion_items:
     new_discussion: kreis la diskuton
     new_motion: kreis proponon

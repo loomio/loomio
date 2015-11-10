@@ -292,6 +292,11 @@ sr:
       group_contributions: "Komentari, predlozi i diskusije koje ste napravili u grupama će ostati, ali ćemo ukloniti Vaše ime sa njih."
       emails: Prestaćemo da Vam šaljemo ePoruke u vezi sa Lumijem.
   start_group_form:
+    enable_angular:
+      header: Nove grupe pokrenute u Lumio 1.0
+      subtitle: "Da kreirate novu grupu, morate preći na potpuno novu verziju Lumija:"
+      switch_to_angular: Kreirajte grupu u novom Lumiju
+      helptext: "Izgradili smo Lumio iznova. Možeš pročitati šta je novo <a href=\"/angular\">ovde</a>.<br/>Možeš se vratiti na staru verziju u svakom trenutku."
     header: Započni novu grupu
     form_error: Neka informacija nedostaje ili je netačna.
     name: Tvoje ime
@@ -300,7 +305,9 @@ sr:
     email_error: Neispravna adresa ePošte
     group_name: Naziv grupe
     group_description: Opis grupe
+    group_description_placeholder: Opiši svrhu svoje grupe tako da članovi grupe znaju zašto su ovde.
     group_name_error: Naziv grupe je neophodan
+    pricing_html: "Kroz 30 dana, pitaćemo te da odabereš <a href='%{link}' target='_blank'>cenovni plan</a>."
     terms_html: "Pokretanjem grupe, slažete se sa Loomio <a href='%{link}' target='_blank'>pravilima korišćenja</a>."
     success:
       header: "Još malo pa gotovo! Proverite ePoštu."
@@ -695,10 +702,12 @@ sr:
     unlimited_members: neograničeno članova
     unlimited_decisions: neograničene odluke
     email_support: podrška ePorukom
+    standard_price_html: "US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje\n"
     plus_body: "Sve u Standardno, plus:"
     premium_support: premijum podrška
     custom_url: poseban URL
     usage_statistics: statistika korišćenja
+    plus_price_html: "US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje\n"
   contribution:
     any_amount: ili proizvoljni jednokratni prilog od
     currency_desc: Iznosi su u SAD dolarima
@@ -757,6 +766,7 @@ sr:
     create_account_to_start_group: "Molim Vas napravite jedan nalog da pokrenete svoju grupu %{group_name}"
     create_account: Molim napravite jedan nalog
   invitation:
+    angular_warning_html: "<small> Svako ko prihvati tvoj poziv koristiće novi Lumio interfejs: <a href=\"http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/\" target=\"_blank\">saznaj više</a>.</small>"
     alternate: "Ili, podelite ovaj link i svako može pitati da se pridruži:"
     by_email: Pozovi ePorukom
     invitation_not_found: Ne možemo naći pozivnicu sa tim tokenom. Molimo Vas da zatražite novu pozivnicu od pošiljaoca.
@@ -775,6 +785,8 @@ sr:
     invites_more_help2: "<p>Bilo kada možeš pozvati ljude u svoju grupu.</p><p>Možeš poželeti da pozoveš sve svoje članove odmah ili pak možeš početi pozivanjem samo onih sa kojima najtesnije sarađuješ.</p>"
     invitation_link: Link do pozivnice
     discussion_link: "Učestvujete u diskusiji:"
+    link_help: "Škljocni na vezu da se priključiš u %{group_name} i počneš:"
+    thanks: "Hvala,"
     copy: "Ako neko nije dobio svoju pozivnicu, budite slobodni da kopirate pozivni link iznad i da ga prosledite lično primaocu."
     pending_invitations: Pozivi u toku
     no_pending_invitations: Ovde trenutno nema pozivnica na čekanju.
@@ -786,6 +798,17 @@ sr:
     empty_search: Prazna pretraga
     please_enter_a_search: Molim unesite upit u polje pretrage iznad
     no_match: Nema rezultata koji odgovaraju vašem upitu
+  introduction_thread:
+    title: "Dobrodošli u %{group_name}"
+    description: "Odvojite momenat da predstavite sebe. Možda želite da kažete kako se uklapate sa ovom grupom ljudi.\n\nAko imate jasne namere za ovu Lumio grupu, možete im naznačiti ovde tako da svako ima ideju o tome šta treba zajednički ostvariti.\n"
+  how_it_works_thread:
+    title: Kako Koristiti Lumio
+    description: "Dobrodošli na Lumio, mesto za zajedničko odlučivanje.\n\nOvo je jedan primer diskusije **nit**. Zašto ne upotrebite ovaj prostor da isprobate Lumijeve mogućnosti?\n\nTrenutno čitate **kontekst** niti. Upotrebite ovaj prostor da iznesete pozadinske informacije koje su neophodne grupi za prodiktivnu diskusiju.\n\nTabla **predloga** je oblast gde donosite odluke. Možete iznositi predloge ili im se priključivati ovde.\n\nTabla **aktivnosti** ispod prikazuje sve što se dogodilo u ovoj niti.\n"
+  first_comment:
+    body: "Zdravo narode, ja sam Lumio Bot Pomoćnik.\n\nAko želite privući pažnju određene osobe iz svoje grupe, napišite @ u polje komentara, praćeno njihovim imenom :)\n\nEvo nekih stvari koje možda želite da isprobate radi uhodavanja:\n\n- Postavite [profile picture](/profile)\n- Podesite [email settings](/email_preferences)\n- Predstavite sebe grupi u  [Welcome to %{group_name} thread](%{thread_url})\n\nAko imate bilo kakva pitanja, prvo mesto koje trebate proveriti je [Lumio pomoćno uputstvo](http://help.loomio.org).\n"
+  first_proposal:
+    name: "Demonstrativni predlog: idemo!"
+    description: "Ovo je **opis** predloga. Ovde možeš objasniti predloženi kurs akcije i dati dovoljno detalja tako da svako može doneti  odlično informisano odluku.\n\nDa se pridružiš šredlogu, odaberi jednu od ovih opcija:\n\n- **Slažem se**: “Slažem se sa ovim i želim da ovo ide dalje.”\n- **Uzdržavam se**: “Slažem se da grupa donese odluku bez mene.”\n- **Ne slažem se**: “Mislim da možemo bolje.”\n- **Blokiram**: “Imam snažne prigovore za ovaj predlog i NE želim da predlog ide dalje.”\n\nKada odabereš, dobišeć pitanje gde trebaš ukratko izneti svoj stav i objasniš zašto se tako osećaš. Možeš izmeniti svoju poziciju u bilo koje vreme sve dok je predlog još uvek otvoren odnosno na snazi.\n"
   contact_page:
     contact_us: Kontaktirajte nas
     faq_prompt_html: "Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima."
@@ -1178,8 +1201,16 @@ sr:
   start_your_group: Započnite svoju grupu
   webhooks:
     slack:
+      motion_closed: "*%{name}* je istekao"
       motion_closing_soon: "*%{name}* je predložio/la zatvaranje predloga kroz 24 časa"
       motion_outcome_created: "*%{author}* je objavio/la jedan ishod u *%{name}*"
       motion_outcome_updated: "*%{author}* izmenio/la ishod za *%{name}*"
       new_motion: "*%{author}* je predložio/la u *%{name}*"
+      new_vote: "*%{author}* %{position} *%{proposal}* u *%{name}*"
+      new_discussion: "*%{author}* je pokrenuo/la novu diskusiju u *%{group}*"
       view_it_on_loomio: Vidi na Lumiju
+      position_verbs:
+        "yes": slaže se sa
+        "no": ne slaže se sa
+        abstain: Uzdržano
+        block: blokirano

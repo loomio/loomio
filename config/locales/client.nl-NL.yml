@@ -3,6 +3,8 @@ nl-NL:
     time:
       am: am
       pm: pm
+    closing_in: "Sluit {{time}}"
+    closed_ago: "Gesloten {{time}}"
     volume: Volume
     notification_volume: Melding Volume
     group: Groep
@@ -21,36 +23,53 @@ nl-NL:
     models:
       proposal: Voorstel
     action:
-      save: Bewaar
-      save_changes: Bewaren wijzigingen
+      save: Bewaren
+      save_changes: Wijzigingen bewaren
       reply: Antwoorden
-      edit: Bewerk
+      edit: Bewerken
       like: Vind ik leuk
-      unlike: Niet leuk
+      unlike: Vind ik niet meer leuk
+      update: Updaten
       cancel: Annuleren
       show_more: Laat meer zien
       view_all: Bekijk alles
       new_thread: Nieuwe discussie
       add_subgroup: Toevoegen subgroep
+      loading: Aan het laden
+      uploading: Aan het uploaden
   error_page:
     forbidden: Je bent niet gemachtigd om dit te doen.
     page_not_found: Dat konden we niet vinden.  Wellicht is het verwijderd of verplaatst.
     internal_server_error: "Helaas, er ging iets fout. Probeer het opnieuw."
   start_proposal_card:
     title: Kom met een voorstel.
+    helptext: Klaar om een beslissing te maken?
   proposal_outcome_panel:
     heading: Uitkomst
     set_outcome_hint: Laat op deze plek iedereen weten wat de uitkomst is van het voorstel.
   proposal_outcome_form:
     outcome_label: Uitkomst voorstel
+    outcome_placeholder: Laat iedereen de uitkomst van het voorstel weten.
     publish_outcome: Publiceer uitkomst
+    messages:
+      created: Uitkomst gepubliceerd
+      updated: Uitkomst geüpdatet
+  previous_proposals_card:
+    heading: Vorige voorstellen
+  previous_proposals_page:
+    heading: Vorige voorstellen
   proposal_collapsed:
     expand: Uitbreiden
+    outcome: "Uitkomst: {{outcome}}"
   volume_levels:
     loud: Luid
     normal: Normaal
     quiet: Stil
     mute: Dempen
+  thread_volume_form:
+    submit: Updaten
+  group_volume_form:
+    submit: Updaten
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -167,6 +186,8 @@ nl-NL:
   membership_requests_page:
     approve: Goedkeuren
     ignore: Negeer
+  group_previous_proposals_card:
+    heading: Vorige voorstellen
   group_form:
     edit_group_title: Groepsinstellingen
     profile_label: Profiel
@@ -223,6 +244,7 @@ nl-NL:
   discussion:
     activity: Activiteit
     proposals: Voorstellen
+    previous_proposals: Vorige voorstellen
     volume:
       loud: E-mail altijd als er activiteit is in dit gesprek.
       normal: "Alleen e-mailen wanneer er een voorstel is gemaakt, op het punt staat te sluiten of als er een uitkomst is vastgesteld."
@@ -230,6 +252,8 @@ nl-NL:
       mute: "Verberg dit gesprek van het dashboard en stuur geen notificaties tenzij ik @genoemd word."
   thread_group:
     aria_label: Groepsnaam
+  thread_context:
+    edit_thread: Bewerken
   delete_comment_dialog:
     title: Verwijder reactie
     question: Weet je zeker dat je deze reactie wilt verwijderen?

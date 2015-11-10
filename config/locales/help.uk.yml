@@ -11,9 +11,14 @@ uk:
         pending_invitations_html: "Запрошення, що очікують"
       discussion_threads:
         discussion_privacy_html: Приватність обговорення
+      comments:
+        title_html: Коментарі
+      proposals:
+        title_html: Пропозиції
       subgroups:
         title_html: Підгрупи
       keeping_up_to_date:
+        volume_html: Рівень гучності
         email_settings_html: Налаштування електронної пошти
       user_profile:
         account_deactivation_html: Деактивація облікового запису
@@ -48,9 +53,20 @@ uk:
     discussion_threads:
       discussion_privacy:
         title: Приватність обговорення
+    comments:
+      title: Коментарі
+    proposals:
+      title: Пропозиції
     subgroups:
       title: Підгрупи
     keeping_up_to_date:
+      volume:
+        title: Рівень гучності
+        body:
+          loud_title: Голосно
+          normal_title: Нормально
+          quiet_title: Спокійно
+          mute_title: Беззвучно
       email_settings:
         title: Налаштування електронної пошти
       yesterday_on_loomio:

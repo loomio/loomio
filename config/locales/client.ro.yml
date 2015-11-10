@@ -3,34 +3,102 @@ ro:
     time:
       am: am
       pm: pm
+    closing_in: "Spre inchidere {{time}}"
+    closed_ago: "Inchis {{time}}"
     volume: Volum
+    notification_volume: Volum Notificari
     group: Grup
     groups: Grupuri
     privacy:
       private: Confidential
       public: Public
+      organisation: Organizatie
+    selected: Selectii
     date_range:
       today: Astazi
+      yesterday: Ieri
+      thisweek: Saptamana asta
+      thismonth: Luna asta
+      older: Mai vechi
+    more_help: Ajutor
     models:
       proposal: Propunere
     action:
       save: Salvare
+      save_changes: Salvare modificari
+      reply: Raspunde
       edit: Editeaza
-      like: Apreciez
+      like: Imi place
       unlike: Nu apreciez
+      update: Actualizeaza
       cancel: Anuleaza
+      show_more: Vezi mai mult
+      view_all: Vezi tot
+      new_thread: Subiect nou
+      add_subgroup: Creeaza sub-grup
+      loading: Se incarca
+      uploading: Se trimite la server
+    formatting_help:
+      label: Ajutor la formatare
+      title: Afla cum poti folosi Markdown pentru a formata textul in Loomio
   error_page:
     forbidden: Nu ai permisiune pentru aceasta actiune.
+    page_not_found: Nu am gasit nimic corespunzator. Este posibil sa fi fost sters sau mutat.
+    internal_server_error: "Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data."
+  start_proposal_card:
+    title: Initiaza o propunere
+    helptext: Esti gata sa iei o decizie?
   proposal_outcome_panel:
     heading: Rezultat
+    set_outcome_hint: Explicati tuturor rezultatele acestei propuneri.
+    set_outcome_btn: Detaliati rezultatele acestei propuneri
+    edit_outcome_link: Modificati rezultatele acestei propuneri
   proposal_outcome_form:
-    outcome_label: Rezultatul propunerii
+    set_outcome: Detaliati rezultatele acestei propuneri
+    update_outcome: Actualizati rezultatele propunerii
+    outcome_label: Rezultatele propunerii
+    outcome_placeholder: Explicati tuturor rezultatele acestei propuneri.
     publish_outcome: Publica rezultatul
+    messages:
+      created: Rezultatul a fost publicat
+      updated: Rezultatul a fost actualizat
+  previous_proposals_card:
+    heading: Propuneri anterioare
+  previous_proposals_page:
+    heading: Propuneri anterioare
+  proposal_collapsed:
+    expand: Mai mult
+    outcome: "Rezultate: {{outcome}}"
   volume_levels:
     loud: Tare
     normal: Normal
     quiet: Incet
-    mute: Mut
+    mute: Silentios
+    unmute: Anulare mod silentios
+  thread_volume_card:
+    heading: Notificari punctuale
+    body:
+      loud: "Toate mailurile: veti primi un email ori de cate ori apare ceva nou legat de aceasta propunere"
+      normal: "Propuneri pe mail: veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele."
+      quiet: "Fara mailuri: nu veti primi nimic prin email."
+      mute: "Propunere evitata: nu veti vedea nimic legat de ea in email, Propuneri Recente sau Pagini Necitite."
+    change_volume_link: Schimba
+  thread_volume_form:
+    header: Notificari
+    loud_label: Toate emailurile
+    loud_description: Veti primi un email la orice modificare a acestei propuneri
+    normal_label: Propunerile vor fi primite prin email
+    normal_description: "Veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele."
+    quiet_label: Fara emailuri
+    quiet_description: "Nu veti primi email decat la mentionarea explicita a @numelui."
+    mute_label: Anulare notificari
+    submit: Actualizeaza
+  group_volume_card:
+    change_volume_link: Schimba
+  group_volume_form:
+    loud_label: Toate emailurile
+    quiet_label: Fara emailuri
+    submit: Actualizeaza
   inbox:
     clear: Curata
     unread: Necitit
@@ -43,6 +111,7 @@ ro:
     groups: Grupuri
     user_options:
       contact_us: Contacteaza-ne
+      new_thread: Subiect nou
       new_group: Grup nou
       profile: Profil
       help: Ajutor
@@ -71,6 +140,7 @@ ro:
     close_proposal: Inchide propunerea
   proposal_form:
     start_proposal: Porneste propunere
+    start_a_proposal: Initiaza o noua propunere
     edit_proposal: Editeaza propunerea
     title_label: Titlu
     closes_at_label: Se inchide la
@@ -113,6 +183,8 @@ ro:
   membership_requests_page:
     approve: Aproba
     ignore: "Ignora "
+  group_previous_proposals_card:
+    heading: Propuneri anterioare
   group_form:
     edit_group_title: Setarile grupului
     profile_label: Profil
@@ -149,8 +221,10 @@ ro:
       proposals: Propuneri
     threads_from:
       today: Astazi
+      yesterday: Ieri
   discussion:
     proposals: Propuneri
+    previous_proposals: Propuneri anterioare
     volume:
       loud: Trimite email ori de cate ori exista activitate în acest fir.
       normal: "Trimite e-mail doar atunci cand o propunere este creata, pe cale de a inchide, sau un rezultat este postat."

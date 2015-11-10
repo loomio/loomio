@@ -1,11 +1,13 @@
 eo:
   common:
+    confirm_discard_changes: Ĉu tamen ne fari la ŝanĝojn?
     time:
       am: atm
       pm: ptm
     closing_in: "Fermiĝos {{time}}"
     closed_ago: "Fermiĝis {{time}}"
-    notification_volume: Sciiga abundeco
+    volume: Laŭteco
+    notification_volume: Sciiga laŭteco
     group: Grupo
     groups: Grupoj
     privacy:
@@ -34,6 +36,12 @@ eo:
       show_more: Montri pli
       view_all: Vidi ĉiujn
       new_thread: Nova fadeno
+      add_subgroup: Aldoni subgrupon
+      loading: Ŝargiĝas
+      uploading: Alŝutiĝas
+    formatting_help:
+      label: Formatiga helpo
+      title: Lerni kiel uzi Markdown por formatigi vian tekston en Loomio
   error_page:
     forbidden: Vi ne havas permeson fari ĉi tion
   proposal_outcome_panel:

@@ -17,6 +17,9 @@ ko:
       terms: 약관
       privacy: 개인정보
       services: 서비스
+    hero:
+      header_html: "루미오는 <strong>협력적 의사결정</strong>을 위한 </br> 가장 쉬운 방법입니다."
+      lead_html: "루미오의 조직화와 커뮤니티 기능은  사용자들이 어디에 있든 <strong>토론에 참여할 수 있도록</strong> 해줍니다. "
     product:
       header_html: "<strong>모두의 의견</strong>이 반영될 때, <strong>더 나은 결론</strong>을 이끌어낼 수 있습니다."
       step1:
@@ -28,6 +31,8 @@ ko:
       step3:
         header: 3. 다 함께 의사 결정하기
         desc: "모두가 함께 참여한 제안을 만들어보세요. 모든 크고 작은 결정 사항마다 분명한 기한이 있으니, 언제나 명확한 결과를 얻을 수 있어요."
+    mobile:
+      lead_html: "<strong>루미오는 모든기기에 작동되며,</strong><br /> 언제 어디서든 의사결정을 할 수 있도록 해줍니다. "
     quote:
       header:
         rushkoff_html: "“루미오는 양극단으로 치닫는 토론 대신 함께 의견을 모으는 <strong>인터넷의 가능성을 해방시켰습니다.</strong>\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">더글라스 러시코프 (Douglas Rushkoff)</a>, <em>Present Shock</em>의 저자</div>"

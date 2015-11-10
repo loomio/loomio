@@ -11,7 +11,7 @@ ar:
 be-BY:
   frontpage: 58
   help docs: 15
-  main: 93
+  main: 92
   main_1_0: 25
 bg-BG:
   frontpage: 9
@@ -31,8 +31,8 @@ cmn:
 cs:
   frontpage: 76
   help docs: 44
-  main: 77
-  main_1_0: 52
+  main: 78
+  main_1_0: 54
 da:
   frontpage: 52
   help docs: 11
@@ -41,7 +41,7 @@ da:
 de:
   frontpage: 100
   help docs: 67
-  main: 99
+  main: 100
   main_1_0: 100
 el:
   frontpage: 78
@@ -60,15 +60,19 @@ en-NL:
   main_1_0: 0
 eo:
   frontpage: 52
-  help docs: 8
+  help docs: 9
   main: 83
-  main_1_0: 25
+  main_1_0: 26
 es:
   frontpage: 100
   help docs: 87
   main: 97
   main_1_0: 81
-es-AR: {}
+es-AR:
+  frontpage: 0
+  help docs: 0
+  main: 0
+  main_1_0: 0
 fa-IR:
   frontpage: 60
   help docs: 41
@@ -119,7 +123,7 @@ hu:
   frontpage: 63
   help docs: 74
   main: 93
-  main_1_0: 30
+  main_1_0: 31
 id:
   frontpage: 29
   help docs: 2
@@ -147,10 +151,10 @@ km:
   main: 47
   main_1_0: 15
 ko:
-  frontpage: 52
+  frontpage: 56
   help docs: 3
-  main: 54
-  main_1_0: 16
+  main: 55
+  main_1_0: 20
 lt:
   frontpage: 23
   help docs: 9
@@ -186,7 +190,7 @@ nl-NL:
   frontpage: 100
   help docs: 47
   main: 90
-  main_1_0: 32
+  main_1_0: 34
 pl:
   frontpage: 100
   help docs: 56
@@ -206,12 +210,13 @@ ro:
   frontpage: 100
   help docs: 53
   main: 95
-  main_1_0: 24
+  main_1_0: 33
 ru:
   frontpage: 60
   help docs: 10
   main: 63
   main_1_0: 27
+ru-RU: {}
 sk:
   frontpage: 52
   help docs: 8
@@ -225,13 +230,13 @@ sl:
 sr:
   frontpage: 100
   help docs: 12
-  main: 97
-  main_1_0: 82
+  main: 100
+  main_1_0: 97
 sr-RS:
   frontpage: 58
-  help docs: 10
-  main: 91
-  main_1_0: 23
+  help docs: 11
+  main: 99
+  main_1_0: 26
 sv:
   frontpage: 52
   help docs: 8
@@ -248,10 +253,10 @@ tr:
   main: 85
   main_1_0: 30
 uk:
-  frontpage: 64
-  help docs: 8
-  main: 72
-  main_1_0: 20
+  frontpage: 72
+  help docs: 11
+  main: 75
+  main_1_0: 72
 ur:
   frontpage: 0
   help docs: 0
