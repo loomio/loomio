@@ -147,11 +147,6 @@
   @include lmoBtnIcon;
 }
 
-/* horizontally space out sequential buttons */
-.modal-footer button + button{
-  margin-left: 5px;
-}
-
 @mixin lmoBtnLink {
   background: none;
   border: none;
