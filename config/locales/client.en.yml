@@ -999,6 +999,7 @@ en:
   angular:
     switch_back: 'Switch back to old Loomio'
     give_feedback: 'Give feedback'
+    collapse: Collapse
     enable:
       invite: 'Try the new Loomio!'
       title: 'Try the new Loomio'

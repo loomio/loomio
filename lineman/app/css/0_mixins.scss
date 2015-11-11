@@ -211,17 +211,6 @@ $cardPaddingSize: 15px;
   }
 }
 
-
-#angular-feedback-card {
-  @include fontSmall;
-  z-index: 100;
-  left: 11px;
-  bottom: 10px;
-  width: 120px;
-  text-align: center;
-  padding: 8px;
-}
-
 .lmo-version {
   color: #666;
   font-size: 11px;
