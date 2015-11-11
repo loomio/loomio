@@ -8,3 +8,6 @@ angular.module('loomioApp').directive 'angularFeedbackCard', ->
     $scope.angularUrl = "/angular"
     $scope.version = "v#{AppConfig.version}"
     $scope.versionUrl = "http://www.github.com/loomio/loomio/releases"
+
+    $scope.expand = ->   $scope.expanded = true
+    $scope.collapse = -> $scope.expanded = false
