@@ -158,6 +158,10 @@ ActiveAdmin.register Group do
     f.actions
   end
 
+  collection_action :massey_data, method: :get do
+    render json: Group.visible_to_public.pluck(:id, :parent_id, :name, :description)
+  end
+
   member_action :archive, :method => :post do
     group = Group.friendly.find(params[:id])
     group.archive!
