@@ -1,0 +1,38 @@
+@mixin lmoH1{
+  @include fontHelveticaBold;
+  @include fontGrande;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+.lmo-h1{
+  @include lmoH1;
+}
+.lmo-h1-medium{
+  @include fontHelveticaMedium;
+  @include fontGrande;
+}
+
+.lmo-h1:focus, .lmo-h1-medium:focus{
+  outline: none;
+}
+
+.lmo-h2 {
+  @include fontHelveticaBold;
+  @include fontLarge;
+  margin: 8px 0;
+}
+.lmo-h3{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  color: $grey-on-white;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.lmo-h4{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  color: $grey-on-white;
+  margin-top: 22px;
+}

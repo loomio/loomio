@@ -13,7 +13,7 @@
         %option{value: 'no', translate: 'vote_form.i_disagree'}
         %option{value: 'block', translate: 'vote_form.i_block'}
       %fieldset
-        .form-group
+        .lmo-form-group
           %textarea.vote-form__statement-field.form-control.lmo-primary-form-input{ng-model: 'vote.statement', placeholder: '{{ "vote_form.statement_placeholder" | translate }}'}
           .chars-left.pull-right{ng-class: '{ overlimit: vote.overCharLimit() }' }
             {{ vote.charsLeft() }}

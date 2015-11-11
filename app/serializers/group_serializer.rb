@@ -18,6 +18,9 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :motions_count,
              :discussions_count,
+             :group_privacy,
+             :is_visible_to_parent_members,
+             :parent_members_can_see_discussions,
              :memberships_count,
              :invitations_count,
              :visible_to,
@@ -31,7 +34,8 @@ class GroupSerializer < ActiveModel::Serializer
              :has_custom_cover,
              :subscription_kind,
              :subscription_plan,
-             :subscription_expires_at
+             :subscription_expires_at,
+             :is_subgroup_of_hidden_parent
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 
@@ -77,5 +81,9 @@ class GroupSerializer < ActiveModel::Serializer
 
   def cover_photo
     @cover_photo ||= object.cover_photo
+  end
+
+  def is_subgroup_of_hidden_parent
+    object.is_subgroup_of_hidden_parent?
   end
 end

@@ -6,6 +6,35 @@ describe 'Group Page', ->
   discussionForm = require './helpers/discussion_form_helper.coffee'
   threadPage = require './helpers/thread_helper.coffee'
 
+  describe 'group privacy settings', ->
+    describe 'viewing each group privacy type as a non member', ->
+      it 'secret group', ->
+        groupsHelper.loadPath('view_secret_group_as_non_member')
+        groupsHelper.expectCSS('.error-page')
+
+      it 'closed group', ->
+        groupsHelper.loadPath('view_closed_group_as_non_member')
+        groupsHelper.expectCSS('.join-group-button__ask-to-join-group')
+
+      it 'open group', ->
+        groupsHelper.loadPath('view_open_group_as_non_member')
+        groupsHelper.expectCSS('.join-group-button__join-group')
+
+    describe 'allow public discussions in closed group', ->
+      beforeEach ->
+        groupsHelper.loadPath('setup_closed_group')
+        groupsHelper.openGroupSettings()
+        groupsHelper.click('.edit-group-form__advanced-link',
+                           '.edit-group-form__allow-public-threads',
+                           '.edit-group-form__submit-button',
+                           '.discussions-card__new-thread-button')
+
+      it 'changes from private only to public_or_private', ->
+        groupsHelper.expectCSS('.discussion-form__public')
+
+      it 'changes from private only to public_or_private', ->
+        groupsHelper.expectNotCSS('.discussion-form__public')
+
   describe 'starting a group', ->
 
     it 'shows the welcome modal once per session', ->
@@ -56,37 +85,33 @@ describe 'Group Page', ->
       groupsHelper.load()
 
     it 'successfully edits group name', ->
-      groupsHelper.visitEditGroupPage()
+      groupsHelper.openGroupSettings()
       groupsHelper.editGroupName('Dancing Dirty Shoes')
       groupsHelper.submitEditGroupForm()
       expect(flashHelper.flashMessage()).toContain('Group updated')
       expect(groupsHelper.groupPageHeader().getText()).toContain('Dancing Dirty Shoes')
 
     it 'throws a validation error when name is blank', ->
-      groupsHelper.visitEditGroupPage()
+      groupsHelper.openGroupSettings()
       groupsHelper.clearGroupNameInput()
       groupsHelper.submitEditGroupForm()
       expect(groupsHelper.editGroupFormValidationErrors().isDisplayed()).toBeTruthy()
       expect(groupsHelper.editGroupFormValidationErrors().getText()).toContain("can't be blank")
 
-     it 'successfully edits group description', ->
-      groupsHelper.visitEditGroupPage()
+    it 'successfully edits group description', ->
+      groupsHelper.openGroupSettings()
       groupsHelper.editGroupDescription("Describin' the group")
       groupsHelper.submitEditGroupForm()
       expect(flashHelper.flashMessage()).toContain('Group updated')
       expect(groupsHelper.groupPageDescriptionText().getText()).toContain("Describin' the group")
 
-    it 'successfully edits group privacy', ->
-      groupsHelper.visitEditGroupPage()
-      groupsHelper.changeGroupVisibilitySettings()
-      groupsHelper.submitEditGroupForm()
-      expect(groupsHelper.groupPage()).toContain('This group is only visible to members')
-
     it 'successfully edits group permissions', ->
-      groupsHelper.visitEditGroupPage()
+      groupsHelper.openGroupSettings()
+      groupsHelper.expandAdvancedSettings()
       groupsHelper.changeVotingPermissions()
       groupsHelper.submitEditGroupForm()
-      groupsHelper.visitEditGroupPage()
+      groupsHelper.openGroupSettings()
+      groupsHelper.expandAdvancedSettings()
       expect(groupsHelper.votePermissionsCheckbox().isSelected()).not.toBeTruthy()
 
   describe 'leaving a group', ->

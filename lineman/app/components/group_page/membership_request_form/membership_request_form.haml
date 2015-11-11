@@ -5,15 +5,15 @@
 
   .modal-body
     %fieldset
-      .form-group
+      .lmo-form-group
         %label{for: 'membership-request-name', translate: 'membership_request_form.name_label'}
         %input.membership-request-form__name.form-control#membership-request-name{ng-model: 'membershipRequest.actor().name', ng-required: 'true', ng-disabled: 'true'}
 
-      .form-group
+      .lmo-form-group
         %label{for: 'membership-request-email', translate: 'membership_request_form.email_label'}
         %input.membership-request-form__email.form-control#membership-request-email{ng-model: 'membershipRequest.actor().email', ng-required: 'true', ng-disabled: 'true'}
 
-      .form-group
+      .lmo-form-group
         %label{for: 'membership-request-introduction', translate: 'membership_request_form.introduction_label'}
         %textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: 'membershipRequest.introduction', ng-required: 'false'}
 

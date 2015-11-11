@@ -80,16 +80,7 @@ class GroupsController < GroupBaseController
   end
 
   def update
-    if @group.update_attributes(permitted_params.group)
-
-      if @group.private_discussions_only?
-        @group.discussions.update_all(private: true)
-      end
-
-      if @group.public_discussions_only?
-        @group.discussions.update_all(private: false)
-      end
-
+    if GroupService.update(group: @group, params: permitted_params.group, actor: current_user)
       flash[:notice] = 'Group was successfully updated.'
       redirect_to @group
     else

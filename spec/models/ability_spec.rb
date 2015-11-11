@@ -288,11 +288,13 @@ describe "User abilities" do
         context "true" do
           before { group.update_attribute(:members_can_create_subgroups, true) }
           it {should be_able_to(:create, subgroup)}
+          it {should be_able_to(:add_subgroup, group)}
         end
 
         context "false" do
           before { group.update_attribute(:members_can_create_subgroups, false) }
           it {should_not be_able_to(:create, subgroup)}
+          it {should_not be_able_to(:add_subgroup, group)}
         end
       end
     end
@@ -442,13 +444,9 @@ describe "User abilities" do
       end
     end
 
-
-    it { should     be_able_to(:create, subgroup) }
     it { should     be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
-    it { should     be_able_to(:add_subgroup, group) }
-    it { should     be_able_to(:create, subgroup) }
     it { should_not be_able_to(:create, subgroup_for_another_group) }
     it { should_not be_able_to(:view_payment_details, group) }
     it { should_not be_able_to(:choose_subscription_plan, group) }
@@ -584,7 +582,6 @@ describe "User abilities" do
     it { should_not be_able_to(:show, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
-    it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
     it { should_not be_able_to(:hide_next_steps, group) }
     it { should_not be_able_to(:unfollow, group) }
@@ -628,7 +625,6 @@ describe "User abilities" do
     it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
-    it { should_not be_able_to(:add_subgroup, group) }
     it { should_not be_able_to(:add_members, group) }
     it { should_not be_able_to(:manage_membership_requests, group) }
     it { should_not be_able_to(:hide_next_steps, group) }

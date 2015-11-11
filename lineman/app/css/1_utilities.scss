@@ -68,36 +68,7 @@
   @include fontSmall;
 }
 
-.label-with-details{
-  font-weight: bold;
-  display: inline;
-  line-height: 24px;
-  cursor: pointer;
-}
-
-.label-with-details-label:after{
-  content: ": ";
-}
-
-.label-with-details-details{
-  font-weight: normal;
-}
-
-label.label-with-details{
-  margin-left: 5px;
-}
-
 .fa-volume-off-padded{margin: 0 6px 0 3px;}
-
-.form-card{
-  @include card;
-  max-width: 480px;
-  margin: 10px auto;
-}
-
-.form-group{
-  margin-top: 20px;
-}
 
 .font-bold {
   font-weight: bold;
@@ -109,87 +80,11 @@ label.label-with-details{
   padding: 10px;
 }
 
-@mixin lmoH1{
-  @include fontHelveticaBold;
-  @include fontGrande;
-  padding: 0;
-  margin: 0;
-  outline: 0;
-}
-.lmo-h1{
-  @include lmoH1;
-}
-.lmo-h1-medium{
-  @include fontHelveticaMedium;
-  @include fontGrande;
-}
-
-.lmo-h1:focus, .lmo-h1-medium:focus{
-  outline: none;
-}
-
-.lmo-h2 {
-  @include fontHelveticaBold;
-  @include fontLarge;
-  margin: 8px 0;
-}
-.lmo-h3{
-  @include fontHelveticaMedium;
-  @include fontSmall;
-  color: $grey-on-white;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-.lmo-h4{
-  @include fontHelveticaMedium;
-  @include fontSmall;
-  color: $grey-on-white;
-  margin-top: 22px;
-}
-
-.lmo-card {
-  @include card;
-}
-
-.lmo-card--no-padding {
-  @include cardNoPadding;
-}
-
-.lmo-card-padding {
-  @include cardPadding;
-}
-
-.lmo-card-heading-padding {
-  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
-}
-
-.lmo-card-left-right-padding {
-  padding: 0 $cardPaddingSize 0 $cardPaddingSize;
-}
-
-.lmo-card-heading{
-  @include fontHelveticaMedium;
-  @include fontSmall;
-  display: inline-block;
-  text-transform: uppercase;
-  color: $grey-on-white;
-  margin-bottom: 10px;
-  letter-spacing: .3px;
-}
-
-.lmo-card-subheading{
-  @include fontSmall;
-  @include fontHelveticaMedium;
-  text-transform: uppercase;
-  color: $grey-on-white;
-  margin-top: 1.5em;
-  margin-bottom: .8em;
-}
-
 .lmo-link {
   color: $grey-on-white;
   text-decoration: underline;
+  background: none;
+  border: 0;
 }
 
 .lmo-vertical-spacer {
@@ -245,18 +140,6 @@ label.label-with-details{
   blockquote{
     font-size: inherit;
   }
-}
-
-.lmo-disabled-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  border-radius: 6px;
-  z-index: 10;
-  opacity: 0.5;
 }
 
 .lmo-box--tiny {
@@ -327,10 +210,6 @@ label.label-with-details{
   text-decoration: underline;
 }
 
-.lmo-card-minor-action{
-  @include cardMinorAction;
-}
-
 .dropdown-menu i.fa {
   width: 30px;
 }
@@ -358,7 +237,6 @@ textarea.form-control {
   margin: 5px 5px 5px 0;
   display: inline-block;
 }
-
 
 @keyframes fadeIn {
   0% {

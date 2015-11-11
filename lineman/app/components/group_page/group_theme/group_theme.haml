@@ -36,7 +36,6 @@
         .group-theme__member-actions{ng-if: 'isMember()'}
           .pull-right
             %group_actions_dropdown{group: 'group'}
-          .pull-right
-            %group_privacy_dropdown{group: 'group'}
+          %group_privacy_button{group: 'group'}
         %join_group_button{group: 'group'}
       .clearfix

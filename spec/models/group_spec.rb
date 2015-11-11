@@ -50,7 +50,20 @@ describe Group do
     end
   end
 
-  context "children counting" do
+  context "counter caches" do
+    describe 'invitations_count' do
+      before do
+        @group = create(:group)
+        @user  = create(:user)
+      end
+
+      it 'increments when a new invitation is created' do
+        InvitationService.invite_to_group(recipient_emails: [@user.email],
+                                          group: @group,
+                                          inviter: @group.creator)
+        expect(@group.invitations_count).to eq 1
+      end
+    end
 
     describe "#motions_count" do
       before do
@@ -116,20 +129,6 @@ describe Group do
         expect {
           @group.discussions.first.destroy
         }.to change { @group.reload.discussions_count }.by(-1)
-      end
-    end
-
-    describe 'invitations_count' do
-      before do
-        @group = create(:group)
-        @user  = create(:user)
-      end
-
-      it 'increments when a new invitation is created' do
-        InvitationService.invite_to_group(recipient_emails: [@user.email],
-                                          group: @group,
-                                          inviter: @group.creator)
-        expect(@group.invitations_count).to eq 1
       end
     end
   end
@@ -268,11 +267,6 @@ describe Group do
                         parent_members_can_see_discussions: true) }.to_not raise_error
       end
     end
-
-    context "both are true" do
-      it "raises error about it"
-      # dont merge before there is a spec here
-    end
   end
 
   describe "parent_members_can_see_group_is_valid?" do
@@ -340,71 +334,6 @@ describe Group do
       it 'restores the memberships of the group' do
         group.memberships.all?{|m| m.archived_at.should be_nil}
       end
-    end
-  end
-
-  describe 'engagement-scopes' do
-    describe 'more_than_n_members' do
-      let(:group_with_no_members) { FactoryGirl.create :group }
-      let(:group_with_1_member) { FactoryGirl.create :group }
-      let(:group_with_2_members) { FactoryGirl.create :group }
-      before do
-        group_with_no_members.memberships.delete_all
-        raise "group with 1 memeber is wrong" unless group_with_1_member.members.size == 1
-
-        group_with_2_members.add_member! FactoryGirl.create(:user)
-        raise "group with 2 members is wrong" unless group_with_2_members.members.size == 2
-      end
-
-      subject { Group.more_than_n_members(1) }
-
-      it {should include(group_with_2_members) }
-      it {should_not include(group_with_1_member, group_with_no_members)}
-    end
-
-    describe 'no_active_discussions_since' do
-      let(:group_with_no_discussions) { FactoryGirl.create :group, name: 'no discussions' }
-      let(:group_with_discussion_1_day_ago) { FactoryGirl.create :group, name: 'discussion 1 day ago' }
-      let(:group_with_discussion_3_days_ago) { FactoryGirl.create :group, name: 'discussion 3 days ago' }
-
-      before do
-        unless group_with_no_discussions.discussions.size == 0
-          raise 'group should not have discussions'
-        end
-
-        Timecop.freeze(1.day.ago) do
-          group_with_discussion_1_day_ago
-          create :discussion, group: group_with_discussion_1_day_ago
-        end
-
-        Timecop.freeze(3.days.ago) do
-          group_with_discussion_3_days_ago
-          create :discussion, group: group_with_discussion_3_days_ago
-        end
-      end
-
-      subject { Group.no_active_discussions_since(2.days.ago) }
-
-      it {should include(group_with_no_discussions, group_with_discussion_3_days_ago) }
-      it {should_not include(group_with_discussion_1_day_ago) }
-    end
-
-    describe 'older_than' do
-      let(:old_group) { FactoryGirl.create(:group, name: 'old') }
-      let(:new_group) { FactoryGirl.create(:group, name: 'new') }
-      before do
-        Timecop.freeze(1.month.ago) do
-          old_group
-        end
-        Timecop.freeze(1.day.ago) do
-          new_group
-        end
-      end
-
-      subject { Group.created_earlier_than(2.days.ago) }
-
-      it {should include old_group }
-      it {should_not include new_group }
     end
   end
 end
