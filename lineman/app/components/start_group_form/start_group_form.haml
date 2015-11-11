@@ -10,12 +10,12 @@
 
     .group-helptext{ng-if: 'group.isParent()', translate: 'start_group_form.group_helptext'}
 
-    .form-group
+    .lmo-form-group
       %label{for: 'group-name', ng-if: 'group.isParent()', translate: 'start_group_form.name_label'}
       %label{for: 'group-name', ng-if: 'group.isSubgroup()', translate: 'start_group_form.subgroup_name_label'}
       %input.start-group-form__name.lmo-primary-form-input.form-control#group-name{ng-model: 'group.name', ng-required: 'true'}
 
-    .form-group
+    .lmo-form-group
       %label{for: 'group-description', translate: 'start_group_form.description_label'}
       %textarea.start-group-form__description.lmo-primary-form-input.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description', placeholder: "{{ 'start_group_form.description_placeholder' | translate }}"}
 

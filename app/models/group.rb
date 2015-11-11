@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include BetaFeatures
   include HasTimeframe
+  include DeprecatedGroupFeatures
   AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 
   class MaximumMembershipsExceeded < Exception
@@ -302,32 +303,44 @@ class Group < ActiveRecord::Base
     is_subgroup? and parent.is_hidden_from_public?
   end
 
-  def visible_to=(term)
-    case term.to_s
-    when 'public'
+  def group_privacy=(term)
+    case term
+    when 'open'
       self.is_visible_to_public = true
-      self.is_visible_to_parent_members = false
-    when 'parent_members'
+      self.discussion_privacy_options = 'public_only'
+
+      unless %w[approval request].include?(self.membership_granted_upon)
+        self.membership_granted_upon = 'approval'
+      end
+    when 'closed'
+      self.is_visible_to_public = true
+      self.membership_granted_upon = 'approval'
+      unless %w[private_only public_or_private].include?(self.discussion_privacy_options)
+        self.discussion_privacy_options = 'private_only'
+      end
+
+      # closed subgroup of hidden parent means parent members can seeee it!
+      if is_subgroup_of_hidden_parent?
+        self.is_visible_to_parent_members = true
+        self.is_visible_to_public = false
+      end
+    when 'secret'
       self.is_visible_to_public = false
-      self.is_visible_to_parent_members = true
-    when 'members'
-      self.is_visible_to_public = false
-      self.is_visible_to_parent_members = false
-      self.parent_members_can_see_discussions = false
       self.discussion_privacy_options = 'private_only'
       self.membership_granted_upon = 'invitation'
+      self.is_visible_to_parent_members = false
     else
-      raise "visible_to term not recognised: #{term}"
+      raise "group_privacy term not recognised: #{term}"
     end
   end
 
-  def visible_to
+  def group_privacy
     if is_visible_to_public?
-      'public'
-    elsif is_visible_to_parent_members?
-      'parent_members'
+      self.public_discussions_only? ? 'open' : 'closed'
+    elsif is_subgroup_of_hidden_parent? and is_visible_to_parent_members?
+      'closed'
     else
-      'members'
+      'secret'
     end
   end
 
@@ -593,7 +606,7 @@ class Group < ActiveRecord::Base
 
   def set_defaults
     self.is_visible_to_public ||= false
-    self.discussion_privacy_options ||= 'public_or_private'
+    self.discussion_privacy_options ||= 'private_only'
     self.membership_granted_upon ||= 'approval'
   end
 

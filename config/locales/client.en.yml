@@ -11,9 +11,12 @@ en:
     group: 'Group'
     groups: 'Groups'
     privacy:
-      private: 'Private'
+      group_privacy: 'Group privacy:'
       public: 'Public'
-      organisation: 'Organisation'
+      open: 'Open'
+      closed: 'Closed'
+      private: 'Private'
+      secret: 'Secret'
     selected: 'Selected'
     date_range:
       today: 'Today'
@@ -306,10 +309,9 @@ en:
     context_label: 'Context'
     context_placeholder: 'Give enough background information for the group to have a productive discussion. This can be updated as the discussion progresses'
     privacy_label: 'Privacy'
-    privacy:
-      will_be_private_to_group: 'The thread will only be visible to members of {{groupName}}.'
-      will_be_private_to_parent_group: 'The thread will be visible to members of {{parentGroupName}} and members of {{groupName}}.'
-      will_be_public: 'Anyone can see the thread. Only members of {{groupName}} can participate.'
+    privacy_public: 'Anyone can see the thread. Only members can participate.'
+    privacy_private: 'The thread will only be visible to members of {{group}}.'
+    privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     new_discussion_submit: 'Start thread'
     edit_discussion_submit: 'Update thread'
 
@@ -503,37 +505,54 @@ en:
 
   edit_group_form:
     title: 'Edit Group Settings'
-    profile:
-      label: 'Profile'
-      name: 'Name'
-      description: 'Description'
-    privacy:
-      label: 'Privacy'
-      visible_to_members: 'Who can find this group?'
-      public_visibility: 'Anyone - list the group publicly'
-      organisation_visibility: "Organisation - unlisted to the public, but visible to members of {{parentGroupName}}"
-      private_visibility: 'Members only - the group will not be listed'
-      membership_granted_upon: 'How do people join?'
-      membership_by_request: 'Open - anyone can join the group'
-      membership_by_request_subgroup: 'Open to members of {{parentGroupName}}'
-      membership_by_approval: 'By request - anyone can request to join'
-      membership_by_approval_subgroup: 'By request from members of {{parentGroupName}}'
-      membership_by_invitation: 'Invitation only - new members must be invited'
-      discussion_privacy_options: 'Who can view threads?'
-      public_discussions: 'Public threads only'
-      public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
-      public_or_private_discussions: 'Allow public and private threads'
-      private_discussions: 'Only members can see discussions'
-    permissions:
-      label: 'Permissions'
-      helptext: 'What can members do?'
-      members_can_add_members: 'Invite and approve new members'
-      members_can_create_subgroups: 'Create subgroups'
-      members_can_start_discussions: 'Start threads'
-      members_can_edit_discussions: 'Edit the title and context of any thread'
-      members_can_edit_comments: 'Edit their comments at any time'
-      members_can_raise_motions: 'Start proposals'
-      members_can_vote: 'Vote on proposals'
+    subgroup_title: 'Edit Subgroup Settings'
+    name: 'Name'
+    description: 'Description'
+    privacy_statement:
+      public_on_web: 'Name and description will be public on the web'
+      private_to_group: 'Name and description will only be visible to members.'
+      private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
+    group_privacy: Group privacy
+    group_privacy_open_description: "anyone can find the group, see who's in it, and ask to join. All threads are public."
+    group_privacy_closed_description: "anyone can find the group, see who's in it, and ask to join. Only members can see threads."
+    group_privacy_closed_public_threads_description: "anyone can find the group, see who's in it, and ask to join. Threads can be public or private."
+    group_privacy_secret_description: 'only invited members can find the group and see threads.'
+    confirm_change_to_secret: "If you proceed, all threads in this group and it's subgroups will be made private."
+    confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
+    confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
+    confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
+
+    subgroup_privacy: Subgroup privacy
+    subgroup_privacy_open_description: "anyone can find this subgroup, see who's in it, and ask to join. All threads are public."
+    subgroup_privacy_closed_description: "anyone can find this subgroup, see who's in it, and ask to join. Only members can see threads."
+    subgroup_privacy_closed_public_threads_description: "anyone can find this subgroup, see who's in it, and ask to join. Threads can be public or private."
+    subgroup_privacy_closed_secret_parent_description: "members of {{parent}} can find this subgroup, see who's in it, and ask to join."
+    subgroup_privacy_secret_description: 'only invited members can find this subgroup and see threads.'
+
+    advanced_settings: "Advanced settings"
+    how_do_people_join: "How do people join?"
+    membership_granted_upon_request: 'Anyone can join the group.'
+    membership_granted_upon_approval: 'Anyone can request to join but must be approved.'
+
+    membership_granted_upon_approval_secret_parent: '<strong>By request</strong> - anyone from {{parent}} can ask to join the group.'
+
+    permissions: 'Permissions'
+    thread_privacy: 'Thread privacy'
+    public_threads: 'Public threads only'
+    public_discussions_subgroup: 'Anyone in {{parentGroupName}} can see discussions'
+    public_or_private_threads: 'Allow public and private threads'
+    private_threads: 'Only members can see discussions'
+    permissions: 'Permissions'
+    allow_public_threads: 'Allow public threads in this group.'
+    #is_visible_to_parent_members: 'Content is visible to members of {{parentGroupName}}.'
+    parent_members_can_see_discussions: 'Members of {{parent}} can see threads.'
+    members_can_add_members: 'Members can invite people and approve requests to join.'
+    members_can_create_subgroups: 'Members can create subgroups.'
+    members_can_edit_discussions: 'Members can update the context and title of any thread.'
+    members_can_edit_comments: 'Members can edit their own comments at any time.'
+    members_can_start_discussions: 'Members can start new threads.'
+    members_can_vote: 'Members can vote on proposals.'
+    members_can_raise_motions: 'Members can start proposals.'
     submit:  'Update Settings'
     messages:
       success: 'Group updated'

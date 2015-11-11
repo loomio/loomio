@@ -1,7 +1,7 @@
 %form.form-card{name: 'groupForm', ng_submit: 'submit()'}
   %h1.lmo-h1{translate: 'contact_message_form.contact_us'}
 
-  .form-group
+  .lmo-form-group
     %label{for: 'contact-name-field', translate: 'contact_message_form.name_label'}
     %input.form-control#contact-name-field{ng-model: 'message.name', ng_required: 'true', placeholder: '{{contact_message_form.name_placeholder | translate}}'}
 

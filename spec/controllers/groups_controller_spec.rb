@@ -36,7 +36,7 @@ describe GroupsController do
 
   context "hidden group" do
     before do
-      group.update_attribute(:is_visible_to_public, false)
+      group.update_attributes(is_visible_to_public: false, members_can_create_subgroups: true)
       group.add_member!(user)
       sign_in user
     end

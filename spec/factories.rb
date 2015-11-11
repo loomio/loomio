@@ -40,7 +40,7 @@ FactoryGirl.define do
   factory :group do
     sequence(:name) { Faker::Name.name }
     description 'A description for this group'
-    visible_to 'public'
+    group_privacy 'open'
     discussion_privacy_options 'public_or_private'
     members_can_add_members true
     after(:create) do |group, evaluator|

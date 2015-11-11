@@ -1,4 +1,6 @@
-module.exports = new class GroupsHelper
+BaseHelper = require './base_helper.coffee'
+
+module.exports = new class GroupsHelper extends BaseHelper
   load: ->
     browser.get('http://localhost:8000/development/setup_group')
 
@@ -29,9 +31,6 @@ module.exports = new class GroupsHelper
   clickEditGroupOption: ->
     element(By.css('.group-page-actions__edit-group-link')).click()
 
-  changeGroupVisibilitySettings: ->
-    element(By.css('.edit-group-form__visible-to option[value=members]')).click()
-
   # changeGroupPermissionsOptions: ->
   #   element(By.css('.edit-group-form__group-members-can-add-members')).click()
   #   element(By.css('.edit-group-form__group-members-can-create-subgroups')).click()
@@ -40,18 +39,21 @@ module.exports = new class GroupsHelper
   #   element(By.css('.edit-group-form__group-members-can-edit-comments')).click()
   #   element(By.css('.edit-group-form__group-members-can-raise-motions')).click()
 
-  visitEditGroupPage: ->
+  openGroupSettings: ->
     @openMemberOptionsDropdown()
     @clickEditGroupOption()
 
   votePermissionsCheckbox: ->
     element(By.css('.edit-group-form__members-can-vote'))
 
+  expandAdvancedSettings: ->
+    element(By.css('.edit-group-form__advanced-link')).click()
+
   changeVotingPermissions: ->
     @votePermissionsCheckbox().click()
 
   groupNameInput: ->
-    element(By.css('.edit-group-form__name'))
+    element(By.css('.edit-group-form__name input'))
 
   editGroupName: (name) ->
     @groupNameInput().clear().sendKeys(name)
@@ -63,7 +65,7 @@ module.exports = new class GroupsHelper
     element(By.css('.lmo-validation-error'))
 
   editGroupDescription: (description) ->
-    element(By.css('.edit-group-form__description')).sendKeys(description)
+    element(By.css('.edit-group-form__description textarea')).sendKeys(description)
 
   groupPageDescriptionText: ->
     element(By.css('.group-page__description-text'))
@@ -126,7 +128,6 @@ module.exports = new class GroupsHelper
     element(By.css('.leave-group-form__add-coordinator')).click()
 
   clickStartSubgroupLink: ->
-    browser.sleep(4000) # this has been a tempremantal test, ugh
     element(By.css('.subgroups-card__add-subgroup-link')).click()
 
   fillInSubgroupName: (name) ->

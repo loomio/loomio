@@ -20,6 +20,7 @@
     "npm": "~>1.2.18"
   },
   "devDependencies": {
+    "lodash": "^3.10.1",
     "protractor": ">=1.4.0",
     "selenium-webdriver": "~2.44.0",
     "grunt": "~0.4.5",

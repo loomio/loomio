@@ -25,7 +25,6 @@ bin/
 /lineman/dist
 /lineman/generated
 /lineman/vendor/bower_components
-/lineman/app/css/modules.scss
 .powenv
 /lineman/app/css/modules.scss
 /lineman/app/components.scss

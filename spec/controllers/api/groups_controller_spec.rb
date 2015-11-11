@@ -44,4 +44,47 @@ describe API::GroupsController do
     end
   end
 
+  describe 'update' do
+    it 'can update the group privacy to "open"' do
+      group.update(group_privacy: 'closed')
+      group_params = { group_privacy: 'open' }
+      post :update, id: group.key, group: group_params
+      group.reload
+      expect(group.group_privacy).to eq 'open'
+      expect(group.is_visible_to_public).to eq true
+      expect(group.membership_granted_upon).to eq 'approval'
+      expect(group.discussion_privacy_options).to eq 'public_only'
+    end
+
+    it 'can update the group privacy to "open" join on request' do
+      group.update(group_privacy: 'closed', membership_granted_upon: 'approval')
+      group_params = { group_privacy: 'open', membership_granted_upon: 'request' }
+      post :update, id: group.key, group: group_params
+      group.reload
+      expect(group.group_privacy).to eq 'open'
+      expect(group.is_visible_to_public).to eq true
+      expect(group.membership_granted_upon).to eq 'request'
+      expect(group.discussion_privacy_options).to eq 'public_only'
+    end
+
+    it 'can update the group privacy to "closed"' do
+      group_params = { group_privacy: 'closed' }
+      post :update, id: group.key, group: group_params
+      group.reload
+      expect(group.group_privacy).to eq 'closed'
+      expect(group.is_visible_to_public).to eq true
+      expect(group.membership_granted_upon).to eq 'approval'
+    end
+
+    it 'can update the group privacy to "secret"' do
+      group_params = { group_privacy: 'secret' }
+      post :update, id: group.key, group: group_params
+      group.reload
+      expect(group.group_privacy).to eq 'secret'
+      expect(group.is_visible_to_public).to eq false
+      expect(group.membership_granted_upon).to eq 'invitation'
+      expect(group.discussion_privacy_options).to eq 'private_only'
+    end
+  end
+
 end

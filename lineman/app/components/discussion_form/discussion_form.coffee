@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, AbilityService, FormService, KeyEventService) ->
+  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, AbilityService, FormService, KeyEventService, PrivacyString) ->
     $scope.discussion = discussion.clone()
 
     if $scope.discussion.isNew()
@@ -19,6 +19,9 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     $scope.availableGroups = ->
       _.filter CurrentUser.groups(), (group) ->
         AbilityService.canStartThread(group)
+
+    $scope.privacyPrivateDescription = ->
+      PrivacyString.discussion($scope.discussion, true)
 
     $scope.showPrivacyForm = ->
       return unless $scope.discussion.group()

@@ -38,7 +38,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     ModalService.open LogoPhotoForm, group: => @group
 
   @handleSubscriptionSuccess = ->
-    if AppConfig.chargify and $location.search().chargify_success?
+    if (AppConfig.chargify or AppConfig.environment == 'development') and $location.search().chargify_success?
       @group.subscriptionKind = 'paid' # incase the webhook is slow
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal

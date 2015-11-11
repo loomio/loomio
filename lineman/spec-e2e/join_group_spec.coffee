@@ -6,7 +6,7 @@ describe 'Joining group', ->
   describe 'display', ->
 
     beforeEach ->
-      groupsHelper.loadToJoin('request')
+      groupsHelper.loadPath('setup_closed_group_to_join')
 
     it 'hides private content', ->
       expect(groupsHelper.memberOptionsDropdown().isPresent()).toBeFalsy()
@@ -20,7 +20,7 @@ describe 'Joining group', ->
 
   describe 'membership granted upon request', ->
     beforeEach ->
-      groupsHelper.loadToJoin('request')
+      groupsHelper.loadPath('setup_public_group_to_join_upon_request')
 
     it 'adds you to the group when button is clicked', ->
       groupsHelper.clickJoinGroupButton()
@@ -29,7 +29,7 @@ describe 'Joining group', ->
 
   describe 'membership granted upon approval', ->
     beforeEach ->
-      groupsHelper.loadToJoin('approval')
+      groupsHelper.loadPath('setup_closed_group_to_join')
 
     it 'requests membership when button is clicked', ->
       groupsHelper.clickAskToJoinGroupButton()

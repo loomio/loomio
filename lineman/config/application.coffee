@@ -63,8 +63,8 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
 
   exec:
     updateScss:
-      command: 'ruby print_scss_includes.rb > modules.scss'
-      cwd: 'app/css'
+      command: 'ruby css/print_scss_includes.rb > ./components.scss'
+      cwd: 'app/'
 
   sass:
     dist:
@@ -134,7 +134,7 @@ module.exports = require(process.env["LINEMAN_MAIN"]).config.extend "application
       tasks: ["coffee", "concat_sourcemap:spec"]
 
     sass:
-      files: ["<%= files.sass.vendor %>", "<%= files.sass.app %>"]
+      files: ["<%= files.sass.vendor %>", "<%= files.sass.app %>", "<%= files.sass.main %>"]
       tasks: ["exec:updateScss", "sass", "concat_sourcemap:css"]
 
     webfonts:

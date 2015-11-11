@@ -1,7 +1,7 @@
 Given /^an open group exists$/ do
   @group = FactoryGirl.create :group
   @group.add_admin! FactoryGirl.create :user
-  @group.visible_to = 'public'
+  @group.group_privacy = 'open'
   @group.membership_granted_upon = 'request'
   @group.discussion_privacy_options = 'public_only'
   @group.description = "This is an *Open Group* group, which would formally have been called a 'public group'"
@@ -11,15 +11,14 @@ end
 Given /^a public group exists$/ do
   @group = FactoryGirl.create :group
   @group.add_admin! FactoryGirl.create :user
-  @group.visible_to = 'public'
+  @group.group_privacy = 'open'
   @group.description = "this group is public"
   @group.save!
 end
 
 Given /^a hidden group exists$/ do
   @group = FactoryGirl.create :group,
-            visible_to: 'members',
-            discussion_privacy_options: 'private_only',
+            group_privacy: 'secret',
             description: "this group is hidden"
 end
 
@@ -34,7 +33,7 @@ end
 Given /^a public sub\-group exists$/ do
   @parent_group = FactoryGirl.create :group, visible_to: 'public'
   @sub_group = FactoryGirl.create :group, parent: @parent_group
-  @sub_group.visible_to = 'public'
+  @sub_group.group_privacy = 'open'
 end
 
 Given /^a hidden sub\-group exists$/ do
@@ -324,4 +323,3 @@ Then(/^I should see that the discussions are private$/) do
   visit discussion_path(@discussion)
   page.should have_css('.fa-lock')
 end
-
