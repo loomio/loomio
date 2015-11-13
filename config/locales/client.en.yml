@@ -497,11 +497,11 @@ en:
 
   subscription_success_modal:
     heading: Thanks for setting up your subscription!
-    social_mission: 'Your contribution helps us to deliver on our social mission: making it easy for anyone, anywhere to participate in decisions that affect them.'
-    receipt: "If you ever want to change or cancel your subscription, or if you have any other queries,"
-    contact_link: ' please contact us.'
+    receipt: You’ll receive an email with a receipt.
+    change_subscription: "If you ever want to change or cancel your subscription, or if you have any other queries, "
+    contact_link: please contact us.
     sign_off: ❤ from the Loomio team
-    ok_got_it: 'Ok, got it!'
+    ok_got_it: Ok, got it!
 
   edit_group_form:
     title: 'Edit Group Settings'

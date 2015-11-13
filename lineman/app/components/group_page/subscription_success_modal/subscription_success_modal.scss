@@ -2,7 +2,7 @@
   float: left;
   height: 150px;
   padding: 0 25px 25px 0;
-  margin-bottom: 50px;
+  @media (max-width: 450px) { display: none; }
 }
 
 .subscription-success-modal__message {
