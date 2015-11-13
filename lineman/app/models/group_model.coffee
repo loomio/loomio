@@ -138,7 +138,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       @remote.upload("#{@key}/upload_photo/#{kind}", file)
 
     trialIsOverdue: ->
-      @subscriptionKind == 'trial' && @subscriptionExpiresAt.clone().add(15, 'days') < moment()
+      @subscriptionKind == 'trial' && @subscriptionExpiresAt.clone().add(1, 'days') < moment()
 
     noInvitationsSent: ->
       @membershipsCount < 2 and @invitationsCount < 2
