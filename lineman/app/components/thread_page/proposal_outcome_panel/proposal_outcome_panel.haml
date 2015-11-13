@@ -3,5 +3,5 @@
   .lmo-wrap{ng-if: 'canCreateOutcome()'}
     %p.lmo-hint-text{translate: 'proposal_outcome_panel.set_outcome_hint'}
     %a.lmo-btn--featured.lmo-btn--icon.proposal-outcome-panel__set-outcome-btn{href: '', ng-click: 'openProposalOutcomeForm()', translate: 'proposal_outcome_panel.set_outcome_btn'}
-  %p.proposal-outcome-panel__outcome{ng-show: 'proposal.hasOutcome()'} {{ proposal.outcome }}
+  %p.proposal-outcome-panel__outcome.lmo-markdown-wrapper{ng-show: 'proposal.hasOutcome()', marked: 'proposal.outcome' }
   %button.lmo-btn-link.lmo-card-minor-action.proposal-outcome-panel__edit-outcome-link{ng-if: 'canUpdateOutcome()', ng-click: 'openProposalOutcomeForm()', translate: 'proposal_outcome_panel.edit_outcome_link'}
