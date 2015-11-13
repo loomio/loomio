@@ -10,7 +10,8 @@
         .proposal-title.word-break= truncate(motion.name, :length => 60, :separator => ' ')
         - if motion.outcome.present?
           .proposal-outcome
-            = t(:outcome) + ": " + motion.outcome
+            = t(:outcome) + ": "
+            = render_rich_text(motion.outcome, true)
         .proposal-close-date
           - if motion.voting?
             = t(:proposal_closing_when, when: time_ago_in_words(motion.closing_at))

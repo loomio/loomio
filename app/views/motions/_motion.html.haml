@@ -20,7 +20,7 @@
     =render "motions/outcome_statement", motion: motion
   .description
     .long-description
-      = render_rich_text(motion.description, false)
+      = render_rich_text(motion.description, true)
     - if TranslationService.can_translate? motion
       = translate_link_for motion
 
