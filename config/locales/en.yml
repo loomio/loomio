@@ -930,8 +930,6 @@ en:
   or: "or"
   invalid_email: The email address you entered was not recognised. Verify it is entered correctly or try another email address.
   forgot_your_password: "Forgot your password?"
-  dont_have_an_account: "Don't have an account?"
-  create_one_now: "Create one now"
   link_it_up_instead: "Link it up instead"
   sign_up_via: "Sign up via"
   or_fill_in_this_form: "or fill in this form"
@@ -1386,7 +1384,6 @@ en:
 
   common:
     profile: "Profile"
-    welcome_back: "Welcome back!"
     email_settings: "Email settings"
     markdown_help_tooltip: 'Learn the basics of formatting your text with Markdown'
     settings: Settings
