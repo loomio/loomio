@@ -18,13 +18,13 @@
 
     .discussion-group-selected{ng_if: 'discussion.groupId'}
       .lmo-form-group
-        %label{for: 'discussion-title-field', translate: 'discussion_form.title_label'}
-        %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title-field{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true', maxlength: '255'}
+        %label{for: 'discussion-title', translate: 'discussion_form.title_label'}
+        %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true', maxlength: '255'}
         %validation_errors{subject: 'discussion', field: 'title'}
 
       .lmo-form-group
-        %label{for: 'discussion-context-field', translate: 'discussion_form.context_label'}
-        %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context-field{msd-elastic: 'true', ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+        %label{for: 'discussion-context', translate: 'discussion_form.context_label'}
+        %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: 'true', ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
       .lmo-form-group{ng-show: 'showPrivacyForm()'}
         %label.lmo-form-labelled-input.discussion-form__public

@@ -199,7 +199,7 @@ lt:
       loud_aria_description: "Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla."
       quiet: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
       quiet_aria_description: Tavo pranešimų garsumas šiai grupei yra nustatytas į Tylus. Tau nebus siunčiami el. laiškai apie šioje grupėje vykstančią veiklą. Grupės veikla bus rodoma tavo Skydelyje.
-  edit_group_form:
+  group_form:
     title: Redaguoti Grupės Nustatymus
     profile:
       label: Profilis

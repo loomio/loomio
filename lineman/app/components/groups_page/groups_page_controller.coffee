@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupsPageController', ($rootScope, CurrentUser, Records, LoadingService, StartGroupForm, ModalService) ->
+angular.module('loomioApp').controller 'GroupsPageController', ($rootScope, CurrentUser, Records, LoadingService, GroupForm, ModalService) ->
   $rootScope.$broadcast('currentComponent', {page: 'groupsPage'})
   $rootScope.$broadcast('setTitle', 'Groups')
 
@@ -10,6 +10,6 @@ angular.module('loomioApp').controller 'GroupsPageController', ($rootScope, Curr
         membership.group().parent()
 
   @startGroup = ->
-    ModalService.open StartGroupForm, group: -> Records.groups.build()
+    ModalService.open GroupForm, group: -> Records.groups.build()
 
   return

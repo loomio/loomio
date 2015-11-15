@@ -290,7 +290,7 @@ ga-IE:
       normal: "Seol an ghníomhaíocht is tábhachtaí chugam i ríomhphost: Snáitheanna agus tograí nua, torthaí agus araile."
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
       mute: "Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom."
-  edit_group_form:
+  group_form:
     title: Cuir socruithe na baicle in eagar
     profile:
       label: Beathaisnéisín

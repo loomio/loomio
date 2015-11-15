@@ -252,7 +252,7 @@ cs:
     premium_support: prémiová podpora
     custom_url: vlastní URL
     usage_statistics: statistiky využití
-  edit_group_form:
+  group_form:
     title: Upravit nastavení skupiny
     profile:
       label: Profil

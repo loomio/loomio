@@ -2,7 +2,7 @@ class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
 
-  before_filter :cleanup_database, except: :last_email
+  before_filter :cleanup_database, except: [:last_email, :index]
   around_filter :ensure_testing_environment
 
   def index
@@ -49,9 +49,11 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group.add_member! emilio
     50.times do
-      DiscussionService.create(discussion: FactoryGirl.build(:discussion, group: test_group,
-                                                                          private: true,
-                                                                          author: emilio), actor: emilio)
+      discussion = FactoryGirl.build(:discussion,
+                                     group: test_group,
+                                     private: true,
+                                     author: emilio)
+      DiscussionService.create(discussion: discussion, actor: emilio)
     end
     redirect_to group_url(test_group)
   end
@@ -66,12 +68,12 @@ class DevelopmentController < ApplicationController
 
   def setup_group_on_trial
     sign_in jennifer
-    GroupService.create(group: test_group, actor: current_user)
+    GroupService.create(group: test_group, actor: patrick)
     redirect_to group_url(test_group)
   end
 
   def setup_group_with_expired_trial
-    GroupService.create(group: test_group, actor: current_user)
+    GroupService.create(group: test_group, actor: patrick)
     sign_in patrick
     subscription = test_group.subscription
     subscription.update_attribute :expires_at, 1.day.ago

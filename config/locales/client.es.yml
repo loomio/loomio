@@ -330,7 +330,7 @@ es:
       private: "Privacidad: Este grupo es solo visible para miembros"
       parent_members: "Privacidad: Este grupo es visible para los miembros de {{parentGroupName}} y miembros de {{groupName}} "
       public: "Privacidad: Este grupo es visible en la red "
-  edit_group_form:
+  group_form:
     title: Editar Configuraciones del Grupo
     profile:
       label: Perfil

@@ -25,13 +25,12 @@
           %span.group-theme__upload-help-text{ng-show: 'logoHover', translate: 'group_page.new_photo'}
 
     .group-theme__name-and-actions
-      .group-theme__name
-        %h1.lmo-h1{aria-label: 'breadcrumb', role: 'navigation'}
-          %a{ng-if: 'group.isSubgroup()', lmo-href-for: 'group.parent()', aria-level: '1'}
-            {{group.parentName()}}
-          %span{ng-if: 'group.isSubgroup()'}> \-
-          %a{lmo-href-for: 'group', aria-level: '2'}
-            {{group.name}}
+      %h1.lmo-h1.group-theme__name{aria-label: 'breadcrumb', role: 'navigation'}
+        %a{ng-if: 'group.isSubgroup()', lmo-href-for: 'group.parent()', aria-level: '1'}
+          {{group.parentName()}}
+        %span{ng-if: 'group.isSubgroup()'}> \-
+        %a{lmo-href-for: 'group', aria-level: '2'}
+          {{group.name}}
       .group-theme__actions{ng-if: 'homePage'}
         .group-theme__member-actions{ng-if: 'isMember()'}
           .pull-right

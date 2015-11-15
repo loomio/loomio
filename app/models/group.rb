@@ -233,14 +233,6 @@ class Group < ActiveRecord::Base
 
   alias_method :real_creator, :creator
 
-  def members_can_raise_proposals
-    members_can_raise_motions
-  end
-
-  def members_can_raise_proposals=(value)
-    self.members_can_raise_motions = value
-  end
-
   def creator
     self.real_creator || admins.first || members.first
   end

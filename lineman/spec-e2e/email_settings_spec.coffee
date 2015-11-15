@@ -1,8 +1,6 @@
-describe 'Email settings', ->
-
+ddescribe 'Email settings', ->
+  page = require './helpers/page_helper.coffee'
   emailSettingsHelper = require './helpers/email_settings_helper.coffee'
-  dashboardHelper = require './helpers/dashboard_helper.coffee'
-  flashHelper = require './helpers/flash_helper.coffee'
 
   beforeEach ->
     emailSettingsHelper.load()
@@ -17,6 +15,6 @@ describe 'Email settings', ->
     expect(emailSettingsHelper.mentionedCheckbox().isSelected()).toBeTruthy()
 
   it 'redirects the user to the dashboard with flash when settings are updated', ->
-    emailSettingsHelper.updateEmailSettings() 
-    expect(flashHelper.flashMessage()).toContain('Email settings updated')
-    expect(dashboardHelper.pageHeader().getText()).toContain('Recent Threads')
+    emailSettingsHelper.updateEmailSettings()
+    page.expectFlash('Email settings updated')
+    page.expectElement('.dashboard-page')

@@ -5,6 +5,11 @@ angular.module('loomioApp').directive 'giftCard', ->
   replace: true
   controller: ($scope, $window, AppConfig, CurrentUser) ->
 
+    $scope.show = ->
+      CurrentUser.isMemberOf($scope.group) and
+      $scope.group.subscriptionKind == 'gift' and
+      AppConfig.chargify?
+
     $scope.makeDonation = ->
       $window.open "#{AppConfig.chargify.donation_url}?#{encodedChargifyParams()}", '_blank'
       true

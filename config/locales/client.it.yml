@@ -312,7 +312,7 @@ it:
       private: "Privacy: questo gruppo è visibile solo ai suoi membri."
       parent_members: "Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}"
       public: "Privacy: Questo gruppo è visibile sul web"
-  edit_group_form:
+  group_form:
     title: Modifica le impostazioni del gruppo
     profile:
       label: Profilo

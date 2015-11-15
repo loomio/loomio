@@ -174,7 +174,7 @@ nl-NL:
       loud: E-mail als er activiteit is.
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       mute: "Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word."
-  edit_group_form:
+  group_form:
     profile:
       label: Profiel
       name: Naam

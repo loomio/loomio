@@ -451,7 +451,7 @@ zh-TW:
     contact_link: 請聯絡我們。
     sign_off: 從 Loomio 團隊而來的 ❤
     ok_got_it: 好的，了解了！
-  edit_group_form:
+  group_form:
     title: 編輯群組設定
     profile:
       label: 簡歷

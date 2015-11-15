@@ -1,10 +1,10 @@
 describe 'Previous proposals', ->
 
-  previousProposalsPage = require './helpers/previous_proposals_helper.coffee'
+  page = require './helpers/page_helper.coffee'
 
   beforeEach ->
-    previousProposalsPage.load()
+    page.loadPath('setup_previous_proposal')
 
   describe 'previous proposals page', ->
     it 'displays proposal previews for each closed proposal', ->
-      expect(previousProposalsPage.proposalTitle()).toContain('lets go hiking to the moon')
+      page.expectText('.proposal-collapsed__title', 'lets go hiking to the moon')

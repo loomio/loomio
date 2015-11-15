@@ -451,7 +451,7 @@ de:
     contact_link: kontaktiere uns bitte.
     sign_off: ❤ vom Loomio-Team
     ok_got_it: "Okay, ich hab´s!"
-  edit_group_form:
+  group_form:
     title: Gruppeneinstellungen bearbeiten
     profile:
       label: Profil
