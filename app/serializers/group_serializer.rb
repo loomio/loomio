@@ -14,7 +14,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_start_discussions,
              :members_can_edit_discussions,
              :members_can_edit_comments,
-             :members_can_raise_proposals,
+             :members_can_raise_motions,
              :members_can_vote,
              :motions_count,
              :discussions_count,
@@ -65,10 +65,6 @@ class GroupSerializer < ActiveModel::Serializer
 
   def has_custom_cover
     cover_photo.present?
-  end
-
-  def members_can_raise_proposals
-    object.members_can_raise_motions
   end
 
   def has_discussions

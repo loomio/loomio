@@ -292,7 +292,7 @@ pl:
       quiet_aria_description: Poziom powiadamianie dla tej grupy jest ustawiony na Cicho. Nie będziesz otrzymywać maili o aktywnościach z tej grupy. Jej aktywność będzie wyświetlana na Pulpicie.
       mute: "Ukryj tę grupę na pulpicie i nie przesyłaj powiadomień z wyjątkiem @wzmianek"
       mute_aria_description: "Poziom powiadamiania dla tej grupy jest ustawiony na Wyciszony. Nie otrzymasz wiadomości dopóki ktoś nie wspomni o Tobie w komentarzu, a aktywność grupy nie będzie wyświetlana na Pulpicie."
-  edit_group_form:
+  group_form:
     title: Edycja Ustawień Grupy
     profile:
       label: Profil

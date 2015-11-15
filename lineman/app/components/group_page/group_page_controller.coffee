@@ -20,14 +20,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
 
-  @showTrialCard = ->
-    @group.subscriptionKind == 'trial' and AbilityService.canAdministerGroup(@group) and AppConfig.chargify?
-
-  @showGiftCard = ->
-    CurrentUser.isMemberOf(@group) and
-    @group.subscriptionKind == 'gift' and
-    AppConfig.chargify?
-
   @canUploadPhotos = ->
     AbilityService.canAdministerGroup(@group)
 

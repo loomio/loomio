@@ -68,7 +68,7 @@ class PermittedParams < Struct.new(:params)
      :description, :next_steps_completed, :payment_plan,
      :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :is_commercial,
-     :members_can_raise_motions, :members_can_raise_proposals, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
+     :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]
   end
 
   def discussion_attributes

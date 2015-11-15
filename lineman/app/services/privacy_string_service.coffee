@@ -3,29 +3,29 @@ angular.module('loomioApp').factory 'PrivacyString', ($translate) ->
     groupPrivacyStatement: (group) ->
       if group.isSubgroup() && group.parent().privacyIsSecret()
         if group.privacyIsClosed()
-          $translate.instant('edit_group_form.privacy_statement.private_to_parent_members',
+          $translate.instant('group_form.privacy_statement.private_to_parent_members',
                              {parent: group.parentName()})
         else
-          $translate.instant("edit_group_form.privacy_statement.private_to_group")
+          $translate.instant("group_form.privacy_statement.private_to_group")
       else
         key = switch group.groupPrivacy
               when 'open' then 'public_on_web'
               when 'closed' then 'public_on_web'
               when 'secret' then 'private_to_group'
-        $translate.instant("edit_group_form.privacy_statement.#{key}")
+        $translate.instant("group_form.privacy_statement.#{key}")
 
     confirmGroupPrivacyChange: (group) ->
       key = if group.attributeIsModified('groupPrivacy')
         if group.privacyIsSecret()
           if group.isParent()
-            'edit_group_form.confirm_change_to_secret'
+            'group_form.confirm_change_to_secret'
           else
-            'edit_group_form.confirm_change_to_secret_subgroup'
+            'group_form.confirm_change_to_secret_subgroup'
         else if group.privacyIsOpen()
-          'edit_group_form.confirm_change_to_public'
+          'group_form.confirm_change_to_public'
       else if group.attributeIsModified('discussionPrivacyOptions')
         if group.discussionPrivacyOptions == 'private_only'
-          'edit_group_form.confirm_change_to_private_discussions_only'
+          'group_form.confirm_change_to_private_discussions_only'
 
       if _.isString(key)
         $translate.instant(key)
@@ -67,4 +67,4 @@ angular.module('loomioApp').factory 'PrivacyString', ($translate) ->
             else
               'subgroup_privacy_closed_description'
 
-      $translate.instant("edit_group_form.#{key}", parent: group.parentName())
+      $translate.instant("group_form.#{key}", parent: group.parentName())

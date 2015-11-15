@@ -439,7 +439,7 @@ sr:
     contact_link: molim kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: "U redu, shvatam!"
-  edit_group_form:
+  group_form:
     title: Izmeni Postavke Grupe
     profile:
       label: Profil

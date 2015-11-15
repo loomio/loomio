@@ -1,36 +1,35 @@
+page = require './helpers/page_helper.coffee'
+
 describe 'Dashboard Page', ->
 
-  dashboardHelper = require './helpers/dashboard_helper.coffee'
-
   beforeEach ->
-    dashboardHelper.load()
+    page.loadPath('setup_dashboard')
 
   it 'displays a view of recent threads', ->
-    expect(dashboardHelper.proposalsThreads()).toContain('Starred proposal discussion')
-    expect(dashboardHelper.proposalsThreads()).toContain('Proposal discussion')
-    expect(dashboardHelper.proposalsThreads()).not.toContain('Starred discussion')
+    page.expectText('.dashboard-page__proposals','Starred proposal discussion')
+    page.expectText('.dashboard-page__proposals','Proposal discussion')
+    page.expectNoText('.dashboard-page__proposals', 'Starred discussion')
 
-    expect(dashboardHelper.starredThreads()).toContain('Starred discussion')
-    expect(dashboardHelper.starredThreads()).not.toContain('Starred proposal discussion')
+    page.expectText('.dashboard-page__starred', 'Starred discussion')
+    page.expectNoText('.dashboard-page__starred', 'Starred proposal discussion')
+    page.expectText('.dashboard-page__today', 'Recent discussion')
 
-    expect(dashboardHelper.todayThreads()).toContain('Recent discussion')
-
-    expect(dashboardHelper.anyThreads()).not.toContain('Muted discussion')
-    expect(dashboardHelper.anyThreads()).not.toContain('Muted group discussion')
-    expect(dashboardHelper.anyThreads()).not.toContain('Old discussion')
+    page.expectNoText('.dashboard-page__collections', 'Muted discussion')
+    page.expectNoText('.dashboard-page__collections', 'Muted group discussion')
+    page.expectNoText('.dashboard-page__collections', 'Old discussion')
 
   it 'displays a view of participating threads', ->
-    dashboardHelper.openFilterDropdown()
-    dashboardHelper.visitParticipatingView()
-    expect(dashboardHelper.anyThreads()).not.toContain('Starred proposal discussion')
-    expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
-    expect(dashboardHelper.anyThreads()).toContain('Participating discussion')
+    page.click('.dashboard-page__filter-dropdown button')
+    page.click('.dashboard-page__filter-participating a')
+    page.expectNoText('.dashboard-page__collections','Starred proposal discussion')
+    page.expectNoText('.dashboard-page__collections','Recent discussion')
+    page.expectText('.dashboard-page__collections', 'Participating discussion')
 
   xit 'displays a view of muted threads by group', ->
-    dashboardHelper.openFilterDropdown()
-    dashboardHelper.visitMutedView()
-    browser.driver.sleep(10000)
-    expect(dashboardHelper.firstGroupTitle()).toContain('Dirty Dancing Shoes')
-    expect(dashboardHelper.anyThreads()).toContain('Muted discussion')
-    expect(dashboardHelper.anyThreads()).toContain('Muted group discussion')
-    expect(dashboardHelper.anyThreads()).not.toContain('Recent discussion')
+    page.click('.dashboard-page__filter-dropdown button')
+    page.click('.dashboard-page__filter-muted a')
+    # browser.driver.sleep(10000)
+    page.expectText('.dashboard-page__group-name', 'Dirty Dancing Shoes')
+    page.expectText('.dashboard-page__collections', 'Muted discussion')
+    page.expectText('.dashboard-page__collections', 'Muted group discussion')
+    page.expectNoText('.dashboard-page__collections','Recent discussion')

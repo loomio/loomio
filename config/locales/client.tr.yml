@@ -135,7 +135,7 @@ tr:
       title: Gruptan ayrıl
       submit: "Evet, bu gruptan ayrıl"
       add_coordinator: Bir koordinatör ekle
-  edit_group_form:
+  group_form:
     profile:
       label: Profil
       name: İsim

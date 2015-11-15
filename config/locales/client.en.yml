@@ -11,7 +11,7 @@ en:
     group: 'Group'
     groups: 'Groups'
     privacy:
-      group_privacy: 'Group privacy:'
+      privacy: 'Privacy'
       public: 'Public'
       open: 'Open'
       closed: 'Closed'
@@ -30,6 +30,7 @@ en:
     action:
       save: 'Save'
       save_changes: 'Save changes'
+      update_settings: 'Update settings'
       reply: 'Reply'
       edit: 'Edit'
       like: 'Like'
@@ -350,19 +351,6 @@ en:
     image_size_helptext: 'Ideal image size is 100 x 100px'
     upload_success: 'Logo successfully updated'
 
-  start_group_form:
-    heading: 'Start a group'
-    heading_when_subgroup: 'Start a subgroup'
-    group_helptext: 'To start making decisions together on Loomio, set up a group for free:'
-    group_payment_reminder: "In 30 days, we'll ask you to choose a <a href='https://www.loomio.org/pricing' target='blank'>pricing plan</a>."
-    name_label: 'Group name'
-    description_label: 'Group description'
-    description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
-    subgroup_name_label: 'Subgroup name'
-    submit: 'Start Group'
-    messages:
-      success: Group created
-      success_when_subgroup: Subgroup created
 
   join_group_button:
     join_group: Join group
@@ -503,16 +491,20 @@ en:
     sign_off: ❤ from the Loomio team
     ok_got_it: Ok, got it!
 
-  edit_group_form:
-    title: 'Edit Group Settings'
-    subgroup_title: 'Edit Subgroup Settings'
-    name: 'Name'
+  group_form:
+    start_group_heading: 'Start a group'
+    start_subgroup_heading: 'Start a subgroup'
+    edit_group_heading: 'Edit group settings'
+    edit_subgroup_heading: 'Edit subgroup settings'
+    group_name: 'Group Name'
+    subgroup_name: 'Subgroup Name'
     description: 'Description'
+    description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     privacy_statement:
       public_on_web: 'Name and description will be public on the web'
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
-    group_privacy: Group privacy
+    privacy: 'Privacy'
     group_privacy_open_description: "anyone can find the group, see who's in it, and ask to join. All threads are public."
     group_privacy_closed_description: "anyone can find the group, see who's in it, and ask to join. Only members can see threads."
     group_privacy_closed_public_threads_description: "anyone can find the group, see who's in it, and ask to join. Threads can be public or private."
@@ -522,7 +514,6 @@ en:
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
 
-    subgroup_privacy: Subgroup privacy
     subgroup_privacy_open_description: "anyone can find this subgroup, see who's in it, and ask to join. All threads are public."
     subgroup_privacy_closed_description: "anyone can find this subgroup, see who's in it, and ask to join. Only members can see threads."
     subgroup_privacy_closed_public_threads_description: "anyone can find this subgroup, see who's in it, and ask to join. Threads can be public or private."
@@ -553,9 +544,14 @@ en:
     members_can_start_discussions: 'Members can start new threads.'
     members_can_vote: 'Members can vote on proposals.'
     members_can_raise_motions: 'Members can start proposals.'
-    submit:  'Update Settings'
+
+    submit_start_group: 'Start group'
+    submit_start_subgroup: 'Start subgroup'
+    submit_update: 'Update settings'
+
     messages:
-      success: 'Group updated'
+      group_created: 'Group started'
+      group_updated: 'Group updated'
 
   membership_requests_card:
     heading: 'Membership Requests'
@@ -583,19 +579,6 @@ en:
     heading: Previous proposals
     see_more: See more
 
-  group_form:
-    messages:
-      new_group: 'Group created'
-      update_group: 'Group updated'
-    new_group_title: 'Create a New Group'
-    new_subgroup_title: 'Create a New Subgroup of {{parentGroupName}}'
-    edit_group_title: 'Group Settings'
-    profile_label: 'Profile'
-    name_label: 'Name'
-    name_placeholder: 'Enter the name of your group'
-    description_label: 'Description'
-    description_placeholder: 'Describe your group'
-    category_label: 'Category'
 
   invitation:
     invite_people: 'Invite People'

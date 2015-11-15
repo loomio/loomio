@@ -417,7 +417,7 @@ uk:
     email_support: підтримка по електронній пошті
   subscription_success_modal:
     ok_got_it: "Добре, зрозуміло!"
-  edit_group_form:
+  group_form:
     title: Редагувати налаштування групи
     profile:
       name: Назва

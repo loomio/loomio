@@ -27,7 +27,7 @@ mi:
     options_label: Ngā Kōwhiringa
     options:
       label: Ngā Kōwhiringa
-  edit_group_form:
+  group_form:
     profile:
       name: Ingoa
       description: Whakaahuatanga
