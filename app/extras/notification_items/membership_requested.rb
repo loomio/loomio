@@ -6,15 +6,8 @@ class NotificationItems::MembershipRequested < NotificationItem
   end
 
   def actor
-    requestor = notification.eventable.requestor
-    if requestor
-      requestor
-    else
-      visitor = LoggedOutUser.new(name: notification.eventable.name,
-                                 email: notification.eventable.email)
-      visitor.set_avatar_initials
-      visitor
-    end
+    notification.eventable.requestor || LoggedOutUser.new(name: notification.eventable.name,
+                                                          email: notification.eventable.email)
   end
 
   def action_text

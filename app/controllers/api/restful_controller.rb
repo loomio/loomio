@@ -17,6 +17,10 @@ class API::RestfulController < ActionController::Base
 
   private
 
+  def current_user
+    super || LoggedOutUser.new
+  end
+
   def permitted_params
     @permitted_params ||= PermittedParams.new(params)
   end

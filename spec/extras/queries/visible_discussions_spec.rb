@@ -12,6 +12,34 @@ describe Queries::VisibleDiscussions do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
   end
 
+  describe 'logged out' do
+    let(:logged_out_user) { LoggedOutUser.new }
+    let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
+    let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
+
+    it 'shows groups visible to public if no groups are specified' do
+      query = Queries::VisibleDiscussions.new(user: logged_out_user)
+      expect(query).to include public_discussion
+      expect(query).to include another_public_discussion
+      expect(query).to_not include private_discussion
+    end
+
+    it 'shows specified groups if they are public' do
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, groups: [public_discussion.group])
+      expect(query).to include public_discussion
+      expect(query).to_not include another_public_discussion
+      expect(query).to_not include private_discussion
+    end
+
+    it 'shows nothing if no public groups are specified' do
+      query = Queries::VisibleDiscussions.new(user: logged_out_user, groups: [private_discussion.group])
+      expect(query).to_not include public_discussion
+      expect(query).to_not include another_public_discussion
+      expect(query).to_not include private_discussion
+    end
+  end
+
   describe 'unread', focus: true do
     before do
       group.add_member! author
@@ -25,9 +53,6 @@ describe Queries::VisibleDiscussions do
       #user.discussions.should include discussion
       subject.unread.should include discussion
     end
-
-    it 'shows unread discussions with comments'
-    it 'shows unread discussions with some read comments'
   end
 
   describe 'with_active_motions' do

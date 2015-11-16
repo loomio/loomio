@@ -68,7 +68,7 @@ gem 'oj_mimic_json'
 # might need this
 #gem 'activeuuid', '>= 0.5.0'
 
-gem 'snorlax'
+gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
 
 # consider uncommenting these when we want to mess around with json parsing

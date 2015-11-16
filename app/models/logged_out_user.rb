@@ -16,7 +16,6 @@ class LoggedOutUser
     nil
   end
 
-
   def id
     nil
   end
@@ -66,11 +65,15 @@ class LoggedOutUser
     @ability ||= Ability.new(self)
   end
 
-  def adminable_group_ids
+  def groups
     []
   end
 
   def group_ids
+    []
+  end
+
+  def adminable_group_ids
     []
   end
 

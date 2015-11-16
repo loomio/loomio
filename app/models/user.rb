@@ -155,10 +155,6 @@ class User < ActiveRecord::Base
     !is_logged_in?
   end
 
-  def cached_group_ids
-    @cached_group_ids ||= group_ids
-  end
-
   def top_level_groups
     parents = groups.parents_only.order(:name).includes(:children)
     orphans = groups.where('parent_id not in (?)', parents.map(&:id))
