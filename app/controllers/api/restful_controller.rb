@@ -1,4 +1,6 @@
 class API::RestfulController < ActionController::Base
+  include ::LocalesHelper
+  before_filter :set_application_locale
   snorlax_used_rest!
 
   include ::ProtectedFromForgery
