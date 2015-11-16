@@ -7,7 +7,7 @@
             = link_to "#", class: 'btn pull-right', id: 'edit-outcome' do
               %i.fa.fa-pencil
           .outcome-label= t(:outcome)
-          .motion-outcome= simple_format motion.outcome
+          .motion-outcome= render_rich_text(motion.outcome, true)
 
   - if can?(:create_outcome, motion)
     - if motion.has_outcome?
