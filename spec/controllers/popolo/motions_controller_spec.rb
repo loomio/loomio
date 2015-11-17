@@ -14,12 +14,24 @@ describe Popolo::MotionsController, focus: true do
   let(:yes_vote) { create :vote, position: :yes, motion: public_motion, user: public_motion.author }
   let(:no_vote) { create :vote, position: :no, motion: public_motion }
 
+  let(:user) { create :user }
+
   before do
     private_motion
     old_vote; yes_vote; no_vote
   end
 
   describe 'index' do
+
+    it 'returns a list of users motions if logged in' do
+      private_group.users << user
+      sign_in user
+      get :index
+      json = JSON.parse(response.body)
+      motion_keys = json['motions'].map { |m| m['motion_id'] }
+      expect(motion_keys).to_not include public_motion.key
+      expect(motion_keys).to include private_motion.key
+    end
 
     it 'returns a list of public motions' do
       get :index

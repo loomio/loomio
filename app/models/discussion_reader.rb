@@ -51,10 +51,6 @@ class DiscussionReader < ActiveRecord::Base
     last_read_at.blank?
   end
 
-  def user_or_logged_out_user
-    user || LoggedOutUser.new
-  end
-
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
     if last_read_at.blank?

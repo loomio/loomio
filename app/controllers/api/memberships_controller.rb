@@ -55,21 +55,14 @@ class API::MembershipsController < API::RestfulController
   private
 
   def accessible_records
-    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent, :subscription]})
-    if current_user.group_ids.any?
-      visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
-    else
-      visible.where("groups.is_visible_to_public = 't'")
-    end
+    resource_class.joins(:group)
+                  .includes(:user, :inviter)
+                  .where(Group.arel_table[:id].eq(current_user.group_ids)
+                    .or(Group.arel_table[:is_visible_to_public].eq(true)))
   end
 
   def visible_invitables
     load_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
   end
-
-  def default_page_size
-    5
-  end
-
 end

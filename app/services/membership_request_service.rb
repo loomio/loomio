@@ -1,6 +1,6 @@
 class MembershipRequestService
-  def self.create(membership_request: , actor: nil)
-    actor = LoggedOutUser.new if actor.nil?
+  def self.create(membership_request:, actor: nil)
+    actor ||= LoggedOutUser.new
     membership_request.requestor = actor if actor.is_logged_in?
     return false unless membership_request.valid?
     actor.ability.authorize!(:create, membership_request)

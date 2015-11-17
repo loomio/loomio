@@ -3,8 +3,8 @@ describe API::EventsController do
 
   let(:user) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group }
-  let(:another_discussion) { create :discussion, group: group }
+  let(:discussion) { create :discussion, group: group, private: false }
+  let(:another_discussion) { create :discussion, group: group, private: true }
 
   before do
     group.admins << user
@@ -18,6 +18,23 @@ describe API::EventsController do
       before do
         @event         = CommentService.create(comment: build(:comment, discussion: discussion), actor: user)
         @another_event = CommentService.create(comment: build(:comment, discussion: another_discussion), actor: user)
+      end
+
+      context 'logged out' do
+        before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+
+        it 'returns a list of events for public discussions' do
+          get :index, discussion_id: discussion.id, format: :json
+          json = JSON.parse(response.body)
+          event_ids = json['events'].map { |d| d['id'] }
+          expect(event_ids).to include @event.id
+          expect(event_ids).to_not include @another_event.id
+        end
+
+        it 'responds with forbidden for private discussions' do
+          get :index, discussion_id: another_discussion.id, format: :json
+          expect(response.status).to eq 403
+        end
       end
 
       it 'returns events filtered by discussion' do

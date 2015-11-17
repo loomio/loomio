@@ -3,7 +3,7 @@ class API::EventsController < API::RestfulController
 
   private
 
-  def visible_records
+  def accessible_records
     load_and_authorize :discussion
     @discussion.items.sequenced
   end

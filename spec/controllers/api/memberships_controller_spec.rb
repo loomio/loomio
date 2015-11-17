@@ -46,6 +46,27 @@ describe API::MembershipsController do
         usernames = json['users'].map { |c| c['name'] }
         expect(usernames.sort).to eq usernames
       end
+
+      context 'logged out' do
+        before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+        let(:private_group) { create(:group, is_visible_to_public: false) }
+
+        it 'returns users filtered by group for a public group' do
+          get :index, group_id: group.id, format: :json
+          json = JSON.parse(response.body)
+          expect(json.keys).to include *(%w[users memberships groups])
+          users = json['users'].map { |c| c['id'] }
+          groups = json['groups'].map { |g| g['id'] }
+          expect(users).to include user_named_biff.id
+          expect(users).to_not include alien_named_biff.id
+          expect(groups).to include group.id
+        end
+
+        it 'responds with unauthorized for private groups' do
+          get :index, group_id: private_group.id, format: :json
+          expect(response.status).to eq 403
+        end
+      end
     end
   end
 

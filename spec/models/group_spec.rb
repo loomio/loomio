@@ -336,4 +336,23 @@ describe Group do
       end
     end
   end
+
+  describe 'id_and_subgroup_ids' do
+    let(:group) { create(:group) }
+    let(:subgroup) { create(:group, parent: group) }
+
+    it 'returns empty for new group' do
+      expect(build(:group).id_and_subgroup_ids).to be_empty
+    end
+
+    it 'returns the id for groups with no subgroups' do
+      expect(group.id_and_subgroup_ids).to eq [group.id]
+    end
+
+    it 'returns the id and subgroup ids for group with subgroups' do
+      subgroup; group.reload
+      expect(group.id_and_subgroup_ids).to include group.id
+      expect(group.id_and_subgroup_ids).to include subgroup.id
+    end
+  end
 end

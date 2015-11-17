@@ -24,7 +24,7 @@ class SearchVector < ActiveRecord::Base
   scope :search_for, ->(query, user, opts = {}) do
     Queries::VisibleDiscussions.apply_privacy_sql(
       user: user,
-      group_ids: user.cached_group_ids,
+      group_ids: user.group_ids,
       relation: joins(discussion: :group).search_without_privacy!(query, user, opts)
     )
   end

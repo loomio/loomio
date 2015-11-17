@@ -509,6 +509,10 @@ class Group < ActiveRecord::Base
     [parent_or_self.id, parent_or_self.subgroup_ids].flatten
   end
 
+  def id_and_subgroup_ids
+    Array(id) | subgroup_ids
+  end
+
   def has_subdomain?
     if is_subgroup?
       parent.has_subdomain?

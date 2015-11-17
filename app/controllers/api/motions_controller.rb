@@ -1,6 +1,10 @@
 class API::MotionsController < API::RestfulController
   include UsesDiscussionReaders
-  load_and_authorize_resource only: [:show], find_by: :key
+
+  def show
+    load_and_authorize(:motion)
+    respond_with_resource
+  end
 
   def close
     load_and_authorize(:motion, :close)
@@ -25,8 +29,11 @@ class API::MotionsController < API::RestfulController
   end
 
   def index
-    load_and_authorize :discussion
-    instantiate_collection { |collection| collection.where(discussion: @discussion).order(:created_at) }
+    load_and_authorize :discussion if params[:discussion_id] || params[:discussion_key]
+    instantiate_collection do |collection|
+      collection = collection.where(discussion: @discussion) if @discussion
+      collection.order(:created_at)
+    end
     respond_with_collection
   end
 
@@ -40,6 +47,10 @@ class API::MotionsController < API::RestfulController
 
   def visible_records
     Queries::VisibleMotions.new(user: current_user, groups: current_user.groups)
+  end
+
+  def public_records
+    Queries::VisibleMotions.new(user: current_user, groups: Group.visible_to_public)
   end
 
   def serializer_root
