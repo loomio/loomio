@@ -3,16 +3,15 @@ da:
     time:
       am: am
       pm: pm
-    closing_in: "Lukker {{time}}"
-    closed_ago: "Lukket {{time}}"
+    closing_in: 'Lukker {{time}}'
+    closed_ago: 'Lukket {{time}}'
     volume: Lydstyrke
     notification_volume: Mængde af beskeder
     group: Gruppe
     groups: Grupper
     privacy:
-      private: Privat
       public: Offentlig
-      organisation: Organisation
+      private: Privat
     selected: Valgt(e)
     date_range:
       today: Idag
@@ -36,7 +35,7 @@ da:
       add_subgroup: Tilføj undergruppe
   error_page:
     forbidden: Du har ikke adgang til at gøre dette.
-    page_not_found: "Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,"
+    page_not_found: 'Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,'
     internal_server_error: Noget gik desværre gaæt. Prøv igen.
   start_proposal_card:
     title: Start et forslag
@@ -83,9 +82,9 @@ da:
     edit_comment: Rediger kommentar
     delete_comment: Slet kommentar
     cancel_reply: Drop Svar
-    confirm_delete_message: "Er du sikker på, at du vil slette denne kommentar?"
-    confirm_delete: "Ja, jeg er sikker"
-    in_reply_to: "Som svar på <strong>{{name}}</strong>:"
+    confirm_delete_message: 'Er du sikker på, at du vil slette denne kommentar?'
+    confirm_delete: 'Ja, jeg er sikker'
+    in_reply_to: 'Som svar på <strong>{{name}}</strong>:'
     submit_button:
       label: Post
   navbar:
@@ -118,8 +117,8 @@ da:
     invite_people: Inviter Folk
   notifications:
     header: Notifikationer
-    new_discussion: "<strong>{{name}}</strong> startede en diskussion <strong>{{discussion}}</strong>"
-    new_motion: "<strong>{{name}}</strong> oprettede et forslag <strong>{{proposal}}</strong>"
+    new_discussion: '<strong>{{name}}</strong> startede en diskussion <strong>{{discussion}}</strong>'
+    new_motion: '<strong>{{name}}</strong> oprettede et forslag <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Sig din mening
   vote_form:
@@ -130,7 +129,7 @@ da:
     i_disagree: Jeg er uenig
     i_disagree_details: Jeg mener vi kan gøre det bedre.
     i_block: Jeg blokerer
-    i_block_details: "Jeg har stærke indvendinger mod dette forslag, og er ikke OK med at lade det gå videre."
+    i_block_details: 'Jeg har stærke indvendinger mod dette forslag, og er ikke OK med at lade det gå videre.'
     submit_position: Indsend standpunkt
   proposal_positions_panel:
     heading: Standpunkter
@@ -151,9 +150,6 @@ da:
   proposal_expanded:
     edit_proposal: Rediger forslag
     close_proposal: Luk forslag
-  start_group_form:
-    heading: Start en gruppe
-    submit: Start gruppe
   join_group_button:
     join_group: Bliv medlem af gruppe
     ask_to_join_group: Anmod om gruppemedlemskab
@@ -178,11 +174,6 @@ da:
   membership_requests_page:
     approve: Godkend
     ignore: Ignorer
-  group_form:
-    profile_label: Profil
-    name_label: Navn
-    description_label: Beskrivelse
-    category_label: Kategori
   invitation:
     invite_people: Inviter Folk
   memberships_page:
@@ -224,7 +215,7 @@ da:
     aria_label: Gruppenavn
   delete_comment_dialog:
     title: Slet kommentar
-    question: "Er du sikker på, at du vil slette denne kommentar?"
+    question: 'Er du sikker på, at du vil slette denne kommentar?'
     confirm: Slet kommentar
   new_comment_item:
     context_menu:
@@ -236,41 +227,181 @@ da:
     message_label: Din besked
   help_page:
     coordinating: Koordinering af din Loomio-gruppe
-    coordinating_details: "Som koordinatoren er du ansvarlig for at opsætte din Loomio-gruppe og invitere\nalle til den. Din gruppe vil både lære hvordan man bruger et nyt stykke software\nsåvel som nye processer for at samarbejde mere effektivt og træffe gode beslutninger\nsammen. Her er nogle tips til at hjælpe dig med at gøre din gruppe til en succes:\n"
+    coordinating_details: >
+      Som koordinatoren er du ansvarlig for at opsætte din Loomio-gruppe og
+      invitere
+
+      alle til den. Din gruppe vil både lære hvordan man bruger et nyt stykke
+      software
+
+      såvel som nye processer for at samarbejde mere effektivt og træffe gode
+      beslutninger
+
+      sammen. Her er nogle tips til at hjælpe dig med at gøre din gruppe til en
+      succes:
     different_ways: Forskellige måder at bruge Loomio
-    engaging_html: "<h2>Tips til at engagere din gruppe</h2>\n<p>Folk vil være spændte på at hoppe ind og begynde at deltage når der er spændende forslag på bordet. Et godt forslag indeholder en handlingsplan for gruppen, så det med det samme er tydeligt hvad det vil sige at være enig eller uenig. Tænk over hvordan du kan identificere diskussioner/beslutninger som gruppen aktuelt er i gang med ansigt-til-ansigt eller pr. mail, som ville være lettere at tage på Loomio.</p>\n<p>Hvis din gruppe er ved at starte op kunne du starte med en let, sjov beslutning for at give alle muligheden for at lege med værktøjet og se hvordan beslutningsprocessen fungerer i praksis.</p>\n<p>En anden simpel måde at opmuntre folk til at engagere sig i en diskussion er at bruge @omtale-funktionen til at foranledige en respons fra bestemte folk; dette vil sende dem en e-mail og fortælle dem at de er blevet nævnt i en kommentar.</p>\n"
-    example1_html: "<h3>Du har brug for at gruppen diskuterer et bredt emne og udvikler en løsning sammen</h3>\n<p>Strategi: Diskuter et emne for en stund før du fremsætter et forslag.</p>\n<p>Diskussioner når ofte de bedste resultater hvis I opbygger en fælles forståelse\nfor problemerne før I hopper på en bestemt løsning. Når folk får lov at\ndeltage i processen er der langt større sandsynlighed for at de vil acceptere resultatet.</p>\n"
-    example2_html: "<h3>Du har allerede et forslag i tankerne, og du ønsker at få grønt lys fra gruppen.</h3>\n<p>Strategi: Start en diskussion om en specifik beslutning og fremsæt forslaget med det samme.</p>\n<p>Hvis du har et klart resultat i tankerne, men du vil sikre sig at der ikke er nogle alvorlige indvendinger,\nkan du bruge forslaget til at få hurtige input til beslutningen.</p>\n<p>Du kan gøre ting såsom at færdiggøre et dokument, godkende en applikation eller få den endelige accept af et stykke arbejde.</p>\n"
+    engaging_html: >
+      <h2>Tips til at engagere din gruppe</h2>
+
+      <p>Folk vil være spændte på at hoppe ind og begynde at deltage når der er
+      spændende forslag på bordet. Et godt forslag indeholder en handlingsplan
+      for gruppen, så det med det samme er tydeligt hvad det vil sige at være
+      enig eller uenig. Tænk over hvordan du kan identificere
+      diskussioner/beslutninger som gruppen aktuelt er i gang med
+      ansigt-til-ansigt eller pr. mail, som ville være lettere at tage på
+      Loomio.</p>
+
+      <p>Hvis din gruppe er ved at starte op kunne du starte med en let, sjov
+      beslutning for at give alle muligheden for at lege med værktøjet og se
+      hvordan beslutningsprocessen fungerer i praksis.</p>
+
+      <p>En anden simpel måde at opmuntre folk til at engagere sig i en
+      diskussion er at bruge @omtale-funktionen til at foranledige en respons fra
+      bestemte folk; dette vil sende dem en e-mail og fortælle dem at de er
+      blevet nævnt i en kommentar.</p>
+    example1_html: >
+      <h3>Du har brug for at gruppen diskuterer et bredt emne og udvikler en
+      løsning sammen</h3>
+
+      <p>Strategi: Diskuter et emne for en stund før du fremsætter et
+      forslag.</p>
+
+      <p>Diskussioner når ofte de bedste resultater hvis I opbygger en fælles
+      forståelse
+
+      for problemerne før I hopper på en bestemt løsning. Når folk får lov at
+
+      deltage i processen er der langt større sandsynlighed for at de vil
+      acceptere resultatet.</p>
+    example2_html: >
+      <h3>Du har allerede et forslag i tankerne, og du ønsker at få grønt lys fra
+      gruppen.</h3>
+
+      <p>Strategi: Start en diskussion om en specifik beslutning og fremsæt
+      forslaget med det samme.</p>
+
+      <p>Hvis du har et klart resultat i tankerne, men du vil sikre sig at der
+      ikke er nogle alvorlige indvendinger,
+
+      kan du bruge forslaget til at få hurtige input til beslutningen.</p>
+
+      <p>Du kan gøre ting såsom at færdiggøre et dokument, godkende en
+      applikation eller få den endelige accept af et stykke arbejde.</p>
     get_in_touch: Få kontakt
     get_in_touch_description_html: "Hvis du har spørgsmål eller feedback så <a href='%{link}'>send os en besked</a>."
     getting_started: Kom godt i gang
-    getting_started_description: "Til venstre diskuterer gruppen et emne, udveksler idéer og information. Når gruppen skal træffe en beslutning kommer den frem til højre."
+    getting_started_description: 'Til venstre diskuterer gruppen et emne, udveksler idéer og information. Når gruppen skal træffe en beslutning kommer den frem til højre.'
     getting_the_most: Få mest ud af Loomio
     have_your_say: Sig din mening
-    have_your_say_details_html: "<p>Når du er klar til at angive dit standpunkt skal du klikke på en af de fire beslutningsknapper.</p>\n<p>Når du har truffet din beslutning bør du give en kort forklaring. Under tærten,\nkan du se hvad alle andre tænker. Dette gør det hurtigt og nemt at følge med i\ndiskussionen. Efterhånden som ny information kommer frem kan du når som helst ændre\nstandpunkt.</p>\n"
+    have_your_say_details_html: >
+      <p>Når du er klar til at angive dit standpunkt skal du klikke på en af de
+      fire beslutningsknapper.</p>
+
+      <p>Når du har truffet din beslutning bør du give en kort forklaring. Under
+      tærten,
+
+      kan du se hvad alle andre tænker. Dette gør det hurtigt og nemt at følge
+      med i
+
+      diskussionen. Efterhånden som ny information kommer frem kan du når som
+      helst ændre
+
+      standpunkt.</p>
     have_a_discussion: Hav en diskussion
     have_a_discussion_description: Emnet og enhver relevant baggrundsinformation befinder sig i toppen af siden. Brug kommentarfeltet for at føje din stemme til diskussionen.
     help: Hjælp
     how_it_works: Hvordan det virker
-    invitation_html: "<h2>At skrive en god invitation</h2>\n<p>Det første spørgsmål som ethvert nyt medlem vil have et 'hvad skal denne gruppe bruges til?'</p>\n<p>Tænk på den simpleste måde du kan beskrive gruppen: Hvad ønsker I at opnå sammen? Hvilke typer beslutninger vil I skulle træffe? Hvem vil være involveret?</p>\n<p>Det kan være en god idé at tale med din gruppe før du inviterer dem til at deltage i Loomio.</p>\n<p>Folk vil gerne vide hvorfor de er blevet inviteret, hvad der forventes af dem,\nog hvorfor det er deres tid værd at lære at bruge et nyt værktøj.</p>\n"
+    invitation_html: >
+      <h2>At skrive en god invitation</h2>
+
+      <p>Det første spørgsmål som ethvert nyt medlem vil have et 'hvad skal denne
+      gruppe bruges til?'</p>
+
+      <p>Tænk på den simpleste måde du kan beskrive gruppen: Hvad ønsker I at
+      opnå sammen? Hvilke typer beslutninger vil I skulle træffe? Hvem vil være
+      involveret?</p>
+
+      <p>Det kan være en god idé at tale med din gruppe før du inviterer dem til
+      at deltage i Loomio.</p>
+
+      <p>Folk vil gerne vide hvorfor de er blevet inviteret, hvad der forventes
+      af dem,
+
+      og hvorfor det er deres tid værd at lære at bruge et nyt værktøj.</p>
     join_the_community: Deltag i fællesskabet
     images_and_text_formatting: Billeder og tekstformatering
-    images_and_text_formatting_html: "<p>Loomio bruger ‘Markdown’ til at indlejre billeder og formatere tekst.\nDu kan aktivere Markdown med det lille grå ikon under kommentarfeltet.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Klik her</a>\nfor information om hvordan man bruger Markdown.</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio bruger ‘Markdown’ til at indlejre billeder og formatere tekst.
+
+      Du kan aktivere Markdown med det lille grå ikon under kommentarfeltet.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Klik her</a>
+
+      for information om hvordan man bruger Markdown.</p>
     keep_up_to_date: Hold dig up-to-date
-    keep_up_to_date_html: "<p>Ved at klikke på dit gruppenavn i toppen af skærmen kan du komme til din gruppeside,\nhvor du kan se en liste over alle gruppens diskussioner og beslutninger. Hivs\ndu er i mere end en gruppe kan du se al aktivitet i alle dine grupper\npå en gang på Hjemmesiden.</p>\n<p>Du får e-mail-notifikationer når der sker vigtige ting i dine grupper.\nDu kan ændre dine e-mail-indstillinger <a href=\"%{link}\"\">her</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Ved at klikke på dit gruppenavn i toppen af skærmen kan du komme til din
+      gruppeside,
+
+      hvor du kan se en liste over alle gruppens diskussioner og beslutninger.
+      Hivs
+
+      du er i mere end en gruppe kan du se al aktivitet i alle dine grupper
+
+      på en gang på Hjemmesiden.</p>
+
+      <p>Du får e-mail-notifikationer når der sker vigtige ting i dine grupper.
+
+      Du kan ændre dine e-mail-indstillinger <a href="%{link}"">her</a>.</p>
     make_a_decision: Træf en beslutning
     make_a_decision_description: Når en gruppe er klar til at træffe en beslutning kan enhver fremsætte et forslag. Skitser en klar handlingsplan og giv noget baggrund så alle ved præcis hvad det vil sige at være enig eller uenig.
     prompt_people_details: "Hvis du ønsker at fange et bestemt gruppemedlems opmærksomhed, kan du skrive '@' efterfulgt af deres navn. Dette vil sende dem en e-mail, der fortæller dem at du har omtalt dem i en kommentar."
     prompt_people_html: "Underret folk der er blevet <span class='blue'>@omtalt</span>"
-    positions_agree_description: "<span>Enig</span> betyder at du er enig i forslaget."
-    positions_abstain_description: "<span>Blank</span> betyder at du er usikker, eller at du har det fint med at gruppen beslutter sig uden dig."
-    positions_disagree_description: "<span>Uenig</span> betyder at du mener der kan være et bedre alternativ, men du er villig til at acceptere gruppens beslutning."
-    positions_block_description: "<span>Bloker</span> betyder at du har alvorlige indvendinger, og du vil blive ekstremt skuffet hvis forslaget bliver vedtaget."
+    positions_agree_description: '<span>Enig</span> betyder at du er enig i forslaget.'
+    positions_abstain_description: '<span>Blank</span> betyder at du er usikker, eller at du har det fint med at gruppen beslutter sig uden dig.'
+    positions_disagree_description: '<span>Uenig</span> betyder at du mener der kan være et bedre alternativ, men du er villig til at acceptere gruppens beslutning.'
+    positions_block_description: '<span>Bloker</span> betyder at du har alvorlige indvendinger, og du vil blive ekstremt skuffet hvis forslaget bliver vedtaget.'
     start_discussion: At starte en levende diskussion
-    start_discussion_html: "<p>Når du starter en diskussion skal du sikre dig at titlen beskriver emnet kortfattet.\nBrug kontekstpanelet til at give al den baggrundsinformation, der er nødvendig for at gruppen kan have en produktiv og informeret diskussion.</p>\n<p>Under diskussionen kan kontekstpanelet opdateres efterhånden som ny information kommer frem i lyset. Udover at tydeliggøre emnet kan du også bruge dette område til at dele ressourcer, opsummere diskussionen efterhånden som den skrider frem eller skitsere protokoller for beslutningsprocessen, som jeres gruppe anvender.</p>\n"
+    start_discussion_html: >
+      <p>Når du starter en diskussion skal du sikre dig at titlen beskriver emnet
+      kortfattet.
+
+      Brug kontekstpanelet til at give al den baggrundsinformation, der er
+      nødvendig for at gruppen kan have en produktiv og informeret
+      diskussion.</p>
+
+      <p>Under diskussionen kan kontekstpanelet opdateres efterhånden som ny
+      information kommer frem i lyset. Udover at tydeliggøre emnet kan du også
+      bruge dette område til at dele ressourcer, opsummere diskussionen
+      efterhånden som den skrider frem eller skitsere protokoller for
+      beslutningsprocessen, som jeres gruppe anvender.</p>
     start_proposal: At skrive et klart forslag
-    start_proposal_html: "<p> Hvis du gør titlen klar og kortfattet, vil folk øjeblikkeligt vide præcis\nhvad det vil sige at være enig eller uenig.</p>\n<p>Det er ikke verdens undergang hvis et forslag ikke opnår fuldstændig enighed med det samme.\nHvis gruppen ikke elsker det første forslag, kan enhver starte et nyt forslag\nfor at adressere de bekymringer, der er blevet nævnt, og lade processen fortsætte fremad.</p>\n<p>Gennem denne dynamiske proces, kan din gruppes kollektive visdom generere bedre\nidéer end nogen ville kunne skabe på egen hånd.</p>\n<p>Et forslags deadline kan udvides når som helst, hvis det ser ud som om beslutningen\nhar brug for mere tid. Alle vil få en emailnotifikation 24 timer før et forslag lukker.</p>\n"
-    video_id: "52025402"
+    start_proposal_html: >
+      <p> Hvis du gør titlen klar og kortfattet, vil folk øjeblikkeligt vide
+      præcis
+
+      hvad det vil sige at være enig eller uenig.</p>
+
+      <p>Det er ikke verdens undergang hvis et forslag ikke opnår fuldstændig
+      enighed med det samme.
+
+      Hvis gruppen ikke elsker det første forslag, kan enhver starte et nyt
+      forslag
+
+      for at adressere de bekymringer, der er blevet nævnt, og lade processen
+      fortsætte fremad.</p>
+
+      <p>Gennem denne dynamiske proces, kan din gruppes kollektive visdom
+      generere bedre
+
+      idéer end nogen ville kunne skabe på egen hånd.</p>
+
+      <p>Et forslags deadline kan udvides når som helst, hvis det ser ud som om
+      beslutningen
+
+      har brug for mere tid. Alle vil få en emailnotifikation 24 timer før et
+      forslag lukker.</p>
+    video_id: '52025402'
     video_tutorial: Videoinstruktion
     video_tutorial_description: Se videoen for at få en kort demonstration af hvordan man bruger Loomio.
   hint:
@@ -280,9 +411,16 @@ da:
     proposal: Tips til at skrive et klart forslag
     vote: Du kan ændre dit standpunkt når som helst
   pricing_page:
-    intro: "Grupper med et budget betaler et abonnement for at bruge værktøjet.\nGrupper uden midler til at betale et abonnement bruger\nbetal-hvad-du-kan-modellen: deres medlemmer inviteres til at give frivillige bidrag. Dit bidrag sikrer at vi kan holde Loomio uafhængigt, reklamefrit og drevet af vores fællesskab.\n"
+    intro: >
+      Grupper med et budget betaler et abonnement for at bruge værktøjet.
+
+      Grupper uden midler til at betale et abonnement bruger
+
+      betal-hvad-du-kan-modellen: deres medlemmer inviteres til at give
+      frivillige bidrag. Dit bidrag sikrer at vi kan holde Loomio uafhængigt,
+      reklamefrit og drevet af vores fællesskab.
     organisations: Organisationer
-    organisations_examples: "f.eks. virksomheder, offentlige myndigheder, lokalorganisationer"
+    organisations_examples: 'f.eks. virksomheder, offentlige myndigheder, lokalorganisationer'
     informal_groups: Uformelle grupper
     informal_groups_desc: Medlemmer af din gruppe vil blive bedt om at betale hvad de kan
-    informal_groups_examples: "f.eks. familie, sociale bevægelser, kollektiver"
+    informal_groups_examples: 'f.eks. familie, sociale bevægelser, kollektiver'

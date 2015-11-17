@@ -3,8 +3,8 @@ sv:
     group: Grupp
     groups: Grupper
     privacy:
-      private: Privat
       public: Offentlig
+      private: Privat
     date_range:
       today: I dag
     models:
@@ -72,8 +72,6 @@ sv:
   proposal_expanded:
     edit_proposal: Redigera förslag
     close_proposal: Stäng förslag
-  start_group_form:
-    heading: Starta en grupp
   join_group_button:
     join_group: Bli medlem i gruppen
     ask_to_join_group: Be att få gå med
@@ -98,11 +96,6 @@ sv:
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
-  group_form:
-    profile_label: Profil
-    name_label: Namn
-    description_label: Beskrivning
-    category_label: Kategori
   memberships_page:
     members: Medlemmar
     name_label: Namn
@@ -149,39 +142,133 @@ sv:
     coordinating: Koordinera din Loomiogrupp
     coordinating_details: "Som koordinator är du ansvarig att administrera din Loomiogrupp och bjuda in\nalla deltagare. Förutom att lära sig använda en ny mjukvara, kommer din grupp \natt lära sig nya processer att samarbeta mer effektivt samt att fatta bra beslut \ntillsammans. Här är några tips för att hjälpa din grupp att lyckas:\n"
     different_ways: Olika sätt att använda Loomio
-    engaging_html: "<h2>Tips för hur du engagerar din grupp</h2>\n<p> Deltagarna kommer att bli entusiastiska och vilja delta när det finns ett engagerande\nförslag på bordet. Ett bra förslag innehåller en handlingsplan för gruppen, så\natt det är direkt uppenbart vad det är ni ska bli överens eller inte överens om.\nTänk på de nuvarande diskussioner/beslut som din grupp är engagerade i, på plats\neller per email, och hur mycket lättare det skulle kunna vara med Loomio.</p>\n<p>Om din grupp just har startat, kan du börja med ett enkelt beslut att ge\nalla en chans att lära känna verktyget och se beslutsprocessen i handling.</p>\n<p>Ett annat bra sätt att få personer att engagera sig i en diskussion är att använda funktionen\n@mention för att få med någon specifik person, vilket kommer att skicka ett email och informera dem om att\nde har blivit omnämnda i ett inlägg.</p>\n"
-    example1_html: "<h3>Din grupp behöver diskutera ett ämne och utveckla ett förslag tillsammans</h3>\n<p>Strategi: Diskutera ämnet en stund innan ni arbetar fram ett förslag.</p>\n<p>Diskussioner når ofta det bästa resultatet om ni bygger en gemensam förståelse\nom problemet innan ni väljer en specifik lösning. När personer får möjlighet att\ndelta i processen kommer de att vara mer benägna att sluta upp kring resultatet.</p>\n"
+    engaging_html: >
+      <h2>Tips för hur du engagerar din grupp</h2>
+
+      <p> Deltagarna kommer att bli entusiastiska och vilja delta när det finns
+      ett engagerande
+
+      förslag på bordet. Ett bra förslag innehåller en handlingsplan för gruppen,
+      så
+
+      att det är direkt uppenbart vad det är ni ska bli överens eller inte
+      överens om.
+
+      Tänk på de nuvarande diskussioner/beslut som din grupp är engagerade i, på
+      plats
+
+      eller per email, och hur mycket lättare det skulle kunna vara med
+      Loomio.</p>
+
+      <p>Om din grupp just har startat, kan du börja med ett enkelt beslut att
+      ge
+
+      alla en chans att lära känna verktyget och se beslutsprocessen
+      i handling.</p>
+
+      <p>Ett annat bra sätt att få personer att engagera sig i en diskussion är
+      att använda funktionen
+
+      @mention för att få med någon specifik person, vilket kommer att skicka ett
+      email och informera dem om att
+
+      de har blivit omnämnda i ett inlägg.</p>
+    example1_html: >
+      <h3>Din grupp behöver diskutera ett ämne och utveckla ett förslag
+      tillsammans</h3>
+
+      <p>Strategi: Diskutera ämnet en stund innan ni arbetar fram ett
+      förslag.</p>
+
+      <p>Diskussioner når ofta det bästa resultatet om ni bygger en gemensam
+      förståelse
+
+      om problemet innan ni väljer en specifik lösning. När personer får
+      möjlighet att
+
+      delta i processen kommer de att vara mer benägna att sluta upp kring
+      resultatet.</p>
     example2_html: "<h3>Du har redan ett förslag i åtanke och vill få med dig gruppen att gå vidare.</h3>\n<p>Strategi: Starta en diskussion om ett särskilt beslut och lägg fram förslaget direkt.</p> \n<p>Om du har ett tydligt resultat i åtanke, men vill se till att det inte finns några kritiska invändningar,\nkan du använda förslaget för att få snabb återkoppling inför ett beslut.</p>\n<p>Du kan använda detta för att slutföra ett dokument, godkänna en ansökan, eller få sign-off på ett arbete.</p>\n"
     get_in_touch: Kontakta oss
     get_in_touch_description_html: "Om du har någon fråga eller vill ge feedback, <a href='%{link}'>skriv till oss</a>."
     getting_started: Håller på att starta
-    getting_started_description: "Till vänster, diskuterar gruppen ett ämne, utbyter idéer och information. När gruppen kommer fram till ett beslut, dyker det upp till höger."
+    getting_started_description: 'Till vänster, diskuterar gruppen ett ämne, utbyter idéer och information. När gruppen kommer fram till ett beslut, dyker det upp till höger.'
     getting_the_most: Hur du får mesta möjliga ut av Loomio
     have_your_say: Gör din röst hörd
-    have_your_say_details_html: "<p>När du är redo att lämna en kommentar, klicka på en av de fyra beslutsknapparna.</p>\n<p>När du har skrivit ditt beslut, ge en kort förklaring. Under cirkeldiagrammet, kan du se\nvad alla andra tycker. Detta gör det snabbt och enkelt att komma in i diskussionen.\nAllteftersom ny information tillkommer kan du ändra din ståndpunkt när som helt.</p>\n"
+    have_your_say_details_html: >
+      <p>När du är redo att lämna en kommentar, klicka på en av de fyra
+      beslutsknapparna.</p>
+
+      <p>När du har skrivit ditt beslut, ge en kort förklaring. Under
+      cirkeldiagrammet, kan du se
+
+      vad alla andra tycker. Detta gör det snabbt och enkelt att komma in
+      i diskussionen.
+
+      Allteftersom ny information tillkommer kan du ändra din ståndpunkt när som
+      helt.</p>
     have_a_discussion: Ha en diskussion
     have_a_discussion_description: Ämnet och relevant bakgrundsinformation finns högst upp på sidan. Använd kommentarboxen för att göra din röst hörd i diskussionen.
     help: Hjälp
     how_it_works: Hur det fungerar
-    invitation_html: "<h2>Hur du skriver en bra inbjudan</h2>\n<p>Den första frågan varje ny medlem får är 'vad är den här gruppen till för?'</p>\n <p>Tänk på det enklaste sättet du kan beskriva gruppen: Vad vill du att ni ska\nåstadkomma tillsammans? Vilka typer av beslut kommer ni att fatta? Vem kommer att delta?</p>\n<p>Det kan vara en bra idé att prata med din grupp innan du bjuder in dem att gå med i Loomio.</p>\n<p>Folk vill gärna veta varför de har blivit inbjudna, vad som förväntas av dem,\nsamt varför det ska vara värt tiden att lära sig använda ett nytt verktyg.</p>\n"
+    invitation_html: >
+      <h2>Hur du skriver en bra inbjudan</h2>
+
+      <p>Den första frågan varje ny medlem får är 'vad är den här gruppen till
+      för?'</p>
+
+       <p>Tänk på det enklaste sättet du kan beskriva gruppen: Vad vill du att ni
+      ska
+
+      åstadkomma tillsammans? Vilka typer av beslut kommer ni att fatta? Vem
+      kommer att delta?</p>
+
+      <p>Det kan vara en bra idé att prata med din grupp innan du bjuder in dem
+      att gå med i Loomio.</p>
+
+      <p>Folk vill gärna veta varför de har blivit inbjudna, vad som förväntas av
+      dem,
+
+      samt varför det ska vara värt tiden att lära sig använda ett nytt
+      verktyg.</p>
     join_the_community: Gå med i communityn
     images_and_text_formatting: Bild- och textformatering
-    images_and_text_formatting_html: "<p>Loomio använder ‘Markdown’ för bild- och textformatering.\nDu kan markera Markdown på med den lilla grå ikonen under den kommentarboxen.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Klicka här</a>\nför mer information om hur du använder Markdown.</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio använder ‘Markdown’ för bild- och textformatering.
+
+      Du kan markera Markdown på med den lilla grå ikonen under den
+      kommentarboxen.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Klicka här</a>
+
+      för mer information om hur du använder Markdown.</p>
     keep_up_to_date: Håll informationen uppdaterad
-    keep_up_to_date_html: "<p>Klickar du på din grupps namn högst upp på skärmen kommer du till din Group Page,\ndär du kan se en lista över gruppens alla diskussioner och beslut. Om du är med i mer än\nen grupp, kan du se alla aktiviteter i alla dina grupper samtidigt på startsidan.</p>\n<p>Du kommer även att få ett email när viktiga saker händer i din grupp.\nDu kan ändra dina emailinställningar <a href=\"%{link}\"\">här</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Klickar du på din grupps namn högst upp på skärmen kommer du till din
+      Group Page,
+
+      där du kan se en lista över gruppens alla diskussioner och beslut. Om du är
+      med i mer än
+
+      en grupp, kan du se alla aktiviteter i alla dina grupper samtidigt på
+      startsidan.</p>
+
+      <p>Du kommer även att få ett email när viktiga saker händer i din grupp.
+
+      Du kan ändra dina emailinställningar <a href="%{link}"">här</a>.</p>
     make_a_decision: Fatta ett beslut
-    make_a_decision_description: "När gruppen är redo att fatta beslut, kan vem som helst göra ett förslag. Ange tydligt vad som bör göras och även en kort bakgrund så att alla förstår precis vad det innebär att hålla med eller att inte hålla med."
+    make_a_decision_description: 'När gruppen är redo att fatta beslut, kan vem som helst göra ett förslag. Ange tydligt vad som bör göras och även en kort bakgrund så att alla förstår precis vad det innebär att hålla med eller att inte hålla med.'
     prompt_people_details: "Om du vill få uppmärksamheten från en person i din grupp, skriv '@' följt av deras namn. De kommer då att få ett email som informerar dem att du har nämnt dem i en kommentar."
     prompt_people_html: "Uppmärksamma en person med <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Håller med</span> innebär att du gillar förslaget."
-    positions_abstain_description: "<span>Avstår</span> innebär att du är osäker, eller kan tänka dig att låta gruppen fatta beslutet utan dig."
-    positions_disagree_description: "<span>Håller inte med</span> innebär att du tror att det kan finnas ett bättre alternativ, men att du kan tänka dig att foga dig i gruppens beslut."
-    positions_block_description: "<span>Blockerar</span> innebär att du har allvarliga invändningar och att du skulle bli mycket missnöjd om detta förslag gick igenom."
+    positions_agree_description: '<span>Håller med</span> innebär att du gillar förslaget.'
+    positions_abstain_description: '<span>Avstår</span> innebär att du är osäker, eller kan tänka dig att låta gruppen fatta beslutet utan dig.'
+    positions_disagree_description: '<span>Håller inte med</span> innebär att du tror att det kan finnas ett bättre alternativ, men att du kan tänka dig att foga dig i gruppens beslut.'
+    positions_block_description: '<span>Blockerar</span> innebär att du har allvarliga invändningar och att du skulle bli mycket missnöjd om detta förslag gick igenom.'
     start_discussion: Starta en engagerande diskussion
     start_discussion_html: "<p>När du startar en ny diskussion, se till att titeln förmedlar ämnet kortfattat .\nAnvänd Context Panel för att ge all bakgrundsinformation som är nödvändig \nför att gruppen ska få en produktiv och givande diskussion.</p>\n<p>Under diskussionens gång kan Context Panel uppdateras närhelst ny information\ntillkommer. Förutom att klargöra ämnet, kan du använda detta utrymme till att\ndela resurser, summera diskussionens utveckling, eller beskriva de beslutssätt\ndin grupp använder.</p>\n"
     start_proposal: Hur du skriver ett tydligt förslag
     start_proposal_html: "<p>Om titeln är tydlig och kortfattad kommer deltagarna direkt att förstå \nvad det är ni ska bli överens eller inte överens om. </p>\n<p>Det gör inget att ett förslag inte skulle komma direkt till en tydlig överenskommelse.\nOm gruppen inte gillar det första förslaget, kan vem som helst komma med ett nytt förslag för att\nta med uppkomna invändningar och föra processen framåt. </p>\n<p>Genom denna dynamiska process kan gruppens kollektiva intelligens generera bättre idéer\nän någon skulle kunnat ha gjort på egen hand.</p>\n<p>Tidsfristen för ett förslag kan utökas när som helst, om det ser ut som beslutet skulle behöva mer tid.\nAlla kommer att få ett email 24 timmar innan ett förslag stängs.</p>\n"
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Videotutorial
     video_tutorial_description: Se videon för en snabb demonstration av hur Loomio fungerar.
   hint:
@@ -191,9 +278,16 @@ sv:
     proposal: Tips för att skriva ett tydligt förslag
     vote: Du kan ändra din ståndpunkt när som helst
   pricing_page:
-    intro: "Grupper som har finansiering betalar en abonnemangskostnad för att använda verktyget.\nGrupper som har få medel att betala för sig använder en Betala-vad-du-kan-modell: dvs att deras medlemmar uppmanas att lämna ett frivilligt bidrag. Ditt bidrag innebär att vi kan hålla Loomio oberoende, fri från reklam, samt att den drivs av och för våra medlemmar.\n"
+    intro: >
+      Grupper som har finansiering betalar en abonnemangskostnad för att använda
+      verktyget.
+
+      Grupper som har få medel att betala för sig använder en
+      Betala-vad-du-kan-modell: dvs att deras medlemmar uppmanas att lämna ett
+      frivilligt bidrag. Ditt bidrag innebär att vi kan hålla Loomio oberoende,
+      fri från reklam, samt att den drivs av och för våra medlemmar.
     organisations: Organisationer
-    organisations_examples: "t ex företag, myndigheter, och ideella organisationer"
+    organisations_examples: 't ex företag, myndigheter, och ideella organisationer'
     informal_groups: Informella grupper
     informal_groups_desc: Medlemmarna i din grupp kommer att få en begäran att ge ett bidrag efter förmåga
-    informal_groups_examples: "t ex familjer, samhällsrörelser, sammanslutningar"
+    informal_groups_examples: 't ex familjer, samhällsrörelser, sammanslutningar'

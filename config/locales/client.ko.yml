@@ -4,13 +4,13 @@ ko:
     time:
       am: 오전
       pm: 오후
-    closing_in: "{{time}}부터 종료 중"
-    closed_ago: "{{time}}에 종료 됨"
+    closing_in: '{{time}}부터 종료 중'
+    closed_ago: '{{time}}에 종료 됨'
     group: 그룹
     groups: 그룹
     privacy:
-      private: 비공개
       public: 공개
+      private: 비공개
     selected: 선택되었음
     date_range:
       today: 오늘
@@ -35,7 +35,7 @@ ko:
       loading: 로딩중...
       uploading: 업로딩중...
   error_page:
-    forbidden: "권한을 가지고 있지 않습니다. "
+    forbidden: '권한을 가지고 있지 않습니다. '
   start_proposal_card:
     title: 제안 시작하기
     helptext: 의사를 결정하셨습니까?
@@ -88,8 +88,6 @@ ko:
     privacy_label: 개인정보
   proposal_expanded:
     close_proposal: 제안 마감
-  start_group_form:
-    heading: 그룹 시작하기
   join_group_button:
     ask_to_join_group: 그룹에 가입신청하기
   membership_request_form:
@@ -109,10 +107,6 @@ ko:
   membership_requests_page:
     approve: 승인
     ignore: 무시
-  group_form:
-    profile_label: 프로필
-    name_label: 이름
-    description_label: 설명
   memberships_page:
     members: 멤버
     name_label: 이름
@@ -153,7 +147,7 @@ ko:
     get_in_touch: 연락하기
     get_in_touch_description_html: "질문이나 의견이 있다면 <a href='%{link}'>연락해 주세요.</a>."
     getting_started: 시작하기
-    getting_started_description: "왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다."
+    getting_started_description: '왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다.'
     have_a_discussion: 토론 하기
     have_a_discussion_description: "주제와 관련된 정보와 배경 정보는 페이지의 상단에 위치해 있습니다. \n토론에 여러분의 목소리를 담기 위해서는 댓글 상자를 이용하세요."
     help: 도움말
@@ -165,13 +159,13 @@ ko:
     make_a_decision_description: 그룹이 결정을 내릴 준비가 되면 누구나 제안을 할 수 있습니다. 행동의 과정을 명확히 설명하고 동의하거나 동의하지 않는것이 어떤 뜻인지 배경정보를 제공해 주세요.
     prompt_people_details: "그룹에 특정인에 관심을 얻기를 원한다면 '@'뒤에 이름을 적으세요. 그렇게 하면 코멘트에 이름이 언급된 내용을 이메일을 통해서 알게 됩니다."
     prompt_people_html: "<span class='blue'>@mentions</span>으로 알려주기"
-    positions_agree_description: "<span>동의</span> 는 제안을 좋아한다는 뜻입니다."
-    positions_abstain_description: "<span>기권</span> 은 확신하지 않거나 다른 사람들이 당신을 제외하고 결정을 내리는것에 동의한다는 뜻입니다."
-    positions_disagree_description: "<span>반대</span> 는 더 낳은 대안이 있다고 생각하지만 그룹에서 계속 논의가 이어지기를 바란다는 뜻입니다. "
-    positions_block_description: "<span>차단</span> 은 심각하게 반대하고 있고 이것이 제안으로 발전하는것을 반대합니다."
+    positions_agree_description: '<span>동의</span> 는 제안을 좋아한다는 뜻입니다.'
+    positions_abstain_description: '<span>기권</span> 은 확신하지 않거나 다른 사람들이 당신을 제외하고 결정을 내리는것에 동의한다는 뜻입니다.'
+    positions_disagree_description: '<span>반대</span> 는 더 낳은 대안이 있다고 생각하지만 그룹에서 계속 논의가 이어지기를 바란다는 뜻입니다. '
+    positions_block_description: '<span>차단</span> 은 심각하게 반대하고 있고 이것이 제안으로 발전하는것을 반대합니다.'
     start_discussion: 토론에 참여 시작하기
     start_proposal: 명확한 제안 작성하기
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: 동영상 설명
     video_tutorial_description: 루미오를 사용법에 대해서 동영상을 살펴보세요.
   hint:
@@ -182,7 +176,7 @@ ko:
     vote: 입장를 언제나 변경할 수 있습니다.
   pricing_page:
     organisations: 조직
-    organisations_examples: "예. 회사, 정부기관, 커뮤니티 조직"
+    organisations_examples: '예. 회사, 정부기관, 커뮤니티 조직'
     informal_groups: 비공개 그룹
     informal_groups_desc: 여러분 그룹의 멤버들은 멤버들이 지불 할 수 있는 요청을 받게 됩니다.
-    informal_groups_examples: "예. 가족, 사회운동, 단체"
+    informal_groups_examples: '예. 가족, 사회운동, 단체'

@@ -4,16 +4,15 @@ ru:
     time:
       am: дп
       pm: пп
-    closing_in: "Закрывается {{time}}"
-    closed_ago: "Закрыто {{time}}"
+    closing_in: 'Закрывается {{time}}'
+    closed_ago: 'Закрыто {{time}}'
     volume: Громкость
     notification_volume: Громкость оповещений
     group: Группа
     groups: Группы
     privacy:
-      private: Приватная
       public: Публичная
-      organisation: Организация
+      private: Приватная
     selected: Выбранные
     date_range:
       today: Сегодня
@@ -39,7 +38,7 @@ ru:
   error_page:
     forbidden: У вас недостаточно прав
     page_not_found: Не найдено. Возможно было удалено или перемещено.
-    internal_server_error: "Извините, что-то не так. Попробуйте снова."
+    internal_server_error: 'Извините, что-то не так. Попробуйте снова.'
   start_proposal_card:
     title: Создать голосование
   proposal_outcome_panel:
@@ -47,7 +46,7 @@ ru:
     set_outcome_btn: Подвести итоги голосования
     edit_outcome_link: Редактировать итоги голосования
   proposal_outcome_form:
-    set_outcome: "Подвести итоги голосования "
+    set_outcome: 'Подвести итоги голосования '
     update_outcome: Обновить итоги голосования
     outcome_label: Результат голосования
     outcome_placeholder: Сообщить всем результат голосования
@@ -71,11 +70,11 @@ ru:
     closing_in: Закрывается
   session_form:
     email_label: Email
-    password_label: "Пароль:"
+    password_label: 'Пароль:'
     remember_me: Запомнить меня
     sign_in: Логин
   comment_form:
-    aria_label: "Добавить комментарий "
+    aria_label: 'Добавить комментарий '
     attachments:
       aria_label: Прикрепить файл
       remove_attachment: Удалить вложение
@@ -86,7 +85,7 @@ ru:
     edit_comment: Редактировать коментарий
     delete_comment: Удалить комментарий
     confirm_delete_message: Вы уверены что хотите удалить комментарий?
-    confirm_delete: "Да, я согласен"
+    confirm_delete: 'Да, я согласен'
   navbar:
     unread: Непрочитанные
     groups: Группы
@@ -113,7 +112,7 @@ ru:
     i_agree: Я согласен
     i_agree_details: Всецело поддерживаю
     i_abstain: Я воздерживаюсь
-    i_abstain_details: "Я был бы рад, если группа примет решение без меня."
+    i_abstain_details: 'Я был бы рад, если группа примет решение без меня.'
     i_disagree: Я не соласен
     i_disagree_details: Я думаю что есть более подходящее решение
     i_block: Я блокирую
@@ -130,7 +129,7 @@ ru:
     change_your_vote: Изменить ваш голос
   close_proposal_form:
     close_proposal: Закрыть предложение
-    close_proposal_submit: "Да, закрыть голосование"
+    close_proposal_submit: 'Да, закрыть голосование'
     messages:
       success: Голосование закрыто
   proposal_form:
@@ -145,8 +144,6 @@ ru:
     privacy_label: Конфиденциальность
   proposal_expanded:
     close_proposal: Закрыть предложение
-  start_group_form:
-    heading: Создать группу
   join_group_button:
     join_group: Вступить в группу
     ask_to_join_group: Подать заявку на вступление
@@ -167,11 +164,6 @@ ru:
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
-  group_form:
-    profile_label: Профиль
-    name_label: Имя
-    description_label: Описание
-    category_label: Категория
   invitation:
     invite_people: Пригласить людей
   memberships_page:
@@ -233,12 +225,12 @@ ru:
     how_it_works: Как это работает
     join_the_community: Присоединиться к сообществу
     make_a_decision: Принять решение
-    make_a_decision_description: "Когда группа готова принять решение, каждый может сделать предложение. Обозначьте ясный порядок действий и дайте пояснения, чтобы каждый точно знал, что означает согласиться или не согласиться."
-    positions_agree_description: "<span>Согласен(-на)</span> означает, что Вы довольны предложением."
+    make_a_decision_description: 'Когда группа готова принять решение, каждый может сделать предложение. Обозначьте ясный порядок действий и дайте пояснения, чтобы каждый точно знал, что означает согласиться или не согласиться.'
+    positions_agree_description: '<span>Согласен(-на)</span> означает, что Вы довольны предложением.'
     start_discussion: Начиная интересное обсуждение
     start_proposal: Написание понятного предложения
     video_tutorial: Видеоучебник
-    video_tutorial_description: "Посмотрите видео, которое вкратце покажет, как использовать Loomio."
+    video_tutorial_description: 'Посмотрите видео, которое вкратце покажет, как использовать Loomio.'
   hint:
     context: Подсказки для использования контекстной панели
     discussion: Подсказки для начала увлекательного обсуждения
@@ -248,4 +240,4 @@ ru:
   pricing_page:
     organisations: Организации
     informal_groups: Неформальные группы
-    informal_groups_desc: "У членов Вашей группы попросят заплатить, сколько они смогут"
+    informal_groups_desc: 'У членов Вашей группы попросят заплатить, сколько они смогут'

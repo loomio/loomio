@@ -6,8 +6,8 @@ ca:
     group: Grup
     groups: Grups
     privacy:
-      private: Privat
       public: Public
+      private: Privat
     date_range:
       today: Avui
     models:
@@ -19,7 +19,7 @@ ca:
       unlike: "No m'agrada"
       cancel: Cancelar
   error_page:
-    forbidden: "Ens sap greu, no tens permisos per fer això."
+    forbidden: 'Ens sap greu, no tens permisos per fer això.'
   proposal_outcome_panel:
     heading: Resultat
   proposal_outcome_form:
@@ -72,8 +72,6 @@ ca:
     privacy_label: Prvacitat
   proposal_expanded:
     close_proposal: Tancar proposta
-  start_group_form:
-    heading: Comença un grup
   join_group_button:
     join_group: Uneix-te al grup
     ask_to_join_group: Demana unir-te al grup
@@ -94,11 +92,6 @@ ca:
   membership_requests_page:
     approve: Aprovar
     ignore: Ignorar
-  group_form:
-    profile_label: Perfil
-    name_label: Nom
-    description_label: Descripció
-    category_label: Categoria
   memberships_page:
     members: Membres
     name_label: Nom
@@ -139,7 +132,17 @@ ca:
     message_label: El teu missatge
   help_page:
     coordinating: Coordinant el teu grup de Loomio
-    coordinating_details: "Com a persona coordinadora, ets responsable de configurar el teu grup de Loomio\ni convidar tothom a participar. A més d'aprendre a utilizar aquest software, el teu grup\napren nous processos per col·laborar més efectivament i prendre bones decissions\njunts. Aquí tens algunes claus per tal que el grup funcioni:\n"
+    coordinating_details: >
+      Com a persona coordinadora, ets responsable de configurar el teu grup de
+      Loomio
+
+      i convidar tothom a participar. A més d'aprendre a utilizar aquest
+      software, el teu grup
+
+      apren nous processos per col·laborar més efectivament i prendre bones
+      decissions
+
+      junts. Aquí tens algunes claus per tal que el grup funcioni:
     different_ways: "Diferents maneres d'emprar Loomio"
     engaging_html: "<h2> Claus per engrescar el teu grup </h2>\n<p>La gent estarà emocionada d'entrar i començar a participar quan hi ha una\nproposta estimulant sobre la taula. Una bona proposta conté un pla d'acció per al grup, en \nel que quedi clar què significa estar d'acord o en desacord. Pensa en com\npot identificar debats / decisions que el grup està duent a terme en persona o per\ncorreu electrònic i que seria més fàcil si estiguessin a Loomio. </p>\n<p> Si el grup està començant, pots començar per una decisió simple, per donar\na tothom l'oportunitat de jugar amb l'eina i experimentar el procés de presa de decisions. </p>\n<p> Una altra forma senzilla d'animar gent a participar en una discussió és utilitzar la @menció\na persones específiques, als quals els arribarà un correu electrònic dient que han estat\nesmentats en un comentari. </p>\n"
     example1_html: "<h3> Necessites que el grup discuteixi un tema molt ampli i desenvolupar una solució col·lectiva </h3>\n<p> Estratègia: Debatre un tema per un temps abans de crear una proposta </p>\n<p> Les discussions sovint arriben als millors resultats si es construeix una comprensió compartida\nsobre el problema abans d'abordar una solució específica. Quan la gent participa en el procés, \nés més propensa a arribar a un acord amb el resultat. </p>\n"
@@ -147,20 +150,70 @@ ca:
     get_in_touch: "Posa't en contacte"
     get_in_touch_description_html: "Si tens alguna pregunta o comentari,  <a href='%{link}'> escriu-nos </a>."
     getting_started: Primers passos
-    getting_started_description: "A mà esquerra, el grup discuteix un tema, intercanviant idees i informació. Quan el grup ha de prendre una decisió, apareix a mà dreta."
+    getting_started_description: 'A mà esquerra, el grup discuteix un tema, intercanviant idees i informació. Quan el grup ha de prendre una decisió, apareix a mà dreta.'
     getting_the_most: Treure el màxim profit de Loomio
     have_your_say: Digues la teva
-    have_your_say_details_html: "<p> Quan estiguis preparada per donar la teva opinió, fes clic en un dels quatre botons de decisions.\n</p>\n<p>Quan premis la decisió, deixa una breu explicació. Sota el gràfic,\nes pot veure el que pensa la resta. Això fa que sigui ràpid i fàcil posar-se al dia\nde la discussió. Com que nova informació es va fent pública, pots canviar la teva\nposició en qualsevol moment. </p>\n"
+    have_your_say_details_html: >
+      <p> Quan estiguis preparada per donar la teva opinió, fes clic en un dels
+      quatre botons de decisions.
+
+      </p>
+
+      <p>Quan premis la decisió, deixa una breu explicació. Sota el gràfic,
+
+      es pot veure el que pensa la resta. Això fa que sigui ràpid i fàcil
+      posar-se al dia
+
+      de la discussió. Com que nova informació es va fent pública, pots canviar
+      la teva
+
+      posició en qualsevol moment. </p>
     have_a_discussion: Discuteix
     have_a_discussion_description: "El tema, junt amb qualsevol informació o context rellevant, apareix a l'encapçalament de la pàgina. Utilitza el quadre de comentaris per afegir la teva veu a la discussió."
     help: Ajuda
     how_it_works: Funcionament
-    invitation_html: "<h2> Escriure una bona invitació </h2>\n<p> La primera pregunta que cada nou membre es fa és \"per a què serveix aquest grup?\"</p>\n<p> Pensa en la manera més senzilla de descriure'l: Què vols aconseguir junts? Quin tipus de decisions fareu? Qui hi participarà? </p>\n<p> Pot ser una bona idea parlar amb el seu grup abans de convidar-los a Loomio. </p>\n<p> La gent voldrà saber per què han estat convidats, que s'espera d'ells,\ni per què paga la pena aprendre a utilitzar una nova eina. </p>\n"
+    invitation_html: >
+      <h2> Escriure una bona invitació </h2>
+
+      <p> La primera pregunta que cada nou membre es fa és "per a què serveix
+      aquest grup?"</p>
+
+      <p> Pensa en la manera més senzilla de descriure'l: Què vols aconseguir
+      junts? Quin tipus de decisions fareu? Qui hi participarà? </p>
+
+      <p> Pot ser una bona idea parlar amb el seu grup abans de convidar-los
+      a Loomio. </p>
+
+      <p> La gent voldrà saber per què han estat convidats, que s'espera d'ells,
+
+      i per què paga la pena aprendre a utilitzar una nova eina. </p>
     join_the_community: Unir-se a la comunitat
     images_and_text_formatting: "Format d'imatges i textos"
-    images_and_text_formatting_html: "<p>Loomio utilitza 'Markdown' per incrustar imatges i formatar el text.\nPots activar i desactivar el Markdown amb la petita icona gris sota l'apartat de comentaris. </p>\n<p><a href='https://www.loomio.org/discussions/1124'> Fes clic aquí </a>\nper obtenir informació sobre com utilitzar Markdown. </p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio utilitza 'Markdown' per incrustar imatges i formatar el text.
+
+      Pots activar i desactivar el Markdown amb la petita icona gris sota
+      l'apartat de comentaris. </p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'> Fes clic aquí </a>
+
+      per obtenir informació sobre com utilitzar Markdown. </p>
     keep_up_to_date: Estar al dia
-    keep_up_to_date_html: "<p>Fer clic al nom del grup a la part superior de la pantalla porta a la Pàgina del Grup,\non es pot veure una llista de tots els debats i decisions d'aquest grup. Si\nets a més d'un grup, veuràs tota l'activitat de tots els grups alhora en la pàgina principal. </p>\n<p>Rebràs notificacions per correu electrònic quan coses importants succeeixen en el teu grup.\nPots canviar les preferències de correu <a href=\"%{link}\"\"> aquí </a>. </p>\n"
+    keep_up_to_date_html: >
+      <p>Fer clic al nom del grup a la part superior de la pantalla porta a la
+      Pàgina del Grup,
+
+      on es pot veure una llista de tots els debats i decisions d'aquest grup.
+      Si
+
+      ets a més d'un grup, veuràs tota l'activitat de tots els grups alhora en la
+      pàgina principal. </p>
+
+      <p>Rebràs notificacions per correu electrònic quan coses importants
+      succeeixen en el teu grup.
+
+      Pots canviar les preferències de correu <a href="%{link}""> aquí </a>.
+      </p>
     make_a_decision: Pren una decisió
     make_a_decision_description: "Quan el grup està llest per prendre una decisió, qualsevol pot fer una proposta. És important redactar el pla d'acció amb cura i explicar el context perquè tothom sàpiga exactament què significa estar d'acord o en desacord."
     prompt_people_details: "Si vols aconseguir l'atenció d'una persona específica al teu grup, escriu '@' seguit del seu nom. Rebrà un correu electrònic fent-los saber que l'has esmentat en un comentari."
@@ -168,12 +221,23 @@ ca:
     positions_agree_description: "<span>Hi estic d'acord</span> vol dir que estàs content amb la proposta."
     positions_abstain_description: "<span>M'abstenc</span> vols dir que no n'estàs segur o que estàs d'acord amb que el grup decideixi sense tu. "
     positions_disagree_description: "<span>No hi estic d'acord</span> vol dir que creus que hi pot haver una millor alternativa però acceptaràs la decisió que prengui el grup."
-    positions_block_description: "<span>Blouejo</span> vol dir que tens objeccions importants i estaràs extremadament insatisfet si aquesta proposta tira endavant."
+    positions_block_description: '<span>Blouejo</span> vol dir que tens objeccions importants i estaràs extremadament insatisfet si aquesta proposta tira endavant.'
     start_discussion: Començar una discussió engrescadora
-    start_discussion_html: "<p> En iniciar una discussió, assegureu-vos que el títol s'ajusta al tema perfectament.\nUtilitzeu el Panell de Context per donar la informació bàsica necessària per tenir una discussió productiva i informada. </p>\n<p> Durant el debat, el Panell de Context pot ser actualitzat amb nova informació. A més d'aclarir el tema, pots utilitzar aquest espai per compartir recursos, resumir el debat a mesura que avança, o per fixar el\nprotocols de presa de decisions que el grup està utilitzant. </p>\n"
+    start_discussion_html: >
+      <p> En iniciar una discussió, assegureu-vos que el títol s'ajusta al tema
+      perfectament.
+
+      Utilitzeu el Panell de Context per donar la informació bàsica necessària
+      per tenir una discussió productiva i informada. </p>
+
+      <p> Durant el debat, el Panell de Context pot ser actualitzat amb nova
+      informació. A més d'aclarir el tema, pots utilitzar aquest espai per
+      compartir recursos, resumir el debat a mesura que avança, o per fixar el
+
+      protocols de presa de decisions que el grup està utilitzant. </p>
     start_proposal: Escriure una proposta clara
     start_proposal_html: "<p> Si fas el títol clar i concís, la gent sabrà immediatament què significa estar d'acord o en desacord. </p>\n<p>Si una proposta no aconsegueix un acord clar immediatament, no és la fi del món.\nSi al grup no li agrada la primera proposta, qualsevol persona pot iniciar una nova proposta per\nabordar les inquietuds plantejades, i mantenir el procés en marxa. </p>\n<p> A través d'aquest procés dinàmic, la intel·ligència col·lectiva del grup pot generar idees millors \nque ningú hauria pogut tenir individualment.</p>\n<p>El termini de la proposta es pot ampliar en qualsevol moment, si sembla que la decisió\nnecessita una mica més de temps. Tothom rebrà una notificació per correu electrònic 24 hores abans de la proposta es tanqui.</p>\n"
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Video tutorial
     video_tutorial_description: Mira el video per a una demostració ràpida de com utilitzar Loomio.
   hint:
@@ -183,9 +247,16 @@ ca:
     proposal: Claus per escriure una proposta clara
     vote: Pots canviar la teva posició en qualsevol moment
   pricing_page:
-    intro: "Els grups amb pressupost paguen una subscripció per utilitzar l'eina.\nEls grups sense els mitjans per pagar una subscripció usen el model\n\"paga el que puguis\": els seus membres estan convidats a fer una contribució voluntària. La teva ajuda és necessària per mantenir Loomio independent, lliure de publicitat, i conduït per la comunitat.\n"
+    intro: >
+      Els grups amb pressupost paguen una subscripció per utilitzar l'eina.
+
+      Els grups sense els mitjans per pagar una subscripció usen el model
+
+      "paga el que puguis": els seus membres estan convidats a fer una
+      contribució voluntària. La teva ajuda és necessària per mantenir Loomio
+      independent, lliure de publicitat, i conduït per la comunitat.
     organisations: Organitzacions
-    organisations_examples: "per exemple empreses, agències governamentals, organitzacions comunitàries"
+    organisations_examples: 'per exemple empreses, agències governamentals, organitzacions comunitàries'
     informal_groups: Grups informals
     informal_groups_desc: Es demanarà als membres del teu grup per pagar el que puguin
-    informal_groups_examples: "per exemple famílies, moviments socials, col·lectius"
+    informal_groups_examples: 'per exemple famílies, moviments socials, col·lectius'

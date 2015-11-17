@@ -50,8 +50,6 @@ ar:
   proposal_expanded:
     edit_proposal: تعديل الإقتراح
     close_proposal: أغلِق الإقتراح
-  start_group_form:
-    heading: ابدأ مجموعة
   membership_request_form:
     name_label: الإسم
     email_label: البريد الإلكتروني
@@ -65,10 +63,6 @@ ar:
   membership_requests_page:
     approve: موافق
     ignore: تجاهل
-  group_form:
-    name_label: الإسم
-    description_label: الوصف
-    category_label: التصنيف
   memberships_page:
     members: الأعضاء
     name_label: الإسم
@@ -109,9 +103,9 @@ ar:
     join_the_community: إنضم للمجتمع
     make_a_decision: اتخذ قرارا
     make_a_decision_description: عندما تصبح المجموعة جاهزة لاتخاذ قرار، فإنه يمكن لأي كان أن يطرح مقترحا. ضع خطا واضحا لمسار العمل وأعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها.
-    positions_agree_description: "<span>\"موافق\"</span> تعني أنك راضي بالمقترح."
-    positions_abstain_description: "<span>\"امتنع\"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك."
-    positions_disagree_description: "<span>\"غير موافق\"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة."
-    positions_block_description: "<span>\"أعترض\"</span> تعني أن لديك إعتراضات جدية وأنك ستكون غير راض إذا تم تبني المقترح."
+    positions_agree_description: '<span>"موافق"</span> تعني أنك راضي بالمقترح.'
+    positions_abstain_description: '<span>"امتنع"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك.'
+    positions_disagree_description: '<span>"غير موافق"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة.'
+    positions_block_description: '<span>"أعترض"</span> تعني أن لديك إعتراضات جدية وأنك ستكون غير راض إذا تم تبني المقترح.'
     video_tutorial: الفيديو التعليمي
     video_tutorial_description: شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام Loomio.

@@ -9,9 +9,8 @@ cs:
     group: Skupina
     groups: Skupiny
     privacy:
-      private: Soukromá
       public: Veřejnost
-      organisation: Organizace
+      private: Soukromá
     date_range:
       today: Dnes
       yesterday: Včera
@@ -64,8 +63,8 @@ cs:
     latest: Nejnovější
     unread: Nepřečteno
   session_form:
-    email_label: "Email:"
-    password_label: "Heslo:"
+    email_label: 'Email:'
+    password_label: 'Heslo:'
     remember_me: Pamatovat si mě
     sign_in: Přihlásit
   comment_form:
@@ -81,8 +80,8 @@ cs:
     delete_comment: Odstranit komentář
     cancel_reply: Zrušit odpověď
     confirm_delete_message: Opravdu chcete odstranit tento komentář?
-    confirm_delete: "Ano, jsem si jistá/ý"
-    in_reply_to: "V reakci na <strong>{{name}}</strong>:"
+    confirm_delete: 'Ano, jsem si jistá/ý'
+    in_reply_to: 'V reakci na <strong>{{name}}</strong>:'
     submit_button:
       label: Odeslat
   navbar:
@@ -119,18 +118,18 @@ cs:
   vote_form:
     heading: Vyjádřete svůj názor
     i_agree: Souhlasím
-    i_agree_details: "Podporuji to a chci, aby to prošlo."
+    i_agree_details: 'Podporuji to a chci, aby to prošlo.'
     i_abstain: Zdržuji se
-    i_abstain_details: "Budu rád, když se skupina rozhodne beze mne."
+    i_abstain_details: 'Budu rád, když se skupina rozhodne beze mne.'
     i_disagree: Nesouhlasím
-    i_disagree_details: "Myslím, že by to šlo lépe."
+    i_disagree_details: 'Myslím, že by to šlo lépe.'
     i_block: Zamítám
-    i_block_details: "Mám silné námitky proti tomuto návrhu a nechci, aby prošel."
+    i_block_details: 'Mám silné námitky proti tomuto návrhu a nechci, aby prošel.'
     submit_position: Odeslat postoj
     change_position: Změnit postoj
     select_position: Vybrat postoj
     statement_placeholder: Sdělte své myšlenky skupině.
-    aria_statement_label: "Volitelně přidejte sdělení, které bude zaznamenáno s Vaším postojem"
+    aria_statement_label: 'Volitelně přidejte sdělení, které bude zaznamenáno s Vaším postojem'
     messages:
       created: Hlas přidán
   proposal_positions_panel:
@@ -141,11 +140,11 @@ cs:
     show_undecided: Zobrazit nerozhodnuté členy
     hide_undecided: Skrýt nerozhodnuté členy
   proposal_pie_chart:
-    participation_statement: "{{percentage}}% členů vyjádřilo svůj postoj ({{number}}/{{total}})"
+    participation_statement: '{{percentage}}% členů vyjádřilo svůj postoj ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Uzavřít návrh
     helptext: Opravdu chcete uzavřít tento návrh teď?
-    close_proposal_submit: "Ano, uzavřít návrh"
+    close_proposal_submit: 'Ano, uzavřít návrh'
     messages:
       success: Návrh uzavřen
   extend_proposal_form:
@@ -163,8 +162,8 @@ cs:
     closes_at_label: Uzavírá se
     details_label: Podrobnosti
   discussion_record:
-    created: "Vlákno {{title}} bylo úspěšně vytvořeno v {{groupName}}"
-    updated: "Změny k {{title}} uloženy"
+    created: 'Vlákno {{title}} bylo úspěšně vytvořeno v {{groupName}}'
+    updated: 'Změny k {{title}} uloženy'
   discussion_form:
     messages:
       created: Vlákno vytvořeno
@@ -182,7 +181,7 @@ cs:
   proposal_expanded:
     collapse: Skrýt
     current_votes: Aktuální hlasy
-    started_by: "Vytvořeno <strong>{{name}}</strong>"
+    started_by: 'Vytvořeno <strong>{{name}}</strong>'
     only_voter_is_you: Žádní další členové zatím nevolili.
     extend_proposal: Změnit čas uzavření
     edit_proposal: Upravit návrh
@@ -194,21 +193,12 @@ cs:
   proposal_position_block: Zamítnout
   group_welcome_modal:
     heading: Vítejte ve své nové skupině
-    ok_got_it: "OK, chápu!"
-  start_group_form:
-    heading: Vytvořit skupinu
-    heading_when_subgroup: Vytvořit podskupinu
-    group_helptext: "Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:"
-    subgroup_name_label: Název podskupiny
-    submit: Vytvořit skupinu
-    messages:
-      success: Skupina vytvořena
-      success_when_subgroup: Podskupina vytvořena
+    ok_got_it: 'OK, chápu!'
   join_group_button:
     join_group: Připojit ke skupině
     ask_to_join_group: Zažádat o členství
     messages:
-      joined_group: "Nyní jste členem {{group}}"
+      joined_group: 'Nyní jste členem {{group}}'
   membership_request_form:
     heading: Zažádat o členství
     name_label: Jméno
@@ -216,7 +206,7 @@ cs:
     introduction_label: Představte se
     submit_button: Zažádat o členství
     messages:
-      membership_requested: "Zažádali jste o členství v {{group}}"
+      membership_requested: 'Zažádali jste o členství v {{group}}'
   group_page:
     thread_list:
       empty:
@@ -229,7 +219,7 @@ cs:
       archive_group_success: Tato skupina byla deaktivována
     group_logo: Logo skupiny
     discussions: Diskuze
-    members_placeholder: "Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!"
+    members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
     subgroups: Podskupiny
     subgroups_placeholder: Podskupiny Vám umožní rozdělit skupinu do několika různých týmů.
     invite_people: Pozvat další
@@ -240,46 +230,18 @@ cs:
     deactivate_group:
       title: Deaktivovat skupinu
       question: Opravdu chcete deaktivovat tuto skupinu?
-      submit: "Ano, deaktivovat tuto skupinu"
+      submit: 'Ano, deaktivovat tuto skupinu'
     leave_group:
       title: Opustit skupinu
       question: Opravdu chcete opustit tuto skupinu?
-      submit: "Ano, opustit tuto skupinu"
-      cannot_leave_group: "Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat."
+      submit: 'Ano, opustit tuto skupinu'
+      cannot_leave_group: 'Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat.'
       add_coordinator: Přidat koordinátora
   choose_plan_modal:
     email_support: e-mailová podpora
     premium_support: prémiová podpora
     custom_url: vlastní URL
     usage_statistics: statistiky využití
-  group_form:
-    title: Upravit nastavení skupiny
-    profile:
-      label: Profil
-      description: Popis
-    privacy:
-      label: Soukromí
-      visible_to_members: Kdo může tuto skupinu najít?
-      membership_granted_upon: Jak se lidé připojí?
-      membership_by_request: Otevřeně - každý se může přidat ke skupině
-      membership_by_request_subgroup: "Otevřené členům {{parentGroupName}}"
-      membership_by_approval: Žádostí - každý může zažádat o členství
-      membership_by_approval_subgroup: "Žádostí členů {{parentGroupName}}"
-      membership_by_invitation: Jen pozvánkou - noví členové musí být pozváni
-      public_or_private_discussions: Povolit veřejná a soukromá vlákna
-    permissions:
-      label: Oprávnění
-      helptext: Co mohou členové dělat?
-      members_can_add_members: Zvát a schvalovat nové členy
-      members_can_create_subgroups: Vytvářet podskupiny
-      members_can_start_discussions: Vytvářet vlákna
-      members_can_edit_discussions: Upravit název a kontext libovolného vlákna
-      members_can_edit_comments: Kdykoliv upravit své komentáře
-      members_can_raise_motions: Vytvářet návrhy
-      members_can_vote: Hlasovat o návrzích
-    submit: Aktualizovat nastavení
-    messages:
-      success: Skupina aktualizována
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
@@ -288,19 +250,6 @@ cs:
     messages:
       request_approved_success: Žádost o členství schválena
       request_ignored_success: Žádost o členství ignorována
-  group_form:
-    messages:
-      new_group: Skupina vytvořena
-      update_group: Skupina aktualizována
-    new_group_title: Vytvořit novou skupinu
-    new_subgroup_title: "Vytvořit novou podskupinu {{parentGroupName}}"
-    edit_group_title: Nastavení skupiny
-    profile_label: Profil
-    name_label: Jméno
-    name_placeholder: Zadejte název své skupiny
-    description_label: Popis
-    description_placeholder: Popište svou skupinu
-    category_label: Kategorie
   invitation:
     invite_people: Pozvat lidi
   memberships_page:
@@ -320,14 +269,14 @@ cs:
       use_uploaded: Nahrát nový obrázek
     change_password:
       title: Změnit heslo
-      helptext: "Hesla musí obsahovat alespoň 8 znaků. Běžná hesla jako \"password\" jsou zakázaná, aby váš účet zůstal bezpečným."
+      helptext: 'Hesla musí obsahovat alespoň 8 znaků. Běžná hesla jako "password" jsou zakázaná, aby váš účet zůstal bezpečným.'
       current_password_label: Současné heslo
       new_password_label: Nové heslo
       password_confirmation_label: Potvrdit nové heslo
       submit: Aktualizovat heslo
     deactivate_user:
       title: Deaktivovat účet
-      question: "Mohl(a) byste nám říct, proč jste se rozhodl(a) deaktivovat svůj účet?"
+      question: 'Mohl(a) byste nám říct, proč jste se rozhodl(a) deaktivovat svůj účet?'
       submit: Deaktivovat účet
     change_picture_link: Změnit obrázek
     change_password_link: Změnit heslo
@@ -360,9 +309,9 @@ cs:
       all_description: Zobrazit aktuální vlákna
       starred: Vlákna s hvězdičkou
       starred_aria_label: Momentálně se zobrazují vlákna označená jako důležitá
-      starred_description: "Zobrazit jen vlákna, která jste označil(a) za důležitá."
-      participating_aria_label: "Momentálně se zobrazují vlákna, v kterých jsem se zapojil(a)"
-      participating_description: "Zobrazit jen vlákna, do kterých jste se zapojil(a)"
+      starred_description: 'Zobrazit jen vlákna, která jste označil(a) za důležitá.'
+      participating_aria_label: 'Momentálně se zobrazují vlákna, v kterých jsem se zapojil(a)'
+      participating_description: 'Zobrazit jen vlákna, do kterých jste se zapojil(a)'
       proposals: Návrhy
       proposals_aria_label: Momentálně se zobrazují vlákna s aktivními návrhy
       proposals_description: Zobrazit jen vlákna s aktivními návrhy
@@ -370,10 +319,10 @@ cs:
       muted_aria_label: Momentálně se zobrazují ztlumená vlákna
       muted_description: Zobrazit jen ztlumená vlákna
     aria_thread:
-      title: "Název vlákna: {{title}}."
-      unread: "{{count}} nepřečtených položek."
-      current_proposal: "Současný návrh: {{name}}."
-      you_voted: "Volil(a) jste: {{position}}."
+      title: 'Název vlákna: {{title}}.'
+      unread: '{{count}} nepřečtených položek.'
+      current_proposal: 'Současný návrh: {{name}}.'
+      you_voted: 'Volil(a) jste: {{position}}.'
     threads_from:
       group: Vlákna z
       today: Dnes
@@ -391,14 +340,14 @@ cs:
     proposals: Návrhy
     previous_proposals: Předchozí návrhy
     you_like_this: Vám se toto líbí.
-    liked_by_you_and_someone: "Vám a {{name}} se toto líbí."
-    liked_by_you_and_others: "Vám, {{joinedNames}} a {{name}} se toto líbí."
-    liked_by_someone: "{{name}} se toto líbí."
-    liked_by_two_others: "{{name_1}} a {{name_2}} se toto líbí."
-    liked_by_many_others: "{{joinedNames}} a {{name}} se toto líbí."
-    liked_by_name: "{{name}} se toto líbí."
-    liked_by_names_and_name: "{{joinedNames}} a {{name}} se toto líbí."
-    started_by: "Vytvořeno <strong>{{name}}</strong>"
+    liked_by_you_and_someone: 'Vám a {{name}} se toto líbí.'
+    liked_by_you_and_others: 'Vám, {{joinedNames}} a {{name}} se toto líbí.'
+    liked_by_someone: '{{name}} se toto líbí.'
+    liked_by_two_others: '{{name_1}} a {{name_2}} se toto líbí.'
+    liked_by_many_others: '{{joinedNames}} a {{name}} se toto líbí.'
+    liked_by_name: '{{name}} se toto líbí.'
+    liked_by_names_and_name: '{{joinedNames}} a {{name}} se toto líbí.'
+    started_by: 'Vytvořeno <strong>{{name}}</strong>'
   thread_group:
     aria_label: Název skupiny
   thread_context:
@@ -406,7 +355,7 @@ cs:
   activity_card:
     new_activity: Nová aktivita
     attachment_display:
-      aria_label: "Přiložený soubor:"
+      aria_label: 'Přiložený soubor:'
       image_alt: Přiložený obrázek
   delete_comment_dialog:
     title: Odstranit komentář
@@ -425,14 +374,14 @@ cs:
     message_label: Vaše zpráva
     message_placeholder: Vaše zpráva...
     send_message: Odeslat zprávu
-    new_contact_message: "Děkujeme za Vaší zprávu; brzy vám napíšeme!"
+    new_contact_message: 'Děkujeme za Vaší zprávu; brzy vám napíšeme!'
   help_page:
     coordinating: Koordinace vaší Loomio skupiny
     different_ways: Různé způsoby jak použít Loomio
     get_in_touch: Spojte se s námi
     get_in_touch_description_html: "Pokud máte jakékoli otázky nebo připomínky, <a href='%{link}'>napište nám</a>."
     getting_started: Jak začít
-    getting_started_description: "Nalevo skupina prodiskutuje téma, vymění si názory a informace. Když nastane čas pro rozhodnutí, rozhodnutí se objeví napravo."
+    getting_started_description: 'Nalevo skupina prodiskutuje téma, vymění si názory a informace. Když nastane čas pro rozhodnutí, rozhodnutí se objeví napravo.'
     getting_the_most: Získání co nejvíce z Loomio
     have_your_say: Vyjádřete svůj názor
     have_a_discussion: Mějte diskuzi
@@ -443,18 +392,18 @@ cs:
     images_and_text_formatting: Obrázky a formátování textu
     keep_up_to_date: Zůstaňte informovánáni
     make_a_decision: Rozhodněte se
-    make_a_decision_description: "Když je skupina připravena učinit rozhodnutí, každý může vytvořit návrh. Krátce popište jasný návrh postupu a poskytněte určitý základ, aby každý věděl, co přesně znamená souhlasit či nesouhlasit."
-    prompt_people_details: "Pokud chcete získat pozornost konkrétní osoby ve vaší skupině, napište ‚@‘ následované jejich jménem. Obdrží email, který jim dá vědět, že jste je zmínil(a)."
+    make_a_decision_description: 'Když je skupina připravena učinit rozhodnutí, každý může vytvořit návrh. Krátce popište jasný návrh postupu a poskytněte určitý základ, aby každý věděl, co přesně znamená souhlasit či nesouhlasit.'
+    prompt_people_details: 'Pokud chcete získat pozornost konkrétní osoby ve vaší skupině, napište ‚@‘ následované jejich jménem. Obdrží email, který jim dá vědět, že jste je zmínil(a).'
     prompt_people_html: "Pobídněte lidi pomocí <span class='blue'>@zmínění</span>"
-    positions_agree_description: "<span>Souhlasím</span> znamená, že jste spokojeni s návrhem."
-    positions_abstain_description: "<span>Zdržuji se</span> znamená, že si nejste jisti, nebo že budete rádi, když se skupina rozhodne bez vás."
-    positions_disagree_description: "<span>Nesouhlasím</span> znamená, že myslíte, že by mohla existovat lepší možnost, ale jste ochotni přijmout rozhodnutí skupiny."
-    positions_block_description: "<span>Zamítám</span> znamená, že máte vážné námitky a budete velmi nešťni, pokud se bude podle návrhu postupovat."
+    positions_agree_description: '<span>Souhlasím</span> znamená, že jste spokojeni s návrhem.'
+    positions_abstain_description: '<span>Zdržuji se</span> znamená, že si nejste jisti, nebo že budete rádi, když se skupina rozhodne bez vás.'
+    positions_disagree_description: '<span>Nesouhlasím</span> znamená, že myslíte, že by mohla existovat lepší možnost, ale jste ochotni přijmout rozhodnutí skupiny.'
+    positions_block_description: '<span>Zamítám</span> znamená, že máte vážné námitky a budete velmi nešťni, pokud se bude podle návrhu postupovat.'
     start_discussion: Zahájení poutavé diskuze
     start_proposal: Napsání jasného návrhu
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Zobrazit tutoriál
-    video_tutorial_description: "Shlédněte rychlou ukázku toho, jak se Loomio používá."
+    video_tutorial_description: 'Shlédněte rychlou ukázku toho, jak se Loomio používá.'
   hint:
     context: Rady pro používání kontextového panelu
     discussion: Rady k zahájení poutavé diskuze
@@ -463,15 +412,15 @@ cs:
     vote: Můžete kdykoliv svůj postoj změnit
   pricing_page:
     organisations: Organizace
-    organisations_examples: "např. firmy, vládní agentury, komunitní organizace"
+    organisations_examples: 'např. firmy, vládní agentury, komunitní organizace'
     informal_groups: neformální skupiny
     informal_groups_desc: Členové vaší skupiny budou vyzváni aby zaplatili co mohou
-    informal_groups_examples: "např. rodiny, sociální hnutí, kolektivy"
+    informal_groups_examples: 'např. rodiny, sociální hnutí, kolektivy'
   angular:
     switch_back: Přepnout zpět na staré Loomio
     give_feedback: Sdělte nám svůj názor
     enable:
-      invite: "Vyzkoušejte nové Loomio!"
+      invite: 'Vyzkoušejte nové Loomio!'
       title: Vyzkoušet nové Loomio
       button_text: Povolit nové Loomio
     disable:

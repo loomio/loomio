@@ -27,15 +27,6 @@ mi:
     options_label: Ngā Kōwhiringa
     options:
       label: Ngā Kōwhiringa
-  group_form:
-    profile:
-      name: Ingoa
-      description: Whakaahuatanga
-    permissions:
-      label: Ngā Whakaaetanga
-  group_form:
-    name_label: Ingoa
-    description_label: Whakaahuatanga
   memberships_page:
     members: Ngā Mema
     name_label: Ingoa

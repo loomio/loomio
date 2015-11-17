@@ -55,8 +55,6 @@ cmn:
       title: 离开团队
   membership_requests_page:
     approve: 批准
-  group_form:
-    name_label: 名字
   memberships_page:
     members: 成员
     name_label: 名字
@@ -84,9 +82,9 @@ cmn:
     how_it_works: 怎么使用？
     join_the_community: 加入社会
     make_a_decision: 做决定
-    positions_agree_description: "<span>同意</span>意思就是满意提议的内容"
+    positions_agree_description: '<span>同意</span>意思就是满意提议的内容'
     start_proposal: 写一个很清晰的提议
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: 视频教育
     video_tutorial_description: 看看使用Loomio的示范视频
   hint:

@@ -3,16 +3,15 @@ ro:
     time:
       am: am
       pm: pm
-    closing_in: "Spre inchidere {{time}}"
-    closed_ago: "Inchis {{time}}"
+    closing_in: 'Spre inchidere {{time}}'
+    closed_ago: 'Inchis {{time}}'
     volume: Volum
     notification_volume: Volum Notificari
     group: Grup
     groups: Grupuri
     privacy:
-      private: Confidential
       public: Public
-      organisation: Organizatie
+      private: Confidential
     selected: Selectii
     date_range:
       today: Astazi
@@ -44,7 +43,7 @@ ro:
   error_page:
     forbidden: Nu ai permisiune pentru aceasta actiune.
     page_not_found: Nu am gasit nimic corespunzator. Este posibil sa fi fost sters sau mutat.
-    internal_server_error: "Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data."
+    internal_server_error: 'Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.'
   start_proposal_card:
     title: Initiaza o propunere
     helptext: Esti gata sa iei o decizie?
@@ -67,8 +66,8 @@ ro:
   previous_proposals_page:
     heading: Propuneri anterioare
   proposal_collapsed:
-    expand: Mai mult
-    outcome: "Rezultate: {{outcome}}"
+    expand: Extindeti
+    outcome: 'Rezultate: {{outcome}}'
   volume_levels:
     loud: Tare
     normal: Normal
@@ -78,19 +77,19 @@ ro:
   thread_volume_card:
     heading: Notificari punctuale
     body:
-      loud: "Toate mailurile: veti primi un email ori de cate ori apare ceva nou legat de aceasta propunere"
-      normal: "Propuneri pe mail: veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele."
-      quiet: "Fara mailuri: nu veti primi nimic prin email."
-      mute: "Propunere evitata: nu veti vedea nimic legat de ea in email, Propuneri Recente sau Pagini Necitite."
+      loud: 'Toate mailurile: veti primi un email ori de cate ori apare ceva nou legat de aceasta propunere'
+      normal: 'Propuneri pe mail: veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
+      quiet: 'Fara mailuri: nu veti primi nimic prin email.'
+      mute: 'Propunere evitata: nu veti vedea nimic legat de ea in email, Propuneri Recente sau Pagini Necitite.'
     change_volume_link: Schimba
   thread_volume_form:
     header: Notificari
     loud_label: Toate emailurile
     loud_description: Veti primi un email la orice modificare a acestei propuneri
     normal_label: Propunerile vor fi primite prin email
-    normal_description: "Veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele."
+    normal_description: 'Veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
     quiet_label: Fara emailuri
-    quiet_description: "Nu veti primi email decat la mentionarea explicita a @numelui."
+    quiet_description: Nu veti primi email decat la mentionarea explicita a @numelui.
     mute_label: Anulare notificari
     submit: Actualizeaza
   group_volume_card:
@@ -153,8 +152,6 @@ ro:
   proposal_expanded:
     edit_proposal: Editeaza propunerea
     close_proposal: Inchide propunerea
-  start_group_form:
-    heading: Creaza un grup
   join_group_button:
     join_group: Alatură-te grupului
     ask_to_join_group: Cere sa fi inclus in grup
@@ -168,7 +165,7 @@ ro:
     thread_list:
       empty:
         membership_is_invitation_only: Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui membru.
-        membership_is_invitation_by_admin_only: "Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui coordonator. "
+        membership_is_invitation_by_admin_only: 'Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui coordonator. '
     discussions: Discutii
     invite_people: Invita oameni
     options_label: Optiuni
@@ -179,18 +176,12 @@ ro:
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
-      mute: "Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona."
+      mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
   membership_requests_page:
     approve: Aproba
-    ignore: "Ignora "
+    ignore: 'Ignora '
   group_previous_proposals_card:
     heading: Propuneri anterioare
-  group_form:
-    edit_group_title: Setarile grupului
-    profile_label: Profil
-    name_label: Nume
-    description_label: Descrierea
-    category_label: Categoria
   memberships_page:
     members: Membri
     name_label: Nume
@@ -227,9 +218,9 @@ ro:
     previous_proposals: Propuneri anterioare
     volume:
       loud: Trimite email ori de cate ori exista activitate în acest fir.
-      normal: "Trimite e-mail doar atunci cand o propunere este creata, pe cale de a inchide, sau un rezultat este postat."
+      normal: 'Trimite e-mail doar atunci cand o propunere este creata, pe cale de a inchide, sau un rezultat este postat.'
       quiet: Nu trimite email pentru acest fir.
-      mute: "Ascunde acest fir din tabloul de comanda si notifica doar cand @va mentiona."
+      mute: Ascunde acest fir din tabloul de comanda si notifica doar cand @va mentiona.
   thread_group:
     aria_label: Numele grupului
   delete_comment_dialog:
@@ -246,15 +237,36 @@ ro:
     message_label: Mesaj
   help_page:
     coordinating: Coordonarea grupului tau Loomio
-    coordinating_details: "Ca coordonator, esti responsabil cu formarea grupului tau pe Loomio si invitarea\ncelorlalti in el. In paralel cu invatarea acestui program grupul tau\nva invata noi procedee de colaborare efectiva si de adoptare a deciziilor.\nAici sunt cateva sfaturi  care vor ajuta grupul tau sa reuseasca:\n"
+    coordinating_details: >
+      Ca coordonator, esti responsabil cu formarea grupului tau pe Loomio si
+      invitarea
+
+      celorlalti in el. In paralel cu invatarea acestui program grupul tau
+
+      va invata noi procedee de colaborare efectiva si de adoptare a deciziilor.
+
+      Aici sunt cateva sfaturi  care vor ajuta grupul tau sa reuseasca:
     different_ways: Modalitati diferite de a folosi Loomio
     engaging_html: "<h2>Sfaturi pentru implicarea grupului tau</h2>\n<p>Oamenii vor fi incantati sa se alature si sa  sa participe cand apare o propunere\ninteresanta pe masa. O propunere buna contine un plan de actiune pentru grup, incat \neste evident imediat ce inseamna sa fii de acord sau nu. Gandeste-te cum poti sa identifici\ndiscutii/decizii pe care grupul le ia in acest moment prin discutii fata in fata sau pe email\nsi care ar fi mai usor de luat pe Loomio.</p>\n<p>Daca grupul tau este in formare, poti sa incepi cu o decizie usoara pentru a da sansa tuturor\nsa se joaca cu instrumentul si sa observe procesul de luare a deciziilor in actiune.</p>\n<p>O alta metoda simpla sa incurajezi oamenii intr-o discutie este sa folosesti functia @mentiune\npentru a notifica oameni; aceasta le va trimite un email spunandu-le ca au fost mentionati intr-un comentariu.</p>\n"
     example1_html: "<h3>Ai nevoie ca grupul sa discute o tema mai larga si sa ajunga la o solutie comuna</h3>\n<p>Strategie: discuta o tema pentru un timp inainte sa lansezi o propunere.</p>\n<p>Discutiile adesea ajung la cel mai bun rezultat daca dezvolta o intelegere comuna despre\nproblema inainte de a sari la o anumita solutie. Cand oamenii ajung sa participe in acest proces, \neste mai probabil ca vor fi de acord cu rezultatul lui.</p>\n"
-    example2_html: "<h3>Ai deja o propunere in minte, si vrei sa obtii acordul grupului pentru a merge mai departe.</h3>\n<p>Strategie: incepe o discutie specifica deciziei si creeaza imediat o propunere.</p>\n<p>Daca ai un rezultat clar in minte dar vrei sa fii sigur ca nu sunt nici un fel de rezerve importante\npoti folosi propunerea pentru a obtine rapid pareri in decizie.</p>\n<p> Poti face lucruri ca finalizarea unui document, aprobarea unei aplicatii, sau semnaturi pentru o idee.</p>\n"
+    example2_html: >
+      <h3>Ai deja o propunere in minte, si vrei sa obtii acordul grupului pentru
+      a merge mai departe.</h3>
+
+      <p>Strategie: incepe o discutie specifica deciziei si creeaza imediat
+      o propunere.</p>
+
+      <p>Daca ai un rezultat clar in minte dar vrei sa fii sigur ca nu sunt nici
+      un fel de rezerve importante
+
+      poti folosi propunerea pentru a obtine rapid pareri in decizie.</p>
+
+      <p> Poti face lucruri ca finalizarea unui document, aprobarea unei
+      aplicatii, sau semnaturi pentru o idee.</p>
     get_in_touch: Ia legatura
     get_in_touch_description_html: "Daca ai intrebari sau feedback, <a href='%{link}'>trimite-ne un mesaj</a>."
     getting_started: Notiuni de baza
-    getting_started_description: "In partea stanga, grupul discuta o tema, schimband idei si informatii. Cand exista o decizie luata de grup, ea apare in partea dreapta."
+    getting_started_description: 'In partea stanga, grupul discuta o tema, schimband idei si informatii. Cand exista o decizie luata de grup, ea apare in partea dreapta.'
     getting_the_most: Obtine cat mai mult din folosirea Loomio
     have_your_say: Sa ai ceva de spus
     have_your_say_details_html: "<p>Cand esti pregatit sa-ti spui parerea, apasa pe unul dintre cele patru butoane de decizie.</p>\n<p>Cand iti exprimi parerea, introdu o scurta explicatie. Sub graficul Pie, poti sa vezi ce cred ceilalti. \nAceasta face rapida si usoara intelegerea discutiei. Cand apar noi informatii, poti sa-ti schimbi in orice moment pozitia.</p>\n"
@@ -265,22 +277,49 @@ ro:
     invitation_html: "<h2>Cum sa scrii o invitatie excelenta</h2>\n<p>Prima intrebare pe care fiecare nou membru o va avea este 'pentru ce este creat acest grup?'</p>\n<p>Gandeste-te la cea mai simpla descriere a grupului: Ce vrei sa obtineti impreuna?\n Ce tipuri de decizii veti lua? Cine va fi implicat?</p><p>Poate fi o idee buna sa vorbesti cu grupul tau \ninainte de ai invita pe Loomio</p>\n<p> Oamenii vor voi sa stie de ce au fost invitati si ce se asteapta de la ei si de ce merita sa-si investeasca\ntimpul in a invata cum sa foloseasca un nou instrument.</p>\n"
     join_the_community: Alatura-te comunitatii
     images_and_text_formatting: Formatarea imaginilor si a textului
-    images_and_text_formatting_html: "<p>Loomio foloseste ‘Markdown' pentru a adauga imagini si formatarea textului.\nPoti porni Markdown prin icoana mica gri de sub casuta de comentarii</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Apasa aici</a> pentru informatii\ndespre folosirea Markdown</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio foloseste ‘Markdown' pentru a adauga imagini si formatarea
+      textului.
+
+      Poti porni Markdown prin icoana mica gri de sub casuta de comentarii</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Apasa aici</a> pentru
+      informatii
+
+      despre folosirea Markdown</p>
     keep_up_to_date: Mentine actualizat
     keep_up_to_date_html: "<p>Apasand pe numele grupului in partea de sus a paginii vei ajunge in Pagina Grupului,\nunde poti vizualiza o lista a tututor discutiilor si deciziilor din acel grup.. Daca esti membru in \nmai mult de un grup, poti sa vezi toate activitatile din grupurile tale direct din Pagina de Start.</p>\n<p>Vei primi notificari pe email cand se intampla lucruri importante in grupul tau.\nPoti sa schimbi preferintele de email <a href=\"%{link}\"\">aici</a>.</p>\n"
     make_a_decision: Ia o decizie
-    make_a_decision_description: "Cand un grup este pregatit sa ia o decizie, oricine poate face o propunere. Descrie clar scopul si adauga cateva informatii suplimentare astfel incat sa fie clar pentru toti ce inseamna sa fii de acord sau nu."
+    make_a_decision_description: 'Cand un grup este pregatit sa ia o decizie, oricine poate face o propunere. Descrie clar scopul si adauga cateva informatii suplimentare astfel incat sa fie clar pentru toti ce inseamna sa fii de acord sau nu.'
     prompt_people_details: "Daca vrei sa obtii atentia unei anumite persoane din grup, scrie '@' urmat de numele lor. Ei vor primi un email care ii va anunta ca i-ai mentionat intr-un comentariu."
     prompt_people_html: "Mentioneaza persoane cu <span class='blue'>@mentiuni</span>"
-    positions_agree_description: "<span>De acord</span> inseamna ca esti multumit de propunere."
-    positions_abstain_description: "<span>Abtinere</span> inseamna ca nu esti sigur, sau esti multumit daca grupul decide fara tine."
-    positions_disagree_description: "<span>Dezaprobare</span> inseamna ca tu crezi ca exista o alternativa mai buna, dar te supui deciziei grupului."
-    positions_block_description: "<span>Opunere</span> inseamna ca ai obiectii serioase si vei fi nemultumit daca propunerea este aprobata."
+    positions_agree_description: '<span>De acord</span> inseamna ca esti multumit de propunere.'
+    positions_abstain_description: '<span>Abtinere</span> inseamna ca nu esti sigur, sau esti multumit daca grupul decide fara tine.'
+    positions_disagree_description: '<span>Dezaprobare</span> inseamna ca tu crezi ca exista o alternativa mai buna, dar te supui deciziei grupului.'
+    positions_block_description: '<span>Opunere</span> inseamna ca ai obiectii serioase si vei fi nemultumit daca propunerea este aprobata.'
     start_discussion: Cum sa initiezi o discutie captivanta
-    start_discussion_html: "<p>Cand incepi o discutie, asigura-te ca titlul transmite intr-un mod succint subiectul.\nFoloseste sectiunea de context pentru a da toate informatiile necesare pentru ca\ngrupul sa poata avea o discutie productiva si informata.</p>\n<p>In timpul discutiilor, sectiunea context poate fi improspatata pe masura ce apar noi\n informatii. Poti folosi acest spatiu pentru a clarifica subiectul, transmite informatii,\nface un rezumat al discutiei pe masura ce evolueaza, sau sublinia protocolul de\nluare a deciziilor pe care grupul tau il foloseste.</p>\n"
+    start_discussion_html: >
+      <p>Cand incepi o discutie, asigura-te ca titlul transmite intr-un mod
+      succint subiectul.
+
+      Foloseste sectiunea de context pentru a da toate informatiile necesare
+      pentru ca
+
+      grupul sa poata avea o discutie productiva si informata.</p>
+
+      <p>In timpul discutiilor, sectiunea context poate fi improspatata pe masura
+      ce apar noi
+
+       informatii. Poti folosi acest spatiu pentru a clarifica subiectul,
+      transmite informatii,
+
+      face un rezumat al discutiei pe masura ce evolueaza, sau sublinia
+      protocolul de
+
+      luare a deciziilor pe care grupul tau il foloseste.</p>
     start_proposal: Scrierea unei propuneri clare
     start_proposal_html: "<p>Daca ai un titlu clar si succint, oamenii vor sti imediat ce inseamna sa fii de acord sau impotriva.</p>\n<p>Nu este sfarsitul lumii daca o propunere nu obtine un punct de vedere comun imediat.\nDaca grupul nu iubeste prima propunere, oricine poate incepe o noua propunere pentru\na adresa rezervele ridicate, si a conduce mai departe procesul.</p>\n<p>Prin acest proces dinamic, inteligenta colectiva a grupului poate genera idei mai bune decat ar putea\ngenera oricine ar incerca sa o faca singur.</p>\n<p>Termenul limita al unei propuneri poate fi extins oricand, daca devine clar ca o decizie \nare nevoie de mai mult timp. Toata lumea va primi o notificare pe email cu 24 de ore inainta ca o propunere sa se inchida.</p>\n"
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Tutorial video
     video_tutorial_description: Urmareste acest video pentru o scurta demonstratie despre cum sa folosesti Loomio.
   hint:
@@ -290,9 +329,18 @@ ro:
     proposal: Sfaturi pentru a scrie o propunere clara
     vote: Poti sa-ti modifici pozitia oricand doresti
   pricing_page:
-    intro: "Grupuri cu un buget vor plăti un abonament pentru utilizarea acestui instrument\nGrupuri fără mijloacele de a plăti un abonament vor folosi\nmodelul plateste Cat Poti:. membrii lor sunt invitați să facă o contribuție voluntară. Contribuția dumneavoastră ne ajuta sa păstram Loomio independent, liber de publicitate, condus doar de către comunitatea noastră.\n"
+    intro: >
+      Grupuri cu un buget vor plăti un abonament pentru utilizarea acestui
+      instrument
+
+      Grupuri fără mijloacele de a plăti un abonament vor folosi
+
+      modelul plateste Cat Poti:. membrii lor sunt invitați să facă o contribuție
+      voluntară. Contribuția dumneavoastră ne ajuta sa păstram Loomio
+      independent, liber de publicitate, condus doar de către comunitatea
+      noastră.
     organisations: Organizatii
-    organisations_examples: "ex. companii, agentii guvernamentale, organizatii comunitare"
+    organisations_examples: 'ex. companii, agentii guvernamentale, organizatii comunitare'
     informal_groups: Grupuri Informale
     informal_groups_desc: Membrii grupului tau vor putea sa plateasca cat vor dori
-    informal_groups_examples: "ex. familii, miscari sociale, colectivitati"
+    informal_groups_examples: 'ex. familii, miscari sociale, colectivitati'

@@ -4,16 +4,18 @@ pt-BR:
     time:
       am: am
       pm: pm
-    closing_in: "Fechando {{time}}"
-    closed_ago: "Fechado {{time}}"
+    closing_in: 'Fechando {{time}}'
+    closed_ago: 'Fechado {{time}}'
     volume: Volume
     notification_volume: Volume de Notificações
     group: Grupo
     groups: Grupos
     privacy:
-      private: Privado
       public: Público
-      organisation: Organização
+      open: Aberto
+      closed: Fechado
+      private: Privado
+      secret: Secreto
     selected: Selecionado
     date_range:
       today: Hoje
@@ -45,7 +47,7 @@ pt-BR:
   error_page:
     forbidden: Você não tem permissão para fazer isso.
     page_not_found: Não fomos capazes de encontrar. Pode ter sido excluído ou movido.
-    internal_server_error: "Lamentamos, mas algo deu errado. Por favor, tente novamente."
+    internal_server_error: 'Lamentamos, mas algo deu errado. Por favor, tente novamente.'
   start_proposal_card:
     title: Iniciar uma proposta
     helptext: Pronto para tomar uma decisão?
@@ -69,7 +71,7 @@ pt-BR:
     heading: Propostas anteriores
   proposal_collapsed:
     expand: Expandir
-    outcome: "Resultado: {{outcome}}"
+    outcome: 'Resultado: {{outcome}}'
   volume_levels:
     loud: Alto
     normal: Normal
@@ -79,21 +81,21 @@ pt-BR:
   thread_volume_card:
     heading: Notificações de Tópicos
     body:
-      loud: "E-mail tudo: será enviado e-mail sempre que houver atividade neste segmento."
-      normal: "E-mail propostas: será enviado e-mail quando uma proposta for iniciada, estiver prestes a fechar, ou quando um resultado for publicado."
-      quiet: "Nenhum e-mail: não será enviado e-mail sobre atividade neste segmento."
-      mute: "Tópico silenciado: não será enviado e-mail sobre esta discussão, e será removido de seus Tópicos Recentes e páginas não lidas."
+      loud: 'E-mail tudo: será enviado e-mail sempre que houver atividade neste segmento.'
+      normal: 'E-mail propostas: será enviado e-mail quando uma proposta for iniciada, estiver prestes a fechar, ou quando um resultado for publicado.'
+      quiet: 'Nenhum e-mail: não será enviado e-mail sobre atividade neste segmento.'
+      mute: 'Tópico silenciado: não será enviado e-mail sobre esta discussão, e será removido de seus Tópicos Recentes e páginas não lidas.'
     change_volume_link: Mudar
   thread_volume_form:
     header: Notificações de Tópicos
     loud_label: Enviar e-mail de tudo
     loud_description: Será enviado e-mail sempre que houver atividade neste tópico.
     normal_label: Enviar e-mail de propostas
-    normal_description: "Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado."
+    normal_description: 'Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado.'
     quiet_label: Não enviar e-mail
-    quiet_description: "Você não receberá e-mail sobre atividade neste tópico, a menos que alguém menciona você."
+    quiet_description: 'Você não receberá e-mail sobre atividade neste tópico, a menos que alguém menciona você.'
     mute_label: Calar tópico
-    mute_description: "Você não receberá e-mail sobre esse tópico, e será removido de seus Tópicos Recentes e páginas não lidas."
+    mute_description: 'Você não receberá e-mail sobre esse tópico, e será removido de seus Tópicos Recentes e páginas não lidas.'
     submit: Atualizar
     messages:
       loud: Serão enviados e-mails de atividades neste grupo
@@ -103,10 +105,10 @@ pt-BR:
   group_volume_card:
     heading: Notificações de Grupos
     body:
-      loud: "E-mail tudo: será enviado e-mail sempre que houver atividade neste grupo."
+      loud: 'E-mail tudo: será enviado e-mail sempre que houver atividade neste grupo.'
       normal: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
-      quiet: "Nenhum e-mail: não será enviado e-mail sobre atividade neste grupo."
-      mute: "Grupo silenciado: não será enviado e-mail sobre esse grupo, e será removido de seus Tópicos Recentes e páginas não lidas."
+      quiet: 'Nenhum e-mail: não será enviado e-mail sobre atividade neste grupo.'
+      mute: 'Grupo silenciado: não será enviado e-mail sobre esse grupo, e será removido de seus Tópicos Recentes e páginas não lidas.'
     change_volume_link: Modificar
   group_volume_form:
     header: Notificações de Grupos
@@ -115,9 +117,9 @@ pt-BR:
     normal_label: Envie e-mails de novos tópicos e propostas
     normal_description: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
     quiet_label: Não enviar e-mail
-    quiet_description: "Você não receberá e-mail sobre atividade neste grupo, a menos que alguém menciona você."
+    quiet_description: 'Você não receberá e-mail sobre atividade neste grupo, a menos que alguém menciona você.'
     mute_label: Calar grupo
-    mute_description: "Você não receberá e-mail sobre esse grupo, e será removido de seus Tópicos Recentes e páginas não lidas."
+    mute_description: 'Você não receberá e-mail sobre esse grupo, e será removido de seus Tópicos Recentes e páginas não lidas.'
     submit: Atualizar
     messages:
       loud: Serão enviados e-mails de todas as atividades neste grupo
@@ -130,8 +132,8 @@ pt-BR:
     unread: Não lida
     closing_in: Encerrando
   session_form:
-    email_label: "E-mail:"
-    password_label: "Senha:"
+    email_label: 'E-mail:'
+    password_label: 'Senha:'
     remember_me: Lembre-me
     sign_in: Login
   comment_form:
@@ -141,18 +143,18 @@ pt-BR:
       remove_attachment: Remover anexo
     messages:
       created: Comentário adicionado
-      replied: "{{name}} recebeu notificação"
+      replied: '{{name}} recebeu notificação'
       updated: Comentário atualizado
       destroyed: Comentário apagado
     edit_comment: Editar comentários
     delete_comment: Apagar comentário
     cancel_reply: Cancelar Resposta
     confirm_delete_message: Você tem certeza que deseja apagar este comentário?
-    confirm_delete: "Sim, tenho certeza"
-    in_reply_to: "Em resposta a <strong>{{name}}</strong>:"
+    confirm_delete: 'Sim, tenho certeza'
+    in_reply_to: 'Em resposta a <strong>{{name}}</strong>:'
     submit_button:
       label: Postagem
-    private_privacy_notice: "Seu comentário será visível apenas para os membros de {{groupName}}."
+    private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
     public_privacy_notice: Seu comentário será visível para qualquer pessoa na web
   navbar:
     recent: Recente
@@ -189,22 +191,22 @@ pt-BR:
     invite_people: Convidar Pessoas
   notifications:
     header: Notificações
-    new_discussion: "<strong>{{name}}</strong> iniciou uma discussão <strong>{{discussion}}</strong>"
-    new_motion: "<strong>{{name}}</strong> criou uma proposta <strong>{{proposal}}</strong>"
-    motion_closed_by_user: "<strong>{{name}}</strong> fechou a proposta <strong>{{proposal}}</strong>"
-    motion_closed_by_expiry: "Proposta encerrada <strong>{{proposal}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} sobre a proposta <strong>{{proposal}}</strong>"
-    new_comment: "<strong>{{name}}</strong> comentou em <strong>{{discussion}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> respondeu seu comentário em <strong>{{discussion}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> curtiu seu comentário em <strong>{{discussion}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> mencionou você em <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> solicitou adesão para <strong>{{group}}</strong>"
-    membership_request_approved: "<strong>{{name}}</strong> aprovou sua solicitação para unir-se <strong>{{group}}</strong>"
-    user_added_to_group: "<strong>{{name}}</strong> adicionou você ao grupo <strong>{{group}}</strong>"
-    user_added_to_group_no_inviter: "Você foi adicionado ao grupo <strong>{{group}}</strong>"
-    motion_closing_soon: "Proposta encerrando em breve <strong>{{proposal}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>"
+    new_discussion: '<strong>{{name}}</strong> iniciou uma discussão <strong>{{discussion}}</strong>'
+    new_motion: '<strong>{{name}}</strong> criou uma proposta <strong>{{proposal}}</strong>'
+    motion_closed_by_user: '<strong>{{name}}</strong> fechou a proposta <strong>{{proposal}}</strong>'
+    motion_closed_by_expiry: 'Proposta encerrada <strong>{{proposal}}</strong>'
+    new_vote: '<strong>{{name}}</strong> {{position}} sobre a proposta <strong>{{proposal}}</strong>'
+    new_comment: '<strong>{{name}}</strong> comentou em <strong>{{discussion}}</strong>'
+    comment_replied_to: '<strong>{{name}}</strong> respondeu seu comentário em <strong>{{discussion}}</strong>'
+    comment_liked: '<strong>{{name}}</strong> curtiu seu comentário em <strong>{{discussion}}</strong>'
+    user_mentioned: '<strong>{{name}}</strong> mencionou você em <strong>{{title}}</strong>'
+    membership_requested: '<strong>{{name}}</strong> solicitou adesão para <strong>{{group}}</strong>'
+    membership_request_approved: '<strong>{{name}}</strong> aprovou sua solicitação para unir-se <strong>{{group}}</strong>'
+    user_added_to_group: '<strong>{{name}}</strong> adicionou você ao grupo <strong>{{group}}</strong>'
+    user_added_to_group_no_inviter: 'Você foi adicionado ao grupo <strong>{{group}}</strong>'
+    motion_closing_soon: 'Proposta encerrando em breve <strong>{{proposal}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>'
+    motion_outcome_updated: '<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
@@ -222,7 +224,7 @@ pt-BR:
     change_position: Modificar posição
     select_position: Selecionar posição
     statement_placeholder: Compartilhe seus pensamentos com o grupo.
-    aria_statement_label: "Opcionalmente, insira uma declaração para ser registrada com a sua posição"
+    aria_statement_label: 'Opcionalmente, insira uma declaração para ser registrada com a sua posição'
     messages:
       created: Voto adicionado
   proposal_positions_panel:
@@ -234,11 +236,11 @@ pt-BR:
     show_undecided: Mostrar membros indecisos
     hide_undecided: Ocultar membros indecisos
   proposal_pie_chart:
-    participation_statement: "{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})"
+    participation_statement: '{{percentage}}% dos membros manifestaram suas posições ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Encerrar proposta
     helptext: Você tem certeza que deseja encerrar esta proposta agora?
-    close_proposal_submit: "Sim, encerrar proposta"
+    close_proposal_submit: 'Sim, encerrar proposta'
     messages:
       success: Proposta encerrada
   extend_proposal_form:
@@ -253,16 +255,16 @@ pt-BR:
     start_a_proposal: Iniciar uma proposta
     edit_proposal: Editar proposta
     what_does_a_proposal_do: Propostas permitem que você veja como todos se sentem sobre um determinado curso de ação.
-    editing_title_and_description_forbidden: "Você não pode alterar o título ou a descrição de uma proposta depois que pessoas votaram. Se os detalhes foram alterados, por favor, feche a proposta e inicie outra"
-    title_placeholder: "Eg: Vá para a lua"
+    editing_title_and_description_forbidden: 'Você não pode alterar o título ou a descrição de uma proposta depois que pessoas votaram. Se os detalhes foram alterados, por favor, feche a proposta e inicie outra'
+    title_placeholder: 'Eg: Vá para a lua'
     title_label: Título
     closes_at_label: Encerra em
     closes: Fecha
     details_label: Detalhes
     details_placeholder: Dê detalhes suficientes para que todos saibam exatamente o que significa concordar ou discordar ou o que seja
   discussion_record:
-    created: "O tópico {{title}} foi criado com sucesso em {{groupName}}"
-    updated: "Mudanças salvas para {{title}}"
+    created: 'O tópico {{title}} foi criado com sucesso em {{groupName}}'
+    updated: 'Mudanças salvas para {{title}}'
   discussion_form:
     messages:
       created: Tópico iniciado
@@ -277,16 +279,15 @@ pt-BR:
     context_label: Contexto
     context_placeholder: Forneça informações suficientes para que o grupo tenha uma discussão produtiva. Pode ser atualizado enquanto a discussão avança
     privacy_label: Privacidade
-    privacy:
-      will_be_private_to_group: "A discussão será visível apenas para os membros de {{groupName}}."
-      will_be_private_to_parent_group: "A discussão será visível para os membros de {{parentGroupName}} e membros de {{groupName}}."
-      will_be_public: "Qualquer um pode ver o tópico. Apenas membros de {{groupName}} podem participar."
+    privacy_public: Qualquer um pode ver o tópico. Apenas membros podem participar.
+    privacy_private: 'A discussão será visível apenas para os membros de {{group}}.'
+    privacy_organisation: 'A discussão será visível para os membros de {{parent}} e membros de {{group}}.'
     new_discussion_submit: Iniciar tópico
     edit_discussion_submit: Atualizar tópico
   proposal_expanded:
     collapse: Colapso
     current_votes: Votos atuais
-    started_by: "Iniciado por <strong>{{name}}</strong>"
+    started_by: 'Iniciado por <strong>{{name}}</strong>'
     only_voter_is_you: Nenhum outro membro ainda votou.
     extend_proposal: Mudar hora de encerramento
     edit_proposal: Editar proposta
@@ -298,14 +299,13 @@ pt-BR:
   proposal_position_block: Bloquear
   group_welcome_modal:
     heading: Bem-vindo ao seu novo grupo
-    first_step: "Você é o coordenador do grupo, que é como ser um anfitrião."
-    second_step: "Dê uma olhada ao redor, confira os tópicos-exemplo e brinque com as definições."
-    third_step: "Quando estiver pronto, você pode convidar pessoas."
-    ok_got_it: "OK, entendi!"
+    first_step: 'Você é o <strong>coordenador</strong> do grupo, que é como ser um anfitrião. Assista ao vídeo e confira os exemplos de tópicos.'
+    second_step: 'Quando estiver pronto, <strong>convide pessoas</strong>.'
+    ok_got_it: 'OK, entendi!'
   group_cover_modal:
     heading: Nova foto da capa
     upload_link: Carregar nova foto da capa
-    helptext: "Buscando inspiração? Dê uma olhada em <a href=\"https://unsplash.com/\">Unsplash</a>, uma galeria de lindas imagens gratuitas"
+    helptext: 'Buscando inspiração? Dê uma olhada em <a href="https://unsplash.com/">Unsplash</a>, uma galeria de lindas imagens gratuitas'
     image_size_helptext: O tamanho ideal da magem é 1400 x 320px
     upload_success: Foto da capa atualizada com sucesso
   group_logo_modal:
@@ -313,24 +313,11 @@ pt-BR:
     upload_link: Carregar nova logo do grupo
     image_size_helptext: O tamanho ideal da imagem é 100 x 100px
     upload_success: Logo atualizada com sucesso
-  start_group_form:
-    heading: Iniciar um grupo
-    heading_when_subgroup: Iniciar um subgrupo
-    group_helptext: "Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:"
-    group_payment_reminder: "Em 30 dias, vamos pedir-lhe para escolher um <a href='https://www.loomio.org/pricing' target='blank'>plano de preço</a>."
-    name_label: Nome do grupo
-    description_label: Descrição do grupo
-    description_placeholder: Descreva o propósito do seu grupo para que os membros saibam a razão de estarem aqui.
-    subgroup_name_label: Nome do subgrupo
-    submit: Iniciar Grupo
-    messages:
-      success: Grupo criado
-      success_when_subgroup: Subgrupo criado
   join_group_button:
     join_group: Entrar no grupo
     ask_to_join_group: Pedir para entrar no grupo
     messages:
-      joined_group: "Você agora é um membro do(a) {{group}}"
+      joined_group: 'Você agora é um membro do(a) {{group}}'
   membership_request_form:
     heading: Pedir para entrar no grupo
     name_label: Nome
@@ -338,7 +325,7 @@ pt-BR:
     introduction_label: Apresente-se
     submit_button: Pedir para entrar no grupo
     messages:
-      membership_requested: "Você solicitou adesão ao(à) {{group}}"
+      membership_requested: 'Você solicitou adesão ao(à) {{group}}'
   group_page:
     thread_list:
       empty:
@@ -347,7 +334,7 @@ pt-BR:
         no_public_discussions: Não há tópicos públicos neste grupo.
         discussions_are_private: Todos tópicos neste grupo são privados.
         join_group: Para ver tópicos privados você precisará se juntar ao grupo.
-        request_membership: "Para ver tópicos privados, peça para se juntar ao grupo."
+        request_membership: 'Para ver tópicos privados, peça para se juntar ao grupo.'
         membership_is_invitation_only: Para se juntar a este grupo você precisa ser convidado por um membro.
         membership_is_invitation_by_admin_only: Para se juntar a este grupo você precisa ser convidado por um(a) coordenador(a).
     messages:
@@ -360,13 +347,13 @@ pt-BR:
     group_logo: Logo do grupo
     new_photo: nova foto
     description: Descrição do grupo
-    description_placeholder: "Utilize este espaço para descrever a finalidade do grupo, para que seus membros saibam por que estão aqui."
+    description_placeholder: 'Utilize este espaço para descrever a finalidade do grupo, para que seus membros saibam por que estão aqui.'
     discussions: Tópicos
     discussions_placeholder: Um tópico é o lugar onde todos podem discutir um tema e tomar decisões juntos.
-    members: "Membros ({{count}})"
-    members_placeholder: "Você é a única pessoa aqui: convide outras para se juntar a você!"
+    members: 'Membros ({{count}})'
+    members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
-    all_members: "Todos os membros ({{count}})"
+    all_members: 'Todos os membros ({{count}})'
     subgroups: Subgrupos
     subgroups_placeholder: Subgrupos permitem dividir o grupo em diferentes times
     invite_people: Convidar pessoas
@@ -377,120 +364,88 @@ pt-BR:
       edit_group: Editar Configurações do Grupo
       manage_members: Gerenciar Membros
       add_subgroup: Adicionar Subgrupo
-      manage_subscription: "Gerenciar Inscrições do Grupo "
+      manage_subscription: 'Gerenciar Inscrições do Grupo '
       leave_group: Sair do Grupo
       deactivate_group: Desativar Grupo
     deactivate_group:
       title: Desativar grupo
       question: Você tem certeza que deseja desativar este grupo?
-      submit: "Sim, Desative este grupo"
+      submit: 'Sim, Desative este grupo'
     leave_group:
       title: Sair do grupo
       question: Você tem certeza que deseja sair deste grupo?
-      submit: "Sim, sair deste grupo"
+      submit: 'Sim, sair deste grupo'
       cannot_leave_group: Você não pode deixar este grupo porque você é o último coordenador. Você precisa escolher um outro coordenador ou desativar o grupo.
       add_coordinator: Adicionar um coordenador
     volume:
       loud: Enviar e-mail sempre que houver atividade.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Você receberá um e-mail sempre que houver atividade.
-      loud_message: "Você receberá um e-mail sobre todas as atividades em \"{{name}}.\""
-      normal: "Enviar apenas e-mails de atividades importantes: Novos tópicos e propostas, resultados etc."
-      normal_aria_description: "O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando houver atividades importantes, como quando alguém inicia um novo tópico, faz uma proposta ou define um resultado."
-      normal_message: "Você só receberá e-mail sobre eventos importantes em \"{{name}}\"."
+      loud_message: 'Você receberá um e-mail sobre todas as atividades em "{{name}}."'
+      normal: 'Enviar apenas e-mails de atividades importantes: Novos tópicos e propostas, resultados etc.'
+      normal_aria_description: 'O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando houver atividades importantes, como quando alguém inicia um novo tópico, faz uma proposta ou define um resultado.'
+      normal_message: 'Você só receberá e-mail sobre eventos importantes em "{{name}}".'
       quiet: Não enviar e-mail sobre esse grupo. Atividades serão exibidas no painel.
       quiet_aria_description: O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo. Eles serão mostradas no seu Painel.
-      quiet_message: "Você não receberá e-mail sobre as atividades em \"{{name}}\"."
-      mute: "Esconder este grupo do painel e não notificar a não ser quando @mencionado."
-      mute_aria_description: "O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel."
-      mute_message: "\"{{name}}\" foi removido do seu painel."
+      quiet_message: 'Você não receberá e-mail sobre as atividades em "{{name}}".'
+      mute: Esconder este grupo do painel e não notificar a não ser quando @mencionado.
+      mute_aria_description: 'O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail, a não ser que mencionem você, e atividades do grupo não serão mostradas no seu Painel.'
+      mute_message: '"{{name}}" foi removido do seu painel.'
     privacy:
-      private: "Privacidade: Este grupo é visível apenas para membros"
-      parent_members: "Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}"
-      public: "Privacidade: Este grupo é visível na web"
+      private: 'Privacidade: Este grupo é visível apenas para membros'
+      parent_members: 'Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}'
+      public: 'Privacidade: Este grupo é visível na web'
   confirm_gift_plan_modal:
     heading: Plano Presente selecionado
-    body: "Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária."
-    got_it: "Ok, entendi!"
+    body: 'Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária.'
+    got_it: 'Ok, entendi!'
   gift_card:
     heading: Plano Presente
-    body: "<strong>{{name}}</strong> é um grupo suportado por presente. Se você gostaria de ajudar o Loomio a alcançar a nossa missão, clique neste botão:"
+    body: '<strong>{{name}}</strong> é um grupo suportado por presente. Se você gostaria de ajudar o Loomio a alcançar a nossa missão, clique neste botão:'
     make_a_contribution: Faça uma contribuição
   trial_card:
     title: Teste de 30 dias
     choose_plan: Escolha seu plano de pagamento
-    in_progress_body: "Obrigado por testar o Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de pagamento que funcione para você a qualquer momento."
+    in_progress_body: 'Obrigado por testar o Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de pagamento que funcione para você a qualquer momento.'
     expired_body_html: "<strong>{{name}}</strong> atingiu o fim do teste no Loomio. Se você gostaria de continuar a usá-lo, você precisa escolher um plano de preços adequado. Se você gostaria de falar com alguém sobre isso, basta<a href=''> entrar em contato</a>."
   choose_plan_modal:
     heading: Escolha seu plano de pagamento
-    overdue_heading: "Para continuar a utilizar o Loomio, por favor, escolha um plano de pagamento"
+    overdue_heading: 'Para continuar a utilizar o Loomio, por favor, escolha um plano de pagamento'
     gift: Presente
     standard: Padrão
     plus: Plus
-    free_trial_html: "Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito."
+    free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
     get_started_for_free: Comece de graça
-    gift_body_html: "<p>Para os grupos que não têm orçamento para pagar uma assinatura.</p>\n<p>Suporte para doações, sem exigência de pagamento.</p>\n"
+    gift_body_html: |
+      <p>Para os grupos que não têm orçamento para pagar uma assinatura.</p>
+      <p>Suporte para doações, sem exigência de pagamento.</p>
     support_before: Estou feliz por
     support_link: falar com você
-    support_after: "sobre como estender o seu teste, ou com quaisquer outras perguntas você pode ter."
+    support_after: 'sobre como estender o seu teste, ou com quaisquer outras perguntas você pode ter.'
     remind_me_later: Lembrar-me mais tarde
     gift_donation_ask: Vamos pedir aos membros do seu grupo por uma doação.
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte por e-mail
-    standard_price_html: "US <strong>$19</strong>/mês<br><span>ou</span> $190/ano\n"
-    plus_body: "Tudo do Padrão, mais:"
+    standard_price_html: |
+      US <strong>$19</strong>/mês<br><span>ou</span> $190/ano
+    plus_body: 'Tudo do Padrão, mais:'
     premium_support: suporte premium
     custom_url: URL personalizada
     usage_statistics: estatísticas de uso
-    plus_price_html: "US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano\n"
+    plus_price_html: |
+      US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano
     select: Selecione
   subscription_success_modal:
-    heading: "Obrigado por configurar sua inscrição!"
-    social_mission: "A sua contribuição nos ajuda a cumprir nossa missão social: tornar mais fácil para qualquer um, em qualquer lugar, participar de decisões que os afetam."
-    receipt: "Se você quiser alterar ou cancelar a sua assinatura, ou se você tiver quaisquer outras consultas,"
-    contact_link: "por favor, entre em contato conosco"
+    heading: 'Obrigado por configurar sua inscrição!'
+    receipt: Você vai receber um e-mail com um recibo.
+    change_subscription: 'Caso você queira alterar ou cancelar a sua assinatura, ou se você tiver quaisquer outras consultas,'
+    contact_link: 'por favor, entre em contato conosco.'
     sign_off: ❤ da equipe Loomio
-    ok_got_it: "Ok, entendi!"
-  group_form:
-    title: Editar Configurações do Grupo
-    profile:
-      label: Perfil
-      name: Nome
-      description: Descrição
-    privacy:
-      label: Privacidade
-      visible_to_members: Quem pode achar este grupo?
-      public_visibility: Qualquer um - lista o grupo publicamente
-      organisation_visibility: "Organização - não listado para o público, mas visível para membros de {{parentGroupName}}"
-      private_visibility: Somente membros - o grupo não será listado
-      membership_granted_upon: Como as pessoas participam?
-      membership_by_request: Aberto - qualquer um pode entrar no grupo
-      membership_by_request_subgroup: "Aberto para membros de {{parentGroupName}}"
-      membership_by_approval: Mediante pedido - qualquer pessoa pode pedir para participar
-      membership_by_approval_subgroup: "Mediante pedido por membros de {{parentGroupName}}"
-      membership_by_invitation: Apenas por convite - novos membros devem ser convidados
-      discussion_privacy_options: Quem pode ver tópicos?
-      public_discussions: Somente tópicos públicos
-      public_discussions_subgroup: "Qualquer pessoa em {{parentGroupName}} pode ver as discussões"
-      public_or_private_discussions: Permitir tópicos públicos e privados
-      private_discussions: Apenas os membros podem ver discussões
-    permissions:
-      label: Permissões
-      helptext: O que membros podem fazer?
-      members_can_add_members: Convidar e aprovar novos membros
-      members_can_create_subgroups: Criar subgrupos
-      members_can_start_discussions: Iniciar tópicos
-      members_can_edit_discussions: Editar o título e o contexto de qualquer tópico
-      members_can_edit_comments: Editar os comentários deles a qualquer momento
-      members_can_raise_motions: Iniciar propostas
-      members_can_vote: Votar em propostas
-    submit: Atualizar Configurações
-    messages:
-      success: Grupo atualizado
+    ok_got_it: 'Ok, entendi!'
   membership_requests_card:
     heading: Pedidos para inclusão de membros
     manage_requests: Gerenciar solicitações
-    manage_requests_with_count: "Gerenciar solicitações ({{count}})"
+    manage_requests_with_count: 'Gerenciar solicitações ({{count}})'
   group_help_card:
     title: Ajuda
     ten_tips_article_title: 10 dicas para fazer grandes decisões com Loomio
@@ -498,30 +453,17 @@ pt-BR:
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
-    ignore: "Ignorar "
+    ignore: 'Ignorar '
     no_pending_requests: Não há novos pedidos de inclusão de membros para este grupo.
     no_previous_requests: Não há pedidos anteriores de inclusão de membros para este grupo.
     previous_requests: Pedidos Anteriores
-    previous_request_response: "{{response}} por {{responder}}"
+    previous_request_response: '{{response}} por {{responder}}'
     messages:
       request_approved_success: Inclusão de membro aprovada
       request_ignored_success: Solicitação de inclusão de membro ignorada
   group_previous_proposals_card:
     heading: Propostas anteriores
     see_more: Veja mais
-  group_form:
-    messages:
-      new_group: Grupo criado
-      update_group: Grupo atualizado
-    new_group_title: Criar um Novo Grupo
-    new_subgroup_title: "Criar um Novo Subgrupo de {{parentGroupName}}"
-    edit_group_title: Configurações do Grupo
-    profile_label: Perfil
-    name_label: Nome
-    name_placeholder: Digite o nome do seu grupo
-    description_label: Descrição
-    description_placeholder: Descreva seu grupo
-    category_label: Categoria
   invitation:
     invite_people: Convidar Pessoas
     find_people: Encontre pessoas
@@ -531,15 +473,15 @@ pt-BR:
     instructions: Digite nomes ou endereços de e-mail
     invitation_message: Mensagem Convite
     remove_invite: Retirar convite
-    send_invite: "Enviar {{count}} convites"
-    to: "para:"
+    send_invite: 'Enviar {{count}} convites'
+    to: 'para:'
     add_custom_message: + adicionar mensagem personalizada
-    default_message: "Ei você aí, venha tomar decisões com a gente! Estamos usando uma ferramenta de tomada de decisão colaborativa chamada Loomio"
+    default_message: 'Ei você aí, venha tomar decisões com a gente! Estamos usando uma ferramenta de tomada de decisão colaborativa chamada Loomio'
     messages:
-      members_added_and_emails_sent: "{{members}} membro(s) adicionados e {{emails}} convite(s) enviado(s)"
-      members_added: "{{members}} membros(s) adicionado(s)"
-      emails_sent: "{{emails}} convite(s) enviado(s)"
-      no_invitations: "Nenhum convite enviado!"
+      members_added_and_emails_sent: '{{members}} membro(s) adicionados e {{emails}} convite(s) enviado(s)'
+      members_added: '{{members}} membros(s) adicionado(s)'
+      emails_sent: '{{emails}} convite(s) enviado(s)'
+      no_invitations: 'Nenhum convite enviado!'
   memberships_page:
     members: Membros
     name_label: Nome
@@ -547,12 +489,12 @@ pt-BR:
     remove_member_label: Remover
     fragment_placeholder: Filtrar usuários por nome ou nome de usuário...
     messages:
-      remove_member_success: "Removido {{name}}"
-      make_admin_success: "{{name}} agora é um coordenador"
-      remove_admin_success: "{{name}} não é mais um coordenador"
+      remove_member_success: 'Removido {{name}}'
+      make_admin_success: '{{name}} agora é um coordenador'
+      remove_admin_success: '{{name}} não é mais um coordenador'
     remove_membership:
       title: Remover membro
-      question: "Você tem certeza que deseja remover {{name}} como membro de {{group}}?"
+      question: 'Você tem certeza que deseja remover {{name}} como membro de {{group}}?'
       submit: Remover
     remove_admin_from_self:
       question: Você tem certeza que não deseja mais ser coordenador?
@@ -563,7 +505,7 @@ pt-BR:
   cancel_invitation_form:
     heading: Cancelar convite
     question: Você tem certeza que deseja cancelar este convite?
-    submit: "Sim, cancelar convite"
+    submit: 'Sim, cancelar convite'
     cancel: Não
     messages:
       success: Convite cancelado
@@ -575,13 +517,13 @@ pt-BR:
       deactivated: Conta desativada
     change_picture:
       title: Mudar foto
-      helptext: "Você pode enviar sua própria foto do perfil ou, se você tiver uma conta <a href=\"https://en.gravatar.com/support/what-is-gravatar/\">Gravatar</a>, você pode usá-la."
+      helptext: 'Você pode enviar sua própria foto do perfil ou, se você tiver uma conta <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a>, você pode usá-la.'
       use_initials: Use iniciais
       use_gravatar: Usar gravatar
       use_uploaded: Enviar uma nova foto
     change_password:
       title: Mudar Senha
-      helptext: "Senhas devem ter 8 caracteres. Senhas comuns, tais como \"senha\", são proibidas para manter sua conta segura."
+      helptext: 'Senhas devem ter 8 caracteres. Senhas comuns, tais como "senha", são proibidas para manter sua conta segura.'
       current_password_label: Senha atual
       new_password_label: Nova senha
       password_confirmation_label: Confirmar a nova senha
@@ -589,7 +531,7 @@ pt-BR:
     deactivate_user:
       title: Desativar conta
       question: Você nos diria por que está desativando a sua conta?
-      placeholder: "Responder esta pergunta é opcional. Qualquer informação que você compartilhar nos ajudará a melhorar o Loomio :)"
+      placeholder: 'Responder esta pergunta é opcional. Qualquer informação que você compartilhar nos ajudará a melhorar o Loomio :)'
       submit: Desativar conta
     change_picture_link: Mudar imagem
     change_password_link: Mudar senha
@@ -610,9 +552,9 @@ pt-BR:
     on_participation_label: Atividades de tópicos que participei
     on_participation_description: "Quando você participa de uma lista de discussão, o volume madurá para 'Alto', então todas as atividades serão enviadas para você imediatamente."
     proposal_closing_soon_label: Antes de uma proposta encerrar
-    proposal_closing_soon_description: "24 horas antes de uma proposta ser encerrada, independentemente do volume, você receberá um e-mail com as informações mais recentes sobre a proposta."
-    mentioned_label: "Quando sou @mencionado"
-    mentioned_description: "Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer."
+    proposal_closing_soon_description: '24 horas antes de uma proposta ser encerrada, independentemente do volume, você receberá um e-mail com as informações mais recentes sobre a proposta.'
+    mentioned_label: Quando sou @mencionado
+    mentioned_description: 'Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer.'
     update_settings: Atualizar configurações de e-mail
     messages:
       updated: Configurações de e-mail atualizadas
@@ -634,25 +576,25 @@ pt-BR:
       filter_threads_aria_label: Filtrar Tópicos
       dropdown_heading: Filtrar painel
       all: Tópicos Recentes
-      all_aria_label: "No momento, mostrando tópicos recentes"
+      all_aria_label: 'No momento, mostrando tópicos recentes'
       all_description: Ver tópicos recentes
       starred: Tópicos com Estrela
-      starred_aria_label: "No momento, mostrando tópicos que marquei como importantes"
+      starred_aria_label: 'No momento, mostrando tópicos que marquei como importantes'
       starred_description: Ver apenas tópicos que você marcou como importantes
       participating: Tópicos participantes
-      participating_aria_label: "No momento, mostrando tópicos que perticipei"
+      participating_aria_label: 'No momento, mostrando tópicos que perticipei'
       participating_description: Ver apenas tópicos que você participou
       proposals: Propostas
-      proposals_aria_label: "No momento, mostrando tópicos com propostas ativas"
+      proposals_aria_label: 'No momento, mostrando tópicos com propostas ativas'
       proposals_description: Ver apenas tópicos com propostas ativas
       muted: Mudo
-      muted_aria_label: "No momento, mostrando tópicos mudos"
+      muted_aria_label: 'No momento, mostrando tópicos mudos'
       muted_description: Ver apenas tópicos que estão mudos
     aria_thread:
-      title: "Título do tópico: {{title}}."
-      unread: "{{count}} itens não lidos."
-      current_proposal: "Proposta atual: {{name}}."
-      you_voted: "Você votou: {{position}}."
+      title: 'Título do tópico: {{title}}.'
+      unread: '{{count}} itens não lidos.'
+      current_proposal: 'Proposta atual: {{name}}.'
+      you_voted: 'Você votou: {{position}}.'
     threads_from:
       group: Tópicos de
       proposals: Propostas
@@ -665,7 +607,7 @@ pt-BR:
   star_toggle:
     star: Tópico estrela
   inbox_page:
-    no_threads: "Legal! Você leu todos os tópicos na sua caixa de entrada."
+    no_threads: 'Legal! Você leu todos os tópicos na sua caixa de entrada.'
     unread_threads: Tópicos Não Lidos
     view_more: Ver Mais
   groups_page:
@@ -676,27 +618,27 @@ pt-BR:
     previous_proposals: Propostas anteriores
     load_previous: Carregar atividade anterior
     you_like_this: Você curte isso.
-    liked_by_you_and_someone: "Você e {{name}} curtem isso."
-    liked_by_you_and_others: "Curtido por você {{joinedNames}} e {{name}}."
-    liked_by_someone: "{{name}} curte isso."
-    liked_by_two_others: "{{name_1}} e {{name_2}} curtem isso."
-    liked_by_many_others: "Curtido por {{joinedNames}} e {{name}}."
-    liked_by_name: "Curtido por {{name}}."
-    liked_by_names_and_name: "Curtido por {{joinedNames}} e {{name}}."
-    started_by: "Iniciado por <strong>{{name}}</strong>"
+    liked_by_you_and_someone: 'Você e {{name}} curtem isso.'
+    liked_by_you_and_others: 'Curtido por você {{joinedNames}} e {{name}}.'
+    liked_by_someone: '{{name}} curte isso.'
+    liked_by_two_others: '{{name_1}} e {{name_2}} curtem isso.'
+    liked_by_many_others: 'Curtido por {{joinedNames}} e {{name}}.'
+    liked_by_name: 'Curtido por {{name}}.'
+    liked_by_names_and_name: 'Curtido por {{joinedNames}} e {{name}}.'
+    started_by: 'Iniciado por <strong>{{name}}</strong>'
     volume:
       loud: Enviar e-mail sempre que houver atividade neste tópico.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Isso significa que você receberá um e-mail sempre que houver atividade neste tópico.
-      loud_message: "Você receberá um e-mail sobre todas as atividades em \"{{name}}\""
-      normal: "Apenas enviar e-mail quando uma proposta for criada, estiver perto do encerramento ou um resultado for publicado."
-      normal_aria_description: "O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando uma proposta for criada, estiver perto de encerrar ou um resultado for definido."
-      normal_message: "Você só receberá e-mails com eventos importantes de \"{{name}}\"."
+      loud_message: 'Você receberá um e-mail sobre todas as atividades em "{{name}}"'
+      normal: 'Apenas enviar e-mail quando uma proposta for criada, estiver perto do encerramento ou um resultado for publicado.'
+      normal_aria_description: 'O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando uma proposta for criada, estiver perto de encerrar ou um resultado for definido.'
+      normal_message: 'Você só receberá e-mails com eventos importantes de "{{name}}".'
       quiet: Não enviar e-mails sobre este tópico.
-      quiet_aria_description: "O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo, a não ser que mencionem você."
-      quiet_message: "Você não receberá e-mails sobre \"{{name}}\" a não ser que alguém mencione você."
-      mute: "Esconder este tópico do painel e não notificar a não ser quando @mencionado."
-      mute_aria_description: "O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail sobre este tópico, a não ser que mencionem você, e este tópico será removido do seu painel"
-      mute_message: "\"{{name}}\" foi removido do seu painel."
+      quiet_aria_description: 'O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo, a não ser que mencionem você.'
+      quiet_message: 'Você não receberá e-mails sobre "{{name}}" a não ser que alguém mencione você.'
+      mute: Esconder este tópico do painel e não notificar a não ser quando @mencionado.
+      mute_aria_description: 'O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail sobre este tópico, a não ser que mencionem você, e este tópico será removido do seu painel'
+      mute_message: '"{{name}}" foi removido do seu painel.'
   thread_group:
     aria_label: Nome do grupo
   thread_context:
@@ -709,62 +651,62 @@ pt-BR:
   delete_thread_form:
     title: Apagar tópico
     body: Você tem certeza de que deseja apagar este tópico?
-    confirm: "Sim, apague este tópico"
+    confirm: 'Sim, apague este tópico'
     messages:
       success: Tópico apagado
   move_thread_form:
     title: Mover tópico
-    body: "Grupo de destino:"
+    body: 'Grupo de destino:'
     confirm: Mover tópico
     messages:
-      success: "Tópico foi movido para {{name}}"
+      success: 'Tópico foi movido para {{name}}'
   activity_card:
     new_activity: Nova Atividade
     attachment_display:
-      aria_label: "Arquivo anexo:"
+      aria_label: 'Arquivo anexo:'
       image_alt: Imagem anexa
   delete_comment_dialog:
     title: Apagar comentário
     question: Você tem certeza que deseja apagar este comentário?
     confirm: Apagar comentário
   new_comment_item:
-    aria_label: "Comentado por {{author}}"
+    aria_label: 'Comentado por {{author}}'
     context_menu:
       aria_label: Opções de comentários
       edit_comment: Editar comentários
       delete_comment: Apagar comentário
-    in_reply_to: "<strong>{{author}}</strong> em resposta a <strong>{{recipient}}</strong>"
+    in_reply_to: '<strong>{{author}}</strong> em resposta a <strong>{{recipient}}</strong>'
   new_vote_item:
-    agree: "<strong>{{actor}}</strong> concordou"
-    abstain: "<strong>{{actor}}</strong> absteve-se"
-    disagree: "<strong>{{actor}}</strong> discordou"
-    block: "<strong>{{actor}}</strong> bloqueou"
-    agree_with_statement: "<strong>{{actor}}</strong> concordou: <span>{{statement}}</span>"
-    abstain_with_statement: "<strong>{{actor}}</strong> absteve-se: <span>{{statement}}</span>"
-    disagree_with_statement: "<strong>{{actor}}</strong> discordou: <span>{{statement}}</span>"
-    block_with_statement: "<strong>{{actor}}</strong> bloqueou: <span>{{statement}}</span>"
+    agree: '<strong>{{actor}}</strong> concordou'
+    abstain: '<strong>{{actor}}</strong> absteve-se'
+    disagree: '<strong>{{actor}}</strong> discordou'
+    block: '<strong>{{actor}}</strong> bloqueou'
+    agree_with_statement: '<strong>{{actor}}</strong> concordou: <span>{{statement}}</span>'
+    abstain_with_statement: '<strong>{{actor}}</strong> absteve-se: <span>{{statement}}</span>'
+    disagree_with_statement: '<strong>{{actor}}</strong> discordou: <span>{{statement}}</span>'
+    block_with_statement: '<strong>{{actor}}</strong> bloqueou: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: "<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>"
+    author_created_proposal: '<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>'
   proposal_closed_item:
-    proposal_closed: "A proposta foi encerrada: <span>{{title}}</span>"
+    proposal_closed: 'A proposta foi encerrada: <span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: "<strong>{{actor}}</strong> fechou a proposta: <span>{{title}}</span>"
+    proposal_closed_by_user: '<strong>{{actor}}</strong> fechou a proposta: <span>{{title}}</span>'
   proposal_edited_item:
-    name: "<strong>{{actor}}</strong> atualizou o título da proposta: <span>{{title}}</span>"
-    description: "<strong>{{actor}}</strong> atualizou a descrição da proposta"
-    closing_at: "<strong>{{actor}}</strong> atualizou a proposta para encerrar em <span>{{time}}</span>"
-    description_name: "<strong>{{actor}}</strong> atualizou o título e a descrição da proposta"
-    closing_at_name: "<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento da proposta"
-    closing_at_description: "<strong>{{actor}}</strong> atualizou a descrição e o tempo para encerramento da proposta"
-    closing_at_description_name: "<strong>{{actor}}</strong> atualizou título, descrição e tempo para encerramento da proposta"
+    name: '<strong>{{actor}}</strong> atualizou o título da proposta: <span>{{title}}</span>'
+    description: '<strong>{{actor}}</strong> atualizou a descrição da proposta'
+    closing_at: '<strong>{{actor}}</strong> atualizou a proposta para encerrar em <span>{{time}}</span>'
+    description_name: '<strong>{{actor}}</strong> atualizou o título e a descrição da proposta'
+    closing_at_name: '<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento da proposta'
+    closing_at_description: '<strong>{{actor}}</strong> atualizou a descrição e o tempo para encerramento da proposta'
+    closing_at_description_name: '<strong>{{actor}}</strong> atualizou título, descrição e tempo para encerramento da proposta'
   proposal_outcome_created_item:
-    proposal_outcome_created: "<strong>{{actor}}</strong> publicou um resultado para a proposta:"
+    proposal_outcome_created: '<strong>{{actor}}</strong> publicou um resultado para a proposta:'
   proposal_outcome_updated_item:
-    proposal_outcome_updated: "<strong>{{actor}}</strong> atualizou o resultado da proposta:"
+    proposal_outcome_updated: '<strong>{{actor}}</strong> atualizou o resultado da proposta:'
   discussion_edited_item:
-    title: "<strong>{{actor}}</strong> atualizou o título do tópico: <span>{{title}}</span>"
-    description: "<strong>{{actor}}</strong> atualizou o contexto do tópico"
-    description_title: "<strong>{{actor}}</strong> atualizou o título e o contexto do tópico"
+    title: '<strong>{{actor}}</strong> atualizou o título do tópico: <span>{{title}}</span>'
+    description: '<strong>{{actor}}</strong> atualizou o contexto do tópico'
+    description_title: '<strong>{{actor}}</strong> atualizou o título e o contexto do tópico'
   contact_message_form:
     contact_us: Contato
     name_label: Seu nome
@@ -774,45 +716,118 @@ pt-BR:
     message_label: Sua mensagem
     message_placeholder: Sua mensagem...
     send_message: Enviar Mensagem
-    new_contact_message: "Obrigado por sua mensagem; estaremos em contato em breve!"
+    new_contact_message: 'Obrigado por sua mensagem; estaremos em contato em breve!'
   help_page:
     coordinating: Coordenando o seu grupo do Loomio
     coordinating_details: "Como coordenador(a), você é responsável por configurar o seu grupo do Loomio e \nconvidar as pessoas para entrar. Além de aprender a usar uma nova plataforma, o seu grupo\naprenderá novos processos para colaborar mais efetivamente e tomar boas decisões\nem conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar certo:\n"
     different_ways: Diferentes formas de usar o Loomio
     engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposta na mesa. Uma boa proposta contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação</p>\n<p>Outra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isso faz enviá-las um e-mail para avisá-las que foram mencionadas em um comentário.</p>\n"
     example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposta.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para uma solução específica. Quando as pessoas participam do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
-    example2_html: "<h3>Você já tem uma proposta em mente e gostaria de obter validação do grupo para seguir adiante.</h3>\n<p>Estratégia: Iniciar uma discussão sobra uma decisão específica e abrir uma proposta imediatamente.</p>\n<p>Se você já tem claro em sua mente um resultado, mas quer assegurar que não restam questões críticas,\nvocê pode usar a proposta para rapidamente ter um feedback sobre uma decisão.</p>\n<p>Você pode fazer coisas como finalizar um documento, aprovar uma aplicação ou validar um trabalho já feito.</p>\n"
+    example2_html: >
+      <h3>Você já tem uma proposta em mente e gostaria de obter validação do
+      grupo para seguir adiante.</h3>
+
+      <p>Estratégia: Iniciar uma discussão sobra uma decisão específica e abrir
+      uma proposta imediatamente.</p>
+
+      <p>Se você já tem claro em sua mente um resultado, mas quer assegurar que
+      não restam questões críticas,
+
+      você pode usar a proposta para rapidamente ter um feedback sobre uma
+      decisão.</p>
+
+      <p>Você pode fazer coisas como finalizar um documento, aprovar uma
+      aplicação ou validar um trabalho já feito.</p>
     get_in_touch: Entre em contato
     get_in_touch_description_html: "Se tiver qualquer pergunta ou sugestão, <a href='%{link}'>fale conosco</a>."
     getting_started: Primeiros passos
-    getting_started_description: "Na esquerda, o grupo discute um assunto, trocando ideias e informações. Quando há uma decisão a ser tomada pelo grupo, ela aparece na direita."
+    getting_started_description: 'Na esquerda, o grupo discute um assunto, trocando ideias e informações. Quando há uma decisão a ser tomada pelo grupo, ela aparece na direita.'
     getting_the_most: Aproveitando ao máximo o Loomio
     have_your_say: Dê a sua opinião
-    have_your_say_details_html: "<p>Quando estiver pronto para dar sua posição, clique em um dos quatro botões de decisão.</p>\n<p>Quando tiver tomado sua decisão, forneça uma breve explicação. Embaixo do gráfico de pizza,\nvocê pode ver o que os outros membros pensam. Isso torna o acompanhamento da discussão fácil\ne rápido. Você pode mudar sua posição em qualquer momento de acordo com a chegada de novas\ninformações.</p>\n"
+    have_your_say_details_html: >
+      <p>Quando estiver pronto para dar sua posição, clique em um dos quatro
+      botões de decisão.</p>
+
+      <p>Quando tiver tomado sua decisão, forneça uma breve explicação. Embaixo
+      do gráfico de pizza,
+
+      você pode ver o que os outros membros pensam. Isso torna o acompanhamento
+      da discussão fácil
+
+      e rápido. Você pode mudar sua posição em qualquer momento de acordo com
+      a chegada de novas
+
+      informações.</p>
     have_a_discussion: Comece uma discussão
     have_a_discussion_description: O assunto e informações relevantes de contexto ficam no topo da página. Use a caixa de comentários para participar da discussão.
     help: Ajuda
     how_it_works: Como funciona
-    invitation_html: "<h2>Escrevendo um bom convite</h2>\n<p>A primeira pergunta que todo novo membro fará é 'para que serve este grupo'?</p>\n<p>Pense sobre a maneira mais simples de descrever seu grupo: O que vocês querem alcançar\nem conjunto? Quais tipos de decisão vocês tomarão? Quem estará envolvido?</p>\n<p>Pode ser uma boa ideia conversar com seu grupo antes de enviar os convites para o Loomio.</p>\n<p>As pessoas vão querer saber por que foram convidadas, o que se espera delas,\ne por que valeria a pena passar um tempo aprendendo a usar uma nova ferramenta.</p>\n"
+    invitation_html: >
+      <h2>Escrevendo um bom convite</h2>
+
+      <p>A primeira pergunta que todo novo membro fará é 'para que serve este
+      grupo'?</p>
+
+      <p>Pense sobre a maneira mais simples de descrever seu grupo: O que vocês
+      querem alcançar
+
+      em conjunto? Quais tipos de decisão vocês tomarão? Quem estará
+      envolvido?</p>
+
+      <p>Pode ser uma boa ideia conversar com seu grupo antes de enviar os
+      convites para o Loomio.</p>
+
+      <p>As pessoas vão querer saber por que foram convidadas, o que se espera
+      delas,
+
+      e por que valeria a pena passar um tempo aprendendo a usar uma nova
+      ferramenta.</p>
     join_the_community: Faça parte da comunidade
     join_the_community_description_html: "Todos estão convidados a se juntar à Comunidade Loomio, onde falamos sobre como tirar o máximo da ferramenta e como ela pode ser melhorada.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Clique aqui para ir ao grupo da Comunidade Loomio</a>."
     images_and_text_formatting: Formatação de imagens e texto
-    images_and_text_formatting_html: "<p>Loomio utiliza o código 'Markdown' -- Remarcação -- para formatação de texto e inserção de imagens.\nVocê pode ativar a Remarcação pelo pequeno ícone cinza embaixo da caixa de comentários.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Clique aqui</a>\npara informações sobre como utilizar Remarcação.</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio utiliza o código 'Markdown' -- Remarcação -- para formatação de
+      texto e inserção de imagens.
+
+      Você pode ativar a Remarcação pelo pequeno ícone cinza embaixo da caixa de
+      comentários.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Clique aqui</a>
+
+      para informações sobre como utilizar Remarcação.</p>
     keep_up_to_date: Manter atualizado
     keep_up_to_date_html: "<p>Clicar no nome do grupo na parte superior da tela levará à Página do Grupo, \nonde você pode ver uma lista de todas as discussões e decisões desse grupo. \nSe você está em mais de um grupo, pode ver toda as atividades em todos os seus \ngrupos de uma vez na Página Inicial.</p>\n<p>Você receberá notificações por e-mail quando coisas importantes acontecerem\nem seu grupo. Você pode modificar suas preferências de e-mail <a href=\"%{link}\"\">aqui</a>.</p>\n"
     make_a_decision: Tomar uma decisão
-    make_a_decision_description: "Quando o grupo estiver pronto para tomar uma decisão, qualquer membro pode apresentar uma proposta. Descreva uma linha de ação clara e forneça informações para que todos saibam exatamente com o que irão concordar ou discordar."
+    make_a_decision_description: 'Quando o grupo estiver pronto para tomar uma decisão, qualquer membro pode apresentar uma proposta. Descreva uma linha de ação clara e forneça informações para que todos saibam exatamente com o que irão concordar ou discordar.'
     prompt_people_details: "Se quiser chamar a atenção de uma pessoa específica em seu grupo, digite '@' e o nome em seguida. A pessoa receberá um e-mail notificando que você a mencionou em um comentário."
     prompt_people_html: "Acione pessoas com <span class='blue'>@menções</span>"
-    positions_agree_description: "<span>De acordo</span> significa que você está satisfeita/o com a proposta."
-    positions_abstain_description: "<span>Abstenção</span> significa que você está insegura/o, ou que você não se importa se o grupo decidir sem você."
-    positions_disagree_description: "<span>Desacordo</span> significa que você acredita que deve haver uma alternativa melhor, mas que está disposta/o a aceitar a decisão da maioria."
-    positions_block_description: "<span>Bloqueio</span> significa que você tem sérias objeções à proposta e ficará muito insatisfeita/o se ela for aprovada."
+    positions_agree_description: '<span>De acordo</span> significa que você está satisfeita/o com a proposta.'
+    positions_abstain_description: '<span>Abstenção</span> significa que você está insegura/o, ou que você não se importa se o grupo decidir sem você.'
+    positions_disagree_description: '<span>Desacordo</span> significa que você acredita que deve haver uma alternativa melhor, mas que está disposta/o a aceitar a decisão da maioria.'
+    positions_block_description: '<span>Bloqueio</span> significa que você tem sérias objeções à proposta e ficará muito insatisfeita/o se ela for aprovada.'
     start_discussion: Iniciar uma discussão envolvente
-    start_discussion_html: "<p>Quando você iniciar uma discussão, certifique-se de que o título comunica o tópico\nde maneira sucinta. Use o Painel de Contexto para fornecer toda informação necessária\npara que o grupo tenha uma discussão produtiva e embasada.</p>\n<p>Durante a discussão, o Painel de Contexto pode ser atualizado de acordo com a\nchegada de novas informações. Além de esclarecer o tópico, você pode usar esse espaço\npara compartilhar recursos, resumir a discussão enquanto ela avança ou explicar os\nprotocolos de tomada de decisão que seu grupo está usando.</p>\n"
+    start_discussion_html: >
+      <p>Quando você iniciar uma discussão, certifique-se de que o título
+      comunica o tópico
+
+      de maneira sucinta. Use o Painel de Contexto para fornecer toda informação
+      necessária
+
+      para que o grupo tenha uma discussão produtiva e embasada.</p>
+
+      <p>Durante a discussão, o Painel de Contexto pode ser atualizado de acordo
+      com a
+
+      chegada de novas informações. Além de esclarecer o tópico, você pode usar
+      esse espaço
+
+      para compartilhar recursos, resumir a discussão enquanto ela avança ou
+      explicar os
+
+      protocolos de tomada de decisão que seu grupo está usando.</p>
     start_proposal: Escrever uma proposta clara
     start_proposal_html: "<p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente com o que exatamente \nirão concordar ou discordar.</p>\n<p>Não será o fim do mundo se uma proposta não obtiver concordândia clara imediatamente.\nSe o grupo não amar a primeira proposta, qualquer membro pode iniciar uma nova proposta para\nlidar com os problemas levantados e fazer com que o processo siga adiante.</p>\n<p>Através desse processo dinâmico, a sabedoria coletiva do grupo pode gerar idéias melhores\ndo que as que um membro sozinho poderia ter.</p>\n<p>O prazo de uma proposta pode ser estendido a qualquer momento, caso pareça que a decisão\nprecise disso. Todos membros receberão uma notificação por e-mail 24 horas antes de uma proposta fechar.</p>\n\n"
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Vídeo-tutorial
     video_tutorial_description: Assista ao vídeo para uma rápida demonstração de como usar o Loomio.
   hint:
@@ -824,21 +839,63 @@ pt-BR:
   pricing_page:
     intro: "Grupos com recursos pagam uma taxa mensal para usar a ferramenta.\nGrupos que não possuem recursos para pagar essa taxa usam o modelo \nPague o Que Puder: seus membros são convidados a fazer contribuições voluntárias. Sua contribuição significa que podemos manter o Loomio independente, livre de anúncios e comandado pela nossa comunidade.\n"
     organisations: Organizações
-    organisations_examples: "p.ex. negócios, agências de governo, organizações comunitárias"
+    organisations_examples: 'p.ex. negócios, agências de governo, organizações comunitárias'
     informal_groups: Grupos informais
     informal_groups_desc: Membros do seu grupo serão solicitados que paguem o que puderem
-    informal_groups_examples: "p.ex. famílias, movimentos sociais, coletivos"
+    informal_groups_examples: 'p.ex. famílias, movimentos sociais, coletivos'
   angular:
     switch_back: Mude de volta para o antigo Loomio
     give_feedback: Dê suas opiniões
+    collapse: Colapsar
     enable:
-      invite: "Experimente o novo Loomio!"
+      invite: 'Experimente o novo Loomio!'
       title: Experimente o novo Loomio
       intro: Nós reconstruímos o Loomio e precisamos da sua ajuda para nos certificar de que está incrível antes de liberá-lo para o público em geral.
-      body_html: "<p></p>\n<h3>Qual a diferença?</h3>\n\n<p>\nA nova interface é como a antiga, só que mais atual:\n<ul>\n<li>Tudo é atualizado na página enquanto acontece.</li>\n<li>É projetada para todos os seus dispositivos, desde smartphone até desktop.</li>\n<li>É acessível a pessoas cegas e está traduzida para <a href=\"https://www.loomio.org/translation\">um montão de idiomas.</a>\n</ul>\n</p>\n\n<p>Usa o mesmo banco de dados da interface antiga, o que significa que você terá todos os seus grupos e discussões já existentes. Você pode voltar para a interface antiga a qualquer momento.</p>\n<p>As coisas vão mudar um pouco a cada dia, enquanto implementamos o feedback que recebermos durante este tempo. Algumas funções menos utilizadas podem não estar lá ainda.</p>\n<p>Há um link “Voltar para o antigo Loomio” no canto inferior esquerdo do novo aplicativo. Clique nesse link e você pode voltar para o Loomio que você está mais acostumado. Há também um formulário de feedback para que você digite qualquer opinião que você tenha.</p>\n<p>Realmente esperamos ouvir seus comentários. Obrigado pelo seu tempo e apoio.</p>\n"
+      body_html: >
+        <p></p>
+
+        <h3>Qual a diferença?</h3>
+
+
+
+        <p>
+
+        A nova interface é como a antiga, só que mais atual:
+
+        <ul>
+
+        <li>Tudo é atualizado na página enquanto acontece.</li>
+
+        <li>É projetada para todos os seus dispositivos, desde smartphone até
+        desktop.</li>
+
+        <li>É acessível a pessoas cegas e está traduzida para <a
+        href="https://www.loomio.org/translation">um montão de idiomas.</a>
+
+        </ul>
+
+        </p>
+
+
+
+        <p>Usa o mesmo banco de dados da interface antiga, o que significa que
+        você terá todos os seus grupos e discussões já existentes. Você pode
+        voltar para a interface antiga a qualquer momento.</p>
+
+        <p>As coisas vão mudar um pouco a cada dia, enquanto implementamos
+        o feedback que recebermos durante este tempo. Algumas funções menos
+        utilizadas podem não estar lá ainda.</p>
+
+        <p>Há um link “Voltar para o antigo Loomio” no canto inferior esquerdo do
+        novo aplicativo. Clique nesse link e você pode voltar para o Loomio que
+        você está mais acostumado. Há também um formulário de feedback para que
+        você digite qualquer opinião que você tenha.</p>
+
+        <p>Realmente esperamos ouvir seus comentários. Obrigado pelo seu tempo
+        e apoio.</p>
       button_text: Ative o novo Loomio
     disable:
       title: Obrigado por experimentar o novo Loomio
-      body_html: "<p>Êita, nós fizemos algo errado? Lamentamos se você teve um mau momento no novo Loomio.</p>"
-      give_feedback: "Antes de ir, por favor, considere compartilhar suas opiniões para que possamos melhorar."
+      body_html: '<p>Êita, nós fizemos algo errado? Lamentamos se você teve um mau momento no novo Loomio.</p>'
+      give_feedback: 'Antes de ir, por favor, considere compartilhar suas opiniões para que possamos melhorar.'
       button_text: Mude de volta para o antigo Loomio

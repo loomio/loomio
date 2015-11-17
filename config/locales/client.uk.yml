@@ -4,16 +4,19 @@ uk:
     time:
       am: дп
       pm: пп
-    closing_in: "Закривається {{time}}"
-    closed_ago: "Закрито {{time}}"
+    closing_in: 'Закривається {{time}}'
+    closed_ago: 'Закрито {{time}}'
     volume: Рівень гучності
     notification_volume: Рівень гучності сповіщень
     group: Група
     groups: Групи
     privacy:
+      privacy: Конфіденційність
+      public: Відкрита
+      open: Відкрита
+      closed: Закрита
       private: Приватно
-      public: Публічно
-      organisation: Організація
+      secret: Таємна
     selected: Вибрані
     date_range:
       today: Сьогодні
@@ -27,6 +30,7 @@ uk:
     action:
       save: Зберегти
       save_changes: Зберегти зміни
+      update_settings: Оновити налаштування
       reply: Відповісти
       edit: Видалити
       like: Мені подобається
@@ -35,7 +39,7 @@ uk:
       cancel: Скасувати
       show_more: Показати більше
       view_all: Переглянути всі
-      new_thread: Нова гілка
+      new_thread: Нова тема
       add_subgroup: Додати підгрупу
       loading: Завантаження
       uploading: Завантажити
@@ -69,7 +73,7 @@ uk:
     heading: Попередні пропозиції
   proposal_collapsed:
     expand: Розширити
-    outcome: "Рішення: {{outcome}}"
+    outcome: 'Рішення: {{outcome}}'
   volume_levels:
     loud: Голосно
     normal: Нормально
@@ -77,47 +81,47 @@ uk:
     mute: Вимкнено
     unmute: Включити
   thread_volume_card:
-    heading: Гілка сповіщень
+    heading: Сповіщення з тем
     body:
-      loud: "Сповіщати про все: ви будете оповіщені поштою про будь яку активність у цій гілці."
-      normal: "Сповіщати про пропозиції: вам буде надіслане сповіщення по електронній пошті у разі внесення пропозиції, її закриття та публікації рішення."
-      quiet: "Без сповіщень: ви не будете отримувати поштові сповіщення про активність у цій гілці."
-      mute: "Гілка вимкнута: ви не будете отримувати поштові сповіщення з цієї гілки, і вона буде видилена з ваших Недавніх гілок та Непрочитаних сторінок."
+      loud: 'Сповіщати про все: ви будете оповіщені поштою про будь яку активність у цій темі.'
+      normal: 'Сповіщати про пропозиції: вам буде надіслане сповіщення по електронній пошті у разі внесення пропозиції, її закриття та публікації рішення.'
+      quiet: 'Без сповіщень: ви не будете отримувати поштові сповіщення про активність у цій темі.'
+      mute: 'Тема вимкнута: ви не будете отримувати поштові сповіщення з цієї теми, і вона буде видилена з ваших Недавніх тем та Непрочитаних сторінок.'
     change_volume_link: Змінити
   thread_volume_form:
-    header: Гілка сповіщень
+    header: Сповіщення з тем
     loud_label: Сповіщати поштою про все
-    loud_description: Вас буде оповіщено поштою як тільки буде якась активність у цій гілці.
+    loud_description: Вас буде оповіщено поштою як тільки буде якась активність у цій темі.
     normal_label: Сповіщати поштою про пропозиції
-    normal_description: "Вам буде надіслане сповіщення по електронній пошті у разі внесення пропозиції, її закриття та публікації рішення."
+    normal_description: 'Вам буде надіслане сповіщення по електронній пошті у разі внесення пропозиції, її закриття та публікації рішення.'
     quiet_label: Без поштових сповіщень
-    quiet_description: "Ви не будете отримувати поштові сповіщення з цієї гілки, крім випадків коли хтось згадає вас @особисто."
-    mute_label: Вимкнути гілку
-    mute_description: "Ви не будете отримувати поштові сповіщення з цієї гілки, і вона буде видалена з ваших Недавніх гілок та Непрочитаних сторінок."
+    quiet_description: 'Ви не будете отримувати поштові сповіщення з цієї теми, крім випадків коли хтось згадає вас @особисто.'
+    mute_label: Вимкнути тему
+    mute_description: 'Ви не будете отримувати поштові сповіщення з цієї теми, і вона буде видалена з ваших Недавніх тем та Непрочитаних сторінок.'
     submit: Оновити
     messages:
-      loud: Вам буде надіслане сповіщення поштою про активність у цій гілці.
-      normal: Вам буде надіслане сповіщення поштою про пропозиції у цій гілці.
-      quiet: Ви не будете отримувати поштові сповіщення з цієї гілки.
-      mute: Гілка вимкнута.
+      loud: Вам буде надіслане сповіщення поштою про активність у цій темі.
+      normal: Вам буде надіслане сповіщення поштою про пропозиції у цій темі.
+      quiet: Ви не будете отримувати поштові сповіщення з цієї теми.
+      mute: Тема вимкнута.
   group_volume_card:
     heading: Сповіщеня групи
     body:
-      loud: "Сповіщати про все: вам буде надіслане поштове сповіщення про будь яку активність у цій групі."
-      normal: Вам буде надіслане поштове сповіщення про нові гілки та пропозиції в цій групі.
-      quiet: "Без сповіщень: ви не будете отримувати поштові сповіщення про активність у цій групі."
-      mute: "Група вимкнута: ви не будете отримувати поштові сповіщення з цієї групи, і вона буде видалена з ваших Недавніх гілок та Непрочитаних сторінок."
+      loud: 'Сповіщати про все: вам буде надіслане поштове сповіщення про будь яку активність у цій групі.'
+      normal: Вам буде надіслане поштове сповіщення про нові теми та пропозиції в цій групі.
+      quiet: 'Без сповіщень: ви не будете отримувати поштові сповіщення про активність у цій групі.'
+      mute: 'Група вимкнута: ви не будете отримувати поштові сповіщення з цієї групи, і вона буде видалена з ваших Недавніх тем та Непрочитаних сторінок.'
     change_volume_link: Змінити
   group_volume_form:
     header: Сповіщеня групи
     loud_label: Сповіщати поштою про все
     loud_description: Вас буде оповіщено поштою як тільки буде якась активність у цій групі.
-    normal_label: Надіслати поштове сповіщення про нові гілки та пропозиції.
-    normal_description: Вам буде надіслане поштове сповіщення про нові гілки та пропозиції в цій групі.
+    normal_label: Надіслати поштове сповіщення про нові теми та пропозиції.
+    normal_description: Вам буде надіслане поштове сповіщення про нові теми та пропозиції в цій групі.
     quiet_label: Без поштових сповіщень
-    quiet_description: "Ви не будете отримувати оповіщено поштою з цієї групи, крім випадків коли хтось згадає вас особисто."
+    quiet_description: 'Ви не будете отримувати оповіщено поштою з цієї групи, крім випадків коли хтось згадає вас особисто.'
     mute_label: Вимкнути групу
-    mute_description: "Ви не будете отримувати поштові сповіщення з цієї групи, і вона буде видалена з ваших Недавніх гілок та Непрочитаних сторінок."
+    mute_description: 'Ви не будете отримувати поштові сповіщення з цієї групи, і вона буде видалена з ваших Недавніх тем та Непрочитаних сторінок.'
     submit: Оновити
     messages:
       loud: Вас буде оповіщено поштою про всю активність у цій гілці.
@@ -130,8 +134,8 @@ uk:
     unread: Непрочитані
     closing_in: Закрито
   session_form:
-    email_label: "Електронна пошта:"
-    password_label: "Пароль:"
+    email_label: 'Електронна пошта:'
+    password_label: 'Пароль:'
     remember_me: Запам’ятати мене
     sign_in: Увійти
   comment_form:
@@ -141,18 +145,18 @@ uk:
       remove_attachment: Видалити додаток
     messages:
       created: Коментар додано
-      replied: "{{name}} сповіщення про відповідь"
+      replied: '{{name}} сповіщення про відповідь'
       updated: Коментар оновлено.
       destroyed: Коментар видалено
     edit_comment: Редагувати коментар
     delete_comment: Видалити коментар
     cancel_reply: Відмінити відповідь
-    confirm_delete_message: "Ви впевнені, що хочете видалити цей коментар?"
-    confirm_delete: "Так, я впевнений"
-    in_reply_to: "У відповідь на <strong>{{name}}</strong>:"
+    confirm_delete_message: 'Ви впевнені, що хочете видалити цей коментар?'
+    confirm_delete: 'Так, я впевнений'
+    in_reply_to: 'У відповідь на <strong>{{name}}</strong>:'
     submit_button:
       label: Опублікувати
-    private_privacy_notice: "Ваш коментар зможуть бачити тільки учасники {{groupName}}."
+    private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
     public_privacy_notice: Ваш коментар зможе бачити будь-хто в мережі
   navbar:
     recent: Недавні
@@ -161,67 +165,68 @@ uk:
     recent_title: Перейти до інформаційної панелі
     unread_title: Переглянути непрочитані повідомлення про активність
     groups_title: Переглянути ваші групи
-    start_thread: Почати нову гілку
+    start_thread: Створити нову тему
     notifications: Панель сповіщень
     user_actions: Дії користувача
     user_options:
       label: Налаштування користувача
       contact_us: Контакти
-      new_thread: Нова гілка
+      new_thread: Нова тема
       new_group: Нова група
       profile: Профіль
       email_settings: Налаштування електронної пошти
       help: Допомога
       sign_out: Вийти
     search:
-      no_results: Не знайдено гілок
+      no_results: Не знайдено тем
       close: Закрити панель пошуку
       placeholder: Пошук
       loading: Завантаження результатів...
-      discussions: Дискусії
+      discussions: Теми
       proposals: Пропозиції
       comments: Коментарі
   start_menu:
+    title: Кнопка дії
     start_group: Створити групу
     start_subgroup: Створити підгрупу
-    start_thread: Створити гілку
+    start_thread: Створити тему
     invite_people: Запросити людей
   notifications:
     header: Сповіщення
-    new_discussion: "<strong>{{name}}</strong> розпочав(ла) обговорення <strong>{{discussion}}</strong>"
-    new_motion: "<strong>{{name}}</strong> внести пропозицію <strong>{{proposal}}</strong>"
-    motion_closed_by_user: "<strong>{{name}}</strong> закрити пропозицію <strong>{{proposal}}</strong>"
-    motion_closed_by_expiry: "Пропозицію закрито <strong>{{proposal}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} на пропозицію <strong>{{proposal}}</strong>"
-    new_comment: "<strong>{{name}}</strong> прокоментував <strong>{{discussion}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> відповів на ваш коментар у <strong>{{discussion}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> вподобав ваш коментар у <strong>{{discussion}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> згадав вас у <strong>{{title}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> зробив запит на долучення до <strong>{{group}}</strong>"
-    membership_request_approved: "<strong>{{name}}</strong> підтвердив ваш запит на долучення до <strong>{{group}}</strong>"
-    user_added_to_group: "<strong>{{name}}</strong> додав вас до групи <strong>{{group}}</strong>"
-    user_added_to_group_no_inviter: "Вас було додано до групи <strong>{{group}}</strong>"
-    motion_closing_soon: "Невдовзі пропозицію буде закрито: <strong>{{proposal}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> опублікував(ла) рішення по пропозиції <strong>{{proposal}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> оновив(ла) рішення по пропозиції <strong>{{proposal}}</strong>"
+    new_discussion: '<strong>{{name}}</strong> розпочав(ла) обговорення <strong>{{discussion}}</strong>'
+    new_motion: '<strong>{{name}}</strong> внести пропозицію <strong>{{proposal}}</strong>'
+    motion_closed_by_user: '<strong>{{name}}</strong> закрити пропозицію <strong>{{proposal}}</strong>'
+    motion_closed_by_expiry: 'Пропозицію закрито <strong>{{proposal}}</strong>'
+    new_vote: '<strong>{{name}}</strong> {{position}} на пропозицію <strong>{{proposal}}</strong>'
+    new_comment: '<strong>{{name}}</strong> прокоментував <strong>{{discussion}}</strong>'
+    comment_replied_to: '<strong>{{name}}</strong> відповів на ваш коментар у <strong>{{discussion}}</strong>'
+    comment_liked: '<strong>{{name}}</strong> вподобав ваш коментар у <strong>{{discussion}}</strong>'
+    user_mentioned: '<strong>{{name}}</strong> згадав вас у <strong>{{title}}</strong>'
+    membership_requested: '<strong>{{name}}</strong> зробив запит на приєднання до <strong>{{group}}</strong>'
+    membership_request_approved: '<strong>{{name}}</strong> схвалив ваш запит на приєднання до <strong>{{group}}</strong>'
+    user_added_to_group: '<strong>{{name}}</strong> додав вас до групи <strong>{{group}}</strong>'
+    user_added_to_group_no_inviter: 'Вас було додано до групи <strong>{{group}}</strong>'
+    motion_closing_soon: 'Невдовзі пропозицію буде закрито: <strong>{{proposal}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> опублікував(ла) рішення по пропозиції <strong>{{proposal}}</strong>'
+    motion_outcome_updated: '<strong>{{name}}</strong> оновив(ла) рішення по пропозиції <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Висловіть свою думку
   vote_form:
     heading: Висловіть свою думку
     no_statement: Без пояснень.
-    i_agree: Я згодний(на)
+    i_agree: Я згоден
     i_agree_details: Я підтримую та хочу щоб пропозиція була прийнята
-    i_abstain: Утримуюсь
-    i_abstain_details: "Я згоден на рішення, що група прийме без моєї участі"
-    i_disagree: Я не згодний(на)
-    i_disagree_details: "Я вважаю, що ми можемо краще"
-    i_block: Категарично проти
+    i_abstain: Я утримуюсь
+    i_abstain_details: 'Я згоден на рішення, що група прийме без моєї участі'
+    i_disagree: Я проти
+    i_disagree_details: 'Я вважаю, що ми можемо краще'
+    i_block: Я блокую
     i_block_details: Я маю суттєві заперечення щодо цієї пропозиції та не хочу аби вона була принята.
     submit_position: Надіслати ваше ставлення
     change_position: Змінити позицію
     select_position: Вибрати позицію
     statement_placeholder: Поділіться своїми думками з групою.
-    aria_statement_label: "При бажанні зробіть заяву, яка буде записана разом з вашою позицією"
+    aria_statement_label: 'При бажанні зробіть пояснення, які буде записані разом з вашою позицією'
     messages:
       created: Голос додано
   proposal_positions_panel:
@@ -233,11 +238,11 @@ uk:
     show_undecided: Показати учасників що не прийняли рішення
     hide_undecided: Сховати учасників що не прийняли рішення
   proposal_pie_chart:
-    participation_statement: "{{percentage}}% учасників заявили про свою позицію ({{number}}/{{total}})"
+    participation_statement: '{{percentage}}% учасників заявили про свою позицію ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Закрити пропозицію
     helptext: Ви дійсно бажаєте закрити цю пропозицію зараз?
-    close_proposal_submit: "Так, закрити пропозицію"
+    close_proposal_submit: 'Так, закрити пропозицію'
     messages:
       success: Пропозицію закрито
   extend_proposal_form:
@@ -246,90 +251,75 @@ uk:
     submit: Оновити термін закриття
   proposal_form:
     messages:
-      created: Пропозицію відкрито
+      created: Пропозицію внесено
       updated: Пропопозицію оновлено
     start_proposal: Внести пропозицію
     start_a_proposal: Внести пропозицію
     edit_proposal: Редагувати пропозицію
     what_does_a_proposal_do: "Пропозиції дозволяють з'ясувати ставлення всіх до конкретного напрямку дій."
-    editing_title_and_description_forbidden: "Ви не можете змінити назву або опис пропозиції після того як люди проголосували. Якщо подробиці змінилися, будь ласка, закрийте цю пропозицію і внесіть нову."
-    title_placeholder: "Наприклад: Злітати на місяць"
+    editing_title_and_description_forbidden: 'Ви не можете змінити назву або опис пропозиції після того як люди проголосували. Якщо подробиці змінилися, будь ласка, закрийте цю пропозицію і внесіть нову.'
+    title_placeholder: 'Наприклад: Злітати на місяць'
     title_label: Назва
     closes_at_label: Закривається о
     closes: Закрито
     details_label: Деталі
-    details_placeholder: "Дайте достатньо подробиць аби кожен розумів, що означає, підтримати, або не підтримати, або зайняти іншу позицію"
+    details_placeholder: 'Дайте достатньо подробиць аби кожен розумів, що означає, погодитись, або не виступити проти, або зайняти іншу позицію'
   discussion_record:
-    created: "Гілку {{title}} було успішно створено у {{groupName}}"
-    updated: "Зберегти зміни у {{title}}"
+    created: 'Тему {{title}} було успішно створено у {{groupName}}'
+    updated: 'Зберегти зміни у {{title}}'
   discussion_form:
     messages:
-      created: Гілки відкриті
-      updated: Гілки оновленні
-    new_discussion_title: Почати нову гілку
-    edit_discussion_title: Редагувати гілку
-    discussion_helptext: В гілці всі можуть обговорити тему та прийняти спільне рішення.
+      created: Тему створено
+      updated: Оновленні теми
+    new_discussion_title: Створити нову тему
+    edit_discussion_title: Редагувати тему
+    discussion_helptext: В темі всі можуть обговорити питання та прийняти спільне рішення.
     group_label: Група
     group_placeholder: Вибрати групу
     title_label: Назва
     title_placeholder: Яку саме тему ви хочете обговорити?
     context_label: Контекст
-    context_placeholder: "Дайте достатньо вихідної інформації для групи, щоб мати продуктивне обговорення. Вона може бути оновлена по ходу дискусії."
+    context_placeholder: 'Дайте достатньо вихідної інформації для групи, щоб мати продуктивне обговорення. Вона може бути оновлена по ходу дискусії.'
     privacy_label: Приватність
-    privacy:
-      will_be_private_to_group: "Гілку зможуть бачити тільки учасники {{groupName}}."
-      will_be_private_to_parent_group: "Гілку зможуть бачити тільки учасники {{parentGroupName}} та учасники {{groupName}}."
-      will_be_public: "Будь хто зможе бачити цю гілку. Тільки учасники {{groupName}} зможуть долучитися до неї."
-    new_discussion_submit: Почати гілку
-    edit_discussion_submit: Оновити гілку
+    privacy_public: Будь-хто може бачити тему. Тільки учасники можуть брати участь.
+    privacy_private: 'Тему можуть бачити тільки учасники групи {{group}}.'
+    privacy_organisation: 'Тему можуть бачити тільки учасники груп {{parent}} та {{group}}.'
+    new_discussion_submit: Створити тему
+    edit_discussion_submit: Оновити тему
   proposal_expanded:
     collapse: Згорнути
     current_votes: Поточні підсумки голосування
-    started_by: "Автор <strong>{{name}}</strong>"
+    started_by: 'Створено <strong>{{name}}</strong>'
     only_voter_is_you: Більше ніхто з учасників ще не проголосував.
     extend_proposal: Змінити термін закриття
     edit_proposal: Редагувати пропозицію
     close_proposal: Закрити пропозицію
     closed_badge: Закрито
-  proposal_position_yes: Підтримую
-  proposal_position_abstain: Утримуюсь
+  proposal_position_yes: Згоден
+  proposal_position_abstain: Утриматись
   proposal_position_no: Проти
   proposal_position_block: Блокувати
   group_welcome_modal:
     heading: Вітаємо у вашій новій групі
-    first_step: "Ви координатор групи, тобто виступаєте у ролі господаря."
-    second_step: "Подивіться навколо &ndash; перегляньте приклад обговорень та поексперементуйте з налаштуваннями."
-    third_step: "Коли ви будете готові, запросіть людей долучитись."
-    ok_got_it: "Добре, зрозуміло!"
+    first_step: 'Ви <strong>координатор</strong> групи - це майже як бути господарем. Педивіться відео, а потім перегляньте приклади тем.'
+    second_step: 'Коли будете готові - <strong>запросіть людей</strong>.'
+    ok_got_it: 'Добре, зрозуміло!'
   group_cover_modal:
     heading: Нове фото обкладинки
     upload_link: Завантажити фото обкладинки
-    helptext: "Шукаєте натхнення? Перегляньте на <a href=\"https://unsplash.com/\">Unsplash</a> галерею чудових та вільних для використання зображень"
-    image_size_helptext: Найкращій розмір 1400 x 320px
+    helptext: 'Шукаєте натхнення? Перегляньте на <a href="https://unsplash.com/">Unsplash</a> галерею чудових та вільних для використання зображень'
+    image_size_helptext: Найкращій розмір зображення 1400 x 320px
     upload_success: Фото обкладинки успішно оновлено
   group_logo_modal:
     heading: Новий логотип для групи
     upload_link: Завантажити новий логотип для групи
-    image_size_helptext: Найкращій розмір 100 x 100px
+    image_size_helptext: Найкращій розмір зображення 100 x 100px
     upload_success: Логотип успішно оновлено
-  start_group_form:
-    heading: Створити групу
-    heading_when_subgroup: Створити підгрупу
-    group_helptext: "Щоб почати приймати рішення разом на Loomio, створіть групу безкоштовно:"
-    group_payment_reminder: "За 30 днів ми просимо вас вибрати <a href='https://www.loomio.org/pricing' target='blank'>тарифний план</a>."
-    name_label: Назва групи
-    description_label: Опис групи
-    description_placeholder: "Опишіть мету вашої групи, щоб учасникам групи було зрозуміло, навіщо вони тут."
-    subgroup_name_label: Назва підгрупи
-    submit: Створити групу
-    messages:
-      success: Групу створено
-      success_when_subgroup: Підгрупу створено
   join_group_button:
     join_group: Приєднатись до групи
     ask_to_join_group: Запросити участь у групі
     messages:
-      joined_group: "Тепер ви учасник {{group}}"
+      joined_group: 'Тепер ви учасник {{group}}'
   membership_request_form:
     heading: Запросити участь у групі
     name_label: Ім’я
@@ -337,35 +327,35 @@ uk:
     introduction_label: Розкажіть про себе
     submit_button: Запросити участь у групі
     messages:
-      membership_requested: "У вас є запити на долучення до {{group}}"
+      membership_requested: 'У вас є запити на приєднання до {{group}}'
   group_page:
     thread_list:
       empty:
-        no_discussions_in_group: В цій групі поки що нема жодної гілки обговорень.
-        no_discussions_matching_filters_html: "Немає гілок що відповідають цим крітеріям. <a href='%{link}'>Скинути фільтр</a>."
-        no_public_discussions: В цій групі нема публічних гілок обговорень.
-        discussions_are_private: Всі гілки в цій групі приватні.
-        join_group: Щоб переглядати приватні гілки обговорень ви маєте долучитись до групи.
-        request_membership: Щоб переглядати приватні гілки зробіть запит на долучення до групи.
+        no_discussions_in_group: В цій групі поки що нема жодної теми для обговорень.
+        no_discussions_matching_filters_html: "Немає тем що відповідають цим крітеріям. <a href='%{link}'>Скинути фільтр</a>."
+        no_public_discussions: В цій групі нема відкритих тем.
+        discussions_are_private: Всі теми в цій групі є приватними.
+        join_group: Щоб переглядати приватні теми ви маєте долучитись до групи.
+        request_membership: Щоб переглядати приватні теми зробіть запит на приєднання до групи.
         membership_is_invitation_only: Щоб долучитись до цієї групи потрібне запрошення від учасника групи.
         membership_is_invitation_by_admin_only: Щоб долучитись до цієї групи потрібне запрошення від координатора групи.
     messages:
       privacy:
         members: Тепер групу можуть бачити тільки учасники
         parent_members: Тепер групу можуть бачити тільки учасники вашої організації
-        public: Тепер група можуть бачити усі (є публічною)
+        public: Тепер групу можуть бачити усі
       leave_group_success: Ви вийшли з групи
       archive_group_success: Цю групу було закрито
     group_logo: Логотип групи
     new_photo: нове фото
     description: Опис групи
-    description_placeholder: "Опишіть тут цілі групи так, щоб учасники розуміли, навіщо вони тут."
-    discussions: Дискусії
-    discussions_placeholder: У гілці всі можуть приняти участь в обговоренні теми та прийняти спільне рішення.
+    description_placeholder: 'Опишіть тут цілі групи так, щоб учасники розуміли, навіщо вони тут.'
+    discussions: Теми
+    discussions_placeholder: У темі всі можуть приняти участь в обговоренні питання та прийняти спільне рішення.
     members: Учасники
-    members_placeholder: "Ви єдиний тут: запросіть когось долучитись до вас!"
+    members_placeholder: 'Ви єдиний тут: запросіть когось долучитись до вас!'
     member_options: Опції участі
-    all_members: "Усього учасників ({{count}})"
+    all_members: 'Усього учасників ({{count}})'
     subgroups: Підгрупи
     subgroups_placeholder: Підгрупи дозволяють розділити групи на різні команди.
     invite_people: Запросити людей
@@ -382,107 +372,244 @@ uk:
     deactivate_group:
       title: Закрити групу
       question: Ви дійсно бажаєте закрити цю групу?
-      submit: "Так, закрити групу"
+      submit: 'Так, закрити групу'
     leave_group:
       title: Залишити групу
       question: Ви дійсно хочете залишити цю групу?
-      submit: "Так, залишити групу"
-      cannot_leave_group: "Ви не можете залишити цю групу, тому що ви останній координатор. Вам потрібно вибрати іншого координатора або закрити групу."
+      submit: 'Так, залишити групу'
+      cannot_leave_group: 'Ви не можете залишити цю групу, тому що ви останній координатор. Вам потрібно вибрати іншого координатора або закрити групу.'
       add_coordinator: Додати координатора
     volume:
       loud: Оповістити поштою як тільки буде якась активність.
       loud_aria_description: Ваш обсяг сповіщень для цієї групи встановлений на рівні Голосно. Вам буде надіслане поштове сповіщення як тільки буде якась активність.
-      loud_message: "Вам буде надіслане поштове сповіщення про всю активність у \"{{name}}.\""
-      normal: "Сповіщати поштою тільки про важливі активності: нові гілки та пропозиції, рішення, тощо."
-      normal_aria_description: "Обсяг сповіщень для для цієї групи встановлено на Нормальний. \nВи отримаєте сповіщення поштою тільки про важливі активності, такі як нові гілки, висунення пропозицій, записи про рішення."
-      normal_message: "Вам буде надіслане поштове сповіщення тільки про важливі події у \"{{name}}\"."
+      loud_message: 'Вам буде надіслане поштове сповіщення про всю активність у "{{name}}."'
+      normal: 'Сповіщати поштою тільки про важливі активності: нові теми та пропозиції, рішення, тощо.'
+      normal_aria_description: "Обсяг сповіщень для для цієї групи встановлено на Нормальний. \nВи отримаєте сповіщення поштою тільки про важливі активності, такі як створення нової теми, висунення пропозицій, записи про рішення."
+      normal_message: 'Вам буде надіслане поштове сповіщення тільки про важливі події у "{{name}}".'
       quiet: Не надсилати сповіщення з цієї групи. Активності будуть відображатись на інформаційній панелі.
       quiet_aria_description: "Обсяг сповіщень для для цієї групи встановлено на Тихо. \nВам не будуть надсилатись поштові сповіщення про активність в цій групі. Активність групи буде відображатись у інформаційній панелі."
-      quiet_message: "Вам не будуть надсилатись сповіщення поштою з \"{{name}}\"."
-      mute: "Сховати цю групу з інформаційної панелі та не сповіщати якщо не згадали @особисто."
+      quiet_message: 'Вам не будуть надсилатись сповіщення поштою з "{{name}}".'
+      mute: Сховати цю групу з інформаційної панелі та не сповіщати якщо не згадали @особисто.
       mute_aria_description: "Обсяг сповіщень для для цієї групи встановлено на Вимкнуто. \nВам не будуть надсилатись поштові сповіщення, крім випадків коли хтось згадає вас особисто. Активність групи не буде відображатись у вашій інформаційній панелі."
-      mute_message: "\"{{name}}\" був(ла) видалена з вашої інформаційної панелі."
+      mute_message: '"{{name}}" був(ла) видалена з вашої інформаційної панелі.'
     privacy:
-      private: "Конфіденційність: Ця група відображається тільки для учасників"
-      parent_members: "Конфіденційність: Ця група відображається для учасників {{parentGroupName}} та учасників {{groupName}}"
-      public: "Конфіденційність: Ця група відображається для всіх у мережі"
+      private: 'Конфіденційність: Ця група відображається тільки для учасників'
+      parent_members: 'Конфіденційність: Ця група відображається для учасників {{parentGroupName}} та учасників {{groupName}}'
+      public: 'Конфіденційність: Ця група відображається для всіх у мережі'
   confirm_gift_plan_modal:
     heading: Обраний Подарунковий план
-    body: "Якщо ваша група не має бюджету на оплату програмного забезпечення, вам не потрібно сплачувати підписку. Учасникам вашої групи періодично буде запропоновано добровільні пожертви."
-    got_it: "Добре, зрозуміло!"
+    body: 'Якщо ваша група не має бюджету на оплату програмного забезпечення, вам не потрібно сплачувати підписку. Учасникам вашої групи періодично буде запропоновано добровільні пожертви.'
+    got_it: 'Добре, зрозуміло!'
   gift_card:
     heading: Подарунковий план
+    body: '<strong>{{name}}</strong> це група що підтримується завдяки подарунку. Якщо ви хочете допомогти Loomio досягненню нашої місії, натисніть на цю кнопку:'
+    make_a_contribution: Зробіть свій внесок
+  trial_card:
+    title: 30-денне безкоштовне пробне використання
+    choose_plan: Виберіть тарифний план
+    in_progress_body: 'Дякуємо за використання Loomio разом з <strong>{{name}}</strong>. Ви можете вибрати зручний для вас тарифний план в будь-який час.'
+    expired_body_html: "Пробне використання Loomio для <strong>{{name}}</strong> досягло кінця. Якщо ви хочете, використовувати її далі, вам потрібно вибрати тарифний план, який відповідає вашим потребам. Якщо ви хочете обговорити це питання, просто <a href=''>зв'яжіться</a>."
   choose_plan_modal:
-    gift_body_html: "<p>Для груп, які не мають бюджету, щоб сплачувати підписку.</p>\n<p>Можливі пожертвування без вимоги платити.</p>\n"
+    heading: Виберіть тарифний план
+    overdue_heading: 'Щоб продовжити використання Loomio, будь ласка, виберіть тарифний план'
+    gift: Подарунок.
+    standard: Стандарт
+    plus: Плюс
+    free_trial_html: 'Ми попросимо вас вибрати тарифний план після <span>30-денного безкоштовного пробного використання</span>. Кредитна карта не потрібна.'
+    get_started_for_free: Почніть безкоштовно
+    gift_body_html: |
+      <p>Для груп, які не мають бюджету, щоб сплачувати підписку.</p>
+      <p>Можливі пожертвування без вимоги платити.</p>
+    support_before: Радий
+    support_link: поговорити з вами
+    support_after: 'про продовження вашого пробного використання, або з будь-яких інших питань що у вас виникнули.'
+    remind_me_later: Нагадати пізніше
+    gift_donation_ask: Ми звернемось до членів вашої групи з проханням про пожертвування.
+    unlimited_members: необмежена кількість членів
+    unlimited_decisions: необмежена кількість рішень
     email_support: підтримка по електронній пошті
+    standard_price_html: |
+      US <strong>$19</strong>/місяць<br><span>або</span> $190/рік
+    plus_body: 'Все що входить у Стандарт, плюс:'
+    premium_support: преміум підтримка
+    custom_url: користувацький URL
+    usage_statistics: статистика використання
+    plus_price_html: |
+      US <strong>$179</strong>/місяць<br><span>або</span> $1790/рік
+    select: Вибрати
   subscription_success_modal:
-    ok_got_it: "Добре, зрозуміло!"
+    heading: 'Дякуємо за підписку!'
+    receipt: Ви отримаєте електронного листа з чеком.
+    change_subscription: 'Якщо ви бажаєте змінити або скасувати підписку, або якщо ви маєте якісь інші питання,'
+    contact_link: "будь ласка, зв'яжіться з нами."
+    sign_off: З ❤ від команди Loomio
+    ok_got_it: 'Добре, зрозуміло!'
   group_form:
-    title: Редагувати налаштування групи
-    profile:
-      name: Назва
-    permissions:
-      members_can_create_subgroups: Створити підгрупу
-      members_can_raise_motions: Внести пропозиції
-      members_can_vote: Голосувати за пропозиції
+    start_group_heading: Створити групу
+    start_subgroup_heading: Створити підгрупу
+    edit_group_heading: Редагувати налаштування групи
+    edit_subgroup_heading: Редагувати налаштування підгрупи
+    group_name: Назва групи
+    subgroup_name: Назва підгрупи
+    description: Опис
+    description_placeholder: 'Опишіть призначення вашої групи, щоб учасники групи розуміли, чому вони тут.'
+    privacy_statement:
+      public_on_web: Назва та опис будуть відкриті у мережі
+      private_to_group: Назву та опис будуть бачити тільки учасники.
+      private_to_parent_members: 'Назву та опис будуть бачити тільки учасники {{parent}}'
+    privacy: Конфіденційність
+    group_privacy_open_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Всі теми є відкритими.'
+    group_privacy_closed_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Тільки учасники можуть бачити теми.'
+    group_privacy_closed_public_threads_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Теми можуть бути відкритими або приватними.'
+    group_privacy_secret_description: тільки запрошені учасники можуть знайти групу та бачити теми.
+    confirm_change_to_secret: 'Якщо ви продовжите, всі теми в цій групі та її підгрупах буде змінено на приватні.'
+    confirm_change_to_secret_subgroup: 'Якщо ви продовжите, всі теми буде змінено на приватні.'
+    confirm_change_to_public: 'Якщо ви продовжите, всі теми в цій групі буде змінено на відкриті в мережі.'
+    confirm_change_to_private_discussions_only: 'Якщо ви продовжите, всі відкриті теми в цій групі буде змінено на приватні.'
+    subgroup_privacy_open_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Всі теми є відкритими.'
+    subgroup_privacy_closed_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Тільки учасники можуть бачити теми.'
+    subgroup_privacy_closed_public_threads_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Теми можуть бути відкритими або приватними.'
+    subgroup_privacy_closed_secret_parent_description: 'учасники {{parent}} можуть знайти підгрупу, бачити хто в ній, зробити запит на долучення.'
+    subgroup_privacy_secret_description: тільки запрошені учасники можуть знайти підгрупу та бачити теми.
+    advanced_settings: Додаткові налаштування
+    how_do_people_join: Як люди можуть долучитись?
+    membership_granted_upon_request: Будь-хто може долучитись до групи.
+    membership_granted_upon_approval: Будь-хто може зробити запит на долучення але воно має бути схвалено.
+    membership_granted_upon_approval_secret_parent: '<strong>За запитом</strong> - будь-хто з {{parent}} може зробити запит на  долучення до групи.'
+    thread_privacy: Конфіденційність тем
+    public_threads: Тільки відкриті теми
+    public_discussions_subgroup: 'Будь-хто з {{parentGroupName}} може приймати участь у дискусії'
+    public_or_private_threads: Дозволити відкриті та приватні теми
+    private_threads: Тільки учасники можуть бачити обговорення
+    permissions: Дозволи
+    allow_public_threads: Дозволити відкриті теми в цій групі.
+    parent_members_can_see_discussions: 'Учасники {{parent}} можуть бачити теми.'
+    members_can_add_members: Учасники можуть запрошувати людей та схвалювати запити на долучення.
+    members_can_create_subgroups: Учасники можуть створювати підгрупи.
+    members_can_edit_discussions: Учасники можуть оновлювати контекст та заголовок будь-якої теми.
+    members_can_edit_comments: Учасники можуть редагувати власні коментарі в будь-який час.
+    members_can_start_discussions: Учасники можуть створювати нові теми.
+    members_can_vote: Учасники можуть голосувати по пропозиціям.
+    members_can_raise_motions: Учасники можуть створювати пропозиції.
+    submit_start_group: Створити групу
+    submit_start_subgroup: Створити підгрупу
+    submit_update: Оновити налаштування
+    messages:
+      group_created: Групу створено
+      group_updated: Групу оновлено
+  membership_requests_card:
+    heading: Запити на приєднання
+    manage_requests: Керування запитами
+    manage_requests_with_count: 'Керування ({{count}}) запитами'
+  group_help_card:
+    title: Допомога
+    ten_tips_article_title: '10 порад, як зробити важливі рішення з Loomio'
+    nine_ways_to_use_proposals: 9 способів використання пропозицій Loomio щоб перейти від слів до справи
   membership_requests_page:
+    heading: Запити на приєднання
     approve: Підтримую
     ignore: Ігнорувати
+    no_pending_requests: Наразі нема запитів в очікуванні на приєднання до цієї групи.
+    no_previous_requests: Наразі нема попередніх запитів на приєднання до цієї групи.
+    previous_requests: Попередні запити
+    previous_request_response: '{{response}} від {{responder}} '
+    messages:
+      request_approved_success: Запит на приєднання схвалено
+      request_ignored_success: Запит на приєднання ігноровано
   group_previous_proposals_card:
     heading: Попередні пропозиції
-  group_form:
-    messages:
-      new_group: Групу створено
-    new_group_title: Створити Нову групу
-    new_subgroup_title: "Створити Нову підгрупу у {{parentGroupName}}"
-    profile_label: Профіль
-    name_label: Ім’я
-    description_label: Опис
-    category_label: Категорія
+    see_more: Переглянути більше
   invitation:
     invite_people: Запросити людей
+    find_people: Знайти людей
+    import_contacts_header: Підключіть свою адресну книгу
+    import_contacts_message: 'Запросити людей до Loomio набагато легше, якщо ви імпортуєте контакти з Google.'
+    import_contacts: Імпортувати контакти
     instructions: Введіть імена або електронні адреси
+    invitation_message: Текст запрошення
+    remove_invite: Видалити запрошення
+    send_invite: 'Відправити {{count}} запрошень'
+    to: 'кому:'
+    add_custom_message: + додати власне повідомлення
+    default_message: 'Привіт, долучайся до прийняття рішення! Ми використовуємо інструмент спільного прийняття рішень під назвою Loomio'
     messages:
-      members_added_and_emails_sent: "{{members}} учасник(и) додані і {{emails}} запрошення відправлені"
-      emails_sent: "{{emails}} запрошення відправлені"
+      members_added_and_emails_sent: '{{members}} учасник(и) додані і {{emails}} запрошення відправлені'
+      members_added: 'Учасник(и) {{members}} додані'
+      emails_sent: '{{emails}} запрошення відправлені'
+      no_invitations: 'Запрошення не відправлено!'
   memberships_page:
     members: Учасники
     name_label: Ім’я
     coordinator_label: Координатор
     remove_member_label: Видалити
+    fragment_placeholder: Фільтрувати користувачів за власним іменем або за іменем користувача...
+    messages:
+      remove_member_success: '{{name}} вилучено'
+      make_admin_success: '{{name}} тепер координатор'
+      remove_admin_success: '{{name}} більше не координатор'
     remove_membership:
+      title: Видалити учасника
+      question: 'Ви дійсно хочете видалити учасника {{name}} з групи {{group}}?'
       submit: Видалити
+    remove_admin_from_self:
+      question: Ви дійсно більше не хочете бути координатором?
   pending_invitations_card:
+    heading: Запрошення в очікуванні
     email: Електронна пошта
+    invitation_link: Посилання на запрошення
+  cancel_invitation_form:
+    heading: Скасувати запрошення
+    question: Ви дійсно хочете скасувати запрошення?
+    submit: 'Так, скасувати запрошення'
+    cancel: Ні
+    messages:
+      success: Зпрошення скасовано
   profile_page:
     messages:
+      updated: Профіль оновлено
+      picture_changed: Малюнок профілю оновлено
+      password_changed: Пароль оновлено
       deactivated: Обліковий запис закрито
     change_picture:
+      title: Змінити малюнок
+      helptext: 'Ви можете завантажити ваш власний малюнок профілю, або, у разі якщо ви зареєстровані на <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a>, можете використати його.'
       use_initials: Використовувати ініціали
+      use_gravatar: Використовувати глобальний аватар (gravatar)
+      use_uploaded: Завантажити новий малюнок
     change_password:
+      title: Змінити пароль
+      helptext: 'Паролі повинні бути довжиною 8 символів. Загальні паролі, такі як "пароль", заборонені аби тримати ваш обліковий запис у безпеці.'
       current_password_label: Поточний пароль
       new_password_label: Новий пароль
       password_confirmation_label: Підтвердіть новий пароль
+      submit: Оновити пароль
     deactivate_user:
       title: Закрити обліковий запис
+      question: 'Не могли б ви повідомити, чому ви деактивуєте свій аккаунт?'
+      placeholder: "Відповідь на це питання не є обов'язковою. Будь-яка інформація якою ви ділетися допоможе нам поліпшити Loomio :)"
       submit: Закрити обліковий запис
+    change_picture_link: Змінити малюнок
+    change_password_link: Змінити пароль
     deactivate_user_link: Закрити обліковий запис...
     profile: Профіль
-    picture_label: Картинка
+    edit_profile: Редагувати профіль
+    picture_label: Малюнок
     name_label: Ім’я
     username_label: Ім’я користувача
     email_label: Електронна пошта
     locale_label: Мова
+    update_profile: Оновити профіль
   email_settings_page:
     header: Налаштування електронної пошти
     email: Електронна пошта
     daily_summary_label: Щоденний підсумковий лист
     daily_summary_description: Кожного ранку відправляти електронного листа з учорашньою непрочитаною активністтю. Таке поштове сповіщення надає простий спосіб залишатись в курсі активності на Loomio.
-    on_participation_label: Активність у гілках в яких я приймаю участь
-    on_participation_description: "Коли ви приймаєте участь в гілці, налаштування обсягу сповіщень буде змінено на \"Високий\", тож сповіщення про всі майбутні активності будуть негайно надіслані вам поштою."
+    on_participation_label: Активність у темах в яких я приймаю участь
+    on_participation_description: 'Коли ви берете участь в обговоренні теми, налаштування обсягу сповіщень буде змінено на "Високий", тож сповіщення про всі майбутні активності будуть негайно надіслані вам поштою.'
     proposal_closing_soon_label: Перш ніж пропозицію буде закрито
-    proposal_closing_soon_description: "За 24 години до закриття пропозиції, незалежно від налаштувань обсягу сповіщень, ви отримаєте електронного листа з останньою інформацією про пропозицію."
-    mentioned_description: "Коли хтось захоче привернути вашу увагу, він(вона) згадає вас @особисто. Ми радимо залишити цю опцію вімкнутою, для того щоб отримати поштові сповіщення коли це трапиться."
+    proposal_closing_soon_description: 'За 24 години до закриття пропозиції, незалежно від налаштувань обсягу сповіщень, ви отримаєте електронного листа з останньою інформацією про пропозицію.'
+    mentioned_label: Коли мене згадали @особисто
+    mentioned_description: 'Коли хтось захоче привернути вашу увагу, він(вона) згадає вас @особисто. Ми радимо залишити цю опцію вімкнутою, для того щоб отримати поштові сповіщення коли це трапиться.'
     update_settings: Оновити налаштування електронної пошти
     messages:
       updated: Налаштування електронної пошти оновлено
@@ -491,139 +618,368 @@ uk:
     options:
       aria_label: Налаштування фільтру для інформаційної панелі
     no_threads:
-      show_all: У вас нема жодних недавніх гілок.
-      show_participating: Ви поки що не долучились до жодної з недавніх гілок.
-      show_proposals: Наразі немає активних пропозицій
-      show_muted: У вас немає вимкнутих гілок.
-    view_recent: Переглянути всі недавні гілки?
+      show_all: У вас нема жодних недавніх тем.
+      show_participating: Останнім часом ви не брали участь в обговоренні жодної теми.
+      show_starred: У вас нема вибраних тем.
+      show_proposals: Наразі немає активних пропозицій.
+      show_muted: У вас немає вимкнутих тем.
+    view_recent: Переглянути всі недавні теми?
+    load_more: Завантажити більше тем
     mark_as_read: Відмітити як прочитане
     filtering:
+      filter_threads: Фільтрувати теми
+      filter_threads_aria_label: Фільтрувати теми
       dropdown_heading: Фільтр інформаційної панелі
-      all: Недавні гілки
-      all_description: Переглянути недавні гілки
+      all: Недавні теми
+      all_aria_label: Показані останні теми
+      all_description: Переглянути недавні теми
+      starred: Вибрані теми
+      starred_aria_label: Показані теми які я позначив як важливі
+      starred_description: Переглянути тільки теми які ви позначили як важливі
+      participating: Теми в яких брав участь
+      participating_aria_label: Показані теми в яких я брав участь
+      participating_description: Переглянути теми в яких я брав участь
       proposals: Пропозиції
+      proposals_aria_label: Показані теми з активними пропозиціями
+      proposals_description: Переглянути тільки теми з активними пропозиціями
       muted: Вимкнуто
-      muted_aria_label: Відображення вимкнутих гілок
-      muted_description: Переглянути тільки гілки що вимкнуті
+      muted_aria_label: Відображення вимкнутих тем
+      muted_description: Переглянути тільки теми що вимкнуті
     aria_thread:
-      current_proposal: "Поточна пропозиція: {{name}}."
+      title: 'Заголовок теми: {{title}}.'
+      unread: '{{count}} непрочитаних тем.'
+      current_proposal: 'Поточна пропозиція: {{name}}.'
+      you_voted: 'Ви проголосували: {{position}}.'
     threads_from:
+      group: Теми від
       proposals: Пропозиції
+      starred: Вибрані теми
       today: Сьогодні
       yesterday: Вчора
+      thisweek: Цього тижня
+      thismonth: Цього місяця
+      older: Більше ніж місяць тому
+  star_toggle:
+    star: Додати тему до вибраних
+  inbox_page:
+    no_threads: 'Вау! Ви прочитали всі теми у вашій скриньці.'
+    unread_threads: Непрочитані теми
+    view_more: Переглянути більше
+  groups_page:
+    page_header: Ваші групи
   discussion:
     activity: Активність
     proposals: Пропозиції
     previous_proposals: Попередні пропозиції
     load_previous: Завантажити попередню активність
-    started_by: "Автор <strong>{{name}}</strong>"
+    you_like_this: Вам це сподобалось.
+    liked_by_you_and_someone: 'Вам та {{name}} це сподобалось.'
+    liked_by_you_and_others: 'Сподобалось вам, {{joinedNames}} та {{name}}.'
+    liked_by_someone: '{{name}} уподобав це.'
+    liked_by_two_others: '{{name_1}} та {{name_2}} уподобали це.'
+    liked_by_many_others: 'Сподобалось {{joinedNames}} та {{name}}.'
+    liked_by_name: 'Сподобалось {{name}}.'
+    liked_by_names_and_name: 'Сподобалось {{joinedNames}} та {{name}}.'
+    started_by: 'Створено <strong>{{name}}</strong>'
     volume:
-      loud: Оповістити поштою як тільки буде якась активність у цій гілці.
-      loud_aria_description: Ваш обсяг сповіщень для цієї групи встановлений на рівні Голосно. Це означає що ви отримаєте поштові сповіщення як тільки буде якась активність в цій гілці.
-      loud_message: "Вас буде оповіщено поштою про всю активність у \"{{name}}\""
-      normal: "Надсилати сповішення тільки в разі коли пропозицію внесено, закрито, або опубліковане рішення. "
-      normal_aria_description: "Ваш обсяг сповіщень для цієї групи встановлений на рівні Нормально. Вам буде надіслане поштове сповіщення тільки в разі коли пропозицію внесено, закрито, або опубліковане рішення. "
-      normal_message: "Вам буде надіслане поштове сповіщення тільки про важливі події у \"{{name}}\"."
-      quiet: Не надсилати сповіщення з цієї гілки.
-      quiet_aria_description: "Ваш обсяг сповіщень для цієї групи встановлений на рівні Спокійно. Вам не будуть надсилатись поштові сповіщення, крім випадків коли хтось згадає вас @особисто."
-      quiet_message: "Вам не будуть надсилатись поштові сповіщення про \"{{name}}\", крім випадків коли хтось згадає вас особисто."
-      mute: "Сховати цю гілку з інформаційної панелі та не сповіщати якщо не згадали @особисто."
-      mute_aria_description: "Обсяг сповіщень для для цієї гілки встановлено на Беззвучний. \nВам не будуть надсилатись поштові сповіщення з цієї гілки, крім випадків коли хтось згадає вас особисто. Ця гілка не буде відображатись у вашій інформаційній панелі."
-      mute_message: "\"{{name}}\" був(ла) видалена з вашої інформаційної панелі"
+      loud: Оповістити поштою як тільки буде якась активність у цій темі.
+      loud_aria_description: Ваш обсяг сповіщень для цієї групи встановлений на рівні Голосно. Це означає що ви отримаєте поштові сповіщення як тільки буде якась активність в цій темі.
+      loud_message: 'Вас буде оповіщено поштою про всю активність у "{{name}}"'
+      normal: 'Надсилати сповішення тільки в разі коли пропозицію внесено, закрито, або опубліковане рішення. '
+      normal_aria_description: 'Ваш обсяг сповіщень для цієї теми встановлений на рівні Нормально. Вам буде надіслане поштове сповіщення тільки в разі коли пропозицію внесено, закрито, або опубліковане рішення. '
+      normal_message: 'Вам буде надіслане поштове сповіщення тільки про важливі події у "{{name}}".'
+      quiet: Не надсилати сповіщення з цієї теми.
+      quiet_aria_description: 'Ваш обсяг сповіщень для цієї теми встановлений на рівні Спокійно. Вам не будуть надсилатись поштові сповіщення з цієї теми, крім випадків коли хтось згадає вас @особисто.'
+      quiet_message: 'Вам не будуть надсилатись поштові сповіщення про "{{name}}", крім випадків коли хтось згадає вас особисто.'
+      mute: Сховати цю тему з інформаційної панелі та не сповіщати якщо не згадали вас @особисто.
+      mute_aria_description: "Обсяг сповіщень для для цієї теми встановлено на Беззвучний. \nВам не будуть надсилатись поштові сповіщення з цієї теми, крім випадків коли хтось згадає вас @особисто. Ця гілка не буде відображатись у вашій інформаційній панелі."
+      mute_message: '"{{name}}" був(ла) видалена з вашої інформаційної панелі'
   thread_group:
     aria_label: Назва групи
   thread_context:
+    aria_label: Контекст теми
+    thread_options: Налаштування теми
     notifications: Сповіщеня
+    edit_thread: Редагувати
+    move_thread: Перемістити
+    delete_thread: Видалити
+  delete_thread_form:
+    title: Видалити тему
+    body: Ви впевнені що хочете видалити цю тему?
+    confirm: 'Так, видалити тему'
+    messages:
+      success: Тему видалено
+  move_thread_form:
+    title: Перемістити тему
+    body: 'Група до якої перемістити:'
+    confirm: Перемістити тему
+    messages:
+      success: 'Тема була переміщена до {{name}}'
   activity_card:
     new_activity: Нова активність
+    attachment_display:
+      aria_label: 'Прикріпити файл:'
+      image_alt: Прикріплене зображення
   delete_comment_dialog:
     title: Видалити коментар
-    question: "Ви впевнені, що хочете видалити цей коментар?"
+    question: 'Ви впевнені, що хочете видалити цей коментар?'
     confirm: Видалити коментар
   new_comment_item:
+    aria_label: 'Прокоментовано {{author}}'
     context_menu:
+      aria_label: Налаштування коментаря
       edit_comment: Редагувати коментар
       delete_comment: Видалити коментар
+    in_reply_to: '<strong>{{author}}</strong> у відповідь на <strong>{{recipient}}</strong>'
+  new_vote_item:
+    agree: '<strong>{{actor}}</strong> згоден'
+    abstain: '<strong>{{actor}}</strong> утримався'
+    disagree: '<strong>{{actor}}</strong> проти'
+    block: '<strong>{{actor}}</strong> заблокував'
+    agree_with_statement: '<strong>{{actor}}</strong> згоден: <span>{{statement}}</span>'
+    abstain_with_statement: '<strong>{{actor}}</strong> утримався: <span>{{statement}}</span>'
+    disagree_with_statement: '<strong>{{actor}}</strong> проти: <span>{{statement}}</span>'
+    block_with_statement: '<strong>{{actor}}</strong> заблокував: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: "<strong>{{actor}}</strong> вніс(внесла) пропозицію: <span>{{title}}</span>"
+    author_created_proposal: '<strong>{{actor}}</strong> вніс(внесла) пропозицію: <span>{{title}}</span>'
   proposal_closed_item:
-    proposal_closed: "Було закрито пропозицію: <span>{{title}}</span>"
+    proposal_closed: 'Було закрито пропозицію: <span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: "<strong>{{actor}}</strong> закрив(ла) пропозицію: <span>{{title}}</span>"
+    proposal_closed_by_user: '<strong>{{actor}}</strong> закрив(ла) пропозицію: <span>{{title}}</span>'
   proposal_edited_item:
-    name: "<strong>{{actor}}</strong> оновив(ла) назву пропозиції: <span>{{title}}</span>"
-    description: "<strong>{{actor}}</strong> оновив(ла) опис пропозиції"
-    closing_at: "<strong>{{actor}}</strong> оновив(ла) час закриття пропозиції на <span>{{time}}</span>"
-    description_name: "<strong>{{actor}}</strong> оновив(ла) назву та опис пропозиції"
-    closing_at_name: "<strong>{{actor}}</strong> оновив(ла) назву та час закриття пропозиції"
-    closing_at_description: "<strong>{{actor}}</strong> оновив(ла) опис та час закриття пропозиції"
-    closing_at_description_name: "<strong>{{actor}}</strong> оновив(ла) назву, опис та час закриття пропозиції"
+    name: '<strong>{{actor}}</strong> оновив(ла) назву пропозиції: <span>{{title}}</span>'
+    description: '<strong>{{actor}}</strong> оновив(ла) опис пропозиції'
+    closing_at: '<strong>{{actor}}</strong> оновив(ла) час закриття пропозиції на <span>{{time}}</span>'
+    description_name: '<strong>{{actor}}</strong> оновив(ла) назву та опис пропозиції'
+    closing_at_name: '<strong>{{actor}}</strong> оновив(ла) назву та час закриття пропозиції'
+    closing_at_description: '<strong>{{actor}}</strong> оновив(ла) опис та час закриття пропозиції'
+    closing_at_description_name: '<strong>{{actor}}</strong> оновив(ла) назву, опис та час закриття пропозиції'
   proposal_outcome_created_item:
-    proposal_outcome_created: "<strong>{{actor}}</strong> опублікував(ла) рішення по пропозиції:"
+    proposal_outcome_created: '<strong>{{actor}}</strong> опублікував(ла) рішення по пропозиції:'
   proposal_outcome_updated_item:
-    proposal_outcome_updated: "<strong>{{actor}}</strong> оновив(ла) рішення по пропозиції:"
+    proposal_outcome_updated: '<strong>{{actor}}</strong> оновив(ла) рішення по пропозиції:'
+  discussion_edited_item:
+    title: '<strong>{{actor}}</strong> оновив заголовок теми: <span>{{title}}</span>'
+    description: '<strong>{{actor}}</strong> оновив контекст теми'
+    description_title: '<strong>{{actor}}</strong> оновив заголовок теми та її контекст'
   contact_message_form:
+    contact_us: Контакти
     name_label: "Ваше ім'я"
+    name_placeholder: "Введіть ваше ім'я..."
     email_label: Ваша електронна адреса
     email_placeholder: Введіть адресу вашої еектронної пошти...
     message_label: Ваше повідомлення
+    message_placeholder: Ваше повідомлення...
+    send_message: Надіслати повідомлення
+    new_contact_message: "Дякуємо за ваше повідомлення; ми з вами зв'яжемося!"
   help_page:
     coordinating: Координація Вашої групи
     coordinating_details: "Як координатор, Ви відповідаєте за створення групи та запрошення до неї \nкористувачів. Окрім навчання працювати з новим програмним продуктом,\nВаша група вивіить нові способи ефективної взаємодії та спільне прийняття\nдобрих рішень. Ось деяки підказки:\n"
     different_ways: Різноманітні шляхи використання Loomio
-    engaging_html: "<h2>Підказки для заохочення вашої групи</h2>\n<p>Люди захочуть брати участь у дискусіях, коли цікава пропозиція буде внесена на розгляд. Гарна пропозиція має план дій для групи, тому буде моментально зрозуміло, що означає згода чи відхилення. Подумайте, як ви можете визначити дискусії/рішення що приймає група. Буде краще, якщо вони також у Loomio.</p>\n<p>Якщо ваша група тільки стартує, ви можете створити легкий приклад дискусії, щоб дати кожному шанс погратися з Loomio та побачити процесс прийняття рішень в дії.</p>\n<p>Інший легкий шлях заохотити людей до дискусії - використовувати @mention\nможливість, щоб нагадати про дискусію окремим людям; @mention надішле цим людям повідомлення на пошту про те, що їх було згадано у коментарі.</p>\n"
-    example1_html: "<h3>Вам потрібна група, щоб розглянути широку тему та прийняти рішення разом</h3>\n<p>Стратегія: обговоріть тему перш ніж внести пропозицію.</p>\n<p>Дискусії часто приводять до найкращого рішення якщо ви можете досягти спільного бачення щодо проблеми до моменту розгляду конкретного рішення. Коли люди беруть участь у процесі, імовірніше що рішення буде їм до вподоби.</p>\n"
-    example2_html: "<h3>У вас вже є пропозиція, та ви хочете отримати підтримку від групи.</h3>\n<p>Стратегія: розпочніть дискусію з конкретного питання та одразу зробіть пропозицію.</p>\n<p>Якщо ви маєте чітке уявлення щодо рішення, та хочете переконатись, що нема критичних заперечень щодо нього,\nви можете використати пропозицію щоб швидко отримати результат.\n</p>\n<p>Таким чіном ви можете робити речі на кшталт затвердження документу, підтвердження заявок, отримання згоди на певні дії.</p>\n"
+    engaging_html: >
+      <h2>Підказки для заохочення вашої групи</h2>
+
+      <p>Люди захочуть брати участь у дискусіях, коли цікава пропозиція буде
+      внесена на розгляд. Гарна пропозиція має план дій для групи, тому буде
+      одразу зрозуміло, що означає погодитись чи виступити проти. Подумайте, як
+      ви можете визначити дискусії/рішення що приймає група. Буде краще, якщо
+      вони також у Loomio.</p>
+
+      <p>Якщо ваша група тільки починає свою роботу, ви можете створити легкий
+      приклад дискусії, щоб дати кожному шанс погратися з Loomio та побачити
+      процесс прийняття рішень в дії.</p>
+
+      <p>Інший легкий шлях заохотити людей до дискусії - звернутись @особисто,
+      щоб нагадати про дискусію окремим людям; @особисте звернення надішле цим
+      людям повідомлення на пошту про те, що їх було згадано у коментарі.</p>
+    example1_html: >
+      <h3>Вам потрібна група щоб розглянути глобальне питання та разом
+      напрацювати рішення</h3>
+
+      <p>Стратегія: обговоріть тему перш ніж внести пропозицію.</p>
+
+      <p>Зазвичай дискусії приводять до найкращого результату у разі коли
+      вдається досягти спільного бачення щодо проблеми ще до переходу до
+      конкретних рішень. Коли люди беруть участь у процесі пошуку, більш за все,
+      знайдене рішення буде їм до вподоби.</p>
+    example2_html: >
+      <h3>У вас вже є пропозиція, та ви хочете отримати підтримку від
+      групи.</h3>
+
+      <p>Стратегія: розпочніть дискусію з конкретного питання та одразу зробіть
+      пропозицію.</p>
+
+      <p>Якщо ви маєте чітке уявлення щодо рішення, та хочете переконатись, що
+      нема критичних заперечень щодо нього,
+
+      ви можете використати пропозицію щоб швидко отримати результат.
+
+      </p>
+
+      <p>Таким чіном ви можете робити речі на кшталт затвердження документу,
+      підтвердження заявок, отримання згоди на певні дії.</p>
     get_in_touch: "Зв'язок"
     get_in_touch_description_html: "Для зворотнього зв'язку або будь-яких запитань, <a href='%{link}'>напишіть нам</a>."
     getting_started: Перші кроки
-    getting_started_description: "Ліворуч група обговорює тему, обмінюється ідеями та іншою інформацією. Коли група приймає рішення, воно відображується у верхній частині, праворуч"
+    getting_started_description: 'Ліворуч група обговорює тему, обмінюється ідеями та іншою інформацією. Коли група приймає рішення, воно відображується у верхній частині, праворуч'
     getting_the_most: Отримати максимальну віддачу від Loomio
     have_your_say: Висловіть свою думку
     have_your_say_details_html: "<p>Коли Ви готові голосувати, натисніть одну з чотирьох кнопок прийняття рішення.</p>\n<p>Коли ви прийняли рішення, дайте коротке пояснення. Під діаграмою \nВи можете бачити, що думають інші. Це надає можливість швидко вникнути в\nдискусію. Коли з'являється нова інформація, в любий момент Ви \nможете змінити свою позицію</p>\n"
     have_a_discussion: Долучитись до дискусії
-    have_a_discussion_description: "Тема та будь-яка інформація, що має відношення до теми, розташована зверху сторінки. Використовуйте поле \"додати коментар\" для прийняттй участі в дискусії."
+    have_a_discussion_description: 'Тема та будь-яка інформація, що має відношення до теми, розташована зверху сторінки. Використовуйте поле "додати коментар" для прийняттй участі в дискусії.'
     help: Допомога
     how_it_works: Як це працює
-    invitation_html: "<h2>Як написати гарне запрошення</h2>\n<p>Перше питання, яке буде мати кожен запрошенний - \"що це за група?\"</p>\n<p>Поміркуйте про найкращий опис групи, спитайте себе: Чого ви хотіли б досягти разом? Які типи рішень ви будете приймати? Хто буде брати участь?</p>\n<p>Непогана ідея поговорити з групою заздалегідь, перед тим, як ви запросите їх до Loomio.</p>\n<p>Людям буде цікаво, чому їх запросили, що ви очікуєте від них і чому варто гаяти час на розуміння, як користуватися новим інструментом.</p>\n"
+    invitation_html: >
+      <h2>Як написати гарне запрошення</h2>
+
+      <p>Перше питання, яке буде мати кожен запрошенний - "що це за група?"</p>
+
+      <p>Поміркуйте про найкращий опис групи, спитайте себе: Чого ви хотіли
+      б досягти разом? Які типи рішень ви будете приймати? Хто буде брати
+      участь?</p>
+
+      <p>Непогана ідея поговорити з групою заздалегідь, перед тим, як ви
+      запросите їх до Loomio.</p>
+
+      <p>Людям буде цікаво, чому їх запросили, що ви очікуєте від них і чому
+      варто гаяти час на розуміння, як користуватися новим інструментом.</p>
     join_the_community: Вступити до спільноти
-    images_and_text_formatting: Зображення та формат тексту
-    images_and_text_formatting_html: "<p>Loomio використовує ‘Markdown’ для додання до тексту зображень та форматування.\nВи можете включити Markdown за допомогою невеличкої сірої іконки під блоком коменту.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Натисніть тут</a>\nдля інформації по використанню Markdown.</p>\n"
+    join_the_community_description_html: "Запрошуємо всіх приєднатись до співтовариства Loomio, де ми говоримо про те, як використати цей інструмент наповну, та як він може бути поліпшений.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Натисніть тут, щоб перейти в групу співтовариства Loomio</a>."
+    images_and_text_formatting: Зображення та форматування тексту
+    images_and_text_formatting_html: >
+      <p>Loomio використовує ‘Markdown’ для додавання до тексту зображень та
+      форматування.
+
+      Ви можете включити Markdown за допомогою невеличкої сірої іконки під блоком
+      коментарів.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Натисніть тут</a>
+
+      для інформації про використанню Markdown.</p>
     keep_up_to_date: Підтримуйте актуальність
-    keep_up_to_date_html: "<p>Натиснувши на назву групи у верхній частині екрану ви опинитесь на Сторінці Групи,\n де ви можете побачити список усіх дискуссій та рішень для цієї групи. Якщо\nви є членом більш ніж однієї групи, ви можете бачити усю активніть усіх ваших груп одразу на Домашній Сторінці.</p>\n<p>Ви будете отримувати сповіщення на електронну пошту, коли у вашій групі відбувається щось важливе.\nВи можете змінити ваші налаштування для електронної пошти <a href=\"%{link}\"\">тут</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Натиснувши на назву групи у верхній частині екрану ви опинитесь на
+      Сторінці Групи,
+
+       де ви можете побачити список усіх дискуссій та рішень для цієї групи.
+      Якщо
+
+      ви є членом більш ніж однієї групи, ви можете бачити усю активніть усіх
+      ваших груп одразу на Домашній Сторінці.</p>
+
+      <p>Ви будете отримувати сповіщення на електронну пошту, коли у вашій групі
+      відбувається щось важливе.
+
+      Ви можете змінити ваші налаштування для електронної пошти <a
+      href="%{link}"">тут</a>.</p>
     make_a_decision: Прийняти рішення
-    make_a_decision_description: "Коли група готова прийняти рішення, будь-хто може внести пропозицію. Визначте зрозумілий план дій та надайте вихідну інформацію, щоб всім було зрозуміло, що означає підтримати або не підтримати пропозицію."
-    prompt_people_details: "Якщо ви хочете привернути увагу конкретної людини у вашій групі, напишіть нікнейм, почавши зі знаку @. Тоді член групи отримає email з повідомленням, що ви згадали їх у коментарі."
-    prompt_people_html: "Згадуйте людей за допомогою <span class='blue'>@посилання</span>"
-    positions_agree_description: "<span>Згоден</span> означає, що ви задоволені пропозицією"
-    positions_abstain_description: "<span>Утримуюсь</span> означає, що ви не впевнені, або доручаєте групі прийняти рішення без Вашої участі."
-    positions_disagree_description: "<span>Не згоден</span> означає, що ви бачете кращій вибір, ала згодні прийняти рішення групи."
-    positions_block_description: "<span>Блокувати</span> означає, що Ви маєте категоричні заперечення та будете дуже незадоволені, якщо пропозицію буде прийнято."
-    start_discussion: Розпочати дискусію
-    start_discussion_html: "<p>Коли ви починаєте дискуссію, переконайтеся, що назва дискусії лаконічно описує тему. Використовуйте Контекстну Панель, щоб надати усю інформацію, необхідну для того, щоб група мала продуктивну та інформативну дискусію.</p>\n<p>Під час дискусії, Контекстна Панель буде оновлюватися по мірі того як з'являтиметься нова інформація. Ви можете використовувати цю ділянку не тільки для уточнення інформації, але і для спільного використання ресурсів, підсумовування дискуссії по мірі прогресу, або ж підкреслення процесу прийняття рішень, якого дотримується ваша група.</p>\n"
+    make_a_decision_description: 'Коли група готова прийняти рішення, будь-хто може внести пропозицію. Визначте зрозумілий план дій та надайте вихідну інформацію, щоб всім було зрозуміло, що означає погодитись або виступити проти пропозиції.'
+    prompt_people_details: 'Якщо ви хочете привернути увагу конкретної людини у вашій групі, напишіть нікнейм, почавши зі знаку @. Тоді член групи отримає електронний лист з повідомленням, що ви згадали їх особисто у коментарі.'
+    prompt_people_html: "Звертайтесь до людей <span class='blue'>@особисто</span>"
+    positions_agree_description: '<span>Згоден</span> означає, що ви задоволені пропозицією'
+    positions_abstain_description: '<span>Утримуюсь</span> означає, що ви не впевнені, або доручаєте групі прийняти рішення без вашої участі.'
+    positions_disagree_description: '<span>Проти</span> означає, що ви бачете кращій вибір, ала згодні прийняти рішення групи.'
+    positions_block_description: '<span>Блокувати</span> означає, що ви маєте категоричні заперечення та будете дуже незадоволені, якщо пропозицію буде прийнято.'
+    start_discussion: Розпочати активне обговорення
+    start_discussion_html: >
+      <p>Коли ви починаєте дискуссію, переконайтеся, що назва дискусії лаконічно
+      описує тему. Використовуйте Контекстну Панель, щоб надати усю інформацію,
+      необхідну для того, щоб група мала продуктивну та інформативну
+      дискусію.</p>
+
+      <p>Під час дискусії, Контекстна Панель буде оновлюватися по мірі того як
+      з'являтиметься нова інформація. Ви можете використовувати цю ділянку не
+      тільки для уточнення інформації, але і для спільного використання ресурсів,
+      підсумовування дискуссії по мірі прогресу, або ж підкреслення процесу
+      прийняття рішень, якого дотримується ваша група.</p>
     start_proposal: Написати чітку пропозицію
-    start_proposal_html: "<p>Якщо ви зробите назву зрозумілою та конкретною, люди одразу зможуть точно визначити, що означає підтримати чи не підтримати пропозицію.</p>\n<p>Це ще не кінець світу, якщо пропозиція не отримає загальної підтримки одразу.\nЯкщо групі не подобається перша пропозиція, будь-хто може внести нову пропозицію, щоб прислухатися до сумнівів та зберігти процес.</p>\n<p>Завдяки динамічному процесу спільний розум вашої групи може запропонувати ідеї кращі ніж будь-хто з учасників самостійно.</p>\n<p>Остання дата дії пропозиції може бути перенесена у будь-який час, якщо здається, що потрібна довша дискусія. Усі отримають сповіщення на електронну пошту за 24 години до того, як пропозицію буде закрито.</p>\n"
-    video_id: "52025402"
+    start_proposal_html: >
+      <p>Якщо ви зробите назву зрозумілою та конкретною, люди одразу зможуть
+      зрозуміти, що означає погодитись чи виступити проти пропозиції.</p>
+
+      <p>Це ще не кінець світу, якщо пропозиція не отримає загальної підтримки
+      одразу.
+
+      Якщо групі не подобається перша пропозиція, будь-хто може внести нову, щоб
+      прислухатися до сумнівів та зберігти процес.</p>
+
+      <p>Завдяки динамічному процесу спільний розум вашої групи може
+      запропонувати ідеї кращі ніж будь-хто з учасників самостійно.</p>
+
+      <p>Остання дата дії пропозиції може бути перенесена у будь-який час, якщо
+      здається, що потрібна довша дискусія. Усі отримають сповіщення на
+      електронну пошту за 24 години до того, як пропозицію буде закрито.</p>
+    video_id: '52025402'
     video_tutorial: Відео-підручник
     video_tutorial_description: Перегляньте відео для того щоб швидше зрозуміти як працює Loomino
   hint:
     context: Підказки з використання контекстної панелі
-    discussion: Підказки для старту дискусії
+    discussion: Підказки для створення активного обговорення
     invitation: Підказки щодо написання влучного запрошення.
     proposal: Підказки щодо написання чіткої пропозиції
     vote: Ви можете змінити Ваше ставлення будь-коли
   pricing_page:
-    intro: "Групи з бюджетом сплачують підписку за користування інструментом.\nГрупи без можливостей сплачувати підписку використовують Плати Коли Зможешь модель: їх члени запрошуються зробити добровільний внесок. Ваш внесок означає, що ми можемо зберігати Loomio незалежним, вільним від реклами, та існуючим за рахунок спільноти.\n"
+    intro: "Групи що мають бюджет сплачують підписку за користування сервісом.\nГрупи що не мають можливості сплачувати підписку використовують \nмодель Плати Скільки Можешь: їх учасникам пропонується зробити добровільні внески. Ваш внесок означає, що ми можемо підтримувати Loomio незалежним, вільним від реклами та керованим спільнотою.\n"
     organisations: Організації
-    organisations_examples: "наприклад бізнес, урядові агенції, суспільні організації"
+    organisations_examples: 'наприклад бізнес, урядові агенції, суспільні організації'
     informal_groups: Не формальні групи
-    informal_groups_desc: "Членів вашої групи попросять заплатити стільки, скільки вони зможуть"
+    informal_groups_desc: 'Учасників вашої групи попросять заплатити стільки, скільки вони зможуть'
     informal_groups_examples: "наприклад, сім'ї, соціальні ініціативи, коллективи"
   angular:
+    switch_back: Повернутися до старого Loomio
+    give_feedback: "Зворотний зв'язок"
+    collapse: Згорнути
     enable:
+      invite: 'Спробуйте новий Loomio!'
+      title: Спробуйте новий Loomio
+      intro: 'Ми оновили Loomio і нам потрібна ваша допомога, щоб переконатися, що він є зручним, перш ніж ми випустимо його на широкий загал.'
+      body_html: >
+        <p></p>
+
+        <h3>В чому різниця?</h3>
+
+
+
+        <p>
+
+          Новий інтерфейс, схожий на старий, але вдосконалено:
+
+          <ul>
+
+            <li>Інформація оновлюється на сторінці в реальному часі, одразу як
+        щось відбувається</li>
+
+            <li>Він розроблений для всіх ваших пристроїв, від смартфонів до
+        настільного компютеру</li>
+
+            <li>Він доступний для сліпих, та перекладений на <a
+        href="https://www.loomio.org/translation">купу мов</a>
+
+          </ul>
+
+        </p>
+
+
+
+        <p>Він використовує ту ж базу даних що старий інтерфейс. Це означає, що
+        вам будуть доступні всі існуючі групи та дискусії. Ви можете повернутися
+        до старого інтерфейсу в будь-який час.</p>
+
+        <p>Деталі будуть змінюватись потроху кожен день, у міру того як ми будемо
+        впроваджувати пропозиції що надходять через зворотний зв'язок за цей час.
+        Деякі з менш часто використовуваних функцій можуть там ще не
+        з'явитись.</p>
+
+        <p>В лівому нижньому кутку нового інтерфейсу є посилання "Повернутись до
+        старого Loomio". Натисніть на це посилання і ви зможете повернутися до
+        Loomio до якого ви більше звикли. Є також форма зворотного зв'язку, щоб
+        надати будь які зауваження та пропозиції.</p>
+
+        <p>Ми з нетерпінням чекаємо на ваші відгуки. Дякуємо за ваш час та
+        підтримку.</p>
       button_text: Включити новий Loomio
     disable:
-      title: Дякуємо за вибробування нової Loomio
-      body_html: "<p>Ой, ми зробили щось не так? Вибачте якщо у вам не сподобалась нова Loomio.</p>"
+      title: Дякуємо за вибробування нового Loomio
+      body_html: '<p>Ой, ми зробили щось не так? Вибачте якщо вам не сподобався новий Loomio.</p>'
       give_feedback: Перш ніж ви підете будь ласка поділіться вашими враженнями щоб ми могли їх врахувати.
-      button_text: Повернутись до старої Loomio
+      button_text: Повернутись до старого Loomio
