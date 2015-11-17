@@ -17,7 +17,7 @@
   %thead
     %th.col-md-1= t :photo
     %th= t :name
-    %th= t :"common.email"
+    %th= t :username
     %th= t :coordinator
     %th= t :remove
   %tbody
@@ -28,7 +28,7 @@
         %td
           %div= link_to user.name, user_path(user)
           %div.access-level= t :coordinator if membership.admin?
-        %td=user.email
+        %td= "@#{user.username}"
         %td
           - if membership.admin?
             = link_to t(:remove_coordinator),
