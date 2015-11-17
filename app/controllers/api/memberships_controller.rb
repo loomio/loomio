@@ -25,7 +25,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def my_memberships
-    @memberships = accessible_records.where(user_id: current_user.id)
+    @memberships = current_user.memberships.includes(:user, :inviter)
     respond_with_collection
   end
 
