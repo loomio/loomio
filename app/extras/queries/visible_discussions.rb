@@ -7,9 +7,9 @@ class Queries::VisibleDiscussions < Delegator
                   joins(:group).
                   where('groups.archived_at IS NULL').
                   published.
-                  includes(:author, :current_motion, {group: :parent})
+                  includes(:author, {current_motion: [:author, :outcome_author]}, {group: [:parent]})
     @relation = self.class.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
-
+    
     super(@relation)
   end
 

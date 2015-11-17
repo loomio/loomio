@@ -3,7 +3,7 @@ class Queries::VisibleMotions < Delegator
     @user = user || LoggedOutUser.new
     @group_ids = group_ids.presence || Array(groups).map(&:id)
 
-    @relation = Motion.joins(discussion: :group).where('groups.archived_at IS NULL').preload(:discussion)
+    @relation = Motion.joins(discussion: :group).includes(:discussion).where('groups.archived_at IS NULL')
 
     if @user.is_logged_in?
       @relation = @relation.joins("LEFT OUTER JOIN motion_readers mr ON mr.motion_id = motions.id AND mr.user_id = #{@user.id}")

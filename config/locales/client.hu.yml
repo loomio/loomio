@@ -3,16 +3,15 @@ hu:
     time:
       am: de
       pm: du
-    closing_in: "Zárás {{time}}"
-    closed_ago: "Zárva {{time}}"
+    closing_in: 'Zárás {{time}}'
+    closed_ago: 'Zárva {{time}}'
     volume: Hangerő
     notification_volume: Értesítési hangerő
     group: Csoport
     groups: Csoportok
     privacy:
-      private: Zártkörű
       public: Nyilvános
-      organisation: Szervezet
+      private: Zártkörű
     date_range:
       today: Ma
       yesterday: Tegnap
@@ -34,8 +33,8 @@ hu:
       add_subgroup: Alcsoport létrehozása
   error_page:
     forbidden: Ehhez nincs jogosultságod.
-    page_not_found: "Ezt nem találjuk. Lehet, hogy törölték vagy áthelyezték."
-    internal_server_error: "Sajnáljuk, de valami hiba történt. Kérlek próbáld újra."
+    page_not_found: 'Ezt nem találjuk. Lehet, hogy törölték vagy áthelyezték.'
+    internal_server_error: 'Sajnáljuk, de valami hiba történt. Kérlek próbáld újra.'
   start_proposal_card:
     title: Tégy javaslatot
   proposal_outcome_panel:
@@ -61,9 +60,9 @@ hu:
     unread: Olvasatlan
     closing_in: Zárás
   session_form:
-    email_label: "email:"
-    password_label: "Jelszó:"
-    remember_me: "Emlékezz rám:"
+    email_label: 'email:'
+    password_label: 'Jelszó:'
+    remember_me: 'Emlékezz rám:'
     sign_in: Belépés
   comment_form:
     aria_label: Hozzászólás
@@ -76,8 +75,8 @@ hu:
     edit_comment: Hozzászólást módosít
     delete_comment: Hozzászólás törlése
     confirm_delete_message: Biztosan törölni akarod ezt a hozzászólást?
-    confirm_delete: "Igen, biztos vagyok benne"
-    private_privacy_notice: "A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható."
+    confirm_delete: 'Igen, biztos vagyok benne'
+    private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
   navbar:
     unread: Olvasatlan
     groups: Csoportok
@@ -98,11 +97,11 @@ hu:
     start_subgroup: Alcsoport indítása
   notifications:
     header: Értesítések
-    user_mentioned: "<strong>{{name}}</strong> megemlített téged a <strong>{{title}}</strong> témában"
-    membership_requested: "<strong>{{name}}</strong> tagságot kért a <strong>{{group}}</strong> csoportba"
-    membership_request_approved: "<strong>{{name}}</strong> érvényesítette csatlakozási kérelmedet a <strong>{{group}}</strong> csoporthoz"
-    user_added_to_group: "<strong>{{name}}</strong> hozzáadott téged a <strong>{{group}}</strong> csoporthoz"
-    user_added_to_group_no_inviter: "Hozzáadtak a <strong>{{group}}</strong> csoporthoz"
+    user_mentioned: '<strong>{{name}}</strong> megemlített téged a <strong>{{title}}</strong> témában'
+    membership_requested: '<strong>{{name}}</strong> tagságot kért a <strong>{{group}}</strong> csoportba'
+    membership_request_approved: '<strong>{{name}}</strong> érvényesítette csatlakozási kérelmedet a <strong>{{group}}</strong> csoporthoz'
+    user_added_to_group: '<strong>{{name}}</strong> hozzáadott téged a <strong>{{group}}</strong> csoporthoz'
+    user_added_to_group_no_inviter: 'Hozzáadtak a <strong>{{group}}</strong> csoporthoz'
   position_buttons_panel:
     heading: Szólj bele
   vote_form:
@@ -113,7 +112,7 @@ hu:
     i_disagree: Nem értek egyet
     i_disagree_details: Szerintem ennél jobbat is ki tudunk találni
     i_block: Blokkolom
-    i_block_details: "Komoly ellenvetéseim vannak a javaslattal szemben és nem szeretném, hogy így döntsünk."
+    i_block_details: 'Komoly ellenvetéseim vannak a javaslattal szemben és nem szeretném, hogy így döntsünk.'
     submit_position: Álláspont megadása
   proposal_positions_panel:
     heading: Álláspontok
@@ -132,12 +131,9 @@ hu:
     context_label: Leírás
     privacy_label: Adatvédelem
   proposal_expanded:
-    started_by: "<strong>{{name}}</strong> indította"
+    started_by: '<strong>{{name}}</strong> indította'
     edit_proposal: Javaslat szerkesztése
     close_proposal: Javaslat lezárása
-  start_group_form:
-    heading: Indíts egy csoportot
-    submit: Csoport indítása
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
     ask_to_join_group: Kérj belépőt a csoportba
@@ -145,7 +141,7 @@ hu:
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
-    introduction_label: "Mutatkozz be!"
+    introduction_label: 'Mutatkozz be!'
     submit_button: Kérj belépőt a csoportba
   group_page:
     thread_list:
@@ -162,16 +158,10 @@ hu:
     volume:
       loud: Emailezzen ha aktivitás van.
       quiet: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
-      mute: "Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg."
+      mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás
-  group_form:
-    edit_group_title: Csoport beállítások
-    profile_label: Profil
-    name_label: Név
-    description_label: Leírás
-    category_label: Katgória
   memberships_page:
     members: Tagok
     name_label: Név
@@ -206,13 +196,13 @@ hu:
   discussion:
     proposals: Javaslatok
     previous_proposals: Előző javaslatok
-    liked_by_someone: "{{name}} kedveli ezt."
-    started_by: "<strong>{{name}}</strong> indította"
+    liked_by_someone: '{{name}} kedveli ezt.'
+    started_by: '<strong>{{name}}</strong> indította'
     volume:
       loud: Emailezz ha aktivitás van ezen a szálon.
-      normal: "Csak akkor emailezz, ha egy javaslat született, ha zárás következik vagy ha összegzést tettek közzé."
+      normal: 'Csak akkor emailezz, ha egy javaslat született, ha zárás következik vagy ha összegzést tettek közzé.'
       quiet: Ne küldj emailt erről a szálról.
-      mute: "Ez a szál ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg."
+      mute: Ez a szál ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
   thread_group:
     aria_label: Csoport neve
   delete_comment_dialog:
@@ -229,41 +219,134 @@ hu:
     message_label: Üzeneted
   help_page:
     coordinating: Koordináljuk a Loomio csoportodat
-    coordinating_details: "Te vagy a koordinátor, te indítod el a csoportot és te hívod meg a többieket. A csoportnak nem csak a Loomio használatát kell megtanulnia, hanem azt is, hogy tud jól összedolgozni, hogyan tud közösen döntéseket hozni. Pár jótanács, hogy ez sikerüljön:\n"
+    coordinating_details: >
+      Te vagy a koordinátor, te indítod el a csoportot és te hívod meg
+      a többieket. A csoportnak nem csak a Loomio használatát kell megtanulnia,
+      hanem azt is, hogy tud jól összedolgozni, hogyan tud közösen döntéseket
+      hozni. Pár jótanács, hogy ez sikerüljön:
     different_ways: Többféleképpen használhatod a Loomiót
-    engaging_html: "<h2>Hogyan vond be a csoportot</h2>\n<p>Az emberek akkor fognak belevágni a közös gondolkodásba, ha már van valamilyen érdekes javaslat. A jó javaslat előre mutat, megmutatja, mit tegyen a csoport, így mindenkinek egyértelmű, hogy mit jelent, ha ellenzi vagy támogatja. Gondold át, milyen vitákat folytat le a csoport személyesen vagy e-mailben, amit megkönnyíthetne a Loomio használata.</p>\n<p>Ha most alakult a csoport érdemes valami kisebb fajsúlyú témával kezdeni, hogy mindenki kipróbálhassa a Loomio lehetőségeit.</p>\n<p>Úgy is bevonhatsz másokat a vitába, ha használod a @név eszközt és a megjegyzésekben megnevezel egyeseket, levelet fognak kapni róla, hogy te megemlítetted őket.</p>\n"
-    example1_html: "<h3>Azt szeretnéd, hogy a csoport tárgyaljon meg egy szerteágazó témát és dolgozzon ki rá megoldást</h3>\n<p>Stratégia: Tárgyaljátok meg alaposan a témát mielőtt javaslatot tennétek.</p>\n<p>Gyakran az a legjobb megoldás kulcsa, hogy mindenki pontosan tisztázza miről is van szó, mielőtt elhamarkodottan döntene. Ha a tagok részt vesznek a vitában és a javaslat kidolgozásában, sokkal jobban elfogadják a közös döntést is.</p>\n"
-    example2_html: "<h3>Ha már van döntési javaslatod és szeretnéd, hogy a csoport döntsön róla, hogy továbbléphessetek</h3>\n<p>Stratégia: Nyisd meg a témát és azonnal tegyél javaslatot is.</p>\n<p>Ha konkrét elképzelésed van arról, hogy mit kellene tenni, de biztos akarsz benne lenni, hogy senkinek nincs érdemi ellenvetése, a javaslat előrelendítheti a közös döntést.</p>\n<p>Hasznos lehet ez, ha jóvá kell hagyni egy dokumentumot, egy jelentkezést, bármilyen elvégzett munkát.</p>\n"
+    engaging_html: >
+      <h2>Hogyan vond be a csoportot</h2>
+
+      <p>Az emberek akkor fognak belevágni a közös gondolkodásba, ha már van
+      valamilyen érdekes javaslat. A jó javaslat előre mutat, megmutatja, mit
+      tegyen a csoport, így mindenkinek egyértelmű, hogy mit jelent, ha ellenzi
+      vagy támogatja. Gondold át, milyen vitákat folytat le a csoport személyesen
+      vagy e-mailben, amit megkönnyíthetne a Loomio használata.</p>
+
+      <p>Ha most alakult a csoport érdemes valami kisebb fajsúlyú témával
+      kezdeni, hogy mindenki kipróbálhassa a Loomio lehetőségeit.</p>
+
+      <p>Úgy is bevonhatsz másokat a vitába, ha használod a @név eszközt és
+      a megjegyzésekben megnevezel egyeseket, levelet fognak kapni róla, hogy te
+      megemlítetted őket.</p>
+    example1_html: >
+      <h3>Azt szeretnéd, hogy a csoport tárgyaljon meg egy szerteágazó témát és
+      dolgozzon ki rá megoldást</h3>
+
+      <p>Stratégia: Tárgyaljátok meg alaposan a témát mielőtt javaslatot
+      tennétek.</p>
+
+      <p>Gyakran az a legjobb megoldás kulcsa, hogy mindenki pontosan tisztázza
+      miről is van szó, mielőtt elhamarkodottan döntene. Ha a tagok részt vesznek
+      a vitában és a javaslat kidolgozásában, sokkal jobban elfogadják a közös
+      döntést is.</p>
+    example2_html: >
+      <h3>Ha már van döntési javaslatod és szeretnéd, hogy a csoport döntsön
+      róla, hogy továbbléphessetek</h3>
+
+      <p>Stratégia: Nyisd meg a témát és azonnal tegyél javaslatot is.</p>
+
+      <p>Ha konkrét elképzelésed van arról, hogy mit kellene tenni, de biztos
+      akarsz benne lenni, hogy senkinek nincs érdemi ellenvetése, a javaslat
+      előrelendítheti a közös döntést.</p>
+
+      <p>Hasznos lehet ez, ha jóvá kell hagyni egy dokumentumot, egy
+      jelentkezést, bármilyen elvégzett munkát.</p>
     get_in_touch: Kapcsolat
     get_in_touch_description_html: "Ha bármilyen kérdésed van vagy visszajelzést szertnél küldeni, <a href='%{link}'>hívj minket fel</a>."
     getting_started: Kezdjük
-    getting_started_description: "Bal oldalon tárgyalja meg a csoport a témát. Ha döntési javaslat van, az a jobb oldalon jelenik meg."
+    getting_started_description: 'Bal oldalon tárgyalja meg a csoport a témát. Ha döntési javaslat van, az a jobb oldalon jelenik meg.'
     getting_the_most: Hogyan használd ki a Loomio lehetőségeit
     have_your_say: Szólj bele
-    have_your_say_details_html: "<p>Ha kialakult az álláspontod kattints a négy döntés gomb egyikére.</p>\n<p>Ha döntöttél, adj hozzá rövid magyarázatot. A kördiagram alatt láthatod, hogy a többiek mit gondolnak. Így könnyen átláthatod, hogyan alakul a vita. Ha új szempontok merülnek fel, bármikor megváltoztathatod az álláspontodat.</p>\n"
+    have_your_say_details_html: >
+      <p>Ha kialakult az álláspontod kattints a négy döntés gomb egyikére.</p>
+
+      <p>Ha döntöttél, adj hozzá rövid magyarázatot. A kördiagram alatt láthatod,
+      hogy a többiek mit gondolnak. Így könnyen átláthatod, hogyan alakul a vita.
+      Ha új szempontok merülnek fel, bármikor megváltoztathatod az
+      álláspontodat.</p>
     have_a_discussion: Mi a véleményed?
     have_a_discussion_description: A téma és a legfontosabb információk róla az oldal tetején találhatók. A hozzászólással tudod elmondani a véleményedet a témáról.
     help: Segítség
     how_it_works: Mi ez az egész?
-    invitation_html: "<h2>Hogyan írjunk jó meghívót</h2>\n<p>Az első kérdés, ami minden új tagban felötlik: mire való ez a csoport?</p>\n<p>Hogyan tudnád a lehető legegyszerűbben leírni a csoportot: Mit akartok elérni? Milyen döntéseket fogtok hozni? Ki vesz részt benne?</p>\n<p>Érdemes beszélni a csoporttal, mielőtt kiküldöd a meghívókat, arról, hogy mi is ez.</p>\n<p>Tudni akarják majd, hogy miért hívtad meg őket, mit várnak el tőlük és miért érdemes időt és energiát fektetniük a loomio használatába.</p>\n"
+    invitation_html: >
+      <h2>Hogyan írjunk jó meghívót</h2>
+
+      <p>Az első kérdés, ami minden új tagban felötlik: mire való ez
+      a csoport?</p>
+
+      <p>Hogyan tudnád a lehető legegyszerűbben leírni a csoportot: Mit akartok
+      elérni? Milyen döntéseket fogtok hozni? Ki vesz részt benne?</p>
+
+      <p>Érdemes beszélni a csoporttal, mielőtt kiküldöd a meghívókat, arról,
+      hogy mi is ez.</p>
+
+      <p>Tudni akarják majd, hogy miért hívtad meg őket, mit várnak el tőlük és
+      miért érdemes időt és energiát fektetniük a loomio használatába.</p>
     join_the_community: Csatlakozz a közösséghez
     images_and_text_formatting: Képek és szövegformázás
-    images_and_text_formatting_html: "<p>A Loomio a képek beillesztéséhez és a szöveg formázásához a \"Markdown\" rendszert használja. A hozzászólás ablak alatti kis szürke ikonnal kapcsolhatod be a Markdownt.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Ide kattintva</a> további információkat kaphatsz a Markdown rendszerről.</p>\n"
+    images_and_text_formatting_html: >
+      <p>A Loomio a képek beillesztéséhez és a szöveg formázásához a "Markdown"
+      rendszert használja. A hozzászólás ablak alatti kis szürke ikonnal
+      kapcsolhatod be a Markdownt.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Ide kattintva</a>
+      további információkat kaphatsz a Markdown rendszerről.</p>
     keep_up_to_date: Maradj naprakész
-    keep_up_to_date_html: "<p>ha a lap tetején a csoport nevére kattintasz, a csoport oldalára jutsz, ahol a csoport témáit és döntéseit láthatod. Ha több csoport tagja is vagy, az összes csoport tevékenységét láthatod a nyitólapodon.</p>\n<p>Ha fontos dolgok történnek a csoportban, e-mailben értesítünk. Az e-mail beállításokat <a href=\"%{link}\"\">itt</a> változtathatod meg.</p>\n"
-    make_a_decision: "Dönts!"
-    make_a_decision_description: "Ha a csoport készen áll a döntésre, bárki tehet javaslatot. Legyen egyértelmű, hogy mit javasolsz és tisztázd, hogy mit jelent ha avalaki egyetért vele, vagy ellenzi."
+    keep_up_to_date_html: >
+      <p>ha a lap tetején a csoport nevére kattintasz, a csoport oldalára jutsz,
+      ahol a csoport témáit és döntéseit láthatod. Ha több csoport tagja is vagy,
+      az összes csoport tevékenységét láthatod a nyitólapodon.</p>
+
+      <p>Ha fontos dolgok történnek a csoportban, e-mailben értesítünk. Az e-mail
+      beállításokat <a href="%{link}"">itt</a> változtathatod meg.</p>
+    make_a_decision: 'Dönts!'
+    make_a_decision_description: 'Ha a csoport készen áll a döntésre, bárki tehet javaslatot. Legyen egyértelmű, hogy mit javasolsz és tisztázd, hogy mit jelent ha avalaki egyetért vele, vagy ellenzi.'
     prompt_people_details: "Ha egy adott tag figyelmét akarod felkelteni, írj a megjegyzésbe '@'-t a neve elé. E-mailt fog kapni róla, hogy megemlítetted egy hozzászólásban."
     prompt_people_html: "Kelts fel mások figyelmét a <span class='blue'>@megszólítással</span>"
-    positions_agree_description: "A <span>Egyetértek</span> azt jelenti, hogy szerinted jó a javaslat."
-    positions_abstain_description: "A <span>Tartózkodom</span> azt jelenti, hogy nem zavar, ha nélküled dönt a csoport."
-    positions_disagree_description: "A <span>Nem értek egyet</span> azt jelenti, hogy szerinted lehet jobb megoldás, de ha így dönt a csoport, elfogadod."
-    positions_block_description: "A <span>Blokkolom</span> azt jelenti, hogy komoly fenntartásaid vannak a javaslattal kapcsolatban és nagyon nagy bajnak tartanád, ha elfogadnák."
+    positions_agree_description: 'A <span>Egyetértek</span> azt jelenti, hogy szerinted jó a javaslat.'
+    positions_abstain_description: 'A <span>Tartózkodom</span> azt jelenti, hogy nem zavar, ha nélküled dönt a csoport.'
+    positions_disagree_description: 'A <span>Nem értek egyet</span> azt jelenti, hogy szerinted lehet jobb megoldás, de ha így dönt a csoport, elfogadod.'
+    positions_block_description: 'A <span>Blokkolom</span> azt jelenti, hogy komoly fenntartásaid vannak a javaslattal kapcsolatban és nagyon nagy bajnak tartanád, ha elfogadnák.'
     start_discussion: Kezdj izgalmas témát
-    start_discussion_html: "<p>Ha új témát nyitsz, gondoskodj róla, hogy a cím egyértelműen utaljon arra, miről van szó. A leírásban megadhatod mindazokat az információkat, amikre a csoportnak szüksége van, hogy megalapozott döntést hozhasson.</p>\n<p>A leírást frissítheted, ha már folyik a vita, hogy az újonnan felmerült információk is belekerüljenek. Azon túl, hogy tovább tisztázod, miről is van szó, arra is használhatod a leírást, hogy anyagokat ossz meg, összefoglald az addig elhangzottakat vagy éppen vázold a döntéshozatal menetét. </p>\n"
+    start_discussion_html: >
+      <p>Ha új témát nyitsz, gondoskodj róla, hogy a cím egyértelműen utaljon
+      arra, miről van szó. A leírásban megadhatod mindazokat az információkat,
+      amikre a csoportnak szüksége van, hogy megalapozott döntést hozhasson.</p>
+
+      <p>A leírást frissítheted, ha már folyik a vita, hogy az újonnan felmerült
+      információk is belekerüljenek. Azon túl, hogy tovább tisztázod, miről is
+      van szó, arra is használhatod a leírást, hogy anyagokat ossz meg,
+      összefoglald az addig elhangzottakat vagy éppen vázold a döntéshozatal
+      menetét. </p>
     start_proposal: A javaslat legyen egyértelmű
-    start_proposal_html: "<p>Ha a cím egyértelmű és tömör, a tagok rögtön tudni fogják, mit jelent ha egyetértenek vagy ha ellenzik.</p>\n<p>Nem gond, ha az első javaslatot nem támogatják azonnal. Ha a csoportnak nem tetszik az első javaslat, bárki feltehet egy újabbat, ami reagál a korábbi felvetésekre.</p>\n<p>Ez a dinamikus folyamat hozzájárul ahhoz, hogy a csoport kollektív bölcsessége jobb megoldást hozzon létre, mint amit egymagában bárki tudna.</p>\n<p>A javaslat határidejét bármikor meg lehet hosszabbítani, ha úgy tűnik a döntéshez több időre van szükség. 24 órával a javaslat lezárása előtt mindenki figyelmeztető e-mailt is kap erről.</p>\n"
-    video_id: "52025402"
+    start_proposal_html: >
+      <p>Ha a cím egyértelmű és tömör, a tagok rögtön tudni fogják, mit jelent ha
+      egyetértenek vagy ha ellenzik.</p>
+
+      <p>Nem gond, ha az első javaslatot nem támogatják azonnal. Ha a csoportnak
+      nem tetszik az első javaslat, bárki feltehet egy újabbat, ami reagál
+      a korábbi felvetésekre.</p>
+
+      <p>Ez a dinamikus folyamat hozzájárul ahhoz, hogy a csoport kollektív
+      bölcsessége jobb megoldást hozzon létre, mint amit egymagában bárki
+      tudna.</p>
+
+      <p>A javaslat határidejét bármikor meg lehet hosszabbítani, ha úgy tűnik
+      a döntéshez több időre van szükség. 24 órával a javaslat lezárása előtt
+      mindenki figyelmeztető e-mailt is kap erről.</p>
+    video_id: '52025402'
     video_tutorial: Videóbemutató
     video_tutorial_description: Nézd meg a rövid videóbemutatót a Loomio használatáról.
   hint:
@@ -273,9 +356,17 @@ hu:
     proposal: Hogyan írj egyértelmű javaslatot
     vote: Bármikor megváltoztathatod az álláspontodat
   pricing_page:
-    intro: "Költségvetéssel rendelkező csoportok egy bérletet fizetnek az eszköz használatáért\nAzok a csoportok akiknek nem áll szándékában fizetni\na Pay What You Can modelt használják: a tagjaikat meghívjuk, hogy önkéntesen járuljanak hozzá a Loomio projekthez. Így független, reklámmentes és közösség-vezette maradhat.\n"
+    intro: >
+      Költségvetéssel rendelkező csoportok egy bérletet fizetnek az eszköz
+      használatáért
+
+      Azok a csoportok akiknek nem áll szándékában fizetni
+
+      a Pay What You Can modelt használják: a tagjaikat meghívjuk, hogy
+      önkéntesen járuljanak hozzá a Loomio projekthez. Így független,
+      reklámmentes és közösség-vezette maradhat.
     organisations: Szervezetek
-    organisations_examples: "pl. vállalkozások, kormányzati ügynökségek, közösségi szervezetek"
+    organisations_examples: 'pl. vállalkozások, kormányzati ügynökségek, közösségi szervezetek'
     informal_groups: Kötetlen csoportok
-    informal_groups_desc: "A csoportod tagjait felkérik majd, hogy fizessenek amennyit tudnak."
-    informal_groups_examples: "pl. családok, társadalmi mozgalmak, közösségek"
+    informal_groups_desc: 'A csoportod tagjait felkérik majd, hogy fizessenek amennyit tudnak.'
+    informal_groups_examples: 'pl. családok, társadalmi mozgalmak, közösségek'

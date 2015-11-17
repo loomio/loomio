@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
-gem 'rails', '~> 4.2.3'
+gem 'rails', '~> 4.2.5'
 gem 'rake'
 gem 'pg', '~> 0.18.2'
 gem 'pg_search', '~> 1.0.4'
@@ -98,7 +98,7 @@ group :development do
   gem 'spring'
   gem "spring-commands-cucumber"
   gem "spring-commands-rspec"
-  #gem 'bullet'
+  gem 'bullet'
   gem 'launchy'
   gem 'awesome_print'
   #gem 'quiet_assets'

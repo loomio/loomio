@@ -61,7 +61,7 @@ describe User do
     user.should have(1).errors_on(:username)
     user.username = 'username/'
     user.should have(1).errors_on(:username)
-    user.username = 'user_name'    
+    user.username = 'user_name'
     user.should have(1).errors_on(:username)
     user.username = 'user-name'
     user.should have(1).errors_on(:username)
@@ -199,11 +199,6 @@ describe User do
     it "returns false if user has not uploaded an image" do
       expect(user.has_uploaded_image?).to be false
     end
-  end
-
-  describe "gravatar?(options = {})" do
-    it "returns true if gravatar exists"
-    it "returns false if gravater does not exist"
   end
 
   describe "deactivation" do

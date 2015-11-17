@@ -25,7 +25,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def my_memberships
-    @memberships = current_user.memberships.includes(:group, :user, :inviter)
+    @memberships = accessible_records.where(user_id: current_user.id)
     respond_with_collection
   end
 
@@ -58,16 +58,11 @@ class API::MembershipsController < API::RestfulController
     resource_class.joins(:group)
                   .includes(:user, :inviter)
                   .where(Group.arel_table[:id].eq(current_user.group_ids)
-                     .or(Group.arel_table[:is_visible_to_public].eq(true)))
+                    .or(Group.arel_table[:is_visible_to_public].eq(true)))
   end
 
   def visible_invitables
     load_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
   end
-
-  def default_page_size
-    5
-  end
-
 end

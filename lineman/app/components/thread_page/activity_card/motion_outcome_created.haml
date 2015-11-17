@@ -4,8 +4,7 @@
       %user_avatar{user: "event.actor()", size: 'small'}
     .media-body
       %h3.thread-item__title{id: 'event-{{event.id}}', translate: "proposal_outcome_created_item.proposal_outcome_created", translate-value-actor: '{{event.actorName()}}'}
-  .thread-item__body
-    {{proposal.outcome}}
+  .thread-item__body.lmo-markdown-wrapper{ marked: 'proposal.outcome' }
   .thread-item__footer
     .thread-item__actions
       %timeago{timestamp: 'event.createdAt'}

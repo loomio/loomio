@@ -23,7 +23,7 @@ hr:
   vote_form:
     i_agree: Slažem se
     i_abstain: Suzdržan / a sam
-    i_abstain_details: " Slažem se da grupa odluči bez mene."
+    i_abstain_details: ' Slažem se da grupa odluči bez mene.'
     i_disagree: Ne slažem se
     i_disagree_details: Mislim da vjerojatno možemo bolje.
     i_block: Blokiram
@@ -36,10 +36,8 @@ hr:
     privacy_label: Privatnost
   proposal_expanded:
     close_proposal: Zatvori prijedlog
-  start_group_form:
-    heading: Započni grupu
   join_group_button:
-    join_group: "Pridruži se grupi "
+    join_group: 'Pridruži se grupi '
     ask_to_join_group: Zahtjev za pridruženjem grupi
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
@@ -54,10 +52,6 @@ hr:
       title: Napusti grupu
   membership_requests_page:
     ignore: Ignoriraj
-  group_form:
-    profile_label: Profil
-    description_label: Opis
-    category_label: Kategorija
   memberships_page:
     members: Članovi
   profile_page:
@@ -77,9 +71,15 @@ hr:
       delete_comment: Obriši komentar
   help_page:
     coordinating: Koordinacije vaše Loomio grupe
-    coordinating_details: "Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe i pozivanje\nčlanova. Također se morate naučiti koristiti novi softver, pa će i vaša grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:\n"
+    coordinating_details: >
+      Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe
+      i pozivanje
+
+      članova. Također se morate naučiti koristiti novi softver, pa će i vaša
+      grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje
+      odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:
     different_ways: Različiti načini korištenja Loomia
     get_in_touch: Stupite u kontakt
     get_in_touch_description_html: "Ako imate pitanje ili prijedlog, <a href='%{link}'>javite nam se</a>."
     getting_started: Početak rada
-    getting_started_description: "S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane."
+    getting_started_description: 'S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane.'

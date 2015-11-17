@@ -6,8 +6,8 @@ tr:
     group: Grup
     groups: Gruplar
     privacy:
-      private: Özel
       public: Genel
+      private: Özel
     date_range:
       today: Bugün
       yesterday: Dün
@@ -38,7 +38,7 @@ tr:
     clear: Temizle
     unread: Okunmamış
   session_form:
-    email_label: "Eposta:"
+    email_label: 'Eposta:'
   comment_form:
     aria_label: Bir yorum ekle
     edit_comment: Yorumu düzenle
@@ -106,11 +106,6 @@ tr:
   proposal_position_block: Engelle
   group_welcome_modal:
     heading: Yeni grubuna hoşgeldin
-  start_group_form:
-    heading: Bir grup başlat
-    submit: Grup Başlat
-    messages:
-      success: Grup oluşturuldu
   join_group_button:
     join_group: Gruba katıl
     ask_to_join_group: Gruba katılmak için talep gönder
@@ -133,35 +128,11 @@ tr:
       label: Seçenekler
     leave_group:
       title: Gruptan ayrıl
-      submit: "Evet, bu gruptan ayrıl"
+      submit: 'Evet, bu gruptan ayrıl'
       add_coordinator: Bir koordinatör ekle
-  group_form:
-    profile:
-      label: Profil
-      name: İsim
-      description: Açıklama
-    privacy:
-      label: Gizlilik
-      visible_to_members: Kimler bu grubu bulabilir?
-      membership_granted_upon: İnsanlar nasıl katılabilir?
-    permissions:
-      label: İzinler
-      members_can_create_subgroups: Alt gruplar oluşturun
-      members_can_raise_motions: Öneriler başlat
-      members_can_vote: Önerileri oylayın
-    submit: Ayarları Güncelle
   membership_requests_page:
     approve: Onayla
     ignore: Yok say
-  group_form:
-    messages:
-      new_group: Grup oluşturuldu
-    new_group_title: Yeni bir grup oluştur
-    edit_group_title: Grup Ayarları
-    profile_label: Profil
-    name_label: İsim
-    description_label: Açıklama
-    category_label: Kategori
   invitation:
     invite_people: Kişileri davet et
   memberships_page:
@@ -233,37 +204,80 @@ tr:
     different_ways: "Loomio'yu kullanmanın çeşitli yolları"
     engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli olacaktır. Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir yorumda onlardan bahsedildiğini haber veren\nbir e-posta gönderir.</p>\n"
     example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
-    example2_html: "<h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>\n<p>Strateji: Almak istediğin karar hakkında bir tartışma başlat ve hemen teklif yap.</p>\n<p>Eğer aklındaki sonuçlara dair öenmli çekincelerin olmadığında emin olmak istiyorsan teklifi karara dair çabuk bir geri dönüş olarak kullanabilirsin.</p>\n<p>Bir döümanı tamamlamak, başvuruları onaylamak veya işin bir parçasını kabul ettirmek gibi şeyler yapabilirsin.</p>\n"
+    example2_html: >
+      <h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>
+
+      <p>Strateji: Almak istediğin karar hakkında bir tartışma başlat ve hemen
+      teklif yap.</p>
+
+      <p>Eğer aklındaki sonuçlara dair öenmli çekincelerin olmadığında emin olmak
+      istiyorsan teklifi karara dair çabuk bir geri dönüş olarak
+      kullanabilirsin.</p>
+
+      <p>Bir döümanı tamamlamak, başvuruları onaylamak veya işin bir parçasını
+      kabul ettirmek gibi şeyler yapabilirsin.</p>
     get_in_touch: İletişime geç
     get_in_touch_description_html: "Herhangi bir sorunuz veya geri bildiriminiz varsa, <a href='%{link}'>bize yazın</a>."
     getting_started: Başlarken
-    getting_started_description: "Sol tarafta, grup bir konuyu tartışır, fikir ve bilgi alışverişinde bulunur. Grubun almasını gerektiren bir karar var olduğunda, sağ tarafta belirir."
+    getting_started_description: 'Sol tarafta, grup bir konuyu tartışır, fikir ve bilgi alışverişinde bulunur. Grubun almasını gerektiren bir karar var olduğunda, sağ tarafta belirir.'
     getting_the_most: "Loomio'dan en iyi şekilde yararlanmak"
     have_your_say: Söz sahibi ol
-    have_your_say_details_html: "<p>Hazır olduğunda dört karar düğmesinden birisini tıkla</p>\n<p>Karar verdiğinde kısaca açıklama yap. Pasta grafiğinin altında\ndiğer herkesin ne düşündüğünü görebilirsin. Bu hızlıca ve kolayca tartışmalara yetişmeni sağlar. Yeni bir enformasyon geldiğinde, herhangi bir zamanda posizyonunu değiştirebilirsin. </p>\n"
+    have_your_say_details_html: >
+      <p>Hazır olduğunda dört karar düğmesinden birisini tıkla</p>
+
+      <p>Karar verdiğinde kısaca açıklama yap. Pasta grafiğinin altında
+
+      diğer herkesin ne düşündüğünü görebilirsin. Bu hızlıca ve kolayca
+      tartışmalara yetişmeni sağlar. Yeni bir enformasyon geldiğinde, herhangi
+      bir zamanda posizyonunu değiştirebilirsin. </p>
     have_a_discussion: Bir müzakereye katıl
     have_a_discussion_description: Konu ve ilgili arka plan bilgileri sayfanın üstünde bulunuyor. Müzakerede sesini duyurmak için yorum kutusunu kullan.
     help: Yardım
     how_it_works: Nasıl çalışıyor
-    invitation_html: "<h2>İyi bir davet yazmak</h2>\n<p>Her yeni üyenin ilk sorusu 'Bu grup ne için?' olacaktır.</p>\n<p>Grubu tanımlaman için en basit yolu düşün. Birlikte neyi\nelde etmek istiyorsun? Ne tür kararşar alacaksınız? Kim dahil olacak?</p>\n<p>Onlar Loomio'ya davet etmeden önce grubunla konuşmak iyi bir fikir olabilir.\n</p>\n<p>İnsanlar neden davet edildiklerini ve onlardan nelerin beklendiğini,\nve yeni bir aracı kullanmayı öğrenmek için zamanlarından harcamaya değip değimediğini bilmek isteyecek.</p>\n"
+    invitation_html: >
+      <h2>İyi bir davet yazmak</h2>
+
+      <p>Her yeni üyenin ilk sorusu 'Bu grup ne için?' olacaktır.</p>
+
+      <p>Grubu tanımlaman için en basit yolu düşün. Birlikte neyi
+
+      elde etmek istiyorsun? Ne tür kararşar alacaksınız? Kim dahil olacak?</p>
+
+      <p>Onlar Loomio'ya davet etmeden önce grubunla konuşmak iyi bir fikir
+      olabilir.
+
+      </p>
+
+      <p>İnsanlar neden davet edildiklerini ve onlardan nelerin beklendiğini,
+
+      ve yeni bir aracı kullanmayı öğrenmek için zamanlarından harcamaya değip
+      değimediğini bilmek isteyecek.</p>
     join_the_community: Topluluğa katıl
     images_and_text_formatting: Resimler ve metin biçimlendirme
-    images_and_text_formatting_html: "<p>Loomio, resim gömme ve metin biçimlendirme amacıyla ‘Markdown’ dilini kullanıyor.\nMarkdown desteğini yorum kısmının üzerindeki ufak gri simge ile açıp kapayabilirsiniz.</p>\n<p>Markdown kullanımı hakkında daha fazla bilgi için <a href='https://www.loomio.org/discussions/1124'>burayı tıklayın.</a></p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio, resim gömme ve metin biçimlendirme amacıyla ‘Markdown’ dilini
+      kullanıyor.
+
+      Markdown desteğini yorum kısmının üzerindeki ufak gri simge ile açıp
+      kapayabilirsiniz.</p>
+
+      <p>Markdown kullanımı hakkında daha fazla bilgi için <a
+      href='https://www.loomio.org/discussions/1124'>burayı tıklayın.</a></p>
     keep_up_to_date: Güncel tutun
     keep_up_to_date_html: "<p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki müzakereleri\nve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer\nbirden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri \nAna Sayfada tek bir seferde görebilirsiniz.</p>\n<p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.\nE-posta tercihlerinizi <a href=\"%{link}\"\">buradan</a> değiştirebilirsiniz.</p>\n"
     make_a_decision: Bir karar ver
     make_a_decision_description: Grup karar vermeye hazır olduğunda herkes teklifte bulunabilir. Kararın ne getireceğini açık bir şekilde anlat ve insanlara onaylamanın veya reddetmenin ne anlama geleceğini anlamaları için gerekli bilgileri ver.
     prompt_people_details: "Eğer, grubunuzdaki belirli bir kişinin dikkatini çekmek istiyorsanız, onun rumuz ismi'ni ‘@’ ile beraber yazın. Sonrasında, sizin, bir yorumda ondan bahsettiğinizi bildirecek bir e-posta o kişinin tarafına gönderilecektir."
     prompt_people_html: "Kişileri <span class='blue'>@mentions</span> ile harekete geçir"
-    positions_agree_description: "<span>Katılıyorum</span> öneriden memnun olduğun anlamına gelir."
-    positions_abstain_description: "<span>Çekimserim</span> emin olmadığın ya da grubun senin katılımın olmadan karar vermesine razı olduğun anlamına gelir."
-    positions_disagree_description: "<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir."
-    positions_block_description: "<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir."
+    positions_agree_description: '<span>Katılıyorum</span> öneriden memnun olduğun anlamına gelir.'
+    positions_abstain_description: '<span>Çekimserim</span> emin olmadığın ya da grubun senin katılımın olmadan karar vermesine razı olduğun anlamına gelir.'
+    positions_disagree_description: '<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir.'
+    positions_block_description: '<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir.'
     start_discussion: İlgi çekici bir müzakere başlatma
     start_discussion_html: "<p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir şekilde aktardığından emin olun.\nGrubun üretken ve bilgilendirilmiş bir durumda müzakere\nedebilmesini sağlayacak olan tüm temel verileri girmek için \nİçerik Panelini kullanın.</p>\n<p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli güncellenebilir.\nBu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı yapabilir, \nmüzakere ilerledikçe özet bilgileri yayınlayabilir ya da \ngrubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>\n"
     start_proposal: Anlaşılır bir öneri yazma
     start_proposal_html: "<p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da\nkatılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>\n<p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu demek değil.\nEğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri \ngidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam eder.</p>\n<p>Bu dinamik süreçte, grubunuzun ortak bilgeliği, kişilerin tek\nbaşına bulabileceğinden daha iyi fikirler üretir.</p>\n<p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim tarihi her an ileriye atılabilir.\nBir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi alır.</p>\n\n"
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Eğitim videosu
     video_tutorial_description: Loomio nasıl kullanılır tanıtım videosuna göz at.
   hint:
@@ -275,7 +289,7 @@ tr:
   pricing_page:
     intro: "Bütçeye sahip gruplar aracı kullanmak icin bir abonelik ücreti öderler.\nBütçesi olmayan gruplar Ödeyebilgin Kadar Öde modelini kullanırlar. Bu modelde grubun kendi üyeleri gönüllü katkı yapmaya davet edilir. \nKatkılarınız bizlere Loomiyo'yu bağımsız ve reklamsız tutmamız ve kendi topluluğumuz tarafından yönlendirilebilmemiz için olanak sağlıyor.\n"
     organisations: Kuruluşlar
-    organisations_examples: "örneğin; şirketler, devlet kuruluşları, sivil organizasyonlar"
+    organisations_examples: 'örneğin; şirketler, devlet kuruluşları, sivil organizasyonlar'
     informal_groups: İnformal gruplar
     informal_groups_desc: Grubunuzdaki üyelerden yapabilecekleri kadar ödeme yapmaları istenilecek
-    informal_groups_examples: "örneğin aileler, sosyal hareketler, kolektifler"
+    informal_groups_examples: 'örneğin aileler, sosyal hareketler, kolektifler'

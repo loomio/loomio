@@ -1,1 +1,1 @@
-Loomio::Version::PATCH = 15
+Loomio::Version::PATCH = 2
