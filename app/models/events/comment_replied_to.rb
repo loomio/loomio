@@ -5,7 +5,10 @@ class Events::CommentRepliedTo < Event
                     eventable: comment,
                     created_at: comment.created_at)
 
-    ThreadMailer.delay.comment_replied_to(comment.parent.author, event)
+    if comment.parent.author.email_when_mentioned?
+      ThreadMailer.delay.comment_replied_to(comment.parent.author, event)
+    end
+
     event.notify! comment.parent.author
 
     event
