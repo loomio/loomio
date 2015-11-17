@@ -2,7 +2,7 @@
 %table
   %tr
     %td.icon
-      %img{src: comment.author.avatar_url(:medium)}
+      = render 'base/linked_avatar', user: comment.user
     %td.content
       %b= comment.author.name
       %br
