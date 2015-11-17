@@ -54,8 +54,6 @@ vi:
     privacy_label: Quyền riêng tư
   proposal_expanded:
     close_proposal: Đóng lại lời đề nghị
-  start_group_form:
-    heading: Lập một nhóm mới
   membership_request_form:
     name_label: Tên
     email_label: Email
@@ -71,8 +69,6 @@ vi:
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua
-  group_form:
-    name_label: Tên
   memberships_page:
     members: Thành viên
     name_label: Tên
@@ -98,17 +94,95 @@ vi:
       delete_comment: Xóa bình luận
   help_page:
     coordinating: Hợp tác cùng nhóm Loomio của bạn
-    coordinating_details: "Với vai trò là người hợp tác, bạn sẽ chịu trách nhiệm với việc khởi tạo nhóm Loomio của mình và việc mời\nmọi người tham gia. Cũng như việc nghiên cứu về các mảng phần mềm mới, nhóm của bạn sẽ\ntrả qua các tiến trình tham gia về cách hoạt động nhóm theo cách hiệu quả nhất cũng như đưa ra các\nquyết định cùng nhau trong nhóm. Ở đây là các gợi ý về việc hỗ trợ cho nhóm bạn nhằm hướng đến sự thành công mong muốn:\n"
+    coordinating_details: >
+      Với vai trò là người hợp tác, bạn sẽ chịu trách nhiệm với việc khởi tạo
+      nhóm Loomio của mình và việc mời
+
+      mọi người tham gia. Cũng như việc nghiên cứu về các mảng phần mềm mới, nhóm
+      của bạn sẽ
+
+      trả qua các tiến trình tham gia về cách hoạt động nhóm theo cách hiệu quả
+      nhất cũng như đưa ra các
+
+      quyết định cùng nhau trong nhóm. Ở đây là các gợi ý về việc hỗ trợ cho nhóm
+      bạn nhằm hướng đến sự thành công mong muốn:
     different_ways: Các cách khác nhau để sử dụng Loomio
-    engaging_html: "<h2>Gợi ý giúp nhóm của bạn trở nên hấp dẫn hơn với các thành viên</h2>\n<p>Mọi người sẽ nhanh chóng trở nên thích thú và tham gia ngay vào thảo luận khi có lời đề nghị độc đáo nào đó. Một lời đề nghị độc đáo cần chứa một kế hoạch rõ ràng, vì thế\ncần tạo sự rõ ràng giữa trạng thái đồng ý và không đồng ý trên chính nội dung bàn thảo. Hãy nghĩ về cách xác định các phần thảo luận/đưa ra quyết định mà nhóm hiện đang khởi thảo hoặc\ncung cấp một địa chỉ email liên hệ trực tiếp trên Loomio.</p>\n<p>Nếu nhóm của bạn chỉ vừa mới bắt đầu, bạn có thể đưa ra các lời đề nghị đơn giản, nhằm giúp\nmọi người có cơ hội tham gia vào và sử dụng các công cụ để họ đưa ra các quyết định của riêng mình.</p>\n<p>Một cách đơn giản khác là khuyến khích mọi người tham gia vào và sử dụng tính năng @đề cập\nđể chỉ rõ từng cá nhân trong nhóm; điều này sẽ tác động đến họ theo cách hiệu quả hơn vì họ được đề cập\ntrực tiếp trong một bình luận nào đó.</p>\n"
-    example1_html: "<h3>Bạn nên để nhóm của mình thảo luận theo dạng bàn tròn và phát triển các giải pháp cùng nhau không theo hướng riêng lẻ nào</h3>\n<p>Chiến lược: Thảo luận về một chủ điểm nào đó trước khi đưa ra các lời đề nghị.</p>\n<p>Thảo luận có lẽ là điểm khởi thảo thuận tiện nhất khi bạn muốn chia sẻ ý tưởng\nvề cách giải quyết vấn đề theo một hướng cụ thể nào đó. Khi mọi người cùng nhau\ntham gia vào tiến trình, kết quả nhận được sẽ tốt hơn cho nhóm của bạn.</p>\n"
-    example2_html: "<h3>Bạn đã hình thành ý tưởng về lời đề nghị của mình, và bạn muốn cả nhóm cùng thảo luận về ý tưởng đó.</h3>\n<p>Chiến lược: Hãy bắt đầu một phần thảo luận cụ thể về việc đưa ra quyết định và đưa ra lời đề nghị ngay lập tức.</p>\n<p>Nếu bạn đã có một kết quả rõ ràng nhưng bạn muốn chắc rằng không có mối lo ngại nào,\nthì bạn có thể sử dụng lời để nghị để nhanh chóng tạo thành quyết định về việc thi hành ý tưởng của mình.</p>\n<p>Bạn cũng có thể thực hiện các thao tác khác chẳng hạn như tổng kết hóa tài liệu, chấp thuận một ứng dụng, hoặc ký nhận về tiến độ của một phần công việc nào đó.</p>\n"
+    engaging_html: >
+      <h2>Gợi ý giúp nhóm của bạn trở nên hấp dẫn hơn với các thành viên</h2>
+
+      <p>Mọi người sẽ nhanh chóng trở nên thích thú và tham gia ngay vào thảo
+      luận khi có lời đề nghị độc đáo nào đó. Một lời đề nghị độc đáo cần chứa
+      một kế hoạch rõ ràng, vì thế
+
+      cần tạo sự rõ ràng giữa trạng thái đồng ý và không đồng ý trên chính nội
+      dung bàn thảo. Hãy nghĩ về cách xác định các phần thảo luận/đưa ra quyết
+      định mà nhóm hiện đang khởi thảo hoặc
+
+      cung cấp một địa chỉ email liên hệ trực tiếp trên Loomio.</p>
+
+      <p>Nếu nhóm của bạn chỉ vừa mới bắt đầu, bạn có thể đưa ra các lời đề nghị
+      đơn giản, nhằm giúp
+
+      mọi người có cơ hội tham gia vào và sử dụng các công cụ để họ đưa ra các
+      quyết định của riêng mình.</p>
+
+      <p>Một cách đơn giản khác là khuyến khích mọi người tham gia vào và sử dụng
+      tính năng @đề cập
+
+      để chỉ rõ từng cá nhân trong nhóm; điều này sẽ tác động đến họ theo cách
+      hiệu quả hơn vì họ được đề cập
+
+      trực tiếp trong một bình luận nào đó.</p>
+    example1_html: >
+      <h3>Bạn nên để nhóm của mình thảo luận theo dạng bàn tròn và phát triển các
+      giải pháp cùng nhau không theo hướng riêng lẻ nào</h3>
+
+      <p>Chiến lược: Thảo luận về một chủ điểm nào đó trước khi đưa ra các lời đề
+      nghị.</p>
+
+      <p>Thảo luận có lẽ là điểm khởi thảo thuận tiện nhất khi bạn muốn chia sẻ
+      ý tưởng
+
+      về cách giải quyết vấn đề theo một hướng cụ thể nào đó. Khi mọi người cùng
+      nhau
+
+      tham gia vào tiến trình, kết quả nhận được sẽ tốt hơn cho nhóm của
+      bạn.</p>
+    example2_html: >
+      <h3>Bạn đã hình thành ý tưởng về lời đề nghị của mình, và bạn muốn cả nhóm
+      cùng thảo luận về ý tưởng đó.</h3>
+
+      <p>Chiến lược: Hãy bắt đầu một phần thảo luận cụ thể về việc đưa ra quyết
+      định và đưa ra lời đề nghị ngay lập tức.</p>
+
+      <p>Nếu bạn đã có một kết quả rõ ràng nhưng bạn muốn chắc rằng không có mối
+      lo ngại nào,
+
+      thì bạn có thể sử dụng lời để nghị để nhanh chóng tạo thành quyết định về
+      việc thi hành ý tưởng của mình.</p>
+
+      <p>Bạn cũng có thể thực hiện các thao tác khác chẳng hạn như tổng kết hóa
+      tài liệu, chấp thuận một ứng dụng, hoặc ký nhận về tiến độ của một phần
+      công việc nào đó.</p>
     get_in_touch: Giữ liên lạc
     getting_started: Chuẩn bị bắt đầu
-    getting_started_description: "Phía bên trái, là khu vực nhóm đang thảo luận về một chủ đề, trao đổi ý kiến cũng như thông tin liên quan. Khi việc quy trình thực thi các quyết định được diễn ra, phần này sẽ hiển thị phía trên bên phải."
+    getting_started_description: 'Phía bên trái, là khu vực nhóm đang thảo luận về một chủ đề, trao đổi ý kiến cũng như thông tin liên quan. Khi việc quy trình thực thi các quyết định được diễn ra, phần này sẽ hiển thị phía trên bên phải.'
     getting_the_most: Tìm hiểu về các tính năng trên Loomio
     have_your_say: Phát biểu ý kiến của bạn
-    have_your_say_details_html: "<p>Khi bạn đã sẵn sàng cho phần đưa ra ý kiến, hãy click vào một trong bốn nút thể hiện sự lựa chọn của chính bạn.</p>\n<p>Khi bạn đã đưa ra quyết định, bạn có thể đưa vào ý kiến cua mình bằng một giải thích. Phía bên dưới biểu đồ,\nbạn có thể quan sát được các ý kiến đã đã được đưa ra từ những người dùng khác. Điều này giúp cho bạn có thể theo dõi\ntoàn bộ cuộc thảo luận của nhóm. Đồng thời, bạn có thể thay đổi quyết định của mình\nvào bất cứ lúc nào.</p>\n"
+    have_your_say_details_html: >
+      <p>Khi bạn đã sẵn sàng cho phần đưa ra ý kiến, hãy click vào một trong bốn
+      nút thể hiện sự lựa chọn của chính bạn.</p>
+
+      <p>Khi bạn đã đưa ra quyết định, bạn có thể đưa vào ý kiến cua mình bằng
+      một giải thích. Phía bên dưới biểu đồ,
+
+      bạn có thể quan sát được các ý kiến đã đã được đưa ra từ những người dùng
+      khác. Điều này giúp cho bạn có thể theo dõi
+
+      toàn bộ cuộc thảo luận của nhóm. Đồng thời, bạn có thể thay đổi quyết định
+      của mình
+
+      vào bất cứ lúc nào.</p>
     have_a_discussion: Có một phần thảo luận
     have_a_discussion_description: Chủ đề này và các thông tin nội hàm liên quan sẽ hiển thị phía trên cùng trong trang. Sử dụng ô bình luận để thêm vào ý kiến của bạn đối với phần thảo luận.
     help: Trợ giúp
@@ -117,13 +191,13 @@ vi:
     images_and_text_formatting: Hình ảnh và định dạng văn bản
     keep_up_to_date: Luôn giữ đúng hạn định
     make_a_decision: Đưa ra quyết định
-    positions_agree_description: "<span>Đồng ý</span> có nghĩ rằng bạn không phản đối lời đề nghị."
-    positions_abstain_description: "<span>Do dự</span> nghĩa rằng bạn còn chưa chắc hoặc phân vân khi tham gia nhóm."
-    positions_disagree_description: "<span>Không đồng ý</span> nghĩa rằng bạn nghĩ vẫn còn có những phần thay thế tương tự khác, nhưng bạn vẫn muốn sẵn lòng tham dự vào việc đưa ra quyết định trong nhóm."
-    positions_block_description: "<span>Chặn</span> nghĩa rằng bạn cảm thấy không hài lòng với lời đề nghị này và hoàn toàn cảm thấy không thích hợp với nhóm."
+    positions_agree_description: '<span>Đồng ý</span> có nghĩ rằng bạn không phản đối lời đề nghị.'
+    positions_abstain_description: '<span>Do dự</span> nghĩa rằng bạn còn chưa chắc hoặc phân vân khi tham gia nhóm.'
+    positions_disagree_description: '<span>Không đồng ý</span> nghĩa rằng bạn nghĩ vẫn còn có những phần thay thế tương tự khác, nhưng bạn vẫn muốn sẵn lòng tham dự vào việc đưa ra quyết định trong nhóm.'
+    positions_block_description: '<span>Chặn</span> nghĩa rằng bạn cảm thấy không hài lòng với lời đề nghị này và hoàn toàn cảm thấy không thích hợp với nhóm.'
     start_discussion: Bắt đầu một phần thảo luận
     start_proposal: Viết một lời đề nghị rõ ràng
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Xem video hướng dẫn
     video_tutorial_description: Xem thử video minh họa về cách sử dụng Loomio.
   hint:
@@ -134,7 +208,7 @@ vi:
     vote: Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào
   pricing_page:
     organisations: Các tổ chức
-    organisations_examples: "ví dụ như doanh nghiệp, các cơ quan đại diện chính phủ, các tổ chức hoạt động vì cộng đồng"
+    organisations_examples: 'ví dụ như doanh nghiệp, các cơ quan đại diện chính phủ, các tổ chức hoạt động vì cộng đồng'
     informal_groups: Thông báo nhóm
     informal_groups_desc: Thành viên trong nhóm của bạn có thể sẽ nhận được yêu cầu chi trả khi những thành viên đó có thể thực hiện
-    informal_groups_examples: "ví dụ như gia đình, các hoạt động xã hội, các tổ chức thu thập"
+    informal_groups_examples: 'ví dụ như gia đình, các hoạt động xã hội, các tổ chức thu thập'

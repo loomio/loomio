@@ -6,8 +6,8 @@ an:
     group: Grupo
     groups: Grupos
     privacy:
-      private: Privau
       public: Publico
+      private: Privau
     date_range:
       today: Hue
     models:
@@ -46,9 +46,9 @@ an:
   notifications:
     header: Notificacions
   position_buttons_panel:
-    heading: "Da a tuya opinión "
+    heading: 'Da a tuya opinión '
   vote_form:
-    heading: "Da a tuya opinión "
+    heading: 'Da a tuya opinión '
     i_agree: "Soi d'alcuerdo"
     i_abstain: "M'abstiengo"
     i_abstain_details: Soi contento con o que o grupo decida sin yo.
@@ -75,8 +75,6 @@ an:
   proposal_expanded:
     edit_proposal: Editar propuesta
     close_proposal: Zarrar propuesta
-  start_group_form:
-    heading: Crear un grupo
   join_group_button:
     join_group: Unir-se a o grupo
     ask_to_join_group: Pedir pertenencia a o grupo
@@ -101,11 +99,6 @@ an:
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
-  group_form:
-    profile_label: Perfil
-    name_label: Nombre
-    description_label: Descripción
-    category_label: Categoría
   memberships_page:
     members: Miembros
     name_label: Nombre
@@ -150,41 +143,173 @@ an:
     message_label: O tuyo mensache
   help_page:
     coordinating: Cómo coordinar o tuyo grupo en Loomio
-    coordinating_details: "Como co-ordinador, yes responsable d'encetar o tuyo grupo y convidar\na totz a participar. Ademas d'aprender a usar una nueva ferramienta de software, o tuyo grupo\nserá aprendendo nuevos procesos ta colaborar mas efectivament y prenendo buenas decisions\nchuntos. Aquí puetz trobar qualques consellos ta que o tuyo grupo tienga muito exito:\n"
+    coordinating_details: >
+      Como co-ordinador, yes responsable d'encetar o tuyo grupo y convidar
+
+      a totz a participar. Ademas d'aprender a usar una nueva ferramienta de
+      software, o tuyo grupo
+
+      será aprendendo nuevos procesos ta colaborar mas efectivament y prenendo
+      buenas decisions
+
+      chuntos. Aquí puetz trobar qualques consellos ta que o tuyo grupo tienga
+      muito exito:
     different_ways: "Trazas diferents d'usar Loomio"
-    engaging_html: "<h2>Trucos ta embrecar a o grupo</h2>\n<p>A chent se gosa animar a participar quan i hai una propuesta interesant en a mesa. Una buena propuesta contién un plan d'acción ta o grupo, que fa obvio saber qué significa estar d'alcuerdo u en desalcuerdo. Piensa en cómo puetz identificar discusions/decisions que o grupo ye fendo presencialment u por correo, pero que serían de millor fer en Loomio.</p>\n<p>Si o grupo ye empecipiando, puetz empecipiar con una decisión que no chenere controversias grieus, ta dar a totz a oportunidat de chugar con a ferramienta y veyer en acción o proceso de decisión.</p>\n<p>Unatra traza d'animar a la chent a embrecar-se en una discusión ye fer servir a caracteristica @mention ta avisar a chent determinada; asinas se les ninviará un correu pa decir-les que se les ha mencionau en un comentario.</p>\n"
-    example1_html: "<h3>O grupo ha de discutir sobre un tema amplio y desembolicar una solucion conchunta</h3>\n<p>Estratechia: Discutir o tema entre un tiempo antes d'empecipiar una propuesta.</p>\n<p>A ormino, as discusions obtienen os millors resultaus si se crea un entendimiento\ncompartido sobre o problema antes de decantar-se por una solucion concreta. Quan a chent\nempieza a participar en o proceso, ye muito mas prebable que sigan satisfeitos con\no resultau u decision final.</p>\n"
-    example2_html: "<h3>Tiens ya en mente una propuesta, y quiers aconseguir un refrendo d'o grupo ta seguir abance.</h3>\n<p>Estratechia: Prencipia una discusión sobre una decisión especifica y crea de camín una propuesta.</p>\n<p>Si tiens en mente un resultau claro pero quiers asegurar-te que no i hai garra problema critico,\npuetz usar a propuesta ta obtener una rapida contribución en a decisión.</p>\n<p>Puetz fer cosetas como finalizar un documento, aprebar una solicitut, u refrendar una obra realizada.</p>\n"
+    engaging_html: >
+      <h2>Trucos ta embrecar a o grupo</h2>
+
+      <p>A chent se gosa animar a participar quan i hai una propuesta interesant
+      en a mesa. Una buena propuesta contién un plan d'acción ta o grupo, que fa
+      obvio saber qué significa estar d'alcuerdo u en desalcuerdo. Piensa en cómo
+      puetz identificar discusions/decisions que o grupo ye fendo presencialment
+      u por correo, pero que serían de millor fer en Loomio.</p>
+
+      <p>Si o grupo ye empecipiando, puetz empecipiar con una decisión que no
+      chenere controversias grieus, ta dar a totz a oportunidat de chugar con
+      a ferramienta y veyer en acción o proceso de decisión.</p>
+
+      <p>Unatra traza d'animar a la chent a embrecar-se en una discusión ye fer
+      servir a caracteristica @mention ta avisar a chent determinada; asinas se
+      les ninviará un correu pa decir-les que se les ha mencionau en un
+      comentario.</p>
+    example1_html: >
+      <h3>O grupo ha de discutir sobre un tema amplio y desembolicar una solucion
+      conchunta</h3>
+
+      <p>Estratechia: Discutir o tema entre un tiempo antes d'empecipiar una
+      propuesta.</p>
+
+      <p>A ormino, as discusions obtienen os millors resultaus si se crea un
+      entendimiento
+
+      compartido sobre o problema antes de decantar-se por una solucion concreta.
+      Quan a chent
+
+      empieza a participar en o proceso, ye muito mas prebable que sigan
+      satisfeitos con
+
+      o resultau u decision final.</p>
+    example2_html: >
+      <h3>Tiens ya en mente una propuesta, y quiers aconseguir un refrendo d'o
+      grupo ta seguir abance.</h3>
+
+      <p>Estratechia: Prencipia una discusión sobre una decisión especifica
+      y crea de camín una propuesta.</p>
+
+      <p>Si tiens en mente un resultau claro pero quiers asegurar-te que no i hai
+      garra problema critico,
+
+      puetz usar a propuesta ta obtener una rapida contribución en
+      a decisión.</p>
+
+      <p>Puetz fer cosetas como finalizar un documento, aprebar una solicitut,
+      u refrendar una obra realizada.</p>
     get_in_touch: Mete-te en contacto
     get_in_touch_description_html: "Si tiens preguntas u sucherencias, <a href='%{link}'> escribe a</a>."
     getting_started: Primers pasos
-    getting_started_description: "A la zurda, o grupo debate un tema, intercambiando ideyas y información. Quan cal prener una decisión, amaneixe a la dreita."
+    getting_started_description: 'A la zurda, o grupo debate un tema, intercambiando ideyas y información. Quan cal prener una decisión, amaneixe a la dreita.'
     getting_the_most: Aprofitando o maximo de Loomio
-    have_your_say: "Da a tuya opinión "
-    have_your_say_details_html: "<p>Quan sigas presto ta decidir, clica en un d'os quatro botons de decisión.</p>\n<p>Malas que haigas decidiu, da una breu explicación. Debaixo d'o grafico circular\npuetz veyer o que piensan os de demás, facilitando una rapida comprensión d'o estau d''a discusión.\nA medida que se vaiga adhibindo nueva informacón puetz ir cambiando a tuya decisión en qualsiquier momento</p>\n"
+    have_your_say: 'Da a tuya opinión '
+    have_your_say_details_html: >
+      <p>Quan sigas presto ta decidir, clica en un d'os quatro botons de
+      decisión.</p>
+
+      <p>Malas que haigas decidiu, da una breu explicación. Debaixo d'o grafico
+      circular
+
+      puetz veyer o que piensan os de demás, facilitando una rapida comprensión
+      d'o estau d''a discusión.
+
+      A medida que se vaiga adhibindo nueva informacón puetz ir cambiando a tuya
+      decisión en qualsiquier momento</p>
     have_a_discussion: Discutir un tema
     have_a_discussion_description: "O tema y qualsiquier atra información relevant se troban en a parte superior d''a pachina. Fe servir o quadro de comentario ta adhibir a tuya voz en dita discusión."
     help: Aduya
     how_it_works: Cómo funciona
-    invitation_html: "<h2>Redactar una buena invitación</h2>\n<p>A primera pregunta que tot nuevo miembro se fará ye «A qué s'adedica iste grupo?»</p>\n<p>Piensa en a forma mas sencilla con la puedas describir a o grupo: Qué queretz aconseguir chuntos? Qué tipo de decisions prendretz? Quí serán embrecaus?</p>\n<p>Podría estar buena ideya charrar en primeras con o tuyo grupo, antes de convidar-les a Loomio.</p>\n<p>As personas querrán saber por qué han estau convidadas, qué s'aspera d'ellas,\ny por qué mereixe o suyo tiempo aprender a usar una nueva ferramienta.</p>\n"
+    invitation_html: >
+      <h2>Redactar una buena invitación</h2>
+
+      <p>A primera pregunta que tot nuevo miembro se fará ye «A qué s'adedica
+      iste grupo?»</p>
+
+      <p>Piensa en a forma mas sencilla con la puedas describir a o grupo: Qué
+      queretz aconseguir chuntos? Qué tipo de decisions prendretz? Quí serán
+      embrecaus?</p>
+
+      <p>Podría estar buena ideya charrar en primeras con o tuyo grupo, antes de
+      convidar-les a Loomio.</p>
+
+      <p>As personas querrán saber por qué han estau convidadas, qué s'aspera
+      d'ellas,
+
+      y por qué mereixe o suyo tiempo aprender a usar una nueva ferramienta.</p>
     join_the_community: Unir a la comunidat
     images_and_text_formatting: Imagenes y formato de texto
-    images_and_text_formatting_html: "<p>Loomio fa servir «marcadors» ta incluir imachens y formato de texto.\nPuetz activar marcadors con o chicot icono griso que i hai debaixo d'o quadro de comentarios.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Preta aquí</a>\nta información sobre cómo usar marcadors.</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio fa servir «marcadors» ta incluir imachens y formato de texto.
+
+      Puetz activar marcadors con o chicot icono griso que i hai debaixo d'o
+      quadro de comentarios.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Preta aquí</a>
+
+      ta información sobre cómo usar marcadors.</p>
     keep_up_to_date: Mantiene-te informau
-    keep_up_to_date_html: "<p>Pretando en o cobalto d'a pachina o nombre d'o tuyo grupo, irás ta la pachina d'o tuyo grupo,\nan que podrás veyer una lista de todas as discusions y decisions d'ixe grupo. Si yes en mas d'un grupo, en a pachina d'inicio puetz veyer d'una sola vegada toda l'actividat de totz os tuyos grupos.</p>\n<p>Recibirás un correu electronico quan ocurran fetas importants en o tuyo grupo.\nPuetz modificar as tuyas preferencias de correu electronico <a href=\"%{link}\"\">aquí</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Pretando en o cobalto d'a pachina o nombre d'o tuyo grupo, irás ta la
+      pachina d'o tuyo grupo,
+
+      an que podrás veyer una lista de todas as discusions y decisions d'ixe
+      grupo. Si yes en mas d'un grupo, en a pachina d'inicio puetz veyer d'una
+      sola vegada toda l'actividat de totz os tuyos grupos.</p>
+
+      <p>Recibirás un correu electronico quan ocurran fetas importants en o tuyo
+      grupo.
+
+      Puetz modificar as tuyas preferencias de correu electronico <a
+      href="%{link}"">aquí</a>.</p>
     make_a_decision: Prene una decisión
     make_a_decision_description: "Quan a conversa tien establida un tiempo determinau, qualsiquiera puede encetar una propuesta. Quan sías presto ta dar a tuya opinión, fe clic en un d'os quatro botons de decisión:"
     prompt_people_details: "Si quiers l'atención d'una persona especifica en o tuyo grupo, escribe «@» seguiu d'o nombre d'a persona, y recibirá un correu electronico fendo-le saber que l'has mencionau en un comentario."
     prompt_people_html: "Clama l'atención d'una persona con <span class='blue'>@nombre</span>"
     positions_agree_description: "<span>D'alcuerdo</span> significa que te fa goyo a propuesta."
-    positions_abstain_description: "<span>Abstención</span>, significa que yes indeciso, u que te pareixe bien que o grupo decida sin tu."
+    positions_abstain_description: '<span>Abstención</span>, significa que yes indeciso, u que te pareixe bien que o grupo decida sin tu.'
     positions_disagree_description: "<span>En desalcuerdo</span>, significa que piensas que i hai una millor alternativa, pero no tiens problema con seguir a decisión d'o grupo."
-    positions_block_description: "<span>Blocar</span>, significa que tiens serias obcheccions y no te faría brenca goyo si a propuesta seguise enta debant."
+    positions_block_description: '<span>Blocar</span>, significa que tiens serias obcheccions y no te faría brenca goyo si a propuesta seguise enta debant.'
     start_discussion: Empecipiar una discusión participativa
-    start_discussion_html: "<p>Quan prencipias una discusión, asegura-te que o titol transmite succintament l'afer.\nUsa o panel de contexto ta aportar tot o trasfondo necesario ta que o grupo tienga una discusión productiva y bien fundamentada.</p>\n<p>Entre a discusión, o panel de contexto puede actualizar-se seguntes salga a la luz nueva información. Amás de clarificar o tema, puetz usar iste espacio ta compartir recursos, recapitular a discusión seguntes progresa, u resumir os protocolos de prene de decisions que ye usando o tuyo grupo.</p>\n"
+    start_discussion_html: >
+      <p>Quan prencipias una discusión, asegura-te que o titol transmite
+      succintament l'afer.
+
+      Usa o panel de contexto ta aportar tot o trasfondo necesario ta que o grupo
+      tienga una discusión productiva y bien fundamentada.</p>
+
+      <p>Entre a discusión, o panel de contexto puede actualizar-se seguntes
+      salga a la luz nueva información. Amás de clarificar o tema, puetz usar
+      iste espacio ta compartir recursos, recapitular a discusión seguntes
+      progresa, u resumir os protocolos de prene de decisions que ye usando
+      o tuyo grupo.</p>
     start_proposal: Crear una propuesta clara
-    start_proposal_html: "<p> Si fas un titol claro y succinto, a chent sabrán de camín qué significa exactament estar u no d'alcuerdo.</p>\n<p>No ye a fin d'o mundo si una propuesta no tien un claro alcuerdo immediatament.\nSi a o grupo no le fa goyo a primer propuesta, qualsiquiera puede prencipiar una nueva propuesta ta abordar os problemas surtius y mantener l'abance d''o proceso.</p>\n<p>A traviés d'iste proceso dinamico, a sabiduría colectiva d'o tuyo grupo puede chenerar millors ideyas que as que a dengún solet le podrían ocurrir.</p>\n<p>A calendata de finalización d'una propuesta puede estar enamplada en qualsiquier momento, si pareixese que a decisión ameneste bell poquet mas d'espacio. Totz recibirán un correu electronico 24 horas antes que una propuesta finalice.</p>\n"
-    video_id: "67765444"
+    start_proposal_html: >
+      <p> Si fas un titol claro y succinto, a chent sabrán de camín qué significa
+      exactament estar u no d'alcuerdo.</p>
+
+      <p>No ye a fin d'o mundo si una propuesta no tien un claro alcuerdo
+      immediatament.
+
+      Si a o grupo no le fa goyo a primer propuesta, qualsiquiera puede
+      prencipiar una nueva propuesta ta abordar os problemas surtius y mantener
+      l'abance d''o proceso.</p>
+
+      <p>A traviés d'iste proceso dinamico, a sabiduría colectiva d'o tuyo grupo
+      puede chenerar millors ideyas que as que a dengún solet le podrían
+      ocurrir.</p>
+
+      <p>A calendata de finalización d'una propuesta puede estar enamplada en
+      qualsiquier momento, si pareixese que a decisión ameneste bell poquet mas
+      d'espacio. Totz recibirán un correu electronico 24 horas antes que una
+      propuesta finalice.</p>
+    video_id: '67765444'
     video_tutorial: Tutorial de video
     video_tutorial_description: Mira-te o video ta una demostración rapida.
   hint:
@@ -194,9 +319,15 @@ an:
     proposal: Consellos ta redactar una propuesta clara
     vote: Puetz cambiar a tuya posición en qualsiquier inte
   pricing_page:
-    intro: "Os grupos con presupuesto aportan una conduta por usar a ferramienta.\nOs grupos sin medios ta una conduta fan servir o modelo «Aporta o que puedas»: os suyos miembros son convidaus a realizar una contribución voluntaria. A tuya contribución fa que podamos mantener Loomio independient, libre de publicidat, y endrezau por a nuestra comunidat.\n"
-    organisations: "Organizacions "
-    organisations_examples: "eix. interpresas, achencias de gubierno, organizacions comunitarias"
+    intro: >
+      Os grupos con presupuesto aportan una conduta por usar a ferramienta.
+
+      Os grupos sin medios ta una conduta fan servir o modelo «Aporta o que
+      puedas»: os suyos miembros son convidaus a realizar una contribución
+      voluntaria. A tuya contribución fa que podamos mantener Loomio
+      independient, libre de publicidat, y endrezau por a nuestra comunidat.
+    organisations: 'Organizacions '
+    organisations_examples: 'eix. interpresas, achencias de gubierno, organizacions comunitarias'
     informal_groups: Grupos informals
     informal_groups_desc: "A os miembros d'o tuyo grupo se les pedirá que contribuigan con o que puedan"
-    informal_groups_examples: "p. eix. familias, movimientos socials, grupos colectivos"
+    informal_groups_examples: 'p. eix. familias, movimientos socials, grupos colectivos'

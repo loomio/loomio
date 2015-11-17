@@ -6,8 +6,8 @@ he:
     group: קבוצה
     groups: קבוצות
     privacy:
-      private: פרטי
       public: פתוח לציבור
+      private: פרטי
     date_range:
       today: היום
     models:
@@ -68,8 +68,6 @@ he:
   proposal_expanded:
     edit_proposal: עריכת הצעה
     close_proposal: סגירת הצעה
-  start_group_form:
-    heading: יצירת קבוצה
   join_group_button:
     join_group: הצטרפו לקבוצה
     ask_to_join_group: בקשת הצטרפות לקבוצה
@@ -90,11 +88,6 @@ he:
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י
-  group_form:
-    profile_label: פרופיל
-    name_label: שם
-    description_label: תיאור
-    category_label: קרטגוריה
   memberships_page:
     members: חברים
     name_label: שם

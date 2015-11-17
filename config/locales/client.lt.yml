@@ -9,9 +9,8 @@ lt:
     group: Grupė
     groups: Grupės
     privacy:
-      private: Privati
       public: Vieša
-      organisation: Organizacija
+      private: Privati
     date_range:
       today: Šiandien
       yesterday: Vakar
@@ -33,7 +32,7 @@ lt:
       loading: Įkeliama
   error_page:
     forbidden: Tu neturi leidimo tai padaryti.
-    internal_server_error: "Atleisk, bet įvyko kažkokia klaida. Prašome bandyti dar kartą."
+    internal_server_error: 'Atleisk, bet įvyko kažkokia klaida. Prašome bandyti dar kartą.'
   start_proposal_card:
     title: Pateikti pasiūlymą
   previous_proposals_card:
@@ -46,8 +45,8 @@ lt:
     quiet: Tylus
     mute: Nutildyti
   session_form:
-    email_label: "El. paštas:"
-    password_label: "Slaptažodis:"
+    email_label: 'El. paštas:'
+    password_label: 'Slaptažodis:'
     remember_me: Prisiminti Mane
   comment_form:
     aria_label: Pridėk komentarą
@@ -62,8 +61,8 @@ lt:
     delete_comment: Ištrinti komentarą
     cancel_reply: Atšaukti Atsakymą
     confirm_delete_message: Tu tikrai nori ištrinti šį komentarą?
-    confirm_delete: "Taip, tikrai"
-    in_reply_to: "Atsakant į tai, ką rašė <strong>{{name}}</strong>:"
+    confirm_delete: 'Taip, tikrai'
+    in_reply_to: 'Atsakant į tai, ką rašė <strong>{{name}}</strong>:'
     submit_button:
       label: Išsiųsti
   navbar:
@@ -93,14 +92,14 @@ lt:
     invite_people: Pakviesti Žmones
   notifications:
     header: Pranešimai
-    new_discussion: "<strong>{{name}}</strong> pradėjo diskusiją <strong>{{discussion}}</strong>"
-    new_motion: "<strong>{{name}}</strong> pateikė pasiūlymą <strong>{{proposal}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} pasiūlymui <strong>{{proposal}}</strong>"
-    new_comment: "<strong>{{name}}</strong> pakomentavo diskusijoje <strong>{{discussion}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> atsakė į tavo komentarą diskusijoje <strong>{{discussion}}</strong>"
-    membership_request_approved: "<strong>{{name}}</strong> patvirtino tavo prašymą prisijungti prie grupės <strong>{{group}}</strong>"
-    user_added_to_group: "<strong>{{name}}</strong> pridėjo tave į grupę <strong>{{group}}</strong>"
-    user_added_to_group_no_inviter: "Tave pridėjo į grupę <strong>{{group}}</strong>"
+    new_discussion: '<strong>{{name}}</strong> pradėjo diskusiją <strong>{{discussion}}</strong>'
+    new_motion: '<strong>{{name}}</strong> pateikė pasiūlymą <strong>{{proposal}}</strong>'
+    new_vote: '<strong>{{name}}</strong> {{position}} pasiūlymui <strong>{{proposal}}</strong>'
+    new_comment: '<strong>{{name}}</strong> pakomentavo diskusijoje <strong>{{discussion}}</strong>'
+    comment_replied_to: '<strong>{{name}}</strong> atsakė į tavo komentarą diskusijoje <strong>{{discussion}}</strong>'
+    membership_request_approved: '<strong>{{name}}</strong> patvirtino tavo prašymą prisijungti prie grupės <strong>{{group}}</strong>'
+    user_added_to_group: '<strong>{{name}}</strong> pridėjo tave į grupę <strong>{{group}}</strong>'
+    user_added_to_group_no_inviter: 'Tave pridėjo į grupę <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Tark savo žodį
   vote_form:
@@ -110,36 +109,34 @@ lt:
     i_disagree: Aš nepritariu
     submit_position: Pateikti nuomonę
     statement_placeholder: Pasidalink savo mintimis su grupe.
-    aria_statement_label: "Pasirinktinai įvesk teiginį, kuris bus įrašytas kartu su tavo nuomone"
+    aria_statement_label: 'Pasirinktinai įvesk teiginį, kuris bus įrašytas kartu su tavo nuomone'
   proposal_positions_panel:
     heading: Nuomonės
   undecided_panel:
     show_undecided: Rodyti neapsisprendusius narius
     hide_undecided: Slėpti neapsisprendusius narius
   proposal_pie_chart:
-    participation_statement: "{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})"
+    participation_statement: '{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})'
   proposal_form:
     messages:
       updated: Pasiūlymas atnaujintas
     start_proposal: Pateikti pasiūlymą
     start_a_proposal: Pateikti pasiūlymą
     edit_proposal: Redaguoti pasiūlymą
-    what_does_a_proposal_do: "Pasiūlymai parodo, ką kiekvienas žmogus mano apie tam tikrą veiksmų planą."
-    title_placeholder: "Pvz: Skristi į mėnulį"
+    what_does_a_proposal_do: 'Pasiūlymai parodo, ką kiekvienas žmogus mano apie tam tikrą veiksmų planą.'
+    title_placeholder: 'Pvz: Skristi į mėnulį'
     title_label: Antraštė
     details_label: Išsamesnė Informacija
-    details_placeholder: "Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų pritarti arba nepritarti, arba dar kažką."
+    details_placeholder: 'Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų pritarti arba nepritarti, arba dar kažką.'
   discussion_form:
     new_discussion_title: Kurti naują giją
     edit_discussion_title: Redaguoti giją
-    discussion_helptext: "Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus."
+    discussion_helptext: 'Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus.'
     group_label: Grupę
     title_label: Antraštė
     title_placeholder: Kokia tema diskutuosite?
     context_label: Kontekstas
     privacy_label: Privatumas
-    privacy:
-      will_be_private_to_group: "Gija bus matoma tik {{groupName}} grupės nariams."
     new_discussion_submit: Kurti giją
   proposal_expanded:
     collapse: Suskleisti
@@ -149,14 +146,14 @@ lt:
   proposal_position_no: Nepritariu
   group_welcome_modal:
     heading: Sveikiname atvykus į savo naują grupę
-    ok_got_it: "Gerai, supratau!"
+    ok_got_it: 'Gerai, supratau!'
   group_cover_modal:
     image_size_helptext: Tobulas paveikslo dydis yra 1400 x 320tšk
   group_logo_modal:
     image_size_helptext: Tobulas paveikslo dydis yra 100 x 100tšk
   join_group_button:
     messages:
-      joined_group: "Dabar tu esi {{group}} grupės narys"
+      joined_group: 'Dabar tu esi {{group}} grupės narys'
   membership_request_form:
     email_label: El. paštas
   group_page:
@@ -165,19 +162,19 @@ lt:
         no_discussions_in_group: Šioje grupėje kol kas nėra jokių gijų.
         no_public_discussions: Šioje grupėje nėra viešų gijų.
         discussions_are_private: Šioje grupėje visos gijos yra privačios.
-        join_group: "Tam, kad pamatytum privačias gijas, turėsi prisijungti prie grupės."
-        membership_is_invitation_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti šios grupės narys."
-        membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
+        join_group: 'Tam, kad pamatytum privačias gijas, turėsi prisijungti prie grupės.'
+        membership_is_invitation_only: 'Kad prisijungtum prie šios grupės, tave turi pakviesti šios grupės narys.'
+        membership_is_invitation_by_admin_only: 'Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius.'
     messages:
       privacy:
         members: Dabar ši grupė yra matoma tik nariams
         parent_members: Dabar ši grupė yra matoma tik tavo organizacijos nariams
         public: Dabar ši grupė yra matoma viešai
     group_logo: Grupės logotipas
-    description_placeholder: "Naudok šią vietą ir aprašyk grupės tikslą, kad nariai žinotų kodėl jie yra čia."
+    description_placeholder: 'Naudok šią vietą ir aprašyk grupės tikslą, kad nariai žinotų kodėl jie yra čia.'
     discussions: Gijos
-    discussions_placeholder: "Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus."
-    members_placeholder: "Čia esi tik tu: pakviesk žmones prisjungti prie tavęs!"
+    discussions_placeholder: 'Gija - tai vieta, kurioje visi gali diskutuoti tam tikra tema ir kartu priiminėti sprendimus.'
+    members_placeholder: 'Čia esi tik tu: pakviesk žmones prisjungti prie tavęs!'
     subgroups: Pogrupiai
     subgroups_placeholder: Pogrupiai leidžia suskaidyti grupę į įvairias komandas.
     invite_people: Pakviesti žmones
@@ -188,56 +185,17 @@ lt:
     deactivate_group:
       title: Pasyvinti grupę
       question: Ar tikrai nori pasyvinti šią grupę?
-      submit: "Taip, Pasyvinti šią grupę"
+      submit: 'Taip, Pasyvinti šią grupę'
     leave_group:
       title: Palikti grupę
       question: Tu tikrai nori palikti šią grupę?
-      submit: "Taip, palikti šią grupę"
+      submit: 'Taip, palikti šią grupę'
       add_coordinator: Pridėti koordinatorių
     volume:
       loud: Siųsti el. laišką kai tik atsiranda kokia nors veikla.
-      loud_aria_description: "Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla."
+      loud_aria_description: 'Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla.'
       quiet: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
       quiet_aria_description: Tavo pranešimų garsumas šiai grupei yra nustatytas į Tylus. Tau nebus siunčiami el. laiškai apie šioje grupėje vykstančią veiklą. Grupės veikla bus rodoma tavo Skydelyje.
-  group_form:
-    title: Redaguoti Grupės Nustatymus
-    profile:
-      label: Profilis
-      description: Aprašas
-    privacy:
-      label: Privatumas
-      visible_to_members: Kas gali rasti šią grupę?
-      public_visibility: Bet kas - rodyti grupę viešai
-      organisation_visibility: "Organizacija - nerodoma viešai, tačiau matoma {{parentGroupName}} grupės nariams"
-      private_visibility: Tik nariai - grupė nebus rodoma
-      membership_granted_upon: Kaip žmonės gali prisijungti?
-      membership_by_request: Atvirai - bet kas gali prisijungti prie grupės
-      membership_by_approval: Pagal prašymus - bet kas gali paprašyti prisijungti
-      membership_by_invitation: Tik pakvietimai - nauji nariai turės būti pakviesti
-      discussion_privacy_options: Kas gali žiūrėti gijas?
-      public_discussions_subgroup: "Bet kas {{parentGroupName}} grupėje gali matyti diskusijas"
-      private_discussions: Tik nariai gali matyti diskusijas
-    permissions:
-      label: Leidimai
-      helptext: Ką gali daryti nariai?
-      members_can_add_members: Kviesti ir tvirtinti naujus narius
-      members_can_create_subgroups: Kurti pogrupius
-      members_can_start_discussions: Kurti gijas
-      members_can_edit_discussions: Redaguoti bet kurios gijos antraštę ir kontekstą
-      members_can_edit_comments: Bet kuriuo metu redaguoti savo komentarus
-    submit: Atnaujinti Nustatymus
-    messages:
-      success: Grupė atnaujinta
-  group_form:
-    messages:
-      update_group: Grupė atnaujinta
-    new_subgroup_title: "Kurti naują {{parentGroupName}} grupės pogrupį"
-    edit_group_title: Grupės Nustatymai
-    profile_label: Profilis
-    name_placeholder: Įvesk savo grupės pavadinimą
-    description_label: Aprašas
-    description_placeholder: Aprašyk savo grupę
-    category_label: Kategorija
   invitation:
     invite_people: Pakviesti Žmones
     instructions: Įvesk vardus arba el. pašto adresus
@@ -247,8 +205,8 @@ lt:
     remove_member_label: Šalinti
     fragment_placeholder: Filtruok naudotojus pagal vardą ar naudotojo vardą...
     messages:
-      make_admin_success: "{{name}} dabar yra koordinatorius"
-      remove_admin_success: "{{name}} daugiau nebėra koordinatorius"
+      make_admin_success: '{{name}} dabar yra koordinatorius'
+      remove_admin_success: '{{name}} daugiau nebėra koordinatorius'
     remove_membership:
       title: Šalinti narį
       submit: Šalinti
@@ -276,7 +234,7 @@ lt:
       submit: Atnaujinti slaptažodį
     deactivate_user:
       title: Pasyvinti paskyrą
-      placeholder: "Atsakinėti į klausimą nėra privaloma. Bet kokia informacija, kuria pasidalinsi, padės mums tobulinti Loomio :)"
+      placeholder: 'Atsakinėti į klausimą nėra privaloma. Bet kokia informacija, kuria pasidalinsi, padės mums tobulinti Loomio :)'
       submit: Pasyvinti paskyrą
     change_picture_link: Keisti paveikslą
     change_password_link: Keisti slaptažodį
@@ -306,8 +264,8 @@ lt:
       all_description: Rodyti paskiausias gijas
       proposals: Pasiūlymai
     aria_thread:
-      title: "Gijos antraštė: {{title}}."
-      current_proposal: "Esamas pasiūlymas: {{name}}."
+      title: 'Gijos antraštė: {{title}}.'
+      current_proposal: 'Esamas pasiūlymas: {{name}}.'
     threads_from:
       today: Šiandien
       yesterday: Vakar
@@ -329,7 +287,7 @@ lt:
     thread_options: Gijos parinktys
   delete_thread_form:
     body: Ar tikrai nori ištrinti šią giją?
-    confirm: "Taip, ištrinti giją"
+    confirm: 'Taip, ištrinti giją'
     messages:
       success: Gija ištrinta
   activity_card:
@@ -350,8 +308,8 @@ lt:
     have_your_say: Tarkite savo žodį
     help: Pagalba
     join_the_community_description_html: "Visi yra kviečiami prisijungti prie Loomio Bendruomenės, kurioje mes aptarinėjame, kaip geriausiai išnaudoti įrankį ir kaip jis gali būti patobulintas.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Spustelk čia, kad pereitum į Loomio Bendruomenės grupę</a>."
-    positions_agree_description: "<span>Pritariu</span> reiškia, kad tau patinka pasiūlymas."
-    positions_disagree_description: "<span>Nepritariu</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui."
+    positions_agree_description: '<span>Pritariu</span> reiškia, kad tau patinka pasiūlymas.'
+    positions_disagree_description: '<span>Nepritariu</span> reiškia, kad tu galvoji, jog gali būti geresnių alternatyvų, tačiau neprieštarausi grupės sprendimui.'
   angular:
     switch_back: Perjungti atgal į senąją Loomio
     give_feedback: Siųsti atsiliepimus
