@@ -1367,6 +1367,7 @@ en:
   unlike: "Unlike"
   time_until_close: "%{quantity_of_time} until close"
   update: "Update"
+  username: "Username"
   facebook: "Facebook"
   yahoo: "Yahoo"
   google: "Google"
