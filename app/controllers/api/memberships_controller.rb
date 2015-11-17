@@ -25,7 +25,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def my_memberships
-    @memberships = current_user.memberships.includes(:group, :user, :inviter)
+    @memberships = accessible_records.where(user_id: current_user.id)
     respond_with_collection
   end
 
@@ -54,8 +54,8 @@ class API::MembershipsController < API::RestfulController
 
   private
 
-  def visible_records
-    visible = resource_class.includes(:user, :group, :inviter)
+  def accessible_records
+    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent, :subscription]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
     else

@@ -113,6 +113,9 @@ GEM
       thor
     browser (0.8.0)
     builder (3.2.2)
+    bullet (4.14.10)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (5.0.0)
       columnize (= 0.9.0)
     cancancan (1.10.1)
@@ -636,6 +639,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
+    uniform_notifier (1.9.0)
     user_agent_parser (2.2.0)
     uuid (2.3.7)
       macaddr (~> 1.0)
@@ -672,6 +676,7 @@ DEPENDENCIES
   bing_translator
   bootstrap-sass (~> 3.3.4)
   browser
+  bullet
   byebug
   cancancan
   capybara

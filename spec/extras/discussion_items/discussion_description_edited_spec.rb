@@ -5,8 +5,6 @@ describe DiscussionItems::DiscussionDescriptionEdited do
   let(:discussion) { double(:discussion) }
   let(:item) { DiscussionItems::DiscussionDescriptionEdited.new(event, discussion) }
 
-  it "#icon returns a string indicating the icon-class"
-
   it "#actor returns the user who edited the description" do
     actor = double(:actor)
     item.stub_chain(:event, :user).and_return(actor)

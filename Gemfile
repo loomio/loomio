@@ -98,7 +98,7 @@ group :development do
   gem 'spring'
   gem "spring-commands-cucumber"
   gem "spring-commands-rspec"
-  #gem 'bullet'
+  gem 'bullet'
   gem 'launchy'
   gem 'awesome_print'
   #gem 'quiet_assets'
