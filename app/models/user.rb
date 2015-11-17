@@ -2,9 +2,6 @@ class User < ActiveRecord::Base
   include AvatarInitials
   include ReadableUnguessableUrls
 
-  require 'net/http'
-  require 'digest/md5'
-
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
   MED_LARGE_IMAGE = 70

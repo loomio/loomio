@@ -2,8 +2,6 @@ describe DiscussionItems::NewMotion do
   let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::NewMotion.new(motion) }
 
-  it "#icon returns a string indicating the icon-class"
-
   it "#actor returns the user who created a motion" do
     actor = double(:actor)
     item.stub_chain(:motion, :author).and_return(actor)

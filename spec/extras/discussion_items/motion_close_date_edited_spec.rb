@@ -3,8 +3,6 @@ describe DiscussionItems::MotionCloseDateEdited do
   let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::MotionCloseDateEdited.new(event, motion) }
 
-  it "#icon returns a string indicating the icon-class"
-
   it "#actor returns the user who edited the close date" do
     actor = double(:actor)
     item.stub_chain(:event, :user).and_return(actor)

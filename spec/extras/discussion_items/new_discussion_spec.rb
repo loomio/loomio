@@ -3,8 +3,6 @@ describe DiscussionItems::NewDiscussion do
   let(:discussion) { double(:discussion) }
   let(:item) { DiscussionItems::NewDiscussion.new(event, discussion) }
 
-  it "#icon returns a string indicating the icon-class"
-
   it "#actor returns the user who created a discussion" do
     actor = double(:actor)
     item.stub_chain(:discussion, :author).and_return(actor)

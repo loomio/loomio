@@ -1,5 +1,3 @@
-require 'active_support/concern'
-
 #### NB: These methods are deprecated and should not be relied upon going forward
 module DeprecatedGroupFeatures
   extend ActiveSupport::Concern
