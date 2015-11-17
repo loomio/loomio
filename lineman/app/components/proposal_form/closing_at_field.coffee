@@ -18,6 +18,7 @@ angular.module('loomioApp').directive 'closingAtField', ->
     $scope.hours = _.times 24, (i) -> i
 
     $scope.times = _.times 24, (i) ->
+      i = "0#{i}" if i < 10
       moment("2015-01-01 #{i}:00").format('h a')
 
     $scope.dateToday = moment().format('YYYY-MM-DD')
