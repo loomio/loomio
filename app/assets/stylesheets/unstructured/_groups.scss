@@ -93,6 +93,9 @@ body.groups {
     .group-description{
       margin: 16px 0 5px 0;
       width: 100%;
+      img {
+        width: 100%;
+      }
     }
     .logo-placeholder {
       float: left;
@@ -201,7 +204,7 @@ body.groups {
 }
 
 .group-link-name{
-  font-weight: bold; 
+  font-weight: bold;
   margin-top: 0.3em;
 }
 .sub-group .group-link-name {
