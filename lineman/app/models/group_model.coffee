@@ -14,7 +14,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       isVisibleToPublic: true
       discussionPrivacyOptions: 'private_only'
       membershipGrantedUpon: 'approval'
-      membersCanAddMembers: false
+      membersCanAddMembers: true
       membersCanEditDiscussions: true
       membersCanEditComments: true
       membersCanRaiseMotions: true
