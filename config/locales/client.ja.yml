@@ -1,17 +1,35 @@
 ja:
   common:
-    group: グルブ
+    confirm_discard_changes: 編集内容を破棄しますか？
+    time:
+      am: 午前
+      pm: 午後
+    group: グループ
     groups: グループ
     privacy:
+      privacy: プライバシー
       public: 公開
+      open: 議論中
+      closed: 議論終了
       private: 非公開
+      secret: 秘密
+    selected: 選択中
+    date_range:
+      today: 本日
+      yesterday: 昨日
+      thisweek: 今週
+      thismonth: 今月
     models:
       proposal: 提案
     action:
-      save: セーブ
+      save: 保存
+      save_changes: 変更を保存
+      update_settings: 設定更新
+      reply: 返信
       edit: 編集
       like: いいね！
-      unlike: ええね！を消す
+      unlike: いいね！を消す
+      update: 更新
       cancel: キャンセル
   error_page:
     forbidden: このアクションの許可がありません
@@ -20,6 +38,10 @@ ja:
   proposal_outcome_form:
     outcome_label: 提案の結論
     publish_outcome: 結論を公表する
+  thread_volume_form:
+    submit: 更新
+  group_volume_form:
+    submit: 更新
   comment_form:
     delete_comment: コメントを削除します
     confirm_delete_message: 本当にコメントを削除しますか？
@@ -62,15 +84,16 @@ ja:
     privacy_label: 個人情報
   proposal_expanded:
     close_proposal: 提案を締め切ります
+    closed_badge: 議論終了
   join_group_button:
     join_group: グループに参加する
-    ask_to_join_group: グループに参加するように頼む
+    ask_to_join_group: グループへの参加依頼
   membership_request_form:
-    heading: グループに参加するように頼む
+    heading: グループへの参加依頼
     name_label: 氏名
     email_label: Eメール
     introduction_label: 自己紹介をしてください
-    submit_button: グループに参加するように頼む
+    submit_button: グループへの参加依頼
   group_page:
     thread_list:
       empty:
@@ -83,6 +106,9 @@ ja:
       label: オプション
     leave_group:
       title: グループを離れます
+  group_form:
+    privacy: プライバシー
+    submit_update: 設定更新
   membership_requests_page:
     approve: 承認
     ignore: 拒否
@@ -103,6 +129,10 @@ ja:
     name_label: 氏名
     email_label: Eメール
     locale_label: 言語
+  dashboard_page:
+    threads_from:
+      today: 本日
+      yesterday: 昨日
   thread_group:
     aria_label: グループ名
   delete_comment_dialog:
@@ -219,7 +249,7 @@ ja:
     video_tutorial_description: Loomioの使い方の手短なデモンストレーションに関してはこのビデオを見てください。
   hint:
     context: ディスカッション情報を使うアドバイス
-    discussion: ディスカッションを開始するにあたってアドバイス
+    discussion: ディスカッションを開始する際のアドバイス
     invitation: 素晴らしい招待を書くアドバイス
     proposal: はっきりした提案を書くアドバイス
     vote: いつでも意見を変更することができます
@@ -231,6 +261,6 @@ ja:
       あなたの寄付は、広告のない、私たちのコミュニティによって運営されるLoomioの独立を維持することを意味します。
     organisations: 組織
     organisations_examples: 例：ビジネス、政府機関、地域組織
-    informal_groups: 非公式のグループ
+    informal_groups: 非公式グループ
     informal_groups_desc: あなたのグループのメンバーは、出来るものを払うように要求されるでしょう
     informal_groups_examples: 例：家族、社会運動、共同体

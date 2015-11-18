@@ -1,6 +1,6 @@
 ja:
   frontpage:
-    view_this_in_your_language: "このサイトを %{language} 語で表示"
+    view_this_in_your_language: 'このサイトを %{language} 語で表示'
     title:
       collaborative_decision_making: 共同意思決定
     link:
@@ -18,13 +18,13 @@ ja:
       privacy: 個人情報
       services: サービス
     hero:
-      header_html: "Loomioは一番安い,<br /><strong>オンライン共同意思決定過程</strong>です。"
-      lead_html: "Loomioは、コミュニティや団体の参加者がどこにいても<strong>議論に加わって、行動に移す</strong>ことができるようにします。"
+      header_html: 'Loomioは一番安い,<br /><strong>オンライン共同意思決定過程</strong>です。'
+      lead_html: 'Loomioは、コミュニティや団体の参加者がどこにいても<strong>議論に加わって、行動に移す</strong>ことができるようにします。'
     product:
-      header_html: "参加しているみんなから<strong>あらゆる声</strong>を聞くことができたら、それは<strong>もっと素敵な判断</strong>につながります。"
+      header_html: '参加しているみんなから<strong>あらゆる声</strong>を聞くことができたら、それは<strong>もっと素敵な判断</strong>につながります。'
       step1:
         header: 徹底的に議論する。
-        desc: どのトピックでもいいので、ディスカッションを初めて正しい人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。
+        desc: どんな話題でもディスカッションをスタートして、集まるべき人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。
       step2:
         header: 2. 合意を形成しましょう
         desc: 誰でもアクションの内容を提案することができます。メンバーが賛成、棄権、不賛成、ブロックすることができ、あなたは皆がどのように感じ、それは何故なのか知ることができます。
@@ -32,7 +32,7 @@ ja:
         header: 3. 一緒に決めましょう
         desc: 皆に機能するように、提案を一緒に発展させましょう。すべての決定が明確な締め切りを持つので、常に明確な結果を得るでしょう。
     mobile:
-      lead_html: "<strong>Loomioは任意のデバイス上で動作します。,</strong><br />決定の参加、どこでも。"
+      lead_html: '<strong>Loomioは任意のデバイス上で動作します。,</strong><br />決定の参加、どこでも。'
     team:
       header: Loomioについて
     ideals:

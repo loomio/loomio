@@ -1,6 +1,6 @@
 id:
   frontpage:
-    view_this_in_your_language: "Lihat situs ini dalam bahasa %{language}"
+    view_this_in_your_language: 'Lihat situs ini dalam bahasa %{language}'
     link:
       blog: Blog
       contact: Kontak

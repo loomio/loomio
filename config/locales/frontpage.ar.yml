@@ -1,6 +1,6 @@
 ar:
   frontpage:
-    view_this_in_your_language: "اعرض هذا الموقع باللغة %{language}"
+    view_this_in_your_language: 'اعرض هذا الموقع باللغة %{language}'
     title:
       collaborative_decision_making: إتخاذ القرار التعاوني
     link:
@@ -18,20 +18,20 @@ ar:
       privacy: الخصوصية
       services: الخدمات
     product:
-      header_html: "عندما نستمع <strong>لكل الآراء</strong> فإننا نتخذ <strong>قرارات أفضل</strong>."
+      header_html: 'عندما نستمع <strong>لكل الآراء</strong> فإننا نتخذ <strong>قرارات أفضل</strong>.'
       step1:
         header: ١. ناقش الأمور بالتفصيل
         desc: إبدأ نقاشا حول أي موضوع وقم بدعوة المهتمين به للمناقشة. شاركوا وجهات نظر متنوعة وحسنوا الأفكار سوية.
       step2:
         header: ٢. إعملوا على بناء إتفاق
-        desc: "يمكن لأي شخص في المجموعه صياغة اقتراح معين. المشاركين بالقرار  يمكنهم إتخاذ احد الخيرات التالية: الموافقة، أو الامتناع عن التصويت، أو الرفض، أو الإعتراض اي منع الأقتراح - هكذا تستطيع أن ترى كيف يشعر الجميع ولماذا."
+        desc: 'يمكن لأي شخص في المجموعه صياغة اقتراح معين. المشاركين بالقرار  يمكنهم إتخاذ احد الخيرات التالية: الموافقة، أو الامتناع عن التصويت، أو الرفض، أو الإعتراض اي منع الأقتراح - هكذا تستطيع أن ترى كيف يشعر الجميع ولماذا.'
       step3:
         header: ٣. قرروا سوية
         desc: طوروا الإقتراح سوية حتى يصبح مناسبا للجميع. كل قرار له مهلة محددة، وبذلك يمكن ضمان التوصل لنتيجة محددة.
     quote:
       header:
-        rushkoff_html: "\"Loomio <strong>يحرر إمكانات الإنترنت</strong> لجلب الناس سوية نحو توافق الآراء بدلا من الجدل المستقطب.\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">دوغلاس رشكوف</a>، مؤلف كتاب  <em>صدمة الحاضر</em></div>"
-        sifry_html: "\"يحقق Loomio توازنا جميلا بين <strong>الرأي الفردي</strong> و<strong>القرار الجماعي</strong>.\"<div class=\"attributation\">– مايكا سيفري، محررة <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        rushkoff_html: '"Loomio <strong>يحرر إمكانات الإنترنت</strong> لجلب الناس سوية نحو توافق الآراء بدلا من الجدل المستقطب."<div class="attributation">– <a href="http://rushkoff.com">دوغلاس رشكوف</a>، مؤلف كتاب  <em>صدمة الحاضر</em></div>'
+        sifry_html: '"يحقق Loomio توازنا جميلا بين <strong>الرأي الفردي</strong> و<strong>القرار الجماعي</strong>."<div class="attributation">– مايكا سيفري، محررة <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: عن Loomio
       desc: نحن فريق صغير من مطوري المصادر المفتوحة وناشطي العدالة الإجتماعية. نعمل في شبكة Enspiral على جزيرة Aotearoa في نيوزيلندا بالتعاون مع شبكة أوسع من الأصدقاء والداعمين والمشرفين من جميع أنحاء العالم.

@@ -12,12 +12,12 @@ lt:
       terms: Nuostatos
       privacy: Privatumas
     hero:
-      header_html: "Loomio yra lengviausias būdas<br /> <strong>kartu priimti sprendimus</strong>."
+      header_html: 'Loomio yra lengviausias būdas<br /> <strong>kartu priimti sprendimus</strong>.'
     product:
       step3:
         header: 3. Spręskite kartu
     mobile:
-      lead_html: "<strong>Loomio veikia bet kuriame įrenginyje,</strong><br />darykite sprendimus bet kurioje vietoje, bet kuriuo metu."
+      lead_html: '<strong>Loomio veikia bet kuriame įrenginyje,</strong><br />darykite sprendimus bet kurioje vietoje, bet kuriuo metu.'
     team:
       header: Apie Loomio
     ideals:

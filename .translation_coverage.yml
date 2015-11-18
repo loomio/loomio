@@ -1,114 +1,169 @@
 an:
+  frontpage: 52
   main_1_0: 21
 ar:
+  frontpage: 52
   main_1_0: 11
 be-BY:
+  frontpage: 58
   main_1_0: 24
 bg-BG:
+  frontpage: 9
   main_1_0: 14
 ca:
+  frontpage: 49
   main_1_0: 19
 cmn:
+  frontpage: 1
   main_1_0: 9
 cs:
+  frontpage: 76
   main_1_0: 48
 da:
+  frontpage: 52
   main_1_0: 30
 de:
+  frontpage: 100
   main_1_0: 91
 el:
+  frontpage: 78
   main_1_0: 28
 en-BE:
+  frontpage: 0
   main_1_0: 0
 en-NL:
+  frontpage: 0
   main_1_0: 0
 eo:
+  frontpage: 52
   main_1_0: 25
 es:
-  main_1_0: 93
+  frontpage: 100
+  main_1_0: 100
 es-AR:
+  frontpage: 0
   main_1_0: 0
 fa-IR:
+  frontpage: 60
   main_1_0: 2
 fi:
+  frontpage: 0
   main_1_0: 0
 fr:
+  frontpage: 63
   main_1_0: 90
 fr-BE:
+  frontpage: 0
   main_1_0: 0
 ga-IE:
+  frontpage: 69
   main_1_0: 59
 gl:
+  frontpage: 29
   main_1_0: 15
 he:
+  frontpage: 55
   main_1_0: 13
 he-IL: {}
 hi:
+  frontpage: 0
   main_1_0: 0
 hr:
+  frontpage: 100
   main_1_0: 6
 hu:
+  frontpage: 63
   main_1_0: 30
 id:
+  frontpage: 29
   main_1_0: 17
 it:
+  frontpage: 60
   main_1_0: 64
 it-CH:
+  frontpage: 0
   main_1_0: 0
 it-IT: {}
 ja:
-  main_1_0: 18
+  frontpage: 49
+  main_1_0: 21
 km:
+  frontpage: 7
   main_1_0: 15
 ko:
+  frontpage: 58
   main_1_0: 19
 lt:
+  frontpage: 23
   main_1_0: 33
 lv:
+  frontpage: 0
   main_1_0: 0
 mi:
+  frontpage: 1
   main_1_0: 3
 mk:
+  frontpage: 52
   main_1_0: 13
 ml:
+  frontpage: 9
   main_1_0: 15
 ml-IN:
+  frontpage: 0
   main_1_0: 0
 nl: {}
 nl-NL:
+  frontpage: 100
   main_1_0: 33
 pl:
+  frontpage: 100
   main_1_0: 62
 pt-BR:
+  frontpage: 100
   main_1_0: 92
 pt-PT:
+  frontpage: 16
   main_1_0: 0
 ro:
+  frontpage: 100
   main_1_0: 31
 ru:
+  frontpage: 60
   main_1_0: 26
 ru-RU: {}
 sk:
+  frontpage: 52
   main_1_0: 21
 sl:
+  frontpage: 58
   main_1_0: 27
 sr:
+  frontpage: 100
   main_1_0: 90
 sr-RS:
+  frontpage: 58
   main_1_0: 25
 sv:
+  frontpage: 52
   main_1_0: 20
 te:
+  frontpage: 15
   main_1_0: 9
 tr:
+  frontpage: 52
   main_1_0: 27
 uk:
+  frontpage: 72
   main_1_0: 100
 ur:
+  frontpage: 0
   main_1_0: 0
 ur-PK:
+  frontpage: 0
   main_1_0: 0
 vi:
+  frontpage: 7
   main_1_0: 14
 zh-TW:
+  frontpage: 100
   main_1_0: 100

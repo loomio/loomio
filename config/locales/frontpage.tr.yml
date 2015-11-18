@@ -1,6 +1,6 @@
 tr:
   frontpage:
-    view_this_in_your_language: "Bu siteyi %{language} görüntüle"
+    view_this_in_your_language: 'Bu siteyi %{language} görüntüle'
     title:
       collaborative_decision_making: İşbirliğine Dayalı Karar Verme
     link:
@@ -18,30 +18,30 @@ tr:
       privacy: Gizlilik
       services: Hizmetler
     product:
-      header_html: "<strong>Bütün sesler</strong> duyulduğunda, <strong>daha iyi kararlar</strong> alırız."
+      header_html: '<strong>Bütün sesler</strong> duyulduğunda, <strong>daha iyi kararlar</strong> alırız.'
       step1:
         header: 1. Konular hakkında konuşun
         desc: Doğru insanları biraraya getirin ve herhangi bir konuda bir müzakere başlatın. Farklı bakış açılarını birlikte paylaşın ve fikirler geliştirin.
       step2:
         header: 2. Anlaşma oluşturun
-        desc: "Herkes bir faaliyet rotası önerebilir. İnsanlar, birbirlerinin görüşlerine katılabilir, çekimser kalabilir, katılmadığını belirtebilir ya da bloklayabilir - böylece herkesin nasıl hissettiğini görür ve nedenlerini anlayabilirsiniz."
+        desc: 'Herkes bir faaliyet rotası önerebilir. İnsanlar, birbirlerinin görüşlerine katılabilir, çekimser kalabilir, katılmadığını belirtebilir ya da bloklayabilir - böylece herkesin nasıl hissettiğini görür ve nedenlerini anlayabilirsiniz.'
       step3:
         header: 3. Birlikte karar verin
-        desc: "Öneriyi birlikte geliştirirsiniz, böylece herkes için çalışır. Her kararın bir teslim süresi vardır, böylece her zaman net bir sonuç alırsınız."
+        desc: 'Öneriyi birlikte geliştirirsiniz, böylece herkes için çalışır. Her kararın bir teslim süresi vardır, böylece her zaman net bir sonuç alırsınız.'
     quote:
       header:
-        rushkoff_html: "\"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.</strong>\"<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>"
-        sifry_html: "\"Loomio <strong>bireysel seslerin</strong> ve <strong>kolektif kararların</strong> arasında tatlı bir noktada duruyor.\"<div class=\"attributation\">– Micah Sifry, Editör, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        rushkoff_html: '"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.</strong>"<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>'
+        sifry_html: '"Loomio <strong>bireysel seslerin</strong> ve <strong>kolektif kararların</strong> arasında tatlı bir noktada duruyor."<div class="attributation">– Micah Sifry, Editör, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: Loomio hakkında
       desc: "Biz, Yeni Zelanda merkezli Enspiral'da çalışan, açık-kaynak programcıları ve sosyal adalet aktivistlerinden oluşan ve dünyanın her yerinde arkadaşları, destekçileri ve danışmanlarının olduğu küçük bir ekibiz."
     ideals:
       community:
         header: Topluma odaklı işbirliğine dayalı
-        desc: "Loomio çalışanların sahibi olduğu kooperatif bir girişim tarafindan geliştirildi. Bizler kar etmek için değil, pozitif toplumsal etkileri en üst düzeye çıkartmak için çalışan bir sosyal girişimin üyeleriyiz."
+        desc: 'Loomio çalışanların sahibi olduğu kooperatif bir girişim tarafindan geliştirildi. Bizler kar etmek için değil, pozitif toplumsal etkileri en üst düzeye çıkartmak için çalışan bir sosyal girişimin üyeleriyiz.'
       independent:
         header: Bağımsız ve tarafsız
-        desc: "Biz siyasi veya kurumsal topluluklardan bağımsız olarak, herhangi bir grubun bir araya gelmesi için güvenilir bir alan sağlıyoruz. Biz verilerinizi asla paylaşmaz ve satmayız."
+        desc: 'Biz siyasi veya kurumsal topluluklardan bağımsız olarak, herhangi bir grubun bir araya gelmesi için güvenilir bir alan sağlıyoruz. Biz verilerinizi asla paylaşmaz ve satmayız.'
       open:
         header: Ücretsiz ve açık yazılım
         desc: "Loomio'nun kodu açık kaynaktır ve herkes bu kodu kullanabilir, öğrenebilir, değiştirebilir ve yeniden dağıtabilir."
