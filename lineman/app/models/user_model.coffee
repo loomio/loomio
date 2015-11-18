@@ -29,6 +29,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     parentGroups: ->
       _.filter @groups(), (group) -> group.parentId == null
 
+    orphanSubgroups: ->
+      _.filter @groups(), (group) =>
+        group.isSubgroup() and !@isMemberOf(group.parent())
+
     isAuthorOf: (object) ->
       @id == object.authorId
 
