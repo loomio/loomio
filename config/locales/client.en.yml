@@ -254,7 +254,7 @@ en:
   proposal_positions_panel:
     heading: Positions
     no_votes_yet: Nobody has voted on this proposal yet.
-    change_your_vote: Change your vote.
+    change_your_vote: Change your position.
 
   undecided_panel:
     aria_label: 'Undecided members'
