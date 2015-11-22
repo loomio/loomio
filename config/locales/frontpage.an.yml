@@ -1,6 +1,6 @@
 an:
   frontpage:
-    view_this_in_your_language: "Fe click aquí ta usar Loomio en %{language}"
+    view_this_in_your_language: 'Fe click aquí ta usar Loomio en %{language}'
     title:
       collaborative_decision_making: Presa de decisions colectiva
     link:
@@ -18,20 +18,20 @@ an:
       privacy: Privacidat
       services: Servicios
     product:
-      header_html: "Quan escuitamos <strong>todas as voces</strong>, prenemos <strong>millors decisions. </strong>"
+      header_html: 'Quan escuitamos <strong>todas as voces</strong>, prenemos <strong>millors decisions. </strong>'
       step1:
         header: 1. Discutir a fondo as cosetas
-        desc: "Empecipia una discusión en qualsiquier tema, y convida a las personas que quieras. Comparte perspectivas diversas y desembolica las ideyas de conchunta."
+        desc: 'Empecipia una discusión en qualsiquier tema, y convida a las personas que quieras. Comparte perspectivas diversas y desembolica las ideyas de conchunta.'
       step2:
         header: 2. Construir un alcuerdo
         desc: "Qualsequiera puede proposar una forma d'actuar. A chent puede estar d'alcuerdo, abstener-se, no estar d'alcuerdo u blocar-la, pa que totz sepa qué piensa cadaún, y por qué."
       step3:
         header: 3. Decidir chuntos
-        desc: "Desembolica a propuesta colectivament ta que funcione ta totz. Cada decisión tien una calendata final, pa poder obtener siempre un resultau claro."
+        desc: 'Desembolica a propuesta colectivament ta que funcione ta totz. Cada decisión tien una calendata final, pa poder obtener siempre un resultau claro.'
     quote:
       header:
         rushkoff_html: "“Loomio <strong>fa servir o potencial d'internet</strong> ta trayer a las personas enta un consenso en cuenta de enta un debat polarizau.”<div class=\"attributation\">– <a href=\"http://rushkoff.com\">Douglas Rushkoff</a>, authr de <em>Present Shock</em></div>"
-        sifry_html: "«Loomio aconsigue un punto optimo entre a <strong>voz individual</strong> y a <strong>decisión colectiva</strong>». <div class=\"attributation\"> - Micah Sifry, editor de <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        sifry_html: '«Loomio aconsigue un punto optimo entre a <strong>voz individual</strong> y a <strong>decisión colectiva</strong>». <div class="attributation"> - Micah Sifry, editor de <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: Arredol de Loomio
       desc: "Somos un chicot equipo de desembolicadors de codigo ubierto y activistas de chusticia social que treballamos en Enspiral, Nueva Zelanda, con un amplio ret d'amigos, simpatizants y asesors arredol d'o mundo."

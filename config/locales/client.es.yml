@@ -450,8 +450,55 @@ es:
     start_group_heading: Empieza un grupo
     start_subgroup_heading: 'Comienza un sub-grupo '
     edit_group_heading: Editar configuraciones del grupo
+    edit_subgroup_heading: Editar la configuración del subgrupo
+    group_name: Nombre del Grupo
+    subgroup_name: 'Nombre del sub-grupo '
+    description: 'Descripción '
+    description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
+    privacy_statement:
+      public_on_web: 'El nombre y la descripción serán públicos online '
+      private_to_group: 'El nombre y la descripción solo serán visibles para miembros. '
+      private_to_parent_members: 'El nombre y la descripción serán visibles para miembros de {{parent}}'
     privacy: Privacidad
+    group_privacy_open_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Todos los hilos son públicos.'
+    group_privacy_closed_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Solo los miembros pueden ver los hilos.'
+    group_privacy_closed_public_threads_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Los hilos pueden ser públicos o privados.'
+    group_privacy_secret_description: 'Solo miembros que han sido invitados pueden encontrar el grupo y ver los hilos.  '
+    confirm_change_to_secret: 'Si procedes, todos los hilo en este grupo y sus subgrupos se harán privados.'
+    confirm_change_to_secret_subgroup: Si continuas todos los hilos se harán privados.
+    confirm_change_to_public: 'Si continuas todos los hilos en este grupo se harán públicos ha cualquiera en internet.  '
+    confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
+    subgroup_privacy_open_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Todos los hilos son públicos.'
+    subgroup_privacy_closed_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Solo los miembros pueden ver los hilos.'
+    subgroup_privacy_closed_public_threads_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Los hilos pueden ser públicos o privados.'
+    subgroup_privacy_closed_secret_parent_description: 'miembros de {{parent}} pueden encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. '
+    subgroup_privacy_secret_description: 'Solo miembros que han sido invitados pueden encontrar este subgrupo y ver los hilos.  '
+    advanced_settings: 'Configuración avanzada '
+    how_do_people_join: ¿Cómo se unen las personas a este grupo?
+    membership_granted_upon_request: Cualquiera puede unirse al grupo.
+    membership_granted_upon_approval: 'Cualquiera puede pedir la membresía, pero debe ser aprobada.'
+    membership_granted_upon_approval_secret_parent: '<strong>Por pedido</strong> - cualquier persona de {{parent}} puede pedir unirse al grupo. '
+    thread_privacy: Privacidad del hilo
+    public_threads: Sólo hilos públicos
+    public_discussions_subgroup: 'Cualquiera que pertenezca a {{parentGroupName}} puede ver las discusiones'
+    public_or_private_threads: Permitir hilos públicos y privados
+    private_threads: Solamente los miembros pueden ver las discusiones
+    permissions: Permisos
+    allow_public_threads: Permitir hilos públicos en este grupo.
+    parent_members_can_see_discussions: 'Los miembros de {{parent}} pueden ver los hilos'
+    members_can_add_members: Miembros pueden invitar gente y aprobar membresías.
+    members_can_create_subgroups: Los miembros pueden crear subgrupos.
+    members_can_edit_discussions: Los miembros pueden editar el título y contexto de cualquier hilo.
+    members_can_edit_comments: Los miembros pueden editar sus propios comentarios en cualquier momento.
+    members_can_start_discussions: Los miembros pueden iniciar hilos nuevos.
+    members_can_vote: Los miembros pueden votar en las propuestas.
+    members_can_raise_motions: Los miembros pueden iniciar propuestas.
+    submit_start_group: Crear grupo
+    submit_start_subgroup: Crear subgrupos
     submit_update: Actualizar preferencias
+    messages:
+      group_created: Grupo ha sido creado
+      group_updated: Grupo actualizado
   membership_requests_card:
     heading: 'Pedidos de membresía '
     manage_requests: 'Gestionar peticiones '

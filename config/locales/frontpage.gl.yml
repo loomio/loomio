@@ -1,6 +1,6 @@
 gl:
   frontpage:
-    view_this_in_your_language: "Ver esta páxina en %{language}"
+    view_this_in_your_language: 'Ver esta páxina en %{language}'
     title:
       collaborative_decision_making: Ferramenta de Decisións Colaborativas
     link:
@@ -19,7 +19,7 @@ gl:
       services: Servizos
     product:
       step3:
-        header: "3. Decidir xunt@s"
+        header: 3. Decidir xunt@s
     team:
       header: Sobre Loomio
     ideals:

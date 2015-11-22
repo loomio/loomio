@@ -1,6 +1,6 @@
 ko:
   frontpage:
-    view_this_in_your_language: "%{language}로 사이트 보기"
+    view_this_in_your_language: '%{language}로 사이트 보기'
     title:
       collaborative_decision_making: 협력적 의사 결정
     link:
@@ -18,38 +18,40 @@ ko:
       privacy: 개인정보
       services: 서비스
     hero:
-      header_html: "루미오는 <strong>협력적 의사결정</strong>을 위한 </br> 가장 쉬운 방법입니다."
-      lead_html: "루미오의 조직화와 커뮤니티 기능은  사용자들이 어디에 있든 <strong>토론에 참여할 수 있도록</strong> 해줍니다. "
+      header_html: '루미오는 <strong>협력적 의사결정</strong>을 위한 </br> 가장 쉬운 방법입니다.'
+      lead_html: '루미오의 조직화와 커뮤니티 기능은  사용자들이 어디에 있든 <strong>토론에 참여할 수 있도록</strong> 해줍니다. '
     product:
-      header_html: "<strong>모두의 의견</strong>이 반영될 때, <strong>더 나은 결론</strong>을 이끌어낼 수 있습니다."
+      header_html: '<strong>모두의 의견</strong>이 반영될 때, <strong>더 나은 결론</strong>을 이끌어낼 수 있습니다.'
       step1:
         header: 1. 토론 시작하기
-        desc: "다양한 주제로, 관심 있는 사람들과 토론을 시작해보세요. 다양한 시각을 나누고 더 나은 아이디어를 만들어가요."
+        desc: '다양한 주제로, 관심 있는 사람들과 토론을 시작해보세요. 다양한 시각을 나누고 더 나은 아이디어를 만들어가요.'
       step2:
         header: 2. 의견 모으기
         desc: "참여한 사람 모두가 '찬성' '기권' '반대' '차단' 기능으로 의견을 낼 수 있어요. 구성원들이 어떻게 생각하고, 왜 그렇게 생각하는지 알 수 있어요."
       step3:
         header: 3. 다 함께 의사 결정하기
-        desc: "모두가 함께 참여한 제안을 만들어보세요. 모든 크고 작은 결정 사항마다 분명한 기한이 있으니, 언제나 명확한 결과를 얻을 수 있어요."
+        desc: '모두가 함께 참여한 제안을 만들어보세요. 모든 크고 작은 결정 사항마다 분명한 기한이 있으니, 언제나 명확한 결과를 얻을 수 있어요.'
     mobile:
-      lead_html: "<strong>루미오는 모든기기에 작동되며,</strong><br /> 언제 어디서든 의사결정을 할 수 있도록 해줍니다. "
+      lead_html: '<strong>루미오는 모든기기에 작동되며,</strong><br /> 언제 어디서든 의사결정을 할 수 있도록 해줍니다. '
     quote:
       header:
-        rushkoff_html: "“루미오는 양극단으로 치닫는 토론 대신 함께 의견을 모으는 <strong>인터넷의 가능성을 해방시켰습니다.</strong>\" <div class=\"attributation\">– <a href=\"http://rushkoff.com\">더글라스 러시코프 (Douglas Rushkoff)</a>, <em>Present Shock</em>의 저자</div>"
-        sifry_html: "“루미오는 <strong>개인의 참여</strong>와 <strong>함께 만드는 결론</strong> 사이의 적절한 지점을 찾아냈습니다.” <div class=\"attributation\">– 마이카 시프리 (Micah Sifry), 편집인, <em><a href=\"http://techpresident.com\">TechPresident</a></em></div>"
+        rushkoff_html: '“루미오는 양극단으로 치닫는 토론 대신 함께 의견을 모으는 <strong>인터넷의 가능성을 해방시켰습니다.</strong>" <div class="attributation">– <a href="http://rushkoff.com">더글라스 러시코프 (Douglas Rushkoff)</a>, <em>Present Shock</em>의 저자</div>'
+        sifry_html: '“루미오는 <strong>개인의 참여</strong>와 <strong>함께 만드는 결론</strong> 사이의 적절한 지점을 찾아냈습니다.” <div class="attributation">– 마이카 시프리 (Micah Sifry), 편집인, <em><a href="http://techpresident.com">TechPresident</a></em></div>'
     team:
       header: 루미오에 대하여
-      desc: "우리는 뉴질랜드의 엔스파이럴에서 일하는 오픈소스 개발자와 사회정의를 위해 활동에 종사하는 운동가들의 소모임입니다. 전 세계 네트워크에 걸친 친구들, 지지자, 자문의 도움을 받고 있습니다."
+      desc: '우리는 뉴질랜드의 엔스파이럴에서 일하는 오픈소스 개발자와 사회정의를 위해 활동에 종사하는 운동가들의 소모임입니다. 전 세계 네트워크에 걸친 친구들, 지지자, 자문의 도움을 받고 있습니다.'
     ideals:
       community:
         header: 커뮤니티 중심의 협력
-        desc: "루미오를 만든 우리는 노동자가 소유하는 사회적 기업으로, 금전적 이익보다 사회에 긍정적인 영향을 최대화하기 위해 힘씁니다."
+        desc: '루미오를 만든 우리는 노동자가 소유하는 사회적 기업으로, 금전적 이익보다 사회에 긍정적인 영향을 최대화하기 위해 힘씁니다.'
       independent:
         header: 독립과 중립
         desc: 루미오는 그 어떤 모임이라도 이용을 환영합니다. 루미오는 정치적이거나 기업적으로 얽혀있지 않습니다. 루미오는 이용자의 데이터를 절대 팔지 않습니다.
       open:
         header: 오픈 소스
-        desc: "루미오의 코드는 누구나 실행하고, 읽고, 배우고, 수정하고, 재배포 할 수 있는 공공재입니다."
+        desc: '루미오의 코드는 누구나 실행하고, 읽고, 배우고, 수정하고, 재배포 할 수 있는 공공재입니다.'
       gift:
         header: 선물경제
-        desc: "루미오는 자발적으로 기부해주시는 분들의 도움을 받고 있습니다. 여러분의 기부가 광고 없는 루미오, 경제적 약자가 자유롭게 이용할 수 있는 루미오를 만듭니다."
+        desc: '루미오는 자발적으로 기부해주시는 분들의 도움을 받고 있습니다. 여러분의 기부가 광고 없는 루미오, 경제적 약자가 자유롭게 이용할 수 있는 루미오를 만듭니다.'
+  about_page:
+    our_story_1_html: '<h2>루미오 이야기</h2> <p>루미오는 뉴질랜드의 개발자들과, 사회운동가들, 그리고 사회적 기업가들이 만든 협력적 의사 결정을 위한 온라인 도구입니다.</p>'

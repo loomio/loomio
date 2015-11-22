@@ -1,6 +1,6 @@
 fr:
   frontpage:
-    view_this_in_your_language: "Voir ce site en %{language}"
+    view_this_in_your_language: 'Voir ce site en %{language}'
     title:
       collaborative_decision_making: Prise de décision collaborative
     link:
@@ -19,19 +19,19 @@ fr:
       privacy: Vie privée
       services: Services
     hero:
-      header_html: "Loomio est le moyen le plus simple de<br /><strong>prendre des décisions ensemble</strong>."
-      lead_html: "Loomio permet aux organisations et aux communautés de transformer des <strong>discussions en actions</strong>, peu importe où sont les personnes."
+      header_html: 'Loomio est le moyen le plus simple de<br /><strong>prendre des décisions ensemble</strong>.'
+      lead_html: 'Loomio permet aux organisations et aux communautés de transformer des <strong>discussions en actions</strong>, peu importe où sont les personnes.'
     product:
-      header_html: "Quand nous écoutons <strong>toutes les voix</strong>, nous prenons <strong>de meilleures décisions</strong>."
+      header_html: 'Quand nous écoutons <strong>toutes les voix</strong>, nous prenons <strong>de meilleures décisions</strong>.'
       step1:
         header: 1. Débattre
-        desc: "Lancez une discussion sur n’importe quel sujet, et invitez les bonnes personnes. Partagez divers points de vue et développez ensemble les idées."
+        desc: 'Lancez une discussion sur n’importe quel sujet, et invitez les bonnes personnes. Partagez divers points de vue et développez ensemble les idées.'
       step2:
         header: "2. Se mettre d'accord"
         desc: "Tout le monde peut proposer un plan d'action. Les gens peuvent se mettre d’accord, s’abstenir, exprimer un désaccord, voir poser un veto. Ainsi, vous pouvez savoir comment chacun se positionne et comprendre pourquoi."
       step3:
         header: 3. Décider ensemble
-        desc: "Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair."
+        desc: 'Détailler ensemble la proposition de sorte que cela fonctionne pour tout le monde. Chaque décision a une échéance claire, pour que vous obteniez toujours un résultat clair.'
     mobile:
       lead_html: "<strong>Loomio fonctionne sur n'importe quel périphérique,</strong><br /> prenez des décisions n'importe où, n'importe quand."
     quote:
@@ -44,7 +44,7 @@ fr:
     ideals:
       community:
         header: Coopérative communautaire
-        desc: "Loomio est construit par une coopérative appartenant à ses salariés. Nous sommes une entreprise sociale travaillant à maximiser le bénéfice social, pas le profit."
+        desc: 'Loomio est construit par une coopérative appartenant à ses salariés. Nous sommes une entreprise sociale travaillant à maximiser le bénéfice social, pas le profit.'
       independent:
         header: Indépendant et neutre
         desc: "Nous maintenons un espace pour tout groupe qui souhaite se réunir, indépendamment de l'intérêt politique ou économique. Nous ne vendrons jamais vos données."
