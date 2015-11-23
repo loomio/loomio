@@ -74,62 +74,20 @@
               =link_to 'https://www.youtube.com/watch?v=ZipyebSY2Lo', class: 'video hero-text' do
                 = t(:'frontpage.link.video')
 
-        .row.prototype
-          #prototype-carousel.content.prototype-carousel.carousel.slide{"data-ride" => 'carousel'}
-            .carousel-inner
-              .item.active
-                .carousel-image
-                  = image_tag 'genzero.png', alt: "Generation Zero"
-                .carousel-desc
-                  Generation Zero is a youth-led network of climate change activists. Decisions made on Loomio inform their national campaigns and events.
-                  .quote
-                    “As an almost totally volunteer-driven organisation, our capacity is built on a sense of ownership among our membership. Loomio is fast and flexible, so we can give more volunteers a stake, and make better informed decisions.”
-                    %br – Jimmy Green, Events Director
-              .item
-                .carousel-image
-                  = image_tag 'pathways.png', alt: 'Pathways'
-                .carousel-desc
-                  New Zealand's leading national provider of community-based mental health and wellness services is rolling out Loomio organisation-wide.
-                  .quote
-                    “Loomio is a tool that gives everybody a voice. Decisions are being made by the people affected by them. Team members using it genuinely feel their input is valued, and are able to connect about things that concern them.”
-                    %br – Ross Phillips, business improvement manager
-              .item
-                .carousel-image
-                  = image_tag 'timebank.png', alt: 'Wellington Timebank'
-                .carousel-desc
-                  Timebanking creates thriving communities by trading skills, knowledge and services between locals.
-                  .quote
-                    "Loomio is a key decision making tool at a Steering Committee level for the Wellington Timebank. It means I can easily get feedback from Committee members between our monthly meetings. When we do meet up, everyone arrives on the same page, because all the background work has been done online."
-                    %br – Hannah Mackintosh, coordinator
-              .item
-                .carousel-image
-                  = image_tag 'nvc.png', alt: 'Non-Violent Communication Convention'
-                .carousel-desc
-                  After finding it impossible to coordinate a committee across Asia and Europe using other tools, the Non-Violent Communication Convention moved to Loomio.
-                  .quote
-                    “If you don’t feel heard, then you have a loss of power and there is violence. Loomio is supporting our convention team to collaborate effectively over a wide geographical area.”
-                    %br – Emma Collins, Compassionate Communication Trainer
-            %a.carousel-control.left-ctrl{href: '#prototype-carousel', "data-slide" => 'prev'}
-              %i.fa.fa-angle-left
-            %a.carousel-control.right-ctrl{href: '#prototype-carousel', "data-slide" => 'next'}
+        .row.stories
+          .content
+            %a{href: 'https://blog.loomio.org/category/stories', class: 'block-link'}
+              %h1 Humans of Loomio
+            %p.hero-text
+              Stories from the amazing people using Loomio to make change in their communities and organizations, all around the world.
+            .cards
+              - @stories.each do |story|
+                = render 'story', story: story
+          .clearfix
+          %h2
+            %a{href: 'https://blog.loomio.org/category/stories', class: 'block-link'}
+              More stories and videos
               %i.fa.fa-angle-right
-
-        .row.groups
-          .content
-            .group-tab.col-md-3#genzero.active
-              .group.active
-                = image_tag 'genzero-logo.png', alt: "Generation Zero"
-            .group-tab.col-md-3#pathways
-              .group
-                = image_tag 'pathways-logo.png', alt: "Pathways"
-            .group-tab.col-md-3#timebank
-              .group
-                = image_tag 'timebank-logo.png', alt: "Timebank"
-            .group-tab.col-md-3#nvc
-              .group
-                = image_tag 'nvc-logo.png', alt: "Generation Zero"
-        .row.links
-          .content
 
         .row.quote
           .content.rushkoff

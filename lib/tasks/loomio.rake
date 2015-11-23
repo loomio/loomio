@@ -59,4 +59,15 @@ namespace :loomio do
       date = date + 1.day
     end
   end
+
+  task update_blog_stories: :environment do
+    rss = SimpleRSS.parse open('http://blog.loomio.org/category/stories/feed/')
+    BlogStory.destroy_all
+    rss.items.each do |item|
+      BlogStory.create(title: item[:title],
+                       url: item[:link],
+                       image_url: item[:media_content_url],
+                       published_at: item[:pubDate])
+    end
+  end
 end

@@ -423,87 +423,27 @@ a:hover { text-decoration: none; }
   }
 }
 
-.groups {
-  .group {
-    padding: 26px 0;
-    opacity: 1;
-    img { margin-left: 2px; };
-
-    &.active {
-      opacity: 0;
-    }
-
+.stories{
+  margin-bottom: 40px;
+  h1{ color: black;}
+  img{ width: 100%; }
+  .cards{
+    margin: 20px 0;
   }
-  #timebank {
-    .group {
-      padding: 20px 0;
+  .card{
+    a h2{
+      color: black;
+      font-weight: bold;
+      text-align: left;
     }
   }
-  .content {
-    padding-top: 0;
-    padding-bottom: 0;
-    @include screen-size(medium-up) {
-      display: block;
-    }
-  }
-  .group-tab {
-    background: $ash;
-    border: 1px solid white;
-    height: 77px;
-    cursor: pointer;
-    @include screen-size(medium-up) {
-      border-top: none;
-      border-bottom: none;
-    }
-  }
-}
-
-.group-tab {
-  &#genzero {
-    background-image: image-url('genzero-logo-white.png');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &#pathways {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAVCAMAAAD2FhXZAAAAdVBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////li2ZAAAAAJnRSTlMAeWuZNg2ih7dEXhMjlesJAxo9jixUvX/Zy7LE4/dZ0WOr/E7xcsIupFsAAAP+SURBVEjHnZbpsqsgDIC1aMW671ptrdXm/R/xBojE3nHOzDn5I2BIviygTiKqIKiESNwycw7SgNiHfhdUCeklIgmCwnEuV5wGSRIphQ9NCqfA11VQXZ+0M/T1E9VxXbhksIYhN6MoQXOoH6qxMp1Uekf2Gjd49InnOK54A8xVsqSQugfEBTbf2oNJJNUI0FeJ6AFW5BcpANw7rfNMzCRy/OABKGiYonyZQVhtaISwHReAFDJ30vq1iuYzA7xdhe71IG9NhS9IXYWWfwBaSxiD5iA3lXrcAAKdDejUYwUYSUFPBormrdRI7qwSQr8HnGOMnS0PUkkaFwBIinxkIgRhHILJfaIGJEgLVxoHU86AKLIlK3eH3UNLww6gOkRZW43brlzicq9Nkp1Hsb/4UFwQmzJeLSBt7B2SPunhEZmx6SgG9Mb8BPDKDTHYKDlVASAF2WsXgNLuFVZpTDOd1A1IeQ0sIGX44e9hxRXA3uo5A9LCKSDJgPFTlBPARF0z2WJH0DSUZYqIUriSw+gB2LssB0B7MMSsfC6sxIAkJ4Bc4xtVJETYkCgubMcvGJxbK5tmDvHtnQDGtjg+mstSeBd/ASz3sUgddx9/ILYZxhXJNdZ+t0hxhLTwApTmG5DWKcwGCt0bt58BZe4byVcGVJGlvo6yQ98U5TwzTqhdJc53CqM3x3sFlC7/DzCaoKW1VpqsyB8BWd6AgGzepOcJNVoyQcd8P3RprpOWco3VLA9Q3YoLKGPMgOZyvPr7hlVlIAUofgSc18bI2h0BG3Msx8FsUo8Xe5+0EWmak0RdyYeUGhqUcAf8FNW9X0rLv2WU+dcfetApNFSsGyTa9Fej7VkzJmMMhLp0klmyAFBWm8G6yPllL+uyLD0XQP4WkC+aDnyKskLkztY/9ZTtBkyjchcK5z95qt6pucRH19xZ8S8B+aJJxX6mU/Tl7ZfgxrbXrx0fnnGrwHIGKGY/UpIJgMtvAQlKeFDaD294TXN7g8TG9uX/kNjTMa/bCWAEF3Y7/AUwS6FfptweyPZhvxvzwo36KM4BvScHCieALyjYEdS/A+R7zOUDwCfWMyM6x7dzwFfPWx8ngL085jj4C+Dz2L3ycB6uW3YwJ88Bn1DbJlzMP0f31ZrdkWmLDl8cXSlmkme/WxQ6T28MX/MWHAN4B0D3QDDqgKIe0tgpXxNGeCn3f3DEnUIzycoW0JMJx3v1R736Oaoyhtn3hC8aLl/0gMbYa1IsKyl5CShP+hyVl1Tb5r/f6VbHN+xk9C2HVsp2WGhfOLdyvJuKFHKUUg6mrsLo3SMKeR7VVOp2DcykLbiNZMT5dGkSj6Ns6fuViwFtj9qtvxjbV2LInksKKIMK5h9CF4PRI0ru/AAAAABJRU5ErkJggg==);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &#timebank {
-    background-image: image-url('timebank-logo-white.png');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  &#nvc {
-    background-image: image-url('nvc-logo-white.png');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
-
-.row.links {
-  margin-top: 0;
-  .content { padding-bottom: 68px; }
-}
-
-.group-tab.active {
-  background-color: $charcoal;
-}
-
-.group-tab.active:before {
-  display: none;
   @include screen-size(medium-up) {
-    display: block;
-    position: absolute;
-    top: -14px;
-    right: 98px;
-    border-right: 14px solid transparent;
-    border-bottom: 14px solid #ccc;
-    border-left: 14px solid transparent;
-    border-bottom-color: $charcoal;
-    content: '';
+    .card{
+      float: left;
+      width: 23%;
+      margin-right: 2%;
+      margin-bottom: 20px;
+    }
   }
 }
 
