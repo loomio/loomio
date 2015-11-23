@@ -1,5 +1,5 @@
 ActiveAdmin.register Subscription do
-  actions :new, :index, :show, :edit
+  actions :new, :create, :index, :show, :edit, :update
   filter :amount
   filter :created_at
 
@@ -10,13 +10,25 @@ ActiveAdmin.register Subscription do
     column :expires_at
     column :activated_at
     column :plan
+    column :chargify_subscription_id
     actions
   end
 
-  member_action :update, :method => :put do
-    subscription = Subscription.find(params[:id])
-    subscription.amount = params[:subscription][:amount]
-    subscription.save
-    redirect_to admin_subscription_url, :notice => "Subscription updated"
+  form do |f|
+    inputs 'Subscription' do
+      input :kind, label: "Kind (paid / trial / gift)"
+      input :plan, label: "Plan (loomio-standard-plan / loomio-plus-plan)"
+      input :expires_at
+      input :activated_at
+      input :chargify_subscription_id, label: "Chargify Subscription Id"
+      input :group_id, label: "Group Id"
+    end
+    f.actions
+  end
+
+  controller do
+    def permitted_params
+      params.permit!
+    end
   end
 end
