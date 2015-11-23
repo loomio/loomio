@@ -217,4 +217,10 @@ FactoryGirl.define do
     kind :trial
   end
 
+  factory :draft do
+    user
+    association :draftable, factory: :discussion
+    payload {{ payload: 'payload' }}
+  end
+
 end

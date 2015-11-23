@@ -3,30 +3,25 @@ angular.module('loomioApp').factory 'GroupForm', ->
   controller: ($scope, $rootScope, $location, group, FormService, Records, $translate, PrivacyString) ->
     $scope.group = group.clone()
 
-    $scope.$on 'modal.closing', (event) ->
-      FormService.confirmDiscardChanges(event, $scope.group)
-
     $scope.i18n = do ->
-      h = {}
+      groupMessaging = {}
       if $scope.group.isParent()
-        h.group_name = 'group_form.group_name'
+        groupMessaging.group_name = 'group_form.group_name'
         if $scope.group.isNew()
-          h.heading = 'group_form.start_group_heading'
-          h.submit = 'group_form.submit_start_group'
+          groupMessaging.heading = 'group_form.start_group_heading'
+          groupMessaging.submit = 'group_form.submit_start_group'
         else
-          h.heading = 'group_form.edit_group_heading'
-          h.submit = 'common.action.update_settings'
+          groupMessaging.heading = 'group_form.edit_group_heading'
+          groupMessaging.submit = 'common.action.update_settings'
       else
-        h.group_name = 'group_form.subgroup_name'
+        groupMessaging.group_name = 'group_form.subgroup_name'
         if $scope.group.isNew()
-          h.heading = 'group_form.start_subgroup_heading'
-          h.submit = 'group_form.submit_start_subgroup'
+          groupMessaging.heading = 'group_form.start_subgroup_heading'
+          groupMessaging.submit = 'group_form.submit_start_subgroup'
         else
-          h.heading = 'group_form.edit_subgroup_heading'
-          h.submit = 'common.action.update_settings'
-      h
-
-
+          groupMessaging.heading = 'group_form.edit_subgroup_heading'
+          groupMessaging.submit = 'common.action.update_settings'
+      groupMessaging
 
     successMessage = ->
       if $scope.group.isNew()
@@ -35,6 +30,7 @@ angular.module('loomioApp').factory 'GroupForm', ->
         'group_form.messages.group_updated'
 
     submitForm = FormService.submit $scope, $scope.group,
+      allowDrafts: true
       flashSuccess: successMessage()
       successCallback: (response) ->
         if $scope.group.isNew()

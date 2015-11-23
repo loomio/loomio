@@ -6,13 +6,11 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     if $scope.discussion.isNew()
       $scope.showGroupSelect = true
 
-    $scope.$on 'modal.closing', (event) ->
-      FormService.confirmDiscardChanges(event, $scope.discussion)
-
     actionName = if $scope.discussion.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.discussion,
       flashSuccess: "discussion_form.messages.#{actionName}"
+      allowDrafts: true
       successCallback: (response) =>
         $location.path "/d/#{response.discussions[0].key}" if actionName == 'created'
 

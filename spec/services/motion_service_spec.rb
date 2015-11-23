@@ -22,6 +22,12 @@ describe 'MotionService' do
       MotionService.create(motion: motion, actor: user)
     end
 
+    it 'clears out the draft' do
+      draft = create(:draft, user: user, draftable: motion.discussion, payload: { motion: { name: 'name draft' } })
+      MotionService.create(motion: motion, actor: user)
+      expect(draft.reload.payload['comment']).to be_blank
+    end
+
     context "motion is valid" do
 
       it "saves the motion" do

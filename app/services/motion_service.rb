@@ -4,6 +4,8 @@ class MotionService
     actor.ability.authorize! :create, motion
     return false unless motion.valid?
     motion.save!
+
+    Draft.purge(user: actor, draftable: motion.discussion, field: :motion)
     SearchVector.index! motion.discussion_id
 
     event = Events::NewMotion.publish!(motion)

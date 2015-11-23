@@ -70,7 +70,7 @@ class Ability
       (user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export'))
     end
 
-    can [:members_autocomplete, :set_volume, :see_members, :move_discussions_to, :view_previous_proposals], Group do |group|
+    can [:members_autocomplete, :set_volume, :make_draft, :see_members, :move_discussions_to, :view_previous_proposals], Group do |group|
       user_is_member_of?(group.id)
     end
 
@@ -134,7 +134,7 @@ class Ability
       not user_to_deactivate.adminable_groups.published.any? { |g| g.admins.count == 1 }
     end
 
-    can [:update, :see_notifications_for], User do |user|
+    can [:update, :see_notifications_for, :make_draft], User do |user|
       @user == user
     end
 
@@ -212,7 +212,7 @@ class Ability
       user_is_member_of?(comment.group.id)
     end
 
-    can :add_comment, Discussion do |discussion|
+    can [:add_comment, :make_draft], Discussion do |discussion|
       user_is_member_of?(discussion.group_id)
     end
 
@@ -232,7 +232,7 @@ class Ability
         user_is_admin_of?(discussion.group_id) )
     end
 
-    can [:vote], Motion do |motion|
+    can [:vote, :make_draft], Motion do |motion|
       discussion = motion.discussion
       motion.voting? &&
       ((discussion.group.members_can_vote? && user_is_member_of?(discussion.group_id)) ||
@@ -275,6 +275,11 @@ class Ability
 
     can [:show], Vote do |vote|
       can?(:show, vote.motion)
+    end
+
+    can :update, Draft do |draft|
+      draft.user_id == @user.id &&
+      can?(:make_draft, draft.draftable)
     end
 
   end

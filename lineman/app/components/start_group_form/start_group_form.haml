@@ -1,0 +1,26 @@
+%form.start-group-form{name: 'startGroupForm', ng_submit: 'submit()', ng-disabled: 'group.processing'}
+  .lmo-disabled-form{ng-show: 'isDisabled'}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title{ng-if: 'group.isParent()', translate: 'start_group_form.heading'}
+    %h1.lmo-h1.modal-title{ng-if: 'group.isSubgroup()', translate: 'start_group_form.heading_when_subgroup'}
+
+  .modal-body
+    %form_errors{record: 'group'}
+
+    .group-helptext{ng-if: 'group.isParent()', translate: 'start_group_form.group_helptext'}
+
+    .lmo-form-group
+      %label{for: 'group-name', ng-if: 'group.isParent()', translate: 'start_group_form.name_label'}
+      %label{for: 'group-name', ng-if: 'group.isSubgroup()', translate: 'start_group_form.subgroup_name_label'}
+      %input.start-group-form__name.lmo-primary-form-input.form-control#group-name{ng-model: 'group.name', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', ng-required: 'true'}
+
+    .lmo-form-group
+      %label{for: 'group-description', translate: 'start_group_form.description_label'}
+      %textarea.start-group-form__description.lmo-primary-form-input.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', placeholder: "{{ 'start_group_form.description_placeholder' | translate }}"}
+
+    .group-payment-notice{ng-if: 'group.isParent()', translate: 'start_group_form.group_payment_reminder'}
+
+  .modal-footer
+    %button.lmo-btn--submit.start-group-form__submit{type: 'submit', translate: 'start_group_form.submit'}
+    %button.lmo-btn--cancel{type: 'button', ng-click: '$close()', translate: 'common.action.cancel'}

@@ -39,13 +39,14 @@ describe 'Group Page', ->
       page.expectText('.thread-context', 'Nobody puts baby in a corner' )
       page.expectText('.thread-context', "I've had the time of my life" )
 
-    it 'confirms you want to discard your unsaved work', ->
-      page.click('.discussions-card__new-thread-button')
+    it 'automatically saves drafts', ->
+      groupsHelper.clickStartThreadButton()
       page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
+      page.fillIn('#discussion-context', "I've had the time of my life")
       page.click('.discussion-form__cancel')
-      page.cancelConfirmDialog()
-      page.click('.discussion-form__submit')
-      page.expectText('.thread-context', 'Nobody puts baby in a corner' )
+      groupsHelper.clickStartThreadButton()
+      page.expectText('#discussion-title', 'Nobody puts baby in a corner' )
+      page.expectText('#discussion-context', "I've had the time of my life" )
 
   describe 'starting a subgroup', ->
     beforeEach ->

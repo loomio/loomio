@@ -9,6 +9,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
     MessageChannelService.subscribeToGroup(@group)
+    Records.drafts.fetchFor(@group)
     @handleSubscriptionSuccess()
     @handleWelcomeModal()
   , (error) ->
