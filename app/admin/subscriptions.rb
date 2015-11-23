@@ -1,19 +1,15 @@
 ActiveAdmin.register Subscription do
-  actions :index, :show, :edit
-  filter :group_id
+  actions :new, :index, :show, :edit
   filter :amount
   filter :created_at
-  scope :non_zero
-  scope :zero
 
   index do
-    column :group_id
-    column :group do |s|
-      Group.find(s.group_id).name
-    end
-    column :amount
-    column :created_at
-    column :updated_at
+    column :group
+    column :kind
+    column :trial_created_at
+    column :expires_at
+    column :activated_at
+    column :plan
     actions
   end
 
