@@ -509,7 +509,7 @@ en:
     group_privacy_closed_description: "anyone can find the group, see who's in it, and ask to join. Only members can see threads."
     group_privacy_closed_public_threads_description: "anyone can find the group, see who's in it, and ask to join. Threads can be public or private."
     group_privacy_secret_description: 'only invited members can find the group and see threads.'
-    confirm_change_to_secret: "If you proceed, all threads in this group and it's subgroups will be made private."
+    confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
