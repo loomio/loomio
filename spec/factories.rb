@@ -1,4 +1,10 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :blog_story do
+    title "MyString"
+url "MyString"
+image_url "MyString"
+published_at "2015-11-18 14:28:30"
+  end
+
   factory :blacklisted_password do
     string "MyString"
   end

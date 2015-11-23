@@ -65,6 +65,7 @@ gem 'rack-attack', '~> 4.2.0'
 gem 'ahoy_matey'
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'simple-rss'
 # might need this
 #gem 'activeuuid', '>= 0.5.0'
 
