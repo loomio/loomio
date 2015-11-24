@@ -17,7 +17,7 @@ class RedirectController < ActionController::Base
 
   def group_id
     not_found_if_greater_than(11500)
-    moved_to group_url(Group.find!(id: params[:id])).first, default_subdomain)
+    moved_to group_url(Group.find!(id: params[:id]).first, default_subdomain)
   end
 
   def discussion_id
