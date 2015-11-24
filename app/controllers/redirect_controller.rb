@@ -16,22 +16,22 @@ class RedirectController < ActionController::Base
   end
 
   def group_id
-    404_if_id_greater_than(11500)
+    not_found_if_greater_than(11500)
     moved_to group_url(Group.find!(id: params[:id])).first, default_subdomain)
   end
 
   def discussion_id
-    404_if_id_greater_than(11500)
+    not_found_if_greater_than(11500)
     moved_to discussion_url(Discussion.find!(params[:id]), default_subdomain)
   end
 
   def motion_id
-    404_if_id_greater_than(7300)
+    not_found_if_greater_than(7300)
     moved_to motion_url(Motion.find!(params[:id]), default_subdomain)
   end
 
   private
-  def 404_if_id_greater_than(max)
+  def not_found_if_greater_than(max)
      raise ActionController::RoutingError.new('Not Found') if params[:id].to_i > max
   end
 
