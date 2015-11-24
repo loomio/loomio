@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'DraftService', ->
 
       scope.restoreDraft = ->
         model.restoreDraft() if draftMode()
-      scope.restoreDraft()
 
       scope.restoreRemoteDraft = ->
         model.fetchDraft().then(scope.restoreDraft) if draftMode()
+      scope.restoreRemoteDraft()
