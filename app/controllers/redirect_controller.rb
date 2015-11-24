@@ -36,7 +36,7 @@ class RedirectController < ActionController::Base
   end
 
   def default_subdomain
-    { subdomain: ENV['DEFAULT_SUBDOMAIN' }
+    { subdomain: ENV['DEFAULT_SUBDOMAIN'] }
   end
 
   def moved_to(url)
