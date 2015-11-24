@@ -97,6 +97,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :attachments, dependent: :destroy
+  has_many :drafts, dependent: :destroy
 
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',

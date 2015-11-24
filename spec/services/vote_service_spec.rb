@@ -26,6 +26,12 @@ describe 'VoteService' do
       VoteService.create(vote: vote, actor: user)
     end
 
+    it 'clears out the draft' do
+      draft = create(:draft, user: user, draftable: vote.motion, payload: { vote: { statement: 'statement draft' } })
+      VoteService.create(vote: vote, actor: user)
+      expect(draft.reload.payload['vote']).to be_blank
+    end
+
     context 'vote is valid' do
       before do
         vote.stub(:valid?).and_return(true)

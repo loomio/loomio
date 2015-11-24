@@ -9,12 +9,12 @@
       .group-form__basic
         .group-form__name
           %label{for: 'group-name', translate: '{{i18n.group_name}}'}
-          %input.form-control#group-name{ng-required: true, ng-model: 'group.name', maxlength: '255'}
+          %input.form-control#group-name{ng-required: true, ng-model: 'group.name', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', maxlength: '255'}
           %validation_errors{subject: 'group', field: 'name'}
 
         .group-form__description
           %label{for: 'group-description', translate: 'group_form.description'}
-          %textarea.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description'}
+          %textarea.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()'}
 
         .group-form__privacy-statement
           {{privacyStatement()}}

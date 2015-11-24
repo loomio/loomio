@@ -223,4 +223,10 @@ published_at "2015-11-18 14:28:30"
     kind :trial
   end
 
+  factory :draft do
+    user
+    association :draftable, factory: :discussion
+    payload {{ payload: 'payload' }}
+  end
+
 end

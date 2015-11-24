@@ -13,18 +13,18 @@
 
     .lmo-form-group{ng-show: 'showGroupSelect'}
       %label{for: 'discussion-group-field', translate: 'discussion_form.group_label'}
-      %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName for group in availableGroups() | orderBy: "fullName"', ng-change: 'setCurrentPrivacy()'}
+      %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName for group in availableGroups() | orderBy: "fullName"', ng-change: 'restoreRemoteDraft()'}
         %option{value: '', translate: 'discussion_form.group_placeholder' }
 
     .discussion-group-selected{ng_if: 'discussion.groupId'}
       .lmo-form-group
         %label{for: 'discussion-title', translate: 'discussion_form.title_label'}
-        %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-required: 'true', maxlength: '255'}
+        %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: 'discussion.title', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', ng-required: 'true', maxlength: '255'}
         %validation_errors{subject: 'discussion', field: 'title'}
 
       .lmo-form-group
         %label{for: 'discussion-context', translate: 'discussion_form.context_label'}
-        %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: 'true', ng-model: 'discussion.description', placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+        %textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: 'true', ng-model: 'discussion.description', , ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()',placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
 
       .lmo-form-group{ng-show: 'showPrivacyForm()'}
         %label.lmo-form-labelled-input.discussion-form__public

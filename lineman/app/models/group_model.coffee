@@ -1,10 +1,14 @@
-angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
-  class GroupModel extends BaseModel
+angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
+  class GroupModel extends DraftableModel
     @singular: 'group'
     @plural: 'groups'
     @uniqueIndices: ['id', 'key']
     @indices: ['parentId']
     @serializableAttributes: AppConfig.permittedParams.group
+    @draftParent: 'draftParent'
+
+    draftParent: ->
+      @parent() or @recordStore.users.find(AppConfig.currentUserId)
 
     defaultValues: ->
       parentId: null

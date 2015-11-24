@@ -1,11 +1,17 @@
 module.exports = new class DiscussionFormHelper
   fillInTitle: (title)->
-    element(By.css('.discussion-form__title-input')).clear()
-    element(By.css('.discussion-form__title-input')).sendKeys(title)
+    @titleField().clear()
+    @titleField().sendKeys(title)
 
   fillInDescription: (description) ->
-    element(By.css('.discussion-form__description-input')).clear()
-    element(By.css('.discussion-form__description-input')).sendKeys(description)
+    @descriptionField().clear()
+    @descriptionField().sendKeys(description)
+
+  titleField: ->
+    element(By.css('.discussion-form__title-input'))
+
+  descriptionField: ->
+    element(By.css('.discussion-form__description-input'))
 
   clickSubmit: ->
     element.all(By.css('.discussion-form__submit')).first().click()
@@ -15,4 +21,3 @@ module.exports = new class DiscussionFormHelper
 
   clickCancel: ->
     element.all(By.css('.discussion-form__cancel')).first().click()
-

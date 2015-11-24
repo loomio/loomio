@@ -33,6 +33,7 @@ class CommentService
     comment.save!
     comment.discussion.update_attribute(:last_comment_at, comment.created_at)
 
+    Draft.purge(user: actor, draftable: comment.discussion, field: :comment)
     SearchVector.index! comment.discussion_id
 
     event = Events::NewComment.publish!(comment)

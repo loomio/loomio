@@ -80,6 +80,13 @@ Loomio::Application.routes.draw do
     end
 
     resources :events, only: :index
+    resources :drafts do
+      collection do
+        get    '/:draftable_type/:draftable_id', action: :show
+        post   '/:draftable_type/:draftable_id', action: :update
+        patch  '/:draftable_type/:draftable_id', action: :update
+      end
+    end
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       patch :mark_as_read, on: :member

@@ -1,9 +1,10 @@
-angular.module('loomioApp').factory 'DiscussionModel', (BaseModel, AppConfig) ->
-  class DiscussionModel extends BaseModel
+angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfig) ->
+  class DiscussionModel extends DraftableModel
     @singular: 'discussion'
     @plural: 'discussions'
     @uniqueIndices: ['id', 'key']
     @indices: ['groupId', 'authorId']
+    @draftParent: 'group'
     @serializableAttributes: AppConfig.permittedParams.discussion
 
     afterConstruction: ->

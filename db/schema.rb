@@ -274,6 +274,13 @@ ActiveRecord::Schema.define(version: 20151118022605) do
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
+  create_table "drafts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "draftable_id"
+    t.string  "draftable_type"
+    t.json    "payload",        default: {}, null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "kind",           limit: 255
     t.datetime "created_at"

@@ -17,25 +17,16 @@ describe 'Discussion Page', ->
       expect(threadPage.discussionTitle()).toContain('better title')
       expect(threadPage.discussionTitle()).toContain("improved description")
 
-    it 'lets you accidentally cancel then save', ->
-      threadPage.openEditThreadForm()
-      discussionForm.fillInTitle('even better title')
-      discussionForm.fillInDescription("more improved description")
-      discussionForm.clickCancel()
-      alert = browser.switchTo().alert()
-      alert.dismiss()
-      discussionForm.clickUpdate()
-      expect(threadPage.discussionTitle()).toContain('even better title')
-      expect(threadPage.discussionTitle()).toContain("more improved description")
-
-    it 'confirms you really want to cancel', ->
+    it 'does not store cancelled thread info', ->
       threadPage.openEditThreadForm()
       discussionForm.fillInTitle('dumb title')
       discussionForm.fillInDescription("rubbish description")
       discussionForm.clickCancel()
-      alert = browser.switchTo().alert()
-      alert.accept()
-      expect(threadPage.discussionTitle()).toContain('What star sign are you?')
+      threadPage.openEditThreadForm()
+      expect(discussionForm.titleField().getText()).not.toContain('dumb title')
+      expect(discussionForm.descriptionField().getText()).not.toContain('rubbish description')
+      expect(discussionForm.titleField().getText()).not.toContain('dumb title')
+      expect(discussionForm.descriptionField().getText()).not.toContain('rubbish description')
 
   describe 'move thread', ->
     it 'lets you move a thread', ->
