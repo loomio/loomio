@@ -203,37 +203,42 @@ describe User do
 
   describe "deactivation" do
 
-     before do
-       @membership = group.add_member!(user)
-       user.deactivate!
-     end
+    before do
+      @membership = group.add_member!(user)
+    end
 
-     describe "#deactivate!" do
+    describe "#deactivate!" do
 
-       it "sets deactivated_at to (Time.now)" do
-         user.deactivated_at.should be_present
-       end
+      it "sets deactivated_at to (Time.now)" do
+        user.deactivate!
+        user.deactivated_at.should be_present
+      end
 
-       it "archives the user's memberships" do
-         user.archived_memberships.should include(@membership)
-       end
-     end
+      it "archives the user's memberships" do
+        user.deactivate!
+        user.archived_memberships.should include(@membership)
+      end
 
-     describe "#reactivate!" do
+      it "should update group.memberships_count" do
+        expect{user.deactivate!}.to change{group.reload.memberships_count}.by(-1)
+      end
+    end
 
-       before do
-         user.reactivate!
-       end
+    describe "#reactivate!" do
 
-       it "unsets deactivated_at (nil)" do
-         user.deactivated_at.should be_nil
-       end
+      before do
+        user.reactivate!
+      end
 
-       it "restores the user's memberships" do
-         user.memberships.should include(@membership)
-       end
-     end
-   end
+      it "unsets deactivated_at (nil)" do
+        user.deactivated_at.should be_nil
+      end
+
+      it "restores the user's memberships" do
+        user.memberships.should include(@membership)
+      end
+    end
+  end
 
   describe "usernames" do
     before do

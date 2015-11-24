@@ -2,7 +2,7 @@ class API::MembershipsController < API::RestfulController
 
   def index
     load_and_authorize :group
-    instantiate_collection { |collection| collection.where(group_id: @group.id).order('users.name') }
+    instantiate_collection { |collection| collection.active.where(group_id: @group.id).order('users.name') }
     respond_with_collection
   end
 

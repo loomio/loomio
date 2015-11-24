@@ -249,8 +249,10 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
+    former_group_ids = group_ids
     update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)
+    Group.where(id: former_group_ids).map(&:update_memberships_count)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
