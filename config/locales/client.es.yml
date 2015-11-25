@@ -165,7 +165,7 @@ es:
     recent_title: Ir a escritorio
     unread_title: Ver los mensajes no leídos
     groups_title: Ver tus grupos
-    start_thread: Comienza un nuevo hilo
+    start_thread: Inicia un nuevo hilo
     notifications: Panel de notificaciones
     user_actions: 'Acciones de usuario '
     user_options:
@@ -232,7 +232,7 @@ es:
   proposal_positions_panel:
     heading: Decisiones
     no_votes_yet: Nadie ha votado todavía en esta propuesta
-    change_your_vote: Cambia tu voto
+    change_your_vote: Cambia tu posición.
   undecided_panel:
     aria_label: 'Miembros indecisos '
     show_undecided: Mostrar miembros indecisos
@@ -384,7 +384,7 @@ es:
       loud_aria_description: El volumen de notificaciones para este grupo está establecido como Alto. Se te enviará un correo electrónico cada vez que haya actividad.
       loud_message: 'Correo electrónico te sera enviado sobre toda la actividad en "{{name}}."'
       normal: 'Sólo enviar actividad importante: Hilos y propuestas nuevos, resultados... etc.'
-      normal_aria_description: 'El volumen de notificaciones para este grupo está establecido como Normal. Sólo se te enviarán correos electrónicos con actividad importante como cuando alguien empieza un hilo nuevo, surge una propuesta o se establece un resultado.'
+      normal_aria_description: 'El volumen de notificaciones para este grupo está establecido como Normal. Sólo se te enviarán correos electrónicos con actividad importante como cuando alguien inicia un hilo nuevo, surge una propuesta o se establece un resultado.'
       normal_message: 'Solo te sera enviado correo electrónico sobre eventos importantes en "{{name}}".'
       quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo será mostrada en el panel de control.
       quiet_aria_description: El volumen de notificaciones para este grupo está establecido como Bajo. No se te enviarán correos electrónicos con la actividad de este grupo. Dicha actividad se mostrará en tu escritorio.
@@ -944,7 +944,7 @@ es:
     informal_groups_examples: 'ej. familias, movimientos sociales, grupos colectivos'
   angular:
     switch_back: 'Vuelve al Loomio antiguo '
-    give_feedback: 'Danos tu opinión '
+    give_feedback: Comentarios para Loomio
     collapse: Contraer
     enable:
       invite: 'Prueba el nuevo Loomio!'

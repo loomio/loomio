@@ -232,7 +232,7 @@ zh-TW:
   proposal_positions_panel:
     heading: 立場表態
     no_votes_yet: 尚未有人在此提案上投票。
-    change_your_vote: 變更您的投票。
+    change_your_vote: 變更您的立場。
   undecided_panel:
     aria_label: 尚未決定的成員
     show_undecided: 顯示未決定的成員

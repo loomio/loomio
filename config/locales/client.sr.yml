@@ -11,8 +11,12 @@ sr:
     group: Grupa
     groups: Grupe
     privacy:
+      privacy: Privatnost
       public: Javno
+      open: Otvoreno
+      closed: Zatvoreno
       private: Privatno
+      secret: Tajno
     selected: Označeno
     date_range:
       today: Danas
@@ -26,6 +30,7 @@ sr:
     action:
       save: Snimi
       save_changes: Sačuvaj promene
+      update_settings: Izmeni podešavanja
       reply: Odgovori
       edit: Uredi
       like: Sviđa mi se
@@ -227,7 +232,7 @@ sr:
   proposal_positions_panel:
     heading: Pozicije
     no_votes_yet: Niko nije glasao o ovom predlogu još uvek.
-    change_your_vote: Izmeni svoj glas.
+    change_your_vote: Promeni svoju poziciju.
   undecided_panel:
     aria_label: Neodlučni članovi
     show_undecided: Prikaži neodlučne članove
@@ -429,8 +434,33 @@ sr:
     select: Odaberi
   subscription_success_modal:
     heading: 'Hvala za postavljanje tvoje pretplate!'
+    contact_link: molimo kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: 'U redu, shvatam!'
+  group_form:
+    start_group_heading: Kreiraj grupu
+    start_subgroup_heading: Kreiraj podgrupu
+    edit_group_heading: Promeni osobine grupe
+    group_name: Naziv Grupe
+    subgroup_name: Naziv Podgrupe
+    description: Opis
+    privacy: Privatnost
+    permissions: Dozvole
+    allow_public_threads: Dopusti javne niti u ovoj grupi.
+    parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti niti.'
+    members_can_add_members: Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.
+    members_can_create_subgroups: Članovi mogu kreirati podgrupe.
+    members_can_edit_discussions: Članovi mogu izmeniti kontekst i naslov svake niti.
+    members_can_edit_comments: Članovi mogu menjati svoje komentare bilo kada.
+    members_can_start_discussions: Članovi mogu kreirati nove niti.
+    members_can_vote: Članovi mogu glasati o predlozima.
+    members_can_raise_motions: Članovi mogu kreirati predloge.
+    submit_start_group: Kreiraj grupu
+    submit_start_subgroup: Kreiraj podgrupu
+    submit_update: Izmeni podešavanja
+    messages:
+      group_created: Grupa kreirana
+      group_updated: Grupa izmenjena
   membership_requests_card:
     heading: Zahtevi
     manage_requests: Upravljanje zahtevima
@@ -881,6 +911,7 @@ sr:
   angular:
     switch_back: Vrati se na stari Lumio
     give_feedback: Objasnite nam
+    collapse: Sakrij
     enable:
       invite: 'Probaj novi Loomio!'
       title: Probaj novi Loomio
