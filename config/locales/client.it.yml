@@ -162,7 +162,6 @@ it:
   proposal_positions_panel:
     heading: Posizioni
     no_votes_yet: Ancora nessuno/a ha espresso il suo voto su questa proposta.
-    change_your_vote: Cambia il tuo voto.
   undecided_panel:
     show_undecided: Mostra indecisi
     hide_undecided: Nascondi indecisi

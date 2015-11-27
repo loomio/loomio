@@ -10,6 +10,7 @@ tr:
       try_it: Deneyin
       log_in: Oturum aç
       video: "Loomio'nun nasıl çalıştığı hakkında daha fazla bilgi edin"
+      try_loomio: "Loomio'yu deneyin"
       try_loomio_beta: "Loomio beta'yı deneyin"
       more: Daha fazla
       top: Sayfa başı
@@ -17,6 +18,9 @@ tr:
       terms: Şartlar
       privacy: Gizlilik
       services: Hizmetler
+    hero:
+      header_html: 'Loomio<br /> <strong>birlikte karar vermenin</strong> en kolay yolu.'
+      lead_html: 'Loomio, örgütleri ve toplulukları <strong>bir müzakereyi eyleme çevirmeleri</strong> için güçlendiriyor.'
     product:
       header_html: '<strong>Bütün sesler</strong> duyulduğunda, <strong>daha iyi kararlar</strong> alırız.'
       step1:
@@ -28,6 +32,8 @@ tr:
       step3:
         header: 3. Birlikte karar verin
         desc: 'Öneriyi birlikte geliştirirsiniz, böylece herkes için çalışır. Her kararın bir teslim süresi vardır, böylece her zaman net bir sonuç alırsınız.'
+    mobile:
+      lead_html: '<strong>Loomio herhangi bir cihaz üzerinde çalışır,</strong><br />karar ver, her zaman, her yerde.'
     quote:
       header:
         rushkoff_html: '"Loomio insanları kutuplaşmış tartışmalardan ziyade fikir birliğine doğru getirmek için <strong>internetin potansiyelini ortaya çıkarıyor.</strong>"<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, yazar, <em>Present Shock</em></div>'

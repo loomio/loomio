@@ -11,6 +11,7 @@ pt-BR:
     group: Grupo
     groups: Grupos
     privacy:
+      privacy: Privacidade
       public: Público
       open: Aberto
       closed: Fechado
@@ -29,6 +30,7 @@ pt-BR:
     action:
       save: Salvar
       save_changes: Salvar mudanças
+      update_settings: Atualizar configurações
       reply: Responder
       edit: Editar
       like: Curtir
@@ -230,7 +232,7 @@ pt-BR:
   proposal_positions_panel:
     heading: Posições
     no_votes_yet: Ninguém votou nesta proposta ainda.
-    change_your_vote: Modifique seu voto.
+    change_your_vote: Modificar sua posição.
   undecided_panel:
     aria_label: Membros indecisos
     show_undecided: Mostrar membros indecisos
@@ -442,6 +444,59 @@ pt-BR:
     contact_link: 'por favor, entre em contato conosco.'
     sign_off: ❤ da equipe Loomio
     ok_got_it: 'Ok, entendi!'
+  group_form:
+    start_group_heading: Iniciar um grupo
+    start_subgroup_heading: Iniciar um subgrupo
+    edit_group_heading: Editar configurações do grupo
+    edit_subgroup_heading: Editar configurações do subgrupo
+    group_name: Nome do Grupo
+    subgroup_name: Nome do Subgrupo
+    description: Descrição
+    description_placeholder: Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.
+    privacy_statement:
+      public_on_web: Nome e descrição estarão públicos na web
+      private_to_group: Nome e descrição estarão visíveis apenas para membros
+      private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
+    privacy: Privacidade
+    group_privacy_open_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Todos os tópicos são públicos.'
+    group_privacy_closed_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Apenas os membros podem ver os tópicos.'
+    group_privacy_closed_public_threads_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Tópicos podem ser públicos ou privados.'
+    group_privacy_secret_description: apenas os membros convidados podem encontrar o grupo e ver tópicos.
+    confirm_change_to_secret: 'Se você continuar, todos os tópicos neste grupo e seus subgrupos serão privados.'
+    confirm_change_to_secret_subgroup: 'Se você continuar, todos os tópicos serão privados.'
+    confirm_change_to_public: 'Se você continuar, os tópicos neste grupo serão públicos na web.'
+    confirm_change_to_private_discussions_only: 'Se você continuar, qualquer tópico público deste grupo será privado.'
+    subgroup_privacy_open_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Todos os tópicos são públicos.'
+    subgroup_privacy_closed_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Apenas os membros podem ver os tópicos.'
+    subgroup_privacy_closed_public_threads_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Tópicos podem ser públicos ou privados.'
+    subgroup_privacy_closed_secret_parent_description: 'membros de {{parent}} podem encontrar este subgrupo, ver quem está nele e pedir para participar.'
+    subgroup_privacy_secret_description: apenas membros convidados podem encontrar este subgrupo e ver tópicos.
+    advanced_settings: Configurações avançadas
+    how_do_people_join: Como as pessoas participam?
+    membership_granted_upon_request: Qualquer um pode entrar no grupo
+    membership_granted_upon_approval: 'Qualquer pessoa pode pedir para participar, mas deve ser aprovada.'
+    membership_granted_upon_approval_secret_parent: '<strong>Por solicitaçãot</strong> - qualquer membro de {{parent}} pode pedir para se juntar ao grupo.'
+    thread_privacy: Privacidade do tópico
+    public_threads: Somente tópicos públicos
+    public_discussions_subgroup: 'Qualquer pessoa em {{parentGroupName}} pode ver as discussões'
+    public_or_private_threads: Permitir tópicos públicos e privados
+    private_threads: Apenas os membros podem ver discussões
+    permissions: Permissões
+    allow_public_threads: Permitir tópicos públicos neste grupo.
+    parent_members_can_see_discussions: 'Membros de {{parent}} podem ver tópicos.'
+    members_can_add_members: Membros podem convidar pessoas e aprovar pedidos de adesão.
+    members_can_create_subgroups: Membros podem criar subgrupos.
+    members_can_edit_discussions: Membros podem atualizar o contexto e o título de qualquer discussão.
+    members_can_edit_comments: Membros podem editar seus próprios comentários a qualquer momento.
+    members_can_start_discussions: Membros podem iniciar novos tópicos.
+    members_can_vote: Membros podem votar em propostas.
+    members_can_raise_motions: Membros podem iniciar propostas.
+    submit_start_group: Iniciar grupo
+    submit_start_subgroup: Iniciar subgrupo
+    submit_update: Atualizar configurações
+    messages:
+      group_created: Grupo iniciado
+      group_updated: Grupo atualizado
   membership_requests_card:
     heading: Pedidos para inclusão de membros
     manage_requests: Gerenciar solicitações

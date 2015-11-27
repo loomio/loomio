@@ -158,7 +158,6 @@ ga-IE:
   proposal_positions_panel:
     heading: Seasaimh
     no_votes_yet: Níor chaith aon duine a ghuth i dtaobh an togra seo fós.
-    change_your_vote: Athraigh toradh do ghuth.
   undecided_panel:
     show_undecided: Taispeáin na daoine nach bhfuil cinneadh déanta acu fós
     hide_undecided: Folaigh na daoine nach bhfuil cinneadh déanta acu fós

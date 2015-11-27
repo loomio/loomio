@@ -126,7 +126,6 @@ ru:
   proposal_positions_panel:
     heading: Позиция
     no_votes_yet: Еще никто не проголосовал по этому предложению
-    change_your_vote: Изменить ваш голос
   close_proposal_form:
     close_proposal: Закрыть предложение
     close_proposal_submit: 'Да, закрыть голосование'

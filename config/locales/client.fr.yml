@@ -11,8 +11,12 @@ fr:
     group: Groupe
     groups: Groupes
     privacy:
+      privacy: Confidentialité
       public: Publique
+      open: Ouvert
+      closed: Fermé
       private: Privé
+      secret: Secret
     selected: Sélectionnée
     date_range:
       today: "Aujourd'hui"
@@ -26,6 +30,7 @@ fr:
     action:
       save: Enregistrer
       save_changes: Sauvegarder les modifications
+      update_settings: Met à jour mes paramètres
       reply: Répondre
       edit: Modifier
       like: "J'aime"
@@ -227,7 +232,7 @@ fr:
   proposal_positions_panel:
     heading: Positions
     no_votes_yet: "Personne n'a encore voté dans cette proposition."
-    change_your_vote: Changer votre vote.
+    change_your_vote: Modifier votre position
   undecided_panel:
     aria_label: Membres indécis
     show_undecided: Montrer les membres indécis
@@ -276,6 +281,9 @@ fr:
     context_label: Contexte
     context_placeholder: "Donnez assez d'informations préalables pour que le groupe ait une discussion productive. Ça pourra être mis à jour durant la discussion"
     privacy_label: Privé
+    privacy_public: "N'importe qui peut voir la discussion. Seuls les membres de {{groupName}} peuvent participer."
+    privacy_private: 'La discussion sera visible uniquement aux membres de {{group}}.'
+    privacy_organisation: 'La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.'
     new_discussion_submit: Démarrer une discussion
     edit_discussion_submit: Modifier une discussion
   proposal_expanded:
@@ -293,6 +301,8 @@ fr:
   proposal_position_block: Bloquer
   group_welcome_modal:
     heading: Bienvenue dans votre nouveau groupe
+    first_step: "Vous êtes le coordinateur du groupe, c'est-à-dire l'hôte des discussions du groupe. Regardez la video et les exemples de discussions."
+    second_step: 'Quand vous vous sentez prêt, vous pouvez commencer à inviter des personnes à vous rejoindre.'
     ok_got_it: "Ok, j'ai compris !"
   group_cover_modal:
     heading: Nouvelle photo de couverture
@@ -431,8 +441,63 @@ fr:
     select: Sélectionner
   subscription_success_modal:
     heading: 'Merci pour votre souscription !'
+    receipt: Vous allez recevoir un email avec un reçu.
+    change_subscription: "Si vous souhaitez modifier ou annuler votre souscription, ou pour n'importe quelle autre demande,"
+    contact_link: Contactez-nous
     sign_off: "❤ de la part de l'équipe Loomio"
     ok_got_it: "Ok, j'ai compris !"
+  group_form:
+    start_group_heading: Créer un groupe
+    start_subgroup_heading: Créer un sous-groupe
+    edit_group_heading: Modifier les paramètres du groupe
+    edit_subgroup_heading: Modifier les paramètres du sous-groupe
+    group_name: Nom du groupe
+    subgroup_name: Nom du sous-groupe
+    description: Description
+    description_placeholder: Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.
+    privacy_statement:
+      public_on_web: Le nom et la description apparaitra publiquement sur le web
+      private_to_group: Le nom et la description sera visible seulement des membres du groupe.
+      private_to_parent_members: 'Le nom et la description sera visible seulement des membres du groupe {{parent}}.'
+    privacy: Confidentialité
+    group_privacy_open_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Toutes les discussions sont publiques."
+    group_privacy_closed_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Seuls les membres ont accès aux discussions."
+    group_privacy_closed_public_threads_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Les discussions peuvent être privées ou publiques."
+    group_privacy_secret_description: Seuls les personnes invitées peuvent trouver ce groupe et lire les discussions.
+    confirm_change_to_secret_subgroup: 'Si vous faites ceci, toutes les discussions seront rendues privées.'
+    confirm_change_to_public: 'Si vous faites ceci, toutes les discussions de ce groupe seront rendues publiques.'
+    confirm_change_to_private_discussions_only: 'Si vous faites ceci, toutes les discussions publiques dans ce groupe seront rendues privées.'
+    subgroup_privacy_open_description: "N'importe qui peut trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le groupe. Toutes les discussions sont publiques."
+    subgroup_privacy_closed_description: "N'importe qui peut trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le groupe. Seuls les membres ont accès aux discussions."
+    subgroup_privacy_closed_public_threads_description: "N'importe qui peut trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le groupe. Les discussions peuvent être privées ou publiques."
+    subgroup_privacy_closed_secret_parent_description: 'Les membres de {{parent}} peuvent trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le sous-groupe. '
+    subgroup_privacy_secret_description: Seuls les personnes invitées peuvent trouver ce sous-groupe et lire les discussions.
+    advanced_settings: Paramètres avancés
+    how_do_people_join: Comment les personnes peuvent-elles rejoindre le groupe ?
+    membership_granted_upon_request: "N'importe qui peut rejoindre le groupe"
+    membership_granted_upon_approval: "N'importe qui peut demander de rejoindre le groupe, mais la demande doit être approuvée."
+    membership_granted_upon_approval_secret_parent: "<strong>Sur proposition</strong> - n'importe qui de {{parent}} peut demander de rejoindre le groupe."
+    thread_privacy: Confidentialité de la discussion
+    public_threads: Discussions publiques seulement
+    public_discussions_subgroup: "N'importe qui de {{parentGroupName}} peut voir les discussions"
+    public_or_private_threads: Autoriser les discussions privées et publiques
+    private_threads: Seuls les membres peuvent voir les discussions
+    permissions: Autorisations
+    allow_public_threads: Autoriser les discussions publiques dans ce groupe.
+    parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions.'
+    members_can_add_members: "Les membres peuvent inviter des personnes et approuver les demandes d'adhésion."
+    members_can_create_subgroups: Les membres peuvent créer des sous-groupes.
+    members_can_edit_discussions: "Les membres peuvent modifier le titre et la description de n'importe quelle discussion."
+    members_can_edit_comments: "Les membres peuvent modifier leurs propres commentaires à n'importe quel moment."
+    members_can_start_discussions: Les membres peuvent créer une nouvelle discussion.
+    members_can_vote: Les membres peuvent voter sur les propositions.
+    members_can_raise_motions: Les membres peuvent créer une nouvelle proposition.
+    submit_start_group: Créer un groupe
+    submit_start_subgroup: Créer un sous-groupe
+    submit_update: Met à jour mes paramètres
+    messages:
+      group_created: Groupe créé
+      group_updated: Groupe mis à jour
   membership_requests_card:
     heading: "Demandes d'ajout"
     manage_requests: Gérer les demandes
@@ -825,6 +890,7 @@ fr:
   angular:
     switch_back: "Retourner à l'ancienne version de Loomio"
     give_feedback: Donner votre avis
+    collapse: Réduire
     enable:
       invite: 'Essayer le nouveau Loomio!'
       title: Essayer le nouveau Loomio

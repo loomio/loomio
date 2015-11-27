@@ -157,7 +157,6 @@ pl:
   proposal_positions_panel:
     heading: Stanowiska
     no_votes_yet: Nikt jeszcze nie głosował tej rekomendacji.
-    change_your_vote: Zmiana Twojego głosu.
   undecided_panel:
     show_undecided: Pokaż niezdecydowanych członków
     hide_undecided: Ukryj niezdecydowanych członków

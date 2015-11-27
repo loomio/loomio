@@ -78,7 +78,6 @@ tr:
     submit_position: Konumunu gir
   proposal_positions_panel:
     heading: Konumlar
-    change_your_vote: Oyunu değiştir
   close_proposal_form:
     close_proposal: Öneriyi kapat
   extend_proposal_form:
