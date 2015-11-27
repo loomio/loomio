@@ -59,3 +59,9 @@ angular.module('loomioApp').factory 'GroupForm', ->
         $scope.group.discussionPrivacyOptions = 'public_or_private'
       else
         $scope.group.discussionPrivacyOptions = 'private_only'
+
+    $scope.groupPrivacyChanged = ->
+      switch $scope.group.groupPrivacy
+        when 'open'   then $scope.group.discussionPrivacyOptions = 'public_only'
+        when 'closed' then $scope.allowPublicThreadsClicked()
+        when 'secret' then $scope.group.discussionPrivacyOptions = 'private_only'

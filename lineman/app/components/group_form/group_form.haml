@@ -23,21 +23,21 @@
           %label{translate: 'group_form.privacy'}
 
           %label.lmo-form-labelled-input{ng-if: '!group.isSubgroupOfHiddenParent'}
-            %input.group-form__privacy-open{type: 'radio', ng-model: 'group.groupPrivacy', value: 'open', name: 'groupPrivacy'}
+            %input.group-form__privacy-open{type: 'radio', ng-model: 'group.groupPrivacy', ng-change: 'groupPrivacyChanged()', value: 'open', name: 'groupPrivacy'}
             %span
               %strong{translate: 'common.privacy.open'}
               %span.seperator
               {{ privacyStringFor("open") }}
 
           %label.lmo-form-labelled-input
-            %input.group-form__privacy-closed{type: 'radio', ng-model: 'group.groupPrivacy', value: 'closed', name: 'groupPrivacy'}
+            %input.group-form__privacy-closed{type: 'radio', ng-model: 'group.groupPrivacy', ng-change: 'groupPrivacyChanged()', value: 'closed', name: 'groupPrivacy'}
             %span
               %strong{translate: 'common.privacy.closed'}
               %span.seperator
               {{ privacyStringFor("closed") }}
 
           %label.lmo-form-labelled-input
-            %input.group-form__privacy-secret{type: 'radio', ng-model: 'group.groupPrivacy', value: 'secret', name: 'groupPrivacy'}
+            %input.group-form__privacy-secret{type: 'radio', ng-model: 'group.groupPrivacy', ng-change: 'groupPrivacyChanged()', value: 'secret', name: 'groupPrivacy'}
             %span
               %strong{translate: 'common.privacy.secret'}
               %span.seperator
