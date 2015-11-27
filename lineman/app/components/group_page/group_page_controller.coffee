@@ -35,8 +35,14 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
 
-  @handleWelcomeModal = ->
-    if CurrentUser.isAdminOf(@group) and @group.noInvitationsSent() and !@group.trialIsOverdue() and !GroupWelcomeModal.shownToGroup[@group.id]?
+  @showWelcomeModel = ->
+    AbilityService.isCreatorOf(@group) and
+    @group.noInvitationsSent() and
+    !@group.trialIsOverdue() and
+    !GroupWelcomeModal.shownToGroup[@group.id]
+
+  @handleWelcomeModal = =>
+    if @showWelcomeModel()
       GroupWelcomeModal.shownToGroup[@group.id] = true
       ModalService.open GroupWelcomeModal
 
