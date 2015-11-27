@@ -35,6 +35,7 @@ angular.module('loomioApp').directive 'commentForm', ->
         flashOptions:
           name: successMessageName
         successCallback: $scope.init
+      KeyEventService.submitOnEnter $scope
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
@@ -57,5 +58,3 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.updateMentionables(fragment)
       Records.memberships.fetchByNameFragment(fragment, $scope.discussion.group().key).then ->
         $scope.updateMentionables(fragment)
-
-    KeyEventService.submitOnEnter $scope
