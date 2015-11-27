@@ -441,7 +441,15 @@ en:
   confirm_gift_plan_modal:
     heading: Gift plan selected
     body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will periodically be invited to make a voluntary donation."
+    confirm_selection: "I'm happy for people in my group to be asked to support Loomio with a donation."
     got_it: "Ok, got it!"
+    go_back: Go back
+
+  donation_modal:
+    heading: Would you like to support Loomio?
+    body: "Loomio is a social enterprise. Our mission is to create a world where it's easy for anyone to participate in the decisions that affect them."
+    contribute: Make a contribution
+    got_to_group: Just take me to my group
 
   gift_card:
     heading: Gift plan
