@@ -11,8 +11,12 @@ de:
     group: Gruppe
     groups: Gruppen
     privacy:
+      privacy: Privatsphäre
       public: Öffentlich
+      open: Offen
+      closed: Geschlossen
       private: Privat
+      secret: Geheim
     selected: Ausgewählt
     date_range:
       today: Heute
@@ -26,6 +30,7 @@ de:
     action:
       save: Sichern
       save_changes: Änderungen speichern
+      update_settings: Einstellungen aktualisieren
       reply: Antworten
       edit: Bearbeiten
       like: Gefällt mir
@@ -227,7 +232,7 @@ de:
   proposal_positions_panel:
     heading: Meinungen
     no_votes_yet: Niemand hat bisher für diesen Vorschalg abgestimmt.
-    change_your_vote: Ändere Deine Stimmabgabe
+    change_your_vote: Deine Meinung ändern.
   undecided_panel:
     aria_label: Unentschlossene Mitglieder
     show_undecided: Zeige unentschlossene Mitglieder
@@ -276,6 +281,9 @@ de:
     context_label: Kontext
     context_placeholder: Gib der Gruppe ausreichend Hintergrundinfos um eine konstruktive Diskussion zu ermöglichen. Diese kann während des Fortschritts der Diskussion aktualisiert werden
     privacy_label: Privatsphäre
+    privacy_public: Jede.r kann die Diskussion sehen. Nur Mitglieder können teilnehmen.
+    privacy_private: 'Die Diskussion wird nur für Mitglieder von {{group}} sichtbar sein.'
+    privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     new_discussion_submit: Diskussion eröffnen
     edit_discussion_submit: Diskussion aktualisieren
   proposal_expanded:
@@ -431,8 +439,63 @@ de:
     select: Wähle
   subscription_success_modal:
     heading: 'Danke für Dein Abonnement!'
+    receipt: Du wirst per eMail eine Bestätigung erhalten.
+    change_subscription: 'Wenn Du Dein Abonnement ändern oder stornieren möchtest oder wenn Du andere Fragen hast,'
+    contact_link: bitt kontaktiere uns.
     sign_off: ❤ vom Loomio-Team
     ok_got_it: 'Okay, ich hab´s!'
+  group_form:
+    start_group_heading: Gründe eine Gruppe
+    start_subgroup_heading: Gründe eine Untergruppe
+    edit_group_heading: Gruppeneinstellungen bearbeiten
+    edit_subgroup_heading: Untergruppeneinstellungen bearbeiten
+    group_name: Gruppenname
+    subgroup_name: Untergruppenname
+    description: Beschreibung
+    description_placeholder: 'Beschreibe den Zweck Deiner Gruppe, damit Mitglieder wissen, warum sie mitmachen sollten.'
+    privacy_statement:
+      public_on_web: Name und Beschreibung wird im Web veröffentlicht
+      private_to_group: Name und Beschreibung sind nur Mitgliedern sichtbar
+      private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
+    privacy: Privatsphäre
+    group_privacy_open_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen sind öffentlich.'
+    group_privacy_closed_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Nur Mitglieder können die Diskussionen sehen.'
+    group_privacy_closed_public_threads_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen können öffentlich oder privat sein.'
+    group_privacy_secret_description: nur geladene Mitglieder können diese Gruppe finden und die Diskussionen sehen.
+    confirm_change_to_secret_subgroup: Wenn Du fortfährst werden alle Diskussionen privat.
+    confirm_change_to_public: Wenn Du fortfährst werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
+    confirm_change_to_private_discussions_only: Wenn Du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
+    subgroup_privacy_open_description: 'jede.r kann die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen sind öffentlich.'
+    subgroup_privacy_closed_description: 'jede.r kann die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten. Nur Mitglieder können die Diskussionen sehen.'
+    subgroup_privacy_closed_public_threads_description: 'jede.r kann die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen können öffentlich oder privat sein.'
+    subgroup_privacy_closed_secret_parent_description: 'Mitglieder von {{parent}} können die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten.'
+    subgroup_privacy_secret_description: nur geladene Mitglieder können diese Untergruppe finden und die Diskussionen sehen.
+    advanced_settings: Erweiterte Einstellungen
+    how_do_people_join: Wie kann jemand teilnehmen?
+    membership_granted_upon_request: JedeR kann der Gruppe beitreten.
+    membership_granted_upon_approval: Jede.r kann um Aufnahme bitten. Diese wird dann geprüft.
+    membership_granted_upon_approval_secret_parent: '<strong>Auf Anfrage</strong> - jede.r von {{parent}} kann um Aufnahme in die Gruppe bitten.'
+    thread_privacy: Diskussions-Privatsphäre
+    public_threads: Nur öffentliche Diskussionen
+    public_discussions_subgroup: 'Jeder in {{parentGroupName}} kann Diskussionen sehen'
+    public_or_private_threads: Öffentliche und private Diskussionen erlauben
+    private_threads: Nur Mitglieder können Diskussionen sehen
+    permissions: Berechtigungen
+    allow_public_threads: Öffentliche Diskussionen in der Gruppe erlauben.
+    parent_members_can_see_discussions: 'Miglieder von {{parent}} können die Diskussionen sehen.'
+    members_can_add_members: Mitglieder können andere einladen und Beitrittsanfragen beantworten.
+    members_can_create_subgroups: Mitglieder können Untergruppen erstellen.
+    members_can_edit_discussions: Mitglieder können die Beschreibung und den Titel aller Diskussionen bearbeiten.
+    members_can_edit_comments: Mitglieder können jederzeit ihre eigenen Kommentare bearbeiten.
+    members_can_start_discussions: Mitglieder können Diskussionen eröffnen.
+    members_can_vote: Mitglieder können über Vorschläge abstimmen.
+    members_can_raise_motions: Mitglieder können Vorschläge eröffnen.
+    submit_start_group: Gruppe gründen
+    submit_start_subgroup: Untergruppe gründen
+    submit_update: Einstellungen aktualisieren
+    messages:
+      group_created: Gruppe gegründet
+      group_updated: Gruppe aktualisiert
   membership_requests_card:
     heading: Mitgliedschaftsanfragen
     manage_requests: Anfragen verwalten
@@ -857,6 +920,7 @@ de:
   angular:
     switch_back: Zum alten Loomio wechseln
     give_feedback: Feedback geben
+    collapse: Kollabieren
     enable:
       invite: 'Das neue Loomio testen!'
       title: Das neue Loomio testen

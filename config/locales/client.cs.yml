@@ -11,12 +11,14 @@ cs:
     privacy:
       public: Veřejnost
       private: Soukromá
+    selected: Vybráno
     date_range:
       today: Dnes
       yesterday: Včera
       thisweek: Tento týden
       thismonth: Tento měsíc
       older: Starší
+    more_help: Další pomoc
     models:
       proposal: Návrh
     action:
@@ -33,6 +35,7 @@ cs:
       new_thread: Nové vlákno
       add_subgroup: Přidat podskupinu
       loading: Načítá se
+      uploading: Nahrává se
   error_page:
     forbidden: K této akci nemáte oprávnění.
   start_proposal_card:
@@ -50,11 +53,21 @@ cs:
     publish_outcome: Publikovat výsledek
     messages:
       created: Výsledek publikován
+      updated: Výsledek aktualizován
   previous_proposals_card:
     heading: Předchozí návrhy
+  previous_proposals_page:
+    heading: Předchozí návrhy
+  proposal_collapsed:
+    expand: Rozbalit
+    outcome: 'Výsledek: {{outcome}}'
+  thread_volume_card:
+    change_volume_link: Změna
   thread_volume_form:
     quiet_label: Žádné e-maily
     submit: Aktualizovat
+  group_volume_card:
+    change_volume_link: Změna
   group_volume_form:
     quiet_label: Žádné e-maily
     submit: Aktualizovat
@@ -62,6 +75,7 @@ cs:
     clear: Vyčistit
     latest: Nejnovější
     unread: Nepřečteno
+    closing_in: Zavřené
   session_form:
     email_label: 'Email:'
     password_label: 'Heslo:'
@@ -135,7 +149,6 @@ cs:
   proposal_positions_panel:
     heading: Postoje
     no_votes_yet: Nikdo o tomto návrhu ještě nevolil.
-    change_your_vote: Změňte svůj hlas
   undecided_panel:
     show_undecided: Zobrazit nerozhodnuté členy
     hide_undecided: Skrýt nerozhodnuté členy
@@ -250,6 +263,8 @@ cs:
     messages:
       request_approved_success: Žádost o členství schválena
       request_ignored_success: Žádost o členství ignorována
+  group_previous_proposals_card:
+    heading: Předchozí návrhy
   invitation:
     invite_people: Pozvat lidi
   memberships_page:
@@ -348,10 +363,27 @@ cs:
     liked_by_name: '{{name}} se toto líbí.'
     liked_by_names_and_name: '{{joinedNames}} a {{name}} se toto líbí.'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
+    volume:
+      loud: 'E-mail vždy, když je aktivita v tomto vlákně.'
   thread_group:
     aria_label: Název skupiny
   thread_context:
-    aria_label: Kontext vlákna
+    aria_label: Kontext tématu
+    thread_options: Možnosti tématu
+    notifications: Upozornění
+    edit_thread: Upravit
+    move_thread: Přesunout
+    delete_thread: Smazat
+  delete_thread_form:
+    title: Smazat téma
+    confirm: 'Ano, smazat téma'
+    messages:
+      success: Téma smazáno
+  move_thread_form:
+    title: Přesunout téma
+    confirm: Přesunout téma
+    messages:
+      success: 'Téma bylo přesunuto {{name}}'
   activity_card:
     new_activity: Nová aktivita
     attachment_display:
@@ -362,6 +394,7 @@ cs:
     question: Opravdu chcete odstranit tento komentář?
     confirm: Odstranit komentář
   new_comment_item:
+    aria_label: 'Komentář od {{author}}'
     context_menu:
       edit_comment: Upravit komentář
       delete_comment: Odstranit komentář
@@ -402,7 +435,7 @@ cs:
     start_discussion: Zahájení poutavé diskuze
     start_proposal: Napsání jasného návrhu
     video_id: '52025402'
-    video_tutorial: Zobrazit tutoriál
+    video_tutorial: Video tutorial
     video_tutorial_description: 'Shlédněte rychlou ukázku toho, jak se Loomio používá.'
   hint:
     context: Rady pro používání kontextového panelu
@@ -419,6 +452,7 @@ cs:
   angular:
     switch_back: Přepnout zpět na staré Loomio
     give_feedback: Sdělte nám svůj názor
+    collapse: Skrýt
     enable:
       invite: 'Vyzkoušejte nové Loomio!'
       title: Vyzkoušet nové Loomio

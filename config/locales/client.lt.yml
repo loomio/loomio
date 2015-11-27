@@ -9,6 +9,7 @@ lt:
     group: Grupė
     groups: Grupės
     privacy:
+      privacy: Privatumas
       public: Vieša
       private: Privati
     date_range:
@@ -21,10 +22,12 @@ lt:
     action:
       save: Įrašyti
       save_changes: Įrašyti pakeitimus
+      update_settings: Atnaujinti nustatymus
       reply: Atsakyti
       edit: Redaguoti
       like: Patinka
       unlike: Nebepatinka
+      update: Atnaujinti
       cancel: Atšaukti
       show_more: Rodyti daugiau
       new_thread: Nauja gija
@@ -44,6 +47,10 @@ lt:
     normal: Normalus
     quiet: Tylus
     mute: Nutildyti
+  thread_volume_form:
+    submit: Atnaujinti
+  group_volume_form:
+    submit: Atnaujinti
   session_form:
     email_label: 'El. paštas:'
     password_label: 'Slaptažodis:'
@@ -65,6 +72,7 @@ lt:
     in_reply_to: 'Atsakant į tai, ką rašė <strong>{{name}}</strong>:'
     submit_button:
       label: Išsiųsti
+    private_privacy_notice: 'Tavo komentaras bus matomas tik {{groupName}} grupės nariams.'
   navbar:
     groups: Grupės
     recent_title: Pereiti į skydelį
@@ -162,7 +170,7 @@ lt:
         no_discussions_in_group: Šioje grupėje kol kas nėra jokių gijų.
         no_public_discussions: Šioje grupėje nėra viešų gijų.
         discussions_are_private: Šioje grupėje visos gijos yra privačios.
-        join_group: 'Tam, kad pamatytum privačias gijas, turėsi prisijungti prie grupės.'
+        join_group: 'Tam, kad matytum privačias gijas, turėsi prisijungti prie grupės.'
         membership_is_invitation_only: 'Kad prisijungtum prie šios grupės, tave turi pakviesti šios grupės narys.'
         membership_is_invitation_by_admin_only: 'Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius.'
     messages:
@@ -196,6 +204,18 @@ lt:
       loud_aria_description: 'Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla.'
       quiet: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
       quiet_aria_description: Tavo pranešimų garsumas šiai grupei yra nustatytas į Tylus. Tau nebus siunčiami el. laiškai apie šioje grupėje vykstančią veiklą. Grupės veikla bus rodoma tavo Skydelyje.
+    privacy:
+      public: 'Privatumas: Ši grupė yra matoma saityne'
+  confirm_gift_plan_modal:
+    got_it: 'Gerai, supratau!'
+  subscription_success_modal:
+    ok_got_it: 'Gerai, supratau!'
+  group_form:
+    description: Aprašas
+    privacy: Privatumas
+    members_can_create_subgroups: Nariai gali kurti pogrupius.
+    members_can_edit_comments: Nariai gali bet kuriuo metu redaguoti savo komentarus.
+    submit_update: Atnaujinti nustatymus
   invitation:
     invite_people: Pakviesti Žmones
     instructions: Įvesk vardus arba el. pašto adresus
@@ -210,11 +230,15 @@ lt:
     remove_membership:
       title: Šalinti narį
       submit: Šalinti
+    remove_admin_from_self:
+      question: Ar tikrai daugiau nebenori būti koordinatoriumi?
   pending_invitations_card:
     email: El. paštas
   cancel_invitation_form:
     heading: Atšaukti pakvietimą
     question: Ar tikrai nori atšaukti šį pakvietimą?
+    submit: 'Taip, atšaukti pakvietimą'
+    cancel: Ne
     messages:
       success: Pakvietimas atšauktas
   profile_page:
@@ -225,6 +249,7 @@ lt:
     change_picture:
       title: Keisti paveikslą
       use_initials: Naudoti inicialus
+      use_gravatar: Naudoti gravatar
       use_uploaded: Įkelti naują paveikslą
     change_password:
       title: Keisti Slaptažodį
@@ -285,7 +310,9 @@ lt:
     aria_label: Grupės pavadinimas
   thread_context:
     thread_options: Gijos parinktys
+    delete_thread: Ištrinti
   delete_thread_form:
+    title: Ištrinti giją
     body: Ar tikrai nori ištrinti šią giją?
     confirm: 'Taip, ištrinti giją'
     messages:
