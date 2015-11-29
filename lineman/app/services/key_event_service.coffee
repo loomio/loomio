@@ -18,6 +18,7 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
 
     registerKeyEvent: (scope, eventCode, execute, shouldExecute) ->
       shouldExecute = shouldExecute or @defaultShouldExecute
+      scope.$$listeners[eventCode] = null
       scope.$on eventCode, (angularEvent, originalEvent, active) ->
         if shouldExecute(active, originalEvent)
           angularEvent.preventDefault() and originalEvent.preventDefault()
