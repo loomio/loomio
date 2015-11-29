@@ -15,6 +15,7 @@ angular.module('loomioApp').factory 'PrivacyString', ($translate) ->
         $translate.instant("group_form.privacy_statement.#{key}")
 
     confirmGroupPrivacyChange: (group) ->
+      return if group.isNew()
       key = if group.attributeIsModified('groupPrivacy')
         if group.privacyIsSecret()
           if group.isParent()
