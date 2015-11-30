@@ -17,17 +17,17 @@ class RedirectController < ActionController::Base
 
   def group_id
     not_found_if_greater_than(11500)
-    moved_to group_url(Group.find!(id: params[:id]).first, default_subdomain)
+    moved_to group_url(Group.find_by_id!(params[:id]), default_subdomain)
   end
 
   def discussion_id
     not_found_if_greater_than(11500)
-    moved_to discussion_url(Discussion.find!(params[:id]), default_subdomain)
+    moved_to discussion_url(Discussion.find_by_id!(params[:id]), default_subdomain)
   end
 
   def motion_id
     not_found_if_greater_than(7300)
-    moved_to motion_url(Motion.find!(params[:id]), default_subdomain)
+    moved_to motion_url(Motion.find_by_id!(params[:id]), default_subdomain)
   end
 
   private
