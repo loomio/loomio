@@ -1,9 +1,9 @@
 .comment-form-attachments
   %button.lmo-btn--default{type: 'button', ng-click: 'selectFile()', ng-hide: 'files', aria-label: "{{ 'comment_form.attachments.aria_label' | translate }}"}
     %i.fa.fa-lg.fa-paperclip
-   %input.attachment-form__file-input.hidden{type: 'file', ng-model: 'files', ng_file_select: 'upload(files)'}
+   %input.attachment-form__file-input.hidden{type: 'file', ng-model: 'files', ng-file-select: 'upload(files)'}
   .attachment-form-in-progress{ng-repeat: 'file in files'}
     .progress.active.attachment-form-progress-field
       %span.attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
-      %progressbar.attachment-form-progress-bar.progress-striped.active{ng_attr_value: 'percentComplete'}
-    %button.close.attachment-form-cancel.cancel-upload{type: 'button', ng_click: 'file.upload.abort()'} &times;
+      %uib-progressbar.attachment-form-progress-bar.progress-striped.active{ng-attr-value: 'percentComplete'}
+    %button.close.attachment-form-cancel.cancel-upload{type: 'button', ng-click: 'abort()'} &times;

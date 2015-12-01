@@ -80,7 +80,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def attachment_attributes
-    [:filename, :location, :filesize, :redirect]
+    [:file, :filename, :location, :filesize, :redirect]
   end
 
   def contact_message_attributes

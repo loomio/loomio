@@ -2,14 +2,13 @@ class Attachment < ActiveRecord::Base
   belongs_to :user
   belongs_to :comment, counter_cache: true
 
-  validates_presence_of :filename, :location, :user_id
+  has_attached_file :file, styles: lambda { |file| file.instance.is_an_image? ? { thumb: '100x100#', thread: '600x>' } : {} }
+  do_not_validate_attachment_file_type :file
 
-  before_destroy :delete_from_storage
+  validates :user_id, presence: true
 
   alias_method :author, :user
   alias_method :author=, :user=
-  #alias_method :author_id, :user_id
-  #alias_method :author_id=, :user_id=
 
   def is_an_image?
     %w[jpg jpeg png gif].include?(filetype)
@@ -24,22 +23,20 @@ class Attachment < ActiveRecord::Base
   end
 
   def filetype
-    filename.split('.').last.downcase
+    (file_content_type.try(:split, '/') || filename.try(:split, '.')).last.downcase
   end
 
-  def delete_from_storage
-    storage = Fog::Storage.new({aws_access_key_id: Rails.application.secrets.aws_access_key_id,
-                                aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
-                                provider: 'AWS'})
-
-    bucket = storage.directories.get(Rails.application.secrets.aws_bucket)
-    filename = URI.decode(URI(URI.encode(self.location)).path).gsub(/^\//, '')
-    file = bucket.files.get(filename)
-
-    file.destroy if file
-    true # return no true no matter what.
+  def filename
+    super || file_file_name
   end
+
+  def filesize
+    super || file_file_size
+  end
+
+  def location
+    self[:location] || file.url(:original)
+  end
+  alias :original :location
 
 end
-
-
