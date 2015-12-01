@@ -42,10 +42,9 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.comment.parentId = parentComment.id
       ScrollService.scrollTo('.comment-form__comment-field')
 
-    $scope.removeAttachment = (attachment) ->
+    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
       ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachment.id), 1
-      Records.attachments.destroy(attachment.id)
+      ids.splice ids.indexOf(attachmentId), 1
 
     $scope.updateMentionables = (fragment) ->
       regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')

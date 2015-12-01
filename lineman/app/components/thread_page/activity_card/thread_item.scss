@@ -28,6 +28,7 @@
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
+  clear: both;
 }
 
 @media (min-width: $tiny-max-px){

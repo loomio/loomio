@@ -21,6 +21,7 @@ screenshots/
 .idea
 .env
 bin/
+/public/uploads
 /lineman/node_modules
 /lineman/dist
 /lineman/generated

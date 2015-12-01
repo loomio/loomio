@@ -22,7 +22,7 @@
 
   .thread-item__attachments
     .thread-item__attachment{ng-repeat: 'attachment in comment.attachments() track by attachment.id'}
-      %attachment{attachment: 'attachment'}
+      %attachment_preview{attachment: 'attachment', mode: 'thread'}
 
   .thread-item__footer
     .thread-item__actions{ng-if: 'showCommentActions()'}

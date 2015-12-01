@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118022605) do
+ActiveRecord::Schema.define(version: 20151118174946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,12 +66,16 @@ ActiveRecord::Schema.define(version: 20151118022605) do
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "filename",   limit: 255
+    t.string   "filename",          limit: 255
     t.text     "location"
     t.integer  "comment_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "filesize"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
