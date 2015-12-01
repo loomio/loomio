@@ -22,7 +22,7 @@ angular.module('loomioApp').directive 'activityCard', ->
 
     $scope.initialLoadSequenceId = ->
       if $scope.discussion.isUnread()
-        $scope.discussion.lastReadSequenceId - 1
+        $scope.discussion.lastReadSequenceId - 5
       else
         $scope.discussion.lastSequenceId - $scope.pageSize + 1
 
