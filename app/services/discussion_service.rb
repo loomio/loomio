@@ -88,6 +88,7 @@ class DiscussionService
 
     target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]).first || discussion
     DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at
+    MessageChannelService.publish(DiscussionSerializer.new(discussion).as_json, to: actor)
   end
 
   def self.moved_discussion_privacy_for(discussion, destination)
