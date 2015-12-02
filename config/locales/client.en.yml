@@ -453,7 +453,7 @@ en:
 
   gift_card:
     heading: Gift plan
-    body: "<strong>{{name}}</strong> is a gift-supported group. If you'd like to help Loomio achieve our mission, click this button:"
+    body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
     make_a_contribution: Make a contribution
 
   trial_card:
