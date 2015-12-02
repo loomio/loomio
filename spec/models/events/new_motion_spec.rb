@@ -48,14 +48,6 @@ describe Events::NewMotion do
       @event.reload.send(:notify_webhooks!)
     end
 
-    it 'calls publish with the eventable''s parent group' do
-      @event.eventable.group.update subscription: nil, parent: create(:group), is_visible_to_parent_members: true
-      parent = @event.eventable.group.parent
-      webhook = create :webhook, hookable: parent
-      expect(WebhookService).to receive(:publish!).with({ event: @event, webhook: webhook })
-      @event.reload.send(:notify_webhooks!)
-    end
-
     it 'does not call publish with the eventable''s parent group when not visible to parent members' do
       parent = @event.eventable.group.parent = create(:group)
       webhook = create :webhook, hookable: parent
