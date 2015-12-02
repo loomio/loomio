@@ -19,7 +19,6 @@ class API::MotionsController < API::RestfulController
   end
 
   def update_outcome
-    load_and_authorize(:motion, :update_outcome)
     @event = MotionService.update_outcome(motion: load_and_authorize(:motion, :update_outcome),
                                           params: permitted_params.motion,
                                           actor:  current_user)
