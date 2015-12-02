@@ -4,7 +4,7 @@ class API::DiscussionsController < API::RestfulController
   include UsesDiscussionReaders
 
   def index
-    load_and_authorize(:group) if params[:group_id] || params[:group_key]
+    load_and_authorize(:group, optional: true)
     instantiate_collection { |collection| collection.sorted_by_importance }
     respond_with_collection
   end

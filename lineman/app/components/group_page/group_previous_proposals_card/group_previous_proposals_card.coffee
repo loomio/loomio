@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'groupPreviousProposalsCard', ->
   controller: ($scope, CurrentUser, Records, AbilityService) ->
     if AbilityService.canViewPreviousProposals($scope.group)
       Records.proposals.fetchClosedByGroup($scope.group.key).then ->
-        Records.votes.fetchMyVotes($scope.group.closedProposals())
+        Records.votes.fetchMyVotes($scope.group)
 
     $scope.showPreviousProposals = ->
       AbilityService.canViewPreviousProposals($scope.group) and $scope.group.hasPreviousProposals()
