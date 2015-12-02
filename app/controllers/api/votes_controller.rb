@@ -4,7 +4,9 @@ class API::VotesController < API::RestfulController
   alias :update :create
 
   def my_votes
-    @votes = current_user.votes.includes(:motion, :user).where(motion_id: motion_ids).most_recent
+    @votes = current_user.votes.most_recent.includes({motion: :discussion}, :user)
+    @votes = @votes.where('motions.discussion_id': @discussion.id) if load_and_authorize(:discussion, optional: true)
+    @votes = @votes.where('discussions.group_id': @group.id)       if load_and_authorize(:group, optional: true)
     respond_with_collection
   end
 
@@ -13,10 +15,6 @@ class API::VotesController < API::RestfulController
   def visible_records
     load_and_authorize :motion
     @motion.votes.most_recent.order(:created_at)
-  end
-
-  def motion_ids
-    params[:proposal_ids].split(',').map(&:to_i) if params[:proposal_ids]
   end
 
 end

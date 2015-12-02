@@ -7,31 +7,27 @@ class API::MotionsController < API::RestfulController
   end
 
   def close
-    load_and_authorize(:motion, :close)
-    @event = MotionService.close_by_user(@motion, current_user)
+    @event = MotionService.close_by_user(load_and_authorize(:motion, :close), current_user)
     respond_with_resource
   end
 
   def create_outcome
-    load_and_authorize(:motion, :create_outcome)
-    @event = MotionService.create_outcome(motion: @motion,
+    @event = MotionService.create_outcome(motion: load_and_authorize(:motion, :create_outcome),
                                           params: permitted_params.motion,
                                           actor:  current_user)
     respond_with_resource
   end
 
   def update_outcome
-    load_and_authorize(:motion, :update_outcome)
-    @event = MotionService.update_outcome(motion: @motion,
+    @event = MotionService.update_outcome(motion: load_and_authorize(:motion, :update_outcome),
                                           params: permitted_params.motion,
                                           actor:  current_user)
     respond_with_resource
   end
 
   def index
-    load_and_authorize :discussion if params[:discussion_id] || params[:discussion_key]
     instantiate_collection do |collection|
-      collection = collection.where(discussion: @discussion) if @discussion
+      collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
       collection.order(:created_at)
     end
     respond_with_collection
