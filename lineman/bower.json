@@ -6,6 +6,7 @@
     "angular-gravatar": "~0.2.4",
     "angular-inview": "~> 1.5.0",
     "angular-marked": "Hypercubed/angular-marked#~0.0.17",
+    "angular-moment": "~> 1.0.0-beta.3",
     "angular-sanitize": "~> 1.4.1",
     "angular-scroll": "~0.6.5",
     "angular-translate": "~2.7.2",
