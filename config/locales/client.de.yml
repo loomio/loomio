@@ -399,7 +399,14 @@ de:
   confirm_gift_plan_modal:
     heading: Geschenk-Plan gewählt
     body: 'Wenn Deine Gruppe keine Finanzen hat, um Software zu bezahlen, dann müsst ihr kein Abo zahlen. Wir werden gelegentlich eure Gruppenmitglieder um freiwillige Spenden bitten.'
+    confirm_selection: 'Ich finde es gut, wenn Mitglieder meiner Gruppe nach Spenden für Loomio gefragt werden.'
     got_it: 'Okay, ich hab´s!'
+    go_back: Zurück
+  donation_modal:
+    heading: Würdest Du Loomio unterstützen?
+    body: 'Loomio ist ein gemeinnütziges Unternehmen. Unsere Mission ist eine Welt zu erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen.'
+    contribute: Mache eine Spende
+    got_to_group: Bring mich zu meiner Gruppe
   gift_card:
     heading: Geschenk-Plan
     body: '<strong>{{name}}</strong> ist eine spenden-gestützte Gruppe. Wenn Du Loomio helfen mächtest, ihre Mission zu erfüllen, bitte klicke diesen Button:'
@@ -462,6 +469,7 @@ de:
     group_privacy_closed_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Nur Mitglieder können die Diskussionen sehen.'
     group_privacy_closed_public_threads_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen können öffentlich oder privat sein.'
     group_privacy_secret_description: nur geladene Mitglieder können diese Gruppe finden und die Diskussionen sehen.
+    confirm_change_to_secret: Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat.
     confirm_change_to_secret_subgroup: Wenn Du fortfährst werden alle Diskussionen privat.
     confirm_change_to_public: Wenn Du fortfährst werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn Du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.

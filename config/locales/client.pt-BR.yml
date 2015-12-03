@@ -399,7 +399,14 @@ pt-BR:
   confirm_gift_plan_modal:
     heading: Plano Presente selecionado
     body: 'Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária.'
+    confirm_selection: Fico feliz pelas pessoas no meu grupo serem convidadas a apoiar o Loomio com uma doação.
     got_it: 'Ok, entendi!'
+    go_back: Voltar
+  donation_modal:
+    heading: Gostaria de apoiar o Loomio?
+    body: Loomio é uma empresa social. Nossa missão é criar um mundo onde seja fácil para as pessoas participarem nas decisões que as afetem.
+    contribute: Faça uma contribuição
+    got_to_group: Apenas leve-me ao meu grupo
   gift_card:
     heading: Plano Presente
     body: '<strong>{{name}}</strong> é um grupo suportado por presente. Se você gostaria de ajudar o Loomio a alcançar a nossa missão, clique neste botão:'

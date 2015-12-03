@@ -399,7 +399,14 @@ zh-TW:
   confirm_gift_plan_modal:
     heading: 已選取禮物計畫
     body: 如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。您的群組成員是否有自願性的捐款。
+    confirm_selection: 我很高興在我的群組中的人們被詢問是否要以捐款支持 Loomio。
     got_it: 好的，知道了！
+    go_back: 回前頁
+  donation_modal:
+    heading: 您想要支援 Loomio 嗎？
+    body: Loomio 是一個社會企業。我們的使命是締造一個任何人都能輕鬆參與、討論決策、影響他人的世界。
+    contribute: 作出貢獻
+    got_to_group: 直接到我的群組
   gift_card:
     heading: 禮物計畫
     body: '<strong>{{name}}</strong> 是一個禮物支援的群組。若您想要協助 Loomio 完成我們的使命，請點選這個按鈕：'
