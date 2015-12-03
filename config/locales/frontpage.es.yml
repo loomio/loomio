@@ -52,7 +52,7 @@ es:
         header: Software libre y abierto
         desc: 'El código de Loomio es público y cualquiera puede ejecutarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
       gift:
-        header: Economía del regalo
+        header: Economía del dar
         desc: Loomio se financia por medio de aquellos que contribuyen de acuerdo a sus recursos. Esto mantiene la plataforma libre de publicidad y accesible a grupos sin recursos financieros.
   about_page:
     our_story_1_html: '<h2>Nuestra historia</h2> <p>Loomio es una herramienta online para la toma de decisiones colaborativa, construida por un equipo de tecnólogos, activistas y emprendedores sociales en Nueva Zelanda.</p> '

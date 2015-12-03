@@ -1,14 +1,23 @@
 sr-RS:
   common:
+    confirm_discard_changes: Поништити промене?
     time:
       am: ам
       pm: пм
+    closing_in: 'Истиче {{time}}'
+    closed_ago: 'Затворено {{time}}'
     volume: Обим
+    notification_volume: Обим Обавештења
     group: Група
     groups: Групе
     privacy:
+      privacy: Приватност
       public: Јавно
+      open: Отворено
+      closed: Затворено
       private: Приватно
+      secret: Тајно
+    selected: Означено
     date_range:
       today: Данас
     models:

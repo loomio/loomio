@@ -281,6 +281,9 @@ sr:
     context_label: Kontekst
     context_placeholder: Daj dovoljno pozadinskih informacija za grupu da bi diskusija bila produktivna. Ovo može biti izmenjeno kako diskusija bude napredovala
     privacy_label: Privatnost
+    privacy_public: Svako može videti nit. Samo se članovi mogu pridružiti.
+    privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
+    privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
     new_discussion_submit: Kreiraj nit
     edit_discussion_submit: Izmeni nit
   proposal_expanded:
@@ -298,6 +301,8 @@ sr:
   proposal_position_block: Blokiranje
   group_welcome_modal:
     heading: Dobrodošli u svoju novu grupu
+    first_step: 'Vi ste <strong>koordinator</strong>, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
+    second_step: 'Kada ste spremni, <strong>pozovite ljude</strong> da uđu.'
     ok_got_it: 'U redu, shvatam!'
   group_cover_modal:
     heading: Nova pokrivna slika
@@ -394,7 +399,14 @@ sr:
   confirm_gift_plan_modal:
     heading: Odabran je poklon plan
     body: 'Ako Vaša grupa nema budžet za plaćanje softvera, ne morate da platite pretplatu. Vaši članovi grupe biće povremeno pozvani da volonterski doniraju.'
+    confirm_selection: Raduje me zbog ljudi u mojoj grupi koji će biti pitani da podrže Lumio donacijom.
     got_it: 'U redu, shvatam!'
+    go_back: Idi nazad
+  donation_modal:
+    heading: Da li biste voleli da podržite Loomio?
+    body: Lumio je društvena kompanija. Naša misija je da kreiramo svet u kome je lako svakome da se uključi u odluke koje utiču na na njega.
+    contribute: Donirajte
+    got_to_group: Odbaci me do moje grupe
   gift_card:
     heading: Poklon plan
     body: '<strong>{{name}}</strong> je poklonima podržana grupa. Ako želiš da pomogneš Lumiju da dostigne svoju misiju, škljocni na ovo dugme:'
@@ -434,6 +446,8 @@ sr:
     select: Odaberi
   subscription_success_modal:
     heading: 'Hvala za postavljanje tvoje pretplate!'
+    receipt: Dobićete jednu eporuku sa potvrdom.
+    change_subscription: 'Ako ikada poželite da promenite ili otkažete svoju pretplatu ili ako imate bilo kakvih drugih pitanja,'
     contact_link: molimo kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: 'U redu, shvatam!'
@@ -441,10 +455,39 @@ sr:
     start_group_heading: Kreiraj grupu
     start_subgroup_heading: Kreiraj podgrupu
     edit_group_heading: Promeni osobine grupe
+    edit_subgroup_heading: Izmeni opcije podgrupe
     group_name: Naziv Grupe
     subgroup_name: Naziv Podgrupe
     description: Opis
+    description_placeholder: Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.
+    privacy_statement:
+      public_on_web: Naziv i opis će biti javni na mreži
+      private_to_group: Naziv i opis će biti vidljivi samo članovima.
+      private_to_parent_members: 'Naziv i opis će biti vidljivi samo članovima  {{parent}}'
     privacy: Privatnost
+    group_privacy_open_description: 'svako može naći grupu, vidi ko je u njoj i pitati da se pridruži. Sve niti su javne.'
+    group_privacy_closed_description: 'svako može naći grupu, videti ko je u njoj i pitati da se pridruži. Samo članovi mogu videti niti.'
+    group_privacy_closed_public_threads_description: 'svako može naći grupu, videti ko je u njoj i pitati da se pridruži. Niti mogu biti javne ili privatne.'
+    group_privacy_secret_description: samo pozvani članovi mogu naći grupu i videti niti.
+    confirm_change_to_secret: 'Ako nastavite, sve niti u ovoj grupi i njenim podgrupama će postati privatne.'
+    confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
+    confirm_change_to_public: 'Ako nastavite, sve niti u ovoj grupi postaće javne na mreži.'
+    confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
+    subgroup_privacy_open_description: 'svako može naći ovu podgrupu, vidi ko je u njoj i pitaj da se pridružiš. Sve niti su javne.'
+    subgroup_privacy_closed_description: 'svako može naći ovu podgrupu, vidi ko je u njoj i pitaj da se pridružiš. Samo članovi mogu videti niti.'
+    subgroup_privacy_closed_public_threads_description: 'svako može naći ovu podgrupu, videti ko je u njoj i pitati da se pridružo. Niti mogu biti javne ili privatne.'
+    subgroup_privacy_closed_secret_parent_description: 'članovi {{parent}} mogu naći ovu podgrupu, videti ko je u njoj i pitati da se pridruže.'
+    subgroup_privacy_secret_description: samo pozvani članovi mogu naći ovu podgrupu i videti niti.
+    advanced_settings: Napredne opcije
+    how_do_people_join: Kako se ljudi pridružuju?
+    membership_granted_upon_request: Svako se može pridružiti grupi.
+    membership_granted_upon_approval: Svako može tražiti da se pridruži ali mora biti odobreno.
+    membership_granted_upon_approval_secret_parent: '<strong>Zahtevom</strong> - svako iz {{parent}} može pitati da se pridruži grupi.'
+    thread_privacy: Privatnost niti
+    public_threads: Samo javne niti
+    public_discussions_subgroup: 'Svako u {{parentGroupName}} može videti diskusije'
+    public_or_private_threads: Omogući javne i privatne niti
+    private_threads: Samo članovi mogu videti diskusije
     permissions: Dozvole
     allow_public_threads: Dopusti javne niti u ovoj grupi.
     parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti niti.'

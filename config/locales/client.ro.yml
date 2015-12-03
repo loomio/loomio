@@ -1,5 +1,6 @@
 ro:
   common:
+    confirm_discard_changes: Renunti la modificari?
     time:
       am: am
       pm: pm
@@ -10,31 +11,36 @@ ro:
     group: Grup
     groups: Grupuri
     privacy:
+      privacy: Confidentialitate
       public: Public
+      open: Deschis
+      closed: Inchis
       private: Confidential
-    selected: Selectii
+      secret: Secret
+    selected: Selectat
     date_range:
       today: Astazi
       yesterday: Ieri
-      thisweek: Saptamana asta
-      thismonth: Luna asta
+      thisweek: Saptamana aceasta
+      thismonth: Luna aceasta
       older: Mai vechi
-    more_help: Ajutor
+    more_help: Ajutor in plus
     models:
       proposal: Propunere
     action:
       save: Salvare
       save_changes: Salvare modificari
+      update_settings: Actualizeaza setarile
       reply: Raspunde
       edit: Editeaza
-      like: Imi place
+      like: Apreciez
       unlike: Nu apreciez
       update: Actualizeaza
       cancel: Anuleaza
       show_more: Vezi mai mult
       view_all: Vezi tot
-      new_thread: Subiect nou
-      add_subgroup: Creeaza sub-grup
+      new_thread: Discutie noua
+      add_subgroup: Adauga sub-grup
       loading: Se incarca
       uploading: Se trimite la server
     formatting_help:
@@ -42,7 +48,7 @@ ro:
       title: Afla cum poti folosi Markdown pentru a formata textul in Loomio
   error_page:
     forbidden: Nu ai permisiune pentru aceasta actiune.
-    page_not_found: Nu am gasit nimic corespunzator. Este posibil sa fi fost sters sau mutat.
+    page_not_found: Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.
     internal_server_error: 'Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.'
   start_proposal_card:
     title: Initiaza o propunere
@@ -72,53 +78,115 @@ ro:
     loud: Tare
     normal: Normal
     quiet: Incet
-    mute: Silentios
-    unmute: Anulare mod silentios
+    mute: Dezactivat
+    unmute: Activare
   thread_volume_card:
     heading: Notificari punctuale
     body:
-      loud: 'Toate mailurile: veti primi un email ori de cate ori apare ceva nou legat de aceasta propunere'
-      normal: 'Propuneri pe mail: veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
-      quiet: 'Fara mailuri: nu veti primi nimic prin email.'
-      mute: 'Propunere evitata: nu veti vedea nimic legat de ea in email, Propuneri Recente sau Pagini Necitite.'
+      loud: 'Toate emailurile: veti primi un email ori de cate ori apare ceva nou legat de aceasta discutie.'
+      normal: 'Propuneri pe email: veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
+      quiet: 'Fara emailuri: nu veti primi nimic prin email despre aceasta discutie'
+      mute: 'Discutie dezactivata: nu vei primi email despre aceasta discutie, ea va fi eliminata din Discutii Recente sau Pagini Necitite.'
     change_volume_link: Schimba
   thread_volume_form:
-    header: Notificari
+    header: Notificari ale discutiei
     loud_label: Toate emailurile
-    loud_description: Veti primi un email la orice modificare a acestei propuneri
+    loud_description: Veti primi un email oricand va fi activitate in aceasta discutie.
     normal_label: Propunerile vor fi primite prin email
     normal_description: 'Veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
     quiet_label: Fara emailuri
-    quiet_description: Nu veti primi email decat la mentionarea explicita a @numelui.
-    mute_label: Anulare notificari
+    quiet_description: Nu veti primi email despre aceasta discutie decat la mentionarea cuiva a @numelui tau.
+    mute_label: Dezactiveaza discutia
+    mute_description: Nu vei primi email despre aceasta Discutie care va fi sters de pe Discutii Recente și Pagini Necitite.
     submit: Actualizeaza
+    messages:
+      loud: Vei primi un email despre activitatea in aceasta discutie.
+      normal: Vei primi un email despre propuneri in aceasta discutie.
+      quiet: Nu vei primi email pentru aceasta discutie.
+      mute: Discutie dezactivata.
   group_volume_card:
+    heading: Notificarile grupului
+    body:
+      loud: 'Toate emailurile: veti primi un email ori de cate ori apare ceva nou legat de aceast grup.'
+      normal: Vei primi un email despre noi discutiii si propuneri in acest grup.
+      quiet: 'Fara emailuri: nu veti primi nimic prin email despre activitatea acestui grup.'
+      mute: 'Grup dezactivat: nu vei primi email despre acest grup, el va fi eliminat din Discutii Recente sau Pagini Necitite.'
     change_volume_link: Schimba
   group_volume_form:
+    header: Notificarile acestui grup
     loud_label: Toate emailurile
+    loud_description: Veti primi un email oricand va fi activitate in acest grup.
+    normal_label: Trimite propunerile si discutiile noi prin email
+    normal_description: Vei primi un email despre discutiile si propunerile noi in acest grup.
     quiet_label: Fara emailuri
+    quiet_description: Nu veti primi email despre acest grup decat la mentionarea cuiva a @numelui tau.
+    mute_label: Dezactiveaza grupul
+    mute_description: Nu vei primi email despre acest grup care va fi sters de pe Discutii Recente și Pagini Necitite.
     submit: Actualizeaza
+    messages:
+      loud: Vei primi un email despre activitate in acest group.
+      normal: Vei primi un email despre propuneri in acest group.
+      quiet: Nu vei primi email pentru acest group.
+      mute: Group dezactivat.
   inbox:
     clear: Curata
+    latest: Cel mai nou
     unread: Necitit
+    closing_in: Inchidere
+  session_form:
+    email_label: Email
+    password_label: 'Parola:'
+    remember_me: Tine-ma minte
+    sign_in: Logare
   comment_form:
+    aria_label: Adauga un comentariu
+    attachments:
+      aria_label: Adauga un fisier
+      remove_attachment: Elimina fisierul
+    messages:
+      created: Comentariu adaugat.
+      replied: '{{name}} a fost notificat despre replica'
+      updated: Comentariu actualizat.
+      destroyed: Comentariu sters.
     edit_comment: Editeaza comentariul
     delete_comment: Sterge comentariu
+    cancel_reply: Anuleaza replica
     confirm_delete_message: Esti sigur ca vrei sa stergi acest comentariu?
+    confirm_delete: 'Da, sunt sigur'
+    in_reply_to: 'Replicandu-i lui <strong>{{name}}</strong>:'
+    submit_button:
+      label: Postare
+    private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
+    public_privacy_notice: Comentariul tau va fi vizibil tuturor pe web.
   navbar:
+    recent: Recent
     unread: Necitit
     groups: Grupuri
+    recent_title: Mergi la tablou de bord
+    unread_title: Vezi activitatea necitita
+    groups_title: Vezi grupul tau
+    start_thread: Creare discutie noua
+    notifications: Panoul notificarilor
+    user_actions: Actiuni utilizator
     user_options:
+      label: Optiuni utilizator
       contact_us: Contacteaza-ne
-      new_thread: Subiect nou
+      new_thread: Discutie noua
       new_group: Grup nou
       profile: Profil
+      email_settings: Setari email
       help: Ajutor
+      sign_out: Delogare
     search:
+      no_results: Nu s-a gasit nici o discutie
+      close: Inchide cautarea
       placeholder: Cauta
+      loading: Se incarca rezultatele...
       discussions: Discutii
       proposals: Propuneri
       comments: Comentarii
+  start_menu:
+    start_thread: Creaza o discutie
   notifications:
     header: Notificari
   position_buttons_panel:
@@ -144,14 +212,30 @@ ro:
     title_label: Titlu
     closes_at_label: Se inchide la
     details_label: Detalii
+  discussion_record:
+    created: 'Discutia {{title}} a fost creata cu succes in {{groupName}}'
   discussion_form:
+    messages:
+      created: Discutia a inceput
+      updated: Discutie actualizata
+    new_discussion_title: Creare discutie noua
+    edit_discussion_title: Editeaza discutie
+    discussion_helptext: O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..
     group_label: Grup
     title_label: Titlu
     context_label: Context
     privacy_label: Confidentialitate
+    privacy_public: Oricine poate vedea o discutie. Doar membrii pot participa.
+    privacy_private: 'Discutia va fi vizibila doar membrilor grupului {{group}}.'
+    privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
+    new_discussion_submit: Creaza o discutie
+    edit_discussion_submit: Actualizeaza discutie
   proposal_expanded:
     edit_proposal: Editeaza propunerea
     close_proposal: Inchide propunerea
+    closed_badge: Inchis
+  group_welcome_modal:
+    first_step: 'Esti <strong>coordinator</strong> grupului, similar unei gazde. Priveste videoul apoi bifeaza exemplele de discutii.'
   join_group_button:
     join_group: Alatură-te grupului
     ask_to_join_group: Cere sa fi inclus in grup
@@ -164,9 +248,16 @@ ro:
   group_page:
     thread_list:
       empty:
+        no_discussions_in_group: Acest grup nu are inca nici o discutie.
+        no_discussions_matching_filters_html: "Nici o discutie de aici nu se potriveste acestor filtre. <a href='%{link}'>Clear filters</a>."
+        no_public_discussions: Nu sunt discutii publice in acest grup.
+        discussions_are_private: Toate discutiile din acest grup sunt private.
+        join_group: 'Pentru a vedea discutiile private, e necesar sa intri in grup.'
+        request_membership: 'Pentru a vedea discutiile private, cere sa intri in grup.'
         membership_is_invitation_only: Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui membru.
         membership_is_invitation_by_admin_only: 'Pentru a te alatura acestui grup ai nevoie de o invitatie din pertea unui coordonator. '
     discussions: Discutii
+    discussions_placeholder: O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..
     invite_people: Invita oameni
     options_label: Optiuni
     options:
@@ -175,8 +266,33 @@ ro:
       title: Paraseste grupul
     volume:
       loud: Trimite email ori de cate ori exista activitate.
+      normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
+      normal_aria_description: 'Volumul notificarilor pentru acest grup este pozitionat la Normal. Vei primi emailuri doar pentru activitatea importanta, cum ar fi initierea unei discutii noi, ridicarea unei propuneri sau  stabilirea unui rezultat.'
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
+      mute_aria_description: 'Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.'
+  group_form:
+    privacy: Confidentialitate
+    group_privacy_open_description: 'oricine poate gasi grupul, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice.'
+    group_privacy_closed_description: 'oricine poate gasi grupul, poate vedea continutul acestuia, poate cere sa participe. Doar membrii pot vedea discutiile.'
+    group_privacy_closed_public_threads_description: 'oricine poate gasi grupul, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice sau private.'
+    group_privacy_secret_description: doar membrii invitati pot gasi acest grup si pot vedea discutiile.
+    confirm_change_to_secret: 'Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private.'
+    confirm_change_to_secret_subgroup: 'Daca vei continua, toate discutiile vor deveni private.'
+    confirm_change_to_public: 'Daca vei continua, toate discutiile vor deveni publice pe web.'
+    confirm_change_to_private_discussions_only: 'Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.'
+    subgroup_privacy_open_description: 'oricine poate gasi acest sub-grup, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice.'
+    subgroup_privacy_closed_description: 'oricine poate gasi acest sub-grup, poate vedea continutul acestuia, poate cere sa participe. Doar membrii pot vedea discutiile.'
+    subgroup_privacy_closed_public_threads_description: 'oricine poate gasi acest sub-grup, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice sau private.'
+    subgroup_privacy_secret_description: doar membrii invitati pot gasi acest sub-grup si pot vedea discutiile.
+    thread_privacy: Confidentialitatea discutiei
+    public_threads: Doar discutii publice
+    public_or_private_threads: Permite discutii publice si private
+    allow_public_threads: Permite discutii publice in acest grup
+    parent_members_can_see_discussions: 'Membrii {{parent}} pot vedea discutii.'
+    members_can_edit_discussions: Membrii pot actualiza contextul si titlul discutiei.
+    members_can_start_discussions: Membrii pot creare o discutie noua.
+    submit_update: Actualizeaza setarile
   membership_requests_page:
     approve: Aproba
     ignore: 'Ignora '
@@ -205,24 +321,78 @@ ro:
     username_label: Nume utilizator
     email_label: Email
     locale_label: Limba
+  email_settings_page:
+    header: Setari email
+    on_participation_label: Activitatea discutiei la care am participat
+    on_participation_description: 'Cand participi la o discutie, volumul se modifica la Inalt, astfel ca activitatea care urmeaza iti va fi transmisa prin email imediat.'
   dashboard_page:
     aria_label: Tablou de bord
+    no_threads:
+      show_all: Nu ai nici o discutie recenta.
+      show_participating: Nu ai participat la nici o discutie recenta.
+      show_starred: Nu ai nici o discutie cu steluta.
+      show_muted: Nu ai nici o discutie dezactivata.
+    view_recent: Vezi toate discuțiile recente?
+    load_more: Incarca mai multe discutii
     mark_as_read: Marcheaza ca citit
     filtering:
+      filter_threads: Filtreaza discutiile
+      filter_threads_aria_label: Filtreaza discutiile
+      all: Discuțiile recente
+      all_aria_label: Discutii recente in curs
+      all_description: Vezi discuțiile recente
+      starred: Discutiile cu steluta
+      starred_aria_label: Discutii in curs pe care le-am marcat ca importante
+      starred_description: Vezi doar discutii pe care le-ai marcat ca importante
+      participating: Discutii participative
+      participating_aria_label: Discutii in curs la care am participat
+      participating_description: Vezi doar discutii la care ai participat
       proposals: Propuneri
+      proposals_aria_label: Discutii in curs care au propuneri active
+      proposals_description: Vezi doar discutii care au propuneri active
+      muted: Dezactivat
+      muted_aria_label: Discutii dezactivate in curs
+      muted_description: Vezi doar discutii care au fost dezactivate
+    aria_thread:
+      title: 'Titlul discutiei: {{title}}.'
     threads_from:
+      group: Discutii de la
+      starred: Discutii marcate cu steluta
       today: Astazi
       yesterday: Ieri
+  star_toggle:
+    star: 'Marcheaza cu steluta discutia '
+  inbox_page:
+    no_threads: 'Woohoo! Ai citit toate discutiile din inbox.'
+    unread_threads: Discutii necitite
   discussion:
     proposals: Propuneri
     previous_proposals: Propuneri anterioare
     volume:
-      loud: Trimite email ori de cate ori exista activitate în acest fir.
+      loud: Trimite email ori de cate ori exista activitate în aceasta discutie.
+      loud_aria_description: Volumul notificarilor pentru aceasta discutie este pozitionat la Puternic. Inseamna ca vei primi email oridecateori exista o activitate in aceasta discutie.
       normal: 'Trimite e-mail doar atunci cand o propunere este creata, pe cale de a inchide, sau un rezultat este postat.'
-      quiet: Nu trimite email pentru acest fir.
-      mute: Ascunde acest fir din tabloul de comanda si notifica doar cand @va mentiona.
+      normal_aria_description: 'Volumul notificarilor pentru aceasta discutie este pozitionat la Normal. Vei primi emailuri cand va fi creata o propunere, sau va fi inchisa, sau va fi stabilit un rezultat.'
+      quiet: Nu trimite email pentru aceasta discutie.
+      quiet_aria_description: Volumul notificarilor pentru aceasta discutie este pozitionat la Incet. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau.
+      mute: Ascunde aceasta discutie din tabloul de comanda si notifica doar cand @va mentiona.
+      mute_aria_description: 'Volumul notificarilor pentru aceasta discutie este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar discutia va fi eliminata din tabloul tau de bord.'
   thread_group:
     aria_label: Numele grupului
+  thread_context:
+    aria_label: Contextul discutiei
+    thread_options: Optiunile discutiei
+  delete_thread_form:
+    title: Sterge discutia
+    body: Esti sigur ca doresti sa stergi aceasta discutie?
+    confirm: 'Da, sterge aceasta discutie'
+    messages:
+      success: Discutie stearsa
+  move_thread_form:
+    title: Muta discutia
+    confirm: Muta discutia
+    messages:
+      success: 'Aceasta discutie a fost mutata la {{name}}'
   delete_comment_dialog:
     title: Sterge comentariu
     question: Esti sigur ca vrei sa stergi acest comentariu?
@@ -231,6 +401,8 @@ ro:
     context_menu:
       edit_comment: Editeaza comentariul
       delete_comment: Sterge comentariu
+  discussion_edited_item:
+    title: '<strong>{{actor}}</strong> a actualizat titlul discutiei: <span>{{title}}</span>'
   contact_message_form:
     name_label: Nume
     email_label: Adresa ta de email

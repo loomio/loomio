@@ -1,5 +1,6 @@
 ga-IE:
   common:
+    confirm_discard_changes: Caith amach na hathruithe seo?
     time:
       am: rn
       pm: in
@@ -10,8 +11,12 @@ ga-IE:
     group: Baicle
     groups: Baiclí
     privacy:
+      privacy: Príobháideachas
       public: Poiblí
+      open: Ar oscailt
+      closed: Dúnta
       private: Príobháideach
+      secret: Rúnda
     selected: Roghnaithe
     date_range:
       today: Inniu
@@ -19,27 +24,35 @@ ga-IE:
       thisweek: An tSeachtain Seo
       thismonth: An Mhí Seo
       older: Níos Sine Fós
+    more_help: Tuilleadh cabhair
     models:
       proposal: Togra
     action:
       save: Taisc
       save_changes: Taisc na hathruithe
+      update_settings: Nuashonraigh na socruithe
       reply: Freagair é
       edit: Cuir in eagar é
       like: Is maith liom é
       unlike: Ní maith liom é
+      update: Nuashonraigh é
       cancel: Cealaigh
       show_more: Taispeáin tuilleadh
       view_all: Féach Orthu Uile
       new_thread: Snáith nua
       add_subgroup: Cuir fobhaicle leis
       loading: Ag luchtú
+      uploading: Ag uasluchtú
+    formatting_help:
+      label: Cabhair le formáidiú
+      title: Foghlaim conas feidhm a bhaint as Markdown chun do théacs ar Loomio a fhormáidiú
   error_page:
     forbidden: Níl cead agat é sin a dhéanamh.
     page_not_found: "Theip orainn sin a aimsiú. B'fhéidir gur scriosadh é nó bogadh é."
     internal_server_error: Is dona linn seo. Tá rud éigin cearr. Déan arís é le do thoil.
   start_proposal_card:
     title: Tosaigh togra
+    helptext: An bhfuil tú réidh chun cinneadh a dhéanamh?
   proposal_outcome_panel:
     heading: Toradh
     set_outcome_hint: Bain feidhm as an áit seo chun toradh an togra a chur in iúl do chách.
@@ -53,15 +66,32 @@ ga-IE:
     publish_outcome: Foilsigh an toradh
     messages:
       created: Foilsíodh an toradh
+      updated: Nuashonraíodh an toradh
   previous_proposals_card:
     heading: Tograí Roimhe Seo
+  previous_proposals_page:
+    heading: Tograí roimhe seo
   proposal_collapsed:
     expand: Fairsingigh
+    outcome: 'Toradh: {{outcome}}'
   volume_levels:
     loud: Ard
     normal: Gnáth
     quiet: Ciúin
     mute: Gan fhuaim
+    unmute: Díbhalbhaigh é
+  thread_volume_card:
+    heading: Fógraí ón Snaith
+    body:
+      loud: 'Seol ríomhphost faoi gach rud: seolfar ríomhphost chugat gach uair a tharlaíonn rud éigin sa tsnaith seo.'
+    change_volume_link: Athraigh
+  thread_volume_form:
+    header: Fógraí ón Snaith
+    submit: Nuashonraigh é
+  group_volume_card:
+    change_volume_link: Athraigh
+  group_volume_form:
+    submit: Nuashonraigh é
   inbox:
     clear: Glan
     latest: Is déanaí
@@ -105,6 +135,7 @@ ga-IE:
       profile: Beathaisnéisín
       email_settings: Socruithe ríomhphoist
       help: Cabhair
+      sign_out: Scoir
     search:
       close: Dún an clár cuardaigh
       placeholder: Cuardaigh
@@ -215,6 +246,7 @@ ga-IE:
     extend_proposal: Athraigh an t-am a dhúnfar an togra
     edit_proposal: Leasaigh an togra
     close_proposal: Dún an togra
+    closed_badge: Dúnta
   proposal_position_yes: Aontaigh
   proposal_position_abstain: Staon
   proposal_position_no: Easaontaigh
@@ -222,6 +254,9 @@ ga-IE:
   group_welcome_modal:
     heading: Fáilte go dtí do bhaicle nua
     ok_got_it: 'Maith go leor, tuigim é!'
+  group_cover_modal:
+    heading: Grianghraf cumhdaigh nua
+    upload_link: Uasluchtaigh an grianghraf cumhdaigh nua
   join_group_button:
     join_group: Cláraigh leis an mbaicle
     ask_to_join_group: Iarr cead dul isteach sa bhaicle
@@ -256,6 +291,7 @@ ga-IE:
     description_placeholder: Bain feidhm as an áit seo chun cur síos a dhéanamh ar an mbaicle le go mbeidh a fhios ag na comhaltaí cén fáth a bhfuil siad anseo.
     discussions: Pléití
     discussions_placeholder: Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.
+    members: Comhaltaí
     members_placeholder: 'Is tusa an t-aon duine anseo: tabhair cuirí do dhaoine bheith leat!'
     member_options: Roghanna na gcomhaltaí
     subgroups: Fobhaiclí
@@ -265,6 +301,7 @@ ga-IE:
     options_label: Roghanna
     options:
       label: Roghanna
+      leave_group: Fág an bhaicle seo
     deactivate_group:
       title: Cuir deireadh leis an mbaicle
       question: An bhfuil tú cinnte gur mian leat an bhaicle seo a scoir?
@@ -281,6 +318,28 @@ ga-IE:
       normal: 'Seol an ghníomhaíocht is tábhachtaí chugam i ríomhphost: Snáitheanna agus tograí nua, torthaí agus araile.'
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
       mute: Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom.
+  confirm_gift_plan_modal:
+    got_it: 'Tuigim é!'
+    go_back: Téigh siar
+  choose_plan_modal:
+    remind_me_later: Meabhraigh dom é níos déanaí
+    standard_price_html: |
+      US <strong>$19</strong>/míosa<br><span>nó</span> $190/bliana
+    select: Roghnaigh seo
+  subscription_success_modal:
+    contact_link: déan teagmháil linn.
+    sign_off: ❤ ó fhoireann Loomio
+    ok_got_it: 'Tuigim é!'
+  group_form:
+    start_group_heading: Cuir baicle ar bun
+    description: Cur síos
+    privacy: Príobháideachas
+    how_do_people_join: Conas mar is féidir le daoine clárú?
+    permissions: Ceadanna
+    submit_start_group: Cuir baicle ar bun
+    submit_update: Nuashonraigh na socruithe
+  group_help_card:
+    title: Cabhair
   membership_requests_page:
     heading: Iarratais le bheith mar chomhalta
     approve: Ceadaigh
@@ -290,6 +349,9 @@ ga-IE:
     messages:
       request_approved_success: Iarratas le bheith mar chomhalta ceadaithe
       request_ignored_success: Déanadh neamhaird ar iarratas le bheith mar chomhalta
+  group_previous_proposals_card:
+    heading: Tograí Roimhe Seo
+    see_more: Féach tuilleadh
   invitation:
     invite_people: Tabhair Cuireadh Do Dhaoine
     find_people: Aimsigh daoine
@@ -416,6 +478,7 @@ ga-IE:
       you_voted: 'Is mar seo a chaith tú do ghuth: {{position}}.'
     threads_from:
       group: Snáitheanna
+      proposals: Tograí
       today: Inniu
       yesterday: Inné
       thisweek: Ón tseachtain seo
@@ -451,6 +514,13 @@ ga-IE:
   thread_context:
     aria_label: Comhthéacs na snáithe
     thread_options: Roghanna na snáithe
+    notifications: Fógraí
+    edit_thread: Cuir in eagar é
+    move_thread: Bog é
+    delete_thread: Scrios
+  delete_thread_form:
+    title: Scriosadh an tsnáith
+    body: An bhfuil tú cinnte gur mian leat an tsnáith seo a scriosadh?
   activity_card:
     new_activity: Gníomhaíocht Nua
     attachment_display:
@@ -512,3 +582,5 @@ ga-IE:
     informal_groups: Dreamanna neamhnósúla
     informal_groups_desc: "Iarrfar ar chomhaltaí do bhaicle pé mhéad a bhfuil sé d'acmhainn acu a íoc"
     informal_groups_examples: 'm.sh. teaghlaigh, gluaiseachtaí comhdhaonnacha, comharghnónna'
+  angular:
+    give_feedback: Tabhair aiseolas dúinn
