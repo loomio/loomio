@@ -36,7 +36,6 @@ describe 'Discussion Page', ->
       expect(flashHelper.flashMessage()).toContain('Thread has been moved to Point Break')
 
   describe 'delete thread', ->
-
     it 'lets coordinators and thread authors delete threads', ->
       threadPage.openThreadOptionsDropdown()
       threadPage.selectDeleteThreadOption()
