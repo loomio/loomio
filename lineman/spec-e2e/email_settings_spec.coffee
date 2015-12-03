@@ -1,4 +1,4 @@
-ddescribe 'Email settings', ->
+describe 'Email settings', ->
   page = require './helpers/page_helper.coffee'
   emailSettingsHelper = require './helpers/email_settings_helper.coffee'
 

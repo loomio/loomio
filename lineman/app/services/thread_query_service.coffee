@@ -51,6 +51,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, CurrentUser)
         when 'inbox'
           view.applyFind(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
           view.applyWhere (thread) -> thread.isUnread()
+          filters.push('show_not_muted')
 
       _.each filters, (filter) ->
         switch filter

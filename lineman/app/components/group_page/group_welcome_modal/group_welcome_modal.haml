@@ -5,7 +5,8 @@
 
   .modal-body
     %p{translate: 'group_welcome_modal.first_step'}
-    <iframe class="group-weclome-modal__video" src="https://www.youtube.com/embed/pF-wpXo8Rdw?showinfo=0&nologo=1" frameborder="0" allowfullscreen></iframe>
+    .lmo-blank{ng-if: 'showVideo'}
+      %iframe.group-welcome-modal__video{src: "https://www.youtube.com/embed/pF-wpXo8Rdw?showinfo=0&nologo=1", frameborder: '0', allowfullscreen=''}
     %p{translate: 'group_welcome_modal.second_step'}
 
   .modal-footer.lmo-clearfix

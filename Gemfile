@@ -4,7 +4,7 @@ ruby '2.2.3'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 gem 'rails', '~> 4.2.5'
 gem 'rake'
-gem 'pg', '~> 0.18.2'
+gem 'pg', '~> 0.18.3'
 gem 'pg_search', '~> 1.0.4'
 gem 'haml-rails', '~> 0.9.0'
 gem 'devise', '~> 3.4.1'
@@ -66,15 +66,8 @@ gem 'ahoy_matey'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'simple-rss'
-# might need this
-#gem 'activeuuid', '>= 0.5.0'
-
 gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
-
-# consider uncommenting these when we want to mess around with json parsing
-#gem 'oj'
-#gem 'oj_mimic_json'
 
 group :development, :test do
   gem 'minitest'

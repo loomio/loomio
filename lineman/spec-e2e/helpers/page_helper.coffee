@@ -24,6 +24,9 @@ module.exports = new class PageHelper
   fillIn: (selector, value) ->
     element(By.css(selector)).clear().sendKeys(value)
 
+  expectInputValue: (selector, value) ->
+    expect(element(By.css(selector)).getAttribute('value')).toContain(value)
+
   expectText: (selector, value) ->
     expect(element(By.css(selector)).getText()).toContain(value)
 

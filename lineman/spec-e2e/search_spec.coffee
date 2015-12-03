@@ -1,14 +1,13 @@
 describe 'Search', ->
 
-  navbar = require './helpers/navbar.coffee'
-  threadPage = require './helpers/thread_helper.coffee'
+  page = require './helpers/page_helper.coffee'
 
   describe 'searching for a thread', ->
     beforeEach ->
-      threadPage.load()
+      page.loadPath('setup_discussion')
 
     it 'searches for and loads a thread by title', ->
-      navbar.clickRecent()
-      navbar.enterSearchQuery('what star')
-      navbar.clickFirstSearchResult()
-      expect(threadPage.discussionTitle().getText()).toContain("What star sign are you?")
+      page.click('.lmo-navbar__recent')
+      page.fillIn('.navbar-search-input', 'what star')
+      page.click('.navbar-search-results a.selector-list-item-link')
+      page.expectText('.thread-context', "What star sign are you?")
