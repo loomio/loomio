@@ -54,13 +54,11 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
       per:    @perPage).then @updateQueries
   LoadingService.applyLoadingFunction @, 'loadMore'
 
-  @loading = -> !AppConfig.membershipsLoaded
-
   @setFilter = (filter = 'show_all') =>
     @filter = filter
     @updateQueries()
     @loadMore() if @loaded[@filter] == 0
-  @setFilter() unless @loading()
+  @setFilter()
 
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
   $scope.$on 'homePageClicked', => @setFilter()
