@@ -43,6 +43,8 @@ script:
   - RAILS_ENV=test bundle exec rails server > /dev/null &
   - cd lineman && lineman spec-ci
   - lineman run & sleep 10
+  - node -v
+  - npm -v
   - node node_modules/protractor/lib/cli config/spec-e2e.coffee --harmony
   - cd ../
 
