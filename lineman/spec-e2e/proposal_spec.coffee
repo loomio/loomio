@@ -1,4 +1,4 @@
-describe 'Proposals', ->
+ddescribe 'Proposals', ->
 
   threadHelper = require './helpers/thread_helper.coffee'
   proposalsHelper = require './helpers/proposals_helper.coffee'
