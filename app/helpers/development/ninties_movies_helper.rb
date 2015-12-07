@@ -194,6 +194,7 @@ module Development::NintiesMoviesHelper
     end
     @pending_invitation
   end
+
   def setup_all_notifications_work
     #'comment_liked'
     comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')

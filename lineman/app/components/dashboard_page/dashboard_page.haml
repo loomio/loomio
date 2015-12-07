@@ -1,6 +1,5 @@
 .lmo-one-column-layout
-  %loading{ng-if: 'dashboardPage.loading()'}
-  %main.dashboard-page.lmo-row{ng-if: '!dashboardPage.loading()'}
+  %main.dashboard-page.lmo-row
     %section.dashboard-page__options{aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
       .dashboard-page__filter-dropdown{uib-dropdown: ''}
         %button.lmo-btn--nude{uib-dropdown-toggle: ''}

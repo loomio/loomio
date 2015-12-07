@@ -309,6 +309,8 @@ class DevelopmentController < ApplicationController
   def cleanup_database
     User.delete_all
     Group.delete_all
+    Membership.delete_all
+    
     ActionMailer::Base.deliveries = []
   end
 end
