@@ -21,7 +21,7 @@ install:
   - npm install -g protractor
   - npm install
   - bower install
-  - webdriver-manager update
+  - webdriver-manager update --standalonee
   - cd ..
 
 branches:
@@ -43,7 +43,7 @@ script:
   - RAILS_ENV=test bundle exec rails server > /dev/null &
   - cd lineman && lineman spec-ci
   - lineman run & sleep 10
-  - node node_modules/protractor/lib/cli config/spec-e2e.coffee 
+  - node node_modules/protractor/lib/cli config/spec-e2e.coffee
   - cd ../
 
 addons:
