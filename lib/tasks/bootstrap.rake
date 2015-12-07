@@ -16,7 +16,7 @@ namespace :bootstrap do
     sh 'bundle install'
     sh 'npm install -g lineman' unless lineman_installed?
     sh 'npm install -g bower' unless bower_installed?
-    sh 'bower install'
+    sh 'cd lineman && bower install'
   end
 
   desc "Create database.yml file"
@@ -64,7 +64,6 @@ namespace :bootstrap do
   end
 
   private
-
 
   def npm_installed?
     `which npm`
