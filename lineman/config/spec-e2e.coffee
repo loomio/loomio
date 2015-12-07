@@ -3,6 +3,7 @@ exports.config =
   onPrepare: ->
     jasmine.getEnv().addReporter(new ScreenShotReporter(
       baseDirectory: '/tmp/screenshots'
+      takeScreenShotsOnlyForFailedSpecs: true
     ))
   # ----- How to setup Selenium
   # There are three ways to specify how to use Selenium. Specify one of the
