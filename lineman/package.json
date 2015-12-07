@@ -16,8 +16,8 @@
     "loomio-angular-router": "0.5.9"
   },
   "engines": {
-    "node": "~>0.10.5",
-    "npm": "~>1.2.18"
+    "node": "~>4.2.3",
+    "npm": "~>2.14.4"
   },
   "devDependencies": {
     "lodash": "^3.10.1",
