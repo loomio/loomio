@@ -21,7 +21,7 @@ install:
   - npm install -g protractor
   - npm install
   - bower install
-  - webdriver-manager update --standalonee
+  - webdriver-manager update --standalone
   - cd ..
 
 branches:
