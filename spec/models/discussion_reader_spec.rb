@@ -20,6 +20,13 @@ describe DiscussionReader do
     end
   end
 
+  describe 'viewed!' do
+    it 'publishes a simple serialized discussion' do
+      expect(MessageChannelService).to receive(:publish)
+      reader.viewed!
+    end
+  end
+
   describe "#first_unread_page" do
     before do
       Discussion.send(:remove_const, 'PER_PAGE')

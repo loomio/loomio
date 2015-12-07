@@ -1,43 +1,19 @@
-class DiscussionSerializer < ActiveModel::Serializer
+class DiscussionSerializer < Simple::DiscussionSerializer
 
-  def self.attributes_from_reader(*attrs)
-    attrs.each do |attr|
-      case attr
-      when :discussion_reader_id then define_method attr, -> { reader.id }
-      else                            define_method attr, -> { reader.send(attr) }
-      end
-      define_method :"include_#{attr}?", -> { reader.present? }
-    end
-    attributes *attrs
-  end
-
-  embed :ids, include: true
-  attributes :id,
-             :key,
-             :title,
-             :description,
+  attributes :key,
              :last_item_at,
              :last_comment_at,
              :last_activity_at,
              :created_at,
              :updated_at,
-             :items_count,
-             :salient_items_count,
-             :comments_count,
-             :private,
              :archived_at,
-             :created_at,
-             :updated_at,
-             :first_sequence_id,
-             :last_sequence_id
+             :comments_count,
+             :private
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
                          :last_read_at,
                          :read_comments_count,
-                         :read_items_count,
-                         :read_salient_items_count,
-                         :last_read_sequence_id,
                          :participating,
                          :starred
 
