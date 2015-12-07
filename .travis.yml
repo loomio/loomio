@@ -47,6 +47,11 @@ script:
   - cd ../
 
 addons:
+  artifacts:
+    paths:
+      - /tmp/screenshots
+    debug: true
+
   postgresql: "9.4"
   apt:
     sources:
