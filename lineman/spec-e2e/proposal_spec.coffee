@@ -1,4 +1,4 @@
-ddescribe 'Proposals', ->
+describe 'Proposals', ->
 
   threadHelper = require './helpers/thread_helper.coffee'
   proposalsHelper = require './helpers/proposals_helper.coffee'
@@ -74,8 +74,7 @@ ddescribe 'Proposals', ->
       expect(proposalsHelper.currentExpandedProposal()).toContain('Closed a few seconds ago')
 
   describe 'setting a proposal outcome', ->
-
-    it 'creates a proposal outcome', ->
+    iit 'creates a proposal outcome', ->
       threadHelper.loadWithClosedProposal()
       proposalsHelper.clickProposalExpandLink()
       proposalsHelper.setProposalOutcomeBtn().click()

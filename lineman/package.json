@@ -31,7 +31,6 @@
     "grunt-sass": "1.1.0-beta",
     "lineman": "^0.36.6",
     "lodash": "^3.10.1",
-    "protractor": ">=1.4.0",
     "protractor-screenshot-reporter": "0.0.5",
     "selenium-webdriver": "~2.44.0"
   }
