@@ -14,10 +14,9 @@ describe 'Subscription flow', ->
     it 'lets coordinator choose gift plan', ->
       page.loadPath('setup_group_on_trial_admin')
       page.click('.trial-card__choose-plan-button',
-                 '.choose-plan-modal__select-button--gift')
-      page.expectText('.confirm-gift-plan-modal',
-                      'Gift plan selected')
-      page.click('.confirm-gift-plan-modal__submit-button')
+                 '.choose-plan-modal__select-button--gift',
+                 '.confirm-gift-plan-modal__checkbox',
+                 '.confirm-gift-plan-modal__submit-button')
       page.expectText('.gift-card', 'GIFT PLAN')
 
   describe 'group with expired trial', ->

@@ -20,9 +20,6 @@
     "npm": "~>1.2.18"
   },
   "devDependencies": {
-    "lodash": "^3.10.1",
-    "protractor": ">=1.4.0",
-    "selenium-webdriver": "~2.44.0",
     "grunt": "~0.4.5",
     "grunt-angular-templates": "0.5.7",
     "grunt-concat-sourcemap": "~0.4.3",
@@ -32,6 +29,10 @@
     "grunt-haml": "^0.9.0",
     "grunt-ng-annotate": "latest",
     "grunt-sass": "1.1.0-beta",
-    "lineman": "^0.36.6"
+    "lineman": "^0.36.6",
+    "lodash": "^3.10.1",
+    "protractor": ">=3.0.0",
+    "protractor-jasmine2-screenshot-reporter": "^0.1.7",
+    "selenium-webdriver": "~2.44.0"
   }
 }

@@ -1,5 +1,6 @@
 describe 'Proposals', ->
 
+  page = require './helpers/page_helper.coffee'
   threadHelper = require './helpers/thread_helper.coffee'
   proposalsHelper = require './helpers/proposals_helper.coffee'
   emailHelper = require './helpers/email_helper.coffee'
@@ -25,9 +26,9 @@ describe 'Proposals', ->
       proposalsHelper.clickAgreeBtn()
       proposalsHelper.setVoteStatement('This is a good idea')
       proposalsHelper.submitVoteForm()
-      expect(proposalsHelper.positionsList()).toContain('Patrick Swayze')
-      expect(proposalsHelper.positionsList()).toContain('agreed')
-      expect(proposalsHelper.positionsList()).toContain('This is a good idea')
+      page.expectText('.proposal-positions-panel__list', 'Patrick Swayze')
+      page.expectText('.proposal-positions-panel__list', 'agreed')
+      page.expectText('.proposal-positions-panel__list', 'This is a good idea')
 
   describe 'updating a vote on a proposal', ->
     beforeEach ->
@@ -74,6 +75,10 @@ describe 'Proposals', ->
       expect(proposalsHelper.currentExpandedProposal()).toContain('Closed a few seconds ago')
 
   describe 'setting a proposal outcome', ->
+    beforeEach ->
+      # resize the window for the freak case of navbar covering the button and
+      # the driver not finding the element
+      browser.driver.manage().window().setSize(1280, 1024);
 
     it 'creates a proposal outcome', ->
       threadHelper.loadWithClosedProposal()
