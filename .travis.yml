@@ -41,7 +41,7 @@ before_script:
   - bundle exec rake db:setup RAILS_ENV=test
 
 after_script:
-  - bundle exec ruby travis_upload_screenshots.rb
+  - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 script:
   - bundle exec rake travis
