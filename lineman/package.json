@@ -12,17 +12,17 @@
     "angular-ui-bootstrap": "0.14.3",
     "angular_record_store": "git://github.com/loomio/angular_record_store.git#2.3.2",
     "bootstrap": "^3.3.5",
-    "coffee-script": "^1.8.0",
+    "coffee-script": "^1.10.0",
     "loomio-angular-router": "0.5.9"
   },
   "engines": {
-    "node": "~>0.10.5",
-    "npm": "~>1.2.18"
+    "node": "~>4.2.3",
+    "npm": "~>2.14.4"
   },
   "devDependencies": {
     "lodash": "^3.10.1",
-    "protractor": ">=1.4.0",
-    "selenium-webdriver": "~2.44.0",
+    "protractor": ">=3.0.0",
+    "selenium-webdriver": "~2.48.2",
     "grunt": "~0.4.5",
     "grunt-angular-templates": "0.5.7",
     "grunt-concat-sourcemap": "~0.4.3",
