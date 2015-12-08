@@ -15,10 +15,10 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
+  - nvm install 4.2
+  - nvm use 4.2
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd lineman
-  - npm install -g n
-  - n stable
   - npm install -g bower
   - npm install -g protractor
   - npm install
