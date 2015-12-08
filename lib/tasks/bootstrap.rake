@@ -1,17 +1,19 @@
 namespace :bootstrap do
   desc 'Retrieve dependencies needed for project to run'
   task :dependencies do
-    unless bundler_installed?
-      puts "Project requires bundler to run: 'gem install bundler'"
-      puts "Quitting .."
-      next
-    end
-
     unless npm_installed?
       puts "Project requires npm to run: 'brew install npm' "
       puts "Quitting .."
       next
     end
+
+    unless pg_installed?
+      puts "Project requires Postgresql to run, please install it"
+      puts "Quitting .."
+      next
+    end
+
+    sh 'gem install bundler' unless bundler_installed?
 
     sh 'bundle install'
     sh 'npm install -g lineman' unless lineman_installed?
@@ -50,6 +52,11 @@ namespace :bootstrap do
   end
 
   private
+
+  def pg_installed?
+    `postgres --version`
+    $?.success?
+  end
 
   def npm_installed?
     `which npm`
