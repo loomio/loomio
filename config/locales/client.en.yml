@@ -793,6 +793,7 @@ en:
     title: Move thread
     body: 'Destination group:'
     confirm: Move thread
+    confirm_change_to_private_thread: '{{groupName}} is an open group. If you proceed, this thread will be made public.'
     messages:
       success: Thread has been moved to {{name}}
 
