@@ -4,6 +4,7 @@ module AngularHelper
       version: Loomio::Version.current,
       reportErrors: false,
       environment: Rails.env,
+      loadVideos: (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash: flash.to_h,
       currentUserId: current_user.id,
       currentUserLocale: current_user.locale,

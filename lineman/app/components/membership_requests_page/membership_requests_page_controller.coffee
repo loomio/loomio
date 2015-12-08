@@ -12,9 +12,7 @@ angular.module('loomioApp').controller 'MembershipRequestsPageController', ($rou
     , (error) ->
         $rootScope.$broadcast('pageError', {status: 403})
 
-
-  @init() if AppConfig.membershipsLoaded
-  $rootScope.$on('currentUserMembershipsLoaded', @init)
+  @init()
 
   @pendingRequests = =>
     @group.pendingMembershipRequests()
