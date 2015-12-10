@@ -53,6 +53,10 @@
   right: 44px;
 }
 
+.lmo-navbar__sign-in {
+  @include lmoBtnFeatured;
+}
+
 .lmo-navbar__item--selected {
   a{ color: $primary-text-color; }
   position: relative;

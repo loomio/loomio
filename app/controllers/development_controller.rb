@@ -150,6 +150,14 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def view_open_group_as_visitor
+    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
+                                membership_granted_upon: 'request',
+                                group_privacy: 'open')
+    @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    redirect_to group_url(@test_group)
+  end
+
   def setup_closed_group
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed')

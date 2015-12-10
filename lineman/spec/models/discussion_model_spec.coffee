@@ -17,7 +17,7 @@ describe 'DiscussionModel', ->
     group = recordStore.groups.importJSON(id: 1, name: 'group')
     author = recordStore.users.importJSON(id: 1, name: 'Sam')
 
-    discussion = recordStore.discussions.importJSON(id: 1, key: 'key', author_id: author.id, group_id: group.id, title: 'Hi', created_at: "2015-01-01T00:00:00Z", last_read_sequence_id: -1)
+    discussion = recordStore.discussions.importJSON(id: 1, key: 'key', discussion_reader_id: 1, author_id: author.id, group_id: group.id, title: 'Hi', created_at: "2015-01-01T00:00:00Z", last_read_sequence_id: -1)
     event = recordStore.events.importJSON(id: 1, sequence_id: 1, discussion_id: 1)
     otherEvent = recordStore.events.importJSON(id: 2, sequence_id: 2, discussion_id: 2)
 

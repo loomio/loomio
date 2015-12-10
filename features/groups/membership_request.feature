@@ -15,34 +15,12 @@ Feature: Request Membership to Group
     When I visit the subgroup page
     Then I should see that I need an invitation to join
 
-  Scenario: Vistor requests membership to approval required group
-    Given I am a visitor
-    And an approval required group exists
-    When I visit the group page
-    And I click "Ask to join group"
-    And I fill in and submit the Request membership form
-    Then I should see a flash message confirming my membership request
-
   Scenario: User requests membership to approval required group
     Given I am logged in
     And an approval required group exists
     When I visit the group page
     And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
-    Then I should see a flash message confirming my membership request
-
-  Scenario: Visitor cannot request membership to a group using email of existing member
-    Given I am a visitor
-    When I visit the request membership page for a group
-    And I fill in and submit the Request membership form using email of existing member
-    Then I should see a field error telling me I am already a member of the group
-
-  Scenario: Visitor requests membership, is ignored, then requests again
-    Given I am a visitor
-    And I have requested membership as a visitor and been ignored
-    When I visit the group page
-    And I click "Ask to join group"
-    And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
   Scenario: User with pending membership request cannot submit new request
@@ -124,4 +102,3 @@ Feature: Request Membership to Group
     When I ignore the membership request
     Then I should see a flash message confirming the membership request was ignored
     And I should no longer see the membership request in the list
-

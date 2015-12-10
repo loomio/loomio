@@ -175,3 +175,6 @@ module.exports = new class ThreadHelper
 
   submitChangeVolumeForm: ->
     element(By.css('.change-volume-form__submit')).click()
+
+  signInButton: ->
+    element(By.css('.lmo-navbar__sign-in')).getText()

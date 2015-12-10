@@ -202,6 +202,7 @@ en:
       discussions: 'Threads'
       proposals: 'Proposals'
       comments: 'Comments'
+    sign_in: 'Sign In'
 
   start_menu:
     title: 'Action button'
