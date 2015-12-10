@@ -72,6 +72,7 @@ describe 'Discussion Page', ->
   describe 'commenting', ->
     beforeEach ->
       page.loadPath('setup_discussion')
+      browser.driver.manage().window().setSize(1280, 1024);
 
     it 'adds a comment', ->
       threadPage.addComment('hi this is my comment')

@@ -91,7 +91,7 @@ When(/^I follow an invitation link I have already used$/) do
   @invitation = InvitationService.create_invite_to_join_group(group: @group,
                                                               inviter: @coordinator,
                                                               recipient_email: 'jim@jimmy.com')
-  AcceptInvitation.and_grant_access!(@invitation, @user)
+  InvitationService.redeem(@invitation, @user)
   visit invitation_path(@invitation)
 end
 
@@ -110,7 +110,7 @@ When(/^I click an invitation link I have already used$/) do
   @invitation = InvitationService.create_invite_to_join_group(group: @group,
                                                               inviter: @coordinator,
                                                               recipient_email: 'jim@jimmy.com')
-  AcceptInvitation.and_grant_access!(@invitation, @user)
+  InvitationService.redeem(@invitation, @user)
   visit invitation_path(@invitation)
 end
 

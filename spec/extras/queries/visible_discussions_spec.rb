@@ -40,7 +40,7 @@ describe Queries::VisibleDiscussions do
     end
   end
 
-  describe 'unread', focus: true do
+  describe 'unread' do
     before do
       group.add_member! author
       group.add_member! user

@@ -16,7 +16,7 @@ describe API::CommentsController do
     describe 'create' do
       let(:comment_params) { {discussion_id: discussion.id, body: 'content'} }
 
-      context 'success', focus: true do
+      context 'success' do
         it "creates a comment" do
           request.headers['Loomio-User-Id'] = user.id
           request.headers['Loomio-Email-API-Key'] = user.email_api_key

@@ -283,7 +283,7 @@ describe Discussion do
         discussion.reload
       end
 
-      it "decrements correctly", focus: true do
+      it "decrements correctly" do
         expect(discussion.items_count).to be 0
         expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0

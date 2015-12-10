@@ -70,14 +70,21 @@ class Ability
       (user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export'))
     end
 
-    can [:members_autocomplete, :set_volume, :make_draft, :see_members, :move_discussions_to, :view_previous_proposals], Group do |group|
+    can [:members_autocomplete,
+         :set_volume,
+         :see_members,
+         :make_draft,
+         :move_discussions_to,
+         :view_previous_proposals], Group do |group|
       user_is_member_of?(group.id)
     end
 
     can [:add_members,
          :invite_people,
-         :manage_membership_requests], Group do |group|
-      (group.members_can_add_members? && user_is_member_of?(group.id)) || user_is_admin_of?(group.id)
+         :manage_membership_requests,
+         :view_shareable_invitation], Group do |group|
+      (group.members_can_add_members? && user_is_member_of?(group.id)) ||
+      user_is_admin_of?(group.id)
     end
 
     # please note that I don't like this duplication either.
@@ -95,8 +102,9 @@ class Ability
       # inwhich case we need to confirm membership and permission
 
       group.is_parent? ||
-       ((user_is_member_of?(group.parent.id) && group.parent.members_can_create_subgroups?)) ||
-       user_is_admin_of?(group.parent.id)
+      user_is_admin_of?(group.parent_id) ||
+      (user_is_member_of?(group.parent_id) &&
+       group.parent.members_can_create_subgroups?)
     end
 
     can :join, Group do |group|
