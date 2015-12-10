@@ -3,11 +3,13 @@ describe API::InvitationsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
+  let(:deactivated) { create :user, deactivated_at: 2.days.ago }
   let(:contact) { create :contact, user: user }
   let(:another_group) { create :group }
   let(:another_group_member) { create :user }
   let(:group) { create :group }
   let(:user_invitable)    { { id: another_user.id, type: :user } }
+  let(:deactivated_invitable) { { id: deactivated.id, type: :user } }
   let(:group_invitable)   { { id: another_group.id, type: :group } }
   let(:contact_invitable) { { email: contact.email, type: :contact } }
   let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
@@ -30,7 +32,12 @@ describe API::InvitationsController do
         post :create, group_id: group.id, invitations: [user_invitable], invite_message: 'A user message', format: :json
         expect(group.members.pluck(:id)).to include another_user.id
       end
-      
+
+      it 'does not create a membership invitation for a deactivated user' do
+        post :create, group_id: group.id, invitations: [deactivated_invitable], invite_message: 'A user message', format: :json
+        expect(group.members.pluck(:id)).to_not include deactivated.id
+      end
+
       it 'creates membership invitation for all members of a group' do
         post :create, group_id: group.id, invitations: [group_invitable], invite_message: 'A group message', format: :json
         expect(group.members.pluck(:id)).to include another_user.id

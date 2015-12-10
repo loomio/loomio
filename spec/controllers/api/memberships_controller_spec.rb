@@ -144,6 +144,14 @@ describe API::MembershipsController do
         expect(groups).to include another_group.id
       end
 
+      it 'does not return deactivated users' do
+        alien_named_biff.deactivate!
+        get :invitables, group_id: group.id, q: 'beef', format: :json
+        json = JSON.parse(response.body)
+        users = json['users'].map { |c| c['id'] }
+        expect(users).to_not include alien_named_biff.id
+      end
+
       it 'includes the given search fragment' do
         get :invitables, group_id: group.id, q: 'beef', format: :json
         json = JSON.parse(response.body)
