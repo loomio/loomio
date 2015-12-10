@@ -167,7 +167,6 @@ published_at "2015-11-18 14:28:30"
     name { Faker::Name.name }
     admin_name { Faker::Name.name }
     admin_email { Faker::Internet.email }
-    payment_plan { 'subscription' }
   end
 
   factory :invitation do

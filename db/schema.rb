@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126005440) do
+ActiveRecord::Schema.define(version: 20151210000108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -466,8 +466,8 @@ ActiveRecord::Schema.define(version: 20151126005440) do
   add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
 
   create_table "invitations", force: :cascade do |t|
-    t.string   "recipient_email"
-    t.integer  "inviter_id"
+    t.string   "recipient_email",                 null: false
+    t.integer  "inviter_id",                      null: false
     t.boolean  "to_be_admin",     default: false, null: false
     t.string   "token",                           null: false
     t.integer  "accepted_by_id"
@@ -480,7 +480,6 @@ ActiveRecord::Schema.define(version: 20151126005440) do
     t.string   "invitable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "single_use",      default: true,  null: false
   end
 
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
@@ -663,6 +662,7 @@ ActiveRecord::Schema.define(version: 20151126005440) do
     t.date    "activated_at"
     t.integer "chargify_subscription_id"
     t.string  "plan"
+    t.string  "payment_method",           default: "chargify", null: false
   end
 
   add_index "subscriptions", ["kind"], name: "index_subscriptions_on_kind", using: :btree
