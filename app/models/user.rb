@@ -332,10 +332,6 @@ class User < ActiveRecord::Base
     (group_ids & other_user.group_ids).present?
   end
 
-  def belongs_to_manual_subscription_group?
-    groups.manual_subscription.any?
-  end
-
   def show_start_group_button?
     !groups.cannot_start_parent_group.any?
   end

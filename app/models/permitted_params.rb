@@ -59,13 +59,13 @@ class PermittedParams < Struct.new(:params)
   end
 
   def group_request_attributes
-    [:name, :admin_name, :admin_email, :payment_plan, :description, :is_commercial]
+    [:name, :admin_name, :admin_email, :description, :is_commercial]
   end
 
   def group_attributes
     [:parent_id, :name, :visible_to, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
      :members_can_add_members, :members_can_edit_discussions, :members_can_edit_comments, :motions_can_be_edited,
-     :description, :next_steps_completed, :payment_plan,
+     :description, :next_steps_completed,
      :is_visible_to_parent_members, :parent_members_can_see_discussions,
      :membership_granted_upon, :cover_photo, :logo, :category_id, :is_commercial,
      :members_can_raise_motions, :members_can_vote,  :members_can_start_discussions, :members_can_create_subgroups]

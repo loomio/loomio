@@ -24,6 +24,7 @@ class SubscriptionService
     raise 'unable to fetch subscription' unless    chargify_subscription = chargify_service(subscription_id).fetch!
     @subscription.update_column :trial_ended_at,   chargify_subscription['activated_at'] if @subscription.kind == 'trial'
     @subscription.update kind:                     :paid,
+                         payment_method:           :chargify,
                          activated_at:             chargify_subscription['activated_at'],
                          expires_at:               chargify_subscription['expires_at'],
                          plan:                     chargify_subscription['product']['handle'],
@@ -34,6 +35,7 @@ class SubscriptionService
     return true if @subscription.plan == product_handle
     raise 'unable to update subscription' unless   chargify_subscription = chargify_service.change_plan!(product_handle)
     @subscription.update activated_at:             chargify_subscription['activated_at'],
+                         payment_method:           :chargify,
                          expires_at:               chargify_subscription['expires_at'],
                          plan:                     chargify_subscription['product']['handle']
   end

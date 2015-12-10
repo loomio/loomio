@@ -305,23 +305,4 @@ describe User do
       expect(user.in_same_group_as?(other_user)).to be false
     end
   end
-
-  describe "belongs_to_manual_subscription_group?" do
-    it "returns true if user is a member of a manual subscription group" do
-      group.update_attribute :payment_plan, 'manual_subscription'
-      group.add_member! user
-      user.belongs_to_manual_subscription_group?.should be true
-    end
-
-    it "returns false if user is a member of a subscription group" do
-      group.update_attribute :payment_plan, 'subscription'
-      group.add_member! user
-      user.belongs_to_manual_subscription_group?.should be false
-    end
-
-    it "returns false if user is a member of a paying group" do
-      group.update_attribute :payment_plan, 'pwyc'
-      user.belongs_to_manual_subscription_group?.should be false
-    end
-  end
 end
