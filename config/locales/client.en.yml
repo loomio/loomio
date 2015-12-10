@@ -27,7 +27,9 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
+    copied: 'Copied'
     action:
+      close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
@@ -588,24 +590,39 @@ en:
     see_more: See more
 
 
-  invitation:
+  invitation_form:
     invite_people: 'Invite People'
-    find_people: 'Find people'
-    import_contacts_header: 'Connect your address book'
-    import_contacts_message: 'Inviting people to Loomio is much easier if you import your contacts from Google.'
-    import_contacts: 'Import contacts'
-    instructions: 'Enter names or email addresses'
-    invitation_message: 'Invitation Message'
-    remove_invite: 'Remove invitation'
-    send_invite: 'Send {{count}} invites'
-    to: 'to: '
-    add_custom_message: '+ add custom message'
-    default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
+    group: 'Group'
+    email_addresses: 'Email addresses'
+    email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Make your invite personal, '
+    add_custom_message_link: 'add a custom message.'
+    custom_message: 'Custom message'
+    custom_message_placeholder: 'Enter a personal message to include with the invitation.'
+    team_invitation_message: 'Alternatively, '
+    team_invitation_link:  'get a link to share.'
+    add_members: 'Add members'
+    from_parent_group: 'from {{name}}.'
+    send: 'Send'
     messages:
-      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
-      members_added: '{{members}} member(s) added'
-      emails_sent: '{{emails}} invitation(s) sent'
-      no_invitations: 'No invitation(s) sent!'
+      invitation_sent: 'Invitation sent.'
+      invitations_sent: '{{count}} invitations sent.'
+      no_invitations: 'Uh-oh! Please verify the email address is correct and try again.'
+      max_invitations: 'If you want to send more than 100 invitations, use a team link.'
+
+  team_link_modal:
+    heading: 'Add people'
+    share_link: 'Share this link'
+    caution: 'Caution: anyone who has this link will be able to join your group immediately. Be careful who you share it with :)'
+    copy_link: 'Copy link'
+
+  add_members_modal:
+    heading: 'Add people from {{name}}'
+    add_members: 'Add members'
+    user_added_to_subgroup: '{{name}} added to Subgroup'
+    users_added_to_subgroup: '{{count}} Users added to Subgroup'
+    no_members_to_add: 'All members of {{parent}} belong to this subgroup'
+
   memberships_page:
     members: 'Members'
     name_label: 'Name'

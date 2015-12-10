@@ -46,6 +46,7 @@ Loomio::Application.routes.draw do
 
     resources :memberships, only: [:index, :create, :update, :destroy] do
       collection do
+        post :add_to_subgroup
         post :join_group
         get :autocomplete
         get :for_user
@@ -70,6 +71,7 @@ Loomio::Application.routes.draw do
 
     resources :invitations, only: [:create, :destroy] do
       get :pending, on: :collection
+      get :shareable, on: :collection
     end
 
     resources :profile, only: [:show] do
@@ -344,7 +346,7 @@ Loomio::Application.routes.draw do
 
   get '/localisation/:locale' => 'localisation#show', format: 'js'
 
-  resources :users, path: 'u', only: [:new] do
+  resources :users, path: 'u', only: [] do
     member do
       put :set_avatar_kind
       post :upload_new_avatar

@@ -10,6 +10,8 @@ angular.module('loomioApp', ['ngNewRouter',
                              'ui.gravatar',
                              'truncate',
                              'duScroll',
+                             'angular-clipboard',
+                             'checklist-model',
                              'monospaced.elastic',
                              'angularMoment']).config ($httpProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider) ->
 

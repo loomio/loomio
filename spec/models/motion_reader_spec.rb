@@ -41,7 +41,7 @@ describe MotionReader do
       end
     end
 
-    context 'with a time halfway between the votes', focus: true do
+    context 'with a time halfway between the votes' do
       before do
         reader.viewed!(30.minutes.ago)
       end

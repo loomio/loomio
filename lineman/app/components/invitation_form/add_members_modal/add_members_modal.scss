@@ -1,0 +1,20 @@
+.add-members-modal__list {
+  @include roundedCorners;
+  background-color: white;
+  border: 1px solid $border-color;
+  padding-top: 10px;
+}
+
+label.add-members-modal__list-item {
+  font-weight: normal;
+  margin-bottom: 10px;
+
+  @include displayFlex;
+  align-items: center;
+  input {
+    margin: 0 10px 0 20px;
+  }
+  .user-avatar {
+    margin: 0 10px 0 10px;
+  }
+}

@@ -23,7 +23,10 @@
     "moment": "latest",
     "ng-file-upload": "~3.2.4",
     "svg.js": "latest",
-    "angular-elastic": "latest"
+    "angular-elastic": "latest",
+    "angular-clipboard": "latest",
+    "checklist-model": "latest"
+
   },
   "devDependencies": {
     "angular-mocks": "1.4.0-rc.0"
