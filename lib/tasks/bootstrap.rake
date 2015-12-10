@@ -45,10 +45,10 @@ namespace :bootstrap do
     end
   end
 
+  desc "Lunch project"
   task :run => :environment do
-    #lunch rails here
-    #lunch lineman here
-    # https://loomio.gitbooks.io/tech-manual/content/using_development.html
+    Process.spawn 'cd lineman && lineman run'
+    sh 'bundle exec rails s'
   end
 
   private
