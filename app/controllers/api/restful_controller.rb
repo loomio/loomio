@@ -1,6 +1,8 @@
 class API::RestfulController < ActionController::Base
   snorlax_used_rest!
 
+  before_filter :doorkeeper_authorize!, only: [:create_action, :update_action, :destroy_action]
+
   include ::ProtectedFromForgery
 
   def create_action
@@ -18,7 +20,8 @@ class API::RestfulController < ActionController::Base
   private
 
   def current_user
-    super || LoggedOutUser.new
+    token_user = User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
+    super || token_user || LoggedOutUser.new
   end
 
   def permitted_params
