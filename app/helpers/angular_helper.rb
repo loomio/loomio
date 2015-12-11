@@ -6,9 +6,9 @@ module AngularHelper
       environment: Rails.env,
       loadVideos: (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash: flash.to_h,
-      currentUserId: current_user.id,
-      currentUserLocale: current_user.locale,
-      seedRecords: CurrentUserSerializer.new(current_user),
+      currentUserId: current_user_or_visitor.id,
+      currentUserLocale: current_user_or_visitor.locale,
+      seedRecords: CurrentUserSerializer.new(current_user_or_visitor),
       permittedParams: PermittedParamsSerializer.new({}),
       locales: angular_locales,
       baseUrl: root_url,
@@ -46,6 +46,6 @@ module AngularHelper
   end
 
   def use_angular_ui?
-    current_user_or_visitor.angular_ui_enabled?
+    current_user_or_visitor.angular_ui_enabled? && request.format == :html
   end
 end

@@ -400,6 +400,7 @@ ActiveRecord::Schema.define(version: 20151210000108) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "members_invitable_by",               limit: 255
     t.integer  "parent_id"
     t.boolean  "hide_members",                       default: false
     t.text     "description"

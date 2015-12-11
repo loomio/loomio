@@ -146,6 +146,9 @@ module.exports = new class GroupsHelper
   clickChangeInGroupVolumeCard: ->
     element(By.css('.group-volume-card__change-volume-link')).click()
 
+  clickFirstThread: ->
+    element(By.css('.thread-preview__link')).click()
+
   changeGroupVolumeToLoud: ->
     element(By.id('volume-loud')).click()
 

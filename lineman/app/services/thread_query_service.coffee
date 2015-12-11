@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ThreadQueryService', (Records, CurrentUser) ->
+angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityService, CurrentUser) ->
   new class ThreadQueryService
 
     filterQuery: (filter, options = {}) ->
@@ -43,7 +43,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, CurrentUser)
     applyFilters = (view, filters, queryType) ->
       filters = [].concat filters
 
-      view.applyFind(discussionReaderId: { $gt: 0 })
+      view.applyFind(discussionReaderId: { $gt: 0 }) if AbilityService.isLoggedIn()
 
       switch queryType
         when 'important' then view.applyWhere (thread) -> thread.isImportant()

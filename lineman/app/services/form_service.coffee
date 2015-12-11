@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, DraftService, $filter) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, DraftService, AbilityService, $filter) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
     success = (scope, model, options) ->
       (response) ->
         FlashService.dismiss()
-        model.resetDraft() if options.allowDrafts
+        model.resetDraft() if options.allowDrafts and AbilityService.isLoggedIn()
         if options.flashSuccess?
           options.flashSuccess = options.flashSuccess() if typeof options.flashSuccess is 'function'
           FlashService.success options.flashSuccess, calculateFlashOptions(options.flashOptions)
@@ -42,7 +42,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
         scope.isDisabled = false
 
     submit: (scope, model, options = {}) ->
-      DraftService.applyDrafting(scope, model) if options.allowDrafts
+      DraftService.applyDrafting(scope, model) if options.allowDrafts and AbilityService.isLoggedIn()
       submitFn = options.submitFn or model.save
       (prepareArgs) ->
         prepare(scope, model, options, prepareArgs)

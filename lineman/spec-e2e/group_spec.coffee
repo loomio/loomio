@@ -3,6 +3,13 @@ describe 'Group Page', ->
   page = require './helpers/page_helper.coffee'
 
   describe 'non-member views group', ->
+    describe 'logged out user', ->
+      xit 'should display group content', ->
+        page.loadPath('view_open_group_as_visitor')
+        page.expectElement('.group-theme__name')
+        page.expectElement('.lmo-navbar__sign-in')
+        page.expectElement('.thread-preview__title')
+
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
         page.loadPath('view_secret_group_as_non_member')

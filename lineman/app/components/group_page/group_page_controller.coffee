@@ -7,10 +7,12 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'viewingGroup', @group
     $rootScope.$broadcast 'setTitle', @group.fullName
     $rootScope.$broadcast 'analyticsSetGroup', @group
-    $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
-    MessageChannelService.subscribeToGroup(@group)
-    @handleSubscriptionSuccess()
-    @handleWelcomeModal()
+    if AbilityService.isLoggedIn()
+      $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
+      MessageChannelService.subscribeToGroup(@group)
+      Records.drafts.fetchFor(@group)
+      @handleSubscriptionSuccess()
+      @handleWelcomeModal()
   , (error) ->
     $rootScope.$broadcast('pageError', error)
 

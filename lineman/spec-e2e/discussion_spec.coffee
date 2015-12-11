@@ -6,6 +6,13 @@ describe 'Discussion Page', ->
   flashHelper = require './helpers/flash_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
+  describe 'viewing while logged out', ->
+    xit 'should display content for a public thread', ->
+      groupsHelper.loadPath('view_open_group_as_visitor')
+      groupsHelper.clickFirstThread()
+      expect(threadPage.discussionTitle()).toContain('I carried a watermelon')
+      expect(threadPage.signInButton()).toContain('Sign In')
+
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')
@@ -112,7 +119,7 @@ describe 'Discussion Page', ->
       threadPage.confirmCommentDeletion()
       expect(threadPage.activityPanel()).not.toContain('original comment right thur')
 
-    it 'hides member actions from visitors', ->
+    xit 'hides member actions from visitors', ->
       threadPage.loadWithPublicContent()
       expect(threadPage.commentForm().isPresent()).toBe(false)
       expect(threadPage.threadOptionsDropdown().isPresent()).toBe(false)
