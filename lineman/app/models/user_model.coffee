@@ -12,10 +12,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'contacts'
 
     membershipFor: (group) ->
-      _.first @recordStore.memberships
-                          .collection.chain()
-                          .find(groupId: group.id)
-                          .find(userId: @id).data()
+      _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
 
     isMemberOf: (group) ->
       @membershipFor(group)?

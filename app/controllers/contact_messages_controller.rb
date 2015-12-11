@@ -1,6 +1,6 @@
 class ContactMessagesController < BaseController
   skip_before_filter :authenticate_user!
-  skip_before_filter :boot_angular_ui, only: :new
+  skip_before_filter :boot_angular_ui
   layout 'pages'
 
 	def new

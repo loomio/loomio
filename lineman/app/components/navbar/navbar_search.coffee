@@ -21,6 +21,9 @@ angular.module('loomioApp').directive 'navbarSearch', ->
       return if $element[0].contains document.activeElement
       $scope.closeSearchDropdown()
 
+    $scope.showDropdown = ->
+      $scope.focused && (_.any($scope.groups()) || $scope.query)
+
     highlightables = ->
       document.querySelectorAll('.navbar-search-list-option')
 

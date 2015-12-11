@@ -13,10 +13,10 @@ zh-TW:
     privacy:
       privacy: 隱私權
       public: 公開
-      open: 開啟
-      closed: 已定案
-      private: 私密
-      secret: 祕密
+      open: 開放
+      closed: 封閉
+      private: 非公開
+      secret: 私密
     selected: 已選取
     date_range:
       today: 今天
@@ -62,7 +62,7 @@ zh-TW:
     set_outcome: 確立提案結果
     update_outcome: 更新提案結果
     outcome_label: 提案成果
-    outcome_placeholder: 讓每一個人知道提案結果。
+    outcome_placeholder: 讓每個人都知道提案成果。
     publish_outcome: 發表成果
     messages:
       created: 結果公佈
@@ -83,20 +83,20 @@ zh-TW:
   thread_volume_card:
     heading: 討論串通知
     body:
-      loud: 寄送一切的電子郵件：您將會在這個討論串有任何動態時收到電子郵件。
-      normal: 寄送關於提案的電子郵件：您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
-      quiet: 無電子郵件：您將不會收到任何關於此討論串動態的電子郵件。
-      mute: 討論串靜音：您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
+      loud: 有事就寄電子郵件：您將會在這個討論串有任何動態時收到電子郵件。
+      normal: 寄送提案相關的電子郵件：您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
+      quiet: 不寄電子郵件：您將不會收到任何關於此討論串動態的電子郵件。
+      mute: 討論串設為靜音：您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
     change_volume_link: 更改
   thread_volume_form:
     header: 討論串通知
-    loud_label: 寄送一切的電子郵件
+    loud_label: 有事就寄電子郵件
     loud_description: 您將會在這個討論串有任何動態時收到電子郵件。
-    normal_label: 寄送關於提案的電子郵件
+    normal_label: 寄送提案相關的電子郵件
     normal_description: 您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
-    quiet_label: 無電子郵件
+    quiet_label: 不寄電子郵件
     quiet_description: 您將不會收到任何關於此討論串動態的電子郵件。
-    mute_label: 討論串靜音
+    mute_label: 討論串設為靜音
     mute_description: 您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
     submit: 更新
     messages:
@@ -107,18 +107,18 @@ zh-TW:
   group_volume_card:
     heading: 群組通知
     body:
-      loud: 寄送一切的電子郵件：您將會在這個群組有任何動態時收到電子郵件。
+      loud: 有事就寄電子郵件：您將會在這個群組有任何動態時收到電子郵件。
       normal: 您將會收到關於此群組新討論串與提案的電子郵件。
-      quiet: 無電子郵件：您將不會收到任何關於此群組動態的電子郵件。
+      quiet: 不寄電子郵件：您將不會收到任何關於此群組動態的電子郵件。
       mute: 群組靜音：您將不會收到關於此群組的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
     change_volume_link: 更改
   group_volume_form:
     header: 群組通知
-    loud_label: 寄送一切的電子郵件
+    loud_label: 有事就寄電子郵件
     loud_description: 您將會在這個群組有任何動態時收到電子郵件。
     normal_label: 發送關於新討論串與提案的電子郵件
     normal_description: 您將會收到關於此群組新討論串與提案的電子郵件。
-    quiet_label: 無電子郵件
+    quiet_label: 不寄電子郵件
     quiet_description: 您將不會收到任何關於此群組動態的電子郵件，除非有人提及您。
     mute_label: 群組靜音
     mute_description: 您將不會收到關於此群組的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
@@ -156,7 +156,7 @@ zh-TW:
     in_reply_to: '回覆給 <strong>{{name}}</strong>：'
     submit_button:
       label: 貼文
-    private_privacy_notice: '您的意見將只會對 {{groupName}}. 群組的成員可見。'
+    private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
     public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
   navbar:
     recent: 最近
@@ -193,7 +193,7 @@ zh-TW:
     invite_people: 邀請夥伴
   notifications:
     header: 通知
-    new_discussion: '<strong>{{name}}</strong> 已經開始了一個討論 <strong>{{discussion}}</strong>'
+    new_discussion: '<strong>{{name}}</strong> 啟動了 <strong>{{discussion}}</strong> 討論串'
     new_motion: '<strong>{{name}}</strong> 建立了一個提案 <strong>{{proposal}}</strong>'
     motion_closed_by_user: '<strong>{{name}}</strong> 定案了一個提案 <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: '提案已定案 <strong>{{proposal}}</strong>'
@@ -215,13 +215,13 @@ zh-TW:
     heading: 擁有發言權
     no_statement: 沒寫。
     i_agree: 我贊成
-    i_agree_details: 我支持這個並想要就這麼進行。
+    i_agree_details: 我支持這決定，就這麼進行。
     i_abstain: 我棄權
     i_abstain_details: 我很樂意群組的決定沒有我的參與。
     i_disagree: 我反對
-    i_disagree_details: 我認為我們可以做更好
+    i_disagree_details: 我認為我們可以做得更好。
     i_block: 我阻擋
-    i_block_details: ' 我強烈反對並且不願意這個提案繼續下去'
+    i_block_details: ' 我強烈反對並且不願意這個提案繼續下去。'
     submit_position: 呈遞您的立場
     change_position: 變更立場
     select_position: 選擇立場
@@ -277,13 +277,13 @@ zh-TW:
     group_label: 群組
     group_placeholder: 選擇一個群組
     title_label: 標題
-    title_placeholder: 您想要討論的主題是什麼？
+    title_placeholder: 您想討論的主題是？
     context_label: 論述
-    context_placeholder: 給予足夠的背景資訊給群組以啟發一個有生產力的討論。這可以隨著討論進度而更新
-    privacy_label: 隱私
+    context_placeholder: 給予群組足夠的背景資訊，創造出有生產力的討論。論述可以隨著討論的過程一邊更新
+    privacy_label: 隱私權
     privacy_public: 任何人都可以看到此討論串。只有成員才能參與。
-    privacy_private: '討論串將只會對 {{group}} 群組的成員可見。'
-    privacy_organisation: '討論串將會對 {{parent}} 群組的成員以及 {{group}} 群組的成員可見。'
+    privacy_private: '此討論串只會被 {{group}} 群組的成員看到。'
+    privacy_organisation: '此討論串只會被 {{parent}} 群組的成員以及 {{group}} 群組的成員看到。'
     new_discussion_submit: 啟動討論串
     edit_discussion_submit: 更新討論串
   proposal_expanded:
@@ -334,9 +334,9 @@ zh-TW:
         no_discussions_in_group: 這個群組尚未有任何的討論串。
         no_discussions_matching_filters_html: "沒有討論串符合這些過濾條件。 <a href='%{link}'>清除過濾條件</a>。"
         no_public_discussions: 這個群組中沒有公開的討論串。
-        discussions_are_private: 在此群組中所有的討論串都是私密的。
-        join_group: 要觀看私密的討論串，您將需要加入此群組。
-        request_membership: 要觀看私密的討論串，申請加入此群組。
+        discussions_are_private: 在此群組中所有的討論串都是非公開的。
+        join_group: 要觀看非公開的討論串，您將需要加入此群組。
+        request_membership: 要觀看非公開的討論串，申請加入此群組。
         membership_is_invitation_only: 您需要有這個群組的成員邀請才能加入。
         membership_is_invitation_by_admin_only: 您需要被協調者邀請才能加入這個群組。
     messages:
@@ -382,22 +382,22 @@ zh-TW:
     volume:
       loud: 只要有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此群組的通知音量設定為大聲。只要一有動態，您就會收到電子郵件。
-      loud_message: '您將會被以電子郵件的方式通知所有在「{{name}}」中的活動。'
+      loud_message: '所有在「{{name}}」中的活動會以電子郵件的方式通知您。'
       normal: 只在有重要的動態時寄發電子郵件：新討論串及提案、結果等等。
       normal_aria_description: 您在此群組的通知音量設定為普通。您將只會在有重要動態時收到電子郵件，像是當某人啟動新討論串、提出提案或是結果定案。
-      normal_message: '您將只會被以電子郵件的方式通知在「{{name}}」中重要的活動。'
+      normal_message: '在「{{name}}」中只有重要的活動會以電子郵件的方式通知您。'
       quiet: 不要寄發任何關於此群組的電子郵件。活動將會顯示在儀表板上。
       quiet_aria_description: 您在此群組的通知音量設定為安靜。您將不會收到任何有關此群組動態的電子郵件。群組動態將會顯示在您的儀表板上。
-      quiet_message: '您將不會被以電子郵件通知在「{{name}}」中的活動。'
+      quiet_message: '在「{{name}}」中的活動不再以電子郵件的方式通知您了。'
       mute: 從儀表板上隱藏此群組，除非 @提及，否則將不會通知。
       mute_aria_description: 您在此群組的通知音量設定為靜音。您將不會收到任何電子郵件，除非有人提及您，且群組動態將不會顯示在您的儀表板上。
       mute_message: '「{{name}}」已從您的儀表板中移除。'
     privacy:
-      private: 隱私：這個群組現在只對成員可見
-      parent_members: '隱私：討論串將會對 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員可見。'
-      public: 隱私：這個群組現在被全網路可見
+      private: 隱私權：此群組現在只會被成員看到
+      parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
+      public: 隱私權：此群組現在能在網路上被看到
   confirm_gift_plan_modal:
-    heading: 已選取禮物計畫
+    heading: 已選取禮物方案
     body: 如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。您的群組成員是否有自願性的捐款。
     confirm_selection: 我很高興在我的群組中的人們被詢問是否要以捐款支持 Loomio。
     got_it: 好的，知道了！
@@ -408,8 +408,8 @@ zh-TW:
     contribute: 作出貢獻
     got_to_group: 直接到我的群組
   gift_card:
-    heading: 禮物計畫
-    body: '<strong>{{name}}</strong> 是一個禮物支援的群組。若您想要協助 Loomio 完成我們的使命，請點選這個按鈕：'
+    heading: 禮物方案
+    body: '<strong>{{name}}</strong> 是接受禮物方案支援的群組。若想支援 Loomio 繼續協助其他像您一樣接受禮物方案支援的群組，請點擊這裡：'
     make_a_contribution: 作出貢獻
   trial_card:
     title: 30 天試用
@@ -419,30 +419,30 @@ zh-TW:
   choose_plan_modal:
     heading: 選擇您的定價方案
     overdue_heading: 要繼續使用 Loomio，請選擇一個付款方案
-    gift: 禮物
-    standard: 標準
-    plus: 白金
+    gift: 禮物方案
+    standard: 標準方案
+    plus: PLUS
     free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
     get_started_for_free: 免費開始
     gift_body_html: |
-      <p>對於沒有預算支付訂閱費的群組。</p>
-      <p>也支援捐款，不需要付任何費用。</p>
+      <p>給沒有預算支付訂閱費的群組。</p>
+      <p>接受捐款，不需付費。</p>
     support_before: 我很高興的
     support_link: 告訴您
     support_after: 關於延長您的試用期，或是任何其有您可能會有的需求。
     remind_me_later: 稍後提醒我
     gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
-    unlimited_members: 無限的成員
-    unlimited_decisions: 無限的決策
+    unlimited_members: 不限成員數量
+    unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
     standard_price_html: |
       美元 <strong>$19</strong>/月<br><span>或</span> $190/年
-    plus_body: 在標準價格中的每樣東西，再加上：
+    plus_body: 包含標準方案，再加上：
     premium_support: 進階支援
     custom_url: 自定義 URL
     usage_statistics: 使用統計
     plus_price_html: |
-      美元 <strong>$179</strong>/month<br><span>or</span> $1790/year
+      美元 <strong>$179</strong>/month<br><span>或</span> $1790/year
     select: 選取
   subscription_success_modal:
     heading: 感謝您決定訂閱！
@@ -467,15 +467,15 @@ zh-TW:
     privacy: 隱私權
     group_privacy_open_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。所有的討論串都是公開的。
     group_privacy_closed_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。只有成員才能看見討論串。
-    group_privacy_closed_public_threads_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。討論串可以是公開或私密的。
+    group_privacy_closed_public_threads_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。討論串可以是公開或非公開的。
     group_privacy_secret_description: 只有被邀請的成員才能找到群組並觀看討論串。
-    confirm_change_to_secret: 若您繼續，所有在此群組及其子群組的討論串都會變為私密。
-    confirm_change_to_secret_subgroup: 若您繼續，所有的討論串都會變為私密。
+    confirm_change_to_secret: 若您繼續，所有在此群組及其子群組的討論串都會變為非公開。
+    confirm_change_to_secret_subgroup: 若您繼續，所有的討論串都會變為非公開。
     confirm_change_to_public: 若您繼續，所有在此群組的討論串都將會變為公開在網路上。
-    confirm_change_to_private_discussions_only: 若您繼續，任何在此群組中的公開討論串都將會變為私密。
+    confirm_change_to_private_discussions_only: 若您繼續，任何在此群組中的公開討論串都將會變為非公開。
     subgroup_privacy_open_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。所有的討論串都是公開的。
     subgroup_privacy_closed_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。只有成員才能看見討論串。
-    subgroup_privacy_closed_public_threads_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。討論串可以是公開或私密的。
+    subgroup_privacy_closed_public_threads_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。討論串可以是公開或非公開的。
     subgroup_privacy_closed_secret_parent_description: '{{parent}} 的成員可以找到此子群組，檢視有誰在裡面，並要求加入。'
     subgroup_privacy_secret_description: 只有被邀請的成員才能找到此子群組並觀看討論串。
     advanced_settings: 進階設定
@@ -483,10 +483,10 @@ zh-TW:
     membership_granted_upon_request: 任何人都能加入此群組。
     membership_granted_upon_approval: 任何人都可以要求加入，但必須經過審核。
     membership_granted_upon_approval_secret_parent: '<strong>根據要求</strong> ── 任何人在 {{parent}} 群組的人都可以要求加入群組。'
-    thread_privacy: 討論串隱私
+    thread_privacy: 討論串隱私權
     public_threads: 僅限公開討論串
     public_discussions_subgroup: '任何在 {{parentGroupName}} 群組的人都能看到這則討論串'
-    public_or_private_threads: 允許公開與私密討論串
+    public_or_private_threads: 允許公開與非公開討論串
     private_threads: 只有成員才能看到討論串
     permissions: 權限
     allow_public_threads: 允許在此群組中公開討論串。
@@ -610,7 +610,7 @@ zh-TW:
     header: 電子郵件設定
     email: 電子郵件
     daily_summary_label: 每日摘要電子郵件
-    daily_summary_description: 每天早上，寄出一封有昨天未讀取動態的電子郵件。這封電子郵件提供了一個簡單的方式來與 Loomio 的動態保持更新。
+    daily_summary_description: 每天早上寄出一封有昨天未讀取的動態的電子郵件。這封電子郵件提供簡單的方式與 Loomio 的動態保持更新。
     on_participation_label: 從我參加的討論串而來的動態
     on_participation_description: 當您參與討論時，音量設定會變更為「高」，未來所有的動靜都會立刻寄電子郵件給您。
     proposal_closing_soon_label: 在提案定案前
@@ -691,10 +691,10 @@ zh-TW:
     volume:
       loud: 只要這個討論串有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此討論串的通知音量設定為大聲。這意味著您會收到任何關於此動態的電子郵件。
-      loud_message: '您將會被以電子郵件的方式通知所有在「{{name}}」中的活動'
+      loud_message: '所有在「{{name}}」中的活動會以電子郵件的方式通知您'
       normal: 只當提議被建立、將要關閉、或是結果公佈時才寄發電子郵件。
       normal_aria_description: 您在此討論串的通知音量設定為普通。您將會在提案被建立、將要定案或是結果已被貼出時收到電子郵件。
-      normal_message: '您將只會被以電子郵件的方式通知在「{{name}}」的重要活動。'
+      normal_message: '在「{{name}}」中只有重要的活動會以電子郵件的方式通知您。'
       quiet: 不要寄發關於這個討論串的電子郵件。
       quiet_aria_description: 您在此討論串的通知音量設定為安靜。您將不會收到任何有關於此討論串的電子郵件，除非有人提及您。
       quiet_message: '您將不會收到關於「{{name}}」的電子郵件，除非有人提及您'
@@ -720,6 +720,7 @@ zh-TW:
     title: 移動討論串
     body: 目標群組：
     confirm: 移動討論串
+    confirm_change_to_private_thread: '{{groupName}} 是一個公開的群組，若您繼序，這個討論串將會變為公開。'
     messages:
       success: '討論串已被移動到 {{name}}'
   activity_card:

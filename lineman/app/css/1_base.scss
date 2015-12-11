@@ -28,10 +28,6 @@ input, select, textarea{
   margin-bottom: 10px;
 }
 
-textarea{
-  min-height: 100px;
-}
-
 input[type="file"]{
   /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
   max-width: 200px;

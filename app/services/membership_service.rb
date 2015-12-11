@@ -21,7 +21,8 @@ class MembershipService
      Events::UserJoinedGroup.publish!(membership)
    end
 
-  def self.add_users_to_group(users: nil, group: nil, inviter: nil, message: nil)
+  def self.add_users_to_group(users: , group: , inviter: , message: nil)
+    inviter.ability.authorize!(:add_members, group)
     memberships = group.add_members!(users, inviter)
     memberships.each do |m|
       Events::UserAddedToGroup.publish!(m, inviter)

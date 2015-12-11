@@ -5,7 +5,7 @@
     %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: 'query', aria-hidden: 'true'}
     %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: 'query', ng-click: 'clearAndFocusInput()', title: "{{ 'navbar.search.close' | translate }}"}
 
-  .navbar-search-results{ng-show: 'focused'}
+  .navbar-search-results{ng-show: 'showDropdown()'}
     %ul.group-selector-list.selector-list
       %li.navbar-search-list-item.selector-list-header{ng-show: 'groups().length > 0'}
         %h3.lmo-dropdown-heading{translate: "common.groups"}

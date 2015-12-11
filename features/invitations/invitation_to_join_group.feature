@@ -44,11 +44,11 @@ Feature: Invitation to join group
     When I click an invitation link I have already used
     Then I should be redirected to the group page
 
-  @javascript
-  Scenario: Signed out user refollows their invitation link
-    Given I am not logged in
-    When I follow an invitation link I have already used
-    Then I should be told the invitation link has already been used
+  #@javascript
+  #Scenario: Signed out user refollows their invitation link
+  #  Given I am not logged in
+  #  When I follow an invitation link I have already used
+  #  Then I should be told the invitation link has already been used
 
   @javascript
   Scenario: Subgroup admin invites people to subgroup

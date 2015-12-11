@@ -302,7 +302,7 @@ fr:
   group_welcome_modal:
     heading: Bienvenue dans votre nouveau groupe
     first_step: "Vous êtes le coordinateur du groupe, c'est-à-dire l'hôte des discussions du groupe. Regardez la video et les exemples de discussions."
-    second_step: 'Quand vous vous sentez prêt, vous pouvez commencer à inviter des personnes à vous rejoindre.'
+    second_step: 'Quand vous vous sentez prêt, vous pouvez commencer à <strong>inviter des personnes</strong> à vous rejoindre.'
     ok_got_it: "Ok, j'ai compris !"
   group_cover_modal:
     heading: Nouvelle photo de couverture
@@ -402,7 +402,6 @@ fr:
     got_it: "Ok, j'ai compris !"
   gift_card:
     heading: Plan cadeau
-    body: '<strong>{{name}}</strong> est un groupe qui fonctionne grâce aux dons. Si vous souhaitez aider Loomio à accomplir sa mission, cliquez sur ce bouton:'
     make_a_contribution: Apportez votre contribution
   trial_card:
     title: "30 jours d'essai"

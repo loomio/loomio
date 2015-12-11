@@ -1,5 +1,6 @@
 hu:
   common:
+    confirm_discard_changes: Elveti a módosításait?
     time:
       am: de
       pm: du
@@ -10,35 +11,49 @@ hu:
     group: Csoport
     groups: Csoportok
     privacy:
+      privacy: Adatvédelem
       public: Nyilvános
+      open: Nyitva
+      closed: Zárva
       private: Zártkörű
+      secret: Titkos
+    selected: Kiválasztva
     date_range:
       today: Ma
       yesterday: Tegnap
       thisweek: Ezen a héten
       thismonth: Ebben a hónapban
       older: Régebbi
+    more_help: További segítség
     models:
       proposal: Javaslat
     action:
       save: Mentés
       save_changes: Változások mentése
+      update_settings: Beállítások frissítése
       reply: Válasz
       edit: Módosítás
       like: Tetszik
       unlike: Nem tetszik
+      update: Frissítés
       cancel: Mégse
       show_more: Bővebben
       view_all: Mutasd mind
       add_subgroup: Alcsoport létrehozása
+      loading: Betöltés
+      uploading: Feltöltés
+    formatting_help:
+      title: 'Tanuld meg, hogyan kell a Markdown-t használni szöveged formázásához a Loomion'
   error_page:
     forbidden: Ehhez nincs jogosultságod.
     page_not_found: 'Ezt nem találjuk. Lehet, hogy törölték vagy áthelyezték.'
     internal_server_error: 'Sajnáljuk, de valami hiba történt. Kérlek próbáld újra.'
   start_proposal_card:
     title: Tégy javaslatot
+    helptext: Felkészültél a döntéshozatalra?
   proposal_outcome_panel:
     heading: Eredmény
+    set_outcome_hint: 'Ezt a területet arra használd, hogy bárki megismerhesse a javaslat eredményét.'
     set_outcome_btn: A javaslat eredményének megfogalmazása
     edit_outcome_link: A javaslat eredményének szerkesztése
   proposal_outcome_form:
@@ -55,6 +70,10 @@ hu:
     normal: Normál
     quiet: Csendes
     mute: Néma
+  thread_volume_form:
+    submit: Frissítés
+  group_volume_form:
+    submit: Frissítés
   inbox:
     clear: Töröl
     unread: Olvasatlan
@@ -134,6 +153,7 @@ hu:
     started_by: '<strong>{{name}}</strong> indította'
     edit_proposal: Javaslat szerkesztése
     close_proposal: Javaslat lezárása
+    closed_badge: Zárva
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
     ask_to_join_group: Kérj belépőt a csoportba
@@ -159,6 +179,9 @@ hu:
       loud: Emailezzen ha aktivitás van.
       quiet: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
       mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
+  group_form:
+    privacy: Adatvédelem
+    submit_update: Beállítások frissítése
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás

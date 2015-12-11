@@ -1,20 +1,27 @@
 require 'rails_helper'
-describe AcceptInvitation do
+describe InvitationService do
   let(:group) { FactoryGirl.create(:group) }
   let(:invitation) { FactoryGirl.create(:invitation, invitable: group) }
   let(:user) { FactoryGirl.create(:user) }
 
-  context 'and_grant_access!' do
+  describe 'redeem' do
     before do
-      AcceptInvitation.and_grant_access!(invitation, user)
+      InvitationService.redeem(invitation, user)
     end
 
-    it 'sets accepted_by to the user' do
-      expect(invitation.accepted_by).to eq user
+    context 'single use' do
+
+      it 'sets accepted_at' do
+        invitation.accepted_at.should be_present
+      end
     end
 
-    it 'sets accepted_at' do
-      invitation.accepted_at.should be_present
+    context 'multiple use' do
+      let(:invitation) { FactoryGirl.create(:invitation, invitable: group, single_use: false) }
+
+      it 'does not mark as accepted' do
+        expect(invitation.accepted_at).to eq nil
+      end
     end
 
     context 'to_be_admin' do

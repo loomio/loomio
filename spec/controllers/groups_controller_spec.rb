@@ -28,6 +28,7 @@ describe GroupsController do
     context "hidden group" do
       before { group.update_attribute(:is_visible_to_public, false) }
       it "does not show" do
+        sign_in user
         get :show, :id => group.key
         expect(response).to be_redirect
       end

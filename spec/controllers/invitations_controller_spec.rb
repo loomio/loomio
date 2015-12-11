@@ -38,12 +38,13 @@ describe InvitationsController do
     context 'invitation used' do
       render_views
       before do
+        sign_in user
         invitation.update_attribute(:accepted_at, Time.now)
       end
 
       it 'says sorry invitatino already used' do
         get :show, id: invitation.token
-        expect(response.body).to match(/This invitation has already been used/i)
+        expect(response).to redirect_to(invitation.invitable)
       end
     end
 
@@ -61,7 +62,7 @@ describe InvitationsController do
       end
 
       it 'does not accept the invitation' do
-        AcceptInvitation.should_not_receive(:and_grant_access!)
+        InvitationService.should_not_receive(:redeem)
       end
 
     end

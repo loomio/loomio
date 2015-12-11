@@ -121,6 +121,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
 
     markAsRead: (sequenceId) ->
+      return unless @discussionReaderId?
       if isNaN(sequenceId)
         sequenceId = @lastSequenceId
         @update(readItemsCount: @itemsCount,

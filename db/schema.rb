@@ -400,6 +400,7 @@ ActiveRecord::Schema.define(version: 20151210000108) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "members_invitable_by",               limit: 255
     t.integer  "parent_id"
     t.boolean  "hide_members",                       default: false
     t.text     "description"
@@ -466,11 +467,10 @@ ActiveRecord::Schema.define(version: 20151210000108) do
   add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
 
   create_table "invitations", force: :cascade do |t|
-    t.string   "recipient_email",                 null: false
-    t.integer  "inviter_id",                      null: false
+    t.string   "recipient_email"
+    t.integer  "inviter_id"
     t.boolean  "to_be_admin",     default: false, null: false
     t.string   "token",                           null: false
-    t.integer  "accepted_by_id"
     t.datetime "accepted_at"
     t.string   "intent"
     t.integer  "canceller_id"
@@ -480,6 +480,7 @@ ActiveRecord::Schema.define(version: 20151210000108) do
     t.string   "invitable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "single_use",      default: true,  null: false
   end
 
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
