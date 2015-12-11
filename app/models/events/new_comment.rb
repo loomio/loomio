@@ -5,7 +5,7 @@ class Events::NewComment < Event
                     discussion: comment.discussion,
                     created_at: comment.created_at)
 
-    Events::CommentRepliedTo.publish! comment if comment.is_reply?
+    EventBus.instance.broadcast 'new_comment', comment
 
     comment.mentioned_group_members.
             without(comment.parent_author).find_each do |mentioned_user|
