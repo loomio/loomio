@@ -409,7 +409,6 @@ sr:
     got_to_group: Odbaci me do moje grupe
   gift_card:
     heading: Poklon plan
-    body: '<strong>{{name}}</strong> je poklonima podržana grupa. Ako želiš da pomogneš Lumiju da dostigne svoju misiju, škljocni na ovo dugme:'
     make_a_contribution: Doniraj
   trial_card:
     title: 30-odnevna proba
