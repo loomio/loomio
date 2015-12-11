@@ -5,10 +5,16 @@ describe API::InvitationsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
+  let(:deactivated) { create :user, deactivated_at: 2.days.ago }
   let(:contact) { create :contact, user: user }
   let(:another_group) { create :group }
   let(:another_group_member) { create :user }
   let(:group) { create :group }
+  let(:user_invitable)    { { id: another_user.id, type: :user } }
+  let(:deactivated_invitable) { { id: deactivated.id, type: :user } }
+  let(:group_invitable)   { { id: another_group.id, type: :group } }
+  let(:contact_invitable) { { email: contact.email, type: :contact } }
+  let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
   let(:pending_invitation) { create :invitation, invitable: group }
 
   before do
@@ -23,7 +29,6 @@ describe API::InvitationsController do
 
   describe 'create' do
     context 'success' do
-
       it 'creates invitations with custom message' do
         ActionMailer::Base.deliveries = []
         post :create, { group_id: group.id,

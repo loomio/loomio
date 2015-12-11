@@ -5,7 +5,7 @@ InvitationParser = Struct.new(:invitations) do
   end
 
   def new_members
-    @new_members ||= User.find(invitations_by_type(:user, :id) + new_group_memberships)
+    @new_members ||= User.active.where(id: invitations_by_type(:user, :id) + new_group_memberships)
   end
 
   private
