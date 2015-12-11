@@ -409,7 +409,7 @@ de:
     got_to_group: Bring mich zu meiner Gruppe
   gift_card:
     heading: Geschenk-Plan
-    body: '<strong>{{name}}</strong> ist eine spenden-gestützte Gruppe. Wenn Du Loomio helfen mächtest, ihre Mission zu erfüllen, bitte klicke diesen Button:'
+    body: '<strong>{{name}}</strong> ist eine spendenbasierte Gruppe. Um Loomio dabei zu unterstützen Gruppen wie Deiner zu helfen, klicke hier:'
     make_a_contribution: Mache eine Spende
   trial_card:
     title: 30-Tage-Probe
@@ -720,6 +720,7 @@ de:
     title: Diskussion verschieben
     body: 'Zielgruppe:'
     confirm: Diskussion verschieben
+    confirm_change_to_private_thread: '{{groupName}} ist eine öffentliche Gruppe. Wenn Du fortfährst, wird diese Diskussion öffentlich sein.'
     messages:
       success: 'Diskussion wurde nach {{name}} verschoben'
   activity_card:

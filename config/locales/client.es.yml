@@ -409,7 +409,7 @@ es:
     got_to_group: Llevame a mi grupo
   gift_card:
     heading: 'Plan Donación '
-    body: '<strong>{{name}}</strong> es un grupo soportado a donación. Si te gustaría ayudar a Loomio a alcanzar su misión, haz clic en este botón: '
+    body: '<strong>{{name}}</strong> es un grupo a Donación. Si quieres ayuda a que Loomio pueda seguir apoyando grupos como el tuyo, has clic aquí:'
     make_a_contribution: 'Haz una contribución '
   trial_card:
     title: '30 días de prueba '
@@ -722,6 +722,7 @@ es:
     title: Mover hilo
     body: 'Grupo de destino:'
     confirm: 'Mover hilo '
+    confirm_change_to_private_thread: '{{groupName}} es un grupo público. Si continuas, este hilo se hará público.'
     messages:
       success: 'El hilo ha sido movido a {{name}}'
   activity_card:

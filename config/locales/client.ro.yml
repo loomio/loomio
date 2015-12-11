@@ -186,6 +186,7 @@ ro:
       proposals: Propuneri
       comments: Comentarii
   start_menu:
+    title: Buton activare
     start_thread: Creaza o discutie
   notifications:
     header: Notificari

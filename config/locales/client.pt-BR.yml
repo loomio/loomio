@@ -409,7 +409,7 @@ pt-BR:
     got_to_group: Apenas leve-me ao meu grupo
   gift_card:
     heading: Plano Presente
-    body: '<strong>{{name}}</strong> é um grupo suportado por presente. Se você gostaria de ajudar o Loomio a alcançar a nossa missão, clique neste botão:'
+    body: '<strong>{{name}}</strong> é um grupo baseado na economia do presente. Para apoiar o Loomio a continuar ajudando grupos como o seu, clique aqui:'
     make_a_contribution: Faça uma contribuição
   trial_card:
     title: Teste de 30 dias
@@ -720,6 +720,7 @@ pt-BR:
     title: Mover tópico
     body: 'Grupo de destino:'
     confirm: Mover tópico
+    confirm_change_to_private_thread: '{{groupName}} é um grupo aberto. Se você continuar, este tópico será público.'
     messages:
       success: 'Tópico foi movido para {{name}}'
   activity_card:
