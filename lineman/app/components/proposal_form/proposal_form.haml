@@ -19,7 +19,7 @@
 
       .lmo-form-group
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
-        %textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
+        %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
 
       %closing_at_field{proposal: 'proposal'}
 
