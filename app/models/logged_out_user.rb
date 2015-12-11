@@ -29,6 +29,10 @@ class LoggedOutUser
     Vote.none
   end
 
+  def memberships
+    Membership.none
+  end
+
   def locale
     I18n.default_locale
   end
