@@ -31,14 +31,8 @@ class CommentService
     return false unless comment.valid?
 
     comment.save!
-    comment.discussion.update_attribute(:last_comment_at, comment.created_at)
-
-    Draft.purge_without_delay(user: actor, draftable: comment.discussion, field: :comment)
-    SearchVector.index! comment.discussion_id
-
-    event = Events::NewComment.publish!(comment)
-    DiscussionReader.for(user: actor, discussion: comment.discussion).author_thread_item!(comment.created_at)
-    event
+    EventBus.instance.broadcast('new_comment', comment)
+    Events::NewComment.publish!(comment)
   end
 
   def self.destroy(comment:, actor:)

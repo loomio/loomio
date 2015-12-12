@@ -23,6 +23,7 @@ class DiscussionReader < ActiveRecord::Base
     participate!
     viewed! time
   end
+  EventBus.instance.listen('new_comment') { |comment| for(user: comment.author, discussion: comment.discussion).author_thread_item!(comment.created_at) }
 
   def set_volume_as_required!
     if user.email_on_participation?

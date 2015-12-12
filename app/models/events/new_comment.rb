@@ -3,7 +3,7 @@ class Events::NewComment < Event
     create!(kind: 'new_comment',
             eventable: comment,
             discussion: comment.discussion,
-            created_at: comment.created_at).tap { |event| EventBus.instance.broadcast 'new_comment', comment, event }
+            created_at: comment.created_at)
   end
 
   def group_key

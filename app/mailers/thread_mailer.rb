@@ -11,27 +11,30 @@ class ThreadMailer < BaseMailer
     send_thread_email
   end
 
-  EventBus.instance.listen('new_comment') do |comment, event|
+  EventBus.instance.listen('new_comment') do |event|
     send_bulk_mail(to: UsersToEmailQuery.new_comment(comment)) do |recipient|
       new.tap do |mailer|
         mailer.instance_variable_set :@recipient,  recipient
         mailer.instance_variable_set :@event,      event
-        mailer.instance_variable_set :@comment,    comment
-        mailer.instance_variable_set :@discussion, comment.discussion
-        mailer.instance_variable_set :@author,     comment.author
+        mailer.instance_variable_set :@comment,    event.comment
+        mailer.instance_variable_set :@discussion, event.comment.discussion
+        mailer.instance_variable_set :@author,     event.comment.author
       end.send_thread_email(template_name: :new_comment)
     end
   end
 
-  def user_mentioned(recipient, event)
-    @recipient = recipient
-    @event = event
-    @comment = event.eventable
-    @discussion = @comment.discussion
-    @author = @comment.author
-    send_thread_email(alternative_subject: t('email.mentioned.subject',
-                                             who: @author.name,
-                                             which: @discussion.group.full_name))
+  EventBus.instance.listen('user_mentioned') do |event, recipient|
+    return unless recipient.email_when_mentioned?
+    new.tap do |mailer|
+      mailer.instance_variable_set :@recipient,  recipient
+      mailer.instance_variable_set :@event,      event
+      mailer.instance_variable_set :@comment,    event.comment
+      mailer.instance_variable_set :@discussion, event.comment.discussion
+      mailer.instance_variable_set :@author,     event.comment.author
+    end.send_thread_email(template_name: :user_mentioned,
+                          alternative_subject: t('email.mentioned.subject',
+                                                 who: @author.name,
+                                                 which: @discussion.group.full_name))
   end
 
   def comment_replied_to(recipient, event)
