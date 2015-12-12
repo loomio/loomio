@@ -11,13 +11,16 @@ class ThreadMailer < BaseMailer
     send_thread_email
   end
 
-  def new_comment(recipient, event)
-    @recipient = recipient
-    @event = event
-    @comment = event.eventable
-    @discussion = @comment.discussion
-    @author = @comment.author
-    send_thread_email
+  EventBus.instance.listen('new_comment') do |comment, event|
+    send_bulk_mail(to: UsersToEmailQuery.new_comment(comment)) do |recipient|
+      new.tap do |mailer|
+        mailer.instance_variable_set :@recipient,  recipient
+        mailer.instance_variable_set :@event,      event
+        mailer.instance_variable_set :@comment,    comment
+        mailer.instance_variable_set :@discussion, comment.discussion
+        mailer.instance_variable_set :@author,     comment.author
+      end.send_thread_email(template_name: :new_comment)
+    end
   end
 
   def user_mentioned(recipient, event)
@@ -97,9 +100,7 @@ class ThreadMailer < BaseMailer
                       t("email.proposal_closed.subject", which: @motion.name))
   end
 
-  private
-
-  def send_thread_email(alternative_subject: nil)
+  def send_thread_email(alternative_subject: nil, template_name: nil)
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
     @utm_hash = utm_hash
 
@@ -112,8 +113,11 @@ class ThreadMailer < BaseMailer
                       from: from_user_via_loomio(@author),
                       reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
                       subject: thread_subject(alternative_subject),
-                      locale: locale_fallback(@recipient.locale, @author.locale)
+                      locale: locale_fallback(@recipient.locale, @author.locale),
+                      template_name: template_name
   end
+
+  private
 
   def message_id_header
     action_name == 'new_discussion' ? 'Message-ID' : 'In-Reply-To'

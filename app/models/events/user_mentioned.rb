@@ -15,6 +15,10 @@ class Events::UserMentioned < Event
     event
   end
 
+  EventBus.instance.listen('new_comment') do |comment|
+    comment.mentioned_group_members.without(comment.parent_author).map { |user| publish!(comment, user) }
+  end
+
   def comment
     eventable
   end

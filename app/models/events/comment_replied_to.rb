@@ -13,6 +13,7 @@ class Events::CommentRepliedTo < Event
 
     event
   end
+  EventBus.instance.listen('new_comment') { |comment| publish!(comment) if comment.is_reply? }
 
   def group_key
     comment.group.key
