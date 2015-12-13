@@ -19,6 +19,17 @@ describe 'Subscription flow', ->
                  '.confirm-gift-plan-modal__submit-button')
       page.expectText('.gift-card', 'GIFT PLAN')
 
+  describe 'group with expired legacy trial', ->
+    it 'shows the admin the encouragement modal', ->
+      page.loadPath('setup_group_with_expired_legacy_trial_admin')
+      page.expectElement('.legacy-trial-expired-modal')
+      page.click('.legacy-trial-expired-modal__submit')
+      page.expectElement('.choose-plan-modal')
+
+    it 'does not show non admins the modal', ->
+      page.loadPath('setup_group_with_expired_legacy_trial')
+      page.expectNoElement('.legacy-trial-expired-modal')
+
   describe 'group with expired trial', ->
 
     it 'displays a trial card telling coordinators their trial has expired', ->
