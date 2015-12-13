@@ -31,8 +31,7 @@ class CommentService
     return false unless comment.valid?
 
     comment.save!
-    EventBus.instance.broadcast('new_comment', comment)
-    Events::NewComment.publish!(comment)
+    EventBus.broadcast('new_comment', comment)
   end
 
   def self.destroy(comment:, actor:)

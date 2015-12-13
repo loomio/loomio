@@ -17,6 +17,9 @@ class EventBus
     @listeners = nil
   end
 
+  # allows us to call EventBus.listen, instead of EventBus.instance.listen
+  [:broadcast, :listen, :deafen, :clear].each { |m| define_singleton_method m, -> { instance.send(m) } }
+
   private
 
   def listeners

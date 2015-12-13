@@ -11,30 +11,24 @@ class ThreadMailer < BaseMailer
     send_thread_email
   end
 
-  EventBus.instance.listen('new_comment') do |event|
-    send_bulk_mail(to: UsersToEmailQuery.new_comment(comment)) do |recipient|
-      new.tap do |mailer|
-        mailer.instance_variable_set :@recipient,  recipient
-        mailer.instance_variable_set :@event,      event
-        mailer.instance_variable_set :@comment,    event.comment
-        mailer.instance_variable_set :@discussion, event.comment.discussion
-        mailer.instance_variable_set :@author,     event.comment.author
-      end.send_thread_email(template_name: :new_comment)
-    end
+  def new_comment(recipient, event)
+    @recipient = recipient
+    @event = event
+    @comment = event.eventable
+    @discussion = @comment.discussion
+    @author = @comment.author
+    send_thread_email
   end
 
-  EventBus.instance.listen('user_mentioned') do |event, recipient|
-    return unless recipient.email_when_mentioned?
-    new.tap do |mailer|
-      mailer.instance_variable_set :@recipient,  recipient
-      mailer.instance_variable_set :@event,      event
-      mailer.instance_variable_set :@comment,    event.comment
-      mailer.instance_variable_set :@discussion, event.comment.discussion
-      mailer.instance_variable_set :@author,     event.comment.author
-    end.send_thread_email(template_name: :user_mentioned,
-                          alternative_subject: t('email.mentioned.subject',
-                                                 who: @author.name,
-                                                 which: @discussion.group.full_name))
+  def user_mentioned(recipient, event)
+    @recipient = recipient
+    @event = event
+    @comment = event.eventable
+    @discussion = @comment.discussion
+    @author = @comment.author
+    send_thread_email(alternative_subject: t('email.mentioned.subject',
+                                             who: @author.name,
+                                             which: @discussion.group.full_name))
   end
 
   def comment_replied_to(recipient, event)
@@ -103,7 +97,9 @@ class ThreadMailer < BaseMailer
                       t("email.proposal_closed.subject", which: @motion.name))
   end
 
-  def send_thread_email(alternative_subject: nil, template_name: nil)
+  private
+
+  def send_thread_email(alternative_subject: nil)
     @following = DiscussionReader.for(discussion: @discussion, user: @recipient).volume_is_loud?
     @utm_hash = utm_hash
 
@@ -116,11 +112,8 @@ class ThreadMailer < BaseMailer
                       from: from_user_via_loomio(@author),
                       reply_to: reply_to_address_with_group_name(discussion: @discussion, user: @recipient),
                       subject: thread_subject(alternative_subject),
-                      locale: locale_fallback(@recipient.locale, @author.locale),
-                      template_name: template_name
+                      locale: locale_fallback(@recipient.locale, @author.locale)
   end
-
-  private
 
   def message_id_header
     action_name == 'new_discussion' ? 'Message-ID' : 'In-Reply-To'
