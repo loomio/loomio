@@ -4,6 +4,7 @@ class API::DraftsController < API::RestfulController
   private
 
   def load_resource
+    current_user.ability.authorize! :make_draft, draftable
     self.resource = Draft.find_or_initialize_by(user: current_user, draftable: draftable)
   end
 
