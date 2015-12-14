@@ -56,6 +56,8 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group.add_member! emilio
     test_group.update_attribute(:cohort_id, 3)
+    ENV['TRIAL_EXPIRED_GROUP_IDS'] = test_group.id.to_s
+
     redirect_to group_url(test_group)
   end
 

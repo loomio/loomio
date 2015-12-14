@@ -1,5 +1,5 @@
 shownToGroup = {}
-angular.module('loomioApp').factory 'LegacyTrialExpiredModal', (ModalService, AppConfig)  ->
+angular.module('loomioApp').factory 'LegacyTrialExpiredModal', (ModalService, AppConfig, AhoyService)  ->
 
   appropriateToShow: (group, user) ->
     user.isAdminOf(group) and group.showLegacyTrialExpiredModal
@@ -21,4 +21,5 @@ angular.module('loomioApp').factory 'LegacyTrialExpiredModal', (ModalService, Ap
 
   controller: ($scope, ChoosePlanModal, ModalService) ->
     $scope.submit = ->
+      AhoyService.track('legacy-trial-expired-modal__submit clicked')
       ModalService.open ChoosePlanModal, group: -> $scope.group
