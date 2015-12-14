@@ -8,5 +8,7 @@
         %timeago.timeago--inline{timestamp: 'vote.createdAt'}
       %h3.thread-item__title{ng-if: 'vote.hasStatement()', id: 'event-{{event.id}}'}
         %span{ translate: "new_vote_item.{{vote.positionVerb()}}_with_statement", translate-values: '{actor: vote.authorName(), statement: vote.statement}'}
-        %timeago.timeago--inline{timestamp: 'vote.createdAt'}
-
+        %translation{ng-if: 'translation', translation: 'translation', field: 'statement'}
+    .thread-item__footer
+      %timeago.timeago--inline{timestamp: 'vote.createdAt'}>
+      %translate_button{ng-if: 'vote.hasStatement()', model: 'vote', showdot: 'true'}
