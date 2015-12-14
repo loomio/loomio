@@ -30,15 +30,15 @@ describe 'Subscription flow', ->
       page.loadPath('setup_group_with_expired_legacy_trial')
       page.expectNoElement('.legacy-trial-expired-modal')
 
-  describe 'group with expired trial', ->
-
-    it 'displays a trial card telling coordinators their trial has expired', ->
-      page.loadPath('setup_group_with_expired_trial')
-      page.expectText('.trial-card', "you'll need to pick a pricing plan that suits." )
-
-    it 'displays the nag modal when trial expired more than 15 days ago', ->
-      page.loadPath('setup_group_with_overdue_trial')
-      page.expectText('.choose-plan-modal', 'please choose a payment plan')
+  # describe 'group with expired trial', ->
+  #
+  #   it 'displays a trial card telling coordinators their trial has expired', ->
+  #     page.loadPath('setup_group_with_expired_trial')
+  #     page.expectText('.trial-card', "you'll need to pick a pricing plan that suits." )
+  #
+  #   it 'displays the nag modal when trial expired more than 15 days ago', ->
+  #     page.loadPath('setup_group_with_overdue_trial')
+  #     page.expectText('.choose-plan-modal', 'please choose a payment plan')
 
   describe 'group on paid plan', ->
 
