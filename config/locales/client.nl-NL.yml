@@ -176,8 +176,6 @@ nl-NL:
     ignore: Negeer
   group_previous_proposals_card:
     heading: Vorige voorstellen
-  invitation:
-    to: 'aan:'
   memberships_page:
     members: Leden
     name_label: Naam

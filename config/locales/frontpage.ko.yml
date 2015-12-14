@@ -18,7 +18,7 @@ ko:
       privacy: 개인정보
       services: 서비스
     hero:
-      header_html: '루미오는 <strong>협력적 의사결정</strong>을 위한 </br> 가장 쉬운 방법입니다.'
+      header_html: '루미오는 <strong>협력적 의사결정</strong>을 위한 <br /> 가장 쉬운 방법입니다.'
       lead_html: '루미오의 조직화와 커뮤니티 기능은  사용자들이 어디에 있든 <strong>토론에 참여할 수 있도록</strong> 해줍니다. '
     product:
       header_html: '<strong>모두의 의견</strong>이 반영될 때, <strong>더 나은 결론</strong>을 이끌어낼 수 있습니다.'
