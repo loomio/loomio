@@ -519,24 +519,6 @@ fr:
   group_previous_proposals_card:
     heading: Propositions précédentes
     see_more: Voir plus
-  invitation:
-    invite_people: Inviter des personnes
-    find_people: Trouvez des personnes
-    import_contacts_header: "Connectez votre carnet d'adresses"
-    import_contacts_message: Inviter des personnes sur Loomio est plus simple si vous importez vos contacts De Google.
-    import_contacts: Importer des contacts
-    instructions: Entrer les noms ou les adresses courriel
-    invitation_message: "Message d'invitation"
-    remove_invite: "Enlever l'invitation"
-    send_invite: 'Envoyer {{count}} invitations'
-    to: 'à:'
-    add_custom_message: + ajouter un message personnalisé
-    default_message: 'Salut, viens prendre des décisions avec nous ! On utilise un outil de prise de décision collective appelé Loomio.'
-    messages:
-      members_added_and_emails_sent: '{{members}} membre(s) ajouté(s) et {{emails}} invitation(s) envoyée(s)'
-      members_added: '{{members}} membre(s) ajouté(s)'
-      emails_sent: '{{emails}} invitation(s) envoyée(s)'
-      no_invitations: Aucune invitation envoyée
   memberships_page:
     members: Les membres
     name_label: Nom

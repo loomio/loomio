@@ -174,8 +174,6 @@ da:
   membership_requests_page:
     approve: Godkend
     ignore: Ignorer
-  invitation:
-    invite_people: Inviter Folk
   memberships_page:
     members: Medlemmer
     name_label: Navn

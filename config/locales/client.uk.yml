@@ -516,24 +516,6 @@ uk:
   group_previous_proposals_card:
     heading: Попередні пропозиції
     see_more: Переглянути більше
-  invitation:
-    invite_people: Запросити людей
-    find_people: Знайти людей
-    import_contacts_header: Підключіть свою адресну книгу
-    import_contacts_message: 'Запросити людей до Loomio набагато легше, якщо ви імпортуєте контакти з Google.'
-    import_contacts: Імпортувати контакти
-    instructions: Введіть імена або електронні адреси
-    invitation_message: Текст запрошення
-    remove_invite: Видалити запрошення
-    send_invite: 'Відправити {{count}} запрошень'
-    to: 'кому:'
-    add_custom_message: + додати власне повідомлення
-    default_message: 'Привіт, долучайся до прийняття рішення! Ми використовуємо інструмент спільного прийняття рішень під назвою Loomio'
-    messages:
-      members_added_and_emails_sent: '{{members}} учасник(и) додані і {{emails}} запрошення відправлені'
-      members_added: 'Учасник(и) {{members}} додані'
-      emails_sent: '{{emails}} запрошення відправлені'
-      no_invitations: 'Запрошення не відправлено!'
   memberships_page:
     members: Учасники
     name_label: Ім’я
