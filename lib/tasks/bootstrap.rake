@@ -36,8 +36,8 @@ namespace :bootstrap do
 
   desc 'Create user (optional arguments email)'
   task :create_user, [:email, :password] => :environment do |t, args|
-    args.with_defaults[email: 'default@loomio.com', password: 'passcode1']
-    if User.find_by(email: args[:email]).empty?
+    args.with_defaults(email: 'default@loomio.com', password: 'bootstrap_password')
+    if User.find_by(email: args[:email]).nil?
       User.create(args.to_hash)
       puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
     else
@@ -45,7 +45,7 @@ namespace :bootstrap do
     end
   end
 
-  desc "Lunch project"
+  desc "Launch project"
   task :run => :environment do
     Process.spawn 'cd lineman && lineman run'
     sh 'bundle exec rails s'
