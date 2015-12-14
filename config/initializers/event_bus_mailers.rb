@@ -1,6 +1,6 @@
 
 EventBus.listen('new_comment_event') do |event|
-  BaseMailer.send_bulk_email(to: UsersToEmailQuery.new.comment(event.comment)) do |user|
+  BaseMailer.send_bulk_mail(to: UsersToEmailQuery.new_comment(event.comment)) do |user|
     ThreadMailer.delay.new_comment(user, event)
   end
 end

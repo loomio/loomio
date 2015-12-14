@@ -6,7 +6,6 @@ class Events::NewComment < Event
             discussion: comment.discussion,
             created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
   end
-  EventBus.listen('new_comment') { |comment| publish! comment }
 
   def group_key
     discussion.group.key

@@ -32,6 +32,7 @@ class CommentService
 
     comment.save!
     EventBus.broadcast('new_comment', comment)
+    Events::NewComment.publish!(comment)
   end
 
   def self.destroy(comment:, actor:)

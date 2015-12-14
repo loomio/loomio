@@ -19,7 +19,7 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def self.for_comment(comment:)
-    for(user: comment.author, discussion: comment.discussion)
+    self.for(user: comment.author, discussion: comment.discussion)
   end
 
   def author_thread_item!(time)
