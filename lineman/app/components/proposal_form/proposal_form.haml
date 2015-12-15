@@ -14,7 +14,7 @@
     %fieldset{ng-disabled: '!proposal.canBeEdited()'}
       .lmo-form-group
         %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
-        %input.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false', maxlength: '255'}
+        %textarea.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{msd-elastic: 'true', rows: 1, placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false', maxlength: '255'}
         %validation_errors{subject: 'proposal', field: 'name'}
 
       .lmo-form-group
