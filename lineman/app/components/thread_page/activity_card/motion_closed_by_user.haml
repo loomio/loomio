@@ -4,5 +4,7 @@
       .thread-item__proposal-icon
     .media-body
       %h3.thread-item__title
-        %span{id: 'event-{{event.id}}', translate: "proposal_closed_by_user_item.proposal_closed_by_user", translate-values: '{actor: event.actorName(), title: event.proposal().name}'}
+        %strong
+          %a{lmo-href-for: 'event.actor()'}> {{ event.actorName() }}
+        %span{id: 'event-{{event.id}}', translate: "proposal_closed_by_user_item.proposal_closed_by_user", translate-value-title: '{{event.proposal().name}}'}
         %timeago.timeago--inline{timestamp: 'proposal.createdAt'}
