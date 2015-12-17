@@ -3,10 +3,7 @@ class Events::UserMentioned < Event
     create!(kind: 'user_mentioned',
             eventable: comment,
             user: comment.author,
-            created_at: comment.created_at).tap { |e| EventBus.broadcast('user_mentioned_event', e, mentioned_user) }
-  end
-  EventBus.listen('new_comment') do |comment|
-    comment.mentioned_group_members.without(comment.author).each { |user| publish!(comment, user) }
+            created_at: comment.created_at).tap { |e| EventBus.broadcast('user_mentioned_event', mentioned_user, e) }
   end
 
   def comment

@@ -101,6 +101,10 @@ class Comment < ActiveRecord::Base
     group.users.where(username: mentioned_usernames).where('users.id != ?', author.id)
   end
 
+  def notified_group_members
+    mentioned_group_members.without(author).without(parent.try(:author))
+  end
+
   def likes_count
     comment_votes_count
   end
