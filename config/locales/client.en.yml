@@ -339,8 +339,8 @@ en:
   legacy_trial_expired_modal:
     heading: "Thanks for using Loomio this year!"
     body: |
-      <p>We really appreciate your support over the year, and we're really excited about making Loomio even better in 2016.</p>
-      <p>Is Loomio useful to your group? We've just released our pricing plans and we're asking groups who've been using Loomio for a while to pick a plan that suits them.</p>
+      <p>We really appreciate your support over the year, and we’re really excited about making Loomio even better in 2016.</p>
+      <p>Is Loomio useful to your group? We’ve just released our pricing plans and we’re asking groups who’ve been using Loomio for a while to pick a plan that suits them.</p>
     submit: "Show me the plans"
 
 
@@ -471,12 +471,11 @@ en:
   trial_card:
     title: '30-day trial'
     choose_plan: 'Choose your pricing plan'
-    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that works for you at any time.'
-    expired_body_html: "<strong>{{name}}</strong> has now reached the end of its Loomio trial. If you'd like to keep using it, you'll need to pick a pricing plan that suits. If you'd like to talk to someone about this, just <a href=''>get in touch</a>."
+    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
+    expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
 
   choose_plan_modal:
-    heading: 'Choose your pricing plan'
-    overdue_heading: 'To continue using Loomio, please choose a payment plan'
+    heading: 'Please choose a plan for your group'
     gift: Gift
     standard: Standard
     plus: Plus

@@ -34,11 +34,11 @@ describe 'Subscription flow', ->
 
     it 'displays a trial card telling coordinators their trial has expired', ->
       page.loadPath('setup_group_with_expired_trial')
-      page.expectText('.trial-card', "you'll need to pick a pricing plan that suits." )
+      page.expectText('.trial-card', "To keep using it, you’ll need to pick a pricing plan that suits your group." )
 
     it 'displays the nag modal when trial expired more than 15 days ago', ->
       page.loadPath('setup_group_with_overdue_trial')
-      page.expectText('.choose-plan-modal', 'please choose a payment plan')
+      page.expectText('.choose-plan-modal', 'Please choose a plan for your group')
 
   describe 'group on paid plan', ->
 
