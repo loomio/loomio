@@ -841,7 +841,7 @@ en:
       aria_label: 'Comment options'
       edit_comment: 'Edit comment'
       delete_comment: 'Delete comment'
-    in_reply_to: 'in reply to'
+    in_reply_to: 'in reply to <strong>{{recipient}}</strong>'
 
   new_vote_item:
     agree: 'agreed'
