@@ -19,7 +19,10 @@
       .media-left
         .thread-item__vote-icon{class: 'thread-item__vote-icon--{{vote.position}}'}
       .media-body
-        %span.proposal-positions-panel__name-and-position{translate: "new_vote_item.{{vote.positionVerb()}}", translate-value-actor: '{{vote.authorName()}}'}
+        %span.proposal-positions-panel__name-and-position
+          %strong
+            %a{lmo-href-for: 'vote.author()'}> {{vote.authorName()}}
+          %span{translate: "new_vote_item.{{vote.positionVerb()}}"}
         %span{ng-if: '!vote.hasStatement()'}.
         %span{ng-if: 'vote.hasStatement()'}: {{::vote.statement}}
         %button.proposal-positions-panel__change-your-vote{ng-if: 'showChangeVoteOption(vote)', href: '', ng-click: 'changeVote()'}

@@ -841,46 +841,46 @@ en:
       aria_label: 'Comment options'
       edit_comment: 'Edit comment'
       delete_comment: 'Delete comment'
-    in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
+    in_reply_to: 'in reply to'
 
   new_vote_item:
-    agree: '<strong>{{actor}}</strong> agreed'
-    abstain: '<strong>{{actor}}</strong> abstained'
-    disagree: '<strong>{{actor}}</strong> disagreed'
-    block: '<strong>{{actor}}</strong> blocked'
-    agree_with_statement: '<strong>{{actor}}</strong> agreed: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> abstained: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> disagreed: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> blocked: <span>{{statement}}</span>'
+    agree: 'agreed'
+    abstain: 'abstained'
+    disagree: 'disagreed'
+    block: 'blocked'
+    agree_with_statement: 'agreed: <span>{{statement}}</span>'
+    abstain_with_statement: 'abstained: <span>{{statement}}</span>'
+    disagree_with_statement: 'disagreed: <span>{{statement}}</span>'
+    block_with_statement: 'blocked: <span>{{statement}}</span>'
 
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> started a proposal: <span>{{title}}</span>'
+    author_created_proposal: 'started a proposal: <span>{{title}}</span>'
 
   proposal_closed_item:
     proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
 
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal: <span>{{title}}</span>'
+    proposal_closed_by_user: 'closed the proposal: <span>{{title}}</span>'
 
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong> updated the proposal title: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> updated the proposal description'
-    closing_at: '<strong>{{actor}}</strong> updated the proposal to close at <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> updated the proposal title and description'
-    closing_at_name: '<strong>{{actor}}</strong> updated the proposal title and closing time'
-    closing_at_description: '<strong>{{actor}}</strong> updated the proposal description and closing time'
-    closing_at_description_name: '<strong>{{actor}}</strong> updated the proposal title, description and closing time'
+    name: 'updated the proposal title: <span>{{title}}</span>'
+    description: 'updated the proposal description'
+    closing_at: 'updated the proposal to close at <span>{{time}}</span>'
+    description_name: 'updated the proposal title and description'
+    closing_at_name: 'updated the proposal title and closing time'
+    closing_at_description: 'updated the proposal description and closing time'
+    closing_at_description_name: 'updated the proposal title, description and closing time'
 
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> published a proposal outcome:'
+    proposal_outcome_created: 'published a proposal outcome:'
 
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> updated the proposal outcome:'
+    proposal_outcome_updated: 'updated the proposal outcome:'
 
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong> updated the thread title: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> updated the thread context'
-    description_title: '<strong>{{actor}}</strong> updated the thread title and context'
+    title: 'updated the thread title: <span>{{title}}</span>'
+    description: 'updated the thread context'
+    description_title: 'updated the thread title and context'
 
   contact_message_form:
     contact_us: 'Contact Us'

@@ -4,5 +4,7 @@
       %user_avatar{user: 'event.actor()', size: 'small'}
     .media-body
       %h3.thread-item__title{id: 'event-{{event.id}}'}
-        %span{translate: "discussion_edited_item.{{translationKey}}", translate-values: '{actor: actorName, title: title}'}
+        %strong
+          %a{lmo-href-for: 'event.actor()'}> {{ event.actorName() }}
+        %span{translate: "discussion_edited_item.{{translationKey}}", translate-value-title: '{{title}}'}
         %timeago.timeago--inline{timestamp: 'event.createdAt'}
