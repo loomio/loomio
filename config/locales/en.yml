@@ -987,6 +987,7 @@ en:
     invitation_link: "Invitation link"
     discussion_link: "Participate in the discussion:"
     link_help: "Click the link to join %{group_name} and get started:"
+    value_proposition: "Loomio is an online platform that helps groups make decisions. You can discuss issues and agree on a clear course of action together."
     thanks: "Thanks,"
     copy: "If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself."
     pending_invitations: 'Pending invitations'
