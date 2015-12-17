@@ -14,3 +14,6 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', ->
 
     $scope.openCancelForm = (invitation) ->
       ModalService.open CancelInvitationForm, invitation: -> invitation
+
+    $scope.invitationCreatedAt = (invitation) ->
+      moment(invitation.createdAt).format('DD MMM YY')

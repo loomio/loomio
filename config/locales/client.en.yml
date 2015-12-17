@@ -653,6 +653,7 @@ en:
     heading: Pending invitations
     email: Email
     invitation_link: Invitation link
+    sent: Sent
 
   cancel_invitation_form:
     heading: Cancel invitation
