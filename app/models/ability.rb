@@ -44,7 +44,7 @@ class Ability
       end
     end
 
-    can :see_private_content, Group do |group|
+    can [:see_private_content, :subscribe_to], Group do |group|
       if group.is_archived?
         false
       else
@@ -142,8 +142,12 @@ class Ability
       not user_to_deactivate.adminable_groups.published.any? { |g| g.admins.count == 1 }
     end
 
-    can [:update, :see_notifications_for, :make_draft], User do |user|
+    can [:update, :see_notifications_for, :make_draft, :subscribe_to], User do |user|
       @user == user
+    end
+
+    can [:subscribe_to], GlobalMessageChannel do |channel|
+      true
     end
 
     can :create, MembershipRequest do |request|
@@ -167,7 +171,8 @@ class Ability
 
     can [:show,
          :print,
-         :mark_as_read], Discussion do |discussion|
+         :mark_as_read,
+         :subscribe_to], Discussion do |discussion|
       if discussion.is_archived?
         false
       elsif discussion.group.is_archived?
