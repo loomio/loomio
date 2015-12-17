@@ -6,23 +6,33 @@ ko:
       pm: 오후
     closing_in: '{{time}} 진행중'
     closed_ago: '{{time}} 종료됨'
+    volume: 볼륨
+    notification_volume: 알림 볼륨
     group: 그룹
     groups: 그룹
     privacy:
+      privacy: 개인정보
       public: 공개
+      open: 진행중
+      closed: 종료
       private: 비공개
+      secret: 비밀
     selected: 선택되었음
     date_range:
       today: 오늘
       yesterday: 어제
       thisweek: 이번 주
       thismonth: 이번 달
+      older: 더 오래된
     more_help: 도움말 자세히
     models:
       proposal: 제안
+    copied: 복사됨
     action:
+      close: 닫기
       save: 저장
       save_changes: 수정 저장하기
+      update_settings: 설정 저장
       reply: 답글
       edit: 편집
       like: 좋아요
@@ -31,44 +41,173 @@ ko:
       cancel: 취소
       show_more: 더 보기
       view_all: 모두 보기
+      new_thread: 새로운 쓰레드
       add_subgroup: 하위그룹 추가하기
       loading: 로딩중...
+      translate: 번역
+      translated: Bing으로 번역
       uploading: 업로딩중...
     formatting_help:
+      label: 포맷설정 도움말
       title: 텍스트양식 마크다운 사용법을 배우세요.
   error_page:
     forbidden: '권한을 가지고 있지 않습니다. '
+    page_not_found: 항목을 찾을 수가 없습니다. 삭제되었거나 옮겨진 것 같습니다.
+    internal_server_error: 죄송합니다만 뭔가가 잘못되었습니다. 다시 시도해 보세요.
   start_proposal_card:
     title: 제안 시작하기
     helptext: 의사를 결정하셨습니까?
   proposal_outcome_panel:
     heading: 결과
+    set_outcome_hint: 이 제안의 결과를 모두가 알도록 이 공간을 이용하세요.
+    set_outcome_btn: 제안 결과 설정하기
+    edit_outcome_link: 제안 결과 수정하기
   proposal_outcome_form:
+    set_outcome: 제안 결과 설정하기제안 결과 설정하기
+    update_outcome: 제안 결과 수정하기
     outcome_label: 제안 결과
+    outcome_placeholder: 이 제안의 결과를 모두에게 알리세요.
     publish_outcome: 결과 올리기
+    messages:
+      created: 결과가 공개되었습니다.
+      updated: 결과가 수정되었습니다.
+  previous_proposals_card:
+    heading: 이전 제안
+  previous_proposals_page:
+    heading: 이전 제안
+  proposal_collapsed:
+    expand: 열기
+    outcome: '결과: {{outcome}}'
+  volume_levels:
+    loud: 크게
+    normal: 보통
+    quiet: 조용히
+    mute: 소거
+    unmute: 소거해제
   thread_volume_card:
     heading: 토론 알림 설정
+    body:
+      loud: '모든 이메일 받기: 이 쓰레드의 모든 활동에 관한 이메일을 받게 됩니다.'
+      normal: '제안을 이메일로 받기: 누군가가 제안을 하거나, 종료되거나, 결과를 작성하면 이메일을 받습니다.'
+      quiet: '이메일 받지 않기: 이 쓰레드에 관한 어떤 이메일도 받지 않습니다.'
+      mute: '쓰레드 알림 해제 : 이 쓰레드에 관한 이메일은 받지 않으며, 최근 쓰레드와 읽지 않은 페이지에 이 쓰레드를 포함하지 않습니다.'
+    change_volume_link: 변경
   thread_volume_form:
     header: 토론 알림 설정
+    loud_label: 모든 이메일 받기
+    loud_description: 이 쓰레드와 관련한 활동이 있으면 메일을 받습니다.
+    normal_label: 이메일 제안
+    normal_description: '누군가 제안하거나, 종료시키기 전이나, 성과를 작성할때마다 메일을 받습니다.'
+    quiet_label: 이메일 없음
+    quiet_description: 다른 사용자가 @언급하지 않으면 이 쓰레드에 관한 메일을 받지 않습니다.
+    mute_label: 쓰레드 알림 해제
+    mute_description: '이 쓰레드에 관한 이메일은 받지 않으며, 최근 쓰레드와 읽지 않은 페이지에 이 쓰레드를 포함하지 않습니다.'
     submit: 업데이트
+    messages:
+      loud: 이 쓰레드의 활동 내역을 메일로 받습니다.
+      normal: 이 쓰레드의 제안에 관한 메일을 받습니다.
+      quiet: 이 쓰레드와 관련한 메일을 받지 않습니다.
+      mute: 쓰레드 알림 해제
+  group_volume_card:
+    heading: 그룹 알림
+    body:
+      loud: '모든 이메일을 받음: 이 그룹의 모든 활동 내역에 관한 이메일을 받습니다.'
+      normal: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.
+      quiet: '이메일 받지 않음: 이 그룹에 관한 어떤 이메일도 받지 않습니다.'
+      mute: '그룹 알림 해제: 이 그룹에 관한 어떤 이메일도 받지 않으며, 최신 쓰레드 목록과 읽지 않은 페이지에서도 제외합니다.'
+    change_volume_link: 변경
   group_volume_form:
+    header: 그룹 알림
+    loud_label: 모든 이메일 받기
+    loud_description: 이 그룹의 모든 활동 내역을 이메일로 받습니다.
+    normal_label: 새로운 쓰레드와 제안을 이메일로 받습니다.
+    normal_description: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.이
+    quiet_label: 이메일 없음
+    quiet_description: 다른 사용자가 @언급하지 않으면 이 그룹에 관한 메일을 받지 않습니다.
+    mute_label: 그룹 알림 해제
+    mute_description: '이 그룹에 관한 어떤 이메일도 받지 않으며, 최신 쓰레드 목록과 읽지 않은 페이지에서도 제외합니다.'
     submit: 업데이트
+    messages:
+      loud: 이 그룹의 활동 내역을 메일로 받습니다.
+      normal: 이 그룹의 제안에 관한 메일을 받습니다.
+      quiet: 이 그룹과 관련한 메일을 받지 않습니다.
+      mute: 그룹 알림 해제
+  inbox:
+    clear: 지우기
+    latest: 최신
+    unread: 읽지않음
+    closing_in: 닫는중
+  session_form:
+    email_label: '이메일:'
+    password_label: '비밀번호:'
+    remember_me: 로그인 상태 유지
+    sign_in: 로그인
   comment_form:
-    delete_comment: 댓글삭제
+    aria_label: 댓글 추가하기
+    attachments:
+      aria_label: 파일 첨부하기
+      remove_attachment: 첨부파일 삭제
+    messages:
+      created: 댓글을 추가하였습니다.
+      replied: '{{name}}이 답변하였습니다'
+      updated: 댓글을 수정하였습니다.
+      destroyed: 댓글을 삭제하였습니다.
+    edit_comment: 댓글 수정
+    delete_comment: 댓글 삭제
+    cancel_reply: 답변 취소
     confirm_delete_message: 댓글을 지우시겠습니까?
+    confirm_delete: '예, 확인하였습니다.'
+    in_reply_to: '<strong>{{name}}</strong>에게 답변하기'
+    submit_button:
+      label: 저장하기
+    private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
+    public_privacy_notice: 작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.
   navbar:
+    recent: 최신
+    unread: 읽지않음
     groups: 그룹
+    recent_title: 대시보드로 이동
+    unread_title: 읽지 않은 활동 보기
+    groups_title: 활동중인 그룹 보기
     start_thread: 새 토론 만들기
+    notifications: 알림 패널
+    user_actions: 사용자 액션
     user_options:
+      label: 사용자 옵션
+      contact_us: 연락하기
+      new_thread: 새로운 쓰레드
       new_group: 새 그룹
       profile: 프로필
+      email_settings: 이메일 설정
       help: 도움말
+      sign_out: 로그아웃
     search:
+      no_results: 쓰레드가 없습니다.
+      close: 검색패널 닫기
       placeholder: 검색
+      loading: 결과를 불러오는 중입니다.
       discussions: 토론
+      proposals: 제안
+      comments: 댓글
+    sign_in: 로그인
+  start_menu:
+    title: 액션 버튼
+    start_group: 그룹 시작하기
+    start_subgroup: 서브그룹 시작하기
+    start_thread: 쓰레드 시작하기
+    invite_people: 초대하기
   notifications:
     header: 알림
+    new_discussion: '<strong>{{name}}</strong>님이 <strong>{{discussion}}</strong>논의를 시작하였습니다.'
+    new_motion: '<strong>{{name}}</strong>님이 <strong>{{proposal}}</strong>을 제안하였습니다.'
+    motion_closed_by_user: '<strong>{{name}}</strong>님이 <strong>{{proposal}}</strong> 제안을 종료하였습니다.'
+    motion_closed_by_expiry: '<strong>{{proposal}}</strong> 제안이 종료되었습니다.'
+    user_added_to_group_no_inviter: '<strong>{{group}}</strong>에 가입하였습니다.'
+    motion_closing_soon: '제안이 곧 종료됩니다: <strong>{{proposal}}</strong>'
+  position_buttons_panel:
+    heading: 한말씀
   vote_form:
+    heading: 한말씀
     i_agree: 동의
     i_abstain: 기권
     i_abstain_details: 나를 제외하고 의사결정이 내려져도 괜찮습니다.
@@ -77,11 +216,18 @@ ko:
     i_block: 차단
     i_block_details: 저는 이 제안에 강하게 반대를 하고 앞으로 가는것을 반대합니다.
     submit_position: 입장 등록
+    change_position: 입장 변경
+    select_position: 입장 선택
+    messages:
+      created: 투표를 추가하였습니다.
   proposal_positions_panel:
     heading: 선택
+    no_votes_yet: 이 제안에 투표한 사람이 아직 없습니다.
     change_your_vote: 나의 선택 변경
   undecided_panel:
+    aria_label: 결정하지 않은 멤버들
     show_undecided: 아직 참여하지 않은 멤버 보기
+    hide_undecided: 결정하지 않은 멤버들을 보여주지 않음
   close_proposal_form:
     close_proposal: 제안 마감
   proposal_form:
@@ -97,6 +243,7 @@ ko:
     privacy_label: 개인정보
   proposal_expanded:
     close_proposal: 제안 마감
+    closed_badge: 종료
   proposal_position_yes: 찬성
   proposal_position_no: 반대
   join_group_button:
@@ -115,9 +262,16 @@ ko:
       label: 선택사항
     leave_group:
       title: 그룹 탈퇴
+  group_form:
+    privacy: 개인정보
+    submit_update: 설정 저장
   membership_requests_page:
     approve: 승인
     ignore: 무시
+  group_previous_proposals_card:
+    heading: 이전 제안
+  invitation_form:
+    invite_people: 초대하기
   memberships_page:
     members: 멤버
     name_label: 이름
@@ -135,20 +289,35 @@ ko:
     name_label: 이름
     email_label: 이메일
     locale_label: 언어
+  email_settings_page:
+    header: 이메일 설정
   dashboard_page:
+    filtering:
+      proposals: 제안
     threads_from:
+      proposals: 제안
       today: 오늘
       yesterday: 어제
   discussion:
     activity: 최근 활동
+    proposals: 제안
+    previous_proposals: 이전 제안
   thread_group:
     aria_label: 그룹명
+  activity_card:
+    new_activity: 새로운 활동
+    attachment_display:
+      aria_label: '첨부파일:'
+      image_alt: 첨부이미지
   delete_comment_dialog:
     title: 댓글삭제
     question: 댓글을 지우시겠습니까?
     confirm: 댓글삭제
   new_comment_item:
+    aria_label: '{{author}}의 댓글'
     context_menu:
+      aria_label: 댓글 옵션
+      edit_comment: 댓글 수정
       delete_comment: 댓글삭제
   contact_message_form:
     name_label: 이름
@@ -161,6 +330,7 @@ ko:
     get_in_touch_description_html: "질문이나 의견이 있다면 <a href='%{link}'>연락해 주세요.</a>."
     getting_started: 시작하기
     getting_started_description: '왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다.'
+    have_your_say: 한말씀
     have_a_discussion: 토론 하기
     have_a_discussion_description: "주제와 관련된 정보와 배경 정보는 페이지의 상단에 위치해 있습니다. \n토론에 여러분의 목소리를 담기 위해서는 댓글 상자를 이용하세요."
     help: 도움말
