@@ -1,14 +1,9 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
   controller: ($scope, group, Records, CurrentUser, AbilityService, FlashService, RestfulClient, ModalService, TeamLinkModal, AddMembersModal) ->
-    $scope.group = group
-    $scope.form = { emailAddresses: '' }
-    $scope.showCustomMessageField = false
-    $scope.isDisabled = false
-    $scope.noInvitations = false
 
     $scope.addMembers = ->
-      ModalService.open AddMembersModal, group: -> group
+      ModalService.open AddMembersModal, group: -> $scope.group
 
     $scope.addCustomMessage = ->
       $scope.showCustomMessageField = true
@@ -24,7 +19,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       $scope.form.emailAddresses.split(' ').length > 100
 
     $scope.getTeamLink = ->
-      ModalService.open TeamLinkModal, group: -> group
+      ModalService.open TeamLinkModal, group: -> $scope.group
 
     $scope.submit = ->
       $scope.isDisabled = true
@@ -45,5 +40,14 @@ angular.module('loomioApp').factory 'InvitationForm', ->
             $scope.$close()
       .finally ->
         $scope.isDisabled = false
+
+    $scope.group = group
+    $scope.form = { emailAddresses: '' }
+    $scope.showCustomMessageField = false
+    $scope.isDisabled = false
+    $scope.noInvitations = false
+
+    if !(group?)
+      $scope.group = $scope.userGroups()[0]
 
     return
