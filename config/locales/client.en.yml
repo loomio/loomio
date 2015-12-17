@@ -1048,3 +1048,8 @@ en:
       body_html: "<p>Yikes, did we do something wrong? We're sorry if you had a bad time in the new Loomio.</p>"
       give_feedback: "Before you go please consider sharing your feedback so we can improve."
       button_text: 'Switch back to the old Loomio'
+
+  global:
+    messages:
+      app_update: 'A new version of Loomio is available'
+      reload: 'Reload'

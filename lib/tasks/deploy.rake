@@ -43,7 +43,8 @@ end
 def heroku_migrate_and_restart(remote)
   puts "migrating and restarting heroku app #{remote}..."
   run_commands ["ruby /usr/local/heroku/bin/heroku run rake db:migrate -a #{remote}",
-                "ruby /usr/local/heroku/bin/heroku restart -a #{remote}"]
+                "ruby /usr/local/heroku/bin/heroku restart -a #{remote}",
+                "ruby /usr/local/heroku/bin/heroku run rake loomio:notify_clients_of_update -a #{remote}"]
 end
 
 desc "Deploy to some git-remote and branch"

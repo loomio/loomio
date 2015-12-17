@@ -70,4 +70,8 @@ namespace :loomio do
                        published_at: item[:pubDate])
     end
   end
+
+  task notify_clients_of_update: :environment do
+    MessageChannelService.publish({ version: Loomio::Version.current }, to: GlobalMessageChannel.instance)
+  end
 end

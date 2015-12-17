@@ -19,4 +19,5 @@ angular.module('loomioApp').factory 'FlashService', ($rootScope) ->
     warning: createFlashLevel 'warning'
     error:   createFlashLevel 'error'
     loading: createFlashLevel 'loading', LONG_TIME
+    update:  createFlashLevel 'update', LONG_TIME
     dismiss: createFlashLevel 'loading', 1
