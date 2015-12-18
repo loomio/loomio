@@ -180,7 +180,7 @@ describe API::MotionsController do
           description
           outcome
           activity_count
-          did_not_votes_count
+          members_not_voted_count
           created_at
           updated_at
           closing_at

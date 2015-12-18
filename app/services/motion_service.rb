@@ -46,6 +46,7 @@ class MotionService
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
+    motion.update_members_not_voted_count
 
     Events::MotionClosed.publish!(motion)
   end
