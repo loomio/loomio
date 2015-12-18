@@ -67,6 +67,17 @@ describe 'CommentService' do
         expect(reader.reload.participating).to eq true
         expect(reader.reload.volume.to_sym).to eq :loud
       end
+
+      it 'does not publish a comment replied to event if there is no parent' do
+        Events::CommentRepliedTo.should_not_receive(:publish!).with(comment)
+        CommentService.create(comment: comment, actor: user)
+      end
+
+      it 'publishes a comment replied to event if there is a parent' do
+        comment.parent = create :comment
+        Events::CommentRepliedTo.should_receive(:publish!).with(comment)
+        CommentService.create(comment: comment, actor: user)
+      end
     end
 
     context 'comment is invalid' do
