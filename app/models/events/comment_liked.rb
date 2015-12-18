@@ -3,7 +3,7 @@ class Events::CommentLiked < Event
 
   def self.publish!(comment_vote)
     create!(kind: "comment_liked",
-            eventable: comment_vote)
+            eventable: comment_vote).tap { |event| EventBus.broadcast('comment_liked_event', event) }
   end
 
   def comment_vote

@@ -84,13 +84,8 @@ class Comment < ActiveRecord::Base
     comment_votes.last(max).map(&:user_name)
   end
 
-  def refresh_liker_ids_and_names!
-    hash = {}
-    comment_votes.each do |cv|
-      hash[cv.user_id] = cv.user.name
-    end
-    self.liker_ids_and_names = hash
-    save!
+  EventBus.listen('comment_like', 'comment_unlike') do |cv|
+    update(liker_ids_and_names: cv.comment.comment_votes.map { |vote| { vote.user_id => vote.user.name } })
   end
 
   def mentioned_usernames
@@ -99,6 +94,10 @@ class Comment < ActiveRecord::Base
 
   def mentioned_group_members
     group.users.where(username: mentioned_usernames).where('users.id != ?', author.id)
+  end
+
+  def new_mentions_in(body)
+    self.class.new(body: body).mentioned_usernames - mentioned_usernames
   end
 
   def notified_group_members
