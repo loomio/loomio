@@ -21,13 +21,21 @@ describe Events::CommentRepliedTo do
     end
 
     it 'emails the parent author' do
+      expect(Event).to receive(:create!).with(kind: 'comment_replied_to',
+                                              eventable: comment,
+                                              created_at: comment.created_at).and_return(event)
       expect(ThreadMailer).to receive(:delay).and_return(double(comment_replied_to: true))
+      expect(event).to receive(:notify!)
       Events::CommentRepliedTo.publish!(comment)
     end
 
     it 'does not email when the comment and reply author are the same' do
       parent.update author: comment.author
+      expect(Event).to receive(:create!).with(kind: 'comment_replied_to',
+                                              eventable: comment,
+                                              created_at: comment.created_at).and_return(event)
       expect(ThreadMailer).to_not receive(:delay)
+      expect(event).to_not receive(:notify!)
       Events::CommentRepliedTo.publish!(comment)
     end
   end
