@@ -105,6 +105,15 @@ describe API::VotesController do
   # end
 
   describe 'create' do
+
+    context 'logged out' do
+      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+      it 'responds with unauthorized' do
+        post :create, vote: vote_params
+        expect(response.status).to eq 403
+      end
+    end
+
     context 'success' do
       it "creates a vote" do
         post :create, vote: vote_params

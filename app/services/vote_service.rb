@@ -1,8 +1,8 @@
 class VoteService
   def self.create(vote:, actor:)
+    actor.ability.authorize! :create, vote
     vote.author = actor
     return false unless vote.valid?
-    actor.ability.authorize! :create, vote
     vote.save!
 
     Draft.purge(user: actor, draftable: vote.motion, field: :vote)
