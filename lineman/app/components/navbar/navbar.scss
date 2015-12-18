@@ -130,6 +130,7 @@
       width: 100%;
       &:hover, &:focus {
         background: $list-hover-color;
+        &.has-badge .badge { border: 2px solid $list-hover-color; }
       }
     }
   }
