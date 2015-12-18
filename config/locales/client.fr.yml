@@ -27,7 +27,9 @@ fr:
     more_help: "Plus d'aide"
     models:
       proposal: Proposition
+    copied: Copié
     action:
+      close: Fermer
       save: Enregistrer
       save_changes: Sauvegarder les modifications
       update_settings: Met à jour mes paramètres
@@ -42,6 +44,8 @@ fr:
       new_thread: Nouvelle discussion
       add_subgroup: Ajouter un sous-groupe
       loading: Chargement
+      translate: Traduire
+      translated: Traduit par Bing Translator
       uploading: Téléchargement
     formatting_help:
       label: Aide pour le formatage
@@ -49,13 +53,13 @@ fr:
   error_page:
     forbidden: "Vous n'avez pas la permission de faire cela."
     page_not_found: "Nous n'avons pas pu trouver cela. Cela a pu être supprimé ou déplacé."
-    internal_server_error: "Nous sommes désolé mais quelque chose s'est mal passé. Veuillez essayer à nouveau."
+    internal_server_error: "Nous sommes désolés mais quelque chose s'est mal passé. Veuillez essayer à nouveau."
   start_proposal_card:
     title: Lancer une proposition
     helptext: Prêt à prendre une décision ?
   proposal_outcome_panel:
     heading: Résultat
-    set_outcome_hint: Utilisez cet espace pour faire connaître les conséquences de cette proposition.
+    set_outcome_hint: Utilisez cet espace pour faire connaître le résultat de cette proposition.
     set_outcome_btn: Définir le résultat de la proposition
     edit_outcome_link: Modifier le résultat de la proposition
   proposal_outcome_form:
@@ -73,7 +77,7 @@ fr:
     heading: Propositions précédentes
   proposal_collapsed:
     expand: Étendre
-    outcome: 'Résultat: {{outcome}}'
+    outcome: 'Résultat : {{outcome}}'
   volume_levels:
     loud: Élevé
     normal: Normal
@@ -85,8 +89,8 @@ fr:
     body:
       loud: "Tous les courriels: vous recevrez un courriel à chaque fois qu'il y aura une activité dans cette discussion."
       normal: "Courriels de propositions: vous recevrez un courriel lorsqu'une proposition sera lancée ou sur le point de fermer, et quand un résultat sera publié."
-      quiet: "Pas de courriels: vous ne recevrez pas de courriels à propose de l'activité de cette discussion."
-      mute: 'Discussion désactivée: vous ne recevrez pas de courriel à propose de cette discussion, et elle sera enlevée de vos pages Discussions Récentes et Non Lu.'
+      quiet: "Aucun courriel : vous ne recevrez aucun courriel à propose de l'activité de cette discussion."
+      mute: 'Discussion désactivée : vous ne recevrez pas de courriel à propose de cette discussion, et elle sera enlevée de vos pages "Récent" et "Non Lu".'
     change_volume_link: Modifier
   thread_volume_form:
     header: Notifications de discussions
@@ -94,34 +98,34 @@ fr:
     loud_description: "Vous recevrez un courriel à chaque fois qu'il y aura une activité dans cette discussion."
     normal_label: Courriels de proposition
     normal_description: "Vous recevrez un courriel lorsqu'une proposition est lancée ou sur le point de fermer, et quand un résultat est publié."
-    quiet_label: Pas de courriels
-    quiet_description: "Vous ne recevrez pas de courriels à propos de cette discussion à moins que quelqu'un vous @mentionne."
+    quiet_label: Aucun courriel
+    quiet_description: "Vous ne recevrez aucun courriel à propos de cette discussion sauf si quelqu'un vous @mentionne."
     mute_label: Désactiver la discussion
-    mute_description: 'Vous ne recevrez pas de courriel à propos de cette discussion, et elle sera enlevée de vos pages Discussions Récentes et Non Lu.'
+    mute_description: 'Vous ne recevrez pas de courriel à propos de cette discussion, et elle sera enlevée de vos pages "Récent" et "Non lu".'
     submit: Mettre à jour
     messages:
       loud: "Vous recevrez un courriel lorsqu'il y aura une activité dans cette discussion."
       normal: "Vous recevrez un courriel lorsqu'il y aura une proposition dans cette discussion."
-      quiet: Vous ne recevrez pas de courriel à propos de cette discussion.
+      quiet: Vous ne recevrez aucun courriel à propos de cette discussion.
       mute: Discussion désactivée.
   group_volume_card:
     heading: Notifications de groupes
     body:
       loud: "Tous les courriels: vous recevrez un courriel à chaque fois qu'il y aura une activité dans ce groupe."
-      normal: Vous recevrez un courriel à chaque nouvelles discussions et propositions dans ce groupe.
-      quiet: "Pas de courriels: vous ne recevrez pas de courriels à propos de l'activité de ce groupe."
-      mute: 'Groupe désactivé: vous ne recevrez pas de courriel à propos de ce groupe, et il sera enlevé de vos pages Discussions Récentes et Non Lu.'
+      normal: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans ce groupe.
+      quiet: "Aucun courriel : vous ne recevrez aucun courriel à propos de l'activité de ce groupe."
+      mute: 'Groupe désactivé: vous ne recevrez aucun courriel à propos de ce groupe, et il sera enlevé de vos pages "Récent" et "Non lu".'
     change_volume_link: Modifier
   group_volume_form:
     header: Notifications de groupes
     loud_label: Tous les courriels
     loud_description: "Vous recevrez un courriel à chaque fois qu'il y a une activité dans ce groupe."
     normal_label: Envoyer les nouvelles discussions et propositions par courriel.
-    normal_description: Vous recevrez un courriel à chaque nouvelles discussions et propositions dans ce groupe.
-    quiet_label: Pas de courriels
-    quiet_description: "Vous ne recevrez pas de courriels à propos de l'activité de ce groupe, à moins que quelqu'un vous @mentionne."
+    normal_description: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans ce groupe.
+    quiet_label: Aucun courriel
+    quiet_description: "Vous ne recevrez aucun courriel à propos de l'activité de ce groupe, sauf si quelqu'un vous @mentionne."
     mute_label: Désactiver le groupe
-    mute_description: 'Vous ne recevrez pas de courriel à propos de ce groupe, et il sera enlevé de vos pages Discussions Récentes et Non Lu.'
+    mute_description: 'Vous ne recevrez pas de courriel à propos de ce groupe, et il sera enlevé de vos pages "Récent" et "Non lu".'
     submit: Mettre à jour
     messages:
       loud: "Vous recevrez un courriel lorsqu'il y aura une activité dans ce groupe."
@@ -185,6 +189,7 @@ fr:
       discussions: Discussions
       proposals: Propositions
       comments: Commentaires
+    sign_in: Connexion
   start_menu:
     title: "Bouton d'action"
     start_group: Créer un groupe
@@ -299,6 +304,18 @@ fr:
   proposal_position_abstain: "S'abstiens"
   proposal_position_no: "Pas d'accord"
   proposal_position_block: Bloquer
+  legacy_trial_expired_modal:
+    heading: "Merci d'utiliser Loomio cette année !"
+    body: >
+      <p>Votre soutien tout au long de l'année nous a vraiment fait chaud au
+      coeur et nous sommes très excités par toutes les idées que nous avons pour
+      encore améliorer Loomio en 2016.</p>
+
+      <p>Trouvez-vous Loomio utile pour votre groupe ? Nous venons de publier nos
+      options tarifaires et nous demandons aux groupes qui utilisent Loomio
+      depuis quelque temps de sélectionner une des options qui leur
+      convienne.</p>
+    submit: Montrez-moi les options
   group_welcome_modal:
     heading: Bienvenue dans votre nouveau groupe
     first_step: "Vous êtes le coordinateur du groupe, c'est-à-dire l'hôte des discussions du groupe. Regardez la video et les exemples de discussions."
@@ -387,10 +404,10 @@ fr:
       normal_aria_description: "Votre volume de notification pour ce groupe est réglé sur Normal. Vous recevrez un courriel seulement en cas d'activité importante, par exemple si quelqu'un crée une nouvelle discussion, lance une proposition, ou publie un résultat."
       normal_message: "Vous recevrez un courriel uniquement lors d'activités importantes dans \"{{name}}\"."
       quiet: "N'envoie pas de courrier électronique concernant ce groupe. Les activités restent consultables sur le tableau de bord."
-      quiet_aria_description: Votre volume de notification pour ce groupe est réglé sur Léger. Vous ne recevrez pas de courriels pour vous informer des actualités de ce groupe. Vous pourrez les voir sur votre Tableau de Bord.
+      quiet_aria_description: Votre volume de notification pour ce groupe est réglé sur Léger. Vous ne recevrez aucun courriel pour vous informer des actualités de ce groupe. Vous pourrez les voir sur votre Tableau de Bord.
       quiet_message: "Vous ne recevrez pas de courriel à propos de l'activité dans \"{{name}}\"."
       mute: "Masque ce groupe dans le tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
-      mute_aria_description: "Votre volume de notification pour ce groupe est réglé sur Désactivé. Vous ne recevrez pas de courriels à moins que quelqu'un vous mentionne, et l'actualité du groupe ne sera pas affichée sur votre Tableau de Bord."
+      mute_aria_description: "Votre volume de notification pour ce groupe est réglé sur Désactivé. Vous ne recevrez aucun courriel sauf si quelqu'un vous @mentionne, et l'actualité du groupe ne sera pas non plus affichée sur votre Tableau de Bord."
       mute_message: '"{{name}}" a été retiré de votre Tableau de Bord.'
     privacy:
       private: 'Confidentialité: Ce groupe est seulement visible pour ses membres.'
@@ -399,9 +416,17 @@ fr:
   confirm_gift_plan_modal:
     heading: Plan Gratuit sélectionné
     body: "Si votre groupe n'a pas le budget pour payer un logiciel, vous n'avez pas besoin de payer de souscription. Les membres de votre groupe seront invités de temps en temps à faire un don."
+    confirm_selection: Je souhaite que les gens de mon groupe soient sollicités pour soutenir Loomio par une donation.
     got_it: "Ok, j'ai compris !"
+    go_back: Retour
+  donation_modal:
+    heading: Voudriez-vous soutenir Loomio ?
+    body: Loomio est une entreprise sociale. Notre mission est de créer un monde où il soit facile pour chacune de prendre part aux décisions qui les concernent.
+    contribute: Faire une contribution
+    got_to_group: Aller directement à mon groupe
   gift_card:
     heading: Plan cadeau
+    body: '<strong>{{name}}</strong> est un groupe soutenu par les dons. Pour aider Loomio à continuer à soutenir des groupes tel que le vôtre, cliquez ici :'
     make_a_contribution: Apportez votre contribution
   trial_card:
     title: "30 jours d'essai"
@@ -440,7 +465,7 @@ fr:
     select: Sélectionner
   subscription_success_modal:
     heading: 'Merci pour votre souscription !'
-    receipt: Vous allez recevoir un email avec un reçu.
+    receipt: Vous allez recevoir un courriel avec un reçu.
     change_subscription: "Si vous souhaitez modifier ou annuler votre souscription, ou pour n'importe quelle autre demande,"
     contact_link: Contactez-nous
     sign_off: "❤ de la part de l'équipe Loomio"
@@ -463,6 +488,7 @@ fr:
     group_privacy_closed_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Seuls les membres ont accès aux discussions."
     group_privacy_closed_public_threads_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Les discussions peuvent être privées ou publiques."
     group_privacy_secret_description: Seuls les personnes invitées peuvent trouver ce groupe et lire les discussions.
+    confirm_change_to_secret: 'Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées.'
     confirm_change_to_secret_subgroup: 'Si vous faites ceci, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous faites ceci, toutes les discussions de ce groupe seront rendues publiques.'
     confirm_change_to_private_discussions_only: 'Si vous faites ceci, toutes les discussions publiques dans ce groupe seront rendues privées.'
@@ -519,6 +545,36 @@ fr:
   group_previous_proposals_card:
     heading: Propositions précédentes
     see_more: Voir plus
+  invitation_form:
+    invite_people: Inviter des personnes
+    group: Groupe
+    email_addresses: Adresses e-mail
+    email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: Personnalisez votre invitation
+    add_custom_message_link: + ajouter un message personnalisé
+    custom_message: Message personnalisé
+    custom_message_placeholder: "Entrez un message personnalisé à joindre à l'invitation."
+    team_invitation_message: Alternartivement.
+    team_invitation_link: obtenir un lien à partager.
+    add_members: Ajouter des membres
+    from_parent_group: 'de {{name}}.'
+    send: Envoyer
+    messages:
+      invitation_sent: Invitation envoyée.
+      invitations_sent: '{{count}} invitation(s) envoyée(s).'
+      no_invitations: "Oh-oh ! Merci de vérifier l'adresse mail puis de réessayer."
+      max_invitations: "Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d'équipe."
+  team_link_modal:
+    heading: Ajouter des personnes
+    share_link: Partager ce lien
+    caution: 'Attention : toute personne disposant de ce lien sera en mesure de rejoindre immédiatement votre groupe. Choisissez soigneusement avec qui vous le partagez.'
+    copy_link: Copier le lien
+  add_members_modal:
+    heading: 'Ajouter des personnes de {{name}}'
+    add_members: Ajouter des membres
+    user_added_to_subgroup: '{{name}} ajouté au sous-groupe'
+    users_added_to_subgroup: '{{count}} utilisateur(s) ajouté(s) au sous-groupe'
+    no_members_to_add: 'Tous les membres de {{parent}} appartiennent à ce sous-groupe'
   memberships_page:
     members: Les membres
     name_label: Nom
@@ -629,7 +685,7 @@ fr:
       muted_description: Voir seulement les discussions qui ont été mise en sourdine
     aria_thread:
       title: 'Titre de la discussion: {{title}}.'
-      unread: '{{count}} élément(s) non-lu(s).'
+      unread: '{{count}} élément(s) non lu(s).'
       current_proposal: 'Proposition actuelle: {{name}}.'
       you_voted: 'Vous votez: {{position}}.'
     threads_from:
@@ -645,7 +701,7 @@ fr:
     star: Mettre la discussion en tant que favoris
   inbox_page:
     no_threads: 'Woohoo! Vous avez lu toutes les discussions dans votre boîte de réception.'
-    unread_threads: Discussions non-lues
+    unread_threads: Discussions non lues
     view_more: Voir plus
   groups_page:
     page_header: Vos groupes
@@ -665,16 +721,16 @@ fr:
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     volume:
       loud: "Envoie un courrier électronique dès qu'il y a de l'activité dans cette discussion."
-      loud_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Forte. Cela signifie que vous recevrez des e-mails à chaque fois qu'ils y a de l'activité dans cette discussion."
-      loud_message: 'Vous recevrez des e-mails à propos de toutes les activités dans "{{name}}"'
+      loud_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Forte. Cela signifie que vous recevrez un courriel à chaque fois qu'il y a de l'activité dans cette discussion."
+      loud_message: 'Vous recevrez des courriels à propos de toutes les activités dans "{{name}}"'
       normal: "Envoie un courrier uniquement lorsqu'une proposition est créée, s'apprête à fermer, ou qu'un résultat est publié."
-      normal_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Normale. Cela signifie que vous recevrez des e-mails à chaque fois qu'une discussion est créée, fermée ou qu'un résultat est publié."
-      normal_message: 'Vous recevrez seulement des e-mails pour les événements importants à propos de {{name}}".'
+      normal_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Normale. Cela signifie que vous recevrez un courriel à chaque fois qu'une discussion est créée, fermée ou qu'un résultat est publié."
+      normal_message: 'Vous recevrez seulement des courriels pour les événements importants concernant {{name}}".'
       quiet: "N'envoie aucun courrier à propos de cette discussion."
-      quiet_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez pas d'e-mails à à propos de cette discussion à moins que quelqu'un vous mentionne."
-      quiet_message: "Vous ne recevrez pas d'e-mail à propos de \"{{name}}\" à moins que quelqu'un vous mentionne"
+      quiet_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez aucun courriel à propos de cette discussion sauf si quelqu'un vous @mentionne."
+      quiet_message: "Vous ne recevrez aucun courriel à propos de \"{{name}}\" sauf si quelqu'un vous @mentionne"
       mute: "Cache cette discussion du tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
-      mute_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez pas d'e-mails à à propos de cette discussion à moins que quelqu'un vous mentionne, et cette discussion sera retirée de votre tableau de bord."
+      mute_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez aucun courriel à à propos de cette discussion sauf si quelqu'un vous @mentionne, et cette discussion sera retirée de votre tableau de bord."
       mute_message: '"{{name}}" a été retiré de votre Tableau de Bord.'
   thread_group:
     aria_label: Nom du groupe
@@ -695,6 +751,7 @@ fr:
     title: Déplacer la discussion
     body: 'Groupe de destination:'
     confirm: Déplacer la discussion
+    confirm_change_to_private_thread: '{{groupName}}  est un groupe ouvert. Si vous confirmez, cette discussion sera rendue publique.'
     messages:
       success: 'La discussion a été déplacée vers {{name}}'
   activity_card:
@@ -758,7 +815,7 @@ fr:
     coordinating: Coordonner vos groupes Loomio
     coordinating_details: "En tant que coordinateur, vous êtes responsables du paramétrage du groupe Loomio et des \ninvitations. Tout en apprenant à utiliser un nouveau logiciel, votre groupe va\napprendre un nouveau processus pour collaborer plus efficacement et prendre de bonnes décisions ensemble. Voilà quelques trucs pour aider votre groupe :\n\n"
     different_ways: Différentes utilisations de Loomio
-    engaging_html: "<h2>Les trucs pour commencer votre groupe</h2>\n<p>Les personnes seront heureuses de participer dans un projet lorsqu'il y aura de\nbonnes propositions sur la table. Une bonne proposition contient un plan d'action pour\nle groupe, ceci afin qu'il soit aisé d'être d'accord ou de rejeter.  Pensez à la manière dont\n vous pourrez améliorer les décisions/discussions du groupe lorsqu'elles seront sur \nLoomio.</p>\n<p>Si votre groupe démarre, vous pouvez lancer une petite discussion légère, pour donner\nà chacun une chance de jouer avec l'outil, et voir le processus de prise de décision en\naction.</p>\n<p>Une autre manière simple d'encourager les gens à initier une discussion est d'utiliser le\n@mention\npour alerter des personnes spécifiques ; cela leur enverra un e-mail pour leur dire\nque vous les avez mentionné dans un commentaire.</p>\n"
+    engaging_html: "<h2>Les trucs pour commencer votre groupe</h2>\n<p>Les personnes seront heureuses de participer dans un projet lorsqu'il y aura de\nbonnes propositions sur la table. Une bonne proposition contient un plan d'action pour\nle groupe, ceci afin qu'il soit aisé d'être d'accord ou de rejeter.  Pensez à la manière dont\n vous pourrez améliorer les décisions/discussions du groupe lorsqu'elles seront sur \nLoomio.</p>\n<p>Si votre groupe démarre, vous pouvez lancer une petite discussion légère, pour donner\nà chacun une chance de jouer avec l'outil, et voir le processus de prise de décision en\naction.</p>\n<p>Une autre manière simple d'encourager les gens à initier une discussion est d'utiliser le\n@mention pour alerter des personnes spécifiques ; cela leur enverra un courriel pour leur dire\nque vous les avez mentionnés dans un commentaire.</p>\n"
     example1_html: >
       <h3>Le groupe doit discuter d'un sujet et construire une solution en
       commun</h3>
@@ -821,10 +878,10 @@ fr:
     images_and_text_formatting: Formatage des images et du texte
     images_and_text_formatting_html: "<p>Loomio utilise \"Markdown\"  pour l'intégration de l'image et la mise en forme du texte. \nVous pouvez activer \"Markdown\" avec la petite icône grise sous la boîte de commentaires.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Cliquez ici</a>\npour des informations sur l'utilisation de \"Markdown\".</p>\n"
     keep_up_to_date: Rester à jour
-    keep_up_to_date_html: "<p>En cliquant sur le nom du groupe en haut de l'écran vous arriverez sur la Page du Groupe,\noù vous pourrez voir une liste de discussions et décisions pour ce groupe. Si vous êtes dans \nplus d'un groupe, vous pouvez voir toute l'activité dans tous vos groupes à partir\nde la page d'Accueil.</p>\n<p>Vous recevrez des notifications par e-mail lorsque des choses importantes arriveront\ndans votre groupe.\nVous pouvez changer votre e-mail  <a href=\"%{link}\"\">ici</a>.</p>\n"
+    keep_up_to_date_html: "<p>En cliquant sur le nom du groupe en haut de l'écran vous arriverez sur la Page du Groupe,\noù vous pourrez voir une liste de discussions et décisions pour ce groupe. Si vous êtes dans \nplus d'un groupe, vous pouvez voir toute l'activité dans tous vos groupes à partir\nde la page d'Accueil.</p>\n<p>Vous recevrez des notifications par courriel lorsque des choses importantes arriveront\ndans votre groupe.\nVous pouvez changer votre e-mail  <a href=\"%{link}\"\">ici</a>.</p>\n"
     make_a_decision: Prendre une décision
     make_a_decision_description: "Lorsque le groupe est prêt à prendre une décision, tout le monde peut faire une proposition. Esquissez un plan d'action clair et donner quelques  informations afin que chacun sache ce qu'être d'accord ou ne pas être d'accord, signifie."
-    prompt_people_details: "Si vous voulez attirer l'attention d'une personne spécifique dans le groupe, taper \"@\" suivi de son nom. Elle recevra un e-mail lui spécifiant que vous l'avez mentionné dans un commentaire."
+    prompt_people_details: "Si vous voulez attirer l'attention d'une personne spécifique dans le groupe, taper \"@\" suivi de son nom. Elle recevra un courriel lui spécifiant que vous l'avez mentionné dans un commentaire."
     prompt_people_html: "Notifier les personnes avec les <span class='blue'>@mentions</span>"
     positions_agree_description: "<span>Agree</span> signifie que vous êtes d'accord avec la proposition."
     positions_abstain_description: "<span>Abstain</span> signifie que vous n'êtes pas sur, ou que vous laissez le groupe décider sans vous."
@@ -851,7 +908,7 @@ fr:
 
       décisionnels utilisés par le groupe.</p>
     start_proposal: Ecrire une proposition claire
-    start_proposal_html: "<p> Si vous choisissez un titre clair et succinct, les gens sauront exactement\nce que signifie être d'accord ou non.</p>\n<p>Ce n'est pas la fin du monde si une proposition n'obtient pas immédiatement un accord global.\nSi le groupe n'aime pas la première proposition, n'importe qui peut démarrer une nouvelle proposition pour\nrépondre aux préoccupations soulevées, et continuer la construction d'une solution.</p>\n<p>Avec ce processus dynamique, la sagesse collective de votre groupe peut générer de \nmeilleures idées qu'aucun d'entre vous n'aurait pu avoir seul.</p>\n<p>La fin de la proposition peut être prolongée à tout moment, s'il semble que la décision\nnécessite plus d'espace. Tous les membres du groupe recevront un e-mail de notification\n24 heures avant la date de fin de la proposition.</p>\n"
+    start_proposal_html: "<p> Si vous choisissez un titre clair et succinct, les gens sauront exactement\nce que signifie être d'accord ou non.</p>\n<p>Ce n'est pas la fin du monde si une proposition n'obtient pas immédiatement un accord global.\nSi le groupe n'aime pas la première proposition, n'importe qui peut démarrer une nouvelle proposition pour répondre aux préoccupations soulevées, et continuer la construction d'une solution.</p>\n<p>Avec ce processus dynamique, la sagesse collective de votre groupe peut générer de \nmeilleures idées qu'aucun d'entre vous n'aurait pu avoir seul.</p>\n<p>La fin de la proposition peut être prolongée à tout moment, s'il semble que la décision\nnécessite plus d'espace. Tous les membres du groupe recevront un courriel de notification\n24 heures avant la date de fin de la proposition.</p>\n"
     video_id: '52025402'
     video_tutorial: Tutoriel vidéo
     video_tutorial_description: Regardez la vidéo pour une rapide démonstration de la manière dont Loomio fonctionne.

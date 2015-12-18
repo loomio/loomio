@@ -44,6 +44,8 @@ zh-TW:
       new_thread: 新討論串
       add_subgroup: 新增子群組
       loading: 讀取中
+      translate: 翻譯
+      translated: 採用 Bing 翻譯
       uploading: 正在上傳
     formatting_help:
       label: 格式化說明
@@ -285,8 +287,8 @@ zh-TW:
     context_placeholder: 給予群組足夠的背景資訊，創造出有生產力的討論。論述可以隨著討論的過程一邊更新
     privacy_label: 隱私權
     privacy_public: 任何人都可以看到此討論串。只有成員才能參與。
-    privacy_private: '此討論串只會被 {{group}} 群組的成員看到。'
-    privacy_organisation: '此討論串只會被 {{parent}} 群組的成員以及 {{group}} 群組的成員看到。'
+    privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
+    privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     new_discussion_submit: 啟動討論串
     edit_discussion_submit: 更新討論串
   proposal_expanded:
