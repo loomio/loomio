@@ -31,7 +31,7 @@ class CommentService
     return false unless comment.valid?
 
     comment.save!
-    EventBus.broadcast('new_comment', comment)
+    EventBus.broadcast('comment_create', comment)
     Events::NewComment.publish!(comment)
   end
 
