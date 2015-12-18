@@ -22,8 +22,26 @@ describe API::DiscussionsController do
     sign_in user
   end
 
+  describe 'inbox' do
+    context 'logged out' do
+      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+
+      it 'responds with forbidden for logged out users' do
+        get :inbox
+        expect(response.status).to eq 403
+      end
+    end
+  end
 
   describe 'dashboard' do
+    context 'logged out' do
+      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+
+      it 'responds with forbidden for logged out users' do
+        get :dashboard
+        expect(response.status).to eq 403
+      end
+    end
 
     describe 'filtering' do
       let(:participating_discussion) { create :discussion, group: group }
