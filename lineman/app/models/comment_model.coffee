@@ -34,9 +34,6 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
     parent: ->
       @recordStore.comments.find(@parentId)
 
-    parentAuthor: ->
-      @parent().author()
-
     likers: ->
       @recordStore.users.find(@likerIds)
 
