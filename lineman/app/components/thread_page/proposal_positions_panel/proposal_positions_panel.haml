@@ -28,4 +28,4 @@
         %button.proposal-positions-panel__change-your-vote{ng-if: 'showChangeVoteOption(vote)', href: '', ng-click: 'changeVote()'}
           %i.fa.fa-exchange>
           %span{translate: 'proposal_positions_panel.change_your_vote'}
-  %undecided_panel{proposal: 'proposal'}
+  %undecided_panel{proposal: 'proposal', ng-if: 'proposal.hasUndecidedMembers()'}
