@@ -27,6 +27,13 @@ describe EventBus do
       subject.listen('my_event', &my_proc)
       subject.broadcast('my_other_event')
     end
+
+    it 'can accept multiple event names' do
+      expect(self).to receive(:inspect).twice
+      subject.listen('my_event', 'my_other_event', &my_proc)
+      subject.broadcast('my_event')
+      subject.broadcast('my_other_event')
+    end
   end
 
   describe 'deafen' do
@@ -42,6 +49,15 @@ describe EventBus do
       subject.listen('my_event', &my_proc)
       subject.deafen('my_other_event', &my_proc)
       subject.broadcast('my_event')
+    end
+
+    it 'can accept multiple event names' do
+      expect(self).to_not receive(:inspect)
+      subject.listen('my_event', &my_proc)
+      subject.listen('my_other_event', &my_proc)
+      subject.deafen('my_event', 'my_other_event', &my_proc)
+      subject.broadcast('my_event')
+      subject.broadcast('my_other_event')
     end
   end
 

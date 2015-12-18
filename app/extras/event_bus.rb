@@ -5,12 +5,12 @@ class EventBus
     listeners[event].each { |listener| listener.call(*params) }
   end
 
-  def listen(event, &block)
-    listeners[event].add(block)
+  def listen(*events, &block)
+    events.each { |event| listeners[event].add(block) }
   end
 
-  def deafen(event, &block)
-    listeners[event].delete(block)
+  def deafen(*events, &block)
+    events.each { |event| listeners[event].delete(block) }
   end
 
   def clear
