@@ -84,9 +84,11 @@ class Comment < ActiveRecord::Base
     comment_votes.last(max).map(&:user_name)
   end
 
-  EventBus.listen('comment_like', 'comment_unlike') do |cv|
-    update(liker_ids_and_names: cv.comment.comment_votes.map { |vote| { vote.user_id => vote.user.name } })
+  def refresh_liker_ids_and_names!
+    self.liker_ids_and_names = self.comment_votes.reduce({}) { |hash, vote| hash[vote.user_id] = vote.user.name; hash }
+    save!
   end
+  EventBus.listen('comment_like', 'comment_unlike') { |cv| cv.comment.refresh_liker_ids_and_names! }
 
   def mentioned_usernames
     extract_mentioned_screen_names(self.body).uniq
