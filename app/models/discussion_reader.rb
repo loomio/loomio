@@ -22,10 +22,6 @@ class DiscussionReader < ActiveRecord::Base
     self.for(user: model.author, discussion: model.discussion)
   end
 
-  def self.for_comment_vote(comment_vote:)
-    self.for(user: comment_vote.user, discussion: comment_vote.comment.discussion)
-  end
-
   def author_thread_item!(time)
     set_volume_as_required!
     participate!
@@ -38,12 +34,13 @@ class DiscussionReader < ActiveRecord::Base
       set_volume! :loud unless volume_is_loud?
     end
   end
-  EventBus.listen('discussion_update') { |discussion, params, actor| self.for(discussion: discussion, user: actor).set_volume_as_required! }
-  EventBus.listen('comment_like')      { |comment_vote| for_comment_vote(comment_vote: comment_vote).set_volume_as_required! }
+  EventBus.listen('discussion_create', 'discussion_update') { |discussion, actor| self.for(discussion: discussion, user: actor).set_volume_as_required! }
+  EventBus.listen('comment_like')      { |comment_vote| for_model(comment_vote).set_volume_as_required! }
 
   def participate!
     update_attribute :participating, true
   end
+  EventBus.listen('discussion_create') { |discussion| self.for(discussion: discussion, user: discussion.author).participate! }
 
   def volume
     if persisted?

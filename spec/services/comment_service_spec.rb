@@ -92,15 +92,19 @@ describe 'CommentService' do
         expect(reader.reload.volume.to_sym).to eq :loud
       end
 
-      it 'does not publish a comment replied to event if there is no parent' do
-        Events::CommentRepliedTo.should_not_receive(:publish!).with(comment)
-        CommentService.create(comment: comment, actor: user)
-      end
-
       it 'publishes a comment replied to event if there is a parent' do
         comment.parent = create :comment
         Events::CommentRepliedTo.should_receive(:publish!).with(comment)
         CommentService.create(comment: comment, actor: user)
+      end
+
+      it 'does not publish a comment replied to event if there is no parent' do
+        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.count(kind: 'comment_replied_to') }
+      end
+
+      it 'does not publish a comment replied to event if the author is the same as the replyee' do
+        comment.parent = create :comment, author: user
+        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.count(kind: 'comment_replied_to') }
       end
     end
 

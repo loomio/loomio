@@ -49,7 +49,7 @@ class DiscussionService
     return false unless discussion.valid? && discussion.changed? && discussion.changed != ['uses_markdown']
     discussion.save!
 
-    EventBus.broadcast('discussion_update', discussion, params, actor)
+    EventBus.broadcast('discussion_update', discussion, actor, params)
     Events::DiscussionEdited.publish!(discussion, actor)
   end
 

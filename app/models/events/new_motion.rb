@@ -1,15 +1,9 @@
 class Events::NewMotion < Event
   def self.publish!(motion)
-    event = create!(kind: "new_motion",
-                    eventable: motion,
-                    discussion: motion.discussion,
-                    created_at: motion.created_at)
-
-    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.new_motion(motion)) do |user|
-      ThreadMailer.delay.new_motion(user, event)
-    end
-
-    event
+    create(kind: "new_motion",
+           eventable: motion,
+           discussion: motion.discussion,
+           created_at: motion.created_at).tap { |e| EventBus.broadcast('new_motion_event', e) }
   end
 
   def group_key

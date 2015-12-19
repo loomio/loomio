@@ -51,6 +51,11 @@ describe 'DiscussionService' do
                                  actor: user)
       end
 
+      it 'marks the discussion reader as participating' do
+        DiscussionService.create(discussion: discussion, actor: user)
+        expect(DiscussionReader.for(user: user, discussion: discussion).participating).to eq true
+      end
+
       it 'fires a NewDiscussion event' do
         Events::NewDiscussion.should_receive(:publish!).with(discussion).and_return(true)
         DiscussionService.create(discussion: discussion,

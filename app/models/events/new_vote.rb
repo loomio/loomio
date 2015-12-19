@@ -1,15 +1,9 @@
 class Events::NewVote < Event
   def self.publish!(vote)
-    event = create!(kind: 'new_vote',
-                    eventable: vote,
-                    discussion: vote.motion.discussion,
-                    created_at: vote.created_at)
-
-    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.new_vote(vote)) do |user|
-      ThreadMailer.delay.new_vote(user, event)
-    end
-
-    event
+    create(kind: 'new_vote',
+           eventable: vote,
+           discussion: vote.motion.discussion,
+           created_at: vote.created_at).tap { |e| EventBus.broadcast('new_vote_event', e) }
   end
 
   def group_key

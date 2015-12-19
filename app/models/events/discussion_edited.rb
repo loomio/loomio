@@ -1,10 +1,9 @@
 class Events::DiscussionEdited < Event
   def self.publish!(discussion, editor)
-    version = discussion.versions.last
-    create!(kind: "discussion_edited",
-            eventable: version,
-            user: editor,
-            discussion_id: discussion.id)
+    create(kind: "discussion_edited",
+           eventable: discussion.versions.last,
+           user: editor,
+           discussion_id: discussion.id).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
   end
 
   def group_key
