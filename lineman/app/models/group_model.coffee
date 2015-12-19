@@ -154,6 +154,9 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     uploadPhoto: (file, kind) =>
       @remote.upload("#{@key}/upload_photo/#{kind}", file)
 
+    hasNoSubscription: ->
+      !@subscriptionKind?
+
     trialIsOverdue: ->
       @subscriptionKind == 'trial' && @subscriptionExpiresAt.clone().add(1, 'days') < moment()
 

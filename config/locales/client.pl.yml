@@ -292,22 +292,6 @@ pl:
     messages:
       request_approved_success: Zgłoszenie członkostwa zaakceptowane
       request_ignored_success: Zgłoszenie członkostwa zignorowane
-  invitation:
-    invite_people: Zaproszenie Osób
-    find_people: Znajdź osoby
-    import_contacts_header: Podłącz Twoją książkę adresową
-    import_contacts_message: Zapraszanie osób do Loomio jest dużo łatwiejsze jeśli zaimportujesz kontakty z Google.
-    import_contacts: Import kontaktów
-    instructions: Podaj nazwy lub adresy email
-    invitation_message: Treść Zaproszenia
-    send_invite: 'Wysłanie {{count}} zaproszeń'
-    to: 'do:'
-    default_message: 'Zapraszamy do wspólnego podejmowania decyzji! Używamy narzędzia do współpracy o nazwie Loomio'
-    messages:
-      members_added_and_emails_sent: '{{members}} członków dodano oraz {{emails}} zaproszeń wysłano'
-      members_added: '{{members}} członków dodano'
-      emails_sent: '{{emails}} zaproszeń wysłano'
-      no_invitations: 'Nie wysłano zaproszeń!'
   memberships_page:
     members: Członkowie
     name_label: Nazwa

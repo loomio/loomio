@@ -1,6 +1,7 @@
 module AngularHelper
   def app_config
     @appConfig = {
+      hostedByLoomio: ENV['HOSTED_BY_LOOMIO'],
       version: Loomio::Version.current,
       reportErrors: false,
       environment: Rails.env,
@@ -8,6 +9,7 @@ module AngularHelper
       flash: flash.to_h,
       currentUserId: current_user_or_visitor.id,
       currentUserLocale: current_user_or_visitor.locale,
+      canTranslate: TranslationService.available?,
       seedRecords: CurrentUserSerializer.new(current_user_or_visitor),
       permittedParams: PermittedParamsSerializer.new({}),
       locales: angular_locales,
@@ -41,7 +43,6 @@ module AngularHelper
     end
 
     app_config
-
     render 'layouts/angular', layout: false
   end
 

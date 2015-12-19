@@ -1,6 +1,6 @@
 es:
   frontpage:
-    view_this_in_your_language: 'Haz click aquí para usar Loomio en %{language}'
+    view_this_in_your_language: 'Haz clic aquí para usar Loomio en %{language}'
     title:
       collaborative_decision_making: Toma colectiva de decisiones
     link:
@@ -44,12 +44,12 @@ es:
     ideals:
       community:
         header: Cooperativa comunitaria
-        desc: Loomio está diseñado por una cooperativa propiedad de sus trabajadores. Somos una empresa social sin ánimo de lucro que trabaja para maximizar un impacto social positivo.
+        desc: 'Loomio está diseñado por una cooperativa propiedad de sus trabajadores. Somos una empresa social que trabaja para maximizar el impacto social positivo, no las ganancias.'
       independent:
         header: Independiente y neutral
         desc: Mantenemos un espacio independiente de intereses políticos o empresariales para que cualquier grupo se una. Nunca venderemos tu información.
       open:
-        header: Software libre y abierto
+        header: Software libre y gratuito
         desc: 'El código de Loomio es público y cualquiera puede ejecutarlo, leerlo y aprender de él, modificarlo y redistribuirlo.'
       gift:
         header: Economía del dar

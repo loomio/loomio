@@ -5,5 +5,5 @@ EventBus.listen('new_comment_event') do |event|
   end
 end
 
-EventBus.listen('comment_replied_to_event') { |user, event| ThreadMailer.delay.comment_replied_to(user, event) }
+EventBus.listen('comment_replied_to_event') { |user, event| ThreadMailer.delay.comment_replied_to(user, event) unless event.comment.author == user }
 EventBus.listen('user_mentioned_event')     { |user, event| ThreadMailer.delay.user_mentioned(user, event) }

@@ -99,12 +99,18 @@ describe Motion do
     end
 
     context "for a closed motion" do
-      before { MotionService.close(motion) }
+      before do
+        5.times { motion.group.add_member! create(:user) }
+        MotionService.close(motion)
+      end
 
       it "returns the number of members who did not vote" do
-        motion.should be_closed
-        motion.stub(:did_not_voters).and_return((1..99).to_a)
-        expect(motion.members_not_voted_count).to eq 99
+        expect(motion.closed?).to eq true
+        expect(motion.members_not_voted_count).to eq motion.group.members.count
+      end
+
+      it 'does not count members added after voting closed' do
+        expect { motion.group.add_member! create(:user) }.to_not change { motion.reload.members_not_voted_count }
       end
     end
   end

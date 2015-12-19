@@ -57,4 +57,28 @@ fr:
   about_page:
     our_story_1_html: "<h2>Notre histoire</h2><p>Loomio est un outil collaboratif en ligne d'aide à la décision, réalisé par une équipe de techniciens, d'activistes, et d'entrepreneurs sociaux de Nouvelle Zélande.</p> "
     our_story_2_html: "<p>Loomio est né du besoin d'un outil flexible pour prendre des décisions participatives pendant le mouvement Occupy en 2011.</p> <p>Nous avons pu expérimenter le potentiel transformateur des prises de décisions collaboratives, ainsi que leurs sérieuses limites: si les participants doivent être au même endroit et au même moment pour participer, cela ne peut pas marcher. </p> <p> Nous avons décidé de créer une solution à ce problème: utiliser internet pour proposer aux gens une solution facile pour prendre de bonnes décisions ensemble, où qu'ils soient.</p> <p>Cette solution s'appelle Loomio, comme \"loom\" qui signifie en anglais \"métier à tisser\", pour tous ces points de vue variés qui sont tissés ensemble :)</p> <p>A ce jour plus de 75 000 personnes ont pris plus de 25 000 décisions sur Loomio.</p> "
+    mission_html: "<h2>Mission</h2> <p>Nous sommes une organisation au service d'une mission, à vocation sociale : Loomio a été créée pour permettre à chacun, quel qu'il soit, et où qu'il soit, de prendre une part active aux décisions qui concernent leur existence.</p> <p>Nous pouvons mesurer notre impact en voyant le grand nombre de personnes et de groupes s'impliquant dans ces prises de décision ET c'est une véritable source d'inspiration et de motivation de voir les grandes choses réalisées par l'ensemble des communautés en partie grâce à l'outil que nous leur offrons.</p> "
+    advisors_html: '<h2>Conseillers</h2> <p>Nous sommes épaulés par un Comité de Conseil constitués de quelques unes des plus grandes sommités internationales en matière de gouvernance démocratique et de technologie.</p> '
+    sascha_bio_html: "Fondateur de <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
+    katherine_bio_html: "Ex vice-présidente de <a href='http://www.aol.com/' target='_blank'>AOL</a>, vice-présidente de <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"
+    joi_bio_html: 'Directeur du <a href="http://www.media.mit.edu/" target="_blank">MIT Media Lab</a>, co-fondateur de <a href="https://creativecommons.org/" target="_blank">Creative Commons</a>, membre du conseil de la <a href="https://www.mozilla.org/en-US/foundation/" target="_blank">Mozilla Foundation</a>'
+    rushkoff_bio_html: "<a href=\"http://www.rushkoff.com/\" target=\"_blank\">Auteur d'ouvrages à succès</a>, commentateur pour CNN, théoricien des médias"
+    monahan_bio_html: 'Co-fondateurs de <a href="http://inflection.com/" target="_blank">Inflection</a>, <a href="http://www.namaste.org/" target="_blank">Namaste Foundation</a>'
     team_html: "<h2>L'équipe</h2> <p>Loomio est une coopérative sociale basée en Nouvelle-Zélande. Nous sommes une équipe de passionnés avec une grande connaissance des processus de groupes et du développement de technologies ouvertes.</p> "
+    ben_bio: 'Co-fondateur et directeur, organisateur de communauté, chercheur en intelligence collective'
+    mj_bio: 'Responsable des opérations pour les Etats-Unis, professeure adjointe en entrepreneuriat social à Brown University'
+    rob_bio: 'Co-fondateur et architecte logiciel en chef, accessibilité, ergonomie'
+    jon_bio: 'Co-fondateur et développeur, ergonome, musicien'
+    chelsea_bio: 'Experte facilitatrice, coach en collaboration, co-fondatrice de Generation Zero'
+    jesse_bio: 'Développeur, concepteur, accessibilité, gourou du vélo'
+    mix_bio: 'Développeur, spécialiste de la traduction, éducation, techniques de groupes'
+    malcolm_bio: "Systèmes d'organisation, conception de processus"
+    simon_bio: 'Analyse de données, visualisation, développement, communication'
+    alanna_bio: 'Co-fondatrice et responsable consultante, activiste entrepreneuriale, directrice de la Enspiral Foundation'
+    rich_bio: 'Co-fondateur et développeur, activiste, bidouilleur de machines open source'
+    viv_bio: "Co-fondatrice, présidente du Conseil de Loomio, directrice exécutive d'UNICEF Nouvelle-Zélande"
+    aaron_bio: 'Co-fondateur et développeur, spécialiste interfaces utilisateur'
+    hannah_bio: 'Développeuse, support utilisateurs, illustratrice, activiste créative'
+    matt_bio: 'Concepteur, analyse de données, gestion'
+    james_bio: 'Développeur, coordinateur de la communauté open source, bretteur intrépide'
+    michael_bio: 'Développement commercial, coach en collaboration, motard'

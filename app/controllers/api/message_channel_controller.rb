@@ -4,13 +4,7 @@ class API::MessageChannelController < API::RestfulController
   rescue_from(MessageChannelService::UnknownChannelError) { |e| respond_with_standard_error e, 400 }
 
   def subscribe
-    @subscriptions = [MessageChannelService.subscribe_to(user: current_user, model: subscription_model)] if subscription_model
-    respond_with_subscriptions
-  end
-
-  def subscribe_user
-    @subscriptions = current_user.groups.map { |group| MessageChannelService.subscribe_to(user: current_user, model: group) }
-    @subscriptions <<                                  MessageChannelService.subscribe_to(user: current_user, model: current_user)
+    @subscriptions = Array(subscription_models).map { |model| MessageChannelService.subscribe_to(user: current_user, model: model) }
     respond_with_subscriptions
   end
 
@@ -20,9 +14,14 @@ class API::MessageChannelController < API::RestfulController
     render json: @subscriptions, root: false
   end
 
-  def subscription_model
+  def subscription_models
     (params[:group_key] && load_and_authorize(:group)) ||
-    (params[:discussion_key] && load_and_authorize(:discussion))
+    (params[:discussion_key] && load_and_authorize(:discussion)) ||
+    subscriptions_for_user
+  end
+
+  def subscriptions_for_user
+    Array(current_user) + Array(current_user.groups) + Array(GlobalMessageChannel.instance)
   end
 
 end

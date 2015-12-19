@@ -163,8 +163,6 @@ ru:
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
-  invitation:
-    invite_people: Пригласить людей
   memberships_page:
     members: Участники
     name_label: Имя

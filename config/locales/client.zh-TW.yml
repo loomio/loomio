@@ -27,7 +27,9 @@ zh-TW:
     more_help: 詳細說明
     models:
       proposal: 提案
+    copied: 已複製
     action:
+      close: 關閉
       save: 儲存
       save_changes: 儲存變更
       update_settings: 更新設定
@@ -42,6 +44,8 @@ zh-TW:
       new_thread: 新討論串
       add_subgroup: 新增子群組
       loading: 讀取中
+      translate: 翻譯
+      translated: 採用 Bing 翻譯
       uploading: 正在上傳
     formatting_help:
       label: 格式化說明
@@ -185,6 +189,7 @@ zh-TW:
       discussions: 討論
       proposals: 提議
       comments: 意見
+    sign_in: 登入
   start_menu:
     title: 動作按鈕
     start_group: 啟動群組
@@ -282,8 +287,8 @@ zh-TW:
     context_placeholder: 給予群組足夠的背景資訊，創造出有生產力的討論。論述可以隨著討論的過程一邊更新
     privacy_label: 隱私權
     privacy_public: 任何人都可以看到此討論串。只有成員才能參與。
-    privacy_private: '此討論串只會被 {{group}} 群組的成員看到。'
-    privacy_organisation: '此討論串只會被 {{parent}} 群組的成員以及 {{group}} 群組的成員看到。'
+    privacy_private: '此討論串只會被「{{group}}」群組的成員看到。'
+    privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     new_discussion_submit: 啟動討論串
     edit_discussion_submit: 更新討論串
   proposal_expanded:
@@ -299,6 +304,12 @@ zh-TW:
   proposal_position_abstain: 棄權
   proposal_position_no: 反對
   proposal_position_block: 阻擋
+  legacy_trial_expired_modal:
+    heading: 感謝您今年使用 Loomio！
+    body: |
+      <p>我們非常感謝您過去一年來的支持，我們也很興奮，想要讓 Loomio 可以在 2016 年變得更好。</p>
+      <p>Loomio 對您的群組有用嗎？我們剛發佈我們的定價模式，且正在詢問已經使用 Loomio 的群組挑選一組適合他們的定價方案。</p>
+    submit: 給我看定價方案
   group_welcome_modal:
     heading: 歡迎來到您的新群組
     first_step: '您是群組的<strong>協調者</strong>，這就像是主人一樣。觀看影片，然後再看看範例討論串。'
@@ -526,24 +537,36 @@ zh-TW:
   group_previous_proposals_card:
     heading: 上一個提案
     see_more: 查看詳細資訊
-  invitation:
+  invitation_form:
     invite_people: 邀請夥伴
-    find_people: 尋找夥伴
-    import_contacts_header: 連線到您的通訊錄
-    import_contacts_message: 若您從 Google 匯入您的聯絡人，邀請夥伴到 Loomio 將會簡單的多。
-    import_contacts: 匯入聯絡人
-    instructions: 輸入名稱或電子郵件地址
-    invitation_message: 邀請訊息
-    remove_invite: 移除邀請函
-    send_invite: '寄送 {{count}} 個邀請'
-    to: 到
-    add_custom_message: + 新增自訂訊息
-    default_message: 嗨各位，快來和我們一同作決策！我們正在使用一套叫作 Loomio 的協同決策制定工具。
+    group: 群組
+    email_addresses: 電子郵件地址
+    email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 讓您的邀請變為私人的，
+    add_custom_message_link: 加入一段自訂的訊息。
+    custom_message: 自訂訊息
+    custom_message_placeholder: 輸入要包含在邀請函內的私人訊息。
+    team_invitation_message: 或者，
+    team_invitation_link: 取得連結以分享。
+    add_members: 增加成員
+    from_parent_group: '從 {{name}}'
+    send: 寄送
     messages:
-      members_added_and_emails_sent: '{{members}} 位成員已加入，且 {{emails}} 封邀請已寄出'
-      members_added: '{{members}} 位成員已加入'
-      emails_sent: '{{emails}} 封邀請已寄出'
-      no_invitations: 沒有寄出邀請函！
+      invitation_sent: 邀請函已寄出。
+      invitations_sent: '{{count}} 封邀請函已寄出。'
+      no_invitations: 唉呀！請確認電子郵件地址是否正確定並再試一次。
+      max_invitations: 若您想要寄出多於 100 封邀請函，使用團隊連結。
+  team_link_modal:
+    heading: 加入夥伴
+    share_link: 分享此連結
+    caution: '注意：任何有此連結的人都可以立刻加入您的群組。所以要注意您分享給誰 :)'
+    copy_link: 複製連結
+  add_members_modal:
+    heading: '從 {{name}} 加入夥伴'
+    add_members: 增加成員
+    user_added_to_subgroup: '{{name}} 已加入到子群組中'
+    users_added_to_subgroup: '{{count}} 個使用者已加入至子群組'
+    no_members_to_add: '{{parent}} 的所有成員都屬於此子群組'
   memberships_page:
     members: 成員
     name_label: 名字

@@ -27,3 +27,12 @@
 
     - if Rails.application.secrets.faye_url.present?
       %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}
+
+    - if ENV['HOSTED_BY_LOOMIO']
+      -# coming soon.. seperated metrics
+      -# :javascript
+      -#   ahoy = {visitsUrl: 'http://localhost:4000/ahoy/visits',
+      -#           eventsUrl: 'http://localhost:4000/ahoy/events'}
+      -# = javascript_include_tag 'http://localhost:4000/assets/application.js'
+      = javascript_include_tag 'angular_ahoy'
+      = render 'piwik_tracker'

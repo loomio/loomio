@@ -132,8 +132,6 @@ tr:
   membership_requests_page:
     approve: Onayla
     ignore: Yok say
-  invitation:
-    invite_people: Kişileri davet et
   memberships_page:
     members: Üyeler
     name_label: İsim

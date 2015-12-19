@@ -27,7 +27,9 @@ pt-BR:
     more_help: Mais ajuda
     models:
       proposal: Proposta
+    copied: Copiado
     action:
+      close: Encerrar
       save: Salvar
       save_changes: Salvar mudanças
       update_settings: Atualizar configurações
@@ -185,6 +187,7 @@ pt-BR:
       discussions: Tópicos
       proposals: Propostas
       comments: Comentários
+    sign_in: Entrar
   start_menu:
     title: Botão de ação
     start_group: Iniciar Grupo
@@ -299,6 +302,16 @@ pt-BR:
   proposal_position_abstain: Abster
   proposal_position_no: Discordar
   proposal_position_block: Bloquear
+  legacy_trial_expired_modal:
+    heading: 'Obrigado por usar o Loomio este ano!'
+    body: >
+      <p>Nós realmente apreciamos o seu apoio ao longo do ano, e estamos
+      realmente animado sobre como fazer Loomio ainda melhor em 2016.</p>
+
+      <p>O Loomio é útil para o seu grupo? Acabamos de lançar nossos planos de
+      preços e estamos pedindo aos grupos que tenham utilizado Loomio por algum
+      tempo para escolher um plano que lhes seja conveniente.</p>
+    submit: Mostre-me os planos
   group_welcome_modal:
     heading: Bem-vindo ao seu novo grupo
     first_step: 'Você é o <strong>coordenador</strong> do grupo, que é como ser um anfitrião. Assista ao vídeo e confira os exemplos de tópicos.'
@@ -526,24 +539,36 @@ pt-BR:
   group_previous_proposals_card:
     heading: Propostas anteriores
     see_more: Veja mais
-  invitation:
+  invitation_form:
     invite_people: Convidar Pessoas
-    find_people: Encontre pessoas
-    import_contacts_header: Conecte a sua agenda de endereços
-    import_contacts_message: Convidar as pessoas para o Loomio é muito mais fácil se você importar seus contatos do Google.
-    import_contacts: Importar contatos
-    instructions: Digite nomes ou endereços de e-mail
-    invitation_message: Mensagem Convite
-    remove_invite: Retirar convite
-    send_invite: 'Enviar {{count}} convites'
-    to: 'para:'
-    add_custom_message: + adicionar mensagem personalizada
-    default_message: 'Ei você aí, venha tomar decisões com a gente! Estamos usando uma ferramenta de tomada de decisão colaborativa chamada Loomio'
+    group: Grupo
+    email_addresses: Endereço de e-mail
+    email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Faça seu convite pessoal,'
+    add_custom_message_link: adicionar uma mensagem personalizada.
+    custom_message: Mensagem personalizada
+    custom_message_placeholder: Digite uma mensagem pessoal para incluir no convite.
+    team_invitation_message: 'Alternativamente,'
+    team_invitation_link: link para compartilhar.
+    add_members: Adicionar membros
+    from_parent_group: 'de {{name}}.'
+    send: Enviar
     messages:
-      members_added_and_emails_sent: '{{members}} membro(s) adicionados e {{emails}} convite(s) enviado(s)'
-      members_added: '{{members}} membros(s) adicionado(s)'
-      emails_sent: '{{emails}} convite(s) enviado(s)'
-      no_invitations: 'Nenhum convite enviado!'
+      invitation_sent: Convite enviado.
+      invitations_sent: '{{count}} convites enviados.'
+      no_invitations: 'Ops! Por favor, verifique o endereço de e-mail está correto e tente novamente.'
+      max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
+  team_link_modal:
+    heading: Adicionar pessoas
+    share_link: Compartilhar este link
+    caution: 'Cuidado: qualquer um com este link será capaz de participar do seu grupo imediatamente. Cuidado com quem compartilhá-lo :)'
+    copy_link: Copiar link
+  add_members_modal:
+    heading: 'Adicionar pessoas de {{name}}'
+    add_members: Adicionar membros
+    user_added_to_subgroup: '{{name}} adicionado ao Subgrupo'
+    users_added_to_subgroup: '{{count}} Usuários adicionados ao Subgrupo'
+    no_members_to_add: 'Todos os membros de {{parent}} pertencem a este subgrupo'
   memberships_page:
     members: Membros
     name_label: Nome

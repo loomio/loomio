@@ -35,9 +35,14 @@ class GroupSerializer < ActiveModel::Serializer
              :subscription_kind,
              :subscription_plan,
              :subscription_expires_at,
-             :is_subgroup_of_hidden_parent
+             :is_subgroup_of_hidden_parent,
+             :show_legacy_trial_expired_modal
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
+
+  def show_legacy_trial_expired_modal
+    ENV['TRIAL_EXPIRED_GROUP_IDS'].to_s.split(' ').map(&:to_i).include? object.id
+  end
 
   def subscription_kind
     subscription.try(:kind)
