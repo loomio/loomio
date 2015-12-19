@@ -6,11 +6,11 @@
   .row.memberships-page__table-row.memberships-page__membership{ng-repeat: 'membership in memberships() track by membership.id'}
     .col-xs-7
       .media
-        .media-left
+        .media-left.hidden-xs
           %user_avatar{user: 'membership.user()', size: 'medium', coordinator: 'membership.admin'}
         .media-body
           .memberships-page__member-info
-            %div {{::membership.user().name}}
+            %a{lmo-href-for: 'membership.user()'} {{::membership.user().name}}
             %div @{{::membership.user().username}}
     .col-xs-3.align-center
       %input.memberships-page__make-coordinator{type: 'checkbox', ng-model: 'membership.admin', ng-change: 'toggleAdmin(membership)', ng-disabled: '!canToggleAdmin(membership)'}

@@ -525,24 +525,6 @@ sr:
   group_previous_proposals_card:
     heading: Prethodni predlozi
     see_more: Vidi još
-  invitation:
-    invite_people: Pozovi Ljude
-    find_people: Nađi ljude
-    import_contacts_header: Poveži svoj adresar
-    import_contacts_message: Pozivanje ljudi na Loomio je mnogo lakše ako uvezete svoje kontakte sa Gmail-a.
-    import_contacts: Uvezi kontakte
-    instructions: Unesi imena ili adrese ePošte
-    invitation_message: Pozivnica
-    remove_invite: Ukloni pozivnicu
-    send_invite: 'Pošalji {{count}}'
-    to: 'za:'
-    add_custom_message: + dodaj svoju poruku
-    default_message: 'Zdravo, dođi da odlučuješ sa nama! Koristimo alat za zajedničko donošenje odluka pod nazivom Loomio.'
-    messages:
-      members_added_and_emails_sent: '{{members}} član(a/ova) dodato i {{emails}} poziv(a) poslato'
-      members_added: '{{members}} član(a/ova) dodat/o'
-      emails_sent: '{{emails}} poziv(a) poslato'
-      no_invitations: 'Nisu poslate pozivnice!'
   memberships_page:
     members: Članovi
     name_label: Ime

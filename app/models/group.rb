@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include BetaFeatures
   include HasTimeframe
+  include MessageChannel
   include DeprecatedGroupFeatures
   AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 

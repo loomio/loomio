@@ -19,8 +19,8 @@ de:
       privacy: Datenschutz
       services: Dienste
     hero:
-      header_html: 'Loomio ist der einfachste Weg, um <br /> <strong>gemeinsam Entscheidungen zu finden </strong>.'
-      lead_html: 'Loomio ermöglicht Organisationen und Gemeinschaften <strong>  Diskussion in Aktionen </strong> zu verwanden, wo immer die Menschen auch sein mögen.'
+      header_html: 'Loomio ist der einfachste Weg, um <br /> <strong>gemeinsam Entscheidungen zu treffen</strong>.'
+      lead_html: 'Loomio ermöglicht Organisationen und Gemeinschaften <strong>  Diskussionen in Aktionen </strong> zu verwandeln, wo immer die Menschen auch sein mögen.'
     product:
       header_html: 'Wenn wir <strong>alle Meinungen</strong> einbeziehen, können wir <strong>bessere Entscheidungen</strong> treffen.'
       step1:
@@ -33,7 +33,7 @@ de:
         header: 3. Gemeinsam entscheiden
         desc: 'Gemeinsam wird eine Lösung erarbeitet, mit der jeder einverstanden ist. Jede Entscheidung hat eine klare Deadline, damit immer ein klares Ergebnis herauskommt.'
     mobile:
-      lead_html: '<strong> Loomio funktioniert auf jedem Gerät, </strong> <br /> und erlaubt es Entscheidungen überall und jederzeit zu finden.'
+      lead_html: '<strong> Loomio funktioniert auf jedem Gerät, </strong> <br /> und erlaubt es Entscheidungen überall und jederzeit zu treffen.'
     quote:
       header:
         rushkoff_html: '"Loomio <strong>entfesselt im Internet das Potenzial</strong>, um Leute statt in polarisierende Debatten zu einem gemeinschaftlichen Konsens zu führen."<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, Autor von <em>Present Shock</em></div>'
@@ -55,9 +55,9 @@ de:
         header: Schenkwirtschaft
         desc: 'Loomio wird von jenen unterstützt, die geben was in ihrer Möglichkeit steht. Das sorgt dafür, dass die Plattform werbefrei betrieben wird und auch für jene zugänglich bleibt, die kein Geld haben.'
   about_page:
-    our_story_1_html: '<h2>Unsere Geschichte</h2> <p>Loomio ist ein Online-Werkzeug für kollaborative Entscheidungsfindung, das von einem Team aus Technikern, Aktivisten und und Social Enterpreneuren aus Neuseeland entwickelt wurde.</p> '
-    our_story_2_html: '<p>Loomio entstand während der Occupy-Bewegung 2011 aus dem Wunsch durch einen skalierbaren Weg integrative Gruppenentscheidungen zu ermöglichen.</p> <p>Wir erfuhren das gesellschaftsverändernde Potential der kollaborativen Entscheidungsfindung genauso wie ihre scharfen Grenzen: wenn Menschen sich zur selben Zeit am selben Platz befinden müssen, um daran teilzuhaben, dann ist es nicht mehr stufenlos skalierbar.</p> <p>Wir machten uns also zu einem Weg auf, dieses Problem zu lösen: nutzen wir das Internet, um Menschen eine einfache Möglichkeit zu bieten, gemeinsam gute Entscheidungen zu treffen - egal wo sie gerade sind.</p> <p>Es heißt Loomio, der wie ein Webstuhl die verschiedenen Perspektiven verwebt. :)</p> <p>Bisher haben mehr als 75.000 Menschen mehr als 25.000 Entscheidungen auf Loomio getroffen.</p> '
-    mission_html: '<h2>Mission</h2> <p>Wir sind eine missions-getriebene Organisation mit einem gesellschaftlichen Aspekt in unserem Herzen: Loomio wurde entwickelt um es jedem Menschen überall zu ermöglichen an Entscheidungen teilzunehmen, die sein Leben betreffen.</p> <p>Wir messen unseren Wirkung an der Zahl der Menschen und Gruppen, die an Entscheidungen beteiligt sind, UND an den beflügelnden Geschichten von Menschen, die es nutzen, um große Dinge in ihren Gemeinschaften zu bewirken.</p> '
+    our_story_1_html: '<h2>Unsere Geschichte</h2> <p>Loomio ist ein Online-Werkzeug für gemeinschaftliche Entscheidungsfindung, das von einem Team aus Technikern, Aktivisten und und Social Enterpreneuren aus Neuseeland entwickelt wurde.</p> '
+    our_story_2_html: '<p>Loomio entstand während der Occupy-Bewegung 2011 aus dem Wunsch durch einen skalierbaren Weg integrative Gruppenentscheidungen zu ermöglichen.</p> <p>Wir erfuhren das gesellschaftsverändernde Potential der gemeinschaftlichen Entscheidungsfindung genauso wie ihre scharfen Grenzen: wenn Menschen sich zur selben Zeit am selben Platz befinden müssen, um daran teilzuhaben, dann ist es nicht mehr stufenlos skalierbar.</p> <p>Wir machten uns also zu einem Weg auf, dieses Problem zu lösen: nutzen wir das Internet, um Menschen eine einfache Möglichkeit zu bieten, gemeinsam gute Entscheidungen zu treffen - egal wo sie gerade sind.</p> <p>Es heißt Loomio, der wie ein Webstuhl die verschiedenen Perspektiven verwebt. :)</p> <p>Bisher haben mehr als 75.000 Menschen mehr als 25.000 Entscheidungen auf Loomio getroffen.</p> '
+    mission_html: '<h2>Mission</h2> <p> Wir sind eine gemeinnützige Organisation und unsere soziale Mission ist das Herz unserer Arbeit: Loomio wurde entwickelt um es jedem Menschen überall zu ermöglichen an Entscheidungen teilzunehmen, die sein Leben betreffen.</p> <p>Wir messen unsere Wirkung an der Zahl der Menschen und Gruppen, die an Entscheidungen beteiligt sind, UND an den beflügelnden Geschichten von Menschen, die es nutzen, um große Dinge in ihren Gemeinschaften zu bewirken.</p> '
     advisors_html: '<h2>Beirat</h2> <p>Wir werden von einem Beirat begleitet, dem einige der international renommiertesten Köpfe aus den Bereichen Demokratie und Technologie beiwohnen.</p> '
     sascha_bio_html: "Gründer von <a href='http://thexlab.org/' target='_blank'>X-Lab</a> & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
     katherine_bio_html: "frühere Senior-Vizepräsidentin, <a href='http://www.aol.com/' target='_blank'>AOL</a>, stellvertretende Vorsitzende von <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a>"

@@ -1,7 +1,8 @@
 class VoteService
   def self.create(vote:, actor:)
-    vote.author = actor
     actor.ability.authorize! :create, vote
+    vote.author = actor
+
     return false unless vote.valid?
     vote.save!
 

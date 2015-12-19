@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, Records, CommentModel, EventModel, CurrentUser) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, Records, FlashService) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->
@@ -10,13 +10,14 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
     subscribeToDiscussion: (discussion) ->
       @subscribe { discussion_key: discussion.key }
 
-    subscribeToUser: ->
-      $http.post('/api/v1/message_channel/subscribe_user').then handleSubscriptions
-
     handleSubscriptions = (subscriptions) ->
       _.each subscriptions.data, (subscription) ->
         PrivatePub.sign(subscription)
         PrivatePub.subscribe subscription.channel, (data) ->
+          if data.version?
+            FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', ->
+              $window.location.reload()
+
           if data.memo?
             switch data.memo.kind
               when 'comment_destroyed'

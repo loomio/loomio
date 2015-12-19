@@ -8,11 +8,7 @@ describe Events::NewComment do
   describe "::publish!" do
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'new_comment',
-                                          eventable: comment,
-                                          discussion: comment.discussion,
-                                          created_at: comment.created_at)
-      Events::NewComment.publish!(comment)
+      expect { Events::NewComment.publish!(comment) }.to change { Event.count(kind: 'new_comment') }.by(1)
     end
 
     it 'returns an event' do

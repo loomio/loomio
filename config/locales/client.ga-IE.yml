@@ -352,22 +352,6 @@ ga-IE:
   group_previous_proposals_card:
     heading: Tograí Roimhe Seo
     see_more: Féach tuilleadh
-  invitation:
-    invite_people: Tabhair Cuireadh Do Dhaoine
-    find_people: Aimsigh daoine
-    import_contacts_header: Ceangail do leabhar seoltaí leis
-    import_contacts_message: Tá sé i bhfad níos fusa cuirí chuig Loomio a thabhairt do dhaoine má thugann tú do theagmhálacha ó Google isteach.
-    import_contacts: Tabhair na teagmhálacha isteach
-    instructions: Cuir ainmneacha nó seoltaí ríomhphoist isteach
-    invitation_message: Teachtaireacht an Chuiridh
-    send_invite: 'Seol {{count}} cuireadh'
-    to: 'chuig:'
-    default_message: 'Hóra, déan cinntí linne! Táimid ag baint feidhm as uirlis chinnteoireachta darbh ainm Loomio'
-    messages:
-      members_added_and_emails_sent: '{{members}} c(h)omhalta curtha leis agus {{emails}} cuirí seolta'
-      members_added: 'Cuireadh {{members}} gcomhalta leis'
-      emails_sent: 'Seoladh {{emails}} cuireadh'
-      no_invitations: 'Níor seoladh cuireadh ar bith!'
   memberships_page:
     members: Comhaltaí
     name_label: Ainm

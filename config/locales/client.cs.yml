@@ -265,8 +265,6 @@ cs:
       request_ignored_success: Žádost o členství ignorována
   group_previous_proposals_card:
     heading: Předchozí návrhy
-  invitation:
-    invite_people: Pozvat lidi
   memberships_page:
     members: Členové
     name_label: Jméno

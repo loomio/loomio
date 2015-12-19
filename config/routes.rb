@@ -35,6 +35,7 @@ Loomio::Application.routes.draw do
   end
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
+
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
@@ -126,7 +127,9 @@ Loomio::Application.routes.draw do
       post :vote, on: :member
     end
 
-    resource :translations, only: :show
+    resource :translations, only: :show do
+      get :inline, to: 'translations#inline'
+    end
 
     resources :notifications, only: :index do
       post :viewed, on: :collection
@@ -140,7 +143,6 @@ Loomio::Application.routes.draw do
 
     namespace :message_channel do
       post :subscribe
-      post :subscribe_user
     end
 
     namespace :sessions do

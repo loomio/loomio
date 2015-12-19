@@ -1,6 +1,6 @@
 es:
   common:
-    confirm_discard_changes: Descartar tus cambios?
+    confirm_discard_changes: ¿Descartar tus cambios?
     time:
       am: am
       pm: pm
@@ -27,7 +27,9 @@ es:
     more_help: 'Mas ayuda '
     models:
       proposal: Propuesta
+    copied: 'Copiado '
     action:
+      close: Cerrar
       save: Guardar
       save_changes: Guardar cambios
       update_settings: Actualizar preferencias
@@ -42,17 +44,19 @@ es:
       new_thread: Nuevo hilo
       add_subgroup: Añadir subgrupo
       loading: Cargando
+      translate: Traducir
+      translated: Traducido mediante Bing Translator
       uploading: Cargando
     formatting_help:
       label: 'Ayuda de formato '
-      title: Aprende a usar Markdown para formatear tu texto en Loomio
+      title: Aprende a usar Markdown para dar formato a tu texto en Loomio
   error_page:
     forbidden: No tienes permisos para hacer esto.
     page_not_found: No encontramos lo que estás buscando. Podría haber sido borrado o movido.
     internal_server_error: 'Lo sentimos, pero algo ha ido mal. Por favor, inténtalo otra vez.'
   start_proposal_card:
     title: Empezar una propuesta
-    helptext: 'Estás listo para tomar una decisión?  '
+    helptext: '¿Estás listo para tomar una decisión?  '
   proposal_outcome_panel:
     heading: Resultado
     set_outcome_hint: Usa este espacio para dar a conocer tu propuesta a todo el mundo.
@@ -79,54 +83,54 @@ es:
     normal: Normal
     quiet: Bajo
     mute: 'Silenciado '
-    unmute: 'des-silenciar '
+    unmute: 'Des-silenciar '
   thread_volume_card:
     heading: Notificaciones de los hilos
     body:
-      loud: 'Enviar todo: se te enviara un correo electrónico siempre que haya actividad en este hilo.'
-      normal: 'Enviar propuestas: se te enviara un correo electrónico cuando se inicie una nueva propuesta, cuando este por cerrar, o cuando un resultado sea difundido. '
-      quiet: 'No enviar nada: No recibirás correo electrónico sobre actividad en este hilo. '
-      mute: 'Hilo silenciado: no se te enviara correo electrónico sobre este hilo, y sera removido de tus paginas Hilos recientes y No leído.'
+      loud: 'Enviar todo: se te enviará un correo electrónico siempre que haya actividad en este hilo.'
+      normal: 'Enviar propuestas: se te enviará un correo electrónico cuando se inicie una nueva propuesta, cuando esté a punto de cerrarse, o cuando se publique un resultado.'
+      quiet: 'No enviar nada: No se te enviará ningún correo electrónico sobre la actividad en este hilo. '
+      mute: 'Hilo silenciado: no se te enviará ningún correo electrónico sobre este hilo y se borrará de tus páginas Hilos Recientes y No leído.'
     change_volume_link: 'Cambiar '
   thread_volume_form:
     header: 'Notificaciones de los hilos '
     loud_label: 'Enviar todo '
-    loud_description: 'Seras notificado cuando sea que haya actividad en este hilo. '
+    loud_description: Se te enviará un correo electrónico siempre que haya actividad en este hilo.
     normal_label: 'Enviar propuestas '
-    normal_description: 'Se te enviara un correo electrónico cuando sea que se inicia una propuesta, cuando este por cerrar o cuando un resultado sea difundido. '
+    normal_description: 'Se te enviará un correo electrónico siempre que se inicie una propuesta, cuando esté a punto de cerrarse o cuando se publique un resultado. '
     quiet_label: No enviar correo electrónico
-    quiet_description: 'Correo electrónico no se te sera enviado a no ser que alguien te @mencione en este hilo. '
+    quiet_description: 'No se te enviará ningún correo electrónico sobre este hilo a menos que alguien te @mencione. '
     mute_label: 'Silenciar hilo '
-    mute_description: 'No te sera enviado correo electrónico sobre este hilo, y sera removido de tus paginas Hilos recientes y No leído.   '
+    mute_description: No se te enviará ningún correo electrónico sobre este hilo y se borrará de tus páginas Hilos Recientes y No leído.
     submit: 'Actualizar  '
     messages:
-      loud: 'Correo electrónico te sera enviado sobre actividad en este hilo. '
-      normal: 'Correo electrónico te sera enviado sobre propuestas en este hilo. '
-      quiet: 'No se te sera enviado correo electrónico sobre este hilo. '
+      loud: 'Se te enviará por correo electrónico la actividad en este hilo. '
+      normal: 'Se notificará por correo electrónico cada vez que haya nuevas propuestas en este hilo. '
+      quiet: 'No se te enviará ningún correo electrónico sobre este hilo. '
       mute: 'Hilo silenciado. '
   group_volume_card:
     heading: 'Notificaciones del grupo. '
     body:
-      loud: 'Enviar todo: te sera enviado correo electrónico cada vez que haya actividad en este grupo. '
-      normal: 'Correo electrónico te sera enviado sobre nuevos hilos y propuestas en este grupo. '
-      quiet: 'Sin correo: no se te sera enviado ningún correo electrónico sobre actividad en este grupo. '
-      mute: 'Grupo silenciado: no se te enviara correo electrónico sobre este hilo, y sera removido de tus paginas Hilos recientes y No leído.'
+      loud: 'Enviar todo: se te enviará un correo electrónico siempre que haya actividad en este grupo. '
+      normal: Se te notificará por correo electrónico cada vez que haya nuevos hilos o propuestas en este grupo.
+      quiet: 'No enviar nada: No se te enviará ningún correo electrónico sobre la actividad en este grupo.'
+      mute: 'Grupo silenciado: no se te enviará ningún correo electrónico sobre este grupo y se borrará de tus páginas Hilos Recientes y No leído.'
     change_volume_link: 'Cambiar  '
   group_volume_form:
     header: Notificaciones del grupo.
     loud_label: Enviar todo
-    loud_description: 'Te sera enviado correo electrónico cada vez que haya actividad en este grupo. '
+    loud_description: Se te enviará un correo electrónico siempre que haya actividad en este grupo.
     normal_label: 'Enviar nuevos hilos y propuestas '
-    normal_description: Correo electrónico te sera enviado sobre nuevos hilos y propuestas en este grupo.
+    normal_description: Se te notificará por correo electrónico cada vez que haya nuevos hilos o propuestas en este grupo.
     quiet_label: 'No enviar correo electrónico '
     quiet_description: No se te enviarán correos electrónicos sobre actividad en este grupo a menos que alguien te @mencione.
     mute_label: Silenciar grupo
-    mute_description: 'No te sera enviado correo electrónico sobre este grupo, y sera removido de tus paginas Hilos recientes y No leído. '
+    mute_description: No se te enviará ningún correo electrónico sobre este grupo y se borrará de tus páginas Hilos Recientes y No leído.
     submit: 'Actualizar  '
     messages:
-      loud: 'Correo electrónico te sera enviado sobre toda actividad en este grupo. '
-      normal: Correo electrónico te sera enviado sobre propuestas en este grupo.
-      quiet: No se te sera enviado correo electrónico sobre este grupo.
+      loud: 'Se te enviará por correo electrónico la actividad en este grupo. '
+      normal: Se notificará por correo electrónico cada vez que haya nuevas propuestas en este grupo.
+      quiet: No se te enviará ningún correo electrónico sobre este grupo.
       mute: 'Grupo silenciado. '
   inbox:
     clear: Limpiar
@@ -134,7 +138,7 @@ es:
     unread: No leído
     closing_in: Cerrando
   session_form:
-    email_label: 'Correo:'
+    email_label: 'Correo electrónico:'
     password_label: 'Contraseña:'
     remember_me: Recuérdame
     sign_in: Entrar
@@ -156,13 +160,13 @@ es:
     in_reply_to: 'En respuesta a <strong>{{name}}</strong>'
     submit_button:
       label: Enviar
-    private_privacy_notice: 'Tu comentario solo sera visible para miembros de {{groupName}}.'
-    public_privacy_notice: 'Tus comentarios serán visibles para cualquiera en la red. '
+    private_privacy_notice: 'Tu comentario solo será visible para miembros de {{groupName}}.'
+    public_privacy_notice: 'Tu comentario será público en internet. '
   navbar:
     recent: Reciente
     unread: No leído
     groups: Grupos
-    recent_title: Ir a escritorio
+    recent_title: Ir al Escritorio
     unread_title: Ver los mensajes no leídos
     groups_title: Ver tus grupos
     start_thread: Inicia un nuevo hilo
@@ -185,6 +189,7 @@ es:
       discussions: Hilos
       proposals: Propuestas
       comments: 'Comentarios '
+    sign_in: Inicia sesión
   start_menu:
     title: 'Botones de acción '
     start_group: Crear un grupo nuevo
@@ -299,6 +304,16 @@ es:
   proposal_position_abstain: Abstenerse
   proposal_position_no: En desacuerdo
   proposal_position_block: Bloquear
+  legacy_trial_expired_modal:
+    heading: 'Gracias por usar Loomio este año!'
+    body: >
+      <p>Realmente apreciamos tu apoyo en este año, y esperamos mejor Loomio
+      mucho mas en 2016.</p>
+
+      <p>¿Encuentras Loomio útil para tu grupo? Acabamos de terminar nuestros
+      planes de pago y le estamos pidiendo a los grupos que han estado usado
+      Loomio por un tiempo que elijan un plan que les convenga.</p>
+    submit: Muéstrame los planes
   group_welcome_modal:
     heading: Bienvenido/a a tu nuevo grupo
     first_step: 'Eres el <strong>coordinador</strong> del grupo, que es como ser el anfitrión. Mira el video y los hilos de ejemplo.'
@@ -307,7 +322,7 @@ es:
   group_cover_modal:
     heading: 'Nueva foto de portada '
     upload_link: 'Carga una nueva foto de portada '
-    helptext: 'Buscando inspiración? hecha un vistazo en <a href="https://unsplash.com/">Unsplash</a>, una galería de hermosas fotos gratis  '
+    helptext: '¿Buscando inspiración? hecha un vistazo en <a href="https://unsplash.com/">Unsplash</a>, una galería de hermosas fotos gratis  '
     image_size_helptext: El tamaño de imagen ideal es 1400 x 320px
     upload_success: La foto de portada ha sido actualizada con éxito
   group_logo_modal:
@@ -381,17 +396,17 @@ es:
       add_coordinator: Añadir coordinador
     volume:
       loud: Enviar correo electrónico siempre que haya actividad.
-      loud_aria_description: El volumen de notificaciones para este grupo está establecido como Alto. Se te enviará un correo electrónico cada vez que haya actividad.
+      loud_aria_description: El volumen de notificaciones para este grupo está establecido como Alto. Se te enviará un correo electrónico siempre que haya actividad.
       loud_message: 'Correo electrónico te sera enviado sobre toda la actividad en "{{name}}."'
       normal: 'Sólo enviar actividad importante: Hilos y propuestas nuevos, resultados... etc.'
       normal_aria_description: 'El volumen de notificaciones para este grupo está establecido como Normal. Sólo se te enviarán correos electrónicos con actividad importante como cuando alguien inicia un hilo nuevo, surge una propuesta o se establece un resultado.'
       normal_message: 'Solo te sera enviado correo electrónico sobre eventos importantes en "{{name}}".'
-      quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo será mostrada en el panel de control.
-      quiet_aria_description: El volumen de notificaciones para este grupo está establecido como Bajo. No se te enviarán correos electrónicos con la actividad de este grupo. Dicha actividad se mostrará en tu escritorio.
+      quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo se mostrará en el Escritorio.
+      quiet_aria_description: El volumen de notificaciones para este grupo está establecido como Bajo. No se te enviarán correos electrónicos con la actividad de este grupo. Dicha actividad se mostrará en tu Escritorio.
       quiet_message: 'No te sera enviado correo electrónico sobre actividad en "{{name}}".'
-      mute: Ocultar este grupo en el panel de control y no notificarme a no ser que sea @mencionado.
-      mute_aria_description: 'El volumen de notificaciones para este grupo está establecido como Silenciado. No se te enviarán correos electrónicos a menos que alguien te mencione, y la actividad del grupo no se mostrará en tu escritorio.'
-      mute_message: '"{{name}}" ha sido removido de tu panel de control.'
+      mute: Ocultar este grupo en el Escritorio y no notificarme a no ser que sea @mencionado.
+      mute_aria_description: 'El volumen de notificaciones para este grupo está establecido como Silenciado. No se te enviarán correos electrónicos a menos que alguien te mencione, y la actividad del grupo no se mostrará en tu Escritorio.'
+      mute_message: '"{{name}}" ha sido eliminado de tu Escritorio.'
     privacy:
       private: 'Privacidad: Este grupo es solo visible para miembros'
       parent_members: 'Privacidad: Este grupo es visible para los miembros de {{parentGroupName}} y miembros de {{groupName}} '
@@ -400,7 +415,7 @@ es:
     heading: 'Plan Donación a sido seleccionado. '
     body: 'Si tu grupo no tiene presupuesto para pagar por software, no tienes que pagar una suscripción. Los miembros de tu grupo serán regularmente invitados a hacer una donación voluntaria.'
     confirm_selection: Estoy de acuerdo con que a la gente de mi grupo se le pida hacer una contribución para apoyar a Loomio.
-    got_it: 'Bien, lo tengo!'
+    got_it: 'Bien, ¡lo tengo!'
     go_back: 'Volver '
   donation_modal:
     heading: ¿Te gustaría apoyar a Loomio?
@@ -414,7 +429,7 @@ es:
   trial_card:
     title: '30 días de prueba '
     choose_plan: Elige tu plan de pago
-    in_progress_body: 'Gracias por probar Loomio con <strong>{{name}}</strong>. Puedes elegir un plan de pago que funciona par ti en cualquier momento. '
+    in_progress_body: 'Gracias por probar Loomio con <strong>{{name}}</strong>. En cualquier momento puedes elegir un plan de pago que funcione para tu grupo.'
     expired_body_html: "<strong>{{name}}</strong> ha alcanzado el final de su prueba de Loomio. Si quieres seguir utilizándolo tienes que elegir un plan de pago a tu medida. Si quieres hablar con alguien al respecto ponte <a href=''>en contacto</a>. "
   choose_plan_modal:
     heading: 'Elige tu plan de pago '
@@ -447,25 +462,25 @@ es:
       US<strong>$179</strong>/al mes<br><span>o</span> $1790/al año
     select: 'Selecciona '
   subscription_success_modal:
-    heading: 'Gracias por configurar tu suscripción!'
+    heading: Gracias por configurar tu suscripción
     receipt: 'Recibirás un correo electrónico con un Recibo. '
     change_subscription: 'Si en cualquier momento quieres cambiar o cancelar tu suscripción, o si tienes cualquier otra pregunta, '
     contact_link: por favor contáctanos.
     sign_off: ❤ de parte del equipo de Loomio
-    ok_got_it: 'Bien, lo tengo! '
+    ok_got_it: 'Bien, ¡lo tengo!'
   group_form:
     start_group_heading: Empieza un grupo
     start_subgroup_heading: 'Comienza un sub-grupo '
-    edit_group_heading: Editar configuraciones del grupo
+    edit_group_heading: Editar la configuración del grupo
     edit_subgroup_heading: Editar la configuración del subgrupo
     group_name: Nombre del Grupo
     subgroup_name: 'Nombre del sub-grupo '
     description: 'Descripción '
     description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
     privacy_statement:
-      public_on_web: 'El nombre y la descripción serán públicos online '
+      public_on_web: 'El nombre y la descripción serán públicos en línea. '
       private_to_group: 'El nombre y la descripción solo serán visibles para miembros. '
-      private_to_parent_members: 'El nombre y la descripción serán visibles para miembros de {{parent}}'
+      private_to_parent_members: 'El nombre y la descripción serán visibles para los miembros de {{parent}}'
     privacy: Privacidad
     group_privacy_open_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Todos los hilos son públicos.'
     group_privacy_closed_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Solo los miembros pueden ver los hilos.'
@@ -473,7 +488,7 @@ es:
     group_privacy_secret_description: 'Solo miembros que han sido invitados pueden encontrar el grupo y ver los hilos.  '
     confirm_change_to_secret: 'Si procedes, todos los hilo en este grupo y sus subgrupos se harán privados.'
     confirm_change_to_secret_subgroup: Si continuas todos los hilos se harán privados.
-    confirm_change_to_public: 'Si continuas todos los hilos en este grupo se harán públicos ha cualquiera en internet.  '
+    confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
     subgroup_privacy_open_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Todos los hilos son públicos.'
     subgroup_privacy_closed_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Solo los miembros pueden ver los hilos.'
@@ -528,24 +543,36 @@ es:
   group_previous_proposals_card:
     heading: Propuestas previas
     see_more: Ver más
-  invitation:
-    invite_people: Invita a gente
-    find_people: Buscar gente
-    import_contacts_header: Asocia tu libreta de direcciones
-    import_contacts_message: Invitar a gente a Loomio es más fácil si importas tus contactos de Google.
-    import_contacts: Importar contactos
-    instructions: Introduce nombres o correos electrónicos
-    invitation_message: Mensaje de invitación
-    remove_invite: 'Eliminar invitación '
-    send_invite: 'Enviar {{count}} invitaciones'
-    to: 'para:'
-    add_custom_message: '+ agrega un mensaje personalizado '
-    default_message: '¡Hola, ven a tomar decisiones con nosotros! Estamos usando una herramienta para la toma de decisiones colectiva llamada Loomio'
+  invitation_form:
+    invite_people: Invita gente
+    group: Grupo
+    email_addresses: Correo electrónico
+    email_addresses_placeholder: 'ej. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Personaliza tu invitación,'
+    add_custom_message_link: 'agrega un mensaje personalizado '
+    custom_message: 'Mensaje personalizado '
+    custom_message_placeholder: 'Entra un mensaje personal para incluirlo a la invitación. '
+    team_invitation_message: 'Alternativamente, '
+    team_invitation_link: usa un enlace para compartir.
+    add_members: Incluye miembros
+    from_parent_group: 'de {{name}}.'
+    send: Enviar
     messages:
-      members_added_and_emails_sent: '{{members}} miembro(s) añadido(s) y {{emails}} invitación(es) enviada(s)'
-      members_added: '{{members}} miembro(s) añadido(s)'
-      emails_sent: '{{emails}} inviación(es) enviada(s)'
-      no_invitations: '¡No se ha(n) enviado la(s) invitación(es)!'
+      invitation_sent: 'Invitaciones enviadas. '
+      invitations_sent: '{{count}} invitaciones enviadas.'
+      no_invitations: 'Por favor verifica que la dirección de correo electrónico es correcta e intenta de nuevo. '
+      max_invitations: 'Si quieres enviar mas de 100 invitaciones, utiliza un enlace.'
+  team_link_modal:
+    heading: Incluye gente
+    share_link: Comparte este enlace
+    caution: 'Precaución: cualquiera que tenga este enlace podrá unirse a tu grupo inmediatamente. Se cauteloso de con quien lo compartes :)'
+    copy_link: Copia el enlace
+  add_members_modal:
+    heading: 'Adherir miembros de {{name}}'
+    add_members: 'Incluye miembros '
+    user_added_to_subgroup: '{{name}} incluido al Subgrupo '
+    users_added_to_subgroup: '{{count}} Usuarios incluidos al Subgrupo '
+    no_members_to_add: 'Todos los miembros de {{parent}} pertenecen a este subgrupo'
   memberships_page:
     members: Miembros
     name_label: Nombre
@@ -561,14 +588,14 @@ es:
       question: '¿Estás seguro de que quieres eliminar a {{name}} del grupo {{group}}?'
       submit: Eliminar
     remove_admin_from_self:
-      question: 'Estas seguro que ya no quieres ser un coordinador? '
+      question: '¿Estás seguro que ya no quieres ser un coordinador? '
   pending_invitations_card:
     heading: Invitaciones pendientes
     email: 'correo electrónico '
     invitation_link: 'enlace de invitación '
   cancel_invitation_form:
     heading: 'cancelar invitación '
-    question: Estas seguro de que quieres cancelar esta invitación?
+    question: ¿Estás seguro de que quieres cancelar esta invitación?
     submit: 'Si, cancela la invitación '
     cancel: 'No '
     messages:
@@ -587,7 +614,7 @@ es:
       use_uploaded: Subir una imagen nueva
     change_password:
       title: Cambiar la contraseña
-      helptext: 'Las contraseñas deben tener 8 caracteres. Las contraseñas comunes como "contraseña" está prohibidas para mantener tu cuenta segura.'
+      helptext: 'Las contraseñas deben tener 8 caracteres. La contraseñas común como "contraseña" está prohibida para mantener tu cuenta segura.'
       current_password_label: Contraseña actual
       new_password_label: Nueva contraseña
       password_confirmation_label: Confirmar nueva contraseña
@@ -618,14 +645,14 @@ es:
     proposal_closing_soon_label: Antes de que cierre una propuesta
     proposal_closing_soon_description: '24 horas antes de que una propuesta cierre, independientemente del volumen, recibirás un correo electrónico con la información más reciente sobre la propuesta.'
     mentioned_label: Cuando sea @mencionado
-    mentioned_description: 'Cuando alguien quiere llamar tu atención, te @mencionarán. Recomendamos dejar activada esta opción, de manera que recibas un correo electrónico cuando esto pase.'
+    mentioned_description: 'Cuando alguien quiere llamar tu atención, te @mencionará. Recomendamos dejar activada esta opción, para que recibas un correo electrónico cuando esto pase.'
     update_settings: Actualizar preferencias de correo electrónico
     messages:
       updated: Preferencias de correo electrónico actualizadas
   dashboard_page:
     aria_label: Escritorio
     options:
-      aria_label: Opciones de filtrado de escritorio
+      aria_label: Opciones de filtrado de Escritorio
     no_threads:
       show_all: No tienes ningún hilo reciente.
       show_participating: No has participado en ningún hilo recientemente.
@@ -638,8 +665,8 @@ es:
     filtering:
       filter_threads: Filtrar hilos
       filter_threads_aria_label: 'Filtrar hilos '
-      dropdown_heading: Filtrar escritorio
-      all: Hilos recientes
+      dropdown_heading: Filtrar Escritorio
+      all: Hilos Recientes
       all_aria_label: Mostrando hilos recientes
       all_description: Ver hilos recientes
       starred: Hilos destacados
@@ -671,7 +698,7 @@ es:
   star_toggle:
     star: Hilo destacado
   inbox_page:
-    no_threads: '¡Sí señor! Has leído todos los hilos de tu bandeja de entrada.'
+    no_threads: '¡Sí, has leído todos los hilos de tu bandeja de entrada!'
     unread_threads: Hilos sin leer
     view_more: Ver más
   groups_page:
@@ -682,7 +709,7 @@ es:
     previous_proposals: Propuestas anteriores
     load_previous: Cargar actividad más reciente
     you_like_this: Te gusta esto.
-    liked_by_you_and_someone: 'A ti y a {{name}} os gusta esto.'
+    liked_by_you_and_someone: 'A ti y a {{name}} les gusta esto.'
     liked_by_you_and_others: 'Te ha gustado a ti, a {{joinedNames}} y a {{name}}.'
     liked_by_someone: 'A {{name}} le gusta esto.'
     liked_by_two_others: 'A {{name_1}} y a {{name_2}} les gusta esto.'
@@ -692,17 +719,17 @@ es:
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     volume:
       loud: 'Enviar correo electrónico cuando hay actividad en este hilo. '
-      loud_aria_description: El volumen de notificaciones para este hilo está establecido como Alto. Esto significa que se te enviará un correo electrónico cada vez que haya actividad en él.
-      loud_message: 'Correo electrónico te sera enviado sobre toda la actividad en "{{name}}."'
+      loud_aria_description: El volumen de notificaciones para este hilo está establecido como Alto. Esto significa que se te enviará un correo electrónico siempre que haya actividad en él.
+      loud_message: 'Se te enviará correo electrónico sobre toda la actividad en "{{name}}."'
       normal: 'Enviar correo electrónico sólo cuando se cree una propuesta, esté a punto de cerrar o se publique un resultado.'
       normal_aria_description: 'El volumen de notificaciones para este hilo está establecido como Normal. Se te enviará un correo electrónico cuando se cree una propuesta, cuando esté a punto de cerrar o cuando se publique un resultado.'
       normal_message: 'Solo te sera enviado correo electrónico sobre eventos importantes de "{{name}}".'
       quiet: No enviar correo electrónico sobre este hilo.
       quiet_aria_description: El volumen de notificaciones para este hilo está establecido como Bajo. No se te enviarán correos electrónicos sobre este hilo a menos que alguien te mencione.
       quiet_message: 'No se te enviara correo electrónico sobre "{{name}}" a menos que alguien te mencione'
-      mute: Ocultar este hilo en el panel de control y no notificarme a no ser que sea @mencionado.
-      mute_aria_description: 'El volumen de notificaciones para este hilo está establecido como Silenciado. No se te enviarán correos electrónicos sobre él, a menos que alguien te mencione, y se eliminará de tu escritorio.'
-      mute_message: '"{{name}}" ha sido removido de tu panel de control. '
+      mute: Ocultar este hilo en el Escritorio y notificarme solamente si se me @menciona.
+      mute_aria_description: 'El volumen de notificaciones para este hilo está establecido como Silenciado. No se te enviarán correos electrónicos sobre él, a menos que alguien te mencione, y se eliminará de tu Escritorio.'
+      mute_message: '"{{name}}" se ha eliminado de tu Escritorio.'
   thread_group:
     aria_label: Nombre del grupo
   thread_context:
@@ -714,10 +741,10 @@ es:
     delete_thread: Eliminar
   delete_thread_form:
     title: 'Borrar hilo '
-    body: Estas seguro que quieres borrar este hilo?
-    confirm: 'Si, borra este hilo'
+    body: ¿Estás seguro que quieres eliminar este hilo?
+    confirm: 'Sí, elimina este hilo'
     messages:
-      success: Hilo borrado
+      success: Hilo eliminado
   move_thread_form:
     title: Mover hilo
     body: 'Grupo de destino:'
@@ -955,13 +982,13 @@ es:
     give_feedback: Comentarios para Loomio
     collapse: Contraer
     enable:
-      invite: 'Prueba el nuevo Loomio!'
+      invite: Prueba el nuevo Loomio
       title: 'Prueba el nuevo Loomio '
       intro: Hemos reconstruido Loomio y necesitamos tu ayuda para asegurarnos de que es genial antes de lanzarlo al público general.
       body_html: >
         <p></p>
 
-        <h3>Cual es la diferencia ?</h3>
+        <h3>¿Cuál es la diferencia ?</h3>
 
         <p>
 
@@ -971,7 +998,7 @@ es:
 
         <li> Todo en la pagina se actualiza en vivo, como va sucediendo </li>
 
-        <li> Esta diseñado para todos tus dispositivos, desde tu smartphone al
+        <li> Está diseñada para todos tus dispositivos, desde tu smartphone al
         ordenador de escritorio </li>
 
         <li> Es accesible para gente ciega, y esta traducido <a
@@ -993,13 +1020,13 @@ es:
 
         <p>Hay un enlace para "Volver al Loomio antiguo" en la parte inferior
         izquierda del nuevo app. Haz clic en ese enlace y podrás volver al Loomio
-        al que estas mas acostumbrado. También hay un formulario para que nos
+        al que estas más acostumbrado. También hay un formulario para que nos
         dejes cualquier comentario que tengas.</p>
 
         <p>Esperamos recibir tus comentarios, gracias por tu tiempo y apoyo.</p>
       button_text: Habilita el nuevo Loomio
     disable:
       title: Gracias por probar el nuevo Loomio
-      body_html: '<p> Hicimos algo mal? Perdón si haz pasado un mal tiempo en Loomio.</p>'
+      body_html: '<p> ¿Hicimos algo mal? Perdón si haz pasado un mal tiempo en el nuevo Loomio.</p>'
       give_feedback: 'Antes de irte considera dejarnos un comentario para que podamos mejorar. '
       button_text: Vuelve al Loomio antiguo

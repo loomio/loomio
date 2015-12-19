@@ -27,7 +27,9 @@ de:
     more_help: Weitere Hilfe
     models:
       proposal: Vorschlag
+    copied: Kopiert
     action:
+      close: Schließen
       save: Sichern
       save_changes: Änderungen speichern
       update_settings: Einstellungen aktualisieren
@@ -185,6 +187,7 @@ de:
       discussions: Themen
       proposals: Vorschläge
       comments: Kommentare
+    sign_in: Anmelden
   start_menu:
     title: Aktions-Button
     start_group: Gruppe gründen
@@ -526,24 +529,36 @@ de:
   group_previous_proposals_card:
     heading: Frühere Vorschläge
     see_more: Mehr erfahren
-  invitation:
+  invitation_form:
     invite_people: Leute einladen
-    find_people: Finde Menschen
-    import_contacts_header: Verbinde Dein Adressbuch
-    import_contacts_message: 'Menschen auf Loomio einladen ist viel einfacher, wenn Du Deine Kontakte von Google importierst.'
-    import_contacts: Kontakte importieren
-    instructions: Gib Namen oder eMail-Adressen ein
-    invitation_message: Einladungstext
-    remove_invite: Einladung entfernen
-    send_invite: 'Schicke {{count}} Einladung/en'
-    to: 'An:'
-    add_custom_message: + persönliche Nachricht hinzügen
-    default_message: 'Hallo ihr, kommt und trefft Entscheidungen mit uns! Wir nutzen ein Werkzeug namens Loomio, dass uns bei der kollektiven Entscheidungsfindung hilft'
+    group: Gruppe
+    email_addresses: eMail-Adressen
+    email_addresses_placeholder: 'z.B. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: "Mach' Deine Einladung persönlich,"
+    add_custom_message_link: füge eine persönliche Nachricht hinzu.
+    custom_message: Persönliche Nachricht
+    custom_message_placeholder: 'Gib eine persönliche Nachricht hinzu, die der Einladung hinzugefügt wird.'
+    team_invitation_message: 'Alternativ,'
+    team_invitation_link: 'erhalte einen Link, den Du teilen kannst.'
+    add_members: Mitglieder hinzufügen
+    from_parent_group: 'von {{name}}.'
+    send: Sende
     messages:
-      members_added_and_emails_sent: '{{members}} Mitglied(er) hinzugefügt und {{emails}} Einladung(en) verschickt'
-      members_added: '{{members}} Mitglied(er) hinzugefügt'
-      emails_sent: '{{emails}} Einladung(en) verschickt'
-      no_invitations: 'Keine Einladung(en) verschickt!'
+      invitation_sent: Einladung gesendet.
+      invitations_sent: '{{count}} Einladungen versendet.'
+      no_invitations: 'Upps! Bitte überprüfe die eMail-Adresse und versuche es noch einmal.'
+      max_invitations: 'Wenn Du mehr als 100 Einladungen zu verschicken hast, nutze einen Team-Link.'
+  team_link_modal:
+    heading: Füge Menschen hinzu
+    share_link: Teile diesen Link
+    caution: 'Achtung: jede Person, die diesen Link hat, kann Deiner Gruppe unverzüglich beitreten. Achte darauf, wem Du diesen Link teilst :)'
+    copy_link: Link kopieren
+  add_members_modal:
+    heading: 'Mitglieder aus der Gruppe {{name}} hinzufügen'
+    add_members: Mitglieder hinzufügen
+    user_added_to_subgroup: '{{name}} der Untergruppe hinzugefügt'
+    users_added_to_subgroup: '{{count}} Nutzer der Untergruppe hinzugefügt'
+    no_members_to_add: 'Alle Mitglieder von {{parent}} gehören dieser Untergruppe an'
   memberships_page:
     members: Mitglieder
     name_label: Name

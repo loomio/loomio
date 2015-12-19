@@ -7,7 +7,8 @@ describe EventBus do
   let(:my_param_proc) { Proc.new { |param| param.is_a? my_param } }
   let(:my_param) { Object }
 
-  before { subject.clear }
+  before { @listeners = subject.instance_variable_get(:@listeners); subject.clear }
+  after { subject.instance_variable_set(:@listeners, @listeners) }
 
   describe 'listen' do
     it 'activates a listener with an event name' do

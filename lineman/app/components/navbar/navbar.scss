@@ -112,9 +112,10 @@
   font-size: 10px;
   position: absolute;
   left: 16px;
-  top: 1px;
+  top: 2px;
   background: #4A90E2;
   border-radius: 10px;
+  border: 2px solid white;
   padding: 5px;
   color: white;
   line-height: 5px;
@@ -129,6 +130,7 @@
       width: 100%;
       &:hover, &:focus {
         background: $list-hover-color;
+        &.has-badge .badge { border: 2px solid $list-hover-color; }
       }
     }
   }

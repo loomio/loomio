@@ -216,10 +216,6 @@ lt:
     members_can_create_subgroups: Nariai gali kurti pogrupius.
     members_can_edit_comments: Nariai gali bet kuriuo metu redaguoti savo komentarus.
     submit_update: Atnaujinti nustatymus
-  invitation:
-    invite_people: Pakviesti Žmones
-    instructions: Įvesk vardus arba el. pašto adresus
-    invitation_message: Pakvietimo Pranešimas
   memberships_page:
     coordinator_label: Koordinatorius
     remove_member_label: Šalinti

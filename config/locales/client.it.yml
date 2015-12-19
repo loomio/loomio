@@ -310,22 +310,6 @@ it:
     messages:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
-  invitation:
-    invite_people: Invita persone
-    find_people: Trova persone
-    import_contacts_header: Collega il tuo address book
-    import_contacts_message: Invitare persone in Loomio è più facile se importi i tuoi contatti da Google.
-    import_contacts: Importa contatti
-    instructions: Inserisci nomi o indirizzi email
-    invitation_message: Messaggio di invito
-    send_invite: 'Invia {{count}} inviti'
-    to: 'a: '
-    default_message: 'Ciao, vieni a prendere decisioni con noi! Usiamo un tool di decision-making collaborativo chiamato Loomio.'
-    messages:
-      members_added_and_emails_sent: '{{members}} membro(i) aggiunto(i) e {{emails}} invito(i) inviato(i)'
-      members_added: '{{members}} membro(i) aggiunto(i)'
-      emails_sent: '{{emails}} invito(i) partito(i)'
-      no_invitations: 'Nessun invito inviato!'
   memberships_page:
     members: Membri
     name_label: Nome
