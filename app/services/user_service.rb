@@ -22,7 +22,7 @@ class UserService
     user.errors.add :current_password, I18n.t(:"error.current_password_did_not_match") unless user.valid_password? params.delete(:current_password)
     user.errors.add :password, I18n.t(:"error.passwords_did_not_match")                unless params[:password] == params[:password_confirmation]
 
-    return false unless user.valid?
+    return false unless user.errors.empty?
     user.assign_attributes(params.slice(:password))
     user.save!
 
