@@ -26,11 +26,13 @@ class CommentsController < BaseController
 
   def like
     CommentService.like(comment: @comment, actor: current_user)
+    @comment.reload
     render template: "comments/comment_likes"
   end
 
   def unlike
     CommentService.unlike(comment: @comment, actor: current_user)
+    @comment.reload
     render template: "comments/comment_likes"
   end
 
