@@ -38,7 +38,8 @@ class DiscussionReader < ActiveRecord::Base
       set_volume! :loud unless volume_is_loud?
     end
   end
-  EventBus.listen('comment_like') { |comment_vote| for_comment_vote(comment_vote: comment_vote).set_volume_as_required! }
+  EventBus.listen('discussion_update') { |discussion, params, actor| self.for(discussion: discussion, user: actor).set_volume_as_required! }
+  EventBus.listen('comment_like')      { |comment_vote| for_comment_vote(comment_vote: comment_vote).set_volume_as_required! }
 
   def participate!
     update_attribute :participating, true
