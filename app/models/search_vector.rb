@@ -50,7 +50,8 @@ class SearchVector < ActiveRecord::Base
     handle_asynchronously :index!
   end
   EventBus.listen('discussion_create', 'discussion_update') { |discussion| index! discussion.id }
-  EventBus.listen('comment_create', 'comment_update')       { |comment| index! comment.discussion_id }
+  EventBus.listen('motion_create', 'motion_update')         { |motion|     index! motion.discussion_id }
+  EventBus.listen('comment_create', 'comment_update')       { |comment|    index! comment.discussion_id }
 
   def self.index_everything!
     index_without_delay! Discussion.pluck(:id)
