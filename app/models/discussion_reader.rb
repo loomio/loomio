@@ -18,17 +18,27 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def self.for_comment(comment:)
+    self.for(user: comment.author, discussion: comment.discussion)
+  end
+
+  def self.for_comment_vote(comment_vote:)
+    self.for(user: comment_vote.user, discussion: comment_vote.comment.discussion)
+  end
+
   def author_thread_item!(time)
     set_volume_as_required!
     participate!
     viewed! time
   end
+  EventBus.listen('comment_create') { |comment| for_comment(comment: comment).author_thread_item!(comment.created_at) }
 
   def set_volume_as_required!
     if user.email_on_participation?
       set_volume! :loud unless volume_is_loud?
     end
   end
+  EventBus.listen('comment_like') { |comment_vote| for_comment_vote(comment_vote: comment_vote).set_volume_as_required! }
 
   def participate!
     update_attribute :participating, true
