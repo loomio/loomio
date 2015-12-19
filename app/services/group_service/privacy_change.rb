@@ -26,6 +26,8 @@ class GroupService::PrivacyChange
     end
   end
 
+  EventBus.listen('group_update') { |group| new(group).commit! }
+
   private
   def make_discussions_private_in(group_or_groups)
     Discussion.where(group_id: group_or_groups).update_all(private: true)

@@ -18,12 +18,8 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def self.for_comment(comment:)
-    self.for(user: comment.author, discussion: comment.discussion)
-  end
-
-  def self.for_motion(motion:)
-    self.for(user: motion.author, discussion: motion.discussion)
+  def self.for_model(model)
+    self.for(user: model.author, discussion: model.discussion)
   end
 
   def self.for_comment_vote(comment_vote:)
@@ -35,8 +31,7 @@ class DiscussionReader < ActiveRecord::Base
     participate!
     viewed! time
   end
-  EventBus.listen('comment_create') { |comment| for_comment(comment: comment).author_thread_item!(comment.created_at) }
-  EventBus.listen('motion_create')  { |motion|  for_motion(motion: motion).author_thread_item!(motion.created_at) }
+  EventBus.listen('comment_create', 'motion_create', 'vote_create') { |model| for_model(model).author_thread_item!(model.created_at) }
 
   def set_volume_as_required!
     if user.email_on_participation?
