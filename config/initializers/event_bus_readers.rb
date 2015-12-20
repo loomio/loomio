@@ -1,6 +1,6 @@
-EventBus.listen('comment_create',
-                'motion_create',
-                'vote_create')       { |model| DiscussionReader.for_model(model).author_thread_item!(model.created_at) }
+EventBus.listen('new_comment_event',
+                'new_motion_event',
+                'new_vote_event') { |event| DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at) }
 
 EventBus.listen('discussion_create',
                 'discussion_update') { |discussion, actor| DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required! }

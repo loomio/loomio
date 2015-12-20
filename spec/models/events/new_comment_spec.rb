@@ -8,7 +8,7 @@ describe Events::NewComment do
   describe "::publish!" do
 
     it 'creates an event' do
-      expect { Events::NewComment.publish!(comment) }.to change { Event.count(kind: 'new_comment') }.by(1)
+      expect { Events::NewComment.publish!(comment) }.to change { Event.where(kind: 'new_comment').count }.by(1)
     end
 
     it 'returns an event' do

@@ -8,7 +8,7 @@ describe Events::NewMotion do
   describe "::publish!" do
 
     it 'creates an event' do
-      expect { Events::NewMotion.publish!(motion) }.to change { Event.count(kind: 'new_motion') }.by(1)
+      expect { Events::NewMotion.publish!(motion) }.to change { Event.where(kind: 'new_motion').count }.by(1)
     end
 
     it 'returns an event' do

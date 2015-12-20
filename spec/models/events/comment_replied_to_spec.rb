@@ -12,7 +12,7 @@ describe Events::CommentRepliedTo do
     end
 
     it 'creates a comment replied to event' do
-      expect { Events::CommentRepliedTo.publish!(comment) }.to change { Event.count(kind: 'comment_replied_to') }.by(1)
+      expect { Events::CommentRepliedTo.publish!(comment) }.to change { Event.where(kind: 'comment_replied_to').count }.by(1)
     end
 
     it 'emails the parent author' do

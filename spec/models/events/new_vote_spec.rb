@@ -9,7 +9,7 @@ describe Events::NewVote do
   describe "::publish!" do
 
     it 'creates an event' do
-      expect { Events::NewVote.publish!(vote) }.to change { Event.count(kind: 'new_vote') }.by(1)
+      expect { Events::NewVote.publish!(vote) }.to change { Event.where(kind: 'new_vote').count }.by(1)
     end
 
     it 'returns an event' do

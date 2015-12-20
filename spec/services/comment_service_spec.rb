@@ -5,7 +5,6 @@ describe 'CommentService' do
   let(:discussion) { create :discussion, author: user }
   let(:comment) { create :comment, discussion: discussion, author: user }
   let(:comment_vote) { create :comment_vote, comment: comment, user: user }
-  let(:event) { double(:event) }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:comment_params) {{ body: 'My body is ready' }}
 
@@ -52,9 +51,6 @@ describe 'CommentService' do
   end
 
   describe 'create' do
-    before do
-      Events::NewComment.stub(:publish!).and_return(event)
-    end
 
     it 'authorizes that the user can add the comment' do
       user.ability.should_receive(:authorize!).with(:create, comment)
@@ -83,7 +79,7 @@ describe 'CommentService' do
       end
 
       it 'returns the event created' do
-        CommentService.create(comment: comment, actor: user).should == event
+        expect(CommentService.create(comment: comment, actor: user)).to be_a Event
       end
 
       it 'updates the discussion reader' do
@@ -99,12 +95,12 @@ describe 'CommentService' do
       end
 
       it 'does not publish a comment replied to event if there is no parent' do
-        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.count(kind: 'comment_replied_to') }
+        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.where(kind: 'comment_replied_to').count }
       end
 
       it 'does not publish a comment replied to event if the author is the same as the replyee' do
         comment.parent = create :comment, author: user
-        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.count(kind: 'comment_replied_to') }
+        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.where(kind: 'comment_replied_to').count }
       end
     end
 

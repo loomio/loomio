@@ -7,7 +7,7 @@ describe Events::UserAddedToGroup do
   describe "::publish!(membership, inviter)" do
 
     it 'creates an event' do
-      expect { Events::UserAddedToGroup.publish!(membership, inviter) }.to change { Event.count(kind: 'user_added_to_group') }.by(1)
+      expect { Events::UserAddedToGroup.publish!(membership, inviter) }.to change { Event.where(kind: 'user_added_to_group').count }.by(1)
     end
 
     it 'returns an event' do
