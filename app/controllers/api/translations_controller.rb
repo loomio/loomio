@@ -24,7 +24,7 @@ class API::TranslationsController < API::RestfulController
   end
 
   def yml_for(locale)
-    "config/locates/client.#{locale}.yml"
+    "config/locales/client.#{locale}.yml"
   end
 
 end
