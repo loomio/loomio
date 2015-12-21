@@ -33,7 +33,7 @@ describe Motion do
     end
   end
 
-  describe "must close in future", focus: true do
+  describe "must close in future" do
     let(:motion) { build(:motion, discussion: discussion) }
     it "is invalid if closing in past" do
       motion.closing_at = 1.day.ago

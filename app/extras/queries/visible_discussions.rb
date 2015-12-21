@@ -1,18 +1,14 @@
 class Queries::VisibleDiscussions < Delegator
-  def initialize(user: nil, groups: nil, group_ids: nil)
-    @user = user
-
-    if group_ids.nil? and groups.present?
-      group_ids = Array(groups).map(&:id)
-    end
+  def initialize(user:, groups: nil, group_ids: nil)
+    @user = user || LoggedOutUser.new
+    @group_ids = group_ids.presence || Array(groups).map(&:id).presence || user.group_ids
 
     @relation = Discussion.
                   joins(:group).
                   where('groups.archived_at IS NULL').
                   published.
-                  includes(:author, :current_motion, {group: [:parent]})
-    @relation = self.class.apply_privacy_sql(user: @user, group_ids: group_ids, relation: @relation)
-
+                  includes(:author, {current_motion: [:author, :outcome_author]}, {group: [:parent]})
+    @relation = self.class.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
     super(@relation)
   end
 
@@ -99,25 +95,33 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def sorted_by_importance
-    join_to_starred_motions && join_to_motions
-    @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred DESC NULLS LAST, last_activity_at DESC')
+    if @user.is_logged_in?
+      join_to_starred_motions && join_to_motions
+      @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred DESC NULLS LAST, last_activity_at DESC')
+    else
+      @relation = @relation.order(last_activity_at: :desc)
+    end
     self
   end
 
   def self.apply_privacy_sql(user: nil, group_ids: [], relation: nil)
-    user_group_ids = user.nil? ? [] : user.cached_group_ids
+    user ||= LoggedOutUser.new
 
-    # select where
-    # the discussion is public
-    # or they are a member of the group
-    # or user belongs to parent group and permission is inherited
+    relation = relation.where('discussions.group_id': group_ids) if group_ids.any?
 
-    relation.where('discussions.group_id in (:group_ids) AND
-                   ((discussions.private = false) OR
-                    (discussions.group_id IN (:user_group_ids)) OR
-                    (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)))',
-                   group_ids: group_ids,
-                   user_group_ids: user_group_ids)
+    if user.is_logged_in?
+      # select where
+      # the discussion is public
+      # or they are a member of the group
+      # or user belongs to parent group and permission is inherited
+      relation.where('((discussions.private = false) OR
+                       (discussions.group_id IN (:user_group_ids)) OR
+                       (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids)))',
+                     user_group_ids: user.group_ids)
+    else
+      relation.where('groups.is_visible_to_public': true)
+              .where('discussions.private': false)
+    end
   end
 
 end

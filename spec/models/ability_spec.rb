@@ -448,8 +448,6 @@ describe "User abilities" do
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:create, subgroup_for_another_group) }
-    it { should_not be_able_to(:view_payment_details, group) }
-    it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should     be_able_to(:new_proposal, discussion) }
     it { should     be_able_to(:create, comment) }
     it { should     be_able_to(:show_description_history, discussion) }
@@ -530,8 +528,6 @@ describe "User abilities" do
     it { should     be_able_to(:update, group) }
     it { should     be_able_to(:email_members, group) }
     it { should     be_able_to(:hide_next_steps, group) }
-    it { should     be_able_to(:view_payment_details, group) }
-    it { should     be_able_to(:choose_subscription_plan, group) }
     it { should     be_able_to(:destroy, discussion) }
     it { should     be_able_to(:move, discussion) }
     it { should     be_able_to(:update, discussion) }
@@ -558,12 +554,6 @@ describe "User abilities" do
       it { should     be_able_to(:manage_membership_requests, group) }
       it { should     be_able_to(:approve, membership_request) }
       it { should     be_able_to(:ignore, membership_request) }
-    end
-
-    context "where group is marked as manual subscription" do
-      before { group.update_attributes(payment_plan: 'manual_subscription') }
-      it { should_not be_able_to(:view_payment_details, group) }
-      it { should_not be_able_to(:choose_subscription_plan, group) }
     end
   end
 
@@ -606,7 +596,7 @@ describe "User abilities" do
     it { should_not be_able_to(:show, another_user_vote) }
   end
 
-  context "non member of public group", focus: true do
+  context "non member of public group" do
     let(:group) { create(:group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private') }
     let(:private_discussion) { create :discussion, group: group, private: true }
     let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
@@ -621,8 +611,6 @@ describe "User abilities" do
     let(:other_membership_request) { create(:membership_request, group: group, requestor: other_user) }
 
     it { should     be_able_to(:show, group) }
-    it { should_not be_able_to(:view_payment_details, group) }
-    it { should_not be_able_to(:choose_subscription_plan, group) }
     it { should_not be_able_to(:update, group) }
     it { should_not be_able_to(:email_members, group) }
     it { should_not be_able_to(:add_members, group) }

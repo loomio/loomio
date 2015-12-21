@@ -6,7 +6,7 @@
 
   .modal-body
     %h4.lmo-h4{translate: 'profile_page.deactivate_user.question'}
-    %textarea.form-control{ng-model: 'user.deactivationResponse', placeholder: "{{ 'profile_page.deactivate_user.placeholder' | translate }}"}
+    %textarea.lmo-textarea.form-control{ng-model: 'user.deactivationResponse', placeholder: "{{ 'profile_page.deactivate_user.placeholder' | translate }}"}
   .modal-footer
     %button.lmo-btn--danger{type: 'submit', translate: 'profile_page.deactivate_user.submit'}
     %button.lmo-btn--cancel{ng-click: '$close()', type: 'button', translate: 'common.action.cancel'}

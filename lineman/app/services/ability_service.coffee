@@ -1,5 +1,8 @@
-angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
+angular.module('loomioApp').factory 'AbilityService', (AppConfig, CurrentUser) ->
   new class AbilityService
+
+    isLoggedIn: ->
+      CurrentUser.id?
 
     canAddComment: (thread) ->
       CurrentUser.isMemberOf(thread.group())
@@ -59,6 +62,9 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canAdministerGroup: (group) ->
       CurrentUser.isAdminOf(group)
 
+    isCreatorOf: (group) ->
+      CurrentUser.id == group.creatorId
+
     canStartThread: (group) ->
       group.membersCanStartDiscussions or @canAdministerGroup(group)
 
@@ -102,7 +108,6 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canViewGroup: (group) ->
       !group.privacyIsSecret() or
       CurrentUser.isMemberOf(group)
-      # (group.visibleToOrganisation() and CurrentUser.isMemberOf(group.parent()))
 
     canViewMemberships: (group) ->
       CurrentUser.isMemberOf(group)
@@ -120,3 +125,6 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
       @canViewGroup(group) and
       !CurrentUser.isMemberOf(group) and
       !group.hasPendingMembershipRequestFrom(CurrentUser)
+
+    canTranslate: (model) ->
+      AppConfig.canTranslate and CurrentUser.locale != model.author().locale

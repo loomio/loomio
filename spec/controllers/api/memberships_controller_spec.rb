@@ -27,6 +27,41 @@ describe API::MembershipsController do
     sign_in user
   end
 
+  describe 'add_to_subgroup' do
+    context 'permitted' do
+      let(:parent_member) { FactoryGirl.create(:user) }
+      let(:parent_group) { FactoryGirl.create(:group) }
+
+      before do
+        parent_group.add_member!(user)
+        parent_group.add_member!(parent_member)
+        group.parent = parent_group
+        group.subscription = nil
+        group.save!
+      end
+
+      it "adds parent members to subgroup" do
+        post(:add_to_subgroup, {group_id: group.id,
+                                parent_group_id: parent_group.id,
+                                user_ids: [parent_member.id]})
+
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[users memberships groups])
+
+        expect(group.members).to include(parent_member)
+      end
+
+      it "does not add aliens to subgroup" do
+        post(:add_to_subgroup, {group_id: group.id,
+                                parent_group_id: parent_group.id,
+                                user_ids: [alien_named_bang.id]})
+
+        json = JSON.parse(response.body)
+        expect(json['memberships'].length).to eq 0
+      end
+    end
+  end
+
   describe 'index' do
     context 'success' do
       it 'returns users filtered by group' do
@@ -45,6 +80,27 @@ describe API::MembershipsController do
         json = JSON.parse(response.body)
         usernames = json['users'].map { |c| c['name'] }
         expect(usernames.sort).to eq usernames
+      end
+
+      context 'logged out' do
+        before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+        let(:private_group) { create(:group, is_visible_to_public: false) }
+
+        it 'returns users filtered by group for a public group' do
+          get :index, group_id: group.id, format: :json
+          json = JSON.parse(response.body)
+          expect(json.keys).to include *(%w[users memberships groups])
+          users = json['users'].map { |c| c['id'] }
+          groups = json['groups'].map { |g| g['id'] }
+          expect(users).to include user_named_biff.id
+          expect(users).to_not include alien_named_biff.id
+          expect(groups).to include group.id
+        end
+
+        it 'responds with unauthorized for private groups' do
+          get :index, group_id: private_group.id, format: :json
+          expect(response.status).to eq 403
+        end
       end
     end
   end
@@ -86,7 +142,7 @@ describe API::MembershipsController do
         group.add_member!(jim_emrob)
         another_group.add_member!(rob_othergroup)
       end
-      it 'returns users filtered by query', focus: true do
+      it 'returns users filtered by query' do
         get :autocomplete, group_id: group.id, q: 'rob', format: :json
 
         user_ids = JSON.parse(response.body)['users'].map{|c| c['id']}
@@ -121,6 +177,14 @@ describe API::MembershipsController do
         expect(users).to include alien_named_bang.id
         expect(users).to_not include user_named_biff.id
         expect(groups).to include another_group.id
+      end
+
+      it 'does not return deactivated users' do
+        alien_named_biff.deactivate!
+        get :invitables, group_id: group.id, q: 'beef', format: :json
+        json = JSON.parse(response.body)
+        users = json['users'].map { |c| c['id'] }
+        expect(users).to_not include alien_named_biff.id
       end
 
       it 'includes the given search fragment' do

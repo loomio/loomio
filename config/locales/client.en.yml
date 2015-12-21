@@ -27,7 +27,9 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
+    copied: 'Copied'
     action:
+      close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
@@ -42,11 +44,12 @@ en:
       new_thread: "New thread"
       add_subgroup: 'Add subgroup'
       loading: 'Loading'
+      translate: 'Translate'
+      translated: 'Translation by Bing Translator'
       uploading: 'Uploading'
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
-
 
   error_page:
     forbidden: 'You do not have permission to do this.'
@@ -202,6 +205,7 @@ en:
       discussions: 'Threads'
       proposals: 'Proposals'
       comments: 'Comments'
+    sign_in: 'Sign In'
 
   start_menu:
     title: 'Action button'
@@ -254,7 +258,7 @@ en:
   proposal_positions_panel:
     heading: Positions
     no_votes_yet: Nobody has voted on this proposal yet.
-    change_your_vote: Change your vote.
+    change_your_vote: Change your position.
 
   undecided_panel:
     aria_label: 'Undecided members'
@@ -331,6 +335,14 @@ en:
   proposal_position_abstain: 'Abstain'
   proposal_position_no: 'Disagree'
   proposal_position_block: 'Block'
+
+  legacy_trial_expired_modal:
+    heading: "Thanks for using Loomio this year!"
+    body: |
+      <p>We really appreciate your support over the year, and we’re really excited about making Loomio even better in 2016.</p>
+      <p>Is Loomio useful to your group? We’ve just released our pricing plans and we’re asking groups who’ve been using Loomio for a while to pick a plan that suits them.</p>
+    submit: "Show me the plans"
+
 
   group_welcome_modal:
     heading: "Welcome to your new group"
@@ -441,22 +453,29 @@ en:
   confirm_gift_plan_modal:
     heading: Gift plan selected
     body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will periodically be invited to make a voluntary donation."
+    confirm_selection: "I'm happy for people in my group to be asked to support Loomio with a donation."
     got_it: "Ok, got it!"
+    go_back: Go back
+
+  donation_modal:
+    heading: Would you like to support Loomio?
+    body: "Loomio is a social enterprise. Our mission is to create a world where it's easy for anyone to participate in the decisions that affect them."
+    contribute: Make a contribution
+    got_to_group: Just take me to my group
 
   gift_card:
     heading: Gift plan
-    body: "<strong>{{name}}</strong> is a gift-supported group. If you'd like to help Loomio achieve our mission, click this button:"
+    body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
     make_a_contribution: Make a contribution
 
   trial_card:
     title: '30-day trial'
     choose_plan: 'Choose your pricing plan'
-    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that works for you at any time.'
-    expired_body_html: "<strong>{{name}}</strong> has now reached the end of its Loomio trial. If you'd like to keep using it, you'll need to pick a pricing plan that suits. If you'd like to talk to someone about this, just <a href=''>get in touch</a>."
+    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
+    expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
 
   choose_plan_modal:
-    heading: 'Choose your pricing plan'
-    overdue_heading: 'To continue using Loomio, please choose a payment plan'
+    heading: 'Please choose a plan for your group'
     gift: Gift
     standard: Standard
     plus: Plus
@@ -509,7 +528,7 @@ en:
     group_privacy_closed_description: "anyone can find the group, see who's in it, and ask to join. Only members can see threads."
     group_privacy_closed_public_threads_description: "anyone can find the group, see who's in it, and ask to join. Threads can be public or private."
     group_privacy_secret_description: 'only invited members can find the group and see threads.'
-    confirm_change_to_secret: "If you proceed, all threads in this group and it's subgroups will be made private."
+    confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
@@ -580,24 +599,39 @@ en:
     see_more: See more
 
 
-  invitation:
+  invitation_form:
     invite_people: 'Invite People'
-    find_people: 'Find people'
-    import_contacts_header: 'Connect your address book'
-    import_contacts_message: 'Inviting people to Loomio is much easier if you import your contacts from Google.'
-    import_contacts: 'Import contacts'
-    instructions: 'Enter names or email addresses'
-    invitation_message: 'Invitation Message'
-    remove_invite: 'Remove invitation'
-    send_invite: 'Send {{count}} invites'
-    to: 'to: '
-    add_custom_message: '+ add custom message'
-    default_message: "Hey there, come make decisions with us! We're using a collaborative decision-making tool called Loomio"
+    group: 'Group'
+    email_addresses: 'Email addresses'
+    email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Make your invite personal, '
+    add_custom_message_link: 'add a custom message.'
+    custom_message: 'Custom message'
+    custom_message_placeholder: 'Enter a personal message to include with the invitation.'
+    team_invitation_message: 'Alternatively, '
+    team_invitation_link:  'get a link to share.'
+    add_members: 'Add members'
+    from_parent_group: 'from {{name}}.'
+    send: 'Send'
     messages:
-      members_added_and_emails_sent: '{{members}} member(s) added and {{emails}} invitation(s) sent'
-      members_added: '{{members}} member(s) added'
-      emails_sent: '{{emails}} invitation(s) sent'
-      no_invitations: 'No invitation(s) sent!'
+      invitation_sent: 'Invitation sent.'
+      invitations_sent: '{{count}} invitations sent.'
+      no_invitations: 'Uh-oh! Please verify the email address is correct and try again.'
+      max_invitations: 'If you want to send more than 100 invitations, use a team link.'
+
+  team_link_modal:
+    heading: 'Add people'
+    share_link: 'Share this link'
+    caution: 'Caution: anyone who has this link will be able to join your group immediately. Be careful who you share it with :)'
+    copy_link: 'Copy link'
+
+  add_members_modal:
+    heading: 'Add people from {{name}}'
+    add_members: 'Add members'
+    user_added_to_subgroup: '{{name}} added to Subgroup'
+    users_added_to_subgroup: '{{count}} Users added to Subgroup'
+    no_members_to_add: 'All members of {{parent}} belong to this subgroup'
+
   memberships_page:
     members: 'Members'
     name_label: 'Name'
@@ -619,6 +653,7 @@ en:
     heading: Pending invitations
     email: Email
     invitation_link: Invitation link
+    sent: Sent
 
   cancel_invitation_form:
     heading: Cancel invitation
@@ -785,6 +820,7 @@ en:
     title: Move thread
     body: 'Destination group:'
     confirm: Move thread
+    confirm_change_to_private_thread: '{{groupName}} is an open group. If you proceed, this thread will be made public.'
     messages:
       success: Thread has been moved to {{name}}
 
@@ -805,46 +841,46 @@ en:
       aria_label: 'Comment options'
       edit_comment: 'Edit comment'
       delete_comment: 'Delete comment'
-    in_reply_to: '<strong>{{author}}</strong> in reply to <strong>{{recipient}}</strong>'
+    in_reply_to: 'in reply to'
 
   new_vote_item:
-    agree: '<strong>{{actor}}</strong> agreed'
-    abstain: '<strong>{{actor}}</strong> abstained'
-    disagree: '<strong>{{actor}}</strong> disagreed'
-    block: '<strong>{{actor}}</strong> blocked'
-    agree_with_statement: '<strong>{{actor}}</strong> agreed: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> abstained: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> disagreed: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> blocked: <span>{{statement}}</span>'
+    agree: 'agreed'
+    abstain: 'abstained'
+    disagree: 'disagreed'
+    block: 'blocked'
+    agree_with_statement: 'agreed: <span>{{statement}}</span>'
+    abstain_with_statement: 'abstained: <span>{{statement}}</span>'
+    disagree_with_statement: 'disagreed: <span>{{statement}}</span>'
+    block_with_statement: 'blocked: <span>{{statement}}</span>'
 
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> started a proposal: <span>{{title}}</span>'
+    author_created_proposal: 'started a proposal: <span>{{title}}</span>'
 
   proposal_closed_item:
     proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
 
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> closed the proposal: <span>{{title}}</span>'
+    proposal_closed_by_user: 'closed the proposal: <span>{{title}}</span>'
 
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong> updated the proposal title: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> updated the proposal description'
-    closing_at: '<strong>{{actor}}</strong> updated the proposal to close at <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> updated the proposal title and description'
-    closing_at_name: '<strong>{{actor}}</strong> updated the proposal title and closing time'
-    closing_at_description: '<strong>{{actor}}</strong> updated the proposal description and closing time'
-    closing_at_description_name: '<strong>{{actor}}</strong> updated the proposal title, description and closing time'
+    name: 'updated the proposal title: <span>{{title}}</span>'
+    description: 'updated the proposal description'
+    closing_at: 'updated the proposal to close at <span>{{time}}</span>'
+    description_name: 'updated the proposal title and description'
+    closing_at_name: 'updated the proposal title and closing time'
+    closing_at_description: 'updated the proposal description and closing time'
+    closing_at_description_name: 'updated the proposal title, description and closing time'
 
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> published a proposal outcome:'
+    proposal_outcome_created: 'published a proposal outcome:'
 
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> updated the proposal outcome:'
+    proposal_outcome_updated: 'updated the proposal outcome:'
 
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong> updated the thread title: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> updated the thread context'
-    description_title: '<strong>{{actor}}</strong> updated the thread title and context'
+    title: 'updated the thread title: <span>{{title}}</span>'
+    description: 'updated the thread context'
+    description_title: 'updated the thread title and context'
 
   contact_message_form:
     contact_us: 'Contact Us'
@@ -1012,3 +1048,8 @@ en:
       body_html: "<p>Yikes, did we do something wrong? We're sorry if you had a bad time in the new Loomio.</p>"
       give_feedback: "Before you go please consider sharing your feedback so we can improve."
       button_text: 'Switch back to the old Loomio'
+
+  global:
+    messages:
+      app_update: 'A new version of Loomio is available'
+      reload: 'Reload'

@@ -1,8 +1,17 @@
 class API::MembershipsController < API::RestfulController
 
+  def add_to_subgroup
+    group = load_and_authorize(:group)
+    users = group.parent.members.where('users.id': params[:user_ids])
+    @memberships = MembershipService.add_users_to_group(users: users,
+                                                        group: group,
+                                                        inviter: current_user)
+    respond_with_collection
+  end
+
   def index
     load_and_authorize :group
-    instantiate_collection { |collection| collection.where(group_id: @group.id).order('users.name') }
+    instantiate_collection { |collection| collection.active.where(group_id: @group.id).order('users.name') }
     respond_with_collection
   end
 
@@ -25,7 +34,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def my_memberships
-    @memberships = current_user.memberships.includes(:group, :user, :inviter)
+    @memberships = current_user.memberships.includes(:user, :inviter)
     respond_with_collection
   end
 
@@ -54,8 +63,8 @@ class API::MembershipsController < API::RestfulController
 
   private
 
-  def visible_records
-    visible = resource_class.includes(:user, :group, :inviter)
+  def accessible_records
+    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent, :subscription]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
     else
@@ -67,9 +76,4 @@ class API::MembershipsController < API::RestfulController
     load_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
   end
-
-  def default_page_size
-    5
-  end
-
 end

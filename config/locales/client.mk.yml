@@ -60,8 +60,6 @@ mk:
   proposal_expanded:
     edit_proposal: Измени го предлогот
     close_proposal: Затвори го предлогот
-  start_group_form:
-    heading: Започни група
   join_group_button:
     join_group: Приклучи се во групата
     ask_to_join_group: Побарај да се придружиш на групата
@@ -86,11 +84,6 @@ mk:
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
-  group_form:
-    profile_label: Профил
-    name_label: Име
-    description_label: Опис
-    category_label: Категорија
   memberships_page:
     members: Членови
     name_label: Име
@@ -137,9 +130,9 @@ mk:
     join_the_community: Придружи се на заедницата
     keep_up_to_date: Бидете во тек
     make_a_decision: Направи одлука
-    positions_agree_description: "<span>Се сложувам</span> значи дека сте задоволни со предлогот."
-    positions_abstain_description: "<span>Воздржан</span> значи дека сте несигурни или дека е во ред групата да одлучи без вас."
-    video_id: "52025402"
+    positions_agree_description: '<span>Се сложувам</span> значи дека сте задоволни со предлогот.'
+    positions_abstain_description: '<span>Воздржан</span> значи дека сте несигурни или дека е во ред групата да одлучи без вас.'
+    video_id: '52025402'
     video_tutorial: Видео туторијал
     video_tutorial_description: Провери го видеото за брза демонстрација како се користи Loomio.
   pricing_page:

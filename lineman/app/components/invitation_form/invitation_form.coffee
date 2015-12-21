@@ -1,98 +1,12 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, $rootScope, $q, group, Records, CurrentUser, AbilityService, LoadingService, FlashService) ->
-    $scope.group = group
-    $scope.invitations = []
-    $scope.messageFieldHidden = true
+  controller: ($scope, group, Records, CurrentUser, AbilityService, FlashService, RestfulClient, ModalService, TeamLinkModal, AddMembersModal) ->
 
-    $scope.showMessageField = ->
-      $scope.messageFieldHidden = false
+    $scope.addMembers = ->
+      ModalService.open AddMembersModal, group: -> $scope.group
 
-    $scope.hasInvitations = ->
-      $scope.invitations.length > 0
-
-    $scope.invitationsCount = (types...) ->
-      _.reduce $scope.invitations, ((total, invitation) ->
-        if _.isEmpty(types) or _.contains(types, invitation.type)
-          total + (invitation.count or 1)
-        else
-          total
-      ), 0
-
-    $scope.fragmentIsValidEmail = ->
-      $scope.emailValidation.$valid
-
-    $scope.invitableEmail = ->
-      type: 'email'
-      name: "<#{$scope.fragment}>"
-      email: $scope.fragment
-
-    $scope.invitableGroups = ->
-      groups = _.filter $scope.userGroups(), (group) ->
-        group.id != $scope.group.id and
-        matchesFragment(group.name) and
-        !existsAlready('group', 'id', group.id)
-
-      _.map groups, (group) ->
-        id:       group.id
-        type:     'group'
-        name:     group.name
-        subtitle: "Add all #{group.membershipsCount} members"
-        image:    group.logoUrl()
-        count:    group.membershipsCount
-
-    $scope.invitableUsers = ->
-      memberIds = _.uniq _.flatten _.map $scope.userGroups(), (group) -> group.memberIds()
-      memberIds = _.filter memberIds, (memberId) ->
-        !_.contains $scope.group.memberIds(), memberId
-      users = _.filter Records.users.find(memberIds), (user) ->
-        !user.isMemberOf($scope.group) and
-        matchesFragment(user.searchFragment, user.name, user.username) and
-        !existsAlready('user', 'id', user.id)
-
-      _.map users, (user) ->
-        id:       user.id
-        type:     'user'
-        user:     user
-        name:     user.name
-        subtitle: "@#{user.username}"
-
-    $scope.invitableContacts = ->
-      contacts = _.filter CurrentUser.contacts(), (contact) ->
-        matchesFragment(contact.name, contact.email) and
-        !existsAlready('contact', 'email', contact.email)
-
-      _.map contacts, (contact) ->
-        type:     'contact'
-        name:     contact.name
-        email:    contact.email
-        subtitle: "<#{contact.email}> (#{contact.source})"
-        image:    contact.avatarUrl
-
-    matchesFragment = (fields...) ->
-      _.some _.map fields, (field) ->
-        return false unless field?
-        ~field.search new RegExp($scope.fragment, 'i')
-
-    existsAlready = (type, uniqueField, value) ->
-      _.some _.map $scope.invitations, (invitation) ->
-        invitation.type == type and invitation[uniqueField] == value
-
-    $scope.getInvitables = ->
-      return if $scope.fragment == ''
-      $scope.getInvitablesExecuting = true
-      $q.all([
-        Records.contacts.fetchInvitables($scope.fragment, $scope.group.key),
-        Records.memberships.fetchInvitables($scope.fragment, $scope.group.key)
-      ]).then ->
-        $scope.getInvitablesExecuting = false
-        $scope.invitables()
-
-    $scope.invitables = ->
-      _.take _.union($scope.invitableUsers(),
-                     $scope.invitableContacts(),
-                     $scope.invitableGroups(),
-                     _.compact([$scope.invitableEmail() if $scope.fragmentIsValidEmail()])), 5
+    $scope.addCustomMessage = ->
+      $scope.showCustomMessageField = true
 
     $scope.availableGroups = ->
       _.filter $scope.userGroups(), (group) ->
@@ -101,42 +15,39 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.userGroups = ->
       CurrentUser.groups()
 
-    $scope.addInvitation = (invitation) ->
-      $scope.fragment = ''
-      $scope.invitations.push invitation
+    $scope.maxInvitations = ->
+      $scope.form.emailAddresses.split(' ').length > 100
 
-    $scope.removeInvitation = (invitation) ->
-      _.remove $scope.invitations, invitation
+    $scope.getTeamLink = ->
+      ModalService.open TeamLinkModal, group: -> $scope.group
 
     $scope.submit = ->
       $scope.isDisabled = true
-      Records.invitations.remote.create(invitationsParams()).then ->
-        FlashService.success $scope.successMessage(), members: $scope.memberCount(), emails: $scope.emailCount()
-        $scope.$close()
-        Records.memberships.fetchByGroup $scope.group.key, per: 25
-      , ->
+      Records.invitations.sendByEmail
+        groupId: $scope.group.id
+        emailAddresses: $scope.form.emailAddresses
+        message: $scope.form.message
+      .then (data) ->
+        invitationCount = data.invitations.length
+        switch invitationCount
+          when 0
+            $scope.noInvitations = true
+          when 1
+            FlashService.success 'invitation_form.messages.invitation_sent'
+            $scope.$close()
+          else
+            FlashService.success 'invitation_form.messages.invitations_sent', count: invitationCount
+            $scope.$close()
+      .finally ->
         $scope.isDisabled = false
-        $rootScope.$broadcast 'pageError', 'cantCreateInvitations'
 
-    $scope.successMessage = ->
-      if $scope.memberCount() > 0 and $scope.emailCount() > 0
-        'invitation.messages.members_added_and_emails_sent'
-      else if $scope.memberCount() > 0
-        'invitation.messages.members_added'
-      else if $scope.emailCount() > 0
-        'invitation.messages.emails_sent'
-      else
-        'invitation.messages.no_invitations'
+    $scope.group = group
+    $scope.form = { emailAddresses: '' }
+    $scope.showCustomMessageField = false
+    $scope.isDisabled = false
+    $scope.noInvitations = false
 
-    $scope.memberCount = ->
-      $scope.invitationsCount('user', 'group')
-
-    $scope.emailCount = ->
-      $scope.invitationsCount('contact', 'email')
-
-    invitationsParams = ->
-      invitations: $scope.invitations
-      group_key: $scope.group.key
-      message: $scope.message
+    if !(group?)
+      $scope.group = $scope.userGroups()[0]
 
     return

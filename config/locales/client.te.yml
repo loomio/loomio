@@ -42,8 +42,6 @@ te:
     privacy_label: గోప్యత
   proposal_expanded:
     close_proposal: ప్రతిపాదనను మూసివేయి
-  start_group_form:
-    heading: ఒక సమూహాన్ని ప్రారంభించండి
   join_group_button:
     ask_to_join_group: సమూహంలో చేరుటకు అడగండి
   membership_request_form:
@@ -63,9 +61,6 @@ te:
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు
-  group_form:
-    name_label: పేరు
-    description_label: వివరణ
   memberships_page:
     members: సభ్యులు
     name_label: పేరు
@@ -100,7 +95,7 @@ te:
     how_it_works: ఎలా పనిచేస్తుంది
     join_the_community: సంఘంలో చేరండి
     make_a_decision: ఒక నిర్ణయాన్ని తీసుకోండి
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: దృశ్యక ఉపశిక్షణ
   pricing_page:
     organisations: సంస్థలు

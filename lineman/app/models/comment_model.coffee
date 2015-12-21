@@ -1,9 +1,10 @@
-angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
-  class CommentModel extends BaseModel
+angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) ->
+  class CommentModel extends DraftableModel
     @singular: 'comment'
     @plural: 'comments'
     @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.comment
+    @draftParent: 'discussion'
 
     defaultValues: ->
       usesMarkdown: true
@@ -32,6 +33,9 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel, AppConfig) ->
 
     parent: ->
       @recordStore.comments.find(@parentId)
+
+    parentAuthor: ->
+      @parent().author()
 
     likers: ->
       @recordStore.users.find(@likerIds)

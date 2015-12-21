@@ -1,9 +1,0 @@
-.attachment-display
-  .attachment-header
-    %i.fa.fa-paperclip
-    .sr-only{translate: 'activity_card.attachment_display'}
-    %a{ng-href: '{{attachment.location}}', target: '_blank'}>
-      {{attachment.filename }}
-    %span {{attachment.formattedFilesize()}}
-  .attachment-content{ng-if: 'attachment.isAnImage'}
-    %img{ng-src: '{{::attachment.location}}', alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}

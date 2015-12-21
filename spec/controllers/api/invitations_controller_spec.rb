@@ -1,13 +1,17 @@
 require 'rails_helper'
 describe API::InvitationsController do
+  include EmailSpec::Helpers
+  include EmailSpec::Matchers
 
   let(:user) { create :user }
   let(:another_user) { create :user }
+  let(:deactivated) { create :user, deactivated_at: 2.days.ago }
   let(:contact) { create :contact, user: user }
   let(:another_group) { create :group }
   let(:another_group_member) { create :user }
   let(:group) { create :group }
   let(:user_invitable)    { { id: another_user.id, type: :user } }
+  let(:deactivated_invitable) { { id: deactivated.id, type: :user } }
   let(:group_invitable)   { { id: another_group.id, type: :group } }
   let(:contact_invitable) { { email: contact.email, type: :contact } }
   let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
@@ -25,29 +29,27 @@ describe API::InvitationsController do
 
   describe 'create' do
     context 'success' do
-
-      it 'creates a membership invitation for a user' do
-        post :create, group_id: group.id, invitations: [user_invitable], invite_message: 'A user message', format: :json
-        expect(group.members.pluck(:id)).to include another_user.id
-      end
-      
-      it 'creates membership invitation for all members of a group' do
-        post :create, group_id: group.id, invitations: [group_invitable], invite_message: 'A group message', format: :json
-        expect(group.members.pluck(:id)).to include another_user.id
-        expect(group.members.pluck(:id)).to include another_group_member.id
-      end
-
-      it 'creates a invitation email for a contact' do
-        post :create, group_id: group.id, invitations: [contact_invitable], invite_message: 'A contact message', format: :json
-        expect(group.invitations.find_by(recipient_email: contact.email, inviter: user)).to be_present
+      it 'creates invitations with custom message' do
+        ActionMailer::Base.deliveries = []
+        post :create, { group_id: group.id,
+                        email_addresses: 'rob@example.com, hannah@example.com',
+                        message: 'Please make decisions with us!' }
+        json = JSON.parse(response.body)
+        invitation = json['invitations'].last
+        last_email = ActionMailer::Base.deliveries.last
+        expect(ActionMailer::Base.deliveries.size).to eq 2
+        expect(invitation['recipient_email']).to eq 'hannah@example.com'
+        expect(last_email).to have_body_text 'Please make decisions with us!'
+        expect(last_email).to deliver_to 'hannah@example.com'
       end
 
-      it 'creates an invitation email for a new email address' do
-        InvitePeopleMailer.stub_chain(:delay, :to_join_group)
-        post :create, group_id: group.id, invitations: [email_invitable], invite_message: 'An email message', format: :json
-        expect(group.invitations.find_by(recipient_email: email_invitable[:email], inviter: user)).to be_present
+      it 'includes default message when no custom message' do
+        post :create, { group_id: group.id,
+                        email_addresses: 'rob@example.com, hannah@example.com' }
+        json = JSON.parse(response.body)
+        last_email = ActionMailer::Base.deliveries.last
+        expect(last_email).to have_body_text "Click the link to join #{group.name} and get started:"
       end
-
     end
 
     # context 'failure' do
@@ -56,6 +58,24 @@ describe API::InvitationsController do
     #     expect { post :create, group_id: cant_see_me.id, invitations: [contact_invitable], format: :json }.to raise_error CanCan::AccessDenied
     #   end
     # end
+  end
+
+  describe 'shareable' do
+    context 'permitted' do
+      it 'gives a shareable link for the group' do
+        get :shareable, group_id: group.id
+        json = JSON.parse(response.body)
+        expect(json['invitations'].first['single_use']).to eq false
+      end
+    end
+
+    context 'not permitted' do
+      it 'gives access denied' do
+        sign_in another_user
+        get :shareable, group_id: group.id
+        expect(response.status).to eq 403
+      end
+    end
   end
 
   describe 'pending' do
@@ -70,10 +90,8 @@ describe API::InvitationsController do
 
     context 'not permitted' do
       it 'returns AccessDenied' do
-        sign_out user
         sign_in another_user
         get :pending, group_id: group.id
-        expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
         expect(response.status).to eq 403
       end
     end

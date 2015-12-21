@@ -71,14 +71,6 @@ Given(/^a proposal outcome has been sent$/) do
                               @user)
 end
 
-Given(/^my group is paying a subscription$/) do
-  @group.update_attribute(:payment_plan, 'manual_subscription')
-end
-
-Given(/^my group is not paying a subscription$/) do
-  @group.update_attribute(:payment_plan, 'pwyc')
-end
-
 Then(/^I should see the campaign in the email body$/) do
   @last_email = ActionMailer::Base.deliveries.last
   @last_email.default_part_body.to_s.should include "Was this decision important to you?"

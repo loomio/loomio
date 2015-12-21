@@ -3,9 +3,8 @@ class API::EventsController < API::RestfulController
 
   private
 
-  def visible_records
-    load_and_authorize :discussion
-    @discussion.items.sequenced
+  def accessible_records
+    load_and_authorize(:discussion).items.sequenced
   end
 
   def page_collection(collection)

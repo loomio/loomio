@@ -2,12 +2,12 @@ angular.module('loomioApp').factory 'VoteRecordsInterface', (BaseRecordsInterfac
   class VoteRecordsInterface extends BaseRecordsInterface
     model: VoteModel
 
-    fetchMyVotes: (proposals) ->
-      proposalIds = _.map proposals, (proposal) -> proposal.id
+    fetchMyVotes: (model) ->
+      params = {}
+      params["#{model.constructor.singular}_id"] = model.id
       @fetch
         path: 'my_votes'
-        params:
-          proposal_ids: proposalIds
+        params: params
 
     fetchByProposal: (proposal) ->
       @fetch

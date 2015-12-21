@@ -3,5 +3,3 @@ fi:
     forbidden: Sinulla ei ole oikeutta tehdä tätä.
   notifications:
     header: Ilmoitukset
-  start_group_form:
-    heading: Aloita ryhmä

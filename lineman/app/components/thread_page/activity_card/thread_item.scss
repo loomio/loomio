@@ -19,6 +19,7 @@
   & > span {
     padding-right: 5px;
   }
+  a { color: $primary-text-color; }
 }
 
 .thread-item__body {
@@ -28,6 +29,7 @@
 .thread-item__footer {
   @include fontSmall();
   color: $grey-on-white;
+  clear: both;
 }
 
 @media (min-width: $tiny-max-px){

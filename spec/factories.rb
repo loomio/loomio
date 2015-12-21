@@ -1,4 +1,10 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :blog_story do
+    title "MyString"
+url "MyString"
+image_url "MyString"
+published_at "2015-11-18 14:28:30"
+  end
+
   factory :blacklisted_password do
     string "MyString"
   end
@@ -161,7 +167,6 @@ FactoryGirl.define do
     name { Faker::Name.name }
     admin_name { Faker::Name.name }
     admin_email { Faker::Internet.email }
-    payment_plan { 'subscription' }
   end
 
   factory :invitation do
@@ -215,6 +220,12 @@ FactoryGirl.define do
 
   factory :subscription do
     kind :trial
+  end
+
+  factory :draft do
+    user
+    association :draftable, factory: :discussion
+    payload {{ payload: 'payload' }}
   end
 
 end

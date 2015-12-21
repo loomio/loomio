@@ -6,8 +6,8 @@ sk:
     group: Skupina
     groups: Skupiny
     privacy:
-      private: Súkromný
       public: Verejnosť
+      private: Súkromný
     date_range:
       today: Dnes
     models:
@@ -51,11 +51,11 @@ sk:
     heading: Vyjadrite svoj názor
     i_agree: Súhlasím
     i_abstain: Zdržujem sa
-    i_abstain_details: "Budem rád, ak sa skupina rozhodne bezo mňa."
+    i_abstain_details: 'Budem rád, ak sa skupina rozhodne bezo mňa.'
     i_disagree: Nesúhlasím
-    i_disagree_details: "Myslím, že by to šlo lepšie."
+    i_disagree_details: 'Myslím, že by to šlo lepšie.'
     i_block: Zamietam
-    i_block_details: "Mám silné námietky proti tomuto návrhu a nechcem, aby prešiel."
+    i_block_details: 'Mám silné námietky proti tomuto návrhu a nechcem, aby prešiel.'
     submit_position: Odoslať postoj
   proposal_positions_panel:
     heading: Hlasy
@@ -75,8 +75,6 @@ sk:
   proposal_expanded:
     edit_proposal: Upraviť návrh
     close_proposal: Uzavrieť návrh
-  start_group_form:
-    heading: Vytvoriť skupinu
   join_group_button:
     join_group: Pripojiť sa ku skupine
     ask_to_join_group: Požiadať o členstvo
@@ -101,11 +99,6 @@ sk:
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
-  group_form:
-    profile_label: Profil
-    name_label: Meno
-    description_label: Popis
-    category_label: Kategória
   memberships_page:
     members: Členovia
     name_label: Meno
@@ -150,15 +143,56 @@ sk:
     message_label: Vaša správa
   help_page:
     coordinating: Koordinácia vašej Loomio skupiny
-    coordinating_details: "Ako koordinátor ste zodpovedný/á za konfiguráciu nastavení pre vašu Loomio skupinu a rozoslanie pozvánok do nej. Budete sa musieť aj naučiť používať túto aplikáciu a túto znalosť šíriť medzi členmi skupiny, aby boli funkcie ktoré aplikácia ponúka využívané efektívne. Tu je niekoľko tipov ktoré vám pomôžu v tejto úlohe:\n"
+    coordinating_details: >
+      Ako koordinátor ste zodpovedný/á za konfiguráciu nastavení pre vašu Loomio
+      skupinu a rozoslanie pozvánok do nej. Budete sa musieť aj naučiť používať
+      túto aplikáciu a túto znalosť šíriť medzi členmi skupiny, aby boli funkcie
+      ktoré aplikácia ponúka využívané efektívne. Tu je niekoľko tipov ktoré vám
+      pomôžu v tejto úlohe:
     different_ways: Rôzne spôsoby ako používať Loomio
-    engaging_html: "<h2>Tipy na zvýšenie angažovanosti v skupine</h2>\n<p>Ochota ľudí zúčastňovať sa na návrhoch sa zvýši ak sú kontroverzné alebo inak zaujímavé.\nDobrý návrh obsahuje akčný plán, z ktorého je jasné čo znamená súhlasiť a nesúhlasiť.\nRozmýšľajte o tom, ako by sa dali diskusie prebiehajúce tvári v tvár alebo prostredníctvom\nemailu ľahko uskutočniť prostredníctvom aplikácie Loomio.</p>\n<p>Ak vaša skupina len práve začína, prvé diskusie by sa mali týkať nekritických rozhodnutí,\naby mali členovia možnosť vyskúšať si a zžiť sa s rozhodovacím procesom.</p>\n<p>Ďalší jednoduchý trik ako prilákať ľudí do diskusie je @spomenutím niekoho, alebo citovaním\njeho/jej výroku; Loomio zašle email s upozornením, že ich meno bolo spomenuté v komentári</p>\n"
+    engaging_html: >
+      <h2>Tipy na zvýšenie angažovanosti v skupine</h2>
+
+      <p>Ochota ľudí zúčastňovať sa na návrhoch sa zvýši ak sú kontroverzné alebo
+      inak zaujímavé.
+
+      Dobrý návrh obsahuje akčný plán, z ktorého je jasné čo znamená súhlasiť
+      a nesúhlasiť.
+
+      Rozmýšľajte o tom, ako by sa dali diskusie prebiehajúce tvári v tvár alebo
+      prostredníctvom
+
+      emailu ľahko uskutočniť prostredníctvom aplikácie Loomio.</p>
+
+      <p>Ak vaša skupina len práve začína, prvé diskusie by sa mali týkať
+      nekritických rozhodnutí,
+
+      aby mali členovia možnosť vyskúšať si a zžiť sa s rozhodovacím
+      procesom.</p>
+
+      <p>Ďalší jednoduchý trik ako prilákať ľudí do diskusie je @spomenutím
+      niekoho, alebo citovaním
+
+      jeho/jej výroku; Loomio zašle email s upozornením, že ich meno bolo
+      spomenuté v komentári</p>
     example1_html: "<h3>Vaša skupina potrebuje dosiahnuť riešenie komplexného problému</h3>\n<p>Stratégia: Predtým než sformulujete návrh, diskutujte o probléme istý čas.</p>\n<p>Diskusie často vedú k jednotnému pohľadu na problém a ten zvyšuje pravdepodobnosť,\nže bude sformulovaný kvalitný návrh. Ak sú ľudia od počiatku zaangažovaní v diskusii o \nprobléme, zvyšuje sa pravdepodobnosť že aj prijmú konečné rozhodnutie.</p>\n"
-    example2_html: "<h3>V mysli už máte sformulovaný návrh a od skupiny chcete len konečné rozhodnutie.</h3>\n<p>Stratégia: Začnite diskusiu o špecifickom rozhodnutí a hneď aj vytvorte návrh.</p>\n<p>Ak máte jasnú predstavu o tom, ako by mal vyzerať výsledok hlasovania, ale sa chcete uistiť že nikto nemá dôležité námietky, môžte použiť návrh na získanie rýchlej spätnej väzby k návrhu. </p>\n<p>Príklady použitia tejto stratégie: odobrenie obsahu článku, žiadosti alebo iného typu dokumentu.</p>\n"
+    example2_html: >
+      <h3>V mysli už máte sformulovaný návrh a od skupiny chcete len konečné
+      rozhodnutie.</h3>
+
+      <p>Stratégia: Začnite diskusiu o špecifickom rozhodnutí a hneď aj vytvorte
+      návrh.</p>
+
+      <p>Ak máte jasnú predstavu o tom, ako by mal vyzerať výsledok hlasovania,
+      ale sa chcete uistiť že nikto nemá dôležité námietky, môžte použiť návrh na
+      získanie rýchlej spätnej väzby k návrhu. </p>
+
+      <p>Príklady použitia tejto stratégie: odobrenie obsahu článku, žiadosti
+      alebo iného typu dokumentu.</p>
     get_in_touch: Spojte sa s nami
     get_in_touch_description_html: "Pokiaľ máte akékoľvek otázky alebo pripomienky, <a href='%{link}'>napíšte nám</a>."
     getting_started: Ako začať
-    getting_started_description: "Naľavo skupina prediskutuje tému, vymení si názory a informácie. Keď nastane čas na rozhodnutie, toto sa objaví napravo."
+    getting_started_description: 'Naľavo skupina prediskutuje tému, vymení si názory a informácie. Keď nastane čas na rozhodnutie, toto sa objaví napravo.'
     getting_the_most: Získajte čo najviac z Loomia
     have_your_say: Vyjadrite svoj názor
     have_your_say_details_html: "<p>Ak ste pripravený/á hlasovať, voľte kliknutím na jedno z hlasovacích tlačidiel.</p>\n<p>Môžte prípadne aj poskytnúť stručné zdôvodnenie vašej voľby. Pod grafom je vidieť \npoznámky uvedené inými hlasujúcimi. Počas hlasovanie môžte meniť svoj postoj, ak\nsa tento mení pod vplyvom názorov iných hlasujúcich.</p>\n"
@@ -166,27 +200,69 @@ sk:
     have_a_discussion_description: Téma a akékoľvek relevantné súvisiace informácie sa nachádzajú v hornej časti stránky. Pomocou poľa pre komentár vneste svoj názor do diskusie.
     help: Pomocník
     how_it_works: Ako to funguje
-    invitation_html: "<h2>Ako napísať efektívnu pozvánku</h2>\n<p>Prvá otázka ktorá bude zaujímať väčšinu nových členov je, 'načo je táto skupina?' </p>\n<p>Porozmýšľajte nad najjednoduchším opisom poslania skupiny: Čo chcete aby jej členovia\nspolu dosiahli? Aký typ rozhodnutí sa v nej bude prijímať? Kto sú typickí členovia skupiny?</p>\n<p></p>\n<p>Pred samotným pozvaním nových členov je dobré sa s nimi najprv porozprávať a objasniť\nim dôvody, pre ktoré by mali s členstvom v skupine súhlasiť.</p>\n"
+    invitation_html: >
+      <h2>Ako napísať efektívnu pozvánku</h2>
+
+      <p>Prvá otázka ktorá bude zaujímať väčšinu nových členov je, 'načo je táto
+      skupina?' </p>
+
+      <p>Porozmýšľajte nad najjednoduchším opisom poslania skupiny: Čo chcete aby
+      jej členovia
+
+      spolu dosiahli? Aký typ rozhodnutí sa v nej bude prijímať? Kto sú typickí
+      členovia skupiny?</p>
+
+      <p></p>
+
+      <p>Pred samotným pozvaním nových členov je dobré sa s nimi najprv
+      porozprávať a objasniť
+
+      im dôvody, pre ktoré by mali s členstvom v skupine súhlasiť.</p>
     join_the_community: Staňte sa súčasťou komunity
     images_and_text_formatting: Obrázky a formátovanie textu
-    images_and_text_formatting_html: "<p>Loomio používa ‘Markdown’ formát na vkladanie obrázkov a formátovanie štýlu textu.\nDo Markdown módu môžte prepnúť kliknutím na šedú ikonku pod poľom na vkladanie komentára.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Kliknite sem</a>\nak sa chcete dozvedieť ako používať Markdown.</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio používa ‘Markdown’ formát na vkladanie obrázkov a formátovanie
+      štýlu textu.
+
+      Do Markdown módu môžte prepnúť kliknutím na šedú ikonku pod poľom na
+      vkladanie komentára.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Kliknite sem</a>
+
+      ak sa chcete dozvedieť ako používať Markdown.</p>
     keep_up_to_date: Zostaňte informovaný(a)
-    keep_up_to_date_html: "<p>Kliknutím na názov vašej skupiny na vrchu stránky sa zobrazí stránka skupiny,\nkde môžte vidieť zoznam všetkých diskusií a rozhodnutí prijatých v tej skupine.\nAk ste členom/kou viacerých skupín, možte vidieť všetky informácie zo všetkých skupín\nna domovskej stránke.</p>\n<p>O dôležitých udalostiach vo vašej skupine budete informovaný/á pomocou emailu.\nNastavenia zasielania emailových správ môžte <a href=\"%{link}\"\"> zmeniť tu</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Kliknutím na názov vašej skupiny na vrchu stránky sa zobrazí stránka
+      skupiny,
+
+      kde môžte vidieť zoznam všetkých diskusií a rozhodnutí prijatých v tej
+      skupine.
+
+      Ak ste členom/kou viacerých skupín, možte vidieť všetky informácie zo
+      všetkých skupín
+
+      na domovskej stránke.</p>
+
+      <p>O dôležitých udalostiach vo vašej skupine budete informovaný/á pomocou
+      emailu.
+
+      Nastavenia zasielania emailových správ môžte <a href="%{link}""> zmeniť
+      tu</a>.</p>
     make_a_decision: Rozhodnite sa
-    make_a_decision_description: "Keď je skupina pripravená urobiť rozhodnutie, každý môže vytvoriť návrh. Krátko popíšte jasný návrh postupu a poskytnite určitý základ, aby každý vedel, čo presne znamená súhlasiť, alebo nesúhlasiť."
-    prompt_people_details: "Pokiaľ chcete získať pozornosť konkrétnej osoby vo vašej skupine, napíšte ‚@‘ nasledované ich menom. Oslovaný(á) dostane email, který ich upozorní, že ste ho(ju) spomenul(a)."
+    make_a_decision_description: 'Keď je skupina pripravená urobiť rozhodnutie, každý môže vytvoriť návrh. Krátko popíšte jasný návrh postupu a poskytnite určitý základ, aby každý vedel, čo presne znamená súhlasiť, alebo nesúhlasiť.'
+    prompt_people_details: 'Pokiaľ chcete získať pozornosť konkrétnej osoby vo vašej skupine, napíšte ‚@‘ nasledované ich menom. Oslovaný(á) dostane email, který ich upozorní, že ste ho(ju) spomenul(a).'
     prompt_people_html: "Vyzvite ľudí pomocou <span class='blue'>@zmienky</span>"
-    positions_agree_description: "<span>Súhlasím</span> znamená, že ste s návrhom spokojný(á)."
-    positions_abstain_description: "<span>Zdržujem sa</span> znamená, že si nie ste istý(á), alebo že budete rád(a), ak sa skupina rozhodne bez vás."
-    positions_disagree_description: "<span>Nesúhlasím</span> znamená, že myslíte, že by mohla existovať lepšia možnosť, ale ste ochotný(á) prijať rozhodnutie skupiny."
-    positions_block_description: "<span>Zamietam</span> znamená, že máte vážne námietky a budete veľmi nešťastná/ý, pokiaľ sa bude podľa návrhu postupovať."
+    positions_agree_description: '<span>Súhlasím</span> znamená, že ste s návrhom spokojný(á).'
+    positions_abstain_description: '<span>Zdržujem sa</span> znamená, že si nie ste istý(á), alebo že budete rád(a), ak sa skupina rozhodne bez vás.'
+    positions_disagree_description: '<span>Nesúhlasím</span> znamená, že myslíte, že by mohla existovať lepšia možnosť, ale ste ochotný(á) prijať rozhodnutie skupiny.'
+    positions_block_description: '<span>Zamietam</span> znamená, že máte vážne námietky a budete veľmi nešťastná/ý, pokiaľ sa bude podľa návrhu postupovať.'
     start_discussion: Zahájenie pútavej diskusie
     start_discussion_html: "<p>Pre nové diskusie ktoré začnete sa snažte napísať výstižné opisy.\nNa poskytnutie kontextuálnej informácie ktorú členovia skupiny budú potrebovať \nna vedenie zmysluplnej diskusie použite Kontext panel .</p>\n<p>Počas diskusie, informácia v Kontext paneli môže byť priebežne aktualizovaná\nnovo zistenými skutočnosťami. Tento priestor môže byť okrem opisu kontextu \nvyužitý aj na zdieľanie informácií z iných webov, priebežné zhrnutia stavu diskusie,\nalebo na opis protokolu používaného v skupine na dosiahnutie rozhodnutí.</p>\n"
     start_proposal: Napísanie jasného návrhu
     start_proposal_html: "<p> Ak zvolíte výstižný názov, ľudia budú hneď vedieť čo v nej znamená súhlasiť \nalebo nesúhlasiť.</p>\n<p>Nebude tragédiou ak návrh hneď nedosiahne jasný súhlas. Ak väčšina považuje prvý \nnávrh za nezaujímavý,  ktokoľvek môže začať nový.</p>\n<p>Týmto dynamickým procesom sa môže skupina kolektívne dopracovať k lepším \nformuláciam problému ako by to dokázal jednotlivec.</p>\n<p>Konečný termín na uzatvorenie diskusie sa dá kedykoľvek posunúť, ak to vyzerá \ntak, že diskusia potrebuje viac času. Každý dostane email 24 hodín pred jej uzatvorením.</p>\n"
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Zobraziť tutoriál
-    video_tutorial_description: "Pozrite si rýchlu ukážku toho, ako sa Loomio používa."
+    video_tutorial_description: 'Pozrite si rýchlu ukážku toho, ako sa Loomio používa.'
   hint:
     context: Rady pre používánie kontextového panelu
     discussion: Rady na zahájenie pútavej diskusie
@@ -196,7 +272,7 @@ sk:
   pricing_page:
     intro: "Skupiny s rozpočtom platia za používanie aplikácie predplatným.\nSkupiny bez možností platby predplatným platia podľa princípu 'plať koľko môžeš' - ich členovia\nsú vyzvaní zaplatiť podľa svojich možností. Peniaze takto získané umožňujú aby \naplikácia Loomio ostala nezávislá a bez komerčných reklám.\n"
     organisations: Organizácia
-    organisations_examples: "napr. firmy, vládne agentúry, komunitné organizácie"
+    organisations_examples: 'napr. firmy, vládne agentúry, komunitné organizácie'
     informal_groups: neformálne skupiny
-    informal_groups_desc: "Členovia vašej skupiny budú vyzvaní, aby zaplatili koľko môžu"
-    informal_groups_examples: "napr. rodiny, spoločenské hnutia, kolektívy"
+    informal_groups_desc: 'Členovia vašej skupiny budú vyzvaní, aby zaplatili koľko môžu'
+    informal_groups_examples: 'napr. rodiny, spoločenské hnutia, kolektívy'

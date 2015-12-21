@@ -1,18 +1,22 @@
 class API::InvitationsController < API::RestfulController
-
   def create
     load_and_authorize :group, :invite_people
-    @invitations = params[:invitations]
-
-    MembershipService.add_users_to_group new_members
-    InvitationService.invite_to_group    new_emails
-    @invitations = []
+    @invitations = InvitationService.invite_to_group(recipient_emails: email_addresses,
+                                                     group: @group,
+                                                     inviter: current_user,
+                                                     message: params[:message])
     respond_with_collection
   end
 
   def pending
     load_and_authorize :group, :view_pending_invitations
     @invitations = page_collection(@group.invitations.pending)
+    respond_with_collection
+  end
+
+  def shareable
+    load_and_authorize :group, :view_shareable_invitation
+    @invitations = [InvitationService.shareable_invitation_for(@group)]
     respond_with_collection
   end
 
@@ -23,6 +27,9 @@ class API::InvitationsController < API::RestfulController
   end
 
   private
+  def email_addresses
+    params[:email_addresses].scan(/[^\s<,]+?@[^>,\s]+/).take(100)
+  end
 
   def new_members
     common_params.merge users: invitation_parser.new_members

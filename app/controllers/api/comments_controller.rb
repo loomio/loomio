@@ -19,7 +19,7 @@ class API::CommentsController < API::RestfulController
   def authenticate_user_by_email_api_key
     @current_user = User.find_by id:            request.headers['Loomio-User-Id'],
                                  email_api_key: request.headers['Loomio-Email-API-Key']
-    head :unauthorized unless current_user
+    head :unauthorized unless current_user.is_logged_in?
   end
 
 end

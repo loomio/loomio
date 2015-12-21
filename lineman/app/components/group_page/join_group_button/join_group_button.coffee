@@ -21,3 +21,6 @@ angular.module('loomioApp').directive 'joinGroupButton', ->
 
     $scope.requestToJoinGroup = ->
       ModalService.open MembershipRequestForm, group: -> $scope.group
+
+    $scope.isLoggedIn = ->
+      AbilityService.isLoggedIn()

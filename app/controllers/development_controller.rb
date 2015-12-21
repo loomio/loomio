@@ -45,6 +45,22 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_group_with_expired_legacy_trial
+    sign_in jennifer
+    GroupService.create(group: test_group, actor: patrick)
+    test_group.update_attribute(:cohort_id, 3)
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_expired_legacy_trial_admin
+    sign_in patrick
+    test_group.add_member! emilio
+    test_group.update_attribute(:cohort_id, 3)
+    ENV['TRIAL_EXPIRED_GROUP_IDS'] = test_group.id.to_s
+
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_with_many_discussions
     sign_in patrick
     test_group.add_member! emilio
@@ -148,6 +164,14 @@ class DevelopmentController < ApplicationController
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     redirect_to group_url(test_group)
+  end
+
+  def view_open_group_as_visitor
+    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
+                                membership_granted_upon: 'request',
+                                group_privacy: 'open')
+    @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    redirect_to group_url(@test_group)
   end
 
   def setup_closed_group
@@ -309,6 +333,8 @@ class DevelopmentController < ApplicationController
   def cleanup_database
     User.delete_all
     Group.delete_all
+    Membership.delete_all
+
     ActionMailer::Base.deliveries = []
   end
 end

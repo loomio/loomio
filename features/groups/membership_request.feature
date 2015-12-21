@@ -124,4 +124,3 @@ Feature: Request Membership to Group
     When I ignore the membership request
     Then I should see a flash message confirming the membership request was ignored
     And I should no longer see the membership request in the list
-

@@ -3,12 +3,14 @@ require 'rails_helper'
 describe InvitationParser do
 
   let(:user) { create :user }
+  let(:deactivated) { create :user, deactivated_at: 2.days.ago }
   let(:group) { create :group }
   let(:invitations) {[
     { type: 'email', email: 'email@me.com' },
     { type: 'contact', email: 'contact@me.com' },
     { type: 'user', id: user.id },
-    { type: 'group', id: group.id }
+    { type: 'group', id: group.id },
+    { type: 'user', id: deactivated.id }
   ]}
   let(:subject) { InvitationParser.new(invitations) }
 
@@ -20,6 +22,10 @@ describe InvitationParser do
     group.members.each do |member|
       expect(subject.new_members).to include member
     end
+  end
+
+  it 'does not invite a deactivated user' do
+    expect(subject.new_members).to_not include deactivated
   end
 
   it 'parses all group members to their user ids' do

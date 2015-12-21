@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include BetaFeatures
   include HasTimeframe
+  include MessageChannel
   include DeprecatedGroupFeatures
   AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 
@@ -10,12 +11,10 @@ class Group < ActiveRecord::Base
 
   acts_as_tree
 
-  PAYMENT_PLANS = ['pwyc', 'subscription', 'manual_subscription', 'undetermined']
   DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
   MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
 
   validates_presence_of :name
-  validates_inclusion_of :payment_plan, in: PAYMENT_PLANS
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :name, length: { maximum: 250 }
@@ -62,8 +61,6 @@ class Group < ActiveRecord::Base
              order('discussions.last_comment_at') }
 
   scope :include_admins, -> { includes(:admins) }
-
-  scope :manual_subscription, -> { where(payment_plan: 'manual_subscription') }
 
   scope :cannot_start_parent_group, -> { where(can_start_group: false) }
 
@@ -477,10 +474,6 @@ class Group < ActiveRecord::Base
     subscription.amount
   end
 
-  def has_manual_subscription?
-    payment_plan == 'manual_subscription'
-  end
-
   def group_request_description
     group_request.try :description
   end
@@ -507,6 +500,10 @@ class Group < ActiveRecord::Base
 
   def org_group_ids
     [parent_or_self.id, parent_or_self.subgroup_ids].flatten
+  end
+
+  def id_and_subgroup_ids
+    Array(id) | subgroup_ids
   end
 
   def has_subdomain?

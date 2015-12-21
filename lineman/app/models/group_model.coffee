@@ -1,10 +1,14 @@
-angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
-  class GroupModel extends BaseModel
+angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
+  class GroupModel extends DraftableModel
     @singular: 'group'
     @plural: 'groups'
     @uniqueIndices: ['id', 'key']
     @indices: ['parentId']
     @serializableAttributes: AppConfig.permittedParams.group
+    @draftParent: 'draftParent'
+
+    draftParent: ->
+      @parent() or @recordStore.users.find(AppConfig.currentUserId)
 
     defaultValues: ->
       parentId: null
@@ -14,7 +18,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       isVisibleToPublic: true
       discussionPrivacyOptions: 'private_only'
       membershipGrantedUpon: 'approval'
-      membersCanAddMembers: false
+      membersCanAddMembers: true
       membersCanEditDiscussions: true
       membersCanEditComments: true
       membersCanRaiseMotions: true
@@ -31,6 +35,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
       @hasMany 'invitations'
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
+
+    shareableInvitation: ->
+      @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
 
     closedProposals: ->
       _.filter @proposals(), (proposal) ->
@@ -59,7 +66,7 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
 
     pendingInvitations: ->
       _.filter @invitations(), (invitation) ->
-        invitation.isPending()
+        invitation.isPending() and invitation.singleUse
 
     hasPendingInvitations: ->
       _.some @pendingInvitations()
@@ -146,6 +153,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel, AppConfig) ->
 
     uploadPhoto: (file, kind) =>
       @remote.upload("#{@key}/upload_photo/#{kind}", file)
+
+    hasNoSubscription: ->
+      !@subscriptionKind?
 
     trialIsOverdue: ->
       @subscriptionKind == 'trial' && @subscriptionExpiresAt.clone().add(1, 'days') < moment()

@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
   replace: true
   controller: ($scope, $rootScope, $location, Records, ProposalFormService) ->
 
-    Records.votes.fetchMyVotes($scope.discussion.closedProposals())
+    Records.votes.fetchMyVotes($scope.discussion)
     Records.proposals.fetchByDiscussion($scope.discussion).then ->
       $scope.setSelectedProposal()
       $rootScope.$broadcast 'threadPageProposalsLoaded'

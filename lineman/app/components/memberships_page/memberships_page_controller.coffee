@@ -12,10 +12,6 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
   @fetchMemberships = =>
     Records.memberships.fetchByNameFragment(@fragment, @group.key) if @fragment
 
-  @init Records.discussions.find $routeParams.key
-  Records.groups.findOrFetchById($routeParams.key).then @init, (error) ->
-    $rootScope.$broadcast('pageError', error)
-
   @canAdministerGroup = ->
     AbilityService.canAdministerGroup(@group)
 
@@ -52,5 +48,8 @@ angular.module('loomioApp').controller 'MembershipsPageController', ($routeParam
 
   @name = (membership) ->
     membership.userName()
+
+  Records.groups.findOrFetchById($routeParams.key).then @init, (error) ->
+    $rootScope.$broadcast('pageError', error)
 
   return

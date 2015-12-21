@@ -29,7 +29,8 @@ class Queries::VisibleInvitableMemberships < Delegator
        FROM memberships
        LEFT OUTER JOIN users u ON u.id = memberships.user_id AND memberships.group_id = #{@group.id}
        WHERE memberships.group_id IN (#{@user.group_ids.join(', ')})
-       AND   u.id IS NULL").values.flatten.map(&:to_i)
+       AND   u.id IS NULL
+       AND   u.deactivated_at IS NULL").values.flatten.map(&:to_i)
   end
 
   def group_membership_ids

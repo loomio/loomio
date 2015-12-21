@@ -6,8 +6,8 @@ gl:
     group: Grupo
     groups: Grupos
     privacy:
-      private: Privado
       public: Público
+      private: Privado
     date_range:
       today: Hoxe
     models:
@@ -66,8 +66,6 @@ gl:
   proposal_expanded:
     edit_proposal: Editar proposta
     close_proposal: Pechar proposta
-  start_group_form:
-    heading: Comezar un grupo
   join_group_button:
     join_group: Unirse ó grupo
     ask_to_join_group: Pedir unirse ó grupo
@@ -88,11 +86,6 @@ gl:
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
-  group_form:
-    profile_label: Perfil
-    name_label: Nome
-    description_label: Descripción
-    category_label: Categoría
   memberships_page:
     members: Membros
     name_label: Nome
@@ -146,7 +139,7 @@ gl:
     keep_up_to_date: Manter ó día
     make_a_decision: Tomar unha decisión
     start_discussion: Comezar un debate aberto
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Videotutorial
   hint:
     discussion: Recomendacións para comezar un debate aberto

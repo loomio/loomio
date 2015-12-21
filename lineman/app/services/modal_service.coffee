@@ -1,8 +1,8 @@
-angular.module('loomioApp').factory 'ModalService', ($uibModal, $rootScope) ->
+angular.module('loomioApp').factory 'ModalService', ($uibModal, $rootScope, AhoyService) ->
   currentModal = null
   new class ModalService
     open: (modal, resolve = {}) ->
-      $rootScope.$broadcast 'modalOpened'
+      $rootScope.$broadcast 'modalOpened', modal
       if currentModal?
         currentModal.close()
       currentModal = $uibModal.open

@@ -1,8 +1,7 @@
 .choose-plan-modal
   .modal-header
     %modal_header_cancel_button
-    %h1.lmo-h1.modal-title{ng-if: '!group.trialIsOverdue()', translate: 'choose_plan_modal.heading'}
-    %h1.lmo-h1.modal-title{ng-if: 'group.trialIsOverdue()', translate: 'choose_plan_modal.overdue_heading'}
+    %h1.lmo-h1.modal-title{translate: 'choose_plan_modal.heading'}
 
   .modal-body
     .choose-plan-modal__pricing-table

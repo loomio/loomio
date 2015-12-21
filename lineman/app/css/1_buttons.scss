@@ -153,8 +153,22 @@
   padding: 0;
   &:hover{ text-decoration: underline; }
 }
+
+@mixin lmoTranslateLink {
+  display: inline-block;
+  background: none;
+  border: none;
+  text-decoration: none;
+  padding: 0;
+}
+
 .lmo-btn-link {
   @include lmoBtnLink;
+}
+
+.lmo-btn-link--blue {
+  @include lmoBtnLink;
+  color: $link-color;
 }
 
 @mixin lmoBtnLg {

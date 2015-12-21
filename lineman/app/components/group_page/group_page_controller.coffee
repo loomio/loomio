@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, CurrentUser, MessageChannelService, AbilityService, AppConfig, ModalService, SubscriptionSuccessModal, GroupWelcomeModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, CurrentUser, MessageChannelService, AbilityService, AppConfig, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
@@ -7,10 +7,14 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'viewingGroup', @group
     $rootScope.$broadcast 'setTitle', @group.fullName
     $rootScope.$broadcast 'analyticsSetGroup', @group
-    $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
-    MessageChannelService.subscribeToGroup(@group)
-    @handleSubscriptionSuccess()
-    @handleWelcomeModal()
+
+    if AbilityService.isLoggedIn()
+      $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
+      MessageChannelService.subscribeToGroup(@group)
+      Records.drafts.fetchFor(@group)
+      @handleSubscriptionSuccess()
+      @handleWelcomeModal()
+      LegacyTrialExpiredModal.showIfAppropriate(@group, CurrentUser)
   , (error) ->
     $rootScope.$broadcast('pageError', error)
 
@@ -35,8 +39,14 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
 
-  @handleWelcomeModal = ->
-    if CurrentUser.isAdminOf(@group) and @group.noInvitationsSent() and !@group.trialIsOverdue() and !GroupWelcomeModal.shownToGroup[@group.id]?
+  @showWelcomeModel = ->
+    AbilityService.isCreatorOf(@group) and
+    @group.noInvitationsSent() and
+    !@group.trialIsOverdue() and
+    !GroupWelcomeModal.shownToGroup[@group.id]
+
+  @handleWelcomeModal = =>
+    if @showWelcomeModel()
       GroupWelcomeModal.shownToGroup[@group.id] = true
       ModalService.open GroupWelcomeModal
 

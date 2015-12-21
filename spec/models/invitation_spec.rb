@@ -23,16 +23,16 @@ describe Invitation do
       @invitation.accepted?
     end
 
-    context 'accepted_by present' do
+    context 'accepted_at present' do
       before do
         @invitation.accepted_at = Time.now
       end
       it {should be true}
     end
 
-    context 'accepted_by blank' do
+    context 'accepted_at blank' do
       before do
-        @invitation.accepted_by = nil
+        @invitation.accepted_at = nil
       end
       it {should be false}
     end

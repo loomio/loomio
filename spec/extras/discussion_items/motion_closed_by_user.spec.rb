@@ -3,8 +3,6 @@ describe DiscussionItems::MotionClosedByUser do
   let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::MotionClosedByUser.new(event, motion) }
 
-  it "#icon returns a string indicating the icon-class"
-
   context "Motion is closed by a user" do
     before { item.stub_chain(:event, :user).and_return(double(:user)) }
 

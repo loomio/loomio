@@ -293,18 +293,6 @@ describe Group do
     end
   end
 
-  describe "#has_manual_subscription?" do
-    let(:group) { create(:group, payment_plan: 'manual_subscription') }
-
-    it "returns true if group is marked as a manual subscription" do
-      group.should have_manual_subscription
-    end
-    it "returns false if group is not marked as a manual subscription" do
-      group.update_attribute(:payment_plan, 'subscription')
-      group.should_not have_manual_subscription
-    end
-  end
-
   describe 'archival' do
     before do
       group.add_member!(user)
@@ -334,6 +322,25 @@ describe Group do
       it 'restores the memberships of the group' do
         group.memberships.all?{|m| m.archived_at.should be_nil}
       end
+    end
+  end
+
+  describe 'id_and_subgroup_ids' do
+    let(:group) { create(:group) }
+    let(:subgroup) { create(:group, parent: group) }
+
+    it 'returns empty for new group' do
+      expect(build(:group).id_and_subgroup_ids).to be_empty
+    end
+
+    it 'returns the id for groups with no subgroups' do
+      expect(group.id_and_subgroup_ids).to eq [group.id]
+    end
+
+    it 'returns the id and subgroup ids for group with subgroups' do
+      subgroup; group.reload
+      expect(group.id_and_subgroup_ids).to include group.id
+      expect(group.id_and_subgroup_ids).to include subgroup.id
     end
   end
 end

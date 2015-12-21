@@ -29,21 +29,22 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.init = ->
       $scope.comment = Records.comments.build(discussionId: $scope.discussion.id)
       $scope.submit = FormService.submit $scope, $scope.comment,
+        allowDrafts: true
         submitFn: $scope.comment.save
         flashSuccess: successMessage
         flashOptions:
           name: successMessageName
         successCallback: $scope.init
+      KeyEventService.submitOnEnter $scope
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
       ScrollService.scrollTo('.comment-form__comment-field')
 
-    $scope.removeAttachment = (attachment) ->
+    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
       ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachment.id), 1
-      Records.attachments.destroy(attachment.id)
+      ids.splice ids.indexOf(attachmentId), 1
 
     $scope.updateMentionables = (fragment) ->
       regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
@@ -56,5 +57,3 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.updateMentionables(fragment)
       Records.memberships.fetchByNameFragment(fragment, $scope.discussion.group().key).then ->
         $scope.updateMentionables(fragment)
-
-    KeyEventService.submitOnEnter $scope

@@ -3,8 +3,8 @@ id:
     group: Kelompok
     groups: Kelompok
     privacy:
-      private: Tertutup
       public: Terbuka
+      private: Tertutup
     models:
       proposal: Usulan
     action:
@@ -61,8 +61,6 @@ id:
     privacy_label: Kebijakan Privasi
   proposal_expanded:
     close_proposal: Tutup usulan
-  start_group_form:
-    heading: Buat kelompok
   join_group_button:
     ask_to_join_group: Minta untuk bergabung dalam kelompok
   membership_request_form:
@@ -82,9 +80,6 @@ id:
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
-  group_form:
-    name_label: Nama
-    description_label: Deskripsi
   memberships_page:
     members: Anggota
     name_label: Nama
@@ -112,41 +107,147 @@ id:
       delete_comment: Hapus komentar
   help_page:
     coordinating: Mengatur kelompok Loomio Anda
-    coordinating_details: "Sebagai koordinator, Anda bertanggung jawab atas setelan kelompok Loomio Anda dan mengundang orang lain untuk masuk. Selain mempelajari penggunaan piranti lunak baru, kelompok Anda akan mempelajari proses baru untuk berkolaborasi lebih efektif dan membuat keputusan yang baik bersama-sama. Berikut beberapa tips agar tujuan kelompok Anda tercapai:\n"
+    coordinating_details: >
+      Sebagai koordinator, Anda bertanggung jawab atas setelan kelompok Loomio
+      Anda dan mengundang orang lain untuk masuk. Selain mempelajari penggunaan
+      piranti lunak baru, kelompok Anda akan mempelajari proses baru untuk
+      berkolaborasi lebih efektif dan membuat keputusan yang baik bersama-sama.
+      Berikut beberapa tips agar tujuan kelompok Anda tercapai:
     different_ways: Cara lain menggunakan Loomio
-    engaging_html: "<h2>Tips untuk berinteraksi dengan kelompok Anda</h2>\n<p>Anggota kelompok akan tertarik untuk masuk dan berpartisipasi apabila ada usulan yang menarik. Usulan yang baik memiliki usulan tindakan untuk kelompok, sehingga anggota kelompok dapat dengan jelas menyetujui atau menolak. Pikirkan bagaimana Anda identifikasi diskusi/keputusan yang dilakukan kelompok secara langsung atau melalui surel dapat lebih mudah dilakukan melalui Loomio.</p>\n<p>Apabila kelompok Anda baru memulai, Anda dapat membuat keputusan yang singkat, memberikan kesempatan kepada yang lain untuk mencoba alat ini dan melihat proses pengambilan keputusan.</p>\n<p>Cara mudah lainnya untuk memancing anggota untuk berinteraksi dalam diskusi adalah dengan menggunakan fitur @sebut untuk mengabari pihak tertentu; fitur ini akan mengirimkan surel yang mengabari bahwa nama mereka disebutkan di dalam komentar.</p>\n"
-    example1_html: "<h3>Kelompok Anda akan mendiskusikan sebuah topik dan membuat keputusan bersama</h3>\n<p>Strategi: Diskusikan sebuah topik selama beberapa saat sebelum membuat usulan.</p>\n<p>Diskusi seringkali mencapai hasil terbaik jika Anda memberikan pemahaman bersama mengenai masalah yang ada sebelum membuat keputusan. Apabila setiap orang berpartisipasi dalam proses tersebut, mereka akan mendukung tercapainya hasil yang diinginkan.</p>\n"
-    example2_html: "<h3>Anda telah memiliki usulan, dan Anda ingin mendapat persetujuan dari kelompok.</h3>\n<p>Strategi: Mulai diskusi tentang keputusan tertentu dan segera buat usulan.</p>\n<p>Apabila Anda memiliki hasil yang Anda harapkan dan ingin mengetahui pertimbangan lainnya, Anda dapat menggunakan usulan untuk mendapatkan masukan untuk keputusan.</p>\n<p>Anda juga dapat melakukan finalisasi dokumen, menerima aplikasi, atau menandatangani pekerjaan.</p>\n"
+    engaging_html: >
+      <h2>Tips untuk berinteraksi dengan kelompok Anda</h2>
+
+      <p>Anggota kelompok akan tertarik untuk masuk dan berpartisipasi apabila
+      ada usulan yang menarik. Usulan yang baik memiliki usulan tindakan untuk
+      kelompok, sehingga anggota kelompok dapat dengan jelas menyetujui atau
+      menolak. Pikirkan bagaimana Anda identifikasi diskusi/keputusan yang
+      dilakukan kelompok secara langsung atau melalui surel dapat lebih mudah
+      dilakukan melalui Loomio.</p>
+
+      <p>Apabila kelompok Anda baru memulai, Anda dapat membuat keputusan yang
+      singkat, memberikan kesempatan kepada yang lain untuk mencoba alat ini dan
+      melihat proses pengambilan keputusan.</p>
+
+      <p>Cara mudah lainnya untuk memancing anggota untuk berinteraksi dalam
+      diskusi adalah dengan menggunakan fitur @sebut untuk mengabari pihak
+      tertentu; fitur ini akan mengirimkan surel yang mengabari bahwa nama mereka
+      disebutkan di dalam komentar.</p>
+    example1_html: >
+      <h3>Kelompok Anda akan mendiskusikan sebuah topik dan membuat keputusan
+      bersama</h3>
+
+      <p>Strategi: Diskusikan sebuah topik selama beberapa saat sebelum membuat
+      usulan.</p>
+
+      <p>Diskusi seringkali mencapai hasil terbaik jika Anda memberikan pemahaman
+      bersama mengenai masalah yang ada sebelum membuat keputusan. Apabila setiap
+      orang berpartisipasi dalam proses tersebut, mereka akan mendukung
+      tercapainya hasil yang diinginkan.</p>
+    example2_html: >
+      <h3>Anda telah memiliki usulan, dan Anda ingin mendapat persetujuan dari
+      kelompok.</h3>
+
+      <p>Strategi: Mulai diskusi tentang keputusan tertentu dan segera buat
+      usulan.</p>
+
+      <p>Apabila Anda memiliki hasil yang Anda harapkan dan ingin mengetahui
+      pertimbangan lainnya, Anda dapat menggunakan usulan untuk mendapatkan
+      masukan untuk keputusan.</p>
+
+      <p>Anda juga dapat melakukan finalisasi dokumen, menerima aplikasi, atau
+      menandatangani pekerjaan.</p>
     get_in_touch: Hubungi
     get_in_touch_description_html: "Apabila Anda memiliki pertanyaan atau masukan, <a href='%{link}'>silakan hubungi kami</a>."
     getting_started: Memulai
-    getting_started_description: "Di sebelah kiri, kelompok dapat mendiskusikan sebuah topik, bertukar pikiran dan informasi. Apabila ada keputusan yang harus diambil, keputusan akan muncul di sebelah kanan."
+    getting_started_description: 'Di sebelah kiri, kelompok dapat mendiskusikan sebuah topik, bertukar pikiran dan informasi. Apabila ada keputusan yang harus diambil, keputusan akan muncul di sebelah kanan.'
     getting_the_most: Gunakan Loomio sebaik mungkin
     have_your_say: Berikan pendapat Anda
-    have_your_say_details_html: "<p>Apabila Anda ingin memberikan pendapat, klik salah satu dari empat tombol keputusan.</p>\n<p>Setelah Anda memberikan pendapat, berikan penjelasan singkat. Di bawah grafik, Anda dapat melihat apa yang dipikirkan anggota lainnya. Hal ini mempermudah Anda mengikuti diskusi. Apabila ada informasi baru, Anda dapat mengubah pendapat Anda kapanpun.</p>\n"
+    have_your_say_details_html: >
+      <p>Apabila Anda ingin memberikan pendapat, klik salah satu dari empat
+      tombol keputusan.</p>
+
+      <p>Setelah Anda memberikan pendapat, berikan penjelasan singkat. Di bawah
+      grafik, Anda dapat melihat apa yang dipikirkan anggota lainnya. Hal ini
+      mempermudah Anda mengikuti diskusi. Apabila ada informasi baru, Anda dapat
+      mengubah pendapat Anda kapanpun.</p>
     have_a_discussion: Buat diskusi
     have_a_discussion_description: Topik dan informasi terkait lainnya berada di bagian atas. Gunakan kotak komentar untuk memberikan pendapat Anda.
     help: Bantuan
     how_it_works: Cara kerja
-    invitation_html: "<h2>Menulis undangan yang baik</h2>\n<p>Pertanyaan penting yang akan diajukan anggota baru adalah 'kelompok apakah ini?'</p>\n<p>Pikirkan cara singkat untuk mendeskripsikan kelompok: Apa yang ingin Anda peroleh bersama? Apa jenis keputusan yang akan diambil? Siapa saja yang akan terlibat?</p>\n<p>Anda dapat berdiskusi dengan kelompok terlebih dulu sebelum meminta mereka bergabung ke dalam Loomio.</p>\n<p>Mereka ingin tahu mengapa mereka diundang, apa yang Anda harapkan dari mereka, dan mengapa alat ini penting untuk mereka.</p>\n"
+    invitation_html: >
+      <h2>Menulis undangan yang baik</h2>
+
+      <p>Pertanyaan penting yang akan diajukan anggota baru adalah 'kelompok
+      apakah ini?'</p>
+
+      <p>Pikirkan cara singkat untuk mendeskripsikan kelompok: Apa yang ingin
+      Anda peroleh bersama? Apa jenis keputusan yang akan diambil? Siapa saja
+      yang akan terlibat?</p>
+
+      <p>Anda dapat berdiskusi dengan kelompok terlebih dulu sebelum meminta
+      mereka bergabung ke dalam Loomio.</p>
+
+      <p>Mereka ingin tahu mengapa mereka diundang, apa yang Anda harapkan dari
+      mereka, dan mengapa alat ini penting untuk mereka.</p>
     join_the_community: Gabung ke dalam komunitas
     images_and_text_formatting: Format gambar dan teks
-    images_and_text_formatting_html: "<p>Loomio menggunakan ‘Penanda’ untuk memunculkan gambar dan format teks.\nAnda dapat mengaktifkan Penanda melalui tombol kecil abu-abu di bawah kotak komentar.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Klik di sini</a>\nuntuk informasi penggunaan Penanda.</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio menggunakan ‘Penanda’ untuk memunculkan gambar dan format teks.
+
+      Anda dapat mengaktifkan Penanda melalui tombol kecil abu-abu di bawah kotak
+      komentar.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Klik di sini</a>
+
+      untuk informasi penggunaan Penanda.</p>
     keep_up_to_date: Pantau perubahan
     keep_up_to_date_html: "<p>Klik nama kelompok Anda di atas untuk menuju ke Laman Kelompok, dan Anda dapat melihat daftar seluruh diskusi dan \nkeputusan. Apabila Anda berada di dalam lebih dari satu kelompok, Anda dapat melihat seluruh aktivitas semua kelompok pada Laman Beranda.</p>\n<p>Anda akan mendapatkan surel notifikasi saat ada hal penting yang terjadi di dalam kelompok.\nAnda dapat mengubah preferensi surel <a href=\"%{link}\"\">di sini</a>.</p>\n"
     make_a_decision: Buat keputusan
-    make_a_decision_description: "Saat kelompok sudah siap untuk membuat keputusan, setiap anggota dapat memberikan usulan. Jelaskan tindakan yang ingin diambil dan latar belakangnya sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju."
+    make_a_decision_description: 'Saat kelompok sudah siap untuk membuat keputusan, setiap anggota dapat memberikan usulan. Jelaskan tindakan yang ingin diambil dan latar belakangnya sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju.'
     prompt_people_details: "Apabila Anda ingin seseorang memperhatikan tulisan Anda di dalam kelompok, ketik '@' diikuti nama mereka. Mereka akan mendapatkan surel yang mengabari bahwa Anda menyebutkan nama mereka di dalam komentar"
     prompt_people_html: "Kabari teman dengan <span class='blue'>@sebut</span>"
-    positions_agree_description: "<span>Setuju</span> berarti Anda puas dengan usulan."
-    positions_abstain_description: "<span>Abstain</span> berarti Anda tidak yakin, atau Anda tidak ingin kelompok membuat keputusan tanpa persetujuan Anda."
-    positions_disagree_description: "<span>Tidak setuju</span> berarti Anda merasa ada alternatif yang lebih baik, namun Anda akan menyetujui keputusan kelompok."
-    positions_block_description: "<span>Blokir</span> berarti Anda menolak keras dan Anda tidak setuju usulan ini diteruskan."
+    positions_agree_description: '<span>Setuju</span> berarti Anda puas dengan usulan.'
+    positions_abstain_description: '<span>Abstain</span> berarti Anda tidak yakin, atau Anda tidak ingin kelompok membuat keputusan tanpa persetujuan Anda.'
+    positions_disagree_description: '<span>Tidak setuju</span> berarti Anda merasa ada alternatif yang lebih baik, namun Anda akan menyetujui keputusan kelompok.'
+    positions_block_description: '<span>Blokir</span> berarti Anda menolak keras dan Anda tidak setuju usulan ini diteruskan.'
     start_discussion: Memulai diskusi yang menarik
-    start_discussion_html: "<p>When you start a discussion, make sure the title conveys the topic succinctly.\nUse the Context Panel to give all the background information necessary for the\ngroup to have a productive and informed discussion.</p>\n<p>During the discussion, the Context Panel can be updated as new information\ncomes to light. As well as clarifying the topic, you can use this space for\nsharing resources, summarising the discussion as it progresses, or outlining the\ndecision-making protocols your group is using.</p>\n"
+    start_discussion_html: >
+      <p>When you start a discussion, make sure the title conveys the topic
+      succinctly.
+
+      Use the Context Panel to give all the background information necessary for
+      the
+
+      group to have a productive and informed discussion.</p>
+
+      <p>During the discussion, the Context Panel can be updated as new
+      information
+
+      comes to light. As well as clarifying the topic, you can use this space
+      for
+
+      sharing resources, summarising the discussion as it progresses, or
+      outlining the
+
+      decision-making protocols your group is using.</p>
     start_proposal: Menulis usulan yang baik
-    start_proposal_html: "<p> Apabila Anda membuat judul yang jelas dan ringkas, anggota kelompok dapat segera memilih untuk setuju atau tidak setuju.</p>\n<p>Ada kemungkinan sebuah usulan tidak disetujui dengan segera.\nApabila kelompok tidak menyukai usulan pertama, setiap anggota dapat membuat usulan baru untuk mengutarakan permasalahan yang ada, dan terus melanjutkan diskusi.</p>\n<p>Melalui proses yang dinamis ini, keinginan kolektif dari kelompok Anda dapat menghasilkan usulan yang lebih baik dari usulan individual.</p>\n<p>Tenggat waktu sebuah usulan dapat diperpanjang kapapun, apabila dirasa perlu. Setiap anggota akan mendapatkan surel pemberitahuan 24 jam sebelum usulan ditutup.</p>\n"
-    video_id: "52025402"
+    start_proposal_html: >
+      <p> Apabila Anda membuat judul yang jelas dan ringkas, anggota kelompok
+      dapat segera memilih untuk setuju atau tidak setuju.</p>
+
+      <p>Ada kemungkinan sebuah usulan tidak disetujui dengan segera.
+
+      Apabila kelompok tidak menyukai usulan pertama, setiap anggota dapat
+      membuat usulan baru untuk mengutarakan permasalahan yang ada, dan terus
+      melanjutkan diskusi.</p>
+
+      <p>Melalui proses yang dinamis ini, keinginan kolektif dari kelompok Anda
+      dapat menghasilkan usulan yang lebih baik dari usulan individual.</p>
+
+      <p>Tenggat waktu sebuah usulan dapat diperpanjang kapapun, apabila dirasa
+      perlu. Setiap anggota akan mendapatkan surel pemberitahuan 24 jam sebelum
+      usulan ditutup.</p>
+    video_id: '52025402'
     video_tutorial: Video tutorial
     video_tutorial_description: Simak video untuk petunjuk singkat penggunaan Loomio.
   hint:
@@ -156,9 +257,16 @@ id:
     proposal: Tips untuk menulis usulan yang baik
     vote: Anda dapat mengubah pendapat Anda kapanpun
   pricing_page:
-    intro: "Kelompok dengan anggaran membayar biaya langganan untuk menggunakan alat ini.\nKelompok tanpa biaya untuk membayar anggaran dapat menggunakan model Bayar Semampu Anda: anggota mereka akan diundang untuk memberi sumbangan suka rela. Sumbangan Anda akan membuat Loomio tetap independen, bebas iklan, dan dikelola oleh komunitas kami.\n"
+    intro: >
+      Kelompok dengan anggaran membayar biaya langganan untuk menggunakan alat
+      ini.
+
+      Kelompok tanpa biaya untuk membayar anggaran dapat menggunakan model Bayar
+      Semampu Anda: anggota mereka akan diundang untuk memberi sumbangan suka
+      rela. Sumbangan Anda akan membuat Loomio tetap independen, bebas iklan, dan
+      dikelola oleh komunitas kami.
     organisations: Organisasi
-    organisations_examples: "contoh: usaha/bisnis, lembaga pemerintah, organisasi komunitas"
+    organisations_examples: 'contoh: usaha/bisnis, lembaga pemerintah, organisasi komunitas'
     informal_groups: Kelompok informal
     informal_groups_desc: Anggota kelompok Anda akan diminta untuk membayar semampunya
-    informal_groups_examples: "contoh: keluarga, gerakan sosial, kolektif"
+    informal_groups_examples: 'contoh: keluarga, gerakan sosial, kolektif'

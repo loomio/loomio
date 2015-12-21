@@ -27,6 +27,24 @@ describe API::GroupsController do
         members_can_raise_motions
         members_can_vote])
     end
+
+    context 'logged out' do
+      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+      let(:private_group) { create(:group, is_visible_to_public: false) }
+
+      it 'returns public groups if the user is logged out' do
+        get :show, id: group.key, format: :json
+        json = JSON.parse(response.body)
+        group_ids = json['groups'].map { |g| g['id'] }
+        expect(group_ids).to include group.id
+      end
+
+      it 'returns unauthorized if the user is logged out and the group is private' do
+        get :show, id: private_group.key, format: :json
+        expect(response.status).to eq 403
+      end
+    end
+
   end
 
   describe 'use_gift_subscription' do

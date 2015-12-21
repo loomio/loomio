@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
         from:     $scope.loaded
         per:      $scope.perPage
       $scope.loaded += $scope.perPage
-      Records.discussions.fetchByGroup($scope.group.key, options).then $scope.updateDiscussions
+      Records.discussions.fetchByGroup($scope.group.key, options).then $scope.updateDiscussions, -> $scope.canLoadMoreDiscussions = false
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
     $scope.loadMore()
@@ -32,7 +32,9 @@ angular.module('loomioApp').directive 'discussionsCard', ->
       AbilityService.canAdministerGroup($scope.group) and $scope.group.discussions().length < 3
 
     $scope.whyImEmpty = ->
-      if !$scope.group.hasDiscussions
+      if !AbilityService.canViewGroup($scope.group)
+        'discussions_are_private'
+      else if !$scope.group.hasDiscussions
         'no_discussions_in_group'
       else if $scope.group.discussionPrivacyOptions == 'private_only'
         'discussions_are_private'

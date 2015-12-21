@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104223007) do
+ActiveRecord::Schema.define(version: 20151210000108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 20151104223007) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "filesize"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
@@ -82,6 +86,15 @@ ActiveRecord::Schema.define(version: 20151104223007) do
   end
 
   add_index "blacklisted_passwords", ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
+
+  create_table "blog_stories", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "image_url"
+    t.datetime "published_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "showcase_url"
@@ -263,6 +276,13 @@ ActiveRecord::Schema.define(version: 20151104223007) do
   add_index "discussions", ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: {"last_activity_at"=>:desc}, using: :btree
   add_index "discussions", ["private"], name: "index_discussions_on_private", using: :btree
 
+  create_table "drafts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "draftable_id"
+    t.string  "draftable_type"
+    t.json    "payload",        default: {}, null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "kind"
     t.datetime "created_at"
@@ -380,7 +400,7 @@ ActiveRecord::Schema.define(version: 20151104223007) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "members_invitable_by"
+    t.string   "members_invitable_by",               limit: 255
     t.integer  "parent_id"
     t.boolean  "hide_members",                       default: false
     t.text     "description"
@@ -404,7 +424,7 @@ ActiveRecord::Schema.define(version: 20151104223007) do
     t.boolean  "is_visible_to_public",               default: true,           null: false
     t.boolean  "is_visible_to_parent_members",       default: false,          null: false
     t.string   "discussion_privacy_options",                                  null: false
-    t.boolean  "members_can_add_members",            default: false,          null: false
+    t.boolean  "members_can_add_members",            default: true,           null: false
     t.string   "membership_granted_upon",                                     null: false
     t.text     "enabled_beta_features"
     t.string   "subdomain"
@@ -447,11 +467,10 @@ ActiveRecord::Schema.define(version: 20151104223007) do
   add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
 
   create_table "invitations", force: :cascade do |t|
-    t.string   "recipient_email",                 null: false
-    t.integer  "inviter_id",                      null: false
+    t.string   "recipient_email"
+    t.integer  "inviter_id"
     t.boolean  "to_be_admin",     default: false, null: false
     t.string   "token",                           null: false
-    t.integer  "accepted_by_id"
     t.datetime "accepted_at"
     t.string   "intent"
     t.integer  "canceller_id"
@@ -461,6 +480,7 @@ ActiveRecord::Schema.define(version: 20151104223007) do
     t.string   "invitable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "single_use",      default: true,  null: false
   end
 
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
@@ -643,6 +663,7 @@ ActiveRecord::Schema.define(version: 20151104223007) do
     t.date    "activated_at"
     t.integer "chargify_subscription_id"
     t.string  "plan"
+    t.string  "payment_method",           default: "chargify", null: false
   end
 
   add_index "subscriptions", ["kind"], name: "index_subscriptions_on_kind", using: :btree

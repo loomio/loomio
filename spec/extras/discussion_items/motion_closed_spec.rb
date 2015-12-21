@@ -3,8 +3,6 @@ describe DiscussionItems::MotionClosed do
   let(:motion) { double(:motion) }
   let(:item) { DiscussionItems::MotionClosed.new(event, motion) }
 
-  it "#icon returns a string indicating the icon-class"
-
   context "Motion close date expires" do
     before { item.stub_chain(:event, :user).and_return(nil) }
 

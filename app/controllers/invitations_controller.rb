@@ -14,7 +14,7 @@ class InvitationsController < ApplicationController
   end
 
   rescue_from Invitation::InvitationAlreadyUsed do
-    if current_user and @invitation.accepted_by == current_user
+    if current_user and @invitation.accepted?
       redirect_to @invitation.invitable
     else
       render 'application/display_error',
@@ -59,16 +59,8 @@ class InvitationsController < ApplicationController
     clear_invitation_token_from_session
     @invitation = Invitation.find_by_token!(params[:id])
 
-    if @invitation.cancelled?
-      raise Invitation::InvitationCancelled
-    end
-
-    if @invitation.accepted?
-      raise Invitation::InvitationAlreadyUsed
-    end
-
     if current_user
-      AcceptInvitation.and_grant_access!(@invitation, current_user)
+      InvitationService.redeem(@invitation, current_user)
       redirect_to @invitation.invitable
     else
       save_invitation_token_to_session

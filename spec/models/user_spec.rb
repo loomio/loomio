@@ -61,7 +61,7 @@ describe User do
     user.should have(1).errors_on(:username)
     user.username = 'username/'
     user.should have(1).errors_on(:username)
-    user.username = 'user_name'    
+    user.username = 'user_name'
     user.should have(1).errors_on(:username)
     user.username = 'user-name'
     user.should have(1).errors_on(:username)
@@ -201,44 +201,44 @@ describe User do
     end
   end
 
-  describe "gravatar?(options = {})" do
-    it "returns true if gravatar exists"
-    it "returns false if gravater does not exist"
-  end
-
   describe "deactivation" do
 
-     before do
-       @membership = group.add_member!(user)
-       user.deactivate!
-     end
+    before do
+      @membership = group.add_member!(user)
+    end
 
-     describe "#deactivate!" do
+    describe "#deactivate!" do
 
-       it "sets deactivated_at to (Time.now)" do
-         user.deactivated_at.should be_present
-       end
+      it "sets deactivated_at to (Time.now)" do
+        user.deactivate!
+        user.deactivated_at.should be_present
+      end
 
-       it "archives the user's memberships" do
-         user.archived_memberships.should include(@membership)
-       end
-     end
+      it "archives the user's memberships" do
+        user.deactivate!
+        user.archived_memberships.should include(@membership)
+      end
 
-     describe "#reactivate!" do
+      it "should update group.memberships_count" do
+        expect{user.deactivate!}.to change{group.reload.memberships_count}.by(-1)
+      end
+    end
 
-       before do
-         user.reactivate!
-       end
+    describe "#reactivate!" do
 
-       it "unsets deactivated_at (nil)" do
-         user.deactivated_at.should be_nil
-       end
+      before do
+        user.reactivate!
+      end
 
-       it "restores the user's memberships" do
-         user.memberships.should include(@membership)
-       end
-     end
-   end
+      it "unsets deactivated_at (nil)" do
+        user.deactivated_at.should be_nil
+      end
+
+      it "restores the user's memberships" do
+        user.memberships.should include(@membership)
+      end
+    end
+  end
 
   describe "usernames" do
     before do
@@ -303,25 +303,6 @@ describe User do
       group.add_member!(user)
       other_user = FactoryGirl.create :user
       expect(user.in_same_group_as?(other_user)).to be false
-    end
-  end
-
-  describe "belongs_to_manual_subscription_group?" do
-    it "returns true if user is a member of a manual subscription group" do
-      group.update_attribute :payment_plan, 'manual_subscription'
-      group.add_member! user
-      user.belongs_to_manual_subscription_group?.should be true
-    end
-
-    it "returns false if user is a member of a subscription group" do
-      group.update_attribute :payment_plan, 'subscription'
-      group.add_member! user
-      user.belongs_to_manual_subscription_group?.should be false
-    end
-
-    it "returns false if user is a member of a paying group" do
-      group.update_attribute :payment_plan, 'pwyc'
-      user.belongs_to_manual_subscription_group?.should be false
     end
   end
 end

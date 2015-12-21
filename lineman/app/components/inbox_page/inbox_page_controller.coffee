@@ -11,7 +11,7 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
   @loading = -> !(AppConfig.inboxLoaded and AppConfig.membershipsLoaded)
 
   @groups = ->
-    CurrentUser.parentGroups()
+    _.flatten [CurrentUser.parentGroups(), CurrentUser.orphanSubgroups()]
 
   @init = =>
     return if @loading()

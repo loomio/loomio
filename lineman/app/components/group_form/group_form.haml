@@ -9,12 +9,12 @@
       .group-form__basic
         .group-form__name
           %label{for: 'group-name', translate: '{{i18n.group_name}}'}
-          %input.form-control#group-name{ng-required: true, ng-model: 'group.name', maxlength: '255'}
+          %input.form-control#group-name{ng-required: true, ng-model: 'group.name', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', maxlength: '255'}
           %validation_errors{subject: 'group', field: 'name'}
 
         .group-form__description
           %label{for: 'group-description', translate: 'group_form.description'}
-          %textarea.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description'}
+          %textarea.lmo-textarea.form-control#group-description{msd-elastic: 'true', ng-model: 'group.description', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()'}
 
         .group-form__privacy-statement
           {{privacyStatement()}}
@@ -23,21 +23,21 @@
           %label{translate: 'group_form.privacy'}
 
           %label.lmo-form-labelled-input{ng-if: '!group.isSubgroupOfHiddenParent'}
-            %input.group-form__privacy-open{type: 'radio', ng-model: 'group.groupPrivacy', value: 'open', name: 'groupPrivacy'}
+            %input.group-form__privacy-open{type: 'radio', ng-model: 'group.groupPrivacy', ng-change: 'groupPrivacyChanged()', value: 'open', name: 'groupPrivacy'}
             %span
               %strong{translate: 'common.privacy.open'}
               %span.seperator
               {{ privacyStringFor("open") }}
 
           %label.lmo-form-labelled-input
-            %input.group-form__privacy-closed{type: 'radio', ng-model: 'group.groupPrivacy', value: 'closed', name: 'groupPrivacy'}
+            %input.group-form__privacy-closed{type: 'radio', ng-model: 'group.groupPrivacy', ng-change: 'groupPrivacyChanged()', value: 'closed', name: 'groupPrivacy'}
             %span
               %strong{translate: 'common.privacy.closed'}
               %span.seperator
               {{ privacyStringFor("closed") }}
 
           %label.lmo-form-labelled-input
-            %input.group-form__privacy-secret{type: 'radio', ng-model: 'group.groupPrivacy', value: 'secret', name: 'groupPrivacy'}
+            %input.group-form__privacy-secret{type: 'radio', ng-model: 'group.groupPrivacy', ng-change: 'groupPrivacyChanged()', value: 'secret', name: 'groupPrivacy'}
             %span
               %strong{translate: 'common.privacy.secret'}
               %span.seperator

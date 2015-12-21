@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
   include AvatarInitials
   include ReadableUnguessableUrls
-
-  require 'net/http'
-  require 'digest/md5'
+  include MessageChannel
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
@@ -100,6 +98,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :attachments, dependent: :destroy
+  has_many :drafts, dependent: :destroy
 
   has_one :deactivation_response,
           class_name: 'UserDeactivationResponse',
@@ -153,10 +152,6 @@ class User < ActiveRecord::Base
 
   def is_logged_out?
     !is_logged_in?
-  end
-
-  def cached_group_ids
-    @cached_group_ids ||= group_ids
   end
 
   def top_level_groups
@@ -255,8 +250,10 @@ class User < ActiveRecord::Base
   end
 
   def deactivate!
+    former_group_ids = group_ids
     update_attributes(deactivated_at: Time.now, avatar_kind: "initials")
     memberships.update_all(archived_at: Time.now)
+    Group.where(id: former_group_ids).map(&:update_memberships_count)
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
@@ -334,10 +331,6 @@ class User < ActiveRecord::Base
 
   def in_same_group_as?(other_user)
     (group_ids & other_user.group_ids).present?
-  end
-
-  def belongs_to_manual_subscription_group?
-    groups.manual_subscription.any?
   end
 
   def show_start_group_button?

@@ -3,7 +3,7 @@
   .row.memberships-page__table-row.memberships-page__membership{ng-repeat: 'membership in memberships() track by membership.id'}
     .col-xs-8
       .media
-        .media-left
+        .media-left.hidden-xs
           %user_avatar{user: 'membership.user()', size: 'medium', coordinator: 'membership.admin'}
         .media-body
           .memberships-page__member-info

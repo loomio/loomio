@@ -53,6 +53,10 @@
   right: 44px;
 }
 
+.lmo-navbar__sign-in {
+  @include lmoBtnFeatured;
+}
+
 .lmo-navbar__item--selected {
   a{ color: $primary-text-color; }
   position: relative;
@@ -108,9 +112,10 @@
   font-size: 10px;
   position: absolute;
   left: 16px;
-  top: 1px;
+  top: 2px;
   background: #4A90E2;
   border-radius: 10px;
+  border: 2px solid white;
   padding: 5px;
   color: white;
   line-height: 5px;

@@ -51,10 +51,6 @@ class DiscussionReader < ActiveRecord::Base
     last_read_at.blank?
   end
 
-  def user_or_logged_out_user
-    user || LoggedOutUser.new
-  end
-
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
     if last_read_at.blank?
@@ -96,6 +92,13 @@ class DiscussionReader < ActiveRecord::Base
       self.last_read_at = read_at
       reset_counts!
     end
+
+    publish!
+  end
+
+  def publish!
+    publish_data = Simple::DiscussionSerializer.new(discussion, scope: { reader_cache: reader_cache })
+    MessageChannelService.publish(publish_data.as_json, to: user)
   end
 
   def reset_comment_counts
@@ -157,5 +160,9 @@ class DiscussionReader < ActiveRecord::Base
   private
   def membership
     discussion.group.membership_for(user)
+  end
+
+  def reader_cache
+    @reader_cache ||= DiscussionReaderCache.new(user: self.user, discussions: Array(self.discussion))
   end
 end
