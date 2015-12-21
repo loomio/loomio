@@ -1,6 +1,5 @@
 %footer.footer{role: 'contentinfo'}
   - if hosted_by_loomio?
-    = render 'loomio_org_footer'
+    = render 'application/loomio_org_footer'
   - else
-    = render 'independent_install_footer'
-
+    = render 'application/independent_install_footer'
