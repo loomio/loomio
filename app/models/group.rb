@@ -427,13 +427,11 @@ class Group < ActiveRecord::Base
     self.creator = user if creator.blank?
     membership
   end
-  EventBus.listen('group_create') { |group, actor| group.add_admin! actor }
 
   def add_default_content!
     update default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial
     ExampleContent.add_to_group(self)
   end
-  EventBus.listen('group_create') { |group| group.add_default_content! if group.is_parent? }
 
   def find_or_create_membership(user, inviter)
     begin

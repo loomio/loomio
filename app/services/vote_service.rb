@@ -6,7 +6,7 @@ class VoteService
     return false unless vote.valid?
     vote.save!
 
-    EventBus.broadcast('vote_create', vote, actor)
+    Loomio::EventBus.broadcast('vote_create', vote, actor)
     Events::NewVote.publish!(vote)
   end
 end

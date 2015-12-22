@@ -87,7 +87,6 @@ class Comment < ActiveRecord::Base
   def refresh_liker_ids_and_names!
     update liker_ids_and_names: self.comment_votes.reduce({}) { |hash, vote| hash[vote.user_id] = vote.user.name; hash }
   end
-  EventBus.listen('comment_like', 'comment_unlike') { |cv| cv.comment.refresh_liker_ids_and_names! }
 
   def mentioned_usernames
     extract_mentioned_screen_names(self.body).uniq

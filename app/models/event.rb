@@ -21,6 +21,11 @@ class Event < ActiveRecord::Base
 
   COMMENT_KINDS = %w(comment_liked)
 
+  BULK_MAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
+                         new_discussion new_motion new_vote)
+
+  SINGLE_MAIL_KINDS = %w(comment_replied_to user_mentioned)
+
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion

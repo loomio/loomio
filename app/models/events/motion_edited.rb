@@ -3,7 +3,7 @@ class Events::MotionEdited < Event
     create(kind: "motion_edited",
            eventable: motion.versions.last,
            user: editor,
-           discussion_id: motion.discussion_id).tap { |e| EventBus.broadcast('motion_edited_event', e) }
+           discussion_id: motion.discussion_id).tap { |e| Loomio::EventBus.broadcast('motion_edited_event', e) }
   end
 
   def group_key

@@ -3,7 +3,7 @@ class Events::MembershipRequested < Event
 
   def self.publish!(membership_request)
     create(kind: "membership_requested",
-           eventable: membership_request).tap { |e| EventBus.broadcast('membership_requested_event', e) }
+           eventable: membership_request).tap { |e| Loomio::EventBus.broadcast('membership_requested_event', e) }
   end
 
   def membership_request

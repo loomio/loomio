@@ -3,7 +3,7 @@ class Events::NewVote < Event
     create(kind: 'new_vote',
            eventable: vote,
            discussion: vote.motion.discussion,
-           created_at: vote.created_at).tap { |e| EventBus.broadcast('new_vote_event', e) }
+           created_at: vote.created_at).tap { |e| Loomio::EventBus.broadcast('new_vote_event', e) }
   end
 
   def group_key

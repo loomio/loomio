@@ -18,8 +18,8 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def self.for_model(model)
-    self.for(user: model.author, discussion: model.discussion)
+  def self.for_model(model, actor = nil)
+    self.for(user: actor || model.author, discussion: model.discussion)
   end
 
   def author_thread_item!(time)

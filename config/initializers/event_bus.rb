@@ -32,6 +32,9 @@ Loomio::EventBus.configure do |config|
   config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
   config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
 
+  # refresh likers after comment like/unlike
+  config.listen('comment_like', 'comment_unlike') { |cv| cv.comment.refresh_liker_ids_and_names! }
+
   # update discussion reader after thread item creation
   config.listen('new_discussion_event',
                 'new_comment_event',
@@ -63,13 +66,22 @@ Loomio::EventBus.configure do |config|
                 'motion_closed') { |user, event| event.notify!(user) }
 
   # notify users of motion closing soon
-  Loomio::Event.listen('motion_closing_soon_event') do |event|
+  config.listen('motion_closing_soon_event') do |event|
     UsersByVolumeQuery.normal_or_loud(event.discussion).find_each { |user| event.notify!(user) }
   end
 
   # notify users of motion outcome created
-  Loomio::Event.listen('motion_outcome_created_event') do |event|
+  config.listen('motion_outcome_created_event') do |event|
     UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
   end
+
+  # perform group creation
+  config.listen('group_create') do |group, actor|
+    group.add_admin! actor
+    group.add_default_content! if group.is_parent?
+  end
+
+  # perform privacy change after group update
+  config.listen('group_update') { |group| GroupService::PrivacyChange.new(group).commit! }
 
 end

@@ -32,6 +32,12 @@ GIT
     private_pub (1.0.3)
       faye
 
+PATH
+  remote: ../loomio_event
+  specs:
+    loomio_event_bus (0.0.2)
+      rails (~> 4.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -406,8 +412,6 @@ GEM
       addressable (~> 2.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    loomio_event_bus (0.0.2)
-      rails (~> 4.1)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
     mail (2.6.3)
@@ -719,7 +723,7 @@ DEPENDENCIES
   jquery-ui-rails (~> 5.0.0)
   kaminari
   launchy
-  loomio_event_bus
+  loomio_event_bus!
   mime-types (~> 2.6.1)
   minitest
   modernizr-rails

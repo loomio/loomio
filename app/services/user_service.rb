@@ -2,19 +2,19 @@ class UserService
   def self.delete_spam(user)
     Group.created_by(user).destroy_all
     user.destroy
-    EventBus.broadcast('user_delete_spam', user)
+    Loomio::EventBus.broadcast('user_delete_spam', user)
   end
 
   def self.deactivate(user:, actor:, params:)
     actor.ability.authorize! :deactivate, user
     user.deactivate!
-    EventBus.broadcast('user_deactivate', user, actor, params)
+    Loomio::EventBus.broadcast('user_deactivate', user, actor, params)
   end
 
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
     user.update params
-    EventBus.broadcast('user_update', user, actor, params)
+    Loomio::EventBus.broadcast('user_update', user, actor, params)
   end
 
   def self.change_password(user:, actor:, params:)
@@ -27,6 +27,6 @@ class UserService
     user.save!
 
     yield if block_given?
-    EventBus.broadcast('user_change_password', user, actor, params)
+    Loomio::EventBus.broadcast('user_change_password', user, actor, params)
   end
 end
