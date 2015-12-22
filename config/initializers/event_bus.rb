@@ -1,4 +1,7 @@
+require 'loomio/event_bus'
+
 Loomio::EventBus.configure do |config|
+
   # Purge drafts after model creation
   config.listen('discussion_create') { |discussion| Draft.purge(user: discussion.author, draftable: discussion.group, field: :discussion) }
   config.listen('comment_create')    { |comment|    Draft.purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
@@ -83,5 +86,8 @@ Loomio::EventBus.configure do |config|
 
   # perform privacy change after group update
   config.listen('group_update') { |group| GroupService::PrivacyChange.new(group).commit! }
+
+  # collect user deactivation response
+  config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
 end
