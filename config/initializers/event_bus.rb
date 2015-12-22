@@ -25,6 +25,7 @@ EventBus.configure do |config|
     config.listen("#{kind}_event") { |event, user| ThreadMailer.delay.send(kind, user, event) }
   end
 
+
   # send individual emails after user events
   config.listen('membership_request_approved_event') { |user, event| UserMailer.delay.group_membership_approved(user, event.group) }
 
