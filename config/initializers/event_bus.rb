@@ -10,8 +10,8 @@ Loomio::EventBus.configure do |config|
   config.listen('motion_create', 'motion_update')         { |motion|     SearchVector.index! motion.discussion_id }
   config.listen('comment_create', 'comment_update')       { |comment|    SearchVector.index! comment.discussion_id }
 
-  # send individual emails after thread events
-  Event::SINGLE_MAIL_KINDS.each do |kind|
+  # send bulk emails after events
+  Event::BULK_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event|
       BaseMailer.send_bulk_mail(to: UsersToEmailQuery.send(kind, event.eventable)) do |user|
         ThreadMailer.delay.send(kind, user, event)
@@ -19,13 +19,13 @@ Loomio::EventBus.configure do |config|
     end
   end
 
-  # send individual emails after user events
-  config.listen('membership_request_approved_event') { |user, event| UserMailer.delay.group_membership_approved(user, event.group) }
-
-  # send bulk emails after events
-  Event::BULK_MAIL_KINDS.each do |kind|
+  # send individual emails after thread events
+  Event::SINGLE_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") { |user, event| ThreadMailer.delay.send(kind, user, event) }
   end
+
+  # send individual emails after user events
+  config.listen('membership_request_approved_event') { |user, event| UserMailer.delay.group_membership_approved(user, event.group) }
 
   # send memos to client side after comment change
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
