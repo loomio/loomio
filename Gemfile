@@ -68,7 +68,7 @@ gem 'oj_mimic_json'
 gem 'simple-rss'
 gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
-gem 'loomio_event_bus', path: '../loomio_event'
+gem 'loomio_event_bus'
 
 group :development, :test do
   gem 'minitest'
