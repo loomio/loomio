@@ -105,4 +105,45 @@ describe API::GroupsController do
     end
   end
 
+  describe 'mark_as_read' do
+    let(:unread_discussion) { create :discussion, group: group }
+    let(:private_discussion) { create :discussion, group: secret_group, private: true }
+    let(:another_private_discussion) { create :discussion, group: closed_group, private: true }
+    let(:reader) { DiscussionReader.for(user: user, discussion: unread_discussion) }
+    let(:secret_group) { create :group, is_visible_to_public: false }
+    let(:closed_group) { create :group }
+    let(:comment) { build :comment, discussion: unread_discussion }
+
+    before do
+      CommentService.create(comment: comment, actor: unread_discussion.author)
+      group.add_member! user
+    end
+
+    it 'marks all discussions as read' do
+      sign_in user
+      post :mark_as_read, id: group.id, format: :json
+      expect(reader.reload.unread_activity?).to eq false
+    end
+
+    it 'will not mark discussions not in group as read' do
+      sign_in user
+      secret_group.add_member! user
+      post :mark_as_read, id: secret_group.id, format: :json
+      expect(reader.reload.unread_activity?).to eq true
+    end
+
+    it 'does not mark inaccessible discussions as read' do
+      sign_in user
+      post :mark_as_read, id: secret_group.id, format: :json
+      expect(response.status).to eq 403
+    end
+
+    it 'does not create discussion readers for inaccessible discussions' do
+      sign_in user
+      post :mark_as_read, id: closed_group.id, format: :json
+      expect(response.status).to eq 200
+      expect(DiscussionReader.find_by(user: user, discussion: another_private_discussion)).to eq nil
+    end
+  end
+
 end

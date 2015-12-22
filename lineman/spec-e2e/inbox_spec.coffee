@@ -1,6 +1,7 @@
 describe 'Inbox Page', ->
 
   inboxHelper = require './helpers/inbox_helper.coffee'
+  page = require './helpers/page_helper.coffee'
 
   beforeEach ->
     inboxHelper.load()
@@ -13,3 +14,8 @@ describe 'Inbox Page', ->
 
     expect(inboxHelper.anyThreads()).not.toContain('Muted discussion')
     expect(inboxHelper.anyThreads()).not.toContain('Old discussion')
+
+  it 'can mark all threads in a group as read', ->
+    page.expectText('.inbox-page__group', 'Dirty Dancing Shoes')
+    page.click('.inbox-page__mark-as-read')
+    page.expectNoText('.inbox-page__group', 'Dirty Dancing Shoes')

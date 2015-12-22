@@ -11,3 +11,6 @@ module.exports = new class InboxHelper
 
   anyThreads: ->
     element(By.css('.inbox-page__threads')).getText()
+
+  clickMarkAsRead: ->
+    element.all(By.css('.inbox-page__mark-as-read')).first().click()

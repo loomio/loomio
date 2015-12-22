@@ -36,4 +36,11 @@ module GroupService
     actor.ability.authorize! :archive, group
     group.archive!
   end
+
+  def self.mark_as_read(group:, actor:)
+    actor.ability.authorize! :mark_as_read, group
+    readable_discussions = group.discussions.select { |d| actor.ability.can? :mark_as_read, d }
+    cache = DiscussionReaderCache.new(user: actor, discussions: readable_discussions)
+    readable_discussions.each { |discussion| cache.get_for(discussion).viewed! }
+  end
 end

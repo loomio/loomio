@@ -29,6 +29,12 @@ class API::GroupsController < API::RestfulController
     respond_with_resource
   end
 
+  def mark_as_read
+    load_resource
+    service.mark_as_read group: resource, actor: current_user
+    respond_with_resource
+  end
+
   private
 
   def ensure_photo_params
