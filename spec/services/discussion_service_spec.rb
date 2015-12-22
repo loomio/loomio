@@ -14,14 +14,7 @@ describe 'DiscussionService' do
                          discussion: discussion,
                          destroy: true,
                          author: user) }
-  let(:event) { double(:event) }
   let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
-
-
-  before do
-    Events::NewDiscussion.stub(:publish!).and_return(event)
-  end
-
 
   describe 'create' do
     it 'authorizes the user can create the discussion' do
@@ -64,7 +57,7 @@ describe 'DiscussionService' do
 
       it 'returns the event created' do
         expect(DiscussionService.create(discussion: discussion,
-                                 actor: user)).to eq event
+                                 actor: user)).to be_a Event
       end
     end
   end
