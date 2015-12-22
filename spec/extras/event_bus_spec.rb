@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe EventBus do
 
-  let(:subject) { EventBus.instance }
+  let(:subject) { EventBus }
   let(:my_proc) { Proc.new { self.inspect } }
   let(:my_param_proc) { Proc.new { |param| param.is_a? my_param } }
   let(:my_param) { Object }
