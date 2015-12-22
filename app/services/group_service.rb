@@ -6,7 +6,7 @@ module GroupService
     return false unless group.valid?
     group.save!
 
-    Loomio::EventBus.broadcast('group_create', group, actor)
+    EventBus.broadcast('group_create', group, actor)
   end
 
   def self.update(group:, params:, actor:)
@@ -19,12 +19,12 @@ module GroupService
     return false unless group.valid?
     group.save!
 
-    Loomio::EventBus.broadcast('group_update', group, params, actor)
+    EventBus.broadcast('group_update', group, params, actor)
   end
 
   def self.archive(group:, actor:)
     actor.ability.authorize! :archive, group
     group.archive!
-    Loomio::EventBus.broadcast('group_archive', group, actor)
+    EventBus.broadcast('group_archive', group, actor)
   end
 end

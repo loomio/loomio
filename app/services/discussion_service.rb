@@ -30,14 +30,14 @@ class DiscussionService
     return false unless discussion.valid?
 
     discussion.save!
-    Loomio::EventBus.broadcast('discussion_create', discussion, actor)
+    EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
   end
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
     discussion.delayed_destroy
-    Loomio::EventBus.broadcast('discussion_destroy', discussion, actor)
+    EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
   def self.update(discussion:, params:, actor:)
@@ -49,7 +49,7 @@ class DiscussionService
     return false unless discussion.valid? && discussion.changed? && discussion.changed != ['uses_markdown']
     discussion.save!
 
-    Loomio::EventBus.broadcast('discussion_update', discussion, actor, params)
+    EventBus.broadcast('discussion_update', discussion, actor, params)
     Events::DiscussionEdited.publish!(discussion, actor)
   end
 
@@ -60,14 +60,14 @@ class DiscussionService
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
 
-    Loomio::EventBus.broadcast('discussion_move', discussion, params, actor)
+    EventBus.broadcast('discussion_move', discussion, params, actor)
   end
 
   def self.update_reader(discussion:, params:, actor:)
     actor.ability.authorize! :show, discussion
     DiscussionReader.for(discussion: discussion, user: actor).update(params.slice(:starred, :volume))
 
-    Loomio::EventBus.broadcast('discussion_update_reader', discussion, params, actor)
+    EventBus.broadcast('discussion_update_reader', discussion, params, actor)
   end
 
   def self.mark_as_read(discussion:, params:, actor:)

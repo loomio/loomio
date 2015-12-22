@@ -1,6 +1,4 @@
-require 'loomio/event_bus'
-
-Loomio::EventBus.configure do |config|
+EventBus.configure do |config|
 
   # Purge drafts after model creation
   config.listen('discussion_create') { |discussion| Draft.purge(user: discussion.author, draftable: discussion.group, field: :discussion) }

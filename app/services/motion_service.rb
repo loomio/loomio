@@ -5,7 +5,7 @@ class MotionService
     return false unless motion.valid?
     motion.save!
 
-    Loomio::EventBus.broadcast('motion_create', motion, actor)
+    EventBus.broadcast('motion_create', motion, actor)
     Events::NewMotion.publish!(motion)
   end
 
@@ -32,7 +32,7 @@ class MotionService
     motion.closing_at = close_at
     motion.save!
     motion.did_not_votes.delete_all
-    Loomio::EventBus.broadcast('motion_reopen', motion, close_at)
+    EventBus.broadcast('motion_reopen', motion, close_at)
   end
 
   def self.close(motion)
@@ -41,7 +41,7 @@ class MotionService
     motion.save!
     motion.update_members_not_voted_count
 
-    Loomio::EventBus.broadcast('motion_close', motion)
+    EventBus.broadcast('motion_close', motion)
     Events::MotionClosed.publish!(motion)
   end
 
@@ -52,7 +52,7 @@ class MotionService
     motion.closed_at = Time.now
     motion.save!
 
-    Loomio::EventBus.broadcast('motion_close_by_user', motion, user)
+    EventBus.broadcast('motion_close_by_user', motion, user)
     Events::MotionClosedByUser.publish!(motion, user)
   end
 
@@ -64,7 +64,7 @@ class MotionService
     return false unless motion.valid?
 
     motion.save!
-    Loomio::EventBus.broadcast('motion_create_outcome', motion, params, actor)
+    EventBus.broadcast('motion_create_outcome', motion, params, actor)
     Events::MotionOutcomeCreated.publish!(motion, actor)
   end
 
@@ -76,7 +76,7 @@ class MotionService
     return false unless motion.valid?
 
     motion.save!
-    Loomio::EventBus.broadcast('motion_update_outcome', motion, params, actor)
+    EventBus.broadcast('motion_update_outcome', motion, params, actor)
     Events::MotionOutcomeUpdated.publish!(motion, actor)
   end
 end

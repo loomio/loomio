@@ -1,7 +1,7 @@
 class Events::NewDiscussion < Event
   def self.publish!(discussion)
     create(kind: 'new_discussion',
-           eventable: discussion).tap { |e| Loomio::EventBus.broadcast('new_discussion_event', e) }
+           eventable: discussion).tap { |e| EventBus.broadcast('new_discussion_event', e) }
   end
 
   def group_key

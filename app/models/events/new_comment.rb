@@ -4,7 +4,7 @@ class Events::NewComment < Event
     create(kind: 'new_comment',
            eventable: comment,
            discussion: comment.discussion,
-           created_at: comment.created_at).tap { |e| Loomio::EventBus.broadcast('new_comment_event', e) }
+           created_at: comment.created_at).tap { |e| EventBus.broadcast('new_comment_event', e) }
   end
 
   def group_key
