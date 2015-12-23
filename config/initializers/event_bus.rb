@@ -38,12 +38,12 @@ EventBus.configure do |config|
   config.listen('comment_like', 'comment_unlike') { |cv| cv.comment.refresh_liker_ids_and_names! }
 
   # update discussion reader after thread item creation
-  config.listen('new_discussion_event',
-                'new_comment_event',
+  config.listen('new_comment_event',
                 'new_motion_event',
                 'new_vote_event') do |event|
     DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at)
   end
+  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
 
   # update discussion reader after discussion creation / edition
   config.listen('discussion_create',
