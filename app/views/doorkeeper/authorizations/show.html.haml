@@ -1,7 +1,5 @@
 %body
   %header.page-header
-    %h1
-      = t('.title')
-      \:
+    %h1= t('.title')
   %main{:role => "main"}
     %code#authorization_code= params[:code]
