@@ -27,7 +27,7 @@ EventBus.configure do |config|
 
 
   # send individual emails after user events
-  config.listen('membership_request_approved_event') { |user, event| UserMailer.delay.group_membership_approved(user, event.group) }
+  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay.group_membership_approved(user, event.group) }
 
   # send memos to client side after comment change
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
