@@ -13,11 +13,12 @@ module GroupService
     actor.ability.authorize! :update, group
 
     group.assign_attributes(params)
-    # we have to apply group_privacy last so it can override any other settings
     group.group_privacy = params[:group_privacy] if params.has_key?(:group_privacy)
+    privacy_change = PrivacyChange.new(group)
 
     return false unless group.valid?
     group.save!
+    privacy_change.commit!
 
     EventBus.broadcast('group_update', group, params, actor)
   end

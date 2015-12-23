@@ -83,9 +83,6 @@ EventBus.configure do |config|
     group.add_default_content! if group.is_parent?
   end
 
-  # perform privacy change after group update
-  config.listen('group_update') { |group| GroupService::PrivacyChange.new(group).commit! }
-
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
