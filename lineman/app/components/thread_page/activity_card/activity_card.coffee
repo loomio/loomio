@@ -80,6 +80,8 @@ angular.module('loomioApp').directive 'activityCard', ->
     $scope.events = ->
       _.filter $scope.discussion.events(), (event) -> $scope.safeEvent(event.kind)
 
+    $scope.noEvents = ->
+      !$scope.loadEventsForwardsExecuting and !_.any($scope.events())
 
     $scope.init()
     return

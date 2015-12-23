@@ -774,6 +774,7 @@ en:
 
   discussion:
     activity: 'Activity'
+    activity_placeholder: 'No activity yet!'
     proposals: 'Proposals'
     previous_proposals: 'Previous Proposals'
     load_previous: 'Load earlier activity'
