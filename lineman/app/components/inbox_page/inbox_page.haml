@@ -10,7 +10,11 @@
           %section{ng-if: 'inboxPage.views.groups[group.key].any()', role: 'region', aria-label: "{{ 'inbox_page.threads_from.group' | translate }} {{group.name}}"}
             .inbox-page__group-name-container
               %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: 'true'}>
-              %h2.inbox-page__group-name
+              %h2.inbox-page__group-name.pull-left
                 %a{href: '/g/{{group.key}}'} {{group.name}}
+              %button.inbox-page__mark-as-read.pull-right{type: 'button', ng-click: 'inboxPage.markAsRead(group)'}
+                %i.fa.fa-check>
+                %span{translate: 'inbox_page.mark_as_read'}
+              .clearfix
             .inbox-page__groups.thread-previews-container
               %thread_preview_collection{query: 'inboxPage.views.groups[group.key]', limit: 'inboxPage.threadLimit'}

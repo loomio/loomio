@@ -34,7 +34,7 @@ class Ability
       network.coordinators.include? user
     end
 
-    can :show, Group do |group|
+    can [:show, :mark_as_read], Group do |group|
       if group.is_archived?
         false
       else

@@ -120,18 +120,19 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     saveStar: ->
       @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
 
-    markAsRead: (sequenceId) ->
+    markAsRead: (sequenceId, clientOnly) ->
       return unless @discussionReaderId?
       if isNaN(sequenceId)
         sequenceId = @lastSequenceId
-        @update(readItemsCount: @itemsCount,
-                readSalientItemsCount: @salientItemsCount,
-                readCommentsCount: @commentsCount,
-                lastReadAt: moment())
+        @update
+          readItemsCount: @itemsCount
+          readSalientItemsCount: @salientItemsCount
+          readCommentsCount: @commentsCount
+          lastReadAt: moment()
+      @update(lastReadSequenceId: sequenceId) if sequenceId > @lastReadSequenceId
 
-      if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
-        @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
-        @lastReadSequenceId = sequenceId
+      if !clientOnly and (_.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId)
+        @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: @lastReadSequenceId})
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }

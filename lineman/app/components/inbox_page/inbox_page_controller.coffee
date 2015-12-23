@@ -27,4 +27,7 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
   @moreForThisGroup = (group) ->
     @views.groups[group.key].length() > @threadLimit
 
+  @markAsRead = (group) ->
+    group.markAsRead()
+
   return

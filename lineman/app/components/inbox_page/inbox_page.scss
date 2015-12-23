@@ -23,5 +23,11 @@
 }
 
 .inbox-page__group-name-container {
-  padding: 0 $cardPaddingSize;
+  padding-left: $cardPaddingSize;
+}
+
+.inbox-page__mark-as-read {
+  @include lmoBtnNude;
+  @include lmoBtnSm;
+  line-height: 23px;
 }
