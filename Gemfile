@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 gem 'rails', '~> 4.2.5'
 gem 'rake'
