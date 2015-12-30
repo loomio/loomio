@@ -13,6 +13,30 @@ describe 'CommentService' do
     discussion.group.members << another_user
   end
 
+  describe 'like' do
+    it 'creates a like for the current user on a comment' do
+      expect { CommentService.like(comment: comment, actor: user) }.to change { CommentVote.count }.by(1)
+    end
+
+    it 'updates the comments liker ids and names' do
+      CommentService.like(comment: comment, actor: user)
+      expect(comment.reload.liker_ids_and_names[user.id]).to eq user.name
+    end
+  end
+
+  describe 'unlike' do
+    before { comment_vote }
+
+    it 'removes a like for the current user on a comment' do
+      expect { CommentService.unlike(comment: comment, actor: user) }.to change { CommentVote.count }.by(-1)
+    end
+
+    it 'updates the comments liker ids and names' do
+      CommentService.unlike(comment: comment, actor: user)
+      expect(comment.reload.liker_ids_and_names[user.id]).to eq nil
+    end
+  end
+
   describe 'destroy' do
     after do
       CommentService.destroy(comment: comment, actor: user)
@@ -66,6 +90,17 @@ describe 'CommentService' do
         CommentService.create(comment: comment, actor: user)
         expect(reader.reload.participating).to eq true
         expect(reader.reload.volume.to_sym).to eq :loud
+      end
+
+      it 'does not publish a comment replied to event if there is no parent' do
+        Events::CommentRepliedTo.should_not_receive(:publish!).with(comment)
+        CommentService.create(comment: comment, actor: user)
+      end
+
+      it 'publishes a comment replied to event if there is a parent' do
+        comment.parent = create :comment
+        Events::CommentRepliedTo.should_receive(:publish!).with(comment)
+        CommentService.create(comment: comment, actor: user)
       end
     end
 

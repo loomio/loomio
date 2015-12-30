@@ -11,6 +11,7 @@ class Draft < ActiveRecord::Base
     end
     handle_asynchronously :purge
   end
+  EventBus.listen('comment_create') { |comment| purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
 
   def purge(field)
     self.payload[field] = {}
