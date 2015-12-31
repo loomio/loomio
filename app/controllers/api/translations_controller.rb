@@ -10,7 +10,7 @@ class API::TranslationsController < API::RestfulController
   def inline
     params[:model] = 'motion' if params[:model] == 'proposal' # >:-o
     raise TranslationUnavailableError.new unless TranslationService.available?
-    self.resource = TranslationService.new.translate(load_and_authorize(params[:model]))
+    self.resource = TranslationService.new.translate(load_and_authorize(params[:model]), to: params[:to])
     respond_with_resource
   end
 
