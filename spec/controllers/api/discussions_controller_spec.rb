@@ -21,7 +21,6 @@ describe API::DiscussionsController do
 
   before do
     group.add_admin! user
-    group.add_member! another_user
     sign_in user
   end
 
@@ -35,7 +34,10 @@ describe API::DiscussionsController do
       end
     end
 
-    before { reader.viewed! }
+    before do
+      reader.viewed!
+      group.add_member! another_user
+    end
 
     it 'returns unread threads' do
       CommentService.create(comment: new_comment, actor: another_user)
