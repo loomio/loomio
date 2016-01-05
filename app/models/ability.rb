@@ -233,8 +233,8 @@ class Ability
       user_is_author_of?(comment) or user_is_admin_of?(comment.discussion.group_id)
     end
 
-    can [:create], Attachment do |attachment|
-      attachment.comment.author_id == user.id
+    can [:create], Attachment do
+      user.is_logged_in?
     end
 
     can [:destroy], Attachment do |attachment|

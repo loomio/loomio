@@ -7,7 +7,6 @@ class AttachmentService
 
   def self.destroy(attachment:, actor:)
     actor.ability.authorize! :destroy, attachment
-    actor.ability.authorize! :destroy, attachment
     attachment.destroy
   end
 end
