@@ -1,3 +1,4 @@
 %p= t('email.mentioned.context', discussion_title: @discussion.title, author_name: @comment.author.name)
 = render_rich_text(@comment.body, @comment.uses_markdown)
+= render "attachments", comment: @comment if @comment.attachments.any?
 = render "footer", link: comment_url_helper(@comment)
