@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'DraftableModel', (BaseModel) ->
       @recordStore.drafts.fetchFor(@[@constructor.draftParent]())
 
     restoreDraft: ->
-      @update @draft().payload[@constructor.singular]
+      @update @draft().payload[@constructor.serializationRoot or @constructor.singular]
 
     resetDraft: ->
       @draft().updateFrom(@recordStore[@constructor.plural].build())
