@@ -4,7 +4,7 @@ ko:
     time:
       am: 오전
       pm: 오후
-    closing_in: '{{time}} 진행중'
+    closing_in: '{{time}} 남음'
     closed_ago: '{{time}} 종료됨'
     volume: 볼륨
     notification_volume: 알림 볼륨
@@ -17,7 +17,7 @@ ko:
       closed: 종료
       private: 비공개
       secret: 비밀
-    selected: 선택되었음
+    selected: 선택됨
     date_range:
       today: 오늘
       yesterday: 어제
@@ -42,7 +42,7 @@ ko:
       show_more: 더 보기
       view_all: 모두 보기
       new_thread: 새로운 쓰레드
-      add_subgroup: 하위그룹 추가하기
+      add_subgroup: 소그룹 추가하기
       loading: 로딩중...
       translate: 번역
       translated: Bing으로 번역
@@ -51,7 +51,7 @@ ko:
       label: 포맷설정 도움말
       title: 텍스트양식 마크다운 사용법을 배우세요.
   error_page:
-    forbidden: '권한을 가지고 있지 않습니다. '
+    forbidden: 권한이 없습니다.
     page_not_found: 항목을 찾을 수가 없습니다. 삭제되었거나 옮겨진 것 같습니다.
     internal_server_error: 죄송합니다만 뭔가가 잘못되었습니다. 다시 시도해 보세요.
   start_proposal_card:
@@ -121,7 +121,7 @@ ko:
     loud_label: 모든 이메일 받기
     loud_description: 이 그룹의 모든 활동 내역을 이메일로 받습니다.
     normal_label: 새로운 쓰레드와 제안을 이메일로 받습니다.
-    normal_description: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.이
+    normal_description: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.
     quiet_label: 이메일 없음
     quiet_description: 다른 사용자가 @언급하지 않으면 이 그룹에 관한 메일을 받지 않습니다.
     mute_label: 그룹 알림 해제
@@ -157,7 +157,7 @@ ko:
     cancel_reply: 답변 취소
     confirm_delete_message: 댓글을 지우시겠습니까?
     confirm_delete: '예, 확인하였습니다.'
-    in_reply_to: '<strong>{{name}}</strong>에게 답변하기'
+    in_reply_to: '<strong>{{name}}</strong>에 대한 답변:'
     submit_button:
       label: 저장하기
     private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
@@ -169,7 +169,7 @@ ko:
     recent_title: 대시보드로 이동
     unread_title: 읽지 않은 활동 보기
     groups_title: 활동중인 그룹 보기
-    start_thread: 새 토론 만들기
+    start_thread: 새 쓰레드 만들기
     notifications: 알림 패널
     user_actions: 사용자 액션
     user_options:
@@ -193,7 +193,7 @@ ko:
   start_menu:
     title: 액션 버튼
     start_group: 그룹 시작하기
-    start_subgroup: 서브그룹 시작하기
+    start_subgroup: 소그룹 시작하기
     start_thread: 쓰레드 시작하기
     invite_people: 초대하기
   notifications:
@@ -202,13 +202,25 @@ ko:
     new_motion: '<strong>{{name}}</strong>님이 <strong>{{proposal}}</strong>을 제안하였습니다.'
     motion_closed_by_user: '<strong>{{name}}</strong>님이 <strong>{{proposal}}</strong> 제안을 종료하였습니다.'
     motion_closed_by_expiry: '<strong>{{proposal}}</strong> 제안이 종료되었습니다.'
+    new_vote: '<strong>{{name}}</strong> {{position}} 제안에 대해 <strong>{{proposal}}</strong>'
+    new_comment: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 댓글을 달았습니다.'
+    comment_replied_to: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 있는 당신의 댓글에 답글을 달았습니다.'
+    comment_liked: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 있는 당신의 댓글을 좋아합니다.'
+    user_mentioned: '<strong>{{name}}</strong>가  <strong>{{title}}</strong>에서 당신을 언급하였습니다.'
+    membership_requested: '<strong>{{name}}</strong>가 <strong>{{group}}</strong>그룹으로의 회원가입 요청을 보냈습니다.'
+    membership_request_approved: '<strong>{{name}}</strong>가  <strong>{{group}}</strong> 그룹으로의 당신의 회원가입 요청을 승인하였습니다.'
+    user_added_to_group: '<strong>{{name}}</strong>가 당신을 <strong>{{group}}</strong> 그룹에 추가하였습니다.'
     user_added_to_group_no_inviter: '<strong>{{group}}</strong>에 가입하였습니다.'
     motion_closing_soon: '제안이 곧 종료됩니다: <strong>{{proposal}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> 가 제안 결과물 <strong>{{proposal}}</strong>을 공개하였습니다. '
+    motion_outcome_updated: '<strong>{{name}}</strong> 가 제안 결과물 <strong>{{proposal}}</strong> 을 갱신하였습니다.'
   position_buttons_panel:
     heading: 한말씀
   vote_form:
     heading: 한말씀
+    no_statement: 내용 없음.
     i_agree: 동의
+    i_agree_details: 동의하며 계속하겠습니다.
     i_abstain: 기권
     i_abstain_details: 나를 제외하고 의사결정이 내려져도 괜찮습니다.
     i_disagree: 동의하지 않음
@@ -218,6 +230,8 @@ ko:
     submit_position: 입장 등록
     change_position: 입장 변경
     select_position: 입장 선택
+    statement_placeholder: 자신의 의견을 이 그룹에 나눠 주세요.
+    aria_statement_label: '부가적으로, 당신의 직위와 함께 기록될 설명을 기입하여 주십시오.'
     messages:
       created: 투표를 추가하였습니다.
   proposal_positions_panel:
@@ -228,82 +242,404 @@ ko:
     aria_label: 결정하지 않은 멤버들
     show_undecided: 아직 참여하지 않은 멤버 보기
     hide_undecided: 결정하지 않은 멤버들을 보여주지 않음
+  proposal_pie_chart:
+    participation_statement: '{{percentage}}%의 회원이 입장을 표명했습니다({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: 제안 마감
+    helptext: 이 제안을 지금 종료합니다. 확실하십니까?
+    close_proposal_submit: '네, 제안을 종료합니다'
+    messages:
+      success: 제안 종료됨
+  extend_proposal_form:
+    title: 종료 시간 변경
+    success: 제안 종료 시간 변경 완료
+    submit: 종료 시간을 수정합니다
   proposal_form:
+    messages:
+      created: 제안이 시작되었습니다
+      updated: 제안 수정 완료
     start_proposal: 제안 시작하기
     start_a_proposal: 제안 시작하기
+    edit_proposal: 제안 수정하기
+    editing_title_and_description_forbidden: '투표를 받은 제안은 제목이나 내용을 고칠 수 없습니다. 내용이 변경되었다면, 이 제안을 닫고 새로 만드세요.'
+    title_placeholder: '예: 달 탐사'
     title_label: 제목
-    closes_at_label: 에 닫습니다.
+    closes_at_label: 에 종료됩니다.
+    closes: 종료
     details_label: 세부사항
+    details_placeholder: 모든 사람들이 동의하거나 아니면 동의하지 않거나 하는 것이 어떤 의미인지 정확히 알 수 있도록 충분하고 자세하게 말해주세요.
+  discussion_record:
+    created: '해당 쓰레드 {{title}}은 {{groupName}}에 성공적으로 생성되었습니다.'
+    updated: '제목을 {{title}}으로 바꾸었습니다.'
   discussion_form:
+    messages:
+      created: 쓰레드가 시작되었습니다.
+      updated: 쓰레드가 수정되었습니다.
+    new_discussion_title: 새로운 쓰레드를 시작합니다
+    edit_discussion_title: 쓰레드를 수정합니다
+    discussion_helptext: '이 쓰레드는 누구나 토론할 수 있고, 함께 의견을 결정하는 곳입니다.'
     group_label: 그룹
+    group_placeholder: 그룹을 선택하세요
     title_label: 제목
+    title_placeholder: 토의하고픈 주제는 무엇입니까?
     context_label: 내용
+    context_placeholder: '생산적인 토론이 될 수 있도록 사람들에게 충분한 배경 정보를 제공해주세요.  토론이 진행됨에 따라 배경정보가 업데이트될 수 있습니다. '
     privacy_label: 개인정보
+    privacy_public: '누구나 이 쓰레드를 볼 수 있지만, 회원만 참여할 수 있습니다.'
+    privacy_private: '이 쓰레드는 {{group}}의 멤버만 볼 수 있습니다.'
+    privacy_organisation: '이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.'
+    new_discussion_submit: 쓰레드를 시작합니다
+    edit_discussion_submit: 쓰레드를 수정합니다
   proposal_expanded:
+    collapse: 닫기
+    current_votes: 현재 투표
+    started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
+    only_voter_is_you: 아직 투표한 멤버가 없습니다.
+    extend_proposal: 종료 시간 변경 중
+    edit_proposal: 제안 수정하기
     close_proposal: 제안 마감
     closed_badge: 종료
   proposal_position_yes: 찬성
-  proposal_position_no: 반대
+  proposal_position_abstain: 기권
+  proposal_position_no: 동의하지 않음
+  proposal_position_block: 차단
+  legacy_trial_expired_modal:
+    heading: '올해도 루미오를 이용해주셔서 감사합니다!'
+    body: >
+      <p>지난 한해 동안 지원해주신 것에 정말로 감사드리며, 또한 우리는 2016년에 보다 나은 루미오를 만드는 작업에 들떠
+      있습니다.</p>
+
+      <p>루미오가 귀하의 단체에 유용했나요? 우리는 이제 막 가격 정책을 발표했습니다. 그리고 지금까지 루미오를 어느 정도 사용해온
+      단체들에게 자신들에게 적합한 정책plan을 선택해달라고 요청했습니다.</p>
+    submit: 계획을 보여주세요
+  group_welcome_modal:
+    heading: 새로운 그룹에 오신것을 환영합니다
+    first_step: '당신은  단체의 <strong>코디네이터</strong>인데, 관리자host와 비슷합니다. 비디오를 시청하시고, 예제 threads를 확인하세요.'
+    second_step: '준비되면, <strong>사람들을 초대하세요</strong>.'
+    ok_got_it: '네, 알겠습니다!'
+  group_cover_modal:
+    heading: 새로운 커버 사진
+    upload_link: 새로운 커버 사진 올리기
+    image_size_helptext: 이미지 크기는 1400 x 320px이 제일 좋습니다.
+    upload_success: 커버 사진을 수정하였습니다.
+  group_logo_modal:
+    heading: 새로운 그룹 로고
+    upload_link: 새로운 그룹 로고 올리기
+    image_size_helptext: 최적의 크기는 100x100px 입니다
+    upload_success: 로고를 수정하였습니다
   join_group_button:
+    join_group: 그룹에 가입
     ask_to_join_group: 그룹에 가입신청하기
+    messages:
+      joined_group: '{{group}}의 새로운 멤버가 되었습니다'
   membership_request_form:
     heading: 그룹에 가입신청하기
     name_label: 이름
     email_label: 이메일
     introduction_label: 자기소개
     submit_button: 그룹에 가입신청하기
+    messages:
+      membership_requested: '{{group}}에 가입을 요청하였습니다'
   group_page:
+    thread_list:
+      empty:
+        no_discussions_in_group: 이 그룹엔 쓰레드가 아직 없습니다
+        no_public_discussions: 이 그룹에는 공개된 게시글이 없습니다.
+        discussions_are_private: 이 그룹에 모든 게시글은 비공개입니다.
+        join_group: '그룹에 가입하면, 비공개 쓰레드를 볼 수 있습니다.'
+        request_membership: 비공개 쓰레드를 보려면 그룹에 가입 신청을 하세요.
+        membership_is_invitation_only: 멤버의 초대를 받아야 가입할 수 있는 그룹입니다.
+        membership_is_invitation_by_admin_only: 코디네이터의 초대를 받아야 가입할 수 있는 그룹입니다.
+    messages:
+      privacy:
+        members: 이 그룹은 회원들에게만 보입니다.
+        parent_members: 이 그룹은 당신 조직의 회원에게만 보입니다.
+        public: 이 그룹은 이제 누구나 볼 수 있습니다.
+      leave_group_success: 이 그룹을 떠났습니다.
+      archive_group_success: 이 그룹은 현재 사용할수 없습니다.
+    group_logo: 그룹 로고
+    new_photo: 새로운 사진
+    description: 그룹 설명
+    description_placeholder: 그룹 구성원들이 왜 자신이 여기에 있는지 알 수 있도록 여기에 이 그룹의 목적을 설명해 주세요.
     discussions: 토론
+    discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
+    members: 멤버
+    members_placeholder: 이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.
+    member_options: 멤버 옵션
+    all_members: '모든 멤버 {{count}}'
+    subgroups: 소그룹
+    subgroups_placeholder: 소그룹으로 그룹을 여러 다른 팀으로 나눕니다.
     invite_people: 초대 명단
+    visibility_label: 공개도
     options_label: 선택사항
     options:
       label: 선택사항
+      edit_group: 그룹 설정 수정
+      manage_members: 멤버 관리
+      add_subgroup: 소그룹 추가하기
+      manage_subscription: 그룹 가입 관리
+      leave_group: 그룹 떠나기
+      deactivate_group: 그룹 비활성화
+    deactivate_group:
+      title: 그룹 비활성화
+      question: 정말 이 그룹을 비활성화하시겠습니까?
+      submit: '네, 이 그룹을 비활성화하겠습니다.'
     leave_group:
       title: 그룹 탈퇴
+      question: 정말 이 그룹을 떠나겠습니까?
+      submit: '네, 이 그룹을 떠나겠습니다.'
+      cannot_leave_group: '당신은 마지막 코디네이터이기 때문에 이 그룹을 떠날 수 없습니다.  다른 코디네이터를 지정하거나, 그룹을 비활성화하거나 해야 합니다.'
+      add_coordinator: 코디네이터 추가하기
+    volume:
+      loud: 활동이 있을 때마다 이메일 합니다.
+      loud_aria_description: 이 그룹의 알림 소리가 크게 설정됩니다. 이 그룹에 움직임이 있을 때마다 이메일을 받게 됩니다.
+      loud_message: ' "{{name}}." 그룹의 모든 활동 내역을 이메일로 받게됩니다.'
+      normal: '새로운 쓰레드 생성이나 제안, 결과 산출 등 중요한 활동 내역에 대해서만 이메일 합니다.'
+      normal_aria_description: 이 그룹의 알림 소리가 보통으로 설정됩니다. 누군가 새로운 쓰레드를 시작하거나 중요한 활동이 있을 때만 이메일을 받게 됩니다.
+      normal_message: '"{{name}}."에서 중요한 사안에 대해서만 이메일로 받게됩니다.'
+      quiet: 이 그룹의 이메일을 보내지 마세요. 활동내역은 대시보드에 보여집니다.
+      quiet_aria_description: 이 그룹의 알림 소리가 묵음으로 설정됩니다. 이 그룹의 활동내역에 귀하에게 이메일을 발송하지 않습니다. 활동 내역은 대시보드에 보여집니다.
+      quiet_message: '"{{name}}." 그룹의 활동 내역에 대해 귀하에게 이메일을 보내지 않습니다.'
+      mute: '@로 언급되기 전까지는 이 그룹을 대시보드에서 감추고 알림을 비활성화해주세요.'
+      mute_message: '"{{name}}" 당신의 대시보드에서 삭제되었습니다.'
+    privacy:
+      private: '공개정책 : 이 그룹은 멤버에게만 공개됩니다.'
+      parent_members: '공개정책 : 이 그룹은 {{parentGroupName}}의 멤버와 {{groupName}}의 멤버에게 공개됩니다.'
+      public: '공개정책 : 이 그룹은 인터넷에  공개됩니다.'
+  confirm_gift_plan_modal:
+    got_it: '네, 알겠습니다!'
+    go_back: 돌아가기
+  donation_modal:
+    heading: 루미오를 후원해주시겠어요?
+    body: '루미오는 사회적 기업입니다. 우리의 사명은 누구나 자기에게 영향을 미치는 의사결정에 쉽게 참여할 수 있는 세계를 만드는 것입니다. '
+    contribute: 공헌하기
+    got_to_group: 그냥 내 그룹으로 갈께요
+  gift_card:
+    heading: 선물 계획
+    make_a_contribution: 공헌하기
+  trial_card:
+    title: 30일 체험
+  choose_plan_modal:
+    gift: 선물
+    standard: 일반
+    get_started_for_free: 무료로 시작하기
+    remind_me_later: 나중에 상기시켜 주세요
+    email_support: 이메일 지원
+    usage_statistics: 사용량 통계
+    select: 선택
+  subscription_success_modal:
+    receipt: 영수증과 함께 메일을 받을 것 입니다.
+    contact_link: 연락해 주세요.
+    sign_off: 루미오 팀으로부터 ❤
+    ok_got_it: '네, 알겠습니다!'
   group_form:
+    start_group_heading: 그룹 시작하기
+    start_subgroup_heading: 소그룹 시작하기
+    edit_group_heading: 그룹 설정 편집
+    edit_subgroup_heading: 소그룹 설정 수정하기
+    group_name: 그룹명
+    subgroup_name: 소그룹 이름
+    description: 설명
+    privacy_statement:
+      public_on_web: 이름과 설명이 웹에 공개됩니다.
+      private_to_group: 이름과 설명은 멤버만 볼 수 있습니다.
+      private_to_parent_members: '{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. '
     privacy: 개인정보
+    group_privacy_open_description: '누구나 이 그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 또한 모든 쓰레드도 공개됩니다.'
+    group_privacy_closed_description: '누구나 이 그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 그러나 멤버들만 쓰레드를 볼 수 있습니다.'
+    group_privacy_closed_public_threads_description: '누구나 이 그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 쓰레드는 공개하거나 비공개할 수 있습니다.'
+    group_privacy_secret_description: 초대받은 멤버만 이 그룹을 찾거나 쓰레드를 볼 수 있습니다.
+    confirm_change_to_secret: 이 그룹의 모든 쓰레드와 소그룹이 비공개로 전환됩니다. 확실합니까?
+    confirm_change_to_secret_subgroup: 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?
+    confirm_change_to_public: 이 그룹의 모든 쓰레드가 웹에 공개됩니다. 계속하시겠습니까?
+    confirm_change_to_private_discussions_only: 이 그룹의 공개된 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?
+    subgroup_privacy_open_description: '누구나 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 또한 모든 쓰레드도 공개됩니다.'
+    subgroup_privacy_closed_description: '누구나 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 그러나 멤버들만 쓰레드를 볼 수 있습니다.'
+    subgroup_privacy_closed_public_threads_description: '누구나 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 쓰레드는 공개하거나 비공개할 수 있습니다.'
+    subgroup_privacy_closed_secret_parent_description: '{{parent}} 그룹의 멤버들만 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다.'
+    subgroup_privacy_secret_description: 초대받은 멤버만 이 소그룹을 찾거나 쓰레드를 볼 수 있습니다.
+    advanced_settings: 상세 설정
+    how_do_people_join: 가입 방법은 무엇인가요?
+    membership_granted_upon_request: 누구나 가입할 수 있습니다.
+    membership_granted_upon_approval: '누구나 가입 신청을 할 수 있습니다만, 가입 허가가 필요합니다.'
+    thread_privacy: 쓰레드 프라이버시
+    public_threads: 공개 쓰레드만
+    public_discussions_subgroup: '{{parentGroupName}}의 누구나 이 토론을 볼 수 있습니다.'
+    public_or_private_threads: 공개 및 비공개 쓰레드 허용
+    private_threads: 오직 멤버만 이 토론을 볼 수 있습니다.
+    permissions: 허용
+    allow_public_threads: 이 그룹에 공개 쓰레드를 허용합니다.
+    parent_members_can_see_discussions: ' {{parent}}의 멤버는 쓰레드를 볼 수 있습니다.'
+    members_can_add_members: 멤버는 다른 사람을 초대할 수 있고 가입요청을 승인할 수 있습니다.
+    members_can_create_subgroups: 멤버는 소그룹을 만들수 있습니다.
+    members_can_edit_comments: 멤버는 자신의 댓글을 언제든 수정할 수 있습니다.
+    members_can_start_discussions: 멤버는 새 쓰레드를 만들 수 있습니다.
+    members_can_vote: 멤버는 제안에 투표할 수 있습니다.
+    members_can_raise_motions: 멤버는 제안을 시작할 수 있습니다.
+    submit_start_group: 그룹 시작하기
+    submit_start_subgroup: 소그룹 시작하기
     submit_update: 설정 저장
+    messages:
+      group_created: 그룹이 시작됨
+      group_updated: 그룹이 업데이트됨
+  membership_requests_card:
+    heading: 멤버십 요청
+    manage_requests: 요청 관리
+    manage_requests_with_count: 요청 관리
+  group_help_card:
+    title: 도움말
   membership_requests_page:
+    heading: 멤버십 요청
     approve: 승인
     ignore: 무시
+    previous_requests: 이전 요청
+    messages:
+      request_approved_success: 멤버십 요청이 승인되었습니다.
+      request_ignored_success: 멤버십 요청이 거절되었습니다.
   group_previous_proposals_card:
     heading: 이전 제안
+    see_more: 더보기
   invitation_form:
     invite_people: 초대하기
+    group: 그룹
+    email_addresses: 이메일 주소
+    add_members: 멤버 추가
+    from_parent_group: '{{name}} 로부터'
+    send: 전송
+    messages:
+      invitation_sent: 초대가 전송됨
+      max_invitations: 만일 100개 이상의 초대장을 보내려면 팀 링크를 사용하세요.
+  team_link_modal:
+    heading: 사람 추가
+    share_link: 이 링크 공유하기
+    caution: '주의: 이 링크를 가지고 있는 누구든 즉시 이 그룹에 가입할 수 있습니다. 이 링크를 공유할 때 유의하십시오.'
+    copy_link: 링크 복사
+  add_members_modal:
+    add_members: 멤버 추가
+    user_added_to_subgroup: '{{name}}님을 소그룹에 추가하였습니다.'
+    users_added_to_subgroup: '{{count}}명의 사용자가 소그룹에 추가되었습니다.'
+    no_members_to_add: '{{parent}}의 모든 멤버가 이 소그룹에 속합니다.'
   memberships_page:
     members: 멤버
     name_label: 이름
     coordinator_label: 코디네이터
     remove_member_label: 삭제
+    messages:
+      make_admin_success: '이제 {{name}}님은 코디네이터입니다.'
+      remove_admin_success: '{{name}}은 더 이상 코디네이터가 아닙니다.'
     remove_membership:
       submit: 삭제
+  pending_invitations_card:
+    heading: 대기 중인 초대
+    email: 이메일
+    invitation_link: 초대 링크
+  cancel_invitation_form:
+    heading: 초대 취소
+    question: 이 초대를 취소하시겠습니까?
+    submit: '네, 초대를 취소합니다.'
+    cancel: 아니요
+    messages:
+      success: 초대를 취소했습니다.
   profile_page:
+    messages:
+      updated: 프로필을 수정했습니다.
+      picture_changed: 프로필 사진을 수정했습니다.
+      password_changed: 비밀번호를 변경했습니다.
+      deactivated: 계정을 비활성화했습니다.
+    change_picture:
+      title: 사진 교체
+      helptext: '프로필 사진을 올리거나 <a href="https://en.gravatar.com/support/what-is-gravatar/">그라바타 (Gravatar)</a> 계정이 있으면 사용할 수 있습니다.'
+      use_gravatar: 그라바타 사용
+      use_uploaded: 새 사진 올리기
     change_password:
+      title: 비밀번호 변경
       current_password_label: 현재 비밀번호
       new_password_label: 새로운 비밀번호
       password_confirmation_label: 새로운 비밀번호 확인
+      submit: 비밀번호 수정
+    deactivate_user:
+      title: 계정 비활성화
+      question: 왜 계정을 비활성화시키는지 알려주실 수 있나요?
+      placeholder: '이 질문에 답하지 않으셔도 됩니다. 이렇게 정보를 공유해주시면 루미오를 향상시키는데 도움이 됩니다. :)'
+      submit: 계정 비활성화
+    change_picture_link: 사진 교체
+    change_password_link: 비밀번호 변경
+    deactivate_user_link: 계정을 비활성화합니다...
     profile: 프로필
+    edit_profile: 프로필 수정
     picture_label: 사진
     name_label: 이름
+    username_label: 아이디
     email_label: 이메일
     locale_label: 언어
+    update_profile: 프로필 저장
   email_settings_page:
     header: 이메일 설정
+    email: 이메일
+    daily_summary_label: 일별 요약 이메일
+    daily_summary_description: '매일 아침, 어제 읽지 않은 활동을 메일로 보냅니다. 루미오에서 벌어지는 일들을 쉽게 확인할 수 있습니다.'
+    on_participation_label: 내가 참여한 토론의 활동
+    on_participation_description: "토론에 참여하면, 불륨 설정이 '높음'으로 변경되어 이후 모든 활동을 자동으로 이메일로 보냅니다."
+    proposal_closing_soon_label: 제안이 마감되기 전
+    proposal_closing_soon_description: '제안이 마감되기 24시간 전, 볼륨에 상관없이 해당 제안에 대한 최근 소식을 이메일로 알려드립니다.'
+    mentioned_label: 나를 @언급했을 때
+    mentioned_description: 누군가 당신과 이야기하고 싶을 경우 @언급할 겁니다. 사람들이 언급할 때마다 이메일을 받게 되기 때문에 사용하는게 좋습니다.
+    update_settings: 이메일 설정 저장
+    messages:
+      updated: 이메일 설정을 저장했습니다.
   dashboard_page:
+    aria_label: 대시보드
+    mark_as_read: 읽음으로 표시
     filtering:
       proposals: 제안
+    aria_thread:
+      title: '쓰레드 제목: {{title}}.'
+      you_voted: '투표 완료: {{position}}.'
     threads_from:
       proposals: 제안
       today: 오늘
       yesterday: 어제
+      thisweek: 이번주
+      thismonth: 이번달
+  inbox_page:
+    unread_threads: 읽지 않은 쓰레드
+    view_more: 더보기
   discussion:
     activity: 최근 활동
+    activity_placeholder: 아직 활동내역 없음
     proposals: 제안
     previous_proposals: 이전 제안
+    started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
+    volume:
+      loud: 이 쓰레드의 모든 활동 내역에 대해 이메일합니다.
+      loud_aria_description: 이 그룹의 알림 소리가 크게 설정됩니다. 이것은 이 그룹에 움직임이 있을 때마다 이메일을 받게 된다는 것을 의미합니다.
+      loud_message: ' "{{name}}"의 모든 활동 내역을 이메일로 받게됩니다.'
+      normal_aria_description: 이 쓰레드의 알림 소리가 보통으로 설정됩니다. 제안이 만들어졌거나 제안이 마무리될 때 혹은 결과가 등록되었을 때 이메일을 받게 됩니다.
+      normal_message: '"{{name}}"의 중요한 사안에 대해서만 이메일로 받게됩니다.'
+      quiet: 이 쓰레드에 대해 이메일 보내지 마세요.
+      quiet_aria_description: 이 쓰레드의 알림 소리가 묵음으로 설정됩니다. 누군가 당신을 언급할 때만 이메일이 발송됩니다.
+      quiet_message: '누군가 당신을 언급하지 않는 한 "{{name}}"와 관련된 메일이 발송되지 않습니다.'
+      mute: '@로 언급되기 전까지는 이 쓰레드를 대시보드에서 감추고 알림을 비활성화해주세요.'
+      mute_aria_description: '이 쓰레드의 알림 소리가 묵음으로 설정됩니다. 누군가 귀하를 언급하는 것을 제외하고 이 쓰레드에 대해 귀하에게 이메일을 발송하지 않으며, 그리고 이 쓰레드는 귀하의 대시보드에서 나타나지 않습니다.'
+      mute_message: '"{{name}}"이 당신의 대시보드에서 삭제되었습니다.'
   thread_group:
     aria_label: 그룹명
+  thread_context:
+    thread_options: 쓰레드 옵션
+    notifications: 알림
+    edit_thread: 편집
+    delete_thread: 삭제
+  delete_thread_form:
+    title: 쓰레드 삭제
+    body: 정말로 이 쓰레드를 삭제하시겠습니까?
+    confirm: '네, 이 쓰레드를 삭제합니다.'
+    messages:
+      success: 쓰레드가 삭제되었습니다.
+  move_thread_form:
+    title: 쓰레드 이동
+    confirm: 쓰레드 이동
+    messages:
+      success: '쓰레드가 {{name}} 으로 이동되었습니다.'
   activity_card:
     new_activity: 새로운 활동
     attachment_display:
@@ -320,16 +656,23 @@ ko:
       edit_comment: 댓글 수정
       delete_comment: 댓글삭제
   contact_message_form:
+    contact_us: 연락하기
     name_label: 이름
+    name_placeholder: 이름
     email_label: 이메일 주소
+    email_placeholder: 이메일 주소
     message_label: 메시지
+    message_placeholder: 메시지...
+    send_message: 메시지 보내기
+    new_contact_message: '메시지를 주셔서 감사합니다; 곧 연락드리겠습니다!'
   help_page:
-    coordinating: 루미오 그룹을 조정하기
+    coordinating: 루미오 그룹을 관리하기
     different_ways: 루미오를 사용하기 위한 다른 방법들
     get_in_touch: 연락하기
     get_in_touch_description_html: "질문이나 의견이 있다면 <a href='%{link}'>연락해 주세요.</a>."
     getting_started: 시작하기
     getting_started_description: '왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다.'
+    getting_the_most: 루미오를 최대한으로 활용하기
     have_your_say: 한말씀
     have_a_discussion: 토론 하기
     have_a_discussion_description: "주제와 관련된 정보와 배경 정보는 페이지의 상단에 위치해 있습니다. \n토론에 여러분의 목소리를 담기 위해서는 댓글 상자를 이용하세요."
@@ -350,7 +693,7 @@ ko:
     start_proposal: 명확한 제안 작성하기
     video_id: '52025402'
     video_tutorial: 동영상 설명
-    video_tutorial_description: 루미오를 사용법에 대해서 동영상을 살펴보세요.
+    video_tutorial_description: 루미오 사용법을 다룬 동영상을 살펴보세요.
   hint:
     context: 켄텍스트 패널 사용을 위한 도움말
     discussion: 토론 참여를 시작하기 위한 도움말
@@ -361,5 +704,22 @@ ko:
     organisations: 조직
     organisations_examples: '예. 회사, 정부기관, 커뮤니티 조직'
     informal_groups: 비공개 그룹
-    informal_groups_desc: 여러분 그룹의 멤버들은 멤버들이 지불 할 수 있는 요청을 받게 됩니다.
+    informal_groups_desc: 여러분 그룹의 멤버들은 멤버들이 지불할 수 있는 만큼만 요청을 받습니다.
     informal_groups_examples: '예. 가족, 사회운동, 단체'
+  angular:
+    switch_back: 이전 루미오로 돌아가기
+    give_feedback: 피드백 남기기
+    collapse: 닫기
+    enable:
+      invite: 새로운 루미오 사용하기
+      title: 새로운 루미오 사용하기
+      intro: '우리는 루미오를 개선해왔다. 루미오가 공개되기 전에, 루미오를 확실히 굉장하게 만들기 위해서는 당신의 도움이 필요하다.'
+      button_text: 새로운 루미오 보기
+    disable:
+      title: 새로운 루미오를 이용해주셔서 감사합니다
+      give_feedback: 우리가 더 나아질 수 있도록 피드백을 나눠주세요.
+      button_text: 이전 루미오로 돌아가기
+  global:
+    messages:
+      app_update: 새로운 루미오를 사용할 수 있습니다.
+      reload: 다시 불러오기

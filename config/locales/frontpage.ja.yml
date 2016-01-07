@@ -19,7 +19,7 @@ ja:
       privacy: プライバシー
       services: サービス
     hero:
-      header_html: '手軽で安価な</br><strong>オンライン合意形成の実現</strong>'
+      header_html: '手軽で安価な<br/><strong>オンライン合意形成の実現</strong>'
       lead_html: 'Loomioを使えば、どこからでも<strong>議論に加わり、行動に移す</strong>ことが可能となります'
     product:
       header_html: '参加者全員から<strong>あらゆる声</strong>を聞くことができたら、<strong>もっと素晴らしい判断</strong>につなげられます'

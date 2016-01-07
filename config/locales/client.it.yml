@@ -452,7 +452,6 @@ it:
       aria_label: Opzioni dei commenti
       edit_comment: Modifica commento
       delete_comment: Cancella il commento
-    in_reply_to: '<strong>{{author}}</strong> risponde a <strong>{{recipient}}</strong>'
   contact_message_form:
     contact_us: Contattaci
     name_label: Nominativo
