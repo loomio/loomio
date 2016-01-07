@@ -425,11 +425,10 @@ zh-TW:
   trial_card:
     title: 30 天試用
     choose_plan: 選擇您的定價方案
-    in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的定價方案。'
-    expired_body_html: "<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。若您想要與某人談論這個，請<a href=''>保持聯繫</a>。"
+    in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的群組的定價方案。'
+    expired_body_html: '<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。'
   choose_plan_modal:
-    heading: 選擇您的定價方案
-    overdue_heading: 要繼續使用 Loomio，請選擇一個付款方案
+    heading: 請為您的群組選擇方案
     gift: 禮物方案
     standard: 標準方案
     plus: PLUS
@@ -587,6 +586,7 @@ zh-TW:
     heading: 擱置中的邀請函
     email: 電子郵件
     invitation_link: 邀請連結
+    sent: 已寄出
   cancel_invitation_form:
     heading: 取消邀請函
     question: 您確定您想要取消此邀請函嗎？
@@ -699,6 +699,7 @@ zh-TW:
     page_header: 您的群組
   discussion:
     activity: 動態
+    activity_placeholder: 尚無動態！
     proposals: 提議
     previous_proposals: 上一個提案
     load_previous: 載入更早的動態
@@ -761,38 +762,38 @@ zh-TW:
       aria_label: 意見選項
       edit_comment: 編輯意見
       delete_comment: 刪除意見
-    in_reply_to: '<strong>{{author}}</strong> 在回覆 <strong>{{recipient}}</strong>'
+    in_reply_to: '回覆給 <strong>{{recipient}}</strong>'
   new_vote_item:
-    agree: '<strong>{{actor}}</strong> 已同意'
-    abstain: '<strong>{{actor}}</strong> 已棄權'
-    disagree: '<strong>{{actor}}</strong> 已反對'
-    block: '<strong>{{actor}}</strong> 已阻擋'
-    agree_with_statement: '<strong>{{actor}}</strong>已同意：<span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong>已棄權：<span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong>已反對：<span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong>已阻擋：<span>{{statement}}</span>'
+    agree: 同意
+    abstain: 棄權
+    disagree: 反對
+    block: 阻擋
+    agree_with_statement: '同意：<span>{{statement}}</span>'
+    abstain_with_statement: '棄權：<span>{{statement}}</span>'
+    disagree_with_statement: '反對：<span>{{statement}}</span>'
+    block_with_statement: '阻擋：<span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong>已啟動一個提案：<span>{{title}}</span>'
+    author_created_proposal: '已啟動一個提案：<span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: '提案已定案：<span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong>已定案了一個提案：<span>{{title}}</span>'
+    proposal_closed_by_user: '已定案一個提案：<span>{{title}}</span>'
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong>已更新提案標題：<span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong>已更新了提案的描述'
-    closing_at: '<strong>{{actor}}</strong>已經更新了在<span>{{time}}</span>定案的提案'
-    description_name: '<strong>{{actor}}</strong>已經更新提案的標題與描述'
-    closing_at_name: '<strong>{{actor}}</strong>已經更新了提案的標題與定案時間'
-    closing_at_description: '<strong>{{actor}}</strong>已經更新了提案的描述與定案時間'
-    closing_at_description_name: '<strong>{{actor}}</strong>已經更新了提案的標題、描述與關閉時間'
+    name: '已更新提案標題：<span>{{title}}</span>'
+    description: 已更新提案描述
+    closing_at: '已更新的提案以在 <span>{{time}}</span> 定案'
+    description_name: 已更新提案標題與描述
+    closing_at_name: 已更新提案標題與定案時間
+    closing_at_description: 已更新提案描述與定案時間
+    closing_at_description_name: 已更新提案標題、描述與定案時間
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong>已公佈了提案的結果：'
+    proposal_outcome_created: 已發表提案成果：
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong>已更新了提案的結果：'
+    proposal_outcome_updated: 已更新提案結果：
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong>已更新討論串的標題：<span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> 已經更新了此討論串的內容'
-    description_title: '<strong>{{actor}}</strong> 已經更新了此討論串的標題與內容'
+    title: '已更新討論串標題：<span>{{title}}</span>'
+    description: 已更新討論串內容
+    description_title: 已更新討論串標題與內容
   contact_message_form:
     contact_us: 聯絡我們
     name_label: 您的大名
@@ -948,3 +949,7 @@ zh-TW:
       body_html: '<p>唉呀，我們作錯什麼了呢？我們對於您對新 Loomio 有不好的印象很抱歉。</p>'
       give_feedback: 在您離開前，請您考慮分享您的回饋，以讓我們可以改進。
       button_text: 切換回舊版 Loomio
+  global:
+    messages:
+      app_update: 新版本的 Loomio 出了
+      reload: 重新整理

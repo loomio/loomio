@@ -446,7 +446,6 @@ pl:
       aria_label: Opcje komentarzy
       edit_comment: Edycja komentarza
       delete_comment: Usuń komentarz
-    in_reply_to: '<strong>{{author}}</strong> w odpowiedzi na <strong>{{recipient}}</strong>'
   contact_message_form:
     contact_us: Kontakt
     name_label: Twoja nazwa

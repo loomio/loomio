@@ -402,8 +402,6 @@ ro:
     context_menu:
       edit_comment: Editeaza comentariul
       delete_comment: Sterge comentariu
-  discussion_edited_item:
-    title: '<strong>{{actor}}</strong> a actualizat titlul discutiei: <span>{{title}}</span>'
   contact_message_form:
     name_label: Nume
     email_label: Adresa ta de email

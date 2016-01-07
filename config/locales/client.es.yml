@@ -306,13 +306,7 @@ es:
   proposal_position_block: Bloquear
   legacy_trial_expired_modal:
     heading: 'Gracias por usar Loomio este año!'
-    body: >
-      <p>Realmente apreciamos tu apoyo en este año, y esperamos mejor Loomio
-      mucho mas en 2016.</p>
-
-      <p>¿Encuentras Loomio útil para tu grupo? Acabamos de terminar nuestros
-      planes de pago y le estamos pidiendo a los grupos que han estado usado
-      Loomio por un tiempo que elijan un plan que les convenga.</p>
+    body: "<p>Realmente apreciamos tu apoyo en este año, y estamos entusiasmados de mejorar Loomio aún más en 2016.</p> \n<p>¿Encuentras que Loomio es útil para tu grupo? Acabamos de lanzar nuestros planes de pago y le estamos pidiendo a los grupos que han utilizado Loomio por un tiempo que elijan un plan que les convenga.</p> \n"
     submit: Muéstrame los planes
   group_welcome_modal:
     heading: Bienvenido/a a tu nuevo grupo
@@ -430,10 +424,9 @@ es:
     title: '30 días de prueba '
     choose_plan: Elige tu plan de pago
     in_progress_body: 'Gracias por probar Loomio con <strong>{{name}}</strong>. En cualquier momento puedes elegir un plan de pago que funcione para tu grupo.'
-    expired_body_html: "<strong>{{name}}</strong> ha alcanzado el final de su prueba de Loomio. Si quieres seguir utilizándolo tienes que elegir un plan de pago a tu medida. Si quieres hablar con alguien al respecto ponte <a href=''>en contacto</a>. "
+    expired_body_html: '<strong>{{name}}</strong> ha llegado al final de su prueba de Loomio. Si quieres seguir usándolo tienes que elegir un plan de pago a la medida de tu grupo.'
   choose_plan_modal:
-    heading: 'Elige tu plan de pago '
-    overdue_heading: 'Para continuar utilizando Loomio por favor elige un plan de pago. '
+    heading: Por favor elige un plan de pago para tu grupo.
     gift: Donación
     standard: 'Estándar '
     plus: Plus
@@ -593,6 +586,7 @@ es:
     heading: Invitaciones pendientes
     email: 'correo electrónico '
     invitation_link: 'enlace de invitación '
+    sent: 'Enviado '
   cancel_invitation_form:
     heading: 'cancelar invitación '
     question: ¿Estás seguro de que quieres cancelar esta invitación?
@@ -705,6 +699,7 @@ es:
     page_header: Tus grupos
   discussion:
     activity: Actividad
+    activity_placeholder: No hay actividad todavía
     proposals: Propuestas
     previous_proposals: Propuestas anteriores
     load_previous: Cargar actividad más reciente
@@ -767,38 +762,38 @@ es:
       aria_label: Opciones de comentario
       edit_comment: Editar comentario
       delete_comment: Borrar comentario
-    in_reply_to: '<strong>{{author}}</strong> en respuesta a <strong>{{recipient}}</strong>'
+    in_reply_to: 'en respuesta a <strong>{{recipient}}</strong>'
   new_vote_item:
-    agree: '<strong>{{actor}}</strong> está de acuerdo'
-    abstain: '<strong>{{actor}}</strong> se abstiene '
-    disagree: '<strong>{{actor}}</strong> no está de acuerdo'
-    block: '<strong>{{actor}}</strong> bloquea  '
-    agree_with_statement: '<strong>{{actor}}</strong> está de acuerdo: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> se abstiene: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> no está de acuerdo: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> bloquea: <span>{{statement}}</span>'
+    agree: de acuerdo
+    abstain: abstiene
+    disagree: en desacuerdo
+    block: bloqueado
+    agree_with_statement: 'de acuerdo: <span>{{statement}}</span>'
+    abstain_with_statement: 'abstiene: <span>{{statement}}</span>'
+    disagree_with_statement: 'en desacuerdo: <span>{{statement}}</span>'
+    block_with_statement: 'bloqueo: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> comenzó una propuesta: <span>{{title}}</span>'
+    author_created_proposal: 'comenzó una propuesta: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'La propuesta ha cerrado: <span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> ha cerrado la propuesta: <span>{{title}}</span>'
+    proposal_closed_by_user: 'cerró la propuesta: <span>{{title}}</span>'
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong> ha actualizado el título de la propuesta: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> ha actualizado la descripción de la propuesta'
-    closing_at: '<strong>{{actor}}</strong> ha actualizado el cierre de la propuesta para <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> ha actualizado el título y la descripción de la propuesta'
-    closing_at_name: '<strong>{{actor}}</strong> ha actualizado el título y el tiempo de cierre de la propuesta '
-    closing_at_description: '<strong>{{actor}}</strong> ha actualizado la descripción y el tiempo de cierre de la propuesta'
-    closing_at_description_name: '<strong>{{actor}}</strong> ha actualizado el título, la descripción y el tiempo de cierre de la propuesta'
+    name: 'actualizó el título de la propuesta: <span>{{title}}</span>'
+    description: actualizó la descripción de la propuesta
+    closing_at: 'actualizó la propuesta para que cierre en <span>{{time}}</span>'
+    description_name: actualizó el título y la descripción de la propuesta
+    closing_at_name: 'actualizó el título y el tiempo de cierre de la propuesta '
+    closing_at_description: actualizó la descripción y el tiempo de cierre de la propuesta
+    closing_at_description_name: 'actualizó el título, la descripción y el tiempo de cierre de la propuesta'
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> ha publicado el resultado de la propuesta'
+    proposal_outcome_created: 'publicó el resultado de la propuesta:'
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> ha actualizado el resultado de la propuesta'
+    proposal_outcome_updated: actualizó el resultado de la propuesta
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong> ha actualizado el título del hilo: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> ha actualizado el contexto del hilo'
-    description_title: '<strong>{{actor}}</strong> ha actualizado el título y el contexto del hilo '
+    title: 'actualizó el título del hilo: <span>{{title}}</span>'
+    description: actualizó el contexto del hilo
+    description_title: 'actualizó el título y el contexto del hilo '
   contact_message_form:
     contact_us: Contáctanos
     name_label: Tu nombre
@@ -1030,3 +1025,7 @@ es:
       body_html: '<p> ¿Hicimos algo mal? Perdón si haz pasado un mal tiempo en el nuevo Loomio.</p>'
       give_feedback: 'Antes de irte considera dejarnos un comentario para que podamos mejorar. '
       button_text: Vuelve al Loomio antiguo
+  global:
+    messages:
+      app_update: 'Una nueva versión de Loomio está disponible '
+      reload: 'Actualizar '

@@ -44,6 +44,8 @@ pt-BR:
       new_thread: Novo tópico
       add_subgroup: Adicionar subgrupo
       loading: Carregando
+      translate: Traduzir
+      translated: Tradução do Bing Tradutor
       uploading: Carregando
     formatting_help:
       label: Ajuda para formatação
@@ -305,12 +307,12 @@ pt-BR:
   legacy_trial_expired_modal:
     heading: 'Obrigado por usar o Loomio este ano!'
     body: >
-      <p>Nós realmente apreciamos o seu apoio ao longo do ano, e estamos
-      realmente animado sobre como fazer Loomio ainda melhor em 2016.</p>
+      <p>Nós realmente agradecemos o seu apoio ao longo do ano, e estamos muito
+      animados para fazer Loomio ainda melhor em 2016.</p>
 
-      <p>O Loomio é útil para o seu grupo? Acabamos de lançar nossos planos de
-      preços e estamos pedindo aos grupos que tenham utilizado Loomio por algum
-      tempo para escolher um plano que lhes seja conveniente.</p>
+      <p>O Loomio é útil para o seu grupo? Acabamos de lançar nossa planos de
+      preços e estamos pedindo grupos que tenham usado Loomio por um tempo para
+      escolher um plano que lhes for convieniente.</p>
     submit: Mostre-me os planos
   group_welcome_modal:
     heading: Bem-vindo ao seu novo grupo
@@ -427,11 +429,10 @@ pt-BR:
   trial_card:
     title: Teste de 30 dias
     choose_plan: Escolha seu plano de pagamento
-    in_progress_body: 'Obrigado por testar o Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de pagamento que funcione para você a qualquer momento.'
-    expired_body_html: "<strong>{{name}}</strong> atingiu o fim do teste no Loomio. Se você gostaria de continuar a usá-lo, você precisa escolher um plano de preços adequado. Se você gostaria de falar com alguém sobre isso, basta<a href=''> entrar em contato</a>."
+    in_progress_body: 'Obrigado por experimentar Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de preços que se adapte ao seu grupo a qualquer momento.'
+    expired_body_html: '<strong>{{name}}</strong> chegou ao fim do teste no Loomio. Para continuar utilizando, você precisa escolher um plano de preços que se adapte ao seu grupo.'
   choose_plan_modal:
-    heading: Escolha seu plano de pagamento
-    overdue_heading: 'Para continuar a utilizar o Loomio, por favor, escolha um plano de pagamento'
+    heading: 'Por favor, escolha um plano para o seu grupo'
     gift: Presente
     standard: Padrão
     plus: Plus
@@ -589,6 +590,7 @@ pt-BR:
     heading: Convites pendentes
     email: E-mail
     invitation_link: Link do convite
+    sent: Enviar
   cancel_invitation_form:
     heading: Cancelar convite
     question: Você tem certeza que deseja cancelar este convite?
@@ -701,6 +703,7 @@ pt-BR:
     page_header: Seus grupos
   discussion:
     activity: Atividade
+    activity_placeholder: 'Ainda sem atividade!'
     proposals: Propostas
     previous_proposals: Propostas anteriores
     load_previous: Carregar atividade anterior
@@ -763,38 +766,38 @@ pt-BR:
       aria_label: Opções de comentários
       edit_comment: Editar comentários
       delete_comment: Apagar comentário
-    in_reply_to: '<strong>{{author}}</strong> em resposta a <strong>{{recipient}}</strong>'
+    in_reply_to: 'Em resposta a <strong>{{recipient}}</strong>'
   new_vote_item:
-    agree: '<strong>{{actor}}</strong> concordou'
-    abstain: '<strong>{{actor}}</strong> absteve-se'
-    disagree: '<strong>{{actor}}</strong> discordou'
-    block: '<strong>{{actor}}</strong> bloqueou'
-    agree_with_statement: '<strong>{{actor}}</strong> concordou: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> absteve-se: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> discordou: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> bloqueou: <span>{{statement}}</span>'
+    agree: concordou
+    abstain: absteve
+    disagree: discordou
+    block: bloqueou
+    agree_with_statement: 'concordou: <span>{{statement}}</span>'
+    abstain_with_statement: 'absteve: <span>{{statement}}</span>'
+    disagree_with_statement: 'discordou: <span>{{statement}}</span>'
+    block_with_statement: 'bloqueou: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>'
+    author_created_proposal: 'iniciou uma proposta: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'A proposta foi encerrada: <span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> fechou a proposta: <span>{{title}}</span>'
+    proposal_closed_by_user: 'encerrou a proposta: <span>{{title}}</span>'
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong> atualizou o título da proposta: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> atualizou a descrição da proposta'
-    closing_at: '<strong>{{actor}}</strong> atualizou a proposta para encerrar em <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> atualizou o título e a descrição da proposta'
-    closing_at_name: '<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento da proposta'
-    closing_at_description: '<strong>{{actor}}</strong> atualizou a descrição e o tempo para encerramento da proposta'
-    closing_at_description_name: '<strong>{{actor}}</strong> atualizou título, descrição e tempo para encerramento da proposta'
+    name: 'atualizou o título proposta: <span>{{title}}</span>'
+    description: atualizou a descrição da proposta
+    closing_at: 'atualizou a proposta para fechar em <span>{{time}}</span>'
+    description_name: atualizou o título e a descrição da proposta
+    closing_at_name: atualizou o título da proposta e a hora de encerramento
+    closing_at_description: atualizou o descrição da proposta e a hora de encerramento
+    closing_at_description_name: 'atualizou título, descrição e hora de encerramento da proposta'
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> publicou um resultado para a proposta:'
+    proposal_outcome_created: 'publicou um resultado da proposta:'
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> atualizou o resultado da proposta:'
+    proposal_outcome_updated: 'atualizou o resultado da proposta:'
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong> atualizou o título do tópico: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> atualizou o contexto do tópico'
-    description_title: '<strong>{{actor}}</strong> atualizou o título e o contexto do tópico'
+    title: 'atualizou o título do tópico: <span>{{title}}</span>'
+    description: atualizou o contexto do tópico
+    description_title: atualizou título e contexto do tópico
   contact_message_form:
     contact_us: Contato
     name_label: Seu nome
@@ -987,3 +990,7 @@ pt-BR:
       body_html: '<p>Êita, nós fizemos algo errado? Lamentamos se você teve um mau momento no novo Loomio.</p>'
       give_feedback: 'Antes de ir, por favor, considere compartilhar suas opiniões para que possamos melhorar.'
       button_text: Mude de volta para o antigo Loomio
+  global:
+    messages:
+      app_update: Uma nova versão do Loomio está disponível
+      reload: Recarregar
