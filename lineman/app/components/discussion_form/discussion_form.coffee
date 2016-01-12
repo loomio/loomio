@@ -21,6 +21,9 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     $scope.privacyPrivateDescription = ->
       PrivacyString.discussion($scope.discussion, true)
 
+    $scope.updatePrivacy = ->
+      $scope.discussion.private = $scope.discussion.privateDefaultValue()
+
     $scope.showPrivacyForm = ->
       return unless $scope.discussion.group()
       $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
