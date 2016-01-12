@@ -13,13 +13,11 @@ angular.module('loomioApp').factory 'LegacyTrialExpiredModal', (ModalService, Ap
   showIfAppropriate: (group, user) ->
     return false unless @appropriateToShow(group, user)
     shownToGroup[group.id] = true
-    ModalService.open this,
-      group: => group
-      user: => user
+    ModalService.open this, group: -> group
 
   templateUrl: 'generated/components/legacy_trial_expired_modal/legacy_trial_expired_modal.html'
 
-  controller: ($scope, ChoosePlanModal, ModalService) ->
+  controller: ($scope, group, ChoosePlanModal, ModalService) ->
     $scope.submit = ->
       AhoyService.track('legacy-trial-expired-modal__submit clicked')
-      ModalService.open ChoosePlanModal, group: -> $scope.group
+      ModalService.open ChoosePlanModal, group: -> group
