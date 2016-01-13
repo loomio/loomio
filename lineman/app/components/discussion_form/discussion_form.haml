@@ -13,7 +13,7 @@
 
     .lmo-form-group{ng-show: 'showGroupSelect'}
       %label{for: 'discussion-group-field', translate: 'discussion_form.group_label'}
-      %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName for group in availableGroups() | orderBy: "fullName"', ng-change: 'restoreRemoteDraft()'}
+      %select.form-control#discussion-group-field{ng-model: 'discussion.groupId', ng-required: 'true' ng-options: 'group.id as group.fullName for group in availableGroups() | orderBy: "fullName"', ng-change: 'restoreRemoteDraft(); updatePrivacy()'}
         %option{value: '', translate: 'discussion_form.group_placeholder' }
 
     .discussion-group-selected{ng_if: 'discussion.groupId'}
