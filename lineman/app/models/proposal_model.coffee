@@ -70,7 +70,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
       if @isActive()
         @group().membershipsCount
       else
-        @numberVoted() + parseInt(@didNotVotesCount)
+        @numberVoted() + parseInt(@membersNotVotedCount)
 
     lastVoteByUser: (user) ->
       @uniqueVotesByUserId()[user.id]
