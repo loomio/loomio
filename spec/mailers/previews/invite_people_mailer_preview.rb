@@ -6,9 +6,11 @@ class InvitePeopleMailerPreview < ActionMailer::Preview
 
     invitation = InvitationService.create_invite_to_start_group(group: group,
                                                                 inviter: inviter,
-                                                                recipient_email: group.group_request.admin_email,
-                                                                recipient_name: group.group_request.admin_name)
-    InvitePeopleMailer.to_start_group(invitation, sender)
+                                                                recipient_email: group.creator.email,
+                                                                recipient_name: group.creator.name)
+    InvitePeopleMailer.to_start_group(invitation: invitation,
+                                      sender_email: sender.email,
+                                      locale: sender.locale)
   end
 
   def to_join_group
@@ -21,10 +23,9 @@ class InvitePeopleMailerPreview < ActionMailer::Preview
                     inviter: responder,
                     group: group)
     message_body = "Pleaseeeeee join us, it will complete the phophecy and we'll become captain planet"
-    InvitePeopleMailer.to_join_group(invitation, responder, message_body)
+    InvitePeopleMailer.to_join_group(invitation: invitation,
+                                     sender: responder,
+                                     message_body: message_body,
+                                     locale: responder.locale)
   end
-
-  #def after_membership_request_approval
-    #(invitation, sender_email, message_body)
-  #end
 end
