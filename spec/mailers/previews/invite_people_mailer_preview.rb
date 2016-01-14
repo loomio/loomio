@@ -24,8 +24,6 @@ class InvitePeopleMailerPreview < ActionMailer::Preview
                     group: group)
     message_body = "Pleaseeeeee join us, it will complete the phophecy and we'll become captain planet"
     InvitePeopleMailer.to_join_group(invitation: invitation,
-                                     sender: responder,
-                                     message_body: message_body,
                                      locale: responder.locale)
   end
 end
