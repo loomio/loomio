@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   MED_LARGE_IMAGE = 70
   MEDIUM_IMAGE = 50
   SMALL_IMAGE = 30
-  MAX_AVATAR_IMAGE_SIZE_CONST = 10.megabytes
+  MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
   attr_accessor :honeypot

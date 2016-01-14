@@ -193,12 +193,12 @@ class Group < ActiveRecord::Base
                        default_url: 'default-logo-:style.png'
 
   validates_attachment :cover_photo,
-    size: { in: 0..10.megabytes },
+    size: { in: 0..100.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   validates_attachment :logo,
-    size: { in: 0..10.megabytes },
+    size: { in: 0..100.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
