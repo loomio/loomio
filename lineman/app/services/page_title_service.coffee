@@ -3,10 +3,12 @@ angular.module('loomioApp').factory 'PageTitleService', ->
     title: 'Loomio',
     count: 0,
     set: ({title, count}) ->
-      @title = _.trunc(title, 300) if title?
+      @title = "#{_.trunc(title, 300)} | Loomio" if title?
       @count = count if count?
       @apply()
 
     apply: ->
-      prefix = if @count > 0 then "(#{@count}) " else ""
-      document.querySelector('title').text = "#{prefix}#{@title} | Loomio"
+      document.querySelector('title').text = "#{@prefixFor(@count)}#{@title}"
+
+    prefixFor: (count) ->
+      if count > 0 then "(#{count}) " else ""
