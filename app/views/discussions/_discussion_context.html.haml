@@ -11,7 +11,7 @@
           = link_to edit_discussion_path(@discussion) do
             %i.fa.fa-pencil
             = t :edit
-        - if TranslationService.can_translate? @discussion
+        - if current_user_or_visitor.is_logged_in? && TranslationService.can_translate?(@discussion)
           = translate_link_for @discussion
   .col-sm-3.col-sm-offset-1.right-context
     - if can? :set_volume, @discussion

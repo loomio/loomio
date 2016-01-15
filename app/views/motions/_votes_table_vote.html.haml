@@ -6,5 +6,5 @@
   %span.word-break~ vote.statement
   .translation-spacer.translated
   .translated-position.translated= t(:loading_translation)
-  - if TranslationService.can_translate? vote
+  - if current_user_or_visitor.is_logged_in? && TranslationService.can_translate?(vote)
     =translate_link_for vote
