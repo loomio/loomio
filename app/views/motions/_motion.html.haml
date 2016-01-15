@@ -21,7 +21,7 @@
   .description
     .long-description
       = render_rich_text(motion.description, true)
-    - if TranslationService.can_translate? motion
+    - if current_user_or_visitor.is_logged_in? && TranslationService.can_translate?(motion)
       = translate_link_for motion
 
   .motion-header-info

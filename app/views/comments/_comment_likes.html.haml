@@ -11,7 +11,7 @@
     - else
       = link_to t(:like), like_comment_path(comment), method: :post, remote: true, id: "like-comment-#{comment.id}"
 
-  - if TranslationService.can_translate? comment
+  - if current_user_or_visitor.is_logged_in? && TranslationService.can_translate?(comment)
     = " · "
     = translate_link_for comment
 - if comment.liker_ids_and_names.size > 0
