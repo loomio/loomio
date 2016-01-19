@@ -56,10 +56,12 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
     AbilityService.canRespondToComment($scope.comment)
 
   $scope.like = ->
-    Records.comments.like(CurrentUser, $scope.comment, renderLikedBySentence)
+    $scope.addLiker()
+    Records.comments.like(CurrentUser, $scope.comment).then (->), $scope.removeLiker
 
   $scope.unlike = ->
-    Records.comments.unlike(CurrentUser, $scope.comment, renderLikedBySentence)
+    $scope.removeLiker()
+    Records.comments.unlike(CurrentUser, $scope.comment).then (->), $scope.addLiker
 
   $scope.currentUserLikesIt = ->
     _.contains($scope.comment.likerIds, CurrentUser.id)
@@ -71,6 +73,14 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
 
   updateLikedBySentence = (sentence) ->
     $scope.likedBySentence = sentence
+
+  $scope.addLiker = ->
+    $scope.comment.addLiker(CurrentUser)
+    renderLikedBySentence()
+
+  $scope.removeLiker = ->
+    $scope.comment.removeLiker(CurrentUser)
+    renderLikedBySentence()
 
   $scope.$watch 'comment.likerIds', ->
     renderLikedBySentence()
