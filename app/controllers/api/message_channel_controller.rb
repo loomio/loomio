@@ -4,7 +4,7 @@ class API::MessageChannelController < API::RestfulController
   rescue_from(MessageChannelService::UnknownChannelError) { |e| respond_with_standard_error e, 400 }
 
   def subscribe
-    @subscriptions = Array(subscription_models).map { |model| MessageChannelService.subscribe_to(user: current_user, model: model) }
+    @subscriptions = Array(subscription_models).map { |model| MessageChannelService.subscribe_to(user: current_user, model: model) }.compact
     respond_with_subscriptions
   end
 
