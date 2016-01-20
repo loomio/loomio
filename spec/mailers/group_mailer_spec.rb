@@ -69,7 +69,7 @@ describe GroupMailer do
                                       email_subject, email_body)
     end
   end
-
+  
   describe "#group_email" do
     before :each do
       @group = stub_model Group, :name => "Blue", full_name: "Marvin: Blue", :admin_email => "goodbye@world.com", key: 'abc123'
@@ -78,7 +78,7 @@ describe GroupMailer do
       @subject = "meeby"
       @message = "what in the?!"
       @mail = GroupMailer.group_email(@group, @sender, @subject,
-                                      @message, @recipient)
+                                     @message, @recipient)
     end
 
     subject { @mail }
@@ -87,4 +87,5 @@ describe GroupMailer do
     its(:to) { should == [@recipient.email] }
     its(:from) { should == ['notifications@loomio.org'] }
   end
+
 end

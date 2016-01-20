@@ -7,8 +7,10 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
+  let(:new_comment) { build(:comment, discussion: discussion) }
   let(:proposal) { create :motion, discussion: discussion, author: user }
   let(:discussion_params) {{
     title: 'Did Charlie Bite You?',
@@ -30,6 +32,41 @@ describe API::DiscussionsController do
         get :inbox
         expect(response.status).to eq 403
       end
+    end
+
+    before do
+      reader.viewed!
+      group.add_member! another_user
+    end
+
+    it 'returns unread threads' do
+      CommentService.create(comment: new_comment, actor: another_user)
+      get :inbox
+      json = JSON.parse(response.body)
+      discussion_ids = json['discussions'].map { |d| d['id'] }
+      expect(discussion_ids).to include discussion.id
+    end
+
+    it 'does not return read threads' do
+      get :inbox
+      json = JSON.parse(response.body)
+      expect(json['discussions']).to be_blank
+    end
+
+    it 'does not return threads in muted discussions' do
+      CommentService.create(comment: new_comment, actor: another_user)
+      DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
+      get :inbox
+      json = JSON.parse(response.body)
+      expect(json['discussions']).to be_blank
+    end
+
+    it 'does not return threads in muted groups' do
+      CommentService.create(comment: new_comment, actor: another_user)
+      Membership.find_by(user: user, group: group).set_volume! :mute
+      get :inbox
+      json = JSON.parse(response.body)
+      expect(json['discussions']).to be_blank
     end
   end
 

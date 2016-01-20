@@ -7,5 +7,5 @@
   .translation-spacer.translated
   .translated-position.translated
     = t(:loading_translation)
-  - if vote.has_statement? && TranslationService.can_translate?(vote)
+  - if current_user_or_visitor.is_logged_in? && vote.has_statement? && TranslationService.can_translate?(vote)
     %div= translate_link_for vote

@@ -519,7 +519,6 @@ ga-IE:
       aria_label: Roghanna na dtráchtanna
       edit_comment: Déan eagarthóireacht ar an trácht
       delete_comment: Scrios an trácht
-    in_reply_to: '<strong>{{author}}</strong> mar fhreagra ar <strong>{{recipient}}</strong>'
   contact_message_form:
     contact_us: Déan teagmháil linn
     name_label: "D'ainm"

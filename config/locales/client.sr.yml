@@ -413,11 +413,7 @@ sr:
   trial_card:
     title: 30-odnevna proba
     choose_plan: Odaberi svoj plan plaćanja
-    in_progress_body: 'Hvala što probate Lumio sa <strong>{{name}}</strong>. Možete odabrati svoj plan plaćanja koji Vam odgovara u bilo koje vreme.'
-    expired_body_html: "<strong>{{name}}</strong> je upravo dostigla kraj svoje Lumio probe. Ako želite da nastavite da ga koristite, trebate odabrati odgovarajući plan plaćanja. Ako želite da pričate sa nekim o  ovome samo <a href=''>nas kontaktirajte</a>."
   choose_plan_modal:
-    heading: Odaberi svoj plan plaćanja
-    overdue_heading: 'Da nastavite koristiti Lumio, molimo Vas odaberite plan plaćanja'
     gift: Poklon
     standard: Standardno
     plus: Plus
@@ -718,38 +714,8 @@ sr:
       aria_label: Opcije komentara
       edit_comment: Izmeni komentar
       delete_comment: Obriši komentar
-    in_reply_to: '<strong>{{author}}</strong> u odgovoru <strong>{{recipient}}</strong>'
-  new_vote_item:
-    agree: '<strong>{{actor}}</strong> se slaže'
-    abstain: '<strong>{{actor}}</strong> se uzdržava'
-    disagree: '<strong>{{actor}}</strong> se ne slaže'
-    block: '<strong>{{actor}}</strong> blokira'
-    agree_with_statement: '<strong>{{actor}}</strong> se slaže sa: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> se uzdržava o: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> se ne slaže sa: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> blokira: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> predlaže: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'Predlog je istekao: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> je zatvorio/la predlog: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: '<strong>{{actor}}</strong> je izmenio/la naslov predloga: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> je izmenio/la opis predloga'
-    closing_at: '<strong>{{actor}}</strong> je izmenio/la rok predloga tako da isktekne  <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> je izmenio/la naslov i opis predloga'
-    closing_at_name: '<strong>{{actor}}</strong> je izmenio/la naslov i rok predloga'
-    closing_at_description: '<strong>{{actor}}</strong> je izmenio/la opis predloga i rok'
-    closing_at_description_name: '<strong>{{actor}}</strong> je izmenio/la naslov predloga, opis i rok'
-  proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> je objavio/la ishod predloga:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> je izmenio/la ishod predloga:'
-  discussion_edited_item:
-    title: '<strong>{{actor}}</strong> je izmenio/la naslov niti: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> je izmenio/la kontekst niti'
-    description_title: '<strong>{{actor}}</strong> je izmenio/la naslov i kontekst niti'
   contact_message_form:
     contact_us: Kontakiraj nas
     name_label: Tvoje ime

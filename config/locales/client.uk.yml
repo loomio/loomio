@@ -405,11 +405,7 @@ uk:
   trial_card:
     title: 30-денне безкоштовне пробне використання
     choose_plan: Виберіть тарифний план
-    in_progress_body: 'Дякуємо за використання Loomio разом з <strong>{{name}}</strong>. Ви можете вибрати зручний для вас тарифний план в будь-який час.'
-    expired_body_html: "Пробне використання Loomio для <strong>{{name}}</strong> досягло кінця. Якщо ви хочете, використовувати її далі, вам потрібно вибрати тарифний план, який відповідає вашим потребам. Якщо ви хочете обговорити це питання, просто <a href=''>зв'яжіться</a>."
   choose_plan_modal:
-    heading: Виберіть тарифний план
-    overdue_heading: 'Щоб продовжити використання Loomio, будь ласка, виберіть тарифний план'
     gift: Подарунок.
     standard: Стандарт
     plus: Плюс
@@ -709,38 +705,8 @@ uk:
       aria_label: Налаштування коментаря
       edit_comment: Редагувати коментар
       delete_comment: Видалити коментар
-    in_reply_to: '<strong>{{author}}</strong> у відповідь на <strong>{{recipient}}</strong>'
-  new_vote_item:
-    agree: '<strong>{{actor}}</strong> згоден'
-    abstain: '<strong>{{actor}}</strong> утримався'
-    disagree: '<strong>{{actor}}</strong> проти'
-    block: '<strong>{{actor}}</strong> заблокував'
-    agree_with_statement: '<strong>{{actor}}</strong> згоден: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> утримався: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> проти: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> заблокував: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> вніс(внесла) пропозицію: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'Було закрито пропозицію: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> закрив(ла) пропозицію: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: '<strong>{{actor}}</strong> оновив(ла) назву пропозиції: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> оновив(ла) опис пропозиції'
-    closing_at: '<strong>{{actor}}</strong> оновив(ла) час закриття пропозиції на <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> оновив(ла) назву та опис пропозиції'
-    closing_at_name: '<strong>{{actor}}</strong> оновив(ла) назву та час закриття пропозиції'
-    closing_at_description: '<strong>{{actor}}</strong> оновив(ла) опис та час закриття пропозиції'
-    closing_at_description_name: '<strong>{{actor}}</strong> оновив(ла) назву, опис та час закриття пропозиції'
-  proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> опублікував(ла) рішення по пропозиції:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> оновив(ла) рішення по пропозиції:'
-  discussion_edited_item:
-    title: '<strong>{{actor}}</strong> оновив заголовок теми: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> оновив контекст теми'
-    description_title: '<strong>{{actor}}</strong> оновив заголовок теми та її контекст'
   contact_message_form:
     contact_us: Контакти
     name_label: "Ваше ім'я"

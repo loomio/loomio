@@ -29,6 +29,12 @@ describe SubscriptionService do
       expect(group.subscription.plan).to be_blank
       expect(group.subscription.chargify_subscription_id).to be_blank
     end
+
+    it 'updates the group subscription for a group without a subscription' do
+      group.update(subscription: nil)
+      SubscriptionService.new(group, user).start_gift!
+      expect(group.reload.subscription.kind).to eq 'gift'
+    end
   end
 
   describe 'start_subscription!' do

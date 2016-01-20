@@ -34,7 +34,7 @@ namespace :bootstrap do
     end
   end
 
-  desc 'Create user (optional arguments email)'
+  desc 'Create user (optional arguments email and password)'
   task :create_user, [:email, :password] => :environment do |t, args|
     args.with_defaults(email: 'default@loomio.com', password: 'bootstrap_password')
     if User.find_by(email: args[:email]).nil?
@@ -79,7 +79,7 @@ namespace :bootstrap do
   end
 end
 
-desc "Tries to onfigure and run application"
+desc "Tries to configure and run application"
 task :bootstrap do
   puts 'Hold on, project is starting'
   Rake::Task['bootstrap:dependencies'].invoke

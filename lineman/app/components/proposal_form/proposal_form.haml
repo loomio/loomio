@@ -14,12 +14,12 @@
     %fieldset{ng-disabled: '!proposal.canBeEdited()'}
       .lmo-form-group
         %label{for: 'proposal-title-field', translate: 'proposal_form.title_label'}
-        %textarea.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{msd-elastic: 'true', rows: 1, placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-required: 'false', maxlength: '255'}
+        %textarea.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{msd-elastic: 'true', rows: 1, placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: 'proposal.name', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', ng-required: 'false', maxlength: '255'}
         %validation_errors{subject: 'proposal', field: 'name'}
 
       .lmo-form-group
         %label{for: 'proposal-details-field', translate: 'proposal_form.details_label'}
-        %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{ng-model: 'proposal.description', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
+        %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: 'true', ng-model: 'proposal.description', ng-model-options: '{debounce: 600}', ng-change: 'storeDraft()', placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
 
       %closing_at_field{proposal: 'proposal'}
 

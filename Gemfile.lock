@@ -480,8 +480,7 @@ GEM
       websocket-driver (>= 0.2.0)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
+    puma (2.15.3)
     rack (1.6.4)
     rack-attack (4.2.0)
       rack
@@ -774,4 +773,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
