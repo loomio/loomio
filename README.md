@@ -7,8 +7,30 @@
 Loomio is a collaborative decision-making tool that makes it easy for anyone to participate in decisions which affect them. If you'd like to find out more, check out [Loomio.org](https://www.loomio.org).
 
 - Issues and __bugs__ should be [reported here](http://github.com/loomio/loomio/issues)
-- Setting up or developing Loomio is described in the [Tech Manual](https://www.gitbook.com/book/loomio/tech-manual).
-- To see what's being worked on and what's planned, vote on development priorities, and find tasks to pick up, check out the [Loomio Roadmap](https://www.loomio.org/roadmap). To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).
+- To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).
+
+### Setting up Loomio locally
+
+Ensure you have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [node / npm](https://docs.npmjs.com/getting-started/installing-node), Ruby (we like [rbenv](https://github.com/rbenv/rbenv)!), and [Postgres](https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres#installing-postgres) installed.
+
+**Clone the repo:**
+```
+git clone https://github.com/loomio/loomio.git
+```
+
+**Run the bootstrap task**
+```
+rake bootstrap
+```
+
+**Go!**
+```
+rake bootstrap:run
+```
+
+Visit `localhost:8000` in your browser. Voila!
+
+Need more detailed help? Check out the [Tech Manual](https://loomio.gitbooks.io/tech-manual/content/), or drop us a line at [contact@loomio.org](mailto:contact@loomio.org)
 
 ### Contact
 
