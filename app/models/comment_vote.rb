@@ -13,4 +13,6 @@ class CommentVote < ActiveRecord::Base
   delegate :title, to: :discussion, prefix: :discussion
   delegate :discussion_id, to: :comment
   delegate :discussion, to: :comment
+
+  alias :author :user
 end

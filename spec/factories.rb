@@ -93,6 +93,11 @@ published_at "2015-11-18 14:28:30"
     end
   end
 
+  factory :comment_vote do
+    comment
+    user
+  end
+
   factory :motion do
     sequence(:name) { Faker::Name.name }
     association :author, factory: :user

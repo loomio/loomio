@@ -5,34 +5,26 @@ class MotionService
     return false unless motion.valid?
     motion.save!
 
-    Draft.purge(user: actor, draftable: motion.discussion, field: :motion)
-    SearchVector.index! motion.discussion_id
-
-    event = Events::NewMotion.publish!(motion)
-    DiscussionReader.for(discussion: motion.discussion, user: motion.author).author_thread_item!(motion.created_at)
-    event
+    EventBus.broadcast('motion_create', motion, actor)
+    Events::NewMotion.publish!(motion)
   end
 
   def self.update(motion:, params:, actor:)
+    actor.ability.authorize! :update, motion
 
     if params[:closing_at] && motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
       params.delete(:closing_at)
     end
 
-    motion.attributes = params
-    actor.ability.authorize! :update, motion
+    motion.assign_attributes(params)
     return false unless motion.valid?
 
     motion.save!
-    event = Events::MotionEdited.publish!(motion, actor)
-    SearchVector.index! motion.discussion_id
-    event
+    Events::MotionEdited.publish!(motion, actor)
   end
 
   def self.close_all_lapsed_motions
-    Motion.lapsed_but_not_closed.each do |motion|
-      close(motion)
-    end
+    Motion.lapsed_but_not_closed.each { |motion| close(motion) }
   end
 
   def self.reopen(motion, close_at)
@@ -40,6 +32,7 @@ class MotionService
     motion.closing_at = close_at
     motion.save!
     motion.did_not_votes.delete_all
+    EventBus.broadcast('motion_reopen', motion, close_at)
   end
 
   def self.close(motion)
@@ -48,6 +41,7 @@ class MotionService
     motion.save!
     motion.update_members_not_voted_count
 
+    EventBus.broadcast('motion_close', motion)
     Events::MotionClosed.publish!(motion)
   end
 
@@ -58,28 +52,31 @@ class MotionService
     motion.closed_at = Time.now
     motion.save!
 
+    EventBus.broadcast('motion_close_by_user', motion, user)
     Events::MotionClosedByUser.publish!(motion, user)
   end
 
   def self.create_outcome(motion:, params:, actor:)
     motion.outcome_author = actor
-    motion.outcome = params[:outcome]
-
-    return false unless motion.valid?
     actor.ability.authorize! :create_outcome, motion
 
+    motion.assign_attributes(params.slice(:outcome))
+    return false unless motion.valid?
+
     motion.save!
+    EventBus.broadcast('motion_create_outcome', motion, params, actor)
     Events::MotionOutcomeCreated.publish!(motion, actor)
   end
 
   def self.update_outcome(motion:, params:, actor:)
     motion.outcome_author = actor
-    motion.outcome = params[:outcome]
-
-    return false unless motion.valid?
     actor.ability.authorize! :update_outcome, motion
 
+    motion.assign_attributes(params.slice(:outcome))
+    return false unless motion.valid?
+
     motion.save!
+    EventBus.broadcast('motion_update_outcome', motion, params, actor)
     Events::MotionOutcomeUpdated.publish!(motion, actor)
   end
 end

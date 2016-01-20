@@ -1,20 +1,16 @@
 require 'rails_helper'
 
 describe Events::InvitationAccepted do
-  let(:membership){ mock_model(Membership) }
+  let(:membership){ create(:membership) }
 
   describe "::publish!" do
-    let(:event) { double(:event, notify_users!: true) }
-    before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'invitation_accepted',
-                                          eventable: membership)
-      Events::InvitationAccepted.publish!(membership)
+      expect { Events::InvitationAccepted.publish!(membership) }.to change { Event.where(kind: 'invitation_accepted').count }.by(1)
     end
 
     it 'returns an event' do
-      expect(Events::InvitationAccepted.publish!(membership)).to eq event
+      expect(Events::InvitationAccepted.publish!(membership)).to be_a Event
     end
   end
 end
