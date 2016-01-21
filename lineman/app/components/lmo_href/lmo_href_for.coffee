@@ -8,4 +8,6 @@ angular.module('loomioApp').directive 'lmoHrefFor', (LmoUrlService) ->
       model: scope.model
       action: scope.action
     elem.bind 'click', ($event) ->
-      $event.stopImmediatePropagation() if $event.ctrlKey or $event.metaKey
+      attr_target = $event.target.attributes.target
+      if $event.ctrlKey or $event.metaKey or (attr_target and attr_target.value == '_blank')
+        $event.stopImmediatePropagation()
