@@ -6,5 +6,11 @@ angular.module('loomioApp').directive 'groupHelpCard', ->
   controller: ($scope, CurrentUser, AppConfig) ->
     $scope.showVideo = AppConfig.loadVideos
 
+    $scope.helpLink = ->
+      if _.contains(['es', 'an', 'ca', 'gl'], CurrentUser.locale)
+        'https://loomio.gitbooks.io/manual/content/es/index.html'
+      else
+        'https://help.loomio.org'
+
     $scope.showHelpCard = ->
       CurrentUser.isMemberOf($scope.group)

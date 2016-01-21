@@ -3,6 +3,7 @@ angular.module('loomioApp').directive 'lmoHref', ->
   scope:
     route: '@lmoHref'
   link: (scope, elem, attrs) ->
-    elem.attr 'href', scope.route
+    scope.$watch 'route', ->
+      elem.attr 'href', scope.route
     elem.bind 'click', ($event) ->
       $event.stopImmediatePropagation() if $event.ctrlKey or $event.metaKey
