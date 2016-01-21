@@ -808,6 +808,7 @@ en:
     notifications: 'Notifications'
     edit_thread: 'Edit'
     move_thread: 'Move'
+    print_thread: 'Print'
     delete_thread: 'Delete'
 
   delete_thread_form:

@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, AppConfig) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   handleCommentHash = do ->
@@ -90,6 +90,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @canMoveThread = =>
     AbilityService.canMoveThread(@discussion)
+
+  @printUrl = ->
+    "#{AppConfig.baseUrl}d/#{@discussion.key}/print"
 
   @canDeleteThread = =>
     AbilityService.canDeleteThread(@discussion)
