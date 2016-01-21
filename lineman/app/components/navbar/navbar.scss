@@ -101,7 +101,6 @@
 .lmo-navbar__btn-label{
   @include fontMedium;
   padding: 5px;
-  @media (max-width: 650px){display: none;}
 }
 
 .lmo-navbar__btn.has-badge{
@@ -133,6 +132,10 @@
         &.has-badge .badge { border: 2px solid $list-hover-color; }
       }
     }
+  }
+
+  .lmo-navbar__btn-label {
+    display: none;
   }
 
   .lmo-navbar-item-container--left{
