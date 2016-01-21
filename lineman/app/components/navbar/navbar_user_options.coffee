@@ -3,14 +3,11 @@ angular.module('loomioApp').directive 'navbarUserOptions', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_user_options.html'
   replace: true
-  controller: ($scope, $rootScope, CurrentUser, $window, RestfulClient, IntercomService, AppConfig) ->
+  controller: ($scope, $rootScope, CurrentUser, $window, RestfulClient, IntercomService, AppConfig, UserHelpService) ->
     $scope.currentUser = CurrentUser
 
     $scope.helpLink = ->
-      if _.contains(['es', 'an', 'ca', 'gl'], CurrentUser.locale)
-        'https://loomio.gitbooks.io/manual/content/es/index.html'
-      else
-        'https://help.loomio.org'
+      UserHelpService.helpLink()
 
     $scope.signOut = ->
       $rootScope.$broadcast 'logout'
