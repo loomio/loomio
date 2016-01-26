@@ -5,6 +5,7 @@ body {
   background-color: $app-background;
   color: $text-black;
   margin-top: 50px;
+  word-break: keep-all;
 }
 
 body.pages{
