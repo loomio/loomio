@@ -10,3 +10,4 @@ angular.module('loomioApp').factory 'ModalService', ($uibModal, $rootScope, Ahoy
         controller:  modal.controller
         resolve:     resolve
         size:        (modal.size || '')
+        backdrop:    'static'

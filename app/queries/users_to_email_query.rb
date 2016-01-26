@@ -30,7 +30,7 @@ class UsersToEmailQuery
                                User.email_proposal_closing_soon_for(motion.group))
   end
 
-  def self.motion_outcome(motion)
+  def self.motion_outcome_created(motion)
     UsersByVolumeQuery.normal_or_loud(motion.discussion).
                        distinct.
                        without(motion.outcome_author)

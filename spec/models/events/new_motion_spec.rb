@@ -6,19 +6,13 @@ describe Events::NewMotion do
   let(:motion) { create :motion, discussion: discussion }
 
   describe "::publish!" do
-    let(:event) { double(:event, notify_users!: true, eventable: motion, id: 1) }
-    before { Event.stub(:create!).and_return(event) }
 
     it 'creates an event' do
-      Event.should_receive(:create!).with(kind: 'new_motion',
-                                          eventable: motion,
-                                          discussion: motion.discussion,
-                                          created_at: motion.created_at)
-      Events::NewMotion.publish!(motion)
+      expect { Events::NewMotion.publish!(motion) }.to change { Event.where(kind: 'new_motion').count }.by(1)
     end
 
     it 'returns an event' do
-      expect(Events::NewMotion.publish!(motion)).to eq event
+      expect(Events::NewMotion.publish!(motion)).to be_a Event
     end
   end
 

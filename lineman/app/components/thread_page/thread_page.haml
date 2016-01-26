@@ -20,6 +20,9 @@
                   %a.thread-context__dropdown-options-edit.lmo-dropdown-menu-item-label{href: '', ng-click: 'threadPage.editThread()', translate: 'thread_context.edit_thread'}
                 %li.lmo-dropdown-menu-item{ng-if: 'threadPage.canMoveThread()'}
                   %a.thread-context__dropdown-options-move.lmo-dropdown-menu-item-label{href: '', ng-click: 'threadPage.moveThread()', translate: 'thread_context.move_thread'}
+                %li.lmo-dropdown-menu-item
+                  %a.thread-context__dropdown-options-print{lmo-href-for: 'threadPage.discussion', lmo-href-action: 'print', target: '_blank'}
+                    %span{translate: 'thread_context.print_thread'}
                 %li.lmo-dropdown-menu-item{ng-if: 'threadPage.canDeleteThread()'}
                   %a.thread-context__dropdown-options-delete.lmo-dropdown-menu-item-label{href: '', ng-click: 'threadPage.deleteThread()', translate: 'thread_context.delete_thread'}
 

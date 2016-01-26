@@ -18,6 +18,10 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
+  def self.for_model(model, actor = nil)
+    self.for(user: actor || model.author, discussion: model.is_a?(Discussion) ? model : model.discussion)
+  end
+
   def author_thread_item!(time)
     set_volume_as_required!
     participate!

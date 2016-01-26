@@ -428,6 +428,11 @@ class Group < ActiveRecord::Base
     membership
   end
 
+  def add_default_content!
+    update default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial
+    ExampleContent.add_to_group(self)
+  end
+
   def find_or_create_membership(user, inviter)
     begin
       Membership.find_or_create_by(user_id: user.id, group_id: id) do |m|

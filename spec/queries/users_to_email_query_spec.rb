@@ -139,7 +139,7 @@ describe UsersToEmailQuery do
   end
 
   it 'motion_outcome' do
-    users = UsersToEmailQuery.motion_outcome(motion)
+    users = UsersToEmailQuery.motion_outcome_created(motion)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
