@@ -16,7 +16,7 @@
             %i.fa.fa-envelope>
             %span{translate: 'navbar.user_options.email_settings'}
         %li.lmo-dropdown-menu-item
-          %a.navbar-user-options__help-link{lmo-href: 'https://help.loomio.org', target: '_blank'}
+          %a.navbar-user-options__help-link{lmo-href: '{{helpLink()}}', target: '_blank'}
             %i.fa.fa-info-circle>
             %span{translate: 'navbar.user_options.help'}
         %li.lmo-dropdown-menu-item{ng-if: 'showContactUs()'}
