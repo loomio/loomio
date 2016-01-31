@@ -5,6 +5,7 @@ class Groups::MembershipsController < GroupBaseController
 
   def index
     load_group
+    current_user.ability.authorize! :see_members, @group
     @memberships = @group.memberships.joins(:user).includes(:user).order('name')
     if current_user.is_group_admin?(@group)
       render "coordinator_index"
@@ -45,6 +46,9 @@ class Groups::MembershipsController < GroupBaseController
     elsif action_name == 'remove_admin'
       flash[:error] = t("error.only_group_coordinator_remove_admin")
       redirect_to [@membership.group, :memberships]
+    elsif action_name == 'index'
+      flash[:error] = t("error.access_denied")
+      redirect_to @group
     else
       flash[:error] = t("error.access_denied")
       redirect_to @membership.group
