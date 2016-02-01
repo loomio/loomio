@@ -1,25 +1,166 @@
 ar:
   common:
+    confirm_discard_changes: إلغاء التغييرات؟
+    time:
+      am: ص
+      pm: م
+    closing_in: 'الإغلاق {{time}} '
+    closed_ago: 'مغلق {{time}}'
+    volume: الحجم
+    notification_volume: حجم البلاغات
     group: المجموعة
     groups: المجموعات
+    privacy:
+      privacy: الخصوصة
+      public: عام
+      open: مفتوح
+      closed: مغلق
+      private: خاص
+      secret: سري
+    selected: مختار
     date_range:
       today: اليوم
+      yesterday: أمس
+      thisweek: هذا الأسبوع
+      thismonth: هذا الشهر
+      older: الأقدم
+    more_help: مساعدة أكبر
+    models:
+      proposal: مقترح
+    copied: منسوخ
     action:
+      close: مغلق
       save: حفظ
+      save_changes: حفظ التغييرات
+      update_settings: تحديث الإعدادات
+      reply: رد
       edit: تحرير
       like: يعجبني
       unlike: أخالف هذا
+      update: تحديث
       cancel: إلغاء
+      show_more: أظهر المزيد
+      view_all: رؤية كل شيء
+      new_thread: نسق جديد
+      add_subgroup: أضف مجموعة فرعية
+      loading: تحميل
+      translate: ترجم
+      translated: ترجم باستخدام مترجم بينغ
+      uploading: تحميل
+    formatting_help:
+      label: مساعدة في التنسيق
+      title: تعلم كيف تستخدم الماركداون لتنسيق النص على موقع لوميو
   error_page:
     forbidden: ليس لديك صلاحية للقيام بذلك.
+    page_not_found: نحن غير قادرون على إيجاد ذلك. من الممكن أن يكون قد جرى حذف أو نقله.
+    internal_server_error: نحن آسغون، حدث خطأ ما. رجاءً حاول لاحقاً.
+  start_proposal_card:
+    title: إبدأ مقترحاً
+    helptext: جاهز لصنع القرار؟
   proposal_outcome_panel:
     heading: النتيجة
+    set_outcome_hint: استخدم هذا المجال لتعرف الجميع يعرف مخرجالمقترح.
+    set_outcome_btn: حدد مخرج المقترح
+    edit_outcome_link: عدل مخرج المقترح
+  proposal_outcome_form:
+    set_outcome: حدد مخرج المقترح
+    update_outcome: حدث مخرج المقترح
+    outcome_label: مخرج المقترح
+    outcome_placeholder: عرف الجميع بمخرج المقترح.
+    publish_outcome: انشر المخرج
+    messages:
+      created: تم نشر المخرج
+      updated: تم تحديث المخرج
+  previous_proposals_card:
+    heading: المقترحات السابقة
+  previous_proposals_page:
+    heading: مقترحات الابقة
+  proposal_collapsed:
+    expand: وسع
+    outcome: 'المخرج: {{outcome}}'
+  volume_levels:
+    loud: مرتفع
+    normal: متوسط
+    quiet: هادئ
+    mute: مكتوم
+    unmute: غير مكتوم
+  thread_volume_card:
+    heading: بلاغات الأنساق
+    body:
+      loud: 'رسالة إلكترونية تتضمن كل شيء: ستتلقى رسالة إلكترونية عندما يحدث نشاط ما ضمن هذا النسق.'
+      normal: 'رسالة الكترونية بالمقترحات: ستتلقى رسالة إلكترونية لدى البدء بأي مقترح، الاقتراب من إغلاقه، أو لدى نشر أي مخرج. '
+      quiet: 'لا رسائل الكترونية: لن تتلقى أية رسائل حول أي نشاط في هذا النسق.'
+      mute: 'كتم النسق: لن تتلقى أية رسائل حول هذا النسق، وستتم إزالته من قائمة أنسقتك الحالية والصفحات غير المقروءة.'
+    change_volume_link: 'غير '
+  thread_volume_form:
+    header: بلاغات النسق
+    loud_label: رسالة الكترونية تتضمن كل شيء
+    loud_description: ستتلقى رسالة إلكترونية عندما يحدث نشاط ما ضمن هذا النسق
+    normal_label: رسالة الكترونية بالمقترحات
+    normal_description: ' ستتلقى رسالة إلكترونية لدى البدء بأي مقترح، الاقتراب من إغلاقه، أو لدى نشر أي مخرج. '
+    quiet_label: لا رسائل الكترونية
+    quiet_description: لن تتلقى أية رسائل الكترونية حول هذا النسق إلا في حال ذكرك شخص ما @.
+    mute_label: كتم النسق
+    mute_description: لن تتلقى أية رسائل حول هذا النسق، وستتم إزالته من قائمة أنسقتك الحالية والصفحات غير المقروءة.
+    submit: حدث
+    messages:
+      loud: ستتلقى رسالة الكترونية بالنشاط في هذا النسق
+      normal: ستتلقى رسائل الكترونية بالمقترحات في هذا النسق.
+      quiet: لن تتلقى أية رسائل الكترونية حول هذا النسق.
+      mute: كتم النسق
+  group_volume_card:
+    heading: بلاغات المجموعات
+    body:
+      loud: 'رسالة إلكترونية تتضمن كل شيء: ستتلقى رسالة إلكترونية عندما يحدث نشاط ما ضمن هذه المجموعة.'
+      normal: ستتلقى رسائل الكترونية بالأنساق والمقترحات الجديدة في هذه المجموعة.
+      quiet: 'لا رسائل الكترونية: لن تتلقى أية رسائل إالكترونية حول النشاط في هذه المجموعة.'
+      mute: 'كتم المجموعة: لن تتلقى أية رسائل الكترونية حول هذه المجموعة، وستتم إزالتها من أنسقتك الحالية والصفحات غير المقروؤة. '
+    change_volume_link: غير
+  group_volume_form:
+    header: بلاغات المجموعة
+    loud_label: رسالة إلكترونية تتضمن كل شيء
+    loud_description: ستتلقى رسالة إلكترونية بأي نشاط في هذه المجموعة
+    normal_label: رسائل الكترونية بالأنساق والمقترحات الجديدة
+    normal_description: ستتلقى رسائل إلكترونية بالأنساق والمقترحات في هذه المجموعة
+    quiet_label: 'لا رسائل إلكترونية '
+    quiet_description: لن تتلقى أية رسائل إلكترونية حول النشاط في هذه المجموعة إلا إلا ذكرك أحد ما.
+    mute_label: كتم المجموعة
+    mute_description: لن تتلقى أية رسائل الكترونية حول هذه المجموعة، وسيتم حذفها من قائمة أنسقتك الحالية والصفحات غير المقروءة.
+    submit: حدث
+    messages:
+      loud: ستتلقى رسائل الكترونية حول كافة النشاطات في هذه المجموعة
+      normal: ستتلقى رسائل إلكترونية بالمقترحات في هذه المجموعة
+      quiet: لن تتلقى أية رسائل الكترونية حول هذه المجموعة.
+      mute: كتم المجموعة
+  inbox:
+    clear: مسح
+    latest: الأحدث
+    unread: غير مقروءة
+    closing_in: الإغلاق
+  session_form:
+    email_label: 'البريد الالكتروني:'
+    password_label: 'كلمة المرور '
+    sign_in: 'تسجيل دخول:'
   comment_form:
+    aria_label: إضافة تعليق
+    attachments:
+      aria_label: إرفاق ملف
+      remove_attachment: حذف المرفق
+    messages:
+      created: تمت إضافة التعليق
+      replied: 'تم إبلاغ {{name}} بالرد'
+      updated: تم تحديث التعليق
+      destroyed: تم حذف التعليق
+    edit_comment: تحرير التعليق
     delete_comment: احذف التعليق
+    cancel_reply: إلغاء الرد
     confirm_delete_message: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
+    confirm_delete: نعم، متأكد
   navbar:
+    unread: غير مقروءة
     groups: المجموعات
     user_options:
+      new_thread: نسق جديد
       new_group: مجموعة جديدة
       help: مساعدة
   notifications:
@@ -39,6 +180,7 @@ ar:
     close_proposal: أغلِق الإقتراح
   proposal_form:
     start_proposal: إبدأ مقترحا
+    start_a_proposal: إبدأ مقترحاً
     edit_proposal: تعديل الإقتراح
     title_label: العنوان
     details_label: التفاصيل
@@ -50,6 +192,7 @@ ar:
   proposal_expanded:
     edit_proposal: تعديل الإقتراح
     close_proposal: أغلِق الإقتراح
+    closed_badge: مغلق
   membership_request_form:
     name_label: الإسم
     email_label: البريد الإلكتروني
@@ -60,9 +203,14 @@ ar:
       label: الخيارات
     leave_group:
       title: غادر المجموعة
+  group_form:
+    privacy: الخصوصة
+    submit_update: تحديث الإعدادات
   membership_requests_page:
     approve: موافق
     ignore: تجاهل
+  group_previous_proposals_card:
+    heading: مقترحات الابقة
   memberships_page:
     members: الأعضاء
     name_label: الإسم
@@ -82,6 +230,9 @@ ar:
     mark_as_read: تمت قراءته
     threads_from:
       today: اليوم
+      yesterday: أمس
+  discussion:
+    previous_proposals: المقترحات السابقة
   thread_group:
     aria_label: اسم المجموعة
   delete_comment_dialog:
@@ -90,10 +241,11 @@ ar:
     confirm: احذف التعليق
   new_comment_item:
     context_menu:
+      edit_comment: تحرير التعليق
       delete_comment: احذف التعليق
   help_page:
     get_in_touch: إتصل معنا
-    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <a href='%{link}'>تواصل معنا</a>."
+    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <{a href='%{link>تواصل معنا</a>."
     getting_started: من أجل البدء
     getting_started_description: "على اليسار، تناقش المجموعة موضوعا\_وتتبادل الأفكار والمعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين."
     have_a_discussion: أجر نقاشا

@@ -2,8 +2,8 @@ an:
   frontpage: 52
   main_1_0: 20
 ar:
-  frontpage: 60
-  main_1_0: 10
+  frontpage: 100
+  main_1_0: 27
 be-BY:
   frontpage: 58
   main_1_0: 25
@@ -24,19 +24,20 @@ da:
   main_1_0: 29
 de:
   frontpage: 100
-  main_1_0: 100
+  main_1_0: 99
 el:
-  frontpage: 78
-  main_1_0: 27
+  frontpage: 100
+  main_1_0: 51
 en-BE:
   frontpage: 0
   main_1_0: 0
 en-NL:
   frontpage: 0
   main_1_0: 0
+en-US: {}
 eo:
   frontpage: 52
-  main_1_0: 25
+  main_1_0: 24
 es:
   frontpage: 100
   main_1_0: 100
@@ -68,6 +69,7 @@ he-IL: {}
 hi:
   frontpage: 0
   main_1_0: 0
+hi-IN: {}
 hr:
   frontpage: 100
   main_1_0: 6
@@ -95,7 +97,7 @@ km:
   main_1_0: 14
 ko:
   frontpage: 100
-  main_1_0: 81
+  main_1_0: 100
 ko-KR: {}
 lt:
   frontpage: 23
@@ -133,7 +135,7 @@ ro:
   main_1_0: 51
 ru:
   frontpage: 60
-  main_1_0: 25
+  main_1_0: 24
 ru-RU: {}
 sk:
   frontpage: 52
@@ -143,7 +145,7 @@ sl:
   main_1_0: 26
 sr:
   frontpage: 100
-  main_1_0: 90
+  main_1_0: 94
 sr-RS:
   frontpage: 69
   main_1_0: 25
@@ -153,6 +155,11 @@ sv:
 te:
   frontpage: 15
   main_1_0: 9
+te-IN: {}
+th: {}
+th-TH:
+  frontpage: 0
+  main_1_0: 0
 tr:
   frontpage: 58
   main_1_0: 25

@@ -11,8 +11,12 @@ el:
     group: Ομάδα
     groups: Ομάδες
     privacy:
+      privacy: Ιδιωτικότητα
       public: Δημόσιο
+      open: Άνοιγμα
+      closed: Έκλεισε
       private: Ιδιωτικό
+      secret: Κρυφό
     selected: Επιλεγμένα
     date_range:
       today: Σήμερα
@@ -20,21 +24,28 @@ el:
       thisweek: Αυτή την εβδομάδα
       thismonth: Αυτό το μήνα
       older: Παλιότερα
+    more_help: Περισσότερη βοήθεια
     models:
       proposal: Πρόταση
+    copied: Αντιγράφτηκε
     action:
+      close: Κλείσε
       save: Αποθήκευση
       save_changes: Αποθήκευση αλλαγών
+      update_settings: Ενημέρωση ρυθμίσεων
       reply: Απάντηση
       edit: Επεξεργασία
       like: Αρέσει
       unlike: "Δεν μ'άρέσει"
+      update: Ενημέρωση
       cancel: Ακύρωση
       show_more: Δείξε περισσότερα
       view_all: Εμφάνιση όλων
       new_thread: Νέο θέμα
       add_subgroup: Προσθήκη υπο-ομάδας
       loading: Φορτώνει
+      translate: Μετάφραση
+      translated: Μεταφράση από τον Μεταφραστή Bing
       uploading: Φορτώνει
     formatting_help:
       label: Βοήθεια μορφοποίησης
@@ -45,44 +56,171 @@ el:
     internal_server_error: 'Συγνώμη, αλλά κάτι πήγε λάθος. Παρακαλούμε προσπαθήστε ξανά.'
   start_proposal_card:
     title: Ξεκινήστε μια πρόταση
+    helptext: Είστε έτοιμος/η να πάρετε απόφαση;
   proposal_outcome_panel:
     heading: Αποτέλεσμα
+    set_outcome_hint: Χρησιμοποιήστε αυτό το κενό να ενημερώσετε όλους ποιο είναι το αποτέλεσμα της πρότασης.
+    set_outcome_btn: Βάλτε αποτέλεσμα της πρότασης
+    edit_outcome_link: Επεξεργασία αποτέλεσμα της πρότασης
   proposal_outcome_form:
+    set_outcome: Βάλτε αποτέλεσμα της πρότασης
+    update_outcome: Ανανεώστε το αποτέλεσμα της πρότασης
     outcome_label: αποτέλεσμα πρότασης
+    outcome_placeholder: Αφήστε όλους να γνωρίζουν το αποτέλεσμα της πρότασης.
     publish_outcome: Δημοσίευση αποτελέσματος
+    messages:
+      created: Το αποτέλεσμα δημοσιοποιήθηκε
+      updated: Το αποτέλεσμα ενημερώθηκε
+  previous_proposals_card:
+    heading: Προηγούμενες Προτάσεις
+  previous_proposals_page:
+    heading: Προηγούμενες προτάσεις
+  proposal_collapsed:
+    expand: Επέκτεινε
+    outcome: 'Αποτέλεσμα: {{outcome}}'
   volume_levels:
     loud: Δυνατά
     normal: Κανονικά
     quiet: Ήσυχα
     mute: Σίγαση
+    unmute: Κατάργηση σίγασης
+  thread_volume_card:
+    heading: Ειδοποιήσεις Θέματος
+    body:
+      loud: 'Να αποστέλλονται όλα στο ηλεκτρονικό ταχυδρομείο: θα σας έρχεται μήνυμα κάθε φορά που υπάρχει δραστηριότητα σε αυτό το θέμα.'
+      normal: 'Να αποστέλλονται μόνο οι προτάσεις στο ηλεκτρονικό ταχυδρομείο: θα σας έρχεται μήνυμα όταν μια πρόταση ξεκίνησε, είναι να κλείσει, ή δημοσιεύτηκε ένα αποτέλεσμα.'
+      quiet: 'Να μην αποστέλλεται τίποτα στο ηλεκτρονικό ταχυδρομείο: δεν θα σας έρχεται μήνυμα για την δραστηριότητα σε αυτό το θέμα.'
+      mute: 'Το θέμα σιγάστηκε: δεν θα σας έρχεται μήνυμα για αυτό το θέμα, και θα αφαιρεθεί από τα Πρόσφατα Θέματα και τις Αδιάβαστες σελίδες.'
+    change_volume_link: Αλλαγή
+  thread_volume_form:
+    header: Ειδοποιήσεις Θέματος
+    loud_label: Αποστολή όλων των μηνυμάτων
+    loud_description: Θα σας έρχεται μήνυμα κάθε φορά που υπάρχει δραστηριότητα σε αυτό το θέμα.
+    normal_label: Να αποστέλλονται στο ηλεκτρονικό ταχυδρομείο οι προτάσεις
+    normal_description: 'Θα λαμβάνετε μήνυμα όταν μια πρόταση ξεκινάει, είναι να κλείσει, ή δημοσιεύεται ένα αποτέλεσμα.'
+    quiet_label: Όχι μηνύματα ηλεκτρονικού ταχυδρομείου
+    quiet_description: Δεν θα σας έρχονται μηνύματα ηλεκτρονικού ταχυδρομείου για αυτό το θέμα εκτός εάν κάποιος σας @αναφέρει.
+    mute_label: Σίγαση θέματος
+    mute_description: 'Δεν θα σας έρθει μήνυμα ηλεκτρονικού ταχυδρομείου για αυτό το θέμα, και θα αφαιρεθεί από τα Πρόσφατα Θέματασα σας και τις Αδιάβαστες σελίδες σας.'
+    submit: Ενημέρωση
+    messages:
+      loud: Θα σας σταλθεί μήνυμα ηλεκτρονικού ταχυδρομείου για την δραστηριότητα σε αυτό το θέμα.
+      normal: Θα σας σταλθεί μήνυμα ηλεκτρονικού ταχυδρομείου για τις προτάσεις σε αυτό το θέμα.
+      quiet: Δεν θα σας σταλθεί κανένα μήνυμα ηλεκτρονικού ταχυδρομείου για αυτό το θέμα.
+      mute: Το θέμα σιγάστηκε.
+  group_volume_card:
+    heading: Ειδοποιήσεις Ομάδας
+    body:
+      loud: 'Να σταλθεί μήνυμα ηλεκτρονικού ταχυδρομείου για όλα: θα σας έρχεται μήνυμα ηλεκτρονικού ταχυδρομείου όταν υπάρχει δραστηριότητα σε αυτή την ομάδα.'
+      normal: Θα σας έρχεται μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τα νέα θέματα και τις προτάσεις σε αυτή την ομάδα.
+      quiet: 'Όχι μηνύματα ηλεκτρονικού ταχυδρομείου: δεν θα σας έρχεται μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με την δραστηριότητα σε αυτή την ομάδα.'
+      mute: 'Η ομάδα σιγάστηκε: δεν θα λαμβάνετε μηνύματα ηλεκτρονικού ταχυδρομείου για αυτή την ομάδα, και θα αφαιρεθεί από τα Πρόσφατα Θέματα και τις Αδιάβαστες σελίδες σας.'
+    change_volume_link: Αλλαγή
+  group_volume_form:
+    header: Ειδοποιήσεις Ομάδας
+    loud_label: Αποστολή όλων των μηνυμάτων
+    loud_description: Θα λαμβάνετε μήνυμα ηλεκτρονικού ταχυδρομείου όταν υπάρχει δραστηριότητα σε αυτή την ομάδα.
+    normal_label: Να αποστέλλονται μηνύματα ηλεκτρονικού ταχυδρομείου για τα νέα θέματα και τις προτάσεις
+    normal_description: Θα σας έρχεται μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τα νέα θέματα και τις προτάσεις σε αυτή την ομάδα.
+    quiet_label: Όχι μηνύματα ηλεκτρονικού ταχυδρομείου
+    quiet_description: 'Δεν θα σας στέλνονται μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με την δραστηριότητα σε αυτή την ομάδα, εκτός εάν κάποιος σας αναφέρει.'
+    mute_label: Σίγαση ομάδας
+    mute_description: 'Δεν θα σας στέλνονται μηνύματα ηλεκτρονικού ταχυδρομείου σχετικά με αυτή την ομάδα, και θα αφαιρεθεί από τα Πρόσφατα Θέματα και τις Αδιάβαστες σελίδες σας.'
+    submit: Ενημέρωση
+    messages:
+      loud: Θα σας αποστέλνεται μήνυμα ηλεκτρονικού ταχυδρομείου όλη της δραστηριότητας για αυτή την ομάδα.
+      normal: Θα σας αποστέλνεται μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τις προτάσεις σε αυτή την ομάδα.
+      quiet: Δεν θα σας αποστέλνεται μήνυμα ηλεκτρονικού ταχυδρομείου για αυτή την ομάδα.
+      mute: Η ομάδα σιγάστηκε.
   inbox:
     clear: Καθάρισμα
+    latest: Τελευταία
     unread: Αδιάβαστα
+    closing_in: Κλείνει
+  session_form:
+    email_label: 'Ηλεκτρονική Ταχυδρομείο:'
+    password_label: 'Κωδικός:'
+    remember_me: Να με θυμάσε
+    sign_in: Σύνδεση
   comment_form:
+    aria_label: Πρόσθεσε ένα σχόλιο
+    attachments:
+      aria_label: Επισύναψε ένα αρχείο
+      remove_attachment: Αφαίρεσε συννημένο
+    messages:
+      created: Το σχόλιο προστέθηκε
+      replied: '{{name}} ειδοποιήθηκε για την απάντηση'
+      updated: Σχόλιο ανανεώθηκε
+      destroyed: Σχόλιο διαγράφτηκε
     edit_comment: Επεξεργασία σχόλιου
     delete_comment: Διαγραφή σχόλιου
+    cancel_reply: Ακύρωση Απάντησης
     confirm_delete_message: Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?
+    confirm_delete: 'Ναι, Είμαι σίγουρος/η'
+    in_reply_to: 'Σε απάντηση στον/στην <strong>{{name}}</strong>:'
+    submit_button:
+      label: Δημοσίευση
+    private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'
+    public_privacy_notice: Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.
   navbar:
+    recent: Πρόσφατα
     unread: Αδιάβαστα
     groups: Ομάδες
+    recent_title: Πήγαινε στον πίνακα διαχείρισης
+    unread_title: Δες την αδιάβαστη δραστηριότητα
+    groups_title: Δες τις ομάδες σου
+    start_thread: Ξεκίνα ένα νέο θέμα
+    notifications: Πίνακας ειδοποιήσεων
+    user_actions: Ενέργειες χρήστη
     user_options:
+      label: Ρυθμίσεις χρήστη
       contact_us: Επικοινωνήστε με μας
       new_thread: Νέο θέμα
       new_group: Νέα ομάδα
       profile: Προφίλ
+      email_settings: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
       help: Βοήθεια
+      sign_out: Αποσύνδεση
     search:
+      no_results: Δεν βρέθηκαν θέματα
+      close: Κλείσε τον πίνακα εύρεσης
       placeholder: Εύρεση
+      loading: Φορτώνει αποτελέσματα...
       discussions: Θέματα
       proposals: Προτάσεις
       comments: Σχόλια
+    sign_in: Είσοδος
+  start_menu:
+    title: Κουμπί ενέργειας
+    start_group: Ξεκινήστε μια ομάδα
+    start_subgroup: Ξεκινήστε μια υπο-ομάδα
+    start_thread: Ξεκινήστε ένα θέμα
+    invite_people: Προσκαλέστε άτομα
   notifications:
     header: Ειδοποιήσεις
+    new_discussion: 'Ο/Η <strong>{{name}}</strong> ξεκίνησε μια συζήτηση <strong>{{discussion}}</strong>'
+    new_motion: 'Ο/Η <strong>{{name}}</strong> δημιούργησε μια πρόταση <strong>{{proposal}}</strong>'
+    motion_closed_by_user: 'Ο/Η <strong>{{name}}</strong> έκλεισε την πρόταση <strong>{{proposal}}</strong>'
+    motion_closed_by_expiry: 'Η πρόταση έκλεισε <strong>{{proposal}}</strong>'
+    new_vote: 'Ο/Η <strong>{{name}}</strong> {{position}} στην πρόταση <strong>{{proposal}}</strong>'
+    new_comment: 'Ο/Η <strong>{{name}}</strong> σχολίασε στην συζήτηση <strong>{{discussion}}</strong>'
+    comment_replied_to: 'Ο/Η <strong>{{name}}</strong> απάντησε στο σχόλιο σας στην συζήτηση <strong>{{discussion}}</strong>'
+    comment_liked: 'Ο/Η <strong>{{name}}</strong> του/της άρεσε το σχόλιο σας στην συζήτηση <strong>{{discussion}}</strong>'
+    user_mentioned: 'Ο/Η <strong>{{name}}</strong> σας ανέφερε στον τίτλο <strong>{{title}}</strong>'
+    membership_requested: 'Ο/Η <strong>{{name}}</strong> ζήτησε συμμετοχή ως μέλος στην ομάδα  <strong>{{group}}</strong>'
+    membership_request_approved: 'Ο/Η <strong>{{name}}</strong> ενέκρινε την αίτηση σας να συμμετάσχετε σαν μέλος στην ομάδα <strong>{{group}}</strong>'
+    user_added_to_group: 'Ο/Η <strong>{{name}}</strong> σας πρόσθεσε στην ομάδα <strong>{{group}}</strong>'
+    user_added_to_group_no_inviter: 'Προστεθήκατε στην ομάδα <strong>{{group}}</strong>'
+    motion_closing_soon: 'Η πρόταση κλείνει σύντομα: <strong>{{proposal}}</strong>'
+    motion_outcome_created: 'Ο/Η <strong>{{name}}</strong> δημοσίευσε ένα αποτέλεσμα για την πρόταση <strong>{{proposal}}</strong>'
+    motion_outcome_updated: 'Ο/Η <strong>{{name}}</strong> ενημέρωση το αποτέλεσμα της πρότασης  <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Πείτε την γνώμη σας
   vote_form:
     heading: Πείτε την γνώμη σας
+    no_statement: Καμία δήλωση.
     i_agree: Συμφωνώ
+    i_agree_details: Υποστηρίζω αυτό και θέλω να προχωρήσει.
     i_abstain: Απέχω
     i_abstain_details: Είμαι χαρούμενος με ότι αποφασίσει η ομάδα χωρίς εμένα.
     i_disagree: Διαφωνώ
@@ -90,25 +228,85 @@ el:
     i_block: Μπλοκάρω
     i_block_details: Έχω σοβαρές αντιρρήσεις για αυτή την πρόταση και δεν είμαι καλά με το να προχωρήσει.
     submit_position: Υποβολή θέσης
+    change_position: Αλλάξε θέση
+    select_position: Επέλεξε θέση
+    statement_placeholder: Μοίρασε τις σκέψεις σου με την ομάδα.
+    aria_statement_label: Προαιρετικά εισάγετε μια δήλωση για να καταγραφεί με την θέση σας
+    messages:
+      created: Η ψήφος προστέθηκε
   proposal_positions_panel:
     heading: Θέσεις
+    no_votes_yet: Κανείς δεν έχει ψηφίσει ακόμα σε αυτή την πρόταση.
+    change_your_vote: Άλλαξε την θέση σου.
+  undecided_panel:
+    aria_label: Αναποφάσιστα μέλη
+    show_undecided: Δείξε τα αναποφάσιστα μέλη
+    hide_undecided: Κρύψε τα αναποφάσιστα μέλη
+  proposal_pie_chart:
+    participation_statement: '{{percentage}}% των μελών έχουν πάρει θέση ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Κλείστε την πρόταση
+    helptext: Είστε σίγουρος/η πως θέλετε να κλείσετε τώρα την πρόταση;
+    close_proposal_submit: 'Ναι, κλείσε την πρόταση'
+    messages:
+      success: Η πρόταση έκλεισε
+  extend_proposal_form:
+    title: Άλλαξε την ώρα κλεισίματος
+    success: Η ώρα κλεισίματος της πρότασης ανανεώθηκε
+    submit: Ανανέωση ώρα κλεισίματος
   proposal_form:
+    messages:
+      created: Η πρόταση ξεκίνησε
+      updated: Η πρόταση ανανεώθηκε
     start_proposal: Ξεκινήστε μια πρόταση
     start_a_proposal: Ξεκινήστε μια πρόταση
     edit_proposal: Επεξεργασία πρότασης
+    what_does_a_proposal_do: Οι προτάσεις σας αφήνουν να δείτε πως αισθάνεται ο καθένας για μια συγκεκριμένη πορεία δράσης.
+    editing_title_and_description_forbidden: "Δεν μπορείτε να αλλάξετε τον τίτλο ή την περιγραφή μιας πρότασης εφ' όσον έχουν ψηφίσει άτομα. Εάν οι λεπτομέρειες έχουν αλλάξει, παρακαλούμε κλείστε την πρόταση και ξεκινήστε άλλη"
+    title_placeholder: 'π.χ.: Πάμε στο φεγγάρι'
     title_label: Τίτλος
     closes_at_label: Κλείνει στις
+    closes: Κλείνει
     details_label: Λεπτομέρειες
+    details_placeholder: Δώστε αρκετές πληροφορίες ώστε ο καθένας να γνωρίζει τι σημαίνει να συμφωνεί ή να διαφωνεί ή οτιδήποτε άλλο
+  discussion_record:
+    created: 'Το θέμα {{title}} δημιουργήθηκε επιτυχώς στην ομάδα {{groupName}}'
+    updated: 'Οι αλλαγές αποθηκεύτηκαν στον τίτλο {{title}}'
   discussion_form:
+    messages:
+      created: Το θέμα ξεκίνησε
+      updated: Το θέμα ανανεώθηκε
+    new_discussion_title: Ξεκινήστε ένα νέο θέμα
+    edit_discussion_title: Επεξεργασία θέματος
+    discussion_helptext: Το θέμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις απο κοινού.
     group_label: Ομάδα
+    group_placeholder: Διαλέξτε μια ομάδα
     title_label: Τίτλος
+    title_placeholder: Ποιο είναι το θέμα που θέλετε να συζητήσετε;
     context_label: Περιεχόμενο
+    context_placeholder: Δώστε επαρκή πληροφορίες για την ομάδα ώστε να έχετε μια επικοδομητική συζήτηση. Αυτή μπορεί να ανανεωθεί καθώς προχωρά η συζήτηση.
     privacy_label: Απόρρητο
+    privacy_public: Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.
+    privacy_private: 'Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.'
+    privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
+    new_discussion_submit: Ξεκινήστε ένα θέμα
+    edit_discussion_submit: Ανανεώστε ένα θέμα
   proposal_expanded:
+    collapse: Συρρίκνωση
+    current_votes: Τωρινές ψήφοι
+    started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
+    only_voter_is_you: Κανένα άλλο μέλος δεν έχει ψηφίσει ακόμα.
+    extend_proposal: Αλλάξτε ώρα κλεισίματος
     edit_proposal: Επεξεργασία πρότασης
     close_proposal: Κλείστε την πρόταση
+    closed_badge: Έκλεισε
+  proposal_position_yes: Συμφωνώ
+  proposal_position_abstain: Απέχω
+  proposal_position_no: Διαφωνώ
+  proposal_position_block: Βέτο
+  legacy_trial_expired_modal:
+    heading: 'Ευχαριστούμε που χρησιμοποιήσατε το Loomio αυτή την χρονιά!'
+    body: "<p> Εκτιμούμε πραγματικά την υποστήριξή σας στη διάρκεια του έτους, και είμαστε πραγματικά ενθουσιασμένοι  που κάνατε το Loomio ακόμη καλύτερο μέσα στο 2016. </p> \n\n<p> Είναι χρήσιμο το Loomio στην ομάδα σας; Μόλις κυκλοφορήσαμε τα σχέδια τιμολόγησης μας και ζητάμε από τις ομάδες που έχουν χρησιμοποιήσει το Loomio για κάποσο να επιλέξουν ένα σχέδιο που τους ταιριάζει. </p>\n"
   join_group_button:
     join_group: Συμμετάσχετε στην ομάδα
     ask_to_join_group: Δηλώστε συμμετοχή στην ομάδα
@@ -138,18 +336,25 @@ el:
   choose_plan_modal:
     gift: Δώρο
     standard: Τυπικό
-    plus: Plus
+    plus: Πρόσθετο
     get_started_for_free: Ξεκινήστε δωρεάν
     gift_donation_ask: Θα ζητήσουμε μια δωρεά από τα μέλη της ομάδας σου.
     unlimited_members: απεριόριστα μέλη
     unlimited_decisions: απεριόριστες αποφάσεις
-    email_support: υποστήριξη μέσω email
+    email_support: υποστήριξη μέσω ηλεκτρονικού ταχυδρομείου
     plus_body: 'Ότι περιέχει το Τυπικό πακέτο, συν:'
     custom_url: σύνθετος σύνδεσμος
     usage_statistics: στατιστικά χρήσης
+  group_form:
+    privacy: Ιδιωτικότητα
+    submit_update: Ενημέρωση ρυθμίσεων
   membership_requests_page:
     approve: Έγκριση
     ignore: Αγνοήστε
+  group_previous_proposals_card:
+    heading: Προηγούμενες προτάσεις
+  invitation_form:
+    invite_people: Προσκαλέστε άτομα
   memberships_page:
     members: Μέλη
     name_label: Όνομα
@@ -173,6 +378,8 @@ el:
     username_label: Όνομα χρήστη
     email_label: Ηλεκτρονική Διεύθυνση
     locale_label: Γλώσσα
+  email_settings_page:
+    header: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
   dashboard_page:
     aria_label: Πίνακας Εργαλείων
     mark_as_read: Σημείωσε ως διαβασμένα
@@ -183,6 +390,8 @@ el:
       yesterday: Εχθές
   discussion:
     proposals: Προτάσεις
+    previous_proposals: Προηγούμενες Προτάσεις
+    started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
     volume:
       loud: Αποστολή ηλεκτρονικού μηνύματος όποτε υπάρχει δραστηριότητα σε αυτό το θέμα.
       normal: 'Απλό ηλεκτρονικό μήνυμα όταν μια πρόταση δημιουργείται, πρόκειται να κλείσει, ή όταν ένα αποτέλεσμα έχει αναρτηθεί.'
@@ -346,3 +555,5 @@ el:
     informal_groups: Άτυπες Ομάδες
     informal_groups_desc: Τα μέλη της ομάδα σας θα ερωτηθούν να πληρώσουν ότι μπορούν
     informal_groups_examples: 'π.χ. οικογένειες, κοινωνικά κινήματα, συλλογικότητες'
+  angular:
+    collapse: Συρρίκνωση
