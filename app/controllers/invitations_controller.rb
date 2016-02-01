@@ -64,7 +64,7 @@ class InvitationsController < ApplicationController
       redirect_to @invitation.invitable
     else
       save_invitation_token_to_session
-      redirect_to new_user_registration_path
+      redirect_to login_or_signup_path_for_email(@invitation.recipient_email)
     end
   end
 
