@@ -6,16 +6,21 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     boot: ->
       return unless $window? and $window.Intercom?
+      firstGroup = CurrentUser.groups()[0]
+
       $window.Intercom 'boot',
        admin_link: AppConfig.baseUrl+"/admin/users/#{CurrentUser.id}"
        app_id: AppConfig.intercomAppId
        user_id: CurrentUser.id
        user_hash: AppConfig.intercomUserHash
        email: CurrentUser.email
+       name: CurrentUser.name
+       username: CurrentUser.username
        user_id: CurrentUser.id
        created_at: CurrentUser.createdAt
        angular_ui: true
        locale: CurrentUser.locale
+       company: firstGroup
 
     shutdown: ->
       return unless @available()
@@ -41,9 +46,9 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
           cohort_id: group.cohortId
           created_at: group.createdAt
           locale: CurrentUser.locale
-          proposals_count: group.proposals_count
-          discussions_count: group.discussions_count
-          memberships_count: group.memberships_count
+          proposals_count: group.proposalsCount
+          discussions_count: group.discussionsCount
+          memberships_count: group.membershipsCount
 
     contactUs: ->
       if @available()
