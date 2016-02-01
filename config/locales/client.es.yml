@@ -733,6 +733,7 @@ es:
     notifications: Notificaciones
     edit_thread: Editar
     move_thread: Mover
+    print_thread: 'Imprimir '
     delete_thread: Eliminar
   delete_thread_form:
     title: 'Borrar hilo '

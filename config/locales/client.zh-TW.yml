@@ -733,6 +733,7 @@ zh-TW:
     notifications: 通知
     edit_thread: 編輯
     move_thread: 移動
+    print_thread: 列印
     delete_thread: 刪除
   delete_thread_form:
     title: 刪除討論串
