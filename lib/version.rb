@@ -3,7 +3,7 @@ module Loomio
     def self.reload
       [:major, :minor, :patch, :pre].each do |type|
         remove_const type.upcase
-        load [::Rails.root, :lib, :version, "#{type}.rb"].join('/')
+        load [:lib, :version, "#{type}.rb"].join('/')
       end
     end
 
