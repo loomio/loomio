@@ -41,7 +41,7 @@ ko:
     group_not_archived: 그룹을 보관할 수 없습니다.
     invalid_close_date: "유효한 날짜가 아닙니다. 지난 시간이 아닌지 확인해 주세요. "
     invalid_email: 최소 1개의 유효한 이메일 주소를 입력해 주세요.
-    image_upload_fail: "사진을 올릴 수 없습니다. 1메가 이하의 .jpeg, .png, or .gif  파일인지 확인해 주세요."
+    image_upload_fail: "사진을 올릴 수 없습니다. 1메가 이하의 .jpeg, .png, 혹은 .gif  파일인지 확인해 주세요."
     motion_closing_inputs: 잘못된 마감일입니다.
     motion_outcome_not_created: 결과를 올릴 수 없습니다.
     motion_outcome_not_updated: 결과를 업데이트 할 수 없습니다.
@@ -640,7 +640,7 @@ ko:
   pricing: 가격표
   prev: 이전
   more: 더보기...
-  translate: 루미오 번연을 도와주세요.
+  translate: 루미오 번역을 도와주세요.
   translate_this_string: "%{language}로 번역하기"
   options: 선택사항
   ok_got_it: 네 알겠습니다.
