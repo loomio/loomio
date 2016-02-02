@@ -11,8 +11,8 @@ module.exports = ->
   pipe gulp.src(paths.css.core), [
     concat('app.css'),                        # concatenate scss files
     sass(includePaths: paths.css.includes),   # convert scss to css (include vendor path for @imports)
-    gulp.dest(paths.dist.stylesheets),        # write stylesheets/app.css
+    gulp.dest(paths.dist.assets),             # write assets/app.css
     cssmin(),                                 # minify app.css file
     rename(suffix: '.min'),                   # rename stream to app.min.css
-    gulp.dest(paths.dist.stylesheets)         # write stylesheets/app.min.css
+    gulp.dest(paths.dist.assets)              # write assets/app.min.css
   ]

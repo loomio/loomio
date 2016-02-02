@@ -1,14 +1,5 @@
 module ApplicationHelper
 
-  def angular_asset(path, ext = :js)
-    "#{path}.#{ext}"
-    # if Rails.env.production?
-    #   "/js/vendor.js?#{Time.now.to_i}"
-    # else
-    #   "/js/vendor.js"
-    # end
-  end
-
   def icon_class_for_volume(volume)
     case volume.to_sym
     when :loud then 'fa-envelope'

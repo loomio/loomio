@@ -31,7 +31,7 @@ def build_and_push_branch(remote, branch)
   build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
   run_commands ["git checkout #{branch}",                                                         # checkout branch
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
-                "cd angular && npm install && gulp deploy && cd ../",                             # build the app via gulp
+                "cd angular && npm install && gulp compile && cd ../",                             # build the app via gulp
                 "git add public/img public/stylesheets public/javascripts public/fonts -f",       # add assets to commit
                 "git commit -m 'Add assets for production push'",                                 # commit assets
                 "git push #{remote} #{build_branch}:master -f",                                   # DEPLOY!

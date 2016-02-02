@@ -23,8 +23,8 @@ module.exports = ->
       ),
     ]),
     concat('app.js'),                           # concatenate app files
-    gulp.dest(paths.dist.javascripts)           # write javascripts/app.js
+    gulp.dest(paths.dist.assets)                # write assets/app.js
     uglify(),                                   # minify app.js file
     rename(suffix: '.min'),                     # rename stream to app.min.js
-    gulp.dest(paths.dist.javascripts)           # write javascripts/app.min.js
+    gulp.dest(paths.dist.assets)                # write assets/app.min.js
   ]

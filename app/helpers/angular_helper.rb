@@ -37,6 +37,10 @@ module AngularHelper
     end
   end
 
+  def angular_asset(path, ext)
+    "#{angular_asset_path}/#{angular_asset_filename(path, ext)}"
+  end
+
   def boot_angular_ui
     if browser.ie? && browser.version.to_i < 10
       redirect_to :browser_not_supported and return
@@ -48,5 +52,15 @@ module AngularHelper
 
   def use_angular_ui?
     current_user_or_visitor.angular_ui_enabled? && request.format == :html
+  end
+
+  private
+
+  def angular_asset_path
+    [:assets, (Loomio::Version.current if Rails.env.production?)].compact.join('-')
+  end
+
+  def angular_asset_filename(path, ext)
+    [path, (:min if Rails.env.production?), ext].compact.join('.')
   end
 end
