@@ -1,0 +1,35 @@
+.user-avatar--coordinator {
+  border: 2px solid $loomio-orange !important;
+}
+
+.user-avatar{
+  @include roundedCorners;
+  background-color: $background-color;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+}
+
+.user-avatar__initials--small{
+  border: 1px solid $border-color;
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.user-avatar__initials--medium{
+  border: 1px solid $border-color;
+  font-size: 20px;
+  line-height: 50px;
+}
+
+.user-avatar__initials--large{
+  border: 1px solid $border-color;
+  font-size: 32px;
+  line-height: 80px;
+}
+
+.user-avatar__initials--featured {
+  border: 1px solid $border-color;
+  font-size: 50px;
+  line-height: 175px;
+}

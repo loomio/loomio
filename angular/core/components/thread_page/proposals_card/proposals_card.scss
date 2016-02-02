@@ -1,0 +1,17 @@
+.thread-proposals {
+  padding: 10px 0px 15px 0px;
+  background-color: $card-background-color;
+}
+
+.closing-at-timezone{
+  color: $grey-on-white;
+}
+
+.closing-at-time-in-words{
+  color: $grey-on-white;
+  margin-top: 0.5em;
+}
+
+.proposals-card{
+  @include card;
+}

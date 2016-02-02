@@ -1,0 +1,39 @@
+.memberships-page {
+}
+
+.memberships-page__search-filter {
+  padding-left: 0;
+  position: relative;
+}
+
+.memberships-page__search-filter input {
+  padding-left: 35px;
+}
+
+.memberships-page__search-filter i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.memberships-page__memberships {
+  @include card;
+  padding-top: 10px;
+  clear: both;
+}
+
+.memberships-page__remove-link {
+  @include lmoBtnNude;
+}
+
+.memberships-page__make-coordinator {
+  @include lmoBtnNude;
+}
+
+.memberships-page__member-info {
+  padding-left: 10px;
+}
+
+.memberships-page__table-row {
+  padding: 5px 0;
+}

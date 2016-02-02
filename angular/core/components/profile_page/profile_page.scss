@@ -1,0 +1,20 @@
+.profile-page {
+  @include lmoRow;
+}
+
+.profile-page-card {
+  position: relative;
+  @include card;
+}
+
+.img-profile {
+  width: 200px;
+}
+
+.profile-group {
+  padding: 5px 0;
+}
+
+.profile-subgroup {
+  padding-left: 20px;
+}

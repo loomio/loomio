@@ -1,0 +1,73 @@
+.attachment-preview {
+  position: relative;
+  &:hover .attachment-preview__file--image { opacity: 1; }
+}
+
+.attachment-preview img {
+  border-radius: 5px;
+  max-width: 100%;
+  border: 1px solid $border-color;
+}
+
+.attachment-preview--thumb {
+  width: 100px;
+  height: 100px;
+  background: $background-color;
+  border-radius: 5px;
+  margin: 5px 5px 5px;
+  float: left;
+}
+
+.attachment-preview--thread {
+  margin: 10px 40px;
+  position: relative;
+}
+
+.attachment-preview__link {
+  &:hover { text-decoration: none; }
+}
+
+.attachment-preview__file {
+  border-radius: 5px;
+  display: block;
+  background: $background-color;
+  color: $grey-on-grey;
+}
+
+.attachment-preview__file--thumb {
+  width: 100px;
+  height: 100px;
+  font-size: 30px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.attachment-preview__file--thread {
+  line-height: 30px;
+}
+
+.attachment-preview__file--image {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255,255,255,.8);
+  border-radius: 0 0 5px 5px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.5s;
+}
+
+.attachment-preview__file--thread i {
+  padding: 0 7px;
+}
+
+.attachment-preview__destroy {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  color: white;
+  text-shadow: 0 0 3px black;
+  opacity: .8;
+}

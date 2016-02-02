@@ -1,0 +1,106 @@
+.lmo-one-column-layout{
+  margin: auto;
+  max-width: $small-max-px;
+  padding-top: 48px;
+  padding-bottom: 25px;
+  z-index: 0;
+  min-width: 320px;
+}
+.lmo-two-column-layout{
+  margin: auto;
+  max-width: $max-container-size;
+  padding-top: 48px;
+  z-index: 0;
+  padding-bottom: 25px;
+  min-width: 320px;
+}
+
+.lmo-row{
+  @include lmoRow;
+}
+
+@media (max-width: $tiny-max-px){
+  /* applied to tiny phone screens */
+
+}
+
+@media (min-width: $tiny-max-px) and (max-width: $small-max-px){
+  /* applied to small screens, e.g. portrait tablet */
+
+  .lmo-thread-column-left{
+    padding: 0 10px;
+  }
+  .lmo-thread-column-right{
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: $small-max-px) and (max-width: $medium-max-px){
+  /* applied to medium screens, e.g. landscape tablet */
+
+  /*
+    We want the right col to be min 320px + 10px padding.
+    The left col consumes the rest of the available space.
+  */
+
+  $med-right-col-ratio: (320 + 10) / $small-max;
+  .lmo-thread-column-right {
+    width: percentage($med-right-col-ratio);
+  }
+  .lmo-thread-column-left {
+    width: percentage(1 - $med-right-col-ratio);
+  }
+}
+
+@media (min-width: $medium-max-px){
+  /* applied to large screens, e.g. desktop or laptop*/
+
+  /*
+    We want the right col to be min 400px + 10px padding.
+    The left col consumes the rest of the available space.
+  */
+
+  $large-right-col-ratio: (400 + 10) / $medium-max;
+  .lmo-thread-column-right {
+    width: percentage($large-right-col-ratio);
+  }
+  .lmo-thread-column-left {
+    width: percentage(1 - $large-right-col-ratio);
+  }
+}
+
+@media (min-width: $tiny-max-px){
+  /* applied to everything bigger than a tiny screen */
+
+}
+
+@media (max-width: $small-max-px){
+  /* applied to tiny and small screens: pages collapse to one column; */
+
+}
+
+@media (min-width: $small-max-px){
+  /* applied to medium and large screens: pages have two columns; */
+
+  .lmo-group-column-left{
+    width: percentage(2/3);
+    float: left;
+    padding-right: 10px;
+  }
+
+  .lmo-group-column-right{
+    width: percentage(1/3);
+    float: left;
+  }
+
+  .lmo-thread-column-right {
+    padding: 0 10px 0 0;
+    float: right;
+    clear: right;
+  }
+  .lmo-thread-column-left {
+    padding: 0 10px 0 10px;
+    float: left;
+    clear: left;
+  }
+}

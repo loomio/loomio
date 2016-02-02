@@ -1,0 +1,31 @@
+.lmo-one-column-layout
+  %main.email-settings-page
+    %h1.lmo-h1.lmo-vertical-spacer-lg{translate: "email_settings_page.header"}
+    .email-settings-page__email-settings
+      %h3.lmo-h3{translate: "email_settings_page.email"}
+
+      %form{ng-submit: "emailSettingsPage.submit()"}
+        .email-settings-page__email-settings-options
+
+          .email-settings-page__field
+            %input.email-settings-page__daily-summary#daily-summary-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailMissedYesterday"}
+            %label{for: "daily-summary-email", translate: "email_settings_page.daily_summary_label"}
+            .email-settings-page__input-description{translate: "email_settings_page.daily_summary_description"}
+
+          .email-settings-page__field
+            %input.email-settings-page__on-participation#on-participation-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailOnParticipation"}
+            %label{for: "on-participation-email", translate: "email_settings_page.on_participation_label"}
+            .email-settings-page__input-description{translate: "email_settings_page.on_participation_description"}
+
+          .email-settings-page__field
+            %input.email-settings-page__proposal-closing-soon#proposal-closing-soon-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailWhenProposalClosingSoon"}
+            %label{for: "proposal-closing-soon-email", translate: "email_settings_page.proposal_closing_soon_label"}
+            .email-settings-page__input-description{translate: "email_settings_page.proposal_closing_soon_description"}
+
+          .email-settings-page__field
+            %input.email-settings-page__mentioned#mentioned-email{type: "checkbox", ng-model: "emailSettingsPage.user.emailWhenMentioned"}
+            %label{for: "mentioned-email", translate: "email_settings_page.mentioned_label"}
+            .email-settings-page__input-description{translate: "email_settings_page.mentioned_description"}
+
+        .email-settings-page__update-email-settings
+          %button.email_settings_page__update-button{type: "submit", ng-disabled: "isDisabled", translate: "email_settings_page.update_settings"}

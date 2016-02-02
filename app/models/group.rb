@@ -216,7 +216,7 @@ class Group < ActiveRecord::Base
     elsif self.default_group_cover
       /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
     else
-      'default-cover-photo.png'
+      'img/default-cover-photo.png'
     end
   end
 

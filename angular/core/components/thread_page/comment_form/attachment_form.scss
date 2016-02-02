@@ -1,0 +1,27 @@
+.attachment-form-in-progress {
+  display: inline-block;
+}
+
+.attachment-form-progress-field {
+  width: 200px;
+  margin: 0 10px;
+  padding: 7px 0;
+  height: 35px;
+  text-align: center;
+  position: relative;
+}
+
+.attachment-form-progress-text {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  color: #444;
+}
+
+.attachment-form-progress-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 35px;
+}

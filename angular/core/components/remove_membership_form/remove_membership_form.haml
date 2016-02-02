@@ -1,0 +1,10 @@
+%form{ng-submit: "submit()"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1{translate: "memberships_page.remove_membership.title"}
+
+  .modal-body
+    %span{translate: "memberships_page.remove_membership.question", translate-value-name: "{{membership.userName()}}", translate-value-group: "{{membership.group().name}}"}
+  .modal-footer
+    %button.lmo-btn--danger.memberships-page__remove-membership-confirm{type: "submit", translate: "memberships_page.remove_membership.submit"}
+    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

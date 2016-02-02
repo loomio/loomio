@@ -1,0 +1,40 @@
+.loading-wrapper.lmo-one-column-layout
+  %loading{ng-if: "!profilePage.user"}
+  %main.profile-page{ng-if: "profilePage.user"}
+    %h1.lmo-h1.lmo-vertical-spacer-lg{translate: "profile_page.profile"}
+    .profile-page-card
+      .lmo-disabled-form{ng-show: "profilePage.isDisabled"}
+      %h3.lmo-h3{translate: "profile_page.edit_profile"}
+
+      %label{for: "user-picture-field", translate: "profile_page.picture_label"}
+      %user_avatar{user: "profilePage.user", size: "featured"}
+
+      .profile-page__change-picture.lmo-vertical-spacer
+        %button.lmo-link{ng-click: "profilePage.changePicture()", translate: "profile_page.change_picture_link"}
+
+      .profile-page__profile-fieldset.lmo-vertical-spacer
+        %label{for: "user-name-field", translate: "profile_page.name_label"}
+        %input.profile-page__name-input.form-control#user-name-field{ng-required: true, ng-model: "profilePage.user.name"}
+        %validation_errors{subject: "profilePage.user", field: "name"}
+
+        %label{for: "user-username-field", translate: "profile_page.username_label"}
+        %input.profile-page__username-input.form-control#user-username-field{ng-required: true, ng-model: "profilePage.user.username"}
+        %validation_errors{subject: "profilePage.user", field: "username"}
+
+        %label{for: "user-email-field", translate: "profile_page.email_label"}
+        %input.profile-page__email-input.form-control#user-email-field{ng-required: true, ng-model: "profilePage.user.email"}
+        %validation_errors{subject: "profilePage.user", field: "email"}
+
+        %label{for: "user-locale-field", translate: "profile_page.locale_label"}
+        %select.profile-page__language-input.form-control#user-locale-field{ng-model: "profilePage.user.selectedLocale", ng-required: "true", ng-options: "locale.key as locale.name for locale in profilePage.availableLocales()"}
+        %validation_errors{subject: "profilePage.user", field: "selectedLocale"}
+
+      .profile-page__update-account.lmo-vertical-spacer
+        %button.lmo-btn--submit.profile-page__update-button{ng-click: "profilePage.submit()", ng-disabled: "isDisabled", translate: "profile_page.update_profile"}
+
+      .profile-page__change-password.lmo-vertical-spacer
+        %button.lmo-link{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
+    .profile-page-card{ng-if: "profilePage.canDeactivateUser()"}
+      %h3.lmo-h3{translate: "profile_page.deactivate_user.title"}
+
+      %button.lmo-link.lmo-vertical-spacer{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}

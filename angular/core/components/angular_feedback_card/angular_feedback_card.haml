@@ -1,0 +1,17 @@
+.angular-feedback-card{aria-hidden: "true"}
+  .angular-feedback-card__collapsed{ng-show: "!expanded"}
+    %button.lmo-btn--nude{ng-click: "expand()"}
+      %i.fa.fa-chevron-circle-up>
+      %span{translate: "angular.give_feedback"}
+  .angular-feedback-card__expanded{ng-show: "expanded"}
+    %a{lmo-href: "{{feedbackUrl}}", target: "_blank"}
+      %span{translate: "angular.give_feedback"}
+    %br
+    %a{href: lmo-href: "{{angularUrl}}", target: "_blank"}
+      %span{translate: "angular.switch_back"}
+    %br
+    %a.lmo-version{lmo-href: "{{versionUrl}}", target: "_blank"} {{version}}
+    %br
+    %button.lmo-btn--nude{ng-click: "collapse()"}
+      %i.fa.fa-chevron-circle-down>
+      %span{translate: "angular.collapse"}

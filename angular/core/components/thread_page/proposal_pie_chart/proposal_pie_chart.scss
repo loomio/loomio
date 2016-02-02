@@ -1,0 +1,45 @@
+
+.proposal-pie-chart {
+}
+
+.proposal-pie-chart__legend{
+  @include fontSmall;
+  color: $grey-on-white;
+  padding-top: 16px;
+  padding-left: 20px;
+  table { min-width: 110px; }
+  td { padding-bottom: 10px; }
+}
+
+.proposal-pie-chart__label{
+  border-width: 2px;
+  border-bottom-style: solid;
+}
+
+.proposal-pie-chart__label--yes{
+  border-color: $agree-color;
+}
+
+.proposal-pie-chart__label--abstain{
+  border-color: $abstain-color;
+}
+
+.proposal-pie-chart__label--no{
+  border-color: $disagree-color;
+}
+
+.proposal-pie-chart__label--block{
+  border-color: $block-color;
+}
+
+.proposal-pie-chart__participation-statement {
+  margin-top: 10px;
+  @include fontSmall;
+  color: $grey-on-white;
+}
+
+@media (max-width: $tiny-max-px) {
+  .proposal-pie-chart__legend{
+    display: block;
+  }
+}

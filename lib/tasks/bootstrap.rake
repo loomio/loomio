@@ -2,13 +2,19 @@ namespace :bootstrap do
   desc 'Retrieve dependencies needed for project to run'
   task :dependencies do
     unless npm_installed?
-      puts "Project requires npm to run: 'brew install npm' "
+      puts "Loomio requires npm to run: please run `brew install npm`"
       puts "Quitting .."
       next
     end
 
     unless pg_installed?
-      puts "Project requires Postgresql to run, please install it"
+      puts "Loomio requires Postgresql to run, please install it: https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres#installing-postgres"
+      puts "Quitting .."
+      next
+    end
+
+    unless bower_installed?
+      puts "Loomio requires bower to install dependencies; please run `npm install -g bower`"
       puts "Quitting .."
       next
     end
@@ -16,9 +22,9 @@ namespace :bootstrap do
     sh 'gem install bundler' unless bundler_installed?
 
     sh 'bundle install'
-    sh 'npm install -g lineman' unless lineman_installed?
+    sh 'npm install'
     sh 'npm install -g bower' unless bower_installed?
-    sh 'cd lineman && bower install'
+    sh 'cd angular && bower install'
   end
 
   desc "Create database.yml file"
@@ -47,7 +53,7 @@ namespace :bootstrap do
 
   desc "Launch project"
   task :run => :environment do
-    Process.spawn 'cd lineman && lineman run'
+    Process.spawn 'cd angular && gulp dev'
     sh 'bundle exec rails s'
   end
 
@@ -65,11 +71,6 @@ namespace :bootstrap do
 
   def bundler_installed?
     `which bundle`
-    $?.success?
-  end
-
-  def lineman_installed?
-    `which lineman`
     $?.success?
   end
 

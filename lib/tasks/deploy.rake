@@ -31,10 +31,9 @@ def build_and_push_branch(remote, branch)
   build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
   run_commands ["git checkout #{branch}",                                                         # checkout branch
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
-                "cd lineman && npm install && bower install && lineman build && cd ../",          # build the app via lineman
-                "cp -R lineman/dist/* public/",                                                   # move build assets to public/ folder
-                "git add public/img public/css public/js public/fonts",                           # add lineman assets to commit
-                "git commit -m 'Add assets for production push'",                                 # commit lineman assets
+                "cd angular && npm install && gulp deploy && cd ../",                             # build the app via gulp
+                "git add public/img public/stylesheets public/javascripts public/fonts -f",       # add assets to commit
+                "git commit -m 'Add assets for production push'",                                 # commit assets
                 "git push #{remote} #{build_branch}:master -f",                                   # DEPLOY!
                 "git checkout #{branch}",                                                         # switch back to original branch
                 "git branch -D #{build_branch}"]                                                  # delete production branch
