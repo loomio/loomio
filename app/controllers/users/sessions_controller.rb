@@ -12,9 +12,7 @@ class Users::SessionsController < Devise::SessionsController
   after_filter :set_time_zone_from_javascript, only: :create
 
   def new
-    super do |user|
-      user.email = params[:email]
-    end
+    super { |user| user.email = params[:email] }
   end
 
   private
