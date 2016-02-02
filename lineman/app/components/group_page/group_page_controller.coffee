@@ -50,4 +50,10 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       GroupWelcomeModal.shownToGroup[@group.id] = true
       ModalService.open GroupWelcomeModal
 
+  @themeClass = =>
+    if @group and @group.themeId > 0
+      "theme-#{@group.themeId}"
+    else
+      ""
+
   return

@@ -102,4 +102,10 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   TranslationService.listenForTranslations($scope, @)
 
+  @themeClass = =>
+    if @discussion and @discussion.group().themeId > 0
+      "theme-#{@discussion.group().themeId}"
+    else
+      ""
+
   return

@@ -42,6 +42,8 @@ module AngularHelper
       redirect_to :browser_not_supported and return
     end
 
+    @theme_ids = current_user.groups.pluck(:theme_id).uniq
+    
     app_config
     render 'layouts/angular', layout: false
   end
