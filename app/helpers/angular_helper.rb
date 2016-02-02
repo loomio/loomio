@@ -61,6 +61,6 @@ module AngularHelper
   end
 
   def angular_asset_filename(path, ext)
-    [path, (:min if Rails.env.production?), ext].compact.join('.')
+    [path, ext].join('.')
   end
 end
