@@ -19,19 +19,19 @@ angular.module('loomioApp', ['ngNewRouter',
   $animateProvider.classNameFilter( /\banimated\b/ );
 
   #configure markdown
-  applyMentionsFor = (tag, text)->
-    text = text.replace(/\[\[@([a-zA-Z0-9]+)\]\]/g, "<a class='lmo-user-mention' href='/u/$1'>@$1</a>")
-    "<#{tag}>#{text}</#{tag}>"
+  applyMentionsFor = (tag) ->
+    (text) ->
+      text = text.replace(/\[\[@([a-zA-Z0-9]+)\]\]/g, "<a class='lmo-user-mention' href='/u/$1'>@$1</a>")
+      "<#{tag}>#{text}</#{tag}>"
 
-  renderer = new marked.Renderer()
-  renderer.link = (href, title, text) ->
-    "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>";
-  renderer.paragraph = (text) -> applyMentionsFor 'p', text
-  renderer.listitem  = (text) -> applyMentionsFor 'li', text
-  renderer.tablecell = (text) -> applyMentionsFor 'td', text
-
+  markedProvider.setRenderer
+    link: (href, title, text) ->
+      "<a href='" + href + "' title='" + (title || text) + "' target='_blank'>" + text + "</a>"
+    paragraph: applyMentionsFor('p')
+    listitem:  applyMentionsFor('li')
+    tablecell: applyMentionsFor('td')
+    
   markedProvider.setOptions
-    renderer: renderer
     gfm: true
     sanitize: true
     breaks: true
