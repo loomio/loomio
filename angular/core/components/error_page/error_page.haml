@@ -1,0 +1,4 @@
+.error-page
+  .error-page__forbidden{translate: "error_page.forbidden", ng-if: "error.status == 403"}
+  .error-page__page-not-found{translate: "error_page.page_not_found", ng-if: "error.status == 404"}
+  .error-page__internal-server-error{translate: "error_page.internal_server_error", ng-if: "error.status == 500"}

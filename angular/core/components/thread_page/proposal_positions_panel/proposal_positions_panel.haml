@@ -1,0 +1,31 @@
+.proposal-positions-panel
+  %h4.lmo-card-subheading{translate: "proposal_positions_panel.heading"}
+
+  .proposal-pie-chart.media
+    .proposal-pie-chart__pie.media-left
+      %pie_chart.proposal-positions-panel__pie-chart{votes: "proposal.voteCounts"}
+    .proposal-pie-chart__legend.media-body
+      %table#proposal-current-positions{role: "presentation"}
+        %caption.sr-only{translate: "proposal_expanded.current_votes"}
+        %tbody
+          %tr{ng-repeat: "position in proposal.positions"}
+            %td
+              .proposal-pie-chart__label{class: "proposal-pie-chart__label--{{position}}"}
+                {{ proposal.voteCounts[position] }} {{ "proposal_position_"+position | translate}}
+  .proposal-pie-chart__participation-statement{translate: "proposal_pie_chart.participation_statement", translate-value-percentage: "{{proposal.percentVoted()}}", translate-value-number: "{{proposal.numberVoted()}}", translate-value-total: "{{proposal.groupSizeWhenVoting()}}"}
+
+  %ul.proposal-positions-panel__list
+    %li.proposal-positions-panel__vote.media{ng_repeat: "vote in curatedVotes() track by vote.id"}
+      .media-left
+        .thread-item__vote-icon{class: "thread-item__vote-icon--{{vote.position}}"}
+      .media-body
+        %span.proposal-positions-panel__name-and-position
+          %strong
+            %a{lmo-href-for: "vote.author()"}> {{vote.authorName()}}
+          %span{translate: "new_vote_item.{{vote.positionVerb()}}"}
+        %span{ng-if: "!vote.hasStatement()"}.
+        %span{ng-if: "vote.hasStatement()"}: {{::vote.statement}}
+        %button.proposal-positions-panel__change-your-vote{ng-if: "showChangeVoteOption(vote)", href: "", ng-click: "changeVote()"}
+          %i.fa.fa-exchange>
+          %span{translate: "proposal_positions_panel.change_your_vote"}
+  %undecided_panel{proposal: "proposal", ng-if: "proposal.hasUndecidedMembers()"}

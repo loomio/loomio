@@ -1,0 +1,58 @@
+.dashboard-page {
+  @include lmoRow;
+}
+
+.dashboard-page__heading{
+  margin: 20px 0 20px 13px;
+}
+
+.dashboard-page__options{
+  margin-bottom: 16px;
+}
+
+.dashboard-page__filter-dropdown{
+  float: right;
+}
+
+.dashboard-page__date-range{
+  @include fontSmall;
+  color: $grey-on-grey;
+  padding: 0 $cardPaddingSize;
+}
+
+.dashboard-page__no-threads {
+  text-align: center;
+  margin-left: 13px;
+}
+
+.dashboard-page__footer {
+  font-size: 0.01em;
+  height: 1px;
+  position: relative;
+  bottom: 200px;
+}
+
+.dashboard-page__group-name a{
+  @include fontHelveticaMedium;
+  @include fontMedium;
+  line-height: 30px;
+  color: $grey-on-grey;
+  margin-left: 16px;
+  margin-top: 0;
+}
+
+.dashboard-page__show-more{
+  padding: 15px 15px 15px 48px;
+}
+
+.dashboard-page__show-more a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: $grey-on-white;
+  text-decoration: underline;
+}
+
+.dashboard-page__show-more a:hover{
+  color: $primary-text-color;
+}

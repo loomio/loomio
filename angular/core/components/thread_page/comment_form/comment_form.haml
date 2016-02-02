@@ -1,0 +1,20 @@
+.blank
+  %section{ng-if: "showCommentForm()", aria-labelledby: "comment-form-title"}
+    %form.comment-form{ng_submit: "submit()"}
+      .lmo-disabled-form{ng-show: "isDisabled"}
+      %input{type: "hidden", ng-model: "comment.usesMarkdown"}
+      %h2.lmo-card-heading#comment-form-title{translate: "comment_form.aria_label"}>
+      %span{translate: "comment_form.in_reply_to", translate-values: "{name: '{{comment.parent().authorName()}}' }", ng-show: "comment.parent().authorName()"}
+      %textarea.lmo-textarea.form-control.comment-form__comment-field.lmo-primary-form-input{msd-elastic: "true", ng-change: "storeDraft()", ng-model-options: "{debounce: 600}", aria-labelledby: "comment-form-title", name: "body", placeholder: "Say something...", ng_model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "comment-field", ng-focus: "formInFocus()", ng-blur: "formLostFocus()", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
+      %validation_errors{subject: "comment", field: "body"}
+      .comment-row.comment-attachments{ng_repeat: "attachment in comment.newAttachments()"}
+      .comment-form__privacy-notice{ng-if: "threadIsPublic()", translate: "comment_form.public_privacy_notice"}
+      .comment-form__privacy-notice{ng-if: "threadIsPrivate()", translate: "comment_form.private_privacy_notice", translate-value-group-name: "{{comment.group().fullName}}"}
+      %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in comment.newAttachments() | orderBy: 'id' track by attachment.id"}
+      .thread-comment-form-actions
+        %button.lmo-btn--submit.submit.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
+        %button.lmo-btn--default.comment-form-button{type: "button", translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null"}
+        %attachment_form{comment: "comment"}
+        %button#post-comment-cancel.lmo-btn--default{type: "button", translate: "common.action.cancel", ng-click: "cancel($event)", ng-hide: "comment.isNew()"}
+        %a.comment-form-button{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
+          %span{translate: "common.formatting_help.label"}

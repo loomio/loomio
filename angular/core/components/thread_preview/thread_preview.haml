@@ -1,0 +1,45 @@
+.thread-preview
+  %a.thread-preview__link{lmo-href-for: "thread"}
+    .thread-preview__icon
+      %user_avatar{ng-if: "!thread.activeProposal()", user: "thread.author()", size: "medium"}
+      .thread-preview__pie-container{ng-if: "thread.activeProposal()"}
+        %pie_chart.thread-preview__pie-canvas{votes: "thread.activeProposal().voteCounts", ng-if: "thread.activeProposal()"}
+        .thread-preview__position-icon-container
+          .thread-preview__position-icon{ng-if: "lastVoteByCurrentUser(thread)", class: "thread-preview__position-icon--{{lastVoteByCurrentUser(thread).position}} "}
+          .thread-preview__undecided-icon{ng-if: "!lastVoteByCurrentUser(thread)"}
+            %i.fa.fa-question
+
+    .sr-only
+      %span{translate: "dashboard_page.aria_thread.title", translate-value-title: "{{ thread.title }}"}
+      %span{ng-if: "thread.isUnread()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadItemsCount() }}"}
+      %span{ng-if: "thread.activeProposal()", translate: "dashboard_page.aria_thread.current_proposal", translate-value-name: "{{ thread.activeProposal().name }}"}
+      %span{ng-if: "thread.activeProposal() && lastVoteByCurrentUser(thread)", translate: "dashboard_page.aria_thread.you_voted", translate-value-position: " {{lastVoteByCurrentUser(thread).position}} "}
+
+    .screen-only{aria-hidden: "true"}
+      .thread-preview__text-container
+        .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
+          {{thread.title}}
+        .thread-preview__unread-count{ng-if: "thread.isUnread() && thread.itemsCount > 0"}
+          ({{thread.unreadItemsCount()}})
+
+      .thread-preview__text-container{ng-if: "thread.activeProposal()"}
+        .thread-preview__proposal-name> {{ thread.activeProposal().name }}
+        .thread-preview__proposal-closing-container{ng-if: "thread.activeProposal().closingSoon()"}
+          %proposal_closing_time.thread-preview__proposal-closing-at{proposal: "thread.activeProposal()"}>
+
+      .thread-preview__text-container
+        .thread-preview__group-name
+          {{ thread.group().fullName }} ·
+          %smart_time{time: "thread.lastActivityAt"}>
+
+  .thread-preview__star
+    %star_toggle{thread: "thread", aria-hidden: "true"}
+
+  .thread-preview__actions.hidden-xs
+    %button.thread-preview__mark-as-read{ng-click: "thread.markAsRead()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.mark_as_read' | translate }}"}>
+      %i.fa.fa-check>
+    %button.thread-preview__mute{ng-click: "changeVolume('mute')", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}" }>
+      %i.fa.fa-volume-off
+      %i.fa.fa-times>
+    %button.thread-preview__mute{ng-click: "changeVolume('normal')", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}"}>
+      %i.fa.fa-volume-down>

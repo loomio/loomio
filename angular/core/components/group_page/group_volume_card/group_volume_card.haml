@@ -1,0 +1,5 @@
+.blank
+  %section.group-volume-card{aria-labelledby: "group-volume-card-heading", ng-if: "canChangeVolume()"}
+    %h2.lmo-card-heading#group-volume-card-heading{translate: "group_volume_card.heading"}
+    .group-volume-card__body.lmo-grey{translate: "{{'group_volume_card.body.'+membership().volume}}"}
+    %button.group-volume-card__change-volume-link{ng-click: "openChangeVolumeForm()", translate: "group_volume_card.change_volume_link"}}

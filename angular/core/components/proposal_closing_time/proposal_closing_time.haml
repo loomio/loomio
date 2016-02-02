@@ -1,0 +1,3 @@
+%abbr.closing-in.timeago.timeago--inline>
+  %span{ng-if: "proposal.isActive()", translate: "common.closing_in", translate-value-time: "{{proposal.closingAt | timeFromNowInWords}}", ng-attr-title: "{{proposal.closingAt | exactDateWithTime}}"}
+  %span{ng-if: "!proposal.isActive()", translate: "common.closed_ago", translate-value-time: "{{proposal.closedAt | timeFromNowInWords}}", ng-attr-title: "{{proposal.closedAt | exactDateWithTime}}"}

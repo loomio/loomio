@@ -1,0 +1,29 @@
+.vote-form form{
+  margin-top: 10px;
+}
+.vote-form-label{
+  font-weight: bold;
+}
+.vote-form-details{
+  font-weight: normal;
+}
+
+.your-position-icon-yes {
+  background-image: url(/img/green_thumb_30.png);
+}
+
+.your-position-icon-no {
+  background-image: url(/img/pink_thumb_30.png);
+}
+
+.your-position-icon-abstain {
+  background-image: url(/img/yellow_thumb_30.png);
+}
+
+.your-position-icon-block {
+  background-image: url(/img/red_flag_30.png);
+}
+
+.overlimit {
+  color: red;
+}

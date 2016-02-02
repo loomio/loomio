@@ -1,0 +1,30 @@
+.discussions-card{
+  @include cardNoPadding;
+}
+
+.discussions-card__header{
+  margin: $cardPaddingSize;
+}
+
+.discussions-card__new-thread-button{
+  @include lmoBtnFeatured;
+  @include lmoBtnIcon;
+  @include fontSmall;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.discussions-card__list--empty {
+  margin: 0 17px 10px 17px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.discussions-card__list{
+  clear: both;
+}
+
+.discussions-card__show-more {
+  @include cardMinorAction;
+  @include lmoBtnLink;
+}

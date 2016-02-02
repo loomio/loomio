@@ -1,0 +1,19 @@
+.angular-feedback-card {
+  @include fontSmall;
+  z-index: 100;
+  left: 11px;
+  bottom: 0;
+  padding: 0;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  position: fixed;
+}
+
+.angular-feedback-card__expanded {
+  padding: 5px;
+}
+
+@media (max-width: $tiny-max-px){
+  .angular-feedback-card { left: 0; }
+}

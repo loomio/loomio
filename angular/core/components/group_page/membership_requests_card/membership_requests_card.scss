@@ -1,0 +1,25 @@
+.membership-requests-card{
+  @include card;
+}
+
+.membership-requests-card__pending-requests{
+  list-style: none;
+  padding-left: 0px;
+}
+
+.membership-requests-card__requestor-name{
+  @include fontSmall;
+  @include fontHelveticaBold;
+  color: $primary-text-color;
+}
+
+.membership-requests-card__requestor-introduction{
+  @include fontSmall;
+  color: $grey-on-white;
+}
+.membership-requests-card__pending-requests a{
+  color: $grey-on-white;
+}
+.membership-requests-card__pending-requests a:hover{
+  text-decoration: none;
+}

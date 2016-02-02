@@ -1,0 +1,13 @@
+.blank
+  %section.subgroups-card{ng-if: "showSubgroupsCard()", aria-labelledby: "subgroups-card__title"}
+    %h2#subgroups-card__title.lmo-card-heading{ translate: "group_page.subgroups"}
+    %ul.subgroups-card__list
+      %li.subgroups-card__list-item{ng-repeat: "subgroup in group.subgroups() | orderBy: 'name' track by subgroup.id"}
+        .subgroups-card__list-item-logo
+          %group_avatar{group: "subgroup", size: "medium"}
+        .subgroups-card__list-item-name
+          %a{lmo-href-for: "subgroup"} {{ subgroup.name }}
+        .subgroups-card__list-item-description {{ subgroup.description | truncate }}
+
+    %button.subgroups-card__add-subgroup-link{ng-click: "startSubgroup()", ng-if: "canCreateSubgroups()"}
+      %span{ translate: "common.action.add_subgroup" }

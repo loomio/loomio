@@ -1,0 +1,42 @@
+body {
+  @include fontHelvetica;
+  @include fontMedium;
+  background-color: $background-color;
+  word-break: break-word;
+}
+
+h1, h2, h3, h4{
+  @include fontReset;
+
+  /*
+  We reset styles on headings for accessibility.
+
+  Semantically we want to enforce a strict hierarchy...
+  h1
+   - h2
+   - h2
+     - h3
+  -h2
+
+  ...but we don't always want the style to match that structure.
+
+  Use .lmo-h1, .lmo-h2 etc to get the styles you want.
+  */
+}
+
+input, select, textarea{
+  margin-bottom: 10px;
+}
+
+input[type="file"]{
+  /*This is a hack for now to fix the mobile layout. The file input should be hidden.*/
+  max-width: 200px;
+}
+
+strong{
+  @include fontHelveticaBold;
+}
+
+a {
+  color: $link-color;
+}

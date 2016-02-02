@@ -1,0 +1,23 @@
+.star-toggle{
+  @include fontLarge;
+  cursor: pointer;
+  font-family: FontAwesome;
+}
+
+.thread-actions .star-toggle{line-height: 30px;}
+.thread-preview__star .star-toggle{line-height: 1px;}
+
+/* unchecked icon */
+.star-toggle input[type=checkbox] + label:before {
+  cursor: pointer;
+  content: "\f006";
+  color: $grey-on-white;
+}
+
+/*.star-toggle input[type=checkbox] + label:before { letter-spacing: 5px; } [> space between checkbox and label <]*/
+.star-toggle input[type=checkbox]:checked + label:before {
+  cursor: pointer;
+  content: "\f005"; /* checked icon */
+  color: $loomio-orange;
+ }
+/*.star-toggle input[type=checkbox]:checked + label:before { letter-spacing: 5px; } [> allow space for check mark <]*/

@@ -1,0 +1,81 @@
+@media (max-width: 480px){
+  .thread-lintel__wrapper {
+  }
+}
+@media (min-width: 480px) and (max-width: 768px){
+  .thread-lintel__wrapper{
+    max-width: 768px;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px){
+  .thread-lintel__wrapper{
+    max-width: 992px;
+  }
+}
+@media (min-width: 992px){
+  .thread-lintel__wrapper{
+    max-width: 1120px;
+  }
+}
+
+.thread-lintel__wrapper {
+  @include lmoRow;
+  @include fontMedium;
+  position: fixed;
+  top: $navbar-height;
+  width: 100%;
+}
+
+.thread-lintel__content {
+  @include box_shadow(1);
+  border: 1px solid $border-color;
+  background-color: $card-background-color;
+  clear: both;
+  overflow: hidden;
+}
+
+.thread-lintel__left {
+  float: left;
+  padding: 7px 0 7px 15px;
+}
+
+.thread-lintel__right {
+  float: right;
+  padding: 7px 15px 7px 0px;
+}
+
+.thread-lintel__title {
+  @include fontHelveticaBold;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.thread-lintel__proposal {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.thread-lintel__proposal-pie-chart {
+  float: left;
+  margin-right: 5px;
+}
+
+.thread-lintel__progress {
+  width: 100%;
+  height: 2px;
+}
+
+.thread-lintel__progress-wrap {
+  margin: 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.thread-lintel__progress-bar {
+  @include transition(width, 0.5s, ease-in-out);
+  width: 0%;
+  background: $progress-bar-color;
+  left: 0;
+  position: absolute;
+  top: 0;
+}

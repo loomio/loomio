@@ -1,0 +1,44 @@
+.thread-item.thread-item--comment{ng_controller: "NewCommentItemController", id: "comment-{{comment.id}}" }
+  .pull-right{uib-dropdown: "true", ng-if: "showContextMenu()"}
+    %button.thread-item__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true", type: "button"}
+      %i.fa.fa-chevron-down
+      .sr-only{translate: "new_comment_item.context_menu.aria_label"}
+    .uib-dropdown-menu.lmo-dropdown-menu
+      %ul.lmo-dropdown-menu-items
+        %li.lmo-dropdown-menu-item{ng-if: "canEditComment()"}
+          %a.lmo-dropdown-menu-item-label.thread-item__edit-link{href: "", ng-click: "editComment()", translate: "new_comment_item.context_menu.edit_comment"}
+        %li.lmo-dropdown-menu-item{ng-if: "canDeleteComment()"}
+          %a.lmo-dropdown-menu-item-label.thread-item__delete-link{href: "", ng-click: "deleteComment()", translate: "new_comment_item.context_menu.delete_comment"}
+
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: "comment.author()", size: "small"}
+    .media-body
+      %h3.new-comment__in-reply-to{ng-if: "comment.parentId", id: "event-{{event.id}}"}
+        %strong
+          %a{lmo-href-for: "comment.author()"}> {{ comment.authorName() }}
+        %span{translate: "new_comment_item.in_reply_to", translate-value-recipient: "{{comment.parentAuthorName}}"}
+      %h3.new-comment__author-name{ng-if: "!comment.parentId"}
+        %a{lmo-href-for: "comment.author()"}> {{ comment.authorName() }}
+      .sr-only{ng-if: "!comment.parentId", id: "event-{{event.id}}", translate: "new_comment_item.aria_label", translate-value-author: "{{comment.authorName()}}"}
+
+  .thread-item__body.lmo-markdown-wrapper{marked: "comment.cookedBody()" }
+  %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
+
+  .thread-item__attachments
+    .thread-item__attachment{ng-repeat: "attachment in comment.attachments() track by attachment.id"}
+      %attachment_preview{attachment: "attachment", mode: "thread"}
+
+  .thread-item__footer
+    .thread-item__actions{ng-if: "showCommentActions()"}
+      %button.thread-item__action.thread-item__action--like{type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng_click: "like()"}>
+      %button.thread-item__action{type: "button", translate: "common.action.unlike", ng_click: "unlike()", ng-show: "currentUserLikesIt()"}>
+      %span{aria-hidden: "true"}>·
+      %button.thread-item__action.thread-item__action--reply{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
+      %translate_button{model: "comment", showdot: "true"}
+      %span{aria-hidden: "true"}>·
+      %a{lmo-href-for: "comment"}>
+        %timeago{timestamp: "comment.createdAt" }>
+
+    .thread-item__liked-by{ng_show: "anybodyLikesIt()"}
+      {{ likedBySentence }}

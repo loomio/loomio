@@ -1,0 +1,14 @@
+%form.form-card{name: "groupForm", ng_submit: "submit()"}
+  %h1.lmo-h1{translate: "contact_message_form.contact_us"}
+
+  .lmo-form-group
+    %label{for: "contact-name-field", translate: "contact_message_form.name_label"}
+    %input.form-control#contact-name-field{ng-model: "message.name", ng_required: "true", placeholder: "{{contact_message_form.name_placeholder | translate}}"}
+
+    %label{for: "contact-email-field", translate: "contact_message_form.email_label"}
+    %input.form-control#contact-email-field{ng-model: "message.email", ng_required: "true", placeholder: "{{contact_message_form.email_placeholder | translate}}"}
+
+    %label{for: "contact-message-field", translate: "contact_message_form.message_label"}
+    %textarea#contact-message-field{ng-model: "message.message", placeholder: "{{contact_message_form.message_placeholder | translate}}"}
+
+  %button.lmo-btn--submit{type: "submit", translate: "contact_message_form.send_message"}

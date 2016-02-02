@@ -232,7 +232,6 @@ class DevelopmentController < ApplicationController
   def setup_proposal
     sign_in patrick
     test_proposal
-
     redirect_to discussion_url(test_discussion)
   end
 
@@ -255,7 +254,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_proposal
     MotionService.close(test_proposal)
-    redirect_to previous_proposal_url(test_group)
+    redirect_to previous_proposals_group_url(test_group)
   end
 
   def setup_proposal_closing_soon
@@ -296,32 +295,10 @@ class DevelopmentController < ApplicationController
   def setup_all_notifications
     sign_in patrick
     setup_all_notifications_work
-
-
     redirect_to discussion_url(test_discussion)
   end
 
   private
-
-  def discussion_url(discussion)
-    "http://localhost:8000/d/#{discussion.key}/"
-  end
-
-  def group_url(group)
-    "http://localhost:8000/g/#{group.key}/"
-  end
-
-  def dashboard_url
-    "http://localhost:8000/dashboard"
-  end
-
-  def inbox_url
-    "http://localhost:8000/inbox"
-  end
-
-  def previous_proposal_url(group)
-    "http://localhost:8000/g/#{group.key}/previous_proposals"
-  end
 
   def ensure_testing_environment
     raise "Do not call me." if Rails.env.production?
