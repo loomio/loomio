@@ -11,6 +11,7 @@ def bump_version_and_push_origin_master
                 'git add lib/version',
                 'git commit -m "bump version"',
                 'git push origin master']
+  Loomio::Version.reload
 end
 
 def setup_heroku
