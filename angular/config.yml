@@ -6,7 +6,6 @@ vendor:
     - moment/moment.js
     - ng-file-upload/dist/angular-file-upload-shim.js
     - angular/angular.js
-    - angular-mocks/angular-mocks.js
     - angular-sanitize/angular-sanitize.js
     - loomio-angular-router/dist/router.es5.js
     - angular-translate/dist/angular-translate.js
@@ -24,7 +23,6 @@ vendor:
     - angular-inview/angular-inview.js
     - angular-gravatar/build/angular-gravatar.js
     - angular-gravatar/build/md5.js
-    - angular-truncate/src/truncate.js
     - angular-scroll/angular-scroll.js
     - svg.js/dist/svg.js
     - jstimezonedetect/dist/jstz.js

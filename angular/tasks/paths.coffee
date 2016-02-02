@@ -1,6 +1,6 @@
 config = require('node-yaml-config').reload('config.yml')
 _      = require 'lodash'
-include = (key, file) -> _.map(config.vendor[key], (file) -> ['.', config.vendor.path, file].join('/'))
+include = (key, file) -> _.map(config.vendor[key], (file) -> [config.vendor.path, file].join('/'))
 
 module.exports = {
   css: {
