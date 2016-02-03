@@ -8,7 +8,7 @@ module.exports = {
     includes:       _.flatten([include('css_includes'), 'core/css'])
   },
   dist: {
-    fonts:  '../public/fonts',
+    fonts:  '../public/client/fonts',
     assets: '../public/client/development',
   },
   fonts: {
