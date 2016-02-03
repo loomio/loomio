@@ -9,7 +9,7 @@ module.exports = {
   },
   dist: {
     fonts:  '../public/fonts',
-    assets: '../public/assets',
+    assets: '../public/client/development',
   },
   fonts: {
     vendor:         include('fonts')

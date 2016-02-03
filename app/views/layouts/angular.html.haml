@@ -6,7 +6,7 @@
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     %base{href: '/'}
-    %link{href: angular_asset(:app, :"min.css"), rel: 'stylesheet', media: 'screen'}
+    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
 
     = render 'angular/google_analytics'
     = render 'angular/intercom'
@@ -22,8 +22,8 @@
     :javascript
       window.Loomio = #{@appConfig.to_json.html_safe}
 
-    %script{src: angular_asset(:vendor, :"min.js")}
-    %script{src: angular_asset(:app, :js)}
+    %script{src: client_asset_path(:"vendor.min.js")}
+    %script{src: client_asset_path(:"app.js")}
 
     - if Rails.application.secrets.faye_url.present?
       %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}

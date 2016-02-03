@@ -37,8 +37,8 @@ module AngularHelper
     end
   end
 
-  def angular_asset(path, ext)
-    "#{angular_asset_path}/#{angular_asset_filename(path, ext)}"
+  def client_asset_path(filename)
+    [:client, angular_asset_folder, filename].join('/')
   end
 
   def boot_angular_ui
@@ -56,11 +56,11 @@ module AngularHelper
 
   private
 
-  def angular_asset_path
-    [:assets, (Loomio::Version.current if Rails.env.production?)].compact.join('-')
-  end
-
-  def angular_asset_filename(path, ext)
-    [path, ext].join('.')
+  def angular_asset_folder
+    if Rails.env.development?
+      :development
+    else
+      Loomio::Version.current
+    end
   end
 end
