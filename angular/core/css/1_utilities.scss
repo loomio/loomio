@@ -243,6 +243,10 @@ textarea.form-control {
   display: inline-block;
 }
 
+.modal-content {
+  background-color: $modal-background-color;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
