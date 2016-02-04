@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'notifications', ->
   restrict: 'E'
   templateUrl: 'generated/components/notifications/notifications.html'
   replace: true
-  controller: ($scope, Records, AppConfig) ->
+  controller: ($scope, Records, AppConfig, PageTitleService) ->
 
     kinds = [
       'comment_liked',
@@ -38,5 +38,8 @@ angular.module('loomioApp').directive 'notifications', ->
 
     $scope.hasUnread = =>
       $scope.unreadCount() > 0
+
+    $scope.$watch $scope.unreadCount, (count) ->
+      PageTitleService.set count: count
 
     return
