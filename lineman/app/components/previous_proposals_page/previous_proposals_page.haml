@@ -1,8 +1,0 @@
-.loading-wrapper.lmo-one-column-layout
-  %loading{ng-if: '!previousProposalsPage.group'}
-  %main.previous-proposals-page{ng-if: 'previousProposalsPage.group'}
-    %group_theme{group: 'previousProposalsPage.group'}
-    .previous-proposals-page__previous-proposals
-      .lmo-card-left-right-padding
-        %h2.lmo-h2{translate: 'previous_proposals_page.heading'}
-      %proposal_accordian{ng-if: 'previousProposalsPage.group', model: 'previousProposalsPage.group'}
