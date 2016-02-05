@@ -36,3 +36,7 @@
       -# = javascript_include_tag 'http://localhost:4000/assets/application.js'
       = javascript_include_tag 'angular_ahoy'
       = render 'piwik_tracker'
+
+    - @theme_ids.each do |theme_id|
+      = stylesheet_link_tag theme_assets_path(theme_id)
+      = javascript_include_tag theme_assets_path(theme_id)
