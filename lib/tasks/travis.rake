@@ -1,13 +1,13 @@
 namespace :travis do
   task :rspec do
     puts "Starting to run rspec..."
-    system("export DISPLAY=:99.0 && bundle exec rspec")
+    system("bundle exec rspec")
     raise "rspec failed!" unless $?.exitstatus == 0
   end
 
   task :cucumber do
     puts "Starting to run cucumber..."
-    system("export DISPLAY=:99.0 && bundle exec cucumber")
+    system("bundle exec cucumber")
     raise "cucumber failed!" unless $?.exitstatus == 0
   end
 
