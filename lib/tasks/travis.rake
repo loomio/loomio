@@ -15,8 +15,9 @@ namespace :travis do
     puts "Creating test assets for v#{Loomio::Version.current}..."
     system("cp -r public/client/development public/client/#{Loomio::Version.current}")
     raise "Asset creation failed!" unless $?.exitstatus == 0
-    puts "Starting rails server..."
-    system("RAILS_ENV=test bundle exec rails server > /dev/null &")
+
+    puts "Starting to run protractor..."
     system("cd angular && gulp protractor && cd ../")
+    raise "protractor failed!" unless $?.exitStatus == 0
   end
 end
