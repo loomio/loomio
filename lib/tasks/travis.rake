@@ -1,4 +1,4 @@
-task :travis do
+namespace :travis do
   task :rspec do
     puts "Starting to run rspec..."
     system("export DISPLAY=:99.0 && bundle exec rspec")
