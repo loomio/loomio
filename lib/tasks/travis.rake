@@ -13,11 +13,12 @@ namespace :travis do
 
   task :protractor => :environment do
     puts "Creating test assets for v#{Loomio::Version.current}..."
+    system("cd angular && gulp compile")
     system("cp -r #{Rails.root}/public/client/development #{Rails.root}/public/client/#{Loomio::Version.current}")
     raise "Asset creation failed!" unless $?.exitstatus == 0
 
     puts "Starting to run protractor..."
-    system("cd angular && gulp protractor && cd ../")
+    system("gulp protractor:now && cd ../")
     raise "protractor failed!" unless $?.exitStatus == 0
   end
 end
