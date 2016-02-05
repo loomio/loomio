@@ -33,8 +33,8 @@ def build_and_push_branch(remote, branch)
   run_commands ["git checkout #{branch}",                                                         # checkout branch
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
                 "cd angular && npm install && gulp compile && cd ../",                            # build the app via gulp
-                "cp -r public/assets public/assets-#{Loomio::Version.current}",                   # version assets
-                "git add public/assets public/assets-#{Loomio::Version.current} public/fonts -f", # add assets to commit
+                "cp -r public/client/development public/client/#{Loomio::Version.current}",       # version assets
+                "git add public/client/#{Loomio::Version.current} public/client/fonts -f",        # add assets to commit
                 "git commit -m 'Add assets for production push'",                                 # commit assets
                 "git push #{remote} #{build_branch}:master -f",                                   # DEPLOY!
                 "git checkout #{branch}",                                                         # switch back to original branch

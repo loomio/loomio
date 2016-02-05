@@ -12,7 +12,7 @@ tmp/
 coverage
 public/assets
 public/javascripts
-public/fonts
+public/client
 public/stylesheets
 public/system
 .project
