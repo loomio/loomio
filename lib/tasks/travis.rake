@@ -11,9 +11,9 @@ namespace :travis do
     raise "cucumber failed!" unless $?.exitstatus == 0
   end
 
-  task :protractor do
+  task :protractor => :environment do
     puts "Creating test assets for v#{Loomio::Version.current}..."
-    system("cp -r public/client/development public/client/#{Loomio::Version.current}")
+    system("cp -r #{Rails.root}/public/client/development #{Rails.root}/public/client/#{Loomio::Version.current}")
     raise "Asset creation failed!" unless $?.exitstatus == 0
 
     puts "Starting to run protractor..."
