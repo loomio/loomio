@@ -1,0 +1,124 @@
+.lmo-dropdown-menu{
+  padding: 15px;
+  right: 0;
+  left: auto;
+}
+
+.lmo-dropdown-menu label {
+  cursor: pointer;
+}
+
+.lmo-dropdown-menu--with-selector-list{
+  padding: 0;
+  min-width: 320px;
+}
+
+.lmo-dropdown-menu--with-details{
+  min-width: 320px;
+}
+
+.lmo-dropdown-menu--with-icons{
+  min-width: 200px;
+  padding: 15px 10px 15px 0;
+}
+
+.lmo-dropdown-menu-item a, .lmo-dropdown-menu-item label{
+  display: block;
+  margin: -13px;
+  padding: 13px;
+  color: $primary-text-color;
+}
+
+.lmo-dropdown-menu--with-icons a{
+  margin: -13px -10px -13px 0px;
+}
+
+.lmo-dropdown-menu--with-icons i.fa {
+  width: 25px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.lmo-dropdown-menu--with-details a{
+  color: $primary-text-color;
+}
+
+.lmo-dropdown-menu--with-details .fa-check{
+  margin-left: 5px;
+}
+
+.lmo-dropdown-menu-items{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @include fontHelveticaMedium;
+}
+.lmo-dropdown-menu-item-details{
+  @include fontHelvetica;
+  font-weight: normal;
+}
+
+.lmo-dropdown-menu-item{
+  cursor: pointer;
+  margin-bottom: 13px;
+}
+
+.lmo-dropdown-menu-item:last-of-type{
+  margin-bottom: 0px;
+}
+
+form .lmo-dropdown-menu-item{
+  margin-right: -26px;
+}
+
+.lmo-dropdown-menu-item a:hover, .lmo-dropdown-menu-item label:hover{
+  display: block;
+  text-decoration: none;
+  background-color: $list-hover-color;
+}
+
+.lmo-dropdown-menu-item-icon{
+  float: left;
+  width: 52px;
+  margin-left: -13px;
+  text-align: center;
+}
+
+.disabled .lmo-dropdown-menu-item{
+  cursor: auto;
+}
+
+.lmo-dropdown-menu-item.lmo-last{
+  margin-bottom: 0;
+}
+
+li .lmo-dropdown-menu-item-label{
+  line-height: 24px;
+  white-space: nowrap;
+  i{
+    font-weight: normal;
+    width: 18px;
+    color: $primary-text-color;
+  }
+}
+
+.disabled .lmo-dropdown-menu-item{
+  color: $grey-on-grey;
+}
+
+.lmo-dropdown-heading{
+  @include fontHelveticaMedium;
+  @include fontSmall;
+  text-transform: uppercase;
+  color: $grey-on-white;
+  margin: -3px 0 13px 0;
+  padding-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid $border-color;
+}
+
+.lmo-dropdown-menu--with-selector-list .lmo-dropdown-heading{
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}

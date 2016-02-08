@@ -524,20 +524,20 @@ en:
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
     privacy: 'Privacy'
-    group_privacy_open_description: "anyone can find the group, see who's in it, and ask to join. All threads are public."
-    group_privacy_closed_description: "anyone can find the group, see who's in it, and ask to join. Only members can see threads."
-    group_privacy_closed_public_threads_description: "anyone can find the group, see who's in it, and ask to join. Threads can be public or private."
-    group_privacy_secret_description: 'only invited members can find the group and see threads.'
+    group_privacy_is_open_description: "anyone can find the group and ask to join. Only members can see who is in the group. All threads are public."
+    group_privacy_is_closed_description: "anyone can find the group and ask to join. Only members can see who is in the group. All threads are private."
+    group_privacy_is_closed_public_threads_description: "anyone can find the group and ask to join. Only members can see who is in the group. Threads can be public or private."
+    group_privacy_is_secret_description: 'only invited members can find the group, see who is in it and see threads.'
     confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
 
-    subgroup_privacy_open_description: "anyone can find this subgroup, see who's in it, and ask to join. All threads are public."
-    subgroup_privacy_closed_description: "anyone can find this subgroup, see who's in it, and ask to join. Only members can see threads."
-    subgroup_privacy_closed_public_threads_description: "anyone can find this subgroup, see who's in it, and ask to join. Threads can be public or private."
-    subgroup_privacy_closed_secret_parent_description: "members of {{parent}} can find this subgroup, see who's in it, and ask to join."
-    subgroup_privacy_secret_description: 'only invited members can find this subgroup and see threads.'
+    subgroup_privacy_is_open_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
+    subgroup_privacy_is_closed_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
+    subgroup_privacy_is_closed_public_threads_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. Threads can be public or private."
+    subgroup_privacy_is_closed_secret_parent_description: "members of {{parent}} can find this subgroup and ask to join. Only members can see who is in the group."
+    subgroup_privacy_is_secret_description: 'only invited members can find this subgroup, see who is in it and see threads.'
 
     advanced_settings: "Advanced settings"
     how_do_people_join: "How do people join?"
@@ -580,7 +580,9 @@ en:
   group_help_card:
     title: Help
     ten_tips_article_title: 10 tips for making great decisions with Loomio
+    ten_tips_article_link: https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/
     nine_ways_to_use_proposals: 9 ways to use a Loomio proposal to turn a conversation into action
+    nine_ways_to_use_proposals_link: https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/
 
   membership_requests_page:
     heading: Membership Requests

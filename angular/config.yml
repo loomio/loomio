@@ -1,0 +1,40 @@
+plugins:
+vendor:
+  path: node_modules
+  js:
+    - lodash/index.js
+    - moment/moment.js
+    - ng-file-upload/dist/angular-file-upload-shim.js
+    - angular/angular.js
+    - angular-sanitize/angular-sanitize.js
+    - loomio-angular-router/dist/router.es5.js
+    - angular-translate/dist/angular-translate.js
+    - angular-translate-loader-url/angular-translate-loader-url.js
+    - angular-ui-bootstrap/ui-bootstrap.js
+    - angular-ui-bootstrap/ui-bootstrap-tpls.js
+    - angular-marked/node_modules/marked/lib/marked.js
+    - angular-marked/dist/angular-marked.js
+    - ng-file-upload/dist/angular-file-upload.js
+    - ment.io/dist/mentio.js
+    - angular-moment/angular-moment.js
+    - private_pub/app/assets/javascripts/private_pub.js
+    - angular-animate/angular-animate.js
+    - lokijs/src/lokijs.js
+    - angular-inview/angular-inview.js
+    - angular-gravatar/build/angular-gravatar.js
+    - angular-gravatar/build/md5.js
+    - angular-scroll/angular-scroll.js
+    - svg.js/dist/svg.js
+    - jstimezonedetect/dist/jstz.js
+    - angular_record_store/dist/standalone.js
+    - angular-elastic/elastic.js
+    - checklist-model/checklist-model.js
+    - angular-clipboard/angular-clipboard.js
+    - private_pub/app/assets/javascripts/private_pub.js
+  css:
+    - bootstrap-sass/assets/stylesheets/_bootstrap.scss
+    - font-awesome/css/font-awesome.css
+  css_includes:
+    - bootstrap-sass/assets/stylesheets
+  fonts:
+    - font-awesome/fonts/*.*

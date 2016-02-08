@@ -27,7 +27,9 @@ sr:
     more_help: Još pomoći
     models:
       proposal: Predlog
+    copied: Kopirano
     action:
+      close: Zatvori
       save: Snimi
       save_changes: Sačuvaj promene
       update_settings: Izmeni podešavanja
@@ -42,6 +44,8 @@ sr:
       new_thread: Nova nit
       add_subgroup: Dodaj podgrupu
       loading: Učitavanje
+      translate: Prevedi
+      translated: Prevod Bing Translator
       uploading: Prosleđivanje
     formatting_help:
       label: Pomoć o formatiranju
@@ -185,6 +189,7 @@ sr:
       discussions: Niti
       proposals: Predlozi
       comments: Komentari
+    sign_in: Prijavi Se
   start_menu:
     title: Dugme akcije
     start_group: Kreiraj Grupu
@@ -299,6 +304,8 @@ sr:
   proposal_position_abstain: Uzdražanost
   proposal_position_no: Nesaglasnost
   proposal_position_block: Blokiranje
+  legacy_trial_expired_modal:
+    heading: 'Hvala što ste koristili Loomio ove godine!'
   group_welcome_modal:
     heading: Dobrodošli u svoju novu grupu
     first_step: 'Vi ste <strong>koordinator</strong>, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
@@ -521,6 +528,31 @@ sr:
   group_previous_proposals_card:
     heading: Prethodni predlozi
     see_more: Vidi još
+  invitation_form:
+    invite_people: Pozovi Ljude
+    group: Grupa
+    email_addresses: Adrese ePošte
+    email_addresses_placeholder: 'kao helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Učini svoje poziv ličnim,'
+    add_custom_message_link: dodaj svoju poruku.
+    custom_message: Tvoja poruka
+    team_invitation_message: 'Alternativno,'
+    team_invitation_link: uzmi vezu za prosleđivanje.
+    add_members: Dodaj članove
+    from_parent_group: 'od {{name}}.'
+    send: Pošalji
+    messages:
+      invitation_sent: Poziv poslat.
+      invitations_sent: '{{count}} pozivnica poslato.'
+  team_link_modal:
+    heading: Dodaj ljude
+    share_link: Prosledi ovu vezu
+    copy_link: Kopiraj vezu
+  add_members_modal:
+    heading: 'Dodaj ljude iz {{name}}'
+    add_members: Dodaj članove
+    user_added_to_subgroup: '{{name}} je u Podgrupi'
+    users_added_to_subgroup: '{{count}} Korisnika dodato u Podgrupu'
   memberships_page:
     members: Članovi
     name_label: Ime
@@ -541,6 +573,7 @@ sr:
     heading: Pozivnice na čekanju
     email: ePoruka
     invitation_link: Pozivna veza
+    sent: Poslato
   cancel_invitation_form:
     heading: Otkaži pozivnicu
     question: Da li ste sigurni da želite otkazati ovu pozivnicu?
@@ -686,6 +719,7 @@ sr:
     notifications: Obaveštenja
     edit_thread: Izmene
     move_thread: Premesti
+    print_thread: Štampa
     delete_thread: Obriši
   delete_thread_form:
     title: Obriši nit

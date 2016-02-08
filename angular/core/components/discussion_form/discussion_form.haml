@@ -1,0 +1,64 @@
+%form.discussion-form{name: "discussionForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %input{type: "hidden", ng-model: "discussion.usesMarkdown"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title{translate: "discussion_form.new_discussion_title", ng-show: "discussion.isNew()"}
+    %h1.lmo-h1.modal-title{translate: "discussion_form.edit_discussion_title", ng-hide: "discussion.isNew()"}
+
+  .modal-body
+    %form_errors{record: "discussion"}
+
+    .thread-helptext{translate: "discussion_form.discussion_helptext", ng-show: "discussion.isNew()"}
+
+    .lmo-form-group{ng-show: "showGroupSelect"}
+      %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
+      %select.form-control#discussion-group-field{ng-model: "discussion.groupId", ng-required: "true", ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
+        %option{value: "", translate: "discussion_form.group_placeholder" }
+
+    .discussion-group-selected{ng_if: "discussion.groupId"}
+      .lmo-form-group
+        %label{for: "discussion-title", translate: "discussion_form.title_label"}
+        %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-model-options: "{debounce: 600}", ng-change: "storeDraft()", ng-required: "true", maxlength: "255"}
+        %validation_errors{subject: "discussion", field: "title"}
+
+      .lmo-form-group
+        %label{for: "discussion-context", translate: "discussion_form.context_label"}
+        %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", ng-model-options: "{debounce: 600}", ng-change: "storeDraft()", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+
+      .lmo-form-group{ng-show: "showPrivacyForm()"}
+        %label.lmo-form-labelled-input.discussion-form__public
+          %input{type: "radio", ng-model: "discussion.private", ng-value: "false"}
+          %span
+            %i.fa.fa-globe>
+            %strong{translate: "common.privacy.public" }
+            %span.seperator
+            %span{translate: "discussion_form.privacy_public"}
+
+        %label.lmo-form-labelled-input.discussion-form__private
+          %input{type: "radio", ng-model: "discussion.private", ng-value: "true"}
+          %span
+            %i.fa.fa-lock>
+            %strong{translate: "common.privacy.private"}
+            %span.seperator
+            %span {{ privacyPrivateDescription() }}
+
+      .privacy-notice{ng-show: "!showPrivacyForm()"}
+        %label.lmo-form-labelled-input{ng_hide: "discussion.private"}
+          %span
+            %i.fa.fa-globe>
+            %strong{translate: "common.privacy.public"}
+            %span.seperator
+            %span{translate: "discussion_form.privacy_public"}
+
+        %label.lmo-form-labelled-input{ng-show: "discussion.private"}
+          %span
+            %i.fa.fa-lock>
+            %strong{translate: "common.privacy.private"}
+            %span.seperator
+            %span {{ privacyPrivateDescription() }}
+
+  .modal-footer
+    %button.lmo-btn--submit.discussion-form__submit{type: "submit", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
+    %button.lmo-btn--primary.discussion-form__update{type: "submit", translate: "discussion_form.edit_discussion_submit", ng-hide: "discussion.isNew()" }
+    %button.lmo-btn--cancel.discussion-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}

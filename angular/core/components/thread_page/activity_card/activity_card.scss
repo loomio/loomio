@@ -1,0 +1,40 @@
+.activity-card{
+  @include card;
+}
+
+.activity-card__load-backwards{
+  @include fontSmall;
+  color: $grey-on-grey;
+  span{text-decoration: underline;}
+  line-height: 30px;
+  padding: 0 10px;
+  background-color: $background-color;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.activity-card__last-read-activity {
+  visibility: hidden; /* can't display none because scrolling won't work */
+  line-height: 0px;
+  margin: -10px 0;
+}
+
+.activity-card__new-activity {
+  visibility: visible;
+  margin: 0px 0 25px 0;
+  padding-bottom: 3px;
+  border-bottom: 1px solid $loomio-orange;
+  text-align: right;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: $loomio-orange;
+
+}
+
+.activity-card__activity-list{
+  list-style: none;
+  padding: 0;
+}

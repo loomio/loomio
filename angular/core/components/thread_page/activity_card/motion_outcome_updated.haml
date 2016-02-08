@@ -1,0 +1,13 @@
+.thread-item{ng-controller: "MotionOutcomeUpdatedItemController"}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: "event.actor()", size: "small"}
+    .media-body
+      %h3.thread-item__title{id: "event-{{event.id}}"}
+        %strong
+          %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
+        %span{translate: "proposal_outcome_updated_item.proposal_outcome_updated"}
+  .thread-item__body.lmo-markdown-wrapper{ marked: "proposal.outcome" }
+  .thread-item__footer
+    .thread-item__actions
+      %timeago{timestamp: "event.createdAt"}

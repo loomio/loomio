@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 describe Groups::MembershipsController do
+
+  describe 'index' do
+    before do
+      @user = create(:user)
+      sign_in @user
+      @group = create(:group)
+    end
+
+    it 'allows access to group members' do
+      @group.add_member! @user
+      get :index, group_id: @group.key
+      expect(response).to be_success
+    end
+
+    it 'does not allow access to non-group members' do
+      get :index, group_id: @group.key
+      expect(response).to be_redirect
+      expect(flash[:error]).to be_present
+    end
+  end
+
   context 'signed in user' do
     before :each do
       @user = create(:user)

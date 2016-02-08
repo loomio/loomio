@@ -1,0 +1,10 @@
+.edit-comment-form
+  %form{ng-submit: "submit()",  ng-disabled: "comment.processing", name: "commentForm" }
+    .modal-header
+      %modal_header_cancel_button
+      %h1.lmo-h1.modal-title{translate: "comment_form.edit_comment"}
+    .modal-body
+      %textarea.lmo-textarea.form-control.edit-comment-form__comment-field{name: "body", ng_model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "comment-field", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 300, 'blur': 0} }"}
+    .modal-footer
+      %button.lmo-btn--submit.comment-form__submit-btn{type: "submit", translate: "common.action.save_changes"}>
+      %button.lmo-btn--cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}

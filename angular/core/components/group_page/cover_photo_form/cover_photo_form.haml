@@ -1,0 +1,19 @@
+.cover-photo-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title{translate: "group_cover_modal.heading"}
+
+  .modal-body
+    %button.lmo-btn-link{ng-click: "selectFile()"}
+      .lmo-box--small.lmo-float--left
+        .user-avatar__initials--small
+          %i.fa.fa-lg.fa-camera
+      %span.lmo-option-text{translate: "group_cover_modal.upload_link"}
+    .lmo-clearfix
+    %input.hidden.cover-photo-form__file-input{type: "file", ng-model: "files", ng-file-select: "upload(files)"}
+    %p{translate: "group_cover_modal.helptext"}
+    %p{translate: "group_cover_modal.image_size_helptext"}
+
+  .modal-footer.lmo-clearfix
+    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

@@ -737,6 +737,7 @@ pt-BR:
     notifications: Notificações
     edit_thread: Editar
     move_thread: Mover
+    print_thread: Imprimir
     delete_thread: Apagar
   delete_thread_form:
     title: Apagar tópico

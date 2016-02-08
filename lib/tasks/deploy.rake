@@ -11,6 +11,7 @@ def bump_version_and_push_origin_master
                 'git add lib/version',
                 'git commit -m "bump version"',
                 'git push origin master']
+  Loomio::Version.reload
 end
 
 def setup_heroku
@@ -31,10 +32,10 @@ def build_and_push_branch(remote, branch)
   build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
   run_commands ["git checkout #{branch}",                                                         # checkout branch
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
-                "cd lineman && npm install && bower install && lineman build && cd ../",          # build the app via lineman
-                "cp -R lineman/dist/* public/",                                                   # move build assets to public/ folder
-                "git add public/img public/css public/js public/fonts",                           # add lineman assets to commit
-                "git commit -m 'Add assets for production push'",                                 # commit lineman assets
+                "cd angular && npm install && gulp compile && cd ../",                            # build the app via gulp
+                "cp -r public/assets public/assets-#{Loomio::Version.current}",                   # version assets
+                "git add public/assets public/assets-#{Loomio::Version.current} public/fonts -f", # add assets to commit
+                "git commit -m 'Add assets for production push'",                                 # commit assets
                 "git push #{remote} #{build_branch}:master -f",                                   # DEPLOY!
                 "git checkout #{branch}",                                                         # switch back to original branch
                 "git branch -D #{build_branch}"]                                                  # delete production branch

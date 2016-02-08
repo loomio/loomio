@@ -1,0 +1,10 @@
+.undecided-panel
+  %a.undecided-panel__show-undecided-link.lmo-card-minor-action{href: "", ng-click: "showUndecided()", ng-show: "!undecidedPanelOpen", translate: "undecided_panel.show_undecided"}
+  %h3.undecided-panel__heading.sr-only{ng-show: "undecidedPanelOpen", translate: "undecided_panel.aria_label", tabindex: 0}
+  %ul.undecided-panel__list{ng-if: "undecidedPanelOpen"}
+    %li.media{ng-repeat: "user in proposal.undecidedMembers() track by user.id"}
+      .media-left
+        %i.fa.fa-question-circle.undecided-panel__icon
+      .media-body
+        %span.undecided-panel__user {{user.name}}
+  %a.undecided-panel__hide-undecided-link.lmo-card-minor-action{href: "", ng-click: "hideUndecided()", ng-show: "undecidedPanelOpen", translate: "undecided_panel.hide_undecided"}

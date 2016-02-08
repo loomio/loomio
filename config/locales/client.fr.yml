@@ -1,6 +1,6 @@
 fr:
   common:
-    confirm_discard_changes: Annuler vos modifications ?
+    confirm_discard_changes: Annuler vos modifications?
     time:
       am: am
       pm: pm
@@ -32,7 +32,7 @@ fr:
       close: Fermer
       save: Enregistrer
       save_changes: Sauvegarder les modifications
-      update_settings: Met à jour mes paramètres
+      update_settings: Modifier vos paramètres
       reply: Répondre
       edit: Modifier
       like: "J'aime"
@@ -52,7 +52,7 @@ fr:
       title: Apprenez à utiliser Markdown pour formater votre texte sur Loomio
   error_page:
     forbidden: "Vous n'avez pas la permission de faire cela."
-    page_not_found: "Nous n'avons pas pu trouver cela. Cela a pu être supprimé ou déplacé."
+    page_not_found: "Nous n'avons pas pu trouver cela. Cela a dû être supprimé ou déplacé."
     internal_server_error: "Nous sommes désolés mais quelque chose s'est mal passé. Veuillez essayer à nouveau."
   start_proposal_card:
     title: Lancer une proposition
@@ -733,6 +733,7 @@ fr:
     notifications: Notifications
     edit_thread: Editer
     move_thread: Déplacer
+    print_thread: Imprimer
     delete_thread: Supprimer
   delete_thread_form:
     title: Supprimer la discussion

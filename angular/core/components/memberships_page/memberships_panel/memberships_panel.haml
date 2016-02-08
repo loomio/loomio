@@ -1,0 +1,16 @@
+.blank
+  .row.memberships-page__table-row
+  .row.memberships-page__table-row.memberships-page__membership{ng-repeat: "membership in memberships() track by membership.id"}
+    .col-xs-8
+      .media
+        .media-left.hidden-xs
+          %user_avatar{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
+        .media-body
+          .memberships-page__member-info
+            %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
+            %div @{{::membership.user().username}}
+  .row.memberships-page__table-row
+    .members-card__invite-members.col-xs-6{ng-if: "membershipsPage.canAddMembers()"}
+      %a.lmo-btn--featured.lmo-btn--block.lmo-btn--icon{href: "", ng_click: "membershipsPage.invitePeople()"}
+        %i.fa.fa-lg.fa-plus>
+        %span{translate: "group_page.invite_people" }

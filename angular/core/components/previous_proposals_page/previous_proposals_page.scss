@@ -1,0 +1,9 @@
+.previous-proposals-page {
+  @include lmoRow;
+}
+
+.previous-proposals-page__previous-proposals {
+  @include cardNoPadding;
+  padding-top: 10px;
+  clear: both;
+}

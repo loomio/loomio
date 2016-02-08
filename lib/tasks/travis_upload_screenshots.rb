@@ -2,7 +2,7 @@ require 's3_uploader'
 require 'date'
 
 destination_dir = "#{DateTime.now.strftime('%Y%m%d_%H%M')}-#{ENV['TRAVIS_PULL_REQUEST']}"
-S3Uploader.upload_directory('lineman/generated/e2e-screenshots/', 'loomio-travis2',
+S3Uploader.upload_directory('angular/spec/screenshots/', 'loomio-travis2',
   { :s3_key => ENV['AWS_KEY'],
     :s3_secret => ENV['AWS_SECRET'],
     :destination_dir => destination_dir,
