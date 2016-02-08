@@ -32,6 +32,14 @@ Feature: Invitation to join group
     When I sign up as a new user
     Then I should be a member of the group
 
+  @javascript
+  Scenario: Signed out user accepts invitiation to join a group
+    Given I am a logged out who is invited to join a group
+    When I accept my invitation via email
+    Then I should see the sign in form prepopulated with my email address
+    When I fill in the form
+    Then I should be a member of the group
+
   Scenario: Signed in user accepts invitiation to join a group with different email address
     Given I am logged in
     And I am invited at "anotheremail@address.com" to join a group

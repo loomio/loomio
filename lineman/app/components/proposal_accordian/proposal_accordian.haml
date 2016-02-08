@@ -1,7 +1,0 @@
-.proposal-accordian
-  .lmo-wrap{ng-repeat: 'proposal in model.closedProposals() track by proposal.id', id: 'proposal-{{proposal.id}}'}
-    .active-proposal{ng-if: 'selectedProposalId == proposal.id'}
-      %proposal_expanded{proposal: 'proposal', can_collapse: 'true'}
-
-    .inactive-proposal{ng-if: 'selectedProposalId != proposal.id', ng-click: 'selectProposal(proposal)'}
-      %proposal_collapsed{proposal: 'proposal'}

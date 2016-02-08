@@ -33,15 +33,15 @@ branches:
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
+  - RAILS_ENV=test bundle exec rails server > /dev/null &
+
+script:
+  - bundle exec rake travis:rspec
+  - bundle exec rake travis:cucumber
+  - bundle exec rake travis:protractor
 
 after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
-
-script:
-  - bundle exec rake travis
-  - RAILS_ENV=test bundle exec rails server > /dev/null &
-  - cd angular && gulp protractor
-  - cd ../
 
 addons:
   postgresql: "9.4"

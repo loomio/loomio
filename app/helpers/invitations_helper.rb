@@ -21,7 +21,7 @@ module InvitationsHelper
     if email.blank? or not User.email_taken?(email)
       new_user_registration_path
     else
-      new_user_session_path
+      new_user_session_path(email: email)
     end
   end
 end

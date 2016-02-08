@@ -184,7 +184,7 @@ GEM
       memory_profiler (~> 0)
       rack (~> 1)
       rake (~> 10)
-    devise (3.4.1)
+    devise (3.5.5)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -648,7 +648,7 @@ GEM
     uuid (2.3.7)
       macaddr (~> 1.0)
     uuidtools (2.1.5)
-    warden (1.2.3)
+    warden (1.2.6)
       rack (>= 1.0)
     wasabi (3.5.0)
       httpi (~> 2.0)
@@ -695,7 +695,7 @@ DEPENDENCIES
   delayed_job (~> 4.0.2)
   delayed_job_active_record (~> 4.0.1)
   derailed
-  devise (~> 3.4.1)
+  devise (~> 3.5.5)
   devise-i18n
   dotenv-rails
   email_spec

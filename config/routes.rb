@@ -39,6 +39,7 @@ Loomio::Application.routes.draw do
     resources :groups, only: [:show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
+      put :archive, on: :member
       post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
@@ -88,6 +89,7 @@ Loomio::Application.routes.draw do
         get    '/:draftable_type/:draftable_id', action: :show
         post   '/:draftable_type/:draftable_id', action: :update
         patch  '/:draftable_type/:draftable_id', action: :update
+        put    '/:draftable_type/:draftable_id', action: :update
       end
     end
 
@@ -97,6 +99,11 @@ Loomio::Application.routes.draw do
       patch :star, on: :member
       patch :unstar, on: :member
       patch :move, on: :member
+      put :mark_as_read, on: :member
+      put :set_volume, on: :member
+      put :star, on: :member
+      put :unstar, on: :member
+      put :move, on: :member
       get :dashboard, on: :collection
       get :inbox, on: :collection
     end

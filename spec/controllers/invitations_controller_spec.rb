@@ -25,7 +25,7 @@ describe InvitationsController do
 
   describe "GET 'show'" do
     let(:group) { create(:group) }
-    let(:invitation) { create(:invitation, token: 'abc', invitable: group) }
+    let(:invitation) { create(:invitation, token: 'abc', invitable: group, recipient_email: user.email) }
 
     context 'invitation not found' do
       render_views
@@ -57,8 +57,8 @@ describe InvitationsController do
         expect(session[:invitation_token]).to eq invitation.token
       end
 
-      it "redirects to sign up" do
-        response.should redirect_to new_user_registration_path
+      it "redirects to sign in" do
+        response.should redirect_to(new_user_session_path(email: invitation.recipient_email))
       end
 
       it 'does not accept the invitation' do

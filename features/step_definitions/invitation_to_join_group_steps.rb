@@ -281,3 +281,17 @@ end
 Then(/^I should be redirected to the discussion page$/) do
   page.should have_css('body.discussions.show')
 end
+
+Given(/^I am a logged out who is invited to join a group$/) do
+  @user = FactoryGirl.create(:user, name: 'Jim Jam', email: 'jim@jam.com')
+  step "I am invited to join a group"
+end
+
+Then(/^I should see the sign in form prepopulated with my email address$/) do
+  page.should have_css('#user_email[value="jim@jam.com"]')
+end
+
+When(/^I fill in the form$/) do
+  fill_in 'user_password', with: @user.password
+  click_on 'sign-in-btn'
+end
