@@ -1,0 +1,57 @@
+---
+he:
+  footer:
+    about: אודות
+    blog: בלוג
+    contact: יצירת קשר
+    help: עזרה
+    privacy: פרטיות
+    pricing: תמחור
+    public_groups: קבוצות ציבוריות
+    terms: תנאי שימוש
+  start_group_form:
+    header: התחילו קבוצה חדשה
+    name: שמך
+    group_name: שם הקבוצה
+    success:
+      header: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
+  pricing_page:
+    header: תמחור
+  contact_page:
+    contact_us: צרו קשר
+    labels:
+      name: שמך
+      email: כתובת הדוא״ל שלך
+      message: ההודעה שלך
+      submit: שלח הודעה
+  email:
+    reply_to_this_discussion: השיבו לדיון זה
+    to_join_discussion:
+      message_intro: "%{who} אמר/ה:"
+      link: הצטרפות לדיון
+    view_discussion: לחצו כאן להצגת דיון זה
+    view_proposal: הצגת הצעה זו ב Loomio
+    create_discussion:
+      intro: "%{who} התחילו דיון ב%{which_group}:"
+    create_proposal:
+      intro: הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת.
+      subject: הצעה חדשה %{which}
+    daily_activity:
+      subject: Loomio - סיכום 24 השעות האחרונות
+    missed_yesterday:
+      subject: אתמול בLoomio
+      mark_as_read: סמן כנקרא
+      thanks_for_reading: תודה שקראת. יום טוב!
+    group_membership_approved:
+      subject: החברות אושרה
+    invitation:
+      hi: שלום %{name},
+    new_motion_created:
+      context: "%{author} יצר/ה הצעה ב %{group_full_name}:"
+    proposal_outcome:
+      subject: תוצאת ההצעה
+    proposal_closing_soon:
+      summary: סיכום
+    thread_mailer:
+      change_preferences: 'שינוי העדפות הדוא״ל שלך:'
+      proposal_closed: 'ההצעה נסגרה:'

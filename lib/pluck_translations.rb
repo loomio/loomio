@@ -18,6 +18,7 @@ module LoomioI18n
 
       subject = YAML.load_file(source_filename)[locale][source_key]
       destination = File.exists?(destination_filename) ? YAML.load_file(destination_filename) : {}
+      next if subject.nil?
 
       path_in_hash("#{locale}.#{destination_key}", destination).merge!(subject)
 
