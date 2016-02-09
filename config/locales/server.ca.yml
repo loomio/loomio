@@ -1,0 +1,90 @@
+---
+ca:
+  footer:
+    about: Quant a
+    blog: Blog
+    contact: Contacte
+    help: Ajuda
+    privacy: Privacitat
+    pricing: Preus
+    public_groups: Grups públics
+    terms: Termes d'ús
+  start_group_form:
+    header: Comença un nou grup
+    name: El teu nom
+    group_name: Nom del grup
+    success:
+      header: Ja quasi ho tens! Comprova el teu correu electrònic.
+  pricing_page:
+    header: Preus
+  contact_page:
+    labels:
+      name: El teu nom
+      email: Adreça de correu
+      message: El teu missatge
+  email:
+    to_join_group:
+      subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
+    to_start_group:
+      subject: 'Configura el teu nou grup de Loomio: %{group_name}'
+    user_added_to_a_group:
+      subject: "%{who} t'ha afegit a %{which_group}"
+      content: "%{who} t'ha afegit a %{which_group} a Loomio. Clica aquí per visitar
+        el grup:"
+    unsubscribe: 'Dóna''t de baixa o canvia les teves preferències de correu:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-te de baixa
+      o canviar les preferències de correu."
+    view_comment: Fes click per veure el comentari a Loomio
+    view_discussion: Fes click aquí per veure aquesta discussió
+    view_group: Fes click per veure el grup a Loomio
+    view_proposal: Veure aquesta proposta a Loomio
+    create_proposal:
+      intro: S'ha creat una nova proposta a un grup de Loomio al què pertanys.
+      closes_in: Tanca en
+      subject: 'Nova proposta: %{which}'
+    daily_activity:
+      heading: La teva Activitat a Loomio
+      intro: Mostrant el què ha passat als teus grups de loomio les darreres 24 hores
+      subject: Loomio - Resum de les darreres 24 hores
+    group_email:
+      intro: "%{who} ha fet un anunci a %{group}:"
+    group_membership_approved:
+      intro: La teva sol·licitut per accedir al grup '%{group_name}' a Loomio ha estat
+        aprovada.
+      subject: Afiliació aprovada
+    invitation:
+      hi: Ei %{name},
+      intro: 'Fes clic a l''enllaç de sota per configurar el grup %{group_name}:'
+      closing_message: Si tens alguna pregunta o si hi ha alguna cosa que puguem fer
+        per ajudar a posar-te en marxa, ens encantaria saber de tu - simplement respon
+        aquest correu electrònic.
+      thanks: |
+        Mercès!
+        L'equip de Loomio
+    membership_request:
+      intro: "%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio."
+      subject: "%{who} ha demanat unir-se a %{which_group}"
+      view_group: Pots aprovar o denegar la sol·licitud aquí
+    mentioned:
+      subject: "%{who} t'ha mencionat al grup de Loomio %{which} "
+    new_motion_created:
+      context: "%{author} ha fet una proposta a %{group_full_name}:"
+    proposal_closed:
+      specify_outcome_and_notify_group: Detalla un resultat i envia'l al grup!
+      specify_outcome_and_notify_group_html: Detalla un resultat i envia'l al grup!
+      subject: Proposta tancada - %{which}
+    proposal_outcome:
+      subject: Resultat de la proposta
+    proposal_blocked:
+      intro: Una proposta teva ha estat bloquejada.
+      subject: Proposta bloquejada  - %{which}
+    proposal_closing_soon:
+      closes_on: Tanca el
+      closes_at: Tanca a
+      closes_in: Tanca en
+      headline: 'La proposta de %{author} a %{group} tancarà aviat:'
+      summary: Sumari
+    thread_mailer:
+      change_preferences: Canvia les preferències de correu electrònic
+      proposal_closed: 'Proposta tancada:'
+      you_agreed: "%{past_tense_position}"

@@ -1,0 +1,90 @@
+---
+ja:
+  footer:
+    about: 会社情報
+    blog: ブログ
+    contact: お問い合わせ
+    help: ヘルプ
+    privacy: 個人情報
+    pricing: 価格設定
+    public_groups: 公開グループ
+    terms: 使用条件
+  start_group_form:
+    header: 新しいグループを開始する
+    name: あなたの名前
+    group_name: グループ名
+    success:
+      header: もう少しで完了です！メールをチェックしてください
+  pricing_page:
+    header: 価格設定
+  contact_page:
+    contact_us: 問い合わせをする
+    labels:
+      name: あなたの名前
+      email: あなたのメールアドレス
+      message: あなたのメッセージ
+      submit: メッセージを送る
+    messages:
+      email_html: このフォームを埋めてください、もしくは <a href='mailto:%{email}'>%{email}</a> にメールを送ってください
+  email:
+    to_join_discussion:
+      subject: "%{who} があなたにLoomioのディスカッションに参加してもらいたがっています"
+      content: あなたはディスカッション： %{discussion} に参加するように招待されています
+      message_intro: "%{who} が発言しました："
+      link: ディスカッションに参加する
+    to_join_group:
+      subject: "%{member} が Loomioの %{group_name} にあなたを招待しました"
+    to_start_group:
+      subject: 新しいLoomioグループを立ち上げる： %{group_name}
+    user_added_to_a_group:
+      subject: "%{who}　が　%{which_group}　にあなたを追加しました"
+      content: "%{who} があなたをLoomioの %{which_group} に追加しました。グループに行くにはここをクリック："
+    unsubscribe: 購読をやめる、またはEメール設定を変更する：
+    unsubscribe_html: 購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>
+    view_comment: Loomioのコメントを見るにはここをクリックしてください
+    view_discussion: このディスカッションを見るにはここをクリックしてください
+    view_group: Loomioのグループを見るにはここをクリックしてください
+    view_proposal: Loomioでこの提案を見る
+    create_proposal:
+      intro: あなたのいるLoomioグループで新しい提案が作成されました
+      closes_in: 後に締め切ります
+      subject: 新しい提案： %{which}
+    daily_activity:
+      heading: あなたのLoomioイベント
+      intro: 過去24時間にあなたのLoomioグループで起こったことを表示
+      subject: Loomio - 過去24時間の要約
+    group_email:
+      intro: "%{who} が %{group} にアナウンスメントをしました："
+    group_membership_approved:
+      intro: "%{group_name}　というLoomio グループへのメンバーリクエストが承認されました。"
+      subject: メンバーリクエストが承認
+    invitation:
+      hi: こんにちは %{name}、
+      intro: 下のリンクをクリックしてあなたのグループ %{group_name} を立ち上げてください：
+      closing_message: 何か質問があったり、あなたを助けるために私たちにできることがあるなら、是非お聞きしたいです　ーただこのメールに返信してください
+      thanks: |
+        ありがとう！
+        Loomioチーム
+    membership_request:
+      intro: "%{name}  (%{email}) はあなたのLoomioグループのうち一つのグループへのアクセスを要求しました"
+      subject: " %{who}  が %{which_group} に参加するようにお願いしています"
+      view_group: ここでリクエストを承認または拒否できます
+    mentioned:
+      subject: "%{who} がLoomioの %{which} グループであなたをタグ付けしました"
+    new_motion_created:
+      context: "%{author} は  %{group_full_name} で提案を作成しました："
+    proposal_closed:
+      specify_outcome_and_notify_group: 結論を出してあなたのグループに送りましょう！
+      specify_outcome_and_notify_group_html: 結論を出してあなたのグループに送りましょう！
+      subject: 提案は締め切られました - %{which}
+    proposal_outcome:
+      subject: 提案の結論
+    proposal_blocked:
+      intro: あなたが進めていた提案はブロックされました
+      subject: 提案はブロックされました  - %{which}
+    proposal_closing_soon:
+      closes_on: 締め切り日：
+      closes_at: 締め切り時間：
+      closes_in: 後に締め切られます
+      headline: " %{group} の %{author} の提案はもうすぐ締め切られます："
+      summary: 要約

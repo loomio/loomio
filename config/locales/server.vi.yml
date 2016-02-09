@@ -1,0 +1,53 @@
+---
+vi:
+  footer:
+    about: Dịch bởi Vietnamesel10n
+    blog: Blog
+    contact: Liên hệ
+    help: Trợ giúp
+    privacy: Quyền riêng tư
+    terms: Điều khoản sử dụng
+  start_group_form:
+    success:
+      header: Bạn đã sắp hoàn tất! Hãy kiểm tra email của mình.
+  email:
+    unsubscribe: 'Bỏ việc đăng ký theo dõi hoặc thay đổi tùy chọn về địa chỉ email
+      của bạn:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> để bỏ việc đăng ký
+      theo dõi hoặc thay đổi tùy chọn về địa chỉ email của bạn."
+    view_comment: Click vào đây để xem các bình luận trên Loomio
+    view_discussion: Click vào đây để xem phần thảo luận này
+    view_group: Click vào đây để xem nhóm trên Loomio
+    create_proposal:
+      intro: Một lời đề nghị mới vừa được tạo trong nhóm Loomio mà bạn đã tham gia
+        vào.
+      closes_in: Đóng lại vào
+    daily_activity:
+      heading: Các hoạt động trên Loomio của bạn
+      intro: Hiển thị các sự kiện đang xảy ra trong các nhóm mà bạn đã tham gia vào
+        trong vòng 24 giờ vừa qua
+      subject: Loomio - Bản tóm tắt sự kiện 24 giờ vừa qua
+    group_email:
+      intro: "%{who} đã tạo một tuyên bố mới trong %{group}:"
+    group_membership_approved:
+      intro: Đề nghị của bạn nhằm tham gia vào nhóm '%{group_name}' trên Loomio đã
+        được chấp thuận.
+      subject: Đã chấp thuận quyền làm thành viên
+    invitation:
+      hi: Xin chào %{name},
+      intro: 'Xin hãy click vào đường dẫn liên kết bên dưới để cài đặt nhóm của riêng
+        bạn %{group_name}:'
+    membership_request:
+      intro: "%{name} (%{email}) đã gửi lời yêu cầu tham gia vào một trong các nhóm
+        trên Loomio của bạn."
+      view_group: Bạn có thể chấp thuận hoặc từ chối các lời đề nghị kết nối tại đây
+    mentioned:
+      subject: "%{who} đã đề cập đến bạn trong nhóm %{which} trên Loomio"
+    proposal_closed:
+      subject: Lời đề nghị đã đóng lại - %{which}
+    proposal_blocked:
+      intro: Một lời đề nghị của bạn đã bị chặn.
+      subject: Lời đề nghị bị chặn - %{which}
+    proposal_closing_soon:
+      closes_in: Đóng lại vào
+      summary: Tóm tắt
