@@ -61,7 +61,7 @@ namespace :locales do
 
       keys_with_variables = find_keys_with_variables(source_language_hash).map {|key| key[2..-2] }
       keys_with_html = find_keys_with_html(source_language_hash).map {|key| key[2..-2] } - keys_to_ignore
-      
+
       args[:locales].each do |locale|
         print "#{grey(locale)} "
         transifex_locale = (locale.to_s).gsub('-','_')
@@ -273,4 +273,3 @@ def pad_string_to(string, desired_length)
   (desired_length - printed_length).times { string += ' ' }
   string
 end
-
