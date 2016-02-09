@@ -61,4 +61,15 @@ describe "Pluck translations" do
     result = YAML.load_file('output.es.yml')
     expect(result['es']['b']['b']).to eq({'c' => 'rojo'})
   end
+
+  it 'deletes source keys after the copy' do
+    LoomioI18n.pluck_translations(
+      en_source_filename: 'input.en.yml',
+      source_key: 'b',
+      en_destination_filename: 'output.en.yml',
+      destination_key: 'b.b'
+    )
+    result = YAML.load_file('input.en.yml')
+    expect(result['en']['b']).to be nil
+  end
 end
