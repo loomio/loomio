@@ -22,7 +22,9 @@ EventBus.configure do |config|
 
   # send individual emails after thread events
   Event::SINGLE_MAIL_KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event, user| ThreadMailer.delay.send(kind, user, event) }
+    config.listen("#{kind}_event") do |event, user|
+      ThreadMailer.delay.send(kind, user, event) if user.email_when_mentioned
+    end
   end
 
 
