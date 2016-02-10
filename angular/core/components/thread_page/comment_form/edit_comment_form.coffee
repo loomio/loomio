@@ -5,3 +5,6 @@ angular.module('loomioApp').factory 'EditCommentForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.comment,
       flashSuccess: 'comment_form.messages.updated'
+
+    $scope.$on 'emojiSelected', (event, emoji) ->
+      $scope.comment.body = $scope.comment.body.trimRight() + " #{emoji} "

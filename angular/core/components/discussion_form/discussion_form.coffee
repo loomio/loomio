@@ -34,4 +34,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
       return unless $scope.discussion.group()
       $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
 
+    $scope.$on 'emojiSelected', (event, emoji) ->
+      $scope.discussion.description = $scope.discussion.description.trimRight() + " #{emoji} "
+
     KeyEventService.submitOnEnter $scope

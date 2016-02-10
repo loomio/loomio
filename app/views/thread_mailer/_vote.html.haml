@@ -3,4 +3,4 @@
 - past_tense_position = I18n.t("position_verbs.past_tense.#{vote.position}")
 = t('notifications.new_vote', position: past_tense_position) + ": " + @motion.title
 %br
-= render_email_plaintext vote.statement
+= render_rich_text vote.statement, true

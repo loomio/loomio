@@ -1057,3 +1057,7 @@ en:
     messages:
       app_update: 'A new version of Loomio is available'
       reload: 'Reload'
+
+  emoji_picker:
+    search: "Find an emoji..."
+    no_emojis_found: "No emojis found for '{{term}}'!"

@@ -11,4 +11,7 @@ angular.module('loomioApp').factory 'ProposalForm', ->
         $rootScope.$broadcast 'setSelectedProposal'
         ScrollService.scrollTo('#current-proposal-card-heading')
 
+    $scope.$on 'emojiSelected', (event, emoji) ->
+      $scope.proposal.description = $scope.proposal.description.trimRight() + " #{emoji} "
+
     KeyEventService.submitOnEnter $scope

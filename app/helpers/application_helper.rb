@@ -108,6 +108,7 @@ module ApplicationHelper
       output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
     end
 
+    output = Emojifier.emojify!(output)
     Redcarpet::Render::SmartyPants.render(output).html_safe
   end
 

@@ -19,10 +19,14 @@
     %start_menu{'ng-if' => 'isLoggedIn()'}
     %angular_feedback_card
 
+    %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@appConfig.to_json.html_safe}
-
-    %script{src: client_asset_path(:"vendor.min.js")}
+      window.Loomio.emojis = {
+        source: (emojione.shortnames || "").split('|'),
+        render: emojione.shortnameToImage,
+        defaults: ':heart:|:smiley:|:sweat_smile:|:star:|:rabbit:|:ok:|:thumbsup:|:nz:|:walking:|:clap:'.split('|')
+      }
     %script{src: client_asset_path(:"app.js")}
 
     - if Rails.application.secrets.faye_url.present?

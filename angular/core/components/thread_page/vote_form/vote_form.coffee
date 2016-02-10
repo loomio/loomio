@@ -13,4 +13,7 @@ angular.module('loomioApp').factory 'VoteForm', ->
     $scope.yourLastVote = ->
       $scope.vote.proposal().lastVoteByUser(CurrentUser)
 
+    $scope.$on 'emojiSelected', (event, emoji) ->
+      $scope.vote.statement = $scope.vote.statement.trimRight() + " #{emoji} "
+
     KeyEventService.submitOnEnter $scope

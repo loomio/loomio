@@ -243,6 +243,21 @@ textarea.form-control {
   display: inline-block;
 }
 
+.lmo-relative {
+  position: relative;
+}
+
+.lmo-action-dock {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+img.emojione {
+  width: 25px;
+  height: 25px;
+}
+
 .modal-content {
   background-color: $modal-background-color;
 }
