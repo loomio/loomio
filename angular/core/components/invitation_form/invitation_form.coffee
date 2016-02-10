@@ -2,10 +2,11 @@ angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
   controller: ($scope, group, Records, CurrentUser, AbilityService, FormService, FlashService, RestfulClient, ModalService, TeamLinkModal, AddMembersModal) ->
 
-    $scope.userGroups = ->
-      CurrentUser.groups()
+    $scope.availableGroups = ->
+      _.filter CurrentUser.groups(), (group) ->
+        AbilityService.canAddMembers(group)
 
-    $scope.form = Records.invitationForms.build(groupId: group.id or $scope.userGroups()[0].id)
+    $scope.form = Records.invitationForms.build(groupId: group.id or (_.first($scope.availableGroups()) or {}).id)
     $scope.showCustomMessageField = false
     $scope.isDisabled = false
     $scope.noInvitations = false
@@ -19,15 +20,17 @@ angular.module('loomioApp').factory 'InvitationForm', ->
     $scope.addCustomMessage = ->
       $scope.addCustomMessageClicked = true
 
-    $scope.availableGroups = ->
-      _.filter $scope.userGroups(), (group) ->
-        AbilityService.canAddMembers(group)
+    $scope.invitees = ->
+      _.compact $scope.form.emails.split(' ')
 
     $scope.maxInvitations = ->
-      $scope.form.emails.split(' ').length > 100
+      $scope.invitees().length > 100
 
     $scope.getTeamLink = ->
       ModalService.open TeamLinkModal, group: -> $scope.form.group()
+
+    $scope.canSubmit = ->
+      $scope.invitees().length > 0 and $scope.form.group()
 
     $scope.submit = FormService.submit $scope, $scope.form,
       allowDrafts: true
