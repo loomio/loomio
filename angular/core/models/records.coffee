@@ -15,6 +15,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 SearchResultRecordsInterface,
                                                 ContactRecordsInterface,
                                                 InvitationRecordsInterface,
+                                                InvitationFormRecordsInterface,
                                                 VersionRecordsInterface,
                                                 DraftRecordsInterface,
                                                 TranslationRecordsInterface) ->
@@ -35,6 +36,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(SearchResultRecordsInterface)
   recordStore.addRecordsInterface(ContactRecordsInterface)
   recordStore.addRecordsInterface(InvitationRecordsInterface)
+  recordStore.addRecordsInterface(InvitationFormRecordsInterface)
   recordStore.addRecordsInterface(TranslationRecordsInterface)
   recordStore.addRecordsInterface(VersionRecordsInterface)
   recordStore.addRecordsInterface(DraftRecordsInterface)

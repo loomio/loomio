@@ -2,11 +2,8 @@ angular.module('loomioApp').factory 'InvitationRecordsInterface', (BaseRecordsIn
   class InvitationRecordsInterface extends BaseRecordsInterface
     model: InvitationModel
 
-    sendByEmail: ({groupId, emailAddresses, message}) ->
-      @remote.create
-        group_id: groupId
-        email_addresses: emailAddresses
-        message: message
+    sendByEmail: (invitationForm) =>
+      @remote.create _.merge(invitationForm.serialize(), { group_id: invitationForm.groupId })
 
     fetchPendingByGroup: (groupKey, options = {}) ->
       options['group_key'] = groupKey
