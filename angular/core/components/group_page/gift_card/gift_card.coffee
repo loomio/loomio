@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'giftCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/gift_card/gift_card.html'
   replace: true
-  controller: ($scope, $window, AppConfig, CurrentUser) ->
+  controller: ($scope, $window, AppConfig, CurrentUser, ChargifyService) ->
 
     $scope.show = ->
       CurrentUser.isMemberOf($scope.group) and
@@ -11,17 +11,5 @@ angular.module('loomioApp').directive 'giftCard', ->
       AppConfig.chargify?
 
     $scope.makeDonation = ->
-      $window.open "#{AppConfig.chargify.donation_url}?#{encodedChargifyParams()}", '_blank'
+      $window.open "#{AppConfig.chargify.donation_url}?#{ChargifyService.encodedParams($scope.group)}", '_blank'
       true
-
-    encodedChargifyParams = ->
-      params =
-        first_name: CurrentUser.firstName()
-        last_name: CurrentUser.lastName()
-        email: CurrentUser.email
-        organization: $scope.group.name
-        reference: $scope.group.key
-
-      _.map(_.keys(params), (key) ->
-        encodeURIComponent(key) + "=" + encodeURIComponent(params[key])
-      ).join('&')
