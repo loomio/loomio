@@ -6,6 +6,7 @@ Background:
   And Normal Norman gets important events emailed as they happen
   And Quiet Quincey want to catch up by digest email
   And Mute megan mutes everything.
+  And Hermit Harry turns off all emails.
   And Closing Soonsan mutes everything but wants to hear when proposals are closing and when mentioned.
 
 Scenario: New discussion
@@ -64,3 +65,7 @@ Scenario: New mention
   And  "Normal Norman"   should not be emailed
   And  "Quiet Quincey"   should not be emailed
   And  "Mute Megan"      should be emailed
+
+Scenario: New mention for Hermit Harry
+  When I mention Hermit Harry
+  Then "Hermit Harry" should not be emailed
