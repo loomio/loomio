@@ -9,7 +9,7 @@
         %span> {{attachment.filename}}
         %span {{attachment.formattedFilesize()}}
 
-    .attachment-preview.attachment-preview--thumb{ng-if: "mode == 'thumb'"}
+    .attachment-preview.attachment-preview--thumb{ng-if: "mode == 'thumb'", title: "{{attachment.filename}}"}
       %img.attachment-preview__image{ng-if: "attachment.isAnImage", ng-src: "{{location()}}", alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
       .attachment-preview__file.attachment-preview__file--thumb{ng-if: "!attachment.isAnImage"}
         %i.fa.fa-lg.fa-paperclip
