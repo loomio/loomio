@@ -24,5 +24,5 @@
       %span{translate: "invitation_form.from_parent_group", translate-values: "{name: form.group().parentName()}"}
 
   .modal-footer
-    %button.invitation-form__submit.lmo-btn--submit{ng-click: "submit()", ng-disabled: "isDisabled", translate: "invitation_form.send", translate-value-count: "{{invitationsCount()}}"}
+    %button.invitation-form__submit.lmo-btn--submit{ng-click: "submit()", ng-disabled: "!canSubmit()", translate: "invitation_form.send", translate-value-count: "{{invitationsCount()}}"}
     %button.lmo-btn--cancel{ng-click: "$close()", translate: "common.action.cancel"}
