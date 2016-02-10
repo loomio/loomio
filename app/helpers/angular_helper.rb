@@ -20,7 +20,7 @@ module AngularHelper
     if Rails.application.secrets.chargify_app_name
       @appConfig[:chargify] = {
         appName: Rails.application.secrets.chargify_app_name,
-        host: "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/",
+        host: "https://#{Rails.application.secrets.chargify_app_name}.chargify.com/",
         plans: {
           standard: {
             name: Rails.application.secrets.chargify_standard_plan_name,

@@ -1,6 +1,8 @@
 angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, CurrentUser, MessageChannelService, AbilityService, AppConfig, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
+  # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
+  $routeParams.key = $routeParams.key.split('|')[0]
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
     $rootScope.$broadcast 'currentComponent', { page: 'groupPage' }
@@ -35,6 +37,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @handleSubscriptionSuccess = ->
     if (AppConfig.chargify or AppConfig.environment == 'development') and $location.search().chargify_success?
+      @subscriptionSuccess = true
       @group.subscriptionKind = 'paid' # incase the webhook is slow
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
@@ -43,6 +46,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     AbilityService.isCreatorOf(@group) and
     @group.noInvitationsSent() and
     !@group.trialIsOverdue() and
+    !@subscriptionSuccess and
     !GroupWelcomeModal.shownToGroup[@group.id]
 
   @handleWelcomeModal = =>
