@@ -10,6 +10,6 @@ angular.module('loomioApp').factory 'DraftModel', (BaseModel, AppConfig) ->
       @remote.collectionPath = @remote.memberPath = draftPath
 
     updateFrom: (model) ->
-      payloadField = model.constructor.serializationRoot or model.constructor.singular
+      payloadField = _.snakeCase(model.constructor.serializationRoot or model.constructor.singular)
       @payload[payloadField] = model.serialize()[payloadField]
       @save()
