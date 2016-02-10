@@ -85,7 +85,7 @@ describe 'Discussion Page', ->
       threadPage.addComment('hi this is my comment')
       expect(threadPage.mostRecentComment()).toContain('hi this is my comment')
 
-    fit 'can add emojis', ->
+    it 'can add emojis', ->
       page.fillIn '.comment-form__comment-field', 'Here is a dragon!'
       page.click '.emoji-picker__toggle'
       page.fillIn '.emoji-picker__search', 'drag'
