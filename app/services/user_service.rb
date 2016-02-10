@@ -24,9 +24,9 @@ class UserService
 
     return false unless user.errors.empty?
     user.assign_attributes(params.slice(:password))
-    user.save!
+    user.save
 
-    yield if block_given?
+    yield if block_given? and user.errors.empty?
     EventBus.broadcast('user_change_password', user, actor, params)
   end
 end
