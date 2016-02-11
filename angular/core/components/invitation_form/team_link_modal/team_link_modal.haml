@@ -10,7 +10,7 @@
       %label{translate: "team_link_modal.share_link"}
       .team-link-modal__flex
         %input.team-link-modal__shareable-link.form-control{value: "{{invitationLink()}}"}
-        %button.team-link-modal__copy-button.lmo-btn--primary{type: "button", clipboard: "", text: "invitationLink()", on-copied: "copied()"}
+        %button.team-link-modal__copy-button.lmo-btn--primary{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
           {{ 'team_link_modal.copy_link' | translate}}
       .team-link-modal__caution{translate: "team_link_modal.caution"}
 
