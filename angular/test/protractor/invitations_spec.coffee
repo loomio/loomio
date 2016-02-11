@@ -25,7 +25,8 @@ describe 'Invitations', ->
                '.members-card__invite-members-btn',
                '.invitation-form__get-team-link'
     page.expectInputValue '.team-link-modal__shareable-link', '/invitations/'
-    page.click '.team-link-modal__copy-button'
+    page.click '.team-link-modal__copy-button',
+               '.team-link-modal__copy-button'
     page.expectFlash 'Copied'
 
   it 'lets you add members from the parent to a subgroup', ->
