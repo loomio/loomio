@@ -31,6 +31,10 @@ vendor:
     - checklist-model/checklist-model.js
     - angular-clipboard/angular-clipboard.js
     - private_pub/app/assets/javascripts/private_pub.js
+    - emojione/lib/js/emojione.js
+    - angular-off-click/offClick.js
+  execjs:
+    - emojione/lib/js/emojione.js
   css:
     - bootstrap-sass/assets/stylesheets/_bootstrap.scss
     - font-awesome/css/font-awesome.css

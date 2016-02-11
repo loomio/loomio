@@ -9,6 +9,8 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
     @draftParent: 'discussion'
 
     defaultValues: ->
+      description: ''
+      outcome: ''
       voteCounts: {yes: 0, no: 0, abstain: 0, block: 0}
       closingAt: moment().add(3, 'days').startOf('hour')
 

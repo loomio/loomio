@@ -8,4 +8,6 @@
       .proposal-collapsed__title
         {{proposal.name}}
         %proposal_closing_time.proposal-collapsed__closed-at{proposal: "proposal"}.
-      .proposal-collapsed__outcome{ng-if: "proposal.hasOutcome()", translate: "proposal_collapsed.outcome", translate-value-outcome: "{{proposal.outcome}}"}
+      .proposal-collapsed__outcome{ng-if: "proposal.hasOutcome()"}
+        %span{translate: "proposal_collapsed.outcome"}>
+        %span{marked: "proposal.outcome"}

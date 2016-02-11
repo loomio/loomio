@@ -37,3 +37,12 @@
   color: $primary-text-color;
   margin-top: 5px;
 }
+
+.proposal-collapsed__outcome span {
+  display: inline-block;
+}
+
+.proposal-collapsed__outcome img.emojione {
+  width: 20px;
+  height: 20px;
+}

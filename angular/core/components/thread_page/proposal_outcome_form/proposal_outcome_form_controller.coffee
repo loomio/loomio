@@ -9,3 +9,6 @@ angular.module('loomioApp').controller 'ProposalOutcomeFormController', ($scope,
     else
       submitFn: $scope.proposal.updateOutcome
       flashSuccess: 'proposal_outcome_form.messages.updated'
+
+    $scope.$on 'emojiSelected', (event, emoji) ->
+      $scope.proposal.outcome = $scope.proposal.outcome.trimRight() + " #{emoji} "

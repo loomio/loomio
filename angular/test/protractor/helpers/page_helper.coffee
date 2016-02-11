@@ -21,6 +21,9 @@ module.exports = new class PageHelper
     _.each given(arguments), (selector) ->
       element(By.css(selector)).click()
 
+  clickFirst: (selector) ->
+    element.all(By.css(selector)).first().click()
+
   fillIn: (selector, value) ->
     element(By.css(selector)).clear().sendKeys(value)
 

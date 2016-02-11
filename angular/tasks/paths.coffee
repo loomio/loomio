@@ -19,6 +19,7 @@ module.exports = {
   },
   js: {
     core:           'core/**/*.coffee',
+    execjs:         include('execjs'),
     vendor:         include('js')
   }
   protractor: {

@@ -85,6 +85,15 @@ describe 'Discussion Page', ->
       threadPage.addComment('hi this is my comment')
       expect(threadPage.mostRecentComment()).toContain('hi this is my comment')
 
+    it 'can add emojis', ->
+      page.fillIn '.comment-form__comment-field', 'Here is a dragon!'
+      page.click '.emoji-picker__toggle'
+      page.fillIn '.emoji-picker__search', 'drag'
+      page.clickFirst '.emoji-picker__icon'
+      page.click '.comment-form__submit-button'
+      page.expectText '.thread-item__body','Here is a dragon!'
+      page.expectElement '.thread-item__body img'
+
     it 'replies to a comment', ->
       threadPage.addComment('original comment right heerrr')
       threadPage.replyLinkOnMostRecentComment().click()
