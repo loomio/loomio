@@ -1,22 +1,14 @@
+---
 lt:
   email_settings:
     title: El. pašto nustatymai
   error:
     access_denied: Jūs neturite leidimo tai padaryti.
-  footer:
-    blog: Tinklaraštis
-    contact: Susisiekite
-    help: Pagalba
-    privacy: Privatumas
-    public_groups: Viešos grupės
-    terms: Nuostatos
   notifications:
     header: Pranešimai
   sign_out: Atsijungti
   user_profile:
     deactivate_account: Pasyvinti paskyrą
-  start_group_form:
-    group_name: Grupės pavadinimas
   group_form:
     name: Grupės pavadinimas
     description: Aprašas
@@ -31,7 +23,7 @@ lt:
     membership_granted_upon:
       label: Kaip žmonės prisijungia?
     parent_members_can_see_discussions:
-      "false": Tik nariai gali matyti diskusijas
+      'false': Tik nariai gali matyti diskusijas
   group_permissions:
     header: Grupės leidimai
   invite_people: Pakviesti žmones
@@ -55,8 +47,8 @@ lt:
     quiet_description: Nesiųsti el. laiškų apie šią grupę. Veikla bus rodoma skydelyje.
   discussion_list:
     empty:
-      membership_is_invitation_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti šios grupės narys."
-      membership_is_invitation_by_admin_only: "Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius."
+      membership_is_invitation_only: Kad prisijungtum prie šios grupės, tave turi pakviesti šios grupės narys.
+      membership_is_invitation_by_admin_only: Kad prisijungtum prie šios grupės, tave turi pakviesti koordinatorius.
   delete_comment: Ištrinti komentarą
   confirm_delete_comment: Tu tikrai nori ištrinti šį komentarą?
   proposal: Pasiūlymas
@@ -76,10 +68,6 @@ lt:
   new_password: Naujas slaptažodis
   confirm_new_password: Patvirtink naują slaptažodį
   current_password: Dabartinis slaptažodis
-  contact_page:
-    contact_us: Susisiekti su mumis
-    labels:
-      email: Tavo el. pašto adresas
   motion_form:
     edit:
       header: Redaguoti pasiūlymą

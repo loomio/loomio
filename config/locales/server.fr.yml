@@ -1,0 +1,190 @@
+---
+fr:
+  email:
+    by_who: par %{person}
+    reply_to_this_discussion: Répondre à cette discussion
+    to_join_discussion:
+      subject: "%{who} veut que vous rejoigniez une discussion sur Loomio"
+      content: 'Vous avez été invité à participer à la discussion : %{discussion}'
+      message_intro: "%{who} dit :"
+      link: Rejoindre la discussion
+    to_join_group:
+      subject: "%{member} vous a invité à rejoindre le groupe %{group_name} sur Loomio"
+    to_start_group:
+      subject: 'Paramétrez votre nouveau groupe Loomio: %{group_name}'
+    user_added_to_a_group:
+      subject: "%{who} vous a ajouté au groupe %{which_group}"
+      content: "%{who} vous a ajouté au groupe %{which_group} sur Loomio. Cliquez ici pour aller dans le groupe :"
+    unsubscribe: 'Désabonnement ou changement d''e-mail :'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre e-mail."
+    view_comment: Cliquez ici pour voir le commentaire sur Loomio
+    view_discussion: Cliquer ici pour voir la discussion
+    view_group: Cliquer ici pour voir le groupe sur Loomio
+    view_proposal: Voir cette proposition sur Loomio
+    create_discussion:
+      intro: "%{who} a commencé une discussion dans %{which_group}:"
+    create_proposal:
+      intro: Une nouvelle proposition a été créée dans un groupe Loomio auquel vous appartenez
+      closes_in: Ferme dans
+      subject: Nouvelle proposition - %{which}
+    daily_activity:
+      heading: Votre activité Loomio
+      intro: Pour voir ce qui s'est passé dans vos groupes Loomio durant les dernières 24 heures
+      subject: Loomio - Résumé des dernières 24 heures
+    missed_yesterday:
+      subject: Hier sur Loomio
+      headlines: Les gros titres
+      mark_as_read: Marquer comme lu
+      thanks_for_reading: Merci d'avoir lu ceci, passez une bonne journée !
+      click_here_to_mark_all_as_read_html: |
+        Voici ce qui s'est passé hier sur Loomio.
+        Lorsque vous l'avez lu, cliquez sur <a href="%{link}">marquer comme lu</a> pour le supprimer de votre Boîte de réception dans Loomio.
+      marked_as_read_success: Tout le contenu de cet email a été marqué comme lu
+    comment_replied_to:
+      context: "%{author_name} a répondu à votre commentaire dans la discussion « %{discussion_title} »"
+      subject: "%{who} a répondu à votre commentaire dans le groupe %{which} sur Loomio"
+    group_email:
+      intro: "%{who} à fait une annonce à %{group}:"
+    group_membership_approved:
+      intro: Votre demande pour accéder au groupe %{group_name} sur Loomio a été approuvée.
+      subject: Demande d'adhésion approuvée
+    invitation:
+      hi: Salut %{name},
+      intro: 'Cliquez sur le lien ci-dessous pour paramétrer votre groupe %{group_name}:'
+      closing_message: Si vous avez des questions ou si nous pouvons faire quelque chose pour vous aider, nous serions très heureux que vous nous en fassiez part - vous n'avez qu'à répondre à ce message.
+      thanks: |
+        Merci !
+        L'équipe de Loomio
+    membership_request:
+      intro: "%{name} (%{email}) a demandé l'accès à l'un de groupe Loomio."
+      subject: "%{who} a demandé à rejoindre %{which_group}"
+      view_group: Vous pouvez accepter ou rejeter cette demande
+    mentioned:
+      context: '%{author_name} vous a cité en discutant "%{discussion_title}"'
+      subject: "%{who} vous a cité dans le groupe %{which} sur Loomio"
+    new_motion_created:
+      subject: 'Proposition : %{proposal_title}'
+      context: "%{author} a créé une proposition dans %{group_full_name}:"
+    proposal_closed:
+      proposal_has_closed: La proposition est clôturée.
+      specify_outcome_and_notify_group: Créez un résultat et envoyez-le à votre groupe !
+      specify_outcome_and_notify_group_html: Créez un résultat et envoyez-le à votre groupe !
+      subject: Fermeture de la proposition - %{which}
+    proposal_outcome:
+      subject: Résultat de la proposition
+    proposal_blocked:
+      intro: Une proposition sur laquelle vous êtes intervenue a été bloquée.
+      subject: Proposition bloquée - %{which}
+    proposal_closing_soon:
+      closes_on: 'Ferme le '
+      closes_at: Ferme à
+      closes_in: Ferme dans
+      subject: 'Fermeture dans 24 heures : %{proposal_title}'
+      headline: 'La proposition de %{author} dans %{group} ferme bientôt :'
+      summary: Résumé
+    thread_mailer:
+      footer_text: 'Répondez directement à ce courrier ou visualisez-le sur %{hostname} :'
+      reply_or_view_online_html: Répondez à ce courrier directement ou <a href='%{url}'>visualisez-le sur %{hostname}</a>.
+      turn_off_notifications_html: "<a href='%{url}'>Désactiver les courriers électroniques</a> pour cette discussion."
+      turn_off_notifications_text: 'Désactiver les courriers électroniques pour cette discussion : %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>Activer les courriers électroniques pour cette discussion</a> pour recevoir les activités futures."
+      turn_on_notifications_text: 'Activer les courriers électroniques pour recevoir les activités futures dans cette discussion : %{url}'
+      change_email_preferences_html: Changez vos <a href='%{email_preferences_url}'>paramètres de notification</a> pour vous désabonner de ces courriers électroniques.
+      change_preferences: 'Modifiez vos préférences de courriel :'
+      new_motion: "%{who} propose :"
+      motion_closing_soon: 'Proposition clôturée dans 24 heures :'
+      proposal_closed: 'Proposition clôturée :'
+      specify_outcome_html: Votre proposition est terminée. Veuillez <a href='%{link}'>publier le résultat</a> pour tout le monde.
+      specify_outcome: 'Votre proposition a été fermée. Spécifiez un résultat afin que tout le monde puisse en être informé :'
+      outcome_created: "%{who} propose le résultat :"
+      you_agreed: Vous %{past_tense_position}
+  footer:
+    about: À propos
+    blog: Blog
+    contact: Contact
+    help: Aide
+    privacy: Confidentialité
+    pricing: Tarification
+    public_groups: Groupes publics
+    terms: Conditions d'utilisation
+    independent_install_html: '%{hostname} est une installation indépendante de Loomio : <a href="http://github.com/loomio/loomio">en savoir plus</a>.'
+  start_group_form:
+    enable_angular:
+      header: Les nouveaux groupes commencent dans Loomio 1.0
+      subtitle: 'Pour commencer un nouveau groupe, vous aurez besoin de passer à la nouvelle version de Loomio:'
+      switch_to_angular: Démarrer un groupe dans le nouveau Loomio
+      helptext: Nous avons reconstruit Loomio à partir de la base. Vous pouvez voir ce qui est nouveau <a href="/angular">ici</a>.<br/>Vous serez en mesure de revenir à l' ancienne version à tout moment si vous le souhaitez.
+    header: Créer un nouveau groupe
+    form_error: Quelques informations sont manquantes ou incorrectes.
+    name: Votre nom
+    name_error: Le nom est requis
+    email: Votre courriel
+    email_error: N'est pas une adresse de courriel valide
+    group_name: Nom du groupe
+    group_description: Description du groupe
+    group_description_placeholder: Décrivez le but de votre groupe pour que les membres sachent pourquoi ils sont là.
+    group_name_error: Le nom du groupe est requis
+    pricing_html: Dans 30 jours, nous vous demanderons de choisir un <a href='%{link}' target='_blank'>plan de tarification</a>.
+    terms_html: En créant un groupe, vous acceptez les  <a href='%{link}' target='_blank'>termes d'utilisation</a> de Loomio
+    success:
+      header: Vous avez presque fini ! Consultez votre e-mail.
+      email_delivered: Nous avons envoyé un courriel à %{email}. S'il vous plaît suivez le lien à l'intérieur de celui-ci afin de configurer votre nouveau groupe.
+      email_not_arrived: Le courriel n'est pas arrivé ?
+      please_hold: S'il vous plaît prévoir jusqu'à cinq 5 minutes pour la livraison du courriel  et veuillez vérifier votre dossier spam.
+    start_making_decisions: 'Pour commencer à prendre des décisions collectives sur Loomio, créez un groupe gratuitement:'
+  pricing_page:
+    header: Tarification
+    gift: Cadeau
+    standard: Standard
+    plus: Plus
+    free_trial_html: Nous vous demanderons de choisir votre plan tarifaire après une <span>période d'essai gratuite de 30 jours</span>. Pas besoin de carte bancaire.
+    get_started_for_free: Commencez gratuitement
+    gift_body_html: |
+      <p>Pour les groupes qui n'ont pas le budget pour payer une souscription.</p>
+      <p>Dons acceptés, sans obligation de paiement.</p>
+    gift_donation_ask: Nous proposerons à votre membres de faire un don.
+    unlimited_members: membres illimités
+    unlimited_decisions: décisions illimitées
+    email_support: Support courriel
+    standard_price_html: 'US <strong>$19</strong>/mois<br><span>ou</span> $190/an
+
+'
+    plus_body: 'Tout ce qui est compris dans Standard, plus:'
+    premium_support: support Premium
+    custom_url: lien URL personnalisé
+    usage_statistics: statistiques d'utilisation
+    plus_price_html: 'US <strong>$179</strong>/mois<br><span>ou</span> $1790/an
+
+'
+  password_reset:
+    email_guidelines_html: |
+      <p>Entrez l'adresse email de votre compte Loomio dans le champ ci-dessous et vous recevrez un lien de réinitialisation de votre mot de passe.</p>
+      <p>Si vous vous connectez normalement via Facebook , Google , Twitter ou Persona , entrez l'adresse e-mail associée à ce compte</p>
+    reset_email_timeframe: Cela peut prendre jusqu'à 5 minutes à l'e-mail pour arriver. S'il n’apparaît pas, vérifier votre dossier pourriel.
+    length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
+    forbidden_passwords: Les mots de passe communs tels que "motdepasse" (password) sont interdits afin de garder votre compte sécurisé.
+  introduction_thread:
+    title: Bienvenue dans %{group_name}
+    description: |
+      S'il vous plaît prenez un moment pour vous présenter. Vous pourriez aimer partager la manière dont vous correspondez avec ce groupe de personnes.
+
+      Si vous avez des intentions claires pour ce groupe Loomio , vous pouvez les partager ici, chacun a une idée de ce qu'ils veulent faire avec les autres.
+  how_it_works_thread:
+    title: Comment utiliser Loomio
+  first_proposal:
+    name: 'Proposition de démonstration: c''est parti!'
+  contact_page:
+    contact_us: Contactez-nous
+    faq_prompt_html: Vous avez une question pour l'équipe de Loomio? Avant de nous contacter, vous pourriez trouver la réponse dans notre FAQ
+    contact_information: Si vous ne trouvez pas ce que vous cherchez vous pouvez notre formulaire de contact en bas de la page.
+    contact_form: Formulaire de contact
+    labels:
+      name: Votre nom
+      email: Votre adresse e-mail
+      message: Votre message
+      submit: Envoyer le message
+    messages:
+      email_html: Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>
+      social_html: 'Vous pouvez aussi nous rejoindre sur<br/><a href=''%{facebook}'' target=''_blank''>facebook</a>, <a href=''%{google}'' target=''_blank''>google+</a>, et <a href=''%{twitter}'' target=''_blank''>twitter</a>!
+
+'

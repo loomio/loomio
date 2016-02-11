@@ -1,3 +1,4 @@
+---
 he:
   email_settings:
     title: הגדרות דוא״ל
@@ -10,7 +11,7 @@ he:
         blank: לא יכול להיות ריק
   errors:
     messages:
-      email: "כתובת דוא\"ל לא תקינה"
+      email: כתובת דוא"ל לא תקינה
   attachment:
     error:
       too_large: לא ניתן לצרף קובץ הגדול מ50 מגה-בייטים. נא לבחור קובץ קטן יותר
@@ -23,8 +24,8 @@ he:
       for_another_year: "%-d/%-m/%y"
   devise:
     invitations:
-      send_instructions: "הזמנה נשלחה ל%{email}."
-      invitation_token_invalid: "פג תוקף ההזמנה!"
+      send_instructions: הזמנה נשלחה ל%{email}.
+      invitation_token_invalid: פג תוקף ההזמנה!
       updated: החשבון נוצר
       no_invitations_remaining: לא נותרו הזמנות
     mailer:
@@ -40,34 +41,36 @@ he:
     cant_view_member_profile: לא ניתן לצפות בפרטי המשתמש מכיוון שאינכם משתייכים לאותה הקבוצה.
     contribution: יש להתחבר על מנת לתרום.
     discussion_not_created: לא ניתן לפתוח בדיון.
-    discussion_not_moved: "אין לך הרשאות להעביר את השיחה ל%{destination_group.name}"
+    discussion_not_moved: אין לך הרשאות להעביר את השיחה ל%{destination_group.name}
     group_not_archived: לא ניתן לארכב קבוצה זו
-    invalid_close_date: "תאריך סגירה לא תקין, נא לוודא כי התאריך עתידי."
-    invalid_email: "נא להזין לפחות כתובת דוא\"ל תקינה אחת"
-    image_upload_fail: "לא ניתן לטעון תמונה. נא לוודא שגודל הקובץ קטן מ1 מגהבייט ומסוג .jpeg, .png, או .gif "
+    invalid_close_date: תאריך סגירה לא תקין, נא לוודא כי התאריך עתידי.
+    invalid_email: נא להזין לפחות כתובת דוא"ל תקינה אחת
+    image_upload_fail: 'לא ניתן לטעון תמונה. נא לוודא שגודל הקובץ קטן מ1 מגהבייט ומסוג .jpeg, .png, או .gif '
     motion_closing_inputs: תאריך סגירה לא חוקי
     motion_outcome_not_created: לא ניתן לפרסם תוצאה.
     motion_outcome_not_updated: לא ניתן לעדכן תוצאה.
-    only_group_coordinator_destroy: "לא ניתן לעזוב את הקבוצה מכיוון שאז היא תיוותר ללא מתאם. ניתן להשהות את הקבוצה באמצעות האפשרויות בתפריט או <a href='%{add_coordinator}'>להוסיף מתאם חדש</a>."
+    only_group_coordinator_destroy: לא ניתן לעזוב את הקבוצה מכיוון שאז היא תיוותר ללא מתאם. ניתן להשהות את הקבוצה באמצעות האפשרויות בתפריט או <a href='%{add_coordinator}'>להוסיף מתאם חדש</a>.
     only_group_coordinator_remove_admin: לכל קבוצה צריך להיות לפחות מתאם אחד. להוסיף מתאם נוסף לקבוצה?
     permission_to_invite: אין לך הרשאות להזמין חברים חדשים.
     position_not_updated: לא ניתן לעדכן עמדה.
     settings_not_updated: ההגדרות לא עודכנו.
-    group_request_already_accepted: "אנחנו מצטערים! ההזמנה הזאת לא תקינה או שכבר אושרה בעבר."
-    group_request_invalid_token: "אנחנו מצטערים! הקוד איננו תקין"
-    group_private_or_not_found: "קבוצה לא נמצאה.\nייתכן והקבוצה פרטית. אם מישהו נתן לך קישור זה, יש לבקש ממנו לשלוח לך הזמנה לקבוצה."
+    group_request_already_accepted: אנחנו מצטערים! ההזמנה הזאת לא תקינה או שכבר אושרה בעבר.
+    group_request_invalid_token: אנחנו מצטערים! הקוד איננו תקין
+    group_private_or_not_found: |-
+      קבוצה לא נמצאה.
+      ייתכן והקבוצה פרטית. אם מישהו נתן לך קישור זה, יש לבקש ממנו לשלוח לך הזמנה לקבוצה.
     group_already_setup: הקבוצה הזאת כבר קיימת.
     passwords_did_not_match: הסיסמאות לא מתאימות
     proposal_already_exists: כבר יש הצעה פתוחה בדיון הזה.
-    user_with_email_address_already_in_group: "משתמש עם דוא\"ל שציינת כבר שייך לקבוצה זאת."
+    user_with_email_address_already_in_group: משתמש עם דוא"ל שציינת כבר שייך לקבוצה זאת.
     you_have_already_requested_membership: כבר ביקשתם חברות לקבוצה זו.
     you_are_already_a_member_of_this_group: אתם כבר שייכים לקבוצה זו.
     not_found: הפריט לא נמצא. ייתכן ונמחק.
   alert:
     duplicate_email: "%{which_email} כבר בקבוצה."
   notice:
-    new_contacts_imported: "זה עבד! ניתן להזין שמות לשדה ואנחנו נציע כתובת דוא״ל."
-    admin_rights_removed: "זכויות המתאם של %{which_user} הוסרו."
+    new_contacts_imported: זה עבד! ניתן להזין שמות לשדה ואנחנו נציע כתובת דוא״ל.
+    admin_rights_removed: זכויות המתאם של %{which_user} הוסרו.
     user_added: "%{user_email_or_name} כבר בקבוצה"
     new_user_added: "%{user_email_or_name} יתווסף/תתווסף לקבוצה אחרי שהם ייצרו חשבון בLoomio."
     member_removed: המתשתמש הוסר.
@@ -76,7 +79,7 @@ he:
     membership_request_ignored: בקשת השתייכות נדחתה.
     settings_updated: הגדרותייך עודכנו.
     user_made_admin: "%{which_user} עכשיו מתאם."
-    you_have_left_group: "עזבת את %{which_group}."
+    you_have_left_group: עזבת את %{which_group}.
     comment_deleted: התגובה נמחקה.
     invitations:
       auto_added:
@@ -107,20 +110,20 @@ he:
     proposal_not_created: יצירת ההצעה נכשלה.
     user_already_admin: "%{which_user} כבר מתאם לקבוצה זאת."
     user_already_member: "%{which_user} כבר מתאם חבר בקבוצה זאת."
-    user_not_admin: "סליחה, %{which_user} חייב להיות מתאם הקבוצה על מנת לגשת אליה."
+    user_not_admin: סליחה, %{which_user} חייב להיות מתאם הקבוצה על מנת לגשת אליה.
   success:
-    added_to_group: "צורפת ל%{which_group}."
+    added_to_group: צורפת ל%{which_group}.
     close_date_changed: תאריך הסגירה עודכן בהצלחה.
     discussion_created: הדיון נוצר בהצלחה.
     discussion_deleted: הדיון נמחק בהצלחה.
-    discussion_moved: "הדיון הועבר בהצלחה ל%{group_name}."
+    discussion_moved: הדיון הועבר בהצלחה ל%{group_name}.
     emails_sending: הדוא״ל נשלח כעת.
     group_archived: הקבוצה אורכבה בהצלחה.
     group_created: הקבוצה נוצרה בהצלחה.
     members_added: משתתפים התווספו לקבוצה.
-    membership_requested: "ביקשת להצטרף ל%{which_group}. הודעה תשלח אליך ברגע שהבקשה תאושר."
+    membership_requested: ביקשת להצטרף ל%{which_group}. הודעה תשלח אליך ברגע שהבקשה תאושר.
     motion_closed: ההצעה סגורה. ניתן לקבוע תוצאה בתחתית ולשלוח לקבוצה שלך.
-    motion_outcome_created: "ברכותינו! יצרת תוצאות-הצעה וחברי הקבוצה קיבלו התרעה על כך."
+    motion_outcome_created: ברכותינו! יצרת תוצאות-הצעה וחברי הקבוצה קיבלו התרעה על כך.
     motion_outcome_updated: תוצאות ההצעה עודכנו.
     password_updated: סיסמתך שונתה בהצלחה.
     position_submitted: העמדה הוגשה
@@ -166,15 +169,6 @@ he:
     name: Loomio
   sr:
     toggle_navigation: הסתרת/הצגת ניווט
-  footer:
-    about: אודות
-    blog: בלוג
-    contact: יצירת קשר
-    help: עזרה
-    privacy: פרטיות
-    pricing: תמחור
-    public_groups: קבוצות ציבוריות
-    terms: תנאי שימוש
   inbox:
     clear: נקה/י
     title: דואר נכנס
@@ -182,7 +176,7 @@ he:
     what_you_have_not_read_yet: להלן פעילויות שטרם נקראו
     dropdown-btn: דואר נכנס
     empty: אין תגובות שטרם קראת.
-    preferences_instructions_html: "ניתן <strong>לגרור</strong> פריטים על מנת לסדר אותם ו<strong>להסיר אתר הסימון</strong> מכדי להסיר אותם מתיבת הדואר הנכנס.."
+    preferences_instructions_html: ניתן <strong>לגרור</strong> פריטים על מנת לסדר אותם ו<strong>להסיר אתר הסימון</strong> מכדי להסיר אותם מתיבת הדואר הנכנס..
   notifications:
     header: התרעות
     new_discussion: פתח/ה בדיון
@@ -208,30 +202,30 @@ he:
   find_a_group: מצאו קבוצה
   find_a_group_hint: לגלות קבוצות ציבוריות
   search_for_group: חפשו קבוצה...
-  no_groups_found: "אין קבוצות בשם זה!"
+  no_groups_found: אין קבוצות בשם זה!
   no_group_header: ברוכים הבאים לLoomio Beta
   empty_notifications: אין לך התרעות כרגע.
   see_all_notifications: צפו בכל ההתרעות
   sign_out: התנתקות
   sign_in: התחברות
-  honeypot_warning: "לא ניתן לייצר חשבון. עבור קוראי-מסך, יש לוודא שהשדה האחרון (הנסתר) נשאר ריק."
+  honeypot_warning: לא ניתן לייצר חשבון. עבור קוראי-מסך, יש לוודא שהשדה האחרון (הנסתר) נשאר ריק.
   tagline: יוצרים עולם בו קל לכל אחד ליטול חלק בהחלטות שמשפיעות עליו.
-  or_sign_in_html: "אם כבר יש לכם חשבון בLoomio, <a href='%{link}' class='%{link_class}'>התחברו כאן</a>"
-  or_link_account_html: "אם כבר יש לכם חשבון בLoomio, <a href='%{link}'>קשרו אליו</a>"
+  or_sign_in_html: אם כבר יש לכם חשבון בLoomio, <a href='%{link}' class='%{link_class}'>התחברו כאן</a>
+  or_link_account_html: אם כבר יש לכם חשבון בLoomio, <a href='%{link}'>קשרו אליו</a>
   click_to_dismiss: לחצו כאן לביטול ההודעה
   generic_confirm: בטוחים?
   discussion_helper_text:
     header: ברוכים הבאים לדיון הראשון שלכם
     message: "<p>הנושא מוצג בראש הדף ואילו התוכן תחתיו</p><p>הדיון מופיע משמאל ואילו החלטות מופיעות מימין. אם לדעתך הקבוצה מוכנה להחלטה, ניתן להציע הצעה לשיקול הקבוצה</p>"
   group_helper_text:
-    header: "ברוכים הבאים לקבוצה החדשה שלכם!"
+    header: ברוכים הבאים לקבוצה החדשה שלכם!
     message: "<p>זהו <strong>דף הקבוצה</strong>. משמאל מופיעים כל הדיונים של הקבוצה.</p><p>ניתן לפתוח דיון חדש אם אתם מעוניינים לדון בנושא אחר.</p>"
   dashboard_helper_text:
     header: ברכוכים הבאים לדף הבית שלכם
-    message: "<p>דף הבית מציג את כל הדיונים הנוכחים בהם אתם נוטלים חלק כרגע</p><p>ניתן להתחיל דיון על בנושא חדש בלחיצה על הכפתור \"התחלת דיון\"</p>"
+    message: <p>דף הבית מציג את כל הדיונים הנוכחים בהם אתם נוטלים חלק כרגע</p><p>ניתן להתחיל דיון על בנושא חדש בלחיצה על הכפתור "התחלת דיון"</p>
   prompt_visitor_to_authenticate:
     header: התחברו או הצטרפו לקבוצה כדי להשתתף
-    body: "אם אתם חברים בקבוצה זו, עליכם להתחבר על מנת להשתתף."
+    body: אם אתם חברים בקבוצה זו, עליכם להתחבר על מנת להשתתף.
   prompt_user_to_join:
     header: הצטרפות לקבוצה כדי להשתתף
     body: כדי להוסיף הערה או דעה עליך להיות חבר בקבוצה
@@ -241,27 +235,21 @@ he:
     deactivate_account: השהיית חשבון
     about_deactivation: מה הכוונה?
     confirm_account_deactivation: בטוחים שאתם מעוניינים להשהות את החשבון?
-    reactivation_html: "יש <a href='%{link}'>ליצור עמנו קשר</a> על מנת להפעיל מחדש את החשבון"
+    reactivation_html: יש <a href='%{link}'>ליצור עמנו קשר</a> על מנת להפעיל מחדש את החשבון
     deactivation:
       title: משהה חשבון
       query: נשמע לדעת מדוע בחרת להשהות את החשבון שלך
-      only_coordinator: "כל קבוצה חייבת לפחות מתאם אחד. כרגע את/ה המתאם היחידי לקבוצות הבאות:"
+      only_coordinator: 'כל קבוצה חייבת לפחות מתאם אחד. כרגע את/ה המתאם היחידי לקבוצות הבאות:'
       instructions: על מנת להשהות את החשבון יש להוסיף מתאמים נוספים לקבוצות או להשהות אותן
       info_title: מה משמעות השהיית החשבון?
       memberships: הרישום לכל הקבוצות להן אתם רשומים יבוטל.
-      group_contributions: "ההערות, ההצעות והשיחות שהוספת לקבוצה לא ימחקו, אבל נסיר את שמך מהם."
+      group_contributions: ההערות, ההצעות והשיחות שהוספת לקבוצה לא ימחקו, אבל נסיר את שמך מהם.
       emails: נפסיק לשלוח לך דוא״ל הקשור ל Loomio.
-  start_group_form:
-    header: התחילו קבוצה חדשה
-    name: שמך
-    group_name: שם הקבוצה
-    success:
-      header: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
   group_form:
     name: שם הקבוצה
     description: תיאור
     category: קרטגוריה
-    confirm_all_discussions_will_be_made_private_message: "אם תמשיכו, כל דיון פתוח לציבור יהפוך לפרטי"
+    confirm_all_discussions_will_be_made_private_message: אם תמשיכו, כל דיון פתוח לציבור יהפוך לפרטי
     confirm_all_discussions_will_be_made_public_message: בטוח? אם תמשיכו כל דיון פרטי יהפוך פתוח לציבור.
     what_can_members_do: מה חברים יכולים לעשות?
     members_can:
@@ -279,8 +267,8 @@ he:
       label: איך מצטרפים?
     parent_members_can_see_discussions:
       label: פרטיות הדיון
-      "true": "כל אחד בקבוצת %{parent_group_name} יכול לראות את הדיונים"
-      "false": רק חברים יכולים לראות את הדיונים
+      'true': כל אחד בקבוצת %{parent_group_name} יכול לראות את הדיונים
+      'false': רק חברים יכולים לראות את הדיונים
     discussion_privacy_options:
       label: מי יכול לראות דיונים?
       hint: דיונים ציבוריים ניתנים לצפיה על ידי כולם
@@ -301,31 +289,31 @@ he:
     c11: התחלת דיונים.
     c12: הוספת הצעה.
     c13: הצבעה על הצעה.
-    members_defaults: "בהגדרות ברירת המחדל, חברים יוכלו:"
+    members_defaults: 'בהגדרות ברירת המחדל, חברים יוכלו:'
     m1: למחוק את ההערות של עצמם
     m5: עריכת הנושא וההקשר של שיחה כלשהי
     m8: הוספת הצעות והשתתפות.
   discussion_privacy:
     public: הדיון הזה פתוח לציבור באתר
-    private: "הדיון הזה פרטי, לחברי הקבוצה בלבד"
+    private: הדיון הזה פרטי, לחברי הקבוצה בלבד
   group_privacy:
     visible_to:
       public: קבוצה שאינה מוסתרת
-  setup_steps_title: "הצעדים הבאים:"
+  setup_steps_title: 'הצעדים הבאים:'
   setup_step_1: ראה דיון לדוגמא
   setup_step_2: התחילו בדיון הראשון שלכם
   setup_step_3: הזמינו אנשים לקבוצה שלך
   invite_people: הזמינו אנשים
   no_invitations_button: לא נותרו הזמנות
   number_pending: "%{pending} בהמתנה"
-  and_number_pending: "ו%{pending} בהמתנה"
+  and_number_pending: ו%{pending} בהמתנה
   edit_memberships: עריכת חברויות
   add_new_member: הוספת חבר חדש
-  email_members_in_group: "שלחו דוא״ל לחברים בקבוצה %{which_group}"
+  email_members_in_group: שלחו דוא״ל לחברים בקבוצה %{which_group}
   subject_error: נא למלא נושא
   subject_placeholder: כתבו נושא
   message_error: כתבו הודעה
-  message_placeholder: "כתבו הודעה לחברי הקבוצה %{which_group}."
+  message_placeholder: כתבו הודעה לחברי הקבוצה %{which_group}.
   email_group_members: שלחו דוא״ל לחברי הקבוצה
   edit_group_settings: עריכת הגדרות הקבוצה
   manage_members: ניהול חברים
@@ -396,11 +384,11 @@ he:
   see_previous_decisions: צפייה בהחלטות קודמות
   see_more: עוד
   create_new_proposal: יצירת הצעה
-  empty_decision_list_html: "מוכנים להחלטה? <br> כולם יכולים להוסיף הצעה."
+  empty_decision_list_html: מוכנים להחלטה? <br> כולם יכולים להוסיף הצעה.
   empty_discussion_list: עדיין אין פעילות בדיון זה.
-  go_to_add_comment_html: "להוספת הערה, <a href='%{href}'>רדו לתחתית הדיון</a>."
+  go_to_add_comment_html: להוספת הערה, <a href='%{href}'>רדו לתחתית הדיון</a>.
   discussion_list:
-    clear_filters: "הורדת סינונים: הצגת כל הדיונים"
+    clear_filters: 'הורדת סינונים: הצגת כל הדיונים'
     filter_unread:
       enable: הצגת דיונים שטרם נקראו בלבד
       disable: הצגת דיונים שנקראו ושטרם נקראו
@@ -413,8 +401,8 @@ he:
       no_public_discussions: אין דיונים הפתוחים לציבור בקבוצה זו.
       discussions_are_private: כל הדיונים בקבוצה הם פרטיים.
   discussion_context:
-    started_html: "התחיל לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
-    last_edited_html: "נערך לאחרונה לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_html: התחיל לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>
+    last_edited_html: נערך לאחרונה לפני %{when} על ידי <a href='%{link}' class='%{link_class}'>%{who}</a>
     see_revision_history: צפייה בהיסטוריית עדכונים
     see_history: צפייה בהיסטוריה
     click_to_follow: לחצו למעקב אחר השיחה
@@ -424,10 +412,10 @@ he:
   description_history:
     header: היסטוריית עדכונים
     subheader: גירסא
-    edited_by: "נערך לפני כ%{when} על ידי %{who}"
-    current: (נוכחי)
-    restore: (שחזור גירסא)
-    applying_changes: (מחיל שינויים...)
+    edited_by: נערך לפני כ%{when} על ידי %{who}
+    current: "(נוכחי)"
+    restore: "(שחזור גירסא)"
+    applying_changes: "(מחיל שינויים...)"
     previous: הקודם
     next: הבא
   comment_form_placeholder: תגידו משהו...
@@ -445,10 +433,10 @@ he:
   close_proposal: סגירת הצעה
   confirm_close_proposal: בטוחים שתרצו לסגור את ההצעה הזו?
   change_proposal_close_date: שינוי תאריך סגירה
-  change_proposal_close_date_header: "שינוי תאריך הסגירה של ההצעה '%{which}'"
+  change_proposal_close_date_header: שינוי תאריך הסגירה של ההצעה '%{which}'
   proposal: הצעה
-  proposal_closed_when: "נסגר לפני %{when}"
-  proposed_when_by_who: "הוצע על ידי %{who} לפני %{when}"
+  proposal_closed_when: נסגר לפני %{when}
+  proposed_when_by_who: הוצע על ידי %{who} לפני %{when}
   state_your_position: הצהר/י עמדתך
   positions: עמדות
   yes_position: אני מסכימ/ה
@@ -460,13 +448,13 @@ he:
   block_position: אני חוסמ/ת
   outcome_placeholder: מה היתה התוצאה לגבי הצעה זו?
   position_verbs:
-    "yes": מסכימ/ה
-    "no": לא מסכימ/ה
+    'yes': מסכימ/ה
+    'no': לא מסכימ/ה
     abstain: נמנע/ת
     block: חסום
     past_tense:
-      "yes": הסכימו
-      "no": לא הסכימו
+      'yes': הסכימו
+      'no': לא הסכימו
       abstain: נמנע/ה
       block: חסום
   unable_to_vote:
@@ -477,8 +465,6 @@ he:
     start_discussion: מתחיל בדיון מרתק
   hint:
     discussion: טיפים להתחלת דיון מרתק
-  pricing_page:
-    header: תמחור
   new_password: סיסמא חדשה
   confirm_new_password: אישרור סיסמא חדשה
   change_your_password: שינוי סיסמא
@@ -492,26 +478,21 @@ he:
   confirm_your_details: אישרור הפרטים
   log_in: התחברות
   invitation:
-    alternate: "לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף"
+    alternate: לחליפין, שיתוף הקישור הזה יאפשר לכל אחד לבקש להצטרף
     by_email: הזמנה בדוא״ל
-    invitation_not_found: "לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה."
+    invitation_not_found: לא נמצאה הזמנה, אנא בקשו שישלחו לכם הזמנה חדשה.
     invitation_cancelled: הזמנה זו בוטלה. נא ליצור קשר עם השולח אם זו נראית לך טעות.
-    recipients: "נא להזין כתובות דוא״ל, מופרדות בפסיקים:"
+    recipients: 'נא להזין כתובות דוא״ל, מופרדות בפסיקים:'
     invite_people: הזמינו אנשים לקבוצה שלך
     invite_to_discussion: הזמנת אנשים לדיון זה
-    body_editable_discussion: "הי, בואו הצטרפו לדיון!\n"
-    discussion_link: "השתתפו בדיון:"
-    import_contacts_html: "לא זוכרים כתובת דוא״ל? ניתן לייבא אנשי קשר מ %{google_link}"
+    body_editable_discussion: 'הי, בואו הצטרפו לדיון!
+
+'
+    discussion_link: 'השתתפו בדיון:'
+    import_contacts_html: לא זוכרים כתובת דוא״ל? ניתן לייבא אנשי קשר מ %{google_link}
   search:
     placeholder: חיפוש
     empty_search: חיפוש ריק
-  contact_page:
-    contact_us: צרו קשר
-    labels:
-      name: שמך
-      email: כתובת הדוא״ל שלך
-      message: ההודעה שלך
-      submit: שלח הודעה
   discussion_form:
     new:
       header: התחילו בדיון
@@ -549,12 +530,12 @@ he:
     upload_new_image: טעינת תמונה חדשה
   group_setup:
     set_up_your_group: הגדרת קבוצה
-    desc_header: "כמעט סיימתם!"
+    desc_header: כמעט סיימתם!
     payment_model:
-      header: "Loomio הוא לכולם!"
+      header: Loomio הוא לכולם!
   simple_form:
-    "yes": כן
-    "no": לא
+    'yes': כן
+    'no': לא
     required:
       text: נדרש
       mark: "*"
@@ -584,45 +565,14 @@ he:
       user:
         create: יצירת חשבון
         update: עדכון הגדרות
-  email:
-    reply_to_this_discussion: השיבו לדיון זה
-    to_join_discussion:
-      message_intro: "%{who} אמר/ה:"
-      link: הצטרפות לדיון
-    view_discussion: לחצו כאן להצגת דיון זה
-    view_proposal: הצגת הצעה זו ב Loomio
-    create_discussion:
-      intro: "%{who} התחילו דיון ב%{which_group}:"
-    create_proposal:
-      intro: הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת.
-      subject: "הצעה חדשה %{which}"
-    daily_activity:
-      subject: Loomio - סיכום 24 השעות האחרונות
-    missed_yesterday:
-      subject: אתמול בLoomio
-      mark_as_read: סמן כנקרא
-      thanks_for_reading: "תודה שקראת. יום טוב!"
-    group_membership_approved:
-      subject: החברות אושרה
-    invitation:
-      hi: "שלום %{name},"
-    new_motion_created:
-      context: "%{author} יצר/ה הצעה ב %{group_full_name}:"
-    proposal_outcome:
-      subject: תוצאת ההצעה
-    proposal_closing_soon:
-      summary: סיכום
-    thread_mailer:
-      change_preferences: "שינוי העדפות הדוא״ל שלך:"
-      proposal_closed: "ההצעה נסגרה:"
   about_loomio: אודות Loomio
-  ago: "לפני %{quantity_of_time}"
+  ago: לפני %{quantity_of_time}
   approve: אישור
   author: מחבר
   back: חזרה
   cancel: ביטול
   change: שינוי
-  change_language: "לחצו כאן להשתמש בLoomi ב%{language}"
+  change_language: לחצו כאן להשתמש בLoomi ב%{language}
   changing: משנה
   click_here: הקליקו כאן
   close: סגירה
@@ -656,14 +606,14 @@ he:
   pricing: תמחור
   prev: קודם
   more: עוד...
-  translate: "עזרו בתרגום Loomio!"
+  translate: עזרו בתרגום Loomio!
   translate_field: ראו תרגום
   loading_translation: טוען תרגום...
-  translate_this_string: "תרגם ל%{language}"
+  translate_this_string: תרגם ל%{language}
   failed_translation: לא ניתן להשלים תרגום
   options: אפשרויות
   rss_subscribe: הרשמה לפיד
-  ok_got_it: "אוקי, הבנתי!"
+  ok_got_it: אוקי, הבנתי!
   remove: הסרה
   save: שמירה
   saving: שומר
@@ -674,7 +624,7 @@ he:
   start_a_group: יצירת קבוצה
   starting: מתחיל
   subject: נושא
-  thanks: "תודה!"
+  thanks: תודה!
   unlike: ביטול לייק
   time_until_close: "%{quantity_of_time} עד סגירה"
   update: עדכון
@@ -689,7 +639,7 @@ he:
     settings: הגדרות
     dashboard: לוח מכוונים
     unread: לא-נקרא
-    filter: "מסנן:"
+    filter: 'מסנן:'
     following: עוקבים
     not_following: ללא מעקב
     back_to_discussion: בחזרה לדיון
@@ -757,7 +707,7 @@ he:
     permissions: הרשאות
     public: פתוח לציבור
     email: דואל
-    start_group: "יצירת קבוצה!"
+    start_group: יצירת קבוצה!
   group_categories:
     all: הכל
     blank: ללא קטגוריה

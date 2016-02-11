@@ -1,0 +1,116 @@
+---
+sk:
+  email:
+    by_who: od člena %{person}
+    reply_to_this_discussion: Odpovedať na diskusiu
+    to_join_discussion:
+      subject: "%{who} chce, aby ste sa zapojil(a) do diskusie na Loomio"
+      content: 'Bol(a) ste pozvaný(á), aby ste sa zapojil(a) do diskusie: %{discussion}'
+      message_intro: "%{who} tvrdí:"
+      link: Zapojte sa do diskuze
+    to_join_group:
+      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
+    to_start_group:
+      subject: 'Zriaďte si svoju novú Loomio skupinu: %{group_name}'
+    user_added_to_a_group:
+      subject: "%{who} vás pridal(a) k %{which_group}"
+      content: "%{who} vás pridal(a) k %{which_group} na Loomio. Kliknite sem, aby ste navštívil(a) skupinu:"
+    unsubscribe: 'Odhláste sa alebo si zmeňte nastavenia emailu:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, aby ste sa odhlásil(a) alebo zmenil(a) nastavenia emailu."
+    view_comment: Kliknite sem na zobrazenie komentárov na Loomio
+    view_discussion: Kliknite sem na zobrazenie tejto diskusie
+    view_group: Kliknite sem na zobrazenie skupiny na Loomio
+    view_proposal: Zobrazte si tento návrh na Loomio
+    create_discussion:
+      intro: "%{who} začal diskusiu v skupine %{which_group}:"
+    create_proposal:
+      intro: Nový návrh byl vytvorený v Loomio skupine, ku ktorej patríte
+      closes_in: Uzatvorí sa
+      subject: 'Nový návrh: %{which}'
+    daily_activity:
+      heading: Vaša aktivita na Loomiu
+      intro: Zobrazuje sa, čo sa udialo vo vašich Loomio skupinách behom ostatných 24 hodín
+      subject: Loomio -- Súhrn za ostatných 24 hodín
+    missed_yesterday:
+      subject: Včera na Loomio
+      mark_as_read: Označiť ako prečítané
+      thanks_for_reading: Vďaka za čítanie a prajeme pekný deň!
+      click_here_to_mark_all_as_read_html: |
+        Tu je zoznam noviniek ktoré sa udiali na Loomio odvčera.
+        Po ich prečítaní, kliknite na <a href="%{link}">označiť ako prečítané</a> aby ste ich odstránili z vašej
+        schránky došlých správ.
+      marked_as_read_success: Všetko z emailu bolo označené ako prečítané
+    group_email:
+      intro: "%{who} oznámil(a) skupine %{group}:"
+    group_membership_approved:
+      intro: Vaša žiadosť o prístup ku skupine ‚%{group_name}‘ na Loomio bola akceptovaná.
+      subject: Členstvo schválené
+    invitation:
+      hi: Ahoj %{name},
+      intro: 'Kliknite na odkaz nižšie, aby ste si zriadil(a) svoju skupinu %{group_name}:'
+      closing_message: Pokiaľ máte nejaké otázky alebo pokiaľ existuje spôsob, ako vám pomôcť rozbehnúť sa, dajte nám vedieť - stačí odpísať na tento email.
+      thanks: |
+        Ďakujeme!
+        Tým Loomio
+    membership_request:
+      intro: "%{name} (%{email}) požiadal(a) o prístup k jednej z vašich Loomio skupín."
+      subject: "%{who} požiadal(a) o členstvo v %{which_group}"
+      view_group: Môžete schváliť alebo odmietnuť žiadosť tu
+    mentioned:
+      context: '%{author_name} vás spomenul v diskusii "%{discussion_title}"'
+      subject: "%{who} vás zmienil(a) v skupine %{which} na Loomio"
+    new_motion_created:
+      subject: 'Návrh: %{proposal_title}'
+      context: "%{author} vytvoril(a) návrh v %{group_full_name}:"
+    proposal_closed:
+      proposal_has_closed: Návrh je uzatvorený.
+      specify_outcome_and_notify_group: Vytvorte výsledok a pošlite ho svojej skupine!
+      specify_outcome_and_notify_group_html: Vytvorte výsledok a pošlite ho svojej skupine!
+      subject: Návrh uzatvorený - %{which}
+    proposal_outcome:
+      subject: Výsledok návrhu
+    proposal_blocked:
+      intro: Váš návrh bol blokovaný.
+      subject: Návrh zamietnutý - %{which}
+    proposal_closing_soon:
+      closes_on: Uzatvára sa
+      closes_at: Uzatvára sa
+      closes_in: Uzatvára sa za
+      subject: 'Uzatvorené behom 24 hodín: %{proposal_title}'
+      headline: 'návrh %{author} v %{group} sa čoskoro uzatvára:'
+      summary: Zhrnutie
+    thread_mailer:
+      change_preferences: 'Zmena nastavenia e-mailu:'
+      new_motion: "%{who} navrhol:"
+      motion_closing_soon: 'Návrhy uzatvorené behom 24 hodin:'
+      proposal_closed: 'Návrh uzatvorený:'
+      specify_outcome_html: Váš návrh bol uzatvorený. <a href='%{link}'>Sformulujte výsledok</a> a všetkým ho oznámte.
+      specify_outcome: 'Váš návrh bol uzatvorený. Sformulujte výsledok a všetkým ho oznámte. '
+      outcome_created: "%{who} zosumarizoval výsledok návrhu:"
+      you_agreed: Vy %{past_tense_position}
+  footer:
+    about: O nás
+    blog: Blog
+    contact: Kontakt
+    help: Pomocník
+    privacy: Súkromie
+    pricing: Cenník
+    public_groups: Verejné skupiny
+    terms: Podmienky
+  start_group_form:
+    header: Vytvoriť novú skupinu
+    name: Vaše meno
+    group_name: Názov skupiny
+    success:
+      header: Ste takmer pri konci! Skontrolujte si email.
+  pricing_page:
+    header: Cenník
+  contact_page:
+    contact_us: Kontaktujte nás
+    labels:
+      name: Vaše meno
+      email: Vaša emailová adresa
+      message: Vaša správa
+      submit: Odoslať správu
+    messages:
+      email_html: Vyplňte tento formulár, alebo zašlite email na <a href='mailto:%{email}'>%{email}</a>

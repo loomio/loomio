@@ -1,0 +1,222 @@
+---
+en:
+  email:
+    custom: "%{text}"
+    group_email:
+      intro: "%{who} made an announcement to %{group}:"
+    by_who: by %{person}
+    reply_to_this_discussion: Reply to this discussion
+    to_join_discussion:
+      subject: "%{who} wants you to join a discussion on Loomio"
+      content: 'You''ve been invited to participate in the discussion: %{discussion}'
+      message_intro: "%{who} says:"
+      link: Join the discussion
+    to_join_group:
+      subject: "%{member} has invited you to join %{group_name} on Loomio"
+    to_start_group:
+      subject: 'Set up your new Loomio group: %{group_name}'
+    user_added_to_a_group:
+      subject: "%{who} has added you to %{which_group}"
+      content: "%{who} has added you to %{which_group} on Loomio. Click here to go to the group:"
+    unsubscribe: 'Unsubscribe or change your email preferences:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
+    view_comment: Click here to view the comment on Loomio
+    view_discussion: Click here to view this discussion
+    view_group: Click here to view the group on Loomio
+    view_proposal: View this proposal on Loomio
+    create_discussion:
+      intro: "%{who} started a discussion in %{which_group}:"
+    create_proposal:
+      intro: A new proposal was created in a Loomio group that you belong to.
+      closes_in: Closes in
+      subject: 'New proposal: %{which}'
+    daily_activity:
+      heading: Your Loomio Activity
+      intro: Showing you what’s been happening in your Loomio groups in the last 24 hours
+      subject: Loomio - Summary of the last 24 hours
+    missed_yesterday:
+      subject: Yesterday on Loomio
+      headlines: Headlines
+      mark_as_read: Mark as read
+      thanks_for_reading: Thanks for reading, have a great day!
+      click_here_to_mark_all_as_read_html: |
+        Here's what happened on Loomio yesterday.
+        Once you've read it, click <a href="%{link}">mark as read</a> to remove it from your Loomio Inbox.
+      marked_as_read_success: Everything from the email has been marked as read
+    comment_replied_to:
+      context: '%{author_name} replied to your comment in the discussion "%{discussion_title}"'
+      subject: "%{who} replied to your comment in the %{which} group on Loomio"
+    group_membership_approved:
+      intro: Your request for access to the group '%{group_name}' on Loomio has been approved.
+      subject: "%{prefix} Membership approved"
+    invitation:
+      hi: Hi %{name},
+      intro: 'Click the link below to set up your group %{group_name}:'
+      closing_message: If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you - just reply to this email.
+      thanks: |
+        Thanks!
+        The Loomio Team
+    membership_request:
+      intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
+      subject: "%{who} has requested to join %{which_group}"
+      view_group: You can approve or decline the request here
+    mentioned:
+      context: '%{author_name} mentioned you while discussing "%{discussion_title}"'
+      subject: "%{who} mentioned you in the %{which} group on Loomio"
+    new_motion_created:
+      subject: 'Proposal: %{proposal_title}'
+      context: "%{author} created a proposal in %{group_full_name}:"
+    proposal_closed:
+      proposal_has_closed: The proposal has closed.
+      specify_outcome_and_notify_group: Create an outcome and send it to your group!
+      specify_outcome_and_notify_group_html: Create an outcome and send it to your group!
+      subject: Proposal closed - %{which}
+    proposal_outcome:
+      subject: 'Proposal outcome: %{motion}'
+    proposal_closing_soon:
+      closes_on: Closes on
+      closes_at: Closes at
+      closes_in: Closes in
+      subject: 'Closing in 24 hours: %{proposal_title}'
+      headline: "%{author}'s proposal in %{group} is closing soon:"
+      summary: Summary
+    thread_mailer:
+      footer_text: 'Reply to this email directly or view it on %{hostname}:'
+      reply_or_view_online_html: Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>.
+      turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
+      turn_off_notifications_text: 'Turn off emails for this discussion: %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>Turn on emails for this discussion</a> to receive further activity."
+      turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
+      change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
+      change_preferences: 'Change your email preferences:'
+      new_motion: "%{who} proposed:"
+      motion_closing_soon: 'Proposal closing in 24 hours:'
+      proposal_closed: 'Proposal closed:'
+      specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
+      specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
+      outcome_created: "%{who} set a proposal outcome:"
+      you_agreed: You %{past_tense_position}
+  footer:
+    about: About
+    blog: Blog
+    contact: Contact
+    help: Help
+    privacy: Privacy
+    pricing: Pricing
+    public_groups: Public groups
+    terms: Terms
+    independent_install_html: '%{hostname} is running an independent copy of Loomio: <a href="http://github.com/loomio/loomio">find out more</a>.'
+  start_group_form:
+    enable_angular:
+      header: New groups start in Loomio 1.0
+      subtitle: 'To start a new group, you''ll need to switch to the brand new version of Loomio:'
+      switch_to_angular: Start a group in the new Loomio
+      helptext: We've rebuilt Loomio from the ground up. You can read about what's new <a href="/angular">here</a>.<br/>You'll be able to switch back to the old version any time you like.
+    header: Start a new group
+    form_error: Some information is missing or incorrect.
+    name: Your name
+    name_error: Name is required
+    email: Your email
+    email_error: Not a valid email address.
+    group_name: Group name
+    group_description: Group description
+    group_description_placeholder: Describe the purpose of your group so your group members know why they are here.
+    group_name_error: Group name is required
+    pricing_html: In 30 days, we'll ask you to choose a <a href='%{link}' target='_blank'>pricing plan</a>.
+    terms_html: By starting a group, you agree to Loomio's <a href='%{link}' target='_blank'>terms of service</a>.
+    success:
+      header: You're almost done! Check your email.
+      email_delivered: We've sent an email to %{email}. Please follow the link inside to setup your new group.
+      email_not_arrived: Email has not arrived?
+      please_hold: Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder.
+    start_making_decisions: 'To start making decisions together on Loomio, set up a group for free:'
+  pricing_page:
+    header: Plans
+    gift: Gift
+    standard: Standard
+    plus: Plus
+    free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
+    get_started_for_free: Get started for free
+    gift_body_html: |
+      <p>For groups that don't have the budget to pay a subscription.</p>
+      <p>Donation supported, with no requirement to pay.</p>
+    gift_donation_ask: We'll ask your group members for a donation.
+    unlimited_members: unlimited members
+    unlimited_decisions: unlimited decisions
+    email_support: email support
+    standard_price_html: 'US <strong>$19</strong>/month<br><span>or</span> $190/year
+
+'
+    plus_body: 'Everything in Standard, plus:'
+    premium_support: premium support
+    custom_url: custom URL
+    usage_statistics: usage statistics
+    plus_price_html: 'US <strong>$179</strong>/month<br><span>or</span> $1790/year
+
+'
+  password_reset:
+    email_guidelines_html: |
+      <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>
+      <p>If you normally sign in via Facebook, Google, Twitter or Persona, enter the email address associated with that account.</p>
+    reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
+    length_restriction: Passwords must be at least 8 characters long.
+    forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
+  introduction_thread:
+    title: Welcome to %{group_name}
+    description: |
+      Please take a moment to introduce yourself: **post a comment** in the form below.
+
+      If you have clear intentions for this Loomio group, you could share them here so everyone has an idea of what they want to achieve together.
+  how_it_works_thread:
+    title: How To Use Loomio
+    description: |
+      Welcome to Loomio, an online place to make decisions together.
+
+      This is an example discussion **thread**. Why not use this space to try out Loomio’s features?
+
+      You are currently reading the thread **context**. Use this space to give the background information the group needs for a productive discussion.
+
+      The **proposal** panel is where you make decisions. You can start proposals and participate in them there.
+
+      The **activity** panel below shows everything that’s happened in this thread.
+  first_comment:
+    body: |
+      Hi folks, I’m the Loomio Helper Bot.
+
+      If you want to get the attention of a specific person in your group, type @ into the comment field, followed by their name :)
+
+      Here are some things you might want to try to get things under way:
+
+      - Set your [profile picture](/profile)
+      - Configure your [email settings](/email_preferences)
+      - Introduce yourself to the group in the [Welcome to %{group_name} thread](%{thread_url})
+
+      If you’ve got any questions, the first place to check is the [Loomio help manual](http://help.loomio.org).
+  first_proposal:
+    name: 'Demonstration proposal: let’s go!'
+    description: |
+      This the proposal **description**. Here you can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
+
+      To participate in the proposal, choose one of these options:
+
+      - **Agree**: “I agree with this and want it to go ahead.”
+      - **Abstain**: “I am happy for the group to decide without me.”
+      - **Disagree**: “I think we can probably do better.”
+      - **Block**: “I have strong objections to this proposal and am not OK with it going ahead.”
+
+      When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
+  contact_page:
+    contact_us: Contact us
+    faq_prompt_html: Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions.
+    contact_information: If you don't find what you're looking for, you can find our contact information at the bottom of the page.
+    contact_form: Contact form
+    labels:
+      name: Your name
+      email: Your email address
+      message: Your message
+      submit: Send message
+    messages:
+      email_html: Fill out this form, or send an email to <a href='mailto:%{email}'>%{email}</a>
+      social_html: 'You can also join us on<br/><a href=''%{facebook}'' target=''_blank''>facebook</a>, <a href=''%{google}'' target=''_blank''>google+</a>, and <a href=''%{twitter}'' target=''_blank''>twitter</a>!
+
+'
