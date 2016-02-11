@@ -1,1 +1,1 @@
-Loomio::Version::PATCH = 53
+Loomio::Version::PATCH = 54
