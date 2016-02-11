@@ -16,13 +16,36 @@ module LoomioI18n
     locales_with_filenames(en_source_filename,
                            en_destination_filename) do |locale, source_filename, destination_filename|
 
+
       subject = YAML.load_file(source_filename)[locale][source_key]
+      next if subject.nil?
+
       destination = File.exists?(destination_filename) ? YAML.load_file(destination_filename) : {}
 
       path_in_hash("#{locale}.#{destination_key}", destination).merge!(subject)
 
-      File.open(destination_filename, 'w') {|f| f.write destination.to_yaml }
+      write_yaml_file(destination, destination_filename)
+
+      delete_path_from_file("#{locale}.#{source_key}", source_filename)
     end
+  end
+
+
+  def self.write_yaml_file(obj, filename)
+    File.open(filename, 'w') {|f| f.write YAML.dump(obj, {line_width: -1}) }
+  end
+
+  def self.delete_path_from_file(path, filename)
+    # path should include locale
+    # load source file. navigate to second last key, and delete last term.
+    # then save the source file.
+    keys = path.split('.')
+    key = keys.pop
+
+    data = YAML.load_file(filename)
+    path_in_hash(keys.join('.'), data).delete(key)
+
+    write_yaml_file(data, filename)
   end
 
   # give us the value at en.bar.foo

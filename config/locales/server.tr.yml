@@ -1,0 +1,115 @@
+---
+tr:
+  email:
+    by_who: "%{person} tarafından"
+    reply_to_this_discussion: Bu müzakereyi yanıtla
+    to_join_discussion:
+      subject: "%{who} , Loomio'da senin bir müzakereye katılmanı istiyor "
+      content: 'Müzakere''de yer almanız için davet edildiniz : %{discussion}'
+      message_intro: "%{who} diyor ki:"
+      link: Müzakereye katıl
+    to_join_group:
+      subject: "%{member} , Loomio'da sizi  %{group_name} grubuna katılmaya davet etti"
+    to_start_group:
+      subject: 'Yeni Loomio grubunu aç: %{group_name}'
+    user_added_to_a_group:
+      subject: "%{who} sizi %{which_group} grubuna ekledi"
+      content: "%{who}, Loomio'da sizi %{which_group} grubuna ekledi. Gruba gitmek için buraya tıklayınız:"
+    unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
+    view_comment: Bu yorumu Loomio'da görüntülemek için buraya tıkla
+    view_discussion: Bu müzakereyi görüntülemek için buraya tıkla
+    view_group: Bu grubu Loomio'da görüntülemek için buraya tıkla
+    view_proposal: Bu öneriyi Loomio üzerinde görüntüle
+    create_discussion:
+      intro: "%{who} , %{which_group} grubunda bir müzakere başlattı:"
+    create_proposal:
+      intro: Ait olduğunuz bir Loomio grubunda yeni bir öneri oluşturuldu.
+      closes_in: içinde kapanacak
+      subject: 'Yeni öneri: %{which}'
+    daily_activity:
+      heading: Loomio Aktiviten
+      intro: Son 24 saat içinde Loomio gruplarınızda neler olduğunu gösterir
+      subject: Loomio - Son 24 saatin özeti
+    missed_yesterday:
+      subject: Loomio'da dün
+      mark_as_read: Okundu olarak işaretle
+      thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
+      click_here_to_mark_all_as_read_html: |
+        İşte dün Loomio'da neler oldu.
+        Bunu okuduktan sonra Loomio gelen kutusundan çıkarmak için <a href="%{link}">okundu olarak işaretle</a> linkine tıklayınız.
+      marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
+    group_email:
+      intro: "%{who} %{group} grubunda yeni bir duyuru yaptı:"
+    group_membership_approved:
+      intro: Loomio üzerindeki '%{group_name}' grubuna erişim talebin onaylandı.
+      subject: Üyelik onaylandı
+    invitation:
+      hi: Merhaba %{name},
+      intro: "%{group_name} grubunu açmak için aşağıdaki linki tıkla:"
+      closing_message: Herhangi bir sorunuz varsa ya da size yardımcı olabileceğimiz herhangi bir konu varsa, bu e-postayı yanıtlamanız yeterli. Sizlerden haber almak bizi memnun edecektir.
+      thanks: |
+        Teşekkürler!
+        Loomio Takımı
+    membership_request:
+      intro: "%{name} (%{email}) Loomio gruplarından birine erişim hakkı istedi."
+      subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
+      view_group: Burada isteği onaylayabilir ya da reddedebilirsin
+    mentioned:
+      context: '"%{discussion_title}" isimli müzakere''de %{author_name} sizden bahsetti'
+      subject: Loomio da %{who}  %{which} grubunda sizden bahsetti
+    new_motion_created:
+      subject: 'Öneri: %{proposal_title}'
+      context: "%{author} %{group_full_name} grubunda bir öneri oluşturdu:"
+    proposal_closed:
+      proposal_has_closed: Öneri kapatıldı.
+      specify_outcome_and_notify_group: Bir sonuç oluştur ve grubuna gönder!
+      specify_outcome_and_notify_group_html: Bir sonuç oluştur ve grubuna gönder!
+      subject: Öneri kapandı - %{which}
+    proposal_outcome:
+      subject: Öneri sonucu
+    proposal_blocked:
+      intro: Kolaylaştırdığın bir öneri bloke edildi.
+      subject: Öneri engellendi - %{which}
+    proposal_closing_soon:
+      closes_on: de kapanır
+      closes_at: de kapanır
+      closes_in: içinde kapanacak
+      subject: '24 saat içinde kapanıyor: %{proposal_title}'
+      headline: "%{author}'nin %{group} grubundaki önerisi yakında kapanacak:"
+      summary: Özet
+    thread_mailer:
+      change_preferences: 'E-posta tercihlerini değiştir:'
+      new_motion: "%{who} teklif etti:"
+      motion_closing_soon: 'Teklif 24 saat içinde kapanıyor:'
+      proposal_closed: 'Öneri kapandı:'
+      specify_outcome_html: Sizin öneriniz kapandı. Herkesin bilmesi için <a href='%{link}'>bir sonuç belirtin</a>.
+      specify_outcome: 'Sizin öneriniz kapandı. Herkesin bilmesi için bir sonuç belirtin:'
+      outcome_created: "%{who} bir öneri sonucu belirledi"
+      you_agreed: Sen %{past_tense_position}
+  footer:
+    about: Hakkında
+    blog: Blog
+    contact: İletişim
+    help: Yardım
+    privacy: Gizlilik
+    pricing: Fiyatlandırma
+    public_groups: Genel gruplar
+    terms: Şartlar
+  start_group_form:
+    header: Yeni bir grup başlat
+    name: Adın
+    group_name: Grup adı
+    success:
+      header: Neredeyse bitti! E-postanızı kontrol edin.
+  pricing_page:
+    header: Fiyatlandırma
+  contact_page:
+    contact_us: Bize yazın
+    labels:
+      name: Adın
+      email: E-posta adresin
+      message: Mesajın
+      submit: Mesaj gönder
+    messages:
+      email_html: Bu forumu doldurun, ya da <a href='mailto:%{email}'>%{email}</a> adresine bir E-posta gönderin

@@ -1,0 +1,14 @@
+---
+hr:
+  footer:
+    about: O nama
+    blog: Blog
+    contact: Kontakt
+    privacy: Privatnost
+    public_groups: Javne grupe
+    terms: Uvjeti
+  start_group_form:
+    header: Počni novu grupu
+    group_name: Ime grupe
+    success:
+      header: Još malo! Provjerite email.

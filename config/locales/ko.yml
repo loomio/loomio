@@ -1,3 +1,4 @@
+---
 ko:
   email_settings:
     title: 이메일 설정
@@ -30,32 +31,35 @@ ko:
     registrations:
       sign_up: 계정 만들기
   error:
-    access_denied: "권한을 가지고 있지 않습니다. "
+    access_denied: '권한을 가지고 있지 않습니다. '
     cant_join_subgroup: 상위 그룹의 회원이 아니면 하위 그룹에 참여할 수 없습니다.
     cant_modify_position: 이 제안은 종료되었습니다.
     cant_state_position: 이 제안은 종료되었습니다.
     cant_view_member_profile: 같은 그룹에 멤버가 아니기 때문에 그룹 멤버들을 볼 수 없습니다.
     contribution: 도움을 주기 위해서 로그인해 주세요.
     discussion_not_created: 토론을 개설 할 수 없습니다.
-    discussion_not_moved: "이 토론을 %{destination_group.name} 그룹으로 옮길 수 있는 권한을 가지고 있지 않습니다."
+    discussion_not_moved: 이 토론을 %{destination_group.name} 그룹으로 옮길 수 있는 권한을 가지고 있지 않습니다.
     group_not_archived: 그룹을 보관할 수 없습니다.
-    invalid_close_date: "유효한 날짜가 아닙니다. 지난 시간이 아닌지 확인해 주세요. "
+    invalid_close_date: '유효한 날짜가 아닙니다. 지난 시간이 아닌지 확인해 주세요. '
     invalid_email: 최소 1개의 유효한 이메일 주소를 입력해 주세요.
-    image_upload_fail: "사진을 올릴 수 없습니다. 1메가 이하의 .jpeg, .png, or .gif  파일인지 확인해 주세요."
+    image_upload_fail: 사진을 올릴 수 없습니다. 1메가 이하의 .jpeg, .png, or .gif  파일인지 확인해 주세요.
     motion_closing_inputs: 잘못된 마감일입니다.
     motion_outcome_not_created: 결과를 올릴 수 없습니다.
     motion_outcome_not_updated: 결과를 업데이트 할 수 없습니다.
     only_group_coordinator_remove_admin: 이 그룹에는 한 명의 코디네이터만 있어야 합니다. 새로운 코디네이터를 추가를 원하십니까?
     permission_to_invite: 새로운 멤버를 초대할 권한을 가지고 있지 않습니다.
     position_not_updated: 지위를 업데이트 할 수 없습니다.
-    settings_not_updated: "설정이 업데이트 되지 않았습니다. "
-    group_request_already_accepted: "죄송합니다. 이 초대는 유효하지 않거나, 이미 초대를 수락한적이 있는것 같습니다."
+    settings_not_updated: '설정이 업데이트 되지 않았습니다. '
+    group_request_already_accepted: 죄송합니다. 이 초대는 유효하지 않거나, 이미 초대를 수락한적이 있는것 같습니다.
     group_request_invalid_token: 죄송합니다. 유효하지 않는 토큰입니다.
-    group_private_or_not_found: "그룹을 찾을 수 없습니다.\n\n비공개 그룹일 가능성이 있습니다. 누군가가 링크를 보내줬다면 이 그룹에 초대해 줄 것을 요청해 보세요."
+    group_private_or_not_found: |-
+      그룹을 찾을 수 없습니다.
+
+      비공개 그룹일 가능성이 있습니다. 누군가가 링크를 보내줬다면 이 그룹에 초대해 줄 것을 요청해 보세요.
     group_already_setup: 만들려고 하는 이 그룹은 이미 존재합니다.
     proposal_already_exists: 이미 열려있는 제안이 토론에 있습니다.
     user_with_email_address_already_in_group: 해당 이메일을 가진 이메일은 이미 그룹에 소속되어 있습니다.
-    you_have_already_requested_membership: "그룹 멤버십을 이미 요구 했습니다. "
+    you_have_already_requested_membership: '그룹 멤버십을 이미 요구 했습니다. '
     you_are_already_a_member_of_this_group: 이 그룹에 멤버입니다.
     not_found: 항목을 찾을 수 없습니다. 삭제된것 같습니다.
   alert:
@@ -83,22 +87,22 @@ ko:
     membership_request_already_approved: 멤버십 요청이 이미 승인되었습니다.
     membership_request_already_ignored: 멤버십 요청이 이미 무시되었습니다.
     membership_request_already_canceled: 멤버십 요청이 이미 취소되었습니다.
-    position_not_submitted: "지위을 등록할 수 없습니다. "
+    position_not_submitted: '지위을 등록할 수 없습니다. '
     proposal_not_created: 제안을 만들 수 없습니다.
     user_already_admin: "%{which_user}는 이미 이 그룹의 코디네이터입니다."
     user_already_member: "%{which_user}는 이미 이 그룹에 멤버입니다. "
-    user_not_admin: "죄송합니다. %{which_user} 님이 이 그룹에 접속하기 위해서는 그룹의 코디네이터야 합니다. "
+    user_not_admin: '죄송합니다. %{which_user} 님이 이 그룹에 접속하기 위해서는 그룹의 코디네이터야 합니다. '
   success:
     added_to_group: "%{which_group}에 추가되었습니다. "
     close_date_changed: 종료일이 성공적으로 변경되었습니다.
     discussion_created: 토론이 성공적으로 만들어졌습니다.
     discussion_deleted: 토론이 성공적으로 지워졌습니다.
-    discussion_moved: "토론이 성공적으로 %{group_name} 그룹을 옮겨졌습니다."
+    discussion_moved: 토론이 성공적으로 %{group_name} 그룹을 옮겨졌습니다.
     emails_sending: 이메일이 보내졌습니다.
     group_archived: 그룹이 성공적으로 저장되었습니다.
     group_created: 그룹이 성공적으로 만들어졌습니다.
     members_added: 회원 그룹에 추가
-    motion_closed: "제안 마감. 원한다면, 결과를 아래에 설정할 수 있으며 그룹에 보낼 수 있습니다."
+    motion_closed: 제안 마감. 원한다면, 결과를 아래에 설정할 수 있으며 그룹에 보낼 수 있습니다.
     motion_outcome_created: 축하합니다. 제안 결과를 만들었고 그룹 멤버들에게 알려졌습니다.
     motion_outcome_updated: 제안의 결과가 업데이트 되었습니다.
     position_submitted: 지위가 등록됨
@@ -127,30 +131,21 @@ ko:
         other: "%{count} 연"
       almost_x_years:
         other: "%{count} 연"
-  footer:
-    about: 소개
-    blog: 블로그
-    contact: 연락하기
-    help: 도움말
-    privacy: 개인정보
-    pricing: 가격표
-    public_groups: 공개 그룹
-    terms: 정책
   inbox:
     title: 받은 메시지함
     dropdown-btn: 받은 메시지함
-    empty: "최신 상태이며, 확인하지 않은 댓글이 없습니다."
+    empty: 최신 상태이며, 확인하지 않은 댓글이 없습니다.
   notifications:
     header: 알림
     new_motion: 만들어진 제안
     motion_closed:
       by_user: 제안 마감하기
       by_expiry: 제안이 마감되었습니다.
-    new_vote: "제안의 %{position}"
+    new_vote: 제안의 %{position}
     new_comment: 댓글을 한 토론
     comment_liked: 토론안에서 좋아요를 한 코멘트
     user_mentioned: 코멘트 안에 언급됨
-    membership_requested: "멤버십 요청 받은 "
+    membership_requested: '멤버십 요청 받은 '
     membership_request_approved: 가입 신청이 승인되었습니다.
     user_added_to_group: 그룹에 추가된
     motion_closing_soon: 곧 마감될 제안
@@ -168,10 +163,10 @@ ko:
   see_all_notifications: 모든 알림 보기
   sign_out: 로그아웃
   sign_in: 로그인
-  honeypot_warning: "계정을 만들 수 없습니다. 만약 스크린 리더를 사용한다면 마지막 (숨겨진) 필드를 빈칸으로 남겨두세요. "
+  honeypot_warning: '계정을 만들 수 없습니다. 만약 스크린 리더를 사용한다면 마지막 (숨겨진) 필드를 빈칸으로 남겨두세요. '
   tagline: 그들에게 영향을 미치는 의사결정에 누구나 쉽게 참여할 수 있도록하는 세상 만들기
-  or_sign_in_html: "루미오 계정을 가지고 이미 가지고 있다면 <a href='%{link}' class='%{link_class}'> 여기서 로그인</a>을 하세요."
-  or_link_account_html: "루미오 계정을 가지고 있다면 <a href='%{link}'>연결</a>하세요."
+  or_sign_in_html: 루미오 계정을 가지고 이미 가지고 있다면 <a href='%{link}' class='%{link_class}'> 여기서 로그인</a>을 하세요.
+  or_link_account_html: 루미오 계정을 가지고 있다면 <a href='%{link}'>연결</a>하세요.
   click_to_dismiss: 메시지 삭제를 위해서 클릭
   generic_confirm: 확실한가요?
   discussion_helper_text:
@@ -189,16 +184,10 @@ ko:
     body: 댓글을 달거나 투표를 하기 위해서 이 그룹의 멤버가 되어야 합니다.
   user_profile:
     change_password: 비밀번호 변경
-  start_group_form:
-    header: 새로운 그룹 시작하기
-    name: 이름
-    group_name: 그룹명
-    success:
-      header: 거의 다 되었습니다. 이메일을 확인해 주세요.
   group_form:
     name: 그룹명
     description: 설명
-  setup_steps_title: "다음 단계:"
+  setup_steps_title: '다음 단계:'
   setup_step_1: 예시 토론을 살펴보세요.
   setup_step_2: 첫번째 토론을 시작해보세요.
   setup_step_3: 그룹으로 초대하기
@@ -229,7 +218,7 @@ ko:
   make_coordinator: 코디네이터로 만들기
   confirm_make_coordinator: "%{which_user} 를 이 그룹에 코디네이터로 만들기를 원합니까?"
   confirm_remove_member: 그룹에서 이 멤버를 삭제하기를 원하십니까?
-  want_to_invite_html: "이 그룹에 <a href='%{link}'>초대</a>를 원하십니까?"
+  want_to_invite_html: 이 그룹에 <a href='%{link}'>초대</a>를 원하십니까?
   membership_requests: 멤버십 요청
   confirm_approve_membership_request: "%{which_user} 를 그룹에 초대하는것이 확실한가요?"
   cancel_membership_request: 취소된 요청
@@ -240,11 +229,11 @@ ko:
   request_membership: 멤버십 요청
   ask_to_join_group: 그룹에 가입신청하기
   confirm_remove_membership_request: 이 그룹에 멤버십 요청을 철회하시겠습니까?
-  no_pending_membership_requests: "이 그룹에 보류된 멤버십 요청이 없습니다. "
+  no_pending_membership_requests: '이 그룹에 보류된 멤버십 요청이 없습니다. '
   subgroups: 하위 그룹
   create_a_subgroup: 하위 그룹 만들기
-  select_members_to_add: "선택된 멤버를 %{which_group}에 추가하기 "
-  empty_parent_group: "상위 그룹에 멤버를 먼저 추가해 주세요. "
+  select_members_to_add: '선택된 멤버를 %{which_group}에 추가하기 '
+  empty_parent_group: '상위 그룹에 멤버를 먼저 추가해 주세요. '
   invite_members: 초대 멤버
   new_subgroup: 새로운 소그룹
   create_subgroup: 소그룹 만들기
@@ -285,8 +274,8 @@ ko:
   previous_decisions: 이전 결정
   see_previous_decisions: 이전 결정 보기
   see_more: 더보기
-  empty_decision_list_html: "결정을 내릴 준비가 되어있습니까? <br> 누구나 제안을 시작할 수 있습니다."
-  empty_decision_index: "이 그룹은 현재 어떤 의사결정도 한 적이 없습니다. "
+  empty_decision_list_html: 결정을 내릴 준비가 되어있습니까? <br> 누구나 제안을 시작할 수 있습니다.
+  empty_decision_index: '이 그룹은 현재 어떤 의사결정도 한 적이 없습니다. '
   empty_discussion_list: 이 그룹에는 어떤 활동도 아직 없습니다.
   discussion_list:
     empty:
@@ -301,9 +290,9 @@ ko:
     header: 검토 이력
     subheader: 버젼
     edited_by: "%{who}님이 %{when} 전에 편집함"
-    current: (현재)
-    restore: (이 버젼으로 복원)
-    applying_changes: (변경내용 적용하기...)
+    current: "(현재)"
+    restore: "(이 버젼으로 복원)"
+    applying_changes: "(변경내용 적용하기...)"
     previous: 이전
     next: 다음
   comment_form_placeholder: 의견 남기기
@@ -314,7 +303,7 @@ ko:
   markdown_settings_more_info: 자세히..
   edit_discussion: 토론 편집
   move_discussion: 토론 옮기기
-  move_discussion_to_hidden_group: "이 토론은 현재 공개입니다. 비공개 그룹으로 옮기는면 비공개 됩니다. "
+  move_discussion_to_hidden_group: '이 토론은 현재 공개입니다. 비공개 그룹으로 옮기는면 비공개 됩니다. '
   move_discussion_where: 이 그룹을 어디로 옮기시겠습니까?
   delete_discussion: 토론 삭제
   confirm_delete_discussion: 토론을 삭제하시겠습니까?
@@ -344,33 +333,35 @@ ko:
   outcome_placeholder: 이 제안의 결과는 무엇이었습니까?
   outcome_submit: 결과 올리기
   position_verbs:
-    "yes": 동의
-    "no": 반대
+    'yes': 동의
+    'no': 반대
     abstain: 기권
     block: 차단
     past_tense:
-      "yes": 동의
-      "no": 동의하지 않음
+      'yes': 동의
+      'no': 동의하지 않음
       abstain: 기권함
       block: 차단됨
   help:
     coordinating: 루미오 그룹을 조정하기
     different_ways: 루미오를 사용하기 위한 다른 방법들
     get_in_touch: 연락하기
-    get_in_touch_description_html: "질문이나 의견이 있다면 <a href='%{link}'>연락해 주세요.</a>."
+    get_in_touch_description_html: 질문이나 의견이 있다면 <a href='%{link}'>연락해 주세요.</a>.
     getting_started: 시작하기
-    getting_started_description: "왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다."
+    getting_started_description: 왼편에는 그룹 토론의 주제와 교환하고 있는 생각과 정보들이 있으며, 그룹에서 결정을 내린경우는 오른쪽에 나타나게 됩니다.
     have_a_discussion: 토론 하기
     have_a_discussion_description: "주제와 관련된 정보와 배경 정보는 페이지의 상단에 위치해 있습니다. \n토론에 여러분의 목소리를 담기 위해서는 댓글 상자를 이용하세요."
     help: 도움말
     how_it_works: 사용설명
     join_the_community: 커뮤니티에 참여하기
-    join_the_community_description_html: "대부분의 도구를 어떻게 사용하고 발전시킬지 이야기 하는 루미도 커뮤니티에 함께 하는 것을 환영합니다.\n<br /><br /><a href='https://www.loomio.org/groups/3'>루미오 커뮤니티 그룹으로 이동하려면 여기를 클릭하세요.</a>."
+    join_the_community_description_html: |-
+      대부분의 도구를 어떻게 사용하고 발전시킬지 이야기 하는 루미도 커뮤니티에 함께 하는 것을 환영합니다.
+      <br /><br /><a href='https://www.loomio.org/groups/3'>루미오 커뮤니티 그룹으로 이동하려면 여기를 클릭하세요.</a>.
     images_and_text_formatting: 이미지와 문자 형식
     keep_up_to_date: 최신 상태로 유지
     make_a_decision: 의사결정하기
     make_a_decision_description: 그룹이 결정을 내릴 준비가 되면 누구나 제안을 할 수 있습니다. 행동의 과정을 명확히 설명하고 동의하거나 동의하지 않는것이 어떤 뜻인지 배경정보를 제공해 주세요.
-    prompt_people_details: "그룹에 특정인에 관심을 얻기를 원한다면 '@'뒤에 이름을 적으세요. 그렇게 하면 코멘트에 이름이 언급된 내용을 이메일을 통해서 알게 됩니다."
+    prompt_people_details: 그룹에 특정인에 관심을 얻기를 원한다면 '@'뒤에 이름을 적으세요. 그렇게 하면 코멘트에 이름이 언급된 내용을 이메일을 통해서 알게 됩니다.
     prompt_people_html: "<span class='blue'>@mentions</span>으로 알려주기"
     positions_agree_description: "<span>동의</span> 는 제안을 좋아한다는 뜻입니다."
     positions_abstain_description: "<span>기권</span> 은 확신하지 않거나 다른 사람들이 당신을 제외하고 결정을 내리는것에 동의한다는 뜻입니다."
@@ -378,7 +369,7 @@ ko:
     positions_block_description: "<span>차단</span> 은 심각하게 반대하고 있고 이것이 제안으로 발전하는것을 반대합니다."
     start_discussion: 토론에 참여 시작하기
     start_proposal: 명확한 제안 작성하기
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: 동영상 설명
     video_tutorial_description: 루미오를 사용법에 대해서 동영상을 살펴보세요.
   hint:
@@ -387,8 +378,6 @@ ko:
     invitation: 훌륭한 초대를 쓰기 위한 도움말
     proposal: 명확한 제안을 쓰기을 위한 도움말
     vote: 입장를 언제나 변경할 수 있습니다.
-  pricing_page:
-    header: 가격표
   contribution:
     any_amount: 혹은 한 번의 도움을 지정하세요.
     currency_desc: 금액은 미국 달러입니다.
@@ -405,10 +394,10 @@ ko:
   change_your_password: 비밀번호 변경
   change_my_password: 비밀변호 변경
   send_password_reset: 비밀번호 재설정에 대한 안내 보내기
-  blank_details: (이 항목을 변경하기 원치 않는다면 빈 칸으로 두세요)
+  blank_details: "(이 항목을 변경하기 원치 않는다면 빈 칸으로 두세요)"
   password_confirmation: 비밀번호 확인
   current_password: 현재 비밀번호
-  password_details: (변경 내용을 확인하기 위해서 현재 비밀번호가 필요합니다)
+  password_details: "(변경 내용을 확인하기 위해서 현재 비밀번호가 필요합니다)"
   confirm_password: 비밀번호 확인
   cancel_my_account: 계정삭제하기
   remember_me: 기억하기
@@ -417,7 +406,7 @@ ko:
   forgot_your_password: 비밀번호가 생각나지 않으세요?
   dont_have_an_account: 계정을 가지고 있지 않나요?
   link_it_up_instead: 이것을 대신해 링크
-  sign_up_via: "회원가입 "
+  sign_up_via: '회원가입 '
   or_fill_in_this_form: 혹은 양식에 입력하기
   already_have_account: 이미 루미오 계정을 가지고 있나요?
   confirm_your_details: 세부사항 확인하기
@@ -432,24 +421,26 @@ ko:
     log_in: "%{group_name} 가입을 위해서 로그인하기"
     create_account_to_join_group: "%{group_name} 그룹에 가입을 위해서 계정을 만들어주세요."
   invitation:
-    alternate: "대안적으로, 이 링크를 공유해서 누구에게나 가입을 요청할 수 있습니다."
+    alternate: 대안적으로, 이 링크를 공유해서 누구에게나 가입을 요청할 수 있습니다.
     by_email: 이메일로 초대하기
     invitation_not_found: 이 토큰을 가지고 있는 초대를 찾을 수 없습니다. 초대장을 보낸 분에게 새로운 초대를 요청하세요.
     invitation_cancelled: 초대가 취소되었습니다. 초대 취소가 오류인것 같다면 초대장을 보낸 분에게 연락해 보세요.
     invitation_already_used: 이 초대는 이미 사용되었습니다. 그룹 로그인을 계속해 보세요.
-    recipients: "이메일 주소를 입력하고, 쉼표로 구분해 주세요."
-    invitees_placeholder: "사용자명 <user1@example.com>, user2@example.com"
-    subject: "새로운 루미오 그룹에 함깨해주세요, %{group}"
+    recipients: 이메일 주소를 입력하고, 쉼표로 구분해 주세요.
+    invitees_placeholder: 사용자명 <user1@example.com>, user2@example.com
+    subject: 새로운 루미오 그룹에 함깨해주세요, %{group}
     invite_people: 그룹에 초대하기
     invite_to_discussion: 이 그룹에 초대하기
     invite_to_discussion_info: 사람을 이 토론에 추가하면 여러분의 그룹에 초대를 합니다. 초대를 수락하면 이 토론에 바로 올 수 있습니다.
     select_members: "%{group_name}로 멤버 추가하기"
-    body_editable_discussion: "토론에 참여하세요.\n"
+    body_editable_discussion: '토론에 참여하세요.
+
+'
     message_body: 초대 메시지
     invites_more_help2: "<p>언제든지 여러분의 그룹에 초대를 할 수 있습니다.</p><p> 아마도 모든 멤버를 바로 초대하기를 원하거나 가장 가깝게 일하고 있는 분들 부터 초대를 시작할 수 있습니다.</p>"
     invitation_link: 초대 링크
     discussion_link: 토론에 참여하기
-    copy: "초대 이메일을 받지 못한 경우, 위의 초대 링크를 복사해서 전달해도 괜찮습니다."
+    copy: 초대 이메일을 받지 못한 경우, 위의 초대 링크를 복사해서 전달해도 괜찮습니다.
     pending_invitations: 보류중인 초대
     no_pending_invitations: 보류중인 초대가 없습니다.
   search:
@@ -459,14 +450,6 @@ ko:
     empty_search: 검색결과가 없습니다.
     please_enter_a_search: 검색어를 검색창에 입력해 주세요.
     no_match: 검색어와 일치하는 검색결과가 없습니다.
-  contact_page:
-    labels:
-      name: 이름
-      email: 이메일 주소
-      message: 메시지
-      submit: 메시지 보내기
-    messages:
-      email_html: "양식을 채우거나 <a href='mailto:%{email}'>%{email}</a> 로 이메일을  보내세요."
   discussion_form:
     new:
       header: 그룹 시작하기
@@ -497,16 +480,16 @@ ko:
     submit: 내 그룹으로 이동
     payment_model:
       header: 루미오는 모두를 위합니다.
-      info: "우리는 모든 그룹에 맞는 지불 모델을 가지고 있습니다. 심지어 돈이 없는 그룹까지 말입니다 : ) "
+      info: '우리는 모든 그룹에 맞는 지불 모델을 가지고 있습니다. 심지어 돈이 없는 그룹까지 말입니다 : ) '
       link: 좀 더 알아보기
   simple_form:
-    "yes": 네
-    "no": 아니요
+    'yes': 네
+    'no': 아니요
     required:
       text: 필수
       mark: "*"
     error_notification:
-      default_message: "아래 문제를 확인해 주세요 : "
+      default_message: '아래 문제를 확인해 주세요 : '
     labels:
       discussion:
         title: 제목
@@ -525,7 +508,7 @@ ko:
         language_preference: 언어
     placeholders:
       membership_request:
-        introduction: "간단한 자기소개와 %{group_name} 그룹에 가입을 원하는 이유를 적어주세요."
+        introduction: 간단한 자기소개와 %{group_name} 그룹에 가입을 원하는 이유를 적어주세요.
       motion:
         name: 행동이 제안된 과정은 무엇인가요?
         description: 충분한 정보를 제공해서 모두가 동의 혹은 동의하지 않는것이 어떤 의미인지 알 수 있도록 해 주세요.
@@ -539,66 +522,6 @@ ko:
       user:
         create: 계정 만들기
         update: 업데이트 설정
-  email:
-    to_join_discussion:
-      subject: "%{who}님이 당신을 루미오의 토론에 참여하기를 원합니다."
-      content: "토론에 참여하기 위해서 초대를 받았습니다. %{discussion} "
-      message_intro: "%{who} 말합니다:"
-      link: 토론 참여하기
-    to_join_group:
-      subject: "%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다."
-    to_start_group:
-      subject: "새로운 루미오 그룹 설정 : %{group_name}"
-    user_added_to_a_group:
-      subject: "%{who} 님이 사용자을 %{which_group} 그룹에 추가하였습니다. "
-      content: "%{who} 님이 사용자를 루미오에 %{which_group} 그룹에 추가하였습니다. 그룹으로 이동하기 위해서는 이 링크를 클릭해 주세요. "
-    unsubscribe: 구독중지 혹은 이메일 설정을 변경하세요.
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
-    view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
-    view_discussion: 토론을 보기 위해서 여기를 선택하세요.
-    view_group: 루미오에 그룹을 보기 위해서 여기를 클릭하세요.
-    view_proposal: 루미오에서 이 제안 보기
-    create_proposal:
-      intro: 사용자가 소속되어 있는 루미오 그룹에 새로운 제안이 만들어졌습니다.
-      closes_in: 닫습니다.
-      subject: "새로운 제안 : %{which}"
-    daily_activity:
-      heading: 당신의 루미오 활동
-      intro: 지난 24시간 동안 여러분의 루미오 그룹에 어떤 일이 있었는지를 보여줍니다.
-      subject: 루미오 - 지난 24시간 동안의 요약
-    group_email:
-      intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
-    group_membership_approved:
-      intro: " '%{group_name}' 그룹에 접근하기 위한 요청에 대해서 승인이 되었습니다."
-      subject: 멤버십이 승인되었습니다.
-    invitation:
-      hi: "%{name}님 안녕하세요,"
-      intro: "%{group_name} 그룹의 설정을 위해서는 아래 링크를 클릭해 주세요."
-      closing_message: "만일 어떤 질문이 있거나 여러분이 운영을 하는데 우리가 도울 수 있는 어떤 것이 있다면, 여러분의 의견을 듣기를 원합니다. - 이 메일에 답장을 하시면 됩니다."
-      thanks: "고맙습니다.\n루미오 팀\n"
-    membership_request:
-      intro: "%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다."
-      subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
-      view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
-    mentioned:
-      subject: "%{who} 님이 루미오의 %{which}  그룹에서 언급하였습니다."
-    new_motion_created:
-      context: "%{author} 님이  %{group_full_name} 그룹에 제안을 시작했습니다."
-    proposal_closed:
-      specify_outcome_and_notify_group: 결과를 만들고 그룹 멤버들에게 보내기
-      specify_outcome_and_notify_group_html: 결과를 만들고 그룹 멤버들에게 보내기
-      subject: "닫힌 제안 - %{which}"
-    proposal_outcome:
-      subject: 제안 결과
-    proposal_blocked:
-      intro: 사용자가 촉진하고 있는 제안이 차단되었습니다.
-      subject: "제안 차단 - %{which}"
-    proposal_closing_soon:
-      closes_on: 닫습니다.
-      closes_at: 에 닫습니다.
-      closes_in: "닫습니다. "
-      headline: "%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다."
-      summary: 요약
   about_loomio: 루미오에 대해서
   ago: "%{quantity_of_time} 전"
   approve: 승인
