@@ -344,7 +344,7 @@ pt-BR:
         body_html: "Loomio está disponível em diversos idiomas.\nEle irá detectar as configurações de idioma do seu navegador ou você pode configurar manualmente o seu idioma preferido, visitando a sua <a href=\"#user-profile\">página do perfil</a> e selecionando seu idioma através do menu suspenso <strong>“Idioma”</strong>.\n"
       usernames:
         title: Nomes de usuário
-        body_html: "Seu nome de usuário é o nome que as pessoas utilizarão para mencionar (<a href=\"#mentioning\">@menção</a>) você nos comentários.\nVocê pode mudar o seu nome de usuário editando o campo <strong>\"Nome de usuário\"</strong> na sua <a href=\"#user-profile\">página do perfil</a> e clicando no botão <strong>“Utualizar configurações”</strong>.\n"
+        body_html: "Seu nome de usuário é o nome que as pessoas utilizarão para mencionar (<a href=\"#mentioning\">@menção</a>) você nos comentários.\nVocê pode mudar o seu nome de usuário editando o campo <strong>\"Nome de usuário\"</strong> na sua <a href=\"#user-profile\">página do perfil</a> e clicando no botão <strong>“Atualizar configurações”</strong>.\n"
       updating_personal_settings:
         title: Atualizar suas configurações pessoais
         body_html: "Você pode atualizar as configurações do nome, nome de usuário, endereço de e-mail e de idioma associados à sua conta, editando os campos correspondentes na sua <a href=\"#user-profile\">página do perfil</a>, e clicando no botão <strong>“Atualizar configurações”</strong>."
