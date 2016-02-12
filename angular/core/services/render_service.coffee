@@ -1,6 +1,8 @@
 angular.module('loomioApp').factory 'render', ->
   createRenderer: ->
     renderer = new marked.Renderer()
+    renderer.link = (href, title, text) ->
+      "<a href='#{href}' title='#{title || text}' target='_blank'>#{text}</a>"
     renderer.paragraph = @cook('p')
     renderer.listitem  = @cook('li')
     renderer.tablecell = @cook('td')
