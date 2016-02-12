@@ -121,7 +121,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @groupPrivacy == 'secret'
 
     allowPublicDiscussions: ->
-      @discussionPrivacyOptions != 'private_only'
+      if @isNew()
+        true
+      else
+        @discussionPrivacyOptions != 'private_only'
 
     isSubgroup: ->
       @parentId?
