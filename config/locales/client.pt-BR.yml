@@ -632,7 +632,7 @@ pt-BR:
     username_label: Nome de usuário
     email_label: E-mail
     locale_label: Idioma
-    update_profile: Utualizar perfil
+    update_profile: Atualizar perfil
   email_settings_page:
     header: Configurações de e-mail
     email: E-mail
