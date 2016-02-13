@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'ProposalForm', ->
   templateUrl: 'generated/components/proposal_form/proposal_form.html'
-  controller: ($scope, $rootScope, proposal, FormService, KeyEventService, ScrollService) ->
+  controller: ($scope, $rootScope, proposal, FormService, KeyEventService, ScrollService, EmojiService) ->
     $scope.proposal = proposal.clone()
 
     actionName = if $scope.proposal.isNew() then 'created' else 'updated'
@@ -11,7 +11,9 @@ angular.module('loomioApp').factory 'ProposalForm', ->
         $rootScope.$broadcast 'setSelectedProposal'
         ScrollService.scrollTo('#current-proposal-card-heading')
 
-    $scope.$on 'emojiSelected', (event, emoji) ->
-      $scope.proposal.description = $scope.proposal.description.trimRight() + " #{emoji} "
+    $scope.titleSelector       = '.proposal-form__title-field'
+    $scope.descriptionSelector = '.proposal-form__details-field'
+    EmojiService.listen $scope, $scope.proposal, 'name', $scope.titleSelector
+    EmojiService.listen $scope, $scope.proposal, 'description', $scope.descriptionSelector
 
     KeyEventService.submitOnEnter $scope

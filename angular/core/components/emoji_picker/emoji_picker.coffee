@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'emojiPicker', ->
-  scope: {targetSelector: '@'}
+  scope: {targetSelector: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
@@ -39,7 +39,7 @@ angular.module('loomioApp').directive 'emojiPicker', ->
         image: $scope.render(emoji)
 
     $scope.select = (emoji) ->
-      $scope.$emit 'emojiSelected', emoji
+      $scope.$emit 'emojiSelected', emoji, $scope.targetSelector
       $scope.hideMenu()
 
     $scope.noEmojisFound = ->

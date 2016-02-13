@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, AbilityService, FormService, KeyEventService, PrivacyString) ->
+  controller: ($scope, $controller, $location, discussion, CurrentUser, Records, AbilityService, FormService, KeyEventService, PrivacyString, EmojiService) ->
     $scope.discussion = discussion.clone()
 
     if $scope.discussion.isNew()
@@ -34,7 +34,9 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
       return unless $scope.discussion.group()
       $scope.discussion.group().discussionPrivacyOptions == 'public_or_private'
 
-    $scope.$on 'emojiSelected', (event, emoji) ->
-      $scope.discussion.description = $scope.discussion.description.trimRight() + " #{emoji} "
+    $scope.titleSelector       = '.discussion-form__title-input'
+    $scope.descriptionSelector = '.discussion-form__description-input'
+    EmojiService.listen $scope, $scope.discussion, 'title', $scope.titleSelector
+    EmojiService.listen $scope, $scope.discussion, 'description', $scope.descriptionSelector
 
     KeyEventService.submitOnEnter $scope
