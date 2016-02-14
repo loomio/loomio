@@ -1,6 +1,7 @@
 class API::RestfulController < ActionController::Base
   include ::LocalesHelper
   before_filter :set_application_locale
+  before_filter :set_paper_trail_whodunnit
   snorlax_used_rest!
 
   include ::ProtectedFromForgery

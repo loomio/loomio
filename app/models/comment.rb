@@ -40,6 +40,10 @@ class Comment < ActiveRecord::Base
 
   serialize :liker_ids_and_names, Hash
 
+  define_counter_cache :versions_count do |comment|
+    comment.versions.count
+  end
+
   alias_method :author, :user
   alias_method :author=, :user=
   attr_accessor :new_attachment_ids

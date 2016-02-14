@@ -10,6 +10,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'memberships'
       @hasMany 'notifications'
       @hasMany 'contacts'
+      @hasMany 'versions'
 
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)

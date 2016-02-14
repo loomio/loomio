@@ -51,6 +51,10 @@
   color: $link-color;
 }
 
+.thread-item__action--view-edits {
+  @include lmoBtnLink;
+}
+
 .thread-item__timestamp {
   display: inline-block;
 }

@@ -16,6 +16,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
       @belongsTo 'parent', from: 'comments', by: 'parentId'
+      @hasMany  'versions', sortBy: 'createdAt'
 
     serialize: ->
       data = @baseSerialize()
@@ -66,3 +67,13 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       _.each @mentionedUsernames, (username) ->
         cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
       cooked
+
+    edited: ->
+      @versionsCount > 1
+
+    attributeForVersion: (attr, version) ->
+      return '' unless version
+      if version.changes[attr]
+        version.changes[attr][1]
+      else
+        @attributeForVersion(attr, @recordStore.versions.find(version.previousId))

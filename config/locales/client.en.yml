@@ -379,6 +379,12 @@ en:
     messages:
       membership_requested: 'You have requested membership to {{group}}'
 
+  revision_history_modal:
+    thread_header: Thread context revision history
+    comment_header: Comment edit revision history
+    started_by: 'Started by <strong>{{name}}</strong>'
+    edited_by: 'Edited by <strong>{{name}}</strong>'
+    posted: Posted
 
   group_page:
     thread_list:
@@ -789,6 +795,7 @@ en:
     liked_by_name: 'Liked by {{name}}.'
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
+    edited: 'Edited'
     volume:
       loud: Email whenever there is activity in this thread.
       loud_aria_description: Your notification volume for this thread is set to Loud. This means you will be emailed whenever there is activity in this thread.
@@ -846,6 +853,7 @@ en:
       edit_comment: 'Edit comment'
       delete_comment: 'Delete comment'
     in_reply_to: 'in reply to <strong>{{recipient}}</strong>'
+    edited: 'Edited'
 
   new_vote_item:
     agree: 'agreed'

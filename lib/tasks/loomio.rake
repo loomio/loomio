@@ -31,6 +31,24 @@ namespace :loomio do
     end
   end
 
+  task refresh_comment_versions: :environment do
+    progress_bar = ProgressBar.create(format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Comment.count )
+
+    Comment.find_each(batch_size: 200) do |c|
+      progress_bar.increment
+      c.update_versions_count
+    end
+  end
+
+  task refresh_discussion_versions: :environment do
+    progress_bar = ProgressBar.create(format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Discussion.count )
+
+    Discussion.find_each(batch_size: 200) do |d|
+      progress_bar.increment
+      d.update_versions_count
+    end
+  end
+
   task fix_unread: :environment do
     puts "Recounting discussion reader counts"
     progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: DiscussionReader.count )
