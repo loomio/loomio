@@ -536,7 +536,7 @@ en:
     subgroup_privacy_is_open_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
     subgroup_privacy_is_closed_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
     subgroup_privacy_is_closed_public_threads_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. Threads can be public or private."
-    subgroup_privacy_is_closed_secret_parent_description: "members of {{parent}} can find this subgroup and ask to join. Only members can see who is in the group."
+    subgroup_privacy_is_closed_secret_parent_description: "members of {{parent}} can find this subgroup and ask to join. All threads are private. Only members can see who is in the group."
     subgroup_privacy_is_secret_description: 'only invited members can find this subgroup, see who is in it and see threads.'
 
     advanced_settings: "Advanced settings"
@@ -555,7 +555,7 @@ en:
     permissions: 'Permissions'
     allow_public_threads: 'Allow public threads in this group.'
     #is_visible_to_parent_members: 'Content is visible to members of {{parentGroupName}}.'
-    parent_members_can_see_discussions: 'Members of {{parent}} can see threads.'
+    parent_members_can_see_discussions: 'Members of {{parent}} can see private threads.'
     members_can_add_members: 'Members can invite people and approve requests to join.'
     members_can_create_subgroups: 'Members can create subgroups.'
     members_can_edit_discussions: 'Members can update the context and title of any thread.'
