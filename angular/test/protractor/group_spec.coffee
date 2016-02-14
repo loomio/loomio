@@ -24,6 +24,17 @@ describe 'Group Page', ->
         page.expectElement('.join-group-button__join-group')
 
   describe 'starting a group', ->
+    fit 'starts a secret group', ->
+      page.loadPath('setup_new_group')
+      page.click '.group-welcome-modal__close-button',
+                 '.start-menu__start-button',
+                 '.start-menu__startGroup',
+                 '.group-form__privacy-secret'
+      page.fillIn '#group-name', 'Secret please'
+      page.click '.group-form__submit-button'
+      page.click '.group-welcome-modal__close-button'
+      page.expectText '.group-privacy-button', 'Secret'
+
 
     it 'shows the welcome modal once per session', ->
       page.loadPath('setup_new_group')

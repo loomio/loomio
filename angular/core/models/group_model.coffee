@@ -15,7 +15,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       name: ''
       description: ''
       groupPrivacy: 'closed'
-      isVisibleToPublic: true
       discussionPrivacyOptions: 'private_only'
       membershipGrantedUpon: 'approval'
       membersCanAddMembers: true
