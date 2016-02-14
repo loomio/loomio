@@ -33,6 +33,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @hasMany 'comments', sortBy: 'createdAt'
       @hasMany 'events', sortBy: 'sequenceId'
       @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
+      @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
       @belongsTo 'author', from: 'users'
 
@@ -135,3 +136,13 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
+
+    edited: ->
+      @versionsCount > 1
+
+    attributeForVersion: (attr, version) ->
+      return '' unless version
+      if version.changes[attr]
+        version.changes[attr][1]
+      else
+        @attributeForVersion(attr, @recordStore.versions.find(version.previousId))

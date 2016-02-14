@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   handleCommentHash = do ->
@@ -99,6 +99,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @proposalButtonInView = ($inview) ->
     $rootScope.$broadcast 'proposalButtonInView', $inview
+
+  @showRevisionHistory = ->
+    ModalService.open RevisionHistoryModal, model: => @discussion
 
   TranslationService.listenForTranslations($scope, @)
 

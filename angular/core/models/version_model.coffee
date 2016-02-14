@@ -5,7 +5,10 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
     @indices: ['discussionId']
 
     relationships: ->
+      @belongsTo 'discussion'
+      @belongsTo 'comment'
       @belongsTo 'proposal'
+      @belongsTo 'author', from: 'users', by: 'whodunnit'
 
     editedAttributeNames: ->
       _.filter _.keys(@changes).sort(), (key) ->
@@ -13,3 +16,18 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
 
     attributeEdited: (name) ->
        _.include(_.keys(@changes), name)
+
+    model: ->
+      @discussion() or @comment()
+
+    isCurrent: ->
+      @id == _.last(@model().versions())['id']
+
+    isOriginal: ->
+      @id == _.first(@model().versions())['id']
+
+    authorOrEditorName: ->
+      if @isOriginal()
+        @model().authorName()
+      else
+        @author().name

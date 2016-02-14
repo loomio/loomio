@@ -40,6 +40,17 @@ describe 'Discussion Page', ->
       page.expectNoText('.discussion-form__title-input', 'dumb title')
       page.expectNoText('.discussion-form__description-input', 'rubbish description')
 
+    it 'lets you view thread revision history', ->
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-edit'
+      page.fillIn '.discussion-form__title-input', 'Revised title'
+      page.fillIn '.discussion-form__description-input', 'Revised description'
+      page.click '.discussion-form__update'
+      page.click '.thread-context__edited-link'
+      page.expectText '.revision-history-modal__body', 'Revised title'
+      page.expectText '.revision-history-modal__body', 'Revised description'
+      page.expectText '.revision-history-modal__body', 'What star sign are you?'
+
   describe 'move thread', ->
     it 'lets you move a thread', ->
       page.loadPath 'setup_multiple_discussions'
@@ -120,6 +131,18 @@ describe 'Discussion Page', ->
       threadPage.editCommentText('edited comment right thur')
       threadPage.submitEditedComment()
       expect(threadPage.mostRecentComment()).toContain('edited comment right thur')
+
+    it 'lets you view comment revision history', ->
+      page.fillIn '.comment-form__comment-field', 'Comment!'
+      page.click '.comment-form__submit-button'
+      page.click '.thread-item__dropdown-button',
+                 '.thread-item__edit-link'
+      page.fillIn '.edit-comment-form__comment-field', 'Revised comment!'
+      page.click  '.comment-form__submit-btn'
+      page.click '.thread-item__action--view-edits',
+                 '.thread-item__action--view-edits'
+      page.expectText '.revision-history-modal__body', 'Revised comment!'
+      page.expectText '.revision-history-modal__body', 'Comment!'
 
     it 'deletes a comment', ->
       threadPage.addComment('original comment right hur')

@@ -92,6 +92,10 @@ class Discussion < ActiveRecord::Base
     discussion.motions.count
   end
 
+  define_counter_cache :versions_count do |discussion|
+    discussion.versions.where(event: :update).count
+  end
+
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :motions_count
 
