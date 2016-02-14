@@ -57,10 +57,10 @@ module AngularHelper
   private
 
   def angular_asset_folder
-    if Rails.env.development?
-      :development
-    else
+    if Rails.env.production?
       Loomio::Version.current
+    else
+      :development
     end
   end
 end
