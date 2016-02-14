@@ -604,8 +604,12 @@ en:
   invitation_form:
     invite_people: 'Invite People'
     group: 'Group'
+    shareable_link: 'Shareable link'
+    copy_link: 'Copy link'
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: 'Copy the link and send it to anyone you want to join the group. Clicking the link will give them immediate access.'
+    email_explanation: 'Alternatively, enter email addresses below and Loomio will send them and invitation by email.'
     add_custom_message: 'Make your invite personal, '
     add_custom_message_link: 'add a custom message.'
     custom_message: 'Custom message'
@@ -615,17 +619,12 @@ en:
     add_members: 'Add members'
     from_parent_group: 'from {{name}}.'
     send: 'Send'
+    done: 'Done'
     messages:
       invitation_sent: 'Invitation sent.'
       invitations_sent: '{{count}} invitations sent.'
       no_invitations: 'Uh-oh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
-
-  team_link_modal:
-    heading: 'Add people'
-    share_link: 'Share this link'
-    caution: 'Caution: anyone who has this link will be able to join your group immediately. Be careful who you share it with :)'
-    copy_link: 'Copy link'
 
   add_members_modal:
     heading: 'Add people from {{name}}'

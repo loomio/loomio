@@ -6,6 +6,16 @@
   .modal-body
     %label{for: "group-select", translate: "invitation_form.group"}
     %select.invitation-form__group-select.form-control#group-select{ng-model: "form.groupId", ng-change: "restoreRemoteDraft()", ng-required: true, ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'"}
+
+    %label{translate: "invitation_form.shareable_link"}
+    .invitation-form__flex
+      %input.invitation-form__shareable-link-field.form-control{value: "{{invitationLink()}}"}
+      %button.invitation-form__copy-button.lmo-btn--primary{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
+        {{ 'invitation_form.copy_link' | translate}}
+
+    .invitation-form__shareable-link-explanation{translate: "invitation_form.shareable_link_explanation"}
+    .invitation-form__email-explanation{translate: "invitation_form.email_explanation"}
+
     %label{for: "email-addresses", translate: "invitation_form.email_addresses"}
     %textarea.invitation-form__email-addresses.form-control#email-addresses{ng-model: "form.emails", ng-required: true, msd-elastic: "true", rows: 1, ng-model-options: "{debouce: 600}", ng-change: "storeDraft()", placeholder: "{{ 'invitation_form.email_addresses_placeholder' | translate }}" }
     .invitation-form__no-invitations.lmo-validation-error{ng-show: "noInvitations", translate: "invitation_form.messages.no_invitations"}
@@ -16,13 +26,10 @@
     .blank{ng-if: "showCustomMessageField()"}
       %label{for: "custom-message", translate: "invitation_form.custom_message"}
       %textarea.lmo-textarea.invitation-form__custom-message.form-control#custom-message{ng-model: "form.message", msd-elastic: "true", ng-model-options: "{debounce: 600}", ng-change: "storeDraft()", placeholder: "{{ 'invitation_form.custom_message_placeholder' | translate }}"}
-    %p
-      %span{translate: "invitation_form.team_invitation_message"}>
-      %button.invitation-form__get-team-link.lmo-btn-link--blue{translate: "invitation_form.team_invitation_link", ng-click: "getTeamLink()"}>
     %p{ng-if: "form.group().isSubgroup()"}
       %button.invitation-form__add-members.lmo-btn-link--blue{translate: "invitation_form.add_members", ng-click: "addMembers()"}>
       %span{translate: "invitation_form.from_parent_group", translate-values: "{name: form.group().parentName()}"}
 
   .modal-footer
-    %button.invitation-form__submit.lmo-btn--submit{ng-click: "submit()", ng-disabled: "!canSubmit()", translate: "invitation_form.send", translate-value-count: "{{invitationsCount()}}"}
+    %button.invitation-form__submit.lmo-btn--submit{ng-click: "submit()", translate: "{{submitText()}}", translate-value-count: "{{invitationsCount()}}"}
     %button.lmo-btn--cancel{ng-click: "$close()", translate: "common.action.cancel"}
