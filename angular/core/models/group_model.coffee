@@ -15,7 +15,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       name: ''
       description: ''
       groupPrivacy: 'closed'
-      isVisibleToPublic: true
       discussionPrivacyOptions: 'private_only'
       membershipGrantedUpon: 'approval'
       membersCanAddMembers: true
@@ -121,7 +120,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @groupPrivacy == 'secret'
 
     allowPublicDiscussions: ->
-      @discussionPrivacyOptions != 'private_only'
+      if @privacyIsClosed() && @isNew()
+        true
+      else
+        @discussionPrivacyOptions != 'private_only'
 
     isSubgroup: ->
       @parentId?
@@ -162,3 +164,6 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     noInvitationsSent: ->
       @membershipsCount < 2 and @invitationsCount < 2
+
+    isSubgroupOfSecretParent: ->
+      @isSubgroup() && @parent().privacyIsSecret()

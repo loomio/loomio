@@ -61,10 +61,10 @@ angular.module('loomioApp').factory 'PrivacyString', ($translate) ->
           when 'open'   then 'subgroup_privacy_is_open_description'
           when 'secret' then 'subgroup_privacy_is_secret_description'
           when 'closed'
-            if group.allowPublicDiscussions()
-              'subgroup_privacy_is_closed_public_threads_description'
-            else if group.isSubgroupOfHiddenParent
+            if group.isSubgroupOfSecretParent()
               'subgroup_privacy_is_closed_secret_parent_description'
+            else if group.allowPublicDiscussions()
+              'subgroup_privacy_is_closed_public_threads_description'
             else
               'subgroup_privacy_is_closed_description'
 

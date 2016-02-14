@@ -24,6 +24,55 @@ describe 'Group Page', ->
         page.expectElement('.join-group-button__join-group')
 
   describe 'starting a group', ->
+    it 'starts an open group', ->
+      page.loadPath('setup_new_group')
+      page.click '.group-welcome-modal__close-button',
+                 '.start-menu__start-button',
+                 '.start-menu__startGroup',
+                 '.group-form__privacy-open',
+                 '.group-form__advanced-link'
+
+      # expect advanced to include "How do people join?"
+      page.expectElement '.group-form__joining'
+      page.expectNoElement '.group-form__allow-public-threads'
+
+      page.fillIn '#group-name', 'Open please'
+      page.click '.group-form__submit-button'
+      page.click '.group-welcome-modal__close-button'
+      page.expectText '.group-privacy-button', 'Open'
+
+    it 'starts a closed group', ->
+      page.loadPath('setup_new_group')
+      page.click '.group-welcome-modal__close-button',
+                 '.start-menu__start-button',
+                 '.start-menu__startGroup',
+                 '.group-form__privacy-closed',
+                 '.group-form__advanced-link'
+
+      page.expectNoElement '.group-form__joining'
+      page.expectElement '.group-form__allow-public-threads'
+
+      page.fillIn '#group-name', 'Closed please'
+      page.click '.group-form__submit-button'
+      page.click '.group-welcome-modal__close-button'
+      page.expectText '.group-privacy-button', 'Closed'
+
+    it 'starts a secret group', ->
+      page.loadPath('setup_new_group')
+      page.click '.group-welcome-modal__close-button',
+                 '.start-menu__start-button',
+                 '.start-menu__startGroup',
+                 '.group-form__privacy-secret',
+                 '.group-form__advanced-link'
+
+      page.expectNoElement '.group-form__joining'
+      page.expectNoElement '.group-form__allow-public-threads'
+
+      page.fillIn '#group-name', 'Secret please'
+      page.click '.group-form__submit-button'
+      page.click '.group-welcome-modal__close-button'
+      page.expectText '.group-privacy-button', 'Secret'
+
 
     it 'shows the welcome modal once per session', ->
       page.loadPath('setup_new_group')
@@ -33,39 +82,88 @@ describe 'Group Page', ->
                  '.group-theme__name')
       page.expectNoElement('.group-welcome-modal')
 
-  describe 'starting a discussion', ->
-    beforeEach ->
-      page.loadPath('setup_group')
-
-    it 'successfully starts a discussion', ->
-      page.click('.discussions-card__new-thread-button')
-      page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-      page.fillIn('#discussion-context', "I've had the time of my life")
-      page.click('.discussion-form__submit')
-      page.expectFlash('Thread started')
-      page.expectText('.thread-context', 'Nobody puts baby in a corner' )
-      page.expectText('.thread-context', "I've had the time of my life" )
-
-    it 'automatically saves drafts', ->
-      page.click('.discussions-card__new-thread-button')
-      page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
-      page.fillIn('#discussion-context', "I've had the time of my life")
-      page.click('.discussion-form__cancel')
-      page.click('.discussions-card__new-thread-button')
-      page.expectInputValue('#discussion-title', 'Nobody puts baby in a corner' )
-      page.expectInputValue('#discussion-context', "I've had the time of my life" )
 
   describe 'starting a subgroup', ->
-    beforeEach ->
-      page.loadPath('setup_group')
+    describe 'with a public parent', ->
+      beforeEach ->
+        page.loadPath('setup_open_group')
+        page.click('.group-page-actions__button',
+                   '.group-page-actions__add-subgroup-link')
+        page.click '.group-form__advanced-link'
 
-    it 'successfully starts a subgroup', ->
-      page.click('.group-page-actions__button',
-                 '.group-page-actions__add-subgroup-link')
-      page.fillIn('#group-name', 'The Breakfast Club')
-      page.click('.group-form__submit-button')
-      page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
-      page.expectText('.group-theme__name', 'The Breakfast Club')
+      it 'open subgroup', ->
+        page.click '.group-form__privacy-open'
+        page.expectElement '.group-form__joining'
+        page.expectNoElement '.group-form__allow-public-threads'
+        page.expectNoElement '.group-form__parent-members-can-see-discussions'
+
+      it 'closed subgroup', ->
+        page.click '.group-form__privacy-closed'
+        page.expectNoElement '.group-form__joining'
+        page.expectElement '.group-form__parent-members-can-see-discussions'
+        page.expectElement '.group-form__allow-public-threads'
+
+      it 'secret subgroup', ->
+        page.click '.group-form__privacy-secret'
+        page.expectNoElement '.group-form__joining'
+        page.expectNoElement '.group-form__parent-members-can-see-discussions'
+        page.expectNoElement '.group-form__allow-public-threads'
+
+    describe 'with a closed parent', ->
+      beforeEach ->
+        page.loadPath('setup_closed_group')
+        page.click('.group-page-actions__button',
+                   '.group-page-actions__add-subgroup-link')
+        page.click '.group-form__advanced-link'
+
+      it 'open subgroup', ->
+        page.click '.group-form__privacy-open'
+        page.expectElement '.group-form__joining'
+        page.expectNoElement '.group-form__allow-public-threads'
+        page.expectNoElement '.group-form__parent-members-can-see-discussions'
+
+      it 'closed subgroup', ->
+        page.click '.group-form__privacy-closed'
+        page.expectNoElement '.group-form__joining'
+        page.expectElement '.group-form__parent-members-can-see-discussions'
+        page.expectElement '.group-form__allow-public-threads'
+
+      it 'secret subgroup', ->
+        page.click '.group-form__privacy-secret'
+        page.expectNoElement '.group-form__joining'
+        page.expectNoElement '.group-form__parent-members-can-see-discussions'
+        page.expectNoElement '.group-form__allow-public-threads'
+
+    describe 'with a secret parent', ->
+      beforeEach ->
+        page.loadPath('setup_secret_group')
+        page.click('.group-page-actions__button',
+                   '.group-page-actions__add-subgroup-link')
+        page.click '.group-form__advanced-link'
+
+      it 'open subgroup', ->
+        page.expectNoElement '.group-form__privacy-open'
+
+      it 'closed subgroup', ->
+        page.click '.group-form__privacy-closed'
+        page.expectText '.group-form__privacy', 'members of Secret Dirty Dancing Shoes can find this subgroup and ask to join. All threads are private. Only members can see who is in the group.'
+        page.expectNoElement '.group-form__joining'
+        page.expectElement '.group-form__parent-members-can-see-discussions'
+        page.expectNoElement '.group-form__allow-public-threads'
+
+      it 'secret subgroup', ->
+        page.click '.group-form__privacy-secret'
+        page.expectNoElement '.group-form__joining'
+        page.expectNoElement '.group-form__parent-members-can-see-discussions'
+        page.expectNoElement '.group-form__allow-public-threads'
+
+    # it 'successfully starts a subgroup', ->
+    #   page.click('.group-page-actions__button',
+    #              '.group-page-actions__add-subgroup-link')
+    #   page.fillIn('#group-name', 'The Breakfast Club')
+    #   page.click('.group-form__submit-button')
+    #   page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
+    #   page.expectText('.group-theme__name', 'The Breakfast Club')
 
   describe 'editing group settings', ->
     beforeEach ->
@@ -182,3 +280,25 @@ describe 'Group Page', ->
                  '.change-volume-form__submit')
 
       page.expectText('.group-volume-card', 'Email everything')
+
+  describe 'starting a discussion', ->
+    beforeEach ->
+      page.loadPath('setup_group')
+
+    it 'successfully starts a discussion', ->
+      page.click('.discussions-card__new-thread-button')
+      page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
+      page.fillIn('#discussion-context', "I've had the time of my life")
+      page.click('.discussion-form__submit')
+      page.expectFlash('Thread started')
+      page.expectText('.thread-context', 'Nobody puts baby in a corner' )
+      page.expectText('.thread-context', "I've had the time of my life" )
+
+    it 'automatically saves drafts', ->
+      page.click('.discussions-card__new-thread-button')
+      page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
+      page.fillIn('#discussion-context', "I've had the time of my life")
+      page.click('.discussion-form__cancel')
+      page.click('.discussions-card__new-thread-button')
+      page.expectInputValue('#discussion-title', 'Nobody puts baby in a corner' )
+      page.expectInputValue('#discussion-context', "I've had the time of my life" )

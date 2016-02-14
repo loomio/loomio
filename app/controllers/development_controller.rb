@@ -174,9 +174,27 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(@test_group)
   end
 
+  def setup_open_group
+    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
+                                group_privacy: 'open')
+    @test_group.add_admin!  patrick
+    @test_group.add_member! jennifer
+    sign_in patrick
+    redirect_to group_url(test_group)
+  end
+
   def setup_closed_group
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed')
+    @test_group.add_admin!  patrick
+    @test_group.add_member! jennifer
+    sign_in patrick
+    redirect_to group_url(test_group)
+  end
+
+  def setup_secret_group
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
     sign_in patrick

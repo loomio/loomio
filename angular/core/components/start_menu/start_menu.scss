@@ -8,6 +8,16 @@
 .start-menu__modal-backdrop {
   z-index: 500;
 }
+.start-menu__options {
+  display: flex;
+  flex-direction: column;
+}
+
+.start-menu__option {
+  background: none;
+  border: none;
+  text-align: right;
+}
 
 .start-menu__start-button {
   background: $loomio-orange;

@@ -22,7 +22,7 @@
         .group-form__privacy.lmo-form-group
           %label{translate: "group_form.privacy"}
 
-          %label.lmo-form-labelled-input{ng-if: "!group.isSubgroupOfHiddenParent"}
+          %label.lmo-form-labelled-input{ng-if: "!group.isSubgroupOfSecretParent()"}
             %input.group-form__privacy-open{type: "radio", ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()", value: "open", name: "groupPrivacy"}
             %span
               %strong{translate: "common.privacy.open"}
@@ -60,12 +60,12 @@
         .group-form__permissions.lmo-form-group
           %label{translate: "group_form.permissions"}
 
-          %label.lmo-form-labelled-input{ng-if: "group.privacyIsClosed() && !group.isSubgroupOfHiddenParent"}
+          %label.lmo-form-labelled-input{ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
             %input.group-form__allow-public-threads{type: "checkbox", ng-model: "buh.allowPublicThreads", ng-change: "allowPublicThreadsClicked()"}
             %span{translate: "group_form.allow_public_threads"}
 
-          %label.lmo-form-labelled-input{ng-if: "group.isSubgroup() && !group.privacyIsSecret()"}
-            %input.group-form__visible-to-parent-members{type: "checkbox", ng-model: "group.parentMembersCanSeeDiscussions"}
+          %label.lmo-form-labelled-input{ng-if: "group.isSubgroup() && group.privacyIsClosed()"}
+            %input.group-form__parent-members-can-see-discussions{type: "checkbox", ng-model: "group.parentMembersCanSeeDiscussions"}
             %span{translate: "group_form.parent_members_can_see_discussions", translate-value-parent: "{{group.parent().name}}"}
 
           %label.lmo-form-labelled-input
