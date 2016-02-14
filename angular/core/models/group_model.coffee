@@ -120,7 +120,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @groupPrivacy == 'secret'
 
     allowPublicDiscussions: ->
-      if @isNew()
+      if @privacyIsClosed() && @isNew()
         true
       else
         @discussionPrivacyOptions != 'private_only'
