@@ -5,7 +5,6 @@ module JSRuntime
   def eval(command, input)
     cleanup perform build(command, input)
   rescue => e
-    puts e.message
     Airbrake.notify e
     input
   end
