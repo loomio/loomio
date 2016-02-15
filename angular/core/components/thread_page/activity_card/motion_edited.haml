@@ -6,7 +6,8 @@
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %strong
           %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
-        %span{translate: "proposal_edited_item.{{translationKey}}", translate-values: "{time: closingAt, title: title}"}
+        %span{translate: "proposal_edited_item.{{translationKey}}", translate-values: "{time: closingAt}"}
+        %span{emoji-text: "title"}
   .thread-item__footer
     .thread-item__actions
       %timeago{timestamp: "event.createdAt"}

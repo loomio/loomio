@@ -27,8 +27,7 @@
                   %a.thread-context__dropdown-options-delete.lmo-dropdown-menu-item-label{href: "true", ng-click: "threadPage.deleteThread()", translate: "thread_context.delete_thread"}
 
 
-        %h1.lmo-h1#thread-context__heading{in-view: "threadPage.showLintel(!$inview)"}
-          {{threadPage.discussion.title}}
+        %h1.lmo-h1#thread-context__heading{emoji-text: "threadPage.discussion.title", in-view: "threadPage.showLintel(!$inview)"}
         %h1{ng-if: "threadPage.translation"}
           %translation{translation: "threadPage.translation", field: "title"}
 

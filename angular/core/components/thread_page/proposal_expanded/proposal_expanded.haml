@@ -1,8 +1,7 @@
 .proposal-expanded{ng-show: "proposal", id: "proposal-{{proposal.key}}"}
   %proposal_actions_dropdown{proposal: "proposal", ng-if: "showActionsDropdown()"}
   %a.proposal-expanded__proposal-name-link{lmo-href-for: "proposal"}
-    %h3.proposal-expanded__proposal-name
-      {{proposal.name}}
+    %h3.proposal-expanded__proposal-name{emoji-text: "proposal.name"}
     %h3{ng-if: "translation"}
       %translation{translation: "translation", field: "name"}
 

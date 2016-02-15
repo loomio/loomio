@@ -17,13 +17,12 @@
 
     .screen-only{aria-hidden: "true"}
       .thread-preview__text-container
-        .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
-          {{thread.title}}
+        .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }", emoji-text: "thread.title"}
         .thread-preview__unread-count{ng-if: "thread.isUnread() && thread.itemsCount > 0"}
           ({{thread.unreadItemsCount()}})
 
       .thread-preview__text-container{ng-if: "thread.activeProposal()"}
-        .thread-preview__proposal-name> {{ thread.activeProposal().name }}
+        .thread-preview__proposal-name{emoji-text: "thread.activeProposal().name"}>
         .thread-preview__proposal-closing-container{ng-if: "thread.activeProposal().closingSoon()"}
           %proposal_closing_time.thread-preview__proposal-closing-at{proposal: "thread.activeProposal()"}>
 
