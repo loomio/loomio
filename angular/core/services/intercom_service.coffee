@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     boot: ->
       return unless $window? and $window.Intercom?
-      firstGroup = CurrentUser.groups()[0]
+      firstGroup = CurrentUser.parentGroups()[0]
 
       $window.Intercom 'boot',
        admin_link: AppConfig.baseUrl+"/admin/users/#{CurrentUser.id}"
@@ -27,9 +27,10 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       $window.Intercom('shutdown')
 
     updateWithGroup: (group) ->
-      return if currentGroup == group
-      currentGroup = group
       return unless @available()
+      return if currentGroup == group
+      return if group.isSubgroup()
+      currentGroup = group
       $window.Intercom 'update',
         email: CurrentUser.email
         user_id: CurrentUser.id
