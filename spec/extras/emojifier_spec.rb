@@ -8,7 +8,7 @@ describe Emojifier do
   let(:with_emoji) { ":heart:" }
 
   before do
-    expect(Airbrake).not_to receive :notify
+    expect(Airbrake).to_not receive :notify
   end
 
   it 'renders text normally' do
