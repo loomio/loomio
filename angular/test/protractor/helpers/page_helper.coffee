@@ -17,6 +17,9 @@ module.exports = new class PageHelper
   expectNoElement: (selector)->
     expect(element(By.css(selector)).isPresent()).toBe(false)
 
+  expectDisabledElement: (selector)->
+    expect(element(By.css(selector)).isEnabled()).toBe(false)
+
   click: ->
     _.each given(arguments), (selector) ->
       element(By.css(selector)).click()

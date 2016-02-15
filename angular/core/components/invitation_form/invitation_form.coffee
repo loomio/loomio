@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, group, Records, CurrentUser, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal, AppConfig) ->
+  controller: ($scope, group, Records, CurrentUser, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
 
     Records.invitations.fetchShareableInvitationByGroupId(group.id)
 
@@ -23,16 +23,19 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       $scope.addCustomMessageClicked = true
 
     $scope.invitees = ->
-      _.compact $scope.form.emails.split(' ')
+      $scope.form.emails.match(/[^\s<,]+?@[^>,\s]+/g) or []
 
     $scope.maxInvitations = ->
       $scope.invitees().length > 100
 
     $scope.submitText = ->
-      if $scope.invitees().length > 0
+      if $scope.form.emails.length > 0
         'invitation_form.send'
       else
         'invitation_form.done'
+
+    $scope.invalidEmail = ->
+      $scope.invitees().length == 0 and $scope.form.emails.length > 0
 
     $scope.canSubmit = ->
       $scope.invitees().length > 0 and $scope.form.group()
@@ -45,7 +48,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     $scope.invitationLink = ->
       return unless group.shareableInvitation()
-      [AppConfig.baseUrl, 'invitations/', group.shareableInvitation().token].join('')
+      group.shareableInvitation().url
 
     $scope.submit = FormService.submit $scope, $scope.form,
       allowDrafts: true

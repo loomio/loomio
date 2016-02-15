@@ -9,6 +9,13 @@ describe 'Invitations', ->
     page.click '.invitation-form__submit'
     page.expectFlash '2 invitations sent.'
 
+  it 'disables send button when no valid email addresses present', ->
+    page.loadPath 'setup_new_group'
+    page.click '.group-welcome-modal__close-button',
+               '.members-card__invite-members-btn'
+    page.fillIn '.invitation-form__email-addresses', 'invalidemailaddress'
+    page.expectDisabledElement '.invitation-form__submit'
+
   it 'sends custom invitation to a person', ->
     page.loadPath 'setup_new_group'
     page.click '.group-welcome-modal__close-button',
