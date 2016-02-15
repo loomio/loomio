@@ -25,7 +25,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
 
     parentGroups: ->
-      _.filter @groups(), (group) -> group.parentId == null
+      _.filter @groups(), (group) -> group.isParent()
 
     orphanSubgroups: ->
       _.filter @groups(), (group) =>
