@@ -17,6 +17,7 @@ module JSRuntime
 
   def prepare(input)
     input.to_s.strip.gsub("\"", "{{DOUBLE_QUOTE}}")
+                    .gsub("\r", "{{CARRIAGE_RETURN}}")
                     .gsub("\n", "{{LINE_FEED}}")
                     .gsub("\u2028", "{{LINE_SEPARATOR}}")
                     .gsub("\u2029", "{{PARAGRAPH_SEPARATOR}}")
@@ -29,6 +30,7 @@ module JSRuntime
   def cleanup(result)
     result.gsub("{{DOUBLE_QUOTE}}", "\"")
           .gsub("{{LINE_FEED}}", "\n")
+          .gsub("{{CARRIAGE_RETURN}}", "\r")
           .gsub("{{LINE_SEPARATOR}}", "\u2028")
           .gsub("{{PARAGRAPH_SEPARATOR}}", "\u2029")
   end
