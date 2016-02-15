@@ -17,7 +17,9 @@ module JSRuntime
 
   def prepare(input)
     input.to_s.strip.gsub("\"", "{{DOUBLE_QUOTE}}")
-                    .gsub("\n", "{{LINE_BREAK}}")
+                    .gsub("\n", "{{LINE_FEED}}")
+                    .gsub("\u2028", "{{LINE_SEPARATOR}}")
+                    .gsub("\u2029", "{{PARAGRAPH_SEPARATOR}}")
   end
 
   def perform(command)
@@ -26,7 +28,9 @@ module JSRuntime
 
   def cleanup(result)
     result.gsub("{{DOUBLE_QUOTE}}", "\"")
-          .gsub("{{LINE_BREAK}}", "\n")
+          .gsub("{{LINE_FEED}}", "\n")
+          .gsub("{{LINE_SEPARATOR}}", "\u2028")
+          .gsub("{{PARAGRAPH_SEPARATOR}}", "\u2029")
   end
 
   def runtime

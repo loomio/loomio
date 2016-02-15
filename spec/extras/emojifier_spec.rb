@@ -3,9 +3,13 @@ require 'rails_helper'
 describe Emojifier do
   let(:normal) { "Hi I'm some text" }
   let(:html) { "<a href=\"loomio.org\">Click me!</a><br/>" }
-  let(:weird) { "&%<\n!\"+=" }
+  let(:weird) { "&%<\n\r\"\u2028\u2029!+=" }
   let(:with_shortcode) { ":sad_noodle:" }
   let(:with_emoji) { ":heart:" }
+
+  before do
+    expect(Airbrake).not_to receive :notify
+  end
 
   it 'renders text normally' do
     expect(emojify(normal)).to eq normal
