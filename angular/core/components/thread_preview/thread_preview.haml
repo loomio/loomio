@@ -10,7 +10,7 @@
             %i.fa.fa-question
 
     .sr-only
-      %span{translate: "dashboard_page.aria_thread.title", translate-value-title: "{{ thread.title }}"}
+      %span {{thread.authorName()}}: {{thread.title}}.
       %span{ng-if: "thread.isUnread()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadItemsCount() }}"}
       %span{ng-if: "thread.activeProposal()", translate: "dashboard_page.aria_thread.current_proposal", translate-value-name: "{{ thread.activeProposal().name }}"}
       %span{ng-if: "thread.activeProposal() && lastVoteByCurrentUser(thread)", translate: "dashboard_page.aria_thread.you_voted", translate-value-position: " {{lastVoteByCurrentUser(thread).position}} "}

@@ -455,6 +455,7 @@ en:
       private: 'Privacy: This group is only visible to members'
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'Privacy: This group is visible on the web'
+      aria_label: 'Group privacy: {{privacy}}'
 
   confirm_gift_plan_modal:
     heading: Gift plan selected
@@ -755,7 +756,6 @@ en:
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     aria_thread:
-      title: 'Thread title: {{title}}.'
       unread: '{{count}} unread items.'
       current_proposal: 'Current proposal: {{name}}.'
       you_voted: 'You voted: {{position}}.'

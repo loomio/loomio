@@ -1,6 +1,5 @@
 %button.group-privacy-button{uib-popover: "{{privacyDescription()}}", title: "{{privacyDescription()}}"}
-  .sr-only{translate: "common.privacy.group_privacy"}
-  .sr-only{translate: "common.privacy.{{group.groupPrivacy}}"}
+  .sr-only{translate: "group_page.privacy.aria_label", translate-value-privacy: "{{group.groupPrivacy}}"}
   .screen-only{aria-hidden: "true"}
     %i.fa.fa-lg{ng-class: "iconClass()"}>
     %span{translate: "common.privacy.{{group.groupPrivacy}}"}
