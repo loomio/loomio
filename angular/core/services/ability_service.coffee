@@ -62,6 +62,11 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, CurrentUser) -
     canAdministerGroup: (group) ->
       CurrentUser.isAdminOf(group)
 
+    canManageGroupSubscription: (group) ->
+      @canAdministerGroup(group) and
+      group.subscriptionKind != 'trial' and
+      group.subscriptionPaymentMethod != 'manual'
+
     isCreatorOf: (group) ->
       CurrentUser.id == group.creatorId
 
