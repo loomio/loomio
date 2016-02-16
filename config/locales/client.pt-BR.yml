@@ -343,6 +343,12 @@ pt-BR:
     submit_button: Pedir para entrar no grupo
     messages:
       membership_requested: 'Você solicitou adesão ao(à) {{group}}'
+  revision_history_modal:
+    thread_header: Histórico de revisões do contexto do tópico
+    comment_header: Histórico de revisões de edições de comentários
+    started_by: 'Iniciado por <strong>{{name}}</strong>'
+    edited_by: 'Editado por <strong>{{name}}</strong>'
+    posted: Postado
   group_page:
     thread_list:
       empty:
@@ -471,6 +477,7 @@ pt-BR:
     edit_group_heading: Editar configurações do grupo
     edit_subgroup_heading: Editar configurações do subgrupo
     group_name: Nome do Grupo
+    group_name_placeholder: Como você quer chamar o seu grupo?
     subgroup_name: Nome do Subgrupo
     description: Descrição
     description_placeholder: Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.
@@ -479,19 +486,19 @@ pt-BR:
       private_to_group: Nome e descrição estarão visíveis apenas para membros
       private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
     privacy: Privacidade
-    group_privacy_open_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Todos os tópicos são públicos.'
-    group_privacy_closed_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Apenas os membros podem ver os tópicos.'
-    group_privacy_closed_public_threads_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Tópicos podem ser públicos ou privados.'
-    group_privacy_secret_description: apenas os membros convidados podem encontrar o grupo e ver tópicos.
+    group_privacy_is_open_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são públicos.
+    group_privacy_is_closed_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são particulares.
+    group_privacy_is_closed_public_threads_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Tópicos podem ser públicos ou privados.
+    group_privacy_is_secret_description: 'apenas membros convidados podem encontrar o grupo, ver quem está nele e ver tópicos.'
     confirm_change_to_secret: 'Se você continuar, todos os tópicos neste grupo e seus subgrupos serão privados.'
     confirm_change_to_secret_subgroup: 'Se você continuar, todos os tópicos serão privados.'
     confirm_change_to_public: 'Se você continuar, os tópicos neste grupo serão públicos na web.'
     confirm_change_to_private_discussions_only: 'Se você continuar, qualquer tópico público deste grupo será privado.'
-    subgroup_privacy_open_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Todos os tópicos são públicos.'
-    subgroup_privacy_closed_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Apenas os membros podem ver os tópicos.'
-    subgroup_privacy_closed_public_threads_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Tópicos podem ser públicos ou privados.'
-    subgroup_privacy_closed_secret_parent_description: 'membros de {{parent}} podem encontrar este subgrupo, ver quem está nele e pedir para participar.'
-    subgroup_privacy_secret_description: apenas membros convidados podem encontrar este subgrupo e ver tópicos.
+    subgroup_privacy_is_open_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são públicos.
+    subgroup_privacy_is_closed_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são particulares.
+    subgroup_privacy_is_closed_public_threads_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Tópicos podem ser públicos ou privados.
+    subgroup_privacy_is_closed_secret_parent_description: 'membros de {{parent}} pode encontrar este subgrupo e pedir para participar. Todos os tópicos são privados. Somente usuários podem ver quem está no grupo.'
+    subgroup_privacy_is_secret_description: 'apenas membros convidados podem encontrar este subgrupo, ver quem está nele e ver tópicos.'
     advanced_settings: Configurações avançadas
     how_do_people_join: Como as pessoas participam?
     membership_granted_upon_request: Qualquer um pode entrar no grupo
@@ -504,7 +511,7 @@ pt-BR:
     private_threads: Apenas os membros podem ver discussões
     permissions: Permissões
     allow_public_threads: Permitir tópicos públicos neste grupo.
-    parent_members_can_see_discussions: 'Membros de {{parent}} podem ver tópicos.'
+    parent_members_can_see_discussions: 'Membros de {{parent}} podem ver tópicos privados.'
     members_can_add_members: Membros podem convidar pessoas e aprovar pedidos de adesão.
     members_can_create_subgroups: Membros podem criar subgrupos.
     members_can_edit_discussions: Membros podem atualizar o contexto e o título de qualquer discussão.
@@ -525,7 +532,9 @@ pt-BR:
   group_help_card:
     title: Ajuda
     ten_tips_article_title: 10 dicas para fazer grandes decisões com Loomio
+    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 maneiras de usar uma proposta no Loomio para transformar uma conversa em ação
+    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
@@ -632,7 +641,7 @@ pt-BR:
     username_label: Nome de usuário
     email_label: E-mail
     locale_label: Idioma
-    update_profile: Utualizar perfil
+    update_profile: Atualizar perfil
   email_settings_page:
     header: Configurações de e-mail
     email: E-mail
@@ -716,6 +725,7 @@ pt-BR:
     liked_by_name: 'Curtido por {{name}}.'
     liked_by_names_and_name: 'Curtido por {{joinedNames}} e {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
+    edited: Editado
     volume:
       loud: Enviar e-mail sempre que houver atividade neste tópico.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Isso significa que você receberá um e-mail sempre que houver atividade neste tópico.
@@ -768,6 +778,7 @@ pt-BR:
       edit_comment: Editar comentários
       delete_comment: Apagar comentário
     in_reply_to: 'Em resposta a <strong>{{recipient}}</strong>'
+    edited: Editado
   new_vote_item:
     agree: concordou
     abstain: absteve
@@ -995,3 +1006,6 @@ pt-BR:
     messages:
       app_update: Uma nova versão do Loomio está disponível
       reload: Recarregar
+  emoji_picker:
+    search: Encontre um emoji...
+    no_emojis_found: "Nenhum emoji encontrado para '{{term}}'!"

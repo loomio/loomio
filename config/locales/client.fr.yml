@@ -475,19 +475,18 @@ fr:
       private_to_group: Le nom et la description ne seront visibles que par les membres du groupe.
       private_to_parent_members: 'Le nom et la description ne seront visibles que par les membres du groupe {{parent}}.'
     privacy: Confidentialité
-    group_privacy_open_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Toutes les discussions sont publiques."
-    group_privacy_closed_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Seuls les membres ont accès aux discussions."
-    group_privacy_closed_public_threads_description: "N'importe qui peut trouver ce groupe, voir qui sont les membres et demander à rejoindre le groupe. Les discussions peuvent être privées ou publiques."
-    group_privacy_secret_description: Seules les personnes invitées peuvent trouver ce groupe et lire les discussions.
+    group_privacy_is_open_description: "n'importe qui peut trouver ce groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont publiques."
+    group_privacy_is_closed_description: "n'importe qui peut trouver ce groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont privées."
+    group_privacy_is_closed_public_threads_description: "n'importe qui peut trouver ce groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Les discussions peuvent être publiques ou privées."
+    group_privacy_is_secret_description: 'seules les personnes invitées peuvent trouver ce sous-groupe, voir qui sont les membres et lire les discussions.'
     confirm_change_to_secret: 'Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées.'
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.'
     confirm_change_to_private_discussions_only: 'Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.'
-    subgroup_privacy_open_description: "N'importe qui peut trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le groupe. Toutes les discussions sont publiques."
-    subgroup_privacy_closed_description: "N'importe qui peut trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le groupe. Seuls les membres ont accès aux discussions."
-    subgroup_privacy_closed_public_threads_description: "N'importe qui peut trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le groupe. Les discussions peuvent être privées ou publiques."
-    subgroup_privacy_closed_secret_parent_description: 'Les membres de {{parent}} peuvent trouver ce sous-groupe, voir qui sont les membres et demander à rejoindre le sous-groupe. '
-    subgroup_privacy_secret_description: Seuls les personnes invitées peuvent trouver ce sous-groupe et lire les discussions.
+    subgroup_privacy_is_open_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont publiques."
+    subgroup_privacy_is_closed_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont privées."
+    subgroup_privacy_is_closed_public_threads_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Les discussions peuvent être publiques ou privées."
+    subgroup_privacy_is_secret_description: 'seules les personnes invitées peuvent trouver ce sous-groupe, voir qui sont les membres et lire les discussions.'
     advanced_settings: Paramètres avancés
     how_do_people_join: Comment les personnes peuvent-elles rejoindre le groupe ?
     membership_granted_upon_request: "N'importe qui peut rejoindre le groupe"
@@ -500,7 +499,6 @@ fr:
     private_threads: Seuls les membres peuvent voir les discussions
     permissions: Autorisations
     allow_public_threads: Autoriser les discussions publiques dans ce groupe.
-    parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions.'
     members_can_add_members: "Les membres peuvent inviter des personnes et approuver les demandes d'adhésion."
     members_can_create_subgroups: Les membres peuvent créer des sous-groupes.
     members_can_edit_discussions: "Les membres peuvent modifier le titre et la description de n'importe quelle discussion."
@@ -977,3 +975,6 @@ fr:
     messages:
       app_update: Une nouvelle version de Loomio est disponible
       reload: Recharger
+  emoji_picker:
+    search: "Recherche d'une émoticône..."
+    no_emojis_found: "Aucune émoticône trouvée pour '{{term}}' !"

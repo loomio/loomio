@@ -1,30 +1,30 @@
 an:
   frontpage: 52
-  main_1_0: 20
+  main_1_0: 19
 ar:
   frontpage: 100
   main_1_0: 27
 be-BY:
   frontpage: 58
-  main_1_0: 25
+  main_1_0: 24
 bg-BG:
   frontpage: 9
-  main_1_0: 14
+  main_1_0: 13
 ca:
   frontpage: 49
-  main_1_0: 19
+  main_1_0: 18
 cmn:
   frontpage: 1
   main_1_0: 8
 cs:
   frontpage: 76
-  main_1_0: 49
+  main_1_0: 48
 da:
   frontpage: 52
   main_1_0: 29
 de:
   frontpage: 100
-  main_1_0: 99
+  main_1_0: 97
 el:
   frontpage: 100
   main_1_0: 51
@@ -52,13 +52,13 @@ fi:
   main_1_0: 0
 fr:
   frontpage: 100
-  main_1_0: 100
+  main_1_0: 98
 fr-BE:
   frontpage: 0
   main_1_0: 0
 ga-IE:
   frontpage: 69
-  main_1_0: 62
+  main_1_0: 61
 gl:
   frontpage: 29
   main_1_0: 14
@@ -84,7 +84,7 @@ io:
   main_1_0: 0
 it:
   frontpage: 60
-  main_1_0: 59
+  main_1_0: 58
 it-CH:
   frontpage: 0
   main_1_0: 0
@@ -97,11 +97,11 @@ km:
   main_1_0: 14
 ko:
   frontpage: 100
-  main_1_0: 100
+  main_1_0: 97
 ko-KR: {}
 lt:
   frontpage: 23
-  main_1_0: 34
+  main_1_0: 33
 lv:
   frontpage: 0
   main_1_0: 0
@@ -113,7 +113,7 @@ mk:
   main_1_0: 13
 ml:
   frontpage: 9
-  main_1_0: 15
+  main_1_0: 14
 ml-IN:
   frontpage: 0
   main_1_0: 0
@@ -123,7 +123,7 @@ nl-NL:
   main_1_0: 31
 pl:
   frontpage: 100
-  main_1_0: 57
+  main_1_0: 56
 pt-BR:
   frontpage: 100
   main_1_0: 100
@@ -132,20 +132,20 @@ pt-PT:
   main_1_0: 0
 ro:
   frontpage: 100
-  main_1_0: 51
+  main_1_0: 48
 ru:
   frontpage: 60
   main_1_0: 24
 ru-RU: {}
 sk:
   frontpage: 52
-  main_1_0: 20
+  main_1_0: 19
 sl:
   frontpage: 58
   main_1_0: 26
 sr:
   frontpage: 100
-  main_1_0: 94
+  main_1_0: 91
 sr-RS:
   frontpage: 69
   main_1_0: 25
@@ -165,7 +165,7 @@ tr:
   main_1_0: 25
 uk:
   frontpage: 72
-  main_1_0: 89
+  main_1_0: 86
 ur:
   frontpage: 0
   main_1_0: 0
@@ -174,7 +174,7 @@ ur-PK:
   main_1_0: 0
 vi:
   frontpage: 7
-  main_1_0: 14
+  main_1_0: 13
 zh-TW:
   frontpage: 100
   main_1_0: 100

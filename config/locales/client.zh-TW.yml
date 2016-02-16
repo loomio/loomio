@@ -339,6 +339,12 @@ zh-TW:
     submit_button: 要求加入群組
     messages:
       membership_requested: '您已經申請 {{group}} 的成員資格'
+  revision_history_modal:
+    thread_header: 討論串內容修訂歷史
+    comment_header: 評論編輯修訂歷史
+    started_by: '由 <strong>{{name}}</strong> 所啟動'
+    edited_by: '由 <strong>{{name}}</strong> 所編輯'
+    posted: 已貼出
   group_page:
     thread_list:
       empty:
@@ -467,6 +473,7 @@ zh-TW:
     edit_group_heading: 編輯群組設定
     edit_subgroup_heading: 編輯子群組設定
     group_name: 群組名稱
+    group_name_placeholder: 您想要怎麼稱呼您的群組？
     subgroup_name: 子群組名稱
     description: 描述
     description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
@@ -475,19 +482,19 @@ zh-TW:
       private_to_group: 名稱與描述都將只會對成員可見。
       private_to_parent_members: '名稱與描述將會對 {{parent}} 的成員可見'
     privacy: 隱私權
-    group_privacy_open_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。所有的討論串都是公開的。
-    group_privacy_closed_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。只有成員才能看見討論串。
-    group_privacy_closed_public_threads_description: 任何人都可以找到群組，檢視有誰在裡面，並要求加入。討論串可以是公開或非公開的。
-    group_privacy_secret_description: 只有被邀請的成員才能找到群組並觀看討論串。
+    group_privacy_is_open_description: 任何人都可以找到群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
+    group_privacy_is_closed_description: 任何人都可以找到群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
+    group_privacy_is_closed_public_threads_description: 任何人都可以找到群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。
+    group_privacy_is_secret_description: 只有被邀請的成員才能找到群組，並檢視有誰在裡面以及觀看討論串。
     confirm_change_to_secret: 若您繼續，所有在此群組及其子群組的討論串都會變為非公開。
     confirm_change_to_secret_subgroup: 若您繼續，所有的討論串都會變為非公開。
     confirm_change_to_public: 若您繼續，所有在此群組的討論串都將會變為公開在網路上。
     confirm_change_to_private_discussions_only: 若您繼續，任何在此群組中的公開討論串都將會變為非公開。
-    subgroup_privacy_open_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。所有的討論串都是公開的。
-    subgroup_privacy_closed_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。只有成員才能看見討論串。
-    subgroup_privacy_closed_public_threads_description: 任何人都可以找到此子群組，檢視有誰在裡面，並要求加入。討論串可以是公開或非公開的。
-    subgroup_privacy_closed_secret_parent_description: '{{parent}} 的成員可以找到此子群組，檢視有誰在裡面，並要求加入。'
-    subgroup_privacy_secret_description: 只有被邀請的成員才能找到此子群組並觀看討論串。
+    subgroup_privacy_is_open_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
+    subgroup_privacy_is_closed_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
+    subgroup_privacy_is_closed_public_threads_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。
+    subgroup_privacy_is_closed_secret_parent_description: '{{parent}} 的成員可以找到此子群組並要求加入。所有討論串均為私密。只有成員才能看見有誰在群組裡。'
+    subgroup_privacy_is_secret_description: 只有被邀請的成員才能找到此子群組，並檢視有誰在裡面以及觀看討論串。
     advanced_settings: 進階設定
     how_do_people_join: 夥伴要怎樣加入？
     membership_granted_upon_request: 任何人都能加入此群組。
@@ -500,7 +507,7 @@ zh-TW:
     private_threads: 只有成員才能看到討論串
     permissions: 權限
     allow_public_threads: 允許在此群組中公開討論串。
-    parent_members_can_see_discussions: '{{parent}} 的成員可以看到討論串。'
+    parent_members_can_see_discussions: '{{parent}} 的成員可以看到私密討論串。'
     members_can_add_members: 成員可以邀請夥伴並核准加入請求。
     members_can_create_subgroups: 成員可以建立子群組。
     members_can_edit_discussions: 成員可以更新任何討論串的內容與標題。
@@ -521,7 +528,9 @@ zh-TW:
   group_help_card:
     title: 教學文件
     ten_tips_article_title: 10 個使用 Loomio 做出好決策的祕訣
+    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 個使用 Loomio 提案把討論化為行動的方法
+    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -712,6 +721,7 @@ zh-TW:
     liked_by_name: '{{name}} 對此按讚。'
     liked_by_names_and_name: '{{joinedNames}} 與 {{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
+    edited: 已編輯
     volume:
       loud: 只要這個討論串有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此討論串的通知音量設定為大聲。這意味著您會收到任何關於此動態的電子郵件。
@@ -764,6 +774,7 @@ zh-TW:
       edit_comment: 編輯意見
       delete_comment: 刪除意見
     in_reply_to: '回覆給 <strong>{{recipient}}</strong>'
+    edited: 已編輯
   new_vote_item:
     agree: 同意
     abstain: 棄權
@@ -954,3 +965,6 @@ zh-TW:
     messages:
       app_update: 新版本的 Loomio 出了
       reload: 重新整理
+  emoji_picker:
+    search: 找到一個 emoji...
+    no_emojis_found: "找不到 '{{term}}' 的 emoji！"

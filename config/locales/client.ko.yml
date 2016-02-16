@@ -478,19 +478,10 @@ ko:
       private_to_group: 이름과 설명은 멤버만 볼 수 있습니다.
       private_to_parent_members: '{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. '
     privacy: 개인정보
-    group_privacy_open_description: '누구나 이 그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 또한 모든 쓰레드도 공개됩니다.'
-    group_privacy_closed_description: '누구나 이 그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 그러나 멤버들만 쓰레드를 볼 수 있습니다.'
-    group_privacy_closed_public_threads_description: '누구나 이 그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 쓰레드는 공개하거나 비공개할 수 있습니다.'
-    group_privacy_secret_description: 초대받은 멤버만 이 그룹을 찾거나 쓰레드를 볼 수 있습니다.
     confirm_change_to_secret: 이 그룹의 모든 쓰레드와 소그룹이 비공개로 전환됩니다. 확실합니까?
     confirm_change_to_secret_subgroup: 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?
     confirm_change_to_public: 이 그룹의 모든 쓰레드가 웹에 공개됩니다. 계속하시겠습니까?
     confirm_change_to_private_discussions_only: 이 그룹의 공개된 모든 쓰레드가 비공개로 전환됩니다. 계속하시겠습니까?
-    subgroup_privacy_open_description: '누구나 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 또한 모든 쓰레드도 공개됩니다.'
-    subgroup_privacy_closed_description: '누구나 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 그러나 멤버들만 쓰레드를 볼 수 있습니다.'
-    subgroup_privacy_closed_public_threads_description: '누구나 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다. 쓰레드는 공개하거나 비공개할 수 있습니다.'
-    subgroup_privacy_closed_secret_parent_description: '{{parent}} 그룹의 멤버들만 이 소그룹과 멤버를 볼 수 있으며, 가입 신청을 할 수 있습니다.'
-    subgroup_privacy_secret_description: 초대받은 멤버만 이 소그룹을 찾거나 쓰레드를 볼 수 있습니다.
     advanced_settings: 상세 설정
     how_do_people_join: 가입 방법은 무엇인가요?
     membership_granted_upon_request: 누구나 가입할 수 있습니다.
@@ -503,7 +494,6 @@ ko:
     private_threads: 오직 멤버만 이 토론을 볼 수 있습니다.
     permissions: 허용
     allow_public_threads: 이 그룹에 공개 쓰레드를 허용합니다.
-    parent_members_can_see_discussions: ' {{parent}}의 멤버는 쓰레드를 볼 수 있습니다.'
     members_can_add_members: 멤버는 다른 사람을 초대할 수 있고 가입요청을 승인할 수 있습니다.
     members_can_create_subgroups: 멤버는 소그룹을 만들수 있습니다.
     members_can_edit_discussions: 멤버는 어느 토론의 제목이나 내용을 변경할 수 있습니다.
@@ -520,7 +510,7 @@ ko:
   membership_requests_card:
     heading: 멤버십 요청
     manage_requests: 요청 관리
-    manage_requests_with_count: 요청 관리
+    manage_requests_with_count: '요청 관리 ({{count}})'
   group_help_card:
     title: 도움말
     ten_tips_article_title: 루미오로 탁월한 의사결정을 하는 10가지 요령
@@ -766,7 +756,7 @@ ko:
       aria_label: 댓글 옵션
       edit_comment: 댓글 수정
       delete_comment: 댓글삭제
-    in_reply_to: '<strong>{{name}}</strong>에 대한 답변:'
+    in_reply_to: '<strong>{{recipient}}</strong>에 대한 답변:'
   new_vote_item:
     agree: 동의
     abstain: 기권함

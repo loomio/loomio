@@ -337,6 +337,12 @@ es:
     submit_button: Solicita unirte al grupo
     messages:
       membership_requested: 'Ya has solicitado unirte a {{group}}'
+  revision_history_modal:
+    thread_header: Historial de revisión del contexto del hilo
+    comment_header: Historial de revisión del comentario
+    started_by: 'Iniciado por <strong>{{name}}</strong>'
+    edited_by: 'Editado por <strong>{{name}}</strong>'
+    posted: Enviado
   group_page:
     thread_list:
       empty:
@@ -467,6 +473,7 @@ es:
     edit_group_heading: Editar la configuración del grupo
     edit_subgroup_heading: Editar la configuración del subgrupo
     group_name: Nombre del Grupo
+    group_name_placeholder: ¿Cómo quieres nombrar a tu grupo?
     subgroup_name: 'Nombre del sub-grupo '
     description: 'Descripción '
     description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
@@ -475,19 +482,19 @@ es:
       private_to_group: 'El nombre y la descripción solo serán visibles para miembros. '
       private_to_parent_members: 'El nombre y la descripción serán visibles para los miembros de {{parent}}'
     privacy: Privacidad
-    group_privacy_open_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Todos los hilos son públicos.'
-    group_privacy_closed_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Solo los miembros pueden ver los hilos.'
-    group_privacy_closed_public_threads_description: 'Cualquier persona puede encontrar el grupo, ver quien pertenece al mismo, y pedir membresía. Los hilos pueden ser públicos o privados.'
-    group_privacy_secret_description: 'Solo miembros que han sido invitados pueden encontrar el grupo y ver los hilos.  '
+    group_privacy_is_open_description: Cualquier persona puede encontrar el grupo y pedir membresía. Solo los miembros pueden ver quien pertenece al grupo. Todos los hilos son públicos.
+    group_privacy_is_closed_description: Cualquier persona puede encontrar el grupo y pedir membresía. Solo los miembros pueden ver quien pertenece al grupo. Todos los hilos son privados.
+    group_privacy_is_closed_public_threads_description: Cualquier persona puede encontrar el grupo y pedir membresía. Solo los miembros pueden ver quien pertenece al grupo. Los hilos pueden ser públicos o privados.
+    group_privacy_is_secret_description: 'Solo miembros que han sido invitados pueden encontrar el grupo, ver el listado de miembros y los hilos de discusión.  '
     confirm_change_to_secret: 'Si procedes, todos los hilo en este grupo y sus subgrupos se harán privados.'
     confirm_change_to_secret_subgroup: Si continuas todos los hilos se harán privados.
     confirm_change_to_public: 'Si continúas, todos los hilos de este grupo se harán públicos en internet.  '
     confirm_change_to_private_discussions_only: 'Si continuas cualquier hilo público en este grupo se hará privado. '
-    subgroup_privacy_open_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Todos los hilos son públicos.'
-    subgroup_privacy_closed_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Solo los miembros pueden ver los hilos.'
-    subgroup_privacy_closed_public_threads_description: 'Cualquier persona puede encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. Los hilos pueden ser públicos o privados.'
-    subgroup_privacy_closed_secret_parent_description: 'miembros de {{parent}} pueden encontrar este subgrupo, ver quien pertenece al mismo, y pedir membresía. '
-    subgroup_privacy_secret_description: 'Solo miembros que han sido invitados pueden encontrar este subgrupo y ver los hilos.  '
+    subgroup_privacy_is_open_description: Cualquier persona puede encontrar el grupo y pedir membresía. Solo los miembros pueden ver quien pertenece al grupo. Todos los hilos son públicos.
+    subgroup_privacy_is_closed_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los miembros pueden ver quien pertenece al mismo. Todos los hilos son privados.
+    subgroup_privacy_is_closed_public_threads_description: Cualquier persona puede encontrar este subgrupo y pedir membresía. Sólo los miembros pueden ver quien pertenece al mismo. Los hilos pueden ser públicos o privados.
+    subgroup_privacy_is_closed_secret_parent_description: 'Miembros de {{parent}} pueden encontrar este subgrupo y pedir membresía. Solo los miembros pueden ver quien pertenece al grupo. Todos los hilos son privados.'
+    subgroup_privacy_is_secret_description: 'Sólo miembros que han sido invitados pueden encontrar este subgrupo, ver quien pertenece al mismo y los hilos.  '
     advanced_settings: 'Configuración avanzada '
     how_do_people_join: ¿Cómo se unen las personas a este grupo?
     membership_granted_upon_request: Cualquiera puede unirse al grupo.
@@ -500,7 +507,7 @@ es:
     private_threads: Solamente los miembros pueden ver las discusiones
     permissions: Permisos
     allow_public_threads: Permitir hilos públicos en este grupo.
-    parent_members_can_see_discussions: 'Los miembros de {{parent}} pueden ver los hilos'
+    parent_members_can_see_discussions: 'Los miembros de {{parent}} pueden ver los hilos privados.'
     members_can_add_members: Miembros pueden invitar gente y aprobar membresías.
     members_can_create_subgroups: Los miembros pueden crear subgrupos.
     members_can_edit_discussions: Los miembros pueden editar el título y contexto de cualquier hilo.
@@ -521,7 +528,9 @@ es:
   group_help_card:
     title: Ayuda
     ten_tips_article_title: 10 consejos para tomar decisiones con Loomio
+    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 formas de utilizar propuestas en Loomio para convertir una charla en acción
+    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
@@ -712,6 +721,7 @@ es:
     liked_by_name: 'Le ha gustado a {{name}}.'
     liked_by_names_and_name: 'A {{joinedNames}} y a {{name}} les ha gustado.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
+    edited: Editado
     volume:
       loud: 'Enviar correo electrónico cuando hay actividad en este hilo. '
       loud_aria_description: El volumen de notificaciones para este hilo está establecido como Alto. Esto significa que se te enviará un correo electrónico siempre que haya actividad en él.
@@ -764,6 +774,7 @@ es:
       edit_comment: Editar comentario
       delete_comment: Borrar comentario
     in_reply_to: 'en respuesta a <strong>{{recipient}}</strong>'
+    edited: Editado
   new_vote_item:
     agree: de acuerdo
     abstain: abstiene
@@ -1030,3 +1041,6 @@ es:
     messages:
       app_update: 'Una nueva versión de Loomio está disponible '
       reload: 'Actualizar '
+  emoji_picker:
+    search: Busca un emoji / emoticono...
+    no_emojis_found: "No se han encontrado emojis /emoticonos para  '{{term}}'!"
