@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', ->
       CurrentUser.isAdminOf($scope.group)
 
     if $scope.canSeeInvitations()
-      Records.invitations.fetchPendingByGroup($scope.group.key)
+      Records.invitations.fetchPendingByGroup($scope.group.key, per: 1000)
 
     $scope.baseUrl = AppConfig.baseUrl
 
