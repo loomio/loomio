@@ -7,9 +7,9 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         AbilityService.canAddMembers(group)
 
     $scope.form = Records.invitationForms.build(groupId: group.id or (_.first($scope.availableGroups()) or {}).id)
-    $scope.getShareableInvitation = ->
+    $scope.fetchShareableInvitation = ->
       Records.invitations.fetchShareableInvitationByGroupId($scope.form.group().id)
-    $scope.getShareableInvitation()
+    $scope.fetchShareableInvitation()
     $scope.showCustomMessageField = false
     $scope.isDisabled = false
     $scope.noInvitations = false
@@ -45,7 +45,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       FlashService.success('common.copied')
 
     $scope.invitationLink = ->
-      return unless $scope.form.group().shareableInvitation()
+      return unless $scope.form.group() and $scope.form.group().shareableInvitation()
       $scope.form.group().shareableInvitation().url
 
     $scope.submit = FormService.submit $scope, $scope.form,
