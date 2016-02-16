@@ -9,6 +9,13 @@ describe 'Invitations', ->
     page.click '.invitation-form__submit'
     page.expectFlash '2 invitations sent.'
 
+  it 'disables send button when no valid email addresses present', ->
+    page.loadPath 'setup_new_group'
+    page.click '.group-welcome-modal__close-button',
+               '.members-card__invite-members-btn'
+    page.fillIn '.invitation-form__email-addresses', 'invalidemailaddress'
+    page.expectDisabledElement '.invitation-form__submit'
+
   it 'sends custom invitation to a person', ->
     page.loadPath 'setup_new_group'
     page.click '.group-welcome-modal__close-button',
@@ -22,9 +29,8 @@ describe 'Invitations', ->
   it 'has invitation link to share with the team', ->
     page.loadPath 'setup_new_group'
     page.click '.group-welcome-modal__close-button',
-               '.members-card__invite-members-btn',
-               '.invitation-form__get-team-link'
-    page.expectInputValue '.team-link-modal__shareable-link', '/invitations/'
+               '.members-card__invite-members-btn'
+    page.expectInputValue '.invitation-form__shareable-link-field', '/invitations/'
 
   it 'lets you add members from the parent to a subgroup', ->
     page.loadPath 'setup_group'

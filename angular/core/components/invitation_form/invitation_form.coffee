@@ -1,12 +1,15 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  controller: ($scope, group, Records, CurrentUser, AbilityService, FormService, FlashService, RestfulClient, ModalService, TeamLinkModal, AddMembersModal) ->
+  controller: ($scope, group, Records, CurrentUser, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
 
     $scope.availableGroups = ->
       _.filter CurrentUser.groups(), (group) ->
         AbilityService.canAddMembers(group)
 
     $scope.form = Records.invitationForms.build(groupId: group.id or (_.first($scope.availableGroups()) or {}).id)
+    $scope.fetchShareableInvitation = ->
+      Records.invitations.fetchShareableInvitationByGroupId($scope.form.group().id)
+    $scope.fetchShareableInvitation()
     $scope.showCustomMessageField = false
     $scope.isDisabled = false
     $scope.noInvitations = false
@@ -21,16 +24,29 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       $scope.addCustomMessageClicked = true
 
     $scope.invitees = ->
-      _.compact $scope.form.emails.split(' ')
+      $scope.form.emails.match(/[^\s<,]+?@[^>,\s]+/g) or []
 
     $scope.maxInvitations = ->
       $scope.invitees().length > 100
 
-    $scope.getTeamLink = ->
-      ModalService.open TeamLinkModal, group: -> $scope.form.group()
+    $scope.submitText = ->
+      if $scope.form.emails.length > 0
+        'invitation_form.send'
+      else
+        'invitation_form.done'
+
+    $scope.invalidEmail = ->
+      $scope.invitees().length == 0 and $scope.form.emails.length > 0
 
     $scope.canSubmit = ->
       $scope.invitees().length > 0 and $scope.form.group()
+
+    $scope.copied = ->
+      FlashService.success('common.copied')
+
+    $scope.invitationLink = ->
+      return unless $scope.form.group() and $scope.form.group().shareableInvitation()
+      $scope.form.group().shareableInvitation().url
 
     $scope.submit = FormService.submit $scope, $scope.form,
       allowDrafts: true
