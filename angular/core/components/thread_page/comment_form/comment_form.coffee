@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FormService, Records, CurrentUser, KeyEventService, AbilityService, ScrollService) ->
+  controller: ($scope, $rootScope, FormService, Records, CurrentUser, KeyEventService, AbilityService, ScrollService, EmojiService) ->
 
     $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
@@ -46,8 +46,8 @@ angular.module('loomioApp').directive 'commentForm', ->
       ids = $scope.comment.newAttachmentIds
       ids.splice ids.indexOf(attachmentId), 1
 
-    $scope.$on 'emojiSelected', (event, emoji) ->
-      $scope.comment.body = $scope.comment.body.trimRight() + " #{emoji} "
+    $scope.bodySelector = '.comment-form__comment-field'
+    EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
 
     $scope.updateMentionables = (fragment) ->
       regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')

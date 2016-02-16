@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'VoteForm', ->
   templateUrl: 'generated/components/thread_page/vote_form/vote_form.html'
-  controller: ($scope, vote, CurrentUser, FlashService, FormService, KeyEventService) ->
+  controller: ($scope, vote, CurrentUser, FlashService, FormService, KeyEventService, EmojiService) ->
     $scope.vote = vote.clone()
     $scope.editing = false
 
@@ -13,7 +13,7 @@ angular.module('loomioApp').factory 'VoteForm', ->
     $scope.yourLastVote = ->
       $scope.vote.proposal().lastVoteByUser(CurrentUser)
 
-    $scope.$on 'emojiSelected', (event, emoji) ->
-      $scope.vote.statement = $scope.vote.statement.trimRight() + " #{emoji} "
+    $scope.statementSelector = '.vote-form__statement-field'
+    EmojiService.listen $scope, $scope.vote, 'statement', $scope.statementSelector
 
     KeyEventService.submitOnEnter $scope
