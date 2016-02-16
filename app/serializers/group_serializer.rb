@@ -34,6 +34,7 @@ class GroupSerializer < ActiveModel::Serializer
              :has_custom_cover,
              :subscription_kind,
              :subscription_plan,
+             :subscription_payment_method,
              :subscription_expires_at,
              :is_subgroup_of_hidden_parent,
              :show_legacy_trial_expired_modal
@@ -50,6 +51,10 @@ class GroupSerializer < ActiveModel::Serializer
 
   def subscription_plan
     subscription.try(:plan)
+  end
+
+  def subscription_payment_method
+    subscription.try(:payment_method)
   end
 
   def subscription_expires_at
