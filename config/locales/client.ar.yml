@@ -245,7 +245,7 @@ ar:
       delete_comment: احذف التعليق
   help_page:
     get_in_touch: إتصل معنا
-    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <{a href='%{link>تواصل معنا</a>."
+    get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <'{a href='%{link>تواصل معنا</a>."
     getting_started: من أجل البدء
     getting_started_description: "على اليسار، تناقش المجموعة موضوعا\_وتتبادل الأفكار والمعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين."
     have_a_discussion: أجر نقاشا

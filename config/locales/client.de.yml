@@ -480,19 +480,14 @@ de:
       private_to_group: Name und Beschreibung sind nur Mitgliedern sichtbar
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: Privatsphäre
-    group_privacy_open_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen sind öffentlich.'
-    group_privacy_closed_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Nur Mitglieder können die Diskussionen sehen.'
-    group_privacy_closed_public_threads_description: 'jede.r kann die Gruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen können öffentlich oder privat sein.'
-    group_privacy_secret_description: nur geladene Mitglieder können diese Gruppe finden und die Diskussionen sehen.
+    group_privacy_is_open_description: 'jede.r kann die Gruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen sind öffentlich.'
+    group_privacy_is_closed_description: 'jede.r kann die Gruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen sind privat.'
+    group_privacy_is_closed_public_threads_description: 'jede.r kann die Gruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen können öffentlich oder privat sein.'
+    group_privacy_is_secret_description: 'nur eingeladene Mitglieder können diese Gruppe finden, sehen, wer dabei ist, und die Diskussionen sehen.'
     confirm_change_to_secret: Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat.
     confirm_change_to_secret_subgroup: Wenn Du fortfährst werden alle Diskussionen privat.
     confirm_change_to_public: Wenn Du fortfährst werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn Du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
-    subgroup_privacy_open_description: 'jede.r kann die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen sind öffentlich.'
-    subgroup_privacy_closed_description: 'jede.r kann die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten. Nur Mitglieder können die Diskussionen sehen.'
-    subgroup_privacy_closed_public_threads_description: 'jede.r kann die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten. Alle Diskussionen können öffentlich oder privat sein.'
-    subgroup_privacy_closed_secret_parent_description: 'Mitglieder von {{parent}} können die Untergruppe finden, sehen wer dabei ist und um Aufnahme bitten.'
-    subgroup_privacy_secret_description: nur geladene Mitglieder können diese Untergruppe finden und die Diskussionen sehen.
     advanced_settings: Erweiterte Einstellungen
     how_do_people_join: Wie kann jemand teilnehmen?
     membership_granted_upon_request: JedeR kann der Gruppe beitreten.
@@ -505,7 +500,6 @@ de:
     private_threads: Nur Mitglieder können Diskussionen sehen
     permissions: Berechtigungen
     allow_public_threads: Öffentliche Diskussionen in der Gruppe erlauben.
-    parent_members_can_see_discussions: 'Miglieder von {{parent}} können die Diskussionen sehen.'
     members_can_add_members: Mitglieder können andere einladen und Beitrittsanfragen beantworten.
     members_can_create_subgroups: Mitglieder können Untergruppen erstellen.
     members_can_edit_discussions: Mitglieder können die Beschreibung und den Titel aller Diskussionen bearbeiten.

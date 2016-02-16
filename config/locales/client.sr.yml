@@ -467,19 +467,10 @@ sr:
       private_to_group: Naziv i opis će biti vidljivi samo članovima.
       private_to_parent_members: 'Naziv i opis će biti vidljivi samo članovima  {{parent}}'
     privacy: Privatnost
-    group_privacy_open_description: 'svako može naći grupu, vidi ko je u njoj i pitati da se pridruži. Sve niti su javne.'
-    group_privacy_closed_description: 'svako može naći grupu, videti ko je u njoj i pitati da se pridruži. Samo članovi mogu videti niti.'
-    group_privacy_closed_public_threads_description: 'svako može naći grupu, videti ko je u njoj i pitati da se pridruži. Niti mogu biti javne ili privatne.'
-    group_privacy_secret_description: samo pozvani članovi mogu naći grupu i videti niti.
     confirm_change_to_secret: 'Ako nastavite, sve niti u ovoj grupi i njenim podgrupama će postati privatne.'
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
     confirm_change_to_public: 'Ako nastavite, sve niti u ovoj grupi postaće javne na mreži.'
     confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
-    subgroup_privacy_open_description: 'svako može naći ovu podgrupu, vidi ko je u njoj i pitaj da se pridružiš. Sve niti su javne.'
-    subgroup_privacy_closed_description: 'svako može naći ovu podgrupu, vidi ko je u njoj i pitaj da se pridružiš. Samo članovi mogu videti niti.'
-    subgroup_privacy_closed_public_threads_description: 'svako može naći ovu podgrupu, videti ko je u njoj i pitati da se pridružo. Niti mogu biti javne ili privatne.'
-    subgroup_privacy_closed_secret_parent_description: 'članovi {{parent}} mogu naći ovu podgrupu, videti ko je u njoj i pitati da se pridruže.'
-    subgroup_privacy_secret_description: samo pozvani članovi mogu naći ovu podgrupu i videti niti.
     advanced_settings: Napredne opcije
     how_do_people_join: Kako se ljudi pridružuju?
     membership_granted_upon_request: Svako se može pridružiti grupi.
@@ -492,7 +483,6 @@ sr:
     private_threads: Samo članovi mogu videti diskusije
     permissions: Dozvole
     allow_public_threads: Dopusti javne niti u ovoj grupi.
-    parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti niti.'
     members_can_add_members: Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.
     members_can_create_subgroups: Članovi mogu kreirati podgrupe.
     members_can_edit_discussions: Članovi mogu izmeniti kontekst i naslov svake niti.

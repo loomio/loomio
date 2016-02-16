@@ -452,18 +452,9 @@ uk:
       private_to_group: Назву та опис будуть бачити тільки учасники.
       private_to_parent_members: 'Назву та опис будуть бачити тільки учасники {{parent}}'
     privacy: Конфіденційність
-    group_privacy_open_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Всі теми є відкритими.'
-    group_privacy_closed_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Тільки учасники можуть бачити теми.'
-    group_privacy_closed_public_threads_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Теми можуть бути відкритими або приватними.'
-    group_privacy_secret_description: тільки запрошені учасники можуть знайти групу та бачити теми.
     confirm_change_to_secret_subgroup: 'Якщо ви продовжите, всі теми буде змінено на приватні.'
     confirm_change_to_public: 'Якщо ви продовжите, всі теми в цій групі буде змінено на відкриті в мережі.'
     confirm_change_to_private_discussions_only: 'Якщо ви продовжите, всі відкриті теми в цій групі буде змінено на приватні.'
-    subgroup_privacy_open_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Всі теми є відкритими.'
-    subgroup_privacy_closed_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Тільки учасники можуть бачити теми.'
-    subgroup_privacy_closed_public_threads_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Теми можуть бути відкритими або приватними.'
-    subgroup_privacy_closed_secret_parent_description: 'учасники {{parent}} можуть знайти підгрупу, бачити хто в ній, зробити запит на долучення.'
-    subgroup_privacy_secret_description: тільки запрошені учасники можуть знайти підгрупу та бачити теми.
     advanced_settings: Додаткові налаштування
     how_do_people_join: Як люди можуть долучитись?
     membership_granted_upon_request: Будь-хто може долучитись до групи.
@@ -476,7 +467,6 @@ uk:
     private_threads: Тільки учасники можуть бачити обговорення
     permissions: Дозволи
     allow_public_threads: Дозволити відкриті теми в цій групі.
-    parent_members_can_see_discussions: 'Учасники {{parent}} можуть бачити теми.'
     members_can_add_members: Учасники можуть запрошувати людей та схвалювати запити на долучення.
     members_can_create_subgroups: Учасники можуть створювати підгрупи.
     members_can_edit_discussions: Учасники можуть оновлювати контекст та заголовок будь-якої теми.
