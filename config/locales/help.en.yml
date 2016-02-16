@@ -1,4 +1,4 @@
-en:  
+en:
   new_help:
     title: What can we help you with?
     how_loomio_works:
@@ -739,9 +739,6 @@ en:
         body_html: |
           To find out what our developers are working on and what’s coming up in the development pipeline, take a look at our <a href="https://www.loomio.org/roadmap">public roadmap</a>.
           You can vote for the ideas you want to see prioritised, and comment with your feedback.
-      functional_group_size:
-        title: What size groups work well on Loomio?
-        body: Loomio currently works well for groups up to about 1000 people.
       search_for_private_group:
         title: 'How come when I search for a group I know exists, it doesn’t come up on the Explore page?'
         body: 'If the group you are searching for is private, then it will not be publicly searchable and an invitation will be required to join.'
