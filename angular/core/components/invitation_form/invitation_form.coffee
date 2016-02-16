@@ -48,7 +48,13 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       return unless $scope.form.group() and $scope.form.group().shareableInvitation()
       $scope.form.group().shareableInvitation().url
 
-    $scope.submit = FormService.submit $scope, $scope.form,
+    $scope.submit = ->
+      if $scope.invitees().length == 0
+        $scope.$close()
+      else
+        submitForm()
+
+    submitForm = FormService.submit $scope, $scope.form,
       allowDrafts: true
       submitFn: Records.invitations.sendByEmail
       successCallback: (response) =>
