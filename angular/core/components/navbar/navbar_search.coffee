@@ -10,7 +10,9 @@ angular.module('loomioApp').directive 'navbarSearch', ->
     $scope.highlighted = null
 
     $scope.closeSearchDropdown = (e) ->
-      target = e.currentTarget if e?
+      if e?
+        target = e.currentTarget
+        target.target = '_blank' if e.ctrlKey or e.metaKey
       $timeout ->
         target.click() if target?
         $scope.focused = false
