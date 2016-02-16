@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalOutcomeFormController', ($scope, proposal, FormService) ->
+angular.module('loomioApp').controller 'ProposalOutcomeFormController', ($scope, proposal, FormService, EmojiService) ->
   $scope.proposal = proposal.clone()
   $scope.hasOutcome = proposal.hasOutcome()
 
@@ -10,5 +10,5 @@ angular.module('loomioApp').controller 'ProposalOutcomeFormController', ($scope,
       submitFn: $scope.proposal.updateOutcome
       flashSuccess: 'proposal_outcome_form.messages.updated'
 
-    $scope.$on 'emojiSelected', (event, emoji) ->
-      $scope.proposal.outcome = $scope.proposal.outcome.trimRight() + " #{emoji} "
+    $scope.outcomeSelector = '.proposal-form__outcome-field'
+    EmojiService.listen $scope, $scope.proposal, 'outcome', $scope.outcomeSelector
