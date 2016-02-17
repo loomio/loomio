@@ -568,11 +568,6 @@ pt-BR:
       invitations_sent: '{{count}} convites enviados.'
       no_invitations: 'Ops! Por favor, verifique o endereço de e-mail está correto e tente novamente.'
       max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
-  team_link_modal:
-    heading: Adicionar pessoas
-    share_link: Compartilhar este link
-    caution: 'Cuidado: qualquer um com este link será capaz de participar do seu grupo imediatamente. Cuidado com quem compartilhá-lo :)'
-    copy_link: Copiar link
   add_members_modal:
     heading: 'Adicionar pessoas de {{name}}'
     add_members: Adicionar membros

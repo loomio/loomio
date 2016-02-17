@@ -11,8 +11,12 @@ it:
     group: Gruppo
     groups: Gruppi
     privacy:
+      privacy: Privacy
       public: Pubblico
+      open: Aperto
+      closed: Chiuso
       private: Privato
+      secret: Segreto
     selected: Selezionato
     date_range:
       today: Oggi
@@ -22,25 +26,36 @@ it:
       older: Più vecchio
     models:
       proposal: Proposta
+    copied: Copiato
     action:
+      close: Chiudi
       save: Salva
       save_changes: Salva
+      update_settings: Aggiorna impostazioni
       reply: Rispondi
       edit: Modifica
       like: Like
       unlike: Unlike
+      update: Aggiorna
       cancel: Annulla
       show_more: Mostra di più
       view_all: Vedi tutti
       new_thread: Nuova discussione
       add_subgroup: Aggiungi un sottogruppo
       loading: In caricamento...
+      translate: Traduci
+      translated: Tradotto da Bing Traduttore
+      uploading: Caricamento in corso
+    formatting_help:
+      label: Aiuto nella formattazione
+      title: Scopri come usare i Markdown per formattare il tuo testo su Loomio
   error_page:
     forbidden: "Non hai l'autorizzazione per farlo."
     page_not_found: Oggetto non trovato. Potrebbe essere stato rimosso o cancellato.
     internal_server_error: 'Spiacenti, ma qualcosa è andato storto. Riprova più tardi '
   start_proposal_card:
     title: Lancia una proposta
+    helptext: Pronto per decidere?
   proposal_outcome_panel:
     heading: Risultato
     set_outcome_hint: "Usa questo spazio per fare conoscere a tutti l'esito della proposta."
@@ -57,13 +72,32 @@ it:
       updated: Esito aggiornato
   previous_proposals_card:
     heading: Proposte precedenti
+  previous_proposals_page:
+    heading: Proposte precedenti
   proposal_collapsed:
     expand: Espandi
+    outcome: 'Risultato: {{outcome}}'
   volume_levels:
     loud: Alto
     normal: Normale
     quiet: Quieto
     mute: Silenzioso
+  thread_volume_card:
+    heading: Notifiche sulla discussione
+    body:
+      loud: "Tutte le notifiche: riceverai un'email per ogni attività in questa discussione"
+      normal: "Notifica solo proposte: riceverai un'email quando viene lanciata una proposta di voto, quando sta per terminare, oppure quando viene pubblicato il risultato di una votazione"
+      quiet: "Nessuna notifica: non riceverai alcuna email relativa all'attività in questa discussione"
+    change_volume_link: Cambia
+  thread_volume_form:
+    header: Notifiche sulla discussione
+    loud_label: Tutte le notifiche via email
+    submit: Aggiorna
+  group_volume_card:
+    change_volume_link: Cambia
+  group_volume_form:
+    loud_label: Tutte le notifiche via email
+    submit: Aggiorna
   inbox:
     clear: Pulisci
     latest: Più recente
@@ -297,6 +331,9 @@ it:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
+  group_form:
+    privacy: Privacy
+    submit_update: Aggiorna impostazioni
   membership_requests_card:
     heading: Richieste di partecipazione
   membership_requests_page:
@@ -310,6 +347,8 @@ it:
     messages:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
+  group_previous_proposals_card:
+    heading: Proposte precedenti
   memberships_page:
     members: Membri
     name_label: Nome
@@ -452,6 +491,11 @@ it:
       aria_label: Opzioni dei commenti
       edit_comment: Modifica commento
       delete_comment: Cancella il commento
+  new_vote_item:
+    agree: "è d'accordo"
+    disagree: "non è d'accordo"
+    agree_with_statement: "è d'accordo: <span>{{statement}}</span>"
+    disagree_with_statement: "non è d'accordo: <span>{{statement}}</span>"
   contact_message_form:
     contact_us: Contattaci
     name_label: Nominativo

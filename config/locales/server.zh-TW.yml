@@ -1,20 +1,22 @@
----
 zh-TW:
   email:
-    by_who: "%{person}"
+    custom: '%{text}'
+    group_email:
+      intro: '%{who} 在 %{group}裡發布了一則公告：'
+    by_who: '%{person}'
     reply_to_this_discussion: 回應此討論串
     to_join_discussion:
-      subject: "%{who} 希望您加入在 Loomio 上的討論串"
-      content: 您被邀請參與討論：%{discussion}
-      message_intro: "%{who} 說："
+      subject: '%{who} 希望您加入在 Loomio 上的討論串'
+      content: '您被邀請參與討論：%{discussion}'
+      message_intro: '%{who} 說：'
       link: 加入討論串
     to_join_group:
-      subject: "%{member} 邀請您加入 Loomio 的 %{group_name} 群組"
+      subject: '%{member} 邀請您加入 Loomio 的 %{group_name} 群組'
     to_start_group:
-      subject: 設定您的新 Loomio 群組： %{group_name}
+      subject: '設定您的新 Loomio 群組： %{group_name}'
     user_added_to_a_group:
-      subject: "%{who} 將您加入至 %{which_group}"
-      content: "%{who} 將您加入至 Loomio 的 %{which_group} 。點選這裡前往群組："
+      subject: '%{who} 將您加入至 %{which_group}'
+      content: '%{who} 將您加入至 Loomio 的 %{which_group} 。點選這裡前往群組：'
     unsubscribe: 取消訂閱或者變更您的電子郵件偏好設定：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     view_comment: 點擊此處，您可以看到在 Loomio 上的意見。
@@ -22,11 +24,11 @@ zh-TW:
     view_group: 點擊此處檢視 Loomio 上的群組
     view_proposal: 在 Loomio 上觀看這項提案。
     create_discussion:
-      intro: "%{who} 在 %{which_group} 啟動了新的討論串："
+      intro: '%{who} 在 %{which_group} 啟動了新的討論串：'
     create_proposal:
       intro: 在您所屬的 Loomio 群組中，有一個新的提案！
       closes_in: 即將結束。
-      subject: 新的提案：%{which}
+      subject: '新的提案：%{which}'
     daily_activity:
       heading: 您的 Loomio 動態
       intro: 顯示過去 24 小時內在您的 Loomio 群組中發生了甚麼新鮮事
@@ -39,79 +41,74 @@ zh-TW:
       click_here_to_mark_all_as_read_html: "這些是昨日 Loomio 發生的大小事。 \n一旦您讀過，點擊<a href=\"%{link}\">設為已讀</a>就能從您的 Loomio 收件箱中移除。 \n"
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
     comment_replied_to:
-      context: "%{author_name} 在討論串「%{discussion_title}」回覆您的意見"
-      subject: "%{who} 在 Loomio %{which} 群組中回覆了您的意見"
-    group_email:
-      intro: "%{who} 在 %{group}裡發布了一則公告："
+      context: '%{author_name} 在討論串「%{discussion_title}」回覆您的意見'
+      subject: '%{who} 在 Loomio %{which} 群組中回覆了您的意見'
     group_membership_approved:
-      intro: 您加入 Loomio「%{group_name}」群組的申請已批准！
-      subject: 成員資格已批准
+      intro: '您加入 Loomio「%{group_name}」群組的申請已批准！'
+      subject: '%{prefix} 成員資格已批准'
     invitation:
-      hi: "%{name} 您好，"
-      intro: 點選以下連結以設定您的群組 %{group_name} ：
+      hi: '%{name} 您好，'
+      intro: '點選以下連結以設定您的群組 %{group_name} ：'
       closing_message: 如果您有問題或有需要我們幫助您快速開始使用的話，我們樂於聽到您的意見 — 只要回覆此封郵件即可。
       thanks: |
         感謝您！
         Loomio 團隊敬上
     membership_request:
-      intro: "%{name} (%{email}) 申請加入您的 Loomio 群組。"
-      subject: "%{who} 申請加入 %{which_group}"
+      intro: '%{name} (%{email}) 申請加入您的 Loomio 群組。'
+      subject: '%{who} 申請加入 %{which_group}'
       view_group: 您可點此批准或拒絕申請
     mentioned:
-      context: "%{author_name} 在討論「%{discussion_title}」時提到您"
-      subject: "%{who} 在 Loomio %{which} 群組中提到您"
+      context: '%{author_name} 在討論「%{discussion_title}」時提到您'
+      subject: '%{who} 在 Loomio %{which} 群組中提到您'
     new_motion_created:
-      subject: 提案：%{proposal_title}
-      context: "%{author}開始一個提案在%{group_full_name}:"
+      subject: '提案：%{proposal_title}'
+      context: '%{author}開始一個提案在%{group_full_name}:'
     proposal_closed:
       proposal_has_closed: 此提議已經定案。
       specify_outcome_and_notify_group: 建立成果並發送給您的群組成員！
       specify_outcome_and_notify_group_html: 建立成果並發送給您的群組成員！
-      subject: 提議已定案 — %{which}
+      subject: '提議已定案 — %{which}'
     proposal_outcome:
-      subject: 提案成果
-    proposal_blocked:
-      intro: 您所推動的提案已經遭到阻擋。
-      subject: 提案已阻擋 — %{which}
+      subject: '提案成果：%{motion}'
     proposal_closing_soon:
       closes_on: 定案於
       closes_at: 定案在
-      closes_in: 即將結束：
-      subject: 24 小時內定案：%{proposal_title}
-      headline: "%{author} 在 %{group} 群組的提案很快就要定案了："
+      closes_in: 即將結束。
+      subject: '24 小時內定案：%{proposal_title}'
+      headline: '%{author} 在 %{group} 群組的提案很快就要定案了：'
       summary: 摘要
     thread_mailer:
-      footer_text: 直接回覆本電子郵件，或是到 %{hostname} 上觀看：
-      reply_or_view_online_html: 直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。
-      turn_off_notifications_html: 為此討論<a href='%{url}'>關閉電子郵件</a>。
-      turn_off_notifications_text: 為此討論關閉電子郵件：%{url}
+      footer_text: '直接回覆本電子郵件，或是到 %{hostname} 上觀看：'
+      reply_or_view_online_html: "直接回覆此 Email，或是<a href='%{url}'>在 %{hostname} 上觀看</a>。"
+      turn_off_notifications_html: "為此討論<a href='%{url}'>關閉電子郵件</a>。"
+      turn_off_notifications_text: '為此討論關閉電子郵件：%{url}'
       turn_on_notifications_html: "<a href='%{url}'>為此討論開啟電子郵件</a> 以接收所有未來的活動。"
-      turn_on_notifications_text: 為此討論開啟電子郵件以接收所有未來的活動：%{url}
-      change_email_preferences_html: 變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。
+      turn_on_notifications_text: '為此討論開啟電子郵件以接收所有未來的活動：%{url}'
+      change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。"
       change_preferences: 變更您的電子郵件偏好設定：
-      new_motion: "%{who} 的提議："
+      new_motion: '%{who} 的提議：'
       motion_closing_soon: 24 小時內定案的提議：
       proposal_closed: 定案的提議：
-      specify_outcome_html: 您的提議已經定案。<a href='%{link}'>具體說明成果</a>讓每個人都能知道提案的結果。
+      specify_outcome_html: "您的提議已經定案。<a href='%{link}'>具體說明成果</a>讓每個人都能知道提案的結果。"
       specify_outcome: 您的提議已經定案。請具體說明成果，讓每個人都能知道提案的結果：
-      outcome_created: "%{who} 確立了提案成果："
-      you_agreed: 您%{past_tense_position}
+      outcome_created: '%{who} 確立了提案成果：'
+      you_agreed: '您%{past_tense_position}'
   footer:
     about: 關於
     blog: 部落格
     contact: 聯絡我們
     help: 教學文件
-    privacy: 隱私設定
+    privacy: 隱私權
     pricing: 價格
     public_groups: 公開群組
-    terms: 聲明
+    terms: 服務條款
     independent_install_html: '%{hostname} 運作的是 Loomio 的獨立副本：<a href="http://github.com/loomio/loomio">詳細瞭解</a>。'
   start_group_form:
     enable_angular:
       header: 在 Loomio 1.0 中啟動的新群組
       subtitle: 要啟動一個新群組，您將會需要切換到全新版本的 Loomio：
       switch_to_angular: 在新的 Loomio 中啟動群組
-      helptext: 我們已從頭開始重建 Loomio。您可以 <a href="/angular">在這裡</a> 閱讀有什麼新東西。<br/>您可以在任何時候切換回舊版的 Loomio。
+      helptext: '我們已從頭開始重建 Loomio。您可以 <a href="/angular">在這裡</a> 閱讀有什麼新東西。<br/>您可以在任何時候切換回舊版的 Loomio。'
     header: 啟動新的群組
     form_error: 有一些資訊遺失或不正確。
     name: 您的大名
@@ -122,49 +119,48 @@ zh-TW:
     group_description: 群組描述
     group_description_placeholder: 描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
     group_name_error: 群組名稱必填
-    pricing_html: 在 30 天內，我們將會詢問您要選取哪一個 <a href='%{link}' target='_blank'>定價方案</a>。
-    terms_html: 要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。
+    pricing_html: "在 30 天內，我們將會詢問您要選取哪一個 <a href='%{link}' target='_blank'>定價方案</a>。"
+    terms_html: "要開始一個群組，您即同意遵守 Loomio 的<a href='%{link}' target='_blank'>服務條款</a>。"
     success:
       header: 您就快完成了！請確認您的電子郵件信箱。
-      email_delivered: 我們已經寄出一封電子郵件到 %{email}。請跟隨裡面的連結設定您的群組。
+      email_delivered: '我們已經寄出一封電子郵件到 %{email}。請跟隨裡面的連結設定您的群組。'
       email_not_arrived: 電子郵件尚未抵達？
       please_hold: 請允許它在五分鐘內到達，並同時也請檢查您的垃圾信資料夾。
     start_making_decisions: 要開始在 Loomio 上共同作出決策，先免費設定一個群組：
   pricing_page:
-    header: 價格
-    gift: 禮物
-    standard: 標準
-    plus: 白金
-    free_trial_html: 我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。
+    header: 計畫
+    gift: 禮物方案
+    standard: 標準方案
+    plus: PLUS
+    free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
     get_started_for_free: 免費開始
     gift_body_html: |
-      <p>對於沒有預算支付訂閱費的群組。</p>
-      <p>也支援捐款，不需要付任何費用。</p>
+      <p>給沒有預算支付訂閱費的群組。</p>
+      <p>接受捐款，不需付費。</p>
     gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
-    unlimited_members: 無限的成員
-    unlimited_decisions: 無限的決策
+    unlimited_members: 不限成員數量
+    unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
-    standard_price_html: '美元 <strong>$19</strong>/月<br><span>或</span> $190/年
-
-'
-    plus_body: 在標準價格中的每樣東西，再加上：
+    standard_price_html: |
+      美元 <strong>$19</strong>/月<br><span>或</span> $190/年
+    plus_body: 包含標準方案，再加上：
     premium_support: 進階支援
     custom_url: 自定義 URL
     usage_statistics: 使用統計
-    plus_price_html: '美元 <strong>$179</strong>/month<br><span>or</span> $1790/year
-
-'
+    plus_price_html: |
+      美元 <strong>$179</strong>/month<br><span>或</span> $1790/year
   password_reset:
-    email_guidelines_html: |
+    email_guidelines_html: >
       <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>
+
       <p>如果您是透過 Facebook、Google、Twitter 或是 Persona 登入的話，請輸入與這些帳號相關聯的電子郵件地址。</p>
     reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
     length_restriction: 密碼應至少 8 個字元長。
     forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
   introduction_thread:
-    title: 歡迎來到 %{group_name}
+    title: '歡迎來到 %{group_name}'
     description: |
-      請花一點時間來介紹您自己，並分享您是如何配合這個群組的夥伴們的。
+      請花一點時間來介紹您自己：在下面的表單**貼出評論**。
 
       若您對這個 Loomio 群組有清楚的想法，您可以在此分享，這樣每個人就都可以有對如何一起實現有較清楚的想法。
   how_it_works_thread:
@@ -193,14 +189,22 @@ zh-TW:
       若您有任何問題，第一個可以看的地方就是 [Loomio 說明手冊](http://help.loomio.org)。
   first_proposal:
     name: 示範提案：走吧！
-    description: |
+    description: >
       這是提案的**描述**。您可以在這裡解釋行動的過程，並給予足夠的詳細資訊讓每個人都可以作出資訊足夠的決定。
 
+
+
       要參與提案，您可以選擇以下的四個選項其中之一：
+
       - **同意**：「我贊成就這麼進行。」
+
       - **棄權**：「我很樂意群組的決定沒有我的參與。」
+
       - **反對**：「我認為我們可以做的更好。」
+
       - **阻擋**：「我強烈反對並且不願意這個提案繼續下去。」
+
+
 
       當您選擇了四個選項的其中一個的時候，您將會被提醒要輸入一段簡短的聲明來解釋您的立場與為什麼您對這件事有此感受。您隨時都可以改變您的立場，只要提案仍是開放狀態。
   contact_page:
@@ -214,7 +218,8 @@ zh-TW:
       message: 您的訊息
       submit: 寄送訊息
     messages:
-      email_html: 填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>
-      social_html: '您也可以在 <br/><a href=''%{facebook}'' target=''_blank''>facebook</a>、<a href=''%{google}'' target=''_blank''>google+</a>、以及 <a href=''%{twitter}'' target=''_blank''>twitter</a> 上加入我們！
-
-'
+      email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
+      social_html: >
+        您也可以在 <br/><a href='%{facebook}' target='_blank'>facebook</a>、<a
+        href='%{google}' target='_blank'>google+</a>、以及 <a href='%{twitter}'
+        target='_blank'>twitter</a> 上加入我們！

@@ -1,31 +1,26 @@
----
 he:
   email:
     reply_to_this_discussion: השיבו לדיון זה
     to_join_discussion:
-      message_intro: "%{who} אמר/ה:"
+      message_intro: '%{who} אמר/ה:'
       link: הצטרפות לדיון
     view_discussion: לחצו כאן להצגת דיון זה
     view_proposal: הצגת הצעה זו ב Loomio
     create_discussion:
-      intro: "%{who} התחילו דיון ב%{which_group}:"
+      intro: '%{who} התחילו דיון ב%{which_group}:'
     create_proposal:
       intro: הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת.
-      subject: הצעה חדשה %{which}
+      subject: 'הצעה חדשה %{which}'
     daily_activity:
       subject: Loomio - סיכום 24 השעות האחרונות
     missed_yesterday:
       subject: אתמול בLoomio
       mark_as_read: סמן כנקרא
-      thanks_for_reading: תודה שקראת. יום טוב!
-    group_membership_approved:
-      subject: החברות אושרה
+      thanks_for_reading: 'תודה שקראת. יום טוב!'
     invitation:
-      hi: שלום %{name},
+      hi: 'שלום %{name},'
     new_motion_created:
-      context: "%{author} יצר/ה הצעה ב %{group_full_name}:"
-    proposal_outcome:
-      subject: תוצאת ההצעה
+      context: '%{author} יצר/ה הצעה ב %{group_full_name}:'
     proposal_closing_soon:
       summary: סיכום
     thread_mailer:
@@ -44,10 +39,9 @@ he:
     header: התחילו קבוצה חדשה
     name: שמך
     group_name: שם הקבוצה
+    group_description: תיאור קבוצה
     success:
       header: כמעט סיימת. הודעה נשלחה לתיבת הדוא״ל שלך.
-  pricing_page:
-    header: תמחור
   contact_page:
     contact_us: צרו קשר
     labels:

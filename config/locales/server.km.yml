@@ -1,10 +1,11 @@
----
 km:
   email:
+    group_email:
+      intro: '%{who}បានធ្វើការប្រកាសទៅ %{group}:  '
     to_join_group:
-      subject: "%{member}បានអញ្ចើញអ្នកឲ្យចូលរួម %{group_name} លើLoomio"
+      subject: '%{member}បានអញ្ចើញអ្នកឲ្យចូលរួម %{group_name} លើLoomio'
     to_start_group:
-      subject: បង្កើតក្រុមLoomioថ្មីរបស់អ្នក:%{group_name}
+      subject: 'បង្កើតក្រុមLoomioថ្មីរបស់អ្នក:%{group_name}'
     unsubscribe: ផ្លាស់ប្ដូរចំណង់ចំណូលចិត្តឬអ៊ីម៉ែលរបស់លោកអ្នកជាប្រចាំ
     unsubscribe_html: "<a href='%{link_path}'>%{link_text} </a> ដើម្បីមិនជាវឬការផ្លាស់ប្តូរចំណង់ចំណូលចិត្តអ៊ីម៉ែលរបស់អ្នក។"
     view_comment: សូមចុចនៅទីនេះ ដើម្បីមើលសេចក្ដីអធិប្បាយនៅលើ Loomio នេះ
@@ -13,58 +14,48 @@ km:
     view_proposal: មើលសំណើរនេះនៅលើ Loomio
     create_proposal:
       intro: សំណើរថ្មីមួយត្រូវបានបង្កើតឡើងនៅក្នុងក្រុម Loomio ដែលអ្នកជាកម្មសិទ្ធិរបស់។
-      closes_in: បិទនៅខាងក្នុង
+      closes_in: បិទខាងក្នុង
       subject: 'សំណើថ្មី:%{which} '
     daily_activity:
       heading: 'សកម្មភាព Loomio របស់អ្នក '
       intro: បង្ហាញអ្នកពីអ្វីដែរបានកើតឡើងនៅក្នុងក្រុម Loomio របស់អ្នកនៅក្នុង24ម៉ោងចុងក្រោយ
       subject: Loomio​ - សេចក្ដីសង្ខេបនៃ24ម៉ោងចុងក្រោយមុន
-    group_email:
-      intro: "%{who}បានធ្វើការប្រកាសទៅ %{group}:  "
     group_membership_approved:
-      intro: 'សំណើររបស់អ្នកសម្រាប់ចូលដំណើការទៅកាន់ក្រុម ''%{group_name}'' នៅលើ Loomio ត្រូវបានអនុម័ត្ត​ '
-      subject: 'សមាជិកដែលបានអនុម័ត្ត '
+      intro: "សំណើររបស់អ្នកសម្រាប់ចូលដំណើការទៅកាន់ក្រុម '%{group_name}' នៅលើ Loomio ត្រូវបានអនុម័ត្ត​ "
     invitation:
-      hi: សួរស្ដី%{name},
+      hi: 'សួរស្ដី%{name},'
       intro: 'ចុចតំណរខាងក្រោមដើម្បីរៀបចំក្រុមរបស់អ្នក%{group_name}:'
       closing_message: ប្រសិនបើអ្នកបានទទួលសំណួរណាមួយឬប្រសិនបើមានអ្វីទាំងអស់នៅគ្រប់យើងអាចធ្វើដើម្បីជួយអ្នកក្នុងការទទួលបានកើនឡើងនិងកំពុងរត់។យើងក៏ចង់ឮពីអ្នក - គ្រាន់តែឆ្លើយតបទៅអ៊ីម៉ែលនេះ។
-      thanks: 'អរគុណ!រយះពេលLoomio នេះ
-
-'
+      thanks: |
+        អរគុណ!រយះពេលLoomio នេះ
     membership_request:
-      intro: "%{name} (%{email}) បានស្នើការចូលដំណើការទៅមួយនៃក្រុម Loomio​ របស់អ្នក "
-      subject: "%{who}បានស្នើឲ្យចូលរួម%{which_group} "
+      intro: '%{name} (%{email}) បានស្នើការចូលដំណើការទៅមួយនៃក្រុម Loomio​ របស់អ្នក '
+      subject: '%{who}បានស្នើឲ្យចូលរួម%{which_group} '
       view_group: អ្នកអាចអនុម័ត្តឬទុកសំណើរនៅទីនេះ
     mentioned:
-      subject: "%{who}អ្នកដែលបានរៀបរាប់នៅក្នុង%{which}  ក្រុមនៅលើ Loomio  "
+      subject: '%{who}អ្នកដែលបានរៀបរាប់នៅក្នុង%{which}  ក្រុមនៅលើ Loomio  '
     new_motion_created:
-      context: "%{author} បង្កើតសំណើរមួយក្នុង%{group_full_name}:"
+      context: '%{author} បង្កើតសំណើរមួយក្នុង%{group_full_name}:'
     proposal_closed:
-      specify_outcome_and_notify_group: បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!
-      specify_outcome_and_notify_group_html: បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!
+      specify_outcome_and_notify_group: 'បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!'
+      specify_outcome_and_notify_group_html: 'បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!'
       subject: 'សំណើបានបិទ -%{which} '
-    proposal_outcome:
-      subject: លទ្ធផលសំណើរ
-    proposal_blocked:
-      intro: សំណើរដែលអ្នកកំពុងជួយសម្រួលត្រូវបានទប់ស្កាត់។
-      subject: សំណើរបានរារាំង - %{which}​​
     proposal_closing_soon:
       closes_on: បិទនៅលើ​
       closes_at: បិទនៅ
       closes_in: បិទខាងក្នុង
-      headline: "%{author}របស់សំណើរក្នុង%{group}ត្រូវបានបិទក្នុងពេលឆាប់ៗ"
+      headline: '%{author}របស់សំណើរក្នុង%{group}ត្រូវបានបិទក្នុងពេលឆាប់ៗ'
       summary: សេចក្ដីសង្ខេប
   footer:
     about: អំពី
     blog: កំណត់ហេតុបណ្ដាញ
     contact: ទំនាក់ទំនង
     help: ជួយ
-    privacy: ភាពជាឯកជន
+    privacy: ភាពជាឯកជន​
     pricing: តម្លៃ
     terms: រយះពេល
   start_group_form:
     group_name: ឈ្មោះក្រុម
+    group_description: ការពិពណ៍នាក្រុម
     success:
-      header: អ្នកកំពុងតែបានធ្វើស្ទើតែ! ពិនិត្យអ៊ីម៉ែលរបស់អ្នក
-  pricing_page:
-    header: តម្លៃ
+      header: 'អ្នកកំពុងតែបានធ្វើស្ទើតែ! ពិនិត្យអ៊ីម៉ែលរបស់អ្នក'

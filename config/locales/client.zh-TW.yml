@@ -564,11 +564,6 @@ zh-TW:
       invitations_sent: '{{count}} 封邀請函已寄出。'
       no_invitations: 唉呀！請確認電子郵件地址是否正確定並再試一次。
       max_invitations: 若您想要寄出多於 100 封邀請函，使用團隊連結。
-  team_link_modal:
-    heading: 加入夥伴
-    share_link: 分享此連結
-    caution: '注意：任何有此連結的人都可以立刻加入您的群組。所以要注意您分享給誰 :)'
-    copy_link: 複製連結
   add_members_modal:
     heading: '從 {{name}} 加入夥伴'
     add_members: 增加成員

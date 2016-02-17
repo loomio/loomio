@@ -1,10 +1,9 @@
----
 gl:
   email:
-    by_who: por %{person}
+    by_who: 'por %{person}'
     reply_to_this_discussion: Respostar a este debate
     to_join_discussion:
-      message_intro: "%{who} dixo:"
+      message_intro: '%{who} dixo:'
       link: Unirse ó debate
     view_discussion: Preme aquí para este debate
     daily_activity:
@@ -13,11 +12,11 @@ gl:
       summary: Resumo
     thread_mailer:
       change_preferences: 'Cambiar as preferencias de correo:'
-      new_motion: "%{who} propuxo:"
+      new_motion: '%{who} propuxo:'
       motion_closing_soon: 'Propostas que vencen en 24 horas:'
       proposal_closed: 'Propostas pechadas:'
-      outcome_created: "%{who} propuxo dar por feita a proposta:"
-      you_agreed: Ti %{past_tense_position}
+      outcome_created: '%{who} propuxo dar por feita a proposta:'
+      you_agreed: 'Ti %{past_tense_position}'
   footer:
     about: Acerca de
     blog: Blogue
@@ -26,15 +25,14 @@ gl:
     privacy: Privacidade
     pricing: Custo
     public_groups: Grupos públicos
-    terms: Termos de uso
+    terms: Acordos
   start_group_form:
     header: Comeza un novo grupo
     name: O teu nome
     group_name: Nome do grupo
+    group_description: Descripción do grupo
     success:
-      header: Case estás! Comproba o teu correo electrónico.
-  pricing_page:
-    header: Custo
+      header: 'Case estás! Comproba o teu correo electrónico.'
   contact_page:
     contact_us: Contáctenos
     labels:

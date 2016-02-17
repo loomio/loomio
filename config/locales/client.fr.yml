@@ -553,11 +553,6 @@ fr:
       invitations_sent: '{{count}} invitation(s) envoyée(s).'
       no_invitations: "Oh-oh ! Merci de vérifier l'adresse mail puis de réessayer."
       max_invitations: "Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d'équipe."
-  team_link_modal:
-    heading: Ajouter des personnes
-    share_link: Partager ce lien
-    caution: 'Attention : toute personne disposant de ce lien sera en mesure de rejoindre immédiatement votre groupe. Choisissez soigneusement avec qui vous le partagez.'
-    copy_link: Copier le lien
   add_members_modal:
     heading: 'Ajouter des personnes de {{name}}'
     add_members: Ajouter des membres
