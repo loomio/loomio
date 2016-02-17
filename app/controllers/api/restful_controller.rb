@@ -1,12 +1,17 @@
 class API::RestfulController < ActionController::Base
   include ::LocalesHelper
+  include ::ProtectedFromForgery
   before_filter :set_application_locale
   before_filter :set_paper_trail_whodunnit
+  before_filter :doorkeeper_authorize!
   snorlax_used_rest!
 
-  before_filter :doorkeeper_authorize!, only: [:create_action, :update_action, :destroy_action]
+  private
 
-  include ::ProtectedFromForgery
+  def doorkeeper_authorize!
+    return if current_user.is_logged_in?
+    super
+  end
 
   def create_action
     @event = service.create({resource_symbol => resource, actor: current_user})
@@ -20,11 +25,13 @@ class API::RestfulController < ActionController::Base
     service.destroy({resource_symbol => resource, actor: current_user})
   end
 
-  private
-
   def current_user
-    token_user = User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
     super || token_user || LoggedOutUser.new
+  end
+
+  def token_user
+    return unless doorkeeper_token&.resource_owner_id
+    @token_user ||= User.find(doorkeeper_token.resource_owner_id)
   end
 
   def permitted_params
