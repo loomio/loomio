@@ -616,7 +616,7 @@ en:
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copy the link and send it to anyone you want to join the group. Clicking the link will give them immediate access.'
-    email_explanation: 'Alternatively, enter email addresses below and Loomio will send them and invitation by email.'
+    email_explanation: 'Alternatively, enter email addresses below and Loomio will send them an invitation by email.'
     add_custom_message: 'Make your invite personal, '
     add_custom_message_link: 'add a custom message.'
     custom_message: 'Custom message'
