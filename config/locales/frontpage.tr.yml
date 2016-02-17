@@ -54,3 +54,25 @@ tr:
       gift:
         header: Hediye ekonomisi
         desc: Loomio kendi isteklerine göre ödeme yapanlar tarafından desteklenmektedir. Bu durum platformu reklamlardan arındırılmış ve parası olmayan her grup için erişilebilir kılar.
+  about_page:
+    advisors_html: '<h2> Danışmanlar </h2> <p>Biz, Uluslararası Danışma Konseyi ile, demokrasinin ve teknolojinin baz en parlak beyinleri tarafından destekleniyoruz.</p>'
+    sascha_bio_html: "<a href='http://thexlab.org/' target='_blank'>X-Lab</a> kurucu ortağı & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
+    rushkoff_bio_html: '<a href="http://www.rushkoff.com/" target="_blank">En çok satan yazar</a>, CNN spikeri, medya teorisyeni'
+    monahan_bio_html: '<a href="http://inflection.com/" target="_blank">Inflection</a>, <a href="http://www.namaste.org/" target="_blank">Namaste Foundation</a> kurucu ortakları'
+    ben_bio: 'Kurucu ortak ve direktör, toplum organizatörü, kolektif zeka araştırmacısı'
+    mj_bio: 'ABD operasyonları yöneticisi, Brown Üniversitesi Sosyal işletmede fahri profesör'
+    rob_bio: 'Kurucu ortak ve baş yazılım mimarı, erişilebilirlik, kullanıcı deneyimi'
+    jon_bio: 'Kurucu ortak ve yazılım geliştiricisi, kullanıcı deneyimi tasarımcısı, müzisyen'
+    chelsea_bio: 'Kolaylaştırma uzmanı, işbirliği koçu,  Generation Zero kurucu ortağı'
+    jesse_bio: 'Yazılım geliştiricisi, tasarım, erişilebilirlik, bisiklet gurusu'
+    mix_bio: 'Yazılım geliştiricisi, çeviri uzmanı, eğitim, grup süreci'
+    malcolm_bio: 'Organizasyonel sistemler, süreç tasarımı'
+    simon_bio: 'Veri analizi, görselleştirme, yazılım geliştirme, iletişim'
+    alanna_bio: 'Kurucu ortak ve danışman, yönetim eylemci, Enspiral Vakfı direktörü'
+    rich_bio: 'Kurucu ortak ve yazılım geliştiricisi, aktivist, açık kaynak donanım bilgisayar korsanı'
+    viv_bio: 'Kurucu ortak, Loomio Kurulu Başkanı, UNICEF Yeni Zelanda İcra Direktörü '
+    aaron_bio: 'Kurucu ortak ve yazılım geliştiricisi, front-end uzmanı'
+    hannah_bio: 'Yazılım geliştirici, kullanıcı desteği, illüstratör, yaratıcı eylemci'
+    matt_bio: 'Tasarımcı, veri analizi, iş geliştirme'
+    james_bio: 'Yazılım geliştiricisi, açık kaynak topluluğu koordinatörü, cesur maceraperest'
+    michael_bio: 'İş geliştirme, işbirliği koçu, motosikletçi'

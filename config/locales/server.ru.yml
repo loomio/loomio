@@ -1,24 +1,19 @@
----
 ru:
   email:
     to_join_discussion:
-      message_intro: "%{who} сказал(а):"
+      message_intro: '%{who} сказал(а):'
     missed_yesterday:
       subject: Вчера на Loomio
       mark_as_read: Отметить прочитанным
-    group_membership_approved:
-      subject: 'Участие подтверждено. '
     invitation:
-      hi: Здравствуйте, %{name},
-    proposal_outcome:
-      subject: Результат голосования
+      hi: 'Здравствуйте, %{name},'
     thread_mailer:
       change_preferences: 'Измените настройки уведомлений:'
-      new_motion: "%{who} предложил:"
+      new_motion: '%{who} предложил:'
       motion_closing_soon: 'Предложение закроется через 24 часа:'
       proposal_closed: Предложение закрыто
-      outcome_created: "%{who} подвел итоги:"
-      you_agreed: Вы %{past_tense_position}
+      outcome_created: '%{who} подвел итоги:'
+      you_agreed: 'Вы %{past_tense_position}'
   footer:
     about: О нас
     blog: Блог
@@ -26,20 +21,19 @@ ru:
     help: Помощь
     privacy: Конфиденциальность
     pricing: Цены
-    public_groups: Общедоступные группы
+    public_groups: Oбщедоступные группы
     terms: Условия
     independent_install_html: '%{hostname} работает с независимой копией Loomio: <a href="http://github.com/loomio/loomio">разузнать побольше</a>.'
   start_group_form:
     header: Создайте новую группу
     name: Ваше имя
     group_name: Название группы
+    group_description: Описание группы
     success:
-      header: Почти готово! Проверьте почту.
-  pricing_page:
-    header: Цены
+      header: 'Почти готово! Проверьте почту.'
   contact_page:
     contact_us: Наши контакты
     labels:
       name: Ваше имя
-      email: Ваш е-мейл
+      email: Ваш электронный адрес
       message: Ваше сообщение

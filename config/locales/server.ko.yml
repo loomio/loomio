@@ -1,18 +1,19 @@
----
 ko:
   email:
+    group_email:
+      intro: '%{group} 그룹에 %{who}님이 알림글을 올렸습니다.'
     to_join_discussion:
-      subject: "%{who}님이 당신을 루미오의 토론에 참여하기를 원합니다."
+      subject: '%{who}님이 당신을 루미오의 토론에 참여하기를 원합니다.'
       content: '토론에 참여하기 위해서 초대를 받았습니다. %{discussion} '
-      message_intro: "%{who} 말합니다:"
+      message_intro: '%{who} 말합니다:'
       link: 토론 참여하기
     to_join_group:
-      subject: "%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다."
+      subject: '%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다.'
     to_start_group:
       subject: '새로운 루미오 그룹 설정 : %{group_name}'
     user_added_to_a_group:
-      subject: "%{who} 님이 사용자을 %{which_group} 그룹에 추가하였습니다. "
-      content: "%{who} 님이 사용자를 루미오에 %{which_group} 그룹에 추가하였습니다. 그룹으로 이동하기 위해서는 이 링크를 클릭해 주세요. "
+      subject: '%{who} 님이 사용자을 %{which_group} 그룹에 추가하였습니다. '
+      content: '%{who} 님이 사용자를 루미오에 %{which_group} 그룹에 추가하였습니다. 그룹으로 이동하기 위해서는 이 링크를 클릭해 주세요. '
     unsubscribe: 구독중지 혹은 이메일 설정을 변경하세요.
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
     view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
@@ -21,46 +22,40 @@ ko:
     view_proposal: 루미오에서 이 제안 보기
     create_proposal:
       intro: 사용자가 소속되어 있는 루미오 그룹에 새로운 제안이 만들어졌습니다.
-      closes_in: 닫습니다.
+      closes_in: '닫습니다. '
       subject: '새로운 제안 : %{which}'
     daily_activity:
       heading: 당신의 루미오 활동
       intro: 지난 24시간 동안 여러분의 루미오 그룹에 어떤 일이 있었는지를 보여줍니다.
       subject: 루미오 - 지난 24시간 동안의 요약
-    group_email:
-      intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
+    missed_yesterday:
+      mark_as_read: 읽음으로 표시
     group_membership_approved:
       intro: " '%{group_name}' 그룹에 접근하기 위한 요청에 대해서 승인이 되었습니다."
-      subject: 멤버십이 승인되었습니다.
     invitation:
-      hi: "%{name}님 안녕하세요,"
-      intro: "%{group_name} 그룹의 설정을 위해서는 아래 링크를 클릭해 주세요."
-      closing_message: 만일 어떤 질문이 있거나 여러분이 운영을 하는데 우리가 도울 수 있는 어떤 것이 있다면, 여러분의 의견을 듣기를 원합니다. - 이 메일에 답장을 하시면 됩니다.
+      hi: '%{name}님 안녕하세요,'
+      intro: '%{group_name} 그룹의 설정을 위해서는 아래 링크를 클릭해 주세요.'
+      closing_message: '만일 어떤 질문이 있거나 여러분이 운영을 하는데 우리가 도울 수 있는 어떤 것이 있다면, 여러분의 의견을 듣기를 원합니다. - 이 메일에 답장을 하시면 됩니다.'
       thanks: |
         고맙습니다.
         루미오 팀
     membership_request:
-      intro: "%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다."
-      subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
+      intro: '%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다.'
+      subject: '%{who}님이  %{which_group}에 가입을 요청했습니다. '
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
     mentioned:
-      subject: "%{who} 님이 루미오의 %{which}  그룹에서 언급하였습니다."
+      subject: '%{who} 님이 루미오의 %{which}  그룹에서 언급하였습니다.'
     new_motion_created:
-      context: "%{author} 님이  %{group_full_name} 그룹에 제안을 시작했습니다."
+      context: '%{author} 님이  %{group_full_name} 그룹에 제안을 시작했습니다.'
     proposal_closed:
       specify_outcome_and_notify_group: 결과를 만들고 그룹 멤버들에게 보내기
       specify_outcome_and_notify_group_html: 결과를 만들고 그룹 멤버들에게 보내기
-      subject: 닫힌 제안 - %{which}
-    proposal_outcome:
-      subject: 제안 결과
-    proposal_blocked:
-      intro: 사용자가 촉진하고 있는 제안이 차단되었습니다.
-      subject: 제안 차단 - %{which}
+      subject: '닫힌 제안 - %{which}'
     proposal_closing_soon:
       closes_on: 닫습니다.
-      closes_at: 에 닫습니다.
+      closes_at: 에 종료됩니다.
       closes_in: '닫습니다. '
-      headline: "%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다."
+      headline: '%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다.'
       summary: 요약
   footer:
     about: 소개
@@ -75,15 +70,37 @@ ko:
     header: 새로운 그룹 시작하기
     name: 이름
     group_name: 그룹명
+    group_description: 그룹 설명
+    group_description_placeholder: 그룹의 멤버들이 왜 여기에 모여 있는지 인식할 수 있도록 이 그룹의 목적을 설명해주세요.
     success:
       header: 거의 다 되었습니다. 이메일을 확인해 주세요.
   pricing_page:
-    header: 가격표
+    gift: 선물
+    standard: 일반
+    plus: 게다가
+    free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
+    get_started_for_free: 무료로 시작하기
+    gift_body_html: |
+      <p>구독할 예산이 없는 그룹을 대상으로 합니다.</p>
+      <p>구독에 대한 비용 결제 없이, 기부만 권장합니다.</p>
+    gift_donation_ask: 그룹 멤버들에게 후원을 요청합니다.
+    unlimited_members: 멤버 제한 없음
+    unlimited_decisions: 의사결정 횟수 제한 없음
+    email_support: 이메일 지원
+    standard_price_html: |
+      <strong>$19</strong>미국달러/월<br><span>또는 </span> $190 미국달러/년
+    plus_body: '일반 플랜의 모든 사항, 게다가:'
+    premium_support: 프리미엄 지원
+    custom_url: 사용자 정의 URL
+    usage_statistics: 사용량 통계
+    plus_price_html: |
+      <strong>$179</strong>미국달러/월<br><span>또는 </span> $1790 미국달러/년
   contact_page:
+    contact_us: 연락하기
     labels:
       name: 이름
       email: 이메일 주소
       message: 메시지
       submit: 메시지 보내기
     messages:
-      email_html: 양식을 채우거나 <a href='mailto:%{email}'>%{email}</a> 로 이메일을  보내세요.
+      email_html: "양식을 채우거나 <a href='mailto:%{email}'>%{email}</a> 로 이메일을  보내세요."

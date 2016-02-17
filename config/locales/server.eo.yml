@@ -1,20 +1,21 @@
----
 eo:
   email:
-    by_who: de %{person}
+    group_email:
+      intro: '%{who} anoncis al %{group}'
+    by_who: 'de %{person}'
     reply_to_this_discussion: Respondi al ĉi tiu diskuto
     to_join_discussion:
-      subject: "%{who} volas ke vi aliĝu al diskuto en Loomio"
+      subject: '%{who} volas ke vi aliĝu al diskuto en Loomio'
       content: 'Vi estas invitita por partopreni en la diskuto: %{discussion}'
-      message_intro: "%{who} diras:"
+      message_intro: '%{who} diras:'
       link: Aliĝi al la diskuto
     to_join_group:
-      subject: "%{member} invitis vin por aliĝi al %{group_name} en Loomio"
+      subject: '%{member} invitis vin por aliĝi al %{group_name} en Loomio'
     to_start_group:
       subject: 'Konfiguri vian novan Loomio-grupon: %{group_name}'
     user_added_to_a_group:
-      subject: "%{who} aldonis vin al %{which_group}"
-      content: "%{who} aldonis vin al %{which_group} en Loomio. Klaku ĉi tie por iri al la grupo:"
+      subject: '%{who} aldonis vin al %{which_group}'
+      content: '%{who} aldonis vin al %{which_group} en Loomio. Klaku ĉi tie por iri al la grupo:'
     unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
     view_comment: Klaku ĉi tie por vidi vian komenton en Loomio
@@ -22,7 +23,7 @@ eo:
     view_group: Klaku ĉi tie por vidi la grupon en Loomio
     view_proposal: Vidi ĉi tiun proponon en Loomio
     create_discussion:
-      intro: "%{who} komencis diskuton en %{which_group}:"
+      intro: '%{who} komencis diskuton en %{which_group}:'
     create_proposal:
       intro: Nova propono kreiĝis en Loomio-grupo al kiu vi apartenas.
       closes_in: Fermiĝos post
@@ -34,43 +35,37 @@ eo:
     missed_yesterday:
       subject: Hieraŭ en Loomio
       mark_as_read: Marki kiel legita
-      thanks_for_reading: Dankon por legi, havu bonegan tagon!
-      click_here_to_mark_all_as_read_html: |
+      thanks_for_reading: 'Dankon por legi, havu bonegan tagon!'
+      click_here_to_mark_all_as_read_html: >
         Jen kio okazis en Loomio hieraŭ.
-        Post legado, klaku <a href="%{link}">marki kiel legita</a> por forviŝi ĝin de via Loomio-poŝtkesto.
+
+        Post legado, klaku <a href="%{link}">marki kiel legita</a> por forviŝi
+        ĝin de via Loomio-poŝtkesto.
       marked_as_read_success: Ĉio de la retpoŝtaĵo markiĝis kiel legita
-    group_email:
-      intro: "%{who} anoncis al %{group}"
     group_membership_approved:
-      intro: Via peto aliĝi al la grupo '%{group_name}' en Loomio estas aprobita.
-      subject: Membreco aprobita
+      intro: "Via peto aliĝi al la grupo '%{group_name}' en Loomio estas aprobita."
     invitation:
-      hi: Saluton %{name},
+      hi: 'Saluton %{name},'
       intro: 'Klaku la ligilon malsupre por konfiguri vian grupon %{group_name}:'
-      closing_message: Se vi havas ajnajn demandojn aŭ se estas io ajn kion ni povas fari por helpi vin komenci bone, ni ŝategas aŭdi de vi - simple respondu al ĉi tiu retpoŝtaĵo.
+      closing_message: 'Se vi havas ajnajn demandojn aŭ se estas io ajn kion ni povas fari por helpi vin komenci bone, ni ŝategas aŭdi de vi - simple respondu al ĉi tiu retpoŝtaĵo.'
       thanks: |
         Dankon!
         La Loomio-teamo
     membership_request:
-      intro: "%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj."
-      subject: "%{who} petis aliĝi al %{which_group}"
+      intro: '%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj.'
+      subject: '%{who} petis aliĝi al %{which_group}'
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
     mentioned:
       context: '%{author_name} menciis vin dum diskutado de "%{discussion_title}"'
-      subject: "%{who} menciis vin en la grupo %{which} en Loomio"
+      subject: '%{who} menciis vin en la grupo %{which} en Loomio'
     new_motion_created:
       subject: 'Propono: %{proposal_title}'
-      context: "%{author} kreis proponon en %{group_full_name}:"
+      context: '%{author} kreis proponon en %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: La propono fermiĝis.
-      specify_outcome_and_notify_group: Kreu rezulton kaj sendu ĝin al via grupo!
-      specify_outcome_and_notify_group_html: Kreu rezulton kaj sendu ĝin al via grupo!
-      subject: Propono fermita - %{which}
-    proposal_outcome:
-      subject: Propona rezulto
-    proposal_blocked:
-      intro: Propono kiun vi ebligas estas blokita.
-      subject: Propono blokita - %{which}
+      specify_outcome_and_notify_group: 'Kreu rezulton kaj sendu ĝin al via grupo!'
+      specify_outcome_and_notify_group_html: 'Kreu rezulton kaj sendu ĝin al via grupo!'
+      subject: 'Propono fermita - %{which}'
     proposal_closing_soon:
       closes_on: Fermiĝos dum
       closes_at: Fermiĝos je
@@ -80,17 +75,17 @@ eo:
       summary: Resumo
     thread_mailer:
       change_preferences: 'Ŝanĝi viajn retpoŝtajn preferojn:'
-      new_motion: "%{who} proponis:"
+      new_motion: '%{who} proponis:'
       motion_closing_soon: 'Propono fermiĝos en 24 horoj:'
       proposal_closed: 'Propono fermita:'
-      specify_outcome_html: Via propono estas fermita. <a href='%{link}'>Decidu rezulton</a> por sciigi al ĉiuj kiel elturniĝis.
+      specify_outcome_html: "Via propono estas fermita. <a href='%{link}'>Decidu rezulton</a> por sciigi al ĉiuj kiel elturniĝis."
       specify_outcome: 'Via propono estas fermita. Decidu rezulton por sciigi al ĉiuj kiel elturniĝis:'
-      outcome_created: "%{who} metis proponan rezulton:"
-      you_agreed: Vi %{past_tense_position}
+      outcome_created: '%{who} metis proponan rezulton:'
+      you_agreed: 'Vi %{past_tense_position}'
   footer:
     about: Pri
     blog: Blogo
-    contact: Kontakti
+    contact: Kontakto
     help: Helpo
     privacy: Privateco
     pricing: Prezo
@@ -100,10 +95,9 @@ eo:
     header: Komenci novan grupon
     name: Via nomo
     group_name: Grupnomo
+    group_description: Grupa priskribo
     success:
-      header: Vi preskaŭ pretas! Kontrolu vian retpoŝton.
-  pricing_page:
-    header: Prezo
+      header: 'Vi preskaŭ pretas! Kontrolu vian retpoŝton.'
   contact_page:
     contact_us: Kontakti nin
     labels:
@@ -112,4 +106,4 @@ eo:
       message: Via mesaĝo
       submit: Sendi mesaĝon
     messages:
-      email_html: Plenigu ĉi tiun formularon aŭ sendu retpoŝtaĵon al <a href='mailto:%{email}'>%{email}</a>
+      email_html: "Plenigu ĉi tiun formularon aŭ sendu retpoŝtaĵon al <a href='mailto:%{email}'>%{email}</a>"

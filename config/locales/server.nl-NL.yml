@@ -1,0 +1,126 @@
+nl-NL:
+  email:
+    group_email:
+      intro: '%{who} maakte een aankondiging aan %{group}:'
+    by_who: 'door %{person}'
+    reply_to_this_discussion: Reageer op deze discussie
+    to_join_discussion:
+      subject: '%{who} wil dat je meedoet aan een discussie op Loomio'
+      content: 'Je bent uitgenodigd om deel te nemen aan de discussie: %{discussion}'
+      message_intro: '%{who} zegt:'
+      link: Doe mee aan de discussie
+    to_join_group:
+      subject: '%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio'
+    to_start_group:
+      subject: 'Stel je nieuwe Loomio groep in: %{group_name}'
+    user_added_to_a_group:
+      subject: '%{who} heeft je toegevoegd aan %{which_group}'
+      content: '%{who} heeft je toegevoegd aan %{which_group} op Loomio. Klik hier om naar de groep te gaan:'
+    unsubscribe: 'Uitschrijven of je e-mail voorkeuren aanpassen:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mail voorkeuren aan te passen."
+    view_comment: Klik hier om de reactie op Loomio te zien
+    view_discussion: Klik hier om deze discussie te bekijken
+    view_group: Klik hier om de groep op Loomio te bekijken
+    view_proposal: Bekijk dit voorstel op Loomio
+    create_discussion:
+      intro: '%{who} begon een discussie in %{which_group}:'
+    create_proposal:
+      intro: Een nieuw voorstel is gemaakt in een Loomio groep waar je lid van bent.
+      closes_in: Sluit over
+      subject: 'Nieuw voorstel: %{which}'
+    daily_activity:
+      heading: Jouw Loomio Activiteit
+      intro: Tonen wat er is gebeurd in jouw Loomio groepen in de laatste 24 uur
+      subject: Loomio - Samenvatting van de laatste 24 uur
+    missed_yesterday:
+      subject: Gisteren op Loomio
+      headlines: Nieuws
+      mark_as_read: Markeer als gelezen
+      thanks_for_reading: 'Bedankt voor het lezen, een fijne dag gewenst!'
+      click_here_to_mark_all_as_read_html: >
+        Hier zie je wat er gisteren op Loomio gebeurde.
+
+        Als je het hebt gelezen, klik <a href="%{link}">markeer als gelezen</a>
+        om het te verwijderen uit je Loomio Inbox.
+      marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
+    comment_replied_to:
+      context: '%{author_name} reageerde op jouw reactie in de discussie "%{discussion_title}"'
+      subject: '%{who} reageerde op jouw reactie in de %{which} groep op Loomio'
+    group_membership_approved:
+      intro: "Je verzoek om toegang tot de groep '%{group_name}' op Loomio is goedgekeurd."
+    invitation:
+      hi: 'Hoi %{name},'
+      intro: 'Klik op de link hieronder om jouw groep %{group_name} in te stellen:'
+      closing_message: 'Als je vragen hebt of als er iets is wat we kunnen doen zodat je aan de slag kan, dan horen we graag van je - antwoord gewoon op deze e-mail.'
+      thanks: |
+        Bedankt!
+        Het Loomio Team
+    membership_request:
+      intro: '%{name} (%{email}) heeft toegang gevraagd tot een van je Loomio groepen.'
+      subject: '%{who} heeft aangevraagd om lid te worden van %{which_group}'
+      view_group: Je kan hier de aanvraag goed- of afkeuren
+    mentioned:
+      context: '%{author_name} noemde je in de discussie "%{discussion_title}"'
+      subject: '%{who} noemde je in de %{which} groep op Loomio'
+    new_motion_created:
+      subject: 'Voorstel: %{proposal_title}'
+      context: '%{author} heeft een voorstel gedaan in %{group_full_name}:'
+    proposal_closed:
+      proposal_has_closed: Het voorstel is gesloten.
+      specify_outcome_and_notify_group: 'Maak een uitkomst en verzend deze naar je groep!'
+      specify_outcome_and_notify_group_html: 'Maak een uitkomst en verzend deze naar je groep!'
+      subject: 'Voorstel gesloten - %{which}'
+    proposal_closing_soon:
+      closes_on: Sluit op
+      closes_at: Sluit om
+      closes_in: Sluit over
+      subject: 'Sluit binnen 24 uur: %{proposal_title}'
+      headline: 'Het voorstel van %{author} in %{group} sluit binnenkort: '
+      summary: Samenvatting
+    thread_mailer:
+      footer_text: 'Beantwoord deze e-mail direct of bekijk op %{hostname}:'
+      reply_or_view_online_html: "Beantwoord deze e-mail direct of <a href='%{url}'>bekijk deze op %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Zet e-mails uit</a> voor deze discussie."
+      turn_off_notifications_text: 'Zet e-mails uit voor deze discussie: %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
+      change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
+      change_preferences: 'Verander je e-mail voorkeuren:'
+      new_motion: '%{who} stelde voor:'
+      motion_closing_soon: 'Voorstel sluit binnen 24 uur:'
+      proposal_closed: 'Voorstel sloot:'
+      specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."
+      specify_outcome: 'Je voorstel is gesloten. Specificeer een uitkomst om iedereen te laten weten wat het resultaat is:'
+      outcome_created: '%{who} heeft een uitkomst van een voorstel opgesteld:'
+      you_agreed: 'Je %{past_tense_position}'
+  footer:
+    about: Over
+    blog: Blog
+    contact: Contact
+    help: Help
+    privacy: Privacy
+    pricing: Prijsplan
+    public_groups: Openbare groepen
+    terms: Voorwaarden
+    independent_install_html: '%{hostname} draait als een onafhankelijke kopie van Loomio: <a href="http://github.com/loomio/loomio">meer informatie</a>.'
+  start_group_form:
+    header: Begin een nieuwe groep
+    form_error: Sommige informatie mist of is incorrect.
+    name: Je naam
+    name_error: Naam is verplicht
+    email: Je e-mail
+    email_error: Geen geldig e-mail adres.
+    group_name: Groepsnaam
+    group_description: Groepsomschrijving
+    group_name_error: Groepsnaam is verplicht
+    success:
+      header: 'Je bent bijna klaar! Bekijk je e-mail.'
+      email_not_arrived: E-mail niet aangekomen?
+  contact_page:
+    contact_us: Neem contact op
+    labels:
+      name: Je naam
+      email: Je e-mailadres
+      message: Je bericht
+      submit: Verstuur bericht
+    messages:
+      email_html: "Vul dit formulier in of stuur een e-mail naar <a href='mailto:%{email}'>%{email}</a>"
