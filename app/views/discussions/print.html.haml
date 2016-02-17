@@ -9,7 +9,7 @@
         %h3= @group.name
   .row.context
     .col-md-9
-      = simple_format @discussion.description
+      = render_rich_text @discussion.description, @discussion.uses_markdown
     .col-md-2.col-md-offset-1
       .discussion-details
         = t("discussion_context.started_print",
@@ -23,7 +23,7 @@
         .col-md-9
           %h3= motion.title
           .proposal-description
-            = simple_format motion.description
+            = render_rich_text motion.description, true
           .proposal-details
             %ul
               - if motion.voting?
@@ -83,7 +83,7 @@
               %li.new-comment
                 = render 'avatar', user: event.eventable.user
                 %strong= event.eventable.user_name
-                = simple_format event.eventable.body
+                = render_rich_text event.eventable.body, event.eventable.uses_markdown?
                 - if event.eventable.attachments.any?
                   %strong= t :attachments
                   %ul.attachments

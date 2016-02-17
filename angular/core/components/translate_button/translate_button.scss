@@ -1,0 +1,18 @@
+
+.translate-button {
+  @include lmoTranslateLink;
+}
+
+.translate-button button {
+  @include lmoBtnLink;
+  color: $link-color;
+  background: none;
+}
+
+.translate-button__loading {
+  display: inline-block;
+}
+
+.translate-button__loading i {
+  font-size: 12px;
+}

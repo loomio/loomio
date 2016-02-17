@@ -1,0 +1,53 @@
+.lmo-one-column-layout
+  %main.dashboard-page.lmo-row
+    %section.dashboard-page__options{aria-label: "{{ 'dashboard_page.options.aria_label' | translate }}"}
+      .dashboard-page__filter-dropdown{uib-dropdown: "true"}
+        %button.lmo-btn--nude{uib-dropdown-toggle: "true"}
+          %span
+            .sr-only{ translate: "dashboard_page.filtering.filter_threads_aria_label"}
+            %span{ translate: "dashboard_page.filtering.filter_threads", aria-hidden: "true"}>
+          %i.fa.fa-chevron-down
+        .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-details{role: "menu"}
+          %ul.lmo-dropdown-menu-items.filtering-options
+            %li.lmo-dropdown-menu-item.filtering-option.dashboard-page__filter-recent
+              %a{href: "", ng-click: "dashboardPage.setFilter('show_all')"}
+                .lmo-dropdown-menu-item-label
+                  %span{translate: "dashboard_page.filtering.all", aria-hidden: "true"}>
+                  %i.fa.fa-lg.fa-check{ng-show: "dashboardPage.filter == 'show_all'"}
+                .lmo-dropdown-menu-item-details{translate: "dashboard_page.filtering.all_description"}
+            %li.lmo-dropdown-menu-item.filtering-option.dashboard-page__filter-participating
+              %a{href: "", ng-click: "dashboardPage.setFilter('show_participating')"}
+                .lmo-dropdown-menu-item-label
+                  %span{translate: "dashboard_page.filtering.participating", aria-hidden: "true"}>
+                  %i.fa.fa-lg.fa-check{ng-show: "dashboardPage.filter == 'show_participating'"}
+                .lmo-dropdown-menu-item-details{translate: "dashboard_page.filtering.participating_description"}
+            %li.lmo-dropdown-menu-item.filtering-option.dashboard-page__filter-muted
+              %a{href: "", ng-click: "dashboardPage.setFilter('show_muted')"}
+                .lmo-dropdown-menu-item-label
+                  %span{translate: "dashboard_page.filtering.muted", aria-hidden: "true"}>
+                  %i.fa.fa-lg.fa-check{ng-show: "dashboardPage.filter == 'show_muted'"}
+                .lmo-dropdown-menu-item-details{translate: "dashboard_page.filtering.muted_description"}
+
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'show_all'"}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.participating", ng-show: "dashboardPage.filter == 'show_participating'"}
+    %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.muted", ng-show: "dashboardPage.filter == 'show_muted'"}
+    .dashboard-page__no-threads{ng-hide: "dashboardPage.loadMoreExecuting || dashboardPage.currentBaseQuery.any()"}
+      %span{ng-show: "dashboardPage.filter == 'show_all'", translate: "dashboard_page.no_threads.show_all"}>
+      %span{ng-show: "dashboardPage.filter == 'show_participating'", translate: "dashboard_page.no_threads.show_participating"}>
+      %span{ng-show: "dashboardPage.filter == 'show_muted'", translate: "dashboard_page.no_threads.show_muted"}>
+      %a{ng-show: "dashboardPage.filter != 'show_all'", translate: "dashboard_page.view_recent", href: "", ng-click: "dashboardPage.setFilter('show_all')"}>
+    .dashboard-page__collections{ng-if: "!dashboardPage.displayByGroup()"}
+      %section.thread-preview-collection__container{ng-if: "dashboardPage.views.recent[viewName].any()", class: "dashboard-page__{{viewName}}", ng-repeat: "viewName in dashboardPage.recentViewNames"}
+        %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}
+        %thread_preview_collection.thread-previews-container{query: "dashboardPage.views.recent[viewName]"}
+      .dashboard-page__footer{in-view: "$inview && dashboardPage.loadMore()", in-view-options: "{debounce: 200}"} .
+      %loading{ng-show: "dashboardPage.loadMoreExecuting"}
+    .dashboard-page__collections{ng-if: "dashboardPage.displayByGroup()"}
+      .dashboard-page__group{ng-repeat: "group in dashboardPage.groups() | orderBy:'name' track by group.id"}
+        %section{ng-if: "dashboardPage.views.groups[group.key].any()", role: "region", aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
+          %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: "true"}>
+          %h2.dashboard-page__group-name
+            %a{lmo-href-for: "group"} {{group.name}}
+          .dashboard-groups.thread-previews-container
+            %thread_preview_collection{query: "dashboardPage.views.groups[group.key]", limit: "dashboardPage.groupThreadLimit"}
+      %loading{ng-show: "dashboardPage.loadMoreExecuting"}

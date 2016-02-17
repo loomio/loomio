@@ -175,7 +175,7 @@ body.discussions.show {
   .discussion-title-container {
     #discussion-title {
       padding-left: 15px;
-      font-size: 22px; 
+      font-size: 22px;
     }
     .dropdown{
       display: inline;
@@ -738,4 +738,9 @@ div.jqplot-table-legend-swatch{
   @include screen-size(medium-up) {
     padding: 0;
   }
+}
+
+img.emojione {
+  width: 25px;
+  height: 25px;
 }

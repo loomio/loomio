@@ -28,16 +28,12 @@ class BaseMailer < ActionMailer::Base
     "\"#{user.name} (Loomio)\" <notifications@loomio.org>"
   end
 
-  def send_single_mail(locale: I18n.locale, to:, subject:, **options)
-    I18n.with_locale(locale) { mail options.merge(to: self.class.interceptor_email || to, subject: subject) }
+  def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
+    I18n.with_locale(locale) { mail options.merge(to: to,
+                                                  subject: I18n.t(subject_key, subject_params)) }
   end
 
   def self.send_bulk_mail(to:)
-    to = Array(User.loomio_helper_bot) if interceptor_email.present?
-    to.each { |email| yield email if block_given? }
-  end
-
-  def self.interceptor_email
-    ENV['INTERCEPTOR_EMAIL']
+    to.each { |user| yield user if block_given? }
   end
 end

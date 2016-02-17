@@ -45,6 +45,22 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_group_with_expired_legacy_trial
+    sign_in jennifer
+    GroupService.create(group: test_group, actor: patrick)
+    test_group.update_attribute(:cohort_id, 3)
+    redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_expired_legacy_trial_admin
+    sign_in patrick
+    test_group.add_member! emilio
+    test_group.update_attribute(:cohort_id, 3)
+    ENV['TRIAL_EXPIRED_GROUP_IDS'] = test_group.id.to_s
+
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_with_many_discussions
     sign_in patrick
     test_group.add_member! emilio
@@ -158,9 +174,27 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(@test_group)
   end
 
+  def setup_open_group
+    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
+                                group_privacy: 'open')
+    @test_group.add_admin!  patrick
+    @test_group.add_member! jennifer
+    sign_in patrick
+    redirect_to group_url(test_group)
+  end
+
   def setup_closed_group
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 group_privacy: 'closed')
+    @test_group.add_admin!  patrick
+    @test_group.add_member! jennifer
+    sign_in patrick
+    redirect_to group_url(test_group)
+  end
+
+  def setup_secret_group
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
     sign_in patrick
@@ -216,7 +250,6 @@ class DevelopmentController < ApplicationController
   def setup_proposal
     sign_in patrick
     test_proposal
-
     redirect_to discussion_url(test_discussion)
   end
 
@@ -239,7 +272,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_proposal
     MotionService.close(test_proposal)
-    redirect_to previous_proposal_url(test_group)
+    redirect_to previous_proposals_group_url(test_group)
   end
 
   def setup_proposal_closing_soon
@@ -280,32 +313,10 @@ class DevelopmentController < ApplicationController
   def setup_all_notifications
     sign_in patrick
     setup_all_notifications_work
-
-
     redirect_to discussion_url(test_discussion)
   end
 
   private
-
-  def discussion_url(discussion)
-    "http://localhost:8000/d/#{discussion.key}/"
-  end
-
-  def group_url(group)
-    "http://localhost:8000/g/#{group.key}/"
-  end
-
-  def dashboard_url
-    "http://localhost:8000/dashboard"
-  end
-
-  def inbox_url
-    "http://localhost:8000/inbox"
-  end
-
-  def previous_proposal_url(group)
-    "http://localhost:8000/g/#{group.key}/previous_proposals"
-  end
 
   def ensure_testing_environment
     raise "Do not call me." if Rails.env.production?
@@ -318,7 +329,7 @@ class DevelopmentController < ApplicationController
     User.delete_all
     Group.delete_all
     Membership.delete_all
-    
+
     ActionMailer::Base.deliveries = []
   end
 end

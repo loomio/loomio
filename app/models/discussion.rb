@@ -15,6 +15,7 @@ class Discussion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include Translatable
   include HasTimeframe
+  include MessageChannel
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }
@@ -89,6 +90,10 @@ class Discussion < ActiveRecord::Base
 
   define_counter_cache :motions_count do |discussion|
     discussion.motions.count
+  end
+
+  define_counter_cache :versions_count do |discussion|
+    discussion.versions.where(event: :update).count
   end
 
   update_counter_cache :group, :discussions_count

@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include BetaFeatures
   include HasTimeframe
+  include MessageChannel
   include DeprecatedGroupFeatures
   AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 
@@ -192,12 +193,12 @@ class Group < ActiveRecord::Base
                        default_url: 'default-logo-:style.png'
 
   validates_attachment :cover_photo,
-    size: { in: 0..10.megabytes },
+    size: { in: 0..100.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   validates_attachment :logo,
-    size: { in: 0..10.megabytes },
+    size: { in: 0..100.megabytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
@@ -215,7 +216,7 @@ class Group < ActiveRecord::Base
     elsif self.default_group_cover
       /^.*(?=\?)/.match(self.default_group_cover.cover_photo.url).to_s
     else
-      'default-cover-photo.png'
+      'img/default-cover-photo.png'
     end
   end
 
@@ -425,6 +426,11 @@ class Group < ActiveRecord::Base
     membership.make_admin! && save
     self.creator = user if creator.blank?
     membership
+  end
+
+  def add_default_content!
+    update default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial
+    ExampleContent.add_to_group(self)
   end
 
   def find_or_create_membership(user, inviter)

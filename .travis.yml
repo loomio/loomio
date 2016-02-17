@@ -1,31 +1,26 @@
 language: ruby
 rvm:
-  - 2.2.3
+  - 2.3.0
 cache: bundler
 sudo: false
 cache:
   directories:
     - vendor/bundle
-    - lineman/node_modules
-    - lineman/vendor/bower_components
+    - angular/node_modules
 
 env:
-  - DB=postgresql
+  - DB=postgresql CXX=g++-4.8
 
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - nvm install 4.2
-  - nvm use 4.2
+  - nvm install 4.2.6
+  - nvm use 4.2.6
   - bundle install --without development --deployment --jobs=3 --retry=3
-  - cd lineman
-  - npm install -g bower
-  - npm install -g protractor@3.0.0
+  - cd angular
   - npm install
-  - bower install
-  - webdriver-manager update
   - cd ..
 
 branches:
@@ -36,29 +31,29 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
-  - nohup bash -c "webdriver-manager start 2>&1 &"
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
+  - RAILS_ENV=test bundle exec rails server > /dev/null &
+
+script:
+  - bundle exec rake travis:prepare
+  - bundle exec rake travis:rspec
+  - bundle exec rake travis:cucumber
+  - bundle exec rake travis:protractor
 
 after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
-
-script:
-  - bundle exec rake travis
-  - RAILS_ENV=test bundle exec rails server > /dev/null &
-  - cd lineman && lineman spec-ci
-  - lineman run & sleep 10
-  - node_modules/protractor/bin/protractor config/spec-e2e.coffee
-  - cd ../
 
 addons:
   postgresql: "9.4"
   apt:
     sources:
       - heroku
+      - ubuntu-toolchain-r-test
     packages:
       - expect
       - heroku-toolbelt
+      - g++-4.8
   code_climate:
     repo_token:
       secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="

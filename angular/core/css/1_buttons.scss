@@ -1,0 +1,215 @@
+@mixin lmoBtn{
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-weight: $btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  white-space: nowrap;
+  @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
+  @include user-select(none);
+
+  @include box_shadow(1);
+  border: none;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    outline-style: none;
+    @include box_shadow(2);
+    color: $btn-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: $cursor-disabled;
+    @include opacity(.65);
+    @include box-shadow(none);
+  }
+}
+
+.lmo-btn {
+  @include lmoBtn;
+}
+
+@mixin lmoBtnDefault{
+  @include lmoBtn;
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+.lmo-btn--default {
+  @include lmoBtnDefault;
+}
+
+@mixin lmoBtnPrimary {
+  @include lmoBtn;
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+.lmo-btn--primary{
+  @include lmoBtnPrimary;
+}
+
+@mixin lmoBtnFeatured{
+  @include lmoBtn;
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  i.fa{ color: #fff; }
+}
+.lmo-btn--featured {
+  @include lmoBtnFeatured;
+}
+
+@mixin lmoBtnInfo{
+  @include lmoBtn;
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+.lmo-btn--info {
+  @include lmoBtnInfo;
+}
+
+@mixin lmoBtnWarning{
+  @include lmoBtn;
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+.lmo-btn--warning {
+  @include lmoBtnWarning;
+}
+
+@mixin lmoBtnDanger {
+  @include lmoBtn;
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+.lmo-btn--danger {
+  @include lmoBtnDanger;
+}
+
+@mixin lmoBtnCancel{
+  @include lmoBtnDefault;
+  float: left;
+}
+.lmo-btn--cancel{
+  @include lmoBtnCancel;
+}
+
+@mixin lmoBtnSubmit{
+  @include lmoBtnPrimary;
+}
+.lmo-btn--submit{
+  @include lmoBtnSubmit;
+}
+
+@mixin lmoBtnOffer {
+  @include lmoBtn;
+  @include button-variant(white, #4185DE, transparent);
+  i.fa{ color: #fff; }
+}
+.lmo-btn--offer {
+  @include lmoBtnOffer;
+}
+
+@mixin lmoBtnNude{
+  @include lmoBtn;
+  @include button-variant($grey-on-grey, transparent, transparent);
+  box-shadow: none;
+  &:hover, &:focus {
+    box-shadow: none;
+    background-color: $list-hover-color;
+  }
+}
+.lmo-btn--nude{
+  @include lmoBtnNude;
+}
+
+@mixin lmoBtnIcon{
+  text-align: left;
+  padding: 6px 12px 6px 9px;
+  i.fa{ padding-right: 2px; }
+}
+.lmo-btn--icon{
+  @include lmoBtnIcon;
+}
+
+@mixin lmoBtnLink {
+  background: none;
+  border: none;
+  padding: 0;
+  &:hover{ text-decoration: underline; }
+}
+
+@mixin lmoTranslateLink {
+  display: inline-block;
+  background: none;
+  border: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+.lmo-btn-link {
+  @include lmoBtnLink;
+}
+
+.lmo-btn-link--blue {
+  @include lmoBtnLink;
+  color: $link-color;
+}
+
+@mixin lmoBtnLg {
+  @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $btn-border-radius-large);
+}
+.lmo-btn-lg{
+  @include lmoBtnLg;
+}
+
+@mixin lmoBtnSm{
+  @include button-size($padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
+}
+.lmo-btn-sm {
+  @include lmoBtnSm;
+}
+
+@mixin lmoBtnXs {
+  @include button-size($padding-xs-vertical, $padding-xs-horizontal, $font-size-small, $line-height-small, $btn-border-radius-small);
+}
+.lmo-btn-xs{
+  @include lmoBtnXs;
+}
+
+@mixin lmoBtnBlock{
+  display: block;
+  width: 100%;
+}
+.lmo-btn--block {
+  @include lmoBtnBlock;
+}
+
+// Vertically space out multiple block buttons
+.lmo-btn--block + .lmo-btn--block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.lmo-btn--block {
+    width: 100%;
+  }
+}

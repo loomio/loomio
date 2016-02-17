@@ -27,7 +27,9 @@ pt-BR:
     more_help: Mais ajuda
     models:
       proposal: Proposta
+    copied: Copiado
     action:
+      close: Encerrar
       save: Salvar
       save_changes: Salvar mudanças
       update_settings: Atualizar configurações
@@ -42,6 +44,8 @@ pt-BR:
       new_thread: Novo tópico
       add_subgroup: Adicionar subgrupo
       loading: Carregando
+      translate: Traduzir
+      translated: Tradução do Bing Tradutor
       uploading: Carregando
     formatting_help:
       label: Ajuda para formatação
@@ -185,6 +189,7 @@ pt-BR:
       discussions: Tópicos
       proposals: Propostas
       comments: Comentários
+    sign_in: Entrar
   start_menu:
     title: Botão de ação
     start_group: Iniciar Grupo
@@ -299,6 +304,16 @@ pt-BR:
   proposal_position_abstain: Abster
   proposal_position_no: Discordar
   proposal_position_block: Bloquear
+  legacy_trial_expired_modal:
+    heading: 'Obrigado por usar o Loomio este ano!'
+    body: >
+      <p>Nós realmente agradecemos o seu apoio ao longo do ano, e estamos muito
+      animados para fazer Loomio ainda melhor em 2016.</p>
+
+      <p>O Loomio é útil para o seu grupo? Acabamos de lançar nossa planos de
+      preços e estamos pedindo grupos que tenham usado Loomio por um tempo para
+      escolher um plano que lhes for convieniente.</p>
+    submit: Mostre-me os planos
   group_welcome_modal:
     heading: Bem-vindo ao seu novo grupo
     first_step: 'Você é o <strong>coordenador</strong> do grupo, que é como ser um anfitrião. Assista ao vídeo e confira os exemplos de tópicos.'
@@ -328,6 +343,12 @@ pt-BR:
     submit_button: Pedir para entrar no grupo
     messages:
       membership_requested: 'Você solicitou adesão ao(à) {{group}}'
+  revision_history_modal:
+    thread_header: Histórico de revisões do contexto do tópico
+    comment_header: Histórico de revisões de edições de comentários
+    started_by: 'Iniciado por <strong>{{name}}</strong>'
+    edited_by: 'Editado por <strong>{{name}}</strong>'
+    posted: Postado
   group_page:
     thread_list:
       empty:
@@ -414,11 +435,10 @@ pt-BR:
   trial_card:
     title: Teste de 30 dias
     choose_plan: Escolha seu plano de pagamento
-    in_progress_body: 'Obrigado por testar o Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de pagamento que funcione para você a qualquer momento.'
-    expired_body_html: "<strong>{{name}}</strong> atingiu o fim do teste no Loomio. Se você gostaria de continuar a usá-lo, você precisa escolher um plano de preços adequado. Se você gostaria de falar com alguém sobre isso, basta<a href=''> entrar em contato</a>."
+    in_progress_body: 'Obrigado por experimentar Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de preços que se adapte ao seu grupo a qualquer momento.'
+    expired_body_html: '<strong>{{name}}</strong> chegou ao fim do teste no Loomio. Para continuar utilizando, você precisa escolher um plano de preços que se adapte ao seu grupo.'
   choose_plan_modal:
-    heading: Escolha seu plano de pagamento
-    overdue_heading: 'Para continuar a utilizar o Loomio, por favor, escolha um plano de pagamento'
+    heading: 'Por favor, escolha um plano para o seu grupo'
     gift: Presente
     standard: Padrão
     plus: Plus
@@ -457,6 +477,7 @@ pt-BR:
     edit_group_heading: Editar configurações do grupo
     edit_subgroup_heading: Editar configurações do subgrupo
     group_name: Nome do Grupo
+    group_name_placeholder: Como você quer chamar o seu grupo?
     subgroup_name: Nome do Subgrupo
     description: Descrição
     description_placeholder: Descreva o propósito do seu grupo para que seus membros saibam a razão de estarem aqui.
@@ -465,19 +486,19 @@ pt-BR:
       private_to_group: Nome e descrição estarão visíveis apenas para membros
       private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
     privacy: Privacidade
-    group_privacy_open_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Todos os tópicos são públicos.'
-    group_privacy_closed_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Apenas os membros podem ver os tópicos.'
-    group_privacy_closed_public_threads_description: 'qualquer pessoa pode encontrar o grupo, ver quem está nele e pedir para participar. Tópicos podem ser públicos ou privados.'
-    group_privacy_secret_description: apenas os membros convidados podem encontrar o grupo e ver tópicos.
+    group_privacy_is_open_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são públicos.
+    group_privacy_is_closed_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são particulares.
+    group_privacy_is_closed_public_threads_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Tópicos podem ser públicos ou privados.
+    group_privacy_is_secret_description: 'apenas membros convidados podem encontrar o grupo, ver quem está nele e ver tópicos.'
     confirm_change_to_secret: 'Se você continuar, todos os tópicos neste grupo e seus subgrupos serão privados.'
     confirm_change_to_secret_subgroup: 'Se você continuar, todos os tópicos serão privados.'
     confirm_change_to_public: 'Se você continuar, os tópicos neste grupo serão públicos na web.'
     confirm_change_to_private_discussions_only: 'Se você continuar, qualquer tópico público deste grupo será privado.'
-    subgroup_privacy_open_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Todos os tópicos são públicos.'
-    subgroup_privacy_closed_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Apenas os membros podem ver os tópicos.'
-    subgroup_privacy_closed_public_threads_description: 'qualquer pessoa pode encontrar este subgrupo, ver quem está nele e pedir para participar. Tópicos podem ser públicos ou privados.'
-    subgroup_privacy_closed_secret_parent_description: 'membros de {{parent}} podem encontrar este subgrupo, ver quem está nele e pedir para participar.'
-    subgroup_privacy_secret_description: apenas membros convidados podem encontrar este subgrupo e ver tópicos.
+    subgroup_privacy_is_open_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são públicos.
+    subgroup_privacy_is_closed_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são particulares.
+    subgroup_privacy_is_closed_public_threads_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Tópicos podem ser públicos ou privados.
+    subgroup_privacy_is_closed_secret_parent_description: 'membros de {{parent}} pode encontrar este subgrupo e pedir para participar. Todos os tópicos são privados. Somente usuários podem ver quem está no grupo.'
+    subgroup_privacy_is_secret_description: 'apenas membros convidados podem encontrar este subgrupo, ver quem está nele e ver tópicos.'
     advanced_settings: Configurações avançadas
     how_do_people_join: Como as pessoas participam?
     membership_granted_upon_request: Qualquer um pode entrar no grupo
@@ -490,7 +511,7 @@ pt-BR:
     private_threads: Apenas os membros podem ver discussões
     permissions: Permissões
     allow_public_threads: Permitir tópicos públicos neste grupo.
-    parent_members_can_see_discussions: 'Membros de {{parent}} podem ver tópicos.'
+    parent_members_can_see_discussions: 'Membros de {{parent}} podem ver tópicos privados.'
     members_can_add_members: Membros podem convidar pessoas e aprovar pedidos de adesão.
     members_can_create_subgroups: Membros podem criar subgrupos.
     members_can_edit_discussions: Membros podem atualizar o contexto e o título de qualquer discussão.
@@ -511,7 +532,9 @@ pt-BR:
   group_help_card:
     title: Ajuda
     ten_tips_article_title: 10 dicas para fazer grandes decisões com Loomio
+    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 maneiras de usar uma proposta no Loomio para transformar uma conversa em ação
+    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
@@ -526,24 +549,36 @@ pt-BR:
   group_previous_proposals_card:
     heading: Propostas anteriores
     see_more: Veja mais
-  invitation:
+  invitation_form:
     invite_people: Convidar Pessoas
-    find_people: Encontre pessoas
-    import_contacts_header: Conecte a sua agenda de endereços
-    import_contacts_message: Convidar as pessoas para o Loomio é muito mais fácil se você importar seus contatos do Google.
-    import_contacts: Importar contatos
-    instructions: Digite nomes ou endereços de e-mail
-    invitation_message: Mensagem Convite
-    remove_invite: Retirar convite
-    send_invite: 'Enviar {{count}} convites'
-    to: 'para:'
-    add_custom_message: + adicionar mensagem personalizada
-    default_message: 'Ei você aí, venha tomar decisões com a gente! Estamos usando uma ferramenta de tomada de decisão colaborativa chamada Loomio'
+    group: Grupo
+    email_addresses: Endereço de e-mail
+    email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Faça seu convite pessoal,'
+    add_custom_message_link: adicionar uma mensagem personalizada.
+    custom_message: Mensagem personalizada
+    custom_message_placeholder: Digite uma mensagem pessoal para incluir no convite.
+    team_invitation_message: 'Alternativamente,'
+    team_invitation_link: link para compartilhar.
+    add_members: Adicionar membros
+    from_parent_group: 'de {{name}}.'
+    send: Enviar
     messages:
-      members_added_and_emails_sent: '{{members}} membro(s) adicionados e {{emails}} convite(s) enviado(s)'
-      members_added: '{{members}} membros(s) adicionado(s)'
-      emails_sent: '{{emails}} convite(s) enviado(s)'
-      no_invitations: 'Nenhum convite enviado!'
+      invitation_sent: Convite enviado.
+      invitations_sent: '{{count}} convites enviados.'
+      no_invitations: 'Ops! Por favor, verifique o endereço de e-mail está correto e tente novamente.'
+      max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
+  team_link_modal:
+    heading: Adicionar pessoas
+    share_link: Compartilhar este link
+    caution: 'Cuidado: qualquer um com este link será capaz de participar do seu grupo imediatamente. Cuidado com quem compartilhá-lo :)'
+    copy_link: Copiar link
+  add_members_modal:
+    heading: 'Adicionar pessoas de {{name}}'
+    add_members: Adicionar membros
+    user_added_to_subgroup: '{{name}} adicionado ao Subgrupo'
+    users_added_to_subgroup: '{{count}} Usuários adicionados ao Subgrupo'
+    no_members_to_add: 'Todos os membros de {{parent}} pertencem a este subgrupo'
   memberships_page:
     members: Membros
     name_label: Nome
@@ -564,6 +599,7 @@ pt-BR:
     heading: Convites pendentes
     email: E-mail
     invitation_link: Link do convite
+    sent: Enviar
   cancel_invitation_form:
     heading: Cancelar convite
     question: Você tem certeza que deseja cancelar este convite?
@@ -605,7 +641,7 @@ pt-BR:
     username_label: Nome de usuário
     email_label: E-mail
     locale_label: Idioma
-    update_profile: Utualizar perfil
+    update_profile: Atualizar perfil
   email_settings_page:
     header: Configurações de e-mail
     email: E-mail
@@ -676,6 +712,7 @@ pt-BR:
     page_header: Seus grupos
   discussion:
     activity: Atividade
+    activity_placeholder: 'Ainda sem atividade!'
     proposals: Propostas
     previous_proposals: Propostas anteriores
     load_previous: Carregar atividade anterior
@@ -688,6 +725,7 @@ pt-BR:
     liked_by_name: 'Curtido por {{name}}.'
     liked_by_names_and_name: 'Curtido por {{joinedNames}} e {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
+    edited: Editado
     volume:
       loud: Enviar e-mail sempre que houver atividade neste tópico.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Isso significa que você receberá um e-mail sempre que houver atividade neste tópico.
@@ -709,6 +747,7 @@ pt-BR:
     notifications: Notificações
     edit_thread: Editar
     move_thread: Mover
+    print_thread: Imprimir
     delete_thread: Apagar
   delete_thread_form:
     title: Apagar tópico
@@ -738,38 +777,39 @@ pt-BR:
       aria_label: Opções de comentários
       edit_comment: Editar comentários
       delete_comment: Apagar comentário
-    in_reply_to: '<strong>{{author}}</strong> em resposta a <strong>{{recipient}}</strong>'
+    in_reply_to: 'Em resposta a <strong>{{recipient}}</strong>'
+    edited: Editado
   new_vote_item:
-    agree: '<strong>{{actor}}</strong> concordou'
-    abstain: '<strong>{{actor}}</strong> absteve-se'
-    disagree: '<strong>{{actor}}</strong> discordou'
-    block: '<strong>{{actor}}</strong> bloqueou'
-    agree_with_statement: '<strong>{{actor}}</strong> concordou: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> absteve-se: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> discordou: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> bloqueou: <span>{{statement}}</span>'
+    agree: concordou
+    abstain: absteve
+    disagree: discordou
+    block: bloqueou
+    agree_with_statement: 'concordou: <span>{{statement}}</span>'
+    abstain_with_statement: 'absteve: <span>{{statement}}</span>'
+    disagree_with_statement: 'discordou: <span>{{statement}}</span>'
+    block_with_statement: 'bloqueou: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> iniciou uma proposta: <span>{{title}}</span>'
+    author_created_proposal: 'iniciou uma proposta: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'A proposta foi encerrada: <span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> fechou a proposta: <span>{{title}}</span>'
+    proposal_closed_by_user: 'encerrou a proposta: <span>{{title}}</span>'
   proposal_edited_item:
-    name: '<strong>{{actor}}</strong> atualizou o título da proposta: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> atualizou a descrição da proposta'
-    closing_at: '<strong>{{actor}}</strong> atualizou a proposta para encerrar em <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> atualizou o título e a descrição da proposta'
-    closing_at_name: '<strong>{{actor}}</strong> atualizou o título e o tempo para encerramento da proposta'
-    closing_at_description: '<strong>{{actor}}</strong> atualizou a descrição e o tempo para encerramento da proposta'
-    closing_at_description_name: '<strong>{{actor}}</strong> atualizou título, descrição e tempo para encerramento da proposta'
+    name: 'atualizou o título proposta: <span>{{title}}</span>'
+    description: atualizou a descrição da proposta
+    closing_at: 'atualizou a proposta para fechar em <span>{{time}}</span>'
+    description_name: atualizou o título e a descrição da proposta
+    closing_at_name: atualizou o título da proposta e a hora de encerramento
+    closing_at_description: atualizou o descrição da proposta e a hora de encerramento
+    closing_at_description_name: 'atualizou título, descrição e hora de encerramento da proposta'
   proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> publicou um resultado para a proposta:'
+    proposal_outcome_created: 'publicou um resultado da proposta:'
   proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> atualizou o resultado da proposta:'
+    proposal_outcome_updated: 'atualizou o resultado da proposta:'
   discussion_edited_item:
-    title: '<strong>{{actor}}</strong> atualizou o título do tópico: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> atualizou o contexto do tópico'
-    description_title: '<strong>{{actor}}</strong> atualizou o título e o contexto do tópico'
+    title: 'atualizou o título do tópico: <span>{{title}}</span>'
+    description: atualizou o contexto do tópico
+    description_title: atualizou título e contexto do tópico
   contact_message_form:
     contact_us: Contato
     name_label: Seu nome
@@ -962,3 +1002,10 @@ pt-BR:
       body_html: '<p>Êita, nós fizemos algo errado? Lamentamos se você teve um mau momento no novo Loomio.</p>'
       give_feedback: 'Antes de ir, por favor, considere compartilhar suas opiniões para que possamos melhorar.'
       button_text: Mude de volta para o antigo Loomio
+  global:
+    messages:
+      app_update: Uma nova versão do Loomio está disponível
+      reload: Recarregar
+  emoji_picker:
+    search: Encontre um emoji...
+    no_emojis_found: "Nenhum emoji encontrado para '{{term}}'!"

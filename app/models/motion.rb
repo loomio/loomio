@@ -11,6 +11,8 @@ class Motion < ActiveRecord::Base
   belongs_to :discussion
   update_counter_cache :discussion, :motions_count
 
+  define_counter_cache(:members_not_voted_count) { |motion| motion.members_not_voted.count }
+
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
   has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
@@ -186,10 +188,6 @@ class Motion < ActiveRecord::Base
     else
       did_not_voters
     end
-  end
-
-  def members_not_voted_count
-    members_not_voted.count
   end
 
   def percent_voted

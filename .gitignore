@@ -11,6 +11,9 @@ tmp/
 *.DS_Store
 coverage
 public/assets
+public/javascripts
+public/client
+public/stylesheets
 public/system
 .project
 Session.vim
@@ -22,10 +25,8 @@ screenshots/
 .env
 bin/
 /public/uploads
-/lineman/node_modules
-/lineman/dist
-/lineman/generated
-/lineman/vendor/bower_components
+/lineman
 .powenv
-/lineman/app/css/modules.scss
-/lineman/app/components.scss
+
+/angular/node_modules
+/angular/dist

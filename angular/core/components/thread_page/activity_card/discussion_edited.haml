@@ -1,0 +1,10 @@
+.thread-item{ng-controller: "DiscussionEditedItemController"}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: "event.actor()", size: "small"}
+    .media-body
+      %h3.thread-item__title{id: "event-{{event.id}}"}
+        %strong
+          %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
+        %span{translate: "discussion_edited_item.{{translationKey}}", translate-value-title: "{{title}}"}
+        %timeago.timeago--inline{timestamp: "event.createdAt"}

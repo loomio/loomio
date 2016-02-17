@@ -1,0 +1,5 @@
+.blank
+  %section.thread-volume-card{aria-labelledby: "thread-volume-card-heading", ng-if: "canChangeVolume()"}
+    %h2.lmo-card-heading#thread-volume-card-heading{translate: "thread_volume_card.heading"}
+    .thread-volume-card__body.lmo-grey{translate: "{{'thread_volume_card.body.'+thread.volume()}}"}
+    %a.thread-volume-card__change-volume-link.lmo-card-minor-action{href: "", ng-click: "openChangeVolumeForm()", translate: "thread_volume_card.change_volume_link"}}

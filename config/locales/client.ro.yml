@@ -274,23 +274,14 @@ ro:
       mute_aria_description: 'Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.'
   group_form:
     privacy: Confidentialitate
-    group_privacy_open_description: 'oricine poate gasi grupul, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice.'
-    group_privacy_closed_description: 'oricine poate gasi grupul, poate vedea continutul acestuia, poate cere sa participe. Doar membrii pot vedea discutiile.'
-    group_privacy_closed_public_threads_description: 'oricine poate gasi grupul, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice sau private.'
-    group_privacy_secret_description: doar membrii invitati pot gasi acest grup si pot vedea discutiile.
     confirm_change_to_secret: 'Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private.'
     confirm_change_to_secret_subgroup: 'Daca vei continua, toate discutiile vor deveni private.'
     confirm_change_to_public: 'Daca vei continua, toate discutiile vor deveni publice pe web.'
     confirm_change_to_private_discussions_only: 'Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.'
-    subgroup_privacy_open_description: 'oricine poate gasi acest sub-grup, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice.'
-    subgroup_privacy_closed_description: 'oricine poate gasi acest sub-grup, poate vedea continutul acestuia, poate cere sa participe. Doar membrii pot vedea discutiile.'
-    subgroup_privacy_closed_public_threads_description: 'oricine poate gasi acest sub-grup, poate vedea continutul acestuia, poate cere sa participe. Toate discutiile sunt publice sau private.'
-    subgroup_privacy_secret_description: doar membrii invitati pot gasi acest sub-grup si pot vedea discutiile.
     thread_privacy: Confidentialitatea discutiei
     public_threads: Doar discutii publice
     public_or_private_threads: Permite discutii publice si private
     allow_public_threads: Permite discutii publice in acest grup
-    parent_members_can_see_discussions: 'Membrii {{parent}} pot vedea discutii.'
     members_can_edit_discussions: Membrii pot actualiza contextul si titlul discutiei.
     members_can_start_discussions: Membrii pot creare o discutie noua.
     submit_update: Actualizeaza setarile
@@ -402,8 +393,6 @@ ro:
     context_menu:
       edit_comment: Editeaza comentariul
       delete_comment: Sterge comentariu
-  discussion_edited_item:
-    title: '<strong>{{actor}}</strong> a actualizat titlul discutiei: <span>{{title}}</span>'
   contact_message_form:
     name_label: Nume
     email_label: Adresa ta de email

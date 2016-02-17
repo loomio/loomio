@@ -1,0 +1,4 @@
+.form-errors{ng-hide: "record.isValid()", ng-animate: "'enter'"}
+  %ul
+    %li{ng-repeat: "error in record.errors"} # translation soon
+      {{error}}

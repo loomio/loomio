@@ -1,0 +1,12 @@
+%form{ng-submit: "submit()"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .delete-thread-form
+    .modal-header
+      %modal_header_cancel_button
+      %h1.lmo-h1{translate: "delete_thread_form.title"}
+
+    .modal-body
+      %span{translate: "delete_thread_form.body"}
+    .modal-footer
+      %button.lmo-btn--danger.delete_thread_form__submit{type: "submit", translate: "delete_thread_form.confirm"}
+      %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

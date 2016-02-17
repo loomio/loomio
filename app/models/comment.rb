@@ -40,6 +40,10 @@ class Comment < ActiveRecord::Base
 
   serialize :liker_ids_and_names, Hash
 
+  define_counter_cache :versions_count do |comment|
+    comment.versions.count
+  end
+
   alias_method :author, :user
   alias_method :author=, :user=
   attr_accessor :new_attachment_ids
@@ -85,12 +89,7 @@ class Comment < ActiveRecord::Base
   end
 
   def refresh_liker_ids_and_names!
-    hash = {}
-    comment_votes.each do |cv|
-      hash[cv.user_id] = cv.user.name
-    end
-    self.liker_ids_and_names = hash
-    save!
+    update liker_ids_and_names: self.comment_votes.reduce({}) { |hash, vote| hash[vote.user_id] = vote.user.name; hash }
   end
 
   def mentioned_usernames
@@ -99,6 +98,14 @@ class Comment < ActiveRecord::Base
 
   def mentioned_group_members
     group.users.where(username: mentioned_usernames).where('users.id != ?', author.id)
+  end
+
+  def new_mentions_in(body)
+    self.class.new(body: body).mentioned_usernames - mentioned_usernames
+  end
+
+  def notified_group_members
+    mentioned_group_members.without(author).without(parent.try(:author))
   end
 
   def likes_count

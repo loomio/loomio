@@ -1,3 +1,4 @@
+---
 mk:
   email_settings:
     submit: Ажурирај ги подесувањата
@@ -21,14 +22,17 @@ mk:
     cant_state_position: Овој предлог е затворен.
     cant_view_member_profile: Не можете да го видите профилот на корисникот затоа што не сте во иста група.
     discussion_not_created: Дискусијата не може да биде започната.
-    discussion_not_moved: "Немате дозвола да ја преместите оваа дискусија во %{destination_group.name}"
+    discussion_not_moved: Немате дозвола да ја преместите оваа дискусија во %{destination_group.name}
     group_not_archived: Групата не може да биде архивирана.
     invalid_email: Ве молиме внесете барем една валидна електронска пошта.
-    image_upload_fail: "Фотографијата не може да се прикачи. Осигурајте се дека фотографијата е под 1 MB и е .jpeg, .png или .gif датотека."
+    image_upload_fail: Фотографијата не може да се прикачи. Осигурајте се дека фотографијата е под 1 MB и е .jpeg, .png или .gif датотека.
     permission_to_invite: Немаш дозвола да поканиш нови членови.
     position_not_updated: Позицијата не може да се ажурира.
     settings_not_updated: Твоите подесувања не беа ажурирани.
-    group_private_or_not_found: "Групата не е пронајдена.\n\nОваа група можеби е приватна. Ако некој ви го дал овој линк, замолете го да ве покани во групата."
+    group_private_or_not_found: |-
+      Групата не е пронајдена.
+
+      Оваа група можеби е приватна. Ако некој ви го дал овој линк, замолете го да ве покани во групата.
     group_already_setup: Групата која пробавте да ја направите веќе постои.
     user_with_email_address_already_in_group: Корисник со таа електронска пошта веќе постои во оваа група.
     you_have_already_requested_membership: Веќе побаравте да се придружите во оваа група.
@@ -36,7 +40,7 @@ mk:
   alert:
     duplicate_email: "%{which_email} е веќе во групата."
   notice:
-    admin_rights_removed: "Координаторските права на %{which_user} се избришани."
+    admin_rights_removed: Координаторските права на %{which_user} се избришани.
     user_added: "%{user_email_or_name} беше додаден/а во групата."
     new_user_added: "%{user_email_or_name} ќе биде додаден/а во групата откако ќе направи сметка на Loomio."
     member_removed: Членот е избришан.
@@ -45,7 +49,7 @@ mk:
     membership_request_ignored: Барањето за членство е игнорирано.
     settings_updated: Твоите подесувања беа ажурирани.
     user_made_admin: "%{which_user} беше назначен за координатор."
-    you_have_left_group: "Ја напушти групата %{which_group}."
+    you_have_left_group: Ја напушти групата %{which_group}.
     comment_deleted: Коментарот е избришан.
   tooltip:
     cover_photo_upload: Прикачи нова насловна фотографија
@@ -57,7 +61,7 @@ mk:
       previous: Претходно
       next: Следно
   warning:
-    cant_remove_last_admin: "Не можеш да ја напуштиш групата затоа што ти си единствениот координатор. "
+    cant_remove_last_admin: 'Не можеш да ја напуштиш групата затоа што ти си единствениот координатор. '
     membership_request_already_approved: Барањето за членство е веќе одобрено.
     membership_request_already_ignored: Барањето за членство е веќе игнорирано.
     membership_request_already_canceled: Барањето за членство е веќе откажано.
@@ -65,17 +69,17 @@ mk:
     proposal_not_created: Предлогот не може да биде создаден
     user_already_admin: "%{which_user} е веќе координатор на оваа група."
     user_already_member: "%{which_user} е веќе член на оваа група."
-    user_not_admin: "Извинете, %{which_user} мора да биде координатор на оваа група за да пристапи на ова."
+    user_not_admin: Извинете, %{which_user} мора да биде координатор на оваа група за да пристапи на ова.
   success:
-    added_to_group: "Вие бевте додадени во %{which_group}."
+    added_to_group: Вие бевте додадени во %{which_group}.
     discussion_created: Дискусијата е успешно започната.
     discussion_deleted: Дискусијијата е успешно избришана.
-    discussion_moved: "Дискусијата е успешно преместена во %{group_name}"
+    discussion_moved: Дискусијата е успешно преместена во %{group_name}
     emails_sending: Поштата се испраќа.
     group_archived: Групата е успешно архивирана.
     group_created: Групата е успешно создадена.
     members_added: Членовите се додадени во групата.
-    membership_requested: "Побаравте да се придружите на %{which_group}. Ќе бидете известени кога вашето барање ќе биде одобрено."
+    membership_requested: Побаравте да се придружите на %{which_group}. Ќе бидете известени кога вашето барање ќе биде одобрено.
     position_submitted: Позицијата е поднесена
     position_updated: Позицијата е ажурирана.
     proposal_created: Предлогот е успешно креиран.
@@ -117,15 +121,6 @@ mk:
         other: "%{count} години"
   organisation:
     name: Loomio
-  footer:
-    about: За Loomio
-    blog: Блог
-    contact: Контакт
-    help: Помош
-    privacy: Приватност
-    pricing: Ценовник
-    public_groups: Јавни групи
-    terms: Услови
   inbox:
     title: Сандаче
     dropdown-btn: Сандаче
@@ -156,19 +151,13 @@ mk:
   discussion_helper_text:
     header: Добре дојде во твојата прва дискусија
   group_helper_text:
-    header: "Добре дојде во твојата нова група!"
+    header: Добре дојде во твојата нова група!
   dashboard_helper_text:
     header: Добре дојде на твојата почетна страна
   prompt_user_to_join:
     header: Приклучи се во групата за да учествуваш
   user_profile:
     change_password: Измени ја лозинката
-  start_group_form:
-    header: Започни нова група
-    name: Твоето име
-    group_name: Име на групата
-    success:
-      header: "Речиси си готов/а! Провери ја твојата електронска пошта."
   group_form:
     name: Име на групата
     description: Опис
@@ -178,14 +167,14 @@ mk:
       label: Кој може да ја пронајде групава?
     membership_granted_upon:
       label: Како луѓето се придружуваат?
-      request_html: "Отворено <span>секој може да се придружи во групата</span>"
+      request_html: Отворено <span>секој може да се придружи во групата</span>
     parent_members_can_see_discussions:
-      "false": Само членови можат да гледаат дискусии
+      'false': Само членови можат да гледаат дискусии
     discussion_privacy_options:
       label: Кој може да гледа дискусии?
       hint: Јавните дискусии се видливи за секој
   group_permissions:
-    coordinators_can: "Координаторите можат:"
+    coordinators_can: 'Координаторите можат:'
     c1: Измени го подесувањата на групата
     c2: Измени го насловот или контекстот на било која дискусија.
     c4: Покани и одобри нови членови.
@@ -197,35 +186,35 @@ mk:
   group_privacy:
     visible_to:
       members: Скриена група. Видлива само за членовите.
-  setup_steps_title: "Следни чекори:"
+  setup_steps_title: 'Следни чекори:'
   setup_step_2: Започни ја твојата прва дискусија
   setup_step_3: Покани луѓе во твојата група
   invite_people: Покани луѓе
   edit_memberships: Измени членства
   add_new_member: Додај нов член
-  invite_members_to_group: "Покани членови во %{which_group}"
-  email_members_in_group: "Извести ги членовите во %{which_group} преку електронска пошта"
+  invite_members_to_group: Покани членови во %{which_group}
+  email_members_in_group: Извести ги членовите во %{which_group} преку електронска пошта
   subject_error: Ве молиме напишете тема
   subject_placeholder: Напиши тема
   message_error: Ве молиме напишете порака
-  message_placeholder: "Напиши порака до членовите на %{which_group}."
+  message_placeholder: Напиши порака до членовите на %{which_group}.
   email_group_members: Извести ги членовите на групата преку email
   edit_group_settings: Измени ги подесувањата на групата
   leave_group: Напушти ја групата
-  confirm_leave_group: "Дали сте сигурни дека сакате да ја напуштите %{which_group}?"
+  confirm_leave_group: Дали сте сигурни дека сакате да ја напуштите %{which_group}?
   deactivate_group: Де-активирај ја групата
   invited_users: Поканети членови
   members: Членови
-  confirm_remove_user: "Дали сте сигурни дека сакате да го избришете корисникот %{which_user} од групата?"
+  confirm_remove_user: Дали сте сигурни дека сакате да го избришете корисникот %{which_user} од групата?
   remove_coordinator: Избриши координатор
   make_coordinator: Направи координатор
   membership_requests: Барања за членство
   previous_requests: Претходни барања
-  approved_by_person: "Одобрено од %{person}"
-  ignored_by_perosn: "Игнорирано од %{person}"
+  approved_by_person: Одобрено од %{person}
+  ignored_by_perosn: Игнорирано од %{person}
   join_group_btn: Приклучи се во групата
-  you_have_joined_group: "Се приклучи во %{group_name}"
-  confirm_approve_membership_request: "Дали сте сигурни дека сакате да го додадете корисникот %{which_user} во групата?"
+  you_have_joined_group: Се приклучи во %{group_name}
+  confirm_approve_membership_request: Дали сте сигурни дека сакате да го додадете корисникот %{which_user} во групата?
   cancel_membership_request: Откажи го барањето
   ignore_request: Игнорирај го барањето
   ignore: Игнорирај
@@ -234,7 +223,7 @@ mk:
   ask_to_join_group: Побарај да се придружиш на групата
   subgroups: Под-групи
   create_a_subgroup: Започни под-група
-  select_members_to_add: "Избери кои членови ќе ги додадеш во %{which_group}"
+  select_members_to_add: Избери кои членови ќе ги додадеш во %{which_group}
   invite_members: Покани членови
   new_subgroup: Нова под-група
   create_subgroup: Започни под-група
@@ -257,7 +246,7 @@ mk:
   group_request:
     header: Започни група
     confirmation:
-      title: "Речиси си готов/а! Провери ја твојата електронска пошта."
+      title: Речиси си готов/а! Провери ја твојата електронска пошта.
   discussion_items:
     new_discussion: ја започна дискусијата
     new_motion: го започна предлогот
@@ -271,35 +260,35 @@ mk:
   previous_decisions: Претходна одлука
   see_previous_decisions: Погледни ги претходните одлуки
   see_more: Види повеќе
-  empty_decision_list_html: "Спремни сте да донесете одлука? <br> Секој може да покрене предлог."
+  empty_decision_list_html: Спремни сте да донесете одлука? <br> Секој може да покрене предлог.
   empty_decision_index: Оваа група сè уште нема донесено одлуки.
   empty_discussion_list: Сè уште нема активност во оваа дискусија.
-  go_to_add_comment_html: "За да додадеш коментар, <a href='%{href}'>оди на крајот на дискусијата</a>."
+  go_to_add_comment_html: За да додадеш коментар, <a href='%{href}'>оди на крајот на дискусијата</a>.
   discussion_list:
     empty:
       no_discussions_in_group: Оваа група сѐ уште нема дискусии.
       no_public_discussions: Нема јавни дискусии во оваа група.
       discussions_are_private: Сите дискусии во оваа група се приватни.
-      request_membership_html: "За да ги видиш приватните дискусии, <a href='%{href}'>побарај да се приклучиш во групата.</a>"
+      request_membership_html: За да ги видиш приватните дискусии, <a href='%{href}'>побарај да се приклучиш во групата.</a>
       membership_is_invitation_only: За да и се приклучите на групата треба да бидете поканети од страна на неко член.
       membership_is_invitation_by_admin_only: За да и се приклучите на групата треба да бидете поканети од координатор.
   discussion_context:
-    started_html: "Започнато пред %{when} од страна на <a href='%{link}' class='%{link_class}'>%{who}</a>"
-    last_edited_html: "Последен пат променето пред %{when} од страна на <a href='%{link}' class='%{link_class}'>%{who}</a>"
+    started_html: Започнато пред %{when} од страна на <a href='%{link}' class='%{link_class}'>%{who}</a>
+    last_edited_html: Последен пат променето пред %{when} од страна на <a href='%{link}' class='%{link_class}'>%{who}</a>
     see_revision_history: Види ја историјата на ревизиите
     see_history: Види ја историјата
   description_history:
     header: Историја на ревизиите
     subheader: Верзија
-    edited_by: "Променето пред околу %{when}, од страна на %{who}"
-    current: (моментално)
-    restore: (Врати ја оваа верзија)
-    applying_changes: (Промените се применуваат...)
+    edited_by: Променето пред околу %{when}, од страна на %{who}
+    current: "(моментално)"
+    restore: "(Врати ја оваа верзија)"
+    applying_changes: "(Промените се применуваат...)"
     previous: Претходно
     next: Следно
   comment_form_placeholder: Кажи нешто...
   comment_form_submit_button: Објави го коментарот
-  liked_by: "Им се допаѓа на %{who}"
+  liked_by: Им се допаѓа на %{who}
   delete_comment: Избриши го коментарот
   confirm_delete_comment: Дали си сигурен/а дека сакаш да го избришиш коментарот?
   markdown_settings_more_info: Повеќе информации...
@@ -313,11 +302,11 @@ mk:
   close_proposal: Затвори го предлогот
   confirm_close_proposal: Дали сте сигурни дека сакате да го затворите овој предлог?
   change_proposal_close_date: Промени го датумот на затворање
-  change_proposal_close_date_header: "Промени го датумот за затворање на предлогот '%{which}'"
+  change_proposal_close_date_header: Промени го датумот за затворање на предлогот '%{which}'
   proposal: Предлог
-  proposal_closing_when: "Се затвора во %{when}"
-  proposal_closed_when: "Затворено пред %{when}"
-  proposed_when_by_who: "Предложено од страна на %{who} пред %{when}"
+  proposal_closing_when: Се затвора во %{when}
+  proposal_closed_when: Затворено пред %{when}
+  proposed_when_by_who: Предложено од страна на %{who} пред %{when}
   positions: Позиции
   yes_position: Се согласувам
   abstain_position: Апстинирам
@@ -325,11 +314,11 @@ mk:
   not_voted: "[Покажи ги членовите кои сѐ уште не одлучиле]"
   outcome_placeholder: Кој беше исходот од вашиот предлог?
   position_verbs:
-    "yes": се согласувам
+    'yes': се согласувам
     block: блок
     past_tense:
-      "yes": се согласи
-      "no": не се согласи
+      'yes': се согласи
+      'no': не се согласи
   edit_comment:
     edit_comment: Измени го коментарот
   help:
@@ -345,21 +334,19 @@ mk:
     make_a_decision: Направи одлука
     positions_agree_description: "<span>Се сложувам</span> значи дека сте задоволни со предлогот."
     positions_abstain_description: "<span>Воздржан</span> значи дека сте несигурни или дека е во ред групата да одлучи без вас."
-    video_id: "52025402"
+    video_id: '52025402'
     video_tutorial: Видео туторијал
     video_tutorial_description: Провери го видеото за брза демонстрација како се користи Loomio.
-  pricing_page:
-    header: Ценовник
   resend_confirmation: Испрати повторно инструкции за потврда
   new_password: Нова лозинка
   confirm_new_password: Потврди ја новата лозинка
   change_your_password: Измени ја лозинката
   change_my_password: Промени ја мојата лозинка
   send_password_reset: Испрати ми инструкции за промена на лозинката
-  blank_details: (остави празно ако не сакаш да го промениш)
+  blank_details: "(остави празно ако не сакаш да го промениш)"
   password_confirmation: Потврда на лозинката
   current_password: Моментална лозинка
-  password_details: (ни треба твојата лозинка за да ги потврдиме твоите измените)
+  password_details: "(ни треба твојата лозинка за да ги потврдиме твоите измените)"
   confirm_password: Потврди ја лозинката
   cancel_my_account: Избриши ја мојата сметка
   remember_me: Запомни ме
@@ -376,28 +363,21 @@ mk:
   create_an_account_html: Создај Loomio Beta акаунт
   log_in: Најави се
   invitation:
-    alternate: "Алтернативно, споделете го овој линк и секој може да побара да се придружи:"
+    alternate: 'Алтернативно, споделете го овој линк и секој може да побара да се придружи:'
     by_email: Покани преку email
-    invitees_placeholder: "Корисничко име <user1@example.com>, user2@example.com"
+    invitees_placeholder: Корисничко име <user1@example.com>, user2@example.com
     invite_people: Покани луѓе во твојата група
     invite_to_discussion: Покани луѓе во дискусијава
-    select_members: "Додај членови од %{group_name}"
-    body_editable_discussion: "Еј таму, дојди и придружи се во дискусијава!\n"
+    select_members: Додај членови од %{group_name}
+    body_editable_discussion: 'Еј таму, дојди и придружи се во дискусијава!
+
+'
     invitation_link: Линк до поканата
-    discussion_link: "Учествувај во дискусијата:"
+    discussion_link: 'Учествувај во дискусијата:'
   search:
-    description: "Подолу е листата на дискусии и предлози кои имаат '%{query}' во својот наслов или опис."
+    description: Подолу е листата на дискусии и предлози кои имаат '%{query}' во својот наслов или опис.
     placeholder: Пребарувај
     empty_search: Празно пребарување
-  contact_page:
-    contact_us: Контактирајте не
-    labels:
-      name: Твоето име
-      email: Твојата електронска пошта
-      message: Твојата порака
-      submit: Испрати порака
-    messages:
-      email_html: "Пополни ја формава, или испрати email до <a href='mailto:%{email}'>%{email}</a>"
   discussion_form:
     new:
       header: Започни дискусија
@@ -406,7 +386,7 @@ mk:
       header: Измени ја дискусијата
     privacy:
       will_be_private: Дискусијата ќе биде видлива само за членовите на групата.
-      will_be_private_to_group: "Дискусијата ќе биде видлива само за членовите на %{group_name}."
+      will_be_private_to_group: Дискусијата ќе биде видлива само за членовите на %{group_name}.
       will_be_public: Секој може да ја види дискусијата.
   motion_form:
     new:
@@ -427,15 +407,15 @@ mk:
     picture: Фотографија
     upload_new_image: Прикачи нова фотографија
   group_setup:
-    desc_header: "Речиси си готов/а!"
-    submit: "Однеси ме во мојата група!"
+    desc_header: Речиси си готов/а!
+    submit: Однеси ме во мојата група!
     payment_model:
-      header: "Loomio е за сите!"
-      info: "Имаме модел за плаќање кој им одговара на сите групи, дури и на оние без пари :)"
+      header: Loomio е за сите!
+      info: Имаме модел за плаќање кој им одговара на сите групи, дури и на оние без пари :)
       link: Дознај повеќе
   simple_form:
-    "yes": Да
-    "no": Не
+    'yes': Да
+    'no': Не
     required:
       text: потребно
       mark: "*"
@@ -457,7 +437,7 @@ mk:
         language_preference: Јазик
     placeholders:
       membership_request:
-        introduction: "Напиши неколку зборови за тебе и зошто сакаш да се приклучиш во %{group_name}."
+        introduction: Напиши неколку зборови за тебе и зошто сакаш да се приклучиш во %{group_name}.
   helpers:
     submit:
       discussion:
@@ -466,57 +446,8 @@ mk:
       user:
         create: Создај акаунт
         update: Ажурирај ги подесувањата
-  email:
-    reply_to_this_discussion: Врати на дискусијата
-    to_join_discussion:
-      subject: "%{who} сака да се приклучиш во дискусија на Loomio"
-      content: "Треба да си поканет/а за да учествуваш во дискусијата: %{discussion}"
-      message_intro: "%{who} кажува:"
-      link: Приклучи се на дискусијата
-    to_join_group:
-      subject: "%{member} те покани да се приклучиш во %{group_name} на Loomio"
-    user_added_to_a_group:
-      subject: "%{who} те додаде во %{which_group}"
-      content: "%{who} те додаде во %{which_group} на Loomio. Кликни овде за да одиш во групата:"
-    view_comment: Кликни овде за да го видиш коментарот на Loomio
-    view_discussion: Кликни овде за да ја видиш дискусијата
-    view_group: Кликни овде за да ја видиш групата на Loomio
-    view_proposal: Види го предлогот на Loomio
-    create_proposal:
-      closes_in: Се затвора во
-      subject: "Нов предлог: %{which}"
-    daily_activity:
-      heading: Вашата активност на Loomio
-      subject: Loomio - Резиме на последните 24 часа
-    missed_yesterday:
-      subject: Вчера на Loomio
-      mark_as_read: Означи го како прочитано
-    group_email:
-      intro: "%{who} направи најава во %{group}:"
-    group_membership_approved:
-      intro: "Твоето барање за пристап во групата '%{group_name}' на Loomio беше прифатено."
-      subject: Членството е одобрено
-    invitation:
-      hi: "Здраво %{name},"
-      thanks: "Ти благодариме!\nТимот на Loomio\n"
-    membership_request:
-      subject: "%{who} побара да се приклучи во %{which_group}"
-      view_group: Можете да го одобрите или одбиете барањето овде
-    mentioned:
-      subject: "%{who} те спомена во %{which} групата на Loomio"
-    proposal_closed:
-      subject: "Предлогот е затворен - %{which}"
-    proposal_outcome:
-      subject: Исход на предлогот
-    proposal_blocked:
-      subject: "Предлогот е блокиран - %{which}"
-    proposal_closing_soon:
-      closes_on: Се затвора на
-      closes_at: Се затвора во
-      closes_in: Се затвора во
-      summary: Резиме
   about_loomio: За Loomio
-  ago: "пред %{quantity_of_time}"
+  ago: пред %{quantity_of_time}
   approve: Одобри
   author: Автор
   back: Назад
@@ -554,13 +485,13 @@ mk:
   pricing: Ценовник
   prev: Претходно
   more: Повеќе...
-  translate: "Помогни да се преведе Loomio!"
+  translate: Помогни да се преведе Loomio!
   translate_field: Види превод
   loading_translation: Преводот се вчитува...
-  translate_this_string: "Преведи на %{language}"
+  translate_this_string: Преведи на %{language}
   failed_translation: Не е возможно да се заврши преводот
   options: Опции
-  ok_got_it: "Во ред, разбрав!"
+  ok_got_it: Во ред, разбрав!
   remove: Избриши
   save: Зачувај
   saving: Се зачувува
@@ -571,7 +502,7 @@ mk:
   start_a_group: Започни група
   starting: Започнува
   subject: Тема
-  thanks: "Благодарам!"
+  thanks: Благодарам!
   unlike: Не ми се допаѓа
   update: Ажурирај
   facebook: Фејсбу
@@ -638,7 +569,7 @@ mk:
     privacy: Приватност
     public: Јавно
     email: Email
-    start_group: "Започни група!"
+    start_group: Започни група!
   group_categories:
     blank: Некатегоризирано
     economics: Економија

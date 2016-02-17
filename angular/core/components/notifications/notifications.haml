@@ -1,0 +1,14 @@
+.blank{uib-dropdown: "true", on-toggle: "toggled(open)"}
+  %button.lmo-btn--nude.lmo-navbar__btn.lmo-navbar__btn--notifications.lmo-navbar__btn-icon.notifications__button.has-badge{uib-dropdown-toggle: "true", tabindex: 4}
+    .sr-only{translate: "navbar.notifications"}
+    %i.fa.fa-lg.fa-fw{aria-hidden: "true", ng-class: "{'fa-bell': hasUnread(), 'fa-bell-o': !hasUnread()}"}
+    %span.badge.notifications__activity{ng-if: "hasUnread()"}
+      {{unreadCount()}}
+  .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-selector-list.notifications__dropdown{role: "menu"}
+    .navbar-notifications
+      %ul.selector-list
+        %li.selector-list-header{translate: "notifications.header", role: "heading"}
+        %li.selector-list-item.media{ng-class: "{'lmo-active': !notification.viewed}", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
+          %a.selector-list-item-link{lmo-href-for: "notification.relevantRecord()"}
+            .blank{ng-include: "'generated/components/notifications/' + notification.kind() + '.html'"}
+      %loading{ng-if: "loading()"}

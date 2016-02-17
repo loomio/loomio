@@ -1,0 +1,8 @@
+.new-comment__author-name {
+  @include fontHelveticaBold;
+  a { color: $primary-text-color; }
+}
+
+.new-comment__in-reply-to {
+  a { color: $primary-text-color; }
+}

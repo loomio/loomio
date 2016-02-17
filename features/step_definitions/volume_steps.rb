@@ -38,6 +38,17 @@ Given(/^Mute megan mutes everything\.$/) do
   @group.add_member!(@mute_megan).set_volume!(:mute)
 end
 
+Given(/^Hermit Harry turns off all emails\.$/) do
+  @hermit_harry = FactoryGirl.create(:user,
+                                     username: 'harry',
+                                     name: 'Hermit Harry',
+                                     email_missed_yesterday: false,
+                                     email_on_participation: false,
+                                     email_when_mentioned: false,
+                                     email_when_proposal_closing_soon: false)
+  @group.add_member!(@hermit_harry).set_volume!(:mute)
+end
+
 Given(/^Closing Soonsan mutes everything but wants to hear when proposals are closing and when mentioned\.$/) do
   @closing_soonsan = FactoryGirl.create(:user,
                                    name: 'Closing Soonsan',
@@ -381,5 +392,11 @@ end
 When(/^I mention Mute Megan$/) do
   @discussion = FactoryGirl.create :discussion, group: @group
   comment = FactoryGirl.build(:comment, author: @user, discussion: @discussion, body: 'hi @megan')
+  CommentService.create(comment: comment, actor: @user)
+end
+
+When(/^I mention Hermit Harry$/) do
+  @discussion = FactoryGirl.create :discussion, group: @group
+  comment = FactoryGirl.build(:comment, author: @user, discussion: @discussion, body: 'hi @harry')
   CommentService.create(comment: comment, actor: @user)
 end

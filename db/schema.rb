@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211015455) do
+ActiveRecord::Schema.define(version: 20160210023408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20151211015455) do
     t.integer  "attachments_count",   default: 0,     null: false
     t.text     "liker_ids_and_names"
     t.datetime "edited_at"
+    t.integer  "versions_count",      default: 0
   end
 
   add_index "comments", ["created_at"], name: "index_comments_on_created_at", using: :btree
@@ -265,6 +266,7 @@ ActiveRecord::Schema.define(version: 20151211015455) do
     t.integer  "first_sequence_id",   default: 0,     null: false
     t.datetime "last_item_at"
     t.integer  "salient_items_count", default: 0,     null: false
+    t.integer  "versions_count",      default: 0
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -400,7 +402,6 @@ ActiveRecord::Schema.define(version: 20151211015455) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "members_invitable_by",               limit: 255
     t.integer  "parent_id"
     t.boolean  "hide_members",                       default: false
     t.text     "description"
@@ -481,6 +482,7 @@ ActiveRecord::Schema.define(version: 20151211015455) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "single_use",      default: true,  null: false
+    t.text     "message"
   end
 
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
@@ -551,16 +553,17 @@ ActiveRecord::Schema.define(version: 20151211015455) do
     t.integer  "discussion_id"
     t.text     "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",       default: true, null: false
-    t.integer  "yes_votes_count",     default: 0,    null: false
-    t.integer  "no_votes_count",      default: 0,    null: false
-    t.integer  "abstain_votes_count", default: 0,    null: false
-    t.integer  "block_votes_count",   default: 0,    null: false
+    t.boolean  "uses_markdown",           default: true, null: false
+    t.integer  "yes_votes_count",         default: 0,    null: false
+    t.integer  "no_votes_count",          default: 0,    null: false
+    t.integer  "abstain_votes_count",     default: 0,    null: false
+    t.integer  "block_votes_count",       default: 0,    null: false
     t.datetime "closing_at"
     t.integer  "did_not_votes_count"
-    t.integer  "votes_count",         default: 0,    null: false
+    t.integer  "votes_count",             default: 0,    null: false
     t.integer  "outcome_author_id"
     t.string   "key"
+    t.integer  "members_not_voted_count", default: 0,    null: false
   end
 
   add_index "motions", ["author_id"], name: "index_motions_on_author_id", using: :btree

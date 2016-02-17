@@ -1,0 +1,13 @@
+.emoji-picker{aria-hidden: "true", off-click: "hideMenu()"}
+  %button.btn.btn-nude.emoji-picker__toggle{type: "button", tabindex: "-1", ng-click: "toggleMenu()"}
+    %i.fa.fa-smile-o
+  .emoji-picker__menu{ng-if: "showMenu"}
+    .emoji-picker__preview{ng-show: "hovered.name"}
+      %span{ng-bind-html: "hovered.image"}>
+      %span.emoji-picker__hovered-name {{ hovered.name }}
+      %hr.emoji-picker__hr
+    .emoji-picker__none-found{ng-if: "noEmojisFound()", translate: "emoji_picker.no_emojis_found", translate-value-term: "{{term}}"}
+    .emoji-picker__selector{ng-repeat: "emoji in source"}
+      %a.emoji-picker__link{ng-click: "select(emoji)", ng-mouseover: "hover(emoji)"}
+        .emoji-picker__icon{ng-bind-html: "render(emoji)"}
+    %input.emoji-picker__search.form-control{ng-model: "term", ng-change: "search(term)", placeholder: "{{'emoji_picker.search' | translate}}"}

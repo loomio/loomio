@@ -24,63 +24,50 @@ class DiscussionService
   end
 
   def self.create(discussion:, actor:)
+    actor.ability.authorize! :create, discussion
     discussion.author = actor
     discussion.inherit_group_privacy!
     return false unless discussion.valid?
 
-    actor.ability.authorize! :create, discussion
     discussion.save!
-    Draft.purge(user: actor, draftable: discussion.group, field: :discussion)
-    SearchVector.index! discussion.id
+    EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
   end
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
     discussion.delayed_destroy
+    EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    [:private, :title, :description, :uses_markdown].each do |attr|
-      discussion.send("#{attr}=", params[attr]) if params.has_key?(attr)
-    end
+    discussion.assign_attributes(params.slice(:private, :title, :description, :uses_markdown))
+    discussion.assign_attributes(params.slice(:iframe_src)) if actor.ability.can? :update, discussion.group
 
-    if actor.ability.can? :update, discussion.group
-      discussion.iframe_src = params[:iframe_src]
-    end
-
-    return false unless discussion.valid?
-    return discussion if discussion.changed == ['uses_markdown']
-    return discussion unless discussion.changed?
-
+    return false unless discussion.valid? && discussion.changed? && discussion.changed != ['uses_markdown']
     discussion.save!
-    event = Events::DiscussionEdited.publish!(discussion, actor)
 
-    SearchVector.index! discussion.id
-    DiscussionReader.for(discussion: discussion, user: actor).set_volume_as_required!
-    event
+    EventBus.broadcast('discussion_update', discussion, actor, params)
+    Events::DiscussionEdited.publish!(discussion, actor)
   end
 
   def self.move(discussion:, params:, actor:)
-    destination = Group.find_by id: params[:group_id]
+    destination = ModelLocator.new(:group, params).locate
     actor.ability.authorize! :move_discussions_to, destination
     actor.ability.authorize! :move, discussion
 
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
-    discussion
+
+    EventBus.broadcast('discussion_move', discussion, params, actor)
   end
 
   def self.update_reader(discussion:, params:, actor:)
-    reader = DiscussionReader.for(discussion: discussion, user: actor)
     actor.ability.authorize! :show, discussion
+    DiscussionReader.for(discussion: discussion, user: actor).update(params.slice(:starred, :volume))
 
-    [:starred, :volume].each do |attr|
-      reader.send("#{attr}=", params[attr]) if params.has_key?(attr)
-    end
-
-    reader.save!
+    EventBus.broadcast('discussion_update_reader', discussion, params, actor)
   end
 
   def self.mark_as_read(discussion:, params:, actor:)

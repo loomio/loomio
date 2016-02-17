@@ -405,11 +405,7 @@ uk:
   trial_card:
     title: 30-денне безкоштовне пробне використання
     choose_plan: Виберіть тарифний план
-    in_progress_body: 'Дякуємо за використання Loomio разом з <strong>{{name}}</strong>. Ви можете вибрати зручний для вас тарифний план в будь-який час.'
-    expired_body_html: "Пробне використання Loomio для <strong>{{name}}</strong> досягло кінця. Якщо ви хочете, використовувати її далі, вам потрібно вибрати тарифний план, який відповідає вашим потребам. Якщо ви хочете обговорити це питання, просто <a href=''>зв'яжіться</a>."
   choose_plan_modal:
-    heading: Виберіть тарифний план
-    overdue_heading: 'Щоб продовжити використання Loomio, будь ласка, виберіть тарифний план'
     gift: Подарунок.
     standard: Стандарт
     plus: Плюс
@@ -456,18 +452,9 @@ uk:
       private_to_group: Назву та опис будуть бачити тільки учасники.
       private_to_parent_members: 'Назву та опис будуть бачити тільки учасники {{parent}}'
     privacy: Конфіденційність
-    group_privacy_open_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Всі теми є відкритими.'
-    group_privacy_closed_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Тільки учасники можуть бачити теми.'
-    group_privacy_closed_public_threads_description: 'будь-хто може знайти групу, бачити хто в ній, зробити запит на долучення. Теми можуть бути відкритими або приватними.'
-    group_privacy_secret_description: тільки запрошені учасники можуть знайти групу та бачити теми.
     confirm_change_to_secret_subgroup: 'Якщо ви продовжите, всі теми буде змінено на приватні.'
     confirm_change_to_public: 'Якщо ви продовжите, всі теми в цій групі буде змінено на відкриті в мережі.'
     confirm_change_to_private_discussions_only: 'Якщо ви продовжите, всі відкриті теми в цій групі буде змінено на приватні.'
-    subgroup_privacy_open_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Всі теми є відкритими.'
-    subgroup_privacy_closed_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Тільки учасники можуть бачити теми.'
-    subgroup_privacy_closed_public_threads_description: 'будь-хто може знайти підгрупу, бачити хто в ній, зробити запит на долучення. Теми можуть бути відкритими або приватними.'
-    subgroup_privacy_closed_secret_parent_description: 'учасники {{parent}} можуть знайти підгрупу, бачити хто в ній, зробити запит на долучення.'
-    subgroup_privacy_secret_description: тільки запрошені учасники можуть знайти підгрупу та бачити теми.
     advanced_settings: Додаткові налаштування
     how_do_people_join: Як люди можуть долучитись?
     membership_granted_upon_request: Будь-хто може долучитись до групи.
@@ -480,7 +467,6 @@ uk:
     private_threads: Тільки учасники можуть бачити обговорення
     permissions: Дозволи
     allow_public_threads: Дозволити відкриті теми в цій групі.
-    parent_members_can_see_discussions: 'Учасники {{parent}} можуть бачити теми.'
     members_can_add_members: Учасники можуть запрошувати людей та схвалювати запити на долучення.
     members_can_create_subgroups: Учасники можуть створювати підгрупи.
     members_can_edit_discussions: Учасники можуть оновлювати контекст та заголовок будь-якої теми.
@@ -516,24 +502,6 @@ uk:
   group_previous_proposals_card:
     heading: Попередні пропозиції
     see_more: Переглянути більше
-  invitation:
-    invite_people: Запросити людей
-    find_people: Знайти людей
-    import_contacts_header: Підключіть свою адресну книгу
-    import_contacts_message: 'Запросити людей до Loomio набагато легше, якщо ви імпортуєте контакти з Google.'
-    import_contacts: Імпортувати контакти
-    instructions: Введіть імена або електронні адреси
-    invitation_message: Текст запрошення
-    remove_invite: Видалити запрошення
-    send_invite: 'Відправити {{count}} запрошень'
-    to: 'кому:'
-    add_custom_message: + додати власне повідомлення
-    default_message: 'Привіт, долучайся до прийняття рішення! Ми використовуємо інструмент спільного прийняття рішень під назвою Loomio'
-    messages:
-      members_added_and_emails_sent: '{{members}} учасник(и) додані і {{emails}} запрошення відправлені'
-      members_added: 'Учасник(и) {{members}} додані'
-      emails_sent: '{{emails}} запрошення відправлені'
-      no_invitations: 'Запрошення не відправлено!'
   memberships_page:
     members: Учасники
     name_label: Ім’я
@@ -727,38 +695,8 @@ uk:
       aria_label: Налаштування коментаря
       edit_comment: Редагувати коментар
       delete_comment: Видалити коментар
-    in_reply_to: '<strong>{{author}}</strong> у відповідь на <strong>{{recipient}}</strong>'
-  new_vote_item:
-    agree: '<strong>{{actor}}</strong> згоден'
-    abstain: '<strong>{{actor}}</strong> утримався'
-    disagree: '<strong>{{actor}}</strong> проти'
-    block: '<strong>{{actor}}</strong> заблокував'
-    agree_with_statement: '<strong>{{actor}}</strong> згоден: <span>{{statement}}</span>'
-    abstain_with_statement: '<strong>{{actor}}</strong> утримався: <span>{{statement}}</span>'
-    disagree_with_statement: '<strong>{{actor}}</strong> проти: <span>{{statement}}</span>'
-    block_with_statement: '<strong>{{actor}}</strong> заблокував: <span>{{statement}}</span>'
-  new_proposal_item:
-    author_created_proposal: '<strong>{{actor}}</strong> вніс(внесла) пропозицію: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'Було закрито пропозицію: <span>{{title}}</span>'
-  proposal_closed_by_user_item:
-    proposal_closed_by_user: '<strong>{{actor}}</strong> закрив(ла) пропозицію: <span>{{title}}</span>'
-  proposal_edited_item:
-    name: '<strong>{{actor}}</strong> оновив(ла) назву пропозиції: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> оновив(ла) опис пропозиції'
-    closing_at: '<strong>{{actor}}</strong> оновив(ла) час закриття пропозиції на <span>{{time}}</span>'
-    description_name: '<strong>{{actor}}</strong> оновив(ла) назву та опис пропозиції'
-    closing_at_name: '<strong>{{actor}}</strong> оновив(ла) назву та час закриття пропозиції'
-    closing_at_description: '<strong>{{actor}}</strong> оновив(ла) опис та час закриття пропозиції'
-    closing_at_description_name: '<strong>{{actor}}</strong> оновив(ла) назву, опис та час закриття пропозиції'
-  proposal_outcome_created_item:
-    proposal_outcome_created: '<strong>{{actor}}</strong> опублікував(ла) рішення по пропозиції:'
-  proposal_outcome_updated_item:
-    proposal_outcome_updated: '<strong>{{actor}}</strong> оновив(ла) рішення по пропозиції:'
-  discussion_edited_item:
-    title: '<strong>{{actor}}</strong> оновив заголовок теми: <span>{{title}}</span>'
-    description: '<strong>{{actor}}</strong> оновив контекст теми'
-    description_title: '<strong>{{actor}}</strong> оновив заголовок теми та її контекст'
   contact_message_form:
     contact_us: Контакти
     name_label: "Ваше ім'я"

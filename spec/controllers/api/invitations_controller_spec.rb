@@ -5,11 +5,18 @@ describe API::InvitationsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
+  let(:deactivated) { create :user, deactivated_at: 2.days.ago }
   let(:contact) { create :contact, user: user }
   let(:another_group) { create :group }
   let(:another_group_member) { create :user }
   let(:group) { create :group }
+  let(:user_invitable)    { { id: another_user.id, type: :user } }
+  let(:deactivated_invitable) { { id: deactivated.id, type: :user } }
+  let(:group_invitable)   { { id: another_group.id, type: :group } }
+  let(:contact_invitable) { { email: contact.email, type: :contact } }
+  let(:email_invitable)   { { email: 'mail@gmail.com', type: :email } }
   let(:pending_invitation) { create :invitation, invitable: group }
+  let(:invitation_params)  { { emails: 'rob@example.com, hannah@example.com' } }
 
   before do
     stub_request(:post, "http://localhost:9292/faye").to_return(status: 200)
@@ -23,12 +30,10 @@ describe API::InvitationsController do
 
   describe 'create' do
     context 'success' do
-
       it 'creates invitations with custom message' do
         ActionMailer::Base.deliveries = []
-        post :create, { group_id: group.id,
-                        email_addresses: 'rob@example.com, hannah@example.com',
-                        message: 'Please make decisions with us!' }
+        invitation_params[:message] = 'Please make decisions with us!'
+        post :create, invitation_form: invitation_params, group_id: group.id
         json = JSON.parse(response.body)
         invitation = json['invitations'].last
         last_email = ActionMailer::Base.deliveries.last
@@ -39,20 +44,24 @@ describe API::InvitationsController do
       end
 
       it 'includes default message when no custom message' do
-        post :create, { group_id: group.id,
-                        email_addresses: 'rob@example.com, hannah@example.com' }
+        post :create, invitation_form: invitation_params, group_id: group.id
         json = JSON.parse(response.body)
         last_email = ActionMailer::Base.deliveries.last
         expect(last_email).to have_body_text "Click the link to join #{group.name} and get started:"
       end
-    end
 
-    # context 'failure' do
-    #   it 'does not allow access to an unauthorized group' do
-    #     cant_see_me = create :group
-    #     expect { post :create, group_id: cant_see_me.id, invitations: [contact_invitable], format: :json }.to raise_error CanCan::AccessDenied
-    #   end
-    # end
+    end
+    context 'failure' do
+      it 'responds with unauthorized for non logged in users' do
+        @controller.stub(:current_user).and_return(LoggedOutUser.new)
+        post :create, invitation_form: invitation_params, group_id: group.id
+        expect(response.status).to eq 403
+      end
+
+      it 'responds with bad request if no emails are provided' do
+        expect { post :create, invitation_form: {}, group_id: group.id }.to raise_error { ActionController::ParameterMissing }
+      end
+    end
   end
 
   describe 'shareable' do

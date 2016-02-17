@@ -1,29 +1,5 @@
 module ApplicationHelper
 
-  def lineman_vendorjs_path
-    if Rails.env.production?
-      "/js/vendor.js?#{Time.now.to_i}"
-    else
-      "/js/vendor.js"
-    end
-  end
-
-  def lineman_appjs_path
-    if Rails.env.production?
-      "/js/app.js?#{Time.now.to_i}"
-    else
-      "/js/app.js"
-    end
-  end
-
-  def lineman_css_path
-    if Rails.env.production?
-      "/css/app.css?#{Time.now.to_i}"
-    else
-      "/css/app.css"
-    end
-  end
-
   def icon_class_for_volume(volume)
     case volume.to_sym
     when :loud then 'fa-envelope'
@@ -132,6 +108,7 @@ module ApplicationHelper
       output = Rinku.auto_link(simple_format(html_escape(text)), :all, 'target="_blank"')
     end
 
+    output = Emojifier.emojify!(output)
     Redcarpet::Render::SmartyPants.render(output).html_safe
   end
 

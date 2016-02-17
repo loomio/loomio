@@ -1,0 +1,11 @@
+%form{ng-submit: "submit()"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1{translate: "group_page.deactivate_group.title"}
+
+  .modal-body
+    %span{translate: "group_page.deactivate_group.question"}
+  .modal-footer
+    %button.lmo-btn--submit.archive-group-form__submit{type: "submit", translate: "group_page.deactivate_group.submit"}
+    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

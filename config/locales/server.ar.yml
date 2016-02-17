@@ -1,0 +1,53 @@
+---
+ar:
+  email:
+    by_who: من قبل %{person}
+    reply_to_this_discussion: شارك في هذا النقاش
+    to_join_discussion:
+      subject: "%{who} يريدك أن تنضم إلى نقاش على Loomio"
+      content: 'لقد تمت دعوتك للمشاركة في النقاش: %{discussion}'
+      message_intro: "%{who} يقول:"
+      link: إنضم للنقاش
+    to_join_group:
+      subject: لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على Loomio
+    to_start_group:
+      subject: 'قم بإعداد مجموعة جديدة على Loomio: %{group_name}'
+    user_added_to_a_group:
+      subject: لقد أضافك %{who} إلى %{which_group}
+      content: 'لقد أضافك %{who} إلى %{which_group} على Loomio. انقر هنا للذهاب إلى المجموعة:'
+    unsubscribe: 'الغ الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
+    view_comment: انقر هنا لاستعراض التعليق على Loomio
+    view_discussion: انقر هنا لاستعراض هذا النقاش
+    view_group: انقر هنا لاستعراض المجموعة على Loomio
+    view_proposal: إستعرض هذا المقترح على Loomio
+    create_discussion:
+      intro: "%{who} بدأ نقاشا في %{which_group}:"
+    create_proposal:
+      intro: تم إنشاء مقترح جديد في مجموعة على Loomio أنت عضو فيها.
+      closes_in: سيغلق خلال
+      subject: 'اقتراح جديد: %{which}'
+    daily_activity:
+      heading: نشاطك على Loomio
+      subject: Loomio - ملخص لل 24 ساعة الأخيرة
+    missed_yesterday:
+      subject: أحداث الأمس على Loomio
+      mark_as_read: تمت قراءته
+      thanks_for_reading: شكرا للقراءة، نتمنى لك يوما سعيدا!
+      click_here_to_mark_all_as_read_html: "هذا ما حدث يوم أمس على Loomio. \nحال إنهاء القراءة، انقر على <a href=\"%{link}\"> تمت قراءته </a> لإزالته من صندوق البريد الوارد لديك على Loomio.\n"
+    group_membership_approved:
+      subject: تم قبول طلب العضوية
+    invitation:
+      hi: مرحبا بك %{name}،
+    proposal_closing_soon:
+      closes_in: سيغلق خلال
+  footer:
+    about: حول
+    blog: مدونة
+    contact: تواصل معنا
+    help: مساعدة
+    privacy: خصوصية
+    public_groups: المجموعات المفتوحة للعموم
+    terms: شروط الخدمة
+  start_group_form:
+    group_name: اسم المجموعة

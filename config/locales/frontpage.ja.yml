@@ -2,7 +2,7 @@ ja:
   frontpage:
     view_this_in_your_language: 'このサイトを %{language} 語で表示'
     title:
-      collaborative_decision_making: 協働による合意形成
+      collaborative_decision_making: コラボレーションによる合意形成
     link:
       blog: ブログ
       contact: お問い合わせ
@@ -10,7 +10,7 @@ ja:
       try_it: 試してみる
       log_in: ログイン
       video: Loomio機能詳細
-      try_loomio: Loomioを起動
+      try_loomio: Loomioをはじめる
       try_loomio_beta: Loomio beta を起動
       more: 詳細
       top: トップ
@@ -19,21 +19,21 @@ ja:
       privacy: プライバシー
       services: サービス
     hero:
-      header_html: 'Loomioで手軽に安価な</br><strong>オンライン合意形成を実現。</strong>'
-      lead_html: 'Loomioを使うことで、コミュニティや団体の参加者がどこからでも<strong>議論に加わり、行動に移す</strong>ことが可能となります。'
+      header_html: '手軽で安価な<br/><strong>オンライン合意形成の実現</strong>'
+      lead_html: 'Loomioを使えば、どこからでも<strong>議論に加わり、行動に移す</strong>ことが可能となります'
     product:
-      header_html: '参加しているみんなから<strong>あらゆる声</strong>を聞くことができたら、それは<strong>もっと素敵な判断</strong>につながります。'
+      header_html: '参加者全員から<strong>あらゆる声</strong>を聞くことができたら、<strong>もっと素晴らしい判断</strong>につなげられます'
       step1:
-        header: 1. 徹底的な議論
-        desc: どんな話題でもディスカッションをスタートして、集まるべき人たちを集めましょう。多様な視点を分け合ってアイディアをともに発展させましょう。
+        header: 1. 徹底的に議論
+        desc: 小さな話題でもディスカッションをスタートして、集まるべき人たちを集めます。多様な視点を分け合って、アイディアをともに発展させましょう。
       step2:
-        header: 2. 合意を形成しましょう
-        desc: アクション内容の提案は誰でも可能です。メンバーは提出された意見に対して賛成、棄権、不賛成、ブロックを行うことが可能で、あなたは皆がどのように感じ、それは何故なのか知ることができます。
+        header: 2. 合意を形成
+        desc: アクション内容の提案は誰でも可能です。メンバーは提出された意見に対して、賛成、棄権、不賛成、ブロックを行うことが可能で、あなたは皆がどのように感じ、それは何故なのか知ることができます。
       step3:
-        header: 3. 一緒に決めましょう
+        header: 3. みんなで決定
         desc: 皆に機能するように、提案を一緒に発展させましょう。すべての決定が明確な締め切りを持つので、常に明確な結果を得るでしょう。
     mobile:
-      lead_html: '<strong>Loomioは任意のデバイス上で動作します。,</strong><br />いつでもどこでも、方針を定めましょう。'
+      lead_html: '<strong>Loomioは任意のデバイス上で動作します。</strong><br />決定の判断はいつでもどこでも可能です。'
     quote:
       header:
         rushkoff_html: '“Loomioは<strong>インターネットの真の力を開放</strong>し、分裂しがちなディベートではなく、みんなが合意に向かって進む力を生み出します”<div class="attributation">– <a href="http://rushkoff.com">Douglas Rushkoff</a>, author of <em>Present Shock</em></div>'

@@ -1,5 +1,6 @@
 = t('email.mentioned.context', discussion_title: @discussion.title, author_name: @comment.author.name)
 
 = @comment.body
+= render "attachments", comment: @comment if @comment.attachments.any?
 
 = render "footer", link: comment_url_helper(@comment)

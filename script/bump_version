@@ -62,8 +62,6 @@ puts "Current version: #{Loomio::Version.current}"
 def write_version(type, value)
   file_path = File.expand_path "../../lib/version/#{type.downcase}.rb", __FILE__
   File.open(file_path, 'w+') { |file| file.write "Loomio::Version::#{type.upcase} = #{value}" }
-  Loomio::Version.send :remove_const, type.upcase
-  load file_path
 end
 
 current_version_type = Loomio::Version.module_eval(version_type.upcase)
@@ -83,4 +81,5 @@ if action == 'commit'
   `git commit -m "Bump version to #{Loomio::Version.current}"`
 end
 
+Loomio::Version.reload
 puts "New version: #{Loomio::Version.current}"

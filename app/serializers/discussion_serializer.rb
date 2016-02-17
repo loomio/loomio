@@ -8,7 +8,8 @@ class DiscussionSerializer < Simple::DiscussionSerializer
              :updated_at,
              :archived_at,
              :comments_count,
-             :private
+             :private,
+             :versions_count
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,

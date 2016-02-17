@@ -1,0 +1,11 @@
+%section.proposals-card{aria-labelledby: "proposals-card-heading"}
+  %h2.lmo-card-heading#proposals-card-heading{translate: "discussion.proposals"}
+
+  .proposals-card__proposals{ng_repeat: "proposal in proposalsCard.discussion.proposals() track by proposal.id"}
+    .active-proposal{ng-if: "proposalsCard.isExpanded(proposal)"}
+      %proposal_expanded{proposal: "proposal"}
+
+    %h3{translate: "discussion.previous_proposals", ng-show: "proposalsCard.discussion.proposals().length > 1"}
+
+    .inactive-proposal{ng-if: "!proposalsCard.isExpanded(proposal)", ng_click: "proposalsCard.selectProposal(proposal)"}
+      %proposal_collapsed{proposal: "proposal"}

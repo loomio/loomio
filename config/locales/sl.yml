@@ -1,8 +1,9 @@
+---
 sl:
   email_settings:
     title: Email nastavitve
     group_volume: Pogostost obveščanj za skupino
-    email_when_mentioned: "Pošlji mi email, ko sem @omenjen/a"
+    email_when_mentioned: Pošlji mi email, ko sem @omenjen/a
     proposal_closing_soon: Pošlji mi email preden se predlogi zaključijo.
     submit: Posodobi nastavitve
   explore:
@@ -13,10 +14,10 @@ sl:
         blank: polje ne sme ostati prazno
   errors:
     messages:
-      email: "Neveljaven e-poštni naslov "
+      email: 'Neveljaven e-poštni naslov '
   attachment:
     error:
-      too_large: "Pripeti dokument je večji od 50 MB, izberi manjšega."
+      too_large: Pripeti dokument je večji od 50 MB, izberi manjšega.
   time:
     formats:
       for_today: "%l:%M %P"
@@ -26,32 +27,32 @@ sl:
       for_another_year: "%-d/%-m/%y"
   devise:
     invitations:
-      send_instructions: "Vabilo je bilo poslano na %{email}."
-      invitation_token_invalid: "To vabilo ni več veljavno!"
+      send_instructions: Vabilo je bilo poslano na %{email}.
+      invitation_token_invalid: To vabilo ni več veljavno!
       updated: Račun je bil ustvarjen.
       no_invitations_remaining: Na voljo nimaš več vabil
     mailer:
       invitation_instructions:
-        subject: "Povabljen/-a si bil/-a, da se pridružiš skupini na Loomiu"
+        subject: Povabljen/-a si bil/-a, da se pridružiš skupini na Loomiu
     registrations:
       sign_up: Ustvari račun
   error:
     access_denied: Nimaš dovoljenja za to.
-    cant_join_subgroup: "Ne moreš se pridružiti podskupini, če nisi član/-ica matične skupine."
+    cant_join_subgroup: Ne moreš se pridružiti podskupini, če nisi član/-ica matične skupine.
     cant_modify_position: Ta predlog je zaključen.
     cant_state_position: Ta predlog je zaključen.
-    cant_view_member_profile: "Ne moreš si ogledati članovega profila, ker nisi v isti skupini."
-    contribution: "Da lahko prispevaš, se moraš prijaviti."
+    cant_view_member_profile: Ne moreš si ogledati članovega profila, ker nisi v isti skupini.
+    contribution: Da lahko prispevaš, se moraš prijaviti.
     discussion_not_created: Razprave ni bilo mogoče ustvariti.
-    discussion_not_moved: "Nimaš dovoljenja, da to razpravo premakneš v %{destination_group.name}"
+    discussion_not_moved: Nimaš dovoljenja, da to razpravo premakneš v %{destination_group.name}
     group_not_archived: Skupine ni bilo mogoče arhivirati.
-    invalid_close_date: "Neveljaven datum zaključka, izberi datum, ki še ni minil."
+    invalid_close_date: Neveljaven datum zaključka, izberi datum, ki še ni minil.
     invalid_email: Vnesi vsaj en veljaven e-poštni naslov
-    image_upload_fail: "Slike ni bilo mogoče naložiti. Preveri, če je slika manjša od 1 MB in v formatu .jpeg, .png ali .gif."
+    image_upload_fail: Slike ni bilo mogoče naložiti. Preveri, če je slika manjša od 1 MB in v formatu .jpeg, .png ali .gif.
     motion_closing_inputs: Neveljaven datum zaključka
     motion_outcome_not_created: Izida ni mogoče objaviti.
     motion_outcome_not_updated: Izida ni mogoče posodobiti.
-    only_group_coordinator_destroy: "Skupine ne moreš zapustiti, ker si edini/-a koordinator/-ka. Skupino lahko deaktiviraš z izbiro s spustnega menija ali <a href='%{add_coordinator}'>dodaš novega koordinatorja</a> skupine."
+    only_group_coordinator_destroy: Skupine ne moreš zapustiti, ker si edini/-a koordinator/-ka. Skupino lahko deaktiviraš z izbiro s spustnega menija ali <a href='%{add_coordinator}'>dodaš novega koordinatorja</a> skupine.
     only_group_coordinator_remove_admin: Skupina mora imeti koordinatorja/-ko. Želiš skupini dodati še enega/-o koordinatorja/-ko?
     permission_to_invite: Nimaš dovoljenja za vabljenje novih članov.
     position_not_updated: Stališča ni bilo mogoče posodobiti.
@@ -59,7 +60,7 @@ sl:
     group_request_already_accepted: To vabilo žal ni več veljavno ali pa je že bilo sprejeto.
     group_request_invalid_token: Žal so podatki za dostop neveljavni.
     group_private_or_not_found: "Skupine ni bilo mogoče najti. \n\nMorda je zasebna. Če si to povezavo od nekoga prejel/-a, zaprosi za povabilo v skupino."
-    group_already_setup: "Skupina, ki jo želiš ustvariti, že obstaja."
+    group_already_setup: Skupina, ki jo želiš ustvariti, že obstaja.
     passwords_did_not_match: Geslo se ne ujema s potrditvijo
     proposal_already_exists: V tej razpravi je predlog že odprt.
     user_with_email_address_already_in_group: Uporabnik s tem e-poštnim naslovom je že član te skupine.
@@ -69,8 +70,8 @@ sl:
   alert:
     duplicate_email: "%{which_email} je že v skupini."
   notice:
-    new_contacts_imported: "Deluje! V polje spodaj lahko vtipkaš imena in predlagani bodo email naslovi."
-    admin_rights_removed: "Član/ica %{which_user} nima več koordinatorskih pravic."
+    new_contacts_imported: Deluje! V polje spodaj lahko vtipkaš imena in predlagani bodo email naslovi.
+    admin_rights_removed: Član/ica %{which_user} nima več koordinatorskih pravic.
     user_added: "%{user_email_or_name} je bil/a dodan/a v skupino."
     new_user_added: "%{user_email_or_name} bo dodan/a v skupino, ko ustvari svoj Loomio račun."
     member_removed: Član/ica je bil/a odstranjen/a.
@@ -79,7 +80,7 @@ sl:
     membership_request_ignored: Zahteva za članstvo ni bila upoštevana.
     settings_updated: Nastvitve so posodobljene.
     user_made_admin: "%{which_user} je zdaj koordinator/ka."
-    you_have_left_group: "Zapustil/a si %{which_group}. "
+    you_have_left_group: 'Zapustil/a si %{which_group}. '
     comment_deleted: Komentar izbrisan.
     invitations:
       auto_added:
@@ -110,7 +111,7 @@ sl:
       previous: Nazaj
       next: Naprej
   warning:
-    cant_remove_last_admin: "Si zadnji/a koordinator/ka, zato ne moreš biti odstranjen/a."
+    cant_remove_last_admin: Si zadnji/a koordinator/ka, zato ne moreš biti odstranjen/a.
     membership_request_already_approved: Zahteva za članstvo je že bila odobrena.
     membership_request_already_ignored: Zahteva za članstvo ni bila upoštevana.
     membership_request_already_canceled: Zahteva za članstvo je že bila zavrnjena.
@@ -118,20 +119,20 @@ sl:
     proposal_not_created: Predloga ni bilo mogoče ustvariti
     user_already_admin: "%{which_user} je že koordinator/-ka te skupine."
     user_already_member: "%{which_user} je že član/ica te skupine."
-    user_not_admin: "Žal %{which_user} ni koordinator/ka te skupine, zato do nje nima dostopa."
+    user_not_admin: Žal %{which_user} ni koordinator/ka te skupine, zato do nje nima dostopa.
   success:
-    added_to_group: "Dodan/-a si bil/-a v %{which_group}."
+    added_to_group: Dodan/-a si bil/-a v %{which_group}.
     close_date_changed: Končni datum je bil uspešno spremenjen.
     discussion_created: Razprava je bila uspešno ustvarjena.
     discussion_deleted: Razprava je bila uspešno izbrisana.
-    discussion_moved: "Razprava je bila uspešno premaknjena v %{group_name}"
+    discussion_moved: Razprava je bila uspešno premaknjena v %{group_name}
     emails_sending: Pošiljam emaile.
     group_archived: Skupina je bila uspešno arhivirana.
     group_created: Skupina je bila uspešno ustvarjena.
     members_added: Člani so bili dodani v skupino.
-    membership_requested: "Zaprosil/a si za pridružitev v %{which_group}. Ob odobritvi zahteve boš obveščen/a."
-    motion_closed: "Predlog je zaključen. Če želiš, lahko spodaj zabeležiš izid in ga pošlješ svoji skupini."
-    motion_outcome_created: "Čestitke! Izid predloga je znan, člani tvoje skupine pa so bili o njem obveščeni."
+    membership_requested: Zaprosil/a si za pridružitev v %{which_group}. Ob odobritvi zahteve boš obveščen/a.
+    motion_closed: Predlog je zaključen. Če želiš, lahko spodaj zabeležiš izid in ga pošlješ svoji skupini.
+    motion_outcome_created: Čestitke! Izid predloga je znan, člani tvoje skupine pa so bili o njem obveščeni.
     motion_outcome_updated: Izid predloga je bil posodobljen.
     password_updated: Geslo je bilo uspešno spremenjeno.
     position_submitted: Stališče je bilo dodano
@@ -199,16 +200,6 @@ sl:
     name: Loomio
   sr:
     toggle_navigation: Krmarjenje
-  footer:
-    about: O nas
-    blog: Blog
-    contact: Kontakt
-    help: Pomoč
-    privacy: Zasebnost
-    pricing: Cene
-    public_groups: Javne skupine
-    terms: Pogoji
-    independent_install_html: "%{hostname} uporablja neodvisno kopijo Loomia: <a href=\"http://github.com/loomio/loomio\">več informacij</a>."
   inbox:
     clear: Počisti
     title: Nabiralnik
@@ -236,8 +227,8 @@ sl:
     motion_outcome_created: je objavil/a izid predloga
     motion_outcome_updated: je posodobil/a izid predloga
     email_actions:
-      following_thread: "Začel/a si slediti temi: %{thread_title}"
-      not_following_thread: "Prenehal/a si slediti temi: %{thread_title}"
+      following_thread: 'Začel/a si slediti temi: %{thread_title}'
+      not_following_thread: 'Prenehal/a si slediti temi: %{thread_title}'
   edit_discussion_context: Uredi opis razprave
   request_new_group: Ustvari skupino
   start_new_group: Ustvari novo skupino
@@ -245,61 +236,55 @@ sl:
   find_a_group: Najdi skupino
   find_a_group_hint: Da lahko raziskuješ javne skupine
   search_for_group: Poišči skupino
-  no_groups_found: "Nobene najdene skupine s tem imenom!"
+  no_groups_found: Nobene najdene skupine s tem imenom!
   no_group_header: Dobrodošel/la v Loomio Beta
   empty_notifications: Nimaš še nobenega obvestila.
   see_all_notifications: Poglej vsa obvestila
   sign_out: Odjavi se
   sign_in: Prijavi se
-  honeypot_warning: "Računa ni bilo mogoče ustvariti. Če uporabljaš bralnik zaslona, poskrbi, da je zadnje (skrito) polje na obrazcu prazno."
-  tagline: "Ustvariti svet, v katerem je enostavno za vsakogar, da sodelujejo pri odločitvah, ki jih zadevajo."
-  or_sign_in_html: "Če že imaš Loomio račun, <a href='%{link}' class='%{link_class}'>se prijavi tukaj</a>"
-  or_link_account_html: "Če že imaš Loomio račun, <a href='%{link}'>ga poveži</a>"
-  click_to_dismiss: "Klikni sem, da zavrneš to sporočilo"
+  honeypot_warning: Računa ni bilo mogoče ustvariti. Če uporabljaš bralnik zaslona, poskrbi, da je zadnje (skrito) polje na obrazcu prazno.
+  tagline: Ustvariti svet, v katerem je enostavno za vsakogar, da sodelujejo pri odločitvah, ki jih zadevajo.
+  or_sign_in_html: Če že imaš Loomio račun, <a href='%{link}' class='%{link_class}'>se prijavi tukaj</a>
+  or_link_account_html: Če že imaš Loomio račun, <a href='%{link}'>ga poveži</a>
+  click_to_dismiss: Klikni sem, da zavrneš to sporočilo
   generic_confirm: Si prepričan/a?
   discussion_helper_text:
     header: Dobrodošel/la v tvojo prvo razpravo
     message: "<p> Tema je na vrhu strani, pod njo pa njen opis. </p> \n<p> Razprava je na levi strani, odločitve pa se prikažejo na desni strani. Če meniš, da je skupina pripravljena sprejeti odločitev, ji lahko podaš predlog.</p>"
   group_helper_text:
-    header: "Dobrodošel/la v novo skupino!"
+    header: Dobrodošel/la v novo skupino!
     message: "<p> To je <strong> stran skupine </strong>. Na levi strani je seznam vseh razprav v tej skupini. </p> <p> Če želiš, da skupina razpravlja o novi tematiki, začni novo razpravo. </p>"
   dashboard_helper_text:
     header: Dobrodošel/la na Domačo stran
-    message: "<p> Domača stran ti prikaže vse aktualne razprave v vseh skupinah, v katere si včlanjen/a. </p> <p> S klikom na gumb \"Začni razpravo\" lahko začneš razpravo o novi tematiki. </p>"
+    message: <p> Domača stran ti prikaže vse aktualne razprave v vseh skupinah, v katere si včlanjen/a. </p> <p> S klikom na gumb "Začni razpravo" lahko začneš razpravo o novi tematiki. </p>
   prompt_visitor_to_authenticate:
     header: Za sodelovanje se prijavi ali pridruži skupini
-    body: "Če si član/ica te skupine, se boš moral/a prijaviti, da lahko sodeluješ"
+    body: Če si član/ica te skupine, se boš moral/a prijaviti, da lahko sodeluješ
   prompt_user_to_join:
-    header: "Pridruži se skupini, da lahko sodeluješ"
+    header: Pridruži se skupini, da lahko sodeluješ
     body: Za komentiranje ali glasovanje moraš biti član te skupine.
   user_profile:
     back: Nazaj na moj profil
     change_password: Spremeni geslo
     deactivate_account: Deaktiviraj račun
     about_deactivation: Kaj bo to pomenilo?
-    confirm_account_deactivation: "Si prepričan/a, da želiš deaktivirati svoj račun?"
-    reactivation_html: "Za ponovno aktivacijo računa nas <a href='%{link}'>kontaktiraj</a>."
+    confirm_account_deactivation: Si prepričan/a, da želiš deaktivirati svoj račun?
+    reactivation_html: Za ponovno aktivacijo računa nas <a href='%{link}'>kontaktiraj</a>.
     deactivation:
       title: Deaktivacija računa
-      query: "Imaš kak poseben razlog, zakaj boš deaktiviral/a račun?"
-      only_coordinator: "Skupina mora imeti vsaj enega koordinatorja. Trenutno si edini/a koordinator/ka naslednjih skupin:"
+      query: Imaš kak poseben razlog, zakaj boš deaktiviral/a račun?
+      only_coordinator: 'Skupina mora imeti vsaj enega koordinatorja. Trenutno si edini/a koordinator/ka naslednjih skupin:'
       instructions: Za deaktivacijo računa moraš bodisi dodati drugega koordinatorja ali deaktivirati skupine.
       info_title: Kaj bo deaktivacija tvojega računa pomenila?
-      memberships: "Ne boš več naveden/a kot član/ica nobene od skupin, katerim trenutno pripadaš."
-      group_contributions: "Komentarji, predlogi in razprave, ki si jih ustvaril/a v skupinah bodo ostale, bo pa iz njih odstranjeno tvoje ime."
-      emails: "Prenehal/a boš prejemati emaile, povezane z Loomiom."
-  start_group_form:
-    header: Ustvari novo skupino
-    name: Tvoje ime
-    group_name: Ime skupine
-    success:
-      header: "Skoraj si opravil/a! Preveri svoj email."
+      memberships: Ne boš več naveden/a kot član/ica nobene od skupin, katerim trenutno pripadaš.
+      group_contributions: Komentarji, predlogi in razprave, ki si jih ustvaril/a v skupinah bodo ostale, bo pa iz njih odstranjeno tvoje ime.
+      emails: Prenehal/a boš prejemati emaile, povezane z Loomiom.
   group_form:
     name: Ime skupine
     description: Opis
     category: Kategorija
-    confirm_all_discussions_will_be_made_private_message: "Če nadaljuješ, bodo vse javne razprave postale zasebne."
-    confirm_all_discussions_will_be_made_public_message: "Si prepričan/a? Če nadaljuješ, bodo vsi zasebni pogovori postali javni."
+    confirm_all_discussions_will_be_made_private_message: Če nadaljuješ, bodo vse javne razprave postale zasebne.
+    confirm_all_discussions_will_be_made_public_message: Si prepričan/a? Če nadaljuješ, bodo vsi zasebni pogovori postali javni.
     what_can_members_do: Kaj lahko počnejo člani?
     members_can:
       add_members: Povabijo in potrjujejo nove člane
@@ -312,21 +297,21 @@ sl:
     motions_can_be_edited: Urejajo svoje predloge po začetku glasovanja
     visible_to:
       label: Kdo lahko najde to skupino?
-      public_html: "Vsi <span>skupina bo javno vidna</span>"
-      parent_members_html: "Vsi v %{parent_group_name} <span> skupina ne bo javno vidna, vendar vidna za člane %{parent_group_name} </span>"
-      members_html: "Samo člani <span> skupina ne bo javno vidna </span>"
+      public_html: Vsi <span>skupina bo javno vidna</span>
+      parent_members_html: Vsi v %{parent_group_name} <span> skupina ne bo javno vidna, vendar vidna za člane %{parent_group_name} </span>
+      members_html: Samo člani <span> skupina ne bo javno vidna </span>
     membership_granted_upon:
       label: Kako se lahko pridruži še kdo?
       hidden_parent:
-        request_html: "Odprto <span> za člane %{parent_group_name}</span>"
-        approval_html: "Na prošnjo <span> članov iz %{parent_group_name}</span>"
-      request_html: "Odpto <span> vsak se lahko pridruži skupini </span>"
-      approval_html: "Na prošnjo <span> vsak lahko zaprosi za pridružitev skupini</span>"
-      invitation_html: "Samo z vabilom <span> novi člani morajo biti povabljeni</span>"
+        request_html: Odprto <span> za člane %{parent_group_name}</span>
+        approval_html: Na prošnjo <span> članov iz %{parent_group_name}</span>
+      request_html: Odpto <span> vsak se lahko pridruži skupini </span>
+      approval_html: Na prošnjo <span> vsak lahko zaprosi za pridružitev skupini</span>
+      invitation_html: Samo z vabilom <span> novi člani morajo biti povabljeni</span>
     parent_members_can_see_discussions:
       label: Zasebnost razprave
-      "true": "Vsi v %{parent_group_name} lahko vidijo razprave"
-      "false": Samo člani lahko vidijo razprave
+      'true': Vsi v %{parent_group_name} lahko vidijo razprave
+      'false': Samo člani lahko vidijo razprave
     discussion_privacy_options:
       label: Kdo lahko vidi razprave?
       hint: Javne razprave lahko vidijo vsi.
@@ -336,7 +321,7 @@ sl:
     learn_about_permissions: Več informacij o dovoljenjih za skupine
   group_permissions:
     header: Dovoljenja za skupine
-    coordinators_can: "Koordinatorji/-ke lahko:"
+    coordinators_can: 'Koordinatorji/-ke lahko:'
     c1: Spremenijo nastavitve skupine
     c2: Urejajo naslov in opis vsake razprave.
     c3: Premikajo razprave med skupinami.
@@ -347,13 +332,13 @@ sl:
     c8: Izbrišejo razprave.
     c9: Izbrišejo komentarje.
     c10: Ustvarijo podskupine.
-    c11: "Začnejo razpravo. "
+    c11: 'Začnejo razpravo. '
     c12: Predlagajo.
     c13: Glasujejo o predlogih.
-    members_defaults: "S privzetimi nastavitvami, lahko člani:"
+    members_defaults: 'S privzetimi nastavitvami, lahko člani:'
     m1: Izbrišejo svoje komentarje.
-    m3: "Urejajo naslov in opis svojih predlogov, dokler nekdo ne izrazi svojega stališča."
-    m4: "Urejajo datum zaključka svojih predlogov, dokler se ne zaključijo."
+    m3: Urejajo naslov in opis svojih predlogov, dokler nekdo ne izrazi svojega stališča.
+    m4: Urejajo datum zaključka svojih predlogov, dokler se ne zaključijo.
     m5: Urejajo naslov in opis katerekoli razprave.
     m6: Ustvarijo podskupino in postanejo njeni koordinatorji.
     m7: Kadarkoli urejajo svoje komentarje.
@@ -365,63 +350,63 @@ sl:
   group_privacy:
     visible_to:
       public: Javno vidna skupina.
-      parent_members: "Zasebna skupina. Vidna je samo članom in tistim v %{parent_group_name}."
+      parent_members: Zasebna skupina. Vidna je samo članom in tistim v %{parent_group_name}.
       members: Skrita skupina. Vidna je samo članom.
-      public_html: "Vsak <span>javno objavi skupino </span>"
-      parent_members_html: "Vpisani v %{parent_group_name} <span> niso vidni javno, so pa vidni članom %{parent_group_name}</span>"
-      members_html: "Samo za člane <span> skupina ne bo javno vidna</span>"
-  setup_steps_title: "Naslednji koraki:"
+      public_html: Vsak <span>javno objavi skupino </span>
+      parent_members_html: Vpisani v %{parent_group_name} <span> niso vidni javno, so pa vidni članom %{parent_group_name}</span>
+      members_html: Samo za člane <span> skupina ne bo javno vidna</span>
+  setup_steps_title: 'Naslednji koraki:'
   setup_step_1: Oglej si primer razprave
   setup_step_2: Ustvari svojo prvo razpravo
   setup_step_3: Povabi še koga v svojo skupino
   invite_people: Povabi še koga
   no_invitations_button: Nimaš več vabil
   number_pending: "%{pending} v teku"
-  and_number_pending: "in %{pending} v teku"
+  and_number_pending: in %{pending} v teku
   edit_memberships: Uredi članstva
   add_new_member: Dodaj novega člana/članico
-  invite_members_to_group: "Povabi člane v %{which_group}"
-  email_members_in_group: "Pošlji email članom %{which_group}"
+  invite_members_to_group: Povabi člane v %{which_group}
+  email_members_in_group: Pošlji email članom %{which_group}
   subject_error: Vpiši naslov
   subject_placeholder: Napiši naslov
   message_error: Vpiši sporočilo
-  message_placeholder: "Napiši sporočilo članom %{which_group}."
+  message_placeholder: Napiši sporočilo članom %{which_group}.
   email_group_members: Pošlji email članom skupine
   edit_group_settings: Uredi nastavitve skupine
   manage_members: Upravljaj s člani
   leave_group: Zapusti skupino
-  confirm_leave_hidden_group: "Si prepričan/a, da želiš zapustiti %{which_group}? Odstranjen/a boš tudi iz vseh podskupin."
-  confirm_leave_group: "Si prepričan/a, da želiš zapustiti %{which_group}?"
+  confirm_leave_hidden_group: Si prepričan/a, da želiš zapustiti %{which_group}? Odstranjen/a boš tudi iz vseh podskupin.
+  confirm_leave_group: Si prepričan/a, da želiš zapustiti %{which_group}?
   deactivate_group: De-aktiviraj skupino.
-  confirm_deactivate_group: "Pozor!!! Si prepričan/a da želiš deaktivirati %{which_group}? Skupine ne boš mogel/la več videti. Skupino lahko ponovno aktiviraš tako, da pošlješ email na contact@loomio.org."
+  confirm_deactivate_group: Pozor!!! Si prepričan/a da želiš deaktivirati %{which_group}? Skupine ne boš mogel/la več videti. Skupino lahko ponovno aktiviraš tako, da pošlješ email na contact@loomio.org.
   invited_users: Povabljeni člani
   members: Člani
-  confirm_remove_user: "Si prepričan/a, da želiš odstraniti %{which_user} iz skupine?"
+  confirm_remove_user: Si prepričan/a, da želiš odstraniti %{which_user} iz skupine?
   remove_coordinator: Odstrani koordinarorja
-  confirm_remove_coordinator: "Si prepričan/a, da ne želiš več %{which_user} biti koordinator/ka te skupine?"
+  confirm_remove_coordinator: Si prepričan/a, da ne želiš več %{which_user} biti koordinator/ka te skupine?
   make_coordinator: Napravi v koordinatorja/ko
-  confirm_make_coordinator: "Si prepričan/a, da želiš napraviti %{which_user} v koordinatorja te skupine?"
-  confirm_remove_member: "Si prepričan/a, da želiš odstraniti tega člana iz skupine?"
-  want_to_invite_html: "Ali želiš <a href='%{link}'>povabiti še koga</a> v to skupino?"
+  confirm_make_coordinator: Si prepričan/a, da želiš napraviti %{which_user} v koordinatorja te skupine?
+  confirm_remove_member: Si prepričan/a, da želiš odstraniti tega člana iz skupine?
+  want_to_invite_html: Ali želiš <a href='%{link}'>povabiti še koga</a> v to skupino?
   membership_requests: Prošnje za članstvo
   previous_requests: Pretekle prošnje
-  approved_by_person: "Odobril/a %{person}"
-  ignored_by_perosn: "Prezrl/a %{person}"
+  approved_by_person: Odobril/a %{person}
+  ignored_by_perosn: Prezrl/a %{person}
   join_group_btn: Pridruži se skupini
-  you_have_joined_group: "Pridružil/a si se skupini %{group_name}"
-  confirm_approve_membership_request: "Si prepričan/a, da želiš dodati %{which_user} v skupino?"
+  you_have_joined_group: Pridružil/a si se skupini %{group_name}
+  confirm_approve_membership_request: Si prepričan/a, da želiš dodati %{which_user} v skupino?
   cancel_membership_request: Prekliči prošnjo
   ignore_request: Prezri prošnjo
   ignore: Prezri
-  confirm_ignore_membership_request: "Si prepričan/a, da želiš prezreti prošnjo člana %{which_user}?"
+  confirm_ignore_membership_request: Si prepričan/a, da želiš prezreti prošnjo člana %{which_user}?
   membership_requested: Prošnja za včlanitev
   request_membership: Prosi za včlanitev
   ask_to_join_group: Prosi za pridružitev skupini
-  confirm_remove_membership_request: "Si prepričan/a, da želiš umakniti svojo prošnjo za včlanitev v to skupino?"
+  confirm_remove_membership_request: Si prepričan/a, da želiš umakniti svojo prošnjo za včlanitev v to skupino?
   no_pending_membership_requests: Trenutno ni tekočih prošenj za včlanitev v to skupino.
   subgroups: Podskupine
   create_a_subgroup: Ustvari podskupino
-  select_members_to_add: "Izberi člane za dodati v %{which_group}"
+  select_members_to_add: Izberi člane za dodati v %{which_group}
   empty_parent_group: Člane najprej dodaj k matični skupini.
   invite_members: Povabi člane
   new_subgroup: Nova podskupina
@@ -444,7 +429,7 @@ sl:
       click_to_follow: Klikni za spremljanje skupine
       click_to_unfollow: Klikni za prenehanje spremljanja skupine
       following_details: Obveščen/a boš o vsaki temi v tej skupini.
-      not_following_details: "Obveščen/a boš o temah, v katerih sodeluješ."
+      not_following_details: Obveščen/a boš o temah, v katerih sodeluješ.
   networks:
     previous_requests: Pretekle prošnje
     approve: Potrdi
@@ -452,12 +437,15 @@ sl:
     groups: Skupine
   group_request:
     header: Ustvari skupino
-    commercial_use_option: "v podjetju, uradni organizaciji ali na delovnem mestu"
+    commercial_use_option: v podjetju, uradni organizaciji ali na delovnem mestu
     non_commercial_use_option: v skupini za skupnost ali v neformalni mreži
     please_select_an_option: Izberi eno od možnosti
     confirmation:
-      title: "Skoraj si opravil/a! Preveri svoj email."
-      body_html: "Prejel/a boš email z vabilom k ustvarjanju svoje skupine.\n\nČe ga ne prejmeš v naslednjih nekaj minutah, nam piši na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.\n"
+      title: Skoraj si opravil/a! Preveri svoj email.
+      body_html: |
+        Prejel/a boš email z vabilom k ustvarjanju svoje skupine.
+
+        Če ga ne prejmeš v naslednjih nekaj minutah, nam piši na <a href='mailto:contact@loomio.org'>contact@loomio.org</a>.
   volume:
     volume: Pogostost obveščanj
     loud: Glasno
@@ -466,14 +454,14 @@ sl:
     mute: Neslišno
   discussion_volume:
     loud_description: Pošlji email ob vsaki aktivnosti v tej razpravi.
-    normal_description: "Pošlji email ko se predlog odpre, preden se zapre in ko je objavljen izid."
+    normal_description: Pošlji email ko se predlog odpre, preden se zapre in ko je objavljen izid.
     quiet_description: Ne pošiljaj emailov za to razpravo.
-    mute_description: "Skrij to razpravo iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a."
+    mute_description: Skrij to razpravo iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
   group_volume:
     loud_description: Pošlji email ob vsaki aktivnosti.
-    normal_description: "Pošlji email samo za pomembne stvari: Nove razprave in predlogi, izidi glasovanj, itd."
+    normal_description: 'Pošlji email samo za pomembne stvari: Nove razprave in predlogi, izidi glasovanj, itd.'
     quiet_description: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
-    mute_description: "Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a."
+    mute_description: Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
   thread_item:
     user_agreed_on_proposal_html: "<strong>%{name}</strong> se je strinjal/a s predlogom."
     user_abstained_on_proposal_html: "<strong>%{name}</strong> se je vzdržal/a predloga."
@@ -502,33 +490,33 @@ sl:
   see_previous_decisions: Oglej si pretekle odločitve
   see_more: Poglej več
   create_new_proposal: Ustvari predlog
-  empty_decision_list_html: "Smo pripravljeni sprejeti odločitev? <br> Vsak lahko predlaga svoj predlog."
+  empty_decision_list_html: Smo pripravljeni sprejeti odločitev? <br> Vsak lahko predlaga svoj predlog.
   empty_decision_index: Ta skupina ni izvedla še nobene odločitve.
   empty_discussion_list: V tej razpravi še ni aktivnosti.
-  go_to_add_comment_html: "Če želiš dodati komentar, <a href='%{href}'>pojdi na konec razprave</a>."
-  comment_by: "Komentiral/a %{comment_author}"
+  go_to_add_comment_html: Če želiš dodati komentar, <a href='%{href}'>pojdi na konec razprave</a>.
+  comment_by: Komentiral/a %{comment_author}
   read_up_to: Nazadnje si prebral/a do tu
   discussion_list:
-    clear_filters: "Počisti filtre: glej vse razprave"
+    clear_filters: 'Počisti filtre: glej vse razprave'
     filter_unread:
       enable: Prikaži samo neprebrane razprave
       disable: Prikaži prebrane in neprebrane razprave
     filter_followed:
-      enable: "Prikaži samo razprave, ki jih spremljaš"
-      disable: "Prikaži razprave, ki jih spremljaš in razprave, ki jih ne spremljaš več"
+      enable: Prikaži samo razprave, ki jih spremljaš
+      disable: Prikaži razprave, ki jih spremljaš in razprave, ki jih ne spremljaš več
     empty:
       no_discussions: V nobeni tvoji skupini ni nobene razprave.
       no_discussions_in_group: Ta skupina ni izvedla še nobene razprave.
-      no_discussions_matching_filters_html: "Nobena razprava se ne ujema s temi filtri. <a href='%{link}'>Počisti filtre</a>."
+      no_discussions_matching_filters_html: Nobena razprava se ne ujema s temi filtri. <a href='%{link}'>Počisti filtre</a>.
       no_public_discussions: V tej skupini ni nobene javne razprave.
       discussions_are_private: Vse razprave v tej skupini so zasebne.
-      request_membership_html: "Za ogled zasebnih pogovorov, <a href='%{href}'>zaprosi za pridružitev v skupino.</a>"
+      request_membership_html: Za ogled zasebnih pogovorov, <a href='%{href}'>zaprosi za pridružitev v skupino.</a>
       membership_is_invitation_only: Za pridružitev tej skupini moraš biti povabljen/a s strani člana.
       membership_is_invitation_by_admin_only: Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja.
-      log_in_html: "Če si član/ica, <a href='%{href}'>se logiraj</a> , da lahko vidiš zasebne razprave."
+      log_in_html: Če si član/ica, <a href='%{href}'>se logiraj</a> , da lahko vidiš zasebne razprave.
   discussion_context:
-    started_html: "Začel/a <a href='%{link}' class='%{link_class}'>%{who}</a> %{when} nazaj"
-    last_edited_html: "Nazadnje uredil/a <a href='%{link}' class='%{link_class}'>%{who}</a> pred %{when}"
+    started_html: Začel/a <a href='%{link}' class='%{link_class}'>%{who}</a> %{when} nazaj
+    last_edited_html: Nazadnje uredil/a <a href='%{link}' class='%{link_class}'>%{who}</a> pred %{when}
     see_revision_history: Prikaži zgodovino sprememb
     see_history: Prikaži zgodovino
     click_to_follow: Za spremljanje temi klikni
@@ -538,59 +526,59 @@ sl:
   description_history:
     header: Zgodivina sprememb
     subheader: Verzija
-    edited_by: "Uredil/a %{who} pred približno %{when} "
-    current: (trenutna)
-    restore: (Obnovi to verzijo)
-    applying_changes: (Vnašam spremembe...)
+    edited_by: 'Uredil/a %{who} pred približno %{when} '
+    current: "(trenutna)"
+    restore: "(Obnovi to verzijo)"
+    applying_changes: "(Vnašam spremembe...)"
     previous: Nazaj
     next: Naprej
   comment_form_placeholder: Povej kaj...
   comment_form_submit_button: Komentiraj
-  liked_by: "Všečkal/a %{who}"
+  liked_by: Všečkal/a %{who}
   delete_comment: Izbriši komentar
-  confirm_delete_comment: "Si prepričan/a, da želiš izbrisati ta komentar?"
+  confirm_delete_comment: Si prepričan/a, da želiš izbrisati ta komentar?
   markdown_settings_more_info: Več informacij...
   edit_discussion: Uredi razpravo
   move_discussion: Premakni razpravo
-  move_discussion_to_hidden_group: "Ta razprava je trenutno javna. Če jo premakneš v to skrito skupino, bo postala zasebna."
-  move_discussion_to_public_group: "Ta razprava je trenutno zasebna. Če jo premakneš v to javno skupino, bo postala javna."
+  move_discussion_to_hidden_group: Ta razprava je trenutno javna. Če jo premakneš v to skrito skupino, bo postala zasebna.
+  move_discussion_to_public_group: Ta razprava je trenutno zasebna. Če jo premakneš v to javno skupino, bo postala javna.
   move_discussion_where: Kam želiš premakniti to razpravo?
   delete_discussion: Izbriši razpravo
-  confirm_delete_discussion: "Si prepričan/a, da želiš trajno izbrisati to razpravo?"
+  confirm_delete_discussion: Si prepričan/a, da želiš trajno izbrisati to razpravo?
   new_proposal: Nov predlog
   edit_proposal: Uredi predlog
   close_proposal: Zapri predlog
-  confirm_close_proposal: "Si prepričan/a, da želiš zapreti ta predlog?"
+  confirm_close_proposal: Si prepričan/a, da želiš zapreti ta predlog?
   change_proposal_close_date: Spremeni datum zaključka
-  change_proposal_close_date_header: "Spremeni datum zaključka predloga '%{which}'"
+  change_proposal_close_date_header: Spremeni datum zaključka predloga '%{which}'
   proposal: Predlog
   proposal_close_date_error: Predlagaj novejši datum zaključka
-  proposal_closing_when: "Se zaključi čez %{when}"
-  proposal_closed_when: "Se je zaključil %{when} nazaj"
-  proposed_when_by_who: "Predlagal/a %{who} pred %{when}"
+  proposal_closing_when: Se zaključi čez %{when}
+  proposal_closed_when: Se je zaključil %{when} nazaj
+  proposed_when_by_who: Predlagal/a %{who} pred %{when}
   engagement_on_open_proposal: "%{percent}%% članov je izrazilo svoje stališče (%{numerator}/%{denominator})"
   engagement_on_closed_proposal: "%{percent}%% članov je izrazilo svoje stališče  (%{numerator}/%{denominator})"
   state_your_position: Izrazi svoje stališče
   positions: Stališča
   yes_position: Strinjam se
-  yes_details: "Strinjam se s tem in želim, da bi to bilo sprejeto."
+  yes_details: Strinjam se s tem in želim, da bi to bilo sprejeto.
   abstain_position: Vzdržujem se
-  abstain_details: "Vesel/a bom, če se skupina odloči brez mene."
+  abstain_details: Vesel/a bom, če se skupina odloči brez mene.
   no_position: Ne strinjam se
-  no_details: "Mislim, da znamo tudi bolje."
+  no_details: Mislim, da znamo tudi bolje.
   block_position: Ugovarjam
   block_details: Močno ugovarjam temu predlogu in nisem OK z njegovim sprejetjem.
   not_voted: "[Prikaži člane, ki se še niso odločili]"
   outcome_placeholder: Kaj je bil izid tega predloga?
   outcome_submit: Objavi izid
   position_verbs:
-    "yes": strinjam se
-    "no": ne strinjam se
+    'yes': strinjam se
+    'no': ne strinjam se
     abstain: vzdržan
     block: ugovarjam
     past_tense:
-      "yes": se je strinjal/a
-      "no": se ni strinjal/a
+      'yes': se je strinjal/a
+      'no': se ni strinjal/a
       abstain: se je vzdržal/a
       block: je ugovarjal/a
   unable_to_vote:
@@ -601,44 +589,87 @@ sl:
     edit_comment: Uredi komentar
   help:
     coordinating: Koordiniraj svojo Loomio skupino
-    coordinating_details: "Kot koordinator/ka si odgovoren/na za vzpostavitev Loomio skupine in vabljenja članov. Poleg učenja novega programa, se bo tvoja skupina učila novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:\n"
+    coordinating_details: 'Kot koordinator/ka si odgovoren/na za vzpostavitev Loomio skupine in vabljenja članov. Poleg učenja novega programa, se bo tvoja skupina učila novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:
+
+'
     different_ways: Različni načini uporabe Loomia
     engaging_html: "<h2>Nasveti za vključevanje tvoje skupine</h2>\n<p>Ljudje bodo z veseljem sodelovali, če bo na tapeti zanimiv\npredlog. Dober predlog vsebuje akcijski načrt za skupino, tako\nda bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo. Skušaj \nugotoviti, če bi nekatere razprave/odločitve, ki jih skupina trenutno izvaja osebno ali po\nemailu, bilo lažje izvajati na Loomiu.</p>\n<p>Če je skupina še , lahko začneš z lahkotno odločitev, da imajo \nvsi možnost probati novo orodje in začutiti postopek odločanja v akciji. .</p>\n<p>Še en preprost način za spodbujanje drugih k razpravi je funkcija @omeni\nza pozvati določeno osebo; to jim bo poslalo email s sporočilom, da so bili\nomenjeni v komentarju.</p>\n\n"
-    example1_html: "<h3>Skupina mora o neki temi razpravljati in skupaj razviti rešitev</h3>\n<p>Strategija: O temi nekaj časa razpravljajte, preden ustvarite predlog.</p>\n<p>Razprave pogosto dosežejo najboljši rezultat takrat, ko se vzpostavi skupno razumevanje problema, preden se predlaga določeno rešitev. Kadar lahko vsi sodelujejo že v procesu, bodo namreč veliko verjetneje sprejeli rezultat.</p>\n"
-    example2_html: "<h3> Predlog že imaš v mislih, želiš pa potrditev skupine, da ga lahko realiziraš.</h3>\n\n<p> Strategija: Začni razpravo o konkretni odločitvi in takoj podaj svoj predlog. </p>\n\n<p> Če imaš zastavljen jasen rezultat, a želiš preveriti, da ni kakršnih koli kritičnih pomislekov, lahko podaš svoj predlog in prejmeš hitro povratno informacijo o odločitvi. </p>\n\n<p> Na tak način lahko npr. dokončaš dokument, potrdiš prošnjo, ali odobriš neko delo. </p>\n"
+    example1_html: |
+      <h3>Skupina mora o neki temi razpravljati in skupaj razviti rešitev</h3>
+      <p>Strategija: O temi nekaj časa razpravljajte, preden ustvarite predlog.</p>
+      <p>Razprave pogosto dosežejo najboljši rezultat takrat, ko se vzpostavi skupno razumevanje problema, preden se predlaga določeno rešitev. Kadar lahko vsi sodelujejo že v procesu, bodo namreč veliko verjetneje sprejeli rezultat.</p>
+    example2_html: |
+      <h3> Predlog že imaš v mislih, želiš pa potrditev skupine, da ga lahko realiziraš.</h3>
+
+      <p> Strategija: Začni razpravo o konkretni odločitvi in takoj podaj svoj predlog. </p>
+
+      <p> Če imaš zastavljen jasen rezultat, a želiš preveriti, da ni kakršnih koli kritičnih pomislekov, lahko podaš svoj predlog in prejmeš hitro povratno informacijo o odločitvi. </p>
+
+      <p> Na tak način lahko npr. dokončaš dokument, potrdiš prošnjo, ali odobriš neko delo. </p>
     get_in_touch: Stopi v stik
-    get_in_touch_description_html: "Če imaš kakšna vprašanja ali pripombe, <a href='%{link}'>nam piši</a>."
+    get_in_touch_description_html: Če imaš kakšna vprašanja ali pripombe, <a href='%{link}'>nam piši</a>.
     getting_started: Prvi koraki
-    getting_started_description: "Na levi strani skupina obravnava temo, izmenjuje ideje in informacije. Morebitna odločitev se prikaže na desni strani."
+    getting_started_description: Na levi strani skupina obravnava temo, izmenjuje ideje in informacije. Morebitna odločitev se prikaže na desni strani.
     getting_the_most: Kako od Loomia dobiti največ
     have_your_say: Izrazi svoje mnenje
     have_your_say_details_html: "<p>Ko si pripravljen/a izraziti svoje mnenje, klikni enega od štirih gumbov za odločanje.</p>\n<p>Ko se odločiš, to na kratko obrazloži. Pod tortnim diagramom\nlahko vidiš, mnenja ostalih. To ti omogoča hitro in enostavno sledenje\nrazpravi. Če te nova informacija prepriča, lahko svoje \nstališče kadarkoli spremeniš.</p>\n"
     have_a_discussion: Začni razpravo
-    have_a_discussion_description: "Tema in ostale pomembne informacije so na vrhu strani. Uporabi polje za komentiranje, da dodaš svoj glas k razpravi."
+    have_a_discussion_description: Tema in ostale pomembne informacije so na vrhu strani. Uporabi polje za komentiranje, da dodaš svoj glas k razpravi.
     help: Pomoč
     how_it_works: Kako deluje
-    invitation_html: "<h2>Pisanje super povabila</h2>\n<p>Prvo vprašanje vsakega novega člana/ice, bo \"kaj je namen te skupine?’</p>\n<p>Skušaj napisati najenostavnejši opis skupine: Kaj bi rad/a,\nda skupaj dosežete? O katerih odločitvah boste odločali? Kdo bo pri tem sodeloval? </p>\n<p>Mogoče je dobro, da se najprej pogovoriš s svojo skupino, preden jih povabiš na Loomio.</p>\n<p>Ljudje bodo želeli vedeti, zakaj so bili povabljeni, kaj se od njih pričakuje,\nin zakaj je vredno njihovega časa, da se naučijo uporabljati novo orodje.</p>\n"
+    invitation_html: |
+      <h2>Pisanje super povabila</h2>
+      <p>Prvo vprašanje vsakega novega člana/ice, bo "kaj je namen te skupine?’</p>
+      <p>Skušaj napisati najenostavnejši opis skupine: Kaj bi rad/a,
+      da skupaj dosežete? O katerih odločitvah boste odločali? Kdo bo pri tem sodeloval? </p>
+      <p>Mogoče je dobro, da se najprej pogovoriš s svojo skupino, preden jih povabiš na Loomio.</p>
+      <p>Ljudje bodo želeli vedeti, zakaj so bili povabljeni, kaj se od njih pričakuje,
+      in zakaj je vredno njihovega časa, da se naučijo uporabljati novo orodje.</p>
     join_the_community: Pridruži se skupnosti
-    join_the_community_description_html: "Vsak je dobrodošel, da se pridruži Loomio Skupnosti, kjer debatiramo o tem, kako lahko s tem orodjem naredimo največ in kako ga lahko izboljšamo <br /><br /><a href='https://www.loomio.org/groups/3'> Klikni tukaj, da greš </a> skupino Loomio Skupnost."
+    join_the_community_description_html: Vsak je dobrodošel, da se pridruži Loomio Skupnosti, kjer debatiramo o tem, kako lahko s tem orodjem naredimo največ in kako ga lahko izboljšamo <br /><br /><a href='https://www.loomio.org/groups/3'> Klikni tukaj, da greš </a> skupino Loomio Skupnost.
     images_and_text_formatting: Urejanje slik in teksta
-    images_and_text_formatting_html: "<p>Loomio uporablja 'Markdown' za vgrajevanje slik in urejanje besedil.\nMarkdown lahko vklopiš z majhno sivo ikono pod oknom s komentarji..</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Klikni sem</a>\nza več informacij o uporabi Markdown-a.</p>\n"
+    images_and_text_formatting_html: |
+      <p>Loomio uporablja 'Markdown' za vgrajevanje slik in urejanje besedil.
+      Markdown lahko vklopiš z majhno sivo ikono pod oknom s komentarji..</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>Klikni sem</a>
+      za več informacij o uporabi Markdown-a.</p>
     keep_up_to_date: Ostani na tekočem
-    keep_up_to_date_html: "<p>Klik na ime skupine na vrhu zaslona te popelje na Stran Skupine,\nkjer lahko vidiš seznam vseh razprav in odločitev v tej skupini. Če\nsi včlanjen/a v več skupin, boš tu videl/a vse aktivnosti v teh skupinah.</p>\n<p>Ko se zgodi kaj pomembnega v tvoji skupini, boš prejel/a email.\nEmail nastavitve lahko spremeniš <a href=\"%{link}\"\">tukaj</a>.</p>\n"
+    keep_up_to_date_html: |
+      <p>Klik na ime skupine na vrhu zaslona te popelje na Stran Skupine,
+      kjer lahko vidiš seznam vseh razprav in odločitev v tej skupini. Če
+      si včlanjen/a v več skupin, boš tu videl/a vse aktivnosti v teh skupinah.</p>
+      <p>Ko se zgodi kaj pomembnega v tvoji skupini, boš prejel/a email.
+      Email nastavitve lahko spremeniš <a href="%{link}"">tukaj</a>.</p>
     make_a_decision: Odloči se
-    make_a_decision_description: "Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
-    prompt_people_details: "Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju."
-    prompt_people_html: "Pozovi člane z <span class='blue'>@omenjanjem</span>"
+    make_a_decision_description: Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.
+    prompt_people_details: Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju.
+    prompt_people_html: Pozovi člane z <span class='blue'>@omenjanjem</span>
     positions_agree_description: "<span>Strinjam se</span> pomeni, da predlog podpiraš."
     positions_abstain_description: "<span>Vzdržan/a</span> pomeni, da nisi odločen/a, oziroma, da zaupaš skupini, da se odloči brez tebe."
     positions_disagree_description: "<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine."
     positions_block_description: "<span>Ugovarjam</span> pomeni, da imaš resna nasprotovanja in boš skrajno nesrečen/na, če bo predlog sprejet."
     start_discussion: Kako začeti angažirano razpravo?
-    start_discussion_html: "<p>Ko začneš razpravo, poskrbi da naslov jedrnato izraža temo.\nV Opis vnesi vse potrebne informacije, da bo\nskupina lahko imela produktivno in informirano razpravo. </p>\n<p>Med razpravo je možno posodobiti Opis, če pride do novih informacij. Poleg razjasnitve teme, lahko ta prostor uporabiš za\ndeljenje virov, povzemanje razprave tekom njenega napredovanja, ali za opisovanje\nodločevalskih protokolov, ki jih skupina uporablja.</p>\n"
+    start_discussion_html: |
+      <p>Ko začneš razpravo, poskrbi da naslov jedrnato izraža temo.
+      V Opis vnesi vse potrebne informacije, da bo
+      skupina lahko imela produktivno in informirano razpravo. </p>
+      <p>Med razpravo je možno posodobiti Opis, če pride do novih informacij. Poleg razjasnitve teme, lahko ta prostor uporabiš za
+      deljenje virov, povzemanje razprave tekom njenega napredovanja, ali za opisovanje
+      odločevalskih protokolov, ki jih skupina uporablja.</p>
     start_proposal: Kako napisati jasen predlog
-    start_proposal_html: "<p> Če napišeš jasen in jedrnat naslov, bodo vsi točno vedeli,\nkaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.</p>\n<p>Ni konec sveta, če predlog ne dobi jasnega odobravanja takoj.\nČe skupina ni navdušena nad prvim predlogom, lahko vsak začne nov predlog, da\nnaslovi vse pomisleke in da proces vodi naprej.</p>\n<p>S tem dinamičnim procesom lahko kolektivna modrost skupine ustvarja boljše\nideje, kot bi jih posamezniki. </p>\n<p>Rok na predlog se lahko kadarkoli podaljša, če odločitev\npotrebuje nekaj več prostora. Vsi boste dobili email obvestilo 24 ur pred zaprtjem predloga.</p>\n"
-    video_id: "52025402"
+    start_proposal_html: |
+      <p> Če napišeš jasen in jedrnat naslov, bodo vsi točno vedeli,
+      kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.</p>
+      <p>Ni konec sveta, če predlog ne dobi jasnega odobravanja takoj.
+      Če skupina ni navdušena nad prvim predlogom, lahko vsak začne nov predlog, da
+      naslovi vse pomisleke in da proces vodi naprej.</p>
+      <p>S tem dinamičnim procesom lahko kolektivna modrost skupine ustvarja boljše
+      ideje, kot bi jih posamezniki. </p>
+      <p>Rok na predlog se lahko kadarkoli podaljša, če odločitev
+      potrebuje nekaj več prostora. Vsi boste dobili email obvestilo 24 ur pred zaprtjem predloga.</p>
+    video_id: '52025402'
     video_tutorial: Video z navodili
-    video_tutorial_description: "Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio."
+    video_tutorial_description: Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio.
     what_is_loomio: Kaj je Loomio?
   hint:
     context: Nasveti za uporabo polja Opis
@@ -646,21 +677,38 @@ sl:
     invitation: Nasveti za pisanje prepričljivih vabil
     proposal: Nasveti za pisanje jasnih predlogov
     vote: Svojo odločitev lahko spremeniš kadarkoli
-  pricing_page:
-    header: Cene
   contribution:
-    any_amount: "ali pa za enkraten prispevek po želji, v višini"
+    any_amount: ali pa za enkraten prispevek po želji, v višini
     currency_desc: Zneski so v ameriških dolarjih
-    monthly_html: "Želim prispevati mesečno, v višini"
-    one_time_html: "Želim plačati enkraten prispevek, v višini"
+    monthly_html: Želim prispevati mesečno, v višini
+    one_time_html: Želim plačati enkraten prispevek, v višini
     submit: Prispevaj
     tooltip: Spoznaj naš model skupnostnega financiranja
-    thought_about_contributing: "Tvoja priložnost, da prispevaš"
-    thought_about_contributing_description: "Loomio je zadružno socialno podjetje, ki si prizadeva omogočiti vsem, da bi sodelovali pri odločitvah, ki jih zadevajo.\n\nPri skupnostnemu sprejemanju odločitev denar ne bi smel biti ovira. Loomio se financira s prispevki uporabnikov v skupnosti in naročninami formalnih organizacij, ki ga uporabljajo.\n\nVaš prispevek pomeni, da lahko Loomio ohranimo neodvisen, brez oglasov in prosto dostopen skupinam, ki ustvarjajo odlične stvari v svojih skupnostih.\n\nHvala, da to omogočate!\n"
-    thank_you_title: "Hvala za tvoj prispevek Loomiu!"
-    thank_you_body: "Tvoj prispevek nam pomaga zagotoviti enostavno so-odločanje za ves svet.\n\nV kratkem boš prejel/a email z računom za tvoj prispevek.\n\nVsak je dobrodošel, da se pridruži Loomio Skupnosti, kjer debatiramo o tem, kako lahko s tem orodjem naredimo največ in kako ga lahko izboljšamo.\n\n<a href='https://www.loomio.org/groups/3'>Želim vstopiti vskupino Loomio Skupnost &raquo;</a>\n"
+    thought_about_contributing: Tvoja priložnost, da prispevaš
+    thought_about_contributing_description: |
+      Loomio je zadružno socialno podjetje, ki si prizadeva omogočiti vsem, da bi sodelovali pri odločitvah, ki jih zadevajo.
+
+      Pri skupnostnemu sprejemanju odločitev denar ne bi smel biti ovira. Loomio se financira s prispevki uporabnikov v skupnosti in naročninami formalnih organizacij, ki ga uporabljajo.
+
+      Vaš prispevek pomeni, da lahko Loomio ohranimo neodvisen, brez oglasov in prosto dostopen skupinam, ki ustvarjajo odlične stvari v svojih skupnostih.
+
+      Hvala, da to omogočate!
+    thank_you_title: Hvala za tvoj prispevek Loomiu!
+    thank_you_body: |
+      Tvoj prispevek nam pomaga zagotoviti enostavno so-odločanje za ves svet.
+
+      V kratkem boš prejel/a email z računom za tvoj prispevek.
+
+      Vsak je dobrodošel, da se pridruži Loomio Skupnosti, kjer debatiramo o tem, kako lahko s tem orodjem naredimo največ in kako ga lahko izboljšamo.
+
+      <a href='https://www.loomio.org/groups/3'>Želim vstopiti vskupino Loomio Skupnost &raquo;</a>
     making_a_donation: Doniraj
-    making_a_donation_description: "Loomio je zadružno socialno podjetje, ki si prizadeva omogočiti vsem, da bi sodelovali pri odločitvah, ki jih zadevajo.\n\nVaš prispevek pomeni, da lahko Loomio ohranimo neodvisen, brez oglasov in prosto dostopen skupinam, ki ustvarjajo odlične stvari v svojih skupnostih.\n\nHvala, da to omogočate!\n"
+    making_a_donation_description: |
+      Loomio je zadružno socialno podjetje, ki si prizadeva omogočiti vsem, da bi sodelovali pri odločitvah, ki jih zadevajo.
+
+      Vaš prispevek pomeni, da lahko Loomio ohranimo neodvisen, brez oglasov in prosto dostopen skupinam, ki ustvarjajo odlične stvari v svojih skupnostih.
+
+      Hvala, da to omogočate!
   resend_confirmation: Ponovno pošlji navodila ob potrditvi
   new_password: Novo geslo
   confirm_new_password: Potrdi novo geslo
@@ -676,7 +724,7 @@ sl:
   remember_me: Zapomni si me
   signing_in: Prijavljam
   or: ali
-  invalid_email: "Email naslov, ki si ga vpisal/a, ni bil prepoznan. Preveri, če je vpisan pravilno, ali pa poskusi z drugim."
+  invalid_email: Email naslov, ki si ga vpisal/a, ni bil prepoznan. Preveri, če je vpisan pravilno, ali pa poskusi z drugim.
   forgot_your_password: Si pozabil/a geslo?
   dont_have_an_account: Še nimaš računa?
   create_one_now: Ustvari ga zdaj
@@ -686,59 +734,54 @@ sl:
   already_have_account: Že imaš račun na Loomiu?
   confirm_your_details: Potrdi svoje podatke
   link_up_your_account: Poveži svoj račun
-  log_in_to_your_loomio_account: "Vpiši se v svoj račun Loomio in ga poveži z%{provider_name}."
-  now_that_your_logged_in: "Sedaj, ko si vpisan/a z %{provider_name}, prosim potrdi svoje podatke, da ustvariš račun na Loomiu."
+  log_in_to_your_loomio_account: Vpiši se v svoj račun Loomio in ga poveži z%{provider_name}.
+  now_that_your_logged_in: Sedaj, ko si vpisan/a z %{provider_name}, prosim potrdi svoje podatke, da ustvariš račun na Loomiu.
   confirmation_not_received: Nisi prejel/a navodil ob potrditvi?
   unlock_not_received: Nisi prejel/a navodil za odklepanje?
-  inactive_html: "Ta račun je bil deaktiviran. Če imaš kakšna vprašanja, prosimo, <a href='%{path_to_contact}'>piši nam</a>."
+  inactive_html: Ta račun je bil deaktiviran. Če imaš kakšna vprašanja, prosimo, <a href='%{path_to_contact}'>piši nam</a>.
   create_an_account_html: Ustvari račun na Loomiu Beta
   log_in: Prijavi se
   join_group:
-    log_in: "Prijavi se in se pridruži %{group_name}"
-    create_account_to_join_group: "Ustvari si račun in se pridruži %{group_name}"
+    log_in: Prijavi se in se pridruži %{group_name}
+    create_account_to_join_group: Ustvari si račun in se pridruži %{group_name}
   start_group:
     log_in: Prijavi se in uredi svojo skupino
-    create_account_to_start_group: "Ustvari si račun in ustvari svojo skupino %{group_name}"
+    create_account_to_start_group: Ustvari si račun in ustvari svojo skupino %{group_name}
     create_account: Ustvari račun
   invitation:
-    alternate: "Lahko tudi deliš to povezavo, s katero lahko vsak prosi za pridružitev:"
+    alternate: 'Lahko tudi deliš to povezavo, s katero lahko vsak prosi za pridružitev:'
     by_email: Povabi prek emaila
     invitation_not_found: Ne najdem tvojega povabila. Prosi pošiljatelja za novo vabilo.
-    invitation_cancelled: "To vabilo je bilo preklicano. Stopi v stik s pošiljateljem vabila, če meniš, da gre za napako."
+    invitation_cancelled: To vabilo je bilo preklicano. Stopi v stik s pošiljateljem vabila, če meniš, da gre za napako.
     invitation_already_used: Vabilo je že bilo uporabljeno. Prijavi se in se pridruži svoji skupini.
-    recipients: "Vnesi email naslove, ločene z vejicami:"
-    invitees_placeholder: "Uporabniško ime <user1@example.com>, user2@example.com"
-    subject: "Pridruži se novi skupini na Loomiu, %{group}"
+    recipients: 'Vnesi email naslove, ločene z vejicami:'
+    invitees_placeholder: Uporabniško ime <user1@example.com>, user2@example.com
+    subject: Pridruži se novi skupini na Loomiu, %{group}
     invite_people: Povabi še koga v svojo skupino
     invite_to_discussion: Povabi še koga k tej razpravi
-    invite_to_discussion_info: "Če v skupino dodaš nove člane, bodo prejeli vabilo za pridružitev. Ko ga potrdijo, bodo preusmerjeni na to razpravo."
-    select_members: "Dodaj člane iz %{group_name}"
-    body_editable: "Živjo, soodločaj z nami! Uporabljamo orodje za skupnostno odločanje, po imenu Loomio.\n"
-    body_editable_discussion: "Živjo, pridruži se razpravi!\n"
+    invite_to_discussion_info: Če v skupino dodaš nove člane, bodo prejeli vabilo za pridružitev. Ko ga potrdijo, bodo preusmerjeni na to razpravo.
+    select_members: Dodaj člane iz %{group_name}
+    body_editable: 'Živjo, soodločaj z nami! Uporabljamo orodje za skupnostno odločanje, po imenu Loomio.
+
+'
+    body_editable_discussion: 'Živjo, pridruži se razpravi!
+
+'
     message_body: Vabilo
     invites_more_help2: "<p>Kadarkoli lahko v svojo skupino povabiš nove člane.</p><p>Lahko takoj povabiš vse člane, ali pa začneš z vabljenjem tistih, s katerimi najbolj tesno sodeluješ.</p>"
     invitation_link: Povezava z vabilom
-    discussion_link: "Sodeluj v razpravi:"
-    copy: "Če kdo ni prejel emaila z vabilom, lahko kopiraš zgornjo povezavo z vabilom in jo sam/a pošlješ prejemniku."
-    pending_invitations: "Vabila, ki čakajo odgovor"
-    no_pending_invitations: "Trenutno ni vabil, ki bi čakala odgovor."
-    import_contacts_html: "Ne poznaš točnega email naslova? Uvozi svoje kontakte iz %{google_link}"
+    discussion_link: 'Sodeluj v razpravi:'
+    copy: Če kdo ni prejel emaila z vabilom, lahko kopiraš zgornjo povezavo z vabilom in jo sam/a pošlješ prejemniku.
+    pending_invitations: Vabila, ki čakajo odgovor
+    no_pending_invitations: Trenutno ni vabil, ki bi čakala odgovor.
+    import_contacts_html: Ne poznaš točnega email naslova? Uvozi svoje kontakte iz %{google_link}
   search:
-    description: "Spodaj je seznam razprav in predlogov, ki imajo '%{query}' v svojem naslovu ali opisu."
-    header: "Rezultati iskanja za \"%{query}\""
+    description: Spodaj je seznam razprav in predlogov, ki imajo '%{query}' v svojem naslovu ali opisu.
+    header: Rezultati iskanja za "%{query}"
     placeholder: Išči
     empty_search: Pobriši iskanje
     please_enter_a_search: Vnesi poizvedbo v iskalno vrstico zgoraj
-    no_match: "Ni rezultatov, ki bi se ujemali s tvojim iskanjem"
-  contact_page:
-    contact_us: Kontaktiraj nas
-    labels:
-      name: Tvoje ime
-      email: Tvoj email naslov
-      message: Tvoje sporočilo
-      submit: Pošlji sporočilo
-    messages:
-      email_html: "Izpolni obrazec ali pošlji email na <a href='mailto:%{email}'>%{email}</a>"
+    no_match: Ni rezultatov, ki bi se ujemali s tvojim iskanjem
   discussion_form:
     new:
       header: Začni razpravo
@@ -747,8 +790,8 @@ sl:
       header: Uredi razpravo
     privacy:
       will_be_private: Razprava bo vidna samo članom skupine.
-      will_be_private_to_group: "Razprava bo vidna samo članom %{group_name}."
-      will_be_private_to_parent_group: "Razprava bo vidna članom %{parent_group_name} in članom %{group_name}."
+      will_be_private_to_group: Razprava bo vidna samo članom %{group_name}.
+      will_be_private_to_parent_group: Razprava bo vidna članom %{parent_group_name} in članom %{group_name}.
       will_be_public: Razpravo lahko vidi vsak.
   motion_history:
     title: Spremembe predloga
@@ -782,21 +825,21 @@ sl:
     upload_new_image: Naloži novo sliko
   group_setup:
     set_up_your_group: Uredi svojo skupino.
-    desc_header: "Samo še malo!"
-    desc_html: "Kot koordinator/ka skupine si odgovoren/na za urejanje in upravljanje s svojo skupino Loomio. Ko določiš še nekaj nastavitev, boš lahko vstopil/a v svojo novo skupino, začel/a razpravo ali dve in razposlal/a vabila! <p>Ko razmišljaš, kako bi najbolj enostavno opisal/a svojo skupino, se vprašaj: Kaj želiš, da boste skupaj ustvarili? Kakšne vrste odločitev boste sprejemali? Kdo bo vključen?</p>"
-    submit: "Želim vstopiti v svojo skupino!"
+    desc_header: Samo še malo!
+    desc_html: 'Kot koordinator/ka skupine si odgovoren/na za urejanje in upravljanje s svojo skupino Loomio. Ko določiš še nekaj nastavitev, boš lahko vstopil/a v svojo novo skupino, začel/a razpravo ali dve in razposlal/a vabila! <p>Ko razmišljaš, kako bi najbolj enostavno opisal/a svojo skupino, se vprašaj: Kaj želiš, da boste skupaj ustvarili? Kakšne vrste odločitev boste sprejemali? Kdo bo vključen?</p>'
+    submit: Želim vstopiti v svojo skupino!
     payment_model:
-      header: "Loomio je za vse!"
-      info: "Naš način zaračunavanja ustreza vsaki skupini, tudi tistim brez finančnih sredstev :)"
+      header: Loomio je za vse!
+      info: Naš način zaračunavanja ustreza vsaki skupini, tudi tistim brez finančnih sredstev :)
       link: Preberi več
   simple_form:
-    "yes": Da
-    "no": Ne
+    'yes': Da
+    'no': Ne
     required:
       text: obvezno
       mark: "*"
     error_notification:
-      default_message: "Preveri spodnje težave:"
+      default_message: 'Preveri spodnje težave:'
     labels:
       discussion:
         title: Naslov
@@ -816,10 +859,10 @@ sl:
         language_preference: Jezik
     placeholders:
       membership_request:
-        introduction: "V nekaj besedah opiši kdo si in zakaj se želiš pridružiti %{group_name}."
+        introduction: V nekaj besedah opiši kdo si in zakaj se želiš pridružiti %{group_name}.
       motion:
         name: Kakšen postopek predlagaš?
-        description: "Navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
+        description: Navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.
   helpers:
     submit:
       discussion:
@@ -830,107 +873,17 @@ sl:
       user:
         create: Ustvari račun
         update: Posodobi nastavitve
-  email:
-    by_who: "%{person}"
-    reply_to_this_discussion: Odgovori na to razpravo
-    to_join_discussion:
-      subject: "%{who} želi, da se pridružiš razpravi na Loomiu"
-      content: "Povabljen/a si bil/a k sodelovanju v razpravi: %{discussion}"
-      message_intro: "%{who} pravi:"
-      link: Pridruži se razpravi
-    to_join_group:
-      subject: "%{member} te je povabil, da se pridružiš %{group_name} na Loomiu"
-    to_start_group:
-      subject: "Vzpostavi svojo novo skupino na Loomiu: %{group_name}"
-    user_added_to_a_group:
-      subject: "%{who} te je dodal/a v %{which_group}"
-      content: "%{who} te je dodal/a v %{which_group} na Loomiu. Za vstop v skupino klikni na spodnjo povezavo:"
-    unsubscribe: "Odjavi se ali spremeni svoje email nastavitve:"
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
-    view_comment: Klikni sem za ogled komentarja na Loomiu
-    view_discussion: Klikni sem za ogled razprave
-    view_group: Klikni sem za ogled skupine na Loomiu
-    view_proposal: Poglej ta predlog na Loomiu
-    create_discussion:
-      intro: "%{who} je začel/a razpravo v %{which_group}:"
-    create_proposal:
-      intro: "Nov predlog je bil dodan v skupini na Loomiu, katere član/ica si."
-      closes_in: Poteče čez
-      subject: "Nov predlog: %{which}"
-    daily_activity:
-      heading: Tvoja aktivnost na Loomiu
-      intro: Prikazuje dogajanja v tvojih skupinah na Loomiu v zadnjih 24 urah
-      subject: Loomio - Povzetek zadnjih 24 ur
-    missed_yesterday:
-      subject: Včeraj na Loomiu
-      headlines: Razprave
-      mark_as_read: Označi kot prebrano
-      thanks_for_reading: "Super, prebral/a si vse novice. Lep dan!"
-      click_here_to_mark_all_as_read_html: "Tole se je na Loomiu dogajalo včeraj.\nKo prebereš, klikni <a href=\"%{link}\">označi kot prebrano</a>, da sporočilo izbrišeš iz svojega nabiralnika.\n"
-      marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
-    group_email:
-      intro: "%{who} je sporočil/a skupini %{group}:"
-    group_membership_approved:
-      intro: "Tvoja prošnja za dostop do skupine '%{group_name}' na Loomiu je bila odobrena."
-      subject: Članstvo odobreno
-    invitation:
-      hi: "Živjo, %{name},"
-      intro: "Klikni na spodnjo povezavo in uredi svojo skupino %{group_name}:"
-      closing_message: "Če imaš kakšna vprašanja ali rabiš pomoč, da lahko začneš delovati, nam prosim piši - samo odgovori na ta email."
-      thanks: "Hvala!\nEkipa Loomio\n"
-    membership_request:
-      intro: "%{name} (%{email}) je zaprosil za dostop do ene od tvojih skupin na Loomiu."
-      subject: "%{who} je zaprosil za vstop v %{which_group}"
-      view_group: Prošnjo lahko odobriš ali zavrneš tukaj
-    mentioned:
-      context: "%{author_name} te je omenil/a v razpravi \"%{discussion_title}\""
-      subject: "%{who} te je omenil/a v skupin %{which} na Loomiu"
-    new_motion_created:
-      subject: "Predlog: %{proposal_title}"
-      context: "%{author} je ustvaril/a predlog v %{group_full_name}:"
-    proposal_closed:
-      proposal_has_closed: Predlog je zaprt.
-      specify_outcome_and_notify_group: "Opiši izid in ga pošlji svoji skupini!"
-      specify_outcome_and_notify_group_html: "Opiši izid in ga pošlji svoji skupini!"
-      subject: "Zaključen predlog - %{which}"
-    proposal_outcome:
-      subject: Izid predloga
-    proposal_blocked:
-      intro: "Predlogu, ki ga podpiraš,  nekdo ugovarja."
-      subject: "Predlogu nekdo ugovarja - %{which}"
-    proposal_closing_soon:
-      closes_on: Zaključi se
-      closes_at: Zaključi se ob
-      closes_in: Zaključi se čez
-      subject: "Zaključi se čez 24 ur: %{proposal_title}"
-      headline: "Predlog, ki ga je predlagal/a %{author} v %{group}, bo kmalu zaključen:"
-      summary: Povzetek
-    thread_mailer:
-      footer_text: "Odgovori na ta email, ali ga poglej na %{hostname}:"
-      reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
-      turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
-      turn_off_notifications_text: "Izklopi emaile za to razpravo: %{url}"
-      turn_on_notifications_text: "Vklopi email za obveščanje o novih aktivnostih v tej razpravi: %{url}"
-      change_email_preferences_html: "Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>."
-      change_preferences: "Spremeni svoje email nastavitve:"
-      new_motion: "%{who} je predlagal/a:"
-      motion_closing_soon: "Predlog se zaključi v 24 urah:"
-      proposal_closed: "Zaključen predlog:"
-      specify_outcome_html: "Tvoj predlog je zaključen. <a href='%{link}'>Opiši izid</a> in obvesti še ostale o rezultatu."
-      specify_outcome: "Tvoj predlog je zaključen. Opiši izid, da lahko vse obvestiš o rezultatu."
-      outcome_created: "%{who} je določil/a izid predloga:"
-      you_agreed: "Ti si %{past_tense_position}"
   meta_tags:
-    default_title: "Loomio | Skupnostno odločanje"
-    default_description: "Loomio je enostavno spletno orodje za skupnostno odločanje. Skupinam omogoča, da hitro pridejo do skupne odločitve in jo začnejo uresničevati."
+    default_title: Loomio | Skupnostno odločanje
+    default_description: Loomio je enostavno spletno orodje za skupnostno odločanje. Skupinam omogoča, da hitro pridejo do skupne odločitve in jo začnejo uresničevati.
   about_loomio: O Loomiu
-  ago: "pred %{quantity_of_time}"
+  ago: pred %{quantity_of_time}
   approve: Potrdi
   author: Avtor
   back: Nazaj
   cancel: Prekliči
   change: Spremeni
-  change_language: "Klikni sem za uporabo Loomia v %{language}"
+  change_language: Klikni sem za uporabo Loomia v %{language}
   changing: Spreminjam
   click_here: Klikni sem
   close: Zapri
@@ -964,14 +917,14 @@ sl:
   pricing: Cene
   prev: Nazaj
   more: Več...
-  translate: "Pomagaj prevesti Loomio!"
+  translate: Pomagaj prevesti Loomio!
   translate_field: Poglej prevod
   loading_translation: Nalagam prevod...
-  translate_this_string: "Prevedi v %{language}"
+  translate_this_string: Prevedi v %{language}
   failed_translation: Ne morem zaključiti prevoda
   options: Možnosti
   rss_subscribe: Naroči se na novice
-  ok_got_it: "Ok, razumem!"
+  ok_got_it: Ok, razumem!
   remove: Odstrani
   save: Shrani
   saving: Shranjujem
@@ -982,7 +935,7 @@ sl:
   start_a_group: Ustvari skupino
   starting: Ustvarjam
   subject: Naslov
-  thanks: "Hvala!"
+  thanks: Hvala!
   unlike: Ne všečkaj
   time_until_close: "%{quantity_of_time} do zaključitve"
   update: Posodobi
@@ -998,7 +951,7 @@ sl:
     dashboard: Nadzorna plošča
     unread: Neprebrano
     find_out_more: Preberi več
-    filter: "Razvrsti:"
+    filter: 'Razvrsti:'
     following: Spremljano
     not_following: Ne spremljam
     back_to_discussion: Nazaj na razpravo
@@ -1006,7 +959,7 @@ sl:
     groups: Skupine
     select_error: Izberi eno od možnosti
     today: Danes
-    select: "Prosim, izberi"
+    select: Prosim, izberi
     months:
       january: Januar
       february: Februar
@@ -1060,13 +1013,13 @@ sl:
     meridians:
       am: dopoldan
       pm: popoldan
-    please_wait: "Prosim, počakaj"
+    please_wait: Prosim, počakaj
     privacy: Zasebnost
     private: Zasebno
     permissions: Dovoljenja
     public: Javno
     email: Email
-    start_group: "Ustvari skupino!"
+    start_group: Ustvari skupino!
   group_categories:
     all: Vse
     blank: Nekategorizirano

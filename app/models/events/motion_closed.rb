@@ -1,15 +1,8 @@
 class Events::MotionClosed < Event
   def self.publish!(motion)
-    event = create!(kind: 'motion_closed',
-                    eventable: motion,
-                    discussion_id: motion.discussion_id)
-
-    BaseMailer.send_bulk_mail(to: UsersToEmailQuery.motion_closed(motion)) do |user|
-      ThreadMailer.delay.motion_closed(user, event)
-    end
-
-    event.notify! motion.author
-    event
+    create(kind: 'motion_closed',
+           eventable: motion,
+           discussion_id: motion.discussion_id).tap { |e| EventBus.broadcast('motion_closed_event', e, motion.author) }
   end
 
   def group_key

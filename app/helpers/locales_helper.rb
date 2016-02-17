@@ -94,7 +94,7 @@ module LocalesHelper
   end
 
   def user_selected_locale
-    first_selectable_locale current_user_or_visitor.selected_locale
+    first_selectable_locale (current_user || LoggedOutUser.new).selected_locale
   end
 
   def first_detectable_locale(locales)
