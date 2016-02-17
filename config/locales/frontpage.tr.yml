@@ -57,8 +57,10 @@ tr:
   about_page:
     advisors_html: '<h2> Danışmanlar </h2> <p>Biz, Uluslararası Danışma Konseyi ile, demokrasinin ve teknolojinin baz en parlak beyinleri tarafından destekleniyoruz.</p>'
     sascha_bio_html: "<a href='http://thexlab.org/' target='_blank'>X-Lab</a> kurucu ortağı & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
+    katherine_bio_html: "<a href='http://www.aol.com/' target='_blank'>AOL</a> Eski Kıdemli Başkan Yardımcısı, <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a> Başkan Yardımcısı"
     rushkoff_bio_html: '<a href="http://www.rushkoff.com/" target="_blank">En çok satan yazar</a>, CNN spikeri, medya teorisyeni'
     monahan_bio_html: '<a href="http://inflection.com/" target="_blank">Inflection</a>, <a href="http://www.namaste.org/" target="_blank">Namaste Foundation</a> kurucu ortakları'
+    team_html: '<h2>Takım</h2> <p>Loomio Yeni Zelanda merkezli, kooperatif bir sosyal kuruluştur. Biz, grup sürecinde derin uzmanlığı olan ve açık teknoloji geliştirmesine tutkulu bir ekibiz. </p>'
     ben_bio: 'Kurucu ortak ve direktör, toplum organizatörü, kolektif zeka araştırmacısı'
     mj_bio: 'ABD operasyonları yöneticisi, Brown Üniversitesi Sosyal işletmede fahri profesör'
     rob_bio: 'Kurucu ortak ve baş yazılım mimarı, erişilebilirlik, kullanıcı deneyimi'

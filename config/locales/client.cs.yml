@@ -24,6 +24,7 @@ cs:
     action:
       save: Uložit
       save_changes: Uložit změny
+      update_settings: Aktualizovat nastavení
       reply: Odpovědět
       edit: Upravit
       like: To se mi líbí
@@ -35,6 +36,8 @@ cs:
       new_thread: Nové vlákno
       add_subgroup: Přidat podskupinu
       loading: Načítá se
+      translate: Přeložit
+      translated: Překlad Bing Translator
       uploading: Nahrává se
   error_page:
     forbidden: K této akci nemáte oprávnění.
@@ -250,11 +253,39 @@ cs:
       submit: 'Ano, opustit tuto skupinu'
       cannot_leave_group: 'Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat.'
       add_coordinator: Přidat koordinátora
+  confirm_gift_plan_modal:
+    got_it: 'OK, chápu!'
   choose_plan_modal:
+    unlimited_members: neomezený počet členů
+    unlimited_decisions: neomezený počet rozhodnutí
     email_support: e-mailová podpora
+    standard_price_html: |
+      <strong>19$(US)</strong>/měsíčně<br><span>nebo</span> 190$(US)/ročně
     premium_support: prémiová podpora
     custom_url: vlastní URL
     usage_statistics: statistiky využití
+    select: Vybrat
+  subscription_success_modal:
+    heading: 'Děkujeme vám za zřízení předplatného!'
+    change_subscription: 'Pokud někdy budete chtít změnit nebo zrušit předplatné, nebo pokud máte nějaké další dotazy,'
+    contact_link: prosím kontaktujte nás.
+    ok_got_it: 'OK, chápu!'
+  group_form:
+    start_group_heading: Vytvořit skupinu
+    start_subgroup_heading: Vytvořit podskupinu
+    edit_group_heading: Upravit nastavení skupiny
+    edit_subgroup_heading: Upravit nastavení podskupiny
+    group_name: Název skupiny
+    subgroup_name: Název podskupiny
+    description: Popis
+    advanced_settings: Pokročilé nastavení
+    how_do_people_join: Jak se lidé připojí?
+    membership_granted_upon_request: Každý se může připojit ke skupině.
+    membership_granted_upon_approval: 'Kdokoli může požádat o připojení, ale musí být schválen.'
+    permissions: Oprávnění
+    submit_start_group: Vytvořit skupinu
+    submit_start_subgroup: Vytvořit podskupinu
+    submit_update: Aktualizovat nastavení
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
