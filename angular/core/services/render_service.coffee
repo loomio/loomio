@@ -6,7 +6,12 @@ angular.module('loomioApp').factory 'render', ->
     renderer.paragraph = @cook('p')
     renderer.listitem  = @cook('li')
     renderer.tablecell = @cook('td')
+    renderer.heading   = @headerCook
     renderer
+
+  headerCook: (text, level) ->
+    text = emojione.shortnameToImage(text)
+    "<h#{level}>#{text}</h#{level}>"
 
   cook: (tag) ->
     (text) ->
