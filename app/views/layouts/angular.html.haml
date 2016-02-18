@@ -6,10 +6,7 @@
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     %base{href: '/'}
-    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
-
-    = render 'angular/google_analytics'
-    = render 'angular/intercom'
+    -# %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
 
   %body{'ng-keydown' => 'keyDown($event)'}
     %flash
@@ -19,21 +16,7 @@
     %start_menu{'ng-if' => 'isLoggedIn()'}
     %angular_feedback_card
 
-    %script{src: client_asset_path(:"vendor.min.js")}
-    :javascript
-      window.Loomio = #{@appConfig.to_json.html_safe}
-      window.Loomio.emojis = {
-        source: (emojione.shortnames || "").split('|'),
-        render: emojione.shortnameToImage,
-        defaults: ':heart:|:smiley:|:sweat_smile:|:star:|:rabbit:|:ok:|:thumbsup:|:nz:|:walking:|:clap:'.split('|')
-      }
-    %script{src: client_asset_path(:"app.js")}
+    %angular_fetch_app
 
-    - if ENV['HOSTED_BY_LOOMIO']
-      -# coming soon.. seperated metrics
-      -# :javascript
-      -#   ahoy = {visitsUrl: 'http://localhost:4000/ahoy/visits',
-      -#           eventsUrl: 'http://localhost:4000/ahoy/events'}
-      -# = javascript_include_tag 'http://localhost:4000/assets/application.js'
-      = javascript_include_tag 'angular_ahoy'
-      = render 'piwik_tracker'
+    -# %script{src: client_asset_path(:"vendor.min.js")}
+    -# %script{src: client_asset_path(:"app.js")}
