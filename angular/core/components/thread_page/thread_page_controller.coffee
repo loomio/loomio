@@ -42,8 +42,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'setTitle', @discussion.title
       $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
 
-      MessageChannelService.subscribeToDiscussion(@discussion)
-
   @init Records.discussions.find $routeParams.key
   Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
