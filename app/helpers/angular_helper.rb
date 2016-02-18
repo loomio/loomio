@@ -35,6 +35,11 @@ module AngularHelper
         nagCache: {}
       }
     end
+
+    if Rails.application.secrets.intercom_app_id
+      @appConfig[:intercomAppId] = Rails.application.secrets.intercom_app_id
+      @appConfig[:intercomUserHash] = Digest::SHA1.hexdigest("#{Rails.application.secrets.intercom_app_secret}#{current_user.id.to_s}")
+    end
   end
 
   def client_asset_path(filename)

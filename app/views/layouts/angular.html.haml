@@ -29,9 +29,6 @@
       }
     %script{src: client_asset_path(:"app.js")}
 
-    - if Rails.application.secrets.faye_url.present?
-      %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}
-
     - if ENV['HOSTED_BY_LOOMIO']
       -# coming soon.. seperated metrics
       -# :javascript
