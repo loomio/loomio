@@ -11,4 +11,15 @@ module AngularHelper
     current_user_or_visitor.angular_ui_enabled? && request.format == :html
   end
 
+  def client_asset_path(filename)
+    ['', :client, angular_asset_folder, filename].join('/')
+  end
+  helper_method :client_asset_path
+
+  private
+
+  def angular_asset_folder
+    Rails.env.development? ? :development : Loomio::Version.current
+  end
+
 end

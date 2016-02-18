@@ -23,12 +23,6 @@ class AngularController < ApplicationController
     redirect_to '/'
   end
 
-
-  def client_asset_path(filename)
-    ['', :client, angular_asset_folder, filename].join('/')
-  end
-  helper_method :client_asset_path
-
   private
 
   def app_config
@@ -71,13 +65,5 @@ class AngularController < ApplicationController
       donation_url: Rails.application.secrets.chargify_donation_url,
       nagCache: {}
     }
-  end
-
-  def angular_asset_folder
-    if Rails.env.development?
-      :development
-    else
-      Loomio::Version.current
-    end
   end
 end
