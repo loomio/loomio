@@ -8,7 +8,7 @@ class BaseMailer < ActionMailer::Base
 
   add_template_helper(ReadableUnguessableUrlsHelper)
 
-  default :from => "Loomio <notifications@loomio.org>"
+  default :from => "Loomio <notifications@#{ENV['SMTP_DOMAIN']}>"
   before_action :utm_hash
 
   protected
@@ -25,7 +25,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def from_user_via_loomio(user)
-    "\"#{user.name} (Loomio)\" <notifications@loomio.org>"
+    "\"#{user.name} (Loomio)\" <notifications@#{ENV['SMTP_DOMAIN']}>"
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)
