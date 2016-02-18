@@ -408,7 +408,7 @@ en:
     group_logo: 'Group logo'
     new_photo: 'new photo'
     description: 'Group description'
-    description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
+    description_placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'

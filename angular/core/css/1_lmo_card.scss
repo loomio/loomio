@@ -25,7 +25,6 @@
 .lmo-card-heading{
   @include fontHelveticaMedium;
   @include fontSmall;
-  display: inline-block;
   text-transform: uppercase;
   color: $grey-on-white;
   margin-bottom: 10px;
