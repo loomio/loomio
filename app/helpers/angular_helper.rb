@@ -14,7 +14,6 @@ module AngularHelper
   def client_asset_path(filename)
     ['', :client, angular_asset_folder, filename].join('/')
   end
-  helper_method :client_asset_path
 
   private
 
