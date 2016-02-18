@@ -564,11 +564,6 @@ es:
       invitations_sent: '{{count}} invitaciones enviadas.'
       no_invitations: 'Por favor verifica que la dirección de correo electrónico es correcta e intenta de nuevo. '
       max_invitations: 'Si quieres enviar mas de 100 invitaciones, utiliza un enlace.'
-  team_link_modal:
-    heading: Incluye gente
-    share_link: Comparte este enlace
-    caution: 'Precaución: cualquiera que tenga este enlace podrá unirse a tu grupo inmediatamente. Se cauteloso de con quien lo compartes :)'
-    copy_link: Copia el enlace
   add_members_modal:
     heading: 'Adherir miembros de {{name}}'
     add_members: 'Incluye miembros '

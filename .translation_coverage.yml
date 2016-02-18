@@ -24,8 +24,8 @@ cmn:
   server: 7
 cs:
   frontpage: 76
-  main_1_0: 48
-  server: 57
+  main_1_0: 52
+  server: 59
 da:
   frontpage: 52
   main_1_0: 29
@@ -69,7 +69,7 @@ fi:
   server: 0
 fr:
   frontpage: 100
-  main_1_0: 97
+  main_1_0: 98
   server: 97
 fr-BE:
   frontpage: 0
@@ -110,7 +110,7 @@ io:
   main_1_0: 0
   server: 1
 it:
-  frontpage: 72
+  frontpage: 83
   main_1_0: 62
   server: 62
 it-CH:
@@ -166,7 +166,7 @@ pl:
   server: 26
 pt-BR:
   frontpage: 100
-  main_1_0: 99
+  main_1_0: 100
   server: 100
 pt-PT:
   frontpage: 16
@@ -212,7 +212,7 @@ th-TH:
   main_1_0: 0
   server: 0
 tr:
-  frontpage: 90
+  frontpage: 93
   main_1_0: 25
   server: 55
 uk:
@@ -233,5 +233,5 @@ vi:
   server: 20
 zh-TW:
   frontpage: 100
-  main_1_0: 99
+  main_1_0: 100
   server: 100
