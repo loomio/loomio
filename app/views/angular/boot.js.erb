@@ -1,0 +1,21 @@
+var includeJs = function(url, callback) {
+  var elem   = document.createElement('script')
+  elem.src   = url
+  elem.onload = callback
+  document.getElementById('boot').appendChild(elem)
+}
+
+var includeCss = function(url) {
+  var elem   = document.createElement('link')
+  elem.href  = url
+  elem.media = 'screen'
+  elem.rel   = 'stylesheet'
+  document.getElementById('boot').appendChild(elem)
+}
+
+<%= render 'angular/boot/loomio' %>
+<%= render 'angular/boot/google_analytics' if Rails.application.secrets.google_analytics_id %>
+<%= render 'angular/boot/intercom'         if Rails.application.secrets.intercom_app_id %>
+<%= render 'angular/boot/faye'             if Rails.application.secrets.faye_url %>
+<%= render 'angular/boot/piwik'            if Rails.application.secrets.hosted_by_loomio %>
+<%= javascript_include_tag 'angular_ahoy'  if Rails.application.secrets.hosted_by_loomio %>

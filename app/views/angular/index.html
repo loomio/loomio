@@ -1,0 +1,20 @@
+<html ng-app="loomioApp" ng-controller="ApplicationController as app">
+  <head>
+    <title>Loomio</title>
+    <meta charset="utf-8"></meta>
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"></meta>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"></meta>
+    <base href="/"></base>
+  </head>
+  <body ng-keydown="keyDown($event)">
+    <flash></flash>
+    <navbar></navbar>
+    <ng-outlet ng-if="!pageError"></ng-outlet>
+    <error-page ng-if="pageError"></error-page>
+    <start-menu ng-if="isLoggedIn()"></start-menu>
+
+    <div id="boot">
+      <script src="angular/boot.js" type="text/javascript"></script>
+    </div>
+  </body>
+</html>
