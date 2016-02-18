@@ -3,7 +3,12 @@
 }
 
 .discussions-card__header{
-  margin: $cardPaddingSize;
+  margin: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+  @include displayFlex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
 
 .discussions-card__new-thread-button{
@@ -11,7 +16,7 @@
   @include lmoBtnIcon;
   @include fontSmall;
   float: right;
-  margin-bottom: 10px;
+  margin-bottom: $cardPaddingSize;
 }
 
 .discussions-card__list--empty {

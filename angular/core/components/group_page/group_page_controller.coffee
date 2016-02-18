@@ -21,7 +21,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast('pageError', error)
 
   @showDescriptionPlaceholder = ->
-    AbilityService.canAdministerGroup(@group) and !@group.description
+    !@group.description
 
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
