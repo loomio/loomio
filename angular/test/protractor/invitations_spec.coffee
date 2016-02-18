@@ -43,7 +43,7 @@ describe 'Invitations', ->
                '.group-welcome-modal__close-button',
                '.members-card__invite-members-btn',
                '.invitation-form__add-members',
-               '.add-members-modal__list-item',
+               '.add-members-modal__list-item:first-of-type',
                '.add-members-modal__submit'
 
     page.expectFlash 'Jennifer Grey added to Subgroup'
