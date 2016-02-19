@@ -11,8 +11,12 @@ module AngularHelper
     current_user_or_visitor.angular_ui_enabled? && request.format == :html
   end
 
+  def client_asset_url(filename)
+    [root_url, client_asset_path(filename)].join('/')
+  end
+
   def client_asset_path(filename)
-    ['', :client, angular_asset_folder, filename].join('/')
+    [:client, angular_asset_folder, filename].join('/')
   end
 
   private
