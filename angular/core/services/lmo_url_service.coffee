@@ -33,6 +33,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     user: (u, params = {}, options = {}) ->
       @buildModelRoute('u', u.username, null, params, options)
 
+    membership: (m, params = {}, options = {}) ->
+      @route model: m.group(), action: 'memberships', params: params
+
     contactForm: ->
       AppConfig.baseUrl + '/contact'
 
