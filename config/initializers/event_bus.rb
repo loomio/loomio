@@ -98,7 +98,8 @@ EventBus.configure do |config|
   config.listen('membership_request_approved_event',
                 'comment_replied_to_event',
                 'user_mentioned_event',
-                'motion_closed_event') { |event, user| event.notify!(user) }
+                'motion_closed_event',
+                'invitation_accepted_event') { |event, user| event.notify!(user) }
 
   # notify users of motion closing soon
   config.listen('motion_closing_soon_event') do |event|

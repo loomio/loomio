@@ -14,7 +14,8 @@ angular.module('loomioApp').directive 'notifications', ->
       'membership_request_approved',
       'user_added_to_group',
       'motion_closing_soon',
-      'motion_outcome_created'
+      'motion_outcome_created',
+      'invitation_accepted'
     ]
     eventFilter = (notification) -> _.contains kinds, notification.event().kind
 

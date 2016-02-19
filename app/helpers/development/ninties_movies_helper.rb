@@ -2,7 +2,8 @@ module Development::NintiesMoviesHelper
   # try to just return objects here. Don't knit them together. Leave that for
   # the development controller action to do if possible
   def patrick
-    @patrick ||= User.create!(name: 'Patrick Swayze',
+    @patrick ||= User.find_by_email('patrick_swayze@example.com') ||
+                 User.create!(name: 'Patrick Swayze',
                               email: 'patrick_swayze@example.com',
                               is_admin: true,
                               username: 'patrickswayze',
@@ -20,7 +21,8 @@ module Development::NintiesMoviesHelper
   end
 
   def jennifer
-    @jennifer ||= User.create!(name: 'Jennifer Grey',
+    @jennifer ||= User.find_by_email('jennifer_grey@example.com') ||
+                  User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
                                password: 'gh0stmovie',
@@ -28,7 +30,8 @@ module Development::NintiesMoviesHelper
   end
 
   def max
-    @max ||= User.create!(name: 'Max Von Sydow',
+    @max ||= User.find_by_email('max@example.com') ||
+             User.create!(name: 'Max Von Sydow',
                           email: 'max@example.com',
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
@@ -36,7 +39,8 @@ module Development::NintiesMoviesHelper
   end
 
   def emilio
-    @emilio ||= User.create!(name: 'Emilio Estevez',
+    @emilio ||= User.find_by_email('emilio@loomio.org') ||
+                User.create!(name: 'Emilio Estevez',
                             email: 'emilio@loomio.org',
                             password: 'gh0stmovie',
                             angular_ui_enabled: true)
