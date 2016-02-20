@@ -3,15 +3,9 @@ class API::RestfulController < ActionController::Base
   include ::ProtectedFromForgery
   before_filter :set_application_locale
   before_filter :set_paper_trail_whodunnit
-  before_filter :doorkeeper_authorize!
   snorlax_used_rest!
 
   private
-
-  def doorkeeper_authorize!
-    return if current_user.is_logged_in?
-    super
-  end
 
   def create_action
     @event = service.create({resource_symbol => resource, actor: current_user})
@@ -30,7 +24,8 @@ class API::RestfulController < ActionController::Base
   end
 
   def token_user
-    return unless doorkeeper_token&.resource_owner_id
+    return unless doorkeeper_token.present?
+    doorkeeper_render_error unless valid_doorkeeper_token?
     @token_user ||= User.find(doorkeeper_token.resource_owner_id)
   end
 

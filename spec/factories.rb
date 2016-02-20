@@ -233,4 +233,16 @@ published_at "2015-11-18 14:28:30"
     payload {{ payload: 'payload' }}
   end
 
+  factory :application, class: Doorkeeper::Application do
+    name "More like BROAuth, am I right?"
+    uid Faker::Lorem.characters(10)
+    secret Faker::Lorem.characters(20)
+    redirect_uri "https://www.loomio.org"
+  end
+
+  factory :access_token, class: Doorkeeper::AccessToken do
+    resource_owner_id { create(:user).id }
+    association :application, factory: :application
+  end
+
 end
