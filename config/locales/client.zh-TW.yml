@@ -548,8 +548,12 @@ zh-TW:
   invitation_form:
     invite_people: 邀請夥伴
     group: 群組
+    shareable_link: 可分享的連結
+    copy_link: 複製連結
     email_addresses: 電子郵件地址
     email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: 複製連結並將其傳送給任何您想要將其加入群組中的人。只要點選連結就會立即將他們加入群組中。
+    email_explanation: 或是在下面輸入電子郵件，Loomio 將會以電子郵件的方式傳送一封邀請函給他們。
     add_custom_message: 讓您的邀請變為私人的，
     add_custom_message_link: 加入一段自訂的訊息。
     custom_message: 自訂訊息
@@ -559,16 +563,12 @@ zh-TW:
     add_members: 增加成員
     from_parent_group: '從 {{name}}'
     send: 寄送
+    done: 完成
     messages:
       invitation_sent: 邀請函已寄出。
       invitations_sent: '{{count}} 封邀請函已寄出。'
       no_invitations: 唉呀！請確認電子郵件地址是否正確定並再試一次。
       max_invitations: 若您想要寄出多於 100 封邀請函，使用團隊連結。
-  team_link_modal:
-    heading: 加入夥伴
-    share_link: 分享此連結
-    caution: '注意：任何有此連結的人都可以立刻加入您的群組。所以要注意您分享給誰 :)'
-    copy_link: 複製連結
   add_members_modal:
     heading: '從 {{name}} 加入夥伴'
     add_members: 增加成員

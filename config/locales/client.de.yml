@@ -554,11 +554,6 @@ de:
       invitations_sent: '{{count}} Einladungen versendet.'
       no_invitations: 'Upps! Bitte überprüfe die eMail-Adresse und versuche es noch einmal.'
       max_invitations: 'Wenn Du mehr als 100 Einladungen zu verschicken hast, nutze einen Team-Link.'
-  team_link_modal:
-    heading: Füge Menschen hinzu
-    share_link: Teile diesen Link
-    caution: 'Achtung: jede Person, die diesen Link hat, kann Deiner Gruppe unverzüglich beitreten. Achte darauf, wem Du diesen Link teilst :)'
-    copy_link: Link kopieren
   add_members_modal:
     heading: 'Mitglieder aus der Gruppe {{name}} hinzufügen'
     add_members: Mitglieder hinzufügen

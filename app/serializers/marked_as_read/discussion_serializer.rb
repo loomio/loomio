@@ -1,4 +1,4 @@
-class Simple::DiscussionSerializer < ActiveModel::Serializer
+class MarkedAsRead::DiscussionSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   def self.attributes_from_reader(*attrs)
@@ -13,8 +13,7 @@ class Simple::DiscussionSerializer < ActiveModel::Serializer
   end
 
   attributes :id,
-             :title,
-             :description,
+             :key,
              :items_count,
              :salient_items_count,
              :first_sequence_id,
@@ -23,7 +22,8 @@ class Simple::DiscussionSerializer < ActiveModel::Serializer
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
                          :read_salient_items_count,
-                         :last_read_sequence_id
+                         :last_read_sequence_id,
+                         :last_read_at
 
    def reader
      @reader ||= scope[:reader_cache].get_for(object) if scope[:reader_cache]

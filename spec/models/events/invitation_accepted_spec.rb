@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe Events::InvitationAccepted do
-  let(:membership){ create(:membership) }
+  let(:inviter){ create(:user) }
+  let(:membership){ create(:membership, inviter: inviter) }
 
   describe "::publish!" do
 

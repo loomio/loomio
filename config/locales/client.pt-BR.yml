@@ -552,8 +552,12 @@ pt-BR:
   invitation_form:
     invite_people: Convidar Pessoas
     group: Grupo
+    shareable_link: Link compartilhável
+    copy_link: Copiar link
     email_addresses: Endereço de e-mail
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: Copie o link e envie para quem você deseja que se junte ao grupo. Clicar no link garante acesso imediato.
+    email_explanation: 'Como alternativa, introduza endereços de e-mail abaixo e o Loomio irá enviar os convites por e-mail.'
     add_custom_message: 'Faça seu convite pessoal,'
     add_custom_message_link: adicionar uma mensagem personalizada.
     custom_message: Mensagem personalizada
@@ -563,16 +567,12 @@ pt-BR:
     add_members: Adicionar membros
     from_parent_group: 'de {{name}}.'
     send: Enviar
+    done: Pronto
     messages:
       invitation_sent: Convite enviado.
       invitations_sent: '{{count}} convites enviados.'
       no_invitations: 'Ops! Por favor, verifique o endereço de e-mail está correto e tente novamente.'
       max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
-  team_link_modal:
-    heading: Adicionar pessoas
-    share_link: Compartilhar este link
-    caution: 'Cuidado: qualquer um com este link será capaz de participar do seu grupo imediatamente. Cuidado com quem compartilhá-lo :)'
-    copy_link: Copiar link
   add_members_modal:
     heading: 'Adicionar pessoas de {{name}}'
     add_members: Adicionar membros

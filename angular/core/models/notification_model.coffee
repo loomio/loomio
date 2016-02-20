@@ -13,5 +13,8 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     kind: ->
       @event().kind
 
+    group: ->
+      @event().group()
+
     relevantRecord: ->
       @event().relevantRecord()

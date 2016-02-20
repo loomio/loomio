@@ -14,9 +14,5 @@ describe Events::NewComment do
     it 'returns an event' do
       expect(Events::NewComment.publish!(comment).class).to eq Events::NewComment
     end
-
-    it 'uses its group as the channel to publish to' do
-      expect(Events::NewComment.publish!(comment).send(:channel_object)).to eq discussion.group
-    end
   end
 end

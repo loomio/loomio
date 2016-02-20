@@ -1,0 +1,29 @@
+te:
+  email:
+    to_join_discussion:
+      link: చర్చలో పాల్గొనండి
+    unsubscribe: 'మీ ఈమెయిలు అభిరుచులను మార్చండి లేదా చందావిరమించుకోండి:'
+    create_proposal:
+      subject: 'కొత్త ప్రతిపాదన: %{which}'
+    proposal_closed:
+      subject: 'ప్రతిపాదన మూసివేయబడింది - %{which}'
+    proposal_closing_soon:
+      summary: సారాంశం
+  footer:
+    about: గురించి
+    blog: బ్లాగు
+    contact: సంప్రదించండి
+    help: సహాయం
+    privacy: గోప్యత
+    pricing: ధర
+    public_groups: బహిరంగ సమూహాలు
+    terms: షరతులు
+  start_group_form:
+    name: మీ పేరు
+    group_name: సమూహం పేరు
+    group_description: సమూహ వివరణ
+  contact_page:
+    labels:
+      name: మీ పేరు
+      email: మీ ఈమెయిలు చిరునామా
+      message: మీ సందేశం

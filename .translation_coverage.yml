@@ -1,180 +1,237 @@
 an:
   frontpage: 52
   main_1_0: 19
+  server: 55
 ar:
   frontpage: 100
   main_1_0: 27
+  server: 26
 be-BY:
   frontpage: 58
   main_1_0: 24
+  server: 70
 bg-BG:
   frontpage: 9
   main_1_0: 13
+  server: 14
 ca:
   frontpage: 49
   main_1_0: 18
+  server: 38
 cmn:
   frontpage: 1
   main_1_0: 8
+  server: 7
 cs:
   frontpage: 76
-  main_1_0: 48
+  main_1_0: 52
+  server: 59
 da:
   frontpage: 52
   main_1_0: 29
+  server: 55
 de:
   frontpage: 100
-  main_1_0: 97
+  main_1_0: 96
+  server: 97
 el:
   frontpage: 100
   main_1_0: 51
+  server: 82
 en-BE:
   frontpage: 0
   main_1_0: 0
+  server: 0
 en-NL:
   frontpage: 0
   main_1_0: 0
+  server: 0
 en-US: {}
 eo:
   frontpage: 52
   main_1_0: 24
+  server: 55
 es:
   frontpage: 100
-  main_1_0: 100
+  main_1_0: 99
+  server: 100
 es-AR:
   frontpage: 0
   main_1_0: 0
+  server: 0
 fa-IR:
   frontpage: 60
   main_1_0: 2
+  server: 4
 fi:
   frontpage: 0
   main_1_0: 0
+  server: 0
 fr:
   frontpage: 100
   main_1_0: 98
+  server: 97
 fr-BE:
   frontpage: 0
   main_1_0: 0
+  server: 0
 ga-IE:
   frontpage: 69
   main_1_0: 61
+  server: 47
 gl:
   frontpage: 29
   main_1_0: 14
+  server: 22
 he:
   frontpage: 55
   main_1_0: 12
+  server: 25
 he-IL: {}
 hi:
   frontpage: 0
   main_1_0: 0
+  server: 0
 hi-IN: {}
 hr:
   frontpage: 100
   main_1_0: 6
+  server: 7
 hu:
   frontpage: 63
-  main_1_0: 31
+  main_1_0: 30
+  server: 67
 id:
   frontpage: 29
   main_1_0: 16
+  server: 32
 io:
   frontpage: 7
   main_1_0: 0
+  server: 1
 it:
-  frontpage: 60
-  main_1_0: 58
+  frontpage: 83
+  main_1_0: 62
+  server: 62
 it-CH:
   frontpage: 0
   main_1_0: 0
+  server: 0
 it-IT: {}
 ja:
   frontpage: 72
   main_1_0: 20
+  server: 41
 km:
   frontpage: 7
   main_1_0: 14
+  server: 30
 ko:
   frontpage: 100
-  main_1_0: 97
+  main_1_0: 96
+  server: 54
 ko-KR: {}
 lt:
   frontpage: 23
   main_1_0: 33
+  server: 6
 lv:
   frontpage: 0
   main_1_0: 0
+  server: 0
 mi:
   frontpage: 1
   main_1_0: 3
+  server: 2
 mk:
   frontpage: 52
   main_1_0: 13
+  server: 35
 ml:
   frontpage: 9
   main_1_0: 14
+  server: 31
 ml-IN:
   frontpage: 0
   main_1_0: 0
+  server: 0
 nl: {}
 nl-NL:
   frontpage: 100
   main_1_0: 31
+  server: 67
 pl:
   frontpage: 100
   main_1_0: 56
+  server: 26
 pt-BR:
   frontpage: 100
   main_1_0: 100
+  server: 100
 pt-PT:
   frontpage: 16
   main_1_0: 0
+  server: 3
 ro:
   frontpage: 100
   main_1_0: 48
+  server: 75
 ru:
   frontpage: 60
   main_1_0: 24
+  server: 20
 ru-RU: {}
 sk:
   frontpage: 52
   main_1_0: 19
+  server: 55
 sl:
   frontpage: 58
   main_1_0: 26
+  server: 61
 sr:
   frontpage: 100
   main_1_0: 91
+  server: 96
 sr-RS:
   frontpage: 69
   main_1_0: 25
+  server: 93
 sv:
   frontpage: 52
   main_1_0: 19
+  server: 55
 te:
   frontpage: 15
   main_1_0: 9
+  server: 13
 te-IN: {}
 th: {}
 th-TH:
   frontpage: 0
   main_1_0: 0
+  server: 0
 tr:
-  frontpage: 58
+  frontpage: 93
   main_1_0: 25
+  server: 55
 uk:
   frontpage: 72
   main_1_0: 86
+  server: 61
 ur:
   frontpage: 0
   main_1_0: 0
+  server: 0
 ur-PK:
   frontpage: 0
   main_1_0: 0
+  server: 0
 vi:
   frontpage: 7
   main_1_0: 13
+  server: 20
 zh-TW:
   frontpage: 100
   main_1_0: 100
+  server: 100

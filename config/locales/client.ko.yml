@@ -548,11 +548,6 @@ ko:
       invitations_sent: '{{count}}개의 초대장 발송'
       no_invitations: '오호! 이메일 주소가 정확한지 확인하시고 다시 시도하세요.'
       max_invitations: 만일 100개 이상의 초대장을 보내려면 팀 링크를 사용하세요.
-  team_link_modal:
-    heading: 사람 추가
-    share_link: 이 링크 공유하기
-    caution: '주의: 이 링크를 가지고 있는 누구든 즉시 이 그룹에 가입할 수 있습니다. 이 링크를 공유할 때 유의하십시오.'
-    copy_link: 링크 복사
   add_members_modal:
     heading: '{{name}}에서 인원 추가'
     add_members: 멤버 추가

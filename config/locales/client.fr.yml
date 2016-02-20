@@ -467,6 +467,7 @@ fr:
     edit_group_heading: Modifier les paramètres du groupe
     edit_subgroup_heading: Modifier les paramètres du sous-groupe
     group_name: Nom du groupe
+    group_name_placeholder: Comment voulez-vous appeler votre groupe ?
     subgroup_name: Nom du sous-groupe
     description: Description
     description_placeholder: Utilisez cet espace pour décrire le but de votre groupe afin que vos membres sachent pourquoi ils sont là.
@@ -486,6 +487,7 @@ fr:
     subgroup_privacy_is_open_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont publiques."
     subgroup_privacy_is_closed_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont privées."
     subgroup_privacy_is_closed_public_threads_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Les discussions peuvent être publiques ou privées."
+    subgroup_privacy_is_closed_secret_parent_description: 'les membres de {{parent}} peuvent trouver ce sous-groupe et demander à le rejoindre. Toutes les discussions sont privées.  Seuls les membres peuvent voir qui appartient au groupe.'
     subgroup_privacy_is_secret_description: 'seules les personnes invitées peuvent trouver ce sous-groupe, voir qui sont les membres et lire les discussions.'
     advanced_settings: Paramètres avancés
     how_do_people_join: Comment les personnes peuvent-elles rejoindre le groupe ?
@@ -499,6 +501,7 @@ fr:
     private_threads: Seuls les membres peuvent voir les discussions
     permissions: Autorisations
     allow_public_threads: Autoriser les discussions publiques dans ce groupe.
+    parent_members_can_see_discussions: 'Les membres de {{parent}} peuvent voir les discussions privées.'
     members_can_add_members: "Les membres peuvent inviter des personnes et approuver les demandes d'adhésion."
     members_can_create_subgroups: Les membres peuvent créer des sous-groupes.
     members_can_edit_discussions: "Les membres peuvent modifier le titre et la description de n'importe quelle discussion."
@@ -537,6 +540,8 @@ fr:
   invitation_form:
     invite_people: Inviter des personnes
     group: Groupe
+    shareable_link: Lien partageable
+    copy_link: Copier le lien
     email_addresses: Adresses e-mail
     email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
     add_custom_message: Personnalisez votre invitation
@@ -553,11 +558,6 @@ fr:
       invitations_sent: '{{count}} invitation(s) envoyée(s).'
       no_invitations: "Oh-oh ! Merci de vérifier l'adresse mail puis de réessayer."
       max_invitations: "Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d'équipe."
-  team_link_modal:
-    heading: Ajouter des personnes
-    share_link: Partager ce lien
-    caution: 'Attention : toute personne disposant de ce lien sera en mesure de rejoindre immédiatement votre groupe. Choisissez soigneusement avec qui vous le partagez.'
-    copy_link: Copier le lien
   add_members_modal:
     heading: 'Ajouter des personnes de {{name}}'
     add_members: Ajouter des membres

@@ -1,20 +1,21 @@
----
 sv:
   email:
-    by_who: av %{person}
+    group_email:
+      intro: '%{who} gjorde ett upprop till  %{group}:'
+    by_who: 'av %{person}'
     reply_to_this_discussion: Svara på denna diskussion
     to_join_discussion:
-      subject: "%{who} vill att du går med en diskussion i Loomio"
+      subject: '%{who} vill att du går med en diskussion i Loomio'
       content: 'Du har blivit inbjuden att delta i diskussionen: %{discussion}'
-      message_intro: "%{who} säger:"
+      message_intro: '%{who} säger:'
       link: Gå med i diskussionen
     to_join_group:
-      subject: "%{member} har bjudit in dig att gå med i  %{group_name} på Loomio"
+      subject: '%{member} har bjudit in dig att gå med i  %{group_name} på Loomio'
     to_start_group:
       subject: 'Starta din nya Loomiogrupp: %{group_name}'
     user_added_to_a_group:
-      subject: "%{who} har lagt till dig i %{which_group}"
-      content: "%{who} har lagt till dig i %{which_group} i Loomio. Klicka här för att gå till gruppen:"
+      subject: '%{who} har lagt till dig i %{which_group}'
+      content: '%{who} har lagt till dig i %{which_group} i Loomio. Klicka här för att gå till gruppen:'
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
     view_comment: Klicka här för att se kommentaren på Loomio
@@ -22,7 +23,7 @@ sv:
     view_group: Klicka här för att se gruppen på Loomio
     view_proposal: Visa detta förslag på Loomio
     create_discussion:
-      intro: "%{who} startade en diskussion i %{which_group}:"
+      intro: '%{who} startade en diskussion i %{which_group}:'
     create_proposal:
       intro: Ett nytt förslag skapades i en Loomiogrupp som du är med i.
       closes_in: Stänger om
@@ -34,62 +35,54 @@ sv:
     missed_yesterday:
       subject: I går på Loomio
       mark_as_read: Markera som läst
-      thanks_for_reading: Tack för läsning, ha en bra dag!
+      thanks_for_reading: 'Tack för läsning, ha en bra dag!'
       marked_as_read_success: Allt från mail har markerats som läst
-    group_email:
-      intro: "%{who} gjorde ett upprop till  %{group}:"
     group_membership_approved:
-      intro: Din begäran att få tillgång till gruppen '%{group_name}' i Loomio har godkänts.
-      subject: Medlemskap godkänt
+      intro: "Din begäran att få tillgång till gruppen '%{group_name}' i Loomio har godkänts."
     invitation:
-      hi: Hej %{name},
+      hi: 'Hej %{name},'
       intro: 'Klicka på länken nedan för att starta din grupp %{group_name}:'
-      closing_message: Om du har någon fråga, eller om det är något vi kan göra för att hjälpa dig att komma igång, hör gärna av dig - enklast genom att svara på detta email.
+      closing_message: 'Om du har någon fråga, eller om det är något vi kan göra för att hjälpa dig att komma igång, hör gärna av dig - enklast genom att svara på detta email.'
       thanks: |
         Tack!
         Loomioteamet
     membership_request:
-      intro: "%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper."
-      subject: "%{who} har begärt att få gå med %{which_group}"
+      intro: '%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper.'
+      subject: '%{who} har begärt att få gå med %{which_group}'
       view_group: Du kan godkänna eller avslå begäran här
     mentioned:
       context: '%{author_name} nämnde dig medan diskutera "%{discussion_title}"'
-      subject: "%{who} nämnde dig i %{which}gruppen i Loomio"
+      subject: '%{who} nämnde dig i %{which}gruppen i Loomio'
     new_motion_created:
       subject: 'Förslag: %{proposal_title}'
-      context: "%{author} skapade ett förslag i %{group_full_name}:"
+      context: '%{author} skapade ett förslag i %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Förslaget är stängt.
-      specify_outcome_and_notify_group: Skapa ett resultat och skicka det till din grupp!
-      specify_outcome_and_notify_group_html: Skapa ett resultat och skicka det till din grupp!
-      subject: Förslaget stängt - %{which}
-    proposal_outcome:
-      subject: Resultat av förslaget
-    proposal_blocked:
-      intro: Ett förslag som du faciliterar har blockerats.
-      subject: Förslaget blockerat - %{which}
+      specify_outcome_and_notify_group: 'Skapa ett resultat och skicka det till din grupp!'
+      specify_outcome_and_notify_group_html: 'Skapa ett resultat och skicka det till din grupp!'
+      subject: 'Förslaget stängt - %{which}'
     proposal_closing_soon:
       closes_on: Stänger den
       closes_at: Stänger vid
       closes_in: Stänger om
       subject: 'Stänger inom 24 timmar: %{proposal_title}'
-      headline: "%{author}s förslag i %{group} stänger snart:"
+      headline: '%{author}s förslag i %{group} stänger snart:'
       summary: Sammanfattning
     thread_mailer:
       change_preferences: 'Ändra dina e-postinställningar:'
-      new_motion: "%{who} föreslog:"
+      new_motion: '%{who} föreslog:'
       motion_closing_soon: 'Förslag som stänger inom 24 timmar:'
       proposal_closed: 'Förslag som är stängt:'
-      specify_outcome_html: Ert förslag har stängt. <a href='%{link}'>Ange ett utfall</a> att låta alla veta vad resultatet blir.
+      specify_outcome_html: "Ert förslag har stängt. <a href='%{link}'>Ange ett utfall</a> att låta alla veta vad resultatet blir."
       specify_outcome: 'Ert förslag har stängt. Ange ett utfall för att låta alla veta vad resultatet är:'
-      outcome_created: "%{who} satt ett förslag utfall:"
-      you_agreed: Du %{past_tense_position}
+      outcome_created: '%{who} satt ett förslag utfall:'
+      you_agreed: 'Du %{past_tense_position}'
   footer:
     about: Om
-    blog: Blogga
-    contact: Kontakta
+    blog: Blogg
+    contact: Kontakt
     help: Hjälp
-    privacy: Slutet
+    privacy: Sekretesspolicy
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
@@ -97,10 +90,9 @@ sv:
     header: Starta en ny grupp
     name: Ditt namn
     group_name: Gruppnamn
+    group_description: Gruppbeskrivning
     success:
-      header: Du är nästan klar! Kolla din email.
-  pricing_page:
-    header: Prissättning
+      header: 'Du är nästan klar! Kolla din email.'
   contact_page:
     contact_us: Kontakta oss
     labels:
@@ -109,4 +101,4 @@ sv:
       message: Ditt meddelande
       submit: Skicka meddelande
     messages:
-      email_html: Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>
+      email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"

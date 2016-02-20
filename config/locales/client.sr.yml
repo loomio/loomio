@@ -534,10 +534,6 @@ sr:
     messages:
       invitation_sent: Poziv poslat.
       invitations_sent: '{{count}} pozivnica poslato.'
-  team_link_modal:
-    heading: Dodaj ljude
-    share_link: Prosledi ovu vezu
-    copy_link: Kopiraj vezu
   add_members_modal:
     heading: 'Dodaj ljude iz {{name}}'
     add_members: Dodaj članove
