@@ -18,8 +18,6 @@
         %tr
           %td
             %code= uri
-          %td
-            = link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code'), class: 'btn btn-success', target: '_blank'
   .col-xs-12
     %h3= t('.actions')
     %p.pull-left= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(@application), class: 'btn btn-primary'
