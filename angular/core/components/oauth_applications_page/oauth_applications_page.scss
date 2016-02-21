@@ -2,6 +2,10 @@
   @include card;
 }
 
+.oauth-applications-page__table-row {
+  padding: 10px 0;
+}
+
 .oauth-applications-page__remove-link {
   @include lmoBtnNude;
 }

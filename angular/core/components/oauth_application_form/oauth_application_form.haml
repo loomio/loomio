@@ -16,8 +16,8 @@
     .lmo-form-group
       %label{for: "oauth-application-redirect-uri", translate: "oauth_application_form.redirect_uri_label"}
       %textarea.lmo-textarea.oauth-application-form__redirect-uris-input.form-control{msd-elastic: "true", ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'oauth_application_form.redirect_uri_placeholder' | translate }}"}
-      %abbr{translate: "oauth_application_form.redirect_uri_note"}
-      %validation_errors{subject: "application", field: "redirectUris"}
+      %abbr.oauth-application-form__helptext{translate: "oauth_application_form.redirect_uri_note"}
+      %validation_errors{subject: "application", field: "redirectUri"}
 
   .modal-footer
     %button.lmo-btn--submit.oauth-application-form__submit{type: "submit", translate: "oauth_application_form.new_application_submit", ng-show: "application.isNew()" }
