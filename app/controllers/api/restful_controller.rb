@@ -33,9 +33,9 @@ class API::RestfulController < ActionController::Base
     @permitted_params ||= PermittedParams.new(params)
   end
 
-  def load_and_authorize(model, action = :show, optional: false)
+  def load_and_authorize(model, action = :show, optional: false, const: nil)
     return if optional && !(params[:"#{model}_id"] || params[:"#{model}_key"])
-    instance_variable_set :"@#{model}", ModelLocator.new(model, params).locate
+    instance_variable_set :"@#{model}", ModelLocator.new(model, params, const).locate
     authorize! action, instance_variable_get(:"@#{model}")
   end
 

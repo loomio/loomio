@@ -1070,3 +1070,6 @@ en:
   emoji_picker:
     search: "Find an emoji..."
     no_emojis_found: "No emojis found for '{{term}}'!"
+
+  oauth_application_page:
+    redirect_uris: "Redirect URIs"

@@ -300,5 +300,9 @@ class Ability
       can?(:make_draft, draft.draftable)
     end
 
+    can :show, Doorkeeper::Application do |application|
+      application.owner_id == @user.id
+    end
+
   end
 end

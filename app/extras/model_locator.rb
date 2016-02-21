@@ -1,4 +1,4 @@
-ModelLocator = Struct.new(:model, :params) do
+ModelLocator = Struct.new(:model, :params, :const) do
 
   def locate
     if id_param = params[:"#{model}_id"]
@@ -17,6 +17,6 @@ ModelLocator = Struct.new(:model, :params) do
   private
 
   def resource_class
-    @resource_class ||= model.to_s.humanize.constantize
+    @resource_class ||= const || model.to_s.humanize.constantize
   end
 end

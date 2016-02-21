@@ -1,0 +1,11 @@
+.loading-wrapper.lmo-one-column-layout
+  %loading{ng-if: "!oauthApplicationPage.application"}
+  %main.oauth-application-page{ng-if: "oauthApplicationPage.application"}
+    %h1.lmo-h1 {{oauthApplicationPage.application.name}}
+    %hr
+    %table
+      %th{translate: "oauth_application_page.redirect_uris"}
+      %tr{ng-repeat: "uri in oauthApplicationPage.application.redirectUris"}
+        %td {{ uri }}
+    %hr
+      

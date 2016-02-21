@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
   has_many :discussion_readers, dependent: :destroy
   has_many :motion_readers, dependent: :destroy
   has_many :omniauth_identities, dependent: :destroy
-
+  has_many :oauth_applications, as: :owner
 
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy

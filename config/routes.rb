@@ -1,9 +1,7 @@
 Loomio::Application.routes.draw do
 
   use_doorkeeper do
-    controllers applications:            :oauth_applications
-    controllers authorizations:          :oauth_authorizations
-    controllers authorized_applications: :oauth_authorized_applications
+    controllers authorizations: :oauth_authorizations
   end
 
   get '/development' => 'development#index'
@@ -155,6 +153,10 @@ Loomio::Application.routes.draw do
     resources :contact_messages, only: :create
 
     resources :versions, only: :index
+
+    resources :oauth_applications, only: [:index, :show, :create, :update, :destroy] do
+      post :revoke_access, on: :member
+    end
 
     namespace :message_channel do
       post :subscribe
@@ -470,4 +472,7 @@ Loomio::Application.routes.draw do
   get '/community'  => redirect('https://www.loomio.org/g/WmPCB3IR/loomio-community')
   get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
   get '/robots'     => 'robots#show'
+
+  get '/oauth_applications/:id' => 'dashboard#show'
+  get '/oauth_applications' => 'dashboard#show'
 end

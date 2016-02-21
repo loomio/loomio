@@ -83,6 +83,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/g/:key/:stub', component: 'groupPage' }
     {path: '/u/:key', component: 'userPage' }
     {path: '/u/:key/:stub', component: 'userPage' }
+    {path: '/oauth_applications', components: 'oauthApplicationsPage'}
+    {path: '/oauth_applications/:id', component: 'oauthApplicationPage'}
   ])
 
   return

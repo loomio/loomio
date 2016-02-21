@@ -18,7 +18,8 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 InvitationFormRecordsInterface,
                                                 VersionRecordsInterface,
                                                 DraftRecordsInterface,
-                                                TranslationRecordsInterface) ->
+                                                TranslationRecordsInterface,
+                                                OauthApplicationRecordsInterface) ->
   db = new loki(RecordStoreDatabaseName)
   recordStore = new RecordStore(db)
   recordStore.addRecordsInterface(AttachmentRecordsInterface)
@@ -40,4 +41,5 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(TranslationRecordsInterface)
   recordStore.addRecordsInterface(VersionRecordsInterface)
   recordStore.addRecordsInterface(DraftRecordsInterface)
+  recordStore.addRecordsInterface(OauthApplicationRecordsInterface)
   recordStore
