@@ -80,11 +80,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
     {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },
-    {path: '/g/:key/:stub', component: 'groupPage' }
-    {path: '/u/:key', component: 'userPage' }
-    {path: '/u/:key/:stub', component: 'userPage' }
+    {path: '/g/:key/:stub', component: 'groupPage' },
+    {path: '/u/:key', component: 'userPage' },
+    {path: '/u/:key/:stub', component: 'userPage' },
     {path: '/oauth_applications', components: 'oauthApplicationsPage'}
-    {path: '/oauth_applications/:id', component: 'oauthApplicationPage'}
   ])
 
   return

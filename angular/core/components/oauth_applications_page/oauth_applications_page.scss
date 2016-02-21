@@ -1,0 +1,7 @@
+.oauth-applications-page {
+  @include card;
+}
+
+.oauth-applications-page__remove-link {
+  @include lmoBtnNude;
+}

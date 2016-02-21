@@ -9,7 +9,7 @@ class OauthApplicationService
     EventBus.broadcast('oauth_application_create', oauth_application, actor)
   end
 
-  def self.update(oauth_application:, params:, :actor)
+  def self.update(oauth_application:, params:, actor:)
     actor.ability.authorize! :update, oauth_application
 
     oauth_application.assign_attributes(params.slice(:name, :redirect_uri, :scopes))

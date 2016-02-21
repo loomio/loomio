@@ -35,6 +35,7 @@ en:
       update_settings: 'Update settings'
       reply: 'Reply'
       edit: 'Edit'
+      remove: 'Remove'
       like: 'Like'
       unlike: 'Unlike'
       update: 'Update'
@@ -1071,5 +1072,30 @@ en:
     search: "Find an emoji..."
     no_emojis_found: "No emojis found for '{{term}}'!"
 
-  oauth_application_page:
+  oauth_applications_page:
+    title: "Your OAuth Applications"
+    no_applications: "You don't have any OAuth applications yet! Click below to create one."
+    name: "Name"
     redirect_uris: "Redirect URIs"
+    create_new_application: "Create New OAuth Application"
+
+  oauth_application_form:
+    new_application_title: Create new OAuth Application
+    edit_application_title: Update {{name}}
+    name_label: Name
+    name_placeholder: What is your application called?
+    redirect_uri_label: Redirect Uris
+    redirect_uri_placeholder: "The callback uri for your application, Eg: https://myapplication.com/loomio/callback"
+    redirect_uri_note: (one line per URI, use 'urn:ietf:wg:oauth:2.0:oob' for local tests)
+    new_application_submit: Create Application
+    edit_application_submit: Update Application
+    messages:
+      created: "Created '{{name}}'"
+      updated: "Updated '{{name}}'"
+
+  remove_oauth_application_form:
+    title: Deactivate {{name}}
+    question: "Are you sure you want to deactivate the application '{{name}}'? This action cannot be undone."
+    submit: Deactivate
+    messages:
+      success: "{{name}} was successfully deactivated"

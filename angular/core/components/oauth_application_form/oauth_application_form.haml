@@ -1,0 +1,25 @@
+%form.oauth-application-form{name: "oauthApplicationForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title{translate: "oauth_application_form.new_application_title", ng-show: "application.isNew()"}
+    %h1.lmo-h1.modal-title{translate: "oauth_application_form.edit_application_title", ng-hide: "application.isNew()"}
+
+  .modal-body
+    %form_errors{record: "application"}
+
+    .lmo-form-group
+      %label{for: "application-name", translate: "oauth_application_form.name_label"}
+      %input.oauth-application-form__name-input.form-control.lmo-primary-form-input{placeholder: "{{ 'oauth_application_form.name_placeholder' | translate }}", ng-model: "application.name", ng-required: "true", maxlength: "255"}
+      %validation_errors{subject: "application", field: "name"}
+
+    .lmo-form-group
+      %label{for: "oauth-application-redirect-uri", translate: "oauth_application_form.redirect_uri_label"}
+      %textarea.lmo-textarea.oauth-application-form__redirect-uris-input.form-control{msd-elastic: "true", ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'oauth_application_form.redirect_uri_placeholder' | translate }}"}
+      %abbr{translate: "oauth_application_form.redirect_uri_note"}
+      %validation_errors{subject: "application", field: "redirectUris"}
+
+  .modal-footer
+    %button.lmo-btn--submit.oauth-application-form__submit{type: "submit", translate: "oauth_application_form.new_application_submit", ng-show: "application.isNew()" }
+    %button.lmo-btn--primary.oauth-application-form__update{type: "submit", translate: "oauth_application_form.edit_application_submit", ng-hide: "application.isNew()" }
+    %button.lmo-btn--cancel.oauth-application-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
