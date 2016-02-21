@@ -188,6 +188,8 @@ If you want to make an angular something which isn't a component (like a filter 
   plugin.use_asset 'services/kickflip_filter.coffee'
 ```
 
+NB: We only support coffeescript at the moment, but in the future we'll allow plugin authors to write their client side code in ES6, TypeScript, vanilla javascript, even Clojure!
+
 ### Add database migrations
 If you need a spot in the database to store all the cool stuff your plugin is doing, we can make a new table using the `use_database_table` command like this:
 
@@ -287,7 +289,7 @@ kickflip:
     - mad_skillz
 ```
 
-This will run the `gemrat` command with the list of dependencies, which will add the gems to your Gemfile and bundle them automagically. (More on gemrat [here](https://github.com/DruRly/gemrat))
+This will run the `gemrat` command with the list of dependencies, which will add the 'skateboard' and 'mad_skillz' gems to your Gemfile and bundle them automagically. (More on gemrat [here](https://github.com/DruRly/gemrat))
 
 (NB: We only support installing the latest version of a gem right now; a PR to make this more better is welcome!)
 
