@@ -1,0 +1,40 @@
+require 'rails_helper'
+
+describe OauthApplicationsController do
+  let(:user) { create(:user) }
+  let(:my_app) { create(:application, owner: user) }
+  let(:other_app) { create(:application) }
+
+  describe 'index' do
+    it 'lists only applications I have created' do
+      sign_in user
+      get :index
+      expect(assigns(:applications)).to include my_app
+      expect(assigns(:applications)).to_not include other_app
+    end
+
+    it 'redirects to sign in page if I am logged out' do
+      get :index
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+
+  describe 'show' do
+    it 'displays an application that I have created' do
+      sign_in user
+      get :show, id: my_app.id
+      expect(assigns(:application)).to eq my_app
+    end
+
+    it 'does not display applications I have not created' do
+      sign_in user
+      get :show, id: other_app.id
+      expect(response.status).to eq 403
+    end
+
+    it 'redirects to sign in page if I am logged out' do
+      get :show, id: my_app.id
+      expect(response).to redirect_to new_user_session_path
+    end
+  end
+end

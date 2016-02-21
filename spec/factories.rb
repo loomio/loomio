@@ -235,8 +235,7 @@ published_at "2015-11-18 14:28:30"
 
   factory :application, class: Doorkeeper::Application do
     name "More like BROAuth, am I right?"
-    uid Faker::Lorem.characters(10)
-    secret Faker::Lorem.characters(20)
+    association :owner, factory: :user
     redirect_uri "https://www.loomio.org"
   end
 
