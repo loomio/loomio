@@ -68,6 +68,7 @@ gem 'oj_mimic_json'
 gem 'simple-rss'
 gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
+gem 'safe_shell'
 
 group :development, :test do
   gem 'minitest'
@@ -84,6 +85,7 @@ group :development, :test do
   gem 'dotenv-rails', :require => 'dotenv/rails-now'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'gemrat'
 end
 
 group :development do

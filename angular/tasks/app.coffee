@@ -12,9 +12,9 @@ uglify   = require 'gulp-uglify'
 rename   = require 'gulp-rename'
 
 module.exports = ->
-  pipe gulp.src(paths.js.core), [
+  pipe gulp.src(paths.core.coffee), [
     coffee(bare: true),                         # convert from coffeescript to js
-    append.obj(pipe gulp.src(paths.html.core), [  # build html template cache
+    append.obj(pipe gulp.src(paths.core.haml), [  # build html template cache
       haml(),                                     # convert haml to html
       htmlmin(),                                  # minify html
       template(                                   # store html templates in angular cache

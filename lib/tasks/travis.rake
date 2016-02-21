@@ -10,6 +10,10 @@ namespace :travis do
     puts "Starting to run rspec..."
     system("bundle exec rspec")
     raise "rspec failed!" unless $?.exitstatus == 0
+
+    puts "Starting to run plugin rspec..."
+    system("bundle exec rspec plugins")
+    raise "plugin rspec failed!" unless $?.exitstatus == 0
   end
 
   task :cucumber do
