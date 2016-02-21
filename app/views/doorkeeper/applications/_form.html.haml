@@ -17,13 +17,13 @@
       - if Doorkeeper.configuration.native_redirect_uri
         %span.help-block
           = raw t('doorkeeper.applications.help.native_redirect_uri', native_redirect_uri: "<code>#{ Doorkeeper.configuration.native_redirect_uri }</code>")
-  = content_tag :div, class: "form-group#{' has-error' if application.errors[:scopes].present?}" do
-    = f.label :scopes, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :scopes, class: 'form-control'
-      = doorkeeper_errors_for application, :scopes
-      %span.help-block
-        = t('doorkeeper.applications.help.scopes')
+  -# = content_tag :div, class: "form-group#{' has-error' if application.errors[:scopes].present?}" do
+  -#   = f.label :scopes, class: 'col-sm-2 control-label'
+  -#   .col-sm-10
+  -#     = f.text_field :scopes, class: 'form-control'
+  -#     = doorkeeper_errors_for application, :scopes
+  -#     %span.help-block
+  -#       = t('doorkeeper.applications.help.scopes')
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit t('doorkeeper.applications.buttons.submit'), class: "btn btn-primary"

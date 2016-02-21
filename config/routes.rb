@@ -1,10 +1,9 @@
 Loomio::Application.routes.draw do
 
   use_doorkeeper do
-    # it accepts :authorizations, :tokens, :applications and :authorized_applications
-    controllers :applications => 'oauth_applications'
-    controllers :authorizations => 'oauth_authorizations'
-    controllers :authorized_applications => 'oauth_authorized_applications'
+    controllers applications:            :oauth_applications
+    controllers authorizations:          :oauth_authorizations
+    controllers authorized_applications: :oauth_authorized_applications
   end
 
   get '/development' => 'development#index'
