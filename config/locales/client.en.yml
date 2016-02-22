@@ -240,7 +240,7 @@ en:
   vote_form:
     heading: Have your say
     no_statement: No statement.
-    statement_over_limit: "Too many words! Statements must be under 250 characters, making it easy for others to catch up on the proposal."
+    statement_over_limit: 'Too many words! Short position statements let everyone quickly catch up on the proposal.'
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
