@@ -1091,7 +1091,7 @@ en:
 
   oauth_application_form:
     new_application_title: Create new OAuth Application
-    edit_application_title: Update {{name}}
+    edit_application_title: Update OAuth Application
     name_label: Name
     name_placeholder: What is your application called?
     redirect_uri_label: Redirect Uris
