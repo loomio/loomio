@@ -19,16 +19,7 @@ module Loomio
       g.test_framework  :rspec, :fixture => false
     end
 
-    config.to_prepare do
-      # Only Applications list
-      Doorkeeper::ApplicationsController.layout "application"
-
-      # Only Authorization endpoint
-      Doorkeeper::AuthorizationsController.layout "application"
-
-      # Only Authorized Applications
-      Doorkeeper::AuthorizedApplicationsController.layout "application"
-    end
+    config.to_prepare { Doorkeeper::AuthorizationsController.layout "application" }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

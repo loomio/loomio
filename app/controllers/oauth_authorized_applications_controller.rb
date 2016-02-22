@@ -1,3 +1,0 @@
-class OauthAuthorizedApplicationsController < Doorkeeper::AuthorizedApplicationsController
-  include RootPathHelper
-end
