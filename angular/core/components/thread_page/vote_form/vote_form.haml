@@ -17,9 +17,10 @@
           .lmo-relative
             %textarea.lmo-textarea.vote-form__statement-field.form-control.lmo-primary-form-input{ng-model: "vote.statement", placeholder: "{{ 'vote_form.statement_placeholder' | translate }}"}
             %emoji_picker.lmo-action-dock{target-selector: "statementSelector"}
-          .chars-left.pull-right{ng-class: "{ overlimit: vote.overCharLimit() }" }
+          .chars-left.pull-right{ng-class: "{ overlimit: vote.overCharLimit() }"}
             {{ vote.charsLeft() }}
+          .vote-form__statement-over-limit.lmo-validation-error{ng-if: "vote.overCharLimit()", translate: "vote_form.statement_over_limit"}
 
     .modal-footer
-      %button.lmo-btn--submit.vote-form__submit-btn{type: "submit", translate: "vote_form.submit_position"}>
+      %button.lmo-btn--submit.vote-form__submit-btn{type: "submit", ng-disabled: "vote.overCharLimit()", translate: "vote_form.submit_position"}>
       %button.lmo-btn--cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
