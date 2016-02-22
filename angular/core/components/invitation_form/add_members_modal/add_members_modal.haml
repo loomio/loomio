@@ -19,5 +19,5 @@
           (@{{member.username}})
 
     .modal-footer.lmo-clearfix
-      %button.lmo-btn--cancel{type: "button", ng-click: "$close()", translate: "common.action.close"}
+      %button.lmo-btn--cancel{type: "button", ng-click: "reopenInvitationsForm()", translate: "common.action.back"}
       %button.lmo-btn--submit.add-members-modal__submit{type: "button", ng-click: "submit()", translate: "add_members_modal.add_members", ng-if: "canAddMembers()"}
