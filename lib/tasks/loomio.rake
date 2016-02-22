@@ -84,7 +84,7 @@ namespace :loomio do
     rss.items.each do |item|
       BlogStory.create(title: item[:title],
                        url: item[:link],
-                       image_url: item[:media_content_url],
+                       image_url: item[:media_content_url].try(:gsub, "http://", "https://"),
                        published_at: item[:pubDate])
     end
   end
