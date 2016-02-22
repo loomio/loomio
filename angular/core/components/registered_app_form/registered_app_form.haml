@@ -1,0 +1,25 @@
+%form.registered-app-form{name: "registeredAppForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title{translate: "registered_app_form.new_application_title", ng-show: "application.isNew()"}
+    %h1.lmo-h1.modal-title{translate: "registered_app_form.edit_application_title", ng-hide: "application.isNew()"}
+
+  .modal-body
+    %form_errors{record: "application"}
+
+    .lmo-form-group
+      %label{for: "application-name", translate: "registered_app_form.name_label"}
+      %input.registered-app-form__name-input.form-control.lmo-primary-form-input{placeholder: "{{ 'registered_app_form.name_placeholder' | translate }}", ng-model: "application.name", ng-required: "true", maxlength: "255"}
+      %validation_errors{subject: "application", field: "name"}
+
+    .lmo-form-group
+      %label{for: "application-redirect-uri", translate: "registered_app_form.redirect_uri_label"}
+      %textarea.lmo-textarea.registered-app-form__redirect-uris-input.form-control{msd-elastic: "true", ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'registered_app_form.redirect_uri_placeholder' | translate }}"}
+      %abbr.registered-app-form__helptext{translate: "registered_app_form.redirect_uri_note"}
+      %validation_errors{subject: "application", field: "redirectUri"}
+
+  .modal-footer
+    %button.lmo-btn--submit.registered-app-form__submit{type: "submit", translate: "registered_app_form.new_application_submit", ng-show: "application.isNew()" }
+    %button.lmo-btn--primary.registered-app-form__update{type: "submit", translate: "registered_app_form.edit_application_submit", ng-hide: "application.isNew()" }
+    %button.lmo-btn--cancel.registered-app-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}

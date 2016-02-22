@@ -300,11 +300,11 @@ class Ability
       can?(:make_draft, draft.draftable)
     end
 
-    can [:show, :update, :destroy, :revoke_access], Doorkeeper::Application do |application|
+    can [:show, :update, :destroy, :revoke_access], OauthApplication do |application|
       application.owner_id == @user.id
     end
 
-    can :create, Doorkeeper::Application do |application|
+    can :create, OauthApplication do |application|
       @user.is_logged_in?
     end
 

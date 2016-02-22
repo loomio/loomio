@@ -1,11 +1,11 @@
-angular.module('loomioApp').factory 'OauthApplicationForm', ->
-  templateUrl: 'generated/components/oauth_application_form/oauth_application_form.html'
+angular.module('loomioApp').factory 'RegisteredAppForm', ->
+  templateUrl: 'generated/components/registered_app_form/registered_app_form.html'
   controller: ($scope, application, Records, FormService, KeyEventService) ->
     $scope.application = application.clone()
 
     actionName = if $scope.application.isNew() then 'created' else 'updated'
     $scope.submit = FormService.submit $scope, $scope.application,
-      flashSuccess: "oauth_application_form.messages.#{actionName}"
+      flashSuccess: "oauth.registered_app_form.messages.#{actionName}"
       flashOptions:
         name: -> $scope.application.name
 

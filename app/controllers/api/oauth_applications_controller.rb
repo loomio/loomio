@@ -5,6 +5,16 @@ class API::OauthApplicationsController < API::RestfulController
     respond_with_resource
   end
 
+  def owned
+    instantiate_collection { |collection| collection.where(owner: current_user) }
+    respond_with_collection
+  end
+
+  def authorized
+    instantiate_collection { OauthApplication.authorized_for(current_user) }
+    respond_with_collection
+  end
+
   def revoke_access
     load_resource
     service.revoke_access(oauth_application: resource, actor: current_user)
@@ -13,12 +23,8 @@ class API::OauthApplicationsController < API::RestfulController
 
   private
 
-  def resource_class
-    Doorkeeper::Application
-  end
-
   def accessible_records
-    current_user.oauth_applications
+    OauthApplication.all
   end
 
   def default_scope

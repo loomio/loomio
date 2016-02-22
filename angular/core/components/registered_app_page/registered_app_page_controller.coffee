@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'OauthApplicationPageController', ($scope, $rootScope, $routeParams, Records, FlashService, ModalService, OauthApplicationForm, RemoveOauthApplicationForm) ->
+angular.module('loomioApp').controller 'RegisteredAppPageController', ($scope, $rootScope, $routeParams, Records, FlashService, ModalService, RegisteredAppForm, RemoveAppForm) ->
 
   @init = (application) =>
     if application and !@application?
@@ -14,9 +14,9 @@ angular.module('loomioApp').controller 'OauthApplicationPageController', ($scope
     FlashService.success('common.copied')
 
   @openRemoveForm = ->
-    ModalService.open RemoveOauthApplicationForm, application: => @application
+    ModalService.open RemoveAppForm, application: => @application
 
   @openEditForm = ->
-    ModalService.open OauthApplicationForm, application: => @application
+    ModalService.open RegisteredAppForm, application: => @application
 
   return

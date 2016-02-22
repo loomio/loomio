@@ -42,8 +42,8 @@ describe OauthApplicationsController do
   describe 'create' do
     it 'creates a new application' do
       sign_in user
-      expect { post :create, doorkeeper_application: application_params }.to change { Doorkeeper::Application.count }.by(1)
-      application = Doorkeeper::Application.last
+      expect { post :create, doorkeeper_application: application_params }.to change { OauthApplication.count }.by(1)
+      application = OauthApplication.last
       expect(application.owner).to eq user
       expect(application.name).to eq application_params[:name]
     end

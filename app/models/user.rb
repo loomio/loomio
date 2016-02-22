@@ -104,7 +104,6 @@ class User < ActiveRecord::Base
           dependent: :destroy
 
   has_many :oauth_applications,
-           class_name: "Doorkeeper::Application",
            foreign_key: :owner_id,
            dependent: :destroy
 

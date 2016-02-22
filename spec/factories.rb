@@ -233,7 +233,7 @@ published_at "2015-11-18 14:28:30"
     payload {{ payload: 'payload' }}
   end
 
-  factory :application, class: Doorkeeper::Application do
+  factory :application, class: OauthApplication do
     name "More like BROAuth, am I right?"
     association :owner, factory: :user
     redirect_uri "https://www.loomio.org"

@@ -1074,24 +1074,26 @@ en:
     search: "Find an emoji..."
     no_emojis_found: "No emojis found for '{{term}}'!"
 
-  oauth_applications_page:
-    title: "Your OAuth Applications"
-    no_applications: "You don't have any OAuth applications yet! Click below to create one."
-    name: "Name"
-    redirect_uris: "Redirect URIs"
-    create_new_application: "New OAuth Application"
+  authorized_apps_page:
+    title: Authorized Apps
+    no_applications: "You haven't authorized any third party apps yet."
+    notice: "You've given the following third-party apps permission to use your account. Click 'Revoke' to disable them."
+    revoke: Revoke
 
-  oauth_application_page:
-    status: Status
-    authorized_notice: " - <strong>Authorized</strong> (You have authorized this application to act on your behalf.)"
-    unauthorized_notice: " - <strong>Unauthorized</strong> (You have not yet authorized this application to act on your behalf.)"
-    revoke_access: Revoke access
+  registered_apps_page:
+    title: Registered Applications
+    no_applications: "You don't have any OAuth applications yet! Click below to create one."
+    name: Name
+    redirect_uris: Redirect URIs
+    create_new_application: New Application
+
+  registered_app_page:
     uid: Application ID
     secret: Application Secret
 
-  oauth_application_form:
-    new_application_title: Create new OAuth Application
-    edit_application_title: Update OAuth Application
+  registered_app_form:
+    new_application_title: New Application
+    edit_application_title: Update Application
     name_label: Name
     name_placeholder: What is your application called?
     redirect_uri_label: Redirect Uris
@@ -1103,9 +1105,16 @@ en:
       created: "Created '{{name}}'"
       updated: "Updated '{{name}}'"
 
-  remove_oauth_application_form:
+  remove_app_form:
     title: Deactivate {{name}}
     question: "Are you sure you want to deactivate the application '{{name}}'? This action cannot be undone."
     submit: Deactivate
     messages:
-      success: "{{name}} was successfully deactivated"
+      success: "'{{name}}' was successfully deactivated"
+
+  revoke_app_form:
+    title: Revoke access for {{name}}
+    question: "Are you sure you disallow '{{name}}' to use your account?"
+    submit: Revoke Access
+    messages:
+      success: "'{{name}}' can no longer use your account."
