@@ -1,30 +1,33 @@
-config = require('node-yaml-config').reload('config.yml')
-_      = require 'lodash'
-include = (key, file) -> _.map(config.vendor[key], (file) -> [config.vendor.path, file].join('/'))
+yaml    = require('node-yaml-config')
+vendor  = yaml.reload('tasks/config/vendor.yml')
+_       = require 'lodash'
 
-module.exports = {
-  css: {
-    core:           _.flatten([include('css'), 'core/css/main.scss', 'core/components/**/*.scss']),
-    includes:       _.flatten([include('css_includes'), 'core/css'])
-  },
-  dist: {
-    fonts:  '../public/client/fonts',
-    assets: '../public/client/development',
-  },
-  fonts: {
-    vendor:         include('fonts')
-  },
-  html: {
-    core:           'core/components/**/*.haml'
-  },
-  js: {
-    core:           'core/**/*.coffee',
-    execjs:         include('execjs'),
-    vendor:         include('js')
-  }
-  protractor: {
-    config:      'test/protractor.coffee',
-    screenshots: 'test/protractor/screenshots',
-    specs:       'test/protractor/*_spec.coffee'
-  }
-}
+plugins = try
+  yaml.reload('tasks/config/plugins.yml')
+catch
+  {}
+
+include = (file, key) ->
+  _.map(file[key], (path) -> [file.path, path].join('/'))
+
+module.exports =
+  core:
+    coffee:       _.flatten(['core/**/*.coffee', include(plugins, 'coffee')])
+    haml:         _.flatten(['core/components/**/*.haml', include(plugins, 'haml')])
+    scss:         _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
+    scss_include: _.flatten([include(vendor, 'css_includes'), 'core/css'])
+  dist:
+    fonts:        '../public/client/fonts',
+    assets:       '../public/client/development',
+  fonts:
+    vendor:       include(vendor, 'fonts')
+  html:
+    core:         'core/components/**/*.haml'
+  js:
+    core:         'core/**/*.coffee',
+    execjs:       include(vendor, 'execjs'),
+    vendor:       include(vendor, 'js')
+  protractor:
+    config:       'test/protractor.coffee',
+    screenshots:  'test/protractor/screenshots',
+    specs:        'test/protractor/*_spec.coffee'

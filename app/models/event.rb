@@ -5,7 +5,6 @@ class Event < ActiveRecord::Base
              membership_requested invitation_accepted user_added_to_group user_joined_group
              membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted]
 
-
   BULK_MAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
                        new_discussion new_motion new_vote)
 
@@ -22,8 +21,6 @@ class Event < ActiveRecord::Base
   after_create :call_thread_item_created
   after_destroy :call_thread_item_destroyed
 
-  after_create :notify_webhooks!, if: :discussion
-
   validates_inclusion_of :kind, :in => KINDS
   validates_presence_of :eventable
 
@@ -37,14 +34,7 @@ class Event < ActiveRecord::Base
     self.user_id == this_user.id
   end
 
-  def notify_webhooks!
-    self.discussion.webhooks.each       { |webhook| WebhookService.publish! webhook: webhook, event: self }
-    self.discussion.group.webhooks.each { |webhook| WebhookService.publish! webhook: webhook, event: self }
-  end
-  handle_asynchronously :notify_webhooks!
-
   private
-
 
   def call_thread_item_created
     discussion.thread_item_created!(self) if discussion_id.present?

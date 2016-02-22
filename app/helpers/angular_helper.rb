@@ -14,7 +14,8 @@ module AngularHelper
       permittedParams: PermittedParamsSerializer.new({}),
       locales: angular_locales,
       baseUrl: root_url,
-      safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS
+      safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
+      plugins: Plugins::Repository.to_config
     }
 
     if Rails.application.secrets.chargify_app_name
