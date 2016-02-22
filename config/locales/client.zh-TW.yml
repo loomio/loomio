@@ -214,6 +214,7 @@ zh-TW:
     motion_closing_soon: '提案即將定案：<strong>{{proposal}}</strong>'
     motion_outcome_created: '<strong>{{name}}</strong> 公佈了提案 <strong>{{proposal}}</strong> 的結果'
     motion_outcome_updated: '<strong>{{name}}</strong> 已更新了提案 <strong>{{proposal}}</strong> 的結果'
+    invitation_accepted: '<strong>{{name}}</strong> 接受了您將其加入 <strong>{{group}}</strong> 的邀請'
   position_buttons_panel:
     heading: 擁有發言權
   vote_form:
@@ -366,7 +367,7 @@ zh-TW:
     group_logo: 群組標誌
     new_photo: 新圖片
     description: 群組描述
-    description_placeholder: 使用這個地方來描述群組的目的讓您的夥伴們知道他們為什麼在這裡。
+    description_placeholder: 群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。
     discussions: 討論
     discussions_placeholder: 討論串是供每個人討論主題並共同作出決策的地方。
     members: '成員 ({{count}})'
