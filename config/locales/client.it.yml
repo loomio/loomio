@@ -24,6 +24,7 @@ it:
       thisweek: Questa Settimana
       thismonth: Questo Mese
       older: Più vecchio
+    more_help: Altro supporto
     models:
       proposal: Proposta
     copied: Copiato
@@ -82,22 +83,55 @@ it:
     normal: Normale
     quiet: Quieto
     mute: Silenzioso
+    unmute: Rimuovi silenzioso
   thread_volume_card:
     heading: Notifiche sulla discussione
     body:
       loud: "Tutte le notifiche: riceverai un'email per ogni attività in questa discussione"
       normal: "Notifica solo proposte: riceverai un'email quando viene lanciata una proposta di voto, quando sta per terminare, oppure quando viene pubblicato il risultato di una votazione"
       quiet: "Nessuna notifica: non riceverai alcuna email relativa all'attività in questa discussione"
+      mute: 'Discussione silenziata: non riceverai alcuna email relativa a questa discussione, e verrà rimossa dalle tue Discussioni Recenti e Pagine non lette'
     change_volume_link: Cambia
   thread_volume_form:
     header: Notifiche sulla discussione
     loud_label: Tutte le notifiche via email
+    loud_description: "Riceverai un'email ogni volta che c'è attività in questa discussione."
+    normal_label: "Invia un'email per ogni proposta"
+    normal_description: "Riceverai un'email quando viene lanciata una proposta, quando sta per terminare il tempo a disposizione per votare, o quando viene pubblicato un risultato . "
+    quiet_label: Nessuna email
+    quiet_description: Non riceverai alcuna email relativa a questa discussione a meno che qualcuno non ti @menzioni esplicitamente
+    mute_label: Silenzia discussione
+    mute_description: 'Non riceverai alcuna email relativa a questa discussione, e verrà rimossa dalle tue Discussioni Recenti e dalle Pagine non lette'
     submit: Aggiorna
+    messages:
+      loud: "Riceverai un'email per ogni attività di questa discussione"
+      normal: "Riceverai un'email solamente per le proposte lanciate in questa discussione"
+      quiet: "Non riceverai alcuna email relativa all'attività in questa discussione"
+      mute: Discussione silenziata
   group_volume_card:
+    heading: Notifiche relative a questo gruppo
+    body:
+      loud: "Tutte le notifiche: riceverai un'email ogniqualvolta ci sia un'attività in questo gruppo"
+      normal: "Riceverai un'email per nuove discussioni o nuove proposte in questo gruppo"
+      quiet: "Nessuna notifica: non riceverai alcuna email relativa all'attività di questo gruppo"
+      mute: 'Gruppo silenziato: non riceverai alcuna email relativa a questo gruppo, e verrà rimosso dalle tue Discussioni Recenti e dalle Pagine non lette'
     change_volume_link: Cambia
   group_volume_form:
+    header: Notifiche del gruppo
     loud_label: Tutte le notifiche via email
+    loud_description: "riceverai una email ogni volta che c'è un'attività in questo gruppo"
+    normal_label: Email per nuove discussioni o proposte
+    normal_description: "Riceverai un'email per nuove discussioni e nuove proposte in questo gruppo"
+    quiet_label: Nessuna email
+    quiet_description: "Non riceverai alcuna email relativa all'attività di questo gruppo, a meno che qualcuno non ti @menzioni esplicitamente"
+    mute_label: Silenzia gruppo
+    mute_description: 'Non riceverai alcuna email relativa a questo gruppo,  e verrà rimosso dalle tue Discussioni Recenti e dalle Pagine non lette'
     submit: Aggiorna
+    messages:
+      loud: "Riceverai un'email ogniqualvolta ci sia un'attività in questo gruppo"
+      normal: "Riceverai un'email per ogni proposta di questo gruppo"
+      quiet: Non riceverai email relative a questo gruppo
+      mute: Gruppo silenziato
   inbox:
     clear: Pulisci
     latest: Più recente
@@ -115,6 +149,7 @@ it:
       remove_attachment: "Rimuovi l'allegato"
     messages:
       created: Commento inserito
+      replied: '{{name}} è stato notificato della risposta'
       updated: Commento aggiornato
       destroyed: Commento cancellato.
     edit_comment: Modifica commento
@@ -125,6 +160,8 @@ it:
     in_reply_to: 'Rispondendo a <strong>{{name}}</strong>:'
     submit_button:
       label: Post
+    private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
+    public_privacy_notice: Il tuo commento sarà visibile a qualsiasi persona sul web.
   navbar:
     recent: Recente
     unread: Non letto
@@ -134,6 +171,7 @@ it:
     groups_title: Visualizza i tuoi gruppi
     start_thread: Lancia una nuova discussione
     notifications: Pannello delle notifiche
+    user_actions: Azioni utente
     user_options:
       label: Opzioni utente
       contact_us: Contattaci
@@ -144,13 +182,16 @@ it:
       help: Aiuto
       sign_out: Esci
     search:
+      no_results: Nessuna discussione trovata
       close: Chiudi ricerca
       placeholder: Ricerca
       loading: Caricamento risultati....
       discussions: Discussioni
       proposals: Proposte
       comments: Commenti
+    sign_in: Accedi
   start_menu:
+    title: Pulsante azione
     start_group: Crea un gruppo
     start_subgroup: Crea un sottogruppo
     start_thread: Inizia una discussione
@@ -173,6 +214,7 @@ it:
     motion_closing_soon: 'La proposta  <strong>{{proposal}}</strong> è in chiusura.'
     motion_outcome_created: '<strong>{{name}}</strong> ha reso pubblico un risultato sulla proposta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{proposal}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> ha accettato il tuo invito ad unirsi a <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dite la vostra
   vote_form:
@@ -196,7 +238,9 @@ it:
   proposal_positions_panel:
     heading: Posizioni
     no_votes_yet: Ancora nessuno/a ha espresso il suo voto su questa proposta.
+    change_your_vote: Cambia la tua posizione.
   undecided_panel:
+    aria_label: Indecisi
     show_undecided: Mostra indecisi
     hide_undecided: Nascondi indecisi
   proposal_pie_chart:
@@ -243,6 +287,9 @@ it:
     context_label: Contesto
     context_placeholder: Fornisci le informazioni necessarie al gruppo per avere una discussione produttiva. Puoi aggiornarle nel mentre continua la discussione.
     privacy_label: Privacy
+    privacy_public: Tutti possono vedere la discussione. Solo i membri possono partecipare.
+    privacy_private: 'La discussione sarà visibile solamente ai membri di {{group}}.'
+    privacy_organisation: 'La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.'
     new_discussion_submit: Inizia una discussione
     edit_discussion_submit: Modifica il nome della discussione
   proposal_expanded:
@@ -258,9 +305,25 @@ it:
   proposal_position_abstain: astenuto
   proposal_position_no: contrario
   proposal_position_block: blocco
+  legacy_trial_expired_modal:
+    heading: "Grazie per aver usato Loomio quest'anno!"
+    submit: Mostra i piani tariffari
   group_welcome_modal:
     heading: 'Benvenuto/a nel tuo nuovo gruppo!'
+    first_step: "Tu sei il <strong>coordinatore</strong> del gruppo, che è un po' come essere il padrone di casa. Guarda il video, e poi dai un'occhiata alle discussioni di esempio."
+    second_step: 'Quando sei pronto, <strong>invita altre persone</strong> a partecipare.'
     ok_got_it: 'E vai!'
+  group_cover_modal:
+    heading: Nuova immagine di copertina
+    upload_link: Carica nuova immagine di copertina
+    helptext: "Cerchi un'ispirazione? Guarda <a href=\"https://unsplash.com/\">Unsplash</a>, una galleria di belle immagini gratuite"
+    image_size_helptext: La dimensione ideale delle immagini è 1400 x 320 px
+    upload_success: Immagine di copertina caricata correttamente
+  group_logo_modal:
+    heading: Nuovo logo del gruppo
+    upload_link: Carica nuovo logo del gruppo
+    image_size_helptext: "La dimensione ideale dell'immagine è 100 x 100 px"
+    upload_success: Logo caricato correttamente
   join_group_button:
     join_group: Unisciti al gruppo
     ask_to_join_group: Chiedi di unirti al gruppo
@@ -274,6 +337,12 @@ it:
     submit_button: Chiedi di unirti al gruppo
     messages:
       membership_requested: 'Hai richiesto di partecipare al gruppo {{group}}'
+  revision_history_modal:
+    thread_header: Cronologia delle revisioni al contesto della discussione
+    comment_header: Cronologia delle revisioni ai commenti
+    started_by: 'Iniziato da <strong>{{name}}</strong>'
+    edited_by: 'Modificato da <strong>{{name}}</strong>'
+    posted: Pubblicato
   group_page:
     thread_list:
       empty:
@@ -293,8 +362,9 @@ it:
       leave_group_success: Hai lasciato il gruppo.
       archive_group_success: Gruppo disattivato
     group_logo: Logo del gruppo
+    new_photo: nuova immagine
     description: Descrizione del gruppo
-    description_placeholder: Usa questo spazio per descrivere lo scopo del gruppo in modo che i suoi membri sappiano il motivo per cui sono qui.
+    description_placeholder: "I coordinatori del gruppo possono usare questa area per descrivere l'obiettivo del gruppo, così che tutti sappiano perché sono qui."
     discussions: Discussioni
     discussions_placeholder: Il thread (discussione) è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
     members: Membri
@@ -308,6 +378,12 @@ it:
     options_label: Opzioni
     options:
       label: Opzioni
+      edit_group: Modifica le Impostazioni del Gruppo
+      manage_members: Gestisci membri
+      add_subgroup: Aggiungi sottogruppo
+      manage_subscription: Gestisci le sottoscrizioni al gruppo
+      leave_group: Abbandona il gruppo
+      deactivate_group: Disattiva gruppo
     deactivate_group:
       title: Disattiva il gruppo
       question: Sei sicuro/a di volere disattivare il gruppo?
@@ -331,8 +407,70 @@ it:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
+  confirm_gift_plan_modal:
+    heading: Piano regalo selezionato
+    got_it: Ok
+    go_back: Vai indietro
+  donation_modal:
+    heading: Vuoi supportare Loomio?
+  gift_card:
+    heading: Piano Regalo
+  trial_card:
+    title: Prova di 30 giorni
+  choose_plan_modal:
+    gift: Regalo
+    standard: Standard
+    plus: Plus
+    get_started_for_free: Inizia gratis
+    gift_body_html: >
+      <p>Per gruppi che non hanno la possibilità di pagare una
+      sottoscrizione</p>
+
+      <p>Le donazioni sono accettate, ma non è necessario pagare</p>
+    support_before: I sono contento di
+    support_link: parlare con te
+    support_after: 'di estendere la tua versione di prova, o di qualsiasi altra domanda tu possa avere'
+    remind_me_later: Ricorda in seguito
+    gift_donation_ask: Chiederemo ai membri del tuo gruppo una donazione
+    unlimited_members: numero di membri illimitato
+    unlimited_decisions: numero di decisioni illimitato
+    email_support: supporto email
+    standard_price_html: |
+      US <strong>$19</strong>/mese<br><span>oppure</span> $190/anno
+    plus_body: 'Ciò che include la versione Standard, più:'
+    premium_support: supporto premium
+    custom_url: URL personale
+    usage_statistics: "statistiche d'uso"
+    plus_price_html: |
+      US <strong>$179</strong>/mese<br><span>oppure</span> $1790/anno
+    select: Seleziona
+  subscription_success_modal:
+    heading: 'Grazie per aver completato la tua sottoscrizione!'
+    receipt: "Riceverai un'email con la ricevuta del pagamento."
+    change_subscription: 'Se volessi modificare o cancellare la tua sottoscrizione, o se avessi altre domande,'
+    contact_link: non esitare a contattarci.
+    sign_off: ❤ dal team Loomio
+    ok_got_it: Ok
   group_form:
+    start_group_heading: Inizia un gruppo
+    start_subgroup_heading: Inizia un sottogruppo
+    edit_group_heading: Modifica le impostazioni del gruppo
+    edit_subgroup_heading: Modifica le impostazioni del sottogruppo
+    group_name: Nome del gruppo
+    group_name_placeholder: Come vuoi chiamare il tuo gruppo?
+    subgroup_name: Nome del sottogruppo
+    description: Descrizione
+    description_placeholder: Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.
+    privacy_statement:
+      public_on_web: Il nome e la descrizione saranno pubblici sul web
+      private_to_group: Il nome e la descrizione saranno visibili solamente ai membri
     privacy: Privacy
+    advanced_settings: Impostazioni avanzate
+    how_do_people_join: Come si uniscono al gruppo le persone?
+    membership_granted_upon_request: Chiunque si può unire al gruppo.
+    membership_granted_upon_approval: "Chiunque può richiedere di essere aggiunto ma dev'essere approvato."
+    thread_privacy: Pricacy della discussione
+    allow_public_threads: Permetti discussioni pubbliche in questo gruppo.
     submit_update: Aggiorna impostazioni
   membership_requests_card:
     heading: Richieste di partecipazione
@@ -349,6 +487,30 @@ it:
       request_ignored_success: Richiesta di partecipazione ignorata
   group_previous_proposals_card:
     heading: Proposte precedenti
+  invitation_form:
+    invite_people: Invita persone
+    group: Gruppo
+    shareable_link: Link pubblico condivisibile
+    copy_link: Copia Link
+    email_addresses: Indirizzi email
+    email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    add_custom_message: 'Rendi il tuo invito personale,'
+    add_custom_message_link: aggiungi un messaggio.
+    custom_message: Messaggio personale
+    custom_message_placeholder: "Scrivi un messaggio personale da allegare all'invito."
+    team_invitation_message: 'In alternativa,'
+    team_invitation_link: genera un link da condividere.
+    add_members: Aggiungi membri
+    from_parent_group: 'da {{name}}.'
+    send: Invia
+    done: Fatto
+    messages:
+      invitation_sent: Invito spedito.
+      invitations_sent: '{{count}} inviti spediti.'
+      no_invitations: "Uh-oh! Controlla che l'indirizzo email sia corretto e prova di nuovo."
+      max_invitations: 'Se vuoi inviare più di 100 inviti, usa un team link.'
+  add_members_modal:
+    add_members: Aggiungi membri
   memberships_page:
     members: Membri
     name_label: Nome

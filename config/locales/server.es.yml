@@ -80,8 +80,8 @@ es:
       headline: 'La propuesta de %{author} en %{group} cerrará pronto:'
       summary: Resumen
     thread_mailer:
-      footer_text: 'Responder a este correo electrónico directamente o verlo en %{hostname}:'
-      reply_or_view_online_html: "Responde a este correo electrónico directamente o <a href='%{url}'>velo en %{hostname}</a>."
+      footer_text: 'Responder a este correo electrónico directamente o léelo en %{hostname}:'
+      reply_or_view_online_html: "Responde a este correo electrónico directamente o <a href='%{url}'>léelo en %{hostname}</a>."
       turn_off_notifications_html: "<a href='%{url}'>Desactivar el correo electrónico</a> para esta discusión."
       turn_off_notifications_text: 'Desactivar el correo electrónico para esta discusión: %{url}'
       turn_on_notifications_html: "<a href='%{url}'>Activar el correo electrónico para esta discusión</a> para recibir la actividad futura."
@@ -131,7 +131,7 @@ es:
     start_making_decisions: 'Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis.'
   pricing_page:
     header: Planes
-    gift: Donación
+    gift: 'Donación '
     standard: 'Estándar '
     plus: Plus
     free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '

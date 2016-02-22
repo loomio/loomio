@@ -252,7 +252,6 @@ pl:
         public: Ta grupa jest teraz publiczna
       leave_group_success: Opuściłeś/aś tę grupę
     group_logo: Logo grupy
-    description_placeholder: Opisz cel grupy aby członkowie wiedzieli czemu się w niej znajdują.
     discussions: Dyskusje
     discussions_placeholder: Wątek jest miejscem gdzie wszyscy mogą dyskutować temat i podejmować wspólne decyzje.
     members_placeholder: 'Jesteś jedynym członkiem: zaproś inne osoby!'
