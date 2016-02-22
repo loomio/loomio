@@ -1,7 +1,7 @@
 class API::OauthApplicationsController < API::RestfulController
 
   def show
-    load_and_authorize :oauth_application, const: resource_class
+    load_and_authorize :oauth_application
     respond_with_resource
   end
 
