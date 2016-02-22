@@ -103,10 +103,6 @@ class User < ActiveRecord::Base
           class_name: 'UserDeactivationResponse',
           dependent: :destroy
 
-  has_many :oauth_applications,
-           foreign_key: :owner_id,
-           dependent: :destroy
-
   before_validation :generate_username
   before_save :set_avatar_initials,
               :ensure_unsubscribe_token,
