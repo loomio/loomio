@@ -29,3 +29,4 @@
         %navbar_user_options
       %button.lmo-navbar__sign-in{ng-if: "!isLoggedIn()", ng-click: "goToSignIn()"}
         %span{translate: "navbar.sign_in"}
+      %outlet{controller-name: "after-sign-in"}
