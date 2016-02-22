@@ -6,16 +6,16 @@
     .oauth-applications-page__table{ng-if: "oauthApplicationsPage.applications().length > 0"}
       .row.oauth-applications-page__table-row
         .lmo-bold.col-xs-3{translate: "oauth_applications_page.name"}
-        .lmo-bold.col-xs-5{translate: "oauth_applications_page.redirect_uris"}
-        .lmo-bold.col-xs-2.align-center{translate: "common.action.edit"}
+        .lmo-bold.col-xs-7{translate: "oauth_applications_page.redirect_uris"}
         .lmo-bold.col-xs-2.align-center{translate: "common.action.remove"}
       .row.oauth-applications-page__table-row{ng-repeat: "application in oauthApplicationsPage.applications()"}
         .col-xs-3
-          {{ application.name }}
-        .col-xs-5
-          {{ application.redirectUri}}
-        .col-xs-2.align-center
-          %button.lmo-btn.lmo-btn--submit{translate: "common.action.edit", ng-click: "oauthApplicationsPage.openApplicationForm(application)"}
+          %span.lmo-inline-block.oauth-applications-page__headlight{ng-class: "{'oauth-applications-page--authorized': application.authorized, 'oauth-applications-page--unauthorized': !application.authorized }"}>
+          %a.oauth-applications-page__name{lmo-href-for: "application"}
+            {{ application.name }}
+        .col-xs-7
+          %code.oauth-applications-page__code{ng-repeat: "uri in application.redirectUriArray()"}
+            {{uri}}
         .col-xs-2.align-center
           %button.oauth-applications-page__remove-link{ng-click: "oauthApplicationsPage.openDestroyForm(application)"}
             %i.fa.fa-lg.fa-times-circle

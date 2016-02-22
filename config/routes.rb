@@ -474,5 +474,6 @@ Loomio::Application.routes.draw do
   get '/robots'     => 'robots#show'
 
   get '/oauth_applications/:id' => 'dashboard#show'
+  get '/oauth_applications/:id/:stub' => 'dashboard#show'
   get '/oauth_applications' => 'dashboard#show'
 end

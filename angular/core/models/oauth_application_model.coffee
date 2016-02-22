@@ -5,5 +5,8 @@ angular.module('loomioApp').factory 'OauthApplicationModel', (BaseModel, AppConf
     @serializationRoot: 'oauth_application'
     @serializableAttributes: AppConfig.permittedParams.oauth_application
 
-    @redirectUriArray: ->
-      @redirectUri.split("\r\n")
+    redirectUriArray: ->
+      @redirectUri.split("\n")
+
+    revokeAccess: ->
+      @remote.postMember(@id, 'revoke_access')

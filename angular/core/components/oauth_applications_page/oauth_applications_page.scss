@@ -9,3 +9,32 @@
 .oauth-applications-page__remove-link {
   @include lmoBtnNude;
 }
+
+.oauth-applications-page__name {
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.oauth-applications-page__code {
+  display: block;
+  overflow: hidden;
+  word-break: normal;
+  margin: 0 5px 15px 0;
+  line-height: 28px;
+}
+
+.oauth-applications-page__headlight {
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.oauth-applications-page--authorized {
+  background-color: $agree-color;
+}
+
+.oauth-applications-page--unauthorized {
+  background-color: $grey-on-white;
+}

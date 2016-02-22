@@ -1,0 +1,25 @@
+.oauth-application-page {
+  @include card;
+}
+
+.oauth-application-page__flex {
+  @include displayFlex;
+  align-items: flex-start;
+}
+
+.oauth-application-page__notice {
+  @include fontSmall;
+  margin-bottom: 10px;
+}
+
+.oauth-application-page__status {
+  margin-bottom: 10px;
+}
+
+.oauth-application-page__revoke-access {
+  margin-bottom: 10px;
+}
+
+.oauth-application-page__edit {
+  margin-right: 10px;
+}

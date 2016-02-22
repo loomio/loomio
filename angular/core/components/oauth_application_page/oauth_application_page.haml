@@ -1,0 +1,39 @@
+.lmo-one-column-layout
+  %loading{ng-if: "!oauthApplicationPage.application"}
+  %main.oauth-application-page{ng-if: "oauthApplicationPage.application"}
+    %h1.lmo-h1 {{ oauthApplicationPage.application.name }}
+    %hr
+
+    %h3.lmo-inline-block.lmo-h3.oauth-application-page__header{translate: "oauth_application_page.status"}>
+    .oauth-application-page__status
+      %span.oauth-applications-page__headlight{ng-class: "{'oauth-applications-page--authorized': oauthApplicationPage.application.authorized, 'oauth-applications-page--unauthorized': !oauthApplicationPage.application.authorized }"}>
+      %span.oauth-application-page__notice{ng-show: "oauthApplicationPage.application.authorized", translate: "oauth_application_page.authorized_notice"}>
+      %span.oauth-application-page__notice{ng-show: "!oauthApplicationPage.application.authorized", translate: "oauth_application_page.unauthorized_notice"}
+    %button.lmo-btn--danger.oauth-application-page__revoke-access{ng-show: "oauthApplicationPage.application.authorized", type: "button", translate: "oauth_application_page.revoke_access", ng-click: "oauthApplicationPage.application.revokeAccess()"}>
+
+    %h3.lmo-h3.oauth-application-page__header{translate: "oauth_application_page.uid"}
+    .oauth-application-page__flex
+      %code.oauth-applications-page__code {{ oauthApplicationPage.application.uid }}
+      %button.lmo-btn--nude.oauth-application-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "oauthApplicationPage.application.uid", on-copied: "oauthApplicationPage.copied()"}
+        %i.fa.fa-copy>
+
+    %h3.lmo-h3.oauth-application-page__header{translate: "oauth_application_page.secret"}
+    .oauth-application-page__flex
+      %code.oauth-applications-page__code {{ oauthApplicationPage.application.secret }}
+      %button.lmo-btn--nude.oauth-application-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "oauthApplicationPage.application.secret", on-copied: "oauthApplicationPage.copied()"}
+        %i.fa.fa-copy>
+
+    %h3.lmo-h3.oauth-application-page__header{translate: "oauth_applications_page.redirect_uris"}
+    .oauth-application-page__flex{ng-repeat: "uri in oauthApplicationPage.application.redirectUriArray()"}
+      %code.oauth-applications-page__code {{ uri }}
+      %button.lmo-btn--nude.oauth-application-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "uri", on-copied: "oauthApplicationPage.copied()"}
+        %i.fa.fa-copy>
+
+    %hr
+
+    %a.lmo-btn--cancel.pull-left{lmo-href: "/oauth_applications"}
+      %span{translate: "common.action.back"}
+    %button.lmo-btn--danger.pull-right{type: "button", translate: "common.action.remove", ng-click: "oauthApplicationPage.openRemoveForm()"}>
+    %button.lmo-btn--primary.pull-right.oauth-application-page__edit{type: "button", translate: "common.action.edit", ng-click: "oauthApplicationPage.openEditForm()"}>
+
+    .clearfix

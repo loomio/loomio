@@ -7,7 +7,7 @@ angular.module('loomioApp').controller 'OauthApplicationsPageController', ($scop
   Records.oauthApplications.fetch(params: {})
 
   @openApplicationForm = (application) ->
-    ModalService.open OauthApplicationForm, application: -> application or Records.oauthApplications.build()
+    ModalService.open OauthApplicationForm, application: -> Records.oauthApplications.build()
 
   @openDestroyForm = (application) ->
     ModalService.open RemoveOauthApplicationForm, application: -> application

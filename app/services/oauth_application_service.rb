@@ -27,8 +27,8 @@ class OauthApplicationService
   end
 
   def self.revoke_access(oauth_application:, actor:)
-    actor.ability.authorize! :revoke, oauth_application
-    AccessToken.revoke_all_for oauth_application.id, actor
+    actor.ability.authorize! :revoke_access, oauth_application
+    Doorkeeper::AccessToken.revoke_all_for oauth_application.id, actor
 
     EventBus.broadcast('oauth_application_revoke_access', oauth_application, actor)
   end

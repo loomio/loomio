@@ -27,7 +27,8 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
-    copied: 'Copied'
+    copy: 'Copy text'
+    copied: 'Copied to clipboard'
     action:
       close: 'Close'
       save: 'Save'
@@ -37,6 +38,7 @@ en:
       edit: 'Edit'
       remove: 'Remove'
       like: 'Like'
+      back: 'Back'
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
@@ -1077,7 +1079,15 @@ en:
     no_applications: "You don't have any OAuth applications yet! Click below to create one."
     name: "Name"
     redirect_uris: "Redirect URIs"
-    create_new_application: "Create New OAuth Application"
+    create_new_application: "New OAuth Application"
+
+  oauth_application_page:
+    status: Status
+    authorized_notice: " - <strong>Authorized</strong> (You have authorized this application to act on your behalf.)"
+    unauthorized_notice: " - <strong>Unauthorized</strong> (You have not yet authorized this application to act on your behalf.)"
+    revoke_access: Revoke access
+    uid: Application ID
+    secret: Application Secret
 
   oauth_application_form:
     new_application_title: Create new OAuth Application
