@@ -2,9 +2,10 @@ angular.module('loomioApp').controller 'OauthApplicationsPageController', ($scop
   $rootScope.$broadcast('currentComponent', {page: 'oauthApplicationsPage'})
   $rootScope.$broadcast('setTitle', 'OAuth Dashboard')
 
+  @loading = true
   @applications = ->
     Records.oauthApplications.collection.data
-  Records.oauthApplications.fetch(params: {})
+  Records.oauthApplications.fetch(params: {}).then => @loading = false
 
   @openApplicationForm = (application) ->
     ModalService.open OauthApplicationForm, application: -> Records.oauthApplications.build()
