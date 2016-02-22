@@ -29,6 +29,7 @@ en:
       proposal: 'Proposal'
     copied: 'Copied'
     action:
+      back: 'Back'
       close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'

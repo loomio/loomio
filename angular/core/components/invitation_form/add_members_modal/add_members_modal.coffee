@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'AddMembersModal', ->
   templateUrl: 'generated/components/invitation_form/add_members_modal/add_members_modal.html'
-  controller: ($scope, Records, LoadingService, group, AppConfig, FlashService) ->
+  controller: ($scope, Records, LoadingService, group, AppConfig, FlashService, ModalService, InvitationForm) ->
     $scope.isDisabled = false
     $scope.group = group
     $scope.loading = true
@@ -18,6 +18,9 @@ angular.module('loomioApp').factory 'AddMembersModal', ->
 
     LoadingService.applyLoadingFunction($scope, 'load')
     $scope.load()
+
+    $scope.reopenInvitationsForm = ->
+       ModalService.open InvitationForm, group: -> $scope.group
 
     $scope.submit = ->
       $scope.isDisabled = true
