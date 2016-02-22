@@ -1,8 +1,6 @@
 Loomio::Application.routes.draw do
 
-  use_doorkeeper do
-    controllers authorizations: :oauth_authorizations
-  end
+  use_doorkeeper
 
   get '/development' => 'development#index'
   namespace :development do

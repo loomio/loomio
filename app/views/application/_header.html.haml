@@ -44,7 +44,7 @@
           %ul.nav.navbar-nav
             .user-options.visible-xs
               = render 'application/user_profile_options'
-            = render 'application/search'
+            = render 'search'
             - if current_user.created_at < 14.days.ago
               %li.hidden-sm
                 = link_to angular_path do
@@ -53,7 +53,7 @@
 
 
         %ul.nav.navbar-nav.navbar-right.hidden-xs
-          = render 'application/user_dropdown'
+          = render 'user_dropdown'
 
       - else
         %a.navbar-brand.app-logo{ href: dashboard_or_root_path, title: t(:"organisation.name"), style: "background-image: url(#{logo_path})" }

@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include ProtectedFromForgery
   include TimeZoneHelper
-  include RootPathHelper
 
   helper :analytics_data
   helper :locales
@@ -37,6 +36,14 @@ class ApplicationController < ActionController::Base
   protected
   def permitted_params
     @permitted_params ||= PermittedParams.new(params)
+  end
+
+  def dashboard_or_root_path
+    if user_signed_in?
+      dashboard_path
+    else
+      root_path
+    end
   end
 
   def store_previous_location
