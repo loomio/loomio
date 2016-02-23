@@ -129,6 +129,9 @@ describe 'Proposals', ->
         beforeEach ->
           threadHelper.loadWithClosedProposal()
 
+        it 'expands the most recent closed proposal', ->
+          page.expectText '.proposal-expanded__proposal-name', 'lets go hiking to the moon'
+
         xit 'shows all undecided members when the show link is clicked', ->
           # invitationsHelper.inviteUser()
           # threadHelper.visitDiscussionPage()
