@@ -24,6 +24,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def group_from_reference
-    @group_from_reference ||= Group.find(subscription_params['customer']['reference'])
+    @group_from_reference ||= Group.find(subscription_params['customer']['reference'].split('|')[0])
   end
 end
