@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper :analytics_data
   helper :locales
   helper_method :current_user_or_visitor
+  helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
   around_filter :user_time_zone, if: :user_signed_in?
