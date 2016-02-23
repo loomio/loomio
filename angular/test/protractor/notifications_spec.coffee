@@ -7,14 +7,15 @@ describe 'Notifications', ->
     page.expectText '.notifications__activity', '9'
     page.click '.notifications__button'
 
+    page.expectText '.notifications__dropdown', 'added you to the group'
     page.expectText '.notifications__dropdown', 'approved your request'
     page.expectText '.notifications__dropdown', 'requested membership to'
     page.expectText '.notifications__dropdown', 'mentioned you in'
     page.expectText '.notifications__dropdown', 'replied to your comment'
     page.expectText '.notifications__dropdown', 'published an outcome'
+    page.expectText '.notifications__dropdown', 'Proposal closed'
     page.expectText '.notifications__dropdown', 'Proposal is closing'
     page.expectText '.notifications__dropdown', 'liked your comment'
-    page.expectText '.notifications__dropdown', 'Your proposal has closed'
 
   describe 'invitation accepted', ->
 
