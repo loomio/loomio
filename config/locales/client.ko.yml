@@ -363,7 +363,6 @@ ko:
     group_logo: 그룹 로고
     new_photo: 새로운 사진
     description: 그룹 설명
-    description_placeholder: 그룹 구성원들이 왜 자신이 여기에 있는지 알 수 있도록 여기에 이 그룹의 목적을 설명해 주세요.
     discussions: 토론
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members: 멤버

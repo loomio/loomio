@@ -214,6 +214,7 @@ pt-BR:
     motion_closing_soon: 'Proposta encerrando em breve <strong>{{proposal}}</strong>'
     motion_outcome_created: '<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> aceitou o seu convite para integrar <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
@@ -370,7 +371,7 @@ pt-BR:
     group_logo: Logo do grupo
     new_photo: nova foto
     description: Descrição do grupo
-    description_placeholder: 'Utilize este espaço para descrever a finalidade do grupo, para que seus membros saibam por que estão aqui.'
+    description_placeholder: 'Coordenadores de grupo podem usar esta área para descrever a finalidade do grupo, para que assim todos saibam por que estão aqui.'
     discussions: Tópicos
     discussions_placeholder: Um tópico é o lugar onde todos podem discutir um tema e tomar decisões juntos.
     members: 'Membros ({{count}})'

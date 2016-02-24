@@ -356,7 +356,6 @@ sr:
     group_logo: Logo grupe
     new_photo: nova fotografija
     description: Opis grupe
-    description_placeholder: Koristi ovo mesto da opišeš svrhu grupe tako da tvoji članovi znaju zašto su ovde.
     discussions: Niti
     discussions_placeholder: Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.
     members: Članovi

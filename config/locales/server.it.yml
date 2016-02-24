@@ -1,5 +1,6 @@
 it:
   email:
+    custom: '%{text}'
     group_email:
       intro: '%{who} ha fatto un annuncio a %{group}:'
     by_who: 'da %{person}'
@@ -82,6 +83,12 @@ it:
       summary: Riassunto
     thread_mailer:
       footer_text: 'Rispondi direttamente a questa email o visualizzala su %{hostname}:'
+      reply_or_view_online_html: "Rispondi direttamente a questa email oppure <a href='%{url}'>guardala su %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>Disattiva emails</a> per questa discussione."
+      turn_off_notifications_text: 'Disattiva le email per questa discussione: %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>Attiva le email per questa discussione</a> per ricevere ulteriori aggiornamenti sull'attività."
+      turn_on_notifications_text: "Attiva le email per ricevere più notifiche sull'attività di questa discussione: %{url}"
+      change_email_preferences_html: "Cambia le tue <a href='%{email_preferences_url}'> opzioni email </a> per disiscriverti da queste email."
       change_preferences: 'Cambia le tue opzioni email:'
       new_motion: '%{who} ha proposto:'
       motion_closing_soon: 'La proposta chiude in 24 ore:'
@@ -99,19 +106,88 @@ it:
     pricing: Prezzo
     public_groups: Gruppi pubblici
     terms: Termini
+    independent_install_html: '%{hostname} ha una copia indipendente di Loomio: <a href="http://github.com/loomio/loomio"> scopri di più</a>.'
   start_group_form:
+    enable_angular:
+      header: I nuovi gruppi iniziano con Loomio 1.0
+      subtitle: 'Per iniziare un nuovo gruppo, devi passare alla nuova versione di Loomio:'
+      switch_to_angular: Inizia un gruppo nel nuovo Loomio
     header: Crea un nuovo gruppo
+    form_error: Alcune informazioni sono mancanti o incorrette.
     name: Nominativo
     name_error: Il nome è obbligatorio
     email: La tua email
     email_error: Indirizzo email non valido
     group_name: Nome gruppo
     group_description: Descrizione del gruppo
+    group_description_placeholder: Descrivi lo scopo del tuo gruppo in modo che gli altri partecipanti sappiano il motivo per cui sono qui.
+    group_name_error: Il nome del gruppo è necessario
+    pricing_html: "Tra 30 giorni, ti chiederemo di scegliere un <a href='%{link}' target='_blank'>piano di pagamento</a>."
+    terms_html: "Creando un gruppo, confermi di accettare i  <a href='%{link}' target='_blank'>termini e condizioni</a> di Loomio."
     success:
       header: 'Hai quasi finito! Controlla la tua email.'
+      email_not_arrived: "L'email non è arrivata?"
     start_making_decisions: 'Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo'
+  pricing_page:
+    header: Piani
+    gift: Regalo
+    standard: Standard
+    plus: Plus
+    get_started_for_free: Inizia gratis
+    gift_body_html: >
+      <p>Per gruppi che non hanno la possibilità di pagare una
+      sottoscrizione</p>
+
+      <p>Le donazioni sono accettate, ma non è necessario pagare</p>
+    gift_donation_ask: Chiederemo ai membri del tuo gruppo una donazione
+    unlimited_members: numero di membri illimitato
+    unlimited_decisions: numero di decisioni illimitato
+    email_support: supporto email
+    standard_price_html: |
+      US <strong>$19</strong>/mese<br><span>oppure</span> $190/anno
+    plus_body: 'Ciò che include la versione Standard, più:'
+    premium_support: supporto premium
+    custom_url: URL personale
+    usage_statistics: "statistiche d'uso"
+    plus_price_html: |
+      US <strong>$179</strong>/mese<br><span>oppure</span> $1790/anno
+  password_reset:
+    length_restriction: Le password devono essere lunghe almeno 8 caratteri.
+    forbidden_passwords: 'Le password banali come "password" sono vietate per tenere al sicuro il vostro account.'
+  introduction_thread:
+    title: 'Benvenuto su %{group_name}'
+  how_it_works_thread:
+    title: Come usare Loomio
+    description: >
+      Benvenuto in Loomio, uno spazio online dove prendere decisioni assieme.
+
+
+
+      Questa è una discussione di prova **discussione**. Perchè non usare questo
+      spazio per provare le funzionalità di Loomio?
+
+
+
+      In questo momento stai leggento la discussione **contesto**. Usa questo
+      spazio per comunicare le informazioni di contesto necessarie al gruppo per
+      iniziare discussioni produttive.
+
+
+
+      Il pannello delle **proposte** é dove vengono prese le decisioni. Puoi
+      lanciare una proposta o partecipare al voto in quella sezione.
+
+
+
+      Il pannello **attività** in basso mostra tutto ciò che è successo in questa
+      discussione.
+  first_proposal:
+    name: 'Proposta di prova: andiamo!'
   contact_page:
     contact_us: Contattaci
+    faq_prompt_html: 'Hai una domanda per il team di Loomio? Prima di contattarci, potresti trovare la risposta tra le domande frequenti (FAQ)'
+    contact_information: 'Se non trovi quello che stai cercando, puoi trovare le informazioni di contatto in fondo alla pagina.'
+    contact_form: Modulo di contatto
     labels:
       name: Nominativo
       email: Indirizzo email
@@ -119,3 +195,8 @@ it:
       submit: Invia messaggio
     messages:
       email_html: "Riempi questo modulo, o manda un'email a <a href='mailto:%{email}'>%{email}</a>"
+      social_html: >
+        Ci puoi seguire su<br/><a href='%{facebook}'
+        target='_blank'>facebook</a>, <a href='%{google}'
+        target='_blank'>google+</a>, and <a href='%{twitter}'
+        target='_blank'>twitter</a>!

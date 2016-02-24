@@ -365,7 +365,6 @@ de:
     group_logo: Gruppen-Logo
     new_photo: Neues Foto
     description: Gruppenbeschreibung
-    description_placeholder: 'Nutze diesen Platz um den Zweck der Gruppe zu erläutern, damit Mitglieder wissen, warum sie da sind.'
     discussions: Themen
     discussions_placeholder: In einer Diskussion kann jeder diskutieren und es können gemeinsam Entscheidungen getroffen werden.
     members: 'Mitglieder ({{count}})'
