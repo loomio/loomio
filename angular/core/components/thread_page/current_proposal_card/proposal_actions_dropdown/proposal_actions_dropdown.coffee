@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'proposalActionsDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/current_proposal_card/proposal_actions_dropdown/proposal_actions_dropdown.html'
   replace: true
-  controller: ($scope, ModalService, ProposalForm, ProposalFormService, AbilityService) ->
+  controller: ($scope, ModalService, ProposalForm, AbilityService, CloseProposalForm, ExtendProposalForm) ->
     $scope.canCloseOrExtendProposal = ->
       AbilityService.canCloseOrExtendProposal($scope.proposal)
 
@@ -14,8 +14,8 @@ angular.module('loomioApp').directive 'proposalActionsDropdown', ->
       ModalService.open ProposalForm, proposal: -> $scope.proposal.clone()
 
     $scope.closeProposal = ->
-      ProposalFormService.openCloseProposalModal($scope.proposal)
+      ModalService.open CloseProposalForm, proposal: -> $scope.proposal
 
     $scope.extendProposal = ->
-      ProposalFormService.openExtendProposalModal($scope.proposal)
+      ModalService.open ExtendProposalForm, proposal: -> $scope.proposal
     return
