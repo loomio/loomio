@@ -69,10 +69,9 @@ describe 'Proposals', ->
       expect(proposalsHelper.positionButtons().isPresent()).toBe(false)
 
     it 'displays the time at which the proposal closed', ->
-      threadHelper.loadWithClosedProposal()
-      proposalsHelper.clickProposalExpandLink()
-      expect(proposalsHelper.currentExpandedProposal()).toContain('lets go hiking')
-      expect(proposalsHelper.currentExpandedProposal()).toContain('Closed a few seconds ago')
+      page.loadPath 'setup_closed_proposal'
+      page.expectText '.proposal-expanded', 'lets go hiking'
+      page.expectText '.proposal-expanded', 'Closed a few seconds ago'
 
   describe 'setting a proposal outcome', ->
     beforeEach ->
@@ -81,22 +80,20 @@ describe 'Proposals', ->
       browser.driver.manage().window().setSize(1280, 1024);
 
     it 'creates a proposal outcome', ->
-      threadHelper.loadWithClosedProposal()
-      proposalsHelper.clickProposalExpandLink()
-      proposalsHelper.setProposalOutcomeBtn().click()
-      proposalsHelper.fillInProposalOutcome('Everyone is happy!')
-      proposalsHelper.submitProposalOutcomeForm()
-      expect(flashHelper.flashMessage()).toContain('Outcome published')
-      expect(proposalsHelper.currentExpandedProposalOutcome()).toContain('Everyone is happy!')
+      page.loadPath 'setup_closed_proposal'
+      page.click '.proposal-outcome-panel__set-outcome-btn'
+      page.fillIn '.proposal-form__outcome-field', 'Everyone is happy!'
+      page.click '.proposal-outcome-form__publish-outcome-btn'
+      page.expectFlash 'Outcome published'
+      page.expectText '.proposal-outcome-panel__outcome', 'Everyone is happy!'
 
     it 'edits a proposal outcome', ->
-      threadHelper.loadWithSetOutcome()
-      proposalsHelper.clickProposalExpandLink()
-      proposalsHelper.editOutcomeLink().click()
-      proposalsHelper.fillInProposalOutcome('Gonna make things happen!')
-      proposalsHelper.submitProposalOutcomeForm()
-      expect(flashHelper.flashMessage()).toContain('Outcome updated')
-      expect(proposalsHelper.currentExpandedProposalOutcome()).toContain('Gonna make things happen!')
+      page.loadPath 'setup_closed_proposal_with_outcome'
+      page.click '.proposal-outcome-panel__edit-outcome-link'
+      page.fillIn '.proposal-form__outcome-field', 'Gonna make things happen!'
+      page.click '.proposal-outcome-form__publish-outcome-btn'
+      page.expectFlash 'Outcome updated'
+      page.expectText '.proposal-outcome-panel__outcome', 'Gonna make things happen!'
 
   describe 'voting by email', ->
 

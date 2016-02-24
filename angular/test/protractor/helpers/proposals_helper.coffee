@@ -49,27 +49,6 @@ module.exports = new class ProposalsHelper
   currentProposalHeading: ->
     element(By.css('.proposal-expanded__proposal-name')).getText()
 
-  clickProposalExpandLink: ->
-    element(By.css('a.proposal-collapsed')).click()
-
-  currentExpandedProposal: ->
-    element(By.css('.proposal-expanded')).getText()
-
-  setProposalOutcomeBtn: ->
-    element(By.css('.proposal-outcome-panel__set-outcome-btn'))
-
-  fillInProposalOutcome: (body) ->
-    element(By.css('.proposal-form__outcome-field')).clear().sendKeys(body)
-
-  submitProposalOutcomeForm: ->
-    element(By.css('.proposal-outcome-form__publish-outcome-btn')).click()
-
-  currentExpandedProposalOutcome: ->
-    element(By.css('.proposal-outcome-panel__outcome')).getText()
-
-  editOutcomeLink: ->
-    element(By.css('.proposal-outcome-panel__edit-outcome-link'))
-
   voteFormPositionSelect: ->
     element(By.css('.vote-form__select-position'))
 
