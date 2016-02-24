@@ -154,6 +154,7 @@ Loomio::Application.routes.draw do
 
     resources :oauth_applications, only: [:show, :create, :update, :destroy] do
       post :revoke_access, on: :member
+      post :upload_logo, on: :member
       get :owned, on: :collection
       get :authorized, on: :collection
     end
@@ -473,8 +474,8 @@ Loomio::Application.routes.draw do
   get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
   get '/robots'     => 'robots#show'
 
-  get 'apps/registered' => 'dashboard#show'
-  get 'apps/authorized' => 'dashboard#show'
-  get 'apps/registered/:id' => 'dashboard#show'
-  get 'apps/registered/:id/:slug' => 'dashboard#show'
+  get 'apps/registered'           => 'base#boot_angular_ui'
+  get 'apps/authorized'           => 'base#boot_angular_ui'
+  get 'apps/registered/:id'       => 'base#boot_angular_ui'
+  get 'apps/registered/:id/:slug' => 'base#boot_angular_ui'
 end

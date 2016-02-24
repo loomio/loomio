@@ -37,10 +37,12 @@ module AngularHelper
       }
     end
   end
+  helper_method :app_config
 
   def client_asset_path(filename)
     [:client, angular_asset_folder, filename].join('/')
   end
+  helper_method :client_asset_path
 
   def boot_angular_ui
     if browser.ie? && browser.version.to_i < 10
@@ -51,11 +53,11 @@ module AngularHelper
     render 'layouts/angular', layout: false
   end
 
+  private
+
   def use_angular_ui?
     current_user_or_visitor.angular_ui_enabled? && request.format == :html
   end
-
-  private
 
   def angular_asset_folder
     if Rails.env.development?
