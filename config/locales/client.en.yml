@@ -50,6 +50,7 @@ en:
       loading: 'Loading'
       translate: 'Translate'
       translated: 'Translation by Bing Translator'
+      upload: 'Upload'
       uploading: 'Uploading'
     formatting_help:
       label: 'Formatting help'
@@ -1104,6 +1105,7 @@ en:
     new_application_submit: Create Application
     edit_application_submit: Update Application
     messages:
+      logo_changed: Logo updated.
       created: "Created '{{name}}'"
       updated: "Updated '{{name}}'"
 

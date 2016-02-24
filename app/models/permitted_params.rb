@@ -97,6 +97,6 @@ class PermittedParams < Struct.new(:params)
   end
 
   def oauth_application_attributes
-    [:name, :redirect_uri]
+    [:name, :redirect_uri, :logo]
   end
 end

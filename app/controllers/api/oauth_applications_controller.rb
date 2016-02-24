@@ -1,4 +1,5 @@
 class API::OauthApplicationsController < API::RestfulController
+  load_resource only: [:revoke_access, :upload_logo]
 
   def show
     load_and_authorize :oauth_application
@@ -18,6 +19,11 @@ class API::OauthApplicationsController < API::RestfulController
   def revoke_access
     load_resource
     service.revoke_access(oauth_application: resource, actor: current_user)
+    respond_with_resource
+  end
+
+  def upload_logo
+    service.update oauth_application: resource, actor: current_user, params: { logo: params[:file] }
     respond_with_resource
   end
 

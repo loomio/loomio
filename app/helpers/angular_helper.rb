@@ -1,4 +1,20 @@
 module AngularHelper
+
+  def boot_angular_ui
+    if browser.ie? && browser.version.to_i < 10
+      redirect_to :browser_not_supported and return
+    end
+
+    app_config
+    render 'layouts/angular', layout: false
+  end
+
+  def client_asset_path(filename)
+    [:client, angular_asset_folder, filename].join('/')
+  end
+
+  private
+
   def app_config
     @appConfig = {
       hostedByLoomio: ENV['HOSTED_BY_LOOMIO'],
@@ -37,23 +53,6 @@ module AngularHelper
       }
     end
   end
-  helper_method :app_config
-
-  def client_asset_path(filename)
-    [:client, angular_asset_folder, filename].join('/')
-  end
-  helper_method :client_asset_path
-
-  def boot_angular_ui
-    if browser.ie? && browser.version.to_i < 10
-      redirect_to :browser_not_supported and return
-    end
-
-    app_config
-    render 'layouts/angular', layout: false
-  end
-
-  private
 
   def use_angular_ui?
     current_user_or_visitor.angular_ui_enabled? && request.format == :html

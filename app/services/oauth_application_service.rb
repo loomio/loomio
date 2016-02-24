@@ -12,7 +12,7 @@ class OauthApplicationService
   def self.update(oauth_application:, params:, actor:)
     actor.ability.authorize! :update, oauth_application
 
-    oauth_application.assign_attributes(params.slice(:name, :redirect_uri, :scopes))
+    oauth_application.assign_attributes(params.slice(:name, :redirect_uri, :logo, :scopes))
     return false unless oauth_application.valid?
     oauth_application.save
 
