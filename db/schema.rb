@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160222095518) do
     t.datetime "time"
   end
 
+  add_index "ahoy_events", ["properties"], name: "ahoy_events_properties", using: :gin
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree

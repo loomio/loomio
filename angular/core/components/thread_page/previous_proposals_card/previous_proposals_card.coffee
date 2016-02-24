@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/previous_proposals_card/previous_proposals_card.html'
   replace: true
-  controller: ($scope, $rootScope, $location, Records, ProposalFormService) ->
+  controller: ($scope, $rootScope, $location, Records) ->
 
     Records.votes.fetchMyVotes($scope.discussion)
     Records.proposals.fetchByDiscussion($scope.discussion).then ->
@@ -20,7 +20,7 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
     setLastClosedProposal = ->
       return unless $scope.anyProposals() and !$scope.discussion.hasActiveProposal()
       proposal = $scope.discussion.closedProposals()[0]
-      proposal if moment().add(-1, 'month') < proposal.closedAt
+      proposal.id if moment().add(-1, 'month') < proposal.closedAt
 
     $scope.$on 'setSelectedProposal', $scope.setSelectedProposal
 

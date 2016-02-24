@@ -223,6 +223,8 @@ en:
     header: "Notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
+    motion_closed: "Proposal closed: <strong>{{proposal}}</strong>"
+    publish_outcome: "Publish an outcome"
     motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{proposal}}</strong>"
     motion_closed_by_expiry: "Proposal has closed <strong>{{proposal}}</strong>"
     new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{proposal}}</strong>"
