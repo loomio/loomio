@@ -898,9 +898,9 @@ en:
     title: 'updated the thread title: <span>{{title}}</span>'
     description: 'updated the thread context'
     description_title: 'updated the thread title and context'
-    private: 'updated the thread privacy from'
-    public_to_private: 'public to private'
-    private_to_public: 'private to public'
+    private: 'updated the thread privacy to:'
+    public_to_private: 'private'
+    private_to_public: 'public'
     description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
