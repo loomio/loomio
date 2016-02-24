@@ -28,7 +28,7 @@ rake bootstrap
 rake bootstrap:run
 ```
 
-Visit `localhost:8000` in your browser. Voila!
+Visit `localhost:3000` in your browser. Voila!
 
 Need more detailed help? Check out the [Tech Manual](https://loomio.gitbooks.io/tech-manual/content/), or drop us a line at [contact@loomio.org](mailto:contact@loomio.org)
 
