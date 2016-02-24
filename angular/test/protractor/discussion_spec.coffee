@@ -17,14 +17,17 @@ describe 'Discussion Page', ->
     beforeEach ->
       page.loadPath('setup_discussion')
 
-    it 'lets you edit title and context', ->
+    it 'lets you edit title, context and privacy', ->
       page.click '.thread-context__dropdown-button',
                  '.thread-context__dropdown-options-edit'
       page.fillIn('.discussion-form__title-input', 'better title')
       page.fillIn('.discussion-form__description-input', 'improved description')
+      page.click('.discussion-form__private')
       page.click('.discussion-form__update')
       page.expectText('.thread-context', 'better title')
-      page.expectText('.thread-context', "improved description")
+      page.expectText('.thread-context', 'improved description')
+      page.expectText('.thread-context', 'Private')
+      page.expectText('.thread-item__title', 'updated the thread title, context and privacy')
 
     it 'does not store cancelled thread info', ->
       page.click '.thread-context__dropdown-button',

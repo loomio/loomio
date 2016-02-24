@@ -7,4 +7,5 @@
         %strong
           %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
         %span{translate: "discussion_edited_item.{{translationKey}}", translate-value-title: "{{title}}"}
+        %span{ng-if: "onlyPrivacyEdited()", translate: "{{privacyKey()}}"}
         %timeago.timeago--inline{timestamp: "event.createdAt"}
