@@ -197,6 +197,7 @@ GEM
     docile (1.1.5)
     doorkeeper (3.0.1)
       railties (>= 3.2)
+    doorkeeper-i18n (3.0.0)
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
@@ -704,6 +705,7 @@ DEPENDENCIES
   devise (~> 3.5.5)
   devise-i18n
   doorkeeper
+  doorkeeper-i18n
   dotenv-rails
   email_spec
   factory_girl_rails
