@@ -594,7 +594,6 @@ it:
       muted: Silenziato
       muted_description: Visualizza solo le discussioni che sono state silenziate.
     aria_thread:
-      title: 'Nome della discussione: {{title}}.'
       unread: '{{count}} item non letti.'
       current_proposal: 'Attuale proposta: {{name}}.'
       you_voted: 'Il tuo voto: {{position}}.'

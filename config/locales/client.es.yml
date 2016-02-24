@@ -686,7 +686,6 @@ es:
       muted_aria_label: Mostrando hilos silenciados
       muted_description: Ver únicamente hilos que han sido silenciados
     aria_thread:
-      title: 'Título del hilo: {{title}}.'
       unread: '{{count}} elementos no leídos.'
       current_proposal: 'Propuesta actual: {{name}}.'
       you_voted: 'Has votado: {{position}}.'

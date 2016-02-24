@@ -673,7 +673,6 @@ fr:
       muted_aria_label: Voici les discussions mises en sourdine
       muted_description: Voir uniquement les discussions qui ont été mise en sourdine
     aria_thread:
-      title: 'Titre de la discussion: {{title}}.'
       unread: '{{count}} élément(s) non lu(s).'
       current_proposal: 'Proposition actuelle : {{name}}.'
       you_voted: 'Votre vote : {{position}}.'

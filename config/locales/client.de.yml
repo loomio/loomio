@@ -669,7 +669,6 @@ de:
       muted_aria_label: Momentan werden nur stumm-geschaltete Diskussionen angezeigt
       muted_description: 'Nur Diskussionen anzeigen, die Du stumm geschaltet hast.'
     aria_thread:
-      title: 'Diskussionstitel:  {{title}}.'
       unread: '{{count}} ungelesene Einträge'
       current_proposal: 'Aktueller Vorschlag: {{name}}.'
       you_voted: 'Du hast folgendermaßen abgestimmt: {{position}}.'

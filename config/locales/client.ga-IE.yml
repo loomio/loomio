@@ -455,7 +455,6 @@ ga-IE:
       muted_aria_label: Ag taispeáint faoi láthair na snáitheanna balbhaithe
       muted_description: Taispeáin na snáitheanna balbhaithe amháin
     aria_thread:
-      title: 'Teideal na snáithe: {{title}}.'
       unread: '{{count}} míreanna nár léadh.'
       current_proposal: 'An togra reatha: {{name}}.'
       you_voted: 'Is mar seo a chaith tú do ghuth: {{position}}.'
