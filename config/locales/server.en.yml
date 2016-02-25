@@ -39,7 +39,7 @@ en:
       headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
-        heres_what_happened: Here’s what happened on Loomio yesterday.
+        heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
     comment_replied_to:
       context: '%{author_name} replied to your comment in the discussion "%{discussion_title}"'
