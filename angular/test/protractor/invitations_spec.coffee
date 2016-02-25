@@ -32,6 +32,14 @@ describe 'Invitations', ->
                '.members-card__invite-members-btn'
     page.expectInputValue '.invitation-form__shareable-link-field', '/invitations/'
 
+  it 'displays an error if all invitees are existing group members', ->
+    page.loadPath 'setup_new_group'
+    page.click '.group-welcome-modal__close-button',
+               '.members-card__invite-members-btn'
+    page.fillIn '.invitation-form__email-addresses', 'patrick_swayze@example.com'
+    page.click '.invitation-form__submit'
+    page.expectText '.lmo-validation-error', 'All email addresses belong to existing group members'
+
   it 'lets you add members from the parent to a subgroup', ->
     page.loadPath 'setup_group'
     page.click '.group-page-actions__button',

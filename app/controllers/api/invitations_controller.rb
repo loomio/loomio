@@ -5,7 +5,11 @@ class API::InvitationsController < API::RestfulController
                                                      group: @group,
                                                      inviter: current_user,
                                                      message: invitation_form_params[:message])
-    respond_with_collection
+    if @invitations.empty? and email_addresses.any?
+      respond_with_errors
+    else
+      respond_with_collection
+    end
   end
 
   def pending
@@ -34,6 +38,10 @@ class API::InvitationsController < API::RestfulController
 
   def email_addresses
     invitation_form_params[:emails].scan(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/).take(100)
+  end
+
+  def respond_with_errors
+    render json: {errors: { email: [  I18n.t('invitation_form.error.all_email_addresses_belong_to_members') ]}}, root: false, status: 422
   end
 
 end

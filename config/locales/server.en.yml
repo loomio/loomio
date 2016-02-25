@@ -130,6 +130,9 @@ en:
       email_not_arrived: Email has not arrived?
       please_hold: Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder.
     start_making_decisions: 'To start making decisions together on Loomio, set up a group for free:'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: 'All email addresses belong to existing group members'
   pricing_page:
     header: Plans
     gift: Gift
