@@ -20,9 +20,7 @@ class InvitationService
                            message: nil,
                            group: nil,
                            inviter: nil)
-    group_members = group.members.pluck(:email)
-    recipient_emails = recipient_emails - group_members
-    recipient_emails.map do |recipient_email|
+    (recipient_emails - group.members.pluck(:email)).map do |recipient_email|
       invitation = create_invite_to_join_group(recipient_email: recipient_email,
                                                group: group,
                                                message: message,

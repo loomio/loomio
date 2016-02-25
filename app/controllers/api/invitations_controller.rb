@@ -5,10 +5,10 @@ class API::InvitationsController < API::RestfulController
                                                      group: @group,
                                                      inviter: current_user,
                                                      message: invitation_form_params[:message])
-    if @invitations.empty? and email_addresses.any?
-      respond_with_errors
-    else
+    if @invitations.any?
       respond_with_collection
+    else
+      respond_with_errors
     end
   end
 
@@ -41,7 +41,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def respond_with_errors
-    render json: {errors: { email: [  I18n.t('invitation_form.error.all_email_addresses_belong_to_members') ]}}, root: false, status: 422
+    render json: {errors: { emails: [  I18n.t('invitation_form.error.all_email_addresses_belong_to_members') ]}}, root: false, status: 422
   end
 
 end

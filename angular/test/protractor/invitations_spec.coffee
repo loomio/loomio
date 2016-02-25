@@ -38,7 +38,7 @@ describe 'Invitations', ->
                '.members-card__invite-members-btn'
     page.fillIn '.invitation-form__email-addresses', 'patrick_swayze@example.com'
     page.click '.invitation-form__submit'
-    page.expectText '.lmo-validation-error', 'All email addresses belong to existing group members'
+    page.expectText '.lmo-validation-error', "We weren't able to send invitations to the email addresses provided because they belong to people already in the group."
 
   it 'lets you add members from the parent to a subgroup', ->
     page.loadPath 'setup_group'
