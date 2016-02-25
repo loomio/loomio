@@ -284,7 +284,6 @@ lt:
       all_description: Rodyti paskiausias gijas
       proposals: Pasiūlymai
     aria_thread:
-      title: 'Gijos antraštė: {{title}}.'
       current_proposal: 'Esamas pasiūlymas: {{name}}.'
     threads_from:
       today: Šiandien

@@ -663,7 +663,6 @@ ko:
       muted_aria_label: 알림 비활성화된 주제 보기
       muted_description: 알림 비활성화된 주제만 보기
     aria_thread:
-      title: '쓰레드 제목: {{title}}.'
       unread: '읽지 않은 아이템 {{count}}개'
       current_proposal: '현재 제안: {{name}}.'
       you_voted: '투표 완료: {{position}}.'

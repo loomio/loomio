@@ -37,6 +37,7 @@ ar:
     invitation:
       hi: 'مرحبا بك %{name}،'
     proposal_closing_soon:
+      closes_at: يغلق في
       closes_in: سيغلق خلال
   footer:
     about: حول
@@ -47,5 +48,37 @@ ar:
     public_groups: المجموعات المفتوحة للعموم
     terms: شروط الخدمة
   start_group_form:
+    name: اسمك
     group_name: اسم المجموعة
     group_description: وصف المجموعة
+    group_description_placeholder: قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.
+  pricing_page:
+    gift: منحة
+    standard: قياسية
+    plus: زائدة
+    free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
+    get_started_for_free: قم بالبدء مجاناً
+    gift_body_html: |
+      <p>للمجموعات التي لا تمتلك ميزانية لدفع الاشتراك</p>
+
+      <p>دعم معتمد على التبرعات، دون ضرورة للدفع.</p>
+    gift_donation_ask: سنقوم بطلب تبرعات من أعضاء مجموعتك.
+    unlimited_members: عدد غير محدود من الأعضاء.
+    unlimited_decisions: عدد غير محدود من القرارات.
+    email_support: بريد إلكتروني للدعم
+    standard_price_html: >
+      <strong>19 دولار أمريكي</strong> في الشهر <br><span>أو</span> دولار أمريكي
+      190 في السنة
+    plus_body: 'كل شيء قياسي، زائد:'
+    premium_support: دعم ممتاز
+    custom_url: URL مخصص
+    usage_statistics: إحصائيات الاستخدام
+    plus_price_html: >
+      <strong> إما 197 دولار أمريكي</strong> في الشهر <br><span>أو</span> في
+      السنة 1790 دولار أمريكي
+  contact_page:
+    contact_us: اتصل بنا
+    labels:
+      name: اسمك
+      email: عنوان بريدك الإلكتروني
+      message: رسالتك

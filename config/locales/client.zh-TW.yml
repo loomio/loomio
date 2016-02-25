@@ -29,6 +29,7 @@ zh-TW:
       proposal: 提案
     copied: 已複製
     action:
+      back: 返回
       close: 關閉
       save: 儲存
       save_changes: 儲存變更
@@ -220,6 +221,7 @@ zh-TW:
   vote_form:
     heading: 擁有發言權
     no_statement: 沒寫。
+    statement_over_limit: 太多字了！簡短的立場聲明讓大家能迅速了解提議。
     i_agree: 我贊成
     i_agree_details: 我支持這決定，就這麼進行。
     i_abstain: 我棄權
@@ -414,6 +416,7 @@ zh-TW:
       private: 隱私權：此群組現在只會被成員看到
       parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
       public: 隱私權：此群組現在能在網路上被看到
+      aria_label: '群組隱私：{{privacy}}'
   confirm_gift_plan_modal:
     heading: 已選取禮物方案
     body: 如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。您的群組成員是否有自願性的捐款。
@@ -686,7 +689,6 @@ zh-TW:
       muted_aria_label: 目前正在顯示已靜音的討論串
       muted_description: 僅檢視已被靜音的討論串
     aria_thread:
-      title: '討論串標題：{{title}}。'
       unread: '{{count}} 個未讀的項目。'
       current_proposal: '目前提案：{{name}}.'
       you_voted: '您已經投票：{{position}}.'

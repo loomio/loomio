@@ -2,16 +2,16 @@ ar:
   frontpage:
     view_this_in_your_language: 'اعرض هذا الموقع باللغة %{language}'
     title:
-      collaborative_decision_making: إتخاذ القرار التعاوني
+      collaborative_decision_making: اتخاذ قرار تشاركي
     link:
       blog: مدونة
-      contact: تواصل معنا
+      contact: جهة اتصال
       press: صحافة
-      try_it: جرّب Loomio
+      try_it: جرّب لوميو
       log_in: تسجيل الدخول
-      video: أنظر المزيد حول كيفية عمل Loomio
+      video: أنظر المزيد حول كيفية عمل لوميو
       try_loomio: اختبر لوميو
-      try_loomio_beta: جرّب Loomio Beta
+      try_loomio_beta: جرّب لوميو بيتا
       more: المزيد
       top: أعلى الصفحة
       public_groups: المجموعات المفتوحة للعموم
@@ -44,7 +44,7 @@ ar:
     ideals:
       community:
         header: جمعية تعاونية مدفوعة من قبل المجتمع المحلي
-        desc: Loomio مبني كشركة تعاونية يملكها العاملون فيها. نحن مؤسسة اجتماعية تعمل على تحقيق أقصى قدر من التأثير الاجتماعي الإيجابي، وليس الربح.
+        desc: لوميو مبني كشركة تعاونية يملكها العاملون فيها. نحن مؤسسة اجتماعية تعمل على تحقيق أقصى قدر من التأثير الاجتماعي الإيجابي، وليس الربح.
       independent:
         header: مستقل وحيادي
         desc: نؤمن مساحة لأي مجموعة للعمل سوية، وبشكل مستقل عن أية مصالح سياسية أو تجارية. لن نقوم أبدا ببيع بياناتكم.

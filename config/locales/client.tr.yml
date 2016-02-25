@@ -29,6 +29,7 @@ tr:
       proposal: Öneri
     copied: Kopyalandı
     action:
+      back: Geri
       close: Kapat
       save: Kaydet
       save_changes: Değişiklikleri kaydet
@@ -200,6 +201,8 @@ tr:
     header: Bildirimler
     new_discussion: '<strong>{{name}}</strong> bir müzakere başlattı <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> bir öneri oluşturdu <strong>{{proposal}}</strong>'
+    motion_closed: 'Öneri kapandı: <strong>{{proposal}}</strong>'
+    publish_outcome: Bir sonuç yayınla
     motion_closed_by_user: '<strong>{{name}}</strong> <strong>{{proposal}}</strong> önerisini kapattı'
     motion_closed_by_expiry: 'Öneri kapatıldı <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> <strong>{{proposal}}</strong> önerisinde {{position}}  pozisyonunda'
@@ -220,6 +223,7 @@ tr:
   vote_form:
     heading: Söz sahibi ol
     no_statement: Yorum yok.
+    statement_over_limit: 'Çok fazla kelime var! Kısa pozisyon ifadeleri herkesin öneri hakkında çabucak bilgilenmesini sağlar.'
     i_agree: Katılıyorum
     i_agree_details: Ben bunu destekliyorum ve devam etmesini istiyorum.
     i_abstain: Çekimserim
@@ -418,6 +422,7 @@ tr:
       private: 'Gizlilik: Bu grubu sadece grup üyeleri görebilir'
       parent_members: 'Gizlilik: Bu grup sadece {{parentGroupName}} ve {{groupName}} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
+      aria_label: 'Grup gizliliği: {{privacy}}'
   confirm_gift_plan_modal:
     heading: Hediye planı seçildi
     body: 'Eğer grubunuzun yazılımı ödemek için bütçesi yoksa, bir abonelik ücreti ödemeniz gerekmez. Grup üyeleriniz belirli aralıklarla gönüllü bağış yapmaya davet edilecektir.'
@@ -690,7 +695,6 @@ tr:
       muted_aria_label: Şu anda sesi kısılmış konular görüntüleniyor
       muted_description: Sadece sesi kısılmış konuları görüntüleyin
     aria_thread:
-      title: 'Konu başlığı: {{title}}.'
       unread: '{{count}} okunmamış öğe.'
       current_proposal: 'Güncel öneri: {{name}}.'
       you_voted: 'Oy verdiniz: {{position}}.'
@@ -811,6 +815,10 @@ tr:
     title: 'konu başlığı güncellendi: <span>{{title}}</span>'
     description: konu içeriği güncellendi
     description_title: konu başlığı ve içerik güncellendi
+    private: 'konu gizliliği güncellendi: '
+    public_to_private: gizli
+    private_to_public: genel
+    description_private_title: 'konu başlığı, içerik ve gizlilik güncellendi'
   contact_message_form:
     contact_us: Bizimle iletişime geçin
     name_label: Adın
