@@ -92,7 +92,8 @@ class EventSerializer < ActiveModel::Serializer
   def membership_kinds
     ['user_added_to_group',
      'membership_request_approved',
-     'invitation_accepted']
+     'invitation_accepted',
+     'new_coordinator']
   end
 
   def membership_request_kinds
