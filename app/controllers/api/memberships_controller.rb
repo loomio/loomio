@@ -1,4 +1,5 @@
 class API::MembershipsController < API::RestfulController
+  load_resource only: [:make_admin, :remove_admin]
 
   def add_to_subgroup
     group = load_and_authorize(:group)
@@ -22,42 +23,40 @@ class API::MembershipsController < API::RestfulController
   end
 
   def join_group
-    @group = Group.find(params[:group_id])
-    event = MembershipService.join_group group: @group, actor: current_user
+    event = service.join_group group: load_and_authorize(:group), actor: current_user
     @membership = event.eventable
     respond_with_resource
   end
 
   def invitables
-    @memberships = page_collection visible_invitables
+    instantiate_collection { Queries::VisibleInvitableMemberships.new(
+      group: load_and_authorize(:group, :invite_people),
+      user: current_user,
+      query: params[:q]) }
     respond_with_collection scope: { q: params[:q], include_inviter: false }
   end
 
   def my_memberships
-    @memberships = current_user.memberships.includes(:user, :inviter)
+    instantiate_collection { current_user.memberships.includes(:user, :inviter) }
     respond_with_collection
   end
 
   def autocomplete
-    load_and_authorize :group
-    authorize! :members_autocomplete, @group
-
-    @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     group: @group,
-                                                     current_user: current_user,
-                                                     limit: 10)
+    instantiate_collection { Queries::VisibleAutocompletes.new(
+      query: params[:q],
+      group: load_and_authorize(:group, :members_autocomplete),
+      current_user: current_user,
+      limit: 10) }
     respond_with_collection
   end
 
   def make_admin
-    load_resource
-    MembershipService.make_admin(membership: @membership, actor: current_user)
+    service.make_admin(membership: resource, actor: current_user)
     respond_with_resource
   end
 
   def remove_admin
-    load_resource
-    MembershipService.remove_admin(membership: @membership, actor: current_user)
+    service.remove_admin(membership: resource, actor: current_user)
     respond_with_resource
   end
 
@@ -70,10 +69,5 @@ class API::MembershipsController < API::RestfulController
     else
       visible.where("groups.is_visible_to_public = 't'")
     end
-  end
-
-  def visible_invitables
-    load_and_authorize :group, :invite_people
-    Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
   end
 end

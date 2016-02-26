@@ -3,6 +3,9 @@ class API::DiscussionsController < API::RestfulController
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 
+  named_action :move,         params: true
+  named_action :mark_as_read, params: true
+
   def index
     load_and_authorize(:group, optional: true)
     instantiate_collection { |collection| collection.sorted_by_importance }
@@ -19,16 +22,6 @@ class API::DiscussionsController < API::RestfulController
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     instantiate_collection { |collection| collection_for_inbox collection }
     respond_with_collection
-  end
-
-  def move
-    service.move discussion: resource, params: params, actor: current_user
-    respond_with_resource
-  end
-
-  def mark_as_read
-    service.mark_as_read discussion: resource, params: params, actor: current_user
-    respond_with_resource
   end
 
   def star

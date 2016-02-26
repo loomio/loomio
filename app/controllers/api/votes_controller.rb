@@ -13,8 +13,7 @@ class API::VotesController < API::RestfulController
   private
 
   def accessible_records
-    load_and_authorize :motion
-    @motion.votes.most_recent.order(:created_at)
+    load_and_authorize(:motion).votes.most_recent.order(:created_at)
   end
 
 end

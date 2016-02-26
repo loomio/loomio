@@ -1,27 +1,13 @@
 class API::MotionsController < API::RestfulController
+  load_and_authorize_resource only: :show, find_by: :key
   include UsesDiscussionReaders
 
-  def show
-    load_and_authorize(:motion)
-    respond_with_resource
-  end
+  named_action :close_by_user,  params: true
+  named_action :create_outcome, params: true
+  named_action :update_outcome, params: true
 
-  def close
+  def close_by_user
     @event = MotionService.close_by_user(load_and_authorize(:motion, :close), current_user)
-    respond_with_resource
-  end
-
-  def create_outcome
-    @event = MotionService.create_outcome(motion: load_and_authorize(:motion, :create_outcome),
-                                          params: permitted_params.motion,
-                                          actor:  current_user)
-    respond_with_resource
-  end
-
-  def update_outcome
-    @event = MotionService.update_outcome(motion: load_and_authorize(:motion, :update_outcome),
-                                          params: permitted_params.motion,
-                                          actor:  current_user)
     respond_with_resource
   end
 
