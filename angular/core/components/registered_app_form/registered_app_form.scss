@@ -1,0 +1,30 @@
+.registered-app-form__helptext {
+  color: $grey-on-grey;
+  @include fontSmall;
+}
+
+.registered-app-form__avatar {
+  padding-right: 30px;
+}
+
+.registered-app-form__logo-upload-button {
+  display: block;
+  margin: 10px 0;
+  width: 100px;
+}
+
+.registered-app-form__avatar img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border: 4px solid white;
+}
+
+.registered-app-form__text-fields {
+  flex-grow: 2;
+}
+
+.registered-app-form__modal-body {
+  display: flex;
+  justify-content: space-between;
+}
