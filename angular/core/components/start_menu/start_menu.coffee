@@ -14,5 +14,8 @@ angular.module('loomioApp').directive 'startMenu', ->
     $scope.$on 'viewingGroup', (event, group) ->
       $scope.currentGroup = group
 
+    $scope.$on 'viewingThread', (event, discussion) ->
+      $scope.currentGroup = discussion.group()
+
     $scope.toggleStartMenu = ->
       $scope.startMenuOpen = !$scope.startMenuOpen

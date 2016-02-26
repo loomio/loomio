@@ -55,3 +55,10 @@ describe 'Invitations', ->
                '.add-members-modal__submit'
 
     page.expectFlash 'Jennifer Grey added to Subgroup'
+
+  it 'preselects current group if form launched from start menu while viewing group or thread page', ->
+    page.loadPath 'setup_dashboard'
+    page.clickFirst '.thread-preview__link'
+    page.click '.start-menu__start-button'
+    page.click '.start-menu__invitePeople'
+    page.expectText '.invitation-form__group-select', 'Dirty Dancing Shoes'
