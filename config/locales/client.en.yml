@@ -240,6 +240,7 @@ en:
     motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{group}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{group}}</strong>"
 
   position_buttons_panel:
     heading: Have your say

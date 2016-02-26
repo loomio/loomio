@@ -21,7 +21,8 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       'comment_liked':                  'comment',
       'comment_replied_to':             'comment',
       'user_mentioned':                 'comment',
-      'invitation_accepted':            'membership'
+      'invitation_accepted':            'membership',
+      'new_coordinator':                'membership'
     }
 
     relationships: ->
