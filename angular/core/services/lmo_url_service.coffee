@@ -12,29 +12,29 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     routePath: (route) ->
       "/".concat(route).replace('//', '/')
 
-    membershipRequest: (mr, params = {}, options = {}) ->
-      @route model: mr.group(), action: 'membership_requests', params: params
-
     group: (g, params = {}, options = {}) ->
       @buildModelRoute('g', g.key, g.fullName, params, options)
 
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
-    searchResult: (r, params = {}, options = {}) ->
-      @discussion(r, params, options)
-
-    proposal: (p, params = {}, options = {}) ->
-      @discussion p.discussion(), _.merge(params, {proposal: p.key})
-
-    comment: (c, params = {}, options = {}) ->
-      @discussion c.discussion(), _.merge(params, {comment: c.id})
-
     user: (u, params = {}, options = {}) ->
       @buildModelRoute('u', u.username, null, params, options)
 
+    searchResult: (r, params = {}) ->
+      @route model: r, params: params
+
+    proposal: (p, params = {}) ->
+      @route model: p.discussion(), action: "proposal/#{p.key}", params: params
+
+    comment: (c, params = {}) ->
+      @route model: c.discussion(), action: "comment/#{c.id}", params: params
+
     membership: (m, params = {}, options = {}) ->
       @route model: m.group(), action: 'memberships', params: params
+
+    membershipRequest: (mr, params = {}, options = {}) ->
+      @route model: mr.group(), action: 'membership_requests', params: params
 
     oauthApplication: (a, params = {}, options = {}) ->
       @buildModelRoute('apps/registered', a.id, a.name, params, options)

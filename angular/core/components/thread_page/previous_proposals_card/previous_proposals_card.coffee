@@ -1,5 +1,5 @@
-angular.module('loomioApp').directive 'previousProposalsCard', ->
-  scope: {discussion: '='}
+angular.module('loomioApp').directive 'previousProposalsCard', ($routeParams) ->
+  scope: {discussion: '=', active: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/previous_proposals_card/previous_proposals_card.html'
   replace: true
@@ -7,15 +7,10 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
 
     Records.votes.fetchMyVotes($scope.discussion)
     Records.proposals.fetchByDiscussion($scope.discussion).then ->
-      $scope.setSelectedProposal()
       $rootScope.$broadcast 'threadPageProposalsLoaded'
 
     $scope.setSelectedProposal = ->
-      $scope.selectedProposalId = setProposalFromQueryParameter() or setLastClosedProposal()
-
-    setProposalFromQueryParameter = ->
-      proposal = Records.proposals.find($location.search().proposal)
-      proposal.id if proposal
+      $scope.selectedProposalId = $scope.active or setLastClosedProposal()
 
     setLastClosedProposal = ->
       return unless $scope.anyProposals() and !$scope.discussion.hasActiveProposal()
