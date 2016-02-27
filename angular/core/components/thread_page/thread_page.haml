@@ -58,7 +58,7 @@
         .start-proposal-card__start-proposal-button
           %start_proposal_button.table-cell.thread-start-proposal-button{discussion: "threadPage.discussion"}
       %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()"}
-      %previous_proposals_card{discussion: "threadPage.discussion", active: "threadPage.proposal.id"}
+      %previous_proposals_card{discussion: "threadPage.discussion"}
       %thread_volume_card{thread: "threadPage.discussion"}
 
     .lmo-thread-column-left

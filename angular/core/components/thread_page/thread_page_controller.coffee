@@ -52,7 +52,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
     @proposal = Records.proposals.find(@activeProposalKey)
-    $scope.$broadcast 'setSelectedProposal', @proposal
+    $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
 
   @group = ->
