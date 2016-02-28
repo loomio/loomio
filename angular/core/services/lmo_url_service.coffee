@@ -18,11 +18,11 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
+    searchResult: (r, params = {}, options = {}) ->
+      @discussion r, params, options
+
     user: (u, params = {}, options = {}) ->
       @buildModelRoute('u', u.username, null, params, options)
-
-    searchResult: (r, params = {}) ->
-      @route model: r, params: params
 
     proposal: (p, params = {}) ->
       @route model: p.discussion(), action: "proposal/#{p.key}", params: params
