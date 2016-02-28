@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'previousProposalsCard', ($routeParams) ->
+angular.module('loomioApp').directive 'previousProposalsCard', ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/previous_proposals_card/previous_proposals_card.html'
