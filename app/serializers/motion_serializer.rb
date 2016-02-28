@@ -18,6 +18,7 @@ class MotionSerializer < ActiveModel::Serializer
              :discussion_id
 
   has_one :author, serializer: UserSerializer, root: 'users'
+  has_one :discussion, serializer: DiscussionSerializer, root: 'discussion'
   has_one :outcome_author, serializer: UserSerializer, root: 'users'
 
 
