@@ -17,10 +17,10 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @elementToFocus = ->
-    if @proposalToFocus or (@discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key)
-      "#proposal-#{@proposalToFocus.key}"
-    else if @commentToFocus
-      "#comment-#{@commentToFocus.id}"
+    if @proposal
+      "#proposal-#{@proposal.key}"
+    else if @comment
+      "#comment-#{@comment.id}"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
       '.activity-card__last-read-activity'
     else
@@ -32,9 +32,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
-        @proposalToFocus = @discussion.activeProposal()
-
+      @activeProposalKey = $routeParams.proposal or $location.search().proposal
+      @activeCommentId   = parseInt($routeParams.comment or $location.search().comment)
       @sequenceIdToFocus = @discussion.lastReadSequenceId # or location hash when we put it back in.
 
       $rootScope.$broadcast 'currentComponent', { page: 'threadPage'}
@@ -48,12 +47,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   $scope.$on 'threadPageEventsLoaded',    (event) =>
     @eventsLoaded = true
-    commentId = parseInt($location.search().comment)
-    @commentToFocus = Records.comments.find(commentId) unless isNaN(commentId)
+    @comment = Records.comments.find(@activeCommentId) unless isNaN(@activeCommentId)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
   $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
-    @proposalToFocus = Records.proposals.find $location.search().proposal
+    @proposal = Records.proposals.find(@activeProposalKey)
+    $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
 
   @group = ->

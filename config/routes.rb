@@ -478,4 +478,6 @@ Loomio::Application.routes.draw do
   get 'apps/authorized'           => 'base#boot_angular_ui'
   get 'apps/registered/:id'       => 'base#boot_angular_ui'
   get 'apps/registered/:id/:slug' => 'base#boot_angular_ui'
+  get 'd/:key/proposal/:proposal' => 'base#boot_angular_ui'
+  get 'd/:key/comment/:comment'   => 'base#boot_angular_ui'
 end

@@ -73,6 +73,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/email_preferences', component: 'emailSettingsPage' },
     {path: '/d/:key', component: 'threadPage' },
     {path: '/d/:key/:stub', component: 'threadPage' },
+    {path: '/d/:key/comment/:comment', component: 'threadPage'},
+    {path: '/d/:key/proposal/:proposal', component: 'threadPage'},
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
