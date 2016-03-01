@@ -60,7 +60,7 @@ en:
       view_group: You can approve or decline the request here
     mentioned:
       context: '%{author_name} mentioned you while discussing "%{discussion_title}"'
-      subject: "%{who} mentioned you in the %{which} group on Loomio"
+      subject: '%{who} mentioned you while discussing "%{which}"'
     new_motion_created:
       subject: 'Proposal: %{proposal_title}'
       context: "%{author} created a proposal in %{group_full_name}:"
