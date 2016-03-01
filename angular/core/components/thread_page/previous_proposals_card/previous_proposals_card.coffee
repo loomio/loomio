@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'previousProposalsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/previous_proposals_card/previous_proposals_card.html'
   replace: true
-  controller: ($scope, $rootScope, $location, Records) ->
+  controller: ($scope, $rootScope, Records) ->
 
     Records.votes.fetchMyVotes($scope.discussion)
     Records.proposals.fetchByDiscussion($scope.discussion).then ->

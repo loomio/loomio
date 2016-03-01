@@ -1,6 +1,9 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
+  @activeProposalKey = $routeParams.proposal or $location.search().proposal
+  @activeCommentId   = parseInt($routeParams.comment or $location.search().comment)
+
   handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
       $location.search().comment = match[1]
@@ -32,8 +35,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      @activeProposalKey = $routeParams.proposal or $location.search().proposal
-      @activeCommentId   = parseInt($routeParams.comment or $location.search().comment)
       @sequenceIdToFocus = @discussion.lastReadSequenceId # or location hash when we put it back in.
 
       $rootScope.$broadcast 'currentComponent', { page: 'threadPage'}
