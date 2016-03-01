@@ -2,7 +2,9 @@ class StartGroupController < ApplicationController
   def new
     @errors = []
     @group = Group.new
-    if current_user.present? && ENV['NEW_GROUPS_ON_ANGULAR']
+    if current_user.present? && current_user.angular_ui_enabled
+      redirect_to dashboard_path(start_group: true)
+    elsif current_user.present? && !current_user.angular_ui_enabled && ENV['NEW_GROUPS_ON_ANGULAR']
       render :enable_angular
     else
       render :new
