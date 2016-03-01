@@ -6,6 +6,10 @@
   "scripts": {
     "test": "gulp test"
   },
+  "engines": {
+    "npm": "~2.14.20",
+    "node": "~4.2.6"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/loomio/loomio.git"
