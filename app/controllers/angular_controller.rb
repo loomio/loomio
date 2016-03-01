@@ -43,6 +43,7 @@ class AngularController < ApplicationController
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       intercomAppId: Rails.application.secrets.intercom_app_id,
       intercomUserHash: Digest::SHA1.hexdigest("#{Rails.application.secrets.intercom_app_secret}#{current_user_or_visitor.id}"),
+      plugins: Plugins::Repository.to_config,
       chargify: app_config_chargify
     }
   end
