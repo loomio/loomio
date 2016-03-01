@@ -48,7 +48,6 @@ describe 'Invitations', ->
     page.fillIn '#group-name', 'subgroup for some'
 
     page.click '.group-form__submit-button',
-               '.group-welcome-modal__close-button',
                '.members-card__invite-members-btn',
                '.invitation-form__add-members',
                '.add-members-modal__list-item:first-of-type',
