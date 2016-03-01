@@ -2,7 +2,7 @@ class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
 
-  before_filter :cleanup_database, except: [:last_email, :index]
+  before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
   around_filter :ensure_testing_environment
 
   def index
@@ -15,6 +15,11 @@ class DevelopmentController < ApplicationController
   def last_email
     @email = ActionMailer::Base.deliveries.last
     render layout: false
+  end
+
+  def accept_last_invitation
+    InvitationService.redeem(Invitation.last, max)
+    redirect_to(test_group)
   end
 
   def setup_dashboard

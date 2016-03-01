@@ -29,6 +29,7 @@ pt-BR:
       proposal: Proposta
     copied: Copiado
     action:
+      back: Voltar
       close: Encerrar
       save: Salvar
       save_changes: Salvar mudanças
@@ -200,6 +201,8 @@ pt-BR:
     header: Notificações
     new_discussion: '<strong>{{name}}</strong> iniciou uma discussão <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> criou uma proposta <strong>{{proposal}}</strong>'
+    motion_closed: 'Proposta encerrada: <strong>{{proposal}}</strong>'
+    publish_outcome: Publicar um resultado
     motion_closed_by_user: '<strong>{{name}}</strong> fechou a proposta <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Proposta encerrada <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} sobre a proposta <strong>{{proposal}}</strong>'
@@ -214,11 +217,13 @@ pt-BR:
     motion_closing_soon: 'Proposta encerrando em breve <strong>{{proposal}}</strong>'
     motion_outcome_created: '<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> aceitou o seu convite para integrar <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
     heading: Dê a sua opinião
     no_statement: Nenhuma afirmação.
+    statement_over_limit: 'Palavras demais! Curtas declarações de posicionamento permitem que todos entendam rapidamente a proposta.'
     i_agree: Eu concordo
     i_agree_details: Eu apoio isso e quero que siga em frente.
     i_abstain: Eu me abstenho
@@ -370,7 +375,7 @@ pt-BR:
     group_logo: Logo do grupo
     new_photo: nova foto
     description: Descrição do grupo
-    description_placeholder: 'Utilize este espaço para descrever a finalidade do grupo, para que seus membros saibam por que estão aqui.'
+    description_placeholder: 'Coordenadores de grupo podem usar esta área para descrever a finalidade do grupo, para que assim todos saibam por que estão aqui.'
     discussions: Tópicos
     discussions_placeholder: Um tópico é o lugar onde todos podem discutir um tema e tomar decisões juntos.
     members: 'Membros ({{count}})'
@@ -417,6 +422,7 @@ pt-BR:
       private: 'Privacidade: Este grupo é visível apenas para membros'
       parent_members: 'Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}'
       public: 'Privacidade: Este grupo é visível na web'
+      aria_label: 'Privacidade do grupo: {{privacy}}'
   confirm_gift_plan_modal:
     heading: Plano Presente selecionado
     body: 'Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária.'
@@ -552,8 +558,12 @@ pt-BR:
   invitation_form:
     invite_people: Convidar Pessoas
     group: Grupo
+    shareable_link: Link compartilhável
+    copy_link: Copiar link
     email_addresses: Endereço de e-mail
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: Copie o link e envie para quem você deseja que se junte ao grupo. Clicar no link garante acesso imediato.
+    email_explanation: 'Como alternativa, introduza endereços de e-mail abaixo e o Loomio irá enviar os convites por e-mail.'
     add_custom_message: 'Faça seu convite pessoal,'
     add_custom_message_link: adicionar uma mensagem personalizada.
     custom_message: Mensagem personalizada
@@ -563,16 +573,12 @@ pt-BR:
     add_members: Adicionar membros
     from_parent_group: 'de {{name}}.'
     send: Enviar
+    done: Pronto
     messages:
       invitation_sent: Convite enviado.
       invitations_sent: '{{count}} convites enviados.'
       no_invitations: 'Ops! Por favor, verifique o endereço de e-mail está correto e tente novamente.'
       max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
-  team_link_modal:
-    heading: Adicionar pessoas
-    share_link: Compartilhar este link
-    caution: 'Cuidado: qualquer um com este link será capaz de participar do seu grupo imediatamente. Cuidado com quem compartilhá-lo :)'
-    copy_link: Copiar link
   add_members_modal:
     heading: 'Adicionar pessoas de {{name}}'
     add_members: Adicionar membros
@@ -689,7 +695,6 @@ pt-BR:
       muted_aria_label: 'No momento, mostrando tópicos mudos'
       muted_description: Ver apenas tópicos que estão mudos
     aria_thread:
-      title: 'Título do tópico: {{title}}.'
       unread: '{{count}} itens não lidos.'
       current_proposal: 'Proposta atual: {{name}}.'
       you_voted: 'Você votou: {{position}}.'
@@ -810,6 +815,10 @@ pt-BR:
     title: 'atualizou o título do tópico: <span>{{title}}</span>'
     description: atualizou o contexto do tópico
     description_title: atualizou título e contexto do tópico
+    private: atualizou a privacidade do tópico para
+    public_to_private: privado
+    private_to_public: público
+    description_private_title: 'atualizou título, contexto e privacidade do tópico'
   contact_message_form:
     contact_us: Contato
     name_label: Seu nome

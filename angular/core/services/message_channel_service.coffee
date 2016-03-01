@@ -7,9 +7,6 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
     subscribeToGroup: (group) ->
       @subscribe { group_key: group.key }
 
-    subscribeToDiscussion: (discussion) ->
-      @subscribe { discussion_key: discussion.key }
-
     handleSubscriptions = (subscriptions) ->
       _.each subscriptions.data, (subscription) ->
         PrivatePub.sign(subscription)

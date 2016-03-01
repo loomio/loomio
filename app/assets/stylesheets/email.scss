@@ -37,7 +37,6 @@ table{
   margin-bottom: 1em;
   img{
     margin-right: .4em;
-    width: 40px;
   }
 }
 
@@ -130,4 +129,8 @@ img.emojione {
   width: 25px;
   height: 25px;
   vertical-align: middle;
+}
+
+img {
+  max-width: 500px;
 }

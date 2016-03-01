@@ -1,7 +1,7 @@
 module GroupService
   def self.create(group:, actor:)
-    group.creator = actor
     actor.ability.authorize! :create, group
+    group.creator = actor
 
     return false unless group.valid?
     group.save!

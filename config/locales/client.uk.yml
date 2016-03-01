@@ -348,7 +348,6 @@ uk:
     group_logo: Логотип групи
     new_photo: нове фото
     description: Опис групи
-    description_placeholder: 'Опишіть тут цілі групи так, щоб учасники розуміли, навіщо вони тут.'
     discussions: Теми
     discussions_placeholder: У темі всі можуть приняти участь в обговоренні питання та прийняти спільне рішення.
     members: Учасники
@@ -611,7 +610,6 @@ uk:
       muted_aria_label: Відображення вимкнутих тем
       muted_description: Переглянути тільки теми що вимкнуті
     aria_thread:
-      title: 'Заголовок теми: {{title}}.'
       unread: '{{count}} непрочитаних тем.'
       current_proposal: 'Поточна пропозиція: {{name}}.'
       you_voted: 'Ви проголосували: {{position}}.'

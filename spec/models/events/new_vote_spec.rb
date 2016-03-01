@@ -16,10 +16,4 @@ describe Events::NewVote do
       expect(Events::NewVote.publish!(vote)).to be_a Event
     end
   end
-
-  describe 'channel_object' do
-    it 'uses the group as a channel object' do
-      expect(Events::NewVote.publish!(vote).send(:channel_object)).to eq discussion.group
-    end
-  end
 end

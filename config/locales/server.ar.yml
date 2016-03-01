@@ -1,19 +1,18 @@
----
 ar:
   email:
-    by_who: من قبل %{person}
+    by_who: 'من قبل %{person}'
     reply_to_this_discussion: شارك في هذا النقاش
     to_join_discussion:
-      subject: "%{who} يريدك أن تنضم إلى نقاش على Loomio"
+      subject: '%{who} يريدك أن تنضم إلى نقاش على Loomio'
       content: 'لقد تمت دعوتك للمشاركة في النقاش: %{discussion}'
-      message_intro: "%{who} يقول:"
+      message_intro: '%{who} يقول:'
       link: إنضم للنقاش
     to_join_group:
-      subject: لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على Loomio
+      subject: 'لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على Loomio'
     to_start_group:
       subject: 'قم بإعداد مجموعة جديدة على Loomio: %{group_name}'
     user_added_to_a_group:
-      subject: لقد أضافك %{who} إلى %{which_group}
+      subject: 'لقد أضافك %{who} إلى %{which_group}'
       content: 'لقد أضافك %{who} إلى %{which_group} على Loomio. انقر هنا للذهاب إلى المجموعة:'
     unsubscribe: 'الغ الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
@@ -22,7 +21,7 @@ ar:
     view_group: انقر هنا لاستعراض المجموعة على Loomio
     view_proposal: إستعرض هذا المقترح على Loomio
     create_discussion:
-      intro: "%{who} بدأ نقاشا في %{which_group}:"
+      intro: '%{who} بدأ نقاشا في %{which_group}:'
     create_proposal:
       intro: تم إنشاء مقترح جديد في مجموعة على Loomio أنت عضو فيها.
       closes_in: سيغلق خلال
@@ -33,21 +32,53 @@ ar:
     missed_yesterday:
       subject: أحداث الأمس على Loomio
       mark_as_read: تمت قراءته
-      thanks_for_reading: شكرا للقراءة، نتمنى لك يوما سعيدا!
+      thanks_for_reading: 'شكرا للقراءة، نتمنى لك يوما سعيدا!'
       click_here_to_mark_all_as_read_html: "هذا ما حدث يوم أمس على Loomio. \nحال إنهاء القراءة، انقر على <a href=\"%{link}\"> تمت قراءته </a> لإزالته من صندوق البريد الوارد لديك على Loomio.\n"
-    group_membership_approved:
-      subject: تم قبول طلب العضوية
     invitation:
-      hi: مرحبا بك %{name}،
+      hi: 'مرحبا بك %{name}،'
     proposal_closing_soon:
+      closes_at: يغلق في
       closes_in: سيغلق خلال
   footer:
     about: حول
     blog: مدونة
     contact: تواصل معنا
     help: مساعدة
-    privacy: خصوصية
+    privacy: الخصوصة
     public_groups: المجموعات المفتوحة للعموم
     terms: شروط الخدمة
   start_group_form:
+    name: اسمك
     group_name: اسم المجموعة
+    group_description: وصف المجموعة
+    group_description_placeholder: قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.
+  pricing_page:
+    gift: منحة
+    standard: قياسية
+    plus: زائدة
+    free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
+    get_started_for_free: قم بالبدء مجاناً
+    gift_body_html: |
+      <p>للمجموعات التي لا تمتلك ميزانية لدفع الاشتراك</p>
+
+      <p>دعم معتمد على التبرعات، دون ضرورة للدفع.</p>
+    gift_donation_ask: سنقوم بطلب تبرعات من أعضاء مجموعتك.
+    unlimited_members: عدد غير محدود من الأعضاء.
+    unlimited_decisions: عدد غير محدود من القرارات.
+    email_support: بريد إلكتروني للدعم
+    standard_price_html: >
+      <strong>19 دولار أمريكي</strong> في الشهر <br><span>أو</span> دولار أمريكي
+      190 في السنة
+    plus_body: 'كل شيء قياسي، زائد:'
+    premium_support: دعم ممتاز
+    custom_url: URL مخصص
+    usage_statistics: إحصائيات الاستخدام
+    plus_price_html: >
+      <strong> إما 197 دولار أمريكي</strong> في الشهر <br><span>أو</span> في
+      السنة 1790 دولار أمريكي
+  contact_page:
+    contact_us: اتصل بنا
+    labels:
+      name: اسمك
+      email: عنوان بريدك الإلكتروني
+      message: رسالتك

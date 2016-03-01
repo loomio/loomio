@@ -32,5 +32,10 @@ describe ModelLocator do
     it "finds an alternate model by id" do
       expect(ModelLocator.new(:motion, id: motion.id).locate).to eq motion
     end
+
+    it "finds a model with an aggregate model name" do
+      application = create(:application)
+      expect(ModelLocator.new(:oauth_application, id: application.id).locate).to eq application
+    end
   end
 end

@@ -1,4 +1,3 @@
----
 hr:
   footer:
     about: O nama
@@ -10,5 +9,6 @@ hr:
   start_group_form:
     header: Počni novu grupu
     group_name: Ime grupe
+    group_description: Opis grupe
     success:
-      header: Još malo! Provjerite email.
+      header: 'Još malo! Provjerite email.'

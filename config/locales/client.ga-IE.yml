@@ -288,7 +288,6 @@ ga-IE:
         public: Tá an saol mór in ann an bhaicle seo a fheiceáil anois
       leave_group_success: "D'fhág tú an bhaicle seo"
     group_logo: Lógó na baicle
-    description_placeholder: Bain feidhm as an áit seo chun cur síos a dhéanamh ar an mbaicle le go mbeidh a fhios ag na comhaltaí cén fáth a bhfuil siad anseo.
     discussions: Pléití
     discussions_placeholder: Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.
     members: Comhaltaí
@@ -456,7 +455,6 @@ ga-IE:
       muted_aria_label: Ag taispeáint faoi láthair na snáitheanna balbhaithe
       muted_description: Taispeáin na snáitheanna balbhaithe amháin
     aria_thread:
-      title: 'Teideal na snáithe: {{title}}.'
       unread: '{{count}} míreanna nár léadh.'
       current_proposal: 'An togra reatha: {{name}}.'
       you_voted: 'Is mar seo a chaith tú do ghuth: {{position}}.'

@@ -22,22 +22,12 @@ class NotificationsController < BaseController
   end
 
   private
+
   def notifications
-    Notification.where(user_id: current_user.id).order('created_at DESC')
+    Notification.beta_notifications.where(user_id: current_user.id).order('created_at DESC')
   end
 
   def unread_count
-    Notification.where(user_id: current_user.id, viewed: false).count
-  end
-
-  # Returns most recent notifications
-  #   lower_limit - (minimum # of notifications returned)
-  #   upper_limit - (maximum # of notifications returned)
-  def recent_notifications(lower_limit=10, upper_limit=25)
-    if current_user.unviewed_notifications.count < lower_limit
-      current_user.notifications.limit(lower_limit)
-    else
-      current_user.unviewed_notifications.limit(upper_limit)
-    end
+    Notification.beta_notifications.where(user_id: current_user.id, viewed: false).count
   end
 end

@@ -1,20 +1,21 @@
----
 sr:
   email:
-    by_who: od strane %{person}
+    group_email:
+      intro: '%{who} je napravio/la objavu za grupu %{group}:'
+    by_who: 'od strane %{person}'
     reply_to_this_discussion: Odgovori u ovoj diskusiji
     to_join_discussion:
-      subject: "%{who} želi da se pridružiš diskusiji na Lumiju."
+      subject: '%{who} želi da se pridružiš diskusiji na Lumiju.'
       content: 'Pozvani ste da učestvujete u diskusiji: %{discussion}'
-      message_intro: "%{who} kaže:"
+      message_intro: '%{who} kaže:'
       link: Pridruži se diskusiji
     to_join_group:
-      subject: "%{member} Vas je pozvao/la da se pridružite %{group_name} na Lumiju"
+      subject: '%{member} Vas je pozvao/la da se pridružite %{group_name} na Lumiju'
     to_start_group:
       subject: 'Podesite svoju novu Lumio grupu: %{group_name}'
     user_added_to_a_group:
-      subject: "%{who} te je dodao/la u %{which_group}"
-      content: "%{who} te je dodao/la u %{which_group} na Lumiju. Škljocni ovde da odeš u grupu:"
+      subject: '%{who} te je dodao/la u %{which_group}'
+      content: '%{who} te je dodao/la u %{which_group} na Lumiju. Škljocni ovde da odeš u grupu:'
     unsubscribe: Odjavite se ili promenite podešavanja ePošte
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
     view_comment: Škljocnite ovde da bi videli komentar na Lumiju
@@ -22,10 +23,10 @@ sr:
     view_group: Škljocni ovde da vidiš grupu na Lumiju
     view_proposal: Pogledajte ovaj predlog na Lumiju
     create_discussion:
-      intro: "%{who} je pokrenuo/la diskusiju u %{which_group}:"
+      intro: '%{who} je pokrenuo/la diskusiju u %{which_group}:'
     create_proposal:
       intro: Novi predlog je pokrenut u Lumio grupi kojoj pripadate
-      closes_in: Zatvara se
+      closes_in: Ističe
       subject: 'Novi predlog: %{which}'
     daily_activity:
       heading: Vaša Lumio aktivnost
@@ -35,69 +36,63 @@ sr:
       subject: Juče na Lumiju
       headlines: Naslovi
       mark_as_read: Označi kao pročitano
-      thanks_for_reading: Hvala na čitanju, prijatan dan!
-      click_here_to_mark_all_as_read_html: |
+      thanks_for_reading: 'Hvala na čitanju, prijatan dan!'
+      click_here_to_mark_all_as_read_html: >
         Evo šta se dogodilo na Lumiju juče.
-        Kada pročitate, škljocnite <a href="%{link}">označi kao pročitano</a> da ukloite iz svog Lumio sandučeta sa porukama.
+
+        Kada pročitate, škljocnite <a href="%{link}">označi kao pročitano</a> da
+        ukloite iz svog Lumio sandučeta sa porukama.
       marked_as_read_success: Sve ePoruke su označene kao pročitane
     comment_replied_to:
       context: '%{author_name} je odgovorio/la na tvoj komentar u diskusiji "%{discussion_title}"'
-      subject: "%{who} je odgovorio/la na tvoj komentar u %{which} groupi na Lumiju"
-    group_email:
-      intro: "%{who} je napravio/la objavu za grupu %{group}:"
+      subject: '%{who} je odgovorio/la na tvoj komentar u %{which} groupi na Lumiju'
     group_membership_approved:
-      intro: Vaš zahtev za pristup grupi '%{group_name}' na Lumiju je odobren.
-      subject: Članstvo je odobreno
+      intro: "Vaš zahtev za pristup grupi '%{group_name}' na Lumiju je odobren."
     invitation:
-      hi: Zdravo %{name},
+      hi: 'Zdravo %{name},'
       intro: 'Škljocnite na link ispod da podesite svoju grupu %{group_name}:'
-      closing_message: Ako imate bilo kakvih pitanja ili ako postoji bilo koji način da pomognemo oko bržeg prilagođavanja, voleli bismo da to čujemo od Vas - dovoljno je da odgovorite na ovu ePoruku.
+      closing_message: 'Ako imate bilo kakvih pitanja ili ako postoji bilo koji način da pomognemo oko bržeg prilagođavanja, voleli bismo da to čujemo od Vas - dovoljno je da odgovorite na ovu ePoruku.'
       thanks: |
         Hvala!
         Lumio tim
     membership_request:
-      intro: "%{name} (%{email}) je zatražio pristup jednoj od tvojih Lumio grupa."
-      subject: "%{who} je zatražio da se pridruži %{which_group}"
+      intro: '%{name} (%{email}) je zatražio pristup jednoj od tvojih Lumio grupa.'
+      subject: '%{who} je zatražio da se pridruži %{which_group}'
       view_group: Ovde možete odobriti ili odbiti zahtev
     mentioned:
       context: '%{author_name} Vas je pomenuo/la tokom diskusije "%{discussion_title}"'
-      subject: "%{who} te je pomenuo/la u grupi %{which} na Lumiju"
+      subject: '%{who} te je pomenuo/la u grupi %{which} na Lumiju'
     new_motion_created:
       subject: 'Predlog: %{proposal_title}'
-      context: "%{author} je predložio/la u %{group_full_name}:"
+      context: '%{author} je predložio/la u %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Predlog je okončan.
-      specify_outcome_and_notify_group: Odredite ishod i pošaljite to svojoj grupi!
-      specify_outcome_and_notify_group_html: Odredite ishod i pošaljite to svojoj grupi!
-      subject: Predlog zaključen - %{which}
-    proposal_outcome:
-      subject: Ishod predloga
-    proposal_blocked:
-      intro: Predlog koji pomažete je blokiran.
-      subject: Predlog blokiran - %{which}
+      specify_outcome_and_notify_group: 'Odredite ishod i pošaljite to svojoj grupi!'
+      specify_outcome_and_notify_group_html: 'Odredite ishod i pošaljite to svojoj grupi!'
+      subject: 'Predlog zaključen - %{which}'
     proposal_closing_soon:
       closes_on: Zatvara se
       closes_at: 'Zatvara se '
       closes_in: Ističe
       subject: 'Završava se kroz 24 časa: %{proposal_title}'
-      headline: "%{author}ov/in predlog u grupi %{group} uskoro ističe:"
+      headline: '%{author}ov/in predlog u grupi %{group} uskoro ističe:'
       summary: Rezime
     thread_mailer:
       footer_text: 'Odgovori na ovu poruku direktno ili je pogledaj na %{hostname}:'
-      reply_or_view_online_html: Odgovori na ovu poruku direktno ili <a href='%{url}'>pogledaj je na %{hostname}</a>.
+      reply_or_view_online_html: "Odgovori na ovu poruku direktno ili <a href='%{url}'>pogledaj je na %{hostname}</a>."
       turn_off_notifications_html: "<a href='%{url}'>Isključi ePoruke</a> za ovu diskusiju."
       turn_off_notifications_text: 'Isključi ePoruke za ovu diskusiju: %{url}'
       turn_on_notifications_html: "<a href='%{url}'>Uključi ePoruke za ovu diskusiju</a> da primaš dalje aktivnosti."
       turn_on_notifications_text: 'Uključi ePoruke da primaš dalje aktivnosti iz ove diskusije: %{url}'
-      change_email_preferences_html: Promeni svoja <a href='%{email_preferences_url}'>podešavanja o ePorukama</a> da prestaneš da primaš ove ePoruke.
+      change_email_preferences_html: "Promeni svoja <a href='%{email_preferences_url}'>podešavanja o ePorukama</a> da prestaneš da primaš ove ePoruke."
       change_preferences: 'Promeni svoja podešavanja o ePorukama:'
-      new_motion: "%{who} predlaže:"
+      new_motion: '%{who} predlaže:'
       motion_closing_soon: 'Predlog ističe kroz 24 časa:'
       proposal_closed: 'Predlog je istekao:'
-      specify_outcome_html: Vaš predlog je istekao. <a href='%{link}'>Odredite ishod</a> da izvestite ostale o rezultatu.
+      specify_outcome_html: "Vaš predlog je istekao. <a href='%{link}'>Odredite ishod</a> da izvestite ostale o rezultatu."
       specify_outcome: 'Vaš predlog je istekao. Odredite ishod da obavestite ostale o rezultatu:'
-      outcome_created: "%{who} je odredio/la ishod predloga:"
-      you_agreed: Vi %{past_tense_position}
+      outcome_created: '%{who} je odredio/la ishod predloga:'
+      you_agreed: 'Vi %{past_tense_position}'
   footer:
     about: O nama
     blog: Blog
@@ -113,7 +108,7 @@ sr:
       header: Nove grupe pokrenute u Lumio 1.0
       subtitle: 'Da kreirate novu grupu, morate preći na potpuno novu verziju Lumija:'
       switch_to_angular: Kreirajte grupu u novom Lumiju
-      helptext: Izgradili smo Lumio iznova. Možeš pročitati šta je novo <a href="/angular">ovde</a>.<br/>Možeš se vratiti na staru verziju u svakom trenutku.
+      helptext: 'Izgradili smo Lumio iznova. Možeš pročitati šta je novo <a href="/angular">ovde</a>.<br/>Možeš se vratiti na staru verziju u svakom trenutku.'
     header: Započni novu grupu
     form_error: Neka informacija nedostaje ili je netačna.
     name: Tvoje ime
@@ -122,95 +117,129 @@ sr:
     email_error: Neispravna adresa ePošte
     group_name: Naziv grupe
     group_description: Opis grupe
-    group_description_placeholder: Opiši svrhu svoje grupe tako da članovi grupe znaju zašto su ovde.
+    group_description_placeholder: Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.
     group_name_error: Naziv grupe je neophodan
-    pricing_html: Kroz 30 dana, pitaćemo te da odabereš <a href='%{link}' target='_blank'>cenovni plan</a>.
-    terms_html: Pokretanjem grupe, slažete se sa Loomio <a href='%{link}' target='_blank'>pravilima korišćenja</a>.
+    pricing_html: "Kroz 30 dana, pitaćemo te da odabereš <a href='%{link}' target='_blank'>cenovni plan</a>."
+    terms_html: "Pokretanjem grupe, slažete se sa Loomio <a href='%{link}' target='_blank'>pravilima korišćenja</a>."
     success:
-      header: Još malo pa gotovo! Proverite ePoštu.
-      email_delivered: Poslata Vam je jedna ePoruka na %{email}. Molim pratite vezu u njoj da postavite svoju novu grupu.
+      header: 'Još malo pa gotovo! Proverite ePoštu.'
+      email_delivered: 'Poslata Vam je jedna ePoruka na %{email}. Molim pratite vezu u njoj da postavite svoju novu grupu.'
       email_not_arrived: ePoruka nije stigla?
       please_hold: Molim sačekajte do 5 minuta da ePoruka stigne i uverite se da ste proverili i svoj spam direktorijum.
     start_making_decisions: 'Da počnete donositi odluke zajedno na Lumiju, kreirajte grupu besplatno:'
   pricing_page:
-    header: Cenovnik
     gift: Poklon
     standard: Standardno
     plus: Plus
-    free_trial_html: Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije neophodna.
+    free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
     get_started_for_free: Počni besplatno
     gift_body_html: |
-      <p>Za grupe koje nemaju budžet da plate pretplatu.</p>
+      <p>Za grupe koje nemaju budžet za plaćanje pretplate.</p>
       <p>Podržano donacijom, bez obaveze plaćanja.</p>
     gift_donation_ask: Pitaćemo članove Vaše grupe za donaciju.
     unlimited_members: neograničeno članova
-    unlimited_decisions: neograničene odluke
+    unlimited_decisions: neograničeno odluka
     email_support: podrška ePorukom
-    standard_price_html: 'US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
-
-'
+    standard_price_html: |
+      US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
     plus_body: 'Sve u Standardno, plus:'
     premium_support: premijum podrška
     custom_url: poseban URL
     usage_statistics: statistika korišćenja
-    plus_price_html: 'US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
-
-'
+    plus_price_html: |
+      US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
   password_reset:
-    email_guidelines_html: |
-      <p>Unesite adresu ePošte za svoj Loomio nalog u polje ispod i poslaćemo Vam vezu za resetovanje lozinke.</p>
-      <p>Ako se normalno prijavljujete preko Facebook, Google, Twitter ili Persona, unesite adresu ePošte koja je povezana sa tim nalogom.</p>
-    reset_email_timeframe: Molim sačekajte do 5 minuta da ePoruka stigne. Ako se ne pojavi, uverite se da ste proverili i svoj spam direktorijum.
-    length_restriction: Lozinke moraju biti najmanje 8 znakova duge.
-    forbidden_passwords: Česte lozinke kao što je "lozinka" su zabranjene kako bi Vaš nalog bio siguran.
-  introduction_thread:
-    title: Dobrodošli u %{group_name}
-    description: |
-      Odvojite momenat da predstavite sebe. Možda želite da kažete kako se uklapate sa ovom grupom ljudi.
+    email_guidelines_html: >
+      <p>Unesite adresu ePošte za svoj Loomio nalog u polje ispod i poslaćemo Vam
+      vezu za resetovanje lozinke.</p>
 
-      Ako imate jasne namere za ovu Lumio grupu, možete im naznačiti ovde tako da svako ima ideju o tome šta treba zajednički ostvariti.
+      <p>Ako se normalno prijavljujete preko Facebook, Google, Twitter ili
+      Persona, unesite adresu ePošte koja je povezana sa tim nalogom.</p>
+    reset_email_timeframe: 'Molim sačekajte do 5 minuta da ePoruka stigne. Ako se ne pojavi, uverite se da ste proverili i svoj spam direktorijum.'
+    length_restriction: Lozinke moraju biti najmanje 8 znakova duge.
+    forbidden_passwords: 'Česte lozinke kao što je "lozinka" su zabranjene kako bi Vaš nalog bio siguran.'
+  introduction_thread:
+    title: 'Dobrodošli u %{group_name}'
   how_it_works_thread:
     title: Kako Koristiti Lumio
-    description: |
+    description: >
       Dobrodošli na Lumio, mesto za zajedničko odlučivanje.
 
-      Ovo je jedan primer diskusije **nit**. Zašto ne upotrebite ovaj prostor da isprobate Lumijeve mogućnosti?
 
-      Trenutno čitate **kontekst** niti. Upotrebite ovaj prostor da iznesete pozadinske informacije koje su neophodne grupi za prodiktivnu diskusiju.
 
-      Tabla **predloga** je oblast gde donosite odluke. Možete iznositi predloge ili im se priključivati ovde.
+      Ovo je jedan primer diskusije **nit**. Zašto ne upotrebite ovaj prostor da
+      isprobate Lumijeve mogućnosti?
+
+
+
+      Trenutno čitate **kontekst** niti. Upotrebite ovaj prostor da iznesete
+      pozadinske informacije koje su neophodne grupi za prodiktivnu diskusiju.
+
+
+
+      Tabla **predloga** je oblast gde donosite odluke. Možete iznositi predloge
+      ili im se priključivati ovde.
+
+
 
       Tabla **aktivnosti** ispod prikazuje sve što se dogodilo u ovoj niti.
   first_comment:
-    body: |
+    body: >
       Zdravo narode, ja sam Lumio Bot Pomoćnik.
 
-      Ako želite privući pažnju određene osobe iz svoje grupe, napišite @ u polje komentara, praćeno njihovim imenom :)
+
+
+      Ako želite privući pažnju određene osobe iz svoje grupe, napišite @ u polje
+      komentara, praćeno njihovim imenom :)
+
+
 
       Evo nekih stvari koje možda želite da isprobate radi uhodavanja:
 
-      - Postavite [profile picture](/profile)
-      - Podesite [email settings](/email_preferences)
-      - Predstavite sebe grupi u  [Welcome to %{group_name} thread](%{thread_url})
 
-      Ako imate bilo kakva pitanja, prvo mesto koje trebate proveriti je [Lumio pomoćno uputstvo](http://help.loomio.org).
+
+      - Postavite [profile picture](/profile)
+
+      - Podesite [email settings](/email_preferences)
+
+      - Predstavite sebe grupi u  [Welcome to %{group_name}
+      thread](%{thread_url})
+
+
+
+      Ako imate bilo kakva pitanja, prvo mesto koje trebate proveriti je [Lumio
+      pomoćno uputstvo](http://help.loomio.org).
   first_proposal:
     name: 'Demonstrativni predlog: idemo!'
-    description: |
-      Ovo je **opis** predloga. Ovde možeš objasniti predloženi kurs akcije i dati dovoljno detalja tako da svako može doneti  odlično informisano odluku.
+    description: >
+      Ovo je **opis** predloga. Ovde možeš objasniti predloženi kurs akcije
+      i dati dovoljno detalja tako da svako može doneti  odlično informisano
+      odluku.
+
+
 
       Da se pridružiš šredlogu, odaberi jednu od ovih opcija:
 
-      - **Slažem se**: “Slažem se sa ovim i želim da ovo ide dalje.”
-      - **Uzdržavam se**: “Slažem se da grupa donese odluku bez mene.”
-      - **Ne slažem se**: “Mislim da možemo bolje.”
-      - **Blokiram**: “Imam snažne prigovore za ovaj predlog i NE želim da predlog ide dalje.”
 
-      Kada odabereš, dobišeć pitanje gde trebaš ukratko izneti svoj stav i objasniš zašto se tako osećaš. Možeš izmeniti svoju poziciju u bilo koje vreme sve dok je predlog još uvek otvoren odnosno na snazi.
+
+      - **Slažem se**: “Slažem se sa ovim i želim da ovo ide dalje.”
+
+      - **Uzdržavam se**: “Slažem se da grupa donese odluku bez mene.”
+
+      - **Ne slažem se**: “Mislim da možemo bolje.”
+
+      - **Blokiram**: “Imam snažne prigovore za ovaj predlog i NE želim da
+      predlog ide dalje.”
+
+
+
+      Kada odabereš, dobišeć pitanje gde trebaš ukratko izneti svoj stav
+      i objasniš zašto se tako osećaš. Možeš izmeniti svoju poziciju u bilo koje
+      vreme sve dok je predlog još uvek otvoren odnosno na snazi.
   contact_page:
     contact_us: Kontaktirajte nas
-    faq_prompt_html: Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima.
-    contact_information: Ako ne pronađete ono što tražite, možete videti kontakt informacije na dnu stranice.
+    faq_prompt_html: 'Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima.'
+    contact_information: 'Ako ne pronađete ono što tražite, možete videti kontakt informacije na dnu stranice.'
     contact_form: Kontakt formular
     labels:
       name: Tvoje ime
@@ -218,7 +247,9 @@ sr:
       message: Tvoja poruka
       submit: Pošalji poruku
     messages:
-      email_html: Popunite ovaj obrazac, ili pošaljite ePoruku na <a href='mailto:%{email}'>%{email}</a>
-      social_html: 'Možete nam se pridružiti na<br/><a href=''%{facebook}'' target=''_blank''>facebook-u</a>, <a href=''%{google}'' target=''_blank''>google+-u</a>, i <a href=''%{twitter}'' target=''_blank''>twitter-u</a>!
-
-'
+      email_html: "Popunite ovaj obrazac, ili pošaljite ePoruku na <a href='mailto:%{email}'>%{email}</a>"
+      social_html: >
+        Možete nam se pridružiti na<br/><a href='%{facebook}'
+        target='_blank'>facebook-u</a>, <a href='%{google}'
+        target='_blank'>google+-u</a>, i <a href='%{twitter}'
+        target='_blank'>twitter-u</a>!

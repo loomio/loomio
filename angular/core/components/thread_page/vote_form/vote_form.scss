@@ -25,5 +25,6 @@
 }
 
 .overlimit {
-  color: red;
+  color: $highlight-red;
+  padding-left: 10px;
 }

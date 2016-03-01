@@ -214,6 +214,7 @@ es:
     motion_closing_soon: 'La propuesta está a punto de cerrarse: <strong>{{proposal}}</strong>'
     motion_outcome_created: '<strong>{{name}}</strong> publicó un resultado para la propuesta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> ha actualizado el resultado de la propuesta <strong>{{proposal}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> aceptó tu invitación a unirse a <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: 'Danos tu opinión '
   vote_form:
@@ -364,7 +365,7 @@ es:
     group_logo: Logo del grupo
     new_photo: 'Nueva foto '
     description: 'Descripción del grupo '
-    description_placeholder: 'Usa este espacio para describir el propósito del grupo, de manera que los miembros sepan por qué están aquí.'
+    description_placeholder: 'Los coordinadores pueden usar esta área para describir el propósito del grupo, para que todos sepan para que están aquí. '
     discussions: Hilos
     discussions_placeholder: Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.
     members: 'Miembros '
@@ -548,8 +549,12 @@ es:
   invitation_form:
     invite_people: Invita gente
     group: Grupo
+    shareable_link: Enlace para compartir
+    copy_link: Copiar enlace
     email_addresses: Correo electrónico
     email_addresses_placeholder: 'ej. helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: 'Copia el enlace y envíalo a cualquier persona que quieras que se una a tu grupo. Hacer clic en el enlace les dará acceso inmediato. '
+    email_explanation: 'Alternativamente, ingresa las direcciones de email debajo y Loomio les enviará una invitación.'
     add_custom_message: 'Personaliza tu invitación,'
     add_custom_message_link: 'agrega un mensaje personalizado '
     custom_message: 'Mensaje personalizado '
@@ -559,16 +564,12 @@ es:
     add_members: Incluye miembros
     from_parent_group: 'de {{name}}.'
     send: Enviar
+    done: Listo
     messages:
       invitation_sent: 'Invitaciones enviadas. '
       invitations_sent: '{{count}} invitaciones enviadas.'
       no_invitations: 'Por favor verifica que la dirección de correo electrónico es correcta e intenta de nuevo. '
       max_invitations: 'Si quieres enviar mas de 100 invitaciones, utiliza un enlace.'
-  team_link_modal:
-    heading: Incluye gente
-    share_link: Comparte este enlace
-    caution: 'Precaución: cualquiera que tenga este enlace podrá unirse a tu grupo inmediatamente. Se cauteloso de con quien lo compartes :)'
-    copy_link: Copia el enlace
   add_members_modal:
     heading: 'Adherir miembros de {{name}}'
     add_members: 'Incluye miembros '
@@ -685,7 +686,6 @@ es:
       muted_aria_label: Mostrando hilos silenciados
       muted_description: Ver únicamente hilos que han sido silenciados
     aria_thread:
-      title: 'Título del hilo: {{title}}.'
       unread: '{{count}} elementos no leídos.'
       current_proposal: 'Propuesta actual: {{name}}.'
       you_voted: 'Has votado: {{position}}.'

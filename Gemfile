@@ -9,6 +9,8 @@ gem 'pg_search', '~> 1.0.4'
 gem 'haml-rails', '~> 0.9.0'
 gem 'devise', '~> 3.5.5'
 gem 'devise-i18n'
+gem 'doorkeeper'
+gem 'doorkeeper-i18n'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-google-oauth2', '~> 0.2.5'
 gem 'omniauth-facebook', '~> 2.0.1'
@@ -68,6 +70,7 @@ gem 'oj_mimic_json'
 gem 'simple-rss'
 gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
+gem 'safe_shell'
 
 group :development, :test do
   gem 'minitest'
@@ -84,6 +87,7 @@ group :development, :test do
   gem 'dotenv-rails', :require => 'dotenv/rails-now'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'gemrat'
 end
 
 group :development do

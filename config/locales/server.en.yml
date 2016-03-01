@@ -39,9 +39,7 @@ en:
       headlines: Headlines
       mark_as_read: Mark as read
       thanks_for_reading: Thanks for reading, have a great day!
-      click_here_to_mark_all_as_read_html: |
-        Here's what happened on Loomio yesterday.
-        Once you've read it, click <a href="%{link}">mark as read</a> to remove it from your Loomio Inbox.
+      heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
     comment_replied_to:
       context: '%{author_name} replied to your comment in the discussion "%{discussion_title}"'
@@ -130,6 +128,9 @@ en:
       email_not_arrived: Email has not arrived?
       please_hold: Please allow up to five 5 minutes for the email to arrive and be sure to check your spam folder.
     start_making_decisions: 'To start making decisions together on Loomio, set up a group for free:'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
   pricing_page:
     header: Plans
     gift: Gift

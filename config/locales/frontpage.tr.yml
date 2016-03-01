@@ -54,3 +54,31 @@ tr:
       gift:
         header: Hediye ekonomisi
         desc: Loomio kendi isteklerine göre ödeme yapanlar tarafından desteklenmektedir. Bu durum platformu reklamlardan arındırılmış ve parası olmayan her grup için erişilebilir kılar.
+  about_page:
+    our_story_1_html: "<h2>Hikayemiz</h2> <p>Loomio, Yeni Zelanda'da teknolojistler, aktivistler ve sosyal girişimcilerden oluşan bir ekip tarafından, işbirliğine dayalı karar vermek için geliştirilmiş bir online araçtır.</p>"
+    our_story_2_html: "<p>Loomio, 2011 yılındaki occupy hareketi sırasında, bir grup dahilindeki herkesi kapsayan kararlar alabilme ihtiyacı ile ortaya çıktı.</p><p>Biz, sadece ortak karar alma sürecinin dönüşümsel potansiyelini deneyimlemekle kalmadık, yanı sıra onun ciddi sınırlamalarını da deneyimledik: Eğer herkes karar alma sürecine katılmak için aynı anda aynı yerde olamazsa, bu süreç asla ölçeklenemez.</p><p>Bu soruna bir çözüm oluşturmak için yola koyulduk: Nerede olurlarsa olsunlar, herkesin interneti kullanarak, diğerleri ile birlikte karar almalarını kolaylaştırdık.</p><p>Adını Loomio koyduk, farklı bakış açılarını birlikte bir tezgahta dokumak gibi :)</p><p>Şimdiye kadar 75.000 'den fazla kişi Loomio üzerinde birlikte 25.000'den fazla karar aldı.</p>"
+    mission_html: "<h2>Misyonumuz</h2><p>Biz özünde sosyal amacı olan bir misyon odaklı organizasyonuz: Loomio, herkes için, her nerede olurlarsa olsunlar, hayatlarını etkileyen kararlara katılmalarini kolaylaştırmak için geliştirildi.</p> <p>Biz, etkimizi kararlara katılan kişi ve grupların sayısı VE Loomio'yu kendi topluluklarında büyük işler yapmak için kullanan kişilerin ilham hikayeleriyle ölçüyoruz.</p>"
+    advisors_html: '<h2> Danışmanlar </h2> <p>Biz, Uluslararası Danışma Konseyi ile, demokrasinin ve teknolojinin baz en parlak beyinleri tarafından destekleniyoruz.</p>'
+    sascha_bio_html: "<a href='http://thexlab.org/' target='_blank'>X-Lab</a> kurucu ortağı & <a href='http://www.newamerica.org/oti/' target='_blank'>Open Technology Institute</a>"
+    katherine_bio_html: "<a href='http://www.aol.com/' target='_blank'>AOL</a> Eski Kıdemli Başkan Yardımcısı, <a href='http://www.rootcapital.org/' target='_blank'>Root Capital</a> Başkan Yardımcısı"
+    joi_bio_html: '<a href="http://www.media.mit.edu/" target="_blank">MIT Media Lab</a> Direktörü, <a href="https://creativecommons.org/" target="_blank">Creative Commons</a> kurucu ortağı, <a href="https://www.mozilla.org/en-US/foundation/" target="_blank">Mozilla Foundation</a> kurul üyesi'
+    rushkoff_bio_html: '<a href="http://www.rushkoff.com/" target="_blank">En çok satan yazar</a>, CNN spikeri, medya teorisyeni'
+    monahan_bio_html: '<a href="http://inflection.com/" target="_blank">Inflection</a>, <a href="http://www.namaste.org/" target="_blank">Namaste Foundation</a> kurucu ortakları'
+    team_html: '<h2>Takım</h2> <p>Loomio Yeni Zelanda merkezli, kooperatif bir sosyal kuruluştur. Biz, grup sürecinde derin uzmanlığı olan ve açık teknoloji geliştirmesine tutkulu bir ekibiz. </p>'
+    ben_bio: 'Kurucu ortak ve direktör, toplum organizatörü, kolektif zeka araştırmacısı'
+    mj_bio: 'ABD operasyonları yöneticisi, Brown Üniversitesi Sosyal işletmede fahri profesör'
+    rob_bio: 'Kurucu ortak ve baş yazılım mimarı, erişilebilirlik, kullanıcı deneyimi'
+    jon_bio: 'Kurucu ortak ve yazılım geliştiricisi, kullanıcı deneyimi tasarımcısı, müzisyen'
+    chelsea_bio: 'Kolaylaştırma uzmanı, işbirliği koçu,  Generation Zero kurucu ortağı'
+    jesse_bio: 'Yazılım geliştiricisi, tasarım, erişilebilirlik, bisiklet gurusu'
+    mix_bio: 'Yazılım geliştiricisi, çeviri uzmanı, eğitim, grup süreci'
+    malcolm_bio: 'Organizasyonel sistemler, süreç tasarımı'
+    simon_bio: 'Veri analizi, görselleştirme, yazılım geliştirme, iletişim'
+    alanna_bio: 'Kurucu ortak ve danışman, yönetim eylemci, Enspiral Vakfı direktörü'
+    rich_bio: 'Kurucu ortak ve yazılım geliştiricisi, aktivist, açık kaynak donanım bilgisayar korsanı'
+    viv_bio: 'Kurucu ortak, Loomio Kurulu Başkanı, UNICEF Yeni Zelanda İcra Direktörü '
+    aaron_bio: 'Kurucu ortak ve yazılım geliştiricisi, front-end uzmanı'
+    hannah_bio: 'Yazılım geliştirici, kullanıcı desteği, illüstratör, yaratıcı eylemci'
+    matt_bio: 'Tasarımcı, veri analizi, iş geliştirme'
+    james_bio: 'Yazılım geliştiricisi, açık kaynak topluluğu koordinatörü, cesur maceraperest'
+    michael_bio: 'İş geliştirme, işbirliği koçu, motosikletçi'

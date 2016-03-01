@@ -27,15 +27,19 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
-    copied: 'Copied'
+    copy: 'Copy text'
+    copied: 'Copied to clipboard'
     action:
+      back: 'Back'
       close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'
       update_settings: 'Update settings'
       reply: 'Reply'
       edit: 'Edit'
+      remove: 'Remove'
       like: 'Like'
+      back: 'Back'
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
@@ -46,6 +50,7 @@ en:
       loading: 'Loading'
       translate: 'Translate'
       translated: 'Translation by Bing Translator'
+      upload: 'Upload'
       uploading: 'Uploading'
     formatting_help:
       label: 'Formatting help'
@@ -218,6 +223,8 @@ en:
     header: "Notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
+    motion_closed: "Proposal closed: <strong>{{proposal}}</strong>"
+    publish_outcome: "Publish an outcome"
     motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{proposal}}</strong>"
     motion_closed_by_expiry: "Proposal has closed <strong>{{proposal}}</strong>"
     new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{proposal}}</strong>"
@@ -232,6 +239,8 @@ en:
     motion_closing_soon: "Proposal is closing soon: <strong>{{proposal}}</strong>"
     motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
+    invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{group}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{group}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
@@ -239,6 +248,7 @@ en:
   vote_form:
     heading: Have your say
     no_statement: No statement.
+    statement_over_limit: 'Too many words! Short position statements let everyone quickly catch up on the proposal.'
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
@@ -408,7 +418,7 @@ en:
     group_logo: 'Group logo'
     new_photo: 'new photo'
     description: 'Group description'
-    description_placeholder: 'Use this place to describe the purpose of the group so your members know why they are here.'
+    description_placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'
@@ -455,6 +465,7 @@ en:
       private: 'Privacy: This group is only visible to members'
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'Privacy: This group is visible on the web'
+      aria_label: 'Group privacy: {{privacy}}'
 
   confirm_gift_plan_modal:
     heading: Gift plan selected
@@ -755,7 +766,6 @@ en:
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     aria_thread:
-      title: 'Thread title: {{title}}.'
       unread: '{{count}} unread items.'
       current_proposal: 'Current proposal: {{name}}.'
       you_voted: 'You voted: {{position}}.'
@@ -893,6 +903,10 @@ en:
     title: 'updated the thread title: <span>{{title}}</span>'
     description: 'updated the thread context'
     description_title: 'updated the thread title and context'
+    private: 'updated the thread privacy to'
+    public_to_private: 'private'
+    private_to_public: 'public'
+    description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
     contact_us: 'Contact Us'
@@ -1069,3 +1083,49 @@ en:
   emoji_picker:
     search: "Find an emoji..."
     no_emojis_found: "No emojis found for '{{term}}'!"
+
+  authorized_apps_page:
+    title: Authorized Apps
+    no_applications: "You haven't authorized any third party apps yet."
+    notice: "You've given the following third-party apps permission to use your account. Click 'Revoke' to disable them."
+    revoke: Revoke
+
+  registered_apps_page:
+    title: Registered Applications
+    no_applications: "You don't have any OAuth applications yet! Click below to create one."
+    name: Name
+    redirect_uris: Redirect URIs
+    create_new_application: New Application
+
+  registered_app_page:
+    uid: Application ID
+    secret: Application Secret
+
+  registered_app_form:
+    new_application_title: New Application
+    edit_application_title: Update Application
+    name_label: Name
+    name_placeholder: What is your application called?
+    redirect_uri_label: Redirect Uris
+    redirect_uri_placeholder: "The callback uri for your application, Eg: https://myapplication.com/loomio/callback"
+    redirect_uri_note: (one line per URI, use 'urn:ietf:wg:oauth:2.0:oob' for local tests)
+    new_application_submit: Create Application
+    edit_application_submit: Update Application
+    messages:
+      logo_changed: Logo updated.
+      created: "Created '{{name}}'"
+      updated: "Updated '{{name}}'"
+
+  remove_app_form:
+    title: Deactivate {{name}}
+    question: "Are you sure you want to deactivate the application '{{name}}'? This action cannot be undone."
+    submit: Deactivate
+    messages:
+      success: "'{{name}}' was successfully deactivated"
+
+  revoke_app_form:
+    title: Revoke access for {{name}}
+    question: "Are you sure you disallow '{{name}}' to use your account?"
+    submit: Revoke Access
+    messages:
+      success: "'{{name}}' can no longer use your account."

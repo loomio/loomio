@@ -9,7 +9,7 @@ angular.module('loomioApp').directive 'emojiPicker', ->
     $scope.search = (term) ->
       $scope.hovered = {}
       $scope.source = if term
-        _.take _.filter(EmojiService.source, (emoji) -> emoji.match(///#{term}///i)), 15
+        _.take _.filter(EmojiService.source, (emoji) -> emoji.match(///^:#{term}///i)), 15
       else
         EmojiService.defaults
     $scope.search()

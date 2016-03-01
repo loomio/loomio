@@ -1,17 +1,18 @@
----
 mk:
   email:
+    group_email:
+      intro: '%{who} направи најава во %{group}:'
     reply_to_this_discussion: Врати на дискусијата
     to_join_discussion:
-      subject: "%{who} сака да се приклучиш во дискусија на Loomio"
+      subject: '%{who} сака да се приклучиш во дискусија на Loomio'
       content: 'Треба да си поканет/а за да учествуваш во дискусијата: %{discussion}'
-      message_intro: "%{who} кажува:"
+      message_intro: '%{who} кажува:'
       link: Приклучи се на дискусијата
     to_join_group:
-      subject: "%{member} те покани да се приклучиш во %{group_name} на Loomio"
+      subject: '%{member} те покани да се приклучиш во %{group_name} на Loomio'
     user_added_to_a_group:
-      subject: "%{who} те додаде во %{which_group}"
-      content: "%{who} те додаде во %{which_group} на Loomio. Кликни овде за да одиш во групата:"
+      subject: '%{who} те додаде во %{which_group}'
+      content: '%{who} те додаде во %{which_group} на Loomio. Кликни овде за да одиш во групата:'
     view_comment: Кликни овде за да го видиш коментарот на Loomio
     view_discussion: Кликни овде за да ја видиш дискусијата
     view_group: Кликни овде за да ја видиш групата на Loomio
@@ -25,27 +26,20 @@ mk:
     missed_yesterday:
       subject: Вчера на Loomio
       mark_as_read: Означи го како прочитано
-    group_email:
-      intro: "%{who} направи најава во %{group}:"
     group_membership_approved:
-      intro: Твоето барање за пристап во групата '%{group_name}' на Loomio беше прифатено.
-      subject: Членството е одобрено
+      intro: "Твоето барање за пристап во групата '%{group_name}' на Loomio беше прифатено."
     invitation:
-      hi: Здраво %{name},
+      hi: 'Здраво %{name},'
       thanks: |
         Ти благодариме!
         Тимот на Loomio
     membership_request:
-      subject: "%{who} побара да се приклучи во %{which_group}"
+      subject: '%{who} побара да се приклучи во %{which_group}'
       view_group: Можете да го одобрите или одбиете барањето овде
     mentioned:
-      subject: "%{who} те спомена во %{which} групата на Loomio"
+      subject: '%{who} те спомена во %{which} групата на Loomio'
     proposal_closed:
-      subject: Предлогот е затворен - %{which}
-    proposal_outcome:
-      subject: Исход на предлогот
-    proposal_blocked:
-      subject: Предлогот е блокиран - %{which}
+      subject: 'Предлогот е затворен - %{which}'
     proposal_closing_soon:
       closes_on: Се затвора на
       closes_at: Се затвора во
@@ -64,10 +58,9 @@ mk:
     header: Започни нова група
     name: Твоето име
     group_name: Име на групата
+    group_description: Опис на групата
     success:
-      header: Речиси си готов/а! Провери ја твојата електронска пошта.
-  pricing_page:
-    header: Ценовник
+      header: 'Речиси си готов/а! Провери ја твојата електронска пошта.'
   contact_page:
     contact_us: Контактирајте не
     labels:
@@ -76,4 +69,4 @@ mk:
       message: Твојата порака
       submit: Испрати порака
     messages:
-      email_html: Пополни ја формава, или испрати email до <a href='mailto:%{email}'>%{email}</a>
+      email_html: "Пополни ја формава, или испрати email до <a href='mailto:%{email}'>%{email}</a>"

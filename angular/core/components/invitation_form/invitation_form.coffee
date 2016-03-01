@@ -24,7 +24,8 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       $scope.addCustomMessageClicked = true
 
     $scope.invitees = ->
-      $scope.form.emails.match(/[^\s<,]+?@[^>,\s]+/g) or []
+      # something@something.something where something does not include ; or , or < or >
+      $scope.form.emails.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g) or []
 
     $scope.maxInvitations = ->
       $scope.invitees().length > 100

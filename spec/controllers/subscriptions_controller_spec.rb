@@ -8,7 +8,7 @@ describe SubscriptionsController do
     subscription: {
       id: subscription.id,
       product: {},
-      customer: { reference: group.id }
+      customer: { reference: "#{group.id}|#{Time.now.to_i}" }
     }
   }.with_indifferent_access }
 

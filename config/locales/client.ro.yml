@@ -345,8 +345,6 @@ ro:
       muted: Dezactivat
       muted_aria_label: Discutii dezactivate in curs
       muted_description: Vezi doar discutii care au fost dezactivate
-    aria_thread:
-      title: 'Titlul discutiei: {{title}}.'
     threads_from:
       group: Discutii de la
       starred: Discutii marcate cu steluta

@@ -26,7 +26,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
         if options.flashSuccess?
           options.flashSuccess = options.flashSuccess() if typeof options.flashSuccess is 'function'
           FlashService.success options.flashSuccess, calculateFlashOptions(options.flashOptions)
-        scope.$close()                                          if typeof scope.$close is 'function'
+        scope.$close()                                          if !options.skipClose? and typeof scope.$close is 'function'
         options.successCallback(response)                       if typeof options.successCallback is 'function'
 
     failure = (scope, model, options) ->

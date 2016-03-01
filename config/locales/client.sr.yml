@@ -356,7 +356,6 @@ sr:
     group_logo: Logo grupe
     new_photo: nova fotografija
     description: Opis grupe
-    description_placeholder: Koristi ovo mesto da opišeš svrhu grupe tako da tvoji članovi znaju zašto su ovde.
     discussions: Niti
     discussions_placeholder: Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.
     members: Članovi
@@ -534,10 +533,6 @@ sr:
     messages:
       invitation_sent: Poziv poslat.
       invitations_sent: '{{count}} pozivnica poslato.'
-  team_link_modal:
-    heading: Dodaj ljude
-    share_link: Prosledi ovu vezu
-    copy_link: Kopiraj vezu
   add_members_modal:
     heading: 'Dodaj ljude iz {{name}}'
     add_members: Dodaj članove
@@ -653,7 +648,6 @@ sr:
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Vidi samo niti koje su utišane
     aria_thread:
-      title: 'Naslov niti: {{title}}.'
       unread: '{{count}} nepročitanih stavki.'
       current_proposal: 'Trenutni predlog: {{name}}.'
       you_voted: 'Vaš glas: {{position}}.'

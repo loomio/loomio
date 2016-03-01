@@ -17,6 +17,6 @@ ModelLocator = Struct.new(:model, :params) do
   private
 
   def resource_class
-    @resource_class ||= model.to_s.humanize.constantize
+    @resource_class ||= model.to_s.camelize.constantize
   end
 end
