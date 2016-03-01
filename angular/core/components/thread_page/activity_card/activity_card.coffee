@@ -1,9 +1,9 @@
 angular.module('loomioApp').directive 'activityCard', ->
-  scope: {discussion: '='}
+  scope: {discussion: '=', activeCommentId: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $rootScope, $location, $document, $timeout, Records, AppConfig, LoadingService) ->
+  controller: ($scope, $rootScope, Records, AppConfig, LoadingService) ->
 
     $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'activityCard', ->
       $scope.discussion.markAsRead(0)
 
       $scope.loadEventsForwards(
-        commentId: $location.search().comment
+        commentId: $scope.activeCommentId
         sequenceId: $scope.initialLoadSequenceId()).then ->
         $rootScope.$broadcast 'threadPageEventsLoaded'
 
