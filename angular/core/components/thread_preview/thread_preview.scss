@@ -33,11 +33,17 @@
 .thread-preview__mute{
   @include lmoBtnDefault;
   @include lmoBtnSm;
-}
-
-.thread-preview__mute{
-  @include lmoBtnDefault;
-  @include lmoBtnSm;
+  margin-left: 5px;
+  padding: 5px 13px;
+  .fa-volume-off{
+    padding-right: 9px;
+  }
+  .fa-times{
+    font-size: 70%;
+    position: relative;
+    right: 10px;
+    bottom: 1px;
+  }
 }
 
 .thread-preview__link {
@@ -148,17 +154,4 @@
 
 .thread-preview__actions button {
   width: 40px;
-}
-
-.thread-preview__mute{
-  margin-left: 5px;
-  .fa-volume-off{
-    padding-right: 9px;
-  }
-  .fa-times{
-    font-size: 70%;
-    position: relative;
-    right: 10px;
-    bottom: 1px;
-  }
 }

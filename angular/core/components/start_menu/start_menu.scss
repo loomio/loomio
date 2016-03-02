@@ -34,8 +34,19 @@
   @include box_shadow(2);
   border-radius: 100%;
   cursor: pointer;
+  outline: 0;
   &:hover {
     @include box_shadow(3);
+  }
+  .fa-group {
+    position: relative;
+    bottom: 1px;
+    right: 2px;
+  }
+  .fa-times {
+    position: relative;
+    bottom: 3px;
+    right: 1px;
   }
 }
 
