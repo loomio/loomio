@@ -9,6 +9,6 @@
       %ul.selector-list
         %li.selector-list-header{translate: "notifications.header", role: "heading"}
         %li.selector-list-item.media{ng-class: "{'lmo-active': !notification.viewed}", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
-          %a.selector-list-item-link{lmo-href-for: "notification.relevantRecord()"}
+          %a.selector-list-item-link{lmo-href-for: "notification.relevantRecord()", ng-click: "broadcastThreadEvent()"}
             .blank{ng-include: "'generated/components/notifications/' + notification.kind() + '.html'"}
       %loading{ng-if: "loading()"}
