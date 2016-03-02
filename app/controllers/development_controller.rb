@@ -79,15 +79,6 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
-  def setup_discussion_with_many_comments
-    test_group.add_member! emilio
-    40.times do |i|
-      comment = FactoryGirl.build(:comment, discussion: test_discussion, body: "#{i} bottles of beer on the wall")
-      CommentService.create(comment: comment, actor: emilio)
-    end
-    redirect_to discussion_url(test_discussion, from: 5)
-  end
-
   def setup_group_on_trial_admin
     sign_in patrick
     group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)

@@ -30,8 +30,8 @@ angular.module('loomioApp').directive 'notifications', ->
                                .applyFind(viewed: { $ne: true })
     $scope.unreadNotifications = -> unreadView.data()
 
-    $scope.broadcastThreadEvent = ->
-      $rootScope.$broadcast 'threadPageEventsLoaded'
+    $scope.broadcastThreadEvent = (notification) ->
+      $rootScope.$broadcast 'threadPageEventsLoaded', notification.event()
 
     $scope.loading = ->
       !AppConfig.notificationsLoaded
