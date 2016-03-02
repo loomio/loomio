@@ -1050,7 +1050,7 @@ en:
     enable:
       invite: 'Try the new Loomio!'
       title: 'Try the new Loomio'
-      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome before we release it to the general public."
+      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome!"
       body_html: |
         <p></p>
         <h3>What's the difference anyway?</h3>
@@ -1064,9 +1064,8 @@ en:
           </ul>
         </p>
 
-        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions. You can change back to the old interface at any time.</p>
-        <p>Things will be changing slightly every day as we implement the feedback we get during this time. Some less frequently used features may not be there yet.</p>
-        <p>There is a link "Switch back to the old Loomio" in the bottom left corner of the new app. Click that link and you can switch back to the Loomio you're more used to. There is also a feedback form for you to enter any feedback you have.</p>
+        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions.</p>
+        <p>There is a link to "Give feedback" in the bottom left corner. You'll also see a link there to "Switch back to old Loomio", which will remain available for the next little while.</p>
         <p>We really look forward to hearing your feedback, thanks for your time and support.</p>
 
       button_text: 'Enable the new Loomio'
