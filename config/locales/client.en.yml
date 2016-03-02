@@ -906,6 +906,8 @@ en:
     private: 'updated the thread privacy to'
     public_to_private: 'private'
     private_to_public: 'public'
+    private_title: 'updated the thread title and privacy'
+    description_private: 'updated the thread context and privacy'
     description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
