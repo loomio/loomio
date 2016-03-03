@@ -27,7 +27,6 @@ ko:
     more_help: 도움말 자세히
     models:
       proposal: 제안
-    copied: 복사됨
     action:
       close: 닫기
       save: 저장

@@ -27,16 +27,18 @@ zh-TW:
     more_help: 詳細說明
     models:
       proposal: 提案
-    copied: 已複製
+    copy: 複製文字
+    copied: 已經複製到剪貼簿
     action:
-      back: 返回
       close: 關閉
       save: 儲存
       save_changes: 儲存變更
       update_settings: 更新設定
       reply: 回覆
       edit: 編輯
+      remove: 移除
       like: 讚
+      back: 返回
       unlike: 收回讚
       update: 更新
       cancel: 取消
@@ -47,6 +49,7 @@ zh-TW:
       loading: 讀取中
       translate: 翻譯
       translated: 採用 Bing 翻譯
+      upload: 上傳
       uploading: 正在上傳
     formatting_help:
       label: 格式化說明
@@ -201,6 +204,8 @@ zh-TW:
     header: 通知
     new_discussion: '<strong>{{name}}</strong> 啟動了 <strong>{{discussion}}</strong> 討論串'
     new_motion: '<strong>{{name}}</strong> 建立了一個提案 <strong>{{proposal}}</strong>'
+    motion_closed: '定案的提案：<strong>{{proposal}}</strong>'
+    publish_outcome: 發表成果
     motion_closed_by_user: '<strong>{{name}}</strong> 定案了一個提案 <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: '提案已定案 <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} 在提案中 <strong>{{proposal}}</strong>'
@@ -216,6 +221,7 @@ zh-TW:
     motion_outcome_created: '<strong>{{name}}</strong> 公佈了提案 <strong>{{proposal}}</strong> 的結果'
     motion_outcome_updated: '<strong>{{name}}</strong> 已更新了提案 <strong>{{proposal}}</strong> 的結果'
     invitation_accepted: '<strong>{{name}}</strong> 接受了您將其加入 <strong>{{group}}</strong> 的邀請'
+    new_coordinator: '<strong>{{name}}</strong> 讓您成為 <strong>{{group}}</strong> 群組的協調者'
   position_buttons_panel:
     heading: 擁有發言權
   vote_form:
@@ -809,6 +815,10 @@ zh-TW:
     title: '已更新討論串標題：<span>{{title}}</span>'
     description: 已更新討論串內容
     description_title: 已更新討論串標題與內容
+    private: 更新討論串隱私設定為
+    public_to_private: 私人
+    private_to_public: 公開
+    description_private_title: 更新討論串標題、內容與隱私設定
   contact_message_form:
     contact_us: 聯絡我們
     name_label: 您的大名
@@ -971,3 +981,43 @@ zh-TW:
   emoji_picker:
     search: 找到一個 emoji...
     no_emojis_found: "找不到 '{{term}}' 的 emoji！"
+  authorized_apps_page:
+    title: 已授權的應用程式
+    no_applications: 您尚未授權任何第三方的應用程式。
+    notice: 您已經給予下列這些第三方應用程式使用您的帳號的權限。點選「撤銷」以停用它們。
+    revoke: 撤銷
+  registered_apps_page:
+    title: 已註冊的應用程式
+    no_applications: 您尚未有任何 OAuth 應用程式！點選下面這裡以建立一個。
+    name: 名稱
+    redirect_uris: 重新導向 URI
+    create_new_application: 新應用程式
+  registered_app_page:
+    uid: 應用程式 ID
+    secret: 應用程式祕密
+  registered_app_form:
+    new_application_title: 新應用程式
+    edit_application_title: 更新應用程式
+    name_label: 名稱
+    name_placeholder: 您的應用程式叫什麼？
+    redirect_uri_label: 重新導向 URI
+    redirect_uri_placeholder: '您應用程式呼叫的網址。例如：https://myapplication.com/loomio/callback'
+    redirect_uri_note: '（每個 URI 一行，在本機測試使用「urn:ietf:wg:oauth:2.0:oob」）'
+    new_application_submit: 建立應用程式
+    edit_application_submit: 更新應用程式
+    messages:
+      logo_changed: 標誌已更新
+      created: '建立「{{name}}」'
+      updated: '已更新「{{name}}」'
+  remove_app_form:
+    title: '停用「{{name}}」'
+    question: '您確定要停用應用程式「{{name}}」？這個動作無法復原。'
+    submit: 停用
+    messages:
+      success: '「{{name}}」已成功停用'
+  revoke_app_form:
+    title: '撤銷{{name}}的存取權'
+    question: '您確定您要取消允許「{{name}}」使用您的帳號？'
+    submit: 撤銷存取權
+    messages:
+      success: '「{{name}}」已無法使用您的帳號'

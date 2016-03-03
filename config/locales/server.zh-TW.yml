@@ -38,7 +38,7 @@ zh-TW:
       headlines: 頭條
       mark_as_read: 設為已讀
       thanks_for_reading: 感謝您的閱讀，祝您有美好的一天！
-      click_here_to_mark_all_as_read_html: "這些是昨日 Loomio 發生的大小事。 \n一旦您讀過，點擊<a href=\"%{link}\">設為已讀</a>就能從您的 Loomio 收件箱中移除。 \n"
+      heres_what_happened: 這裡是 Loomio 上昨天發生的事情。
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
     comment_replied_to:
       context: '%{author_name} 在討論串「%{discussion_title}」回覆您的意見'
@@ -127,6 +127,9 @@ zh-TW:
       email_not_arrived: 電子郵件尚未抵達？
       please_hold: 請允許它在五分鐘內到達，並同時也請檢查您的垃圾信資料夾。
     start_making_decisions: 要開始在 Loomio 上共同作出決策，先免費設定一個群組：
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: 我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。
   pricing_page:
     header: 計畫
     gift: 禮物方案

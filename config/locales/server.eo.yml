@@ -36,11 +36,6 @@ eo:
       subject: Hieraŭ en Loomio
       mark_as_read: Marki kiel legita
       thanks_for_reading: 'Dankon por legi, havu bonegan tagon!'
-      click_here_to_mark_all_as_read_html: >
-        Jen kio okazis en Loomio hieraŭ.
-
-        Post legado, klaku <a href="%{link}">marki kiel legita</a> por forviŝi
-        ĝin de via Loomio-poŝtkesto.
       marked_as_read_success: Ĉio de la retpoŝtaĵo markiĝis kiel legita
     group_membership_approved:
       intro: "Via peto aliĝi al la grupo '%{group_name}' en Loomio estas aprobita."

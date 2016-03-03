@@ -37,11 +37,6 @@ ro:
       headlines: Titluri
       mark_as_read: Marcheaza ca citit
       thanks_for_reading: 'Multumesc pentru lectura, o zi buna!'
-      click_here_to_mark_all_as_read_html: >
-        Vezi aici ce s-a intamplat pe Loomio ieri.
-
-        Dupa ce ai citit, click <a href="%{link}">marcheaza ca citit</a> pentrun
-        a indeparta din Loomio-mesaje primite.
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
     comment_replied_to:
       context: '%{author_name} a raspuns comentariului tau in "%{discussion_title}"'

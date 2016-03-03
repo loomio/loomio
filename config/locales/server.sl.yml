@@ -37,11 +37,6 @@ sl:
       headlines: Razprave
       mark_as_read: Označi kot prebrano
       thanks_for_reading: 'Super, prebral/a si vse novice. Lep dan!'
-      click_here_to_mark_all_as_read_html: >
-        Tole se je na Loomiu dogajalo včeraj.
-
-        Ko prebereš, klikni <a href="%{link}">označi kot prebrano</a>, da
-        sporočilo izbrišeš iz svojega nabiralnika.
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
     group_membership_approved:
       intro: "Tvoja prošnja za dostop do skupine '%{group_name}' na Loomiu je bila odobrena."

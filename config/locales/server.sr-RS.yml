@@ -37,11 +37,6 @@ sr-RS:
       headlines: Наслови
       mark_as_read: Означи као прочитано
       thanks_for_reading: 'Хвала на читању, пријатан дан!'
-      click_here_to_mark_all_as_read_html: >
-        Ево шта се догодило на Лумију јуче.
-
-        Када прочитате, шкљоцните <a href="%{link}">означи као прочитано</a> да
-        уклоните из свог Лумио сандучета са порукама.
       marked_as_read_success: Све еПоруке су означене као прочитане
     comment_replied_to:
       context: '%{author_name} је одговорио/ла на твој коментар у дискусији "%{discussion_title}"'

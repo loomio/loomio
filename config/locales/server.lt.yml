@@ -1,5 +1,9 @@
 lt:
+  email:
+    missed_yesterday:
+      mark_as_read: Žymėti kaip skaitytą
   footer:
+    about: Apie
     blog: Tinklaraštis
     contact: Susisiekite
     help: Pagalba

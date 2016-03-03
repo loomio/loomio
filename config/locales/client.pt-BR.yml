@@ -27,16 +27,18 @@ pt-BR:
     more_help: Mais ajuda
     models:
       proposal: Proposta
-    copied: Copiado
+    copy: Copiar texto
+    copied: Copiado para o clipboard
     action:
-      back: Voltar
       close: Encerrar
       save: Salvar
       save_changes: Salvar mudanças
       update_settings: Atualizar configurações
       reply: Responder
       edit: Editar
+      remove: Remover
       like: Curtir
+      back: Voltar
       unlike: Curtir (desfazer)
       update: Atualização
       cancel: Cancelar
@@ -47,6 +49,7 @@ pt-BR:
       loading: Carregando
       translate: Traduzir
       translated: Tradução do Bing Tradutor
+      upload: Carregar
       uploading: Carregando
     formatting_help:
       label: Ajuda para formatação
@@ -218,6 +221,7 @@ pt-BR:
     motion_outcome_created: '<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>'
     invitation_accepted: '<strong>{{name}}</strong> aceitou o seu convite para integrar <strong>{{group}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> colocou você como coordenador de <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
@@ -1018,3 +1022,43 @@ pt-BR:
   emoji_picker:
     search: Encontre um emoji...
     no_emojis_found: "Nenhum emoji encontrado para '{{term}}'!"
+  authorized_apps_page:
+    title: Apps Autorizados
+    no_applications: Você ainda não autorizou nenhum aplicativo de terceiros.
+    notice: 'Você deu a seguinte permissão para aplicativos de terceiros usarem a sua conta. Clique em "Revogar" para desativá-los.'
+    revoke: Revogar
+  registered_apps_page:
+    title: Apps Registrados
+    no_applications: 'Você ainda não tem nenhum aplicativo OAuth! Clique abaixo para criar um.'
+    name: Nome
+    redirect_uris: Redirecionar URIs
+    create_new_application: Aplicativo Novo
+  registered_app_page:
+    uid: ID do Aplicativo
+    secret: Segredo do Aplicativo
+  registered_app_form:
+    new_application_title: Novo Aplicativo
+    edit_application_title: Atualizar Aplicativo
+    name_label: Nome
+    name_placeholder: Como se chama o seu aplicativo?
+    redirect_uri_label: Redirecionar Uris
+    redirect_uri_placeholder: 'O URI de retorno de chamada para o seu aplicativo, e.g.: https://myapplication.com/loomio/callback'
+    redirect_uri_note: "(uma linha por URI, use 'urn:ietf:wg:oauth:2.0:oob' para testes locais)"
+    new_application_submit: Criar Aplicativo
+    edit_application_submit: Atualizar Aplicativo
+    messages:
+      logo_changed: Logo atualizado.
+      created: "Criado '{{name}}'"
+      updated: "Atualizado '{{name}}'"
+  remove_app_form:
+    title: 'Desativado {{name}}'
+    question: "Tem certeza de que deseja desativar o aplicativo '{{name}}'? Essa ação não pode ser desfeita."
+    submit: Desativar
+    messages:
+      success: "'{{name}}' foi desativado com sucesso"
+  revoke_app_form:
+    title: 'Revogar acesso para {{name}}'
+    question: "Tem certeza de que deseja tirar a permissão de '{{name}}' para usar a sua conta?"
+    submit: Revogar Acesso
+    messages:
+      success: "'{{name}}' não poderá mais usar a sua conta."

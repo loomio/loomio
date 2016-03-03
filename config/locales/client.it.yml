@@ -27,7 +27,6 @@ it:
     more_help: Altro supporto
     models:
       proposal: Proposta
-    copied: Copiato
     action:
       close: Chiudi
       save: Salva
@@ -36,6 +35,7 @@ it:
       reply: Rispondi
       edit: Modifica
       like: Like
+      back: Indietro
       unlike: Unlike
       update: Aggiorna
       cancel: Annulla
@@ -200,6 +200,8 @@ it:
     header: Notifiche
     new_discussion: '<strong>{{name}}</strong> ha creato una discussione <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> ha creato una proposta <strong>{{proposal}}</strong>'
+    motion_closed: 'Proposta chiusa: <strong>{{proposal}}</strong>'
+    publish_outcome: Pubblica un risultato
     motion_closed_by_user: '<strong>{{name}}</strong> ha chiuso la proposta <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'La proposta <strong>{{proposal}}</strong> è chiusa.'
     new_vote: '<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{proposal}}</strong>'
@@ -220,6 +222,7 @@ it:
   vote_form:
     heading: Dite la vostra
     no_statement: Nessuna dichiarazione
+    statement_over_limit: 'Troppe parole! Descrizioni sintetiche permettono a tutti di cogliere rapidamente come stanno andando le votazioni'
     i_agree: "Sono d'accordo"
     i_agree_details: Sostengo la proposta e voglio che sia implementata.
     i_abstain: Mi astengo
@@ -279,7 +282,7 @@ it:
       updated: Discussione aggiornata
     new_discussion_title: Lancia una nuova discussione
     edit_discussion_title: Modifica il nome della discussione
-    discussion_helptext: La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
+    discussion_helptext: La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.
     group_label: Gruppo
     group_placeholder: Scegli un gruppo
     title_label: Titolo
@@ -366,7 +369,7 @@ it:
     description: Descrizione del gruppo
     description_placeholder: "I coordinatori del gruppo possono usare questa area per descrivere l'obiettivo del gruppo, così che tutti sappiano perché sono qui."
     discussions: Discussioni
-    discussions_placeholder: Il thread (discussione) è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni su esso.
+    discussions_placeholder: La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.
     members: Membri
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
@@ -407,12 +410,14 @@ it:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
+      aria_label: 'Privacy del gruppo: {{privacy}}'
   confirm_gift_plan_modal:
     heading: Piano regalo selezionato
     got_it: Ok
     go_back: Vai indietro
   donation_modal:
     heading: Vuoi supportare Loomio?
+    got_to_group: Portami al mio gruppo
   gift_card:
     heading: Piano Regalo
   trial_card:

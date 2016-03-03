@@ -38,11 +38,7 @@ es:
       headlines: 'Titulo '
       mark_as_read: Marcar como leído
       thanks_for_reading: 'Gracias por leer, ¡que tengas un buen día!'
-      click_here_to_mark_all_as_read_html: >
-        Esto es lo que sucedió ayer en Loomio.
-
-        Una vez usted lo haya leído, clic  <a href="%{link}">marcar como
-        leído</a>  para eliminarlo de tú bandeja de entrada.
+      heres_what_happened: 'Esto es lo que paso en Loomio ayer. '
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
     comment_replied_to:
       context: '%{author_name} respondió a tu comentario en la discusión "%{discussion_title}"'
@@ -129,6 +125,9 @@ es:
       email_not_arrived: No te ha llegado el correo electrónico?
       please_hold: Por favor espera hasta 5 minutos para que te llegue el correo electrónico y asegurate de mirar en la la carpeta de correo no solicitado.
     start_making_decisions: 'Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis.'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: 'No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo.'
   pricing_page:
     header: Planes
     gift: 'Donación '

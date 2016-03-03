@@ -27,7 +27,6 @@ es:
     more_help: 'Mas ayuda '
     models:
       proposal: Propuesta
-    copied: 'Copiado '
     action:
       close: Cerrar
       save: Guardar
@@ -36,6 +35,7 @@ es:
       reply: Responder
       edit: Editar
       like: Me gusta
+      back: Atrás
       unlike: Ya no me gusta
       update: 'Actualizar '
       cancel: Cancelar
@@ -200,6 +200,8 @@ es:
     header: Notificaciones
     new_discussion: '<strong>{{name}}</strong> empezó una discusión <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> creó una propuesta <strong>{{proposal}}</strong>'
+    motion_closed: 'Propuesta cerrada: <strong>{{proposal}}</strong>'
+    publish_outcome: Publicar el resultado
     motion_closed_by_user: '<strong>{{name}}</strong> cerró la propuesta <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Se ha cerrado la propuesta <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{proposal}}</strong>'
@@ -220,6 +222,7 @@ es:
   vote_form:
     heading: 'Danos tu opinión '
     no_statement: Sin opinión.
+    statement_over_limit: 'Demasiadas palabras! Las frases cortas ayudan a que todos se pongan al día rápidamente.  '
     i_agree: Estoy de acuerdo
     i_agree_details: Estoy de acuerdo con esto y quiero que siga adelante.
     i_abstain: Me abstengo
@@ -412,6 +415,7 @@ es:
       private: 'Privacidad: Este grupo es solo visible para miembros'
       parent_members: 'Privacidad: Este grupo es visible para los miembros de {{parentGroupName}} y miembros de {{groupName}} '
       public: 'Privacidad: Este grupo es visible en la red '
+      aria_label: 'Privacidad del grupo: {{privacy}}'
   confirm_gift_plan_modal:
     heading: 'Plan Donación a sido seleccionado. '
     body: 'Si tu grupo no tiene presupuesto para pagar por software, no tienes que pagar una suscripción. Los miembros de tu grupo serán regularmente invitados a hacer una donación voluntaria.'
@@ -806,6 +810,10 @@ es:
     title: 'actualizó el título del hilo: <span>{{title}}</span>'
     description: actualizó el contexto del hilo
     description_title: 'actualizó el título y el contexto del hilo '
+    private: 'Actualizar la privacidad del hilo a '
+    public_to_private: privado
+    private_to_public: público
+    description_private_title: 'se actualizó el título, el contexto y la privacidad del hilo '
   contact_message_form:
     contact_us: Contáctanos
     name_label: Tu nombre

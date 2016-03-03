@@ -38,11 +38,6 @@ it:
       headlines: I Titoli
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: 'Grazie per aver letto, buona giornata!'
-      click_here_to_mark_all_as_read_html: >
-        Ecco cos'è successo su Loomio ieri.
-
-        Una volta che l'hai letto, clicca <a href="%{link}">segna come letto</a>
-        per rimuoverlo della tua posta in arrivo di Loomio.
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
     comment_replied_to:
       context: '%{author_name} ha risposto al tuo commento nella discussione  "%{discussion_title}"'

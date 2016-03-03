@@ -27,7 +27,6 @@ el:
     more_help: Περισσότερη βοήθεια
     models:
       proposal: Πρόταση
-    copied: Αντιγράφτηκε
     action:
       close: Κλείσε
       save: Αποθήκευση

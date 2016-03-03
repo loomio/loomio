@@ -27,16 +27,18 @@ tr:
     more_help: Daha fazla yardım
     models:
       proposal: Öneri
-    copied: Kopyalandı
+    copy: Metni kopyala
+    copied: Panoya kopyalandı
     action:
-      back: Geri
       close: Kapat
       save: Kaydet
       save_changes: Değişiklikleri kaydet
       update_settings: Ayarları güncelle
       reply: Cevapla
       edit: Düzenle
+      remove: Kaldır
       like: Beğen
+      back: Geri
       unlike: Beğenmekten vazgeç
       update: Güncelle
       cancel: İptal et
@@ -47,6 +49,7 @@ tr:
       loading: Yükleniyor
       translate: Tercüme et
       translated: Bing Translator tercümesi
+      upload: Yükle
       uploading: Yükleniyor
     formatting_help:
       label: Biçimlendirme yardımı
