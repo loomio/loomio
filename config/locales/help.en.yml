@@ -136,11 +136,11 @@ en:
       single_sign_on:
         title: Single sign-on
         body_html: |
-            <p>Loomio allows sign-up with Facebook, Google or Persona.
+            <p>Loomio allows sign-up with Facebook, Google or Twitter.
             If you do not have a Loomio account you can sign up using any of these third-party services by clicking the corresponding button on the <a href="http://loomio.org/sign_in">Log in page</a>.
-            If you are currently logged in to Google, Facebook or Persona, this existing account will be detected.
+            If you are currently logged in to Google, Facebook or Twitter, this existing account will be detected.
             Otherwise you will be prompted to sign in. When Loomio recognises your existing third-party account, you will be required to follow the prompts to create your Loomio account.<p>
-            <p>You may also associate an existing Google, Facebook or Persona account with an existing Loomio account.
+            <p>You may also associate an existing Google, Facebook or Twitter account with an existing Loomio account.
             Ensure you are logged out, visit the <a href="https://www.loomio.org/users/sign_in">Log in page</a> and select your preferred platform.
             Loomio will ask you if you want to create a new account with your existing account on your chosen platform, or link it to your existing Loomio account.</p>
     group_settings:
