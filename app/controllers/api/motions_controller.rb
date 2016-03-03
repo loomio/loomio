@@ -36,10 +36,14 @@ class API::MotionsController < API::RestfulController
   def closed
     load_and_authorize :group, :view_previous_proposals
     instantiate_collection { |collection| collection.closed.where(discussion_id: @group.discussion_ids).order(closed_at: :desc) }
-    respond_with_collection
+    respond_with_collection(serializer: ClosedMotionSerializer, scope: closed_motion_scope)
   end
 
   private
+
+  def closed_motion_scope
+    { vote_cache: VoteCache.new(current_user, current_user.votes.where(motion: collection)) }
+  end
 
   def accessible_records
     Queries::VisibleMotions.new(user: current_user, groups: current_user.groups)
