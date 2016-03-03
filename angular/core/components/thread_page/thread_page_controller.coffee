@@ -47,7 +47,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageEventsLoaded',    (e, event) =>
-    $window.location.reload() if event and !@discussion.eventIsLoaded(event)
+    $window.location.reload() if @eventRequiresReload(event)
     @eventsLoaded = true
     @comment = Records.comments.find(@activeCommentId) unless isNaN(@activeCommentId)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
@@ -56,6 +56,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @proposal = Records.proposals.find(@activeProposalKey)
     $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
+
+  @eventRequiresReload = (event) ->
+    event and event.discussion() == @discussion and !@discussion.eventIsLoaded(event)
 
   @group = ->
     @discussion.group()
