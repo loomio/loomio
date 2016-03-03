@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'notifications', ->
   restrict: 'E'
   templateUrl: 'generated/components/notifications/notifications.html'
   replace: true
-  controller: ($scope, Records, AppConfig) ->
+  controller: ($scope, $rootScope, Records, AppConfig) ->
 
     kinds = [
       'comment_liked',
@@ -29,6 +29,9 @@ angular.module('loomioApp').directive 'notifications', ->
                                .applyWhere(eventFilter)
                                .applyFind(viewed: { $ne: true })
     $scope.unreadNotifications = -> unreadView.data()
+
+    $scope.broadcastThreadEvent = (notification) ->
+      $rootScope.$broadcast 'threadPageEventsLoaded', notification.event()
 
     $scope.loading = ->
       !AppConfig.notificationsLoaded

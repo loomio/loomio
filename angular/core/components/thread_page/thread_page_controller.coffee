@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @activeProposalKey = $routeParams.proposal or $location.search().proposal
@@ -46,7 +46,8 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
-  $scope.$on 'threadPageEventsLoaded',    (event) =>
+  $scope.$on 'threadPageEventsLoaded',    (e, event) =>
+    $window.location.reload() if event and !@discussion.eventIsLoaded(event)
     @eventsLoaded = true
     @comment = Records.comments.find(@activeCommentId) unless isNaN(@activeCommentId)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
