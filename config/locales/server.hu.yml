@@ -37,11 +37,6 @@ hu:
       headlines: Szalagcímek
       mark_as_read: Olvasottként jelöl
       thanks_for_reading: 'Köszönjük az elolvasást, kellemes napot!'
-      click_here_to_mark_all_as_read_html: >
-        Ez történt a Loomio-n tegnap.
-
-        Olvasás után klikk az <a href="%{link}">olvasva</a> gombra hogy törlődjön
-        a bejövő fiókból.
       marked_as_read_success: Minden olvasottként van jelölve
     comment_replied_to:
       context: '%{author_name} válaszolt a hozzászólásodra a "%{discussion_title}" című vitában.'

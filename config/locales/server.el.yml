@@ -37,11 +37,6 @@ el:
       headlines: Επικεφαλίδες
       mark_as_read: Σημείωσε ως διαβασμένα
       thanks_for_reading: 'Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!'
-      click_here_to_mark_all_as_read_html: >
-        Εδώ δείτε τι συνέβη εχτές στο Loomio.
-
-        Μόλις τα διαβάσετε, πατήστε <a href="%{link}">σημειώστε ως διαβασμένα</a>
-        για να τα αφαιρέσετε από τα εισερχόμενα σας του Loomio.
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
     comment_replied_to:
       context: 'Ο/Η %{author_name} απάντησε στο σχόλιο σας στην συζήτηση "%{discussion_title}"'

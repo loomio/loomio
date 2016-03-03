@@ -27,7 +27,6 @@ fr:
     more_help: "Plus d'aide"
     models:
       proposal: Proposition
-    copied: Copié
     action:
       close: Fermer
       save: Enregistrer

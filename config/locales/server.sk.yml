@@ -36,13 +36,6 @@ sk:
       subject: Včera na Loomio
       mark_as_read: Označiť ako prečítané
       thanks_for_reading: 'Vďaka za čítanie a prajeme pekný deň!'
-      click_here_to_mark_all_as_read_html: >
-        Tu je zoznam noviniek ktoré sa udiali na Loomio odvčera.
-
-        Po ich prečítaní, kliknite na <a href="%{link}">označiť ako prečítané</a>
-        aby ste ich odstránili z vašej
-
-        schránky došlých správ.
       marked_as_read_success: Všetko z emailu bolo označené ako prečítané
     group_membership_approved:
       intro: 'Vaša žiadosť o prístup ku skupine ‚%{group_name}‘ na Loomio bola akceptovaná.'

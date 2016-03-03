@@ -277,6 +277,7 @@ lt:
     no_threads:
       show_proposals: Šiuo metu nėra aktyvių pasiūlymų.
     load_more: Įkelti daugiau gijų
+    mark_as_read: Žymėti kaip skaitytą
     filtering:
       filter_threads: Filtruoti Gijas
       dropdown_heading: Filtruoti skydelį
