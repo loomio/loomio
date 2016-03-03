@@ -7,7 +7,7 @@
       %b= comment.author.name
       %br
       - if comment.uses_markdown?
-        = render_email_markdown comment.body
+        = render_rich_text(comment.body)
       - else
         = render_email_plaintext comment.body
       - if comment.attachments.any?
