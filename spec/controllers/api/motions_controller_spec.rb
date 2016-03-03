@@ -112,6 +112,13 @@ describe API::MotionsController do
       expect(motion_ids).to_not include another_motion.id
     end
 
+    it 'does not return votes if I havent voted' do
+      MotionService.close(motion)
+      post :closed, group_key: group.key, format: :json
+      json = JSON.parse(response.body)
+      expect(json.keys).to_not include 'votes'
+    end
+
     it 'returns unauthorized for groups youre not a member of' do
       post :closed, group_key: another_group.key
     end
