@@ -17,6 +17,7 @@
 
     .screen-only{aria-hidden: "true"}
       .thread-preview__text-container
+        %outlet{name: "before-thread-preview-title"}
         .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
           {{thread.title}}
         .thread-preview__unread-count{ng-if: "thread.isUnread() && thread.itemsCount > 0"}

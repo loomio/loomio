@@ -42,7 +42,7 @@ module Plugins
 
       migration = ActiveRecord::Migration.new
       def migration.up(table_name, &block)
-        create_table table_name, &block
+        create_table table_name.to_s.pluralize, &block
       end
       migration.up(table_name, &block)
     end
