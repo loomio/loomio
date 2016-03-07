@@ -151,7 +151,7 @@ These allow us to have modular pieces of functionality which can be called upon 
 To tell the plugin to use your component, put a line in our `plugin.rb` like this:
 
 ```
-  use_component :kickflip
+  plugin.use_component :kickflip
 ```
 
 This will make your component available within the app.
