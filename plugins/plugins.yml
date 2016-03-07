@@ -15,3 +15,7 @@ plugins:
   loomio_webhooks:
     repo:    loomio/loomio_webhooks
     version: master
+
+  loomio_org:
+    repo:    loomio/loomio_org
+    version: master

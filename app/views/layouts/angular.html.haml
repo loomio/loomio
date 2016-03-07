@@ -17,7 +17,7 @@
     %ng_outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
-    %angular_feedback_card
+    %outlet{name: 'after-start-menu'}
 
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
