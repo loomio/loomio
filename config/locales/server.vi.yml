@@ -22,8 +22,6 @@ vi:
     membership_request:
       intro: '%{name} (%{email}) đã gửi lời yêu cầu tham gia vào một trong các nhóm trên Loomio của bạn.'
       view_group: Bạn có thể chấp thuận hoặc từ chối các lời đề nghị kết nối tại đây
-    mentioned:
-      subject: '%{who} đã đề cập đến bạn trong nhóm %{which} trên Loomio'
     proposal_closed:
       subject: 'Lời đề nghị đã đóng lại - %{which}'
     proposal_closing_soon:

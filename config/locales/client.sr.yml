@@ -954,48 +954,6 @@ sr:
     enable:
       invite: 'Probaj novi Loomio!'
       title: Probaj novi Loomio
-      intro: Reizgradili smo Loomio i potrebna nam je tvoja pomoć da budemo sigurni da je fenomenalan pre nego što objavimo generanoj publici.
-      body_html: >
-        <p></p>
-
-        <h3>Šta je u stvari razlika?</h3>
-
-
-
-        <p>
-
-          Novi interfejs je kao stari, samo noviji:
-
-          <ul>
-
-            <li>Sve se osvežava uživo na strani kada se dogodi</li>
-
-            <li>Dizajniran je za sve uređaje, od pametnih telefona do
-        desktopa</li>
-
-            <li>Dostupan je ljudima koji su slepi i preveden je u <a
-        href="https://www.loomio.org/translation">hrpu jezika</a>
-
-          </ul>
-
-        </p>
-
-
-
-        <p>Koristi istu bazu podataka kao i stari interfejs, što znači da će
-        imati sve tvoje postojeće grupe i diskusije. Možeš se vratiti nazad na
-        stari interfejs u bilo koje vreme.</p>
-
-        <p>Stvari će se menjati neznatno svakog dana kako budemo implementirali
-        povratne informacije tokom ovog perioda. Neke retko korišćene funkcije
-        možda neće biti tu još uvek.</p>
-
-        <p>Tu je veza "Vrati se nazad na stari Lumio" u donjem levom uglu nove
-        aplikacije. Škljocni tu vezu i možeš se vratiti na stari Lumio. Tu je
-        takođe i formular za povratne informacije od tebe .</p>
-
-        <p>Mi zaista očekujemo da čujemo povratne iformacije od tebe, hvala za
-        tvoje vreme i podršku.</p>
       button_text: Omogući novi Loomio
     disable:
       title: Hvala što probate novi Loomio

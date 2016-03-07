@@ -52,7 +52,6 @@ eo:
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
     mentioned:
       context: '%{author_name} menciis vin dum diskutado de "%{discussion_title}"'
-      subject: '%{who} menciis vin en la grupo %{which} en Loomio'
     new_motion_created:
       subject: 'Propono: %{proposal_title}'
       context: '%{author} kreis proponon en %{group_full_name}:'

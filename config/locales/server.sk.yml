@@ -52,7 +52,6 @@ sk:
       view_group: Môžete schváliť alebo odmietnuť žiadosť tu
     mentioned:
       context: '%{author_name} vás spomenul v diskusii "%{discussion_title}"'
-      subject: '%{who} vás zmienil(a) v skupine %{which} na Loomio'
     new_motion_created:
       subject: 'Návrh: %{proposal_title}'
       context: '%{author} vytvoril(a) návrh v %{group_full_name}:'

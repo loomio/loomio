@@ -19,8 +19,6 @@ bg-BG:
     membership_request:
       intro: '%{name} (%{email}) е поискал достъп до една от вашите групи.'
       view_group: Можете да одобрите или не заявките тук
-    mentioned:
-      subject: '%{who} ви спомена в група %{which} в Loomio'
     proposal_closed:
       subject: 'Предложението е затворено - %{which}'
     proposal_closing_soon:

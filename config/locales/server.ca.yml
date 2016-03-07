@@ -36,8 +36,6 @@ ca:
       intro: '%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio.'
       subject: '%{who} ha demanat unir-se a %{which_group}'
       view_group: Pots aprovar o denegar la sol·licitud aquí
-    mentioned:
-      subject: "%{who} t'ha mencionat al grup de Loomio %{which} "
     new_motion_created:
       context: '%{author} ha fet una proposta a %{group_full_name}:'
     proposal_closed:

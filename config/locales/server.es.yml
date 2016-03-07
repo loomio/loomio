@@ -57,7 +57,6 @@ es:
       view_group: Puedes aceptar o denegar la solicitud aquí
     mentioned:
       context: '%{author_name} le mencionó en la discusión  "%{discussion_title}"'
-      subject: '%{who} te mencionó en el grupo de Loomio %{which} '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
       context: '%{author} ha creado una propuesta en %{group_full_name}:'
@@ -117,7 +116,7 @@ es:
     group_description: Descripción del grupo
     group_description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
     group_name_error: 'Se requiere el nombre del grupo. '
-    pricing_html: "En 30 días te pediremos que elijas un <a href='%{link}' target='blank'>plan de pago</a>."
+    pricing_html: "En 30 días te pediremos que elijas un <a href='%{link}' target='_blank'>plan de pago</a>."
     terms_html: "Al empezar un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
     success:
       header: '¡Ya casi has terminado! Revisa tu correo electrónico. '
