@@ -8,7 +8,8 @@ Loomio::Application.routes.draw do
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
-    get '/' => 'angular#index'
+    get '/' => 'angular#toggle'
+    get :boot
     post :on
     post :off
   end
