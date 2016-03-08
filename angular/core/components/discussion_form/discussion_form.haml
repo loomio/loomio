@@ -62,8 +62,8 @@
             %span {{ privacyPrivateDescription() }}
 
   .modal-footer
-    %a.discussion-form__formatting-help{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
+    %button.pull-right.lmo-btn--submit.discussion-form__submit{type: "submit", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
+    %a.discussion-form__formatting-help{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
       %span{translate: "common.formatting_help.label"}
-    %button.lmo-btn--submit.discussion-form__submit{type: "submit", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
     %button.lmo-btn--primary.discussion-form__update{type: "submit", translate: "discussion_form.edit_discussion_submit", ng-hide: "discussion.isNew()" }
     %button.lmo-btn--cancel.discussion-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
