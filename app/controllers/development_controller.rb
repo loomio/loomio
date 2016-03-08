@@ -50,6 +50,11 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_group_as_member
+    sign_in jennifer
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_with_expired_legacy_trial
     sign_in jennifer
     GroupService.create(group: test_group, actor: patrick)
