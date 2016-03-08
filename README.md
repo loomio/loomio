@@ -12,7 +12,7 @@ For documentation about deploying and developing Loomio see the [Tech Manual](ht
 
 Want to learn how to use Loomio? read the [User Help Manual](https://help.loomio.org).
 
-We also have a manual for People working with the Loomio Co-op:  [Loomio Coop Handbook](https://github.com/loomio/loomio-coop-handbook)
+To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](https://github.com/loomio/loomio-coop-handbook)
 
 ### Contact
 
