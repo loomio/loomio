@@ -83,4 +83,18 @@ describe GroupsController do
       end
     end
   end
+
+  describe "#export" do
+    before do
+      user.update_attribute(:is_admin, true)
+      sign_in user
+      group.enabled_beta_features = ['export']
+      group.save
+    end
+
+    it "responds successfully" do
+      get :export, :id => group.key
+      expect(response.status).to eq 200
+    end
+  end
 end
