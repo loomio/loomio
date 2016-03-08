@@ -22,3 +22,9 @@ If you’re reporting a bug in the software and want to work with the team direc
 
 Before reporting an issue:
 * Please have a brief look to see if the issue is already listed. If so please add any extra, clarifying information you can to the existing issue.
+
+## Want to help develop Loomio?
+
+Dive into our [Tech Manual](https://loomio.gitbooks.io/tech-manual/content/) to find out how to deploy your own Loomio instance or develop a new feature in Loomio.
+
+To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).
