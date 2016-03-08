@@ -129,6 +129,15 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(public_test_discussion)
   end
 
+  def setup_group_with_empty_draft
+    sign_in patrick
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
+    test_empty_draft
+    redirect_to group_url(test_group)
+  end
+
   def setup_multiple_discussions
     sign_in patrick
     test_discussion
