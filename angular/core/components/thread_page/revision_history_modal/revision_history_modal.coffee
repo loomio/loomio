@@ -1,11 +1,13 @@
 angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   templateUrl: 'generated/components/thread_page/revision_history_modal/revision_history_modal.html'
-  controller: ($scope, model, CurrentUser, Records) ->
+  controller: ($scope, model, CurrentUser, Records, LoadingService) ->
     $scope.model = model
+    $scope.loading = true
 
-    switch $scope.model.constructor.singular
-      when 'discussion' then Records.versions.fetchByDiscussion($scope.model.key)
-      when 'comment'    then Records.versions.fetchByComment($scope.model.id)
+    $scope.load = ->
+      switch $scope.model.constructor.singular
+        when 'discussion' then Records.versions.fetchByDiscussion($scope.model.key)
+        when 'comment'    then Records.versions.fetchByComment($scope.model.id)
 
     $scope.header =
       switch $scope.model.constructor.singular
@@ -34,5 +36,8 @@ angular.module('loomioApp').factory 'RevisionHistoryModal', ->
 
     $scope.versionCreatedAt = (version) ->
       moment(version).format('Do MMMM YYYY, h:mma')
+
+    LoadingService.applyLoadingFunction($scope, 'load')
+    $scope.load()
 
     return
