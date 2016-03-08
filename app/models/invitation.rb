@@ -32,10 +32,6 @@ class Invitation < ActiveRecord::Base
     recipient_name.split(' ').first
   end
 
-  def inviter_name
-    inviter.name
-  end
-
   def group
     case invitable_type
     when 'Group'
