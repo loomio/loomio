@@ -199,6 +199,13 @@ module Development::NintiesMoviesHelper
     @pending_invitation
   end
 
+  def test_empty_draft
+    unless @test_empty_draft
+      @test_empty_draft = Draft.create(draftable: test_group, user: patrick, payload: { discussion: { title: "", private: nil }})
+    end
+    @test_empty_draft
+  end
+
   def setup_all_notifications_work
     #'comment_liked'
     comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')

@@ -286,6 +286,13 @@ describe 'Group Page', ->
 
       page.expectText('.group-volume-card', 'Email everything')
 
+  describe 'handling drafts', ->
+    it 'handles empty draft privacy gracefully', ->
+      page.loadPath 'setup_group_with_empty_draft'
+      page.click '.group-welcome-modal__close-button',
+                 '.discussions-card__new-thread-button'
+      page.expectText('.privacy-notice', 'The thread will only be visible')
+
   describe 'starting a discussion', ->
     beforeEach ->
       page.loadPath('setup_group')
