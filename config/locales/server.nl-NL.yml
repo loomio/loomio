@@ -56,7 +56,6 @@ nl-NL:
       view_group: Je kan hier de aanvraag goed- of afkeuren
     mentioned:
       context: '%{author_name} noemde je in de discussie "%{discussion_title}"'
-      subject: '%{who} noemde je in de %{which} groep op Loomio'
     new_motion_created:
       subject: 'Voorstel: %{proposal_title}'
       context: '%{author} heeft een voorstel gedaan in %{group_full_name}:'

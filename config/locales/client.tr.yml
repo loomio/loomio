@@ -935,50 +935,6 @@ tr:
     enable:
       invite: "Yeni Loomio'yu deneyin!"
       title: "Yeni Loomio'yu deneyin!"
-      intro: "Biz Loomio'yu yeniden inşa ettik ve onu herkese açmadan önce müthiş olduğundan emin olmamız için sizin yardımınıza ihtiyacımız var."
-      body_html: >
-        <p></p>
-
-        <h3>Aradaki fark nedir?</h3>
-
-
-
-        <p>
-
-          Yeni arayüz, eski arayüz gibi ama daha yeni:
-
-          <ul>
-
-            <li>Her şey gerçekleştiği anda canlı olarak sayfada güncellenir</li>
-
-            <li>Akıllı telefondan masaüstü bilgisayarına kadar tüm cihazlar için
-        tasarlandı</li>
-
-            <li>Görme engelliler için erişilebilir ve  <a
-        href="https://www.loomio.org/translation">bir sürü dile</a> tercüme
-        edildi
-
-          </ul>
-
-        </p>
-
-
-
-        <p>Eski arayüz ile aynı veritabanını kullanıyor, bunun anlamı tüm mevcut
-        gruplarınızı ve müzakerelerinizi bulunduruyor. İstediğiniz zaman eski
-        arayüze geri dönebilirsiniz.</p>
-
-        <p>Bu süre içerisinde geribildirimleri yerine getireceğimiz için site her
-        gün biraz daha değişiyor olacak. Bazı daha az sıklıkla kullanılan
-        özellikler henüz mevcut olmayabilir.</p>
-
-        <p>Yeni uygulamanın sol alt köşesinde "Eski Loomio'ya geri dön"
-        bağlantısı bulunuyor. Bu bağlantıyı tıklayarak daha alışkın olduğunuz
-        Loomio'ya geri dönebilirsiniz. Ayrıca herhangi bir geri bildiriminiz
-        varsa onu girmek için bir geri bildirim formu da bulunmakta.</p>
-
-        <p>Görüşlerinizi duymak için gerçekten sabırsızlanıyoruz, zamanınız ve
-        desteğiniz için teşekkür ederiz.</p>
       button_text: "Yeni Loomio'yu etkinleştir"
     disable:
       title: "Yeni Loomio'yu denediğiniz için teşekkür ederiz"

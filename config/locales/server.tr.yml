@@ -58,7 +58,6 @@ tr:
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
     mentioned:
       context: "\"%{discussion_title}\" isimli müzakere'de %{author_name} sizden bahsetti"
-      subject: 'Loomio da %{who}  %{which} grubunda sizden bahsetti'
     new_motion_created:
       subject: 'Öneri: %{proposal_title}'
       context: '%{author} %{group_full_name} grubunda bir öneri oluşturdu:'

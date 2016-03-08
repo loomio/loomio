@@ -56,7 +56,6 @@ sr:
       view_group: Ovde možete odobriti ili odbiti zahtev
     mentioned:
       context: '%{author_name} Vas je pomenuo/la tokom diskusije "%{discussion_title}"'
-      subject: '%{who} te je pomenuo/la u grupi %{which} na Lumiju'
     new_motion_created:
       subject: 'Predlog: %{proposal_title}'
       context: '%{author} je predložio/la u %{group_full_name}:'

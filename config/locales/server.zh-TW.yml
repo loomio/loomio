@@ -59,7 +59,7 @@ zh-TW:
       view_group: 您可點此批准或拒絕申請
     mentioned:
       context: '%{author_name} 在討論「%{discussion_title}」時提到您'
-      subject: '%{who} 在 Loomio %{which} 群組中提到您'
+      subject: '%{who} 在討論「%{which}」時提到您'
     new_motion_created:
       subject: '提案：%{proposal_title}'
       context: '%{author}開始一個提案在%{group_full_name}:'

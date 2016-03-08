@@ -52,7 +52,6 @@ an:
       view_group: Puetz acceptar u refusar a petición aquí
     mentioned:
       context: '%{author_name} te mencionó en a discusión  "%{discussion_title}"'
-      subject: '%{who} te mencionó en o grupo de Loomio %{which} '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
       context: '%{author} ha creau una propuesta en %{group_full_name}:'

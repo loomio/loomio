@@ -56,7 +56,6 @@ hu:
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
     mentioned:
       context: '%{author_name} megemlített téged ebben a megbeszélésben: "%{discussion_title}"'
-      subject: '%{who} megemlített téged a %{which} Loomio csoportban'
     new_motion_created:
       subject: 'Javaslat: %{proposal_title}'
       context: '%{author} létrehozott egy javaslatot a %{group_full_name} csoportban:'

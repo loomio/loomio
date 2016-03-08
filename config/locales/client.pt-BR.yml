@@ -822,6 +822,8 @@ pt-BR:
     private: atualizou a privacidade do tópico para
     public_to_private: privado
     private_to_public: público
+    private_title: atualizou título e privacidade do tópico
+    description_private: atualizou contexto e privacidade do tópico
     description_private_title: 'atualizou título, contexto e privacidade do tópico'
   contact_message_form:
     contact_us: Contato
@@ -966,49 +968,44 @@ pt-BR:
     enable:
       invite: 'Experimente o novo Loomio!'
       title: Experimente o novo Loomio
-      intro: Nós reconstruímos o Loomio e precisamos da sua ajuda para nos certificar de que está incrível antes de liberá-lo para o público em geral.
+      intro: 'Nós reconstruímos o Loomio e precisamos da sua ajuda para nos certificarmos de que está impressionante!'
       body_html: >
         <p></p>
 
-        <h3>Qual a diferença?</h3>
+        <h3>Qual é a diferença de qualquer maneira?</h3>
 
 
 
         <p>
 
-        A nova interface é como a antiga, só que mais atual:
+          A nova interface é como a antiga, mas mais atual:
 
-        <ul>
+          <ul>
 
-        <li>Tudo é atualizado na página enquanto acontece.</li>
+            <li>Atualização de tudo ao vivo na página enquanto acontece</li>
 
-        <li>É projetada para todos os seus dispositivos, desde smartphone até
-        desktop.</li>
+            <li>È projetado para todos os seus dispositivos, desde smartphones
+        até desktop</li>
 
-        <li>É acessível a pessoas cegas e está traduzida para <a
-        href="https://www.loomio.org/translation">um montão de idiomas.</a>
+            <li>É acessível para pessoas cegas e traduzido para <a
+        href="https://www.loomio.org/translation">um monte de idiomas</a>
 
-        </ul>
+          </ul>
 
         </p>
 
 
 
-        <p>Usa o mesmo banco de dados da interface antiga, o que significa que
-        você terá todos os seus grupos e discussões já existentes. Você pode
-        voltar para a interface antiga a qualquer momento.</p>
+        <p>Utiliza o mesmo banco de dados como a interface antiga, o que
+        significa que você terá todos os seus grupos e discussões
+        existentes.</p>
 
-        <p>As coisas vão mudar um pouco a cada dia, enquanto implementamos
-        o feedback que recebermos durante este tempo. Algumas funções menos
-        utilizadas podem não estar lá ainda.</p>
+        <p>Há um link para "Fornecer Retorno" no canto inferior esquerdo. Você
+        também verá um link lá para "Voltar para o Loomio antigo", que
+        permanecerá disponível por pouco tempo.</p>
 
-        <p>Há um link “Voltar para o antigo Loomio” no canto inferior esquerdo do
-        novo aplicativo. Clique nesse link e você pode voltar para o Loomio que
-        você está mais acostumado. Há também um formulário de feedback para que
-        você digite qualquer opinião que você tenha.</p>
-
-        <p>Realmente esperamos ouvir seus comentários. Obrigado pelo seu tempo
-        e apoio.</p>
+        <p>Nós estamos realmente ansiosos para ouvir o seu feedback, obrigado
+        pelo seu tempo e apoio.</p>
       button_text: Ative o novo Loomio
     disable:
       title: Obrigado por experimentar o novo Loomio

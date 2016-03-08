@@ -32,8 +32,6 @@ km:
       intro: '%{name} (%{email}) បានស្នើការចូលដំណើការទៅមួយនៃក្រុម Loomio​ របស់អ្នក '
       subject: '%{who}បានស្នើឲ្យចូលរួម%{which_group} '
       view_group: អ្នកអាចអនុម័ត្តឬទុកសំណើរនៅទីនេះ
-    mentioned:
-      subject: '%{who}អ្នកដែលបានរៀបរាប់នៅក្នុង%{which}  ក្រុមនៅលើ Loomio  '
     new_motion_created:
       context: '%{author} បង្កើតសំណើរមួយក្នុង%{group_full_name}:'
     proposal_closed:
