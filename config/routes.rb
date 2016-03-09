@@ -481,4 +481,5 @@ Loomio::Application.routes.draw do
   get 'd/:key/proposal/:proposal'          => 'base#boot_angular_ui'
   get 'd/:key/comment/:comment'            => 'base#boot_angular_ui'
   get 'd/:key/proposal/:proposal/:outcome' => 'base#boot_angular_ui'
+  get 'g/:key/memberships/:username'       => 'base#boot_angular_ui'
 end
