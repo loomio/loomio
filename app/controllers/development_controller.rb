@@ -129,6 +129,23 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(public_test_discussion)
   end
 
+  def setup_restricted_profile
+    sign_in patrick
+    test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    test_group.add_member!(jennifer)
+    redirect_to "/u/#{jennifer.username}"
+  end
+
+  def setup_profile_with_group_visible_to_members
+    sign_in patrick
+    test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    test_group.add_admin!(patrick)
+    test_group.add_member!(jennifer)
+    redirect_to "/u/#{jennifer.username}"
+  end
+
   def setup_group_with_empty_draft
     sign_in patrick
     @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
