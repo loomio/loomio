@@ -1,51 +1,198 @@
 ar:
   email:
+    custom: '%{text}'
+    group_email:
+      intro: '%{who}قام بإعلان على %{group}:'
     by_who: 'من قبل %{person}'
     reply_to_this_discussion: شارك في هذا النقاش
     to_join_discussion:
-      subject: '%{who} يريدك أن تنضم إلى نقاش على Loomio'
+      subject: '%{who} يريدك أن تنضم إلى نقاش على لوميو'
       content: 'لقد تمت دعوتك للمشاركة في النقاش: %{discussion}'
       message_intro: '%{who} يقول:'
       link: إنضم للنقاش
     to_join_group:
-      subject: 'لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على Loomio'
+      subject: 'لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على لوميو'
     to_start_group:
-      subject: 'قم بإعداد مجموعة جديدة على Loomio: %{group_name}'
+      subject: 'قم بإنشاء مجموعة لوميو جديدة: %{group_name}'
     user_added_to_a_group:
       subject: 'لقد أضافك %{who} إلى %{which_group}'
-      content: 'لقد أضافك %{who} إلى %{which_group} على Loomio. انقر هنا للذهاب إلى المجموعة:'
-    unsubscribe: 'الغ الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
+      content: 'لقد أضافك %{who} إلى %{which_group} على لوميو. انقر هنا للذهاب إلى المجموعة:'
+    unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
-    view_comment: انقر هنا لاستعراض التعليق على Loomio
+    view_comment: انقر هنا لاستعراض التعليق على لوميو
     view_discussion: انقر هنا لاستعراض هذا النقاش
-    view_group: انقر هنا لاستعراض المجموعة على Loomio
-    view_proposal: إستعرض هذا المقترح على Loomio
+    view_group: انقر هنا لاستعراض المجموعة على لوميو
+    view_proposal: إستعرض هذا المقترح على لوميو
     create_discussion:
       intro: '%{who} بدأ نقاشا في %{which_group}:'
     create_proposal:
-      intro: تم إنشاء مقترح جديد في مجموعة على Loomio أنت عضو فيها.
+      intro: تم إنشاء مقترح جديد في مجموعة على لوميو أنت عضو فيها.
       closes_in: سيغلق خلال
-      subject: 'اقتراح جديد: %{which}'
+      subject: 'مقترح جديد: %{which}'
     daily_activity:
-      heading: نشاطك على Loomio
-      subject: Loomio - ملخص لل 24 ساعة الأخيرة
+      heading: 'نشاطك على لوميو '
+      intro: إظهار ماذا حدث على مجموعات لوميو خلال ال24 ساعة الماضية
+      subject: لوميو - ملخص لل 24 ساعة الأخيرة
     missed_yesterday:
-      subject: أحداث الأمس على Loomio
-      mark_as_read: تمت قراءته
-      thanks_for_reading: 'شكرا للقراءة، نتمنى لك يوما سعيدا!'
-      click_here_to_mark_all_as_read_html: "هذا ما حدث يوم أمس على Loomio. \nحال إنهاء القراءة، انقر على <a href=\"%{link}\"> تمت قراءته </a> لإزالته من صندوق البريد الوارد لديك على Loomio.\n"
+      subject: أحداث الأمس على لوميو
+      headlines: العناوين
+      mark_as_read: مقروء
+      thanks_for_reading: 'شكرا للقراءة، نتمنى لك يوماً سعيداً!'
+      heres_what_happened: هاك ما حصل على لوميو أمس.
+      marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
+    comment_replied_to:
+      context: '%{author_name} قام بالرد على تعليقك في نقاش "%{discussion_title}"'
+      subject: '%{who} قام بالرد على تعليقك في مجموعة لوميو %{which}'
+    group_membership_approved:
+      intro: "لقد تمت الموافقة على طلبك للدخول  إلى مجموعة '%{group_name}' على لوميو."
+      subject: 'تمت الموافقة على عضوية %{prefix}'
     invitation:
       hi: 'مرحبا بك %{name}،'
+      intro: 'اضغط على الرابط في الأسفل لتقوم بإنشاء مجموعتك %{group_name}:'
+      closing_message: 'إن كان لديك أي سؤال أو إن كان هناك أي شيء بإمكاننا فعله لمساعدتك على البدء، يسعدنا أن تتواصل معنا - فقط قم بالإرسال على هذا البريد الالكتروني. '
+      thanks: "شكراً! \nفريق لوميو\n"
+    membership_request:
+      intro: '%{name} (%{email}) قام بطلب الدخول إلى أحد مجموعاتك على لوميو.'
+      subject: '%{who} قام بطلب الانضمام إلى %{which_group}'
+      view_group: يمكنك الموافقة أو إلغاء الطلب هنا
+    mentioned:
+      context: '%{author_name} قام بذكرك خلال النقاش "%{discussion_title}"'
+    new_motion_created:
+      subject: 'المقترح: %{proposal_title}'
+      context: '%{author} قام بإنشاء مقترح في %{group_full_name}:'
+    proposal_closed:
+      proposal_has_closed: لقد تم إغلاق المقترح.
+      specify_outcome_and_notify_group: 'قم بإنشاء نتيجة و إرسالها إلى مجموعتك!'
+      specify_outcome_and_notify_group_html: 'قم بإنشاء نتيجة و إرسالها إلى مجموعتك! '
+      subject: 'تم إغلاق المقترح - %{which}'
+    proposal_outcome:
+      subject: 'نتيجة المقترح: %{motion}'
     proposal_closing_soon:
+      closes_on: 'يغلق في '
+      closes_at: يغلق في
       closes_in: سيغلق خلال
+      subject: 'سيغلق خلال 24 ساعة: %{proposal_title}'
+      headline: 'مقترح %{author} في %{group} سيغلق قريباً: '
+      summary: ملخص
+    thread_mailer:
+      footer_text: 'قم بالرد مباشرة على هذه الرسالة أو استعرضها على %{hostname}:'
+      reply_or_view_online_html: "قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>."
+      turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
+      turn_off_notifications_text: 'قم بإطفاء الرسائل الالكترونية لهذا النقاش: %{url}'
+      turn_on_notifications_html: "<a href='%{url}'>قم بتشغيل الرسائل الالكترونية لهذا النقاش</a> لاستقبال المزيد من النشاطات. "
+      turn_on_notifications_text: 'قم بتشغيل الرسائل الالكترونية لاستقبال المزيد من النشاطات في هذا النقاش: %{url}'
+      change_email_preferences_html: "قم بتغيير <a href='%{email_preferences_url}'>تفضيلات البريد الالكتروني</a> لإلغاء الإشتراك في هذه الرسالة الالكترونية."
+      change_preferences: 'تغيير تفضيلات البريد الالكتروني خاصتك:'
+      new_motion: '%{who} قام باقتراح: '
+      motion_closing_soon: 'مقترحات ستغلق خلال 24 ساعة: '
+      proposal_closed: 'مقترح تم إغلاقه: '
+      specify_outcome_html: "لقد تم إغلاق مقترحك. <a href='%{link}'>حدد نتيجة</a> لتدع الآخرين يعرفو ماهي النتيجة."
+      specify_outcome: 'لقد تم إغلاق مقترحك. حدد النتيجة لتدع الآخرين يعرفون ما هي النتيجة: '
+      outcome_created: '%{who} قام بتحديد نتيجة مقترح: '
+      you_agreed: 'أنت %{past_tense_position} '
   footer:
     about: حول
     blog: مدونة
-    contact: تواصل معنا
+    contact: جهة اتصال
     help: مساعدة
-    privacy: الخصوصة
-    public_groups: المجموعات المفتوحة للعموم
+    privacy: الخصوصية
+    pricing: تسعير
+    public_groups: المجموعات العامة
     terms: شروط الخدمة
+    independent_install_html: '%{hostname} يقوم بتشغيل نسخة مستقلة من لوميو:  <a href="http://github.com/loomio/loomio">قم بمعرفة المزيد</a>.'
   start_group_form:
+    enable_angular:
+      header: مجموعات جديدة تبدأ في لوميو 1.0
+      subtitle: 'لبدء مجموعة جديدة، عليك أن تقوم بتشغيل النسخة الجديدة من لوميو: '
+      switch_to_angular: 'ابدأ مجموعة على لوميو الجديد:'
+      helptext: "لقد قمنا بإعادة بناء لوميو من الصفر. يمكنك قراءة المزيد حول ماهو الجديد <a href=\"/angular\">هنا</a>. \n<br/>سيكون بإمكانك أن تعود إلى النسخة القديمة في أي وقت."
+    header: ابدأ مجموعة جديدة
+    form_error: بعض المعلومات مفقودة أو غير صحيحة.
+    name: اسمك
+    name_error: يطلب الاسم
+    email: عنوان بريدك الالكتروني
+    email_error: عنوان البريد الالكتروني ليس صالحاً.
     group_name: اسم المجموعة
     group_description: وصف المجموعة
+    group_description_placeholder: قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.
+    group_name_error: يطلب اسم المجموعة.
+    pricing_html: "في غضون 30 يوماً سنطلب منك أن تختار <a href='%{link}' target='_blank'>خطة تسعير</a>."
+    terms_html: "عبر بدء مجموعة، أنت توافق على <a href='%{link}' target='_blank'>شروط الخدمة</a> الخاصة بلوميو. "
+    success:
+      header: 'لقد انتهيت تقريباً! راجع بريدك الالكتروني.'
+      email_delivered: 'لقد قمنا بإرسال رسالة الكترونية إلى %{email}. الرجاء اتباع الرابط في داخل الرسالة لإنشاء مجموعتك الجديدة.'
+      email_not_arrived: لم يتم استقبال الرسالة الالكترونية؟
+      please_hold: الرجاء انتظار وصول الرسالة الالكترونية حتى 5 دقائق و قم بالتأكد من صندوق البريد المؤذي.
+    start_making_decisions: 'لنبدأ باتخاذ القرارات معاً على لوميو، أنشئ مجموعتك مجاناً: '
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: لم نقم بإرسال دعوات لعناوين البريد الالكتروني التي زودتها لأنها تعود لأشخاص هم مسبقاً أعضاء في المجموعة.
+  pricing_page:
+    header: خطط
+    gift: منحة
+    standard: قياسية
+    plus: زائدة
+    free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
+    get_started_for_free: قم بالبدء مجاناً
+    gift_body_html: |
+      <p>للمجموعات التي لا تمتلك ميزانية لدفع الاشتراك</p>
+
+      <p>دعم معتمد على التبرعات، دون ضرورة للدفع.</p>
+    gift_donation_ask: سنقوم بطلب تبرعات من أعضاء مجموعتك.
+    unlimited_members: عدد غير محدود من الأعضاء.
+    unlimited_decisions: عدد غير محدود من القرارات.
+    email_support: بريد إلكتروني للدعم
+    standard_price_html: >
+      <strong>19 دولار أمريكي</strong> في الشهر <br><span>أو</span> دولار أمريكي
+      190 في السنة
+    plus_body: 'كل شيء قياسي، زائد:'
+    premium_support: دعم ممتاز
+    custom_url: URL مخصص
+    usage_statistics: إحصائيات الاستخدام
+    plus_price_html: >
+      <strong> إما 197 دولار أمريكي</strong> في الشهر <br><span>أو</span> في
+      السنة 1790 دولار أمريكي
+  password_reset:
+    email_guidelines_html: >
+      <p>قم بإدخال عنوان البريد الإلكتروني لحسابك على لوميو في الحقل في الأسفل
+      و سيتم تزويدك برابط لإعادة ضبط كلمة المرور.</p>
+
+      <p>إن كنت معتاداً على تسجيل الدخول عبر فيسبوك، غوغل، تويتر، أو بيرسونا، قم
+      بإدخال عنوان البريد الالكتروني المرتبط بذاك الحساب.</p>
+    reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
+    length_restriction: على كلمة المرور أن تتألف من 8 محارف.
+    forbidden_passwords: 'كلمات المرور المألوفة مثل "password" ممنوعة لإبقاء حسابك آمناً.'
+  introduction_thread:
+    title: 'أهلا بك في %{group_name}'
+    description: >
+      رجاء خذ دقيقة لتعرف عن نفسك: **انشر تعليقاً** في الحقل في الأسفل.
+
+
+
+      إن كان لديك نية واضحة لمجموعة لوميو هذه، يمكنك أن تشاركها هنا حتى يكون لدى
+      الجميع فكرة عن ماذا يريدون أن يحققوا معاً.
+  how_it_works_thread:
+    title: كيفية استخدام لوميو
+    description: "أهلا بك في لوميو، مساحة افتراضية لصناعة قرارات مشتركة. \n\nهذا مثال عن النقاشات **موضوع**. لماذا لا تستخدم هذه المساحة لتجرب مميزات لوميو؟\n\nأنت الآن تقرأ موضع **سياق**. قم باستخدام هذه المساحة لإعطاء معلومات قد تحتاجها المجموعة من أجل نقاش مثمر.\n\nلوحة **المقترح** هي حيث يمكنك صنع القرارات. يمكنك بدء مقترحات و المشاركة بها هناك.\n\nلوحة **النشاط** في الأسفل تظهر لك كل ما حدث في هذا الموضوع.\n\n"
+  first_comment:
+    body: "مرحباً، أنا المخدم المساعد في لوميو.\n\nإن كنت تريد أن تلفت انتباه شخص معين في مجموعتك، قم بكتابة @ في حقل التعليق، ومن ثم اكتب اسم الشخص :)\n\nهاك بعض الأشياء التي قد ترغب في أن تجربها:\n\n- قم بتحميل [صورة الملف الشخصي](/profile)\n- قم بتعديل [إعدادات البريد الالكتروني](/email_preferences)\n- قم بتقديم نفسك للمجموعة في [موضوع الترحيب في%{group_name}]  \n(%{thread_url})\n\nإن كان لديك أي سؤال، المكان الأول الذي عليك مراجعته هو [دليل إرشادات لوميو] (http://help.loomio.org).\n"
+  first_proposal:
+    name: 'مقترح تجريبي: هيا بنا! '
+    description: "هذا هو مقترح **وصف**. هنا يمكنك التوضيح حول خطوات المقترح و تزويد معلومات كافية كي يستطيع الأعضاء اتخاذ قرار. \n\nللمشاركة في المقترح، قم باختيار أحد الخيارات التالية:\n\n\n- **أوافق** و الذي يعني أنك راض عن المقترح.\n- **أمتنع** و الذي يعني أنك راض بأن تدع المجموعة تقرر دونك.\n- **لا أوافق** و الذي يعني أنه قد يكون هناك بديل أفضل، و لكنك تنتوي أن توافق على قرار المجموعة.\n- **أعترض** و الذي يعني أنه لديك اعتراض جدي و أنك غير راض على الإطلاق بالمتابعة بهذا الاقتراح.\n\nعندما تختار قرارك، سيتم توجيهك لتدلي بتبرير مختصر حول سبب موقفك. يمكنك تغيير موقفك في أي وقت ما دام المقترح مفتوحاً.\n\n\n\n"
+  contact_page:
+    contact_us: اتصل بنا
+    faq_prompt_html: لديك سؤال لفريق لوميو؟ قبل أن تتصل بنا، قد تجد إجابة سؤالك في الأسئلة المتكررة.
+    contact_information: إن لم تجد ما تبحث عنه، يمكنك إيجاد معلومات التواصل معنا في أسفل الصفحة.
+    contact_form: نموذج التواصل
+    labels:
+      name: اسمك
+      email: عنوان بريدك الإلكتروني
+      message: رسالتك
+      submit: أرسل الرسالة
+    messages:
+      email_html: "قم بملء هذا النموذج، أو أرسل رسالة الكترونية إلى<a href='mailto:%{email}'>%{email}</a>"
+      social_html: >
+        يمكنك أيضاً الانضمام لنا على <br/><a href='%{facebook}'
+        target='_blank'>facebook</a>, <a href='%{google}'
+        target='_blank'>google+</a> و <a href='%{twitter}'
+        target='_blank'>twitter</a>!

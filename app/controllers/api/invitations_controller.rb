@@ -5,7 +5,7 @@ class API::InvitationsController < API::RestfulController
                                                      group: load_and_authorize(:group, :invite_people),
                                                      inviter: current_user,
                                                      message: invitation_form_params[:message]) }
-    respond_with_collection
+    collection.any? ? respond_with_collection : respond_with_errors
   end
 
   def pending
@@ -28,6 +28,10 @@ class API::InvitationsController < API::RestfulController
 
   def email_addresses
     invitation_form_params[:emails].scan(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/).take(100)
+  end
+
+  def respond_with_errors
+    render json: {errors: { emails: [  I18n.t('invitation_form.error.all_email_addresses_belong_to_members') ]}}, root: false, status: 422
   end
 
 end

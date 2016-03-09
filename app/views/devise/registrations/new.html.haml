@@ -32,7 +32,5 @@
                     = t :sign_up_with_google
                   = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
                     = t :sign_up_with_twitter
-                  = link_to user_omniauth_authorize_path(:browser_id), class: 'btn btn-default btn-block btn-lg login', id: 'persona-login-btn' do
-                    = t :sign_up_with_persona
 
           .terms= t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?

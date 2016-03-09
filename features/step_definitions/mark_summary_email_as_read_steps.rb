@@ -31,14 +31,6 @@ Given(/^I am a logged out user with an unread discussion$/) do
   expect(MotionReader.for(user: @user, motion: @motion).unread_activity_count).to eq 2
 end
 
-When(/^I mark the email as read$/) do
-  visit email_actions_mark_summary_email_as_read_path(
-    time_start: @time_start.utc.to_i,
-    time_finish: 30.minutes.ago.utc.to_i,
-    unsubscribe_token: @user.unsubscribe_token
-  )
-end
-
 When(/^I read the summary email with images enabled$/) do
   visit email_actions_mark_summary_email_as_read_path(
     time_start: @time_start.utc.to_i,
@@ -81,4 +73,3 @@ end
   #@discussion_reader = DiscussionReader.for(user: @user, discussion: @discussion)
   #@discussion_reader.unread_comments_count.should == 0
 #end
-

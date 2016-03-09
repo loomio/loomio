@@ -37,11 +37,6 @@ sr:
       headlines: Naslovi
       mark_as_read: Označi kao pročitano
       thanks_for_reading: 'Hvala na čitanju, prijatan dan!'
-      click_here_to_mark_all_as_read_html: >
-        Evo šta se dogodilo na Lumiju juče.
-
-        Kada pročitate, škljocnite <a href="%{link}">označi kao pročitano</a> da
-        ukloite iz svog Lumio sandučeta sa porukama.
       marked_as_read_success: Sve ePoruke su označene kao pročitane
     comment_replied_to:
       context: '%{author_name} je odgovorio/la na tvoj komentar u diskusiji "%{discussion_title}"'
@@ -61,7 +56,6 @@ sr:
       view_group: Ovde možete odobriti ili odbiti zahtev
     mentioned:
       context: '%{author_name} Vas je pomenuo/la tokom diskusije "%{discussion_title}"'
-      subject: '%{who} te je pomenuo/la u grupi %{which} na Lumiju'
     new_motion_created:
       subject: 'Predlog: %{proposal_title}'
       context: '%{author} je predložio/la u %{group_full_name}:'

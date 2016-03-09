@@ -20,6 +20,8 @@ class Invitation < ActiveRecord::Base
   scope :chronologically, -> { order('id asc') }
   before_save :ensure_token_is_present
 
+  delegate :name, to: :inviter, prefix: true, allow_nil: true
+
   scope :not_cancelled,  -> { where(cancelled_at: nil) }
   scope :pending, -> { not_cancelled.single_use.where(accepted_at: nil) }
   scope :shareable, -> { not_cancelled.where(single_use: false) }
@@ -28,10 +30,6 @@ class Invitation < ActiveRecord::Base
 
   def recipient_first_name
     recipient_name.split(' ').first
-  end
-
-  def inviter_name
-    inviter.name
   end
 
   def group

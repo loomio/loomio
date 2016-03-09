@@ -1,0 +1,37 @@
+.registered-app-page {
+  @include card;
+}
+
+.registered-app-page__title {
+  line-height: 50px;
+}
+
+.registered-app-page__flex {
+  @include displayFlex;
+  align-items: flex-start;
+}
+
+.registered-app-page__notice {
+  @include fontSmall;
+  margin-bottom: 10px;
+}
+
+.registered-app-page__status {
+  margin-bottom: 10px;
+}
+
+.registered-app-page__revoke-access {
+  margin-bottom: 10px;
+}
+
+.registered-app-page__edit {
+  margin-right: 10px;
+}
+
+.registered-app-page__avatar {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+  border: 4px solid #fff;
+}

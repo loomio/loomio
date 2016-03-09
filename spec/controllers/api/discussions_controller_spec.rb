@@ -21,59 +21,89 @@ describe API::DiscussionsController do
 
   before do
     group.add_admin! user
-    sign_in user
+  end
+
+  context 'as an oauthed user' do
+    let(:user) { create(:user) }
+    let(:access_token) { create :access_token, resource_owner_id: user.id }
+
+    it 'can fetch records' do
+      discussion; another_discussion
+      get :dashboard, access_token: access_token.token
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      discussion_ids = json['discussions'].map { |d| d['id'] }
+      expect(discussion_ids).to include discussion.id
+      expect(discussion_ids).to_not include another_discussion.id
+    end
+
+    it 'returns forbidden if the access token is not found' do
+      get :dashboard, access_token: "blargety blarg"
+      expect(response.status).to eq 403
+    end
+
+    it 'returns unauthorized if the access token has been revoked' do
+      access_token.update(revoked_at: 2.days.ago)
+      get :dashboard, access_token: access_token.token
+      expect(response.status).to eq 401
+    end
+
+    it 'returns unauthorized if the access token is expired' do
+      access_token.update(expires_in: 0)
+      get :dashboard, access_token: access_token.token
+      expect(response.status).to eq 401
+    end
   end
 
   describe 'inbox' do
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-
       it 'responds with forbidden for logged out users' do
         get :inbox
         expect(response.status).to eq 403
       end
     end
 
-    before do
-      reader.viewed!
-      group.add_member! another_user
-    end
+    context 'logged in' do
+      before do
+        sign_in user
+        reader.viewed!
+        group.add_member! another_user
+      end
 
-    it 'returns unread threads' do
-      CommentService.create(comment: new_comment, actor: another_user)
-      get :inbox
-      json = JSON.parse(response.body)
-      discussion_ids = json['discussions'].map { |d| d['id'] }
-      expect(discussion_ids).to include discussion.id
-    end
+      it 'returns unread threads' do
+        CommentService.create(comment: new_comment, actor: another_user)
+        get :inbox
+        json = JSON.parse(response.body)
+        discussion_ids = json['discussions'].map { |d| d['id'] }
+        expect(discussion_ids).to include discussion.id
+      end
 
-    it 'does not return read threads' do
-      get :inbox
-      json = JSON.parse(response.body)
-      expect(json['discussions']).to be_blank
-    end
+      it 'does not return read threads' do
+        get :inbox
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to be_blank
+      end
 
-    it 'does not return threads in muted discussions' do
-      CommentService.create(comment: new_comment, actor: another_user)
-      DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
-      get :inbox
-      json = JSON.parse(response.body)
-      expect(json['discussions']).to be_blank
-    end
+      it 'does not return threads in muted discussions' do
+        CommentService.create(comment: new_comment, actor: another_user)
+        DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
+        get :inbox
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to be_blank
+      end
 
-    it 'does not return threads in muted groups' do
-      CommentService.create(comment: new_comment, actor: another_user)
-      Membership.find_by(user: user, group: group).set_volume! :mute
-      get :inbox
-      json = JSON.parse(response.body)
-      expect(json['discussions']).to be_blank
+      it 'does not return threads in muted groups' do
+        CommentService.create(comment: new_comment, actor: another_user)
+        Membership.find_by(user: user, group: group).set_volume! :mute
+        get :inbox
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to be_blank
+      end
     end
   end
 
   describe 'dashboard' do
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
-
       it 'responds with forbidden for logged out users' do
         get :dashboard
         expect(response.status).to eq 403
@@ -89,6 +119,7 @@ describe API::DiscussionsController do
       let(:motionless_discussion) { create :discussion, group: group }
 
       before do
+        sign_in user
         another_group.add_member! user
         subgroup.add_member! user
         discussion.reload
@@ -155,6 +186,7 @@ describe API::DiscussionsController do
       let(:not_recent) { create :discussion, group: group, last_activity_at: 5.days.ago, title: 'not_recent' }
 
       before do
+        sign_in user
         recent; not_recent
       end
 
@@ -197,23 +229,25 @@ describe API::DiscussionsController do
   end
 
   describe 'show' do
-    it 'returns the discussion json' do
-      proposal
-      get :show, id: discussion.key
-      json = JSON.parse(response.body)
-      expect(json.keys).to include *(%w[users groups proposals discussions])
-      expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
-    end
+    context 'logged in' do
+      before { sign_in user }
+      it 'returns the discussion json' do
+        proposal
+        get :show, id: discussion.key
+        json = JSON.parse(response.body)
+        expect(json.keys).to include *(%w[users groups proposals discussions])
+        expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
+      end
 
-    it 'returns the reader fields' do
-      DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
-      get :show, id: discussion.key
-      json = JSON.parse(response.body)
-      expect(json['discussions'][0]['starred']).to eq true
+      it 'returns the reader fields' do
+        DiscussionReader.for(user: user, discussion: discussion).update(starred: true)
+        get :show, id: discussion.key
+        json = JSON.parse(response.body)
+        expect(json['discussions'][0]['starred']).to eq true
+      end
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
       let(:public_discussion) { create :discussion, private: false }
       let(:private_discussion) { create :discussion, private: true }
 
@@ -233,6 +267,8 @@ describe API::DiscussionsController do
   end
 
   describe 'mark_as_read' do
+    before { sign_in user }
+
     let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
     before do
@@ -277,6 +313,8 @@ describe API::DiscussionsController do
   end
 
   describe 'move' do
+    before { sign_in user }
+
     context 'success' do
       it 'moves a discussion' do
         another_group.users << user
@@ -302,7 +340,6 @@ describe API::DiscussionsController do
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
       let!(:public_discussion) { create :discussion, private: false }
       let!(:private_discussion) { create :discussion, private: true }
 
@@ -315,56 +352,62 @@ describe API::DiscussionsController do
       end
     end
 
-    context 'success' do
-      it 'returns discussions filtered by group' do
-        get :index, group_id: group.id, format: :json
-        json = JSON.parse(response.body)
-        expect(json.keys).to include *(%w[discussions])
-        discussions = json['discussions'].map { |v| v['id'] }
-        expect(discussions).to include discussion.id
-        expect(discussions).to_not include another_discussion.id
-      end
+    context 'logged in' do
+      before { sign_in user }
 
-      it 'does not display discussions not visible to the current user' do
-        cant_see_me = create :discussion
-        get :index, group_id: group.id, format: :json
-        json = JSON.parse(response.body)
-        discussions = json['discussions'].map { |v| v['id'] }
-        expect(discussions).to_not include cant_see_me.id
-      end
+      context 'success' do
+        it 'returns discussions filtered by group' do
+          get :index, group_id: group.id, format: :json
+          json = JSON.parse(response.body)
+          expect(json.keys).to include *(%w[discussions])
+          discussions = json['discussions'].map { |v| v['id'] }
+          expect(discussions).to include discussion.id
+          expect(discussions).to_not include another_discussion.id
+        end
 
-      it 'can display content from a specified public group' do
-        public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
-        can_see_me = create :discussion, group: public_group, private: false
-        get :index, group_id: public_group.id, format: :json
-        json = JSON.parse(response.body)
-        discussions = json['discussions'].map { |v| v['id'] }
-        expect(discussions).to include can_see_me.id
-      end
+        it 'does not display discussions not visible to the current user' do
+          cant_see_me = create :discussion
+          get :index, group_id: group.id, format: :json
+          json = JSON.parse(response.body)
+          discussions = json['discussions'].map { |v| v['id'] }
+          expect(discussions).to_not include cant_see_me.id
+        end
 
-      it 'responds to a since parameter' do
-        four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
-        two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
-        get :index, group_id: group.id, format: :json, since: 3.months.ago
-        json = JSON.parse(response.body)
-        discussions = json['discussions'].map { |v| v['id'] }
-        expect(discussions).to include two_months_ago.id
-        expect(discussions).to_not include four_months_ago.id
-      end
+        it 'can display content from a specified public group' do
+          public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
+          can_see_me = create :discussion, group: public_group, private: false
+          get :index, group_id: public_group.id, format: :json
+          json = JSON.parse(response.body)
+          discussions = json['discussions'].map { |v| v['id'] }
+          expect(discussions).to include can_see_me.id
+        end
 
-      it 'responds to an until parameter' do
-        four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
-        two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
-        get :index, group_id: group.id, format: :json, until: 3.months.ago
-        json = JSON.parse(response.body)
-        discussions = json['discussions'].map { |v| v['id'] }
-        expect(discussions).to include four_months_ago.id
-        expect(discussions).to_not include two_months_ago.id
+        it 'responds to a since parameter' do
+          four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
+          two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
+          get :index, group_id: group.id, format: :json, since: 3.months.ago
+          json = JSON.parse(response.body)
+          discussions = json['discussions'].map { |v| v['id'] }
+          expect(discussions).to include two_months_ago.id
+          expect(discussions).to_not include four_months_ago.id
+        end
+
+        it 'responds to an until parameter' do
+          four_months_ago = create :discussion, group: group, created_at: 4.months.ago, last_activity_at: 4.months.ago
+          two_months_ago = create :discussion, group: group, created_at: 2.months.ago, last_activity_at: 2.months.ago
+          get :index, group_id: group.id, format: :json, until: 3.months.ago
+          json = JSON.parse(response.body)
+          discussions = json['discussions'].map { |v| v['id'] }
+          expect(discussions).to include four_months_ago.id
+          expect(discussions).to_not include two_months_ago.id
+        end
       end
     end
   end
 
   describe 'star' do
+    before { sign_in user }
+
     context 'success' do
       it 'stars a thread' do
         put :star, id: discussion.id, format: :json
@@ -383,6 +426,8 @@ describe API::DiscussionsController do
   end
 
   describe 'unstar' do
+    before { sign_in user }
+
     context 'success' do
       it 'unstars a thread' do
         reader = DiscussionReader.for(user: user, discussion: discussion)
@@ -405,6 +450,8 @@ describe API::DiscussionsController do
   end
 
   describe 'set_volume' do
+    before { sign_in user }
+
     context 'success' do
       it 'sets the volume of a thread' do
         reader = DiscussionReader.for(user: user, discussion: discussion)
@@ -427,6 +474,8 @@ describe API::DiscussionsController do
   end
 
   describe 'update' do
+    before { sign_in user }
+
     context 'success' do
       it "updates a discussion" do
         post :update, id: discussion.id, discussion: discussion_params, format: :json
@@ -459,6 +508,8 @@ describe API::DiscussionsController do
   end
 
   describe 'create' do
+    before { sign_in user }
+
     context 'success' do
       it "creates a discussion" do
         post :create, discussion: discussion_params, format: :json

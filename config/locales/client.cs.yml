@@ -431,7 +431,6 @@ cs:
       muted_aria_label: Momentálně se zobrazují ztlumená vlákna
       muted_description: Zobrazit jen ztlumená vlákna
     aria_thread:
-      title: 'Název vlákna: {{title}}.'
       unread: '{{count}} nepřečtených položek.'
       current_proposal: 'Současný návrh: {{name}}.'
       you_voted: 'Volil(a) jste: {{position}}.'

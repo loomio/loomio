@@ -37,11 +37,6 @@ be-BY:
       headlines: Апошнія навіны
       mark_as_read: Адзначыць як прачытанае
       thanks_for_reading: 'Дзякуем, што прачыталі! Цудоўнага вам дня!'
-      click_here_to_mark_all_as_read_html: >
-        Вось што адбывалася на Loomio учора.
-
-        Калі ўсё прачытаеце, націсніце на <a href="%{link}">адзначыць як
-        прачытанае</a>, каб убраць гэтыя паведамленні са сваёй скрыні.
       marked_as_read_success: Усе паведамленні з ліста былі пазначаны як прачытаныя
     comment_replied_to:
       context: 'Карыстальнік %{author_name} адказаў на ваш каментар у абмеркаванні "%{discussion_title}"'
@@ -61,7 +56,6 @@ be-BY:
       view_group: Вы можаце зацвердзіць ці адмовіць запыт тут
     mentioned:
       context: 'Карыстальнік %{author_name} узгадаў вас у абмеркаванні "%{discussion_title}"'
-      subject: 'Карыстальнік %{who} узгадаў вас ў гурпе %{which} на Loomio'
     new_motion_created:
       subject: 'Прапанова: %{proposal_title}'
       context: 'Карыстальнік %{author} стварыў прапанову ў %{group_full_name}:'

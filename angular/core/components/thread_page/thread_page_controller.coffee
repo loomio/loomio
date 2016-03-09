@@ -1,5 +1,8 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
+
+  @activeProposalKey = $routeParams.proposal or $location.search().proposal
+  @activeCommentId   = parseInt($routeParams.comment or $location.search().comment)
 
   handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
@@ -17,10 +20,10 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @elementToFocus = ->
-    if @proposalToFocus or (@discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key)
-      "#proposal-#{@proposalToFocus.key}"
-    else if @commentToFocus
-      "#comment-#{@commentToFocus.id}"
+    if @proposal
+      "#proposal-#{@proposal.key}"
+    else if @comment
+      "#comment-#{@comment.id}"
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
       '.activity-card__last-read-activity'
     else
@@ -32,9 +35,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
-        @proposalToFocus = @discussion.activeProposal()
-
       @sequenceIdToFocus = @discussion.lastReadSequenceId # or location hash when we put it back in.
 
       $rootScope.$broadcast 'currentComponent', { page: 'threadPage'}
@@ -46,15 +46,19 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
-  $scope.$on 'threadPageEventsLoaded',    (event) =>
+  $scope.$on 'threadPageEventsLoaded',    (e, event) =>
+    $window.location.reload() if @eventRequiresReload(event)
     @eventsLoaded = true
-    commentId = parseInt($location.search().comment)
-    @commentToFocus = Records.comments.find(commentId) unless isNaN(commentId)
+    @comment = Records.comments.find(@activeCommentId) unless isNaN(@activeCommentId)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
   $scope.$on 'threadPageProposalsLoaded', (event) =>
     @proposalsLoaded = true
-    @proposalToFocus = Records.proposals.find $location.search().proposal
+    @proposal = Records.proposals.find(@activeProposalKey)
+    $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
+
+  @eventRequiresReload = (event) ->
+    event and event.discussion() == @discussion and !@discussion.eventIsLoaded(event)
 
   @group = ->
     @discussion.group()

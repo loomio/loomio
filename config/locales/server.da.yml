@@ -36,11 +36,6 @@ da:
       subject: I går på Loomio
       mark_as_read: Marker som læst
       thanks_for_reading: 'Tak fordi du læste, hav en god dag!'
-      click_here_to_mark_all_as_read_html: >
-        Her er hvad der skete på Loomio i går.
-
-        Når du har læst det så klik <a href="%{link}">marker som læst</a> for at
-        fjerne det fra din Loomio-indbakke.
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
     group_membership_approved:
       intro: "Din anmodning om adgang til gruppen '%{group_name}' på Loomio er blevet godkendt."
@@ -57,7 +52,6 @@ da:
       view_group: Du kan godkende eller afvise anmodningen her
     mentioned:
       context: '%{author_name} omtalte dig under diskussion af "%{discussion_title}"'
-      subject: '%{who} omtalte dig i gruppen %{which} på Loomio'
     new_motion_created:
       subject: 'Forslag: %{proposal_title}'
       context: '%{author} oprettede et forslag i %{group_full_name}:'

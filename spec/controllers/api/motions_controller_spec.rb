@@ -4,6 +4,7 @@ describe API::MotionsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:group) { create :group, is_visible_to_public: true  }
+  let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group, private: false }
   let(:private_discussion) { create :discussion, group: group, private: true }
   let(:private_motion) { create :motion, discussion: private_discussion }
@@ -14,6 +15,7 @@ describe API::MotionsController do
     description: 'is it me you\'re looking for?',
     discussion_id: discussion.id
   }}
+  let(:my_vote) { create :vote, motion: motion, author: user }
 
   before do
     group.admins << user
@@ -85,6 +87,40 @@ describe API::MotionsController do
           get :index, discussion_id: private_discussion.id, format: :json
         end
       end
+    end
+  end
+
+  describe 'closed' do
+    it 'returns closed motions for a group' do
+      my_vote
+      MotionService.close(motion)
+      post :closed, group_key: group.key, format: :json
+      json = JSON.parse(response.body)
+      expect(json.keys).to include *(%w[votes proposals discussions groups])
+      group_ids = json['groups'].map { |g| g['id'] }
+      discussion_ids = json['discussions'].map { |d| d['id'] }
+      motion_ids = json['proposals'].map { |v| v['id'] }
+      vote_ids = json['votes'].map { |v| v['id'] }
+
+      expect(group_ids).to include group.id
+      expect(discussion_ids).to include discussion.id
+      expect(motion_ids).to include motion.id
+      expect(vote_ids).to include my_vote.id
+
+      expect(group_ids).to_not include another_group.id
+      expect(discussion_ids).to_not include private_discussion.id
+      expect(motion_ids).to_not include another_motion.id
+    end
+
+    it 'does not return votes if I havent voted' do
+      MotionService.close(motion)
+      post :closed, group_key: group.key, format: :json
+      json = JSON.parse(response.body)
+      expect(json.keys).to_not include 'votes'
+    end
+
+    it 'returns unauthorized for groups youre not a member of' do
+      post :closed, group_key: another_group.key
     end
   end
 

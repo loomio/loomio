@@ -97,6 +97,11 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     unreadPosition: ->
       @lastReadSequenceId + 1
 
+    eventIsLoaded: (event) ->
+      event.sequenceId or
+      _.find @events(), (e) ->
+        e.kind == 'new_comment' and e.commentId == event.comment().id
+
     minLoadedSequenceId: ->
       item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
       item.sequenceId

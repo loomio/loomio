@@ -70,7 +70,7 @@ class Discussion < ActiveRecord::Base
 
   scope :search_for, ->(query, user, opts = {}) do
     query = sanitize(query)
-     select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query} as query")
+     select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
     .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
     .from(SearchVector.search_for(query, user, opts))
     .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")

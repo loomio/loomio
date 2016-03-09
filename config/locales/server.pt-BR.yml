@@ -38,11 +38,7 @@ pt-BR:
       headlines: Em destaque
       mark_as_read: Marcar como lida
       thanks_for_reading: 'Obrigado por ler, tenha um ótimo dia!'
-      click_here_to_mark_all_as_read_html: >
-        Aconteceu no Loomio ontem.
-
-        Depois de ler, clique em <a href="%{link}">marcar como lida</a> para
-        remover da caixa de entrada do seu Loomio.
+      heres_what_happened: Eis o que aconteceu ontem no Loomio.
       marked_as_read_success: Tudo no e-mail foi marcado como lido
     comment_replied_to:
       context: '%{author_name} respondeu ao seu comentário na discussão "%{discussion_title}"'
@@ -63,7 +59,7 @@ pt-BR:
       view_group: Você pode aprovar ou recusar o pedido aqui
     mentioned:
       context: '%{author_name} mencionou você durante a discussão "%{discussion_title}"'
-      subject: '%{who} mencionou você no grupo %{which} no Loomio'
+      subject: '%{who} mencionou você durante a discussão "%{which}"'
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
       context: '%{author} criou uma proposta no grupo %{group_full_name}:'
@@ -131,6 +127,9 @@ pt-BR:
       email_not_arrived: O e-mail não chegou?
       please_hold: 'Por favor, aguarde até 5 minutos para o e-mail chegar e não se esqueça de verificar sua pasta de spam.'
     start_making_decisions: 'Para começar a tomar decisões em conjunto no Loomio, crie um grupo gratuitamente:'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo.
   pricing_page:
     header: Planos
     gift: Presente

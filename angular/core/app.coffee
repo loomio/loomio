@@ -73,6 +73,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/email_preferences', component: 'emailSettingsPage' },
     {path: '/d/:key', component: 'threadPage' },
     {path: '/d/:key/:stub', component: 'threadPage' },
+    {path: '/d/:key/comment/:comment', component: 'threadPage'},
+    {path: '/d/:key/proposal/:proposal', component: 'threadPage'},
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
@@ -80,9 +82,13 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
     {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },
-    {path: '/g/:key/:stub', component: 'groupPage' }
-    {path: '/u/:key', component: 'userPage' }
-    {path: '/u/:key/:stub', component: 'userPage' }
+    {path: '/g/:key/:stub', component: 'groupPage' },
+    {path: '/u/:key', component: 'userPage' },
+    {path: '/u/:key/:stub', component: 'userPage' },
+    {path: '/apps/authorized', component: 'authorizedAppsPage'}
+    {path: '/apps/registered', component: 'registeredAppsPage'}
+    {path: '/apps/registered/:id', component: 'registeredAppPage'}
+    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
   ])
 
   return

@@ -38,11 +38,7 @@ it:
       headlines: I Titoli
       mark_as_read: Contrassegnato come letto
       thanks_for_reading: 'Grazie per aver letto, buona giornata!'
-      click_here_to_mark_all_as_read_html: >
-        Ecco cos'è successo su Loomio ieri.
-
-        Una volta che l'hai letto, clicca <a href="%{link}">segna come letto</a>
-        per rimuoverlo della tua posta in arrivo di Loomio.
+      heres_what_happened: "Ecco cos'è successo ieri su Loomio"
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
     comment_replied_to:
       context: '%{author_name} ha risposto al tuo commento nella discussione  "%{discussion_title}"'
@@ -63,7 +59,7 @@ it:
       view_group: Puoi approvare o rifiutare la richiesta qui
     mentioned:
       context: '%{author_name} ti ha citato mentre discuteva su "%{discussion_title}"'
-      subject: '%{who} ti ha citato nel gruppo %{which} su Loomio'
+      subject: '%{who} ti ha menzionato discutendo di "%{which}"'
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
       context: '%{author} ha creato una proposta in %{group_full_name}:'

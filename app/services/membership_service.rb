@@ -8,6 +8,7 @@ class MembershipService
   def self.make_admin(membership:, actor:)
     actor.ability.authorize! :make_admin, membership
     membership.update admin: true
+    Events::NewCoordinator.publish!(membership, actor)
   end
 
   def self.remove_admin(membership:, actor:)

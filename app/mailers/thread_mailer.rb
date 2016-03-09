@@ -28,7 +28,7 @@ class ThreadMailer < BaseMailer
     @author = @comment.author
     send_thread_email(subject_key: 'email.mentioned.subject',
                       subject_params: { who: @author.name,
-                                        which: @discussion.group.full_name } )
+                                        which: @discussion.title } )
   end
 
   def comment_replied_to(recipient, event)

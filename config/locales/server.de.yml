@@ -37,11 +37,6 @@ de:
       headlines: Schlagzeilen
       mark_as_read: Als gelesen markieren
       thanks_for_reading: 'Vielen Dank fürs Lesen. Wir wünschen einen schönen Tag!'
-      click_here_to_mark_all_as_read_html: >
-        Hier ist, was gestern auf Loomio passiert ist.
-
-        Wenn Du es gelesen hast, klicke auf <a href="%{link}">als gelesen
-        markieren</a>, um es von Deiner Loomio-Inbox zu löschen.
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
     comment_replied_to:
       context: '%{author_name} erwähnte Dich in "%{discussion_title}"'
@@ -59,7 +54,6 @@ de:
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
     mentioned:
       context: '%{author_name} erwähnte Dich in "%{discussion_title}"'
-      subject: '%{who} hat dich erwähnt in der %{which} Gruppe bei Loomio'
     new_motion_created:
       subject: 'Vorschlag: %{proposal_title}'
       context: '%{author} hat einen Vorschlag in der Gruppe %{group_full_name} erstellt:'

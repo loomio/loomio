@@ -27,7 +27,8 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
-    copied: 'Copied'
+    copy: 'Copy text'
+    copied: 'Copied to clipboard'
     action:
       back: 'Back'
       close: 'Close'
@@ -36,7 +37,9 @@ en:
       update_settings: 'Update settings'
       reply: 'Reply'
       edit: 'Edit'
+      remove: 'Remove'
       like: 'Like'
+      back: 'Back'
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
@@ -47,6 +50,7 @@ en:
       loading: 'Loading'
       translate: 'Translate'
       translated: 'Translation by Bing Translator'
+      upload: 'Upload'
       uploading: 'Uploading'
     formatting_help:
       label: 'Formatting help'
@@ -236,6 +240,7 @@ en:
     motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{group}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{group}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
@@ -901,6 +906,8 @@ en:
     private: 'updated the thread privacy to'
     public_to_private: 'private'
     private_to_public: 'public'
+    private_title: 'updated the thread title and privacy'
+    description_private: 'updated the thread context and privacy'
     description_private_title: 'updated the thread title, context and privacy'
 
   contact_message_form:
@@ -1043,7 +1050,7 @@ en:
     enable:
       invite: 'Try the new Loomio!'
       title: 'Try the new Loomio'
-      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome before we release it to the general public."
+      intro: "We've rebuilt Loomio and we need your help to make sure it is awesome!"
       body_html: |
         <p></p>
         <h3>What's the difference anyway?</h3>
@@ -1057,9 +1064,8 @@ en:
           </ul>
         </p>
 
-        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions. You can change back to the old interface at any time.</p>
-        <p>Things will be changing slightly every day as we implement the feedback we get during this time. Some less frequently used features may not be there yet.</p>
-        <p>There is a link "Switch back to the old Loomio" in the bottom left corner of the new app. Click that link and you can switch back to the Loomio you're more used to. There is also a feedback form for you to enter any feedback you have.</p>
+        <p>It uses the same database as the old interface, meaning it will have all your existing groups and discussions.</p>
+        <p>There is a link to "Give feedback" in the bottom left corner. You'll also see a link there to "Switch back to old Loomio", which will remain available for the next little while.</p>
         <p>We really look forward to hearing your feedback, thanks for your time and support.</p>
 
       button_text: 'Enable the new Loomio'
@@ -1078,3 +1084,49 @@ en:
   emoji_picker:
     search: "Find an emoji..."
     no_emojis_found: "No emojis found for '{{term}}'!"
+
+  authorized_apps_page:
+    title: Authorized Apps
+    no_applications: "You haven't authorized any third party apps yet."
+    notice: "You've given the following third-party apps permission to use your account. Click 'Revoke' to disable them."
+    revoke: Revoke
+
+  registered_apps_page:
+    title: Registered Applications
+    no_applications: "You don't have any OAuth applications yet! Click below to create one."
+    name: Name
+    redirect_uris: Redirect URIs
+    create_new_application: New Application
+
+  registered_app_page:
+    uid: Application ID
+    secret: Application Secret
+
+  registered_app_form:
+    new_application_title: New Application
+    edit_application_title: Update Application
+    name_label: Name
+    name_placeholder: What is your application called?
+    redirect_uri_label: Redirect Uris
+    redirect_uri_placeholder: "The callback uri for your application, Eg: https://myapplication.com/loomio/callback"
+    redirect_uri_note: (one line per URI, use 'urn:ietf:wg:oauth:2.0:oob' for local tests)
+    new_application_submit: Create Application
+    edit_application_submit: Update Application
+    messages:
+      logo_changed: Logo updated.
+      created: "Created '{{name}}'"
+      updated: "Updated '{{name}}'"
+
+  remove_app_form:
+    title: Deactivate {{name}}
+    question: "Are you sure you want to deactivate the application '{{name}}'? This action cannot be undone."
+    submit: Deactivate
+    messages:
+      success: "'{{name}}' was successfully deactivated"
+
+  revoke_app_form:
+    title: Revoke access for {{name}}
+    question: "Are you sure you disallow '{{name}}' to use your account?"
+    submit: Revoke Access
+    messages:
+      success: "'{{name}}' can no longer use your account."

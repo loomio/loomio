@@ -38,11 +38,6 @@ fr:
       headlines: Les gros titres
       mark_as_read: Marquer comme lu
       thanks_for_reading: "Merci d'avoir lu ceci, passez une bonne journée !"
-      click_here_to_mark_all_as_read_html: >
-        Voici ce qui s'est passé hier sur Loomio.
-
-        Lorsque vous l'avez lu, cliquez sur <a href="%{link}">marquer comme
-        lu</a> pour le supprimer de votre Boîte de réception dans Loomio.
       marked_as_read_success: Tout le contenu de cet email a été marqué comme lu
     comment_replied_to:
       context: "%{author_name} a répondu à votre commentaire dans la discussion «\_%{discussion_title}\_»"
@@ -63,7 +58,6 @@ fr:
       view_group: Vous pouvez accepter ou rejeter cette demande
     mentioned:
       context: '%{author_name} vous a cité en discutant "%{discussion_title}"'
-      subject: '%{who} vous a cité dans le groupe %{which} sur Loomio'
     new_motion_created:
       subject: 'Proposition : %{proposal_title}'
       context: '%{author} a créé une proposition dans %{group_full_name}:'

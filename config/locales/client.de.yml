@@ -27,7 +27,6 @@ de:
     more_help: Weitere Hilfe
     models:
       proposal: Vorschlag
-    copied: Kopiert
     action:
       close: Schließen
       save: Sichern
@@ -669,7 +668,6 @@ de:
       muted_aria_label: Momentan werden nur stumm-geschaltete Diskussionen angezeigt
       muted_description: 'Nur Diskussionen anzeigen, die Du stumm geschaltet hast.'
     aria_thread:
-      title: 'Diskussionstitel:  {{title}}.'
       unread: '{{count}} ungelesene Einträge'
       current_proposal: 'Aktueller Vorschlag: {{name}}.'
       you_voted: 'Du hast folgendermaßen abgestimmt: {{position}}.'
@@ -950,49 +948,6 @@ de:
     enable:
       invite: 'Das neue Loomio testen!'
       title: Das neue Loomio testen
-      intro: 'Wir haben Loomio erneuert und wir benötigen Deine Hilfe, damit wir sicher sein können, dass es grandios ist bevor wir es der Öffentlichkeit präsentieren.'
-      body_html: >
-        <p></p>
-
-        <h3>Was ist denn eigentlich der Unterschied?</h3>
-
-
-
-        <p>
-
-          Das neue Interface ist wie das Alte, nur neuer:
-
-          <ul>
-
-            <li>Alles wird in Echtzeit aktualisiert.</li>
-
-            <li>Es ist für alle Endgeräte konzipiert: vom Smartphone bis zum
-        Desktop-PC</li>
-
-            <li>Es ist zugänglich für Menschen mit Sehbehinderung und in einen <a
-        href="https://www.loomio.org/translation">Haufen Sprachen</a> übersetzt
-
-          </ul>
-
-        </p>
-
-
-
-        <p>Es benutzt die gleiche Datenbank wie das alte Interface, was heißt,
-        dass alle Deine Gruppen und Diskussionen enthalten sind. Du kannst
-        jederzeit zum alten Interface wechseln.</p>
-
-        <p>Dinge werden sich schleichend ändern, in dem Zuge, wie wir Euer
-        Feedback implementieren. Einige kaum genutzte Features wird es noch nicht
-        geben.</p>
-
-        <p>Es gibt einen Link "Zum alten Loomio wechseln" am unteren, linken Eck
-        der neuen App. Klicke diesen Link und Du kannst zum alten, Dir bekannten
-        Loomio wechseln. Dort gibt es auch ein Feedback-Formular in welches Du
-        Rückmeldungen eingeben kannst, falls Du welche hast.</p>
-
-        <p>Wir würden uns sehr über Dein Feedback freuen. Vielen Dank für Deine
-        Zeit und Deine Unterstützung.</p>
       button_text: Das neue Loomio einrichten
     disable:
       title: 'Vielen Dank, dass Du das neue Loomio getestet hast'

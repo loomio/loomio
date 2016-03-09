@@ -386,7 +386,6 @@ pl:
       muted_aria_label: Pokazywane są wyciszone wątki
       muted_description: Przegląd tylko wątków wyciszonych
     aria_thread:
-      title: 'Tytuł wątku: {{title}}.'
       unread: '{{count}} nieprzeczytanych pozycji.'
       current_proposal: 'Aktualna rekomendacja: {{name}}.'
       you_voted: 'Głosowałeś/aś: {{position}}.'

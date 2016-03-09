@@ -24,6 +24,12 @@ describe 'Group Page', ->
         page.expectElement('.join-group-button__join-group')
 
   describe 'starting a group', ->
+
+    it 'redirects to dashboard and opens modal for logged in user with angular enabled', ->
+      page.loadPath('setup_new_group')
+      browser.get('start_group')
+      page.expectText '.group-form', 'Start a group'
+
     it 'starts an open group', ->
       page.loadPath('setup_new_group')
       page.click '.group-welcome-modal__close-button',
@@ -81,7 +87,6 @@ describe 'Group Page', ->
                  '.members-card__manage-members',
                  '.group-theme__name')
       page.expectNoElement('.group-welcome-modal')
-
 
   describe 'starting a subgroup', ->
     describe 'with a public parent', ->
@@ -280,6 +285,13 @@ describe 'Group Page', ->
                  '.change-volume-form__submit')
 
       page.expectText('.group-volume-card', 'Email everything')
+
+  describe 'handling drafts', ->
+    it 'handles empty draft privacy gracefully', ->
+      page.loadPath 'setup_group_with_empty_draft'
+      page.click '.group-welcome-modal__close-button',
+                 '.discussions-card__new-thread-button'
+      page.expectText('.privacy-notice', 'The thread will only be visible')
 
   describe 'starting a discussion', ->
     beforeEach ->

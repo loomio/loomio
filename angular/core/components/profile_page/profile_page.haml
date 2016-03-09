@@ -9,8 +9,8 @@
       %label{for: "user-picture-field", translate: "profile_page.picture_label"}
       %user_avatar{user: "profilePage.user", size: "featured"}
 
-      .profile-page__change-picture.lmo-vertical-spacer
-        %button.lmo-link{ng-click: "profilePage.changePicture()", translate: "profile_page.change_picture_link"}
+      .lmo-vertical-spacer
+        %button.profile-page__change-picture.lmo-link{ng-click: "profilePage.changePicture()", translate: "profile_page.change_picture_link"}
 
       .profile-page__profile-fieldset.lmo-vertical-spacer
         %label{for: "user-name-field", translate: "profile_page.name_label"}
@@ -32,8 +32,8 @@
       .profile-page__update-account.lmo-vertical-spacer
         %button.lmo-btn--submit.profile-page__update-button{ng-click: "profilePage.submit()", ng-disabled: "isDisabled", translate: "profile_page.update_profile"}
 
-      .profile-page__change-password.lmo-vertical-spacer
-        %button.lmo-link{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
+      .lmo-vertical-spacer
+        %button.profile-page__change-password.lmo-link{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
     .profile-page-card{ng-if: "profilePage.canDeactivateUser()"}
       %h3.lmo-h3{translate: "profile_page.deactivate_user.title"}
 

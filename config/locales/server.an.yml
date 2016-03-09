@@ -36,11 +36,6 @@ an:
       subject: Ahiere en Loomio
       mark_as_read: Marcar como leyiu
       thanks_for_reading: 'Gracias por leyer, que tiengas un buen día!'
-      click_here_to_mark_all_as_read_html: >
-        Isto ye o que succedió ahiere en Loomio.
-
-        Una vegada vusté l'haiga leito, clic  <a href="%{link}">marcar como
-        leyiu</a>  ta eliminar-lo de tu servilla de dentrada.
       marked_as_read_success: "Tot o conteniu d''o correu ha estau marcau como leyiu"
     group_membership_approved:
       intro: "A tuya petición ta accedir ta o grupo '%{group_name}' en Loomio ha estau aprebau."
@@ -57,7 +52,6 @@ an:
       view_group: Puetz acceptar u refusar a petición aquí
     mentioned:
       context: '%{author_name} te mencionó en a discusión  "%{discussion_title}"'
-      subject: '%{who} te mencionó en o grupo de Loomio %{which} '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
       context: '%{author} ha creau una propuesta en %{group_full_name}:'

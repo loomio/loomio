@@ -38,11 +38,6 @@ tr:
       headlines: Ana başlıklar
       mark_as_read: Okundu olarak işaretle
       thanks_for_reading: 'Okuduğunuz için teşekkürler. Güzel günler dileriz!'
-      click_here_to_mark_all_as_read_html: >
-        İşte dün Loomio'da neler oldu.
-
-        Bunu okuduktan sonra Loomio gelen kutusundan çıkarmak için <a
-        href="%{link}">okundu olarak işaretle</a> linkine tıklayınız.
       marked_as_read_success: "E-posta'daki herşey okundu olarak isaretlendi"
     comment_replied_to:
       context: '%{author_name} "%{discussion_title}" müzakeresindeki yorumunuzu yanıtladı'
@@ -63,7 +58,6 @@ tr:
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
     mentioned:
       context: "\"%{discussion_title}\" isimli müzakere'de %{author_name} sizden bahsetti"
-      subject: 'Loomio da %{who}  %{which} grubunda sizden bahsetti'
     new_motion_created:
       subject: 'Öneri: %{proposal_title}'
       context: '%{author} %{group_full_name} grubunda bir öneri oluşturdu:'
@@ -131,6 +125,9 @@ tr:
       email_not_arrived: E-posta gelmedi mi?
       please_hold: Lütfen e-postanın ulaşması için beş 5 dakika kadar bekleyin ve spam klasörünü kontrol ettiğinizden emin olun.
     start_making_decisions: 'Loomio üzerinde birlikte kararlar almaya başlamak için, ücretsiz bir grup kurun:'
+  invitation_form:
+    error:
+      all_email_addresses_belong_to_members: Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik.
   pricing_page:
     header: Planlar
     gift: Hediye

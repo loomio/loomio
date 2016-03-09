@@ -27,7 +27,8 @@ pt-BR:
     more_help: Mais ajuda
     models:
       proposal: Proposta
-    copied: Copiado
+    copy: Copiar texto
+    copied: Copiado para o clipboard
     action:
       close: Encerrar
       save: Salvar
@@ -35,7 +36,9 @@ pt-BR:
       update_settings: Atualizar configurações
       reply: Responder
       edit: Editar
+      remove: Remover
       like: Curtir
+      back: Voltar
       unlike: Curtir (desfazer)
       update: Atualização
       cancel: Cancelar
@@ -46,6 +49,7 @@ pt-BR:
       loading: Carregando
       translate: Traduzir
       translated: Tradução do Bing Tradutor
+      upload: Carregar
       uploading: Carregando
     formatting_help:
       label: Ajuda para formatação
@@ -200,6 +204,8 @@ pt-BR:
     header: Notificações
     new_discussion: '<strong>{{name}}</strong> iniciou uma discussão <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> criou uma proposta <strong>{{proposal}}</strong>'
+    motion_closed: 'Proposta encerrada: <strong>{{proposal}}</strong>'
+    publish_outcome: Publicar um resultado
     motion_closed_by_user: '<strong>{{name}}</strong> fechou a proposta <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Proposta encerrada <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} sobre a proposta <strong>{{proposal}}</strong>'
@@ -215,11 +221,13 @@ pt-BR:
     motion_outcome_created: '<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>'
     invitation_accepted: '<strong>{{name}}</strong> aceitou o seu convite para integrar <strong>{{group}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> colocou você como coordenador de <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
     heading: Dê a sua opinião
     no_statement: Nenhuma afirmação.
+    statement_over_limit: 'Palavras demais! Curtas declarações de posicionamento permitem que todos entendam rapidamente a proposta.'
     i_agree: Eu concordo
     i_agree_details: Eu apoio isso e quero que siga em frente.
     i_abstain: Eu me abstenho
@@ -418,6 +426,7 @@ pt-BR:
       private: 'Privacidade: Este grupo é visível apenas para membros'
       parent_members: 'Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}'
       public: 'Privacidade: Este grupo é visível na web'
+      aria_label: 'Privacidade do grupo: {{privacy}}'
   confirm_gift_plan_modal:
     heading: Plano Presente selecionado
     body: 'Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária.'
@@ -690,7 +699,6 @@ pt-BR:
       muted_aria_label: 'No momento, mostrando tópicos mudos'
       muted_description: Ver apenas tópicos que estão mudos
     aria_thread:
-      title: 'Título do tópico: {{title}}.'
       unread: '{{count}} itens não lidos.'
       current_proposal: 'Proposta atual: {{name}}.'
       you_voted: 'Você votou: {{position}}.'
@@ -811,6 +819,12 @@ pt-BR:
     title: 'atualizou o título do tópico: <span>{{title}}</span>'
     description: atualizou o contexto do tópico
     description_title: atualizou título e contexto do tópico
+    private: atualizou a privacidade do tópico para
+    public_to_private: privado
+    private_to_public: público
+    private_title: atualizou título e privacidade do tópico
+    description_private: atualizou contexto e privacidade do tópico
+    description_private_title: 'atualizou título, contexto e privacidade do tópico'
   contact_message_form:
     contact_us: Contato
     name_label: Seu nome
@@ -954,49 +968,44 @@ pt-BR:
     enable:
       invite: 'Experimente o novo Loomio!'
       title: Experimente o novo Loomio
-      intro: Nós reconstruímos o Loomio e precisamos da sua ajuda para nos certificar de que está incrível antes de liberá-lo para o público em geral.
+      intro: 'Nós reconstruímos o Loomio e precisamos da sua ajuda para nos certificarmos de que está impressionante!'
       body_html: >
         <p></p>
 
-        <h3>Qual a diferença?</h3>
+        <h3>Qual é a diferença de qualquer maneira?</h3>
 
 
 
         <p>
 
-        A nova interface é como a antiga, só que mais atual:
+          A nova interface é como a antiga, mas mais atual:
 
-        <ul>
+          <ul>
 
-        <li>Tudo é atualizado na página enquanto acontece.</li>
+            <li>Atualização de tudo ao vivo na página enquanto acontece</li>
 
-        <li>É projetada para todos os seus dispositivos, desde smartphone até
-        desktop.</li>
+            <li>È projetado para todos os seus dispositivos, desde smartphones
+        até desktop</li>
 
-        <li>É acessível a pessoas cegas e está traduzida para <a
-        href="https://www.loomio.org/translation">um montão de idiomas.</a>
+            <li>É acessível para pessoas cegas e traduzido para <a
+        href="https://www.loomio.org/translation">um monte de idiomas</a>
 
-        </ul>
+          </ul>
 
         </p>
 
 
 
-        <p>Usa o mesmo banco de dados da interface antiga, o que significa que
-        você terá todos os seus grupos e discussões já existentes. Você pode
-        voltar para a interface antiga a qualquer momento.</p>
+        <p>Utiliza o mesmo banco de dados como a interface antiga, o que
+        significa que você terá todos os seus grupos e discussões
+        existentes.</p>
 
-        <p>As coisas vão mudar um pouco a cada dia, enquanto implementamos
-        o feedback que recebermos durante este tempo. Algumas funções menos
-        utilizadas podem não estar lá ainda.</p>
+        <p>Há um link para "Fornecer Retorno" no canto inferior esquerdo. Você
+        também verá um link lá para "Voltar para o Loomio antigo", que
+        permanecerá disponível por pouco tempo.</p>
 
-        <p>Há um link “Voltar para o antigo Loomio” no canto inferior esquerdo do
-        novo aplicativo. Clique nesse link e você pode voltar para o Loomio que
-        você está mais acostumado. Há também um formulário de feedback para que
-        você digite qualquer opinião que você tenha.</p>
-
-        <p>Realmente esperamos ouvir seus comentários. Obrigado pelo seu tempo
-        e apoio.</p>
+        <p>Nós estamos realmente ansiosos para ouvir o seu feedback, obrigado
+        pelo seu tempo e apoio.</p>
       button_text: Ative o novo Loomio
     disable:
       title: Obrigado por experimentar o novo Loomio
@@ -1010,3 +1019,43 @@ pt-BR:
   emoji_picker:
     search: Encontre um emoji...
     no_emojis_found: "Nenhum emoji encontrado para '{{term}}'!"
+  authorized_apps_page:
+    title: Apps Autorizados
+    no_applications: Você ainda não autorizou nenhum aplicativo de terceiros.
+    notice: 'Você deu a seguinte permissão para aplicativos de terceiros usarem a sua conta. Clique em "Revogar" para desativá-los.'
+    revoke: Revogar
+  registered_apps_page:
+    title: Apps Registrados
+    no_applications: 'Você ainda não tem nenhum aplicativo OAuth! Clique abaixo para criar um.'
+    name: Nome
+    redirect_uris: Redirecionar URIs
+    create_new_application: Aplicativo Novo
+  registered_app_page:
+    uid: ID do Aplicativo
+    secret: Segredo do Aplicativo
+  registered_app_form:
+    new_application_title: Novo Aplicativo
+    edit_application_title: Atualizar Aplicativo
+    name_label: Nome
+    name_placeholder: Como se chama o seu aplicativo?
+    redirect_uri_label: Redirecionar Uris
+    redirect_uri_placeholder: 'O URI de retorno de chamada para o seu aplicativo, e.g.: https://myapplication.com/loomio/callback'
+    redirect_uri_note: "(uma linha por URI, use 'urn:ietf:wg:oauth:2.0:oob' para testes locais)"
+    new_application_submit: Criar Aplicativo
+    edit_application_submit: Atualizar Aplicativo
+    messages:
+      logo_changed: Logo atualizado.
+      created: "Criado '{{name}}'"
+      updated: "Atualizado '{{name}}'"
+  remove_app_form:
+    title: 'Desativado {{name}}'
+    question: "Tem certeza de que deseja desativar o aplicativo '{{name}}'? Essa ação não pode ser desfeita."
+    submit: Desativar
+    messages:
+      success: "'{{name}}' foi desativado com sucesso"
+  revoke_app_form:
+    title: 'Revogar acesso para {{name}}'
+    question: "Tem certeza de que deseja tirar a permissão de '{{name}}' para usar a sua conta?"
+    submit: Revogar Acesso
+    messages:
+      success: "'{{name}}' não poderá mais usar a sua conta."

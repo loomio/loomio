@@ -37,11 +37,6 @@ nl-NL:
       headlines: Nieuws
       mark_as_read: Markeer als gelezen
       thanks_for_reading: 'Bedankt voor het lezen, een fijne dag gewenst!'
-      click_here_to_mark_all_as_read_html: >
-        Hier zie je wat er gisteren op Loomio gebeurde.
-
-        Als je het hebt gelezen, klik <a href="%{link}">markeer als gelezen</a>
-        om het te verwijderen uit je Loomio Inbox.
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
     comment_replied_to:
       context: '%{author_name} reageerde op jouw reactie in de discussie "%{discussion_title}"'
@@ -61,7 +56,6 @@ nl-NL:
       view_group: Je kan hier de aanvraag goed- of afkeuren
     mentioned:
       context: '%{author_name} noemde je in de discussie "%{discussion_title}"'
-      subject: '%{who} noemde je in de %{which} groep op Loomio'
     new_motion_created:
       subject: 'Voorstel: %{proposal_title}'
       context: '%{author} heeft een voorstel gedaan in %{group_full_name}:'

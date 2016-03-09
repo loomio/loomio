@@ -108,6 +108,10 @@
   position: relative;
 }
 
+.lmo-navbar__btn.has-badge:hover .badge {
+  border-color: $list-hover-color;
+}
+
 .lmo-navbar__btn.has-badge .badge {
   font-size: 10px;
   position: absolute;

@@ -1,0 +1,10 @@
+%form{ng-submit: "submit()"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1{translate: "remove_app_form.title", translate-value-name: "{{application.name}}"}
+
+  .modal-body
+    %span{translate: "remove_app_form.question", translate-value-name: "{{application.name}}"}
+  .modal-footer
+    %button.lmo-btn--danger{type: "submit", translate: "remove_app_form.submit"}
+    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

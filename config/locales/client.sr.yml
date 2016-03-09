@@ -27,6 +27,7 @@ sr:
     more_help: Još pomoći
     models:
       proposal: Predlog
+    copy: Kopiraj tekst
     copied: Kopirano
     action:
       close: Zatvori
@@ -35,7 +36,9 @@ sr:
       update_settings: Izmeni podešavanja
       reply: Odgovori
       edit: Uredi
+      remove: Ukloni
       like: Sviđa mi se
+      back: Nazad
       unlike: Ne Sviđa
       update: Ažuriraj
       cancel: Otkaži
@@ -46,6 +49,7 @@ sr:
       loading: Učitavanje
       translate: Prevedi
       translated: Prevod Bing Translator
+      upload: Prosledi
       uploading: Prosleđivanje
     formatting_help:
       label: Pomoć o formatiranju
@@ -200,6 +204,8 @@ sr:
     header: Obaveštenja
     new_discussion: '<strong>{{name}}</strong> je počeo/la diskusiju <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> je kreirao/la predlog <strong>{{proposal}}</strong>'
+    motion_closed: 'Zatvoren predlog: <strong>{{proposal}}</strong>'
+    publish_outcome: Objavi jedan ishod
     motion_closed_by_user: '<strong>{{name}}</strong> je zatvorio/la predlog <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Predlog je istekao <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} o predlogu <strong>{{proposal}}</strong>'
@@ -306,6 +312,7 @@ sr:
   proposal_position_block: Blokiranje
   legacy_trial_expired_modal:
     heading: 'Hvala što ste koristili Loomio ove godine!'
+    submit: Pokaži mi pakete
   group_welcome_modal:
     heading: Dobrodošli u svoju novu grupu
     first_step: 'Vi ste <strong>koordinator</strong>, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
@@ -335,6 +342,12 @@ sr:
     submit_button: Pitaj da se pridružiš grupi
     messages:
       membership_requested: 'Zahtevali ste članstvo u {{group}}'
+  revision_history_modal:
+    thread_header: Revizija istorije konteksta niti
+    comment_header: Revizija istorije menjanja komentara
+    started_by: 'Pokrenuto od <strong>{{name}}</strong>'
+    edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
+    posted: Postavljeno
   group_page:
     thread_list:
       empty:
@@ -402,6 +415,7 @@ sr:
       private: 'Privatnost: Ova grupa je vidljiva samo članovima'
       parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
       public: 'Privatnost: Ova grupa je vidljiva na mreži'
+      aria_label: 'Privatnost grupe:  {{privacy}}'
   confirm_gift_plan_modal:
     heading: Odabran je poklon plan
     body: 'Ako Vaša grupa nema budžet za plaćanje softvera, ne morate da platite pretplatu. Vaši članovi grupe biće povremeno pozvani da volonterski doniraju.'
@@ -520,6 +534,8 @@ sr:
   invitation_form:
     invite_people: Pozovi Ljude
     group: Grupa
+    shareable_link: Deljivi link
+    copy_link: Kopiraj vezu
     email_addresses: Adrese ePošte
     email_addresses_placeholder: 'kao helperbot@loomio.org, friendlybot@loomio.org'
     add_custom_message: 'Učini svoje poziv ličnim,'
@@ -530,9 +546,12 @@ sr:
     add_members: Dodaj članove
     from_parent_group: 'od {{name}}.'
     send: Pošalji
+    done: Urađeno
     messages:
       invitation_sent: Poziv poslat.
       invitations_sent: '{{count}} pozivnica poslato.'
+      no_invitations: 'Uh-oh! Molim proverite da li je adresa ePošte tačna i pokušajte ponovo.'
+      max_invitations: 'Ako želite da pošaljete više od 100 pozivnica, upotrebite tim vezu.'
   add_members_modal:
     heading: 'Dodaj ljude iz {{name}}'
     add_members: Dodaj članove
@@ -648,7 +667,6 @@ sr:
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Vidi samo niti koje su utišane
     aria_thread:
-      title: 'Naslov niti: {{title}}.'
       unread: '{{count}} nepročitanih stavki.'
       current_proposal: 'Trenutni predlog: {{name}}.'
       you_voted: 'Vaš glas: {{position}}.'
@@ -671,6 +689,7 @@ sr:
     page_header: Tvoje grupe
   discussion:
     activity: Aktivnost
+    activity_placeholder: 'Još uvek bez aktivnosti!'
     proposals: Predlozi
     previous_proposals: Prethodni Predlozi
     load_previous: Učitaj ranije aktivnosti
@@ -683,6 +702,7 @@ sr:
     liked_by_name: 'Sviđa se {{name}}.'
     liked_by_names_and_name: 'Sviđa se {{joinedNames}} i {{name}}.'
     started_by: 'Kreirano od strane <strong>{{name}}</strong> '
+    edited: Izmenjeno
     volume:
       loud: Obavesti kada god ima aktivnosti u ovoj niti.
       loud_aria_description: Vaš obim obaveštenja za ovu nit je postavljen na Glasno. Ovo znači da ćete dobiti ePoruku svaki put kada bude aktivnosti u ovoj niti.
@@ -716,6 +736,7 @@ sr:
     title: Premesti nit
     body: 'Odredišna grupa:'
     confirm: Premesti nit
+    confirm_change_to_private_thread: '{{groupName}} je jedna otvorena grupa. Ako nastavite, ova nit će postati javna.'
     messages:
       success: 'Nit je premeštena u {{name}}'
   activity_card:
@@ -733,8 +754,17 @@ sr:
       aria_label: Opcije komentara
       edit_comment: Izmeni komentar
       delete_comment: Obriši komentar
+    edited: Izmenjeno
+  new_vote_item:
+    agree: slažu se
+    abstain: susdražani
+    disagree: ne slaže se
+    block: blokira
   proposal_closed_item:
     proposal_closed: 'Predlog je istekao: <span>{{title}}</span>'
+  discussion_edited_item:
+    public_to_private: privatno
+    private_to_public: javno
   contact_message_form:
     contact_us: Kontakiraj nas
     name_label: Tvoje ime
@@ -924,51 +954,28 @@ sr:
     enable:
       invite: 'Probaj novi Loomio!'
       title: Probaj novi Loomio
-      intro: Reizgradili smo Loomio i potrebna nam je tvoja pomoć da budemo sigurni da je fenomenalan pre nego što objavimo generanoj publici.
-      body_html: >
-        <p></p>
-
-        <h3>Šta je u stvari razlika?</h3>
-
-
-
-        <p>
-
-          Novi interfejs je kao stari, samo noviji:
-
-          <ul>
-
-            <li>Sve se osvežava uživo na strani kada se dogodi</li>
-
-            <li>Dizajniran je za sve uređaje, od pametnih telefona do
-        desktopa</li>
-
-            <li>Dostupan je ljudima koji su slepi i preveden je u <a
-        href="https://www.loomio.org/translation">hrpu jezika</a>
-
-          </ul>
-
-        </p>
-
-
-
-        <p>Koristi istu bazu podataka kao i stari interfejs, što znači da će
-        imati sve tvoje postojeće grupe i diskusije. Možeš se vratiti nazad na
-        stari interfejs u bilo koje vreme.</p>
-
-        <p>Stvari će se menjati neznatno svakog dana kako budemo implementirali
-        povratne informacije tokom ovog perioda. Neke retko korišćene funkcije
-        možda neće biti tu još uvek.</p>
-
-        <p>Tu je veza "Vrati se nazad na stari Lumio" u donjem levom uglu nove
-        aplikacije. Škljocni tu vezu i možeš se vratiti na stari Lumio. Tu je
-        takođe i formular za povratne informacije od tebe .</p>
-
-        <p>Mi zaista očekujemo da čujemo povratne iformacije od tebe, hvala za
-        tvoje vreme i podršku.</p>
       button_text: Omogući novi Loomio
     disable:
       title: Hvala što probate novi Loomio
       body_html: '<p>Ups, da li smo uradili nešto pogrešno? Žao nam je što ste imali neprijatnost na novoj Loomio verziji.</p>'
       give_feedback: 'Pre nego odete, molimo Vas razmislite o tome da podelite sa nama vaše utiske kako bi mogli da unapredimo Loomio.'
       button_text: Prebaci na stari Loomio
+  global:
+    messages:
+      reload: Osveži
+  emoji_picker:
+    search: Naži jedan emoji
+  authorized_apps_page:
+    revoke: Povuci
+  registered_apps_page:
+    title: Registrovane Aplikacije
+    name: Ime
+    create_new_application: Nova Aplikacija
+  registered_app_page:
+    uid: ID Aplikacije
+    secret: Tajna Aplikacije
+  registered_app_form:
+    new_application_title: Nova Aplikacija
+    edit_application_title: Osveži aplikaciju
+    name_label: Ime
+    edit_application_submit: Osveži aplikaciju
