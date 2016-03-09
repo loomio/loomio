@@ -27,7 +27,7 @@
   %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
 
   .thread-item__attachments
-    .thread-item__attachment{ng-repeat: "attachment in comment.attachments() track by attachment.id"}
+    .thread-item__attachment{ng-repeat: "attachment in comment.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "thread"}
 
   .thread-item__footer
