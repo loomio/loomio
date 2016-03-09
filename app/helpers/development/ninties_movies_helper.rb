@@ -221,7 +221,8 @@ module Development::NintiesMoviesHelper
     second_motion_created_event = MotionService.create(motion: public_test_proposal,
                                                        actor: patrick)
 
-    motion_closed_event = Events::MotionClosed.publish!(public_test_proposal)
+
+    motion_closed_event = MotionService.close(public_test_proposal)
 
     #'motion_outcome_created'
     outcome_event = MotionService.create_outcome(motion: test_proposal,

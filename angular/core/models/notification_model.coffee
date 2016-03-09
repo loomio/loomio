@@ -16,5 +16,9 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     group: ->
       @event().group()
 
+    actionPath: ->
+      switch @kind()
+        when 'motion_closed', 'motion_closed_by_user' then 'outcome'
+
     relevantRecord: ->
       @event().relevantRecord()

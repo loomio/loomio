@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, CurrentUser, ChangeThreadVolumeForm, TranslationService, RevisionHistoryModal, ProposalOutcomeForm) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @activeProposalKey = $routeParams.proposal or $location.search().proposal
@@ -12,12 +12,17 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @performScroll = ->
     ScrollService.scrollTo @elementToFocus(), 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
+    (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
 
   @openVoteModal = ->
     $location.search().position and
     @discussion.hasActiveProposal() and
     @discussion.activeProposal().key == $location.search().proposal and
     AbilityService.canVoteOn(@discussion.activeProposal())
+
+  @openOutcomeModal = ->
+    $routeParams.outcome? and
+    AbilityService.canSetOutcomeFor(@proposal)
 
   @elementToFocus = ->
     if @proposal

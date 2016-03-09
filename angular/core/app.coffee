@@ -75,6 +75,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/d/:key/:stub', component: 'threadPage' },
     {path: '/d/:key/comment/:comment', component: 'threadPage'},
     {path: '/d/:key/proposal/:proposal', component: 'threadPage'},
+    {path: '/d/:key/proposal/:proposal/:outcome', component: 'threadPage'},
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
