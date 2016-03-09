@@ -49,7 +49,7 @@
 
         .thread-context__description.lmo-markdown-wrapper{marked: "threadPage.discussion.description", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
         %translation{ng-if: "threadPage.translation && threadPage.discussion.description", translation: "threadPage.translation", field: "description"}
-        %a.lmo-card-minor-action{href: "", ng-click: "threadPage.editThread()", translate: "thread_context.edit_thread", ng-if: "threadPage.canEditThread()"}
+        %a.thread-context__edit-link.lmo-card-minor-action{href: "", ng-click: "threadPage.editThread()", translate: "thread_context.edit_thread", ng-if: "threadPage.canEditThread()"}
 
     .lmo-thread-column-right
       %section.start-proposal-card{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.canStartProposal()", aria-label: "{{ 'start_proposal_card.title' | translate }}"}
