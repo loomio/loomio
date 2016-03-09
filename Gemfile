@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.5.2'
 gem 'rake'
 gem 'pg', '~> 0.18.3'
 gem 'pg_search', '~> 1.0.4'
