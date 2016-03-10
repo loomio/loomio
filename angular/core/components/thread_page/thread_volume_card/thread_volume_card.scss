@@ -1,3 +1,7 @@
 .thread-volume-card {
   @include card;
 }
+
+.thread-volume-card__change-volume-link {
+  cursor: pointer;
+}
