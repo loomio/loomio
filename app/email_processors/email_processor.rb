@@ -1,6 +1,5 @@
 class EmailProcessor
 
-  # @return [void]
   def self.process(*args)
     new(*args).process
   end
@@ -12,12 +11,13 @@ class EmailProcessor
 
   def process
     email_params = EmailParams.new(@email)
+    user = User.find_by(id: email_params.user_id,
+                        email_api_key: email_params.email_api_key)
 
-    post_comment = PostComment.new(user_id: email_params.user_id,
-                                   email_api_key: email_params.email_api_key,
-                                   comment_params: {discussion_id: email_params.discussion_id,
-                                                    body: email_params.body})
-    post_comment.now!
+    comment = Comment.new(discussion_id: email_params.discussion_id,
+                          body: email_params.body)
+
+    CommentService.create(comment: comment, actor: user)
   end
 
   def replace_text_body(email)
@@ -27,7 +27,7 @@ class EmailProcessor
       premailer = Premailer.new email.raw_html,
                                 line_length: 10000,
                                 with_html_string: true
- 
+
       Griddler::Email.new \
         email.send(:params).merge(text: premailer.to_plain_text)
     else
