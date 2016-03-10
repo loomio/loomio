@@ -100,7 +100,7 @@ Given /^there is a public discussion in a public group$/ do
   @discussion = create_discussion :group => @group, private: false
 end
 
-Given /^there is a public group with a discussion with a comment$/ do 
+Given /^there is a public group with a discussion with a comment$/ do
   @user ||= FactoryGirl.create :user
   @group ||= FactoryGirl.create :group, :is_visible_to_public => true
   @discussion ||= FactoryGirl.create :discussion, group: @group, private: false
@@ -111,7 +111,7 @@ end
 
 Given /^there is a discussion in a private group$/ do
   @group = FactoryGirl.create :group, :is_visible_to_public => false
-  @discussion = create_discussion :group => @group
+  @discussion = create_discussion :group => @group, :private => true
 end
 
 Given /^there is a discussion in a group I belong to$/ do
@@ -227,7 +227,7 @@ Then /^I should not see a subscribe to feed link$/ do
   page.should_not have_css('.rss-link', visible: false)
 end
 
-Then /^I should see an xml feed$/ do                                                                                                                            
+Then /^I should see an xml feed$/ do
     response = Hash.from_xml page.body
     expect(response['feed']['title']).to match(/#{@group.name}/)
     expect(response['feed']['subtitle']).to match(/#{@group.description}/)

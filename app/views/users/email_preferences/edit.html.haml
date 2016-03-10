@@ -2,7 +2,7 @@
   .col-md-8
     %h1= t(:'email_settings.title')
 
-    =simple_form_for(@user, url: update_email_preferences_path, method: :put) do |f|
+    =simple_form_for(@restricted_user, url: update_email_preferences_path, method: :put) do |f|
       -if params[:unsubscribe_token]
         =hidden_field_tag :unsubscribe_token, params[:unsubscribe_token]
 

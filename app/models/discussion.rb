@@ -97,6 +97,7 @@ class Discussion < ActiveRecord::Base
   end
 
   update_counter_cache :group, :discussions_count
+  update_counter_cache :group, :public_discussions_count
   update_counter_cache :group, :motions_count
 
   def published_at

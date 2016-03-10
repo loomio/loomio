@@ -6,8 +6,16 @@
     %meta{content: 'IE=Edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name: "viewport"}
     %base{href: '/'}
+
+    %link{rel: 'canonical', 'ng-if' => 'links.canonical', 'ng-href' => '{{links.canonical}}'}
+    %link{rel: 'alternate', type: 'application/rss+xml', 'ng-if' => 'links.rss', 'ng-href' => '{{links.rss}}'}
+    %link{rel: 'prev', 'ng-if' => 'links.prev', 'ng-href' => '{{links.prev}}'}
+    %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
+
     %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
 
+
+    = render 'angular/metadata'
     = render 'angular/google_analytics'
     = render 'angular/intercom'
 
@@ -17,7 +25,7 @@
     %ng_outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
-    %angular_feedback_card
+    %angular_feedback_card{'ng-if' => 'isLoggedIn()'}
 
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript

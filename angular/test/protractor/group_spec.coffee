@@ -4,11 +4,13 @@ describe 'Group Page', ->
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
-      xit 'should display group content', ->
-        page.loadPath('view_open_group_as_visitor')
+      it 'should display group content', ->
+        page.loadPath('setup_group_with_many_discussions')
         page.expectElement('.group-theme__name')
         page.expectElement('.lmo-navbar__sign-in')
         page.expectElement('.thread-preview__title')
+        page.expectElement('link[rel=prev]')
+        page.expectElement('link[rel=next]')
 
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->

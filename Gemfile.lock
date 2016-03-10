@@ -111,7 +111,7 @@ GEM
     bourbon (4.2.3)
       sass (~> 3.4)
       thor
-    browser (0.8.0)
+    browser (2.0.2)
     builder (3.2.2)
     bullet (4.14.10)
       activesupport (>= 3.0.0)

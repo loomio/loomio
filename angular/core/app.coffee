@@ -50,7 +50,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
-    ScrollService.scrollTo(options['scrollTo'] or 'h1')
+    ScrollService.scrollTo(options.scrollTo or 'h1')
+    $scope.links = options.links or {}
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'

@@ -49,6 +49,15 @@ namespace :loomio do
     end
   end
 
+  task refresh_public_discussions_count: :environment do
+    progress_bar = ProgressBar.create(format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Group.count )
+
+    Group.find_each(batch_size: 200) do |g|
+      progress_bar.increment
+      g.update_public_discussions_count
+    end
+  end
+
   task fix_unread: :environment do
     puts "Recounting discussion reader counts"
     progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: DiscussionReader.count )
