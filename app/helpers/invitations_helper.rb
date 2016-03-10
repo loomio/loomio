@@ -18,7 +18,7 @@ module InvitationsHelper
   end
 
   def login_or_signup_path_for_email(email)
-    if email.blank? or not User.email_taken?(email)
+    if email.blank? || !User.find_by_email(email).present?
       new_user_registration_path
     else
       new_user_session_path(email: email)

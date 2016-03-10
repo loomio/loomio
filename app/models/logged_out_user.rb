@@ -10,10 +10,10 @@ class LoggedOutUser
   end
 
   NIL_METHODS   = [:id, :key, :username, :avatar_url, :selected_locale, :deactivated_at, :time_zone]
-  FALSE_METHODS = [:is_logged_in?, :uses_markdown?, :is_organisation_coordinator?, :belongs_to_manual_subscription_group?,
+  FALSE_METHODS = [:is_logged_in?, :uses_markdown?, :belongs_to_manual_subscription_group?,
                    :email_when_proposal_closing_soon, :email_missed_yesterday, :email_when_mentioned, :email_on_participation]
   EMPTY_METHODS = [:groups, :group_ids, :adminable_group_ids]
-  TRUE_METHODS  = [:is_logged_out?, :angular_ui_enabled, :angular_ui_enabled?]
+  TRUE_METHODS  = [:angular_ui_enabled, :angular_ui_enabled?]
 
   NIL_METHODS.each   { |method| define_method(method, -> { nil }) }
   FALSE_METHODS.each { |method| define_method(method, -> { false }) }

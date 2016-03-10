@@ -27,11 +27,6 @@ class Invitation < ActiveRecord::Base
   scope :shareable, -> { not_cancelled.where(single_use: false) }
   scope :single_use, -> { not_cancelled.where(single_use: true) }
 
-
-  def recipient_first_name
-    recipient_name.split(' ').first
-  end
-
   def group
     case invitable_type
     when 'Group'

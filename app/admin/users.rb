@@ -58,7 +58,7 @@ ActiveAdmin.register User do
   end
 
   show do |user|
-    if user.active?
+    if user.deactivated_at.nil?
       panel("Deactivate") do
         if can? :deactivate, user
           button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}

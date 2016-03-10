@@ -1,8 +1,0 @@
-- if group.membership_requests.where(response: nil).exists? && (can? :add_members, group)
-
-  .panel.panel-default
-    .panel-heading
-      %h4= t(:membership_requests)
-    .panel-body
-      = link_to pending_membership_requests_count(group), group_membership_requests_path(group), class: 'bottom-panel-link', id: 'pending-count'
-

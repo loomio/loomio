@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
   include ReadableUnguessableUrlsHelper
-  include CurrentUserHelper
   include ApplicationHelper
   include ProtectedFromForgery
-  include TimeZoneHelper
+  include LoadAndAuthorize
+
+  def show
+  end
 
   helper :analytics_data
   helper :locales
@@ -12,7 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
-  around_filter :user_time_zone, if: :user_signed_in?
+  # around_filter :user_time_zone, if: :user_signed_in?
 
   # intercom
   skip_after_filter :intercom_rails_auto_include
@@ -28,6 +30,10 @@ class ApplicationController < ActionController::Base
     else
       authenticate_user!
     end
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    render 'application/display_error', locals: { message: t('error.not_found') }
   end
 
   def browser_not_supported
@@ -76,8 +82,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user_or_visitor
+    user_signed_in? ? current_user : LoggedOutUser.new
+  end
+
+  def user_time_zone(&block)
+    Time.use_zone(current_user.time_zone_city, &block)
+  end
+
   def invalid_return_urls
-    [nil, root_url, new_user_password_url, profile_url]
+    [nil, root_url, new_user_password_url]
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?

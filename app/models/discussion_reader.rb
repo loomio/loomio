@@ -4,8 +4,6 @@ class DiscussionReader < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
 
-  scope :for_user, -> (user) { where(user_id: user.id) }
-
   def self.for(user: , discussion: )
     if (!user.nil?) and user.is_logged_in?
       begin
@@ -51,10 +49,6 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
-  def first_read?
-    last_read_at.blank?
-  end
-
   def unread_comments_count
     #we count the discussion itself as a comment.. but it is comment 0
     if last_read_at.blank?
@@ -74,18 +68,6 @@ class DiscussionReader < ActiveRecord::Base
     else
       discussion.salient_items_count - read_salient_items_count
     end
-  end
-
-  def has_read?(event)
-    if last_read_at.present?
-      self.last_read_at >= event.created_at
-    else
-      false
-    end
-  end
-
-  def unread_activity?
-    last_read_at.nil? || (discussion.last_activity_at > last_read_at)
   end
 
   def viewed!(age_of_last_read_item = nil)
@@ -130,20 +112,6 @@ class DiscussionReader < ActiveRecord::Base
     save!(validate: false)
   end
 
-
-  def first_unread_page
-    per_page = Discussion::PER_PAGE
-    remainder = read_items_count % per_page
-
-    if read_items_count == 0
-      1
-    elsif remainder == 0 && discussion.items_count > read_items_count
-      (read_items_count.to_f / per_page).ceil + 1
-    else
-      (read_items_count.to_f / per_page).ceil
-    end
-  end
-
   def read_comments(time = nil)
     discussion.comments.where('comments.created_at <= ?', time || last_read_at).chronologically
   end
@@ -154,10 +122,5 @@ class DiscussionReader < ActiveRecord::Base
 
   def read_salient_items(time = nil)
     discussion.salient_items.where('events.created_at <= ?', time || last_read_at).chronologically
-  end
-
-  private
-  def membership
-    discussion.group.membership_for(user)
   end
 end

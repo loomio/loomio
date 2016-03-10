@@ -1,6 +1,4 @@
 class Motion < ActiveRecord::Base
-  CHART_COLOURS = ["#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
-
   include ReadableUnguessableUrls
   include HasTimeframe
 
@@ -28,10 +26,6 @@ class Motion < ActiveRecord::Base
   include Translatable
   is_translatable on: [:name, :description]
 
-  include PgSearch
-  pg_search_scope :search, against: [:name, :description],
-    using: {tsearch: {dictionary: "english"}}
-
   delegate :email, to: :author, prefix: :author
   delegate :name, to: :author, prefix: :author
   delegate :group, :group_id, to: :discussion
@@ -45,8 +39,6 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_closing_at
 
-  attr_accessor :create_discussion
-
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
   scope :lapsed_but_not_closed,    -> { voting.lapsed }
@@ -59,10 +51,6 @@ class Motion < ActiveRecord::Base
 
   def proposal_title
     name
-  end
-
-  def has_outcome?
-    outcome.present?
   end
 
   def grouped_unique_votes
@@ -84,24 +72,12 @@ class Motion < ActiveRecord::Base
     votes.map(&:user).uniq.compact
   end
 
-  def voter_ids
-    votes.pluck(:user_id).uniq.compact
-  end
-
   def voting?
     closed_at.nil?
   end
 
   def closed?
     closed_at.present?
-  end
-
-  def has_votes?
-    total_votes_count > 0
-  end
-
-  def discussion_key
-    discussion.key
   end
 
   # map of position and votes
@@ -117,7 +93,7 @@ class Motion < ActiveRecord::Base
   end
 
   def can_be_edited?
-    !persisted? || (voting? && (!has_votes? || group.motions_can_be_edited?))
+    !persisted? || (voting? && (total_votes_count == 0 || group.motions_can_be_edited?))
   end
 
   # number of final votes
@@ -129,49 +105,6 @@ class Motion < ActiveRecord::Base
   # not to be confused with vote_counts (which is why we call it activity_count)
   def activity_count
     votes_count
-  end
-
-  # depricated
-  def votes_for_graph
-    votes_for_graph = []
-    vote_counts.each do |k, v|
-      votes_for_graph.push ["#{k.capitalize} (#{v})", v, "#{k.capitalize}", ([1]*v)]
-    end
-    if activity_count == 0
-      votes_for_graph.push ["Yet to vote (#{members_not_voted_count})", members_not_voted_count, 'Yet to vote', ([1]*members_not_voted_count)]
-    end
-    votes_for_graph
-  end
-
-  def user_has_voted?(user)
-    return false if user.nil?
-    votes.for_user(user.id).exists?
-  end
-
-  def user_has_not_voted?(user)
-    !user_has_voted?(user)
-  end
-
-  def most_recent_vote_of(user)
-    votes.for_user(user.id).last
-  end
-
-  def can_be_voted_on_by?(user)
-    user && group.users.include?(user)
-  end
-
-  def last_vote_by_user(user)
-    return nil if user.nil?
-
-    votes.where(user_id: user.id, age: 0).first
-  end
-
-  def last_position_by_user(user)
-    if vote = last_vote_by_user(user)
-      vote.position
-    else
-      'unvoted'
-    end
   end
 
   def group_size_when_voting
@@ -219,14 +152,6 @@ class Motion < ActiveRecord::Base
     self[:votes_count] = votes.count
 
     save!
-  end
-
-  def group_members_without_motion_author
-    group.members.without(author)
-  end
-
-  def group_members_without_outcome_author
-    group.members.without(outcome_author)
   end
 
   def store_users_that_didnt_vote

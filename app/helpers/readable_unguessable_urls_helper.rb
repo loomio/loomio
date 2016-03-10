@@ -1,4 +1,5 @@
 module ReadableUnguessableUrlsHelper
+  # I can't believe I helped write this. This is so turd.
   MODELS_WITH_SLUGS = { 'discussion' => :title,
                               'user' => :name,
                             'group'  => :full_name,

@@ -1,8 +1,0 @@
-- privacy = privacy_language(discussion)
-- icon_type = privacy_icon(discussion)
-
-- if can?(:edit, discussion)
-  %a{ href: edit_discussion_path(discussion) }
-    %i.js-tooltip{id: "privacy", class: "fa fa-#{icon_type}", alt: privacy.to_s, title: t(:"discussion_privacy.#{privacy}")}
-- else
-  %i.js-tooltip{id: "privacy", class: "fa fa-#{icon_type}", alt: privacy.to_s, title: t(:"discussion_privacy.#{privacy}")}

@@ -6,8 +6,4 @@ class NetworkMembershipRequest < ActiveRecord::Base
 
   scope :pending, -> { where('approved IS NULL') }
   scope :not_pending, -> { where('approved IS NOT NULL') }
-
-  def pending?
-    approved.blank?
-  end
 end

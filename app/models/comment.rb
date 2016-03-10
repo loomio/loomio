@@ -3,7 +3,6 @@ class Comment < ActiveRecord::Base
   include Translatable
 
   has_paper_trail only: [:body]
-  acts_as_tree
   is_translatable on: :body
 
   belongs_to :discussion
@@ -20,12 +19,10 @@ class Comment < ActiveRecord::Base
   validate :attachments_owned_by_author
   validate :parent_comment_belongs_to_same_discussion
 
-  after_initialize :set_defaults
   after_destroy :call_comment_destroyed
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
-  #scope :published, -> { where(published: true) }
   scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user
@@ -37,28 +34,10 @@ class Comment < ActiveRecord::Base
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
   delegate :id, to: :group, prefix: :group
+  delegate :author, to: :author, allow_nil: true
 
-  serialize :liker_ids_and_names, Hash
-
-  define_counter_cache :versions_count do |comment|
-    comment.versions.count
-  end
-
-  alias_method :author, :user
-  alias_method :author=, :user=
+  define_counter_cache(:versions_count) { |comment| comment.versions.count }
   attr_accessor :new_attachment_ids
-
-  def discussion_title
-    discussion.title
-  end
-
-  def parent_author
-    parent.author if is_reply?
-  end
-
-  def published_at
-    created_at
-  end
 
   def author_name
     author.try(:name)
@@ -80,18 +59,6 @@ class Comment < ActiveRecord::Base
     group.members_can_edit_comments? or is_most_recent?
   end
 
-  def is_reply?
-    parent.present?
-  end
-
-  def liker_names(max: 3)
-    comment_votes.last(max).map(&:user_name)
-  end
-
-  def refresh_liker_ids_and_names!
-    update liker_ids_and_names: self.comment_votes.reduce({}) { |hash, vote| hash[vote.user_id] = vote.user.name; hash }
-  end
-
   def mentioned_usernames
     extract_mentioned_screen_names(self.body).uniq
   end
@@ -108,16 +75,6 @@ class Comment < ActiveRecord::Base
     mentioned_group_members.without(author).without(parent.try(:author))
   end
 
-  def likes_count
-    comment_votes_count
-  end
-
-  def likers_include?(user)
-    if liker_ids_and_names.respond_to? :keys
-      liker_ids_and_names.keys.include?(user.id)
-    end
-  end
-
   private
   def call_comment_destroyed
     discussion.comment_destroyed!(self)
@@ -129,10 +86,6 @@ class Comment < ActiveRecord::Base
         errors.add(:parent, "Needs to have same discussion id")
       end
     end
-  end
-
-  def set_defaults
-    self.liker_ids_and_names ||= {}
   end
 
   def attachments_owned_by_author

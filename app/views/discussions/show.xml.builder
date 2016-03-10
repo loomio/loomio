@@ -2,7 +2,7 @@ atom_feed do |feed|
   feed.title @discussion.title
   feed.subtitle @discussion.description
   feed.updated(@activity.min_by(&:created_at).created_at) if @activity.any?
-	
+
   @activity.each do |event|
     next if event.eventable.nil?
     next unless event.eventable.valid?
@@ -21,4 +21,4 @@ atom_feed do |feed|
       entry.link discussion_url(@discussion)
     end
   end
-end if @discussion.public?
+end if !@discussion.private

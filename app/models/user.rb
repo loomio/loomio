@@ -40,8 +40,6 @@ class User < ActiveRecord::Base
 
   include Gravtastic
   gravtastic rating: :pg, default: :none
-  before_create :set_interface
-
 
   has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
@@ -138,35 +136,12 @@ class User < ActiveRecord::Base
     end
   }
 
-  def self.email_taken?(email)
-    User.find_by_email(email).present?
-  end
-
   def user_id
     id
   end
 
   def is_logged_in?
     true
-  end
-
-  def is_logged_out?
-    !is_logged_in?
-  end
-
-  def top_level_groups
-    parents = groups.parents_only.order(:name).includes(:children)
-    orphans = groups.where('parent_id not in (?)', parents.map(&:id))
-    (parents.to_a + orphans.to_a).sort{|a, b| a.full_name <=> b.full_name }
-  end
-
-  def inbox_groups
-    groups.where('memberships.inbox_position is not null').order('memberships.inbox_position')
-  end
-
-  def groups_discussions_can_be_started_in
-    (groups.where(members_can_start_discussions: true) | adminable_groups).
-     sort{|a,b| a.full_name <=> b.full_name}
   end
 
   def first_name
@@ -183,14 +158,6 @@ class User < ActiveRecord::Base
   end
 
   delegate :can?, :cannot?, :to => :ability
-
-  def voting_motions
-    motions.voting
-  end
-
-  def closed_motions
-    motions.closed
-  end
 
   def is_group_admin?(group=nil)
     if group.present?
@@ -212,21 +179,8 @@ class User < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
-  def is_parent_group_member?(group)
-    memberships.for_group(group.parent).exists? if group.parent
-  end
-
   def group_membership(group)
     memberships.for_group(group).first
-  end
-
-  def self.loomio_helper_bot(password: nil)
-    where(email: 'contact@loom.io').first ||
-    create!(email: 'contact@loom.io', name: 'Loomio Helper Bot', password: password || SecureRandom.hex)
-  end
-
-  def self.helper_bots
-    where(email: ['contact@loomio.org', 'contact@loom.io'])
   end
 
   def self.find_by_email(email)
@@ -257,14 +211,6 @@ class User < ActiveRecord::Base
     membership_requests.where("responded_at IS NULL").destroy_all
   end
 
-  def deactivated?
-    deactivated_at.present?
-  end
-
-  def active?
-    deactivated_at.nil?
-  end
-
   def reactivate!
     update_attribute(:deactivated_at, nil)
     archived_memberships.update_all(archived_at: nil)
@@ -273,10 +219,6 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deactivated_at
-  end
-
-  def inactive_message
-    I18n.t(:inactive_html, path_to_contact: '/contact').html_safe
   end
 
   def avatar_url(size=nil)
@@ -305,14 +247,6 @@ class User < ActiveRecord::Base
     selected_locale || detected_locale || I18n.default_locale
   end
 
-  def using_initials?
-    avatar_kind == "initials"
-  end
-
-  def has_uploaded_image?
-    uploaded_avatar.url(:medium) != '/uploaded_avatars/medium/missing.png'
-  end
-
   def has_gravatar?(options = {})
     return false if Rails.env.test?
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
@@ -329,25 +263,7 @@ class User < ActiveRecord::Base
     self.username ||= UsernameGenerator.new(self).generate
   end
 
-  def in_same_group_as?(other_user)
-    (group_ids & other_user.group_ids).present?
-  end
-
-  def show_start_group_button?
-    !groups.cannot_start_parent_group.any?
-  end
-
-  def is_organisation_coordinator?
-    adminable_groups.parents_only.any?
-  end
-
   private
-  def set_interface
-    if ENV['LOOMIO_NEW_USERS_ON_BETA']
-      self.angular_ui_enabled = false
-    end
-    true
-  end
 
   def set_default_avatar_kind
     if has_gravatar?

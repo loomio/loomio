@@ -24,7 +24,6 @@ class GroupSerializer < ActiveModel::Serializer
              :parent_members_can_see_discussions,
              :memberships_count,
              :invitations_count,
-             :visible_to,
              :membership_granted_upon,
              :discussion_privacy_options,
              :logo_url_medium,

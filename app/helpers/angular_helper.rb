@@ -63,7 +63,7 @@ module AngularHelper
   end
 
   def use_angular_ui?
-    !request.xhr? && current_user_or_visitor.angular_ui_enabled?
+    !request.xhr?
   end
 
   def angular_asset_folder
