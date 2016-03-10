@@ -133,4 +133,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, CurrentUser) -
       !group.hasPendingMembershipRequestFrom(CurrentUser)
 
     canTranslate: (model) ->
-      AppConfig.canTranslate and CurrentUser.locale != model.author().locale
+      AppConfig.canTranslate and
+      CurrentUser.locale and
+      CurrentUser.locale != model.author().locale

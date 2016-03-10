@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224000736) do
+ActiveRecord::Schema.define(version: 20160301094551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -455,6 +455,7 @@ ActiveRecord::Schema.define(version: 20160224000736) do
     t.integer  "motions_count",                      default: 0,              null: false
     t.integer  "admin_memberships_count",            default: 0,              null: false
     t.integer  "invitations_count",                  default: 0,              null: false
+    t.integer  "public_discussions_count",                       default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree

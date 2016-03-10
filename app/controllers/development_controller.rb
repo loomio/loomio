@@ -72,16 +72,24 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_with_many_discussions
-    sign_in patrick
     test_group.add_member! emilio
-    50.times do
+    40.times do
       discussion = FactoryGirl.build(:discussion,
                                      group: test_group,
-                                     private: true,
+                                     private: false,
                                      author: emilio)
       DiscussionService.create(discussion: discussion, actor: emilio)
     end
-    redirect_to group_url(test_group)
+    redirect_to group_url(test_group, from: 5)
+  end
+
+  def setup_discussion_with_many_comments
+    test_group.add_member! emilio
+    40.times do |i|
+      comment = FactoryGirl.build(:comment, discussion: test_discussion, body: "#{i} bottles of beer on the wall")
+      CommentService.create(comment: comment, actor: emilio)
+    end
+    redirect_to discussion_url(test_discussion, from: 5)
   end
 
   def setup_group_on_trial_admin
@@ -341,6 +349,7 @@ class DevelopmentController < ApplicationController
     raise "Do not call me." if Rails.env.production?
     tmp, Rails.env = Rails.env, 'test'
     yield
+  ensure
     Rails.env = tmp
   end
 

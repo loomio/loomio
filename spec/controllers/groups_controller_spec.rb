@@ -5,6 +5,14 @@ describe GroupsController do
   let(:subgroup) { create :group, parent: group}
   let(:user)  { create :user }
 
+  describe 'metadata' do
+    it 'assigns discussion metadata' do
+      @request.user_agent = "Googlebot"
+      get :show, id: group.key
+      expect(assigns(:metadata)[:title]).to eq group.full_name
+    end
+  end
+
   context 'signed out' do
     context "public group" do
       before { group.update_attribute(:is_visible_to_public, true) }

@@ -3,12 +3,9 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
     model: EventModel
 
     fetchByDiscussion: (discussionKey, options = {}) ->
+      options['discussion_key'] = discussionKey
       @fetch
-        params:
-          discussion_key: discussionKey
-          from: options['from']
-          comment_id: options['comment_id']
-          per: options['per']
+        params: options
 
     findByDiscussionAndSequenceId: (discussion, sequenceId) ->
       @collection.chain()
