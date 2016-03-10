@@ -419,6 +419,8 @@ Loomio::Application.routes.draw do
   # this is a dumb thing
   get '/groups', to: 'dashboard#show'
 
+  post '/email_processor' => 'griddler/emails#create', format: :json
+
   constraints(MainDomainConstraint) do
     scope controller: 'pages' do
       get :about
