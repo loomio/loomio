@@ -9,30 +9,12 @@ RUN apt-get install -y libpq-dev
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
-# for capybara-webkit
-# RUN apt-get install -y libqt4-webkit libqt4-dev xvfb
-
 # for node
 # RUN apt-get install -y python python-dev python-pip python-virtualenv
 
-# install nodekjs 0.5 via apt
+# install node
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 RUN apt-get install -y nodejs
-
-# build and install node from source
-# RUN \
-#  cd /tmp && \
-#  wget http://nodejs.org/dist/node-latest.tar.gz && \
-#  tar xvzf node-latest.tar.gz && \
-#  rm -f node-latest.tar.gz && \
-#  cd node-v* && \
-#  ./configure && \
-#  CXX="g++ -Wno-unused-local-typedefs" make && \
-#  CXX="g++ -Wno-unused-local-typedefs" make install && \
-#  cd /tmp && \
-#  rm -rf /tmp/node-v* && \
-#  npm install -g npm && \
-#  echo '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 
 # RUN mkdir /loomio
 WORKDIR /loomio
@@ -45,4 +27,14 @@ RUN npm install
 WORKDIR /loomio
 RUN bundle install
 
-# run angular bookstrap stuff
+# compile the assets with trickery
+ENV RAILS_ENV production
+ENV DATABASE_URL sqlite3:assets_throwaway.db
+ENV DEVISE_SECRET boopboop
+ENV SECRET_COOKIE_TOKEN beepbeep
+
+
+
+RUN bundle exec rake assets:precompile
+
+CMD bundle exec rails s -p 3000 -b '0.0.0.0'
