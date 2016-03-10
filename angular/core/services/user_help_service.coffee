@@ -4,6 +4,8 @@ angular.module('loomioApp').factory 'UserHelpService', (CurrentUser) ->
     helpLocale: ->
       switch CurrentUser.locale
         when 'es', 'an', 'ca', 'gl' then 'es'
+        when 'zh-TW'                then 'zh'
+        when 'ar'                   then 'ar'
         else 'en'
 
     helpLink: ->
