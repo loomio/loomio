@@ -111,7 +111,7 @@ GEM
     bourbon (4.2.3)
       sass (~> 3.4)
       thor
-    browser (2.0.2)
+    browser (1.1.0)
     builder (3.2.2)
     bullet (4.14.10)
       activesupport (>= 3.0.0)
@@ -686,7 +686,7 @@ DEPENDENCIES
   awesome_print
   bing_translator
   bootstrap-sass (~> 3.3.4)
-  browser
+  browser (~> 1.1.0)
   bullet
   byebug
   cancancan
