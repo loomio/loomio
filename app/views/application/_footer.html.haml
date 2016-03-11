@@ -1,5 +1,5 @@
 %footer.footer{role: 'contentinfo'}
-  - if hosted_by_loomio?
-    = render 'loomio_org_footer'
+  - if content_for? :footer
+    = yield :footer
   - else
-    = render 'independent_install_footer'
+    = t :"footer.independent_install_html", hostname: ENV['CANONICAL_HOST'] || request.host
