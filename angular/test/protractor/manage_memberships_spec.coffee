@@ -3,6 +3,7 @@ describe 'Managing memberships', ->
   membershipsHelper = require './helpers/memberships_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
   flashHelper = require './helpers/flash_helper.coffee'
+  page = require './helpers/page_helper.coffee'
 
   beforeEach ->
     groupsHelper.load()
@@ -27,6 +28,13 @@ describe 'Managing memberships', ->
       membershipsHelper.clearSearchInput()
       expect(flashHelper.flashMessage()).toContain('Jennifer Grey is now a coordinator')
       expect(membershipsHelper.currentCoordinatorsCount()).toEqual(2)
+
+  describe 'adding someone as a non-coordinator', ->
+    it 'allows non-coordinators to add members if the group settings allow', ->
+      page.loadPath('setup_group_as_member')
+      page.click '.members-card__manage-members'
+      page.expectElement '.memberships-page__memberships'
+      page.expectElement '.members-card__invite-members'
 
   describe 'removing coordinator privileges', ->
 

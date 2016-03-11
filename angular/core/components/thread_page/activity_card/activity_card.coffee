@@ -3,13 +3,18 @@ angular.module('loomioApp').directive 'activityCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $rootScope, Records, AppConfig, LoadingService) ->
+  controller: ($scope, $location, $rootScope, Records, AppConfig, AbilityService, PaginationService, LoadingService) ->
 
-    $scope.pageSize = 30
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
     $scope.lastReadSequenceId = $scope.discussion.lastReadSequenceId
     $scope.hasNewActivity = $scope.discussion.isUnread()
+    $scope.pagination = (current) ->
+      PaginationService.windowFor
+        current:  current
+        min:      $scope.discussion.firstSequenceId
+        max:      $scope.discussion.lastSequenceId
+        pageType: 'activityItems'
     visibleSequenceIds = []
 
     $scope.init = ->
@@ -21,10 +26,10 @@ angular.module('loomioApp').directive 'activityCard', ->
         $rootScope.$broadcast 'threadPageEventsLoaded'
 
     $scope.initialLoadSequenceId = ->
-      if $scope.discussion.isUnread()
-        $scope.discussion.lastReadSequenceId - 5
-      else
-        $scope.discussion.lastSequenceId - $scope.pageSize + 1
+      return $location.search().from                  if $location.search().from      # respond to ?from parameter
+      return 0                                        if !AbilityService.isLoggedIn() # show beginning of discussion for logged out users
+      return $scope.discussion.lastReadSequenceId - 5 if $scope.discussion.isUnread() # show newest unread content for logged in users
+      return $scope.pagination($scope.discussion.lastSequenceId).prev                 # show latest content if the discussion has been read
 
     $scope.beforeCount = ->
       $scope.firstLoadedSequenceId - $scope.discussion.firstSequenceId
@@ -51,9 +56,12 @@ angular.module('loomioApp').directive 'activityCard', ->
 
     $scope.loadEvents = ({from, per, commentId}) ->
       from = 0 unless from?
-      per = $scope.pageSize unless per?
+      per  = per or $scope.pagination().pageSize
 
-      Records.events.fetchByDiscussion($scope.discussion.key, {from: from, comment_id: commentId, per: per}).then ->
+      Records.events.fetchByDiscussion($scope.discussion.key,
+        from: from
+        per: per
+        comment_id: commentId).then ->
         $scope.firstLoadedSequenceId = $scope.discussion.minLoadedSequenceId()
         $scope.lastLoadedSequenceId  = $scope.discussion.maxLoadedSequenceId()
 
@@ -62,8 +70,7 @@ angular.module('loomioApp').directive 'activityCard', ->
     LoadingService.applyLoadingFunction $scope, 'loadEventsForwards'
 
     $scope.loadEventsBackwards = ->
-      lastPageSequenceId = _.max [$scope.firstLoadedSequenceId - $scope.pageSize, 0]
-      $scope.loadEvents(from: lastPageSequenceId)
+      $scope.loadEvents(from: $scope.pagination($scope.firstLoadedSequenceId).prev)
     LoadingService.applyLoadingFunction $scope, 'loadEventsBackwards'
 
     $scope.canLoadBackwards = ->

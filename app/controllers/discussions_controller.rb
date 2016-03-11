@@ -222,4 +222,8 @@ class DiscussionsController < GroupBaseController
       Group.find(params[:discussion][:group_id])
     end
   end
+
+  def metadata
+    @metadata ||= Metadata::DiscussionSerializer.new(load_resource_by_key).as_json
+  end
 end

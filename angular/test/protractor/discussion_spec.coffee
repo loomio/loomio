@@ -7,11 +7,18 @@ describe 'Discussion Page', ->
   page = require './helpers/page_helper.coffee'
 
   describe 'viewing while logged out', ->
-    xit 'should display content for a public thread', ->
+    it 'should display content for a public thread', ->
       groupsHelper.loadPath('view_open_group_as_visitor')
-      groupsHelper.clickFirstThread()
-      expect(threadPage.discussionTitle()).toContain('I carried a watermelon')
-      expect(threadPage.signInButton()).toContain('Sign In')
+      page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
+      page.expectText('.thread-previews-container', 'I carried a watermelon')
+      page.expectText('.lmo-navbar', 'Log In')
+      page.click('.thread-preview__link')
+      page.expectText('.thread-context', 'I carried a watermelon')
+
+    it 'should display next/prev links', ->
+      groupsHelper.loadPath('setup_discussion_with_many_comments', 100000)
+      page.expectElement('link[rel=next]')
+      page.expectElement('link[rel=prev]')
 
   describe 'edit thread', ->
     beforeEach ->

@@ -1,71 +1,30 @@
+# How do I give feedback about Loomio?
 
-## How to contribute to Loomio (in 10 easy steps)
+You’re here because you want to share a recent Loomio experience with the development team. Thank you! We really appreciate it when people take the time to give us feedback.
 
-######1. Clone the loomio repository:
+[Here's the form](https://docs.google.com/a/enspiral.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform). Please feel free to tell us anything you like, the product team will review it within a few days.
 
-        git clone git://github.com/loomio/loomio.git
+We don't have any rules about what feedback you can give, but we would love it if you read the rest of the page to learn how to make sure your feedback is constructive.
 
-######2. Create an outbox remote with your Github account:
+## Found a bug?
 
-        cd loomio
-        git remote add outbox git@github.com:your_github_handle/loomio.git
+The first thing we do with a bug report is confirm we can reproduce the bug. Please try to give us enough information so that we can produce the buggy experience ourselves:
 
-######3. Create a new branch for your feature:
+Try to include:
+* What steps you took just before the bug.
+* What you were expecting to happen when the bug happened.
+* What actually happened - the buggy behaviour itself.
+* What web browser you were using.
 
-        git checkout -b my-loomio-fix
+If you fill in your name and email address on the feedback form (or use github) we'll be able to let you know when the bug is fixed, and contact you if we need more information.
 
+If you’re reporting a bug in the software and want to work with the team directly we invite you to bypass the feedback form and [submit an issue on Github](https://github.com/loomio/loomio/issues/new).
 
-######4. Code, Code, Code!
-  
-  * keep coding styles consistent with what you see already in the app, and with the conventions discussed below.
-  * the more complex a PR, the more review and back-and-forth will be required to accept it. Keep it as simple and clean as possible!
-  * write tests for your code and make sure they pass; you'll have a tough time convincing us to accept your PR without tests.
+Before reporting an issue:
+* Please have a brief look to see if the issue is already listed. If so please add any extra, clarifying information you can to the existing issue.
 
-######5. Follow Coding Conventions:
-  
-  * Generally, the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide) is a good thing to be aware of.
-  * we use x2 spaces, no tabs
-  * please avoid introducing new 'rocket' hash syntax (this: `{ one: 'one' }` instead of this: `{ :two => 'two' }`)
-  * please ensure there's no trailing whitespace at the end of lines (We quite like [this plugin](https://github.com/SublimeText/TrailingSpaces).)
-  * Use brackets (`{...}`) for single line blocks, and `do ... end` for multi-line blocks.
-  * Be wary of comments in code! Ruby is an expressive language; if you need to comment your code, you're likely either apologizing, or doing something too complex. (Often both!)
-  * We'll be happy to discuss further style conventions as we review your PR.
+## Want to help develop Loomio?
 
-######6. Commit
+Dive into our [Tech Manual](https://loomio.gitbooks.io/tech-manual/content/) to find out how to deploy your own Loomio instance or develop a new feature in Loomio.
 
-        git commit -m "Fix underline styling on discussion page title"
-Please be sure to write a short, descriptive commit message. No empty commit messages!
-
-
-######7. Fetch any changes which have happened upstream
-
-  ```
-  git fetch origin
-  ```
-This is to ensure there are no merge conflicts when it comes time to merge into `master`.
-
-######8. Squash your commits into a single commit (for clean history buffs like us)
-
-  ```
-  git rebase origin/master -i
-  ```
-  (for more info on squashing, refer to [this handy guide](https://github.com/loomio/loomio/wiki/How-to-squash))
-
-######9. Push to your forked version of loomio
-
-  ```
-  git push outbox my-loomio-fix
-  ```
-
-######10. Issue a Pull Request
-
-  * Visit the github page for your forked version of Loomio (http://github.com/your_github_handle/loomio)
-  * You'll likely see a big green 'Compare & Pull Request' button next to your new branch
-  * If not, click on 'branches' and find your branch, then click 'Pull Request'
-  * Sanity check that all of your changes are present, and no extra files or code has slipped in.
-  * Be sure to write a brief but complete description of the changes you've made and why you've made them.
-  * Once everything looks good, send your PR!
-
-  From there, you'll likely get feedback from one or more of the Loomio core team. If we ask you to do more work, or make style changes, or refactor, don't get discouraged! We're curators, not gatekeepers, and are happy to engage in discussion (that's what Loomio's for anyway.)
-
-  Happy coding, and we look forward to working together soon.
+To participate in discussions about the app, potential features, and more, [join the Loomio Community group on Loomio](https://www.loomio.org/g/WmPCB3IR/loomio-community).

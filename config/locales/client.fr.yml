@@ -916,52 +916,6 @@ fr:
     enable:
       invite: 'Essayer le nouveau Loomio !'
       title: Essayer le nouveau Loomio
-      intro: "Nous avons reconstruit Loomio et nous avons besoin de votre aide pour être sûr que c'est nickel avant de le mettre à disposition du grand public."
-      body_html: >
-        <p></p>
-
-        <h3>Quelles sont les différences ?</h3>
-
-
-
-        <p>
-
-          La nouvelle interface est comme l'ancienne mais avec quelques
-        nouveautés:
-
-          <ul>
-
-            <li>Toutes les mises à jours apparaissent en temps réel sur la
-        page</li>
-
-            <li>C'est conçu pour l'ensemble de vos périphériques, du téléphone
-        mobile à l'ordinateur de bureau</li>
-
-            <li>c'est accessible aux personnes aveugles, et traduit dans <a
-        href="https://www.loomio.org/translation"> un tas de langage</a>
-
-          </ul>
-
-        </p>
-
-
-
-        <p>Il utilise la même base que l'ancienne interface , ce qui signifie
-        qu'il y aura tous vos groupes et les discussions existantes . Vous pouvez
-        revenir à l'ancienne interface à tout moment.</p>
-
-        <p>Les choses vont changer légèrement chaque jour au fur et à mesure que
-        nous implémentons les suggestions. Certaines fonctions moins fréquemment
-        utilisées peuvent ne pas être encore présentes.</p>
-
-        <p>Il existe un lien "Revenir à l'ancienne version de Loomio" dans le
-        coin inférieur gauche de la nouvelle application. Cliquez sur ce lien et
-        vous pourrez revenir à la version de Loomio à laquelle vous êtes plus
-        habitué. Il existe aussi un formulaire de suggestion pour vous permettre
-        d'ajouter vos commentaires.</p>
-
-        <p>Nous avons vraiment hâte d'entendre vos commentaires , merci pour
-        votre temps et votre soutien.</p>
       button_text: Activer le nouveau Loomio
     disable:
       title: "Merci d'essayer le nouveau Loomio"

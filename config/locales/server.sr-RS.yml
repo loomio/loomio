@@ -56,7 +56,6 @@ sr-RS:
       view_group: Овде можете одобрити или одбити захтев
     mentioned:
       context: '%{author_name} Вас је поменуо/ла током дискусије "%{discussion_title}"'
-      subject: '%{who} те је поменуо/ла у групи %{which} на Лумију'
     new_motion_created:
       subject: 'Предлог: %{proposal_title}'
       context: '%{author} је предложио/ла у %{group_full_name}:'

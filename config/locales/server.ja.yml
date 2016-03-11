@@ -41,8 +41,6 @@ ja:
       intro: '%{name}  (%{email}) はあなたのLoomioグループのうち一つのグループへのアクセスを要求しました'
       subject: ' %{who}  が %{which_group} に参加するようにお願いしています'
       view_group: ここでリクエストを承認または拒否できます
-    mentioned:
-      subject: '%{who} がLoomioの %{which} グループであなたをタグ付けしました'
     new_motion_created:
       context: '%{author} は  %{group_full_name} で提案を作成しました：'
     proposal_closed:

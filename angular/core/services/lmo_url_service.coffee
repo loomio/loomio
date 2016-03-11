@@ -43,9 +43,11 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
       AppConfig.baseUrl + '/contact'
 
     buildModelRoute: (path, key, name, params, options) ->
-      result = "/#{path}/#{key}"
-      result += "/" + @stub(name) unless !name? or options.noStub?
-      result += "?" + @queryStringFor(params) if Object.keys(params).length
+      result = if options.absolute then AppConfig.baseUrl else "/"
+      result += "#{path}/#{key}"
+      result += "/" + @stub(name)             unless !name? or options.noStub?
+      result += "." + options.ext             if options.ext?
+      result += "?" + @queryStringFor(params) if _.keys(params).length
       result
 
     stub: (name) ->

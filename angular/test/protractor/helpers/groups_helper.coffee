@@ -1,9 +1,9 @@
 module.exports = new class GroupsHelper
-  load: ->
-    browser.get('development/setup_group')
+  load: (timeout) ->
+    browser.get('development/setup_group', timeout)
 
-  loadPath: (path) ->
-    browser.get('development/'+path)
+  loadPath: (path, timeout) ->
+    browser.get('development/'+path, timeout)
 
   loadNew: ->
     browser.get('development/setup_new_group')

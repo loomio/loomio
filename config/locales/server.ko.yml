@@ -43,8 +43,6 @@ ko:
       intro: '%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다.'
       subject: '%{who}님이  %{which_group}에 가입을 요청했습니다. '
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
-    mentioned:
-      subject: '%{who} 님이 루미오의 %{which}  그룹에서 언급하였습니다.'
     new_motion_created:
       context: '%{author} 님이  %{group_full_name} 그룹에 제안을 시작했습니다.'
     proposal_closed:

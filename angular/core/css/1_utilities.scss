@@ -145,6 +145,13 @@
   blockquote{
     font-size: inherit;
   }
+  table td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+  }
+  thead td {
+    font-weight: bold;
+  }
 }
 
 .lmo-box--tiny {

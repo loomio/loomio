@@ -3,25 +3,11 @@ Feature: Request Membership to Group
   So that I can participate in discussions I'm interested in
   I want to be able to join groups
 
-  Scenario: User cannot join invitation only group
-    Given I am logged in
-    And a visible but invitation only group exists
-    When I visit the group page
-    Then I should see that membership is by invitation only
-
   Scenario: Member of parent cannot join invitation only subgroup
     Given I am logged in
     And I am a member of a group with an invitation only subgroup that is visible to parent members
     When I visit the subgroup page
     Then I should see that I need an invitation to join
-
-  Scenario: Vistor requests membership to approval required group
-    Given I am a visitor
-    And an approval required group exists
-    When I visit the group page
-    And I click "Ask to join group"
-    And I fill in and submit the Request membership form
-    Then I should see a flash message confirming my membership request
 
   Scenario: User requests membership to approval required group
     Given I am logged in
@@ -29,20 +15,6 @@ Feature: Request Membership to Group
     When I visit the group page
     And I click "Ask to join group"
     And I fill in and submit the Request membership form (introduction only)
-    Then I should see a flash message confirming my membership request
-
-  Scenario: Visitor cannot request membership to a group using email of existing member
-    Given I am a visitor
-    When I visit the request membership page for a group
-    And I fill in and submit the Request membership form using email of existing member
-    Then I should see a field error telling me I am already a member of the group
-
-  Scenario: Visitor requests membership, is ignored, then requests again
-    Given I am a visitor
-    And I have requested membership as a visitor and been ignored
-    When I visit the group page
-    And I click "Ask to join group"
-    And I fill in and submit the Request membership form
     Then I should see a flash message confirming my membership request
 
   Scenario: User with pending membership request cannot submit new request
