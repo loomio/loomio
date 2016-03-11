@@ -17,7 +17,7 @@
 
     = render 'angular/metadata'
     = render 'angular/google_analytics'
-    = render 'angular/intercom'
+    = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)'}
     %flash
