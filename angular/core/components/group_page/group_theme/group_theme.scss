@@ -77,7 +77,7 @@
   color: white;
 }
 
-.group-theme__upload-photo {
+.group-theme__upload-photo--cover, .group-theme__upload-photo--logo {
   position: relative;
   cursor: pointer;
   top: 2px;
@@ -92,7 +92,12 @@
   }
 }
 
-.group-theme__upload-photo i {
+.group-theme__upload-photo--cover i {
+  color: white;
+  text-shadow: 1px 1px 4px $grey-on-grey;
+}
+
+.group-theme__upload-photo--logo i {
   color: white;
   text-shadow: 1px 1px 4px $grey-on-grey;
 }
