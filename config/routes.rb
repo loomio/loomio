@@ -182,7 +182,7 @@ Loomio::Application.routes.draw do
   end
 
   constraints(MainDomainConstraint) do
-    root :to => 'marketing#index'
+    root :to => 'root#index'
   end
 
   get "/explore", to: 'explore#index', as: :explore
