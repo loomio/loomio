@@ -5,6 +5,8 @@ angular.module('loomioApp').directive 'groupTheme', ->
   replace: true
   controller: ($scope, CurrentUser, AbilityService, ModalService, CoverPhotoForm, LogoPhotoForm) ->
 
+    $scope.triggerThemeHover() if CurrentUser.isAdminOf($scope.group)
+
     $scope.logoStyle = ->
       { 'background-image': "url(#{$scope.group.logoUrl()})" }
 
@@ -34,3 +36,12 @@ angular.module('loomioApp').directive 'groupTheme', ->
 
     $scope.logoHoverOut = ->
       $scope.logoHover = false
+
+    $scope.triggerThemeHover = ->
+      $('.group-theme__trigger-upload').hover ->
+         $('.group-theme__upload-photo--cover').css 'background-color', '#E0E0E0'
+         return
+       , ->
+         $('.group-theme__upload-photo--cover').css 'background-color', ''
+         return
+       return
