@@ -7,16 +7,33 @@ class API::RestfulController < ActionController::Base
 
   private
 
+  def self.named_action(name, pass_params: false)
+    define_method name do
+      load_resource
+      service.send(name, service_params(pass_params: pass_params))
+      respond_with_resource
+    end
+  end
+
   def create_action
-    @event = service.create({resource_symbol => resource, actor: current_user})
+    @event = service.create(service_params)
   end
 
   def update_action
-    @event = service.update({resource_symbol => resource, params: resource_params, actor: current_user})
+    @event = service.update(service_params(pass_params: true))
   end
 
   def destroy_action
-    service.destroy({resource_symbol => resource, actor: current_user})
+    service.destroy(service_params)
+  end
+
+  private
+
+  def service_params(pass_params: false)
+    {
+      resource_symbol => resource,
+      actor: current_user
+    }.merge(pass_params ? { params: resource_params } : {})
   end
 
   def current_user

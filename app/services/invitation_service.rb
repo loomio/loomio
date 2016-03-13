@@ -36,6 +36,7 @@ class InvitationService
     actor.ability.authorize! :cancel, invitation
     invitation.cancel!(canceller: actor)
   end
+  singleton_class.send(:alias_method, :destroy, :cancel)
 
   def self.shareable_invitation_for(group)
     if group.invitations.shareable.count == 0

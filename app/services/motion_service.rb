@@ -27,7 +27,7 @@ class MotionService
     Motion.lapsed_but_not_closed.each { |motion| close(motion) }
   end
 
-  def self.reopen(motion, close_at)
+  def self.reopen(motion:, close_at:)
     motion.closed_at = nil
     motion.closing_at = close_at
     motion.save!
@@ -35,7 +35,7 @@ class MotionService
     EventBus.broadcast('motion_reopen', motion, close_at)
   end
 
-  def self.close(motion)
+  def self.close(motion:)
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
@@ -45,15 +45,15 @@ class MotionService
     Events::MotionClosed.publish!(motion)
   end
 
-  def self.close_by_user(motion, user)
-    user.ability.authorize! :close, motion
+  def self.close_by_user(motion:, actor:)
+    actor.ability.authorize! :close, motion
 
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now
     motion.save!
 
-    EventBus.broadcast('motion_close_by_user', motion, user)
-    Events::MotionClosedByUser.publish!(motion, user)
+    EventBus.broadcast('motion_close_by_user', motion, actor)
+    Events::MotionClosedByUser.publish!(motion, actor)
   end
 
   def self.create_outcome(motion:, params:, actor:)
