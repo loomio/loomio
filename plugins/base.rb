@@ -69,7 +69,7 @@ module Plugins
 
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      @outlets.add Outlet.new(@name, component, outlet) if outlet
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o) }
     end
 
     def use_route(verb, route, action)
