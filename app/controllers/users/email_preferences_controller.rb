@@ -1,6 +1,6 @@
 class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenController
   helper_method :any_memberships_have_volume_email?
-  skip_before_filter :boot_angular_ui, only: :edit
+  skip_before_filter :boot_angular_ui
 
   def edit
     boot_angular_ui unless restricted_user.present?
@@ -8,6 +8,7 @@ class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenControll
   end
 
   def update
+    boot_angular_ui unless restricted_user.present?
     if user.update_attributes(permitted_params.user)
       if %w[loud normal quiet].include? params[:set_group_volume]
         user.memberships.update_all(volume: Membership.volumes[params[:set_group_volume]])
