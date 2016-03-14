@@ -12,6 +12,19 @@ describe 'Group Page', ->
         page.expectElement('link[rel=prev]')
         page.expectElement('link[rel=next]')
 
+      it 'should allow you to join an open group', ->
+        page.loadPath 'view_open_group_as_visitor'
+        page.click '.join-group-button__join-group'
+        # wth now? Sign up?
+
+      it 'should allow you to request to join a closed group', ->
+        page.loadPath 'view_closed_group_as_visitor'
+        page.click '.join-group-button__ask-to-join-group'
+        page.fillIn '#membership-request-name', 'Chevy Chase'
+        page.fillIn '#membership-request-email', 'chevychase@example.com'
+        page.click '.membership-request-form__submit-btn'
+        page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
+
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
         page.loadPath('view_secret_group_as_non_member')
