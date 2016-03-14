@@ -15,6 +15,3 @@ plugins:
   loomio_webhooks:
     repo:    loomio/loomio_webhooks
     version: master
-  loomio_tags:
-    repo:    loomio/loomio_tags
-    version: master
