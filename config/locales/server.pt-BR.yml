@@ -59,7 +59,7 @@ pt-BR:
       view_group: Você pode aprovar ou recusar o pedido aqui
     mentioned:
       context: '%{author_name} mencionou você durante a discussão "%{discussion_title}"'
-      subject: '%{who} mencionou você no grupo %{which} no Loomio'
+      subject: '%{who} mencionou você durante a discussão "%{which}"'
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
       context: '%{author} criou uma proposta no grupo %{group_full_name}:'

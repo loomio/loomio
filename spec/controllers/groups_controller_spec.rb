@@ -5,6 +5,14 @@ describe GroupsController do
   let(:subgroup) { create :group, parent: group}
   let(:user)  { create :user }
 
+  describe 'metadata' do
+    it 'assigns discussion metadata' do
+      @request.user_agent = "Googlebot"
+      get :show, id: group.key
+      expect(assigns(:metadata)[:title]).to eq group.full_name
+    end
+  end
+
   context 'signed out' do
     context "public group" do
       before { group.update_attribute(:is_visible_to_public, true) }
@@ -81,6 +89,20 @@ describe GroupsController do
           expect(response).to redirect_to '/dashboard'
         end
       end
+    end
+  end
+
+  describe "#export" do
+    before do
+      user.update_attribute(:is_admin, true)
+      sign_in user
+      group.enabled_beta_features = ['export']
+      group.save
+    end
+
+    it "responds successfully" do
+      get :export, :id => group.key
+      expect(response.status).to eq 200
     end
   end
 end

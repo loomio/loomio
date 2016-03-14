@@ -3,8 +3,8 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService, CurrentUser) ->
-    $scope.loaded = 0
+  controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService, CurrentUser) ->
+    $scope.loaded = parseInt($location.search().from or 0)
     $scope.perPage = 25
     $scope.canLoadMoreDiscussions = true
     $scope.discussions = []

@@ -27,6 +27,8 @@ it:
     more_help: Altro supporto
     models:
       proposal: Proposta
+    copy: Copia testo
+    copied: Copiato negli appunti
     action:
       close: Chiudi
       save: Salva
@@ -34,6 +36,7 @@ it:
       update_settings: Aggiorna impostazioni
       reply: Rispondi
       edit: Modifica
+      remove: Rimuovi
       like: Like
       back: Indietro
       unlike: Unlike
@@ -46,6 +49,7 @@ it:
       loading: In caricamento...
       translate: Traduci
       translated: Tradotto da Bing Traduttore
+      upload: Carica
       uploading: Caricamento in corso
     formatting_help:
       label: Aiuto nella formattazione
@@ -217,6 +221,7 @@ it:
     motion_outcome_created: '<strong>{{name}}</strong> ha reso pubblico un risultato sulla proposta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{proposal}}</strong>'
     invitation_accepted: '<strong>{{name}}</strong> ha accettato il tuo invito ad unirsi a <strong>{{group}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> ti ha reso coordinatore di  <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dite la vostra
   vote_form:
@@ -400,12 +405,15 @@ it:
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
+      loud_message: 'Riceverai le email relative alle attività in "{{name}}."'
       normal: 'Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc.'
       normal_aria_description: 'Il volume delle tue notifiche è settato su Normale. Verrai indormato/a via email sulle attività più importanti, ad esempio quando qualcuno lancia una nuova discussione, una proposta oppure stabilisce un esito.'
+      normal_message: "Riceverai un'email solamente per gli eventi importanti di \"{{name}}\""
       quiet: Non inviare email su questo gruppo. Le attività verranno mostrate nella bacheca.
       quiet_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Quieto. Non riceverai email da questo gruppo e le sue attività verranno mostrate sulla tua bacheca.
       mute: Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato.
       mute_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Muto. Non riceverai email da questo gruppo a meno che qualcuno non ti @menzioni e le sue attività non verranno mostrate sulla tua bacheca.
+      mute_message: '"{{name}}" è stata rimossa dalla tua dashboard.'
     privacy:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
@@ -422,6 +430,7 @@ it:
     heading: Piano Regalo
   trial_card:
     title: Prova di 30 giorni
+    choose_plan: Scegli il tuo piano
   choose_plan_modal:
     gift: Regalo
     standard: Standard
@@ -638,6 +647,7 @@ it:
       quiet_aria_description: Il volume delle notifiche di questa discussione è impostato su Basso. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a.
       mute: Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned.
       mute_aria_description: 'Il volume delle notifiche di questa discussione è impostato su Muto. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a, e questa discussione verrà rimossa dalla tua dashboard.'
+      mute_message: '"{{name}}" è stata rimossa dalla tua dashboard.'
   thread_group:
     aria_label: Nome gruppo
   thread_context:
@@ -888,48 +898,6 @@ it:
     enable:
       invite: 'Prova il nuovo Loomio!'
       title: Prova il nuovo Loomio
-      intro: Abbiamo riscritto Loomio e abbiamo bisogno del vostro aiuto per essere sicuri che sia perfetto prima di rilasciarlo pubblicamente.
-      body_html: >
-        <p></p>
-
-        <h3>Qual'è la differenza?</h3>
-
-
-
-        <p>
-
-          la nuova interfaccia è simile alla vecchia ma più moderna:
-
-          <ul>
-
-            <li>le modifiche vengono visualizzate in tempo reale;</li>
-
-            <li>funziona con tutti i tuoi dispositivi, dallo smartphone al pc
-        desktop;</li>
-
-            <li>è accessibile a persone non vedenti ed è tradotta in  <a
-        href="https://www.loomio.org/translation">miriadi di lingue</a>
-
-          </ul>
-
-        </p>
-
-
-
-        <p>Usa la stesa base dati della vecchia interfaccia, conservando quindi
-        tutti i tuoi gruppi e le tue discussioni precedenti. Puoi tornare in
-        qualsiasi momento alla vecchia interfaccia.</p>
-
-        <p>Ci saranno graduali cambiamenti man mano che implementeremo i consigli
-        ricevuti. Potrebbero scomparire alcune delle funzioni meno usate.</p>
-
-        <p>Il collegamento  "Torna al vecchio Loomio" nell'angolo in basso
-        a sinistra della nuova app. Cliccando su quel collegamento verrete
-        portati alla interfaccia cui siete maggiormente abituati. C'è anche un
-        modulo di feeedback a vostra disposizione.</p>
-
-        <p>Aspettiamo di ricevere i vostri commenti e vi ringraziamo per il
-        vostro tempo e per il vostro sostegno..</p>
       button_text: Attiva il nuovo Loomio
     disable:
       title: Grazie per avere provato il nuovo Loomio

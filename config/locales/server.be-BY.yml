@@ -56,7 +56,6 @@ be-BY:
       view_group: Вы можаце зацвердзіць ці адмовіць запыт тут
     mentioned:
       context: 'Карыстальнік %{author_name} узгадаў вас у абмеркаванні "%{discussion_title}"'
-      subject: 'Карыстальнік %{who} узгадаў вас ў гурпе %{which} на Loomio'
     new_motion_created:
       subject: 'Прапанова: %{proposal_title}'
       context: 'Карыстальнік %{author} стварыў прапанову ў %{group_full_name}:'

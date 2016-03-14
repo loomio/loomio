@@ -47,8 +47,6 @@ cs:
       intro: '%{name} (%{email}) zažádal(a) o přístup k jedné z vašich Loomio skupin.'
       subject: '%{who} zažádal(a) o členství v %{which_group}'
       view_group: Můžete schválit či odmítnout žádost zde
-    mentioned:
-      subject: '%{who} vás zmínil(a) ve skupině %{which} na Loomio'
     new_motion_created:
       context: '%{author} vytvořil(a) návrh v %{group_full_name}:'
     proposal_closed:

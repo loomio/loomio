@@ -54,7 +54,6 @@ de:
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
     mentioned:
       context: '%{author_name} erwähnte Dich in "%{discussion_title}"'
-      subject: '%{who} hat dich erwähnt in der %{which} Gruppe bei Loomio'
     new_motion_created:
       subject: 'Vorschlag: %{proposal_title}'
       context: '%{author} hat einen Vorschlag in der Gruppe %{group_full_name} erstellt:'

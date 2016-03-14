@@ -56,7 +56,6 @@ el:
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
     mentioned:
       context: '%{author_name} σε ανέφερε όταν συζητούσε στο θέμα "%{discussion_title}"'
-      subject: '%{who} σε ανέφερε στην Ομάδα %{which} στο Loomio'
     new_motion_created:
       subject: 'Πρόταση: %{proposal_title}'
       context: '%{author} δημιούργησε μια πρόταση στο %{group_full_name}:'

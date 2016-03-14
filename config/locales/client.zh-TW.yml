@@ -818,6 +818,8 @@ zh-TW:
     private: 更新討論串隱私設定為
     public_to_private: 私人
     private_to_public: 公開
+    private_title: 更新討論串標題與隱私設定
+    description_private: 更新討論串內容與隱私設定
     description_private_title: 更新討論串標題、內容與隱私設定
   contact_message_form:
     contact_us: 聯絡我們
@@ -933,7 +935,7 @@ zh-TW:
     enable:
       invite: 嘗試新的 Loomio！
       title: 嘗試新的 Loomio
-      intro: 我們將會重新建立 Loomio 且需要您的協助，以確定我們在釋出它給公眾前變的足夠好。
+      intro: 我們正在重新建造 Loomio，我們需要要您的協助來讓它變得更好！
       body_html: >
         <p></p>
 
@@ -943,18 +945,18 @@ zh-TW:
 
         <p>
 
-          新的介面就像舊的介面，但是更新了：
+        新的介面就像舊的介面，但是更新了：
 
-          <ul>
+        <ul>
 
-            <li>每樣事情都會在它發生時即時在頁面上更新</li>
+        <li>每樣事情都會在它發生時即時在頁面上更新</li>
 
-            <li>它設計給您所有的裝置使用，從智慧型手機到桌上型電腦</li>
+        <li>它設計給您所有的裝置使用，從智慧型手機到桌上型電腦</li>
 
-            <li>它可以讓盲人使用，且翻譯為 <a
+        <li>它可以讓盲人使用，且被翻譯為 <a
         href="https://www.loomio.org/translation">許多的語言</a>
 
-          </ul>
+        </ul>
 
         </p>
 
@@ -967,7 +969,7 @@ zh-TW:
         <p>在新版應用程式的左下角會有一個「切換回舊版 Loomio」的連結。點擊該連結，然後您就會切換回您使用較久的
         Loomio。也有一個您可以輸入回饋的回饋表單。</p>
 
-        <p>我們真的很想聽到您的回饋，感謝您的使用與支援。</p>
+        <p>我們真的很想聽到您的回饋，感謝您的使用與支持。</p>
       button_text: 啟用新的 Loomio
     disable:
       title: 感謝您嘗試新的 Loomio

@@ -999,46 +999,6 @@ es:
     enable:
       invite: Prueba el nuevo Loomio
       title: 'Prueba el nuevo Loomio '
-      intro: Hemos reconstruido Loomio y necesitamos tu ayuda para asegurarnos de que es genial antes de lanzarlo al público general.
-      body_html: >
-        <p></p>
-
-        <h3>¿Cuál es la diferencia ?</h3>
-
-        <p>
-
-        La nueva interfaz es como la antigua pero más nueva:
-
-        <ul>
-
-        <li> Todo en la pagina se actualiza en vivo, como va sucediendo </li>
-
-        <li> Está diseñada para todos tus dispositivos, desde tu smartphone al
-        ordenador de escritorio </li>
-
-        <li> Es accesible para gente ciega, y esta traducido <a
-        href="https://www.loomio.org/translation">a muchos idiomas</a>
-
-        </ul>
-
-        </p>
-
-
-
-        <p> Usa la misma base de datos que la interfaz antigua, esto significa
-        que tiene todos tus grupos existentes y discusiones. Puedes cambiar a la
-        interfaz antigua cuando quieras</p>
-
-        <p> Las cosas cambiar un poquito cada día, implementaremos cambios
-        a medida que recibimos comentarios. Algunas de las opciones menos usadas
-        quizás no estén ahí todavía.</p>
-
-        <p>Hay un enlace para "Volver al Loomio antiguo" en la parte inferior
-        izquierda del nuevo app. Haz clic en ese enlace y podrás volver al Loomio
-        al que estas más acostumbrado. También hay un formulario para que nos
-        dejes cualquier comentario que tengas.</p>
-
-        <p>Esperamos recibir tus comentarios, gracias por tu tiempo y apoyo.</p>
       button_text: Habilita el nuevo Loomio
     disable:
       title: Gracias por probar el nuevo Loomio

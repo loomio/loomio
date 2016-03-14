@@ -36,8 +36,6 @@ id:
       intro: '%{name} (%{email}) mengirimkan permintaan untuk mengakses salah satu kelompok Loomio Anda.'
       subject: '%{who} mengirimkan permintaan untuk bergabung ke dalam %{which_group}'
       view_group: Anda dapat menerima atau menolak permintaan di sini
-    mentioned:
-      subject: '%{who} menyebutkan nama Anda di dalam kelompok %{which} di Loomio'
     new_motion_created:
       context: '%{author} membuat usulan di dalam %{group_full_name}:'
     proposal_closed:

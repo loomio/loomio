@@ -17,17 +17,17 @@ module.exports =
     scss:         _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'core/css'])
   dist:
-    fonts:        '../public/client/fonts',
-    assets:       '../public/client/development',
+    fonts:        '../public/client/fonts'
+    assets:       '../public/client/development'
   fonts:
     vendor:       include(vendor, 'fonts')
   html:
     core:         'core/components/**/*.haml'
   js:
     core:         'core/**/*.coffee',
-    execjs:       include(vendor, 'execjs'),
+    execjs:       include(vendor, 'execjs')
     vendor:       include(vendor, 'js')
   protractor:
-    config:       'test/protractor.coffee',
-    screenshots:  'test/protractor/screenshots',
+    config:       'test/protractor.coffee'
+    screenshots:  'test/protractor/screenshots'
     specs:        'test/protractor/*_spec.coffee'

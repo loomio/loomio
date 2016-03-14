@@ -14,6 +14,15 @@ describe DiscussionsController do
                                 private: true,
                                 group: group) }
 
+  describe 'metadata' do
+    it 'assigns discussion metadata for crawlers' do
+      discussion = create(:discussion, group: group, private: false)
+      @request.user_agent = "Googlebot"
+      get :show, id: discussion.key
+      expect(assigns(:metadata)[:title]).to eq discussion.title
+    end
+  end
+
   context "authenticated user" do
     before do
       sign_in user
@@ -43,62 +52,6 @@ describe DiscussionsController do
         delete :destroy, id: discussion.key
         expect(flash[:success]).to match(/Discussion successfully deleted/)
       end
-    end
-
-    describe "moving a discussion" do
-
-      context "from a public group to a private group" do
-        it "makes the discussion private" do
-          g = FactoryGirl.create :group, discussion_privacy_options: 'private_only'
-          d = FactoryGirl.create :discussion, group: group, private: false
-          Group.stub(:find).with(g.key).and_return(g)
-          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
-
-          d.group.admins << user
-          g.members << user
-
-          post :move, id: d.key, destination_group_id: g.key
-
-          expect(d.group).to eq g
-          expect(d.private).to be true
-        end
-      end
-
-      context "from a private group to a public group" do
-        it "makes the discussion public" do
-          g = FactoryGirl.create :group, discussion_privacy_options: 'public_only'
-          d = FactoryGirl.create :discussion, private: true
-          Group.stub(:find).with(g.key).and_return(g)
-          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
-
-          d.group.admins << user
-          g.members << user
-
-          post :move, id: d.key, destination_group_id: g.key
-
-          expect(d.group).to eq g
-          expect(d.private).to be false
-        end
-      end
-
-      context "to a group with a different user as admin" do
-        it "successfully moves the discussion" do
-          g1 = FactoryGirl.create :group
-          g2 = FactoryGirl.create :group
-          d = FactoryGirl.create :discussion, group: g1
-          Group.stub(:find).with(g2.key).and_return(g2)
-          Discussion.stub_chain(:published, :find_by_key!).with(d.key).and_return(d)
-
-          g1.admins << user
-          g2.admins << other_user
-          g2.members << user
-
-          post :move, id: d.key, destination_group_id: g2.key
-
-          expect(d.reload.group).to eq g2
-        end
-      end
-
     end
 
     describe "creating a new proposal" do

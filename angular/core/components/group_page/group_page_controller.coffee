@@ -1,14 +1,10 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, CurrentUser, MessageChannelService, AbilityService, AppConfig, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, CurrentUser, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   $routeParams.key = $routeParams.key.split('|')[0]
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
-    $rootScope.$broadcast 'currentComponent', { page: 'groupPage' }
-    $rootScope.$broadcast 'viewingGroup', @group
-    $rootScope.$broadcast 'setTitle', @group.fullName
-    $rootScope.$broadcast 'analyticsSetGroup', @group
 
     if AbilityService.isLoggedIn()
       $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
@@ -17,6 +13,24 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
       LegacyTrialExpiredModal.showIfAppropriate(@group, CurrentUser)
+
+    @pageWindow = PaginationService.windowFor
+      current:  parseInt($location.search().from or 0)
+      min:      0
+      max:      @group.publicDiscussionsCount
+      pageType: 'groupThreads'
+
+    $rootScope.$broadcast 'viewingGroup', @group
+    $rootScope.$broadcast 'setTitle', @group.fullName
+    $rootScope.$broadcast 'analyticsSetGroup', @group
+    $rootScope.$broadcast 'currentComponent',
+      page: 'groupPage'
+      links:
+        canonical:   LmoUrlService.group(@group, {}, absolute: true)
+        rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
+        prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
+        next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
+
   , (error) ->
     $rootScope.$broadcast('pageError', error)
 

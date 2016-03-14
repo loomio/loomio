@@ -199,6 +199,13 @@ module Development::NintiesMoviesHelper
     @pending_invitation
   end
 
+  def test_empty_draft
+    unless @test_empty_draft
+      @test_empty_draft = Draft.create(draftable: test_group, user: patrick, payload: { discussion: { title: "", private: nil }})
+    end
+    @test_empty_draft
+  end
+
   def setup_all_notifications_work
     #'comment_liked'
     comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')
@@ -214,7 +221,8 @@ module Development::NintiesMoviesHelper
     second_motion_created_event = MotionService.create(motion: public_test_proposal,
                                                        actor: patrick)
 
-    motion_closed_event = Events::MotionClosed.publish!(public_test_proposal)
+
+    motion_closed_event = MotionService.close(public_test_proposal)
 
     #'motion_outcome_created'
     outcome_event = MotionService.create_outcome(motion: test_proposal,

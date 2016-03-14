@@ -23,10 +23,11 @@
       .lmo-navbar__item
         %navbar_search
     %section.lmo-navbar-item-container__sub.lmo-navbar-item-container__sub--right{aria-label: "{{ 'navbar.user_actions' | translate }}"}
-      .lmo-navbar__item.lmo-navbar__item--notifications{ng-if: "isLoggedIn()"}
-        %notifications
-      .lmo-navbar__item.lmo-navbar__item--user{ng-if: "isLoggedIn()"}
-        %navbar_user_options
-      %button.lmo-navbar__sign-in{ng-if: "!isLoggedIn()", ng-click: "goToSignIn()"}
-        %span{translate: "navbar.sign_in"}
-      %outlet{controller-name: "after-sign-in"}
+      .lmo-navbar__logged-in{ng-if: "isLoggedIn()"}
+        .lmo-navbar__item.lmo-navbar__item--notifications{ng-if: "isLoggedIn()"}
+          %notifications
+        .lmo-navbar__item.lmo-navbar__item--user{ng-if: "isLoggedIn()"}
+          %navbar_user_options
+      .lmo-navbar__logged-out{ng-if: "!isLoggedIn()"}
+        %button.lmo-navbar__sign-in{ng-click: "goToSignIn()"}>
+          %span{translate: "navbar.sign_in"}

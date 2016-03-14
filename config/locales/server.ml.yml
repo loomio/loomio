@@ -32,8 +32,6 @@ ml:
     membership_request:
       intro: '%{name} (%{email}) എന്ന വ്യക്തി താങ്കളുടെ ലൂമിയോ സമൂഹങ്ങളില്‍ ഒന്നിലേക്ക് പ്രവേശനാഭ്യര്‍ത്ഥന നല്‍കിയിട്ടുണ്ട്.'
       view_group: താങ്കള്‍ക്ക് ഇവിടെ അനുമതി നല്‍കുകയോ നിരാകരിക്കുകയോ ചെയ്യാം
-    mentioned:
-      subject: '%{who} എന്നയാള്‍ %{which} എന്ന ലൂമിയോ കൂട്ടത്തില്‍ താങ്കളെ സ്മരിച്ചു'
     new_motion_created:
       context: '%{author}  %{group_full_name}-ല്‍ പുതിയ പദ്ധതി സൃഷ്ടിച്ചു:'
     proposal_closed:

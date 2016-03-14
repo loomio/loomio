@@ -145,6 +145,10 @@ class GroupsController < GroupBaseController
 
   private
 
+  def metadata
+    @metadata ||= Metadata::GroupSerializer.new(load_group).as_json
+  end
+
     def assign_meta_data
       if @group.is_visible_to_public?
         @meta_title = @group.name

@@ -50,7 +50,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
-    ScrollService.scrollTo(options['scrollTo'] or 'h1')
+    ScrollService.scrollTo(options.scrollTo or 'h1')
+    $scope.links = options.links or {}
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
@@ -75,10 +76,12 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/d/:key/:stub', component: 'threadPage' },
     {path: '/d/:key/comment/:comment', component: 'threadPage'},
     {path: '/d/:key/proposal/:proposal', component: 'threadPage'},
+    {path: '/d/:key/proposal/:proposal/:outcome', component: 'threadPage'},
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
     {path: '/g/:key/memberships', component: 'membershipsPage'},
+    {path: '/g/:key/memberships/:username', component: 'membershipsPage'},
     {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
     {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
     {path: '/g/:key', component: 'groupPage' },

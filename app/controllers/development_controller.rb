@@ -50,6 +50,11 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_group_as_member
+    sign_in jennifer
+    redirect_to group_url(test_group)
+  end
+
   def setup_group_with_expired_legacy_trial
     sign_in jennifer
     GroupService.create(group: test_group, actor: patrick)
@@ -67,16 +72,24 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_with_many_discussions
-    sign_in patrick
     test_group.add_member! emilio
-    50.times do
+    40.times do
       discussion = FactoryGirl.build(:discussion,
                                      group: test_group,
-                                     private: true,
+                                     private: false,
                                      author: emilio)
       DiscussionService.create(discussion: discussion, actor: emilio)
     end
-    redirect_to group_url(test_group)
+    redirect_to group_url(test_group, from: 5)
+  end
+
+  def setup_discussion_with_many_comments
+    test_group.add_member! emilio
+    40.times do |i|
+      comment = FactoryGirl.build(:comment, discussion: test_discussion, body: "#{i} bottles of beer on the wall")
+      CommentService.create(comment: comment, actor: emilio)
+    end
+    redirect_to discussion_url(test_discussion, from: 5)
   end
 
   def setup_group_on_trial_admin
@@ -122,6 +135,32 @@ class DevelopmentController < ApplicationController
     public_test_proposal
     sign_in jennifer
     redirect_to discussion_url(public_test_discussion)
+  end
+
+  def setup_restricted_profile
+    sign_in patrick
+    test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    test_group.add_member!(jennifer)
+    redirect_to "/u/#{jennifer.username}"
+  end
+
+  def setup_profile_with_group_visible_to_members
+    sign_in patrick
+    test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    test_group.add_admin!(patrick)
+    test_group.add_member!(jennifer)
+    redirect_to "/u/#{jennifer.username}"
+  end
+
+  def setup_group_with_empty_draft
+    sign_in patrick
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
+    test_empty_draft
+    redirect_to group_url(test_group)
   end
 
   def setup_multiple_discussions
@@ -327,6 +366,7 @@ class DevelopmentController < ApplicationController
     raise "Do not call me." if Rails.env.production?
     tmp, Rails.env = Rails.env, 'test'
     yield
+  ensure
     Rails.env = tmp
   end
 

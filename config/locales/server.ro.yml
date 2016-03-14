@@ -54,7 +54,6 @@ ro:
       view_group: Aici poti aproba sau nu cererea
     mentioned:
       context: '%{author_name} te-a mentionat cand discuta "%{discussion_title}"'
-      subject: '%{who} te-a mentionat in grupul %{which} pe Loomio'
     new_motion_created:
       subject: 'Propunere: %{proposal_title}'
       context: '%{author} a creat o propunere in %{group_full_name}:'
