@@ -75,8 +75,7 @@ Loomio::Application.configure do
       :port           => ENV['SMTP_PORT'],
       :authentication => (ENV['SMTP_AUTH'] || :plain).to_sym,
       :user_name      => ENV['SMTP_USERNAME'],
-      :password       => ENV['SMTP_PASSWORD'],
-      :domain         => ENV['SMTP_DOMAIN']
+      :password       => ENV['SMTP_PASSWORD']
     }
   else
     # Send emails using local sendmail
