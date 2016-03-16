@@ -1,6 +1,16 @@
 ---
 en:
   email:
+    reset_password:
+      greeting: |
+        Hi %{name}
+        Here is a link you can use to reset the password on your Loomio account:
+
+      signoff: |
+        You're receiving this email because your email was entered into the "Forgot password" form on %{hostname}.
+        Your password will not be changed until you follow the link and submit the form.
+        If you continue to have problems logging in, reply to this email to contact a support person.
+
     custom: "%{text}"
     group_email:
       intro: "%{who} made an announcement to %{group}:"
