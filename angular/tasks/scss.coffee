@@ -16,3 +16,12 @@ module.exports = ->
     rename(suffix: '.min'),                        # rename stream to app.min.css
     gulp.dest(paths.dist.assets)                   # write assets/app.min.css
   ]
+
+  pipe gulp.src(paths.core.print), [
+    concat('print.css'),                           # concatenate scss files
+    sass(includePaths: paths.core.scss_include),   # convert scss to css
+    gulp.dest(paths.dist.assets),                  # write assets/print.css
+    cssmin(),                                      # minify print.css file
+    rename(suffix: '.min'),                        # rename stream to print.min.css
+    gulp.dest(paths.dist.assets)                   # write assets/print.min.css
+  ]
