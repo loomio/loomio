@@ -188,7 +188,7 @@ _Note: the commands which ‘plugin’ accepts are well-documented in the [READM
 
 At this point, running `rails c` again should add those new tables and pop that new code into our instance.
 
-![](/images/tables_exist.png)
+![](images/tables_exist.png)
 
 And if we run a few little experiments, we should see that we can now add tags and associate them with discussions via the console
 
