@@ -6,7 +6,26 @@ The thing we’ll be making this time is a tagging plugin, which will allow grou
 
 It'll look like this:
 
-(picture)
+![](images/a_tag_yay.png)
+
+By the end of this article, we'll have
+
+- Added a new database table and model to the Loomio rails app
+- Added a new controller, route, and serializer to expose an API endpoint
+- Modified existing Loomio classes to create model relationships
+- Added models and record stores for storing data on the client
+- Created an angular directive which shows our tags on the dashboard
+- Created an angular directive which displays our tags in the view
+- Added testing functionality to our rails controller which can be hooked up to a CI or run locally
+
+We won't have
+
+- Created a form to allow group admins to add, edit or destroy tags
+- Made another directive to make the tags appear on the thread page
+
+But, you can check out the repository for this plugin [on github](http://github.com/loomio/loomio_tags) to see our most up-to-date progress.
+
+Let's get started!
 
 ### PART 1: Create a basic plugin.
 First off, we’re going to create a local plugin, and initialize it with a git repository so it’s separate from the Loomio core codebase. This guide assumes you have a local dev instance of Loomio up and running
@@ -50,10 +69,10 @@ Unfortunately, it’s not a terribly useful plugin yet, but we can make it bette
 - (important, don’t skip!) add a reference to `plugins/plugins.yml`, telling Loomio where to find your plugin on github. That will look like this:
 
 ```yaml
-	plugins:
-	  loomio_tags:
-	    repo: loomio/loomio_tags
-	    version: master
+  plugins:
+    loomio_tags:
+      repo: loomio/loomio_tags
+      version: master
 ```
 
 (NB: you can constrain your plugin to a particular branch, tag, or commit with the version, but we’ll stick with tracking the master branch for now.)
@@ -77,8 +96,6 @@ rails c
 Which should result another friendly ‘Hello world’ message. Now we know Loomio can run our plugin from anywhere; woot!
 
 (NB: rake plugins:acquire can be a destructive action; it will delete all of the existing plugins on your local instance and replace them with those specified in `plugins.yml`. TL;DR you can easily lose your work if you skip step 5 above, don’t do it!)
-
-In Part 2, we’ll add some basic functionality to our plugin and get it doing real work inside our app.
 
 ### PART 2: Add some simple functionality
 
@@ -170,7 +187,8 @@ end
 _Note: the commands which ‘plugin’ accepts are well-documented in the [README](https://github.com/loomio/loomio/tree/master/plugins) in our repository. If you’re trying to figure out how to do something, that’s a really great place to start._
 
 At this point, running `rails c` again should add those new tables and pop that new code into our instance.
-(image)
+
+![](/images/tables_exist.png)
 
 And if we run a few little experiments, we should see that we can now add tags and associate them with discussions via the console
 
@@ -195,13 +213,11 @@ And if we run a few little experiments, we should see that we can now add tags a
 
 Sweet!
 
-In Part 3, we’ll take a look at pushing some of this newfound plumbing out through the API so it’s easy to interact with.
-
 ### PART 3: Create an API endpoint
 Now that we’ve got some models and a place to store them, the next step is to make that information available via our API. If you’re going to be writing plugins which expose info through the API, it’s strongly suggested you read up on the [snorlax gem](https://github.com/loomio/snorlax) that we’re using for our API controllers, and take a nice look through some of the existing controllers in `app/controllers/api`. It’s a bit of a DSL, but once you get the hang of it, writing new endpoints is a breeze!
 
 ##### 1. Create a route
-First, let’s expose an endpoint, ‘/api/v1/discussion_tags/’, which will route to the index action in a DiscussionTagsController:
+First, let’s expose an endpoint, ‘/api/v1/discussion_tags.json’, which will route to the index action in a DiscussionTagsController:
 
 ```
 # plugins/loomio_tags/plugin.rb (within the setup! method)
@@ -243,6 +259,8 @@ class DiscussionTagSerializer < ActiveModel::Serializer
 end
 ```
 
+You can check out some of the other serializers we've written in [app/serializers](https://github.com/loomio/loomio/tree/master/app/serializers)
+
 Alright, with that out of the way, we can access the tags we create through our API. Next up? Part 4 will cover how to add these tags to the actual interface. We’re getting close!
 
 ### PART 4: Display created tags in the frontend
@@ -252,7 +270,7 @@ Now that we’ve got some plumbing going, we can start displaying our hard work 
 The angular interface is comprised primarily of things called ‘components’, which is a collection of a directive, a template, and a stylesheet. We can then slot these into ‘outlets’ in the interface.
 
 ##### 1. Adding a client side model
-Just like on the server side, Loomio has client side models as well, which are stored in a client side data store called a 'RecordsInterface'. You can check out the existing models and RecordsInterfaces in `angular/core/models`. We'll want to make a model and corresponding records interface for our new DiscussionTags.
+Just like on the server side, Loomio has client side models as well, which are stored in a client side data store called a 'RecordsInterface'. You can check out the existing models and RecordsInterfaces in [angular/core/models](https://github.com/loomio/loomio/tree/master/angular/core/models). We'll want to make a model and corresponding records interface for our new DiscussionTags.
 
 ```
 # plugins/components/discussion_tags/discussion_tag_model.coffee
@@ -277,17 +295,21 @@ plugin.use_asset 'components/discussion_tags/discussion_tag_model.coffee'
 plugin.use_asset 'components/discussion_tags/discussion_tag_records_interface.coffee'
 ```
 
+`use_asset` allows us to add any type of compilable (coffee, haml, scss) file to our asset pipeline, so you can add other things this way if you find you need to as well.
+
 _NB: We could also use the `use_asset_directory` command to include a whole directory of files in one line._
 
 ##### 2. Making an outlet
 
-This is the easy part. Find where in the interface you’d like your component to go, and put an ‘outlet’ directive there (if it doesn’t already exist!), with a name, like so:
+This is the easy part. Find where in the interface you’d like your component to go, and put an ‘outlet’ directive there (if it doesn’t already exist), with a name, like so:
 
 ```
 %outlet{name: “before-thread-title”}
 ```
 
-NB: You’ll need to pull request this against the main loomio repository, but don’t worry, we’ll definitely accept it if it’s named nicely and not right next to another outlet.
+You can find all of the existing outlets by searching for `%outlet` in the repository.
+
+_NB: You’ll need to pull request any new outlets against the main loomio repository, but don’t worry, we’ll definitely accept it if it’s named nicely and not right next to another outlet. We'll also be very excited to hear about what you're working on._
 
 ##### 3. Making a component
 
@@ -310,6 +332,7 @@ Some things to note:
 - The template url format is `generated/components/<your_component_name>.html`
 - You can inject any class you'd like into the plugin controllers, which can be defined either in the core repo or within your plugin.
 - `Records` is a collection of all of our records interfaces, and `find` a method we can use to search for records within a given interface.
+
 ```
 # plugins/loomio_tags/components/thread_tags/thread_tags.haml
 .thread-tags{ng-if: "anyTags()"}
@@ -327,10 +350,16 @@ plugin.use_component :thread_tags, outlet: :before_thread_title
 
 _NB: We support using the same outlet for multiple components, so don’t worry about conflicts there._
 
-##### 4. Fetching the tags from the server
-The only thing left is to make an API call to fetch our tags! In order to do this, we'll create another directive, which specificially performs an API request when it's loaded. (This is the recommended way to load remote records into your app.)
+You can also put a single component into multiple outlets in the interface by passing an array of names:_
 
-I've called it 'tag_fetcher', and it has just a single file, `tag_fetcher.coffee`
+```
+plugin.use_component :thread_tags, outlet: [:before_thread_title, :after_thread_title]
+```
+
+##### 4. Fetching the tags from the server
+The only thing left is to make an API call to fetch our tags! In order to do this, we'll create another directive, which specifically performs an API request when it's loaded. (This is the recommended way to load remote records into your app.)
+
+I've called it `tag_fetcher`, and it has just a single file, `tag_fetcher.coffee`
 
 ```
 # plugins/loomio_tags/components/tag_fetcher.coffee
@@ -344,9 +373,9 @@ angular.module('loomioApp').directive 'tagFetcher', ->
         discussion_keys: _.pluck($scope.query.threads(), 'key')
 ```
 
-_NB: Notice that we're adding the records interface to Records if it doesn't exist._
+_NB: Notice that we're adding the records interface to Records if it doesn't exist yet._
 
-Then, I'm placing this into an outlet in `thread_preview_collection.haml`:
+Then, we pop this into another outlet in `thread_preview_collection.haml`:
 
 ```
 %outlet{name: "before-thread-previews"}
@@ -355,13 +384,13 @@ Then, I'm placing this into an outlet in `thread_preview_collection.haml`:
 plugin.use_component :tag_fetcher, outlet: :before_thread_previews
 ```
 
-Now, if we load up our app, we’ll see our tag displayed nicely next to the discussion title.
+Now, if we load up our app, we’ll see our tag displayed nicely next to the discussion title. Hooray!
 
 ### PART 5: Testing our controller
 
-If you're not testing it, you're not doing it right! We provide the ability to add your own specs. If they're in the plugins/spec folder, they'll even be run as part of the CI, so you can be more confident that your plugins aren't breaking stuff.
+If you're not testing it, you're not doing it right! We provide the ability to add your own specs. If they're in the plugins/ folder, they'll even be run as part of the CI, so you can be more confident that your plugins aren't breaking stuff.
 
-For this plugin, the thing that makes most sense is a controller spec, to make sure that we're responding with the right thing when an API call is made. You can check it out here (link to plugin)
+For this plugin, the thing that makes most sense is a controller spec, to make sure that we're responding with the right thing when an API call is made. You can check it out [here](https://github.com/loomio/loomio_tags/blob/master/spec/discussion_tags_controller_spec.rb)
 
 Some interesting things:
 - You can define factories right there in the file if you need them
@@ -369,15 +398,16 @@ Some interesting things:
 - In order to run just plugin specs, you can run `bundle exec rspec plugins`. To get even more specific, you can point rspec to the particular file/line you're interested in, like `bundle exec rspec plugins/controllers/discussion_tags_controller_spec.rb:18`
 
 ### PART 6: And beyond!
-That's it for this tutorial; it feels like we've covered a lot! As a wrapup, this plugin
+That's it for this tutorial; it feels like we've covered a lot!
+There's still plenty more that could be done here, including making the tags appear in multiple places, and allowing group coordinators to create/update/destroy tags, and more. Again, if you're interesting in the progress of this particular functionality, feel free to follow the [loomio tags](https://github.com/loomio/loomio_tags) repository.
 
-- Adds a new database table and model to the Loomio rails app
-- Adds a new controller, route, and serializer to expose an API endpoint
-- Modifies existing Loomio classes to create model relationships
-- Adds models and record stores for storing data on the client
-- Adds additional directives to the angular frontend for displaying content
-- Adds testing functionality which can be hooked up to a CI or run locally
+There are also several other plugins which have been developed, which you can refer to for other nifty things that can be done:
 
-There's still plenty more that could be done here, including making the tags appear in multiple places, and allowing group coordinators to create/update/destroy tags.
+- [Fire off webhooks when events happen](https://github.com/loomio/loomio_webhooks)
+- [Allow proposal creators to specify what different positions mean on their propoosal](https://github.com/gdpelican/position_specific)
+- [Code specific to loomio.org](https://github.com/loomio/loomio_org_plugin)
+- [Make a doge appear!](https://github.com/gdpelican/peking_doge)
 
 I'm hoping that this is enough to get you started on your own plugins; I'd love to hear about some of the ideas you have. Feel free to get in touch at james@loomio.org
+
+Happy hacking!
