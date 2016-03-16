@@ -12,6 +12,11 @@ describe 'Group Page', ->
         page.expectElement('link[rel=prev]')
         page.expectElement('link[rel=next]')
 
+      it 'does not allow mark as read or mute', ->
+        page.loadPath('view_open_group_as_visitor')
+        page.expectNoElement('.thread-preview__mark-as-read')
+        page.expectNoElement('.thread-preview__mute')
+
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
         page.loadPath('view_secret_group_as_non_member')
