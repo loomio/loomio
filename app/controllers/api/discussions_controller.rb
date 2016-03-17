@@ -28,7 +28,7 @@ class API::DiscussionsController < API::RestfulController
 
   def mark_as_read
     service.mark_as_read discussion: resource, params: params, actor: current_user
-    respond_with_resource
+    resource.errors.empty? ? head(:ok) : respond_with_errors
   end
 
   def star

@@ -8,8 +8,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     @serializableAttributes: AppConfig.permittedParams.discussion
 
     afterConstruction: ->
-      if @isNew()
-        @private = @privateDefaultValue()
+      @private = @privateDefaultValue() if @isNew()
+      @clientReadSequenceId = @lastReadSequenceId
 
     defaultValues: =>
       private: null
@@ -135,9 +135,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
                 readCommentsCount: @commentsCount,
                 lastReadAt: moment())
 
-      if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
+      if _.isNull(@lastReadAt) or @clientReadSequenceId < sequenceId
         @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
-        @update(lastReadSequenceId: sequenceId)
+        @update(lastReadSequenceId: sequenceId, clientReadSequenceId: sequenceId)
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }
