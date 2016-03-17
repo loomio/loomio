@@ -258,7 +258,3 @@ tr:
       submit: Mesaj gönder
     messages:
       email_html: "Bu forumu doldurun, ya da <a href='mailto:%{email}'>%{email}</a> adresine bir E-posta gönderin"
-      social_html: >
-        Ayrıca <br/><a href='%{facebook}' target='_blank'>Facebook</a>, <a
-        href='%{google}' target='_blank'>Google+</a>, ve <a href='%{twitter}'
-        target='_blank'>Twitter</a>'da bizlere katılabilirsiniz!

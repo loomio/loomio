@@ -171,8 +171,3 @@ sr-RS:
       submit: Пошаљи поруку
     messages:
       email_html: "Попуните овај образац, или пошаљите еПоруку на <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Такође нам се можете придружити на<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a>, и <a href='%{twitter}'
-        target='_blank'>twitter</a>!
