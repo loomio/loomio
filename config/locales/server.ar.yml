@@ -191,8 +191,3 @@ ar:
       submit: أرسل الرسالة
     messages:
       email_html: "قم بملء هذا النموذج، أو أرسل رسالة الكترونية إلى<a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        يمكنك أيضاً الانضمام لنا على <br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a> و <a href='%{twitter}'
-        target='_blank'>twitter</a>!

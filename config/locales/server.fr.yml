@@ -185,8 +185,3 @@ fr:
       submit: Envoyer le message
     messages:
       email_html: "Remplissez ce formulaire, ou envoyez un email à  <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Vous pouvez aussi nous rejoindre sur<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a>, et <a href='%{twitter}'
-        target='_blank'>twitter</a>!
