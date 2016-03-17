@@ -4,3 +4,7 @@ header, .lmo-no-print, .sr-only { display: none !important; }
 .lmo-two-column-layout {
   padding-top: 0 !important;
 }
+
+.lmo-print-only {
+  display: block !important;
+}

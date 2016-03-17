@@ -17,7 +17,7 @@
   %ul.proposal-positions-panel__list
     %li.proposal-positions-panel__vote.media{ng_repeat: "vote in curatedVotes() track by vote.id"}
       .media-left
-        .thread-item__vote-icon{class: "thread-item__vote-icon--{{vote.position}}"}
+        %vote_icon{position: "vote.position"}
       .media-body
         %span.proposal-positions-panel__name-and-position
           %strong

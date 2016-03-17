@@ -31,13 +31,13 @@
       %attachment_preview{attachment: "attachment", mode: "thread"}
 
   .thread-item__footer
-    .thread-item__actions.lmo-no-print{ng-if: "showCommentActions()"}
-      %button.thread-item__action.thread-item__action--like{type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng_click: "like()"}>
-      %button.thread-item__action{type: "button", translate: "common.action.unlike", ng_click: "unlike()", ng-show: "currentUserLikesIt()"}>
-      %span{aria-hidden: "true"}>·
-      %button.thread-item__action.thread-item__action--reply{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
-      %translate_button{model: "comment", showdot: "true"}
-      %span{aria-hidden: "true"}>·
+    .thread-item__actions{ng-if: "showCommentActions()"}
+      %button.thread-item__action.thread-item__action--like.lmo-no-print{type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng_click: "like()"}>
+      %button.thread-item__action.lmo-no-print{type: "button", translate: "common.action.unlike", ng_click: "unlike()", ng-show: "currentUserLikesIt()"}>
+      %span.lmo-no-print{aria-hidden: "true"}>·
+      %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
+      %translate_button.lmo-no-print{model: "comment", showdot: "true"}
+      %span.lmo-no-print{aria-hidden: "true"}>·
       %a{lmo-href-for: "comment"}>
         %timeago{timestamp: "comment.createdAt" }>
       %span{ng-if: "comment.edited()"}
