@@ -30,6 +30,10 @@
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@appConfig.to_json.html_safe}
+
+      emojione.unicodeAlt = false
+      emojione.imagePathPNG = "img/emojis/emojione/"
+      emojione.ascii = true
       window.Loomio.emojis = {
         source: (emojione.shortnames || "").split('|'),
         render: emojione.shortnameToImage,
