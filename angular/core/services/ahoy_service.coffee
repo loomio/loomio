@@ -1,5 +1,10 @@
 angular.module('loomioApp').factory 'AhoyService', ($rootScope) ->
   if ahoy?
+    $rootScope.$watch ->
+      $location.path()
+    , (path) ->
+      ahoy.trackView()
+
     ahoy.trackAll();
 
     $rootScope.$on 'modalOpened', (evt, modal) ->
