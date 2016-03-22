@@ -18,15 +18,20 @@
 
           .signin_container
             = render "form"
-            -unless omniauth_authenticated_and_waiting?
-              .sso-btn-row
-                %label= t :log_in_with_third_party
-                = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
-                  = t :log_in_with_facebook
-                = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
-                  = t :log_in_with_google
-                = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
-                  = t :log_in_with_twitter
+            - env = Rails.application.secrets
+            - if env.google_key or env.twitter_key or env.facebook_key
+              -unless omniauth_authenticated_and_waiting?
+                .sso-btn-row
+                  %label= t :log_in_with_third_party
+                  -if env.facebook_key
+                    = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+                      = t :log_in_with_facebook
+                  -if env.google_key
+                    = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+                      = t :log_in_with_google
+                  -if env.twitter_key
+                    = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+                      = t :log_in_with_twitter
 
           .terms
             =t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?
