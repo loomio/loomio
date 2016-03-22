@@ -27,6 +27,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
 
+    allThreads:->
+      _.flatten _.map @groups(), (group) ->
+        group.discussions()
+
     orphanSubgroups: ->
       _.filter @groups(), (group) =>
         group.isSubgroup() and !@isMemberOf(group.parent())
@@ -45,3 +49,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
 
     lastName: ->
       @name.split(' ').slice(1).join(' ')
+
+    saveVolume: (volume) ->
+      @update(defaultMembershipVolume: volume)
+      @recordStore.users.updateProfile(@)

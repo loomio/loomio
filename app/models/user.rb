@@ -111,6 +111,8 @@ class User < ActiveRecord::Base
 
   before_create :set_default_avatar_kind
 
+  enum default_membership_volume: [:mute, :quiet, :normal, :loud]
+
   scope :active, -> { where(deactivated_at: nil) }
   scope :inactive, -> { where("deactivated_at IS NOT NULL") }
   scope :email_missed_yesterday, -> { active.where(email_missed_yesterday: true) }

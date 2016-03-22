@@ -110,15 +110,21 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       item = _.max @events(), (event) -> event.sequenceId or 0
       item.sequenceId
 
+    membership: ->
+      @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
+
     membershipVolume: ->
-      membership = @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
-      membership.volume if membership
+      @membership().volume if @membership()
 
     volume: ->
       @discussionReaderVolume or @membershipVolume()
 
-    changeVolume: =>
-      @remote.patchMember @keyOrId(), 'set_volume', { volume: @discussionReaderVolume }
+    saveVolume: (volume, applyToAll = false) =>
+      if applyToAll
+        @membership().saveVolume(volume)
+      else
+        @discussionReaderVolume = volume if volume?
+        @remote.patchMember @keyOrId(), 'set_volume', { volume: @discussionReaderVolume }
 
     isMuted: ->
       @volume() == 'mute'

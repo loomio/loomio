@@ -20,8 +20,8 @@ class PermittedParams < Struct.new(:params)
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :uses_markdown,
-     :time_zone, :selected_locale, :email_when_mentioned,
-     :email_missed_yesterday, :deactivation_response,
+     :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
+     :email_missed_yesterday, :deactivation_response, :has_muted,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
      {email_new_discussions_and_proposals_group_ids: []}]
   end
@@ -48,7 +48,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def membership_attributes
-    [:volume]
+    [:volume, :apply_to_all, :set_default]
   end
 
   def discussion_reader_attributes

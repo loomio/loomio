@@ -1,4 +1,5 @@
 class API::MembershipsController < API::RestfulController
+  load_resource only: [:set_volume]
 
   def add_to_subgroup
     group = load_and_authorize(:group)
@@ -58,6 +59,11 @@ class API::MembershipsController < API::RestfulController
   def remove_admin
     load_resource
     MembershipService.remove_admin(membership: @membership, actor: current_user)
+    respond_with_resource
+  end
+
+  def set_volume
+    service.set_volume membership: resource, params: params.slice(:volume, :apply_to_all), actor: current_user
     respond_with_resource
   end
 
