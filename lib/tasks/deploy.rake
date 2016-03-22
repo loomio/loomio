@@ -27,7 +27,7 @@ def build_and_push_branch(remote, branch)
   build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
   run_commands ["git checkout #{branch}",                                                         # checkout branch
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
-                "rake plugins:acquire plugins:resolve_dependencies",                              # install plugins specified in plugins/plugins.yml
+                "rake 'plugins:acquire[loomio_org]' plugins:resolve_dependencies",                # install plugins specified in plugins/plugins.yml
                 "rm -rf plugins/**/.git",                                                         # allow cloned plugins to be added to this repo
                 "git add plugins/**/**/*.rb plugins/**/*.rb -f",                                  # add plugins folder to commit
                 "cd angular && npm install && gulp compile && cd ../",                            # build the app via gulp
