@@ -8,9 +8,9 @@ Loomio is a collaborative decision-making tool that makes it easy for anyone to 
 
 If you'd like to report a bug, give us feedback, or contribute to Loomio, please read [CONTRIBUTING.md](https://github.com/loomio/loomio/blob/master/CONTRIBUTING.md)
 
-For documentation about deploying and developing Loomio see the [Tech Manual](https://loomio.gitbooks.io/tech-manual/content/).
+To setup your own Loomio instance see [loomio/loomio-deploy](https://github.com/loomio/loomio-deploy)
 
-Want to learn how to use Loomio? read the [User Help Manual](https://help.loomio.org).
+To setup up a Loomio development environment, or to develop plugin to extend Loomio, see [the docs](docs/en/)
 
 To learn about working within the Loomio Co-op, read the [Loomio Coop Handbook](https://github.com/loomio/loomio-coop-handbook)
 
