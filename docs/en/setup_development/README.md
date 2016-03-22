@@ -78,11 +78,11 @@ $ git pull
 
 ### Build and Install Ruby
 
-At the time of writing 2.2.1 is the latest version.
+At the time of writing 2.3.0 is the latest version.
 
 ```
-$ rbenv install 2.2.1
-$ rbenv global 2.2.1
+$ rbenv install 2.3.0
+$ rbenv global 2.3.0
 $ gem install bundler
 $ bundle
 ```
