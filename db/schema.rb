@@ -471,7 +471,7 @@ ActiveRecord::Schema.define(version: 20160310014847) do
     t.integer  "motions_count",                      default: 0,              null: false
     t.integer  "admin_memberships_count",            default: 0,              null: false
     t.integer  "invitations_count",                  default: 0,              null: false
-    t.integer  "public_discussions_count",                       default: 0,              null: false
+    t.integer  "public_discussions_count",           default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
