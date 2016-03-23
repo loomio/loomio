@@ -7,7 +7,7 @@ Please see our [contributing page](../../CONTRIBUTING.md)
 [loomio/loomio-deploy](https://github.com/loomio/loomio-deploy) will help you run Loomio with docker images.
 
 ## Fix a bug or develop a feature
-[Setup a Loomio development environment](setup_development/) on MacOS X or Ubuntu Linux.
+[Setup a Loomio development environment](development_handbook/) on MacOS X or Ubuntu Linux.
 
 ## Translate Loomio
 We have an active translation community. Check out [the Translation guide](translation/)
