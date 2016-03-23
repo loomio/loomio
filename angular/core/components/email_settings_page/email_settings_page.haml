@@ -1,6 +1,7 @@
 .lmo-one-column-layout
   %main.email-settings-page
-    %h1.lmo-h1.lmo-vertical-spacer-lg{translate: "email_settings_page.header"}
+    .lmo-page-heading
+      %h1.lmo-h1-medium{translate: "email_settings_page.header"}
     .email-settings-page__email-settings
       .email-settings-page__global-settings
         %h3.lmo-h3{translate: "email_settings_page.all_groups"}
@@ -29,12 +30,12 @@
         %span{translate: "email_settings_page.default_settings"}
         %button.email-settings-page__change-default-link.lmo-btn-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "email_settings_page.change_default"}
         %ul.email-settings-page__groups
-          %li.email-settings-page__group{ng-repeat: "group in emailSettingsPage.user.groups() | orderBy: 'name' track by group.id"}
-            %img.email-settings-page__group-logo{ng-src: "{{group.logoUrl()}}"}
+          %li.email-settings-page__group{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}
+            %img.lmo-box--medium{ng-src: "{{group.logoUrl()}}"}
             .email-settings-page__group-details
               %strong.email-settings-page__group-name
-                %span{ng-if: "group.isSubgroup()"} {{group.parentName()}}
-                  %span{ng-if: "group.isSubgroup()"}> \-
+                %span{ng-if: "group.isSubgroup()"}>
+                  {{group.parentName()}} -
                 %span {{group.name}}
               %p.email-settings-page__membership-volume{translate: "change_volume_form.{{emailSettingsPage.groupVolume(group)}}_label"}
             .email-settings-page__edit
