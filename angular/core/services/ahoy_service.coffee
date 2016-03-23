@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AhoyService', ($rootScope) ->
+angular.module('loomioApp').factory 'AhoyService', ($rootScope, $location) ->
   if ahoy?
     $rootScope.$watch ->
       $location.path()
