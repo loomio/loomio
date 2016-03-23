@@ -22,10 +22,15 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       _.map(@memberships(), 'groupId')
 
     groups: ->
-      _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
+      groups = _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
+      _.sortBy groups, 'fullName'
 
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
+
+    allThreads:->
+      _.flatten _.map @groups(), (group) ->
+        group.discussions()
 
     orphanSubgroups: ->
       _.filter @groups(), (group) =>
@@ -45,3 +50,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
 
     lastName: ->
       @name.split(' ').slice(1).join(' ')
+
+    saveVolume: (volume) ->
+      @update(defaultMembershipVolume: volume)
+      @recordStore.users.updateProfile(@)

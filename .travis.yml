@@ -40,8 +40,8 @@ script:
   - bundle exec rake plugins:acquire
   - bundle exec rake travis:prepare
   - bundle exec rake travis:rspec
-  - bundle exec rake travis:cucumber
   - bundle exec rake travis:protractor
+  - bundle exec rake travis:cucumber
 
 after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb

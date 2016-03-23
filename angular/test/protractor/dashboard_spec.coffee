@@ -1,6 +1,7 @@
 page = require './helpers/page_helper.coffee'
 
 describe 'Dashboard Page', ->
+  threadPreview = page.findFirst('.thread-preview')
 
   beforeEach ->
     page.loadPath('setup_dashboard')
@@ -24,3 +25,26 @@ describe 'Dashboard Page', ->
     page.expectNoText('.dashboard-page__collections','Starred proposal discussion')
     page.expectNoText('.dashboard-page__collections','Recent discussion')
     page.expectText('.dashboard-page__collections', 'Participating discussion')
+
+  it 'displays a mute explanation modal when you first mute', ->
+    browser.actions().mouseMove(threadPreview).perform()
+    page.clickFirst('.thread-preview__mute')
+    browser.driver.sleep(1000)
+    page.expectText('.mute-explanation-modal__title', 'Mute thread')
+
+  it 'lets you mute a thread', ->
+    browser.actions().mouseMove(threadPreview).perform()
+    page.clickFirst('.thread-preview__mute')
+    page.click('.mute-explanation-modal__mute-thread')
+    browser.actions().mouseMove(threadPreview).perform()
+    page.clickFirst('.thread-preview__mute')
+    page.expectFlash('Thread muted.')
+
+  xit 'displays a view of muted threads by group', ->
+    page.click('.dashboard-page__filter-dropdown button')
+    page.click('.dashboard-page__filter-muted a')
+    # browser.driver.sleep(10000)
+    page.expectText('.dashboard-page__group-name', 'Dirty Dancing Shoes')
+    page.expectText('.dashboard-page__collections', 'Muted discussion')
+    page.expectText('.dashboard-page__collections', 'Muted group discussion')
+    page.expectNoText('.dashboard-page__collections','Recent discussion')
