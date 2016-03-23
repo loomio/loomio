@@ -29,6 +29,7 @@ describe 'Dashboard Page', ->
   it 'displays a mute explanation modal when you first mute', ->
     browser.actions().mouseMove(threadPreview).perform()
     page.clickFirst('.thread-preview__mute')
+    browser.driver.sleep(1000)
     page.expectText('.mute-explanation-modal__title', 'Mute thread')
 
   it 'lets you mute a thread', ->

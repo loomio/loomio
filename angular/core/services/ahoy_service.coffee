@@ -1,11 +1,20 @@
-angular.module('loomioApp').factory 'AhoyService', ($rootScope, $location) ->
+angular.module('loomioApp').factory 'AhoyService', ($rootScope, $location, $timeout) ->
   if ahoy?
+
+    ahoy.trackClicks();
+    ahoy.trackSubmits();
+    ahoy.trackChanges();
+
+    # ahoy.trackViews does not work in angular, so we fake it
     $rootScope.$watch ->
       $location.path()
     , (path) ->
-      ahoy.trackView()
+      properties =
+        url: $location.absUrl()
+        title: document.title
+        page: $location.path()
 
-    ahoy.trackAll();
+      ahoy.track properties
 
     $rootScope.$on 'modalOpened', (evt, modal) ->
       # regex match gives group_welcome_modal from /generated/bla/group_welcome_modal/group_welcome_modal.haml

@@ -12,6 +12,7 @@ describe 'Activity Items', ->
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread title: Edited thread title')
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread context')
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread title and context')
+  , 100*1000
 
   it 'displays proposal activity items correctly', ->
     page.loadPath('setup_proposal')
@@ -21,3 +22,4 @@ describe 'Activity Items', ->
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal title: Edited proposal title')
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal description')
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the proposal title and description')
+  , 100*1000
