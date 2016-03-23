@@ -7,7 +7,15 @@
       .pricing-table__col
         .pricing-table__option.pricing-table__option--gift
           %h2= t :"pricing_page.gift"
-          = t :"pricing_page.gift_body_html"
+          %ul
+            %li
+              %i.fa.fa-check
+              = t :"pricing_page.unlimited_members"
+            %li
+              %i.fa.fa-check
+              = t :"pricing_page.unlimited_decisions"
+          %p
+            = t :"pricing_page.gift_body"
           %p.pricing-table__gift-price
             = t :"pricing_page.gift_donation_ask"
       .pricing-table__col
@@ -23,6 +31,9 @@
             %li
               %i.fa.fa-check
               = t :"pricing_page.email_support"
+            %li
+              %i.fa.fa-check
+              = t :"pricing_page.slack_integration_html"
           %p.pricing-table__price
             = t :"pricing_page.standard_price_html"
       .pricing-table__col
@@ -32,13 +43,13 @@
           %ul
             %li
               %i.fa.fa-check
+              = t :"pricing_page.multiple_groups"
+            %li
+              %i.fa.fa-check
               = t :"pricing_page.premium_support"
             %li
               %i.fa.fa-check
-              = t :"pricing_page.custom_url"
-            %li
-              %i.fa.fa-check
-              = t :"pricing_page.usage_statistics"
+              = t :"pricing_page.custom_subdomain_html"
           %p.pricing-table__price
             = t :"pricing_page.plus_price_html"
     .clearfix

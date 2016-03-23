@@ -8,7 +8,14 @@
       .choose-plan-modal__col
         .choose-plan-modal__option.choose-plan-modal__option--gift
           %h2.lmo-h2{translate: "choose_plan_modal.gift"}
-          .blank{translate: "choose_plan_modal.gift_body_html"}
+          %ul.choose-plan-modal__features-list
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.unlimited_members" | translate}}
+            %li
+              %i.fa.fa-check
+              {{"choose_plan_modal.unlimited_decisions" | translate}}
+          %p{translate: "choose_plan_modal.gift_body"}
           %p.choose-plan-modal__gift-price{translate: "choose_plan_modal.gift_donation_ask"}
           %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift{ng-disabled: "group.subscriptionKind == 'gift'", ng-click: "chooseGiftPlan()", translate: "choose_plan_modal.select"}
       .choose-plan-modal__col
@@ -24,6 +31,9 @@
             %li
               %i.fa.fa-check
               {{"choose_plan_modal.email_support" | translate}}
+            %li
+              %i.fa.fa-check
+              %span{translate: "choose_plan_modal.slack_integration_html"}
           %p.choose-plan-modal__price{translate: "choose_plan_modal.standard_price_html"}
           %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('standard')", translate: "choose_plan_modal.select"}
       .choose-plan-modal__col
@@ -33,13 +43,13 @@
           %ul.choose-plan-modal__features-list
             %li
               %i.fa.fa-check
+              {{"choose_plan_modal.multiple_groups" | translate}}
+            %li
+              %i.fa.fa-check
               {{"choose_plan_modal.premium_support" | translate}}
             %li
               %i.fa.fa-check
-              {{"choose_plan_modal.custom_url" | translate}}
-            %li
-              %i.fa.fa-check
-              {{"choose_plan_modal.usage_statistics" | translate}}
+              %span{translate: "choose_plan_modal.custom_subdomain_html"}
           %p.choose-plan-modal__price{translate: "choose_plan_modal.plus_price_html"}
           .choose-plan-modal__select
             %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('plus')", translate: "choose_plan_modal.select"}

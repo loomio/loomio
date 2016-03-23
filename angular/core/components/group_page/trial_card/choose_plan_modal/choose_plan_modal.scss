@@ -15,7 +15,7 @@
 
 .choose-plan-modal__option {
   background-color: #e2e1de;
-  min-height: 300px;
+  min-height: 340px;
   padding: 15px 15px;
   position: relative;
   h2 {
@@ -23,7 +23,11 @@
   }
   ul {
     list-style: none !important;
-    line-height: 26px;
+    margin-bottom: 15px;
+    text-align: center;
+    li {
+      margin-bottom: 7px;
+    }
     i {
       font-size: 16px;
     }
@@ -52,8 +56,7 @@
   }
 }
 .choose-plan-modal__option--standard{
-  background-color: rgba(255, 117, 0, 0.41);
-  border: 1px solid #b16a1a;
+  background-color: #f8b365;
 }
 .choose-plan-modal__price {
   text-align: center;
@@ -92,7 +95,7 @@
 }
 
 .choose-plan-modal__features-list {
-  padding-left: 30px;
+  padding-left: 0;
   i { margin-right: 5px; }
 }
 
