@@ -18,7 +18,7 @@ _If you're a developer, check out the [code guide](https://github.com/loomio/loo
 ---
 
 **Links** - - {
-[Email us](mailto:translations@loomio.org) } - {
+[Email us](mailto: contact@loomio.org) } - {
 [Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation) } - {
 [Transifex](https://www.transifex.com/projects/p/loomio-1/)  } - { 
 [Twitter updates](https://twitter.com/search?f=realtime&q=%40loomio%20%23translation) } - -
@@ -43,13 +43,13 @@ NB: Make sure you click 'Display all Languages' :
 Please check whether your language has been started before requesting a new one! (see above). 
 Feel free to request a new language or dialect if it doesn't exist. 
 
-If you're not sure or need help, please [email us](mailto:translations@loomio.org)
+If you're not sure or need help, please [email us](mailto:nati@loomio.org)
 
 
 ### + set a fall-back language (optional)
 
 If a translation is missing in your language Loomio will 'fall back' to using English in that location (so that there is at least some text present).
-If you would like to recommend a better fall-back language please [let us know](mailto:translations@loomio.org).
+If you would like to recommend a better fall-back language please [let us know](mailto:nati@loomio.org).
 
 You can see Loomio's current fall-back settings at the bottom of this page : www.loomio.org/translation 
 
@@ -108,7 +108,7 @@ We are currently working with the community to figure out how best to support te
 We deploy language updates at least once a week. <br/>
 Watch [twitter @loomio #translation](https://twitter.com/search?f=realtime&q=%40loomio%20%23translation) for updates.
 
-If you would like to see translations up faster, please tweet us or email [Mix](mailto:translations@loomio.org)
+If you would like to see translations up faster, please tweet us or email [Nati](mailto:nati@loomio.org)
 
 ### + overview of whole translation process
 
@@ -132,4 +132,4 @@ context: [Github](https://github.com/loomio/loomio) is where the working code of
 
 ## Improving processes, giving feedback
 
-If you'd would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Mix at translations@loomio.org  
+If you'd would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Nati at nati@loomio.org  
