@@ -74,14 +74,14 @@ describe User do
 
   it "sets the avatar_kind to gravatar if user has one" do
     user = User.new attributes_for(:user)
-    user.allow(:has_gravatar? => true)
+    allow(user).to receive(:has_gravatar? => true)
     user.save!
     expect(user.avatar_kind).to eq "gravatar"
   end
 
   it "does not set avatar_kind if user does not have gravatar" do
     user = User.new attributes_for(:user)
-    user.allow(:has_gravatar?).and_return(false)
+    allow(user).to receive(:has_gravatar?).and_return(false)
     user.save!
     expect(user.avatar_kind).to eq 'initials'
   end

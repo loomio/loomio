@@ -5,18 +5,18 @@ describe MotionsHelper do
     before do
       @user = double :user
       @motion = mock_model(Motion)
-      @motion.allow(:voting?).and_return(true)
-      @motion.allow(:user_has_voted?).and_return(false)
+      @allow(motion).to receive(:voting?).and_return(true)
+      @allow(motion).to receive(:user_has_voted?).and_return(false)
       @motion.stub_chain(:group, :users_include?).and_return(true)
     end
     context "motion closed" do
-      before { @motion.allow(:voting?).and_return(false) }
+      before { @allow(motion).to receive(:voting?).and_return(false) }
       it "returns false" do
         expect(display_vote_buttons?(@motion, @user)).to be false
       end
     end
     context "user has voted" do
-      before { @motion.allow(:user_has_voted?).and_return(true) }
+      before { @allow(motion).to receive(:user_has_voted?).and_return(true) }
       it "returns false" do
         expect(display_vote_buttons?(@motion, @user)).to be false
       end

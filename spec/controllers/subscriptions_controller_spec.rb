@@ -35,7 +35,7 @@ describe SubscriptionsController do
     end
 
     it 'responds with bad request if chargify is not set up in-app' do
-      SubscriptionService.allow(:available?).and_return(false)
+      allow(SubscriptionService).to receive(:available?).and_return(false)
       post :webhook, event: :signup_success
       expect(response.status).to eq 400
     end

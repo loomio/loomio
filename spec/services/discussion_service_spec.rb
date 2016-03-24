@@ -36,7 +36,7 @@ describe 'DiscussionService' do
     end
 
     context 'the discussion is valid' do
-      before { discussion.allow(:valid?).and_return(true) }
+      before { allow(discussion).to receive(:valid?).and_return(true) }
 
       it 'syncs the discussion search vector' do
         SearchVector.should_receive(:index!).with(discussion.id)
@@ -82,7 +82,7 @@ describe 'DiscussionService' do
     end
 
     context 'the discussion is valid' do
-      before { discussion.allow(:valid?).and_return(true) }
+      before { allow(discussion).to receive(:valid?).and_return(true) }
 
       it 'updates user markdown-preference' do
         DiscussionService.update discussion: discussion,
@@ -106,7 +106,7 @@ describe 'DiscussionService' do
     end
 
     context 'the discussion is invalid' do
-      before { discussion.allow(:valid?).and_return(false) }
+      before { allow(discussion).to receive(:valid?).and_return(false) }
       it 'returns false' do
         expect(DiscussionService.update(discussion: discussion,
                                  params: discussion_params,

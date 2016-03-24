@@ -34,7 +34,7 @@ describe Group do
     it 'returns an uploaded cover url if one exists' do
       cover_photo_stub = OpenStruct.new(url: 'test.jpg')
       group = create :group, default_group_cover: create(:default_group_cover)
-      group.allow(:cover_photo).and_return(cover_photo_stub)
+      allow(group).to receive(:cover_photo).and_return(cover_photo_stub)
       expect(cover_photo_stub.url).to match group.cover_photo.url
     end
 

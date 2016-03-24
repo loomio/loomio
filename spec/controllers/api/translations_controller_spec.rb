@@ -13,7 +13,7 @@ describe API::TranslationsController do
 
   before do
     sign_in user
-    TranslationService.allow(:available?).and_return(true)
+    allow(TranslationService).to receive(:available?).and_return(true)
   end
 
   describe 'inline' do
