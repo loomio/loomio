@@ -21,7 +21,7 @@ describe API::AttachmentsController do
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+      before { allow(@controller).to receive(:current_user).and_return(LoggedOutUser.new) }
 
       it 'responds with forbidden for logged out users' do
         post :create, attachment: attachment_params

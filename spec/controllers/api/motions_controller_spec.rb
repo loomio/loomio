@@ -37,7 +37,7 @@ describe API::MotionsController do
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+      before { allow(@controller).to receive(:current_user).and_return(LoggedOutUser.new) }
 
       it 'returns a motion if it is public' do
         get :show, id: motion.id, format: :json
@@ -72,7 +72,7 @@ describe API::MotionsController do
       end
 
       context 'logged out' do
-        before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+        before { allow(@controller).to receive(:current_user).and_return(LoggedOutUser.new) }
 
         it 'returns motions filtered for public discussion' do
           get :index, discussion_id: discussion.id, format: :json

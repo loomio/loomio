@@ -29,7 +29,7 @@ describe API::GroupsController do
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+      before { allow(@controller).to receive(:current_user).and_return(LoggedOutUser.new) }
       let(:private_group) { create(:group, is_visible_to_public: false) }
 
       it 'returns public groups if the user is logged out' do
