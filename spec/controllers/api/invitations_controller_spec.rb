@@ -53,7 +53,7 @@ describe API::InvitationsController do
     end
     context 'failure' do
       it 'responds with unauthorized for non logged in users' do
-        @controller.stub(:current_user).and_return(LoggedOutUser.new)
+        @controller.allow(:current_user).and_return(LoggedOutUser.new)
         post :create, invitation_form: invitation_params, group_id: group.id
         expect(response.status).to eq 403
       end

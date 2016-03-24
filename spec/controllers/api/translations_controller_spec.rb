@@ -13,7 +13,7 @@ describe API::TranslationsController do
 
   before do
     sign_in user
-    TranslationService.stub(:available?).and_return(true)
+    TranslationService.allow(:available?).and_return(true)
   end
 
   describe 'inline' do

@@ -99,11 +99,11 @@ describe 'MotionService' do
 
   describe 'closing the motion' do
     before do
-      Events::MotionClosed.stub(:publish!)
-      Events::MotionClosedByUser.stub(:publish!)
-      motion.stub(:closed_at=)
-      motion.stub(:save!)
-      motion.stub(:store_users_that_didnt_vote)
+      Events::MotionClosed.allow(:publish!)
+      Events::MotionClosedByUser.allow(:publish!)
+      motion.allow(:closed_at=)
+      motion.allow(:save!)
+      motion.allow(:store_users_that_didnt_vote)
     end
 
     describe '.close' do
@@ -157,10 +157,10 @@ describe 'MotionService' do
     let(:did_not_votes) { double(:did_not_votes) }
 
     before do
-      motion.stub(:closing_at=)
-      motion.stub(:closed_at=)
-      motion.stub(:did_not_votes).and_return(did_not_votes)
-      did_not_votes.stub(:delete_all)
+      motion.allow(:closing_at=)
+      motion.allow(:closed_at=)
+      motion.allow(:did_not_votes).and_return(did_not_votes)
+      did_not_votes.allow(:delete_all)
     end
 
     after { MotionService.reopen(motion, date) }
@@ -180,7 +180,7 @@ describe 'MotionService' do
 
   describe '.create_outcome' do
     before do
-      motion.stub(:outcome_author)
+      motion.allow(:outcome_author)
       allow(motion).to receive(:outcome_author) { user }
       allow(motion).to receive(:outcome) { "Agreement and engagement" }
     end
@@ -194,7 +194,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:valid?).and_return false
+        motion.allow(:valid?).and_return false
       end
 
       it 'returns false' do
@@ -209,7 +209,7 @@ describe 'MotionService' do
   end
   describe '.update_outcome' do
     before do
-      motion.stub(:outcome_author)
+      motion.allow(:outcome_author)
       allow(motion).to receive(:outcome_author) { user }
       allow(motion).to receive(:outcome) { "Updated agreement and engagement" }
     end
@@ -223,7 +223,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:valid?).and_return false
+        motion.allow(:valid?).and_return false
       end
 
       it 'returns false' do

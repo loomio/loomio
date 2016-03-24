@@ -9,7 +9,7 @@ describe AutodetectTimeZone do
 
   before :each do
     @dummy_controller = DummyController.new
-    @dummy_controller.stub(current_user: user)
+    @dummy_controller.allow(current_user: user)
   end
 
   after do
@@ -41,6 +41,6 @@ describe AutodetectTimeZone do
 
   it "doesn't error if there isn't a current_user" do
     @time_zone = "Wellington"
-    @dummy_controller.stub(current_user: nil)
+    @dummy_controller.allow(current_user: nil)
   end
 end

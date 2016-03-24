@@ -41,11 +41,11 @@ describe MoveDiscussionService do
   context "move is valid" do
     before do
       @mover.should_receive(:valid?).and_return(true)
-      discussion.stub(:group=){ discussion.stub(:group).and_return destination_group}
-      discussion.stub(:public?).and_return(true)
-      discussion.stub(:private=) { discussion.stub(:private).and_return false }
-      destination_group.stub(:public_discussions_only?).and_return(true)
-      destination_group.stub(:private_discussions_only?).and_return(false)
+      discussion.allow(:group=){ discussion.allow(:group).and_return destination_group}
+      discussion.allow(:public?).and_return(true)
+      discussion.allow(:private=) { discussion.allow(:private).and_return false }
+      destination_group.allow(:public_discussions_only?).and_return(true)
+      destination_group.allow(:private_discussions_only?).and_return(false)
     end
 
     it "moves the discussion from source to destination" do

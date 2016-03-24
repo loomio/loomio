@@ -9,9 +9,9 @@ describe MotionsController do
   let(:permitted_params) { stub_model(PermittedParams, motion: {outcome: 'new outcome'}) }
 
   before :each do
-    Motion.stub(:find_by_key!).with(motion.key).and_return motion
-    Group.stub(:find).and_return(group)
-    Discussion.stub(:find).and_return(discussion)
+    Motion.allow(:find_by_key!).with(motion.key).and_return motion
+    Group.allow(:find).and_return(group)
+    Discussion.allow(:find).and_return(discussion)
     request.env["HTTP_REFERER"] = previous_url
   end
 
@@ -23,7 +23,7 @@ describe MotionsController do
     #context "viewing a motion" do
       #it "redirects to discussion" do
         #pending "this isn't working for some reason"
-        #discussion.stub(:current_motion).and_return(motion)
+        #discussion.allow(:current_motion).and_return(motion)
         #get :show, :id => motion.key
         #response.should redirect_to(discussion_url(discussion))
       #end
@@ -31,8 +31,8 @@ describe MotionsController do
 
     context "closing a motion manually" do
       before do
-        controller.stub(:authorize!).with(:close, motion).and_return(true)
-        MotionService.stub(:close_by_user)
+        controller.allow(:authorize!).with(:close, motion).and_return(true)
+        MotionService.allow(:close_by_user)
       end
 
       it "closes the motion" do
@@ -48,8 +48,8 @@ describe MotionsController do
 
     context "deleting a motion" do
       before do
-        motion.stub(:destroy)
-        controller.stub(:authorize!).with(:destroy, motion).and_return(true)
+        motion.allow(:destroy)
+        controller.allow(:authorize!).with(:destroy, motion).and_return(true)
       end
       it "destroys motion" do
         motion.should_receive(:destroy)

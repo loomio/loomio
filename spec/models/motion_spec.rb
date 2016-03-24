@@ -143,8 +143,8 @@ describe Motion do
       @motion = create(:motion, discussion: discussion)
     end
     it "returns the pecentage of users that have voted" do
-      @motion.stub(:members_not_voted_count).and_return(10)
-      @motion.stub(:group_size_when_voting).and_return(20)
+      @motion.allow(:members_not_voted_count).and_return(10)
+      @motion.allow(:group_size_when_voting).and_return(20)
       expect(@motion.percent_voted).to eq 50
     end
   end

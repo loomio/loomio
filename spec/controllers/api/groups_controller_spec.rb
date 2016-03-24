@@ -55,7 +55,7 @@ describe API::GroupsController do
     end
 
     it 'does not set a gift subscription unless chargify is set up' do
-      SubscriptionService.stub(:available?).and_return(false)
+      SubscriptionService.allow(:available?).and_return(false)
       post :use_gift_subscription, id: group.key
       expect(response.status).to eq 400
       expect(group.subscription.reload.kind).to_not eq 'gift'

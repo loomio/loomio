@@ -26,19 +26,19 @@ describe DiscussionsController do
   context "authenticated user" do
     before do
       sign_in user
-      app_controller.stub(:authorize!).and_return(true)
-      app_controller.stub(:cannot?).with(:show, group).and_return(false)
+      app_controller.allow(:authorize!).and_return(true)
+      app_controller.allow(:cannot?).with(:show, group).and_return(false)
       Discussion.stub_chain(:published, :find_by_key!).with(discussion.key).and_return(discussion)
       Discussion.stub_chain(:published, :count).and_return(1)
       Discussion.stub_chain(:published, :sum).and_return(1)
-      User.stub(:find).and_return(user)
-      Group.stub(:find).with(group.key).and_return(group)
+      User.allow(:find).and_return(user)
+      Group.allow(:find).with(group.key).and_return(group)
     end
 
     context "deleting a discussion" do
       before do
-        discussion.stub(:delayed_destroy)
-        # controller.stub(:authorize!).with(:destroy, discussion).and_return(true)
+        discussion.allow(:delayed_destroy)
+        # controller.allow(:authorize!).with(:destroy, discussion).and_return(true)
       end
       it "destroys discussion" do
         discussion.should_receive(:delayed_destroy)
@@ -67,8 +67,8 @@ describe DiscussionsController do
       end
       context "where no current proposal exists" do
         before do
-          discussion.stub(current_motion: nil)
-          # Discussion.stub(:find).with(discussion.id.to_s).and_return(discussion)
+          discussion.allow(current_motion: nil)
+          # Discussion.allow(:find).with(discussion.id.to_s).and_return(discussion)
           get :new_proposal, id: discussion.key
         end
         it "succeeds" do
@@ -84,10 +84,10 @@ describe DiscussionsController do
     describe "add_comment" do
       let(:comment) { double(:comment).as_null_object }
       before do
-        Discussion.stub(:find).and_return(discussion)
-        DiscussionService.stub(:add_comment)
-        Event.stub(:new_comment!)
-        Comment.stub(:new).and_return(comment)
+        Discussion.allow(:find).and_return(discussion)
+        DiscussionService.allow(:add_comment)
+        Event.allow(:new_comment!)
+        Comment.allow(:new).and_return(comment)
       end
 
       context 'invalid comment' do
@@ -110,9 +110,9 @@ describe DiscussionsController do
       before do
         @version_item = mock_model(Discussion, :title => 'most important discussion', :description => "new version", key: 'abc1234', :save! => true)
         @version = mock_model(PaperTrail::Version, :item => discussion)
-        PaperTrail::Version.stub(:find).and_return(@version)
-        @version.stub(:reify).and_return(@version_item)
-        @version.stub(:save!)
+        PaperTrail::Version.allow(:find).and_return(@version)
+        @version.allow(:reify).and_return(@version_item)
+        @version.allow(:save!)
       end
 
       it "calls reify on version" do

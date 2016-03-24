@@ -10,10 +10,10 @@ describe TranslationsController do
 
   context "translation" do
     before do
-      app_controller.stub(:authorize!).and_return(true)
-      TranslationService.any_instance.stub(:translate).and_return(translation)
-      TranslationService.stub(:available?).and_return(true)
-      Discussion.stub(:find_by_key!).and_return(discussion)
+      app_controller.allow(:authorize!).and_return(true)
+      TranslationService.any_instance.allow(:translate).and_return(translation)
+      TranslationService.allow(:available?).and_return(true)
+      Discussion.allow(:find_by_key!).and_return(discussion)
     end
 
     it "successfully translates a comment" do

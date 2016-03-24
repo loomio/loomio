@@ -40,8 +40,8 @@ describe SubscriptionService do
   describe 'start_subscription!' do
 
     before do
-      chargify_service.stub(:fetch!).and_return(response_subscription)
-      ChargifyService.stub(:new).and_return(chargify_service)
+      chargify_service.allow(:fetch!).and_return(response_subscription)
+      ChargifyService.allow(:new).and_return(chargify_service)
     end
 
     it 'updates the group subscription' do

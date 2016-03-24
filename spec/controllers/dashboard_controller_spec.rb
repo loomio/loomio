@@ -6,7 +6,7 @@ describe DashboardController do
 
   before do
     sign_in user
-    app_controller.stub(:authorize!).and_return(true)
+    app_controller.allow(:authorize!).and_return(true)
   end
 
   context "views homepage" do
