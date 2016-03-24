@@ -1,10 +1,10 @@
-## We're developing Loomio to be accessible to people who are blind. 
+## We're developing Loomio to be accessible to people who are blind.
 
 Recently we started a collaboration with [David Best](http://davidbest.ca/), whose experience as a web developer and a blind individual has been invaluable in teaching us how to make Loomio work for people how are navigating the web without vision.
 
 We're developing guidelines specifically for the Loomio codebase. Please note none of this has been verified yet: while it may be a useful resource for your development project, please consult with a professional if you want to guarantee accessibility.
 
-## Guidelines (unverified)
+## Guidelines
 
 ###  Being descriptive with `title` and `alt`
 
@@ -16,7 +16,7 @@ So instead of `<a href: '/dashboard'>`, we use `<a href: '/dashboard', title: "D
 
 ### Distinguishing between the visual and audio
 
-As a rule, the user experience for people who are blind should follow as closely as possible to that for sighted people. 
+As a rule, the user experience for people who are blind should follow as closely as possible to that for sighted people.
 
 Occasionally though, we need to provide different experiences. To do that we use `.sr-only` and `aria-hidden`.
 
@@ -33,17 +33,17 @@ So for example, on most devices, the Notifications menu is indicated by a bell i
 
 ### Using headings for hierarchy
 
-There’s some debate over the most accessibility strategy for handling headings in web apps. Ideally, every page should have a single H1, with nested H2’s, H3’s, H4’s underneath it in a logical tree structure. 
+There’s some debate over the most accessibility strategy for handling headings in web apps. Ideally, every page should have a single H1, with nested H2’s, H3’s, H4’s underneath it in a logical tree structure.
 
-This is easy to do on a static document, but more complex in a web app because we want to distinguish chrome from content. We're still settling on the best solution for Loomio. 
+This is easy to do on a static document, but more complex in a web app because we want to distinguish chrome from content. We're still settling on the best solution for Loomio.
 
 At a bare minimum standard, every page must have an H1. When a user jumps to the H1, they should know what page they are on, and be positioned at the top of the main content.
 
 ### Breaking up the page into regions
 
-In addition to headings, we use regions to break the page into logical sections. 
+In addition to headings, we use regions to break the page into logical sections.
 
-[ARIA defines special roles](http://www.webteacher.ws/2010/10/14/aria-roles-101/) for common regions, like 'main' 'search', 'navigation', etc. 
+[ARIA defines special roles](http://www.webteacher.ws/2010/10/14/aria-roles-101/) for common regions, like 'main' 'search', 'navigation', etc.
 
 In practice, that means `<div class=".lmo-navbar-search">` has been replaced with `<div class=".lmo-navbar-search
 " aria-role="search">`.
@@ -67,9 +67,9 @@ If the heading is not visible, we use `aria-label` instead, passing in a string:
 
 ### Color contrast
 
-The WCAG standards specify the required contrast ratio to ensure your text is legible. 
+The WCAG standards specify the required contrast ratio to ensure your text is legible.
 
-In Loomio there are two background colors, one for the page (we’re using a light grey #ebebeb), and one for the cards (we’re using white #fff). Our primary text color is near black (#262626), which has a really high contrast. 
+In Loomio there are two background colors, one for the page (we’re using a light grey #ebebeb), and one for the cards (we’re using white #fff). Our primary text color is near black (#262626), which has a really high contrast.
 
 However, there are parts of the app where we want text to be de-emphasised, e.g. on a timestamp. This lower-priority text still needs to be legible, so we used the [WebAIM contrast checker](http://webaim.org/resources/contrastchecker/) to find the right colors. In the end we settled on one grey to be used on the white card background and a slightly darker grey to be used on the light grey page background.
 
@@ -84,7 +84,7 @@ We have these colors defined in mixins.scss.
 
 ## Testing
 
-If you are developing for accessibility, you should try using the web with a screenreader. Screenreaders read out what's on the screen, translating the two-dimensional visual experience into a linear audio experience. 
+If you are developing for accessibility, you should try using the web with a screenreader. Screenreaders read out what's on the screen, translating the two-dimensional visual experience into a linear audio experience.
 
 If you're on OSX, CMD+F5 opens [VoiceOver](https://www.apple.com/nz/accessibility/osx/voiceover/), the built-in screenreader. Probably the 'best in class' screenreader is [JAWS](http://www.freedomscientific.com/Products/Blindness/JAWS) (Windows only). There are many free alternatives too, e.g. browser plugins.
 ## Partners
