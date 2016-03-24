@@ -15,7 +15,6 @@ module AngularHelper
 
   def app_config
     @appConfig = {
-      hostedByLoomio:      ENV['HOSTED_BY_LOOMIO'],
       version:             Loomio::Version.current,
       reportErrors:        false,
       environment:         Rails.env,

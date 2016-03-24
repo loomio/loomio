@@ -90,6 +90,11 @@ ActiveAdmin.register User do
         end
       end
     end
+
+    panel("Reset Password") do
+      button_to 'Get link to reset password', reset_password_admin_user_path(user), method: :post
+    end
+
     if user.deactivation_response.present?
       panel("Deactivation query response") do
         div "#{user.deactivation_response.body}"
@@ -108,5 +113,12 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     user.reactivate!
     redirect_to admin_users_url, :notice => "User account activated"
+  end
+
+  member_action :reset_password, method: :post do
+    user = User.friendly.find(params[:id])
+    raw = user.send(:set_reset_password_token)
+
+    render text: edit_user_password_url(reset_password_token: raw)
   end
 end

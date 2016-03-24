@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
-gem 'rails', '~> 4.2.5.1'
+gem 'rails', '~> 4.2.5.2'
 gem 'rake'
 gem 'pg', '~> 0.18.3'
 gem 'pg_search', '~> 1.0.4'
@@ -39,7 +39,7 @@ gem 'rinku'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
 gem 'airbrake'
-gem 'browser'
+gem 'browser', '~> 1.1.0'
 gem 'fog'
 gem 'thin'
 gem 'roadie-rails', '~> 1.1.0'
@@ -65,12 +65,16 @@ gem 'responders', '~> 2.0'
 gem 'activerecord_any_of'
 gem 'rack-attack', '~> 4.2.0'
 gem 'ahoy_matey'
+gem 'ahoy_email'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'simple-rss'
 gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
 gem 'safe_shell'
+gem 'premailer'
+gem 'griddler'
+gem "griddler-mailin", github: 'loomio/griddler-mailin'
 
 group :development, :test do
   gem 'minitest'
@@ -91,6 +95,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'derailed'
   gem "stackprof"
   gem 'spring'

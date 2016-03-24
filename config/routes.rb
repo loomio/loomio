@@ -54,6 +54,7 @@ Loomio::Application.routes.draw do
       member do
         post :make_admin
         post :remove_admin
+        patch :set_volume
       end
     end
 
@@ -216,6 +217,7 @@ Loomio::Application.routes.draw do
   get '/robots'     => 'robots#show'
 
   get :dashboard, controller: :base, action: :boot_angular_ui, as: :dashboard
+
   get 'inbox'                              => 'base#boot_angular_ui'
   get 'groups'                             => 'base#boot_angular_ui'
   get 'apps/registered'                    => 'base#boot_angular_ui'
@@ -227,4 +229,5 @@ Loomio::Application.routes.draw do
   get 'd/:key/proposal/:proposal/:outcome' => 'base#boot_angular_ui'
   get 'd/:key/:stub'                       => 'base#boot_angular_ui'
   get 'g/:key/:stub'                       => 'base#boot_angular_ui'
+  get 'g/:key/memberships/:username'       => 'base#boot_angular_ui'
 end

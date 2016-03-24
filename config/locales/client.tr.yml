@@ -193,7 +193,6 @@ tr:
       discussions: Müzakereler
       proposals: Öneriler
       comments: Yorumlar
-    sign_in: Oturum aç
   start_menu:
     title: Aksiyon düğmesi
     start_group: Grup Başlat
@@ -324,7 +323,7 @@ tr:
     submit: Bana planları göster
   group_welcome_modal:
     heading: Yeni grubuna hoşgeldin
-    first_step: 'Siz grup <strong>koordinatörüsünüz<strong> ve bu bir ev sahipliği yapmak gibi birşey. Videoyu izleyin ve örnek konuları kontrol edin.'
+    first_step: 'Siz grup <strong>koordinatörüsünüz</strong> ve bu bir ev sahipliği yapmak gibi birşey. Videoyu izleyin ve örnek konuları kontrol edin.'
     second_step: 'Hazır olduğunuz zaman <strong>başkalarını davet edin</strong>.'
     ok_got_it: 'Tamam, anladım!'
   group_cover_modal:

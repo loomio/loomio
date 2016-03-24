@@ -42,7 +42,7 @@ module Plugins
 
       migration = ActiveRecord::Migration.new
       def migration.up(table_name, &block)
-        create_table table_name, &block
+        create_table table_name.to_s.pluralize, &block
       end
       migration.up(table_name, &block)
     end
@@ -69,13 +69,25 @@ module Plugins
 
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      @outlets.add Outlet.new(@name, component, outlet) if outlet
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o) }
     end
 
     def use_route(verb, route, action)
       @actions.add Proc.new {
         Loomio::Application.routes.append do
           namespace(:api, path: 'api/v1', defaults: {format: :json}) { send(verb, { route => action }) }
+        end
+      }.to_proc
+    end
+
+    def use_page(route, path, redirect: false)
+      @actions.add Proc.new {
+        Loomio::Application.routes.append do
+          if redirect
+            get route.to_s => redirect(path)
+          else
+            get route.to_s => path
+          end
         end
       }.to_proc
     end

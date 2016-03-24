@@ -16,8 +16,8 @@
     = javascript_include_tag "application"
     = theme_javascript_include_tag
     = csrf_meta_tags
-    = render 'social_metadata', description: @meta_description, title: @meta_title
-    = render 'google_analytics'
+    = render 'application/social_metadata', description: @meta_description, title: @meta_title
+    = render 'application/google_analytics'
 
   %body{class: "#{controller_name} #{action_name}"}
     = render 'application/header'
@@ -27,6 +27,5 @@
 
       .page-container
         = yield
-      = render 'footer'
-  = render 'intercom_tracker'
-  = render 'piwik_tracker'
+      = render 'application/footer'
+  = render 'application/intercom_tracker'

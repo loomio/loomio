@@ -82,7 +82,7 @@ module ApplicationHelper
   end
 
   def hosted_by_loomio?
-    ENV['HOSTED_BY_LOOMIO']
+    false
   end
 
   def logo_path

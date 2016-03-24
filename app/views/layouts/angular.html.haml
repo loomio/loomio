@@ -17,7 +17,7 @@
 
     = render 'angular/metadata'
     = render 'angular/google_analytics'
-    = render 'angular/intercom'
+    = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)'}
     %flash
@@ -25,11 +25,15 @@
     %ng_outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
-    %angular_feedback_card{'ng-if' => 'isLoggedIn()'}
+    %outlet{name: 'after-start-menu'}
 
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@appConfig.to_json.html_safe}
+
+      emojione.unicodeAlt = false
+      emojione.imagePathPNG = "img/emojis/emojione/"
+      emojione.ascii = true
       window.Loomio.emojis = {
         source: (emojione.shortnames || "").split('|'),
         render: emojione.shortnameToImage,
@@ -40,11 +44,4 @@
     - if Rails.application.secrets.faye_url.present?
       %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}
 
-    - if ENV['HOSTED_BY_LOOMIO']
-      -# coming soon.. seperated metrics
-      -# :javascript
-      -#   ahoy = {visitsUrl: 'http://localhost:4000/ahoy/visits',
-      -#           eventsUrl: 'http://localhost:4000/ahoy/events'}
-      -# = javascript_include_tag 'http://localhost:4000/assets/application.js'
-      = javascript_include_tag 'angular_ahoy'
-      = render 'piwik_tracker'
+    = javascript_include_tag 'angular_ahoy' if hosted_by_loomio?
