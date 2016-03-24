@@ -133,8 +133,3 @@ ro:
       submit: Trimitere
     messages:
       email_html: "Completeaza acest formular sau trimite un email la <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Te mai poti alatura si prin<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a>, and <a href='%{twitter}'
-        target='_blank'>twitter</a>!

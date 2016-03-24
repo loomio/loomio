@@ -4,14 +4,5 @@
 = link
 \
 \
-- if @following
-  - url = email_actions_unfollow_discussion_url(discussion_id: @discussion.id, unsubscribe_token: @recipient.unsubscribe_token)
-  = t :"email.thread_mailer.turn_off_notifications_text", url: url
-- else
-  - url = email_actions_follow_discussion_url(discussion_id: @discussion.id, unsubscribe_token: @recipient.unsubscribe_token)
-  = t :"email.thread_mailer.turn_on_notifications_text", url: url
-
-\
 = t :"email.thread_mailer.change_preferences"
 =raw email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
-

@@ -9,13 +9,4 @@
   = t(:'email.thread_mailer.reply_or_view_online_html', url: link, hostname: ENV['CANONICAL_HOST'])
 
   %br
-  - if @following
-    - url = email_actions_unfollow_discussion_url(discussion_id: @discussion.id, unsubscribe_token: @recipient.unsubscribe_token)
-    = t :'email.thread_mailer.turn_off_notifications_html', url: url
-  - else
-    - url = email_actions_follow_discussion_url(discussion_id: @discussion.id, unsubscribe_token: @recipient.unsubscribe_token)
-    = t :'email.thread_mailer.turn_on_notifications_html', url: url
-
-  %br
   = t :"email.thread_mailer.change_email_preferences_html", email_preferences_url: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
-

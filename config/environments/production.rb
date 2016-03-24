@@ -1,6 +1,6 @@
 Loomio::Application.configure do
   config.log_level = :info
-  config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
+  config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i 
 
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -73,7 +73,7 @@ Loomio::Application.configure do
     config.action_mailer.smtp_settings = {
       :address        => ENV['SMTP_SERVER'],
       :port           => ENV['SMTP_PORT'],
-      :authentication => :plain,
+      :authentication => (ENV['SMTP_AUTH'] || :plain).to_sym,
       :user_name      => ENV['SMTP_USERNAME'],
       :password       => ENV['SMTP_PASSWORD'],
       :domain         => ENV['SMTP_DOMAIN']

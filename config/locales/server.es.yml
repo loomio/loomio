@@ -57,6 +57,7 @@ es:
       view_group: Puedes aceptar o denegar la solicitud aquí
     mentioned:
       context: '%{author_name} le mencionó en la discusión  "%{discussion_title}"'
+      subject: '%{who} te ha mencionado en la discusión "%{which}" '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
       context: '%{author} ha creado una propuesta en %{group_full_name}:'
@@ -210,8 +211,64 @@ es:
       submit: Enviar mensaje
     messages:
       email_html: "Rellena este formulario o envía un correo electrónico a <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        También puedes sumarte en<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a>, y <a href='%{twitter}'
-        target='_blank'>twitter</a>!
+      social_html: "También puedes unirte a Loomio en<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, y <a href='%{twitter}' target='_blank'>twitter</a>"
+  markdown:
+    intro:
+      title: |
+        # ¿Qué es Markdown?
+      body: |
+        Markdown es una forma de dar formato al texto (derecha)
+        escribiéndolo como texto plano (izquierda)
+
+        Esta página esta escrita con Markdown para mostrar como funciona.
+    headers:
+      body: |
+        ## Títulos
+
+        Utiliza el numeral para convertir el texto en un título
+
+        # Esto es un h1
+        ## Esto es un h2
+        #### Esto es un h4
+    paragraphs:
+      title: |
+        ## Párrafo
+      body: |
+        Necesitas
+        poner
+        una linea en blanco
+        entre lineas.
+
+        O todo acabara como un gran párrafo.
+    emphasis:
+      title: |
+        ## Énfasis
+      body: >
+        Puedes hacer que una palabra sea itálica con _guiones bajos_
+        o *asteriscos*.
+
+
+
+        Haz una palabra __Negrita__ doblando los **énfasis**.
+    lists:
+      title: |
+        ## Listas
+      body: |
+        Así haces una lista:
+
+        * deja una linea en blanco antes de la lista
+        * usa un asterisco (*)
+        * deja un espacio luego del asterisco
+    links:
+      title: |
+        ## Enlaces e imágenes
+      body: |
+        Repite en voz alta:
+
+        Corchetes para nombres y paréntesis para URL.
+
+        [Loomio Homepage](https://www.loomio.org/)
+
+        Para imágenes es igual pero precedido por un signo se exclamación.
+
+        ![loomio logo](https://i.imgur.com/Fvtworb.png)

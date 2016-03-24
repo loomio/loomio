@@ -5,3 +5,5 @@ angular.module('loomioApp').directive 'starToggle', ->
   replace: true
   controller: ($scope, AbilityService) ->
     $scope.isLoggedIn = AbilityService.isLoggedIn
+
+    return
