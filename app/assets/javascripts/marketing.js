@@ -1,6 +1,6 @@
 //= require jquery
 //= require ahoy
 //= require bootstrap
-//= require marketing/carousel
+//= pages
 //
 ahoy.trackView();
