@@ -30,7 +30,7 @@ describe Queries::UsersByVolumeQuery do
   end
 
   it "loud" do
-    users = UsersByVolumeQuery.loud(discussion)
+    users = Queries::UsersByVolumeQuery.loud(discussion)
     users.should     include user_with_reader_volume_loud
     users.should     include user_with_membership_volume_loud
     users.should_not include user_with_membership_volume_normal
@@ -42,7 +42,7 @@ describe Queries::UsersByVolumeQuery do
   end
 
   it "normal or loud" do
-    users = UsersByVolumeQuery.normal_or_loud(discussion)
+    users = Queries::UsersByVolumeQuery.normal_or_loud(discussion)
     users.should     include user_with_reader_volume_loud
     users.should     include user_with_reader_volume_normal
     users.should     include user_with_membership_volume_loud
@@ -55,7 +55,7 @@ describe Queries::UsersByVolumeQuery do
   end
 
   it "mute" do
-    users = UsersByVolumeQuery.mute(discussion)
+    users = Queries::UsersByVolumeQuery.mute(discussion)
     users.should     include user_with_membership_volume_mute
     users.should     include user_with_reader_volume_mute
 

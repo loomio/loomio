@@ -50,7 +50,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'new comment' do
-    users = UsersToEmailQuery.new_comment(comment)
+    users = Queries::UsersToEmailQuery.new_comment(comment)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
@@ -71,7 +71,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'new_vote' do
-    users = UsersToEmailQuery.new_vote(vote)
+    users = Queries::UsersToEmailQuery.new_vote(vote)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
@@ -88,7 +88,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'new_discussion' do
-    users = UsersToEmailQuery.new_discussion(discussion)
+    users = Queries::UsersToEmailQuery.new_discussion(discussion)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
@@ -105,7 +105,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'new_motion' do
-    users = UsersToEmailQuery.new_motion(motion)
+    users = Queries::UsersToEmailQuery.new_motion(motion)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
@@ -122,7 +122,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'motion_closing_soon' do
-    users = UsersToEmailQuery.motion_closing_soon(motion)
+    users = Queries::UsersToEmailQuery.motion_closing_soon(motion)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
@@ -139,7 +139,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'motion_outcome' do
-    users = UsersToEmailQuery.motion_outcome_created(motion)
+    users = Queries::UsersToEmailQuery.motion_outcome_created(motion)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
@@ -156,7 +156,7 @@ describe Queries::UsersToEmailQuery do
   end
 
   it 'motion_closed' do
-    users = UsersToEmailQuery.motion_closed(motion)
+    users = Queries::UsersToEmailQuery.motion_closed(motion)
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
