@@ -1,2 +1,0 @@
-class MotionsController < BaseController
-end

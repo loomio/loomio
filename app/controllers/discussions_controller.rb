@@ -1,13 +1,8 @@
 class DiscussionsController < ApplicationController
   before_filter :we_dont_serve_images_here_google_bot
-  skip_before_filter :boot_angular_ui, only: :print
+  before_filter :boot_angular_ui, only: :show
 
-  def print
-    @discussion = Discussion.published.find_by_key!(params[:id])
-    @group = @discussion.group
-    @motions = @discussion.motions.order(&:created_at)
-    @activity = @discussion.items
-    render :layout => "print"
+  def show
   end
 
   private

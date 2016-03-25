@@ -1,6 +1,5 @@
 class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenController
   helper_method :any_memberships_have_volume_email?
-  skip_before_filter :boot_angular_ui
 
   def edit
     boot_angular_ui unless restricted_user.present?

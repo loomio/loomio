@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include ProtectedFromForgery
   include LoadAndAuthorize
 
+  before_filter :boot_angular_ui, only: :show, if: :use_angular_ui?
   def show
   end
 
@@ -36,8 +37,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.not_found') }
   end
-
-  before_filter :boot_angular_ui, if: :use_angular_ui?
 
   def browser_not_supported
     render layout: false

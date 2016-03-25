@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   include ApplicationHelper
   before_filter :authenticate_user!, except: :show
-  skip_before_filter :boot_angular_ui, only: :export
+  before_filter :boot_angular_ui, only: :show
 
   rescue_from ActiveRecord::RecordNotFound do
     render 'application/display_error', locals: { message: t('error.group_private_or_not_found') }

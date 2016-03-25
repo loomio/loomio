@@ -1,5 +1,5 @@
 class EmailActionsController < AuthenticateByUnsubscribeTokenController
-  skip_before_filter :boot_angular_ui
+
   def unfollow_discussion
     set_discussion_volume volume: :quiet, flash_notice: :"notifications.email_actions.not_following_thread"
    end

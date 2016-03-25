@@ -1,2 +1,0 @@
-class UsersController < BaseController
-end
