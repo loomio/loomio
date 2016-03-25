@@ -1,4 +1,4 @@
-class UsersByVolumeQuery
+class Queries::UsersByVolumeQuery
   def self.normal_or_loud(discussion)
     base_query(discussion).where('dr.volume >= :normal OR (dr.volume IS NULL AND m.volume >= :normal)', { normal: DiscussionReader.volumes[:normal] })
   end

@@ -4,21 +4,18 @@ class InvitationsController < ApplicationController
   before_filter :authenticate_user!, only: :create
 
   rescue_from ActiveRecord::RecordNotFound do
-    render 'application/display_error',
-      locals: { message: t(:'invitation.invitation_not_found') }
+    render 'application/display_error', locals: { message: t(:'invitation.invitation_not_found') }
   end
 
   rescue_from Invitation::InvitationCancelled do
-    render 'application/display_error',
-      locals: { message: t(:'invitation.invitation_cancelled') }
+    render 'application/display_error', locals: { message: t(:'invitation.invitation_cancelled') }
   end
 
   rescue_from Invitation::InvitationAlreadyUsed do
     if current_user and @invitation.accepted?
       redirect_to @invitation.invitable
     else
-      render 'application/display_error',
-        locals: { message: t(:'invitation.invitation_already_used') }
+      render 'application/display_error', locals: { message: t(:'invitation.invitation_already_used') }
     end
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UsersByVolumeQuery do
+describe Queries::UsersByVolumeQuery do
   let(:user_with_reader_volume_loud) { FactoryGirl.create :user }
   let(:user_with_membership_volume_loud) { FactoryGirl.create :user }
   let(:user_with_reader_volume_normal) { FactoryGirl.create :user }

@@ -123,4 +123,8 @@ class DiscussionReader < ActiveRecord::Base
   def read_salient_items(time = nil)
     discussion.salient_items.where('events.created_at <= ?', time || last_read_at).chronologically
   end
+
+  def membership
+    @membership ||= discussion.group.membership_for(user)
+  end
 end

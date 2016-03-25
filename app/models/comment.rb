@@ -7,6 +7,10 @@ class Comment < ActiveRecord::Base
 
   belongs_to :discussion
   belongs_to :user
+  belongs_to :parent, class_name: 'Comment'
+
+  alias_attribute :author, :user
+  alias_attribute :author_id, :user_id
 
   has_many :comment_votes, -> { joins('INNER JOIN users ON comment_votes.user_id = users.id AND users.deactivated_at IS NULL' )}, dependent: :destroy
 
@@ -28,24 +32,16 @@ class Comment < ActiveRecord::Base
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
   delegate :email, to: :user, prefix: :user
+  delegate :author, to: :parent, prefix: :parent, allow_nil: true
   delegate :participants, to: :discussion, prefix: :discussion
   delegate :group, to: :discussion
   delegate :full_name, to: :group, prefix: :group
   delegate :title, to: :discussion, prefix: :discussion
   delegate :locale, to: :user
   delegate :id, to: :group, prefix: :group
-  delegate :author, to: :author, allow_nil: true
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
   attr_accessor :new_attachment_ids
-
-  def author_name
-    author.try(:name)
-  end
-
-  def author_id
-    user_id
-  end
 
   def is_most_recent?
     discussion.comments.last == self

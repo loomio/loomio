@@ -181,15 +181,11 @@ Loomio::Application.routes.draw do
 
   slug_regex = /[a-z0-9\-\_]*/i
 
-  resources(:groups, path: 'g', slug: slug_regex, only: []) do
-    get :export, on: :member
-  end
+  resources :groups,      path: 'g', slug: slug_regex, only: :show
+  resources :discussions, path: 'd', slug: slug_regex, only: :show
+  resources :motions,     path: 'm', slug: slug_regex, only: :show
 
-  resources(:discussions, path: 'd', slug: slug_regex, only: []) do
-    get :print, on: :member
-  end
-
-  resources(:users, path: 'u', only: []) do
+  resources(:users,       path: 'u', only: []) do
     get ':username', action: :show
   end
 
@@ -216,11 +212,13 @@ Loomio::Application.routes.draw do
 
   get '/robots'     => 'robots#show'
 
-  get :dashboard, controller: :base, action: :boot_angular_ui, as: :dashboard
+  get  'start_group' => 'start_group#new'
+  post 'start_group' => 'start_group#create'
 
+  get 'dashboard'                          => 'application#show', as: :dashboard
   get 'inbox'                              => 'application#show', as: :inbox
   get 'groups'                             => 'application#show', as: :groups
-  get 'start_group'                        => 'application#show', as: :start_group
+  # get 'start_group'                        => 'application#show', as: :start_group
   get 'explore'                            => 'application#show', as: :explore
   get 'apps/registered'                    => 'application#show'
   get 'apps/authorized'                    => 'application#show'

@@ -14,7 +14,7 @@ EventBus.configure do |config|
   # send bulk emails after events
   Event::BULK_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event|
-      BaseMailer.send_bulk_mail(to: UsersToEmailQuery.send(kind, event.eventable)) do |user|
+      BaseMailer.send_bulk_mail(to: Queries::UsersToEmailQuery.send(kind, event.eventable)) do |user|
         ThreadMailer.delay.send(kind, user, event)
       end
     end
@@ -36,9 +36,6 @@ EventBus.configure do |config|
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
   config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
   config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
-
-  # refresh likers after comment like/unlike
-  config.listen('comment_like', 'comment_unlike') { |cv| cv.comment.refresh_liker_ids_and_names! }
 
   # update discussion reader after thread item creation
   config.listen('new_comment_event',
@@ -104,12 +101,12 @@ EventBus.configure do |config|
 
   # notify users of motion closing soon
   config.listen('motion_closing_soon_event') do |event|
-    UsersByVolumeQuery.normal_or_loud(event.discussion).find_each { |user| event.notify!(user) }
+    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).find_each { |user| event.notify!(user) }
   end
 
   # notify users of motion outcome created
   config.listen('motion_outcome_created_event') do |event|
-    UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
+    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
   end
 
   # perform group creation

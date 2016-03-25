@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UsersToEmailQuery do
+describe Queries::UsersToEmailQuery do
   let(:all_emails_disabled) { {email_when_proposal_closing_soon: false} }
   let(:user_left_group) { FactoryGirl.create :user, all_emails_disabled }
   let(:user_thread_loud) { FactoryGirl.create :user, all_emails_disabled }

@@ -169,6 +169,12 @@ class Motion < ActiveRecord::Base
   end
 
   private
+
+    def user_has_voted?(user)
+      return false if user.nil?
+      votes.for_user(user.id).exists?
+    end
+
     def closes_in_future_unless_closed
       unless self.closed?
         if closing_at < Time.zone.now

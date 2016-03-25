@@ -1,15 +1,15 @@
 = link_to t(:"position_verbs.yes").capitalize,
-          new_motion_vote_url( motion, @utm_hash.merge(position: 'yes')),
+          motion_url(motion, @utm_hash.merge(position: :yes)),
           class: 'yes-link'
 = " - "
 = link_to t(:"position_verbs.abstain").capitalize,
-          new_motion_vote_url( motion, @utm_hash.merge(position: 'abstain')),
+          motion_url(motion, @utm_hash.merge(position: :abstain)),
           class: 'abstain-link'
 = " - "
 = link_to t(:"position_verbs.no").capitalize,
-          new_motion_vote_url( motion, @utm_hash.merge(position: 'no')),
+          motion_url(motion, @utm_hash.merge(position: :no)),
           class: 'no-link'
 = " - "
 = link_to t(:"position_verbs.block").capitalize,
-          new_motion_vote_url( motion, @utm_hash.merge(position: 'block')),
+          motion_url(motion, @utm_hash.merge(position: :block)),
           class: 'block-link'
