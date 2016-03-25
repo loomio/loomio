@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require jquery-ui/sortable
 //= require bootstrap
-// require bootstrap-custom
+//= require jstz
 //= require autodetect_time_zone
 //= require ahoy
 
