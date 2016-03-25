@@ -25,6 +25,7 @@ Loomio::Application.configure do
     port:     3000,
     protocol: ENV['FORCE_SSL'] ? 'https' : 'http'
   }
+  ENV["SMTP_DOMAIN"] = "test.org"
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,

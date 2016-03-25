@@ -228,6 +228,8 @@ Loomio::Application.routes.draw do
   get 'd/:key/comment/:comment'            => 'application#show'
   get 'd/:key/proposal/:proposal/:outcome' => 'application#show'
   get 'd/:key/:stub'                       => 'application#show'
+  get 'g/:key/membership_requests'         => 'application#show', as: :group_membership_requests
+  get 'g/:key/memberships'                 => 'application#show', as: :group_memberships
   get 'g/:key/:stub'                       => 'application#show'
   get 'g/:key/memberships/:username'       => 'application#show'
 end
