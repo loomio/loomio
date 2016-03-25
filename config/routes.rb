@@ -2,7 +2,7 @@ Loomio::Application.routes.draw do
 
   use_doorkeeper
 
-  root to: 'marketing#index'
+  root to: 'root#index'
 
   namespace :development do
     get '/' => 'development#index'
@@ -212,22 +212,24 @@ Loomio::Application.routes.draw do
     get :markdown
   end
 
-  get 'contact(/:destination)', to: 'contact_messages#new'
+  get 'contact(/:destination)', to: 'contact_messages#new', as: :contact
 
   get '/robots'     => 'robots#show'
 
   get :dashboard, controller: :base, action: :boot_angular_ui, as: :dashboard
 
-  get 'inbox'                              => 'base#boot_angular_ui'
-  get 'groups'                             => 'base#boot_angular_ui'
-  get 'apps/registered'                    => 'base#boot_angular_ui'
-  get 'apps/authorized'                    => 'base#boot_angular_ui'
-  get 'apps/registered/:id'                => 'base#boot_angular_ui'
-  get 'apps/registered/:id/:slug'          => 'base#boot_angular_ui'
-  get 'd/:key/proposal/:proposal'          => 'base#boot_angular_ui'
-  get 'd/:key/comment/:comment'            => 'base#boot_angular_ui'
-  get 'd/:key/proposal/:proposal/:outcome' => 'base#boot_angular_ui'
-  get 'd/:key/:stub'                       => 'base#boot_angular_ui'
-  get 'g/:key/:stub'                       => 'base#boot_angular_ui'
-  get 'g/:key/memberships/:username'       => 'base#boot_angular_ui'
+  get 'inbox'                              => 'application#show', as: :inbox
+  get 'groups'                             => 'application#show', as: :groups
+  get 'start_group'                        => 'application#show', as: :start_group
+  get 'explore'                            => 'application#show', as: :explore
+  get 'apps/registered'                    => 'application#show'
+  get 'apps/authorized'                    => 'application#show'
+  get 'apps/registered/:id'                => 'application#show'
+  get 'apps/registered/:id/:slug'          => 'application#show'
+  get 'd/:key/proposal/:proposal'          => 'application#show'
+  get 'd/:key/comment/:comment'            => 'application#show'
+  get 'd/:key/proposal/:proposal/:outcome' => 'application#show'
+  get 'd/:key/:stub'                       => 'application#show'
+  get 'g/:key/:stub'                       => 'application#show'
+  get 'g/:key/memberships/:username'       => 'application#show'
 end
