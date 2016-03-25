@@ -67,18 +67,6 @@ describe Motion do
     end
   end
 
-  describe "#search(query)" do
-    before { @user = create(:user) }
-    it "returns user's motions that match the query string" do
-      motion = create(:motion, name: "jam toast", author: @user, discussion: discussion)
-      expect(@user.motions.search("jam")).to eq [motion]
-    end
-    it "does not return discussions that don't belong to the user" do
-      motion = create(:motion, name: "sandwich crumbs", discussion: discussion)
-      @user.motions.search("sandwich").should_not == [motion]
-    end
-  end
-
   describe "#members_not_voted_count" do
     let(:motion) { create :motion, discussion: discussion }
 

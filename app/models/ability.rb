@@ -21,7 +21,7 @@ class Ability
     cannot :sign_up, User
 
     can [:approve, :decline], NetworkMembershipRequest do |request|
-      request.pending? and request.network.coordinators.include? user
+      !request.approved? and request.network.coordinators.include? user
     end
 
     can :create, NetworkMembershipRequest do |request|

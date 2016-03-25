@@ -242,14 +242,6 @@ class Group < ActiveRecord::Base
     group_request.try(:admin_email)
   end
 
-  def voting_motions
-    motions.voting
-  end
-
-  def closed_motions
-    motions.closed
-  end
-
   def archive!
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(archived_at: DateTime.now)

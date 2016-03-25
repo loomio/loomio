@@ -168,12 +168,12 @@ class Motion < ActiveRecord::Base
     reload
   end
 
-  private
+  def user_has_voted?(user)
+    return false if user.nil?
+    votes.for_user(user.id).exists?
+  end
 
-    def user_has_voted?(user)
-      return false if user.nil?
-      votes.for_user(user.id).exists?
-    end
+  private
 
     def closes_in_future_unless_closed
       unless self.closed?
