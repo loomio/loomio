@@ -36,7 +36,7 @@ class DiscussionService
 
   def self.destroy(discussion:, actor:)
     actor.ability.authorize!(:destroy, discussion)
-    discussion.delayed_destroy
+    discussion.destroy
     EventBus.broadcast('discussion_destroy', discussion, actor)
   end
 
