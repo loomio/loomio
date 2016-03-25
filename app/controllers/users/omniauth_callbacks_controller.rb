@@ -48,7 +48,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   alias_method :google, :all
   alias_method :facebook, :all
-  alias_method :browser_id, :all
   alias_method :twitter, :all
 
   private
