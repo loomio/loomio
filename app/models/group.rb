@@ -6,8 +6,6 @@ class Group < ActiveRecord::Base
   class MaximumMembershipsExceeded < Exception
   end
 
-  acts_as_tree
-
   DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
   MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
 
