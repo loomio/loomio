@@ -1,4 +1,5 @@
 module UsesMetadata
+  include AngularHelper
   alias :show :boot_angular_ui
 
   private

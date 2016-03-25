@@ -4,10 +4,7 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  namespace :development do
-    get '/' => 'development#index'
-    get ':action'
-  end
+  resources(:development, only: :index) { get ':action', on: :collection }
 
   namespace :admin do
     get 'url_info' => 'base#url_info'

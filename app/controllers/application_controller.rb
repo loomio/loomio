@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
   include ProtectedFromForgery
   include LoadAndAuthorize
 
-  before_filter :boot_angular_ui, only: :show, if: :use_angular_ui?
-  def show
-  end
-
   helper :analytics_data
   helper :locales
   helper_method :current_user_or_visitor
