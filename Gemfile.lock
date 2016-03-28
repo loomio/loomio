@@ -227,6 +227,9 @@ GEM
     errbase (0.0.3)
     erubis (2.7.0)
     eventmachine (1.0.7)
+    exception_notification (4.1.4)
+      actionmailer (~> 4.0)
+      activesupport (~> 4.0)
     excon (0.45.3)
     execjs (2.5.2)
     factory_girl (4.5.0)
@@ -731,6 +734,7 @@ DEPENDENCIES
   doorkeeper-i18n
   dotenv-rails
   email_spec
+  exception_notification
   factory_girl_rails
   faker
   fog
