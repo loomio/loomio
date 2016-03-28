@@ -39,8 +39,8 @@ before_script:
 script:
   - bundle exec rake plugins:acquire
   - bundle exec rake travis:prepare
-  - bundle exec rake travis:rspec
-  - bundle exec rake travis:cucumber
+  # - bundle exec rake travis:rspec
+  # - bundle exec rake travis:cucumber
   - bundle exec rake travis:protractor
 
 after_script:
