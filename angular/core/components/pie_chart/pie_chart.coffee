@@ -24,9 +24,9 @@ angular.module('loomioApp').directive 'pieChart', ->
         ["M", half, half, "L", x1, y1, "A", radius, radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
 
       positionColors =
-        yes: '#39A96F'
-        abstain: '#FAA030'
-        no: '#F15E72'
+        yes: '#00D374'
+        abstain: '#F6A82B'
+        no: '#F96168'
         block: '#CE261B'
 
       shapes = []
