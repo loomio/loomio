@@ -66,6 +66,7 @@
     "gulp-pipe": "^1.0.4",
     "gulp-protractor": "^2.1.0",
     "protractor": "3.0.0",
+    "protractor-console": "latest",
     "gulp-rename": "^1.2.2",
     "gulp-run-sequence": "^0.3.2",
     "gulp-sass": "^2.1.1",

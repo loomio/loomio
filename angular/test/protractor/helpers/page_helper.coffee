@@ -7,15 +7,15 @@ given =  (args) ->
   else
     args
 
-afterEach ->
-  browser.manage().logs().get('browser').then (browserLog) ->
-    # filter only error
-    errors = _.where(browserLog, { level: { name: 'SEVERE' } });
-
-    if(errors.length)
-      console.error('unexpected browser errors\n', require('util').inspect(errors))
-
-    expect(errors, 'uncaught client errors').to.be.empty;
+# afterEach ->
+#   browser.manage().logs().get('browser').then (browserLog) ->
+#     # filter only error
+#     errors = _.where(browserLog, { level: { name: 'SEVERE' } });
+#
+#     if(errors.length)
+#       console.error('unexpected browser errors\n', require('util').inspect(errors))
+#
+#     expect(errors, 'uncaught client errors').to.be.empty;
 
 module.exports = new class PageHelper
   loadPath: (path) ->
