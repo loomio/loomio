@@ -4,7 +4,7 @@ paths         = require('../tasks/paths')
 exports.config =
   plugins: [{
     package: 'protractor-console',
-    logLevels: ['severe']
+    logLevels: ['severe', 'warning']
   }]
   seleniumServerJar: '../node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.48.2.jar'
   specs:             paths.protractor.specs
