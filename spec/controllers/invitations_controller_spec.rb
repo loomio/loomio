@@ -78,7 +78,7 @@ describe InvitationsController do
           get :show, id: invitation.token
           invitation.reload
           expect(invitation.accepted?).to be true
-          expect(group.has_member?(user)).to be true
+          expect(Membership.find_by(group: group, user: user)).to be_present
           response.should redirect_to group_path(group)
         end
 
@@ -94,7 +94,7 @@ describe InvitationsController do
           response.should redirect_to group_path(group)
           invitation.reload
           expect(invitation.accepted?).to be true
-          expect(group.has_member?(user)).to be true
+          expect(Membership.find_by(group: group, user: user)).to be_present
           session[:invitation_token].should be_nil
         end
       end

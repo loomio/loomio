@@ -19,39 +19,6 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def new
-    @invite_people_form = InvitePeopleForm.new
-  end
-
-  def create
-    require_current_user_can_invite_people
-    @invite_people_form = InvitePeopleForm.new(params[:invite_people_form])
-
-    if @invitable.kind_of?(Group)
-      MembershipService.add_users_to_group(users: @invite_people_form.members_to_add,
-                                           group: @group,
-                                           inviter: current_user,
-                                           message: @invite_people_form.message_body)
-
-      InvitationService.invite_to_group(recipient_emails: @invite_people_form.emails_to_invite,
-                                        message: @invite_people_form.message_body,
-                                        group: @invitable,
-                                        inviter: current_user)
-    elsif @invitable.kind_of?(Discussion)
-      MembershipService.add_users_to_discussion(users: @invite_people_form.members_to_add,
-                                                discussion: @discussion,
-                                                inviter: current_user,
-                                                message: @invite_people_form.message_body)
-
-      InvitationService.invite_to_discussion(recipient_emails: @invite_people_form.emails_to_invite,
-                                             message: @invite_people_form.message_body,
-                                             discussion: @invitable,
-                                             inviter: current_user)
-    end
-    set_flash_message
-    redirect_to @invitable
-  end
-
   def show
     clear_invitation_token_from_session
     @invitation = Invitation.find_by_token!(params[:id])
@@ -63,16 +30,6 @@ class InvitationsController < ApplicationController
       save_invitation_token_to_session
       redirect_to login_or_signup_path_for_email(@invitation.recipient_email)
     end
-  end
-
-  def destroy
-    @invitation = Invitation.find_by_token!(params[:id])
-
-    authorize! :cancel, @invitation
-    @invitation.cancel!(canceller: current_user)
-
-    redirect_to group_memberships_path(@invitation.group),
-                notice: "Invitation to #{@invitation.recipient_email} cancelled"
   end
 
   private
