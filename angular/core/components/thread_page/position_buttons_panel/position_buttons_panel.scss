@@ -9,7 +9,8 @@
 
 .position-button {
   @include lmoBtn;
-  margin-right: 5px;
+  margin-right: 10px;
+  background-size: 60px;
   display: inline-block;
   width: 55px;
   height: 55px;
@@ -35,6 +36,7 @@
   background-image: url(/img/agree.svg);
   background-color: $agree-color;
   border-color: darken($agree-color, 15%);
+  background-position-x: calc(50% + 1px);
 }
 
 .position-button--no {
@@ -53,4 +55,5 @@
   background-image: url(/img/block.svg);
   background-color: $block-color;
   border-color: darken($block-color, 15%);
+  background-position-x: calc(50% - 1px);
 }
