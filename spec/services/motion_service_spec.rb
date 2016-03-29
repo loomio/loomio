@@ -99,11 +99,11 @@ describe 'MotionService' do
 
   describe 'closing the motion' do
     before do
-      Events::MotionClosed.stub(:publish!)
-      Events::MotionClosedByUser.stub(:publish!)
-      motion.stub(:closed_at=)
-      motion.stub(:save!)
-      motion.stub(:store_users_that_didnt_vote)
+      Events::allow(MotionClosed).to receive(:publish!)
+      Events::allow(MotionClosedByUser).to receive(:publish!)
+      allow(motion).to receive(:closed_at=)
+      allow(motion).to receive(:save!)
+      allow(motion).to receive(:store_users_that_didnt_vote)
     end
 
     describe '.close' do
@@ -157,10 +157,10 @@ describe 'MotionService' do
     let(:did_not_votes) { double(:did_not_votes) }
 
     before do
-      motion.stub(:closing_at=)
-      motion.stub(:closed_at=)
-      motion.stub(:did_not_votes).and_return(did_not_votes)
-      did_not_votes.stub(:delete_all)
+      allow(motion).to receive(:closing_at=)
+      allow(motion).to receive(:closed_at=)
+      allow(motion).to receive(:did_not_votes).and_return(did_not_votes)
+      allow(did_not_votes).to receive(:delete_all)
     end
 
     after { MotionService.reopen(motion, date) }
@@ -180,7 +180,7 @@ describe 'MotionService' do
 
   describe '.create_outcome' do
     before do
-      motion.stub(:outcome_author)
+      allow(motion).to receive(:outcome_author)
       allow(motion).to receive(:outcome_author) { user }
       allow(motion).to receive(:outcome) { "Agreement and engagement" }
     end
@@ -194,7 +194,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:valid?).and_return false
+        allow(motion).to receive(:valid?).and_return false
       end
 
       it 'returns false' do
@@ -209,7 +209,7 @@ describe 'MotionService' do
   end
   describe '.update_outcome' do
     before do
-      motion.stub(:outcome_author)
+      allow(motion).to receive(:outcome_author)
       allow(motion).to receive(:outcome_author) { user }
       allow(motion).to receive(:outcome) { "Updated agreement and engagement" }
     end
@@ -223,7 +223,7 @@ describe 'MotionService' do
 
     context 'outcome is invalid' do
       before do
-        motion.stub(:valid?).and_return false
+        allow(motion).to receive(:valid?).and_return false
       end
 
       it 'returns false' do

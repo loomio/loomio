@@ -29,7 +29,7 @@ describe API::GroupsController do
     end
 
     context 'logged out' do
-      before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+      before { allow(@controller).to receive(:current_user).and_return(LoggedOutUser.new) }
       let(:private_group) { create(:group, is_visible_to_public: false) }
 
       it 'returns public groups if the user is logged out' do
@@ -55,7 +55,7 @@ describe API::GroupsController do
     end
 
     it 'does not set a gift subscription unless chargify is set up' do
-      SubscriptionService.stub(:available?).and_return(false)
+      allow(SubscriptionService).to receive(:available?).and_return(false)
       post :use_gift_subscription, id: group.key
       expect(response.status).to eq 400
       expect(group.subscription.reload.kind).to_not eq 'gift'

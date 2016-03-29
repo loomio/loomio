@@ -70,7 +70,7 @@ describe 'CommentService' do
 
     context 'comment is valid' do
       before do
-        comment.stub(:valid?).and_return(true)
+        allow(comment).to receive(:valid?).and_return(true)
       end
 
       it 'fires a NewComment event' do
@@ -106,7 +106,7 @@ describe 'CommentService' do
 
     context 'comment is invalid' do
       before do
-        comment.stub(:valid?).and_return(false)
+        allow(comment).to receive(:valid?).and_return(false)
       end
 
       it 'returns false' do

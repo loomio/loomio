@@ -10,10 +10,10 @@ describe TranslationsController do
 
   context "translation" do
     before do
-      app_controller.stub(:authorize!).and_return(true)
-      TranslationService.any_instance.stub(:translate).and_return(translation)
-      TranslationService.stub(:available?).and_return(true)
-      Discussion.stub(:find_by_key!).and_return(discussion)
+      allow(app_controller).to receive(:authorize!).and_return(true)
+      allow(TranslationService.any_instance).to receive(:translate).and_return(translation)
+      allow(TranslationService).to receive(:available?).and_return(true)
+      allow(Discussion).to receive(:find_by_key!).and_return(discussion)
     end
 
     it "successfully translates a comment" do
@@ -35,7 +35,7 @@ describe TranslationsController do
     end
 
     it "successfully translates a motion" do
-      post :create, model: :motion, id: motion.id, format: :js    
+      post :create, model: :motion, id: motion.id, format: :js
       response.should render_template "motions/motion_translations"
       response.should be_successful
     end

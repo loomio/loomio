@@ -34,7 +34,7 @@ describe 'VoteService' do
 
     context 'vote is valid' do
       before do
-        vote.stub(:valid?).and_return(true)
+        allow(vote).to receive(:valid?).and_return(true)
       end
 
       context 'vote position is yes' do
@@ -61,7 +61,7 @@ describe 'VoteService' do
 
     context 'vote invalid' do
       before do
-        vote.stub(:valid?).and_return(false)
+        allow(vote).to receive(:valid?).and_return(false)
       end
 
       it 'fires no events' do

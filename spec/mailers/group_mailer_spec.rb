@@ -54,7 +54,7 @@ describe GroupMailer do
     it "sends email to every group member except the sender" do
       sender = stub_model User
       member = stub_model User
-      group.stub(:users).and_return([sender, member])
+      allow(group).to receive(:users).and_return([sender, member])
       email_subject = "i have something really important to say!"
       email_body = "goobly"
       mailer = double "mailer"

@@ -21,7 +21,7 @@ describe API::EventsController do
       end
 
       context 'logged out' do
-        before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
+        before { allow(@controller).to receive(:current_user).and_return(LoggedOutUser.new) }
 
         it 'returns a list of events for public discussions' do
           get :index, discussion_id: discussion.id, format: :json
