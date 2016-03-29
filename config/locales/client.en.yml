@@ -10,6 +10,7 @@ en:
     notification_volume: 'Notification Volume'
     group: 'Group'
     groups: 'Groups'
+    help: 'Help'
     privacy:
       privacy: 'Privacy'
       public: 'Public'
@@ -98,57 +99,51 @@ en:
     mute: 'Mute'
     unmute: 'Unmute'
 
-  thread_volume_card:
-    heading: "Thread Notifications"
-    body:
-      loud: "Email everything: you will be emailed whenever there is activity in this thread."
-      normal: "Email proposals: you will be emailed when a proposal is started, about to close, or an outcome is posted."
-      quiet: "No emails: you won't be emailed about activity in this thread."
-      mute: "Thread muted: you won't be emailed about this thread, and it will be removed from your Recent Threads and Unread pages."
-    change_volume_link: "Change"
-
-  thread_volume_form:
-    header: "Thread Notifications"
-    loud_label: "Email everything"
-    loud_description: "You will be emailed whenever there is activity in this thread."
-    normal_label: "Email proposals"
-    normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
+  change_volume_form:
+    loud_label: "All activity"
+    normal_label: "Important activity"
     quiet_label: "No emails"
-    quiet_description: "You won't be emailed about this thread unless someone @mentions you."
-    mute_label: "Mute thread"
-    mute_description: "You won't be emailed about this thread, and it will be removed from your Recent Threads and Unread pages."
-    submit: "Update"
-    messages:
-      loud: "You will be emailed activity in this thread."
-      normal: "You will be emailed about proposals in this thread."
-      quiet: "You won't be emailed about this thread."
-      mute: "Thread muted."
+    discussion:
+      title: "Email settings for {{title}}"
+      loud_description: "You will be emailed whenever there is activity in this thread."
+      normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
+      quiet_description: "You won't be emailed about this thread."
+      apply_to_all: "Apply this settings to all threads in this group."
+      messages:
+        loud: "You will be emailed activity in this thread."
+        normal: "You will be emailed about proposals in this thread."
+        quiet: "You won't be emailed about this thread."
+    membership:
+      title: "Email settings for {{title}}"
+      loud_description: "You will be emailed whenever there is activity in this group."
+      normal_description: "You will be emailed about new threads and proposals in this group."
+      quiet_description: "You won't be emailed about activity in this group."
+      apply_to_all: "Apply this settings to all my groups."
+      messages:
+        loud: "You will be emailed all activity in this group."
+        normal: "You will be emailed about proposals in this group."
+        quiet: "You won't be emailed about this group."
+    all_groups:
+      messages:
+        loud: "You will be emailed all activity in all your groups."
+        normal: "You will be emailed about proposals in all your groups."
+        quiet: "You won't be emailed about any of your groups."
+    user:
+      title: Email settings for new groups
+      loud_description: "You will be emailed whenever there is activity in any new groups you join."
+      normal_description: "You will be emailed about new threads and proposals in any new groups you join."
+      quiet_description: "You won't be emailed about activity in any new groups you join."
+      apply_to_all: "Apply this settings to all my groups."
+      messages:
+        loud: "You will be emailed all activity in new groups."
+        normal: "You will be emailed about new threads and proposals in new groups."
+        quiet: "You won't be emailed about new groups."
 
-  group_volume_card:
-    heading: "Group Notifications"
-    body:
-      loud: "Email everything: you will be emailed whenever there is activity in this group."
-      normal: "You will be emailed about new threads and proposals in this group."
-      quiet: "No emails: you won't be emailed about activity in this group."
-      mute: "Group muted: you won't be emailed about this group, and it will be removed from your Recent Threads and Unread pages."
-    change_volume_link: "Change"
-
-  group_volume_form:
-    header: "Group Notifications"
-    loud_label: "Email everything"
-    loud_description: "You will be emailed whenever there is activity in this group."
-    normal_label: "Email new threads and proposals"
-    normal_description: "You will be emailed about new threads and proposals in this group."
-    quiet_label: "No emails"
-    quiet_description: "You won't be emailed about activity in this group, unless someone mentions you."
-    mute_label: "Mute group"
-    mute_description: "You won't be emailed about this group, and it will be removed from your Recent Threads and Unread pages."
-    submit: "Update"
-    messages:
-      loud: "You will be emailed all activity in this group."
-      normal: "You will be emailed about proposals in this group."
-      quiet: "You won't be emailed about this group."
-      mute: "Group muted."
+  mute_explanation_modal:
+    mute_thread: Mute thread
+    body: |
+      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone @mentions you.</p>
+      <p>Muted threads are hidden from Recent threads and Unread pages too. To find your Muted threads, visit the Recent threads page and select "Muted" from the "Filter threads" menu:</p>
 
   inbox:
     clear: 'Clear'
@@ -436,6 +431,7 @@ en:
       manage_members: 'Manage Members'
       add_subgroup: 'Add Subgroup'
       manage_subscription: 'Manage Group Subscription'
+      email_settings: 'Email settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
     deactivate_group:
@@ -720,16 +716,18 @@ en:
 
   email_settings_page:
     header: Email settings
-    email: Email
+    all_groups: Settings for all groups
     daily_summary_label: Daily summary email
-    daily_summary_description: "Each morning, send an email with yesterday's unread activity. This email provides an easy routine for staying up to date with Loomio activity."
-    on_participation_label: Activity from the threads I participate in
-    on_participation_description: "When you participate in a thread, the volume setting will be changes to 'High', so all further activity will be emailed to you immediately."
-    proposal_closing_soon_label: Before a proposal closes
-    proposal_closing_soon_description: '24 hours before a proposal closes, regardless of volume, you will get an email with the latest information about the proposal.'
-    mentioned_label: When I am @mentioned
+    daily_summary_description: "Each morning, you will get an email with any activity that you missed the day before. This email provides an easy routine for staying up to date with Loomio activity."
+    on_participation_label: Subscribe on participation
+    on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
+    mentioned_label: Mentions
     mentioned_description: "When someone wants to get you're attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
-    update_settings: Update email settings
+    update_settings: Update settings for all groups
+    specific_groups: Settings for specific groups
+    default_settings: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
+    change_default: Change default
+    edit: Edit
     messages:
       updated: Email settings updated
 
@@ -807,24 +805,13 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
     edited: 'Edited'
     volume:
-      loud: Email whenever there is activity in this thread.
-      loud_aria_description: Your notification volume for this thread is set to Loud. This means you will be emailed whenever there is activity in this thread.
-      loud_message: 'You will be emailed about all activity in "{{name}}"'
-      normal: 'Just email when a proposal is created, about to close, or an outcome is posted.'
-      normal_aria_description: 'Your notification volume for this thread is set to Normal. You will be emailed when a proposal is created, about to close, or an outcome is posted.'
-      normal_message: 'You will only be emailed with important events for "{{name}}".'
-      quiet: Don't email about this thread.
-      quiet_aria_description: Your notification volume for this thread is set to Quiet. You won't be emailed about this thread unless someone mentions you.
-      quiet_message: 'You won''t be emailed about "{{name}}" unless someone mentions you'
-      mute: Hide this thread from the dashboard and do not notify unless @mentioned.
-      mute_aria_description: Your notification volume for this thread is set to Mute. You won't be emailed about this thread unless someone mentions you, and this thread will be removed from your dashboard.
-      mute_message: '"{{name}}" has been removed from your dashboard.'
+      mute_message: 'Thread muted.'
   thread_group:
     aria_label: 'Group name'
   thread_context:
     aria_label: 'Thread context'
     thread_options: 'Thread options'
-    notifications: 'Notifications'
+    email_settings: 'Email settings'
     edit_thread: 'Edit'
     move_thread: 'Move'
     print_thread: 'Print'

@@ -62,9 +62,6 @@ module.exports = new class GroupsHelper
   clearGroupNameInput: ->
     @groupNameInput().clear()
 
-  GroupFormValidationErrors: ->
-    element(By.css('.lmo-validation-error'))
-
   editGroupDescription: (description) ->
     element(By.css('.group-form__description textarea')).sendKeys(description)
 

@@ -32,10 +32,12 @@
           {{ thread.group().fullName }} ·
           %smart_time{time: "thread.lastActivityAt"}>
 
+      %outlet{name: "after-thread-preview"}
+
   .thread-preview__star
     %star_toggle{thread: "thread", aria-hidden: "true"}
 
-  .thread-preview__actions.hidden-xs
+  .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
     %button.thread-preview__mark-as-read{ng-click: "thread.markAsRead()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.mark_as_read' | translate }}"}>
       %i.fa.fa-check>
     %button.thread-preview__mute{ng-click: "changeVolume('mute')", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}" }>

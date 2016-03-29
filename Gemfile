@@ -65,12 +65,16 @@ gem 'responders', '~> 2.0'
 gem 'activerecord_any_of'
 gem 'rack-attack', '~> 4.2.0'
 gem 'ahoy_matey'
+gem 'ahoy_email'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'simple-rss'
 gem 'snorlax', '~> 0.1.3'
 gem 'custom_counter_cache'
 gem 'safe_shell'
+gem 'premailer'
+gem 'griddler'
+gem "griddler-mailin", github: 'loomio/griddler-mailin'
 
 group :development, :test do
   gem 'minitest'
@@ -91,6 +95,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'derailed'
   gem "stackprof"
   gem 'spring'

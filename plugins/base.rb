@@ -42,7 +42,7 @@ module Plugins
 
       migration = ActiveRecord::Migration.new
       def migration.up(table_name, &block)
-        create_table table_name, &block
+        create_table table_name.to_s.pluralize, &block
       end
       migration.up(table_name, &block)
     end
@@ -69,7 +69,7 @@ module Plugins
 
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      @outlets.add Outlet.new(@name, component, outlet) if outlet
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o) }
     end
 
     def use_route(verb, route, action)

@@ -4,7 +4,7 @@ describe 'Group Page', ->
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
-      it 'should display group content', ->
+      xit 'should display group content', ->
         page.loadPath('setup_group_with_many_discussions')
         page.expectElement('.group-theme__name')
         page.expectElement('.lmo-navbar__sign-in')
@@ -31,6 +31,11 @@ describe 'Group Page', ->
         page.fillIn '#membership-request-email', 'chevychase@example.com'
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
+
+      it 'does not allow mark as read or mute', ->
+        page.loadPath('view_open_group_as_visitor')
+        page.expectNoElement('.thread-preview__mark-as-read')
+        page.expectNoElement('.thread-preview__mute')
 
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
@@ -296,17 +301,14 @@ describe 'Group Page', ->
       page.click('.groups-item')
       page.expectNoText('.groups-page__groups', 'Dirty Dancing Shoes')
 
-  describe 'changing group volume', ->
-    it 'lets you change group notification volume', ->
+  describe 'changing membership email settings', ->
+    it 'lets you change membership volume', ->
       page.loadPath('setup_group')
-      page.expectText('.group-volume-card',
-                      'You will be emailed about new threads and proposals in this group.')
-
-      page.click('.group-volume-card__change-volume-link',
+      page.click('.group-page-actions__button',
+                 '.group-page-actions__change-volume-link',
                  '#volume-loud',
                  '.change-volume-form__submit')
-
-      page.expectText('.group-volume-card', 'Email everything')
+      page.expectFlash 'You will be emailed all activity in this group.'
 
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->
@@ -336,3 +338,22 @@ describe 'Group Page', ->
       page.click('.discussions-card__new-thread-button')
       page.expectInputValue('#discussion-title', 'Nobody puts baby in a corner' )
       page.expectInputValue('#discussion-context', "I've had the time of my life" )
+
+  describe 'changing membership volume', ->
+    beforeEach ->
+      page.loadPath('setup_group')
+
+    it 'lets you change membership notification volume', ->
+      page.click '.group-page-actions__button',
+                 '.group-page-actions__change-volume-link',
+                 '#volume-normal',
+                 '.change-volume-form__submit'
+      page.expectFlash 'You will be emailed about proposals in this group.'
+
+    it 'lets you change the membership notification volume for all memberships', ->
+      page.click '.group-page-actions__button',
+                 '.group-page-actions__change-volume-link',
+                 '#volume-normal',
+                 '.change-volume-form__apply-to-all',
+                 '.change-volume-form__submit'
+      page.expectFlash 'You will be emailed about proposals in all your groups.'

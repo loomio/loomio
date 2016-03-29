@@ -8,5 +8,4 @@ class MembershipSerializer < ActiveModel::Serializer
   def include_inviter?
     [nil, true].include? (scope || {})[:include_inviter]
   end
-
 end
