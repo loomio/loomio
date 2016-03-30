@@ -8,21 +8,6 @@ describe InvitationsController do
     group.add_admin!(user)
   end
 
-  describe 'destroy' do
-    let(:invitation){create(:invitation, invitable: group)}
-
-    before do
-      sign_in user
-    end
-
-    it 'cancels the invitation' do
-      delete :destroy, id: invitation.token, group_id: group.key
-      response.should redirect_to group_memberships_path(group)
-      invitation.reload
-      expect(invitation.cancelled?).to be true
-    end
-  end
-
   describe "GET 'show'" do
     let(:group) { create(:group) }
     let(:invitation) { create(:invitation, token: 'abc', invitable: group, recipient_email: user.email) }
