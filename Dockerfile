@@ -23,12 +23,12 @@ COPY config/database.docker.yml /loomio/config/database.yml
 
 WORKDIR /loomio/angular
 RUN npm install
+RUN gulp build
 
 WORKDIR /loomio
 RUN bundle install
 
-# set environment to production
-ENV RAILS_ENV development
+ENV RAILS_ENV production
 
 # fake config for building assets
 ENV DATABASE_URL sqlite3:assets_throwaway.db
@@ -37,6 +37,7 @@ ENV SECRET_COOKIE_TOKEN beepbeep
 
 # build assets
 RUN bundle exec rake assets:precompile
+RUN bundle exec rake deploy:version_client_assets
 
 # source the config file and run puma when the container starts
 CMD bundle exec puma -C config/puma.rb

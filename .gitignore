@@ -26,6 +26,7 @@ public/system
 public/uploads
 
 plugins/
+disabled_plugins/
 
 angular/node_modules
 angular/tasks/config/plugins.yml
