@@ -3,7 +3,7 @@ ActiveAdmin.setup do |config|
   config.authentication_method = :authenticate_admin_user!
   config.current_user_method = :current_user
   config.logout_link_path = :destroy_user_session_path
-  config.root_to = 'dashboard#index'
+  config.root_to = 'groups#index'
   config.batch_actions = true
 end
 
