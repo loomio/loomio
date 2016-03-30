@@ -46,6 +46,11 @@ def heroku_migrate_and_restart(remote)
                 "ruby /usr/local/heroku/bin/heroku run rake loomio:notify_clients_of_update -a #{remote}"]
 end
 
+task :version_client_assets do
+  puts "Copying client files into public/client/#{Loomio::Version.current}",
+  run_commands ["cp -r public/client/development public/client/#{Loomio::Version.current}"]
+end
+
 desc "Deploy to some git-remote and branch"
 task :deploy do
   # usage script/deploy loomio-production master

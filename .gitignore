@@ -25,13 +25,8 @@ public/client
 public/system
 public/uploads
 
-plugins/*/
-plugins/Gemfile
-!plugins/*.rb
-!plugins/*.yml
-!plugins/*.md
-# NB: To reveal a plugin to hack on it locally, add a line here telling .gitignore to reveal it:
-# !plugins/my_awesome_plugin
+plugins/
+disabled_plugins/
 
 angular/node_modules
 angular/tasks/config/plugins.yml

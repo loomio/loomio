@@ -1,2 +1,2 @@
-require [Rails.root, :plugins, :base].join('/')
+require [Rails.root, :lib, :plugins, :base].join('/')
 Plugins::Repository.install_plugins!

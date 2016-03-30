@@ -20,19 +20,12 @@ module Plugins
 
     def fetch
       puts "cloning #{repo}..."
-      SafeShell.execute "git", "clone", "https://#{ENV['GITHUB_USERNAME']}:#{ENV['GITHUB_PASSWORD']}@github.com/#{repo}.git"
+      SafeShell.execute "git", "clone", "git@github.com:#{repo}.git"
     end
 
     def checkout
       puts "checking out #{version}..."
       Dir.chdir(folder) { SafeShell.execute "git", "checkout", version || "master" }
-    end
-
-    def bundle
-      return unless Array(gems).any?
-      deps = Array(gems).join(' ')
-      puts "Adding dependencies to Gemfile: #{deps}"
-      SafeShell.execute "gemrat", deps
     end
 
     def folder
