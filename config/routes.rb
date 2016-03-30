@@ -221,12 +221,12 @@ Loomio::Application.routes.draw do
   get 'apps/authorized'                    => 'application#boot_angular_ui'
   get 'apps/registered/:id'                => 'application#boot_angular_ui'
   get 'apps/registered/:id/:slug'          => 'application#boot_angular_ui'
-  get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui'
-  get 'd/:key/comment/:comment'            => 'application#boot_angular_ui'
-  get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui'
-  get 'd/:key/:stub'                       => 'application#boot_angular_ui'
+  get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui', as: :discussion_motion
+  get 'd/:key/comment/:comment'            => 'application#boot_angular_ui', as: :discussion_comment
+  get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui', as: :discussion_motion_outcome
+  # get 'd/:key/:stub'                       => 'application#boot_angular_ui', as: :discussion
   get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
-  get 'g/:key/:stub'                       => 'application#boot_angular_ui'
+  # get 'g/:key/:stub'                       => 'application#boot_angular_ui', as: :group
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
 end

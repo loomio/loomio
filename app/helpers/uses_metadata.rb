@@ -9,6 +9,6 @@ module UsesMetadata
   end
 
   def metadata
-    @metadata ||= "Metadata::#{controller_name}Serializer".classify.constantize.new(load_resource_by_key).as_json
+    @metadata ||= "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(load_resource_by_key).as_json
   end
 end

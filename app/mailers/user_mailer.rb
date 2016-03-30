@@ -13,6 +13,7 @@ class UserMailer < BaseMailer
                     .not_muted
                     .unread
                     .last_activity_after(@time_start)
+    @groups = @user.groups.order(full_name: :asc)
 
     @reader_cache = DiscussionReaderCache.new(user: @user, discussions: @discussions)
 

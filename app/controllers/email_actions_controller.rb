@@ -24,8 +24,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     time_start = Time.at(params[:time_start].to_i).utc
     time_finish = Time.at(params[:time_finish].to_i).utc
 
-    Queries::VisibleDiscussions.new(user: user,
-                                    groups: user.inbox_groups).
+    Queries::VisibleDiscussions.new(user: user).
                                     unread.
                                     last_activity_after(time_start).each do |discussion|
       DiscussionReader.for(user: user, discussion: discussion).viewed!(time_finish)

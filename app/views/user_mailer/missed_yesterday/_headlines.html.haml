@@ -1,4 +1,4 @@
-- @user.inbox_groups.each do |group|
+- @groups.each do |group|
   - next unless @discussions_by_group.has_key?(group)
   %h3=link_to group.full_name, group_url(group, @utm_hash)
   %ul
@@ -9,4 +9,3 @@
         - if hl.has_motion?
           \-
           = hl.motion.title
-
