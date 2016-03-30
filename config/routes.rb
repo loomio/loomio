@@ -180,19 +180,10 @@ Loomio::Application.routes.draw do
     get '/d/:id(/:slug)', to: 'redirect#discussion_key'
     get '/g/:id(/:slug)', to: 'redirect#group_key'
     get '/m/:id(/:slug)', to: 'redirect#motion_key'
-
-    get '/about' => redirect('https://www.loomio.org/about')
-    get '/privacy' => redirect('https://www.loomio.org/privacy')
-    get '/purpose' => redirect('https://www.loomio.org/purpose')
-    get '/services' => redirect('https://www.loomio.org/services')
-    get '/terms_of_service' => redirect('https://www.loomio.org/terms_of_service')
-    get '/third_parties' => redirect('https://www.loomio.org/third_parties')
-    get '/try_it' => redirect('https://www.loomio.org/try_it')
-    get '/wallets' => redirect('https://www.loomio.org/wallets')
   end
 
   constraints(MainDomainConstraint) do
-    root :to => 'marketing#index'
+    root :to => 'root#index'
   end
 
   get "/explore", to: 'explore#index', as: :explore
@@ -425,17 +416,7 @@ Loomio::Application.routes.draw do
 
   constraints(MainDomainConstraint) do
     scope controller: 'pages' do
-      get :about
-      get :privacy
-      get :purpose
-      get :pricing
-      get :terms_of_service
-      get :third_parties
-      get :try_it
-      get :translation
-      get :wallets
       get :browser_not_supported
-      get :crowdfunding_celebration
     end
   end
 
@@ -452,30 +433,10 @@ Loomio::Application.routes.draw do
   get '/groups/:id',      to: 'redirect#group_id'
   get '/motions/:id',     to: 'redirect#motion_id'
 
-  get '/contributions'      => redirect('/crowd')
-  get '/contributions/thanks' => redirect('/crowd')
-  get '/contributions/callback' => redirect('/crowd')
-  get '/crowd'              => redirect('https://love.loomio.org/')
-
   scope path: 'pages' do
-    get 'home'         => redirect('/')
-    get 'how*it*works' => redirect('/purpose#how-it-works')
-    get 'get*involved' => redirect('/about')
-    get 'privacy'      => redirect('/privacy_policy')
-    get 'about'        => redirect('/about#about-us')
     match 'contact'    => 'contact_messages#new', via: [:get, :post]
   end
 
-  get '/get*involved'       => redirect('/purpose#how-it-works')
-  get '/how*it*works'       => redirect('/purpose#how-it-works')
-  get '/about#how-it-works' => redirect('/purpose#how-it-works')
-
-  get '/blog'       => redirect('http://blog.loomio.org')
-  get '/press'      => redirect('http://blog.loomio.org/press-pack')
-  get '/press-pack' => redirect('http://blog.loomio.org/press-pack')
-  get '/roadmap'    => redirect('https://trello.com/b/tM6QGCLH/loomio-roadmap')
-  get '/community'  => redirect('https://www.loomio.org/g/WmPCB3IR/loomio-community')
-  get '/timeline'   => redirect('http://www.tiki-toki.com/timeline/entry/313361/Loomio')
   get '/robots'     => 'robots#show'
 
   get 'apps/registered'                    => 'base#boot_angular_ui'
