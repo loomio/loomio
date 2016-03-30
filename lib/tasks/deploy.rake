@@ -29,7 +29,7 @@ def build_and_push_branch(remote, branch)
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
                 "rake 'plugins:acquire[loomio_org]' plugins:resolve_dependencies",                # install plugins specified in plugins/plugins.yml
                 "rm -rf plugins/**/.git",                                                         # allow cloned plugins to be added to this repo
-                "git add plugins/**/**/*.rb plugins/**/*.rb -f",                                  # add plugins folder to commit
+                "find plugins -name '*.*' | xargs git add -f",                                    # add plugins folder to commit
                 "cd angular && npm install && gulp compile && cd ../",                            # build the app via gulp
                 "cp -r public/client/development public/client/#{Loomio::Version.current}",       # version assets
                 "git add public/client/#{Loomio::Version.current} public/client/fonts -f",        # add assets to commit
