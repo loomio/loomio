@@ -136,12 +136,6 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
-    resources :contacts, only: :index do
-      get :import, on: :collection
-    end
-
-    resources :contact_messages, only: :create
-
     resources :versions, only: :index
 
     resources :oauth_applications, only: [:show, :create, :update, :destroy] do
@@ -205,7 +199,8 @@ Loomio::Application.routes.draw do
     get :markdown
   end
 
-  get 'contact(/:destination)', to: 'contact_messages#new', as: :contact
+  get 'contact(/:destination)', to: 'contact_messages#new'
+  post :contact, to: 'contact_messages#create', as: :contact
 
   get '/robots'     => 'robots#show'
 

@@ -153,10 +153,6 @@ Given(/^I have requested membership as a visitor and been ignored$/) do
   FactoryGirl.create(:membership_request, group: @group, name: @visitor_name, email: @visitor_email, responder: FactoryGirl.create(:user), response: 'ignored')
 end
 
-Then(/^I should be redirected to the dashboard$/) do
-  page.should have_css('body.dashboard.show')
-end
-
 Then(/^I should be redirected to the homepage$/) do
     page.should have_css('body.pages.home')
 end
