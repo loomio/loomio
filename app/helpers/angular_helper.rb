@@ -66,6 +66,6 @@ module AngularHelper
   end
 
   def angular_asset_folder
-    Rails.env.development? ? :development : Loomio::Version.current
+    Rails.env.production? ? Loomio::Version.current : :development
   end
 end

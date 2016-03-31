@@ -899,6 +899,9 @@ en:
     description_private: 'updated the thread context and privacy'
     description_private_title: 'updated the thread title, context and privacy'
 
+  discussion_moved_item:
+    discussion_moved: 'moved the thread from <span>{{group}}</span>'
+
   contact_message_form:
     contact_us: 'Contact Us'
     name_label: 'Your name'
