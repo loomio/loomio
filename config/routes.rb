@@ -213,6 +213,7 @@ Loomio::Application.routes.draw do
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
   # get 'start_group'                        => 'application#boot_angular_ui', as: :start_group
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
+  get 'profile'                            => 'application#boot_angular_ui', as: :profile
   get 'apps/registered'                    => 'application#boot_angular_ui'
   get 'apps/authorized'                    => 'application#boot_angular_ui'
   get 'apps/registered/:id'                => 'application#boot_angular_ui'
