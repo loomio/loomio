@@ -171,11 +171,7 @@ module ApplicationHelper
   end
 
   def hosted_by_loomio?
-    ENV['HOSTED_BY_LOOMIO']
-  end
-
-  def third_party_install?
-    !hosted_by_loomio?
+    false
   end
 
   def site_hostname

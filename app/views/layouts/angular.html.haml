@@ -25,7 +25,7 @@
     %ng_outlet{'ng-if' => '!pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
-    %angular_feedback_card{'ng-if' => 'isLoggedIn()'}
+    %outlet{name: 'after-start-menu'}
 
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
@@ -44,5 +44,4 @@
     - if Rails.application.secrets.faye_url.present?
       %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}
 
-    - if ENV['HOSTED_BY_LOOMIO']
-      = javascript_include_tag 'angular_ahoy'
+    = javascript_include_tag 'angular_ahoy' if hosted_by_loomio?

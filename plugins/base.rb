@@ -80,6 +80,18 @@ module Plugins
       }.to_proc
     end
 
+    def use_page(route, path, redirect: false)
+      @actions.add Proc.new {
+        Loomio::Application.routes.append do
+          if redirect
+            get route.to_s => redirect(path)
+          else
+            get route.to_s => path
+          end
+        end
+      }.to_proc
+    end
+
     def use_asset(path)
       raise InvalidAssetType.new unless VALID_ASSET_TYPES.include? path.split('.').last.to_sym
       @assets.add [@name, path].join('/')

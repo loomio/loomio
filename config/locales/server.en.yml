@@ -142,25 +142,28 @@ en:
     error:
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
   pricing_page:
-    header: Plans
+    header: Group plans
     gift: Gift
     standard: Standard
     plus: Plus
     free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
     get_started_for_free: Get started for free
-    gift_body_html: |
-      <p>For groups that don't have the budget to pay a subscription.</p>
-      <p>Donation supported, with no requirement to pay.</p>
-    gift_donation_ask: We'll ask your group members for a donation.
+    gift_body: For groups without a budget
+    gift_donation_ask: We’ll ask your group members to donate
     unlimited_members: unlimited members
     unlimited_decisions: unlimited decisions
     email_support: email support
+    slack_integration_html: |
+      <strong>Slack</strong> integration
     standard_price_html: 'US <strong>$19</strong>/month<br><span>or</span> $190/year
 
 '
     plus_body: 'Everything in Standard, plus:'
+    multiple_groups: multiple groups
     premium_support: premium support
-    custom_url: custom URL
+    custom_subdomain_html: |
+      custom subdomain,<br />
+      e.g. <strong>yourgroup</strong>.loomio.org
     usage_statistics: usage statistics
     plus_price_html: 'US <strong>$179</strong>/month<br><span>or</span> $1790/year
 

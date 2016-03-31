@@ -1,7 +1,3 @@
-Given(/^I want to show the loomio\.org marketing$/) do
-  ENV['HOSTED_BY_LOOMIO'] = '1'
-end
-
 Given(/^There are default group covers available$/) do
   FactoryGirl.create(:default_group_cover)
 end

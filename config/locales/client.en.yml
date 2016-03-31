@@ -494,23 +494,25 @@ en:
     plus: Plus
     free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
     get_started_for_free: "Get started for free"
-    gift_body_html: |
-      <p>For groups that don't have the budget to pay a subscription.</p>
-      <p>Donation supported, with no requirement to pay.</p>
+    gift_body: For groups without a budget
     support_before: I'm happy to
     support_link: talk with you
     support_after: about extending your trial, or with any other questions you may have.
     remind_me_later: Remind me later
-    gift_donation_ask: We'll ask your group members for a donation.
+    gift_donation_ask: We’ll ask your group members to donate
     unlimited_members: unlimited members
     unlimited_decisions: unlimited decisions
     email_support: email support
+    slack_integration_html: |
+      <strong>Slack</strong> integration
     standard_price_html: |
       US <strong>$19</strong>/month<br><span>or</span> $190/year
     plus_body: 'Everything in Standard, plus:'
+    multiple_groups: multiple groups
     premium_support: premium support
-    custom_url: custom URL
-    usage_statistics: usage statistics
+    custom_subdomain_html: |
+      custom subdomain,<br />
+      e.g. <strong>yourgroup</strong>.loomio.org
     plus_price_html: |
       US <strong>$179</strong>/month<br><span>or</span> $1790/year
     select: Select
@@ -1018,17 +1020,6 @@ en:
     invitation: 'Tips for writing a great invitation'
     proposal: 'Tips for writing a clear proposal'
     vote: 'You can change your position at any time'
-
-  pricing_page:
-    intro: |
-      Groups with a budget pay a subscription for using the tool.
-      Groups without the means to pay a subscription use the
-      Pay What You Can model: their members are invited to make a voluntary contribution.      Your contribution means we can keep Loomio independent, free of advertising, and driven by our community.
-    organisations: Organisations
-    organisations_examples: e.g. businesses, government agencies, community organisations
-    informal_groups: Informal groups
-    informal_groups_desc: Members of your group will be asked to pay what they can
-    informal_groups_examples: e.g. families, social movements, collectives
 
   angular:
     switch_back: 'Switch back to old Loomio'
