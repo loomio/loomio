@@ -316,7 +316,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_proposal
     MotionService.close(test_proposal)
-    redirect_to previous_proposals_group_url(test_group)
+    redirect_to group_previous_proposals_url(test_group)
   end
 
   def setup_proposal_closing_soon

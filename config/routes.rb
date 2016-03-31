@@ -182,10 +182,6 @@ Loomio::Application.routes.draw do
   resources :discussions, path: 'd', slug: slug_regex, only: :show
   resources :motions,     path: 'm', slug: slug_regex, only: :show
 
-  resources(:users,       path: 'u', only: []) do
-    get ':username', action: :show
-  end
-
   namespace :email_actions do
     get   'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
     get   'follow_discussion/:discussion_id/:unsubscribe_token',   action: 'follow_discussion',   as: :follow_discussion
@@ -227,6 +223,8 @@ Loomio::Application.routes.draw do
   # get 'd/:key/:stub'                       => 'application#boot_angular_ui', as: :discussion
   get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
+  get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   # get 'g/:key/:stub'                       => 'application#boot_angular_ui', as: :group
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
+  get 'u/:username'                        => 'application#boot_angular_ui', as: :user
 end
