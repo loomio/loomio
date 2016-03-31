@@ -201,7 +201,6 @@ Loomio::Application.routes.draw do
   end
 
   scope controller: 'help' do
-    get :help
     get :markdown
   end
 

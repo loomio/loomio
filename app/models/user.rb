@@ -89,7 +89,6 @@ class User < ActiveRecord::Base
   has_many :comment_votes, dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :motion_readers, dependent: :destroy
   has_many :omniauth_identities, dependent: :destroy
 
 
