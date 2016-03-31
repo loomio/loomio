@@ -19,18 +19,13 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_summary_email_as_read
-    @inbox = Inbox.new(user)
-    @inbox.load
-    time_start = Time.at(params[:time_start].to_i).utc
+    time_start  = Time.at(params[:time_start].to_i).utc
     time_finish = Time.at(params[:time_finish].to_i).utc
 
     Queries::VisibleDiscussions.new(user: user).
                                     unread.
                                     last_activity_after(time_start).each do |discussion|
       DiscussionReader.for(user: user, discussion: discussion).viewed!(time_finish)
-      if motion = discussion.motions.voting_or_closed_after(time_start).first
-        MotionReader.for(user: user, motion: motion).viewed!(time_finish)
-      end
     end
 
     respond_to do |format|
