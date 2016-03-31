@@ -136,6 +136,12 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
+    resources :contacts, only: :index do
+      get :import, on: :collection
+    end
+
+    resources :contact_messages, only: :create
+
     resources :versions, only: :index
 
     resources :oauth_applications, only: [:show, :create, :update, :destroy] do
