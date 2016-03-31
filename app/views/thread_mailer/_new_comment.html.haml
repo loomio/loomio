@@ -2,7 +2,16 @@
 %table
   %tr
     %td.icon
-      = render 'base/linked_avatar', user: comment.user
+      = link_to user_path(comment.user) do
+        %div{class: "medium-user-avatar #{user.avatar_kind}-user-avatar avatar-canvas"}
+          - if user.is_logged_in?
+            - if user.avatar_kind == 'initials'
+              = user.avatar_initials
+            - else
+              = image_tag user.avatar_url(:medium)
+          -else
+            %h2
+              %i.fa.fa-user
     %td.content
       %b= comment.author.name
       %br
