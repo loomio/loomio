@@ -1,4 +1,5 @@
 %form.membership-request-form{ng-submit: "submit()", ng-disabled: "membership_request.processing"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
     %modal_header_cancel_button
     %h1.lmo-h1{translate: "membership_request_form.heading"}
@@ -7,11 +8,11 @@
     %fieldset
       .lmo-form-group
         %label{for: "membership-request-name", translate: "membership_request_form.name_label"}
-        %input.membership-request-form__name.form-control#membership-request-name{ng-model: "membershipRequest.actor().name", ng-required: "true", ng-disabled: "true"}
+        %input.membership-request-form__name.form-control#membership-request-name{ng-model: "membershipRequest.name", ng-required: "true", ng-disabled: "isLoggedIn()"}
 
       .lmo-form-group
         %label{for: "membership-request-email", translate: "membership_request_form.email_label"}
-        %input.membership-request-form__email.form-control#membership-request-email{ng-model: "membershipRequest.actor().email", ng-required: "true", ng-disabled: "true"}
+        %input.membership-request-form__email.form-control#membership-request-email{ng-model: "membershipRequest.email", ng-required: "true", ng-disabled: "isLoggedIn()"}
 
       .lmo-form-group
         %label{for: "membership-request-introduction", translate: "membership_request_form.introduction_label"}

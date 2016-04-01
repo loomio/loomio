@@ -23,20 +23,23 @@ COPY config/database.docker.yml /loomio/config/database.yml
 
 WORKDIR /loomio/angular
 RUN npm install
+RUN npm rebuild node-sass
+RUN node node_modules/gulp/bin/gulp.js compile
 
 WORKDIR /loomio
 RUN bundle install
 
-# set environment to production
+# use development env to build assets with fake sqlite database (heroku blocks you from using sqlite in production)
 ENV RAILS_ENV development
 
-# fake config for building assets
+# fake config for building assets (yawn)
 ENV DATABASE_URL sqlite3:assets_throwaway.db
 ENV DEVISE_SECRET boopboop
 ENV SECRET_COOKIE_TOKEN beepbeep
 
 # build assets
 RUN bundle exec rake assets:precompile
+RUN bundle exec rake deploy:version_client_assets
 
 # source the config file and run puma when the container starts
 CMD bundle exec puma -C config/puma.rb

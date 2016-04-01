@@ -63,7 +63,7 @@ ActiveAdmin.register User do
         if can? :deactivate, user
           button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
         else
-          div "This user cannot be deactivated because they are currently the only coordinator of the following groups:"
+          div "This user can't be deactivated because they are the only coordinator of the following groups:"
           table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
             column :id
             column :name do |group|
@@ -86,7 +86,8 @@ ActiveAdmin.register User do
       table_for user.memberships.each do |m|
         column :group_id
         column :group_name do |g|
-          Group.find(g.group_id).full_name
+          group = g.group
+          link_to group.full_name, [:admin, group]
         end
       end
     end

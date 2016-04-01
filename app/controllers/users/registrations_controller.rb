@@ -30,6 +30,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  def after_sign_up_path_for(user)
+    if sign_up_group
+      user.ability.authorize!(:join, sign_up_group)
+      sign_up_group.add_member! user
+      sign_up_group
+    else
+      super(user)
+    end
+  end
+
+  def sign_up_group
+    return unless group_key = Array(request.referrer.match(%r{\?group_key=(.*)}))[1]
+    @sign_up_group ||= Group.find(group_key)
+  end
+
   def redirect_if_robot
     if params[:user][:honeypot].present?
       flash[:warning] = t(:honeypot_warning)

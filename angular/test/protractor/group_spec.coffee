@@ -12,6 +12,26 @@ describe 'Group Page', ->
         page.expectElement('link[rel=prev]')
         page.expectElement('link[rel=next]')
 
+      it 'should allow you to join an open group', ->
+        page.loadPath 'view_open_group_as_visitor'
+        page.click '.join-group-button__join-group'
+        browser.driver.findElement(By.id('user_name')).sendKeys('Name')
+        browser.driver.findElement(By.id('user_email')).sendKeys('test@example.com')
+        browser.driver.findElement(By.id('user_password')).sendKeys('complex_password')
+        browser.driver.findElement(By.id('user_password_confirmation')).sendKeys('complex_password')
+        browser.driver.findElement(By.id('create-account')).click()
+        page.click '.group-welcome-modal__close-button'
+        page.expectElement '.lmo-navbar__item--user'
+        page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
+
+      it 'should allow you to request to join a closed group', ->
+        page.loadPath 'view_closed_group_as_visitor'
+        page.click '.join-group-button__ask-to-join-group'
+        page.fillIn '#membership-request-name', 'Chevy Chase'
+        page.fillIn '#membership-request-email', 'chevychase@example.com'
+        page.click '.membership-request-form__submit-btn'
+        page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
+
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectNoElement('.thread-preview__mark-as-read')

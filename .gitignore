@@ -25,6 +25,7 @@ public/client
 public/system
 public/uploads
 
+disabled_plugins/
 plugins/*/
 plugins/Gemfile
 !plugins/*.rb
