@@ -317,17 +317,17 @@ describe API::DiscussionsController do
 
     context 'success' do
       it 'moves a discussion' do
-        another_group.users << user
-        patch :move, id: discussion.id, group_id: another_group.id, format: :json
+        destination_group = create :group
+        destination_group.users << user
+        source_group = discussion.group
+        patch :move, id: discussion.id, group_id: destination_group.id, format: :json
 
         json = JSON.parse(response.body)
-        discussion_ids = json['discussions'].map { |d| d['id'] }
-        discussion_group_ids = json['discussions'].map { |d| d['group_id'] }
-        group_ids = json['groups'].map { |g| g['id'] }
 
-        expect(discussion_ids).to include discussion.id
-        expect(group_ids).to include another_group.id
-        expect(discussion_group_ids).to include another_group.id
+        # Discussion belongs to new group
+        # The eventable of the event is the old group
+        expect(discussion.reload.group).to eq destination_group
+        expect(json['groups'].first['id']).to eq source_group.id
       end
     end
   end

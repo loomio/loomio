@@ -2,7 +2,6 @@ namespace :travis do
   task :prepare do
     puts "Creating test assets for v#{Loomio::Version.current}..."
     system("cd angular && gulp compile")
-    system("cp -r public/client/development public/client/#{Loomio::Version.current}")
     raise "Asset creation failed!" unless $?.exitstatus == 0
   end
 

@@ -7,7 +7,7 @@ describe UserMailer do
     end
 
     it 'renders the sender email' do
-      expect(@mail.from).to eq ['notifications@loomio.org']
+      expect(@mail.from).to eq ['notifications@loomio.example.org']
     end
   end
 
