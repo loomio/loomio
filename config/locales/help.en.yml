@@ -1,5 +1,6 @@
 en:
   new_help:
+    notice_html: This is the help manual for the old, 'beta' version of Loomio.<br />You can <a href="https://www.loomio.org/angular"><strong>switch to the new version</strong> here</a>, and <a href="http://help.loomio.org/">get up-to-date help here</a>.
     title: What can we help you with?
     how_loomio_works:
       title: How Loomio works
