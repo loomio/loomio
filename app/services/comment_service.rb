@@ -42,7 +42,7 @@ class CommentService
     comment.body = params[:body]
 
     return false unless comment.valid?
-    actor.ability.authorize! :create, comment
+    actor.ability.authorize! :update, comment
     comment.save!
 
     EventBus.broadcast('comment_update', comment, new_mentions)
