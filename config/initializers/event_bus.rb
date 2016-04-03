@@ -62,6 +62,10 @@ EventBus.configure do |config|
     MessageChannelService.publish(EventSerializer.new(event), to: event.eventable.group)
   end
 
+  config.listen('discussion_moved_event') do |event|
+    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable)
+  end
+
   # update discussion reader after discussion creation / edition
   config.listen('discussion_create',
                 'discussion_update',

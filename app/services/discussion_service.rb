@@ -54,6 +54,7 @@ class DiscussionService
   end
 
   def self.move(discussion:, params:, actor:)
+    source = discussion.group
     destination = ModelLocator.new(:group, params).locate
     actor.ability.authorize! :move_discussions_to, destination
     actor.ability.authorize! :move, discussion
@@ -61,6 +62,7 @@ class DiscussionService
     discussion.update group: destination, private: moved_discussion_privacy_for(discussion, destination)
 
     EventBus.broadcast('discussion_move', discussion, params, actor)
+    Events::DiscussionMoved.publish!(discussion, actor, source)
   end
 
   def self.update_reader(discussion:, params:, actor:)
