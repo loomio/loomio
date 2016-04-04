@@ -24,3 +24,7 @@ module.exports = new class StaticPageHelper
 
   fillIn: (selector, value) ->
     browser.driver.findElement(By.css(selector)).sendKeys(value)
+
+  expectText: (selector, value) ->
+    el = browser.driver.findElement(By.css(selector))
+    expect(el.getText()).toContain(value)

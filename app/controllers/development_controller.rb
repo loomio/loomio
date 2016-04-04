@@ -22,6 +22,11 @@ class DevelopmentController < ApplicationController
     redirect_to(test_group)
   end
 
+  def setup_login
+    patrick
+    redirect_to new_user_session_url
+  end
+
   def setup_dashboard
     sign_in patrick
     starred_proposal_discussion; proposal_discussion; starred_discussion
