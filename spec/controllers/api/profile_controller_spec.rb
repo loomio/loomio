@@ -62,13 +62,26 @@ describe API::ProfileController do
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user_params[:email]
       end
+    end
+  end
 
+  describe 'set_volume' do
+
+    context 'success' do
       it "sets a default volume for all of a user's new memberships" do
-        post :update_profile, user: { default_membership_volume: "quiet" }, format: :json
+        post :set_volume, volume: "quiet", format: :json
         group.add_member! user
         membership = group.membership_for(user)
         expect(user.default_membership_volume).to eq "quiet"
         expect(membership.volume).to eq "quiet"
+      end
+
+      it "sets the volume for all of a user's current memberships" do
+        group.add_member! user
+        membership = group.membership_for(user)
+        post :set_volume, volume: "quiet", apply_to_all: true, format: :json
+        expect(user.default_membership_volume).to eq "quiet"
+        expect(membership.reload.volume).to eq "quiet"
       end
     end
 

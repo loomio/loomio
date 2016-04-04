@@ -98,56 +98,73 @@ describe 'MotionService' do
   end
 
   describe 'closing the motion' do
-    before do
-      Events::MotionClosed.stub(:publish!)
-      Events::MotionClosedByUser.stub(:publish!)
-      motion.stub(:closed_at=)
-      motion.stub(:save!)
-      motion.stub(:store_users_that_didnt_vote)
-    end
 
     describe '.close' do
-      after { MotionService.close(motion) }
 
       it 'stores users that did not vote' do
-        motion.should_receive(:store_users_that_didnt_vote)
+        MotionService.close(motion)
+        expect(motion.did_not_votes_count).to eq 4
       end
 
       it 'sets closed_at' do
-        motion.should_receive(:closed_at=)
+        expect(motion).to receive(:closed_at=)
+        MotionService.close(motion)
       end
 
       it 'saves the motion' do
-        motion.should_receive(:save!)
+        expect(motion).to receive(:save!)
+        MotionService.close(motion)
       end
 
       it 'fires motion closed event' do
-        Events::MotionClosed.should_receive(:publish!).with(motion)
+        expect(Events::MotionClosed).to receive(:publish!).with(motion)
+        MotionService.close(motion)
+      end
+
+      it "changes the discussion's salient activity count" do
+        expect { MotionService.close(motion) }.to change { discussion.reload.salient_items_count }.by(1)
+      end
+
+      it 'does not mark the discussion as unread for author' do
+        expect { MotionService.close(motion) }.to change { reader.reload.read_salient_items_count }.by(1)
       end
     end
 
     describe '.close_by_user' do
+
       before { motion.save }
-      after { MotionService.close_by_user(motion, user) }
 
       it 'stores users that did not vote' do
         motion.should_receive(:store_users_that_didnt_vote)
+        MotionService.close_by_user(motion, user)
       end
 
       it 'sets closed_at' do
         motion.should_receive(:closed_at=)
+        MotionService.close_by_user(motion, user)
       end
 
       it 'saves the motion' do
         motion.should_receive(:save!)
+        MotionService.close_by_user(motion, user)
       end
 
       it 'authorizes the user' do
         user.ability.should_receive(:authorize!).with(:close, motion)
+        MotionService.close_by_user(motion, user)
       end
 
       it 'fires motion closed by user event' do
         Events::MotionClosedByUser.should_receive(:publish!).with(motion, user)
+        MotionService.close_by_user(motion, user)
+      end
+
+      it "changes the discussion's salient activity count" do
+        expect { MotionService.close_by_user(motion, user) }.to change { discussion.reload.salient_items_count }.by(1)
+      end
+
+      it 'does not mark the discussion as unread for author' do
+        expect { MotionService.close_by_user(motion, user) }.to change { reader.reload.read_salient_items_count }.by(1)
       end
     end
   end

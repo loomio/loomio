@@ -43,7 +43,9 @@ EventBus.configure do |config|
   # update discussion reader after thread item creation
   config.listen('new_comment_event',
                 'new_motion_event',
-                'new_vote_event') do |event|
+                'new_vote_event',
+                'motion_closed_event',
+                'motion_closed_by_user_event') do |event|
     DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at)
   end
 
