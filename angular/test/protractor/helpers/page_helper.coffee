@@ -10,6 +10,8 @@ given =  (args) ->
 module.exports = new class PageHelper
   loadPath: (path) ->
     browser.get('development/'+path)
+    browser.driver.manage().window().setSize(1280, 1024)
+    browser.executeScript("document.querySelector('.lmo-navbar').style.position = 'absolute'")
 
   expectElement: (selector)->
     expect(element(By.css(selector)).isPresent()).toBe(true)
@@ -26,6 +28,9 @@ module.exports = new class PageHelper
 
   clickFirst: (selector) ->
     element.all(By.css(selector)).first().click()
+
+  findFirst: (selector) ->
+    element.all(By.css(selector)).first()
 
   fillIn: (selector, value) ->
     element(By.css(selector)).clear().sendKeys(value)

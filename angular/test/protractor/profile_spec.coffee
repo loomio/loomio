@@ -8,7 +8,6 @@ describe 'Profile', ->
     threadHelper.load()
 
   describe 'updating a profile name', ->
-
     it 'successfully updates a profile', ->
       profileHelper.visitProfilePage()
       profileHelper.updateProfile('Ferris Bueller', 'ferrisbueller', 'ferris@loomio.org')
@@ -18,7 +17,6 @@ describe 'Profile', ->
       expect(profileHelper.emailInput().getAttribute('value')).toContain('ferris@loomio.org')
 
   describe 'visiting a user profile', ->
-
     it 'displays a user and their non-secret groups', ->
       profileHelper.visitUserPage('jennifergrey')
       expect(profileHelper.nameText()).toContain('Jennifer Grey')

@@ -27,6 +27,8 @@ es:
     more_help: 'Mas ayuda '
     models:
       proposal: Propuesta
+    copy: Copiar texto
+    copied: Copiado al portapapeles
     action:
       close: Cerrar
       save: Guardar
@@ -34,6 +36,7 @@ es:
       update_settings: Actualizar preferencias
       reply: Responder
       edit: Editar
+      remove: Eliminar
       like: Me gusta
       back: Atrás
       unlike: Ya no me gusta
@@ -46,6 +49,7 @@ es:
       loading: Cargando
       translate: Traducir
       translated: Traducido mediante Bing Translator
+      upload: 'Cargar '
       uploading: Cargando
     formatting_help:
       label: 'Ayuda de formato '
@@ -189,7 +193,7 @@ es:
       discussions: Hilos
       proposals: Propuestas
       comments: 'Comentarios '
-    sign_in: Inicia sesión
+    sign_in: Iniciar sesión
   start_menu:
     title: 'Botones de acción '
     start_group: Crear un grupo nuevo
@@ -217,6 +221,7 @@ es:
     motion_outcome_created: '<strong>{{name}}</strong> publicó un resultado para la propuesta <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> ha actualizado el resultado de la propuesta <strong>{{proposal}}</strong>'
     invitation_accepted: '<strong>{{name}}</strong> aceptó tu invitación a unirse a <strong>{{group}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> te ha añadido como coordinador de <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: 'Danos tu opinión '
   vote_form:
@@ -533,9 +538,9 @@ es:
   group_help_card:
     title: Ayuda
     ten_tips_article_title: 10 consejos para tomar decisiones con Loomio
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
+    ten_tips_article_link: 'http://blog.loomio.org/2015/08/17/10-consejos-para-tomar-decisiones-con-loomio/'
     nine_ways_to_use_proposals: 9 formas de utilizar propuestas en Loomio para convertir una charla en acción
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
+    nine_ways_to_use_proposals_link: 'http://blog.loomio.org/2015/08/17/9-formas-de-utilizar-propuestas-en-loomio-para-convertir-conversaciones-en-accion/'
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
@@ -813,6 +818,8 @@ es:
     private: 'Actualizar la privacidad del hilo a '
     public_to_private: privado
     private_to_public: público
+    private_title: 'actualizó el título y la privacidad del hilo '
+    description_private: 'actualizó el contexto y la privacidad del hilo '
     description_private_title: 'se actualizó el título, el contexto y la privacidad del hilo '
   contact_message_form:
     contact_us: Contáctanos
@@ -999,6 +1006,8 @@ es:
     enable:
       invite: Prueba el nuevo Loomio
       title: 'Prueba el nuevo Loomio '
+      intro: 'Hemos reconstruido Loomio y necesitamos tu ayuda para asegurarnos de que es genial!'
+      body_html: "<p></p>\n<h3>;¿Cuál es la diferencia?</h3> \n\n<p> La nueva interfaz es como la antigua pero más nueva:\n<ul>\n<li> Todo en la pagina se actualiza en vivo, como va sucediendo </li>\n<li> Está diseñada para todos tus dispositivos, desde tu smartphone al ordenador de escritorio </li>\n<li> Es accesible para gente ciega, y esta traducido <a href=\"https://www.loomio.org/translation\">a muchos idiomas</a>\n</ul>\n</p>\n\n<p> Usa la misma base de datos que la interfaz antigua, esto significa que tiene todos tus grupos existentes y discusiones.</p>\n<p>Hay un enlace para dar \"Comentarios para Loomio\" en la parte inferior izquierda del nuevo app.También veras un enlace para \"Volver al Loomio antiguo\" que estara disponible por un tiempo más.</p>\n<p>Esperamos recibir tus comentarios, muchas gracias por tu tiempo y apoyo.</p> \n"
       button_text: Habilita el nuevo Loomio
     disable:
       title: Gracias por probar el nuevo Loomio
@@ -1012,3 +1021,43 @@ es:
   emoji_picker:
     search: Busca un emoji / emoticono...
     no_emojis_found: "No se han encontrado emojis /emoticonos para  '{{term}}'!"
+  authorized_apps_page:
+    title: 'Apps autorizados '
+    no_applications: No has autorizado ningún app de terceros todavía.
+    notice: "Le has dado permiso a los siguientes apps para usar tu cuenta. Haz clic en 'Remover' para des-habilitarlos. "
+    revoke: Remover
+  registered_apps_page:
+    title: 'Aplicaciones registradas '
+    no_applications: No tienes ninguna aplicación OAuth todavía. Haz clic debajo para crear una.
+    name: Nombre
+    redirect_uris: Redireccionar URLs
+    create_new_application: 'Nueva aplicación '
+  registered_app_page:
+    uid: ID de la aplicación
+    secret: Secreto de la aplicación
+  registered_app_form:
+    new_application_title: 'Nueva aplicación '
+    edit_application_title: Actualizar aplicación
+    name_label: 'Nombre '
+    name_placeholder: ¿Cómo se llama tu aplicación?
+    redirect_uri_label: Redireccionar Uris
+    redirect_uri_placeholder: 'El callback uri de tu aplicación, Ej: https://myapplication.com/loomio/callback'
+    redirect_uri_note: "(una línea por URI, usa 'urn:ietf:wg:oauth:2.0:oob' para pruebas locales)"
+    new_application_submit: Crear aplicación
+    edit_application_submit: 'Actualizar aplicación '
+    messages:
+      logo_changed: Logo actualizado
+      created: "'{{name}}' creado"
+      updated: "'{{name}}' actualizado "
+  remove_app_form:
+    title: 'Desactivar {{name}}'
+    question: "¿Estás seguro de que quieres desactivar la aplicación '{{name}}'? Esta acción no puede ser deshecha. "
+    submit: Desactivar
+    messages:
+      success: "'{{name}}' ha sido desactivada satisfactoriamente"
+  revoke_app_form:
+    title: 'Acceso removido para {{name}}'
+    question: "¿Estás seguro que quieres rechazar que '{{name}}' use tu cuenta?"
+    submit: 'Remover acceso '
+    messages:
+      success: "'{{name}}' ya no puede usar tu cuenta."

@@ -9,8 +9,8 @@
     = stylesheet_link_tag "application"
     = theme_stylesheet_link_tag
     = csrf_meta_tags
-    = render 'social_metadata', description: @meta_description, title: @meta_title
-    = render 'google_analytics'
+    = render 'application/social_metadata', description: @meta_description, title: @meta_title
+    = render 'application/google_analytics'
 
   %body{class: "pages #{controller_name} #{action_name}"}
     .navbar.navbar-top{role: 'navigation'}
@@ -19,7 +19,7 @@
           = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Loomio home page'
 
     .container.home-flash
-      = render 'flash_messages', :flash => flash
+      = render 'application/flash_messages', :flash => flash
 
     .row.hero
       %main.content-container
@@ -29,8 +29,7 @@
     .row
       .container{role: 'contentinfo'}
         .col-xs-12
-          = render 'footer'
+          = render 'application/footer'
 
   = javascript_include_tag "application"
   = theme_javascript_include_tag
-  = render 'piwik_tracker'

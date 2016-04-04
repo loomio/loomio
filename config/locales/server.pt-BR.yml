@@ -265,8 +265,63 @@ pt-BR:
       submit: Enviar mensagem
     messages:
       email_html: "Preencha esse formulário ou envie um e-mail para <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Você também pode juntar-se a nós através do<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, do <a href='%{google}'
-        target='_blank'>google+</a> ou do <a href='%{twitter}'
-        target='_blank'>twitter</a>!
+      social_html: "Você também pode se juntar a nós no<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>, e <a href='%{twitter}' target='_blank'>twitter</a>!"
+  markdown:
+    intro:
+      title: |
+        # O que é remarcação?
+      body: |
+        Markdown é uma maneira de escrever texto simples (esquerda)
+        de modo que possa ser convertido para texto rico (direita).
+        Esta página está escrita com remarcação para mostrar como funciona.
+    headers:
+      body: |
+        ## Cabeçalhos
+
+        Utilize hashes para transformar texto em um cabeçalho.
+
+        # Esse é um h1
+        ## Esse é um h2
+        #### Esse é um h4
+    paragraphs:
+      title: |
+        ## Parágrafos
+      body: |
+        Você precisa
+        colocar uma
+        linha em branco
+        entre as linhas.
+
+        Ou vai acabar com um grande parágrafo!
+    emphasis:
+      title: |
+        ## Itálico
+      body: >
+        Você pode colocar em itálico uma palavra com _underscore_ ou
+        *asterístico*.
+
+
+
+        __Negrito__ duplicando o **asterístico**.
+    lists:
+      title: |
+        ## Listas
+      body: |
+        Veja como fazer uma lista:
+
+        * deixe uma linha em branco antes da sua lista
+        * use asterístico (*)
+        * deixe um espaço depois do asterisco
+    links:
+      title: |
+        ## Links e Imagens
+      body: |
+        Repita em voz alta:
+
+        Colchetes para nome e parênteses para URL.
+
+        [Loomio Homepage](https://www.loomio.org/)
+
+        O mesmo com imagens, mas precedidas com um ponto de exclamação.
+
+        ![loomio logo](https://i.imgur.com/Fvtworb.png)

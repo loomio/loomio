@@ -31,6 +31,8 @@ class Membership < ActiveRecord::Base
   delegate :admins, to: :group, prefix: :group
   delegate :name, to: :inviter, prefix: :inviter, allow_nil: true
 
+  before_create :set_volume
+
   after_destroy :leave_subgroups_of_hidden_parents
 
   def suspend!
@@ -58,12 +60,24 @@ class Membership < ActiveRecord::Base
     return user_name ? user_name : user_email
   end
 
+  def discussion_readers
+    DiscussionReader.
+      joins(:discussion).
+      where('discussions.group_id = ?', group_id).
+      where('discussion_readers.user_id = ?', user_id)
+  end
+
   private
+
   def leave_subgroups_of_hidden_parents
     return if group.nil? #necessary if group is missing (as in case of production data)
     return unless group.is_hidden_from_public?
     group.subgroups.each do |subgroup|
       subgroup.memberships.where(user_id: user.id).destroy_all
     end
+  end
+
+  def set_volume
+    self.volume = user.default_membership_volume
   end
 end

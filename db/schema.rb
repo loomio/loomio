@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301094551) do
+ActiveRecord::Schema.define(version: 20160317031412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(version: 20160301094551) do
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "ahoy_messages", force: :cascade do |t|
+    t.string   "token"
+    t.text     "to"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "mailer"
+    t.text     "subject"
+    t.text     "content"
+    t.datetime "sent_at"
+    t.datetime "opened_at"
+    t.datetime "clicked_at"
+  end
+
+  add_index "ahoy_messages", ["token"], name: "index_ahoy_messages_on_token", using: :btree
+  add_index "ahoy_messages", ["user_id", "user_type"], name: "index_ahoy_messages_on_user_id_and_user_type", using: :btree
 
   create_table "announcement_dismissals", force: :cascade do |t|
     t.integer  "announcement_id"
@@ -455,7 +471,7 @@ ActiveRecord::Schema.define(version: 20160301094551) do
     t.integer  "motions_count",                      default: 0,              null: false
     t.integer  "admin_memberships_count",            default: 0,              null: false
     t.integer  "invitations_count",                  default: 0,              null: false
-    t.integer  "public_discussions_count",                       default: 0,              null: false
+    t.integer  "public_discussions_count",           default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -662,11 +678,11 @@ ActiveRecord::Schema.define(version: 20160301094551) do
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.string   "uid",                       null: false
-    t.string   "secret",                    null: false
-    t.text     "redirect_uri",              null: false
-    t.string   "scopes",       default: "", null: false
+    t.string   "name",                           null: false
+    t.string   "uid",                            null: false
+    t.string   "secret",                         null: false
+    t.text     "redirect_uri",                   null: false
+    t.string   "scopes",            default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
@@ -791,6 +807,8 @@ ActiveRecord::Schema.define(version: 20160301094551) do
     t.boolean  "email_when_mentioned",             default: true,       null: false
     t.boolean  "angular_ui_enabled",               default: true,       null: false
     t.boolean  "email_on_participation",           default: true,       null: false
+    t.integer  "default_membership_volume",        default: 3,          null: false
+    t.boolean  "has_muted",                        default: false,      null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree

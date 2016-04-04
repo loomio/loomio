@@ -2,6 +2,7 @@ require 'rails_helper'
 describe API::ProfileController do
 
   let(:user) { create :user }
+  let(:group) { create :group }
   let(:another_user) { create :user }
   let(:user_params) { { name: "new name", email: "new@email.com" } }
 
@@ -60,6 +61,14 @@ describe API::ProfileController do
         json = JSON.parse(response.body)
         user_emails = json['users'].map { |v| v['email'] }
         expect(user_emails).to include user_params[:email]
+      end
+
+      it "sets a default volume for all of a user's new memberships" do
+        post :update_profile, user: { default_membership_volume: "quiet" }, format: :json
+        group.add_member! user
+        membership = group.membership_for(user)
+        expect(user.default_membership_volume).to eq "quiet"
+        expect(membership.volume).to eq "quiet"
       end
     end
 

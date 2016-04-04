@@ -9,7 +9,8 @@ class Discussion < ActiveRecord::Base
                          motion_edited
                          motion_outcome_created
                          motion_outcome_updated
-                         discussion_edited]
+                         discussion_edited
+                         discussion_moved]
   paginates_per PER_PAGE
 
   include ReadableUnguessableUrls

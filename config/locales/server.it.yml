@@ -191,8 +191,3 @@ it:
       submit: Invia messaggio
     messages:
       email_html: "Riempi questo modulo, o manda un'email a <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Ci puoi seguire su<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a>, and <a href='%{twitter}'
-        target='_blank'>twitter</a>!
