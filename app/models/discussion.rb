@@ -10,7 +10,6 @@ class Discussion < ActiveRecord::Base
                          motion_outcome_updated
                          discussion_edited
                          discussion_moved]
-  paginates_per PER_PAGE
 
   include ReadableUnguessableUrls
   include Translatable

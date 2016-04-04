@@ -30,6 +30,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  def sign_up(resource_name, resource)
+    super(resource_name, resource)
+    
+    if omniauth_authenticated_and_waiting?
+      load_omniauth_authentication_from_session
+      @omniauth_authentication.update(user: resource)
+    end
+  end
+
   def after_sign_up_path_for(user)
     if sign_up_group
       user.ability.authorize!(:join, sign_up_group)
