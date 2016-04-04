@@ -382,7 +382,6 @@ class DevelopmentController < ApplicationController
   def ensure_testing_environment
     raise "Do not call me." if Rails.env.production?
     tmp, Rails.env = Rails.env, 'test'
-    Plugins::Repository.install_plugins!
     yield
   ensure
     Rails.env = tmp
