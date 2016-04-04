@@ -33,21 +33,22 @@
   list-style: none;
   margin-top: 20px;
   padding-left: 0px;
+  max-width: 500px;
 }
 
 .email-settings-page__group {
-  display: flex;
+  @include displayFlex;
   margin-bottom: 20px;
 }
 
 .email-settings-page__group-details {
   margin: 0 0 0 5px;
-  width: 70%;
-  @include truncateText;
+  width: 100%;
 }
 
 .email-settings-page__edit {
   margin-left: 20px;
+  width: $boxMediumSize;
 }
 
 .email-settings-page__learn-more-link {
