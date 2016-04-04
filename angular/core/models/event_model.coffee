@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @eventTypeMap: {
       'user_added_to_group':            'group',
       'membership_request_approved':    'group',
+      'discussion_moved' :              'group',
       'membership_requested':           'membershipRequest',
       'new_discussion':                 'discussion',
       'discussion_edited':              'discussion',
@@ -36,9 +37,11 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @belongsTo 'version'
 
     group: ->
-      return @membership().group()        if @membership()
-      return @membershipRequest().group() if @membershipRequest()
-      return @discussion.group()          if @discussion()
+      switch @kind
+        when 'discussion_moved', 'membership_request_approved', 'user_added_to_group' then @recordStore.groups.find(@groupId)
+        when 'membership_requested' then @membershipRequest().group()
+        when 'invitation_accepted', 'new_coordinator' then @membership().group()
+        when 'new_discussion', 'discussion_edited' then @discussion().group()
 
     delete: ->
       @deleted = true

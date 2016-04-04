@@ -33,7 +33,7 @@ describe GroupMailer do
 
     context "requestor is an existing loomio user" do
       it 'renders the sender email' do
-        expect(@mail.from).to eq ['notifications@loomio.org']
+        expect(@mail.from).to eq ['notifications@loomio.example.org']
       end
 
       it 'assigns correct reply_to' do
@@ -85,7 +85,7 @@ describe GroupMailer do
 
     its(:subject) { should == "[Loomio: #{@group.full_name}] #{@subject}" }
     its(:to) { should == [@recipient.email] }
-    its(:from) { should == ['notifications@loomio.org'] }
+    its(:from) { should == ['notifications@loomio.example.org'] }
   end
 
 end

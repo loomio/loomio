@@ -19,8 +19,8 @@ class CommentService
   end
 
   def self.create(comment:, actor:)
-    comment.author = actor
     actor.ability.authorize! :create, comment
+    comment.author = actor
     comment.attachment_ids = [comment.attachment_ids, comment.new_attachment_ids].compact.flatten
     return false unless comment.valid?
 
@@ -42,7 +42,7 @@ class CommentService
     comment.body = params[:body]
 
     return false unless comment.valid?
-    actor.ability.authorize! :create, comment
+    actor.ability.authorize! :update, comment
     comment.save!
 
     EventBus.broadcast('comment_update', comment, new_mentions)

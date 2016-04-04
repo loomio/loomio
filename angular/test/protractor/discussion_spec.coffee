@@ -72,6 +72,7 @@ describe 'Discussion Page', ->
       page.click '.move-thread-form__submit'
       page.expectText '.group-theme__name--compact','Point Break'
       page.expectFlash 'Thread has been moved to Point Break'
+      page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
 
   describe 'delete thread', ->
     beforeEach ->

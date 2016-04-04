@@ -22,7 +22,7 @@ class API::DiscussionsController < API::RestfulController
   end
 
   def move
-    service.move discussion: resource, params: params, actor: current_user
+    @event = service.move discussion: resource, params: params, actor: current_user
     respond_with_resource
   end
 

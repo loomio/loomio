@@ -8,6 +8,7 @@ class EventSerializer < ActiveModel::Serializer
   has_one :comment, serializer: CommentSerializer
   has_one :discussion, serializer: DiscussionSerializer
   has_one :proposal, serializer: MotionSerializer, root: 'proposals'
+  has_one :group, serializer: GroupSerializer, root: 'groups'
   has_one :vote, serializer: VoteSerializer
   has_one :version, serializer: VersionSerializer
 
@@ -16,7 +17,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def group
-    object.eventable.try(:group) || object.group
+    object.eventable.try(:group) || object.eventable
   end
 
   def membership
@@ -85,7 +86,8 @@ class EventSerializer < ActiveModel::Serializer
 
   def group_kinds
     ['new_discussion',
-     'user_added_to_group'] +
+     'user_added_to_group',
+     'discussion_moved'] +
      membership_request_kinds
   end
 

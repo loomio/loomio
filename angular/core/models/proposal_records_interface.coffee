@@ -8,9 +8,8 @@ angular.module('loomioApp').factory 'ProposalRecordsInterface', (BaseRecordsInte
           discussion_key: discussion.key
         cacheKey: "proposalsFor#{discussion.key}"
 
-    fetchClosedByGroup: (groupKey) ->
+    fetchClosedByGroup: (groupKey, options = {}) ->
+      options['group_key'] = groupKey
       @fetch
         path: 'closed'
-        params:
-          group_key: groupKey
-
+        params: options
