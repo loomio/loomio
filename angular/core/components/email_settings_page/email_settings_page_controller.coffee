@@ -5,6 +5,9 @@ angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, 
   @groupVolume = (group) ->
     group.membershipFor(CurrentUser).volume
 
+  @defaultSettingsDescription = ->
+    "email_settings_page.default_settings.#{CurrentUser.defaultMembershipVolume}_description"
+
   @changeDefaultMembershipVolume = ->
     ModalService.open ChangeVolumeForm, model: => CurrentUser
 
