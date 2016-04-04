@@ -4,7 +4,6 @@ Feature: Start new group
   I want to create a new group
 
 Background:
-  Given I want to show the loomio.org marketing
   And There are default group covers available
 
 Scenario: Guest submits invalid start group form

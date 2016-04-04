@@ -15,6 +15,40 @@
   margin-left: 25px;
 }
 
-.email_settings_page__update-button{
+.email-settings-page__update-button {
   @include lmoBtnPrimary;
+}
+
+.email-settings-page__specific-group-settings {
+  margin-top: 40px;
+}
+
+.email-settings-page__change-default-link, .email-settings-page__edit-membership-volume-link {
+  @include cardMinorAction;
+  margin-top: 0px;
+  cursor: pointer;
+}
+
+.email-settings-page__groups {
+  list-style: none;
+  margin-top: 20px;
+  padding-left: 0px;
+}
+
+.email-settings-page__group {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.email-settings-page__group-name, .email-settings-page__membership-volume {
+  margin: 0 0 0 5px;
+}
+
+.email-settings-page__edit {
+  position: absolute;
+  right: 45%;
+}
+
+.email-settings-page__learn-more-link {
+  @include cardMinorAction;
 }

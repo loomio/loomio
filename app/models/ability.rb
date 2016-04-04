@@ -215,7 +215,7 @@ class Ability
     end
 
     can [:create], Comment do |comment|
-      user_is_member_of?(comment.group.id) && user_is_author_of?(comment)
+      user_is_member_of?(comment.group.id)
     end
 
     can [:update], Comment do |comment|

@@ -1,4 +1,9 @@
-require_relative './run_commands'
+def run_commands(commands)
+  commands.each do |command|
+    puts "\n-> #{command}"
+    return false unless system(command)
+  end
+end
 
 def bump_version_and_push_origin_master
   puts "updating loomio-production version and committing to github..."
@@ -27,9 +32,9 @@ def build_and_push_branch(remote, branch)
   build_branch = "deploy-#{remote}-#{branch}-#{Time.now.to_i}"
   run_commands ["git checkout #{branch}",                                                         # checkout branch
                 "git checkout -b #{build_branch}",                                                # cut a new deploy branch off of that branch
-                "rake plugins:acquire plugins:resolve_dependencies",                              # install plugins specified in plugins/plugins.yml
+                "rake 'plugins:acquire[loomio_org]' plugins:resolve_dependencies",                # install plugins specified in plugins/plugins.yml
                 "rm -rf plugins/**/.git",                                                         # allow cloned plugins to be added to this repo
-                "git add plugins/**/**/*.rb plugins/**/*.rb -f",                                  # add plugins folder to commit
+                "find plugins -name '*.*' | xargs git add -f",                                    # add plugins folder to commit
                 "cd angular && npm install && gulp compile && cd ../",                            # build the app via gulp
                 "cp -r public/client/development public/client/#{Loomio::Version.current}",       # version assets
                 "git add public/client/#{Loomio::Version.current} public/client/fonts -f",        # add assets to commit
@@ -44,6 +49,12 @@ def heroku_migrate_and_restart(remote)
   run_commands ["ruby /usr/local/heroku/bin/heroku run rake db:migrate -a #{remote}",
                 "ruby /usr/local/heroku/bin/heroku restart -a #{remote}",
                 "ruby /usr/local/heroku/bin/heroku run rake loomio:notify_clients_of_update -a #{remote}"]
+end
+
+desc "Copy development client to a versioned client for production"
+task :version_client_assets do
+  puts "Copying client files into public/client/#{Loomio::Version.current}"
+  run_commands ["cp -r public/client/development public/client/#{Loomio::Version.current}"]
 end
 
 desc "Deploy to some git-remote and branch"

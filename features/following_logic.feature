@@ -5,7 +5,7 @@ Background:
 
   Scenario: New discussion in group I belong to
     When someone else creates a discussion in my group
-    Then I should not be following the discussion
+    Then I should be following the discussion
 
   Scenario: New discussion in followed group
     Given I am autofollowing new discussions in my group

@@ -12,31 +12,6 @@ describe API::CommentsController do
     group.members << user
   end
 
-  describe "auth by write only api key" do
-    describe 'create' do
-      let(:comment_params) { {discussion_id: discussion.id, body: 'content'} }
-
-      context 'success' do
-        it "creates a comment" do
-          request.headers['Loomio-User-Id'] = user.id
-          request.headers['Loomio-Email-API-Key'] = user.email_api_key
-          post :create, comment: comment_params
-          expect(response).to be_success
-          expect(Comment.where(body: comment_params[:body],
-                               user_id: user.id)).to exist
-        end
-      end
-
-      context 'failures' do
-        it "responds with an error when the user is unauthorized" do
-          sign_in another_user
-          post :create, comment: comment_params
-          expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
-        end
-      end
-    end
-  end
-
   describe "signed in" do
     before do
       sign_in user

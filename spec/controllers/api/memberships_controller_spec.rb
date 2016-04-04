@@ -27,6 +27,57 @@ describe API::MembershipsController do
     sign_in user
   end
 
+  describe 'create' do
+    it 'sets the membership volume' do
+      new_group = FactoryGirl.create(:group)
+      user.update_attribute(:default_membership_volume, 'quiet')
+      membership = Membership.create!(user: user, group: new_group)
+      expect(membership.volume).to eq 'quiet'
+    end
+  end
+
+  describe 'set_volume' do
+    before do
+      @discussion = FactoryGirl.create(:discussion, group: group)
+      @another_discussion = FactoryGirl.create(:discussion, group: group)
+      @membership = group.membership_for(user)
+      @membership.set_volume! 'quiet'
+      @second_membership = another_group.membership_for(user)
+      @second_membership.set_volume! 'quiet'
+      @reader = DiscussionReader.for(discussion: @discussion, user: user)
+      @reader.save!
+      @reader.set_volume! 'normal'
+      @second_reader = DiscussionReader.for(discussion: @another_discussion, user: user)
+      @second_reader.save!
+      @second_reader.set_volume! 'normal'
+    end
+    it 'updates the discussion readers' do
+      put :set_volume, id: @membership.id, volume: 'loud'
+      @reader.reload
+      @second_reader.reload
+      expect(@reader.volume).to eq 'loud'
+      expect(@second_reader.volume).to eq 'loud'
+    end
+    context 'when apply to all is true' do
+      it 'updates the volume for all memberships' do
+        put :set_volume, id: @membership.id, volume: 'loud', apply_to_all: true
+        @membership.reload
+        @second_membership.reload
+        expect(@membership.volume).to eq 'loud'
+        expect(@second_membership.volume).to eq 'loud'
+      end
+    end
+    context 'when apply to all is false' do
+      it 'updates the volume for a single membership' do
+        put :set_volume, id: @membership.id, volume: 'loud', apply_to_all: false
+        @membership.reload
+        @second_membership.reload
+        expect(@membership.volume).to eq 'loud'
+        expect(@second_membership.volume).not_to eq 'loud'
+      end
+    end
+  end
+
   describe 'add_to_subgroup' do
     context 'permitted' do
       let(:parent_member) { FactoryGirl.create(:user) }

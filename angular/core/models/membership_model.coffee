@@ -20,9 +20,16 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
     groupName: ->
       @group().name
 
-    changeVolume: (volume) ->
-      @volume = volume
-      @save()
+    saveVolume: (volume, applyToAll = false) ->
+      @remote.patchMember(@keyOrId(), 'set_volume', { volume: volume, apply_to_all: applyToAll }).then =>
+        if applyToAll
+          _.each @user().allThreads(), (thread) ->
+            thread.update(discussionReaderVolume: null)
+          _.each @user().memberships(), (membership) ->
+            membership.update(volume: volume)
+        else
+          _.each @group().discussions(), (discussion) ->
+            discussion.update(discussionReaderVolume: null)
 
     isMuted: ->
       @volume == 'mute'

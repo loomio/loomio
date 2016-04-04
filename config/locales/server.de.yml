@@ -247,8 +247,3 @@ de:
       submit: Nachricht abschicken
     messages:
       email_html: "Fülle dieses Formular aus oder schicke eine eMail an <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Du kannst Dich uns auch auf<br/><a href='%{facebook}'
-        target='_blank'>facebook</a>, <a href='%{google}'
-        target='_blank'>google+</a>, und <a href='%{twitter}'
-        target='_blank'>twitter</a> anschließen!

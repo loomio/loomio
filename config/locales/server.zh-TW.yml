@@ -222,7 +222,3 @@ zh-TW:
       submit: 寄送訊息
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        您也可以在 <br/><a href='%{facebook}' target='_blank'>facebook</a>、<a
-        href='%{google}' target='_blank'>google+</a>、以及 <a href='%{twitter}'
-        target='_blank'>twitter</a> 上加入我們！

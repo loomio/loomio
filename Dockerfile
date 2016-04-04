@@ -9,30 +9,12 @@ RUN apt-get install -y libpq-dev
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
-# for capybara-webkit
-# RUN apt-get install -y libqt4-webkit libqt4-dev xvfb
-
 # for node
 # RUN apt-get install -y python python-dev python-pip python-virtualenv
 
-# install nodekjs 0.5 via apt
+# install node
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 RUN apt-get install -y nodejs
-
-# build and install node from source
-# RUN \
-#  cd /tmp && \
-#  wget http://nodejs.org/dist/node-latest.tar.gz && \
-#  tar xvzf node-latest.tar.gz && \
-#  rm -f node-latest.tar.gz && \
-#  cd node-v* && \
-#  ./configure && \
-#  CXX="g++ -Wno-unused-local-typedefs" make && \
-#  CXX="g++ -Wno-unused-local-typedefs" make install && \
-#  cd /tmp && \
-#  rm -rf /tmp/node-v* && \
-#  npm install -g npm && \
-#  echo '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 
 # RUN mkdir /loomio
 WORKDIR /loomio
@@ -41,8 +23,23 @@ COPY config/database.docker.yml /loomio/config/database.yml
 
 WORKDIR /loomio/angular
 RUN npm install
+RUN npm rebuild node-sass
+RUN node node_modules/gulp/bin/gulp.js compile
 
 WORKDIR /loomio
 RUN bundle install
 
-# run angular bookstrap stuff
+# use development env to build assets with fake sqlite database (heroku blocks you from using sqlite in production)
+ENV RAILS_ENV development
+
+# fake config for building assets (yawn)
+ENV DATABASE_URL sqlite3:assets_throwaway.db
+ENV DEVISE_SECRET boopboop
+ENV SECRET_COOKIE_TOKEN beepbeep
+
+# build assets
+RUN bundle exec rake assets:precompile
+RUN bundle exec rake deploy:version_client_assets
+
+# source the config file and run puma when the container starts
+CMD bundle exec puma -C config/puma.rb

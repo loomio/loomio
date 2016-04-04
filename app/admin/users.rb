@@ -63,7 +63,7 @@ ActiveAdmin.register User do
         if can? :deactivate, user
           button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user?'}
         else
-          div "This user cannot be deactivated because they are currently the only coordinator of the following groups:"
+          div "This user can't be deactivated because they are the only coordinator of the following groups:"
           table_for user.adminable_groups.published.select{|g| g.admins.count == 1}.each do |group|
             column :id
             column :name do |group|
@@ -86,10 +86,16 @@ ActiveAdmin.register User do
       table_for user.memberships.each do |m|
         column :group_id
         column :group_name do |g|
-          Group.find(g.group_id).full_name
+          group = g.group
+          link_to group.full_name, [:admin, group]
         end
       end
     end
+
+    panel("Reset Password") do
+      button_to 'Get link to reset password', reset_password_admin_user_path(user), method: :post
+    end
+
     if user.deactivation_response.present?
       panel("Deactivation query response") do
         div "#{user.deactivation_response.body}"
@@ -108,5 +114,12 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     user.reactivate!
     redirect_to admin_users_url, :notice => "User account activated"
+  end
+
+  member_action :reset_password, method: :post do
+    user = User.friendly.find(params[:id])
+    raw = user.send(:set_reset_password_token)
+
+    render text: edit_user_password_url(reset_password_token: raw)
   end
 end

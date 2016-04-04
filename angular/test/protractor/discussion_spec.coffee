@@ -15,7 +15,7 @@ describe 'Discussion Page', ->
       page.click('.thread-preview__link')
       page.expectText('.thread-context', 'I carried a watermelon')
 
-    it 'should display next/prev links', ->
+    xit 'should display next/prev links', ->
       groupsHelper.loadPath('setup_discussion_with_many_comments', 100000)
       page.expectElement('link[rel=next]')
       page.expectElement('link[rel=prev]')
@@ -66,13 +66,13 @@ describe 'Discussion Page', ->
       page.loadPath 'setup_multiple_discussions'
       page.click '.thread-context__dropdown-button',
                  '.thread-context__dropdown-options-move'
-
       page.click '.move-thread-form__group-dropdown'
-      element(By.cssContainingText('option', 'Point Break')).click();
+      element(By.cssContainingText('option', 'Point Break')).click()
+      page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
-
       page.expectText '.group-theme__name--compact','Point Break'
       page.expectFlash 'Thread has been moved to Point Break'
+      page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
 
   describe 'delete thread', ->
     beforeEach ->
@@ -86,16 +86,23 @@ describe 'Discussion Page', ->
       expect(groupsHelper.groupName().isPresent()).toBe(true)
       expect(groupsHelper.groupPage()).not.toContain('What star sign are you?')
 
-  describe 'changing thread volume', ->
+  describe 'changing thread email settings', ->
     beforeEach ->
       page.loadPath('setup_discussion')
+    it 'lets you change thread volume', ->
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-email-settings',
+                 '#volume-normal',
+                 '.change-volume-form__submit'
+      page.expectFlash 'You will be emailed about proposals in this thread.'
 
-    it 'lets you change thread notification volume', ->
-      expect(threadPage.threadVolumeCard()).toContain('Email proposals')
-      threadPage.clickChangeInThreadVolumeCard()
-      threadPage.changeThreadVolumeToLoud()
-      threadPage.submitChangeVolumeForm()
-      expect(threadPage.threadVolumeCard()).toContain('Email everything')
+    it 'lets you change the volume for all threads in the group', ->
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-email-settings',
+                 '#volume-normal',
+                 '.change-volume-form__apply-to-all',
+                 '.change-volume-form__submit'
+      page.expectFlash 'You will be emailed about proposals in this group.'
 
   describe 'commenting', ->
     beforeEach ->
@@ -160,9 +167,3 @@ describe 'Discussion Page', ->
       threadPage.selectDeleteCommentOption()
       threadPage.confirmCommentDeletion()
       expect(threadPage.activityPanel()).not.toContain('original comment right thur')
-
-    xit 'hides member actions from visitors', ->
-      threadPage.loadWithPublicContent()
-      expect(threadPage.commentForm().isPresent()).toBe(false)
-      expect(threadPage.threadOptionsDropdown().isPresent()).toBe(false)
-      expect(threadPage.volumeOptions().isPresent()).toBe(false)

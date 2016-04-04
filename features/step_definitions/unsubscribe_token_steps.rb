@@ -31,7 +31,7 @@ Then /^I should be able to update my email preferences$/ do
 end
 
 When(/^change the group volume to quiet/) do
-  expect(@group.membership_for(@user).volume_is_normal?).to be true
+  expect(@group.membership_for(@user).volume_is_loud?).to be true
   choose 'set_group_volume_quiet'
   click_on 'Update settings'
 end

@@ -242,8 +242,3 @@ sr:
       submit: Pošalji poruku
     messages:
       email_html: "Popunite ovaj obrazac, ili pošaljite ePoruku na <a href='mailto:%{email}'>%{email}</a>"
-      social_html: >
-        Možete nam se pridružiti na<br/><a href='%{facebook}'
-        target='_blank'>facebook-u</a>, <a href='%{google}'
-        target='_blank'>google+-u</a>, i <a href='%{twitter}'
-        target='_blank'>twitter-u</a>!
