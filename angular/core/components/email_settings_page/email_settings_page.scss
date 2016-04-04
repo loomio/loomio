@@ -40,13 +40,14 @@
   margin-bottom: 20px;
 }
 
-.email-settings-page__group-name, .email-settings-page__membership-volume {
+.email-settings-page__group-details {
   margin: 0 0 0 5px;
+  width: 70%;
+  @include truncateText;
 }
 
 .email-settings-page__edit {
-  position: absolute;
-  right: 45%;
+  margin-left: 20px;
 }
 
 .email-settings-page__learn-more-link {

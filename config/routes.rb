@@ -81,6 +81,7 @@ Loomio::Application.routes.draw do
 
     resources :profile, only: [:show] do
       post :update_profile, on: :collection
+      post :set_volume, on: :collection
       post :upload_avatar, on: :collection
       post :change_password, on: :collection
       post :deactivate, on: :collection

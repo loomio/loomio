@@ -51,6 +51,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     lastName: ->
       @name.split(' ').slice(1).join(' ')
 
-    saveVolume: (volume) ->
-      @update(defaultMembershipVolume: volume)
-      @recordStore.users.updateProfile(@)
+    saveVolume: (volume, applyToAll) ->
+      @remote.post('set_volume', { volume: volume, apply_to_all: applyToAll }).then =>
+        return unless applyToAll
+        _.each @allThreads(), (thread) ->
+          thread.update(discussionReaderVolume: null)
+        _.each @memberships(), (membership) ->
+          membership.update(volume: volume)
