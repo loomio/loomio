@@ -1,6 +1,11 @@
 class Discussion < ActiveRecord::Base
   PER_PAGE = 50
-  SALIENT_ITEM_KINDS = %w[new_comment new_motion new_vote motion_outcome_created]
+  SALIENT_ITEM_KINDS = %w[new_comment
+                          new_motion
+                          new_vote
+                          motion_closed
+                          motion_closed_by_user
+                          motion_outcome_created]
   THREAD_ITEM_KINDS = %w[new_comment
                          new_motion
                          new_vote
