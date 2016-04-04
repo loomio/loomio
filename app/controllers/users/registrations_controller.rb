@@ -50,8 +50,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_group
+    @sign_up_group ||= group_from_referrer || group_from_session
+  end
+
+  def group_from_referrer
     return unless group_key = Array(request.referrer.match(%r{\?group_key=(.*)}))[1]
-    @sign_up_group ||= Group.find(group_key)
+    Group.find_by(key: group_key)
+  end
+
+  def group_from_session
+    load_invitation_from_session&.group
   end
 
   def redirect_if_robot

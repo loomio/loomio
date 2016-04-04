@@ -1,6 +1,29 @@
 describe 'Group Page', ->
 
   page = require './helpers/page_helper.coffee'
+  staticPage = require './helpers/static_page_helper.coffee'
+
+  describe 'start group from home page', ->
+    fit 'allows starting a group via the start_group route', ->
+      staticPage.loadPath 'view_homepage_as_visitor'
+      staticPage.click '#try-it-main'
+      staticPage.fillIn '#group_name', 'My First Group'
+      staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
+      staticPage.fillIn '#name', 'Test Example'
+      staticPage.fillIn '#email', 'test@example.com'
+      staticPage.click '#sign-up-submit'
+
+      staticPage.loadPath 'last_email'
+      staticPage.click '[href]'
+
+      staticPage.fillIn '#user_password', 'vivalarevolucion'
+      staticPage.fillIn '#user_password_confirmation', 'vivalarevolucion'
+      staticPage.click  '#create-account'
+
+      page.expectText '.modal-title', 'Welcome to your new group'
+      page.click '.group-welcome-modal__close-button'
+      page.expectText '.group-theme__name', 'My First Group'
+      page.expectFlash 'Welcome! You have signed up successfully'
 
   describe 'non-member views group', ->
     describe 'logged out user', ->

@@ -188,6 +188,10 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def view_homepage_as_visitor
+    redirect_to root_url
+  end
+
   def view_secret_group_as_non_member
     sign_in patrick
     @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
