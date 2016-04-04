@@ -181,6 +181,7 @@ Loomio::Application.routes.draw do
   resources :groups,      path: 'g', slug: slug_regex, only: :show
   resources :discussions, path: 'd', slug: slug_regex, only: :show
   resources :motions,     path: 'm', slug: slug_regex, only: :show
+  resources :users,       path: 'u', only: :show
 
   namespace :email_actions do
     get   'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
@@ -227,5 +228,4 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   # get 'g/:key/:stub'                       => 'application#boot_angular_ui', as: :group
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
-  get 'u/:username'                        => 'application#boot_angular_ui', as: :user
 end
