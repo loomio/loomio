@@ -113,7 +113,8 @@
 }
 
 .thread-preview__position-icon-container {
-  @include boxTiny;
+  width: 23px;
+  height: 23px;
   position: absolute;
   left: 15px;
   top: 43px;
@@ -124,9 +125,9 @@
 
 .thread-preview__position-icon {
   background-repeat: no-repeat;
-  height: 18px;
+  height: 21px;
   margin: 1px 0 0 1px;
-  width: 18px;
+  width: 21px;
 }
 
 .thread-preview__position-icon--yes {
