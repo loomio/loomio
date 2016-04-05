@@ -19,13 +19,5 @@ describe StartGroupController do
         expect(response).to redirect_to(dashboard_path(start_group: true))
       end
     end
-
-    context 'logged in user without angular enabled' do
-      it 'prompts user to enable angular' do
-        sign_in user
-        get :new
-        expect(response).to render_template(:enable_angular)
-      end
-    end
   end
 end
