@@ -8,7 +8,7 @@ describe 'Login', ->
       staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
-      page.expectText '.dashboard-page__heading', 'Recent Threads'
+      page.expectText '.dashboard-page', 'Recent Threads'
 
     it 'does not log in when password is incorrect', ->
       staticPage.loadPath 'setup_login'
