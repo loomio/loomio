@@ -13,18 +13,15 @@ module.exports = new class StaticPageHelper
     browser.driver.get('localhost:3000/development/'+path)
     browser.driver.manage().window().setSize(1280, 1024)
 
-  click: (selector) ->
+  elementFor: (selector) ->
     browser.driver.findElement(By.css(selector))
-    _.each given(arguments), (selector) ->
-      element(By.css(selector)).click()
 
   click: ->
-    _.each given(arguments), (selector) ->
-      browser.driver.findElement(By.css(selector)).click()
+    _.each given(arguments), (selector) =>
+      @elementFor(selector).click()
 
   fillIn: (selector, value) ->
-    browser.driver.findElement(By.css(selector)).sendKeys(value)
+    @elementFor(selector).sendKeys(value)
 
   expectText: (selector, value) ->
-    el = browser.driver.findElement(By.css(selector))
-    expect(el.getText()).toContain(value)
+    expect(@elementFor(selector).getText()).toContain(value)

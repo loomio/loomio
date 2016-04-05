@@ -4,7 +4,7 @@ describe 'Group Page', ->
   staticPage = require './helpers/static_page_helper.coffee'
 
   describe 'start group from home page', ->
-    it 'allows starting a group via the start_group route', ->
+    fit 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
       staticPage.click '#try-it-main'
       staticPage.fillIn '#group_name', 'My First Group'
