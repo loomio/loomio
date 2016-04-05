@@ -37,6 +37,10 @@ describe 'Group Page', ->
         page.expectNoElement('.thread-preview__mark-as-read')
         page.expectNoElement('.thread-preview__mute')
 
+      it 'displays previous proposals to visitors of open groups', ->
+        page.loadPath('view_open_group_as_visitor')
+        page.expectText('.group-previous-proposals-card', 'Let\'s go to the moon!')
+
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
         page.loadPath('view_secret_group_as_non_member')
