@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include LocalesHelper
-  include ReadableUnguessableUrlsHelper
   include ApplicationHelper
   include AngularHelper
   include ProtectedFromForgery

@@ -66,6 +66,7 @@ class ExampleContent
   end
 
   def first_comment(how_it_works_thread, introduction_thread)
+    byebug
     comment = Comment.new(body: I18n.t('first_comment.body',
                                         hostname: ENV['CANONICAL_HOST'],
                                         thread_url: discussion_url(introduction_thread),

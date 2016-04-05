@@ -203,9 +203,9 @@ Loomio::Application.routes.draw do
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 
-  get 'g/:key/:slug'                       => 'groups#show',      as: :group
-  get 'd/:key/:slug'                       => 'discussions#show', as: :discussion
-  get 'm/:key/:slug'                       => 'motions#show',     as: :motion
+  get 'g/:key(/:slug)'                       => 'groups#show',      as: :group
+  get 'd/:key(/:slug)'                       => 'discussions#show', as: :discussion
+  get 'm/:key(/:slug)'                       => 'motions#show',     as: :motion
   get 'u/:username/'                       => 'users#show',       as: :user
 
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
