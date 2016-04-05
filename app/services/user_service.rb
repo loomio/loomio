@@ -11,6 +11,16 @@ class UserService
     EventBus.broadcast('user_deactivate', user, actor, params)
   end
 
+  def self.set_volume(user:, actor:, params:)
+    actor.ability.authorize! :update, user
+    user.update!(default_membership_volume: params[:volume])
+    if params[:apply_to_all]
+      user.memberships.update_all(volume: Membership.volumes[params[:volume]])
+      user.discussion_readers.update_all(volume: nil)
+    end
+    EventBus.broadcast('user_set_volume', user, actor, params)
+  end
+
   def self.update(user:, actor:, params:)
     actor.ability.authorize! :update, user
     user.update params

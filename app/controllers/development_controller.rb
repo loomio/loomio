@@ -224,6 +224,7 @@ class DevelopmentController < ApplicationController
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
     @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    @test_proposal = @test_discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
     redirect_to group_url(@test_group)
   end
 

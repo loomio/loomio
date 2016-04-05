@@ -29,7 +29,7 @@ class ClosedMotionSerializer < ActiveModel::Serializer
   private
 
   def include_current_user_vote?
-    current_user_vote.persisted?
+    current_user_vote&.persisted?
   end
 
   def include_outcome_author?

@@ -17,11 +17,12 @@ angular.module('loomioApp').factory 'ChangeVolumeForm', ->
       "change_volume_form.#{key || $scope.model.constructor.singular}"
 
     $scope.flashTranslation = ->
-      key = 
+      key =
         if $scope.applyToAll
           switch $scope.model.constructor.singular
             when 'discussion' then 'membership'
             when 'membership' then 'all_groups'
+            when 'user'       then 'all_groups'
         else
           $scope.model.constructor.singular
       "#{$scope.translateKey(key)}.messages.#{$scope.buh.volume}"

@@ -10,6 +10,11 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
+  def set_volume
+    service.set_volume(user: current_user, actor: current_user, params: params.slice(:volume, :apply_to_all))
+    respond_with_resource
+  end
+
   def upload_avatar
     service.update user: current_user, actor: current_user, params: { uploaded_avatar: params[:file], avatar_kind: :uploaded }
     respond_with_resource
