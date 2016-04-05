@@ -3,7 +3,7 @@
     %h2.lmo-card-heading{translate: "group_help_card.title"}
     .group-help-card__video-wrapper
       .lmo-bank{ng-if: "showVideo"}
-        <iframe width="269" height="150" src="https://www.youtube.com/embed/pF-wpXo8Rdw?showinfo=0&nologo=1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="269" height="150" ng-src="{{helpVideo()}}" frameborder="0" allowfullscreen></iframe>
     .group-help-card__articles
       .media
         .media-left
