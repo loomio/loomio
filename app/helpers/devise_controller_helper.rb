@@ -1,4 +1,4 @@
-module DeviseHelper
+module DeviseControllerHelper
   include AutodetectTimeZone
   include InvitationsHelper
   include OmniauthAuthenticationHelper
