@@ -11,23 +11,6 @@
           %span.icon-bar
 
         %a.navbar-brand.app-logo{ href: dashboard_or_root_path, title: t(:"organisation.name"), style: "background-image: url(#{logo_path})" }
-
-        %ul.nav.navbar-nav
-          %li#inbox-container
-            %a{href: inbox_path}
-              %i.fa.fa-inbox
-              %span#inbox-count.activity-count.label
-          %li.dropdown#notifications-container
-            %a.dropdown-toggle.notifications-dropdown-btn{'data-toggle' => 'dropdown', :href => '#', :id => 'notifications-toggle'}
-              %i.fa.fa-bell
-              %span#notifications-count.label.activity-count
-            %ul.dropdown-menu
-              %li
-                %h3= t("notifications.header")
-              %li#notification-dropdown-items
-                %ul
-                  %li Loading
-              %li#notifications-see-more= link_to t(:see_all_notifications), notifications_path
           %li.dropdown#groups
             %a.dropdown-toggle.groups-dropdown-btn{href: "#", 'data-toggle' => 'dropdown'}
               %i.fa.fa-group

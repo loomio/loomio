@@ -27,14 +27,6 @@ describe 'Group Page', ->
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
-      xit 'should display group content', ->
-        page.loadPath('setup_group_with_many_discussions')
-        page.expectElement('.group-theme__name')
-        page.expectElement('.lmo-navbar__sign-in')
-        page.expectElement('.thread-preview__title')
-        page.expectElement('link[rel=prev]')
-        page.expectElement('link[rel=next]')
-
       it 'should allow you to join an open group', ->
         page.loadPath 'view_open_group_as_visitor'
         page.click '.join-group-button__join-group'
