@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'ProposalForm', ->
     $scope.submit = FormService.submit $scope, $scope.proposal,
       flashSuccess: "proposal_form.messages.#{actionName}"
       allowDrafts: true
+      successEvent: 'proposalCreated'
       successCallback: ->
         $rootScope.$broadcast 'setSelectedProposal'
         ScrollService.scrollTo('#current-proposal-card-heading')
