@@ -13,7 +13,7 @@
     %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
 
     %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
-
+    %link{href: client_asset_path(:"print.min.css"), rel: 'stylesheet', media: 'print'}
 
     = render 'angular/metadata'
     = render 'angular/google_analytics'

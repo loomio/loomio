@@ -1,6 +1,6 @@
 %section.activity-card{aria-labelledby: "activity-card-title"}
   %h2.lmo-card-heading#activity-card-title{translate: "discussion.activity"}
-  %a.activity-card__load-backwards{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
+  %a.activity-card__load-backwards.lmo-no-print{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
     %i.fa.fa-refresh>
     %span{translate: "discussion.load_previous", translate-value-count: "{{beforeCount()}}"}
   %loading.activity-card__loading.page-loading{ng-show: "loadEventsBackwardsExecuting"}
