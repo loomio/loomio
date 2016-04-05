@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'pages'
 
+  before_filter :store_group_key_to_session, only: :new
   before_filter :redirect_if_robot, only: :create
 
   include AutodetectTimeZone
@@ -32,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def sign_up(resource_name, resource)
     super(resource_name, resource)
-    
+
     if omniauth_authenticated_and_waiting?
       load_omniauth_authentication_from_session
       @omniauth_authentication.update(user: resource)
@@ -54,12 +55,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def group_from_referrer
-    return unless group_key = Array(request.referrer.match(%r{\?group_key=(.*)}))[1]
-    Group.find_by(key: group_key)
+    Group.find_by(key: session.delete(:group_key)) if session[:group_key]
   end
 
   def group_from_session
     load_invitation_from_session&.group
+  end
+
+  def store_group_key_to_session
+    session[:group_key] = params[:group_key]
   end
 
   def redirect_if_robot
