@@ -4,19 +4,13 @@ class StartGroupController < ApplicationController
     @group = Group.new
     if !current_user_or_visitor.is_logged_in?
       render :new
-    elsif current_user_or_visitor.angular_ui_enabled?
+    else current_user_or_visitor.angular_ui_enabled?
       redirect_to dashboard_path(start_group: true)
-    else
-      render :enable_angular
     end
   end
 
-  def enable_angular
-    current_user.update angular_ui_enabled: true
-    redirect_to dashboard_path(start_group: true)
-  end
-
   def create
+    # TODO: move these validations into the group model... where they should already be really.
     @group = Group.new(permitted_params.group, is_referral: false)
     @email = params[:email]
     @name =  params[:name]
