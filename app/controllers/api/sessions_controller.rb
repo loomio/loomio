@@ -1,5 +1,5 @@
 class API::SessionsController < Devise::SessionsController
-  include DeviseOverrides
+  include DeviseControllerHelper
 
   def create
     sign_in resource_name, resource
