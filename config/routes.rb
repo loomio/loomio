@@ -177,13 +177,6 @@ Loomio::Application.routes.draw do
   resources :invitations, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 
-  slug_regex = /[a-z0-9\-\_]*/i
-
-  resources :groups,      path: 'g', slug: slug_regex, only: :show
-  resources :discussions, path: 'd', slug: slug_regex, only: :show
-  resources :motions,     path: 'm', slug: slug_regex, only: :show
-  resources :users,       path: 'u', only: :show
-
   namespace :email_actions do
     get   'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
     get   'follow_discussion/:discussion_id/:unsubscribe_token',   action: 'follow_discussion',   as: :follow_discussion
@@ -210,10 +203,14 @@ Loomio::Application.routes.draw do
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 
+  get 'g/:key/:slug'                       => 'groups#show',      as: :group
+  get 'd/:key/:slug'                       => 'discussions#show', as: :discussion
+  get 'm/:key/:slug'                       => 'motions#show',     as: :motion
+  get 'u/:username/'                       => 'users#show',       as: :user
+
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
   get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
-  # get 'start_group'                        => 'application#boot_angular_ui', as: :start_group
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
   get 'apps/registered'                    => 'application#boot_angular_ui'
@@ -223,10 +220,8 @@ Loomio::Application.routes.draw do
   get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui', as: :discussion_motion
   get 'd/:key/comment/:comment'            => 'application#boot_angular_ui', as: :discussion_comment
   get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui', as: :discussion_motion_outcome
-  # get 'd/:key/:stub'                       => 'application#boot_angular_ui', as: :discussion
   get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
-  # get 'g/:key/:stub'                       => 'application#boot_angular_ui', as: :group
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
 end

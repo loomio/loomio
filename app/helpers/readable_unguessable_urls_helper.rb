@@ -30,7 +30,7 @@ module ReadableUnguessableUrlsHelper
     controller = "/#{model.pluralize}"
     name = MODELS_WITH_SLUGS[model]
     slug = instance.send(name).parameterize
-    { controller: controller, action: 'show', id: instance.key, slug: slug }
+    { controller: controller, action: 'show', key: instance.key, slug: slug }
   end
 
 end

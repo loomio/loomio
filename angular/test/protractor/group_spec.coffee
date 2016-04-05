@@ -38,11 +38,11 @@ describe 'Group Page', ->
       it 'should allow you to join an open group', ->
         page.loadPath 'view_open_group_as_visitor'
         page.click '.join-group-button__join-group'
-        browser.driver.findElement(By.id('user_name')).sendKeys('Name')
-        browser.driver.findElement(By.id('user_email')).sendKeys('test@example.com')
-        browser.driver.findElement(By.id('user_password')).sendKeys('complex_password')
-        browser.driver.findElement(By.id('user_password_confirmation')).sendKeys('complex_password')
-        browser.driver.findElement(By.id('create-account')).click()
+        staticPage.fillIn '#user_name', 'Name'
+        staticPage.fillIn '#user_email', 'test@example.com'
+        staticPage.fillIn '#user_password', 'complex_password'
+        staticPage.fillIn '#user_password_confirmation', 'complex_password'
+        staticPage.click '#create-account'
         page.click '.group-welcome-modal__close-button'
         page.expectElement '.lmo-navbar__item--user'
         page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
