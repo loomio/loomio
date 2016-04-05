@@ -3,8 +3,8 @@ class DevelopmentController < ApplicationController
   include Development::NintiesMoviesHelper
   include PrettyUrlHelper
 
+  before_filter :ensure_testing_environment
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
-  around_filter :ensure_testing_environment
 
   def index
     @routes = DevelopmentController.action_methods.select do |action|
@@ -383,7 +383,6 @@ class DevelopmentController < ApplicationController
 
   def ensure_testing_environment
     raise "Do not call me." if Rails.env.production?
-    yield
   end
 
   def cleanup_database

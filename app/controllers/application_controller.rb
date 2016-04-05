@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_previous_location
-    session[:user_return_to] ||= URI.unescape(params.fetch(:return_to, '').chomp('/') || request.env['HTTP_REFERER']
+    session[:user_return_to] ||= URI.unescape(params.fetch(:return_to, '')).chomp('/') || request.env['HTTP_REFERER']
   end
 
   def clear_stored_location
