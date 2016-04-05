@@ -64,7 +64,7 @@ describe InvitationsController do
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present
-          response.should redirect_to group_path(group)
+          response.should redirect_to group_url(group)
         end
 
       end
@@ -76,7 +76,7 @@ describe InvitationsController do
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
           get :show, id: invitation.token
-          response.should redirect_to group_path(group)
+          response.should redirect_to group_url(group)
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present
