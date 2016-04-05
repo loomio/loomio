@@ -1,6 +1,7 @@
 class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
+  include PrettyUrlHelper
 
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
   around_filter :ensure_testing_environment

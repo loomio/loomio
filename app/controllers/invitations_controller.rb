@@ -1,5 +1,7 @@
 class InvitationsController < ApplicationController
   include InvitationsHelper
+  include PrettyUrlHelper
+
   before_filter :load_invitable, only: [:new, :create]
   before_filter :authenticate_user!, only: :create
 

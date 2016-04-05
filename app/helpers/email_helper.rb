@@ -1,4 +1,6 @@
 module EmailHelper
+  include PrettyUrlHelper
+
   def reply_to_address(discussion: , user: )
     pairs = []
     {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
