@@ -1,16 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'pages'
+  include DeviseHelper
 
   before_filter :store_group_key_to_session, only: :new
   before_filter :redirect_if_robot, only: :create
-
-  include AutodetectTimeZone
-  after_filter :set_time_zone_from_javascript, only: [:create]
-
-  include InvitationsHelper
   before_filter :load_invitation_from_session, only: :new
 
-  include OmniauthAuthenticationHelper
+  after_filter :set_time_zone_from_javascript, only: [:create]
+
   def new
     @user = User.new
     if @invitation
@@ -34,33 +31,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def sign_up(resource_name, resource)
     super(resource_name, resource)
 
-    clear_invitation_token_from_session
     if omniauth_authenticated_and_waiting?
       load_omniauth_authentication_from_session
       @omniauth_authentication.update(user: resource)
     end
-  end
-
-  def after_sign_up_path_for(user)
-    if sign_up_group
-      user.ability.authorize!(:join, sign_up_group)
-      sign_up_group.add_member! user
-      sign_up_group
-    else
-      super(user)
-    end
-  end
-
-  def sign_up_group
-    @sign_up_group ||= group_from_referrer || group_from_session
-  end
-
-  def group_from_referrer
-    Group.find_by(key: session.delete(:group_key)) if session[:group_key]
-  end
-
-  def group_from_session
-    load_invitation_from_session&.group
   end
 
   def store_group_key_to_session

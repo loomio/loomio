@@ -195,6 +195,7 @@ class DevelopmentController < ApplicationController
   end
 
   def view_homepage_as_visitor
+    patrick
     redirect_to root_url
   end
 

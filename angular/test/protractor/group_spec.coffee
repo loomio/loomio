@@ -25,6 +25,26 @@ describe 'Group Page', ->
       page.expectText '.group-theme__name', 'My First Group'
       page.expectFlash 'Welcome! You have signed up successfully'
 
+    it 'allows starting a group with an existing email', ->
+      staticPage.loadPath 'view_homepage_as_visitor'
+      staticPage.click '#try-it-main'
+      staticPage.fillIn '#group_name', 'My First Group'
+      staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
+      staticPage.fillIn '#name', 'Test Example'
+      staticPage.fillIn '#email', 'patrick_swayze@example.com'
+      staticPage.click '#sign-up-submit'
+
+      staticPage.loadPath 'last_email'
+      staticPage.click '[href]'
+
+      staticPage.fillIn '#user_password', 'gh0stmovie'
+      staticPage.click '#sign-in-btn'
+
+      page.expectText '.modal-title', 'Welcome to your new group'
+      page.click '.group-welcome-modal__close-button'
+      page.expectText '.group-theme__name', 'My First Group'
+      page.expectFlash 'Signed in successfully'
+
   describe 'non-member views group', ->
     describe 'logged out user', ->
       it 'should allow you to join an open group', ->
