@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'voteIcon', ->
   controller: ($scope) ->
     $scope.positionImg = ->
       switch $scope.position
-        when 'yes' then '/img/green_thumb_22'
-        when 'abstain' then '/img/yellow_thumb_22'
-        when 'no' then '/img/pink_thumb_22'
-        when 'block' then '/img/red_flag_22'
+        when 'yes' then '/img/agree.svg'
+        when 'abstain' then '/img/abstain.svg'
+        when 'no' then '/img/disagree.svg'
+        when 'block' then '/img/block.svg'
