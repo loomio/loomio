@@ -185,4 +185,12 @@ module ApplicationHelper
       image_url("navbar-logo-beta.jpg")
     end
   end
+
+  def show_beta_banner?
+    if controller_name =='start_group' || controller_name == 'sessions'
+      false
+    else
+      true
+    end
+  end
 end
