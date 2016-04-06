@@ -121,6 +121,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @showRevisionHistory = ->
     ModalService.open RevisionHistoryModal, model: => @discussion
 
+  @print = ->
+    $window.print() and true
+
   TranslationService.listenForTranslations($scope, @)
 
   return

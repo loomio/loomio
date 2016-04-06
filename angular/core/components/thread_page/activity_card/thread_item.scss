@@ -59,12 +59,6 @@
   display: inline-block;
 }
 
-.thread-item__vote-icon {
-  width: 30px;
-  height: 30px;
-  background-repeat: no-repeat;
-}
-
 .thread-item__vote-statement {
   color: $primary-text-color;
   display: inline-block;
@@ -81,21 +75,17 @@
 }
 
 .thread-item__vote-icon--yes {
-  background-image: url(/img/green_thumb_22.png);
-  background-position: 6px 0px;
+  background-image: url(/img/agree.svg);
 }
 
 .thread-item__vote-icon--abstain {
-  background-image: url(/img/yellow_thumb_22.png);
-  background-position: 4px 4px;
+  background-image: url(/img/abstain.svg);
 }
 
 .thread-item__vote-icon--no {
-  background-image: url(/img/pink_thumb_22.png);
-  background-position: 5px 6px;
+  background-image: url(/img/disagree.svg);
 }
 
 .thread-item__vote-icon--block {
-  background-image: url(/img/red_flag_22.png);
-  background-position: 5px 5px;
+  background-image: url(/img/block.svg);
 }

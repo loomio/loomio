@@ -34,14 +34,16 @@ class API::MotionsController < API::RestfulController
   end
 
   def closed
-    load_and_authorize :group, :view_previous_proposals
-    instantiate_collection { |collection| collection.closed.where(discussion_id: @group.discussion_ids).order(closed_at: :desc) }
+    instantiate_collection do |collection|
+      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids).order(closed_at: :desc)
+    end
     respond_with_collection(serializer: ClosedMotionSerializer, scope: closed_motion_scope)
   end
 
   private
 
   def closed_motion_scope
+    return {} unless current_user.is_logged_in?
     { vote_cache: VoteCache.new(current_user, current_user.votes.where(motion: collection)) }
   end
 

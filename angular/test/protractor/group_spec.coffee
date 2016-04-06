@@ -37,6 +37,10 @@ describe 'Group Page', ->
         page.expectNoElement('.thread-preview__mark-as-read')
         page.expectNoElement('.thread-preview__mute')
 
+      it 'displays previous proposals to visitors of open groups', ->
+        page.loadPath('view_open_group_as_visitor')
+        page.expectText('.group-previous-proposals-card', 'Let\'s go to the moon!')
+
     describe 'see joining option for each privacy type', ->
       it 'secret group', ->
         page.loadPath('view_secret_group_as_non_member')
@@ -301,15 +305,6 @@ describe 'Group Page', ->
       page.click('.groups-item')
       page.expectNoText('.groups-page__groups', 'Dirty Dancing Shoes')
 
-  describe 'changing membership email settings', ->
-    it 'lets you change membership volume', ->
-      page.loadPath('setup_group')
-      page.click('.group-page-actions__button',
-                 '.group-page-actions__change-volume-link',
-                 '#volume-loud',
-                 '.change-volume-form__submit')
-      page.expectFlash 'You will be emailed all activity in this group.'
-
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->
       page.loadPath 'setup_group_with_empty_draft'
@@ -339,21 +334,21 @@ describe 'Group Page', ->
       page.expectInputValue('#discussion-title', 'Nobody puts baby in a corner' )
       page.expectInputValue('#discussion-context', "I've had the time of my life" )
 
-  describe 'changing membership volume', ->
+  describe 'changing membership email settings', ->
     beforeEach ->
       page.loadPath('setup_group')
 
-    it 'lets you change membership notification volume', ->
+    it 'lets you change membership volume', ->
       page.click '.group-page-actions__button',
                  '.group-page-actions__change-volume-link',
                  '#volume-normal',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about proposals in this group.'
+      page.expectFlash 'You will be emailed about new threads and proposals in this group.'
 
-    it 'lets you change the membership notification volume for all memberships', ->
+    it 'lets you change the membership volume for all memberships', ->
       page.click '.group-page-actions__button',
                  '.group-page-actions__change-volume-link',
                  '#volume-normal',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about proposals in all your groups.'
+      page.expectFlash 'You will be emailed about new threads and proposals in all your groups.'

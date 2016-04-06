@@ -27,7 +27,7 @@
 
       .email-settings-page__specific-group-settings
         %h3.lmo-h3{translate: "email_settings_page.specific_groups"}
-        %span{translate: "email_settings_page.default_settings"}
+        .email-settings-page__default-description{translate: "{{emailSettingsPage.defaultSettingsDescription()}}"}
         %button.email-settings-page__change-default-link.lmo-btn-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "email_settings_page.change_default"}
         %ul.email-settings-page__groups
           %li.email-settings-page__group{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}

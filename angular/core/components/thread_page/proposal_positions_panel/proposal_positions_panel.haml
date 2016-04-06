@@ -17,7 +17,7 @@
   %ul.proposal-positions-panel__list
     %li.proposal-positions-panel__vote.media{ng_repeat: "vote in curatedVotes() track by vote.id"}
       .media-left
-        .thread-item__vote-icon{class: "thread-item__vote-icon--{{vote.position}}"}
+        %vote_icon{position: "vote.position"}
       .media-body
         %span.proposal-positions-panel__name-and-position
           %strong
@@ -26,7 +26,7 @@
         %span{ng-if: "!vote.hasStatement()"}.
         %span.proposal-positions-panel__separator{ng-if: "vote.hasStatement()"}:
         %span.proposal-positions-panel__vote-statement{marked: "vote.statement", ng-if: "vote.hasStatement()"}
-        %button.proposal-positions-panel__change-your-vote{ng-if: "showChangeVoteOption(vote)", href: "", ng-click: "changeVote()"}
+        %button.proposal-positions-panel__change-your-vote.lmo-no-print{ng-if: "showChangeVoteOption(vote)", href: "", ng-click: "changeVote()"}
           %i.fa.fa-exchange>
           %span{translate: "proposal_positions_panel.change_your_vote"}
   %undecided_panel{proposal: "proposal", ng-if: "proposal.hasUndecidedMembers()"}

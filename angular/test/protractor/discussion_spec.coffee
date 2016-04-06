@@ -102,7 +102,7 @@ describe 'Discussion Page', ->
                  '#volume-normal',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about proposals in this group.'
+      page.expectFlash 'You will be emailed about new threads and proposals in this group.'
 
   describe 'commenting', ->
     beforeEach ->

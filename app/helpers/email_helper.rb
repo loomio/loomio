@@ -17,7 +17,7 @@ module EmailHelper
 
   def mark_summary_as_read_url_for(user, format: nil)
      email_actions_mark_summary_email_as_read_url(unsubscribe_token: user.unsubscribe_token,
-                                                  time_start: @time_start.utc.to_i,		
+                                                  time_start: @time_start.utc.to_i,
                                                   time_finish: @time_finish.utc.to_i,
                                                   format: format)
   end
@@ -27,7 +27,7 @@ module EmailHelper
   end
 
   def vote_icon_paths_helper(position)
-    asset_url "hand-#{position}-18.png"
+    asset_url "img/#{position}-24.png"
   end
 
   def motion_closing_time_for(user)
