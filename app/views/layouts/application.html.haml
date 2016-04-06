@@ -22,6 +22,7 @@
   %body{class: "#{controller_name} #{action_name}"}
     = render 'application/header'
     .container.main-container{ class: render_help_container }
+      = render 'application/beta_banner' if hosted_by_loomio?
       - unless (controller_name == 'groups') && (action_name == 'show')
         = render 'application/flash_messages', :flash => flash, :on_landing_page => false
 

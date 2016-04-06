@@ -300,3 +300,8 @@ en:
         Images are the same, but prefixed with an exclamation mark.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
+
+  beta_banner:
+    new_loomio_html: |
+      <strong>The New Loomio is here!</strong> It's faster, prettier, and mobile-ready. More info...
+    button_text: Switch to the new Loomio
