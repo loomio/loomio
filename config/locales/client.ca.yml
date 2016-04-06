@@ -249,17 +249,3 @@ ca:
     invitation: Claus per escriure una bona invitació
     proposal: Claus per escriure una proposta clara
     vote: Pots canviar la teva posició en qualsevol moment
-  pricing_page:
-    intro: >
-      Els grups amb pressupost paguen una subscripció per utilitzar l'eina.
-
-      Els grups sense els mitjans per pagar una subscripció usen el model
-
-      "paga el que puguis": els seus membres estan convidats a fer una
-      contribució voluntària. La teva ajuda és necessària per mantenir Loomio
-      independent, lliure de publicitat, i conduït per la comunitat.
-    organisations: Organitzacions
-    organisations_examples: 'per exemple empreses, agències governamentals, organitzacions comunitàries'
-    informal_groups: Grups informals
-    informal_groups_desc: Es demanarà als membres del teu grup per pagar el que puguin
-    informal_groups_examples: 'per exemple famílies, moviments socials, col·lectius'

@@ -76,17 +76,6 @@ fi:
     outcome: 'Tulos: {{outcome}}'
   volume_levels:
     loud: Äänekäs
-  thread_volume_form:
-    loud_label: Lähetä sähköpostia kaikesta
-    submit: Päivitä
-  group_volume_form:
-    loud_label: Sähköpostita kaikki
-    quiet_description: 'Emme lähetä sinulle sähköpostia tästä ryhmästä, ellei joku mainitse sinua.'
-    mute_label: Hiljennä ryhmä
-    mute_description: Emme lähetä sähköposteja tästä ryhmästä ja se tullaan poistamaan sinun luetut- ja viimeisimmät aiheet-sivulta.
-    submit: Päivitä
-    messages:
-      loud: Sinulle tullaan lähettämään sähköpostia kaikista tapahtumista tässä ryhmässä.
   inbox:
     unread: Lukematon
   comment_form:

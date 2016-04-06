@@ -83,54 +83,6 @@ de:
     quiet: Leise
     mute: Stumm
     unmute: Laut
-  thread_volume_card:
-    heading: Diskussions-Benachrichtigungen
-    body:
-      loud: 'eMail für alles: Du wirst per eMail benachrichtigt, sobald in dieser Diskussion etwas passiert.'
-      normal: 'eMail für Vorschläge: Du wirst per eMail benachrichtigt, sobald ein Vorschlag eröffnet wurde oder demnächst beendet wird oder ein Ergebnis veröffentlicht wurde.'
-      quiet: 'Keine eMails: Du wirst über nichts in dieser Diskussion benachrichtigt.'
-      mute: 'Diskussion stumm: Du wirst nicht per eMail benachrichtigt, sie wird nicht in Deiner Aktuell-Liste oder Deiner "Ungelesen"-Liste stehen.'
-    change_volume_link: Ändern
-  thread_volume_form:
-    header: Diskussions-Benachrichtigungen
-    loud_label: eMail für alles
-    loud_description: 'Du wirst benachrichtigt, sobald in dieser Diskussion etwas passiert.'
-    normal_label: eMail für Vorschläge
-    normal_description: 'Du wirst per eMail benachrichtigt, sobald ein Vorschlag eröffnet wurde oder demnächst beendet wird oder ein Ergebnis veröffentlicht wurde.'
-    quiet_label: Keine eMails
-    quiet_description: 'Du wirst nur per eMail benachrichtigt, wenn Du @erwähnt wirst.'
-    mute_label: Diskussion stumm schalten
-    mute_description: 'Du wirst nicht per eMail benachrichtigt, sie wird nicht in Deiner Aktuell-Liste oder Deiner "Ungelesen"-Liste stehen.'
-    submit: Aktualisierung
-    messages:
-      loud: 'Du wirst per eMail benachrichtigt, sobald in dieser Diskussion etwas passiert.'
-      normal: Du wirst per eMail über Vorschläge in dieser Diskussion benachrichtigt.
-      quiet: Du wirst zu dieser Diskussion nicht per eMail benachrichtigt
-      mute: Diskussion stumm geschaltet
-  group_volume_card:
-    heading: Gruppen-Benachrichtigungen
-    body:
-      loud: 'eMail für alles: Du wirst per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert.'
-      normal: Du wirst per eMail über Diskussionen und Vorschläge in dieser Gruppe benachrichtigt.
-      quiet: 'Keine eMails: Du wirst über nichts in dieser Gruppe benachrichtigt.'
-      mute: 'Gruppe stumm: Du wirst nicht per eMail benachrichtigt, die Gruppe wird nicht in Deiner Aktuell-Liste oder Deiner "Ungelesen"-Liste stehen.'
-    change_volume_link: Ändern
-  group_volume_form:
-    header: Gruppen-Benachrichtigungen
-    loud_label: eMail für alles
-    loud_description: 'Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert.'
-    normal_label: eMail zu neuen Diskussionen und Vorschlägen
-    normal_description: Du wirst per eMail über Diskussionen und Vorschläge in dieser Gruppe benachrichtigt.
-    quiet_label: Keine eMails
-    quiet_description: 'Du wirst zu dieser Gruppe per eMail nur informiert, sobald Dich jemand @erwähnt.'
-    mute_label: Gruppe stumm schalten
-    mute_description: 'Du wirst nicht per eMail benachrichtigt, die Gruppe wird nicht in Deiner Aktuell-Liste oder Deiner "Ungelesen"-Liste stehen.'
-    submit: Aktualisierung
-    messages:
-      loud: 'Du wirst über alles per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert.'
-      normal: Du wirst per eMail über Vorschläge in dieser Gruppe benachrichtigt.
-      quiet: Du wirst über nichts in dieser Gruppe benachrichtigt.
-      mute: Gruppe stumm geschalten.
   inbox:
     clear: Leeren
     latest: Letzte
@@ -436,14 +388,10 @@ de:
     plus: Plus
     free_trial_html: 'Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Vertragsmodell fragen. Es ist keine Kreditkarte notwendig.'
     get_started_for_free: Starte nun kostenlos
-    gift_body_html: |
-      <p>Für Gruppen, die kein Budget für ein Abonnement haben</p>
-      <p>Spendenfinanziert, ohne Zahlungsverpflichtung.</p>
     support_before: Ich freue mich
     support_link: mit Dir zu reden
     support_after: 'um Deinen Probezeitraum zu verlängern oder wegen anderer Fragen, die Du hast.'
     remind_me_later: Errinere mich später
-    gift_donation_ask: Wir werden Deine Gruppenmitglieder um Spenden bitten.
     unlimited_members: unbegrenzte Mitglieder
     unlimited_decisions: unbegrenzte Abstimmungen
     email_support: eMail-Support
@@ -451,8 +399,6 @@ de:
       US-<strong>$19</strong>/Monat<br><span>or</span> $190/Jahr
     plus_body: 'Wie in Standard, zusätzlich:'
     premium_support: Premium Support
-    custom_url: benutzerspezifische URL
-    usage_statistics: Nutzerstatistiken
     plus_price_html: |
       US-<strong>$179</strong>/Monat<br><span>or</span> $1790/Jahr
     select: Wähle
@@ -622,16 +568,8 @@ de:
     update_profile: Profil aktualisieren
   email_settings_page:
     header: eMail-Einstellungen
-    email: eMail
     daily_summary_label: Tägliche Übersichts-eMail
-    daily_summary_description: Allmorgentlich eine E-Mail mit allen ungelesenen Meldungen des vorigen Tages erhalten. Dies ist eine gute Möglichkeit um in Deinen Loomio-Gruppen auf dem Laufenden zu bleiben.
-    on_participation_label: 'Meldungen von den Diskussionen, an denen ich teilhabe'
-    on_participation_description: "Wenn Du Dich an einer Diskussion beteiligst, wird die Benachrichtigungseinstellung auf 'Laut' gestellt, wodurch Du über alle weitere Meldungen unverzüglich per eMail benachrichtigt wirst."
-    proposal_closing_soon_label: Bevor ein Vorschlag endet
-    proposal_closing_soon_description: '24 Stunden bevor ein Vorschlag endet wirst Du per eMail über den aktuellen Stand informiert, unabhängig von Deiner Benachrichtigungseinstellung.'
-    mentioned_label: Wenn ich @erwähnt wurde
     mentioned_description: 'Wenn jemand Deine Aufmerksamkeit erhalten will, wirst Du @erwähnt. Wir empfehlen diese Einstellung aktiv zu setzen, damit andere Dich ansprechen können.'
-    update_settings: eMail-Einstellungen aktualsieren
     messages:
       updated: eMail-Einstellungen aktualisiert
   dashboard_page:
@@ -702,25 +640,11 @@ de:
     liked_by_name: 'Gefällt {{name}}.'
     liked_by_names_and_name: 'Gefällt {{joinedNames}} und {{name}}.'
     started_by: 'Eröffnet von <strong>{{name}}</strong>'
-    volume:
-      loud: 'eMail, sobald es Neues in dieser Diskussion gibt.'
-      loud_aria_description: 'Deine Benachrichtigungseinstellung für diese Diskussion steht auf Laut. Das bedeutet, dass Du bei jedem/r neuen Beitrag/Meldung in dieser Diskussion eine eMail erhältst'
-      loud_message: 'Du wirst über alles per eMail benachrichtigt, sobald in "{{name}}" etwas passiert.'
-      normal: 'Einfach eine E-Mail, wenn ein Vorschlag erstellt wird, zu schließen, oder ein Ergebnis wird gebucht.'
-      normal_aria_description: 'Deine Benachrichtigungseinstellung für diese Diskussion steht auf "Normal". Du wirst per eMail informiert, wenn eine Vorschlag eröffnet oder beendet wird oder ein Ergebnis bekanntgegeben wird.'
-      normal_message: 'Du wirst in "{{name}}" nur über wichtige Geschehnisse per eMail benachrichtigt.'
-      quiet: Keine eMail zu diesem Thema.
-      quiet_aria_description: 'Deine Benachrichtigungseinstellung für diese Diskussion steht auf "Leise". Du wirst nur per eMail benachrichtigt, wenn Du erwähnt wirst.'
-      quiet_message: 'Du wirst über nichts in "{{name}}" per eMail benachrichtigt, außer jemand @erwähnt Dich.'
-      mute: Ausblenden dieses Thema aus dem Armaturenbrett und nicht benachrichtigen
-      mute_aria_description: 'Deine Benachrichtigungseinstellung für diese Diskussion steht auf "Stumm". Du wirst erst wieder per eMail benachrichtigt, wenn Du erwähnt wirst. Diese Diskussion wird nicht in der Statusleiste erscheinen.'
-      mute_message: '"{{name}}" wurde von Deiner "Aktuell"-Liste entfernt.'
   thread_group:
     aria_label: Gruppenname
   thread_context:
     aria_label: Diskussionsbeschreibung
     thread_options: Diskussionsoptionen
-    notifications: Benachrichtigungen
     edit_thread: Bearbeiten
     move_thread: Verschieben
     delete_thread: Löschen
@@ -924,22 +848,6 @@ de:
     invitation: Hinweise für das Schreiben einer guten Einladung
     proposal: Hinweise für das Schreiben eines klaren Vorschlags
     vote: Du kannst Deine Meinung jederzeit ändern.
-  pricing_page:
-    intro: >
-      Gruppen mit einem Budget zahlen für die Nutzung des Tools mit einem
-      Abonnement.
-
-      Gruppen ohne Abonnement-Möglichkeiten nutzen das
-
-      Zahle-was-Du-kannst-Modell: deren Mitglieder werden aufgefordert einen
-      freiwilligen Beitrag zu leisten. Dein Beitrag bedeutet, dass wir Loomio
-      unabhängig, frei von Werbung und getrieben von der Gemeinschaft betreiben
-      können.
-    organisations: Organisationen
-    organisations_examples: 'z.B. Firmen, staatliche Behörden, gemeinschaftliche Organisationen'
-    informal_groups: Informelle Gruppen
-    informal_groups_desc: 'Die Mitglieder deiner Gruppe werden gebeten zu bezahlen, soviel wie sie können'
-    informal_groups_examples: 'z.B. Familien, soziale Bewegungen, Kollektive'
   angular:
     switch_back: Zum alten Loomio wechseln
     give_feedback: Feedback geben

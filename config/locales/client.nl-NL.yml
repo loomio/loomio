@@ -65,10 +65,6 @@ nl-NL:
     normal: Normaal
     quiet: Stil
     mute: Dempen
-  thread_volume_form:
-    submit: Updaten
-  group_volume_form:
-    submit: Updaten
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -207,7 +203,6 @@ nl-NL:
     update_profile: Bijwerken profiel
   email_settings_page:
     header: E-mail instellingen
-    email: E-mailadres
   dashboard_page:
     aria_label: Dashboard
     mark_as_read: Markeer als gelezen
@@ -225,11 +220,6 @@ nl-NL:
     activity: Activiteit
     proposals: Voorstellen
     previous_proposals: Vorige voorstellen
-    volume:
-      loud: E-mail altijd als er activiteit is in dit gesprek.
-      normal: 'Alleen e-mailen wanneer er een voorstel is gemaakt, op het punt staat te sluiten of als er een uitkomst is vastgesteld.'
-      quiet: Niet e-mail over dit gesprek.
-      mute: Verberg dit gesprek van het dashboard en stuur geen notificaties tenzij ik @genoemd word.
   thread_group:
     aria_label: Groepsnaam
   thread_context:
@@ -390,18 +380,3 @@ nl-NL:
     invitation: Tips voor het schrijven van een goede uitnodiging
     proposal: Tips voor het schrijven van een helder voorstel
     vote: Je kunt je standpunt ten alle tijde veranderen
-  pricing_page:
-    intro: >
-      Groepen met een budget betalen een abonnement voor het gebruik van Loomio.
-
-      Groepen die de kosten van een abonnement niet op kunnen brengen gebruiken
-      het
-
-      Betaal Wat Je Kan model: hun leden worden gevraagd een vrijwillige bijdrage
-      te doen. Jouw bijdrage zorgt ervoor dat we Loomio onafhankelijk, vrij van
-      advertenties en door de gemeenschap gedreven kunnen houden.
-    organisations: Organisaties
-    organisations_examples: 'bijv. bedrijven, regeringsinstanties, maatschappelijke organisaties'
-    informal_groups: Informele groepen
-    informal_groups_desc: Leden van jouw groep zullen gevraagd worden om te betalen wat ze kunnen
-    informal_groups_examples: 'bijv. families, sociale bewegingen, collectieven'

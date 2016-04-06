@@ -88,54 +88,6 @@ sr:
     quiet: Tiho
     mute: Isključeno
     unmute: Uključi
-  thread_volume_card:
-    heading: Obaveštenja
-    body:
-      loud: 'Obavesti o svemu: bićete obavešteni ePorukom kada god ima aktivnosti u ovoj niti.'
-      normal: 'Prosledi predloge: bićete obavešteni ePorukom kada je iznet predlog, kada se zatvara ili kada je ishod određen.'
-      quiet: 'Bez ePoruka: nećete dobijati ePoruke o aktivnostima u ovoj niti.'
-      mute: 'Nit utišana: nećete dobijati ePoruke o ovoj niti i ona će biti uklonjena iz Poslednje niti i Nepročitane stranice.'
-    change_volume_link: Promeni
-  thread_volume_form:
-    header: Obaveštenja
-    loud_label: Pošalji sve
-    loud_description: Dobičete ePoruku kada god ima aktivnosti u ovoj niti.
-    normal_label: Pošalji predloge
-    normal_description: 'Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen.'
-    quiet_label: Nema ePoruka
-    quiet_description: Nećete biti obavešteni ePorukom o ovoj niti osim ako vas neko ne @pomene.
-    mute_label: Pauziraj nit
-    mute_description: Nećete biti obaveštavani ePorukom o ovoj niti i ona će biti uklonjena iz Vaših Najnovije Niti i Nepročitane strane.
-    submit: Ažuriraj
-    messages:
-      loud: Bićete obaveštavani o aktivnostima u ovoj niti.
-      normal: Bićete obavešteni ePorukom o predlozima u ovoj niti.
-      quiet: Nećete biti obaveštavani o ovoj niti.
-      mute: Nit utišana.
-  group_volume_card:
-    heading: Obaveštenja
-    body:
-      loud: 'Obavesti o svemu: dobićete ePoruku kada god ima aktivnosti u ovoj grupi.'
-      normal: Bićete obavešteni ePorukom o novim nitovima i predlozima u ovoj grupi.
-      quiet: 'Bez ePoruka: nećeš dobijati ePoruke o aktivnostima u ovoj grupi.'
-      mute: 'Grupa utišana: nećete biti obavešteni ePorukom o ovoj grupi i ona će biti uklonjena iz Vaših Najnovijih Niti i Nepročitanih strana.'
-    change_volume_link: Promeni
-  group_volume_form:
-    header: Obaveštenja
-    loud_label: Pošalji sve
-    loud_description: Bičete obavešteni ePorukom kada ima aktivnosti u ovoj grupi.
-    normal_label: Pošalji nove niti i predloge
-    normal_description: Bićete obavešteni ePorukom o novim nitovima i predlozima u ovoj grupi.
-    quiet_label: Nema ePoruka
-    quiet_description: 'Nećete biti obaveštavani ePorukom o aktivnostima u ovoj grupi, dok Vas neko ne pomene.'
-    mute_label: Utišaj grupu
-    mute_description: Nećete biti obavešteni ePorukom o ovoj grupi i ona će biti uklonjena iz Vaših Najnovijih Niti i Nepročitanih strana.
-    submit: Ažuriraj
-    messages:
-      loud: Bićete obaveštavani ePorukama o aktivnostima u ovoj grupi.
-      normal: Bićete obavešteni ePorukom o predlozima u ovoj grupi.
-      quiet: Nećete biti obaveštavani ePorukom o ovoj grupi.
-      mute: Grupa utišana.
   inbox:
     clear: Očisti
     latest: Poslednje
@@ -438,14 +390,10 @@ sr:
     plus: Plus
     free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
     get_started_for_free: Počni besplatno
-    gift_body_html: |
-      <p>Za grupe koje nemaju budžet za plaćanje pretplate.</p>
-      <p>Podržano donacijom, bez obaveze plaćanja.</p>
     support_before: Imam čast da
     support_link: pričam sa tobom
     support_after: o produženju probnog perioda ili o bilo kom pitanju koje možda imaš.
     remind_me_later: Podseti me kasnije
-    gift_donation_ask: Pitaćemo članove Vaše grupe za donaciju.
     unlimited_members: neograničeno članova
     unlimited_decisions: neograničeno odluka
     email_support: podrška ePorukom
@@ -453,8 +401,6 @@ sr:
       US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
     plus_body: 'Sve u Standardno, plus:'
     premium_support: premijum podrška
-    custom_url: poseban URL
-    usage_statistics: statistika korišćenja
     plus_price_html: |
       US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
     select: Odaberi
@@ -621,16 +567,8 @@ sr:
     update_profile: Promena profila
   email_settings_page:
     header: ePoruke
-    email: ePoruka
     daily_summary_label: Dnevni izveštaj ePorukom
-    daily_summary_description: 'Svakog jutra, šalje jednu ePoruku sa jučerašnjim neporočitanim aktivnostima. Ova ePoruka pruža jednu laku rutinu da ostaneš u toku sa aktivnostima na Loomio'
-    on_participation_label: Aktivnosti sa niti u kojima sam uključen/a
-    on_participation_description: "Kada se priključite niti, obim obaveštenja će se promeniti u 'Glasno', tako da će se sve dalje aktivnosti u njoj manifestovati kao obaveštenje ePorukom istog časa."
-    proposal_closing_soon_label: Pre isteka predloga
-    proposal_closing_soon_description: '24 časa do isteka predloga, zavisno od obima, dobićete jednu ePoruku sa poslednjim informacijama o predlogu.'
-    mentioned_label: Kada sam @pomenut/a
     mentioned_description: 'Kada neko želi da Vam skrene pažnju, @pomenuće Vas. Preporučujemo da ostavite ovo uključeno, tako da dobijete jednu ePoruku kada se ovo dogodi.'
-    update_settings: Izmeni podešavanja ePoruka
     messages:
       updated: Tvoja podešavanja su ažurirana
   dashboard_page:
@@ -702,25 +640,11 @@ sr:
     liked_by_names_and_name: 'Sviđa se {{joinedNames}} i {{name}}.'
     started_by: 'Kreirano od strane <strong>{{name}}</strong> '
     edited: Izmenjeno
-    volume:
-      loud: Obavesti kada god ima aktivnosti u ovoj niti.
-      loud_aria_description: Vaš obim obaveštenja za ovu nit je postavljen na Glasno. Ovo znači da ćete dobiti ePoruku svaki put kada bude aktivnosti u ovoj niti.
-      loud_message: 'Bićete obavešteni ePorukom o svim aktivnostima u "{{name}}"'
-      normal: 'Samo obavesti kada je predlog kreiran, pred zatvaranjem ili je ishod kreiran.'
-      normal_aria_description: 'Vaš obim obaveštenja za ovu nit je postavljen na Normalno. Bićete obavešteni ePorukom kada se pojavi predlog, kada se zatvara ili kada je jedan ishod objavljen.'
-      normal_message: 'Bićete obavešteni ePorukom o važnim događajima za "{{name}}".'
-      quiet: Ne šalji ePoruke o ovoj niti.
-      quiet_aria_description: Obim obaveštenja za ovu nit je postavljen na Tiho. Nećete biti obaveštavani ePorukom o ovoj niti osim ako Vas neko ne pomene.
-      quiet_message: 'Nećete biti obaveštavani ePorukom o "{{name}}" osim ako Vas neko ne pomene'
-      mute: Sakrij ovu nit i ne obaveštavaj me dok ne budem @naznačen/a
-      mute_aria_description: Obim Vaših obaveštenja za ovu nit je postavljen na Utišano. Nećete biti obaveštavani ePorukom o ovoj niti osim ako Vas neko ne pomene i ova nit će biti uklonjena sa Vaše radne površine.
-      mute_message: '"{{name}}" je uklonjeno sa Vaše radne table.'
   thread_group:
     aria_label: Naziv grupe
   thread_context:
     aria_label: Kontekst niti
     thread_options: Opcije niti
-    notifications: Obaveštenja
     edit_thread: Izmene
     move_thread: Premesti
     print_thread: Štampa
@@ -939,13 +863,6 @@ sr:
     invitation: Saveti za pisanje sjajnog poziva
     proposal: Saveti za pisanje jasnog predloga
     vote: Možete promeniti svoj stav bilo kada
-  pricing_page:
-    intro: "Grupe sa budžetom plaćaju pretplatu da bi koristili alat.\nGrupe koje nemaju nameru da plaćaju pretplatu koriste \nPlati Šta Možeš model: njihovi članovi su pozvani da doniraju volonterskim učešćem. Vaše učešće omogućava da održimo Lumio nezavisnim, i slobodnim od oglasa, vođenim od strane naše zajednice.\n"
-    organisations: Organizacije
-    organisations_examples: 'npr. kompanije, institucije i agencije države, organizacije unutar neke zajednice'
-    informal_groups: Neformalne grupe
-    informal_groups_desc: Članovi Vaše grupe će biti zamoljeni da plate koliko mogu
-    informal_groups_examples: 'npr. porodice, društveni pokreti, kolektivi'
   angular:
     switch_back: Vrati se na stari Lumio
     give_feedback: Objasnite nam

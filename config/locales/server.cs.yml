@@ -96,7 +96,6 @@ cs:
       email_not_arrived: E-mail nebyl doručen?
     start_making_decisions: 'Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:'
   pricing_page:
-    header: Plány
     gift: Dar
     standard: Standardní
     plus: Plus
@@ -107,7 +106,6 @@ cs:
     standard_price_html: |
       <strong>19$(US)</strong>/měsíčně<br><span>nebo</span> 190$(US)/ročně
     premium_support: prémiová podpora
-    custom_url: vlastní URL
     usage_statistics: statistiky využití
     plus_price_html: |
       <strong>179$(US)</strong>/měsíc<br><span>nebo</span> 1790$(US)/rok

@@ -80,18 +80,6 @@ ga-IE:
     quiet: Ciúin
     mute: Gan fhuaim
     unmute: Díbhalbhaigh é
-  thread_volume_card:
-    heading: Fógraí ón Snaith
-    body:
-      loud: 'Seol ríomhphost faoi gach rud: seolfar ríomhphost chugat gach uair a tharlaíonn rud éigin sa tsnaith seo.'
-    change_volume_link: Athraigh
-  thread_volume_form:
-    header: Fógraí ón Snaith
-    submit: Nuashonraigh é
-  group_volume_card:
-    change_volume_link: Athraigh
-  group_volume_form:
-    submit: Nuashonraigh é
   inbox:
     clear: Glan
     latest: Is déanaí
@@ -411,16 +399,8 @@ ga-IE:
     update_profile: Nuashonraigh an bheathaisnéisín
   email_settings_page:
     header: Socruithe ríomhphoist
-    email: Seoladh ríomhphoist
     daily_summary_label: Ríomhphost le hachoimre laethúil
-    daily_summary_description: 'Gach maidin, seol ríomhphost le gníomhaíocht inné nár léadh fós. Cuireann an ríomhphost seo gnáthamh éasca ar fáil chun fanacht cothrom le dáta leis an ngníomhaíocht ar Loomio.'
-    on_participation_label: Gníomhaíocht ó na snáitheanna a bhfuil ag glacadh páirt iontu
-    on_participation_description: 'Nuair a ghlacann tú páirt i snáithe, athrófar socrú na hairde go dtí "Ard", agus dá bhíthin sin seolfar gach gníomhaíocht chugat i ríomhphost láithreach bonn.'
-    proposal_closing_soon_label: Sula ndúnfar togra
-    proposal_closing_soon_description: '24 uair a chloig sula dhúnfar togra, beag beann ar an airde, seolfar ríomhphost chugat leis an eolas is déanaí faoin dtogra.'
-    mentioned_label: Nuair a @dhéantar tagairt dom
     mentioned_description: "Nuair is mian le duine éigin d'aird a tharraing orthu, @déanfaidh siad tagairt duit. Molaimid duit é sin a fhágáil ar siúl, ionas go bhfaighfear ríomhphost nuair a tharlaíonn seo."
-    update_settings: Nuashonraigh socruithe ríomhphoist
     messages:
       updated: Nuashonraigh na socruithe ríomhphoist
   dashboard_page:
@@ -486,17 +466,11 @@ ga-IE:
     liked_by_name: 'Thaitin sé le {{name}}.'
     liked_by_names_and_name: 'Thaitin sé le {{joinedNames}} agus {{name}}.'
     started_by: 'Tosaithe ag <strong>{{name}}</strong> '
-    volume:
-      loud: Seol ríomhphost chugam pé uair atá gníomhaíocht sa snáithe seo.
-      normal: 'Seol ríomhphost chugam nuair a chruthaítear togra, nuair atá togra ar tí dúnadh, nó nuair a fhoilsítear toradh.'
-      quiet: Ná seol ríomhphost chugam maidir leis an tsnáithe seo.
-      mute: Folaigh an tsnáithe seo ón gclár rialaithe agus ná seol fógraí chugam ach amháin má @dhéantar tagairt dom.
   thread_group:
     aria_label: Ainm na baicle
   thread_context:
     aria_label: Comhthéacs na snáithe
     thread_options: Roghanna na snáithe
-    notifications: Fógraí
     edit_thread: Cuir in eagar é
     move_thread: Bog é
     delete_thread: Scrios
@@ -557,11 +531,5 @@ ga-IE:
     invitation: Leideanna chun cuireadh den scoth a scríobh
     proposal: Leideanna chun togra soiléir a scríobh
     vote: Tig leat do sheasamh a athrú am ar bith
-  pricing_page:
-    organisations: Eagraíochtaí
-    organisations_examples: 'm.sh. gnólachtaí, gníomhaireachtaí rialtais, eagraíochtaí pobail'
-    informal_groups: Dreamanna neamhnósúla
-    informal_groups_desc: "Iarrfar ar chomhaltaí do bhaicle pé mhéad a bhfuil sé d'acmhainn acu a íoc"
-    informal_groups_examples: 'm.sh. teaghlaigh, gluaiseachtaí comhdhaonnacha, comharghnónna'
   angular:
     give_feedback: Tabhair aiseolas dúinn

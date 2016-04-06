@@ -156,9 +156,7 @@ sl:
     locale_label: Jezik
   email_settings_page:
     header: Email nastavitve
-    email: Email
     daily_summary_label: Dnevni email s povzetki
-    update_settings: Posodobi email nastavitve
     messages:
       updated: Email nastavitve posodobljene
   dashboard_page:
@@ -177,11 +175,6 @@ sl:
     liked_by_name: 'Všečkal/a {{name}}.'
     liked_by_names_and_name: 'Všečkala {{joinedNames}} in {{name}}.'
     started_by: 'Začel/a <strong>{{name}}</strong>'
-    volume:
-      loud: Pošlji email ob vsaki aktivnosti v tej razpravi.
-      normal: 'Pošlji email ko se predlog odpre, preden se zapre in ko je objavljen izid.'
-      quiet: Ne pošiljaj emailov za to razpravo.
-      mute: 'Skrij to razpravo iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.'
   thread_group:
     aria_label: Ime skupine
   delete_comment_dialog:
@@ -338,17 +331,3 @@ sl:
     invitation: Nasveti za pisanje prepričljivih vabil
     proposal: Nasveti za pisanje jasnih predlogov
     vote: Svojo odločitev lahko spremeniš kadarkoli
-  pricing_page:
-    intro: >
-      Skupine s finančnimi sredstvi plačujejo naročnino za uporabo orodja.
-
-      Skupine brez finančnih sredstev za plačilo naročnine uporabljajo model
-
-      "Plačaj, kolikor lahko": njihovi člani so vabljeni, da prispevajo
-      prostovoljne donacije. Vaš prispevek nam pomaga, da ohranimo Loomio
-      neodvisen, brez oglasov in v lasti celotne skupnosti.
-    organisations: Organizacije
-    organisations_examples: 'npr. podjetja, vladne agencije, skupnostne organizacije'
-    informal_groups: Neformalne skupine
-    informal_groups_desc: 'Člane vaše skupine bomo prosili za plačilo, v okviru njihovih zmožnosti'
-    informal_groups_examples: 'npr. družine, družbena gibanja, skupnosti'

@@ -342,16 +342,8 @@ pl:
     update_profile: Zmiana profilu
   email_settings_page:
     header: Ustawienia poczty
-    email: Email
     daily_summary_label: Dzienna wiadomość z podsumowaniem
-    daily_summary_description: 'Codziennie rano, wysyła wiadomość z wczorajszą nieprzeczytaną aktywnością. Wiadomość ta pozwala stale być na bierząco z aktywnościami w Loomio.'
-    on_participation_label: Aktywność z wątków w których uczestniczę
-    on_participation_description: "Kiedy uczestniczysz w wątku, ustawienie poziomu zostanie zmienione na 'Wysoko', aby każda następująca aktywność była wysłana do Ciebie mailem."
-    proposal_closing_soon_label: Przed zamknięciem rekomendacji
-    proposal_closing_soon_description: '24 godziny przed zamknięciem rekomendacji, w zależności od poziomu, otrzymasz wiadomość z najnowszą informacją o rekomendacji'
-    mentioned_label: Kiedy o mnie @wspomniano
     mentioned_description: 'Kiedy ktoś chce zwrócić Twoją uwagę, użyje mechanizmu @wzmianki. Rekomendujemy pozostawić to włączone, abyś otrzymał/a maila kiedy to nastąpi.'
-    update_settings: Zmiana ustawień poczty
     messages:
       updated: Ustawienia poczty zmienione
   dashboard_page:
@@ -416,15 +408,6 @@ pl:
     liked_by_name: 'Lubiane przez {{name}}.'
     liked_by_names_and_name: 'Lubiane przez {{joinedNames}} oraz {{name}}.'
     started_by: 'Rozpoczęte przez <strong>{{name}}</strong>'
-    volume:
-      loud: Wyślij wiadomość jeśli jest aktywność w tym wątku.
-      loud_aria_description: 'Poziom powiadomienia dla tego wątku jest ustawiony na Głośno. Oznacza to, że otrzymasz wiadomość przy każdej aktywności w wątku.'
-      normal: 'Wysłanie wiadomości tylko kiedy utworzono rekomendację, zbliża się zamknięcie lub wysłano wynik.'
-      normal_aria_description: 'Poziom powiadomienia dla tego wątku ustawiono na Normaly. Dostaniesz wiadomość jeśli dodano rekomendację, zbliża się zamknięcie lub przesłano wynik.'
-      quiet: Nie wysyłaj wiadomości z tego wątku.
-      quiet_aria_description: Poziom powiadomienia dla tego wątku jest ustawiony na Cisza. Nie otrzymasz wiadomości z tego wątku dopóki ktoś nie wspomni o Tobie.
-      mute: Ukryj ten wątek na pulpicie i nie powiadamiaj dopóki nie @wspomniano.
-      mute_aria_description: Poziom powiadamiania dla tego wątku ustawiono na Wyciszone. Nie będziesz otrzymywać wiadomości z tego wątki dopóki ktoś nie wspomni o tobie i ten wątek nie będzie usuniętu z Twojego pulpitu.
   thread_group:
     aria_label: Nazwa grupy
   thread_context:
@@ -597,15 +580,3 @@ pl:
     invitation: Wskazówki pisania dobrych zaproszeń
     proposal: Wskazówki do pisania czytelnych rekomendacji
     vote: W każdej chwili możesz zmienić swoje stanowisko
-  pricing_page:
-    intro: >
-      Grupy z budżetem płacą subskrypcję za używanie narzędzia.
-
-      Grupy bez budżetu używają modelu Zapłać ile Możesz: ich członkowie będą
-      proszeni o dobrowolne wpłaty. Twoja wpłata oznacza, że możemy utrzymywać
-      Loomio niezależne, wolne od reklam oraz prowadzone przez społeczność.
-    organisations: Organizacje
-    organisations_examples: 'np. biznes, agencje rządowe, organizacje społeczne'
-    informal_groups: Grupy nieformalne
-    informal_groups_desc: Członkowie Twojej grupy będą proszeni o dobrowolne wpłaty
-    informal_groups_examples: 'np. rodziny, ruchy społeczne,zespoły'
