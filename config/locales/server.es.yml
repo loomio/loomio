@@ -1,5 +1,21 @@
 es:
   email:
+    reset_password:
+      greeting: >
+        Hola %{name}
+
+        Aquí esta el enlace que puedes usar para restablecer tu contraseña en tu
+        cuenta de Loomio:
+      link_text: Restablece tu contraseña
+      signoff: >
+        Recibes este email porque tu dirección de correo electrónico fue
+        ingresada en el formulario "Olvidaste tu contraseña" en %{hostname}.
+
+        Tu contraseña no será cambiada hasta que sigas el enlace y completes el
+        formulario.
+
+        Si continúas teniendo problemas para acceder a tu cuenta, responde a este
+        email para contactar nuestro equipo de soporte técnico.
     custom: '%{text}'
     group_email:
       intro: '%{who} hizo un anuncio en %{group}:'
@@ -129,26 +145,26 @@ es:
     error:
       all_email_addresses_belong_to_members: 'No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo.'
   pricing_page:
-    header: Planes
     gift: 'Donación '
     standard: 'Estándar '
     plus: Plus
     free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
     get_started_for_free: 'Comienza gratis '
-    gift_body_html: >
-      <p>Para grupos que no tienen el presupuesto para pagar una
-      suscripción.</p>
-
-      <p>Usándolo a donación, sin pago requerido.</p>
-    gift_donation_ask: Le pediremos a los miembros de tu grupo por una donación.
+    gift_body: Para grupos sin presupuesto
+    gift_donation_ask: Les pediremos a los miembros de tu grupo si quieren dar una donación
     unlimited_members: Cantidad ilimitada de miembros
     unlimited_decisions: 'Cantidad ilimitada de decisiones '
     email_support: 'soporte por correo electrónico '
+    slack_integration_html: |
+      Integración con <strong>Slack</strong>
     standard_price_html: |
       US<strong>$19</strong>/al mes<br><span>o</span>$190/al año
     plus_body: 'Todo en Estándar, más: '
+    multiple_groups: múltiples grupos
     premium_support: 'soporte especial '
-    custom_url: 'URL personalizado '
+    custom_subdomain_html: |
+      subdominio personalizado<br />
+      ej. <strong>tugrupo</strong>.loomio.org
     usage_statistics: Estadísticas de uso
     plus_price_html: |
       US<strong>$179</strong>/al mes<br><span>o</span> $1790/al año

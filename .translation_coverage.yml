@@ -1,43 +1,43 @@
 an:
-  frontpage: 52
+  frontpage: 51
   main_1_0: 18
-  server: 49
+  server: 48
 ar:
-  frontpage: 100
-  main_1_0: 99
-  server: 89
+  frontpage: 98
+  main_1_0: 92
+  server: 85
 be-BY:
-  frontpage: 58
-  main_1_0: 23
+  frontpage: 57
+  main_1_0: 22
   server: 61
 bg-BG:
   frontpage: 9
   main_1_0: 13
   server: 12
 ca:
-  frontpage: 49
+  frontpage: 48
   main_1_0: 17
-  server: 34
+  server: 33
 cmn:
   frontpage: 1
   main_1_0: 8
   server: 6
 cs:
-  frontpage: 76
-  main_1_0: 57
-  server: 62
+  frontpage: 75
+  main_1_0: 56
+  server: 60
 da:
-  frontpage: 52
+  frontpage: 51
   main_1_0: 27
-  server: 49
+  server: 48
 de:
-  frontpage: 100
-  main_1_0: 90
-  server: 85
+  frontpage: 98
+  main_1_0: 83
+  server: 82
 el:
-  frontpage: 100
-  main_1_0: 47
-  server: 73
+  frontpage: 98
+  main_1_0: 42
+  server: 71
 en-BE:
   frontpage: 0
   main_1_0: 0
@@ -48,43 +48,43 @@ en-NL:
   server: 0
 en-US: {}
 eo:
-  frontpage: 52
-  main_1_0: 23
-  server: 49
+  frontpage: 51
+  main_1_0: 22
+  server: 48
 es:
-  frontpage: 100
+  frontpage: 98
   main_1_0: 100
-  server: 98
+  server: 99
 es-AR:
   frontpage: 0
   main_1_0: 0
   server: 0
 fa-IR:
-  frontpage: 60
+  frontpage: 59
   main_1_0: 1
   server: 3
 fi:
-  frontpage: 100
-  main_1_0: 13
+  frontpage: 98
+  main_1_0: 12
   server: 7
 fr:
-  frontpage: 100
-  main_1_0: 92
-  server: 86
+  frontpage: 98
+  main_1_0: 84
+  server: 82
 fr-BE:
   frontpage: 0
   main_1_0: 0
   server: 0
 ga-IE:
-  frontpage: 69
-  main_1_0: 57
+  frontpage: 68
+  main_1_0: 55
   server: 42
 gl:
-  frontpage: 29
+  frontpage: 28
   main_1_0: 13
-  server: 20
+  server: 19
 he:
-  frontpage: 55
+  frontpage: 54
   main_1_0: 11
   server: 22
 he-IL: {}
@@ -94,45 +94,45 @@ hi:
   server: 0
 hi-IN: {}
 hr:
-  frontpage: 100
+  frontpage: 98
   main_1_0: 6
   server: 6
 hu:
-  frontpage: 73
-  main_1_0: 29
-  server: 60
+  frontpage: 72
+  main_1_0: 28
+  server: 59
 id:
-  frontpage: 29
-  main_1_0: 15
-  server: 29
+  frontpage: 28
+  main_1_0: 14
+  server: 28
 io:
   frontpage: 7
   main_1_0: 0
   server: 1
 it:
   frontpage: 100
-  main_1_0: 78
-  server: 83
+  main_1_0: 71
+  server: 80
 it-CH:
   frontpage: 0
   main_1_0: 0
   server: 0
 it-IT: {}
 ja:
-  frontpage: 72
-  main_1_0: 19
+  frontpage: 71
+  main_1_0: 18
   server: 36
 km:
   frontpage: 7
   main_1_0: 13
-  server: 27
+  server: 26
 ko:
-  frontpage: 100
-  main_1_0: 90
-  server: 48
+  frontpage: 98
+  main_1_0: 82
+  server: 45
 ko-KR: {}
 lt:
-  frontpage: 23
+  frontpage: 22
   main_1_0: 31
   server: 7
 lv:
@@ -144,12 +144,12 @@ mi:
   main_1_0: 3
   server: 1
 mk:
-  frontpage: 52
+  frontpage: 51
   main_1_0: 12
   server: 30
 ml:
   frontpage: 9
-  main_1_0: 14
+  main_1_0: 13
   server: 27
 ml-IN:
   frontpage: 0
@@ -157,50 +157,50 @@ ml-IN:
   server: 0
 nl: {}
 nl-NL:
-  frontpage: 100
-  main_1_0: 29
-  server: 59
+  frontpage: 98
+  main_1_0: 28
+  server: 58
 pl:
-  frontpage: 100
-  main_1_0: 53
+  frontpage: 98
+  main_1_0: 51
   server: 23
 pt-BR:
-  frontpage: 100
-  main_1_0: 99
-  server: 98
+  frontpage: 98
+  main_1_0: 92
+  server: 94
 pt-PT:
   frontpage: 16
   main_1_0: 0
   server: 3
 ro:
-  frontpage: 100
-  main_1_0: 45
-  server: 66
+  frontpage: 98
+  main_1_0: 39
+  server: 65
 ru:
-  frontpage: 60
+  frontpage: 59
   main_1_0: 23
-  server: 18
+  server: 17
 ru-RU: {}
 sk:
-  frontpage: 52
+  frontpage: 51
   main_1_0: 18
-  server: 49
+  server: 48
 sl:
-  frontpage: 58
-  main_1_0: 24
-  server: 54
-sr:
-  frontpage: 100
-  main_1_0: 90
-  server: 85
-sr-RS:
-  frontpage: 69
+  frontpage: 57
   main_1_0: 23
+  server: 53
+sr:
+  frontpage: 98
+  main_1_0: 83
   server: 82
+sr-RS:
+  frontpage: 68
+  main_1_0: 22
+  server: 79
 sv:
-  frontpage: 52
+  frontpage: 51
   main_1_0: 18
-  server: 49
+  server: 48
 te:
   frontpage: 15
   main_1_0: 8
@@ -212,13 +212,13 @@ th-TH:
   main_1_0: 0
   server: 0
 tr:
-  frontpage: 100
-  main_1_0: 95
-  server: 89
+  frontpage: 98
+  main_1_0: 88
+  server: 85
 uk:
-  frontpage: 72
-  main_1_0: 81
-  server: 54
+  frontpage: 71
+  main_1_0: 73
+  server: 52
 ur:
   frontpage: 0
   main_1_0: 0
@@ -229,9 +229,9 @@ ur-PK:
   server: 0
 vi:
   frontpage: 7
-  main_1_0: 13
+  main_1_0: 12
   server: 17
 zh-TW:
-  frontpage: 100
-  main_1_0: 99
-  server: 90
+  frontpage: 98
+  main_1_0: 92
+  server: 86
