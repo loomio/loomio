@@ -129,16 +129,11 @@ tr:
     error:
       all_email_addresses_belong_to_members: Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik.
   pricing_page:
-    header: Planlar
     gift: Hediye
     standard: Standart
     plus: Plus
     free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
     get_started_for_free: Ücretsiz başlayın
-    gift_body_html: |
-      <p>Abonelik ücretini ödemek için bir bütçesi olmayan gruplar için.</p>
-      <p>Bağış desteklidir, hiçbir ödeme için gerektirmez.</p>
-    gift_donation_ask: Grup üyelerinizden bir bağış isteyeceğiz.
     unlimited_members: sınırsız üyeler
     unlimited_decisions: sınırsız kararlar
     email_support: e-posta desteği
@@ -146,7 +141,6 @@ tr:
       US <strong>$19</strong>/aylık<br><span>ya da</span> $190/yıllık
     plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
     premium_support: Premium destek
-    custom_url: özel URL
     usage_statistics: kullanım istatistikleri
     plus_price_html: |
       US <strong>$179</strong>/aylık<br><span>ya da</span> $1790/yıllık
