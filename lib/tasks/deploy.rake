@@ -69,7 +69,7 @@ namespace :deploy do
 
   desc "Bump version of repository if pushing to production"
   task :bump_version, [:remote] do |t, args|
-    return unless args[:remote] == 'loomio-production'
+    exit 0 unless args[:remote] == 'loomio-production'
 
     puts "Bumping version from #{Loomio::Version.current}..."
     run_commands [
