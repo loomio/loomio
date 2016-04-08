@@ -50,9 +50,9 @@ namespace :deploy do
     plugins = args[:plugins] || 'loomio_org'
     puts "Building clientside assets, using plugin set #{plugins}..."
     run_commands [
-      "rake 'plugins:acquire[#{plugins}]' plugins:resolve_dependencies",              # install plugins specified in plugins/plugins.yml
-      "rm -rf plugins/**/.git",                                                       # allow cloned plugins to be added to this repo
-      "cd angular && npm install && gulp compile && cd ../"                           # build the app via gulp
+      "rake 'plugins:acquire[#{plugins}]' plugins:resolve_dependencies plugins:install", # install plugins specified in plugins/plugins.yml
+      "rm -rf plugins/**/.git",                                                          # allow cloned plugins to be added to this repo
+      "cd angular && npm install && gulp compile && cd ../"                              # build the app via gulp
     ]
   end
 
