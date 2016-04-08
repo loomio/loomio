@@ -182,6 +182,19 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_existing_user_invitation
+    test_group
+    judd
+    pending_invitation
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_new_user_invitation
+    test_group
+    pending_invitation
+    redirect_to last_email_development_index_path
+  end
+
   def setup_group_for_invitations
     setup_group
     another_test_group

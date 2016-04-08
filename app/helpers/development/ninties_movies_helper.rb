@@ -46,6 +46,14 @@ module Development::NintiesMoviesHelper
                             angular_ui_enabled: true)
   end
 
+  def judd
+    @judd ||= User.find_by_email('judd@example.com') ||
+              User.create!(name: 'Judd Nelson',
+                           email: 'judd@example.com',
+                           password: 'gh0stmovie',
+                           angular_ui_enabled: true)
+  end
+
   def test_group
     unless @test_group
       @test_group = Group.create!(name: 'Dirty Dancing Shoes',

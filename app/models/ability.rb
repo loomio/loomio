@@ -110,7 +110,7 @@ class Ability
     can :join, Group do |group|
       can?(:show, group) &&
       (group.membership_granted_upon_request? ||
-       group.invitations.find_by(recipient_email: @user.email, to_be_admin: true))
+       group.invitations.find_by(recipient_email: @user.email))
     end
 
     can [:make_admin], Membership do |membership|

@@ -13,7 +13,7 @@ module DeviseControllerHelper
       user.ability.authorize! :join, group
       group.add_member!(user)
       clear_invitation_token_from_session if invitation_from_session
-      clear_group_key_from_session        if group_from_session
+      session.delete(:group_key)          if group_from_session
     end
   end
 
@@ -25,10 +25,6 @@ module DeviseControllerHelper
 
   def group_from_session
     @group_from_session ||= Group.find_by(key: session[:group_key]) if session[:group_key]
-  end
-
-  def clear_group_key_from_session
-    session.delete(:group_key)
   end
 
   def invitation_from_session
