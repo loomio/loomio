@@ -78,10 +78,6 @@ ko:
     plus: 게다가
     free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
     get_started_for_free: 무료로 시작하기
-    gift_body_html: |
-      <p>구독할 예산이 없는 그룹을 대상으로 합니다.</p>
-      <p>구독에 대한 비용 결제 없이, 기부만 권장합니다.</p>
-    gift_donation_ask: 그룹 멤버들에게 후원을 요청합니다.
     unlimited_members: 멤버 제한 없음
     unlimited_decisions: 의사결정 횟수 제한 없음
     email_support: 이메일 지원
@@ -89,7 +85,6 @@ ko:
       <strong>$19</strong>미국달러/월<br><span>또는 </span> $190 미국달러/년
     plus_body: '일반 플랜의 모든 사항, 게다가:'
     premium_support: 프리미엄 지원
-    custom_url: 사용자 정의 URL
     usage_statistics: 사용량 통계
     plus_price_html: |
       <strong>$179</strong>미국달러/월<br><span>또는 </span> $1790 미국달러/년

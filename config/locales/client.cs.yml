@@ -64,16 +64,6 @@ cs:
   proposal_collapsed:
     expand: Rozbalit
     outcome: 'Výsledek: {{outcome}}'
-  thread_volume_card:
-    change_volume_link: Změna
-  thread_volume_form:
-    quiet_label: Žádné e-maily
-    submit: Aktualizovat
-  group_volume_card:
-    change_volume_link: Změna
-  group_volume_form:
-    quiet_label: Žádné e-maily
-    submit: Aktualizovat
   inbox:
     clear: Vyčistit
     latest: Nejnovější
@@ -294,8 +284,6 @@ cs:
     standard_price_html: |
       <strong>19$(US)</strong>/měsíčně<br><span>nebo</span> 190$(US)/ročně
     premium_support: prémiová podpora
-    custom_url: vlastní URL
-    usage_statistics: statistiky využití
     plus_price_html: |
       <strong>179$(US)</strong>/měsíc<br><span>nebo</span> 1790$(US)/rok
     select: Vybrat
@@ -401,7 +389,6 @@ cs:
     update_profile: Aktualizovat profil
   email_settings_page:
     header: Nastavení emailu
-    email: Email
   dashboard_page:
     aria_label: Ovládací panel
     no_threads:
@@ -462,14 +449,11 @@ cs:
     liked_by_name: '{{name}} se toto líbí.'
     liked_by_names_and_name: '{{joinedNames}} a {{name}} se toto líbí.'
     started_by: 'Vytvořeno <strong>{{name}}</strong>'
-    volume:
-      loud: 'E-mail vždy, když je aktivita v tomto vlákně.'
   thread_group:
     aria_label: Název skupiny
   thread_context:
     aria_label: Kontext tématu
     thread_options: Možnosti tématu
-    notifications: Upozornění
     edit_thread: Upravit
     move_thread: Přesunout
     print_thread: Tisk
@@ -545,12 +529,6 @@ cs:
     invitation: Rady pro napsání senzační pozvánky
     proposal: Rady pro napsání jasného návrhu
     vote: Můžete kdykoliv svůj postoj změnit
-  pricing_page:
-    organisations: Organizace
-    organisations_examples: 'např. firmy, vládní agentury, komunitní organizace'
-    informal_groups: neformální skupiny
-    informal_groups_desc: Členové vaší skupiny budou vyzváni aby zaplatili co mohou
-    informal_groups_examples: 'např. rodiny, sociální hnutí, kolektivy'
   angular:
     switch_back: Přepnout zpět na staré Loomio
     give_feedback: Sdělte nám svůj názor

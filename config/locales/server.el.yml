@@ -123,12 +123,10 @@ el:
     standard: Τυπικό
     plus: Πρόσθετο
     get_started_for_free: Ξεκινήστε δωρεάν
-    gift_donation_ask: Θα ζητήσουμε μια δωρεά από τα μέλη της ομάδας σου.
     unlimited_members: απεριόριστα μέλη
     unlimited_decisions: απεριόριστες αποφάσεις
     email_support: υποστήριξη μέσω ηλεκτρονικού ταχυδρομείου
     plus_body: 'Ότι περιέχει το Τυπικό πακέτο, συν:'
-    custom_url: σύνθετος σύνδεσμος
     usage_statistics: στατιστικά χρήσης
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.

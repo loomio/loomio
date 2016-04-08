@@ -83,54 +83,6 @@ ko:
     quiet: 조용히
     mute: 소거
     unmute: 소거해제
-  thread_volume_card:
-    heading: 토론 알림 설정
-    body:
-      loud: '모든 이메일 받기: 이 쓰레드의 모든 활동에 관한 이메일을 받게 됩니다.'
-      normal: '제안을 이메일로 받기: 누군가가 제안을 하거나, 종료되거나, 결과를 작성하면 이메일을 받습니다.'
-      quiet: '이메일 받지 않기: 이 쓰레드에 관한 어떤 이메일도 받지 않습니다.'
-      mute: '쓰레드 알림 해제 : 이 쓰레드에 관한 이메일은 받지 않으며, 최근 쓰레드와 읽지 않은 페이지에 이 쓰레드를 포함하지 않습니다.'
-    change_volume_link: 변경
-  thread_volume_form:
-    header: 토론 알림 설정
-    loud_label: 모든 이메일 받기
-    loud_description: 이 쓰레드와 관련한 활동이 있으면 메일을 받습니다.
-    normal_label: 이메일 제안
-    normal_description: '누군가 제안하거나, 종료시키기 전이나, 성과를 작성할때마다 메일을 받습니다.'
-    quiet_label: 이메일 없음
-    quiet_description: 다른 사용자가 @언급하지 않으면 이 쓰레드에 관한 메일을 받지 않습니다.
-    mute_label: 쓰레드 알림 해제
-    mute_description: '이 쓰레드에 관한 이메일은 받지 않으며, 최근 쓰레드와 읽지 않은 페이지에 이 쓰레드를 포함하지 않습니다.'
-    submit: 업데이트
-    messages:
-      loud: 이 쓰레드의 활동 내역을 메일로 받습니다.
-      normal: 이 쓰레드의 제안에 관한 메일을 받습니다.
-      quiet: 이 쓰레드와 관련한 메일을 받지 않습니다.
-      mute: 쓰레드 알림 해제
-  group_volume_card:
-    heading: 그룹 알림
-    body:
-      loud: '모든 이메일을 받음: 이 그룹의 모든 활동 내역에 관한 이메일을 받습니다.'
-      normal: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.
-      quiet: '이메일 받지 않음: 이 그룹에 관한 어떤 이메일도 받지 않습니다.'
-      mute: '그룹 알림 해제: 이 그룹에 관한 어떤 이메일도 받지 않으며, 최신 쓰레드 목록과 읽지 않은 페이지에서도 제외합니다.'
-    change_volume_link: 변경
-  group_volume_form:
-    header: 그룹 알림
-    loud_label: 모든 이메일 받기
-    loud_description: 이 그룹의 모든 활동 내역을 이메일로 받습니다.
-    normal_label: 새로운 쓰레드와 제안을 이메일로 받습니다.
-    normal_description: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.
-    quiet_label: 이메일 없음
-    quiet_description: 다른 사용자가 @언급하지 않으면 이 그룹에 관한 메일을 받지 않습니다.
-    mute_label: 그룹 알림 해제
-    mute_description: '이 그룹에 관한 어떤 이메일도 받지 않으며, 최신 쓰레드 목록과 읽지 않은 페이지에서도 제외합니다.'
-    submit: 업데이트
-    messages:
-      loud: 이 그룹의 활동 내역을 메일로 받습니다.
-      normal: 이 그룹의 제안에 관한 메일을 받습니다.
-      quiet: 이 그룹과 관련한 메일을 받지 않습니다.
-      mute: 그룹 알림 해제
   inbox:
     clear: 지우기
     latest: 최신
@@ -434,14 +386,10 @@ ko:
     plus: 게다가
     free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
     get_started_for_free: 무료로 시작하기
-    gift_body_html: |
-      <p>구독할 예산이 없는 그룹을 대상으로 합니다.</p>
-      <p>구독에 대한 비용 결제 없이, 기부만 권장합니다.</p>
     support_before: 하게 되어 기쁩니다.
     support_link: 당신과 이야기하게 되어
     support_after: 시범 사용 기간 연장에 대해서나 혹은 무엇이든 물어보세요.
     remind_me_later: 나중에 상기시켜 주세요
-    gift_donation_ask: 그룹 멤버들에게 후원을 요청합니다.
     unlimited_members: 멤버 제한 없음
     unlimited_decisions: 의사결정 횟수 제한 없음
     email_support: 이메일 지원
@@ -449,8 +397,6 @@ ko:
       <strong>$19</strong>미국달러/월<br><span>또는 </span> $190 미국달러/년
     plus_body: '일반 플랜의 모든 사항, 게다가:'
     premium_support: 프리미엄 지원
-    custom_url: 사용자 정의 URL
-    usage_statistics: 사용량 통계
     plus_price_html: |
       <strong>$179</strong>미국달러/월<br><span>또는 </span> $1790 미국달러/년
     select: 선택
@@ -616,16 +562,8 @@ ko:
     update_profile: 프로필 저장
   email_settings_page:
     header: 이메일 설정
-    email: 이메일
     daily_summary_label: 일별 요약 이메일
-    daily_summary_description: '매일 아침, 어제 읽지 않은 활동을 메일로 보냅니다. 루미오에서 벌어지는 일들을 쉽게 확인할 수 있습니다.'
-    on_participation_label: 내가 참여한 토론의 활동
-    on_participation_description: "토론에 참여하면, 불륨 설정이 '높음'으로 변경되어 이후 모든 활동을 자동으로 이메일로 보냅니다."
-    proposal_closing_soon_label: 제안이 마감되기 전
-    proposal_closing_soon_description: '제안이 마감되기 24시간 전, 볼륨에 상관없이 해당 제안에 대한 최근 소식을 이메일로 알려드립니다.'
-    mentioned_label: 나를 @언급했을 때
     mentioned_description: 누군가 당신과 이야기하고 싶을 경우 @언급할 겁니다. 사람들이 언급할 때마다 이메일을 받게 되기 때문에 사용하는게 좋습니다.
-    update_settings: 이메일 설정 저장
     messages:
       updated: 이메일 설정을 저장했습니다.
   dashboard_page:
@@ -696,25 +634,11 @@ ko:
     liked_by_name: '{{name}}님이 좋아합니다.'
     liked_by_names_and_name: '{{joinedNames}}과 {{name}}님이 좋아합니다.'
     started_by: '<strong>{{name}}</strong>님이 시작하였습니다.'
-    volume:
-      loud: 이 쓰레드의 모든 활동 내역에 대해 이메일합니다.
-      loud_aria_description: 이 그룹의 알림 소리가 크게 설정됩니다. 이것은 이 그룹에 움직임이 있을 때마다 이메일을 받게 된다는 것을 의미합니다.
-      loud_message: ' "{{name}}"의 모든 활동 내역을 이메일로 받게됩니다.'
-      normal: '제안이 만들어지거나, 제안이 만료되거나 혹은 결과물이 올라오면 이메일로 알리기'
-      normal_aria_description: 이 쓰레드의 알림 소리가 보통으로 설정됩니다. 제안이 만들어졌거나 제안이 마무리될 때 혹은 결과가 등록되었을 때 이메일을 받게 됩니다.
-      normal_message: '"{{name}}"의 중요한 사안에 대해서만 이메일로 받게됩니다.'
-      quiet: 이 쓰레드에 대해 이메일 보내지 마세요.
-      quiet_aria_description: 이 쓰레드의 알림 소리가 묵음으로 설정됩니다. 누군가 당신을 언급할 때만 이메일이 발송됩니다.
-      quiet_message: '누군가 당신을 언급하지 않는 한 "{{name}}"와 관련된 메일이 발송되지 않습니다.'
-      mute: '@로 언급되기 전까지는 이 쓰레드를 대시보드에서 감추고 알림을 비활성화해주세요.'
-      mute_aria_description: '이 쓰레드의 알림 소리가 묵음으로 설정됩니다. 누군가 귀하를 언급하는 것을 제외하고 이 쓰레드에 대해 귀하에게 이메일을 발송하지 않으며, 그리고 이 쓰레드는 귀하의 대시보드에서 나타나지 않습니다.'
-      mute_message: '"{{name}}"이 당신의 대시보드에서 삭제되었습니다.'
   thread_group:
     aria_label: 그룹명
   thread_context:
     aria_label: 주제 컨텍스트
     thread_options: 쓰레드 옵션
-    notifications: 알림
     edit_thread: 편집
     move_thread: 이동
     print_thread: 인쇄
@@ -884,13 +808,6 @@ ko:
     invitation: 훌륭한 초대를 쓰기 위한 도움말
     proposal: 명확한 제안을 쓰기을 위한 도움말
     vote: 선택은 언제나 변경할 수 있습니다.
-  pricing_page:
-    intro: "예산이 있는 그룹은 이 도구를 사용하는 비용을 냅니다.\n비용을 낼 수 없는 그룹들은 가능한 방법 - 멤버들에게 자발적으로 기부하라는 요청을 보냅니다. \n당신의 공헌은 루미오의 독립성을 유지하고 루미오가 광고 없이 그리고 내부의 커뮤니티들에 의해 운영된다는 것을 의미합니다.\n"
-    organisations: 조직
-    organisations_examples: '예. 회사, 정부기관, 커뮤니티 조직'
-    informal_groups: 비공개 그룹
-    informal_groups_desc: 여러분 그룹의 멤버들은 멤버들이 지불할 수 있는 만큼만 요청을 받습니다.
-    informal_groups_examples: '예. 가족, 사회운동, 단체'
   angular:
     switch_back: 이전 루미오로 돌아가기
     give_feedback: 피드백 남기기

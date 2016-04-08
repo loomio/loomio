@@ -131,16 +131,11 @@ zh-TW:
     error:
       all_email_addresses_belong_to_members: 我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。
   pricing_page:
-    header: 計畫
     gift: 禮物方案
     standard: 標準方案
     plus: PLUS
     free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
     get_started_for_free: 免費開始
-    gift_body_html: |
-      <p>給沒有預算支付訂閱費的群組。</p>
-      <p>接受捐款，不需付費。</p>
-    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
     unlimited_members: 不限成員數量
     unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
@@ -148,7 +143,6 @@ zh-TW:
       美元 <strong>$19</strong>/月<br><span>或</span> $190/年
     plus_body: 包含標準方案，再加上：
     premium_support: 進階支援
-    custom_url: 自定義 URL
     usage_statistics: 使用統計
     plus_price_html: |
       美元 <strong>$179</strong>/month<br><span>或</span> $1790/year

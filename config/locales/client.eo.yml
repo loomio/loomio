@@ -48,18 +48,6 @@ eo:
   proposal_outcome_form:
     outcome_label: Propona rezulto
     publish_outcome: Publikigi rezulton
-  thread_volume_card:
-    body:
-      mute: 'Fadeno mutiĝis: vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu fadeno kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj.'
-  thread_volume_form:
-    mute_description: Vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu fadeno kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj.
-    submit: Ĝisdatigi
-  group_volume_card:
-    body:
-      mute: 'Grupo mutiĝis: vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu grupo kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj.'
-  group_volume_form:
-    mute_description: Vi ne plu ricevos retpoŝtaĵojn pri ĉi tiu grupo kaj ĝi forviŝiĝos el viaj paĝoj de lastatempaj fadenoj kaj nelegitaĵoj.
-    submit: Ĝisdatigi
   inbox:
     unread: Nelegitaj
   comment_form:
@@ -356,16 +344,3 @@ eo:
     invitation: Konsiloj por verki bonegan inviton
     proposal: Konsiloj por verki klaran proponon
     vote: Vi povas ŝanĝi vian sintenon iam ajn
-  pricing_page:
-    intro: >
-      Grupoj kun budĝeto pagas abonon por uzi la ilon.
-
-      Grupoj sen maniero pagi abonon pagas laŭkapable:
-
-      la membroj estas invitataj volontule kontribui. Via kontribuo signifas ke
-      ni povas lasi Loomion sendependa, senreklama kaj puŝata de nia komunumo.
-    organisations: Organizoj
-    organisations_examples: 'ekz. entreprenoj, landestraraj agentejoj, komunumaj organizoj'
-    informal_groups: Neformalaj grupoj
-    informal_groups_desc: Membroj de via grupo estos petataj pagi kiom ili povas
-    informal_groups_examples: 'ekz. familiaj, sociaj movadoj, kolektivoj'

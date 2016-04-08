@@ -126,18 +126,11 @@ fr:
       please_hold: "S'il vous plaît prévoir jusqu'à cinq 5 minutes pour la livraison du courriel  et veuillez vérifier votre dossier spam."
     start_making_decisions: 'Pour commencer à prendre des décisions collectives sur Loomio, créez un groupe gratuitement:'
   pricing_page:
-    header: Options
     gift: Cadeau
     standard: Standard
     plus: Plus
     free_trial_html: "Nous vous demanderons de choisir votre option tarifaire après une <span>période d'essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire."
     get_started_for_free: Commencez gratuitement
-    gift_body_html: >
-      <p>Pour les groupes qui n'ont pas le budget pour payer une
-      souscription.</p>
-
-      <p>Dons acceptés, sans obligation de paiement.</p>
-    gift_donation_ask: Nous proposerons aux membres de votre groupe de faire un don.
     unlimited_members: membres illimités
     unlimited_decisions: décisions illimitées
     email_support: Support courriel
@@ -145,7 +138,6 @@ fr:
       US <strong>$19</strong>/mois<br><span>ou</span> $190/an
     plus_body: 'Tout ce qui est compris dans Standard, plus :'
     premium_support: support Premium
-    custom_url: lien URL personnalisé
     usage_statistics: "statistiques d'utilisation"
     plus_price_html: |
       US <strong>$179</strong>/mois<br><span>ou</span> $1790/an

@@ -83,54 +83,6 @@ fr:
     quiet: Bas
     mute: Désactivé
     unmute: Réactiver le son
-  thread_volume_card:
-    heading: Notifications de discussions
-    body:
-      loud: "Tous les courriels: vous recevrez un courriel à chaque fois qu'il y aura une activité dans cette discussion."
-      normal: "Courriels de propositions: vous recevrez un courriel lorsqu'une proposition sera lancée ou sur le point de fermer, et quand un résultat sera publié."
-      quiet: "Aucun courriel : vous ne recevrez aucun courriel à propose de l'activité de cette discussion."
-      mute: 'Discussion désactivée : vous ne recevrez pas de courriel à propose de cette discussion, et elle sera enlevée de vos pages "Récent" et "Non Lu".'
-    change_volume_link: Modifier
-  thread_volume_form:
-    header: Notifications de discussions
-    loud_label: Tous les courriels
-    loud_description: "Vous recevrez un courriel à chaque fois qu'il y aura une activité dans cette discussion."
-    normal_label: Courriels de proposition
-    normal_description: "Vous recevrez un courriel lorsqu'une proposition est lancée ou sur le point de fermer, et quand un résultat est publié."
-    quiet_label: Aucun courriel
-    quiet_description: "Vous ne recevrez aucun courriel à propos de cette discussion sauf si quelqu'un vous @mentionne."
-    mute_label: Désactiver la discussion
-    mute_description: 'Vous ne recevrez pas de courriel à propos de cette discussion, et elle sera enlevée de vos pages "Récent" et "Non lu".'
-    submit: Mettre à jour
-    messages:
-      loud: "Vous recevrez un courriel lorsqu'il y aura une activité dans cette discussion."
-      normal: "Vous recevrez un courriel lorsqu'il y aura une proposition dans cette discussion."
-      quiet: Vous ne recevrez aucun courriel à propos de cette discussion.
-      mute: Discussion désactivée.
-  group_volume_card:
-    heading: Notifications de groupes
-    body:
-      loud: "Tous les courriels: vous recevrez un courriel à chaque fois qu'il y aura une activité dans ce groupe."
-      normal: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans ce groupe.
-      quiet: "Aucun courriel : vous ne recevrez aucun courriel à propos de l'activité de ce groupe."
-      mute: 'Groupe désactivé: vous ne recevrez aucun courriel à propos de ce groupe, et il sera enlevé de vos pages "Récent" et "Non lu".'
-    change_volume_link: Modifier
-  group_volume_form:
-    header: Notifications de groupes
-    loud_label: Tous les courriels
-    loud_description: "Vous recevrez un courriel à chaque fois qu'il y a une activité dans ce groupe."
-    normal_label: Envoyer les nouvelles discussions et propositions par courriel.
-    normal_description: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans ce groupe.
-    quiet_label: Aucun courriel
-    quiet_description: "Vous ne recevrez aucun courriel à propos de l'activité de ce groupe, sauf si quelqu'un vous @mentionne."
-    mute_label: Désactiver le groupe
-    mute_description: 'Vous ne recevrez aucun courriel concernant ce groupe, et il sera retiré de vos pages "Récent" et "Non lu".'
-    submit: Mettre à jour
-    messages:
-      loud: "Vous recevrez un courriel lorsqu'il y aura une activité dans ce groupe."
-      normal: "Vous recevrez un courriel lorsqu'il y aura une proposition dans ce groupe."
-      quiet: Vous ne recevrez aucun courriel concernant ce groupe.
-      mute: Groupe désactivé.
   inbox:
     clear: Vider
     latest: Dernier
@@ -429,16 +381,10 @@ fr:
     plus: Plus
     free_trial_html: "Nous vous demanderons de choisir votre option tarifaire après une <span>période d'essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire."
     get_started_for_free: Commencez gratuitement
-    gift_body_html: >
-      <p>Pour les groupes qui n'ont pas le budget pour payer une
-      souscription.</p>
-
-      <p>Dons acceptés, sans obligation de paiement.</p>
     support_before: Je suis heureux de
     support_link: discuter avec vous
     support_after: "de la prolongation de votre essai, ou de n'importe quelle autre question que vous pourriez avoir."
     remind_me_later: Relancez-moi plus tard
-    gift_donation_ask: Nous proposerons aux membres de votre groupe de faire un don.
     unlimited_members: membres illimités
     unlimited_decisions: décisions illimitées
     email_support: Support courriel
@@ -446,8 +392,6 @@ fr:
       US <strong>$19</strong>/mois<br><span>ou</span> $190/an
     plus_body: 'Tout ce qui est compris dans Standard, plus :'
     premium_support: support Premium
-    custom_url: lien URL personnalisé
-    usage_statistics: "statistiques d'utilisation"
     plus_price_html: |
       US <strong>$179</strong>/mois<br><span>ou</span> $1790/an
     select: Sélectionner
@@ -628,16 +572,8 @@ fr:
     update_profile: Mettre à jour le profil
   email_settings_page:
     header: Réglages de courriel
-    email: Courriel
     daily_summary_label: Résumé quotidien
-    daily_summary_description: "Tous les matins, vous recevrez un courriel avec les activités non-lues de la veille. Ce courriel vous permet une routine simple afin de rester au courant de l'activité sur Loomio."
-    on_participation_label: Activité des discussions auxquelles je participe
-    on_participation_description: "Lorsque vous participez à une discussion, le niveau de notification sera changé en «\_Élevé\_» afin que toute activité ultérieure vous soit immédiatement notifiée."
-    proposal_closing_soon_label: "Avant qu'une proposition se termine"
-    proposal_closing_soon_description: '24 heures avant que la proposition se termine, peu importe le niveau de notification, vous recevrez un courriel avec les dernières informations sur la proposition.'
-    mentioned_label: Lorsque je suis @mentionné(e)
     mentioned_description: "Lorsque quelqu'un veut attirer votre attention, il va vous @mentionner. Nous vous recommandons de laisser ce paramètre activé, afin que vous receviez un courriel quand ça se produit."
-    update_settings: Mettre à jour les réglages courriel
     messages:
       updated: Réglages courriel mis à jour
   dashboard_page:
@@ -708,25 +644,11 @@ fr:
     liked_by_name: 'Aimé par {{name}}.'
     liked_by_names_and_name: 'Aimé par {{joinedNames}} et {{name}}.'
     started_by: 'Démarrée par <strong>{{name}}</strong>'
-    volume:
-      loud: "Envoyer un courriel dès qu'il y a de l'activité dans cette discussion."
-      loud_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Forte. Cela signifie que vous recevrez un courriel à chaque fois qu'il y a de l'activité dans cette discussion."
-      loud_message: 'Vous recevrez des courriels à propos de toutes les activités dans "{{name}}"'
-      normal: "Envoyer un courriel uniquement lorsqu'une proposition est créée, s'apprête à fermer, ou qu'un résultat est publié."
-      normal_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Normale. Cela signifie que vous recevrez un courriel à chaque fois qu'une discussion est créée, fermée ou qu'un résultat est publié."
-      normal_message: 'Vous recevrez seulement des courriels pour les événements importants concernant {{name}}".'
-      quiet: "N'envoyer aucun courriel à propos de cette discussion."
-      quiet_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez aucun courriel à propos de cette discussion sauf si quelqu'un vous @mentionne."
-      quiet_message: "Vous ne recevrez aucun courriel à propos de \"{{name}}\" sauf si quelqu'un vous @mentionne"
-      mute: "Cache cette discussion du tableau de bord et n'envoie aucune notification sauf si l'on est @mentionné."
-      mute_aria_description: "Votre fréquence de notification pour cette discussion est paramétrée à Discret. Cela signifie que vous ne recevrez aucun courriel à à propos de cette discussion sauf si quelqu'un vous @mentionne, et cette discussion sera retirée de votre tableau de bord."
-      mute_message: '"{{name}}" a été retiré de votre Tableau de Bord.'
   thread_group:
     aria_label: Nom du groupe
   thread_context:
     aria_label: Contexte de la discussion
     thread_options: Options de la discussion
-    notifications: Notifications
     edit_thread: Editer
     move_thread: Déplacer
     print_thread: Imprimer
@@ -903,13 +825,6 @@ fr:
     invitation: Conseils pour rédiger une belle invitation
     proposal: Conseils pour écrire une proposition claire
     vote: Vous pouvez changer votre position à tout moment
-  pricing_page:
-    intro: "Les groupes qui ont des ressources paient un abonnement pour pour utiliser l’outil.\nLes groupes qui n'en n'ont pas les moyens utilisent le modèle \"Donne ce que tu peux\" : leurs membres sont invités à faire des dons. Vos contributions permettent à Loomio de conserver son indépendance, d'être gratuit, sans pubs et géré par notre communauté. \n"
-    organisations: Organismes
-    organisations_examples: 'par exemple : entreprises, collectivités, associations locales'
-    informal_groups: Groupes informels
-    informal_groups_desc: Nous demanderons aux membres de votre groupe de faire des dons.
-    informal_groups_examples: 'par exemple : familles, mouvements sociaux, collectifs'
   angular:
     switch_back: "Retourner à l'ancienne version de Loomio"
     give_feedback: Donner votre avis
