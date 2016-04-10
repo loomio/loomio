@@ -14,6 +14,12 @@
     <start-menu ng-if="isLoggedIn()"></start-menu>
     <outlet     name="after-start-menu"></outlet>
 
+    <div style="display: none;" class="lmo-loading-screen" ng-class="{'lmo-loading-complete': isLoaded}">
+      <div class="lmo-loading-screen__image">
+        <img src="assets/loomio-community.jpg" />
+      </div>
+    </div>
+
     <script src="boot.js"></script>
   </body>
 </html>
