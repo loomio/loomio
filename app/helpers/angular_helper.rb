@@ -1,10 +1,13 @@
 module AngularHelper
 
+  def boot
+    app_config
+  end
+
   def boot_angular_ui
     redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
-    metadata                                      if browser.bot? && respond_to?(:metadata, true)
-    app_config
-    render 'layouts/angular', layout: false
+    # metadata                                      if browser.bot? && respond_to?(:metadata, true)
+    render 'application/index', layout: false
   end
 
   def client_asset_path(filename)
@@ -33,11 +36,14 @@ module AngularHelper
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       chargify:            app_config_chargify,
+      intercom:            app_config_intercom,
       pageSize: {
         default:           ENV['DEFAULT_PAGE_SIZE'] || 30,
         groupThreads:      ENV['GROUP_PAGE_SIZE'],
         threadItems:       ENV['THREAD_PAGE_SIZE']
-      }
+      },
+      googleAnalyticsId:   Rails.application.secrets.google_analytics_id,
+      fayeUrl:             Rails.application.secrets.faye_url
     }
   end
 
@@ -57,12 +63,16 @@ module AngularHelper
         }
       },
       donation_url: Rails.application.secrets.chargify_donation_url,
-      nagCache: {}
     }
   end
 
-  def use_angular_ui?
-    !request.xhr?
+  def app_config_intercom
+    return unless Rails.application.secrets.intercom_app_id && current_user_or_visitor.is_logged_in?
+    {
+      appId:    Rails.application.secrets.intercom_app_id,
+      secret:   Rails.application.secrets.intercom_app_secret,
+      userHash: Digest::SHA1.hexdigest(Rails.application.secrets.intercom_app_secret+current_user.id.to_s)
+    }
   end
 
   def angular_asset_folder

@@ -203,6 +203,8 @@ Loomio::Application.routes.draw do
 
   get '/robots'     => 'robots#show'
 
+  get 'boot'                               => 'application#boot', format: :js, as: :boot
+
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 

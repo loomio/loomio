@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
        admin_link: AppConfig.baseUrl+"/admin/users/#{CurrentUser.id}"
        app_id: AppConfig.intercomAppId
        user_id: CurrentUser.id
-       user_hash: AppConfig.intercomUserHash
+       user_hash: AppConfig.intercom.userHash
        email: CurrentUser.email
        name: CurrentUser.name
        username: CurrentUser.username

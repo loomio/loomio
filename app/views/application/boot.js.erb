@@ -1,0 +1,21 @@
+let includeJs = function(url, callback) {
+  var elem   = document.createElement('script')
+  elem.src   = url
+  elem.onload = callback
+  document.getElementsByTagName('body')[0].appendChild(elem)
+}
+
+let includeCss = function(url, opts) {
+  if (!opts) { opts = {} }
+  var elem   = document.createElement('link')
+  elem.href  = url
+  elem.media = opts.media || 'screen'
+  elem.rel   = opts.rel   || 'stylesheet'
+  document.getElementsByTagName('head')[0].appendChild(elem)
+}
+
+<%= render 'application/boot/loomio' %>
+<%= render 'application/boot/faye'             if @appConfig[:fayeUrl] %>
+<%= render 'application/boot/intercom'         if @appConfig.dig(:intercom, :appId) %>
+<%= render 'application/boot/google_analytics' if @appConfig[:googleAnalyticsId] %>
+<%= javascript_include_tag 'angular_ahoy'      if hosted_by_loomio? %>
