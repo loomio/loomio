@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include LocalesHelper
   include ApplicationHelper
   include AngularHelper
+  include MetadataHelper
+  include ConfigHelper
   include ProtectedFromForgery
   include LoadAndAuthorize
 
@@ -10,8 +12,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_or_visitor
   helper_method :dashboard_or_root_path
 
+  before_filter :detect_old_browers
   before_filter :set_application_locale
   around_filter :user_time_zone, if: :user_signed_in?
+
+  before_filter :set_app_config, only: [:show, :index]
+  before_filter :set_metadata, only: :show
 
   # intercom
   skip_after_filter :intercom_rails_auto_include
@@ -27,11 +33,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def show
+    render :index, layout: false
+  end
+
+  def index
+    render layout: false
+  end
+
   def browser_not_supported
     render layout: false
   end
 
   protected
+
+  def detect_old_browers
+    redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
+  end
 
   def respond_with_error(message)
     render 'application/display_error', locals: { message: t(message) }
