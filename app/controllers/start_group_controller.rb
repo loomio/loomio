@@ -1,4 +1,6 @@
 class StartGroupController < ApplicationController
+  layout 'pages'
+
   def new
     @errors = []
     @group = Group.new

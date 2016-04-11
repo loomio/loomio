@@ -11,6 +11,10 @@ module ApplicationHelper
     end
   end
 
+  def show_login_button?
+    controller_name != 'sessions' && !current_user_or_visitor.is_logged_in?
+  end
+
   def twitterized_type(type)
     case type
       when :alert

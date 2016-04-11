@@ -16,7 +16,11 @@
     .navbar.navbar-top{role: 'navigation'}
       .navbar-inner
         .navbar-container
-          = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Loomio home page'
+          .pull-left
+            = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Loomio home page'
+          .pull-right
+            = link_to t(:"frontpage.link.log_in"), new_user_session_path, class: 'btn btn-orange' if show_login_button?
+          .clearfix
 
     .container.home-flash
       = render 'application/flash_messages', :flash => flash
