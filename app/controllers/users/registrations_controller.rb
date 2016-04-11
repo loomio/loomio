@@ -9,8 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     @user = User.new(
-      name:  @omniauth_authentication&.name  || @invitation&.recipient_name,
-      email: @omniauth_authentication&.email || @invitation&.recipient_email
+      name:  @omniauth_authentication&.name  || invitation_from_session&.recipient_name,
+      email: @omniauth_authentication&.email || invitation_from_session&.recipient_email
     )
   end
 
