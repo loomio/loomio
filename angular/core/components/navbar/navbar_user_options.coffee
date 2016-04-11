@@ -3,8 +3,8 @@ angular.module('loomioApp').directive 'navbarUserOptions', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_user_options.html'
   replace: true
-  controller: ($scope, $rootScope, CurrentUser, $window, RestfulClient, IntercomService, AppConfig, UserHelpService) ->
-    $scope.currentUser = CurrentUser
+  controller: ($scope, $rootScope, User, $window, RestfulClient, IntercomService, AppConfig, UserHelpService) ->
+    $scope.currentUser = User.current
 
     $scope.helpLink = ->
       UserHelpService.helpLink()

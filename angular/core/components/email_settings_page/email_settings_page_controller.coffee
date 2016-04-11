@@ -1,18 +1,18 @@
-angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, FormService, CurrentUser, $location, ModalService, ChangeVolumeForm) ->
+angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, FormService, User, $location, ModalService, ChangeVolumeForm) ->
 
-  @user = CurrentUser.clone()
+  @user = User.current().clone()
 
   @groupVolume = (group) ->
-    group.membershipFor(CurrentUser).volume
+    group.membershipFor(User.current()).volume
 
   @defaultSettingsDescription = ->
-    "email_settings_page.default_settings.#{CurrentUser.defaultMembershipVolume}_description"
+    "email_settings_page.default_settings.#{User.current().defaultMembershipVolume}_description"
 
   @changeDefaultMembershipVolume = ->
-    ModalService.open ChangeVolumeForm, model: => CurrentUser
+    ModalService.open ChangeVolumeForm, model: => User.current()
 
   @editSpecificGroupVolume = (group) ->
-    ModalService.open ChangeVolumeForm, model: => group.membershipFor(CurrentUser)
+    ModalService.open ChangeVolumeForm, model: => group.membershipFor(User.current())
 
   @submit = FormService.submit @, @user,
     submitFn: Records.users.updateProfile

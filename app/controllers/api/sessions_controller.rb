@@ -3,7 +3,7 @@ class API::SessionsController < Devise::SessionsController
 
   def create
     sign_in resource_name, resource
-    head :ok
+    render json: CurrentUserSerializer.new(current_user).as_json
   end
 
   def destroy

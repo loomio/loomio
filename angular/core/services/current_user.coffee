@@ -1,9 +1,13 @@
-angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConfig) ->
-  Records.import(AppConfig.seedRecords)
+angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
 
-  if AppConfig.currentUserId?
-    AppConfig.membershipsLoaded = true
-    $rootScope.$broadcast 'currentUserMembershipsLoaded'
+  login: (data) ->
+    return unless data.current_user and data.current_user.id
+    Records.import(data)
+
+    _.merge AppConfig,
+      currentUserId: data.current_user.id
+      inboxLoaded: false
+      notificationsLoaded: false
 
     Records.discussions.fetchInbox().then ->
       AppConfig.inboxLoaded = true
@@ -13,6 +17,7 @@ angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConf
       AppConfig.notificationsLoaded = true
       $rootScope.$broadcast 'notificationsLoaded'
 
-    Records.users.find(AppConfig.currentUserId)
-  else
-    Records.users.build()
+    @current()
+
+  current: ->
+    Records.users.find(AppConfig.currentUserId) or Records.users.build()
