@@ -1,5 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'pages'
   include DeviseControllerHelper
 
   before_filter :store_group_key_to_session, only: :new

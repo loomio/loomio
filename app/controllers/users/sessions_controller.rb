@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  layout 'pages'
   include DeviseControllerHelper
 
   # at some point in the future we can remove this
