@@ -3,37 +3,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   before_filter :store_group_key_to_session, only: :new
   before_filter :redirect_if_robot, only: :create
+  before_filter :load_omniauth_authentication_from_session, only: :new
   before_filter :load_invitation_from_session, only: :new
 
   after_filter :set_time_zone_from_javascript, only: [:create]
 
   def new
-    @user = User.new
-    if @invitation
-      if @invitation.intent == 'start_group'
-        @user.name = @invitation.recipient_name
-        @user.email = @invitation.recipient_email
-      else
-        @user.email = @invitation.recipient_email
-      end
-    end
-
-    if omniauth_authenticated_and_waiting?
-      load_omniauth_authentication_from_session
-      @user.name = @omniauth_authentication.name
-      @user.email = @omniauth_authentication.email
-    end
+    @user = User.new(
+      name:  @omniauth_authentication&.name  || @invitation&.recipient_name,
+      email: @omniauth_authentication&.email || @invitation&.recipient_email
+    )
   end
 
   private
 
   def sign_up(resource_name, resource)
     super(resource_name, resource)
-
-    if omniauth_authenticated_and_waiting?
-      load_omniauth_authentication_from_session
-      @omniauth_authentication.update(user: resource)
-    end
+    load_omniauth_authentication_from_session.update(user: resource) if omniauth_authenticated_and_waiting?
   end
 
   def store_group_key_to_session
