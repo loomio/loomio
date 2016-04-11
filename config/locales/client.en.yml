@@ -1028,6 +1028,10 @@ en:
     proposal: 'Tips for writing a clear proposal'
     vote: 'You can change your position at any time'
 
+  explore_page:
+    header: Explore Loomio groups
+    search_placeholder: Search for public Loomio groups
+
   angular:
     switch_back: 'Switch back to old Loomio'
     give_feedback: 'Give feedback'

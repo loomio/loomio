@@ -1,0 +1,18 @@
+.lmo-one-column-layout
+  %main.email-settings-page
+    .lmo-page-heading
+      %h1.lmo-h1-medium{translate: "explore_page.header"}
+      .explore-page__search-field
+        %input.form-control#search-field{ng-model: "query", ng-change: "explorePage.search()", placeholder: "{{ 'explore_page.search_placeholder' | translate }}"}
+        %i.fa.fa-lg.fa-fw.fa-search.explore-page__search-input-icon{ng-hide: "query", aria-hidden: "true"}
+      .explore-page__groups
+        .explore-page__group{ng-repeat: "group in explorePage.groups track by group.id"}
+          .explore-page__group-cover{ng-style: "explorePage.groupCover(group)"}
+          %h2.lmo-h2 {{group.name}}
+          .explore-page__group-description {{group.description}}
+          .explore-page__group-memberships-count
+            %i.fa.fa-lg.fa-group>
+            %span {{group.membershipsCount}}
+          .explore-page__group-discussions-count
+            %i.fa.fa-lg.fa-comment>  
+            %span {{group.discussionsCount}}

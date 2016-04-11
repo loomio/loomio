@@ -2,12 +2,12 @@
   .col-sm-4
     %h1=link_to t(:"explore.header"), explore_path
 
-  .col-sm-4
-    .form-inline.category_select
-      %label= t(:"group_form.category")
-      = select_tag :select_category,
-        options_for_select(category_names_and_paths, selected_category_path),
-        class: 'form-control'
+  / .col-sm-4
+  /   .form-inline.category_select
+  /     %label= t(:"group_form.category")
+  /     = select_tag :select_category,
+  /       options_for_select(category_names_and_paths, selected_category_path),
+  /       class: 'form-control'
 
   .col-sm-4
     .form-inline
