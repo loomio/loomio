@@ -4,7 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :store_group_key_to_session, only: :new
   before_filter :redirect_if_robot, only: :create
   before_filter :load_omniauth_authentication_from_session, only: :new
-  before_filter :load_invitation_from_session, only: :new
 
   after_filter :set_time_zone_from_javascript, only: [:create]
 
