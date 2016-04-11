@@ -152,11 +152,15 @@ en:
     unread: 'Unread'
     closing_in: 'Closing '
 
-  session_form:
+  sign_in_form:
+    title: 'Sign In'
     email_label: 'Email:'
+    email_placeholder: 'you@example.com'
     password_label: 'Password:'
     remember_me: 'Remember Me'
+    forgot_password: 'Forgot password?'
     sign_in: 'Login'
+    signed_in: 'Signed in successfully'
 
   comment_form:
     aria_label: 'Add a comment'

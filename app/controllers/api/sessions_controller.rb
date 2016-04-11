@@ -2,23 +2,17 @@ class API::SessionsController < Devise::SessionsController
   include DeviseControllerHelper
 
   def create
-    sign_in resource_name, resource
-    render json: CurrentUserSerializer.new(current_user).as_json
+    if user = warden.authenticate
+      sign_in resource_name, user
+      render json: CurrentUserSerializer.new(user).as_json
+    else
+      render json: {error: 'wark' }, status: 401
+    end
   end
 
   def destroy
     sign_out resource_name
     flash[:notice] = t(:'devise.sessions.signed_out')
     head :ok
-  end
-
-  def unauthorized
-    head :unauthorized
-  end
-
-  private
-
-  def resource
-    warden.authenticate! recall: "#{controller_path}#unauthorized"
   end
 end

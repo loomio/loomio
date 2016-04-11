@@ -7,4 +7,6 @@ angular.module('loomioApp').factory 'SignInForm', ->
       flashSuccess:    'sign_in_form.signed_in'
       successCallback: (data) ->
         User.login(data)
-        $location.path "/dashboard"
+
+    $scope.forgotPassword = ->
+      $location.path "/users/password/new"

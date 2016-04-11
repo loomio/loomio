@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
+angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig, IntercomService, MessageChannelService) ->
 
   login: (data) ->
     return unless data.current_user and data.current_user.id
@@ -16,6 +16,9 @@ angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
     Records.notifications.fetchMyNotifications().then ->
       AppConfig.notificationsLoaded = true
       $rootScope.$broadcast 'notificationsLoaded'
+
+    IntercomService.boot(@current())
+    MessageChannelService.subscribe()
 
     @current()
 
