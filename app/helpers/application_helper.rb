@@ -187,10 +187,6 @@ module ApplicationHelper
   end
 
   def show_beta_banner?
-    if controller_name =='start_group' || controller_name == 'sessions'
-      false
-    else
-      true
-    end
+    ['dashboard', 'inbox', 'groups', 'discussions'].include? controller_name
   end
 end
