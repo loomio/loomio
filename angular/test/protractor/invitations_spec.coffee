@@ -84,3 +84,15 @@ describe 'Invitations', ->
 
     page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
     page.expectText '.members-card__list', 'JN'
+
+  it 'allows sign up for team invitation link', ->
+    staticPage.loadPath 'setup_team_invitation_link'
+
+    staticPage.fillIn '#user_name', 'Judd Nelson'
+    staticPage.fillIn '#user_email', 'judd@example.com'
+    staticPage.fillIn '#user_password', 'gh0stmovie'
+    staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
+    staticPage.click '#create-account'
+
+    page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+    page.expectText '.members-card__list', 'JN'

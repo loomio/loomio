@@ -195,6 +195,10 @@ class DevelopmentController < ApplicationController
     redirect_to last_email_development_index_path
   end
 
+  def setup_team_invitation_link
+    redirect_to InvitationService.shareable_invitation_for(test_group)
+  end
+
   def setup_group_for_invitations
     setup_group
     another_test_group
