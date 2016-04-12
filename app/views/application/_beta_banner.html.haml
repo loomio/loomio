@@ -1,7 +1,7 @@
 .beta-banner
   .beta-banner__new-loomio
     = t :'beta_banner.new_loomio_html'
-    = link_to t(:"beta_banner.more_info"), ENV["BETA_BANNER_LINK"]
+    = link_to t(:"beta_banner.more_info"), ENV["BETA_BANNER_LINK"], target: :_blank
   - if browser.ie? && browser.version.to_i < 10
     %strong= t :'beta_banner.upgrade_browser_html'
   - else
