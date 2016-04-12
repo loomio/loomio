@@ -3,12 +3,11 @@ class Users::EmailPreferencesController < AuthenticateByUnsubscribeTokenControll
   skip_before_filter :boot_angular_ui
 
   def edit
-    boot_angular_ui unless restricted_user.present?
-    user
+    boot_angular_ui if user.angular_ui_enabled?
   end
 
   def update
-    boot_angular_ui unless restricted_user.present?
+    boot_angular_ui if user.angular_ui_enabled?
     if user.update_attributes(permitted_params.user)
       if %w[loud normal quiet].include? params[:set_group_volume]
         user.memberships.update_all(volume: Membership.volumes[params[:set_group_volume]])
