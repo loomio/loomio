@@ -14,6 +14,7 @@ class InvitationsController < ApplicationController
   def show
     if current_user_or_visitor.is_logged_in?
       InvitationService.redeem(invitation, current_user)
+      session[:invitation_token] = nil
       redirect_to group_url(invitation.invitable)
     else
       session[:invitation_token] = params[:id]
