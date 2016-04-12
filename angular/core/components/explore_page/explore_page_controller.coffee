@@ -1,6 +1,6 @@
 angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootScope) ->
   
-  @query = null
+  @query = ''
 
   @search = =>
     Records.groups.fetchExploreGroups(@query).then (object) =>
@@ -10,5 +10,8 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
 
   @groupCover = (group) ->
     { 'background-image': "url(#{group.coverUrl()})" }
+
+  @groupDescription = (group) ->
+    _.trunc group.description, 100 if group.description
 
   return

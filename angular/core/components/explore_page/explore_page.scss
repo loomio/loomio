@@ -12,15 +12,25 @@
   margin: 20px 0;
 }
 
+.explore-page__groups {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
 .explore-page__group {
-  @include card;
+  width: 365px;
+  @include cardNoPadding;
 }
 
 .explore-page__group-cover {
-  width: 100%;
-  height: 150px;
+  height: 100px;
   background: url('http://placehold.it/640x160') no-repeat center center #f5f5f5;
   background-size: cover;
+}
+
+.explore-page__group-details {
+  @include cardPadding;
 }
 
 .explore-page__group-description {

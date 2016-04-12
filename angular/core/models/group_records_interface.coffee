@@ -8,4 +8,5 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
 
     fetchExploreGroups: (query) ->
       @fetch
-        params: query
+        params:
+          q: query
