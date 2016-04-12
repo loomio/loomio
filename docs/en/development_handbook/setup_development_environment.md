@@ -27,12 +27,22 @@ And that's it. You can jump to 'Install rbenv and ruby-build'
 ## Ubuntu system setup
 
 You will need PostgreSQL 9.4+ for the `jsonb` data type.
+In Ubuntu 14.04 you will need to add the PostgresSQL PPA
+```
+$ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get update
+```
 
+You will also want to install Node.js and other dependencies
+```
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+```
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core postgresql-9.4 postgresql-contrib-9.4 build-essential \
-                       libssl-dev libpq-dev libffi-dev libmagickwand-dev \
-                       libreadline-gplv2-dev nodejs imagemagick wget
+                       libssl-dev libpq-dev libffi-dev libmagickwand-dev libsqlite3-dev \
+                       libreadline-gplv2-dev nodejs imagemagick wget nodejs
 ```
 
 ## Install Ruby with rbenv
@@ -102,7 +112,6 @@ Now we want to use bundler to pull down all the dependencies for loomio
 ```
 $ gem install bundler
 $ rbenv rehash
-$ rake bootstrap
 ```
 ### Setup your database
 Ubuntu users only:
@@ -110,6 +119,7 @@ Ubuntu users only:
 $ sudo -i -u postgres
 postgres$ createuser -s YourUserName
 postgres$ exit
+$ rake bootstrap
 ```
 
 Everybody:
