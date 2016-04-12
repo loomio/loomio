@@ -38,8 +38,8 @@ ENV DEVISE_SECRET boopboop
 ENV SECRET_COOKIE_TOKEN beepbeep
 
 # build assets
+RUN bundle exec rake deploy:build
 RUN bundle exec rake assets:precompile
-RUN bundle exec rake deploy:version_client_assets
 
 # source the config file and run puma when the container starts
 CMD bundle exec puma -C config/puma.rb

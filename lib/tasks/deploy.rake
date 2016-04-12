@@ -52,7 +52,8 @@ namespace :deploy do
     run_commands [
       "rake 'plugins:acquire[#{plugins}]' plugins:resolve_dependencies plugins:install", # install plugins specified in plugins/plugins.yml
       "rm -rf plugins/**/.git",                                                          # allow cloned plugins to be added to this repo
-      "cd angular && npm install && gulp compile && cd ../"                              # build the app via gulp
+      "cd angular && npm install && gulp compile && cd ../",                              # build the app via gulp
+      "cp -r public/client/development public/client/#{Loomio::Version.current}"     # version assets
     ]
   end
 
@@ -60,7 +61,6 @@ namespace :deploy do
   task :commit do
     puts "Committing assets to deployment branch..."
     run_commands [
-      "cp -r public/client/development public/client/#{Loomio::Version.current}",     # version assets
       "find plugins -name '*.*' | xargs git add -f",                                  # add plugins folder to commit
       "git add public/client/#{Loomio::Version.current} public/client/fonts -f",      # add assets to commit
       "git commit -m 'Add compiled assets / plugin code'"                             # commit assets
