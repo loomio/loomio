@@ -303,7 +303,9 @@ en:
 
   beta_banner:
     new_loomio_html: |
-      <strong>The New Loomio is faster, prettier, and better!</strong> We're switching everyone over. More info...
+      <strong>The New Loomio is faster, prettier, and better!</strong> We're switching everyone over.
     upgrade_browser_html: |
       We only support modern versions of Internet Explore (10+). You will need to <a href='http://outdatedbrowser.com/en' target='_blank'>upgrade your browser</a> to keep using Loomio.
+      <strong>The New Loomio is here!</strong> It's faster, prettier, and mobile-ready.
+    more_info: More info...
     button_text: Switch to the new Loomio
