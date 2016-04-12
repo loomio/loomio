@@ -112,6 +112,7 @@ Now we want to use bundler to pull down all the dependencies for loomio
 ```
 $ gem install bundler
 $ rbenv rehash
+$ bundle install
 ```
 ### Setup your database
 Ubuntu users only:
