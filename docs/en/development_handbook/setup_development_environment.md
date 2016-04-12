@@ -33,16 +33,12 @@ $ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -
 $ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 $ sudo apt-get update
 ```
-
-You will also want to install Node.js and other dependencies
-```
-curl -sL https://deb.nodesource.com/setup | sudo bash -
-```
+Install dependencies
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core postgresql-9.4 postgresql-contrib-9.4 build-essential \
                        libssl-dev libpq-dev libffi-dev libmagickwand-dev libsqlite3-dev \
-                       libreadline-gplv2-dev nodejs imagemagick wget nodejs
+                       libreadline-gplv2-dev nodejs imagemagick wget 
 ```
 
 ## Install Ruby with rbenv
