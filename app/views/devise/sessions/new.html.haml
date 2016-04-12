@@ -19,7 +19,7 @@
           .signin_container
             = render "form"
             - env = Rails.application.secrets
-            - if env.google_key or env.twitter_key or env.facebook_key
+            - if env.google_key or env.twitter_key or env.facebook_key or env.github_key
               -unless omniauth_authenticated_and_waiting?
                 .sso-btn-row
                   %label= t :log_in_with_third_party
@@ -32,6 +32,8 @@
                   -if env.twitter_key
                     = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
                       = t :log_in_with_twitter
-
+                  -if env.github_key
+                    = link_to user_omniauth_authorize_path(:github), class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
+                      = t :log_in_with_github
           .terms
             =t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?
