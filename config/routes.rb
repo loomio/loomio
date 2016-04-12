@@ -170,7 +170,7 @@ Loomio::Application.routes.draw do
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
-  constraints(GroupSubdomainConstraint) do
+  constraints(GroupSubdomainConstraints) do
     get '/' => 'redirect#group_subdomain'
     get '/d/:id(/:slug)', to: 'redirect#discussion_key'
     get '/g/:id(/:slug)', to: 'redirect#group_key'
@@ -179,7 +179,7 @@ Loomio::Application.routes.draw do
 
   get '/discussions/:id', to: 'redirect#discussion_id'
   get '/groups/:id',      to: 'redirect#group_id'
-  get '/motions/:id',     to: 'redirect#motion_id'  
+  get '/motions/:id',     to: 'redirect#motion_id'
 
   get "/browser_not_supported", to: "application#browser_not_supported"
 
