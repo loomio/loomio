@@ -5,7 +5,7 @@ class StartGroupController < ApplicationController
     @group = Group.new
     if !current_user_or_visitor.is_logged_in?
       render :new
-    else current_user_or_visitor.angular_ui_enabled?
+    else
       redirect_to dashboard_path(start_group: true)
     end
   end
