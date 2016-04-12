@@ -30,7 +30,11 @@ task :deploy do
     "bundle exec rake deploy:push[#{remote},#{branch}]",                              # deploy to heroku
     "bundle exec rake deploy:heroku_reset[#{remote}]"                                 # clean up heroku deploy
   ]
-  at_exit { run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch)}"] }
+  at_exit     { cleanup(remote, branch) }
+end
+
+def cleanup(remote, branch)
+  run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch)}"]
 end
 
 namespace :deploy do
