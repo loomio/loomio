@@ -93,8 +93,6 @@ At the time of writing 2.3.0 is the latest version.
 ```
 $ rbenv install 2.3.0
 $ rbenv global 2.3.0
-$ gem install bundler
-$ bundle
 ```
 
 ### Pull the Loomio codebase
