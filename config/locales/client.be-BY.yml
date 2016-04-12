@@ -122,6 +122,29 @@ be-BY:
       loud: Дасылаць лісты пра ўсе новыя падзеі.
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
+  choose_plan_modal:
+    gift: Падарунак
+    standard: Стандарт
+    plus: Плюс
+    free_trial_html: 'Пасля сыходу <span>30-дзённай пробнай версіі</span> мы папросім Вас абраць тарыфны план. Крэдытная картка не патрэбна.'
+    get_started_for_free: Пачніце работу бясплатна.
+    gift_body: Для груп без бюджету
+    unlimited_members: неабмежаваная колькасць удзельникаў
+    unlimited_decisions: бязмежнасць рашэнняў
+    email_support: падтрымка па электроннай пошце
+    standard_price_html: |
+      19$ за месяц або 190$ за год
+    plus_body: Стандартны пакет +
+    multiple_groups: Шматлікія суполкі
+    premium_support: Прэміум-падтрымка
+    custom_subdomain_html: |
+      сабдамен карыстальніка,<br />
+
+      напрыклад <strong>yourgroup</strong>.loomio.org
+    plus_price_html: |
+      ЗША <strong>$179</strong>/месяцh<br><span>ці</span> $1790/год
+  group_form:
+    description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
   membership_requests_page:
     approve: Пацвердзіць
     ignore: Ігнараваць

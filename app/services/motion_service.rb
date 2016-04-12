@@ -1,7 +1,7 @@
 class MotionService
   def self.create(motion:, actor:)
-    motion.author = actor
     actor.ability.authorize! :create, motion
+    motion.author = actor
     return false unless motion.valid?
     motion.save!
 
