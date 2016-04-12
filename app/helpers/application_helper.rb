@@ -187,6 +187,6 @@ module ApplicationHelper
   end
 
   def show_beta_banner?
-    ['dashboard', 'inbox', 'groups', 'discussions'].include? controller_name
+    ['dashboard', 'inbox', 'groups', 'discussions', 'users'].include? controller_name
   end
 end
