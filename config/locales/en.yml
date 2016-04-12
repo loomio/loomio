@@ -986,10 +986,12 @@ en:
   log_in_with_google: Log in with Google
   log_in_with_facebook: Log in with Facebook
   log_in_with_twitter: Log in with Twitter
+  log_in_with_github: Log in with Github
   sign_up_with_third_party: 'Or sign up with a third-party account:'
   sign_up_with_google: Sign up with Google
   sign_up_with_facebook: Sign up with Facebook
   sign_up_with_twitter: Sign up with Twitter
+  sign_up_with_github: Sign up with Github
   common:
     profile: Profile
     email_settings: Email settings
