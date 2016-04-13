@@ -24,7 +24,6 @@ COPY config/database.docker.yml /loomio/config/database.yml
 WORKDIR /loomio/angular
 RUN npm install
 RUN npm rebuild node-sass
-RUN node node_modules/gulp/bin/gulp.js compile
 
 WORKDIR /loomio
 RUN bundle install
