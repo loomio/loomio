@@ -17,7 +17,7 @@ class EmailProcessor
     comment = Comment.new(discussion_id: email_params.discussion_id,
                           body: email_params.body)
 
-    CommentService.create(comment: comment, actor: user)
+    CommentService.create(comment: comment, actor: user || LoggedOutUser.new)
   end
 
   def replace_text_body(email)
