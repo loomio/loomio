@@ -1,4 +1,4 @@
-FROM ruby:2.3.0
+PFROM ruby:2.3.0
 ENV REFRESHED_AT 2015-08-07
 
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
@@ -25,6 +25,7 @@ WORKDIR /loomio/angular
 RUN npm install
 RUN npm rebuild node-sass
 RUN node node_modules/gulp/bin/gulp.js compile
+RUN npm install -g gulp
 
 WORKDIR /loomio
 RUN bundle install
