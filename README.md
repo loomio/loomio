@@ -8,7 +8,7 @@ Loomio is a collaborative decision-making tool that makes it easy for anyone to 
 
 If you'd like to report a bug, give us feedback, or contribute to Loomio, please read [CONTRIBUTING.md](https://github.com/danofun/loomio/blob/master/CONTRIBUTING.md)
 
-To setup your own Loomio instance see [loomio/loomio-deploy](https://github.com/danofun/loomio-deploy)
+To setup your own Loomio instance see [danofun/loomio-deploy](https://github.com/danofun/loomio-deploy)
 
 To setup up a Loomio development environment, or to develop plugin to extend Loomio, see [the docs](docs/en/)
 
