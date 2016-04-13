@@ -24,11 +24,11 @@ task :deploy do
 
   puts "Deploying branch #{branch} to #{remote}..."
   run_commands [
-    "git checkout #{branch}; git checkout -b #{build_branch(remote, branch, id)}",        # cut a new deploy branch based on specified branch
-   ("bundle exec rake deploy:bump_version" if remote == 'loomio-clone'),              # bump version if this is a production deploy
+    "git checkout #{branch}; git checkout -b #{build_branch(remote, branch, id)}",    # cut a new deploy branch based on specified branch
+   ("bundle exec rake deploy:bump_version" if remote == 'loomio-production'),         # bump version if this is a production deploy
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
-    "bundle exec rake deploy:push[#{remote},#{branch},#{id}]",                              # deploy to heroku
+    "bundle exec rake deploy:push[#{remote},#{branch},#{id}]",                        # deploy to heroku
     "bundle exec rake deploy:heroku_reset[#{remote}]"                                 # clean up heroku deploy
   ]
   at_exit { run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch, id)}"] }
