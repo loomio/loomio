@@ -39,7 +39,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 Install dependencies
 ```
 sudo apt-get update
-sudo apt-get install build-essential git apt-utils sudo wget nodejs postgresql-9.4 postgresql-contrib-9.4 libpq-dev libsqlite3-dev libxml2-dev libxslt1-dev libreadline-dev libssl-dev libffi-dev libmagickwand-dev
+sudo apt-get install build-essential git apt-utils sudo wget nodejs imagemagick postgresql-9.4 postgresql-contrib-9.4 libpq-dev libsqlite3-dev libxml2-dev libxslt1-dev libreadline-dev libssl-dev libffi-dev libmagickwand-dev
 ```
 
 ## Install the Application
