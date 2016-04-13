@@ -3,6 +3,7 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
   @groups = []
   @perPage = AppConfig.pageSize.exploreGroups
   @query = ""
+  $timeout -> document.querySelector('#search-field').focus()
 
   @changeSearchQuery = ->
     @loaded = 0
