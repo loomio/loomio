@@ -20,17 +20,18 @@
 
 task :deploy do
   remote, branch = ARGV[1] || 'loomio-production', ARGV[2] || 'master'
+  id = Time.now.to_i
 
   puts "Deploying branch #{branch} to #{remote}..."
   run_commands [
-    "git checkout #{branch}; git checkout -b #{build_branch(remote, branch)}",        # cut a new deploy branch based on specified branch
-    "bundle exec rake deploy:bump_version[#{remote}]",                                # bump version if this is a production deploy
+    "git checkout #{branch}; git checkout -b #{build_branch(remote, branch, id)}",        # cut a new deploy branch based on specified branch
+   ("bundle exec rake deploy:bump_version" if remote == 'loomio-clone'),              # bump version if this is a production deploy
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
-    "bundle exec rake deploy:push[#{remote},#{branch}]",                              # deploy to heroku
+    "bundle exec rake deploy:push[#{remote},#{branch},#{id}]",                              # deploy to heroku
     "bundle exec rake deploy:heroku_reset[#{remote}]"                                 # clean up heroku deploy
   ]
-  at_exit { run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch)}"] }
+  at_exit { run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch, id)}"] }
 end
 
 namespace :deploy do
@@ -52,8 +53,8 @@ namespace :deploy do
     run_commands [
       "rake 'plugins:acquire[#{plugins}]' plugins:resolve_dependencies plugins:install", # install plugins specified in plugins/plugins.yml
       "rm -rf plugins/**/.git",                                                          # allow cloned plugins to be added to this repo
-      "cd angular && npm install && gulp compile && cd ../",                              # build the app via gulp
-      "cp -r public/client/development public/client/#{Loomio::Version.current}"     # version assets
+      "cd angular && npm install && gulp compile && cd ../",                             # build the app via gulp
+      "cp -r public/client/development public/client/#{Loomio::Version.current}"         # version assets
     ]
   end
 
@@ -68,27 +69,25 @@ namespace :deploy do
   end
 
   desc "Bump version of repository if pushing to production"
-  task :bump_version, [:remote] do |t, args|
-    exit 0 unless args[:remote] == 'loomio-production'
-
+  task :bump_version do |t, args|
     puts "Bumping version from #{Loomio::Version.current}..."
     run_commands [
-      "ruby script/bump_version patch",
+      "ruby script/bump_version.rb patch",
       "git add lib/version",
-      "git commit -m 'bump version'",
-      "git push origin master"
+      "git commit -m 'bump version'"
+      # "git push origin master"
     ]
-    Loomio::Version.reload
   end
 
   desc "Push to heroku!"
-  task :push, [:remote,:branch] do |t, args|
+  task :push, [:remote,:branch,:id] do |t, args|
     raise 'remote must be specified' unless remote = args[:remote]
     raise 'branch must be specified' unless branch = args[:branch]
+    raise 'deploy branch id must be specified' unless id = args[:id]
 
-    puts "Deploying #{build_branch(remote, branch)} to heroku remote #{remote}"
+    puts "Deploying #{build_branch(remote, branch, id)} to heroku remote #{remote}"
     run_commands [
-      "git push #{remote} #{build_branch(remote, branch)}:master -f",                 # DEPLOY!
+      "git push #{remote} #{build_branch(remote, branch, id)}:master -f",                 # DEPLOY!
     ]
   end
 
@@ -106,8 +105,8 @@ namespace :deploy do
   end
 end
 
-def build_branch(remote, branch)
-  "deploy-#{remote}-#{branch}"
+def build_branch(remote, branch, id)
+  "deploy-#{remote}-#{branch}-#{id}"
 end
 
 def run_commands(commands)
