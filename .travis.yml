@@ -63,5 +63,3 @@ addons:
 after_success:
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master"       && bundle exec rake deploy:with_setup loomio-clone master
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "user-testing" && bundle exec rake deploy:with_setup loomio-test user-testing
-
-#end
