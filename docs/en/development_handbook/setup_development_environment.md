@@ -26,21 +26,23 @@ And that's it. You can jump to 'Install rbenv and ruby-build'
 
 ## Ubuntu system setup
 
+Node.js is required.  This will make that a possible.
+```
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+```
 You will need PostgreSQL 9.4+ for the `jsonb` data type.
 In Ubuntu 14.04 you will need to add the PostgresSQL PPA
 ```
-$ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 ```
 Install dependencies
 ```
-$ sudo apt-get update
-$ sudo apt-get install git-core postgresql-9.4 postgresql-contrib-9.4 build-essential \
-                       libssl-dev libpq-dev libffi-dev libmagickwand-dev libsqlite3-dev \
-                       libreadline-gplv2-dev nodejs imagemagick wget 
+sudo apt-get update
+sudo apt-get install build-essential git apt-utils sudo wget nodejs postgresql-9.4 postgresql-contrib-9.4 libpq-dev libsqlite3-dev libxml2-dev libxslt1-dev libreadline-dev libssl-dev libffi-dev libmagickwand-dev
 ```
 
-## Install Ruby with rbenv
+## Install the Application
 
 From here onwards the instructions apply to both OSX and Linux.
 
@@ -53,11 +55,11 @@ First we install [rbenv](https://github.com/sstephenson/rbenv). (Replace ~/.bash
 
 ```
 $ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-$ source ~/.bash_profile
+$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+$ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+$ source ~/.bashrc
 ```
-You'll might need to replace .bash_profile with the name of your shell profile file - However .bash_profile is usually right. If you're unsure have a look for .profile files in your home directory to see what is in use and if in doubt read https://github.com/sstephenson/rbenv#basic-github-checkout and google/stackoverflow your way to the solution for your system.
+You'll might need to replace .bashrc with the name of your shell profile file. If you're unsure have a look for .profile files in your home directory to see what is in use and if in doubt read https://github.com/sstephenson/rbenv#basic-github-checkout and google/stackoverflow your way to the solution for your system.
 
 Test if rbenv is installed correctly:
 ```
@@ -69,22 +71,17 @@ You should see:
 #=> "rbenv is a function"
 ```
 
-Now install [ruby-build](https://github.com/sstephenson/ruby-build#readme)
-
+### Build and Install Ruby
+First install [ruby-build](https://github.com/sstephenson/ruby-build#readme)
 ```
 $ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 ```
-
 When a new version of ruby is released, you can update ruby-build with
 ```
 $ cd ~/.rbenv/plugins/ruby-build
 $ git pull
 ```
-
-### Build and Install Ruby
-
-At the time of writing 2.3.0 is the latest version.
-
+NExt install Ruby. At the time of writing 2.3.0 is the latest version.
 ```
 $ rbenv install 2.3.0
 $ rbenv global 2.3.0
