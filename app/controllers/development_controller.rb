@@ -172,42 +172,23 @@ class DevelopmentController < ApplicationController
 
   def setup_explore_groups
     sign_in patrick
-    explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
-    GroupService.create(group: explore_group, actor: patrick)
-    explore_group.add_member! jennifer
-    explore_group.add_member! emilio
-    explore_group.add_member! max
-    explore_group.update_attribute(:created_at, 3.months.ago)
-    4.times do
-      explore_discussion = FactoryGirl.build(:discussion,
-                                             group: explore_group,
-                                             private: false,
-                                             author: emilio)
-      DiscussionService.create(discussion: explore_discussion, actor: emilio)
-      explore_comment = FactoryGirl.build(:comment,
-                                          discussion: explore_discussion,
-                                          body: Faker::Hacker.say_something_smart)
-      CommentService.create(comment: explore_comment, actor: jennifer)
+    10.times do
+      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      GroupService.create(group: explore_group, actor: patrick)
+      explore_group.add_member! jennifer
+      explore_group.add_member! emilio
+      explore_group.add_member! max
+      explore_group.update_attribute(:created_at, 3.months.ago)
+      4.times do
+        explore_discussion = FactoryGirl.build(:discussion,
+                                               group: explore_group,
+                                               private: false,
+                                               author: emilio)
+        DiscussionService.create(discussion: explore_discussion, actor: emilio)
+        explore_discussion.update_attribute(:last_comment_at, 1.day.ago)
+      end
     end
-    
-    another_explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
-    GroupService.create(group: another_explore_group, actor: patrick)
-    another_explore_group.add_member! jennifer
-    another_explore_group.add_member! emilio
-    another_explore_group.add_member! max
-    another_explore_group.update_attribute(:created_at, 3.months.ago)
-    4.times do |i|
-      another_explore_discussion = FactoryGirl.build(:discussion,
-                                                     group: another_explore_group,
-                                                     private: false,
-                                                     author: emilio)
-      DiscussionService.create(discussion: another_explore_discussion, actor: emilio)
-      another_explore_comment = FactoryGirl.build(:comment,
-                                                  discussion: another_explore_discussion,
-                                                  body: Faker::Hacker.say_something_smart)
-      CommentService.create(comment: another_explore_comment, actor: jennifer)
-    end
-    redirect_to group_url(explore_group)
+    redirect_to group_url(Group.last)
   end
 
   def setup_group_with_multiple_coordinators

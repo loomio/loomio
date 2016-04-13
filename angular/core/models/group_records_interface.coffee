@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
       @fetch
         path: "#{parentGroup.id}/subgroups"
 
-    fetchExploreGroups: (query) ->
+    fetchExploreGroups: (query, options = {}) ->
+      options['q'] = query
       @fetch
-        params:
-          q: query
+        params: options

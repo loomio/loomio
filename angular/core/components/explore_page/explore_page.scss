@@ -12,10 +12,16 @@
   margin: 20px 0;
 }
 
+.explore-page__no-results-found, .explore-page__search-results {
+  margin: 20px 0;
+  text-align: left;
+  color: $grey-on-white;
+}
+
 .explore-page__groups {
   display: flex;
   justify-content: space-between;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
 }
 
 .explore-page__group {
