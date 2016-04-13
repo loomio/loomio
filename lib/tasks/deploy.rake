@@ -24,9 +24,9 @@ task :deploy do
   puts "Deploying branch #{branch} to #{remote}..."
   run_commands [
     "git checkout #{branch}; git checkout -b #{build_branch(remote, branch)}",        # cut a new deploy branch based on specified branch
+    "bundle exec rake deploy:bump_version[#{remote}]",                                # bump version if this is a production deploy
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
-    "bundle exec rake deploy:bump_version[#{remote}]",                                # bump version if this is a production deploy
     "bundle exec rake deploy:push[#{remote},#{branch}]",                              # deploy to heroku
     "bundle exec rake deploy:heroku_reset[#{remote}]"                                 # clean up heroku deploy
   ]
