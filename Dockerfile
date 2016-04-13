@@ -1,4 +1,4 @@
-PFROM ruby:2.3.0
+FROM ruby:2.3.0
 ENV REFRESHED_AT 2015-08-07
 
 RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
