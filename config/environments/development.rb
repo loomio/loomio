@@ -31,7 +31,7 @@ Loomio::Application.configure do
   config.sass.line_comments = false
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :test
 
   config.eager_load = false
