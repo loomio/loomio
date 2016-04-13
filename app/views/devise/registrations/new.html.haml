@@ -38,7 +38,7 @@
                       = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
                         = t :sign_up_with_twitter
                     -if env.github_key
-                      = link_to user_omniauth_authrize_path(:github), class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
+                      = link_to user_omniauth_authorize_path(:github), class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
                         = t :sign_up_with_github
 
           .terms= t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?
