@@ -2,16 +2,13 @@ require 'rails_helper'
 
 describe Queries::ExploreGroups do
   let(:group)              { create :group }
-  let!(:discussion)        { create :discussion, group: group  }
-  let!(:second_discussion) { create :discussion, group: group  }
-  let!(:third_discussion)  { create :discussion, group: group  }
-  let!(:fourth_discussion) { create :discussion, group: group  }
+  let(:second_group)       { create :group }
 
   before do
     group.update_attribute(:is_visible_to_public, true)
-    group.update_attribute(:created_at, 3.months.ago)
+    second_group.update_attribute(:is_visible_to_public, true)
     group.update_attribute(:memberships_count, 4)
-    discussion.update_attribute(:last_comment_at, 1.day.ago)
+    second_group.update_attribute(:memberships_count, 2)
   end
 
   describe 'visible groups' do
@@ -28,33 +25,7 @@ describe Queries::ExploreGroups do
     it 'only shows parent groups' do
       subgroup = FactoryGirl.create(:group, parent: group)
       subgroup.update_attribute(:is_visible_to_public, true)
-      subgroup.update_attribute(:created_at, 3.months.ago)
-      subgroup.update_attribute(:memberships_count, 3)
-      4.times do
-        discussion = FactoryGirl.create(:discussion, group: subgroup)
-        discussion.update_attribute(:last_comment_at, 1.day.ago)
-      end
       expect(Queries::ExploreGroups.new).to_not include subgroup
-    end
-
-    it 'only shows groups that are more than 2 months old' do
-      group.update_attribute(:created_at, 1.month.ago)
-      expect(Queries::ExploreGroups.new).to_not include group
-    end
-
-    it 'only shows groups with recent activity' do
-      discussion.update_attribute(:last_comment_at, 2.months.ago)
-      expect(Queries::ExploreGroups.new).to_not include group
-    end
-
-    it 'only shows groups with more than three members' do
-      group.update_attribute(:memberships_count, 3)
-      expect(Queries::ExploreGroups.new).to_not include group
-    end
-
-    it 'only shows groups that have more than three discussions' do
-      group.update_attribute(:discussions_count, 3)
-      expect(Queries::ExploreGroups.new).to_not include group
     end
   end
 

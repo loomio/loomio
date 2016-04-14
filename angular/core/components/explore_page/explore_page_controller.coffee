@@ -1,23 +1,24 @@
 angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootScope, $timeout, AppConfig, LoadingService) ->
 
-  @groups = []
+  @groupIds = []
   @perPage = AppConfig.pageSize.exploreGroups
+  @canLoadMoreGroups = true
   @query = ""
   $timeout -> document.querySelector('#search-field').focus()
 
-  @changeSearchQuery = ->
-    @loaded = 0
-    @search()
+  @groups = =>
+    Records.groups.find(@groupIds)
 
   @search = =>
-    from = @loaded
-    Records.groups.fetchExploreGroups(@query, {from: @loaded, per: @perPage}).then (object) =>
-      @groupIds = _.map object.groups, (group) -> group.id
-      @groups = Records.groups.find(@groupIds)
-      @loaded = @loaded + @perPage
+    if @query
+      @groupIds = []
+    Records.groups.fetchExploreGroups(@query, {from: @groupIds.length, per: @perPage}).then (object) =>
+      @groupIds = @groupIds.concat(_.map object.groups, (group) -> group.id)
+      if (object.groups or []).length < @perPage
+        @canLoadMoreGroups = false
 
   LoadingService.applyLoadingFunction @, 'search'
-  @changeSearchQuery()
+  @search()
 
   @groupCover = (group) ->
     { 'background-image': "url(#{group.coverUrl()})" }
@@ -28,15 +29,15 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
   @showMessage = ->
     !@searching &&
     @query &&
-    @groups.length > 0
+    @groups().length > 0
 
   @searchResultsMessage = ->
-    if @groups.length == 1
+    if @groups().length == 1
       'explore_page.single_search_result'
     else
       'explore_page.multiple_search_results'
 
   @noResultsFound = ->
-    !@searching && @groups.length == 0
+    !@searching && (@groups().length < @perPage || !@canLoadMoreGroups)
 
   return

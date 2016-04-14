@@ -172,21 +172,10 @@ class DevelopmentController < ApplicationController
 
   def setup_explore_groups
     sign_in patrick
-    10.times do
+    20.times do |i|
       explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
-      explore_group.add_member! jennifer
-      explore_group.add_member! emilio
-      explore_group.add_member! max
-      explore_group.update_attribute(:created_at, 3.months.ago)
-      4.times do
-        explore_discussion = FactoryGirl.build(:discussion,
-                                               group: explore_group,
-                                               private: false,
-                                               author: emilio)
-        DiscussionService.create(discussion: explore_discussion, actor: emilio)
-        explore_discussion.update_attribute(:last_comment_at, 1.day.ago)
-      end
+      explore_group.update_attribute(:memberships_count, i)
     end
     redirect_to group_url(Group.last)
   end

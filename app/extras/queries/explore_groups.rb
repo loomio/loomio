@@ -2,16 +2,12 @@ class Queries::ExploreGroups < Delegator
   def initialize
     @relation = Group.where(is_visible_to_public: true).
                             parents_only.
-                            created_earlier_than(2.months.ago).
-                            active_discussions_since(1.month.ago).
-                            more_than_n_members(3).
-                            more_than_n_discussions(3).
-                            order('discussions.last_comment_at')
+                            order('groups.memberships_count DESC')
 
   end
 
   def search_for(q)
-    @relation = @relation.search_full_name(q).joins(:discussions) if q.present?
+    @relation = @relation.search_full_name(q) if q.present?
     self
   end
 
