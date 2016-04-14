@@ -83,11 +83,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    ahoy_email (0.3.0)
-      addressable
-      nokogiri
-      rails
-      safely_block
     ahoy_matey (1.1.1)
       addressable
       browser (>= 0.4.0)
@@ -600,8 +595,6 @@ GEM
       fog
     safe_shell (1.0.3)
     safe_yaml (1.0.4)
-    safely_block (0.1.0)
-      errbase
     sass (3.4.13)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -705,7 +698,6 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord_any_of
-  ahoy_email
   ahoy_matey
   airbrake
   autoprefixer-rails
