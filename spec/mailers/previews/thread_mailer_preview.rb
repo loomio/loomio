@@ -1,7 +1,7 @@
-class ThreadMailerPreview < ActionMailer::Preview
+class ThreadMailerPreview
   def new_discussion
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     event = Events::NewDiscussion.create(kind: 'new_discussion', eventable: discussion, discussion_id: discussion.id)
     group.add_member! user
@@ -10,7 +10,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def new_comment_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -22,7 +22,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def new_comment_with_attachments_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -38,7 +38,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def user_mentioned_follows_by_loud
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -50,7 +50,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def user_mentioned_does_not_follow_by_loud
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group, uses_markdown: true
     group.add_member! user
     rich_text_body = "I like to talk about you online. You're the right person for this conversation to include. You know this."
@@ -61,7 +61,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def new_vote_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -73,7 +73,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def new_motion_not_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
@@ -83,7 +83,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def new_motion_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -94,7 +94,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def motion_closing_soon_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -109,7 +109,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def motion_closing_soon_not_followed
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
@@ -121,7 +121,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def motion_closed_following
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -140,7 +140,7 @@ class ThreadMailerPreview < ActionMailer::Preview
 
   def specify_motion_outcome
     group = FactoryGirl.create :group
-    user = FactoryGirl.create :user
+    user = FactoryGirl.create :user, selected_locale: I18n.locale
     discussion = FactoryGirl.create :discussion, group: group
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
@@ -161,7 +161,7 @@ class ThreadMailerPreview < ActionMailer::Preview
   def motion_outcome_created
     motion = FactoryGirl.create(:motion)
     group = motion.group
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, selected_locale: I18n.locale)
     group.add_member!(user)
     motion.store_users_that_didnt_vote
     motion.closed_at = Time.now

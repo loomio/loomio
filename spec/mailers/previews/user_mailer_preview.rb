@@ -1,6 +1,6 @@
-class UserMailerPreview < ActionMailer::Preview
+class UserMailerPreview
   def missed_yesterday
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, selected_locale: I18n.locale)
     1.times do
       group = FactoryGirl.create(:group)
       group.add_admin!(user)
@@ -40,13 +40,13 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def group_membership_approved
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, selected_locale: I18n.locale)
     group = FactoryGirl.create(:group)
     UserMailer.group_membership_approved(user, group)
   end
 
   def added_to_group
-    user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user, selected_locale: I18n.locale)
     inviter = FactoryGirl.create(:user)
     group = FactoryGirl.create(:group)
     group.add_member!(inviter)

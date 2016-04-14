@@ -78,6 +78,7 @@ gem 'griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 
 group :development, :test do
+  gem 'rails_email_preview', '~> 1.0.2'
   gem 'minitest'
   gem 'timecop'
   gem 'byebug'

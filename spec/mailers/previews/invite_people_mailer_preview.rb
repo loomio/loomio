@@ -1,4 +1,4 @@
-class InvitePeopleMailerPreview < ActionMailer::Preview
+class InvitePeopleMailerPreview
   def to_start_group
     group = FactoryGirl.create(:group)
     inviter = FactoryGirl.create(:user)
