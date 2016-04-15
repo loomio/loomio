@@ -39,6 +39,14 @@ GIT
     private_pub (1.0.3)
       faye
 
+GIT
+  remote: git://github.com/robguthrie/mail.git
+  revision: 47c87d5144a7801ce408bb6bce06bb199a5f2c77
+  branch: memoize-encoded
+  specs:
+    mail (2.7.0.edge)
+      mime-types (>= 1.16, < 4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -83,6 +91,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    ahoy_email (0.3.0)
+      addressable
+      nokogiri
+      rails
+      safely_block
     ahoy_matey (1.1.1)
       addressable
       browser (>= 0.4.0)
@@ -426,8 +439,6 @@ GEM
       nokogiri (>= 1.5.9)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
-    mail (2.6.3)
-      mime-types (>= 1.16, < 3)
     memory_profiler (0.9.4)
     mime-types (2.6.2)
     mini_portile2 (2.0.0)
@@ -595,6 +606,8 @@ GEM
       fog
     safe_shell (1.0.3)
     safe_yaml (1.0.4)
+    safely_block (0.1.0)
+      errbase
     sass (3.4.13)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -698,6 +711,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord_any_of
+  ahoy_email
   ahoy_matey
   airbrake
   autoprefixer-rails
@@ -748,6 +762,7 @@ DEPENDENCIES
   jquery-ui-rails (~> 5.0.0)
   kaminari
   launchy
+  mail!
   mime-types (~> 2.6.1)
   minitest
   modernizr-rails
