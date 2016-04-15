@@ -26,7 +26,7 @@ And that's it. You can jump to 'Install rbenv and ruby-build'
 
 ## Ubuntu system setup
 
-Node.js is required.  This will make that a possible.
+Node.js is required.  This will make that possible.
 ```
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 ```
@@ -97,13 +97,6 @@ git clone git@github.com:YOUR_USERNAME/loomio.git ~/projects/loomio
 cd ~/projects/loomio
 git remote add github git@github.com:loomio/loomio.git
 ```
-We need to update angular
-```
-cd ~/projects/loomio/angular
-npm install -g npm
-npm install
-npm rebuild node-sass
-```
 Now we want to use bundler to pull down all the dependencies for loomio
 ```
 cd ~/projects/loomio
@@ -117,9 +110,15 @@ Ubuntu users only:
 sudo -i -u postgres
 createuser -s YourUserName
 exit
-rake bootstrap
 ```
-
+We need to update angular
+```
+cd ~/projects/loomio/angular
+npm install
+npm rebuild node-sass
+rake bootstrap
+rake bootstrap:run
+```
 Everybody:
 ```
 cp config/database.example.yml config/database.yml
