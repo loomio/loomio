@@ -81,7 +81,7 @@ When a new version of ruby is released, you can update ruby-build with
 cd ~/.rbenv/plugins/ruby-build
 git pull
 ```
-NExt install Ruby. At the time of writing 2.3.0 is the latest version.
+Next install Ruby. At the time of writing 2.3.0 is the latest version.
 ```
 rbenv install 2.3.0
 rbenv global 2.3.0
