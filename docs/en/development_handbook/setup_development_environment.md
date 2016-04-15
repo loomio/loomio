@@ -93,7 +93,7 @@ Visit https://github.com/loomio/loomio and 'fork' the project. Now we can clone 
 
 ```
 mkdir ~/projects
-git clone git@github.com:YOUR_USERNAME/loomio.git ~/projects/loomio
+git clone git@github.com:YOUR_GITHUB_USERNAME/loomio.git ~/projects/loomio
 cd ~/projects/loomio
 git remote add github git@github.com:loomio/loomio.git
 ```
@@ -107,7 +107,7 @@ bundle install
 Ubuntu users only must create a database user:
 ```
 sudo -i -u postgres
-createuser -s YourUserName
+createuser -s YOUR_USERNAME
 exit
 ```
 Everyone needs to update angular
