@@ -104,14 +104,13 @@ gem install bundler
 rbenv rehash
 bundle install
 ```
-### Setup your database
-Ubuntu users only:
+Ubuntu users only must create a database user:
 ```
 sudo -i -u postgres
 createuser -s YourUserName
 exit
 ```
-We need to update angular
+Everyone needs to update angular
 ```
 cd ~/projects/loomio/angular
 npm install
@@ -119,7 +118,7 @@ npm rebuild node-sass
 rake bootstrap
 rake bootstrap:run
 ```
-Everybody:
+### Setup your database
 ```
 cp config/database.example.yml config/database.yml
 bundle exec rake db:setup
