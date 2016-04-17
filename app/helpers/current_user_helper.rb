@@ -5,19 +5,16 @@ module CurrentUserHelper
 
   private
 
-  def restricted_user
-    @restricted_user ||= User.find_by_unsubscribe_token(params[:unsubscribe_token]) if params[:unsubscribe_token]
-  end
-
-  def user_is_restricted?
-    current_user_or_visitor == restricted_user
-  end
-
   def current_user_serializer
-    if user_is_restricted?
+    if current_user_or_visitor == restricted_user
       Restricted::UserSerializer
     else
       CurrentUserSerializer
     end
   end
+
+  def restricted_user
+    @restricted_user ||= User.find_by_unsubscribe_token(params[:unsubscribe_token]) if params[:unsubscribe_token]
+  end
+
 end

@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConf
     AppConfig.membershipsLoaded = true
     $rootScope.$broadcast 'currentUserMembershipsLoaded'
 
-  # User is authenticated (ie, not signed in via an unsubscribe token)
+    # User is authenticated (ie, not signed in via an unsubscribe token)
     if !currentUser.restricted?
       Records.discussions.fetchInbox().then ->
         AppConfig.inboxLoaded = true
