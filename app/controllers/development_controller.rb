@@ -195,6 +195,20 @@ class DevelopmentController < ApplicationController
     redirect_to last_email_development_index_path
   end
 
+  def setup_used_invitation
+    test_group
+    emilio
+    InvitationService.redeem(pending_invitation, judd)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_cancelled_invitation
+    test_group
+    judd
+    InvitationService.cancel(invitation: pending_invitation, actor: patrick)
+    redirect_to last_email_development_index_path
+  end
+
   def setup_team_invitation_link
     redirect_to InvitationService.shareable_invitation_for(test_group)
   end

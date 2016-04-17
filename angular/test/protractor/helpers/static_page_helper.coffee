@@ -21,7 +21,8 @@ module.exports = new class StaticPageHelper
       @elementFor(selector).click()
 
   fillIn: (selector, value) ->
-    @elementFor(selector).sendKeys(value)
+    elem = @elementFor(selector)
+    elem.clear().then -> elem.sendKeys(value)
 
   expectText: (selector, value) ->
     expect(@elementFor(selector).getText()).toContain(value)

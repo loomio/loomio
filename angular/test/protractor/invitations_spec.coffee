@@ -96,3 +96,35 @@ describe 'Invitations', ->
 
     page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
     page.expectText '.members-card__list', 'JN'
+
+  it 'takes the user to the group if they\'ve already accepted', ->
+    staticPage.loadPath 'setup_used_invitation'
+
+    staticPage.click '[href]'
+
+    staticPage.fillIn '#user_password', 'gh0stmovie'
+    staticPage.click '#sign-in-btn'
+
+    page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+    page.expectText '.members-card__list', 'JN'
+
+  it 'displays an error if logging in as a different user', ->
+    staticPage.loadPath 'setup_used_invitation'
+
+    staticPage.click '[href]'
+
+    staticPage.fillIn '#user_email', 'emilio@loomio.org'
+    staticPage.fillIn '#user_password', 'gh0stmovie'
+    staticPage.click '#sign-in-btn'
+
+    staticPage.expectText 'body.invitations', 'This invitation has already been used'
+
+  it 'displays an error if the invitation has been cancelled', ->
+    staticPage.loadPath 'setup_cancelled_invitation'
+
+    staticPage.click '[href]'
+
+    staticPage.fillIn '#user_password', 'gh0stmovie'
+    staticPage.click '#sign-in-btn'
+
+    staticPage.expectText 'body.invitations', 'This invitation has been cancelled'
