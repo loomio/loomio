@@ -13,7 +13,7 @@ class AngularController < ApplicationController
 
   def on
     current_user.update_attribute :angular_ui_enabled, true
-    redirect_to '/'
+    redirect_to dashboard_path(welcome: true)
   end
 
   def off

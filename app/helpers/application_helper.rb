@@ -185,4 +185,8 @@ module ApplicationHelper
       image_url("navbar-logo-beta.jpg")
     end
   end
+
+  def show_beta_banner?
+    ENV.has_key?('BETA_BANNER_LINK') && ['dashboard', 'inbox', 'groups', 'discussions', 'users'].include?(controller_name)
+  end
 end
