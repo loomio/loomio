@@ -45,6 +45,7 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_closing_at
 
+
   attr_accessor :create_discussion
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
@@ -94,6 +95,18 @@ class Motion < ActiveRecord::Base
 
   def closed?
     closed_at.present?
+  end
+
+  def needs_to_be_closed?
+    (!closed? and closing_at < Time.now)
+  end
+
+  def close!
+    did_not_votes.delete_all
+    non_voters = group_members - voters
+    DidNotVote.create! non_voters.map { |user| {motion: self, user: user} }
+    update(closed_at: Time.now,
+           did_not_votes_count: did_not_votes.count)
   end
 
   def has_votes?
@@ -227,20 +240,6 @@ class Motion < ActiveRecord::Base
 
   def group_members_without_outcome_author
     group.members.without(outcome_author)
-  end
-
-  def store_users_that_didnt_vote
-    did_not_votes.delete_all
-    group.users.each do |user|
-      unless user_has_voted?(user)
-        did_not_vote = DidNotVote.new
-        did_not_vote.user = user
-        did_not_vote.motion = self
-        did_not_vote.save
-      end
-    end
-    update_attribute(:did_not_votes_count, did_not_votes.count)
-    reload
   end
 
   private

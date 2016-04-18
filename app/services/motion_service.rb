@@ -10,6 +10,7 @@ class MotionService
   end
 
   def self.update(motion:, params:, actor:)
+    close(motion) if motion.needs_to_be_closed?
     actor.ability.authorize! :update, motion
 
     if params[:closing_at] && motion.closing_at.to_s == Time.zone.parse(params[:closing_at]).to_s
@@ -36,27 +37,20 @@ class MotionService
   end
 
   def self.close(motion)
-    motion.store_users_that_didnt_vote
-    motion.closed_at = Time.now
-    motion.save!
-    motion.update_members_not_voted_count
-
+    motion.close!
     EventBus.broadcast('motion_close', motion)
     Events::MotionClosed.publish!(motion)
   end
 
   def self.close_by_user(motion, user)
     user.ability.authorize! :close, motion
-
-    motion.store_users_that_didnt_vote
-    motion.closed_at = Time.now
-    motion.save!
-
+    motion.close!
     EventBus.broadcast('motion_close_by_user', motion, user)
     Events::MotionClosedByUser.publish!(motion, user)
   end
 
   def self.create_outcome(motion:, params:, actor:)
+    close(motion) if motion.needs_to_be_closed?
     motion.outcome_author = actor
     actor.ability.authorize! :create_outcome, motion
 
@@ -69,6 +63,7 @@ class MotionService
   end
 
   def self.update_outcome(motion:, params:, actor:)
+    close(motion) if motion.needs_to_be_closed?
     motion.outcome_author = actor
     actor.ability.authorize! :update_outcome, motion
 
