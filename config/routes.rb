@@ -211,6 +211,7 @@ Loomio::Application.routes.draw do
 
   get 'contact(/:destination)', to: 'contact_messages#new'
   post :contact, to: 'contact_messages#create', as: :contact
+  post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
 
