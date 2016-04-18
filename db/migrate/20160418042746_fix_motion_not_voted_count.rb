@@ -12,8 +12,5 @@ class FixMotionNotVotedCount < ActiveRecord::Migration
                                  AND (memberships.archived_at is null or
                                       memberships.archived_at < motions.closed_at))
             FROM discussions WHERE motions.discussion_id = discussions.id "
-
-    remove_column :motions, :did_not_votes_count
-    remove_column :motions, :members_not_voted_count
   end
 end
