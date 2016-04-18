@@ -9,7 +9,7 @@ cache:
     - angular/node_modules
 
 env:
-  - DB=postgresql CXX=g++-4.8 CANONICAL_HOST=loomio.example.org
+  - DB=postgresql CXX=g++-4.8
 
 before_install:
   - export DISPLAY=:99.0
