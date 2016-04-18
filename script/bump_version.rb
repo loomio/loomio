@@ -1,11 +1,9 @@
--#!/usr/bin/env ruby
+#!/usr/bin/env ruby
 
 usage = <<-END
   Arguments:
     <version_type>: The part of the version we are bumping.
-                    Valid values are major | minor | patch | pre
-    <pre_value>:    The string value to set to pre.
-                    Only used when the version_type is pre.
+                    Valid values are major | minor | patch
     <action>:       Action to perform after making version changes.
                     Valid values are commit | no-commit
                     Default is no-commit
@@ -17,9 +15,6 @@ usage = <<-END
     ruby script/bump_version minor # => 0.11.0
     ruby script/bump_version major # => 1.0.0
 
-    Setting the version prefix:
-    ruby script/bump_version pre rc1 # => 0.10.1.rc1
-
     Commit changes to git repo:
     ruby script/bump_version patch commit
  END
@@ -29,14 +24,10 @@ if ARGV.length == 0 || ARGV.include?('--help')
  exit 1
 end
 
-version_type = ARGV[0]
-if version_type == 'pre'
-  pre_value, action = ARGV[1], ARGV[2] || 'no-commit'
-else
-  action = ARGV[1] || 'no-commit'
-end
+version_type = ARGV[0] || 'patch'
+action = ARGV[1] || 'no-commit'
 
-if !%w(major minor patch pre).include? version_type
+if !%w(major minor patch).include? version_type
   puts "Invalid version_type; use the --help option for usage info."
   exit 0
 end
@@ -46,40 +37,24 @@ if !%w(no-commit commit).include? action
   exit 0
 end
 
-if version_type == 'pre' && pre_value.nil?
-  puts "No value for pre provided; use the --help option for usage info."
-  exit 0
-end
-
 require_relative '../lib/version'
-require_relative '../lib/version/major'
-require_relative '../lib/version/minor'
-require_relative '../lib/version/patch'
-require_relative '../lib/version/pre'
 
 puts "Current version: #{Loomio::Version.current}"
 
 def write_version(type, value)
-  file_path = File.expand_path "../../lib/version/#{type.downcase}.rb", __FILE__
-  File.open(file_path, 'w+') { |file| file.write "Loomio::Version::#{type.upcase} = #{value}" }
+  file_path = File.expand_path "../../lib/version/#{type.downcase}", __FILE__
+  File.open(file_path, 'w+') { |file| file.write value }
 end
 
-current_version_type = Loomio::Version.module_eval(version_type.upcase)
-if version_type == 'pre'
-  write_version 'pre', "'#{pre_value}'"
-else
-  write_version version_type, current_version_type.to_i + 1
-  write_version 'minor', 0 if %w(major).include? version_type
-  write_version 'patch', 0 if %w(major minor).include? version_type
-  write_version 'pre',   'nil'
-end
+write_version version_type, Loomio::Version.send(version_type.downcase).to_i + 1
+write_version 'minor', 0 if %w(major).include? version_type
+write_version 'patch', 0 if %w(major minor).include? version_type
 
 if action == 'commit'
   puts "Creating version bump commit..."
   `git add lib/version.rb`
   `git add lib/version`
-  `git commitm "Bump version to #{Loomio::Version.current}"`
+  `git commit -m "Bump version to #{Loomio::Version.current}"`
 end
 
-Loomio::Version.reload
 puts "New version: #{Loomio::Version.current}"

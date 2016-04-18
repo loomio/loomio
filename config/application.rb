@@ -5,10 +5,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 require_relative '../lib/version'
-require_relative '../lib/version/major'
-require_relative '../lib/version/minor'
-require_relative '../lib/version/patch'
-require_relative '../lib/version/pre'
 
 module Loomio
   class Application < Rails::Application

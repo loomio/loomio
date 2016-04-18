@@ -44,8 +44,12 @@ namespace :bootstrap do
   task :create_user, [:email, :password] => :environment do |t, args|
     args.with_defaults(email: 'default@loomio.com', password: 'bootstrap_password')
     if User.find_by(email: args[:email]).nil?
-      User.create(args.to_hash)
-      puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
+      user = User.create(args.to_hash)
+      if user.valid?
+        puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
+      else
+        puts user.errors.full_messages.join("\n")
+      end
     else
       puts "User with #{args[:email]} already exist"
     end
