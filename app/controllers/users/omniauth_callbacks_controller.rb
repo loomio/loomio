@@ -14,7 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       :first_name,
       :last_name,
       :verified,
-      urls: [:Website, :Twitter, :Facebook])
+      urls: [:GitHub, :Blog, :Website, :Twitter, :Facebook])
     auth = OmniauthIdentity.from_omniauth(auth_params[:provider], auth_params[:uid], user_info)
 
     if auth.user
@@ -48,6 +48,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   alias_method :google, :all
   alias_method :facebook, :all
   alias_method :twitter, :all
+  alias_method :github, :all
 
   private
   def sign_in_and_redirect(user)

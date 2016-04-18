@@ -59,7 +59,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
     $scope.pageError = error
 
   $scope.$on 'trialIsOverdue', (event, group) ->
-    if CurrentUser.id == group.creatorId and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
+    if AbilityService.canAdministerGroup(group) and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
       ModalService.open ChoosePlanModal, group: -> group
       AppConfig.chargify.nagCache[group.key] = true
 

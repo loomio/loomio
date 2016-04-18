@@ -37,6 +37,14 @@ GIT
     jstz-rails (1.0.4.1)
       railties (>= 3.1)
 
+GIT
+  remote: git://github.com/robguthrie/mail.git
+  revision: 47c87d5144a7801ce408bb6bce06bb199a5f2c77
+  branch: memoize-encoded
+  specs:
+    mail (2.7.0.edge)
+      mime-types (>= 1.16, < 4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -442,6 +450,9 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
+    omniauth-github (1.1.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-google-oauth2 (0.2.6)
       omniauth (> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -708,12 +719,15 @@ DEPENDENCIES
   intercom
   jstz-rails!
   launchy
+  mail!
+  mime-types (~> 2.6.1)
   minitest
   newrelic_rpm
   nokogiri
   oj
   omniauth (~> 1.2.2)
   omniauth-facebook (~> 2.0.1)
+  omniauth-github
   omniauth-google-oauth2 (~> 0.2.5)
   omniauth-twitter (~> 1.2.0)
   paper_trail (~> 4.0.0.beta2)
