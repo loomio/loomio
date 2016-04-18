@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317031412) do
+ActiveRecord::Schema.define(version: 20160418042746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -582,6 +582,8 @@ ActiveRecord::Schema.define(version: 20160317031412) do
     t.integer  "outcome_author_id"
     t.string   "key"
     t.integer  "members_not_voted_count", default: 0,    null: false
+    t.integer  "members_count"
+    t.integer  "voters_count"
   end
 
   add_index "motions", ["author_id"], name: "index_motions_on_author_id", using: :btree
