@@ -39,7 +39,6 @@ gem 'foreman'
 gem 'rinku'
 gem 'friendly_id', '~> 5.1.0'
 gem 'httparty'
-gem 'airbrake'
 gem 'browser', '~> 1.1.0'
 gem 'fog'
 gem 'thin'
@@ -79,6 +78,7 @@ gem 'griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 
 group :development, :test do
+  gem 'rails_email_preview', '~> 1.0.2'
   gem 'minitest'
   gem 'timecop'
   gem 'byebug'
@@ -119,6 +119,7 @@ group :test do
 end
 
 group :production do
+  gem 'airbrake'
   gem 'puma'
   gem 'rails_12factor'
   gem 'rails_serve_static_assets'

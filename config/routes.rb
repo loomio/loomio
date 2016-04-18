@@ -1,5 +1,6 @@
 Loomio::Application.routes.draw do
 
+  mount RailsEmailPreview::Engine, at: 'emails' unless Rails.env.production?
   use_doorkeeper
 
   get '/development' => 'development#index'
