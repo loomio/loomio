@@ -21,4 +21,4 @@
         %td= vote.user_name
         %td= vote.statement
 
-%p= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => (@motion.group_size_when_voting - @motion.members_not_voted_count), denominator:  @motion.group_size_when_voting)
+%p= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => @motion.voters_count, denominator:  @motion.members_count)
