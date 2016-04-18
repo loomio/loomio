@@ -64,18 +64,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasActiveProposal: ->
       @activeProposal()?
 
-    activeProposalClosingAt: ->
-      proposal = @activeProposal()
-      proposal.closingAt if proposal?
-
-    activeProposalClosedAt: ->
-      proposal = @activeProposal()
-      proposal.closedAt if proposal?
-
-    activeProposalLastVoteAt: ->
-      proposal = @activeProposal()
-      proposal.lastVoteAt if proposal?
-
     isUnread: ->
       @discussionReaderId? and (!@lastReadAt? or @unreadActivityCount() > 0)
 
@@ -90,9 +78,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     unreadCommentsCount: ->
       @commentsCount - @readCommentsCount
-
-    lastInboxActivity: ->
-      @activeProposalClosingAt() or @lastActivityAt
 
     unreadPosition: ->
       @lastReadSequenceId + 1
