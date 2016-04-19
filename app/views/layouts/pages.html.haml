@@ -1,7 +1,7 @@
 !!!
 %html{locale: current_locale}
   %head
-    - title = @title ? @title : "Loomio | Collaborative Decision-Making"
+    - title = @title ? @title : "Motion | Collaborative Decision-Making"
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
     %title= title
@@ -16,7 +16,7 @@
     .navbar.navbar-top{role: 'navigation'}
       .navbar-inner
         .navbar-container
-          = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Loomio home page'
+          = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Motion home page'
 
     .container.home-flash
       = render 'application/flash_messages', :flash => flash
