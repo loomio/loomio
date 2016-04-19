@@ -186,7 +186,7 @@ class Motion < ActiveRecord::Base
   end
 
   def members_not_voted
-    members_count - voters_count
+    members - voters
   end
 
   def percent_voted
