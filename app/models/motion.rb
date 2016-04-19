@@ -106,7 +106,7 @@ class Motion < ActiveRecord::Base
 
   def members_count
     if voting?
-      group.members_count
+      group.memberships_count
     else
       self[:members_count]
     end
@@ -116,9 +116,7 @@ class Motion < ActiveRecord::Base
     did_not_votes.delete_all
     non_voters = group_members - voters
     DidNotVote.create! non_voters.map { |user| {motion: self, user: user} }
-    update(closed_at: Time.now,
-           members_count: group.members_count,
-           did_not_votes_count: did_not_votes.count)
+    update(closed_at: Time.now, members_count: group.memberships_count)
   end
 
   def has_votes?

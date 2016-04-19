@@ -10,7 +10,8 @@ json.(proposal,
       :no_votes_count,
       :abstain_votes_count,
       :block_votes_count,
-      :did_not_votes_count,
+      :voters_count,
+      :members_count,
       :created_at,
       :updated_at,
       :closing_at,
@@ -26,4 +27,3 @@ if proposal.outcome.present?
    json.partial! 'api/users/author', author: proposal.outcome_author
   end
 end
-

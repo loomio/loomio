@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418042746) do
+ActiveRecord::Schema.define(version: 20160418064405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "pg_stat_statements"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   null: false
@@ -572,17 +571,15 @@ ActiveRecord::Schema.define(version: 20160418042746) do
     t.integer  "discussion_id"
     t.text     "outcome"
     t.datetime "last_vote_at"
-    t.boolean  "uses_markdown",           default: true, null: false
-    t.integer  "yes_votes_count",         default: 0,    null: false
-    t.integer  "no_votes_count",          default: 0,    null: false
-    t.integer  "abstain_votes_count",     default: 0,    null: false
-    t.integer  "block_votes_count",       default: 0,    null: false
+    t.boolean  "uses_markdown",       default: true, null: false
+    t.integer  "yes_votes_count",     default: 0,    null: false
+    t.integer  "no_votes_count",      default: 0,    null: false
+    t.integer  "abstain_votes_count", default: 0,    null: false
+    t.integer  "block_votes_count",   default: 0,    null: false
     t.datetime "closing_at"
-    t.integer  "did_not_votes_count"
-    t.integer  "votes_count",             default: 0,    null: false
+    t.integer  "votes_count",         default: 0,    null: false
     t.integer  "outcome_author_id"
     t.string   "key"
-    t.integer  "members_not_voted_count", default: 0,    null: false
     t.integer  "members_count"
     t.integer  "voters_count"
   end
