@@ -27,7 +27,6 @@ angular.module('loomioApp').directive 'pieChart', ->
         yes: '#00D177'
         abstain: '#F6A82B'
         no: '#F96168'
-        block: '#CE261B'
 
       shapes = []
 
