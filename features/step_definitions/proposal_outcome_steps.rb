@@ -6,10 +6,7 @@ Given(/^the discussion has a proposal$/) do
 end
 
 Given(/^the proposal has closed$/) do
-  @motion.store_users_that_didnt_vote
-  @motion.closed_at = Time.now
-  @motion.save!
-  Events::MotionClosed.publish!(@motion)
+  MotionService.close(@motion)
   visit discussion_path(@discussion)
 end
 

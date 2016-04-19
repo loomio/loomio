@@ -24,7 +24,6 @@ COPY config/database.docker.yml /loomio/config/database.yml
 WORKDIR /loomio/angular
 RUN npm install
 RUN npm rebuild node-sass
-RUN node node_modules/gulp/bin/gulp.js compile
 
 WORKDIR /loomio
 RUN bundle install
@@ -38,8 +37,8 @@ ENV DEVISE_SECRET boopboop
 ENV SECRET_COOKIE_TOKEN beepbeep
 
 # build assets
+RUN bundle exec rake deploy:build
 RUN bundle exec rake assets:precompile
-RUN bundle exec rake deploy:version_client_assets
 
 # source the config file and run puma when the container starts
 CMD bundle exec puma -C config/puma.rb

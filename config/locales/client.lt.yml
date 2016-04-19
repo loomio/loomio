@@ -47,10 +47,6 @@ lt:
     normal: Normalus
     quiet: Tylus
     mute: Nutildyti
-  thread_volume_form:
-    submit: Atnaujinti
-  group_volume_form:
-    submit: Atnaujinti
   session_form:
     email_label: 'El. paštas:'
     password_label: 'Slaptažodis:'
@@ -268,8 +264,6 @@ lt:
     update_profile: Atnaujinti profilį
   email_settings_page:
     header: El. pašto nustatymai
-    email: El. paštas
-    update_settings: Atnaujinti el. pašto nustatymus
     messages:
       updated: El. pašto nustatymai atnaujinti
   dashboard_page:
@@ -299,8 +293,6 @@ lt:
     previous_proposals: Ankstesni Pasiūlymai
     load_previous: Įkelti ankstesnę veiklą
     you_like_this: Tau tai patinka.
-    volume:
-      quiet: Nesiųsti el. laiškų apie šią giją.
   thread_group:
     aria_label: Grupės pavadinimas
   thread_context:

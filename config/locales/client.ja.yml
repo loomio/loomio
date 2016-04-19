@@ -38,10 +38,6 @@ ja:
   proposal_outcome_form:
     outcome_label: 提案の結論
     publish_outcome: 結論を公表する
-  thread_volume_form:
-    submit: 更新
-  group_volume_form:
-    submit: 更新
   comment_form:
     delete_comment: コメントを削除します
     confirm_delete_message: 本当にコメントを削除しますか？
@@ -253,14 +249,3 @@ ja:
     invitation: 素晴らしい招待を書くアドバイス
     proposal: はっきりした提案を書くアドバイス
     vote: いつでも意見を変更することができます
-  pricing_page:
-    intro: |
-      予算のあるグループは、ツールを使用するための購読料を支払います。
-      支払う手段のないグループは、以下のシステムを使ってください。
-      Pay What You Canモデル：そのメンバーはボランティアで寄付をすることを勧められます。
-      あなたの寄付は、広告のない、私たちのコミュニティによって運営されるLoomioの独立を維持することを意味します。
-    organisations: 組織
-    organisations_examples: 例：ビジネス、政府機関、地域組織
-    informal_groups: 非公式グループ
-    informal_groups_desc: あなたのグループのメンバーは、出来るものを払うように要求されるでしょう
-    informal_groups_examples: 例：家族、社会運動、共同体

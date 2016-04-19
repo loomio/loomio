@@ -408,17 +408,3 @@ da:
     invitation: Tips til at skrive en god invitation
     proposal: Tips til at skrive et klart forslag
     vote: Du kan ændre dit standpunkt når som helst
-  pricing_page:
-    intro: >
-      Grupper med et budget betaler et abonnement for at bruge værktøjet.
-
-      Grupper uden midler til at betale et abonnement bruger
-
-      betal-hvad-du-kan-modellen: deres medlemmer inviteres til at give
-      frivillige bidrag. Dit bidrag sikrer at vi kan holde Loomio uafhængigt,
-      reklamefrit og drevet af vores fællesskab.
-    organisations: Organisationer
-    organisations_examples: 'f.eks. virksomheder, offentlige myndigheder, lokalorganisationer'
-    informal_groups: Uformelle grupper
-    informal_groups_desc: Medlemmer af din gruppe vil blive bedt om at betale hvad de kan
-    informal_groups_examples: 'f.eks. familie, sociale bevægelser, kollektiver'

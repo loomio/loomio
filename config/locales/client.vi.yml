@@ -206,9 +206,3 @@ vi:
     invitation: Gợi ý về cách viết các lời mời để kết nối thêm thành viên
     proposal: Gợi ý về việc viết lời đề nghị theo hướng rõ ràng nhất
     vote: Bạn có thể thay đổi kiến nghị của bạn vào bất kỳ thời điểm nào
-  pricing_page:
-    organisations: Các tổ chức
-    organisations_examples: 'ví dụ như doanh nghiệp, các cơ quan đại diện chính phủ, các tổ chức hoạt động vì cộng đồng'
-    informal_groups: Thông báo nhóm
-    informal_groups_desc: Thành viên trong nhóm của bạn có thể sẽ nhận được yêu cầu chi trả khi những thành viên đó có thể thực hiện
-    informal_groups_examples: 'ví dụ như gia đình, các hoạt động xã hội, các tổ chức thu thập'

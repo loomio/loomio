@@ -277,17 +277,3 @@ sv:
     invitation: Tips för att skriva en bra inbjudan
     proposal: Tips för att skriva ett tydligt förslag
     vote: Du kan ändra din ståndpunkt när som helst
-  pricing_page:
-    intro: >
-      Grupper som har finansiering betalar en abonnemangskostnad för att använda
-      verktyget.
-
-      Grupper som har få medel att betala för sig använder en
-      Betala-vad-du-kan-modell: dvs att deras medlemmar uppmanas att lämna ett
-      frivilligt bidrag. Ditt bidrag innebär att vi kan hålla Loomio oberoende,
-      fri från reklam, samt att den drivs av och för våra medlemmar.
-    organisations: Organisationer
-    organisations_examples: 't ex företag, myndigheter, och ideella organisationer'
-    informal_groups: Informella grupper
-    informal_groups_desc: Medlemmarna i din grupp kommer att få en begäran att ge ett bidrag efter förmåga
-    informal_groups_examples: 't ex familjer, samhällsrörelser, sammanslutningar'

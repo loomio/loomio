@@ -127,10 +127,6 @@ sr:
     plus: Plus
     free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
     get_started_for_free: Počni besplatno
-    gift_body_html: |
-      <p>Za grupe koje nemaju budžet za plaćanje pretplate.</p>
-      <p>Podržano donacijom, bez obaveze plaćanja.</p>
-    gift_donation_ask: Pitaćemo članove Vaše grupe za donaciju.
     unlimited_members: neograničeno članova
     unlimited_decisions: neograničeno odluka
     email_support: podrška ePorukom
@@ -138,7 +134,6 @@ sr:
       US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
     plus_body: 'Sve u Standardno, plus:'
     premium_support: premijum podrška
-    custom_url: poseban URL
     usage_statistics: statistika korišćenja
     plus_price_html: |
       US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje

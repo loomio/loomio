@@ -14,6 +14,11 @@ namespace :plugins do
     `#{join_gemfiles} && bundle install && git add Gemfile Gemfile.lock -f`
   end
 
+  task :install => :environment do
+    require [Rails.root, :plugins, :base].join('/')
+    Plugins::Repository.install_plugins!
+  end
+
   def join_gemfiles
     "cat #{[Rails.root, :plugins, :Gemfile].join('/')} >> #{[Rails.root, :Gemfile].join('/')}"
   end

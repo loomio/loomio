@@ -80,54 +80,6 @@ ro:
     quiet: Incet
     mute: Dezactivat
     unmute: Activare
-  thread_volume_card:
-    heading: Notificari punctuale
-    body:
-      loud: 'Toate emailurile: veti primi un email ori de cate ori apare ceva nou legat de aceasta discutie.'
-      normal: 'Propuneri pe email: veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
-      quiet: 'Fara emailuri: nu veti primi nimic prin email despre aceasta discutie'
-      mute: 'Discutie dezactivata: nu vei primi email despre aceasta discutie, ea va fi eliminata din Discutii Recente sau Pagini Necitite.'
-    change_volume_link: Schimba
-  thread_volume_form:
-    header: Notificari ale discutiei
-    loud_label: Toate emailurile
-    loud_description: Veti primi un email oricand va fi activitate in aceasta discutie.
-    normal_label: Propunerile vor fi primite prin email
-    normal_description: 'Veti primi un email cand propunerea este lansata, aproape de incheiere sau cand sunt anuntate rezultatele.'
-    quiet_label: Fara emailuri
-    quiet_description: Nu veti primi email despre aceasta discutie decat la mentionarea cuiva a @numelui tau.
-    mute_label: Dezactiveaza discutia
-    mute_description: Nu vei primi email despre aceasta Discutie care va fi sters de pe Discutii Recente și Pagini Necitite.
-    submit: Actualizeaza
-    messages:
-      loud: Vei primi un email despre activitatea in aceasta discutie.
-      normal: Vei primi un email despre propuneri in aceasta discutie.
-      quiet: Nu vei primi email pentru aceasta discutie.
-      mute: Discutie dezactivata.
-  group_volume_card:
-    heading: Notificarile grupului
-    body:
-      loud: 'Toate emailurile: veti primi un email ori de cate ori apare ceva nou legat de aceast grup.'
-      normal: Vei primi un email despre noi discutiii si propuneri in acest grup.
-      quiet: 'Fara emailuri: nu veti primi nimic prin email despre activitatea acestui grup.'
-      mute: 'Grup dezactivat: nu vei primi email despre acest grup, el va fi eliminat din Discutii Recente sau Pagini Necitite.'
-    change_volume_link: Schimba
-  group_volume_form:
-    header: Notificarile acestui grup
-    loud_label: Toate emailurile
-    loud_description: Veti primi un email oricand va fi activitate in acest grup.
-    normal_label: Trimite propunerile si discutiile noi prin email
-    normal_description: Vei primi un email despre discutiile si propunerile noi in acest grup.
-    quiet_label: Fara emailuri
-    quiet_description: Nu veti primi email despre acest grup decat la mentionarea cuiva a @numelui tau.
-    mute_label: Dezactiveaza grupul
-    mute_description: Nu vei primi email despre acest grup care va fi sters de pe Discutii Recente și Pagini Necitite.
-    submit: Actualizeaza
-    messages:
-      loud: Vei primi un email despre activitate in acest group.
-      normal: Vei primi un email despre propuneri in acest group.
-      quiet: Nu vei primi email pentru acest group.
-      mute: Group dezactivat.
   inbox:
     clear: Curata
     latest: Cel mai nou
@@ -315,8 +267,6 @@ ro:
     locale_label: Limba
   email_settings_page:
     header: Setari email
-    on_participation_label: Activitatea discutiei la care am participat
-    on_participation_description: 'Cand participi la o discutie, volumul se modifica la Inalt, astfel ca activitatea care urmeaza iti va fi transmisa prin email imediat.'
   dashboard_page:
     aria_label: Tablou de bord
     no_threads:
@@ -358,15 +308,6 @@ ro:
   discussion:
     proposals: Propuneri
     previous_proposals: Propuneri anterioare
-    volume:
-      loud: Trimite email ori de cate ori exista activitate în aceasta discutie.
-      loud_aria_description: Volumul notificarilor pentru aceasta discutie este pozitionat la Puternic. Inseamna ca vei primi email oridecateori exista o activitate in aceasta discutie.
-      normal: 'Trimite e-mail doar atunci cand o propunere este creata, pe cale de a inchide, sau un rezultat este postat.'
-      normal_aria_description: 'Volumul notificarilor pentru aceasta discutie este pozitionat la Normal. Vei primi emailuri cand va fi creata o propunere, sau va fi inchisa, sau va fi stabilit un rezultat.'
-      quiet: Nu trimite email pentru aceasta discutie.
-      quiet_aria_description: Volumul notificarilor pentru aceasta discutie este pozitionat la Incet. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau.
-      mute: Ascunde aceasta discutie din tabloul de comanda si notifica doar cand @va mentiona.
-      mute_aria_description: 'Volumul notificarilor pentru aceasta discutie este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar discutia va fi eliminata din tabloul tau de bord.'
   thread_group:
     aria_label: Numele grupului
   thread_context:
@@ -488,19 +429,3 @@ ro:
     invitation: Sfaturi pentru a scrie o invitatie
     proposal: Sfaturi pentru a scrie o propunere clara
     vote: Poti sa-ti modifici pozitia oricand doresti
-  pricing_page:
-    intro: >
-      Grupuri cu un buget vor plăti un abonament pentru utilizarea acestui
-      instrument
-
-      Grupuri fără mijloacele de a plăti un abonament vor folosi
-
-      modelul plateste Cat Poti:. membrii lor sunt invitați să facă o contribuție
-      voluntară. Contribuția dumneavoastră ne ajuta sa păstram Loomio
-      independent, liber de publicitate, condus doar de către comunitatea
-      noastră.
-    organisations: Organizatii
-    organisations_examples: 'ex. companii, agentii guvernamentale, organizatii comunitare'
-    informal_groups: Grupuri Informale
-    informal_groups_desc: Membrii grupului tau vor putea sa plateasca cat vor dori
-    informal_groups_examples: 'ex. familii, miscari sociale, colectivitati'

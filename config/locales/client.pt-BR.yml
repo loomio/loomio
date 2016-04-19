@@ -88,54 +88,6 @@ pt-BR:
     quiet: Quieto
     mute: Mudo
     unmute: Com som
-  thread_volume_card:
-    heading: Notificações de Tópicos
-    body:
-      loud: 'E-mail tudo: será enviado e-mail sempre que houver atividade neste segmento.'
-      normal: 'E-mail propostas: será enviado e-mail quando uma proposta for iniciada, estiver prestes a fechar, ou quando um resultado for publicado.'
-      quiet: 'Nenhum e-mail: não será enviado e-mail sobre atividade neste segmento.'
-      mute: 'Tópico silenciado: não será enviado e-mail sobre esta discussão, e será removido de seus Tópicos Recentes e páginas não lidas.'
-    change_volume_link: Mudar
-  thread_volume_form:
-    header: Notificações de Tópicos
-    loud_label: Enviar e-mail de tudo
-    loud_description: Será enviado e-mail sempre que houver atividade neste tópico.
-    normal_label: Enviar e-mail de propostas
-    normal_description: 'Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado.'
-    quiet_label: Não enviar e-mail
-    quiet_description: 'Você não receberá e-mail sobre atividade neste tópico, a menos que alguém menciona você.'
-    mute_label: Calar tópico
-    mute_description: 'Você não receberá e-mail sobre esse tópico, e será removido de seus Tópicos Recentes e páginas não lidas.'
-    submit: Atualizar
-    messages:
-      loud: Serão enviados e-mails de atividades neste grupo
-      normal: Serão enviados e-mails sobre propostas neste tópico.
-      quiet: Não será enviado e-mail sobre este tópico.
-      mute: Tópico mudo
-  group_volume_card:
-    heading: Notificações de Grupos
-    body:
-      loud: 'E-mail tudo: será enviado e-mail sempre que houver atividade neste grupo.'
-      normal: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
-      quiet: 'Nenhum e-mail: não será enviado e-mail sobre atividade neste grupo.'
-      mute: 'Grupo silenciado: não será enviado e-mail sobre esse grupo, e será removido de seus Tópicos Recentes e páginas não lidas.'
-    change_volume_link: Modificar
-  group_volume_form:
-    header: Notificações de Grupos
-    loud_label: Enviar e-mail de tudo
-    loud_description: Você receberá e-mail sempre que houver atividade nesse grupo.
-    normal_label: Envie e-mails de novos tópicos e propostas
-    normal_description: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
-    quiet_label: Não enviar e-mail
-    quiet_description: 'Você não receberá e-mail sobre atividade neste grupo, a menos que alguém menciona você.'
-    mute_label: Calar grupo
-    mute_description: 'Você não receberá e-mail sobre esse grupo, e será removido de seus Tópicos Recentes e páginas não lidas.'
-    submit: Atualizar
-    messages:
-      loud: Serão enviados e-mails de todas as atividades neste grupo
-      normal: Serão enviados e-mails sobre propostas neste grupo
-      quiet: Não será enviado e-mail sobre esse grupo.
-      mute: Grupo mudo
   inbox:
     clear: Limpar
     latest: Último
@@ -453,14 +405,10 @@ pt-BR:
     plus: Plus
     free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
     get_started_for_free: Comece de graça
-    gift_body_html: |
-      <p>Para os grupos que não têm orçamento para pagar uma assinatura.</p>
-      <p>Suporte para doações, sem exigência de pagamento.</p>
     support_before: Estou feliz por
     support_link: falar com você
     support_after: 'sobre como estender o seu teste, ou com quaisquer outras perguntas você pode ter.'
     remind_me_later: Lembrar-me mais tarde
-    gift_donation_ask: Vamos pedir aos membros do seu grupo por uma doação.
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte por e-mail
@@ -468,8 +416,6 @@ pt-BR:
       US <strong>$19</strong>/mês<br><span>ou</span> $190/ano
     plus_body: 'Tudo do Padrão, mais:'
     premium_support: suporte premium
-    custom_url: URL personalizada
-    usage_statistics: estatísticas de uso
     plus_price_html: |
       US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano
     select: Selecione
@@ -653,16 +599,8 @@ pt-BR:
     update_profile: Atualizar perfil
   email_settings_page:
     header: Configurações de e-mail
-    email: E-mail
     daily_summary_label: E-mail de resumo diário
-    daily_summary_description: Todos os dias envia um e-mail com a atividade não lida do dia anterior. Este e-mail fornece uma rotina fácil para manter-se atualizado com as atividades no Loomio.
-    on_participation_label: Atividades de tópicos que participei
-    on_participation_description: "Quando você participa de uma lista de discussão, o volume madurá para 'Alto', então todas as atividades serão enviadas para você imediatamente."
-    proposal_closing_soon_label: Antes de uma proposta encerrar
-    proposal_closing_soon_description: '24 horas antes de uma proposta ser encerrada, independentemente do volume, você receberá um e-mail com as informações mais recentes sobre a proposta.'
-    mentioned_label: Quando sou @mencionado
     mentioned_description: 'Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer.'
-    update_settings: Atualizar configurações de e-mail
     messages:
       updated: Configurações de e-mail atualizadas
   dashboard_page:
@@ -734,25 +672,11 @@ pt-BR:
     liked_by_names_and_name: 'Curtido por {{joinedNames}} e {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited: Editado
-    volume:
-      loud: Enviar e-mail sempre que houver atividade neste tópico.
-      loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Isso significa que você receberá um e-mail sempre que houver atividade neste tópico.
-      loud_message: 'Você receberá um e-mail sobre todas as atividades em "{{name}}"'
-      normal: 'Apenas enviar e-mail quando uma proposta for criada, estiver perto do encerramento ou um resultado for publicado.'
-      normal_aria_description: 'O seu volume de notificação para este grupo está definido como Normal. Você receberá um e-mail quando uma proposta for criada, estiver perto de encerrar ou um resultado for definido.'
-      normal_message: 'Você só receberá e-mails com eventos importantes de "{{name}}".'
-      quiet: Não enviar e-mails sobre este tópico.
-      quiet_aria_description: 'O seu volume de notificação para este grupo está definido como Quieto. Você não receberá e-mail sobre atividades deste grupo, a não ser que mencionem você.'
-      quiet_message: 'Você não receberá e-mails sobre "{{name}}" a não ser que alguém mencione você.'
-      mute: Esconder este tópico do painel e não notificar a não ser quando @mencionado.
-      mute_aria_description: 'O seu volume de notificação para este grupo está definido como Mudo. Você não receberá e-mail sobre este tópico, a não ser que mencionem você, e este tópico será removido do seu painel'
-      mute_message: '"{{name}}" foi removido do seu painel.'
   thread_group:
     aria_label: Nome do grupo
   thread_context:
     aria_label: Contexto do tópico
     thread_options: Opções do tópico
-    notifications: Notificações
     edit_thread: Editar
     move_thread: Mover
     print_thread: Imprimir
@@ -953,13 +877,6 @@ pt-BR:
     invitation: Dicas para escrever um ótimo convite
     proposal: Dicas para escrever uma proposta clara
     vote: Você pode mudar sua posição a qualquer momento
-  pricing_page:
-    intro: "Grupos com recursos pagam uma taxa mensal para usar a ferramenta.\nGrupos que não possuem recursos para pagar essa taxa usam o modelo \nPague o Que Puder: seus membros são convidados a fazer contribuições voluntárias. Sua contribuição significa que podemos manter o Loomio independente, livre de anúncios e comandado pela nossa comunidade.\n"
-    organisations: Organizações
-    organisations_examples: 'p.ex. negócios, agências de governo, organizações comunitárias'
-    informal_groups: Grupos informais
-    informal_groups_desc: Membros do seu grupo serão solicitados que paguem o que puderem
-    informal_groups_examples: 'p.ex. famílias, movimentos sociais, coletivos'
   angular:
     switch_back: Mude de volta para o antigo Loomio
     give_feedback: Dê suas opiniões
