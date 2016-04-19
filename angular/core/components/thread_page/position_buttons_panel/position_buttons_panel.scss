@@ -50,10 +50,3 @@
   background-color: $abstain-color;
   border-color: darken($abstain-color, 15%);
 }
-
-.position-button--block {
-  background-image: url(/img/block.svg);
-  background-color: $block-color;
-  border-color: darken($block-color, 15%);
-  background-position-x: calc(50% - 1px);
-}
