@@ -16,7 +16,7 @@ class ExampleContent
     email = ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
     bot = User.find_by(email: email) ||
           User.create!(email: email,
-                       name: 'Loomio Helper Bot',
+                       name: 'Motion Helper Bot',
                        password: SecureRandom.hex(20),
                        uses_markdown: true,
                        avatar_kind: 'gravatar')
