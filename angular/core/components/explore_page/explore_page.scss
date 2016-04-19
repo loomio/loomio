@@ -33,9 +33,14 @@
   @include cardNoPadding;
 }
 
+@media (max-width: 768px) {
+  .explore-page__group {
+    flex-grow: 1;
+  }
+}
+
 .explore-page__group-cover {
   height: 100px;
-  background: url('http://placehold.it/640x160') no-repeat center center #f5f5f5;
   background-size: cover;
 }
 

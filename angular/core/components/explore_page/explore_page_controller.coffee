@@ -13,7 +13,7 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
     if @query
       @groupIds = []
     Records.groups.fetchExploreGroups(@query, {from: @groupIds.length, per: @perPage}).then (object) =>
-      @groupIds = @groupIds.concat(_.map object.groups, (group) -> group.id)
+      @groupIds = @groupIds.concat _.pluck(object.groups, 'id')
       if (object.groups or []).length < @perPage
         @canLoadMoreGroups = false
 
