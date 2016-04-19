@@ -1,4 +1,4 @@
-%img{src: vote_icon_paths_helper(vote.position)}
+%img{src: position_icon_url(vote.position)}
 %strong= vote.author.name
 - past_tense_position = I18n.t("position_verbs.past_tense.#{vote.position}")
 = t('notifications.new_vote', position: past_tense_position) + ": " + @motion.title
