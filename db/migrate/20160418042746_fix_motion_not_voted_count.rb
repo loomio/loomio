@@ -1,7 +1,7 @@
 class FixMotionNotVotedCount < ActiveRecord::Migration
   def change
     add_column :motions, :members_count, :integer
-    add_column :motions, :voters_count, :integer
+    add_column :motions, :voters_count, :integer, null: false, default: 0
 
     Motion.update_all('voters_count = (yes_votes_count + no_votes_count + abstain_votes_count + block_votes_count)')
 
