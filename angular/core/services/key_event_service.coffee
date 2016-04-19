@@ -30,7 +30,6 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope, $timeout) ->
     submitOnEnter: (scope) ->
       @previousScope.$$listeners['pressedEnter'] = null if @previousScope?
       @previousScope = scope
-      delayedSubmit = -> $timeout scope.submit, 300
-      @registerKeyEvent scope, 'pressedEnter', delayedSubmit, (active, event) =>
+      @registerKeyEvent scope, 'pressedEnter', scope.submit, (active, event) =>
         (event.ctrlKey or event.metaKey) and
         _.contains(active.classList, 'lmo-primary-form-input')
