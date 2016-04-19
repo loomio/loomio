@@ -577,8 +577,6 @@ en:
   abstain_details: I am happy for the group to decide without me.
   no_position: I disagree
   no_details: I think we can probably do better.
-  block_position: I block
-  block_details: I have strong objections to this proposal and am not OK with it going ahead.
   not_voted: "[Show members who have not yet decided]"
   outcome: Outcome
   outcome_placeholder: What was the outcome of this proposal?
