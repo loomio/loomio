@@ -251,8 +251,6 @@ en:
     i_abstain_details: 'I am happy for the group to decide without me.'
     i_disagree: 'I disagree'
     i_disagree_details: 'I think we can probably do better.'
-    i_block: 'I block'
-    i_block_details: 'I have strong objections to this motion and am not OK with it going ahead.'
     submit_position: 'Submit position'
     change_position: 'Change position'
     select_position: 'Select position'
@@ -340,7 +338,6 @@ en:
   proposal_position_yes: 'Agree'
   proposal_position_abstain: 'Abstain'
   proposal_position_no: 'Disagree'
-  proposal_position_block: 'Block'
 
   legacy_trial_expired_modal:
     heading: "Thanks for using Motion this year!"
@@ -871,11 +868,9 @@ en:
     agree: 'agreed'
     abstain: 'abstained'
     disagree: 'disagreed'
-    block: 'blocked'
     agree_with_statement: 'agreed: <span>{{statement}}</span>'
     abstain_with_statement: 'abstained: <span>{{statement}}</span>'
     disagree_with_statement: 'disagreed: <span>{{statement}}</span>'
-    block_with_statement: 'blocked: <span>{{statement}}</span>'
 
   new_proposal_item:
     author_created_proposal: 'started a motion: <span>{{title}}</span>'
@@ -1005,7 +1000,6 @@ en:
     positions_agree_description: "<span>Agree</span> means you’re happy with the motion."
     positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
     positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
-    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this motion goes ahead."
     start_discussion: "Starting an engaging discussion"
     start_discussion_html:  |
       <p>When you start a discussion, make sure the title conveys the topic succinctly.
