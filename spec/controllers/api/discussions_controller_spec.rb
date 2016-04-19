@@ -283,7 +283,6 @@ describe API::DiscussionsController do
       expect(reader.reload.last_read_at).to eq discussion.reload.last_activity_at
       expect(reader.last_read_sequence_id).to eq 0
       expect(response.status).to eq 200
-      expect(response.body).to be_empty
     end
 
     it "Marks thread item as read" do
@@ -292,7 +291,6 @@ describe API::DiscussionsController do
       expect(reader.reload.last_read_at).to eq event.created_at
       expect(reader.last_read_sequence_id).to eq 1
       expect(response.status).to eq 200
-      expect(response.body).to be_empty
     end
 
     it 'does not mark an inaccessible discussion as read' do
@@ -300,6 +298,19 @@ describe API::DiscussionsController do
       patch :mark_as_read, id: another_discussion.key, sequence_id: event.reload.sequence_id
       expect(response.status).to eq 403
       expect(reader.reload.last_read_sequence_id).to eq 0
+    end
+
+    it 'responds with reader fields' do
+      event = CommentService.create(comment: comment, actor: discussion.author)
+      patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
+      json = JSON.parse(response.body)
+      reader.reload
+
+      expect(json['discussions'][0]['discussion_reader_id']).to eq reader.id
+      expect(json['discussions'][0]['discussion_reader_volume']).to eq reader.discussion_reader_volume
+      expect(json['discussions'][0]['starred']).to eq reader.starred
+      expect(json['discussions'][0]['last_read_sequence_id']).to eq reader.last_read_sequence_id
+      expect(json['discussions'][0]['participating']).to eq reader.participating
     end
   end
 

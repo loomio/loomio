@@ -65,7 +65,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @activeProposal()?
 
     isUnread: ->
-      @discussionReaderId? and (!@lastReadAt? or @unreadActivityCount() > 0)
+      # it is read if we've read it to completion clientside, or if we have no reader
+      return false if @readOnClient or !@discussionReaderId?
+      !@lastReadAt? or @unreadActivityCount() > 0
 
     isImportant: ->
       @starred or @hasActiveProposal()
@@ -80,7 +82,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @commentsCount - @readCommentsCount
 
     unreadPosition: ->
-      @lastReadSequenceId + 1
+      @clientReadSequenceId + 1
 
     eventIsLoaded: (event) ->
       event.sequenceId or
@@ -124,6 +126,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
         @update(readItemsCount: @itemsCount,
                 readSalientItemsCount: @salientItemsCount,
                 readCommentsCount: @commentsCount,
+                readOnClient: @sequenceId == @lastSequenceId,
                 lastReadAt: moment())
 
       if _.isNull(@lastReadAt) or @clientReadSequenceId < sequenceId
