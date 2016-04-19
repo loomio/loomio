@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'KeyEventService', ($rootScope, $timeout) ->
+angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
   new class KeyEventService
 
     keyboardShortcuts:
