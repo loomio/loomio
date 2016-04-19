@@ -142,9 +142,16 @@ describe Motion do
     before do
       @motion = create(:motion, discussion: discussion)
     end
-    it "returns the pecentage of users that have voted" do
-      @motion.stub(:non_voters_count).and_return(10)
-      @motion.stub(:members_count).and_return(20)
+    it "works when voting" do
+      @motion.voters_count = 10
+      @motion.group.memberships_count = 20
+      expect(@motion.percent_voted).to eq 50
+    end
+
+    it "works when closed" do
+      @motion.closed_at = Time.now
+      @motion.voters_count = 10
+      @motion.members_count = 20
       expect(@motion.percent_voted).to eq 50
     end
   end

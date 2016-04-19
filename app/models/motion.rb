@@ -104,14 +104,6 @@ class Motion < ActiveRecord::Base
     members_count - voters_count
   end
 
-  def members_count
-    if voting?
-      group.memberships_count
-    else
-      self[:members_count]
-    end
-  end
-
   def close!
     did_not_votes.delete_all
     non_voters = group_members - voters
