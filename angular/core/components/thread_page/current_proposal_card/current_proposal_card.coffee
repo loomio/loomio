@@ -27,7 +27,7 @@ angular.module('loomioApp').directive 'currentProposalCard', ->
       #$scope.proposal.votes().length == 0
 
     #$scope.curatedVotes = ->
-      #positionValues = {yes: 0, abstain: 1, no: 2, block: 3}
+      #positionValues = {yes: 0, abstain: 1, no: 2}
       #_.sortBy filteredVotes(), (vote) ->
         #positionValues[vote.position]
 
