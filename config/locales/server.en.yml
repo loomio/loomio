@@ -33,13 +33,13 @@ en:
     view_comment: Click here to view the comment on Motion
     view_discussion: Click here to view this discussion
     view_group: Click here to view the group on Motion
-    view_proposal: View this proposal on Motion
+    view_proposal: View this motion on Motion
     create_discussion:
       intro: "%{who} started a discussion in %{which_group}:"
     create_proposal:
-      intro: A new proposal was created in a Motion group that you belong to.
+      intro: A new motion was created in a Motion group that you belong to.
       closes_in: Closes in
-      subject: 'New proposal: %{which}'
+      subject: 'New motion: %{which}'
     daily_activity:
       heading: Your Motion Activity
       intro: Showing you what’s been happening in your Motion groups in the last 24 hours
@@ -72,21 +72,21 @@ en:
       context: '%{author_name} mentioned you while discussing "%{discussion_title}"'
       subject: '%{who} mentioned you while discussing "%{which}"'
     new_motion_created:
-      subject: 'Proposal: %{proposal_title}'
-      context: "%{author} created a proposal in %{group_full_name}:"
+      subject: 'Motion: %{proposal_title}'
+      context: "%{author} created a motion in %{group_full_name}:"
     proposal_closed:
-      proposal_has_closed: The proposal has closed.
+      proposal_has_closed: The motion has closed.
       specify_outcome_and_notify_group: Create an outcome and send it to your group!
       specify_outcome_and_notify_group_html: Create an outcome and send it to your group!
-      subject: Proposal closed - %{which}
+      subject: Motion closed - %{which}
     proposal_outcome:
-      subject: 'Proposal outcome: %{motion}'
+      subject: 'Motion outcome: %{motion}'
     proposal_closing_soon:
       closes_on: Closes on
       closes_at: Closes at
       closes_in: Closes in
       subject: 'Closing in 24 hours: %{proposal_title}'
-      headline: "%{author}'s proposal in %{group} is closing soon:"
+      headline: "%{author}'s motion in %{group} is closing soon:"
       summary: Summary
     thread_mailer:
       footer_text: 'Reply to this email directly or view it on %{hostname}:'
@@ -98,11 +98,11 @@ en:
       change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
       change_preferences: 'Change your email preferences:'
       new_motion: "%{who} proposed:"
-      motion_closing_soon: 'Proposal closing in 24 hours:'
-      proposal_closed: 'Proposal closed:'
-      specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
-      specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
-      outcome_created: "%{who} set a proposal outcome:"
+      motion_closing_soon: 'Motion closing in 24 hours:'
+      proposal_closed: 'Motion closed:'
+      specify_outcome_html: Your motion has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
+      specify_outcome: 'Your motion has closed. Specify an outcome to let everyone know what the result is:'
+      outcome_created: "%{who} set a motion outcome:"
       you_agreed: You %{past_tense_position}
   footer:
     about: About
@@ -190,7 +190,7 @@ en:
 
       You are currently reading the thread **context**. Use this space to give the background information the group needs for a productive discussion.
 
-      The **proposal** panel is where you make decisions. You can start proposals and participate in them there.
+      The **motion** panel is where you make decisions. You can start motions and participate in them there.
 
       The **activity** panel below shows everything that’s happened in this thread.
   first_comment:
@@ -207,17 +207,17 @@ en:
 
       If you’ve got any questions, the first place to check is the [Motion help manual](http://help.loomio.org).
   first_proposal:
-    name: 'Demonstration proposal: let’s go!'
+    name: 'Demonstration motion: let’s go!'
     description: |
-      This the proposal **description**. Here you can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
+      This the motion **description**. Here you can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
 
-      To participate in the proposal, choose one of these options:
+      To participate in the motion, choose one of these options:
 
       - **Agree**: “I agree with this and want it to go ahead.”
       - **Abstain**: “I am happy for the group to decide without me.”
       - **Disagree**: “I think we can probably do better.”
 
-      When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
+      When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the motion is still open.
   contact_page:
     contact_us: Contact us
     faq_prompt_html: Got a question for the Motion team? Before contacting us, you might be able to find the answer in our frequently asked questions.
