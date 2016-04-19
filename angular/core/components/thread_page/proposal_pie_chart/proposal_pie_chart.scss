@@ -28,10 +28,6 @@
   border-color: $disagree-color;
 }
 
-.proposal-pie-chart__label--block{
-  border-color: $block-color;
-}
-
 .proposal-pie-chart__participation-statement {
   margin-top: 10px;
   @include fontSmall;
