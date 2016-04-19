@@ -21,7 +21,10 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
       @group().name
 
     saveVolume: (volume, applyToAll = false) ->
-      @remote.patchMember(@keyOrId(), 'set_volume', { volume: volume, apply_to_all: applyToAll }).then =>
+      @remote.patchMember(@keyOrId(), 'set_volume',
+        volume: volume
+        apply_to_all: applyToAll
+        unsubscribe_token: @user().unsubscribeToken).then =>
         if applyToAll
           _.each @user().allThreads(), (thread) ->
             thread.update(discussionReaderVolume: null)

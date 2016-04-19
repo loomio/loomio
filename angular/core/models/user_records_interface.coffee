@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterfac
     model: UserModel
 
     updateProfile: (user) =>
-      @remote.post 'update_profile', user.serialize()
+      @remote.post 'update_profile', _.merge(user.serialize(), {unsubscribe_token: user.unsubscribeToken })
 
     uploadAvatar: (file) =>
       @remote.upload 'upload_avatar', file
