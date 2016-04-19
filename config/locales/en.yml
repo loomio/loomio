@@ -44,7 +44,7 @@ en:
       no_invitations_remaining: No invitations remaining
     mailer:
       invitation_instructions:
-        subject: Someone has invited you to join their Loomio group
+        subject: Someone has invited you to join their Motion group
     registrations:
       sign_up: Create account
     sessions:
@@ -88,7 +88,7 @@ en:
     new_contacts_imported: That worked! You can type names into the field below and we'll suggest the email address.
     admin_rights_removed: "%{which_user}'s coordinator rights have been removed."
     user_added: "%{user_email_or_name} has been added to the group."
-    new_user_added: "%{user_email_or_name} will be added to the group after they set up a Loomio account."
+    new_user_added: "%{user_email_or_name} will be added to the group after they set up a Motion account."
     member_removed: Member removed.
     membership_approved: Membership approved.
     membership_request_canceled: Membership request canceled.
@@ -185,7 +185,7 @@ en:
         one: 1 year
         other: "%{count} years"
   organisation:
-    name: Loomio
+    name: Motion
   sr:
     toggle_navigation: Toggle navigation
   inbox:
@@ -226,15 +226,15 @@ en:
   find_a_group_hint: To explore public groups
   search_for_group: Search for a group...
   no_groups_found: No groups found by that name!
-  no_group_header: Welcome to Loomio Beta
+  no_group_header: Welcome to Motion Beta
   empty_notifications: You do not have any notifications yet.
   see_all_notifications: See all notifications
   sign_out: Sign out
   sign_in: Log in
   honeypot_warning: Could not create your account. If you're using a screen reader, please make sure the last (hidden) field on the form is blank.
   tagline: Creating a world where it's easy for anyone to participate in decisions that affect them.
-  or_sign_in_html: If you already have a Loomio account, <a href='%{link}' class='%{link_class}'>log in here</a>
-  or_link_account_html: If you already have a Loomio account, <a href='%{link}'>link it up</a>
+  or_sign_in_html: If you already have a Motion account, <a href='%{link}' class='%{link_class}'>log in here</a>
+  or_link_account_html: If you already have a Motion account, <a href='%{link}'>link it up</a>
   click_to_dismiss: Click here to dismiss this message
   generic_confirm: Are you sure?
   discussion_helper_text:
@@ -267,7 +267,7 @@ en:
       info_title: What will deactivating your account mean?
       memberships: You will no longer be listed as a member in any of the groups you currently belong to.
       group_contributions: The comments, proposals and discussions you've made in groups will stay, but we'll remove your name from these.
-      emails: We'll stop sending you Loomio related emails.
+      emails: We'll stop sending you Motion related emails.
   group_form:
     name: Group name
     description: Description
@@ -442,7 +442,7 @@ en:
     request_declined: Network membership request declined.
   group_request:
     header: Start a group
-    desc: 'Set up a group to start making decisions together on Loomio:'
+    desc: 'Set up a group to start making decisions together on Motion:'
     commercial_use_option: in a company, formal organisation or workplace
     non_commercial_use_option: in a community group or informal network
     please_select_an_option: Please select an option
@@ -600,20 +600,20 @@ en:
     comment_changes: Comment changes
     edit_comment: Edit comment
   help:
-    coordinating: Coordinating your Loomio group
+    coordinating: Coordinating your Motion group
     coordinating_details: |
-      As the coordinator, you’re responsible for setting up your Loomio group and inviting
+      As the coordinator, you’re responsible for setting up your Motion group and inviting
       everyone in. As well as learning how to use a new piece of software, your group will
       be learning new processes for collaborating more effectively and making good decisions
       together. Here are some tips for supporting your group to succeed:
-    different_ways: Different ways to use Loomio
+    different_ways: Different ways to use Motion
     engaging_html: |
       <h2>Tips for engaging your group</h2>
       <p>People will be excited to jump in and start participating when there’s an engaging
       proposal on the table. A good proposal contains a plan of action for the group, so
       that it’s immediately obvious what it means to agree or disagree. Think about how you
       can identify discussions/decisions the group is currently undertaking in person or by
-      email that would be easier if they were on Loomio.</p>
+      email that would be easier if they were on Motion.</p>
       <p>If your group is just starting out, you could start a light-hearted decision, to give
       everyone a chance to play with the tool and see the decision-making process in action.</p>
       <p>Another simple way to encourage people to engage in a discussion is to use the @mention
@@ -635,7 +635,7 @@ en:
     get_in_touch_description_html: If you have any questions or feedback, <a href='%{link}'>drop us a line</a>.
     getting_started: Getting started
     getting_started_description: On the left, the group discusses a topic, exchanging ideas and information. When there’s a decision for the group to make, it comes up on the right.
-    getting_the_most: Getting the most out of Loomio
+    getting_the_most: Getting the most out of Motion
     have_your_say: Have your say
     have_your_say_details_html: |
       <p>When you’re ready to have your say, click one of the four decision buttons.</p>
@@ -652,14 +652,14 @@ en:
       <p>The first question every new member will have is ‘what is this group for?’</p>
       <p>Think about the simplest way you can describe the group: What do you want to
       achieve together? What types of decisions will you be making? Who will be involved?</p>
-      <p>It can be a good idea to talk to your group first before you invite them to join Loomio.</p>
+      <p>It can be a good idea to talk to your group first before you invite them to join Motion.</p>
       <p>People will want to know why they’ve been invited, what’s expected of them,
       and why it’s worth their time to learn how to use a new tool.</p>
     join_the_community: Join the community
-    join_the_community_description_html: Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>.
+    join_the_community_description_html: Everyone is welcome to join the Motion Community, where we talk about how to make the most of the tool, and how it can be improved.<br /><br /><a href='https://www.loomio.org/groups/3'>Click here to go the Loomio Community group</a>.
     images_and_text_formatting: Images and text formatting
     images_and_text_formatting_html: |
-      <p>Loomio uses ‘Markdown’ for image embedding and text formatting.
+      <p>Motion uses ‘Markdown’ for image embedding and text formatting.
       You can switch Markdown on with the small grey icon under the comment box.</p>
       <p><a href='https://www.loomio.org/discussions/1124'>Click here</a>
       for information on how to use Markdown.</p>
@@ -701,11 +701,11 @@ en:
       needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
     video_id: '52025402'
     video_tutorial: Video tutorial
-    video_tutorial_description: Check out the video for a quick demonstration of how to use Loomio.
-    what_is_loomio: What is Loomio?
+    video_tutorial_description: Check out the video for a quick demonstration of how to use Motion.
+    what_is_loomio: What is Motion?
     what_is_loomio_description_html: |
-      <p> Loomio is a simple, user-friendly online tool for collaborative decision-making.
-          Loomio allows you to host discussions online, invite the right people to participate,
+      <p> Motion is a simple, user-friendly online tool for collaborative decision-making.
+          Motion allows you to host discussions online, invite the right people to participate,
           come to timely decisions and transform deliberation into real-world action. </p>
   hint:
     context: Tips for using the context panel
@@ -722,27 +722,27 @@ en:
     tooltip: Learn about our community funding model
     thought_about_contributing: Your chance to contribute
     thought_about_contributing_description: |
-      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
+      Motion is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
-      Money shouldn’t be a barrier to collaborative decision-making. Loomio is funded by contributions from our community of users, and subscriptions paid by formal organisations using it.
+      Money shouldn’t be a barrier to collaborative decision-making. Motion is funded by contributions from our community of users, and subscriptions paid by formal organisations using it.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and freely available to groups doing great stuff in their communities.
+      Your contribution means we can keep Motion independent, free of advertising, and freely available to groups doing great stuff in their communities.
 
       Thanks for making this possible!
-    thank_you_title: Thank you for contributing to Loomio!
+    thank_you_title: Thank you for contributing to Motion!
     thank_you_body: |
       Your contribution helps us deliver easy collaborative decision-making to the world.
 
       You will receive an email shortly with a receipt for your contribution.
 
-      Everyone is welcome to join the Loomio Community, where we talk about how to make the most of the tool, and how it can be improved.
+      Everyone is welcome to join the Motion Community, where we talk about how to make the most of the tool, and how it can be improved.
 
-      <a href='https://www.loomio.org/groups/3'>Take me to the Loomio Community group &raquo;</a>
+      <a href='https://www.loomio.org/groups/3'>Take me to the Motion Community group &raquo;</a>
     making_a_donation: Making a donation
     making_a_donation_description: |
-      Loomio is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
+      Motion is a cooperative social enterprise working to make it easy for anyone to participate in decisions that affect them.
 
-      Your contribution means we can keep Loomio independent, free of advertising, and freely available to groups doing great stuff in their communities.
+      Your contribution means we can keep Motion independent, free of advertising, and freely available to groups doing great stuff in their communities.
 
       Thanks for making this possible!
   resend_confirmation: Resend confirmation instructions
@@ -765,15 +765,15 @@ en:
   link_it_up_instead: Link it up instead
   sign_up_via: Sign up via
   or_fill_in_this_form: or fill in this form
-  already_have_account: Already have a Loomio account?
+  already_have_account: Already have a Motion account?
   confirm_your_details: Confirm your details
   link_up_your_account: Link up your account
-  log_in_to_your_loomio_account: Log in to your Loomio account to link it up with %{provider_name}.
-  now_that_your_logged_in: Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account.
+  log_in_to_your_loomio_account: Log in to your Motion account to link it up with %{provider_name}.
+  now_that_your_logged_in: Now that you've logged in with %{provider_name}, please confirm your details to create a Motion account.
   confirmation_not_received: Didn't receive confirmation instructions?
   unlock_not_received: Didn't receive unlock instructions?
   inactive_html: This account has been deactivated. If you have any questions please <a href='%{path_to_contact}'>get in touch</a>.
-  create_an_account_html: Create a Loomio Beta account
+  create_an_account_html: Create a Motion Beta account
   log_in: Log in
   join_group:
     log_in: Log in to join %{group_name}
@@ -783,7 +783,7 @@ en:
     create_account_to_start_group: Please create an account to start your group %{group_name}
     create_account: Please create an account
   invitation:
-    angular_warning_html: '<small> Anyone that accepts your invitation will use the new Loomio interface: <a href="http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/" target="_blank">find out more</a>.</small>'
+    angular_warning_html: '<small> Anyone that accepts your invitation will use the new Motion interface: <a href="http://blog.loomio.org/2015/10/14/one-step-closer-to-loomio-1-0/" target="_blank">find out more</a>.</small>'
     alternate: 'Alternatively, share this link and anyone can ask to join:'
     by_email: Invite by email
     invitation_not_found: Could not find invitation with that token. Please ask for a new invitation from the sender.
@@ -791,12 +791,12 @@ en:
     invitation_already_used: This invitation has already been used. Please log in to continue to your group.
     recipients: 'Enter email addresses, separated by commas:'
     invitees_placeholder: User Name <user1@example.com>, user2@example.com
-    subject: Please join our new Loomio group, %{group}
+    subject: Please join our new Motion group, %{group}
     invite_people: Invite people to your group
     invite_to_discussion: Invite people to this discussion
     invite_to_discussion_info: Adding people to this discussion will send them an invitation to your group. When they accept, they'll be directed to this discussion.
     select_members: Add members from %{group_name}
-    body_editable: 'Hey there, come make decisions with us! We''re using a collaborative decision-making tool called Loomio.
+    body_editable: 'Hey there, come make decisions with us! We''re using a collaborative decision-making tool called Motion.
 
 '
     body_editable_discussion: 'Hey there, come and join the discussion!
@@ -807,7 +807,7 @@ en:
     invitation_link: Invitation link
     discussion_link: 'Participate in the discussion:'
     link_help: 'Click the link to join %{group_name} and get started:'
-    value_proposition: Loomio is an online platform that helps groups make decisions. You can discuss issues and agree on a clear course of action together.
+    value_proposition: Motion is an online platform that helps groups make decisions. You can discuss issues and agree on a clear course of action together.
     thanks: Thanks,
     copy: If someone did not get their invitation email, please feel free to copy the invitation link above and give it to the recipient yourself.
     pending_invitations: Pending invitations
@@ -864,10 +864,10 @@ en:
   group_setup:
     set_up_your_group: Set up your group
     desc_header: You're almost there!
-    desc_html: 'As the group coordinator, you’re responsible for setting up and managing your Loomio group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>'
+    desc_html: 'As the group coordinator, you’re responsible for setting up and managing your Motion group. After you choose a few settings, you can get into your new group, start a discussion or two, and send out some invitations! <p>When thinking about the simplest way you can describe your group, ask yourself: What do you want to achieve together? What types of decisions will you be making? Who will be involved?</p>'
     submit: Take me to my group!
     payment_model:
-      header: Loomio is for everyone!
+      header: Motion is for everyone!
       info: We have a payment model that suits any group, even those with no money :)
       link: Find out more
   simple_form:
@@ -912,9 +912,9 @@ en:
         create: Create account
         update: Update settings
   meta_tags:
-    default_title: Loomio | Collaborative Decision-Making
-    default_description: Loomio is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action.
-  about_loomio: About Loomio
+    default_title: Motion | Collaborative Decision-Making
+    default_description: Motion is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action.
+  about_loomio: About Motion
   ago: "%{quantity_of_time} ago"
   approve: Approve
   attachments: 'Attachments:'
@@ -922,7 +922,7 @@ en:
   back: Back
   cancel: Cancel
   change: Change
-  change_language: Click here to use Loomio in %{language}
+  change_language: Click here to use Motion in %{language}
   changing: Changing
   click_here: Click here
   close: Close
@@ -956,7 +956,7 @@ en:
   pricing: Pricing
   prev: Prev
   more: More...
-  translate: Help translate Loomio!
+  translate: Help translate Motion!
   translate_field: See translation
   loading_translation: Loading translation...
   translate_this_string: Translate to %{language}
@@ -973,7 +973,7 @@ en:
   start_a_group: Start a group
   starting: Starting
   subject: Subject
-  tos_html: By logging in, you agree to Loomio's <a href='%{link_path}' target='_blank'>Terms of service</a>
+  tos_html: By logging in, you agree to Motion's <a href='%{link_path}' target='_blank'>Terms of service</a>
   thanks: Thanks!
   unlike: Unlike
   time_until_close: "%{quantity_of_time} until close"
@@ -1110,7 +1110,7 @@ en:
       new_motion: "*%{author}* started a new proposal in *%{name}*"
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       new_discussion: "*%{author}* started a new discussion in *%{group}*"
-      view_it_on_loomio: View it on Loomio
+      view_it_on_loomio: View it on Motion
       position_verbs:
         'yes': agreed on
         'no': disagreed on
