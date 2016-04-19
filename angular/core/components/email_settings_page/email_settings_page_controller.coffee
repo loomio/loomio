@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, FormService, CurrentUser, $location, ModalService, ChangeVolumeForm) ->
+angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, AbilityService, FormService, CurrentUser, $location, ModalService, ChangeVolumeForm) ->
 
   @user = CurrentUser.clone()
 
@@ -17,6 +17,6 @@ angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, 
   @submit = FormService.submit @, @user,
     submitFn: Records.users.updateProfile
     flashSuccess: 'email_settings_page.messages.updated'
-    successCallback: -> $location.path '/dashboard'
+    successCallback: -> $location.path '/dashboard' if AbilityService.isLoggedIn()
 
   return
