@@ -74,8 +74,8 @@ namespace :deploy do
     run_commands [
       "ruby script/bump_version.rb patch",
       "git add lib/version",
-      "git commit -m 'bump version'"
-      # "git push origin master"
+      "git commit -m 'bump version to #{Loomio::Version.current}'",
+      "git push origin master"
     ]
   end
 
