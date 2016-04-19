@@ -187,7 +187,7 @@ class Motion < ActiveRecord::Base
 
   def members_not_voted
     if voting?
-      members - voters
+      group.members - voters
     else
       did_not_voters
     end
