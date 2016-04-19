@@ -5,12 +5,12 @@ angular.module('loomioApp').factory 'StartGroupForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.group,
       if $scope.group.isSubgroup()
-        allowDrafts: true
+        draftFields: ['name', 'description']
         flashSuccess: 'start_group_form.messages.success_when_subgroup'
         successCallback: (response) ->
           $location.path "/g/#{response.groups[0].key}"
       else
-        allowDrafts: true
+        draftFields: ['name', 'description']
         successCallback: (response) ->
           $location.path "/g/#{response.groups[0].key}"
           ModalService.open GroupWelcomeModal

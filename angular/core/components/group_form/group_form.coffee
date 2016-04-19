@@ -30,7 +30,7 @@ angular.module('loomioApp').factory 'GroupForm', ->
         'group_form.messages.group_updated'
 
     submitForm = FormService.submit $scope, $scope.group,
-      allowDrafts: true
+      draftFields: ['name', 'description']
       flashSuccess: successMessage()
       successCallback: (response) ->
         if $scope.group.isNew()

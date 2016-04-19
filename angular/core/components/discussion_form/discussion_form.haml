@@ -20,13 +20,13 @@
       .lmo-form-group
         %label{for: "discussion-title", translate: "discussion_form.title_label"}
         .lmo-relative
-          %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-model-options: "{debounce: 600}", ng-change: "storeDraft()", ng-required: "true", maxlength: "255"}
+          %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
         %validation_errors{subject: "discussion", field: "title"}
 
       .lmo-form-group
         %label{for: "discussion-context", translate: "discussion_form.context_label"}
         .lmo-relative
-          %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", , ng-model-options: "{debounce: 600}", ng-change: "storeDraft()",placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
+          %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}"}
           %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
 
       .lmo-form-group{ng-show: "showPrivacyForm()"}
