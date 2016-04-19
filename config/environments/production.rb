@@ -1,6 +1,6 @@
 Loomio::Application.configure do
   config.log_level = :info
-  config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i 
+  config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
 
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -28,13 +28,6 @@ Loomio::Application.configure do
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
-
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  if ENV['FORCE_SSL']
-    config.force_ssl = true
-  else
-    config.force_ssl = false
-  end
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -66,22 +59,6 @@ Loomio::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.perform_deliveries = true
-
-  if ENV['SMTP_SERVER']
-    # Send emails using SMTP service
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      :address        => ENV['SMTP_SERVER'],
-      :port           => ENV['SMTP_PORT'],
-      :authentication => (ENV['SMTP_AUTH'] || :plain).to_sym,
-      :user_name      => ENV['SMTP_USERNAME'],
-      :password       => ENV['SMTP_PASSWORD'],
-      :domain         => ENV['SMTP_DOMAIN']
-    }
-  else
-    # Send emails using local sendmail
-    config.action_mailer.delivery_method = :sendmail
-  end
 
   config.serve_static_files = true
   config.action_mailer.raise_delivery_errors = true
