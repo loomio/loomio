@@ -27,7 +27,7 @@ en:
       older: 'Older'
     more_help: 'More help'
     models:
-      proposal: 'Proposal'
+      proposal: 'Motion'
     copy: 'Copy text'
     copied: 'Copied to clipboard'
     action:
@@ -63,30 +63,30 @@ en:
     internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
 
   start_proposal_card:
-    title: 'Start a proposal'
+    title: 'Start a motion'
     helptext: Ready to make a decision?
 
   proposal_outcome_panel:
     heading: Outcome
-    set_outcome_hint: Use this space to let everyone know the outcome of the proposal.
-    set_outcome_btn: Set proposal outcome
-    edit_outcome_link: Edit proposal outcome
+    set_outcome_hint: Use this space to let everyone know the outcome of the motion.
+    set_outcome_btn: Set motion outcome
+    edit_outcome_link: Edit motion outcome
 
   proposal_outcome_form:
-    set_outcome: Set proposal outcome
-    update_outcome: Update proposal outcome
-    outcome_label: Proposal outcome
-    outcome_placeholder: Let everyone know the outcome of the proposal.
+    set_outcome: Set motion outcome
+    update_outcome: Update motion outcome
+    outcome_label: Motion outcome
+    outcome_placeholder: Let everyone know the outcome of the motion.
     publish_outcome: Publish outcome
     messages:
       created: Outcome published
       updated: Outcome updated
 
   previous_proposals_card:
-    heading: Previous Proposals
+    heading: Previous Motions
 
   previous_proposals_page:
-    heading: Previous proposals
+    heading: Previous motions
 
   proposal_collapsed:
     expand: Expand
@@ -107,43 +107,43 @@ en:
     discussion:
       title: "Email settings for {{title}}"
       loud_description: "You will be emailed whenever there is activity in this thread."
-      normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
+      normal_description: "You will be emailed whenever a motion is started, about to close, or an outcome is posted."
       quiet_description: "You won't be emailed about this thread."
       apply_to_all: "Apply this settings to all threads in this group."
       messages:
         loud: "You will be emailed activity in this thread."
-        normal: "You will be emailed about proposals in this thread."
+        normal: "You will be emailed about motions in this thread."
         quiet: "You won't be emailed about this thread."
     membership:
       title: "Email settings for {{title}}"
       loud_description: "You will be emailed whenever there is activity in this group."
-      normal_description: "You will be emailed about new threads and proposals in this group."
+      normal_description: "You will be emailed about new threads and motions in this group."
       quiet_description: "You won't be emailed about activity in this group."
       apply_to_all: "Apply this settings to all my groups."
       messages:
         loud: "You will be emailed all activity in this group."
-        normal: "You will be emailed about new threads and proposals in this group."
+        normal: "You will be emailed about new threads and motions in this group."
         quiet: "You won't be emailed about this group."
     all_groups:
       messages:
         loud: "You will be emailed all activity in all your groups."
-        normal: "You will be emailed about new threads and proposals in all your groups."
+        normal: "You will be emailed about new threads and motions in all your groups."
         quiet: "You won't be emailed about any of your groups."
     user:
       title: Email settings for new groups
       loud_description: "You will be emailed whenever there is activity in any new groups you join."
-      normal_description: "You will be emailed about new threads and proposals in any new groups you join."
+      normal_description: "You will be emailed about new threads and motions in any new groups you join."
       quiet_description: "You won't be emailed about activity in any new groups you join."
       apply_to_all: "Apply this settings to all my groups."
       messages:
         loud: "You will be emailed all activity in new groups."
-        normal: "You will be emailed about new threads and proposals in new groups."
+        normal: "You will be emailed about new threads and motions in new groups."
         quiet: "You won't be emailed about new groups."
 
   mute_explanation_modal:
     mute_thread: Mute thread
     body: |
-      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone @mentions you.</p>
+      <p>Muting means you <strong>won't be notified about motions</strong>, or any other activity in this thread, unless someone @mentions you.</p>
       <p>Muted threads are hidden from Recent threads and Unread pages too. To find your Muted threads, visit the Recent threads page and select "Muted" from the "Filter threads" menu:</p>
 
   inbox:
@@ -204,7 +204,7 @@ en:
       placeholder: 'Search'
       loading: 'Loading results...'
       discussions: 'Threads'
-      proposals: 'Proposals'
+      proposals: 'Motions'
       comments: 'Comments'
     sign_in: 'Log In'
 
@@ -218,12 +218,12 @@ en:
   notifications:
     header: "Notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
-    new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
-    motion_closed: "Proposal closed: <strong>{{proposal}}</strong>"
+    new_motion: "<strong>{{name}}</strong> created a motion <strong>{{proposal}}</strong>"
+    motion_closed: "Motion closed: <strong>{{proposal}}</strong>"
     publish_outcome: "Publish an outcome"
-    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{proposal}}</strong>"
-    motion_closed_by_expiry: "Proposal has closed <strong>{{proposal}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{proposal}}</strong>"
+    motion_closed_by_user: "<strong>{{name}}</strong> closed the motion <strong>{{proposal}}</strong>"
+    motion_closed_by_expiry: "Motion has closed <strong>{{proposal}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} on the motion <strong>{{proposal}}</strong>"
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{discussion}}</strong>"
     comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{discussion}}</strong>"
@@ -232,9 +232,9 @@ en:
     membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{group}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{group}}</strong>"
     user_added_to_group_no_inviter: "You were added the group <strong>{{group}}</strong>"
-    motion_closing_soon: "Proposal is closing soon: <strong>{{proposal}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
+    motion_closing_soon: "Motion is closing soon: <strong>{{proposal}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the motion <strong>{{proposal}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the motion <strong>{{proposal}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{group}}</strong>"
     new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{group}}</strong>"
 
@@ -244,7 +244,7 @@ en:
   vote_form:
     heading: Have your say
     no_statement: No statement.
-    statement_over_limit: 'Too many words! Short position statements let everyone quickly catch up on the proposal.'
+    statement_over_limit: 'Too many words! Short position statements let everyone quickly catch up on the motion.'
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
@@ -252,7 +252,7 @@ en:
     i_disagree: 'I disagree'
     i_disagree_details: 'I think we can probably do better.'
     i_block: 'I block'
-    i_block_details: 'I have strong objections to this proposal and am not OK with it going ahead.'
+    i_block_details: 'I have strong objections to this motion and am not OK with it going ahead.'
     submit_position: 'Submit position'
     change_position: 'Change position'
     select_position: 'Select position'
@@ -263,7 +263,7 @@ en:
 
   proposal_positions_panel:
     heading: Positions
-    no_votes_yet: Nobody has voted on this proposal yet.
+    no_votes_yet: Nobody has voted on this motion yet.
     change_your_vote: Change your position.
 
   undecided_panel:
@@ -275,26 +275,26 @@ en:
     participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
 
   close_proposal_form:
-    close_proposal: 'Close proposal'
-    helptext: 'Are you sure you want to close this proposal now?'
-    close_proposal_submit: 'Yes, close proposal'
+    close_proposal: 'Close motion'
+    helptext: 'Are you sure you want to close this motion now?'
+    close_proposal_submit: 'Yes, close motion'
     messages:
-      success: Proposal closed
+      success: Motion closed
 
   extend_proposal_form:
     title: 'Change close time'
-    success: 'Proposal close time updated'
+    success: 'Motion close time updated'
     submit: 'Update closing time'
 
   proposal_form:
     messages:
-      created: 'Proposal started'
-      updated: 'Proposal updated'
-    start_proposal: 'Start proposal'
-    start_a_proposal: 'Start a proposal'
-    edit_proposal: 'Edit proposal'
-    what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
-    editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another'
+      created: 'Motion started'
+      updated: 'Motion updated'
+    start_proposal: 'Start motion'
+    start_a_proposal: 'Start a motion'
+    edit_proposal: 'Edit motion'
+    what_does_a_proposal_do: 'Motions let you see how everyone feels about a particular course of action.'
+    editing_title_and_description_forbidden: 'You cannot change the title or description of a motion after people have voted. If details have changed, please close the motion and start another'
     title_placeholder: 'Eg: Go to the moon'
     title_label: 'Title'
     closes_at_label: 'Closes at'
@@ -332,8 +332,8 @@ en:
     started_by: 'Started by <strong>{{name}}</strong>'
     only_voter_is_you: 'No other members have voted yet.'
     extend_proposal: 'Change closing time'
-    edit_proposal: 'Edit proposal'
-    close_proposal: 'Close proposal'
+    edit_proposal: 'Edit motion'
+    close_proposal: 'Close motion'
     closed_badge: Closed
 
 
@@ -458,8 +458,8 @@ en:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
       loud_message: You will be emailed about all activity in "{{name}}."
-      normal: 'Just email important activity: New threads and proposals, outcomes etc.'
-      normal_aria_description: Your notification volume for this group is set to Normal. You will just be emailed important activity, such as when someone starts a new thread, raises a proposal, or sets an outcome.
+      normal: 'Just email important activity: New threads and motions, outcomes etc.'
+      normal_aria_description: Your notification volume for this group is set to Normal. You will just be emailed important activity, such as when someone starts a new thread, raises a motion, or sets an outcome.
       normal_message: 'You will only be emailed about important events in "{{name}}".'
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
       quiet_aria_description: Your notification volume for this group is set to Quiet. You won't be emailed about activity in this group. Group activity will be displayed on your Dashboard.
@@ -587,8 +587,8 @@ en:
     members_can_edit_discussions: 'Members can update the context and title of any thread.'
     members_can_edit_comments: 'Members can edit their own comments at any time.'
     members_can_start_discussions: 'Members can start new threads.'
-    members_can_vote: 'Members can vote on proposals.'
-    members_can_raise_motions: 'Members can start proposals.'
+    members_can_vote: 'Members can vote on motions.'
+    members_can_raise_motions: 'Members can start motions.'
 
     submit_start_group: 'Start group'
     submit_start_subgroup: 'Start subgroup'
@@ -607,7 +607,7 @@ en:
     title: Help
     ten_tips_article_title: 10 tips for making great decisions with Motion
     ten_tips_article_link: https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/
-    nine_ways_to_use_proposals: 9 ways to use a Motion proposal to turn a conversation into action
+    nine_ways_to_use_proposals: 9 ways to use Motions motion feature to turn a conversation into action
     nine_ways_to_use_proposals_link: https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/
 
   membership_requests_page:
@@ -623,7 +623,7 @@ en:
       request_ignored_success: Membership request ignored
 
   group_previous_proposals_card:
-    heading: Previous proposals
+    heading: Previous motions
     see_more: See more
 
 
@@ -739,7 +739,7 @@ en:
     specific_groups: Settings for specific groups
     default_settings:
       loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
-      normal_description: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
+      normal_description: "When you join a new group, you will be emailed about <strong>new threads and motions</strong>."
       quiet_description: "When you join a new group, you <strong>won't be emailed about activity</strong>."
     change_default: Change default
     edit: Edit
@@ -754,7 +754,7 @@ en:
       show_all: You don't have any recent threads.
       show_participating: You haven't participated in any threads recently.
       show_starred: You don't have any starred threads.
-      show_proposals: There are no proposals currently active.
+      show_proposals: There are no motions currently active.
       show_muted: You don't have any muted threads.
     view_recent: View all recent threads?
     load_more: Load more threads
@@ -772,19 +772,19 @@ en:
       participating: Participating threads
       participating_aria_label: Currently showing threads I've participated
       participating_description: View only threads you have participated in
-      proposals: Proposals
-      proposals_aria_label: Currently showing threads with active proposals
-      proposals_description: View only threads with active proposals
+      proposals: Motions
+      proposals_aria_label: Currently showing threads with active motions
+      proposals_description: View only threads with active motions
       muted: Muted
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     aria_thread:
       unread: '{{count}} unread items.'
-      current_proposal: 'Current proposal: {{name}}.'
+      current_proposal: 'Current motion: {{name}}.'
       you_voted: 'You voted: {{position}}.'
     threads_from:
       group: 'Threads from'
-      proposals: 'Proposals'
+      proposals: 'Motions'
       starred: 'Starred threads'
       today: 'Today'
       yesterday: 'Yesterday'
@@ -806,8 +806,8 @@ en:
   discussion:
     activity: 'Activity'
     activity_placeholder: 'No activity yet!'
-    proposals: 'Proposals'
-    previous_proposals: 'Previous Proposals'
+    proposals: 'Motions'
+    previous_proposals: 'Previous Motions'
     load_previous: 'Load earlier activity'
     you_like_this: 'You like this.'
     liked_by_you_and_someone: 'You and {{name}} like this.'
@@ -878,28 +878,28 @@ en:
     block_with_statement: 'blocked: <span>{{statement}}</span>'
 
   new_proposal_item:
-    author_created_proposal: 'started a proposal: <span>{{title}}</span>'
+    author_created_proposal: 'started a motion: <span>{{title}}</span>'
 
   proposal_closed_item:
-    proposal_closed: 'The proposal has closed: <span>{{title}}</span>'
+    proposal_closed: 'The motion has closed: <span>{{title}}</span>'
 
   proposal_closed_by_user_item:
-    proposal_closed_by_user: 'closed the proposal: <span>{{title}}</span>'
+    proposal_closed_by_user: 'closed the motion: <span>{{title}}</span>'
 
   proposal_edited_item:
-    name: 'updated the proposal title: <span>{{title}}</span>'
-    description: 'updated the proposal description'
-    closing_at: 'updated the proposal to close at <span>{{time}}</span>'
-    description_name: 'updated the proposal title and description'
-    closing_at_name: 'updated the proposal title and closing time'
-    closing_at_description: 'updated the proposal description and closing time'
-    closing_at_description_name: 'updated the proposal title, description and closing time'
+    name: 'updated the motion title: <span>{{title}}</span>'
+    description: 'updated the motion description'
+    closing_at: 'updated the motion to close at <span>{{time}}</span>'
+    description_name: 'updated the motion title and description'
+    closing_at_name: 'updated the motion title and closing time'
+    closing_at_description: 'updated the motion description and closing time'
+    closing_at_description_name: 'updated the motion title, description and closing time'
 
   proposal_outcome_created_item:
-    proposal_outcome_created: 'published a proposal outcome:'
+    proposal_outcome_created: 'published a motion outcome:'
 
   proposal_outcome_updated_item:
-    proposal_outcome_updated: 'updated the proposal outcome:'
+    proposal_outcome_updated: 'updated the motion outcome:'
 
   discussion_edited_item:
     title: 'updated the thread title: <span>{{title}}</span>'
@@ -937,7 +937,7 @@ en:
     engaging_html: |
       <h2>Tips for engaging your group</h2>
       <p>People will be excited to jump in and start participating when there’s an engaging
-      proposal on the table. A good proposal contains a plan of action for the group, so
+      motion on the table. A good motion contains a plan of action for the group, so
       that it’s immediately obvious what it means to agree or disagree. Think about how you
       can identify discussions/decisions the group is currently undertaking in person or by
       email that would be easier if they were on Motion.</p>
@@ -948,15 +948,15 @@ en:
       mentioned in a comment.</p>
     example1_html: |
       <h3>You need the group to discuss a broad topic and develop a solution together</h3>
-      <p>Strategy: Discuss a topic for a while before creating a proposal.</p>
+      <p>Strategy: Discuss a topic for a while before creating a motion.</p>
       <p>Discussions often reach the best outcome if you build shared understanding
       about the problem before jumping to a specific solution. When people get to
       participate in the process, they’re much more likely to be on board with the outcome.</p>
     example2_html: |
-      <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
-      <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
+      <h3>You already have a motion in mind, and you want to get sign-off from the group to move forward.</h3>
+      <p>Strategy: Start a discussion about a specific decision and make a motion immediately.</p>
       <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
-      you can use the proposal to get quick input into a decision.</p>
+      you can use the motion to get quick input into a decision.</p>
       <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
     get_in_touch: "Get in touch"
     get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
@@ -999,13 +999,13 @@ en:
       <p>You’ll get email notifications when important things happen in your group.
       You can change your email preferences <a href="%{link}"">here</a>.</p>
     make_a_decision: "Make a decision"
-    make_a_decision_description: "When the group is ready to make a decision, anyone can make a proposal. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
+    make_a_decision_description: "When the group is ready to make a decision, anyone can make a motion. Outline a clear course of action and give some background so everyone knows exactly what it means to agree or disagree."
     prompt_people_details: "If you want to get the attention of a specific person in your group, type ‘@’ followed by their name. They’ll get an email letting them know you’ve mentioned them in a comment."
     prompt_people_html: "Prompt people with <span class='blue'>@mentions</span>"
-    positions_agree_description: "<span>Agree</span> means you’re happy with the proposal."
+    positions_agree_description: "<span>Agree</span> means you’re happy with the motion."
     positions_abstain_description: "<span>Abstain</span> means you’re unsure, or you’re happy for the group to decide without you."
     positions_disagree_description: "<span>Disagree</span> means you think there might be a better alternative, but you’re willing to go with the group’s decision."
-    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this proposal goes ahead."
+    positions_block_description: "<span>Block</span> means you’ve got serious objections and you’ll be extremely unhappy if this motion goes ahead."
     start_discussion: "Starting an engaging discussion"
     start_discussion_html:  |
       <p>When you start a discussion, make sure the title conveys the topic succinctly.
@@ -1015,17 +1015,17 @@ en:
       comes to light. As well as clarifying the topic, you can use this space for
       sharing resources, summarising the discussion as it progresses, or outlining the
       decision-making protocols your group is using.</p>
-    start_proposal: "Writing a clear proposal"
+    start_proposal: "Writing a clear motion"
     start_proposal_html: |
       <p> If you make the title clear and succinct, people will immediately know exactly
       what it means to agree or disagree.</p>
-      <p>It’s not the end of the world if a proposal doesn’t get clear agreement immediately.
-      If the group doesn’t love the first proposal, anyone can start a new proposal to
+      <p>It’s not the end of the world if a motion doesn’t get clear agreement immediately.
+      If the group doesn’t love the first motion, anyone can start a new motion to
       address the concerns raised, and keep the process moving forward.</p>
       <p>Through this dynamic process, the collective wisdom of your group can generate better
       ideas than anyone would have come up with on their own.</p>
-      <p>The deadline on a proposal can be extended at any time, if it looks like the decision
-      needs some more space. Everyone will get an email notification 24 hours before a proposal closes.</p>
+      <p>The deadline on a motion can be extended at any time, if it looks like the decision
+      needs some more space. Everyone will get an email notification 24 hours before a motion closes.</p>
     video_id: "52025402"
     video_tutorial: "Video tutorial"
     video_tutorial_description: "Check out the video for a quick demonstration of how to use Motion."
@@ -1034,7 +1034,7 @@ en:
     context: 'Tips for using the context panel'
     discussion: 'Tips for starting an engaging discussion'
     invitation: 'Tips for writing a great invitation'
-    proposal: 'Tips for writing a clear proposal'
+    proposal: 'Tips for writing a clear motion'
     vote: 'You can change your position at any time'
 
   angular:
