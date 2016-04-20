@@ -88,54 +88,6 @@ it:
     quiet: Quieto
     mute: Silenzioso
     unmute: Rimuovi silenzioso
-  thread_volume_card:
-    heading: Notifiche sulla discussione
-    body:
-      loud: "Tutte le notifiche: riceverai un'email per ogni attività in questa discussione"
-      normal: "Notifica solo proposte: riceverai un'email quando viene lanciata una proposta di voto, quando sta per terminare, oppure quando viene pubblicato il risultato di una votazione"
-      quiet: "Nessuna notifica: non riceverai alcuna email relativa all'attività in questa discussione"
-      mute: 'Discussione silenziata: non riceverai alcuna email relativa a questa discussione, e verrà rimossa dalle tue Discussioni Recenti e Pagine non lette'
-    change_volume_link: Cambia
-  thread_volume_form:
-    header: Notifiche sulla discussione
-    loud_label: Tutte le notifiche via email
-    loud_description: "Riceverai un'email ogni volta che c'è attività in questa discussione."
-    normal_label: "Invia un'email per ogni proposta"
-    normal_description: "Riceverai un'email quando viene lanciata una proposta, quando sta per terminare il tempo a disposizione per votare, o quando viene pubblicato un risultato . "
-    quiet_label: Nessuna email
-    quiet_description: Non riceverai alcuna email relativa a questa discussione a meno che qualcuno non ti @menzioni esplicitamente
-    mute_label: Silenzia discussione
-    mute_description: 'Non riceverai alcuna email relativa a questa discussione, e verrà rimossa dalle tue Discussioni Recenti e dalle Pagine non lette'
-    submit: Aggiorna
-    messages:
-      loud: "Riceverai un'email per ogni attività di questa discussione"
-      normal: "Riceverai un'email solamente per le proposte lanciate in questa discussione"
-      quiet: "Non riceverai alcuna email relativa all'attività in questa discussione"
-      mute: Discussione silenziata
-  group_volume_card:
-    heading: Notifiche relative a questo gruppo
-    body:
-      loud: "Tutte le notifiche: riceverai un'email ogniqualvolta ci sia un'attività in questo gruppo"
-      normal: "Riceverai un'email per nuove discussioni o nuove proposte in questo gruppo"
-      quiet: "Nessuna notifica: non riceverai alcuna email relativa all'attività di questo gruppo"
-      mute: 'Gruppo silenziato: non riceverai alcuna email relativa a questo gruppo, e verrà rimosso dalle tue Discussioni Recenti e dalle Pagine non lette'
-    change_volume_link: Cambia
-  group_volume_form:
-    header: Notifiche del gruppo
-    loud_label: Tutte le notifiche via email
-    loud_description: "riceverai una email ogni volta che c'è un'attività in questo gruppo"
-    normal_label: Email per nuove discussioni o proposte
-    normal_description: "Riceverai un'email per nuove discussioni e nuove proposte in questo gruppo"
-    quiet_label: Nessuna email
-    quiet_description: "Non riceverai alcuna email relativa all'attività di questo gruppo, a meno che qualcuno non ti @menzioni esplicitamente"
-    mute_label: Silenzia gruppo
-    mute_description: 'Non riceverai alcuna email relativa a questo gruppo,  e verrà rimosso dalle tue Discussioni Recenti e dalle Pagine non lette'
-    submit: Aggiorna
-    messages:
-      loud: "Riceverai un'email ogniqualvolta ci sia un'attività in questo gruppo"
-      normal: "Riceverai un'email per ogni proposta di questo gruppo"
-      quiet: Non riceverai email relative a questo gruppo
-      mute: Gruppo silenziato
   inbox:
     clear: Pulisci
     latest: Più recente
@@ -435,16 +387,10 @@ it:
     standard: Standard
     plus: Plus
     get_started_for_free: Inizia gratis
-    gift_body_html: >
-      <p>Per gruppi che non hanno la possibilità di pagare una
-      sottoscrizione</p>
-
-      <p>Le donazioni sono accettate, ma non è necessario pagare</p>
     support_before: I sono contento di
     support_link: parlare con te
     support_after: 'di estendere la tua versione di prova, o di qualsiasi altra domanda tu possa avere'
     remind_me_later: Ricorda in seguito
-    gift_donation_ask: Chiederemo ai membri del tuo gruppo una donazione
     unlimited_members: numero di membri illimitato
     unlimited_decisions: numero di decisioni illimitato
     email_support: supporto email
@@ -452,8 +398,6 @@ it:
       US <strong>$19</strong>/mese<br><span>oppure</span> $190/anno
     plus_body: 'Ciò che include la versione Standard, più:'
     premium_support: supporto premium
-    custom_url: URL personale
-    usage_statistics: "statistiche d'uso"
     plus_price_html: |
       US <strong>$179</strong>/mese<br><span>oppure</span> $1790/anno
     select: Seleziona
@@ -584,12 +528,8 @@ it:
     update_profile: Aggiorna profilo
   email_settings_page:
     header: Impostazioni Email
-    email: Posta elettronica
     daily_summary_label: 'Sommario giornaliero '
-    proposal_closing_soon_label: Prima della chiusura di una proposta
-    mentioned_label: Quando vengo @menzionato
     mentioned_description: 'Quando qualcun* vorrà attrarre la tua attenzione allora ti @menzionerà. Ti raccomandiamo di mantenere attiva questa opzione in modo da ricevere una email qualora accadesse.'
-    update_settings: Aggiorna le impostazioni della posta elettronica
     messages:
       updated: Impostazioni della posta elettronica aggiornate.
   dashboard_page:
@@ -637,16 +577,6 @@ it:
     liked_by_name: 'Piace a {{name}}.'
     liked_by_names_and_name: 'Piace a {{joinedNames}} e {{name}}.'
     started_by: 'Iniziato da <strong>{{name}}</strong>'
-    volume:
-      loud: Mandami una mail in caso ci sia una qualsiasi attività in questa discussione.
-      loud_aria_description: "Il volume delle notifiche di questa discussione è impostato su Alto. Ciò significa che riceverai una mail ogni volta che c'è attività in questa discussione."
-      normal: 'Invia una mail solo se viene creata una proposta, se sta per chiudesi oppure viene pubblicato un risultato'
-      normal_aria_description: 'Il volume delle notifiche di questa discussione è impostato su Normale. Ciò significa che riceverai una mail quando viene creata una proposta, quando sta per scadere, oppure se viene postato il risultato di una votazione o di una discussione.'
-      quiet: Non mandare mail a proposito di questa discussione.
-      quiet_aria_description: Il volume delle notifiche di questa discussione è impostato su Basso. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a.
-      mute: Elimina questa discussione dalla dashboard e non mandarmi notifiche a meno che non venga @mentioned.
-      mute_aria_description: 'Il volume delle notifiche di questa discussione è impostato su Muto. Non riceverai email a proposito di questa discussione a meno che tu non venga menzionato/a da qualcuno/a, e questa discussione verrà rimossa dalla tua dashboard.'
-      mute_message: '"{{name}}" è stata rimossa dalla tua dashboard.'
   thread_group:
     aria_label: Nome gruppo
   thread_context:
@@ -877,20 +807,6 @@ it:
     invitation: "Consigli per scrivere un bell'invito "
     proposal: Consigli per scrivere una proposta chiara
     vote: Puoi cambiare la tua posizione in ogni momento
-  pricing_page:
-    intro: >
-      Gruppi con un budget pagano una sottoscrizione per usare lo strumento.
-
-      Gruppi che non possono pagare una sottoscrizione usano il
-
-      metodo "Paga Quello Che Puoi": i loro membri sono invitati a dare un
-      contributo volontario. Il Vostro contributo fa sì che Loomio sia
-      indipendente, senza pubblicità, e guidato dalla comunità.
-    organisations: Organizzazioni
-    organisations_examples: 'es. aziende, agenzie governative, organizzazioni comunitarie'
-    informal_groups: Gruppi informali
-    informal_groups_desc: Verrà richiesto ai membri del tuo gruppo di pagare quanto possono
-    informal_groups_examples: 'es. famiglie, movimenti sociali, collettivi'
   angular:
     switch_back: Torna al vecchio Loomio
     give_feedback: Lascia un tuo commento di feedback

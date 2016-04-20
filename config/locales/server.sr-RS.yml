@@ -127,10 +127,6 @@ sr-RS:
     plus: Плус
     free_trial_html: 'Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна.'
     get_started_for_free: Почни бесплатно
-    gift_body_html: |
-      <p>За групе које немају буџет за плаћање претплате.</p>
-      <p>Донацијом подржано, без обавезе плаћања.</p>
-    gift_donation_ask: Питаћемо Ваше чланове за донацију.
     unlimited_members: неограничено чланова
     unlimited_decisions: неограничено одлука
     email_support: подршка еПорукама
@@ -138,7 +134,6 @@ sr-RS:
       US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње
     plus_body: 'Све у Стандард, плус:'
     premium_support: премијум подршка
-    custom_url: наменски URL
     usage_statistics: статистика коришћења
     plus_price_html: |
       US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње

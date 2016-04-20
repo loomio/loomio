@@ -20,8 +20,8 @@
         {{hostName}}
   .lmo-navbar-item-container.lmo-navbar-item-container--right
     %section.lmo-navbar-item-container__sub.lmo-navbar-item-container__sub--left{role: "search"}
-      .lmo-navbar__item
-        %navbar_search
+      .lmo-navbar__item.lmo-navbar-search
+        %navbar_search{ng-show: "isLoggedIn()"}
     %section.lmo-navbar-item-container__sub.lmo-navbar-item-container__sub--right{aria-label: "{{ 'navbar.user_actions' | translate }}"}
       .lmo-navbar__logged-in{ng-if: "isLoggedIn()"}
         .lmo-navbar__item.lmo-navbar__item--notifications{ng-if: "isLoggedIn()"}

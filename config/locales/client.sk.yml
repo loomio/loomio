@@ -269,10 +269,3 @@ sk:
     invitation: Rady na napísanie neodolateľnej pozvánky
     proposal: Rady na napísanie jasného návrhu
     vote: Môžete kdykoľvek svoj postoj zmeniť
-  pricing_page:
-    intro: "Skupiny s rozpočtom platia za používanie aplikácie predplatným.\nSkupiny bez možností platby predplatným platia podľa princípu 'plať koľko môžeš' - ich členovia\nsú vyzvaní zaplatiť podľa svojich možností. Peniaze takto získané umožňujú aby \naplikácia Loomio ostala nezávislá a bez komerčných reklám.\n"
-    organisations: Organizácia
-    organisations_examples: 'napr. firmy, vládne agentúry, komunitné organizácie'
-    informal_groups: neformálne skupiny
-    informal_groups_desc: 'Členovia vašej skupiny budú vyzvaní, aby zaplatili koľko môžu'
-    informal_groups_examples: 'napr. rodiny, spoločenské hnutia, kolektívy'

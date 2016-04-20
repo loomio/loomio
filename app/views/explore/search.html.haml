@@ -1,9 +1,0 @@
-= render 'header'
-
--if @query.present?
-  .row-fluid
-    .span12
-      %h2= t(:"search.header", query: @query)
-      -if @groups.blank?
-        %p= t :"search.no_match"
-= render 'groups', groups: @groups

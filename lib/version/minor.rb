@@ -1,1 +1,0 @@
-Loomio::Version::MINOR = 19

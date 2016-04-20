@@ -88,54 +88,6 @@ zh-TW:
     quiet: 安靜
     mute: 靜音
     unmute: 解除靜音
-  thread_volume_card:
-    heading: 討論串通知
-    body:
-      loud: 有事就寄電子郵件：您將會在這個討論串有任何動態時收到電子郵件。
-      normal: 寄送提案相關的電子郵件：您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
-      quiet: 不寄電子郵件：您將不會收到任何關於此討論串動態的電子郵件。
-      mute: 討論串設為靜音：您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
-    change_volume_link: 更改
-  thread_volume_form:
-    header: 討論串通知
-    loud_label: 有事就寄電子郵件
-    loud_description: 您將會在這個討論串有任何動態時收到電子郵件。
-    normal_label: 寄送提案相關的電子郵件
-    normal_description: 您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
-    quiet_label: 不寄電子郵件
-    quiet_description: 您將不會收到任何關於此討論串動態的電子郵件。
-    mute_label: 討論串設為靜音
-    mute_description: 您將不會收到關於此討論串的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
-    submit: 更新
-    messages:
-      loud: 您將會收到關於此討論串動態的電子郵件。
-      normal: 您將會收到關於此討論串提案的電子郵件。
-      quiet: 您將不會收到任何關於此討論串的電子郵件。
-      mute: 討論串已靜音。
-  group_volume_card:
-    heading: 群組通知
-    body:
-      loud: 有事就寄電子郵件：您將會在這個群組有任何動態時收到電子郵件。
-      normal: 您將會收到關於此群組新討論串與提案的電子郵件。
-      quiet: 不寄電子郵件：您將不會收到任何關於此群組動態的電子郵件。
-      mute: 群組靜音：您將不會收到關於此群組的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
-    change_volume_link: 更改
-  group_volume_form:
-    header: 群組通知
-    loud_label: 有事就寄電子郵件
-    loud_description: 您將會在這個群組有任何動態時收到電子郵件。
-    normal_label: 發送關於新討論串與提案的電子郵件
-    normal_description: 您將會收到關於此群組新討論串與提案的電子郵件。
-    quiet_label: 不寄電子郵件
-    quiet_description: 您將不會收到任何關於此群組動態的電子郵件，除非有人提及您。
-    mute_label: 群組靜音
-    mute_description: 您將不會收到關於此群組的電子郵件，且它將會從您最近的討論串與未讀頁面中移除。
-    submit: 更新
-    messages:
-      loud: 您將會收到關於此群組所有動態的電子郵件。
-      normal: 您將會收到關於此群組提案的電子郵件。
-      quiet: 您將不會收到任何關於此群組的電子郵件。
-      mute: 群組靜音。
   inbox:
     clear: 清除
     latest: 最新
@@ -449,14 +401,10 @@ zh-TW:
     plus: PLUS
     free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
     get_started_for_free: 免費開始
-    gift_body_html: |
-      <p>給沒有預算支付訂閱費的群組。</p>
-      <p>接受捐款，不需付費。</p>
     support_before: 我很高興的
     support_link: 告訴您
     support_after: 關於延長您的試用期，或是任何其有您可能會有的需求。
     remind_me_later: 稍後提醒我
-    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
     unlimited_members: 不限成員數量
     unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
@@ -464,8 +412,6 @@ zh-TW:
       美元 <strong>$19</strong>/月<br><span>或</span> $190/年
     plus_body: 包含標準方案，再加上：
     premium_support: 進階支援
-    custom_url: 自定義 URL
-    usage_statistics: 使用統計
     plus_price_html: |
       美元 <strong>$179</strong>/month<br><span>或</span> $1790/year
     select: 選取
@@ -649,16 +595,8 @@ zh-TW:
     update_profile: 更新簡歷
   email_settings_page:
     header: 電子郵件設定
-    email: 電子郵件
     daily_summary_label: 每日摘要電子郵件
-    daily_summary_description: 每天早上寄出一封有昨天未讀取的動態的電子郵件。這封電子郵件提供簡單的方式與 Loomio 的動態保持更新。
-    on_participation_label: 從我參加的討論串而來的動態
-    on_participation_description: 當您參與討論時，音量設定會變更為「高」，未來所有的動靜都會立刻寄電子郵件給您。
-    proposal_closing_soon_label: 在提案定案前
-    proposal_closing_soon_description: 在提議結束前的24小時，不管音量大小，您都將會收到一封關於提議最新資訊的電子郵件。
-    mentioned_label: 當我被提及
     mentioned_description: 當某人想要取得您的注意，他們將會以 @ 來提及您。我們建議您保持這個設定，這樣您就可以在有人提及您時收到一封電子郵件。
-    update_settings: 更新電子郵件設定
     messages:
       updated: 電子郵件設定已更新
   dashboard_page:
@@ -730,25 +668,11 @@ zh-TW:
     liked_by_names_and_name: '{{joinedNames}} 與 {{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited: 已編輯
-    volume:
-      loud: 只要這個討論串有活動就立刻寄發電子郵件。
-      loud_aria_description: 您在此討論串的通知音量設定為大聲。這意味著您會收到任何關於此動態的電子郵件。
-      loud_message: '所有在「{{name}}」中的活動會以電子郵件的方式通知您'
-      normal: 只當提議被建立、將要關閉、或是結果公佈時才寄發電子郵件。
-      normal_aria_description: 您在此討論串的通知音量設定為普通。您將會在提案被建立、將要定案或是結果已被貼出時收到電子郵件。
-      normal_message: '在「{{name}}」中只有重要的活動會以電子郵件的方式通知您。'
-      quiet: 不要寄發關於這個討論串的電子郵件。
-      quiet_aria_description: 您在此討論串的通知音量設定為安靜。您將不會收到任何有關於此討論串的電子郵件，除非有人提及您。
-      quiet_message: '您將不會收到關於「{{name}}」的電子郵件，除非有人提及您'
-      mute: 從儀表板上隱藏此討論串，除非 @提及，否則將不會通知。
-      mute_aria_description: 您在此討論串的通知音量設定為靜音。您將不會收到任何有關於此討論串的電子郵件，除非有人提及您，且此討論串將會從您的儀表板上移除。
-      mute_message: '「{{name}}」已從您的儀表板中移除。'
   thread_group:
     aria_label: 群組名稱
   thread_context:
     aria_label: 討論串內容
     thread_options: 討論串選項
-    notifications: 通知
     edit_thread: 編輯
     move_thread: 移動
     print_thread: 列印
@@ -916,17 +840,6 @@ zh-TW:
     invitation: 寫出卓越邀請函的小提示
     proposal: 寫出明確提案的小提示
     vote: 任何時候您都能改變您的立場
-  pricing_page:
-    intro: >
-      有預算的群組可以認購付費使用此工具。
-
-      沒有預算的群組，則可以「隨意付」模式使用此工具：該群組成員將被邀請來完成一些志願性的任務。您的贊助可以讓 Loomio
-      維持獨立運作、免除廣告影響，由使用者自己經營。
-    organisations: 組織
-    organisations_examples: 例如，公司行號，政府機關，或社群團體
-    informal_groups: 非正式群組
-    informal_groups_desc: 您群組內的成員會被要求「隨意付」
-    informal_groups_examples: 例如：家庭會議、社會運動、集體創作
   angular:
     switch_back: 切換回舊版 Loomio
     give_feedback: 給予回饋

@@ -70,10 +70,6 @@ hu:
     normal: Normál
     quiet: Csendes
     mute: Néma
-  thread_volume_form:
-    submit: Frissítés
-  group_volume_form:
-    submit: Frissítés
   inbox:
     clear: Töröl
     unread: Olvasatlan
@@ -221,11 +217,6 @@ hu:
     previous_proposals: Előző javaslatok
     liked_by_someone: '{{name}} kedveli ezt.'
     started_by: '<strong>{{name}}</strong> indította'
-    volume:
-      loud: Emailezz ha aktivitás van ezen a szálon.
-      normal: 'Csak akkor emailezz, ha egy javaslat született, ha zárás következik vagy ha összegzést tettek közzé.'
-      quiet: Ne küldj emailt erről a szálról.
-      mute: Ez a szál ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
   thread_group:
     aria_label: Csoport neve
   delete_comment_dialog:
@@ -378,18 +369,3 @@ hu:
     invitation: Hogyan írj jó meghívót
     proposal: Hogyan írj egyértelmű javaslatot
     vote: Bármikor megváltoztathatod az álláspontodat
-  pricing_page:
-    intro: >
-      Költségvetéssel rendelkező csoportok egy bérletet fizetnek az eszköz
-      használatáért
-
-      Azok a csoportok akiknek nem áll szándékában fizetni
-
-      a Pay What You Can modelt használják: a tagjaikat meghívjuk, hogy
-      önkéntesen járuljanak hozzá a Loomio projekthez. Így független,
-      reklámmentes és közösség-vezette maradhat.
-    organisations: Szervezetek
-    organisations_examples: 'pl. vállalkozások, kormányzati ügynökségek, közösségi szervezetek'
-    informal_groups: Kötetlen csoportok
-    informal_groups_desc: 'A csoportod tagjait felkérik majd, hogy fizessenek amennyit tudnak.'
-    informal_groups_examples: 'pl. családok, társadalmi mozgalmak, közösségek'

@@ -2,6 +2,7 @@ class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
 
+  skip_before_filter :boot_angular_ui
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
   around_filter :ensure_testing_environment
 
@@ -168,6 +169,16 @@ class DevelopmentController < ApplicationController
     test_discussion
     public_test_discussion
     redirect_to discussion_url(test_discussion)
+  end
+
+  def setup_explore_groups
+    sign_in patrick
+    20.times do |i|
+      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      GroupService.create(group: explore_group, actor: patrick)
+      explore_group.update_attribute(:memberships_count, i)
+    end
+    redirect_to explore_url
   end
 
   def setup_group_with_multiple_coordinators
@@ -361,6 +372,11 @@ class DevelopmentController < ApplicationController
                               email_when_mentioned:             false,
                               email_on_participation:           false)
     redirect_to dashboard_url
+  end
+
+  def email_settings_as_restricted_user
+    test_group
+    redirect_to email_preferences_url(unsubscribe_token: patrick.unsubscribe_token)
   end
 
   def setup_all_notifications

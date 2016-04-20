@@ -38,7 +38,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
 
-    resources :groups, only: [:show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
       put :archive, on: :member
@@ -187,9 +187,6 @@ Loomio::Application.routes.draw do
     root :to => 'root#index'
   end
 
-  get "/explore", to: 'explore#index', as: :explore
-  get "/explore/search", to: "explore#search", as: :search_explore
-  get "/explore/category/:id", to: "explore#category", as: :category_explore
   get "/browser_not_supported", to: "application#browser_not_supported"
 
   resource :search, only: :show
@@ -440,12 +437,13 @@ Loomio::Application.routes.draw do
 
   get '/robots'     => 'robots#show'
 
-  get 'apps/registered'                    => 'base#boot_angular_ui'
-  get 'apps/authorized'                    => 'base#boot_angular_ui'
-  get 'apps/registered/:id'                => 'base#boot_angular_ui'
-  get 'apps/registered/:id/:slug'          => 'base#boot_angular_ui'
-  get 'd/:key/proposal/:proposal'          => 'base#boot_angular_ui'
-  get 'd/:key/comment/:comment'            => 'base#boot_angular_ui'
-  get 'd/:key/proposal/:proposal/:outcome' => 'base#boot_angular_ui'
-  get 'g/:key/memberships/:username'       => 'base#boot_angular_ui'
+  get 'apps/registered'                    => 'application#boot_angular_ui'
+  get 'apps/authorized'                    => 'application#boot_angular_ui'
+  get 'apps/registered/:id'                => 'application#boot_angular_ui'
+  get 'apps/registered/:id/:slug'          => 'application#boot_angular_ui'
+  get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui'
+  get 'd/:key/comment/:comment'            => 'application#boot_angular_ui'
+  get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui'
+  get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
+  get 'explore'                            => 'application#boot_angular_ui', as: :explore
 end

@@ -88,54 +88,6 @@ tr:
     quiet: Sessiz
     mute: Sesi kıs
     unmute: Sesi aç
-  thread_volume_card:
-    heading: Konu Bildirimleri
-    body:
-      loud: 'Her şeyi e-postala: Bu konuda ne zaman bir faaliyet olursa size eposta ile gönderilir.'
-      normal: 'Önerileri e-postala: Bir öneri başlatıldığında, kapanmak üzereyken ya da bir sonuç ilan edildiğinde size e-postayla gönderilecektir.'
-      quiet: 'E-posta gönderme: Bu konuyla ilgili etkinlikler size e-postayla gönderilemeyecektir.'
-      mute: 'Konunun sesi kısıldı: Bu konuyla ilgili size e-postayla gönderilemeyecek ve bu konu Yeni Konular ve Okunmamışlar sayfalarından kaldırılacak.'
-    change_volume_link: Değiştir
-  thread_volume_form:
-    header: Konu Bildirimleri
-    loud_label: Her şeyi e-postala
-    loud_description: Bu konuyla ilgili bir etkinlik olduğunda size e-posta gönderilecektir.
-    normal_label: Önerileri e-postala
-    normal_description: 'Bir öneri başlatıldığında, kapanmak üzereyken ya da bir sonuç ilan edildiğinde size e-postayla gönderilecektir.'
-    quiet_label: E-posta gönderme
-    quiet_description: Birisi sizden @bahsetmediği sürece size bu konu hakkında e-posta gönderilmeyecektir.
-    mute_label: Konunun sesini kıs
-    mute_description: Bu konuyla ilgili size e-postayla gönderilmeyecek ve bu konu Yeni Konular ve Okunmamışlar sayfalarından kaldırılacak.
-    submit: Güncelle
-    messages:
-      loud: Bu konudaki faaliyetler size e-postayla gönderilecektir.
-      normal: Bu konudaki öneriler size e-postayla gönderilecektir.
-      quiet: Size bu konu hakkında e-posta gönderilmeyecektir.
-      mute: Konunun sesi kısıldı.
-  group_volume_card:
-    heading: Grup Bildirimleri
-    body:
-      loud: 'Her şeyi e-postala: Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilir.'
-      normal: Yeni konu ve öneriler size e-postayla gönderilecektir.
-      quiet: 'E-posta gönderme: Bu grupla ilgili etkinlikler size e-postayla gönderilmeyecektir.'
-      mute: 'Grubun sesi kısıldı: Bu grupla ilgili size e-postayla gönderilmeyecek ve bu konu Yeni Konular ve Okunmamışlar sayfalarından kaldırılacak.'
-    change_volume_link: Değiştir
-  group_volume_form:
-    header: Grup Bildirimleri
-    loud_label: Her şeyi e-postala
-    loud_description: Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek.
-    normal_label: Yeni konu ve önerileri e-postala
-    normal_description: Bu gruptaki yeni konu ve öneriler size e-postayla gönderilecektir.
-    quiet_label: E-posta gönderme
-    quiet_description: Birisi sizden bahsetmediği sürece size bu grup hakkında e-posta gönderilmeyecektir.
-    mute_label: Konunun sesini kıs
-    mute_description: Bu grupla ilgili size e-postayla gönderilmeyecek ve bu konu Yeni Konular ve Okunmamışlar sayfalarından kaldırılacak.
-    submit: Güncelle
-    messages:
-      loud: Bu konudaki tüm faaliyetler size e-postayla gönderilecektir.
-      normal: Bu gruptaki öneriler hakkında size e-posta gönderilecektir.
-      quiet: Size bu grup hakkında e-posta gönderilmeyecektir.
-      mute: Grubun sesi kısıldı.
   inbox:
     clear: Temizle
     latest: En yeniler
@@ -250,7 +202,7 @@ tr:
     show_undecided: Kararsız üyeleri göster
     hide_undecided: Kararsız üyeleri sakla
   proposal_pie_chart:
-    participation_statement: 'Üyelerin %{{percentage}} kadarı kendi konumlarını belirtti ({{number}}/{{total}})'
+    participation_statement: 'Üyelerin {{percentage}}% kadarı kendi konumlarını belirtti ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Öneriyi kapat
     helptext: Bu öneriyi şimdi kapatmak istediğinizden emin misiniz?
@@ -452,14 +404,10 @@ tr:
     plus: Plus
     free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
     get_started_for_free: Ücretsiz başlayın
-    gift_body_html: |
-      <p>Abonelik ücretini ödemek için bir bütçesi olmayan gruplar için.</p>
-      <p>Bağış desteklidir, hiçbir ödeme için gerektirmez.</p>
     support_before: "'na razıyım"
     support_link: Sizinle konuşmak
     support_after: 'deneme sürenizin uzatılması hakkında, ya da başka olabilecek herhangi bir sorunuz ile.'
     remind_me_later: Bana daha sonra hatırlat
-    gift_donation_ask: Grup üyelerinizden bir bağış isteyeceğiz.
     unlimited_members: sınırsız üyeler
     unlimited_decisions: sınırsız kararlar
     email_support: e-posta desteği
@@ -467,8 +415,6 @@ tr:
       US <strong>$19</strong>/aylık<br><span>ya da</span> $190/yıllık
     plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
     premium_support: Premium destek
-    custom_url: özel URL
-    usage_statistics: kullanım istatistikleri
     plus_price_html: |
       US <strong>$179</strong>/aylık<br><span>ya da</span> $1790/yıllık
     select: Seç
@@ -652,16 +598,8 @@ tr:
     update_profile: Profili güncelle
   email_settings_page:
     header: E-posta ayarları
-    email: E-posta
     daily_summary_label: Günlük özet e-postası
-    daily_summary_description: "Her sabah, bir önceki güne ait okunmamış aktiviteleri içeren bir e-posta gönderir. Bu e-posta Loomio'daki etkinlikler hakkında güncel kalmanız için kolay bir rutin sağlar."
-    on_participation_label: Katılım gösterdiğim konuların faaliyetleri
-    on_participation_description: 'Bir konuya katıldığınızda, ses düzeyi ayarı "Yüksek" olarak değiştirilir, yani tüm aktiviteler size hemen gönderiliyor olacaktır.'
-    proposal_closing_soon_label: Bir öneri kapanmadan önce
-    proposal_closing_soon_description: 'Bir öneri kapanmadan 24 saat önce, ses düzeyi her ne olursa olsun, öneri hakkındaki en son bilgileri içeren bir e-posta alacaksınız.'
-    mentioned_label: Ben ne zaman @bahsedildiğimde
     mentioned_description: 'Birisi dikkatinizi çekmek istediğinde, sizden @bahsedeceklerdir. Size bunu açık bırakmanızı öneririz, böylece her bahsedildiğizde bir e-posta alırsınız.'
-    update_settings: E-posta ayarlarını güncelle
     messages:
       updated: E-posta ayarları güncellendi
   dashboard_page:
@@ -733,25 +671,11 @@ tr:
     liked_by_names_and_name: '{{joinedNames}} ve {{name}} tarafından beğenildi.'
     started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
     edited: Düzenlendi
-    volume:
-      loud: Bu konuda ne zaman bir faaliyet olursa e-posta gönder.
-      loud_aria_description: "Bu konu için bildirim ses düzeyiniz Yüksek Ses'e ayarlandı. Bu, her ne zaman bir faaliyet olursa size e-posta gönderileceği anlamına geliyor."
-      loud_message: '"{{name}}" hakkındaki tüm faaliyetler size e-postayla gönderilecektir.'
-      normal: 'Sadece bir öneri başlatıldığında, kapanmak üzereyken ya da bir sonuç ilan edildiğinde e-posta gönder.'
-      normal_aria_description: "Bu konu için bildirim ses düzeyiniz Normal'e ayarlandı. Bir konu başlatıldığında, kapanmak üzereyken ya da bir sonuç belirlendiğinde e-posta alacaksınız."
-      normal_message: '"{{name}}" için sadece önemli faaliyetler hakkında e-postayla haberdar edileceksiniz.'
-      quiet: Bu konuyla ilgili e-posta gönderme.
-      quiet_aria_description: "Bu konu için bildirim ses düzeyiniz Sakin'e ayarlandı. Birisi sizden bahsetmediği sürece bu konuya ait e-posta almayacaksınız."
-      quiet_message: 'Birisi sizden bahsetmediği sürece size "{{name}}" hakkında e-posta gönderilmeyecektir.'
-      mute: Bu konuyu kontrol panelinde gizle ve @bahsedilmediğim sürece bildirim gönderme.
-      mute_aria_description: "Bu konu için bildirim ses düzeyiniz Sessiz'e ayarlandı. Birisi sizden bahsetmediği sürece bu konuya ait e-posta almayacaksınız, ve bu konu kontrol panelinizden çıkartılacak."
-      mute_message: '"{{name}}" panelinizden kaldırıldı.'
   thread_group:
     aria_label: Grup adı
   thread_context:
     aria_label: Konu içeriği
     thread_options: Konu seçenekleri
-    notifications: Bildirimler
     edit_thread: Düzenle
     move_thread: Taşı
     print_thread: Yazdır
@@ -920,13 +844,6 @@ tr:
     invitation: Harika bir davetiye yazmak için ipuçları
     proposal: Anlaşılır bir öneri yazmak için ipuçları
     vote: Konumunu istediğin zaman değiştirebilirsin
-  pricing_page:
-    intro: "Bütçeye sahip gruplar aracı kullanmak icin bir abonelik ücreti öderler.\nBütçesi olmayan gruplar Ödeyebilgin Kadar Öde modelini kullanırlar. Bu modelde grubun kendi üyeleri gönüllü katkı yapmaya davet edilir. \nKatkılarınız bizlere Loomiyo'yu bağımsız ve reklamsız tutmamız ve kendi topluluğumuz tarafından yönlendirilebilmemiz için olanak sağlıyor.\n"
-    organisations: Kuruluşlar
-    organisations_examples: 'örneğin; şirketler, devlet kuruluşları, sivil organizasyonlar'
-    informal_groups: İnformal gruplar
-    informal_groups_desc: Grubunuzdaki üyelerden yapabilecekleri kadar ödeme yapmaları istenilecek
-    informal_groups_examples: 'örneğin aileler, sosyal hareketler, kolektifler'
   angular:
     switch_back: "Eski Loomio'ya geri dön"
     give_feedback: Geri bildirim ver

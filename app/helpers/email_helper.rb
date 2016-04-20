@@ -26,8 +26,8 @@ module EmailHelper
     discussion_url(comment.discussion, @utm_hash.merge(anchor: "comment-#{comment.id}"))
   end
 
-  def vote_icon_paths_helper(position)
-    asset_url "img/#{position}-24.png"
+  def position_icon_url(position)
+    image_url "thread_mailer/#{position}-24.png"
   end
 
   def motion_closing_time_for(user)

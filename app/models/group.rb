@@ -28,10 +28,7 @@ class Group < ActiveRecord::Base
   before_save :update_full_name_if_name_changed
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
-
-  include PgSearch
-  pg_search_scope :search_full_name, against: [:name, :description],
-    using: {tsearch: {dictionary: "english"}}
+  scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   default_scope { includes(:default_group_cover) }
 
@@ -51,14 +48,6 @@ class Group < ActiveRecord::Base
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
   scope :created_by, -> (user) { where(creator_id: user.id) }
-
-  scope :visible_on_explore_front_page,
-        -> { visible_to_public.categorised_any.parents_only.
-             created_earlier_than(2.months.ago).
-             active_discussions_since(1.month.ago).
-             more_than_n_members(3).
-             more_than_n_discussions(3).
-             order('discussions.last_comment_at') }
 
   scope :include_admins, -> { includes(:admins) }
 
