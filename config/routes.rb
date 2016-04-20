@@ -446,4 +446,7 @@ Loomio::Application.routes.draw do
   get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui'
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
+
+  get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
+
 end
