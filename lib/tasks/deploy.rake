@@ -20,12 +20,14 @@
 
 task :deploy do
   remote, branch = ARGV[1] || 'loomio-production', ARGV[2] || 'master'
+  is_production_push = remote == 'loomio-production' && branch == 'master'
   id = Time.now.to_i
 
   puts "Deploying branch #{branch} to #{remote}..."
   run_commands [
-    "git checkout #{branch}; git checkout -b #{build_branch(remote, branch, id)}",    # cut a new deploy branch based on specified branch
-   ("bundle exec rake deploy:bump_version" if remote == 'loomio-production'),         # bump version if this is a production deploy
+    "git checkout #{branch}",                                                         # move to specified deploy branch
+   ("bundle exec rake deploy:bump_version" if is_production_push),                    # bump version if this is a production deploy
+    "git checkout -b #{build_branch(remote, branch, id)}",                            # cut a new deploy branch based on specified branch
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
     "bundle exec rake deploy:push[#{remote},#{branch},#{id}]",                        # deploy to heroku
