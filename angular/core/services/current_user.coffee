@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConfig) ->
+angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
 
   login: (data) ->
     return unless data.current_user and data.current_user.id

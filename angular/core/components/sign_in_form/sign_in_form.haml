@@ -5,10 +5,10 @@
     %h1.lmo-h1{translate: "sign_in_form.title"}
 
   .modal-body
+    %validation_errors{subject: "session", field: "password"}
     .sign-in-form__email
       %label{for: "email", translate: "sign_in_form.email_label"}
       %input.form-control#user-email{placeholder: "{{ 'sign_in_form.email_placeholder' | translate }}", ng-required: true, ng-model: "session.email"}
-      %validation_errors{subject: "user", field: "email"}
 
     .sign-in-form__password
       %label{for: "password", translate: "sign_in_form.password_label"}
@@ -19,9 +19,15 @@
       %label{for: "remember_me", translate: "sign_in_form.remember_me"}
 
     .sign-in-form__forgot-password.pull-right
-      %a{ng-click:"forgotPassword()", translate: "sign_in_form.forgot_password"}
+      %a{ng-click:"redirectTo('/users/password/new')", translate: "sign_in_form.forgot_password"}
 
     .clearfix
+
+    .sign-in-form__providers{ng-if: "providers.length > 0"}
+      %h1.lmo-h2{translate: "sign_in_form.oauth.title"}
+      .sign-in-form__provider{ng-repeat: "provider in providers"}
+        %button.btn.btn-default.btn-block.btn-lg{type: "button", ng-click: "redirectTo(provider.href)"}
+          %span{translate: "sign_in_form.oauth.{{provider.name}}"}
 
   .modal-footer
     %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
