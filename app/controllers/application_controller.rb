@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_application_locale
   around_filter :user_time_zone, if: :user_signed_in?
 
+
   # intercom
   skip_after_filter :intercom_rails_auto_include
 

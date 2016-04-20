@@ -52,14 +52,6 @@ class Group < ActiveRecord::Base
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
   scope :created_by, -> (user) { where(creator_id: user.id) }
 
-  scope :visible_on_explore_front_page,
-        -> { visible_to_public.categorised_any.parents_only.
-             created_earlier_than(2.months.ago).
-             active_discussions_since(1.month.ago).
-             more_than_n_members(3).
-             more_than_n_discussions(3).
-             order('discussions.last_comment_at') }
-
   scope :include_admins, -> { includes(:admins) }
 
   scope :cannot_start_parent_group, -> { where(can_start_group: false) }
