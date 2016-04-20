@@ -54,8 +54,10 @@
 
 .explore-page__group-memberships-count,
 .explore-page__group-discussions-count {
+  color: #D0D0D0;
   display: inline;
   margin-right: 20px;
+  i { color: #D0D0D0; }
 }
 
 .explore-page__show-more {
