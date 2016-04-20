@@ -28,10 +28,7 @@ class Group < ActiveRecord::Base
   before_save :update_full_name_if_name_changed
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
 
-
-  include PgSearch
-  pg_search_scope :search_full_name, against: [:name, :description],
-    using: {tsearch: {dictionary: "english"}}
+  scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   default_scope { includes(:default_group_cover) }
 
