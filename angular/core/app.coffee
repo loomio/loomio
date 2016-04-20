@@ -53,11 +53,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     IntercomService.boot()
     MessageChannelService.subscribe()
 
-  $scope.$on 'loggedOut', (event, user) ->
-    # cancel Intercom
-    # unsubscribe from message channel service
-    # remove existing records (and reload them?)
-
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
     ScrollService.scrollTo(options.scrollTo or 'h1')
