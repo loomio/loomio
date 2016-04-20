@@ -19,6 +19,6 @@
             %i.fa.fa-lg.fa-comment>
             %span {{group.discussionsCount}}
     .lmo-show-more{ng-show: "explorePage.canLoadMoreGroups"}
-      %button.explore-page__show-more{ng-hide: "searchExecuting", ng-click: "explorePage.fetch()", translate: "common.action.show_more"}
+      %button.explore-page__show-more{ng-hide: "searchExecuting", ng-click: "explorePage.loadMore()", translate: "common.action.show_more"}
     %loading{ng-show: "searchExecuting"}
     .explore-page__no-results-found{ng-show: "explorePage.noResultsFound()", translate: "explore_page.no_results_found"}
