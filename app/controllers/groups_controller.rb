@@ -49,7 +49,7 @@ class GroupsController < GroupBaseController
     @comment_fields = %w[id group_id discussion_id author_id discussion_title author_name body created_at]
 
     @proposals = Motion.joins(:discussion => :group).where('discussions.group_id' => @group_ids).chronologically
-    @proposal_fields = %w[id group_id discussion_id author_id discussion_title author_name proposal_title description created_at closed_at outcome yes_votes_count no_votes_count abstain_votes_count block_votes_count closing_at did_not_votes_count votes_count]
+    @proposal_fields = %w[id group_id discussion_id author_id discussion_title author_name proposal_title description created_at closed_at outcome yes_votes_count no_votes_count abstain_votes_count block_votes_count closing_at voters_count members_count votes_count]
 
     @votes = Vote.joins(:motion => {:discussion => :group}).where('discussions.group_id' => @group_ids).chronologically
     @vote_fields = %w[id group_id discussion_id motion_id user_id discussion_title motion_name user_name position statement created_at]

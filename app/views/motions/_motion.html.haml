@@ -54,7 +54,7 @@
     = t :engagement_on_open_proposal,
         percent: motion.percent_voted,
         numerator: motion.voters.count,
-        denominator: motion.group_size_when_voting
+        denominator: motion.members_count
 
   .votes
     - if can?(:vote, motion) && motion.user_has_not_voted?(current_user)
