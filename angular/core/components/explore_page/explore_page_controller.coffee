@@ -19,8 +19,8 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
       if (object.groups or []).length < @perPage
         @canLoadMoreGroups = false
 
-  LoadingService.applyLoadingFunction @, 'fetch'
-  @fetch()
+  LoadingService.applyLoadingFunction @, 'search'
+  @search()
 
   @groupCover = (group) ->
     { 'background-image': "url(#{group.coverUrl()})" }

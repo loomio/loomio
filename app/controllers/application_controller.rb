@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   around_filter :user_time_zone, if: :user_signed_in?
   before_filter :boot_angular_ui, if: :use_angular_ui?
 
+
   # intercom
   skip_after_filter :intercom_rails_auto_include
 
