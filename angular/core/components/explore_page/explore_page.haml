@@ -7,11 +7,10 @@
       %loading{ng-show: "searchExecuting"}
     .explore-page__search-results{ng-show: "explorePage.showMessage()", translate: "{{explorePage.searchResultsMessage()}}", translate-values: "{resultCount: explorePage.groups().length, searchTerm: explorePage.query}"}
     .explore-page__groups
-      .explore-page__group{ng-repeat: "group in explorePage.groups() | orderBy: '-membershipsCount' track by group.id"}
+      %a.explore-page__group{ng-repeat: "group in explorePage.groups() | orderBy: '-membershipsCount' track by group.id", lmo-href-for: "group"}
         .explore-page__group-cover{ng-style: "explorePage.groupCover(group)"}
         .explore-page__group-details
-          %a{lmo-href-for: "group"}
-            %h2.lmo-h2 {{group.name}}
+          %h2.lmo-h2 {{group.name}}
           .explore-page__group-description {{explorePage.groupDescription(group)}}
           .explore-page__group-memberships-count
             %i.fa.fa-lg.fa-group>

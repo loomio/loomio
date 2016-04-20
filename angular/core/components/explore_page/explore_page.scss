@@ -2,7 +2,7 @@
   @include cardPadding;
 }
 
-.explore-page__search-input-icon {  
+.explore-page__search-input-icon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -63,4 +63,13 @@
 .explore-page__show-more {
   @include cardMinorAction;
   @include lmoBtnLink;
+}
+
+.explore-page__group {
+  color: $primary-text-color;
+}
+
+.explore-page__group:hover {
+  text-decoration: none;
+  color: $primary-text-color;
 }
