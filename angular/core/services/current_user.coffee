@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
       notificationsLoaded: false
       membershipsLoaded: true
 
-    if !currentUser.restricted?
+    if !data.current_user.restricted?
       Records.discussions.fetchInbox().then ->
         AppConfig.inboxLoaded = true
         $rootScope.$broadcast 'currentUserInboxLoaded'
@@ -21,6 +21,15 @@ angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
 
     $rootScope.$broadcast 'loggedIn', @current()
     @current()
+
+  logout: ->
+    _.merge AppConfig,
+      currentUserId: null
+      inboxLoaded: false
+      notificationsLoaded: false
+      membershipsLoaded: false
+
+    $rootScope.$broadcast 'loggedOut', @current()
 
   current: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()
