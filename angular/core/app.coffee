@@ -65,7 +65,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     $scope.pageError = error
 
   $scope.$on 'trialIsOverdue', (event, group) ->
-    if User.current().id == group.creatorId and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
+    if AbilityService.canAdministerGroup(group) and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
       ModalService.open ChoosePlanModal, group: -> group
       AppConfig.chargify.nagCache[group.key] = true
 
@@ -94,10 +94,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $locati
     {path: '/g/:key/:stub', component: 'groupPage' },
     {path: '/u/:key', component: 'userPage' },
     {path: '/u/:key/:stub', component: 'userPage' },
-    {path: '/apps/authorized', component: 'authorizedAppsPage'}
-    {path: '/apps/registered', component: 'registeredAppsPage'}
-    {path: '/apps/registered/:id', component: 'registeredAppPage'}
-    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
+    {path: '/apps/authorized', component: 'authorizedAppsPage'},
+    {path: '/apps/registered', component: 'registeredAppsPage'},
+    {path: '/apps/registered/:id', component: 'registeredAppPage'},
+    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
+    {path: '/explore', component: 'explorePage'}
   ])
 
   return

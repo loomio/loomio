@@ -5,10 +5,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 require_relative '../lib/version'
-require_relative '../lib/version/major'
-require_relative '../lib/version/minor'
-require_relative '../lib/version/patch'
-require_relative '../lib/version/pre'
 
 module Loomio
   class Application < Rails::Application
@@ -58,12 +54,6 @@ module Loomio
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.4'
-
-    config.action_mailer.default_url_options = {
-      host:     ENV['CANONICAL_HOST'],
-      protocol: ENV['FORCE_SSL'] ? 'https' : 'http'
-    }
-
     config.roadie.url_options = nil
 
     # required for heroku
@@ -90,6 +80,30 @@ module Loomio
         fog_directory: Rails.application.secrets.fog_uploads_directory,
         fog_public: true
       }
+    end
+
+    config.action_mailer.default_url_options = {
+      host:     ENV['CANONICAL_HOST'],
+      port:     ENV['CANONICAL_PORT'],
+      protocol: ENV['FORCE_SSL'] ? 'https' : 'http'
+    }
+
+    config.force_ssl = ENV.has_key?('FORCE_SSL')
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+
+    if ENV['SMTP_SERVER']
+      config.action_mailer.delivery_method = :smtp
+      config.action_mailer.smtp_settings = {
+        :address        => ENV['SMTP_SERVER'],
+        :port           => ENV['SMTP_PORT'],
+        :authentication => (ENV['SMTP_AUTH'] || 'plain'),
+        :user_name      => ENV['SMTP_USERNAME'],
+        :password       => ENV['SMTP_PASSWORD'],
+        :domain         => ENV['SMTP_DOMAIN']
+      }
+    else
+      config.action_mailer.delivery_method = :test
     end
   end
 end

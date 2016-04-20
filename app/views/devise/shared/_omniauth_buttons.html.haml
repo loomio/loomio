@@ -7,3 +7,5 @@
       = t :log_in_with_google
     = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
       = t :log_in_with_twitter
+    = link_to user_omniauth_authorize_path(:github), class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
+      = t :log_in_with_github

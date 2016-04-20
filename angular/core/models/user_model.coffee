@@ -52,7 +52,10 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @name.split(' ').slice(1).join(' ')
 
     saveVolume: (volume, applyToAll) ->
-      @remote.post('set_volume', { volume: volume, apply_to_all: applyToAll }).then =>
+      @remote.post('set_volume',
+        volume: volume
+        apply_to_all: applyToAll
+        unsubscribe_token: @unsubscribeToken).then =>
         return unless applyToAll
         _.each @allThreads(), (thread) ->
           thread.update(discussionReaderVolume: null)

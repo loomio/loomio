@@ -282,6 +282,7 @@ describe API::DiscussionsController do
       patch :mark_as_read, id: discussion.key, sequence_id: 0
       expect(reader.reload.last_read_at).to eq discussion.reload.last_activity_at
       expect(reader.last_read_sequence_id).to eq 0
+      expect(response.status).to eq 200
     end
 
     it "Marks thread item as read" do
@@ -289,6 +290,7 @@ describe API::DiscussionsController do
       patch :mark_as_read, id: discussion.key, sequence_id: event.reload.sequence_id
       expect(reader.reload.last_read_at).to eq event.created_at
       expect(reader.last_read_sequence_id).to eq 1
+      expect(response.status).to eq 200
     end
 
     it 'does not mark an inaccessible discussion as read' do

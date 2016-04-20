@@ -96,4 +96,13 @@ module ApplicationHelper
       image_url("navbar-logo-beta.jpg")
     end
   end
+
+  def login_or_signup_path_for_email(email)
+    if email.blank? || !User.find_by(email: email)
+      new_user_registration_path
+    else
+      new_user_session_path(email: email)
+    end
+  end
+
 end

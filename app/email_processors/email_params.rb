@@ -4,12 +4,11 @@ class EmailParams
   attr_accessor :email_api_key
   attr_accessor :body
 
-  def initialize(email)
-    reply_host = ENV['REPLY_HOSTNAME'] ||  ENV['CANONICAL_HOST']
-    email_hash = email.to.select{|h| h[:host] == reply_host }.first
+  def initialize(email, reply_host: ENV['REPLY_HOSTNAME'] || ENV['CANONICAL_HOST'])
+    email_hash = email.to.select{|h| h[:host] == reply_host }.first || {}
     params = {}
 
-    email_hash[:token].split('&').each do |segment|
+    email_hash[:token].to_s.split('&').each do |segment|
       key_and_value = segment.split('=')
       params[key_and_value[0]] = key_and_value[1]
     end

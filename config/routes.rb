@@ -32,7 +32,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
 
-    resources :groups, only: [:show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
       put :archive, on: :member
@@ -159,6 +159,17 @@ Loomio::Application.routes.draw do
     end
   end
 
+  constraints(GroupSubdomainConstraints) do
+    get '/' => 'redirect#group_subdomain'
+    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
+    get '/g/:id(/:slug)', to: 'redirect#group_key'
+    get '/m/:id(/:slug)', to: 'redirect#motion_key'
+  end
+
+  get '/discussions/:id', to: 'redirect#discussion_id'
+  get '/groups/:id',      to: 'redirect#group_id'
+  get '/motions/:id',     to: 'redirect#motion_id'
+
   get "/browser_not_supported", to: "application#browser_not_supported"
 
   devise_for :users, controllers: { sessions: 'users/sessions',
@@ -189,6 +200,7 @@ Loomio::Application.routes.draw do
 
   get 'contact(/:destination)', to: 'contact_messages#new'
   post :contact, to: 'contact_messages#create', as: :contact
+  post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
 

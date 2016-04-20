@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
+angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConfig) ->
 
   login: (data) ->
     return unless data.current_user and data.current_user.id
@@ -8,14 +8,16 @@ angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
       currentUserId: data.current_user.id
       inboxLoaded: false
       notificationsLoaded: false
+      membershipsLoaded: true
 
-    Records.discussions.fetchInbox().then ->
-      AppConfig.inboxLoaded = true
-      $rootScope.$broadcast 'currentUserInboxLoaded'
+    if !currentUser.restricted?
+      Records.discussions.fetchInbox().then ->
+        AppConfig.inboxLoaded = true
+        $rootScope.$broadcast 'currentUserInboxLoaded'
 
-    Records.notifications.fetchMyNotifications().then ->
-      AppConfig.notificationsLoaded = true
-      $rootScope.$broadcast 'notificationsLoaded'
+      Records.notifications.fetchMyNotifications().then ->
+        AppConfig.notificationsLoaded = true
+        $rootScope.$broadcast 'notificationsLoaded'
 
     $rootScope.$broadcast 'loggedIn', @current()
     @current()

@@ -5,7 +5,7 @@
 %table
   %tr
     %td.icon.activity-icon
-      %img{src: vote_icon_paths_helper(position)}
+      %img{src: position_icon_url(position)}
     %td.content
       %b= vote.author.name
       - past_tense_position = I18n.t("position_verbs.past_tense.#{position}")

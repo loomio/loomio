@@ -14,7 +14,7 @@ angular.module('loomioApp').factory 'UserHelpService', ($sce, User) ->
     helpVideo: ->
       switch User.current().locale
         when 'es', 'an', 'ca', 'gl' then "https://www.youtube.com/embed/BT9f0Nj0zB8"
-        else "https://www.youtube.com/embed/RonxhKSSlG8"
+        else "https://www.youtube.com/embed/CoYYNthNxOY"
 
     helpVideoUrl: ->
       $sce.trustAsResourceUrl(@helpVideo())

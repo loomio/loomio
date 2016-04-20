@@ -88,6 +88,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
       !$scope.searching && $scope.searchResults.length == 0
 
     $scope.groups = ->
+      return [] if CurrentUser.restricted?
       return User.current().groups() unless $scope.queryPresent()
       # match groups where all words are present in group name
       _.filter User.current().groups(), (group) ->

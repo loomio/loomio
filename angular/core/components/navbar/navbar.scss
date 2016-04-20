@@ -59,6 +59,7 @@
 
 .lmo-navbar__sign-in {
   @include lmoBtnFeatured;
+  margin: 7px 0;
 }
 
 .lmo-navbar__item--selected {
