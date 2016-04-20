@@ -88,10 +88,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
     {path: '/g/:key/:stub', component: 'groupPage' },
     {path: '/u/:key', component: 'userPage' },
     {path: '/u/:key/:stub', component: 'userPage' },
-    {path: '/apps/authorized', component: 'authorizedAppsPage'}
-    {path: '/apps/registered', component: 'registeredAppsPage'}
-    {path: '/apps/registered/:id', component: 'registeredAppPage'}
-    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
+    {path: '/apps/authorized', component: 'authorizedAppsPage'},
+    {path: '/apps/registered', component: 'registeredAppsPage'},
+    {path: '/apps/registered/:id', component: 'registeredAppPage'},
+    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
+    {path: '/explore', component: 'explorePage'}
   ])
 
   return

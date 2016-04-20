@@ -176,6 +176,16 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
+  def setup_explore_groups
+    sign_in patrick
+    20.times do |i|
+      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      GroupService.create(group: explore_group, actor: patrick)
+      explore_group.update_attribute(:memberships_count, i)
+    end
+    redirect_to explore_url
+  end
+
   def setup_group_with_multiple_coordinators
     test_group.add_admin! emilio
     sign_in patrick
