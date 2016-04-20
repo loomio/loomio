@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  skip_before_filter :boot_angular_ui
 
   def webhook
     if SubscriptionService.available?
