@@ -214,6 +214,7 @@ Loomio::Application.routes.draw do
 
   resources :invitations, only: [:show, :create, :destroy]
 
+  get "/explore/category/:id", to: "explore#category", as: :category_explore
   get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
 
 
