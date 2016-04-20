@@ -1,6 +1,5 @@
 class InvitationsController < ApplicationController
   include InvitationsHelper
-  skip_before_filter :boot_angular_ui
   before_filter :load_invitable, only: [:new, :create]
   before_filter :authenticate_user!, only: :create
 
