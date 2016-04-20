@@ -79,7 +79,7 @@ describe Motion do
     end
   end
 
-  describe "#members_not_voted_count" do
+  describe "#non_voters_count" do
     let(:motion) { create :motion, discussion: discussion }
 
     it "returns the number of members who did not vote" do
@@ -87,7 +87,7 @@ describe Motion do
       motion.group.add_member! user
       create :vote, :motion => motion, :position => "yes", :user => user
       motion.reload
-      expect(motion.members_not_voted_count).to eq motion.group_members.count - 1
+      expect(motion.non_voters_count).to eq motion.group_members.count - 1
     end
 
     it "still works if the same user votes multiple times" do
@@ -95,7 +95,7 @@ describe Motion do
       motion.group.add_member! user
       vote1 = create :vote, :motion => motion, :position => "yes", :user => user
       vote2 = create :vote, :motion => motion, :position => "no", :user => user
-      expect(motion.members_not_voted_count).to eq motion.group_members.count - 1
+      expect(motion.non_voters_count).to eq motion.group_members.count - 1
     end
 
     context "for a closed motion" do
@@ -106,11 +106,11 @@ describe Motion do
 
       it "returns the number of members who did not vote" do
         expect(motion.closed?).to eq true
-        expect(motion.members_not_voted_count).to eq motion.group.members.count
+        expect(motion.non_voters_count).to eq motion.group.members.count
       end
 
       it 'does not count members added after voting closed' do
-        expect { motion.group.add_member! create(:user) }.to_not change { motion.reload.members_not_voted_count }
+        expect { motion.group.add_member! create(:user) }.to_not change { motion.reload.non_voters_count }
       end
     end
   end
@@ -142,9 +142,16 @@ describe Motion do
     before do
       @motion = create(:motion, discussion: discussion)
     end
-    it "returns the pecentage of users that have voted" do
-      @motion.stub(:members_not_voted_count).and_return(10)
-      @motion.stub(:group_size_when_voting).and_return(20)
+    it "works when voting" do
+      @motion.voters_count = 10
+      @motion.group.memberships_count = 20
+      expect(@motion.percent_voted).to eq 50
+    end
+
+    it "works when closed" do
+      @motion.closed_at = Time.now
+      @motion.voters_count = 10
+      @motion.members_count = 20
       expect(@motion.percent_voted).to eq 50
     end
   end

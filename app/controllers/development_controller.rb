@@ -2,7 +2,6 @@ class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
 
-  skip_before_filter :boot_angular_ui
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
   around_filter :ensure_testing_environment
 

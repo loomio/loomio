@@ -9,15 +9,18 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
   @groups = =>
     Records.groups.find(@groupIds)
 
-  @search = ->
-    @groupIds = []
-    @fetch()
+  @handleSearchResults = (response) =>
+    @groupIds = @groupIds.concat _.pluck(response.groups, 'id')
+    @canLoadMoreGroups = (response.groups || []).length == @perPage
 
-  @fetch = =>
-    Records.groups.fetchExploreGroups(@query, {from: @groupIds.length, per: @perPage}).then (object) =>
-      @groupIds = @groupIds.concat _.pluck(object.groups, 'id')
-      if (object.groups or []).length < @perPage
-        @canLoadMoreGroups = false
+  # changing the search term
+  @search = =>
+    @groupIds = []
+    Records.groups.fetchExploreGroups(@query, per: @perPage).then(@handleSearchResults)
+
+  # clicking 'show more'
+  @loadMore = =>
+    Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage).then(@handleSearchResults)
 
   LoadingService.applyLoadingFunction @, 'search'
   @search()
