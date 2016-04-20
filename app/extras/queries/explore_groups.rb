@@ -7,7 +7,7 @@ class Queries::ExploreGroups < Delegator
   end
 
   def search_for(q)
-    @relation = @relation.search_full_name(q) if q.present?
+    @relation = @relation.explore_search(q) if q.present?
     self
   end
 

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include ProtectedFromForgery
   include TimeZoneHelper
+  include AngularHelper
 
   helper :analytics_data
   helper :locales
@@ -13,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_application_locale
   around_filter :user_time_zone, if: :user_signed_in?
+  before_filter :boot_angular_ui, if: :use_angular_ui?
 
 
   # intercom

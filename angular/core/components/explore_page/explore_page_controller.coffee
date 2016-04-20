@@ -9,9 +9,11 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
   @groups = =>
     Records.groups.find(@groupIds)
 
-  @search = =>
-    if @query
-      @groupIds = []
+  @search = ->
+    @groupIds = []
+    @fetch()
+
+  @fetch = =>
     Records.groups.fetchExploreGroups(@query, {from: @groupIds.length, per: @perPage}).then (object) =>
       @groupIds = @groupIds.concat _.pluck(object.groups, 'id')
       if (object.groups or []).length < @perPage
