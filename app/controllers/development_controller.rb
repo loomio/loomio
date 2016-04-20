@@ -2,6 +2,7 @@ class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
 
+  skip_before_filter :boot_angular_ui
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
   around_filter :ensure_testing_environment
 
@@ -177,7 +178,7 @@ class DevelopmentController < ApplicationController
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    redirect_to group_url(Group.last)
+    redirect_to explore_url
   end
 
   def setup_group_with_multiple_coordinators
