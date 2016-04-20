@@ -161,6 +161,12 @@ en:
     forgot_password: 'Forgot password?'
     sign_in: 'Login'
     signed_in: 'Signed in successfully'
+    oauth:
+      title: 'Or log in with a third-party account:'
+      facebook: 'Log in with Facebook'
+      twitter: 'Log in with Twitter'
+      google: 'Log in with Google'
+      github: 'Log in with Github'
 
   comment_form:
     aria_label: 'Add a comment'

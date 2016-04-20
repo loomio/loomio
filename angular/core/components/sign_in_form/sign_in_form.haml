@@ -22,11 +22,12 @@
       %a{ng-click:"redirectTo('/users/password/new')", translate: "sign_in_form.forgot_password"}
 
     .clearfix
+    %hr
 
     .sign-in-form__providers{ng-if: "providers.length > 0"}
-      %h1.lmo-h2{translate: "sign_in_form.oauth.title"}
+      %h3.lmo-h3{translate: "sign_in_form.oauth.title"}
       .sign-in-form__provider{ng-repeat: "provider in providers"}
-        %button.btn.btn-default.btn-block.btn-lg{type: "button", ng-click: "redirectTo(provider.href)"}
+        %button.btn.btn-default.btn-block{type: "button", ng-click: "redirectTo(provider.href)"}
           %span{translate: "sign_in_form.oauth.{{provider.name}}"}
 
   .modal-footer
