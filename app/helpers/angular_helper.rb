@@ -36,7 +36,8 @@ module AngularHelper
       pageSize: {
         default:           ENV['DEFAULT_PAGE_SIZE'] || 30,
         groupThreads:      ENV['GROUP_PAGE_SIZE'],
-        threadItems:       ENV['THREAD_PAGE_SIZE']
+        threadItems:       ENV['THREAD_PAGE_SIZE'],
+        exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
       }
     }
   end

@@ -26,10 +26,6 @@ module EmailHelper
     discussion_url(comment.discussion, @utm_hash.merge(anchor: "comment-#{comment.id}"))
   end
 
-  def vote_icon_paths_helper(position)
-    asset_url "img/#{position}-24.png"
-  end
-
   def motion_closing_time_for(user)
     @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
   end
