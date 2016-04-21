@@ -43,6 +43,7 @@
   @include fontSmall;
   color: $grey-on-white;
   margin-bottom: 15px;
+  display: inline-block;
 }
 
 .thread-context__description p:last-of-type{
@@ -101,4 +102,10 @@
 .thread-start-proposal-button {
   vertical-align: middle;
   padding-right: 10px;
+}
+
+.thread-context__started-by,
+.thread-context__updated-by,
+.thread-context__view-history {
+  display: inline;
 }

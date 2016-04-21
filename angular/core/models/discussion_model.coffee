@@ -139,6 +139,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     edited: ->
       @versionsCount > 1
 
+    currentVersion:->
+      _.find @versions(), (version) -> version.isCurrent()
+
     attributeForVersion: (attr, version) ->
       return '' unless version
       if version.changes[attr]
