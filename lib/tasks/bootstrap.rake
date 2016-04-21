@@ -13,18 +13,10 @@ namespace :bootstrap do
       next
     end
 
-    unless bower_installed?
-      puts "Loomio requires bower to install dependencies; please run `npm install -g bower`"
-      puts "Quitting .."
-      next
-    end
-
     sh 'gem install bundler' unless bundler_installed?
-
+    sh 'npm install -g gulp' unless gulp_installed?
     sh 'bundle install'
-    sh 'npm install'
-    sh 'npm install -g bower' unless bower_installed?
-    sh 'cd angular && bower install'
+    sh 'cd angular && npm install && cd ..'
   end
 
   desc "Create database.yml file"
@@ -42,14 +34,10 @@ namespace :bootstrap do
 
   desc 'Create user (optional arguments email and password)'
   task :create_user, [:email, :password] => :environment do |t, args|
-    args.with_defaults(email: 'default@loomio.com', password: 'bootstrap_password')
+    args.with_defaults(email: 'default@loomio.org', password: 'bootstrap_password')
     if User.find_by(email: args[:email]).nil?
-      user = User.create(args.to_hash)
-      if user.valid?
-        puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
-      else
-        puts user.errors.full_messages.join("\n")
-      end
+      User.create(args.to_hash)
+      puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
     else
       puts "User with #{args[:email]} already exist"
     end
@@ -78,8 +66,8 @@ namespace :bootstrap do
     $?.success?
   end
 
-  def bower_installed?
-    `which bower`
+  def gulp_installed?
+    `which gulp`
     $?.success?
   end
 end
