@@ -85,7 +85,7 @@ describe GroupMailer do
 
     its(:subject) { should == "[Loomio: #{@group.full_name}] #{@subject}" }
     its(:to) { should == [@recipient.email] }
-    its(:from) { should include 'notifications@test.org' }
+    its(:from) { should include 'notifications@loomio.example.org' }
   end
 
 end

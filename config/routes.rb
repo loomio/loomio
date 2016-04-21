@@ -198,13 +198,6 @@ Loomio::Application.routes.draw do
     get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
 
-  scope module: :users do
-    scope module: :email_preferences do
-      get   '/email_preferences', action: 'edit',   as: :email_preferences
-      put   '/email_preferences', action: 'update', as: :update_email_preferences
-    end
-  end
-
   scope controller: 'help' do
     get :markdown
   end
@@ -228,6 +221,7 @@ Loomio::Application.routes.draw do
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
+  get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
   get 'apps/registered'                    => 'application#boot_angular_ui'
   get 'apps/authorized'                    => 'application#boot_angular_ui'
   get 'apps/registered/:id'                => 'application#boot_angular_ui'
