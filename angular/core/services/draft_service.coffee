@@ -12,6 +12,7 @@ angular.module('loomioApp').factory 'DraftService', ($timeout) ->
         return unless draftMode()
         $timeout.cancel(timeout)
         timeout = $timeout((-> model.updateDraft()), 300)
+      , true
 
       scope.restoreDraft = ->
         model.restoreDraft() if draftMode()
