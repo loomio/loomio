@@ -215,7 +215,6 @@ Loomio::Application.routes.draw do
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
   get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
-  get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
   get 'apps/registered'                    => 'application#boot_angular_ui'
   get 'apps/authorized'                    => 'application#boot_angular_ui'
