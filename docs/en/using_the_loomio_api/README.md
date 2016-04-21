@@ -418,7 +418,7 @@ response = RestClient.get('loomio.org/api/v1/discussions.json')
 
   # Relationship counts
   "activity_count":           "The number of activity items associated with this proposal (integer)",
-  "members_not_voted_count":  "The number of members who have not voted (integer)",
+  "non_voters_count":  "The number of members who have not voted (integer)",
   "vote_counts": {
     "yes":                    "The number of 'yes' votes on the proposal (integer)",
     "abstain":                "The number of 'abstain' votes on the proposal (integer)",

@@ -55,13 +55,13 @@
               - if motion.closed?
                 = t :engagement_on_closed_proposal,
                     percent: motion.percent_voted,
-                    numerator: (motion.group_size_when_voting - motion.members_not_voted_count),
-                    denominator:  motion.group_size_when_voting
+                    numerator: (motion.voters_count),
+                    denominator:  motion.members_count
               - else
                 = t :engagement_on_open_proposal,
                     percent: motion.percent_voted,
-                    numerator: (motion.group_size_when_voting - motion.members_not_voted_count),
-                    denominator:  motion.group_size_when_voting
+                    numerator: (motion.voters_count),
+                    denominator:  motion.members_count
             = render('motions/motion_pie_javascript', motion: motion)
         .col-md-9
           %h3= t :positions

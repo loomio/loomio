@@ -11,8 +11,6 @@ class Motion < ActiveRecord::Base
   belongs_to :discussion
   update_counter_cache :discussion, :motions_count
 
-  define_counter_cache(:members_not_voted_count) { |motion| motion.members_not_voted.count }
-
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
   has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
@@ -45,8 +43,9 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_closing_at
 
-
-  attr_accessor :create_discussion
+  define_counter_cache :voters_count do |motion|
+    motion.voters.count
+  end
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
@@ -101,12 +100,15 @@ class Motion < ActiveRecord::Base
     (!closed? and closing_at < Time.now)
   end
 
+  def non_voters_count
+    members_count - voters_count
+  end
+
   def close!
     did_not_votes.delete_all
     non_voters = group_members - voters
     DidNotVote.create! non_voters.map { |user| {motion: self, user: user} }
-    update(closed_at: Time.now,
-           did_not_votes_count: did_not_votes.count)
+    update(closed_at: Time.now, members_count: group.memberships_count)
   end
 
   def has_votes?
@@ -144,18 +146,6 @@ class Motion < ActiveRecord::Base
     votes_count
   end
 
-  # depricated
-  def votes_for_graph
-    votes_for_graph = []
-    vote_counts.each do |k, v|
-      votes_for_graph.push ["#{k.capitalize} (#{v})", v, "#{k.capitalize}", ([1]*v)]
-    end
-    if activity_count == 0
-      votes_for_graph.push ["Yet to vote (#{members_not_voted_count})", members_not_voted_count, 'Yet to vote', ([1]*members_not_voted_count)]
-    end
-    votes_for_graph
-  end
-
   def user_has_voted?(user)
     return false if user.nil?
     votes.for_user(user.id).exists?
@@ -187,27 +177,27 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  def group_size_when_voting
+  def members_count
     if voting?
-      group.members.count
+      group.memberships_count
     else
-      total_votes_count + did_not_votes_count
+      self[:members_count]
     end
   end
 
   def members_not_voted
     if voting?
-      group_members - voters
+      group.members - voters
     else
       did_not_voters
     end
   end
 
   def percent_voted
-    if group_size_when_voting == 0
+    if members_count == 0
       0
     else
-      (100-(members_not_voted_count/group_size_when_voting.to_f * 100)).to_i
+      (voters_count/members_count.to_f * 100).round
     end
   end
 
@@ -240,6 +230,10 @@ class Motion < ActiveRecord::Base
 
   def group_members_without_outcome_author
     group.members.without(outcome_author)
+  end
+
+  def closed_or_closing_at
+    closed_at || closing_at
   end
 
   private

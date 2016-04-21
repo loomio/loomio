@@ -343,6 +343,10 @@ class User < ActiveRecord::Base
     adminable_groups.parents_only.any?
   end
 
+  def send_devise_notification(notification, *args)
+    I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
   private
   def set_interface
     if ENV['LOOMIO_NEW_USERS_ON_BETA']

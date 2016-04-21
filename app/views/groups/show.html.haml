@@ -28,9 +28,6 @@
           = content_tag :span, "\u25B6", class: 'name-separator'
         = link_to @group.name, @group
         = render 'groups/privacy_dropdown', :group => @group
-    - if @group.category.present?
-      .group-category.shadow.hidden-sm.hidden-xs
-        =link_to t(@group.category.translatable_name), category_explore_path(@group.category), title: t(:'tooltip.group_category')
 
 .row
   .col-md-9
