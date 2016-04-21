@@ -348,7 +348,7 @@ class Group < ActiveRecord::Base
   end
 
   def membership_for(user)
-    memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+    memberships.find_by(user_id: user.id)
   end
 
   def membership(user)
