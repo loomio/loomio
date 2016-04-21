@@ -542,9 +542,7 @@ es:
   group_help_card:
     title: Ayuda
     ten_tips_article_title: 10 consejos para tomar decisiones con Loomio
-    ten_tips_article_link: 'http://blog.loomio.org/2015/08/17/10-consejos-para-tomar-decisiones-con-loomio/'
     nine_ways_to_use_proposals: 9 formas de utilizar propuestas en Loomio para convertir una charla en acción
-    nine_ways_to_use_proposals_link: 'http://blog.loomio.org/2015/08/17/9-formas-de-utilizar-propuestas-en-loomio-para-convertir-conversaciones-en-accion/'
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
