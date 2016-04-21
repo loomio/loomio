@@ -264,6 +264,10 @@ class User < ActiveRecord::Base
     self.username ||= UsernameGenerator.new(self).generate
   end
 
+  def send_devise_notification(notification, *args)
+    I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
   private
 
   def set_default_avatar_kind

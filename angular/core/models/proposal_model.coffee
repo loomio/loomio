@@ -69,10 +69,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
       (100 * numVoted / groupSize).toFixed(0)
 
     groupSizeWhenVoting: ->
-      if @isActive()
-        @group().membershipsCount
-      else
-        @numberVoted() + parseInt(@membersNotVotedCount)
+      @membersCount
 
     lastVoteByUser: (user) ->
       @uniqueVotesByUserId()[user.id]
@@ -93,7 +90,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
         @recordStore.users.find(_.pluck(@didNotVotes(), 'userId'))
 
     hasUndecidedMembers: ->
-      @membersNotVotedCount > 0
+      @membersCount > @votersCount
 
     createOutcome: =>
       @remote.postMember @id, "create_outcome",

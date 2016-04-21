@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.discussion,
       flashSuccess: "discussion_form.messages.#{actionName}"
-      allowDrafts: true
+      draftFields: ['title', 'description']
       successCallback: (response) =>
         $location.path "/d/#{response.discussions[0].key}" if actionName == 'created'
 
