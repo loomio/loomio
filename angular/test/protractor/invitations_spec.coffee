@@ -65,7 +65,7 @@ describe 'Invitations', ->
 
   it 'allows sign in for invitations with existing email addresses', ->
     staticPage.loadPath 'setup_existing_user_invitation'
-    staticPage.click '[href]'
+    staticPage.click 'a[href]'
 
     staticPage.fillIn '#user_password', 'gh0stmovie'
     staticPage.click '#sign-in-btn'
@@ -75,7 +75,7 @@ describe 'Invitations', ->
 
   it 'allows sign up for invitations with new email addresses', ->
     staticPage.loadPath 'setup_new_user_invitation'
-    staticPage.click '[href]'
+    staticPage.click 'a[href]'
 
     staticPage.fillIn '#user_name', 'Judd Nelson'
     staticPage.fillIn '#user_password', 'gh0stmovie'
@@ -100,7 +100,7 @@ describe 'Invitations', ->
   it 'takes the user to the group if they\'ve already accepted', ->
     staticPage.loadPath 'setup_used_invitation'
 
-    staticPage.click '[href]'
+    staticPage.click 'a[href]'
 
     staticPage.fillIn '#user_password', 'gh0stmovie'
     staticPage.click '#sign-in-btn'
@@ -111,7 +111,7 @@ describe 'Invitations', ->
   it 'displays an error if logging in as a different user', ->
     staticPage.loadPath 'setup_used_invitation'
 
-    staticPage.click '[href]'
+    staticPage.click 'a[href]'
 
     staticPage.fillIn '#user_email', 'emilio@loomio.org'
     staticPage.fillIn '#user_password', 'gh0stmovie'
@@ -122,7 +122,7 @@ describe 'Invitations', ->
   it 'displays an error if the invitation has been cancelled', ->
     staticPage.loadPath 'setup_cancelled_invitation'
 
-    staticPage.click '[href]'
+    staticPage.click 'a[href]'
 
     staticPage.fillIn '#user_password', 'gh0stmovie'
     staticPage.click '#sign-in-btn'
