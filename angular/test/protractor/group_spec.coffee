@@ -35,7 +35,7 @@ describe 'Group Page', ->
       staticPage.click '#sign-up-submit'
 
       staticPage.loadPath 'last_email'
-      staticPage.click '[href]'
+      staticPage.click 'a[href]'
 
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
