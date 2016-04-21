@@ -91,7 +91,7 @@ describe 'MotionService' do
 
       it 'stores users that did not vote' do
         MotionService.close(motion)
-        expect(motion.did_not_votes_count).to eq 4
+        expect(motion.did_not_votes.count).to eq 4
       end
 
       it 'sets closed_at' do

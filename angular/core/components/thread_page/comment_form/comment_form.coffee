@@ -26,16 +26,21 @@ angular.module('loomioApp').directive 'commentForm', ->
       if $scope.comment.isReply()
         $scope.comment.parent().authorName()
 
+    $scope.listenForSubmitOnEnter = ->
+      KeyEventService.submitOnEnter $scope
+    $scope.$on 'voteCreated',     $scope.listenForSubmitOnEnter
+    $scope.$on 'proposalCreated', $scope.listenForSubmitOnEnter
+
     $scope.init = ->
       $scope.comment = Records.comments.build(discussionId: $scope.discussion.id)
       $scope.submit = FormService.submit $scope, $scope.comment,
-        allowDrafts: true
+        draftFields: ['body']
         submitFn: $scope.comment.save
         flashSuccess: successMessage
         flashOptions:
           name: successMessageName
         successCallback: $scope.init
-      KeyEventService.submitOnEnter $scope
+      $scope.listenForSubmitOnEnter()
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->

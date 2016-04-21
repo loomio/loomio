@@ -42,7 +42,9 @@ EventBus.configure do |config|
                 'new_motion_event',
                 'new_vote_event',
                 'motion_closed_event',
-                'motion_closed_by_user_event') do |event|
+                'motion_closed_by_user_event',
+                'motion_outcome_created_event',
+                'motion_outcome_updated_event') do |event|
     DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at)
   end
 
@@ -117,7 +119,6 @@ EventBus.configure do |config|
 
   # perform group creation
   config.listen('group_create') do |group, actor|
-    group.add_admin! actor
     group.add_default_content! if group.is_parent?
   end
 

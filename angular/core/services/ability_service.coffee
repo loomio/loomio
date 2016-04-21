@@ -119,8 +119,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, User) ->
       User.current().isMemberOf(group)
 
     canViewPreviousProposals: (group) ->
-      group.privacyIsOpen() or
-      User.current().isMemberOf(group)
+      @canViewGroup(group)
 
     canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and

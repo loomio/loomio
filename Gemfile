@@ -89,6 +89,7 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
