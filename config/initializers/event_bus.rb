@@ -122,7 +122,6 @@ EventBus.configure do |config|
 
   # perform group creation
   config.listen('group_create') do |group, actor|
-    group.add_admin! actor
     group.add_default_content! if group.is_parent?
   end
 
