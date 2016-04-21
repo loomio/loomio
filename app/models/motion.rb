@@ -175,6 +175,10 @@ class Motion < ActiveRecord::Base
     votes.for_user(user.id).exists?
   end
 
+  def closed_or_closing_at
+    closed_at || closing_at
+  end
+
   private
 
     def closes_in_future_unless_closed
