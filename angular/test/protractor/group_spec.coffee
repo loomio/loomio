@@ -37,7 +37,7 @@ describe 'Group Page', ->
         page.expectNoElement('.thread-preview__mark-as-read')
         page.expectNoElement('.thread-preview__mute')
 
-      it 'displays previous proposals to visitors of open groups', ->
+      it 'open group displays previous proposals', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectText('.group-previous-proposals-card', 'Let\'s go to the moon!')
 
