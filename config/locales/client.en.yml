@@ -294,13 +294,15 @@ en:
     start_a_proposal: 'Start a proposal'
     edit_proposal: 'Edit proposal'
     what_does_a_proposal_do: 'Proposals let you see how everyone feels about a particular course of action.'
-    editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another'
-    title_placeholder: 'Eg: Go to the moon'
+    proposal_ideas: Need ideas for writing a good proposal?
+    proposal_ideas_title: 9 ways to use a Loomio proposal to turn talk into action
+    editing_title_and_description_forbidden: 'You cannot change the title or description of a proposal after people have voted. If details have changed, please close the proposal and start another.'
+    title_placeholder: 'Eg: Let’s go to the moon'
     title_label: 'Title'
     closes_at_label: 'Closes at'
     closes: 'Closes'
     details_label: 'Details'
-    details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree or whatever"
+    details_placeholder: "Give enough detail so everyone knows exactly what it means to agree or disagree with your proposal"
 
   discussion_record:
     created: 'The thread {{title}} was successfully created in {{groupName}}'
