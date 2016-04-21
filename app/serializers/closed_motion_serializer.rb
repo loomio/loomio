@@ -11,6 +11,7 @@ class ClosedMotionSerializer < ActiveModel::Serializer
              :updated_at,
              :closing_at,
              :closed_at,
+             :closed_or_closing_at,
              :last_vote_at,
              :vote_counts,
              :activity_count,
