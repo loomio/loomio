@@ -33,7 +33,7 @@ describe GroupMailer do
 
     context "requestor is an existing loomio user" do
       it 'renders the sender email' do
-        expect(@mail.from).to include 'notifications@test.org'
+        expect(@mail.from).to include 'notifications@loomio.example.org'
       end
 
       it 'assigns correct reply_to' do

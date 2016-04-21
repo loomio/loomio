@@ -8,7 +8,6 @@ class BaseController < ApplicationController
                 :check_for_invitation,
                 :ensure_user_name_present,
                 :set_time_zone_from_javascript, unless: :ajax_request?
-  before_filter :boot_angular_ui, if: :use_angular_ui?
 
   helper_method :time_zone
 
