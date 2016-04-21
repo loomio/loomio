@@ -15,7 +15,7 @@
       %fieldset
         .lmo-form-group
           .lmo-relative
-            %textarea.lmo-textarea.vote-form__statement-field.form-control.lmo-primary-form-input{ng-model: "vote.statement", placeholder: "{{ 'vote_form.statement_placeholder' | translate }}"}
+            %textarea.lmo-textarea.vote-form__statement-field.form-control.lmo-primary-form-input{ng-model: "vote.statement", placeholder: "{{ 'vote_form.statement_placeholder' | translate }}", autofocus: "true"}
             %emoji_picker.lmo-action-dock{target-selector: "statementSelector"}
           .chars-left.pull-right{ng-class: "{ overlimit: vote.overCharLimit() }"}
             {{ vote.charsLeft() }}

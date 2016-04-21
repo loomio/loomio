@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'GroupForm', ->
   templateUrl: 'generated/components/group_form/group_form.html'
-  controller: ($scope, $rootScope, $location, group, FormService, Records, $translate, PrivacyString) ->
+  controller: ($scope, $rootScope, $location, group, KeyEventService, FormService, Records, $translate, PrivacyString) ->
     $scope.group = group.clone()
 
     $scope.i18n = do ->
@@ -30,7 +30,7 @@ angular.module('loomioApp').factory 'GroupForm', ->
         'group_form.messages.group_updated'
 
     submitForm = FormService.submit $scope, $scope.group,
-      allowDrafts: true
+      draftFields: ['name', 'description']
       flashSuccess: successMessage()
       successCallback: (response) ->
         if $scope.group.isNew()
@@ -66,3 +66,5 @@ angular.module('loomioApp').factory 'GroupForm', ->
         when 'open'   then $scope.group.discussionPrivacyOptions = 'public_only'
         when 'closed' then $scope.allowPublicThreadsClicked()
         when 'secret' then $scope.group.discussionPrivacyOptions = 'private_only'
+
+    KeyEventService.submitOnEnter $scope

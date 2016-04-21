@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'VoteForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.vote,
       flashSuccess: 'vote_form.messages.created'
+      successEvent: 'voteCreated'
 
     $scope.yourLastVote = ->
       $scope.vote.proposal().lastVoteByUser(CurrentUser)
