@@ -232,6 +232,10 @@ class Motion < ActiveRecord::Base
     group.members.without(outcome_author)
   end
 
+  def closed_or_closing_at
+    closed_at || closing_at
+  end
+
   private
     def closes_in_future_unless_closed
       unless self.closed?
