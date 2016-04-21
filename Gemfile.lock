@@ -213,6 +213,9 @@ GEM
     doorkeeper (3.0.1)
       railties (>= 3.2)
     doorkeeper-i18n (3.0.0)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -701,6 +704,7 @@ DEPENDENCIES
   devise-i18n
   doorkeeper
   doorkeeper-i18n
+  dotenv-rails
   email_spec
   factory_girl_rails
   faker
