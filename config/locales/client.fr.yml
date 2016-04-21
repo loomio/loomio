@@ -463,9 +463,7 @@ fr:
   group_help_card:
     title: Aide
     ten_tips_article_title: 10 conseils pour prendre de grandes décisions avec Loomio
-    ten_tips_article_link: 'http://blog.loomio.org/2015/08/25/10-conseils-pour-prendre-de-grandes-decisions-grace-a-loomio/'
     nine_ways_to_use_proposals: "9 façons d'utiliser une proposition Loomio pour transformer une conversation en action"
-    nine_ways_to_use_proposals_link: 'https://loomio.wordpress.com/2015/08/25/9-manieres-dutiliser-loomio-pour-transformer-une-conversation-en-actes/?frame-nonce=7455d1c7aa&preview=true&iframe=true'
   membership_requests_page:
     heading: "Demandes d'ajout"
     approve: Approuver

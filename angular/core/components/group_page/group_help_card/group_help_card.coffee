@@ -14,3 +14,9 @@ angular.module('loomioApp').directive 'groupHelpCard', ->
 
     $scope.showHelpCard = ->
       CurrentUser.isMemberOf($scope.group)
+
+    $scope.tenTipsArticleLink = ->
+      UserHelpService.tenTipsArticleLink()
+
+    $scope.nineWaysArticleLink = ->
+      UserHelpService.nineWaysArticleLink()
