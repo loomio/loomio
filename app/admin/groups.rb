@@ -28,7 +28,6 @@ ActiveAdmin.register Group do
   scope :engaged
   scope :engaged_but_stopped
   scope :has_members_but_never_engaged
-  scope :visible_on_explore_front_page
   scope :is_subscription
   scope :is_donation
 
