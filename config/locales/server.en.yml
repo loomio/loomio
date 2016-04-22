@@ -1,5 +1,10 @@
 ---
 en:
+  validate:
+    motion:
+      must_close_in_future: Proposal must close in the future.
+      one_at_a_time: There is another active proposal.
+
   email:
     reset_password:
       greeting: |
