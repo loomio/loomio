@@ -240,14 +240,14 @@ class Motion < ActiveRecord::Base
     def closes_in_future_unless_closed
       unless self.closed?
         if closing_at < Time.zone.now
-          errors.add(:closing_at, I18n.t("validate.motion.must_close_in_future")
+          errors.add(:closing_at, I18n.t("validate.motion.must_close_in_future"))
         end
       end
     end
 
     def one_motion_voting_at_a_time
       if voting? and discussion.current_motion.present? and discussion.current_motion != self
-        errors.add(:discussion, I18n.t("validate.motion.one_at_a_time")
+        errors.add(:discussion, I18n.t("validate.motion.one_at_a_time"))
       end
     end
 
