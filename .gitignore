@@ -25,6 +25,10 @@ public/client
 public/system
 public/uploads
 
+mobile/platforms
+mobile/plugins/cordova-plugin-whitelist
+mobile/www/client
+
 disabled_plugins/
 plugins/*/
 plugins/Gemfile

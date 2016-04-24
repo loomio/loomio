@@ -1,0 +1,24 @@
+<html ng-app="loomioApp" ng-csp="true" ng-controller="ApplicationController as app">
+  <head>
+    <title>Loomio</title>
+    <meta charset="utf-8"/>
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'  http://10.0.2.2:3000 'unsafe-inline' ">
+    <base href="/"></base>
+  </head>
+  <body ng-keydown="keyDown($event)">
+    <flash></flash>
+    <navbar></navbar>
+    <ng-outlet  ng-if="!pageError"></ng-outlet>
+    <error-page ng-if="pageError"></error-page>
+    <start-menu ng-if="isLoggedIn()"></start-menu>
+    <outlet     name="after-start-menu"></outlet>
+    <div class="lmo-loading-screen" ng-class="{'lmo-loading-complete': isReady }" style="display: none;">
+      <div class="lmo-loading-screen__image">
+        <img src="http://10.0.2.2:3000/assets/loomio-community.jpg"/>
+      </div>
+    </div>
+    <script src="http://10.0.2.2:3000/index.js"></script>
+  </body>
+</html>

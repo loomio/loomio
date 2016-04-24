@@ -1,2 +1,4 @@
-angular.module('loomioApp').factory 'RestfulClient', ($http, $upload) ->
-  AngularRecordStore.RestfulClientFn($http, $upload)
+angular.module('loomioApp').factory 'RestfulClient', ($http, $upload, AppConfig) ->
+  client = AngularRecordStore.RestfulClientFn($http, $upload)
+  client.prototype.apiPrefix = [AppConfig.mobileHost] + client.prototype.apiPrefix
+  client

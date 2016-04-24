@@ -9,9 +9,9 @@ module ConfigHelper
       flash:               flash.to_h,
       currentUserId:       current_user_or_visitor.id,
       currentUserLocale:   current_user_or_visitor.locale,
+      currentUserData:    (current_user_serializer.new(current_user_or_visitor, root: 'current_user').as_json),
       currentUrl:          request.original_url,
       canTranslate:        TranslationService.available?,
-      seedRecords:         CurrentUserSerializer.new(current_user_or_visitor),
       permittedParams:     PermittedParamsSerializer.new({}),
       locales:             angular_locales,
       siteName:            ENV['SITE_NAME'] || 'Loomio',
@@ -20,15 +20,13 @@ module ConfigHelper
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       chargify:            app_config_chargify,
-      intercom:            app_config_intercom,
+      mobileHost:         (ENV['MOBILE_HOST'] if is_mobile_app_request?),
       pageSize: {
         default:           ENV['DEFAULT_PAGE_SIZE'] || 30,
         groupThreads:      ENV['GROUP_PAGE_SIZE'],
-        threadItems:       ENV['THREAD_PAGE_SIZE']
-      },
-      facebookAppId:       Rails.application.secrets.facebook_app_id,
-      googleAnalyticsId:   Rails.application.secrets.google_analytics_id,
-      fayeUrl:             Rails.application.secrets.faye_url
+        threadItems:       ENV['THREAD_PAGE_SIZE'],
+        exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
+      }
     }
   end
 

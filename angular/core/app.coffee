@@ -30,7 +30,7 @@ angular.module('loomioApp', ['ngNewRouter',
 
   if window.Loomio?
     locale = window.Loomio.currentUserLocale
-    $translateProvider.useUrlLoader("/api/v1/translations").
+    $translateProvider.useUrlLoader("#{[window.Loomio.mobileHost]}/api/v1/translations").
                        preferredLanguage(locale)
 
     $translateProvider.useSanitizeValueStrategy('escapeParameters');

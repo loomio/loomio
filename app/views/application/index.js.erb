@@ -1,11 +1,11 @@
-let includeJs = function(url, callback) {
+var includeJs = function(url, callback) {
   var elem   = document.createElement('script')
   elem.src   = url
   elem.onload = callback
   document.getElementsByTagName('body')[0].appendChild(elem)
 }
 
-let includeCss = function(url, opts) {
+var includeCss = function(url, opts) {
   if (!opts) { opts = {} }
   var elem   = document.createElement('link')
   elem.href  = url
