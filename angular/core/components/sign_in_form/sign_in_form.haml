@@ -8,7 +8,7 @@
     %validation_errors{subject: "session", field: "password"}
     .sign-in-form__email
       %label{for: "email", translate: "sign_in_form.email_label"}
-      %input.form-control#user-email{placeholder: "{{ 'sign_in_form.email_placeholder' | translate }}", ng-required: true, ng-model: "session.email"}
+      %input.form-control#user-email{type: "email", placeholder: "{{ 'sign_in_form.email_placeholder' | translate }}", ng-required: true, ng-model: "session.email"}
 
     .sign-in-form__password
       %label{for: "password", translate: "sign_in_form.password_label"}
