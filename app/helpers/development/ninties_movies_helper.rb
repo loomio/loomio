@@ -202,7 +202,7 @@ module Development::NintiesMoviesHelper
       @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
                                                               message: 'Come and join the group!',
                                                               group: test_group,
-                                                              inviter: patrick)
+                                                              inviter: patrick).last
     end
     @pending_invitation
   end

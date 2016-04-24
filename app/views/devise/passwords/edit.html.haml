@@ -1,16 +1,19 @@
-.row
-  .col-md-6
-    %h2= t :change_your_password
-    %p= t :'password_reset.length_restriction'
-    %p= t :'password_reset.forbidden_passwords'
-.row
-  .col-md-4
-    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-      .error
-        = devise_error_messages!
-      = f.hidden_field :reset_password_token
-      = f.label :password, t(:new_password)
-      = f.password_field :password, class: "form-control"
-      = f.label :password_confirmation, t(:confirm_new_password)
-      = f.password_field :password_confirmation, class: "form-control"
-      = f.submit t(:change_my_password), class: "btn btn-primary"
+.container
+  %section#sign-in
+    .inner-container
+      .row
+        .col-md-6
+          %h2= t :change_your_password
+          %p= t :'password_reset.length_restriction'
+          %p= t :'password_reset.forbidden_passwords'
+      .row
+        .col-md-4
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+            .error
+              = devise_error_messages!
+            = f.hidden_field :reset_password_token
+            = f.label :password, t(:new_password)
+            = f.password_field :password, class: "form-control"
+            = f.label :password_confirmation, t(:confirm_new_password)
+            = f.password_field :password_confirmation, class: "form-control"
+            = f.submit t(:change_my_password), class: "btn btn-primary"

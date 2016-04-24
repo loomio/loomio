@@ -1,6 +1,18 @@
 class API::GroupsController < API::RestfulController
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo, :use_gift_subscription], find_by: :key
+  skip_before_action :authenticate_user!, only: :index
+
+  def index
+    instantiate_collection { |collection| collection.search_for params[:q] }
+    respond_with_collection
+  end
+
+  def create
+    instantiate_resouce
+    create_action
+    respond_with_resource(scope: {current_user: current_user})
+  end
 
   def archive
     load_resource
@@ -34,6 +46,10 @@ class API::GroupsController < API::RestfulController
   def ensure_photo_params
     params.require(:file)
     raise ActionController::UnpermittedParameters.new([:kind]) unless ['logo', 'cover_photo'].include? params.require(:kind)
+  end
+
+  def accessible_records
+    Queries::ExploreGroups.new
   end
 
 end

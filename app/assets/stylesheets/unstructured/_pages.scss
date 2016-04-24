@@ -121,6 +121,8 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.crowd,
 .pages.wallets,
 .woc.index,
+.start_group,
+body.passwords,
 .we_the_people.index {
   color: black;
   background-color: $pages-background;
@@ -210,8 +212,6 @@ a.btn-icon:hover { color: $dark-grey; }
   .inner-container{
     padding: 34px;
   }
-
-  .pull-right { margin-top: 10px; }
 
   section{
     background: white;
@@ -639,6 +639,14 @@ body.pages.crowdfunding_celebration {
   li {
     font-size: 18px;
     line-height: 24px;
+  }
+}
+
+body.start_group {
+  h2 {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 300;
   }
 }
 

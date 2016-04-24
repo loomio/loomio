@@ -129,12 +129,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     vote = FactoryGirl.create :vote, motion: motion
     vote = FactoryGirl.create :vote, motion: motion
     vote = FactoryGirl.create :vote, motion: motion
-    motion.store_users_that_didnt_vote
-    motion.closed_at = Time.now
-    motion.save!
-    event = Events::MotionClosed.create(kind: 'motion_closed',
-                                        eventable: motion,
-                                        discussion_id: motion.discussion.id)
+    event = MotionService.close(motion)
     ThreadMailer.motion_closed user, event
   end
 

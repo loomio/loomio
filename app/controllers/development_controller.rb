@@ -176,6 +176,16 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
+  def setup_explore_groups
+    sign_in patrick
+    20.times do |i|
+      explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
+      GroupService.create(group: explore_group, actor: patrick)
+      explore_group.update_attribute(:memberships_count, i)
+    end
+    redirect_to explore_url
+  end
+
   def setup_group_with_multiple_coordinators
     test_group.add_admin! emilio
     sign_in patrick
@@ -193,6 +203,24 @@ class DevelopmentController < ApplicationController
     test_group
     pending_invitation
     redirect_to last_email_development_index_path
+  end
+
+  def setup_used_invitation
+    test_group
+    emilio
+    InvitationService.redeem(pending_invitation, judd)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_cancelled_invitation
+    test_group
+    judd
+    InvitationService.cancel(invitation: pending_invitation, actor: patrick)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_team_invitation_link
+    redirect_to InvitationService.shareable_invitation_for(test_group)
   end
 
   def setup_group_for_invitations
@@ -240,6 +268,7 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'open')
     @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
     @test_proposal = @test_discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
+    @test_proposal.close!
     redirect_to group_url(@test_group)
   end
 
@@ -385,6 +414,11 @@ class DevelopmentController < ApplicationController
                               email_when_mentioned:             false,
                               email_on_participation:           false)
     redirect_to dashboard_url
+  end
+
+  def email_settings_as_restricted_user
+    test_group
+    redirect_to email_preferences_url(unsubscribe_token: patrick.unsubscribe_token)
   end
 
   def setup_all_notifications

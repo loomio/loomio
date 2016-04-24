@@ -41,6 +41,18 @@ class GroupSerializer < ActiveModel::Serializer
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 
+  has_one :current_user_membership, serializer: MembershipSerializer, root: 'memberships'
+
+  private
+
+  def current_user_membership
+    @current_user_membership ||= object.membership_for(scope[:current_user])
+  end
+
+  def include_current_user_membership?
+    scope && scope[:current_user]
+  end
+
   def show_legacy_trial_expired_modal
     ENV['TRIAL_EXPIRED_GROUP_IDS'].to_s.split(' ').map(&:to_i).include? object.id
   end

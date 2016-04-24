@@ -14,7 +14,7 @@ describe 'Group Page', ->
       staticPage.click '#sign-up-submit'
 
       staticPage.loadPath 'last_email'
-      staticPage.click '[href]'
+      staticPage.click 'a[href]'
 
       staticPage.fillIn '#user_password', 'vivalarevolucion'
       staticPage.fillIn '#user_password_confirmation', 'vivalarevolucion'
@@ -35,7 +35,7 @@ describe 'Group Page', ->
       staticPage.click '#sign-up-submit'
 
       staticPage.loadPath 'last_email'
-      staticPage.click '[href]'
+      staticPage.click 'a[href]'
 
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
@@ -72,7 +72,7 @@ describe 'Group Page', ->
         page.expectNoElement('.thread-preview__mark-as-read')
         page.expectNoElement('.thread-preview__mute')
 
-      it 'displays previous proposals to visitors of open groups', ->
+      it 'open group displays previous proposals', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectText('.group-previous-proposals-card', 'Let\'s go to the moon!')
 

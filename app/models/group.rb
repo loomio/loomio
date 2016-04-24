@@ -42,13 +42,7 @@ class Group < ActiveRecord::Base
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
   scope :created_by, -> (user) { where(creator_id: user.id) }
 
-  scope :visible_on_explore_front_page,
-        -> { visible_to_public.categorised_any.parents_only.
-             created_earlier_than(2.months.ago).
-             active_discussions_since(1.month.ago).
-             more_than_n_members(3).
-             more_than_n_discussions(3).
-             order('discussions.last_comment_at') }
+  scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members,     ->(count) { where('memberships_count > ?', count) }
@@ -331,7 +325,7 @@ class Group < ActiveRecord::Base
   end
 
   def membership_for(user)
-    memberships.where("group_id = ? AND user_id = ?", id, user.id).first
+    memberships.find_by(user_id: user.id)
   end
 
   def membership(user)

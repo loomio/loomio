@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include ConfigHelper
   include ProtectedFromForgery
   include LoadAndAuthorize
+  include CurrentUserHelper
 
   helper :analytics_data
   helper :locales
@@ -82,10 +83,6 @@ class ApplicationController < ActionController::Base
     else
       session[:user_return_to]
     end
-  end
-
-  def current_user_or_visitor
-    user_signed_in? ? current_user : LoggedOutUser.new
   end
 
   def user_time_zone(&block)

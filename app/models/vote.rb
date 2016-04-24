@@ -38,7 +38,7 @@ class Vote < ActiveRecord::Base
 
   after_create :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
-  update_counter_cache :motion, :members_not_voted_count
+  update_counter_cache :motion, :voters_count
 
   # alias_method does not work for the following obvious methods
   def author=(obj)

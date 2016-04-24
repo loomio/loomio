@@ -31,6 +31,14 @@ GIT
       faye
 
 GIT
+  remote: git://github.com/robguthrie/mail.git
+  revision: 47c87d5144a7801ce408bb6bce06bb199a5f2c77
+  branch: memoize-encoded
+  specs:
+    mail (2.7.0.edge)
+      mime-types (>= 1.16, < 4)
+
+GIT
   remote: git://github.com/vanetten/jstz-rails.git
   revision: 3c5d5730f5891d1ed4656058f201fdc557792710
   specs:
@@ -205,6 +213,9 @@ GEM
     doorkeeper (3.0.1)
       railties (>= 3.2)
     doorkeeper-i18n (3.0.0)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -412,8 +423,6 @@ GEM
       nokogiri (>= 1.5.9)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
-    mail (2.6.4)
-      mime-types (>= 1.16, < 4)
     memory_profiler (0.9.4)
     mime-types (2.6.2)
     mini_portile2 (2.0.0)
@@ -436,11 +445,15 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    oj (2.13.1)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
     omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
+    omniauth-github (1.1.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-google-oauth2 (0.2.6)
       omniauth (> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -691,6 +704,7 @@ DEPENDENCIES
   devise-i18n
   doorkeeper
   doorkeeper-i18n
+  dotenv-rails
   email_spec
   factory_girl_rails
   faker
@@ -707,11 +721,14 @@ DEPENDENCIES
   intercom
   jstz-rails!
   launchy
+  mail!
   minitest
   newrelic_rpm
   nokogiri
+  oj
   omniauth (~> 1.2.2)
   omniauth-facebook (~> 2.0.1)
+  omniauth-github
   omniauth-google-oauth2 (~> 0.2.5)
   omniauth-twitter (~> 1.2.0)
   paper_trail (~> 4.0.0.beta2)

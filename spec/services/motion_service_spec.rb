@@ -74,18 +74,6 @@ describe 'MotionService' do
         expect(MotionService.create(motion: motion, actor: user)).to be_a Events::NewMotion
       end
     end
-
-    context "motion is invalid" do
-      before { allow(motion).to receive(:valid?) {false}}
-
-      it "returns false" do
-        expect(MotionService.create(motion: motion, actor: user)).to be false
-      end
-
-      it "does not save the motion" do
-        expect(motion).to_not receive(:save!)
-      end
-    end
   end
 
   describe '.close_lapsed_motions' do
@@ -103,17 +91,12 @@ describe 'MotionService' do
 
       it 'stores users that did not vote' do
         MotionService.close(motion)
-        expect(motion.did_not_votes_count).to eq 4
+        expect(motion.did_not_votes.count).to eq 4
       end
 
       it 'sets closed_at' do
-        expect(motion).to receive(:closed_at=)
         MotionService.close(motion)
-      end
-
-      it 'saves the motion' do
-        expect(motion).to receive(:save!)
-        MotionService.close(motion)
+        expect(motion.reload.closed_at).to be_present
       end
 
       it 'fires motion closed event' do
@@ -134,19 +117,9 @@ describe 'MotionService' do
 
       before { motion.save }
 
-      it 'stores users that did not vote' do
-        motion.should_receive(:store_users_that_didnt_vote)
-        MotionService.close_by_user(motion, user)
-      end
-
       it 'sets closed_at' do
-        motion.should_receive(:closed_at=)
         MotionService.close_by_user(motion, user)
-      end
-
-      it 'saves the motion' do
-        motion.should_receive(:save!)
-        MotionService.close_by_user(motion, user)
+        expect(motion.closed_at).to be_present
       end
 
       it 'authorizes the user' do
@@ -204,7 +177,6 @@ describe 'MotionService' do
 
     it 'authorizes the user can set the outcome' do
       user.ability.should_receive(:authorize!).with(:create_outcome, motion)
-      motion.should_receive(:save!)
       Events::MotionOutcomeCreated.should_receive(:publish!).with(motion, user)
       MotionService.create_outcome(motion: motion, params: {}, actor: user)
     end
@@ -233,7 +205,6 @@ describe 'MotionService' do
 
     it 'authorizes the user can update the outcome' do
       user.ability.should_receive(:authorize!).with(:update_outcome, motion)
-      motion.should_receive(:save!)
       Events::MotionOutcomeUpdated.should_receive(:publish!).with(motion, user)
       MotionService.update_outcome(motion: motion, params: {}, actor: user)
     end

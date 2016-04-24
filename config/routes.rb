@@ -32,7 +32,7 @@ Loomio::Application.routes.draw do
 
   namespace :api, path: '/api/v1', defaults: {format: :json} do
 
-    resources :groups, only: [:show, :create, :update] do
+    resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
       patch :archive, on: :member
       put :archive, on: :member
@@ -170,6 +170,17 @@ Loomio::Application.routes.draw do
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
+  constraints(GroupSubdomainConstraints) do
+    get '/' => 'redirect#group_subdomain'
+    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
+    get '/g/:id(/:slug)', to: 'redirect#group_key'
+    get '/m/:id(/:slug)', to: 'redirect#motion_key'
+  end
+
+  get '/discussions/:id', to: 'redirect#discussion_id'
+  get '/groups/:id',      to: 'redirect#group_id'
+  get '/motions/:id',     to: 'redirect#motion_id'
+
   get "/browser_not_supported", to: "application#browser_not_supported"
 
   devise_for :users, controllers: { sessions: 'users/sessions',
@@ -187,19 +198,13 @@ Loomio::Application.routes.draw do
     get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
 
-  scope module: :users do
-    scope module: :email_preferences do
-      get   '/email_preferences', action: 'edit',   as: :email_preferences
-      put   '/email_preferences', action: 'update', as: :update_email_preferences
-    end
-  end
-
   scope controller: 'help' do
     get :markdown
   end
 
   get 'contact(/:destination)', to: 'contact_messages#new'
   post :contact, to: 'contact_messages#create', as: :contact
+  post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
 
@@ -229,4 +234,6 @@ Loomio::Application.routes.draw do
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
   get 'g/:key/previous_proposals'          => 'application#index', as: :group_previous_proposals
   get 'g/:key/memberships/:username'       => 'application#index'
+
+  get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end

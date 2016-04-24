@@ -8,8 +8,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     @serializableAttributes: AppConfig.permittedParams.discussion
 
     afterConstruction: ->
-      if @isNew()
-        @private = @privateDefaultValue()
+      @private = @privateDefaultValue() if @isNew()
+      @clientReadSequenceId = @lastReadSequenceId
 
     defaultValues: =>
       private: null
@@ -64,20 +64,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasActiveProposal: ->
       @activeProposal()?
 
-    activeProposalClosingAt: ->
-      proposal = @activeProposal()
-      proposal.closingAt if proposal?
-
-    activeProposalClosedAt: ->
-      proposal = @activeProposal()
-      proposal.closedAt if proposal?
-
-    activeProposalLastVoteAt: ->
-      proposal = @activeProposal()
-      proposal.lastVoteAt if proposal?
-
     isUnread: ->
-      @discussionReaderId? and (!@lastReadAt? or @unreadActivityCount() > 0)
+      # it is read if we've read it to completion clientside, or if we have no reader
+      return false if @readOnClient or !@discussionReaderId?
+      !@lastReadAt? or @unreadActivityCount() > 0
 
     isImportant: ->
       @starred or @hasActiveProposal()
@@ -91,11 +81,8 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     unreadCommentsCount: ->
       @commentsCount - @readCommentsCount
 
-    lastInboxActivity: ->
-      @activeProposalClosingAt() or @lastActivityAt
-
     unreadPosition: ->
-      @lastReadSequenceId + 1
+      @clientReadSequenceId + 1
 
     eventIsLoaded: (event) ->
       event.sequenceId or
@@ -139,11 +126,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
         @update(readItemsCount: @itemsCount,
                 readSalientItemsCount: @salientItemsCount,
                 readCommentsCount: @commentsCount,
+                readOnClient: @sequenceId == @lastSequenceId,
                 lastReadAt: moment())
 
-      if _.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId
+      if _.isNull(@lastReadAt) or @clientReadSequenceId < sequenceId
         @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
-        @update(lastReadSequenceId: sequenceId)
+        @update(lastReadSequenceId: sequenceId, clientReadSequenceId: sequenceId)
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }

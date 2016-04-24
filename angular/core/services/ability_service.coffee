@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, CurrentUser) -
   new class AbilityService
 
     isLoggedIn: ->
-      CurrentUser.id?
+      CurrentUser.id? and !CurrentUser.restricted?
 
     canAddComment: (thread) ->
       CurrentUser.isMemberOf(thread.group())
@@ -119,8 +119,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, CurrentUser) -
       CurrentUser.isMemberOf(group)
 
     canViewPreviousProposals: (group) ->
-      group.privacyIsOpen() or
-      CurrentUser.isMemberOf(group)
+      @canViewGroup(group)
 
     canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and

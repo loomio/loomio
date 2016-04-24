@@ -26,7 +26,7 @@ describe 'Login', ->
       staticPage.expectText '.alert-info', 'You will receive an email with instructions on how to reset your password'
 
       staticPage.loadPath 'last_email'
-      staticPage.click '[href]'
+      staticPage.click 'a[href]'
       staticPage.fillIn '#user_password', 'drivinmeswayze'
       staticPage.fillIn '#user_password_confirmation', 'drivinmeswayze'
       staticPage.click 'input[type=submit]'

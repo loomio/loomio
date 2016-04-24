@@ -92,42 +92,42 @@ es:
   change_volume_form:
     loud_label: Toda la actividad
     normal_label: Actividad importante
-    quiet_label: Ningún correo electrónico
+    quiet_label: No enviar correo
     mute_label: 'Silenciar '
     discussion:
       title: 'Configuración de correo electrónico para {{title}}'
-      loud_description: Se te enviará un correo electrónico siempre que haya actividad en este hilo.
-      normal_description: 'Se te enviará un correo electrónico siempre que se inicie una propuesta, cuando esté a punto de cerrarse o cuando se publique un resultado. '
-      quiet_description: 'No se te enviará correo electrónico sobre este hilo. '
+      loud_description: Recibirás correo electrónico siempre que haya actividad en este hilo.
+      normal_description: 'Recibirás correo electrónico siempre que se inicie una propuesta, cuando esté a punto de cerrarse o cuando se publique un resultado. '
+      quiet_description: 'No recibirás correo electrónico sobre este hilo. '
       apply_to_all: Aplicar esta configuración a todos los hilos de este grupo.
       messages:
-        loud: 'Se te enviará la actividad de este hilo por correo electrónico. '
-        normal: 'Correo electrónico te será enviado sobre propuestas en este hilo. '
-        quiet: No se te enviará correo electrónico sobre este hilo.
+        loud: 'Recibirás la actividad de este hilo por correo electrónico. '
+        normal: 'Recibirás correo electrónico sobre propuestas en este hilo. '
+        quiet: No recibirás correo electrónico sobre este hilo.
     membership:
       title: 'Configuración de correo electrónico para {{title}} '
-      loud_description: Se te enviará correo electrónico siempre que haya actividad en este grupo.
-      normal_description: Se te enviará correo electrónico sobre nuevos hilos y propuestas en este grupo.
-      quiet_description: No se te enviará correo electrónico sobre la actividad en este grupo.
+      loud_description: Recibirás correo electrónico siempre que haya actividad en este grupo.
+      normal_description: Recibirás correo electrónico sobre nuevos hilos y propuestas en este grupo.
+      quiet_description: No recibirás correo electrónico sobre la actividad en este grupo.
       apply_to_all: Aplicar esta configuración para todos mis grupos.
       messages:
-        loud: 'Se te enviará correo electrónico sobre toda la actividad en este grupo. '
+        loud: 'Recibirás correo electrónico sobre toda la actividad en este grupo. '
         normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en este grupo.
-        quiet: No se te enviará correo electrónico sobre este grupo.
+        quiet: No recibirás correo electrónico sobre este grupo.
     all_groups:
       messages:
-        loud: 'Se te enviará correo electrónico sobre toda la actividad en todos tus grupos. '
+        loud: 'Recibirás correo electrónico sobre toda la actividad en todos tus grupos. '
         normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos tus grupos.
-        quiet: No se te enviará correo electrónico sobre tus grupo.
+        quiet: No recibirás correo electrónico sobre tus grupo.
     user:
       title: Configuración de correo electrónico para grupos nuevos
-      loud_description: 'Se te enviará correo electrónico sobre toda la actividad en cualquier grupo nuevo. '
-      normal_description: Se te enviará correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
-      quiet_description: No se te enviará correo electrónico sobre la actividad en ningún nuevo grupo en el que participes.
+      loud_description: 'Recibirás correo electrónico sobre toda la actividad en cualquier grupo nuevo. '
+      normal_description: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
+      quiet_description: No recibirás correo electrónico sobre la actividad en ningún nuevo grupo en el que participes.
       apply_to_all: 'Aplicar esta configuración para todos mis grupos. '
       messages:
-        loud: 'Se te enviará correo electrónico sobre toda la actividad en tus nuevos grupos. '
-        normal: Se te enviará correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
+        loud: 'Recibirás correo electrónico sobre toda la actividad en tus nuevos grupos. '
+        normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
         quiet: No recibirás correo electrónico de los nuevos grupos.
   mute_explanation_modal:
     mute_thread: Silenciar hilo
@@ -410,13 +410,13 @@ es:
     volume:
       loud: Enviar correo electrónico siempre que haya actividad.
       loud_aria_description: El volumen de notificaciones para este grupo está establecido como Alto. Se te enviará un correo electrónico siempre que haya actividad.
-      loud_message: 'Correo electrónico te sera enviado sobre toda la actividad en "{{name}}."'
+      loud_message: 'Correo electrónico te será enviado sobre toda la actividad en "{{name}}."'
       normal: 'Sólo enviar actividad importante: Hilos y propuestas nuevos, resultados... etc.'
       normal_aria_description: 'El volumen de notificaciones para este grupo está establecido como Normal. Sólo se te enviarán correos electrónicos con actividad importante como cuando alguien inicia un hilo nuevo, surge una propuesta o se establece un resultado.'
-      normal_message: 'Solo te sera enviado correo electrónico sobre eventos importantes en "{{name}}".'
+      normal_message: 'Solo te será enviado correo electrónico sobre eventos importantes en "{{name}}".'
       quiet: No enviar correo electrónico sobre el grupo. La actividad del grupo se mostrará en el Escritorio.
       quiet_aria_description: El volumen de notificaciones para este grupo está establecido como Bajo. No se te enviarán correos electrónicos con la actividad de este grupo. Dicha actividad se mostrará en tu Escritorio.
-      quiet_message: 'No te sera enviado correo electrónico sobre actividad en "{{name}}".'
+      quiet_message: 'No te será enviado correo electrónico sobre actividad en "{{name}}".'
       mute: Ocultar este grupo en el Escritorio y no notificarme a no ser que sea @mencionado.
       mute_aria_description: 'El volumen de notificaciones para este grupo está establecido como Silenciado. No se te enviarán correos electrónicos a menos que alguien te mencione, y la actividad del grupo no se mostrará en tu Escritorio.'
       mute_message: '"{{name}}" ha sido eliminado de tu Escritorio.'
@@ -542,9 +542,7 @@ es:
   group_help_card:
     title: Ayuda
     ten_tips_article_title: 10 consejos para tomar decisiones con Loomio
-    ten_tips_article_link: 'http://blog.loomio.org/2015/08/17/10-consejos-para-tomar-decisiones-con-loomio/'
     nine_ways_to_use_proposals: 9 formas de utilizar propuestas en Loomio para convertir una charla en acción
-    nine_ways_to_use_proposals_link: 'http://blog.loomio.org/2015/08/17/9-formas-de-utilizar-propuestas-en-loomio-para-convertir-conversaciones-en-accion/'
   membership_requests_page:
     heading: Solicitudes de ingreso
     approve: 'Aprobar '
@@ -670,7 +668,7 @@ es:
     change_default: 'Cambiar configuración preestablecida  '
     edit: Editar
     messages:
-      updated: Preferencias de correo electrónico actualizadas
+      updated: Configuración de correo electrónico actualizadas
   dashboard_page:
     aria_label: Escritorio
     options:
