@@ -1,14 +1,16 @@
-angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConfig) ->
-  Records.import(AppConfig.currentUserData)
-  currentUser = AppConfig.currentUserData.current_user or {}
+angular.module('loomioApp').factory 'User', ($rootScope, Records, AppConfig) ->
 
-  # User has an email (ie, has a Loomio account)
-  if currentUser.id?
-    AppConfig.membershipsLoaded = true
-    $rootScope.$broadcast 'currentUserMembershipsLoaded'
+  login: (data) ->
+    return unless data.current_user and data.current_user.id
+    Records.import(data)
 
-    # User is authenticated (ie, not signed in via an unsubscribe token)
-    if !currentUser.restricted?
+    _.merge AppConfig,
+      currentUserId: data.current_user.id
+      inboxLoaded: false
+      notificationsLoaded: false
+      membershipsLoaded: true
+
+    if !data.current_user.restricted?
       Records.discussions.fetchInbox().then ->
         AppConfig.inboxLoaded = true
         $rootScope.$broadcast 'currentUserInboxLoaded'
@@ -17,4 +19,8 @@ angular.module('loomioApp').factory 'CurrentUser', ($rootScope, Records, AppConf
         AppConfig.notificationsLoaded = true
         $rootScope.$broadcast 'notificationsLoaded'
 
-  Records.users.find(currentUser.id) or Records.users.build()
+    $rootScope.$broadcast 'loggedIn', @current()
+    @current()
+
+  current: ->
+    Records.users.find(AppConfig.currentUserId) or Records.users.build()

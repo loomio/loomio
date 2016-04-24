@@ -1,5 +1,5 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, CurrentUser, AppConfig) ->
-  @user = CurrentUser
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, User, AppConfig) ->
+  @user = User.current()
 
   @init = =>
     $translate.use(@user.locale)
