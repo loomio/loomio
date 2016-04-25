@@ -25,7 +25,7 @@ namespace :bootstrap do
 
   desc 'Create user (optional arguments email and password)'
   task :create_user, [:email, :password] => :environment do |t, args|
-    args.with_defaults(email: 'default@loomio.org', password: SecureHex.random(4))
+    args.with_defaults(email: 'default@loomio.org', password: SecureRandom.hex(4))
     if User.find_by(email: args[:email]).nil?
       User.create(args.to_hash)
       puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
