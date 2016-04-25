@@ -25,4 +25,7 @@ rails s
   - `gulp protractor`: Run the automated frontend tests
   - `gulp protractor:now`: Rebuild the javascript app, then run the automated frontend tests
 
-For more advanced development setup, or if you're having trouble, check out the [advanced guide](advanced_setup.md).
+##### Having trouble?
+
+- Make sure ruby (2.3.0), node (4.2.6; not 5+!), postgres (9.4+), and [ImageMagick](http://stackoverflow.com/questions/3704919/installing-rmagick-on-ubuntu) are installed
+- Let us know in the [product team](https://www.loomio.org/g/VmBUX7WM/loomio-community-product-team) group on Loomio.
