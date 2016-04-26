@@ -405,6 +405,8 @@ GEM
       responders
     intercom (2.5.4)
       json (~> 1.8)
+    intercom-rails (0.2.28)
+      activesupport (> 3.0)
     ipaddress (0.8.0)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
@@ -719,6 +721,7 @@ DEPENDENCIES
   http_accept_language
   httparty
   intercom
+  intercom-rails
   jstz-rails!
   launchy
   mail!
