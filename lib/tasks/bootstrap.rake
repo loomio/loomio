@@ -3,7 +3,7 @@ namespace :bootstrap do
   task :dependencies do
     # NB: we are assuming a OSX setup here.
     `brew install npm`        unless npm_installed?
-    `brew install postgresql` unless postgres_installed?
+    `brew install postgresql` unless pg_installed?
     `gem install bundler`     unless bundler_installed?
     `npm install -g gulp`     unless gulp_installed?
     `bundle install`
