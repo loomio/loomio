@@ -212,6 +212,12 @@ class DevelopmentController < ApplicationController
     redirect_to last_email_development_index_path
   end
 
+  def setup_accepted_membership_request
+    membership_request = MembershipRequest.new(name: "Judd Nelson", email: "judd@example.com", group: test_group)
+    MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
+    redirect_to last_email_development_index_path
+  end
+
   def setup_cancelled_invitation
     test_group
     judd
