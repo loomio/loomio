@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, CurrentUser, LoadingService, ThreadQueryService, AppConfig) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, User, LoadingService, ThreadQueryService, AppConfig) ->
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
   $rootScope.$broadcast('setTitle', 'Dashboard')
   $rootScope.$broadcast('analyticsClearGroup')
@@ -24,7 +24,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @recentViewNames = ['proposals', 'starred', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
 
   @groupThreadLimit = 5
-  @groups = -> CurrentUser.parentGroups()
+  @groups = -> User.current().parentGroups()
   @moreForThisGroup = (group) -> @views.groups[group.key].length() > @groupThreadLimit
 
   @displayByGroup = ->

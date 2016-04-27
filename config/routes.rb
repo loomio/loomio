@@ -140,10 +140,6 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
-    resources :contacts, only: :index do
-      get :import, on: :collection
-    end
-
     resources :contact_messages, only: :create
 
     resources :versions, only: :index
@@ -155,19 +151,12 @@ Loomio::Application.routes.draw do
       get :authorized, on: :collection
     end
 
-    namespace :message_channel do
-      post :subscribe
-    end
-
-    namespace :sessions do
-      get :current
-      get :unauthorized
-    end
+    namespace(:message_channel) { post :subscribe }
+    namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
       resource :sessions, only: [:create, :destroy]
+      resource :registrations, only: :create
     end
-    get '/attachments/credentials',      to: 'attachments#credentials'
-    get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
   constraints(GroupSubdomainConstraints) do
@@ -219,7 +208,6 @@ Loomio::Application.routes.draw do
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
   get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
-  get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
   get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
   get 'apps/registered'                    => 'application#boot_angular_ui'

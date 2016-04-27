@@ -2,8 +2,8 @@
   .blank{uib-dropdown: "true"}
     %button.btn.lmo-btn-nude.lmo-navbar__btn.lmo-navbar__btn-icon{href: "", tabindex: 5, uib-dropdown-toggle: "true"}
       .sr-only{translate: "navbar.user_options.label"}
-      %user_avatar{user: "currentUser", size: "small", ng-if: "currentUser.avatarKind != 'initials'"}
-      .navbar-user-options__user-profile-icon.user-avatar{ng-if: "currentUser.avatarKind == 'initials'"}
+      %user_avatar{user: "currentUser()", size: "small", ng-if: "currentUser().avatarKind != 'initials'"}
+      .navbar-user-options__user-profile-icon.user-avatar{ng-if: "currentUser().avatarKind == 'initials'"}
         %i.fa.fa-lg.fa-user
     .uib-dropdown-menu.lmo-dropdown-menu.lmo-dropdown-menu--with-icons.user-options-dropdown
       %ul.lmo-dropdown-menu-items

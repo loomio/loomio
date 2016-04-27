@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/proposal_expanded/proposal_expanded.html'
   replace: true
-  controller: ($scope, Records, CurrentUser, AbilityService, TranslationService) ->
+  controller: ($scope, Records, User, AbilityService, TranslationService) ->
     Records.votes.fetchByProposal($scope.proposal)
 
     $scope.collapse = ->
@@ -14,13 +14,13 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
 
     $scope.onlyVoterIsYou = ->
       uniqueVotes = $scope.proposal.uniqueVotes()
-      (uniqueVotes.length == 1) and (uniqueVotes[0].authorId == CurrentUser.id)
+      (uniqueVotes.length == 1) and (uniqueVotes[0].authorId == User.current().id)
 
     $scope.currentUserHasVoted = ->
-      $scope.proposal.userHasVoted(CurrentUser)
+      $scope.proposal.userHasVoted(User.current())
 
     $scope.currentUserVote = ->
-      $scope.proposal.lastVoteByUser(CurrentUser)
+      $scope.proposal.lastVoteByUser(User.current())
 
     $scope.showOutcomePanel = ->
       $scope.proposal.hasOutcome() or AbilityService.canCreateOutcomeFor($scope.proposal)

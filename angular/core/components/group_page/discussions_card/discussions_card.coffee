@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
-  controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService, CurrentUser) ->
+  controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService, User) ->
     $scope.loaded = parseInt($location.search().from or 0)
     $scope.perPage = 25
     $scope.canLoadMoreDiscussions = true
@@ -54,4 +54,4 @@ angular.module('loomioApp').directive 'discussionsCard', ->
         'membership_is_invitation_by_admin_only'
 
     $scope.isMemberOfGroup = ->
-      CurrentUser.membershipFor($scope.group)?
+      User.current().membershipFor($scope.group)?
