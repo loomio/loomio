@@ -1,11 +1,18 @@
 module UsesMetadata
   include AngularHelper
-  alias :show :boot_angular_ui
+
+  def show
+    if request.format == :xml
+      load_resource_by_key
+    else
+      boot_angular_ui
+    end
+  end
 
   private
 
   def load_resource_by_key
-    instance_variable_set "@#{controller_name}", controller_name.classify.constantize.find_by!(key: params[:id])
+    instance_variable_set "@#{controller_name.singularize}", controller_name.classify.constantize.find(params[:id] || params[:key])
   end
 
   def metadata

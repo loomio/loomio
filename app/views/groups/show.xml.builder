@@ -1,9 +1,9 @@
 atom_feed do |feed|
   feed.title @group.name
   feed.subtitle @group.description
-  feed.updated(@discussions.min_by(&:created_at).created_at) if @discussions.any?
-	
-  @discussions.each do |discussion|
+  feed.updated(@group.discussions.min_by(&:created_at).created_at) if @group.discussions.any?
+
+  @group.discussions.each do |discussion|
   feed.entry(discussion) do |entry|
   	entry.title(discussion.title)
   	  entry.content(discussion.description, type: :text)
