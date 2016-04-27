@@ -67,6 +67,14 @@ describe 'Group Page', ->
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
+      it 'should prompt for login for secret group', ->
+        page.loadPath 'view_secret_group_as_visitor'
+        page.fillIn '#user-email', 'patrick_swayze@example.com'
+        page.fillIn '#user-password', 'gh0stmovie'
+        page.click '.sign-in-form__submit-button'
+        page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
+        page.expectElement '.navbar-user-options__user-profile-icon'
+
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
         page.expectNoElement('.thread-preview__mark-as-read')

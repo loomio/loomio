@@ -297,6 +297,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(@test_group)
   end
 
+  def view_secret_group_as_visitor
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
+    redirect_to group_url(@test_group)
+  end
+
   def setup_open_group
     @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')

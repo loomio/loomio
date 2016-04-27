@@ -1,7 +1,7 @@
 %form{ng-submit: "submit()"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{ng-if: "!preventClose"}
     %h1.lmo-h1{translate: "sign_in_form.title"}
 
   .modal-body
@@ -31,5 +31,5 @@
           %span{translate: "sign_in_form.oauth.{{provider.name}}"}
 
   .modal-footer
-    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+    %button.lmo-btn--cancel{ng-if: "!preventClose", ng-click: "$close()", type: "button", translate: "common.action.cancel"}
     %button.lmo-btn--submit.sign-in-form__submit-button{type: "submit", translate: "sign_in_form.sign_in"}

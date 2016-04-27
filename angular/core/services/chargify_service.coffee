@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ChargifyService', (User) ->
+angular.module('loomioApp').factory 'ChargifyService', (Session) ->
   new class ChargifyService
 
     encodedParams: (group) ->
