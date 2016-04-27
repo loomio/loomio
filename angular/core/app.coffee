@@ -40,12 +40,18 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, CurrentUser, BootService, AppConfig, ModalService, ChoosePlanModal, AbilityService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, ModalService, ChoosePlanModal, AbilityService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
-
-  BootService.boot()
-
   $scope.currentComponent = 'nothing yet'
+
+  Session.login(AppConfig.currentUserData)
+  $scope.$on 'loggedIn', (event, user) ->
+    if $location.search().start_group?
+      ModalService.open GroupForm, group: -> Records.groups.build()
+    if AppConfig.showWelcomeModal
+      ModalService.open AngularWelcomeModal
+    IntercomService.boot()
+    MessageChannelService.subscribe()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
