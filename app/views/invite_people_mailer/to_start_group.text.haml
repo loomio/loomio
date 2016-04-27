@@ -1,4 +1,4 @@
-= t("email.invitation.hi", name: @invitation.recipient_first_name)
+= t("email.invitation.hi", name: @invitation.recipient_name.to_s.split(" ").first)
 \
 = t("email.invitation.intro", group_name: @invitation.invitable_name)
 \

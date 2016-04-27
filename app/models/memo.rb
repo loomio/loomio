@@ -10,11 +10,8 @@ class Memo
 
   def publish!
     if Rails.application.secrets.faye_url.present?
-      if ENV['DELAY_FAYE']
-        PrivatePub.delay(priority: 10).publish_to(message_channel, as_hash)
-      else
-        PrivatePub.publish_to(message_channel, as_hash)
-      end
+      private_pub = ENV['DELAY_FAYE'] ? PrivatePub.delay(priority: 10) : PrivatePub
+      private_pub.publish_to(message_channel, as_hash)
     end
   end
 end

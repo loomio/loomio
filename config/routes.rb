@@ -2,18 +2,12 @@ Loomio::Application.routes.draw do
 
   use_doorkeeper
 
-  get '/development' => 'development#index'
-  namespace :development do
-    get ':action'
-  end
+  root to: 'root#index'
 
-  scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
-    get '/' => 'angular#index'
-    post :on
-    post :off
+  resources(:development, only: :index) do
+    get 'last_email', on: :collection, as: :last_email
+    get ':action', on: :collection
   end
-
-  slug_regex = /[a-z0-9\-\_]*/i
 
   namespace :admin do
     get 'url_info' => 'base#url_info'
@@ -176,193 +170,26 @@ Loomio::Application.routes.draw do
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
-  constraints(GroupSubdomainConstraint) do
+  constraints(GroupSubdomainConstraints) do
     get '/' => 'redirect#group_subdomain'
     get '/d/:id(/:slug)', to: 'redirect#discussion_key'
     get '/g/:id(/:slug)', to: 'redirect#group_key'
     get '/m/:id(/:slug)', to: 'redirect#motion_key'
   end
 
-  constraints(MainDomainConstraint) do
-    root :to => 'root#index'
-  end
+  get '/discussions/:id', to: 'redirect#discussion_id'
+  get '/groups/:id',      to: 'redirect#group_id'
+  get '/motions/:id',     to: 'redirect#motion_id'
 
   get "/browser_not_supported", to: "application#browser_not_supported"
-
-  resource :search, only: :show
 
   devise_for :users, controllers: { sessions: 'users/sessions',
                                     registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
-
-  get "/contacts/:importer/callback" => "users/contacts#callback"
-
-  namespace :inbox do
-    get   '/', action: 'index'
-    get   'size'
-    get   'preferences'
-    put 'update_preferences'
-    match 'mark_as_read', via: [:get, :post]
-    match 'mark_all_as_read/:id', action: 'mark_all_as_read', as: :mark_all_as_read, via: [:get, :post]
-    match 'unfollow', via: [:get, :post]
-  end
-
-  namespace :subscriptions do
-    post :webhook
-  end
-
-  resources :invitations, only: [:show, :create, :destroy]
-
-  get "/theme_assets/:id", to: 'theme_assets#show', as: 'theme_assets'
-
-
-  resources :networks, path: 'n', only: [:show] do
-    member do
-      get :groups
-    end
-    resources :network_membership_requests, path: 'membership_requests', as: 'membership_requests', only: [:create, :new, :index] do
-      member do
-        post :approve
-        post :decline
-      end
-    end
-  end
-
-  get 'start_group' => 'start_group#new'
-  post 'start_group' => 'start_group#create'
-  post 'enable_angular' => 'start_group#enable_angular'
-
-  resources :groups, path: 'g', only: [:create, :edit, :update] do
-    member do
-      get :export
-      post :set_volume
-      post :join
-      post :add_members
-      post :hide_next_steps
-      get :add_subgroup
-      post :email_members
-      post :edit_description
-      delete :leave_group
-      get :members_autocomplete
-      get :previous_proposals, action: :show
-    end
-
-    resources :motions,     only: [:index]
-    resources :discussions, only: [:index, :new]
-    resources :invitations, only: [:new, :destroy]
-
-    scope module: :groups do
-      resources :memberships, only: [:index, :edit, :destroy, :new, :create] do
-        member do
-         post :make_admin
-         post :remove_admin
-        end
-      end
-
-      scope controller: 'group_setup' do
-        member do
-          get :setup
-          put :finish
-        end
-      end
-
-      resources :membership_requests, only: [:create, :new]
-      get :membership_requests,  to: 'manage_membership_requests#index', as: 'manage_membership_requests'
-    end
-  end
-
-  scope module: :groups do
-    resources :manage_membership_requests, only: [], as: 'membership_requests' do
-      member do
-        post :approve
-        post :ignore
-      end
-    end
-  end
-
-  scope module: :groups, path: 'g', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show'
-    patch    ':id(/:slug)', action: 'update'
-    delete ':id(/:slug)', action: 'destroy'
-    post 'archive/:id',  action: 'archive', as: :archive_group
-  end
-
-
-  delete 'membership_requests/:id/cancel', to: 'groups/membership_requests#cancel', as: :cancel_membership_request
-
-  resources :motions, path: 'm', only: [:new, :create, :edit, :index] do
-    resources :votes, only: [:new, :create, :update]
-    member do
-      get :history
-      patch :close
-      patch :create_outcome
-      patch :update_outcome
-    end
-  end
-
-  scope module: :motions, path: 'm', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show', as: :motion
-    patch  ':id(/:slug)', action: 'update'
-    delete ':id(/:slug)', action: 'destroy'
-  end
-
-  get '/localisation/datetime_input_translations' => 'localisation#datetime_input_translations', format: 'js'
-
-  resources :discussions, path: 'd', only: [:new, :edit, :create] do
-    get :activity_counts, on: :collection
-    resources :invitations, only: [:new]
-
-    member do
-      post :set_volume
-      post :update_description
-      post :update
-      post :add_comment
-      post :show_description_history
-      get :new_proposal
-      post :move
-      get :print
-    end
-  end
-
-  scope module: :discussions, path: 'd', slug: slug_regex do
-    get    ':id(/:slug)', action: 'show'
-    patch  ':id(/:slug)', action: 'update'
-    delete ':id(/:slug)', action: 'destroy'
-
-    post ':id/preview_version/(:version_id)', action: 'preview_version', as: 'preview_version_discussion'
-    post 'update_version/:version_id',        action: 'update_version',   as: 'update_version_discussion'
-  end
-
-  resources :comments , only: [:destroy, :edit, :update, :show] do
-    post :like, on: :member
-    post :unlike, on: :member
-  end
-
-  resources :attachments, only: [:create, :new] do
-    collection do
-      get 'sign'
-      get :iframe_upload_result
-    end
-  end
-
-  resources :notifications, :only => :index do
-    collection do
-      get :groups_tree_dropdown
-      get :dropdown_items
-      post :mark_as_viewed
-    end
-  end
-
-  get '/localisation/:locale' => 'localisation#show', format: 'js'
-
-  resources :users, path: 'u', only: [] do
-    member do
-      put :set_avatar_kind
-      post :upload_new_avatar
-      post :dismiss_system_notice
-    end
-  end
+  namespace(:subscriptions) { post :webhook }
+  resources :invitations, only: [:show]
+  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 
   namespace :email_actions do
     get   'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
@@ -371,82 +198,41 @@ Loomio::Application.routes.draw do
     get   'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
   end
 
-  scope module: :users do
-    match '/profile',          action: 'profile', as: :profile, via: [:get, :post]
-    get 'import_contacts' => 'contacts#import'
-    get 'autocomplete_contacts' => 'contacts#autocomplete'
-
-    scope module: :email_preferences do
-      get   '/email_preferences', action: 'edit',   as: :email_preferences
-      put   '/email_preferences', action: 'update', as: :update_email_preferences
-    end
-
-    scope module: :change_password do
-      get '/change_password', action: 'show'
-      post '/change_password', action: 'update'
-    end
-
-    scope module: :user_deactivation_responses do
-      post '/user_deactivation_responses', action: 'create'
-    end
-  end
-
-  scope module: :users, path: 'u', slug: slug_regex do
-    get ':id(/:slug)', action: 'show', as: :user
-    patch ':id(/:slug)', action: 'update'
-    post ':id(/:slug)', action: 'deactivate'
-  end
-
-  get '/deactivation_instructions' => 'users#deactivation_instructions'
-  get '/about_deactivation' => 'users#about_deactivation'
-
-  post '/translate/:model/:id', to: 'translations#create', as: :translate
-
-  get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
-
-  get '/dashboard', to: 'dashboard#show', as: 'dashboard'
-
-  # this is a dumb thing
-  get '/groups', to: 'dashboard#show'
-
-  post '/email_processor' => 'griddler/emails#create', format: :json
-  get "/email_processor", to: proc { [200, {}, ["OK"]] }, as: "head_test_request"
-
-  constraints(MainDomainConstraint) do
-    scope controller: 'pages' do
-      get :browser_not_supported
-    end
-  end
-
   scope controller: 'help' do
-    get :help
     get :markdown
   end
 
-  resources :contact_messages, only: [:new, :create]
   get 'contact(/:destination)', to: 'contact_messages#new'
-
-
-  get '/discussions/:id', to: 'redirect#discussion_id'
-  get '/groups/:id',      to: 'redirect#group_id'
-  get '/motions/:id',     to: 'redirect#motion_id'
-
-  scope path: 'pages' do
-    match 'contact'    => 'contact_messages#new', via: [:get, :post]
-  end
+  post :contact, to: 'contact_messages#create', as: :contact
+  post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
 
+  get  'start_group' => 'start_group#new'
+  post 'start_group' => 'start_group#create'
+
+  get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
+  get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
+  get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
+  get 'u/:username/'                       => 'users#show',       as: :user
+
+  get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
+  get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
+  get 'groups'                             => 'application#boot_angular_ui', as: :groups
+  get 'explore'                            => 'application#boot_angular_ui', as: :explore
+  get 'profile'                            => 'application#boot_angular_ui', as: :profile
+  get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences
   get 'apps/registered'                    => 'application#boot_angular_ui'
   get 'apps/authorized'                    => 'application#boot_angular_ui'
   get 'apps/registered/:id'                => 'application#boot_angular_ui'
   get 'apps/registered/:id/:slug'          => 'application#boot_angular_ui'
-  get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui'
-  get 'd/:key/comment/:comment'            => 'application#boot_angular_ui'
-  get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui'
+  get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui', as: :discussion_motion
+  get 'd/:key/comment/:comment'            => 'application#boot_angular_ui', as: :discussion_comment
+  get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui', as: :discussion_motion_outcome
+  get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
+  get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
+  get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
-  get 'explore'                            => 'application#boot_angular_ui', as: :explore
 
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
-
 end

@@ -1,7 +1,5 @@
 class ContactMessagesController < BaseController
   skip_before_filter :authenticate_user!
-  skip_before_filter :boot_angular_ui
-  layout 'pages'
 
 	def new
     @contact_message = ContactMessage.new(destination: params[:destination])

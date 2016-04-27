@@ -1,8 +1,0 @@
-- set_title @group.name, t(:edit_proposal)
-= render '/groups/title', group: @group
-%h2= t "motion_form.edit.header"
-.row
-  .col-md-5
-    - unless @motion.can_be_edited?
-      %p.alert.alert-warning= t :'motion_form.edit.only_closing_at'
-= render 'motions/form', submit_text: t('motion_form.edit.submit'), action: :update

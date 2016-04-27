@@ -1,8 +1,0 @@
-%h1= t :'group_setup.set_up_your_group'
-.row
-  .col-md-6#group-setup
-    = render 'groups/form', group: @group, submit_text: t("group_setup.submit"), form_params: { url: finish_group_path, method: :put }
-  .col-md-4.offset1
-    .info-box
-      %h2= t("group_setup.desc_header")
-      %p= t("group_setup.desc_html")

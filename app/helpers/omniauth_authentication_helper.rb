@@ -8,7 +8,7 @@ module OmniauthAuthenticationHelper
   end
 
   def load_omniauth_authentication_from_session
-    @omniauth_authentication = OmniauthIdentity.find(session[:omniauth_identity_id])
+    @omniauth_authentication = OmniauthIdentity.find(session[:omniauth_identity_id]) if session[:omniauth_identity_id]
   end
 
   def link_omniauth_authentication_to_current_user

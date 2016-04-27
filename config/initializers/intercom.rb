@@ -81,10 +81,7 @@ if Rails.application.secrets.intercom_app_id
         discussions: :organisation_discussions_count,
         proposals: :organisation_motions_count,
         description: :description,
-        group_request_description: :group_request_description,
-        financial_nature: :financial_nature,
         is_referral: :is_referral,
-        visible_to: :visible_to,
         cohort_id: :cohort_id,
         key: :key
     }

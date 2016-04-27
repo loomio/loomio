@@ -30,10 +30,6 @@ class Event < ActiveRecord::Base
     notifications.create!(user: user) if user
   end
 
-  def belongs_to?(this_user)
-    self.user_id == this_user.id
-  end
-
   private
 
   def call_thread_item_created

@@ -4,6 +4,7 @@ module AngularHelper
     redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
     metadata                                      if browser.bot? && respond_to?(:metadata, true)
     app_config
+    current_user_or_visitor.update(angular_ui_enabled: true) unless current_user_or_visitor.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 
@@ -16,6 +17,7 @@ module AngularHelper
   def app_config
     @appConfig = {
       version:             Loomio::Version.current,
+      showWelcomeModal:    !current_user_or_visitor.angular_ui_enabled?,
       reportErrors:        false,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
@@ -63,7 +65,7 @@ module AngularHelper
   end
 
   def use_angular_ui?
-    !request.xhr? && current_user_or_visitor.angular_ui_enabled?
+    !request.xhr?
   end
 
   def angular_asset_folder

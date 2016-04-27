@@ -16,11 +16,6 @@ describe 'CommentService' do
     it 'creates a like for the current user on a comment' do
       expect { CommentService.like(comment: comment, actor: user) }.to change { CommentVote.count }.by(1)
     end
-
-    it 'updates the comments liker ids and names' do
-      CommentService.like(comment: comment, actor: user)
-      expect(comment.reload.liker_ids_and_names[user.id]).to eq user.name
-    end
   end
 
   describe 'unlike' do
@@ -28,11 +23,6 @@ describe 'CommentService' do
 
     it 'removes a like for the current user on a comment' do
       expect { CommentService.unlike(comment: comment, actor: user) }.to change { CommentVote.count }.by(-1)
-    end
-
-    it 'updates the comments liker ids and names' do
-      CommentService.unlike(comment: comment, actor: user)
-      expect(comment.reload.liker_ids_and_names[user.id]).to eq nil
     end
   end
 

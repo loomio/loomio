@@ -40,7 +40,7 @@ module JSRuntime
   end
 
   def execjs_asset
-    File.read [:public, client_asset_path(:"execjs.min.js")].join('/')
+    File.read [:public, client_asset_path(:"execjs.min.js")].join('/').squeeze('/')
   end
 
 end

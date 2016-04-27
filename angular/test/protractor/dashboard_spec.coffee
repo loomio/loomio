@@ -39,12 +39,3 @@ describe 'Dashboard Page', ->
     browser.actions().mouseMove(threadPreview).perform()
     page.clickFirst('.thread-preview__mute')
     page.expectFlash('Thread muted.')
-
-  xit 'displays a view of muted threads by group', ->
-    page.click('.dashboard-page__filter-dropdown button')
-    page.click('.dashboard-page__filter-muted a')
-    # browser.driver.sleep(10000)
-    page.expectText('.dashboard-page__group-name', 'Dirty Dancing Shoes')
-    page.expectText('.dashboard-page__collections', 'Muted discussion')
-    page.expectText('.dashboard-page__collections', 'Muted group discussion')
-    page.expectNoText('.dashboard-page__collections','Recent discussion')

@@ -50,6 +50,12 @@ describe EmailActionsController do
       get :mark_discussion_as_read, discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
       expect(DiscussionReader.for(discussion: @discussion, user: @user).unread_comments_count).to eq 0
     end
+
+    it 'does not error when discussion is not found' do
+      get :mark_discussion_as_read, discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).unread_comments_count).to eq 1
+      expect(response.status).to eq 200
+    end
   end
 
 end
