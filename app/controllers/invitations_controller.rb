@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
   include PrettyUrlHelper
 
-  rescue_from(ActiveRecord::RecordNotFound)    { respond_with_error :"invitation.invitation_not_found" }
+  rescue_from(ActiveRecord::RecordNotFound)    { respond_with_error :"invitation.invitation_not_found", status: :not_found }
   rescue_from(Invitation::InvitationCancelled) { respond_with_error :"invitation.invitation_cancelled" }
   rescue_from(Invitation::InvitationAlreadyUsed) do
     if current_user_or_visitor.email == invitation.recipient_email
