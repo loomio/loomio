@@ -9,13 +9,10 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_discussion_as_read
-    @discussion = Discussion.find(params[:discussion_id])
-    @event = Event.find(params[:event_id])
-    DiscussionReader.for(discussion: @discussion, user: user).viewed!(@event.created_at)
-
-    send_file Rails.root.join('app','assets','images', 'empty.gif'),
-              type: 'image/gif',
-              disposition: 'inline'
+    DiscussionReader.for(discussion: discussion, user: user).viewed!(event.created_at)
+    respond_with_pixel
+  rescue ActiveRecord::RecordNotFound
+    respond_with_pixel
   end
 
   def mark_summary_email_as_read
@@ -42,6 +39,10 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   private
 
+  def respond_with_pixel
+    send_file Rails.root.join('app','assets','images', 'empty.gif'), type: 'image/gif', disposition: 'inline'
+  end
+
   def set_discussion_volume(volume:, flash_notice:)
     DiscussionReader.for(discussion: discussion, user: user).set_volume! volume
     redirect_to dashboard_or_root_path, notice: t(flash_notice, thread_title: discussion.title)
@@ -49,5 +50,9 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   def discussion
     @discussion ||= Discussion.find params[:discussion_id]
+  end
+
+  def event
+    @event ||= Event.find params[:event_id]
   end
 end
