@@ -1,8 +1,0 @@
--if @search_form.present?
-  %li
-    =simple_form_for @search_form, url: search_path, method: :get, html: {class: "navbar-form navbar-left"}, role: "search" do |f|
-      .form-group
-        .input-group
-          = f.input :query, label: false, placeholder: t("search.placeholder"), input_html: { class: 'form-control', tabindex: 1, size: '20'  }
-          %span{class: "input-group-addon"}
-            %i.fa.fa-search

@@ -95,12 +95,6 @@ describe Group do
         }.to change { @group.reload.motions_count }.by(-1)
       end
 
-      it "updates correctly after its discussion is archived" do
-        expect {
-          @discussion.archive!
-        }.to change { @group.reload.motions_count }.by(-1)
-      end
-
     end
 
     describe "#discussions_count" do
@@ -115,14 +109,6 @@ describe Group do
         }.to change { @group.reload.discussions_count }.by(1)
       end
 
-      it "updates correctly after archiving a discussion" do
-        @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
-        expect(@group.reload.discussions_count).to eq 1
-        expect {
-          @group.discussions.first.archive!
-        }.to change { @group.reload.discussions_count }.by(-1)
-      end
-
       it "updates correctly after deleting a discussion" do
         @group.discussions.create(attributes_for(:discussion).merge({ author: @user }))
         expect(@group.reload.discussions_count).to eq 1
@@ -130,32 +116,6 @@ describe Group do
           @group.discussions.first.destroy
         }.to change { @group.reload.discussions_count }.by(-1)
       end
-    end
-  end
-
-  describe "#voting_motions" do
-    it "returns motions that belong to the group and are open" do
-      @group = motion.group
-      @group.voting_motions.should include(motion)
-    end
-
-    it "should not return motions that belong to the group but are closed" do
-      @group = motion.group
-      MotionService.close(motion)
-      @group.voting_motions.should_not include(motion)
-    end
-  end
-
-  describe "#closed_motions" do
-    it "returns motions that belong to the group and are open" do
-      MotionService.close(motion)
-      @group = motion.group
-      @group.closed_motions.should include(motion)
-    end
-
-    it "should not return motions that belong to the group but are closed'" do
-      @group = motion.group
-      @group.closed_motions.should_not include(motion)
     end
   end
 
@@ -194,57 +154,6 @@ describe Group do
     it "can add a member" do
       @group.add_member!(@user)
       @group.users.should include(@user)
-    end
-  end
-
-  describe "visible_to" do
-    let(:group) { build(:group) }
-    subject { group.visible_to }
-
-    before do
-      group.is_visible_to_public = false
-      group.is_visible_to_parent_members = false
-    end
-
-    context "is visible_to_public = true" do
-      before { group.is_visible_to_public = true }
-      it {should == "public"}
-    end
-
-    context "is_visible_to_parent_members = true" do
-      before { group.is_visible_to_parent_members = true }
-      it {should == "parent_members"}
-    end
-
-    context "is_visible_to_public, is_visible_to_parent_members both false" do
-      it {should == "members"}
-    end
-  end
-
-  describe "visible_to=" do
-    context "public" do
-      before { group.visible_to = 'public' }
-
-      it "sets is_visible_to_public = true" do
-        group.is_visible_to_public.should be true
-        group.is_visible_to_parent_members.should be false
-      end
-    end
-
-    context "parent_members" do
-      before { group.visible_to = 'parent_members' }
-      it "sets is_visible_to_parent_members = true" do
-        group.is_visible_to_public.should be false
-        group.is_visible_to_parent_members.should be true
-      end
-    end
-
-    context "members" do
-      before { group.visible_to = 'members' }
-      it "sets is_visible_to_parent_members and public = false" do
-        group.is_visible_to_public.should be false
-        group.is_visible_to_parent_members.should be false
-      end
     end
   end
 

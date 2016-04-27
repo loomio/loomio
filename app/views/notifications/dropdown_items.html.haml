@@ -1,8 +1,0 @@
-%ul
-  - if @notifications.empty?
-    %li.notifications-placeholder= t :empty_notifications
-  = render @notifications
-
-- if unread_count > 0
-  :javascript
-    $('span#notifications-count').html(#{unread_count})

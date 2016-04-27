@@ -1,9 +1,0 @@
-- if signed_in?
-  .filter-discussion-list-buttons.text-right
-    = t :'common.filter'
-    - if sifting_unread?
-      %a.btn.btn-success.active.js-tooltip{href: toggle_unread_path, title: t(:'discussion_list.filter_unread.disable')}
-        = t :'common.unread'
-    -else
-      %a.btn.btn-default.js-tooltip{href: toggle_unread_path, title: t(:'discussion_list.filter_unread.enable')}
-        = t :'common.unread'

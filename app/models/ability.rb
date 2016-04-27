@@ -21,7 +21,7 @@ class Ability
     cannot :sign_up, User
 
     can [:approve, :decline], NetworkMembershipRequest do |request|
-      request.pending? and request.network.coordinators.include? user
+      !request.approved? and request.network.coordinators.include? user
     end
 
     can :create, NetworkMembershipRequest do |request|
@@ -35,7 +35,7 @@ class Ability
     end
 
     can :show, Group do |group|
-      if group.is_archived?
+      if group.archived_at
         false
       else
         group.is_visible_to_public? or
@@ -45,7 +45,7 @@ class Ability
     end
 
     can [:see_private_content, :subscribe_to], Group do |group|
-      if group.is_archived?
+      if group.archived_at
         false
       else
         user_is_member_of?(group.id) or
@@ -108,7 +108,9 @@ class Ability
     end
 
     can :join, Group do |group|
-      can?(:show, group) and group.membership_granted_upon_request?
+      can?(:show, group) &&
+      (group.membership_granted_upon_request? ||
+       group.invitations.find_by(recipient_email: @user.email))
     end
 
     can [:make_admin], Membership do |membership|
@@ -135,7 +137,7 @@ class Ability
     end
 
     can :show, User do |user|
-      user.active?
+      user.deactivated_at.nil?
     end
 
     can :deactivate, User do |user_to_deactivate|
@@ -173,9 +175,9 @@ class Ability
          :print,
          :mark_as_read,
          :subscribe_to], Discussion do |discussion|
-      if discussion.is_archived?
+      if discussion.archived_at.present?
         false
-      elsif discussion.group.is_archived?
+      elsif discussion.group.archived_at.present?
         false
       else
         discussion.public? or
@@ -244,7 +246,7 @@ class Ability
 
     can [:create], Motion do |motion|
       discussion = motion.discussion
-      discussion.motion_can_be_raised? &&
+      discussion.current_motion.blank? &&
       ((discussion.group.members_can_raise_motions? &&
         user_is_member_of?(discussion.group_id)) ||
         user_is_admin_of?(discussion.group_id) )

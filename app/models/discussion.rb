@@ -1,5 +1,4 @@
 class Discussion < ActiveRecord::Base
-  PER_PAGE = 50
   SALIENT_ITEM_KINDS = %w[new_comment
                           new_motion
                           new_vote
@@ -16,7 +15,6 @@ class Discussion < ActiveRecord::Base
                          motion_outcome_updated
                          discussion_edited
                          discussion_moved]
-  paginates_per PER_PAGE
 
   include ReadableUnguessableUrls
   include Translatable
@@ -37,8 +35,6 @@ class Discussion < ActiveRecord::Base
   scope :with_open_motions, -> { joins(:motions).merge(Motion.voting) }
   scope :joined_to_current_motion, -> { joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL') }
   scope :chronologically, -> { order('created_at asc') }
-
-  scope :not_by_helper_bot, -> { where('author_id NOT IN (?)', User.helper_bots.pluck(:id)) }
 
   validates_presence_of :title, :group, :author, :group_id
   validate :private_is_not_nil
@@ -69,11 +65,6 @@ class Discussion < ActiveRecord::Base
 
   has_many :discussion_readers
 
-  include PgSearch
-  pg_search_scope :search, against: [:title, :description],
-    using: {tsearch: {dictionary: "english"}}
-
-
   scope :search_for, ->(query, user, opts = {}) do
     query = sanitize(query)
      select(:id, :key, :title, :result_group_name, :description, :last_activity_at, :rank, "#{query}::text as query")
@@ -94,77 +85,18 @@ class Discussion < ActiveRecord::Base
 
   after_create :set_last_activity_at_to_created_at
 
-  define_counter_cache :motions_count do |discussion|
-    discussion.motions.count
-  end
-
-  define_counter_cache :versions_count do |discussion|
-    discussion.versions.where(event: :update).count
-  end
+  define_counter_cache(:motions_count)  { |discussion| discussion.motions.count }
+  define_counter_cache(:versions_count) { |discussion| discussion.versions.where(event: :update).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
   update_counter_cache :group, :motions_count
 
-  def published_at
-    created_at
-  end
-
   def organisation_id
     group.parent_id || group_id
   end
 
-  def archive!
-    return if is_archived?
-    self.update_attribute(:archived_at, Time.zone.now)
-  end
-
-  def is_archived?
-    archived_at.present?
-  end
-
-  def closed_motions
-    motions.closed
-  end
-
-  def last_collaborator
-    return nil if originator.nil?
-    User.find_by_id(originator.to_i)
-  end
-
   alias_method :current_proposal, :current_motion
-
-  def participants
-    participants = group.members.where(id: commenters.pluck(:id))
-    participants << author
-    participants += motion_authors
-    participants.uniq
-  end
-
-  def motion_authors
-    User.find(motions.pluck(:author_id))
-  end
-
-  def motion_can_be_raised?
-    current_motion.blank?
-  end
-
-  def has_previous_versions?
-    (previous_version && previous_version.id)
-  end
-
-  def last_versioned_at
-    if has_previous_versions?
-      previous_version.version.created_at
-    else
-      created_at
-    end
-  end
-
-  def delayed_destroy
-    self.update_attribute(:is_deleted, true)
-    self.delay.destroy
-  end
 
   def thread_item_created!(item)
     if THREAD_ITEM_KINDS.include? item.kind

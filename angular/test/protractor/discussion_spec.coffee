@@ -15,11 +15,6 @@ describe 'Discussion Page', ->
       page.click('.thread-preview__link')
       page.expectText('.thread-context', 'I carried a watermelon')
 
-    xit 'should display next/prev links', ->
-      groupsHelper.loadPath('setup_discussion_with_many_comments', 100000)
-      page.expectElement('link[rel=next]')
-      page.expectElement('link[rel=prev]')
-
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')

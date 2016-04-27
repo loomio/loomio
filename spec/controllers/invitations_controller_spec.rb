@@ -8,21 +8,6 @@ describe InvitationsController do
     group.add_admin!(user)
   end
 
-  describe 'destroy' do
-    let(:invitation){create(:invitation, invitable: group)}
-
-    before do
-      sign_in user
-    end
-
-    it 'cancels the invitation' do
-      delete :destroy, id: invitation.token, group_id: group.key
-      response.should redirect_to group_memberships_path(group)
-      invitation.reload
-      expect(invitation.cancelled?).to be true
-    end
-  end
-
   describe "GET 'show'" do
     let(:group) { create(:group) }
     let(:invitation) { create(:invitation, token: 'abc', invitable: group, recipient_email: user.email) }
@@ -78,8 +63,8 @@ describe InvitationsController do
           get :show, id: invitation.token
           invitation.reload
           expect(invitation.accepted?).to be true
-          expect(group.has_member?(user)).to be true
-          response.should redirect_to group_path(group)
+          expect(Membership.find_by(group: group, user: user)).to be_present
+          response.should redirect_to group_url(group)
         end
 
       end
@@ -91,10 +76,10 @@ describe InvitationsController do
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
           get :show, id: invitation.token
-          response.should redirect_to group_path(group)
+          response.should redirect_to group_url(group)
           invitation.reload
           expect(invitation.accepted?).to be true
-          expect(group.has_member?(user)).to be true
+          expect(Membership.find_by(group: group, user: user)).to be_present
           session[:invitation_token].should be_nil
         end
       end

@@ -9,4 +9,4 @@ plugins:
 
   loomio_org_plugin:
     repo:    loomio/loomio_org_plugin
-    version: master
+    version: decom_beta

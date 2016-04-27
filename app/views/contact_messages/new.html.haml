@@ -12,7 +12,7 @@
           %h2= t(:"contact_page.contact_form")
       .row
         .col-sm-5
-          = simple_form_for @contact_message, :defaults => {:required => true}, :validate => true do |f|
+          = simple_form_for @contact_message, url: contact_path, :defaults => {:required => true}, :validate => true do |f|
             = f.input :name, label: t(:"contact_page.labels.name")
             = f.input :email, label: t(:"contact_page.labels.email")
             = f.input :message, label: t(:"contact_page.labels.message")

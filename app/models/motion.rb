@@ -1,6 +1,4 @@
 class Motion < ActiveRecord::Base
-  CHART_COLOURS = ["#90D490", "#F0BB67", "#D49090", "#dd0000", '#ccc']
-
   include ReadableUnguessableUrls
   include HasTimeframe
 
@@ -16,7 +14,6 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
   has_many :did_not_voters, through: :did_not_votes, source: :user
   has_many :events,        -> { includes(:eventable) }, as: :eventable, dependent: :destroy
-  has_many :motion_readers, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
   validate :closes_in_future_unless_closed
@@ -25,10 +22,6 @@ class Motion < ActiveRecord::Base
 
   include Translatable
   is_translatable on: [:name, :description]
-
-  include PgSearch
-  pg_search_scope :search, against: [:name, :description],
-    using: {tsearch: {dictionary: "english"}}
 
   delegate :email, to: :author, prefix: :author
   delegate :name, to: :author, prefix: :author
@@ -61,10 +54,6 @@ class Motion < ActiveRecord::Base
     name
   end
 
-  def has_outcome?
-    outcome.present?
-  end
-
   def grouped_unique_votes
     order = ['block', 'no', 'abstain', 'yes']
     unique_votes.sort do |a,b|
@@ -82,10 +71,6 @@ class Motion < ActiveRecord::Base
 
   def voters
     votes.map(&:user).uniq.compact
-  end
-
-  def voter_ids
-    votes.pluck(:user_id).uniq.compact
   end
 
   def voting?
@@ -111,14 +96,6 @@ class Motion < ActiveRecord::Base
     update(closed_at: Time.now, members_count: group.memberships_count)
   end
 
-  def has_votes?
-    total_votes_count > 0
-  end
-
-  def discussion_key
-    discussion.key
-  end
-
   # map of position and votes
   def vote_counts
     {'yes' => yes_votes_count,
@@ -132,7 +109,7 @@ class Motion < ActiveRecord::Base
   end
 
   def can_be_edited?
-    !persisted? || (voting? && (!has_votes? || group.motions_can_be_edited?))
+    !persisted? || (voting? && (total_votes_count == 0 || group.motions_can_be_edited?))
   end
 
   # number of final votes
@@ -144,37 +121,6 @@ class Motion < ActiveRecord::Base
   # not to be confused with vote_counts (which is why we call it activity_count)
   def activity_count
     votes_count
-  end
-
-  def user_has_voted?(user)
-    return false if user.nil?
-    votes.for_user(user.id).exists?
-  end
-
-  def user_has_not_voted?(user)
-    !user_has_voted?(user)
-  end
-
-  def most_recent_vote_of(user)
-    votes.for_user(user.id).last
-  end
-
-  def can_be_voted_on_by?(user)
-    user && group.users.include?(user)
-  end
-
-  def last_vote_by_user(user)
-    return nil if user.nil?
-
-    votes.where(user_id: user.id, age: 0).first
-  end
-
-  def last_position_by_user(user)
-    if vote = last_vote_by_user(user)
-      vote.position
-    else
-      'unvoted'
-    end
   end
 
   def members_count
@@ -224,12 +170,9 @@ class Motion < ActiveRecord::Base
     save!
   end
 
-  def group_members_without_motion_author
-    group.members.without(author)
-  end
-
-  def group_members_without_outcome_author
-    group.members.without(outcome_author)
+  def user_has_voted?(user)
+    return false if user.nil?
+    votes.for_user(user.id).exists?
   end
 
   def closed_or_closing_at
@@ -237,6 +180,7 @@ class Motion < ActiveRecord::Base
   end
 
   private
+
     def closes_in_future_unless_closed
       unless self.closed?
         if closing_at < Time.zone.now
