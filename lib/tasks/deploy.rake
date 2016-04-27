@@ -37,7 +37,7 @@ task :deploy do
 end
 
 def cleanup(remote, branch)
-  run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch)}"]
+  run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch, id)}"]
 end
 
 namespace :deploy do
