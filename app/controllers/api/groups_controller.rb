@@ -14,7 +14,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def create
-    instantiate_resource
+    instantiate_resouce
     create_action
     respond_with_resource(scope: {current_user: current_user})
   end
