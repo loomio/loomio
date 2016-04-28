@@ -109,11 +109,6 @@ class Discussion < ActiveRecord::Base
       self.last_activity_at = item.created_at
     end
 
-    if item.kind == 'new_comment'
-      self.comments_count += 1
-      self.last_comment_at = item.created_at
-    end
-
     if self.first_sequence_id == 0
       self.first_sequence_id = item.sequence_id
     end
@@ -134,7 +129,6 @@ class Discussion < ActiveRecord::Base
     if item.sequence_id == last_sequence_id
       last_item = items.sequenced.last
       self.last_sequence_id = sequence_id_or_0(last_item)
-      self.last_item_at = last_item.try(:created_at)
       self.last_activity_at = salient_items.last.try(:created_at) || created_at
     end
 
@@ -142,20 +136,11 @@ class Discussion < ActiveRecord::Base
 
     discussion_readers.
       where('last_read_at <= ?', item.created_at).
-      each(&:reset_non_comment_counts!)
+      each(&:reset_counts!)
 
     true
   end
 
-  def comment_destroyed!(comment)
-    self.comments_count -= 1
-    self.last_comment_at = comments.maximum(:created_at)
-
-    save!(validate: false)
-    discussion_readers.
-      where('last_read_at <= ?', comment.created_at).
-      each(&:reset_comment_counts!)
-  end
 
   def public?
     !private
