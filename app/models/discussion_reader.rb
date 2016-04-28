@@ -49,17 +49,17 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
-  # def unread_items_count
-  #   discussion.items_count - read_items_count
-  # end
-  #
-  # def unread_activity_count
-  #   if last_read_at.blank?
-  #     discussion.salient_items_count + 1
-  #   else
-  #     discussion.salient_items_count - read_salient_items_count
-  #   end
-  # end
+  def unread_items_count
+    discussion.items_count - read_items_count
+  end
+
+  def unread_activity_count
+    if last_read_at.blank?
+      discussion.salient_items_count + 1
+    else
+      discussion.salient_items_count - read_salient_items_count
+    end
+  end
 
   def viewed!(age_of_last_read_item = nil)
     return if user.nil?

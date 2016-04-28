@@ -29,7 +29,6 @@ class DiscussionSerializer < ActiveModel::Serializer
              :salient_items_count,
              :first_sequence_id,
              :last_sequence_id,
-             :last_item_at,
              :last_comment_at,
              :last_activity_at,
              :created_at,

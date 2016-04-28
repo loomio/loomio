@@ -101,7 +101,6 @@ class Discussion < ActiveRecord::Base
   def thread_item_created!(item)
     if THREAD_ITEM_KINDS.include? item.kind
       self.items_count += 1
-      self.last_item_at = item.created_at
     end
 
     if SALIENT_ITEM_KINDS.include? item.kind
