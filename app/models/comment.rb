@@ -23,8 +23,6 @@ class Comment < ActiveRecord::Base
   validate :attachments_owned_by_author
   validate :parent_comment_belongs_to_same_discussion
 
-  after_destroy :call_comment_destroyed
-
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
   scope :chronologically, -> { order('created_at asc') }
@@ -72,10 +70,6 @@ class Comment < ActiveRecord::Base
   end
 
   private
-  def call_comment_destroyed
-    discussion.comment_destroyed!(self)
-  end
-
   def parent_comment_belongs_to_same_discussion
     if self.parent.present?
       unless discussion_id == parent.discussion_id

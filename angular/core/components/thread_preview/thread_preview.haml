@@ -11,7 +11,7 @@
 
     .sr-only
       %span {{thread.authorName()}}: {{thread.title}}.
-      %span{ng-if: "thread.isUnread()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadItemsCount() }}"}
+      %span{ng-if: "thread.hasUnreadActivity()", translate: "dashboard_page.aria_thread.unread", translate-value-count: "{{ thread.unreadActivityCount() }}"}
       %span{ng-if: "thread.activeProposal()", translate: "dashboard_page.aria_thread.current_proposal", translate-value-name: "{{ thread.activeProposal().name }}"}
       %span{ng-if: "thread.activeProposal() && lastVoteByCurrentUser(thread)", translate: "dashboard_page.aria_thread.you_voted", translate-value-position: " {{lastVoteByCurrentUser(thread).position}} "}
 
@@ -19,8 +19,8 @@
       .thread-preview__text-container
         .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
           {{thread.title}}
-        .thread-preview__unread-count{ng-if: "thread.isUnread() && thread.itemsCount > 0"}
-          ({{thread.unreadItemsCount()}})
+        .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
+          ({{thread.unreadActivityCount()}})
 
       .thread-preview__text-container{ng-if: "thread.activeProposal()"}
         .thread-preview__proposal-name> {{ thread.activeProposal().name }}

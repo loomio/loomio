@@ -69,6 +69,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       return false if @readOnClient or !@discussionReaderId?
       !@lastReadAt? or @unreadActivityCount() > 0
 
+    hasUnreadActivity: ->
+      @isUnread() && @unreadActivityCount() > 0
+
     isImportant: ->
       @starred or @hasActiveProposal()
 
@@ -77,9 +80,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
-
-    unreadCommentsCount: ->
-      @commentsCount - @readCommentsCount
 
     unreadPosition: ->
       @clientReadSequenceId + 1
@@ -125,7 +125,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
         sequenceId = @lastSequenceId
         @update(readItemsCount: @itemsCount,
                 readSalientItemsCount: @salientItemsCount,
-                readCommentsCount: @commentsCount,
                 readOnClient: @sequenceId == @lastSequenceId,
                 lastReadAt: moment())
 

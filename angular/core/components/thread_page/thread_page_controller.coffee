@@ -23,7 +23,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @openOutcomeModal = ->
     $routeParams.outcome? and
-    AbilityService.canSetOutcomeFor(@proposal)
+    AbilityService.canCreateOutcomeFor(@proposal)
 
   @elementToFocus = ->
     if @proposal

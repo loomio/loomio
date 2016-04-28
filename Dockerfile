@@ -40,5 +40,6 @@ ENV SECRET_COOKIE_TOKEN beepbeep
 RUN bundle exec rake deploy:build
 RUN bundle exec rake assets:precompile
 
+EXPOSE 3000
 # source the config file and run puma when the container starts
 CMD bundle exec puma -C config/puma.rb
