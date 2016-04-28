@@ -40,17 +40,24 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
   Session.login(AppConfig.currentUserData)
   $scope.$on 'loggedIn', (event, user) ->
-    $scope.pageError = null
+    $scope.refresh()
     ModalService.open(GroupForm, group: -> Records.groups.build()) if $location.search().start_group?
     ModalService.open(AngularWelcomeModal)                         if AppConfig.showWelcomeModal
     IntercomService.boot()
     MessageChannelService.subscribe()
+
+  # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
+  # This means that we re-initialize the controller for the page, which is what we want
+  # for actions like logging in, without refreshing the whole app.
+  $scope.refresh = ->
+    $scope.refreshing = true
+    $timeout -> $scope.refreshing = false
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null

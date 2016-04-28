@@ -292,8 +292,11 @@ class DevelopmentController < ApplicationController
   def view_closed_group_as_visitor
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
-                                group_privacy: 'closed')
+                                group_privacy: 'closed',
+                                discussion_privacy_options: 'public_or_private')
+    @test_group.add_admin! jennifer
     @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: true, author: jennifer)
+    @public_discussion = @test_group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
     redirect_to group_url(@test_group)
   end
 
