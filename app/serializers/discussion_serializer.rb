@@ -34,7 +34,6 @@ class DiscussionSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :archived_at,
-             :comments_count,
              :private,
              :versions_count
 
