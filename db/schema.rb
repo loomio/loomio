@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418064405) do
+ActiveRecord::Schema.define(version: 20160428005646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -236,7 +236,6 @@ ActiveRecord::Schema.define(version: 20160418064405) do
     t.datetime "updated_at"
     t.integer  "discussion_id",                            null: false
     t.datetime "last_read_at"
-    t.integer  "read_comments_count",      default: 0,     null: false
     t.integer  "read_items_count",         default: 0,     null: false
     t.integer  "last_read_sequence_id",    default: 0,     null: false
     t.integer  "read_salient_items_count", default: 0,     null: false
@@ -281,7 +280,6 @@ ActiveRecord::Schema.define(version: 20160418064405) do
     t.datetime "last_activity_at"
     t.integer  "last_sequence_id",    default: 0,     null: false
     t.integer  "first_sequence_id",   default: 0,     null: false
-    t.datetime "last_item_at"
     t.integer  "salient_items_count", default: 0,     null: false
     t.integer  "versions_count",      default: 0
   end

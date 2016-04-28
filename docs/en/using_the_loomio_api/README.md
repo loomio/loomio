@@ -362,8 +362,6 @@ These options are further documented in the [README](http://github.com/loomio/sn
   "last_sequence_id":         "The sequence_id of the last event in the discussion (integer)",
 
   # Dates
-  "last_item_at":             "The time the last event was created (datetime, can be null)",
-  "last_comment_at":          "The time the last new_comment event was created (datetime, can be null)",
   "last_activity_at":         "The last time there was event activity in the thread (datetime, can be null)",
   "created_at":               "The time the discussion was created (datetime)",
   "updated_at":               "The time the discussion was updated (datetime, can be null)",
