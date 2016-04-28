@@ -160,22 +160,6 @@ ul, ol, li {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.26);
   -webkit-font-smoothing: antialiased;
 }
-.btn-orange {
-  background-color: hsl(37, 100%, 41%) !important;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#feaa23", endColorstr="#d18000");
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#feaa23), to(#d18000));
-  background-image: -moz-linear-gradient(top, #feaa23, #d18000);
-  background-image: -ms-linear-gradient(top, #feaa23, #d18000);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #feaa23), color-stop(100%, #d18000));
-  background-image: -webkit-linear-gradient(top, #feaa23, #d18000);
-  background-image: -o-linear-gradient(top, #feaa23, #d18000);
-  background-image: linear-gradient(#feaa23, #d18000);
-  border-color: #d18000 #d18000 hsl(37, 100%, 37%);
-  color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.26);
-  -webkit-font-smoothing: antialiased;
-}
 .btn-grey { color: $mid-grey; }
 
 #start-group-btn {

@@ -71,11 +71,11 @@ describe Motion do
     before { @user = create(:user) }
     it "returns user's motions that match the query string" do
       motion = create(:motion, name: "jam toast", author: @user, discussion: discussion)
-      expect(@user.motions.search("jam")).to eq [motion]
+      expect(@user.motions.search("jam").result).to include motion
     end
     it "does not return discussions that don't belong to the user" do
       motion = create(:motion, name: "sandwich crumbs", discussion: discussion)
-      @user.motions.search("sandwich").should_not == [motion]
+      expect(@user.motions.search("sandwich").result).to_not include motion
     end
   end
 

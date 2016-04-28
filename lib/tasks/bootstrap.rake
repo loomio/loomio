@@ -1,30 +1,13 @@
 namespace :bootstrap do
   desc 'Retrieve dependencies needed for project to run'
   task :dependencies do
-    unless npm_installed?
-      puts "Loomio requires npm to run: please run `brew install npm`"
-      puts "Quitting .."
-      next
-    end
-
-    unless pg_installed?
-      puts "Loomio requires Postgresql to run, please install it: https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres#installing-postgres"
-      puts "Quitting .."
-      next
-    end
-
-    unless bower_installed?
-      puts "Loomio requires bower to install dependencies; please run `npm install -g bower`"
-      puts "Quitting .."
-      next
-    end
-
-    sh 'gem install bundler' unless bundler_installed?
-
-    sh 'bundle install'
-    sh 'npm install'
-    sh 'npm install -g bower' unless bower_installed?
-    sh 'cd angular && bower install'
+    # NB: we are assuming a OSX setup here.
+    `brew install npm`        unless npm_installed?
+    `brew install postgresql` unless pg_installed?
+    `gem install bundler`     unless bundler_installed?
+    `npm install -g gulp`     unless gulp_installed?
+    `bundle install`
+    `cd angular && npm install && cd ..`
   end
 
   desc "Create database.yml file"
@@ -42,16 +25,12 @@ namespace :bootstrap do
 
   desc 'Create user (optional arguments email and password)'
   task :create_user, [:email, :password] => :environment do |t, args|
-    args.with_defaults(email: 'default@loomio.com', password: 'bootstrap_password')
+    args.with_defaults(email: 'default@loomio.org', password: SecureRandom.hex(4))
     if User.find_by(email: args[:email]).nil?
-      user = User.create(args.to_hash)
-      if user.valid?
-        puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
-      else
-        puts user.errors.full_messages.join("\n")
-      end
+      User.create(args.to_hash)
+      puts "Created user with email #{args[:email]} and password '#{args[:password]}'"
     else
-      puts "User with #{args[:email]} already exist"
+      puts "User with #{args[:email]} already exists"
     end
   end
 
@@ -78,8 +57,8 @@ namespace :bootstrap do
     $?.success?
   end
 
-  def bower_installed?
-    `which bower`
+  def gulp_installed?
+    `which gulp`
     $?.success?
   end
 end

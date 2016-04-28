@@ -1,8 +1,0 @@
-.detect-locale.alert.alert-dismissable{style: 'display: none'}
-  %button.close{'data-dismiss' => 'alert', 'aria-hidden' => 'true'}
-    &times;
-  = link_to t(:'frontpage.view_this_in_your_language',
-              language: locale_name(I18n.locale)),
-              "?locale=#{I18n.locale}"
-:javascript
-  $('.detect-locale.alert').slideDown()

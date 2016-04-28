@@ -46,6 +46,14 @@ module Development::NintiesMoviesHelper
                             angular_ui_enabled: true)
   end
 
+  def judd
+    @judd ||= User.find_by_email('judd@example.com') ||
+              User.create!(name: 'Judd Nelson',
+                           email: 'judd@example.com',
+                           password: 'gh0stmovie',
+                           angular_ui_enabled: true)
+  end
+
   def test_group
     unless @test_group
       @test_group = Group.create!(name: 'Dirty Dancing Shoes',
@@ -194,7 +202,7 @@ module Development::NintiesMoviesHelper
       @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
                                                               message: 'Come and join the group!',
                                                               group: test_group,
-                                                              inviter: patrick)
+                                                              inviter: patrick).last
     end
     @pending_invitation
   end

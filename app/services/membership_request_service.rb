@@ -15,6 +15,7 @@ class MembershipRequestService
     membership_request.approve!(actor)
     if membership_request.from_a_visitor?
       invitation = InvitationService.create_invite_to_join_group(
+                        recipient_name:  membership_request.name,
                         recipient_email: membership_request.email,
                         inviter: actor,
                         group: membership_request.group)

@@ -4,10 +4,11 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = ENV['SUPPORT_EMAIL']
+  # config.mailer_sender = ENV['SUPPORT_EMAIL']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+  config.parent_mailer = "BaseMailer"
 
   # Automatically apply schema changes in tableless databases
 
@@ -205,7 +206,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth 'google_oauth2', Rails.application.secrets.google_key, Rails.application.secrets.google_secret, name: 'google'
+  config.omniauth :google_oauth2, Rails.application.secrets.google_key, Rails.application.secrets.google_secret, name: 'google'
   config.omniauth :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret
   config.omniauth :twitter, Rails.application.secrets.twitter_key, Rails.application.secrets.twitter_secret
   config.omniauth :github, Rails.application.secrets.github_key, Rails.application.secrets.github_secret

@@ -1,9 +1,0 @@
-.group-title
-  %h1= link_to @motion.name, discussion_path(@motion.discussion)
-.row#vote-form
-  .col-sm-5
-    = render 'form', motion: @motion, vote: @vote, form_title: t("vote_form.header")
-  - if @motion.description.present?
-    .col-sm-5.col-sm-offset-1
-      %h3= t :proposal
-      = simple_format @motion.description, class: "word-break"

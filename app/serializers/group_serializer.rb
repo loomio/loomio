@@ -24,7 +24,6 @@ class GroupSerializer < ActiveModel::Serializer
              :parent_members_can_see_discussions,
              :memberships_count,
              :invitations_count,
-             :visible_to,
              :membership_granted_upon,
              :discussion_privacy_options,
              :logo_url_medium,
@@ -41,6 +40,18 @@ class GroupSerializer < ActiveModel::Serializer
              :show_legacy_trial_expired_modal
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
+
+  has_one :current_user_membership, serializer: MembershipSerializer, root: 'memberships'
+
+  private
+
+  def current_user_membership
+    @current_user_membership ||= object.membership_for(scope[:current_user])
+  end
+
+  def include_current_user_membership?
+    scope && scope[:current_user]
+  end
 
   def show_legacy_trial_expired_modal
     ENV['TRIAL_EXPIRED_GROUP_IDS'].to_s.split(' ').map(&:to_i).include? object.id

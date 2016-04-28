@@ -1,4 +1,6 @@
 module EmailHelper
+  include PrettyUrlHelper
+
   def reply_to_address(discussion: , user: )
     pairs = []
     {d: discussion.id, u: user.id, k: user.email_api_key}.each do |key, value|
@@ -28,5 +30,25 @@ module EmailHelper
 
   def motion_closing_time_for(user)
     @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
+  end
+
+  def motion_sparkline(motion)
+    values = motion.vote_counts.values
+    if values.sum == 0
+      '0,0,0,0,1'
+    else
+      values.join(',')
+    end
+  end
+
+  def time_formatted_relative_to_age(time)
+    current_time = Time.zone.now
+    if time.to_date == Time.zone.now.to_date
+      l(time, format: :for_today)
+    elsif time.year != current_time.year
+      l(time.to_date, format: :for_another_year)
+    else
+      l(time.to_date, format: :for_this_year)
+    end
   end
 end

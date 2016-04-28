@@ -1,7 +1,0 @@
-- set_title "", t(:new_subgroup)
-.page-container
-  .row
-    .col-md-6
-      = render '/groups/title', group: @subgroup.parent
-      %h2 New subgroup
-      = render 'form', group: @subgroup, submit_text: t(:create_subgroup), form_title: t(:new_subgroup)

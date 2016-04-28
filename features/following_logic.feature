@@ -1,7 +1,8 @@
 Feature: Following Logic
 
 Background:
-  Given I am the logged in admin of a group
+  Given I am logged in
+  And I am an admin of a group
 
   Scenario: New discussion in group I belong to
     When someone else creates a discussion in my group

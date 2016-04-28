@@ -15,16 +15,20 @@
       .lmo-form-group
         %label{for: "proposal-title-field", translate: "proposal_form.title_label"}
         .lmo-relative
-          %textarea.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{msd-elastic: "true", rows: 1, placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-model-options: "{debounce: 600}", ng-change: "storeDraft()", ng-required: "false", maxlength: "255"}
+          %textarea.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{msd-elastic: "true", rows: 1, placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}
         %validation_errors{subject: "proposal", field: "name"}
+        .proposal-form__proposal_ideas{ng-if: "proposal.isNew()"}
+          %a{href: "{{nineWaysArticleLink()}}", title: "{{ 'proposal_form.proposal_ideas_title' | translate }}", target: "_blank"}
+            %span{translate: "proposal_form.proposal_ideas"}
 
       .lmo-form-group
         %label{for: "proposal-details-field", translate: "proposal_form.details_label"}
         .lmo-relative
-          %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", ng-model-options: "{debounce: 600}", ng-change: "storeDraft()", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
+          %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
           %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
 
       %closing_at_field{proposal: "proposal"}
+      %validation_errors{subject: "proposal", field: "closingAt"}
 
   .modal-footer
     %button.lmo-btn--submit.proposal-form__start-btn{ng-if: "proposal.isNew()", type: "submit", translate: "proposal_form.start_proposal"}

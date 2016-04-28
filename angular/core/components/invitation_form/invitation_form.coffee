@@ -56,7 +56,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         submitForm()
 
     submitForm = FormService.submit $scope, $scope.form,
-      allowDrafts: true
+      draftFields: ['emails', 'message']
       submitFn: Records.invitations.sendByEmail
       successCallback: (response) =>
         invitationCount = response.invitations.length

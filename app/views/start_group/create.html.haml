@@ -1,6 +1,9 @@
-.start-group__success
-  %h1= t :"start_group_form.success.header"
-  %p= t :"start_group_form.success.email_delivered", email: @email
+.container
+  %section.first
+    .inner-container
+      .start-group__success
+        %h1= t :"start_group_form.success.header"
+        %p= t :"start_group_form.success.email_delivered", email: @email
 
-  %h3= t :"start_group_form.success.email_not_arrived"
-  %p= t :"start_group_form.success.please_hold"
+        %h3= t :"start_group_form.success.email_not_arrived"
+        %p= t :"start_group_form.success.please_hold"

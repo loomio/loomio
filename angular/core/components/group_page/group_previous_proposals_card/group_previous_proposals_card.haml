@@ -4,7 +4,7 @@
     %ul.group-previous-proposals-card__previous_proposals
       %li.group-previous-proposals-card__previous_proposal{ng-repeat: "proposal in group.closedProposals() | limitTo: 3 track by proposal.id"}
         %pie_with_position.pull-left{proposal: "proposal"}
-        %a{lmo-href-for: "group", lmo-href-action: "previous_proposals"}
+        %a{lmo-href-for: "group", lmo-href-for: "proposal"}
           .group-previous-proposals-card__proposal-title
             {{proposal.name}}
     %a.group-previous-proposals-card__link.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "previous_proposals"}
