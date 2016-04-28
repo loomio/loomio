@@ -1,7 +1,7 @@
 class API::GroupsController < API::RestfulController
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo, :use_gift_subscription], find_by: :key
-  skip_before_action :authenticate_user!, only: [:index, :count_explore_results]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     instantiate_collection { |collection| collection.search_for params[:q] }
@@ -9,8 +9,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def count_explore_results
-    explore_results_count = (Queries::ExploreGroups.new.search_for(params[:q])).count
-    render json: { count: explore_results_count }
+    render json: { count: Queries::ExploreGroups.new.search_for(params[:q]).count }
   end
 
   def create
