@@ -26,7 +26,7 @@ Given(/^I am a logged out user with an unread discussion$/) do
   @motion.reload
   @discussion.reload
 
-  expect(DiscussionReader.for(user: @user, discussion: @discussion).unread_comments_count).to eq 2
+  expect(DiscussionReader.for(user: @user, discussion: @discussion).unread_activity_count).to eq 2
 end
 
 When(/^I read the summary email with images enabled$/) do
@@ -43,5 +43,5 @@ Then(/^the discussion should be marked as read when the email was generated$/) d
   @discussion.reload
 
   expect(DiscussionReader.for(user: @user, discussion: @discussion).
-                   unread_comments_count).to eq 1
+                   unread_activity_count).to eq 1
 end

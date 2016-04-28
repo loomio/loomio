@@ -138,7 +138,6 @@ describe Discussion do
     describe "new discussion" do
       it "has the right values to begin with" do
         expect(discussion.items_count).to be 0
-        expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0
         expect(discussion.last_item_at).to be nil
         expect(discussion.last_comment_at).to be nil
@@ -162,7 +161,6 @@ describe Discussion do
 
       it "increments corrently" do
         expect(discussion.items_count).to be 1
-        expect(discussion.comments_count).to be 1
         expect(discussion.salient_items_count).to be 1
         expect(discussion.last_item_at).to eq @comment.created_at
         expect(discussion.last_comment_at).to eq @comment.created_at
@@ -185,7 +183,6 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 0
-        expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0
         expect(discussion.last_item_at).to eq nil
         expect(discussion.last_comment_at).to eq nil
@@ -216,7 +213,6 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.comments_count).to be 1
         expect(discussion.salient_items_count).to be 1
         expect(discussion.last_item_at).to eq @comment2.created_at
         expect(discussion.last_comment_at).to eq @comment2.created_at
@@ -251,7 +247,6 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.comments_count).to be 1
         expect(discussion.salient_items_count).to be 1
         expect(discussion.last_item_at).to eq @comment1.created_at
         expect(discussion.last_comment_at).to eq @comment1.created_at
