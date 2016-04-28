@@ -782,6 +782,9 @@ en:
       unread: '{{count}} unread items.'
       current_proposal: 'Current proposal: {{name}}.'
       you_voted: 'You voted: {{position}}.'
+    thread_preview:
+      you_voted: 'You voted {{position}}'
+      undecided: 'You are undecided'
     threads_from:
       group: 'Threads from'
       proposals: 'Proposals'
