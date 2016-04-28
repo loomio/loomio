@@ -105,4 +105,14 @@ describe API::GroupsController do
     end
   end
 
+  describe 'count_explore_results' do
+    it 'returns the number of explore group results matching the search term' do
+      group.update_attribute(:name, 'exploration team')
+      explore_group = create(:group, name: 'investigation team')
+      second_explore_group = create(:group, name: 'inspection group')
+      get :count_explore_results, { q: 'team' }
+      expect(JSON.parse(response.body)['count']).to eq 2
+    end
+  end
+
 end
