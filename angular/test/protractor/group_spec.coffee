@@ -69,6 +69,7 @@ describe 'Group Page', ->
 
       it 'should prompt for login for secret group', ->
         page.loadPath 'view_secret_group_as_visitor'
+        page.click '.lmo-navbar__sign-in'
         page.fillIn '#user-email', 'patrick_swayze@example.com'
         page.fillIn '#user-password', 'gh0stmovie'
         page.click '.sign-in-form__submit-button'
