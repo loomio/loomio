@@ -67,9 +67,18 @@ describe 'Group Page', ->
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
+      it 'should reload a closed group after logging in', ->
+        page.loadPath 'view_closed_group_as_visitor'
+        page.click '.lmo-navbar__sign-in'
+        page.fillIn '#user-email', 'jennifer_grey@example.com'
+        page.fillIn '#user-password', 'gh0stmovie'
+        page.click '.sign-in-form__submit-button'
+        page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
+        page.expectText '.thread-previews-container', 'This thread is private'
+        page.expectElement '.navbar-user-options__user-profile-icon'
+
       it 'should prompt for login for secret group', ->
         page.loadPath 'view_secret_group_as_visitor'
-        page.click '.lmo-navbar__sign-in'
         page.fillIn '#user-email', 'patrick_swayze@example.com'
         page.fillIn '#user-password', 'gh0stmovie'
         page.click '.sign-in-form__submit-button'

@@ -48,6 +48,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
   # This means that we re-initialize the controller for the page, which is what we want
   # for actions like logging in or out, without refreshing the whole app.
   $scope.refresh = ->
+    $scope.pageError = null
     $scope.refreshing = true
     $timeout -> $scope.refreshing = false
 

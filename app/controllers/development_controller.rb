@@ -296,7 +296,7 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
     @test_group.add_admin! jennifer
-    @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: true, author: jennifer)
+    @test_discussion = @test_group.discussions.create!(title: 'This thread is private', private: true, author: jennifer)
     @public_discussion = @test_group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
     redirect_to group_url(@test_group)
   end
