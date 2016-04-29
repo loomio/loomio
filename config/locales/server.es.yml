@@ -1,4 +1,8 @@
 es:
+  validate:
+    motion:
+      must_close_in_future: La propuesta debe cerrar en el futuro.
+      one_at_a_time: Ya hay una propuesta activa.
   email:
     reset_password:
       greeting: >
@@ -145,6 +149,7 @@ es:
     error:
       all_email_addresses_belong_to_members: 'No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo.'
   pricing_page:
+    header: 'Planes grupales '
     gift: 'Donación '
     standard: 'Estándar '
     plus: Plus
@@ -288,3 +293,16 @@ es:
         Para imágenes es igual pero precedido por un signo se exclamación.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  beta_banner:
+    new_loomio_html: >
+      <strong>El nuevo Loomio es más rápido, bonito y mejor!</strong> Estamos
+      moviendo a todos para ahí.
+    upgrade_browser_html: >
+      Solo apoyamos versiones nuevas de Internet Explorer (10+). Deberas  <a
+      href='http://outdatedbrowser.com/en' target='_blank'>actualizar tu
+      navegador</a> para seguir usando Loomio.
+
+      <strong>El nuevo Loomio está aquí!</strong> Es más rápido, bonito
+      y preparado para el móvil.
+    more_info: 'Más información... '
+    button_text: Cambia al nuevo Loomio
