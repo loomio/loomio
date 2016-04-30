@@ -1,10 +1,5 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    %p= t("email.group_membership_approved.intro", group_name: @group.name)
-    %p
-      = t(:"invitation.link_help", group_name: @invitation.invitable_name)
-      %br
-      = link_to invitation_url(@invitation), invitation_url(@invitation, @utm_hash)
+%p= t("email.group_membership_approved.intro", group_name: @group.name)
+%p
+  = t(:"invitation.link_help", group_name: @invitation.invitable_name)
+  %br
+  = link_to invitation_url(@invitation), invitation_url(@invitation, @utm_hash)
