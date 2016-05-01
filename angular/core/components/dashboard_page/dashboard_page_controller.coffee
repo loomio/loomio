@@ -1,6 +1,4 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $location, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig) ->
-
-  $location.url 'explore' unless AbilityService.isLoggedIn()
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig) ->
 
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
   $rootScope.$broadcast('setTitle', 'Dashboard')
