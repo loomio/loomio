@@ -49,15 +49,6 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
-  def unread_comments_count
-    #we count the discussion itself as a comment.. but it is comment 0
-    if last_read_at.blank?
-      discussion.comments_count.to_i + 1
-    else
-      discussion.comments_count.to_i - read_comments_count
-    end
-  end
-
   def unread_items_count
     discussion.items_count - read_items_count
   end
@@ -82,16 +73,7 @@ class DiscussionReader < ActiveRecord::Base
     EventBus.broadcast('discussion_reader_viewed!', discussion, user)
   end
 
-  def reset_comment_counts
-    self.read_comments_count = read_comments.count
-  end
-
-  def reset_comment_counts!
-    reset_comment_counts
-    save!(validate: false)
-  end
-
-  def reset_non_comment_counts
+  def reset_counts!
     self.read_items_count = read_items.count
     self.read_salient_items_count = read_salient_items.count
     self.last_read_sequence_id = if read_items_count == 0
@@ -99,21 +81,7 @@ class DiscussionReader < ActiveRecord::Base
                                  else
                                    read_items.last.sequence_id
                                  end
-  end
-
-  def reset_non_comment_counts!
-    reset_non_comment_counts
     save!(validate: false)
-  end
-
-  def reset_counts!
-    reset_comment_counts
-    reset_non_comment_counts
-    save!(validate: false)
-  end
-
-  def read_comments(time = nil)
-    discussion.comments.where('comments.created_at <= ?', time || last_read_at).chronologically
   end
 
   def read_items(time = nil)

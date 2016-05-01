@@ -10,3 +10,9 @@ angular.module('loomioApp').factory 'GroupRecordsInterface', (BaseRecordsInterfa
       options['q'] = query
       @fetch
         params: options
+
+    getExploreResultsCount: (query, options = {}) ->
+      options['q'] = query
+      @fetch
+        path: 'count_explore_results'
+        params: options

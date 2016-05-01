@@ -138,10 +138,7 @@ describe Discussion do
     describe "new discussion" do
       it "has the right values to begin with" do
         expect(discussion.items_count).to be 0
-        expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0
-        expect(discussion.last_item_at).to be nil
-        expect(discussion.last_comment_at).to be nil
         expect(discussion.last_activity_at).to eq discussion.created_at
         expect(discussion.first_sequence_id).to be 0
         expect(discussion.last_sequence_id).to be 0
@@ -162,10 +159,7 @@ describe Discussion do
 
       it "increments corrently" do
         expect(discussion.items_count).to be 1
-        expect(discussion.comments_count).to be 1
         expect(discussion.salient_items_count).to be 1
-        expect(discussion.last_item_at).to eq @comment.created_at
-        expect(discussion.last_comment_at).to eq @comment.created_at
         expect(discussion.last_activity_at).to eq @comment.created_at
         expect(discussion.first_sequence_id).to be @event.sequence_id
         expect(discussion.last_sequence_id).to be @event.sequence_id
@@ -185,10 +179,7 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 0
-        expect(discussion.comments_count).to be 0
         expect(discussion.salient_items_count).to be 0
-        expect(discussion.last_item_at).to eq nil
-        expect(discussion.last_comment_at).to eq nil
         expect(discussion.last_activity_at).to eq discussion.created_at
         expect(discussion.last_sequence_id).to be 0
         expect(discussion.first_sequence_id).to be 0
@@ -216,10 +207,7 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.comments_count).to be 1
         expect(discussion.salient_items_count).to be 1
-        expect(discussion.last_item_at).to eq @comment2.created_at
-        expect(discussion.last_comment_at).to eq @comment2.created_at
         expect(discussion.last_activity_at).to eq @comment2.created_at
         expect(discussion.first_sequence_id).to be @event2.sequence_id
         expect(discussion.last_sequence_id).to be @event2.sequence_id
@@ -251,10 +239,7 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.comments_count).to be 1
         expect(discussion.salient_items_count).to be 1
-        expect(discussion.last_item_at).to eq @comment1.created_at
-        expect(discussion.last_comment_at).to eq @comment1.created_at
         expect(discussion.last_activity_at).to eq @comment1.created_at
         expect(discussion.first_sequence_id).to be @event1.sequence_id
         expect(discussion.last_sequence_id).to be @event1.sequence_id
