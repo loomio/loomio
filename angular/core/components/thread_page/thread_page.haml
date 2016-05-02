@@ -33,13 +33,17 @@
           %translation{translation: "threadPage.translation", field: "title"}
 
         .thread-context__details
-          %span{translate: "discussion.started_by", translate-value-name: "{{::threadPage.discussion.authorName()}}"}
-          %timeago.nowrap{timestamp: "::threadPage.discussion.createdAt" }>
+          .thread-context__started-by{ng-if: "!threadPage.discussion.edited()"}
+            %span{translate: "discussion.started_by", translate-value-name: "{{::threadPage.discussion.authorName()}}"}
+            %timeago.nowrap{timestamp: "::threadPage.discussion.createdAt" }>
+          .thread-context__updated-by{ng-if: "threadPage.discussion.edited()"}
+            %span{translate: "discussion.updated_by", translate-value-name: "{{threadPage.currentDiscussionVersion().authorOrEditorName()}}"}>
+            %timeago.nowrap{timestamp: "threadPage.currentDiscussionVersion().createdAt" }>
           %translate_button.lmo-card-minor-action{model: "threadPage.discussion", showdot: "true"}>
-          %span{aria-hidden: "true"}·
-          %span{ng-if: "threadPage.discussion.edited()"}
-            %button.thread-context__edited-link.lmo-btn-link{ng-click: "threadPage.showRevisionHistory()", translate: "discussion.edited"}>
+          .thread-context__view-history{ng-if: "threadPage.discussion.edited()"}
             %span{aria-hidden: "true"}·
+            %button.thread-context__edited-link.lmo-btn-link{ng-click: "threadPage.showRevisionHistory()", translate: "discussion.view_history"}>
+          %span{aria-hidden: "true"}·
           %span.nowrap.discussion-privacy__is-private{ng-show: "threadPage.discussion.private"}>
             %i.fa.fa-lock>
             %span{translate: "common.privacy.private"}

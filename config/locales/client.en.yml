@@ -818,7 +818,9 @@ en:
     liked_by_name: 'Liked by {{name}}.'
     liked_by_names_and_name: 'Liked by {{joinedNames}} and {{name}}.'
     started_by: 'Started by <strong>{{name}}</strong>'
-    edited: 'Edited'
+    updated_by: 'Updated by <strong>{{name}}</strong>'
+    view_history: 'View history'
+
     volume:
       mute_message: 'Thread muted.'
   thread_group:

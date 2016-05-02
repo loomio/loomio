@@ -123,6 +123,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @showRevisionHistory = ->
     ModalService.open RevisionHistoryModal, model: => @discussion
 
+  @currentDiscussionVersion = ->
+    @discussion.currentVersion()
+
   @print = ->
     $window.print() and true
 
