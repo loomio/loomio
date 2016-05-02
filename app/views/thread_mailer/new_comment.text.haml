@@ -1,4 +1,5 @@
 = @comment.body
 - if @comment.attachments.any?
   = render "attachments", comment: @comment
+\
 = render "footer", link: comment_url_helper(@comment)

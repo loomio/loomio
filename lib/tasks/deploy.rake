@@ -36,7 +36,7 @@ task :deploy do
   at_exit     { cleanup(remote, branch, id) }
 end
 
-def cleanup(remote, branch)
+def cleanup(remote, branch, id)
   run_commands ["git checkout #{branch}; git branch -D #{build_branch(remote, branch, id)}"]
 end
 

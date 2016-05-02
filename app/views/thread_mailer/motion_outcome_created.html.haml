@@ -1,11 +1,6 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    = t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
-    %p= render_rich_text(@motion.outcome, true)
+= t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
+%p= render_rich_text(@motion.outcome, true)
 
-    = render 'motion_with_positions'
+= render 'motion_with_positions'
 
-    = render 'footer', link: motion_url(@motion, @utm_hash)
+= render 'footer', link: motion_url(@motion, @utm_hash)
