@@ -1,14 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
-  layout 'pages'
-  include AutodetectTimeZone
-  include InvitationsHelper
-  include OmniauthAuthenticationHelper
+  include DeviseControllerHelper
 
   # at some point in the future we can remove this
   before_filter :create_parse_user_if_needed, only: :create
 
   before_filter :store_previous_location, only: :new
-  before_filter :load_invitation_from_session, only: :new
   after_filter :set_time_zone_from_javascript, only: :create
 
   def new

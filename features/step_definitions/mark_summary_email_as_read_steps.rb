@@ -26,9 +26,7 @@ Given(/^I am a logged out user with an unread discussion$/) do
   @motion.reload
   @discussion.reload
 
-  expect(DiscussionReader.for(user: @user, discussion: @discussion).unread_comments_count).to eq 2
-  expect(MotionReader.for(user: @user, motion: @motion).unread_votes_count).to eq 1
-  expect(MotionReader.for(user: @user, motion: @motion).unread_activity_count).to eq 2
+  expect(DiscussionReader.for(user: @user, discussion: @discussion).unread_activity_count).to eq 4
 end
 
 When(/^I read the summary email with images enabled$/) do
@@ -44,32 +42,5 @@ Then(/^the discussion should be marked as read when the email was generated$/) d
   @motion.reload
   @discussion.reload
 
-  expect(DiscussionReader.for(user: @user, discussion: @discussion).
-                   unread_comments_count).to eq 1
-
-  expect(MotionReader.for(user: @user, motion: @motion).unread_votes_count).to eq 1
-  expect(MotionReader.for(user: @user, motion: @motion).unread_activity_count).to eq 1
+  expect(DiscussionReader.for(user: @user, discussion: @discussion).unread_activity_count).to eq 1
 end
-
-
-#Given(/^I am a logged out user with an unread comment in a discussion$/) do
-  #@user = FactoryGirl.create(:user)
-  #@group = FactoryGirl.create(:group)
-  #@group.add_member!(@user)
-
-  #@discussion = FactoryGirl.build(:discussion, group: @group)
-  #@event = DiscussionService.start_discussion(@discussion)
-#end
-
-#When(/^I read an email with the mark discussion as read gif in it$/) do
-  #visit mark_discussion_as_read_url(discussion_id: @discussion.id,
-                                    #event_id: @event.id)
-
-  #view_screenshot
-
-#end
-
-#Then(/^the discussion should be marked as read$/) do
-  #@discussion_reader = DiscussionReader.for(user: @user, discussion: @discussion)
-  #@discussion_reader.unread_comments_count.should == 0
-#end

@@ -1,8 +1,0 @@
-%li.discussion.row{data:{discussion_id: item.id }}
-  = link_to item do
-    .col-xs-1
-      .large-icon.discussion-icon.enabled-icon
-
-    .col-xs-11
-      %span.title= item.title
-      %span.description= truncate(render_rich_text(item.description,item.uses_markdown), length: 180, omission: '...', separator: " ", :escape => false) unless item.description.blank?

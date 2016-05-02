@@ -1,7 +1,2 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    = render "vote", vote: @vote
-    = render "footer", link: motion_url(@motion, @utm_hash)
+= render "vote", vote: @vote
+= render "footer", link: motion_url(@motion, @utm_hash)

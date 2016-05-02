@@ -160,7 +160,8 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       !@subscriptionKind?
 
     trialIsOverdue: ->
-      @subscriptionKind == 'trial' && @subscriptionExpiresAt.clone().add(1, 'days') < moment()
+      return false if @subscriptionKind != 'trial' or !@subscriptionExpiresAt?
+      @subscriptionExpiresAt.clone().add(1, 'days') < moment()
 
     noInvitationsSent: ->
       @membershipsCount < 2 and @invitationsCount < 2

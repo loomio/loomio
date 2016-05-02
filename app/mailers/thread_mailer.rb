@@ -1,6 +1,5 @@
 class ThreadMailer < BaseMailer
   helper :email
-  helper :motions
   helper :application
 
   def new_discussion(recipient, event)

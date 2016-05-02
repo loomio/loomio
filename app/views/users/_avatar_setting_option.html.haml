@@ -1,6 +1,0 @@
-%li.image-setting.clearfix
-  = link_to set_avatar_kind_user_path(user, :avatar_kind => kind), :method => :put, id: "use_#{kind}" do
-    %span
-      = render 'avatar', user: user, kind: kind, id: "image-option-#{kind}"
-      - option_label = t("profile_form.use_" + kind.to_s)
-      .option-label= option_label

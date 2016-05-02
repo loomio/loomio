@@ -7,21 +7,21 @@ class API::MotionsController < API::RestfulController
   end
 
   def close
-    @event = MotionService.close_by_user(load_and_authorize(:motion, :close), current_user)
+    @event = service.close_by_user(load_and_authorize(:motion, :close), current_user)
     respond_with_resource
   end
 
   def create_outcome
-    @event = MotionService.create_outcome(motion: load_and_authorize(:motion, :create_outcome),
-                                          params: permitted_params.motion,
-                                          actor:  current_user)
+    @event = service.create_outcome(motion: load_and_authorize(:motion, :create_outcome),
+                                    params: permitted_params.motion,
+                                    actor:  current_user)
     respond_with_resource
   end
 
   def update_outcome
-    @event = MotionService.update_outcome(motion: load_and_authorize(:motion, :update_outcome),
-                                          params: permitted_params.motion,
-                                          actor:  current_user)
+    @event = service.update_outcome(motion: load_and_authorize(:motion, :update_outcome),
+                                    params: permitted_params.motion,
+                                    actor:  current_user)
     respond_with_resource
   end
 

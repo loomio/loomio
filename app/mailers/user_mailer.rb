@@ -1,6 +1,5 @@
 class UserMailer < BaseMailer
   helper :email
-  helper :motions
   helper :application
 
   def missed_yesterday(user, time_since = nil)
@@ -9,19 +8,18 @@ class UserMailer < BaseMailer
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 
-    @discussions = Queries::VisibleDiscussions.new(user: user,
-                                                   groups: user.inbox_groups).
-                                                   not_muted.
-                                                   unread.
-                                                   last_activity_after(@time_start)
+    @discussions = Queries::VisibleDiscussions.new(user: user)
+                    .not_muted
+                    .unread
+                    .last_activity_after(@time_start)
+    @groups = @user.groups.order(full_name: :asc)
 
     @reader_cache = DiscussionReaderCache.new(user: @user, discussions: @discussions)
 
-    unless @discussions.empty? or @user.inbox_groups.empty?
+    unless @discussions.empty? or @user.groups.empty?
       @discussions_by_group = @discussions.group_by(&:group)
       send_single_mail to: @user.email,
                        subject_key: "email.missed_yesterday.subject",
-                       css: 'missed_yesterday',
                        locale: locale_fallback(user.locale)
     end
   end

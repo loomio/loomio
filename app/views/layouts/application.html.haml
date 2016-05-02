@@ -1,33 +1,39 @@
 !!!
-%html
+%html{locale: current_locale}
   %head
+    - title = @title ? @title : "Loomio | Collaborative Decision-Making"
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
     %meta{content: "IE=Edge", "http-equiv" => "X-UA-Compatible"}/
-    %title= display_title @unviewed_notifications
-
-    - if @feed_url
-      %link{href: @feed_url, rel: 'alternate', type: 'application/rss+xml', title: t(:rss_subscribe), class: 'rss-link' }
-
-    /[if lt IE 9]
-      =javascript_include_tag 'ie8'
-
-    = stylesheet_link_tag    "application"
+    %title= title
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
+    = stylesheet_link_tag "application"
     = theme_stylesheet_link_tag
-    = javascript_include_tag "application"
-    = theme_javascript_include_tag
     = csrf_meta_tags
     = render 'application/social_metadata', description: @meta_description, title: @meta_title
     = render 'application/google_analytics'
 
-  %body{class: "#{controller_name} #{action_name}"}
-    = render 'application/header'
-    .container.main-container{ class: render_help_container }
-      - if hosted_by_loomio? && show_beta_banner?
-        = render 'application/beta_banner'
-      - unless (controller_name == 'groups') && (action_name == 'show')
-        = render 'application/flash_messages', :flash => flash, :on_landing_page => false
+  %body{class: "pages #{controller_name} #{action_name}"}
+    .navbar.navbar-top{role: 'navigation'}
+      .navbar-inner
+        .navbar-container
+          .pull-left
+            = link_to " ", root_path, class: 'pages-nav-logo', title: 'Go to Loomio home page'
+          .pull-right
+            = link_to t(:"frontpage.link.log_in"), new_user_session_path, class: 'btn btn-orange' if show_login_button?
+          .clearfix
 
-      .page-container
-        = yield
-      = render 'application/footer'
-  = render 'application/intercom_tracker'
+    .container.home-flash
+      = render 'application/flash_messages', :flash => flash
+
+    .row.hero
+      %main.content-container
+        .content
+          = yield
+
+    .row
+      .container{role: 'contentinfo'}
+        .col-xs-12
+          = render 'application/footer'
+
+  = javascript_include_tag "application"
+  = theme_javascript_include_tag

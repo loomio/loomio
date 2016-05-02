@@ -1,15 +1,10 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
-  include BetaFeatures
   include HasTimeframe
   include MessageChannel
-  include DeprecatedGroupFeatures
-  AVAILABLE_BETA_FEATURES = ['discussion_iframe']
 
   class MaximumMembershipsExceeded < Exception
   end
-
-  acts_as_tree
 
   DISCUSSION_PRIVACY_OPTIONS = ['public_only', 'private_only', 'public_or_private']
   MEMBERSHIP_GRANTED_UPON_OPTIONS = ['request', 'approval', 'invitation']
@@ -27,8 +22,6 @@ class Group < ActiveRecord::Base
 
   before_save :update_full_name_if_name_changed
   before_validation :set_discussions_private_only, if: :is_hidden_from_public?
-
-  scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   default_scope { includes(:default_group_cover) }
 
@@ -49,9 +42,7 @@ class Group < ActiveRecord::Base
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
   scope :created_by, -> (user) { where(creator_id: user.id) }
 
-  scope :include_admins, -> { includes(:admins) }
-
-  scope :cannot_start_parent_group, -> { where(can_start_group: false) }
+  scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
   # Engagement (Email Template) Related Scopes
   scope :more_than_n_members,     ->(count) { where('memberships_count > ?', count) }
@@ -86,9 +77,6 @@ class Group < ActiveRecord::Base
                                              less_than_n_discussions(2).
                                              created_earlier_than(1.month.ago).
                                              parents_only }
-
-  scope :alphabetically, -> { order('full_name asc') }
-  scope :in_any_cohort, -> { where('cohort_id is not null') }
 
   has_one :group_request
 
@@ -246,24 +234,12 @@ class Group < ActiveRecord::Base
     group_request.try(:admin_email)
   end
 
-  def voting_motions
-    motions.voting
-  end
-
-  def closed_motions
-    motions.closed
-  end
-
   def archive!
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(archived_at: DateTime.now)
     subgroups.each do |group|
       group.archive!
     end
-  end
-
-  def is_archived?
-    self.archived_at.present?
   end
 
   def unarchive!
@@ -280,6 +256,7 @@ class Group < ActiveRecord::Base
     is_subgroup? and parent.is_hidden_from_public?
   end
 
+  # this method's a bit chunky. New class?
   def group_privacy=(term)
     case term
     when 'open'
@@ -383,22 +360,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def org_members_count
-    if is_subgroup?
-      parent.org_members_count
-    else
-      Membership.active.where(group_id: [id, subgroups.pluck(:id)].flatten).pluck(:user_id).uniq.count
-    end
-  end
-
-  def org_max_size
-    if is_subgroup?
-      parent.org_max_size
-    else
-      max_size
-    end
-  end
-
   def add_member!(user, inviter=nil)
     find_or_create_membership(user, inviter)
   end
@@ -433,18 +394,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def has_member?(user)
-    memberships.where(user_id: user.id).any?
-  end
-
-  def has_member_with_email?(email)
-    members.where(email: email).any?
-  end
-
-  def has_membership_request_with_email?(email)
-    membership_requests.where(email: email).any?
-  end
-
   def update_full_name_if_name_changed
     if changes.include?('name')
       update_full_name
@@ -459,24 +408,8 @@ class Group < ActiveRecord::Base
     self.full_name = calculate_full_name
   end
 
-  def has_subscription_plan?
-    subscription.present?
-  end
-
-  def subscription_plan
-    subscription.amount
-  end
-
-  def group_request_description
-    group_request.try :description
-  end
-
   def parent_or_self
-    if parent.present?
-      parent
-    else
-      self
-    end
+    parent || self
   end
 
   def organisation_id
@@ -499,14 +432,6 @@ class Group < ActiveRecord::Base
     Array(id) | subgroup_ids
   end
 
-  def has_subdomain?
-    if is_subgroup?
-      parent.has_subdomain?
-    else
-      subdomain.present?
-    end
-  end
-
   def subdomain
     if is_subgroup?
       parent.subdomain
@@ -523,15 +448,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def financial_nature
-    case is_commercial
-    when nil then 'undefined'
-    when false then 'non-commercial'
-    when true then 'commercial'
-    end
-  end
-
   private
+
   def set_discussions_private_only
     self.discussion_privacy_options = 'private_only'
   end
@@ -611,9 +529,5 @@ class Group < ActiveRecord::Base
     if parent_id.present?
       errors[:base] << "Can't set a subgroup as parent" unless parent.parent_id.nil?
     end
-  end
-
-  def self.with_one_coordinator
-    published.select{ |g| g.admins.count == 1 }
   end
 end

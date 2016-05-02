@@ -1,9 +1,10 @@
 class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
+  include PrettyUrlHelper
 
+  before_filter :ensure_testing_environment
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
-  around_filter :ensure_testing_environment
 
   def index
     @routes = DevelopmentController.action_methods.select do |action|
@@ -20,6 +21,22 @@ class DevelopmentController < ApplicationController
   def accept_last_invitation
     InvitationService.redeem(Invitation.last, max)
     redirect_to(test_group)
+  end
+
+  def setup_login
+    patrick
+    redirect_to new_user_session_url
+  end
+
+  def setup_non_angular_login
+    patrick.update(angular_ui_enabled: false)
+    redirect_to new_user_session_url
+  end
+
+  def setup_non_angular_logged_in_user
+    patrick.update(angular_ui_enabled: false)
+    sign_in patrick
+    redirect_to dashboard_url
   end
 
   def setup_dashboard
@@ -172,18 +189,56 @@ class DevelopmentController < ApplicationController
 
   def setup_explore_groups
     sign_in patrick
-    20.times do |i|
+    30.times do |i|
       explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    redirect_to explore_url
+    Group.limit(15).update_all(name: 'Footloose')
+    redirect_to group_url(Group.last)
   end
 
   def setup_group_with_multiple_coordinators
     test_group.add_admin! emilio
     sign_in patrick
     redirect_to group_url(test_group)
+  end
+
+  def setup_existing_user_invitation
+    test_group
+    judd
+    pending_invitation
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_new_user_invitation
+    test_group
+    pending_invitation
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_used_invitation
+    test_group
+    emilio
+    InvitationService.redeem(pending_invitation, judd)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_accepted_membership_request
+    membership_request = MembershipRequest.new(name: "Judd Nelson", email: "judd@example.com", group: test_group)
+    MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_cancelled_invitation
+    test_group
+    judd
+    InvitationService.cancel(invitation: pending_invitation, actor: patrick)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_team_invitation_link
+    redirect_to InvitationService.shareable_invitation_for(test_group)
   end
 
   def setup_group_for_invitations
@@ -196,6 +251,11 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     pending_invitation
     redirect_to group_url(test_group)
+  end
+
+  def view_homepage_as_visitor
+    patrick
+    redirect_to root_url
   end
 
   def view_secret_group_as_non_member
@@ -336,7 +396,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_proposal
     MotionService.close(test_proposal)
-    redirect_to previous_proposals_group_url(test_group)
+    redirect_to group_previous_proposals_url(test_group)
   end
 
   def setup_proposal_closing_soon
@@ -389,10 +449,6 @@ class DevelopmentController < ApplicationController
 
   def ensure_testing_environment
     raise "Do not call me." if Rails.env.production?
-    tmp, Rails.env = Rails.env, 'test'
-    yield
-  ensure
-    Rails.env = tmp
   end
 
   def cleanup_database

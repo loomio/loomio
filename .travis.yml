@@ -34,11 +34,11 @@ branches:
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
+  - bundle exec rake plugins:acquire[loomio_org]
+  - bundle exec rake travis:prepare
   - RAILS_ENV=test bundle exec rails server > /dev/null &
 
 script:
-  - bundle exec rake plugins:acquire[loomio_org]
-  - bundle exec rake travis:prepare
   - bundle exec rake travis:rspec
   - bundle exec rake travis:cucumber
   - bundle exec rake travis:protractor
@@ -59,7 +59,3 @@ addons:
   code_climate:
     repo_token:
       secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
-
-after_success:
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master"       && bundle exec rake deploy:with_setup loomio-clone master
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "user-testing" && bundle exec rake deploy:with_setup loomio-test user-testing

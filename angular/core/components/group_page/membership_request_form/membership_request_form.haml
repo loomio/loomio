@@ -13,6 +13,7 @@
       .lmo-form-group
         %label{for: "membership-request-email", translate: "membership_request_form.email_label"}
         %input.membership-request-form__email.form-control#membership-request-email{ng-model: "membershipRequest.email", ng-required: "true", ng-disabled: "isLoggedIn()"}
+        %validation_errors{subject: "membershipRequest", field: "email"}
 
       .lmo-form-group
         %label{for: "membership-request-introduction", translate: "membership_request_form.introduction_label"}

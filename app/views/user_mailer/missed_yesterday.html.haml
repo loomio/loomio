@@ -1,22 +1,17 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'thread_mailer'
-  %body
-    .everything
-      %p= t(:'email.missed_yesterday.heres_what_happened')
-      %h1= t(:'email.missed_yesterday.headlines')
-      .toc
-        =render 'user_mailer/missed_yesterday/headlines'
-      %hr
-      - @user.inbox_groups.each do |group|
-        - next unless @discussions_by_group.has_key?(group)
-        %h1= link_to group.full_name, group_url(group)
-        - @discussions_by_group[group].each do |discussion|
-          = render 'user_mailer/missed_yesterday/discussion', discussion: discussion
+.everything
+  %p= t(:'email.missed_yesterday.heres_what_happened')
+  %h1= t(:'email.missed_yesterday.headlines')
+  .toc
+    =render 'user_mailer/missed_yesterday/headlines'
+  %hr
+  - @groups.each do |group|
+    - next unless @discussions_by_group.has_key?(group)
+    %h1= link_to group.full_name, group_url(group)
+    - @discussions_by_group[group].each do |discussion|
+      = render 'user_mailer/missed_yesterday/discussion', discussion: discussion
 
-    %p
-      = t(:'email.missed_yesterday.thanks_for_reading')
-      %img{src: mark_summary_as_read_url_for(@user, format: 'gif'), alt: '', width: 1, height: 1}
-      %br
-    =render 'user_mailer/unsubscribe_link'
+%p
+  = t(:'email.missed_yesterday.thanks_for_reading')
+  %img{src: mark_summary_as_read_url_for(@user, format: 'gif'), alt: '', width: 1, height: 1}
+  %br
+=render 'user_mailer/unsubscribe_link'
