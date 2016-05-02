@@ -3,13 +3,18 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService) ->
+  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService, ModalService, SignInForm) ->
 
     $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
 
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
+
+    $scope.isLoggedIn = AbilityService.isLoggedIn
+
+    $scope.signIn = ->
+      ModalService.open SignInForm, preventClose: -> false
 
     $scope.threadIsPublic = ->
       $scope.discussion.private == false

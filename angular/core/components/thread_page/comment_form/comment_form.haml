@@ -1,4 +1,7 @@
 .blank
+  %section{ng-if: "!showCommentForm()"}
+    %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}
+    %button.btn.btn-block.comment-form__sign-in-btn{translate: "comment_form.sign_in", ng-click: "signIn()", ng-if: "!isLoggedIn()"}
   %section{ng-if: "showCommentForm()", aria-labelledby: "comment-form-title"}
     %form.comment-form{ng_submit: "submit()"}
       .lmo-disabled-form{ng-show: "isDisabled"}

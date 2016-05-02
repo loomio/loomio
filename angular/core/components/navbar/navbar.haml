@@ -29,5 +29,5 @@
         .lmo-navbar__item.lmo-navbar__item--user{ng-if: "isLoggedIn()"}
           %navbar_user_options
       .lmo-navbar__logged-out{ng-if: "!isLoggedIn()"}
-        %button.lmo-navbar__sign-in{ng-click: "goToSignIn()"}>
+        %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
           %span{translate: "navbar.sign_in"}
