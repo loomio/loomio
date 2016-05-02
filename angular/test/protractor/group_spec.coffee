@@ -55,7 +55,6 @@ describe 'Group Page', ->
         staticPage.fillIn '#user_password', 'complex_password'
         staticPage.fillIn '#user_password_confirmation', 'complex_password'
         staticPage.click '#create-account'
-        page.click '.group-welcome-modal__close-button'
         page.expectElement '.lmo-navbar__item--user'
         page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
 

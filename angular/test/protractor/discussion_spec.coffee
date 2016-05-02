@@ -108,7 +108,7 @@ describe 'Discussion Page', ->
 
       page.fillIn '.comment-form__comment-field', 'I am new!'
       page.click '.comment-form__submit-button'
-      page.expectText '.thread-item-body', 'I am new!'
+      page.expectFlash 'Comment added'
 
     it 'allows logged in users to request to join a closed group', ->
       page.loadPath 'view_closed_group_as_non_member', ->
