@@ -22,8 +22,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @openOutcomeModal = ->
+    AbilityService.canCreateOutcomeFor(@proposal) and
     $routeParams.outcome? and
-    AbilityService.canCreateOutcomeFor(@proposal)
+    (delete $routeParams.outcome)
 
   @elementToFocus = ->
     if @proposal
