@@ -1,14 +1,9 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    %p= t(:"email.thread_mailer.motion_closing_soon")
+%p= t(:"email.thread_mailer.motion_closing_soon")
 
-    = render 'motion_with_positions'
+= render 'motion_with_positions'
 
-    - unless @motion.user_has_voted?(@recipient)
-      %h4= t(:"help.have_your_say")
-      =render 'vote_buttons', motion: @motion
+- unless @motion.user_has_voted?(@recipient)
+  %h4= t(:"help.have_your_say")
+  =render 'vote_buttons', motion: @motion
 
-    = render "footer", link: motion_url(@motion, @utm_hash)
+= render "footer", link: motion_url(@motion, @utm_hash)

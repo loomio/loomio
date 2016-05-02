@@ -20,7 +20,6 @@ class UserMailer < BaseMailer
       @discussions_by_group = @discussions.group_by(&:group)
       send_single_mail to: @user.email,
                        subject_key: "email.missed_yesterday.subject",
-                       css: 'missed_yesterday',
                        locale: locale_fallback(user.locale)
     end
   end
