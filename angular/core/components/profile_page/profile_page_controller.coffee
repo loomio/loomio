@@ -1,4 +1,6 @@
 angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig) ->
+  $rootScope.$broadcast('currentComponent', { page: 'profilePage'})
+
   @user = Session.current()
 
   @init = =>

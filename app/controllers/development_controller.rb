@@ -46,6 +46,12 @@ class DevelopmentController < ApplicationController
     redirect_to dashboard_url
   end
 
+  def setup_dashboard_as_visitor
+    patrick
+    recent_discussion
+    redirect_to dashboard_url
+  end
+
   def setup_inbox
     sign_in patrick
     starred_discussion; recent_discussion group: another_test_group
