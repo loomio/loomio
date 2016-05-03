@@ -4,7 +4,6 @@ class BaseMailer < ActionMailer::Base
   include ERB::Util
   include ActionView::Helpers::TextHelper
   include EmailHelper
-  include Roadie::Rails::Automatic
 
   add_template_helper(PrettyUrlHelper)
 
@@ -14,10 +13,6 @@ class BaseMailer < ActionMailer::Base
   protected
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_source: action_name, utm_campaign: mailer_name }
-  end
-
-  def roadie_options
-    super.merge(url_options: {host: ActionMailer::Base.default_url_options[:host]})
   end
 
   def email_subject_prefix(group_name)

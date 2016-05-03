@@ -2,6 +2,13 @@ Loomio::Application.routes.draw do
 
   use_doorkeeper
 
+  constraints(GroupSubdomainConstraints) do
+    get '/' => 'redirect#group_subdomain'
+    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
+    get '/g/:id(/:slug)', to: 'redirect#group_key'
+    get '/m/:id(/:slug)', to: 'redirect#motion_key'
+  end
+
   root to: 'root#index'
 
   resources(:development, only: :index) do
@@ -158,13 +165,6 @@ Loomio::Application.routes.draw do
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create
     end
-  end
-
-  constraints(GroupSubdomainConstraints) do
-    get '/' => 'redirect#group_subdomain'
-    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
-    get '/g/:id(/:slug)', to: 'redirect#group_key'
-    get '/m/:id(/:slug)', to: 'redirect#motion_key'
   end
 
   get '/discussions/:id', to: 'redirect#discussion_id'

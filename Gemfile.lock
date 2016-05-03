@@ -489,6 +489,9 @@ GEM
     premailer (1.8.6)
       css_parser (>= 1.3.6)
       htmlentities (>= 4.0.0)
+    premailer-rails (1.9.2)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     puma (2.15.3)
     rack (1.6.4)
     rack-attack (4.2.0)
@@ -540,12 +543,6 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rinku (1.7.3)
-    roadie (3.1.1)
-      css_parser (~> 1.3.4)
-      nokogiri (>= 1.5.0, < 1.7.0)
-    roadie-rails (1.1.0)
-      railties (>= 3.0, < 4.3)
-      roadie (~> 3.1)
     rspec-activemodel-mocks (1.0.1)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -739,6 +736,7 @@ DEPENDENCIES
   pg (~> 0.18.3)
   poltergeist
   premailer
+  premailer-rails
   private_pub!
   puma
   rack-attack (~> 4.2.0)
@@ -749,7 +747,6 @@ DEPENDENCIES
   rake
   redcarpet (~> 3.2.3)
   rinku
-  roadie-rails (~> 1.1.0)
   rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
