@@ -67,6 +67,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  # to test subdomains in development
+  def setup_group_with_subdomain
+    sign_in patrick
+    test_group.update_attributes(name: 'Ghostbusters', subdomain: 'ghostbusters')
+    redirect_to "http://ghostbusters.lvh.me:3000/"
+  end
+
   def setup_group_as_member
     sign_in jennifer
     redirect_to group_url(test_group)
