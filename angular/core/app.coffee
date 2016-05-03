@@ -63,13 +63,16 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     $scope.pageError = null
     ScrollService.scrollTo(options.scrollTo or 'h1')
     $scope.links = options.links or {}
+    if !AbilityService.isLoggedIn() and _.contains($router.authRequiredComponents, options.page)
+      ModalService.open(SignInForm, preventClose: -> true)
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
 
   $scope.$on 'pageError', (event, error) ->
     $scope.pageError = error
-    ModalService.open(SignInForm, preventClose: -> true) if error.status == 403 and !AbilityService.isLoggedIn()
+    if !AbilityService.isLoggedIn() and error.status == 403
+      ModalService.open(SignInForm, preventClose: -> true)
 
   $scope.$on 'trialIsOverdue', (event, group) ->
     if AbilityService.canAdministerGroup(group) and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
@@ -107,6 +110,16 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
     {path: '/explore', component: 'explorePage'}
   ])
+  $router.authRequiredComponents = [
+    'groupsPage',
+    'dashboardPage',
+    'inboxPage',
+    'profilePage',
+    'emailSettingsPage',
+    'authorizedAppsPage',
+    'registeredAppsPage',
+    'registeredAppPage'
+  ]
 
   Session.login(AppConfig.currentUserData)
 
