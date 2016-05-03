@@ -54,7 +54,6 @@ module Loomio
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.4'
-    config.roadie.url_options = nil
 
     # required for heroku
     config.assets.initialize_on_precompile = false

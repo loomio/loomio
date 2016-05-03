@@ -30,7 +30,6 @@ Loomio::Application.configure do
   config.sass.line_comments = false
 
   config.eager_load = false
-  config.roadie.url_options = {host: 'localhost'}
 
   config.action_controller.action_on_unpermitted_parameters = :raise
 
