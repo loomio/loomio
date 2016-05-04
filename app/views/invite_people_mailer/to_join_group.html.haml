@@ -1,11 +1,13 @@
 %p
+  = @invitation.inviter.name
   = t(:"invitation.link_help", group_name: @invitation.invitable_name)
-  %br
-  = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation, @utm_hash)
+
 %p
-  = simple_format @message_body
+  = link_to image_tag('http://i.imgur.com/FWXRc8c.png'), invitation_url(@invitation, @utm_hash)
+
+%p
+  %em= simple_format @message_body
 %p
   = t(:"invitation.value_proposition")
 %p
   = t(:"invitation.thanks")
-= @invitation.inviter.name
