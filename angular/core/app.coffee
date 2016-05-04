@@ -43,6 +43,9 @@ angular.module('loomioApp', ['ngNewRouter',
 angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, CurrentUser, BootService, AppConfig, ModalService, ChoosePlanModal, AbilityService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
 
+  if document.location.protocol == 'https' && navigator.serviceWorker?
+    navigator.serviceWorker.register(AppConfig.baseUrl + 'service-worker.js', scope: './')
+
   BootService.boot()
 
   $scope.currentComponent = 'nothing yet'
