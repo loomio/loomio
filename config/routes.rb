@@ -208,6 +208,7 @@ Loomio::Application.routes.draw do
   post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
+  get '/manifest'   => 'manifest#show', format: :json
 
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
