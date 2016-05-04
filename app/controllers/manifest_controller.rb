@@ -10,11 +10,11 @@ class ManifestController < ApplicationController
       start_url: '/dashboard',
       background_color: '#ffffff',
       theme_color: '#ffffff',
-      icons: {
+      icons: [{
         src:   [root_url.chomp('/'), :img, :"logo-square.png"].join('/'),
         sizes: '144x144',
         type:  'image/png'
-      }
+      }]
     }
   end
 end
