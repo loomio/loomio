@@ -23,7 +23,7 @@ module Plugins
     end
 
     def fetch
-      `git clone -b #{branch} git@github.com:#{repo}.git #{folder}`
+      `git clone -b #{branch} git://github.com:#{repo} #{folder}`
     end
   end
 end
