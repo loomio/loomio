@@ -6,22 +6,27 @@ class LocateGroupsJob < ActiveJob::Base
 
 
     Group.where(id: group_ids).each do |group|
-      sql = "FROM users
-             INNER JOIN memberships ON
-               memberships.user_id = users.id AND
-               memberships.group_id = #{group.id}
-             GROUP BY 1
-             ORDER BY count(*) DESC
-             LIMIT 1"
 
       ActiveRecord::Base.connection.execute("
-        SELECT * FROM ( SELECT country #{sql} ) country,
-                      ( SELECT region #{sql} ) region,
-                      ( SELECT city #{sql} ) city").each do |row|
+        SELECT * FROM #{most_common(group, "country")},
+                      #{most_common(group, "region")},
+                      #{most_common(group, "city")} ").each do |row|
         group.update_attributes(country: row['country'],
                                 region: row['region'],
                                 city: row['city'])
       end
     end
+  end
+
+  private
+  def most_common(group, column)
+    "(SELECT #{column} FROM users
+     INNER JOIN memberships ON
+       memberships.user_id = users.id AND
+       memberships.group_id = #{group.id}
+     WHERE #{column} IS NOT NULL
+     GROUP BY 1
+     ORDER BY count(*) DESC
+     LIMIT 1) #{column}"
   end
 end
