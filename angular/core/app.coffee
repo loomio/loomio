@@ -44,7 +44,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   $scope.isLoggedIn = AbilityService.isLoggedIn
 
   if document.location.protocol.match(/https/) && navigator.serviceWorker?
-    navigator.serviceWorker.register(AppConfig.baseUrl + 'service-worker.js', scope: './')
+    navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
 
   BootService.boot()
 
