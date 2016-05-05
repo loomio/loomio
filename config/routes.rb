@@ -2,6 +2,13 @@ Loomio::Application.routes.draw do
 
   use_doorkeeper
 
+  constraints(GroupSubdomainConstraints) do
+    get '/' => 'redirect#group_subdomain'
+    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
+    get '/g/:id(/:slug)', to: 'redirect#group_key'
+    get '/m/:id(/:slug)', to: 'redirect#motion_key'
+  end
+
   root to: 'root#index'
 
   resources(:development, only: :index) do
@@ -34,6 +41,7 @@ Loomio::Application.routes.draw do
 
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
+      get :count_explore_results, on: :collection
       patch :archive, on: :member
       put :archive, on: :member
       post :use_gift_subscription, on: :member
@@ -170,13 +178,6 @@ Loomio::Application.routes.draw do
     get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
-  constraints(GroupSubdomainConstraints) do
-    get '/' => 'redirect#group_subdomain'
-    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
-    get '/g/:id(/:slug)', to: 'redirect#group_key'
-    get '/m/:id(/:slug)', to: 'redirect#motion_key'
-  end
-
   get '/discussions/:id', to: 'redirect#discussion_id'
   get '/groups/:id',      to: 'redirect#group_id'
   get '/motions/:id',     to: 'redirect#motion_id'
@@ -207,6 +208,7 @@ Loomio::Application.routes.draw do
   post :email_processor, to: 'griddler/emails#create'
 
   get '/robots'     => 'robots#show'
+  get '/manifest'   => 'manifest#show', format: :json
 
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'

@@ -9,7 +9,6 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
-      @clientReadSequenceId = @lastReadSequenceId
 
     defaultValues: =>
       private: null
@@ -65,24 +64,16 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @activeProposal()?
 
     isUnread: ->
-      # it is read if we've read it to completion clientside, or if we have no reader
-      return false if @readOnClient or !@discussionReaderId?
-      !@lastReadAt? or @unreadActivityCount() > 0
+      @discussionReaderId? and (!@lastReadAt? or @unreadActivityCount() > 0)
+
+    hasUnreadActivity: ->
+      @isUnread() && @unreadActivityCount() > 0
 
     isImportant: ->
       @starred or @hasActiveProposal()
 
-    unreadItemsCount: ->
-      @itemsCount - @readItemsCount
-
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
-
-    unreadCommentsCount: ->
-      @commentsCount - @readCommentsCount
-
-    unreadPosition: ->
-      @clientReadSequenceId + 1
 
     eventIsLoaded: (event) ->
       event.sequenceId or
@@ -119,19 +110,17 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     saveStar: ->
       @remote.patchMember @keyOrId(), if @starred then 'star' else 'unstar'
 
-    markAsRead: (sequenceId) ->
-      return unless @discussionReaderId?
-      if isNaN(sequenceId)
-        sequenceId = @lastSequenceId
-        @update(readItemsCount: @itemsCount,
-                readSalientItemsCount: @salientItemsCount,
-                readCommentsCount: @commentsCount,
-                readOnClient: @sequenceId == @lastSequenceId,
-                lastReadAt: moment())
+    update: (attrs) ->
+      delete attrs.lastReadSequenceId    if attrs.lastReadSequenceId < @lastReadSequenceId
+      delete attrs.readSalientItemsCount if attrs.readSalientItemsCount < @readSalientItemsCount
+      @baseUpdate(attrs)
 
-      if _.isNull(@lastReadAt) or @clientReadSequenceId < sequenceId
-        @remote.patchMember(@keyOrId(), 'mark_as_read', {sequence_id: sequenceId})
-        @update(lastReadSequenceId: sequenceId, clientReadSequenceId: sequenceId)
+    markAsRead: (sequenceId) ->
+      sequenceId = @lastSequenceId if isNaN(sequenceId)
+
+      if @discussionReaderId? and (_.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId)
+        @remote.patchMember @keyOrId(), 'mark_as_read', sequence_id: sequenceId
+        @update(lastReadAt: moment(), lastReadSequenceId: sequenceId)
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }

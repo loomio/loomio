@@ -236,7 +236,7 @@ describe API::DiscussionsController do
         get :show, id: discussion.key
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users groups proposals discussions])
-        expect(json['discussions'][0].keys).to include *(%w[id key title description last_item_at last_comment_at created_at updated_at items_count comments_count private author_id group_id active_proposal_id])
+        expect(json['discussions'][0].keys).to include *(%w[id key title description last_activity_at created_at updated_at items_count private author_id group_id active_proposal_id])
       end
 
       it 'returns the reader fields' do
@@ -528,12 +528,10 @@ describe API::DiscussionsController do
           key
           title
           description
-          last_item_at
-          last_comment_at
+          last_activity_at
           created_at
           updated_at
           items_count
-          comments_count
           private
           active_proposal_id
           author_id

@@ -54,7 +54,6 @@ module Loomio
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.4'
-    config.roadie.url_options = nil
 
     # required for heroku
     config.assets.initialize_on_precompile = false
@@ -101,7 +100,7 @@ module Loomio
       config.action_mailer.delivery_method = :test
     end
 
-    config.action_mailer.default_url_options = {
+    config.action_mailer.default_url_options = config.action_controller.default_url_options = {
       host:     ENV['CANONICAL_HOST'],
       port:     ENV['CANONICAL_PORT'],
       protocol: ENV['FORCE_SSL'] ? 'https' : 'http'

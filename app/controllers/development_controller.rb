@@ -67,6 +67,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  # to test subdomains in development
+  def setup_group_with_subdomain
+    sign_in patrick
+    test_group.update_attributes(name: 'Ghostbusters', subdomain: 'ghostbusters')
+    redirect_to "http://ghostbusters.lvh.me:3000/"
+  end
+
   def setup_group_as_member
     sign_in jennifer
     redirect_to group_url(test_group)
@@ -189,12 +196,13 @@ class DevelopmentController < ApplicationController
 
   def setup_explore_groups
     sign_in patrick
-    20.times do |i|
+    30.times do |i|
       explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    redirect_to explore_url
+    Group.limit(15).update_all(name: 'Footloose')
+    redirect_to group_url(Group.last)
   end
 
   def setup_group_with_multiple_coordinators

@@ -1,8 +1,3 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    %p= t("email.user_added_to_a_group.content", which_group: @group.full_name, who: @inviter.name)
-    %p= link_to group_url(@group), group_url(@group, @utm_hash)
-    %p= @message
+%p= t("email.user_added_to_a_group.content", which_group: @group.full_name, who: @inviter.name)
+%p= link_to group_url(@group), group_url(@group, @utm_hash)
+%p= @message
