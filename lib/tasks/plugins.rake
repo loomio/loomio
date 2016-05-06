@@ -14,7 +14,7 @@ namespace :plugins do
   end
 
   task :install => :environment do
-    require [Rails.root, :plugins, :base].join('/')
+    require Rails.root.join(*%w(lib plugins base))
     Plugins::Repository.install_plugins!
   end
 end
