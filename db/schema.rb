@@ -498,10 +498,8 @@ ActiveRecord::Schema.define(version: 20160506000238) do
     t.datetime "updated_at"
     t.boolean  "single_use",      default: true,  null: false
     t.text     "message"
-    t.integer  "send_count",      default: 0,     null: false
   end
 
-  add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree

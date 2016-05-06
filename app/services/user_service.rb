@@ -42,7 +42,7 @@ class UserService
 
   def self.save_experience(user:, actor:, params:)
     actor.ability.authorize! :update, user
-    user.experienced!(params[:experience]) if params[:experience]
+    user.experienced!(params[:experience])
     EventBus.broadcast('user_save_experience', user, actor, params)
   end
 end

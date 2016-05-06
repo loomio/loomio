@@ -54,20 +54,17 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_new_group
+    group = Group.new(name: 'Fresh group')
+    StartGroupService.start_group(group)
+    group.add_admin! patrick
     sign_in patrick
-    redirect_to group_url(fresh_group)
+    redirect_to group_url(group)
   end
 
   def setup_group
     sign_in patrick
     test_group.add_member! emilio
     redirect_to group_url(test_group)
-  end
-
-  def setup_experienced_user
-    sign_in patrick
-    patrick.experienced!(:"seen_welcome_for_#{fresh_group.key}")
-    redirect_to group_url(fresh_group)
   end
 
   # to test subdomains in development
