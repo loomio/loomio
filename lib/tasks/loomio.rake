@@ -3,6 +3,13 @@ namespace :loomio do
     puts Loomio::Version.current
   end
 
+  task hourly_tasks: :environment do
+    MotionService.close_all_lapsed_motions
+    SendMissedYesterdayEmailJob.perform_later
+    ProposalsClosingSoonJob.perform_later
+    LocateUsersAndGroupsJob.perform_later
+  end
+
   task send_proposal_closing_soon: :environment do
     Delayed::Job.enqueue ProposalsClosingSoonJob.new
   end
