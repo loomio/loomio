@@ -66,6 +66,15 @@ module Development::NintiesMoviesHelper
     @test_group
   end
 
+  def fresh_group
+    unless @fresh_group
+      @fresh_group = Group.new(name: 'Fresh group')
+      StartGroupService.start_group(@fresh_group)
+      @fresh_group.add_admin! patrick
+    end
+    @fresh_group
+  end
+
   def muted_test_group
     unless @muted_test_group
       @muted_test_group = Group.create!(name: 'Muted Point Blank',

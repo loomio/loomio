@@ -204,6 +204,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def experienced!(key, toggle = true)
+    experiences[key] = toggle
+    save
+  end
+
   def deactivate!
     former_group_ids = group_ids
     update_attributes(deactivated_at: Time.now, avatar_kind: "initials")

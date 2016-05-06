@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428005646) do
+ActiveRecord::Schema.define(version: 20160506000238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -270,7 +270,6 @@ ActiveRecord::Schema.define(version: 20160428005646) do
     t.text     "description"
     t.boolean  "uses_markdown",       default: false, null: false
     t.boolean  "is_deleted",          default: false, null: false
-    t.integer  "comments_count",      default: 0,     null: false
     t.integer  "items_count",         default: 0,     null: false
     t.boolean  "private"
     t.string   "key"
@@ -499,8 +498,10 @@ ActiveRecord::Schema.define(version: 20160428005646) do
     t.datetime "updated_at"
     t.boolean  "single_use",      default: true,  null: false
     t.text     "message"
+    t.integer  "send_count",      default: 0,     null: false
   end
 
+  add_index "invitations", ["accepted_at"], name: "index_invitations_on_accepted_at", where: "(accepted_at IS NULL)", using: :btree
   add_index "invitations", ["created_at"], name: "index_invitations_on_created_at", using: :btree
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
@@ -807,6 +808,7 @@ ActiveRecord::Schema.define(version: 20160428005646) do
     t.boolean  "email_on_participation",           default: true,       null: false
     t.integer  "default_membership_volume",        default: 3,          null: false
     t.boolean  "has_muted",                        default: false,      null: false
+    t.jsonb    "experiences",                      default: {},         null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
