@@ -3,13 +3,6 @@ namespace :loomio do
     puts Loomio::Version.current
   end
 
-  task tail_call: :environment do
-    RubyVM::InstructionSequence.compile_option = {
-      :tailcall_optimization => true,
-      :trace_instruction => false
-    }
-  end
-
   task hourly_tasks: :environment do
     MotionService.close_all_lapsed_motions
     SendMissedYesterdayEmailJob.perform_later

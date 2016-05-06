@@ -66,7 +66,7 @@ Unfortunately, it’s not a terribly useful plugin yet, but we can make it bette
 - Run `git init` in the `plugins/loomio_tags` folder
 - git remote add origin `git@github.com:loomio/loomio_tags.git`
 - `git add . && git commit -m “initial commit” && git push origin master`
-- (important, don’t skip!) add a reference to `plugins/plugins.yml`, telling Loomio where to find your plugin on github. That will look like this:
+- (important, don’t skip!) add a reference to `lib/plugins.yml`, telling Loomio where to find your plugin on github. That will look like this:
 
 ```yaml
   plugins:
@@ -85,7 +85,7 @@ rm -rf plugins/loomio_tags
 
 reacquire it:
 ```
-rake plugins:acquire
+rake plugins:fetch
 ```
 
 and run a console again:
@@ -95,7 +95,7 @@ rails c
 
 Which should result another friendly ‘Hello world’ message. Now we know Loomio can run our plugin from anywhere; woot!
 
-(NB: rake plugins:acquire can be a destructive action; it will delete all of the existing plugins on your local instance and replace them with those specified in `plugins.yml`. TL;DR you can easily lose your work if you skip step 5 above, don’t do it!)
+(NB: rake plugins:fetch can be a destructive action; it will delete all of the existing plugins on your local instance and replace them with those specified in `plugins.yml`. TL;DR you can easily lose your work if you skip step 5 above, don’t do it!)
 
 ### PART 2: Add some simple functionality
 
