@@ -52,6 +52,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     $scope.refreshing = true
     $timeout -> $scope.refreshing = false
 
+  if document.location.protocol.match(/https/) && navigator.serviceWorker?
+    navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
+
+  BootService.boot()
+
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
     ModalService.open(GroupForm, group: -> Records.groups.build()) if $location.search().start_group?

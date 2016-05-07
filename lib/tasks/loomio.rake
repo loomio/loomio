@@ -2,12 +2,12 @@ namespace :loomio do
   task :version do
     puts Loomio::Version.current
   end
-  
-  task tail_call: :environment do
-    RubyVM::InstructionSequence.compile_option = {
-      :tailcall_optimization => true,
-      :trace_instruction => false
-    }
+
+  task hourly_tasks: :environment do
+    MotionService.close_all_lapsed_motions
+    SendMissedYesterdayEmailJob.perform_later
+    ProposalsClosingSoonJob.perform_later
+    LocateUsersAndGroupsJob.perform_later
   end
 
   task send_proposal_closing_soon: :environment do
@@ -20,10 +20,6 @@ namespace :loomio do
 
   task send_missed_yesterday_email: :environment do
     SendMissedYesterdayEmail.to_subscribers!
-  end
-
-  task generate_error: :environment do
-    raise "Testing error reporting for rake tasks. Chill, no action requied if you see this"
   end
 
   task refresh_likes: :environment do

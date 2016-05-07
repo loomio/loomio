@@ -52,7 +52,7 @@ gem 'http_accept_language'
 gem 'intercom'
 gem 'intercom-rails'
 # gem 'underscore-rails'
-# gem "font-awesome-sass",  '~> 4.3.2'
+gem "font-awesome-sass",  '~> 4.3.2'
 gem 'mail', github: 'robguthrie/mail', branch: 'memoize-encoded'
 gem 'coffee-rails'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -126,4 +126,8 @@ group :production do
   gem 'dalli'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
+end
+
+Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
+  eval(IO.read(gemfile), binding)
 end

@@ -406,6 +406,6 @@ describe 'Group Page', ->
       page.expectFlash 'You will be emailed about new threads and proposals in all your groups.'
 
   describe 'subdomains', ->
-    fit 'handles subdomain redirects', ->
+    it 'handles subdomain redirects', ->
       page.loadPath 'setup_group_with_subdomain'
       page.expectText '.group-theme__name', 'Ghostbusters'

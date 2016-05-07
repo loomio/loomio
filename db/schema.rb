@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428005646) do
+ActiveRecord::Schema.define(version: 20160505081129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -470,6 +470,9 @@ ActiveRecord::Schema.define(version: 20160428005646) do
     t.integer  "admin_memberships_count",            default: 0,              null: false
     t.integer  "invitations_count",                  default: 0,              null: false
     t.integer  "public_discussions_count",           default: 0,              null: false
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -807,6 +810,9 @@ ActiveRecord::Schema.define(version: 20160428005646) do
     t.boolean  "email_on_participation",           default: true,       null: false
     t.integer  "default_membership_volume",        default: 3,          null: false
     t.boolean  "has_muted",                        default: false,      null: false
+    t.string   "country"
+    t.string   "region"
+    t.string   "city"
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
