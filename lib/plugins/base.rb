@@ -1,4 +1,4 @@
-require "#{Rails.root}/plugins/repository"
+require "#{Rails.root}/lib/plugins/repository"
 
 module Plugins
   class NoCodeSpecifiedError < Exception; end

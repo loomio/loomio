@@ -127,3 +127,7 @@ group :production do
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
 end
+
+Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
+  eval(IO.read(gemfile), binding)
+end
