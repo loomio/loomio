@@ -1,9 +1,10 @@
 angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig) ->
   $rootScope.$broadcast('currentComponent', { page: 'profilePage'})
 
-  @user = Session.current()
 
   @init = =>
+    return unless AbilityService.isLoggedIn()
+    @user = Session.current()
     $translate.use(@user.locale)
   @init()
 

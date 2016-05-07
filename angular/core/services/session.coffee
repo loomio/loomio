@@ -2,6 +2,8 @@ angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig) 
 
   login: (data) ->
     return unless data.current_user and data.current_user.id
+    data.users = data.users || []
+    data.users.push(data.current_user)
     Records.import(data)
 
     _.merge AppConfig,
