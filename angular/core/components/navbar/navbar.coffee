@@ -23,4 +23,4 @@ angular.module('loomioApp').directive 'navbar', ->
       $rootScope.$broadcast 'homePageClicked'
 
     $scope.signIn = ->
-      ModalService.open SignInForm, preventClose: -> false
+      ModalService.open SignInForm

@@ -14,7 +14,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.isLoggedIn = AbilityService.isLoggedIn
 
     $scope.signIn = ->
-      ModalService.open SignInForm, preventClose: -> false
+      ModalService.open SignInForm
 
     $scope.threadIsPublic = ->
       $scope.discussion.private == false
