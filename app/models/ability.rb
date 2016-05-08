@@ -314,5 +314,10 @@ class Ability
       @user.is_logged_in?
     end
 
+    add_additional_abilities
+  end
+
+  def add_additional_abilities
+    # For plugins to add their own abilities
   end
 end
