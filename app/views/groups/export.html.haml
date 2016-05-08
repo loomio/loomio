@@ -1,10 +1,10 @@
 %h1 Export for #{@group.full_name}
 
 
-= render 'export_table', name: 'Groups',      records: @groups,      fields: @group_fields
-= render 'export_table', name: 'Memberships', records: @memberships, fields: @membership_fields
-= render 'export_table', name: 'Invitations', records: @invitations, fields: @invitation_fields
-= render 'export_table', name: 'Discussions', records: @discussions, fields: @discussion_fields
-= render 'export_table', name: 'Comments',    records: @comments,    fields: @comment_fields
-= render 'export_table', name: 'Proposals',   records: @proposals,   fields: @proposal_fields
-= render 'export_table', name: 'Votes',       records: @votes,       fields: @vote_fields
+= render 'export_table', name: 'Groups',      records: @exporter.groups,      fields: @exporter.group_fields
+= render 'export_table', name: 'Memberships', records: @exporter.memberships, fields: @exporter.membership_fields
+= render 'export_table', name: 'Invitations', records: @exporter.invitations, fields: @exporter.invitation_fields
+= render 'export_table', name: 'Discussions', records: @exporter.discussions, fields: @exporter.discussion_fields
+= render 'export_table', name: 'Comments',    records: @exporter.comments,    fields: @exporter.comment_fields
+= render 'export_table', name: 'Proposals',   records: @exporter.proposals,   fields: @exporter.proposal_fields
+= render 'export_table', name: 'Votes',       records: @exporter.votes,       fields: @exporter.vote_fields
