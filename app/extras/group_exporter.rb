@@ -10,6 +10,7 @@ class GroupExporter
               :field_names
 
   def initialize(group)
+    @group = group
     @groups = Group.where(id: group.id_and_subgroup_ids)
     @group_fields = %w[id key name description created_at]
 
@@ -36,6 +37,9 @@ class GroupExporter
 
   def to_csv(opts = {})
     CSV.generate(opts) do |csv|
+      csv << ["Export for #{@group.full_name}"]
+      csv << []
+      
       csv_append(csv, @group_fields, @groups, "Groups")
       csv_append(csv, @membership_fields, @memberships, "Memberships")
       csv_append(csv, @discussion_fields, @discussions, "Discussions")
