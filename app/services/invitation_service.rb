@@ -76,7 +76,7 @@ class InvitationService
     Events::InvitationAccepted.publish!(membership)
   end
 
-  def self.resend_ignored(send_count:, age_in_hours:)
-    Invitation.ignored(send_count, age_in_hours).each { |invitation| resend invitation  }
+  def self.resend_ignored(send_count:, since:)
+    Invitation.ignored(send_count, since).each { |invitation| resend invitation  }
   end
 end

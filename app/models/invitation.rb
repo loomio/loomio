@@ -26,7 +26,7 @@ class Invitation < ActiveRecord::Base
   scope :pending, -> { not_cancelled.single_use.where(accepted_at: nil) }
   scope :shareable, -> { not_cancelled.where(single_use: false) }
   scope :single_use, -> { not_cancelled.where(single_use: true) }
-  scope :ignored, -> (send_count, age_in_hours) { pending.where('send_count = ? AND created_at < ?', send_count, age_in_hours.hours.ago) }
+  scope :ignored, -> (send_count, since) { pending.where(send_count: send_count).where('created_at < ?', since) }
 
   alias :group :invitable
 
