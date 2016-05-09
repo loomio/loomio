@@ -61,3 +61,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
           thread.update(discussionReaderVolume: null)
         _.each @memberships(), (membership) ->
           membership.update(volume: volume)
+
+    hasExperienced: (key) ->
+      @experiences[key]
