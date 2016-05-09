@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
 
   def export
     @exporter = GroupExporter.new(load_and_authorize(:group, :export))
-    if request[:format] == 'xls'
-      render content_type: 'application/vnd.ms-excel', layout: false
+    if ['csv', 'xls'].include? request.format
+      send_data @exporter.to_csv
     else
       render layout: false
     end

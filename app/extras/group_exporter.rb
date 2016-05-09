@@ -33,4 +33,24 @@ class GroupExporter
 
     @field_names = {motion_name: :proposal_title, invitable_id: :group_id, motion_id: :proposal_id}
   end
+
+  def to_csv(opts = {})
+    CSV.generate(opts) do |csv|
+      csv_append(csv, @group_fields, @groups, "Groups")
+      csv_append(csv, @membership_fields, @memberships, "Memberships")
+      csv_append(csv, @discussion_fields, @discussions, "Discussions")
+      csv_append(csv, @comment_fields, @comments, "Comments")
+      csv_append(csv, @proposal_fields, @proposals, "Proposals")
+      csv_append(csv, @vote_fields, @votes, "Votes")
+    end
+  end
+
+  private
+
+  def csv_append(csv, fields, models, title)
+    csv << ["#{title} (#{models.length})"]
+    csv << fields.map(&:humanize)
+    models.each { |model| csv << fields.map { |field| model.send(field) } }
+    csv << []
+  end
 end
