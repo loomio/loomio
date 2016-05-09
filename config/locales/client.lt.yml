@@ -128,10 +128,8 @@ lt:
     start_a_proposal: Pateikti pasiūlymą
     edit_proposal: Redaguoti pasiūlymą
     what_does_a_proposal_do: 'Pasiūlymai parodo, ką kiekvienas žmogus mano apie tam tikrą veiksmų planą.'
-    title_placeholder: 'Pvz: Skristi į mėnulį'
     title_label: Antraštė
     details_label: Išsamesnė Informacija
-    details_placeholder: 'Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų pritarti arba nepritarti, arba dar kažką.'
   discussion_form:
     new_discussion_title: Kurti naują giją
     edit_discussion_title: Redaguoti giją
