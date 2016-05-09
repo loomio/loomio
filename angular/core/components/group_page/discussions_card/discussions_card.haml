@@ -14,7 +14,7 @@
 
   .discussions-card__list
     %section.thread-preview-collection__container{ng-if: "discussions.any()"}
-      %thread_preview_collection.thread-previews-container{query: "discussions"}
-    .lmo-show-more{ng-if: "canLoadMoreDiscussions"}
+      %thread_preview_collection.thread-previews-container{query: "discussions", limit: "threadLimit"}
+    .lmo-show-more{ng-if: "canLoadMoreDiscussions()"}
       %button.discussions-card__show-more{ng-hide: "loadMoreExecuting", ng-click: "loadMore()", translate: "common.action.show_more"}
     %loading{ng-show: "loadMoreExecuting"}
