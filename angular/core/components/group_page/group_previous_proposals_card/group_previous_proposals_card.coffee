@@ -13,3 +13,6 @@ angular.module('loomioApp').directive 'groupPreviousProposalsCard', ->
 
     $scope.lastVoteByCurrentUser = (proposal) ->
       proposal.lastVoteByUser(CurrentUser)
+
+    $scope.showMorePreviousProposals = ->
+      $scope.group.closedMotionsCount > 3

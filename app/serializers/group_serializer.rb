@@ -37,7 +37,8 @@ class GroupSerializer < ActiveModel::Serializer
              :subscription_payment_method,
              :subscription_expires_at,
              :is_subgroup_of_hidden_parent,
-             :show_legacy_trial_expired_modal
+             :show_legacy_trial_expired_modal,
+             :closed_motions_count
 
   has_one :parent, serializer: GroupSerializer, root: 'groups'
 
