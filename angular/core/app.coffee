@@ -13,7 +13,8 @@ angular.module('loomioApp', ['ngNewRouter',
                              'checklist-model',
                              'monospaced.elastic',
                              'angularMoment',
-                             'offClick']).config ($locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
+                             'offClick',
+                             'ngMaterial']).config ($locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
 
   # this should make stuff faster but you need to add "animated" class to animated things.
   # http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm

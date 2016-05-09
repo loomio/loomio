@@ -6,9 +6,11 @@ concat = require 'gulp-concat'
 sass   = require 'gulp-sass'
 cssmin = require 'gulp-cssmin'
 rename = require 'gulp-rename'
+replace = require 'gulp-replace'
 
 module.exports = ->
   pipe gulp.src(paths.core.scss), [
+    replace('screen\\0','screen'),                 # workaround for https://github.com/angular/material/issues/6304
     concat('app.css'),                             # concatenate scss files
     sass(includePaths: paths.core.scss_include),   # convert scss to css (include vendor path for @imports)
     gulp.dest(paths.dist.assets),                  # write assets/app.css
@@ -18,6 +20,7 @@ module.exports = ->
   ]
 
   pipe gulp.src(paths.core.print), [
+    replace('screen\\0','screen'),
     concat('print.css'),                           # concatenate scss files
     sass(includePaths: paths.core.scss_include),   # convert scss to css
     gulp.dest(paths.dist.assets),                  # write assets/print.css
