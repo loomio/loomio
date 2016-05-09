@@ -5,18 +5,13 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   replace: true
   controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService, CurrentUser) ->
     $scope.threadLimit = $scope.pageWindow.current
-    $scope.discussions = []
-
-    $scope.updateDiscussions = (data = {}) ->
-      $scope.discussions = ThreadQueryService.groupQuery($scope.group, { filter: 'all', queryType: 'all' })
+    $scope.discussions = ThreadQueryService.groupQuery($scope.group, filter: 'all', queryType: 'all')
 
     $scope.loadMore = ->
-      options =
-        from:     $scope.pageWindow.current
-        per:      $scope.pageWindow.pageSize
+      current = $scope.pageWindow.current
       $scope.pageWindow.current += $scope.pageWindow.pageSize
       $scope.threadLimit        += $scope.pageWindow.pageSize
-      Records.discussions.fetchByGroup($scope.group.key, options).then $scope.updateDiscussions
+      Records.discussions.fetchByGroup($scope.group.key, from: current, per: $scope.pageWindow.pageSize)
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
     $scope.loadMore()
@@ -53,5 +48,5 @@ angular.module('loomioApp').directive 'discussionsCard', ->
       else
         'membership_is_invitation_by_admin_only'
 
-    $scope.isMemberOfGroup = ->
-      CurrentUser.membershipFor($scope.group)?
+    $scope.canStartThread = ->
+      AbilityService.canStartThread($scope.group)
