@@ -10,18 +10,6 @@ namespace :loomio do
     LocateUsersAndGroupsJob.perform_later
   end
 
-  task send_proposal_closing_soon: :environment do
-    Delayed::Job.enqueue ProposalsClosingSoonJob.new
-  end
-
-  task close_lapsed_motions: :environment do
-    MotionService.close_all_lapsed_motions
-  end
-
-  task send_missed_yesterday_email: :environment do
-    SendMissedYesterdayEmail.to_subscribers!
-  end
-
   task resend_ignored_invitations: :environment do
     InvitationService.resend_ignored(send_count: 1, age_in_hours: 24)
     InvitationService.resend_ignored(send_count: 2, age_in_hours: 72)
