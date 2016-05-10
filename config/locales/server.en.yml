@@ -28,6 +28,8 @@ en:
       link: Join the discussion
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
+    resend_to_join_group:
+      subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
     to_start_group:
       subject: 'Set up your new Loomio group: %{group_name}'
     user_added_to_a_group:
