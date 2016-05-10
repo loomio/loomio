@@ -10,18 +10,6 @@ namespace :loomio do
     LocateUsersAndGroupsJob.perform_later
   end
 
-  task send_proposal_closing_soon: :environment do
-    Delayed::Job.enqueue ProposalsClosingSoonJob.new
-  end
-
-  task close_lapsed_motions: :environment do
-    MotionService.close_all_lapsed_motions
-  end
-
-  task send_missed_yesterday_email: :environment do
-    SendMissedYesterdayEmail.to_subscribers!
-  end
-
   task refresh_likes: :environment do
     progress_bar = ProgressBar.create( format: "(\e[32m%c/%C\e[0m) %a |%B| \e[31m%e\e[0m ", progress_mark: "\e[32m/\e[0m", total: Comment.count )
 

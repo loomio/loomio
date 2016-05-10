@@ -72,7 +72,8 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       Session.current().id == group.creatorId
 
     canStartThread: (group) ->
-      group.membersCanStartDiscussions or @canAdministerGroup(group)
+      @canAdministerGroup(group) or
+      (CurrentUser.isMemberOf(group) and group.membersCanStartDiscussions)
 
     canAddMembers: (group) ->
       @canAdministerGroup(group) or
@@ -114,6 +115,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canViewGroup: (group) ->
       !group.privacyIsSecret() or
       Session.current().isMemberOf(group)
+
+    canViewPrivateContent: (group) ->
+      CurrentUser.isMemberOf(group)
 
     canViewMemberships: (group) ->
       Session.current().isMemberOf(group)

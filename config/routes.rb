@@ -202,6 +202,7 @@ Loomio::Application.routes.draw do
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 
+  get 'g/:key/export'                      => 'groups#export',    as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
   get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
   get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
