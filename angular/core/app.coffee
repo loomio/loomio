@@ -62,7 +62,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     IntercomService.boot()
     MessageChannelService.subscribe()
 
-  User.login(AppConfig.currentUserData)
+  Session.login(AppConfig.currentUserData)
   $scope.$on 'loggedIn', (event, user) ->
     IntercomService.boot()
     MessageChannelService.subscribe()

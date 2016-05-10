@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   around_filter :user_time_zone, if: :user_signed_in?
 
   before_filter :set_app_config, only: [:show, :index]
-  before_filter :ensure_angular, only: [:show, :index]
+  before_filter :ensure_angular_ui, only: [:show, :index]
   before_filter :set_metadata, only: :show
 
   # intercom

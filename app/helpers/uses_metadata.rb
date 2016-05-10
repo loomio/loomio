@@ -5,7 +5,7 @@ module UsesMetadata
     if request.format == :xml
       load_resource_by_key
     else
-      boot_angular_ui
+      render :index, layout: false
     end
   end
 
