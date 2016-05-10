@@ -1,7 +1,7 @@
 class UserMailerPreview < ActionMailer::Preview
   def missed_yesterday
     user = FactoryGirl.create(:user)
-    1.times do
+    3.times do
       group = FactoryGirl.create(:group)
       group.add_admin!(user)
       discussion = FactoryGirl.build(:discussion, group: group, author: user)

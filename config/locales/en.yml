@@ -1104,13 +1104,16 @@ en:
   webhooks:
     slack:
       motion_closed: "*%{name}* has closed"
+      motion_closed_by_user: "*%{name}* has been closed by *%{author}*"
       motion_closing_soon: "*%{name}* has a proposal closing in 24 hours"
       motion_outcome_created: "*%{author}* published an outcome in *%{name}*"
       motion_outcome_updated: "*%{author}* updated the outcome for *%{name}*"
       new_motion: "*%{author}* started a new proposal in *%{name}*"
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
+      new_comment: "*%{author}* posted a new comment in *%{name}*"
       new_discussion: "*%{author}* started a new discussion in *%{group}*"
       view_it_on_loomio: View it on Loomio
+      have_your_say: Have your say
       position_verbs:
         'yes': agreed on
         'no': disagreed on

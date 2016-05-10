@@ -21,4 +21,7 @@ angular.module('loomioApp').directive 'threadPreview', ->
 
     $scope.undo = -> $scope.changeVolume($scope.previousVolume)
 
+    $scope.translationData = (thread) ->
+      position: $scope.lastVoteByCurrentUser(thread).position
+
     return

@@ -1,11 +1,10 @@
 - vote = item.eventable
 - position = vote.position
-- ditem = DiscussionItems::NewVote.new(item.eventable)
 
 %table
   %tr
     %td.icon.activity-icon
-      = image_tag "thread_mailer/#{position}-24.png"
+      = image_tag "thread_mailer/#{position}-24.png", alt: "#{vote.position} icon"
     %td.content
       %b= vote.author.name
       - past_tense_position = I18n.t("position_verbs.past_tense.#{position}")

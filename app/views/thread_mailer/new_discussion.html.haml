@@ -1,13 +1,8 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    %p= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
+%p= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
 
-    %p
-      %strong= link_to @discussion.title, discussion_url(@discussion, @utm_hash)
+%p
+  %strong= link_to @discussion.title, discussion_url(@discussion, @utm_hash)
 
-    = render_rich_text(@discussion.description, @discussion.uses_markdown)
+= render_rich_text(@discussion.description, @discussion.uses_markdown)
 
-    = render 'footer', link: discussion_url(@discussion, @utm_hash)
+= render "footer", link: discussion_url(@discussion, @utm_hash)

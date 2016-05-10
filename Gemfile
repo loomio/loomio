@@ -44,15 +44,15 @@ gem 'airbrake'
 gem 'browser', '~> 1.1.0'
 gem 'fog'
 gem 'thin'
-gem 'roadie-rails', '~> 1.1.0'
+gem 'premailer-rails'
 gem 'sequenced', '~> 2.0.0'
 # gem 'closure_tree', '~> 5.2.0'
 gem 'bing_translator'
 gem 'http_accept_language'
 gem 'intercom'
-# gem 'intercom-rails'
+gem 'intercom-rails'
 # gem 'underscore-rails'
-# gem "font-awesome-sass",  '~> 4.3.2'
+gem "font-awesome-sass",  '~> 4.3.2'
 gem 'mail', github: 'robguthrie/mail', branch: 'memoize-encoded'
 gem 'coffee-rails'
 gem 'sprockets-rails', require: 'sprockets/railtie'
@@ -127,4 +127,8 @@ group :production do
   gem 'dalli'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
+end
+
+Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
+  eval(IO.read(gemfile), binding)
 end

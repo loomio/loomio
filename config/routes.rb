@@ -2,6 +2,13 @@ Loomio::Application.routes.draw do
 
   use_doorkeeper
 
+  constraints(GroupSubdomainConstraints) do
+    get '/' => 'redirect#group_subdomain'
+    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
+    get '/g/:id(/:slug)', to: 'redirect#group_key'
+    get '/m/:id(/:slug)', to: 'redirect#motion_key'
+  end
+
   root to: 'root#index'
 
   resources(:development, only: :index) do
@@ -34,6 +41,7 @@ Loomio::Application.routes.draw do
 
     resources :groups, only: [:index, :show, :create, :update] do
       get :subgroups, on: :member
+      get :count_explore_results, on: :collection
       patch :archive, on: :member
       put :archive, on: :member
       post :use_gift_subscription, on: :member
@@ -159,13 +167,6 @@ Loomio::Application.routes.draw do
     end
   end
 
-  constraints(GroupSubdomainConstraints) do
-    get '/' => 'redirect#group_subdomain'
-    get '/d/:id(/:slug)', to: 'redirect#discussion_key'
-    get '/g/:id(/:slug)', to: 'redirect#group_key'
-    get '/m/:id(/:slug)', to: 'redirect#motion_key'
-  end
-
   get '/discussions/:id', to: 'redirect#discussion_id'
   get '/groups/:id',      to: 'redirect#group_id'
   get '/motions/:id',     to: 'redirect#motion_id'
@@ -195,23 +196,26 @@ Loomio::Application.routes.draw do
   post :contact, to: 'contact_messages#create', as: :contact
   post :email_processor, to: 'griddler/emails#create'
 
-  get '/robots'     => 'robots#show'
-
-  get 'index'                              => 'application#index', format: :js, as: :boot
 
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 
+  get 'g/:key/export'                      => 'groups#export',    as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
   get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
   get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
   get 'u/:username/'                       => 'users#show',       as: :user
+
+  get '/robots'                            => 'robots#show',       format: :txt, as: :robots
+  get '/manifest'                          => 'manifest#show',     format: :json, as: :manifest
+  get '/index'                             => 'application#index', format: :js
 
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'inbox'                              => 'application#index', as: :inbox
   get 'groups'                             => 'application#index', as: :groups
   get 'explore'                            => 'application#index', as: :explore
   get 'profile'                            => 'application#index', as: :profile
+  get 'email_preferences'                  => 'application#index', as: :email_preferences
   get 'apps/registered'                    => 'application#index'
   get 'apps/authorized'                    => 'application#index'
   get 'apps/registered/:id'                => 'application#index'

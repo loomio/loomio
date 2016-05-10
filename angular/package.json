@@ -35,7 +35,7 @@
     "angular-translate": "~2.7.2",
     "angular-translate-loader-url": "~2.7.2",
     "angular-ui-bootstrap": "~> 0.14.3",
-    "angular_record_store": "git://github.com/loomio/angular_record_store.git#2.3.2",
+    "angular_record_store": "~2.6.0",
     "bootstrap-sass": "~> 3.3.5",
     "checklist-model": "latest",
     "emojione": "^2.1.0",

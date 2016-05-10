@@ -17,8 +17,9 @@
     text-align: center;
   }
   ul {
-    list-style: none !important;
-    margin-bottom: 15px;
+    list-style-type: none !important;
+    margin: 0 auto 15px;
+    width: 75%;
     text-align: center;
     li {
         margin-bottom: 7px;

@@ -1,9 +1,4 @@
-= render '/application/mailer_doctype'
-%html
-  %head
-    = stylesheet_link_tag 'email'
-  %body
-    %p= t('email.comment_replied_to.context', discussion_title: @discussion.title, author_name: @author.name)
-    = render_rich_text(@reply.body, @reply.uses_markdown)
-    = render "attachments", comment: @reply if @reply.attachments.any?
-    = render "footer", link: comment_url_helper(@reply)
+%p= t('email.comment_replied_to.context', discussion_title: @discussion.title, author_name: @author.name)
+= render_rich_text(@reply.body, @reply.uses_markdown)
+= render "attachments", comment: @reply if @reply.attachments.any?
+= render "footer", link: comment_url_helper(@reply)

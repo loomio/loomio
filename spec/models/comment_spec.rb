@@ -27,11 +27,6 @@ describe Comment do
   end
 
   describe "#destroy" do
-    it "calls discussion.commented_deleted!" do
-      expect(comment.discussion).to receive(:comment_destroyed!)
-      comment.destroy
-    end
-
     it "destroys comment votes" do
       CommentService.like(comment: comment, actor: user)
       expect(CommentVote.where(comment_id: comment.id,
@@ -78,4 +73,3 @@ describe Comment do
     end
   end
 end
-

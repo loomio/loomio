@@ -387,3 +387,8 @@ describe 'Group Page', ->
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'
       page.expectFlash 'You will be emailed about new threads and proposals in all your groups.'
+
+  describe 'subdomains', ->
+    it 'handles subdomain redirects', ->
+      page.loadPath 'setup_group_with_subdomain'
+      page.expectText '.group-theme__name', 'Ghostbusters'

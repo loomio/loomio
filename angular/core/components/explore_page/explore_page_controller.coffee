@@ -1,6 +1,7 @@
 angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootScope, $timeout, AppConfig, LoadingService) ->
 
   @groupIds = []
+  @resultsCount = 0
   @perPage = AppConfig.pageSize.exploreGroups
   @canLoadMoreGroups = true
   @query = ""
@@ -10,6 +11,8 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
     Records.groups.find(@groupIds)
 
   @handleSearchResults = (response) =>
+    Records.groups.getExploreResultsCount(@query).then (data) =>
+      @resultsCount = data.count
     @groupIds = @groupIds.concat _.pluck(response.groups, 'id')
     @canLoadMoreGroups = (response.groups || []).length == @perPage
 

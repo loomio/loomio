@@ -30,12 +30,7 @@ mobile/plugins/cordova-plugin-whitelist
 mobile/www/client
 
 disabled_plugins/
-plugins/*/
-plugins/Gemfile
-!plugins/*.rb
-!plugins/*.md
-!plugins/loomio_org.yml
-!plugins/plugins.example.yml
+/plugins/
 
 # NB: To reveal a plugin to hack on it locally, add a line here telling .gitignore to reveal it:
 # !plugins/my_awesome_plugin

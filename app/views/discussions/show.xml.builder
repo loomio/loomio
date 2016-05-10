@@ -1,13 +1,13 @@
 atom_feed do |feed|
   feed.title @discussion.title
   feed.subtitle @discussion.description
-  feed.updated(@activity.min_by(&:created_at).created_at) if @activity.any?
+  feed.updated(@discussion.items.min_by(&:created_at).created_at) if @discussion.items.any?
 
-  @activity.each do |event|
+  @discussion.items.each do |event|
     next if event.eventable.nil?
     next unless event.eventable.valid?
 
-    item = xml_item(event)
+    item = event.eventable if event.kind == :new_comment
     next if item.nil?
     next if item.author.blank?
     feed.entry(event, url: discussion_url(@discussion)) do |entry|

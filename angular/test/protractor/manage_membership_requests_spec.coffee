@@ -4,6 +4,8 @@ describe 'Managing membership requests', ->
   groupsHelper = require './helpers/groups_helper.coffee'
   emailHelper = require './helpers/email_helper.coffee'
   flashHelper = require './helpers/flash_helper.coffee'
+  page        = require './helpers/page_helper.coffee'
+  staticPage  = require './helpers/static_page_helper.coffee'
 
   beforeEach ->
     membershipRequestsHelper.loadWithMembershipRequests()
@@ -32,6 +34,15 @@ describe 'Managing membership requests', ->
       membershipRequestsHelper.clickApproveButton()
       expect(flashHelper.flashMessage()).toContain('Membership request approved')
 
+    it 'allows the user to join the group', ->
+      staticPage.loadPath 'setup_accepted_membership_request'
+      staticPage.click 'a[href]'
+      staticPage.fillIn '#user_password', 'gh0stmovie'
+      staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
+      staticPage.click '#create-account'
+
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+      page.expectText '.members-card__list', 'JN'
 
   describe 'ignoring a membership request', ->
 

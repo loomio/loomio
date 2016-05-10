@@ -3,6 +3,7 @@ module ConfigHelper
   def set_app_config
     @appConfig ||= {
       version:             Loomio::Version.current,
+      showWelcomeModal:    !current_user_or_visitor.angular_ui_enabled?,
       reportErrors:        false,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),

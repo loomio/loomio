@@ -28,6 +28,17 @@ class DevelopmentController < ApplicationController
     redirect_to new_user_session_url
   end
 
+  def setup_non_angular_login
+    patrick.update(angular_ui_enabled: false)
+    redirect_to new_user_session_url
+  end
+
+  def setup_non_angular_logged_in_user
+    patrick.update(angular_ui_enabled: false)
+    sign_in patrick
+    redirect_to dashboard_url
+  end
+
   def setup_dashboard
     sign_in patrick
     starred_proposal_discussion; proposal_discussion; starred_discussion
@@ -54,6 +65,13 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group.add_member! emilio
     redirect_to group_url(test_group)
+  end
+
+  # to test subdomains in development
+  def setup_group_with_subdomain
+    sign_in patrick
+    test_group.update_attributes(name: 'Ghostbusters', subdomain: 'ghostbusters')
+    redirect_to "http://ghostbusters.lvh.me:3000/"
   end
 
   def setup_group_as_member
@@ -178,12 +196,13 @@ class DevelopmentController < ApplicationController
 
   def setup_explore_groups
     sign_in patrick
-    20.times do |i|
+    30.times do |i|
       explore_group = Group.new(name: Faker::Name.name, group_privacy: 'open', is_visible_to_public: true)
       GroupService.create(group: explore_group, actor: patrick)
       explore_group.update_attribute(:memberships_count, i)
     end
-    redirect_to explore_url
+    Group.limit(15).update_all(name: 'Footloose')
+    redirect_to group_url(Group.last)
   end
 
   def setup_group_with_multiple_coordinators
@@ -209,6 +228,12 @@ class DevelopmentController < ApplicationController
     test_group
     emilio
     InvitationService.redeem(pending_invitation, judd)
+    redirect_to last_email_development_index_path
+  end
+
+  def setup_accepted_membership_request
+    membership_request = MembershipRequest.new(name: "Judd Nelson", email: "judd@example.com", group: test_group)
+    MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
     redirect_to last_email_development_index_path
   end
 
