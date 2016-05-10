@@ -62,11 +62,11 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     @group.noInvitationsSent() and
     !@group.trialIsOverdue() and
     !@subscriptionSuccess and
-    !CurrentUser.hasExperienced("welcomeFor#{@group.key}")
+    !CurrentUser.hasExperienced("welcomeModal", @group)
 
   @handleWelcomeModal = =>
     if @showWelcomeModel()
-      Records.users.saveExperience("welcomeFor#{@group.key}")
-      ModalService.open GroupWelcomeModal
+      ModalService.open(GroupWelcomeModal)
+      Records.memberships.saveExperience("welcomeModal", CurrentUser.membershipFor(@group))
 
   return

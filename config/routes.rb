@@ -62,6 +62,7 @@ Loomio::Application.routes.draw do
       member do
         post :make_admin
         post :remove_admin
+        post :save_experience
         patch :set_volume
       end
     end

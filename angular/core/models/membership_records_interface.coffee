@@ -43,3 +43,6 @@ angular.module('loomioApp').factory 'MembershipRecordsInterface', (BaseRecordsIn
 
     removeAdmin: (membership) ->
       @remote.postMember membership.id, "remove_admin"
+
+    saveExperience: (experience, membership) =>
+      @remote.postMember(membership.id, "save_experience", experience: experience)

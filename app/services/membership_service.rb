@@ -46,4 +46,10 @@ class MembershipService
   def self.suspend_membership!(membership:)
     membership.suspend!
   end
+
+  def self.save_experience(membership:, actor:, params:)
+    actor.ability.authorize! :update, membership
+    membership.experienced!(params[:experience])
+    EventBus.broadcast('membership_save_experience', membership, actor, params)
+  end
 end

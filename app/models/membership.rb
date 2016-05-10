@@ -67,6 +67,11 @@ class Membership < ActiveRecord::Base
       where('discussion_readers.user_id = ?', user_id)
   end
 
+  def experienced!(key, toggle = true)
+    experiences[key] = toggle
+    save
+  end
+
   private
 
   def leave_subgroups_of_hidden_parents
