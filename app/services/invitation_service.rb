@@ -26,15 +26,15 @@ class InvitationService
                                                message: message,
                                                inviter: inviter)
 
-      InvitePeopleMailer.delay.to_join_group(invitation: invitation,
-                                             locale: I18n.locale)
+      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
+                                                          locale: I18n.locale)
       invitation
     end
   end
 
   def self.resend(invitation)
     return unless invitation.is_pending?
-    InvitePeopleMailer.delay.to_join_group(invitation: invitation,
+    InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
                                            locale: I18n.locale,
                                            subject_key: "email.resend_to_join_group.subject")
     invitation
