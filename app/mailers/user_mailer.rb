@@ -16,6 +16,7 @@ class UserMailer < BaseMailer
 
     @reader_cache = DiscussionReaderCache.new(user: @user, discussions: @discussions)
 
+    puts [@discussions.empty?, @user.groups.empty?].inspect
     unless @discussions.empty? or @user.groups.empty?
       @discussions_by_group = @discussions.group_by(&:group)
       send_single_mail to: @user.email,
