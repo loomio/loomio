@@ -6,6 +6,7 @@ namespace :loomio do
   task hourly_tasks: :environment do
     MotionService.close_all_lapsed_motions
     SendMissedYesterdayEmailJob.perform_later
+    ResendIgnoredInvitationsJob.perform_later
     ProposalsClosingSoonJob.perform_later
     LocateUsersAndGroupsJob.perform_later
   end
