@@ -42,7 +42,7 @@ module AngularHelper
         exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
       },
       oauthProviders: [
-        ({ name: :facebook, href: user_omniauth_authorize_path(:facebook) } if ENV['FACEBOOK_ID']),
+        ({ name: :facebook, href: user_omniauth_authorize_path(:facebook) } if ENV['FACEBOOK_KEY']),
         ({ name: :twitter,  href: user_omniauth_authorize_path(:twitter)  } if ENV['TWITTER_KEY']),
         ({ name: :google,   href: user_omniauth_authorize_path(:google)   } if ENV['OMNI_CONTACTS_GOOGLE_KEY']),
         ({ name: :github,   href: user_omniauth_authorize_path(:github)   } if ENV['GITHUB_APP_ID'])
