@@ -27,7 +27,13 @@ module ConfigHelper
         groupThreads:      ENV['GROUP_PAGE_SIZE'],
         threadItems:       ENV['THREAD_PAGE_SIZE'],
         exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
-      }
+      },
+      oauthProviders: [
+        ({ name: :facebook, href: user_omniauth_authorize_path(:facebook) } if ENV['FACEBOOK_KEY']),
+        ({ name: :twitter,  href: user_omniauth_authorize_path(:twitter)  } if ENV['TWITTER_KEY']),
+        ({ name: :google,   href: user_omniauth_authorize_path(:google)   } if ENV['OMNI_CONTACTS_GOOGLE_KEY']),
+        ({ name: :github,   href: user_omniauth_authorize_path(:github)   } if ENV['GITHUB_APP_ID'])
+      ].compact
     }
   end
 
@@ -48,16 +54,7 @@ module ConfigHelper
           path: "subscribe/#{Rails.application.secrets.chargify_plus_plan_key}/#{Rails.application.secrets.chargify_plus_plan_name}"
         }
       },
-      donation_url: Rails.application.secrets.chargify_donation_url,
-    }
-  end
-
-  def app_config_intercom
-    return unless Rails.application.secrets.intercom_app_id && current_user_or_visitor.is_logged_in?
-    {
-      appId:    Rails.application.secrets.intercom_app_id,
-      secret:   Rails.application.secrets.intercom_app_secret,
-      userHash: Digest::SHA1.hexdigest(Rails.application.secrets.intercom_app_secret+current_user.id.to_s)
+      donation_url: Rails.application.secrets.chargify_donation_url
     }
   end
 end

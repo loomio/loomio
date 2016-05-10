@@ -3,13 +3,18 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FormService, Records, User, KeyEventService, AbilityService, ScrollService, EmojiService) ->
+  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService, ModalService, SignInForm) ->
 
     $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
 
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
+
+    $scope.isLoggedIn = AbilityService.isLoggedIn
+
+    $scope.signIn = ->
+      ModalService.open SignInForm
 
     $scope.threadIsPublic = ->
       $scope.discussion.private == false
@@ -57,7 +62,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.updateMentionables = (fragment) ->
       regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
       allMembers = _.filter $scope.discussion.group().members(), (member) ->
-        return false if member.id == User.current().id
+        return false if member.id == Session.user().id
         (regex.test(member.name) or regex.test(member.username))
       $scope.mentionables = allMembers.slice(0, 5)
 

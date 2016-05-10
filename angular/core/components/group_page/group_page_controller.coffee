@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, User, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
@@ -12,7 +12,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       Records.drafts.fetchFor(@group)
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
-      LegacyTrialExpiredModal.showIfAppropriate(@group, User.current())
+      LegacyTrialExpiredModal.showIfAppropriate(@group, Session.user())
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount

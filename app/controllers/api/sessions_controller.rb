@@ -6,7 +6,7 @@ class API::SessionsController < Devise::SessionsController
       sign_in resource_name, user
       render json: CurrentUserSerializer.new(user).as_json
     else
-      render json: { errors: { password: ['Invalid email or password'] } }, status: 401
+      render json: { errors: { password: [t(:"devise.failure.invalid")] } }, status: 401
     end
   end
 

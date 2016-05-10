@@ -22,5 +22,5 @@ angular.module('loomioApp').directive 'navbar', ->
     $scope.homePageClicked = ->
       $rootScope.$broadcast 'homePageClicked'
 
-    $scope.goToSignIn = ->
+    $scope.signIn = ->
       ModalService.open SignInForm

@@ -1,8 +1,8 @@
 angular.module('loomioApp').factory 'LeaveGroupForm', ->
   templateUrl: 'generated/components/leave_group_form/leave_group_form.html'
-  controller: ($scope, $location, $rootScope, group, FormService, User, AbilityService) ->
+  controller: ($scope, $location, $rootScope, group, FormService, Session, AbilityService) ->
     $scope.group = group
-    $scope.membership = $scope.group.membershipFor(User.current())
+    $scope.membership = $scope.group.membershipFor(Session.user())
 
     $scope.submit = FormService.submit $scope, $scope.group,
       submitFn: $scope.membership.destroy

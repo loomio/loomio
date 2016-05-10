@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
       scope.$on eventCode, (angularEvent, originalEvent, active) ->
         if shouldExecute(active, originalEvent)
           angularEvent.preventDefault() and originalEvent.preventDefault()
-          execute(active)
+          execute(active, originalEvent)
 
     defaultShouldExecute: (active = {}, event = {}) ->
       !event.ctrlKey and !event.altKey and !_.contains(['INPUT', 'TEXTAREA', 'SELECT'], active.nodeName)

@@ -1,9 +1,16 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
+<<<<<<< HEAD
   controller: ($scope, group, Records, User, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
 
     $scope.availableGroups = ->
       _.filter User.current().groups(), (group) ->
+=======
+  controller: ($scope, group, Records, Session, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
+
+    $scope.availableGroups = ->
+      _.filter Session.user().groups(), (group) ->
+>>>>>>> master
         AbilityService.canAddMembers(group)
 
     $scope.form = Records.invitationForms.build(groupId: group.id or (_.first($scope.availableGroups()) or {}).id)

@@ -3,10 +3,10 @@ angular.module('loomioApp').directive 'giftCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/gift_card/gift_card.html'
   replace: true
-  controller: ($scope, $window, AppConfig, User, ChargifyService) ->
+  controller: ($scope, $window, AppConfig, Session, ChargifyService) ->
 
     $scope.show = ->
-      User.current().isMemberOf($scope.group) and
+      Session.user().isMemberOf($scope.group) and
       $scope.group.subscriptionKind == 'gift' and
       AppConfig.chargify?
 

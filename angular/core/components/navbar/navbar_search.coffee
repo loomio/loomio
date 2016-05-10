@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'navbarSearch', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_search.html'
   replace: true
-  controller: ($scope, $element, $timeout, User, Records, SearchResultModel, KeyEventService) ->
+  controller: ($scope, $element, $timeout, Session, Records, SearchResultModel, KeyEventService) ->
     $scope.searchResults = []
     $scope.query = ''
     $scope.focused = false
@@ -88,10 +88,10 @@ angular.module('loomioApp').directive 'navbarSearch', ->
       !$scope.searching && $scope.searchResults.length == 0
 
     $scope.groups = ->
-      return [] if User.current().restricted?
-      return User.current().groups() unless $scope.queryPresent()
+      return [] if Session.user().restricted?
+      return Session.user().groups() unless $scope.queryPresent()
       # match groups where all words are present in group name
-      _.filter User.current().groups(), (group) ->
+      _.filter Session.user().groups(), (group) ->
         _.all _.words($scope.query), (word) ->
           _.contains(group.fullName.toLowerCase(), word.toLowerCase())
 

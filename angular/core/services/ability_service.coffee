@@ -1,53 +1,53 @@
-angular.module('loomioApp').factory 'AbilityService', (AppConfig, User) ->
+angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
   new class AbilityService
 
     isLoggedIn: ->
-      User.current().id? and ! User.current().restricted?
+      Session.user().id? and ! Session.user().restricted?
 
     canAddComment: (thread) ->
-      User.current().isMemberOf(thread.group())
+      Session.user().isMemberOf(thread.group())
 
     canRespondToComment: (comment) ->
-      User.current().isMemberOf(comment.group())
+      Session.user().isMemberOf(comment.group())
 
     canStartProposal: (thread) ->
       thread and
       !thread.hasActiveProposal() and
       (@canAdministerGroup(thread.group()) or
-      (User.current().isMemberOf(thread.group()) and thread.group().membersCanRaiseMotions))
+      (Session.user().isMemberOf(thread.group()) and thread.group().membersCanRaiseMotions))
 
     canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
-      User.current().isMemberOf(thread.group()) and
-      (User.current().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
+      Session.user().isMemberOf(thread.group()) and
+      (Session.user().isAuthorOf(thread) or thread.group().membersCanEditDiscussions)
 
     canMoveThread: (thread) ->
       @canAdministerGroup(thread.group()) or
-      User.current().isAuthorOf(thread)
+      Session.user().isAuthorOf(thread)
 
     canDeleteThread: (thread) ->
       @canAdministerGroup(thread.group()) or
-      User.current().isAuthorOf(thread)
+      Session.user().isAuthorOf(thread)
 
     canChangeThreadVolume: (thread) ->
-      User.current().isMemberOf(thread.group())
+      Session.user().isMemberOf(thread.group())
 
     canChangeGroupVolume: (group) ->
-      User.current().isMemberOf(group)
+      Session.user().isMemberOf(group)
 
     canVoteOn: (proposal) ->
       proposal.isActive() and
-      User.current().isMemberOf(proposal.group()) and
+      Session.user().isMemberOf(proposal.group()) and
       (@canAdministerGroup(proposal.group()) or proposal.group().membersCanVote)
 
     canCloseOrExtendProposal: (proposal) ->
       proposal.isActive() and
-      (@canAdministerGroup(proposal.group()) or User.current().isAuthorOf(proposal))
+      (@canAdministerGroup(proposal.group()) or Session.user().isAuthorOf(proposal))
 
     canEditProposal: (proposal) ->
       proposal.isActive() and
       proposal.canBeEdited() and
-      (@canAdministerGroup(proposal.group()) or (User.current().isMemberOf(proposal.group()) and User.current().isAuthorOf(proposal)))
+      (@canAdministerGroup(proposal.group()) or (Session.user().isMemberOf(proposal.group()) and Session.user().isAuthorOf(proposal)))
 
     canCreateOutcomeFor: (proposal) ->
       @canSetOutcomeFor(proposal) and !proposal.hasOutcome()
@@ -58,10 +58,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, User) ->
     canSetOutcomeFor: (proposal) ->
       proposal? and
       proposal.isClosed() and
-      (User.current().isAuthorOf(proposal) or @canAdministerGroup(proposal.group()))
+      (Session.user().isAuthorOf(proposal) or @canAdministerGroup(proposal.group()))
 
     canAdministerGroup: (group) ->
-      User.current().isAdminOf(group)
+      Session.user().isAdminOf(group)
 
     canManageGroupSubscription: (group) ->
       @canAdministerGroup(group) and
@@ -69,20 +69,20 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, User) ->
       group.subscriptionPaymentMethod != 'manual'
 
     isCreatorOf: (group) ->
-      User.current().id == group.creatorId
+      Session.user().id == group.creatorId
 
     canStartThread: (group) ->
       @canAdministerGroup(group) or
-      (CurrentUser.isMemberOf(group) and group.membersCanStartDiscussions)
+      (Session.user().isMemberOf(group) and group.membersCanStartDiscussions)
 
     canAddMembers: (group) ->
       @canAdministerGroup(group) or
-      (User.current().isMemberOf(group) and group.membersCanAddMembers)
+      (Session.user().isMemberOf(group) and group.membersCanAddMembers)
 
     canCreateSubgroups: (group) ->
       group.isParent() and
       (@canAdministerGroup(group) or
-      (User.current().isMemberOf(group) and group.membersCanCreateSubgroups))
+      (Session.user().isMemberOf(group) and group.membersCanCreateSubgroups))
 
     canEditGroup: (group) ->
       @canAdministerGroup(group)
@@ -91,36 +91,36 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, User) ->
       @canAdministerGroup(group)
 
     canEditComment: (comment) ->
-      User.current().isMemberOf(comment.group()) and
-      User.current().isAuthorOf(comment) and
+      Session.user().isMemberOf(comment.group()) and
+      Session.user().isAuthorOf(comment) and
       (comment.isMostRecent() or comment.group().membersCanEditComments)
 
     canDeleteComment: (comment) ->
-      (User.current().isMemberOf(comment.group()) and
-      User.current().isAuthorOf(comment)) or
+      (Session.user().isMemberOf(comment.group()) and
+      Session.user().isAuthorOf(comment)) or
       @canAdministerGroup(comment.group())
 
     canRemoveMembership: (membership) ->
       membership.group().memberIds().length > 1 and
       (!membership.admin or membership.group().adminIds().length > 1) and
-      (membership.user() == User.current() or @canAdministerGroup(membership.group()))
+      (membership.user() == Session.user() or @canAdministerGroup(membership.group()))
 
     canDeactivateUser: ->
-     _.all User.current().memberships(), (membership) ->
+     _.all Session.user().memberships(), (membership) ->
        !membership.admin or membership.group().hasMultipleAdmins
 
     canManageMembershipRequests: (group) ->
-      (group.membersCanAddMembers and User.current().isMemberOf(group)) or @canAdministerGroup(group)
+      (group.membersCanAddMembers and Session.user().isMemberOf(group)) or @canAdministerGroup(group)
 
     canViewGroup: (group) ->
       !group.privacyIsSecret() or
-      User.current().isMemberOf(group)
+      Session.user().isMemberOf(group)
 
     canViewPrivateContent: (group) ->
-      CurrentUser.isMemberOf(group)
+      Session.user().isMemberOf(group)
 
     canViewMemberships: (group) ->
-      User.current().isMemberOf(group)
+      Session.user().isMemberOf(group)
 
     canViewPreviousProposals: (group) ->
       @canViewGroup(group)
@@ -128,15 +128,15 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, User) ->
     canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and
       @canViewGroup(group) and
-      !User.current().isMemberOf(group)
+      !Session.user().isMemberOf(group)
 
     canRequestMembership: (group) ->
       (group.membershipGrantedUpon == 'approval') and
       @canViewGroup(group) and
-      !User.current().isMemberOf(group) and
-      !group.hasPendingMembershipRequestFrom(User.current())
+      !Session.user().isMemberOf(group) and
+      !group.hasPendingMembershipRequestFrom(Session.user())
 
     canTranslate: (model) ->
       AppConfig.canTranslate and
-      User.current().locale and
-      User.current().locale != model.author().locale
+      Session.user().locale and
+      Session.user().locale != model.author().locale
