@@ -1,7 +1,7 @@
 angular.module('loomioApp').factory 'ChangePictureForm', ->
   templateUrl: 'generated/components/change_picture_form/change_picture_form.html'
-  controller: ($scope, $timeout, CurrentUser, Records, FormService) ->
-    $scope.user = CurrentUser.clone()
+  controller: ($scope, $timeout, Session, Records, FormService) ->
+    $scope.user = Session.user().clone()
 
     $scope.selectFile = ->
       $timeout -> document.querySelector('.change-picture-form__file-input').click()

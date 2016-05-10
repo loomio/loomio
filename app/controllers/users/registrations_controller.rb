@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   after_filter :set_time_zone_from_javascript, only: [:create]
 
   def new
+    @invitation = invitation_from_session
     @user = User.new(
       name:  @omniauth_authentication&.name  || invitation_from_session&.recipient_name,
       email: @omniauth_authentication&.email || invitation_from_session&.recipient_email

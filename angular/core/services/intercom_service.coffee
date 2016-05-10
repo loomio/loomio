@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, CurrentUser, LmoUrlService) ->
+angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, LmoUrlService) ->
   currentGroup = null
   service = new class IntercomService
     available: ->
@@ -6,20 +6,20 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     boot: ->
       return unless $window? and $window.Intercom?
-      firstGroup = CurrentUser.parentGroups()[0]
+      firstGroup = Session.user().parentGroups()[0]
 
       $window.Intercom 'boot',
-       admin_link: AppConfig.baseUrl+"/admin/users/#{CurrentUser.id}"
+       admin_link: AppConfig.baseUrl+"/admin/users/#{Session.user().id}"
        app_id: AppConfig.intercomAppId
-       user_id: CurrentUser.id
+       user_id: Session.user().id
        user_hash: AppConfig.intercomUserHash
-       email: CurrentUser.email
-       name: CurrentUser.name
-       username: CurrentUser.username
-       user_id: CurrentUser.id
-       created_at: CurrentUser.createdAt
+       email: Session.user().email
+       name: Session.user().name
+       username: Session.user().username
+       user_id: Session.user().id
+       created_at: Session.user().createdAt
        angular_ui: true
-       locale: CurrentUser.locale
+       locale: Session.user().locale
        company: firstGroup
 
     shutdown: ->
@@ -32,8 +32,8 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       return if group.isSubgroup()
       currentGroup = group
       $window.Intercom 'update',
-        email: CurrentUser.email
-        user_id: CurrentUser.id
+        email: Session.user().email
+        user_id: Session.user().id
         company:
           id: group.id
           key: group.key
@@ -46,7 +46,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
           group_privacy: group.groupPrivacy
           cohort_id: group.cohortId
           created_at: group.createdAt
-          locale: CurrentUser.locale
+          locale: Session.user().locale
           proposals_count: group.proposalsCount
           discussions_count: group.discussionsCount
           memberships_count: group.membershipsCount
