@@ -1,11 +1,11 @@
-angular.module('loomioApp').factory 'ChargifyService', (CurrentUser) ->
+angular.module('loomioApp').factory 'ChargifyService', (Session) ->
   new class ChargifyService
 
     encodedParams: (group) ->
       params =
-        first_name:   CurrentUser.firstName()
-        last_name:    CurrentUser.lastName()
-        email:        CurrentUser.email
+        first_name:   Session.user().firstName()
+        last_name:    Session.user().lastName()
+        email:        Session.user().email
         organization: group.name
         reference:    "#{group.key}|#{moment().unix()}"
 

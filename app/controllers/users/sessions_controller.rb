@@ -8,7 +8,10 @@ class Users::SessionsController < Devise::SessionsController
   after_filter :set_time_zone_from_javascript, only: :create
 
   def new
-    super { |user| user.email = params[:email] }
+    super do |user|
+      @invitation = invitation_from_session
+      user.email = @invitation&.recipient_email
+    end
   end
 
   private

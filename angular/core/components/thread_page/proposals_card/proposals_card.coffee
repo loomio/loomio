@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'proposalsCard', ->
   templateUrl: 'generated/components/thread_page/proposals_card/proposals_card.html'
   replace: true
   controllerAs: 'proposalsCard'
-  controller: (Records, CurrentUser) ->
+  controller: (Records) ->
     Records.proposals.fetchByDiscussion @discussion
     Records.votes.fetchMyVotes @discussion
 

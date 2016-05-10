@@ -1,10 +1,10 @@
 angular.module('loomioApp').factory 'MoveThreadForm', ->
   templateUrl: 'generated/components/move_thread_form/move_thread_form.html'
-  controller: ($scope, $location, discussion, CurrentUser, FormService, Records, $translate) ->
+  controller: ($scope, $location, discussion, Session, FormService, Records, $translate) ->
     $scope.discussion = discussion.clone()
 
     $scope.availableGroups = ->
-      _.filter CurrentUser.groups(), (group) ->
+      _.filter Session.user().groups(), (group) ->
         group.id != discussion.groupId
 
     $scope.submit = FormService.submit $scope, $scope.discussion,

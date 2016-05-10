@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.comment-form__sign-in-btn {
+  @include lmoBtnFeatured;
+}
+
 .comment-form-button {
   margin-left: 10px;
 }
