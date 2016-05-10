@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'groupTheme', ->
       { 'background-image': "url(#{$scope.group.coverUrl()})", 'z-index': (-1 if $scope.compact) }
 
     $scope.isMember = ->
-      Session.current().membershipFor($scope.group)?
+      Session.user().membershipFor($scope.group)?
 
     $scope.canUploadPhotos = ->
       $scope.homePage and AbilityService.canAdministerGroup($scope.group)

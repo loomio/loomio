@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'pendingInvitationsCard', ->
   replace: true
   controller: ($scope, Session, Records, ModalService, CancelInvitationForm, AppConfig) ->
     $scope.canSeeInvitations = ->
-      Session.current().isAdminOf($scope.group)
+      Session.user().isAdminOf($scope.group)
 
     if $scope.canSeeInvitations()
       Records.invitations.fetchPendingByGroup($scope.group.key, per: 1000)

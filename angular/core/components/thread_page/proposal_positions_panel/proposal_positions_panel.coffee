@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
     $scope.undecidedPanelOpen = false
 
     $scope.changeVote = ->
-      ModalService.open VoteForm, vote: -> $scope.proposal.lastVoteByUser(Session.current()).clone()
+      ModalService.open VoteForm, vote: -> $scope.proposal.lastVoteByUser(Session.user()).clone()
 
     sortValueForVote = (vote) ->
       positionValues = {yes: 1, abstain: 2, no: 3, block: 4}
@@ -22,7 +22,7 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
         sortValueForVote(vote)
 
     $scope.voteIsMine = (vote) ->
-      vote.authorId == Session.current().id
+      vote.authorId == Session.user().id
 
     $scope.showChangeVoteOption = (vote) ->
       AbilityService.canVoteOn($scope.proposal) and $scope.voteIsMine(vote)

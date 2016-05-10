@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'giftCard', ->
   controller: ($scope, $window, AppConfig, Session, ChargifyService) ->
 
     $scope.show = ->
-      Session.current().isMemberOf($scope.group) and
+      Session.user().isMemberOf($scope.group) and
       $scope.group.subscriptionKind == 'gift' and
       AppConfig.chargify?
 

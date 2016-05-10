@@ -62,7 +62,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.updateMentionables = (fragment) ->
       regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
       allMembers = _.filter $scope.discussion.group().members(), (member) ->
-        return false if member.id == Session.current().id
+        return false if member.id == Session.user().id
         (regex.test(member.name) or regex.test(member.username))
       $scope.mentionables = allMembers.slice(0, 5)
 

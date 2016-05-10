@@ -12,7 +12,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       Records.drafts.fetchFor(@group)
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
-      LegacyTrialExpiredModal.showIfAppropriate(@group, Session.current())
+      LegacyTrialExpiredModal.showIfAppropriate(@group, Session.user())
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount

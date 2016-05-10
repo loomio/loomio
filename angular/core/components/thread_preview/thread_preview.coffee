@@ -5,12 +5,12 @@ angular.module('loomioApp').directive 'threadPreview', ->
   replace: true
   controller: ($scope, Records, Session, LmoUrlService, FlashService, ModalService, MuteExplanationModal) ->
     $scope.lastVoteByCurrentUser = (thread) ->
-      thread.activeProposal().lastVoteByUser(Session.current())
+      thread.activeProposal().lastVoteByUser(Session.user())
 
     $scope.changeVolume = (volume) ->
-      if !Session.current().hasMuted
-        Session.current().update(hasMuted: true)
-        Records.users.updateProfile(Session.current()).then ->
+      if !Session.user().hasMuted
+        Session.user().update(hasMuted: true)
+        Records.users.updateProfile(Session.user()).then ->
           ModalService.open MuteExplanationModal, thread: -> $scope.thread
       else
         $scope.previousVolume = $scope.thread.volume()

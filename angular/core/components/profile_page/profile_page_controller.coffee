@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Rec
 
   @init = =>
     return unless AbilityService.isLoggedIn()
-    @user = Session.current()
+    @user = Session.user()
     $translate.use(@user.locale)
   @init()
 

@@ -17,7 +17,7 @@ angular.module('loomioApp').directive 'startMenuOption', ->
       KeyEventService.registerKeyEvent $scope, $scope.hotkey, $scope.openModal
 
     availableGroups = ->
-      _.filter Session.current().groups(), (group) ->
+      _.filter Session.user().groups(), (group) ->
         AbilityService.canAddMembers(group)
 
     $scope.invitePeopleGroup = ->

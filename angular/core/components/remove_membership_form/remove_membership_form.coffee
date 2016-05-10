@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'RemoveMembershipForm', ->
       $scope.membership.destroy().then ->
         FlashService.success 'memberships_page.messages.remove_member_success', name: $scope.membership.userName()
         $scope.$close()
-        if $scope.membership.user() == Session.current()
+        if $scope.membership.user() == Session.user()
           $location.path "/dashboard"
       , ->
         $rootScope.$broadcast 'pageError', 'cantDestroyMembership', $scope.membership

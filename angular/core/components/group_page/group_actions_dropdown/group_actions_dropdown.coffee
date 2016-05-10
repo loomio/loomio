@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
       AbilityService.canChangeGroupVolume($scope.group)
 
     @openChangeVolumeForm = ->
-      ModalService.open ChangeVolumeForm, model: -> $scope.group.membershipFor(Session.current())
+      ModalService.open ChangeVolumeForm, model: -> $scope.group.membershipFor(Session.user())
 
     @editGroup = ->
       ModalService.open GroupForm, group: -> $scope.group

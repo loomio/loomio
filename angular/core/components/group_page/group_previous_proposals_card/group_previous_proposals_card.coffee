@@ -12,4 +12,4 @@ angular.module('loomioApp').directive 'groupPreviousProposalsCard', ->
       AbilityService.canViewPreviousProposals($scope.group) and $scope.group.hasPreviousProposals()
 
     $scope.lastVoteByCurrentUser = (proposal) ->
-      proposal.lastVoteByUser(Session.current())
+      proposal.lastVoteByUser(Session.user())

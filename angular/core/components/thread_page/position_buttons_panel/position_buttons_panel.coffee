@@ -9,10 +9,10 @@ angular.module('loomioApp').directive 'positionButtonsPanel', ->
       AbilityService.canVoteOn($scope.proposal) and $scope.undecided()
 
     $scope.undecided = ->
-      !($scope.proposal.lastVoteByUser(Session.current())?)
+      !($scope.proposal.lastVoteByUser(Session.user())?)
 
     $scope.$on 'triggerVoteForm', (event, position) ->
-      myVote = $scope.proposal.lastVoteByUser(Session.current()) or {}
+      myVote = $scope.proposal.lastVoteByUser(Session.user()) or {}
       $scope.select position, myVote.statement
 
     $scope.select = (position) ->

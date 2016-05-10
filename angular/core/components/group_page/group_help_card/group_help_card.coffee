@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'groupHelpCard', ->
       UserHelpService.helpVideoUrl()
 
     $scope.showHelpCard = ->
-      Session.current().isMemberOf($scope.group)
+      Session.user().isMemberOf($scope.group)
 
     $scope.tenTipsArticleLink = ->
       UserHelpService.tenTipsArticleLink()

@@ -14,13 +14,13 @@ angular.module('loomioApp').directive 'proposalExpanded', ->
 
     $scope.onlyVoterIsYou = ->
       uniqueVotes = $scope.proposal.uniqueVotes()
-      (uniqueVotes.length == 1) and (uniqueVotes[0].authorId == Session.current().id)
+      (uniqueVotes.length == 1) and (uniqueVotes[0].authorId == Session.user().id)
 
     $scope.currentUserHasVoted = ->
-      $scope.proposal.userHasVoted(Session.current())
+      $scope.proposal.userHasVoted(Session.user())
 
     $scope.currentUserVote = ->
-      $scope.proposal.lastVoteByUser(Session.current())
+      $scope.proposal.lastVoteByUser(Session.user())
 
     $scope.showOutcomePanel = ->
       $scope.proposal.hasOutcome() or AbilityService.canCreateOutcomeFor($scope.proposal)

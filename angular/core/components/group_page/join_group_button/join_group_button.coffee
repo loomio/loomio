@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'joinGroupButton', ->
     Records.membershipRequests.fetchMyPendingByGroup($scope.group.key)
 
     $scope.isMember = ->
-      Session.current().membershipFor($scope.group)?
+      Session.user().membershipFor($scope.group)?
 
     $scope.canJoinGroup = ->
       AbilityService.canJoinGroup($scope.group)

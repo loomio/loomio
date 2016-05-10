@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'trialCard', ->
 
     $scope.show = ->
       $scope.group.subscriptionKind == 'trial' and
-      Session.current().isAdminOf($scope.group) and
+      Session.user().isAdminOf($scope.group) and
       AppConfig.chargify?
 
     $scope.isExpired = ->

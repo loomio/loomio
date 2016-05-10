@@ -6,4 +6,4 @@ angular.module('loomioApp').directive 'proposalCollapsed', ->
   controller: ($scope, Session) ->
 
     $scope.lastVoteByCurrentUser = (proposal) ->
-      proposal.lastVoteByUser(Session.current())
+      proposal.lastVoteByUser(Session.user())

@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'VoteForm', ->
       successEvent: 'voteCreated'
 
     $scope.yourLastVote = ->
-      $scope.vote.proposal().lastVoteByUser(Session.current())
+      $scope.vote.proposal().lastVoteByUser(Session.user())
 
     $scope.statementSelector = '.vote-form__statement-field'
     EmojiService.listen $scope, $scope.vote, 'statement', $scope.statementSelector

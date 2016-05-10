@@ -3,8 +3,8 @@ angular.module('loomioApp').factory 'MembershipRequestForm', ->
   controller: ($scope, FormService, Records, group, AbilityService, Session) ->
     $scope.membershipRequest = Records.membershipRequests.build
       groupId: group.id
-      name:    Session.current().name
-      email:   Session.current().email
+      name:    Session.user().name
+      email:   Session.user().email
 
     $scope.submit = FormService.submit $scope, $scope.membershipRequest,
       flashSuccess: 'membership_request_form.messages.membership_requested'

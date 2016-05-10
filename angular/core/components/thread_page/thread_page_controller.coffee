@@ -103,7 +103,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     ModalService.open ChangeVolumeForm, model: => @discussion
 
   @canChangeVolume = ->
-    Session.current().isMemberOf(@discussion.group())
+    Session.user().isMemberOf(@discussion.group())
 
   @canEditThread = =>
     AbilityService.canEditThread(@discussion)

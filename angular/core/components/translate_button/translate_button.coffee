@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'translateButton', ->
       AbilityService.canTranslate($scope.model) and !$scope.translateExecuting and !$scope.translated
 
     $scope.translate = ->
-      Records.translations.fetchTranslation($scope.model, Session.current().locale).then (data) ->
+      Records.translations.fetchTranslation($scope.model, Session.user().locale).then (data) ->
         $scope.translated = true
         $scope.$emit 'translationComplete', data.translations[0].fields
     LoadingService.applyLoadingFunction $scope, 'translate'
