@@ -424,6 +424,10 @@ class Group < ActiveRecord::Base
     Discussion.published.where(group_id: org_group_ids).sum(:motions_count)
   end
 
+  def closed_motions_count
+    motions.closed.count
+  end
+
   def org_group_ids
     [parent_or_self.id, parent_or_self.subgroup_ids].flatten
   end
