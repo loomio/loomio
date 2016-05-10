@@ -21,7 +21,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig) 
         AppConfig.notificationsLoaded = true
         $rootScope.$broadcast 'notificationsLoaded'
 
-    $rootScope.$broadcast 'loggedIn', @current()
+    $rootScope.$broadcast 'loggedIn', @user()
     @user()
 
   user: ->
