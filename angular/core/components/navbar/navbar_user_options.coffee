@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'navbarUserOptions', ->
   templateUrl: 'generated/components/navbar/navbar_user_options.html'
   replace: true
   controller: ($scope, $window, $rootScope, Session, Records, IntercomService, AppConfig, UserHelpService) ->
-    $scope.currentUser = Session.current
+    $scope.currentUser = Session.user
 
     $scope.helpLink = ->
       UserHelpService.helpLink()
