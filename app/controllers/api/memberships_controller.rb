@@ -69,8 +69,7 @@ class API::MembershipsController < API::RestfulController
 
   def save_experience
     raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
-    load_resource
-    service.save_experience membership: @membership, actor: current_user, params: { experience: params[:experience] }
+    service.save_experience membership: load_resource, actor: current_user, params: { experience: params[:experience] }
     respond_with_resource
   end
 

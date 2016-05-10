@@ -1,6 +1,7 @@
 class Membership < ActiveRecord::Base
   include HasVolume
   include HasTimeframe
+  include HasExperiences
 
   validates_presence_of :group, :user, :volume
   validates_uniqueness_of :user_id, scope: :group_id
@@ -65,11 +66,6 @@ class Membership < ActiveRecord::Base
       joins(:discussion).
       where('discussions.group_id = ?', group_id).
       where('discussion_readers.user_id = ?', user_id)
-  end
-
-  def experienced!(key, toggle = true)
-    experiences[key] = toggle
-    save
   end
 
   private

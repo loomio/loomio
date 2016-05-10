@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include AvatarInitials
   include ReadableUnguessableUrls
   include MessageChannel
+  include HasExperiences
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
@@ -202,11 +203,6 @@ class User < ActiveRecord::Base
     else
       self[:name]
     end
-  end
-
-  def experienced!(key, toggle = true)
-    experiences[key] = toggle
-    save
   end
 
   def deactivate!
