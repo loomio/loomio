@@ -1,9 +1,9 @@
-%h2= name
+%h2= "#{name} (#{records.length})"
 
 %table
   %thead
     - fields.each do |field|
-      %th= @field_names.fetch(field) { field }
+      %th= @exporter.field_names.fetch(field) { field }.humanize
   %tbody
     - records.each do |record|
       %tr
