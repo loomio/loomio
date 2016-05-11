@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505081129) do
+ActiveRecord::Schema.define(version: 20160511024241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,6 +194,16 @@ ActiveRecord::Schema.define(version: 20160505081129) do
   end
 
   add_index "contacts", ["user_id"], name: "index_contacts_on_user_id", using: :btree
+
+  create_table "decision_sessions", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "initiator_name",  null: false
+    t.string   "initiator_email", null: false
+    t.string   "base_token",      null: false
+    t.string   "participants",                 array: true
+    t.string   "locale",          null: false
+  end
 
   create_table "default_group_covers", force: :cascade do |t|
     t.string   "cover_photo_file_name"

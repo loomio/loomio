@@ -6,6 +6,8 @@ en:
       one_at_a_time: There is another active proposal.
 
   email:
+    decision_session_mailer:
+      subject: "Start your decision %{name}"
     reset_password:
       greeting: |
         Hi %{name}

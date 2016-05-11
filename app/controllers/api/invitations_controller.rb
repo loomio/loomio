@@ -37,7 +37,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def email_addresses
-    invitation_form_params[:emails].scan(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/).take(100)
+    invitation_form_params[:emails].scan(EmailHelper.email_regex).take(100)
   end
 
   def respond_with_errors
