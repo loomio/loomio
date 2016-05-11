@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
   include UsesMetadata
-  skip_before_filter :boot_angular_ui, only: :export
   layout false
 
   def export
