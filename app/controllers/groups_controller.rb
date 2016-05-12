@@ -1,13 +1,14 @@
 class GroupsController < ApplicationController
   include UsesMetadata
-  skip_before_filter :boot_angular_ui, only: :export
+  layout false
 
   def export
     @exporter = GroupExporter.new(load_and_authorize(:group, :export))
-    if ['csv', 'xls'].include? request.format
-      send_data @exporter.to_csv
-    else
-      render layout: false
+
+    respond_to do |format|
+      format.xls { render formats: [:html] }
+      format.html
+      format.csv { send_data @exporter.to_csv }
     end
   end
 end

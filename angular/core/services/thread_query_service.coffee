@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityService, CurrentUser) ->
+angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityService, Session) ->
   new class ThreadQueryService
 
     filterQuery: (filter, options = {}) ->
@@ -59,7 +59,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
             view.applyWhere (thread) -> thread.volume() == 'mute'
           when 'show_not_muted'
             view.applyWhere (thread) -> thread.volume() != 'mute'
-          when 'only_threads_in_my_groups' then view.applyFind(groupId: {$in: CurrentUser.groupIds()})
+          when 'only_threads_in_my_groups' then view.applyFind(groupId: {$in: Session.user().groupIds()})
           when 'show_participating'        then view.applyFind(participating: true)
           when 'show_starred'              then view.applyFind(starred: true)
           when 'show_proposals'            then view.applyWhere (thread) -> thread.hasActiveProposal()

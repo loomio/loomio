@@ -19,7 +19,7 @@ class MembershipRequestService
                         recipient_email: membership_request.email,
                         inviter: actor,
                         group: membership_request.group)
-      InvitePeopleMailer.delay.after_membership_request_approval(invitation, actor.email,'')
+      InvitePeopleMailer.delay(priority: 1).after_membership_request_approval(invitation, actor.email,'')
     else
       group = membership_request.group
       membership = group.add_member! requestor

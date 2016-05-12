@@ -148,10 +148,6 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
-    resources :contacts, only: :index do
-      get :import, on: :collection
-    end
-
     resources :contact_messages, only: :create
 
     resources :versions, only: :index
@@ -163,19 +159,12 @@ Loomio::Application.routes.draw do
       get :authorized, on: :collection
     end
 
-    namespace :message_channel do
-      post :subscribe
-    end
-
-    namespace :sessions do
-      get :current
-      get :unauthorized
-    end
+    namespace(:message_channel) { post :subscribe }
+    namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
       resource :sessions, only: [:create, :destroy]
+      resource :registrations, only: :create
     end
-    get '/attachments/credentials',      to: 'attachments#credentials'
-    get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
   get '/discussions/:id', to: 'redirect#discussion_id'

@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'pieWithPosition', ->
   restrict: 'E'
   templateUrl: 'generated/components/pie_with_position/pie_with_position.html'
   replace: true
-  controller: ($scope, CurrentUser) ->
+  controller: ($scope, Session) ->
 
     $scope.lastVoteByCurrentUser = (proposal) ->
-      proposal.lastVoteByUser(CurrentUser)
+      proposal.lastVoteByUser(Session.user())

@@ -1,0 +1,35 @@
+%form{ng-submit: "submit()"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button{ng-if: "!preventClose"}
+    %h1.lmo-h1{translate: "sign_in_form.title"}
+
+  .modal-body
+    %validation_errors{subject: "session", field: "password"}
+    .sign-in-form__email
+      %label{for: "email", translate: "sign_in_form.email_label"}
+      %input.form-control#user-email{placeholder: "{{ 'sign_in_form.email_placeholder' | translate }}", ng-required: true, ng-model: "session.email"}
+
+    .sign-in-form__password
+      %label{for: "password", translate: "sign_in_form.password_label"}
+      %input.form-control#user-password{type: "password", ng-required: true, ng-model: "session.password"}
+
+    .sign-in-form__remember-me.pull-left
+      %input#remember-me{type: "checkbox", ng-model: "session.rememberMe"}
+      %label{for: "remember-me", translate: "sign_in_form.remember_me"}
+
+    .sign-in-form__forgot-password.pull-right
+      %a{ng-click:"redirectTo('/users/password/new')", translate: "sign_in_form.forgot_password"}
+
+    .clearfix
+
+    .sign-in-form__providers{ng-if: "providers.length > 0"}
+      %hr
+      %h3.lmo-h3{translate: "sign_in_form.oauth.title"}
+      .sign-in-form__provider{ng-repeat: "provider in providers"}
+        %button.btn.btn-default.btn-block{type: "button", ng-click: "redirectTo(provider.href)"}
+          %span{translate: "sign_in_form.oauth.{{provider.name}}"}
+
+  .modal-footer
+    %button.lmo-btn--cancel{ng-if: "!preventClose", ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+    %button.lmo-btn--submit.sign-in-form__submit-button{type: "submit", translate: "sign_in_form.sign_in"}

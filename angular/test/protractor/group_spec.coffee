@@ -55,7 +55,6 @@ describe 'Group Page', ->
         staticPage.fillIn '#user_password', 'complex_password'
         staticPage.fillIn '#user_password_confirmation', 'complex_password'
         staticPage.click '#create-account'
-        page.click '.group-welcome-modal__close-button'
         page.expectElement '.lmo-navbar__item--user'
         page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
 
@@ -66,6 +65,24 @@ describe 'Group Page', ->
         page.fillIn '#membership-request-email', 'chevychase@example.com'
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
+
+      it 'should reload a closed group after logging in', ->
+        page.loadPath 'view_closed_group_as_visitor'
+        page.click '.lmo-navbar__sign-in'
+        page.fillIn '#user-email', 'jennifer_grey@example.com'
+        page.fillIn '#user-password', 'gh0stmovie'
+        page.click '.sign-in-form__submit-button'
+        page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
+        page.expectText '.thread-previews-container', 'This thread is private'
+        page.expectElement '.navbar-user-options__user-profile-icon'
+
+      it 'should prompt for login for secret group', ->
+        page.loadPath 'view_secret_group_as_visitor'
+        page.fillIn '#user-email', 'patrick_swayze@example.com'
+        page.fillIn '#user-password', 'gh0stmovie'
+        page.click '.sign-in-form__submit-button'
+        page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
+        page.expectElement '.navbar-user-options__user-profile-icon'
 
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
