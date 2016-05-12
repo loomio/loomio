@@ -167,6 +167,9 @@ Loomio::Application.routes.draw do
     end
   end
 
+  resources :decision_sessions, only: [:show] do
+  end
+
   get '/discussions/:id', to: 'redirect#discussion_id'
   get '/groups/:id',      to: 'redirect#group_id'
   get '/motions/:id',     to: 'redirect#motion_id'

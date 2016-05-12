@@ -60,6 +60,7 @@ gem 'safe_shell'
 gem 'premailer-rails'
 gem 'griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
+gem 'has_secure_token'
 
 group :development, :test do
   gem 'minitest'

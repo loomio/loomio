@@ -1,4 +1,8 @@
 module EmailHelper
+  def self.email_regex
+    /[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/
+  end
+  
   include PrettyUrlHelper
 
   def reply_to_address(discussion: , user: )
