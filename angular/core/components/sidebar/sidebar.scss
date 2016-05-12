@@ -1,0 +1,40 @@
+.sidebar {
+  margin-top: 45px;
+}
+
+.sidebar-list{
+  margin-top: 10px;
+}
+
+.md-sidenav-left {
+  background-color: #fff;
+  width: 250px;
+}
+
+.sidebar-list-item {
+  color: $grey-on-grey;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 5px 0px 5px 10px;
+  text-align: left;
+  text-transform: inherit;
+}
+
+.sidebar-list-item__icon {
+  margin-right: 20px;
+}
+
+.sidebar-list-item__group-logo {
+  margin-right: 15px;
+}
+
+.fa-envelope-o {
+  font-size: 16px;
+}
+
+.sidebar-horizontal-rule {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-top: 1px solid #eee;
+}

@@ -41,7 +41,7 @@ angular.module('loomioApp', ['ngNewRouter',
     $compileProvider.debugInfoEnabled(false);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, CurrentUser, BootService, AppConfig, ModalService, ChoosePlanModal, AbilityService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter, $rootScope, $router, KeyEventService, ScrollService, CurrentUser, BootService, AppConfig, ModalService, ChoosePlanModal, AbilityService, $mdSidenav) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
 
   if document.location.protocol.match(/https/) && navigator.serviceWorker?
@@ -68,6 +68,9 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
       AppConfig.chargify.nagCache[group.key] = true
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
+
+  $scope.openLeftMenu = ->
+    $mdSidenav('left').toggle()
 
   $router.config([
     {path: '/dashboard', component: 'dashboardPage' },
