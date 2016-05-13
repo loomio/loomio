@@ -43,7 +43,7 @@ describe InvitationsController do
       end
 
       it "redirects to sign in" do
-        response.should redirect_to(new_user_session_path(email: invitation.recipient_email))
+        response.should redirect_to(new_user_session_path)
       end
 
       it 'does not accept the invitation' do

@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'groupHelpCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_help_card/group_help_card.html'
   replace: true
-  controller: ($scope, CurrentUser, AppConfig, UserHelpService) ->
+  controller: ($scope, Session, AppConfig, UserHelpService) ->
     $scope.showVideo = AppConfig.loadVideos
 
     $scope.helpLink = ->
@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'groupHelpCard', ->
       UserHelpService.helpVideoUrl()
 
     $scope.showHelpCard = ->
-      CurrentUser.isMemberOf($scope.group)
+      Session.user().isMemberOf($scope.group)
 
     $scope.tenTipsArticleLink = ->
       UserHelpService.tenTipsArticleLink()

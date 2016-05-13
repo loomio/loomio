@@ -67,6 +67,7 @@ describe 'Invitations', ->
     staticPage.loadPath 'setup_existing_user_invitation'
     staticPage.click 'a[href]'
 
+    staticPage.expectText 'h1', 'Dirty Dancing Shoes'
     staticPage.fillIn '#user_password', 'gh0stmovie'
     staticPage.click '#sign-in-btn'
 
@@ -77,6 +78,7 @@ describe 'Invitations', ->
     staticPage.loadPath 'setup_new_user_invitation'
     staticPage.click 'a[href]'
 
+    staticPage.expectText 'h1', 'Dirty Dancing Shoes'
     staticPage.fillIn '#user_name', 'Judd Nelson'
     staticPage.fillIn '#user_password', 'gh0stmovie'
     staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'

@@ -46,6 +46,12 @@ class DevelopmentController < ApplicationController
     redirect_to dashboard_url
   end
 
+  def setup_dashboard_as_visitor
+    patrick
+    recent_discussion
+    redirect_to dashboard_url
+  end
+
   def setup_inbox
     sign_in patrick
     starred_discussion; recent_discussion group: another_test_group
@@ -265,6 +271,26 @@ class DevelopmentController < ApplicationController
     redirect_to root_url
   end
 
+  def view_open_group_as_non_member
+    sign_in patrick
+    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    membership_granted_upon: 'request',
+    group_privacy: 'open')
+    @test_group.add_admin! jennifer
+    @test_discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @test_group)
+    redirect_to group_url(test_group)
+  end
+
+  def view_closed_group_as_non_member
+    sign_in patrick
+    @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
+                                group_privacy: 'closed',
+                                discussion_privacy_options: 'public_or_private')
+    @test_group.add_admin! jennifer
+    @test_discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @test_group)
+    redirect_to group_url(test_group)
+  end
+
   def view_secret_group_as_non_member
     sign_in patrick
     @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
@@ -272,25 +298,11 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
-  def view_closed_group_as_non_member
-    sign_in patrick
-    @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed')
-    redirect_to group_url(test_group)
-  end
-
-  def view_open_group_as_non_member
-    sign_in patrick
-    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
-                                membership_granted_upon: 'request',
-                                group_privacy: 'open')
-    redirect_to group_url(test_group)
-  end
-
   def view_open_group_as_visitor
     @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
+    @test_group.add_admin! jennifer
     @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
     @test_proposal = @test_discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
     @test_proposal.close!
@@ -300,8 +312,18 @@ class DevelopmentController < ApplicationController
   def view_closed_group_as_visitor
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
-                                group_privacy: 'closed')
-    @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: true, author: jennifer)
+                                group_privacy: 'closed',
+                                discussion_privacy_options: 'public_or_private')
+    @test_group.add_admin! jennifer
+    @test_discussion = @test_group.discussions.create!(title: 'This thread is private', private: true, author: jennifer)
+    @public_discussion = @test_group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
+    redirect_to group_url(@test_group)
+  end
+
+  def view_secret_group_as_visitor
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
     redirect_to group_url(@test_group)
   end
 

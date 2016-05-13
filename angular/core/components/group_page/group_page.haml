@@ -8,7 +8,7 @@
           %h2#description-card-title.lmo-card-heading{ translate: "group_page.description"}
           .group-page__description-placeholder.lmo-placeholder.lmo-hint-text{translate: "group_page.description_placeholder", ng-if: "groupPage.showDescriptionPlaceholder()" }
           .group-page__description-text.lmo-last.lmo-markdown-wrapper{ marked: "groupPage.group.description" }
-        %discussions_card{group: "groupPage.group"}
+        %discussions_card{group: "groupPage.group", page_window: "groupPage.pageWindow"}
       .lmo-group-column-right
         %trial_card{group: "groupPage.group"}
         %gift_card{group: "groupPage.group"}

@@ -61,7 +61,7 @@ module ApplicationHelper
     if email.blank? || !User.find_by(email: email)
       new_user_registration_path
     else
-      new_user_session_path(email: email)
+      new_user_session_path
     end
   end
 
