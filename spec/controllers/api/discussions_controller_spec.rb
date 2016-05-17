@@ -341,6 +341,21 @@ describe API::DiscussionsController do
       discussion; another_discussion
     end
 
+    context 'member of subgroup' do
+      let(:subgroup) { create(:group, parent: another_group) }
+      let!(:subgroup_discussion) { create :discussion, group: subgroup }
+      before { sign_in(user); subgroup.add_member! user }
+
+      it 'displays threads from subgroups even when not a member of the secret parent group' do
+        another_group.update(group_privacy: 'secret')
+        get :index, group_id: another_group.id, format: :json
+        json = JSON.parse(response.body)
+        discussion_ids = json['discussions'].map { |d| d['id'] }
+        expect(discussion_ids).to include subgroup_discussion.id
+      end
+
+    end
+
     context 'logged out' do
       let!(:public_discussion) { create :discussion, private: false }
       let!(:private_discussion) { create :discussion, private: true }

@@ -39,7 +39,7 @@ class Ability
         false
       else
         group.is_visible_to_public? or
-        user_is_member_of?(group.id) or
+        (user.group_ids & group.org_group_ids).any? or
         (group.is_visible_to_parent_members? and user_is_member_of?(group.parent_id))
       end
     end
