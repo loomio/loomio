@@ -52,4 +52,8 @@ class LoggedOutUser
     @ability ||= Ability.new(self)
   end
 
+  def experiences
+    {}
+  end
+
 end
