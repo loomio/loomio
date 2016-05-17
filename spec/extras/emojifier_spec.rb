@@ -15,6 +15,10 @@ describe Emojifier do
     expect(emojify(normal)).to eq normal
   end
 
+  it 'renders absolute urls for emojis' do
+    expect(emojify(with_emoji)).to include 'http://'
+  end
+
   it 'can handle html' do
     expect(emojify(html)).to eq html
   end
