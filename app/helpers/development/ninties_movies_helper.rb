@@ -66,6 +66,18 @@ module Development::NintiesMoviesHelper
     @test_group
   end
 
+  def multiple_groups
+    @groups = []
+    10.times do
+      group = Group.new(name: Faker::Name.name,
+                        group_privacy: 'closed',
+                        discussion_privacy_options: 'public_or_private')
+      group.add_admin! patrick
+      @groups << group
+    end
+    @groups
+  end
+
   def muted_test_group
     unless @muted_test_group
       @muted_test_group = Group.create!(name: 'Muted Point Blank',

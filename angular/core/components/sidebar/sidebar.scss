@@ -1,9 +1,15 @@
 .sidebar {
   margin-top: 45px;
+  height: 100%;
+  position: fixed;
 }
 
-.sidebar-list{
-  margin-top: 10px;
+.sidebar__content {
+  max-height: 100%;
+}
+
+.sidebar__threads, .sidebar__user {
+  flex-basis: content;
 }
 
 .md-sidenav-left {
@@ -11,7 +17,7 @@
   width: 250px;
 }
 
-.sidebar-list-item {
+.sidebar__list-item {
   color: $grey-on-grey;
   border-radius: 0px;
   margin-bottom: 0px;
@@ -19,13 +25,23 @@
   padding: 5px 0px 5px 10px;
   text-align: left;
   text-transform: inherit;
+  display: block;
 }
 
-.sidebar-list-item__icon {
+.sidebar__groups {
+  overflow: auto;
+  flex-shrink: 5;
+}
+
+.side-bar__sign-out {
+  padding-right: 130px;
+}
+
+.sidebar__list-item-icon {
   margin-right: 20px;
 }
 
-.sidebar-list-item__group-logo {
+.sidebar__list-item-group-logo {
   margin-right: 15px;
 }
 
@@ -33,7 +49,7 @@
   font-size: 16px;
 }
 
-.sidebar-horizontal-rule {
+.sidebar__horizontal-rule {
   margin-top: 0px;
   margin-bottom: 0px;
   border-top: 1px solid #eee;

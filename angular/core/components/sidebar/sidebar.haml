@@ -1,47 +1,48 @@
-.sidebar{layout: "row"}
+.sidebar 
   %md_sidenav.md-sidenav-left.md-whiteframe-z2{md-component-id: "left", md-is-locked-open: "lockOpen"}
-    %md_list.sidebar-list
-      %md_list_item.md-2-line
-        %md_button.sidebar-list-item{href: "/dashboard", layout: "row"}
-          %md_avatar_icon.sidebar-list-item__icon.fa.fa-lg.fa-clock-o
-          %span.sidebar-list-item__label
-            %strong Recent
-      %md_list_item.md-2-line
-        %md_button.sidebar-list-item{href: "/inbox", layout: "row"}
-          %md_avatar_icon.sidebar-list-item__icon.i.fa.fa-lg.fa-inbox
-          %span.sidebar-list-item__label
-            %strong Unread
-      %md_list_item.md-2-line
-        %md_button.sidebar-list-item{href: "/inbox", layout: "row"}
-          %md_avatar_icon.sidebar-list-item__icon.i.fa.fa-lg.fa-times-circle
-          %span.sidebar-list-item__label
-            %strong Muted
-      %hr.sidebar-horizontal-rule
-      %md_list.sidebar-groups-list
-        %md_list_item.md-2-line{ng-repeat: "group in groups()"}
-          %md_button.sidebar-list-item{href: "{{groupUrl(group)}}", layout: "row"}
-            %img.md-avatar.lmo-box--tiny.sidebar-list-item__group-logo{ng-src: "{{group.logoUrl()}}"}
-            %span.sidebar-list-item__label
-              %strong {{group.name}}
-      %hr.sidebar-horizontal-rule
-      %md_list
+    %md_content.sidebar__content{flex: "", role: "navigation", layout: "column"}
+      %md_list.sidebar__threads{layout: "column"}
         %md_list_item.md-2-line
-          %md_button.sidebar-list-item{href: "/profile", layout: "row"}
-            %md_avatar_icon.sidebar-list-item__icon.fa.fa-lg.fa-cog
-            %span.sidebar-list-item__label
+          %md_button.sidebar__list-item{href: "/dashboard"}
+            %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
+            %span.sidebar__list-item-label
+              %strong Recent
+        %md_list_item.md-2-line
+          %md_button.sidebar__list-item{href: "/inbox"}
+            %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
+            %span.sidebar__list-item-label
+              %strong Unread
+        %md_list_item.md-2-line
+          %md_button.sidebar__list-item{href: "/inbox"}
+            %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
+            %span.sidebar__list-item-label
+              %strong Muted
+        %hr.sidebar__horizontal-rule
+      %md_list.sidebar__groups{layout: "column"}
+        %md_list_item.md-2-line{ng-repeat: "group in groups()"}
+          %md_button.sidebar__list-item{href: "{{groupUrl(group)}}"}
+            %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng-src: "{{group.logoUrl()}}"}
+            %span.sidebar__list-item-label
+              %strong {{group.name}}
+        %hr.sidebar__horizontal-rule
+      %md_list.sidebar__user{layout: "column"}
+        %md_list_item.md-2-line
+          %md_button.sidebar__list-item{href: "/profile"}
+            %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
+            %span.sidebar__list-item-label
               %strong Edit profile
         %md_list_item.md-2-line
-          %md_button.sidebar-list-item{href: "/email_preferences", layout: "row"}
-            %md_avatar_icon.sidebar-list-item__icon.fa.fa-lg.fa-envelope-o
-            %span.sidebar-list-item__label
+          %md_button.sidebar__list-item{href: "/email_preferences"}
+            %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
+            %span.sidebar__list-item-label
               %strong Email settings
         %md_list_item.md-2-line
-          %md_button.sidebar-list-item{ng-click: "signOut()", layout: "row"}
-            %md_avatar_icon.sidebar-list-item__icon.fa.fa-lg.fa-sign-out
-            %span.sidebar-list-item__label
+          %md_button.sidebar__list-item.side-bar__sign-out{ng-click: "signOut()"}
+            %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
+            %span.sidebar__list-item-label
               %strong Sign out
         %md_list_item.md-2-line
-          %md_button.sidebar-list-item{href: "/help", layout: "row"}
-            %md_avatar_icon.sidebar-list-item__icon.fa.fa-lg.fa-info-circle
-            %span.sidebar-list-item__label
+          %md_button.sidebar__list-item{href: "/help"}
+            %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
+            %span.sidebar__list-item-label
               %strong Help

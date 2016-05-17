@@ -67,6 +67,14 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_multiple_groups
+    sign_in patrick
+    multiple_groups.each do |group|
+      GroupService.create(group: group, actor: patrick)
+    end
+    redirect_to dashboard_url
+  end
+
   # to test subdomains in development
   def setup_group_with_subdomain
     sign_in patrick

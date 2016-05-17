@@ -21,14 +21,14 @@
     = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
 
   %body{:layout => "row", 'ng-keydown' => 'keyDown($event)'}
-    %flash
-    %navbar
     %sidebar
-    %md_content{:flex => "", :layout => "column"}
-      %ng_outlet{'ng-if' => '!pageError'}
-      %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
-      %start_menu{'ng-if' => 'isLoggedIn()'}
-      %outlet{name: 'after-start-menu'}
+    / %flash
+    / %navbar
+    / %md_content{:flex => "", :layout => "column"}
+    /   %ng_outlet{'ng-if' => '!pageError'}
+    /   %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+    /   %start_menu{'ng-if' => 'isLoggedIn()'}
+    /   %outlet{name: 'after-start-menu'}
 
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
