@@ -139,6 +139,25 @@ describe User do
     user.save
   end
 
+  describe "experienced" do
+
+    it "can store user experiences" do
+      user.experienced!(:happiness)
+      expect(user.experiences[:happiness]).to eq true
+    end
+
+    it "does not store other experiences" do
+      user.experienced!(:frustration)
+      expect(user.experiences[:happiness]).to eq nil
+    end
+
+    it "can forget experiences" do
+      user.update(experiences: { happiness: true })
+      user.experienced!(:happiness, false)
+      expect(user.experiences[:happiness]).to eq false
+    end
+  end
+
   describe "deactivation" do
 
     before do

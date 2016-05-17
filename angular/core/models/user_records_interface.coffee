@@ -13,3 +13,6 @@ angular.module('loomioApp').factory 'UserRecordsInterface', (BaseRecordsInterfac
 
     deactivate: (user) =>
       @remote.post 'deactivate', user.serialize()
+
+    saveExperience: (experience) =>
+      @remote.post 'save_experience', experience: experience
