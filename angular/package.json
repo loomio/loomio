@@ -79,6 +79,6 @@
     "node-yaml-config": "0.0.3",
     "protractor": "3.0.0",
     "protractor-jasmine2-screenshot-reporter": "^0.2.0",
-    "selenium-server-standalone-jar": "2.48.2"
+    "selenium-server-standalone-jar": "2.53.0"
   }
 }

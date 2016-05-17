@@ -2,7 +2,7 @@ screenshooter = require('protractor-jasmine2-screenshot-reporter');
 paths         = require('../tasks/paths')
 
 exports.config =
-  seleniumServerJar: '../node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.48.2.jar'
+  seleniumServerJar: '../node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.0.jar'
   specs:             paths.protractor.specs
   capabilities:
     browserName:     'firefox'

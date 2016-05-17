@@ -7,6 +7,8 @@ given =  (args) ->
   else
     args
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000
+
 module.exports = new class PageHelper
   loadPath: (path) ->
     browser.get('development/'+path)

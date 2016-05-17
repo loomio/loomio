@@ -130,6 +130,12 @@ describe 'Group Page', ->
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Open'
 
+    it 'does not reshow the welcome modal', ->
+      page.loadPath('setup_new_group')
+      page.expectElement '.group-welcome-modal'
+      browser.refresh()
+      page.expectNoElement '.group-welcome-modal'
+
     it 'starts a closed group', ->
       page.loadPath('setup_new_group')
       page.click '.group-welcome-modal__close-button',

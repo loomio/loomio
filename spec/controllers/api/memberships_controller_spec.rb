@@ -271,4 +271,25 @@ describe API::MembershipsController do
     end
   end
 
+  describe 'save_experience' do
+
+    it 'successfully saves an experience' do
+      membership = create(:membership, user: user)
+      post :save_experience, id: membership.id, experience: :happiness
+      expect(response.status).to eq 200
+      expect(membership.reload.experiences['happiness']).to eq true
+    end
+
+    it 'responds with forbidden when user is logged out' do
+      membership = create(:membership)
+      post :save_experience, id: membership.id, experience: :happiness
+      expect(response.status).to eq 403
+    end
+
+    it 'responds with bad request when no experience is given' do
+      membership = create(:membership)
+      expect { post :save_experience }.to raise_error { ActionController::ParameterMissing }
+    end
+  end
+
 end
