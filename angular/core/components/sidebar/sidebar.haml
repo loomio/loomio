@@ -1,4 +1,4 @@
-.sidebar 
+.sidebar{layout: "row"}
   %md_sidenav.md-sidenav-left.md-whiteframe-z2{md-component-id: "left", md-is-locked-open: "lockOpen"}
     %md_content.sidebar__content{flex: "", role: "navigation", layout: "column"}
       %md_list.sidebar__threads{layout: "column"}
@@ -17,14 +17,14 @@
             %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
             %span.sidebar__list-item-label
               %strong Muted
-        %hr.sidebar__horizontal-rule
+      %md_divider.sidebar__divider
       %md_list.sidebar__groups{layout: "column"}
         %md_list_item.md-2-line{ng-repeat: "group in groups()"}
           %md_button.sidebar__list-item{href: "{{groupUrl(group)}}"}
             %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng-src: "{{group.logoUrl()}}"}
             %span.sidebar__list-item-label
               %strong {{group.name}}
-        %hr.sidebar__horizontal-rule
+      %md_divider.sidebar__divider
       %md_list.sidebar__user{layout: "column"}
         %md_list_item.md-2-line
           %md_button.sidebar__list-item{href: "/profile"}

@@ -28,4 +28,4 @@ angular.module('loomioApp').directive 'navbar', ->
 
     $scope.openSidebar = ->
       $mdSidenav("left").toggle()
-      $rootScope.$broadcast('sidebar-open');
+      $rootScope.$broadcast('sidebar-open')
