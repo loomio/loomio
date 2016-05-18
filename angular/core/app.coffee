@@ -68,10 +68,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     $scope.pageError = null
     ScrollService.scrollTo(options.scrollTo or 'h1')
     $scope.links = options.links or {}
-    $timeout -> $scope.isReady = true
-
-    if !AbilityService.isLoggedIn() and _.contains($router.authRequiredComponents, options.page)
+    if AbilityService.requireLoginFor(options.page)
       ModalService.open(SignInForm, preventClose: -> true)
+    else if AbilityService.requireRedirectFor(options.page)
+      $timeout -> $router.navigate(Session.homePath())
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
@@ -117,16 +117,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
     {path: '/explore', component: 'explorePage'}
   ])
-  $router.authRequiredComponents = [
-    'groupsPage',
-    'dashboardPage',
-    'inboxPage',
-    'profilePage',
-    'emailSettingsPage',
-    'authorizedAppsPage',
-    'registeredAppsPage',
-    'registeredAppPage'
-  ]
 
   Session.login(AppConfig.currentUserData)
 

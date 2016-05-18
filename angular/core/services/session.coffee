@@ -24,5 +24,11 @@ angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig) 
     $rootScope.$broadcast 'loggedIn', @user()
     @user()
 
+  homePath: ->
+    switch @user().parentGroups().length
+      when 0 then '/explore'
+      when 1 then '/g/' + @user().parentGroups()[0].key
+      else        '/dashboard'
+
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()
