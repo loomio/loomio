@@ -338,8 +338,7 @@ describe 'Group Page', ->
                  '.leave-group-form__submit')
       page.expectFlash('You have left this group')
       # click 'groups' from nav
-      page.click('.groups-item')
-      page.expectNoText('.groups-page__groups', 'Dirty Dancing Shoes')
+      page.expectText('.explore-page', 'Explore Loomio groups')
 
     it 'prevents last coordinator from leaving the group', ->
       # click leave group from the group actions downdown
@@ -360,8 +359,7 @@ describe 'Group Page', ->
                  '.group-page-actions__archive-group',
                  '.archive-group-form__submit')
       page.expectFlash('This group has been deactivated')
-      page.click('.groups-item')
-      page.expectNoText('.groups-page__groups', 'Dirty Dancing Shoes')
+      page.expectText('.explore-page', 'Explore Loomio groups')
 
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->
