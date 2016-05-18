@@ -30,8 +30,7 @@ angular.module('loomioApp', ['ngNewRouter',
 
   $translateProvider.useUrlLoader("#{[window.Loomio.mobileHost]}/api/v1/translations")
                     .preferredLanguage(window.Loomio.currentUserLocale)
-
-  $translateProvider.useSanitizeValueStrategy('escapeParameters')
+                    .useSanitizeValueStrategy('escapeParameters')
 
   # disable angular debug stuff in production
   $compileProvider.debugInfoEnabled(window.Loomio.environment == 'production')
@@ -58,11 +57,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     ModalService.open(AngularWelcomeModal)                         if AppConfig.showWelcomeModal
     IntercomService.boot()
     MessageChannelService.subscribe()
-
   Session.login(AppConfig.currentUserData)
-  $scope.$on 'loggedIn', (event, user) ->
-    IntercomService.boot()
-    MessageChannelService.subscribe()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
@@ -117,6 +112,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
     {path: '/explore', component: 'explorePage'}
   ])
+  $router.navigate('/dashboard') if AppConfig.mobileHost?
 
   Session.login(AppConfig.currentUserData)
 
