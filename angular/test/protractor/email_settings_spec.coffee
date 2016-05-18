@@ -24,8 +24,9 @@ describe 'Email settings', ->
   describe 'logged in', ->
     beforeEach ->
       page.loadPath('setup_group')
-      page.click '.navbar-user-options',
-      '.navbar-user-options__email-settings-link'
+      page.click '.group-welcome-modal__close-button',
+                 '.navbar-user-options',
+                 '.navbar-user-options__email-settings-link'
 
     it 'lets you update email settings', testUpdate
     it 'lets you set default email settings for all new memberships', testDefaultUpdate

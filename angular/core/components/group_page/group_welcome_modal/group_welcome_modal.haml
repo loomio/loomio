@@ -1,13 +1,13 @@
 .group-welcome-modal
   .modal-header
     %modal_header_cancel_button
-    %h1.lmo-h1.modal-title{translate: "group_welcome_modal.heading"}
+    %h1.lmo-h1.modal-title{translate: "{{translationKey('heading')}}"}
 
   .modal-body
-    %p{translate: "group_welcome_modal.first_step"}
+    %p{translate: "{{translationKey('body')}}"}
     .group-welcome-model__video-wrapper{ng-if: "showVideo"}
       %iframe.group-welcome-modal__video{ng-src: "{{helpVideo()}}", frameborder: "0", allowfullscreen=''}
-    %p{translate: "group_welcome_modal.second_step"}
+    %p{ng-if: "userIsGroupCreator()",  translate: "group_welcome_modal.creator_second_step"}
 
   .modal-footer.lmo-clearfix
     %button.lmo-btn--primary.group-welcome-modal__close-button{type: "button", ng-click: "$close()", translate: "group_welcome_modal.ok_got_it"}
