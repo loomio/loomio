@@ -183,8 +183,8 @@ describe 'Discussion Page', ->
                  '.thread-item__edit-link'
       page.fillIn '.edit-comment-form__comment-field', 'Revised comment!'
       page.click  '.comment-form__submit-btn'
-      page.click '.thread-item__action--view-edits',
-                 '.thread-item__action--view-edits'
+      browser.sleep(5000)
+      page.click '.thread-item__action--view-edits'
       page.expectText '.revision-history-modal__body', 'Revised comment!'
       page.expectText '.revision-history-modal__body', 'Comment!'
 

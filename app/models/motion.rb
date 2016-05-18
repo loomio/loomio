@@ -50,6 +50,16 @@ class Motion < ActiveRecord::Base
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
   scope :chronologically, -> { order('created_at asc') }
 
+  scope :closing_soon_not_published, -> {
+     voting
+    .joins("LEFT OUTER JOIN events e ON e.eventable_id = motions.id AND e.eventable_type = 'Motion'")
+    .where("NOT EXISTS (SELECT 1 FROM events
+                WHERE events.created_at     > ? AND
+                      events.eventable_id   = motions.id AND
+                      events.eventable_type = 'Motion' AND
+                      events.kind           = 'motion_closing_soon')", 2.days.ago)
+  }
+
   def proposal_title
     name
   end

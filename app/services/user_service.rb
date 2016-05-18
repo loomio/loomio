@@ -39,4 +39,10 @@ class UserService
     yield if block_given? and user.errors.empty?
     EventBus.broadcast('user_change_password', user, actor, params)
   end
+
+  def self.save_experience(user:, actor:, params:)
+    actor.ability.authorize! :update, user
+    user.experienced!(params[:experience])
+    EventBus.broadcast('user_save_experience', user, actor, params)
+  end
 end

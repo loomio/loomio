@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include AvatarInitials
   include ReadableUnguessableUrls
   include MessageChannel
+  include HasExperiences
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170

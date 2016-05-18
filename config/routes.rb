@@ -62,6 +62,7 @@ Loomio::Application.routes.draw do
       member do
         post :make_admin
         post :remove_admin
+        post :save_experience
         patch :set_volume
       end
     end
@@ -87,6 +88,7 @@ Loomio::Application.routes.draw do
       post :upload_avatar, on: :collection
       post :change_password, on: :collection
       post :deactivate, on: :collection
+      post :save_experience, on: :collection
     end
 
     resources :events, only: :index
