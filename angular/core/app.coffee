@@ -26,18 +26,15 @@ angular.module('loomioApp', ['ngNewRouter',
     breaks: true
 
   # enable html5 pushstate mode
-  $locationProvider.html5Mode(true)
+  $locationProvider.html5Mode(!window.Loomio.mobileHost?)
 
-  if window.Loomio?
-    locale = window.Loomio.currentUserLocale
-    $translateProvider.useUrlLoader("#{[window.Loomio.mobileHost]}/api/v1/translations").
-                       preferredLanguage(locale)
+  $translateProvider.useUrlLoader("#{[window.Loomio.mobileHost]}/api/v1/translations")
+                    .preferredLanguage(window.Loomio.currentUserLocale)
 
-    $translateProvider.useSanitizeValueStrategy('escapeParameters');
+  $translateProvider.useSanitizeValueStrategy('escapeParameters')
 
   # disable angular debug stuff in production
-  if window.Loomio? and window.Loomio.environment == 'production'
-    $compileProvider.debugInfoEnabled(false);
+  $compileProvider.debugInfoEnabled(window.Loomio.environment == 'production')
 
 # Finally the Application controller lives here.
 angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->

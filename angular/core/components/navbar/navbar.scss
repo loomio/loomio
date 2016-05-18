@@ -14,6 +14,7 @@
 .lmo-navbar__item-container {
   display: flex;
   display: -webkit-flex;
+  .fa                  { line-height: 31px; }
   .fa-group            { font-size: 1.1em; }
   .fa-bell-o, .fa-bell { font-size: 1.2em; }
 }

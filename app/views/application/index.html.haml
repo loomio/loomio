@@ -5,6 +5,8 @@
     %meta{:content => "IE=Edge", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}
     %base{:href => "/"}
+    %link{rel: :stylesheet, media: :screen, href: client_asset_path(:"app.min.css")}
+    %link{rel: :stylesheet, media: :print, href: client_asset_path(:"print.min.css")}
     = render 'application/metadata'
   %body{"ng-keydown" => "keyDown($event)"}
     %flash
@@ -18,4 +20,6 @@
       .lmo-loading-screen__image
         %img{src: "assets/loomio-community.jpg"}
 
-    %script{:src => "index.js"}
+    %script{src: client_asset_path(:"vendor.js")}
+    %script{src: :"index.js"}
+    %script{src: client_asset_path(:"app.js")}
