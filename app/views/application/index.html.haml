@@ -16,10 +16,6 @@
     %start-menu{"ng-if" => "isLoggedIn()"}
     %outlet{:name => "after-start-menu"}
 
-    .lmo-loading-screen{"ng-class" => "{'lmo-loading-complete': isReady}", "style" => "display: none;"}
-      .lmo-loading-screen__image
-        %img{src: "assets/loomio-community.jpg"}
-
     %script{src: client_asset_path(:"vendor.js")}
     %script{src: :"index.js"}
     %script{src: client_asset_path(:"app.js")}
