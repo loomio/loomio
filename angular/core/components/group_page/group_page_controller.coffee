@@ -62,7 +62,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @showWelcomeModel = ->
     Session.user().isMemberOf(@group) and
-    !Session.user().hasExperienced("welcomeModal", @group)
+    !Session.user().hasExperienced("welcomeModal", @group) and
+    !@subscriptionSuccess
 
   @handleWelcomeModal = =>
     if @showWelcomeModel()

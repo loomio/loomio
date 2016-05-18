@@ -2,7 +2,6 @@ describe 'Joining group', ->
 
   groupsHelper = require './helpers/groups_helper.coffee'
   flashHelper = require './helpers/flash_helper.coffee'
-  page = require './helpers/page_helper.coffee'
 
   describe 'display', ->
 

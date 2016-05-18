@@ -376,9 +376,9 @@ en:
 
     creator_heading: "Welcome to your new group"
     member_heading: "Welcome to Loomio"
-    creator_first_step: "You are the group <strong>coordinator</strong>, which is like being a host. Watch the video, then check out the example threads."
-    creator_second_step: "When you’re ready, <strong>invite people</strong> in."
-    member_steps: "Watch this video for an overview of how Loomio works. Then try posting a comment in a discussion thread, or start one of your own!"
+    creator_info: "You are the group <strong>coordinator</strong>, which is like being a host. Watch the video, then check out the example threads."
+    member_info: "Watch this video for an overview of how Loomio works. Then try posting a comment in a discussion thread, or start one of your own!"
+    creater_footer: "When you’re ready, <strong>invite people</strong> in."
     ok_got_it: "Ok, got it!"
 
   group_cover_modal:
