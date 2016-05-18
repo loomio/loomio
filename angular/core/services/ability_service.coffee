@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
+angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session, $location) ->
   new class AbilityService
 
     isLoggedIn: ->
@@ -142,16 +142,17 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       Session.user().locale != model.author().locale
 
     requireLoginFor: (page) ->
-      !@isLoggedIn() and _.contains([
-        'groupsPage',
-        'dashboardPage',
-        'inboxPage',
-        'profilePage',
-        'emailSettingsPage',
-        'authorizedAppsPage',
-        'registeredAppsPage',
-        'registeredAppPage'
-      ], page)
+      return false if @isLoggedIn()
+      switch page
+        when 'emailSettingsPage' then !$location.search().unsubscribe_token
+        when 'groupsPage',         \
+             'dashboardPage',      \
+             'inboxPage',          \
+             'profilePage',        \
+             'authorizedAppsPage', \
+             'registeredAppsPage', \
+             'registeredAppPage' then true
+        else false
 
     requireRedirectFor: (page) ->
       switch page
