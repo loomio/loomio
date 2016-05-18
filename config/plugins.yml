@@ -4,4 +4,4 @@ loomio_webhooks:
 
 loomio_org_plugin:
   repo:    loomio/loomio_org_plugin
-  version: master
+  version: single_group_experience
