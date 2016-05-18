@@ -140,3 +140,21 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       AppConfig.canTranslate and
       Session.user().locale and
       Session.user().locale != model.author().locale
+
+    requireLoginFor: (page) ->
+      !@isLoggedIn() and _.contains([
+        'groupsPage',
+        'dashboardPage',
+        'inboxPage',
+        'profilePage',
+        'emailSettingsPage',
+        'authorizedAppsPage',
+        'registeredAppsPage',
+        'registeredAppPage'
+      ], page)
+
+    requireRedirectFor: (page) ->
+      switch page
+        when 'inboxPage'                   then !Session.user().hasAnyGroups()
+        when 'dashboardPage', 'groupsPage' then !Session.user().hasMultipleGroups()
+        else false

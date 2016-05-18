@@ -1,4 +1,5 @@
 angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, AbilityService, FormService, Session, $location, ModalService, ChangeVolumeForm) ->
+  $rootScope.$broadcast('currentComponent', {page: 'emailSettingsPage'})
 
   @user = Session.user().clone()
 
