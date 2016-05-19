@@ -61,9 +61,11 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       ModalService.open SubscriptionSuccessModal
 
   @showWelcomeModel = ->
+    @group.isParent() and
     Session.user().isMemberOf(@group) and
-    !Session.user().hasExperienced("welcomeModal", @group) and
-    !@subscriptionSuccess
+    !@group.trialIsOverdue() and
+    !@subscriptionSuccess and
+    !Session.user().hasExperienced("welcomeModal", @group)
 
   @handleWelcomeModal = =>
     if @showWelcomeModel()

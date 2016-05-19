@@ -43,6 +43,7 @@ describe 'Invitations', ->
 
   it 'lets you add members from the parent to a subgroup', ->
     page.loadPath 'setup_group'
+    page.click '.group-welcome-modal__close-button'
     page.click '.group-page-actions__button',
                '.group-page-actions__add-subgroup-link'
 
