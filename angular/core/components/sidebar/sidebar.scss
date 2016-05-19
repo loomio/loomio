@@ -1,20 +1,18 @@
-.sidebar {
-  margin-top: 45px;
-  height: 100%;
+.md-sidenav-left {
+  z-index: 60;
   position: fixed;
+  height: 100%;
+  padding-top: 50px;
+  background-color: #fff;
 }
 
-.sidebar__content {
-  max-height: 100%;
-  background-color: #fff;
+.md-closed {
+  width: 0px;
+  display: none;
 }
 
 .sidebar__threads, .sidebar__user {
   flex-basis: content;
-}
-
-.md-sidenav-left {
-  width: 250px;
 }
 
 .sidebar__list-item {

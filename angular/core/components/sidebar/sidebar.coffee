@@ -1,11 +1,9 @@
 angular.module('loomioApp').directive 'sidebar', ->
-  scope: {}
+  # scope: {}
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
   controller: ($scope, CurrentUser, $rootScope, $window, RestfulClient) ->
-
-    $scope.$on 'sidebar-open', => $scope.lockOpen = true
 
     $scope.logHello = ->
       console.log("Hello")
