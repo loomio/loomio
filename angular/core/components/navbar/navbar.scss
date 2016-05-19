@@ -19,6 +19,10 @@
   .fa-bell-o, .fa-bell { font-size: 1.2em; }
 }
 
+.lmo-navbar__item, .lmo-navbar--left {
+  -webkit-flex-basis: 100%;
+}
+
 .lmo-navbar__logo {
   padding: 5px;
 }
