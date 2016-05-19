@@ -23,7 +23,6 @@
   background: $loomio-orange;
   width: 50px;
   height: 50px;
-  padding: 12px 14px;
   float: right;
   color: white;
   border: none;
@@ -35,19 +34,10 @@
   border-radius: 100%;
   cursor: pointer;
   outline: 0;
-  &:hover {
-    @include box_shadow(3);
-  }
-  .fa-group {
-    position: relative;
-    bottom: 1px;
-    right: 2px;
-  }
-  .fa-times {
-    position: relative;
-    bottom: 3px;
-    right: 1px;
-  }
+  &:hover { @include box_shadow(3); }
+  .fa-pencil, .fa-user { padding: 3px 1px; }
+  .fa-group            { padding: 3px 0; }
+  .fa-times            { margin-top: -4px; }
 }
 
 .start-menu__over-modal {
@@ -69,7 +59,7 @@
   background: white;
   width: 35px;
   height: 35px;
-  padding: 7px 9px;
+  padding: 7px 8px;
   margin: 10px 7px;
   i { color: rgb(51,51,51); }
 }
