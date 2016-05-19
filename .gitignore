@@ -26,8 +26,9 @@ public/system
 public/uploads
 
 mobile/platforms
-mobile/plugins/cordova-plugin-whitelist
+mobile/plugins
 mobile/www/client
+mobile/www/fonts
 
 disabled_plugins/
 /plugins/
