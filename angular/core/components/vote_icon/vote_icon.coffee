@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'voteIcon', ->
+angular.module('loomioApp').directive 'voteIcon', (LmoUrlService) ->
   scope: {position: '='}
   restrict: 'E'
   templateUrl: 'generated/components/vote_icon/vote_icon.html'
@@ -10,3 +10,6 @@ angular.module('loomioApp').directive 'voteIcon', ->
         when 'abstain' then '/img/abstain.svg'
         when 'no' then '/img/disagree.svg'
         when 'block' then '/img/block.svg'
+
+    $scope.voteBackgroundImage = ->
+      LmoUrlService.backgroundImageFor($scope.positionImg())
