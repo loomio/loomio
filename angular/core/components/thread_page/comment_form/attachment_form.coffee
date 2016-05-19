@@ -5,10 +5,11 @@ angular.module('loomioApp').directive 'attachmentForm', ->
   replace: true
   controller: ($scope, $rootScope, $timeout, Records) ->
     $scope.upload = (files) ->
+      $scope.comment.setErrors({})
       for file in files
         $rootScope.$broadcast 'disableCommentForm'
         $scope.currentUpload = Records.attachments.upload(file, $scope.progress)
-        $scope.currentUpload.then($scope.success).finally($scope.reset)
+        $scope.currentUpload.then($scope.success, $scope.failure).finally($scope.reset)
 
     $scope.selectFile = ->
       $timeout -> document.querySelector('.attachment-form__file-input').click()
@@ -23,6 +24,9 @@ angular.module('loomioApp').directive 'attachmentForm', ->
       data = response.data || response
       _.each data.attachments, (attachment) ->
         $scope.comment.newAttachmentIds.push(attachment.id)
+
+    $scope.failure = (response) ->
+      $scope.comment.setErrors(response.data.errors)
 
     $scope.reset = ->
       $scope.files = $scope.currentUpload = null
