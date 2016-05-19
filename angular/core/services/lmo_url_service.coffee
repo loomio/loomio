@@ -55,3 +55,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
 
     queryStringFor: (params = {}) ->
       _.map(params, (value, key) -> "#{key}=#{value}").join('&')
+
+    srcFor: (path) ->
+      if path.match(/(^\/\/)|(^http)/) # url is absolute
+        path
+      else
+        "#{[AppConfig.mobileHost]}/#{path.replace(/^\//, '')}"

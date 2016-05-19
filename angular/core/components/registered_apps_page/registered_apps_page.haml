@@ -12,7 +12,7 @@
         .lmo-bold.col-xs-1
       .row.registered-apps-page__table-row{ng-repeat: "application in registeredAppsPage.applications() | orderBy: 'name' track by application.id"}
         .col-xs-1.align-right
-          %img.registered-apps-page__avatar{ng-src: "{{application.logoUrl}}"}>
+          %img.registered-apps-page__avatar{lmo-src: "{{application.logoUrl}}"}>
         .col-xs-3
           %a.registered-apps-page__name{lmo-href-for: "application"}
             {{ application.name }}

@@ -7,7 +7,7 @@
 
   .modal-body.registered-app-form__modal-body
     .lmo-form-group.registered-app-form__avatar
-      %img{ng-src: "{{application.logoUrl}}"}
+      %img{lmo-src: "{{application.logoUrl}}"}
       %button.lmo-btn--cancel.registered-app-form__logo-upload-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
         %i.fa.fa-lg.fa-camera>
         %span{translate: "common.action.upload"}>

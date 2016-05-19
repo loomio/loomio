@@ -12,6 +12,6 @@
 
 %p
   = t(:'email.missed_yesterday.thanks_for_reading')
-  %img{src: mark_summary_as_read_url_for(@user, format: 'gif'), alt: '', width: 1, height: 1}
+  %img{lmo-src: mark_summary_as_read_url_for(@user, format: 'gif'), alt: '', width: 1, height: 1}
   %br
 =render 'user_mailer/unsubscribe_link'
