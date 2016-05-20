@@ -5,17 +5,14 @@ describe 'Subscription flow', ->
 
     it 'displays the trial card to on group page for coordinators only', ->
       page.loadPath('setup_group_on_trial_admin')
-      page.click '.group-welcome-modal__close-button'
       page.expectText('.trial-card', 'You can pick a pricing plan')
 
     it 'does not display the trial card for non-coordinators', ->
       page.loadPath('setup_group_on_trial')
-      page.click '.group-welcome-modal__close-button'
       page.expectNoElement('.trial-card')
 
     it 'lets coordinator choose gift plan', ->
       page.loadPath('setup_group_on_trial_admin')
-      page.click '.group-welcome-modal__close-button'
       page.click('.trial-card__choose-plan-button',
                  '.choose-plan-modal__select-button--gift',
                  '.confirm-gift-plan-modal__checkbox',
@@ -47,7 +44,6 @@ describe 'Subscription flow', ->
 
     it 'hides trial card and offers subscription management', ->
       page.loadPath('setup_group_on_paid_plan')
-      page.click '.group-welcome-modal__close-button'
 
       page.expectNoElement('.trial-card')
       page.click('.group-page-actions__button')

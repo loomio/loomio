@@ -9,7 +9,6 @@ describe 'Managing membership requests', ->
 
   beforeEach ->
     membershipRequestsHelper.loadWithMembershipRequests()
-    page.click '.group-welcome-modal__close-button'
     membershipRequestsHelper.clickMembershipRequestsLink()
 
   describe 'approving a membership request', ->

@@ -115,8 +115,7 @@ describe 'Group Page', ->
 
     it 'starts an open group', ->
       page.loadPath('setup_new_group')
-      page.click '.group-welcome-modal__close-button',
-                 '.start-menu__start-button',
+      page.click '.start-menu__start-button',
                  '.start-menu__startGroup',
                  '.group-form__privacy-open',
                  '.group-form__advanced-link'
@@ -130,16 +129,19 @@ describe 'Group Page', ->
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Open'
 
-    it 'does not reshow the welcome modal', ->
-      page.loadPath('setup_new_group')
+    it 'shows the welcome modal when group is created', ->
+      page.loadPath('setup_group_with_welcome_modal')
       page.expectElement '.group-welcome-modal'
+
+    it 'does not reshow the welcome modal', ->
+      page.loadPath('setup_group_with_welcome_modal')
+      page.click '.group-welcome-modal__close-button'
       browser.refresh()
       page.expectNoElement '.group-welcome-modal'
 
     it 'starts a closed group', ->
       page.loadPath('setup_new_group')
-      page.click '.group-welcome-modal__close-button',
-                 '.start-menu__start-button',
+      page.click '.start-menu__start-button',
                  '.start-menu__startGroup',
                  '.group-form__privacy-closed',
                  '.group-form__advanced-link'
@@ -154,8 +156,7 @@ describe 'Group Page', ->
 
     it 'starts a secret group', ->
       page.loadPath('setup_new_group')
-      page.click '.group-welcome-modal__close-button',
-                 '.start-menu__start-button',
+      page.click '.start-menu__start-button',
                  '.start-menu__startGroup',
                  '.group-form__privacy-secret',
                  '.group-form__advanced-link'
@@ -168,20 +169,10 @@ describe 'Group Page', ->
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Secret'
 
-
-    it 'shows the welcome modal once per session', ->
-      page.loadPath('setup_new_group')
-      page.expectElement('.group-welcome-modal')
-      page.click('.group-welcome-modal__close-button',
-                 '.members-card__manage-members',
-                 '.group-theme__name')
-      page.expectNoElement('.group-welcome-modal')
-
   describe 'starting a subgroup', ->
     describe 'with a public parent', ->
       beforeEach ->
         page.loadPath('setup_open_group')
-        page.click '.group-welcome-modal__close-button'
         page.click('.group-page-actions__button',
                    '.group-page-actions__add-subgroup-link')
         page.click '.group-form__advanced-link'
@@ -207,7 +198,6 @@ describe 'Group Page', ->
     describe 'with a closed parent', ->
       beforeEach ->
         page.loadPath('setup_closed_group')
-        page.click '.group-welcome-modal__close-button'
         page.click('.group-page-actions__button',
                    '.group-page-actions__add-subgroup-link')
         page.click '.group-form__advanced-link'
@@ -233,7 +223,6 @@ describe 'Group Page', ->
     describe 'with a secret parent', ->
       beforeEach ->
         page.loadPath('setup_secret_group')
-        page.click '.group-welcome-modal__close-button'
         page.click('.group-page-actions__button',
                    '.group-page-actions__add-subgroup-link')
         page.click '.group-form__advanced-link'
@@ -265,7 +254,6 @@ describe 'Group Page', ->
   describe 'editing group settings', ->
     beforeEach ->
       page.loadPath('setup_group')
-      page.click '.group-welcome-modal__close-button'
       page.click('.group-page-actions__button',
                  '.group-page-actions__edit-group-link')
 
@@ -337,7 +325,6 @@ describe 'Group Page', ->
     it 'allows group members to leave the group', ->
       # leave group and expect the group has left groups page
       page.loadPath('setup_group_with_multiple_coordinators')
-      page.click '.group-welcome-modal__close-button'
       page.click('.group-page-actions__button',
                  '.group-page-actions__leave-group',
                  '.leave-group-form__submit')
@@ -351,7 +338,6 @@ describe 'Group Page', ->
       # see that we can't leave until we add a coordinator
       # click add coordinator and check we're taken to the memberships page
       page.loadPath('setup_group')
-      page.click '.group-welcome-modal__close-button'
       page.click('.group-page-actions__button',
                  '.group-page-actions__leave-group')
       page.expectText('.leave-group-form', 'You cannot leave this group')
@@ -362,7 +348,6 @@ describe 'Group Page', ->
 
     it 'allows a coordinator to archive a group', ->
       page.loadPath('setup_group')
-      page.click '.group-welcome-modal__close-button'
       page.click('.group-page-actions__button',
                  '.group-page-actions__archive-group',
                  '.archive-group-form__submit')
@@ -373,14 +358,12 @@ describe 'Group Page', ->
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->
       page.loadPath 'setup_group_with_empty_draft'
-      page.click '.group-welcome-modal__close-button',
-                 '.discussions-card__new-thread-button'
+      page.click '.discussions-card__new-thread-button'
       page.expectText('.privacy-notice', 'The thread will only be visible')
 
   describe 'starting a discussion', ->
     beforeEach ->
       page.loadPath('setup_group')
-      page.click '.group-welcome-modal__close-button'
 
     it 'successfully starts a discussion', ->
       page.click('.discussions-card__new-thread-button')
@@ -403,7 +386,6 @@ describe 'Group Page', ->
   describe 'changing membership email settings', ->
     beforeEach ->
       page.loadPath('setup_group')
-      page.click '.group-welcome-modal__close-button'
 
     it 'lets you change membership volume', ->
       page.click '.group-page-actions__button',
@@ -423,5 +405,4 @@ describe 'Group Page', ->
   describe 'subdomains', ->
     it 'handles subdomain redirects', ->
       page.loadPath 'setup_group_with_subdomain'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'Ghostbusters'

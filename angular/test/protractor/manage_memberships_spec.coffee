@@ -7,7 +7,6 @@ describe 'Managing memberships', ->
 
   beforeEach ->
     groupsHelper.load()
-    page.click '.group-welcome-modal__close-button'
     membershipsHelper.visitMembershipsPage()
 
   describe 'removing a group member', ->
@@ -33,7 +32,6 @@ describe 'Managing memberships', ->
   describe 'adding someone as a non-coordinator', ->
     it 'allows non-coordinators to add members if the group settings allow', ->
       page.loadPath('setup_group_as_member')
-      page.click '.group-welcome-modal__close-button'
       page.click '.members-card__manage-members'
       page.expectElement '.memberships-page__memberships'
       page.expectElement '.members-card__invite-members'

@@ -22,7 +22,6 @@ describe 'Notifications', ->
 
     it 'notifies inviter when invitation is accepted', ->
       page.loadPath 'setup_group'
-      page.click '.group-welcome-modal__close-button'
       page.click '.members-card__invite-members-btn'
       page.fillIn '.invitation-form__email-addresses', 'max@example.com'
       page.click '.invitation-form__submit'
