@@ -1,8 +1,9 @@
-angular.module('loomioApp').directive 'lmoHrefFor', (LmoUrlService) ->
+angular.module('loomioApp').directive 'lmoHrefFor', ($window, TransitionService, LmoUrlService) ->
   restrict: 'A'
   scope:
     model: '=lmoHrefFor'
     action: '@lmoHrefAction'
+    transition: '@lmoHrefTransition'
   link: (scope, elem, attrs) ->
     elem.attr 'href', LmoUrlService.route
       model: scope.model
@@ -11,3 +12,5 @@ angular.module('loomioApp').directive 'lmoHrefFor', (LmoUrlService) ->
       attr_target = $event.target.attributes.target
       if $event.ctrlKey or $event.metaKey or (attr_target and attr_target.value == '_blank')
         $event.stopImmediatePropagation()
+      else
+        TransitionService.beginTransition(scope.transition, androiddelay: -1)

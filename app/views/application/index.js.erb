@@ -18,4 +18,3 @@ var includeCss = function(url, opts) {
 <%= render 'application/boot/faye'             if @appConfig[:fayeUrl] %>
 <%= render 'application/boot/intercom'         if @appConfig.dig(:intercom, :appId) %>
 <%= render 'application/boot/google_analytics' if @appConfig[:googleAnalyticsId] %>
-<%= javascript_include_tag 'angular_ahoy'      if hosted_by_loomio? %>

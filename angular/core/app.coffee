@@ -36,7 +36,7 @@ angular.module('loomioApp', ['ngNewRouter',
   $compileProvider.debugInfoEnabled(window.Loomio.environment == 'production')
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, TransitionService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -61,12 +61,18 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
-    ScrollService.scrollTo(options.scrollTo or 'h1')
-    $scope.links = options.links or {}
+
+    TransitionService.completeTransition()
+
     if AbilityService.requireLoginFor(options.page)
       ModalService.open(SignInForm, preventClose: -> true)
     else if AbilityService.requireRedirectFor(options.page)
       $timeout -> $router.navigate(Session.homePath())
+    else
+      ScrollService.scrollTo(options.scrollTo or 'h1')
+
+    $scope.links = options.links or {}
+    $scope.currentComponent = options.page
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
