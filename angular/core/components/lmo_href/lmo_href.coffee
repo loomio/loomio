@@ -10,4 +10,4 @@ angular.module('loomioApp').directive 'lmoHref', (TransitionService) ->
       if $event.ctrlKey or $event.metaKey
         $event.stopImmediatePropagation()
       else
-        TransitionService.beginTransition(scope.transition, androiddelay: -1)
+        TransitionService.transition(scope.transition)

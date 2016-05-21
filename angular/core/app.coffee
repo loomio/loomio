@@ -38,7 +38,6 @@ angular.module('loomioApp', ['ngNewRouter',
 # Finally the Application controller lives here.
 angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, TransitionService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
-  $scope.currentComponent = 'nothing yet'
 
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
   # This means that we re-initialize the controller for the page, which is what we want
@@ -62,8 +61,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
 
-    TransitionService.completeTransition()
-
     if AbilityService.requireLoginFor(options.page)
       ModalService.open(SignInForm, preventClose: -> true)
     else if AbilityService.requireRedirectFor(options.page)
@@ -72,7 +69,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
       ScrollService.scrollTo(options.scrollTo or 'h1')
 
     $scope.links = options.links or {}
-    $scope.currentComponent = options.page
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'

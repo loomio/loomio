@@ -13,4 +13,4 @@ angular.module('loomioApp').directive 'lmoHrefFor', ($window, TransitionService,
       if $event.ctrlKey or $event.metaKey or (attr_target and attr_target.value == '_blank')
         $event.stopImmediatePropagation()
       else
-        TransitionService.beginTransition(scope.transition, androiddelay: -1)
+        TransitionService.transition(scope.transition)
