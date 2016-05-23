@@ -7,7 +7,7 @@ module AngularHelper
   private
 
   def is_mobile_app_request?
-    request.env.fetch('HTTP_X_REQUESTED_WITH', '').match /cordova/
+    ENV['MOBILE_APP_ID'].present? && ENV['MOBILE_APP_ID'] == request.env['HTTP_X_REQUESTED_WITH']
   end
 
   def angular_asset_folder
