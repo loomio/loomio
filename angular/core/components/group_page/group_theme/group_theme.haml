@@ -8,13 +8,13 @@
 
   .group-theme__header--compact{ng-if: "compact"}
     .group-theme__logo--compact{aria-hidden: "true"}
-      %a{lmo-href-for: "group"}
+      %a{lmo-href-for: "group", lmo-href-transition: "slide", lmo-href-transition-options: "{direction: 'right'}"}
         %img{lmo-src: "{{group.logoUrl()}}"}
     .group-theme__name--compact
-      %a{ng-if: "group.isSubgroup()", lmo-href-for: "group.parent()"}
+      %a{ng-if: "group.isSubgroup()", lmo-href-for: "group.parent()", lmo-href-transition: "slide", lmo-href-transition-options: "{direction: 'right'}"}
         {{group.parentName()}}
       %span{ng-if: "group.isSubgroup()"}> \-
-      %a{lmo-href-for: "group"}
+      %a{lmo-href-for: "group", lmo-href-transition: "slide", lmo-href-transition-options: "{direction: 'right'}"}
         {{group.name}}
 
   .group-theme__header{ng-if: "!compact"}

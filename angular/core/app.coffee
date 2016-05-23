@@ -70,6 +70,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
     $scope.links = options.links or {}
 
+  $scope.$on '$locationChangeSuccess', -> $timeout TransitionService.completeTransition
+
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
 

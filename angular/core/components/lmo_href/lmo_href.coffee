@@ -3,6 +3,7 @@ angular.module('loomioApp').directive 'lmoHref', (TransitionService) ->
   scope:
     route: '@lmoHref'
     transition: '@lmoHrefTransition'
+    transitionOpts: '@lmoHrefTransitionOptions'
   link: (scope, elem, attrs) ->
     scope.$watch 'route', ->
       elem.attr 'href', scope.route
@@ -10,4 +11,4 @@ angular.module('loomioApp').directive 'lmoHref', (TransitionService) ->
       if $event.ctrlKey or $event.metaKey
         $event.stopImmediatePropagation()
       else
-        TransitionService.transition(scope.transition)
+        TransitionService.beginTransition(scope.transition, scope.transitionOpts)
