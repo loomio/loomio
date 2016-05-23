@@ -20,10 +20,9 @@ describe 'Group Page', ->
       staticPage.fillIn '#user_password_confirmation', 'vivalarevolucion'
       staticPage.click  '#create-account'
 
-      page.expectText '.modal-title', 'Welcome to your new group'
+      page.expectFlash 'Welcome! You have signed up successfully'
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
-      page.expectFlash 'Welcome! You have signed up successfully'
 
     it 'allows starting a group with an existing email', ->
       staticPage.loadPath 'view_homepage_as_visitor'
@@ -40,10 +39,9 @@ describe 'Group Page', ->
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
 
-      page.expectText '.modal-title', 'Welcome to your new group'
+      page.expectFlash 'Signed in successfully'
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
-      page.expectFlash 'Signed in successfully'
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
@@ -115,8 +113,7 @@ describe 'Group Page', ->
 
     it 'starts an open group', ->
       page.loadPath('setup_new_group')
-      page.click '.group-welcome-modal__close-button',
-                 '.start-menu__start-button',
+      page.click '.start-menu__start-button',
                  '.start-menu__startGroup',
                  '.group-form__privacy-open',
                  '.group-form__advanced-link'
@@ -130,16 +127,19 @@ describe 'Group Page', ->
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Open'
 
-    it 'does not reshow the welcome modal', ->
-      page.loadPath('setup_new_group')
+    it 'shows the welcome modal when group is created', ->
+      page.loadPath('setup_group_with_welcome_modal')
       page.expectElement '.group-welcome-modal'
+
+    it 'does not reshow the welcome modal', ->
+      page.loadPath('setup_group_with_welcome_modal')
+      page.click '.group-welcome-modal__close-button'
       browser.refresh()
       page.expectNoElement '.group-welcome-modal'
 
     it 'starts a closed group', ->
       page.loadPath('setup_new_group')
-      page.click '.group-welcome-modal__close-button',
-                 '.start-menu__start-button',
+      page.click '.start-menu__start-button',
                  '.start-menu__startGroup',
                  '.group-form__privacy-closed',
                  '.group-form__advanced-link'
@@ -154,8 +154,7 @@ describe 'Group Page', ->
 
     it 'starts a secret group', ->
       page.loadPath('setup_new_group')
-      page.click '.group-welcome-modal__close-button',
-                 '.start-menu__start-button',
+      page.click '.start-menu__start-button',
                  '.start-menu__startGroup',
                  '.group-form__privacy-secret',
                  '.group-form__advanced-link'
@@ -167,15 +166,6 @@ describe 'Group Page', ->
       page.click '.group-form__submit-button'
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Secret'
-
-
-    it 'shows the welcome modal once per session', ->
-      page.loadPath('setup_new_group')
-      page.expectElement('.group-welcome-modal')
-      page.click('.group-welcome-modal__close-button',
-                 '.members-card__manage-members',
-                 '.group-theme__name')
-      page.expectNoElement('.group-welcome-modal')
 
   describe 'starting a subgroup', ->
     describe 'with a public parent', ->
@@ -364,8 +354,7 @@ describe 'Group Page', ->
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->
       page.loadPath 'setup_group_with_empty_draft'
-      page.click '.group-welcome-modal__close-button',
-                 '.discussions-card__new-thread-button'
+      page.click '.discussions-card__new-thread-button'
       page.expectText('.privacy-notice', 'The thread will only be visible')
 
   describe 'starting a discussion', ->

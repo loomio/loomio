@@ -44,6 +44,7 @@ describe 'Subscription flow', ->
 
     it 'hides trial card and offers subscription management', ->
       page.loadPath('setup_group_on_paid_plan')
+
       page.expectNoElement('.trial-card')
       page.click('.group-page-actions__button')
       page.expectElement('.group-page-actions__manage-subscription-link')

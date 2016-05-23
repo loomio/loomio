@@ -1,5 +1,7 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
+
+  $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   $routeParams.key = $routeParams.key.split('|')[0]
@@ -62,15 +64,14 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @showWelcomeModel = ->
     @group.isParent() and
-    AbilityService.isCreatorOf(@group) and
-    @group.noInvitationsSent() and
+    Session.user().isMemberOf(@group) and
     !@group.trialIsOverdue() and
     !@subscriptionSuccess and
     !Session.user().hasExperienced("welcomeModal", @group)
 
   @handleWelcomeModal = =>
     if @showWelcomeModel()
-      ModalService.open(GroupWelcomeModal)
+      ModalService.open GroupWelcomeModal, group: => @group
       Records.memberships.saveExperience("welcomeModal", Session.user().membershipFor(@group))
 
   return

@@ -25,7 +25,7 @@ describe 'Email settings', ->
     beforeEach ->
       page.loadPath('setup_group')
       page.click '.navbar-user-options',
-      '.navbar-user-options__email-settings-link'
+                 '.navbar-user-options__email-settings-link'
 
     it 'lets you update email settings', testUpdate
     it 'lets you set default email settings for all new memberships', testDefaultUpdate

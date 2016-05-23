@@ -2,7 +2,7 @@ class AttachmentService
   def self.create(attachment:, actor:)
     actor.ability.authorize! :create, attachment
     attachment.user = actor
-    attachment.save!
+    attachment.save
     EventBus.broadcast('attachment_create', attachment, actor)
   end
 
