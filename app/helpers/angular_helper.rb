@@ -7,6 +7,7 @@ module AngularHelper
   private
 
   def is_mobile_app_request?
+    puts "HTTP_X_REQUESTED_WITH: #{request.env["HTTP_X_REQUESTED_WITH"]}"
     ENV['MOBILE_APP_ID'].present? && ENV['MOBILE_APP_ID'] == request.env['HTTP_X_REQUESTED_WITH']
   end
 
