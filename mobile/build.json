@@ -1,0 +1,11 @@
+{
+     "android": {
+         "release": {
+             "keystore": "loomio-app.keystore",
+             "storePassword": "testpassword",
+             "alias": "loomioapp",
+             "password" : "testpassword",
+             "keystoreType": ""
+         }
+     }
+ }
