@@ -26,7 +26,6 @@ describe 'Notifications', ->
       page.fillIn '.invitation-form__email-addresses', 'max@example.com'
       page.click '.invitation-form__submit'
       page.loadPath 'accept_last_invitation'
-      page.click '.group-welcome-modal__close-button'
       page.click '.notifications__button'
       page.expectText '.notifications__dropdown', 'Max Von Sydow accepted your invitation to join Dirty Dancing Shoes'
 

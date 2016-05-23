@@ -20,10 +20,9 @@ describe 'Group Page', ->
       staticPage.fillIn '#user_password_confirmation', 'vivalarevolucion'
       staticPage.click  '#create-account'
 
-      page.expectText '.modal-title', 'Welcome to your new group'
+      page.expectFlash 'Welcome! You have signed up successfully'
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
-      page.expectFlash 'Welcome! You have signed up successfully'
 
     it 'allows starting a group with an existing email', ->
       staticPage.loadPath 'view_homepage_as_visitor'
@@ -40,10 +39,9 @@ describe 'Group Page', ->
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
 
-      page.expectText '.modal-title', 'Welcome to your new group'
+      page.expectFlash 'Signed in successfully'
       page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
-      page.expectFlash 'Signed in successfully'
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
