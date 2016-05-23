@@ -63,23 +63,24 @@ class DevelopmentController < ApplicationController
     group = Group.new(name: 'Fresh group')
     StartGroupService.start_group(group)
     group.add_admin! patrick
-    membership = Membership.where(user: patrick, group: group).first
+    membership = Membership.find_by(user: patrick, group: group)
     membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(group)
   end
 
   def setup_group
-    membership = Membership.where(user: patrick, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     test_group.add_member! emilio
     redirect_to group_url(test_group)
   end
 
   def setup_group_with_welcome_modal
+    group = Group.new(name: 'Welcomed group')
+    StartGroupService.start_group(group)
+    group.add_admin! patrick
     sign_in patrick
-    redirect_to group_url(test_group)
+    redirect_to group_url(group)
   end
 
   # to test subdomains in development
@@ -90,8 +91,6 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_as_member
-    membership = Membership.where(user: jennifer, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in jennifer
     redirect_to group_url(test_group)
   end
@@ -136,7 +135,7 @@ class DevelopmentController < ApplicationController
   def setup_group_on_trial_admin
     group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
     GroupService.create(group: group_on_trial, actor: patrick)
-    membership = Membership.where(user: patrick, group: group_on_trial).first
+    membership = Membership.find_by(user: patrick, group: group_on_trial)
     membership.experienced! 'welcomeModal'
     group_on_trial.add_member! jennifer
     sign_in patrick
@@ -145,8 +144,6 @@ class DevelopmentController < ApplicationController
 
   def setup_group_on_trial
     GroupService.create(group: test_group, actor: patrick)
-    membership = Membership.where(user: jennifer, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in jennifer
     redirect_to group_url(test_group)
   end
@@ -155,8 +152,6 @@ class DevelopmentController < ApplicationController
     GroupService.create(group: test_group, actor: patrick)
     subscription = test_group.subscription
     subscription.update_attribute :expires_at, 1.day.ago
-    membership = Membership.where(user: patrick, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -165,16 +160,12 @@ class DevelopmentController < ApplicationController
     GroupService.create(group: test_group, actor: patrick)
     subscription = test_group.subscription
     subscription.update_attribute :expires_at, 20.days.ago
-    membership = Membership.where(user: patrick, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
 
   def setup_group_on_paid_plan
     GroupService.create(group: test_group, actor: patrick)
-    membership = Membership.where(user: patrick, group: test_group).first
-    membership.experienced! 'welcomeModal'
     subscription = test_group.subscription
     subscription.update_attribute :kind, 'paid'
     sign_in patrick
@@ -210,7 +201,7 @@ class DevelopmentController < ApplicationController
     @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @test_group.add_admin! patrick
-    membership = Membership.where(user: patrick, group: test_group).first
+    membership = Membership.find_by(user: patrick, group: @test_group)
     membership.experienced! 'welcomeModal'
     test_empty_draft
     redirect_to group_url(test_group)
@@ -236,8 +227,6 @@ class DevelopmentController < ApplicationController
 
   def setup_group_with_multiple_coordinators
     test_group.add_admin! emilio
-    membership = Membership.where(user: patrick, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -320,7 +309,7 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
-    redirect_to group_url(test_group)
+    redirect_to group_url(@test_group)
   end
 
   def view_open_group_as_visitor
@@ -357,7 +346,7 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'open')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
-    membership = Membership.where(user: patrick, group: @test_group).first
+    membership = Membership.find_by(user: patrick, group: @test_group)
     membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
@@ -368,7 +357,7 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'closed')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
-    membership = Membership.where(user: patrick, group: @test_group).first
+    membership = Membership.find_by(user: patrick, group: @test_group)
     membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
@@ -379,7 +368,7 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'secret')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
-    membership = Membership.where(user: patrick, group: @test_group).first
+    membership = Membership.find_by(user: patrick, group: @test_group)
     membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
@@ -475,8 +464,6 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_membership_requests
-    membership = Membership.where(user: patrick, group: test_group).first
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     test_group
     another_test_group
