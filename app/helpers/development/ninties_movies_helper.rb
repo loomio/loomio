@@ -62,6 +62,9 @@ module Development::NintiesMoviesHelper
       @test_group.add_admin!  patrick
       @test_group.add_member! jennifer
       @test_group.add_member! emilio
+      @test_group.memberships.each do |membership|
+        membership.experienced! 'welcomeModal'
+      end
     end
     @test_group
   end
