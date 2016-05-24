@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'navbarUserOptions', ->
       UserHelpService.helpLink()
 
     $scope.signOut = ->
-      Records.sessions.remote.destroy('').then -> $window.location.href = '/'
+      Records.sessions.remote.destroy('').then -> $window.location.reload()
 
     $scope.showContactUs = ->
       AppConfig.isLoomioDotOrg
