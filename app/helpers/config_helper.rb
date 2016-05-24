@@ -54,7 +54,8 @@ module ConfigHelper
           path: "subscribe/#{Rails.application.secrets.chargify_plus_plan_key}/#{Rails.application.secrets.chargify_plus_plan_name}"
         }
       },
-      donation_url: Rails.application.secrets.chargify_donation_url
+      donation_url: Rails.application.secrets.chargify_donation_url,
+      nagCache: {}
     }
   end
 end

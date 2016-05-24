@@ -8,6 +8,7 @@
     <access origin="https://www.loomiotest.org" />
     <access origin="https://secure.gravatar.com" />
     <access origin="https://loomio-attachments.s3.amazonaws.com" />
+    <access origin="https://www.youtube.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
