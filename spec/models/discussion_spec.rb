@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe Discussion do
-  let(:discussion) { create :discussion }
+  let(:user)       { create :user }
+  let(:group)      { create :group }
+  let(:discussion) { create :discussion, group: group }
+  let(:motion)     { create :motion, discussion: discussion }
 
   context "versioning" do
     before do
@@ -49,25 +52,21 @@ describe Discussion do
 
   describe "#closed_motions_count" do
     before do
-      @user = create(:user)
-      @group = create(:group)
-      @discussion = create(:discussion, group: @group)
-      @motion = create(:motion, discussion: @discussion)
-      @motion.close!
+      motion.close!
     end
 
     it "returns a count of closed motions" do
-      expect(@discussion.reload.closed_motions_count).to eq 1
+      expect(discussion.reload.closed_motions_count).to eq 1
     end
 
     it "updates correctly after motion is closed" do
       expect {
-        @discussion.motions.create(attributes_for(:motion).merge({ author: @user })).close!
-      }.to change { @discussion.reload.motions_count }.by(1)
+        discussion.motions.create(attributes_for(:motion).merge({ author: user })).close!
+      }.to change { discussion.reload.closed_motions_count }.by(1)
     end
 
     it "updates correctly after deleting a motion" do
-      expect { @motion.destroy }.to change { @discussion.reload.closed_motions_count }.by(-1)
+      expect { motion.destroy }.to change { discussion.reload.closed_motions_count }.by(-1)
     end
 
   end
