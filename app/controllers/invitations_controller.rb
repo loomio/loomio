@@ -1,6 +1,10 @@
 class InvitationsController < ApplicationController
   include PrettyUrlHelper
 
+  skip_before_filter :set_metadata
+  skip_before_filter :set_app_config
+  skip_before_filter :ensure_angular_ui
+
   rescue_from(ActiveRecord::RecordNotFound)    { respond_with_error :"invitation.invitation_not_found", status: :not_found }
   rescue_from(Invitation::InvitationCancelled) { respond_with_error :"invitation.invitation_cancelled" }
   rescue_from(Invitation::InvitationAlreadyUsed) do

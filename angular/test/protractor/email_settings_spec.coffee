@@ -32,7 +32,7 @@ describe 'Email settings', ->
     it 'lets you update email settings for all current memberships', testMembershipUpdate
 
   describe 'logged out without unsubscribe token', ->
-    fit 'allows login to set email preferences', ->
+    it 'allows login to set email preferences', ->
       page.loadPath 'email_settings_as_visitor'
       page.fillIn '#user-email', 'patrick_swayze@example.com'
       page.fillIn '#user-password', 'gh0stmovie'
