@@ -483,6 +483,12 @@ class DevelopmentController < ApplicationController
     redirect_to dashboard_url
   end
 
+  def email_settings_as_logged_in_user
+    test_group
+    sign_in patrick
+    redirect_to email_preferences_url(unsubscribe_token: patrick.unsubscribe_token)
+  end
+
   def email_settings_as_restricted_user
     test_group
     redirect_to email_preferences_url(unsubscribe_token: patrick.unsubscribe_token)

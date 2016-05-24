@@ -31,6 +31,10 @@ describe 'Email settings', ->
     it 'lets you set default email settings for all new memberships', testDefaultUpdate
     it 'lets you update email settings for all current memberships', testMembershipUpdate
 
+  describe 'logged in with unsubscribe token', ->
+    it 'displays you as logged in', ->
+      page.loadPath 'email_settings_as_logged_in_user'
+      page.expectElement '.lmo-navbar__item--user'
 
   describe 'logged out', ->
     beforeEach ->
