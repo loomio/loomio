@@ -37,6 +37,6 @@ class Queries::UsersToEmailQuery
   end
 
   def self.motion_closed(motion)
-    Queries::UsersByVolumeQuery.loud(motion.discussion).distinct
+    Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).distinct
   end
 end
