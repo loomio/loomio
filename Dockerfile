@@ -37,7 +37,7 @@ ENV DEVISE_SECRET boopboop
 ENV SECRET_COOKIE_TOKEN beepbeep
 
 # build assets
-RUN bundle exec rake deploy:build[docker]
+RUN bundle exec rake deploy:build[plugins.docker]
 RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
