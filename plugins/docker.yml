@@ -1,0 +1,4 @@
+# Plugins loaded by https://github.com/loomio/loomio/blob/master/Dockerfile
+loomio_webhooks:
+  repo:    loomio/loomio_webhooks
+  version: master
