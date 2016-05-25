@@ -42,7 +42,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       @recordStore.attachments.find(@newAttachmentIds)
 
     attachments: ->
-      @recordStore.attachments.find(commentId: @id)
+      @recordStore.attachments.find(attachableId: @id, attachableType: 'Comment')
 
     authorName: ->
       @author().name

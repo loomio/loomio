@@ -1,11 +1,11 @@
 angular.module('loomioApp').directive 'attachmentForm', ->
-  scope: {comment: '='}
+  scope: {model: '='}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/attachment_form.html'
   replace: true
   controller: ($scope, $rootScope, $timeout, Records) ->
     $scope.upload = (files) ->
-      $scope.comment.setErrors({})
+      $scope.model.setErrors({})
       for file in files
         $rootScope.$broadcast 'disableCommentForm'
         $scope.currentUpload = Records.attachments.upload(file, $scope.progress)
@@ -23,10 +23,10 @@ angular.module('loomioApp').directive 'attachmentForm', ->
     $scope.success = (response) ->
       data = response.data || response
       _.each data.attachments, (attachment) ->
-        $scope.comment.newAttachmentIds.push(attachment.id)
+        $scope.model.newAttachmentIds.push(attachment.id)
 
     $scope.failure = (response) ->
-      $scope.comment.setErrors(response.data.errors)
+      $scope.model.setErrors(response.data.errors)
 
     $scope.reset = ->
       $scope.files = $scope.currentUpload = null

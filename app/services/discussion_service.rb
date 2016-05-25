@@ -25,6 +25,7 @@ class DiscussionService
     actor.ability.authorize! :create, discussion
     discussion.author = actor
     discussion.inherit_group_privacy!
+    discussion.attachment_ids = [discussion.attachment_ids, discussion.new_attachment_ids].compact.flatten
     return false unless discussion.valid?
 
     discussion.save!
