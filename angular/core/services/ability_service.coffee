@@ -140,3 +140,16 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       AppConfig.canTranslate and
       Session.user().locale and
       Session.user().locale != model.author().locale
+
+    requireLoginFor: (page) ->
+      return false if @isLoggedIn()
+      switch page
+        when 'emailSettingsPage' then !Session.user().restricted?
+        when 'groupsPage',         \
+             'dashboardPage',      \
+             'inboxPage',          \
+             'profilePage',        \
+             'authorizedAppsPage', \
+             'registeredAppsPage', \
+             'registeredAppPage' then true
+        else false
