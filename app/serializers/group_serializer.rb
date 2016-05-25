@@ -3,6 +3,7 @@ class GroupSerializer < ActiveModel::Serializer
   attributes :id,
              :organisation_id,
              :cohort_id,
+             :parent_id,
              :key,
              :name,
              :full_name,
