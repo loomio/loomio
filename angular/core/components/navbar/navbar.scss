@@ -1,4 +1,5 @@
 .lmo-navbar{
+  @include displayFlex;
   @include box_shadow(2);
   z-index: 1000;
   background: white;
@@ -6,16 +7,11 @@
   width: 100%;
   position: fixed;
   top: 0;
-  display: flex;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   justify-content: space-between;
 }
 
 .lmo-navbar__item-container {
-  display: flex;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+  @include displayFlex;
   .fa-group            { font-size: 1.1em; }
   .fa-bell-o, .fa-bell { font-size: 1.2em; }
 }
