@@ -56,6 +56,9 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
+  # NB: this override means that groups won't ever serialize out an event in response to an API call.
+  # at the time of this writing, we don't ever serialize events from groups_controller.
+  # if you're expecting an event from the groups controller and aren't getting one, this is probably why.
   def resource_options(scope:, serializer:, root:)
     { resources: [resource, resource.parent].compact, scope: scope, serializer: serializer, root: root }
   end
