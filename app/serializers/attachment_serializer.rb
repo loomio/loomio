@@ -1,6 +1,6 @@
 class AttachmentSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :filename, :filetype, :filesize, :original, :thread, :thumb, :created_at, :is_an_image?
+  attributes :id, :attachable_id, :attachable_type, :filename, :filetype, :filesize, :original, :thread, :thumb, :created_at, :is_an_image?
 
   # TODO: Add polymorphic attachment parent
   has_one :author, serializer: UserSerializer, root: 'users'
