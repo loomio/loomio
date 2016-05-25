@@ -1,5 +1,4 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig) ->
-
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AppConfig) ->
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
   $rootScope.$broadcast('setTitle', 'Dashboard')
   $rootScope.$broadcast('analyticsClearGroup')
@@ -44,6 +43,11 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
           name: name
           filter: ['only_threads_in_my_groups', 'show_not_muted', @filter]
           timeframe: @timeframes[name]
+
+    if !@ready
+      $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
+      @ready = true
+
 
   @loadMore = =>
     from = @loaded[@filter]

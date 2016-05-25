@@ -13,11 +13,14 @@ angular.module('loomioApp', ['ngNewRouter',
                              'checklist-model',
                              'monospaced.elastic',
                              'angularMoment',
-                             'offClick']).config ($locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
+                             'offClick']).config ($locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, gravatarServiceProvider) ->
 
   # this should make stuff faster but you need to add "animated" class to animated things.
   # http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm
   $animateProvider.classNameFilter( /\banimated\b/ );
+
+  # load gravatars over https
+  gravatarServiceProvider.secure = true
 
   markedProvider.setOptions
     renderer: renderProvider.$get(0).createRenderer()
@@ -26,23 +29,18 @@ angular.module('loomioApp', ['ngNewRouter',
     breaks: true
 
   # enable html5 pushstate mode
-  $locationProvider.html5Mode(true)
+  $locationProvider.html5Mode(!window.Loomio.mobileHost?)
 
-  if window.Loomio?
-    locale = window.Loomio.currentUserLocale
-    $translateProvider.useUrlLoader("/api/v1/translations").
-                       preferredLanguage(locale)
-
-    $translateProvider.useSanitizeValueStrategy('escapeParameters');
+  $translateProvider.useUrlLoader("#{[window.Loomio.mobileHost]}/api/v1/translations")
+                    .preferredLanguage(window.Loomio.currentUserLocale)
+                    .useSanitizeValueStrategy('escapeParameters')
 
   # disable angular debug stuff in production
-  if window.Loomio? and window.Loomio.environment == 'production'
-    $compileProvider.debugInfoEnabled(false);
+  $compileProvider.debugInfoEnabled(window.Loomio.environment == 'production')
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, TransitionService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
-  $scope.currentComponent = 'nothing yet'
 
   # NB: $scope.refresh triggers the ng-if for the ng-outlet in the layout.
   # This means that we re-initialize the controller for the page, which is what we want
@@ -61,13 +59,21 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     ModalService.open(AngularWelcomeModal)                         if AppConfig.showWelcomeModal
     IntercomService.boot()
     MessageChannelService.subscribe()
+  Session.login(AppConfig.currentUserData)
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
-    ScrollService.scrollTo(options.scrollTo or 'h1')
-    $scope.links = options.links or {}
-    if !AbilityService.isLoggedIn() and _.contains($router.authRequiredComponents, options.page)
+
+    if AbilityService.requireLoginFor(options.page)
       ModalService.open(SignInForm, preventClose: -> true)
+    else if AbilityService.requireRedirectFor(options.page)
+      $timeout -> $router.navigate(Session.homePath())
+    else
+      ScrollService.scrollTo(options.scrollTo or 'h1')
+
+    $scope.links = options.links or {}
+
+  $scope.$on '$locationChangeSuccess', -> $timeout TransitionService.completeTransition
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
@@ -113,17 +119,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
     {path: '/explore', component: 'explorePage'}
   ])
-  $router.authRequiredComponents = [
-    'groupsPage',
-    'dashboardPage',
-    'inboxPage',
-    'profilePage',
-    'emailSettingsPage',
-    'authorizedAppsPage',
-    'registeredAppsPage',
-    'registeredAppPage'
-  ]
 
   Session.login(AppConfig.currentUserData)
+  $router.navigate(Session.homePath()) if AppConfig.mobileHost?
 
   return

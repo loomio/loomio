@@ -3,16 +3,16 @@
     %h4.lmo-card-subheading{translate: "position_buttons_panel.heading"}
 
     .position_buttons_panel__buttons
-      %button.position-button.position-button--yes{ng-click: "select('yes')"}
+      %button.position-button.position-button--yes{ng-style: "backgroundImageFor('agree')", ng-click: "select('yes')"}
         .sr-only{translate: "vote_form.i_agree"}
 
-      %button.position-button.position-button--abstain{ng-click: "select('abstain')"}
+      %button.position-button.position-button--abstain{ng-style: "backgroundImageFor('abstain')", ng-click: "select('abstain')"}
         .sr-only{translate: "vote_form.i_abstain"}
 
-      %button.position-button.position-button--no{ng-click: "select('no')"}
+      %button.position-button.position-button--no{ng-style: "backgroundImageFor('disagree')", ng-click: "select('no')"}
         .sr-only{translate: "vote_form.i_disagree"}
 
-      %button.position-button.position-button--block{ng-click: "select('block')"}
+      %button.position-button.position-button--block{ng-style: "backgroundImageFor('block')", ng-click: "select('block')"}
         .sr-only{translate: "vote_form.i_block"}
 
     %outlet{name: "after-position-buttons"}

@@ -6,16 +6,22 @@
   width: 100%;
   position: fixed;
   top: 0;
-  display: flex;
   display: -webkit-flex;
+  display: flex;
   justify-content: space-between;
 }
 
 .lmo-navbar__item-container {
   display: flex;
   display: -webkit-flex;
+  .fa                  { line-height: 31px; }
   .fa-group            { font-size: 1.1em; }
   .fa-bell-o, .fa-bell { font-size: 1.2em; }
+}
+
+.lmo-navbar__item, .lmo-navbar--left {
+  -webkit-flex-basis: 100%;
+  flex-basis: inherit;
 }
 
 .lmo-navbar__logo {
@@ -62,6 +68,10 @@
   color: $grey-on-white;
   font-size: 19px;
   &:hover, &:focus { text-decoration: none; }
+}
+
+.lmo-navbar__btn--notifications, .lmo-navbar__btn--user {
+  padding: 6px
 }
 
 .lmo-navbar__btn-label{

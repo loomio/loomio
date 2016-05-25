@@ -3,7 +3,10 @@ angular.module('loomioApp').directive 'positionButtonsPanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/position_buttons_panel/position_buttons_panel.html'
   replace: true
-  controller: ($scope, ModalService, VoteForm, Session, Records, AbilityService) ->
+  controller: ($scope, ModalService, VoteForm, Session, Records, AbilityService, LmoUrlService) ->
+
+    $scope.backgroundImageFor = (position) ->
+      LmoUrlService.backgroundImageFor("/img/#{position}.svg");
 
     $scope.showPositionButtons = ->
       AbilityService.canVoteOn($scope.proposal) and $scope.undecided()

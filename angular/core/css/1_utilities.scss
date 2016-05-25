@@ -296,3 +296,6 @@ img.emojione {
 div#intercom-container div#intercom-launcher {
     right: 85px;
 }
+
+/* strangely, this is necessary for mobile to acknowledge ng-show correctly */
+.ng-hide { display: none !important; }

@@ -9,7 +9,12 @@ angular.module('loomioApp').factory 'EmojiService', ($timeout) ->
         return unless selector == target
         elem = document.querySelector(selector)
         caretPosition = elem.selectionEnd
-        model[field] = "#{model[field].substring(0, elem.selectionEnd)} #{emoji} #{model[field].substring(elem.selectionEnd)}"
+
+        model[field] = if model[field]
+          "#{model[field].substring(0, elem.selectionEnd)} #{emoji} #{model[field].substring(elem.selectionEnd)}"
+        else
+          "#{emoji} "
+
         $timeout ->
           elem.selectionEnd = elem.selectionStart = caretPosition + emoji.length + 2
           elem.focus()

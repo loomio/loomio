@@ -77,6 +77,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'gemrat'
+  gem 'dotenv-rails'
 end
 
 group :development do

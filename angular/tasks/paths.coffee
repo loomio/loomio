@@ -20,6 +20,8 @@ module.exports =
   dist:
     fonts:        '../public/client/fonts'
     assets:       '../public/client/development'
+    mobileAssets: '../mobile/www/client'
+    mobileFonts:  '../mobile/www/fonts'
   fonts:
     vendor:       include(vendor, 'fonts')
   html:

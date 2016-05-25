@@ -3,8 +3,12 @@ angular.module('loomioApp').directive 'emojiPicker', ->
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/emoji_picker/emoji_picker.html'
-  controller: ($scope, $timeout, EmojiService, KeyEventService) ->
-    $scope.render = EmojiService.render
+  controller: ($scope, $timeout, LmoUrlService, EmojiService, KeyEventService) ->
+
+    $scope.render = (emoji) ->
+      html = EmojiService.render(emoji)
+      src  = _.last(html.match(/src="(.*)"/))
+      html.replace(src, LmoUrlService.srcFor(src))
 
     $scope.search = (term) ->
       $scope.hovered = {}

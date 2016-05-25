@@ -1,0 +1,12 @@
+
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      - if user_signed_in?
+        #Intercom
+      - else
+        %a.navbar-brand.app-logo{ href: dashboard_or_root_path, title: t(:"organisation.name"), style: "background-image: url(#{logo_path})" }
+        %nav
+          %ul.nav.navbar-nav.navbar-right.pull-right
+            - unless controller_name == "group_requests"
+              %li=link_to t(:log_in), new_user_session_path(return_to: request.original_url), class: 'login'

@@ -191,12 +191,16 @@ en:
     sign_in: "Log in to join the conversation"
 
   navbar:
+    home: 'Home'
     recent: 'Recent'
     unread: 'Unread'
     groups: 'Groups'
+    explore: 'Explore'
+    home_title: 'Go to my group'
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
     groups_title: 'View your groups'
+    explore_title: 'View public groups on Loomio'
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
     user_actions: 'User actions'

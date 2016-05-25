@@ -8,7 +8,7 @@
       .lmo-placeholder{translate: "authorized_apps_page.notice"}
       .row.authorized-apps-page__table-row{ng-repeat: "application in authorizedAppsPage.applications() | orderBy: 'name' track by application.id"}
         .col-xs-1.align-right
-          %img.authorized-apps-page__avatar{ng-src: "{{application.logoUrl}}"}>
+          %img.authorized-apps-page__avatar{lmo-src: "{{application.logoUrl}}"}>
         .col-xs-7
           .authorized-apps-page__name {{ application.name }}
         .col-xs-4.align-center

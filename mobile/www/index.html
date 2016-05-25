@@ -1,0 +1,29 @@
+<html ng-app="loomioApp" ng-csp="true" ng-controller="ApplicationController as app">
+  <head>
+    <title>Loomio</title>
+    <meta charset="utf-8"/>
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'
+      https://loomio-attachments.s3.amazonaws.com
+      https://www.loomiotest.org
+      https://secure.gravatar.com
+      https://www.youtube.com
+      'unsafe-inline' ">
+    <base href=""></base>
+    <link href="client/app.min.css" rel="stylesheet" media="screen" />
+    <link href="client/print.min.css" rel="stylesheet" media="print" />
+  </head>
+  <body ng-keydown="keyDown($event)">
+    <flash></flash>
+    <navbar></navbar>
+    <ng-outlet  ng-if="!pageError"></ng-outlet>
+    <error-page ng-if="pageError"></error-page>
+    <start-menu ng-if="isLoggedIn()"></start-menu>
+    <outlet     name="after-start-menu"></outlet>
+    <script src="cordova.js"></script>
+    <script src="client/vendor.min.js"></script>
+    <script src="https://www.loomiotest.org/index.js"></script>
+    <script src="client/app.js"></script>
+  </body>
+</html>

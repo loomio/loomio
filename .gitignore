@@ -25,6 +25,11 @@ public/client
 public/system
 public/uploads
 
+mobile/platforms
+mobile/plugins
+mobile/www/client
+mobile/www/fonts
+
 disabled_plugins/
 /plugins/
 

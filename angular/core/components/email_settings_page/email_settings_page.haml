@@ -1,5 +1,5 @@
 .lmo-one-column-layout
-  %main.email-settings-page
+  %main.email-settings-page{ng-if: "emailSettingsPage.user.id"}
     .lmo-page-heading
       %h1.lmo-h1-medium{translate: "email_settings_page.header"}
     .email-settings-page__email-settings
@@ -31,7 +31,7 @@
         %button.email-settings-page__change-default-link.lmo-btn-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "email_settings_page.change_default"}
         %ul.email-settings-page__groups
           %li.email-settings-page__group{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}
-            %img.lmo-box--medium{ng-src: "{{group.logoUrl()}}"}
+            %img.lmo-box--medium{lmo-src: "{{group.logoUrl()}}"}
             .email-settings-page__group-details
               %strong.email-settings-page__group-name
                 %span{ng-if: "group.isSubgroup()"}>

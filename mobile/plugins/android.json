@@ -1,0 +1,22 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "org.loomio.loomioapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "org.loomio.loomioapp"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "org.loomio.loomioapp"
+        }
+    }
+}

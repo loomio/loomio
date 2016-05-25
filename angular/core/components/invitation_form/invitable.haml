@@ -2,7 +2,7 @@
   .media-left
     %user_avatar{ng-if: "match.label.type == 'user'", user: "match.label.user", size: "medium"}
     .invitation-form__avatar-image{aria-hidden: "true", ng-if: "match.label.type != 'user'"}
-      %img{ng-if: "match.label.image", alt: "{{match.label.name}}", ng-src: "{{match.label.image}}"}
+      %img{ng-if: "match.label.image", alt: "{{match.label.name}}", lmo-src: "{{match.label.image}}"}
       %img{ng-if: "!match.label.image", alt: "{{match.label.name}}", src: "/img/default-user.png"}
   .invitation-form__invitable-content
     .invitable-name> {{match.label.name}}

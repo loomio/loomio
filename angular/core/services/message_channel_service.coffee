@@ -2,8 +2,7 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
   new class MessageChannelService
 
     subscribe: (options = {}) ->
-      $http.post('/api/v1/message_channel/subscribe', options).then handleSubscriptions
-
+      $http.post("#{[window.Loomio.mobileHost]}/api/v1/message_channel/subscribe", options).then handleSubscriptions
     subscribeToGroup: (group) ->
       @subscribe { group_key: group.key }
 

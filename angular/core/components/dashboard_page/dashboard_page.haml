@@ -45,7 +45,7 @@
     .dashboard-page__collections{ng-if: "dashboardPage.displayByGroup()"}
       .dashboard-page__group{ng-repeat: "group in dashboardPage.groups() | orderBy:'name' track by group.id"}
         %section{ng-if: "dashboardPage.views.groups[group.key].any()", role: "region", aria-label: "{{ 'dashboard_page.threads_from.group' | translate }} {{group.name}}"}
-          %img.selector-list-item-group-logo.pull-left{ng-src: "{{group.logoUrl()}}", aria-hidden: "true"}>
+          %img.selector-list-item-group-logo.pull-left{lmo-src: "{{group.logoUrl()}}", aria-hidden: "true"}>
           %h2.dashboard-page__group-name
             %a{lmo-href-for: "group"} {{group.name}}
           .dashboard-groups.thread-previews-container

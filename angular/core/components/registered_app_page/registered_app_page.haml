@@ -1,7 +1,7 @@
 .lmo-one-column-layout
   %loading{ng-if: "!registeredAppPage.application"}
   %main.registered-app-page{ng-if: "registeredAppPage.application"}
-    %img.registered-app-page__avatar{ng-src: "{{registeredAppPage.application.logoUrl}}"}
+    %img.registered-app-page__avatar{lmo-src: "{{registeredAppPage.application.logoUrl}}"}
     %h1.lmo-h1.registered-app-page__title {{ registeredAppPage.application.name }}
     %hr
 

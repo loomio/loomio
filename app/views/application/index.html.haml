@@ -1,0 +1,21 @@
+%html{"ng-app" => "loomioApp", "ng-controller" => "ApplicationController as app"}
+  %head
+    %title Loomio
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=Edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}
+    %base{:href => "/"}
+    %link{rel: :stylesheet, media: :screen, href: client_asset_path(:"app.min.css")}
+    %link{rel: :stylesheet, media: :print, href: client_asset_path(:"print.min.css")}
+    = render 'application/metadata'
+  %body{"ng-keydown" => "keyDown($event)"}
+    %flash
+    %navbar
+    %ng-outlet{"ng-if" => "!pageError"}
+    %error-page{"ng-if" => "pageError"}
+    %start-menu{"ng-if" => "isLoggedIn()"}
+    %outlet{:name => "after-start-menu"}
+
+    %script{src: client_asset_path(:"vendor.js")}
+    %script{src: :"index.js"}
+    %script{src: client_asset_path(:"app.js")}
