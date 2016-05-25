@@ -143,7 +143,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session, $loca
 
     requireLoginFor: (page) ->
       return false if @isLoggedIn()
-      return true  if !@isLoggedIn() and AppConfig.mobileHost?
       switch page
         when 'emailSettingsPage' then !$location.search().unsubscribe_token
         when 'groupsPage',         \

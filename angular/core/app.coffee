@@ -119,8 +119,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
     {path: '/explore', component: 'explorePage'}
   ])
-  $router.navigate('/dashboard') if AppConfig.mobileHost?
 
   Session.login(AppConfig.currentUserData)
+  $router.navigate(Session.homePath()) if AppConfig.mobileHost?
 
   return
