@@ -56,4 +56,8 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
+  def resource_options(scope:, serializer:, root:)
+    { resources: [resource, resource.parent].compact, scope: scope, serializer: serializer, root: root }
+  end
+
 end

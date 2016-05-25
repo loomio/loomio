@@ -3,6 +3,7 @@ describe API::GroupsController do
 
   let(:user) { create :user }
   let(:group) { create :group }
+  let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
 
   before do
@@ -26,6 +27,14 @@ describe API::GroupsController do
         members_can_edit_comments
         members_can_raise_motions
         members_can_vote])
+    end
+
+    it 'returns the parent group information' do
+      get :show, id: subgroup.key, format: :json
+      json = JSON.parse(response.body)
+      group_ids = json['groups'].map { |g| g['id'] }
+      expect(group_ids).to include subgroup.id
+      expect(group_ids).to include group.id
     end
 
     context 'logged out' do
