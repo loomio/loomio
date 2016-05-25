@@ -3,13 +3,13 @@ angular.module('loomioApp').directive 'sidebar', ->
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
-  controller: ($scope, CurrentUser, $rootScope, $window, RestfulClient) ->
+  controller: ($scope, Session, $rootScope, $window, RestfulClient) ->
 
     $scope.logHello = ->
       console.log("Hello")
 
     $scope.groups = ->
-      CurrentUser.groups()
+      Session.user().groups()
 
     $scope.groupUrl = (group) ->
       name = group.fullName.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()
