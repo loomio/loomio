@@ -40,4 +40,3 @@ describe 'Joining group', ->
       groupsHelper.clickAskToJoinGroupButton()
       groupsHelper.submitMembershipRequestForm()
       expect(flashHelper.flashMessage()).toContain('You have requested membership')
-      expect(groupsHelper.askToJoinGroupButton().isPresent()).toBeFalsy()
