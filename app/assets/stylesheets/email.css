@@ -11,4 +11,52 @@ table { width: 600px }
 .light-proposal {margin-bottom: 2em;}
 .motion-pie { float: right }
 img { max-width: 600px }
-body { width: 600px }
+body { max-width: 600px }
+
+.to-join-group {
+  background-color: #F1F1F1;
+  font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
+  padding: 35px 25px;
+  text-align: center;
+}
+.to-join-group__container {
+  background-color: #fff;
+  border-radius: 4px;
+}
+.to-join-group__header-logo-image {
+  margin: 10px 0;
+  max-width: 200px;
+}
+.to-join-group__header-logo {
+  border-bottom: 1px solid #F7A915;
+  margin: 0 10px;
+}
+.to-join-group__body {
+  padding: 25px 20px;
+}
+.to-join-group__tagline {
+  font-size: 18px;
+  font-weight: bold;
+}
+.to-join-group__button-container {
+  background-color: #F1F1F1;
+  border-radius: 4px;
+  padding: 50px 40px;
+}
+.to-join-group__accept-invitation {
+  background-color: #5cb85c;
+  border: #4cae4c;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 0;
+  padding: 12px 55px;
+  text-decoration: none;
+}
+.to-join-group__value-proposition {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 30px 0 5px 0;;
+}

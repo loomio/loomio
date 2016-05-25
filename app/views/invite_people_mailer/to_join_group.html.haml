@@ -1,11 +1,15 @@
-%p
-  = t(:"invitation.link_help", group_name: @invitation.invitable_name)
-  %br
-  = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation, @utm_hash)
-%p
-  = simple_format @message_body
-%p
-  = t(:"invitation.value_proposition")
-%p
-  = t(:"invitation.thanks")
-= @invitation.inviter.name
+.to-join-group
+  .to-join-group__container
+    .to-join-group__header
+      .to-join-group__header-logo
+        = image_tag "logo-orange-white-800.png", alt: "Loomio logo", class: "to-join-group__header-logo-image"
+    .to-join-group__body
+      .to-join-group__tagline Decide together!
+      %p
+        %strong #{@invitation.inviter.name}
+        %span has invited you to join their group
+        %strong #{@invitation.invitable_name}
+      .to-join-group__button-container
+        = link_to "Accept invitation", invitation_url(@invitation, @utm_hash), class: "to-join-group__accept-invitation"
+      .to-join-group__value-proposition Loomio is a place for groups to make decisions together
+
