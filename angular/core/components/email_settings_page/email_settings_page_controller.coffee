@@ -1,6 +1,11 @@
-angular.module('loomioApp').controller 'EmailSettingsPageController', (Records, AbilityService, FormService, Session, $location, ModalService, ChangeVolumeForm) ->
+angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, Records, AbilityService, FormService, Session, $location, ModalService, ChangeVolumeForm) ->
+  $rootScope.$broadcast('currentComponent', {page: 'emailSettingsPage'})
 
-  @user = Session.user().clone()
+  @init = =>
+    return unless AbilityService.isLoggedIn() or Session.user().restricted? 
+    @user = Session.user().clone()
+    $translate.use(@user.locale)
+  @init()
 
   @groupVolume = (group) ->
     group.membershipFor(Session.user()).volume
