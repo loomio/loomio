@@ -54,8 +54,9 @@ class Comment < ActiveRecord::Base
     group.members_can_edit_comments? or is_most_recent?
   end
 
-  def notified_group_members
-    mentioned_group_members.without(parent&.author)
+  def mentioned_usernames
+    # overridden to ensure parent is not mentioned
+    extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username, self.parent&.author&.username].compact
   end
 
   private

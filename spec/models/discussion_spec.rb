@@ -304,25 +304,6 @@ describe Discussion do
       end
     end
 
-    describe 'new_mentions_in' do
-      it 'includes new mentions' do
-        expect(discussion.new_mentions_in("Hello @#{another_user.username}!")).to include another_user.username
-      end
-
-      it 'does not duplicate usernames' do
-        expect(discussion.new_mentions_in("Hello @#{another_user.username} @#{another_user.username}!")).to eq [another_user.username]
-      end
-
-      it 'does not include existing mentions' do
-        expect(discussion.new_mentions_in("Goodbye @#{user.username}!")).to_not include user.username
-      end
-
-      it 'does not include discussion author' do
-        expect(discussion.new_mentions_in("Hello @#{discussion.author.username}!")).to eq []
-      end
-    end
-
-
     describe 'mentioned_group_members' do
       it 'includes members in the current group' do
         discussion.group.add_member! user

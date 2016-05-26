@@ -37,7 +37,6 @@ class CommentService
   end
 
   def self.update(comment:, params:, actor:)
-    new_mentions = comment.new_mentions_in(params[:body])
     comment.edited_at = Time.zone.now
     comment.body = params[:body]
 
@@ -45,6 +44,6 @@ class CommentService
     actor.ability.authorize! :update, comment
     comment.save!
 
-    EventBus.broadcast('comment_update', comment, new_mentions)
+    EventBus.broadcast('comment_update', comment)
   end
 end

@@ -44,6 +44,19 @@ describe 'DiscussionService' do
                                  actor: user)
       end
 
+      it 'notifies new mentions' do
+        discussion.group.add_member! another_user
+        discussion.description = "A mention for @#{another_user.username}!"
+        expect(Events::UserMentioned).to receive(:publish!).with(discussion, another_user)
+        DiscussionService.create(discussion: discussion, actor: user)
+      end
+
+      it 'does not notify users outside the group' do
+        discussion.description = "A mention for @#{another_user.username}!"
+        expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, another_user)
+        DiscussionService.create(discussion: discussion, actor: user)
+      end
+
       it 'marks the discussion reader as participating' do
         DiscussionService.create(discussion: discussion, actor: user)
         expect(DiscussionReader.for(user: user, discussion: discussion).participating).to eq true
@@ -69,6 +82,19 @@ describe 'DiscussionService' do
       DiscussionService.update discussion: discussion,
                                params: discussion_params,
                                actor: user
+    end
+
+    it 'notifies new mentions' do
+      discussion.group.add_member! another_user
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect(Events::UserMentioned).to receive(:publish!).with(discussion, another_user)
+      DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
+    end
+
+    it 'does not notify users outside of the group' do
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, another_user)
+      DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
     end
 
     it 'sets params' do

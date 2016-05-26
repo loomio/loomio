@@ -46,6 +46,12 @@ describe 'MotionService' do
         expect(reader.volume.to_sym).to eq :loud
       end
 
+      it 'notifies new mentions' do
+        motion.description = "A mention for @#{another_user.username}!"
+        expect(Events::UserMentioned).to receive(:publish!).with(motion, another_user)
+        MotionService.create(motion: motion, actor: user)
+      end
+
       it "creates an event" do
         expect(Events::NewMotion).to receive(:publish!).with(motion)
         MotionService.create(motion: motion, actor: user)

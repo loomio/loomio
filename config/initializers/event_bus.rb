@@ -92,11 +92,15 @@ EventBus.configure do |config|
 
   # publish reply and mention events after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
-  config.listen('comment_create') { |comment| comment.notified_group_members.each { |user| Events::UserMentioned.publish!(comment, user) } }
 
-  # publish new mention events after comment edition
-  config.listen('comment_update') do |comment, new_mentions|
-    User.where(username: new_mentions).each { |user| Events::UserMentioned.publish!(comment, user) } if new_mentions.present?
+  # publish mention events after model create / update
+  config.listen('comment_create',
+                'comment_update',
+                'motion_create',
+                'motion_update',
+                'discussion_create',
+                'discussion_update') do |model|
+    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, user) }
   end
 
   # notify users of events
