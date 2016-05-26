@@ -277,4 +277,66 @@ describe Discussion do
       expect(discussion.reload.items_count).to eq old_items_count
     end
   end
+
+  describe 'mentioning' do
+    let(:discussion) { build(:discussion, description: "Hello @#{user.username}!") }
+    let(:another_user) { create(:user) }
+
+    describe '#mentionable_text' do
+      it 'stores the description as mentionable text' do
+        expect(discussion.mentionable_text).to eq discussion.description
+      end
+    end
+
+    describe 'mentionable_usernames' do
+      it 'can extract usernames' do
+        expect(discussion.mentioned_usernames).to include user.username
+      end
+
+      it 'does not duplicate usernames' do
+        discussion.description += " Goodbye @#{user.username}!"
+        expect(discussion.mentioned_usernames).to eq [user.username]
+      end
+
+      it 'does not extract the authors username' do
+        discussion.description = "Hello @#{discussion.author.username}!"
+        expect(discussion.mentioned_usernames).to_not include discussion.author.username
+      end
+    end
+
+    describe 'new_mentions_in' do
+      it 'includes new mentions' do
+        expect(discussion.new_mentions_in("Hello @#{another_user.username}!")).to include another_user.username
+      end
+
+      it 'does not duplicate usernames' do
+        expect(discussion.new_mentions_in("Hello @#{another_user.username} @#{another_user.username}!")).to eq [another_user.username]
+      end
+
+      it 'does not include existing mentions' do
+        expect(discussion.new_mentions_in("Goodbye @#{user.username}!")).to_not include user.username
+      end
+
+      it 'does not include discussion author' do
+        expect(discussion.new_mentions_in("Hello @#{discussion.author.username}!")).to eq []
+      end
+    end
+
+
+    describe 'mentioned_group_members' do
+      it 'includes members in the current group' do
+        discussion.group.add_member! user
+        expect(discussion.mentioned_group_members).to include user
+      end
+
+      it 'does not include members not in the group' do
+        expect(discussion.mentioned_group_members).to_not include user
+      end
+
+      it 'does not include the discussion author' do
+        discussion.description = "Hello @#{discussion.author.username}!"
+        expect(discussion.mentioned_group_members).to_not include discussion.author
+      end
+    end
+  end
 end
