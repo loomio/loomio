@@ -3,6 +3,7 @@ class GroupSerializer < ActiveModel::Serializer
   attributes :id,
              :organisation_id,
              :cohort_id,
+             :parent_id,
              :key,
              :name,
              :full_name,
@@ -39,8 +40,6 @@ class GroupSerializer < ActiveModel::Serializer
              :subscription_expires_at,
              :is_subgroup_of_hidden_parent,
              :show_legacy_trial_expired_modal
-
-  has_one :parent, serializer: GroupSerializer, root: 'groups'
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: 'memberships'
 
