@@ -1,15 +1,14 @@
 .to-join-group
   .to-join-group__container
-    .to-join-group__header
-      .to-join-group__header-logo
-        = image_tag "logo-orange-white-800.png", alt: "Loomio logo", class: "to-join-group__header-logo-image"
+    = render '/mailer_header'
     .to-join-group__body
-      .to-join-group__tagline Decide together!
-      %p
-        %strong #{@invitation.inviter.name}
-        %span has invited you to join their group
-        %strong #{@invitation.invitable_name}
-      .to-join-group__button-container
-        = link_to "Accept invitation", invitation_url(@invitation, @utm_hash), class: "to-join-group__accept-invitation"
-      .to-join-group__value-proposition Loomio is a place for groups to make decisions together
+      .to-join-group__invitation-text
+        = t("email.to_join_group.invitation_text_html", member: @invitation.inviter.name, group_name: @invitation.invitable_name)
+      .to-join-group__message-container
+        - if @message_body
+          .to-join-group__message_body
+            = @message_body
+        = link_to t("email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "to-join-group__accept-invitation"
+      .to-join-group__tagline
+        = t("email.to_join_group.tagline")
 

@@ -13,7 +13,7 @@ class InvitePeopleMailer < BaseMailer
 
   def to_join_group(invitation:, locale:, subject_key: "email.to_join_group.subject")
     @invitation = invitation
-    @message_body = invitation.message
+    @message_body = invitation.message unless invitation.message.blank?
     send_single_mail to:   @invitation.recipient_email,
                      locale: locale,
                      from: from_user_via_loomio(invitation.inviter),
