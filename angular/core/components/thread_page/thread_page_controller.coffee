@@ -76,7 +76,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @performScroll() if @eventsLoaded
 
   @eventRequiresReload = (event) ->
-    event and event.discussion() == @discussion and !@discussion.eventIsLoaded(event)
+    event? and
+    @discussion? and
+    typeof event.model().discussion is 'function' and
+    event.model().discussion() == @discussion and
+    !@discussion.eventIsLoaded(event)
 
   @group = ->
     @discussion.group()

@@ -7,19 +7,11 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
       @belongsTo 'event'
       @belongsTo 'user'
 
-    actor: ->
-      @event().actor()
-
-    kind: ->
-      @event().kind
-
-    group: ->
-      @event().group()
+    actor: -> @event().actor()
+    model: -> @event().model()
+    kind:  -> @event().kind
 
     actionPath: ->
       switch @kind()
         when 'motion_closed', 'motion_closed_by_user' then 'outcome'
         when 'invitation_accepted'                    then @actor().username
-
-    relevantRecord: ->
-      @event().relevantRecord()

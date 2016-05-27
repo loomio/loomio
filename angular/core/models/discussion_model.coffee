@@ -78,7 +78,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     eventIsLoaded: (event) ->
       event.sequenceId or
       _.find @events(), (e) ->
-        e.kind == 'new_comment' and e.commentId == event.comment().id
+        e.kind == 'new_comment' and e.commentId == event.eventable.id
 
     minLoadedSequenceId: ->
       item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
