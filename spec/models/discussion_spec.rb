@@ -284,7 +284,7 @@ describe Discussion do
 
     describe '#mentionable_text' do
       it 'stores the description as mentionable text' do
-        expect(discussion.mentionable_text).to eq discussion.description
+        expect(discussion.send(:mentionable_text)).to eq discussion.description
       end
     end
 

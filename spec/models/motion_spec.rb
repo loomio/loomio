@@ -194,7 +194,7 @@ describe Motion do
 
     describe '#mentionable_text' do
       it 'stores the description as mentionable text' do
-        expect(motion.mentionable_text).to eq motion.description
+        expect(motion.send(:mentionable_text)).to eq motion.description
       end
     end
 
