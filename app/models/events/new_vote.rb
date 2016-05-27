@@ -5,12 +5,4 @@ class Events::NewVote < Event
            discussion: vote.motion.discussion,
            created_at: vote.created_at).tap { |e| EventBus.broadcast('new_vote_event', e) }
   end
-
-  def group_key
-    discussion.group.key
-  end
-
-  def vote
-    eventable
-  end
 end
