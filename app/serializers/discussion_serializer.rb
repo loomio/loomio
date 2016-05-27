@@ -35,7 +35,8 @@ class DiscussionSerializer < ActiveModel::Serializer
              :updated_at,
              :archived_at,
              :private,
-             :versions_count
+             :versions_count,
+             :mentioned_usernames
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,

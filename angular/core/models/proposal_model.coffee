@@ -107,3 +107,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
         @recordStore.memberships.fetchByGroup(@group().key, {per: 500})
       else
         @recordStore.didNotVotes.fetchByProposal(@key, {per: 500})
+
+    cookedDescription: ->
+      cooked = @description
+      _.each @mentionedUsernames, (username) ->
+        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+      cooked

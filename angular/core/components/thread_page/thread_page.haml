@@ -48,7 +48,7 @@
             %span{translate: "common.privacy.public"}
           %outlet{name: "after-thread-title"}
 
-        .thread-context__description.lmo-markdown-wrapper{marked: "threadPage.discussion.description", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+        .thread-context__description.lmo-markdown-wrapper{marked: "threadPage.discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
         %translation{ng-if: "threadPage.translation && threadPage.discussion.description", translation: "threadPage.translation", field: "description"}
         %a.thread-context__edit-link.lmo-card-minor-action.lmo-no-print{href: "", ng-click: "threadPage.editThread()", translate: "thread_context.edit_thread", ng-if: "threadPage.canEditThread()"}
 

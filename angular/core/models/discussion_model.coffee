@@ -134,3 +134,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
         version.changes[attr][1]
       else
         @attributeForVersion(attr, @recordStore.versions.find(version.previousId))
+
+    cookedDescription: ->
+      cooked = @description
+      _.each @mentionedUsernames, (username) ->
+        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+      cooked
