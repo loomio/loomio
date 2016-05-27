@@ -1,6 +1,6 @@
-angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope) ->
-  discussion = $scope.event.discussion()
-  version = $scope.event.version()
+angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope, Records) ->
+  version    = Records.versions.find($scope.event.eventable.id)
+  discussion = Records.discussions.find(version.discussionId)
 
   $scope.title =
     if version.attributeEdited('title')
@@ -18,8 +18,6 @@ angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope
      'discussion_edited_item.public_to_private'
     else
      'discussion_edited_item.private_to_public'
-
-  $scope.actorName = $scope.event.actorName()
 
   $scope.translationKey =
     version.editedAttributeNames().join('_')
