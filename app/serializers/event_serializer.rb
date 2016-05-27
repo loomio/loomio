@@ -39,7 +39,7 @@ class EventSerializer < ActiveModel::Serializer
   def proposal
     case object.kind
     when 'motion_updated' then object.eventable.record
-    else 
+    else
       object.eventable.try(:motion) || object.eventable
     end
   end
@@ -111,8 +111,7 @@ class EventSerializer < ActiveModel::Serializer
   def comment_kinds
     ['comment_liked',
      'new_comment',
-     'comment_replied_to',
-     'user_mentioned']
+     'comment_replied_to']
   end
 
   def proposal_kinds
