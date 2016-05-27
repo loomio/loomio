@@ -5,8 +5,8 @@ class ThreadMailer < BaseMailer
   def new_discussion(recipient, event)
     @recipient = recipient
     @event = event
-    @discussion = event.discussion
-    @author = event.discussion.author
+    @discussion = event.eventable
+    @author = @discussion.author
     send_thread_email
   end
 
