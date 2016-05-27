@@ -11,6 +11,11 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     model: -> @event().model()
     kind:  -> @event().kind
 
+    actionModel: ->
+      switch @kind()
+        when 'new_coordinator', 'user_added_to_group', 'membership_request_approved' then @model().group()
+        else                                                                              @model()
+
     actionPath: ->
       switch @kind()
         when 'motion_closed', 'motion_closed_by_user' then 'outcome'
