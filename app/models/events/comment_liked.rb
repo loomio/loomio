@@ -9,8 +9,8 @@ class Events::CommentLiked < Event
   private
 
   def notify_users!
-    unless comment_vote.user == comment_vote.comment_user
-      notify!(comment_vote.comment_user)
+    unless eventable.user == eventable.comment_user
+      notify!(eventable.comment_user)
     end
   end
 end

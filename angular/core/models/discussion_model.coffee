@@ -75,10 +75,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
 
-    eventIsLoaded: (event) ->
-      event.sequenceId or
-      _.find @events(), (e) ->
-        e.kind == 'new_comment' and e.commentId == event.eventable.id
+    requireReloadFor: (event) ->
+      return false if !event or event.discussionId != @id or event.sequenceId
+      _.find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
 
     minLoadedSequenceId: ->
       item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
