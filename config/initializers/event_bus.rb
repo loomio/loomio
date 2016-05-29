@@ -63,11 +63,11 @@ EventBus.configure do |config|
                 'discussion_description_edited_event',
                 'motion_description_edited_event',
                 'comment_liked_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable.group)
+    MessageChannelService.publish(Event.serializer_for(event).new(event), to: event.eventable.group)
   end
 
   config.listen('discussion_moved_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable)
+    MessageChannelService.publish(Event.serializer_for(event).new(event), to: event.eventable)
   end
 
   # update discussion reader after discussion creation / edition
