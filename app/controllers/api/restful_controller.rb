@@ -56,7 +56,7 @@ class API::RestfulController < ActionController::Base
 
   def resource_options(scope:, serializer:, root:)
     if @event.is_a?(Event)
-      { resources: [@event], scope: scope, serializer: Event.serializer_for(@event), root: :events }
+      { resources: [@event], scope: scope, serializer: @event.active_model_serializer, root: :events }
     else
       { resources: [resource], scope: scope, serializer: serializer, root: root }
     end
