@@ -32,6 +32,6 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def actor
-    object.user || object.eventable&.user
+    object.user || eventable&.user
   end
 end
