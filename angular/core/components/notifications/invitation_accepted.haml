@@ -1,5 +1,5 @@
 .media-left
   %user_avatar{user: "notification.actor()", size: "small"}
 .media-body
-  %span{translate: "notifications.invitation_accepted", translate-value-name: "{{notification.actor().name}}", translate-value-group: "{{notification.model().group().name}}"}
+  %span{translate: "notifications.invitation_accepted", translate-value-name: "{{notification.actor().name}}", translate-value-group: "{{notification.group().name}}"}
   %timeago{timestamp: "notification.createdAt" }>

@@ -10,11 +10,16 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     actor:      -> @event().actor()
     model:      -> @event().model()
     kind:       -> @event().kind
+
+    group: ->
+      switch @model().constructor.singular
+        when 'group' then @model()
+        else              @model().group()
+
     discussion: ->
-      if @model().constructor.singular == 'discussion'
-        @model()
-      else
-        @model().discussion()
+      switch @model().constructor.singular
+        when 'discussion' then @model()
+        else                   @model().discussion()
 
     actionModel: ->
       if @model().constructor.singular == 'membership'
