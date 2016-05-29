@@ -2,10 +2,11 @@ class EventSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id, :sequence_id, :kind, :discussion_id, :created_at
 
-  has_one :actor, serializer: UserSerializer, root: 'users'
+  has_one :actor, serializer: UserSerializer, root: :users
   has_one :eventable, polymorphic: true
-  has_one :proposal, serializer: MotionSerializer, root: 'proposals'
+  has_one :proposal, serializer: MotionSerializer, root: :proposals
   has_one :discussion, serializer: DiscussionSerializer
+  has_one :moved_discussion, serializer: DiscussionSerializer, root: :discussions
 
   def eventable_is_proposal?
     eventable.is_a?(Motion)
@@ -13,12 +14,20 @@ class EventSerializer < ActiveModel::Serializer
   alias :include_proposal? :eventable_is_proposal?
   alias :include_discussion? :eventable_is_proposal?
 
+  def include_moved_discussion?
+    object.kind == 'discussion_moved'
+  end
+
   def proposal
     eventable
   end
 
   def discussion
     eventable.discussion
+  end
+
+  def moved_discussion
+    object.discussion
   end
 
   def eventable

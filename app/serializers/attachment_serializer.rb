@@ -3,7 +3,7 @@ class AttachmentSerializer < ActiveModel::Serializer
   attributes :id, :filename, :filetype, :filesize, :original, :thread, :thumb, :created_at, :is_an_image?
 
   has_one :comment, serializer: CommentSerializer
-  has_one :author, serializer: UserSerializer, root: 'users'
+  has_one :author, serializer: UserSerializer, root: :users
 
   def thread
     object[:location] || object.file.url(:thread)

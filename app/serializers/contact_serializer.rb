@@ -5,5 +5,5 @@ class ContactSerializer < ActiveModel::Serializer
              :email,
              :source
 
-  has_one :user, serializer: UserSerializer, root: 'users'
+  has_one :user, serializer: UserSerializer, root: :users
 end

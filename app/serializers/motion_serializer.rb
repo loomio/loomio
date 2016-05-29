@@ -21,8 +21,8 @@ class MotionSerializer < ActiveModel::Serializer
              :discussion_id,
              :mentioned_usernames
 
-  has_one :author, serializer: UserSerializer, root: 'users'
-  has_one :outcome_author, serializer: UserSerializer, root: 'users'
+  has_one :author, serializer: UserSerializer, root: :users
+  has_one :outcome_author, serializer: UserSerializer, root: :users
 
   def filter(keys)
     keys.delete(:outcome_author) unless object.outcome_author.present?

@@ -40,9 +40,9 @@ class GroupSerializer < ActiveModel::Serializer
              :is_subgroup_of_hidden_parent,
              :show_legacy_trial_expired_modal
 
-  has_one :current_user_membership, serializer: MembershipSerializer, root: 'memberships'
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
-  has_one :parent, serializer: GroupSerializer, root: 'groups'
+  has_one :parent, serializer: GroupSerializer, root: :groups
 
   private
 
