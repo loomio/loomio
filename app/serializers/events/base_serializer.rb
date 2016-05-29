@@ -6,6 +6,6 @@ class Events::BaseSerializer < ActiveModel::Serializer
   has_one :eventable, polymorphic: true
 
   def actor
-    object.user || eventable&.user
+    object.user || object.eventable.user
   end
 end
