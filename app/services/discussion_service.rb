@@ -25,7 +25,6 @@ class DiscussionService
     actor.ability.authorize! :create, discussion
     discussion.author = actor
     discussion.inherit_group_privacy!
-    discussion.attachment_ids = [discussion.attachment_ids, discussion.new_attachment_ids].compact.flatten
     return false unless discussion.valid?
 
     discussion.save!
@@ -42,11 +41,11 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    discussion.assign_attributes(params.slice(:private, :title, :description, :uses_markdown))
-    discussion.attachment_ids = [discussion.attachment_ids, params[:new_attachment_ids]].compact.flatten
+    discussion.assign_attributes(params.slice(:private, :title, :description, :attachment_ids))
 
     return false unless discussion.valid?
     discussion.save!
+    discussion.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
     EventBus.broadcast('discussion_update', discussion, actor, params)
     Events::DiscussionEdited.publish!(discussion, actor)

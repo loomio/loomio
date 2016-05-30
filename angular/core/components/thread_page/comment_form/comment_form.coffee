@@ -66,6 +66,7 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false
-    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
+    $scope.$on 'attachmentRemoved', (event, attachment) ->
       ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachmentId), 1
+      ids.splice ids.indexOf(attachment.id), 1
+      attachment.destroy() unless _.contains $scope.comment.attachmentIds, attachment.id

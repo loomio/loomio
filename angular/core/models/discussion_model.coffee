@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
+      @newAttachmentIds = _.clone(@attachmentIds) or []
 
     defaultValues: =>
       private: null
@@ -18,11 +19,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       lastItemAt: null
       title: ''
       description: ''
-      newAttachmentIds: []
 
     serialize: ->
       data = @baseSerialize()
-      data['discussion']['new_attachment_ids'] = @newAttachmentIds
+      data.discussion.attachment_ids = @newAttachmentIds
       data
 
     privateDefaultValue: =>
