@@ -5,9 +5,6 @@ angular.module('loomioApp').directive 'commentForm', ->
   replace: true
   controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService, ModalService, SignInForm) ->
 
-    $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
-    $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
-
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
 
@@ -52,10 +49,6 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.comment.parentId = parentComment.id
       ScrollService.scrollTo('.comment-form__comment-field')
 
-    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
-      ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachmentId), 1
-
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
 
@@ -70,3 +63,9 @@ angular.module('loomioApp').directive 'commentForm', ->
       $scope.updateMentionables(fragment)
       Records.memberships.fetchByNameFragment(fragment, $scope.discussion.group().key).then ->
         $scope.updateMentionables(fragment)
+
+    $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
+    $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false
+    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
+      ids = $scope.comment.newAttachmentIds
+      ids.splice ids.indexOf(attachmentId), 1
