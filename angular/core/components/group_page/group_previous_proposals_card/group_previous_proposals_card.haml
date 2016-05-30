@@ -7,5 +7,5 @@
         %a{lmo-href-for: "group", lmo-href-for: "proposal"}
           .group-previous-proposals-card__proposal-title
             {{proposal.name}}
-    %a.group-previous-proposals-card__link.lmo-card-minor-action{lmo-href-for: "group", lmo-href-action: "previous_proposals"}
+    %a.group-previous-proposals-card__link.lmo-card-minor-action{ng-show: "canShowMore()", lmo-href-for: "group", lmo-href-action: "previous_proposals"}
       %span{translate: "group_previous_proposals_card.see_more"}

@@ -6,7 +6,7 @@ module CurrentUserHelper
   private
 
   def current_user_serializer
-    if current_user_or_visitor == restricted_user
+    if !current_user && restricted_user
       Restricted::UserSerializer
     else
       CurrentUserSerializer

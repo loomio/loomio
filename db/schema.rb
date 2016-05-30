@@ -270,19 +270,20 @@ ActiveRecord::Schema.define(version: 20160525011042) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",       default: false, null: false
-    t.boolean  "is_deleted",          default: false, null: false
-    t.integer  "items_count",         default: 0,     null: false
+    t.boolean  "uses_markdown",        default: false, null: false
+    t.boolean  "is_deleted",           default: false, null: false
+    t.integer  "items_count",          default: 0,     null: false
     t.boolean  "private"
     t.string   "key"
     t.datetime "archived_at"
     t.string   "iframe_src"
-    t.integer  "motions_count",       default: 0
+    t.integer  "motions_count",        default: 0
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",    default: 0,     null: false
-    t.integer  "first_sequence_id",   default: 0,     null: false
-    t.integer  "salient_items_count", default: 0,     null: false
-    t.integer  "versions_count",      default: 0
+    t.integer  "last_sequence_id",     default: 0,     null: false
+    t.integer  "first_sequence_id",    default: 0,     null: false
+    t.integer  "salient_items_count",  default: 0,     null: false
+    t.integer  "versions_count",       default: 0
+    t.integer  "closed_motions_count", default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -474,6 +475,7 @@ ActiveRecord::Schema.define(version: 20160525011042) do
     t.string   "country"
     t.string   "region"
     t.string   "city"
+    t.integer  "closed_motions_count",               default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree

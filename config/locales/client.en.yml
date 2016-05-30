@@ -398,6 +398,7 @@ en:
   join_group_button:
     join_group: Join group
     ask_to_join_group: Ask to join group
+    membership_requested: Membership request pending
     messages:
       joined_group: 'You are now a member of {{group}}'
 
