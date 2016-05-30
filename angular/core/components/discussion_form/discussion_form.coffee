@@ -41,6 +41,3 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
 
     $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false
-    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
-      ids = $scope.discussion.newAttachmentIds
-      ids.splice ids.indexOf(attachmentId), 1

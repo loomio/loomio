@@ -43,9 +43,9 @@ class DiscussionService
     actor.ability.authorize! :update, discussion
 
     discussion.assign_attributes(params.slice(:private, :title, :description, :uses_markdown))
-    discussion.assign_attributes(params.slice(:iframe_src)) if actor.ability.can? :update, discussion.group
+    discussion.attachment_ids = [discussion.attachment_ids, params[:new_attachment_ids]].compact.flatten
 
-    return false unless discussion.valid? && discussion.changed? && discussion.changed != ['uses_markdown']
+    return false unless discussion.valid?
     discussion.save!
 
     EventBus.broadcast('discussion_update', discussion, actor, params)

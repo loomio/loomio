@@ -32,7 +32,6 @@
       .discussion-form__attachments
         %label.lmo-form-labelled-input
           %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
-          %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.attachments() | orderBy: 'id' track by attachment.id"}
         .clearfix
 
       .lmo-form-group{ng-show: "showPrivacyForm()"}
