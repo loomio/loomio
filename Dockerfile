@@ -1,3 +1,9 @@
+#
+# Warning: this image is designed to be used with docker-compose as
+# instructed athttps://github.com/loomio/loomio-deploy
+#
+# It is not a standalone image.
+#
 FROM ruby:2.3.0
 ENV REFRESHED_AT 2015-08-07
 
