@@ -17,9 +17,7 @@ With that done, use Homebrew to install Git and PostgreSQL
 ```
 $ brew install git postgresql pkgconfig
 $ brew install ImageMagick --with-perl
-$ mkdir -p ~/Library/LaunchAgents
-$ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+$ brew services start postgresql
 ```
 
 And that's it. You can jump to 'Install rbenv and ruby-build'
