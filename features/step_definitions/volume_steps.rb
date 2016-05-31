@@ -5,7 +5,6 @@ Given(/^Loud Larry is following everything in the group by email$/) do
                                    email_on_participation: false,
                                    email_when_proposal_closing_soon: false)
   @group.add_member!(@loud_larry).set_volume!(:loud)
-  byebug
 end
 
 Given(/^Normal Norman gets important events emailed as they happen$/) do

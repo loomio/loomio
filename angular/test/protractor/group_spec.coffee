@@ -1,4 +1,4 @@
-fdescribe 'Group Page', ->
+describe 'Group Page', ->
 
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
@@ -383,7 +383,7 @@ fdescribe 'Group Page', ->
 
   describe 'changing membership email settings', ->
     beforeEach ->
-      page.loadPath('setup_group') 
+      page.loadPath('setup_group')
 
     it 'lets you change membership volume', ->
       page.click '.group-page-actions__button',
