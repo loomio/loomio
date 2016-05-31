@@ -4,8 +4,8 @@ Given(/^Loud Larry is following everything in the group by email$/) do
                                    email_missed_yesterday: false,
                                    email_on_participation: false,
                                    email_when_proposal_closing_soon: false)
-
   @group.add_member!(@loud_larry).set_volume!(:loud)
+  byebug
 end
 
 Given(/^Normal Norman gets important events emailed as they happen$/) do
@@ -123,12 +123,14 @@ Given(/^I am autofollowing new discussions in my group$/) do
   @user.memberships.find_by_group_id(@group.id).set_volume! :loud
 end
 
-When(/^I comment in the discussion$/) do
+When(/^I comment in the discussion I'm following on participation$/) do
+  @user.update_attribute(email_on_participation: true)
   @comment = FactoryGirl.build(:comment, discussion: @discussion, author: @user)
   CommentService.create(comment: @comment, actor: @user)
 end
 
-When(/^I like a comment in the discussion$/) do
+When(/^I like a comment in the discussion I'm following on participation$/) do
+  @user.update_attribute(email_on_participation: true)
   @comment = FactoryGirl.create(:comment, discussion: @discussion)
   CommentService.like(comment: @comment, actor: @user)
 end

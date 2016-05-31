@@ -97,7 +97,7 @@ describe Membership do
     end
 
     it 'responds to volume' do
-      expect(@membership.volume.to_sym).to eq :loud
+      expect(@membership.volume.to_sym).to eq :normal
     end
 
     it 'can change its volume' do

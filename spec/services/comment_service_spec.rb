@@ -75,7 +75,7 @@ describe 'CommentService' do
       it 'updates the discussion reader' do
         CommentService.create(comment: comment, actor: user)
         expect(reader.reload.participating).to eq true
-        expect(reader.reload.volume.to_sym).to eq :loud
+        expect(reader.reload.volume.to_sym).to eq :normal
       end
 
       it 'publishes a comment replied to event if there is a parent' do

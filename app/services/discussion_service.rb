@@ -28,6 +28,7 @@ class DiscussionService
     return false unless discussion.valid?
 
     discussion.save!
+    DiscussionReader.for(discussion: discussion, user: actor).set_volume! :loud
     EventBus.broadcast('discussion_create', discussion, actor)
     Events::NewDiscussion.publish!(discussion)
   end
