@@ -158,23 +158,8 @@ module.exports = new class ThreadHelper
   threadOptionsDropdown: ->
     element(By.css('.thread-context__dropdown'))
 
-  volumeOptions: ->
-    element(By.css('.notification-volume'))
-
   angularFeedbackCard: ->
     element(By.css('#angular-feedback-card'))
-
-  threadVolumeCard: ->
-    element(By.css('.thread-volume-card')).getText()
-
-  clickChangeInThreadVolumeCard: ->
-    element(By.css('.thread-volume-card__change-volume-link')).click()
-
-  changeThreadVolumeToLoud: ->
-    element(By.id('volume-loud')).click()
-
-  submitChangeVolumeForm: ->
-    element(By.css('.change-volume-form__submit')).click()
 
   signInButton: ->
     element(By.css('.lmo-navbar__sign-in')).getText()

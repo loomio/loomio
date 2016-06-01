@@ -87,17 +87,17 @@ describe 'Discussion Page', ->
     it 'lets you change thread volume', ->
       page.click '.thread-context__dropdown-button',
                  '.thread-context__dropdown-options-email-settings',
-                 '#volume-normal',
+                 '#volume-loud',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about proposals in this thread.'
+      page.expectFlash 'You will be emailed activity in this thread.'
 
     it 'lets you change the volume for all threads in the group', ->
       page.click '.thread-context__dropdown-button',
                  '.thread-context__dropdown-options-email-settings',
-                 '#volume-normal',
+                 '#volume-loud',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about new threads and proposals in this group.'
+      page.expectFlash 'You will be emailed all activity in this group.'
 
   describe 'joining the group', ->
     it 'allows logged in users to join a group and comment', ->
