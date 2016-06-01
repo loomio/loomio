@@ -25,8 +25,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def subgroups
-    load_and_authorize :group
-    @groups = @group.subgroups.select{|g| can? :show, g }
+    self.collection = load_and_authorize(:group).subgroups.select { |g| can? :show, g }
     respond_with_collection
   end
 
@@ -61,7 +60,7 @@ class API::GroupsController < API::RestfulController
       super
     else
       # serialize out the parent with the group
-      [resource, resource&.parent].compact
+      collection || [resource, resource&.parent].compact
     end
   end
 end
