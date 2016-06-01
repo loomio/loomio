@@ -97,6 +97,7 @@ Now build and install node
 ```
 nvm install 4.4.5
 nvm alias default 4.4.5
+npm install -g gulp
 ```
 
 Ok that's it, you're not ready to [install Loomio](quickstart.md) (or any other ruby or node app)
