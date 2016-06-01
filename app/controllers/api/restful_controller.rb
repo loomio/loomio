@@ -48,18 +48,29 @@ class API::RestfulController < ActionController::Base
 
   def respond_with_resource(scope: default_scope, serializer: resource_serializer, root: serializer_root)
     if resource.errors.empty?
-      respond_with_collection resource_options(scope: scope, serializer: serializer, root: root)
+      respond_with_collection scope: scope, serializer: serializer, root: root
     else
       respond_with_errors
     end
   end
 
-  def resource_options(scope:, serializer:, root:)
-    if @event.is_a?(Event)
-      { resources: [@event], scope: scope, serializer: @event.active_model_serializer, root: :events }
+  def respond_with_collection(scope: default_scope, serializer: resource_serializer, root: serializer_root)
+    if serialize_events?
+      render json: EventCollection.new(resource_to_serialize).serialize!(scope)
     else
-      { resources: [resource], scope: scope, serializer: serializer, root: root }
+      render json: resource_to_serialize, scope: scope, each_serializer: serializer, root: root
     end
   end
 
+  def serialize_events?
+    @event.is_a?(Event)
+  end
+
+  def resource_to_serialize
+    if serialize_events?
+      Array(@event)
+    else
+      collection || Array(resource)
+    end
+  end
 end

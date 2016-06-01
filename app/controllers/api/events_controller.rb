@@ -1,6 +1,5 @@
 class API::EventsController < API::RestfulController
   include UsesDiscussionReaders
-  EventCollection = Struct.new(:events)
 
   private
 
@@ -26,11 +25,7 @@ class API::EventsController < API::RestfulController
     collection.find_by(eventable_type: "Comment", eventable_id: params[:comment_id]).try(:sequence_id)
   end
 
-  def respond_with_collection(resources: collection, scope: default_scope, serializer: resource_serializer)
-    render json: EventCollection.new(resources), scope: scope, serializer: resource_serializer
-  end
-
   def resource_serializer
-    Events::ArraySerializer
+    Events::BaseSerializer
   end
 end
