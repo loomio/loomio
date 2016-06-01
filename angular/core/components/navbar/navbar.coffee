@@ -3,10 +3,11 @@ angular.module('loomioApp').directive 'navbar', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'
   replace: true
-  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, ThreadQueryService, AppConfig, AbilityService, $mdSidenav) ->
+  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, ThreadQueryService, AppConfig, AbilityService, $mdSidenav, $mdMedia) ->
+    $scope.$mdMedia = $mdMedia
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
-
+    $scope.title = "Undefined"
     $scope.officialLoomio = AppConfig.isLoomioDotOrg
 
     $scope.hostName = parser.hostname
@@ -15,6 +16,9 @@ angular.module('loomioApp').directive 'navbar', ->
 
     $scope.$on 'currentComponent', (el, component) ->
       $scope.selected = component.page
+    
+    $scope.$on 'setTitle', (el, name) ->
+      $scope.title = name
 
     $scope.unreadThreadCount = ->
       ThreadQueryService.filterQuery(['show_unread', 'only_threads_in_my_groups'], queryType: 'inbox').length()
@@ -24,7 +28,6 @@ angular.module('loomioApp').directive 'navbar', ->
 
     $scope.openSidebar = ->
       $mdSidenav("left").toggle()
-      $rootScope.$broadcast('sidebar-open')
 
     $scope.signIn = ->
       ModalService.open SignInForm

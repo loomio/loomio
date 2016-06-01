@@ -31,7 +31,7 @@
   padding-left: 66px;
 }
 
-.lmo-navbar__logo img { height: 30px; }
+.lmo-navbar__logo { height: 30px; }
 
 .lmo-navbar__sign-in {
   @include lmoBtnFeatured;

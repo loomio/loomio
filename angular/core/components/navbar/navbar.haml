@@ -1,17 +1,19 @@
-%header.lmo-navbar{role: "banner"}
-  %section.lmo-navbar__item-container.lmo-navbar__item-container--left{role: "navigation"}
-    %md_icon_button.lmo-navbar__item{ng-show: "isLoggedIn()", ng-click: "openSidebar()"}
-      %md_icon.fa.fa-lg.fa-bars
-  %section.lmo-navbar__item-container.lmo-navbar--center
-    .lmo-navbar__item.lmo-navbar__logo
-      %img{src: "/img/logo.png"}
-  %section.lmo-navbar__item-container.lmo-navbar--right.lmo-navbar__logged-in{ng-if: "isLoggedIn()"}
-    .lmo-navbar__item.lmo-navbar-search{role: "search"}
+%header
+  %md-toolbar
+    .md-toolbar-tools
+      %md_icon_button{ng-show: "isLoggedIn()", ng-click: "openSidebar()"}
+        %md_icon.fa.fa-lg.fa-bars
+
+      %h2
+        %span {{ title }}
+
+      .buh
+        %img.lmo-navbar__logo{src: "/img/logo.png"}
+
       %navbar_search
-    .lmo-navbar__item.lmo-navbar__item--notifications
+      
       %notifications
-    .lmo-navbar__item.lmo-navbar__item--user
-      %navbar_user_options
-  %section.lmo-navbar__item-container.lmo-navbar--right.lmo-navbar__logged-out{ng-if: "!isLoggedIn()"}
-      %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
-        %span{translate: "navbar.sign_in"}
+
+      .buh{ng-if: "!isLoggedIn()"}
+          %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
+            %span{translate: "navbar.sign_in"}
