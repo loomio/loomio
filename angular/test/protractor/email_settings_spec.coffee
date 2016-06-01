@@ -9,17 +9,17 @@ describe 'Email settings', ->
   testDefaultUpdate = ->
     page.click '.email-settings-page__change-default-link'
     page.expectText '.change-volume-form__title', 'Email settings for new groups'
-    page.click '#volume-normal',
+    page.click '#volume-loud',
                '.change-volume-form__submit'
-    page.expectFlash 'You will be emailed about new threads and proposals in new groups.'
-    page.expectText  '.email-settings-page__default-description', 'When you join a new group, you will be emailed about new threads and proposals.'
+    page.expectFlash 'You will be emailed all activity in new groups.'
+    page.expectText  '.email-settings-page__default-description', 'When you join a new group, you will be emailed whenever there is activity.'
 
   testMembershipUpdate = ->
     page.click '.email-settings-page__change-default-link',
-               '#volume-normal',
+               '#volume-loud',
                '.change-volume-form__apply-to-all',
                '.change-volume-form__submit'
-    page.expectText '.email-settings-page__membership-volume', 'Important activity'
+    page.expectText '.email-settings-page__membership-volume', 'All activity'
 
   describe 'logged in', ->
     beforeEach ->
