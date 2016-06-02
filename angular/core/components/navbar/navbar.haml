@@ -1,13 +1,13 @@
 %header
   %md-toolbar
     .md-toolbar-tools
-      %md_icon_button{ng-show: "isLoggedIn()", ng-click: "openSidebar()"}
+      %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "openSidebar()"}
         %md_icon.fa.fa-lg.fa-bars
 
-      %h2
+      %h2.navbar__page-title{flex: "grow"}
         %span {{ title }}
 
-      .buh
+      .navbar__logo-container{flex: "grow"}
         %img.lmo-navbar__logo{src: "/img/logo.png"}
 
       %navbar_search

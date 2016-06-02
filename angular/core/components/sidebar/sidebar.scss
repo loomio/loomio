@@ -1,11 +1,12 @@
 .md-sidenav-left {
-  padding-top: 50px;
   background-color: #fff;
   max-width: 250px;
+  z-index: 1;
 }
 
-.please-scroll-y{
+.lmo-main-content{
   overflow-y: scroll;
+  position: relative;
 }
 
 .md-closed {

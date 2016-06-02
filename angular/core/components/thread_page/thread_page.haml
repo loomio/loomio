@@ -1,6 +1,6 @@
 .loading-wrapper.lmo-two-column-layout
   %loading{ng-if: "!threadPage.discussion"}
-  %main.thread-page{ng-if: "threadPage.discussion"}
+  %main.thread-page.lmo-row{ng-if: "threadPage.discussion"}
     %group_theme{group: "threadPage.discussion.group()", compact: "true"}
 
     .lmo-thread-column-left
