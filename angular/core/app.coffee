@@ -13,7 +13,18 @@ angular.module('loomioApp', ['ngNewRouter',
                              'checklist-model',
                              'monospaced.elastic',
                              'angularMoment',
-                             'offClick']).config ($locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
+                             'offClick']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
+
+  # a decorator to allow mentio to work within modals
+  # https://github.com/jeff-collins/ment.io/issues/68#issuecomment-200746901
+  $provide.decorator 'mentioMenuDirective', ($delegate) ->
+    directive = _.first($delegate)
+    directive.compile = ->
+      (scope, elem) ->
+        directive.link.apply(this, arguments)
+        if modal = scope.parentMentio.targetElement[0].closest('.modal')[0]
+          modal.appendChild(elem[0])
+    $delegate
 
   # this should make stuff faster but you need to add "animated" class to animated things.
   # http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm
