@@ -1,0 +1,151 @@
+/*
+
+Grid
+
+Basic grid made using flexbox. By default, the grid is collapsed on small screens.
+
+Markup:
+<main class="grid {{modifier_class}}">
+  <section class="">
+    Cell 1
+  </section>
+  <article class="grid">
+    Cell 2
+  </article>
+</main>
+
+.grid--medium           - Grid starts at medium sized screens
+.grid--large            - Grid starts at large and up screens
+
+Styleguide 1.0
+
+*/
+
+/*
+
+Direct children of `.grid` are columns.
+
+Markup:
+<main class="grid">
+  <section class="{{modifier_class}}">
+    Cell 1
+  </section>
+  <article class="grid">
+    <p class="grid {{modifier_class}}">
+      Cell 2.1
+    </p>
+    <div>
+      <p>Cell 2.2</p>
+    </div>
+  </article>
+</main>
+
+.column--light           - Less important column
+.column--heavy           - More important column
+
+Styleguide 1.1
+
+*/
+
+// rows
+.grid{
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// columns
+.grid > *{
+  flex: 1;
+  flex-grow: 4;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &:first-child{
+    margin-left: -1rem;
+  }
+
+  &:last-child{
+    margin-right: -1rem;
+  }
+
+  &.column--light{
+    flex-grow: 2;
+  }
+
+  &.column--heavy{
+    flex-grow: 8;
+  }
+}
+
+@media (max-width: 599px){
+  .grid--medium{
+    display: block;
+  }
+
+  .grid--medium > *{
+    padding-left: 0;
+    padding-right: 0;
+
+    &:first-child{
+      margin-left: 0;
+    }
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+}
+
+@media (max-width: 959px){
+  .grid--large{
+    display: block;
+  }
+
+  .grid--large > *{
+    padding-left: 0;
+    padding-right: 0;
+
+    &:first-child{
+      margin-left: 0;
+    }
+
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+}
+
+/*
+
+Wrappers
+
+Use wrappers when you need a content area that is a standardized width and centered on the page.
+
+Markup:
+<div class="wrapper {{modifier_class}}">Wrapper</div>
+
+.wrapper-small      - Small Wrapper
+.wrapper-large      - Large Wrapper
+
+Styleguide 1.2
+
+*/
+
+.wrapper{
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 4.8rem 2rem;
+}
+
+.wrapper-large{
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 7.2rem 2rem;
+}
+
+.wrapper-small{
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 2.4rem 2rem;
+}

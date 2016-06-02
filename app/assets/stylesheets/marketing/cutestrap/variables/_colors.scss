@@ -1,0 +1,24 @@
+// A beautiful selection of our branded colors
+//
+// Styleguide
+
+// primary colors
+$primary:       #E83FB8 !default;
+$primary-dark:  darken($primary, 5%) !default;
+
+$link:          #4076D4 !default;
+$link--visited: #9140D4 !default;
+$link--hover:   darken($link, 5%) !default;
+$link--active:  #D44076 !default;
+
+// dark shades
+$gray1:         #3c3c3d !default;
+$gray2:         #5a5a5b !default;
+$gray3:         #7d7d7e !default;
+
+// light shades
+$gray4:         #cdcdce !default;
+$gray5:         #dededf !default;
+$gray6:         #efeff0 !default;
+
+$white:         #ffffff !default;
