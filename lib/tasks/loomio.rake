@@ -6,20 +6,14 @@ namespace :loomio do
   task hourly_tasks: :environment do
     MotionService.close_all_lapsed_motions
     SendMissedYesterdayEmailJob.perform_later
+    ResendIgnoredInvitationsJob.perform_later
     ProposalsClosingSoonJob.perform_later
     LocateUsersAndGroupsJob.perform_later
   end
 
-  task send_proposal_closing_soon: :environment do
-    Delayed::Job.enqueue ProposalsClosingSoonJob.new
-  end
-
-  task close_lapsed_motions: :environment do
-    MotionService.close_all_lapsed_motions
-  end
-
-  task send_missed_yesterday_email: :environment do
-    SendMissedYesterdayEmail.to_subscribers!
+  task resend_ignored_invitations: :environment do
+    InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
+    InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
   end
 
   task refresh_likes: :environment do

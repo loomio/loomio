@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'RevisionHistoryModal', ->
   templateUrl: 'generated/components/thread_page/revision_history_modal/revision_history_modal.html'
-  controller: ($scope, model, CurrentUser, Records, LoadingService) ->
+  controller: ($scope, model, Records, LoadingService) ->
     $scope.model = model
     $scope.loading = true
 

@@ -15,7 +15,7 @@ EventBus.configure do |config|
   Event::BULK_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event|
       BaseMailer.send_bulk_mail(to: Queries::UsersToEmailQuery.send(kind, event.eventable)) do |user|
-        ThreadMailer.delay.send(kind, user, event)
+        ThreadMailer.delay(priority: 2).send(kind, user, event)
       end
     end
   end
@@ -24,13 +24,13 @@ EventBus.configure do |config|
   # Single mail kinds is only Comment replied to and User mentioned.
   Event::SINGLE_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event, user|
-      ThreadMailer.delay.send(kind, user, event) if user.email_when_mentioned
+      ThreadMailer.delay(priority: 2).send(kind, user, event) if user.email_when_mentioned
     end
   end
 
 
   # send individual emails after user events
-  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay.group_membership_approved(user, event.group) }
+  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.group) }
 
   # send memos to client side after comment change
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
@@ -71,9 +71,11 @@ EventBus.configure do |config|
   end
 
   # update discussion reader after discussion creation / edition
-  config.listen('discussion_create',
-                'discussion_update',
-                'comment_like') do |model, actor|
+  config.listen('discussion_create') do |discussion, actor|
+    DiscussionReader.for(discussion: discussion, user: actor).set_volume! :loud
+  end
+
+  config.listen('discussion_update', 'comment_like') do |model, actor|
     DiscussionReader.for_model(model, actor).set_volume_as_required!
   end
 

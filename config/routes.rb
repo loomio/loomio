@@ -62,6 +62,7 @@ Loomio::Application.routes.draw do
       member do
         post :make_admin
         post :remove_admin
+        post :save_experience
         patch :set_volume
       end
     end
@@ -87,6 +88,7 @@ Loomio::Application.routes.draw do
       post :upload_avatar, on: :collection
       post :change_password, on: :collection
       post :deactivate, on: :collection
+      post :save_experience, on: :collection
     end
 
     resources :events, only: :index
@@ -148,10 +150,6 @@ Loomio::Application.routes.draw do
       post :viewed, on: :collection
     end
 
-    resources :contacts, only: :index do
-      get :import, on: :collection
-    end
-
     resources :contact_messages, only: :create
 
     resources :versions, only: :index
@@ -163,19 +161,12 @@ Loomio::Application.routes.draw do
       get :authorized, on: :collection
     end
 
-    namespace :message_channel do
-      post :subscribe
-    end
-
-    namespace :sessions do
-      get :current
-      get :unauthorized
-    end
+    namespace(:message_channel) { post :subscribe }
+    namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
       resource :sessions, only: [:create, :destroy]
+      resource :registrations, only: :create
     end
-    get '/attachments/credentials',      to: 'attachments#credentials'
-    get  '/contacts/:importer/callback', to: 'contacts#callback'
   end
 
   get '/discussions/:id', to: 'redirect#discussion_id'
@@ -213,6 +204,7 @@ Loomio::Application.routes.draw do
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 
+  get 'g/:key/export'                      => 'groups#export',    as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
   get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
   get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion

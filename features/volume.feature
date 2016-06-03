@@ -49,7 +49,7 @@ Scenario: Proposal closing soon
 Scenario: Proposal closed
   When my proposal closes
   Then "Loud Larry"      should be emailed
-  And  "Normal Norman"   should not be emailed
+  And  "Normal Norman"   should be emailed
   And  "Quiet Quincey"   should not be emailed
   And  "Mute Megan"      should not be emailed
 

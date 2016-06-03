@@ -101,10 +101,12 @@ class Ability
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
 
-      group.is_parent? ||
-      user_is_admin_of?(group.parent_id) ||
-      (user_is_member_of?(group.parent_id) &&
-       group.parent.members_can_create_subgroups?)
+      user.is_logged_in? &&
+      (
+        group.is_parent? ||
+        user_is_admin_of?(group.parent_id) ||
+        (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?)
+      )
     end
 
     can :join, Group do |group|

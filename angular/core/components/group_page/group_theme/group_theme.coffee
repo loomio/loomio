@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'groupTheme', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
   replace: true
-  controller: ($scope, CurrentUser, AbilityService, ModalService, CoverPhotoForm, LogoPhotoForm) ->
+  controller: ($scope, Session, AbilityService, ModalService, CoverPhotoForm, LogoPhotoForm) ->
 
     $scope.logoStyle = ->
       { 'background-image': "url(#{$scope.group.logoUrl()})" }
@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'groupTheme', ->
       { 'background-image': "url(#{$scope.group.coverUrl()})", 'z-index': (-1 if $scope.compact) }
 
     $scope.isMember = ->
-      CurrentUser.membershipFor($scope.group)?
+      Session.user().membershipFor($scope.group)?
 
     $scope.canUploadPhotos = ->
       $scope.homePage and AbilityService.canAdministerGroup($scope.group)

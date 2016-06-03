@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'MuteExplanationModal', ->
   templateUrl: 'generated/components/mute_explanation_modal/mute_explanation_modal.html'
-  controller: ($scope, thread, CurrentUser, Records, FlashService) ->
+  controller: ($scope, thread, Records, FlashService) ->
     $scope.thread = thread
     $scope.previousVolume = $scope.thread.volume()
 

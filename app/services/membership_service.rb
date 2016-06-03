@@ -33,7 +33,7 @@ class MembershipService
     memberships = group.add_members!(users, inviter)
     memberships.each do |m|
       Events::UserAddedToGroup.publish!(m, inviter)
-      UserMailer.delay.added_to_group(user: m.user, inviter: inviter,
+      UserMailer.delay(priority: 1).added_to_group(user: m.user, inviter: inviter,
                                       group: m.group, message: message)
     end
   end
@@ -45,5 +45,11 @@ class MembershipService
 
   def self.suspend_membership!(membership:)
     membership.suspend!
+  end
+
+  def self.save_experience(membership:, actor:, params:)
+    actor.ability.authorize! :update, membership
+    membership.experienced!(params[:experience])
+    EventBus.broadcast('membership_save_experience', membership, actor, params)
   end
 end

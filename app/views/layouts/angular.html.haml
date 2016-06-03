@@ -23,7 +23,7 @@
   %body{'ng-keydown' => 'keyDown($event)'}
     %flash
     %navbar
-    %ng_outlet{'ng-if' => '!pageError'}
+    %ng_outlet{'ng-if' => '!refreshing && !pageError'}
     %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
     %outlet{name: 'after-start-menu'}
@@ -31,10 +31,6 @@
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@appConfig.to_json.html_safe}
-
-      emojione.unicodeAlt = false
-      emojione.imagePathPNG = "/img/emojis/emojione/"
-      emojione.ascii = true
       window.Loomio.emojis = {
         source: (emojione.shortnames || "").split('|'),
         render: emojione.shortnameToImage,

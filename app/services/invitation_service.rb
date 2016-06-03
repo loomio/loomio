@@ -26,10 +26,18 @@ class InvitationService
                                                message: message,
                                                inviter: inviter)
 
-      InvitePeopleMailer.delay.to_join_group(invitation: invitation,
-                                             locale: I18n.locale)
+      InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
+                                                          locale: I18n.locale)
       invitation
     end
+  end
+
+  def self.resend(invitation)
+    return unless invitation.is_pending?
+    InvitePeopleMailer.delay(priority: 1).to_join_group(invitation: invitation,
+                                           locale: I18n.locale,
+                                           subject_key: "email.resend_to_join_group.subject")
+    invitation
   end
 
   def self.cancel(invitation:, actor:)
@@ -66,5 +74,9 @@ class InvitationService
     end
     invitation.save!
     Events::InvitationAccepted.publish!(membership)
+  end
+
+  def self.resend_ignored(send_count:, since:)
+    Invitation.ignored(send_count, since).each { |invitation| resend invitation  }
   end
 end

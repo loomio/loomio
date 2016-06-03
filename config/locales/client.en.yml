@@ -152,11 +152,21 @@ en:
     unread: 'Unread'
     closing_in: 'Closing '
 
-  session_form:
+  sign_in_form:
+    title: 'Sign In to Loomio'
     email_label: 'Email:'
+    email_placeholder: 'you@example.com'
     password_label: 'Password:'
-    remember_me: 'Remember Me'
+    remember_me: 'Remember me'
+    forgot_password: 'Forgot password?'
     sign_in: 'Login'
+    signed_in: 'Signed in successfully'
+    oauth:
+      title: 'Or log in with a third-party account:'
+      facebook: 'Log in with Facebook'
+      twitter: 'Log in with Twitter'
+      google: 'Log in with Google'
+      github: 'Log in with Github'
 
   comment_form:
     aria_label: 'Add a comment'
@@ -178,6 +188,7 @@ en:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of {{groupName}}.'
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
+    sign_in: "Log in to join the conversation"
 
   navbar:
     recent: 'Recent'
@@ -362,9 +373,12 @@ en:
     ok_got_it: "Ok, got it!"
 
   group_welcome_modal:
-    heading: "Welcome to your new group"
-    first_step: "You are the group <strong>coordinator</strong>, which is like being a host. Watch the video, then check out the example threads."
-    second_step: "When you’re ready, <strong>invite people</strong> in."
+
+    creator_heading: "Welcome to your new group"
+    member_heading: "Welcome to Loomio"
+    creator_info: "You are the group <strong>coordinator</strong>, which is like being a host. Watch the video, then check out the example threads."
+    member_info: "Watch this video for an overview of how Loomio works. Then try posting a comment in a discussion thread, or start one of your own!"
+    creator_footer: "When you’re ready, <strong>invite people</strong> in."
     ok_got_it: "Ok, got it!"
 
   group_cover_modal:
@@ -384,6 +398,7 @@ en:
   join_group_button:
     join_group: Join group
     ask_to_join_group: Ask to join group
+    membership_requested: Membership request pending
     messages:
       joined_group: 'You are now a member of {{group}}'
 

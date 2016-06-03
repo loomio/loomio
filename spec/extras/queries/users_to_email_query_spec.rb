@@ -160,8 +160,8 @@ describe Queries::UsersToEmailQuery do
     users.should     include user_thread_loud
     users.should     include user_membership_loud
 
-    users.should_not include user_membership_normal
-    users.should_not include user_thread_normal
+    users.should     include user_membership_normal
+    users.should     include user_thread_normal
 
     users.should_not include user_membership_quiet
     users.should_not include user_thread_quiet

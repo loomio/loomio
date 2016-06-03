@@ -29,7 +29,7 @@ class LoggedOutUser
   end
 
   def locale
-    I18n.default_locale
+    I18n.locale
   end
 
   def avatar_url(size)
@@ -50,6 +50,10 @@ class LoggedOutUser
 
   def ability
     @ability ||= Ability.new(self)
+  end
+
+  def experiences
+    {}
   end
 
 end
