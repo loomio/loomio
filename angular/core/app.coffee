@@ -22,7 +22,7 @@ angular.module('loomioApp', ['ngNewRouter',
     directive.compile = ->
       (scope, elem) ->
         directive.link.apply(this, arguments)
-        if modal = scope.parentMentio.targetElement[0].closest('.modal')[0]
+        if modal = scope.parentMentio.targetElement[0].closest('.modal')
           modal.appendChild(elem[0])
     $delegate
 
