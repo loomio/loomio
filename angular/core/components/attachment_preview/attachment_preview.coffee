@@ -10,3 +10,6 @@ angular.module('loomioApp').directive 'attachmentPreview', ->
 
     $scope.location = ->
       $scope.attachment[$scope.mode]
+
+    $scope.displayMode = ->
+      _.contains ['thread', 'context'], $scope.mode

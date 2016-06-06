@@ -53,7 +53,7 @@
 
         .thread-context__attachments
           .thread-context__attachments{ng-repeat: "attachment in threadPage.discussion.attachments() | orderBy:'createdAt' track by attachment.id"}
-            %attachment_preview{attachment: "attachment", mode: "thread"}
+            %attachment_preview{attachment: "attachment", mode: "context"}
 
         %a.thread-context__edit-link.lmo-card-minor-action.lmo-no-print{href: "", ng-click: "threadPage.editThread()", translate: "thread_context.edit_thread", ng-if: "threadPage.canEditThread()"}
 
