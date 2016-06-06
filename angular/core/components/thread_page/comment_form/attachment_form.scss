@@ -1,14 +1,29 @@
+.attachment-form {
+  display: inline-block;
+  margin-left: 6px;
+}
+
+.attachment-form__label {
+  display: inline-block;
+  margin: 2px 7px;
+}
+
 .attachment-form-in-progress {
   display: inline-block;
+  vertical-align: middle;
 }
 
 .attachment-form-progress-field {
   width: 200px;
-  margin: 0 10px;
+  margin: 0;
   padding: 7px 0;
   height: 35px;
   text-align: center;
   position: relative;
+}
+
+.attachment-form-cancel {
+  margin: 5px;
 }
 
 .attachment-form-progress-text {

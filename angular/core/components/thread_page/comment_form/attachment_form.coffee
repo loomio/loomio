@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'attachmentForm', ->
-  scope: {model: '='}
+  scope: {model: '=', showLabel: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/attachment_form.html'
   replace: true
