@@ -31,6 +31,7 @@
 
       .discussion-form__attachments
         %attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
+        %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}
         %label.lmo-form-labelled-input
           %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
         .clearfix
