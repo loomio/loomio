@@ -2,6 +2,7 @@
   background-color: #fff;
   max-width: 250px;
   z-index: 1;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
 }
 
 .lmo-main-content{
@@ -53,4 +54,12 @@
 
 .sidebar__divider {
   border-top: 1px solid #eee;
+}
+
+.sidebar__list-item--muted {
+  padding-right: 140px;
+}
+
+.sidebar__padding {
+  padding-top: 50px;
 }

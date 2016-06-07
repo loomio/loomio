@@ -1,4 +1,5 @@
-angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $rootScope, $window, RestfulClient) ->
+angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia) ->
+
   $scope.groups = ->
     Session.user().groups()
 
@@ -11,3 +12,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
     @sessionClient = new RestfulClient('sessions')
     @sessionClient.destroy('').then ->
     $window.location = '/'
+
+  $scope.smallScreen = ->
+    $mdMedia("max-width: 1279px")

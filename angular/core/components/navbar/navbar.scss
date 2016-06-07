@@ -1,23 +1,8 @@
-
-// .lmo-navbar__item-container {
-//   display: flex;
-//   display: -webkit-flex;
-//   .fa-group            { font-size: 1.1em; }
-//   .fa-bell-o, .fa-bell { font-size: 1.2em; }
-// }
-
-// .lmo-navbar__item-container--left {
-//   padding: 8px;
-// }
-
-// .lmo-navbar__logo {
-//   padding: 5px;
-// }
-
-// .lmo-navbar__logo--logged-out {
-//   margin: auto;
-//   padding-left: 66px;
-// }
+.md-toolbar-tools {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  z-index: 2;
+}
 
 .navbar__sidenav-toggle {
   color: black;
@@ -27,83 +12,3 @@
 .lmo-navbar__logo {
   height: 30px;
 }
-
-// .lmo-navbar__sign-in {
-//   @include lmoBtnFeatured;
-//   margin: 7px 0;
-// }
-
-// .lmo-navbar__item--selected {
-//   a{ color: $primary-text-color; }
-//   position: relative;
-//   &:after {
-//     content: '';
-//     position: absolute;
-//     width: 100%;
-//     left: 0;
-//     bottom: 0;
-//     height: 4px;
-//     background: $loomio-orange;
-//   }
-// }
-
-// .lmo-navbar__btn{
-//   box-shadow: none;
-//   background: transparent;
-//   border: none;
-//   border-radius: 0;
-//   line-height: 31px;
-//   &:hover          { background: $list-hover-color; }
-//   &:hover, &:focus { box-shadow: none; }
-// }
-
-// .lmo-navbar__btn-icon{
-//   color: $grey-on-white;
-//   font-size: 19px;
-//   &:hover, &:focus { text-decoration: none; }
-// }
-
-// .lmo-navbar__btn-label{
-//   @include fontMedium;
-//   padding: 5px;
-//   @media (max-width: 650px){display: none;}
-// }
-
-// .lmo-navbar__btn.has-badge{
-//   position: relative;
-// }
-
-// .lmo-navbar__btn.has-badge:hover .badge {
-//   border-color: $list-hover-color;
-// }
-
-// .lmo-navbar__btn.has-badge .badge {
-//   font-size: 10px;
-//   position: absolute;
-//   left: 22px;
-//   top: 2px;
-//   background: #4A90E2;
-//   border-radius: 10px;
-//   border: 2px solid white;
-//   padding: 5px;
-//   color: white;
-//   line-height: 5px;
-//   text-align: center;
-// }
-
-// @media (max-width: $small-max-px) {
-//   .lmo-navbar__logo--logged-in { display: none; }
-// }
-
-// @media (max-width: $medium-max-px) {
-//   .lmo-navbar__item {
-//     text-align: center;
-//     .lmo-navbar__btn {
-//       width: 100%;
-//       &:hover, &:focus {
-//         background: $list-hover-color;
-//         &.has-badge .badge { border: 2px solid $list-hover-color; }
-//       }
-//     }
-//   }
-// }

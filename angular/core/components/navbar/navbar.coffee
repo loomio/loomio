@@ -5,6 +5,7 @@ angular.module('loomioApp').directive 'navbar', ->
   replace: true
   controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, ThreadQueryService, AppConfig, AbilityService, $mdSidenav, $mdMedia) ->
     $scope.$mdMedia = $mdMedia
+    $scope.$mdSidenav = $mdSidenav
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
     $scope.title = "Undefined"
@@ -26,7 +27,7 @@ angular.module('loomioApp').directive 'navbar', ->
     $scope.homePageClicked = ->
       $rootScope.$broadcast 'homePageClicked'
 
-    $scope.openSidebar = ->
+    $scope.toggleSidebar = ->
       $mdSidenav("left").toggle()
 
     $scope.signIn = ->

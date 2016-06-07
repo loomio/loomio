@@ -1,7 +1,7 @@
 %header
   %md-toolbar
     .md-toolbar-tools
-      %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "openSidebar()"}
+      %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()"}
         %md_icon.fa.fa-lg.fa-bars
 
       %h2.navbar__page-title{flex: "grow"}
@@ -15,5 +15,5 @@
       %notifications
 
       .buh{ng-if: "!isLoggedIn()"}
-          %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
-            %span{translate: "navbar.sign_in"}
+        %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
+          %span{translate: "navbar.sign_in"}
