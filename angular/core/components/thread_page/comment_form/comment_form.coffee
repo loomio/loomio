@@ -59,4 +59,4 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
 
-    MentionService.applyMentions $scope, $scope.discussion
+    MentionService.applyMentions $scope, $scope.comment
