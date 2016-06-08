@@ -2,7 +2,7 @@
 
 # How do I give feedback about Loomio?
 
-We love feedback. [Here's the form](https://docs.google.com/a/enspiral.com/forms/d/1JS75ZdoBiA3k7IzxDPijV4kPh1fXrmWs9A8k_WG_pyE/viewform). Please feel free to tell us anything you like, the product team will review it within a few days.
+We love feedback - feel free to [contact us](https://www.loomio.org/contact). The team will review your message and get back to you as soon as we can.
 
 We don't have any rules about what feedback you can give, but we would love it if you read the rest of the page to learn how to make sure your feedback is constructive.
 
