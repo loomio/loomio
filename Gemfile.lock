@@ -31,14 +31,6 @@ GIT
       faye
 
 GIT
-  remote: git://github.com/robguthrie/mail.git
-  revision: 47c87d5144a7801ce408bb6bce06bb199a5f2c77
-  branch: memoize-encoded
-  specs:
-    mail (2.7.0.edge)
-      mime-types (>= 1.16, < 4)
-
-GIT
   remote: git://github.com/vanetten/jstz-rails.git
   revision: 3c5d5730f5891d1ed4656058f201fdc557792710
   specs:
@@ -427,6 +419,8 @@ GEM
       nokogiri (>= 1.5.9)
     macaddr (1.7.1)
       systemu (~> 2.6.2)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
     memory_profiler (0.9.4)
     mime-types (2.6.2)
     mini_portile2 (2.0.0)
@@ -724,7 +718,7 @@ DEPENDENCIES
   intercom-rails
   jstz-rails!
   launchy
-  mail!
+  mail
   minitest
   newrelic_rpm
   nokogiri
