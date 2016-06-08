@@ -18,6 +18,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
        username: Session.user().username
        user_id: Session.user().id
        created_at: Session.user().createdAt
+       is_coordinator: Session.user().isCoordinator
        angular_ui: true
        locale: Session.user().locale
        company: firstGroup
