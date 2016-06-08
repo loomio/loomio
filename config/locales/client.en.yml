@@ -920,6 +920,7 @@ en:
     proposal_outcome_updated: 'updated the proposal outcome:'
 
   discussion_edited_item:
+    attachment_ids: 'updated the thread attachments'
     title: 'updated the thread title: <span>{{title}}</span>'
     description: 'updated the thread context'
     description_title: 'updated the thread title and context'

@@ -41,8 +41,9 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    version_service = DiscussionVersionService.new(discussion: discussion, new_version: params.slice(:private, :title, :description).empty?)
-    discussion.assign_attributes(params.slice(:private, :title, :description, :attachment_ids))
+    discussion.assign_attributes(params.slice(:private, :title, :description))
+    version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
+    discussion.attachment_ids = params[:attachment_ids]
 
     return false unless discussion.valid?
     discussion.save!

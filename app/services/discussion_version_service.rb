@@ -10,7 +10,7 @@ class DiscussionVersionService
   def handle_version_update!
     return unless previous_ids != discussion.attachment_ids
     discussion.attachments.where('id NOT IN (?)', discussion.attachment_ids).destroy_all
-    discussion_version.object_changes[:attachment_ids] = [previous_ids, discussion.attachment_ids]
+    discussion_version.object_changes['attachment_ids'] = [previous_ids, discussion.attachment_ids]
     discussion_version.save
   end
 
