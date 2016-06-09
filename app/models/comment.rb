@@ -1,7 +1,6 @@
 class Comment < ActiveRecord::Base
   include Twitter::Extractor
   include Translatable
-  include HasAttachments
 
   has_paper_trail only: [:body]
   is_translatable on: :body
@@ -17,6 +16,7 @@ class Comment < ActiveRecord::Base
 
   has_many :events, as: :eventable, dependent: :destroy
   has_many :likers, through: :comment_votes, source: :user
+  has_many :attachments, as: :attachable, dependent: :destroy
 
   validates_presence_of :user
   validate :has_body_or_attachment
