@@ -22,4 +22,7 @@ angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope
   $scope.actorName = $scope.event.actorName()
 
   $scope.translationKey =
-    version.editedAttributeNames().join('_')
+    if _.isEqual version.editedAttributeNames(), ['attachment_ids']
+      'attachment_ids'
+    else
+      _.without(version.editedAttributeNames(), 'attachment_ids').join('_')

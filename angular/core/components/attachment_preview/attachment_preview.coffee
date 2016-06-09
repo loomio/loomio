@@ -5,9 +5,11 @@ angular.module('loomioApp').directive 'attachmentPreview', ->
   replace: true
   controller: ($scope, $rootScope) ->
     $scope.destroy = (event) ->
-      $rootScope.$broadcast('attachmentRemoved', $scope.attachment.id)
-      $scope.attachment.destroy()
+      $scope.$emit('attachmentRemoved', $scope.attachment)
       event.preventDefault()
 
     $scope.location = ->
       $scope.attachment[$scope.mode]
+
+    $scope.displayMode = ->
+      _.contains ['thread', 'context'], $scope.mode

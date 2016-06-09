@@ -12,7 +12,11 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
       flashSuccess: "discussion_form.messages.#{actionName}"
       draftFields: ['title', 'description']
       successCallback: (response) =>
-        $location.path "/d/#{response.discussions[0].key}" if actionName == 'created'
+        discussion = response.discussions[0]
+        Records.attachments.find(attachableId: discussion.id, attachableType: 'Discussion')
+                           .filter (attachment) -> !_.contains(discussion.attachment_ids, attachment.id)
+                           .map    (attachment) -> attachment.remove()
+        $location.path "/d/#{discussion.key}" if actionName == 'created'
 
     $scope.availableGroups = ->
       _.filter Session.user().groups(), (group) ->
@@ -38,3 +42,10 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     EmojiService.listen $scope, $scope.discussion, 'description', $scope.descriptionSelector
 
     KeyEventService.submitOnEnter $scope
+
+    $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
+    $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false
+    $scope.$on 'attachmentRemoved', (event, attachment) ->
+      ids = $scope.discussion.newAttachmentIds
+      ids.splice ids.indexOf(attachment.id), 1
+      attachment.destroy() unless _.contains $scope.discussion.attachmentIds, attachment.id
