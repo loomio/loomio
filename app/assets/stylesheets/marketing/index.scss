@@ -36,6 +36,10 @@ h1, h2, h3 {
   a:visited { color: #4076D4; }
 }
 
+.marketing__header-item-icon {
+  font-size: 12px;
+}
+
 .marketing__header-logo {
   width: 140px;
 }
@@ -119,9 +123,12 @@ h1, h2, h3 {
   margin: 0 auto 20px;
 }
 
+.marketing__footer {
+  background-color: #efefef;
+}
+
 .marketing__footer-section {
   justify-content: space-around;
-  margin-left: 100px;
 }
 
 .marketing__footer-item {
