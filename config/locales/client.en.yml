@@ -109,7 +109,7 @@ en:
       loud_description: "You will be emailed whenever there is activity in this thread."
       normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
       quiet_description: "You won't be emailed about this thread."
-      apply_to_all: "Apply this settings to all threads in this group."
+      apply_to_all: "Apply these settings to all threads in this group."
       messages:
         loud: "You will be emailed activity in this thread."
         normal: "You will be emailed about proposals in this thread."
@@ -119,7 +119,7 @@ en:
       loud_description: "You will be emailed whenever there is activity in this group."
       normal_description: "You will be emailed about new threads and proposals in this group."
       quiet_description: "You won't be emailed about activity in this group."
-      apply_to_all: "Apply this settings to all my groups."
+      apply_to_all: "Apply these settings to all my groups."
       messages:
         loud: "You will be emailed all activity in this group."
         normal: "You will be emailed about new threads and proposals in this group."
@@ -134,7 +134,7 @@ en:
       loud_description: "You will be emailed whenever there is activity in any new groups you join."
       normal_description: "You will be emailed about new threads and proposals in any new groups you join."
       quiet_description: "You won't be emailed about activity in any new groups you join."
-      apply_to_all: "Apply this settings to all my groups."
+      apply_to_all: "Apply these settings to all my groups."
       messages:
         loud: "You will be emailed all activity in new groups."
         normal: "You will be emailed about new threads and proposals in new groups."
