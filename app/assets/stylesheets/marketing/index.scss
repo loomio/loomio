@@ -86,16 +86,22 @@
   max-width: 100px;
 }
 
-.marketing__button {
-  background-color: #3B94E8;
+.marketing__header-button-text {
+  color: #fff;
 }
 
-.marketing__testimonials {
+.marketing__button {
+  background-color: #3B94E8;
+  &:hover { background-color: #3B94E8; }
+}
+
+.marketing__press {
   padding: 1rem;
 }
 
-.marketing__alanna-image {
-  max-width: 300px;
+.marketing__press-logo {
+  max-width: 200px;
+  margin: 0 auto 20px;
 }
 
 .marketing__footer-section {
