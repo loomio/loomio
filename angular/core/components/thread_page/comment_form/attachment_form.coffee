@@ -4,9 +4,9 @@ angular.module('loomioApp').directive 'attachmentForm', ->
   templateUrl: 'generated/components/thread_page/comment_form/attachment_form.html'
   replace: true
   controller: ($scope, $element, Records) ->
-    $scope.upload = (files) ->
+    $scope.upload = ->
       $scope.model.setErrors({})
-      for file in files
+      for file in $scope.files
         $scope.$emit 'disableAttachmentForm'
         $scope.currentUpload = Records.attachments.upload(file, $scope.progress)
         $scope.currentUpload.then($scope.success, $scope.failure).finally($scope.reset)
@@ -33,3 +33,7 @@ angular.module('loomioApp').directive 'attachmentForm', ->
       $scope.percentComplete = 0
       $scope.$emit 'enableAttachmentForm'
     $scope.reset()
+
+    $scope.$on 'attachmentPasted', (event, file) ->
+      $scope.files = [file]
+      $scope.upload()

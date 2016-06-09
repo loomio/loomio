@@ -1,4 +1,4 @@
-%form.discussion-form{name: "discussionForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
+%form.discussion-form{name: "discussionForm", ng-paste: "handlePaste($event)", ng_submit: "submit()", ng-disabled: "isDisabled"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   %input{type: "hidden", ng-model: "discussion.usesMarkdown"}
   .modal-header

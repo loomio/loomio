@@ -1,7 +1,7 @@
 .blank
   %section.comment-form{aria-labelledby: "comment-form-title"}
     %h2.lmo-card-heading#comment-form-title{translate: "comment_form.aria_label"}>
-    %form{ng-if: "showCommentForm()", ng_submit: "submit()"}
+    %form{ng-if: "showCommentForm()", ng-paste: "handlePaste($event)", ng_submit: "submit()"}
       .lmo-disabled-form{ng-show: "isDisabled"}
       %input{type: "hidden", ng-model: "comment.usesMarkdown"}
       %span{translate: "comment_form.in_reply_to", translate-value-name: "{{comment.parent().authorName()}}", ng-show: "comment.parent().authorName()"}
