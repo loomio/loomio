@@ -1,18 +1,24 @@
 @import "cutestrap/cutestrap";
 
 .marketing__header {
-  background-color: #fff;
+  background-color: #efefef;
+  border-bottom: 2px solid white;
   position: fixed;
-  text-align: center;
   width: 100%;
 }
 
+.marketing__header-section {
+  align-items: center;
+  justify-content: center;
+}
+
 .marketing__header-content {
-  padding: 5px 20px;
+  padding: 0.5rem 2rem;
 }
 
 .marketing__header-list {
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .marketing__header-item {
@@ -20,10 +26,13 @@
   padding: 0 10px;
   white-space: nowrap;
   a { text-decoration: none; }
+  a:hover,
+  a:active { color: black; }
+  a:visited { color: #4076D4; }
 }
 
 .marketing__header-logo {
-  max-width: 200px;
+  width: 140px;
 }
 
 .marketing__header-dropdown {
@@ -37,7 +46,10 @@
   position: absolute;
   list-style-type: none;
   margin-left: 0;
-  background-color: #fff;
+  background-color: #efefef;
+  padding: 20px 12px 0px 12px;
+  margin-left: -12px;
+  li { margin-bottom: 12px; }
 }
 
 .marketing__header-dropdown:hover .marketing__header-dropdown-menu {
@@ -47,7 +59,13 @@
 .marketing__section {
   align-items: center;
   justify-content: center;
-  margin: 50px 0;
+  margin: 0 0 50px;
+}
+
+.loomio-on-devices {
+  img {
+    max-width: 850px;
+    display: initial; }
 }
 
 .marketing__case-study {
@@ -86,6 +104,6 @@
 }
 
 .marketing__footer-item {
-  list-style-type: none;  
+  list-style-type: none;
   a { text-decoration: none; }
 }
