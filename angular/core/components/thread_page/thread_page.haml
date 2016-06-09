@@ -6,6 +6,7 @@
     .lmo-thread-column-left
       %section.thread-context{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
         .thread-actions.pull-right.lmo-no-print
+          %outlet{name: "before-thread-actions"}
           %star_toggle{thread: "threadPage.discussion"}
           %span{uib-dropdown: "true",  ng-if: "threadPage.showContextMenu()"}
             %button.thread-context__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true"}
