@@ -1,1 +1,91 @@
 @import "cutestrap/cutestrap";
+
+.marketing__header {
+  background-color: #fff;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.marketing__header-content {
+  padding: 5px 20px;
+}
+
+.marketing__header-list {
+  padding-top: 10px;
+}
+
+.marketing__header-item {
+  display: inline;
+  padding: 0 10px;
+  white-space: nowrap;
+  a { text-decoration: none; }
+}
+
+.marketing__header-logo {
+  max-width: 200px;
+}
+
+.marketing__header-dropdown {
+  list-style-type: none;
+  display: inline-block;
+  text-align: left;
+}
+
+.marketing__header-dropdown-menu {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  margin-left: 0;
+  background-color: #fff;
+}
+
+.marketing__header-dropdown:hover .marketing__header-dropdown-menu {
+  display: block;
+}
+
+.marketing__section {
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.marketing__case-study {
+  padding: 0px 20px;
+}
+
+.marketing__case-study-image {
+  max-width: 180px;
+  padding-top: 20px;
+}
+
+.marketing__about-us {
+  align-items: center;
+  justify-content: center;
+}
+
+.marketing__about-us-image {
+  max-width: 100px;
+}
+
+.marketing__button {
+  background-color: #3B94E8;
+}
+
+.marketing__testimonials {
+  padding: 1rem;
+}
+
+.marketing__alanna-image {
+  max-width: 300px;
+}
+
+.marketing__footer-section {
+  justify-content: space-around;
+  margin-left: 100px;
+}
+
+.marketing__footer-item {
+  list-style-type: none;  
+  a { text-decoration: none; }
+}
