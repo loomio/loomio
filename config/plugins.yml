@@ -9,3 +9,4 @@ loomio_org_plugin:
 loomio_tags:
   repo:    loomio/loomio_tags
   version: master
+  beta:    true

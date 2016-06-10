@@ -4,7 +4,7 @@ module Plugins
   class NoCodeSpecifiedError < Exception; end
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
-  Outlet = Struct.new(:plugin, :component, :outlet_name)
+  Outlet = Struct.new(:plugin, :component, :outlet_name, :beta)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
@@ -19,6 +19,7 @@ module Plugins
       @name = name
       @translations = {}
       @assets, @actions, @events, @outlets = Set.new, Set.new, Set.new, Set.new
+      @config = YAML.load_file([@name, 'config.yml'].join('/'))
     end
 
     def enabled=(value)
@@ -69,7 +70,7 @@ module Plugins
 
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o) }
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['beta']) }
     end
 
     def use_route(verb, route, action)

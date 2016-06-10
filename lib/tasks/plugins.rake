@@ -5,10 +5,8 @@ namespace :plugins do
 
   task :fetch, [:plugin_set] do |t, args|
     plugin_set = args[:plugin_set] || 'plugins'
-    yaml = YAML.load_file(Rails.root.join(*['config', plugin_set + '.yml']))
-    yaml.each_pair do |name, config|
-      Plugins::Fetcher.new(name, config['repo'], config['branch']).execute!
-    end if yaml
+    return unless yaml = YAML.load_file(Rails.root.join(*['config', plugin_set + '.yml']))
+    yaml.each_pair { |name, config| Plugins::Fetcher.new(name, config).execute! }
   end
 
   task :install => :environment do
