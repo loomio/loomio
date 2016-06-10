@@ -277,21 +277,19 @@ GITHUB_USERNAME=my_username
 GITHUB_PASSWORD=my_password
 ```
 
-### Add gem dependencies
+### Add user permissions
 
-Sometimes you'll want to add gems to your plugin. To do this, we can add a list of dependencies to the `plugins.yml` file, like so:
+For most of the actions that occur in Loomio, you'll want to ensure that the current user is able to perform that action. We use [cancan](), and store our permissions in the `app/models/ability.rb` file.
 
-```yml
-kickflip:
-  repo: gdpelican/kickflip
-  gemfile:
-    - skateboard
-    - mad_skillz
+Unfortunately, overwriting this file directly isn't an option, but you can add new abilities by overriding the `add_additional_abilties` method, like so:
+
+```ruby
+plugin.extend_class Ability do
+  def add_additional_abilties
+    can :perform, Kickflip { |skater| skater.has_mad_skillz? }
+  end
+end
 ```
-
-This will run the `gemrat` command with the list of dependencies, which will add the 'skateboard' and 'mad_skillz' gems to your Gemfile and bundle them automagically. (More on gemrat [here](https://github.com/DruRly/gemrat))
-
-(NB: We only support installing the latest version of a gem right now; a PR to make this more better is welcome!)
 
 ### Add tests
 The official Loomio plugins will all have just the right amount of tests, and so can you!
