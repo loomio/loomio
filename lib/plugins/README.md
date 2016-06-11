@@ -277,6 +277,44 @@ GITHUB_USERNAME=my_username
 GITHUB_PASSWORD=my_password
 ```
 
+##### Marking a plugin as an experiment
+
+On Loomio.org, we have plugins that we'd like to try out in a production environment,
+but might not be ready for all of our users to see just yet. To enable this, we've
+added the ability to mark some plugins as 'experimental', which means they will
+only be loaded for groups who have opted in to see our mad science.
+
+In order to mark a plugin as an experiment, simply add the line `experiment: true`
+to the plugin's entry in `plugins.yml`, like so:
+
+```yaml
+kickflip:
+  repo:       loomio/kickflip
+  version:    master
+  experiment: true
+```
+
+###### How this works:
+
+Most of our plugin outlets have a group passed into them, like this:
+```haml
+%outlet{name: "my-cool-outlet", group: "theGroup"}
+```
+
+If an outlet has a group associated with it, it will load experimental plugins for that group
+_only if_ that group has opted into experiments (ie, `group.enable_experiments` is true)
+
+More succinctly:
+- If the outlet has a group with enable_experiments == true, it will load all components
+- If the outlet has a group with enable_experiments == false, it will load only non-experimental plugin components
+- If the outlet has no group, it will load all plugin components
+
+###### But be careful!
+
+Note that this affects _only_ the loading of components into plugin outlets. If you create an
+experimental plugin, and it changes the way the API works, or user permissions, or how a class
+behaves, those changes will take place across the entire instance.
+
 ### Add user permissions
 
 For most of the actions that occur in Loomio, you'll want to ensure that the current user is able to perform that action. We use [cancan](), and store our permissions in the `app/models/ability.rb` file.

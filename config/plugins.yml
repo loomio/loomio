@@ -1,12 +1,12 @@
 loomio_webhooks:
-  repo:    loomio/loomio_webhooks
-  version: master
+  repo:         loomio/loomio_webhooks
+  version:      master
 
 loomio_org_plugin:
-  repo:    loomio/loomio_org_plugin
-  version: master
+  repo:         loomio/loomio_org_plugin
+  version:      master
 
 loomio_tags:
-  repo:    loomio/loomio_tags
-  version: master
-  beta:    true
+  repo:         loomio/loomio_tags
+  version:      to-production-and-beyond
+  experimental: true

@@ -29,7 +29,7 @@ module Plugins
 
     def set_config
       Dir.chdir(@folder) do
-        File.open('config.yml', 'w') { |f| f.write @config.to_yaml }
+        File.open('config.yml', 'w+') { |f| f.write @config.to_yaml }
       end
     end
   end
