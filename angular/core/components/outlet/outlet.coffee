@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'outlet', ($compile, AppConfig) ->
   link: (scope, elem, attrs) ->
 
     shouldCompile = (outlet, model) ->
-      return true if !outlet.experimental or !model?
+      return true if !outlet.experimental or !model? or !model.group?
       model.group().parentOrSelf().enableExperiments
 
     # <my_directive discussion='model' />

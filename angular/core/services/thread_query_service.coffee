@@ -14,6 +14,8 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
       threads: -> view.data()
       length: ->  @threads().length
       any: ->     @length() > 0
+      constructor:
+        singular: 'query'
 
     createBaseView = (filters, queryType) ->
       view = Records.discussions.collection.addDynamicView 'default'
