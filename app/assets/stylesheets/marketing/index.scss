@@ -5,6 +5,8 @@ h1, h2, h3 {
   line-height: 4.1rem;
 }
 
+a:visited { color: #4076D4; }
+
 .marketing__header {
   background-color: #efefef;
   border-bottom: 2px solid white;
@@ -21,9 +23,17 @@ h1, h2, h3 {
   padding: 0.5rem 2rem;
 }
 
-.marketing__header-list {
+.marketing__header-menu {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .marketing__header-menu { display: none; }
+}
+
+@media (min-width: 768px) {
+  .marketing__collapsed-menu {display: none; }
 }
 
 .marketing__header-item {
@@ -31,9 +41,6 @@ h1, h2, h3 {
   padding: 0 10px;
   white-space: nowrap;
   a { text-decoration: none; }
-  a:hover,
-  a:active { color: black; }
-  a:visited { color: #4076D4; }
 }
 
 .marketing__header-item-icon {
@@ -48,6 +55,8 @@ h1, h2, h3 {
   list-style-type: none;
   display: inline-block;
   text-align: left;
+  color: #4076D4;
+  &:hover { cursor: pointer; }
 }
 
 .marketing__header-dropdown-menu {
@@ -78,22 +87,23 @@ h1, h2, h3 {
   }
 }
 
-.loomio-on-devices {
-  img {
-    max-width: 850px;
-    display: initial; }
+.marketing__loomio-on-devices {
+  max-width: 850px;
+  margin: auto;
 }
 
 .marketing__case-study {
+  align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
   p {
     margin-bottom: 10px;
     padding: 0; }
 }
 
-.marketing__case-study-image {
+.marketing__case-study-image.column--light {
+  margin: auto;
   max-width: 180px;
-  padding-top: 20px;
 }
 
 .marketing__about-us {
@@ -118,6 +128,10 @@ h1, h2, h3 {
   padding: 1rem;
 }
 
+.marketing__press-testimonial {
+  margin-bottom: 40px;
+}
+
 .marketing__press-logo {
   max-width: 200px;
   margin: 0 auto 20px;
@@ -134,4 +148,8 @@ h1, h2, h3 {
 .marketing__footer-item {
   list-style-type: none;
   a { text-decoration: none; }
+}
+
+.marketing__rule {
+  z-index: -1;
 }
