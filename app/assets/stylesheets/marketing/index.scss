@@ -1,77 +1,18 @@
 @import "cutestrap/cutestrap";
 @import "pricing_table";
+@import "pages/header";
+@import "pages/about";
 
 h1, h2, h3 {
   line-height: 4.1rem;
 }
 
+img { border-radius: 10px; }
+
 a:visited { color: #4076D4; }
 
-.marketing__header {
-  background-color: #efefef;
-  border-bottom: 2px solid white;
-  position: fixed;
-  width: 100%;
-}
-
-.marketing__header-section {
-  align-items: center;
-  justify-content: center;
-}
-
-.marketing__header-content {
-  padding: 0.5rem 2rem;
-}
-
-.marketing__header-menu {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
 @media (max-width: 768px) {
-  .marketing__header-menu { display: none; }
-}
-
-@media (min-width: 768px) {
-  .marketing__collapsed-menu {display: none; }
-}
-
-.marketing__header-item {
-  display: inline;
-  padding: 0 10px;
-  white-space: nowrap;
-  a { text-decoration: none; }
-}
-
-.marketing__header-item-icon {
-  font-size: 12px;
-}
-
-.marketing__header-logo {
-  width: 140px;
-}
-
-.marketing__header-dropdown {
-  list-style-type: none;
-  display: inline-block;
-  text-align: left;
-  color: #4076D4;
-  &:hover { cursor: pointer; }
-}
-
-.marketing__header-dropdown-menu {
-  display: none;
-  position: absolute;
-  list-style-type: none;
-  margin-left: 0;
-  background-color: #efefef;
-  padding: 20px 12px 0px 12px;
-  margin-left: -12px;
-  li { margin-bottom: 12px; }
-}
-
-.marketing__header-dropdown:hover .marketing__header-dropdown-menu {
-  display: block;
+  .marketing__hero-button { text-align: center; }
 }
 
 .marketing__content {
@@ -82,9 +23,15 @@ a:visited { color: #4076D4; }
   align-items: center;
   justify-content: center;
   margin: 0 0 50px;
-  &:last-of-type {
-    margin: 0;
-  }
+}
+
+.marketing__section--no-margin {
+  align-items: center;
+  justify-content: center;
+}
+
+.marketing__loomio-process {
+  padding-top: 0px
 }
 
 .marketing__loomio-on-devices {
@@ -115,13 +62,14 @@ a:visited { color: #4076D4; }
   max-width: 100px;
 }
 
-.marketing__header-button-text {
-  color: #fff;
-}
-
 .marketing__button {
   background-color: #3B94E8;
   &:hover { background-color: #3B94E8; }
+}
+
+.marketing__header-button {
+  max-height: 40px;
+  padding: 0px 10px;
 }
 
 .marketing__press {
