@@ -2,7 +2,6 @@ class AttachmentSerializer < ActiveModel::Serializer
   embed :ids, include: true
   attributes :id, :attachable_id, :attachable_type, :filename, :filetype, :filesize, :original, :thread, :context, :thumb, :created_at, :is_an_image?
 
-  has_one :comment, serializer: CommentSerializer, root: :comments
   has_one :author, serializer: UserSerializer, root: :users
 
   def thread # attachments for comment body
