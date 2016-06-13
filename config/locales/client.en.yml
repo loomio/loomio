@@ -520,7 +520,7 @@ en:
     standard: Standard
     plus: Plus
     free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
-    get_started_for_free: "Get started for free"
+    start_group: "Start group"
     gift_body: For groups without a budget
     support_before: I'm happy to
     support_link: talk with you
@@ -533,7 +533,7 @@ en:
     slack_integration_html: |
       <strong>Slack</strong> integration
     standard_price_html: |
-      US <strong>$19</strong>/month<br><span>or</span> $190/year
+      US<strong>$19</strong>/month<br><span>or</span> $190/year
     plus_body: 'Everything in Standard, plus:'
     multiple_groups: multiple groups
     premium_support: premium support
@@ -541,7 +541,7 @@ en:
       custom subdomain,<br />
       e.g. <strong>yourgroup</strong>.loomio.org
     plus_price_html: |
-      US <strong>$179</strong>/month<br><span>or</span> $1790/year
+      US<strong>$179</strong>/month<br><span>or</span> $1790/year
     select: Select
 
   subscription_success_modal:
