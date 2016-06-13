@@ -165,7 +165,7 @@ en:
     email_support: email support
     slack_integration_html: |
       <strong>Slack</strong> integration
-    standard_price_html: 'US <strong>$19</strong>/month<br><span>or</span> $190/year
+    standard_price_html: 'US<strong>$19</strong>/month<br><span>or</span> $190/year
 
 '
     plus_body: 'Everything in Standard, plus:'
@@ -175,7 +175,7 @@ en:
       custom subdomain,<br />
       e.g. <strong>yourgroup</strong>.loomio.org
     usage_statistics: usage statistics
-    plus_price_html: 'US <strong>$179</strong>/month<br><span>or</span> $1790/year
+    plus_price_html: 'US<strong>$179</strong>/month<br><span>or</span> $1790/year
 
 '
   password_reset:
