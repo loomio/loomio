@@ -2,3 +2,20 @@
   margin-right: 10px;
   line-height: 30px;
 }
+
+.discussion-form__attachments {
+  margin-left: -5px;
+}
+
+.discussion-form__attachment-errors {
+  padding: 6px 6px 0 6px;
+}
+
+.discussion-form__attachment-form {
+  margin-right: 10px;
+}
+
+@media (max-width: $small-max-px){
+  .discussion-form__formatting-help { display: none; }
+  .thread-helptext { display: none; }
+}

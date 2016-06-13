@@ -14,6 +14,7 @@ describe 'DiscussionService' do
                          discussion: discussion,
                          destroy: true,
                          author: user) }
+  let(:attachment) { create(:attachment) }
   let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
 
   describe 'create' do
@@ -128,6 +129,45 @@ describe 'DiscussionService' do
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
+      end
+
+      it 'creates a version with updated title / description / private values' do
+        DiscussionService.update discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user
+        version = PaperTrail::Version.last
+        expect(version.object_changes['title'][1]).to eq discussion_params[:title]
+        expect(version.object_changes['description'][1]).to eq discussion_params[:description]
+      end
+
+      it 'creates a version with updated attachment_ids' do
+        expect { DiscussionService.update discussion: discussion,
+                   params: { attachment_ids: [attachment.id] },
+                   actor: user }.to change { discussion.versions.count }.by(1)
+        version = PaperTrail::Version.last
+        expect(version.object_changes['attachment_ids'][0]).to eq []
+        expect(version.object_changes['attachment_ids'][1]).to eq [attachment.id]
+      end
+
+      it 'updates the existing version with attachment_ids' do
+        discussion_params[:attachment_ids] = [attachment.id]
+        expect { DiscussionService.update discussion: discussion,
+                   params: discussion_params,
+                   actor: user }.to change { discussion.versions.count }.by(1)
+        version = PaperTrail::Version.last
+        expect(version.object_changes['title'][1]).to eq discussion_params[:title]
+        expect(version.object_changes['attachment_ids'][0]).to eq []
+        expect(version.object_changes['attachment_ids'][1]).to eq [attachment.id]
+      end
+
+      it 'removes attachments in the version' do
+        discussion.update(attachment_ids: [attachment.id])
+        expect { DiscussionService.update discussion: discussion,
+                   params: { attachment_ids: [] },
+                   actor: user }.to change { discussion.versions.count }.by(1)
+        version = PaperTrail::Version.last
+        expect(version.object_changes['attachment_ids'][0]).to eq [attachment.id]
+        expect(version.object_changes['attachment_ids'][1]).to eq []
       end
     end
 

@@ -1,4 +1,4 @@
-%form.discussion-form{name: "discussionForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
+%form.discussion-form{name: "discussionForm", ng-paste: "handlePaste($event)", ng_submit: "submit()", ng-disabled: "isDisabled"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   %input{type: "hidden", ng-model: "discussion.usesMarkdown"}
   .modal-header
@@ -28,6 +28,13 @@
         .lmo-relative
           %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
           %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
+
+      .discussion-form__attachments
+        %attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
+        %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}
+        %label.lmo-form-labelled-input
+          %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
+        .clearfix
 
       .lmo-form-group{ng-show: "showPrivacyForm()"}
         %label.lmo-form-labelled-input.discussion-form__public
@@ -62,8 +69,8 @@
             %span {{ privacyPrivateDescription() }}
 
   .modal-footer
-    %button.pull-right.lmo-btn--submit.discussion-form__submit{type: "submit", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
+    %button.pull-right.lmo-btn--submit.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
     %a.discussion-form__formatting-help{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
       %span{translate: "common.formatting_help.label"}
-    %button.lmo-btn--primary.discussion-form__update{type: "submit", translate: "discussion_form.edit_discussion_submit", ng-hide: "discussion.isNew()" }
+    %button.lmo-btn--primary.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "discussion_form.edit_discussion_submit", ng-hide: "discussion.isNew()" }
     %button.lmo-btn--cancel.discussion-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}

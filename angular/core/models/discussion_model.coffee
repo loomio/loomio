@@ -9,6 +9,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     afterConstruction: ->
       @private = @privateDefaultValue() if @isNew()
+      @newAttachmentIds = _.clone(@attachmentIds) or []
 
     defaultValues: =>
       private: null
@@ -18,6 +19,11 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       lastItemAt: null
       title: ''
       description: ''
+
+    serialize: ->
+      data = @baseSerialize()
+      data.discussion.attachment_ids = @newAttachmentIds
+      data
 
     privateDefaultValue: =>
       if @group()
@@ -126,6 +132,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     edited: ->
       @versionsCount > 1
+
+    newAttachments: ->
+      @recordStore.attachments.find(@newAttachmentIds)
+
+    attachments: ->
+      @recordStore.attachments.find(attachableId: @id, attachableType: 'Discussion')
 
     attributeForVersion: (attr, version) ->
       return '' unless version

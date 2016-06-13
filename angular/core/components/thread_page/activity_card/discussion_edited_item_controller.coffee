@@ -20,4 +20,7 @@ angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope
      'discussion_edited_item.private_to_public'
 
   $scope.translationKey =
-    version.editedAttributeNames().join('_')
+    if _.isEqual version.editedAttributeNames(), ['attachment_ids']
+      'attachment_ids'
+    else
+      _.without(version.editedAttributeNames(), 'attachment_ids').join('_')

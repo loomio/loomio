@@ -16,13 +16,13 @@ class Comment < ActiveRecord::Base
   has_many :comment_votes, -> { joins('INNER JOIN users ON comment_votes.user_id = users.id AND users.deactivated_at IS NULL' )}, dependent: :destroy
 
   has_many :events, as: :eventable, dependent: :destroy
-  has_many :attachments, dependent: :destroy
   has_many :likers, through: :comment_votes, source: :user
+  has_many :attachments, as: :attachable, dependent: :destroy
 
   validates_presence_of :user
   validate :has_body_or_attachment
-  validate :attachments_owned_by_author
   validate :parent_comment_belongs_to_same_discussion
+  validate :attachments_owned_by_author
 
   default_scope { includes(:user).includes(:attachments).includes(:discussion) }
 
@@ -40,7 +40,6 @@ class Comment < ActiveRecord::Base
   delegate :id, to: :group, prefix: :group
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
-  attr_accessor :new_attachment_ids
 
   def is_most_recent?
     discussion.comments.last == self
@@ -60,18 +59,15 @@ class Comment < ActiveRecord::Base
   end
 
   private
+  def attachments_owned_by_author
+    return if attachments.pluck(:user_id).select { |user_id| user_id != user.id }.empty?
+    errors.add(:attachments, "Attachments must be owned by author")
+  end
+
   def parent_comment_belongs_to_same_discussion
     if self.parent.present?
       unless discussion_id == parent.discussion_id
         errors.add(:parent, "Needs to have same discussion id")
-      end
-    end
-  end
-
-  def attachments_owned_by_author
-    if attachments.present?
-      if attachments.map(&:user_id).uniq != [user.id]
-        errors.add(:attachments, "Attachments must be owned by author")
       end
     end
   end

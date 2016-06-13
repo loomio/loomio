@@ -21,7 +21,6 @@ class CommentService
   def self.create(comment:, actor:)
     actor.ability.authorize! :create, comment
     comment.author = actor
-    comment.attachment_ids = [comment.attachment_ids, comment.new_attachment_ids].compact.flatten
     return false unless comment.valid?
 
     comment.save!
@@ -43,6 +42,7 @@ class CommentService
     return false unless comment.valid?
     actor.ability.authorize! :update, comment
     comment.save!
+    comment.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
     EventBus.broadcast('comment_update', comment)
   end
