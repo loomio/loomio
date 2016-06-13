@@ -55,12 +55,8 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
-  def resource_to_serialize
-    if serialize_events?
-      super
-    else
-      # serialize out the parent with the group
-      collection || [resource, resource&.parent].compact
-    end
+  # serialize out the parent with the group
+  def resources_to_serialize
+    Array(collection || [resource, resource&.parent].compact)
   end
 end
