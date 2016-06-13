@@ -156,6 +156,31 @@ To tell the plugin to use your component, put a line in our `plugin.rb` like thi
 
 This will make your component available within the app.
 
+### Add routes to the angular app
+
+If you're adding an entirely new page to Loomio, you'll need to add a route in order to allow us to
+navigate to your new page properly. To do this, use the `use_client_route` command
+
+```ruby
+plugin.use_client_route '/kickflips', :kickflip_page
+```
+
+In the above, `kickflip_page` is simply a component, same as you'd write in the `use_component` command.
+So now we can simply write our controller code as normal:
+
+```
+/plugins
+  /components
+    /kickflip_page
+      kickflip_page.haml
+      kickflip_page.scss
+      kickflip_page.coffee
+```
+
+For examples on how to write page controllers (which are subtly different from regular components), check out [thread_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/thread_page/thread_page_controller.coffee) or [group_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/group_page/group_page_controller.coffee) in the core Loomio repo.
+
+_NB: you don't need to call `use_component` as well, calling `use_client_route` will do this for you!)_
+
 ### Attach components to outlets in the Angular interface
 Now that the component is loaded into our angular app, how to make it appear on the interface?
 

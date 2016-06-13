@@ -9,7 +9,7 @@ module Plugins
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :actions, :events, :outlets, :translations, :enabled
+    attr_reader :assets, :actions, :events, :outlets, :routes, :translations, :enabled
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -18,7 +18,7 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @actions, @events, @outlets = Set.new, Set.new, Set.new, Set.new
+      @assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new
       @config = YAML.load_file([@name, 'config.yml'].join('/'))
     end
 
@@ -71,6 +71,11 @@ module Plugins
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
       Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental']) }
+    end
+
+    def use_client_route(path, component)
+      use_component(component)
+      @routes.add({ path: path, component: component.to_s.camelize(:lower) })
     end
 
     def use_route(verb, route, action)

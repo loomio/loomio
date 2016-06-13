@@ -84,7 +84,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
-  $router.config([
+  coreRoutes = [
     {path: '/dashboard', component: 'dashboardPage' },
     {path: '/inbox', component: 'inboxPage' },
     {path: '/groups', component: 'groupsPage' },
@@ -112,7 +112,9 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/registered/:id', component: 'registeredAppPage'},
     {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
     {path: '/explore', component: 'explorePage'}
-  ])
+  ]
+
+  $router.config coreRoutes.concat window.Loomio.plugins.routes
 
   Session.login(AppConfig.currentUserData)
 

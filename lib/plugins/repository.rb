@@ -13,6 +13,7 @@ module Plugins
         plugin.actions.map(&:call)
         plugin.assets.map  { |asset|  save_asset(asset) }
         plugin.outlets.map { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
+        plugin.routes.map  { |route|  active_routes.push route }
         plugin.events.map  { |events| events.call(EventBus) }
         plugin.installed = true
       end
@@ -26,7 +27,8 @@ module Plugins
     def self.to_config
       {
         installed:    active_plugins,
-        outlets:      active_outlets
+        outlets:      active_outlets,
+        routes:       active_routes
       }
     end
 
@@ -55,6 +57,11 @@ module Plugins
       @@active_outlets ||= Hash.new { [] }
     end
     private_class_method :active_outlets
+
+    def self.active_routes
+      @@active_routes ||= []
+    end
+    private_class_method :active_routes
 
     def self.repository
       @@repository ||= Hash.new
