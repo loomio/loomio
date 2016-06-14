@@ -20,10 +20,18 @@ a:visited { color: #4076D4; }
 @media (max-width: 600px) {
   .marketing__hero-button { display: none; }
   .marketing__loomio-process-text { text-align: center; }
+  .marketing__feature {
+    max-width: 100%;
+    margin: 20px 0;
+    padding: 0 20px;
+  }
 }
 
 @media (min-width: 599px) {
   .marketing__hero-button--small-device { display: none; }
+  .marketing__feature {
+    margin: 10px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -68,6 +76,7 @@ a:visited { color: #4076D4; }
 .marketing__loomio-on-devices {
   max-width: 850px;
   margin: auto;
+  padding-bottom: 50px;
 }
 
 .marketing__case-study {
@@ -131,7 +140,6 @@ a:visited { color: #4076D4; }
 .marketing__feature {
   border: 3px solid #dcdcdc;
   border-radius: .2rem;
-  margin: 20px;
 }
 
 .marketing__arrow-icon {
