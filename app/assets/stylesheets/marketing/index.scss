@@ -2,17 +2,40 @@
 @import "pricing_table";
 @import "pages/header";
 @import "pages/about";
+@import "pages/footer";
 
 h1, h2, h3 {
   line-height: 4.1rem;
 }
 
-img { border-radius: 10px; }
+img { border-radius: .2rem; }
+
 
 a:visited { color: #4076D4; }
 
-@media (max-width: 768px) {
-  .marketing__hero-button { text-align: center; }
+.marketing__hero-wrapper {
+  padding-bottom: 0px;
+}
+
+@media (max-width: 600px) {
+  .marketing__hero-button { display: none; }
+  .marketing__loomio-process-text { text-align: center; }
+}
+
+@media (min-width: 599px) {
+  .marketing__hero-button--small-device { display: none; }
+}
+
+@media (max-width: 1000px) {
+  .marketing__arrow-icon { display: none; }
+}
+
+.marketing__hero-solution-image {
+  -moz-box-ordinal-group: -1;
+  -webkit-box-ordinal-group: -1;
+  -webkit-order: -1;
+  -ms-flex-order: -1;
+  order: -1;
 }
 
 .marketing__content {
@@ -22,16 +45,24 @@ a:visited { color: #4076D4; }
 .marketing__section {
   align-items: center;
   justify-content: center;
+}
+
+.marketing__section--margin {
+  align-items: center;
+  justify-content: center;
   margin: 0 0 50px;
 }
 
-.marketing__section--no-margin {
-  align-items: center;
-  justify-content: center;
+.marketing__loomio-process {
+  padding-top: 0px;
 }
 
-.marketing__loomio-process {
-  padding-top: 0px
+.marketing__loomio-process-text {
+  padding-right: 30px;
+} 
+
+.marketing__loomio-process-image {
+  padding-left: 20px;
 }
 
 .marketing__loomio-on-devices {
@@ -77,7 +108,7 @@ a:visited { color: #4076D4; }
 }
 
 .marketing__press-testimonial {
-  margin-bottom: 40px;
+  text-decoration: none;
 }
 
 .marketing__press-logo {
@@ -85,19 +116,24 @@ a:visited { color: #4076D4; }
   margin: 0 auto 20px;
 }
 
-.marketing__footer {
-  background-color: #efefef;
-}
-
-.marketing__footer-section {
-  justify-content: space-around;
-}
-
-.marketing__footer-item {
-  list-style-type: none;
-  a { text-decoration: none; }
-}
-
 .marketing__rule {
   z-index: -1;
+}
+
+.marketing__press-author {
+  color: black;
+}
+
+.marketing__feature-heading {
+  padding: 2.4rem 0 1rem 0;
+}
+
+.marketing__feature {
+  border: 3px solid #dcdcdc;
+  border-radius: .2rem;
+  margin: 20px;
+}
+
+.marketing__arrow-icon {
+  max-width: 20px;
 }

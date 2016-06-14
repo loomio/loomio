@@ -1,9 +1,10 @@
 .header {
   background-color: #efefef;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #dcdcdc;
   position: fixed;
   width: 100%;
   max-height: 60px;
+  z-index: 1;
 }
 
 .header__section {
@@ -20,12 +21,21 @@
   padding-bottom: 10px;
 }
 
+.header__menu-show {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .header__menu { display: none; }
+  .header__collapsed-menu-container { align-items: flex-end; }
 }
 
 @media (min-width: 768px) {
-  .header__collapsed-menu {display: none; }
+  .header__collapsed-menu-icon { display: none; }
+}
+
+.header__collapsed-menu-icon {
+  padding: 5px 0;
 }
 
 .header__item {
@@ -40,7 +50,7 @@
 }
 
 .header__logo {
-  width: 140px;
+  max-width: 140px;
 }
 
 .header__resources-dropdown {
@@ -58,7 +68,6 @@
   margin-left: 0;
   background-color: #efefef;
   padding: 20px 12px 0px 12px;
-  margin-left: -12px;
   li { margin-bottom: 12px; }
 }
 
