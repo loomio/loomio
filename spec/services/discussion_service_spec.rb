@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'DiscussionService' do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
+  let(:admin) { create(:user) }
   let(:group) { create(:group) }
   let(:another_group) { create(:group, is_visible_to_public: false) }
   let(:discussion) { create(:discussion, author: user, group: group) }
@@ -48,13 +49,13 @@ describe 'DiscussionService' do
       it 'notifies new mentions' do
         discussion.group.add_member! another_user
         discussion.description = "A mention for @#{another_user.username}!"
-        expect(Events::UserMentioned).to receive(:publish!).with(discussion, another_user)
+        expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
         DiscussionService.create(discussion: discussion, actor: user)
       end
 
       it 'does not notify users outside the group' do
         discussion.description = "A mention for @#{another_user.username}!"
-        expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, another_user)
+        expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, user, another_user)
         DiscussionService.create(discussion: discussion, actor: user)
       end
 
@@ -88,13 +89,21 @@ describe 'DiscussionService' do
     it 'notifies new mentions' do
       discussion.group.add_member! another_user
       discussion_params[:description] = "A mention for @#{another_user.username}!"
-      expect(Events::UserMentioned).to receive(:publish!).with(discussion, another_user)
+      expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
       DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
+    end
+
+    it 'notifies new mentions with editor' do
+      discussion.group.add_member! another_user
+      discussion.group.add_admin! admin
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect(Events::UserMentioned).to receive(:publish!).with(discussion, admin, another_user)
+      DiscussionService.update(discussion: discussion, params: discussion_params, actor: admin)
     end
 
     it 'does not notify users outside of the group' do
       discussion_params[:description] = "A mention for @#{another_user.username}!"
-      expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, another_user)
+      expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, user, another_user)
       DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
     end
 

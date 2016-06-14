@@ -101,8 +101,8 @@ EventBus.configure do |config|
                 'motion_create',
                 'motion_update',
                 'discussion_create',
-                'discussion_update') do |model|
-    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, user) }
+                'discussion_update') do |model, actor|
+    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
   # notify users of events
