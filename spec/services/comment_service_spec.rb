@@ -123,7 +123,7 @@ describe 'CommentService' do
 
     it 'notifies new mentions' do
       comment_params[:body] = "A mention for @#{another_user.username}!"
-      expect(Events::UserMentioned).to receive(:publish!).with(comment, another_user)
+      expect(Events::UserMentioned).to receive(:publish!).with(comment, user, another_user)
       CommentService.update(comment: comment, params: comment_params, actor: user)
     end
 

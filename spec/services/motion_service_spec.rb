@@ -48,7 +48,7 @@ describe 'MotionService' do
 
       it 'notifies new mentions' do
         motion.description = "A mention for @#{another_user.username}!"
-        expect(Events::UserMentioned).to receive(:publish!).with(motion, another_user)
+        expect(Events::UserMentioned).to receive(:publish!).with(motion, user, another_user)
         MotionService.create(motion: motion, actor: user)
       end
 
@@ -228,6 +228,13 @@ describe 'MotionService' do
         Events::MotionOutcomeUpdated.should_not_receive(:publish!)
         MotionService.update_outcome(motion: motion, params: {}, actor: user)
       end
+    end
+  end
+
+  describe '.update' do
+    it 'notifies new mentions' do
+      expect(Events::UserMentioned).to receive(:publish!).with(motion, user, another_user)
+      MotionService.update(motion: motion, params: { description: "A mention for @#{another_user.username}" }, actor: user)
     end
   end
 end

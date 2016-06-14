@@ -24,7 +24,7 @@ class CommentService
     return false unless comment.valid?
 
     comment.save!
-    EventBus.broadcast('comment_create', comment)
+    EventBus.broadcast('comment_create', comment, actor)
     Events::NewComment.publish!(comment)
   end
 
@@ -44,6 +44,6 @@ class CommentService
     comment.save!
     comment.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
-    EventBus.broadcast('comment_update', comment)
+    EventBus.broadcast('comment_update', comment, actor)
   end
 end
