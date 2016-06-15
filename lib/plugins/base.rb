@@ -86,6 +86,15 @@ module Plugins
       }.to_proc
     end
 
+    def use_factory(name, &block)
+      raise NoCodeSpecifiedError.new unless block_given?
+      @actions.add Proc.new {
+        FactoryGirl.define do
+          factory name, &block
+        end
+      }.to_proc
+    end
+
     def use_page(route, path, redirect: false)
       @actions.add Proc.new {
         Loomio::Application.routes.append do

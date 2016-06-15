@@ -381,3 +381,22 @@ end
 ```bash
   bundle exec rspec plugins/kickflip/spec/models/kickflip_spec.rb:3
 ```
+
+### Add factories
+
+We use [FactoryGirl](https://github.com/thoughtbot/factory_girl) for our unit testing, which allows us to easily create minimum viable models to test with.
+
+If you've created a new model, and want to test it (you do!) then it's a good idea to set up a factory
+for it. This allows you to use things like `let(:kickflip) { create(:kickflip) }` in your tests, same
+way we do in the core codebase.
+
+To define a factory, use the `use_factory` command.
+
+```ruby
+plugin.use_factory(:kickflip) do
+  user
+  reaction "That was sweet!"
+end
+```
+
+Note that this supports any syntax which would normally go into a `factory` block for FactoryGirl.
