@@ -232,9 +232,16 @@ describe 'MotionService' do
   end
 
   describe '.update' do
+    let(:motion_params) { { description: "A mention for @#{another_user.username}" } }
+
     it 'notifies new mentions' do
       expect(Events::UserMentioned).to receive(:publish!).with(motion, user, another_user)
-      MotionService.update(motion: motion, params: { description: "A mention for @#{another_user.username}" }, actor: user)
+      MotionService.update(motion: motion, params: motion_params, actor: user)
+    end
+
+    it 'does not renotify old mentions' do
+      expect { MotionService.update(motion: motion, params: motion_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+      expect { MotionService.update(motion: motion, params: motion_params, actor: user) }.to_not change  { another_user.notifications.count }
     end
   end
 end
