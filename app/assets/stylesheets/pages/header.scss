@@ -43,11 +43,31 @@
   }
 }
 
+@media screen\0 {
+  .header__item {
+    min-width: 60px;
+    margin-left: 10px
+  }
+  // .header__item--pricing {
+  //   margin-left: 10px;
+  // }
+  .header__resources-dropdown {
+    margin-right: 20px
+  }
+  .header__item--start-button {
+    min-width: 120px;
+  }
+}
+
 .header__item {
   flex-grow: 0;
   list-style-type: none;
   line-height: 4rem;
   white-space: nowrap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 100%;
+  // min-width: 40px;
   &:hover { color: black; }
   a {
     text-decoration: none;
