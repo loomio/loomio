@@ -19,6 +19,7 @@ class Discussion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include Translatable
   include HasTimeframe
+  include HasMentions
   include MessageChannel
 
   scope :archived, -> { where('archived_at is not null') }
@@ -42,6 +43,7 @@ class Discussion < ActiveRecord::Base
   validates_inclusion_of :uses_markdown, in: [true,false]
   validate :privacy_is_permitted_by_group
 
+  is_mentionable on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   has_paper_trail only: [:title, :description, :private]
 

@@ -3,7 +3,10 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService, AttachmentService, ModalService, SignInForm) ->
+  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, SignInForm) ->
+
+    $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
+    $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
 
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
@@ -52,18 +55,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
     AttachmentService.listenForPaste $scope
-
-    $scope.updateMentionables = (fragment) ->
-      regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
-      allMembers = _.filter $scope.discussion.group().members(), (member) ->
-        return false if member.id == Session.user().id
-        (regex.test(member.name) or regex.test(member.username))
-      $scope.mentionables = allMembers.slice(0, 5)
-
-    $scope.fetchByNameFragment = (fragment) ->
-      $scope.updateMentionables(fragment)
-      Records.memberships.fetchByNameFragment(fragment, $scope.discussion.group().key).then ->
-        $scope.updateMentionables(fragment)
+    MentionService.applyMentions $scope, $scope.comment
 
     $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false

@@ -24,4 +24,12 @@ class API::EventsController < API::RestfulController
   def sequence_id_for_comment(collection)
     collection.find_by(eventable_type: "Comment", eventable_id: params[:comment_id]).try(:sequence_id)
   end
+
+  # we always want to serialize out events in the events controller
+  alias :events_to_serialize :resources_to_serialize
+
+  # events will define their own serializer through the `active_model_serializer` method
+  def resource_serializer
+    nil
+  end
 end

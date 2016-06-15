@@ -21,6 +21,7 @@ class MotionService
     return false unless motion.valid?
 
     motion.save!
+    EventBus.broadcast('motion_update', motion, actor)
     Events::MotionEdited.publish!(motion, actor)
   end
 

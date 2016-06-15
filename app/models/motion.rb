@@ -1,6 +1,7 @@
 class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
+  include HasMentions
 
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
@@ -23,6 +24,7 @@ class Motion < ActiveRecord::Base
 
   include Translatable
   is_translatable on: [:name, :description]
+  is_mentionable  on: :description
 
   delegate :email, to: :author, prefix: :author
   delegate :name, to: :author, prefix: :author

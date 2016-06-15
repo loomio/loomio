@@ -1,9 +1,10 @@
 class Comment < ActiveRecord::Base
-  include Twitter::Extractor
   include Translatable
+  include HasMentions
 
   has_paper_trail only: [:body]
   is_translatable on: :body
+  is_mentionable  on: :body
 
   belongs_to :discussion
   belongs_to :user
@@ -53,19 +54,8 @@ class Comment < ActiveRecord::Base
   end
 
   def mentioned_usernames
-    extract_mentioned_screen_names(self.body).uniq
-  end
-
-  def mentioned_group_members
-    group.users.where(username: mentioned_usernames).where('users.id != ?', author.id)
-  end
-
-  def new_mentions_in(body)
-    self.class.new(body: body).mentioned_usernames - mentioned_usernames
-  end
-
-  def notified_group_members
-    mentioned_group_members.without(author).without(parent.try(:author))
+    # overridden to ensure parent is not mentioned
+    extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username, self.parent&.author&.username].compact
   end
 
   private

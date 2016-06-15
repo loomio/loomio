@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, KeyEventService, PrivacyString, EmojiService, AttachmentService) ->
+  controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString, EmojiService) ->
     $scope.discussion = discussion.clone()
 
     if $scope.discussion.isNew()
@@ -40,9 +40,10 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
 
     $scope.descriptionSelector = '.discussion-form__description-input'
     EmojiService.listen $scope, $scope.discussion, 'description', $scope.descriptionSelector
-    AttachmentService.listenForPaste $scope
 
+    AttachmentService.listenForPaste $scope
     KeyEventService.submitOnEnter $scope
+    MentionService.applyMentions $scope, $scope.discussion
 
     $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
     $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false

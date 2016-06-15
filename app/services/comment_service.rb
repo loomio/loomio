@@ -24,7 +24,7 @@ class CommentService
     return false unless comment.valid?
 
     comment.save!
-    EventBus.broadcast('comment_create', comment)
+    EventBus.broadcast('comment_create', comment, actor)
     Events::NewComment.publish!(comment)
   end
 
@@ -36,7 +36,6 @@ class CommentService
   end
 
   def self.update(comment:, params:, actor:)
-    new_mentions = comment.new_mentions_in(params[:body])
     comment.edited_at = Time.zone.now
     comment.body = params[:body]
 
@@ -45,6 +44,6 @@ class CommentService
     comment.save!
     comment.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
-    EventBus.broadcast('comment_update', comment, new_mentions)
+    EventBus.broadcast('comment_update', comment, actor)
   end
 end

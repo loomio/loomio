@@ -24,7 +24,7 @@
       .lmo-form-group
         %label{for: "proposal-details-field", translate: "proposal_form.details_label"}
         .lmo-relative
-          %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}"}
+          %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{debounce: 150}"}
           %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
 
       %closing_at_field{proposal: "proposal"}

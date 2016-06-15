@@ -4,12 +4,4 @@ class Events::MotionCloseDateEdited < Event
            eventable: motion,
            user: editor).tap { |e| EventBus.broadcast('motion_close_date_edited_event', e) }
   end
-
-  def group_key
-    motion.group.key
-  end
-
-  def motion
-    eventable
-  end
 end

@@ -81,10 +81,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount
 
-    eventIsLoaded: (event) ->
-      event.sequenceId or
-      _.find @events(), (e) ->
-        e.kind == 'new_comment' and e.commentId == event.comment().id
+    requireReloadFor: (event) ->
+      return false if !event or event.discussionId != @id or event.sequenceId
+      _.find @events(), (e) -> e.kind == 'new_comment' and e.eventable.id == event.eventable.id
 
     minLoadedSequenceId: ->
       item = _.min @events(), (event) -> event.sequenceId or Number.MAX_VALUE
@@ -146,3 +145,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
         version.changes[attr][1]
       else
         @attributeForVersion(attr, @recordStore.versions.find(version.previousId))
+
+    cookedDescription: ->
+      cooked = @description
+      _.each @mentionedUsernames, (username) ->
+        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+      cooked
