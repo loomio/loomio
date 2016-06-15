@@ -89,9 +89,7 @@ module Plugins
     def use_factory(name, &block)
       raise NoCodeSpecifiedError.new unless block_given?
       @actions.add Proc.new {
-        FactoryGirl.define do
-          factory name, &block
-        end
+        FactoryGirl.define { factory(name, &block) } unless FactoryGirl.factories.registered?(name)
       }.to_proc
     end
 
