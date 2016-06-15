@@ -2,6 +2,8 @@ module HasMentions
   extend ActiveSupport::Concern
   include Twitter::Extractor
 
+  included { has_many :notifications, through: :events }
+
   module ClassMethods
     def is_mentionable(on: [])
       define_singleton_method :mentionable_fields, -> { Array on }
