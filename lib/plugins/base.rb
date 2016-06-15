@@ -80,7 +80,7 @@ module Plugins
 
     def use_route(verb, route, action)
       @actions.add Proc.new {
-        Loomio::Application.routes.append do
+        Loomio::Application.routes.prepend do
           namespace(:api, path: 'api/v1', defaults: {format: :json}) { send(verb, { route => action }) }
         end
       }.to_proc

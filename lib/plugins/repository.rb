@@ -13,7 +13,7 @@ module Plugins
         plugin.actions.map(&:call)
         plugin.assets.map  { |asset|  save_asset(asset) }
         plugin.outlets.map { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
-        plugin.routes.map  { |route|  active_routes.push route }
+        plugin.routes.map  { |route|  save_route(route) }
         plugin.events.map  { |events| events.call(EventBus) }
         plugin.installed = true
       end
@@ -37,6 +37,12 @@ module Plugins
       plugin_yaml[ext] = Array(plugin_yaml[ext]) | Array(asset)
     end
     private_class_method :save_asset
+
+    def self.save_route(route)
+      Loomio::Application.routes.prepend { get route[:path] => 'application#boot_angular_ui' }
+      active_routes.push route
+    end
+    private_class_method :save_route
 
     def self.active_plugins
       repository.values.select(&:installed)
