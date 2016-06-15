@@ -2,12 +2,34 @@
   padding-top: 30px;
 }
 
+@media (max-width: 600px) {
+  .about__video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+  }
+  .about__video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .about__section {
   margin-bottom: 50px;
 }
 
 .about__image-container {
   max-width: 100px;
+}
+
+.about__person {
+  height: 125px;
+  margin-bottom: 20px
 }
 
 .about__address {
