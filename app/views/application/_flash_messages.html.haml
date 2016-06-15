@@ -1,4 +1,3 @@
 - flash.each do |type, message|
   %div.alert-message{ "data-alert" => "alert", :class => "alert alert-#{twitterized_type(type)}" }
-    <a class="close" data-dismiss="alert" href="#">×</a>
     = message
