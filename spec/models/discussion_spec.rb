@@ -277,4 +277,47 @@ describe Discussion do
       expect(discussion.reload.items_count).to eq old_items_count
     end
   end
+
+  describe 'mentioning' do
+    let(:discussion) { build(:discussion, description: "Hello @#{user.username}!") }
+    let(:another_user) { create(:user) }
+
+    describe '#mentionable_text' do
+      it 'stores the description as mentionable text' do
+        expect(discussion.send(:mentionable_text)).to eq discussion.description
+      end
+    end
+
+    describe 'mentionable_usernames' do
+      it 'can extract usernames' do
+        expect(discussion.mentioned_usernames).to include user.username
+      end
+
+      it 'does not duplicate usernames' do
+        discussion.description += " Goodbye @#{user.username}!"
+        expect(discussion.mentioned_usernames).to eq [user.username]
+      end
+
+      it 'does not extract the authors username' do
+        discussion.description = "Hello @#{discussion.author.username}!"
+        expect(discussion.mentioned_usernames).to_not include discussion.author.username
+      end
+    end
+
+    describe 'mentioned_group_members' do
+      it 'includes members in the current group' do
+        discussion.group.add_member! user
+        expect(discussion.mentioned_group_members).to include user
+      end
+
+      it 'does not include members not in the group' do
+        expect(discussion.mentioned_group_members).to_not include user
+      end
+
+      it 'does not include the discussion author' do
+        discussion.description = "Hello @#{discussion.author.username}!"
+        expect(discussion.mentioned_group_members).to_not include discussion.author
+      end
+    end
+  end
 end

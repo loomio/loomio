@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20160610183746) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
   end
 
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree

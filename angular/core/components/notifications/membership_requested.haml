@@ -1,12 +1,12 @@
-.media{ng-if: "notification.event().membershipRequest().byExistingUser()"}
+.media{ng-if: "notification.model().byExistingUser()"}
   .media-left
-    %user_avatar{user: "notification.event().membershipRequest().actor()", size: "small"}
+    %user_avatar{user: "notification.actor()", size: "small"}
   .media-body
-    %span{translate: "notifications.membership_requested", translate-value-name: "{{notification.event().membershipRequest().actor().name}}", translate-value-group: "{{notification.event().membershipRequest().group().fullName}}" }
+    %span{translate: "notifications.membership_requested", translate-value-name: "{{notification.actor().name}}", translate-value-group: "{{notification.group().fullName}}" }
 
-.media{ng-if: "!notification.event().membershipRequest().byExistingUser()"}
+.media{ng-if: "!notification.model().byExistingUser()"}
   .media-left
-    %img.lmo-box--small.lmo-rounded-corners{ng-src: "{{notification.event().membershipRequest().group().logoUrl()}}", aria-hidden: "true"}
+    %img.lmo-box--small.lmo-rounded-corners{ng-src: "{{notification.group().logoUrl()}}", aria-hidden: "true"}
   .media-body
-    %span{translate: "notifications.membership_requested", translate-value-name: "{{notification.event().membershipRequest().name}}", translate-value-group: "{{notification.event().membershipRequest().group().fullName}}" }
+    %span{translate: "notifications.membership_requested", translate-value-name: "{{notification.model().name}}", translate-value-group: "{{notification.group().fullName}}" }
     %timeago{timestamp: "notification.createdAt" }>

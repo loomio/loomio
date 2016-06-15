@@ -41,9 +41,9 @@ class GroupSerializer < ActiveModel::Serializer
              :show_legacy_trial_expired_modal,
              :enable_experiments
 
-  has_one :current_user_membership, serializer: MembershipSerializer, root: 'memberships'
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
-  has_one :parent, serializer: GroupSerializer, root: 'groups'
+  has_one :parent, serializer: GroupSerializer, root: :groups
 
   private
 

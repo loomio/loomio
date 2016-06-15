@@ -18,10 +18,10 @@ class ClosedMotionSerializer < ActiveModel::Serializer
              :group_id,
              :discussion_id
 
-  has_one :author, serializer: UserSerializer, root: 'users'
-  has_one :outcome_author, serializer: UserSerializer, root: 'users'
-  has_one :discussion, serializer: DiscussionSerializer, root: 'discussions'
-  has_one :current_user_vote, serializer: VoteSerializer, root: 'votes'
+  has_one :author, serializer: UserSerializer, root: :users
+  has_one :outcome_author, serializer: UserSerializer, root: :users
+  has_one :discussion, serializer: DiscussionSerializer, root: :discussions
+  has_one :current_user_vote, serializer: VoteSerializer, root: :votes
 
   def current_user_vote
     @current_user_vote ||= scope[:vote_cache].get_for(object) if scope[:vote_cache]

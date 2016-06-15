@@ -22,12 +22,13 @@ task :deploy do
   remote, branch = ARGV[1] || 'loomio-production', ARGV[2] || 'master'
   is_production_push = remote == 'loomio-production' && branch == 'master'
   id = Time.now.to_i
+  temp_branch = build_branch(remote, branch, id)
 
   puts "Deploying branch #{branch} to #{remote}..."
   run_commands [
     "git checkout #{branch}",                                                         # move to specified deploy branch
-   ("bundle exec rake deploy:bump_version" if is_production_push),                    # bump version if this is a production deploy
-    "git checkout -b #{build_branch(remote, branch, id)}",                            # cut a new deploy branch based on specified branch
+    "git checkout -b #{temp_branch}",                                                 # cut a new deploy branch based on specified branch
+    "bundle exec rake deploy:bump_version[#{temp_branch},#{is_production_push}]",     # bump version if this is a production deploy
     "bundle exec rake deploy:build",                                                  # build assets
     "bundle exec rake deploy:commit",                                                 # add deploy commit
     "bundle exec rake deploy:push[#{remote},#{branch},#{id}]",                        # deploy to heroku
@@ -75,13 +76,16 @@ namespace :deploy do
   end
 
   desc "Bump version of repository if pushing to production"
-  task :bump_version do |t, args|
+  task :bump_version, [:branch, :is_production_push] do |t, args|
+    raise 'branch must be specified' unless branch = args[:branch]
+    is_production_push = args[:is_production_push] == 'true'
+
     puts "Bumping version from #{Loomio::Version.current}..."
     run_commands [
-      "ruby script/bump_version.rb patch",
+      "ruby script/bump_version.rb #{is_production_push ? 'patch' : 'test'}",
       "git add lib/version",
       "git commit -m 'bump version to #{Loomio::Version.current}'",
-      "git push origin master"
+     ("git push origin #{branch}:master" if is_production_push)
     ]
   end
 

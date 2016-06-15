@@ -21,11 +21,10 @@ class CommentService
   def self.create(comment:, actor:)
     actor.ability.authorize! :create, comment
     comment.author = actor
-    comment.attachment_ids = [comment.attachment_ids, comment.new_attachment_ids].compact.flatten
     return false unless comment.valid?
 
     comment.save!
-    EventBus.broadcast('comment_create', comment)
+    EventBus.broadcast('comment_create', comment, actor)
     Events::NewComment.publish!(comment)
   end
 
@@ -37,14 +36,14 @@ class CommentService
   end
 
   def self.update(comment:, params:, actor:)
-    new_mentions = comment.new_mentions_in(params[:body])
     comment.edited_at = Time.zone.now
     comment.body = params[:body]
 
     return false unless comment.valid?
     actor.ability.authorize! :update, comment
     comment.save!
+    comment.attachments.where('id NOT IN (?)', params[:attachment_ids]).destroy_all
 
-    EventBus.broadcast('comment_update', comment, new_mentions)
+    EventBus.broadcast('comment_update', comment, actor)
   end
 end

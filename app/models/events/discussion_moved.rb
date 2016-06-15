@@ -5,12 +5,4 @@ class Events::DiscussionMoved < Event
            discussion: discussion,
            user: actor).tap { |e| EventBus.broadcast('discussion_moved_event', e) }
   end
-
-  def group_key
-    eventable.key
-  end
-
-  def group
-    eventable
-  end
 end

@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
+require 'securerandom'
 
 usage = <<-END
   Arguments:
     <version_type>: The part of the version we are bumping.
-                    Valid values are major | minor | patch
+                    NB that test will create a unique hash for a patch value.
+                    Valid values are major | minor | patch | test
     <action>:       Action to perform after making version changes.
                     Valid values are commit | no-commit
                     Default is no-commit
@@ -14,6 +16,7 @@ usage = <<-END
     ruby script/bump_version patch # => 0.10.2
     ruby script/bump_version minor # => 0.11.0
     ruby script/bump_version major # => 1.0.0
+    ruby script/bump_version test  # => 0.10.sdfbs8897sd8d7s
 
     Commit changes to git repo:
     ruby script/bump_version patch commit
@@ -27,7 +30,7 @@ end
 version_type = ARGV[0] || 'patch'
 action = ARGV[1] || 'no-commit'
 
-if !%w(major minor patch).include? version_type
+if !%w(major minor patch test).include? version_type
   puts "Invalid version_type; use the --help option for usage info."
   exit 0
 end
@@ -46,9 +49,23 @@ def write_version(type, value)
   File.open(file_path, 'w+') { |file| file.write value }
 end
 
-write_version version_type, Loomio::Version.send(version_type.downcase).to_i + 1
-write_version 'minor', 0 if %w(major).include? version_type
-write_version 'patch', 0 if %w(major minor).include? version_type
+next_version = if version_type == 'test'
+  SecureRandom.hex(8)
+else
+  Loomio::Version.send(version_type.downcase).to_i + 1
+end
+
+case version_type
+when 'major'
+  write_version 'major', next_version
+  write_version 'minor', 0
+  write_version 'patch', 0
+when 'minor'
+  write_version 'minor', next_version
+  write_version 'patch', 0
+when 'patch', 'test'
+  write_version 'patch', next_version
+end
 
 if action == 'commit'
   puts "Creating version bump commit..."
