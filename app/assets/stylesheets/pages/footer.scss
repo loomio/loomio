@@ -9,5 +9,9 @@
 
 .footer__item {
   list-style-type: none;
-  a { text-decoration: none; }
+  padding: 5px 0;
+  a {
+    text-decoration: none;
+    &:hover { color: black; }
+  }
 }

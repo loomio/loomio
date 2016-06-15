@@ -82,12 +82,21 @@ module Plugins
 
     def use_page(route, path, redirect: false)
       @actions.add Proc.new {
-        Loomio::Application.routes.append do
+        # prepending rather than appending so we can override application root route
+        Loomio::Application.routes.prepend do
           if redirect
             get route.to_s => redirect(path)
           else
             get route.to_s => path
           end
+        end
+      }.to_proc
+    end
+
+    def use_root_page(path)
+      @actions.add Proc.new {
+        Loomio::Application.routes.append do
+          root to: path, as: 'not_root'
         end
       }.to_proc
     end

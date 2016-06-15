@@ -3,13 +3,18 @@
   
   = stylesheet_link_tag "marketing/index"
   
-  %link{:href => "http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css", :rel => "stylesheet"}
+  %link{href: "http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css", rel: "stylesheet"}
   
   = render 'application/google_analytics'
-  
+
   %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'}
 
-%body
-  = render 'header'
-  = yield
-  = render 'footer'
+%body.lmo-wrap
+  .lmo-wrap__header
+    = render 'header'
+  .lmo-wrap__body
+    = yield
+    = render 'footer'
+  
+
+= javascript_include_tag "marketing/marketing"
