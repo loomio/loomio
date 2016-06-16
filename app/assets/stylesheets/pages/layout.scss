@@ -9,6 +9,13 @@
 
 .lmo-wrap__header {
   height: auto;
+  min-height: 64px;
+}
+
+@media (min-width: 960px) {
+  .lmo-wrap__header {
+    min-height: 72px;
+  }
 }
 
 @media (min-width: 600px) {
