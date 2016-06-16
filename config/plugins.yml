@@ -4,4 +4,4 @@ loomio_webhooks:
 
 loomio_org_plugin:
   repo:    loomio/loomio_org_plugin
-  branch: website-update
+  branch: master
