@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   end
 
   def invalid_return_urls
-    [nil, root_url, new_user_password_url]
+    [nil, root_url, new_user_password_url, '']
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?

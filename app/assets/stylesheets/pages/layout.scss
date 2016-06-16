@@ -1,0 +1,34 @@
+.lmo-wrap {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+}
+
+.lmo-wrap__header {
+  height: auto;
+  min-height: 64px;
+}
+
+@media (min-width: 960px) {
+  .lmo-wrap__header {
+    min-height: 72px;
+  }
+}
+
+@media (min-width: 600px) {
+  .lmo-wrap { height: 100%; }
+  .lmo-wrap__body { overflow-y: scroll; }
+}
+
+.lmo-flash-container {
+  background-color: #dff0d8;
+  color: #3c763d;
+  text-align: center;
+  .alert {
+    padding: 15px;
+    border: 1px solid #d6e9c6;
+  }
+}
