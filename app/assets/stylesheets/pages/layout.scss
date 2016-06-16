@@ -1,6 +1,14 @@
 .lmo-wrap {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
+}
+
+.lmo-wrap__header {
+  height: auto;
 }
 
 @media (min-width: 600px) {
@@ -12,7 +20,7 @@
   background-color: #dff0d8;
   color: #3c763d;
   text-align: center;
-  .alert { 
+  .alert {
     padding: 15px;
     border: 1px solid #d6e9c6;
   }
