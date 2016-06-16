@@ -87,7 +87,7 @@ module Plugins
           if redirect
             get route.to_s => redirect(path)
           else
-            get route.to_s => path
+            get route.to_s => path, constraints: NotGroupSubdomainConstraints
           end
         end
       }.to_proc
