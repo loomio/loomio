@@ -33,12 +33,11 @@
 
   %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'}
 
-%body.lmo-wrap
+%body
   - unless flash.empty?
     .lmo-flash-container
       = render 'application/flash_messages', :flash => flash
-  .lmo-wrap__header
-    = render 'header'
+  = render 'header'
   .lmo-wrap__body
     = yield
     = render 'footer'
