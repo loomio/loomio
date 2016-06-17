@@ -8,29 +8,21 @@
 }
 
 .header {
+  align-items: center;
   background-color: #efefef;
   border-bottom: 2px solid #dcdcdc;
-  width: 100%;
-  z-index: 1000;
-}
-
-.header__section {
-  align-items: center;
-  justify-content: center;
-}
-
-.header__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 0 2rem;
 }
 
 .header__menu {
+  align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  justify-content: flex-end;
-}
-
-.header__menu-show {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 600px) {
@@ -45,73 +37,23 @@
 }
 
 @media (min-width: 600px) {
-  .header__item { padding: 0 20px; }
+  .header { flex-direction: row; }
+  .header__menu { flex-direction: row; }
+  .header__item { padding: 0 10px; }
   .header__resources-dropdown-menu {
     position: absolute;
     text-align: left;
   }
 }
 
-// target IE
-@media screen\0 {
-  .header__item {
-    min-width: 60px;
-    margin-left: 10px
-  }
-  // .header__item--pricing {
-  //   margin-left: 10px;
-  // }
-  .header__resources-dropdown {
-    margin-right: 20px
-  }
-  .header__item--start-button {
-    min-width: 120px;
-  }
+@media (min-width: 960px) {
+  .header__item { padding: 0 20px; }
 }
 
-// target FF 3
-@-moz-document url-prefix() {
-  .header__item {
-    min-width: 60px;
-    margin-left: 10px
-  }
-  // .header__item--pricing {
-  //   margin-left: 10px;
-  // }
-  .header__resources-dropdown {
-    margin-right: 20px
-  }
-  .header__item--start-button {
-    min-width: 120px;
-  }
-}
-
-// target sadari
-_::-webkit-full-page-media, _:future, :root {
-  .header__item {
-    min-width: 60px;
-    margin-left: 10px
-  }
-  // .header__item--pricing {
-  //   margin-left: 10px;
-  // }
-  .header__resources-dropdown {
-    margin-right: 20px
-  }
-  .header__item--start-button {
-    min-width: 120px;
-  }
-
-}
 
 .header__item {
-  flex-grow: 0;
   list-style-type: none;
-  line-height: 4rem;
   white-space: nowrap;
-  justify-content: flex-end;
-  flex-shrink: 0;
-  width: 100%;
   &:hover { color: black; }
   a {
     text-decoration: none;
