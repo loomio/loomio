@@ -54,10 +54,9 @@ body { max-width: 600px }
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-  display: inline-block;
+  display: inline;
   font-size: 16px;
   margin: 0;
-  padding: 12px 55px;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -66,3 +65,17 @@ body { max-width: 600px }
   font-weight: bold;
   margin: 30px 0 0;
 }
+
+@media (min-width: 320px) {
+  .to-join-group__accept-invitation {
+    padding: 12px 55px;
+  }
+}
+
+@media (max-width: 320px) {
+  .to-join-group__accept-invitation {
+    max-width: 80px;
+    padding: 12px 30px;
+  }
+}
+
