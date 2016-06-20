@@ -90,6 +90,18 @@ a:visited { color: #4076D4; }
   max-width: 180px;
 }
 
+.marketing__case-study-quote {
+  quotes: """ """;
+}
+
+.marketing__case-study-quote:before {
+  content: open-quote;
+}
+
+.marketing__case-study-quote:after {
+  content: close-quote;
+}
+
 .marketing__about-us {
   align-items: center;
   justify-content: center;
@@ -115,6 +127,18 @@ a:visited { color: #4076D4; }
 
 .marketing__press-testimonial {
   text-decoration: none;
+}
+
+.marketing__press-quote {
+  quotes: """ """;
+}
+
+.marketing__press-quote:before {
+  content: open-quote;
+}
+
+.marketing__press-quote:after {
+  content: close-quote;
 }
 
 .marketing__press-logo {
