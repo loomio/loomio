@@ -2,4 +2,4 @@
 = render_rich_text(@text, true)
 - if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
   = render "attachments", comment: @eventable
-= render "footer", link: polymorphic_url(@eventable)
+= render "footer", link: comment_url_helper(@eventable)
