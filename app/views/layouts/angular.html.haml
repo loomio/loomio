@@ -39,8 +39,10 @@
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
                   %span.sidebar__list-item-label
                     %strong Unread
+                  %span
+                    %strong ({{unreadThreadCount()}})
               %md_list_item.md-2-line
-                %md_button.sidebar__list-item.sidebar__list-item--muted{ng_click: "showMuted()"}
+                %md_button.sidebar__list-item{href: "/dashboard/show_muted"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
                   %span.sidebar__list-item-label
                     %strong Muted
@@ -64,15 +66,21 @@
                   %span.sidebar__list-item-label
                     %strong Email settings
               %md_list_item.md-2-line
-                %md_button.sidebar__list-item.side-bar__sign-out{ng_click: "signOut()"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
-                  %span.sidebar__list-item-label
-                    %strong Sign out
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "/help"}
+                %md_button.sidebar__list-item{href: "{{helpLink()}}", target: "_blank"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
                   %span.sidebar__list-item-label
                     %strong Help
+              %md_list_item.md-2-line{ng_if: 'showContactUs()'}
+                %md_button.sidebar__list-item{ng_click: "contactUs()"}
+                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-question-circle
+                  %span.sidebar__list-item-label
+                    %strong Contact
+              %md_list_item.md-2-line
+                %md_button.sidebar__list-item{ng_click: "signOut()"}
+                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
+                  %span.sidebar__list-item-label
+                    %strong Sign out
+
       %md_content.lmo-main-content{flex: ""}
         %ng_outlet{'ng-if' => '!refreshing && !pageError'}
       %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}

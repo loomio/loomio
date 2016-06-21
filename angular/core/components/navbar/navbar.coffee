@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'navbar', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'
   replace: true
-  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, ThreadQueryService, AppConfig, AbilityService, $mdSidenav, $mdMedia) ->
+  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService, $mdSidenav, $mdMedia) ->
     $scope.$mdMedia = $mdMedia
     $scope.$mdSidenav = $mdSidenav
     parser = document.createElement('a')
@@ -20,9 +20,6 @@ angular.module('loomioApp').directive 'navbar', ->
     
     $scope.$on 'setTitle', (el, name) ->
       $scope.title = name
-
-    $scope.unreadThreadCount = ->
-      ThreadQueryService.filterQuery(['show_unread', 'only_threads_in_my_groups'], queryType: 'inbox').length()
 
     $scope.homePageClicked = ->
       $rootScope.$broadcast 'homePageClicked'

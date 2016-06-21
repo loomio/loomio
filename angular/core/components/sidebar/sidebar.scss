@@ -28,16 +28,13 @@
   text-align: left;
   text-transform: inherit;
   display: block;
+  width: 235px;
 }
 
 .sidebar__groups {
   overflow: auto;
   flex-shrink: 5;
   max-height: 275px;
-}
-
-.side-bar__sign-out {
-  padding-right: 130px;
 }
 
 .sidebar__list-item-icon {
@@ -54,10 +51,6 @@
 
 .sidebar__divider {
   border-top: 1px solid #eee;
-}
-
-.sidebar__list-item--muted {
-  padding-right: 140px;
 }
 
 .sidebar__padding {

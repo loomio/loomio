@@ -86,7 +86,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $filter
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
   $router.config([
-    {path: '/dashboard', component: 'dashboardPage' },
+    {path: '/dashboard', component: 'dashboardPage'},
+    {path: '/dashboard/:filter', component: 'dashboardPage'},
     {path: '/inbox', component: 'inboxPage' },
     {path: '/groups', component: 'groupsPage' },
     {path: '/explore', component: 'explorePage'},
