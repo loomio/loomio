@@ -51,4 +51,11 @@ module EmailHelper
       l(time.to_date, format: :for_this_year)
     end
   end
+
+  def polymorphic_url(model)
+    case model
+    when Comment then comment_url_helper(model)
+    else super
+    end
+  end
 end
