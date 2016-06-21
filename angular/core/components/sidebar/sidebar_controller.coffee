@@ -1,4 +1,8 @@
-angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia, ThreadQueryService, UserHelpService, AppConfig, IntercomService) ->
+angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdSidenav) ->
+  $scope.showSidebar = $mdMedia("gt-md")
+
+  $scope.$on 'toggleSidebar', ->
+    $scope.showSidebar = !$scope.showSidebar
 
   $scope.groups = ->
     Session.user().groups()
@@ -27,3 +31,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
 
   $scope.contactUs = ->
     IntercomService.contactUs()
+
+  $scope.isOpen = ->
+    $scope.showSidebar

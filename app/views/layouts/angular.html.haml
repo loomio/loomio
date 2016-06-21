@@ -25,7 +25,7 @@
     %navbar
     %md_content{layout: "row", flex: ""}
       %section{layout: "row", ng_controller: 'SidebarController', ng_cloak: ''}
-        %md-sidenav.md-sidenav-left{md_component_id: 'left', md_is_locked_open: '$mdMedia("gt-md")', md_disable_backdrop: '', md_whiteframe: 4}
+        %md-sidenav.md-sidenav-left{md_component_id: 'left', md_is_open: 'isOpen()', md_is_locked_open: '$mdMedia("gt-md") && isOpen()', md_disable_backdrop: '', md_whiteframe: 4}
           %md_content.sidebar__content{flex: "", role: "navigation", layout: "column"}
             .sidebar__padding{ng_if: "smallScreen()"}
             %md_list.sidebar__threads
@@ -80,7 +80,6 @@
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
                   %span.sidebar__list-item-label
                     %strong Sign out
-
       %md_content.lmo-main-content{flex: ""}
         %ng_outlet{'ng-if' => '!refreshing && !pageError'}
       %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}

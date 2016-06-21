@@ -3,9 +3,7 @@ angular.module('loomioApp').directive 'navbar', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'
   replace: true
-  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService, $mdSidenav, $mdMedia) ->
-    $scope.$mdMedia = $mdMedia
-    $scope.$mdSidenav = $mdSidenav
+  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService) ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
     $scope.title = "Undefined"
@@ -25,7 +23,7 @@ angular.module('loomioApp').directive 'navbar', ->
       $rootScope.$broadcast 'homePageClicked'
 
     $scope.toggleSidebar = ->
-      $mdSidenav("left").toggle()
+      $rootScope.$broadcast 'toggleSidebar'
 
     $scope.signIn = ->
       ModalService.open SignInForm
