@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'navbar', ->
   controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService) ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
-    $scope.title = "Undefined"
+    $scope.title = "Loading"
     $scope.officialLoomio = AppConfig.isLoomioDotOrg
 
     $scope.hostName = parser.hostname
