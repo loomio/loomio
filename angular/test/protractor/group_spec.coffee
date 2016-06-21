@@ -6,7 +6,7 @@ describe 'Group Page', ->
   describe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
-      staticPage.click '#try-it-main'
+      staticPage.click '.header__item--start-button'
       staticPage.fillIn '#group_name', 'My First Group'
       staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
       staticPage.fillIn '#name', 'Test Example'
@@ -26,7 +26,7 @@ describe 'Group Page', ->
 
     it 'allows starting a group with an existing email', ->
       staticPage.loadPath 'view_homepage_as_visitor'
-      staticPage.click '#try-it-main'
+      staticPage.click '.header__item--start-button'
       staticPage.fillIn '#group_name', 'My First Group'
       staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
       staticPage.fillIn '#name', 'Test Example'

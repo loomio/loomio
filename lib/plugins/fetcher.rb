@@ -5,8 +5,8 @@ module Plugins
     def initialize(folder, config)
       @folder = folder.to_s.gsub('.', "").gsub('/', "")
       @repo   = config['repo'].to_s
-      @branch = (config['version'] || 'master').to_s
-      @config = config.reject { |k| ['repo', 'version'].include? k }
+      @branch = (config['branch'] || 'master').to_s
+      @config = config.reject { |k| ['repo', 'branch'].include? k }
     end
 
     def execute!

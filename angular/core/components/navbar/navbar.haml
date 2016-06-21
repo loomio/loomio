@@ -15,8 +15,9 @@
         %i.fa.fa-lg.fa-group>
         %span.lmo-navbar__btn-label{translate: "navbar.groups"}
   %section.lmo-navbar__item-container.lmo-navbar--center{ng-class: "{'lmo-navbar__logo--logged-in': isLoggedIn(), 'lmo-navbar__logo--logged-out': !isLoggedIn()}"}
-    .lmo-navbar__item.lmo-navbar__logo
-      %img{src: "/img/logo.png"}
+    %a{lmo-static-href: "/"}
+      .lmo-navbar__item.lmo-navbar__logo
+        %img{src: "/img/logo.png"}
   %section.lmo-navbar__item-container.lmo-navbar--right.lmo-navbar__logged-in{ng-if: "isLoggedIn()"}
     .lmo-navbar__item.lmo-navbar-search{role: "search"}
       %navbar_search
