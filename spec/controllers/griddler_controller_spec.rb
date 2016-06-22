@@ -10,7 +10,7 @@ describe Griddler::EmailsController do
       text: "Hi!",
       subject: "Greetings!",
       from: [{ name: user.name, address: user.email }],
-      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@localhost"}],
+      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['CANONICAL_HOST']}"}],
       cc: [],
       headers: {}
     }
