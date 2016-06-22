@@ -1,0 +1,106 @@
+/*
+
+Buttons
+
+Buttons and their variations
+
+Markup:
+<a href="#" class="btn {{modifier_class}}">Button</a>
+
+.btn--secondary       - A link that's sized like a button
+.btn--link            - A link that's sized like a button
+
+Styleguide 2.0
+
+*/
+
+.btn{
+  background-color: $primary;
+  border: none;
+  border-radius: .2rem;
+  box-sizing: border-box;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  height: 4.8rem;
+  line-height: 4.8rem;
+  max-width: 100%;
+  transition-property: background-color;
+  transition-duration: 200ms;
+  margin: 0 auto;
+  padding: 0 3rem;
+  text-align: center;
+  user-select: none;
+  width: auto;
+
+  &:link,
+  &:visited{
+    color: $white;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $primary-dark;
+    color: $white;
+  }
+
+  &:focus{
+    outline: .1rem dotted $gray3;
+  }
+
+  &:active{
+    background-color: $primary;
+  }
+}
+
+.btn--secondary{
+  background-color: $gray6;
+  color: $gray1;
+
+  &:link,
+  &:visited{
+    color: $gray1;
+  }
+
+  &:focus,
+  &:hover{
+    background-color: $gray5;
+    color: $gray1;
+  }
+
+  &:active{
+    color: $gray3;
+  }
+}
+
+.btn--link{
+  background-color: transparent;
+  color: $link;
+  text-decoration: underline;
+
+  &:link{
+    color: $link;
+  }
+
+  &:visited{
+    color: $link--visited;
+  }
+
+  &:focus,
+  &:hover{
+    color: $link--hover;
+    background-color: transparent;
+  }
+
+  &:active{
+    color: $link--active;
+    background-color: transparent;
+  }
+}
+
+[type=button],
+[type=submit],
+button{
+  @extend .btn;
+}

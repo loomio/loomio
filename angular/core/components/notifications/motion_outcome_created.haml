@@ -1,5 +1,5 @@
 .media-left
   %user_avatar{user: "notification.actor()", size: "small"}
 .media-body
-  %span{translate: "notifications.motion_outcome_created", translate-value-name: "{{notification.actor().name}}", translate-value-proposal: "{{notification.relevantRecord().name}}" }
+  %span{translate: "notifications.motion_outcome_created", translate-value-name: "{{notification.actor().name}}", translate-value-proposal: "{{notification.model().name}}" }
   %timeago{timestamp: "notification.createdAt" }>

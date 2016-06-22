@@ -87,17 +87,49 @@ describe 'Discussion Page', ->
     it 'lets you change thread volume', ->
       page.click '.thread-context__dropdown-button',
                  '.thread-context__dropdown-options-email-settings',
-                 '#volume-normal',
+                 '#volume-loud',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about proposals in this thread.'
+      page.expectFlash 'You will be emailed activity in this thread.'
 
     it 'lets you change the volume for all threads in the group', ->
       page.click '.thread-context__dropdown-button',
                  '.thread-context__dropdown-options-email-settings',
-                 '#volume-normal',
+                 '#volume-loud',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about new threads and proposals in this group.'
+      page.expectFlash 'You will be emailed all activity in this group.'
+
+  describe 'joining the group', ->
+    it 'allows logged in users to join a group and comment', ->
+      page.loadPath 'view_open_group_as_non_member'
+      page.click '.thread-preview__link'
+      page.click '.join-group-button__join-group'
+      page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
+
+      page.fillIn '.comment-form__comment-field', 'I am new!'
+      page.click '.comment-form__submit-button'
+      page.expectFlash 'Comment added'
+
+    it 'allows logged in users to request to join a closed group', ->
+      page.loadPath 'view_closed_group_as_non_member', ->
+      page.click '.thread-preview__link'
+      page.click '.join-group-button__ask-to-join-group'
+      page.click '.membership-request-form__submit-btn'
+      page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
+
+  describe 'signing in', ->
+    it 'allows logged out users to log in and comment', ->
+      page.loadPath 'view_open_group_as_visitor'
+      page.click '.thread-preview__link'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '#user-email', 'jennifer_grey@example.com'
+      page.fillIn '#user-password', 'gh0stmovie'
+      page.click '.sign-in-form__submit-button'
+      page.expectFlash 'Signed in successfully'
+
+      page.fillIn '.comment-form__comment-field', 'I am new!'
+      page.click '.comment-form__submit-button'
+      page.expectFlash 'Comment added'
 
   describe 'joining the group', ->
     it 'allows logged in users to join a group and comment', ->

@@ -178,6 +178,7 @@ class Group < ActiveRecord::Base
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
   define_counter_cache(:motions_count)            { |group| group.discussions.published.sum(:motions_count) }
+  define_counter_cache(:closed_motions_count)     { |group| group.motions.closed.count }
   define_counter_cache(:discussions_count)        { |group| group.discussions.published.count }
   define_counter_cache(:public_discussions_count) { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:memberships_count)        { |group| group.memberships.count }

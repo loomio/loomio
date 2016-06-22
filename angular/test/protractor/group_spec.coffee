@@ -6,7 +6,7 @@ describe 'Group Page', ->
   describe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
-      staticPage.click '#try-it-main'
+      staticPage.click '.header__item--start-button'
       staticPage.fillIn '#group_name', 'My First Group'
       staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
       staticPage.fillIn '#name', 'Test Example'
@@ -26,7 +26,7 @@ describe 'Group Page', ->
 
     it 'allows starting a group with an existing email', ->
       staticPage.loadPath 'view_homepage_as_visitor'
-      staticPage.click '#try-it-main'
+      staticPage.click '.header__item--start-button'
       staticPage.fillIn '#group_name', 'My First Group'
       staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
       staticPage.fillIn '#name', 'Test Example'
@@ -388,17 +388,17 @@ describe 'Group Page', ->
     it 'lets you change membership volume', ->
       page.click '.group-page-actions__button',
                  '.group-page-actions__change-volume-link',
-                 '#volume-normal',
+                 '#volume-loud',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about new threads and proposals in this group.'
+      page.expectFlash 'You will be emailed all activity in this group.'
 
     it 'lets you change the membership volume for all memberships', ->
       page.click '.group-page-actions__button',
                  '.group-page-actions__change-volume-link',
-                 '#volume-normal',
+                 '#volume-loud',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'
-      page.expectFlash 'You will be emailed about new threads and proposals in all your groups.'
+      page.expectFlash 'You will be emailed all activity in all your groups.'
 
   describe 'subdomains', ->
     it 'handles subdomain redirects', ->

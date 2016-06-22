@@ -109,7 +109,7 @@ en:
       loud_description: "You will be emailed whenever there is activity in this thread."
       normal_description: "You will be emailed whenever a proposal is started, about to close, or an outcome is posted."
       quiet_description: "You won't be emailed about this thread."
-      apply_to_all: "Apply this settings to all threads in this group."
+      apply_to_all: "Apply these settings to all threads in this group."
       messages:
         loud: "You will be emailed activity in this thread."
         normal: "You will be emailed about proposals in this thread."
@@ -119,7 +119,7 @@ en:
       loud_description: "You will be emailed whenever there is activity in this group."
       normal_description: "You will be emailed about new threads and proposals in this group."
       quiet_description: "You won't be emailed about activity in this group."
-      apply_to_all: "Apply this settings to all my groups."
+      apply_to_all: "Apply these settings to all my groups."
       messages:
         loud: "You will be emailed all activity in this group."
         normal: "You will be emailed about new threads and proposals in this group."
@@ -134,7 +134,7 @@ en:
       loud_description: "You will be emailed whenever there is activity in any new groups you join."
       normal_description: "You will be emailed about new threads and proposals in any new groups you join."
       quiet_description: "You won't be emailed about activity in any new groups you join."
-      apply_to_all: "Apply this settings to all my groups."
+      apply_to_all: "Apply these settings to all my groups."
       messages:
         loud: "You will be emailed all activity in new groups."
         normal: "You will be emailed about new threads and proposals in new groups."
@@ -171,7 +171,7 @@ en:
   comment_form:
     aria_label: 'Add a comment'
     attachments:
-      aria_label: 'Attach a file'
+      add_attachment: 'Attach a file'
       remove_attachment: 'Remove attachment'
     messages:
       created: 'Comment added'
@@ -398,6 +398,7 @@ en:
   join_group_button:
     join_group: Join group
     ask_to_join_group: Ask to join group
+    membership_requested: Membership request pending
     messages:
       joined_group: 'You are now a member of {{group}}'
 
@@ -519,7 +520,7 @@ en:
     standard: Standard
     plus: Plus
     free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
-    get_started_for_free: "Get started for free"
+    start_group: "Start group"
     gift_body: For groups without a budget
     support_before: I'm happy to
     support_link: talk with you
@@ -532,7 +533,7 @@ en:
     slack_integration_html: |
       <strong>Slack</strong> integration
     standard_price_html: |
-      US <strong>$19</strong>/month<br><span>or</span> $190/year
+      US<strong>$19</strong>/month<br><span>or</span> $190/year
     plus_body: 'Everything in Standard, plus:'
     multiple_groups: multiple groups
     premium_support: premium support
@@ -540,7 +541,7 @@ en:
       custom subdomain,<br />
       e.g. <strong>yourgroup</strong>.loomio.org
     plus_price_html: |
-      US <strong>$179</strong>/month<br><span>or</span> $1790/year
+      US<strong>$179</strong>/month<br><span>or</span> $1790/year
     select: Select
 
   subscription_success_modal:
@@ -919,6 +920,7 @@ en:
     proposal_outcome_updated: 'updated the proposal outcome:'
 
   discussion_edited_item:
+    attachment_ids: 'updated the thread attachments'
     title: 'updated the thread title: <span>{{title}}</span>'
     description: 'updated the thread context'
     description_title: 'updated the thread title and context'

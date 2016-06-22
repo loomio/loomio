@@ -186,4 +186,48 @@ describe Motion do
       end
     end
   end
+
+  describe 'mentioning' do
+    let(:motion) { build(:motion, description: "Hello @#{user.username}!") }
+    let(:user) { create(:user)  }
+    let(:another_user) { create(:user) }
+
+    describe '#mentionable_text' do
+      it 'stores the description as mentionable text' do
+        expect(motion.send(:mentionable_text)).to eq motion.description
+      end
+    end
+
+    describe 'mentionable_usernames' do
+      it 'can extract usernames' do
+        expect(motion.mentioned_usernames).to include user.username
+      end
+
+      it 'does not duplicate usernames' do
+        motion.description += " Goodbye @#{user.username}!"
+        expect(motion.mentioned_usernames).to eq [user.username]
+      end
+
+      it 'does not extract the authors username' do
+        motion.description = "Hello @#{motion.author.username}!"
+        expect(motion.mentioned_usernames).to_not include motion.author.username
+      end
+    end
+
+    describe 'mentioned_group_members' do
+      it 'includes members in the current group' do
+        motion.group.add_member! user
+        expect(motion.mentioned_group_members).to include user
+      end
+
+      it 'does not include members not in the group' do
+        expect(motion.mentioned_group_members).to_not include user
+      end
+
+      it 'does not include the motion author' do
+        motion.description = "Hello @#{motion.author.username}!"
+        expect(motion.mentioned_group_members).to_not include motion.author
+      end
+    end
+  end
 end

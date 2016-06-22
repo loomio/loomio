@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512033506) do
+
+ActiveRecord::Schema.define(version: 20160531012717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +93,8 @@ ActiveRecord::Schema.define(version: 20160512033506) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
   end
 
   add_index "attachments", ["comment_id"], name: "index_attachments_on_comment_id", using: :btree
@@ -268,19 +271,20 @@ ActiveRecord::Schema.define(version: 20160512033506) do
     t.string   "title"
     t.datetime "last_comment_at"
     t.text     "description"
-    t.boolean  "uses_markdown",       default: false, null: false
-    t.boolean  "is_deleted",          default: false, null: false
-    t.integer  "items_count",         default: 0,     null: false
+    t.boolean  "uses_markdown",        default: false, null: false
+    t.boolean  "is_deleted",           default: false, null: false
+    t.integer  "items_count",          default: 0,     null: false
     t.boolean  "private"
     t.string   "key"
     t.datetime "archived_at"
     t.string   "iframe_src"
-    t.integer  "motions_count",       default: 0
+    t.integer  "motions_count",        default: 0
     t.datetime "last_activity_at"
-    t.integer  "last_sequence_id",    default: 0,     null: false
-    t.integer  "first_sequence_id",   default: 0,     null: false
-    t.integer  "salient_items_count", default: 0,     null: false
-    t.integer  "versions_count",      default: 0
+    t.integer  "last_sequence_id",     default: 0,     null: false
+    t.integer  "first_sequence_id",    default: 0,     null: false
+    t.integer  "salient_items_count",  default: 0,     null: false
+    t.integer  "versions_count",       default: 0
+    t.integer  "closed_motions_count", default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -472,6 +476,7 @@ ActiveRecord::Schema.define(version: 20160512033506) do
     t.string   "country"
     t.string   "region"
     t.string   "city"
+    t.integer  "closed_motions_count",               default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -809,8 +814,8 @@ ActiveRecord::Schema.define(version: 20160512033506) do
     t.string   "email_api_key"
     t.boolean  "email_when_mentioned",             default: true,       null: false
     t.boolean  "angular_ui_enabled",               default: true,       null: false
-    t.boolean  "email_on_participation",           default: true,       null: false
-    t.integer  "default_membership_volume",        default: 3,          null: false
+    t.boolean  "email_on_participation",           default: false,      null: false
+    t.integer  "default_membership_volume",        default: 2,          null: false
     t.boolean  "has_muted",                        default: false,      null: false
     t.jsonb    "experiences",                      default: {},         null: false
     t.string   "country"

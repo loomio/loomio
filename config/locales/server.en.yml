@@ -28,6 +28,9 @@ en:
       link: Join the discussion
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
+      invitation_text_html: "<strong>%{member}</strong> has invited you to join their group <strong>%{group_name}</strong>"
+      accept_invitation: "Accept invitation"
+      tagline: "Loomio is a place for groups to make decisions together"
     resend_to_join_group:
       subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
     to_start_group:
@@ -162,7 +165,7 @@ en:
     email_support: email support
     slack_integration_html: |
       <strong>Slack</strong> integration
-    standard_price_html: 'US <strong>$19</strong>/month<br><span>or</span> $190/year
+    standard_price_html: 'US<strong>$19</strong>/month<br><span>or</span> $190/year
 
 '
     plus_body: 'Everything in Standard, plus:'
@@ -172,7 +175,7 @@ en:
       custom subdomain,<br />
       e.g. <strong>yourgroup</strong>.loomio.org
     usage_statistics: usage statistics
-    plus_price_html: 'US <strong>$179</strong>/month<br><span>or</span> $1790/year
+    plus_price_html: 'US<strong>$179</strong>/month<br><span>or</span> $1790/year
 
 '
   password_reset:

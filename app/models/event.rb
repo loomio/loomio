@@ -26,6 +26,12 @@ class Event < ActiveRecord::Base
 
   acts_as_sequenced scope: :discussion_id, column: :sequence_id, skip: lambda {|e| e.discussion.nil? || e.discussion_id.nil? }
 
+  def active_model_serializer
+    "Events::#{eventable.class.to_s.split('::').last}Serializer".constantize
+  rescue NameError
+    Events::BaseSerializer
+  end
+
   def notify!(user)
     notifications.create!(user: user) if user
   end

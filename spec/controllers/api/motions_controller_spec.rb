@@ -231,6 +231,19 @@ describe API::MotionsController do
         json = JSON.parse(response.body)
         expect(json['discussions'][0]['discussion_reader_id']).to be_present
       end
+
+      describe 'mentioning' do
+        it 'mentions appropriate users' do
+          group.add_member! another_user
+          motion_params[:description] = "Hello, @#{another_user.username}!"
+          expect { post :create, motion: motion_params, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+        end
+
+        it 'does not mention users not in the group' do
+          motion_params[:description] = "Hello, @#{another_user.username}!"
+          expect { post :create, motion: motion_params, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
+        end
+      end
     end
 
     context 'failures' do

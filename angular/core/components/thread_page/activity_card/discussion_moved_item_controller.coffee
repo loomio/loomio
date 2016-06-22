@@ -1,2 +1,2 @@
-angular.module('loomioApp').controller 'DiscussionMovedItemController', ($scope) ->
-  $scope.groupName = $scope.event.group().name
+angular.module('loomioApp').controller 'DiscussionMovedItemController', ($scope, Records) ->
+  $scope.group = Records.groups.find($scope.event.eventable.id)

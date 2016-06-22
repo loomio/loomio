@@ -1,7 +1,7 @@
 .blank
   %a.attachment-preview__link{lmo-href: "{{attachment.original}}", target: "_blank"}>
 
-    .attachment-preview.attachment-preview--thread{ng-if: "mode == 'thread'"}
+    .attachment-preview{class: "attachment-preview--{{mode}}", ng-if: "displayMode()"}
       .attachment-preview__image{ng-if: "attachment.isAnImage"}
         %img{ng-src: "{{location()}}", alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
       .attachment-preview__file.attachment-preview__file--thread{ng-class: "{'attachment-preview__file--image': attachment.isAnImage}"}

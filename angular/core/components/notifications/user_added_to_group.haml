@@ -1,9 +1,9 @@
-%span{ng-if: "notification.event().membership().inviter() == null"}
-  %span{translate: "notifications.user_added_to_group_no_inviter", translate-value-group: "{{notification.event().membership().group().fullName}}" }
+%span{ng-if: "!notification.model().inviter()"}
+  %span{translate: "notifications.user_added_to_group_no_inviter", translate-value-group: "{{notification.group().fullName}}" }
 
-.lmo-wrap{ng-if: "notification.event().membership().inviter()"}
+.lmo-wrap{ng-if: "notification.model().inviter()"}
   .media-left
-    %user_avatar{user: "notification.event().membership().inviter()", size: "small"}
+    %user_avatar{user: "notification.model().inviter()", size: "small"}
   .media-body
-    %span{translate: "notifications.user_added_to_group", translate-value-name: "{{notification.event().membership().inviter().name}}", translate-value-group: "{{notification.event().membership().group().fullName}}" }
+    %span{translate: "notifications.user_added_to_group", translate-value-name: "{{notification.model().inviter().name}}", translate-value-group: "{{notification.group().fullName}}" }
     %timeago{timestamp: "notification.createdAt" }>

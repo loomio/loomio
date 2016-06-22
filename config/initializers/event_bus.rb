@@ -63,17 +63,19 @@ EventBus.configure do |config|
                 'discussion_description_edited_event',
                 'motion_description_edited_event',
                 'comment_liked_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable.group)
+    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable.group)
   end
 
   config.listen('discussion_moved_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable)
+    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable)
   end
 
   # update discussion reader after discussion creation / edition
-  config.listen('discussion_create',
-                'discussion_update',
-                'comment_like') do |model, actor|
+  config.listen('discussion_create') do |discussion, actor|
+    DiscussionReader.for(discussion: discussion, user: actor).set_volume! :loud
+  end
+
+  config.listen('discussion_update', 'comment_like') do |model, actor|
     DiscussionReader.for_model(model, actor).set_volume_as_required!
   end
 
@@ -92,11 +94,15 @@ EventBus.configure do |config|
 
   # publish reply and mention events after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
-  config.listen('comment_create') { |comment| comment.notified_group_members.each { |user| Events::UserMentioned.publish!(comment, user) } }
 
-  # publish new mention events after comment edition
-  config.listen('comment_update') do |comment, new_mentions|
-    User.where(username: new_mentions).each { |user| Events::UserMentioned.publish!(comment, user) } if new_mentions.present?
+  # publish mention events after model create / update
+  config.listen('comment_create',
+                'comment_update',
+                'motion_create',
+                'motion_update',
+                'discussion_create',
+                'discussion_update') do |model, actor|
+    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
   # notify users of events

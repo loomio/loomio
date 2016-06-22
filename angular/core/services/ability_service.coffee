@@ -133,10 +133,27 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canRequestMembership: (group) ->
       (group.membershipGrantedUpon == 'approval') and
       @canViewGroup(group) and
-      !Session.user().isMemberOf(group) and
-      !group.hasPendingMembershipRequestFrom(Session.user())
+      !Session.user().isMemberOf(group)
+
 
     canTranslate: (model) ->
       AppConfig.canTranslate and
       Session.user().locale and
       Session.user().locale != model.author().locale
+
+    canMention: (model, member) ->
+      return member.id != Session.user().id and
+             member.id != model.authorId
+
+    requireLoginFor: (page) ->
+      return false if @isLoggedIn()
+      switch page
+        when 'emailSettingsPage' then !Session.user().restricted?
+        when 'groupsPage',         \
+             'dashboardPage',      \
+             'inboxPage',          \
+             'profilePage',        \
+             'authorizedAppsPage', \
+             'registeredAppsPage', \
+             'registeredAppPage' then true
+        else false

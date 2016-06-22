@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe Discussion do
-  let(:discussion) { create :discussion }
+  let(:user)       { create :user }
+  let(:group)      { create :group }
+  let(:discussion) { create :discussion, group: group }
+  let(:motion)     { create :motion, discussion: discussion }
 
   context "versioning" do
     before do
@@ -43,6 +46,27 @@ describe Discussion do
       expect {
         @motion.destroy
       }.to change { @discussion.reload.motions_count }.by(-1)
+    end
+
+  end
+
+  describe "#closed_motions_count" do
+    before do
+      motion.close!
+    end
+
+    it "returns a count of closed motions" do
+      expect(discussion.reload.closed_motions_count).to eq 1
+    end
+
+    it "updates correctly after motion is closed" do
+      expect {
+        discussion.motions.create(attributes_for(:motion).merge({ author: user })).close!
+      }.to change { discussion.reload.closed_motions_count }.by(1)
+    end
+
+    it "updates correctly after deleting a motion" do
+      expect { motion.destroy }.to change { discussion.reload.closed_motions_count }.by(-1)
     end
 
   end
@@ -251,6 +275,49 @@ describe Discussion do
       old_items_count = discussion.items_count
       CommentService.create(comment: build(:comment, discussion: discussion), actor: discussion.author)
       expect(discussion.reload.items_count).to eq old_items_count
+    end
+  end
+
+  describe 'mentioning' do
+    let(:discussion) { build(:discussion, description: "Hello @#{user.username}!") }
+    let(:another_user) { create(:user) }
+
+    describe '#mentionable_text' do
+      it 'stores the description as mentionable text' do
+        expect(discussion.send(:mentionable_text)).to eq discussion.description
+      end
+    end
+
+    describe 'mentionable_usernames' do
+      it 'can extract usernames' do
+        expect(discussion.mentioned_usernames).to include user.username
+      end
+
+      it 'does not duplicate usernames' do
+        discussion.description += " Goodbye @#{user.username}!"
+        expect(discussion.mentioned_usernames).to eq [user.username]
+      end
+
+      it 'does not extract the authors username' do
+        discussion.description = "Hello @#{discussion.author.username}!"
+        expect(discussion.mentioned_usernames).to_not include discussion.author.username
+      end
+    end
+
+    describe 'mentioned_group_members' do
+      it 'includes members in the current group' do
+        discussion.group.add_member! user
+        expect(discussion.mentioned_group_members).to include user
+      end
+
+      it 'does not include members not in the group' do
+        expect(discussion.mentioned_group_members).to_not include user
+      end
+
+      it 'does not include the discussion author' do
+        discussion.description = "Hello @#{discussion.author.username}!"
+        expect(discussion.mentioned_group_members).to_not include discussion.author
+      end
     end
   end
 end

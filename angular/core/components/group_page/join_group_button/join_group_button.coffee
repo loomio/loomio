@@ -15,6 +15,15 @@ angular.module('loomioApp').directive 'joinGroupButton', ->
     $scope.canRequestMembership = ->
       AbilityService.canRequestMembership($scope.group)
 
+    $scope.hasRequestedMembership = ->
+      $scope.group.hasPendingMembershipRequestFrom(Session.user())
+
+    $scope.askToJoinText = ->
+      if $scope.hasRequestedMembership()
+        'join_group_button.membership_requested'
+      else
+        'join_group_button.ask_to_join_group'
+
     $scope.joinGroup = ->
       if AbilityService.isLoggedIn()
         Records.memberships.joinGroup($scope.group).then ->

@@ -1,8 +1,0 @@
-io:
-  frontpage:
-    view_this_in_your_language: 'Spektar ica retosituo en %{language}'
-    link:
-      blog: Blogo
-      try_it: Probar olu
-      more: Plusa
-      public_groups: Publika grupi

@@ -17,6 +17,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_raise_motions,
              :members_can_vote,
              :motions_count,
+             :closed_motions_count,
              :discussions_count,
              :public_discussions_count,
              :group_privacy,
@@ -39,9 +40,9 @@ class GroupSerializer < ActiveModel::Serializer
              :is_subgroup_of_hidden_parent,
              :show_legacy_trial_expired_modal
 
-  has_one :parent, serializer: GroupSerializer, root: 'groups'
+  has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
-  has_one :current_user_membership, serializer: MembershipSerializer, root: 'memberships'
+  has_one :parent, serializer: GroupSerializer, root: :groups
 
   private
 
