@@ -5,9 +5,6 @@ describe Griddler::EmailsController do
   let(:another_user) { create(:user) }
   let(:discussion) { create(:discussion) }
   let(:griddler_params) {{
-    u: user.id,
-    k: user.email_api_key,
-    d: discussion.id,
     mailinMsg: {
       html: "<html><body>Hi!</body></html>",
       text: "Hi!",
@@ -28,9 +25,9 @@ describe Griddler::EmailsController do
     expect { post :create, griddler_params }.to change { Comment.count }.by(1)
   end
 
-  it "responds with 403 when user is not authorized" do
-    griddler_params[:email_api_key] = nil
-    post :create, griddler_params
-    expect(response.status).to eq 403
+  it "does not create a comment when the user is not authorized" do
+    griddler_params[:mailinMsg][:to] = [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{another_user.email_api_key}"}]
+    expect { post :create, griddler_params }.to_not change { Comment.count }
+    expect(response.status).to eq 200
   end
 end
