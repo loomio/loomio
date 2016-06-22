@@ -10,11 +10,20 @@ describe Griddler::EmailsController do
       text: "Hi!",
       subject: "Greetings!",
       from: [{ name: user.name, address: user.email }],
-      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['CANONICAL_HOST']}"}],
+      to: [], # we're stubbing out to with the value below
       cc: [],
       headers: {}
     }
   }}
+  let(:email_params) { EmailParams.new(
+    OpenStruct.new(
+      to: [{
+        host: "loomiohost.org",
+        token: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
+      }],
+      body: "This is a comment!"),
+    reply_host: "loomiohost.org")
+  }
 
   before do
     discussion.group.add_member! user
@@ -22,6 +31,7 @@ describe Griddler::EmailsController do
   end
 
   it "creates a comment via email" do
+    expect(EmailParams).to receive(:new).and_return(email_params)
     expect { post :create, griddler_params }.to change { Comment.count }.by(1)
   end
 
