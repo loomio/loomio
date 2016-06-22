@@ -32,5 +32,5 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
   $scope.contactUs = ->
     IntercomService.contactUs()
 
-  $scope.isOpen = ->
+  $scope.sidebarIsOpen = ->
     $scope.showSidebar

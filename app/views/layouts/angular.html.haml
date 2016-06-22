@@ -23,63 +23,54 @@
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
     %navbar
-    %md_content{layout: "row", flex: ""}
+    %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
       %section{layout: "row", ng_controller: 'SidebarController', ng_cloak: ''}
-        %md-sidenav.md-sidenav-left{md_component_id: 'left', md_is_open: 'isOpen()', md_is_locked_open: '$mdMedia("gt-md") && isOpen()', md_disable_backdrop: '', md_whiteframe: 4}
+        %md-sidenav.md-sidenav-left{md_component_id: 'left', md_is_open: 'showSidebar', md_is_locked_open: '$mdMedia("gt-md") && showSidebar', md_whiteframe: 4}
           %md_content.sidebar__content{flex: "", role: "navigation", layout: "column"}
-            .sidebar__padding{ng_if: "smallScreen()"}
-            %md_list.sidebar__threads
+            %md_list.sidebar__threads{layout: "column"}
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{href: "/dashboard"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
-                  %span.sidebar__list-item-label
-                    %strong Recent
+                  %span Recent
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{href: "/inbox"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
-                  %span.sidebar__list-item-label
-                    %strong Unread
-                  %span
-                    %strong ({{unreadThreadCount()}})
+                  %span Unread
+                  %span ({{unreadThreadCount()}})
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{href: "/dashboard/show_muted"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
-                  %span.sidebar__list-item-label
-                    %strong Muted
+                  %span Muted
             %md_divider.sidebar__divider
-            %md_list.sidebar__groups
+
+            %md_list.sidebar__groups{layout: "column"}
               %md_list_item.md-2-line{ng_repeat: "group in groups()"}
                 %md_button.sidebar__list-item{href: "{{groupUrl(group)}}"}
                   %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
-                  %span.sidebar__list-item-label
-                    %strong {{group.name}}
+                  %span {{group.name}}
             %md_divider.sidebar__divider
-            %md_list.sidebar__user
+            
+            %md_list.sidebar__user{layout: "column"}
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{href: "/profile"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
-                  %span.sidebar__list-item-label
-                    %strong Edit profile
+                  %span Edit profile
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{href: "/email_preferences"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
-                  %span.sidebar__list-item-label
-                    %strong Email settings
+                  %span Email settings
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{href: "{{helpLink()}}", target: "_blank"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
-                  %span.sidebar__list-item-label
-                    %strong Help
+                  %span Help
               %md_list_item.md-2-line{ng_if: 'showContactUs()'}
                 %md_button.sidebar__list-item{ng_click: "contactUs()"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-question-circle
-                  %span.sidebar__list-item-label
-                    %strong Contact
+                  %span Contact
               %md_list_item.md-2-line
                 %md_button.sidebar__list-item{ng_click: "signOut()"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
-                  %span.sidebar__list-item-label
-                    %strong Sign out
+                  %span Sign out
       %md_content.lmo-main-content{flex: ""}
         %ng_outlet{'ng-if' => '!refreshing && !pageError'}
       %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}

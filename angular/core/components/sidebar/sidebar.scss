@@ -1,8 +1,11 @@
 .md-sidenav-left {
   background-color: #fff;
   max-width: 250px;
-  z-index: 1;
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+}
+
+.lmo-sidebar-and-main-container {
+  position: relative;
 }
 
 .lmo-main-content{
@@ -10,31 +13,26 @@
   position: relative;
 }
 
-.md-closed {
-  width: 0px;
-  display: none;
-}
-
 .sidebar__threads, .sidebar__user {
-  flex-basis: content;
+  // flex-basis: content;
 }
 
 .sidebar__list-item {
-  color: $grey-on-grey;
+  display: block;
+  text-align: left;
   border-radius: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
-  padding: 5px 0px 5px 10px;
-  text-align: left;
-  text-transform: inherit;
-  display: block;
-  width: 235px;
+  span {
+    color: $grey-on-grey;
+    font-weight: 600;
+    text-transform: none;
+  }
 }
 
 .sidebar__groups {
-  overflow: auto;
-  flex-shrink: 5;
-  max-height: 275px;
+  overflow-y: scroll;
+  flex: 1;
 }
 
 .sidebar__list-item-icon {
@@ -51,8 +49,4 @@
 
 .sidebar__divider {
   border-top: 1px solid #eee;
-}
-
-.sidebar__padding {
-  padding-top: 50px;
 }
