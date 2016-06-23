@@ -1,19 +1,22 @@
 %header
   %md-toolbar
     .md-toolbar-tools
-      %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()"}
-        %md_icon.fa.fa-lg.fa-bars
-      %h2.navbar__page-title{flex: "grow"}
-        %span {{ title }}
+      .navbar__left
+        %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()"}
+          %md_icon.fa.fa-lg.fa-bars
 
-      .navbar__logo-container{flex: "grow"}
-        %img.lmo-navbar__logo{src: "/img/logo.png"}
+        %h2.navbar__page-title{flex: "grow"}
+          %span {{ title }}
 
-      %navbar_search
-      
-      %notifications
+      .navbar__middle
+        .navbar__logo-container{flex: "grow"}
+          %img.lmo-navbar__logo{src: "/img/logo.png"}
 
-      .buh{ng-if: "!isLoggedIn()"}
-        %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
-          %span{translate: "navbar.sign_in"}
+      .navbar__right
+        %navbar_search
 
+        %notifications
+
+        .buh{ng-if: "!isLoggedIn()"}
+          %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
+            %span{translate: "navbar.sign_in"}
