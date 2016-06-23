@@ -2,11 +2,11 @@
   padding: 5px;
 }
 
-.navbar-search-input-wrapper{
+.navbar-search__input-wrapper{
   position: relative;
 }
 
-.navbar-search-input {
+.navbar-search__input {
   position: relative;
   background-color: $background-color;
   color: $primary-text-color;
@@ -16,21 +16,21 @@
   @media (min-width: $screen-xs-min){width: 200px;}
 }
 
-.navbar-search-input::-webkit-input-placeholder,
-.navbar-search-input:-moz-placeholder,
-.navbar-search-input::-moz-placeholder,
-.navbar-search-input:-ms-input-placeholder {
+.navbar-search__input::-webkit-input-placeholder,
+.navbar-search__input:-moz-placeholder,
+.navbar-search__input::-moz-placeholder,
+.navbar-search__input:-ms-input-placeholder {
    color: $grey-on-grey;
 }
 
-.navbar-search-input-icon {
+.navbar-search__input-icon {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 6px;
+  right: 6px;
   color: $grey-on-white;
 }
 
-.navbar-search-results {
+.navbar-search__results {
   @include thinRoundedBorder;
   position: absolute;
   background-color: white;
@@ -50,16 +50,16 @@
   text-align: center;
 }
 
-.navbar-search-list-item {
+.navbar-search__list-item {
   background: white;
 }
 
 @media (max-width: $medium-max-px) {
-  .navbar-search-input{
+  .navbar-search__input{
     width: 100%;
   }
 
-  .navbar-search-results {
+  .navbar-search__results {
     right: 0px;
     left: 0px;
     margin: 2px 8px;

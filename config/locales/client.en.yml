@@ -190,25 +190,21 @@ en:
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 
-  navbar:
+  sidebar:
     recent: 'Recent'
     unread: 'Unread'
-    groups: 'Groups'
+    muted: 'Muted'
+    edit_profile: 'Edit profile'
+    email_settings: 'Email settings'
+    help: 'Help'
+    contact: 'Contact'
+    sign_out: 'Sign out'
+
+  navbar:
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
-    groups_title: 'View your groups'
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
-    user_actions: 'User actions'
-    user_options:
-      label: 'User options'
-      contact_us: 'Contact us'
-      new_thread: 'New thread'
-      new_group: 'New group'
-      profile: 'Profile'
-      email_settings: 'Email settings'
-      help: 'Help'
-      sign_out: 'Sign out'
     search:
       no_results: 'No threads found'
       close: 'Close search panel'

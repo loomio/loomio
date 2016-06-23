@@ -20,9 +20,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
   $scope.helpLink = ->
     UserHelpService.helpLink()
 
-  $scope.smallScreen = ->
-    $mdMedia("max-width: 1279px")
-
   $scope.unreadThreadCount = ->
     ThreadQueryService.filterQuery(['show_unread', 'only_threads_in_my_groups'], queryType: 'inbox').length()
 
@@ -32,5 +29,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
   $scope.contactUs = ->
     IntercomService.contactUs()
 
-  $scope.sidebarIsOpen = ->
-    $scope.showSidebar
+  $scope.sidebarItemSelected = ->
+    if !$mdMedia("gt-md")
+      $mdSidenav('left').close()

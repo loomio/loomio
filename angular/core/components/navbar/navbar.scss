@@ -5,6 +5,8 @@
   justify-content: space-between;
 }
 
+.md-toolbar-tools a { color: $primary-text-color; }
+
 .navbar__left, .navbar__middle, .navbar__right {
   display: flex;
   align-items: center;
@@ -17,4 +19,9 @@
 
 .lmo-navbar__logo {
   height: 30px;
+}
+
+
+@media (max-width: 600px) {
+  .navbar__page-title { display: none; }
 }
