@@ -28,48 +28,48 @@
         %md-sidenav.md-sidenav-left{md_component_id: 'left', md_is_open: 'showSidebar', md_is_locked_open: '$mdMedia("gt-md") && showSidebar', md_whiteframe: 4}
           %md_content.sidebar__content{flex: "", role: "navigation", layout: "column"}
             %md_list.sidebar__threads{layout: "column"}
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "/dashboard"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{href: "/dashboard"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.fa.fa-lg.fa-clock-o
                   %span Recent
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "/inbox"}
-                  %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{href: "/inbox"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.i.fa.fa-lg.fa-inbox
                   %span Unread
                   %span ({{unreadThreadCount()}})
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "/dashboard/show_muted"}
-                  %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{href: "/dashboard/show_muted"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.i.fa.fa-lg.fa-times-circle
                   %span Muted
             %md_divider.sidebar__divider
 
             %md_list.sidebar__groups{layout: "column"}
-              %md_list_item.md-2-line{ng_repeat: "group in groups()"}
-                %md_button.sidebar__list-item{href: "{{groupUrl(group)}}"}
-                  %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
+              %md_list_item.sidebar__list-item.md-2-line{ng_repeat: "group in groups()"}
+                %md_button.sidebar__list-item-button{href: "{{groupUrl(group)}}"}
+                  %img.md-avatar.lmo-box--tiny.sidebar__list-item-button-group-logo{ng_src: "{{group.logoUrl()}}"}
                   %span {{group.name}}
             %md_divider.sidebar__divider
             
             %md_list.sidebar__user{layout: "column"}
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "/profile"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{href: "/profile"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.fa.fa-lg.fa-cog
                   %span Edit profile
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "/email_preferences"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{href: "/email_preferences"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.fa.fa-lg.fa-envelope-o
                   %span Email settings
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{href: "{{helpLink()}}", target: "_blank"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{href: "{{helpLink()}}", target: "_blank"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.fa.fa-lg.fa-info-circle
                   %span Help
-              %md_list_item.md-2-line{ng_if: 'showContactUs()'}
-                %md_button.sidebar__list-item{ng_click: "contactUs()"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-question-circle
+              %md_list_item.sidebar__list-item.md-2-line{ng_if: 'showContactUs()'}
+                %md_button.sidebar__list-item-button{ng_click: "contactUs()"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.fa.fa-lg.fa-question-circle
                   %span Contact
-              %md_list_item.md-2-line
-                %md_button.sidebar__list-item{ng_click: "signOut()"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
+              %md_list_item.sidebar__list-item.md-2-line
+                %md_button.sidebar__list-item-button{ng_click: "signOut()"}
+                  %md_avatar_icon.sidebar__list-item-button-icon.fa.fa-lg.fa-sign-out
                   %span Sign out
       %md_content.lmo-main-content{flex: ""}
         %ng_outlet{'ng-if' => '!refreshing && !pageError'}

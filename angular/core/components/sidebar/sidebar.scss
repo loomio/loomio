@@ -4,20 +4,15 @@
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
 }
 
-.lmo-sidebar-and-main-container {
-  position: relative;
-}
-
-.lmo-main-content{
-  overflow-y: scroll;
-  position: relative;
-}
-
 .sidebar__threads, .sidebar__user {
   // flex-basis: content;
 }
 
 .sidebar__list-item {
+  min-height: 35px;
+}
+
+.sidebar__list-item-button {
   display: block;
   text-align: left;
   border-radius: 0px;
