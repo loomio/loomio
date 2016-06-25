@@ -8,6 +8,10 @@ class API::RestfulController < ActionController::Base
 
   private
 
+  def required_param(name)
+    params.fetch(name) { raise ActionController::ParameterMissing.new(name) }
+  end
+
   def create_action
     @event = service.create({resource_symbol => resource, actor: current_user})
   end
