@@ -96,7 +96,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    ahoy_email (0.3.0)
+    ahoy_email (0.3.1)
       addressable
       nokogiri
       rails
@@ -585,7 +585,7 @@ GEM
       fog
     safe_shell (1.0.3)
     safe_yaml (1.0.4)
-    safely_block (0.1.0)
+    safely_block (0.1.1)
       errbase
     sass (3.4.13)
     sass-rails (5.0.3)
@@ -685,7 +685,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord_any_of
-  ahoy_email
+  ahoy_email (~> 0.3.1)
   ahoy_matey (~> 1.1.1)
   airbrake
   awesome_print
@@ -779,9 +779,6 @@ DEPENDENCIES
   twitter-text
   uglifier (~> 3.0.0)
   webmock
-
-RUBY VERSION
-   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
