@@ -231,6 +231,8 @@ Loomio::Application.routes.draw do
 
   get '/notifications/dropdown_items'      => 'application#gone'
   get '/u/:key(/:stub)'                    => 'application#gone'
+  get '/g/:key/membership_requests/new'    => 'application#gone'
+  get '/comments/:id'                      => 'application#gone'
 
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end
