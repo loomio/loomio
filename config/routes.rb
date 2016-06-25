@@ -229,5 +229,8 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
 
+  get '/notifications/dropdown_items'      => 'application#gone'
+  get '/u/:key(/:stub)'                    => 'application#gone'
+
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end
