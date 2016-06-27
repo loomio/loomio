@@ -1,0 +1,19 @@
+%h2= "Your weekly summary for #{@since.strftime('%m/%d')} - #{@till.strftime('%m/%d')}"
+
+%p= t(:"email.analytics.stats", @stats)
+
+%table
+  %thead
+    %th= "Name"
+    %th= "Motions created"
+    %th= "Discussions created"
+    %th= "Comments created"
+    %th= "Votes created"
+  %tbody
+    - @stats[:active_users].each do |u|
+      %tr
+        %td= u[:name]
+        %td= u[:motions_created]
+        %td= u[:discussions_created]
+        %td= u[:comments_created]
+        %td= u[:votes_created]

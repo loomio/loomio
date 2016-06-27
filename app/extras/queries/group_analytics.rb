@@ -10,7 +10,7 @@ class Queries::GroupAnalytics
       votes_created:      eventables[:vote].count,
       active_discussions: active_discussions.count,
       active_members:     active_users.count,
-      group_members:      0,
+      group_members:      @group.members.count,
       active_users:       active_users.map  { |u| activity_for(u) }
                                       .sort { |a,b| b[:motions_created] <=> a[:motions_created]}
                                       .take(10)
@@ -24,7 +24,7 @@ class Queries::GroupAnalytics
   end
 
   def active_users
-    @active_users ||= eventables[:all].map(&:author)
+    @active_users ||= eventables[:all].map(&:author).uniq
   end
 
   def activity_for(user)
@@ -51,7 +51,10 @@ class Queries::GroupAnalytics
   end
 
   def eventables_for(kind)
-    Array(kind.to_s.classify.constantize.where(id: events.where(kind: :"new_#{kind}").pluck(:eventable_id)))
+    kind.to_s.classify.constantize
+        .joins(:user)
+        .where(id: events.where(kind: :"new_#{kind}").pluck(:eventable_id))
+        .where('users.email <> ?', ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org')
   end
 
   def events

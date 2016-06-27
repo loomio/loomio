@@ -1,0 +1,19 @@
+%h2= "Your weekly summary for #{@since.strftime('%m/%d')} - #{@till.strftime('%m/%d')}"
+
+%p= "#{@stats[:active_members]} out of #{@stats[:group_members]} members were active in the last week. Your group raised #{@stats[:motions_created]} proposals and made #{@stats[:comments_created]} comments in #{@stats[:active_discussions]} discussion threads."
+
+%table
+  %thead
+    %th= "Name"
+    %th= "Motions created"
+    %th= "Discussions created"
+    %th= "Comments created"
+    %th= "Votes created"
+  %tbody
+    - @stats[:active_users].each do |u|
+      %tr
+        %td= u[:name]
+        %td= u[:motions_created]
+        %td= u[:discussions_created]
+        %td= u[:comments_created]
+        %td= u[:votes_created]

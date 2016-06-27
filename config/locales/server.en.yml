@@ -114,6 +114,8 @@ en:
       specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
       outcome_created: "%{who} set a proposal outcome:"
       you_agreed: You %{past_tense_position}
+    analytics:
+      subject: "%{which_group}'s week on Loomio"
   footer:
     about: About
     blog: Blog
