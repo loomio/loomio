@@ -1,0 +1,16 @@
+- @groups.each do |group|
+  - next unless @discussions_by_group.has_key?(group)
+    = group.full_name + ":"
+    = group_url(group, @utm_hash).html_safe
+    \
+    \
+    \--------------------
+    = @discussions_by_group[group].each do |discussion|
+      - hl = DiscussionHeadline.new(discussion, @time_frame)
+      = discussion.title + ":"
+      = discussion_url(discussion).html_safe
+      - if hl.has_motion?
+      \-
+      = hl.motion.title
+
+\-------------------------------------------------
