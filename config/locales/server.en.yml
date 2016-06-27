@@ -116,6 +116,19 @@ en:
       you_agreed: You %{past_tense_position}
     analytics:
       subject: "%{which_group}'s week on Loomio"
+      title: "Your weekly summary for %{since} - %{till}"
+      stats: "%{active_members} out of %{group_members} members were active in the last week. Your group raised %{motions_created} proposals and made %{comments_created} comments in %{active_discussions} discussion threads."
+      contact_us: "Looking for more stats? <a href='#'>Get in touch</a>."
+      trial_subscription: "%{which_group} is on a <strong>free trial</strong> ending <strong>%{expires_at}</strong>. You can choose a subscription plan <a href='#'>here</a>."
+      trial_expired: "%{which_group} has reached the end of its free Loomio trial. "
+      heart: "❤ from team Loomio"
+      unsubscribe: "This email is sent to coordinators of active Loomio groups. If you'd prefer not to receive these emails, <a href='#'>unsubscribe here</a>."
+      user_table:
+        name: "Name"
+        motions_created: "Proposals created"
+        discussions_created: "Discussions created"
+        comments_created: "Comments created"
+        votes_created: "Votes created"
   footer:
     about: About
     blog: Blog

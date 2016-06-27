@@ -50,7 +50,7 @@ class UserMailer < BaseMailer
   end
 
   def analytics(user:, group:, since: 1.week.ago)
-    @user, @since, @till = user, since, 0.seconds.from_now
+    @user, @group, @since, @till = user, group, since, 0.seconds.from_now
     @stats = Queries::GroupAnalytics.new(group: group, since: @since, till: @till).stats
 
     send_single_mail to: @user.email,
