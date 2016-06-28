@@ -1,0 +1,11 @@
+= t(:"position_verbs.yes").capitalize + ":"
+= motion_url(motion, @utm_hash.merge(position: :yes)).html_safe
+
+= t(:"position_verbs.abstain").capitalize + ":"
+= motion_url(motion, @utm_hash.merge(position: :abstain)).html_safe
+
+= t(:"position_verbs.no").capitalize + ":"
+= motion_url(motion, @utm_hash.merge(position: :no)).html_safe
+
+= t(:"position_verbs.block").capitalize + ":"
+= motion_url(motion, @utm_hash.merge(position: :block)).html_safe

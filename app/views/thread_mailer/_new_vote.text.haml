@@ -1,0 +1,7 @@
+- vote = item.eventable
+- position = vote.position
+
+= vote.author.name
+- past_tense_position = I18n.t("position_verbs.past_tense.#{position}")
+= t('notifications.new_vote', position: past_tense_position)
+= render_email_plaintext(vote.statement)

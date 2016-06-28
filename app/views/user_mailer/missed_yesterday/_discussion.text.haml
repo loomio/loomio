@@ -1,0 +1,22 @@
+= discussion.title
+= discussion_url(discussion).html_safe
+- if discussion.created_at >= @time_start
+  by #{discussion.author.name}
+\
+
+- if discussion.description.present?
+  = discussion.description
+\
+
+- if motion = discussion.motions.voting_or_closed_after(@time_start).first
+  = render 'thread_mailer/motion', motion: motion
+\
+
+- reader = @reader_cache.get_for(discussion)
+- discussion.items.where('created_at > ?', reader.last_read_at || @time_start).order('created_at').each do |item|
+  - next unless ['new_comment', 'new_vote'].include? item.kind
+  = render "thread_mailer/#{item.kind}", item: item
+\
+
+= t :"email.reply_to_this_discussion"
+= discussion_url(discussion, @utm_hash).html_safe
