@@ -1,0 +1,20 @@
+= t(:proposal)+":"
+= motion.name
+= motion_url(motion, @utm_hash).html_safe
+= t(:"email.by_who", person: motion.author.name)
+\
+
+- if motion.closed?
+  = t(:closed) + " " + time_formatted_relative_to_age(motion.closing_at)
+  - if motion.outcome.present?
+    = render_email_plaintext(motion.outcome)
+    \
+  - else
+    = render_email_plaintext(motion.description)
+    \
+- else
+  = render_email_plaintext(motion.description)
+  \
+- unless motion.user_has_voted?(@recipient)
+  = t(:"help.have_your_say")
+  = render 'thread_mailer/vote_buttons' , motion: motion
