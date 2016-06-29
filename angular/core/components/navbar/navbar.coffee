@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'navbar', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar.html'
   replace: true
-  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService) ->
+  controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService, $routeParams) ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
     $scope.title = "Loading"
@@ -12,12 +12,6 @@ angular.module('loomioApp').directive 'navbar', ->
     $scope.hostName = parser.hostname
 
     $scope.isLoggedIn = AbilityService.isLoggedIn
-
-    $scope.$on 'currentComponent', (el, component) ->
-      $scope.selected = component.page
-    
-    $scope.$on 'setTitle', (el, name) ->
-      $scope.title = name
 
     $scope.homePageClicked = ->
       $rootScope.$broadcast 'homePageClicked'

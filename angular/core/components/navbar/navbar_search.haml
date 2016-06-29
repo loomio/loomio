@@ -27,5 +27,5 @@
       %li.navbar-search__list-item.selector-list-header{ng-show: "searchResults && !(searching || noResultsFound())"}
         %h3.lmo-dropdown-heading{translate: "navbar.search.discussions"}
       %li.navbar-search__list-item.navbar-search__list-option.selector-list-item.media{ng-show: "!(searching || noResultsFound())", ng-repeat: "searchResult in searchResults | orderBy: ['-rank', '-lastActivityAt']"}
-        %a.search-result.selector-list-item-link{lmo-href-for: "searchResult", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
+        %a.search-result.selector-list-item-link#navbar-search__selector-link{lmo-href-for: "searchResult", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
           %search_result{result: "searchResult"}

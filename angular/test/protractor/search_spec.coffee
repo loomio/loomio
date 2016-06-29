@@ -7,7 +7,6 @@ describe 'Search', ->
       page.loadPath('setup_discussion')
 
     it 'searches for and loads a thread by title', ->
-      page.click('.lmo-navbar__recent')
-      page.fillIn('.navbar-search-input', 'what star')
-      page.click('.navbar-search-results a.selector-list-item-link')
+      page.fillIn('#primary-search-input', 'what star')
+      page.click('#navbar-search__selector-link')
       page.expectText('.thread-context', "What star sign are you?")

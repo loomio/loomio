@@ -5,16 +5,16 @@ describe 'Login', ->
   describe 'logging in as an existing user', ->
     it 'logs in in-app', ->
       page.loadPath 'view_open_group_as_visitor'
-      page.click '.lmo-navbar__sign-in'
+      page.click '.navbar__sign-in'
       page.fillIn '#user-email', 'jennifer_grey@example.com'
       page.fillIn '#user-password', 'gh0stmovie'
       page.click '.sign-in-form__submit-button'
-      page.expectElement '.navbar-user-options__user-profile-icon'
+      page.expectElement '.sidebar__content'
       page.expectFlash 'Signed in successfully'
 
     it 'does not log in in-app when password is incorrect', ->
       page.loadPath 'view_open_group_as_visitor'
-      page.click '.lmo-navbar__sign-in'
+      page.click '.navbar__sign-in'
       page.fillIn '#user-email', 'jennifer_grey@example.com'
       page.fillIn '#user-password', 'notapassword'
       page.click '.sign-in-form__submit-button'

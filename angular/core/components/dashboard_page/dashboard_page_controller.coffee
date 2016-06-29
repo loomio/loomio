@@ -1,6 +1,6 @@
 angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams) ->
 
-  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
+  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
   $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
 

@@ -4,10 +4,6 @@
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
 }
 
-.sidebar__list-item {
-  min-height: 35px;
-}
-
 .sidebar__list-item-button {
   display: block;
   text-align: left;
@@ -15,10 +11,19 @@
   margin-bottom: 0px;
   margin-top: 0px;
   span {
-    color: $grey-on-grey;
     font-weight: 600;
     text-transform: none;
   }
+}
+
+.sidebar__list-item-button--subgroup {
+  text-transform: none;
+  display: block;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: left;
+  padding-left: 45px;
 }
 
 .sidebar__groups {
@@ -41,4 +46,10 @@
 
 .sidebar__divider {
   border-top: 1px solid #eee;
+}
+
+.selected {
+  .sidebar__list-item-button {
+    background-color: #EBEBEB;
+  }
 }

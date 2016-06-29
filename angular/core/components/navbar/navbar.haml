@@ -5,12 +5,9 @@
         %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()"}
           %md_icon.fa.fa-lg.fa-bars
 
-        %h2.navbar__page-title{flex: "grow"}
-          %span {{ title }}
-
       .navbar__middle
         .navbar__logo-container{flex: "grow"}
-          %img.lmo-navbar__logo{src: "/img/logo.png"}
+          %img.navbar__logo{src: "/img/logo.png"}
 
       .navbar__right
         %navbar_search
@@ -18,5 +15,5 @@
         %notifications
 
         .buh{ng-if: "!isLoggedIn()"}
-          %button.lmo-navbar__sign-in{ng-click: "signIn()"}>
+          %button.navbar__sign-in{ng-click: "signIn()"}>
             %span{translate: "navbar.sign_in"}
