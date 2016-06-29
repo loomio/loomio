@@ -53,7 +53,7 @@ class UserMailer < BaseMailer
     @user, @stats = user, stats
     send_single_mail to: @user.email,
                      subject_key: "email.analytics.subject",
-                     subject_params: { which_group: @stats[:full_name] },
+                     subject_params: { which_group: @stats[:group_name] },
                      locale: locale_fallback(user.locale)
   end
 end

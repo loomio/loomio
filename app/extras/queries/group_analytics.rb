@@ -7,6 +7,9 @@ class Queries::GroupAnalytics
     {
       since:              @since,
       till:               @till,
+      is_trial:           @group.subscription&.kind == 'trial',
+      expires_at:         @group.subscription&.expires_at,
+      group_name:         @group.full_name,
       group_members:      @group.memberships.count,
       motions_created:    eventables[:motion].count,
       comments_created:   eventables[:comment].count,
@@ -15,12 +18,7 @@ class Queries::GroupAnalytics
       active_members:     active_users.count,
       active_users:       active_users.map  { |u| activity_for(u) }
                                       .sort { |a,b| b[:motions_created] <=> a[:motions_created]}
-                                      .take(10),
-      group: {
-        full_name:               @group.full_name,
-        is_trial:                @group.subscription&.kind == 'trial',
-        subscription_expires_at: @group.subscription&.expires_at
-      }
+                                      .take(10)
     }
   end
 
@@ -65,7 +63,9 @@ class Queries::GroupAnalytics
   end
 
   def events
-    @events ||= Event.where(discussion_id: all_discussion_ids).within(@since, @till)
+    @events ||= Event.within(@since, @till)
+                     .where("discussion_id IN (:discussion_ids) OR
+                            (kind = 'new_discussion' AND eventable_id IN (:discussion_ids))", discussion_ids: all_discussion_ids)
   end
 
   def all_discussion_ids

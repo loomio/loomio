@@ -11,11 +11,11 @@
 
 = raw t(:"email.analytics.contact_us")
 
-- if @stats[:group][:is_trial]
-  - if @stats[:group][:subscription_expires_at] > Time.zone.now
-    = raw t(:"email.analytics.trial_subscription", which_group: @stats[:group][:full_name], expires_at: @stats[:group][:subscription_expires_at])
+- if @stats[:is_trial]
+  - if @stats[:expires_at] > Time.zone.now
+    = raw t(:"email.analytics.trial_subscription", which_group: @stats[:group_name], expires_at: @stats[:expires_at])
   - else
-    = raw t(:"email.analytics.trial_expired", which_group: @stats[:group][:full_name])
+    = raw t(:"email.analytics.trial_expired", which_group: @stats[:group_name])
 
 = t(:"email.analytics.heart")
 
