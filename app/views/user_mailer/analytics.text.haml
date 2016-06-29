@@ -1,19 +1,23 @@
-%h2= "Your weekly summary for #{@since.strftime('%m/%d')} - #{@till.strftime('%m/%d')}"
+= "Your weekly summary for #{@stats[:since].strftime('%m/%d')} - #{@stats[:till].strftime('%m/%d')}"
+= '---------------------------------------------------------------------------'
 
-%p= t(:"email.analytics.stats", @stats)
+= t(:"email.analytics.stats", @stats)
 
-%table
-  %thead
-    %th= "Name"
-    %th= "Motions created"
-    %th= "Discussions created"
-    %th= "Comments created"
-    %th= "Votes created"
-  %tbody
-    - @stats[:active_users].each do |u|
-      %tr
-        %td= u[:name]
-        %td= u[:motions_created]
-        %td= u[:discussions_created]
-        %td= u[:comments_created]
-        %td= u[:votes_created]
+= "Name | Motions created | Discussions created | Comments created | Votes created"
+= '---------------------------------------------------------------------------'
+
+- @stats[:active_users].each do |u|
+  = "#{u[:name]}|#{u[:motions_created]}|#{u[:discussions_created]}|#{u[:comments_created]}|#{u[:votes_created]}"
+
+= raw t(:"email.analytics.contact_us")
+
+- if @stats[:group][:is_trial]
+  - if @stats[:group][:subscription_expires_at] > Time.zone.now
+    = raw t(:"email.analytics.trial_subscription", which_group: @stats[:group][:full_name], expires_at: @stats[:group][:subscription_expires_at])
+  - else
+    = raw t(:"email.analytics.trial_expired", which_group: @stats[:group][:full_name])
+
+= t(:"email.analytics.heart")
+
+= '---------------------------------------------------------------------------'
+= raw t(:"email.analytics.unsubscribe")

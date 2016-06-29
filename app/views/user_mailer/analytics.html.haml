@@ -1,4 +1,4 @@
-%h2= t(:"email.analytics.title", since: @since.strftime('%m/%d'), till: @till.strftime('%m/%d'))
+%h2= t(:"email.analytics.title", since: @stats[:since].strftime('%m/%d'), till:  @stats[:till].strftime('%m/%d'))
 
 %p= t(:"email.analytics.stats", @stats)
 
@@ -19,11 +19,12 @@
         %td= (u[:votes_created]       if u[:votes_created] > 0)
 
 %p= raw t(:"email.analytics.contact_us")
-- if @group.subscription.kind == 'trial'
-  - if @group.subscription.expires_at > Time.zone.now
-    %p= raw t(:"email.analytics.trial_subscription", which_group: @group.full_name, expires_at: @group.subscription.expires_at)
+
+- if @stats[:group][:is_trial]
+  - if @stats[:group][:subscription_expires_at] > Time.zone.now
+    %p= raw t(:"email.analytics.trial_subscription", which_group: @stats[:group][:full_name], expires_at: @stats[:group][:subscription_expires_at])
   - else
-    %p= raw t(:"email.analytics.trial_expired", which_group: @group.full_name)
+    %p= raw t(:"email.analytics.trial_expired", which_group: @stats[:group][:full_name])
 
 %p= t(:"email.analytics.heart")
 

@@ -5,15 +5,22 @@ class Queries::GroupAnalytics
 
   def stats
     {
+      since:              @since,
+      till:               @till,
+      group_members:      @group.memberships.count,
       motions_created:    eventables[:motion].count,
       comments_created:   eventables[:comment].count,
       votes_created:      eventables[:vote].count,
       active_discussions: active_discussions.count,
       active_members:     active_users.count,
-      group_members:      @group.members.count,
       active_users:       active_users.map  { |u| activity_for(u) }
                                       .sort { |a,b| b[:motions_created] <=> a[:motions_created]}
-                                      .take(10)
+                                      .take(10),
+      group: {
+        full_name:               @group.full_name,
+        is_trial:                @group.subscription&.kind == 'trial',
+        subscription_expires_at: @group.subscription&.expires_at
+      }
     }
   end
 

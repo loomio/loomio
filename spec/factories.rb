@@ -225,6 +225,7 @@ published_at "2015-11-18 14:28:30"
 
   factory :subscription do
     kind :trial
+    expires_at 1.month.from_now
   end
 
   factory :draft do
