@@ -22,7 +22,6 @@
           {{thread.title}}
         .thread-preview__unread-count{ng-if: "thread.hasUnreadActivity()"}
           ({{thread.unreadActivityCount()}})
-        %outlet{name: "after-thread-preview", model: "thread"}
 
       .thread-preview__text-container{ng-if: "thread.activeProposal()"}
         .thread-preview__proposal-name> {{ thread.activeProposal().name }}
@@ -33,6 +32,8 @@
         .thread-preview__group-name
           {{ thread.group().fullName }} ·
           %smart_time{time: "thread.lastActivityAt"}>
+
+      %outlet{name: "after-thread-preview", model: "thread"}
 
   .thread-preview__star
     %star_toggle{thread: "thread", aria-hidden: "true"}
