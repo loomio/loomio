@@ -1,10 +1,10 @@
 %h2= t(:"email.analytics.title", since: @stats[:since].strftime('%m/%d'), till:  @stats[:till].strftime('%m/%d'))
 
-%p= t(:"email.analytics.stats", @stats)
+%p= raw t(:"email.analytics.stats", @stats)
 
-%table
+%table.stats-table
   %thead
-    %th= t(:"email.analytics.user_table.name")
+    %th
     %th= t(:"email.analytics.user_table.motions_created")
     %th= t(:"email.analytics.user_table.discussions_created")
     %th= t(:"email.analytics.user_table.comments_created")
@@ -28,4 +28,5 @@
 
 %p= t(:"email.analytics.heart")
 
-%p= raw t(:"email.analytics.unsubscribe")
+%p --
+%p.footer= raw t(:"email.analytics.unsubscribe")
