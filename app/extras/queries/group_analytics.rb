@@ -1,4 +1,6 @@
 class Queries::GroupAnalytics
+  include ActionView::Helpers::TextHelper
+
   def initialize(group:, since: 1.week.ago, till: 0.seconds.ago)
     @group, @since, @till = group, since, till
   end
@@ -9,13 +11,12 @@ class Queries::GroupAnalytics
       till:               @till,
       is_trial:           @group.subscription&.kind == 'trial',
       expires_at:         @group.subscription&.expires_at,
-      group_name:         @group.full_name,
       group_members:      @group.memberships.count,
-      motions_created:    eventables[:motion].count,
-      comments_created:   eventables[:comment].count,
-      votes_created:      eventables[:vote].count,
-      active_discussions: active_discussions.count,
-      active_members:     active_users.count,
+      motions:            pluralize(eventables[:motion].count, 'proposal'),
+      comments:           pluralize(eventables[:comment].count, 'comment'),
+      votes:              pluralize(eventables[:vote].count, 'vote'),
+      discussions:        pluralize(active_discussions.count, 'discussion thread'),
+      active_members:     pluralize(active_users.count, 'member'),
       active_users:       active_users.map  { |u| activity_for(u) }
                                       .sort { |a,b| b[:motions_created] <=> a[:motions_created]}
                                       .take(10)

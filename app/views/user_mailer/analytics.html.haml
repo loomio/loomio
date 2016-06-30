@@ -18,15 +18,15 @@
         %td= (u[:comments_created]    if u[:comments_created] > 0)
         %td= (u[:votes_created]       if u[:votes_created] > 0)
 
-%p= raw t(:"email.analytics.contact_us")
+%p= raw t(:"email.analytics.contact_us", contact_link: contact_url)
 
 - if @stats[:is_trial]
   - if @stats[:expires_at] > Time.zone.now
-    %p= raw t(:"email.analytics.trial_subscription", which_group: @stats[:group_name], expires_at: @stats[:expires_at])
+    %p= raw t(:"email.analytics.trial_subscription", which_group: @group.full_name, expires_at: @stats[:expires_at], subscription_link: group_url(@group, payment: true))
   - else
-    %p= raw t(:"email.analytics.trial_expired", which_group: @stats[:group_name])
+    %p= raw t(:"email.analytics.trial_expired", which_group: @group.full_name)
 
 %p= t(:"email.analytics.heart")
 
 %p --
-%p.footer= raw t(:"email.analytics.unsubscribe")
+%p.footer= raw t(:"email.analytics.unsubscribe", contact_link: contact_url)
