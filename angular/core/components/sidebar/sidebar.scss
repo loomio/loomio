@@ -1,7 +1,12 @@
 .md-sidenav-left {
   background-color: #fff;
-  max-width: 250px;
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  max-width: 250px;
+  border-top: 1px solid rgba(0,0,0,.14);
+}
+
+.sidebar__content {
+  margin: 10px 0;
 }
 
 .sidebar__list-item-button {

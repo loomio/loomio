@@ -214,6 +214,7 @@ en:
       proposals: 'Proposals'
       comments: 'Comments'
     sign_in: 'Log In'
+    toggle_sidebar: 'Toggle sidebar'
 
   start_menu:
     title: 'Action button'

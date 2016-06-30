@@ -29,23 +29,23 @@
           %md_content.sidebar__content{flex: "", role: "navigation", layout: "column", ng_click: "sidebarItemSelected()"}
             %md_list.sidebar__threads{layout: "column"}
               %md_list_item.sidebar__list-item--recent{ng_class: "{'selected': onPage('dashboardPage')}"}
-                %md_button.sidebar__list-item-button{href: "/dashboard", ng_click: "isActive()"}
+                %md_button.sidebar__list-item-button{href: "/dashboard", ng_click: "isActive()", "aria-label" => "sidebar.recent"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
                   %span{translate: "sidebar.recent"}
               %md_list_item.sidebar__list-item--unread{ng_class: "{'selected': onPage('inboxPage')}"}
-                %md_button.sidebar__list-item-button{href: "/inbox", ng_click: "isActive()"}
+                %md_button.sidebar__list-item-button{href: "/inbox", ng_click: "isActive()", "aria-label" => "sidebar.unread"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
                   %span{translate: "sidebar.unread"}
                   %span ({{unreadThreadCount()}})
               %md_list_item.sidebar__list-item--muted{ng_class: "{'selected': onPage('dashboardPage', nil, 'show_muted')}"}
-                %md_button.sidebar__list-item-button{href: "/dashboard/show_muted", ng_click: "isActive()"}
+                %md_button.sidebar__list-item-button{href: "/dashboard/show_muted", ng_click: "isActive()", "aria-label" => "sidebar.muted"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
                   %span{translate: "sidebar.muted"}
             %md_divider.sidebar__divider
 
             %md_list.sidebar__groups
               %md_list_item.sidebar__list-item--group{ng_repeat: "group in parentGroups() | orderBy: 'name' track by group.id", ng_class: "{'selected': onPage('groupPage', group.key)}"}
-                %md_button.sidebar__list-item-button{href: "{{groupUrl(group)}}"}
+                %md_button.sidebar__list-item-button{href: "{{groupUrl(group)}}", "aria-label" => "{{group.name}}"}
                   %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
                   %span {{group.name}}
                 %md_list.sidebar__subgroups{ng_if: "group.subgroups().length > 0"}
@@ -57,23 +57,23 @@
             
             %md_list.sidebar__user{layout: "column"}
               %md_list_item.sidebar__list-item--profile{ng_class: "{'selected': onPage('profilePage')}"}
-                %md_button.sidebar__list-item-button{href: "/profile"}
+                %md_button.sidebar__list-item-button{href: "/profile", "aria-label" => "sidebar.edit_profile"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
                   %span{translate: "sidebar.edit_profile"}
               %md_list_item.sidebar__list-item--email-settings{ng_class: "{'selected': onPage('emailSettingsPage')}"}
-                %md_button.sidebar__list-item-button.sidebar__email-settings{href: "/email_preferences"}
+                %md_button.sidebar__list-item-button.sidebar__email-settings{href: "/email_preferences", "aria-label" => "sidebar.email_settings"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
                   %span{translate: "sidebar.email_settings"}
               %md_list_item.sidebar__list-item--help
-                %md_button.sidebar__list-item-button{href: "{{helpLink()}}", target: "_blank"}
+                %md_button.sidebar__list-item-button{href: "{{helpLink()}}", target: "_blank", "aria-label" => "sidebar.help"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
                   %span{translate: "sidebar.help"}
               %md_list_item.sidebar__list-item--contact{ng_if: 'showContactUs()'}
-                %md_button.sidebar__list-item-button{ng_click: "contactUs()"}
+                %md_button.sidebar__list-item-button{ng_click: "contactUs()", "aria-label" => "sidebar.contact"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-question-circle
                   %span{translate: "sidebar.contact"}
               %md_list_item.sidebar__list-item--sign-out
-                %md_button.sidebar__list-item-button{ng_click: "signOut()"}
+                %md_button.sidebar__list-item-button{href: "", ng_click: "signOut()", "aria-label" => "sidebar.sign_out"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
                   %span{translate: "sidebar.sign_out"}
       %md_content.lmo-main-content{flex: ""}

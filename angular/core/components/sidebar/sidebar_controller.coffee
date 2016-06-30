@@ -9,11 +9,10 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
     $scope.currentState = component
 
   $scope.onPage = (page, key, filter) ->
-    console.log($scope.currentState.page == page)
     switch page
       when 'groupPage' then $scope.currentState.key == key
       when 'dashboardPage' then $scope.currentState.page == page && $scope.currentState.filter == filter
-      else $scope.currentPage == page
+      else $scope.currentState.page == page
 
   $scope.groups = ->
     Session.user().groups()
