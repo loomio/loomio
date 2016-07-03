@@ -20,54 +20,51 @@ describe Queries::GroupAnalytics do
   describe 'stats' do
     it 'defaults to 0 if no activity exists' do
       stats = subject.stats
-      expect(stats[:motions_created]).to eq 0
-      expect(stats[:comments_created]).to eq 0
-      expect(stats[:votes_created]).to eq 0
-      expect(stats[:active_discussions]).to eq 0
-      expect(stats[:active_members]).to eq 0
+      expect(stats[:motions]).to eq "0 proposals"
+      expect(stats[:comments]).to eq "0 comments"
+      expect(stats[:votes]).to eq "0 votes"
+      expect(stats[:discussions]).to eq "0 discussion threads"
+      expect(stats[:active_members]).to eq "0 members"
     end
 
     it 'counts the number of new motions' do
       new_motion_event
-      expect(subject.stats[:motions_created]).to eq 1
-      expect(subject.stats[:active_discussions]).to eq 1
+      expect(subject.stats[:motions]).to eq "1 proposal"
+      expect(subject.stats[:discussions]).to eq "1 discussion thread"
       expect(subject.stats[:active_users].count).to eq 1
     end
 
     it 'does not count motions from before the time period' do
       new_motion_event.update(created_at: 3.weeks.ago)
-      expect(subject.stats[:motions_created]).to eq 0
-      expect(subject.stats[:active_discussions]).to eq 0
+      expect(subject.stats[:motions]).to eq "0 proposals"
+      expect(subject.stats[:discussions]).to eq "0 discussion threads"
       expect(subject.stats[:active_users].count).to eq 0
     end
 
     it 'can alter the time period' do
       new_motion_event.update(created_at: 3.weeks.ago)
-      expect(long_range_subject.stats[:motions_created]).to eq 1
-      expect(long_range_subject.stats[:active_discussions]).to eq 1
+      expect(long_range_subject.stats[:motions]).to eq "1 proposal"
+      expect(long_range_subject.stats[:discussions]).to eq "1 discussion thread"
       expect(long_range_subject.stats[:active_users].count).to eq 1
     end
 
     it 'counts the number of new comments' do
       new_comment_event
-      expect(subject.stats[:comments_created]).to eq 1
-      expect(subject.stats[:active_discussions]).to eq 1
+      expect(subject.stats[:comments]).to eq "1 comment"
+      expect(subject.stats[:discussions]).to eq "1 discussion thread"
       expect(subject.stats[:active_users].count).to eq 1
     end
 
     it 'counts the number of new votes' do
       new_vote_event
-      expect(subject.stats[:votes_created]).to eq 1
-      expect(subject.stats[:active_discussions]).to eq 1
+      expect(subject.stats[:votes]).to eq "1 vote"
+      expect(subject.stats[:discussions]).to eq "1 discussion thread"
       expect(subject.stats[:active_users].count).to eq 1
     end
 
     it 'does not double count active discussions' do
       new_comment_event; new_vote_event
-      expect(subject.stats[:active_discussions]).to eq 1
-    end
-
-    it 'breaks down the activity by user' do
+      expect(subject.stats[:discussions]).to eq "1 discussion thread"
     end
 
     it 'sorts users by their motion creation activity' do
