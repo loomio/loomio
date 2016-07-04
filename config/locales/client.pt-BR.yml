@@ -10,6 +10,7 @@ pt-BR:
     notification_volume: Volume de Notificações
     group: Grupo
     groups: Grupos
+    help: Ajuda
     privacy:
       privacy: Privacidade
       public: Público
@@ -88,20 +89,80 @@ pt-BR:
     quiet: Quieto
     mute: Mudo
     unmute: Com som
+  change_volume_form:
+    loud_label: Toda atividade
+    normal_label: Atividade importante
+    quiet_label: Sem e-mails
+    mute_label: Mudo
+    discussion:
+      title: 'Configurações de e-mail para {{title}}'
+      loud_description: Será enviado e-mail pra você sempre que houver atividade neste segmento.
+      normal_description: 'Você receberá e-mail sempre que uma propostafor iniciado, estiver prestes a fechar, ou um resultado for publicado.'
+      quiet_description: Não será enviado e-mail sobre este tópico.
+      apply_to_all: Aplicar estas configurações para os tópicos neste grupo.
+      messages:
+        loud: Serão enviados e-mails de atividades neste grupo
+        normal: Serão enviados e-mails sobre propostas neste tópico.
+        quiet: Não será enviado e-mail sobre este tópico.
+    membership:
+      title: 'Configurações de e-mail para {{title}}'
+      loud_description: Você receberá e-mail sempre que houver atividade neste grupo.
+      normal_description: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
+      quiet_description: Você não receberá e-mail sobre atividade neste grupo.
+      apply_to_all: Aplicar estas configurações para todos os meus grupos.
+      messages:
+        loud: Você receberá e-mails de todas as atividades neste grupo
+        normal: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
+        quiet: Você não receberá e-mail sobre este grupo.
+    all_groups:
+      messages:
+        loud: Você receberá e-mails de todas as atividades em todos os seus grupos.
+        normal: Você receberá e-mail sobre novos tópicos e propostas em todos os seus grupos.
+        quiet: Você não receberá e-mail sobre nenhum dos seus grupos.
+    user:
+      title: Configurações de e-mail para novos grupos
+      loud_description: Você receberá e-mail sempre que houver atividade em quaisquer novos grupos que você entrar.
+      normal_description: Você receberá e-mails sobre novos tópicos e propostas em quaisquer novos grupos que você entrar.
+      quiet_description: Você não receberá e-mail sobre atividade em quaisquer novos grupos que você entrar.
+      apply_to_all: Aplicar estas configurações para todos os meus grupos.
+      messages:
+        loud: Você receberá e-mail de todas as atividades em novos grupos.
+        normal: Você receberá e-mails sobre novos tópicos e propostas em novos grupos.
+        quiet: Você não receberá e-mail sobre novos grupos.
+  mute_explanation_modal:
+    mute_thread: Calar tópico
+    body: >
+      <p>Silenciar significa que você <strong>não será notificado sobre
+      propostas</strong>, ou qualquer outra atividade neste tópico, a menos que
+      alguém @mencione você.</p>
+
+      <p>Tópicos silenciados estão escondidos de tópicos recentes e páginas não
+      lidas também. Para encontrar os seus tópicos silenciados, visite a página
+      tópicos recentes e selecione "Silenciado" no menu "Filtrar tópicos":</p>
   inbox:
     clear: Limpar
     latest: Último
     unread: Não lida
     closing_in: Encerrando
-  session_form:
+  sign_in_form:
+    title: Entre no Loomio
     email_label: 'E-mail:'
+    email_placeholder: you@example.com
     password_label: 'Senha:'
     remember_me: Lembre-me
+    forgot_password: Esqueceu a senha?
     sign_in: Login
+    signed_in: Entrou com sucesso
+    oauth:
+      title: 'Ou entre com uma conta de terceiros:'
+      facebook: Entre com o Facebook
+      twitter: Entre com o Twitter
+      google: Entre com o Google
+      github: Entre com o Github
   comment_form:
     aria_label: Adicionar um comentário
     attachments:
-      aria_label: Anexar um arquivo
+      add_attachment: Anexar um arquivo
       remove_attachment: Remover anexo
     messages:
       created: Comentário adicionado
@@ -118,6 +179,7 @@ pt-BR:
       label: Postagem
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
     public_privacy_notice: Seu comentário será visível para qualquer pessoa na web
+    sign_in: Entre para se juntar à conversa
   navbar:
     recent: Recente
     unread: Não lida
@@ -145,6 +207,7 @@ pt-BR:
       discussions: Tópicos
       proposals: Propostas
       comments: Comentários
+    sign_in: Entrar
   start_menu:
     title: Botão de ação
     start_group: Iniciar Grupo
@@ -222,13 +285,15 @@ pt-BR:
     start_a_proposal: Iniciar uma proposta
     edit_proposal: Editar proposta
     what_does_a_proposal_do: Propostas permitem que você veja como todos se sentem sobre um determinado curso de ação.
-    editing_title_and_description_forbidden: 'Você não pode alterar o título ou a descrição de uma proposta depois que pessoas votaram. Se os detalhes foram alterados, por favor, feche a proposta e inicie outra'
-    title_placeholder: 'Eg: Vá para a lua'
+    proposal_ideas: Precisa de ideias para escrever uma boa proposta?
+    proposal_ideas_title: 9 maneiras de usar uma proposta no Loomio para transformar conversa em ação
+    editing_title_and_description_forbidden: 'Você não pode alterar o título ou a descrição de uma proposta depois que pessoas votaram. Se os detalhes foram alterados, por favor, feche a proposta e inicie outra.'
+    title_placeholder: 'E. g.: Vamos pra lua'
     title_label: Título
     closes_at_label: Encerra em
     closes: Fecha
     details_label: Detalhes
-    details_placeholder: Dê detalhes suficientes para que todos saibam exatamente o que significa concordar ou discordar ou o que seja
+    details_placeholder: Dê detalhes suficientes para que todos saibam exatamente o que significa concordar ou discordar com a sua proposta
   discussion_record:
     created: 'O tópico {{title}} foi criado com sucesso em {{groupName}}'
     updated: 'Mudanças salvas para {{title}}'
@@ -274,10 +339,21 @@ pt-BR:
       preços e estamos pedindo grupos que tenham usado Loomio por um tempo para
       escolher um plano que lhes for convieniente.</p>
     submit: Mostre-me os planos
+  angular_welcome_modal:
+    heading: 'Bem-vindo ao novo Loomio!'
+    context: 'Temos trabalhado duro para construir um fantástico novo Loomio. Todas as suas discussões e recursos favoritos no Loomio ainda estão aqui, além de novas grandes mudanças:'
+    cleaner: 'Interface mais clara e intuitiva: mais fácil para começar grupos, convidar pessoas e configurar definições.'
+    interactive: 'O painel interativo torna mais fácil ficar em dia: atualizações acontecem ao vivo na tela.'
+    mobile_ready: 'Projetado para todos os seus dispositivos, desde smartphone até desktop.'
+    accessible: "É acessível a pessoas cegas e traduzido para <a href='https://loomio.org/translation' target='_blank'>montões de idiomas</a>."
+    emojis: 'E você pode utilizar emojis!'
+    ok_got_it: 'OK, entendi!'
   group_welcome_modal:
-    heading: Bem-vindo ao seu novo grupo
-    first_step: 'Você é o <strong>coordenador</strong> do grupo, que é como ser um anfitrião. Assista ao vídeo e confira os exemplos de tópicos.'
-    second_step: 'Quando estiver pronto, <strong>convide pessoas</strong>.'
+    creator_heading: Bem-vindo ao seu novo grupo
+    member_heading: Bem-vindo ao Loomio
+    creator_info: 'Você é o <strong>coordenador</strong> do grupo, que é como ser um anfitrião. Assista ao vídeo e confira os exemplos de assuntos.'
+    member_info: 'Assista esse vídeo para uma visão geral de como o Loomio funciona. Em seguida, tente postar um comentário em uma discussão ou iniciar uma!'
+    creator_footer: 'Quando estiver pronto, <strong>convide pessoas</strong>.'
     ok_got_it: 'OK, entendi!'
   group_cover_modal:
     heading: Nova foto da capa
@@ -293,6 +369,7 @@ pt-BR:
   join_group_button:
     join_group: Entrar no grupo
     ask_to_join_group: Pedir para entrar no grupo
+    membership_requested: Solicitação de membro pendente
     messages:
       joined_group: 'Você agora é um membro do(a) {{group}}'
   membership_request_form:
@@ -348,6 +425,7 @@ pt-BR:
       manage_members: Gerenciar Membros
       add_subgroup: Adicionar Subgrupo
       manage_subscription: 'Gerenciar Inscrições do Grupo '
+      email_settings: Configurações de e-mail
       leave_group: Sair do Grupo
       deactivate_group: Desativar Grupo
     deactivate_group:
@@ -404,20 +482,28 @@ pt-BR:
     standard: Padrão
     plus: Plus
     free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
-    get_started_for_free: Comece de graça
+    start_group: Iniciar grupo
+    gift_body: Para grupos sem orçamento
     support_before: Estou feliz por
     support_link: falar com você
     support_after: 'sobre como estender o seu teste, ou com quaisquer outras perguntas você pode ter.'
     remind_me_later: Lembrar-me mais tarde
+    gift_donation_ask: Nós pediremos aos membros do seu grupo por doações
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte por e-mail
+    slack_integration_html: |
+      integração <strong>Slack</strong>
     standard_price_html: |
-      US <strong>$19</strong>/mês<br><span>ou</span> $190/ano
+      US<strong>$19</strong>/mês<br><span>or</span> $190/ano
     plus_body: 'Tudo do Padrão, mais:'
+    multiple_groups: múltiplos grupos
     premium_support: suporte premium
+    custom_subdomain_html: |
+      subdomínio personalizado,<br />
+      e.g. <strong>seugrupo</strong>.loomio.org
     plus_price_html: |
-      US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano
+      US<strong>$179</strong>/mês<br><span>or</span> $1790/ano
     select: Selecione
   subscription_success_modal:
     heading: 'Obrigado por configurar sua inscrição!'
@@ -487,9 +573,7 @@ pt-BR:
   group_help_card:
     title: Ajuda
     ten_tips_article_title: 10 dicas para fazer grandes decisões com Loomio
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 maneiras de usar uma proposta no Loomio para transformar uma conversa em ação
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: Solicitações para inclusão de membros
     approve: Aprovar
@@ -599,8 +683,21 @@ pt-BR:
     update_profile: Atualizar perfil
   email_settings_page:
     header: Configurações de e-mail
+    all_groups: Configurações para todos os grupos
     daily_summary_label: E-mail de resumo diário
+    daily_summary_description: 'Todas as manhãs, você receberá um e-mail com qualquer atividade que você perdeu no dia anterior. Este e-mail fornece uma rotina fácil para manter-se atualizado com a atividade no Loomio.'
+    on_participation_label: Inscrever-se na participação
+    on_participation_description: 'Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente.'
+    mentioned_label: Menções
     mentioned_description: 'Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer.'
+    update_settings: Atualizar configurações para todos os grupos
+    specific_groups: Configurações para grupos específicos
+    default_settings:
+      loud_description: 'Quando você entrar em um novo grupo, você receberá e-mail <strong>sempre que houver atividade</strong>.'
+      normal_description: 'Quando você entrar em um novo grupo, você receberá e-mails sobre <strong>novos tópicos e propostas</strong>.'
+      quiet_description: 'Quando você entrar em um novo grupo, você <strong>não receberá e-mails sobre atividades</strong>.'
+    change_default: Modificar padrão
+    edit: Editar
     messages:
       updated: Configurações de e-mail atualizadas
   dashboard_page:
@@ -639,6 +736,9 @@ pt-BR:
       unread: '{{count}} itens não lidos.'
       current_proposal: 'Proposta atual: {{name}}.'
       you_voted: 'Você votou: {{position}}.'
+    thread_preview:
+      you_voted: 'Você votou {{position}}'
+      undecided: Você está indeciso
     threads_from:
       group: Tópicos de
       proposals: Propostas
@@ -672,11 +772,14 @@ pt-BR:
     liked_by_names_and_name: 'Curtido por {{joinedNames}} e {{name}}.'
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited: Editado
+    volume:
+      mute_message: Tópico mudo
   thread_group:
     aria_label: Nome do grupo
   thread_context:
     aria_label: Contexto do tópico
     thread_options: Opções do tópico
+    email_settings: Configurações de e-mail
     edit_thread: Editar
     move_thread: Mover
     print_thread: Imprimir
@@ -739,6 +842,7 @@ pt-BR:
   proposal_outcome_updated_item:
     proposal_outcome_updated: 'atualizou o resultado da proposta:'
   discussion_edited_item:
+    attachment_ids: atualizou os anexos do tópico
     title: 'atualizou o título do tópico: <span>{{title}}</span>'
     description: atualizou o contexto do tópico
     description_title: atualizou título e contexto do tópico
@@ -748,6 +852,8 @@ pt-BR:
     private_title: atualizou título e privacidade do tópico
     description_private: atualizou contexto e privacidade do tópico
     description_private_title: 'atualizou título, contexto e privacidade do tópico'
+  discussion_moved_item:
+    discussion_moved: 'moveu o tópico de <span>{{group}}</span>'
   contact_message_form:
     contact_us: Contato
     name_label: Seu nome
@@ -877,6 +983,11 @@ pt-BR:
     invitation: Dicas para escrever um ótimo convite
     proposal: Dicas para escrever uma proposta clara
     vote: Você pode mudar sua posição a qualquer momento
+  explore_page:
+    header: Conheça grupos no Loomio
+    search_placeholder: Procure por grupo público no Loomio
+    multiple_search_results: '{{resultCount}} grupos públicos correspondentes <strong>{{searchTerm}}:</strong>'
+    no_results_found: '<strong>Não é possível localizar o grupo que você está procurando?</strong> Se a privacidade de um grupo está definida como "secreto", não vai aparecer aqui. Se você conhece quem coordena o grupo, você poderia pedir um convite.'
   angular:
     switch_back: Mude de volta para o antigo Loomio
     give_feedback: Dê suas opiniões

@@ -1,6 +1,6 @@
 it:
   common:
-    confirm_discard_changes: Rinunci ai cambiamenti?
+    confirm_discard_changes: Scarta le modifiche?
     time:
       am: am
       pm: pm
@@ -93,15 +93,9 @@ it:
     latest: Più recente
     unread: Non letto
     closing_in: In chiusura
-  session_form:
-    email_label: 'Email:'
-    password_label: Password
-    remember_me: Ricordami
-    sign_in: Login
   comment_form:
     aria_label: Aggiungi un commento
     attachments:
-      aria_label: Allega un file
       remove_attachment: "Rimuovi l'allegato"
     messages:
       created: Commento inserito
@@ -222,13 +216,10 @@ it:
     start_a_proposal: Lancia una proposta
     edit_proposal: Modifica proposta
     what_does_a_proposal_do: "Le proposte permettono di vedere l'opinione di tutti su un particolare corso d'azione."
-    editing_title_and_description_forbidden: "Non puoi cambiare il titolo di una proposta dopo che altre persone hanno espresso il loro voto su di essa. Se qualcosa è cambiato, chiudi questa proposta e fanne iniziare un'altra"
-    title_placeholder: 'Ad esempio: andiamo sulla Luna'
     title_label: Titolo
     closes_at_label: Chiude a
     closes: Chiude
     details_label: Dettagli
-    details_placeholder: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
   discussion_record:
     created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
     updated: 'Salva i cambiamenti a {{title}}'
@@ -268,9 +259,6 @@ it:
     heading: "Grazie per aver usato Loomio quest'anno!"
     submit: Mostra i piani tariffari
   group_welcome_modal:
-    heading: 'Benvenuto/a nel tuo nuovo gruppo!'
-    first_step: "Tu sei il <strong>coordinatore</strong> del gruppo, che è un po' come essere il padrone di casa. Guarda il video, e poi dai un'occhiata alle discussioni di esempio."
-    second_step: 'Quando sei pronto, <strong>invita altre persone</strong> a partecipare.'
     ok_got_it: 'E vai!'
   group_cover_modal:
     heading: Nuova immagine di copertina
@@ -386,7 +374,6 @@ it:
     gift: Regalo
     standard: Standard
     plus: Plus
-    get_started_for_free: Inizia gratis
     support_before: I sono contento di
     support_link: parlare con te
     support_after: 'di estendere la tua versione di prova, o di qualsiasi altra domanda tu possa avere'
@@ -394,12 +381,8 @@ it:
     unlimited_members: numero di membri illimitato
     unlimited_decisions: numero di decisioni illimitato
     email_support: supporto email
-    standard_price_html: |
-      US <strong>$19</strong>/mese<br><span>oppure</span> $190/anno
     plus_body: 'Ciò che include la versione Standard, più:'
     premium_support: supporto premium
-    plus_price_html: |
-      US <strong>$179</strong>/mese<br><span>oppure</span> $1790/anno
     select: Seleziona
   subscription_success_modal:
     heading: 'Grazie per aver completato la tua sottoscrizione!'

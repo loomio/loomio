@@ -10,6 +10,7 @@ sr:
     notification_volume: Obim Notifikacija
     group: Grupa
     groups: Grupe
+    help: Pomoć
     privacy:
       privacy: Privatnost
       public: Javno
@@ -88,20 +89,48 @@ sr:
     quiet: Tiho
     mute: Isključeno
     unmute: Uključi
+  change_volume_form:
+    loud_label: Sva aktivnost
+    normal_label: Važne aktivnosti
+    quiet_label: Nema ePoruka
+    mute_label: Utišaj
+    discussion:
+      title: 'Opcije ePoruka za {{title}}'
+      loud_description: Dobičete ePoruku kada god ima aktivnosti u ovoj niti.
+      quiet_description: Nećete biti obaveštavani o ovoj niti.
+      apply_to_all: Primeni ove opcije na svim nitima u ovoj grupi.
+      messages:
+        loud: Dobićete ePoruku o aktivnostima u ovoj niti.
+        normal: Bićete obavešteni ePorukom o predlozima u ovoj niti.
+        quiet: Nećete biti obaveštavani ePorukom o ovoj grupi.
+    membership:
+      title: 'Opcije ePoruka za {{title}}'
+    user:
+      messages:
+        quiet: Nećete primati ePoruke o novim grupama.
+  mute_explanation_modal:
+    mute_thread: Utišaj nit
   inbox:
     clear: Očisti
     latest: Poslednje
     unread: Nepročitano
     closing_in: Zatvaranje
-  session_form:
-    email_label: 'eAdresa:'
+  sign_in_form:
+    email_label: 'ePoruka:'
+    email_placeholder: tvojeime@primer.com
     password_label: 'Lozinka:'
-    remember_me: Zapamti Me
+    remember_me: Zapamti me
+    forgot_password: Zaboravljena lozinka?
     sign_in: Prijava
+    oauth:
+      facebook: Prijavi se sa Facebook
+      twitter: Prijavi se sa Twitter
+      google: Prijavi se sa Google
+      github: Prijavi se sa Github
   comment_form:
     aria_label: Dodaj komentar
     attachments:
-      aria_label: Prikači datoteku
+      add_attachment: Prikači datoteku
       remove_attachment: Ukloni dodatak
     messages:
       created: Komentar je dodat
@@ -118,6 +147,7 @@ sr:
       label: Upiši
     private_privacy_notice: 'Vaš komentar će biti vidljiv samo za članove {{groupName}}.'
     public_privacy_notice: Vaš komentar će biti vidljiv svima na mreži.
+    sign_in: Prijavite se za priključivanje konverzaciji
   navbar:
     recent: Poslednje
     unread: Nepročitano
@@ -145,6 +175,7 @@ sr:
       discussions: Niti
       proposals: Predlozi
       comments: Komentari
+    sign_in: Prijavi se
   start_menu:
     title: Dugme akcije
     start_group: Kreiraj Grupu
@@ -219,13 +250,12 @@ sr:
     start_a_proposal: Kreiraj predlog
     edit_proposal: Izmeni predlog
     what_does_a_proposal_do: Predlozi omogućavaju da vidite kako se svi osećaju po pitanju određenog kursa akcije.
-    editing_title_and_description_forbidden: 'Ne možete promeniti naslov ili opis predloga nakon što su ljudi glasali. Ako su se detalji promenili, molimo Vas zatvorite predlog i iznesite novi.'
-    title_placeholder: Npr. Idemo na mars
+    proposal_ideas: Trebaju ti ideje za pisanje dobrog predloga?
+    title_placeholder: 'Npr: Hajdemo na mesec'
     title_label: Naslov
     closes_at_label: 'Zatvara se '
     closes: Zatvaranja
     details_label: Detalji
-    details_placeholder: Dajte dovoljno detalja tako da svi tačno znaju šta znači složiti se ili ne složiti se ili šta god
   discussion_record:
     created: 'Nit {{title}} je uspešno kreirana u {{groupName}}'
     updated: 'Sačuvane promene za {{title}}'
@@ -264,10 +294,9 @@ sr:
   legacy_trial_expired_modal:
     heading: 'Hvala što ste koristili Loomio ove godine!'
     submit: Pokaži mi pakete
+  angular_welcome_modal:
+    heading: 'Dobrodošli na novi Lumio!'
   group_welcome_modal:
-    heading: Dobrodošli u svoju novu grupu
-    first_step: 'Vi ste <strong>koordinator</strong>, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
-    second_step: 'Kada ste spremni, <strong>pozovite ljude</strong> da uđu.'
     ok_got_it: 'U redu, shvatam!'
   group_cover_modal:
     heading: Nova pokrivna slika
@@ -389,20 +418,21 @@ sr:
     standard: Standardno
     plus: Plus
     free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
-    get_started_for_free: Počni besplatno
+    start_group: Kreiraj grupu
+    gift_body: Za grupe bez budžeta
     support_before: Imam čast da
     support_link: pričam sa tobom
     support_after: o produženju probnog perioda ili o bilo kom pitanju koje možda imaš.
     remind_me_later: Podseti me kasnije
+    gift_donation_ask: Pitaćemo članove Vaše grupe da doniraju
     unlimited_members: neograničeno članova
     unlimited_decisions: neograničeno odluka
     email_support: podrška ePorukom
-    standard_price_html: |
-      US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
+    slack_integration_html: |
+      <strong>Slack</strong> integracija
     plus_body: 'Sve u Standardno, plus:'
+    multiple_groups: više grupa
     premium_support: premijum podrška
-    plus_price_html: |
-      US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
     select: Odaberi
   subscription_success_modal:
     heading: 'Hvala za postavljanje tvoje pretplate!'
@@ -894,4 +924,14 @@ sr:
     new_application_title: Nova Aplikacija
     edit_application_title: Osveži aplikaciju
     name_label: Ime
+    new_application_submit: Kreiraj Aplikaciju
     edit_application_submit: Osveži aplikaciju
+    messages:
+      logo_changed: Logo je ažuriran.
+      created: "Napravljeno '{{name}}'"
+      updated: "Ažurirano '{{name}}'"
+  remove_app_form:
+    title: 'Deaktiviraj {{name}}'
+    submit: Deaktiviraj
+    messages:
+      success: "'{{name}}' je uspešno deaktivirano"

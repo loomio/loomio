@@ -88,15 +88,9 @@ el:
     latest: Τελευταία
     unread: Αδιάβαστα
     closing_in: Κλείνει
-  session_form:
-    email_label: 'Ηλεκτρονική Ταχυδρομείο:'
-    password_label: 'Κωδικός:'
-    remember_me: Να με θυμάσε
-    sign_in: Σύνδεση
   comment_form:
     aria_label: Πρόσθεσε ένα σχόλιο
     attachments:
-      aria_label: Επισύναψε ένα αρχείο
       remove_attachment: Αφαίρεσε συννημένο
     messages:
       created: Το σχόλιο προστέθηκε
@@ -212,13 +206,10 @@ el:
     start_a_proposal: Ξεκινήστε μια πρόταση
     edit_proposal: Επεξεργασία πρότασης
     what_does_a_proposal_do: Οι προτάσεις σας αφήνουν να δείτε πως αισθάνεται ο καθένας για μια συγκεκριμένη πορεία δράσης.
-    editing_title_and_description_forbidden: "Δεν μπορείτε να αλλάξετε τον τίτλο ή την περιγραφή μιας πρότασης εφ' όσον έχουν ψηφίσει άτομα. Εάν οι λεπτομέρειες έχουν αλλάξει, παρακαλούμε κλείστε την πρόταση και ξεκινήστε άλλη"
-    title_placeholder: 'π.χ.: Πάμε στο φεγγάρι'
     title_label: Τίτλος
     closes_at_label: Κλείνει στις
     closes: Κλείνει
     details_label: Λεπτομέρειες
-    details_placeholder: Δώστε αρκετές πληροφορίες ώστε ο καθένας να γνωρίζει τι σημαίνει να συμφωνεί ή να διαφωνεί ή οτιδήποτε άλλο
   discussion_record:
     created: 'Το θέμα {{title}} δημιουργήθηκε επιτυχώς στην ομάδα {{groupName}}'
     updated: 'Οι αλλαγές αποθηκεύτηκαν στον τίτλο {{title}}'
@@ -287,7 +278,6 @@ el:
     gift: Δώρο
     standard: Τυπικό
     plus: Πρόσθετο
-    get_started_for_free: Ξεκινήστε δωρεάν
     unlimited_members: απεριόριστα μέλη
     unlimited_decisions: απεριόριστες αποφάσεις
     email_support: υποστήριξη μέσω ηλεκτρονικού ταχυδρομείου

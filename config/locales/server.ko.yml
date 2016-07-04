@@ -81,13 +81,9 @@ ko:
     unlimited_members: 멤버 제한 없음
     unlimited_decisions: 의사결정 횟수 제한 없음
     email_support: 이메일 지원
-    standard_price_html: |
-      <strong>$19</strong>미국달러/월<br><span>또는 </span> $190 미국달러/년
     plus_body: '일반 플랜의 모든 사항, 게다가:'
     premium_support: 프리미엄 지원
     usage_statistics: 사용량 통계
-    plus_price_html: |
-      <strong>$179</strong>미국달러/월<br><span>또는 </span> $1790 미국달러/년
   contact_page:
     contact_us: 연락하기
     labels:
