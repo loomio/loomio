@@ -1,12 +1,12 @@
 %header
-  %md-toolbar
+  %md_toolbar
     .md-toolbar-tools
       .navbar__left
         %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
           %md_icon.fa.fa-lg.fa-bars
 
       .navbar__middle
-        .navbar__logo-container{flex: "grow"}
+        .navbar__logo-container
           %img.navbar__logo{src: "/img/logo.png"}
 
       .navbar__right

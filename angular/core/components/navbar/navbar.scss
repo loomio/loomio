@@ -1,15 +1,29 @@
 .md-toolbar-tools {
   background-color: #fff;
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  max-height: 48px;
   z-index: 2;
-  justify-content: space-between;
 }
 
 .md-toolbar-tools a { color: $primary-text-color; }
 
 .navbar__left, .navbar__middle, .navbar__right {
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-basis: 33%;
+  flex-grow: 0;
+}
+
+.navbar__left {
+  justify-content: flex-start;
+}
+
+.navbar__middle {
+  justify-content: center;
+}
+
+.navbar__right {
+  justify-content: flex-end;
 }
 
 .navbar__sidenav-toggle {
@@ -21,7 +35,7 @@
   height: 30px;
 }
 
-
-@media (max-width: 600px) {
-  .navbar__page-title { display: none; }
+.md-button {
+  line-height: 48px;
+  min-height: 48px;
 }
