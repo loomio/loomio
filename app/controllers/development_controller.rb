@@ -46,6 +46,12 @@ class DevelopmentController < ApplicationController
     redirect_to dashboard_url
   end
 
+  def setup_dashboard_as_visitor
+    patrick
+    recent_discussion
+    redirect_to dashboard_url
+  end
+
   def setup_inbox
     sign_in patrick
     starred_discussion; recent_discussion group: another_test_group
@@ -57,6 +63,8 @@ class DevelopmentController < ApplicationController
     group = Group.new(name: 'Fresh group')
     StartGroupService.start_group(group)
     group.add_admin! patrick
+    membership = Membership.find_by(user: patrick, group: group)
+    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(group)
   end
@@ -65,6 +73,14 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group.add_member! emilio
     redirect_to group_url(test_group)
+  end
+
+  def setup_group_with_welcome_modal
+    group = Group.new(name: 'Welcomed group')
+    StartGroupService.start_group(group)
+    group.add_admin! patrick
+    sign_in patrick
+    redirect_to group_url(group)
   end
 
   # to test subdomains in development
@@ -117,40 +133,42 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_on_trial_admin
-    sign_in patrick
     group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
     GroupService.create(group: group_on_trial, actor: patrick)
+    membership = Membership.find_by(user: patrick, group: group_on_trial)
+    membership.experienced! 'welcomeModal'
     group_on_trial.add_member! jennifer
+    sign_in patrick
     redirect_to group_url(group_on_trial)
   end
 
   def setup_group_on_trial
-    sign_in jennifer
     GroupService.create(group: test_group, actor: patrick)
+    sign_in jennifer
     redirect_to group_url(test_group)
   end
 
   def setup_group_with_expired_trial
     GroupService.create(group: test_group, actor: patrick)
-    sign_in patrick
     subscription = test_group.subscription
     subscription.update_attribute :expires_at, 1.day.ago
+    sign_in patrick
     redirect_to group_url(test_group)
   end
 
   def setup_group_with_overdue_trial
     GroupService.create(group: test_group, actor: patrick)
-    sign_in patrick
     subscription = test_group.subscription
     subscription.update_attribute :expires_at, 20.days.ago
+    sign_in patrick
     redirect_to group_url(test_group)
   end
 
   def setup_group_on_paid_plan
     GroupService.create(group: test_group, actor: patrick)
-    sign_in patrick
     subscription = test_group.subscription
     subscription.update_attribute :kind, 'paid'
+    sign_in patrick
     redirect_to group_url(test_group)
   end
 
@@ -183,6 +201,8 @@ class DevelopmentController < ApplicationController
     @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
                                 group_privacy: 'secret')
     @test_group.add_admin! patrick
+    membership = Membership.find_by(user: patrick, group: @test_group)
+    membership.experienced! 'welcomeModal'
     test_empty_draft
     redirect_to group_url(test_group)
   end
@@ -265,32 +285,38 @@ class DevelopmentController < ApplicationController
     redirect_to root_url
   end
 
-  def view_secret_group_as_non_member
+  def view_open_group_as_non_member
     sign_in patrick
-    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
+    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
+    membership_granted_upon: 'request',
+    group_privacy: 'open')
+    @test_group.add_admin! jennifer
+    @test_discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @test_group)
     redirect_to group_url(test_group)
   end
 
   def view_closed_group_as_non_member
     sign_in patrick
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed')
+                                group_privacy: 'closed',
+                                discussion_privacy_options: 'public_or_private')
+    @test_group.add_admin! jennifer
+    @test_discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @test_group)
     redirect_to group_url(test_group)
   end
 
-  def view_open_group_as_non_member
+  def view_secret_group_as_non_member
     sign_in patrick
-    @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
-                                membership_granted_upon: 'request',
-                                group_privacy: 'open')
-    redirect_to group_url(test_group)
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    redirect_to group_url(@test_group)
   end
 
   def view_open_group_as_visitor
     @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 membership_granted_upon: 'request',
                                 group_privacy: 'open')
+    @test_group.add_admin! jennifer
     @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
     @test_proposal = @test_discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
     @test_proposal.close!
@@ -300,8 +326,18 @@ class DevelopmentController < ApplicationController
   def view_closed_group_as_visitor
     @test_group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',
-                                group_privacy: 'closed')
-    @test_discussion = @test_group.discussions.create!(title: 'I carried a watermelon', private: true, author: jennifer)
+                                group_privacy: 'closed',
+                                discussion_privacy_options: 'public_or_private')
+    @test_group.add_admin! jennifer
+    @test_discussion = @test_group.discussions.create!(title: 'This thread is private', private: true, author: jennifer)
+    @public_discussion = @test_group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
+    redirect_to group_url(@test_group)
+  end
+
+  def view_secret_group_as_visitor
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
     redirect_to group_url(@test_group)
   end
 
@@ -310,6 +346,8 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'open')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
+    membership = Membership.find_by(user: patrick, group: @test_group)
+    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -319,6 +357,8 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'closed')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
+    membership = Membership.find_by(user: patrick, group: @test_group)
+    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -328,6 +368,8 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'secret')
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
+    membership = Membership.find_by(user: patrick, group: @test_group)
+    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -439,6 +481,12 @@ class DevelopmentController < ApplicationController
                               email_when_mentioned:             false,
                               email_on_participation:           false)
     redirect_to dashboard_url
+  end
+
+  def email_settings_as_logged_in_user
+    test_group
+    sign_in patrick
+    redirect_to email_preferences_url(unsubscribe_token: patrick.unsubscribe_token)
   end
 
   def email_settings_as_restricted_user

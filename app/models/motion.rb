@@ -1,6 +1,7 @@
 class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
+  include HasMentions
 
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
@@ -8,6 +9,7 @@ class Motion < ActiveRecord::Base
 
   belongs_to :discussion
   update_counter_cache :discussion, :motions_count
+  update_counter_cache :discussion, :closed_motions_count
 
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
@@ -22,6 +24,7 @@ class Motion < ActiveRecord::Base
 
   include Translatable
   is_translatable on: [:name, :description]
+  is_mentionable  on: :description
 
   delegate :email, to: :author, prefix: :author
   delegate :name, to: :author, prefix: :author
@@ -49,6 +52,16 @@ class Motion < ActiveRecord::Base
   scope :voting_or_closed_after,   -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
   scope :chronologically, -> { order('created_at asc') }
+
+  scope :closing_soon_not_published, -> {
+     voting
+    .joins("LEFT OUTER JOIN events e ON e.eventable_id = motions.id AND e.eventable_type = 'Motion'")
+    .where("NOT EXISTS (SELECT 1 FROM events
+                WHERE events.created_at     > ? AND
+                      events.eventable_id   = motions.id AND
+                      events.eventable_type = 'Motion' AND
+                      events.kind           = 'motion_closing_soon')", 2.days.ago)
+  }
 
   def proposal_title
     name

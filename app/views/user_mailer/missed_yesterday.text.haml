@@ -1,0 +1,22 @@
+Here’s what happened on Loomio yesterday.
+\
+**Headlines**
+\--------------------
+\
+
+= render 'user_mailer/missed_yesterday/headlines'
+
+- @groups.each do |group|
+  - next unless @discussions_by_group.has_key?(group)
+  = group.full_name
+  = group_url(group).html_safe
+  \
+  \
+  - @discussions_by_group[group].each do |discussion|
+    = render 'user_mailer/missed_yesterday/discussion', discussion: discussion
+    \
+\
+= t(:'email.missed_yesterday.thanks_for_reading')
+= mark_summary_as_read_url_for(@user).html_safe
+\
+= render 'user_mailer/unsubscribe_link_text'

@@ -168,4 +168,23 @@ describe API::ProfileController do
     end
   end
 
+  describe 'save_experience' do
+
+    it 'successfully saves an experience' do
+      post :save_experience, experience: :happiness
+      expect(response.status).to eq 200
+      expect(user.reload.experiences['happiness']).to eq true
+    end
+
+    it 'responds with forbidden when user is logged out' do
+      @controller.stub(:current_user).and_return(LoggedOutUser.new)
+      post :save_experience, experience: :happiness
+      expect(response.status).to eq 403
+    end
+
+    it 'responds with bad request when no experience is given' do
+      expect { post :save_experience }.to raise_error { ActionController::ParameterMissing }
+    end
+  end
+
 end

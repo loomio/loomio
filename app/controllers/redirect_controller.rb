@@ -1,4 +1,6 @@
-class RedirectController < ActionController::Base
+class RedirectController < ApplicationController
+  skip_before_filter :set_application_locale
+
   def group_subdomain
     moved_to group_url(Group.find_by!(subdomain: request.subdomain), default_subdomain)
   end

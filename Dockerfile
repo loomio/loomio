@@ -1,3 +1,9 @@
+#
+# Warning: this image is designed to be used with docker-compose as
+# instructed athttps://github.com/loomio/loomio-deploy
+#
+# It is not a standalone image.
+#
 FROM ruby:2.3.0
 ENV REFRESHED_AT 2015-08-07
 
@@ -37,7 +43,7 @@ ENV DEVISE_SECRET boopboop
 ENV SECRET_COOKIE_TOKEN beepbeep
 
 # build assets
-RUN bundle exec rake deploy:build
+RUN bundle exec rake deploy:build[plugins.docker]
 RUN bundle exec rake assets:precompile
 
 EXPOSE 3000

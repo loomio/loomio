@@ -18,6 +18,14 @@ GIT
       sprockets (< 4)
 
 GIT
+  remote: git://github.com/gdpelican/premailer-rails.git
+  revision: 62ef2ff90076632a35a02a29e62b89a369e6794a
+  specs:
+    premailer-rails (1.9.3)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
+
+GIT
   remote: git://github.com/loomio/griddler-mailin.git
   revision: 82df9ea881c70b94a346fecac11c523a166394f4
   specs:
@@ -32,9 +40,8 @@ GIT
       faye
 
 GIT
-  remote: git://github.com/robguthrie/mail.git
-  revision: 47c87d5144a7801ce408bb6bce06bb199a5f2c77
-  branch: memoize-encoded
+  remote: git://github.com/mikel/mail.git
+  revision: a217776355befa3d8191c4bd3c1fad54e0e27471
   specs:
     mail (2.7.0.edge)
       mime-types (>= 1.16, < 4)
@@ -92,7 +99,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    ahoy_email (0.3.0)
+    ahoy_email (0.3.1)
       addressable
       nokogiri
       rails
@@ -166,7 +173,7 @@ GEM
     cookiejar (0.3.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    css_parser (1.4.1)
+    css_parser (1.4.2)
       addressable
     cucumber (2.3.3)
       builder (>= 2.1.2)
@@ -522,12 +529,13 @@ GEM
     paper_trail (4.0.2)
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
-      request_store (~> 1.1)
-    paperclip (4.2.4)
+      request_store (~> 1.1.0)
+    paperclip (4.3.6)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
+      mimemagic (= 0.3.0)
     pg (0.18.4)
     poltergeist (1.9.0)
       capybara (~> 2.1)
@@ -590,11 +598,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
-    rbvmomi (1.8.2)
-      builder
-      nokogiri (>= 1.4.1)
-      trollop
-    redcarpet (3.2.3)
+    redcarpet (3.3.4)
     referer-parser (0.3.0)
     request_store (1.3.1)
     responders (2.2.0)
@@ -634,7 +638,7 @@ GEM
       mime-types
     safe_shell (1.0.3)
     safe_yaml (1.0.4)
-    safely_block (0.1.0)
+    safely_block (0.1.1)
       errbase
     sass (3.4.22)
     sass-rails (5.0.4)
@@ -733,7 +737,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord_any_of
-  ahoy_email
+  ahoy_email (~> 0.3.1)
   ahoy_matey (~> 1.1.1)
   airbrake
   awesome_print
@@ -788,20 +792,19 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.2.5)
   omniauth-twitter (~> 1.2.0)
   paper_trail (~> 4.0.0.beta2)
-  paperclip (~> 4.2.4)
+  paperclip (~> 4.3.6)
   pg (~> 0.18.3)
   poltergeist
-  premailer
-  premailer-rails
+  premailer-rails!
   private_pub!
   puma
-  rack-attack (~> 4.2.0)
+  rack-attack (~> 4.4.1)
   rack_session_access
   rails (~> 5.0.0.beta4)
   rails_12factor
   rails_serve_static_assets
   rake
-  redcarpet (~> 3.2.3)
+  redcarpet (~> 3.3.4)
   rinku
   rspec-activemodel-mocks
   rspec-collection_matchers
@@ -825,8 +828,8 @@ DEPENDENCIES
   thin
   timecop
   twitter-text
-  uglifier
+  uglifier (~> 3.0.0)
   webmock
 
 BUNDLED WITH
-   1.11.2
+   1.12.5

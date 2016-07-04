@@ -1,0 +1,3 @@
+loomio_webhooks:
+  repo:    loomio/loomio_webhooks
+  version: master

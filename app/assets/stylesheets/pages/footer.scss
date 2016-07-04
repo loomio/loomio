@@ -1,0 +1,13 @@
+.footer {
+  border-top: 2px solid #dcdcdc;
+  background-color: #efefef;
+}
+
+.footer__item {
+  list-style-type: none;
+  padding: 5px 0;
+  a {
+    text-decoration: none;
+    &:hover { color: black; }
+  }
+}

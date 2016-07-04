@@ -26,7 +26,7 @@ module.exports =
     core:         'core/components/**/*.haml'
   js:
     core:         'core/**/*.coffee',
-    execjs:       include(vendor, 'execjs')
+    execjs:       _.flatten([include(vendor, 'execjs'), 'core/initializers/**/*.coffee'])
     vendor:       include(vendor, 'js')
   protractor:
     config:       'test/protractor.coffee'

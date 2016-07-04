@@ -26,6 +26,7 @@ en:
   errors:
     messages:
       email: Not a valid email address
+      spoofed_media_type: The contents of that file don't match its filename
   attachment:
     error:
       too_large: The file you tried to attach is larger than 50MB, please choose a smaller file.
@@ -912,7 +913,7 @@ en:
         create: Create account
         update: Update settings
   meta_tags:
-    default_title: Loomio | Collaborative Decision-Making
+    default_title: Loomio | Make Decisions Together
     default_description: Loomio is an easy to use online tool for group decision-making. It allows dispersed groups to reach decisions quickly and take constructive action.
   about_loomio: About Loomio
   ago: "%{quantity_of_time} ago"

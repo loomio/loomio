@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'AdminMembershipsPanelController', ($scope, CurrentUser, AbilityService, ModalService, Records, FlashService, RemoveMembershipForm, InvitationForm, $filter) ->
+angular.module('loomioApp').controller 'AdminMembershipsPanelController', ($scope, Session, AbilityService, ModalService, Records, FlashService, RemoveMembershipForm, InvitationForm, $filter) ->
 
   $scope.canRemoveMembership = (membership) ->
     AbilityService.canRemoveMembership(membership)
@@ -9,7 +9,7 @@ angular.module('loomioApp').controller 'AdminMembershipsPanelController', ($scop
 
   $scope.toggleAdmin = (membership) ->
     method = if membership.admin then 'makeAdmin' else 'removeAdmin'
-    if !membership.admin and membership.user() == CurrentUser and !confirm($filter('translate')('memberships_page.remove_admin_from_self.question'))
+    if !membership.admin and membership.user() == Session.user() and !confirm($filter('translate')('memberships_page.remove_admin_from_self.question'))
       membership.admin = true
       return
     Records.memberships[method](membership).then ->

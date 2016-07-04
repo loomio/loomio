@@ -1,42 +1,37 @@
 class UserMailerPreview < ActionMailer::Preview
   def missed_yesterday
-    user = FactoryGirl.create(:user)
-    3.times do
-      group = FactoryGirl.create(:group)
-      group.add_admin!(user)
-      discussion = FactoryGirl.build(:discussion, group: group, author: user)
+    recipient = FactoryGirl.create(:user)
+    actor = FactoryGirl.create(:user)
 
-      #raise user.can?(:create, discussion).inspect
-      #discussion.reload
-      #user.reload
-      DiscussionService.create(discussion: discussion, actor: discussion.author)
-      attachment = FactoryGirl.create :attachment
-      comment = FactoryGirl.create :comment, discussion: discussion, body: "New comment", uses_markdown: true
-      comment.attachments << attachment
-      event = Events::NewComment.create(kind: 'new_comment', eventable: comment, discussion_id: discussion.id)
-      for i in 1..3 do
-        case i
-        when 0
-          # no motion
-        when 1
-          # new motion
-          motion = FactoryGirl.create(:motion, discussion: discussion)
-          vote  = Vote.new(motion: motion, user: discussion.author, position: 'yes', statement: 'Oh yes in deeedee')
-          VoteService.create(vote: vote, actor: vote.author)
+    group = FactoryGirl.create(:group)
+    group.add_member!(recipient)
+    group.add_admin!(actor)
 
-        when 2
-          # motion with outcome
-          motion = FactoryGirl.create(:motion,
-                             discussion: discussion,
-                             closed_at: 1.hour.ago,
-                             outcome: "We all agreed to go ahead with the proposal",
-                             outcome_author: discussion.author)
-          #vote  =  Vote.new(motion: motion, user: discussion.author, position: 'yes', statement: 'Oh yes in deeedee')
-          #MotionService.cast_vote(vote)
-        end
-      end
-    end
-    UserMailer.missed_yesterday(user)
+    discussion = FactoryGirl.create(:discussion, group: group, author: actor)
+    DiscussionService.create(discussion: discussion, actor: actor)
+
+    comment = FactoryGirl.create :comment, discussion: discussion, body: "New comment", uses_markdown: true
+    comment.attachments << FactoryGirl.create(:attachment)
+    CommentService.create(comment: comment, actor: actor)
+
+    motion = FactoryGirl.build(:motion, discussion: discussion, author: actor)
+    MotionService.create(motion: motion, actor: actor)
+
+    vote  = Vote.new(motion: motion, user: discussion.author, position: 'yes', statement: 'Oh yes in deeedee')
+    VoteService.create(vote: vote, actor: actor)
+
+    discussion = FactoryGirl.create(:discussion, group: group, author: actor)
+    DiscussionService.create(discussion: discussion, actor: actor)
+
+    motion = FactoryGirl.create(:motion,
+                               author: actor,
+                               discussion: discussion,
+                               closed_at: 1.hour.ago,
+                               outcome: "We all agreed to go ahead with the proposal",
+                               outcome_author: discussion.author)
+    MotionService.create(motion: motion, actor: actor)
+
+    UserMailer.missed_yesterday(recipient)
   end
 
   def group_membership_approved

@@ -1,18 +1,18 @@
 module ProtectedFromForgery
-  
+
   def self.included(base)
-    base.after_filter :set_csrf_cookie_for_ng
+    base.after_filter :set_xsrf_token
   end
 
   protected
-  
+
   def verified_request?
-    super || form_authenticity_token == request.headers['X_XSRF_TOKEN']
+    super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
   end
 
   private
 
-  def set_csrf_cookie_for_ng
+  def set_xsrf_token
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 end

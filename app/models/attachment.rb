@@ -1,6 +1,6 @@
 class Attachment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :comment, counter_cache: true
+  belongs_to :attachable, polymorphic: true
 
   has_attached_file :file, styles: lambda { |file| file.instance.is_an_image? ? { thumb: '100x100#', thread: '600x>' } : {} }
   do_not_validate_attachment_file_type :file

@@ -61,7 +61,7 @@ describe API::EventsController do
       end
 
       it 'returns events beginning with a given comment id' do
-        get :index, discussion_id: discussion.id, format: :json, comment_id: @later_event.comment.id
+        get :index, discussion_id: discussion.id, format: :json, comment_id: @later_event.eventable.id
         json = JSON.parse(response.body)
         event_ids = json['events'].map { |v| v['id'] }
         expect(event_ids).to include @later_event.id

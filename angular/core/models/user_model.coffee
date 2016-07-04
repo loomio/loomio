@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     @serializableAttributes: AppConfig.permittedParams.user
 
     relationships: ->
-      # note we should move these to a CurrentUser extends User so that all our authors dont get views created
+      # note we should move these to a User extends UserModel so that all our authors dont get views created
       @hasMany 'memberships'
       @hasMany 'notifications'
       @hasMany 'contacts'
@@ -61,3 +61,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
           thread.update(discussionReaderVolume: null)
         _.each @memberships(), (membership) ->
           membership.update(volume: volume)
+
+    hasExperienced: (key, group) ->
+      if group && @isMemberOf(group)
+        @membershipFor(group).experiences[key]
+      else
+        @experiences[key]

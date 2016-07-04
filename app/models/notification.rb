@@ -10,6 +10,8 @@ class Notification < ActiveRecord::Base
   delegate :kind, to: :event, prefix: :event
   delegate :eventable, to: :event
 
+  scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
+
   def publish_message
     MessageChannelService.publish(NotificationSerializer.new(self).as_json, to: self.user)
   end

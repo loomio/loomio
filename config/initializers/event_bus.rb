@@ -15,7 +15,7 @@ EventBus.configure do |config|
   Event::BULK_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event|
       BaseMailer.send_bulk_mail(to: Queries::UsersToEmailQuery.send(kind, event.eventable)) do |user|
-        ThreadMailer.delay.send(kind, user, event)
+        ThreadMailer.delay(priority: 2).send(kind, user, event)
       end
     end
   end
@@ -24,13 +24,13 @@ EventBus.configure do |config|
   # Single mail kinds is only Comment replied to and User mentioned.
   Event::SINGLE_MAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event, user|
-      ThreadMailer.delay.send(kind, user, event) if user.email_when_mentioned
+      ThreadMailer.delay(priority: 2).send(kind, user, event) if user.email_when_mentioned
     end
   end
 
 
   # send individual emails after user events
-  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay.group_membership_approved(user, event.group) }
+  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.group) }
 
   # send memos to client side after comment change
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
@@ -63,17 +63,19 @@ EventBus.configure do |config|
                 'discussion_description_edited_event',
                 'motion_description_edited_event',
                 'comment_liked_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable.group)
+    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable.group)
   end
 
   config.listen('discussion_moved_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable)
+    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable)
   end
 
   # update discussion reader after discussion creation / edition
-  config.listen('discussion_create',
-                'discussion_update',
-                'comment_like') do |model, actor|
+  config.listen('discussion_create') do |discussion, actor|
+    DiscussionReader.for(discussion: discussion, user: actor).set_volume! :loud
+  end
+
+  config.listen('discussion_update', 'comment_like') do |model, actor|
     DiscussionReader.for_model(model, actor).set_volume_as_required!
   end
 
@@ -92,11 +94,15 @@ EventBus.configure do |config|
 
   # publish reply and mention events after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
-  config.listen('comment_create') { |comment| comment.notified_group_members.each { |user| Events::UserMentioned.publish!(comment, user) } }
 
-  # publish new mention events after comment edition
-  config.listen('comment_update') do |comment, new_mentions|
-    User.where(username: new_mentions).each { |user| Events::UserMentioned.publish!(comment, user) } if new_mentions.present?
+  # publish mention events after model create / update
+  config.listen('comment_create',
+                'comment_update',
+                'motion_create',
+                'motion_update',
+                'discussion_create',
+                'discussion_update') do |model, actor|
+    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
   # notify users of events

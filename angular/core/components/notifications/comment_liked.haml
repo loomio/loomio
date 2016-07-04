@@ -1,5 +1,5 @@
 .media-left
   %user_avatar{user: "notification.actor()", size: "small"}
 .media-body
-  %span{translate: "notifications.comment_liked", translate-value-name: "{{notification.actor().name}}", translate-value-discussion: "{{notification.event().discussion().title}}" }
+  %span{translate: "notifications.comment_liked", translate-value-name: "{{notification.actor().name}}", translate-value-discussion: "{{notification.discussion().title}}" }
   %timeago{timestamp: "notification.createdAt" }>
