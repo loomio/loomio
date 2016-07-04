@@ -769,6 +769,8 @@ en:
   already_have_account: Already have a Loomio account?
   confirm_your_details: Confirm your details
   link_up_your_account: Link up your account
+  create_account: Don't have a Loomio account yet? %{sign_up_link}!
+  sign_up_link: Create one
   log_in_to_your_loomio_account: Log in to your Loomio account to link it up with %{provider_name}.
   now_that_your_logged_in: Now that you've logged in with %{provider_name}, please confirm your details to create a Loomio account.
   confirmation_not_received: Didn't receive confirmation instructions?
