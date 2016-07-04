@@ -65,15 +65,9 @@ da:
     latest: Sidste
     unread: Ulæst
     closing_in: Ved at lukke
-  session_form:
-    email_label: Email
-    password_label: Password
-    remember_me: Husk Mig
-    sign_in: Login
   comment_form:
     aria_label: Tilføj en kommentar
     attachments:
-      aria_label: Vedhæft en fil
       remove_attachment: Fjern vedhæftet fil
     messages:
       created: Kommentar tilføjet

@@ -93,15 +93,9 @@ ar:
     latest: الأحدث
     unread: غير مقروءة
     closing_in: الإغلاق
-  session_form:
-    email_label: 'البريد الالكتروني:'
-    password_label: 'كلمة المرور '
-    remember_me: تذكرني
-    sign_in: 'تسجيل دخول:'
   comment_form:
     aria_label: إضافة تعليق
     attachments:
-      aria_label: إرفاق ملف
       remove_attachment: حذف المرفق
     messages:
       created: تمت إضافة التعليق
@@ -222,13 +216,10 @@ ar:
     start_a_proposal: إبدأ مقترحاً
     edit_proposal: تعديل المقترح
     what_does_a_proposal_do: تتيح لك المقترحات معرفة كيف يشعر الجميع حول نشاط معين.
-    editing_title_and_description_forbidden: لا يمكنك تغيير العنوان أو وصف المقترح بعد تصويت الأعضاء. إذا كان هناك تغيير يرجى إغلاق الإقتراح و البدء باقتراح آخر.
-    title_placeholder: 'مثال: اذهب إلى القمر'
     title_label: العنوان
     closes_at_label: يغلق في
     closes: يغلق
     details_label: التفاصيل
-    details_placeholder: قم بتزويد تفاصيل كافية حتى يعرف الجميع ماذا يعني بالضبط أن يوافقوا أو يرفضوا.
   discussion_record:
     created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
     updated: 'حفظ التغييرات في {{title}}'
@@ -277,9 +268,6 @@ ar:
       للمجموعة</p>
     submit: أرني الخطط
   group_welcome_modal:
-    heading: أهلا بك في مجموعتك الجديدة
-    first_step: 'أنت <strong>منسق</strong> المجموعة، و هذا يشبه أن تكون مضيفاً. قم برؤية الفيديو، ثم قم باستعراض نماذج المواضيع.'
-    second_step: 'عندما تكون جاهزاً، <strong>قم بدعوة أشخاص</strong>.'
     ok_got_it: 'حسناً، لقد فهمت!'
   group_cover_modal:
     heading: صورة غلاف جديدة.
@@ -406,7 +394,6 @@ ar:
     standard: قياسية
     plus: زائدة
     free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
-    get_started_for_free: قم بالبدء مجاناً
     support_before: 'يسعدني هذا '
     support_link: التحدث معك
     support_after: حول تمديد المدة التجريبية، أو حول أي سؤال قد يكون لديك.
@@ -414,14 +401,8 @@ ar:
     unlimited_members: عدد غير محدود من الأعضاء.
     unlimited_decisions: عدد غير محدود من القرارات.
     email_support: ' برسالة الكترونية للدعم'
-    standard_price_html: >
-      <strong>19 دولار أمريكي</strong> في الشهر <br><span>أو</span> دولار أمريكي
-      190 في السنة
     plus_body: 'كل شيء قياسي، زائد:'
     premium_support: دعم ممتاز
-    plus_price_html: >
-      <strong> إما 197 دولار أمريكي</strong> في الشهر <br><span>أو</span> في
-      السنة 1790 دولار أمريكي
     select: اختيار
   subscription_success_modal:
     heading: 'شكراً لتحديد اشتراكك!'
@@ -491,9 +472,7 @@ ar:
   group_help_card:
     title: مساعدة
     ten_tips_article_title: 10 نصائح لمساعدتك في صناعة نقاشات رائعة مع لوميو
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 طرق لاستخدام مقترحات لوميو لتحويل المحادثة إلى فعل
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -838,7 +817,7 @@ ar:
       <p>سيرغب الأشخاص أن يعرفوا لماذا تمت دعوتهم، و ماهو المتوقع منهم، و لماذا
       يستحق الأمر أن يمضوا وقتهم لتعلم كيفية استخدام الأدوات الجديدة.</p>
     join_the_community: إنضم للمجتمع
-    join_the_community_description_html: "الجميع مرحب به للانضمام لمجتمع لوميو، حيث نتحدث حول كيفية الاستفادة من الأدوات، و كيفية تطويرها. <br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'> اضغط هنا للذهاب إلى مجموعة مجتمع لوميو."
+    join_the_community_description_html: "الجميع مرحب به للانضمام لمجتمع لوميو، حيث نتحدث حول كيفية الاستفادة من الأدوات، و كيفية تطويرها. <br/><br/><a href='https://www.loomio.org/g/WmPCB3IR'> اضغط هنا للذهاب إلى مجموعة مجتمع لوميو.<a/>"
     images_and_text_formatting: تنسيق النص و الصور
     images_and_text_formatting_html: "<p>يستخدم لوميو نظام التخفيض لتضمين الصور و تنسيق النصوص. يمكنك تفعيل نظام التخفيض عبر الأيقونة الصغيرة الرمادية تحت صندوق التعليقات.</p> \n<p><a href='https://www.loomio.org/discussions/1124'>اضغط هنا</a> للمعلومات حول كيفية استخدام نظام التخفيض.</p>\n"
     keep_up_to_date: البقاء على تواصل

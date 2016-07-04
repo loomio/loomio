@@ -99,7 +99,7 @@ es:
       loud_description: Recibirás correo electrónico siempre que haya actividad en este hilo.
       normal_description: 'Recibirás correo electrónico siempre que se inicie una propuesta, cuando esté a punto de cerrarse o cuando se publique un resultado. '
       quiet_description: 'No recibirás correo electrónico sobre este hilo. '
-      apply_to_all: Aplicar esta configuración a todos los hilos de este grupo.
+      apply_to_all: Aplicar esta configuración para todos los hilos de este grupo.
       messages:
         loud: 'Recibirás la actividad de este hilo por correo electrónico. '
         normal: 'Recibirás correo electrónico sobre propuestas en este hilo. '
@@ -109,7 +109,7 @@ es:
       loud_description: Recibirás correo electrónico siempre que haya actividad en este grupo.
       normal_description: Recibirás correo electrónico sobre nuevos hilos y propuestas en este grupo.
       quiet_description: No recibirás correo electrónico sobre la actividad en este grupo.
-      apply_to_all: Aplicar esta configuración para todos mis grupos.
+      apply_to_all: 'Aplicar esta configuración para todos mis grupos. '
       messages:
         loud: 'Recibirás correo electrónico sobre toda la actividad en este grupo. '
         normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en este grupo.
@@ -124,7 +124,7 @@ es:
       loud_description: 'Recibirás correo electrónico sobre toda la actividad en cualquier grupo nuevo. '
       normal_description: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
       quiet_description: No recibirás correo electrónico sobre la actividad en ningún nuevo grupo en el que participes.
-      apply_to_all: 'Aplicar esta configuración para todos mis grupos. '
+      apply_to_all: Aplicar esta configuración para todos mis grupos.
       messages:
         loud: 'Recibirás correo electrónico sobre toda la actividad en tus nuevos grupos. '
         normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
@@ -144,15 +144,25 @@ es:
     latest: Últimos
     unread: No leído
     closing_in: Cerrando
-  session_form:
-    email_label: 'Correo electrónico:'
+  sign_in_form:
+    title: Ingresa a Loomio
+    email_label: 'Email:'
+    email_placeholder: tu@ejemplo.com
     password_label: 'Contraseña:'
     remember_me: Recuérdame
+    forgot_password: ¿Olvidaste tu contraseña?
     sign_in: Entrar
+    signed_in: 'Cuenta creada satisfactoriamente '
+    oauth:
+      title: 'O inicia sesión con tu cuenta de otra plataforma:'
+      facebook: Iniciar sesión con Facebook
+      twitter: Iniciar sesión con Twitter
+      google: Iniciar sesión con Google
+      github: Iniciar sesión con Github
   comment_form:
     aria_label: Añade un comentario
     attachments:
-      aria_label: Adjuntar un archivo
+      add_attachment: 'Adjuntar archivos '
       remove_attachment: Quitar archivo adjunto
     messages:
       created: Comentario añadido
@@ -169,6 +179,7 @@ es:
       label: Enviar
     private_privacy_notice: 'Tu comentario solo será visible para miembros de {{groupName}}.'
     public_privacy_notice: 'Tu comentario será público en internet. '
+    sign_in: 'Inicia sesión para unirte a la conversación '
   navbar:
     recent: Reciente
     unread: No leído
@@ -274,13 +285,15 @@ es:
     start_a_proposal: Empezar una propuesta
     edit_proposal: Editar propuesta
     what_does_a_proposal_do: Las propuestas te permiten ver qué le parece a todo el mundo un determinado plan de acción.
-    editing_title_and_description_forbidden: 'No puedes cambiar el título o la descripción de una propuesta después de que la gente haya votado. Si los detalles han cambiado, por favor cierra la propuesta e inicia una nueva.'
-    title_placeholder: Ej. Ir a la luna
+    proposal_ideas: Necesitas ideas para redactar una buena propuesta?
+    proposal_ideas_title: 9 formas de utilizar propuestas en Loomio para convertir una charla en acción
+    editing_title_and_description_forbidden: 'No puedes cambiar el título o la descripción de la propuesta una vez que alguien ha votado. Si los detalles cambian, por favor cierra la propuesta y comienza una nueva. '
+    title_placeholder: 'Ej: Vamos a la luna '
     title_label: Título
     closes_at_label: Cierra a las
     closes: Cierra
     details_label: Detalles
-    details_placeholder: Da información suficiente para que cualquier persona en tu grupo pueda tomar una decisión bien informada.
+    details_placeholder: Da suficiente información para que la gente sepa exactamente que quieres decir el estar de acuerdo o en desacuerdo con la propuesta.
   discussion_record:
     created: 'El hilo {{title}} ha sido creado con éxito en {{groupName}}'
     updated: 'Guardar cambios en {{title}}'
@@ -320,10 +333,21 @@ es:
     heading: 'Gracias por usar Loomio este año!'
     body: "<p>Realmente apreciamos tu apoyo en este año, y estamos entusiasmados de mejorar Loomio aún más en 2016.</p> \n<p>¿Encuentras que Loomio es útil para tu grupo? Acabamos de lanzar nuestros planes de pago y le estamos pidiendo a los grupos que han utilizado Loomio por un tiempo que elijan un plan que les convenga.</p> \n"
     submit: Muéstrame los planes
+  angular_welcome_modal:
+    heading: '¡Bienvenido/a al nuevo Loomio!'
+    context: 'Hemos estado trabajando duro desarrollando un nuevo y mejor Loomio. Todas tus discusiones y tus funciones favoritas de Loomio siguen estando aquí, y también hay nuevos cambios:  '
+    cleaner: 'Una interface más clara e intuitiva: más fácil comenzar grupos, invitar gente y configurar tus preferencias. '
+    interactive: 'El escritorio interactivo facilita estar al día con tus hilos: las actualizaciones suceden en directo en la pantalla. '
+    mobile_ready: 'Esta diseñado para todos tus dispositivos, desde el móvil al escritorio. '
+    accessible: "Es accesible para gente ciega y esta traducido a <a href='https://loomio.org/translation' target='_blank'>un montón de idiomas</a>."
+    emojis: '¡Y puedes usar emojies!'
+    ok_got_it: 'Bien, ¡lo tengo!'
   group_welcome_modal:
-    heading: Bienvenido/a a tu nuevo grupo
-    first_step: 'Eres el <strong>coordinador</strong> del grupo, que es como ser el anfitrión. Mira el video y los hilos de ejemplo.'
-    second_step: 'Cuando estés listo, <strong>invita gente</strong> a sumarse. '
+    creator_heading: Bienvenido/a a tu nuevo grupo
+    member_heading: Bienvenido/a a Loomio
+    creator_info: 'Eres el <strong>coordinador</strong> del grupo, que es como ser el anfitrión. Mira el video y los hilos de ejemplo.'
+    member_info: 'Mira éste vídeo para tener una idea de como funciona Loomio. Luego, pruébalo ingresando un comentario en un hilo de discusión, o inicia un hilo nuevo.'
+    creator_footer: 'Cuando estés listo, <strong>invita gente</strong> a sumarse. '
     ok_got_it: 'Bien, ¡lo tengo!'
   group_cover_modal:
     heading: 'Nueva foto de portada '
@@ -339,6 +363,7 @@ es:
   join_group_button:
     join_group: Unirse al grupo
     ask_to_join_group: Solicita unirte al grupo
+    membership_requested: Petición de membresía pendiente
     messages:
       joined_group: 'Ahora eres miembro de {{group}}'
   membership_request_form:
@@ -451,7 +476,7 @@ es:
     standard: 'Estándar '
     plus: Plus
     free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
-    get_started_for_free: 'Comienza gratis '
+    start_group: Crear un grupo
     gift_body: Para grupos sin presupuesto
     support_before: Estoy feliz de
     support_link: hablar contigo
@@ -705,6 +730,9 @@ es:
       unread: '{{count}} elementos no leídos.'
       current_proposal: 'Propuesta actual: {{name}}.'
       you_voted: 'Has votado: {{position}}.'
+    thread_preview:
+      you_voted: 'Votaste {{position}}'
+      undecided: 'Estas indeciso '
     threads_from:
       group: Hilos de
       proposals: 'Propuestas '
@@ -808,6 +836,7 @@ es:
   proposal_outcome_updated_item:
     proposal_outcome_updated: actualizó el resultado de la propuesta
   discussion_edited_item:
+    attachment_ids: actualizó los archivos adjuntos del hilo
     title: 'actualizó el título del hilo: <span>{{title}}</span>'
     description: actualizó el contexto del hilo
     description_title: 'actualizó el título y el contexto del hilo '
@@ -983,6 +1012,11 @@ es:
     invitation: Consejos para redactar una buena invitación
     proposal: Consejos para redactar una propuesta clara
     vote: Puedes cambiar tu decisión en cualquier momento
+  explore_page:
+    header: Explorar grupos en Loomio
+    search_placeholder: Buscar grupos públicos en Loomio
+    multiple_search_results: '{{resultCount}} grupos públicos coinciden con <strong>{{searchTerm}}:</strong>'
+    no_results_found: "<strong>¿No puedes encontrar el grupo que buscas?</strong> Si la privacidad de ese grupo es 'Secreto', no aparecerá aquí. Si conoces a un coordinador del grupo, puedes pedirles una invitación.  "
   angular:
     switch_back: 'Vuelve al Loomio antiguo '
     give_feedback: Comentarios para Loomio
