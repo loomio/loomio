@@ -1,5 +1,25 @@
 pt-BR:
+  validate:
+    motion:
+      must_close_in_future: Proposta deve encerrar no futuro.
+      one_at_a_time: Há outra proposta ativa.
   email:
+    reset_password:
+      greeting: >
+        Oi %{name}
+
+        Aqui está um link que você pode usar para redefinir a senha da sua conta
+        Loomio:
+      link_text: Redefina sua senha
+      signoff: >
+        Você recebeu este e-mail porque o seu foi requerido no formulário
+        "Esqueci minha senha" em %{hostname}.
+
+        No entanto, sua senha não será alterada até que você siga o link acima
+        e preencha o formulário.
+
+        Se você continuar a ter problemas de login, responda a este e-mail para
+        entrar em contato com uma pessoa do suporte técnico.
     custom: '%{text}'
     group_email:
       intro: '%{who} anunciou para %{group}:'
@@ -12,6 +32,11 @@ pt-BR:
       link: Participar da discussão
     to_join_group:
       subject: '%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio'
+      invitation_text_html: '<strong>%{member}</strong> convidou você para participar do grupo <strong>%{group_name}</strong>'
+      accept_invitation: Aceitar convite
+      tagline: Loomio é um lugar para grupos tomarem decisões em conjunto
+    resend_to_join_group:
+      subject: '%{member} ainda está esperando você para entrar em %{group_name} no Loomio'
     to_start_group:
       subject: 'Configure seu novo grupo Loomio: %{group_name}'
     user_added_to_a_group:
@@ -131,23 +156,30 @@ pt-BR:
     error:
       all_email_addresses_belong_to_members: Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo.
   pricing_page:
+    header: Planos do grupo
     gift: Presente
     standard: Padrão
     plus: Plus
     free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
     get_started_for_free: Comece de graça
+    gift_body: Para grupos sem orçamento
+    gift_donation_ask: Nós pediremos aos membros do seu grupo por doações
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte por e-mail
-    standard_price_html: |+
-      US <strong>$19</strong>/mês<br><span>ou</span> $190/ano
-
-
+    slack_integration_html: |
+      integração <strong>Slack</strong>
+    standard_price_html: |
+      US<strong>$19</strong>/mês<br><span>or</span> $190/ano
     plus_body: 'Tudo do Padrão, mais:'
+    multiple_groups: múltiplos grupos
     premium_support: suporte premium
+    custom_subdomain_html: |
+      subdomínio personalizado,<br />
+      e.g. <strong>seugrupo</strong>.loomio.org
     usage_statistics: estatísticas de uso
     plus_price_html: |
-      US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano
+      US<strong>$179</strong>/mês<br><span>or</span> $1790/ano
   password_reset:
     email_guidelines_html: >
       <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo
@@ -319,3 +351,16 @@ pt-BR:
         O mesmo com imagens, mas precedidas com um ponto de exclamação.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  beta_banner:
+    new_loomio_html: >
+      <strong>O novo Loomio é mais rápido, mais bonito, e melhor!</strong>
+      Estamos mudando para todos.
+    upgrade_browser_html: >
+      Nós só suportamos versões modernas do Internet Explorer (10+). Você
+      precisará <a href='http://outdatedbrowser.com/en' target='_blank'>atualizar
+      o seu navegador</a> para continuar usando o Loomio.
+
+      <strong>O Novo Loomio está aqui!</strong> É mais rápido, mais bonito
+      e pronto para dispositíveis móveis.
+    more_info: Mais informações...
+    button_text: Mudar para o novo Loomio

@@ -136,15 +136,9 @@ ar:
     unlimited_members: عدد غير محدود من الأعضاء.
     unlimited_decisions: عدد غير محدود من القرارات.
     email_support: بريد إلكتروني للدعم
-    standard_price_html: >
-      <strong>19 دولار أمريكي</strong> في الشهر <br><span>أو</span> دولار أمريكي
-      190 في السنة
     plus_body: 'كل شيء قياسي، زائد:'
     premium_support: دعم ممتاز
     usage_statistics: إحصائيات الاستخدام
-    plus_price_html: >
-      <strong> إما 197 دولار أمريكي</strong> في الشهر <br><span>أو</span> في
-      السنة 1790 دولار أمريكي
   password_reset:
     email_guidelines_html: >
       <p>قم بإدخال عنوان البريد الإلكتروني لحسابك على لوميو في الحقل في الأسفل

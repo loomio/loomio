@@ -44,8 +44,6 @@ sl:
   inbox:
     clear: Počisti
     unread: Neprebrano
-  session_form:
-    email_label: 'Email:'
   comment_form:
     edit_comment: Uredi komentar
     delete_comment: Izbriši komentar

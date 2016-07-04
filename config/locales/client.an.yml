@@ -96,9 +96,6 @@ an:
       label: Opcions
     leave_group:
       title: Abandonar grupo
-  group_help_card:
-    ten_tips_article_link: 'https://loomio.wordpress.com/2015/08/17/10-consejos-para-tomar-decisiones-con-loomio/?frame-nonce=7455d1c7aa&preview=true&iframe=true'
-    nine_ways_to_use_proposals_link: 'https://loomio.wordpress.com/2015/08/17/9-formas-de-utilizar-propuestas-en-loomio-para-convertir-conversaciones-en-accion/?frame-nonce=7455d1c7aa&preview=true&iframe=true'
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
