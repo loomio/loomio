@@ -21,7 +21,7 @@ module Plugins
     end
 
     def self.translations_for(locale = I18n.locale)
-      active_plugins.map(&:translations).reduce({}, :deep_merge).slice(locale.to_s)[locale.to_s]
+      active_plugins.map(&:translations).reduce({}, :deep_merge).slice(locale.to_s)[locale.to_s] || {}
     end
 
     def self.to_config
