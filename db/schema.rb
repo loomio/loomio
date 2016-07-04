@@ -477,6 +477,7 @@ ActiveRecord::Schema.define(version: 20160629045209) do
     t.string   "city"
     t.integer  "closed_motions_count",               default: 0,              null: false
     t.boolean  "analytics_enabled",                  default: false,          null: false
+    t.boolean  "enable_experiments",                 default: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
