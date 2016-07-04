@@ -183,7 +183,8 @@ describe API::ProfileController do
     end
 
     it 'responds with bad request when no experience is given' do
-      expect { post :save_experience }.to raise_error { ActionController::ParameterMissing }
+      post :save_experience
+      expect(response.status).to eq 400
     end
   end
 

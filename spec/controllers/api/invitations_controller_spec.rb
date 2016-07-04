@@ -52,7 +52,8 @@ describe API::InvitationsController do
       end
 
       it 'responds with bad request if no emails are provided' do
-        expect { post :create, invitation_form: {}, group_id: group.id }.to raise_error { ActionController::ParameterMissing }
+        post :create, invitation_form: {}, group_id: group.id
+        expect(response.status).to eq 400
       end
     end
   end
