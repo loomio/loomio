@@ -10,10 +10,11 @@ zh-TW:
     notification_volume: 通知音量
     group: 群組
     groups: 群組
+    help: 教學文件
     privacy:
       privacy: 隱私權
       public: 公開
-      open: 開放
+      open: 公開
       closed: 封閉
       private: 非公開
       secret: 私密
@@ -88,20 +89,75 @@ zh-TW:
     quiet: 安靜
     mute: 靜音
     unmute: 解除靜音
+  change_volume_form:
+    loud_label: 所有動態
+    normal_label: 重要動態
+    quiet_label: 不寄電子郵件
+    mute_label: 靜音
+    discussion:
+      title: '{{title}} 的電子郵件設定'
+      loud_description: 您將會在這個討論串有任何動態時收到電子郵件。
+      normal_description: 您將會在提案啟動、將要關閉、或是發佈結果時收到電子郵件。
+      quiet_description: 您將不會收到任何關於此討論串的電子郵件。
+      apply_to_all: 套用這些設定到在此群組中所有的討論串。
+      messages:
+        loud: 您將會收到關於此討論串動態的電子郵件。
+        normal: 您將會收到關於此討論串提案的電子郵件。
+        quiet: 您將不會收到任何關於此討論串的電子郵件。
+    membership:
+      title: '{{title}} 的電子郵件設定'
+      loud_description: 您將會在這個群組有任何動態時收到電子郵件。
+      normal_description: 您將會收到關於此群組新討論串與提案的電子郵件。
+      quiet_description: 您將不會收到任何關於此群組動態的電子郵件。
+      apply_to_all: 套用這些設定到我所有的群組。
+      messages:
+        loud: 您將會收到關於此群組所有動態的電子郵件。
+        normal: 您將會收到關於此群組新討論串與提案的電子郵件。
+        quiet: 您將不會收到任何關於此群組的電子郵件。
+    all_groups:
+      messages:
+        loud: 您將會收到關於您的所有群組中所有動態的電子郵件。
+        normal: 您將會收到關於您所有的群組中新討論串與提案的電子郵件。
+        quiet: 您將不會收到任何關於您的群組的電子郵件。
+    user:
+      title: 新群組的電子郵件設定
+      loud_description: 您將會在任何您新加入的群組有動態時收到電子郵件。
+      normal_description: 您將會收到任何您新加入的群組的新討論串與提案的電子郵件。
+      quiet_description: 您將不會收到任何關於您新加入的群組的動態的電子郵件。
+      apply_to_all: 套用這些設定到我所有的群組。
+      messages:
+        loud: 您將會收到關於您新加入的群組中所有動態的電子郵件。
+        normal: 您將會收到任何新群組的新討論串與提案的電子郵件。
+        quiet: 您將不會收到任何關於新群組的電子郵件。
+  mute_explanation_modal:
+    mute_thread: 討論串設為靜音
+    body: |
+      <p>靜音代表您<strong>將不會被提醒關於提案的事情</strong>，或是任何其他在此討論串的動態，除非某人 @提及 您。</p>
+      <p>已靜音也會從最近的討論串與未讀頁面中隱藏。要尋找您已靜音的討論串，請拜訪最近討論串頁面並從「過濾討論串」選單中選取「已靜音」：</p>
   inbox:
     clear: 清除
     latest: 最新
     unread: 未讀
     closing_in: 定案
-  session_form:
+  sign_in_form:
+    title: 登入 Loomio
     email_label: 電子郵件：
+    email_placeholder: you@example.com
     password_label: 密碼：
     remember_me: 記住我
+    forgot_password: 忘記密碼？
     sign_in: 登入
+    signed_in: 登入成功
+    oauth:
+      title: 或是以第三方帳號登入：
+      facebook: 使用 Facebook 登入
+      twitter: 使用 Twitter 登入
+      google: 使用 Google 登入
+      github: 使用 GitHub 登入
   comment_form:
     aria_label: 加入意見
     attachments:
-      aria_label: 附加檔案
+      add_attachment: 附加檔案
       remove_attachment: 移除附件
     messages:
       created: 意見已加入
@@ -118,6 +174,7 @@ zh-TW:
       label: 貼文
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
     public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
+    sign_in: 登入以加入對話
   navbar:
     recent: 最近
     unread: 未讀
@@ -145,6 +202,7 @@ zh-TW:
       discussions: 討論
       proposals: 提議
       comments: 意見
+    sign_in: 登入
   start_menu:
     title: 動作按鈕
     start_group: 啟動群組
@@ -222,13 +280,15 @@ zh-TW:
     start_a_proposal: 啟動提案
     edit_proposal: 編輯提案
     what_does_a_proposal_do: 提案可以讓您看到每個人對於特定的行動的感受。
+    proposal_ideas: 需要靈感來寫出好提案嗎？
+    proposal_ideas_title: 9 個使用 Loomio 提案把討論化為行動的方法
     editing_title_and_description_forbidden: 您不可以在夥伴們投票後才變更提案的標題或描述。如果詳細資訊有變更，請關閉提案並啟動另一個新的。
-    title_placeholder: 例如：去月球
+    title_placeholder: 例如：讓我們一起去月球
     title_label: 標題
     closes_at_label: 定案在
     closes: 關閉
     details_label: 詳細內容
-    details_placeholder: 請提供足夠的詳細資訊，讓每個人都能明確的知道它代表的意義並表示贊成或是反對，或是其他的決定。
+    details_placeholder: 提供足夠的詳細資訊讓每個人都能明確地知道其代表的意義，並對您的提案表示同意或反對
   discussion_record:
     created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
     updated: '儲存變更到 {{title}}'
@@ -270,10 +330,21 @@ zh-TW:
       <p>我們非常感謝您過去一年來的支持，我們也很興奮，想要讓 Loomio 可以在 2016 年變得更好。</p>
       <p>Loomio 對您的群組有用嗎？我們剛發佈我們的定價模式，且正在詢問已經使用 Loomio 的群組挑選一組適合他們的定價方案。</p>
     submit: 給我看定價方案
+  angular_welcome_modal:
+    heading: 歡迎來到新的 Loomio！
+    context: 我們努力建立了一個炫麗的新 Loomio。您所有的討論與最愛的 Loomio 功能都還在那裡，再加上超棒的變更：
+    cleaner: 更簡潔、更直觀的介面：啟動群組、邀請夥伴進入與設定更簡單。
+    interactive: 互動式儀表板讓跟上更新更簡單：更新會即時在螢幕上呈現。
+    mobile_ready: 其設計給您所有的裝置使用，從智慧型手機到桌上型電腦都可以用。
+    accessible: "其讓盲人可以使用並翻譯成<a href='https://loomio.org/translation' target='_blank'>多種語言</a>。"
+    emojis: 而且您可以使用表情符號了！
+    ok_got_it: 好，知道了！
   group_welcome_modal:
-    heading: 歡迎來到您的新群組
-    first_step: '您是群組的<strong>協調者</strong>，這就像是主人一樣。觀看影片，然後再看看範例討論串。'
-    second_step: '當您準備好時，<strong>邀請伙伴們</strong>進來。'
+    creator_heading: 歡迎來到您的新群組
+    member_heading: 歡迎使用 Loomio
+    creator_info: '您是群組的<strong>協調者</strong>，這就像是主人一樣。觀看影片，然後再看看範例討論串。'
+    member_info: 觀看簡介 Loomio 如何運作的影片。然後嘗試在討論串中貼出意見，或是啟動一個您自己的討論串！
+    creator_footer: '當您準備好時，<strong>邀請伙伴們</strong>進來。'
     ok_got_it: 好的，了解了！
   group_cover_modal:
     heading: 新的封面圖片
@@ -289,6 +360,7 @@ zh-TW:
   join_group_button:
     join_group: 加入群組
     ask_to_join_group: 要求加入群組
+    membership_requested: 擱置中的成員資格請求
     messages:
       joined_group: '您現在是 {{group}} 的成員了'
   membership_request_form:
@@ -344,6 +416,7 @@ zh-TW:
       manage_members: 管理成員
       add_subgroup: 新增子群組
       manage_subscription: 管理群組訂閱
+      email_settings: 電子郵件設定
       leave_group: 離開群組
       deactivate_group: 停用群組
     deactivate_group:
@@ -400,20 +473,28 @@ zh-TW:
     standard: 標準方案
     plus: PLUS
     free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
-    get_started_for_free: 免費開始
+    start_group: 啟動群組
+    gift_body: 給沒有預算的群組
     support_before: 我很高興的
     support_link: 告訴您
     support_after: 關於延長您的試用期，或是任何其有您可能會有的需求。
     remind_me_later: 稍後提醒我
+    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
     unlimited_members: 不限成員數量
     unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
+    slack_integration_html: |
+      <strong>Slack</strong> 整合
     standard_price_html: |
       美元 <strong>$19</strong>/月<br><span>或</span> $190/年
     plus_body: 包含標準方案，再加上：
+    multiple_groups: 多重群組
     premium_support: 進階支援
+    custom_subdomain_html: |
+      自訂子網域，<br />
+      例如 <strong>yourgroup</strong>.loomio.org
     plus_price_html: |
-      美元 <strong>$179</strong>/month<br><span>或</span> $1790/year
+      美元 <strong>$179</strong>/月<br><span>或</span> $1790/年
     select: 選取
   subscription_success_modal:
     heading: 感謝您決定訂閱！
@@ -483,9 +564,7 @@ zh-TW:
   group_help_card:
     title: 教學文件
     ten_tips_article_title: 10 個使用 Loomio 做出好決策的祕訣
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 個使用 Loomio 提案把討論化為行動的方法
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: 申請成員資格
     approve: 批准
@@ -595,8 +674,21 @@ zh-TW:
     update_profile: 更新簡歷
   email_settings_page:
     header: 電子郵件設定
+    all_groups: 所有群組的設定
     daily_summary_label: 每日摘要電子郵件
+    daily_summary_description: 每天早上，您將會收到一封包含您前一天錯過的任何動態的電子郵件。這封電子郵件提供了跟上 Loomio 動態更簡單的方法。
+    on_participation_label: 參與時訂閱
+    on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
+    mentioned_label: 提及
     mentioned_description: 當某人想要取得您的注意，他們將會以 @ 來提及您。我們建議您保持這個設定，這樣您就可以在有人提及您時收到一封電子郵件。
+    update_settings: 更新所有群組的設定
+    specific_groups: 特定群組的設定
+    default_settings:
+      loud_description: '當您加入一個新群組時，您將會<strong>有動態時</strong>收到電子郵件。'
+      normal_description: '當您加入新群組時，您將會收到關於<strong>新討論串與提案</strong>的電子郵件。'
+      quiet_description: '當您加入新群組時，您將<strong>不會收到關於動態</strong>的電子郵件。'
+    change_default: 變更預設值
+    edit: 編輯
     messages:
       updated: 電子郵件設定已更新
   dashboard_page:
@@ -635,6 +727,9 @@ zh-TW:
       unread: '{{count}} 個未讀的項目。'
       current_proposal: '目前提案：{{name}}.'
       you_voted: '您已經投票：{{position}}.'
+    thread_preview:
+      you_voted: '您已經投了 {{position}}.'
+      undecided: 您尚未決定
     threads_from:
       group: 討論串從
       proposals: 提議
@@ -668,11 +763,14 @@ zh-TW:
     liked_by_names_and_name: '{{joinedNames}} 與 {{name}} 對此按讚。'
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited: 已編輯
+    volume:
+      mute_message: 討論串已靜音。
   thread_group:
     aria_label: 群組名稱
   thread_context:
     aria_label: 討論串內容
     thread_options: 討論串選項
+    email_settings: 電子郵件設定
     edit_thread: 編輯
     move_thread: 移動
     print_thread: 列印
@@ -735,6 +833,7 @@ zh-TW:
   proposal_outcome_updated_item:
     proposal_outcome_updated: 已更新提案結果：
   discussion_edited_item:
+    attachment_ids: 已更新討論串附件
     title: '已更新討論串標題：<span>{{title}}</span>'
     description: 已更新討論串內容
     description_title: 已更新討論串標題與內容
@@ -744,6 +843,8 @@ zh-TW:
     private_title: 更新討論串標題與隱私設定
     description_private: 更新討論串內容與隱私設定
     description_private_title: 更新討論串標題、內容與隱私設定
+  discussion_moved_item:
+    discussion_moved: '已從 <span>{{group}}</span> 移動討論串'
   contact_message_form:
     contact_us: 聯絡我們
     name_label: 您的大名
@@ -840,6 +941,12 @@ zh-TW:
     invitation: 寫出卓越邀請函的小提示
     proposal: 寫出明確提案的小提示
     vote: 任何時候您都能改變您的立場
+  explore_page:
+    header: 探索 Loomio 群組
+    search_placeholder: 搜尋公開的 Loomio 群組
+    single_search_result: '1 個公開群組符合 <strong>{{searchTerm}}：</strong>'
+    multiple_search_results: '{{resultCount}} 個公開群組符合 <strong>{{searchTerm}}：</strong>'
+    no_results_found: '<strong>找不到您要找的群組？</strong>如果群組的隱私設定為「私密」，它將不會出現在這裡。若您知道誰協調該群組，您必須請他們邀請您。'
   angular:
     switch_back: 切換回舊版 Loomio
     give_feedback: 給予回饋

@@ -66,15 +66,9 @@ pl:
     latest: Ostatnie
     unread: Nieprzeczytane
     closing_in: Zamykane
-  session_form:
-    email_label: 'Email:'
-    password_label: 'Hasło:'
-    remember_me: Zapamiętaj mnie
-    sign_in: Login
   comment_form:
     aria_label: Dodanie komentarza
     attachments:
-      aria_label: Załączenie pliku
       remove_attachment: Usunięcie załącznika
     messages:
       created: Komentarz dodany
@@ -180,13 +174,10 @@ pl:
     start_a_proposal: Uruchomienie rekomendacji
     edit_proposal: Edycja rekomendacji
     what_does_a_proposal_do: Rekomendacje pozwalają poznać opinie innych osób o wybranym kierunku działań.
-    editing_title_and_description_forbidden: 'Nie możesz zmienić tytułu i opisu rekomendacji po tym jak ktoś zagłosował. Jeśli szczegóły zostały zmienione, proszę zamknąć rekomendację i uruchomić nową'
-    title_placeholder: 'Np.: Idź na księżyc'
     title_label: Tytuł
     closes_at_label: 'Zamyka się o '
     closes: Zamyka się
     details_label: Szczegóły
-    details_placeholder: Podaj dostatecznie dużo szczegółów aby wszyscy wiedzieli co oznacza zgoda lub jej brak
   discussion_record:
     created: 'Wątek {{title}} został pomyślnie utworzony w  {{groupName}}'
     updated: 'Zapisano zmiany w {{title}}'
@@ -219,7 +210,6 @@ pl:
   proposal_position_no: Nie zgadzam się
   proposal_position_block: Blokuję
   group_welcome_modal:
-    heading: Witamy w Twojej nowej grupie
     ok_got_it: 'OK, zrobione!'
   join_group_button:
     join_group: Dołączenie do grupy

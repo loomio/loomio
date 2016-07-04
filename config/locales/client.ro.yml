@@ -85,15 +85,9 @@ ro:
     latest: Cel mai nou
     unread: Necitit
     closing_in: Inchidere
-  session_form:
-    email_label: Email
-    password_label: 'Parola:'
-    remember_me: Tine-ma minte
-    sign_in: Logare
   comment_form:
     aria_label: Adauga un comentariu
     attachments:
-      aria_label: Adauga un fisier
       remove_attachment: Elimina fisierul
     messages:
       created: Comentariu adaugat.
@@ -187,8 +181,6 @@ ro:
     edit_proposal: Editeaza propunerea
     close_proposal: Inchide propunerea
     closed_badge: Inchis
-  group_welcome_modal:
-    first_step: 'Esti <strong>coordinator</strong> grupului, similar unei gazde. Priveste videoul apoi bifeaza exemplele de discutii.'
   join_group_button:
     join_group: Alatură-te grupului
     ask_to_join_group: Cere sa fi inclus in grup

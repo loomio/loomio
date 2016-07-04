@@ -91,17 +91,9 @@ uk:
     unlimited_members: необмежена кількість членів
     unlimited_decisions: необмежена кількість рішень
     email_support: підтримка по електронній пошті
-    standard_price_html: |+
-      US <strong>$19</strong>/місяць<br><span>або</span> $190/рік
-
-
     plus_body: 'Все що входить у Стандарт, плюс:'
     premium_support: преміум підтримка
     usage_statistics: статистика використання
-    plus_price_html: |+
-      US <strong>$179</strong>/місяць<br><span>або</span> $1790/рік
-
-
   contact_page:
     contact_us: Контакти
     labels:
