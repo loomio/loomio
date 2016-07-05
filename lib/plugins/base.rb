@@ -4,12 +4,12 @@ module Plugins
   class NoCodeSpecifiedError < Exception; end
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
-  Outlet = Struct.new(:plugin, :component, :outlet_name)
+  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :actions, :events, :outlets, :translations, :enabled
+    attr_reader :assets, :actions, :events, :outlets, :routes, :translations, :enabled
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -18,7 +18,8 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @actions, @events, @outlets = Set.new, Set.new, Set.new, Set.new
+      @assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new
+      @config = YAML.load_file([@name, 'config.yml'].join('/'))
     end
 
     def enabled=(value)
@@ -69,14 +70,27 @@ module Plugins
 
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o) }
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental']) }
+    end
+
+    def use_client_route(path, component)
+      use_component(component)
+      @routes.add({ path: path, component: component.to_s.camelize(:lower) })
     end
 
     def use_route(verb, route, action)
       @actions.add Proc.new {
-        Loomio::Application.routes.append do
+        Loomio::Application.routes.prepend do
           namespace(:api, path: 'api/v1', defaults: {format: :json}) { send(verb, { route => action }) }
         end
+      }.to_proc
+    end
+
+    def use_factory(name, &block)
+      return unless Rails.env.test?
+      raise NoCodeSpecifiedError.new unless block_given?
+      @actions.add Proc.new {
+        FactoryGirl.define { factory(name, &block) } unless FactoryGirl.factories.registered?(name)
       }.to_proc
     end
 

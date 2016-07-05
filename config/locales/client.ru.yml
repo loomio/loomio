@@ -68,15 +68,9 @@ ru:
     latest: Последний
     unread: Непрочитанные
     closing_in: Закрывается
-  session_form:
-    email_label: Email
-    password_label: 'Пароль:'
-    remember_me: Запомнить меня
-    sign_in: Логин
   comment_form:
     aria_label: 'Добавить комментарий '
     attachments:
-      aria_label: Прикрепить файл
       remove_attachment: Удалить вложение
     messages:
       created: Комментарий добавлен

@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def gone
+    head :gone
+  end
+
   def browser_not_supported
     render layout: false
   end

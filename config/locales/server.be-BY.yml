@@ -156,8 +156,6 @@ be-BY:
     unlimited_members: неабмежаваная колькасць удзельникаў
     unlimited_decisions: бязмежнасць рашэнняў
     email_support: падтрымка па электроннай пошце
-    standard_price_html: |
-      19$ за месяц або 190$ за год
     plus_body: Стандартны пакет +
     multiple_groups: Шматлікія суполкі
     premium_support: Прэміум-падтрымка
@@ -168,8 +166,6 @@ be-BY:
 
 
     usage_statistics: статыстыка выкарыстання
-    plus_price_html: |
-      ЗША <strong>$179</strong>/месяцh<br><span>ці</span> $1790/год
   password_reset:
     email_guidelines_html: >
       <p>Каб скінуць пароль, увядзіце адрас электроннай пошты для вашага акаўнта

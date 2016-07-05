@@ -85,15 +85,9 @@ uk:
     latest: Останній
     unread: Непрочитані
     closing_in: Закрито
-  session_form:
-    email_label: 'Електронна пошта:'
-    password_label: 'Пароль:'
-    remember_me: Запам’ятати мене
-    sign_in: Увійти
   comment_form:
     aria_label: Прокоментувати
     attachments:
-      aria_label: Додати файл
       remove_attachment: Видалити додаток
     messages:
       created: Коментар додано
@@ -208,13 +202,10 @@ uk:
     start_a_proposal: Внести пропозицію
     edit_proposal: Редагувати пропозицію
     what_does_a_proposal_do: "Пропозиції дозволяють з'ясувати ставлення всіх до конкретного напрямку дій."
-    editing_title_and_description_forbidden: 'Ви не можете змінити назву або опис пропозиції після того як люди проголосували. Якщо подробиці змінилися, будь ласка, закрийте цю пропозицію і внесіть нову.'
-    title_placeholder: 'Наприклад: Злітати на місяць'
     title_label: Назва
     closes_at_label: Закривається о
     closes: Закрито
     details_label: Деталі
-    details_placeholder: 'Дайте достатньо подробиць аби кожен розумів, що означає, погодитись, або не виступити проти, або зайняти іншу позицію'
   discussion_record:
     created: 'Тему {{title}} було успішно створено у {{groupName}}'
     updated: 'Зберегти зміни у {{title}}'
@@ -251,9 +242,6 @@ uk:
   proposal_position_no: Проти
   proposal_position_block: Блокувати
   group_welcome_modal:
-    heading: Вітаємо у вашій новій групі
-    first_step: 'Ви <strong>координатор</strong> групи - це майже як бути господарем. Педивіться відео, а потім перегляньте приклади тем.'
-    second_step: 'Коли будете готові - <strong>запросіть людей</strong>.'
     ok_got_it: 'Добре, зрозуміло!'
   group_cover_modal:
     heading: Нове фото обкладинки
@@ -361,7 +349,6 @@ uk:
     standard: Стандарт
     plus: Плюс
     free_trial_html: 'Ми попросимо вас вибрати тарифний план після <span>30-денного безкоштовного пробного використання</span>. Кредитна карта не потрібна.'
-    get_started_for_free: Почніть безкоштовно
     support_before: Радий
     support_link: поговорити з вами
     support_after: 'про продовження вашого пробного використання, або з будь-яких інших питань що у вас виникнули.'
@@ -369,12 +356,8 @@ uk:
     unlimited_members: необмежена кількість членів
     unlimited_decisions: необмежена кількість рішень
     email_support: підтримка по електронній пошті
-    standard_price_html: |
-      US <strong>$19</strong>/місяць<br><span>або</span> $190/рік
     plus_body: 'Все що входить у Стандарт, плюс:'
     premium_support: преміум підтримка
-    plus_price_html: |
-      US <strong>$179</strong>/місяць<br><span>або</span> $1790/рік
     select: Вибрати
   subscription_success_modal:
     heading: 'Дякуємо за підписку!'

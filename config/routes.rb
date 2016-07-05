@@ -1,6 +1,8 @@
 Loomio::Application.routes.draw do
 
-  use_doorkeeper
+  use_doorkeeper do
+    skip_controllers :applications, :authorized_applications
+  end
 
   constraints(GroupSubdomainConstraints) do
     get '/' => 'redirect#group_subdomain'
@@ -229,6 +231,11 @@ Loomio::Application.routes.draw do
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
+
+  get '/notifications/dropdown_items'      => 'application#gone'
+  get '/u/:key(/:stub)'                    => 'application#gone'
+  get '/g/:key/membership_requests/new'    => 'application#gone'
+  get '/comments/:id'                      => 'application#gone'
 
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end
