@@ -327,7 +327,7 @@ describe 'Group Page', ->
                  '.group-page-actions__leave-group',
                  '.leave-group-form__submit')
       page.expectFlash('You have left this group')
-      page.expectNoText('.sidebar__groups', 'Dirty Dancing Shoes')
+      page.expectText('.dashboard-page__no-groups', "You don't have any recent threads because you are not a member of any groups.")
 
     it 'prevents last coordinator from leaving the group', ->
       # click leave group from the group actions downdown
@@ -348,7 +348,7 @@ describe 'Group Page', ->
                  '.group-page-actions__archive-group',
                  '.archive-group-form__submit')
       page.expectFlash('This group has been deactivated')
-      page.expectNoText('.sidebar__groups', 'Dirty Dancing Shoes')
+      page.expectText('.dashboard-page__no-groups', "You don't have any recent threads because you are not a member of any groups.")
 
   describe 'handling drafts', ->
     it 'handles empty draft privacy gracefully', ->

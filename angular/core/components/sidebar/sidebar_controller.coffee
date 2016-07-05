@@ -14,9 +14,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
       when 'dashboardPage' then $scope.currentState.page == page && $scope.currentState.filter == filter
       else $scope.currentState.page == page
 
-  $scope.groups = ->
-    Session.user().groups()
-
   $scope.groupUrl = (group) ->
     name = group.fullName.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()
     "/g/#{group.key}/#{name}"
@@ -25,7 +22,7 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
     $rootScope.$broadcast 'logout'
     @sessionClient = new RestfulClient('sessions')
     @sessionClient.destroy('').then ->
-    $window.location = '/'
+      $window.location = '/'
 
   $scope.helpLink = ->
     UserHelpService.helpLink()
@@ -43,10 +40,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
     if !$mdMedia("gt-md")
       $mdSidenav('left').close()
 
-  $scope.parentGroups = =>
-    _.unique _.compact _.map Session.user().memberships(), (membership) =>
-      if membership.group().isParent()
-        membership.group()
-      else if !Session.user().isMemberOf(membership.group().parent())
-        membership.group().parent()
+  $scope.groups = ->
+    Session.user().topLevelGroups()
 

@@ -31,11 +31,19 @@
     %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.all", ng-show: "dashboardPage.filter == 'show_all'"}
     %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.participating", ng-show: "dashboardPage.filter == 'show_participating'"}
     %h1.lmo-h1-medium.dashboard-page__heading{translate: "dashboard_page.filtering.muted", ng-show: "dashboardPage.filter == 'show_muted'"}
-    .dashboard-page__no-threads{ng-hide: "dashboardPage.loadMoreExecuting || dashboardPage.currentBaseQuery.any()"}
+    .dashboard-page__no-threads{ng-hide: "dashboardPage.loadMoreExecuting || dashboardPage.currentBaseQuery.any() || dashboardPage.noGroups()"}
       %span{ng-show: "dashboardPage.filter == 'show_all'", translate: "dashboard_page.no_threads.show_all"}>
       %span{ng-show: "dashboardPage.filter == 'show_participating'", translate: "dashboard_page.no_threads.show_participating"}>
       %span{ng-show: "dashboardPage.filter == 'show_muted'", translate: "dashboard_page.no_threads.show_muted"}>
       %a{ng-show: "dashboardPage.filter != 'show_all'", translate: "dashboard_page.view_recent", href: "", ng-click: "dashboardPage.setFilter('show_all')"}>
+    .dashboard-page__no-groups{ng-show: "dashboardPage.noGroups()"}
+      %p{ng-show: "dashboardPage.filter == 'show_all'", translate: "dashboard_page.no_groups.show_all"}>
+      %p{ng-show: "dashboardPage.filter == 'show_participating'", translate: "dashboard_page.no_groups.show_participating"}>
+      %p{ng-show: "dashboardPage.filter == 'show_muted'", translate: "dashboard_page.no_groups.show_muted"}>
+      %button.lmo-btn-link--blue{translate: "dashboard_page.no_groups.start", ng-click: "dashboardPage.startGroup()"}>
+      %span{translate: "dashboard_page.no_groups.or"}>
+      %span{translate: "dashboard_page.no_groups.join_group"}>
+
     .dashboard-page__collections{ng-if: "!dashboardPage.displayByGroup()"}
       %section.thread-preview-collection__container{ng-if: "dashboardPage.views.recent[viewName].any()", class: "dashboard-page__{{viewName}}", ng-repeat: "viewName in dashboardPage.recentViewNames"}
         %h2.dashboard-page__date-range{translate: "dashboard_page.threads_from.{{viewName}}"}

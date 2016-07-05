@@ -3,11 +3,7 @@ angular.module('loomioApp').controller 'GroupsPageController', ($rootScope, Sess
   $rootScope.$broadcast('setTitle', 'Groups')
 
   @parentGroups = =>
-    _.unique _.compact _.map Session.user().memberships(), (membership) =>
-      if membership.group().isParent()
-        membership.group()
-      else if !Session.user().isMemberOf(membership.group().parent())
-        membership.group().parent()
+    Session.user().topLevelGroups()
 
   @startGroup = ->
     ModalService.open GroupForm, group: -> Records.groups.build()

@@ -1,15 +1,18 @@
 .notifications__button {
   position: relative;
-  i { font-size: 20px; }
+  i { font-size: 24px; }
 }
 
 .notifications__activity {
-  font-size: 0.5em;
-  color: white;
+  background-color: #4A90E2 !important;
+  border: 2px solid white;
+  color: #fff !important;
+  font-size: 10px;
+  left: 22px;
+  line-height: 22px;
   padding: 2px;
   position: absolute;
-  left: 18px;
-  top: 4px;
+  top: -5px;
 }
 
 .notifications__link {

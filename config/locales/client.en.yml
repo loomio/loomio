@@ -194,6 +194,7 @@ en:
     recent: 'Recent'
     unread: 'Unread'
     muted: 'Muted'
+    explore: 'Explore public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
@@ -762,6 +763,13 @@ en:
     aria_label: 'Dashboard'
     options:
       aria_label: 'Dashboard filtering options'
+    no_groups:
+      show_all: You don't have any recent threads because you are not a member of any groups.
+      show_participating: You haven't participated in any threads recently because you are not a member of any groups.
+      show_muted: You don't have any muted threads because you are not a member of any groups.
+      start: Start
+      or: or
+      join_group: <a href="/explore">join</a> a group to see threads.
     no_threads:
       show_all: You don't have any recent threads.
       show_participating: You haven't participated in any threads recently.
@@ -814,6 +822,11 @@ en:
     no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
     view_more: View More
+    no_groups:
+      explanation: You have no unread threads because you are not a member of any groups.
+      start: Start
+      or: or
+      join_group: <a href="/explore">join</a> a group to see threads.
 
   groups_page:
     page_header: Your groups
