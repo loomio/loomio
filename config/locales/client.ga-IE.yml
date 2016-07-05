@@ -108,9 +108,21 @@ ga-IE:
     latest: Is déanaí
     unread: Neamhléite
     closing_in: Ag dúnadh
+  sign_in_form:
+    password_label: 'Focal Faire:'
+    remember_me: Cuimhnigh orm
+    forgot_password: "Ar dhearmad tú d'fhocal faire?"
+    signed_in: Nasctha go rathúil
+    oauth:
+      title: 'Nó nasc le cuntas ó dhream eile:'
+      facebook: Nasc le Facebook
+      twitter: Nasc le Twitter
+      google: Nasc le Google
+      github: Nasc le Github
   comment_form:
     aria_label: Cuir trácht leis
     attachments:
+      add_attachment: Ceangal comhad leis
       remove_attachment: Bain ceangaltán
     messages:
       created: Tá an trácht curtha leis
@@ -148,6 +160,7 @@ ga-IE:
       discussions: Pléití
       proposals: Tograí
       comments: Tráchtanna
+    sign_in: Sínigh isteach
   start_menu:
     title: Cnaipe gnímh
     start_group: Tosaigh Baicle
@@ -158,6 +171,7 @@ ga-IE:
     header: Fógraí
     new_discussion: 'Chuir <strong>{{name}}</strong> tús le plé <strong>{{discussion}}</strong>'
     new_motion: 'Chruthaigh <strong>{{name}}</strong> togra <strong>{{proposal}}</strong>'
+    motion_closed: 'Togra dúnta: <strong>{{proposal}}</strong>'
     publish_outcome: Foilsigh toradh
     motion_closed_by_user: 'Dhún <strong>{{name}}</strong> an togra <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Dhún an togra <strong>{{proposal}}</strong>'
@@ -221,6 +235,8 @@ ga-IE:
     start_a_proposal: Tosaigh togra
     edit_proposal: Leasaigh an togra
     what_does_a_proposal_do: Ligeann do thograí duit léargas a fháil ar conas mar a bhraitheann gach duine faoi ghníomhartha.
+    proposal_ideas: An bhfuil smaointe ag teastáil uait chun togra maith a scríobh?
+    proposal_ideas_title: 9 mbealach chun feidhm a bhaint as togra de chuid Loomio chun caint a thiontú go gníomh
     title_placeholder: 'M.sh: Rachaimis chuig an ghealach'
     title_label: Teideal
     closes_at_label: Dúnann sé ag a
@@ -265,6 +281,7 @@ ga-IE:
     heading: 'Fáilte chuig an Loomio nua!'
     ok_got_it: 'Maith go leor, tuigim é!'
   group_welcome_modal:
+    member_heading: Fáilte go dtí Loomio
     ok_got_it: 'Maith go leor, tuigim é!'
   group_cover_modal:
     heading: Grianghraf cumhdaigh nua
@@ -282,6 +299,8 @@ ga-IE:
     submit_button: Iarr cead dul isteach sa bhaicle
     messages:
       membership_requested: "D'iarr tú cead bheith i do chomhalta de {{group}}"
+  revision_history_modal:
+    posted: Foilsithe
   group_page:
     thread_list:
       empty:
@@ -299,6 +318,7 @@ ga-IE:
         parent_members: "Is iad na comhaltaí de d'eagraíocht amháin ar féidir leo an bhaicle seo a fheiceáil"
         public: Tá an saol mór in ann an bhaicle seo a fheiceáil anois
       leave_group_success: "D'fhág tú an bhaicle seo"
+      archive_group_success: Cuireadh deireadh leis an mbaicle seo
     group_logo: Lógó na baicle
     new_photo: grianghraf nua
     description: Cur síos ar an mbaicle
@@ -339,10 +359,20 @@ ga-IE:
     go_back: Téigh siar
   donation_modal:
     heading: Ar mhaith leat tacaíocht a thabhairt do Loomio?
+    contribute: Bronn airgead
+    got_to_group: Tabhair chuig mo bhaicle mé
+  gift_card:
+    make_a_contribution: Bronn airgead
   choose_plan_modal:
+    standard: Caighdeánach
+    plus: Breise
+    start_group: Cuir baicle ar bun
+    gift_body: Le haghaidh dreamanna nach bhfuil acmhainní acu
     support_before: Táim sásta
     support_link: labhairt libh
     remind_me_later: Meabhraigh dom é níos déanaí
+    unlimited_decisions: cinntí gan teorainn
+    email_support: tacaíocht trí ríomhphost
     select: Roghnaigh seo
   subscription_success_modal:
     contact_link: déan teagmháil linn.
@@ -387,10 +417,16 @@ ga-IE:
     email_addresses: Seoltaí ríomhphoist
     email_addresses_placeholder: 'm.sh. helperbot@loomio.org, friendlybot@loomio.org'
     custom_message: Teachtaireacht saincheaptha
+    team_invitation_link: faigh nasc le roinnt ar dhaoine.
+    add_members: Cuir comhaltaí leis
+    from_parent_group: 'ó {{name}}.'
     send: Seol
     done: Déanta
     messages:
       invitation_sent: Seoladh an cuireadh.
+      invitations_sent: 'Seoladh {{count}} cuireadh'
+  add_members_modal:
+    add_members: Cuir comhaltaí leis
   memberships_page:
     members: Comhaltaí
     name_label: Ainm
