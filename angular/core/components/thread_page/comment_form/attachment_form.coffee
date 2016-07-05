@@ -28,9 +28,6 @@ angular.module('loomioApp').directive 'attachmentForm', ->
     $scope.failure = (response) ->
       $scope.model.setErrors(response.data.errors)
 
-    $scope.failure = (response) ->
-      $scope.comment.setErrors(response.data.errors)
-
     $scope.reset = ->
       $scope.files = $scope.currentUpload = null
       $scope.percentComplete = 0

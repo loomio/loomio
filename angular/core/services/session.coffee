@@ -27,7 +27,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig) 
   homePath: ->
     switch @user().topLevelGroups().length
       when 0 then '/explore'
-      when 1 then '/g/' + @user().topLevelGroups()[0].key
+      when 1 then LmoUrlService.group(@user().topLevelGroups()[0])
       else        '/dashboard'
 
   user: ->

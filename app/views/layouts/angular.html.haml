@@ -49,7 +49,7 @@
                   %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
                   %span {{group.name}}
                 %md_list.sidebar__list.sidebar__subgroups{ng_if: "group.subgroups().length > 0"}
-                  %md_list_item.sidebar__list-item{ng_repeat: "subgroup in group.subgroups() | orderBy: 'name' track by subgroup.id"}
+                  %md_list_item.sidebar__list-item{ng_repeat: "subgroup in group.subgroups() | orderBy: 'name' track by subgroup.id", ng_class: "{'subgroupSelected': onPage('groupPage', subgroup.key)}"}
                     %md_button.sidebar__list-item-button--subgroup{href: "{{groupUrl(subgroup)}}"}
                       %span {{subgroup.name}}
                 .sidebar__list-item-padding

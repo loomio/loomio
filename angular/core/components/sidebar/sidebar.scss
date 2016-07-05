@@ -59,6 +59,12 @@
   }
 }
 
+.subgroupSelected {
+  .sidebar__list-item-button--subgroup {
+    background-color: #EBEBEB;
+  }
+}
+
 .noGroups {
   display: none;
 }

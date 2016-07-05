@@ -20,5 +20,5 @@ angular.module('loomioApp').directive 'startMenu', ->
     $scope.toggleStartMenu = ->
       $scope.startMenuOpen = !$scope.startMenuOpen
 
-    $scope.userIsGroupMember = ->
+    $scope.hasAnyGroups = ->
       Session.user().hasAnyGroups()

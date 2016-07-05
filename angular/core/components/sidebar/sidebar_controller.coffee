@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdSidenav) ->
+angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdSidenav, LmoUrlService, Records) ->
   $scope.showSidebar = $mdMedia("gt-md")
   $scope.currentState = ""
 
@@ -15,14 +15,10 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
       else $scope.currentState.page == page
 
   $scope.groupUrl = (group) ->
-    name = group.fullName.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()
-    "/g/#{group.key}/#{name}"
+    LmoUrlService.group(group)
 
   $scope.signOut = ->
-    $rootScope.$broadcast 'logout'
-    @sessionClient = new RestfulClient('sessions')
-    @sessionClient.destroy('').then ->
-      $window.location = '/'
+    Records.sessions.remote.destroy('').then -> $window.location.href = '/'
 
   $scope.helpLink = ->
     UserHelpService.helpLink()
