@@ -11,7 +11,6 @@ describe 'Profile', ->
     it 'successfully updates a profile', ->
       profileHelper.visitProfilePage()
       profileHelper.updateProfile('Ferris Bueller', 'ferrisbueller', 'ferris@loomio.org')
-      profileHelper.visitProfilePage()
       expect(profileHelper.nameInput().getAttribute('value')).toContain('Ferris Bueller')
       expect(profileHelper.usernameInput().getAttribute('value')).toContain('ferrisbueller')
       expect(profileHelper.emailInput().getAttribute('value')).toContain('ferris@loomio.org')
