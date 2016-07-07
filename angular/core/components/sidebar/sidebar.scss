@@ -6,7 +6,7 @@
 }
 
 .sidebar__list {
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .sidebar__list-item-button {
@@ -15,9 +15,9 @@
   border-radius: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
+  text-transform: none;
   span {
     font-weight: 600;
-    text-transform: none;
   }
 }
 
@@ -67,4 +67,43 @@
 
 .noGroups {
   display: none;
+}
+
+.sidebar__user-panel {
+  margin-right: 16px;
+}
+
+.sidebar__user-panel-button {
+  padding: 16px 8px 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.sidebar__user-icon-container {
+  height: 64px;
+  width: 64px;
+  background-color: #AAA;
+  border-radius: 50%;
+}
+
+.sidebar__user-icon {
+  font-size: 40px;
+  left: 24px;
+  position: absolute;
+  top: 32px;
+}
+
+.sidebar__user-name, .sidebar__toggle-usermenu {
+  display: flex;
+  height: 28px;
+}
+
+.sidebar__user-name {
+  font-weight: 600;
+}
+
+.sidebar__toggle-usermenu {
+  justify-content: space-between;
+  line-height: 28px;
 }
