@@ -2,7 +2,7 @@ class API::SessionsController < Devise::SessionsController
   include DeviseControllerHelper
 
   def create
-    if user = warden.authenticate
+    if user = warden.authenticate(scope: resource_name)
       sign_in resource_name, user
       render json: CurrentUserSerializer.new(user).as_json
     else
