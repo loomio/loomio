@@ -12,6 +12,9 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel, AppConfig) ->
       @belongsTo 'author', from: 'users'
       @belongsTo 'proposal'
 
+    group: ->
+      @proposal().group()
+
     authorName: ->
       @author().name
 

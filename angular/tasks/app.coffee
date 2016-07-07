@@ -19,7 +19,11 @@ module.exports = ->
       htmlmin(),                                  # minify html
       template(                                   # store html templates in angular cache
         module: 'loomioApp',
-        transformUrl: (url) -> "generated/components/#{url}"
+        transformUrl: (url) ->
+          if url.match /.+\/.+/
+            "generated/components/#{url}"
+          else
+            "generated/components/#{url.split('.')[0]}/#{url}"
       ),
     ]),
     concat('app.js'),                           # concatenate app files

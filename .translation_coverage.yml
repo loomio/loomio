@@ -76,9 +76,9 @@ fr-BE:
   marketing: 0
   server: 0
 ga-IE:
-  main_1_0: 64
+  main_1_0: 68
   marketing: 0
-  server: 38
+  server: 41
 gl:
   main_1_0: 13
   marketing: 0
@@ -237,5 +237,5 @@ vi:
   server: 16
 zh-TW:
   main_1_0: 100
-  marketing: 100
+  marketing: 98
   server: 100

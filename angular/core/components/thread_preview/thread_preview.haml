@@ -33,7 +33,7 @@
           {{ thread.group().fullName }} ·
           %smart_time{time: "thread.lastActivityAt"}>
 
-      %outlet{name: "after-thread-preview"}
+      %outlet{name: "after-thread-preview", model: "thread"}
 
   .thread-preview__star
     %star_toggle{thread: "thread", aria-hidden: "true"}

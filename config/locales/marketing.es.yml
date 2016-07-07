@@ -36,8 +36,8 @@ es:
     decide_act:
       heading: 'Decide y Actúa '
       explanation: 'Llega a un resultado claro para cada propuesta, dentro del tiempo fijado. Todos serán notificados sobre el resultado, para que puedan avanzar juntos y ponerse en acción. '
-    try_it: 'Pruébalo gratuitamente '
-    start_group: Crear un grupo
+    try_it_now: 'Pruébalo ahora '
+    start_free_group: Crea un grupo gratis
     fast_inclusive_effective: 'Tu nueva normalidad puede ser rápida, inclusiva y eficiente.'
     debt_resistance_uk:
       heading: 'Productividad en las reuniones y entre las mismas. '

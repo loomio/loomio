@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531012717) do
+ActiveRecord::Schema.define(version: 20160615211101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -476,6 +476,7 @@ ActiveRecord::Schema.define(version: 20160531012717) do
     t.string   "region"
     t.string   "city"
     t.integer  "closed_motions_count",               default: 0,              null: false
+    t.boolean  "enable_experiments",                 default: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
