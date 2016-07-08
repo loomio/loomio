@@ -170,7 +170,7 @@ class Group < ActiveRecord::Base
                        styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
                        default_url: :default_cover_photo
   has_attached_file    :logo,
-                       styles: { card: "67x67", medium: "100x100" },
+                       styles: { card: "67x67#", medium: "100x100#" },
                        default_url: 'default-logo-:style.png'
 
   validates_attachment :cover_photo,
