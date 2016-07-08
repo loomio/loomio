@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include HasTimeframe
+
   KINDS = %w[new_discussion discussion_title_edited discussion_description_edited discussion_edited discussion_moved
              new_comment new_motion new_vote motion_close_date_edited motion_name_edited motion_description_edited
              motion_edited motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created

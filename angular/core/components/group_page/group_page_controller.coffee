@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal, LegacyTrialExpiredModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
@@ -14,6 +14,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       Records.drafts.fetchFor(@group)
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
+      @handlePaymentModal()
       LegacyTrialExpiredModal.showIfAppropriate(@group, Session.user())
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
@@ -62,16 +63,24 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
 
-  @showWelcomeModel = ->
+  @showWelcomeModal = ->
     @group.isParent() and
     Session.user().isMemberOf(@group) and
     !@group.trialIsOverdue() and
     !@subscriptionSuccess and
     !Session.user().hasExperienced("welcomeModal", @group)
 
+  @showPaymentModal = =>
+    AbilityService.canSeeTrialCard(@group) and
+    $location.search().payment?
+
   @handleWelcomeModal = =>
-    if @showWelcomeModel()
+    if @showWelcomeModal()
       ModalService.open GroupWelcomeModal, group: => @group
       Records.memberships.saveExperience("welcomeModal", Session.user().membershipFor(@group))
+
+  @handlePaymentModal = =>
+    if @showPaymentModal()
+      ModalService.open(ChoosePlanModal, group: => @group)
 
   return

@@ -23,6 +23,7 @@ ActiveAdmin.register Group do
   filter :created_at
   filter :is_commercial
   filter :subdomain
+  filter :analytics_enabled
 
   scope :parents_only
   scope :engaged
@@ -71,6 +72,7 @@ ActiveAdmin.register Group do
     end
     column :is_commercial
     column :archived_at
+    column :analytics_enabled
     actions
   end
 
@@ -151,6 +153,7 @@ ActiveAdmin.register Group do
       f.input :theme, as: :select, collection: Theme.all
       f.input :max_size
       f.input :is_commercial
+      f.input :analytics_enabled
       f.input :category_id, as: :select, collection: Category.all
     end
     f.actions
