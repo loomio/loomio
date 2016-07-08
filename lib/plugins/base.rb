@@ -9,7 +9,7 @@ module Plugins
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :actions, :events, :outlets, :routes, :translations, :enabled
+    attr_reader :assets, :actions, :events, :outlets, :routes, :translations, :enabled, :commit
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -17,6 +17,7 @@ module Plugins
 
     def initialize(name)
       @name = name
+      @commit = `git rev-parse HEAD`
       @translations = {}
       @assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new
       @config = YAML.load_file([@name, 'config.yml'].join('/'))
