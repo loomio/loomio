@@ -21,7 +21,7 @@ class RootController < ApplicationController
   def logged_in_destination
     case current_user_groups.count
     when 0 then explore_path
-    when 1 then current_user_groups.first
+    when 1 then group_path(current_user_groups.first)
     else        dashboard_path
     end
   end

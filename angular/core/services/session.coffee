@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig) ->
+angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig, LmoUrlService) ->
 
   login: (data) ->
     return unless data.current_user and data.current_user.id
@@ -25,9 +25,9 @@ angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig) 
     @user()
 
   homePath: ->
-    switch @user().topLevelGroups().length
+    switch @user().groups().length
       when 0 then '/explore'
-      when 1 then LmoUrlService.group(@user().topLevelGroups()[0])
+      when 1 then LmoUrlService.group(@user().groups()[0])
       else        '/dashboard'
 
   user: ->

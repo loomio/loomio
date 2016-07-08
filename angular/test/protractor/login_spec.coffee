@@ -1,4 +1,4 @@
-describe 'Login', ->
+fdescribe 'Login', ->
   page       = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
@@ -20,12 +20,26 @@ describe 'Login', ->
       page.click '.sign-in-form__submit-button'
       page.expectElement '.lmo-validation-error', 'Invalid email or password'
 
-    it 'logs in when password is correct', ->
+    it 'takes you to the explore page when not a member of any groups', ->
       staticPage.loadPath 'setup_login'
       staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
-      page.expectText '.dashboard-page', 'Recent Threads'
+      page.expectElement '.explore-page', 'Explore Loomio groups'
+
+    it 'takes you to your group page when a member of one group', ->
+      staticPage.loadPath 'setup_logged_out_group_member'
+      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
+      staticPage.fillIn '#user_password', 'gh0stmovie'
+      staticPage.click '#sign-in-btn'
+      page.expectElement '.group-page', 'Explore Loomio groups'
+
+    it 'takes you to the dashboard when a member of multiple groups', ->
+      staticPage.loadPath 'setup_logged_out_member_of_multiple_groups'
+      staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
+      staticPage.fillIn '#user_password', 'gh0stmovie'
+      staticPage.click '#sign-in-btn'
+      page.expectElement '.dashboard-page', 'Recent threads'
 
     it 'does not log in when password is incorrect', ->
       staticPage.loadPath 'setup_login'
