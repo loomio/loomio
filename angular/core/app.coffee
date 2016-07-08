@@ -124,8 +124,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/apps/authorized', component: 'authorizedAppsPage'},
     {path: '/apps/registered', component: 'registeredAppsPage'},
     {path: '/apps/registered/:id', component: 'registeredAppPage'},
-    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'},
-    {path: '/explore', component: 'explorePage'}
+    {path: '/apps/registered/:id/:stub', component: 'registeredAppPage'}
   ]
 
   $router.config coreRoutes.concat window.Loomio.plugins.routes

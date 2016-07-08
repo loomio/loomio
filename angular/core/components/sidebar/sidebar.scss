@@ -38,11 +38,11 @@
 
 .sidebar__list-item-icon {
   width: 20px;
-  margin-right: 15px;
+  margin-right: 16px;
 }
 
 .sidebar__list-item-group-logo {
-  margin-right: 15px;
+  margin-right: 16px;
 }
 
 .fa-envelope-o {
@@ -53,19 +53,11 @@
   border-top: 1px solid #eee;
 }
 
-.selected {
-  .sidebar__list-item-button {
-    background-color: #EBEBEB;
-  }
+.sidebar__list-item--selected {
+  background-color: #EBEBEB;
 }
 
-.subgroupSelected {
-  .sidebar__list-item-button--subgroup {
-    background-color: #EBEBEB;
-  }
-}
-
-.noGroups {
+.sidebar__no-groups {
   display: none;
 }
 

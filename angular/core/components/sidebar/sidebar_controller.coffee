@@ -40,7 +40,7 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
       $mdSidenav('left').close()
 
   $scope.groups = ->
-    Session.user().topLevelGroups()
+    Session.user().groups()
 
   $scope.currentUser = ->
     Session.user()
