@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::EventsController do
+describe Api::EventsController do
 
   let(:user) { create :user }
   let(:group) { create :group }

@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::SearchController do
+describe Api::SearchController do
 
   let(:user)    { create :user }
   let(:group)   { create :group }

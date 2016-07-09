@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::VotesController do
+describe Api::VotesController do
 
   let(:user)                  { create :user }
   let(:group)                 { create :group }

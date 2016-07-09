@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::GroupsController do
+describe Api::GroupsController do
 
   let(:user) { create :user }
   let(:group) { create :group }

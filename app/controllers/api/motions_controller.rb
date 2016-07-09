@@ -1,4 +1,4 @@
-class API::MotionsController < API::RestfulController
+class Api::MotionsController < Api::RestfulController
   include UsesDiscussionReaders
 
   def show

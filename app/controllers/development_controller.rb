@@ -3,8 +3,8 @@ class DevelopmentController < ApplicationController
   include Development::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_filter :ensure_testing_environment
-  before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
+  before_action :ensure_testing_environment
+  before_action :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
 
   def index
     @routes = DevelopmentController.action_methods.select do |action|

@@ -1,4 +1,4 @@
-class API::ContactsController < API::RestfulController
+class Api::ContactsController < Api::RestfulController
   def index
     instantiate_collection { |contacts| contacts.search_for(params[:q]) }
     respond_with_collection

@@ -1,4 +1,4 @@
-class API::GroupsController < API::RestfulController
+class Api::GroupsController < Api::RestfulController
   load_and_authorize_resource only: :show, find_by: :key
   load_resource only: [:upload_photo, :use_gift_subscription], find_by: :key
   skip_before_action :authenticate_user!, only: [:index]

@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::InvitationsController do
+describe Api::InvitationsController do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
 

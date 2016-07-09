@@ -1,4 +1,4 @@
-class API::CommentsController < API::RestfulController
+class Api::CommentsController < Api::RestfulController
   include UsesDiscussionReaders
   load_resource only: [:like, :unlike]
 

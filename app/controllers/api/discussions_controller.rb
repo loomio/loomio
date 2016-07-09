@@ -1,5 +1,5 @@
-class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :move]
+class Api::DiscussionsController < Api::RestfulController
+  load_and_authorize_resource only: [:show, :mark_as_read, :move], find_by: :key
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 

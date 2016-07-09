@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_or_visitor
   helper_method :dashboard_or_root_path
 
-  before_filter :set_application_locale
-  around_filter :user_time_zone, if: :user_signed_in?
+  before_action :set_application_locale
+  around_action :user_time_zone, if: :user_signed_in?
 
   # intercom
   skip_after_filter :intercom_rails_auto_include
@@ -79,14 +79,14 @@ class ApplicationController < ActionController::Base
     [nil, root_url, new_user_password_url, '']
   end
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:email, :name, :password, :password_confirmation)
     end
 
-    devise_parameter_sanitizer.for(:sign_in) do |u|
+    devise_parameter_sanitizer.permit(:sign_in) do |u|
       u.permit(:email, :password, :remember_me)
     end
   end

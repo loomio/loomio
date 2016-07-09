@@ -1,9 +1,9 @@
-class API::RestfulController < ActionController::Base
+class Api::RestfulController < ActionController::Base
   include ::LocalesHelper
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
-  before_filter :set_application_locale
-  before_filter :set_paper_trail_whodunnit
+  before_action :set_application_locale
+  before_action :set_paper_trail_whodunnit
   snorlax_used_rest!
 
   private

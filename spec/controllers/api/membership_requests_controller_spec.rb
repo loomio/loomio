@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::MembershipRequestsController do
+describe Api::MembershipRequestsController do
 
   let(:user) { create :user }
   let(:group) { create :group, members_can_add_members: true }

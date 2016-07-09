@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::MembershipsController do
+describe Api::MembershipsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }

@@ -1,4 +1,4 @@
-class API::NotificationsController < API::RestfulController
+class Api::NotificationsController < Api::RestfulController
 
   def viewed
     NotificationService.mark_as_viewed(current_user)

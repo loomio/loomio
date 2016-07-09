@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::MotionsController do
+describe Api::MotionsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }

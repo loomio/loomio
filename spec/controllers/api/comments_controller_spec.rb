@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::CommentsController do
+describe Api::CommentsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }

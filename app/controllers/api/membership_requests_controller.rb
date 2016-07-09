@@ -1,4 +1,4 @@
-class API::MembershipRequestsController < API::RestfulController
+class Api::MembershipRequestsController < Api::RestfulController
 
   before_action :authorize, only: [:pending, :previous]
 

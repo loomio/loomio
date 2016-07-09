@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::AttachmentsController do
+describe Api::AttachmentsController do
 
   let(:user) { create :user }
   let(:filename) { 'strongbad.png' }

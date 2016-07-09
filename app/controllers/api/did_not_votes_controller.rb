@@ -1,4 +1,4 @@
-class API::DidNotVotesController < API::RestfulController
+class Api::DidNotVotesController < Api::RestfulController
 
   private
 

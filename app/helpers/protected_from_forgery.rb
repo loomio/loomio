@@ -1,7 +1,7 @@
 module ProtectedFromForgery
 
   def self.included(base)
-    base.after_filter :set_xsrf_token
+    base.after_action :set_xsrf_token
   end
 
   protected

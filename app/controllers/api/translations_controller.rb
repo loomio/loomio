@@ -1,4 +1,4 @@
-class API::TranslationsController < API::RestfulController
+class Api::TranslationsController < Api::RestfulController
 
   class TranslationUnavailableError < Exception; end
   rescue_from(TranslationUnavailableError) { |e| respond_with_standard_error e, 400 }

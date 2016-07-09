@@ -1,4 +1,4 @@
-class API::ProfileController < API::RestfulController
+class Api::ProfileController < Api::RestfulController
 
   def show
     load_and_authorize :user

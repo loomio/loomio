@@ -1,4 +1,4 @@
-class API::MembershipsController < API::RestfulController
+class Api::MembershipsController < Api::RestfulController
   load_resource only: [:set_volume]
 
   def add_to_subgroup

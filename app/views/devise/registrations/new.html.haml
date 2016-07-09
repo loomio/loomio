@@ -29,16 +29,16 @@
                   .sso-btn-row
                     %label= t :sign_up_with_third_party
                     -if env.facebook_key
-                      = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+                      = link_to user_facebook_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login' do
                         = t :sign_up_with_facebook
                     -if env.google_key
-                      = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+                      = link_to user_google_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login' do
                         = t :sign_up_with_google
                     -if env.twitter_key
-                      = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+                      = link_to user_twitter_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
                         = t :sign_up_with_twitter
                     -if env.github_key
-                      = link_to user_omniauth_authorize_path(:github), class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
+                      = link_to user_github_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
                         = t :sign_up_with_github
 
           .terms= t(:tos_html, link_path: terms_of_service_path) if hosted_by_loomio?

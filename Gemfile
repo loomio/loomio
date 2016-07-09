@@ -61,6 +61,7 @@ gem 'safe_shell'
 gem 'premailer-rails', github: 'gdpelican/premailer-rails'
 gem 'griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
+gem "simple_form"
 
 group :development, :test do
   gem 'minitest'

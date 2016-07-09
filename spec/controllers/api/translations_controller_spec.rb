@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::TranslationsController do
+describe Api::TranslationsController do
 
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }

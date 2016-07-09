@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::DidNotVotesController do
+describe Api::DidNotVotesController do
 
   let(:user)                  { create :user }
   let(:group)                 { create :group }

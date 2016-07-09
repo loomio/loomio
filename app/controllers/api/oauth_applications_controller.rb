@@ -1,4 +1,4 @@
-class API::OauthApplicationsController < API::RestfulController
+class Api::OauthApplicationsController < Api::RestfulController
   load_resource only: [:revoke_access, :upload_logo]
 
   def show

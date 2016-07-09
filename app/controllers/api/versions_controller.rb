@@ -1,4 +1,4 @@
-class API::VersionsController < API::RestfulController
+class Api::VersionsController < Api::RestfulController
 
   private
 

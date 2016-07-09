@@ -1,2 +1,2 @@
-class API::AttachmentsController < API::RestfulController
+class Api::AttachmentsController < Api::RestfulController
 end

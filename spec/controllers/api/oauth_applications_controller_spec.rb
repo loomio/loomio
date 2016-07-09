@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::OauthApplicationsController do
+describe Api::OauthApplicationsController do
 
   let(:user) { create(:user) }
   let!(:my_app) { create(:application, owner: user) }

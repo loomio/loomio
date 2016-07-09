@@ -117,9 +117,9 @@ GEM
       request_store
       user_agent_parser
       uuidtools
-    airbrake (5.2.3)
-      airbrake-ruby (~> 1.2)
-    airbrake-ruby (1.2.4)
+    airbrake (5.4.1)
+      airbrake-ruby (~> 1.4)
+    airbrake-ruby (1.4.3)
     akami (1.3.1)
       gyoku (>= 0.4.0)
       nokogiri
@@ -645,6 +645,9 @@ GEM
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     simple-rss (1.3.1)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -795,6 +798,7 @@ DEPENDENCIES
   sequenced (~> 2.0.0)
   shoulda-matchers
   simple-rss
+  simple_form
   snorlax (~> 0.1.3)
   spring
   spring-commands-cucumber

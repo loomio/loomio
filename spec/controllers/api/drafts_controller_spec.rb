@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::DraftsController do
+describe Api::DraftsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }

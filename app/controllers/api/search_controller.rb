@@ -1,4 +1,4 @@
-class API::SearchController < API::RestfulController
+class Api::SearchController < Api::RestfulController
 
   def index
     @search = resource_class.search_for(params[:q], current_user, search_params)

@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::ProfileController do
+describe Api::ProfileController do
 
   let(:user) { create :user }
   let(:group) { create :group }

@@ -2,9 +2,9 @@ class BaseController < ApplicationController
   include AutodetectTimeZone
   include OmniauthAuthenticationHelper
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
-  before_filter :check_for_omniauth_authentication,
+  before_action :check_for_omniauth_authentication,
                 :check_for_invitation,
                 :ensure_user_name_present,
                 :set_time_zone_from_javascript, unless: :ajax_request?

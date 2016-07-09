@@ -1,4 +1,4 @@
-class API::InvitationsController < API::RestfulController
+class Api::InvitationsController < Api::RestfulController
   def create
     load_and_authorize :group, :invite_people
     @invitations = InvitationService.invite_to_group(recipient_emails: email_addresses,
