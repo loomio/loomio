@@ -18,6 +18,8 @@
 
           .signin_container
             = render "form"
+            %p.sign_up
+              != t :create_account, sign_up_link: link_to(t(:sign_up_link), new_user_registration_path)
             - env = Rails.application.secrets
             - if env.google_key or env.twitter_key or env.facebook_key or env.github_key
               -unless omniauth_authenticated_and_waiting?

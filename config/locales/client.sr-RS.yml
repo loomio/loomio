@@ -122,16 +122,11 @@ sr-RS:
     standard: Стандард
     plus: Плус
     free_trial_html: 'Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна.'
-    get_started_for_free: Почни бесплатно
     unlimited_members: неограничено чланова
     unlimited_decisions: неограничено одлука
     email_support: подршка еПорукама
-    standard_price_html: |
-      US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње
     plus_body: 'Све у Стандард, плус:'
     premium_support: премијум подршка
-    plus_price_html: |
-      US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши

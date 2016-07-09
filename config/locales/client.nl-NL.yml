@@ -69,15 +69,9 @@ nl-NL:
     clear: Leegmaken
     latest: Laatste
     unread: Ongelezen
-  session_form:
-    email_label: 'E-mailadres:'
-    password_label: Wachtwoord
-    remember_me: Onthoud mij
-    sign_in: Inloggen
   comment_form:
     aria_label: Toevoegen reactie
     attachments:
-      aria_label: Bestand toevoegen
       remove_attachment: Verwijderen bijlage
     messages:
       created: Reactie toegevoegd

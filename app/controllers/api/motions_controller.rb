@@ -48,7 +48,7 @@ class Api::MotionsController < Api::RestfulController
   end
 
   def accessible_records
-    Queries::VisibleMotions.new(user: current_user, groups: current_user.groups)
+    Queries::VisibleMotions.new(user: current_user)
   end
 
   def serializer_root

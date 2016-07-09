@@ -10,6 +10,7 @@ hu:
     notification_volume: Értesítési hangerő
     group: Csoport
     groups: Csoportok
+    help: Segítség
     privacy:
       privacy: Adatvédelem
       public: Nyilvános
@@ -27,22 +28,32 @@ hu:
     more_help: További segítség
     models:
       proposal: Javaslat
+    copy: szöveg másolása
+    copied: Vágólapra másolva
     action:
+      close: Bezár
       save: Mentés
       save_changes: Változások mentése
       update_settings: Beállítások frissítése
       reply: Válasz
       edit: Módosítás
+      remove: Visszavonás
       like: Tetszik
+      back: Vissza
       unlike: Nem tetszik
       update: Frissítés
       cancel: Mégse
       show_more: Bővebben
       view_all: Mutasd mind
+      new_thread: Új téma
       add_subgroup: Alcsoport létrehozása
       loading: Betöltés
+      translate: Fordítás
+      translated: '"Bing-Translator"-ral fordítva'
+      upload: Feltöltés
       uploading: Feltöltés
     formatting_help:
+      label: Formázási segítség
       title: 'Tanuld meg, hogyan kell a Markdown-t használni szöveged formázásához a Loomion'
   error_page:
     forbidden: Ehhez nincs jogosultságod.
@@ -70,19 +81,32 @@ hu:
     normal: Normál
     quiet: Csendes
     mute: Néma
+  change_volume_form:
+    discussion:
+      title: 'Email beállítások {{title}}-hez'
+    membership:
+      title: 'Email beállítások {{title}}-hez'
   inbox:
     clear: Töröl
     unread: Olvasatlan
     closing_in: Zárás
-  session_form:
-    email_label: 'email:'
+  sign_in_form:
+    title: Bejelentkezés a Loomio-ba
+    email_placeholder: te@valahol.hu
     password_label: 'Jelszó:'
-    remember_me: 'Emlékezz rám:'
+    remember_me: Emlékezz rám
+    forgot_password: Elfelejtetted a jelszót?
     sign_in: Belépés
+    signed_in: Sikeresen bejelentkeztél
+    oauth:
+      title: 'Vagy lépj be egy külső fiókkal:'
+      facebook: Lépj be a Facebook-kal
+      twitter: Lépj be a Twitter-rel
+      google: Lépj be a Google-lel
+      github: Lépj be a Github-al
   comment_form:
     aria_label: Hozzászólás
     attachments:
-      aria_label: Fájl csatolása
       remove_attachment: Csatolmány eltávolítása
     messages:
       updated: Hozzászólás frissítve
@@ -92,14 +116,18 @@ hu:
     confirm_delete_message: Biztosan törölni akarod ezt a hozzászólást?
     confirm_delete: 'Igen, biztos vagyok benne'
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
+    sign_in: 'Lépj be, hogy hozzászolhass a témakörhöz.'
   navbar:
     unread: Olvasatlan
     groups: Csoportok
+    start_thread: Egy új téma indítása
     user_options:
       contact_us: Értesíts minket
+      new_thread: Új téma
       new_group: Új csoport
       profile: Profil
       help: Segítség
+      sign_out: Kijelentkezés
     search:
       close: Kereső panel bezárása
       placeholder: Keresés
@@ -107,6 +135,7 @@ hu:
       discussions: Szálak
       proposals: Javaslatok
       comments: Hozzászólások
+    sign_in: Bejelentkezés
   start_menu:
     start_group: Csoport indítása
     start_subgroup: Alcsoport indítása
@@ -141,6 +170,7 @@ hu:
     closes_at_label: Lezáródik
     details_label: Részletek
   discussion_form:
+    new_discussion_title: Új téma indítása
     group_label: Csoport
     title_label: Cím
     context_label: Leírás
@@ -150,6 +180,10 @@ hu:
     edit_proposal: Javaslat szerkesztése
     close_proposal: Javaslat lezárása
     closed_badge: Zárva
+  group_logo_modal:
+    heading: Új csoport logó
+    upload_link: Új csoport logó feltöltése
+    upload_success: A logót sikeresen feltöltötted
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
     ask_to_join_group: Kérj belépőt a csoportba
@@ -164,6 +198,7 @@ hu:
       empty:
         membership_is_invitation_only: A belépéshez meghívóra van szükséged egy csoporttagtól.
         membership_is_invitation_by_admin_only: A belépéshez egy koordinátor meghívójára van szükséged.
+    group_logo: Csoport logó
     discussions: Szálak
     invite_people: Hívj meg embereket
     options_label: Lehetőségek
@@ -177,7 +212,10 @@ hu:
       mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
   group_form:
     privacy: Adatvédelem
+    members_can_start_discussions: A tagok felvethetnek új támékat.
     submit_update: Beállítások frissítése
+  group_help_card:
+    title: Segítség
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás
@@ -369,3 +407,6 @@ hu:
     invitation: Hogyan írj jó meghívót
     proposal: Hogyan írj egyértelmű javaslatot
     vote: Bármikor megváltoztathatod az álláspontodat
+  registered_app_form:
+    messages:
+      logo_changed: Logó frissítve.

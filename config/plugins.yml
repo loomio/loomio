@@ -1,7 +1,9 @@
 loomio_webhooks:
-  repo:    loomio/loomio_webhooks
-  branch: master
+  repo:         loomio/loomio_webhooks
 
 loomio_org_plugin:
-  repo:    loomio/loomio_org_plugin
-  branch: master
+  repo:         loomio/loomio_org_plugin
+
+loomio_tags:
+  repo:         loomio/loomio_tags
+  experimental: true

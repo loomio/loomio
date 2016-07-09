@@ -93,15 +93,9 @@ tr:
     latest: En yeniler
     unread: Okunmamış
     closing_in: Kapanış
-  session_form:
-    email_label: 'Eposta:'
-    password_label: 'Şifre:'
-    remember_me: Beni Hatırla
-    sign_in: Oturum aç
   comment_form:
     aria_label: Bir yorum ekle
     attachments:
-      aria_label: Bir dosya ekle
       remove_attachment: Eki kaldır
     messages:
       created: Yorum eklendi
@@ -221,13 +215,10 @@ tr:
     start_a_proposal: Bir öneri başlat
     edit_proposal: Öneri düzenle
     what_does_a_proposal_do: 'Öneriler, belirli bir davranış biçimi hakkında diğer herkesin nasıl hissettiğini görmenizi sağlar.'
-    editing_title_and_description_forbidden: 'Kişiler oy kullandıktan sonra bir önerinin başlığını ya da açıklamasını değiştiremezsiniz. Eğer ayrıntılar değiştiyse, lütfen öneriyi kapatın ve başka bir tane başlatın '
-    title_placeholder: 'Örn: Aya git'
     title_label: Başlık
     closes_at_label: de kapanır
     closes: Kapanış
     details_label: Detaylar
-    details_placeholder: 'Yeterli detay verin ki herkes katılımın, reddetmenin ya da her ne karar veriyorlarsa bunun ne anlama geldiğini tam olarak bilsin'
   discussion_record:
     created: '{{title}} konusu {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
@@ -274,9 +265,6 @@ tr:
       almalarını rica ediyoruz.</p>
     submit: Bana planları göster
   group_welcome_modal:
-    heading: Yeni grubuna hoşgeldin
-    first_step: 'Siz grup <strong>koordinatörüsünüz</strong> ve bu bir ev sahipliği yapmak gibi birşey. Videoyu izleyin ve örnek konuları kontrol edin.'
-    second_step: 'Hazır olduğunuz zaman <strong>başkalarını davet edin</strong>.'
     ok_got_it: 'Tamam, anladım!'
   group_cover_modal:
     heading: Yeni kapak fotoğrafı
@@ -403,7 +391,6 @@ tr:
     standard: Standart
     plus: Plus
     free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
-    get_started_for_free: Ücretsiz başlayın
     support_before: "'na razıyım"
     support_link: Sizinle konuşmak
     support_after: 'deneme sürenizin uzatılması hakkında, ya da başka olabilecek herhangi bir sorunuz ile.'
@@ -411,12 +398,8 @@ tr:
     unlimited_members: sınırsız üyeler
     unlimited_decisions: sınırsız kararlar
     email_support: e-posta desteği
-    standard_price_html: |
-      US <strong>$19</strong>/aylık<br><span>ya da</span> $190/yıllık
     plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
     premium_support: Premium destek
-    plus_price_html: |
-      US <strong>$179</strong>/aylık<br><span>ya da</span> $1790/yıllık
     select: Seç
   subscription_success_modal:
     heading: 'Aboneliğinizi ayarladığınız için teşekkürler!'
@@ -486,9 +469,7 @@ tr:
   group_help_card:
     title: Yardım
     ten_tips_article_title: Loomio ile mükemmel kararlar verebilmek için 10 ipucu
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: Bir sohbeti eyleme çevirmek için Loomio önerilerini kullanmanın 9 yolu
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla

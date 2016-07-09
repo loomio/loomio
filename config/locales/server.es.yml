@@ -1,4 +1,8 @@
 es:
+  validate:
+    motion:
+      must_close_in_future: La propuesta debe cerrar en el futuro.
+      one_at_a_time: Ya hay una propuesta activa.
   email:
     reset_password:
       greeting: >
@@ -28,6 +32,11 @@ es:
       link: Únete a la discusión
     to_join_group:
       subject: '%{member} te ha invitado a unirte a %{group_name} en Loomio'
+      invitation_text_html: '<strong>%{member}</strong> te ha invitado a unirte al grupo <strong>%{group_name}</strong>'
+      accept_invitation: "Aceptar invitación\n "
+      tagline: 'Loomio es un espacio para que grupos tomen decisiones juntos. '
+    resend_to_join_group:
+      subject: '%{member} todavía está esperando que te sumes al grupo %{group_name} en Loomio'
     to_start_group:
       subject: 'Configura tu nuevo grupo en Loomio: %{group_name}'
     user_added_to_a_group:
@@ -145,6 +154,7 @@ es:
     error:
       all_email_addresses_belong_to_members: 'No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo.'
   pricing_page:
+    header: 'Planes grupales '
     gift: 'Donación '
     standard: 'Estándar '
     plus: Plus
@@ -288,3 +298,16 @@ es:
         Para imágenes es igual pero precedido por un signo se exclamación.
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  beta_banner:
+    new_loomio_html: >
+      <strong>El nuevo Loomio es más rápido, bonito y mejor!</strong> Estamos
+      moviendo a todos para ahí.
+    upgrade_browser_html: >
+      Solo apoyamos versiones nuevas de Internet Explorer (10+). Deberas  <a
+      href='http://outdatedbrowser.com/en' target='_blank'>actualizar tu
+      navegador</a> para seguir usando Loomio.
+
+      <strong>El nuevo Loomio está aquí!</strong> Es más rápido, bonito
+      y preparado para el móvil.
+    more_info: 'Más información... '
+    button_text: Cambia al nuevo Loomio

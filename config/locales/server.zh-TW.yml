@@ -1,5 +1,18 @@
 zh-TW:
+  validate:
+    motion:
+      must_close_in_future: 提案必須在未來定案。
+      one_at_a_time: 有其他活躍的提案。
   email:
+    reset_password:
+      greeting: |
+        嗨，%{name}
+        這是您用來重設您 Loomio 帳號之密碼的連結：
+      link_text: 重設您的密碼
+      signoff: |
+        因為您的電子郵件在 %{hostname} 上被輸入到「忘記密碼」表單中，所以收到這份訊息。
+        然而，您的密碼在您完成上面這個連結的表單前都不會被變更。
+        若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
     custom: '%{text}'
     group_email:
       intro: '%{who} 在 %{group}裡發布了一則公告：'
@@ -12,6 +25,11 @@ zh-TW:
       link: 加入討論串
     to_join_group:
       subject: '%{member} 邀請您加入 Loomio 的 %{group_name} 群組'
+      invitation_text_html: '<strong>%{member}</strong> 已經邀請您加入群組 <strong>%{group_name}</strong>'
+      accept_invitation: 接受邀請
+      tagline: Loomio 是一個讓群組共同做出決策的地方
+    resend_to_join_group:
+      subject: '%{member} 仍在等待您在 Loomio 上加入 %{group_name}'
     to_start_group:
       subject: '設定您的新 Loomio 群組： %{group_name}'
     user_added_to_a_group:
@@ -27,7 +45,7 @@ zh-TW:
       intro: '%{who} 在 %{which_group} 啟動了新的討論串：'
     create_proposal:
       intro: 在您所屬的 Loomio 群組中，有一個新的提案！
-      closes_in: 即將結束。
+      closes_in: 結束於
       subject: '新的提案：%{which}'
     daily_activity:
       heading: 您的 Loomio 動態
@@ -131,21 +149,30 @@ zh-TW:
     error:
       all_email_addresses_belong_to_members: 我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。
   pricing_page:
+    header: 群組計畫
     gift: 禮物方案
     standard: 標準方案
     plus: PLUS
     free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
     get_started_for_free: 免費開始
+    gift_body: 給沒有預算的群組
+    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
     unlimited_members: 不限成員數量
     unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
+    slack_integration_html: |
+      <strong>Slack</strong> 整合
     standard_price_html: |
       美元 <strong>$19</strong>/月<br><span>或</span> $190/年
     plus_body: 包含標準方案，再加上：
+    multiple_groups: 多重群組
     premium_support: 進階支援
+    custom_subdomain_html: |
+      自訂子網域，<br />
+      例如 <strong>yourgroup</strong>.loomio.org
     usage_statistics: 使用統計
     plus_price_html: |
-      美元 <strong>$179</strong>/month<br><span>或</span> $1790/year
+      美元 <strong>$179</strong>/月<br><span>或</span> $1790/年
   password_reset:
     email_guidelines_html: >
       <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>
@@ -216,3 +243,72 @@ zh-TW:
       submit: 寄送訊息
     messages:
       email_html: "填寫這張表格，或發電子郵件到 <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "您也可以在<br/><a href='%{facebook}' target='_blank'>facebook</a>、<a href='%{google}' target='_blank'>google+</a> 與 <a href='%{twitter}' target='_blank'>twitter</a> 上加入我們！"
+  markdown:
+    intro:
+      title: |
+        # Markdown 是什麼？
+      body: |
+        Markdown 是一個書寫純文字 (left)
+        但是可以讓它變為格式化文字的方法 (right)。
+
+        這個頁面是用 markdown 寫成，用來顯示它如何運作的頁面。
+    headers:
+      body: |
+        ## 標題
+
+        使用井字號來讓文字變為標題。
+
+        # 這是 h1
+        ## 這是 h2
+        #### 這是 h4
+    paragraphs:
+      title: |
+        ## 段落
+      body: |
+        您必須
+        放置一個
+        空白行
+        在每行之間。
+
+        不然它就會變成一個大段落！
+    emphasis:
+      title: |
+        ## 強調
+      body: |
+        您可以使用 _底線_ 或是 *星號* 讓文字變為斜體。
+
+        將其加倍則會變成 __粗體__ 或 **強調** 。
+    lists:
+      title: |
+        ## 列表
+      body: |
+        如何做出一份列表：
+
+        * 在您的列表前留一個空白行
+        * 使用星號 (*)
+        * 在星號後留一個空白
+    links:
+      title: |
+        ## 連結與圖片
+      body: |
+        大聲的複頌：
+
+        方括號括住名稱而圓括號括住 URL。
+
+        [Loomio 首頁](https://www.loomio.org/)
+
+        圖片也一樣，但要加驚嘆號前綴。
+
+        ![loomio logo](https://i.imgur.com/Fvtworb.png)
+  beta_banner:
+    new_loomio_html: |
+      <strong>新的 Loomio 又快又漂亮，且更好用了！</strong> 我們正在將每個人都切換過去。
+    upgrade_browser_html: >
+      我們只支援較現代的 Internet Explore (10+) 版本。您需要<a
+      href='http://outdatedbrowser.com/en' target='_blank'>升級您的瀏覽器</a>以繼續使用
+      Loomio。
+
+      <strong>新的 Loomio 在這裡！</strong>它又快又漂亮，而且準備好給行動裝置使用了。
+    more_info: 更多資訊...
+    button_text: 切換到新的 Loomio

@@ -99,16 +99,12 @@ cs:
     gift: Dar
     standard: Standardní
     plus: Plus
-    free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</ span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
+    free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
     unlimited_members: neomezený počet členů
     unlimited_decisions: neomezený počet rozhodnutí
     email_support: e-mailová podpora
-    standard_price_html: |
-      <strong>19$(US)</strong>/měsíčně<br><span>nebo</span> 190$(US)/ročně
     premium_support: prémiová podpora
     usage_statistics: statistiky využití
-    plus_price_html: |
-      <strong>179$(US)</strong>/měsíc<br><span>nebo</span> 1790$(US)/rok
   password_reset:
     length_restriction: Hesla musí být alespoň 8 znaků dlouhé.
   introduction_thread:

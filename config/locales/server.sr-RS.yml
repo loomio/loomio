@@ -130,13 +130,9 @@ sr-RS:
     unlimited_members: неограничено чланова
     unlimited_decisions: неограничено одлука
     email_support: подршка еПорукама
-    standard_price_html: |
-      US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње
     plus_body: 'Све у Стандард, плус:'
     premium_support: премијум подршка
     usage_statistics: статистика коришћења
-    plus_price_html: |
-      US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње
   password_reset:
     reset_email_timeframe: 'Молимо допустите до 5 минута да еПорука пристигне. Ако се не појави, будите сигурни да сте проверили фасциклу са нежељеним порукама.'
     length_restriction: Лозинка мора бити најмање 8 знакова дуга.

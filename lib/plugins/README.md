@@ -156,6 +156,31 @@ To tell the plugin to use your component, put a line in our `plugin.rb` like thi
 
 This will make your component available within the app.
 
+### Add routes to the angular app
+
+If you're adding an entirely new page to Loomio, you'll need to add a route in order to allow us to
+navigate to your new page properly. To do this, use the `use_client_route` command
+
+```ruby
+plugin.use_client_route '/kickflips', :kickflip_page
+```
+
+In the above, `kickflip_page` is simply a component, same as you'd write in the `use_component` command.
+So now we can simply write our controller code as normal:
+
+```
+/plugins
+  /components
+    /kickflip_page
+      kickflip_page.haml
+      kickflip_page.scss
+      kickflip_page.coffee
+```
+
+For examples on how to write page controllers (which are subtly different from regular components), check out [thread_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/thread_page/thread_page_controller.coffee) or [group_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/group_page/group_page_controller.coffee) in the core Loomio repo.
+
+_NB: you don't need to call `use_component` as well, calling `use_client_route` will do this for you!)_
+
 ### Attach components to outlets in the Angular interface
 Now that the component is loaded into our angular app, how to make it appear on the interface?
 
@@ -277,21 +302,57 @@ GITHUB_USERNAME=my_username
 GITHUB_PASSWORD=my_password
 ```
 
-### Add gem dependencies
+##### Marking a plugin as an experiment
 
-Sometimes you'll want to add gems to your plugin. To do this, we can add a list of dependencies to the `plugins.yml` file, like so:
+On Loomio.org, we have plugins that we'd like to try out in a production environment,
+but might not be ready for all of our users to see just yet. To enable this, we've
+added the ability to mark some plugins as 'experimental', which means they will
+only be loaded for groups who have opted in to see our mad science.
 
-```yml
+In order to mark a plugin as an experiment, simply add the line `experiment: true`
+to the plugin's entry in `plugins.yml`, like so:
+
+```yaml
 kickflip:
-  repo: gdpelican/kickflip
-  gemfile:
-    - skateboard
-    - mad_skillz
+  repo:       loomio/kickflip
+  version:    master
+  experiment: true
 ```
 
-This will run the `gemrat` command with the list of dependencies, which will add the 'skateboard' and 'mad_skillz' gems to your Gemfile and bundle them automagically. (More on gemrat [here](https://github.com/DruRly/gemrat))
+###### How this works:
 
-(NB: We only support installing the latest version of a gem right now; a PR to make this more better is welcome!)
+Most of our plugin outlets have a group passed into them, like this:
+```haml
+%outlet{name: "my-cool-outlet", group: "theGroup"}
+```
+
+If an outlet has a group associated with it, it will load experimental plugins for that group
+_only if_ that group has opted into experiments (ie, `group.enable_experiments` is true)
+
+More succinctly:
+- If the outlet has a group with enable_experiments == true, it will load all components
+- If the outlet has a group with enable_experiments == false, it will load only non-experimental plugin components
+- If the outlet has no group, it will load all plugin components
+
+###### But be careful!
+
+Note that this affects _only_ the loading of components into plugin outlets. If you create an
+experimental plugin, and it changes the way the API works, or user permissions, or how a class
+behaves, those changes will take place across the entire instance.
+
+### Add user permissions
+
+For most of the actions that occur in Loomio, you'll want to ensure that the current user is able to perform that action. We use [cancan](), and store our permissions in the `app/models/ability.rb` file.
+
+Unfortunately, overwriting this file directly isn't an option, but you can add new abilities by overriding the `add_additional_abilties` method, like so:
+
+```ruby
+plugin.extend_class Ability do
+  def add_additional_abilties
+    can :perform, Kickflip { |skater| skater.has_mad_skillz? }
+  end
+end
+```
 
 ### Add tests
 The official Loomio plugins will all have just the right amount of tests, and so can you!
@@ -320,3 +381,22 @@ end
 ```bash
   bundle exec rspec plugins/kickflip/spec/models/kickflip_spec.rb:3
 ```
+
+### Add factories
+
+We use [FactoryGirl](https://github.com/thoughtbot/factory_girl) for our unit testing, which allows us to easily create minimum viable models to test with.
+
+If you've created a new model, and want to test it (you do!) then it's a good idea to set up a factory
+for it. This allows you to use things like `let(:kickflip) { create(:kickflip) }` in your tests, same
+way we do in the core codebase.
+
+To define a factory, use the `use_factory` command.
+
+```ruby
+plugin.use_factory(:kickflip) do
+  user
+  reaction "That was sweet!"
+end
+```
+
+Note that this supports any syntax which would normally go into a `factory` block for FactoryGirl.

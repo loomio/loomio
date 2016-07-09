@@ -37,8 +37,8 @@ en:
     decide_act:
       heading: Decide and Act
       explanation: "Achieve a clear outcome for every proposal, within the timeframe you set. Everyone gets notified of the results, so you can move forward and take action together."
-    try_it: Try it for free
-    start_group: Start group
+    try_it_now: Try it now
+    start_free_group: Start free group
     fast_inclusive_effective: "Fast, inclusive, and effective can be your new normal."
     debt_resistance_uk:
       heading: "Productivity at meetings, and in between"
@@ -73,7 +73,7 @@ en:
       deliberation_explanation: Loomio uses a simple decision-making framework designed for constructive deliberation. Don’t settle for conflict - work together to find the best solution.
       iterate_heading: Iterate proposals to evolve your thinking.
       iterate_explanation: "Making decisions together can be powerful, even when an initial proposal doesn’t gain consensus. Work through disagreements to evolve and synthesise new solutions."
-      deadlines: Deadlines drive momentum.
+      deadlines_heading: Deadlines drive momentum.
       deadlines_explanation: "Loomio proposals are time-bound to ensure your group can move ahead without stalling. Everyone knows the time frame to have their input, with automatic reminders before deadlines."
       fewer_meetings_heading: Be productive without meetings.
       fewer_meetings_explanation: "Continue conversations without being in the same room. Get more done online, so you can use valuable meeting time for what needs to happen face to face."
