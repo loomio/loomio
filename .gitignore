@@ -18,6 +18,7 @@ Session.vim
 screenshots/
 .idea
 .env
+.byebug_history
 bin/
 .powenv
 
