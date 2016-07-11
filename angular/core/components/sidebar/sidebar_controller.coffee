@@ -2,9 +2,6 @@ angular.module('loomioApp').controller 'SidebarController', ($scope, Session, $r
   $scope.showSidebar = $mdMedia("gt-md")
   $scope.currentState = ""
 
-  $scope.toggleUserMenu = ->
-    $scope.showUserMenu = !$scope.showUserMenu
-
   $scope.$on 'toggleSidebar', ->
     $scope.showSidebar = !$scope.showSidebar
 

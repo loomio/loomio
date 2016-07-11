@@ -5,10 +5,6 @@
   border-top: 1px solid rgba(0,0,0,.14);
 }
 
-.sidebar__list {
-  margin: 8px 0;
-}
-
 .sidebar__list-item-button {
   display: block;
   text-align: left;
@@ -31,7 +27,7 @@
   padding-left: 45px;
 }
 
-.sidebar__groups {
+.sidebar__scrollable-list {
   overflow-y: scroll;
   flex: 1;
 }
@@ -62,14 +58,9 @@
 }
 
 .sidebar__user-panel {
-  margin-right: 16px;
-}
-
-.sidebar__user-panel-button {
-  padding: 16px 8px 8px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 16px;
 }
 
 .sidebar__user-icon-container {
@@ -81,21 +72,15 @@
 
 .sidebar__user-icon {
   font-size: 40px;
-  left: 24px;
   position: absolute;
+  left: 32px;
   top: 32px;
 }
 
-.sidebar__user-name, .sidebar__toggle-usermenu {
-  display: flex;
-  height: 28px;
+.sidebar__user-details {
+  margin-left: 16px;
 }
 
 .sidebar__user-name {
   font-weight: 600;
-}
-
-.sidebar__toggle-usermenu {
-  justify-content: space-between;
-  line-height: 28px;
 }

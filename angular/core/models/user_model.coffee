@@ -28,18 +28,11 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
 
-    topLevelGroups: ->
-      _.unique _.compact _.map @memberships(), (membership) =>
-        if membership.group().isParent()
-          membership.group()
-        else if !@isMemberOf(membership.group().parent())
-          membership.group().parent()
-
     hasAnyGroups: ->
-      @topLevelGroups().length > 0
+      @groups().length > 0
 
     hasMultipleGroups: ->
-      @topLevelGroups().length > 1
+      @groups().length > 1
 
     allThreads:->
       _.flatten _.map @groups(), (group) ->
