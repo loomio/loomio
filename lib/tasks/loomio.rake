@@ -11,7 +11,9 @@ namespace :loomio do
     LocateUsersAndGroupsJob.perform_later
   end
 
+  # http://stackoverflow.com/a/9835162
   task weekly_tasks: :environment do
+    return unless Time.now.monday?
     SendAnalyticsEmailJob.perform_later
   end
 
