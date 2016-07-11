@@ -35,6 +35,11 @@
   height: 30px;
 }
 
+@media (max-width: $tiny-max-px) {
+  .navbar__middle { display: none; }
+  .navbar__right { flex-grow: 1; }
+}
+
 .md-button {
   line-height: 48px;
   min-height: 48px;

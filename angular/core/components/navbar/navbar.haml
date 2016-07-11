@@ -6,13 +6,14 @@
           %md_icon.fa.fa-lg.fa-bars
 
       .navbar__middle
-        .navbar__logo-container
-          %img.navbar__logo{src: "/img/logo.png"}
+        %a{href: "/"}
+          .navbar__logo-container
+            %img.navbar__logo{src: "/img/logo.png"}
 
       .navbar__right
-        %navbar_search
+        %navbar_search{ng-show: "isLoggedIn()"}
 
-        %notifications
+        %notifications{ng-show: "isLoggedIn()"}
 
         .buh{ng-if: "!isLoggedIn()"}
           %button.navbar__sign-in{ng-click: "signIn()"}>

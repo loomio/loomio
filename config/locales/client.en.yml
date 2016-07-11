@@ -198,7 +198,7 @@ en:
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
-    contact: 'Contact'
+    contact: 'Contact Loomio'
     sign_out: 'Sign out'
 
   navbar:
@@ -226,6 +226,7 @@ en:
 
   notifications:
     header: "Notifications"
+    no_notifications: "You don't have any notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
     motion_closed: "Proposal closed: <strong>{{proposal}}</strong>"
