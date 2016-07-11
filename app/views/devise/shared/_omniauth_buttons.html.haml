@@ -1,11 +1,11 @@
 -unless omniauth_authenticated_and_waiting?
   .sso-btn-row
     %label= t :log_in_with_third_party
-    = link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-default btn-block btn-lg login' do
+    = link_to user_facebook_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login' do
       = t :log_in_with_facebook
-    = link_to user_omniauth_authorize_url(:google, host: ENV['CANONICAL_HOST'] || request.host), class: 'btn btn-default btn-block btn-lg login' do
+    = link_to user_google_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login' do
       = t :log_in_with_google
-    = link_to user_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
+    = link_to user_twitter_omniauth_authorize_path(:twitter), class: 'btn btn-default btn-block btn-lg login', id: 'twitter-login-btn' do
       = t :log_in_with_twitter
-    = link_to user_omniauth_authorize_path(:github), class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
+    = link_to user_github_omniauth_authorize_path, class: 'btn btn-default btn-block btn-lg login', id: 'github-login-btn' do
       = t :log_in_with_github
