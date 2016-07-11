@@ -48,4 +48,13 @@ class UserMailer < BaseMailer
                      subject_params: { which_group: group.full_name, who: @inviter.name },
                      locale: locale_fallback(user.try(:locale), inviter.try(:locale))
   end
+
+  def analytics(user:, group:, stats: nil)
+    @user, @group = user, group
+    @stats = stats || Queries::GroupAnalytics.new(group: group).stats
+    send_single_mail to: @user.email,
+                     subject_key: "email.analytics.subject",
+                     subject_params: { which_group: @group.name },
+                     locale: locale_fallback(user.locale)
+  end
 end

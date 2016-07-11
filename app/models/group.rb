@@ -57,15 +57,21 @@ class Group < ActiveRecord::Base
   }
 
   scope :active_discussions_since, ->(time) {
-    includes(:discussions).where('discussions.last_comment_at > ?', time).references(:discussions)
+    includes(:discussions).where('discussions.last_activity_at > ?', time).references(:discussions)
   }
 
   scope :created_earlier_than, lambda {|time| where('groups.created_at < ?', time) }
 
-  scope :engaged, -> { more_than_n_members(1).
-                       more_than_n_discussions(2).
-                       active_discussions_since(2.month.ago).
-                       parents_only }
+  scope :engaged, ->(since = 2.months.ago) {
+    more_than_n_members(1).
+    more_than_n_discussions(2).
+    active_discussions_since(since).
+    parents_only
+  }
+  
+  scope :with_analytics, ->(since = 1.month.ago) {
+    where(analytics_enabled: true).engaged(since).joins(:admin_memberships)
+  }
 
   scope :engaged_but_stopped, -> { more_than_n_members(1).
                                    more_than_n_discussions(2).
@@ -164,7 +170,7 @@ class Group < ActiveRecord::Base
                        styles: {largedesktop: "1400x320#", desktop: "970x200#", card: "460x94#"},
                        default_url: :default_cover_photo
   has_attached_file    :logo,
-                       styles: { card: "67x67", medium: "100x100" },
+                       styles: { card: "67x67#", medium: "100x100#" },
                        default_url: 'default-logo-:style.png'
 
   validates_attachment :cover_photo,
