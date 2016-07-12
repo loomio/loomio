@@ -123,6 +123,9 @@ EventBus.configure do |config|
     Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
   end
 
+  # notify users of comment liked
+  config.listen('comment_liked_event') { |event| event.notify!(event.comment.author) if event.notify_author? }
+
   # perform group creation
   config.listen('group_create') do |group, actor|
     group.add_default_content! if group.is_parent?
