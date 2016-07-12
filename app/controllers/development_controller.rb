@@ -393,9 +393,9 @@ class DevelopmentController < ApplicationController
 
   def setup_group_with_subgroups
     sign_in jennifer
-    test_group
+    another_test_group.add_member! jennifer
     test_subgroup.add_member! jennifer
-    another_test_subgroup.add_member! jennifer
+    another_test_subgroup
     redirect_to group_url(another_test_group)
   end
 
