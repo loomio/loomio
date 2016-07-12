@@ -104,6 +104,11 @@ describe 'Group Page', ->
         page.loadPath('view_open_group_as_non_member')
         page.expectElement('.join-group-button__join-group')
 
+    describe 'on page load', ->
+      it 'displays threads from subgroups in the discussions card', ->
+        page.loadPath('setup_group_with_subgroups')
+        page.expectText('.discussions-card__list', 'Vaya con dios')
+
   describe 'starting a group', ->
 
     it 'redirects to dashboard and opens modal for logged in user with angular enabled', ->
