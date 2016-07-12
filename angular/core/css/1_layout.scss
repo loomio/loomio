@@ -1,6 +1,5 @@
 .lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
-  padding-top: 48px;
   padding-bottom: 25px;
   z-index: 0;
   min-width: 320px;
@@ -15,6 +14,7 @@ body {
 
 .lmo-two-column-layout{
   max-width: $max-container-size;
+  padding-top: 48px;
 }
 
 .lmo-row{

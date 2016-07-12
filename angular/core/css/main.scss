@@ -17,3 +17,9 @@ body { position: static; }
   overflow-y: scroll;
   position: relative;
 }
+.lmo-main-background {
+  background-size: auto 320px;
+  background-repeat: no-repeat;
+  background-position: auto center;
+  min-height: 320px;
+}

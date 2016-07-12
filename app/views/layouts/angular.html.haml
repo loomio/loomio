@@ -89,8 +89,9 @@
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
                   %span{translate: "sidebar.sign_out"}
       %md_content.lmo-main-content{flex: ""}
-        %ng_outlet{'ng-if' => '!refreshing && !pageError'}
-        %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+        .lmo-main-background{style: 'background-image: url({{backgroundImageUrl}})'}
+          %ng_outlet{'ng-if' => '!refreshing && !pageError'}
+          %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
     %outlet{name: 'after-start-menu'}
 

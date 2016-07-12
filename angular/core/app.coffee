@@ -78,6 +78,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
+    $scope.backgroundImageUrl = null
     ScrollService.scrollTo(options.scrollTo or 'h1')
     $scope.links = options.links or {}
     if AbilityService.requireLoginFor(options.page)
@@ -95,6 +96,9 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     if AbilityService.canAdministerGroup(group) and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
       ModalService.open ChoosePlanModal, group: -> group
       AppConfig.chargify.nagCache[group.key] = true
+
+  $scope.$on 'setBackgroundImageUrl', (event, url) ->
+    $scope.backgroundImageUrl = url
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
