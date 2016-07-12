@@ -49,7 +49,7 @@ describe 'Invitations', ->
                '.add-members-modal__list-item:first-of-type',
                '.add-members-modal__submit'
 
-    page.expectFlash 'Jennifer Grey added to Subgroup'
+    page.expectFlash 'Emilio Estevez added to Subgroup'
 
   it 'preselects current group if form launched from start menu while viewing group or thread page', ->
     page.loadPath 'setup_dashboard'
