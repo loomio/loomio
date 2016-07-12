@@ -18,8 +18,8 @@ body { position: static; }
   position: relative;
 }
 .lmo-main-background {
-  background-size: auto 320px;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: auto center;
-  min-height: 320px;
+  background-position: top center;
+  height: 320px;
 }
