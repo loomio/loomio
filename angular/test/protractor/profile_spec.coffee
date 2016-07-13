@@ -9,7 +9,7 @@ describe 'Profile', ->
 
   describe 'updating a profile name', ->
     it 'successfully updates a profile', ->
-      profileHelper.visitProfilePage()
+      page.click '.sidebar__list-item-button--profile'
       profileHelper.updateProfile('Ferris Bueller', 'ferrisbueller', 'ferris@loomio.org')
       expect(profileHelper.nameInput().getAttribute('value')).toContain('Ferris Bueller')
       expect(profileHelper.usernameInput().getAttribute('value')).toContain('ferrisbueller')

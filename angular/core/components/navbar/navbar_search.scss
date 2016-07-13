@@ -40,7 +40,7 @@
   right: 93px; /*overridden on small screens by media query below*/
   text-align: left;
   max-width: 320px;
-  margin-top: 2px;
+  margin-top: 5px;
   box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;
   max-height: 91vh;
@@ -49,6 +49,9 @@
 
 .no-results-found {
   text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px
 }
 
 .navbar-search__list-item {

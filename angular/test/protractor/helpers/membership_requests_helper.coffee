@@ -16,7 +16,7 @@ module.exports = new class MembershipRequestsHelper
     element(By.css('.membership-requests-page__previous-requests')).getText()
 
   clickGroupName: ->
-    element(By.cssContainingText('.sidebar__list-item--group a', 'Dirty Dancing Shoes')).click()
+    element(By.cssContainingText('.sidebar__list-item-button--group', 'Dirty Dancing Shoes')).click()
 
   clickIgnoreButton: ->
     element.all(By.css('.membership-requests-page__ignore')).first().click()

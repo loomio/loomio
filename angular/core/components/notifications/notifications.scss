@@ -4,19 +4,28 @@
 }
 
 .notifications__activity {
-  background-color: #4A90E2 !important;
-  border: 2px solid white;
-  color: #fff !important;
+  display: inline-block;
+  min-width: 10px;
+  padding: 5px 5px;
+  color: #fff!important;
+  vertical-align: middle;
   font-size: 10px;
-  left: 22px;
-  line-height: 22px;
-  padding: 2px;
   position: absolute;
-  top: -5px;
+  left: 24px;
+  top: -4px;
+  background: #4A90E2!important;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  line-height: 5px;
+  text-align: center
 }
 
 .notifications__link {
   color: $primary-text-color;
+}
+
+.notifications__dropdown {
+  margin-top: 8px !important;
 }
 
 .navbar-notifications__blank-message {

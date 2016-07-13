@@ -24,8 +24,7 @@ describe 'Email settings', ->
   describe 'logged in', ->
     beforeEach ->
       page.loadPath('setup_group')
-      page.click '.sidebar__user-panel-button',
-                 '.sidebar__email-settings'
+      page.click '.sidebar__list-item-button--email-settings'
 
     it 'lets you update email settings', testUpdate
     it 'lets you set default email settings for all new memberships', testDefaultUpdate

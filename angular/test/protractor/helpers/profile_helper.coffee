@@ -1,9 +1,5 @@
 module.exports = new class ProfileHelper
 
-  visitProfilePage: ->
-    element(By.css('.sidebar__user-panel-button')).click()
-    element(By.css('.sidebar__profile')).click()
-
   visitUserPage: (username) ->
     browser.get("u/#{username}")
 
