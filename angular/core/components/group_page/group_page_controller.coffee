@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal, LegacyTrialExpiredModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
 
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
@@ -15,7 +15,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
       @handlePaymentModal()
-      LegacyTrialExpiredModal.showIfAppropriate(@group, Session.user())
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount
