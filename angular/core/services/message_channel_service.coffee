@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, Records, FlashService) ->
+angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope, $window, AppConfig, Records, ModalService, SignedOutModal, FlashService) ->
   new class MessageChannelService
 
     subscribe: (options = {}) ->
@@ -11,6 +11,11 @@ angular.module('loomioApp').factory 'MessageChannelService', ($http, $rootScope,
       _.each subscriptions.data, (subscription) ->
         PrivatePub.sign(subscription)
         PrivatePub.subscribe subscription.channel, (data) ->
+          if data.action?
+            switch data.action
+              when 'logged_out'
+                ModalService.open(SignedOutModal, -> preventClose: true) unless AppConfig.loggingOut
+
           if data.version?
             FlashService.update 'global.messages.app_update', {version: data.version}, 'global.messages.reload', ->
               $window.location.reload()

@@ -11,8 +11,10 @@ class API::SessionsController < Devise::SessionsController
   end
 
   def destroy
+    logged_out_user = current_user
     sign_out resource_name
     flash[:notice] = t(:'devise.sessions.signed_out')
+    MessageChannelService.publish({ action: :logged_out }, to: logged_out_user)
     head :ok
   end
 end
