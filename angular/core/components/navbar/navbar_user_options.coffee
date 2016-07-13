@@ -3,14 +3,14 @@ angular.module('loomioApp').directive 'navbarUserOptions', ->
   restrict: 'E'
   templateUrl: 'generated/components/navbar/navbar_user_options.html'
   replace: true
-  controller: ($scope, $window, $rootScope, Session, Records, IntercomService, AppConfig, UserHelpService) ->
+  controller: ($scope, $window, $rootScope, Session, IntercomService, AppConfig, UserHelpService) ->
     $scope.currentUser = Session.user
 
     $scope.helpLink = ->
       UserHelpService.helpLink()
 
     $scope.signOut = ->
-      Records.sessions.remote.destroy('').then -> $window.location.href = '/'
+      Session.logout()
 
     $scope.showContactUs = ->
       AppConfig.isLoomioDotOrg
