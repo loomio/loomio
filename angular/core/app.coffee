@@ -70,7 +70,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
-    $timeout -> $router.navigate(Session.homePath())
     ModalService.open(GroupForm, group: -> Records.groups.build()) if $location.search().start_group?
     ModalService.open(AngularWelcomeModal)                         if AppConfig.showWelcomeModal
     IntercomService.boot()
