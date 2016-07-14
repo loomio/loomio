@@ -12,7 +12,7 @@ class StartGroupService
                                                                 recipient_name: name)
 
     InvitePeopleMailer.delay(priority: 1).to_start_group(invitation: invitation,
-                                                         sender_email: inviter.email,
+                                                         sender_email: User.helper_bot_email,
                                                          locale: I18n.locale)
     invitation
   end

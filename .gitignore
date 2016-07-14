@@ -20,6 +20,7 @@ screenshots/
 .env
 bin/
 .powenv
+.byebug_history
 
 public/client
 public/system
