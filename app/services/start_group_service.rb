@@ -1,7 +1,8 @@
 class StartGroupService
 
   def self.start_group(group)
-    group.add_default_content!
+    group.update(default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial)
+    ExampleContent.new(group).add_to_group!
   end
 
   def self.invite_admin_to_group(group: , name:, email:)

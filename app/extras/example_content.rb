@@ -21,9 +21,9 @@ ExampleContent = Struct.new(:group) do
 
   def how_it_works_thread
     @how_it_works_thread ||= group.discussions.create(
+      author:        helper_bot,
       title:         I18n.t('how_it_works_thread.title'),
       description:   I18n.t('how_it_works_thread.description'),
-      author:        helper_bot,
       private:       !!group.discussion_private_default,
       uses_markdown: true
     )
@@ -31,26 +31,28 @@ ExampleContent = Struct.new(:group) do
 
   def example_comment
     @example_comment ||= introduction_thread.comments.create(
-      body: I18n.t('first_comment.body',
-                   hostname: ENV['CANONICAL_HOST'],
-                   thread_url: discussion_url(introduction_thread),
-                   group_name: group.name))
+      author:        helper_bot,
+      body:          I18n.t('first_comment.body',
+                             hostname: ENV['CANONICAL_HOST'],
+                             thread_url: discussion_url(introduction_thread),
+                             group_name: group.name)
     )
   end
 
   def example_motion
     @example_motion ||= how_it_works_thread.motions.create(
-      name:        I18n.t('first_proposal.name'),
-      description: I18n.t('first_proposal.description'),
-      closing_at: (Time.zone.now + 7.days).at_beginning_of_hour
+      author:       helper_bot,
+      name:         I18n.t('first_proposal.name'),
+      description:  I18n.t('first_proposal.description'),
+      closing_at:  (Time.zone.now + 7.days).at_beginning_of_hour
     )
   end
 
   def example_vote
     @example_vote ||= example_motion.votes.create(
-      position:  :yes,
-      statement: I18n.t('first_vote.statement'),
-      author:    helper_bot
+      author:       helper_bot,
+      statement:    I18n.t('first_vote.statement'),
+      position:     :yes
     )
   end
 

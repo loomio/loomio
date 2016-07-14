@@ -243,6 +243,8 @@ en:
       - **Block**: “I have strong objections to this proposal and am not OK with it going ahead.”
 
       When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
+  first_vote:
+    statement: Let's go!
   contact_page:
     contact_us: Contact us
     faq_prompt_html: Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions.
