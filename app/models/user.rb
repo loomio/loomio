@@ -190,6 +190,19 @@ class User < ActiveRecord::Base
     User.where('lower(email) = ?', email.downcase).first
   end
 
+  def self.helper_bot
+    find_by(email: helper_bot_email) ||
+    create!(email: helper_bot_email,
+            name: 'Loomio Helper Bot',
+            password: SecureRandom.hex(20),
+            uses_markdown: true,
+            avatar_kind: :gravatar)
+  end
+
+  def self.helper_bot_email
+    ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
+  end
+
   def subgroups
     groups.where("parent_id IS NOT NULL")
   end

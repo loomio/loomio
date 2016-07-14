@@ -386,7 +386,7 @@ class Group < ActiveRecord::Base
 
   def add_default_content!
     update default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial
-    ExampleContent.add_to_group(self)
+    ExampleContent.new(self).add_to_group!
   end
 
   def find_or_create_membership(user, inviter)

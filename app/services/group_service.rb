@@ -4,8 +4,7 @@ module GroupService
     group.creator = actor
 
     return false unless group.valid?
-    group.save!
-    
+    group.add_default_content!
     group.add_admin! actor
 
     EventBus.broadcast('group_create', group, actor)
