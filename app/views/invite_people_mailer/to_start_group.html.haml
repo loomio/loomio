@@ -2,7 +2,7 @@
 
 %p= t("email.invitation.intro", group_name: @invitation.invitable_name)
 
-= link_to "#{invitation_url(@invitation)}", invitation_url(@invitation, @utm_hash), data: {skip_click: true}
+= link_to "#{invitation_url(@invitation)}", invitation_url(@invitation, @utm_hash)
 
 %p= t("email.invitation.closing_message")
 
