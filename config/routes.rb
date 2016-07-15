@@ -214,6 +214,7 @@ Loomio::Application.routes.draw do
   get 'u/:username/'                       => 'users#show',       as: :user
 
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
+  get 'dashboard/:filter'                  => 'application#boot_angular_ui'
   get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
   get 'explore'                            => 'application#boot_angular_ui', as: :explore

@@ -135,6 +135,7 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       @canViewGroup(group) and
       !Session.user().isMemberOf(group)
 
+
     canTranslate: (model) ->
       AppConfig.canTranslate and
       Session.user().locale and

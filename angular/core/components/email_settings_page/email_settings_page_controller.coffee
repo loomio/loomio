@@ -1,8 +1,8 @@
 angular.module('loomioApp').controller 'EmailSettingsPageController', ($rootScope, $translate, Records, AbilityService, FormService, Session, $location, ModalService, ChangeVolumeForm) ->
-  $rootScope.$broadcast('currentComponent', {page: 'emailSettingsPage'})
+  $rootScope.$broadcast('currentComponent', { page: 'emailSettingsPage'})
 
   @init = =>
-    return unless AbilityService.isLoggedIn() or Session.user().restricted? 
+    return unless AbilityService.isLoggedIn() or Session.user().restricted?
     @user = Session.user().clone()
     $translate.use(@user.locale)
   @init()

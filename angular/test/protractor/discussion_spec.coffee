@@ -11,7 +11,7 @@ describe 'Discussion Page', ->
       groupsHelper.loadPath('view_open_group_as_visitor')
       page.expectText('.group-theme__name', 'Open Dirty Dancing Shoes')
       page.expectText('.thread-previews-container', 'I carried a watermelon')
-      page.expectText('.lmo-navbar', 'Log In')
+      page.expectText('.navbar__right', 'Log In')
       page.click('.thread-preview__link')
       page.expectText('.thread-context', 'I carried a watermelon')
 

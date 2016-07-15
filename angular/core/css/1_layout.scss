@@ -1,18 +1,20 @@
-.lmo-one-column-layout{
+.lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
-  max-width: $small-max-px;
-  padding-top: 48px;
   padding-bottom: 25px;
   z-index: 0;
   min-width: 320px;
 }
+body {
+  z-index: -2 !important;
+}
+
+.lmo-one-column-layout{
+  max-width: $small-max-px;
+}
+
 .lmo-two-column-layout{
-  margin: auto;
   max-width: $max-container-size;
   padding-top: 48px;
-  z-index: 0;
-  padding-bottom: 25px;
-  min-width: 320px;
 }
 
 .lmo-row{

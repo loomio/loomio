@@ -160,6 +160,3 @@ module.exports = new class ThreadHelper
 
   angularFeedbackCard: ->
     element(By.css('#angular-feedback-card'))
-
-  signInButton: ->
-    element(By.css('.lmo-navbar__sign-in')).getText()

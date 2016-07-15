@@ -4,6 +4,6 @@ angular.module('loomioApp').directive 'userAvatar', ->
   templateUrl: 'generated/components/user_avatar/user_avatar.html'
   replace: true
   controller: ($scope) ->
-    sizes = ['small', 'medium', 'large', 'featured']
+    sizes = ['small', 'medium', 'large', 'featured', 'medium-circular']
     unless _.contains(sizes, $scope.size)
       $scope.size = 'small'

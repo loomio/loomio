@@ -179,6 +179,11 @@
   @include boxFeatured;
 }
 
+.lmo-box--medium-circular {
+  border-radius: 50% !important;
+  @include boxMediumCircular;
+}
+
 .lmo-rounded-corners {
   @include roundedCorners;
 }

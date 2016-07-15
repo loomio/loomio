@@ -159,7 +159,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
         _.each @memberships(), (m) -> m.remove()
 
     uploadPhoto: (file, kind) =>
-      @remote.upload("#{@key}/upload_photo/#{kind}", file)
+      @remote.upload("#{@key}/upload_photo/#{kind}", file, {}, ->)
 
     hasNoSubscription: ->
       !@subscriptionKind?

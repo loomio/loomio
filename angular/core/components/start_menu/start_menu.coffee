@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'startMenu', ->
   restrict: 'E'
   templateUrl: 'generated/components/start_menu/start_menu.html'
   replace: true
-  controller: ($scope) ->
+  controller: ($scope, Session) ->
 
     $scope.$on 'modalOpened', ->
       $scope.startMenuOpen = false
@@ -19,3 +19,6 @@ angular.module('loomioApp').directive 'startMenu', ->
 
     $scope.toggleStartMenu = ->
       $scope.startMenuOpen = !$scope.startMenuOpen
+
+    $scope.hasAnyGroups = ->
+      Session.user().hasAnyGroups()

@@ -28,6 +28,19 @@ class DevelopmentController < ApplicationController
     redirect_to new_user_session_url
   end
 
+  def setup_logged_out_group_member
+    patrick
+    test_group
+    redirect_to new_user_session_url
+  end
+
+  def setup_logged_out_member_of_multiple_groups
+    patrick
+    test_group
+    another_test_group
+    redirect_to new_user_session_url
+  end
+
   def setup_non_angular_login
     patrick.update(angular_ui_enabled: false)
     redirect_to new_user_session_url
@@ -73,6 +86,14 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group.add_member! emilio
     redirect_to group_url(test_group)
+  end
+
+  def setup_multiple_groups
+    sign_in patrick
+    multiple_groups.each do |group|
+      GroupService.create(group: group, actor: patrick)
+    end
+    redirect_to dashboard_url
   end
 
   def setup_group_with_welcome_modal

@@ -5,8 +5,8 @@
 
   .modal-body
     %p{translate: "group_welcome_modal.{{membershipStatus()}}_info"}
-    .group-welcome-model__video-wrapper
-      %iframe.group-welcome-modal__video{ng-src: "{{helpVideo()}}", frameborder: "0", allowfullscreen=''}
+    .group-welcome-model__video-wrapper{ng-if: "showVideo"}
+      %iframe.group-welcome-modal__video{ng-src: "{{helpVideo()}}", frameborder: "0", allowfullscreen: ""}
     %p{ng-if: "userIsGroupCreator()",  translate: "group_welcome_modal.{{membershipStatus()}}_footer"}
 
   .modal-footer.lmo-clearfix

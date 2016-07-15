@@ -1,15 +1,15 @@
 .navbar-search
-  .navbar-search-input-wrapper
+  .navbar-search__input-wrapper
     %label.sr-only{ translate: "navbar.search.placeholder" }
-    %input.navbar-search-input.form-control#primary-search-input{ng-model: "query", ng-model-options: "{debounce: {default: 400, blur: 200}}", ng-change: "getSearchResults(query)", placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: "focused = true", ng-blur: "handleSearchBlur()", tabindex: 2}
-    %i.fa.fa-lg.fa-fw.fa-search.navbar-search-input-icon{ng-hide: "query", aria-hidden: "true"}
-    %i.fa.fa-lg.fa-fw.fa-times.navbar-search-input-icon{ng-show: "query", ng-click: "clearAndFocusInput()", title: "{{ 'navbar.search.close' | translate }}"}
+    %input.navbar-search__input.form-control#primary-search-input{ng-model: "query", ng-model-options: "{debounce: {default: 400, blur: 200}}", ng-change: "getSearchResults(query)", placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: "focused = true", ng-blur: "handleSearchBlur()", tabindex: 2}
+    %i.fa.fa-fw.fa-search.navbar-search__input-icon{ng-hide: "query", aria-hidden: "true"}
+    %i.fa.fa-fw.fa-times.navbar-search__input-icon{ng-show: "query", ng-click: "clearAndFocusInput()", title: "{{ 'navbar.search.close' | translate }}"}
 
-  .navbar-search-results{ng-show: "showDropdown()"}
+  .navbar-search__results{ng-show: "showDropdown()"}
     %ul.group-selector-list.selector-list
-      %li.navbar-search-list-item.selector-list-header{ng-show: "groups().length > 0"}
+      %li.navbar-search__list-item.selector-list-header{ng-show: "groups().length > 0"}
         %h3.lmo-dropdown-heading{translate: "common.groups"}
-      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-repeat: "group in groups() | orderBy: 'fullName' track by group.id", ng-class: "{'selector-list-item-no-bottom-line': (queryEmpty()), 'selector-list-item-top-line': (queryEmpty() && group.isParent())}"}
+      %li.navbar-search__list-item.navbar-search__list-option.selector-list-item.media{ng-repeat: "group in groups() | orderBy: 'fullName' track by group.id", ng-class: "{'selector-list-item-no-bottom-line': (queryEmpty()), 'selector-list-item-top-line': (queryEmpty() && group.isParent())}"}
         %a.selector-list-item-link{lmo-href-for: "group", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
           .media-left
             .selector-list-item-group-logo{ng-if: "group.isSubgroup() && queryEmpty()"}
@@ -21,11 +21,11 @@
               {{ group.name }}
 
     %ul.thread-list.selector-list{ng-show: "query"}
-      %li.navbar-search-list-item.selector-list-item.search-loading{ng-show: "searching"}
+      %li.navbar-search__list-item.selector-list-item.search-loading{ng-show: "searching"}
         %loading
-      %li.navbar-search-list-item.selector-list-item.no-results-found{ng-show: "noResultsFound()", translate: "navbar.search.no_results"}
-      %li.navbar-search-list-item.selector-list-header{ng-show: "searchResults && !(searching || noResultsFound())"}
+      %li.navbar-search__list-item.selector-list-item.no-results-found{ng-show: "noResultsFound()", translate: "navbar.search.no_results"}
+      %li.navbar-search__list-item.selector-list-header{ng-show: "searchResults && !(searching || noResultsFound())"}
         %h3.lmo-dropdown-heading{translate: "navbar.search.discussions"}
-      %li.navbar-search-list-item.navbar-search-list-option.selector-list-item.media{ng-show: "!(searching || noResultsFound())", ng-repeat: "searchResult in searchResults | orderBy: ['-rank', '-lastActivityAt']"}
-        %a.search-result.selector-list-item-link{lmo-href-for: "searchResult", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
+      %li.navbar-search__list-item.navbar-search__list-option.selector-list-item.media{ng-show: "!(searching || noResultsFound())", ng-repeat: "searchResult in searchResults | orderBy: ['-rank', '-lastActivityAt']"}
+        %a.search-result.selector-list-item-link#navbar-search__selector-link{lmo-href-for: "searchResult", ng-mousedown: "closeSearchDropdown($event)", ng-blur: "handleSearchBlur()"}
           %search_result{result: "searchResult"}
