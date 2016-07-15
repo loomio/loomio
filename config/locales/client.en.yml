@@ -167,6 +167,19 @@ en:
       twitter: 'Log in with Twitter'
       google: 'Log in with Google'
       github: 'Log in with Github'
+
+  sign_up_form:
+    title: "Welcome to Loomio! Let's get you set up"
+    name_label: 'Your name:'
+    name_placeholder: 'Jane Doe'
+    email_label: 'Email:'
+    email_placeholder: 'you@example.com'
+    password_label: 'Password:'
+    password_confirmation_label: 'That password again:'
+    sign_in_message: 'Have an account already?'
+    sign_in: 'Sign In'
+    sign_up: 'Create an Account'
+
   signed_out_modal:
     title: "Your session has been ended"
     message: "You have been logged out of Loomio from another window. Please sign back in to continue."
