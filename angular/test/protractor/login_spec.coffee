@@ -32,7 +32,7 @@ describe 'Login', ->
       staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
-      page.expectElement '.group-page', 'Explore Loomio groups'
+      page.expectElement '.group-page', 'Dirty Dancing Shoes'
 
     it 'takes you to the dashboard when a member of multiple groups', ->
       staticPage.loadPath 'setup_logged_out_member_of_multiple_groups'
