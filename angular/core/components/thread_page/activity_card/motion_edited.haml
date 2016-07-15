@@ -5,7 +5,7 @@
     .media-body
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %strong
-          %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
+          %a.thread-item__title-link{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
         %span{translate: "proposal_edited_item.{{translationKey}}", translate-values: "{time: closingAt, title: title}"}
   .thread-item__footer
     .thread-item__actions

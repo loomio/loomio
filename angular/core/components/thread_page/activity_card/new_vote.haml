@@ -5,12 +5,12 @@
     .media-body
       %h3.thread-item__title{ng-if: "!vote.hasStatement()", id: "event-{{event.id}}"}
         %strong
-          %a{lmo-href-for: "vote.author()"}> {{vote.authorName()}}
+          %a.thread-item__title-link{lmo-href-for: "vote.author()"}> {{vote.authorName()}}
         %span{translate: "new_vote_item.{{vote.positionVerb()}}"}
         %timeago.timeago--inline{timestamp: "vote.createdAt"}
       %h3.thread-item__title{ng-if: "vote.hasStatement()", id: "event-{{event.id}}"}
         %strong
-          %a{lmo-href-for: "vote.author()"}> {{vote.authorName()}}
+          %a.thread-item__title-link{lmo-href-for: "vote.author()"}> {{vote.authorName()}}
         %span{translate: "new_vote_item.{{vote.positionVerb()}}_with_statement"}
         %span.thread-item__vote-statement{marked: "vote.statement"}
         %translation{ng-if: "translation", translation: "translation", field: "statement"}
