@@ -368,7 +368,6 @@ class Group < ActiveRecord::Base
   end
 
   def add_member!(user, inviter=nil)
-    save!
     begin
       memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
     rescue ActiveRecord::RecordNotUnique

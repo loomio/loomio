@@ -101,6 +101,7 @@ describe Motion do
     context "for a closed motion" do
       before do
         5.times { motion.group.add_member! create(:user) }
+        motion.group.reload
         MotionService.close(motion)
       end
 
