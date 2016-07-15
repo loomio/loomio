@@ -47,7 +47,7 @@
 }
 
 .thread-preview__link {
-  @include displayFlex;
+  display: block;
   padding: $thinPaddingSize $cardPaddingSize;
   color: $primary-text-color;
   text-decoration: none;
