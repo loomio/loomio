@@ -24,7 +24,7 @@
     %flash
     %navbar
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
-      %section{layout: "row", ng_controller: 'SidebarController', ng_cloak: "", ng_if: 'isLoggedIn()'}
+      %section.lmo-sidebar-wrapper{layout: "row", ng_controller: 'SidebarController', ng_cloak: "", ng_if: 'isLoggedIn()'}
         %md-sidenav.md-sidenav-left{md_component_id: 'left', md_is_open: 'showSidebar', md_is_locked_open: '$mdMedia("gt-md") && showSidebar', md_whiteframe: 4}
           .sidebar__user-panel
             .sidebar__user-avatar-container
