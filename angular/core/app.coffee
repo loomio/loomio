@@ -77,7 +77,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     $scope.pageError = null
-    $scope.backgroundImageUrl = null
+    $scope.$broadcast('clearBackgroundImageUrl')
     ScrollService.scrollTo(options.scrollTo or 'h1')
     $scope.links = options.links or {}
     if AbilityService.requireLoginFor(options.page)
@@ -97,7 +97,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
       AppConfig.chargify.nagCache[group.key] = true
 
   $scope.$on 'setBackgroundImageUrl', (event, url) ->
-    $scope.backgroundImageUrl = url
+    angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
+
+  $scope.$on 'clearBackgroundImageUrl', (event) ->
+    angular.element(document.querySelector('.lmo-main-background')).removeAttr('style')
 
   $scope.keyDown = (event) -> KeyEventService.broadcast event
 
