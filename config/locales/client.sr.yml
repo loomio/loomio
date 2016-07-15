@@ -148,25 +148,20 @@ sr:
     private_privacy_notice: 'Vaš komentar će biti vidljiv samo za članove {{groupName}}.'
     public_privacy_notice: Vaš komentar će biti vidljiv svima na mreži.
     sign_in: Prijavite se za priključivanje konverzaciji
-  navbar:
+  sidebar:
     recent: Poslednje
     unread: Nepročitano
-    groups: Grupe
+    muted: Utišano
+    explore: Istraži javne grupe
+    edit_profile: Uredi profil
+    email_settings: ePoruke
+    help: Pomoć
+    sign_out: Odjava
+  navbar:
     recent_title: Idi na radnu površinu
     unread_title: Vidi nepročitane aktivnosti
-    groups_title: Vidi svoje grupe
     start_thread: Kreiraj novu nit
     notifications: Tabla obaveštenja
-    user_actions: Akcije korisnika
-    user_options:
-      label: Korisničke opcije
-      contact_us: Kontaktirajte nas
-      new_thread: Nova nit
-      new_group: Nova grupa
-      profile: Profil
-      email_settings: ePoruke
-      help: Pomoć
-      sign_out: Odjava
     search:
       no_results: Niti nisu pronađene
       close: Zatvori tablu pretrage
@@ -605,6 +600,8 @@ sr:
     aria_label: Tabla
     options:
       aria_label: Opcije filtriranja
+    no_groups:
+      or: ili
     no_threads:
       show_all: Nemate skorih niti
       show_participating: Niste se pridružili u skorije vreme nekoj niti.
@@ -652,6 +649,8 @@ sr:
     no_threads: 'Juhu! Pročitali ste sve niti u svom sandučetu.'
     unread_threads: Nepročitane Niti
     view_more: Vidi Više
+    no_groups:
+      or: ili
   groups_page:
     page_header: Tvoje grupe
   discussion:

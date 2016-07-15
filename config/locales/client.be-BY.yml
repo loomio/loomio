@@ -51,15 +51,15 @@ be-BY:
     edit_comment: Рэдагаваць каментар
     delete_comment: Выдаліць каментар
     confirm_delete_message: 'Вы ўпэўнены, што хаціце выдаліць гэты каментар?'
-  navbar:
+  sidebar:
     recent: Нядаўнія
     unread: Непрачытаныя
-    groups: Групы
-    user_options:
-      contact_us: Звязацца з намі
-      new_group: Новая група
-      profile: Профіль
-      help: Дапамога
+    explore: Знайсці публічныя групы
+    edit_profile: Рэдагаваць профіль
+    email_settings: Налады email
+    help: Дапамога
+    sign_out: Выйсці
+  navbar:
     search:
       placeholder: Пошук
       discussions: Абмеркаванні
@@ -176,6 +176,8 @@ be-BY:
     locale_label: Мова
   dashboard_page:
     aria_label: Галоўная
+    no_groups:
+      or: альбо
     mark_as_read: Адзначыць як прачытанае
     filtering:
       all: Нядаўнія абмеркаванні
@@ -184,6 +186,9 @@ be-BY:
       proposals: Прапановы
       today: Сёння
       yesterday: Учора
+  inbox_page:
+    no_groups:
+      or: альбо
   discussion:
     proposals: Прапановы
   thread_group:

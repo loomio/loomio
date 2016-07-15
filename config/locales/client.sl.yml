@@ -48,16 +48,15 @@ sl:
     edit_comment: Uredi komentar
     delete_comment: Izbriši komentar
     confirm_delete_message: 'Si prepričan/a, da želiš izbrisati ta komentar?'
-  navbar:
+  sidebar:
     recent: Nedavno
     unread: Neprebrano
-    groups: Skupine
-    user_options:
-      contact_us: Kontaktiraj nas
-      new_group: Nova skupina
-      profile: Profil
-      email_settings: Email nastavitve
-      help: Pomoč
+    explore: Razišči javne skupine
+    edit_profile: Urejanje profila
+    email_settings: Email nastavitve
+    help: Pomoč
+    sign_out: Odjavi se
+  navbar:
     search:
       placeholder: Išči
       discussions: Razprave
@@ -159,10 +158,15 @@ sl:
       updated: Email nastavitve posodobljene
   dashboard_page:
     aria_label: Nadzorna plošča
+    no_groups:
+      or: ali
     mark_as_read: Označi kot prebrano
     threads_from:
       today: Danes
       yesterday: Včeraj
+  inbox_page:
+    no_groups:
+      or: ali
   discussion:
     you_like_this: Ti si všečkal/a.
     liked_by_you_and_someone: 'Ti in {{name}} sta všečkala.'

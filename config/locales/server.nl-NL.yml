@@ -1,5 +1,12 @@
 nl-NL:
+  validate:
+    motion:
+      must_close_in_future: Voorstel moet in de toekomst sluiten.
+      one_at_a_time: Er is een ander voorstel in behandeling.
   email:
+    reset_password:
+      link_text: Herstel je wachtwoord
+    custom: '%{text}'
     group_email:
       intro: '%{who} maakte een aankondiging aan %{group}:'
     by_who: 'door %{person}'
@@ -11,6 +18,7 @@ nl-NL:
       link: Doe mee aan de discussie
     to_join_group:
       subject: '%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio'
+      accept_invitation: Accepteren uitnodiging
     to_start_group:
       subject: 'Stel je nieuwe Loomio groep in: %{group_name}'
     user_added_to_a_group:
@@ -43,6 +51,7 @@ nl-NL:
       subject: '%{who} reageerde op jouw reactie in de %{which} groep op Loomio'
     group_membership_approved:
       intro: "Je verzoek om toegang tot de groep '%{group_name}' op Loomio is goedgekeurd."
+      subject: '%{prefix} Lidmaatschap goedgekeurd'
     invitation:
       hi: 'Hoi %{name},'
       intro: 'Klik op de link hieronder om jouw groep %{group_name} in te stellen:'
@@ -64,6 +73,8 @@ nl-NL:
       specify_outcome_and_notify_group: 'Maak een uitkomst en verzend deze naar je groep!'
       specify_outcome_and_notify_group_html: 'Maak een uitkomst en verzend deze naar je groep!'
       subject: 'Voorstel gesloten - %{which}'
+    proposal_outcome:
+      subject: 'Uitkomst voorstel: %{motion}'
     proposal_closing_soon:
       closes_on: Sluit op
       closes_at: Sluit om
@@ -86,6 +97,16 @@ nl-NL:
       specify_outcome: 'Je voorstel is gesloten. Specificeer een uitkomst om iedereen te laten weten wat het resultaat is:'
       outcome_created: '%{who} heeft een uitkomst van een voorstel opgesteld:'
       you_agreed: 'Je %{past_tense_position}'
+    analytics:
+      subject: "%{which_group}'s week op Loomio"
+      title: 'Je wekelijkse samenvatting voor %{since} - %{till}'
+      stats: '<strong>%{active_members}</strong> van <strong>%{group_members}</strong> in je groep waren in de afgelopen week actief. Je groep resulteerde in <strong>%{motions}</strong> en had <strong>%{comments}</strong> in <strong>%{discussions}</strong>.'
+      heart: ❤ van team Loomio
+      user_table:
+        motions_created: Voorstellen
+        discussions_created: Discussies
+        comments_created: Reacties
+        votes_created: Stemmen
   footer:
     about: Over
     blog: Blog
@@ -97,6 +118,9 @@ nl-NL:
     terms: Voorwaarden
     independent_install_html: '%{hostname} draait als een onafhankelijke kopie van Loomio: <a href="http://github.com/loomio/loomio">meer informatie</a>.'
   start_group_form:
+    enable_angular:
+      header: Nieuwe groepen starten in Loomio 1.0
+      switch_to_angular: Begin een groep in de nieuwe Loomio
     header: Begin een nieuwe groep
     form_error: Sommige informatie mist of is incorrect.
     name: Je naam
@@ -109,8 +133,28 @@ nl-NL:
     success:
       header: 'Je bent bijna klaar! Bekijk je e-mail.'
       email_not_arrived: E-mail niet aangekomen?
+  pricing_page:
+    gift: Kado
+    standard: Standaard
+    plus: Plus
+    get_started_for_free: Ga gratis aan de slag
+    email_support: e-mailondersteuning
+    slack_integration_html: |
+      <strong>Slack</strong> integratie
+    standard_price_html: |
+      US<strong>$19</strong>/maand<br><span>of</span> $190/jaar
+    plus_body: 'Alles in Standaard, plus:'
+    multiple_groups: meerdere groepen
+    usage_statistics: gebruiksstatistieken
+    plus_price_html: |
+      US<strong>$179</strong>/maand<br><span>of</span> $1790/jaar
+  password_reset:
+    length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
+  introduction_thread:
+    title: 'Welkom bij %{group_name}'
   contact_page:
     contact_us: Neem contact op
+    contact_form: Contactformulier
     labels:
       name: Je naam
       email: Je e-mailadres
@@ -118,3 +162,25 @@ nl-NL:
       submit: Verstuur bericht
     messages:
       email_html: "Vul dit formulier in of stuur een e-mail naar <a href='mailto:%{email}'>%{email}</a>"
+  markdown:
+    intro:
+      title: |
+        # Wat is markdown?
+    paragraphs:
+      title: |
+        ## Paragrafen
+    emphasis:
+      title: |
+        ## Nadruk
+    lists:
+      title: |
+        ## Lists
+    links:
+      title: |
+        ## Links en afbeeldingen
+  beta_banner:
+    new_loomio_html: >
+      <strong>De Nieuwe Loomio is sneller, mooie, en beter!</strong> Iedereen
+      wordt overgezet.
+    more_info: Meer info...
+    button_text: Stap over op de nieuwe Loomio

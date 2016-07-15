@@ -82,22 +82,19 @@ pl:
     in_reply_to: 'W odpowiedzi na <strong>{{name}}</strong>:'
     submit_button:
       label: Wysłanie
-  navbar:
+  sidebar:
     recent: Ostatnie
     unread: Nieprzeczytane
-    groups: Grupy
+    muted: Wyciszone
+    explore: Przegląd grup publicznych
+    email_settings: Ustawienia poczty
+    help: Pomoc
+    sign_out: Wyloguj się
+  navbar:
     recent_title: Idź do pulpitu
     unread_title: Zobacz nieprzeczytaną aktywność
-    groups_title: Zobacz Twoje grupy
     start_thread: Rozpoczęcie nowego wątku
     notifications: Panel powiadomień
-    user_options:
-      contact_us: Kontakt
-      new_thread: Nowy wątek
-      new_group: Nowa grupa
-      profile: Profil
-      email_settings: Ustawienia poczty
-      help: Pomoc
     search:
       close: Zamknij panel wyszukiwania
       placeholder: Szukaj

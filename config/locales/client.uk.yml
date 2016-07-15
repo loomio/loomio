@@ -104,25 +104,20 @@ uk:
       label: Опублікувати
     private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
     public_privacy_notice: Ваш коментар зможе бачити будь-хто в мережі
-  navbar:
+  sidebar:
     recent: Недавні
     unread: Непрочитані
-    groups: Групи
+    muted: Вимкнуто
+    explore: Переглянути відкриті групи
+    edit_profile: Редагувати профіль
+    email_settings: Налаштування електронної пошти
+    help: Допомога
+    sign_out: Вийти
+  navbar:
     recent_title: Перейти до інформаційної панелі
     unread_title: Переглянути непрочитані повідомлення про активність
-    groups_title: Переглянути ваші групи
     start_thread: Створити нову тему
     notifications: Панель сповіщень
-    user_actions: Дії користувача
-    user_options:
-      label: Налаштування користувача
-      contact_us: Контакти
-      new_thread: Нова тема
-      new_group: Нова група
-      profile: Профіль
-      email_settings: Налаштування електронної пошти
-      help: Допомога
-      sign_out: Вийти
     search:
       no_results: Не знайдено тем
       close: Закрити панель пошуку
@@ -502,6 +497,8 @@ uk:
     aria_label: Інформаційна панель
     options:
       aria_label: Налаштування фільтру для інформаційної панелі
+    no_groups:
+      or: або
     no_threads:
       show_all: У вас нема жодних недавніх тем.
       show_participating: Останнім часом ви не брали участь в обговоренні жодної теми.
@@ -549,6 +546,8 @@ uk:
     no_threads: 'Вау! Ви прочитали всі теми у вашій скриньці.'
     unread_threads: Непрочитані теми
     view_more: Переглянути більше
+    no_groups:
+      or: або
   groups_page:
     page_header: Ваші групи
   discussion:

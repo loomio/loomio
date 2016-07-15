@@ -32,14 +32,14 @@ sk:
     edit_comment: Upraviť komentár
     delete_comment: Odstrániť komentár
     confirm_delete_message: Naozaj chcete odstrániť tento komentár?
-  navbar:
+  sidebar:
     unread: Neprečítané
-    groups: Skupiny
-    user_options:
-      contact_us: Kontaktujte nás
-      new_group: Nová skupina
-      profile: Profil
-      help: Pomocník
+    explore: Preskúmajte verejné skupiny
+    edit_profile: Upraviť profil
+    email_settings: Nastavenia emailu
+    help: Pomocník
+    sign_out: Odhlásiť sa
+  navbar:
     search:
       placeholder: Vyhľadávať
       discussions: Diskusie
@@ -124,9 +124,14 @@ sk:
     locale_label: Jazyk
   dashboard_page:
     aria_label: Ovládací panel
+    no_groups:
+      or: alebo
     mark_as_read: Označiť ako prečítané
     threads_from:
       today: Dnes
+  inbox_page:
+    no_groups:
+      or: alebo
   thread_group:
     aria_label: Názov skupiny
   delete_comment_dialog:

@@ -112,25 +112,20 @@ tr:
       label: Gönder
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
     public_privacy_notice: Yorumunuz web üzerindeki herkese görünür olacak.
-  navbar:
+  sidebar:
     recent: En yeni
     unread: Okunmamış
-    groups: Gruplar
+    muted: Sesi kısıldı
+    explore: Genel grupları keşfedin
+    edit_profile: Profili düzenle
+    email_settings: E-posta ayarları
+    help: Yardım
+    sign_out: Oturumu kapat
+  navbar:
     recent_title: Kontrol paneline git
     unread_title: Okunmamış etkinlikleri görüntüle
-    groups_title: Gruplarını görüntüle
     start_thread: Yeni bir konu başlat
     notifications: Bildirim paneli
-    user_actions: Kullanıcı eylemleri
-    user_options:
-      label: Kullanıcı seçenekleri
-      contact_us: Bize yazın
-      new_thread: Yeni konu
-      new_group: Yeni grup
-      profile: Profil
-      email_settings: E-posta ayarları
-      help: Yardım
-      sign_out: Oturumu kapat
     search:
       no_results: Hiçbir konu bulunamadı
       close: Arama panelini kapat
@@ -587,6 +582,8 @@ tr:
     aria_label: Kontrol paneli
     options:
       aria_label: Kontrol paneli filtreleme seçnekleri
+    no_groups:
+      or: veya
     no_threads:
       show_all: Herhangi bir yeni konunuz yok.
       show_participating: Yakın zamanda herhangi bir konuya katılım göstermediniz.
@@ -634,6 +631,8 @@ tr:
     no_threads: 'Yaşasın! Gelen kutunuzdaki bütün konuları okudunuz.'
     unread_threads: Okunmamış konular
     view_more: Daha Fazla Göster
+    no_groups:
+      or: veya
   groups_page:
     page_header: Grupların
   discussion:

@@ -107,25 +107,19 @@ ko:
       label: 저장하기
     private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
     public_privacy_notice: 작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.
-  navbar:
+  sidebar:
     recent: 최신
     unread: 읽지않음
-    groups: 그룹
+    muted: 알림 비활성화
+    edit_profile: 프로필 편집
+    email_settings: 이메일 설정
+    help: 도움말
+    sign_out: 로그아웃
+  navbar:
     recent_title: 대시보드로 이동
     unread_title: 읽지 않은 활동 보기
-    groups_title: 활동중인 그룹 보기
     start_thread: 새 쓰레드 만들기
     notifications: 알림 패널
-    user_actions: 사용자 액션
-    user_options:
-      label: 사용자 옵션
-      contact_us: 연락하기
-      new_thread: 새로운 쓰레드
-      new_group: 새 그룹
-      profile: 프로필
-      email_settings: 이메일 설정
-      help: 도움말
-      sign_out: 로그아웃
     search:
       no_results: 쓰레드가 없습니다.
       close: 검색패널 닫기
@@ -553,6 +547,8 @@ ko:
     aria_label: 대시보드
     options:
       aria_label: 대시보드 필터링 옵션
+    no_groups:
+      or: 혹은
     no_threads:
       show_all: 최근 주제가 없습니다.
       show_participating: '최근 어떤 주제에도 참여하지 않았습니다. '
@@ -600,6 +596,8 @@ ko:
     no_threads: '이야! inbox의 모든 주제를 읽었군요.'
     unread_threads: 읽지 않은 쓰레드
     view_more: 더보기
+    no_groups:
+      or: 혹은
   groups_page:
     page_header: 내가 속한 그룹
   discussion:
