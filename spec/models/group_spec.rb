@@ -174,11 +174,18 @@ describe Group do
     it "can promote existing member to admin" do
       @group.add_member!(@user)
       @group.add_admin!(@user)
+      expect(@group.admins).to include @user
     end
 
     it "can add a member" do
       @group.add_member!(@user)
-      @group.users.should include(@user)
+      expect(@group.users).to include @user
+    end
+
+    it 'sets the first admin to be the creator' do
+      @group = Group.new(name: "Test group")
+      @group.add_admin!(@user)
+      expect(@group.creator).to eq @user
     end
   end
 
@@ -240,7 +247,7 @@ describe Group do
       end
 
       it 'archives the memberships of the group' do
-        group.memberships.all?{|m| m.archived_at.should be_present}
+        group.memberships.reload.all?{|m| m.reload.archived_at.should be_present}
       end
     end
 

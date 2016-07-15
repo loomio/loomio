@@ -126,11 +126,6 @@ EventBus.configure do |config|
   # notify users of comment liked
   config.listen('comment_liked_event') { |event| event.notify!(event.comment.author) if event.notify_author? }
 
-  # perform group creation
-  config.listen('group_create') do |group, actor|
-    group.add_default_content! if group.is_parent?
-  end
-
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 

@@ -1,11 +1,16 @@
 module GroupService
   def self.create(group:, actor:)
     actor.ability.authorize! :create, group
-    group.creator = actor
 
     return false unless group.valid?
-    group.save!
-    
+
+    if group.is_parent?
+      group.update(default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial)
+      ExampleContent.new(group).add_to_group!
+    else
+      group.save!
+    end
+
     group.add_admin! actor
 
     EventBus.broadcast('group_create', group, actor)
