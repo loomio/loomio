@@ -54,16 +54,15 @@ eo:
     edit_comment: Redakti komenton
     delete_comment: Forigi komenton
     confirm_delete_message: 'Ĉu vi certas, ke vi volas forigi tiun ĉi komenton?'
-  navbar:
+  sidebar:
     recent: Lastaj
     unread: Nelegitaj
-    groups: Grupoj
-    user_options:
-      contact_us: Kontakti nin
-      new_thread: Nova fadeno
-      new_group: Nova grupo
-      profile: Profilo
-      help: Helpo
+    explore: Esplori publikajn grupojn
+    edit_profile: Redakti profilon
+    email_settings: Retpoŝtaj agordoj
+    help: Helpo
+    sign_out: Eliri
+  navbar:
     search:
       placeholder: Serĉi
       discussions: Diskutoj
@@ -147,6 +146,8 @@ eo:
     locale_label: Lingvo
   dashboard_page:
     aria_label: Supervidpanelo
+    no_groups:
+      or: aŭ
     no_threads:
       show_all: Vi ne havas lastatempajn fadenojn.
       show_participating: Vi laste ne partoprenis en ajnaj fadenoj.
@@ -159,6 +160,9 @@ eo:
     threads_from:
       today: Hodiaŭ
       yesterday: Hieraŭ
+  inbox_page:
+    no_groups:
+      or: aŭ
   thread_group:
     aria_label: Grupnomo
   delete_comment_dialog:

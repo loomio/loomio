@@ -1,4 +1,6 @@
 hi:
+  sidebar:
+    email_settings: ईमेल सेटिंग
   close_proposal_form:
     close_proposal: बंद करें प्रस्ताव
   proposal_expanded:

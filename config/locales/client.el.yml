@@ -107,25 +107,19 @@ el:
       label: Δημοσίευση
     private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'
     public_privacy_notice: Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.
-  navbar:
+  sidebar:
     recent: Πρόσφατα
     unread: Αδιάβαστα
-    groups: Ομάδες
+    explore: Εξερευνήστε δημόσιες ομάδες
+    edit_profile: Επεξεργασία προφίλ
+    email_settings: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
+    help: Βοήθεια
+    sign_out: Αποσύνδεση
+  navbar:
     recent_title: Πήγαινε στον πίνακα διαχείρισης
     unread_title: Δες την αδιάβαστη δραστηριότητα
-    groups_title: Δες τις ομάδες σου
     start_thread: Ξεκίνα ένα νέο θέμα
     notifications: Πίνακας ειδοποιήσεων
-    user_actions: Ενέργειες χρήστη
-    user_options:
-      label: Ρυθμίσεις χρήστη
-      contact_us: Επικοινωνήστε με μας
-      new_thread: Νέο θέμα
-      new_group: Νέα ομάδα
-      profile: Προφίλ
-      email_settings: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
-      help: Βοήθεια
-      sign_out: Αποσύνδεση
     search:
       no_results: Δεν βρέθηκαν θέματα
       close: Κλείσε τον πίνακα εύρεσης
@@ -319,12 +313,17 @@ el:
     header: Ρυθμίσεις ηλεκτρονικού ταχυδρομείου
   dashboard_page:
     aria_label: Πίνακας Εργαλείων
+    no_groups:
+      or: ή
     mark_as_read: Σημείωσε ως διαβασμένα
     filtering:
       proposals: Προτάσεις
     threads_from:
       today: Σήμερα
       yesterday: Εχθές
+  inbox_page:
+    no_groups:
+      or: ή
   discussion:
     proposals: Προτάσεις
     previous_proposals: Προηγούμενες Προτάσεις

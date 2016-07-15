@@ -136,23 +136,19 @@ ga-IE:
     in_reply_to: 'Mar fhreagra ar <strong>{{name}}</strong>:'
     submit_button:
       label: Foilsigh é
-  navbar:
+  sidebar:
     recent: Le déanaí
     unread: Neamhléite
-    groups: Baiclí
+    muted: Balbhaithe
+    edit_profile: Cuir do bheathaisnéisín in eagar
+    email_settings: Socruithe ríomhphoist
+    help: Cabhair
+    sign_out: Scoir
+  navbar:
     recent_title: Téigh chuig an clár rialaithe
     unread_title: Féach gníomhaíocht neamhléite
-    groups_title: Féach ar do bhaiclí
     start_thread: Cuir tús le snáithe nua
     notifications: Clár na bhfógraí
-    user_options:
-      contact_us: Déan teagmháil linn
-      new_thread: Snáith nua
-      new_group: Baicle nua
-      profile: Beathaisnéisín
-      email_settings: Socruithe ríomhphoist
-      help: Cabhair
-      sign_out: Scoir
     search:
       close: Dún an clár cuardaigh
       placeholder: Cuardaigh
@@ -500,6 +496,8 @@ ga-IE:
     aria_label: An clár rialaithe
     options:
       aria_label: Roghanna scagtha an chláir rialaithe
+    no_groups:
+      or: nó
     no_threads:
       show_all: Níl aon snáithe le déanaí agat.
       show_participating: Níor ghlac tú páirt in aon snáithe le déanaí.
@@ -549,6 +547,8 @@ ga-IE:
     no_threads: 'Comhghairdeas! Tá gach snáithe i do bhosca isteach léite agat.'
     unread_threads: Snáitheanna Neamhléite
     view_more: Féach Tuilleadh
+    no_groups:
+      or: nó
   groups_page:
     page_header: Do bhaiclí
   discussion:

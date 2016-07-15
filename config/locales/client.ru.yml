@@ -80,16 +80,13 @@ ru:
     delete_comment: Удалить комментарий
     confirm_delete_message: Вы уверены что хотите удалить комментарий?
     confirm_delete: 'Да, я согласен'
-  navbar:
+  sidebar:
     unread: Непрочитанные
-    groups: Группы
-    user_options:
-      contact_us: Наши контакты
-      new_thread: Новая тема
-      new_group: Новая группа
-      profile: Профиль
-      email_settings: Настройки email
-      help: Помощь
+    explore: Публичные группы
+    email_settings: Настройки email
+    help: Помощь
+    sign_out: Выйти
+  navbar:
     search:
       close: Закрыть панель поиска
       placeholder: Поиск
@@ -180,10 +177,15 @@ ru:
     header: Настройки email
   dashboard_page:
     aria_label: Кабинет
+    no_groups:
+      or: или
     mark_as_read: Отметить прочитанным
     threads_from:
       today: Сегодня
       yesterday: Вчера
+  inbox_page:
+    no_groups:
+      or: или
   discussion:
     previous_proposals: Предыдущие голосования
   thread_group:

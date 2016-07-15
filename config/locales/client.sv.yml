@@ -29,14 +29,14 @@ sv:
     edit_comment: Edit kommentar
     delete_comment: Ta bort kommentaren
     confirm_delete_message: Är du säker på att du vill ta bort denna kommentaren?
-  navbar:
+  sidebar:
     unread: Olästa
-    groups: Grupper
-    user_options:
-      contact_us: Kontakta oss
-      new_group: Ny grupp
-      profile: Profil
-      help: Hjälp
+    explore: Utforska publika grupper
+    edit_profile: Ändra profilen
+    email_settings: Emailinställningar
+    help: Hjälp
+    sign_out: Logga ut
+  navbar:
     search:
       placeholder: Sök
       discussions: Diskussioner
@@ -121,9 +121,14 @@ sv:
     locale_label: Språk
   dashboard_page:
     aria_label: Instrumentbräda
+    no_groups:
+      or: eller
     mark_as_read: Markera som läst
     threads_from:
       today: I dag
+  inbox_page:
+    no_groups:
+      or: eller
   thread_group:
     aria_label: Gruppnamn
   delete_comment_dialog:

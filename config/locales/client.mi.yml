@@ -8,10 +8,9 @@ mi:
       save: Tiaki
       edit: Whakatika
       cancel: Whakakore
+  sidebar:
+    help: Āwhina
   navbar:
-    groups: Ngā Rōpū
-    user_options:
-      help: Āwhina
     search:
       placeholder: Rapu
   proposal_form:

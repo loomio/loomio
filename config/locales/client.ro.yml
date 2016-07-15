@@ -104,25 +104,20 @@ ro:
       label: Postare
     private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
     public_privacy_notice: Comentariul tau va fi vizibil tuturor pe web.
-  navbar:
+  sidebar:
     recent: Recent
     unread: Necitit
-    groups: Grupuri
+    muted: Dezactivat
+    explore: Exploreaza grupuri publice
+    edit_profile: Modificare profil
+    email_settings: Setari email
+    help: Ajutor
+    sign_out: Delogare
+  navbar:
     recent_title: Mergi la tablou de bord
     unread_title: Vezi activitatea necitita
-    groups_title: Vezi grupul tau
     start_thread: Creare discutie noua
     notifications: Panoul notificarilor
-    user_actions: Actiuni utilizator
-    user_options:
-      label: Optiuni utilizator
-      contact_us: Contacteaza-ne
-      new_thread: Discutie noua
-      new_group: Grup nou
-      profile: Profil
-      email_settings: Setari email
-      help: Ajutor
-      sign_out: Delogare
     search:
       no_results: Nu s-a gasit nici o discutie
       close: Inchide cautarea
@@ -261,6 +256,8 @@ ro:
     header: Setari email
   dashboard_page:
     aria_label: Tablou de bord
+    no_groups:
+      or: sau
     no_threads:
       show_all: Nu ai nici o discutie recenta.
       show_participating: Nu ai participat la nici o discutie recenta.
@@ -297,6 +294,8 @@ ro:
   inbox_page:
     no_threads: 'Woohoo! Ai citit toate discutiile din inbox.'
     unread_threads: Discutii necitite
+    no_groups:
+      or: sau
   discussion:
     proposals: Propuneri
     previous_proposals: Propuneri anterioare

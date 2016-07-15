@@ -173,25 +173,20 @@ fr:
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
     public_privacy_notice: Votre commentaire sera visible par tout le monde sur internet.
     sign_in: Connectez-vous pour rejoindre la discussion
-  navbar:
+  sidebar:
     recent: Récent
     unread: Non lu
-    groups: Groupes
+    muted: Désactivé
+    explore: Explorer les groupes publics
+    edit_profile: Éditer le profil
+    email_settings: Paramètres e-mail
+    help: Aide
+    sign_out: Se déconnecter
+  navbar:
     recent_title: Aller sur le tableau de bord
     unread_title: Voir les nouvelles activités
-    groups_title: Voir vos groupes
     start_thread: Démarrer une nouvelle discussion
     notifications: Panneau des notifications
-    user_actions: Actions utilisateur
-    user_options:
-      label: Options utilisateur
-      contact_us: Contactez-nous
-      new_thread: Nouvelle discussion
-      new_group: Nouveau groupe
-      profile: Profil
-      email_settings: Réglages de courriel
-      help: Aide
-      sign_out: Se déconnecter
     search:
       no_results: Aucune discussion trouvée
       close: Fermer le panneau de recherche
@@ -689,6 +684,8 @@ fr:
     aria_label: Tableau de bord
     options:
       aria_label: Options de filtrage du Tableau de Bord
+    no_groups:
+      or: ou
     no_threads:
       show_all: "Vous n'avez aucune discussion récente."
       show_participating: "Vous n'avez participé à aucune discussion récemment."
@@ -739,6 +736,8 @@ fr:
     no_threads: 'Woohoo ! Vous avez lu toutes les discussions de votre boîte de réception.'
     unread_threads: Discussions non lues
     view_more: Voir plus
+    no_groups:
+      or: ou
   groups_page:
     page_header: Vos groupes
   discussion:

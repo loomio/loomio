@@ -66,23 +66,15 @@ lt:
     submit_button:
       label: Išsiųsti
     private_privacy_notice: 'Tavo komentaras bus matomas tik {{groupName}} grupės nariams.'
+  sidebar:
+    email_settings: El. pašto nustatymai
+    help: Pagalba
+    sign_out: Atsijungti
   navbar:
-    groups: Grupės
     recent_title: Pereiti į skydelį
     unread_title: Žiūrėti neperskaitytas veiklas
-    groups_title: Žiūrėti savo grupes
     start_thread: Kurti naują giją
     notifications: Pranešimų skydelis
-    user_actions: Naudotojo veiksmai
-    user_options:
-      label: Naudotojo parinktys
-      contact_us: Susisiekti su mumis
-      new_thread: Nauja gija
-      new_group: Nauja grupė
-      profile: Profilis
-      email_settings: El. pašto nustatymai
-      help: Pagalba
-      sign_out: Atsijungti
     search:
       no_results: Gijų nerasta
       loading: Įkeliami rezultatai...

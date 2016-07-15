@@ -85,22 +85,19 @@ cs:
     in_reply_to: 'V reakci na <strong>{{name}}</strong>:'
     submit_button:
       label: Odeslat
-  navbar:
+  sidebar:
     recent: Aktuální
     unread: Nepřečteno
-    groups: Skupiny
+    muted: Ztlumená
+    explore: Prozkoumejte veřejné skupiny
+    edit_profile: Upravit profil
+    email_settings: Nastavení emailu
+    help: Nápověda
+    sign_out: Odhlásit se
+  navbar:
     recent_title: Přejít na ovládací panel
     unread_title: Zobrazit nepřečtené aktivity
-    groups_title: Zobrazit Vaše skupiny
     start_thread: Vytvořit nové vlákno
-    user_options:
-      contact_us: Kontaktujte nás
-      new_thread: Nové vlákno
-      new_group: Nová skupina
-      profile: Profil
-      email_settings: Nastavení emailu
-      help: Nápověda
-      sign_out: Odhlásit se
     search:
       no_results: Nebyly nalezeny žádné vlákna
       close: Zavřít vyhledávací panel
@@ -380,6 +377,8 @@ cs:
     header: Nastavení emailu
   dashboard_page:
     aria_label: Ovládací panel
+    no_groups:
+      or: nebo
     no_threads:
       show_all: Nemáte žádná aktuální vlákna
       show_participating: Nezúčastnil(a) jste se žádných vláken v poslední době.
@@ -421,6 +420,8 @@ cs:
     no_threads: 'Paráda! Přečetli jste všechny vlákna ve vaší e-mailové schránce.'
     unread_threads: Nepřečtená vlákna
     view_more: Zobrazit více
+    no_groups:
+      or: nebo
   groups_page:
     page_header: Vaše skupiny
   discussion:

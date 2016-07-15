@@ -117,17 +117,15 @@ hu:
     confirm_delete: 'Igen, biztos vagyok benne'
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
     sign_in: 'Lépj be, hogy hozzászolhass a témakörhöz.'
-  navbar:
+  sidebar:
     unread: Olvasatlan
-    groups: Csoportok
+    explore: Keresés a nyilvános csoportok között
+    edit_profile: Profil szerkesztése
+    email_settings: Email beállítások
+    help: Segítség
+    sign_out: Kijelentkezés
+  navbar:
     start_thread: Egy új téma indítása
-    user_options:
-      contact_us: Értesíts minket
-      new_thread: Új téma
-      new_group: Új csoport
-      profile: Profil
-      help: Segítség
-      sign_out: Kijelentkezés
     search:
       close: Kereső panel bezárása
       placeholder: Keresés
@@ -244,12 +242,17 @@ hu:
     locale_label: Nyelv
   dashboard_page:
     aria_label: Műszerfal
+    no_groups:
+      or: vagy
     mark_as_read: Olvasottként jelöl
     filtering:
       proposals: Javaslatok
     threads_from:
       today: Ma
       yesterday: Tegnap
+  inbox_page:
+    no_groups:
+      or: vagy
   discussion:
     proposals: Javaslatok
     previous_proposals: Előző javaslatok

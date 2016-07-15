@@ -112,25 +112,20 @@ it:
       label: Post
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
     public_privacy_notice: Il tuo commento sarà visibile a qualsiasi persona sul web.
-  navbar:
+  sidebar:
     recent: Recente
     unread: Non letto
-    groups: Gruppi
+    muted: Silenziato
+    explore: Esplora gruppi pubblici
+    edit_profile: Modifica profilo
+    email_settings: Impostazioni Email
+    help: Aiuto
+    sign_out: Esci
+  navbar:
     recent_title: Vai alla dashboard
     unread_title: Vedi le attività non lette
-    groups_title: Visualizza i tuoi gruppi
     start_thread: Lancia una nuova discussione
     notifications: Pannello delle notifiche
-    user_actions: Azioni utente
-    user_options:
-      label: Opzioni utente
-      contact_us: Contattaci
-      new_thread: Nuova discussione
-      new_group: Nuovo gruppo
-      profile: Profilo
-      email_settings: Impostazioni Email
-      help: Aiuto
-      sign_out: Esci
     search:
       no_results: Nessuna discussione trovata
       close: Chiudi ricerca
@@ -517,6 +512,8 @@ it:
       updated: Impostazioni della posta elettronica aggiornate.
   dashboard_page:
     aria_label: Dashboard
+    no_groups:
+      or: o
     no_threads:
       show_proposals: Non ci sono proposte attive in questo momento.
     mark_as_read: Contrassegnato come letto
@@ -545,6 +542,8 @@ it:
     no_threads: 'Woohoo! Hai letto tutte le discussioni nella tua casella di posta..'
     unread_threads: Discussioni non lette
     view_more: Mostra di più
+    no_groups:
+      or: o
   groups_page:
     page_header: I tuoi gruppi
   discussion:
