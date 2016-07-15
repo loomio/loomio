@@ -167,6 +167,10 @@ en:
       twitter: 'Log in with Twitter'
       google: 'Log in with Google'
       github: 'Log in with Github'
+  signed_out_modal:
+    title: "Your session has been ended"
+    message: "You have been logged out of Loomio from another window. Please sign back in to continue."
+    ok: "Ok"
 
   comment_form:
     aria_label: 'Add a comment'

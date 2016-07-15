@@ -1,16 +1,15 @@
 class Events::CommentLiked < Event
-  after_create :notify_users!
-
   def self.publish!(comment_vote)
     create(kind: "comment_liked",
            eventable: comment_vote).tap { |e| EventBus.broadcast('comment_liked_event', e) }
   end
 
-  private
+  def notify_author?
+    user != comment.author &&                               # you didn't like your own comment
+    comment.group.memberships.find_by(user: comment.author) # the author is still in the group
+  end
 
-  def notify_users!
-    unless eventable.user == eventable.comment_user
-      notify!(eventable.comment_user)
-    end
+  def comment
+    @comment ||= eventable.comment
   end
 end

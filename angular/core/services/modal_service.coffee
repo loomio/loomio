@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'ModalService', ($uibModal, $rootScope, AhoyService) ->
+angular.module('loomioApp').factory 'ModalService', ($uibModal, $rootScope) ->
   currentModal = null
   new class ModalService
     open: (modal, resolve = {}) ->

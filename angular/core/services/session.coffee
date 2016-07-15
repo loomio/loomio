@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig, LmoUrlService) ->
+angular.module('loomioApp').factory 'Session', ($rootScope, $window, Records, AppConfig) ->
 
   login: (data) ->
     return unless data.current_user and data.current_user.id
@@ -23,6 +23,10 @@ angular.module('loomioApp').factory 'Session', ($rootScope, Records, AppConfig, 
 
     $rootScope.$broadcast 'loggedIn', @user()
     @user()
+
+  logout: ->
+    AppConfig.loggingOut = true
+    Records.sessions.remote.destroy('').then -> $window.location.href = '/'
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()

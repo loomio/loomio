@@ -21,7 +21,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def change_password
-    service.change_password(current_user_params) { sign_in resource, bypass: true }
+    service.change_password(current_user_params) { bypass_sign_in resource }
     respond_with_resource
   end
 
