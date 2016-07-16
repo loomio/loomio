@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, DraftService, AbilityService, $filter) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, $mdDialog, FlashService, DraftService, AbilityService, $filter) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
@@ -44,6 +44,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
 
     submit: (scope, model, options = {}) ->
       DraftService.applyDrafting(scope, model, options.draftFields) if options.draftFields and AbilityService.isLoggedIn()
+      scope.$close = $mdDialog.cancel
       submitFn = options.submitFn or model.save
       (prepareArgs) ->
         return if scope.isDisabled
