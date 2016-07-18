@@ -1,6 +1,14 @@
 class API::RegistrationsController < Devise::RegistrationsController
   include DeviseControllerHelper
 
+  def create
+    if params[resource_name][:honeypot]
+      head :bad_request
+    else
+      super
+    end
+  end
+
   private
 
   def respond_with(resource, args = {})
