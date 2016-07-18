@@ -3,12 +3,17 @@
     = render '/mailer_header'
     .to-join-group__body
       .to-join-group__invitation-text
-        = t("email.to_join_group.invitation_text_html", member: @invitation.inviter.name, group_name: @invitation.invitable_name)
+        %strong= @invitation.inviter.name
+        = t("email.to_join_group.invitation_text_html")
+        %br
+        %strong= @invitation.invitable_name
       .to-join-group__message-container
         - if @message_body
           .to-join-group__message_body
             = @message_body
         = link_to t("email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "to-join-group__accept-invitation"
       .to-join-group__tagline
-        = t("email.to_join_group.tagline")
+        = t("email.to_join_group.place_for_groups")
+        %br
+        = t("email.to_join_group.make_decisions_together")
 
