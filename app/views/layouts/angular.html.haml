@@ -56,7 +56,7 @@
             .sidebar__divider
 
             %md_list.sidebar__list.sidebar__scrollable-list{ng_class: "{'sidebar__no-groups': groups().length < 1}"}
-              %md_list_item{ng_repeat: "group in groups() track by group.id"}
+              %md_list_item{ng_repeat: "group in groups() | orderBy: 'fullName' track by group.id"}
                 %md_button.sidebar__list-item-button.sidebar__list-item-button--group{href: "{{groupUrl(group)}}", "aria-label" => "{{group.name}}", ng_if: "group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
                   %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
                   %span {{group.name}}
