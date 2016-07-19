@@ -205,6 +205,16 @@ $cardPaddingSize: 15px;
   display: -webkit-flex;
 }
 
+@mixin flexRow {
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+@mixin flexColumn {
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
 @mixin lmoRow {
   @media (min-width: $tiny-max-px){
     /* outer padding on all but tiny screens */

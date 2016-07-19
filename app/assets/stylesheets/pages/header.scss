@@ -8,21 +8,32 @@
 }
 
 .header {
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-justify-content: space-between;
+  -webkit-align-items: center;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+
   background-color: #efefef;
   border-bottom: 2px solid #dcdcdc;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 0 2rem;
 }
 
 .header__menu {
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-flex-direction: row;
+
+  display: flex;
   align-items: center;
+  flex-direction: row;
+
   padding-top: 10px;
   padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
 }
 
 @media (max-width: 600px) {
