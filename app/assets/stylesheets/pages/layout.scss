@@ -1,6 +1,4 @@
 body {
-  display: -webkit-flex;
-  display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,6 +8,7 @@ body {
 @media (min-width: 600px) {
   body { height: 100% }
   .lmo-wrap__body {
+    -webkit-flex: 1;
     flex: 1;
     overflow-y: scroll;
   }

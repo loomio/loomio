@@ -3,26 +3,32 @@
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
   max-height: 48px;
   z-index: 2;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
 }
 
 .md-toolbar-tools a { color: $primary-text-color; }
 
 .navbar__left, .navbar__middle, .navbar__right {
+  -webkit-align-items: center;
   align-items: center;
-  display: flex;
+  @include displayFlex;
   flex-basis: 33%;
   flex-grow: 0;
 }
 
 .navbar__left {
+  -webkit-justify-content: flex-start;
   justify-content: flex-start;
 }
 
 .navbar__middle {
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
 .navbar__right {
+  -webkit-justify-content: flex-end;
   justify-content: flex-end;
 }
 

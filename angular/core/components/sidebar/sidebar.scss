@@ -58,7 +58,7 @@
 }
 
 .sidebar__user-panel {
-  display: flex;
+  @include displayFlex;
   align-items: center;
   margin: 16px;
 }
