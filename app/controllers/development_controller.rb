@@ -28,6 +28,11 @@ class DevelopmentController < ApplicationController
     redirect_to new_user_session_url
   end
 
+  def setup_spanish_user
+    patrick.update(selected_locale: :es)
+    redirect_to explore_path
+  end
+
   def setup_logged_out_group_member
     patrick
     test_group
