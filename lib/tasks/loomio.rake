@@ -13,8 +13,9 @@ namespace :loomio do
 
   # http://stackoverflow.com/a/9835162
   task weekly_tasks: :environment do
-    return unless Time.now.monday?
-    SendAnalyticsEmailJob.perform_later
+    if Time.now.monday?
+      SendAnalyticsEmailJob.perform_later
+    end
   end
 
   task resend_ignored_invitations: :environment do
