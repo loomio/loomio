@@ -1,6 +1,13 @@
-= t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
-%p= render_rich_text(@motion.outcome, true)
+.thread-mailer__user-content
+  .thread-mailer__avatar-container
+    - if @author.avatar_kind == 'initials'
+      .thread-mailer__avatar-initials
+        = @author.avatar_initials
+    - else
+      .thread-mailer__avatar-image
+        = image_tag @author.avatar_url(:medium), alt: "#{@author.name}"
+  .thread-mailer__subject--outcome-created
+    = t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
+    %p= render_rich_text(@motion.outcome, true)
 
-= render 'motion_with_positions'
-
-= render 'footer', link: motion_url(@motion, @utm_hash)
+  = render 'motion_with_positions'

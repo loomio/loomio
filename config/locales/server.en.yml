@@ -62,7 +62,7 @@ en:
       heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
     comment_replied_to:
-      context: '%{author_name} replied to your comment in the discussion "%{discussion_title}"'
+      context: 'replied to your comment in the discussion'
       subject: "%{who} replied to your comment in the %{which} group on Loomio"
     group_membership_approved:
       intro: Your request for access to the group '%{group_name}' on Loomio has been approved.
@@ -79,7 +79,7 @@ en:
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
     mentioned:
-      context: '%{author_name} mentioned you while discussing "%{discussion_title}"'
+      context: "mentioned you while discussing"
       subject: '%{who} mentioned you while discussing "%{which}"'
     new_motion_created:
       subject: 'Proposal: %{proposal_title}'

@@ -1,13 +1,21 @@
-- if @following
-  %p= t(:"email.thread_mailer.new_motion", who: @motion.author_name)
-- else
-  %p= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
-%h4= link_to @motion.name, motion_url(@motion, @utm_hash)
+.thread-mailer__user-content
+  .thread-mailer__avatar-container
+    - if @author.avatar_kind == 'initials'
+      .thread-mailer__avatar-initials
+        = @author.avatar_initials
+    - else
+      .thread-mailer__avatar-image
+        = image_tag @author.avatar_url(:medium), alt: "#{@author.name}"
+  .thread-mailer__subject--new-motion
+    - if @following
+      %p= t(:"email.thread_mailer.new_motion", who: @motion.author_name)
+    - else
+      %p= t(:"email.new_motion_created.context", author: @motion.author_name, group_full_name: @group.full_name)
+    %h4= link_to @motion.name, motion_url(@motion, @utm_hash)
 
-= render_rich_text(@motion.description, true)
+    = render_rich_text(@motion.description, true)
 
-%p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@recipient)
-
-%h4= t(:"help.have_your_say")
-= render 'vote_buttons', motion: @motion
-= render "footer", link: motion_url(@motion, @utm_hash)
+    %p= t(:"email.proposal_closing_soon.closes_on") + ' ' + motion_closing_time_for(@recipient)
+  .thread-mailer__vote-prompt
+    %h4= t(:"help.have_your_say")
+    = render 'vote_buttons', motion: @motion
