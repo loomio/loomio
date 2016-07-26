@@ -147,7 +147,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
     byebug (8.2.5)
-    cancancan (1.13.1)
+    cancancan (1.15.0)
     capybara (2.7.1)
       addressable
       mime-types (>= 1.16)
