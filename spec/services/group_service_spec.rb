@@ -7,6 +7,10 @@ describe 'GroupService' do
   let(:subgroup) { build(:group, parent: parent) }
 
   describe 'create' do
+    it 'creates a new group' do
+      expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
+    end
+
     it 'assigns a default group cover' do
       default = create(:default_group_cover)
       GroupService.create(group: group, actor: user)
@@ -30,6 +34,10 @@ describe 'GroupService' do
       subscription = group.reload.subscription
       expect(subscription.kind.to_sym).to eq :trial
       expect(subscription.expires_at.to_date).to eq 30.days.from_now.to_date
+    end
+
+    it 'does not send excessive emails' do
+      expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
 end

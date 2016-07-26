@@ -47,14 +47,14 @@ sr-RS:
     edit_comment: Измени коментар
     delete_comment: Обриши коментар
     confirm_delete_message: Да ли сте сигурни да желите обрисати овај коментар?
-  navbar:
+  sidebar:
     unread: Непрочитано
-    groups: Групе
-    user_options:
-      contact_us: Контактирајте нас
-      new_group: Нова група
-      profile: Профил
-      help: Помоћ
+    explore: Истражи јавне групe
+    edit_profile: Уреди профил
+    email_settings: Подешавања еПорука
+    help: Помоћ
+    sign_out: Одјави се
+  navbar:
     search:
       placeholder: Тражи
       discussions: Низови
@@ -155,12 +155,17 @@ sr-RS:
     locale_label: Језик
   dashboard_page:
     aria_label: Радна табла
+    no_groups:
+      or: или
     mark_as_read: Означи као прочитано
     filtering:
       proposals: Предлози
     threads_from:
       proposals: Предлози
       today: Данас
+  inbox_page:
+    no_groups:
+      or: или
   discussion:
     proposals: Предлози
   thread_group:

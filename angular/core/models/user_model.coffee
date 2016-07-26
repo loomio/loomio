@@ -28,6 +28,12 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     parentGroups: ->
       _.filter @groups(), (group) -> group.isParent()
 
+    hasAnyGroups: ->
+      @groups().length > 0
+
+    hasMultipleGroups: ->
+      @groups().length > 1
+
     allThreads:->
       _.flatten _.map @groups(), (group) ->
         group.discussions()

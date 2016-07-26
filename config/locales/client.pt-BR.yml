@@ -180,25 +180,20 @@ pt-BR:
     private_privacy_notice: 'Seu comentário será visível apenas para os membros de {{groupName}}.'
     public_privacy_notice: Seu comentário será visível para qualquer pessoa na web
     sign_in: Entre para se juntar à conversa
-  navbar:
+  sidebar:
     recent: Recente
     unread: Não lida
-    groups: Grupos
+    muted: Mudo
+    explore: Conheça grupos públicos
+    edit_profile: Editar perfil
+    email_settings: Configurações de e-mail
+    help: Ajuda
+    sign_out: Sair
+  navbar:
     recent_title: Ir para o painel
     unread_title: Ver atividades não lidas
-    groups_title: Ver seus grupos
     start_thread: Iniciar um novo tópico
     notifications: Painel de notificações
-    user_actions: Ações dos usuários
-    user_options:
-      label: Opçoes de usuário
-      contact_us: Contato
-      new_thread: Novo tópico
-      new_group: Novo grupo
-      profile: Perfil
-      email_settings: Configurações de e-mail
-      help: Ajuda
-      sign_out: Sair
     search:
       no_results: Nenhum tópico encontrado
       close: Fechar painel de pesquisa
@@ -704,6 +699,8 @@ pt-BR:
     aria_label: Painel
     options:
       aria_label: Opções de filtro do painel
+    no_groups:
+      or: ou
     no_threads:
       show_all: Você não tem tópicos recentes.
       show_participating: Você não participou de nenhum tópico recentemente.
@@ -754,6 +751,8 @@ pt-BR:
     no_threads: 'Legal! Você leu todos os tópicos na sua caixa de entrada.'
     unread_threads: Tópicos Não Lidos
     view_more: Ver Mais
+    no_groups:
+      or: ou
   groups_page:
     page_header: Seus grupos
   discussion:

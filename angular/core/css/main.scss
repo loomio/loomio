@@ -6,3 +6,24 @@
 @import '1_lmo_form.scss';
 @import '1_lmo_card.scss';
 @import '1_lmo_headers.scss';
+
+body { position: static; }
+
+.lmo-sidebar-and-main-container {
+  position: relative;
+}
+
+.lmo-sidebar-wrapper {
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+}
+
+.lmo-main-content{
+  overflow-y: scroll;
+  position: relative;
+}
+.lmo-main-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 320px;
+}

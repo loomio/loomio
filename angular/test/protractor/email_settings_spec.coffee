@@ -24,8 +24,7 @@ describe 'Email settings', ->
   describe 'logged in', ->
     beforeEach ->
       page.loadPath('setup_group')
-      page.click '.navbar-user-options',
-                 '.navbar-user-options__email-settings-link'
+      page.click '.sidebar__list-item-button--email-settings'
 
     it 'lets you update email settings', testUpdate
     it 'lets you set default email settings for all new memberships', testDefaultUpdate
@@ -34,7 +33,7 @@ describe 'Email settings', ->
   describe 'logged in with unsubscribe token', ->
     it 'displays you as logged in', ->
       page.loadPath 'email_settings_as_logged_in_user'
-      page.expectElement '.lmo-navbar__item--user'
+      page.expectElement '.sidebar__content'
 
   describe 'logged out', ->
     beforeEach ->

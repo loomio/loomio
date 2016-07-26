@@ -1,0 +1,86 @@
+.md-sidenav-left {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  max-width: 250px;
+  border-top: 1px solid rgba(0,0,0,.14);
+}
+
+.sidebar__content {
+  margin: 8px 0;
+}
+
+.sidebar__list-item-button {
+  display: block;
+  text-align: left;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-transform: none;
+  span {
+    font-weight: 600;
+  }
+}
+
+.sidebar__list-item-button--subgroup {
+  text-transform: none;
+  display: block;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: left;
+  padding-left: 45px;
+}
+
+.sidebar__scrollable-list {
+  overflow-y: scroll;
+  flex: 1;
+}
+
+.sidebar__list-item-icon {
+  width: 20px;
+  margin-right: 16px;
+}
+
+.sidebar__list-item-group-logo {
+  margin-right: 16px;
+}
+
+.fa-envelope-o {
+  font-size: 16px;
+}
+
+.sidebar__divider {
+  border-top: 1px solid #eee;
+}
+
+.sidebar__list-item--selected {
+  background-color: #EBEBEB;
+}
+
+.sidebar__user-panel {
+  @include displayFlex;
+  align-items: center;
+  margin: 16px;
+}
+
+.sidebar__user-icon-container {
+  height: 48px;
+  width: 48px;
+  background-color: #AAA;
+  border-radius: 50%;
+}
+
+.sidebar__user-icon {
+  font-size: 32px;
+  position: absolute;
+  left: 28px;
+  top: 28px;
+}
+
+.sidebar__user-details {
+  margin-left: 16px;
+}
+
+.sidebar__user-name {
+  font-weight: 600;
+}

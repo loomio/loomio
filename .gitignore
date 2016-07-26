@@ -21,6 +21,7 @@ screenshots/
 .byebug_history
 bin/
 .powenv
+.byebug_history
 
 public/client
 public/system

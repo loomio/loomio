@@ -1,7 +1,7 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, ModalService, GroupForm) ->
 
-  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
-  $rootScope.$broadcast('setTitle', 'Dashboard')
+  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
+  $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
 
   @perPage = 50
@@ -59,7 +59,13 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     @filter = filter
     @updateQueries()
     @loadMore() if @loaded[@filter] == 0
-  @setFilter()
+  @setFilter($routeParams.filter || 'show_all')
+
+  @noGroups = ->
+    !Session.user().hasAnyGroups()
+
+  @startGroup = ->
+    ModalService.open GroupForm, group: -> Records.groups.build()
 
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
   $scope.$on 'homePageClicked', => @setFilter()

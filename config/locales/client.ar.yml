@@ -112,25 +112,19 @@ ar:
       label: نشر
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
     public_privacy_notice: تعليقك سيظهر للجميع
-  navbar:
+  sidebar:
     recent: حديث
     unread: غير مقروءة
-    groups: المجموعات
+    muted: صامت
+    explore: إستكشف مجموعات عامة
+    email_settings: إرسال الإعدادات برسالة الكترونية
+    help: مساعدة
+    sign_out: الخروج
+  navbar:
     recent_title: اذهب إلى لوحة التحكم
     unread_title: أظهر النشاطات الغير مقروءة
-    groups_title: أظهر المجموعات
     start_thread: إبدأ موضوعاً جديداً
     notifications: لوحة التبليغات
-    user_actions: نشاطات العضو
-    user_options:
-      label: خيارات العضو
-      contact_us: اتصل بنا
-      new_thread: موضوع جديد
-      new_group: مجموعة جديدة
-      profile: ملف شخصي
-      email_settings: إرسال الإعدادات برسالة الكترونية
-      help: مساعدة
-      sign_out: الخروج
     search:
       no_results: لا يوجد مواضيع
       close: أغلق منصة البحث

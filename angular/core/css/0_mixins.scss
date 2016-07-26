@@ -15,7 +15,7 @@ $item-highlight-color: #FFFFE8;
 $progress-bar-color: #176EE3;
 $loomio-orange: #F6A82B;
 
-$navbar-height: 44px;
+$navbar-height: 48px;
 $tiny-max:      480;
 $small-max:     768;
 $medium-max:    992;
@@ -119,6 +119,12 @@ $boxMediumSize: 50px;
   height: $boxMediumSize;
 }
 
+$boxMediumCircularSize: 48px;
+@mixin boxMediumCircular {
+  width: $boxMediumCircularSize;
+  height: $boxMediumCircularSize;
+}
+
 $boxLargeSize: 80px;
 @mixin boxLarge {
   width: $boxLargeSize;
@@ -197,6 +203,16 @@ $cardPaddingSize: 15px;
   /*display: -moz-box;*/
   display: -ms-flexbox;
   display: -webkit-flex;
+}
+
+@mixin flexRow {
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+@mixin flexColumn {
+  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 
 @mixin lmoRow {

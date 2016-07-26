@@ -175,25 +175,20 @@ zh-TW:
     private_privacy_notice: '您的意見只會被 {{groupName}} 群組的成員看到。'
     public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
     sign_in: 登入以加入對話
-  navbar:
+  sidebar:
     recent: 最近
     unread: 未讀
-    groups: 群組
+    muted: 已靜音
+    explore: 探索公開群組
+    edit_profile: 編輯簡歷
+    email_settings: 電子郵件設定
+    help: 教學文件
+    sign_out: 登出
+  navbar:
     recent_title: 到儀表板
     unread_title: 檢視未讀取的動態
-    groups_title: 檢視您的群組
     start_thread: 啟動新的討論串
     notifications: 通知面板
-    user_actions: 使用者動作
-    user_options:
-      label: 使用者選項
-      contact_us: 聯絡我們
-      new_thread: 新討論串
-      new_group: 新增群組
-      profile: 簡歷
-      email_settings: 電子郵件設定
-      help: 教學文件
-      sign_out: 登出
     search:
       no_results: 找不到討論串
       close: 關閉搜尋面板
@@ -695,6 +690,8 @@ zh-TW:
     aria_label: 儀表板
     options:
       aria_label: 儀表板過濾選項
+    no_groups:
+      or: 或者
     no_threads:
       show_all: 您沒有任何最近的討論串
       show_participating: 您最近未參與任何討論。
@@ -745,6 +742,8 @@ zh-TW:
     no_threads: 太棒了！您已經讀完了您收件匣中所有的討論串。
     unread_threads: 未讀的討論串
     view_more: 顯示更多
+    no_groups:
+      or: 或者
   groups_page:
     page_header: 您的群組
   discussion:

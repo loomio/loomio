@@ -111,6 +111,20 @@ zh-TW:
       specify_outcome: 您的提議已經定案。請具體說明成果，讓每個人都能知道提案的結果：
       outcome_created: '%{who} 確立了提案成果：'
       you_agreed: '您%{past_tense_position}'
+    analytics:
+      subject: '%{which_group} 在 Loomio 上的一週'
+      title: '您的 %{since} - %{till} 週總結'
+      stats: '<strong>%{group_members}</strong> 中的 <strong>%{active_members}</strong> 在過去一週中在您的群組中相當活躍。您的群組提升了 <strong>%{motions}</strong> 並在<strong>%{discussions}</strong> 中做出了 <strong>%{comments}</strong>。'
+      contact_us: "想看更多統計？<a href='%{contact_link}'>與我們聯絡</a>。"
+      trial_subscription: "%{which_group} 目前<strong>免費試用</strong>結束於 <strong>%{expires_at}</strong>。您可以在<a href='%{subscription_link}'>這裡</a>選擇一個訂閱計畫。"
+      trial_expired: '%{which_group} 的 Loomio 免費試用已結束。'
+      heart: 從 Loomio 而來的 ❤
+      unsubscribe: "這封電子郵件已經傳送給活躍的 Loomio 群組的協調者們。<br />若您不想收到這些電子郵件，<a href='%{contact_link}'>讓我們知道</a>。"
+      user_table:
+        motions_created: 提案
+        discussions_created: 討論
+        comments_created: 意見
+        votes_created: 投票
   footer:
     about: 關於
     blog: 部落格

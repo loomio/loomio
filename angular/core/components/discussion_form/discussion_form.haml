@@ -51,7 +51,7 @@
             %i.fa.fa-lock>
             %strong{translate: "common.privacy.private"}
             %span.seperator
-            %span {{ privacyPrivateDescription() }}
+            %span{ng-bind-html: "privacyPrivateDescription()"}
 
       .privacy-notice{ng-show: "!showPrivacyForm()"}
         %label.lmo-form-labelled-input{ng_hide: "discussion.private"}
@@ -66,7 +66,7 @@
             %i.fa.fa-lock>
             %strong{translate: "common.privacy.private"}
             %span.seperator
-            %span {{ privacyPrivateDescription() }}
+            %span{ng-bind-html: "privacyPrivateDescription()"}
 
   .modal-footer
     %button.pull-right.lmo-btn--submit.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }

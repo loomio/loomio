@@ -14,10 +14,10 @@ hr:
     edit_comment: Ažuriranje komentara
     delete_comment: Obriši komentar
     confirm_delete_message: Jeste li sigurni da želite obrisati komentar?
-  navbar:
-    user_options:
-      new_group: Nova grupa
-      profile: Profil
+  sidebar:
+    explore: Istraži javne grupe
+    email_settings: Postavke emaila
+    sign_out: Odjava
   notifications:
     header: Notifikacije
   vote_form:

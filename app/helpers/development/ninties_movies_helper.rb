@@ -69,6 +69,18 @@ module Development::NintiesMoviesHelper
     @test_group
   end
 
+  def multiple_groups
+    @groups = []
+    10.times do
+      group = Group.new(name: Faker::Name.name,
+                        group_privacy: 'closed',
+                        discussion_privacy_options: 'public_or_private')
+      group.add_admin! patrick
+      @groups << group
+    end
+    @groups
+  end
+
   def muted_test_group
     unless @muted_test_group
       @muted_test_group = Group.create!(name: 'Muted Point Blank',
@@ -139,8 +151,9 @@ module Development::NintiesMoviesHelper
       @another_test_subgroup = Group.create!(name: 'Bodhi',
                                              parent: another_test_group,
                                              group_privacy: 'closed',
-                                             discussion_privacy_options: 'public_or_private')
-      @another_test_subgroup.add_admin! patrick
+                                             discussion_privacy_options: 'public_or_private',
+                                             is_visible_to_parent_members: true)
+      @another_test_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
     end
     @another_test_subgroup
   end

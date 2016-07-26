@@ -168,6 +168,23 @@ en:
       google: 'Log in with Google'
       github: 'Log in with Github'
 
+  sign_up_form:
+    title: "Welcome to Loomio! Let's get you set up"
+    name_label: 'Your name:'
+    name_placeholder: 'Jane Doe'
+    email_label: 'Email:'
+    email_placeholder: 'you@example.com'
+    password_label: 'Password:'
+    password_confirmation_label: 'That password again:'
+    sign_in_message: 'Have an account already?'
+    sign_in: 'Sign In'
+    sign_up: 'Create an Account'
+
+  signed_out_modal:
+    title: "Your session has been ended"
+    message: "You have been logged out of Loomio from another window. Please sign back in to continue."
+    ok: "Ok"
+
   comment_form:
     aria_label: 'Add a comment'
     attachments:
@@ -190,25 +207,22 @@ en:
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
     sign_in: "Log in to join the conversation"
 
-  navbar:
+  sidebar:
     recent: 'Recent'
     unread: 'Unread'
-    groups: 'Groups'
+    muted: 'Muted'
+    explore: 'Explore public groups'
+    edit_profile: 'Edit profile'
+    email_settings: 'Email settings'
+    help: 'Help'
+    contact: 'Contact Loomio'
+    sign_out: 'Sign out'
+
+  navbar:
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
-    groups_title: 'View your groups'
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
-    user_actions: 'User actions'
-    user_options:
-      label: 'User options'
-      contact_us: 'Contact us'
-      new_thread: 'New thread'
-      new_group: 'New group'
-      profile: 'Profile'
-      email_settings: 'Email settings'
-      help: 'Help'
-      sign_out: 'Sign out'
     search:
       no_results: 'No threads found'
       close: 'Close search panel'
@@ -218,6 +232,7 @@ en:
       proposals: 'Proposals'
       comments: 'Comments'
     sign_in: 'Log In'
+    toggle_sidebar: 'Toggle sidebar'
 
   start_menu:
     title: 'Action button'
@@ -228,6 +243,7 @@ en:
 
   notifications:
     header: "Notifications"
+    no_notifications: "You don't have any notifications"
     new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
     new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
     motion_closed: "Proposal closed: <strong>{{proposal}}</strong>"
@@ -765,6 +781,13 @@ en:
     aria_label: 'Dashboard'
     options:
       aria_label: 'Dashboard filtering options'
+    no_groups:
+      show_all: You don't have any recent threads because you are not a member of any groups.
+      show_participating: You haven't participated in any threads recently because you are not a member of any groups.
+      show_muted: You don't have any muted threads because you are not a member of any groups.
+      start: Start
+      or: or
+      join_group: <a href="/explore">join</a> a group to see threads.
     no_threads:
       show_all: You don't have any recent threads.
       show_participating: You haven't participated in any threads recently.
@@ -817,6 +840,11 @@ en:
     no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
     view_more: View More
+    no_groups:
+      explanation: You have no unread threads because you are not a member of any groups.
+      start: Start
+      or: or
+      join_group: <a href="/explore">join</a> a group to see threads.
 
   groups_page:
     page_header: Your groups

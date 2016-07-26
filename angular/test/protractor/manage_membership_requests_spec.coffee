@@ -20,7 +20,6 @@ describe 'Managing membership requests', ->
     it 'adds existing users to group upon approval', ->
       membershipRequestsHelper.clickApproveButton()
       membershipRequestsHelper.clickApproveButton()
-      membershipRequestsHelper.clickNavbarGroupLink()
       membershipRequestsHelper.clickGroupName()
       expect(groupsHelper.membersList()).toContain('MVS')
 

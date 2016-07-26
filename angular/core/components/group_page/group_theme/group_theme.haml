@@ -1,5 +1,5 @@
 .group-theme
-  .group-theme__cover.lmo-no-print{ng-style: "coverStyle()"}
+  .group-theme__cover.lmo-no-print
     .group-theme__upload-photo{ng-mouseover: "themeHoverIn()", ng-mouseleave: "themeHoverOut()", ng-if: "canUploadPhotos()"}
       %button.lmo-btn-link{ng-click: "openUploadCoverForm()", title: "{{ 'group_page.new_photo' | translate }}"}
         %i.fa.fa-lg.fa-camera

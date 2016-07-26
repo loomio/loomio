@@ -3,10 +3,10 @@ fa-IR:
     volume: مقدار
   error_page:
     forbidden: شما اجازه انجام این کار را ندارید.
+  sidebar:
+    email_settings: تنظیمات رایانامه
+    sign_out: برون رفت
   navbar:
-    user_options:
-      new_group: گروه جدید
-      email_settings: تنظیمات رایانامه
     search:
       proposals: پیشنهاد‌ها
       comments: نظرات

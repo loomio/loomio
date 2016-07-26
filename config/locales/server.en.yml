@@ -28,9 +28,10 @@ en:
       link: Join the discussion
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
-      invitation_text_html: "<strong>%{member}</strong> has invited you to join their group <strong>%{group_name}</strong>"
+      invitation_text_html: "has invited you to join their group"
       accept_invitation: "Accept invitation"
-      tagline: "Loomio is a place for groups to make decisions together"
+      place_for_groups: "Loomio is a place for groups to"
+      make_decisions_together: "make decisions together"
     resend_to_join_group:
       subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
     to_start_group:
@@ -243,6 +244,8 @@ en:
       - **Block**: “I have strong objections to this proposal and am not OK with it going ahead.”
 
       When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
+  first_vote:
+    statement: Let's go!
   contact_page:
     contact_us: Contact us
     faq_prompt_html: Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions.
@@ -317,7 +320,7 @@ en:
       body: |
         Repeat out loud:
 
-        Square brackets for name then round brackets for URL.
+        Square brackets for name then round brackets for URL. There's no spaces between the brackets.
 
         [Loomio Homepage](https://www.loomio.org/)
 

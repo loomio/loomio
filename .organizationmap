@@ -1,0 +1,23 @@
+#
+# Display the number of contributors active in the past six months, per organization
+#
+# git log --no-merges --pretty='%aN <%aE>' --since '6 months ago' | sort | uniq | git -c mailmap.file=.organizationmap check-mailmap --stdin | sort | uniq -c | sort -rn | nl
+#     1	      7 Loomio Cooperative Limited <contact@loomio.org>
+#     2	      7 FLOSS Contributor <contact@floss.cc>
+#
+# This is the primary source of information for https://www.wikidata.org/wiki/Q15975673
+#
+Loomio Cooperative Limited <contact@loomio.org> James Kiesel <james@loomio.org>
+Loomio Cooperative Limited <contact@loomio.org> Robert Guthrie <rob@guthr.ie>
+Loomio Cooperative Limited <contact@loomio.org> Hannah Salmon <hr.salmon@gmail.com>
+Loomio Cooperative Limited <contact@loomio.org> Alanna <alanna@loomio.org>
+Loomio Cooperative Limited <contact@loomio.org> Nati <nati@loomio.org>
+Loomio Cooperative Limited <contact@loomio.org> Matthew Bartlett <mhjbnz@gmail.com>
+Loomio Cooperative Limited <contact@loomio.org> Richard D. Bartlett <rich@loomio.org>
+FLOSS Contributor <contact@floss.cc> <chea.reaksmey@gmail.com>
+FLOSS Contributor <contact@floss.cc> <whimful@gmail.com>
+FLOSS Contributor <contact@floss.cc> <MattAttack07@users.noreply.github.com>
+FLOSS Contributor <contact@floss.cc> <markus-koller@gmx.ch>
+FLOSS Contributor <contact@floss.cc> <loic@dachary.org>
+FLOSS Contributor <contact@floss.cc> <me@jhass.eu>
+FLOSS Contributor <contact@floss.cc> <cillian@users.noreply.github.com>

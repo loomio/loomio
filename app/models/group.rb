@@ -65,10 +65,9 @@ class Group < ActiveRecord::Base
   scope :engaged, ->(since = 2.months.ago) {
     more_than_n_members(1).
     more_than_n_discussions(2).
-    active_discussions_since(since).
-    parents_only
+    active_discussions_since(since)
   }
-  
+
   scope :with_analytics, ->(since = 1.month.ago) {
     where(analytics_enabled: true).engaged(since).joins(:admin_memberships)
   }
@@ -368,36 +367,23 @@ class Group < ActiveRecord::Base
   end
 
   def add_member!(user, inviter=nil)
-    find_or_create_membership(user, inviter)
-  end
-
-  def add_members!(users, inviter=nil)
-    users.map do |user|
-      add_member!(user, inviter)
+    begin
+      save!
+      memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
+    rescue ActiveRecord::RecordNotUnique
+      retry
     end
   end
 
+  def add_members!(users, inviter=nil)
+    users.map { |user| add_member!(user, inviter) }
+  end
+
   def add_admin!(user, inviter = nil)
-    membership = find_or_create_membership(user, inviter)
-    membership.make_admin! && save
-    self.creator = user if creator.blank?
-    membership
-  end
-
-  def add_default_content!
-    update default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial
-    ExampleContent.add_to_group(self)
-  end
-
-  def find_or_create_membership(user, inviter)
-    begin
-      Membership.find_or_create_by(user_id: user.id, group_id: id) do |m|
-        m.group = self
-        m.user = user
-        m.inviter = inviter
-      end
-    rescue ActiveRecord::RecordNotUnique
-      retry
+    add_member!(user, inviter).tap do |m|
+      m.make_admin!
+      update(creator: user) if creator.blank?
+      reload
     end
   end
 

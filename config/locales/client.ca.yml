@@ -32,13 +32,13 @@ ca:
     edit_comment: Edita el comentari
     delete_comment: Eliminar comentari
     confirm_delete_message: Estàs segur de que vols eliminar aquest comentari?
-  navbar:
+  sidebar:
     unread: No llegit
-    groups: Grups
-    user_options:
-      new_group: Nou grup
-      profile: Perfil
-      help: Ajuda
+    explore: Explorar grups públics
+    email_settings: Configuració de correu electrònic
+    help: Ajuda
+    sign_out: Tanca la sessió
+  navbar:
     search:
       placeholder: Cerca
       discussions: Discussions
@@ -114,8 +114,13 @@ ca:
     locale_label: Idioma
   dashboard_page:
     aria_label: Panell
+    no_groups:
+      or: o
     threads_from:
       today: Avui
+  inbox_page:
+    no_groups:
+      or: o
   thread_group:
     aria_label: Nom del grup
   delete_comment_dialog:

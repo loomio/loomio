@@ -159,6 +159,10 @@ es:
       twitter: Iniciar sesión con Twitter
       google: Iniciar sesión con Google
       github: Iniciar sesión con Github
+  signed_out_modal:
+    title: 'Tu sesión ha sido terminada  '
+    message: 'Tu sesión ha sido terminada en Loomio desde otra pestaña del navegador. Por favor vuelve a entrar para continuar. '
+    ok: listo
   comment_form:
     aria_label: Añade un comentario
     attachments:
@@ -180,25 +184,21 @@ es:
     private_privacy_notice: 'Tu comentario solo será visible para miembros de {{groupName}}.'
     public_privacy_notice: 'Tu comentario será público en internet. '
     sign_in: 'Inicia sesión para unirte a la conversación '
+  sidebar:
+    recent: 'Reciente '
+    unread: 'No leído '
+    muted: 'Silenciado '
+    explore: 'Explorar grupos públicos '
+    edit_profile: 'Editar perfil '
+    email_settings: 'Ajustes de correo  '
+    help: 'Ayuda  '
+    contact: 'Contactar a Loomio '
+    sign_out: 'Salir '
   navbar:
-    recent: Reciente
-    unread: No leído
-    groups: Grupos
     recent_title: Ir al Escritorio
     unread_title: Ver los mensajes no leídos
-    groups_title: Ver tus grupos
     start_thread: Inicia un nuevo hilo
     notifications: Panel de notificaciones
-    user_actions: 'Acciones de usuario '
-    user_options:
-      label: 'Opciones de usuario '
-      contact_us: Contáctanos
-      new_thread: Nuevo hilo
-      new_group: Nuevo grupo
-      profile: Perfil
-      email_settings: Configuración de correo electrónico
-      help: Ayuda
-      sign_out: Salir
     search:
       no_results: Ningún hilo encontrado
       close: Cerrar panel de búsqueda
@@ -208,6 +208,7 @@ es:
       proposals: Propuestas
       comments: 'Comentarios '
     sign_in: Iniciar sesión
+    toggle_sidebar: Alternar barra lateral
   start_menu:
     title: 'Botones de acción '
     start_group: Crear un grupo nuevo
@@ -216,6 +217,7 @@ es:
     invite_people: Invita a gente
   notifications:
     header: Notificaciones
+    no_notifications: No tienes notificaciones
     new_discussion: '<strong>{{name}}</strong> empezó una discusión <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> creó una propuesta <strong>{{proposal}}</strong>'
     motion_closed: 'Propuesta cerrada: <strong>{{proposal}}</strong>'
@@ -698,6 +700,13 @@ es:
     aria_label: Escritorio
     options:
       aria_label: Opciones de filtrado de Escritorio
+    no_groups:
+      show_all: 'No tienes ningún hilo reciente porque no eres miembro de ningún grupo. '
+      show_participating: 'No haz participado en ningún hilo porque no eres miembro de ningún grupo. '
+      show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
+      start: 'Empezar '
+      or: 'o '
+      join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.  '
     no_threads:
       show_all: No tienes ningún hilo reciente.
       show_participating: No has participado en ningún hilo recientemente.
@@ -748,6 +757,11 @@ es:
     no_threads: '¡Sí, has leído todos los hilos de tu bandeja de entrada!'
     unread_threads: Hilos sin leer
     view_more: Ver más
+    no_groups:
+      explanation: 'No tienes ningún hilo no leído porque no eres miembro de ningún grupo. '
+      start: 'Empezar  '
+      or: 'o '
+      join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
   groups_page:
     page_header: Tus grupos
   discussion:
@@ -1015,6 +1029,7 @@ es:
   explore_page:
     header: Explorar grupos en Loomio
     search_placeholder: Buscar grupos públicos en Loomio
+    single_search_result: '1 grupo público coincide con <strong>{{searchTerm}}:</strong> '
     multiple_search_results: '{{resultCount}} grupos públicos coinciden con <strong>{{searchTerm}}:</strong>'
     no_results_found: "<strong>¿No puedes encontrar el grupo que buscas?</strong> Si la privacidad de ese grupo es 'Secreto', no aparecerá aquí. Si conoces a un coordinador del grupo, puedes pedirles una invitación.  "
   angular:

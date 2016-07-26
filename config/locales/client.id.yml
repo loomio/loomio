@@ -23,11 +23,10 @@ id:
   comment_form:
     delete_comment: Hapus komentar
     confirm_delete_message: Apakah Anda ingin menghapus komentar ini?
+  sidebar:
+    help: Bantuan
+    sign_out: Keluar
   navbar:
-    groups: Kelompok
-    user_options:
-      new_group: Kelompok baru
-      help: Bantuan
     search:
       placeholder: Cari
       discussions: Diskusi

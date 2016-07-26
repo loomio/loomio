@@ -5,7 +5,7 @@
     .media-body
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %strong
-          %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
+          %a.thread-item__title-link{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
         %span{translate: "proposal_outcome_created_item.proposal_outcome_created"}
   .thread-item__body.lmo-markdown-wrapper{ marked: "proposal.outcome" }
   .thread-item__footer

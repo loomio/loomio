@@ -123,10 +123,8 @@ EventBus.configure do |config|
     Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
   end
 
-  # perform group creation
-  config.listen('group_create') do |group, actor|
-    group.add_default_content! if group.is_parent?
-  end
+  # notify users of comment liked
+  config.listen('comment_liked_event') { |event| event.notify!(event.comment.author) if event.notify_author? }
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }

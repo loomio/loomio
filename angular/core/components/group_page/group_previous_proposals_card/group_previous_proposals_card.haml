@@ -6,6 +6,6 @@
         %pie_with_position.pull-left{proposal: "proposal"}
         %a{lmo-href-for: "group", lmo-href-for: "proposal"}
           .group-previous-proposals-card__proposal-title
-            {{proposal.name}}
+            {{proposal.name | truncate:100:' ...'}}
     %a.group-previous-proposals-card__link.lmo-card-minor-action{ng-show: "canShowMore()", lmo-href-for: "group", lmo-href-action: "previous_proposals"}
       %span{translate: "group_previous_proposals_card.see_more"}

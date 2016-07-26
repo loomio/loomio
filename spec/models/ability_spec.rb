@@ -129,45 +129,39 @@ describe "User abilities" do
     end
 
     describe "is_visible_to_parent_members?" do
-      let(:parent_group) { create(:group) }
-
-      before do
-        group.update_attribute(:is_visible_to_public, false)
-        group.parent = parent_group
-        group.save
-      end
+      let(:subgroup) { create(:group, parent: group, is_visible_to_public: false) }
 
       context "true" do
-        before { group.update_attribute(:is_visible_to_parent_members, true) }
+        before { subgroup.update_attribute(:is_visible_to_parent_members, true) }
 
         describe "non member" do
-          it { should_not be_able_to(:show, group) }
+          it { should_not be_able_to(:show, subgroup) }
         end
 
         describe "member of parent only" do
-          before { parent_group.add_member!(user) }
-          it {should be_able_to(:show, group)}
+          before { group.add_member!(user) }
+          it {should be_able_to(:show, subgroup)}
         end
 
         describe "member of subgroup only" do
-          before { group.add_member!(user) }
-          it {should be_able_to(:show, group)}
+          before { subgroup.add_member!(user) }
+          it {should be_able_to(:show, subgroup)}
         end
 
         context "parent_members_can_see_discussions" do
-          let(:discussion) { create(:discussion, group: group, private: true) }
-          before { parent_group.add_member!(user) }
+          let(:discussion) { create(:discussion, group: subgroup, private: true) }
+          before { group.add_member!(user) }
 
           context "true" do
             before do
-              group.update_attribute(:parent_members_can_see_discussions, true)
+              subgroup.update_attribute(:parent_members_can_see_discussions, true)
             end
             it {should be_able_to(:show, discussion)}
           end
 
           context "false" do
             before do
-              group.update_attribute(:parent_members_can_see_discussions, false)
+              subgroup.update_attribute(:parent_members_can_see_discussions, false)
             end
 
             it {should_not be_able_to(:show, discussion)}
@@ -176,15 +170,15 @@ describe "User abilities" do
       end
 
       context "false" do
-        before { group.update_attribute(:is_visible_to_parent_members, false) }
+        before { subgroup.update_attribute(:is_visible_to_parent_members, false) }
 
         describe "non member" do
-          it { should_not be_able_to(:show, group) }
+          it { should_not be_able_to(:show, subgroup) }
         end
 
         describe "member of parent only" do
-          before { parent_group.add_member!(user) }
-          it {should_not be_able_to(:show, group)}
+          before { group.add_member!(user) }
+          it {should_not be_able_to(:show, subgroup)}
         end
 
         describe "member of subgroup only" do

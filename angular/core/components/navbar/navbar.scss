@@ -1,108 +1,65 @@
-.lmo-navbar{
-  @include displayFlex;
-  @include box_shadow(2);
-  z-index: 1000;
-  background: white;
-  padding: 0 6px;
-  width: 100%;
-  position: fixed;
-  top: 0;
+.md-toolbar-tools {
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  max-height: 48px;
+  z-index: 2;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
 }
 
-.lmo-navbar__item-container {
+.md-toolbar-tools a { color: $primary-text-color; }
+
+.navbar__left, .navbar__middle, .navbar__right {
+  -webkit-align-items: center;
+  align-items: center;
   @include displayFlex;
-  .fa-group            { font-size: 1.1em; }
-  .fa-bell-o, .fa-bell { font-size: 1.2em; }
+  flex-basis: 33%;
+  flex-grow: 0;
 }
 
-.lmo-navbar__logo {
-  padding: 5px;
+.navbar__left {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
 }
 
-.lmo-navbar__logo--logged-out {
-  margin: auto;
-  padding-left: 66px;
+.navbar__middle {
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
-.lmo-navbar__logo img { height: 30px; }
-
-.lmo-navbar__sign-in {
-  @include lmoBtnFeatured;
-  margin: 7px 0;
+.navbar__right {
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
 }
 
-.lmo-navbar__item--selected {
-  a{ color: $primary-text-color; }
-  position: relative;
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    background: $loomio-orange;
-  }
+.navbar__sidenav-toggle {
+  color: black;
+  margin-right: 16px;
 }
 
-.lmo-navbar__btn{
-  box-shadow: none;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  line-height: 31px;
-  &:hover          { background: $list-hover-color; }
-  &:hover, &:focus { box-shadow: none; }
+.navbar__logo {
+  height: 30px;
 }
 
-.lmo-navbar__btn-icon{
-  color: $grey-on-white;
-  font-size: 19px;
-  &:hover, &:focus { text-decoration: none; }
+@media (max-width: $tiny-max-px) {
+  .navbar__middle { display: none; }
+  .navbar__right { flex-grow: 1; }
 }
 
-.lmo-navbar__btn-label{
-  @include fontMedium;
-  padding: 5px;
-  @media (max-width: 650px){display: none;}
+.md-button {
+  line-height: 48px;
+  min-height: 48px;
 }
 
-.lmo-navbar__btn.has-badge{
-  position: relative;
-}
-
-.lmo-navbar__btn.has-badge:hover .badge {
-  border-color: $list-hover-color;
-}
-
-.lmo-navbar__btn.has-badge .badge {
-  font-size: 10px;
-  position: absolute;
-  left: 22px;
-  top: 2px;
-  background: #4A90E2;
-  border-radius: 10px;
-  border: 2px solid white;
-  padding: 5px;
-  color: white;
-  line-height: 5px;
+.navbar__sign-in {
+  background-color: #5cb85c;
+  border: #4cae4c;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+  color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0px 5px;
+  padding: 6px 12px;
   text-align: center;
-}
-
-@media (max-width: $small-max-px) {
-  .lmo-navbar__logo--logged-in { display: none; }
-}
-
-@media (max-width: $medium-max-px) {
-  .lmo-navbar__item {
-    text-align: center;
-    .lmo-navbar__btn {
-      width: 100%;
-      &:hover, &:focus {
-        background: $list-hover-color;
-        &.has-badge .badge { border: 2px solid $list-hover-color; }
-      }
-    }
-  }
 }

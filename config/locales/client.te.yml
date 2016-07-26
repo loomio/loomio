@@ -14,11 +14,10 @@ te:
       cancel: రద్దుచేయి
   comment_form:
     delete_comment: వ్యాఖ్యను తొలగించు
+  sidebar:
+    help: సహాయం
+    sign_out: నిష్క్రమించండి
   navbar:
-    groups: సమూహాలు
-    user_options:
-      new_group: కొత్త సమూహం
-      help: సహాయం
     search:
       placeholder: వెతుకు
       discussions: చర్చలు

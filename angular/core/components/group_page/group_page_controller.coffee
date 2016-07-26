@@ -1,5 +1,5 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal, LegacyTrialExpiredModal) ->
-  $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal) ->
+  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
 
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
@@ -15,7 +15,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
       @handlePaymentModal()
-      LegacyTrialExpiredModal.showIfAppropriate(@group, Session.user())
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount
@@ -32,6 +31,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'currentComponent',
       page: 'groupPage'
+      key: @group.key
       links:
         canonical:   LmoUrlService.group(@group, {}, absolute: true)
         rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
