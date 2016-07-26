@@ -11,10 +11,11 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     if AbilityService.isLoggedIn()
       $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
       MessageChannelService.subscribeToGroup(@group)
-      Records.drafts.fetchFor(@group)
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
       @handlePaymentModal()
+
+    Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount
