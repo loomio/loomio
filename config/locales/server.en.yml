@@ -320,7 +320,7 @@ en:
       body: |
         Repeat out loud:
 
-        Square brackets for name then round brackets for URL.
+        Square brackets for name then round brackets for URL. There's no spaces between the brackets.
 
         [Loomio Homepage](https://www.loomio.org/)
 
