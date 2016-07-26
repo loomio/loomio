@@ -1,12 +1,5 @@
-.thread-mailer__user-content
-  .thread-mailer__avatar-container
-    - if @author.avatar_kind == 'initials'
-      .thread-mailer__avatar-initials
-        = @author.avatar_initials
-    - else
-      .thread-mailer__avatar-image
-        = image_tag @author.avatar_url(:medium), alt: "#{@author.name}"
-  .thread-mailer__subject--new-comment
-    = render_rich_text(@comment.body, @comment.uses_markdown)
-    - if @comment.attachments.any?
-      = render "attachments", comment: @comment
+= render 'avatar', author: @author
+.thread-mailer__subject
+  = render_rich_text(@comment.body, @comment.uses_markdown)
+  - if @comment.attachments.any?
+    = render "attachments", comment: @comment

@@ -7,5 +7,5 @@
       = render '/mailer_header'
       .thread-mailer__container
         = yield
-      - if @link
-        = render "footer", link: @link
+        - if @link
+          = render "footer", link: @link

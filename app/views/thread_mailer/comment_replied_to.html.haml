@@ -1,17 +1,9 @@
-.thread-mailer__context
-  .thread-mailer__avatar-container
-    - if @author.avatar_kind == 'initials'
-      .thread-mailer__avatar-initials--replied
-        = @author.avatar_initials
-    - else
-      .thread-mailer__avatar-image
-        = image_tag @author.avatar_url(:medium), alt: "#{@author.name}"
-  .thread-mailer__subject--replied
-    %strong= @author.name
-    %span= t('email.comment_replied_to.context')
-    %span
-      %strong
-        = link_to @discussion.title, discussion_url(@discussion)
-.thread-mailer__user-content
-  = render_rich_text(@reply.body, @reply.uses_markdown)
-  = render "attachments", comment: @reply if @reply.attachments.any?
+= render 'avatar', author: @author 
+.thread-mailer__subject
+  %strong= @author.name
+  %span= t(:"email.comment_replied_to.context")
+  %span
+    %strong
+      = link_to @discussion.title, discussion_url(@discussion)
+= render_rich_text(@reply.body, @reply.uses_markdown)
+= render 'attachments', comment: @reply if @reply.attachments.any?

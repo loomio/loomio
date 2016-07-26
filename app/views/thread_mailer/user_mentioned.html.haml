@@ -1,18 +1,10 @@
-.thread-mailer__context
-  .thread-mailer__avatar-container
-    - if @author.avatar_kind == 'initials'
-      .thread-mailer__avatar-initials--mentioned
-        = @author.avatar_initials
-    - else
-      .thread-mailer__avatar-image
-        = image_tag @author.avatar_url(:medium), alt: "#{@author.name}"
-  .thread-mailer__subject--mentioned
-    %strong= @author.name
-    %span= t('email.mentioned.context')
-    %span
-      %strong
-        = link_to @discussion.title, polymorphic_url(@eventable)
-.thread-mailer__user-content
-  = render_rich_text(@text, true)
-  - if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
-    = render "attachments", comment: @eventable
+= render 'avatar', author: @author
+.thread-mailer__subject
+  %strong= @author.name
+  %span= t(:"email.mentioned.context")
+  %span
+    %strong
+      = link_to @discussion.title, polymorphic_url(@eventable)
+= render_rich_text(@text, true)
+- if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
+  = render 'attachments', comment: @eventable

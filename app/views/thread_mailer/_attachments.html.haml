@@ -1,5 +1,6 @@
-%h4{style: "margin: 10px 0;"}= t :attachments
-%ul{style: "margin: 5px 0 15px; padding: 0px"}
+%h4.thread-mailer__attachments-header
+  = t :attachments
+%ul.thread-mailer__list
   - comment.attachments.each do |attachment|
-    %li{style: "list-style-type: none; margin-bottom: 10px;"}
+    %li.thread-mailer__list-item
       %img{src: attachment.location, alt: attachment.filename}

@@ -1,13 +1,6 @@
-.thread-mailer__user-content
-  .thread-mailer__avatar-container
-    - if @author.avatar_kind == 'initials'
-      .thread-mailer__avatar-initials
-        = @author.avatar_initials
-    - else
-      .thread-mailer__avatar-image
-        = image_tag @author.avatar_url(:medium), alt: "#{@author.name}"
-  .thread-mailer__subject--new-discussion
-    %p= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
-    %h4= link_to @discussion.title, discussion_url(@discussion, @utm_hash)
+= render 'avatar', author: @author
+.thread-mailer__subject
+  %p= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
+  %h4= link_to @discussion.title, discussion_url(@discussion, @utm_hash)
 
-    = render_rich_text(@discussion.description, @discussion.uses_markdown)
+  = render_rich_text(@discussion.description, @discussion.uses_markdown)
