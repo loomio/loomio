@@ -13,9 +13,78 @@ Rails.application.routes.draw do
 
   root to: 'root#index'
 
-  resources(:development, only: :index) do
-    get 'last_email', on: :collection, as: :last_email
-    get ':action', on: :collection
+  resources :development, only: :index do
+    collection do
+      get :last_email
+      get :index
+      get :last_email
+      get :accept_last_invitation
+      get :setup_login
+      get :setup_spanish_user
+      get :setup_logged_out_group_member
+      get :setup_logged_out_member_of_multiple_groups
+      get :setup_non_angular_login
+      get :setup_non_angular_logged_in_user
+      get :setup_dashboard
+      get :setup_dashboard_as_visitor
+      get :setup_inbox
+      get :setup_new_group
+      get :setup_group
+      get :setup_multiple_groups
+      get :setup_group_with_welcome_modal
+      get :setup_group_with_subdomain
+      get :setup_group_as_member
+      get :setup_group_with_expired_legacy_trial
+      get :setup_group_with_expired_legacy_trial_admin
+      get :setup_group_with_many_discussions
+      get :setup_discussion_with_many_comments
+      get :setup_group_on_trial_admin
+      get :setup_group_on_trial
+      get :setup_group_with_expired_trial
+      get :setup_group_with_overdue_trial
+      get :setup_group_on_paid_plan
+      get :setup_public_group_with_public_content
+      get :setup_restricted_profile
+      get :setup_profile_with_group_visible_to_members
+      get :setup_group_with_empty_draft
+      get :setup_multiple_discussions
+      get :setup_explore_groups
+      get :setup_group_with_multiple_coordinators
+      get :setup_existing_user_invitation
+      get :setup_new_user_invitation
+      get :setup_used_invitation
+      get :setup_accepted_membership_request
+      get :setup_cancelled_invitation
+      get :setup_team_invitation_link
+      get :setup_group_for_invitations
+      get :setup_group_with_pending_invitation
+      get :view_homepage_as_visitor
+      get :view_open_group_as_non_member
+      get :view_closed_group_as_non_member
+      get :view_secret_group_as_non_member
+      get :view_open_group_as_visitor
+      get :view_closed_group_as_visitor
+      get :view_secret_group_as_visitor
+      get :setup_open_group
+      get :setup_closed_group
+      get :setup_secret_group
+      get :setup_closed_group_to_join
+      get :setup_public_group_to_join_upon_request
+      get :setup_group_with_subgroups
+      get :setup_discussion
+      get :setup_busy_discussion
+      get :setup_proposal
+      get :setup_proposal_with_votes
+      get :setup_closed_proposal
+      get :setup_previous_proposal
+      get :setup_proposal_closing_soon
+      get :setup_closed_proposal_with_outcome
+      get :setup_membership_requests
+      get :setup_user_email_settings
+      get :email_settings_as_logged_in_user
+      get :email_settings_as_restricted_user
+      get :setup_all_notifications
+    end
   end
 
   namespace :admin do
