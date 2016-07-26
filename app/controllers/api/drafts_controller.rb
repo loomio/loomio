@@ -1,5 +1,4 @@
 class Api::DraftsController < Api::RestfulController
-  before_action :load_resource
 
   private
 

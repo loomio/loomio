@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   layout false
 
   def export
-    @exporter = GroupExporter.new(load_and_authorize(:group, :export))
+    @exporter = GroupExporter.new(fetch_and_authorize(:group, :export))
 
     respond_to do |format|
       format.xls { render formats: [:html] }

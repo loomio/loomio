@@ -8,7 +8,7 @@ class Api::MembershipRequestsController < Api::RestfulController
   end
 
   def my_pending
-    load_and_authorize :group
+    fetch_and_authorize :group
     @membership_requests = @group.membership_requests.pending.where(requestor_id: current_user.id)
     respond_with_collection
   end
@@ -33,7 +33,7 @@ class Api::MembershipRequestsController < Api::RestfulController
   private
 
   def authorize
-    load_and_authorize :group
+    fetch_and_authorize :group
     current_user.ability.authorize! :manage_membership_requests, @group
   end
 end

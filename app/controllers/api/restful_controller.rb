@@ -1,9 +1,12 @@
 class Api::RestfulController < ActionController::Base
   include ::LocalesHelper
   include ::ProtectedFromForgery
-  include ::LoadAndAuthorize
+  include ::FetchAndAuthorize
+
   before_action :set_application_locale
   before_action :set_paper_trail_whodunnit
+  before_action :fetch_and_authorize_resource, only: :show
+  before_action :fetch_resource, only: [:update, :destroy]
   snorlax_used_rest!
 
   private

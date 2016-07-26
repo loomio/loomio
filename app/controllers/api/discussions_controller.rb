@@ -1,10 +1,8 @@
 class Api::DiscussionsController < Api::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :move], find_by: :key
-  load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 
   def index
-    load_and_authorize(:group, optional: true)
+    fetch_and_authorize(:group, optional: true)
     instantiate_collection { |collection| collection.sorted_by_importance }
     respond_with_collection
   end
@@ -22,27 +20,27 @@ class Api::DiscussionsController < Api::RestfulController
   end
 
   def move
-    @event = service.move discussion: resource, params: params, actor: current_user
+    @event = service.move discussion: fetch_resource, params: params, actor: current_user
     respond_with_resource
   end
 
   def mark_as_read
-    service.mark_as_read discussion: resource, params: params, actor: current_user
+    service.mark_as_read discussion: fetch_resource, params: params, actor: current_user
     respond_with_resource
   end
 
   def star
-    service.update_reader discussion: resource, params: { starred: true }, actor: current_user
+    service.update_reader discussion: fetch_resource, params: { starred: true }, actor: current_user
     respond_with_resource
   end
 
   def unstar
-    service.update_reader discussion: resource, params: { starred: false }, actor: current_user
+    service.update_reader discussion: fetch_resource, params: { starred: false }, actor: current_user
     respond_with_resource
   end
 
   def set_volume
-    service.update_reader discussion: resource, params: { volume: params[:volume] }, actor: current_user
+    service.update_reader discussion: fetch_resource, params: { volume: params[:volume] }, actor: current_user
     respond_with_resource
   end
 

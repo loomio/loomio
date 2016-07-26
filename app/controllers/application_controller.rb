@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include AngularHelper
   include ProtectedFromForgery
-  include LoadAndAuthorize
+  include FetchAndAuthorize
   include CurrentUserHelper
 
   helper :analytics_data
@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :dashboard_or_root_path
 
   before_action :set_application_locale
+  before_action :set_paper_trail_whodunnit
   around_action :user_time_zone, if: :user_signed_in?
 
   # intercom

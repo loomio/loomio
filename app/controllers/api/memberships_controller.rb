@@ -1,8 +1,7 @@
 class Api::MembershipsController < Api::RestfulController
-  load_resource only: [:set_volume]
 
   def add_to_subgroup
-    group = load_and_authorize(:group)
+    group = fetch_and_authorize(:group)
     users = group.parent.members.where('users.id': params[:user_ids])
     @memberships = MembershipService.add_users_to_group(users: users,
                                                         group: group,
@@ -11,13 +10,13 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def index
-    load_and_authorize :group
+    fetch_and_authorize :group
     instantiate_collection { |collection| collection.active.where(group_id: @group.id).order('users.name') }
     respond_with_collection
   end
 
   def for_user
-    load_and_authorize :user
+    fetch_and_authorize :user
     instantiate_collection { |collection| collection.where(user_id: @user.id).order('groups.full_name') }
     respond_with_collection
   end
@@ -40,7 +39,7 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def autocomplete
-    load_and_authorize :group
+    fetch_and_authorize :group
     authorize! :members_autocomplete, @group
 
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
@@ -63,7 +62,7 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def set_volume
-    service.set_volume membership: resource, params: params.slice(:volume, :apply_to_all), actor: current_user
+    service.set_volume membership: fetch_resource, params: params.slice(:volume, :apply_to_all), actor: current_user
     respond_with_resource
   end
 
@@ -85,7 +84,7 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def visible_invitables
-    load_and_authorize :group, :invite_people
+    fetch_and_authorize :group, :invite_people
     Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
   end
 end

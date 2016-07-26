@@ -1,6 +1,4 @@
 class Api::GroupsController < Api::RestfulController
-  load_and_authorize_resource only: :show, find_by: :key
-  load_resource only: [:upload_photo, :use_gift_subscription], find_by: :key
 
   def index
     instantiate_collection { |collection| collection.search_for params[:q] }
@@ -24,13 +22,13 @@ class Api::GroupsController < Api::RestfulController
   end
 
   def subgroups
-    self.collection = load_and_authorize(:group).subgroups.select { |g| can? :show, g }
+    self.collection = fetch_and_authorize(:group).subgroups.select { |g| can? :show, g }
     respond_with_collection
   end
 
   def use_gift_subscription
     if SubscriptionService.available?
-      SubscriptionService.new(resource, current_user).start_gift!
+      SubscriptionService.new(fetch_resource, current_user).start_gift!
       respond_with_resource
     else
       respond_with_standard_error ActionController::BadRequest, 400
@@ -39,7 +37,7 @@ class Api::GroupsController < Api::RestfulController
 
   def upload_photo
     ensure_photo_params
-    service.update group: resource, actor: current_user, params: { params[:kind] => params[:file] }
+    service.update group: fetch_resource, actor: current_user, params: { params[:kind] => params[:file] }
     respond_with_resource
   end
 
