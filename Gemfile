@@ -57,7 +57,7 @@ gem 'simple-rss'
 gem 'snorlax'
 gem 'custom_counter_cache'
 gem 'safe_shell'
-gem 'premailer-rails', github: 'gdpelican/premailer-rails'
+gem 'premailer-rails'
 gem 'griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 
