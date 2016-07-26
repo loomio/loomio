@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   around_action :user_time_zone, if: :user_signed_in?
 
   # intercom
-  skip_after_filter :intercom_rails_auto_include
+  skip_after_action :intercom_rails_auto_include
 
   rescue_from(ActionView::MissingTemplate)  { |exception| raise exception unless %w[txt text gif png].include?(params[:format]) }
   rescue_from(ActiveRecord::RecordNotFound) { respond_with_error :"error.not_found", status: :not_found }
@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
       session[:user_return_to]
     end
   end
-  
+
   def current_user_groups
     @current_user_groups ||= current_user_or_visitor.groups
   end
