@@ -119,6 +119,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canViewPrivateContent: (group) ->
       Session.user().isMemberOf(group)
 
+    canCreateContentFor: (group) ->
+      Session.user().isMemberOf(group)
+
     canViewMemberships: (group) ->
       Session.user().isMemberOf(group)
 
