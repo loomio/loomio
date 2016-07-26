@@ -46,8 +46,8 @@ class Api::ProfileController < Api::RestfulController
     { user: current_user, actor: current_user, params: permitted_params.user }
   end
 
-  def resource_class
-    User
+  def resource_name
+    :user
   end
 
   def resource_serializer

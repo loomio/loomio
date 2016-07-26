@@ -25,14 +25,14 @@ describe Api::MotionsController do
   describe 'show' do
 
     it 'returns motions the user has access to' do
-      get :show, id: motion.id, format: :json
+      get :show, params: { id: motion.id, format: :json }
       json = JSON.parse(response.body)
       motion_ids = json['proposals'].map { |m| m['id'] }
       expect(motion_ids).to eq [motion.id]
     end
 
     it 'returns unauthorized for motions the user does not have access to' do
-      get :show, id: another_motion.id, format: :json
+      get :show, params: { id: another_motion.id, format: :json }
       expect(response.status).to eq 403
     end
 
@@ -40,14 +40,14 @@ describe Api::MotionsController do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
 
       it 'returns a motion if it is public' do
-        get :show, id: motion.id, format: :json
+        get :show, params: { id: motion.id, format: :json }
         json = JSON.parse(response.body)
         motion_ids = json['proposals'].map { |m| m['id'] }
         expect(motion_ids).to eq [motion.id]
       end
 
       it 'returns unauthorized if it is not public' do
-        get :show, id: private_motion.id, format: :json
+        get :show, params: { id: private_motion.id, format: :json }
         expect(response.status).to eq 403
       end
     end
@@ -63,7 +63,7 @@ describe Api::MotionsController do
 
     context 'success' do
       it 'returns motion filtered by discussion' do
-        get :index, discussion_id: discussion.id, format: :json
+        get :index, params: { discussion_id: discussion.id, format: :json }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[proposals])
         motion_ids = json['proposals'].map { |v| v['id'] }
@@ -75,7 +75,7 @@ describe Api::MotionsController do
         before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
 
         it 'returns motions filtered for public discussion' do
-          get :index, discussion_id: discussion.id, format: :json
+          get :index, params: { discussion_id: discussion.id, format: :json }
           json = JSON.parse(response.body)
           expect(json.keys).to include *(%w[proposals])
           motion_ids = json['proposals'].map { |v| v['id'] }
@@ -84,7 +84,7 @@ describe Api::MotionsController do
         end
 
         it 'returns unauthorized for private discussion' do
-          get :index, discussion_id: private_discussion.id, format: :json
+          get :index, params: { discussion_id: private_discussion.id, format: :json }
         end
       end
     end
@@ -99,7 +99,7 @@ describe Api::MotionsController do
     it 'returns closed motions for a group' do
       my_vote
       MotionService.close(motion)
-      post :closed, group_key: group.key, format: :json
+      post :closed, params: { group_key: group.key, format: :json }
       json = JSON.parse(response.body)
       expect(json.keys).to include *(%w[votes proposals discussions groups])
       group_ids = json['groups'].map { |g| g['id'] }
@@ -119,7 +119,7 @@ describe Api::MotionsController do
 
     it 'returns public motions' do
       MotionService.close(public_motion)
-      get :closed, group_key: public_group.key, format: :json
+      get :closed, params: { group_key: public_group.key, format: :json }
       expect(response.status).to eq 200
       json = JSON.parse(response.body)
       motion_ids = json['proposals'].map { |p| p['id'] }
@@ -128,20 +128,20 @@ describe Api::MotionsController do
 
     it 'does not return votes if I havent voted' do
       MotionService.close(motion)
-      post :closed, group_key: group.key, format: :json
+      post :closed, params: { group_key: group.key, format: :json }
       json = JSON.parse(response.body)
       expect(json.keys).to_not include 'votes'
     end
 
     it 'returns unauthorized for groups youre not a member of' do
-      post :closed, group_key: another_group.key
+      post :closed, params: { group_key: another_group.key }
     end
   end
 
   describe 'close' do
     context 'success' do
       it "closes a motion" do
-        post :close, id: motion.id, format: :json
+        post :close, params: { id: motion.id, format: :json }
         expect(response).to be_success
         expect(motion.reload.closed_at).not_to eq nil
       end
@@ -150,7 +150,7 @@ describe Api::MotionsController do
     context 'failure' do
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        post :close, id: motion.id
+        post :close, params: { id: motion.id }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
     end
@@ -159,28 +159,22 @@ describe Api::MotionsController do
   describe 'update' do
     context 'success' do
       it "updates a motion" do
-        post :update, id: motion.id, motion: motion_params, format: :json
+        post :update, params: { id: motion.id, motion: motion_params, format: :json }
         expect(response).to be_success
         expect(motion.reload.name).to eq motion_params[:name]
       end
     end
 
     context 'failures' do
-      it "responds with an error when there are unpermitted params" do
-        motion_params[:dontmindme] = 'wild wooly byte virus'
-        put :update, id: motion.id, motion: motion_params
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
-      end
-
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        put :update, id: motion.id, motion: motion_params
+        put :update, params: { id: motion.id, motion: motion_params }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
         motion_params[:name] = ''
-        put :update, id: motion.id, motion: motion_params, format: :json
+        put :update, params: { id: motion.id, motion: motion_params, format: :json }
         json = JSON.parse(response.body)
         expect(response.status).to eq 422
         expect(json['errors']['name']).to include 'can\'t be blank'
@@ -192,7 +186,7 @@ describe Api::MotionsController do
     context 'success' do
       it "creates a motion outcome" do
         motion_params = {outcome: 'Come out'}
-        post :create_outcome, id: motion.id, motion: motion_params, format: :json
+        post :create_outcome, params: { id: motion.id, motion: motion_params, format: :json }
         json = JSON.parse(response.body)
         expect(response.status).to eq 200
         expect(json['proposals'].first['outcome']).to eq motion_params[:outcome]
@@ -203,7 +197,7 @@ describe Api::MotionsController do
   describe 'update outcome' do
     context 'success' do
       it "updates a motion outcome" do
-        post :update_outcome, id: motion.id, motion: motion_params, format: :json
+        post :update_outcome, params: { id: motion.id, motion: motion_params, format: :json }
         json = JSON.parse(response.body)
         motion_ids = json['proposals'].map { |v| v['id'] }
         expect(motion_ids).to include motion.id
@@ -215,13 +209,13 @@ describe Api::MotionsController do
   describe 'create' do
     context 'success' do
       it "creates a motion" do
-        post :create, motion: motion_params, format: :json
+        post :create, params: { motion: motion_params, format: :json }
         expect(response).to be_success
         expect(Motion.last).to be_present
       end
 
       it 'responds with json' do
-        post :create, motion: motion_params, format: :json
+        post :create, params: { motion: motion_params, format: :json }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users proposals])
         expect(json['proposals'][0].keys).to include *(%w[
@@ -241,7 +235,7 @@ describe Api::MotionsController do
       end
 
       it 'responds with a discussion with a reader' do
-        post :create, motion: motion_params
+        post :create, params: { motion: motion_params }
         json = JSON.parse(response.body)
         expect(json['discussions'][0]['discussion_reader_id']).to be_present
       end
@@ -250,32 +244,27 @@ describe Api::MotionsController do
         it 'mentions appropriate users' do
           group.add_member! another_user
           motion_params[:description] = "Hello, @#{another_user.username}!"
-          expect { post :create, motion: motion_params, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+          expect { post :create, params: { motion: motion_params, format: :json } }.to change { Event.where(kind: :user_mentioned).count }.by(1)
         end
 
         it 'does not mention users not in the group' do
           motion_params[:description] = "Hello, @#{another_user.username}!"
-          expect { post :create, motion: motion_params, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
+          expect { post :create, params: { motion: motion_params, format: :json } }.to_not change { Event.where(kind: :user_mentioned).count }
         end
       end
     end
 
     context 'failures' do
-      it "responds with an error when there are unpermitted params" do
-        motion_params[:dontmindme] = 'wild wooly byte virus'
-        post :create, motion: motion_params
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
-      end
 
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        post :create, motion: motion_params
+        post :create, params: { motion: motion_params }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
         motion_params[:name] = ''
-        post :create, motion: motion_params
+        post :create, params: { motion: motion_params }
         json = JSON.parse(response.body)
         expect(response.status).to eq 422
         expect(json['errors']['name']).to include 'can\'t be blank'

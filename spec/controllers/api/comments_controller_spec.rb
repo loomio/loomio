@@ -56,13 +56,6 @@ describe Api::CommentsController do
       end
 
       context 'failures' do
-        it "responds with an error when there are unpermitted params" do
-          comment_params[:dontmindme] = 'wild wooly byte virus'
-          put :update, params: { id: comment.id, comment: comment_params }
-          expect(response.status).to eq 400
-          expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
-        end
-
         it "responds with an error when the user is unauthorized" do
           put :update, params: { id: another_comment.id, comment: comment_params }
           expect(response.status).to eq 403
@@ -119,12 +112,6 @@ describe Api::CommentsController do
       end
 
       context 'failures' do
-        it "responds with an error when there are unpermitted params" do
-          comment_params[:dontmindme] = 'wild wooly byte virus'
-          put :update, params: { id: comment.id, comment: comment_params }
-          expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
-        end
-
         it "responds with an error when the user is unauthorized" do
           sign_in another_user
           put :update, params: { id: comment.id, comment: comment_params }

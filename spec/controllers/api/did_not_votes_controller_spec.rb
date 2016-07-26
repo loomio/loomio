@@ -19,7 +19,7 @@ describe Api::DidNotVotesController do
 
     context 'success' do
       it 'returns did not votes for a motion' do
-        get :index, motion_id: motion.id, format: :json
+        get :index, params: { motion_id: motion.id, format: :json }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[did_not_votes])
       end

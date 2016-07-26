@@ -32,7 +32,7 @@ describe Api::VotesController do
 
     context 'success' do
       it 'returns votes filtered by motion' do
-        get :index, motion_id: motion.id, format: :json
+        get :index, params: { motion_id: motion.id, format: :json }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[votes])
         motions = json['votes'].map { |v| v['id'] }
@@ -45,7 +45,7 @@ describe Api::VotesController do
     context 'failure' do
       it 'does not allow access to an unauthorized motion' do
         cant_see_me = create :motion
-        get :index, motion_id: cant_see_me.id, format: :json
+        get :index, params: { motion_id: cant_see_me.id, format: :json }
         expect(response.status).to eq 403
       end
     end
@@ -64,7 +64,7 @@ describe Api::VotesController do
 
       it 'returns votes filtered by group' do
         my_other_discussion_vote
-        get :my_votes, group_id: group.id, format: :json
+        get :my_votes, params: { group_id: group.id, format: :json }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[votes])
         motion_ids = json['votes'].map { |v| v['id'] }
@@ -76,7 +76,7 @@ describe Api::VotesController do
 
       it 'returns votes filtered by discussion and current user' do
         my_other_discussion_vote
-        get :my_votes, discussion_id: discussion.id, format: :json
+        get :my_votes, params: { discussion_id: discussion.id, format: :json }
         json = JSON.parse(response.body)
         motion_ids = json['votes'].map { |v| v['id'] }
         expect(motion_ids).to include my_vote.id
@@ -87,7 +87,7 @@ describe Api::VotesController do
       end
 
       it 'returns only the most recent vote' do
-        get :my_votes, proposal_ids: discussion.motion_ids.join(','), format: :json
+        get :my_votes, params: { proposal_ids: discussion.motion_ids.join(','), format: :json }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[votes])
         motions = json['votes'].map { |v| v['id'] }
@@ -109,20 +109,20 @@ describe Api::VotesController do
     context 'logged out' do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
       it 'responds with unauthorized' do
-        post :create, vote: vote_params
+        post :create, params: { vote: vote_params }
         expect(response.status).to eq 403
       end
     end
 
     context 'success' do
       it "creates a vote" do
-        post :create, vote: vote_params
+        post :create, params: { vote: vote_params }
         expect(response).to be_success
         expect(Vote.last).to be_present
       end
 
       it 'responds with json' do
-        post :create, vote: vote_params
+        post :create, params: { vote: vote_params }
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users votes])
         expect(json['votes'][0].keys).to include *(%w[
@@ -136,29 +136,24 @@ describe Api::VotesController do
       end
 
       it 'responds with a discussion with a reader' do
-        post :create, vote: vote_params
+        post :create, params: { vote: vote_params }
         json = JSON.parse(response.body)
         expect(json['discussions'][0]['discussion_reader_id']).to be_present
       end
     end
 
     context 'failures' do
-      it "responds with an error when there are unpermitted params" do
-        vote_params[:dontmindme] = 'wild wooly byte virus'
-        post :create, vote: vote_params
-        expect(JSON.parse(response.body)['exception']).to eq 'ActionController::UnpermittedParameters'
-      end
 
       let(:another_user)          { create :user }
       it "responds with an error when the user is unauthorized" do
         sign_in another_user
-        post :create, vote: vote_params
+        post :create, params: { vote: vote_params }
         expect(JSON.parse(response.body)['exception']).to eq 'CanCan::AccessDenied'
       end
 
       it "responds with validation errors when they exist" do
         vote_params[:position] = ''
-        post :create, vote: vote_params
+        post :create, params: { vote: vote_params }
         json = JSON.parse(response.body)
         expect(response.status).to eq 422
         expect(json['errors']['position']).to include 'can\'t be blank'

@@ -21,7 +21,7 @@ describe Api::TranslationsController do
 
       it 'responds with an inline translation for a discussion' do
         discussion_translation
-        get :inline, model: 'discussion', id: discussion.id, to: :fr
+        get :inline, params: { model: 'discussion', id: discussion.id, to: :fr }
         json = JSON.parse(response.body)
         translatable_ids = json['translations'].map { |t| t['translatable_id'] }
         translatable_types = json['translations'].map { |t| t['translatable_type'] }
@@ -31,7 +31,7 @@ describe Api::TranslationsController do
 
       it 'responds with an inline translation for a motion' do
         motion_translation
-        get :inline, model: 'motion', id: motion.id, to: :fr
+        get :inline, params: { model: 'motion', id: motion.id, to: :fr }
         json = JSON.parse(response.body)
         translatable_ids = json['translations'].map { |t| t['translatable_id'] }
         translatable_types = json['translations'].map { |t| t['translatable_type'] }
@@ -41,7 +41,7 @@ describe Api::TranslationsController do
 
       it 'responds with an inline translation for a comment' do
         comment_translation
-        get :inline, model: 'comment', id: comment.id, to: :fr
+        get :inline, params: { model: 'comment', id: comment.id, to: :fr }
         json = JSON.parse(response.body)
         translatable_ids = json['translations'].map { |t| t['translatable_id'] }
         translatable_types = json['translations'].map { |t| t['translatable_type'] }
