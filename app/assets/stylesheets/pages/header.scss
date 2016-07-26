@@ -9,12 +9,12 @@
 
 .header {
   display: -webkit-flex;
-  -webkit-flex-direction: row;
+  -webkit-flex-direction: column;
   -webkit-justify-content: space-between;
   -webkit-align-items: center;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
@@ -26,11 +26,11 @@
 .header__menu {
   display: -webkit-flex;
   -webkit-align-items: center;
-  -webkit-flex-direction: row;
+  -webkit-flex-direction: column;
 
   display: flex;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
 
   padding-top: 10px;
   padding-bottom: 10px;
@@ -48,8 +48,14 @@
 }
 
 @media (min-width: 600px) {
-  .header { flex-direction: row; }
-  .header__menu { flex-direction: row; }
+  .header {
+    flex-direction: row;
+    -webkit-flex-direction: row;
+  }
+  .header__menu {
+    flex-direction: row;
+    -webkit-flex-direction: row;
+  }
   .header__item { padding: 0 10px; }
   .header__resources-dropdown-menu {
     position: absolute;
