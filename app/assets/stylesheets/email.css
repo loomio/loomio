@@ -146,13 +146,19 @@ body { max-width: 600px }
   margin-top: 15px;
 }
 
-.thread-mailer__motion-icon {
-  float:left;
-  margin: 0 10px 0 0;
+.thread-mailer__vote-button {
+  float: left;
+  text-align: center;
+  margin-right: 10px;
 }
 
 .thread-mailer__vote-prompt {
   margin-bottom: 15px;
+}
+
+.thread-mailer__motion-icon {
+  float:left;
+  margin: 0 10px 0 0;
 }
 
 .thread-mailer__subject img {
@@ -168,6 +174,7 @@ body { max-width: 600px }
 }
 
 .thread-mailer__footer {
+  clear: both;
   text-align: center;
   color: #666;
   font-size: small;
