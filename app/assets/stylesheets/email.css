@@ -171,10 +171,6 @@ body { max-width: 600px }
   padding: 5px 0;
 }
 
-.thread-mailer__subject--new-comment {
-  padding: 10px 0;
-}
-
 .thread-mailer__attachments-header {
   margin-bottom: 0px;
 }
