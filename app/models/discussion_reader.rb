@@ -62,15 +62,18 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def viewed!(read_at = discussion.last_activity_at)
-    return if user.nil? || (self.last_read_at && self.last_read_at >= read_at)
+    return unless user
 
     reset_counts! read_at
     EventBus.broadcast('discussion_reader_viewed!', discussion, user)
   end
 
   def reset_counts!(read_at = self.last_read_at)
+    return if (!read_at && !self.last_read_at) ||                           # no read_at given and no last_read_at is set
+              (read_at && self.last_read_at && read_at < self.last_read_at) # last_read_at exists, but is before the given read_at
+
     assign_attributes(
-      last_read_at:             [self.last_read_at, read_at].compact.max,
+      last_read_at:             read_at,
       last_read_sequence_id:    self.read_items(read_at).maximum(:sequence_id).to_i,
       read_items_count:         self.read_items(read_at).count,
       read_salient_items_count: self.read_salient_items(read_at).count
