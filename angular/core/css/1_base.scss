@@ -5,6 +5,8 @@ body {
   word-break: break-word;
 }
 
+header { min-height: $navbar-height; }
+
 h1, h2, h3, h4{
   @include fontReset;
 
