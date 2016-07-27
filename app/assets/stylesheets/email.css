@@ -108,7 +108,7 @@ body { max-width: 600px }
 }
 
 .thread-mailer__container {
-  padding: 25px;
+  padding: 25 0px;
 }
 
 .thread-mailer__list {
@@ -118,6 +118,7 @@ body { max-width: 600px }
 
 .thread-mailer__list-item {
   list-style-type: none;
+  margin-left: 0px;
 }
 
 .thread-mailer__avatar-container {
@@ -172,6 +173,10 @@ body { max-width: 600px }
 .thread-mailer__subject--new-discussion,
 .thread-mailer__subject--new-motion {
   margin: -5px 0 20px;
+}
+
+.thread-mailer__subject--new-comment {
+  margin: 15px 0 20px;
 }
 
 .thread-mailer__attachments-header {
