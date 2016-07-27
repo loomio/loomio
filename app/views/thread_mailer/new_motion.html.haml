@@ -1,9 +1,9 @@
 = render 'avatar', author: @author
 .thread-mailer__subject
   - if @following
-    %p= t(:'email.thread_mailer.new_motion', who: @motion.author_name)
+    = t(:'email.thread_mailer.new_motion', who: @motion.author_name)
   - else
-    %p= t(:'email.new_motion_created.context', author: @motion.author_name, group_full_name: @group.full_name)
+    = t(:'email.new_motion_created.context', author: @motion.author_name, group_full_name: @group.full_name)
   %h4= link_to @motion.name, motion_url(@motion, @utm_hash)
 
   = render_rich_text(@motion.description, true)
