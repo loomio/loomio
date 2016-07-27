@@ -1,9 +1,11 @@
-angular.module('loomioApp').directive 'lmoHref', ->
+angular.module('loomioApp').directive 'lmoHref', ($window, $router) ->
   restrict: 'A'
   scope:
     route: '@lmoHref'
   link: (scope, elem, attrs) ->
-    scope.$watch 'route', ->
-      elem.attr 'href', scope.route
     elem.bind 'click', ($event) ->
-      $event.stopImmediatePropagation() if $event.ctrlKey or $event.metaKey
+      if $event.ctrlKey or $event.metaKey
+        $event.stopImmediatePropagation()
+        $window.open(scope.route, '_blank')
+      else
+        $router.navigate(scope.route)

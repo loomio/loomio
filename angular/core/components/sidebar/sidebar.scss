@@ -33,6 +33,7 @@
 
 .sidebar__scrollable-list {
   overflow-y: scroll;
+  -webkit-flex: 1;
   flex: 1;
 }
 

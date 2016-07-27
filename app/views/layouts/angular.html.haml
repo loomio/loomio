@@ -41,39 +41,39 @@
           %md_content.sidebar__content{flex: "", role: "navigation", layout: "column", ng_click: "sidebarItemSelected()"}
             %md_list.sidebar__list.sidebar__threads{layout: "column"}
               %md_list_item
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "/dashboard", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.recent' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage')}"}
+                %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", 'lmo-href' => "/dashboard", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.recent' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
                   %span{translate: "sidebar.recent"}
               %md_list_item
-                %md_button.sidebar__list-item-button{href: "/inbox", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.unread' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('inboxPage')}"}
+                %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/inbox", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.unread' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('inboxPage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
                   %span{translate: "sidebar.unread"}
                   %span ({{unreadThreadCount()}})
               %md_list_item
-                %md_button.sidebar__list-item-button{href: "/dashboard/show_muted", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.muted' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
+                %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/dashboard/show_muted", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.muted' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
                   %span{translate: "sidebar.muted"}
             .sidebar__divider
 
             %md_list.sidebar__list.sidebar__scrollable-list{ng_class: "{'sidebar__no-groups': groups().length < 1}"}
               %md_list_item{ng_repeat: "group in groups() | orderBy: 'fullName' track by group.id"}
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--group{href: "{{groupUrl(group)}}", "aria-label" => "{{group.name}}", ng_if: "group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+                %md_button.sidebar__list-item-button.sidebar__list-item-button--group{href: "", 'lmo-href' => "{{groupUrl(group)}}", "aria-label" => "{{group.name}}", ng_if: "group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
                   %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
                   %span {{group.name}}
-                %md_button.sidebar__list-item-button--subgroup{href: "{{groupUrl(group)}}", ng_if: "!group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+                %md_button.sidebar__list-item-button--subgroup{href: "", 'lmo-href' => "{{groupUrl(group)}}", ng_if: "!group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
                   %span {{group.name}}
                 .sidebar__list-item-padding
               %md_list_item
-                %md_button.sidebar__list-item-button{href: "/explore", "aria-label" => "{{ 'sidebar.explore' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
+                %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/explore", "aria-label" => "{{ 'sidebar.explore' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-globe
                   %span{translate: "sidebar.explore"}
               .sidebar__divider
               %md_list_item
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--profile{href: "/profile", "aria-label" => "{{ 'sidebar.edit_profile' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('profilePage')}"}
+                %md_button.sidebar__list-item-button.sidebar__list-item-button--profile{href: "", 'lmo-href' => "/profile", "aria-label" => "{{ 'sidebar.edit_profile' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('profilePage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
                   %span{translate: "sidebar.edit_profile"}
               %md_list_item
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--email-settings{href: "/email_preferences", "aria-label" => "{{ 'sidebar.email_settings' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('emailSettingsPage')}"}
+                %md_button.sidebar__list-item-button.sidebar__list-item-button--email-settings{href:  "", 'lmo-href' => "/email_preferences", "aria-label" => "{{ 'sidebar.email_settings' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('emailSettingsPage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
                   %span{translate: "sidebar.email_settings"}
               %md_list_item
