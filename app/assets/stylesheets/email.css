@@ -108,7 +108,7 @@ body { max-width: 600px }
 }
 
 .thread-mailer__container {
-  padding: 45px 25px;
+  padding: 25px;
 }
 
 .thread-mailer__list {
@@ -121,7 +121,7 @@ body { max-width: 600px }
 }
 
 .thread-mailer__avatar-container {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .thread-mailer__avatar-initials {
@@ -165,17 +165,20 @@ body { max-width: 600px }
   margin-top: 15px;
 }
 
-.thread-mailer__subject--top-margin {
-  margin-top: 15px;
+/*.thread-mailer__subject {
+  margin: 10px 0 20px;
 }
-
+*/
 .thread-mailer__attachments-header {
   margin-bottom: 0px;
 }
 
 .thread-mailer__footer {
   clear: both;
-  text-align: center;
   color: #666;
   font-size: small;
+}
+
+.thread-mailer__footer-logo {
+ max-width: 150px;
 }

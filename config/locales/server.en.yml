@@ -62,7 +62,7 @@ en:
       heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
     comment_replied_to:
-      context: 'replied to your comment in the discussion'
+      context: 'replied to your comment in'
       subject: "%{who} replied to your comment in the %{which} group on Loomio"
     group_membership_approved:
       intro: Your request for access to the group '%{group_name}' on Loomio has been approved.

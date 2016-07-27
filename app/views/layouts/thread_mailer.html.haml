@@ -4,7 +4,6 @@
     = stylesheet_link_tag 'email'
   %body
     .thread-mailer
-      = render '/mailer_header'
       .thread-mailer__container
         = yield
         - if @link
