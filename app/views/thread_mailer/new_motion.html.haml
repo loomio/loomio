@@ -1,5 +1,5 @@
 = render 'avatar', author: @author
-.thread-mailer__subject
+.thread-mailer__subject--new-motion
   - if @following
     %p= t(:'email.thread_mailer.new_motion', who: @motion.author_name)
   - else

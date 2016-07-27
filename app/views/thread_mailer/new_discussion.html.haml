@@ -1,5 +1,5 @@
 = render 'avatar', author: @author
-.thread-mailer__subject
+.thread-mailer__subject--new-discussion
   %p= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
   %h4= link_to @discussion.title, discussion_url(@discussion, @utm_hash)
 
