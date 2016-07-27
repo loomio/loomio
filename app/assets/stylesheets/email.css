@@ -108,7 +108,7 @@ body { max-width: 600px }
 }
 
 .thread-mailer__container {
-  padding: 25 0px;
+  padding: 25px 0;
 }
 
 .thread-mailer__list {
@@ -122,7 +122,7 @@ body { max-width: 600px }
 }
 
 .thread-mailer__avatar-container {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .thread-mailer__avatar-initials {
@@ -167,16 +167,13 @@ body { max-width: 600px }
 }
 
 .thread-mailer__subject {
-  margin: 10px 0 20px;
+  margin-bottom: 20px;
+  padding: 5px 0;
 }
 
 .thread-mailer__subject--new-discussion,
 .thread-mailer__subject--new-motion {
-  margin: -5px 0 20px;
-}
-
-.thread-mailer__subject--new-comment {
-  margin: 15px 0 20px;
+  padding: 0;
 }
 
 .thread-mailer__attachments-header {
