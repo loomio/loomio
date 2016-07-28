@@ -1,7 +1,11 @@
 = render 'avatar', author: @author
 .thread-mailer__subject
-  = t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
-  %h4.thread-mailer__subject-link
-    = link_to @discussion.title, discussion_url(@discussion, @utm_hash)
+  %strong
+    = @discussion.author.name
+  %span
+    = t :"email.create_discussion.intro"
+  %span
+    %strong
+      = link_to @discussion.title, discussion_url(@discussion, @utm_hash)
 
 = render_rich_text(@discussion.description, @discussion.uses_markdown)

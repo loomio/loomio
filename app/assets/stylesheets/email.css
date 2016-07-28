@@ -134,14 +134,21 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin-top: 15px;
 }
 
-.thread-mailer__vote-button {
-  float: left;
-  text-align: center;
-  margin-right: 10px;
+.thread-mailer__vote-buttons {
+  margin-bottom: 15px;
 }
 
-.thread-mailer__vote-button-margin {
-  margin-bottom: 15px;
+.thread-mailer__vote-button {
+  text-align: center;
+  padding-right: 10px;
+}
+
+.thread-mailer__vote-button-link {
+  text-decoration: none;
+}
+
+.thread-mailer__vote-button-verb {
+  text-decoration: underline;
 }
 
 .thread-mailer__motion-icon {
@@ -152,10 +159,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 .thread-mailer__subject {
   margin-bottom: 20px;
   padding: 5px 0;
-}
-
-.thread-mailer__subject-link {
-  margin-bottom: 0px;
 }
 
 .thread-mailer__body img {

@@ -45,7 +45,7 @@ en:
     view_group: Click here to view the group on Loomio
     view_proposal: View this proposal on Loomio
     create_discussion:
-      intro: "%{who} started a discussion in %{which_group}:"
+      intro: "started a discussion:"
     create_proposal:
       intro: A new proposal was created in a Loomio group that you belong to.
       closes_in: Closes in
@@ -85,7 +85,7 @@ en:
       subject: '%{who} mentioned you while discussing "%{which}"'
     new_motion_created:
       subject: 'Proposal: %{proposal_title}'
-      context: "%{author} created a proposal in %{group_full_name}:"
+      context: "created a proposal in %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: The proposal has closed.
       specify_outcome_and_notify_group: Create an outcome and send it to your group!
@@ -109,7 +109,7 @@ en:
       turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
       change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
       change_preferences: 'Change your email preferences:'
-      new_motion: "%{who} proposed:"
+      new_motion: 'started a proposal:'
       motion_closing_soon: 'Proposal closing in 24 hours:'
       proposal_closed: 'Proposal closed:'
       specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.

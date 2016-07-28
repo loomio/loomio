@@ -1,11 +1,16 @@
 = render 'avatar', author: @author
 .thread-mailer__subject
   - if @following
-    = t(:'email.thread_mailer.new_motion', who: @motion.author_name)
+    %strong
+      = @motion.author_name
+    = t(:'email.thread_mailer.new_motion')
   - else
-    = t(:'email.new_motion_created.context', author: @motion.author_name, group_full_name: @group.full_name)
-  %h4.thread-mailer__subject-link
-    = link_to @motion.name, motion_url(@motion, @utm_hash)
+    %strong
+      =  @motion.author_name
+    = t(:'email.new_motion_created.context', group_full_name: @group.full_name)
+  %span
+    %strong
+      = link_to @motion.name, motion_url(@motion, @utm_hash)
 
 = render_rich_text(@motion.description, true)
 
