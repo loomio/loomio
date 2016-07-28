@@ -3,4 +3,13 @@
 %ul.thread-mailer__list
   - comment.attachments.each do |attachment|
     %li.thread-mailer__list-item
-      %img{src: attachment.location, alt: attachment.filename}
+      - if attachment.is_an_image?
+        %a{href: attachment.location, target: '_blank'}
+          %img{src: attachment.location, alt: attachment.filename}
+      - else
+        %a.thread-mailer__file-attachment{href: attachment.location, target: '_blank'}
+          %span
+            = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
+          %span.thread-mailer__file-attachment-filername
+            = attachment.filename
+          %span= attachment.filesize

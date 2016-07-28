@@ -19,7 +19,7 @@ table.stats-table th { font-weight: bold; color: #666; }
 .footer { font-size: 12px; color: #666; }
 img { max-width: 500px; }
 img.emojione { width: 25px; vertical-align: bottom; }
-body { max-width: 600px }
+body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif; }
 
 
 .mailer__header {
@@ -102,15 +102,6 @@ body { max-width: 600px }
   }
 }
 
-.thread-mailer {
-  font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
-  font-weight: 200;
-}
-
-.thread-mailer__container {
-  padding: 25px 0;
-}
-
 .thread-mailer__list {
   padding: 0px;
   margin-top: 0px;
@@ -119,10 +110,6 @@ body { max-width: 600px }
 .thread-mailer__list-item {
   list-style-type: none;
   margin-left: 0px;
-}
-
-.thread-mailer__avatar-container {
-  margin-top: 10px;
 }
 
 .thread-mailer__avatar-initials {
@@ -153,7 +140,7 @@ body { max-width: 600px }
   margin-right: 10px;
 }
 
-.thread-mailer__vote-prompt {
+.thread-mailer__vote-button-margin {
   margin-bottom: 15px;
 }
 
@@ -162,17 +149,26 @@ body { max-width: 600px }
   margin: 0 10px 0 0;
 }
 
-.thread-mailer__subject img {
-  margin-top: 15px;
-}
-
 .thread-mailer__subject {
   margin-bottom: 20px;
   padding: 5px 0;
 }
 
+.thread-mailer__subject-link {
+  margin-bottom: 0px;
+}
+
+.thread-mailer__body img {
+  margin-top: 15px;
+}
+
 .thread-mailer__attachments-header {
   margin-bottom: 0px;
+}
+
+.thread-mailer__attachment-icon {
+  vertical-align: -30%;
+  margin-right: 5px;
 }
 
 .thread-mailer__footer {

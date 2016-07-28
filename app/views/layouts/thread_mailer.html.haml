@@ -3,8 +3,6 @@
   %head
     = stylesheet_link_tag 'email'
   %body
-    .thread-mailer
-      .thread-mailer__container
-        = yield
-        - if @link
-          = render "footer", link: @link
+    = yield
+    - if @link
+      = render "footer", link: @link
