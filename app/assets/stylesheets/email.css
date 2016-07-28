@@ -130,10 +130,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   float: left;
 }
 
-.thread-mailer__vote {
-  margin-top: 15px;
-}
-
 .thread-mailer__vote-buttons {
   margin-bottom: 15px;
 }
@@ -149,6 +145,10 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 
 .thread-mailer__vote-button-verb {
   text-decoration: underline;
+}
+
+.thread-mailer__vote {
+  margin-bottom: 20px;
 }
 
 .thread-mailer__motion-icon {

@@ -1,4 +1,4 @@
-%h4= link_to @motion.name, motion_url(@motion, @utm_hash)
+%h4= link_to @motion.name, motion_url(@motion, @utm_hash) unless no_title
 
 %table
   %tr

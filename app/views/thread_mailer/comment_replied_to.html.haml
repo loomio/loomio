@@ -6,4 +6,4 @@
     %strong
       = link_to @discussion.title, discussion_url(@discussion)
 = render_rich_text(@reply.body, @reply.uses_markdown)
-= render 'attachments', comment: @reply if @reply.attachments.any?
+= render 'attachments', resource: @reply if @reply.attachments.any?

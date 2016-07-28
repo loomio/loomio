@@ -114,7 +114,7 @@ en:
       proposal_closed: 'Proposal closed:'
       specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
       specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
-      outcome_created: "%{who} set a proposal outcome:"
+      outcome_created: "shared an outcome for the proposal:"
       you_agreed: You %{past_tense_position}
     analytics:
       subject: "%{which_group}'s week on Loomio"

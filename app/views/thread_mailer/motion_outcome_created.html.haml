@@ -1,6 +1,13 @@
 = render 'avatar', author: @author
 .thread-mailer__subject
-  = t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
+  %strong
+    = @motion.outcome_author.name
+  %span
+    = t(:"email.thread_mailer.outcome_created")
+  %strong
+    %span
+      = link_to @motion.name, motion_url(@motion, @utm_hash)
+
 = render_rich_text(@motion.outcome, true)
 
-= render 'motion_with_positions'
+= render 'motion_with_positions', no_title: true
