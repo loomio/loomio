@@ -165,10 +165,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin-top: 15px;
 }
 
-.thread-mailer__attachments-header {
-  margin-bottom: 0px;
-}
-
 .thread-mailer__attachment-icon {
   vertical-align: -30%;
   margin-right: 5px;

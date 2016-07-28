@@ -45,7 +45,7 @@ en:
     view_group: Click here to view the group on Loomio
     view_proposal: View this proposal on Loomio
     create_discussion:
-      intro: "started a discussion:"
+      intro: "started a thread:"
     create_proposal:
       intro: A new proposal was created in a Loomio group that you belong to.
       closes_in: Closes in

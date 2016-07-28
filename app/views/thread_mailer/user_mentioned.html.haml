@@ -7,4 +7,4 @@
       = link_to @discussion.title, polymorphic_url(@eventable)
 = render_rich_text(@text, true)
 - if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
-  = render 'attachments', comment: @eventable
+  = render 'attachments', resource: @eventable
