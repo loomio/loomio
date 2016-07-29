@@ -1,7 +1,7 @@
 = render 'avatar', author: @author 
 .thread-mailer__subject
   %strong= @author.name
-  %span= t(:"email.comment_replied_to.context")
+  %span= t(:"email.comment_replied_to.context_html")
   %span
     %strong
       = link_to @discussion.title, discussion_url(@discussion)

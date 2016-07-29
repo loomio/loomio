@@ -3,7 +3,7 @@
   %strong
     = @discussion.author.name
   %span
-    = t :"email.create_discussion.intro"
+    = t :"email.create_discussion.intro_html"
   %span
     %strong
       = link_to @discussion.title, discussion_url(@discussion, @utm_hash)
