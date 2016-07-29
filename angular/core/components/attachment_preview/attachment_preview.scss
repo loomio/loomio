@@ -25,7 +25,10 @@
 }
 
 .attachment-preview__link {
-  &:hover { text-decoration: none; }
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 .attachment-preview__file {

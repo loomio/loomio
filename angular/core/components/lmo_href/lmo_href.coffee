@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'lmoHref', ($window, $router) ->
     route: '@lmoHref'
   link: (scope, elem, attrs) ->
     elem.bind 'click', ($event) ->
-      if $event.ctrlKey or $event.metaKey
+      if $event.ctrlKey or $event.metaKey or !RegExp('^(https?:)?//').test(elem)
         $event.stopImmediatePropagation()
         $window.open(scope.route, '_blank')
       else
