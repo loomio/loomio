@@ -1,5 +1,5 @@
 .thread-mailer__vote
-  = image_tag "thread_mailer/#{vote.position}-24.png", alt: "#{vote.position} icon", class: "thread-mailer__motion-icon"
+  = image_tag "thread_mailer/#{vote.position}-icon.png", alt: "#{vote.position} icon", class: "thread-mailer__vote-icon"
   %strong= vote.author.name
   %span
     - past_tense_position = I18n.t("position_verbs.past_tense.#{vote.position}")

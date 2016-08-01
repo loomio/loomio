@@ -139,6 +139,10 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   padding-right: 10px;
 }
 
+.thread-mailer__vote-button img {
+  width: 55px;
+}
+
 .thread-mailer__vote-button-link {
   text-decoration: none;
 }
@@ -151,9 +155,15 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin-bottom: 20px;
 }
 
-.thread-mailer__motion-icon {
+.thread-mailer__motion-pie-icon {
   float:left;
   margin: 0 10px 0 0;
+}
+
+.thread-mailer__vote-icon {
+  float:left;
+  margin: 0 10px 0 0;
+  width: 24px;
 }
 
 .thread-mailer__subject {

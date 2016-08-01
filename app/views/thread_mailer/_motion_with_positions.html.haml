@@ -17,7 +17,7 @@
     -@motion.grouped_unique_votes.each do |vote|
       %tr
         %td
-          = image_tag "thread_mailer/#{vote.position}-24.png", alt: "#{vote.position} icon", class: "thread-mailer__motion-icon"
+          = image_tag "thread_mailer/#{vote.position}-icon.png", alt: "#{vote.position} icon", class: "thread-mailer__vote-icon"
         %td= vote.user_name
         %td= vote.statement
 
