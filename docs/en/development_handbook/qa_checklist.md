@@ -4,6 +4,7 @@ Please feel free to add stubs or github comments if you think of something that 
 
 ## Self test
 As you build stuff, you tend to test it yourself unless you're Chuck Norris.
+You should have unit tests and some e2e tests which pass too.
 
 ## Code review
 
@@ -18,6 +19,8 @@ Please read the [a11y guide](accessibility.md) because it covers this in much be
 
 ### Translations
 - All natural language (English) is abstracted into `client.en.yml` or server.en.yml
+
+More detail about how to write Loomio app code in [Code guidelines](code_guidelines.md).
 
 ## Smoke testing and compatibility
 Smoketest - someone other than the developer tests that the functionality works as expected.
