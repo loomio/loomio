@@ -12,6 +12,14 @@ describe 'Login', ->
       page.expectElement '.sidebar__content'
       page.expectFlash 'Signed in successfully'
 
+    it 'updates the locale on login', ->
+      page.loadPath 'setup_spanish_user'
+      page.click '.navbar__sign-in'
+      page.fillIn '#user-email', 'patrick_swayze@example.com'
+      page.fillIn '#user-password', 'gh0stmovie'
+      page.click '.sign-in-form__submit-button'
+      page.expectText '.explore-page', 'Explorar grupos en Loomio'
+
     it 'does not log in in-app when password is incorrect', ->
       page.loadPath 'view_open_group_as_visitor'
       page.click '.navbar__sign-in'

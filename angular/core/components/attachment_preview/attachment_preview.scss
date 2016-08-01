@@ -25,7 +25,10 @@
 }
 
 .attachment-preview__link {
-  &:hover { text-decoration: none; }
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 .attachment-preview__file {
@@ -44,7 +47,11 @@
 }
 
 .attachment-preview__file--thread {
-  line-height: 30px;
+  padding: 4px 4px 4px 31px;
+  text-indent: -11px;
+  i {
+    padding-right: 1px;
+  }
 }
 
 .attachment-preview__file--image {
@@ -59,11 +66,6 @@
   overflow: hidden;
   transition: opacity 0.5s;
 }
-
-.attachment-preview__file--thread i {
-  padding: 0 7px;
-}
-
 .attachment-preview__destroy {
   position: absolute;
   top: 0;

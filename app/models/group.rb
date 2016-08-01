@@ -65,8 +65,7 @@ class Group < ActiveRecord::Base
   scope :engaged, ->(since = 2.months.ago) {
     more_than_n_members(1).
     more_than_n_discussions(2).
-    active_discussions_since(since).
-    parents_only
+    active_discussions_since(since)
   }
 
   scope :with_analytics, ->(since = 1.month.ago) {
