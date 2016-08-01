@@ -1,18 +1,18 @@
-.to-join-group
-  .to-join-group__container
+.invite-people-mailer
+  .invite-people-mailer__container
     = render '/mailer_header'
-    .to-join-group__body
-      .to-join-group__invitation-text
+    .invite-people-mailer__body
+      .invite-people-mailer__invitation-text
         %strong= @invitation.inviter.name
         = t("email.to_join_group.invitation_text_html")
         %br
         %strong= @invitation.invitable_name
-      .to-join-group__message-container
+      .invite-people-mailer__message-container
         - if @message_body
-          .to-join-group__message_body
+          .invite-people-mailer__message_body
             = @message_body
-        = link_to t("email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "to-join-group__accept-invitation"
-      .to-join-group__tagline
+        = link_to t("email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
+      .invite-people-mailer__tagline
         = t("email.to_join_group.place_for_groups")
         %br
         = t("email.to_join_group.make_decisions_together")

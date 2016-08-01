@@ -71,10 +71,8 @@ en:
     invitation:
       hi: Hi %{name},
       intro: 'Click the link below to set up your group %{group_name}:'
-      closing_message: If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you - just reply to this email.
-      thanks: |
-        Thanks!
-        The Loomio Team
+      closing_message: If you’ve got any questions or if there’s anything at all we can do to help you get up and running, just reply to this email.
+      loomio_team: The Loomio Team
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       subject: "%{who} has requested to join %{which_group}"
