@@ -150,6 +150,8 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 .thread-mailer__motion-pie-icon {
   float:left;
   margin: 0 10px 0 0;
+  width: 50px;
+  height: 50px;
 }
 
 .thread-mailer__vote-icon {
@@ -176,8 +178,4 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   clear: both;
   color: #666;
   font-size: small;
-}
-
-.thread-mailer__footer-logo {
- max-width: 150px;
 }
