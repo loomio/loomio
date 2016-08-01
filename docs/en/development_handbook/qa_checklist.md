@@ -22,6 +22,11 @@ Please read the [a11y guide](accessibility.md) because it covers this in much be
 
 More detail about how to write Loomio app code in [Code guidelines](code_guidelines.md).
 
+### Images
+- All images should have sizes specified by CSS
+- Images should have twice as many pixels as specified by their CSS size so that they don't look blurry on retina.
+- Check that images are the right size for the job.
+
 ## Smoke testing and compatibility
 Smoketest - someone other than the developer tests that the functionality works as expected.
 
