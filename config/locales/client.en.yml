@@ -217,6 +217,11 @@ en:
     help: 'Help'
     contact: 'Contact Loomio'
     sign_out: 'Sign out'
+    aria_labels:
+      heading: 'Sidebar'
+      threads_list: 'Threads actions'
+      groups_list: 'Groups'
+      user_list: 'User actions'
 
   navbar:
     recent_title: 'Go to dashboard'
