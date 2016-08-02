@@ -8,7 +8,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @loaded =
     show_all:           0
     show_muted:         0
-    show_participating: 0
 
   @views =
     recent: {}
