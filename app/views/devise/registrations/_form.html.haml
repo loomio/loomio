@@ -1,5 +1,6 @@
 =simple_form_for(@user, url: user_registration_path, :defaults => {:required => false}) do |f|
   =f.error_notification
+  = @user.errors.messages unless @user.errors.messages.empty?
   =f.input :name
   =f.input :email
   -unless omniauth_authenticated_and_waiting?
