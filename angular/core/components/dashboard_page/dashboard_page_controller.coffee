@@ -68,6 +68,5 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     ModalService.open GroupForm, group: -> Records.groups.build()
 
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
-  $scope.$on 'homePageClicked', => @setFilter()
 
   return
