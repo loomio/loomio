@@ -1,5 +1,6 @@
-\
-= t :attachments
-\
-- comment.attachments.each do |attachment|
-  = attachment.location
+- if resource.attachments.any?
+  \
+  = t :attachments
+  \
+  - resource.attachments.each do |attachment|
+    = attachment.location

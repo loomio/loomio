@@ -63,7 +63,6 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
           when 'show_not_muted'
             view.applyWhere (thread) -> thread.volume() != 'mute'
           when 'only_threads_in_my_groups' then view.applyFind(groupId: {$in: Session.user().groupIds()})
-          when 'show_participating'        then view.applyFind(participating: true)
           when 'show_starred'              then view.applyFind(starred: true)
           when 'show_proposals'            then view.applyWhere (thread) -> thread.hasActiveProposal()
           when 'hide_proposals'            then view.applyWhere (thread) -> !thread.hasActiveProposal()

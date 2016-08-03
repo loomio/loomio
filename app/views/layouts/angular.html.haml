@@ -17,7 +17,7 @@
     %link{href: client_asset_path(:"print.min.css"), rel: 'stylesheet', media: 'print'}
 
     = render 'angular/metadata'
-    = render 'angular/google_analytics'
+    = render 'application/google_analytics'
     = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
@@ -25,7 +25,7 @@
     %navbar
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
       %section.lmo-sidebar-wrapper{layout: "row", ng_controller: 'SidebarController', ng_cloak: "", ng_if: 'isLoggedIn()'}
-        %md-sidenav.md-sidenav-left.lmo-no-print{md_component_id: 'left', md_is_open: 'showSidebar', md_is_locked_open: '$mdMedia("gt-md") && showSidebar', md_whiteframe: 4}
+        %md-sidenav.md-sidenav-left.lmo-no-print{md_component_id: 'left', md_is_open: 'showSidebar', md_is_locked_open: '$mdMedia("gt-md") && showSidebar', md_whiteframe: 4, "aria-label" => "{{ 'sidebar.aria_labels.heading' | translate }}"}
           .sidebar__user-panel
             .sidebar__user-avatar-container
               %user_avatar{user: "currentUser()", size: "medium-circular", ng_if: "currentUser().avatarKind != 'initials'"}
@@ -37,9 +37,8 @@
               .sidebar__user-username
                 @{{currentUser().username}}
           .sidebar__divider
-
-          %md_content.sidebar__content{flex: "", role: "navigation", layout: "column", ng_click: "sidebarItemSelected()"}
-            %md_list.sidebar__list.sidebar__threads{layout: "column"}
+          %md_content.sidebar__content{flex: "", layout: "column", ng_click: "sidebarItemSelected()", role: 'navigation'}
+            %md_list.sidebar__list.sidebar__threads{layout: "column", "aria-label" => "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
               %md_list_item
                 %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", 'lmo-href' => "/dashboard", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.recent' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
@@ -54,40 +53,41 @@
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
                   %span{translate: "sidebar.muted"}
             .sidebar__divider
-
-            %md_list.sidebar__list.sidebar__scrollable-list{ng_class: "{'sidebar__no-groups': groups().length < 1}"}
-              %md_list_item{ng_repeat: "group in groups() | orderBy: 'fullName' track by group.id"}
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--group{href: "", 'lmo-href' => "{{groupUrl(group)}}", "aria-label" => "{{group.name}}", ng_if: "group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
-                  %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
-                  %span {{group.name}}
-                %md_button.sidebar__list-item-button--subgroup{href: "", 'lmo-href' => "{{groupUrl(group)}}", ng_if: "!group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
-                  %span {{group.name}}
-                .sidebar__list-item-padding
-              %md_list_item
-                %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/explore", "aria-label" => "{{ 'sidebar.explore' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
-                  %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-globe
-                  %span{translate: "sidebar.explore"}
+            .sidebar__scrollable-list
+              %md_list.sidebar__list.sidebar__groups{ng_class: "{'sidebar__no-groups': groups().length < 1}", "aria-label" => "{{ 'sidebar.aria_labels.groups_list' | translate }}"}
+                %md_list_item{ng_repeat: "group in groups() | orderBy: 'fullName' track by group.id"}
+                  %md_button.sidebar__list-item-button.sidebar__list-item-button--group{href: "", 'lmo-href' => "{{groupUrl(group)}}", "aria-label" => "{{group.name}}", ng_if: "group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+                    %img.md-avatar.lmo-box--tiny.sidebar__list-item-group-logo{ng_src: "{{group.logoUrl()}}"}
+                    %span {{group.name}}
+                  %md_button.sidebar__list-item-button--subgroup{href: "", 'lmo-href' => "{{groupUrl(group)}}", ng_if: "!group.isParent()", ng_class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
+                    %span {{group.name}}
+                  .sidebar__list-item-padding
+                %md_list_item
+                  %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/explore", "aria-label" => "{{ 'sidebar.explore' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('explorePage')}"}
+                    %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-globe
+                    %span{translate: "sidebar.explore"}
               .sidebar__divider
-              %md_list_item
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--profile{href: "", 'lmo-href' => "/profile", "aria-label" => "{{ 'sidebar.edit_profile' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('profilePage')}"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
-                  %span{translate: "sidebar.edit_profile"}
-              %md_list_item
-                %md_button.sidebar__list-item-button.sidebar__list-item-button--email-settings{href:  "", 'lmo-href' => "/email_preferences", "aria-label" => "{{ 'sidebar.email_settings' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('emailSettingsPage')}"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
-                  %span{translate: "sidebar.email_settings"}
-              %md_list_item
-                %md_button.sidebar__list-item-button{href: "{{helpLink()}}", target: "_blank", "aria-label" => "{{ 'sidebar.help' | translate }}"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
-                  %span{translate: "sidebar.help"}
-              %md_list_item{ng_if: 'showContactUs()'}
-                %md_button.sidebar__list-item-button{href: "", ng_click: "contactUs()", "aria-label" => "{{ 'sidebar.contact' | translate }}"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-question-circle
-                  %span{translate: "sidebar.contact"}
-              %md_list_item
-                %md_button.sidebar__list-item-button{href: "", ng_click: "signOut()", "aria-label" => "{{ 'sidebar.sign_out' | translate }}"}
-                  %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
-                  %span{translate: "sidebar.sign_out"}
+              %md_list.sidebar__list.sidebar__users{"aria-label" => "{{ 'sidebar.aria_labels.user_list' | translate }}"}
+                %md_list_item
+                  %md_button.sidebar__list-item-button.sidebar__list-item-button--profile{href: "", 'lmo-href' => "/profile", "aria-label" => "{{ 'sidebar.edit_profile' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('profilePage')}"}
+                    %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-cog
+                    %span{translate: "sidebar.edit_profile"}
+                %md_list_item
+                  %md_button.sidebar__list-item-button.sidebar__list-item-button--email-settings{href:  "", 'lmo-href' => "/email_preferences", "aria-label" => "{{ 'sidebar.email_settings' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('emailSettingsPage')}"}
+                    %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-envelope-o
+                    %span{translate: "sidebar.email_settings"}
+                %md_list_item
+                  %md_button.sidebar__list-item-button{href: "{{helpLink()}}", target: "_blank", "aria-label" => "{{ 'sidebar.help' | translate }}"}
+                    %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-info-circle
+                    %span{translate: "sidebar.help"}
+                %md_list_item{ng_if: 'showContactUs()'}
+                  %md_button.sidebar__list-item-button{href: "", ng_click: "contactUs()", "aria-label" => "{{ 'sidebar.contact' | translate }}"}
+                    %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-question-circle
+                    %span{translate: "sidebar.contact"}
+                %md_list_item
+                  %md_button.sidebar__list-item-button{href: "", ng_click: "signOut()", "aria-label" => "{{ 'sidebar.sign_out' | translate }}"}
+                    %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-sign-out
+                    %span{translate: "sidebar.sign_out"}
       %md_content.lmo-main-content{flex: ""}
         .lmo-main-background
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}

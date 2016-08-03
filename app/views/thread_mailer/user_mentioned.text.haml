@@ -3,6 +3,4 @@
 = @text
 
 - if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
-  = render "attachments", comment: @eventable
-
-= render "footer", link: polymorphic_url(@eventable)
+  = render "attachments", resource: @eventable

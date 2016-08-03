@@ -1,9 +1,5 @@
 %p= t(:"email.thread_mailer.motion_closing_soon")
-
-= render 'motion_with_positions'
-
+= render 'motion_with_positions', no_title: false
 - unless @motion.user_has_voted?(@recipient)
   %h4= t(:"help.have_your_say")
-  =render 'vote_buttons', motion: @motion
-
-= render "footer", link: motion_url(@motion, @utm_hash)
+  = render 'vote_buttons', motion: @motion

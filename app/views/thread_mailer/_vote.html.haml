@@ -1,6 +1,9 @@
-= image_tag "thread_mailer/#{vote.position}-24.png", alt: "#{vote.position} icon"
-%strong= vote.author.name
-- past_tense_position = I18n.t("position_verbs.past_tense.#{vote.position}")
-= t('notifications.new_vote', position: past_tense_position) + ": " + @motion.title
-%br
+.thread-mailer__vote
+  = image_tag "thread_mailer/vote-icon-#{vote.position}.png", alt: "#{vote.position} icon", class: "thread-mailer__vote-icon"
+  %strong= vote.author.name
+  %span
+    - past_tense_position = I18n.t("position_verbs.past_tense.#{vote.position}")
+  %span
+    %strong
+    = t(:"notifications.new_vote", position: past_tense_position) + ": " + @motion.title
 = render_rich_text vote.statement, true
