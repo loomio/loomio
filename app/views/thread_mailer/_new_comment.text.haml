@@ -14,4 +14,4 @@
 - if comment
   = render_email_plaintext(comment.body)
 - if comment.attachments.any?
-  = render 'thread_mailer/attachments', comment: comment
+  = render 'thread_mailer/attachments', resource: comment
