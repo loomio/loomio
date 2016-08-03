@@ -2,5 +2,3 @@
 
 = @reply.body
 = render "attachments", comment: @reply if @reply.attachments.any?
-
-= render "footer", link: comment_url_helper(@reply)

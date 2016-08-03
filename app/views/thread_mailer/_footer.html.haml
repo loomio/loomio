@@ -1,12 +1,13 @@
-%img{src: email_actions_mark_discussion_as_read_url(discussion_id: @discussion.id,
-                                                    event_id: @event.id,
-                                                    unsubscribe_token: @recipient.unsubscribe_token,
-                                                    format: 'gif'), alt: '', width: 1, height: 1}
+.thread-mailer__footer
+  %img.thread-mailer__footer-image{src: email_actions_mark_discussion_as_read_url(discussion_id: @discussion.id,
+                                        event_id: @event.id,
+                                        unsubscribe_token: @recipient.unsubscribe_token,
+                                        format: 'gif'), alt: '', width: 1, height: 1}
+  %p.thread-mailer__footer-links
+    &mdash;
+    %br
+    = t(:'email.thread_mailer.reply_or_view_online_html', url: link, hostname: ENV['CANONICAL_HOST'])
 
-%p{style: 'font-size:small;-webkit-text-size-adjust:none;color:#666;'}
-  &mdash;
-  %br
-  = t(:'email.thread_mailer.reply_or_view_online_html', url: link, hostname: ENV['CANONICAL_HOST'])
-
-  %br
-  = t :"email.thread_mailer.change_email_preferences_html", email_preferences_url: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
+    %br
+    = t :"email.thread_mailer.change_email_preferences_html", email_preferences_url: email_preferences_url(@utm_hash.merge(unsubscribe_token: @recipient.unsubscribe_token))
+  = image_tag "logo-orange.png", alt: "Loomio logo", class: "thread-mailer__footer-logo"

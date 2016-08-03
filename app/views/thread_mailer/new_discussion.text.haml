@@ -1,8 +1,6 @@
-= t :"email.create_discussion.intro", who: @discussion.author.name, which_group: @discussion.group.full_name
+= t :"email.create_discussion.intro", who: @discussion.author.name
 \
 = @discussion.title
 = '-------------'
 \
 = @discussion.description
-\
-= render 'footer', link: discussion_url(@discussion, @utm_hash)
