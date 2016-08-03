@@ -39,7 +39,8 @@ class GroupSerializer < ActiveModel::Serializer
              :subscription_expires_at,
              :is_subgroup_of_hidden_parent,
              :show_legacy_trial_expired_modal,
-             :enable_experiments
+             :enable_experiments,
+             :locale
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 

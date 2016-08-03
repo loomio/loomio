@@ -161,7 +161,6 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
-  delegate :locale, to: :creator
 
   paginates_per 20
 
@@ -218,6 +217,10 @@ class Group < ActiveRecord::Base
 
   def creator_id
     self[:creator_id] || creator.try(:id)
+  end
+
+  def locale
+    creator.try(:locale)
   end
 
   def coordinators
