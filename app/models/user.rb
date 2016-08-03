@@ -283,6 +283,11 @@ class User < ActiveRecord::Base
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
+  protected
+  def password_required?
+    !password.nil? || !password_confirmation.nil?
+  end
+
   private
 
   def set_default_avatar_kind

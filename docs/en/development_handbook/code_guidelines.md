@@ -6,6 +6,9 @@ Note: would be great to break this into Ruby and Javascript development parts.
 
 # Frontend development
 
+## lmo-href
+You'll want to use this directive when linking to stuff within the app. it supports command click to open in new window.
+
 
 ## Naming stuff (BEM)
 
@@ -136,8 +139,6 @@ A good thing to do is check your work with the [Tota11y](https://khan.github.io/
 - Ideally you submit screenshots of the feature with your pull request so that design correctness can be checked easily.
 - Please note in the pull request any divergences from the design
 
-
-
 ## Testing
 
 Currently there are 4 main testing components in Loomio. The rails app is tested with rspec and cucumber. The frontend app is tested with jasmine specs and protractor e2e tests.
@@ -155,3 +156,7 @@ Rspec / API Controller tests
 ## Code - mini version of fog creat code review.
 http://blog.fogcreek.com/effective-code-reviews-9-tips-from-a-converted-skeptic/
 http://blog.fogcreek.com/increase-defect-detection-with-our-code-review-checklist-example/
+
+Learnings 27 August:
+Make sure that everything you interact with is a form element or link.
+When you write `aria-hidden:true` in haml you need to quote it so `aria-hidden: 'true'`

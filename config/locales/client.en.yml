@@ -211,12 +211,17 @@ en:
     recent: 'Recent'
     unread: 'Unread'
     muted: 'Muted'
-    explore: 'Explore public groups'
+    explore: 'Public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
     contact: 'Contact Loomio'
     sign_out: 'Sign out'
+    aria_labels:
+      heading: 'Sidebar'
+      threads_list: 'Threads actions'
+      groups_list: 'Groups'
+      user_list: 'User actions'
 
   navbar:
     recent_title: 'Go to dashboard'
