@@ -14,6 +14,10 @@ module.exports = new class PageHelper
     browser.get('development/'+path)
     browser.driver.manage().window().setSize(1280, 1024)
 
+  waitForReload: (time=1000)->
+    browser.driver.sleep(time)
+    browser.waitForAngular()
+
   expectElement: (selector)->
     expect(element(By.css(selector)).isPresent()).toBe(true)
 

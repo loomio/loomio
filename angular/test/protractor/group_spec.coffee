@@ -70,6 +70,7 @@ describe 'Group Page', ->
         page.fillIn '#user-email', 'jennifer_grey@example.com'
         page.fillIn '#user-password', 'gh0stmovie'
         page.click '.sign-in-form__submit-button'
+        page.waitForReload()
         page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
         page.expectText '.thread-previews-container', 'This thread is private'
         page.expectElement '.sidebar__content'
@@ -79,6 +80,7 @@ describe 'Group Page', ->
         page.fillIn '#user-email', 'patrick_swayze@example.com'
         page.fillIn '#user-password', 'gh0stmovie'
         page.click '.sign-in-form__submit-button'
+        page.waitForReload()
         page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
         page.expectElement '.sidebar__content'
 
