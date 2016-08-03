@@ -7,7 +7,7 @@
   - else
     %strong
       =  @motion.author_name
-    = t(:'email.new_motion_created.context', group_full_name: @group.full_name, author: @author.name)
+    = t(:'email.new_motion_created.context', group_full_name: @group.full_name, author: @motion.author_name)
   %span
     %strong
       = link_to @motion.name, motion_url(@motion, @utm_hash)
