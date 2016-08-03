@@ -118,6 +118,9 @@ Checklist
 Aria labelling:
   todo: technically how and where to use aria labels. eg: labelled by examples. Also guideline for not saying "button" when labelling as screenreader knows this already
 
+Make sure that everything you interact with is a form element or link.
+When you write `aria-hidden:true` in haml you need to quote it so `aria-hidden: 'true'`
+
 ### Loomio specific accessibly tips
 
 Loomio is visually divided up in to Cards. Each card should be it's own `section` element with an `h2` for the card title. So all cards should start off like so:
@@ -136,7 +139,6 @@ A good thing to do is check your work with the [Tota11y](https://khan.github.io/
 - Ideally you submit screenshots of the feature with your pull request so that design correctness can be checked easily.
 - Please note in the pull request any divergences from the design
 
-
 ## Testing
 
 Currently there are 4 main testing components in Loomio. The rails app is tested with rspec and cucumber. The frontend app is tested with jasmine specs and protractor e2e tests.
@@ -154,7 +156,6 @@ Rspec / API Controller tests
 ## Code - mini version of fog creat code review.
 http://blog.fogcreek.com/effective-code-reviews-9-tips-from-a-converted-skeptic/
 http://blog.fogcreek.com/increase-defect-detection-with-our-code-review-checklist-example/
-
 
 Learnings 27 August:
 Make sure that everything you interact with is a form element or link.
