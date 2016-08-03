@@ -46,4 +46,5 @@ describe 'Logged out', ->
     page.fillIn '#user-email', 'patrick_swayze@example.com'
     page.fillIn '#user-password', 'gh0stmovie'
     page.click '.sign-in-form__submit-button'
+    page.waitForReload()
     page.expectText '.thread-previews-container', 'Recent discussion'
