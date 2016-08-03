@@ -3,4 +3,4 @@
 = @text
 
 - if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
-  = render "attachments", comment: @eventable
+  = render "attachments", resource: @eventable
