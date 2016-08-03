@@ -12,9 +12,6 @@ angular.module('loomioApp').directive 'navbar', ->
 
     $scope.isLoggedIn = AbilityService.isLoggedIn
 
-    $scope.homePageClicked = ->
-      $rootScope.$broadcast 'homePageClicked'
-
     $scope.toggleSidebar = ->
       $rootScope.$broadcast 'toggleSidebar'
 

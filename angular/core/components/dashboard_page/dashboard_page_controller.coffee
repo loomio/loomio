@@ -8,7 +8,6 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   @loaded =
     show_all:           0
     show_muted:         0
-    show_participating: 0
 
   @views =
     recent: {}
@@ -68,6 +67,5 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     ModalService.open GroupForm, group: -> Records.groups.build()
 
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
-  $scope.$on 'homePageClicked', => @setFilter()
 
   return

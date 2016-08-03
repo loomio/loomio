@@ -19,13 +19,6 @@ describe 'Dashboard Page', ->
     page.expectNoText('.dashboard-page__collections', 'Muted group discussion')
     page.expectNoText('.dashboard-page__collections', 'Old discussion')
 
-  it 'displays a view of participating threads', ->
-    page.click('.dashboard-page__filter-dropdown button')
-    page.click('.dashboard-page__filter-participating a')
-    page.expectNoText('.dashboard-page__collections','Starred proposal discussion')
-    page.expectNoText('.dashboard-page__collections','Recent discussion')
-    page.expectText('.dashboard-page__collections', 'Participating discussion')
-
   it 'displays a mute explanation modal when you first mute', ->
     browser.actions().mouseMove(threadPreview).perform()
     page.clickFirst('.thread-preview__mute')
