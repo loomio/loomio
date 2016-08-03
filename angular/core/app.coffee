@@ -14,7 +14,9 @@ angular.module('loomioApp', ['ngNewRouter',
                              'monospaced.elastic',
                              'angularMoment',
                              'offClick',
-                             'ngMaterial']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
+                             'ngMaterial',
+                             'angulartics',
+                             'angulartics.google.tagmanager']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
 
   # a decorator to allow mentio to work within modals
   # https://github.com/jeff-collins/ment.io/issues/68#issuecomment-200746901
