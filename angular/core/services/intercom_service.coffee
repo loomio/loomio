@@ -28,23 +28,25 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     boot: ->
       return unless $window? and $window.Intercom?
-      firstGroup = Session.user().parentGroups()[0]
+      user = Session.user()
+      firstGroup = user.parentGroups()[0]
 
       $window.Intercom 'boot',
-       admin_link: AppConfig.baseUrl+"/admin/users/#{Session.user().id}"
+       admin_link: AppConfig.baseUrl+"/admin/users/#{user.id}"
        app_id: AppConfig.intercomAppId
-       user_id: Session.user().id
+       user_id: user.id
        user_hash: AppConfig.intercomUserHash
-       email: Session.user().email
-       name: Session.user().name
-       username: Session.user().username
-       user_id: Session.user().id
-       created_at: Session.user().createdAt
-       is_coordinator: Session.user().isCoordinator
+       email: user.email
+       name: user.name
+       username: user.username
+       user_id: user.id
+       created_at: user.createdAt
+       is_coordinator: user.isCoordinator
        angular_ui: true
-       locale: Session.user().locale
+       locale: user.locale
        company: mapGroup(firstGroup)
-       has_profile_photo: Session.user().hasProfilePhoto()
+       has_profile_photo: user.hasProfilePhoto()
+       belongs_to_paying_group: user.belongsToPayingGroup
 
     shutdown: ->
       return unless @available()
