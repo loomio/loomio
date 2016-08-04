@@ -1,6 +1,4 @@
 class InvitePeopleMailer < BaseMailer
-  layout 'invite_people_mailer'
-
   def to_start_group(invitation:,
                      sender_email: ,
                      locale: )

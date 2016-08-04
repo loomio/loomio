@@ -1,9 +1,10 @@
-= t(:"email.to_join_group.invitation_text", member: @invitation.inviter.name, group_name: @invitation.invitable_name)
-\
-= t(:"email.to_join_group.link_help", group_name: @invitation.invitable_name)
-\
+= t(:"invitation.link_help", group_name: @invitation.invitable_name)
 = invitation_url(@invitation)
 \
-= @message_body if @message_body
+= @message_body
 \
-= t(:"email.value_proposition")
+= t(:"invitation.value_proposition")
+\
+= t(:"invitation.thanks")
+\
+= @invitation.inviter.name
