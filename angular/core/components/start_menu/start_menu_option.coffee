@@ -12,7 +12,7 @@ angular.module('loomioApp').directive 'startMenuOption', ->
         when 'startGroup'
           ModalService.open GroupForm, group: -> Records.groups.build()
         when 'startThread'
-          ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: $scope.currentGroupId())
+          ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: Session.currentGroupId())
     if $scope.hotkey
       KeyEventService.registerKeyEvent $scope, $scope.hotkey, $scope.openModal
 
