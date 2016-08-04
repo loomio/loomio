@@ -283,6 +283,10 @@ class User < ActiveRecord::Base
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
+  def belongs_to_paying_group
+    groups.paying.any?
+  end
+
   protected
   def password_required?
     !password.nil? || !password_confirmation.nil?

@@ -25,6 +25,7 @@ class Group < ActiveRecord::Base
 
   default_scope { includes(:default_group_cover) }
 
+  scope :paying, -> { joins(:subscription).where('subscription.kind = ?', 'paid') }
   scope :categorised_any, -> { where('groups.category_id IS NOT NULL') }
   scope :in_category, -> (category) { where(category_id: category.id) }
 
@@ -32,9 +33,6 @@ class Group < ActiveRecord::Base
   scope :published, lambda { where(archived_at: nil) }
 
   scope :parents_only, -> { where(parent_id: nil) }
-
-  scope :is_subscription, -> { where(is_commercial: true) }
-  scope :is_donation, -> { where('is_commercial = false or is_commercial IS NULL') }
 
   scope :sort_by_popularity, -> { order('memberships_count DESC') }
 
