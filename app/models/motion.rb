@@ -43,8 +43,6 @@ class Motion < ActiveRecord::Base
     motion.voters.count
   end
 
-  update_counter_cache :group, :proposal_outcomes_count
-
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
   scope :lapsed_but_not_closed,    -> { voting.lapsed }
