@@ -44,6 +44,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
        angular_ui: true
        locale: Session.user().locale
        company: mapGroup(firstGroup)
+       has_profile_photo: Session.user().hasProfilePhoto()
 
     shutdown: ->
       return unless @available()
