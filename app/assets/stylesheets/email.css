@@ -39,7 +39,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 .invite-people-mailer {
   text-align: center;
   background-color: #F1F1F1;
-  font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
   padding: 35px 25px;
 }
 
@@ -52,13 +51,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   padding: 30px 20px;
 }
 
-.invite-people-mailer__invitation-text {
-  margin-bottom: 30px;
-}
-
 .invite-people-mailer__message-container {
-  background-color: #F1F1F1;
-  border-radius: 4px;
   padding: 30px 20px;
 }
 
@@ -66,13 +59,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   font-size: 14px;
   font-style: italic;
   margin: 15px 50px 30px;
-}
-
-.invite-people-mailer__link-container {
-  background-color: #F1F1F1;
-  border-radius: 4px;
-  padding: 50px 20px;
-  margin-bottom: 30px;
 }
 
 .invite-people-mailer__accept-invitation {
@@ -88,7 +74,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   white-space: nowrap;
 }
 
-.invite-people-mailer__tagline {
+.invite-people-mailer__value-proposition {
   font-size: 16px;
   font-weight: bold;
   margin: 30px 0 0;

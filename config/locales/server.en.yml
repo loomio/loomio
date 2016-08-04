@@ -26,16 +26,24 @@ en:
       content: 'You''ve been invited to participate in the discussion: %{discussion}'
       message_intro: "%{who} says:"
       link: Join the discussion
+    value_proposition_html: "Loomio is a place for groups to<br>make decisions together"
+    value_proposition: "Loomio is a place for groups to make decisions together"
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
+      invitation_text: "%{member} has invited you to join their group %{group_name}."
       invitation_text_html: "has invited you to join their group"
+      link_help: "Click below to join %{group_name} and get started:"
       accept_invitation: "Accept invitation"
-      place_for_groups: "Loomio is a place for groups to"
-      make_decisions_together: "make decisions together"
     resend_to_join_group:
       subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
     to_start_group:
-      subject: 'Set up your new Loomio group: %{group_name}'
+      subject: "Set up your new Loomio group: %{group_name}"
+      hi: "Hi %{name},"
+      intro: "Click the link below to set up your group %{group_name}:"
+      intro_html: "Click below to set up your group"
+      closing_message: "If you’ve got any questions or if there’s anything at all we can do to help you get up and running, just reply to this email."
+      thanks: "Thanks, the Loomio team"
+      loomio_team: "The Loomio Team"
     user_added_to_a_group:
       subject: "%{who} has added you to %{which_group}"
       content: "%{who} has added you to %{which_group} on Loomio. Click here to go to the group:"
@@ -70,13 +78,10 @@ en:
     new_comment:
       context: 'commented in'
     group_membership_approved:
-      intro: Your request for access to the group '%{group_name}' on Loomio has been approved.
+      intro: "Your request for access to the group %{group_name} on Loomio has been approved."
+      intro_html: "Your request for access to the group <strong>%{group_name}</strong> on Loomio has been approved."
       subject: "%{prefix} Membership approved"
-    invitation:
-      hi: Hi %{name},
-      intro: 'Click the link below to set up your group %{group_name}:'
-      closing_message: If you’ve got any questions or if there’s anything at all we can do to help you get up and running, just reply to this email.
-      loomio_team: The Loomio Team
+      join_group: "Join group"
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
       subject: "%{who} has requested to join %{which_group}"

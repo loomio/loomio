@@ -1,17 +1,13 @@
-.invite-people-mailer
-  .invite-people-mailer__container
-    = render '/mailer_header'
-    .invite-people-mailer__body
-      .invite-people-mailer__invitation-text
-        %p= t("email.invitation.hi", name: @invitation.recipient_name.to_s.split(" ").first)
-        %p= t("email.invitation.intro", group_name: @invitation.invitable_name)
-      .invite-people-mailer__link-container
-        = link_to "Start my group!", invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
-      %p= t("email.invitation.closing_message")
-      = image_tag '/img/emojis//emojione/2764.png', alt: 'Heart', class: 'invite-people-mailer__heart-icon'
-      %br
-      = t("email.invitation.loomio_team")
-      .invite-people-mailer__tagline
-        = t("email.to_join_group.place_for_groups")
-        %br
-        = t("email.to_join_group.make_decisions_together")
+= t(:"email.to_start_group.hi", name: @invitation.recipient_name.to_s.split(" ").first)
+%p
+  = t(:"email.to_start_group.intro_html")
+  %br
+  %strong= @invitation.invitable_name
+.invite-people-mailer__message-container
+  = link_to "Start my group!", invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
+%p= t(:"email.to_start_group.closing_message")
+= image_tag '/img/emojis//emojione/2764.png', alt: 'Heart', class: 'invite-people-mailer__heart-icon'
+%br
+= t(:"email.to_start_group.loomio_team")
+.invite-people-mailer__value-proposition
+  = t("email.value_proposition_html")
