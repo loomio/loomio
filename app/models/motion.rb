@@ -43,6 +43,8 @@ class Motion < ActiveRecord::Base
     motion.voters.count
   end
 
+  update_counter_cache :group, :proposal_outcomes_count
+
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
   scope :lapsed_but_not_closed,    -> { voting.lapsed }
@@ -51,7 +53,8 @@ class Motion < ActiveRecord::Base
   scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.visible_to_public) }
   scope :voting_or_closed_after,   -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
-  scope :chronologically, -> { order('created_at asc') }
+  scope :chronologically,          -> { order('created_at asc') }
+  scope :with_outcomes,            -> { where('motions.outcome IS NOT NULL AND motions.outcome != ?', '') }
 
   scope :closing_soon_not_published, -> {
      voting
