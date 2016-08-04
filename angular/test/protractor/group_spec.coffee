@@ -138,6 +138,14 @@ describe 'Group Page', ->
       page.loadPath('setup_group_with_welcome_modal')
       page.expectElement '.group-welcome-modal'
 
+    it 'only shows the welcome model once per user', ->
+      page.loadPath('setup_group_with_welcome_modal')
+      page.click '.group-welcome-modal__close-button'
+      page.click '.sidebar__list-item-button--explore'
+      page.clickLast '.explore-page__group'
+      page.click '.join-group-button__join-group'
+      page.expectNoElement '.group-welcome-modal'
+
     it 'does not reshow the welcome modal', ->
       page.loadPath('setup_group_with_welcome_modal')
       page.click '.group-welcome-modal__close-button'
