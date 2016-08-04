@@ -140,7 +140,7 @@ class Motion < ActiveRecord::Base
     if voting?
       group.memberships_count
     else
-      self[:members_count]
+      self[:members_count] || 0
     end
   end
 
