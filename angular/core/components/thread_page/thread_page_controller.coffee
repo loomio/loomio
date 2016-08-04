@@ -54,6 +54,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
       $rootScope.$broadcast 'currentComponent',
         page: 'threadPage'
+        group: @discussion.group()
         links:
           canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private

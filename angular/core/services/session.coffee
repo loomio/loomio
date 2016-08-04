@@ -31,3 +31,6 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()
+
+  currentGroupId: ->
+    @currentGroup? && @currentGroup.id

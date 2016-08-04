@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
       _.filter Session.user().groups(), (group) ->
         AbilityService.canAddMembers(group)
 
-    $scope.form = Records.invitationForms.build(groupId: group.id or (_.first($scope.availableGroups()) or {}).id)
+    $scope.form = Records.invitationForms.build(groupId: Session.currentGroupId() or (_.first($scope.availableGroups()) or {}).id)
     $scope.fetchShareableInvitation = ->
       Records.invitations.fetchShareableInvitationByGroupId($scope.form.group().id)
     $scope.fetchShareableInvitation()
