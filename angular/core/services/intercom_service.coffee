@@ -5,7 +5,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     key: group.key
     name: group.name
     description: group.description.substring(0, 250)
-    admin_link: AppConfig.baseUrl+"/admin/groups/#{group.key}"
+    admin_link: AppConfig.baseUrl+"admin/groups/#{group.key}"
     subscription_kind: group.subscriptionKind
     subscription_plan: group.subscriptionPlan
     subscription_expires_at: group.subscriptionExpiresAt
