@@ -10,6 +10,7 @@ Background:
     Then I should be following the discussion
 
   Scenario: I create a discussion and am following it
+    Given I have set my preferences to email me activity I'm following
     When I create a discussion in my group
     Then I should be following the discussion
 

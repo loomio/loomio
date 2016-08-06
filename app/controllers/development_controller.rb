@@ -102,7 +102,12 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_with_welcome_modal
+    another_group = Group.new(name: 'Another group',
+                              discussion_privacy_options: :public_only,
+                              is_visible_to_public: true,
+                              membership_granted_upon: :request)
     group = Group.new(name: 'Welcomed group')
+    StartGroupService.start_group(another_group)
     StartGroupService.start_group(group)
     group.add_admin! patrick
     sign_in patrick
