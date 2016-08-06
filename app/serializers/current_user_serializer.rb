@@ -1,7 +1,7 @@
 class CurrentUserSerializer < UserSerializer
   attributes :email, :email_when_proposal_closing_soon, :email_missed_yesterday,
              :email_when_mentioned, :email_on_participation, :selected_locale, :locale,
-             :default_membership_volume, :experiences, :is_coordinator, :belongs_to_paying_group
+             :default_membership_volume, :experiences, :is_coordinator
 
   has_many :memberships
 
