@@ -1,6 +1,7 @@
 angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, LmoUrlService) ->
   currentGroup = null
   mapGroup = (group) ->
+    return null unless group?
     id: group.id
     key: group.key
     name: group.name
