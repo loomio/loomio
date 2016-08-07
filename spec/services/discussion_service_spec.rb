@@ -64,6 +64,17 @@ describe 'DiscussionService' do
         expect(DiscussionReader.for(user: user, discussion: discussion).participating).to eq true
       end
 
+      it 'sets the volume to loud if the user has set email_on_participation' do
+        user.update(email_on_participation: true)
+        DiscussionService.create(discussion: discussion, actor: user)
+        expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq 'loud'
+      end
+
+      it 'does not set the volume if the user has not set email_on_participation' do
+        DiscussionService.create(discussion: discussion, actor: user)
+        expect(DiscussionReader.for(user: user, discussion: discussion).volume).to_not eq 'loud'
+      end
+
       it 'fires a NewDiscussion event' do
         Events::NewDiscussion.should_receive(:publish!).with(discussion).and_return(true)
         DiscussionService.create(discussion: discussion,
