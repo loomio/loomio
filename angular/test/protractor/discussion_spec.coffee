@@ -125,6 +125,7 @@ describe 'Discussion Page', ->
       page.fillIn '#user-email', 'jennifer_grey@example.com'
       page.fillIn '#user-password', 'gh0stmovie'
       page.click '.sign-in-form__submit-button'
+      page.waitForReload()
       page.expectFlash 'Signed in successfully'
 
       page.fillIn '.comment-form__comment-field', 'I am new!'

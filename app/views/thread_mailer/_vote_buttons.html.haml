@@ -1,15 +1,26 @@
-= link_to t(:"position_verbs.yes").capitalize,
-          motion_url(motion, @utm_hash.merge(position: :yes)),
-          class: 'yes-link'
-= " - "
-= link_to t(:"position_verbs.abstain").capitalize,
-          motion_url(motion, @utm_hash.merge(position: :abstain)),
-          class: 'abstain-link'
-= " - "
-= link_to t(:"position_verbs.no").capitalize,
-          motion_url(motion, @utm_hash.merge(position: :no)),
-          class: 'no-link'
-= " - "
-= link_to t(:"position_verbs.block").capitalize,
-          motion_url(motion, @utm_hash.merge(position: :block)),
-          class: 'block-link'
+%table.thread-mailer__vote-buttons
+  %tr
+    %td.thread-mailer__vote-button
+      = link_to(motion_url(motion, @utm_hash.merge(position: :yes)), class: 'thread-mailer__vote-button-link') do
+        = image_tag("thread_mailer/vote-button-yes.png", alt: t(:"vote_button_alt_text.yes"))
+        %br
+        .thread-mailer__vote-button-verb
+          = t(:"position_verbs.yes").capitalize
+    %td.thread-mailer__vote-button
+      = link_to(motion_url(motion, @utm_hash.merge(position: :abstain)), class: 'thread-mailer__vote-button-link') do
+        = image_tag("thread_mailer/vote-button-abstain.png", alt: t(:"vote_button_alt_text.abstain"))
+        %br
+        .thread-mailer__vote-button-verb
+          = t(:"position_verbs.abstain").capitalize
+    %td.thread-mailer__vote-button
+      = link_to(motion_url(motion, @utm_hash.merge(position: :no)), class: 'thread-mailer__vote-button-link') do
+        = image_tag("thread_mailer/vote-button-no.png", alt: t(:"vote_button_alt_text.no"))
+        %br
+        .thread-mailer__vote-button-verb
+          = t(:"position_verbs.no").capitalize
+    %td.thread-mailer__vote-button
+      = link_to(motion_url(motion, @utm_hash.merge(position: :block)), class: 'thread-mailer__vote-button-link') do
+        = image_tag("thread_mailer/vote-button-block.png", alt: t(:"vote_button_alt_text.block"))
+        %br
+        .thread-mailer__vote-button-verb
+          = t(:"position_verbs.block").capitalize

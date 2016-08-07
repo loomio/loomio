@@ -1,4 +1,4 @@
-%h4= link_to @motion.name, motion_url(@motion, @utm_hash)
+%h4= link_to @motion.name, motion_url(@motion, @utm_hash) unless no_title
 
 %table
   %tr
@@ -17,8 +17,8 @@
     -@motion.grouped_unique_votes.each do |vote|
       %tr
         %td
-          = image_tag "thread_mailer/#{vote.position}-24.png", alt: "#{vote.position} icon"
+          = image_tag "thread_mailer/vote-icon-#{vote.position}.png", alt: "#{vote.position} icon", class: "thread-mailer__vote-icon"
         %td= vote.user_name
-        %td= vote.statement
+        %td= render_rich_text(vote.statement)
 
 %p= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => @motion.voters_count, denominator:  @motion.members_count)

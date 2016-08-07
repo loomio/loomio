@@ -69,7 +69,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     Session.user().isMemberOf(@group) and
     !@group.trialIsOverdue() and
     !@subscriptionSuccess and
-    !Session.user().hasExperienced("welcomeModal", @group)
+    !(Session.user().hasExperienced("welcomeModal") or
+      Session.user().hasExperienced("welcomeModal", @group)) # honour old experiences on memberships
 
   @showPaymentModal = =>
     AbilityService.canSeeTrialCard(@group) and
@@ -78,7 +79,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @handleWelcomeModal = =>
     if @showWelcomeModal()
       ModalService.open GroupWelcomeModal, group: => @group
-      Records.memberships.saveExperience("welcomeModal", Session.user().membershipFor(@group))
+      Records.users.saveExperience("welcomeModal")
 
   @handlePaymentModal = =>
     if @showPaymentModal()

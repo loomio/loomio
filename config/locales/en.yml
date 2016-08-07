@@ -594,6 +594,11 @@ en:
       'no': disagreed
       abstain: abstained
       block: blocked
+  vote_button_alt_text:
+    'yes': 'Yes button'
+    abstain: 'Abstain button'
+    'no': 'No button'
+    block: 'Block button'
   unable_to_vote:
     permission_denied: You do not have permission to vote on this motion
     motion_closed: This motion has already closed

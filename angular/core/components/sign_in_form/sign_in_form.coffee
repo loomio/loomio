@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'SignInForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.session,
       flashSuccess:    'sign_in_form.signed_in'
-      successCallback: (data) -> Session.login(data)
+      successCallback: (data) -> $window.location.reload() # Session.login(data)
 
     $scope.redirectTo = (href) ->
       $window.location = href

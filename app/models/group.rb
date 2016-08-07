@@ -33,9 +33,6 @@ class Group < ActiveRecord::Base
 
   scope :parents_only, -> { where(parent_id: nil) }
 
-  scope :is_subscription, -> { where(is_commercial: true) }
-  scope :is_donation, -> { where('is_commercial = false or is_commercial IS NULL') }
-
   scope :sort_by_popularity, -> { order('memberships_count DESC') }
 
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
@@ -161,7 +158,6 @@ class Group < ActiveRecord::Base
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
   delegate :name, to: :parent, prefix: true
-  delegate :locale, to: :creator
 
   paginates_per 20
 
@@ -189,6 +185,7 @@ class Group < ActiveRecord::Base
   define_counter_cache(:memberships_count)        { |group| group.memberships.count }
   define_counter_cache(:admin_memberships_count)  { |group| group.admin_memberships.count }
   define_counter_cache(:invitations_count)        { |group| group.invitations.count }
+  define_counter_cache(:proposal_outcomes_count)  { |group| group.motions.with_outcomes.count }
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
@@ -218,6 +215,10 @@ class Group < ActiveRecord::Base
 
   def creator_id
     self[:creator_id] || creator.try(:id)
+  end
+
+  def locale
+    creator.try(:locale)
   end
 
   def coordinators

@@ -46,7 +46,8 @@ en:
     view_group: Click here to view the group on Loomio
     view_proposal: View this proposal on Loomio
     create_discussion:
-      intro: "%{who} started a discussion in %{which_group}:"
+      intro_html: "started a thread:"
+      intro: "%{who} started a thread:"
     create_proposal:
       intro: A new proposal was created in a Loomio group that you belong to.
       closes_in: Closes in
@@ -63,8 +64,11 @@ en:
       heres_what_happened: "Here’s what happened on Loomio yesterday."
       marked_as_read_success: Everything from the email has been marked as read
     comment_replied_to:
-      context: '%{author_name} replied to your comment in the discussion "%{discussion_title}"'
+      context_html: 'replied to your comment in'
+      context: '%{author_name} replied to your comment in %{discussion_title}'
       subject: "%{who} replied to your comment in the %{which} group on Loomio"
+    new_comment:
+      context: 'commented in'
     group_membership_approved:
       intro: Your request for access to the group '%{group_name}' on Loomio has been approved.
       subject: "%{prefix} Membership approved"
@@ -80,11 +84,12 @@ en:
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
     mentioned:
-      context: '%{author_name} mentioned you while discussing "%{discussion_title}"'
+      context_html: "mentioned you while discussing"
+      context: "%{author_name} mentioned you while discussing %{discussion_title}"
       subject: '%{who} mentioned you while discussing "%{which}"'
     new_motion_created:
       subject: 'Proposal: %{proposal_title}'
-      context: "%{author} created a proposal in %{group_full_name}:"
+      context: "started a proposal in %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: The proposal has closed.
       specify_outcome_and_notify_group: Create an outcome and send it to your group!
@@ -108,12 +113,14 @@ en:
       turn_on_notifications_text: 'Turn on email to receive further activity in this discussion: %{url}'
       change_email_preferences_html: Change your <a href='%{email_preferences_url}'>email preferences</a> to unsubscribe from these emails.
       change_preferences: 'Change your email preferences:'
-      new_motion: "%{who} proposed:"
+      new_motion_html: 'started a proposal:'
+      new_motion: '%{who} started a proposal:'
       motion_closing_soon: 'Proposal closing in 24 hours:'
       proposal_closed: 'Proposal closed:'
       specify_outcome_html: Your proposal has closed. <a href='%{link}'>Specify an outcome</a> to let everyone know what the result is.
       specify_outcome: 'Your proposal has closed. Specify an outcome to let everyone know what the result is:'
-      outcome_created: "%{who} set a proposal outcome:"
+      outcome_created_html: "shared an outcome for the proposal:"
+      outcome_created: "%{who} shared an outcome for the proposal:"
       you_agreed: You %{past_tense_position}
     analytics:
       subject: "%{which_group}'s week on Loomio"
