@@ -95,6 +95,7 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :public_discussions_count
   update_counter_cache :group, :motions_count
   update_counter_cache :group, :closed_motions_count
+  update_counter_cache :group, :proposal_outcomes_count
 
   def organisation_id
     group.parent_id || group_id
