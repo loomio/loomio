@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'FormService', ($rootScope, $mdDialog, FlashService, DraftService, AbilityService, $filter) ->
+angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, DraftService, AbilityService, $filter) ->
   new class FormService
 
     confirmDiscardChanges: (event, record) ->
