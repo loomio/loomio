@@ -1,4 +1,5 @@
 class Api::TranslationsController < Api::RestfulController
+  skip_before_action :fetch_and_authorize_resource
 
   class TranslationUnavailableError < Exception; end
   rescue_from(TranslationUnavailableError) { |e| respond_with_standard_error e, 400 }
