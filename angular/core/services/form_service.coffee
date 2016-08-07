@@ -44,7 +44,6 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, $mdDialog, Flash
 
     submit: (scope, model, options = {}) ->
       DraftService.applyDrafting(scope, model, options.draftFields) if options.draftFields and AbilityService.isLoggedIn()
-      scope.$close = $mdDialog.cancel
       submitFn = options.submitFn or model.save
       (prepareArgs) ->
         return if scope.isDisabled
