@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     key: group.key
     name: group.name
     description: group.description.substring(0, 250)
-    admin_link: AppConfig.baseUrl+"/admin/groups/#{group.key}"
+    admin_link: LmoUrlService.group(group, {}, { noStub: true, absolute: true, namespace: 'admin/groups' })
     subscription_kind: group.subscriptionKind
     subscription_plan: group.subscriptionPlan
     subscription_expires_at: group.subscriptionExpiresAt
@@ -34,7 +34,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       firstGroup = user.parentGroups()[0]
 
       $window.Intercom 'boot',
-       admin_link: AppConfig.baseUrl+"/admin/users/#{user.id}"
+       admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
        app_id: AppConfig.intercomAppId
        user_id: user.id
        user_hash: AppConfig.intercomUserHash
