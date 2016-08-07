@@ -1,5 +1,14 @@
-%h4{style: "margin: 10px 0;"}= t :attachments
-%ul{style: "margin: 5px 0 15px; padding: 0px"}
-  - comment.attachments.each do |attachment|
-    %li{style: "list-style-type: none; margin-bottom: 10px;"}
-      = link_to attachment.filename, attachment.location
+- if resource.attachments.any?
+  %h4= t :attachments
+  %ul.thread-mailer__list
+    - resource.attachments.each do |attachment|
+      %li.thread-mailer__list-item
+        - if attachment.is_an_image?
+          %a{href: attachment.location, target: '_blank'}
+            %img{src: attachment.location, alt: attachment.filename}
+        - else
+          %a.thread-mailer__file-attachment{href: attachment.location, target: '_blank'}
+            %span
+              = image_tag('thread_mailer/paperclip.png', alt: 'attachment icon', class: 'thread-mailer__attachment-icon')
+            %span.thread-mailer__file-attachment-filername
+              = attachment.filename

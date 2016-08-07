@@ -41,6 +41,8 @@
     "angular-translate-loader-url": "~2.7.2",
     "angular-ui-bootstrap": "~> 0.14.3",
     "angular_record_store": "~2.6.0",
+    "angulartics": "1.1.2",
+    "angulartics-google-tag-manager": "0.0.1",
     "bootstrap-sass": "~> 3.3.5",
     "checklist-model": "latest",
     "emojione": "^2.1.0",

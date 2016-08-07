@@ -61,26 +61,23 @@ class DiscussionReader < ActiveRecord::Base
     end
   end
 
-  def viewed!(age_of_last_read_item = nil)
-    return if user.nil?
-    read_at = age_of_last_read_item || discussion.last_activity_at
+  def viewed!(read_at = discussion.last_activity_at)
+    return unless user
 
-    if self.last_read_at.nil? or (read_at >= self.last_read_at)
-      self.last_read_at = read_at
-      reset_counts!
-    end
-
+    reset_counts! read_at
     EventBus.broadcast('discussion_reader_viewed!', discussion, user)
   end
 
-  def reset_counts!
-    self.read_items_count = read_items.count
-    self.read_salient_items_count = read_salient_items.count
-    self.last_read_sequence_id = if read_items_count == 0
-                                   0
-                                 else
-                                   read_items.last.sequence_id
-                                 end
+  def reset_counts!(read_at = self.last_read_at)
+    return if (!read_at && !self.last_read_at) ||                           # no read_at given and no last_read_at is set
+              (read_at && self.last_read_at && read_at < self.last_read_at) # last_read_at exists, but is before the given read_at
+
+    assign_attributes(
+      last_read_at:             read_at,
+      last_read_sequence_id:    self.read_items(read_at).maximum(:sequence_id).to_i,
+      read_items_count:         self.read_items(read_at).count,
+      read_salient_items_count: self.read_salient_items(read_at).count
+    )
     save!(validate: false)
   end
 

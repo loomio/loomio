@@ -1,6 +1,4 @@
 = t(:"email.thread_mailer.outcome_created", who: @motion.outcome_author.name)
 = @motion.outcome
 \
-= render 'motion_with_positions'
-\
-= render 'footer', link: motion_url(@motion, @utm_hash)
+= render 'motion_with_positions', no_title: true

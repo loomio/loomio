@@ -1,5 +1,11 @@
-= render_rich_text(@comment.body, @comment.uses_markdown)
+= render 'avatar', author: @author
+.thread-mailer__subject
+  %strong= @author.name
+  %span= t(:"email.new_comment.context")
+  %span
+    %strong
+      = link_to @discussion.title, discussion_url(@discussion)
+.thread-mailer__body
+  = render_rich_text(@comment.body, @comment.uses_markdown)
 - if @comment.attachments.any?
-  = render "attachments", comment: @comment
-
-= render "footer", link: comment_url_helper(@comment)
+  = render "attachments", resource: @comment

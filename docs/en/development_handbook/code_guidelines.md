@@ -6,6 +6,9 @@ Note: would be great to break this into Ruby and Javascript development parts.
 
 # Frontend development
 
+## lmo-href
+You'll want to use this directive when linking to stuff within the app. it supports command click to open in new window.
+
 
 ## Naming stuff (BEM)
 
@@ -115,6 +118,9 @@ Checklist
 Aria labelling:
   todo: technically how and where to use aria labels. eg: labelled by examples. Also guideline for not saying "button" when labelling as screenreader knows this already
 
+Make sure that everything you interact with is a form element or link.
+When you write `aria-hidden:true` in haml you need to quote it so `aria-hidden: 'true'`
+
 ### Loomio specific accessibly tips
 
 Loomio is visually divided up in to Cards. Each card should be it's own `section` element with an `h2` for the card title. So all cards should start off like so:
@@ -132,8 +138,6 @@ A good thing to do is check your work with the [Tota11y](https://khan.github.io/
 ## Design
 - Ideally you submit screenshots of the feature with your pull request so that design correctness can be checked easily.
 - Please note in the pull request any divergences from the design
-
-
 
 ## Testing
 
@@ -153,43 +157,6 @@ Rspec / API Controller tests
 http://blog.fogcreek.com/effective-code-reviews-9-tips-from-a-converted-skeptic/
 http://blog.fogcreek.com/increase-defect-detection-with-our-code-review-checklist-example/
 
-
 Learnings 27 August:
 Make sure that everything you interact with is a form element or link.
 When you write `aria-hidden:true` in haml you need to quote it so `aria-hidden: 'true'`
-
-## using dropdown menus
-
-different dropdown versions:
-
-### dropdown-menu
-
-Used for the most simple context menus, e.g. thread context, proposal options, comment options.
-
-![image](https://cloud.githubusercontent.com/assets/970124/10567491/d15bbddc-7662-11e5-86b9-b8f125ad6419.png)
-
-These are small on desktop and expand out to full width when you are on a tiny screen:
-
-![image](https://cloud.githubusercontent.com/assets/970124/10567498/f669e090-7662-11e5-8499-d4071f78516b.png)
-
-### dropdown-menu--with-icons
-
-Used when you want to illustrate each option with an icon.
-
-User options:
-![image](https://cloud.githubusercontent.com/assets/970124/10567505/3cdc5530-7663-11e5-8255-e5420bd58b2e.png)
-
-Group options:
-![image](https://cloud.githubusercontent.com/assets/970124/10567507/45f0ae78-7663-11e5-8d78-b19a261cd4e6.png)
-
-
-### dropdown-menu--with-details
-
-Used when you have to explain what the options mean
-
-![image](https://cloud.githubusercontent.com/assets/970124/10567510/4f114a12-7663-11e5-928f-632ad8a26599.png)
-
----
-
-* all of them are aligned right
-* Should search and notifications dropdowns use the same pattern? Or is this good enough to merge and we can resolve that when we fix search results.

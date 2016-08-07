@@ -11,10 +11,11 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     if AbilityService.isLoggedIn()
       $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
       MessageChannelService.subscribeToGroup(@group)
-      Records.drafts.fetchFor(@group)
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
       @handlePaymentModal()
+
+    Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount
@@ -68,7 +69,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     Session.user().isMemberOf(@group) and
     !@group.trialIsOverdue() and
     !@subscriptionSuccess and
-    !Session.user().hasExperienced("welcomeModal", @group)
+    !(Session.user().hasExperienced("welcomeModal") or
+      Session.user().hasExperienced("welcomeModal", @group)) # honour old experiences on memberships
 
   @showPaymentModal = =>
     AbilityService.canSeeTrialCard(@group) and
@@ -77,7 +79,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @handleWelcomeModal = =>
     if @showWelcomeModal()
       ModalService.open GroupWelcomeModal, group: => @group
-      Records.memberships.saveExperience("welcomeModal", Session.user().membershipFor(@group))
+      Records.users.saveExperience("welcomeModal")
 
   @handlePaymentModal = =>
     if @showPaymentModal()

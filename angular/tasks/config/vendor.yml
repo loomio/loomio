@@ -34,6 +34,8 @@ js:
   - angular-off-click/offClick.js
   - angular-material/angular-material.js
   - angular-aria/angular-aria.js
+  - angulartics/src/angulartics.js
+  - angulartics/src/angulartics-gtm.js
 execjs:
   - emojione/lib/js/emojione.js
 css:

@@ -167,6 +167,19 @@ en:
       twitter: 'Log in with Twitter'
       google: 'Log in with Google'
       github: 'Log in with Github'
+
+  sign_up_form:
+    title: "Welcome to Loomio! Let's get you set up"
+    name_label: 'Your name:'
+    name_placeholder: 'Jane Doe'
+    email_label: 'Email:'
+    email_placeholder: 'you@example.com'
+    password_label: 'Password:'
+    password_confirmation_label: 'That password again:'
+    sign_in_message: 'Have an account already?'
+    sign_in: 'Sign In'
+    sign_up: 'Create an Account'
+
   signed_out_modal:
     title: "Your session has been ended"
     message: "You have been logged out of Loomio from another window. Please sign back in to continue."
@@ -198,12 +211,17 @@ en:
     recent: 'Recent'
     unread: 'Unread'
     muted: 'Muted'
-    explore: 'Explore public groups'
+    explore: 'Public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
     help: 'Help'
     contact: 'Contact Loomio'
     sign_out: 'Sign out'
+    aria_labels:
+      heading: 'Sidebar'
+      threads_list: 'Threads actions'
+      groups_list: 'Groups'
+      user_list: 'User actions'
 
   navbar:
     recent_title: 'Go to dashboard'
@@ -766,18 +784,14 @@ en:
 
   dashboard_page:
     aria_label: 'Dashboard'
-    options:
-      aria_label: 'Dashboard filtering options'
     no_groups:
       show_all: You don't have any recent threads because you are not a member of any groups.
-      show_participating: You haven't participated in any threads recently because you are not a member of any groups.
       show_muted: You don't have any muted threads because you are not a member of any groups.
       start: Start
       or: or
       join_group: <a href="/explore">join</a> a group to see threads.
     no_threads:
       show_all: You don't have any recent threads.
-      show_participating: You haven't participated in any threads recently.
       show_starred: You don't have any starred threads.
       show_proposals: There are no proposals currently active.
       show_muted: You don't have any muted threads.
@@ -794,9 +808,6 @@ en:
       starred: Starred Threads
       starred_aria_label: Currently showing threads I've marked as important
       starred_description: View only threads you have marked as important
-      participating: Participating threads
-      participating_aria_label: Currently showing threads I've participated
-      participating_description: View only threads you have participated in
       proposals: Proposals
       proposals_aria_label: Currently showing threads with active proposals
       proposals_description: View only threads with active proposals

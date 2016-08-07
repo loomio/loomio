@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
@@ -281,6 +281,11 @@ class User < ActiveRecord::Base
 
   def send_devise_notification(notification, *args)
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
+  protected
+  def password_required?
+    !password.nil? || !password_confirmation.nil?
   end
 
   private

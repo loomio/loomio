@@ -9,8 +9,18 @@ describe 'Login', ->
       page.fillIn '#user-email', 'jennifer_grey@example.com'
       page.fillIn '#user-password', 'gh0stmovie'
       page.click '.sign-in-form__submit-button'
+      page.waitForReload()
       page.expectElement '.sidebar__content'
       page.expectFlash 'Signed in successfully'
+
+    it 'updates the locale on login', ->
+      page.loadPath 'setup_spanish_user'
+      page.click '.navbar__sign-in'
+      page.fillIn '#user-email', 'patrick_swayze@example.com'
+      page.fillIn '#user-password', 'gh0stmovie'
+      page.click '.sign-in-form__submit-button'
+      page.waitForReload()
+      page.expectText '.explore-page', 'Explorar grupos en Loomio'
 
     it 'does not log in in-app when password is incorrect', ->
       page.loadPath 'view_open_group_as_visitor'
@@ -18,6 +28,7 @@ describe 'Login', ->
       page.fillIn '#user-email', 'jennifer_grey@example.com'
       page.fillIn '#user-password', 'notapassword'
       page.click '.sign-in-form__submit-button'
+      page.waitForReload()
       page.expectElement '.lmo-validation-error', 'Invalid email or password'
 
     it 'takes you to the explore page when not a member of any groups', ->

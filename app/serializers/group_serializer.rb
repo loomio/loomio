@@ -18,6 +18,7 @@ class GroupSerializer < ActiveModel::Serializer
              :members_can_vote,
              :motions_count,
              :closed_motions_count,
+             :proposal_outcomes_count,
              :discussions_count,
              :public_discussions_count,
              :group_privacy,
@@ -39,7 +40,8 @@ class GroupSerializer < ActiveModel::Serializer
              :subscription_expires_at,
              :is_subgroup_of_hidden_parent,
              :show_legacy_trial_expired_modal,
-             :enable_experiments
+             :enable_experiments,
+             :locale
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 

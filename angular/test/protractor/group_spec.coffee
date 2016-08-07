@@ -70,6 +70,7 @@ describe 'Group Page', ->
         page.fillIn '#user-email', 'jennifer_grey@example.com'
         page.fillIn '#user-password', 'gh0stmovie'
         page.click '.sign-in-form__submit-button'
+        page.waitForReload()
         page.expectText '.group-theme__name', 'Closed Dirty Dancing Shoes'
         page.expectText '.thread-previews-container', 'This thread is private'
         page.expectElement '.sidebar__content'
@@ -79,6 +80,7 @@ describe 'Group Page', ->
         page.fillIn '#user-email', 'patrick_swayze@example.com'
         page.fillIn '#user-password', 'gh0stmovie'
         page.click '.sign-in-form__submit-button'
+        page.waitForReload()
         page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
         page.expectElement '.sidebar__content'
 
@@ -135,6 +137,14 @@ describe 'Group Page', ->
     it 'shows the welcome modal when group is created', ->
       page.loadPath('setup_group_with_welcome_modal')
       page.expectElement '.group-welcome-modal'
+
+    it 'only shows the welcome model once per user', ->
+      page.loadPath('setup_group_with_welcome_modal')
+      page.click '.group-welcome-modal__close-button'
+      page.click '.sidebar__list-item-button--explore'
+      page.clickLast '.explore-page__group'
+      page.click '.join-group-button__join-group'
+      page.expectNoElement '.group-welcome-modal'
 
     it 'does not reshow the welcome modal', ->
       page.loadPath('setup_group_with_welcome_modal')

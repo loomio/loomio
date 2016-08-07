@@ -28,6 +28,11 @@ class DevelopmentController < ApplicationController
     redirect_to new_user_session_url
   end
 
+  def setup_spanish_user
+    patrick.update(selected_locale: :es)
+    redirect_to explore_path
+  end
+
   def setup_logged_out_group_member
     patrick
     test_group
@@ -97,7 +102,12 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_with_welcome_modal
+    another_group = Group.new(name: 'Another group',
+                              discussion_privacy_options: :public_only,
+                              is_visible_to_public: true,
+                              membership_granted_upon: :request)
     group = Group.new(name: 'Welcomed group')
+    StartGroupService.start_group(another_group)
     StartGroupService.start_group(group)
     group.add_admin! patrick
     sign_in patrick

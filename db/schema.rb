@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629045209) do
+ActiveRecord::Schema.define(version: 20160804083238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,6 +262,13 @@ ActiveRecord::Schema.define(version: 20160629045209) do
   add_index "discussion_search_vectors", ["discussion_id"], name: "index_discussion_search_vectors_on_discussion_id", using: :btree
   add_index "discussion_search_vectors", ["search_vector"], name: "discussion_search_vector_index", using: :gin
 
+  create_table "discussion_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "discussion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "discussions", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "author_id"
@@ -476,8 +483,9 @@ ActiveRecord::Schema.define(version: 20160629045209) do
     t.string   "region"
     t.string   "city"
     t.integer  "closed_motions_count",               default: 0,              null: false
-    t.boolean  "analytics_enabled",                  default: false,          null: false
     t.boolean  "enable_experiments",                 default: false
+    t.boolean  "analytics_enabled",                  default: false,          null: false
+    t.integer  "proposal_outcomes_count",            default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -744,6 +752,15 @@ ActiveRecord::Schema.define(version: 20160629045209) do
   end
 
   add_index "subscriptions", ["kind"], name: "index_subscriptions_on_kind", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.integer  "group_id"
+    t.string   "name"
+    t.string   "color"
+    t.integer  "discussion_tags_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "themes", force: :cascade do |t|
     t.text     "style"
