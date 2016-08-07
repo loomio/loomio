@@ -1,4 +1,5 @@
 class Api::DraftsController < Api::RestfulController
+  skip_before_action :fetch_and_authorize_resource, only: :show
 
   private
 
