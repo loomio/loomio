@@ -480,6 +480,7 @@ ActiveRecord::Schema.define(version: 20160804182549) do
     t.integer  "closed_motions_count",                           default: 0,              null: false
     t.boolean  "enable_experiments",                             default: false
     t.boolean  "analytics_enabled",                              default: false,          null: false
+    t.integer  "proposal_outcomes_count",                        default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
