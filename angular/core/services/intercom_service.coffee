@@ -56,14 +56,15 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     updateWithGroup: (group) ->
       return unless @available()
+      user = Session.user()
       return if currentGroup == group
       return if group.isSubgroup()
       return if !user.isMemberOf(group)
       currentGroup = group
       console.log 'update with group:', group
       $window.Intercom 'update',
-        email: Session.user().email
-        user_id: Session.user().id
+        email: user.email
+        user_id: user.id
         company: mapGroup(group)
 
     contactUs: ->
