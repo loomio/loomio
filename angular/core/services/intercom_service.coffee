@@ -24,7 +24,6 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     has_custom_cover: group.hasCustomCover
     invitations_count: group.invitationsCount
 
-
   service = new class IntercomService
     available: ->
       $window? and $window.Intercom? and $window.Intercom.booted?
@@ -61,6 +60,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       return if group.isSubgroup()
       return if !user.isMemberOf(group)
       currentGroup = group
+      console.log 'update with group:', group
       $window.Intercom 'update',
         email: Session.user().email
         user_id: Session.user().id
