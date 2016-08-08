@@ -18,7 +18,7 @@ class TimeZoneToCity
   end
 
   def self.offset_for_iana(iana_name)
-    ActiveSupport::TimeZone[iana_name].formatted_offset
+    ActiveSupport::TimeZone[iana_name].try(:formatted_offset) || "+00:00"
   end
 
   def self.offsets_with_city
