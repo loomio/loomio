@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
   mapGroup = (group) ->
     return null unless group?
     id: group.id
+    company_id: group.id
     key: group.key
     name: group.name
     description: group.description.substring(0, 250)
@@ -56,9 +57,9 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     updateWithGroup: (group) ->
       return unless @available()
-      user = Session.user()
       return if _.isEqual(lastGroup, mapGroup(group))
       return if group.isSubgroup()
+      user = Session.user()
       return if !user.isMemberOf(group)
       lastGroup = mapGroup(group)
       $window.Intercom 'update',
