@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, AppConfig, Session, LmoUrlService) ->
-  currentGroup = null
+  lastGroup = {}
+
   mapGroup = (group) ->
     return null unless group?
     id: group.id
@@ -31,7 +32,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     boot: ->
       return unless $window? and $window.Intercom?
       user = Session.user()
-      firstGroup = user.parentGroups()[0]
+      lastGroup = mapGroup(user.parentGroups()[0])
 
       $window.Intercom 'boot',
        admin_link: LmoUrlService.user(user, {}, { noStub: true, absolute: true, namespace: 'admin/users', key: 'id' })
@@ -44,9 +45,8 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
        user_id: user.id
        created_at: user.createdAt
        is_coordinator: user.isCoordinator
-       angular_ui: true
        locale: user.locale
-       company: mapGroup(firstGroup)
+       company: lastGroup
        has_profile_photo: user.hasProfilePhoto()
        belongs_to_paying_group: user.belongsToPayingGroup()
 
@@ -57,14 +57,14 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     updateWithGroup: (group) ->
       return unless @available()
       user = Session.user()
-      return if currentGroup == group
+      return if _.isEqual(lastGroup, mapGroup(group))
       return if group.isSubgroup()
       return if !user.isMemberOf(group)
-      currentGroup = group
+      lastGroup = mapGroup(group)
       $window.Intercom 'update',
         email: user.email
         user_id: user.id
-        company: mapGroup(group)
+        company: lastGroup
 
     contactUs: ->
       if @available()
