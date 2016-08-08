@@ -6,6 +6,7 @@
   .modal-body
     %label{for: "group-select", translate: "invitation_form.group"}
     %select.invitation-form__group-select.form-control#group-select{ng-model: "form.groupId", ng-required: true, ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'", ng-change: "restoreRemoteDraft(); fetchShareableInvitation()"}
+      %option{value: "", translate: "invitation_form.group_placeholder"}
 
     %label{translate: "invitation_form.shareable_link"}
     .invitation-form__flex

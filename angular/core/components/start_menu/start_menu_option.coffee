@@ -21,9 +21,5 @@ angular.module('loomioApp').directive 'startMenuOption', ->
         AbilityService.canAddMembers(group)
 
     $scope.currentGroup = ->
-      if Session.currentGroup and AbilityService.canAddMembers(Session.currentGroup)
-        Session.currentGroup
-      else if availableGroups().length == 1
-        _.first availableGroups()
-      else
-        _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
+      return _.first(availableGroups()) if availableGroups().length == 1
+      _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
