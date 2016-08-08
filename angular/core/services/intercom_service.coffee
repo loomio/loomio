@@ -12,11 +12,11 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     plan: group.subscriptionKind
     subscription_kind: group.subscriptionKind
     subscription_plan: group.subscriptionPlan
-    subscription_expires_at: group.subscriptionExpiresAt
+    subscription_expires_at: group.subscriptionExpiresAt.format()
     creator_id: group.creatorId
     group_privacy: group.groupPrivacy
     cohort_id: group.cohortId
-    created_at: group.createdAt
+    created_at: group.createdAt.format()
     locale: group.locale
     motions_count: group.motionsCount
     discussions_count: group.discussionsCount
