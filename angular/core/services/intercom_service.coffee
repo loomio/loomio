@@ -3,6 +3,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
   mapGroup = (group) ->
     return null unless group?
     id: group.id
+    company_id: group.id
     key: group.key
     name: group.name
     description: group.description.substring(0, 250)
