@@ -7,7 +7,7 @@ describe UserMailer do
     end
 
     it 'renders the sender email' do
-      expect(@mail.from).to include 'notifications@loomio.example.org'
+      expect(@mail.from).to include BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS
     end
   end
 

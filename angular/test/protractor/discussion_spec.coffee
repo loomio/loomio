@@ -65,9 +65,9 @@ describe 'Discussion Page', ->
       element(By.cssContainingText('option', 'Point Break')).click()
       page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
-      page.expectText '.group-theme__name--compact','Point Break'
       page.expectFlash 'Thread has been moved to Point Break'
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
+      page.expectText '.group-theme__name--compact','Point Break'
 
   describe 'delete thread', ->
     beforeEach ->
