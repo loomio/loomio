@@ -1,5 +1,5 @@
 = t(:"email.group_membership_approved.intro_html", group_name: @group.name)
-%p= t(:"invitation.link_help", group_name: @invitation.invitable_name)
+%p= t(:"email.group_membership_approved.link_help", group_name: @invitation.invitable_name)
 .invite-people-mailer__message-container
   = link_to t(:"email.group_membership_approved.join_group"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
 .invite-people-mailer__value-proposition

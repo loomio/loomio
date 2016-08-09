@@ -80,6 +80,7 @@ en:
     group_membership_approved:
       intro: "Your request for access to the group %{group_name} on Loomio has been approved."
       intro_html: "Your request for access to the group <strong>%{group_name}</strong> on Loomio has been approved."
+      link_help: "Click below to join %{group_name} and get started:"
       subject: "%{prefix} Membership approved"
       join_group: "Join group"
     membership_request:
