@@ -6,6 +6,15 @@ describe 'Discussion Page', ->
   flashHelper = require './helpers/flash_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
+  describe 'starting a thread via start menu', ->
+    it 'preselects current group', ->
+      page.loadPath 'setup_dashboard'
+      page.click '.sidebar__list-item-button--muted'
+      page.clickLast '.thread-preview__link'
+      page.click '.start-menu__start-button'
+      page.click '.start-menu__startThread'
+      page.expectText '.discussion-form__group-select', 'Muted Point Blank'
+
   describe 'viewing while logged out', ->
     it 'should display content for a public thread', ->
       groupsHelper.loadPath('view_open_group_as_visitor')

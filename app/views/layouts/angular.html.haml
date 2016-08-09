@@ -44,12 +44,12 @@
                   %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
                   %span{translate: "sidebar.recent"}
               %md_list_item
-                %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/inbox", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.unread' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('inboxPage')}"}
+                %md_button.sidebar__list-item-button.sidebar__list-item-button--unread{href: "", 'lmo-href' => "/inbox", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.unread' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('inboxPage')}"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
                   %span{translate: "sidebar.unread"}
                   %span ({{unreadThreadCount()}})
               %md_list_item
-                %md_button.sidebar__list-item-button{href: "", 'lmo-href' => "/dashboard/show_muted", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.muted' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
+                %md_button.sidebar__list-item-button.sidebar__list-item-button--muted{href: "", 'lmo-href' => "/dashboard/show_muted", ng_click: "isActive()", "aria-label" => "{{ 'sidebar.muted' | translate }}", ng_class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
                   %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
                   %span{translate: "sidebar.muted"}
             .sidebar__divider
