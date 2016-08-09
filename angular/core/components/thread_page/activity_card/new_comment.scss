@@ -7,11 +7,14 @@
   a { color: $primary-text-color; }
 }
 
+.new-comment__body {
+  margin-bottom: 0px !important;
+  p { margin-bottom: 0 }
+}
+
 .new-comment__truncated {
-  p {
-    height: 175px;
-    overflow: hidden;
-  }
+  height: 160px;
+  overflow: hidden;
 }
 
 .new-comment__truncation {
@@ -19,15 +22,17 @@
   background-repeat: repeat-x;
   height: 15px;
   position: relative;
-  bottom: 25px;
+  bottom: 22px;
 }
 
 .new-comment__show-more,
 .new-comment__show-less {
+  @include lmoBtnLink;
+  @include fontSmall;
   text-align: center;
-  color: #337ab7;
   line-height: 0;
   margin-bottom: 20px;
+  color: $link-color;
 }
 
 .new-comment__show-less {
