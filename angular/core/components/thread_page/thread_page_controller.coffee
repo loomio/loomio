@@ -3,6 +3,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
   @requestedCommentId   = parseInt($routeParams.comment or $location.search().comment)
+  $location.url($location.path()) unless $location.search().position
 
   handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
