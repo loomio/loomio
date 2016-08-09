@@ -910,6 +910,8 @@ en:
       delete_comment: 'Delete comment'
     in_reply_to: 'in reply to <strong>{{recipient}}</strong>'
     edited: 'Edited'
+    show_more: 'Show more'
+    show_less: 'Show less'
 
   new_vote_item:
     agree: 'agreed'

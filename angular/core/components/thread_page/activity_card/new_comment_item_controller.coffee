@@ -1,5 +1,6 @@
 angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $rootScope, $translate, Records, Session, ModalService, EditCommentForm, DeleteCommentForm, AbilityService, TranslationService, RevisionHistoryModal) ->
   $scope.comment = Records.comments.find($scope.event.eventable.id)
+  $scope.commentCollapsed = true
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, Session.user().id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -47,6 +48,9 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
 
   $scope.canEditComment = ->
     AbilityService.canEditComment($scope.comment)
+
+  $scope.toggleComment = ->
+    $scope.commentCollapsed = !$scope.commentCollapsed
 
   $scope.canDeleteComment = ->
     AbilityService.canDeleteComment($scope.comment)

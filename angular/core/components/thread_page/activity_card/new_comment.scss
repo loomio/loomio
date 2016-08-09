@@ -6,3 +6,30 @@
 .new-comment__in-reply-to {
   a { color: $primary-text-color; }
 }
+
+.new-comment__truncated {
+  p {
+    height: 175px;
+    overflow: hidden;
+  }
+}
+
+.new-comment__truncation {
+  background-image: url(/img/gradient.png);
+  background-repeat: repeat-x;
+  height: 15px;
+  position: relative;
+  bottom: 25px;
+}
+
+.new-comment__show-more,
+.new-comment__show-less {
+  text-align: center;
+  color: #337ab7;
+  line-height: 0;
+  margin-bottom: 20px;
+}
+
+.new-comment__show-less {
+  margin-top: 20px;
+}
