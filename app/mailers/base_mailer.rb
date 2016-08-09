@@ -7,7 +7,8 @@ class BaseMailer < ActionMailer::Base
 
   add_template_helper(PrettyUrlHelper)
 
-  default :from => "Loomio <notifications@#{ENV['SMTP_DOMAIN']}>"
+  NOTIFICATIONS_EMAIL_ADDRESS = "notifications@#{ENV['REPLY_HOSTNAME']}"
+  default :from => "Loomio <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 
   protected
@@ -20,7 +21,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def from_user_via_loomio(user)
-    "\"#{user.name} (Loomio)\" <notifications@#{ENV['SMTP_DOMAIN']}>"
+    "\"#{user.name} (Loomio)\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, **options)

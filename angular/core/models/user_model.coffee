@@ -73,3 +73,9 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
         @membershipFor(group).experiences[key]
       else
         @experiences[key]
+
+    hasProfilePhoto: ->
+      @avatarKind != 'initials'
+
+    belongsToPayingGroup: ->
+      _.any @groups(), (group) -> group.subscriptionKind == 'paid'

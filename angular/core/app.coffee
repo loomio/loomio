@@ -16,7 +16,7 @@ angular.module('loomioApp', ['ngNewRouter',
                              'offClick',
                              'ngMaterial',
                              'angulartics',
-                             'angulartics.google.tagmanager']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider) ->
+                             'angulartics.google.tagmanager']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, $analyticsProvider) ->
 
   # a decorator to allow mentio to work within modals
   # https://github.com/jeff-collins/ment.io/issues/68#issuecomment-200746901
@@ -52,6 +52,9 @@ angular.module('loomioApp', ['ngNewRouter',
   # disable angular debug stuff in production
   if window.Loomio? and window.Loomio.environment == 'production'
     $compileProvider.debugInfoEnabled(false);
+
+  $analyticsProvider.firstPageview(true);
+  $analyticsProvider.withAutoBase(true);
 
 # Finally the Application controller lives here.
 angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService, AhoyService) ->

@@ -2,7 +2,7 @@ body {
   @include fontHelvetica;
   @include fontMedium;
   background-color: $background-color;
-  word-break: break-word;
+  word-wrap: break-word;
 }
 
 header { min-height: $navbar-height; }

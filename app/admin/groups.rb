@@ -21,7 +21,6 @@ ActiveAdmin.register Group do
   filter :description
   filter :memberships_count
   filter :created_at
-  filter :is_commercial
   filter :subdomain
   filter :analytics_enabled
 
@@ -29,8 +28,6 @@ ActiveAdmin.register Group do
   scope :engaged
   scope :engaged_but_stopped
   scope :has_members_but_never_engaged
-  scope :is_subscription
-  scope :is_donation
 
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|

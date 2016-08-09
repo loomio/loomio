@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629045209) do
+ActiveRecord::Schema.define(version: 20160804182549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -480,6 +480,7 @@ ActiveRecord::Schema.define(version: 20160629045209) do
     t.integer  "closed_motions_count",                           default: 0,              null: false
     t.boolean  "enable_experiments",                             default: false
     t.boolean  "analytics_enabled",                              default: false,          null: false
+    t.integer  "proposal_outcomes_count",                        default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -591,7 +592,7 @@ ActiveRecord::Schema.define(version: 20160629045209) do
     t.integer  "votes_count",                     default: 0,    null: false
     t.integer  "outcome_author_id"
     t.string   "key",                 limit: 255
-    t.integer  "members_count"
+    t.integer  "members_count",                   default: 0,    null: false
     t.integer  "voters_count",                    default: 0,    null: false
   end
 
