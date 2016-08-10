@@ -4,7 +4,7 @@
   %br
   %strong= @invitation.invitable_name
 .invite-people-mailer__message-container
-  = link_to t(:"email.to_start_group.start_group"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
+  = link_to t(:"email.to_start_group.start_group"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__button"
 %p= t(:"email.to_start_group.closing_message")
 = image_tag '/img/emojis//emojione/2764.png', alt: 'Heart', class: 'invite-people-mailer__heart-icon'
 %br

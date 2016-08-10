@@ -25,7 +25,7 @@ describe UserMailer do
     end
 
     it 'renders the subject' do
-      expect(@mail.subject).to eq "[Loomio: #{@group.full_name}] Membership approved"
+      expect(@mail.subject).to eq "Your request to join #{@group.full_name} on Loomio has been approved"
     end
 
     it 'assigns confirmation_url for email body' do

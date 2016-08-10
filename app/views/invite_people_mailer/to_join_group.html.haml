@@ -6,6 +6,6 @@
   - if @message_body
     .invite-people-mailer__message_body
       = simple_format @message_body
-  = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
+  = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__button"
 .invite-people-mailer__value-proposition
   = t(:"email.value_proposition")
