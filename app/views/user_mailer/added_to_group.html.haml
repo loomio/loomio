@@ -1,4 +1,5 @@
-= t(:"email.user_added_to_group.content_html", which_group: @group.full_name, who: @inviter.name)
+.invita-people-mailer__context
+  = t(:"email.user_added_to_group.content_html", which_group: @group.full_name, who: @inviter.name)
 .invite-people-mailer__message-container
   - if @message
     .invite-people-mailer__message_body

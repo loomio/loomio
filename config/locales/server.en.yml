@@ -46,9 +46,10 @@ en:
       thanks: "Thanks,"
       loomio_team: "The Loomio Team"
     user_added_to_group:
-      subject: "%{who} has added you to %{which_group}"
-      content: "%{who} has added you to %{which_group} on Loomio. Click below to go to the group:"
-      content_html: "<strong>%{who}</strong> has added you to <strong>%{which_group}</strong> on Loomio."
+      subject: "%{who} has added you to %{which_group} on Loomio"
+      content: "%{who} has added you to %{which_group}."
+      content_html: "<strong>%{who}</strong> has added you to <strong>%{which_group}</strong>."
+      link_help: "Click the link below to go to the group:"
     unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     view_comment: Click here to view the comment on Loomio
