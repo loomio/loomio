@@ -18,7 +18,7 @@ class MigrateUserService
       motions: [:author_id, :outcome_author_id],
       notifications: :user_id,
       omniauth_identities: :user_id,
-      visits: :visitor_id,
+      visits: :user_id,
       votes: :user_id,
       ahoy_events: :user_id,
       ahoy_messages: :user_id,
@@ -50,6 +50,15 @@ class MigrateUserService
       end
     end
     lines
+  end
+
+  def commit!
+    update_sql.each do |line|
+      ActiveRecord::Base.connection.execute line
+    end
+    delete_sql.each do |line|
+      ActiveRecord::Base.connection.execute line
+    end
   end
 
   # tests:
