@@ -80,8 +80,8 @@ en:
     new_comment:
       context: 'commented in'
     group_membership_approved:
-      intro: "Your request for access to the group %{group_name} on Loomio has been approved."
-      intro_html: "Your request for access to the group <strong>%{group_name}</strong> on Loomio has been approved."
+      intro: "Your request for access to the group %{group_name} has been approved."
+      intro_html: "Your request for access to the group <strong>%{group_name}</strong> has been approved."
       link_help: "Click the link below to join %{group_name} and get started:"
       subject: "Your request to join %{group_name} on Loomio has been approved"
       join_group: "Join group"
