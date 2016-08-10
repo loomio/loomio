@@ -16,6 +16,7 @@ describe MigrateUserService do
                                 creator: @patrick)
 
     @test_group.add_admin! @patrick
+    @test_membership = @test_group.membership_for(@patrick)
 
     @test_discussion = Discussion.create(title: 'What star sign are you?',
                                          private: false,
@@ -33,19 +34,16 @@ describe MigrateUserService do
     @test_vote = Vote.new(position: 'yes', motion: @test_proposal, statement: 'I agree!')
     VoteService.create(vote: @test_vote, actor: @patrick)
 
-    # @comment = Comment.new(discussion: @test_discussion, body: 'I\'m rather likeable')
-    # CommentService.create(comment: @comment, actor: @patrick)
-    # @comment_liked_event = CommentService.like(comment: @comment, actor: @patrick)
+    @test_comment = Comment.new(discussion: @test_discussion, body: 'I\'m rather likeable')
+    @patrick.reload
+    CommentService.create(comment: @test_comment, actor: @patrick)
+    CommentService.like(comment: @test_comment, actor: @patrick)
+    @test_like = CommentVote.find_or_create_by(comment_id: @test_comment.id, user_id: @patrick.id)
+
+
   end
 
   it 'updates user_id references from old to new' do
-    # author a discussion
-    # author a motion
-    # author a comment
-    # author a like
-    # author a vote
-    # create a group
-    # join a group
     @jennifer = User.create!(name: 'Jennifer Grey',
                              email: 'jennifer_grey@example.com',
                              username: 'jennifergrey',
@@ -54,11 +52,30 @@ describe MigrateUserService do
 
     MigrateUserService.new(old_id: @patrick.id, new_id: @jennifer.id).commit!
 
-    
+    [@test_group,
+     @test_membership,
+     @test_discussion,
+     @test_comment,
+     @test_like,
+     @test_proposal,
+     @test_vote].each {|model| model.reload }
 
-    # create a new user
-    # migrate old to new
+    assert_equal @test_group.creator, @jennifer
+    assert_equal @test_membership.user, @jennifer
+    assert_equal @test_discussion.author, @jennifer
+    assert_equal @test_proposal.author, @jennifer
+    assert_equal @test_vote.author, @jennifer
+    assert_equal @test_comment.author, @jennifer
+    assert_equal @test_like.author, @jennifer
 
-    # verify that new user is the author, creator and member now.
+    # create two votes then confirm that counts are recalculated
+    # confirm counters across all models are reset
+
+    # expect(discussion.author_id).to eq new_id
+    # expect(vote.author_id).to eq new_id
+    # expect(User.find(old_id).to raise_exception
+    # expect(User.find(new_id).discussions).to include discussion
+    # expect(service.migrate!).to change { User.count }.by(-1) # if user merge
+    # assert that whodunit has changed on versions
   end
 end

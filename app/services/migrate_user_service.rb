@@ -42,6 +42,10 @@ class MigrateUserService
     lines
   end
 
+  def update_paperclip_versions_sql
+    "UPDATE versions SET whodunnit = '#{@new_id}' WHERE whodunnit = '#{@old_id}'"
+  end
+
   def delete_sql
     lines = []
     schema.each_pair do |table, columns|
@@ -56,9 +60,14 @@ class MigrateUserService
     update_sql.each do |line|
       ActiveRecord::Base.connection.execute line
     end
+
+    # look into using
+    # table.constantize.where(column_name => @old_id).delete_all
     delete_sql.each do |line|
       ActiveRecord::Base.connection.execute line
     end
+
+    ActiveRecord::Base.connection.execute update_paperclip_versions_sql
   end
 
   # tests:
