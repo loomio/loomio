@@ -62,7 +62,6 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       user = Session.user()
       return if !user.isMemberOf(group)
       lastGroup = mapGroup(group)
-      console.log 'updating group with intercom'
       $window.Intercom 'update',
         email: user.email
         user_id: user.id
@@ -77,7 +76,6 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
   $rootScope.$watch ->
     Session.currentGroup? && mapGroup(Session.currentGroup)
   , ->
-    console.log 'detected change to currentGroup'
     Session.currentGroup? && service.updateWithGroup(Session.currentGroup)
   , true
 
