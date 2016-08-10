@@ -3,7 +3,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
   @requestedCommentId   = parseInt($routeParams.comment or $location.search().comment)
-  $location.url($location.path()) unless $location.search().position
 
   handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
@@ -14,6 +13,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     ScrollService.scrollTo @elementToFocus(), 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
     (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
+    $location.url($location.path())
 
   @openVoteModal = ->
     $location.search().position and
