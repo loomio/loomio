@@ -63,13 +63,8 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
       @uniqueVotes().length
 
     percentVoted: ->
-      numVoted = @numberVoted()
-      groupSize = @groupSizeWhenVoting()
-      return 0 if numVoted == 0 or groupSize == 0
-      (100 * numVoted / groupSize).toFixed(0)
-
-    groupSizeWhenVoting: ->
-      @membersCount
+      return 0 if @votersCount == 0 or @membersCount == 0
+      (100 * @votersCount / @membersCount).toFixed(0)
 
     lastVoteByUser: (user) ->
       @uniqueVotesByUserId()[user.id]

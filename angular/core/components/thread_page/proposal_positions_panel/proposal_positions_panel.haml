@@ -12,7 +12,7 @@
             %td
               .proposal-pie-chart__label{class: "proposal-pie-chart__label--{{position}}"}
                 {{ proposal.voteCounts[position] }} {{ "proposal_position_"+position | translate}}
-  .proposal-pie-chart__participation-statement{translate: "proposal_pie_chart.participation_statement", translate-value-percentage: "{{proposal.percentVoted()}}", translate-value-number: "{{proposal.numberVoted()}}", translate-value-total: "{{proposal.groupSizeWhenVoting()}}"}
+  .proposal-pie-chart__participation-statement{translate: "proposal_pie_chart.participation_statement", translate-value-percentage: "{{proposal.percentVoted()}}", translate-value-number: "{{proposal.votersCount}}", translate-value-total: "{{proposal.membersCount}}"}
 
   %ul.proposal-positions-panel__list
     %li.proposal-positions-panel__vote.media{ng_repeat: "vote in curatedVotes() track by vote.id"}
