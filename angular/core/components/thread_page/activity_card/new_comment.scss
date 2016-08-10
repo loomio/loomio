@@ -7,14 +7,11 @@
   a { color: $primary-text-color; }
 }
 
-.new-comment__body {
-  margin-bottom: 0 !important;
-  p { margin-bottom: 0 }
-}
-
 .new-comment__truncated {
   max-height: 180px;
   overflow: hidden;
+  margin-bottom: 0 !important;
+  p { margin-bottom: 0 }
 }
 
 .new-comment__gradient {
