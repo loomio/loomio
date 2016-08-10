@@ -33,6 +33,6 @@ class InvitePeopleMailer < BaseMailer
                      locale:   I18n.locale,
                      reply_to: sender_email,
                      subject_key: "email.group_membership_approved.subject",
-                     subject_params: {prefix: email_subject_prefix(@group.full_name)}
+                     subject_params: {group_name: @group.full_name}
   end
 end

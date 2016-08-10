@@ -5,7 +5,7 @@
 .invite-people-mailer__message-container
   - if @message_body
     .invite-people-mailer__message_body
-      = @message_body
+      = simple_format @message_body
   = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__accept-invitation"
 .invite-people-mailer__value-proposition
-  = t(:"email.value_proposition_html")
+  = t(:"email.value_proposition")
