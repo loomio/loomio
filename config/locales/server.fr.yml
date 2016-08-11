@@ -32,21 +32,16 @@ fr:
       link: Rejoindre la discussion
     to_join_group:
       subject: '%{member} vous invite à rejoindre %{group_name} sur Loomio'
+      accept_invitation: "Accepter l'invitation"
     resend_to_join_group:
       subject: '%{member} attend toujours que vous rejoigniez le groupe %{group_name} sur Loomio'
     to_start_group:
       subject: 'Préparez votre nouveau groupe Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} vous a ajouté au groupe %{which_group}'
-      content: '%{who} vous a ajouté au groupe %{which_group} sur Loomio. Cliquez ici pour aller dans le groupe :'
     unsubscribe: 'Désabonnement ou changement d’e-mail :'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre e-mail."
     view_comment: Cliquez ici pour voir le commentaire sur Loomio
     view_discussion: Cliquer ici pour voir la discussion
-    view_group: Cliquer ici pour voir le groupe sur Loomio
     view_proposal: Voir cette proposition sur Loomio
-    create_discussion:
-      intro: '%{who} a commencé une discussion dans %{which_group}:'
     create_proposal:
       intro: Une nouvelle proposition a été créée dans un groupe Loomio auquel vous appartenez
       closes_in: Ferme dans
@@ -63,28 +58,15 @@ fr:
       heres_what_happened: Voici ce qui s’est passé hier sur Loomio.
       marked_as_read_success: Tout le contenu de cet email a été marqué comme lu
     comment_replied_to:
-      context: "%{author_name} a répondu à votre commentaire dans la discussion «\_%{discussion_title}\_»"
       subject: '%{who} a répondu à votre commentaire dans le groupe %{which} sur Loomio'
-    group_membership_approved:
-      intro: 'Votre demande pour accéder au groupe %{group_name} sur Loomio a été approuvée.'
-      subject: '%{prefix} Demande d’adhésion approuvée'
-    invitation:
-      hi: 'Salut %{name},'
-      intro: 'Cliquez sur le lien ci-dessous pour paramétrer votre groupe %{group_name}:'
-      closing_message: 'Si vous avez des questions ou si nous pouvons faire quelque chose pour vous aider, nous serions très heureux que vous nous en fassiez part - vous n’avez qu’à répondre à ce message.'
-      thanks: |
-        Merci !
-        L’équipe de Loomio
     membership_request:
       intro: '%{name} (%{email}) a demandé l’accès à l’un de vos groupes Loomio.'
       subject: '%{who} a demandé à rejoindre %{which_group}'
       view_group: Vous pouvez accepter ou rejeter cette demande
     mentioned:
-      context: '%{author_name} vous a cité en discutant "%{discussion_title}"'
       subject: '%{who} vous a mentionné à propos de « %{which} »'
     new_motion_created:
       subject: 'Proposition : %{proposal_title}'
-      context: '%{author} a créé une proposition dans %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: La proposition est clôturée.
       specify_outcome_and_notify_group: 'Créez un résultat et envoyez-le à votre groupe !'
@@ -108,13 +90,21 @@ fr:
       turn_on_notifications_text: "Activer les courriers électroniques pour recevoir les activités futures dans cette discussion\_: %{url}"
       change_email_preferences_html: "Changez vos <a href='%{email_preferences_url}'>paramètres de notification</a> pour vous désabonner de ces courriers électroniques."
       change_preferences: 'Modifiez vos préférences de courriel :'
-      new_motion: '%{who} propose :'
       motion_closing_soon: 'Proposition clôturée dans 24 heures :'
       proposal_closed: 'Proposition clôturée :'
       specify_outcome_html: "Votre proposition est terminée. Veuillez <a href='%{link}'>publier le résultat</a> pour tout le monde."
       specify_outcome: 'Votre proposition a été fermée. Spécifiez un résultat afin que tout le monde puisse en être informé :'
-      outcome_created: '%{who} propose le résultat :'
       you_agreed: 'Vous %{past_tense_position}'
+    analytics:
+      subject: 'Semaine de %{which_group} sur Loomio'
+      title: 'Votre résumé hebdomadaire pour %{since} - %{till}'
+      contact_us: "Besoin de plus de stats ? <a href='%{contact_link}'>Contactez-nous</a>."
+      heart: "❤ de l'équipe Loomio"
+      user_table:
+        motions_created: Propositions
+        discussions_created: Discussions
+        comments_created: Commentaires
+        votes_created: Votes
   footer:
     about: À propos
     blog: Blog
@@ -175,6 +165,8 @@ fr:
       Sous nom de domaine personnalisé,<br />
       ex. <strong>votregroupe</strong>.loomio.org
     usage_statistics: statistiques d’utilisation
+    plus_price_html: |
+      <strong>179$US</strong>/mois<br><span>ou</span> 1790$/year
   password_reset:
     email_guidelines_html: >
       <p>Entrez l’adresse email de votre compte Loomio dans le champ ci-dessous
@@ -203,6 +195,8 @@ fr:
   first_proposal:
     name: 'Proposition de démonstration: c’est parti!'
     description: "Ceci est la **description** de la proposition. C'est ici que vous pouvez expliquer le plan d'action proposé et donner assez de détails pour que tout le monde puisse prendre une décision en connaissance de cause.\n\nPour participer à la proposition, choisissez l'une de ces options\_:\n\n–\_**D'accord**\_: «\_Je suis d'accord avec cela et je veux qu'on avance.\_»\n–\_**S'abstient**\_: «\_Merci au groupe de décider sans moi.\_»\n–\_**Pas d'accord**\_: «\_Je pense que nous pouvons faire mieux.\_»\n–\_**Bloquer**\_: «\_J'ai de grande objections contre cette proposition et je ne veux pas qu'elle avance.\_»\n\nQuand vous avez choisi, vous serez invité à écrire une brève déclaration pour expliquer le choix que vous venez de faire. Vous pouvez changer voter position n'importe quand tant que la proposition est ouverte.\n"
+  first_vote:
+    statement: 'Allons-y !'
   contact_page:
     contact_us: Contactez-nous
     faq_prompt_html: 'Vous avez une question pour l’équipe de Loomio? Avant de nous contacter, vous pourriez trouver la réponse dans notre FAQ'
@@ -261,7 +255,6 @@ fr:
     links:
       title: |
         ## Liens et Images
-      body: "Répétez à voix haute\_:\n\nDes crochets pour les noms puis des parenthèses pour les URL.\n\n[Page d’accueil de Loomio] (https://www.loomio.org/)\n\nPour les images, la méthode est identique, avec un point d'exclamation avant.\n\n![Logo Loomio](https://i.imgur.com/Fvtworb.png)\n"
   beta_banner:
     new_loomio_html: "<strong>Le nouveau Loomio est plus rapide, plus joli et meilleur\_!</strong> Nous basculons tous vers lui.\n"
     upgrade_browser_html: "Nous ne supportons que les versions modernes d'Internet Explorer (10+). Vous devez <a href='http://outdatedbrowser.com/en' target='_blank'> mettre à jour votre navigateur</a> pour continuer à utiliser Loomio.\n<strong>Le nouveau Loomio est arrivé\_!</strong> Il est plus rapide, plus joli, et compatible avec les portables\_!\n"

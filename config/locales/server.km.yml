@@ -10,7 +10,6 @@ km:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text} </a> ដើម្បីមិនជាវឬការផ្លាស់ប្តូរចំណង់ចំណូលចិត្តអ៊ីម៉ែលរបស់អ្នក។"
     view_comment: សូមចុចនៅទីនេះ ដើម្បីមើលសេចក្ដីអធិប្បាយនៅលើ Loomio នេះ
     view_discussion: សូមចុចនៅទីនេះដើម្បីមើលការពិភាក្សារនេះ
-    view_group: 'សូមចុចនៅទីនេះដើម្បីទៅមើលក្រុមនេះនៅលើ Loomio '
     view_proposal: មើលសំណើរនេះនៅលើ Loomio
     create_proposal:
       intro: សំណើរថ្មីមួយត្រូវបានបង្កើតឡើងនៅក្នុងក្រុម Loomio ដែលអ្នកជាកម្មសិទ្ធិរបស់។
@@ -20,20 +19,10 @@ km:
       heading: 'សកម្មភាព Loomio របស់អ្នក '
       intro: បង្ហាញអ្នកពីអ្វីដែរបានកើតឡើងនៅក្នុងក្រុម Loomio របស់អ្នកនៅក្នុង24ម៉ោងចុងក្រោយ
       subject: Loomio​ - សេចក្ដីសង្ខេបនៃ24ម៉ោងចុងក្រោយមុន
-    group_membership_approved:
-      intro: "សំណើររបស់អ្នកសម្រាប់ចូលដំណើការទៅកាន់ក្រុម '%{group_name}' នៅលើ Loomio ត្រូវបានអនុម័ត្ត​ "
-    invitation:
-      hi: 'សួរស្ដី%{name},'
-      intro: 'ចុចតំណរខាងក្រោមដើម្បីរៀបចំក្រុមរបស់អ្នក%{group_name}:'
-      closing_message: ប្រសិនបើអ្នកបានទទួលសំណួរណាមួយឬប្រសិនបើមានអ្វីទាំងអស់នៅគ្រប់យើងអាចធ្វើដើម្បីជួយអ្នកក្នុងការទទួលបានកើនឡើងនិងកំពុងរត់។យើងក៏ចង់ឮពីអ្នក - គ្រាន់តែឆ្លើយតបទៅអ៊ីម៉ែលនេះ។
-      thanks: |
-        អរគុណ!រយះពេលLoomio នេះ
     membership_request:
       intro: '%{name} (%{email}) បានស្នើការចូលដំណើការទៅមួយនៃក្រុម Loomio​ របស់អ្នក '
       subject: '%{who}បានស្នើឲ្យចូលរួម%{which_group} '
       view_group: អ្នកអាចអនុម័ត្តឬទុកសំណើរនៅទីនេះ
-    new_motion_created:
-      context: '%{author} បង្កើតសំណើរមួយក្នុង%{group_full_name}:'
     proposal_closed:
       specify_outcome_and_notify_group: 'បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!'
       specify_outcome_and_notify_group_html: 'បង្កើតលទ្ធផលមួយហើយនិងផ្ញើវាឲ្យទៅក្រុមរបស់អ្នក!'

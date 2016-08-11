@@ -23,22 +23,15 @@ sr:
     to_join_group:
       subject: '%{member} Vas je pozvao/la da se pridružite %{group_name} na Lumiju'
       accept_invitation: Prihvati poziv
-      tagline: Lumio je mesto za grupe gde se zajednički odlučuje
     resend_to_join_group:
       subject: '%{member} još uvek čeka da se pridružiš u %{group_name} na Lumiju'
     to_start_group:
       subject: 'Podesite svoju novu Lumio grupu: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} te je dodao/la u %{which_group}'
-      content: '%{who} te je dodao/la u %{which_group} na Lumiju. Škljocni ovde da odeš u grupu:'
     unsubscribe: Odjavite se ili promenite podešavanja ePošte
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
     view_comment: Škljocnite ovde da bi videli komentar na Lumiju
     view_discussion: Škljocni ovde da vidiš ovu diskusiju
-    view_group: Škljocni ovde da vidiš grupu na Lumiju
     view_proposal: Pogledajte ovaj predlog na Lumiju
-    create_discussion:
-      intro: '%{who} je pokrenuo/la diskusiju u %{which_group}:'
     create_proposal:
       intro: Novi predlog je pokrenut u Lumio grupi kojoj pripadate
       closes_in: Ističe
@@ -55,28 +48,15 @@ sr:
       heres_what_happened: Evo šta se dogodilo na Lumiju juče.
       marked_as_read_success: Sve ePoruke su označene kao pročitane
     comment_replied_to:
-      context: '%{author_name} je odgovorio/la na tvoj komentar u diskusiji "%{discussion_title}"'
       subject: '%{who} je odgovorio/la na tvoj komentar u %{which} groupi na Lumiju'
-    group_membership_approved:
-      intro: "Vaš zahtev za pristup grupi '%{group_name}' na Lumiju je odobren."
-      subject: '%{prefix} Članstvo je odobreno'
-    invitation:
-      hi: 'Zdravo %{name},'
-      intro: 'Škljocnite na link ispod da podesite svoju grupu %{group_name}:'
-      closing_message: 'Ako imate bilo kakvih pitanja ili ako postoji bilo koji način da pomognemo oko bržeg prilagođavanja, voleli bismo da to čujemo od Vas - dovoljno je da odgovorite na ovu ePoruku.'
-      thanks: |
-        Hvala!
-        Lumio tim
     membership_request:
       intro: '%{name} (%{email}) je zatražio pristup jednoj od tvojih Lumio grupa.'
       subject: '%{who} je zatražio da se pridruži %{which_group}'
       view_group: Ovde možete odobriti ili odbiti zahtev
     mentioned:
-      context: '%{author_name} Vas je pomenuo/la tokom diskusije "%{discussion_title}"'
       subject: '%{who} te je pomenuo/la tokom diskusije "%{which}"'
     new_motion_created:
       subject: 'Predlog: %{proposal_title}'
-      context: '%{author} je predložio/la u %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Predlog je okončan.
       specify_outcome_and_notify_group: 'Odredite ishod i pošaljite to svojoj grupi!'
@@ -100,13 +80,13 @@ sr:
       turn_on_notifications_text: 'Uključi ePoruke da primaš dalje aktivnosti iz ove diskusije: %{url}'
       change_email_preferences_html: "Promeni svoja <a href='%{email_preferences_url}'>podešavanja o ePorukama</a> da prestaneš da primaš ove ePoruke."
       change_preferences: 'Promeni svoja podešavanja o ePorukama:'
-      new_motion: '%{who} predlaže:'
       motion_closing_soon: 'Predlog ističe kroz 24 časa:'
       proposal_closed: 'Predlog je istekao:'
       specify_outcome_html: "Vaš predlog je istekao. <a href='%{link}'>Odredite ishod</a> da izvestite ostale o rezultatu."
       specify_outcome: 'Vaš predlog je istekao. Odredite ishod da obavestite ostale o rezultatu:'
-      outcome_created: '%{who} je odredio/la ishod predloga:'
       you_agreed: 'Vi %{past_tense_position}'
+    analytics:
+      heart: '❤ od tima Lumio '
   footer:
     about: O nama
     blog: Blog
@@ -155,10 +135,14 @@ sr:
     email_support: podrška ePorukom
     slack_integration_html: |
       <strong>Slack</strong> integracija
+    standard_price_html: |
+      US<strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
     plus_body: 'Sve u Standardno, plus:'
     multiple_groups: više grupa
     premium_support: premijum podrška
     usage_statistics: statistika korišćenja
+    plus_price_html: |
+      US<strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
   password_reset:
     email_guidelines_html: >
       <p>Unesite adresu ePošte za svoj Loomio nalog u polje ispod i poslaćemo Vam
@@ -247,6 +231,8 @@ sr:
       Kada odabereš, dobišeć pitanje gde trebaš ukratko izneti svoj stav
       i objasniš zašto se tako osećaš. Možeš izmeniti svoju poziciju u bilo koje
       vreme sve dok je predlog još uvek otvoren odnosno na snazi.
+  first_vote:
+    statement: 'Idemo!'
   contact_page:
     contact_us: Kontaktirajte nas
     faq_prompt_html: 'Imate pitanje za Lumio tim? Pre kontaktiranja, možda moćete naći odgovor u često postavljanim pitanjima.'

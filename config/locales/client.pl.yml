@@ -86,7 +86,6 @@ pl:
     recent: Ostatnie
     unread: Nieprzeczytane
     muted: Wyciszone
-    explore: Przegląd grup publicznych
     email_settings: Ustawienia poczty
     help: Pomoc
     sign_out: Wyloguj się
@@ -335,11 +334,8 @@ pl:
       updated: Ustawienia poczty zmienione
   dashboard_page:
     aria_label: Pulpit
-    options:
-      aria_label: Opcje filtrowania pulpitu
     no_threads:
       show_all: Nie masz żadnych ostatnich wątków.
-      show_participating: Nie uczestniczyłeś/aś ostatnio w żadnych wątkach.
       show_starred: Nie masz wątków oznaczonych gwiazdką.
       show_proposals: Brak aktywnych rekomendacji
       show_muted: Nie masz wyciszonych wątków.
@@ -355,9 +351,6 @@ pl:
       starred: Wątki z Gwiazdką
       starred_aria_label: Pokazywane są wątki oznaczone jako ważne
       starred_description: Pokazywane są tylko wątki oznaczone przez Ciebie jako ważne
-      participating: Wątki w których uczestniczysz
-      participating_aria_label: Pokazywane są wątki w których brałeś/aś udział
-      participating_description: Przegląd tylko wątków w których brałeś/aś udział
       proposals: Rekomendacje
       proposals_aria_label: Pokazywane są wątki z aktywnymi rekomendacjami
       proposals_description: Zobacz tylko wątki  aktywnymi rekomendacjami
@@ -521,7 +514,17 @@ pl:
 
       po informacje jak używać Markdown.</p>
     keep_up_to_date: Informują na bieżąco
-    keep_up_to_date_html: "<p>Klikając na nazwę grupy na górze ekranu przejdziesz na Stronę Grupy, \ngdzie możesz zobaczyć listę wszystkich dyskusji i decyzji dla grupy. Jeśli jesteś w więcej niż jednej grupie, możesz zobaczyć aktywność wszystkoich Twoich grup na Stronie Domowej.</p>\n<p>Otrzymasz powiadomienia pocztą jeśli ważne rzeczy zdarzą się w Twojej grupie.\nMożesz zmienić ustawienia Twojej poczty <a href=\"%{link}\"\">tutaj</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Klikając na nazwę grupy na górze ekranu przejdziesz na Stronę Grupy,
+
+      gdzie możesz zobaczyć listę wszystkich dyskusji i decyzji dla grupy. Jeśli
+      jesteś w więcej niż jednej grupie, możesz zobaczyć aktywność wszystkoich
+      Twoich grup na Stronie Domowej.</p>
+
+      <p>Otrzymasz powiadomienia pocztą jeśli ważne rzeczy zdarzą się w Twojej
+      grupie.
+
+      Możesz zmienić ustawienia Twojej poczty <a href="%{link}"">tutaj</a>.</p>
     make_a_decision: Podejmij decyzję
     make_a_decision_description: 'Kiedy ta grupa jest gotowa aby podjąć decyzję, każdy może utworzyć rekomendację. Opisz jasno kierunek działania i podaj trochę ogólnych informacji tak aby wszyscy wiedzieli co dokładnie oznacza ich zgoda lub jej brak.'
     prompt_people_details: "Jeśli chcesz zwrócić uwagę konkretnej osoby w grupie, napisz znak '@'  oraz jego nazwę. Otrzyma wiadomość z informacją, że wspomniałeś o nim/niej w komentarzy."

@@ -6,14 +6,10 @@ id:
       subject: '%{member} mengundang Anda untuk bergabung ke dalam %{group_name} di Loomio'
     to_start_group:
       subject: 'Buat kelompok Loomio Anda yang baru: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} telah menambahkan Anda ke dalam %{which_group}'
-      content: '%{who} telah menambahkan Anda ke dalam %{which_group} di Loomio. Klik di sini untuk mengunjungi kelompok:'
     unsubscribe: 'Tidak ingin berlanggan atau ganti alamat surel:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> untuk ubah langganan atau ganti alamat surel."
     view_comment: Klik di sini untuk melihat komentar di Loomi
     view_discussion: Klik di sini untuk melihat diskusi ini
-    view_group: Klik di sini untuk melihat kelompok di Loomio
     view_proposal: Lihat usulan ini di Loomio
     create_proposal:
       intro: Usulan baru telah dibuat di dalam kelompok Loomio Anda.
@@ -23,21 +19,10 @@ id:
       heading: Kegiatan Loomio Anda
       intro: Menunjukkan apa yang terjadi pada kelompok Loomio Anda dalam 24 jam terakhir
       subject: Loomio - Ringkasan 24 jam terakhir
-    group_membership_approved:
-      intro: "Permintaan Anda untuk mengakses kelompok '%{group_name}' di Loomio telah diterima."
-    invitation:
-      hi: 'Halo %{name},'
-      intro: 'Klik tautan di bawah untuk membuat kelompok Anda %{group_name}:'
-      closing_message: 'Apabila Anda memiliki pertanyaan atau ada bantuan yang diperlukan, hubungi kami dengan membalas surel ini.'
-      thanks: |
-        Terima kasih!
-        The Loomio Team
     membership_request:
       intro: '%{name} (%{email}) mengirimkan permintaan untuk mengakses salah satu kelompok Loomio Anda.'
       subject: '%{who} mengirimkan permintaan untuk bergabung ke dalam %{which_group}'
       view_group: Anda dapat menerima atau menolak permintaan di sini
-    new_motion_created:
-      context: '%{author} membuat usulan di dalam %{group_full_name}:'
     proposal_closed:
       specify_outcome_and_notify_group: 'Tulis hasil dan kirim ke kelompok Anda!'
       specify_outcome_and_notify_group_html: 'Tulis hasil dan kirim ke kelompok Anda!'

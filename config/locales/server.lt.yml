@@ -1,7 +1,11 @@
 lt:
   email:
+    daily_activity:
+      subject: Loomio - Paskutinių 24 valandų santrauka
     missed_yesterday:
       mark_as_read: Žymėti kaip skaitytą
+    proposal_closing_soon:
+      summary: Santrauka
   footer:
     about: Apie
     blog: Tinklaraštis

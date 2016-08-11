@@ -13,17 +13,11 @@ sk:
       subject: '%{member} vás pozval(a) do skupiny %{group_name} na Loomio'
     to_start_group:
       subject: 'Zriaďte si svoju novú Loomio skupinu: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} vás pridal(a) k %{which_group}'
-      content: '%{who} vás pridal(a) k %{which_group} na Loomio. Kliknite sem, aby ste navštívil(a) skupinu:'
     unsubscribe: 'Odhláste sa alebo si zmeňte nastavenia emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, aby ste sa odhlásil(a) alebo zmenil(a) nastavenia emailu."
     view_comment: Kliknite sem na zobrazenie komentárov na Loomio
     view_discussion: Kliknite sem na zobrazenie tejto diskusie
-    view_group: Kliknite sem na zobrazenie skupiny na Loomio
     view_proposal: Zobrazte si tento návrh na Loomio
-    create_discussion:
-      intro: '%{who} začal diskusiu v skupine %{which_group}:'
     create_proposal:
       intro: 'Nový návrh byl vytvorený v Loomio skupine, ku ktorej patríte'
       closes_in: Uzatvára sa za
@@ -37,24 +31,12 @@ sk:
       mark_as_read: Označiť ako prečítané
       thanks_for_reading: 'Vďaka za čítanie a prajeme pekný deň!'
       marked_as_read_success: Všetko z emailu bolo označené ako prečítané
-    group_membership_approved:
-      intro: 'Vaša žiadosť o prístup ku skupine ‚%{group_name}‘ na Loomio bola akceptovaná.'
-    invitation:
-      hi: 'Ahoj %{name},'
-      intro: 'Kliknite na odkaz nižšie, aby ste si zriadil(a) svoju skupinu %{group_name}:'
-      closing_message: 'Pokiaľ máte nejaké otázky alebo pokiaľ existuje spôsob, ako vám pomôcť rozbehnúť sa, dajte nám vedieť - stačí odpísať na tento email.'
-      thanks: |
-        Ďakujeme!
-        Tým Loomio
     membership_request:
       intro: '%{name} (%{email}) požiadal(a) o prístup k jednej z vašich Loomio skupín.'
       subject: '%{who} požiadal(a) o členstvo v %{which_group}'
       view_group: Môžete schváliť alebo odmietnuť žiadosť tu
-    mentioned:
-      context: '%{author_name} vás spomenul v diskusii "%{discussion_title}"'
     new_motion_created:
       subject: 'Návrh: %{proposal_title}'
-      context: '%{author} vytvoril(a) návrh v %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Návrh je uzatvorený.
       specify_outcome_and_notify_group: 'Vytvorte výsledok a pošlite ho svojej skupine!'
@@ -69,12 +51,10 @@ sk:
       summary: Zhrnutie
     thread_mailer:
       change_preferences: 'Zmena nastavenia e-mailu:'
-      new_motion: '%{who} navrhol:'
       motion_closing_soon: 'Návrhy uzatvorené behom 24 hodin:'
       proposal_closed: 'Návrh uzatvorený:'
       specify_outcome_html: "Váš návrh bol uzatvorený. <a href='%{link}'>Sformulujte výsledok</a> a všetkým ho oznámte."
       specify_outcome: 'Váš návrh bol uzatvorený. Sformulujte výsledok a všetkým ho oznámte. '
-      outcome_created: '%{who} zosumarizoval výsledok návrhu:'
       you_agreed: 'Vy %{past_tense_position}'
   footer:
     about: O nás

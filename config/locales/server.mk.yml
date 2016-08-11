@@ -10,12 +10,8 @@ mk:
       link: Приклучи се на дискусијата
     to_join_group:
       subject: '%{member} те покани да се приклучиш во %{group_name} на Loomio'
-    user_added_to_a_group:
-      subject: '%{who} те додаде во %{which_group}'
-      content: '%{who} те додаде во %{which_group} на Loomio. Кликни овде за да одиш во групата:'
     view_comment: Кликни овде за да го видиш коментарот на Loomio
     view_discussion: Кликни овде за да ја видиш дискусијата
-    view_group: Кликни овде за да ја видиш групата на Loomio
     view_proposal: Види го предлогот на Loomio
     create_proposal:
       closes_in: Се затвора во
@@ -26,13 +22,6 @@ mk:
     missed_yesterday:
       subject: Вчера на Loomio
       mark_as_read: Означи го како прочитано
-    group_membership_approved:
-      intro: "Твоето барање за пристап во групата '%{group_name}' на Loomio беше прифатено."
-    invitation:
-      hi: 'Здраво %{name},'
-      thanks: |
-        Ти благодариме!
-        Тимот на Loomio
     membership_request:
       subject: '%{who} побара да се приклучи во %{which_group}'
       view_group: Можете да го одобрите или одбиете барањето овде
