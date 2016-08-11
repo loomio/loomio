@@ -23,7 +23,7 @@ describe 'Managing membership requests', ->
       membershipRequestsHelper.clickGroupName()
       expect(groupsHelper.membersList()).toContain('MVS')
 
-    fit 'sends an invitation to non-users upon approval', ->
+    it 'sends an invitation to non-users upon approval', ->
       membershipRequestsHelper.clickApproveButton()
       membershipRequestsHelper.clickApproveButton()
       emailHelper.openLastEmail()
