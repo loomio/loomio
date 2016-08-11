@@ -6,14 +6,10 @@ ca:
       subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
     to_start_group:
       subject: 'Configura el teu nou grup de Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: "%{who} t'ha afegit a %{which_group}"
-      content: "%{who} t'ha afegit a %{which_group} a Loomio. Clica aquí per visitar el grup:"
     unsubscribe: "Dóna't de baixa o canvia les teves preferències de correu:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-te de baixa o canviar les preferències de correu."
     view_comment: Fes click per veure el comentari a Loomio
     view_discussion: Fes click aquí per veure aquesta discussió
-    view_group: Fes click per veure el grup a Loomio
     view_proposal: Veure aquesta proposta a Loomio
     create_proposal:
       intro: "S'ha creat una nova proposta a un grup de Loomio al què pertanys."
@@ -23,21 +19,10 @@ ca:
       heading: La teva Activitat a Loomio
       intro: Mostrant el què ha passat als teus grups de loomio les darreres 24 hores
       subject: Loomio - Resum de les darreres 24 hores
-    group_membership_approved:
-      intro: "La teva sol·licitut per accedir al grup '%{group_name}' a Loomio ha estat aprovada."
-    invitation:
-      hi: 'Ei %{name},'
-      intro: "Fes clic a l'enllaç de sota per configurar el grup %{group_name}:"
-      closing_message: 'Si tens alguna pregunta o si hi ha alguna cosa que puguem fer per ajudar a posar-te en marxa, ens encantaria saber de tu - simplement respon aquest correu electrònic.'
-      thanks: |
-        Mercès!
-        L'equip de Loomio
     membership_request:
       intro: '%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio.'
       subject: '%{who} ha demanat unir-se a %{which_group}'
       view_group: Pots aprovar o denegar la sol·licitud aquí
-    new_motion_created:
-      context: '%{author} ha fet una proposta a %{group_full_name}:'
     proposal_closed:
       specify_outcome_and_notify_group: "Detalla un resultat i envia'l al grup!"
       specify_outcome_and_notify_group_html: "Detalla un resultat i envia'l al grup!"

@@ -2,13 +2,10 @@ cmn:
   email:
     view_comment: 点击这里查看Loomio的评论
     view_discussion: 点击这里查看讨论
-    view_group: 点击这里查看Loomio的组队
     create_proposal:
       closes_in: 将要关闭
     daily_activity:
       intro: 展示上一个24小时你的Loomio所发生的事情
-    invitation:
-      hi: '您好%{name}'
     proposal_closing_soon:
       closes_in: 将要关闭
       summary: 总结

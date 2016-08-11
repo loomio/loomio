@@ -31,7 +31,6 @@ sv:
     confirm_delete_message: Är du säker på att du vill ta bort denna kommentaren?
   sidebar:
     unread: Olästa
-    explore: Utforska publika grupper
     edit_profile: Ändra profilen
     email_settings: Emailinställningar
     help: Hjälp
@@ -145,7 +144,17 @@ sv:
     message_label: Ditt meddelande
   help_page:
     coordinating: Koordinera din Loomiogrupp
-    coordinating_details: "Som koordinator är du ansvarig att administrera din Loomiogrupp och bjuda in\nalla deltagare. Förutom att lära sig använda en ny mjukvara, kommer din grupp \natt lära sig nya processer att samarbeta mer effektivt samt att fatta bra beslut \ntillsammans. Här är några tips för att hjälpa din grupp att lyckas:\n"
+    coordinating_details: >
+      Som koordinator är du ansvarig att administrera din Loomiogrupp och bjuda
+      in
+
+      alla deltagare. Förutom att lära sig använda en ny mjukvara, kommer din
+      grupp
+
+      att lära sig nya processer att samarbeta mer effektivt samt att fatta bra
+      beslut
+
+      tillsammans. Här är några tips för att hjälpa din grupp att lyckas:
     different_ways: Olika sätt att använda Loomio
     engaging_html: >
       <h2>Tips för hur du engagerar din grupp</h2>
@@ -193,7 +202,21 @@ sv:
 
       delta i processen kommer de att vara mer benägna att sluta upp kring
       resultatet.</p>
-    example2_html: "<h3>Du har redan ett förslag i åtanke och vill få med dig gruppen att gå vidare.</h3>\n<p>Strategi: Starta en diskussion om ett särskilt beslut och lägg fram förslaget direkt.</p> \n<p>Om du har ett tydligt resultat i åtanke, men vill se till att det inte finns några kritiska invändningar,\nkan du använda förslaget för att få snabb återkoppling inför ett beslut.</p>\n<p>Du kan använda detta för att slutföra ett dokument, godkänna en ansökan, eller få sign-off på ett arbete.</p>\n"
+    example2_html: >
+      <h3>Du har redan ett förslag i åtanke och vill få med dig gruppen att gå
+      vidare.</h3>
+
+      <p>Strategi: Starta en diskussion om ett särskilt beslut och lägg fram
+      förslaget direkt.</p>
+
+      <p>Om du har ett tydligt resultat i åtanke, men vill se till att det inte
+      finns några kritiska invändningar,
+
+      kan du använda förslaget för att få snabb återkoppling inför ett
+      beslut.</p>
+
+      <p>Du kan använda detta för att slutföra ett dokument, godkänna en ansökan,
+      eller få sign-off på ett arbete.</p>
     get_in_touch: Kontakta oss
     get_in_touch_description_html: "Om du har någon fråga eller vill ge feedback, <a href='%{link}'>skriv till oss</a>."
     getting_started: Håller på att starta
@@ -222,7 +245,7 @@ sv:
       <p>Den första frågan varje ny medlem får är 'vad är den här gruppen till
       för?'</p>
 
-       <p>Tänk på det enklaste sättet du kan beskriva gruppen: Vad vill du att ni
+      <p>Tänk på det enklaste sättet du kan beskriva gruppen: Vad vill du att ni
       ska
 
       åstadkomma tillsammans? Vilka typer av beslut kommer ni att fatta? Vem
@@ -270,9 +293,47 @@ sv:
     positions_disagree_description: '<span>Håller inte med</span> innebär att du tror att det kan finnas ett bättre alternativ, men att du kan tänka dig att foga dig i gruppens beslut.'
     positions_block_description: '<span>Blockerar</span> innebär att du har allvarliga invändningar och att du skulle bli mycket missnöjd om detta förslag gick igenom.'
     start_discussion: Starta en engagerande diskussion
-    start_discussion_html: "<p>När du startar en ny diskussion, se till att titeln förmedlar ämnet kortfattat .\nAnvänd Context Panel för att ge all bakgrundsinformation som är nödvändig \nför att gruppen ska få en produktiv och givande diskussion.</p>\n<p>Under diskussionens gång kan Context Panel uppdateras närhelst ny information\ntillkommer. Förutom att klargöra ämnet, kan du använda detta utrymme till att\ndela resurser, summera diskussionens utveckling, eller beskriva de beslutssätt\ndin grupp använder.</p>\n"
+    start_discussion_html: >
+      <p>När du startar en ny diskussion, se till att titeln förmedlar ämnet
+      kortfattat .
+
+      Använd Context Panel för att ge all bakgrundsinformation som är nödvändig
+
+      för att gruppen ska få en produktiv och givande diskussion.</p>
+
+      <p>Under diskussionens gång kan Context Panel uppdateras närhelst ny
+      information
+
+      tillkommer. Förutom att klargöra ämnet, kan du använda detta utrymme till
+      att
+
+      dela resurser, summera diskussionens utveckling, eller beskriva de
+      beslutssätt
+
+      din grupp använder.</p>
     start_proposal: Hur du skriver ett tydligt förslag
-    start_proposal_html: "<p>Om titeln är tydlig och kortfattad kommer deltagarna direkt att förstå \nvad det är ni ska bli överens eller inte överens om. </p>\n<p>Det gör inget att ett förslag inte skulle komma direkt till en tydlig överenskommelse.\nOm gruppen inte gillar det första förslaget, kan vem som helst komma med ett nytt förslag för att\nta med uppkomna invändningar och föra processen framåt. </p>\n<p>Genom denna dynamiska process kan gruppens kollektiva intelligens generera bättre idéer\nän någon skulle kunnat ha gjort på egen hand.</p>\n<p>Tidsfristen för ett förslag kan utökas när som helst, om det ser ut som beslutet skulle behöva mer tid.\nAlla kommer att få ett email 24 timmar innan ett förslag stängs.</p>\n"
+    start_proposal_html: >
+      <p>Om titeln är tydlig och kortfattad kommer deltagarna direkt att förstå
+
+      vad det är ni ska bli överens eller inte överens om. </p>
+
+      <p>Det gör inget att ett förslag inte skulle komma direkt till en tydlig
+      överenskommelse.
+
+      Om gruppen inte gillar det första förslaget, kan vem som helst komma med
+      ett nytt förslag för att
+
+      ta med uppkomna invändningar och föra processen framåt. </p>
+
+      <p>Genom denna dynamiska process kan gruppens kollektiva intelligens
+      generera bättre idéer
+
+      än någon skulle kunnat ha gjort på egen hand.</p>
+
+      <p>Tidsfristen för ett förslag kan utökas när som helst, om det ser ut som
+      beslutet skulle behöva mer tid.
+
+      Alla kommer att få ett email 24 timmar innan ett förslag stängs.</p>
     video_id: '52025402'
     video_tutorial: Videotutorial
     video_tutorial_description: Se videon för en snabb demonstration av hur Loomio fungerar.

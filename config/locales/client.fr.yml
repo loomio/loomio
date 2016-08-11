@@ -152,6 +152,10 @@ fr:
       twitter: Se connecter avec Twitter
       google: Se connecter avec Google
       github: Se connecter avec Github
+  signed_out_modal:
+    title: Votre session a été clôturée
+    message: Vous avez été déconnecté de Loomio depuis une autre fenêtre. Identifiez-vous pour continuer.
+    ok: Ok
   comment_form:
     aria_label: Ajouter un commentaire
     attachments:
@@ -177,10 +181,10 @@ fr:
     recent: Récent
     unread: Non lu
     muted: Désactivé
-    explore: Explorer les groupes publics
     edit_profile: Éditer le profil
     email_settings: Paramètres e-mail
     help: Aide
+    contact: Contacter Loomio
     sign_out: Se déconnecter
   navbar:
     recent_title: Aller sur le tableau de bord
@@ -204,6 +208,7 @@ fr:
     invite_people: Inviter des personnes
   notifications:
     header: Notifications
+    no_notifications: Aucune nouvelle notification
     new_discussion: '<strong>{{name}}</strong> a démarré une discussion <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> a créé une proposition <strong>{{proposal}}</strong>'
     motion_closed: "Proposition close\_: <strong>{{proposal}}</strong>"
@@ -319,7 +324,13 @@ fr:
   proposal_position_block: Bloquer
   legacy_trial_expired_modal:
     heading: "Merci d'utiliser Loomio cette année !"
-    body: "<p>Votre soutien tout au long de l'année nous a vraiment fait chaud au coeur et nous sommes très excités par toutes les idées que nous avons pour encore améliorer Loomio en 2016.</p> <p>Trouvez-vous Loomio utile pour votre groupe ? Nous venons de publier nos options tarifaires et nous demandons aux groupes qui utilisent Loomio depuis quelque temps de sélectionner une des options qui leur convienne.</p> \n"
+    body: >
+      <p>Votre soutien tout au long de l'année nous a vraiment fait chaud au
+      coeur et nous sommes très excités par toutes les idées que nous avons pour
+      encore améliorer Loomio en 2016.</p> <p>Trouvez-vous Loomio utile pour
+      votre groupe ? Nous venons de publier nos options tarifaires et nous
+      demandons aux groupes qui utilisent Loomio depuis quelque temps de
+      sélectionner une des options qui leur convienne.</p>
     submit: Montrez-moi les options
   angular_welcome_modal:
     heading: "Bienvenue sur le nouveau Loomio\_!"
@@ -484,6 +495,8 @@ fr:
     custom_subdomain_html: |
       Sous nom de domaine personnalisé,<br />
       ex. <strong>votregroupe</strong>.loomio.org
+    plus_price_html: |
+      <strong>179$US</strong>/mois<br><span>ou</span> 1790$/year
     select: Sélectionner
   subscription_success_modal:
     heading: 'Merci pour votre souscription !'
@@ -682,13 +695,14 @@ fr:
       updated: Réglages courriel mis à jour
   dashboard_page:
     aria_label: Tableau de bord
-    options:
-      aria_label: Options de filtrage du Tableau de Bord
     no_groups:
+      show_all: "Aucune discussion à afficher car vous n'êtes membre d'aucun groupe."
+      show_muted: "Aucune discussion désactivée car vous n'êtes membre d'aucun groupe."
+      start: Démarrer
       or: ou
+      join_group: '<a href="/explore">rejoindre</a> un groupe pour voir des discussions.'
     no_threads:
       show_all: "Vous n'avez aucune discussion récente."
-      show_participating: "Vous n'avez participé à aucune discussion récemment."
       show_starred: "Vous n'avez aucune discussion favorite."
       show_proposals: "Il n'y a aucune proposition active actuellement."
       show_muted: "Vous n'avez pas de discussion désactivée."
@@ -705,9 +719,6 @@ fr:
       starred: Discussions favorites
       starred_aria_label: Voici les discussions que vous avez noté comme importantes
       starred_description: Voir uniquement les discussions que vous avez marquées comme importantes
-      participating: Discussions auxquelles vous participez
-      participating_aria_label: Voici les discussions auxquelles vous avez participé
-      participating_description: "Voir uniquement les discussions auxquelles j'ai participé"
       proposals: Propositions
       proposals_aria_label: Voici les discussions avec des propositions en cours
       proposals_description: Voir uniquement les discussions avec des propositions en cours
@@ -737,7 +748,10 @@ fr:
     unread_threads: Discussions non lues
     view_more: Voir plus
     no_groups:
+      explanation: "Aucune discussion non lue car vous n'êtes membre d'aucun groupe."
+      start: Démarrer
       or: ou
+      join_group: '<a href="/explore">rejoindre</a> un groupe pour voir des discussions.'
   groups_page:
     page_header: Vos groupes
   discussion:
@@ -850,9 +864,49 @@ fr:
     new_contact_message: 'Merci de votre message ; nous prendrons rapidement contact !'
   help_page:
     coordinating: Coordonner vos groupes Loomio
-    coordinating_details: "En tant que coordinateur, vous êtes responsable du paramétrage du groupe Loomio et des \ninvitations. Tout en apprenant à utiliser un nouveau logiciel, votre groupe va\napprendre un nouveau processus pour collaborer plus efficacement et prendre de bonnes décisions ensemble. Voilà quelques trucs pour aider votre groupe à en tirer profit :\n\n"
+    coordinating_details: >
+      En tant que coordinateur, vous êtes responsable du paramétrage du groupe
+      Loomio et des
+
+      invitations. Tout en apprenant à utiliser un nouveau logiciel, votre groupe
+      va
+
+      apprendre un nouveau processus pour collaborer plus efficacement et prendre
+      de bonnes décisions ensemble. Voilà quelques trucs pour aider votre groupe
+      à en tirer profit :
     different_ways: Différentes utilisations de Loomio
-    engaging_html: "<h2>Les trucs pour commencer votre groupe</h2>\n<p>Les personnes seront heureuses de participer dans un projet lorsqu'il y aura de\nbonnes propositions sur la table. Une bonne proposition contient un plan d'action pour\nle groupe, ceci afin qu'il soit aisé d'être d'accord ou de rejeter.  Pensez à la manière dont\n vous pourrez améliorer les décisions/discussions du groupe lorsqu'elles seront sur \nLoomio.</p>\n<p>Si votre groupe démarre, vous pouvez lancer une petite discussion légère, pour donner\nà chacun une chance de jouer avec l'outil, et voir le processus de prise de décision en\naction.</p>\n<p>Une autre manière simple d'encourager les gens à initier une discussion est d'utiliser le\n@mention pour alerter des personnes spécifiques ; cela leur enverra un courriel pour leur dire\nque vous les avez mentionnés dans un commentaire.</p>\n"
+    engaging_html: >
+      <h2>Les trucs pour commencer votre groupe</h2>
+
+      <p>Les personnes seront heureuses de participer dans un projet lorsqu'il
+      y aura de
+
+      bonnes propositions sur la table. Une bonne proposition contient un plan
+      d'action pour
+
+      le groupe, ceci afin qu'il soit aisé d'être d'accord ou de rejeter.  Pensez
+      à la manière dont
+
+      vous pourrez améliorer les décisions/discussions du groupe lorsqu'elles
+      seront sur
+
+      Loomio.</p>
+
+      <p>Si votre groupe démarre, vous pouvez lancer une petite discussion
+      légère, pour donner
+
+      à chacun une chance de jouer avec l'outil, et voir le processus de prise de
+      décision en
+
+      action.</p>
+
+      <p>Une autre manière simple d'encourager les gens à initier une discussion
+      est d'utiliser le
+
+      @mention pour alerter des personnes spécifiques ; cela leur enverra un
+      courriel pour leur dire
+
+      que vous les avez mentionnés dans un commentaire.</p>
     example1_html: >
       <h3>Le groupe doit discuter d'un sujet et construire une solution en
       commun</h3>
@@ -864,7 +918,23 @@ fr:
       construit une compréhension commune du sujet avant de passer à une solution
       spécifique. Lorsque les gens sont associés tout au long d'un processus, ils
       ont de meilleures chances d'adhérer au résultat</p>
-    example2_html: "<h3>Vous avez déjà une proposition en tête, et vous voulez obtenir l'aval du groupe pour \naller de l'avant.</h3>\n<p>Stratégie : Démarrer une discussion à propos d'une décision spécifique et faire \nimmédiatement une proposition.</p>\n<p>Si vous avez un objectif clair en tête, mais que vous voulez éviter des obstacles imprévus, vous pouvez faire une proposition pour avoir un retour rapide.</p>\n<p>Vous pouvez faire des choses comme finaliser un document, approuver une candidature, ou valider un travail.</p>\n"
+    example2_html: >
+      <h3>Vous avez déjà une proposition en tête, et vous voulez obtenir l'aval
+      du groupe pour
+
+      aller de l'avant.</h3>
+
+      <p>Stratégie : Démarrer une discussion à propos d'une décision spécifique
+      et faire
+
+      immédiatement une proposition.</p>
+
+      <p>Si vous avez un objectif clair en tête, mais que vous voulez éviter des
+      obstacles imprévus, vous pouvez faire une proposition pour avoir un retour
+      rapide.</p>
+
+      <p>Vous pouvez faire des choses comme finaliser un document, approuver une
+      candidature, ou valider un travail.</p>
     get_in_touch: Rester en contact
     get_in_touch_description_html: "Si vous avez la moindre question ou retour d'expérience, <a href='%{link}'>écrivez-nous</a>."
     getting_started: Démarrage
@@ -908,9 +978,36 @@ fr:
     join_the_community: Rejoindre la communauté
     join_the_community_description_html: "Tout le monde est bienvenu dans la communauté Loomio, où nous parlons des améliorations de l'outil, et comment les mettre en oeuvre.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>Cliquer ici pour aller dans le groupe de la communauté Loomio</a>."
     images_and_text_formatting: Formatage des images et du texte
-    images_and_text_formatting_html: "<p>Loomio utilise \"Markdown\"  pour l'intégration de l'image et la mise en forme du texte. \nVous pouvez activer \"Markdown\" avec la petite icône grise sous la boîte de commentaires.</p>\n<p><a href='https://www.loomio.org/discussions/1124'>Cliquez ici</a>\npour des informations sur l'utilisation de \"Markdown\".</p>\n"
+    images_and_text_formatting_html: >
+      <p>Loomio utilise "Markdown"  pour l'intégration de l'image et la mise en
+      forme du texte.
+
+      Vous pouvez activer "Markdown" avec la petite icône grise sous la boîte de
+      commentaires.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>Cliquez ici</a>
+
+      pour des informations sur l'utilisation de "Markdown".</p>
     keep_up_to_date: Rester à jour
-    keep_up_to_date_html: "<p>En cliquant sur le nom du groupe en haut de l'écran vous arriverez sur la Page du Groupe,\noù vous pourrez voir une liste de discussions et décisions pour ce groupe. Si vous êtes dans \nplus d'un groupe, vous pouvez voir toute l'activité dans tous vos groupes à partir\nde la page d'Accueil.</p>\n<p>Vous recevrez des notifications par courriel lorsque des choses importantes arriveront\ndans votre groupe.\nVous pouvez changer vos réglages d'envoi de courriel <a href=\"%{link}\"\">ici</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>En cliquant sur le nom du groupe en haut de l'écran vous arriverez sur
+      la Page du Groupe,
+
+      où vous pourrez voir une liste de discussions et décisions pour ce groupe.
+      Si vous êtes dans
+
+      plus d'un groupe, vous pouvez voir toute l'activité dans tous vos groupes
+      à partir
+
+      de la page d'Accueil.</p>
+
+      <p>Vous recevrez des notifications par courriel lorsque des choses
+      importantes arriveront
+
+      dans votre groupe.
+
+      Vous pouvez changer vos réglages d'envoi de courriel <a
+      href="%{link}"">ici</a>.</p>
     make_a_decision: Prendre une décision
     make_a_decision_description: "Lorsque le groupe est prêt à prendre une décision, tout le monde peut faire une proposition. Esquissez un plan d'action clair et donner quelques  informations afin que chacun sache ce qu'être d'accord ou ne pas être d'accord, signifie."
     prompt_people_details: "Si vous voulez attirer l'attention d'une personne spécifique dans le groupe, taper \"@\" suivi de son nom. Elle recevra un courriel lui spécifiant que vous l'avez mentionné dans un commentaire."
@@ -940,7 +1037,31 @@ fr:
 
       décisionnels utilisés par le groupe.</p>
     start_proposal: Ecrire une proposition claire
-    start_proposal_html: "<p> Si vous choisissez un titre clair et succinct, les gens sauront exactement\nce que signifie être d'accord ou non.</p>\n<p>Ce n'est pas la fin du monde si une proposition n'obtient pas immédiatement un accord global.\nSi le groupe n'aime pas la première proposition, n'importe qui peut démarrer une nouvelle proposition pour répondre aux préoccupations soulevées, et continuer la construction d'une solution.</p>\n<p>Avec ce processus dynamique, la sagesse collective de votre groupe peut générer de \nmeilleures idées qu'aucun d'entre vous n'aurait pu avoir seul.</p>\n<p>La fin de la proposition peut être prolongée à tout moment, s'il semble que la décision\nnécessite plus d'espace. Tous les membres du groupe recevront un courriel de notification\n24 heures avant la date de fin de la proposition.</p>\n"
+    start_proposal_html: >
+      <p> Si vous choisissez un titre clair et succinct, les gens sauront
+      exactement
+
+      ce que signifie être d'accord ou non.</p>
+
+      <p>Ce n'est pas la fin du monde si une proposition n'obtient pas
+      immédiatement un accord global.
+
+      Si le groupe n'aime pas la première proposition, n'importe qui peut
+      démarrer une nouvelle proposition pour répondre aux préoccupations
+      soulevées, et continuer la construction d'une solution.</p>
+
+      <p>Avec ce processus dynamique, la sagesse collective de votre groupe peut
+      générer de
+
+      meilleures idées qu'aucun d'entre vous n'aurait pu avoir seul.</p>
+
+      <p>La fin de la proposition peut être prolongée à tout moment, s'il semble
+      que la décision
+
+      nécessite plus d'espace. Tous les membres du groupe recevront un courriel
+      de notification
+
+      24 heures avant la date de fin de la proposition.</p>
     video_id: '52025402'
     video_tutorial: Tutoriel vidéo
     video_tutorial_description: Regardez la vidéo pour une rapide démonstration de la manière dont Loomio fonctionne.
@@ -953,7 +1074,9 @@ fr:
   explore_page:
     header: Explorer les groupes Loomio
     search_placeholder: Rechercher des groupes publics Loomio
+    single_search_result: '1 groupe public corrspond à <strong>{{searchTerm}}:</strong>'
     multiple_search_results: '{{resultCount}} groupes publics corrspondent à <strong>{{searchTerm}}:</strong>'
+    no_results_found: "<strong>Aucun groupe ne correspond à votre recherche&nbsp;?</strong> Si un groupe est classifié comme 'secret', il ne sera pas visible ici. Si vous savez qui coordonne le groupe, vous pouvez leur demander une invitation."
   angular:
     switch_back: "Retourner à l'ancienne version de Loomio"
     give_feedback: Donner votre avis
@@ -962,6 +1085,42 @@ fr:
       invite: 'Essayer le nouveau Loomio !'
       title: Essayer le nouveau Loomio
       intro: "Nous avons reconstruit Loomio et nous avons besoin de votre aide pour nous assurer qu'il est génial\_!"
+      body_html: >
+        <p></p>
+
+        <h3>Quelle est la différence en fait&nbsp;?</h3>
+
+
+
+        <p>
+
+        La nouvelle interface ressemble beaucoup à l'ancienne mais avec des
+        nouveautés&nbsp;:
+
+        <ul>
+
+        <li>Tout se met à jour sur la page en temps réel</li>
+
+        <li>Elle est adaptée à toutes les configs, du mobile au grand écran</li>
+
+        <li>Elle est accessible aux mal voyants et traduite dans une <a
+        href="https://www.loomio.org/translation">multitude de langues</a>
+
+        </ul>
+
+        </p>
+
+
+
+        <p>La base de données est inchangée, tous les groupes et discussions
+        existants sont donc intégralement disponibles..</p>
+
+        <p>Un lien "Donner votre avis" dans le coin inférieur gauche. Vous
+        y verrez aussi un lien pour "Revenir à l'ancien Loomio" qui restera
+        disponible quelque temps.</p>
+
+        <p>Nous avons hâte de connaître votre opinion, merci de votre
+        disponibilité.</p>
       button_text: Activer le nouveau Loomio
     disable:
       title: "Merci d'essayer le nouveau Loomio"
@@ -982,7 +1141,9 @@ fr:
     revoke: Révoquer
   registered_apps_page:
     title: Applications enregistrées
+    no_applications: 'Aucune application OAuth ! Cliquez ci-dessous pour en créer une.'
     name: Nom
+    redirect_uris: Redirection des URIs
     create_new_application: Nouvelle application
   registered_app_page:
     uid: "ID de l'application"
@@ -990,6 +1151,10 @@ fr:
     new_application_title: Nouvelle application
     edit_application_title: "Mettre à jour l'application"
     name_label: Nom
+    name_placeholder: Quel est le nom de votre application ?
+    redirect_uri_label: Redirection des URIs
+    redirect_uri_placeholder: "L'URI de retour pour votre application, ex : https://myapplication.com/loomio/callback"
+    redirect_uri_note: "(une ligne par URI, utiliser 'urn:ietf:wg:oauth:2.0:oob' pour des tests locaux)"
     new_application_submit: "Créer l'application"
     edit_application_submit: "Mettre à jour l'application"
     messages:

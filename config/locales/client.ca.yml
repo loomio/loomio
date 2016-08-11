@@ -34,7 +34,6 @@ ca:
     confirm_delete_message: Estàs segur de que vols eliminar aquest comentari?
   sidebar:
     unread: No llegit
-    explore: Explorar grups públics
     email_settings: Configuració de correu electrònic
     help: Ajuda
     sign_out: Tanca la sessió
@@ -149,9 +148,62 @@ ca:
 
       junts. Aquí tens algunes claus per tal que el grup funcioni:
     different_ways: "Diferents maneres d'emprar Loomio"
-    engaging_html: "<h2> Claus per engrescar el teu grup </h2>\n<p>La gent estarà emocionada d'entrar i començar a participar quan hi ha una\nproposta estimulant sobre la taula. Una bona proposta conté un pla d'acció per al grup, en \nel que quedi clar què significa estar d'acord o en desacord. Pensa en com\npot identificar debats / decisions que el grup està duent a terme en persona o per\ncorreu electrònic i que seria més fàcil si estiguessin a Loomio. </p>\n<p> Si el grup està començant, pots començar per una decisió simple, per donar\na tothom l'oportunitat de jugar amb l'eina i experimentar el procés de presa de decisions. </p>\n<p> Una altra forma senzilla d'animar gent a participar en una discussió és utilitzar la @menció\na persones específiques, als quals els arribarà un correu electrònic dient que han estat\nesmentats en un comentari. </p>\n"
-    example1_html: "<h3> Necessites que el grup discuteixi un tema molt ampli i desenvolupar una solució col·lectiva </h3>\n<p> Estratègia: Debatre un tema per un temps abans de crear una proposta </p>\n<p> Les discussions sovint arriben als millors resultats si es construeix una comprensió compartida\nsobre el problema abans d'abordar una solució específica. Quan la gent participa en el procés, \nés més propensa a arribar a un acord amb el resultat. </p>\n"
-    example2_html: "<h3> Ja tens una proposta en ment, i vols aconseguir la conclusió del grup per seguir endavant. </h3> \n<p> Estratègia: Enceta un debat sobre una decisió específica i fes una proposta immediatament </p>\n<p> Si tens un resultat clar en ment, però vol assegurar-te que no hi ha postures crítiques, pots utilitzar la proposta per obtenir una anàlisi ràpid de la decisió. </p> \n<p> Pots fer coses com finalitzar un document, aprovar una sol·licitud, o completar un treball. </p> \n"
+    engaging_html: >
+      <h2> Claus per engrescar el teu grup </h2>
+
+      <p>La gent estarà emocionada d'entrar i començar a participar quan hi ha
+      una
+
+      proposta estimulant sobre la taula. Una bona proposta conté un pla d'acció
+      per al grup, en
+
+      el que quedi clar què significa estar d'acord o en desacord. Pensa en com
+
+      pot identificar debats / decisions que el grup està duent a terme en
+      persona o per
+
+      correu electrònic i que seria més fàcil si estiguessin a Loomio. </p>
+
+      <p> Si el grup està començant, pots començar per una decisió simple, per
+      donar
+
+      a tothom l'oportunitat de jugar amb l'eina i experimentar el procés de
+      presa de decisions. </p>
+
+      <p> Una altra forma senzilla d'animar gent a participar en una discussió és
+      utilitzar la @menció
+
+      a persones específiques, als quals els arribarà un correu electrònic dient
+      que han estat
+
+      esmentats en un comentari. </p>
+    example1_html: >
+      <h3> Necessites que el grup discuteixi un tema molt ampli i desenvolupar
+      una solució col·lectiva </h3>
+
+      <p> Estratègia: Debatre un tema per un temps abans de crear una proposta
+      </p>
+
+      <p> Les discussions sovint arriben als millors resultats si es construeix
+      una comprensió compartida
+
+      sobre el problema abans d'abordar una solució específica. Quan la gent
+      participa en el procés,
+
+      és més propensa a arribar a un acord amb el resultat. </p>
+    example2_html: >
+      <h3> Ja tens una proposta en ment, i vols aconseguir la conclusió del grup
+      per seguir endavant. </h3>
+
+      <p> Estratègia: Enceta un debat sobre una decisió específica i fes una
+      proposta immediatament </p>
+
+      <p> Si tens un resultat clar en ment, però vol assegurar-te que no hi ha
+      postures crítiques, pots utilitzar la proposta per obtenir una anàlisi
+      ràpid de la decisió. </p>
+
+      <p> Pots fer coses com finalitzar un document, aprovar una sol·licitud,
+      o completar un treball. </p>
     get_in_touch: "Posa't en contacte"
     get_in_touch_description_html: "Si tens alguna pregunta o comentari,  <a href='%{link}'> escriu-nos </a>."
     getting_started: Primers passos
@@ -241,7 +293,28 @@ ca:
 
       protocols de presa de decisions que el grup està utilitzant. </p>
     start_proposal: Escriure una proposta clara
-    start_proposal_html: "<p> Si fas el títol clar i concís, la gent sabrà immediatament què significa estar d'acord o en desacord. </p>\n<p>Si una proposta no aconsegueix un acord clar immediatament, no és la fi del món.\nSi al grup no li agrada la primera proposta, qualsevol persona pot iniciar una nova proposta per\nabordar les inquietuds plantejades, i mantenir el procés en marxa. </p>\n<p> A través d'aquest procés dinàmic, la intel·ligència col·lectiva del grup pot generar idees millors \nque ningú hauria pogut tenir individualment.</p>\n<p>El termini de la proposta es pot ampliar en qualsevol moment, si sembla que la decisió\nnecessita una mica més de temps. Tothom rebrà una notificació per correu electrònic 24 hores abans de la proposta es tanqui.</p>\n"
+    start_proposal_html: >
+      <p> Si fas el títol clar i concís, la gent sabrà immediatament què
+      significa estar d'acord o en desacord. </p>
+
+      <p>Si una proposta no aconsegueix un acord clar immediatament, no és la fi
+      del món.
+
+      Si al grup no li agrada la primera proposta, qualsevol persona pot iniciar
+      una nova proposta per
+
+      abordar les inquietuds plantejades, i mantenir el procés en marxa. </p>
+
+      <p> A través d'aquest procés dinàmic, la intel·ligència col·lectiva del
+      grup pot generar idees millors
+
+      que ningú hauria pogut tenir individualment.</p>
+
+      <p>El termini de la proposta es pot ampliar en qualsevol moment, si sembla
+      que la decisió
+
+      necessita una mica més de temps. Tothom rebrà una notificació per correu
+      electrònic 24 hores abans de la proposta es tanqui.</p>
     video_id: '52025402'
     video_tutorial: Video tutorial
     video_tutorial_description: Mira el video per a una demostració ràpida de com utilitzar Loomio.

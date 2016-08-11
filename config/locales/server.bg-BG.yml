@@ -6,7 +6,6 @@ bg-BG:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за да се отпишете или смените e-mail предпочитаията си."
     view_comment: Кликнете тук за да видите коментара в Loomio
     view_discussion: Кликнете тук за да видите тази дискусия
-    view_group: Кликнете тук за да видите групата в Loomio
     create_proposal:
       intro: 'Създадено е ново предложение в Loomio група, на която сте член.'
       closes_in: Затваря след
@@ -14,8 +13,6 @@ bg-BG:
       heading: Вашата Loomio Активност
       intro: Показва какво се е случило във вашите Loomio групи през последните 24 часа
       subject: Loomio - Резюме на последните 24 часа
-    group_membership_approved:
-      intro: "Вашата заявка за достъп до група '%{group_name}' в Loomio беше одобрена."
     membership_request:
       intro: '%{name} (%{email}) е поискал достъп до една от вашите групи.'
       view_group: Можете да одобрите или не заявките тук

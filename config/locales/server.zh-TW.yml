@@ -23,26 +23,38 @@ zh-TW:
       content: '您被邀請參與討論：%{discussion}'
       message_intro: '%{who} 說：'
       link: 加入討論串
+    value_proposition: Loomio 是一個讓群組共同做出決策的地方
+    view_group: 檢視群組
     to_join_group:
       subject: '%{member} 邀請您加入 Loomio 的 %{group_name} 群組'
-      invitation_text_html: '<strong>%{member}</strong> 已經邀請您加入群組 <strong>%{group_name}</strong>'
+      invitation_text: '%{member} 邀請您加入他們的 %{group_name} 群組。'
+      invitation_text_html: 已經邀請您加入他們的群組
+      link_help: 點選下面的連結以接受邀請：
       accept_invitation: 接受邀請
-      tagline: Loomio 是一個讓群組共同做出決策的地方
     resend_to_join_group:
       subject: '%{member} 仍在等待您在 Loomio 上加入 %{group_name}'
     to_start_group:
       subject: '設定您的新 Loomio 群組： %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} 將您加入至 %{which_group}'
-      content: '%{who} 將您加入至 Loomio 的 %{which_group} 。點選這裡前往群組：'
+      hi: '%{name} 您好，'
+      intro: '點選以下連結以設定您的群組 %{group_name} ：'
+      intro_html: 在下面點選以設定您的群組：
+      start_group: 建立我的群組
+      closing_message: 若您需要協助或是有問題，請回覆本電子郵件。
+      thanks: 謝謝，
+      loomio_team: Loomio 團隊
+    user_added_to_group:
+      subject: '%{who} 將您加入至在 Loomio 上的 %{which_group}'
+      content: '%{who} 將您加入至 %{which_group}。'
+      content_html: '<strong>%{who}</strong> 將您加入到了 <strong>%{which_group}</strong>。'
+      link_help: 點選以下的連結以前往該群組：
     unsubscribe: 取消訂閱或者變更您的電子郵件偏好設定：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     view_comment: 點擊此處，您可以看到在 Loomio 上的意見。
     view_discussion: 點擊此處，您可以看到這條討論串。
-    view_group: 點擊此處檢視 Loomio 上的群組
     view_proposal: 在 Loomio 上觀看這項提案。
     create_discussion:
-      intro: '%{who} 在 %{which_group} 啟動了新的討論串：'
+      intro_html: 啟動討論串：
+      intro: '%{who} 啟動了一個討論串：'
     create_proposal:
       intro: 在您所屬的 Loomio 群組中，有一個新的提案！
       closes_in: 結束於
@@ -59,28 +71,29 @@ zh-TW:
       heres_what_happened: 這裡是 Loomio 上昨天發生的事情。
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
     comment_replied_to:
-      context: '%{author_name} 在討論串「%{discussion_title}」回覆您的意見'
+      context_html: 回覆您的意見在
+      context: '%{author_name} 在討論串 %{discussion_title} 回覆您的意見'
       subject: '%{who} 在 Loomio %{which} 群組中回覆了您的意見'
+    new_comment:
+      context: 意見在
     group_membership_approved:
-      intro: '您加入 Loomio「%{group_name}」群組的申請已批准！'
-      subject: '%{prefix} 成員資格已批准'
-    invitation:
-      hi: '%{name} 您好，'
-      intro: '點選以下連結以設定您的群組 %{group_name} ：'
-      closing_message: 如果您有問題或有需要我們幫助您快速開始使用的話，我們樂於聽到您的意見 — 只要回覆此封郵件即可。
-      thanks: |
-        感謝您！
-        Loomio 團隊敬上
+      intro: '您加入「%{group_name}」群組的申請已獲批准。'
+      intro_html: '您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。'
+      link_help: '點選以下的連結以加入 %{group_name} 並開始：'
+      subject: '您加入在 Loomio 上的 %{group_name} 的請求已獲批准。'
+      join_group: 加入群組
+      view_group_text: 在下面點選以檢視在 Loomio 上的群組：
     membership_request:
       intro: '%{name} (%{email}) 申請加入您的 Loomio 群組。'
       subject: '%{who} 申請加入 %{which_group}'
       view_group: 您可點此批准或拒絕申請
     mentioned:
-      context: '%{author_name} 在討論「%{discussion_title}」時提到您'
+      context_html: 提及您當討論
+      context: '%{author_name} 在討論 %{discussion_title} 時提到您'
       subject: '%{who} 在討論「%{which}」時提到您'
     new_motion_created:
       subject: '提案：%{proposal_title}'
-      context: '%{author}開始一個提案在%{group_full_name}:'
+      context: '開始一個提案在 %{group_full_name}：'
     proposal_closed:
       proposal_has_closed: 此提議已經定案。
       specify_outcome_and_notify_group: 建立成果並發送給您的群組成員！
@@ -104,12 +117,14 @@ zh-TW:
       turn_on_notifications_text: '為此討論開啟電子郵件以接收所有未來的活動：%{url}'
       change_email_preferences_html: "變更您的 <a href='%{email_preferences_url}'>email 偏好設定</a>以取消訂閱這些電子郵件。"
       change_preferences: 變更您的電子郵件偏好設定：
-      new_motion: '%{who} 的提議：'
+      new_motion_html: 啟動提案：
+      new_motion: '%{who} 啟動了一個提案：'
       motion_closing_soon: 24 小時內定案的提議：
       proposal_closed: 定案的提議：
       specify_outcome_html: "您的提議已經定案。<a href='%{link}'>具體說明成果</a>讓每個人都能知道提案的結果。"
       specify_outcome: 您的提議已經定案。請具體說明成果，讓每個人都能知道提案的結果：
-      outcome_created: '%{who} 確立了提案成果：'
+      outcome_created_html: 分享了一個提案結果：
+      outcome_created: '%{who} 分享了一個提案結果：'
       you_agreed: '您%{past_tense_position}'
     analytics:
       subject: '%{which_group} 在 Loomio 上的一週'
@@ -210,9 +225,9 @@ zh-TW:
 
       您目前正在閱讀討論串**內容**。使用此空間來給予群組背景資訊來進行一個有生產力的討論。
 
-       **提案**區塊是您要做出決定的地方。您可以啟動並參與在此區塊的提案。
+      **提案**區塊是您要做出決定的地方。您可以啟動並參與在此區塊的提案。
 
-       **動態**區塊包含了一切在該討論串發生的活動。
+      **動態**區塊包含了一切在該討論串發生的活動。
   first_comment:
     body: |
       大家好，我是 Loomio 小幫手機器人。
@@ -245,6 +260,8 @@ zh-TW:
 
 
       當您選擇了四個選項的其中一個的時候，您將會被提醒要輸入一段簡短的聲明來解釋您的立場與為什麼您對這件事有此感受。您隨時都可以改變您的立場，只要提案仍是開放狀態。
+  first_vote:
+    statement: 走吧！
   contact_page:
     contact_us: 聯絡我們
     faq_prompt_html: 對 Loomio 團隊有任何問題？在聯絡我們之前，您應該先在我們的常見問題中找尋答案。
@@ -306,9 +323,9 @@ zh-TW:
       title: |
         ## 連結與圖片
       body: |
-        大聲的複頌：
+        大聲複誦：
 
-        方括號括住名稱而圓括號括住 URL。
+        方括號括住名稱而圓括號括住 URL。括號間並無空格。
 
         [Loomio 首頁](https://www.loomio.org/)
 

@@ -32,24 +32,16 @@ pt-BR:
       link: Participar da discussão
     to_join_group:
       subject: '%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio'
-      invitation_text_html: '<strong>%{member}</strong> convidou você para participar do grupo <strong>%{group_name}</strong>'
       accept_invitation: Aceitar convite
-      tagline: Loomio é um lugar para grupos tomarem decisões em conjunto
     resend_to_join_group:
       subject: '%{member} ainda está esperando você para entrar em %{group_name} no Loomio'
     to_start_group:
       subject: 'Configure seu novo grupo Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} lhe adicionou ao grupo %{which_group}'
-      content: '%{who} adicionou você ao %{which_group} no Loomio. Clique aqui para visitar o grupo:'
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     view_comment: Clique aqui para ver o comentário no Loomio
     view_discussion: Clique aqui para ver esta discussão
-    view_group: Clique aqui para ver o grupo no Loomio
     view_proposal: Ver esta proposta no Loomio
-    create_discussion:
-      intro: '%{who} iniciou uma discussão em %{which_group}:'
     create_proposal:
       intro: Uma nova proposta foi criada em um dos grupos do Loomio dos quais você faz parte.
       closes_in: Encerra em
@@ -66,28 +58,15 @@ pt-BR:
       heres_what_happened: Eis o que aconteceu ontem no Loomio.
       marked_as_read_success: Tudo no e-mail foi marcado como lido
     comment_replied_to:
-      context: '%{author_name} respondeu ao seu comentário na discussão "%{discussion_title}"'
       subject: '%{who} respondeu ao seu comentário no grupo %{which} do Loomio'
-    group_membership_approved:
-      intro: "Sua solicitação para ter acesso ao grupo '%{group_name}' no Loomio foi aprovada."
-      subject: '%{prefix} Adesão aprovada'
-    invitation:
-      hi: 'Olá %{name},'
-      intro: 'Clique no link abaixo para configurar o seu grupo %{group_name}:'
-      closing_message: 'Se tiver perguntas ou se houver qualquer coisa que possamos fazer para ajudar a deixar tudo funcionando, adoraríamos ouvir de você - é só responder a este e-mail.'
-      thanks: |
-        Muito Obrigado!
-        Equipe Loomio
     membership_request:
       intro: '%{name} (%{email}) solicitou acesso a um de seus grupos no Loomio.'
       subject: '%{who} solicitou entrada em %{which_group}'
       view_group: Você pode aprovar ou recusar o pedido aqui
     mentioned:
-      context: '%{author_name} mencionou você durante a discussão "%{discussion_title}"'
       subject: '%{who} mencionou você durante a discussão "%{which}"'
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
-      context: '%{author} criou uma proposta no grupo %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: A proposta foi encerrada.
       specify_outcome_and_notify_group: 'Crie um resultado e envie para seu grupo!'
@@ -111,12 +90,10 @@ pt-BR:
       turn_on_notifications_text: 'Ligar e-mail para receber atividades nesta discussão: %{url}'
       change_email_preferences_html: "Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails."
       change_preferences: 'Modifique suas preferências de e-mail:'
-      new_motion: '%{who} propôs:'
       motion_closing_soon: 'Proposta encerra em 24 horas:'
       proposal_closed: 'Proposta encerrada:'
       specify_outcome_html: "Sua proposta foi encerrada. <a href='%{link}'>Especifique um resultado</a> para que todos saibam."
       specify_outcome: Sua proposta foi encerrada. Especifique um resultado para que todos saibam.
-      outcome_created: '%{who} definiu um resultado da proposta:'
       you_agreed: 'Você %{past_tense_position}'
   footer:
     about: Sobre
@@ -341,16 +318,6 @@ pt-BR:
     links:
       title: |
         ## Links e Imagens
-      body: |
-        Repita em voz alta:
-
-        Colchetes para nome e parênteses para URL.
-
-        [Loomio Homepage](https://www.loomio.org/)
-
-        O mesmo com imagens, mas precedidas com um ponto de exclamação.
-
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)
   beta_banner:
     new_loomio_html: >
       <strong>O novo Loomio é mais rápido, mais bonito, e melhor!</strong>

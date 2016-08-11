@@ -13,17 +13,11 @@ ro:
       subject: '%{member} te-a invitat sa te alaturi grupului %{group_name}  pe Loomio'
     to_start_group:
       subject: 'Seteaza noul tau grup Loomio:  %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} te-a adaugat la %{which_group}'
-      content: '%{who} te-a adaugat la %{which_group} pe Loomio. Click aici pentru a merge la grup:'
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     view_comment: Apasa aici pentru a vedea comentariul pe Loomio
     view_discussion: Apasa aici pentru a vedea aceasta discutie
-    view_group: Apasa aici pentru a vedea grupul pe Loomio
     view_proposal: Vizualizeaza aceasta propunere pe Loomio
-    create_discussion:
-      intro: '%{who} a inceput o discutie in %{which_group}:'
     create_proposal:
       intro: 'O noua propunere a fost creata intr-un grup Loomio de care apartii. '
       closes_in: Se inchide in
@@ -39,24 +33,13 @@ ro:
       thanks_for_reading: 'Multumesc pentru lectura, o zi buna!'
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
     comment_replied_to:
-      context: '%{author_name} a raspuns comentariului tau in "%{discussion_title}"'
       subject: '%{who} a raspuns comentariului tau in %{which} grup Loomio'
-    group_membership_approved:
-      intro: "Cererea ta de acces in grupul '%{group_name}' pe Loomio a fost aprobata."
-    invitation:
-      hi: 'Salut %{name},'
-      intro: 'Apasa pe linkul de mai jos pentru a seta numele grupului tau %{group_name}:'
-      closing_message: 'Daca ai intrebari sau te putem ajuta sa folosesti Loomio, ne face placere sa ne contactezi - trebuie doar sa raspunzi la emailul acesta.'
-      thanks: "Multumim!\\n\nEchipa Loomio\\n"
     membership_request:
       intro: '%{name} (%{email}) a cerut acces in unul din grupurile tale Loomio.'
       subject: '%{who} a cerut sa intre in %{which_group}'
       view_group: Aici poti aproba sau nu cererea
-    mentioned:
-      context: '%{author_name} te-a mentionat cand discuta "%{discussion_title}"'
     new_motion_created:
       subject: 'Propunere: %{proposal_title}'
-      context: '%{author} a creat o propunere in %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Propunerea a fost inchisa.
       specify_outcome_and_notify_group: 'Creeaza un rezultat si trimite-l grupului tau!'
@@ -78,12 +61,10 @@ ro:
       turn_on_notifications_text: 'Trimite email pentru activitatea viitoare a acestei discutii: %{url}'
       change_email_preferences_html: "Schimba-ti <a href='%{email_preferences_url}'>setarile </a> pentru a te dezabona de la aceste emailuri."
       change_preferences: 'Schimba preferintele de email:'
-      new_motion: '%{who} au propus:'
       motion_closing_soon: 'Propunerea se inchide in 24 de ore:'
       proposal_closed: 'Propunerea inchisa:'
       specify_outcome_html: "Propunerea ta este inchisa. <a href='%{link}'>Specifica o urmare</a> din care sa se afle care sunt rezultatele."
       specify_outcome: 'Propunerea ta este inchisa. Specifica o urmare din care sa se afle care sunt rezultatele:'
-      outcome_created: '%{who} formuleaza o urmare a propunerii:'
       you_agreed: 'Tu %{past_tense_position}'
   footer:
     about: Despre

@@ -8,7 +8,9 @@ cs:
     notification_volume: Hlasitost upozornění
     group: Skupina
     groups: Skupiny
+    help: Nápověda
     privacy:
+      privacy: Soukromí
       public: Veřejnost
       private: Soukromá
     selected: Vybráno
@@ -69,9 +71,23 @@ cs:
     latest: Nejnovější
     unread: Nepřečteno
     closing_in: Zavřené
+  sign_in_form:
+    email_label: 'Email:'
+    email_placeholder: vy@priklad.cz
+    password_label: 'Heslo:'
+    signed_in: Úspěšně jste se přihlásil/a.
+  sign_up_form:
+    name_label: 'Vaše jméno:'
+    email_label: 'Email:'
+    email_placeholder: vy@ukazka.cz
+    password_label: 'Heslo:'
+    password_confirmation_label: 'Stejné heslo znovu:'
+    sign_in_message: Už máte účet?
+    sign_in: Přihlásit se
   comment_form:
     aria_label: Přidat komentář
     attachments:
+      add_attachment: Přiložit soubor
       remove_attachment: Odebrat přílohu
     messages:
       created: Komentář přidán
@@ -89,11 +105,13 @@ cs:
     recent: Aktuální
     unread: Nepřečteno
     muted: Ztlumená
-    explore: Prozkoumejte veřejné skupiny
+    explore: Veřejné skupiny
     edit_profile: Upravit profil
     email_settings: Nastavení emailu
     help: Nápověda
     sign_out: Odhlásit se
+    aria_labels:
+      groups_list: Skupiny
   navbar:
     recent_title: Přejít na ovládací panel
     unread_title: Zobrazit nepřečtené aktivity
@@ -106,6 +124,7 @@ cs:
       discussions: Diskuze
       proposals: Návrhy
       comments: Komentáře
+    sign_in: Přihlásit se
   start_menu:
     start_group: Vytvořit skupinu
     start_subgroup: Vytvořit podskupinu
@@ -115,6 +134,8 @@ cs:
     header: Upozornění
     new_discussion: '<strong>{{name}}</strong> zahájil(a) diskusi <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> vytvořil(a) návrh <strong>{{proposal}}</strong>'
+    motion_closed: 'Návrh uzavřen: <strong>{{proposal}}</strong>'
+    publish_outcome: Zveřejnit výsledek
     motion_closed_by_user: '<strong>{{name}}</strong> uzavřel(a) návrh <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Návrh byl uzavřen <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} k návrhu <strong>{{proposal}}</strong>'
@@ -224,6 +245,8 @@ cs:
     submit_button: Zažádat o členství
     messages:
       membership_requested: 'Zažádali jste o členství v {{group}}'
+  revision_history_modal:
+    edited_by: 'Upravil/a <strong>{{name}}</strong>'
   group_page:
     thread_list:
       empty:
@@ -235,6 +258,7 @@ cs:
       leave_group_success: Tuto skupinu jste opustil(a)
       archive_group_success: Tato skupina byla deaktivována
     group_logo: Logo skupiny
+    new_photo: nová fotografie
     description: Popis skupiny
     discussions: Diskuze
     members: Členové
@@ -287,6 +311,7 @@ cs:
     subgroup_name: Název podskupiny
     description: Popis
     description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
+    privacy: Soukromí
     advanced_settings: Pokročilé nastavení
     how_do_people_join: Jak se lidé připojí?
     membership_granted_upon_request: Každý se může připojit ke skupině.
@@ -295,6 +320,8 @@ cs:
     submit_start_group: Vytvořit skupinu
     submit_start_subgroup: Vytvořit podskupinu
     submit_update: Aktualizovat nastavení
+  group_help_card:
+    title: Nápověda
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
@@ -375,13 +402,15 @@ cs:
     update_profile: Aktualizovat profil
   email_settings_page:
     header: Nastavení emailu
+    update_settings: Aktualizovat nastavení pro všechny skupiny
+    change_default: Změnit výchozí
+    edit: Upravit
   dashboard_page:
     aria_label: Ovládací panel
     no_groups:
       or: nebo
     no_threads:
       show_all: Nemáte žádná aktuální vlákna
-      show_participating: Nezúčastnil(a) jste se žádných vláken v poslední době.
       show_starred: Nemáte žádná vlákna s hvězdičkou.
       show_proposals: Žádné návrhy nejsou momentálně aktivní.
       show_muted: Nemáte žádná ztlumená vlákna.
@@ -396,8 +425,6 @@ cs:
       starred: Vlákna s hvězdičkou
       starred_aria_label: Momentálně se zobrazují vlákna označená jako důležitá
       starred_description: 'Zobrazit jen vlákna, která jste označil(a) za důležitá.'
-      participating_aria_label: 'Momentálně se zobrazují vlákna, v kterých jsem se zapojil(a)'
-      participating_description: 'Zobrazit jen vlákna, do kterých jste se zapojil(a)'
       proposals: Návrhy
       proposals_aria_label: Momentálně se zobrazují vlákna s aktivními návrhy
       proposals_description: Zobrazit jen vlákna s aktivními návrhy
@@ -534,3 +561,6 @@ cs:
     messages:
       app_update: Je k dispozici nová verze Loomio
       reload: Znovu načíst
+  registered_app_form:
+    messages:
+      logo_changed: Logo aktualizováno.

@@ -13,17 +13,11 @@ an:
       subject: "%{member} t'ha convidau a unir-te a %{group_name} en Loomio"
     to_start_group:
       subject: 'Configura o tuyo nuevo grupo en Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: "%{who} t'ha adhibiu a %{which_group}"
-      content: "%{who} t'ha adhibiu a %{which_group} en Loomio. Preta aquí ta ir a o grupo:"
     unsubscribe: "Da de baixa u cambea as preferencias d'o tuyo correu electronico:   "
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> ta dar de baixa u cambiar as preferencias de correu electronico."
     view_comment: Fe clic aquí ta veyer o comentario en Loomio
     view_discussion: 'Fe clic aquí ta veyer ista discusión '
-    view_group: Fe clic aquí ta veyer o grupo en Loomio
     view_proposal: Veyer ista propuesta en Loomio
-    create_discussion:
-      intro: '%{who} empecipió una discusión en %{which_group}:'
     create_proposal:
       intro: Una nueva propuesta estió creada en un grupo de Loomio a lo qual perteneixes.
       closes_in: Se zarrará en
@@ -37,24 +31,12 @@ an:
       mark_as_read: Marcar como leyiu
       thanks_for_reading: 'Gracias por leyer, que tiengas un buen día!'
       marked_as_read_success: "Tot o conteniu d''o correu ha estau marcau como leyiu"
-    group_membership_approved:
-      intro: "A tuya petición ta accedir ta o grupo '%{group_name}' en Loomio ha estau aprebau."
-    invitation:
-      hi: 'Ola %{name},'
-      intro: "Fe clic en o vinclo d'abaixo ta configurar o tuyo grupo %{group_name}:"
-      closing_message: 'Si tiens garra pregunta u i hai qualsiquier coseta con a qualate podamos aduyar a mantener-te en marcha, nos fará goyo de saber de tu; nomás has de responder a iste correu electronico.'
-      thanks: |
-        Gracias!
-        El Equipo de Loomio
     membership_request:
       intro: "%{name} (%{email}) ha pediu acceso a un d''os tuyos grupos de Loomio."
       subject: '%{who} ha pediu acceso a %{which_group}'
       view_group: Puetz acceptar u refusar a petición aquí
-    mentioned:
-      context: '%{author_name} te mencionó en a discusión  "%{discussion_title}"'
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
-      context: '%{author} ha creau una propuesta en %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: "A propuesta s'ha zarrau"
       specify_outcome_and_notify_group: 'Crear un resultau y ninviar-lo a o tuyo grupo!'
@@ -69,12 +51,10 @@ an:
       summary: Resumen
     thread_mailer:
       change_preferences: "Cambiar as tuyas preferencias d'email:"
-      new_motion: '%{who} ha proposau:'
       motion_closing_soon: A propuesta se zarrará en 24 horas
       proposal_closed: 'Propuesta zarrada:'
       specify_outcome_html: "A tuya propuesta s'ha zarrau. <a href='%{link}'>Especifica un resultau</a> ta que totz en sigan sabedors."
       specify_outcome: ' A tuya propuesta ha zarrau. Especifica un resultau ta que totz en sigan sabedors:'
-      outcome_created: "%{who} ha anunciau o resultau d'a propuesta "
       you_agreed: '%{past_tense_position}'
   footer:
     about: Sobre Loomio
