@@ -30,6 +30,13 @@
       %closing_at_field{proposal: "proposal"}
       %validation_errors{subject: "proposal", field: "closingAt"}
 
+      .proposal-form__attachments
+        %attachment_form.proposal-form__attachment-form{model: "proposal", ng-if: "proposal.discussion().groupId", show-label: "true"}
+        %validation_errors.proposal-form__attachment-errors{subject: "proposal", field: "file"}
+        %label.lmo-form-labelled-input
+          %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in proposal.newAttachments() | orderBy: 'id' track by attachment.id"}
+        .clearfix
+
   .modal-footer
     %button.lmo-btn--submit.proposal-form__start-btn{ng-if: "proposal.isNew()", type: "submit", translate: "proposal_form.start_proposal"}
     %button.lmo-btn--submit.proposal-form__save-changes-btn{ng-if: "!proposal.isNew()", type: "submit", translate: "common.action.save_changes"}
