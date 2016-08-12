@@ -30,20 +30,38 @@ es:
       content: 'Has sido invitado/a a participar en la discusión: %{discussion}'
       message_intro: '%{who} dice:'
       link: Únete a la discusión
+    value_proposition: 'Loomio es un espacio para que grupos tomen decisiones juntos. '
     view_group: Ver grupo
     to_join_group:
       subject: '%{member} te ha invitado a unirte a %{group_name} en Loomio'
+      invitation_text: '%{member} te ha invitado a unirte a su grupo %{group_name} '
       invitation_text_html: te ha invitado a unirte a su grupo
+      link_help: 'Haz clic en el enlace para unirte al grupo:'
       accept_invitation: "Aceptar invitación\n "
     resend_to_join_group:
       subject: '%{member} todavía está esperando que te sumes al grupo %{group_name} en Loomio'
     to_start_group:
       subject: 'Configura tu nuevo grupo en Loomio: %{group_name}'
+      hi: 'Hola %{name},'
+      intro: 'Haz clic en el siguiente enlace para configurar tu grupo %{group_name}:'
+      intro_html: 'Haz clic en el siguiente enlace para configurar tu grupo:'
+      start_group: Iniciar mi grupo
+      closing_message: 'Si necesitas ayuda o si tienes alguna pregunta, responde a este email.'
+      thanks: 'Gracias, '
+      loomio_team: El Equipo de Loomio
+    user_added_to_group:
+      subject: '%{who} te ha adherido a %{which_group} en Loomio'
+      content: '%{who} te ha adherido a %{which_group}'
+      content_html: '<strong>%{who}</strong> te ha añadido a <strong>%{which_group}</strong>.'
+      link_help: 'Haz clic en el enlace para ir al grupo:'
     unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
     view_comment: Haz clic aquí para ver el comentario en Loomio
     view_discussion: 'Haz clic aquí para ver esta discusión '
     view_proposal: Ver esta propuesta en Loomio
+    create_discussion:
+      intro_html: 'inicio un hilo:'
+      intro: '%{who} inicio un hilo: '
     create_proposal:
       intro: Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces.
       closes_in: Cierra en
@@ -60,17 +78,29 @@ es:
       heres_what_happened: 'Esto es lo que paso en Loomio ayer. '
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
     comment_replied_to:
+      context_html: contestó a tu comentario en
+      context: '%{author_name} respondió a tu comentario en %{discussion_title}'
       subject: '%{who} respondió a tu comentario en el grupo %{which} en Loomio.'
+    new_comment:
+      context: 'comentó en  '
     group_membership_approved:
+      intro: 'Tu solicitud para acceder al grupo %{group_name} ha sido aprobada.'
+      intro_html: 'Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada.'
+      link_help: 'Haz clic en el siguiente enlace para unirte a %{group_name} y comenzar:'
       subject: 'Tu solicitud para unirte al grupo %{group_name} en Loomio ha sido aprobada.'
+      join_group: Unirte al grupo
+      view_group_text: 'Haz clic en el siguiente enlace para ver el grupo en Loomio:'
     membership_request:
       intro: '%{name} (%{email}) ha solicitado el acceso a uno de tus grupos de Loomio.'
       subject: '%{who} solicitó el acceso a %{which_group}'
       view_group: Puedes aceptar o denegar la solicitud aquí
     mentioned:
+      context_html: 'te mencionó en la discusión '
+      context: '%{author_name} te mencionó en la discusión %{discussion_title}'
       subject: '%{who} te ha mencionado en la discusión "%{which}" '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
+      context: 'comenzó una propuesta en %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: La propuesta se ha cerrado
       specify_outcome_and_notify_group: '¡Crear un resultado y envíalo a tu grupo!'
@@ -94,10 +124,14 @@ es:
       turn_on_notifications_text: 'Activar el correo electrónico para recibir la actividad futura en esta discusión: %{url}'
       change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos."
       change_preferences: Cambiar sus preferencias de email
+      new_motion_html: 'Comenzó una propuesta:'
+      new_motion: '%{who} comenzó una propuesta:'
       motion_closing_soon: Cierra en 24 Horas
       proposal_closed: 'Proposición cerrada:'
       specify_outcome_html: "Tu propuesta se ha cerrado. <a href='%{link}'>Especifica un resultado </a> para que todos los conozcan."
       specify_outcome: ' Su propuesta ha cerrado. Especifique un resultado para que todos lo conozcan:'
+      outcome_created_html: 'publicó el resultado para la propuesta:'
+      outcome_created: '%{who} publicó el resultado para la propuesta:'
       you_agreed: 'Tú %{past_tense_position}'
     analytics:
       subject: 'semana de %{which_group} en Loomio'
