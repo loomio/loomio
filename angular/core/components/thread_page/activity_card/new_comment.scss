@@ -11,6 +11,7 @@
   max-height: 180px;
   overflow: hidden;
   margin-bottom: 0 !important;
+  p:last-of-type { margin-bottom: 0px; }
 }
 
 .new-comment__gradient {
