@@ -39,7 +39,7 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
           $translate('discussion.liked_by_many_others', joinedNames: joinedNames, name: name).then updateLikedBySentence
 
   $scope.commentTooLong = ->
-    angular.element(document.querySelector('.thread-item__body'))[0].clientHeight > 175
+    angular.element(document.querySelector(".new-comment__#{$scope.comment.id}"))[0].clientHeight > 175
 
   $scope.editComment = ->
     ModalService.open EditCommentForm, comment: -> $scope.comment
