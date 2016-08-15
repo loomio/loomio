@@ -7,3 +7,7 @@ loomio_org_plugin:
 loomio_tags:
   repo:         loomio/loomio_tags
   experimental: true
+
+loomio_truncate_comment:
+  repo:         loomio/loomio_truncate_comment
+  experimental: true
