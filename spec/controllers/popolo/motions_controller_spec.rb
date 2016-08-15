@@ -70,7 +70,7 @@ describe Popolo::MotionsController do
       old_motion = create :motion, discussion: public_discussion, created_at: 4.weeks.ago
       medium_motion = create :motion, discussion: public_discussion, created_at: 2.weeks.ago
       new_motion = create :motion, discussion: public_discussion, created_at: 0.weeks.ago
-      get :index, since: 3.weeks.ago, until: 1.week.ago
+      get :index, params: { since: 3.weeks.ago, until: 1.week.ago }
       json = JSON.parse(response.body)
       motion_ids = json['motions'].map { |m| m['motion_id'] }
       expect(motion_ids).to_not include new_motion.key
@@ -88,7 +88,7 @@ describe Popolo::MotionsController do
 
     it 'responds to a per parameter' do
       3.times { create :motion, discussion: public_discussion, closed_at: 2.days.ago }
-      get :index, per: 2
+      get :index, params: { per: 2 }
       json = JSON.parse(response.body)
       motion_ids = json['motions'].map { |m| m['motion_id'] }
       expect(motion_ids.length).to eq 2
@@ -96,7 +96,7 @@ describe Popolo::MotionsController do
 
     it 'responds to a from parameter' do
       2.times { create :motion, discussion: public_discussion, closed_at: 2.days.ago }
-      get :index, from: 1
+      get :index, params: { from: 1 }
       json = JSON.parse(response.body)
       motion_ids = json['motions'].map { |m| m['motion_id'] }
       expect(motion_ids).to_not include public_discussion
