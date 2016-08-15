@@ -33,7 +33,7 @@ class Queries::UsersToEmailQuery
   def self.motion_outcome_created(motion)
     Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).
                        distinct.
-                       without(motion.outcome_author)
+                       where.not(id: motion.outcome_author.id)
   end
 
   def self.motion_closed(motion)
