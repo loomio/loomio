@@ -23,14 +23,16 @@
         %a{lmo-href-for: "comment.author()"}> {{ comment.authorName() }}
       .sr-only{ng-if: "!comment.parentId", id: "event-{{event.id}}", translate: "new_comment_item.aria_label", translate-value-author: "{{comment.authorName()}}"}
 
-  .thread-item__body.lmo-markdown-wrapper{marked: "comment.cookedBody()" }
+  .thread-item__body.new-comment__body.lmo-markdown-wrapper{marked: "comment.cookedBody()"}
   %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
+
+  %outlet{name: "after-comment-body", model: "comment"}
 
   .thread-item__attachments
     .thread-item__attachment{ng-repeat: "attachment in comment.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "thread"}
 
-  .thread-item__footer
+  .thread-item__footer.new-comment__footer
     .thread-item__actions{ng-if: "showCommentActions()"}
       %button.thread-item__action.thread-item__action--like.lmo-no-print{type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng_click: "like()"}>
       %button.thread-item__action.lmo-no-print{type: "button", translate: "common.action.unlike", ng_click: "unlike()", ng-show: "currentUserLikesIt()"}>
