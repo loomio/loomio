@@ -1,10 +1,13 @@
 class Api::DraftsController < Api::RestfulController
-  skip_before_action :fetch_and_authorize_resource, only: :show
 
   private
 
-  def load_resource
+  def fetch_and_authorize_resource
     current_user.ability.authorize! :make_draft, draftable
+    fetch_resource
+  end
+
+  def fetch_resource
     self.resource = Draft.find_or_initialize_by(user: current_user, draftable: draftable)
   end
 

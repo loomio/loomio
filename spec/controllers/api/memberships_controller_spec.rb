@@ -69,7 +69,7 @@ describe Api::MembershipsController do
     end
     context 'when apply to all is false' do
       it 'updates the volume for a single membership' do
-        put :set_volume, params: { id: @membership.id, volume: 'loud', apply_to_all: false }
+        put :set_volume, params: { id: @membership.id, volume: 'loud' }
         @membership.reload
         @second_membership.reload
         expect(@membership.volume).to eq 'loud'

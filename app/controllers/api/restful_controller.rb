@@ -73,4 +73,8 @@ class Api::RestfulController < ActionController::Base
   def resources_to_serialize
     Array(resource || collection)
   end
+
+  def load_resource
+    nil
+  end
 end
