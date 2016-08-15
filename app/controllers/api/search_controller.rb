@@ -8,7 +8,7 @@ class Api::SearchController < Api::RestfulController
   private
 
   def search_params
-    params.slice(:from, :per).compact
+    params.slice(:from, :per)
   end
 
   def serializer_root
