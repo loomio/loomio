@@ -11,7 +11,7 @@
     %label{translate: "invitation_form.shareable_link"}
     .invitation-form__flex
       %input.invitation-form__shareable-link-field.form-control{value: "{{invitationLink()}}"}
-      %button.invitation-form__copy-button.lmo-btn--primary{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
+      %button.invitation-form__copy-button.lmo-btn--primary{type: "button", clipboard: "true", supported: "true", text: "invitationLink()", on-copied: "copied()"}
         {{ 'invitation_form.copy_link' | translate}}
 
     .invitation-form__shareable-link-explanation{translate: "invitation_form.shareable_link_explanation"}
