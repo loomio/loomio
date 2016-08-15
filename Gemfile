@@ -94,7 +94,7 @@ end
 
 group :test do
   gem 's3_uploader'
-  # gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', require: false
   gem 'email_spec'
   gem 'poltergeist'
   gem 'webmock'
