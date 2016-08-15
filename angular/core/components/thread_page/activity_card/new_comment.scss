@@ -6,3 +6,36 @@
 .new-comment__in-reply-to {
   a { color: $primary-text-color; }
 }
+
+.new-comment__truncated {
+  max-height: 180px;
+  overflow: hidden;
+  margin-bottom: 0 !important;
+  p:last-of-type { margin-bottom: 0px; }
+}
+
+.new-comment__gradient {
+  background-image: url(/img/gradient.png);
+  background-repeat: repeat-x;
+  height: 15px;
+  position: relative;
+  bottom: 15px;
+}
+
+.new-comment__show-more,
+.new-comment__show-less {
+  @include lmoBtnLink;
+  @include fontSmall;
+  text-align: center;
+  line-height: 0;
+  margin-bottom: 20px;
+  color: $link-color;
+}
+
+.new-comment__show-less {
+  margin-top: 20px;
+}
+
+.new-comment__actions {
+  margin-top: 10px;
+}
