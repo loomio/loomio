@@ -666,6 +666,7 @@ en:
   invitation_form:
     invite_people: 'Invite People'
     group: 'Group'
+    group_placeholder: 'Select a group'
     shareable_link: 'Shareable link'
     copy_link: 'Copy link'
     email_addresses: 'Email addresses'

@@ -58,7 +58,7 @@ gem 'snorlax'
 gem 'custom_counter_cache'
 gem 'safe_shell'
 gem 'premailer-rails'
-gem 'griddler'
+gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 gem "simple_form"
 

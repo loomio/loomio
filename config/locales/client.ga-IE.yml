@@ -494,13 +494,10 @@ ga-IE:
       updated: Nuashonraigh na socruithe ríomhphoist
   dashboard_page:
     aria_label: An clár rialaithe
-    options:
-      aria_label: Roghanna scagtha an chláir rialaithe
     no_groups:
       or: nó
     no_threads:
       show_all: Níl aon snáithe le déanaí agat.
-      show_participating: Níor ghlac tú páirt in aon snáithe le déanaí.
       show_starred: Níl aon snáithe agat a bhfuil réalta uirthi.
       show_proposals: Níl aon tograí atá gníomhach faoi láthair.
       show_muted: Níl aon snáithe balbhaithe agat.
@@ -517,9 +514,6 @@ ga-IE:
       starred: Snáitheanna a bhfuil Réalt Orthu
       starred_aria_label: Ag taispeáint faoi láthair na snáitheanna a rianaigh mé go bhfuil siad tábhachtach
       starred_description: Féach ar na snáitheanna amháin a rianaigh tú go bhfuil siad tábhachtach
-      participating: Snáitheanna inar ghlac tú páirt
-      participating_aria_label: Ag taispeáint faoi láthair na snáitheanna inar ghlac mé páirt
-      participating_description: Féach ar na snáitheanna amháin inar ghlac tú páirt
       proposals: Tograí
       proposals_aria_label: Ag taispeáint faoi láthair na snáitheanna a bhfuil tograí gníomhaíocht acu
       proposals_description: Féach ar snáitheanna le tograí gníomhacha amháin

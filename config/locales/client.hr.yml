@@ -15,7 +15,6 @@ hr:
     delete_comment: Obriši komentar
     confirm_delete_message: Jeste li sigurni da želite obrisati komentar?
   sidebar:
-    explore: Istraži javne grupe
     email_settings: Postavke emaila
     sign_out: Odjava
   notifications:

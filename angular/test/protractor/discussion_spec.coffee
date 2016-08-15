@@ -6,6 +6,15 @@ describe 'Discussion Page', ->
   flashHelper = require './helpers/flash_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
+  describe 'starting a thread via start menu', ->
+    it 'preselects current group', ->
+      page.loadPath 'setup_dashboard'
+      page.click '.sidebar__list-item-button--muted'
+      page.clickLast '.thread-preview__link'
+      page.click '.start-menu__start-button'
+      page.click '.start-menu__startThread'
+      page.expectText '.discussion-form__group-select', 'Muted Point Blank'
+
   describe 'viewing while logged out', ->
     it 'should display content for a public thread', ->
       groupsHelper.loadPath('view_open_group_as_visitor')
@@ -65,9 +74,9 @@ describe 'Discussion Page', ->
       element(By.cssContainingText('option', 'Point Break')).click()
       page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
-      page.expectText '.group-theme__name--compact','Point Break'
       page.expectFlash 'Thread has been moved to Point Break'
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
+      page.expectText '.group-theme__name--compact','Point Break'
 
   describe 'delete thread', ->
     beforeEach ->

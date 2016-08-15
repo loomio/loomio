@@ -34,22 +34,15 @@ de:
     to_join_group:
       subject: '%{member} hat dich eingeladen %{group_name} auf Loomio beizutreten'
       accept_invitation: Einladung annehmen
-      tagline: Loomio ist ein Ort um Gruppen-Entscheidungen gemeinsam zu treffen
     resend_to_join_group:
       subject: '%{member} wartet auf Deine Teilnahme an %{group_name} auf Loomio'
     to_start_group:
       subject: 'Richte deine neue Loomio-Gruppe ein: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} hat dich zu %{which_group} hinzugefügt'
-      content: '%{who} hat dich auf Loomio zur Gruppe %{which_group} hinzugefügt'
     unsubscribe: 'Bestelle eMails ab oder ändere Deine eMail-Einstellungen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> um Deine eMail-Einstellungen zu ändern und eMails abzubestellen."
     view_comment: Klicke hier um das Kommentar auf Loomio zu sehen
     view_discussion: Klicke hier um diese Diskussion zu sehen
-    view_group: Klicke hier um die Gruppe auf Loomio zu sehen
     view_proposal: Diesen Vorschlag auf Loomio ansehen
-    create_discussion:
-      intro: '%{who} begann eine Diskussion in %{which_group}:'
     create_proposal:
       intro: 'Ein neuer Vorschlag wurde in einer Loomio Gruppe erstellt, der Du angehörst.'
       closes_in: Schließt in
@@ -65,24 +58,13 @@ de:
       thanks_for_reading: 'Vielen Dank fürs Lesen. Wir wünschen einen schönen Tag!'
       marked_as_read_success: Alles aus der eMail wurde als gelesen markiert
     comment_replied_to:
-      context: '%{author_name} erwähnte Dich in "%{discussion_title}"'
       subject: '%{who} hat dich erwähnt in der %{which} Gruppe in Loomio'
-    group_membership_approved:
-      intro: "Deine Anfrage zum Eintritt zur Gruppe '%{group_name}' auf Loomio wurde bestätigt."
-    invitation:
-      hi: 'Hallo %{name},'
-      intro: 'Klicke auf den Link unten um deine Gruppe %{group_name} zu erstellen:'
-      closing_message: 'Wenn Du Fragen hast oder es etwas gibt, mit dem wir Dir weiterhelfen können, würden wir sehr gerne von Dir hören - antworte einfach auf die eMail.'
-      thanks: "Danke!\nDas Loomio Team \n"
     membership_request:
       intro: '%{name} (%{email}) bittet um Zugang zu einer Deiner Loomio Gruppen.'
       subject: '%{who} bittet darum %{which_group} beitreten zu dürfen.'
       view_group: Du kannst die Anfrage hier annehmen oder ablehnen
-    mentioned:
-      context: '%{author_name} erwähnte Dich in "%{discussion_title}"'
     new_motion_created:
       subject: 'Vorschlag: %{proposal_title}'
-      context: '%{author} hat einen Vorschlag in der Gruppe %{group_full_name} erstellt:'
     proposal_closed:
       proposal_has_closed: Der Vorschlag ist geschlossen.
       specify_outcome_and_notify_group: 'Gib das Ergebnis bekannt und benachrichtige deine Gruppe!'
@@ -104,12 +86,10 @@ de:
       turn_on_notifications_text: 'Schalten Sie E-Mail an weitere Aktivitäten in dieser Diskussion erhalten: %{url}'
       change_email_preferences_html: "Ändere Deine <a href='%{email_preferences_url}'>eMail-Einstellungen</a> um weniger Loomio eMails zu erhalten."
       change_preferences: 'Ändere Deine eMail Einstellungen:'
-      new_motion: '%{who} schlägt vor:'
       motion_closing_soon: 'Vorschlag endet in 24 Stunden:'
       proposal_closed: 'Vorschlag geschlossen:'
       specify_outcome_html: "Dein Vorschlag ist geschlossen. <a href='%{link}'>Lege einen Beschluss fest</a>, damit jedeR erfahren kann, wie das Ergbnis lautet."
       specify_outcome: 'Dein Vorschlag ist geschlossen. Lege einen Beschluss fest, damit jedeR erfahren kann, wie das Ergbnis lautet.'
-      outcome_created: '%{who} gibt folgendes Vorschlagsergebnis bekannt:'
       you_agreed: 'Du %{past_tense_position}'
   footer:
     about: Über Loomio
@@ -182,7 +162,15 @@ de:
     forbidden_passwords: 'Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie "passwort" und ähnliches verboten.'
   introduction_thread:
     title: 'Willkommen bei %{group_name}'
-    description: "Bitte nimm Dir einen Moment Zeit, um Dich vorzustellen: **schreibe einen Kommentar** im untenstehenden Feld.\n \nWenn Du klare Vorstellungen für diese Loomio-Gruppe hast, könntest Du sie mitteilen, damit alle anderen hier erkennen können, was euer gemeinsames Ziel sein könnte.\n"
+    description: >
+      Bitte nimm Dir einen Moment Zeit, um Dich vorzustellen: **schreibe einen
+      Kommentar** im untenstehenden Feld.
+
+
+
+      Wenn Du klare Vorstellungen für diese Loomio-Gruppe hast, könntest Du sie
+      mitteilen, damit alle anderen hier erkennen können, was euer gemeinsames
+      Ziel sein könnte.
   how_it_works_thread:
     title: Wie man Loomio benutzen kann
     description: >

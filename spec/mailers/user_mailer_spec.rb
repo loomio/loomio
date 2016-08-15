@@ -7,7 +7,7 @@ describe UserMailer do
     end
 
     it 'renders the sender email' do
-      expect(@mail.from).to include 'notifications@loomio.example.org'
+      expect(@mail.from).to include BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS
     end
   end
 
@@ -25,7 +25,7 @@ describe UserMailer do
     end
 
     it 'renders the subject' do
-      expect(@mail.subject).to eq "[Loomio: #{@group.full_name}] Membership approved"
+      expect(@mail.subject).to eq "Your request to join #{@group.full_name} on Loomio has been approved"
     end
 
     it 'assigns confirmation_url for email body' do
@@ -43,7 +43,7 @@ describe UserMailer do
     end
 
     it 'renders the subject' do
-      expect(@mail.subject).to eq "#{@inviter.name} has added you to #{@group.full_name}"
+      expect(@mail.subject).to eq "#{@inviter.name} has added you to #{@group.full_name} on Loomio"
     end
 
     it 'uses group.full_name in the email body' do

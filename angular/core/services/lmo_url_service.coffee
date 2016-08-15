@@ -22,7 +22,7 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
       @discussion r, params, options
 
     user: (u, params = {}, options = {}) ->
-      @buildModelRoute('u', u.username, null, params, options)
+      @buildModelRoute('u', u[options.key || 'username'], null, params, options)
 
     proposal: (p, params = {}) ->
       @route model: p.discussion(), action: "proposal/#{p.key}", params: params
@@ -44,7 +44,7 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
 
     buildModelRoute: (path, key, name, params, options) ->
       result = if options.absolute then AppConfig.baseUrl else "/"
-      result += "#{path}/#{key}"
+      result += "#{options.namespace || path}/#{key}"
       result += "/" + @stub(name)             unless !name? or options.noStub?
       result += "." + options.ext             if options.ext?
       result += "?" + @queryStringFor(params) if _.keys(params).length

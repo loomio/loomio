@@ -18,6 +18,6 @@
             = render_rich_text(motion.description, true)
         - else
           = render_rich_text(motion.description, true)
-        - unless motion.user_has_voted?(@recipient)
-          %h4.have-say-title= t(:"help.have_your_say")
-          =render 'thread_mailer/vote_buttons', motion: motion
+          - unless motion.user_has_voted?(@recipient)
+            %h4.have-say-title= t(:"help.have_your_say")
+            = render 'thread_mailer/vote_buttons', motion: motion

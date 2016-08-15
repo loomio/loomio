@@ -51,7 +51,6 @@ sl:
   sidebar:
     recent: Nedavno
     unread: Neprebrano
-    explore: Razišči javne skupine
     edit_profile: Urejanje profila
     email_settings: Email nastavitve
     help: Pomoč
@@ -200,7 +199,33 @@ sl:
       novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih
       odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:
     different_ways: Različni načini uporabe Loomia
-    engaging_html: "<h2>Nasveti za vključevanje tvoje skupine</h2>\n<p>Ljudje bodo z veseljem sodelovali, če bo na tapeti zanimiv\npredlog. Dober predlog vsebuje akcijski načrt za skupino, tako\nda bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo. Skušaj \nugotoviti, če bi nekatere razprave/odločitve, ki jih skupina trenutno izvaja osebno ali po\nemailu, bilo lažje izvajati na Loomiu.</p>\n<p>Če je skupina še , lahko začneš z lahkotno odločitev, da imajo \nvsi možnost probati novo orodje in začutiti postopek odločanja v akciji. .</p>\n<p>Še en preprost način za spodbujanje drugih k razpravi je funkcija @omeni\nza pozvati določeno osebo; to jim bo poslalo email s sporočilom, da so bili\nomenjeni v komentarju.</p>\n\n"
+    engaging_html: >
+      <h2>Nasveti za vključevanje tvoje skupine</h2>
+
+      <p>Ljudje bodo z veseljem sodelovali, če bo na tapeti zanimiv
+
+      predlog. Dober predlog vsebuje akcijski načrt za skupino, tako
+
+      da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu
+      nasprotujejo. Skušaj
+
+      ugotoviti, če bi nekatere razprave/odločitve, ki jih skupina trenutno
+      izvaja osebno ali po
+
+      emailu, bilo lažje izvajati na Loomiu.</p>
+
+      <p>Če je skupina še , lahko začneš z lahkotno odločitev, da imajo
+
+      vsi možnost probati novo orodje in začutiti postopek odločanja v akciji.
+      .</p>
+
+      <p>Še en preprost način za spodbujanje drugih k razpravi je funkcija
+      @omeni
+
+      za pozvati določeno osebo; to jim bo poslalo email s sporočilom, da so
+      bili
+
+      omenjeni v komentarju.</p>
     example1_html: >
       <h3>Skupina mora o neki temi razpravljati in skupaj razviti rešitev</h3>
 
@@ -236,7 +261,17 @@ sl:
     getting_started_description: 'Na levi strani skupina obravnava temo, izmenjuje ideje in informacije. Morebitna odločitev se prikaže na desni strani.'
     getting_the_most: Kako od Loomia dobiti največ
     have_your_say: Izrazi svoje mnenje
-    have_your_say_details_html: "<p>Ko si pripravljen/a izraziti svoje mnenje, klikni enega od štirih gumbov za odločanje.</p>\n<p>Ko se odločiš, to na kratko obrazloži. Pod tortnim diagramom\nlahko vidiš, mnenja ostalih. To ti omogoča hitro in enostavno sledenje\nrazpravi. Če te nova informacija prepriča, lahko svoje \nstališče kadarkoli spremeniš.</p>\n"
+    have_your_say_details_html: >
+      <p>Ko si pripravljen/a izraziti svoje mnenje, klikni enega od štirih gumbov
+      za odločanje.</p>
+
+      <p>Ko se odločiš, to na kratko obrazloži. Pod tortnim diagramom
+
+      lahko vidiš, mnenja ostalih. To ti omogoča hitro in enostavno sledenje
+
+      razpravi. Če te nova informacija prepriča, lahko svoje
+
+      stališče kadarkoli spremeniš.</p>
     have_a_discussion: Začni razpravo
     have_a_discussion_description: 'Tema in ostale pomembne informacije so na vrhu strani. Uporabi polje za komentiranje, da dodaš svoj glas k razpravi.'
     help: Pomoč

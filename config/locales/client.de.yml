@@ -185,7 +185,6 @@ de:
     recent: Aktuell
     unread: Ungelesen
     muted: Verstummt
-    explore: Erkunde öffentliche Gruppen
     edit_profile: Profil bearbeiten
     email_settings: eMail-Einstellungen
     help: Hilfe
@@ -699,13 +698,10 @@ de:
       updated: eMail-Einstellungen aktualisiert
   dashboard_page:
     aria_label: Schreibtisch
-    options:
-      aria_label: Statusleisten-Filter-Optionen
     no_groups:
       or: oder
     no_threads:
       show_all: Du hast keine aktuellen Diskussionen.
-      show_participating: Du hast in letzter Zeit an keinen Diskussionen teilgenommen.
       show_starred: Du hast keine favorisierten Diskussionen.
       show_proposals: Momentan sind keine Vorschläge am Laufen.
       show_muted: Du hast keine Diskussionen auf stumm gesetzt.
@@ -722,9 +718,6 @@ de:
       starred: Favorisierte Diskussionen
       starred_aria_label: 'Momentan werden alle Diskussionen angezeigt, die ich als wichtig markiert habe'
       starred_description: 'Nur Diskussionen anzeigen, die Du als wichtig (Stern) markiert hast'
-      participating: Diskussionsbeteiligungen
-      participating_aria_label: 'Momentan werden alle Diskussionen angezeigt, an denen ich teilgenommen habe'
-      participating_description: 'Nur Diskussionen anzeigen, an denen Du teilgenommen hast'
       proposals: Vorschläge
       proposals_aria_label: Momentan werden Diskussionen mit laufenden Vorschlägen angezeigt
       proposals_description: Nur Diskussionen mit laufenden Vorschlägen anzeigen
@@ -867,9 +860,39 @@ de:
     new_contact_message: 'Vielen Dank für Deine Nachricht. Wir werden uns bald melden!'
   help_page:
     coordinating: Koordiniere deine Loomio Gruppe
-    coordinating_details: "Als Koordinator bist Du verantwortlich für die Einrichtung der Loomio Gruppe und jeden einzuladen. \nGenauso wie man lernt ein neues Teil der Software zu nutzen wird deine Gruppe neue Prozesse zur besseren und effizienteren Zusammenarbeit \nkennenlernen und gemeinsam gute Entscheidungen zu treffen. \nHier sind einige Tipps um Deiner Gruppe zum Erfolg zu verhelfen:\n"
+    coordinating_details: >
+      Als Koordinator bist Du verantwortlich für die Einrichtung der Loomio
+      Gruppe und jeden einzuladen.
+
+      Genauso wie man lernt ein neues Teil der Software zu nutzen wird deine
+      Gruppe neue Prozesse zur besseren und effizienteren Zusammenarbeit
+
+      kennenlernen und gemeinsam gute Entscheidungen zu treffen.
+
+      Hier sind einige Tipps um Deiner Gruppe zum Erfolg zu verhelfen:
     different_ways: Verschiedene Wege um Loomio zu benutzen
-    engaging_html: "<h2>Tipps um Deine Gruppe zu mobilisieren</h2>\n<p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender Vorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen Aktionsplan, so dass es sofort klar ist, was es bedeutet, zuzustimmen oder abzulehnen. Denke darüber nach, ob \nes Diskussionen oder Entscheidungen gibt, die momentan persönlich oder per eMail geführt werden \nund bei denen Du denkst es wäre besser, diese auf Loomio zu führen.</p>\n<p>Wenn Deine Gruppe gerade beginnt, könntest Du eine unbeschwerte Diskussion beginnen\ndamit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu sehen.</p>\n<p>Ein anderer Weg, um Leute zu animieren an einer Diskussion teilzunehmen, ist das @erwähnen-Feature: damit wird dem/der erwähnten Person eine eMail geschickt, dass er/sie in einem Kommentar erwähnt wurde.</p>\n"
+    engaging_html: >
+      <h2>Tipps um Deine Gruppe zu mobilisieren</h2>
+
+      <p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender
+      Vorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen
+      Aktionsplan, so dass es sofort klar ist, was es bedeutet, zuzustimmen oder
+      abzulehnen. Denke darüber nach, ob
+
+      es Diskussionen oder Entscheidungen gibt, die momentan persönlich oder per
+      eMail geführt werden
+
+      und bei denen Du denkst es wäre besser, diese auf Loomio zu führen.</p>
+
+      <p>Wenn Deine Gruppe gerade beginnt, könntest Du eine unbeschwerte
+      Diskussion beginnen
+
+      damit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu
+      sehen.</p>
+
+      <p>Ein anderer Weg, um Leute zu animieren an einer Diskussion teilzunehmen,
+      ist das @erwähnen-Feature: damit wird dem/der erwähnten Person eine eMail
+      geschickt, dass er/sie in einem Kommentar erwähnt wurde.</p>
     example1_html: >
       <h3>Deine Gruppe soll ein umfassendes Thema diskutieren und zusammen eine
       Lösung finden?</h3>
@@ -967,7 +990,18 @@ de:
     positions_disagree_description: '<span>Ablehnen</span> bedeutet, Du denkst es könnte eine bessere Alternative geben, aber Du wirst die Entscheidung der Gruppe akzeptieren.'
     positions_block_description: '<span>Blockieren</span> bedeutet, Du hast schwere Einwände gegen diesen Vorschlag und Du bist nicht einverstanden, dass dieser Vorschlag fortgeführt wird.'
     start_discussion: Starte eine einnehmende Diskussion
-    start_discussion_html: "<p>Wenn Du eine Diskussion beginnst, stelle sicher, dass der Titel das Thema prägnant vermittelt. \nBenutze das Kontextmenü um alle Hintergrundinformationen anzugeben, die für eine produktive und informative Diskussion der Gruppe nötig sind.</p>\n<p>Während der Diskussion kann das Kontext-Feld aktualisiert werden, wenn neue Informationen eintreffen. Neben der Erläuterung des Themas, kannst Du diesen Bereich nutzen, um Ressourcen zu teilen und die fortlaufende Diskussion zusammenzufassen. Weiterhin kannst Du den Prozess der Entscheidungsfindung beschreiben, den Deine Gruppe nutzt.</p>\n"
+    start_discussion_html: >
+      <p>Wenn Du eine Diskussion beginnst, stelle sicher, dass der Titel das
+      Thema prägnant vermittelt.
+
+      Benutze das Kontextmenü um alle Hintergrundinformationen anzugeben, die für
+      eine produktive und informative Diskussion der Gruppe nötig sind.</p>
+
+      <p>Während der Diskussion kann das Kontext-Feld aktualisiert werden, wenn
+      neue Informationen eintreffen. Neben der Erläuterung des Themas, kannst Du
+      diesen Bereich nutzen, um Ressourcen zu teilen und die fortlaufende
+      Diskussion zusammenzufassen. Weiterhin kannst Du den Prozess der
+      Entscheidungsfindung beschreiben, den Deine Gruppe nutzt.</p>
     start_proposal: Schreibe einen genauen Vorschlag
     start_proposal_html: >
       <p> Wenn Du den Titel kurz und klar machst, werden die Leute sofort wissen,
@@ -1017,20 +1051,19 @@ de:
 
         <p>
 
-          Das neue Interface ist wie das Alte, aber neuer:
+        Das neue Interface ist wie das Alte, aber neuer:
 
-          <ul>
+        <ul>
 
-            <li>Alles wird live aktualisiert</li>
+        <li>Alles wird live aktualisiert</li>
 
-            <li>Es wurde für alle Geräte entwickelt, für Smartphone bis zu
+        <li>Es wurde für alle Geräte entwickelt, für Smartphone bis zu
         Desktop-PC</li>
 
-            <li>Es ist für blinde Menschen nutzbar und es wurde und wird
-        übersetzt in <a href="https://www.loomio.org/translation">einen Haufen
-        Sprachen</a>
+        <li>Es ist für blinde Menschen nutzbar und es wurde und wird übersetzt in
+        <a href="https://www.loomio.org/translation">einen Haufen Sprachen</a>
 
-          </ul>
+        </ul>
 
         </p>
 

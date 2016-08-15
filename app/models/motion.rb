@@ -16,6 +16,7 @@ class Motion < ActiveRecord::Base
   has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
   has_many :did_not_voters, through: :did_not_votes, source: :user
   has_many :events,        -> { includes(:eventable) }, as: :eventable, dependent: :destroy
+  has_many :attachments, as: :attachable, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
   validate :closes_in_future_unless_closed
@@ -40,7 +41,7 @@ class Motion < ActiveRecord::Base
   after_initialize :set_default_closing_at
 
   define_counter_cache :voters_count do |motion|
-    motion.voters.count
+    motion.unique_votes.count
   end
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }

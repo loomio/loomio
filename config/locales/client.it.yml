@@ -116,7 +116,6 @@ it:
     recent: Recente
     unread: Non letto
     muted: Silenziato
-    explore: Esplora gruppi pubblici
     edit_profile: Modifica profilo
     email_settings: Impostazioni Email
     help: Aiuto
@@ -521,7 +520,6 @@ it:
       filter_threads: Filtra discussioni
       filter_threads_aria_label: Filtra discussioni
       all: Discussioni recenti
-      participating_description: Visualizza solo le discussioni cui hai partecipato
       proposals: Proposte
       proposals_description: Visualizza solo le discussioni che contengono proposte attive
       muted: Silenziato

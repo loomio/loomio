@@ -184,7 +184,6 @@ pt-BR:
     recent: Recente
     unread: Não lida
     muted: Mudo
-    explore: Conheça grupos públicos
     edit_profile: Editar perfil
     email_settings: Configurações de e-mail
     help: Ajuda
@@ -697,13 +696,10 @@ pt-BR:
       updated: Configurações de e-mail atualizadas
   dashboard_page:
     aria_label: Painel
-    options:
-      aria_label: Opções de filtro do painel
     no_groups:
       or: ou
     no_threads:
       show_all: Você não tem tópicos recentes.
-      show_participating: Você não participou de nenhum tópico recentemente.
       show_starred: Você não tem nenhum tópico com estrela.
       show_proposals: Não há propostas ativas no momento.
       show_muted: Você não tem nenhum tópico mudo.
@@ -720,9 +716,6 @@ pt-BR:
       starred: Tópicos com Estrela
       starred_aria_label: 'No momento, mostrando tópicos que marquei como importantes'
       starred_description: Ver apenas tópicos que você marcou como importantes
-      participating: Tópicos participantes
-      participating_aria_label: 'No momento, mostrando tópicos que perticipei'
-      participating_description: Ver apenas tópicos que você participou
       proposals: Propostas
       proposals_aria_label: 'No momento, mostrando tópicos com propostas ativas'
       proposals_description: Ver apenas tópicos com propostas ativas
@@ -865,10 +858,60 @@ pt-BR:
     new_contact_message: 'Obrigado por sua mensagem; estaremos em contato em breve!'
   help_page:
     coordinating: Coordenando o seu grupo do Loomio
-    coordinating_details: "Como coordenador(a), você é responsável por configurar o seu grupo do Loomio e \nconvidar as pessoas para entrar. Além de aprender a usar uma nova plataforma, o seu grupo\naprenderá novos processos para colaborar mais efetivamente e tomar boas decisões\nem conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar certo:\n"
+    coordinating_details: >
+      Como coordenador(a), você é responsável por configurar o seu grupo do
+      Loomio e
+
+      convidar as pessoas para entrar. Além de aprender a usar uma nova
+      plataforma, o seu grupo
+
+      aprenderá novos processos para colaborar mais efetivamente e tomar boas
+      decisões
+
+      em conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar
+      certo:
     different_ways: Diferentes formas de usar o Loomio
-    engaging_html: "<h2>Dicas para engajar seu grupo</h2>\n\n<p>As pessoas ficarão empolgadas em se envolver e começar a participar quando houver uma\nproposta na mesa. Uma boa proposta contém um plano de ação para o grupo de tal forma que \né imediatamente óbvio o que significa concordar ou discordar. Pense em como você  pode \nidentificar os debates/decisões que o grupo está atualmente empreendendo pessoalmente ou por email que seriam mais fáceis se estivessem no Loomio.</p>\n<p>Se seu grupo está apenas começando, você poderia inciar uma discussão leve, para dar\na todos a chance de brincar com a ferramenta e ver o processo de tomar decisões em ação</p>\n<p>Outra maneira simples de encorajar as pessoas a se envolver no debate é usar o recurso de @menção para estimular pessoas específicas; isso faz enviá-las um e-mail para avisá-las que foram mencionadas em um comentário.</p>\n"
-    example1_html: "<h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução em conjunto</h3>\n<p>Estratégia: Discuta o tópico por um tempo antes de criar uma proposta.</p>\n<p>Discussões muitas vezes alcançam o melhor resultado se você construir um entendimento \ncompartilhado sobre o problema antes de pular para uma solução específica. Quando as pessoas participam do processo, elas são muito mais propensas a estar alinhadas com o resultado.</p>\n"
+    engaging_html: >
+      <h2>Dicas para engajar seu grupo</h2>
+
+
+
+      <p>As pessoas ficarão empolgadas em se envolver e começar a participar
+      quando houver uma
+
+      proposta na mesa. Uma boa proposta contém um plano de ação para o grupo de
+      tal forma que
+
+      é imediatamente óbvio o que significa concordar ou discordar. Pense em como
+      você  pode
+
+      identificar os debates/decisões que o grupo está atualmente empreendendo
+      pessoalmente ou por email que seriam mais fáceis se estivessem no
+      Loomio.</p>
+
+      <p>Se seu grupo está apenas começando, você poderia inciar uma discussão
+      leve, para dar
+
+      a todos a chance de brincar com a ferramenta e ver o processo de tomar
+      decisões em ação</p>
+
+      <p>Outra maneira simples de encorajar as pessoas a se envolver no debate
+      é usar o recurso de @menção para estimular pessoas específicas; isso faz
+      enviá-las um e-mail para avisá-las que foram mencionadas em um
+      comentário.</p>
+    example1_html: >
+      <h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução
+      em conjunto</h3>
+
+      <p>Estratégia: Discuta o tópico por um tempo antes de criar uma
+      proposta.</p>
+
+      <p>Discussões muitas vezes alcançam o melhor resultado se você construir um
+      entendimento
+
+      compartilhado sobre o problema antes de pular para uma solução específica.
+      Quando as pessoas participam do processo, elas são muito mais propensas
+      a estar alinhadas com o resultado.</p>
     example2_html: >
       <h3>Você já tem uma proposta em mente e gostaria de obter validação do
       grupo para seguir adiante.</h3>
@@ -942,7 +985,23 @@ pt-BR:
 
       para informações sobre como utilizar Remarcação.</p>
     keep_up_to_date: Manter atualizado
-    keep_up_to_date_html: "<p>Clicar no nome do grupo na parte superior da tela levará à Página do Grupo, \nonde você pode ver uma lista de todas as discussões e decisões desse grupo. \nSe você está em mais de um grupo, pode ver toda as atividades em todos os seus \ngrupos de uma vez na Página Inicial.</p>\n<p>Você receberá notificações por e-mail quando coisas importantes acontecerem\nem seu grupo. Você pode modificar suas preferências de e-mail <a href=\"%{link}\"\">aqui</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Clicar no nome do grupo na parte superior da tela levará à Página do
+      Grupo,
+
+      onde você pode ver uma lista de todas as discussões e decisões desse
+      grupo.
+
+      Se você está em mais de um grupo, pode ver toda as atividades em todos os
+      seus
+
+      grupos de uma vez na Página Inicial.</p>
+
+      <p>Você receberá notificações por e-mail quando coisas importantes
+      acontecerem
+
+      em seu grupo. Você pode modificar suas preferências de e-mail <a
+      href="%{link}"">aqui</a>.</p>
     make_a_decision: Tomar uma decisão
     make_a_decision_description: 'Quando o grupo estiver pronto para tomar uma decisão, qualquer membro pode apresentar uma proposta. Descreva uma linha de ação clara e forneça informações para que todos saibam exatamente com o que irão concordar ou discordar.'
     prompt_people_details: "Se quiser chamar a atenção de uma pessoa específica em seu grupo, digite '@' e o nome em seguida. A pessoa receberá um e-mail notificando que você a mencionou em um comentário."
@@ -972,7 +1031,31 @@ pt-BR:
 
       protocolos de tomada de decisão que seu grupo está usando.</p>
     start_proposal: Escrever uma proposta clara
-    start_proposal_html: "<p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente com o que exatamente \nirão concordar ou discordar.</p>\n<p>Não será o fim do mundo se uma proposta não obtiver concordândia clara imediatamente.\nSe o grupo não amar a primeira proposta, qualquer membro pode iniciar uma nova proposta para\nlidar com os problemas levantados e fazer com que o processo siga adiante.</p>\n<p>Através desse processo dinâmico, a sabedoria coletiva do grupo pode gerar idéias melhores\ndo que as que um membro sozinho poderia ter.</p>\n<p>O prazo de uma proposta pode ser estendido a qualquer momento, caso pareça que a decisão\nprecise disso. Todos membros receberão uma notificação por e-mail 24 horas antes de uma proposta fechar.</p>\n\n"
+    start_proposal_html: >
+      <p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente
+      com o que exatamente
+
+      irão concordar ou discordar.</p>
+
+      <p>Não será o fim do mundo se uma proposta não obtiver concordândia clara
+      imediatamente.
+
+      Se o grupo não amar a primeira proposta, qualquer membro pode iniciar uma
+      nova proposta para
+
+      lidar com os problemas levantados e fazer com que o processo siga
+      adiante.</p>
+
+      <p>Através desse processo dinâmico, a sabedoria coletiva do grupo pode
+      gerar idéias melhores
+
+      do que as que um membro sozinho poderia ter.</p>
+
+      <p>O prazo de uma proposta pode ser estendido a qualquer momento, caso
+      pareça que a decisão
+
+      precise disso. Todos membros receberão uma notificação por e-mail 24 horas
+      antes de uma proposta fechar.</p>
     video_id: '52025402'
     video_tutorial: Vídeo-tutorial
     video_tutorial_description: Assista ao vídeo para uma rápida demonstração de como usar o Loomio.
@@ -1004,19 +1087,19 @@ pt-BR:
 
         <p>
 
-          A nova interface é como a antiga, mas mais atual:
+        A nova interface é como a antiga, mas mais atual:
 
-          <ul>
+        <ul>
 
-            <li>Atualização de tudo ao vivo na página enquanto acontece</li>
+        <li>Atualização de tudo ao vivo na página enquanto acontece</li>
 
-            <li>È projetado para todos os seus dispositivos, desde smartphones
-        até desktop</li>
+        <li>È projetado para todos os seus dispositivos, desde smartphones até
+        desktop</li>
 
-            <li>É acessível para pessoas cegas e traduzido para <a
+        <li>É acessível para pessoas cegas e traduzido para <a
         href="https://www.loomio.org/translation">um monte de idiomas</a>
 
-          </ul>
+        </ul>
 
         </p>
 

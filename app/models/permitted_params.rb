@@ -39,7 +39,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def motion_attributes
-    [:name, :description, :discussion_id, :closing_at, :outcome]
+    [:name, :description, :discussion_id, :closing_at, :outcome, :attachment_ids, {attachment_ids: []}]
   end
   alias_method :proposal_attributes, :motion_attributes
 

@@ -50,7 +50,11 @@ es:
       link_text: Lee más sobre como un grupo comunitario en UK sigue trabajando entre reuniones para crear una sociedad más democrática...
     pathways:
       heading: Incrementa la participación y satisfacción de tu equipo
-      quote: "Loomio cambia fundamentalmente los niveles de satisfacción y participación del equipo. Parecería ser mágico. Naturalmente soporta la evolución de la organización, y es generado por las mismas personas. ¿Qué más puedes pedir siendo el director general?  \n"
+      quote: >
+        Loomio cambia fundamentalmente los niveles de satisfacción
+        y participación del equipo. Parecería ser mágico. Naturalmente soporta la
+        evolución de la organización, y es generado por las mismas personas. ¿Qué
+        más puedes pedir siendo el director general?
       link_text: 'Lee más sobre como una gran ONG en Nueva Zelanda usa Loomio para incluir al equipo en las decisiones... '
     welsh_government:
       heading: Evoluciona la consulta a los ciudadanos y a las partes interesadas
@@ -63,7 +67,12 @@ es:
       link_text: Lee más sobre como la Asamblea Nacional par Gales uso Loomio para consultar con proveedores y usuarios de servicios...
     ouishare:
       heading: 'Escalar globalmente una comunidad colaborativa '
-      quote: "Necesitas crear confianza. La gente quiere entender lo que está pasando. Hay una necesidad de documentación: poder mostrar que una decisión fue tomada, que todos estaban de acuerdo. Y es genial para la gente nueva que se suma, el poder ver lo que ya ha sido discutido. Es critico el poder convertirse en una organización de aprendizaje. \n"
+      quote: >
+        Necesitas crear confianza. La gente quiere entender lo que está pasando.
+        Hay una necesidad de documentación: poder mostrar que una decisión fue
+        tomada, que todos estaban de acuerdo. Y es genial para la gente nueva que
+        se suma, el poder ver lo que ya ha sido discutido. Es critico el poder
+        convertirse en una organización de aprendizaje.
       link_text: 'Lee más sobre como OuiShare, un gran movimiento social que se expande por diferentes países, usa Loomio para operar transparente y colectivamente...'
     urban_adventures:
       heading: Colaboración remota para equipos distribuidos
