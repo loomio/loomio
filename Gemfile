@@ -100,6 +100,7 @@ group :test do
   gem 'webmock'
   gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
+  gem 'rails-controller-testing'
 end
 
 group :production do
