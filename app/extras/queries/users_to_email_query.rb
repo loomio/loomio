@@ -26,8 +26,8 @@ class Queries::UsersToEmailQuery
   end
 
   def self.motion_closing_soon(motion)
-    User.distinct.where.any_of(Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion),
-                               User.email_proposal_closing_soon_for(motion.group))
+    User.distinct.from("(#{Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).to_sql} UNION
+                         #{User.email_proposal_closing_soon_for(motion.group).to_sql}) as users")
   end
 
   def self.motion_outcome_created(motion)
