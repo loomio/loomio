@@ -6,7 +6,7 @@ describe Membership do
   let(:user2) { create(:user) }
   let(:group) { create(:group, is_visible_to_public: true) }
 
-  it { should have_many(:events).dependent(:destroy) }
+  it { should have_many(:events) }
 
   describe "validation" do
     it "cannot have duplicate memberships" do

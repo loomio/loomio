@@ -20,7 +20,7 @@ describe UserService do
       innocent_group.add_member! spam_user
 
       # spam the loomio commune group with a discussion
-      DiscussionService.create(discussion: spam_discussion_in_innocent_group, actor: spam_user)
+      DiscussionService.create(discussion: spam_discussion_in_innocent_group, actor: spam_user.reload)
 
       # spam the loomio communie discussion with comments
       CommentService.create(comment: spam_comment, actor: spam_user)
