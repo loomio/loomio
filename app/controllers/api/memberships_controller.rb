@@ -22,8 +22,7 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def join_group
-    @group = Group.find(params[:group_id])
-    event = MembershipService.join_group group: @group, actor: current_user
+    event = service.join_group group: fetch_resource(:group), actor: current_user
     @membership = event.eventable
     respond_with_resource
   end
@@ -39,25 +38,20 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def autocomplete
-    fetch_and_authorize :group
-    authorize! :members_autocomplete, @group
-
     @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     group: @group,
+                                                     group: fetch_and_authorize(:group, :members_autocomplete),
                                                      current_user: current_user,
                                                      limit: 10)
     respond_with_collection
   end
 
   def make_admin
-    load_resource
-    MembershipService.make_admin(membership: @membership, actor: current_user)
+    service.make_admin(membership: fetch_resource, actor: current_user)
     respond_with_resource
   end
 
   def remove_admin
-    load_resource
-    MembershipService.remove_admin(membership: @membership, actor: current_user)
+    service.remove_admin(membership: fetch_resource, actor: current_user)
     respond_with_resource
   end
 
@@ -68,7 +62,7 @@ class Api::MembershipsController < Api::RestfulController
 
   def save_experience
     raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
-    service.save_experience membership: load_resource, actor: current_user, params: { experience: params[:experience] }
+    service.save_experience membership: fetch_resource, actor: current_user, params: { experience: params[:experience] }
     respond_with_resource
   end
 
@@ -84,7 +78,6 @@ class Api::MembershipsController < Api::RestfulController
   end
 
   def visible_invitables
-    fetch_and_authorize :group, :invite_people
-    Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
+    Queries::VisibleInvitableMemberships.new(group: fetch_and_authorize(:group, :invite_people), user: current_user, query: params[:q])
   end
 end
