@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AttachmentService', (Records) ->
+angular.module('loomioApp').factory 'AttachmentService', ->
   new class AttachmentService
 
     listenForAttachments: (scope, model) ->
@@ -18,4 +18,3 @@ angular.module('loomioApp').factory 'AttachmentService', (Records) ->
           lastModified: moment()
           type:         item.type
         scope.$broadcast 'attachmentPasted', file
-
