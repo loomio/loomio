@@ -211,6 +211,7 @@ en:
     recent: 'Recent'
     unread: 'Unread'
     muted: 'Muted'
+    start_group: 'Start new group'
     explore: 'Public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
