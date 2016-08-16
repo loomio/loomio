@@ -25,18 +25,18 @@ class SearchVector < ActiveRecord::Base
     Queries::VisibleDiscussions.apply_privacy_sql(
       user: user,
       group_ids: user.group_ids,
-      relation: joins(discussion: :group).search_without_privacy!(query, user, opts)
-    )
+      relation: search_without_privacy!(query)
+    ).offset(opts.fetch(:from, 0)).limit(opts.fetch(:per, 10))
   end
 
-  scope :search_without_privacy!, ->(query, user, opts = {}) do
+  scope :search_without_privacy!, ->(query) do
     query = sanitize(query)
-    self.select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')
-        .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) as rank")
-        .where("search_vector @@ plainto_tsquery(#{query})")
-        .order('rank DESC')
-        .offset(opts.fetch(:from, 0))
-        .limit(opts.fetch(:per, 10))
+
+    joins(discussion: :group)
+   .select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')
+   .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) as rank")
+   .where("search_vector @@ plainto_tsquery(#{query})")
+   .order('rank DESC')
   end
 
   class << self
