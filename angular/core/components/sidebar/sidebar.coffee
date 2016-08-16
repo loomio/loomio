@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'sidebar', ->
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
-  controller: ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdSidenav, LmoUrlService, Records) ->
+  controller: ($scope, Session, $rootScope, $window, RestfulClient, $mdMedia, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdSidenav, LmoUrlService, Records, ModalService, GroupForm) ->
     $scope.showSidebar = $mdMedia("gt-md")
     $scope.currentState = ""
 
@@ -46,3 +46,6 @@ angular.module('loomioApp').directive 'sidebar', ->
 
     $scope.currentUser = ->
       Session.user()
+
+    $scope.startGroup = ->
+      ModalService.open GroupForm, group: -> Records.groups.build()
