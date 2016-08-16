@@ -1,7 +1,7 @@
 class StartGroupService
 
   def self.start_group(group)
-    group.update(default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial)
+    group.update(default_group_cover: DefaultGroupCover.sample)
     ExampleContent.new(group).add_to_group!
   end
 

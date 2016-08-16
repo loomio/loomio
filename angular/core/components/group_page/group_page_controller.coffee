@@ -11,9 +11,10 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     if AbilityService.isLoggedIn()
       $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
       MessageChannelService.subscribeToGroup(@group)
-      @handleSubscriptionSuccess()
-      @handleWelcomeModal()
-      @handlePaymentModal()
+      @handleChoosePlanModal()
+      # @handleSubscriptionSuccess()
+      # @handleWelcomeModal()
+      # @handlePaymentModal()
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
@@ -64,6 +65,19 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       @group.subscriptionKind = 'paid' # incase the webhook is slow
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
+
+  @shouldShowChoosePlanModal = =>
+    !@group.hasSubscription() and
+    @group.isParent() and
+    Session.user().isAdminOf(@group)
+
+  @handleChoosePlanModal = ->
+    if @shouldShowChoosePlanModal()
+      ModalService.open ChoosePlanModal, group: => @group
+
+  @showChoosePlanModal = =>
+    AbilityService.canSeeTrialCard(@group) and
+    $location.search().payment?
 
   @showWelcomeModal = ->
     @group.isParent() and

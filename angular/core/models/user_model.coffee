@@ -15,9 +15,6 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)
 
-    isMemberOf: (group) ->
-      @membershipFor(group)?
-
     groupIds: ->
       _.map(@memberships(), 'groupId')
 

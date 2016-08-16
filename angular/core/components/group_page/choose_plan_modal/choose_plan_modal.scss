@@ -1,0 +1,89 @@
+.u-table {
+  display: table;
+}
+
+.u-tr {
+  display: table-row;
+}
+
+.u-td {
+  display: table-cell;
+}
+
+.modal-dialog.modal-choose-plan-modal {
+  max-width: 800px;
+  width: auto;
+}
+
+.choose-plan-modal__table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 10px 0;
+  border-collapse: collapse;
+}
+.choose-plan-modal__cell {
+  vertical-align: top;
+  width: 25%;
+  height: 1px;
+  background-color: #dfdfdf;
+}
+
+.choose-plan-modal__cell--featured {
+  background-color: orange !important;
+  margin: 0 5px;
+  border-color: #e3a455;
+}
+
+.choose-plan-modal__cell--robot-image {
+  background-image: url(/img/mascot.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #f6f6f6 !important;
+}
+
+.choose-plan-modal__row--benefit {
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.choose-plan-modal__plan-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 12px;
+}
+.choose-plan-modal__plan-price {
+  font-weight: bold;
+  padding-bottom: 14px;
+  font-size: 40px;
+}
+.choose-plan-modal__plan-description {
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.choose-plan-modal__dollar-sign {
+  font-size: 20px;
+}
+
+.choose-plan-modal__payment-frequency {
+  font-size: 20px;
+}
+
+.choose-plan-modal__plan {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.choose-plan-modal__plan--button {
+  text-align: center;
+}
+
+.choose-plan-modal__benefit {
+  text-align: left;
+  background-color: #f6f6f6 !important;
+}

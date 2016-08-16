@@ -1,0 +1,124 @@
+.choose-plan-modal
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1.modal-title{translate: "choose_plan_modal.heading"}
+
+  .modal-body
+    .u-table.choose-plan-modal__table
+      .u-tr
+        .u-td.choose-plan-modal__cell--robot-image
+          &nbsp;
+        .u-td.choose-plan-modal__cell
+          .choose-plan-modal__plan
+            .choose-plan-modal__plan--details
+              .choose-plan-modal__plan-name
+                Free
+              .choose-plan-modal__plan-price
+                %span.choose-plan-modal__dollar-sign
+                  $
+                0
+              .choose-plan-modal__plan-description
+                Donation supported plan for community groups
+                %br
+                No credit card required
+            .choose-plan-modal__plan--button
+              %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift{ng-disabled: "group.subscriptionKind == 'gift'", ng-click: "chooseGiftPlan()", translate: "choose_plan_modal.select"}
+
+        .u-td.choose-plan-modal__cell.choose-plan-modal__cell--featured
+          .choose-plan-modal__plan
+            .choose-plan-modal__plan--details
+              .choose-plan-modal__plan-name
+                Standard
+              .choose-plan-modal__plan-price
+                %span.choose-plan-modal__dollar-sign
+                  $
+                19
+                %span.choose-plan-modal__payment-frequency
+                  \/month
+              .choose-plan-modal__plan-description
+                For teams with a budget.
+            .choose-plan-modal__plan--button
+              %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('standard')", translate: "choose_plan_modal.select"}
+
+        .u-td.choose-plan-modal__cell
+          .choose-plan-modal__plan
+            .choose-plan-modal__plan--details
+              .choose-plan-modal__plan-name
+                Pro
+              .choose-plan-modal__plan-price
+                %span.choose-plan-modal__dollar-sign
+                  $
+                99
+                %span.choose-plan-modal__payment-frequency
+                  \/month
+              .choose-plan-modal__plan-description
+                For organisations with multiple groups
+            .choose-plan-modal__plan--button
+              %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('plus')", translate: "choose_plan_modal.select"}
+
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Groups
+        .u-td.choose-plan-modal__cell
+          1
+        .u-td.choose-plan-modal__cell--featured
+          1
+        .u-td.choose-plan-modal__cell
+          10
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Unlimited people
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Unlimited decisions
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Priority support
+        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Slack integration
+        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Custom domain
+        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Analytics reports
+        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          CSV data export
+        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell
+          %i.fa.fa-check
