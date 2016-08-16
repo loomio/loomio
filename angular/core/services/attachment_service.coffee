@@ -1,13 +1,13 @@
-angular.module('loomioApp').factory 'AttachmentService', ->
+angular.module('loomioApp').factory 'AttachmentService', (Records) ->
   new class AttachmentService
 
     listenForAttachments: (scope, model) ->
       scope.$on 'disableAttachmentForm', -> scope.submitIsDisabled = true
       scope.$on 'enableAttachmentForm',  -> scope.submitIsDisabled = false
       scope.$on 'attachmentRemoved', (event, attachment) ->
-        ids = scope.model.newAttachmentIds
+        ids = model.newAttachmentIds
         ids.splice ids.indexOf(attachment.id), 1
-        attachment.destroy() unless _.contains scope.model.attachmentIds, attachment.id
+        attachment.destroy() unless _.contains model.attachmentIds, attachment.id
 
     listenForPaste: (scope) ->
       scope.handlePaste = (event) ->
@@ -18,3 +18,4 @@ angular.module('loomioApp').factory 'AttachmentService', ->
           lastModified: moment()
           type:         item.type
         scope.$broadcast 'attachmentPasted', file
+
