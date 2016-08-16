@@ -14,6 +14,6 @@ angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope) ->
         resolve:     resolve
         size:        (modal.size || '')
         backdrop:    'static'
-        keyboard:    !resolve.preventClose()
+        escapeToClose: !resolve.preventClose()
       )
       $mdDialog.show(currentModal).finally -> currentModal = undefined
