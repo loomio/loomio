@@ -10,7 +10,7 @@ describe Griddler::EmailsController do
       text: "Hi!",
       subject: "Greetings!",
       from: [{ name: user.name, address: user.email }],
-      to: [], # we're stubbing out to with the value below
+      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"}],
       cc: [],
       headers: {}
     }
@@ -31,7 +31,6 @@ describe Griddler::EmailsController do
   end
 
   it "creates a comment via email" do
-    expect(EmailParams).to receive(:new).and_return(email_params)
     expect { post :create, params: griddler_params }.to change { Comment.count }.by(1)
   end
 

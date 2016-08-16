@@ -9,7 +9,6 @@ describe Comment do
     discussion.group.add_member!(user)
   end
 
-  it { should have_many(:events) }
   it { should respond_to(:uses_markdown) }
 
   describe "#is_most_recent?" do
