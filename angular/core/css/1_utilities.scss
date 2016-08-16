@@ -278,7 +278,8 @@ img.emojione {
   height: 25px;
 }
 
-.modal-content {
+md-dialog {
+  min-width: 320px;
   background-color: $modal-background-color;
 }
 
