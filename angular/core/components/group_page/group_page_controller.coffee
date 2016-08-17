@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
-  $routeParams.key = $routeParams.key.split('|')[0]
+  $routeParams.key = decodeURIComponent($routeParams.key).split('|')[0]
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
 
