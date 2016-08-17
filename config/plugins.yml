@@ -8,3 +8,7 @@ loomio_tags:
   repo:         loomio/loomio_tags
   branch:       rails5
   experimental: true
+
+loomio_truncate_comment:
+  repo:         loomio/loomio_truncate_comment
+  experimental: true

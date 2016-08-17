@@ -372,6 +372,15 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(@test_group)
   end
 
+  def view_proposal_as_visitor
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
+    @test_discussion = @test_group.discussions.create!(title: 'This thread is private', private: true, author: patrick)
+    @test_proposal   = @test_discussion.motions.create(name: 'lets go hiking', author: patrick)
+    redirect_to motion_url(@test_proposal)
+  end
+
   def setup_open_group
     @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')
