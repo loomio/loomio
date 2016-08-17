@@ -34,9 +34,26 @@ class SearchVector < ActiveRecord::Base
 
     joins(discussion: :group)
    .select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')
-   .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) as rank")
+   .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) * #{recency_multiplier} as rank")
    .where("search_vector @@ plainto_tsquery(#{query})")
    .order('rank DESC')
+  end
+
+  # NB: I am a convenience method which should be removed soon after we think this thing actually works
+  scope :relevence_table, ->(query) do
+    search_without_privacy!(query)
+      .select("date_part('day', current_date - last_activity_at) as days_old")
+      .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{sanitize(query)})) as orig_rank")
+      .select("#{recency_multiplier} as mult")
+      .limit(25).map { |r| puts "|#{r.days_old} | #{r.mult} | #{'%.2f' % r.orig_rank} | #{'%.2f' % r.rank} |" }.compact
+  end
+
+  def self.recency_multiplier
+    "CASE WHEN date_part('day', current_date - last_activity_at) BETWEEN 0 AND 7   THEN 1.0
+          WHEN date_part('day', current_date - last_activity_at) BETWEEN 7 AND 21  THEN 0.8
+          WHEN date_part('day', current_date - last_activity_at) BETWEEN 21 AND 42 THEN 0.5
+          ELSE                                                                          0.1
+     END"
   end
 
   class << self
