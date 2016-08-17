@@ -57,7 +57,7 @@ describe 'Login', ->
       staticPage.fillIn '#user_email', 'patrick_swayze@example.com'
       staticPage.fillIn '#user_password', 'w0rstmovie'
       staticPage.click '#sign-in-btn'
-      staticPage.expectText '.alert-message', 'Invalid email or password'
+      staticPage.expectText '.alert-message', 'Invalid Email or password'
 
   describe 'forgot password', ->
     it 'can reset a password', ->
