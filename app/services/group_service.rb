@@ -5,7 +5,7 @@ module GroupService
     return false unless group.valid?
 
     if group.is_parent?
-      group.update(default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial)
+      group.update(default_group_cover: DefaultGroupCover.sample)
       ExampleContent.new(group).add_to_group!
     else
       group.save!

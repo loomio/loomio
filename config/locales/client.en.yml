@@ -512,17 +512,17 @@ en:
       aria_label: 'Group privacy: {{privacy}}'
 
   confirm_gift_plan_modal:
-    heading: Gift plan selected
-    body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will periodically be invited to make a voluntary donation."
+    heading: Donations are appreciated.
+    body: "<p>Loomio exists to help all kinds of people collaborate and make good decisions together. We are delighted to be able to provide Loomio for free to groups who cannot pay for a subscription. </p><p>Please note that members of your free group will occasionally be asked to consider making a voluntary donation to support the ongoing running and development costs of Loomio.</p>"
     confirm_selection: "I'm happy for people in my group to be asked to support Loomio with a donation."
     got_it: "Ok, got it!"
     go_back: Go back
 
   donation_modal:
-    heading: Would you like to support Loomio?
+    heading: Make a donation to Loomio?
     body: "Loomio is a social enterprise. Our mission is to create a world where it's easy for anyone to participate in the decisions that affect them."
     contribute: Make a contribution
-    got_to_group: Just take me to my group
+    got_to_group: Not now, thank you.
 
   gift_card:
     heading: Gift plan

@@ -28,6 +28,10 @@
   background-color: #dfdfdf;
 }
 
+.choose-plan-modal__gutter-cell {
+  width: 20px;
+}
+
 .choose-plan-modal__cell--featured {
   background-color: orange !important;
   margin: 0 5px;
@@ -44,6 +48,7 @@
 
 .choose-plan-modal__row--benefit {
   height: 30px;
+  border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 
