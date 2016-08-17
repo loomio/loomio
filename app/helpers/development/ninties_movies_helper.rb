@@ -277,7 +277,7 @@ module Development::NintiesMoviesHelper
     #notify patrick that he has been added to jens group
     another_group = Group.new(name: 'Planets of the 80\'s')
     GroupService.create(group: another_group, actor: jennifer)
-    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
+    MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer.reload, message: 'join in')
 
     #'new_coordinator',
     #notify jennifer that patrick has made her a coordinator
