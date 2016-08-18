@@ -1,11 +1,18 @@
 class SearchVector < ActiveRecord::Base
 
   WEIGHT_VALUES = [
-    1.0,   # A
-    0.3,  # B
-    0.1,  # C
-    0.03 # D
+    ENV.fetch('SEARCH_WEIGHT_A', 1.0),
+    ENV.fetch('SEARCH_WEIGHT_B', 0.3),
+    ENV.fetch('SEARCH_WEIGHT_C', 0.1),
+    ENV.fetch('SEARCH_WEIGHT_D', 0.03)
   ].reverse.freeze
+
+  RECENCY_VALUES = [
+    ENV.fetch('SEARCH_RECENCY_A', 1.0),
+    ENV.fetch('SEARCH_RECENCY_B', 0.8),
+    ENV.fetch('SEARCH_RECENCY_C', 0.5),
+    ENV.fetch('SEARCH_RECENCY_D', 0.1)
+  ].freeze
 
   DISCUSSION_FIELD_WEIGHTS = {
     'discussions.title'        => :A,
@@ -49,10 +56,10 @@ class SearchVector < ActiveRecord::Base
   end
 
   def self.recency_multiplier
-    "CASE WHEN date_part('day', current_date - last_activity_at) BETWEEN 0 AND 7   THEN 1.0
-          WHEN date_part('day', current_date - last_activity_at) BETWEEN 7 AND 21  THEN 0.8
-          WHEN date_part('day', current_date - last_activity_at) BETWEEN 21 AND 42 THEN 0.5
-          ELSE                                                                          0.1
+    "CASE WHEN date_part('day', current_date - last_activity_at) BETWEEN 0 AND 7   THEN #{RECENCY_VALUES[0]}
+          WHEN date_part('day', current_date - last_activity_at) BETWEEN 7 AND 21  THEN #{RECENCY_VALUES[1]}
+          WHEN date_part('day', current_date - last_activity_at) BETWEEN 21 AND 42 THEN #{RECENCY_VALUES[2]}
+          ELSE                                                                          #{RECENCY_VALUES[3]}
      END"
   end
 
