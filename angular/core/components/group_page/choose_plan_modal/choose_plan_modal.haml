@@ -4,139 +4,200 @@
     %h1.lmo-h1.modal-title{translate: "choose_plan_modal.heading"}
 
   .modal-body
+    .mobile-choose-plan-modal__flex
+      .buh-flex-child
+        .choose-plan-modal__plan.choose-plan-modal--featured
+          .choose-plan-modal__plan--details
+            .choose-plan-modal__plan-name{translate: "choose_plan_modal.standard"}
+            .choose-plan-modal__plan-price
+              %span.choose-plan-modal__dollar-sign
+                $
+              19
+              %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+            .choose-plan-modal__plan-description{translate: "choose_plan_modal.standard_group_description"}
+          .choose-plan-modal__plan--button
+            %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('standard')", translate: "choose_plan_modal.select"}
+          %ul.choose-plan-modal__benefits
+            %li{translate: "choose_plan_modal.benefit_1_group"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_members"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+            %li{translate: "choose_plan_modal.benefit_priority_support"}
+            %li{translate: "choose_plan_modal.benefit_slack_integration"}
+            %li{translate: "choose_plan_modal.benefit_custom_domain"}
+            %li{translate: "choose_plan_modal.benefit_analytics_reports"}
+
+      .buh-flex-child
+        .choose-plan-modal__plan.choose-plan-modal--boring
+          .choose-plan-modal__plan--details
+            .choose-plan-modal__plan-name{translate: "choose_plan_modal.pro"}
+            .choose-plan-modal__plan-price
+              %span.choose-plan-modal__dollar-sign
+                $
+              99
+              %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+            .choose-plan-modal__plan-description{translate: "choose_plan_modal.pro_group_description"}
+          .choose-plan-modal__plan--button
+            %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('plus')", translate: "choose_plan_modal.select"}
+          %ul.choose-plan-modal__benefits
+            %li{translate: "choose_plan_modal.benefit_10_groups"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_members"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+            %li{translate: "choose_plan_modal.benefit_priority_support"}
+            %li{translate: "choose_plan_modal.benefit_slack_integration"}
+            %li{translate: "choose_plan_modal.benefit_custom_domain"}
+            %li{translate: "choose_plan_modal.benefit_analytics_reports"}
+            %li{translate: "choose_plan_modal.benefit_csv_export"}
+
+      .buh-flex-child
+        .choose-plan-modal__plan.choose-plan-modal--boring
+          .choose-plan-modal__plan--details
+            .choose-plan-modal__plan-name{translate: "choose_plan_modal.free"}
+            .choose-plan-modal__plan-price
+              %span.choose-plan-modal__dollar-sign
+                $
+              0
+            .choose-plan-modal__plan-description{translate: "choose_plan_modal.free_group_description"}
+          .choose-plan-modal__plan--button
+            %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift{ng-disabled: "group.subscriptionKind == 'gift'", ng-click: "chooseGiftPlan()", translate: "choose_plan_modal.select"}
+          %ul.choose-plan-modal__benefits
+            %li{translate: "choose_plan_modal.benefit_1_group"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_members"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+            %li{translate: "choose_plan_modal.benefit_community_support"}
+
+
     .u-table.choose-plan-modal__table
       .u-tr
         .u-td.choose-plan-modal__cell--robot-image
           &nbsp;
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           .choose-plan-modal__plan
             .choose-plan-modal__plan--details
-              .choose-plan-modal__plan-name
-                Free
+              .choose-plan-modal__plan-name{translate: "choose_plan_modal.free"}
               .choose-plan-modal__plan-price
                 %span.choose-plan-modal__dollar-sign
                   $
                 0
-              .choose-plan-modal__plan-description
-                Donation supported plan for community groups
-                %br
-                No credit card required
+              .choose-plan-modal__plan-description{translate: "choose_plan_modal.free_group_description"}
             .choose-plan-modal__plan--button
               %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift{ng-disabled: "group.subscriptionKind == 'gift'", ng-click: "chooseGiftPlan()", translate: "choose_plan_modal.select"}
-
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell.choose-plan-modal__cell--featured
-          .choose-plan-modal__plan
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          .choose-plan-modal__plan.choose-plan-modal--featured
             .choose-plan-modal__plan--details
-              .choose-plan-modal__plan-name
-                Standard
+              .choose-plan-modal__plan-name{translate: "choose_plan_modal.standard"}
               .choose-plan-modal__plan-price
                 %span.choose-plan-modal__dollar-sign
                   $
                 19
-                %span.choose-plan-modal__payment-frequency
-                  \/month
-              .choose-plan-modal__plan-description
-                For teams with a budget.
+                %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+              .choose-plan-modal__plan-description{translate: "choose_plan_modal.standard_group_description"}
             .choose-plan-modal__plan--button
               %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('standard')", translate: "choose_plan_modal.select"}
 
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           .choose-plan-modal__plan
             .choose-plan-modal__plan--details
-              .choose-plan-modal__plan-name
-                Pro
+              .choose-plan-modal__plan-name{translate: "choose_plan_modal.pro"}
               .choose-plan-modal__plan-price
                 %span.choose-plan-modal__dollar-sign
                   $
                 99
-                %span.choose-plan-modal__payment-frequency
-                  \/month
-              .choose-plan-modal__plan-description
-                For organisations with multiple groups
+                %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+              .choose-plan-modal__plan-description{translate: "choose_plan_modal.pro_group_description"}
             .choose-plan-modal__plan--button
               %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('plus')", translate: "choose_plan_modal.select"}
 
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Groups
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           1
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           1
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           10
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Unlimited people
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Unlimited decisions
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Priority support
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Slack integration
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Custom domain
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           Analytics reports
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
           %i.fa.fa-check
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
       .u-tr.choose-plan-modal__row--benefit
         .u-td.choose-plan-modal__cell--benefit
           CSV data export
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
         .u-td.choose-plan-modal__gutter-cell
-        .u-td.choose-plan-modal__cell--featured
-        .u-td.choose-plan-modal__gutter-cell      
-        .u-td.choose-plan-modal__cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
           %i.fa.fa-check
+  .modal-footer
+    .choose_plan_modal__footer
+      .choose-plan-modal__footer--row
+        .choose_plan_modal__footer--left
+          %img.choose_plan_modal__mhjbs-head{src: "/img/mhjb.png"}
+        .choose_plan_modal__footer--right
+          %span{translate: "choose_plan_modal.prices_in_us_dollars"}
+          %br
+          %span{translate: "choose_plan_modal.need_help_please"}
+          %button.choose-plan-modal__contact-link{translate: "choose_plan_modal.support_link", ng-click: "openIntercom()"}>
