@@ -59,7 +59,10 @@
 }
 
 .dashboard-page__mute-image--large {
-  img { max-width: 730px; }
+  img {
+    max-width: $small-max-px;
+    padding: 0px 40px 0 0;
+  }
   text-align: center;
   margin: 0 0 10px;
 }

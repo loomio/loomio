@@ -18,7 +18,7 @@
       %p{translate: "dashboard_page.explain_mute.instructions"}
       .dashboard-page__mute-image--large{ng-show: "dashboardPage.showLargeImage()"}
         %img{src: "/img/mute.png"}
-      .dashboard-page__mute-image--small{ng-show: "dashboardPage.showSmallImage()"}
+      .dashboard-page__mute-image--small{ng-show: "!dashboardPage.showLargeImage()"}
         %img{src: "/img/mute-small.png"}
       %p{translate: "dashboard_page.explain_mute.see_muted_html"}
 

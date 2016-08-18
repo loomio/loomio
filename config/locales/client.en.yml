@@ -142,9 +142,10 @@ en:
 
   mute_explanation_modal:
     mute_thread: Mute thread
-    body: |
-      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone @mentions you.</p>
-      <p>Muted threads are hidden from Recent threads and Unread pages too. To find your Muted threads, visit the Recent threads page and select "Muted" from the "Filter threads" menu:</p>
+    body_html: |
+      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone <strong>@mentions you</strong>.</p>
+      <p>Muted threads are hidden from <strong>Recent</strong> and <strong>Unread</strong> pages too. To find your Muted threads, select the <strong>Muted</strong> option in the sidebar:</p>
+    image_alt: Muted threads option in sidebar
 
   inbox:
     clear: 'Clear'

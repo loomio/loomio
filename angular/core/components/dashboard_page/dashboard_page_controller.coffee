@@ -71,6 +71,5 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
 
   @showLargeImage = -> $mdMedia("gt-sm")
-  @showSmallImage = -> $mdMedia("sm") || $mdMedia("xs")
 
   return
