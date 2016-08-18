@@ -1,0 +1,7 @@
+.blank
+  %section.upgrade-plan-card{ng-if: "show()"}
+    %h2.lmo-card-heading{translate: "upgrade_plan_card.heading"}
+    %p{translate: "upgrade_plan_card.body", translate-value-name: "{{group.name}}"}
+    %button.upgrade-plan-card__confirm-button{ng-click: "openUpgradeModal()"}
+      %i.fa.fa-lg.fa-gift>
+      %span{translate: "upgrade_plan_card.upgrade_plan"}

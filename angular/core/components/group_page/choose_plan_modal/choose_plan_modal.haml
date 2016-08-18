@@ -1,6 +1,6 @@
 .choose-plan-modal
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{ng-if: "group.hasSubscription()"}
     %h1.lmo-h1.modal-title{translate: "choose_plan_modal.heading"}
 
   .modal-body

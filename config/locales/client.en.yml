@@ -529,6 +529,11 @@ en:
     body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
     make_a_contribution: Make a contribution
 
+  upgrade_plan_card:
+    heading: Upgrade your plan
+    body: "<strong>{{name}}</strong> is on the free plan. If you are rich, you're on the wrong plan."
+    upgrade_plan: Change plan
+
   trial_card:
     title: '30-day trial'
     choose_plan: 'Choose your pricing plan'
