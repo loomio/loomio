@@ -80,6 +80,6 @@ def search_for(term)
   JSON.parse(response.body).tap do |json|
     expect(json.keys).to include *(%w[search_results])
     @result_keys = fields_for(json, 'search_results', 'key')
-    @ranks      = fields_for(json, 'search_results', 'rank').map(&:to_f)
+    @ranks      = fields_for(json, 'search_results', 'rank').map { |d| d.to_f.round(2) }
   end
 end
