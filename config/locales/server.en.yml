@@ -88,8 +88,10 @@ en:
       view_group_text: "Click below to view the group on Loomio:"
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
+      intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
+      button_text: View request
     mentioned:
       context_html: "mentioned you while discussing"
       context: "%{author_name} mentioned you while discussing %{discussion_title}"
