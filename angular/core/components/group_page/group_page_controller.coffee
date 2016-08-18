@@ -68,6 +68,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       ModalService.open SubscriptionSuccessModal
 
   @shouldShowChoosePlanModal = =>
+    !($location.search()['chargify_success']?) and
     !@group.hasSubscription() and
     @group.isParent() and
     Session.user().isAdminOf(@group)
