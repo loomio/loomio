@@ -13,8 +13,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
       $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
       MessageChannelService.subscribeToGroup(@group)
       @handleChoosePlanModal()
-      # @handleSubscriptionSuccess()
-      # @handleWelcomeModal()
+      @handleSubscriptionSuccess()
+      @handleWelcomeModal()
       # @handlePaymentModal()
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
@@ -61,14 +61,14 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     ModalService.open LogoPhotoForm, group: => @group
 
   @handleSubscriptionSuccess = ->
-    if (AppConfig.chargify or AppConfig.environment == 'development') and $location.search().chargify_success?
+    if $location.search().chargify_success?
       @subscriptionSuccess = true
       @group.subscriptionKind = 'paid' # incase the webhook is slow
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
 
   @shouldShowChoosePlanModal = =>
-    !($location.search()['chargify_success']?) and
+    !($location.search().chargify_success?) and
     !@group.hasSubscription() and
     @group.isParent() and
     Session.user().isAdminOf(@group)
@@ -84,6 +84,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @showWelcomeModal = ->
     @group.isParent() and
     Session.user().isMemberOf(@group) and
+    !Session.user().isAdminOf(@group) and
     !@group.trialIsOverdue() and
     !@subscriptionSuccess and
     !(Session.user().hasExperienced("welcomeModal") or
