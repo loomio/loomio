@@ -760,7 +760,7 @@ en:
       submit: 'Yes, I want to deactivate'
     only_coordinator_modal:
       explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
-      instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or delete the group.'
+      instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
     change_picture_link: 'Change picture'
     change_password_link: 'Change password'
     deactivate_user_link: 'Deactivate account...'
