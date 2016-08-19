@@ -57,6 +57,10 @@ en:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
 
+  devise:
+    failure:
+      inactive: 'There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.'
+
   error_page:
     forbidden: 'You do not have permission to do this.'
     page_not_found: 'We were unable to find that. It may have been deleted or moved.'

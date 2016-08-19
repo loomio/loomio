@@ -49,4 +49,4 @@ describe 'Profile', ->
         page.click '.deactivation-modal__confirm'
         page.click '.lmo-btn--danger'
         browser.sleep(1000)
-        staticPage.expectFlash 'Your account is not activated yet'
+        staticPage.expectFlash 'There is a deactivated account associated with this email address'
