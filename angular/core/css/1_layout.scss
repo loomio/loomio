@@ -106,3 +106,8 @@ body {
     clear: left;
   }
 }
+
+/* fix for safari and maybe ie11 squishing the modal-body */
+.modal-body {
+  flex-shrink: 0;
+}

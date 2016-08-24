@@ -41,7 +41,7 @@ execjs:
 css:
   - bootstrap-sass/assets/stylesheets/_bootstrap.scss
   - font-awesome/css/font-awesome.css
-  - angular-material/angular-material.min.css
+  - angular-material/angular-material.css
 css_includes:
   - bootstrap-sass/assets/stylesheets
 fonts:
