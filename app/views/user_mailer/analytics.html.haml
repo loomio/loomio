@@ -1,4 +1,4 @@
-%h2= t(:"email.analytics.title", since: @stats[:since].strftime('%m/%d'), till:  @stats[:till].strftime('%m/%d'))
+%h2= t(:"email.analytics.title", since: @stats[:since].strftime('%d %B'))
 
 %p= raw t(:"email.analytics.stats", @stats)
 

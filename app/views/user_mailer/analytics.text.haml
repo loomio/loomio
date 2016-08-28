@@ -1,4 +1,4 @@
-= "Your weekly summary for #{@stats[:since].strftime('%m/%d')} - #{@stats[:till].strftime('%m/%d')}"
+= raw t(:"email.analytics.title", since: @stats[:since].strftime('%d %B'))
 = '---------------------------------------------------------------------------'
 
 = raw t(:"email.analytics.stats", @stats)
