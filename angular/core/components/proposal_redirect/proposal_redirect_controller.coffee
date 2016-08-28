@@ -6,5 +6,7 @@ angular.module('loomioApp').controller 'ProposalRedirectController', ($router, $
       if $location.search().position?
         params.position = $location.search().position
       $location.url LmoUrlService.discussion discussion, params
+  , (error) ->
+    $rootScope.$broadcast('pageError', error)
 
   return
