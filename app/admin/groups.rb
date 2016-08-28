@@ -70,6 +70,7 @@ ActiveAdmin.register Group do
     column :is_commercial
     column :archived_at
     column :analytics_enabled
+    column :enable_experiments
     actions
   end
 
@@ -151,6 +152,7 @@ ActiveAdmin.register Group do
       f.input :max_size
       f.input :is_commercial
       f.input :analytics_enabled
+      f.input :enable_experiments
       f.input :category_id, as: :select, collection: Category.all
     end
     f.actions
