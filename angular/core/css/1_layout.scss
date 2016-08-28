@@ -21,9 +21,13 @@ body {
   @include lmoRow;
 }
 
-@media (max-width: $tiny-max-px){
-  /* applied to tiny phone screens */
+md-dialog {
+  min-width: $tiny-max-px;
+  background-color: $modal-background-color;
+}
 
+@media (max-width: $tiny-max-px){
+  md-dialog { min-width: 100%; }
 }
 
 @media (min-width: $tiny-max-px) and (max-width: $small-max-px){
