@@ -19,7 +19,8 @@ class Queries::GroupAnalytics
       active_members:     pluralize(active_users.count, 'member'),
       active_users:       active_users.map  { |u| activity_for(u) }
                                       .sort { |a,b| b[:motions_created] <=> a[:motions_created]}
-                                      .take(10)
+                                      .take(10),
+      has_activity:       eventables[:all].count > 0
     }
   end
 
