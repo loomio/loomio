@@ -27,6 +27,22 @@ describe API::SearchController do
       expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
     end
 
+    # TODO: Pull this stuff out so it's not so magic number-y
+    it "decays relevance for older posts" do
+      DiscussionService.update discussion: discussion, params: { title: 'find me' }, actor: user
+      discussion.update(last_activity_at: 10.days.ago)
+      result = search_for('find')
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * 0.8
+
+      discussion.update(last_activity_at: 30.days.ago)
+      result = search_for('find')
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * 0.5
+
+      discussion.update(last_activity_at: 60.days.ago)
+      result = search_for('find')
+      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3] * 0.1
+    end
+
     it "can find a discussion by description" do
       DiscussionService.update discussion: discussion, params: { description: 'find me' }, actor: user
       search_for('find')
@@ -80,6 +96,6 @@ def search_for(term)
   JSON.parse(response.body).tap do |json|
     expect(json.keys).to include *(%w[search_results])
     @result_keys = fields_for(json, 'search_results', 'key')
-    @ranks      = fields_for(json, 'search_results', 'rank').map(&:to_f)
+    @ranks      = fields_for(json, 'search_results', 'rank').map { |d| d.to_f.round(2) }
   end
 end

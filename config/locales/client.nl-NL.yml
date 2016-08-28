@@ -28,10 +28,12 @@ nl-NL:
     models:
       proposal: Voorstel
     copy: Kopiëren tekst
+    copied: Gekopieerd naar klembord
     action:
       close: Sluiten
       save: Bewaren
       save_changes: Wijzigingen bewaren
+      update_settings: Instellingen bijwerken
       reply: Antwoorden
       edit: Bewerken
       remove: Verwijderen
@@ -97,9 +99,12 @@ nl-NL:
     email_label: 'E-mailadres:'
     email_placeholder: jij@voorbeeld.org
     password_label: 'Wachtwoord:'
+    remember_me: Onthoud mij
     forgot_password: Wachtwoord vergeten?
     sign_in: Inloggen
+    signed_in: Succevol ingelogd
     oauth:
+      facebook: Inloggen met Facebook
       twitter: Inloggen met Twitter
       google: Inloggen met Google
       github: Inloggen met Github
@@ -122,7 +127,6 @@ nl-NL:
   sidebar:
     recent: Recent
     unread: Ongelezen
-    explore: Ontdek openbare groepen
     edit_profile: Bewerk profiel
     email_settings: E-mail instellingen
     help: Help
@@ -217,6 +221,7 @@ nl-NL:
     gift: Kado
     standard: Standaard
     plus: Plus
+    start_group: Start groep
     email_support: e-mailondersteuning
     slack_integration_html: |
       <strong>Slack</strong> integratie
@@ -230,6 +235,8 @@ nl-NL:
     ok_got_it: "Okee, ik snap 't!"
   group_form:
     privacy: Privacy
+    submit_start_group: Start groep
+    submit_update: Instellingen bijwerken
   group_help_card:
     title: Help
   membership_requests_page:
@@ -347,7 +354,21 @@ nl-NL:
       met betrekking tot het probleem alvorens tot een oplossing te komen. Als
       mensen betrokken zijn bij het proces, zullen ze eerder geneigd zijn dit
       resultaat te steunen.</p>
-    example2_html: "<h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de groep om verder te kunnen.</h3>\n<p>Strategie: Begin een discussie over een specifieke beslissing en maak meteen een voorstel.</p>\n<p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er zeker van zijn dat niemand bezwaar heeft, \nkan je het voorstel gebruiken om snelle feedback te krijgen met betrekking tot een beslissing.</p>\n<p>Je kan dingen doen als een document afronden, een aanvraag goedkeuren of een streep zetten onder een klus.</p>\n"
+    example2_html: >
+      <h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de
+      groep om verder te kunnen.</h3>
+
+      <p>Strategie: Begin een discussie over een specifieke beslissing en maak
+      meteen een voorstel.</p>
+
+      <p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er
+      zeker van zijn dat niemand bezwaar heeft,
+
+      kan je het voorstel gebruiken om snelle feedback te krijgen met betrekking
+      tot een beslissing.</p>
+
+      <p>Je kan dingen doen als een document afronden, een aanvraag goedkeuren of
+      een streep zetten onder een klus.</p>
     get_in_touch: Neem contact op
     get_in_touch_description_html: "Als je vragen of opmerkingen hebt, <a href='%{link}'>stuur ons een berichtje</a>."
     getting_started: Aan de slag

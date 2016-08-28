@@ -14,17 +14,11 @@ tr:
       subject: "%{member} , Loomio'da sizi  %{group_name} grubuna katılmaya davet etti"
     to_start_group:
       subject: 'Yeni Loomio grubunu aç: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} sizi %{which_group} grubuna ekledi'
-      content: "%{who}, Loomio'da sizi %{which_group} grubuna ekledi. Gruba gitmek için buraya tıklayınız:"
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     view_comment: "Bu yorumu Loomio'da görüntülemek için buraya tıkla"
     view_discussion: Bu müzakereyi görüntülemek için buraya tıkla
-    view_group: "Bu grubu Loomio'da görüntülemek için buraya tıkla"
     view_proposal: Bu öneriyi Loomio üzerinde görüntüle
-    create_discussion:
-      intro: '%{who} , %{which_group} grubunda bir müzakere başlattı:'
     create_proposal:
       intro: Ait olduğunuz bir Loomio grubunda yeni bir öneri oluşturuldu.
       closes_in: içinde kapanacak
@@ -40,27 +34,13 @@ tr:
       thanks_for_reading: 'Okuduğunuz için teşekkürler. Güzel günler dileriz!'
       marked_as_read_success: "E-posta'daki herşey okundu olarak isaretlendi"
     comment_replied_to:
-      context: '%{author_name} "%{discussion_title}" müzakeresindeki yorumunuzu yanıtladı'
       subject: "%{who} Loomio'daki %{which} grubunda yorumunuzu yanıtladı"
-    group_membership_approved:
-      intro: "Loomio üzerindeki '%{group_name}' grubuna erişim talebin onaylandı."
-      subject: '%{prefix} Üyelik onaylandı'
-    invitation:
-      hi: 'Merhaba %{name},'
-      intro: '%{group_name} grubunu açmak için aşağıdaki linki tıkla:'
-      closing_message: 'Herhangi bir sorunuz varsa ya da size yardımcı olabileceğimiz herhangi bir konu varsa, bu e-postayı yanıtlamanız yeterli. Sizlerden haber almak bizi memnun edecektir.'
-      thanks: |
-        Teşekkürler!
-        Loomio Takımı
     membership_request:
       intro: '%{name} (%{email}) Loomio gruplarından birine erişim hakkı istedi.'
       subject: '%{who} %{which_group} grubuna katılmak için talep gönderdi'
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
-    mentioned:
-      context: "\"%{discussion_title}\" isimli müzakere'de %{author_name} sizden bahsetti"
     new_motion_created:
       subject: 'Öneri: %{proposal_title}'
-      context: '%{author} %{group_full_name} grubunda bir öneri oluşturdu:'
     proposal_closed:
       proposal_has_closed: Öneri kapatıldı.
       specify_outcome_and_notify_group: 'Bir sonuç oluştur ve grubuna gönder!'
@@ -84,12 +64,10 @@ tr:
       turn_on_notifications_text: 'Bundan sonraki faaliyet bildirimlerini alabilmek için bu müzakerenin e-posta servisini aktive edin: %{url}'
       change_email_preferences_html: "Bu e-posta listesinden çıkmak için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değişitirin."
       change_preferences: 'E-posta tercihlerini değiştir:'
-      new_motion: '%{who} teklif etti:'
       motion_closing_soon: 'Teklif 24 saat içinde kapanıyor:'
       proposal_closed: 'Öneri kapandı:'
       specify_outcome_html: "Sizin öneriniz kapandı. Herkesin bilmesi için <a href='%{link}'>bir sonuç belirtin</a>."
       specify_outcome: 'Sizin öneriniz kapandı. Herkesin bilmesi için bir sonuç belirtin:'
-      outcome_created: '%{who} bir öneri sonucu belirledi'
       you_agreed: 'Sen %{past_tense_position}'
   footer:
     about: Hakkında

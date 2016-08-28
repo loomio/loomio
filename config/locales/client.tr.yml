@@ -116,7 +116,6 @@ tr:
     recent: En yeni
     unread: Okunmamış
     muted: Sesi kısıldı
-    explore: Genel grupları keşfedin
     edit_profile: Profili düzenle
     email_settings: E-posta ayarları
     help: Yardım
@@ -580,13 +579,10 @@ tr:
       updated: E-posta ayarları güncellendi
   dashboard_page:
     aria_label: Kontrol paneli
-    options:
-      aria_label: Kontrol paneli filtreleme seçnekleri
     no_groups:
       or: veya
     no_threads:
       show_all: Herhangi bir yeni konunuz yok.
-      show_participating: Yakın zamanda herhangi bir konuya katılım göstermediniz.
       show_starred: Herhangi bir yıldızlı konunuz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
       show_muted: Sesi kısılmış herhangi bir konunuz yok.
@@ -603,9 +599,6 @@ tr:
       starred: Yıldızlı Konular
       starred_aria_label: Şu anda önemli olarak işaretlediğim konular görüntüleniyor
       starred_description: Sadece önemli olarak işaretlediğiniz konuları görüntüleyin.
-      participating: Konulara katılım
-      participating_aria_label: Şu anda katılım gösterdiğim konular görüntüleniyor
-      participating_description: Sadece katılım gösterdiğiniz konuları görüntüleyin.
       proposals: Öneriler
       proposals_aria_label: Şu anda aktif önerileri olan konular görüntüleniyor
       proposals_description: Sadece aktif önerileri olan konuları görüntüle
@@ -737,10 +730,56 @@ tr:
     new_contact_message: 'Mesajınız için teşekkürler; yakında irtibat halinde olacağız!'
   help_page:
     coordinating: Loomio grubunu koordine etmek
-    coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun başarılı olmasını desteklemen için bazı ipuçları:\n"
+    coordinating_details: >
+      Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten
+
+      sen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı
+      sıra, grubun
+
+      daha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler
+      öğrenecek.
+
+      İşte grubunun başarılı olmasını desteklemen için bazı ipuçları:
     different_ways: "Loomio'yu kullanmanın çeşitli yolları"
-    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli olacaktır. Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir yorumda onlardan bahsedildiğini haber veren\nbir e-posta gönderir.</p>\n"
-    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
+    engaging_html: >
+      <h2>Grubunla etkileşime girmen için ipuçları</h2>
+
+      <p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için
+      istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden
+
+      grubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli
+      olacaktır. Eğer kişilerin yüzyüze
+
+      ya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio
+      aracılığıyla yapılıyor olsaydı
+
+      bunları tanımlamak çok daha kolay olurdu.</p>
+
+      <p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir
+      şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için
+      endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>
+
+      <p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay
+      yolu ise
+
+      @bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir
+      yorumda onlardan bahsedildiğini haber veren
+
+      bir e-posta gönderir.</p>
+    example1_html: >
+      <h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm
+      geliştirmesine ihtiyacın var</h3>
+
+      <p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu
+      tartışın.</p>
+
+      <p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir
+      anlayış geliştirirsen,
+
+      müzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece
+
+      katılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha
+      olasıdır.</p>
     example2_html: >
       <h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>
 
@@ -802,7 +841,20 @@ tr:
       <p>Markdown kullanımı hakkında daha fazla bilgi için <a
       href='https://www.loomio.org/discussions/1124'>burayı tıklayın.</a></p>
     keep_up_to_date: Güncel tutun
-    keep_up_to_date_html: "<p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki müzakereleri\nve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer\nbirden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri \nAna Sayfada tek bir seferde görebilirsiniz.</p>\n<p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.\nE-posta tercihlerinizi <a href=\"%{link}\"\">buradan</a> değiştirebilirsiniz.</p>\n"
+    keep_up_to_date_html: >
+      <p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki
+      müzakereleri
+
+      ve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer
+
+      birden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri
+
+      Ana Sayfada tek bir seferde görebilirsiniz.</p>
+
+      <p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.
+
+      E-posta tercihlerinizi <a href="%{link}"">buradan</a>
+      değiştirebilirsiniz.</p>
     make_a_decision: Bir karar ver
     make_a_decision_description: Grup karar vermeye hazır olduğunda herkes teklifte bulunabilir. Kararın ne getireceğini açık bir şekilde anlat ve insanlara onaylamanın veya reddetmenin ne anlama geleceğini anlamaları için gerekli bilgileri ver.
     prompt_people_details: "Eğer, grubunuzdaki belirli bir kişinin dikkatini çekmek istiyorsanız, onun rumuz ismi'ni ‘@’ ile beraber yazın. Sonrasında, sizin, bir yorumda ondan bahsettiğinizi bildirecek bir e-posta o kişinin tarafına gönderilecektir."
@@ -812,9 +864,48 @@ tr:
     positions_disagree_description: '<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir.'
     positions_block_description: '<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir.'
     start_discussion: İlgi çekici bir müzakere başlatma
-    start_discussion_html: "<p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir şekilde aktardığından emin olun.\nGrubun üretken ve bilgilendirilmiş bir durumda müzakere\nedebilmesini sağlayacak olan tüm temel verileri girmek için \nİçerik Panelini kullanın.</p>\n<p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli güncellenebilir.\nBu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı yapabilir, \nmüzakere ilerledikçe özet bilgileri yayınlayabilir ya da \ngrubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>\n"
+    start_discussion_html: >
+      <p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir
+      şekilde aktardığından emin olun.
+
+      Grubun üretken ve bilgilendirilmiş bir durumda müzakere
+
+      edebilmesini sağlayacak olan tüm temel verileri girmek için
+
+      İçerik Panelini kullanın.</p>
+
+      <p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli
+      güncellenebilir.
+
+      Bu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı
+      yapabilir,
+
+      müzakere ilerledikçe özet bilgileri yayınlayabilir ya da
+
+      grubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>
     start_proposal: Anlaşılır bir öneri yazma
-    start_proposal_html: "<p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da\nkatılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>\n<p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu demek değil.\nEğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri \ngidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam eder.</p>\n<p>Bu dinamik süreçte, grubunuzun ortak bilgeliği, kişilerin tek\nbaşına bulabileceğinden daha iyi fikirler üretir.</p>\n<p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim tarihi her an ileriye atılabilir.\nBir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi alır.</p>\n\n"
+    start_proposal_html: >
+      <p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da
+
+      katılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>
+
+      <p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu
+      demek değil.
+
+      Eğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri
+
+      gidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam
+      eder.</p>
+
+      <p>Bu dinamik süreçte, grubunuzun ortak bilgeliği, kişilerin tek
+
+      başına bulabileceğinden daha iyi fikirler üretir.</p>
+
+      <p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim
+      tarihi her an ileriye atılabilir.
+
+      Bir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi
+      alır.</p>
     video_id: '52025402'
     video_tutorial: Eğitim videosu
     video_tutorial_description: Loomio nasıl kullanılır tanıtım videosuna göz at.

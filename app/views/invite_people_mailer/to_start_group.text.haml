@@ -1,9 +1,12 @@
-= t("email.invitation.hi", name: @invitation.recipient_name.to_s.split(" ").first)
+= t("email.to_start_group.hi", name: @invitation.recipient_name.to_s.split(" ").first)
 \
-= t("email.invitation.intro", group_name: @invitation.invitable_name)
+= t("email.to_start_group.intro", group_name: @invitation.invitable_name)
 \
 = invitation_url(@invitation)
 \
-= t("email.invitation.closing_message")
+= t("email.to_start_group.closing_message")
 \
-= t('email.invitation.thanks')
+= t("email.to_start_group.thanks")
+= t("email.to_start_group.loomio_team")
+\
+= t("email.value_proposition")

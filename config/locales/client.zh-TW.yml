@@ -154,6 +154,21 @@ zh-TW:
       twitter: 使用 Twitter 登入
       google: 使用 Google 登入
       github: 使用 GitHub 登入
+  sign_up_form:
+    title: 歡迎來到 Loomio！我們來設定一下吧
+    name_label: 您的名字
+    name_placeholder: Jane Doe
+    email_label: 電子郵件：
+    email_placeholder: you@example.com
+    password_label: 密碼：
+    password_confirmation_label: 再輸入一次密碼：
+    sign_in_message: 已經有帳號了？
+    sign_in: 登入
+    sign_up: 建立帳號
+  signed_out_modal:
+    title: 您的工作階段已結束
+    message: 您已經從其他視窗登出 Loomio。請重新登入以繼續。
+    ok: 確定
   comment_form:
     aria_label: 加入意見
     attachments:
@@ -179,11 +194,17 @@ zh-TW:
     recent: 最近
     unread: 未讀
     muted: 已靜音
-    explore: 探索公開群組
+    explore: 公開群組
     edit_profile: 編輯簡歷
     email_settings: 電子郵件設定
     help: 教學文件
+    contact: 聯絡 Loomio
     sign_out: 登出
+    aria_labels:
+      heading: 側邊欄
+      threads_list: 討論串動作
+      groups_list: 群組
+      user_list: 使用者動作
   navbar:
     recent_title: 到儀表板
     unread_title: 檢視未讀取的動態
@@ -198,6 +219,7 @@ zh-TW:
       proposals: 提議
       comments: 意見
     sign_in: 登入
+    toggle_sidebar: 切換側邊欄
   start_menu:
     title: 動作按鈕
     start_group: 啟動群組
@@ -206,6 +228,7 @@ zh-TW:
     invite_people: 邀請夥伴
   notifications:
     header: 通知
+    no_notifications: 您沒有任何通知
     new_discussion: '<strong>{{name}}</strong> 啟動了 <strong>{{discussion}}</strong> 討論串'
     new_motion: '<strong>{{name}}</strong> 建立了一個提案 <strong>{{proposal}}</strong>'
     motion_closed: '定案的提案：<strong>{{proposal}}</strong>'
@@ -577,6 +600,7 @@ zh-TW:
   invitation_form:
     invite_people: 邀請夥伴
     group: 群組
+    group_placeholder: 選擇一個群組
     shareable_link: 可分享的連結
     copy_link: 複製連結
     email_addresses: 電子郵件地址
@@ -688,13 +712,14 @@ zh-TW:
       updated: 電子郵件設定已更新
   dashboard_page:
     aria_label: 儀表板
-    options:
-      aria_label: 儀表板過濾選項
     no_groups:
+      show_all: 您沒有任何最近的討論串，因為您還不是任何群組的成員。
+      show_muted: 您沒有任何已靜音的討論串，因為您不是任何群組的成員。
+      start: 啟動
       or: 或者
+      join_group: '<a href="/explore">加入</a>群組以觀看討論串。'
     no_threads:
       show_all: 您沒有任何最近的討論串
-      show_participating: 您最近未參與任何討論。
       show_starred: 您沒有已標記星號的討論串。
       show_proposals: 目前沒有活躍的提案。
       show_muted: 您沒有任何已靜音的討論串。
@@ -711,9 +736,6 @@ zh-TW:
       starred: 已標記星號的討論串
       starred_aria_label: 目前正在顯示我已標為重要的討論串
       starred_description: 僅檢視被您標記為重要的討論串
-      participating: 正在參與的討論串
-      participating_aria_label: 目前正在顯示我已參與的討論串
-      participating_description: 僅檢視您已參與的討論串
       proposals: 提議
       proposals_aria_label: 目前正在顯示有活躍提案的討論串
       proposals_description: 僅檢視有活躍提案的討論串
@@ -743,7 +765,10 @@ zh-TW:
     unread_threads: 未讀的討論串
     view_more: 顯示更多
     no_groups:
+      explanation: 您沒有未讀的討論串，因為您不是任何群組的成員。
+      start: 啟動
       or: 或者
+      join_group: '<a href="/explore">加入</a>群組以觀看討論串。'
   groups_page:
     page_header: 您的群組
   discussion:

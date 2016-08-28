@@ -8,9 +8,6 @@ angular.module('loomioApp').directive 'startMenu', ->
     $scope.$on 'modalOpened', ->
       $scope.startMenuOpen = false
 
-    $scope.$on 'currentComponent', ->
-      $scope.currentGroup = null
-
     $scope.$on 'viewingGroup', (event, group) ->
       $scope.currentGroup = group
 
