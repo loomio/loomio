@@ -3,7 +3,7 @@
 
 = raw t(:"email.analytics.stats", @stats)
 
-- if @stats.has_activity
+- if @stats[:has_activity]
   = "Name | Motions created | Discussions created | Comments created | Votes created"
   = '---------------------------------------------------------------------------'
 
