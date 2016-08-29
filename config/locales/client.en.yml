@@ -548,8 +548,8 @@ en:
     pro: Pro
     per_month: /month
     standard_group_description: For teams with a budget.
-    free_group_description: Donation supported plan for community groups. <br /> No credit card required.
-    pro_group_description: For organisations with multiple groups.
+    free_group_description: Donation supported plan for community groups.
+    pro_group_description: For organisations with <nobr>multiple groups.</nobr>
     benefit_1_group: 1 group
     benefit_10_groups: 10 groups
     benefit_unlimited_members: Unlimited members
