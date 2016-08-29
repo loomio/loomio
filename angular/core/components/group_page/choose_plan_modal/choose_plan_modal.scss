@@ -167,14 +167,35 @@ ul.choose-plan-modal__benefits {
 // .mobile-choose-plan-modal__plan--featured {
 //   background-color: gold;
 // }
+// @media only screen
+// and (min-device-width : 320px)
+// and (max-device-width : 780px) {
+//   .choose-plan-modal {
+//     background-color: blue;
+//   }
+// }
 
-@media (max-width: 680px){
+
+// @media (max-width: 680px){
+//   .choose-plan-modal__table {
+//     display: none;
+//   }
+// }
+//
+// @media (min-width: 680px){
+//   .mobile-choose-plan-modal__flex {
+//     display: none;
+//   }
+// }
+//
+
+@media (max-width: 767px){
   .choose-plan-modal__table {
     display: none;
   }
 }
 
-@media (min-width: 680px){
+@media (min-width: 768px){
   .mobile-choose-plan-modal__flex {
     display: none;
   }

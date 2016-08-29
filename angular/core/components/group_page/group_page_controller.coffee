@@ -75,7 +75,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @handleChoosePlanModal = ->
     if @shouldShowChoosePlanModal()
-      ModalService.open ChoosePlanModal, group: => @group
+      ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
 
   @showChoosePlanModal = =>
     AbilityService.canSeeTrialCard(@group) and
