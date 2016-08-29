@@ -34,7 +34,6 @@ an:
     confirm_delete_message: Yes seguro que quiers borrar iste comentario?
   sidebar:
     unread: No leyiu
-    explore: Explorar grupos publicos
     edit_profile: Editar perfil
     email_settings: "Configuración d'o correu electronico"
     help: Aduya

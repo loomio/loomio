@@ -26,3 +26,6 @@ module.exports = new class StaticPageHelper
 
   expectText: (selector, value) ->
     expect(@elementFor(selector).getText()).toContain(value)
+
+  expectFlash: (value) ->
+    expect(@elementFor('.alert-message').getText()).toContain(value)

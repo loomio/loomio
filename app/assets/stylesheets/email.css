@@ -36,41 +36,36 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin: 0 10px;
 }
 
-.to-join-group {
+.invite-people-mailer {
   text-align: center;
-}
-
-.to-join-group {
   background-color: #F1F1F1;
-  font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif;
   padding: 35px 25px;
 }
 
-.to-join-group__container {
+.invite-people-mailer__container {
   background-color: #fff;
   border-radius: 4px;
 }
 
-.to-join-group__body {
-  padding: 30px 20px;
-}
-
-.to-join-group__invitation-text {
+.invita-people-mailer__context {
   margin-bottom: 30px;
 }
 
-.to-join-group__message-container {
-  background-color: #F1F1F1;
-  border-radius: 4px;
-  padding: 20px 0 50px 0;
+.invite-people-mailer__body {
+  padding: 30px 20px;
 }
-.to-join-group__message_body {
+
+.invite-people-mailer__message-container {
+  padding: 30px 20px;
+}
+
+.invite-people-mailer__message_body {
   font-size: 14px;
   font-style: italic;
   margin: 15px 50px 30px;
 }
 
-.to-join-group__accept-invitation {
+.invite-people-mailer__button {
   background-color: #5cb85c;
   border: #4cae4c;
   border-radius: 4px;
@@ -81,17 +76,18 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   margin: 0;
   text-decoration: none;
   white-space: nowrap;
+  max-width: 80px;
+  padding: 12px 30px;
 }
 
-.to-join-group__tagline {
+.invite-people-mailer__value-proposition {
   font-size: 16px;
   font-weight: bold;
   margin: 30px 0 0;
 }
 
-.to-join-group__accept-invitation {
-  max-width: 80px;
-  padding: 12px 30px;
+.invite-people-mailer__heart-icon {
+  width: 30px;
 }
 
 .thread-mailer__list {

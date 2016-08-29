@@ -200,7 +200,17 @@ id:
 
       untuk informasi penggunaan Penanda.</p>
     keep_up_to_date: Pantau perubahan
-    keep_up_to_date_html: "<p>Klik nama kelompok Anda di atas untuk menuju ke Laman Kelompok, dan Anda dapat melihat daftar seluruh diskusi dan \nkeputusan. Apabila Anda berada di dalam lebih dari satu kelompok, Anda dapat melihat seluruh aktivitas semua kelompok pada Laman Beranda.</p>\n<p>Anda akan mendapatkan surel notifikasi saat ada hal penting yang terjadi di dalam kelompok.\nAnda dapat mengubah preferensi surel <a href=\"%{link}\"\">di sini</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Klik nama kelompok Anda di atas untuk menuju ke Laman Kelompok, dan Anda
+      dapat melihat daftar seluruh diskusi dan
+
+      keputusan. Apabila Anda berada di dalam lebih dari satu kelompok, Anda
+      dapat melihat seluruh aktivitas semua kelompok pada Laman Beranda.</p>
+
+      <p>Anda akan mendapatkan surel notifikasi saat ada hal penting yang terjadi
+      di dalam kelompok.
+
+      Anda dapat mengubah preferensi surel <a href="%{link}"">di sini</a>.</p>
     make_a_decision: Buat keputusan
     make_a_decision_description: 'Saat kelompok sudah siap untuk membuat keputusan, setiap anggota dapat memberikan usulan. Jelaskan tindakan yang ingin diambil dan latar belakangnya sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju.'
     prompt_people_details: "Apabila Anda ingin seseorang memperhatikan tulisan Anda di dalam kelompok, ketik '@' diikuti nama mereka. Mereka akan mendapatkan surel yang mengabari bahwa Anda menyebutkan nama mereka di dalam komentar"

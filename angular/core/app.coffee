@@ -80,6 +80,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     MessageChannelService.subscribe()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
+    Session.currentGroup = options.group
     $scope.pageError = null
     $scope.$broadcast('clearBackgroundImageUrl')
     ScrollService.scrollTo(options.scrollTo or 'h1')

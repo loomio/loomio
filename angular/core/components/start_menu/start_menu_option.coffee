@@ -8,11 +8,11 @@ angular.module('loomioApp').directive 'startMenuOption', ->
     $scope.openModal = ->
       switch $scope.action
         when 'invitePeople'
-          ModalService.open InvitationForm, group: -> $scope.invitePeopleGroup()
+          ModalService.open InvitationForm, group: -> $scope.currentGroup()
         when 'startGroup'
           ModalService.open GroupForm, group: -> Records.groups.build()
         when 'startThread'
-          ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: $scope.currentGroupId())
+          ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)
     if $scope.hotkey
       KeyEventService.registerKeyEvent $scope, $scope.hotkey, $scope.openModal
 
@@ -20,13 +20,6 @@ angular.module('loomioApp').directive 'startMenuOption', ->
       _.filter Session.user().groups(), (group) ->
         AbilityService.canAddMembers(group)
 
-    $scope.invitePeopleGroup = ->
-      if $scope.group and AbilityService.canAddMembers($scope.group)
-        $scope.group
-      else if availableGroups().length == 1
-        $scope.group = _.first availableGroups()
-      else
-        Records.groups.build()
-
-    $scope.currentGroupId = ->
-      $scope.group.id if $scope.group?
+    $scope.currentGroup = ->
+      return _.first(availableGroups()) if availableGroups().length == 1
+      _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()

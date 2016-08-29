@@ -13,17 +13,11 @@ sl:
       subject: '%{member} te je povabil, da se pridružiš %{group_name} na Loomiu'
     to_start_group:
       subject: 'Vzpostavi svojo novo skupino na Loomiu: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} te je dodal/a v %{which_group}'
-      content: '%{who} te je dodal/a v %{which_group} na Loomiu. Za vstop v skupino klikni na spodnjo povezavo:'
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
     view_comment: Klikni sem za ogled komentarja na Loomiu
     view_discussion: Klikni sem za ogled razprave
-    view_group: Klikni sem za ogled skupine na Loomiu
     view_proposal: Poglej ta predlog na Loomiu
-    create_discussion:
-      intro: '%{who} je začel/a razpravo v %{which_group}:'
     create_proposal:
       intro: 'Nov predlog je bil dodan v skupini na Loomiu, katere član/ica si.'
       closes_in: Zaključi se čez
@@ -38,24 +32,12 @@ sl:
       mark_as_read: Označi kot prebrano
       thanks_for_reading: 'Super, prebral/a si vse novice. Lep dan!'
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
-    group_membership_approved:
-      intro: "Tvoja prošnja za dostop do skupine '%{group_name}' na Loomiu je bila odobrena."
-    invitation:
-      hi: 'Živjo, %{name},'
-      intro: 'Klikni na spodnjo povezavo in uredi svojo skupino %{group_name}:'
-      closing_message: 'Če imaš kakšna vprašanja ali rabiš pomoč, da lahko začneš delovati, nam prosim piši - samo odgovori na ta email.'
-      thanks: |
-        Hvala!
-        Ekipa Loomio
     membership_request:
       intro: '%{name} (%{email}) je zaprosil za dostop do ene od tvojih skupin na Loomiu.'
       subject: '%{who} je zaprosil za vstop v %{which_group}'
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
-    mentioned:
-      context: '%{author_name} te je omenil/a v razpravi "%{discussion_title}"'
     new_motion_created:
       subject: 'Predlog: %{proposal_title}'
-      context: '%{author} je ustvaril/a predlog v %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Predlog je zaprt.
       specify_outcome_and_notify_group: 'Opiši izid in ga pošlji svoji skupini!'
@@ -76,12 +58,10 @@ sl:
       turn_on_notifications_text: 'Vklopi email za obveščanje o novih aktivnostih v tej razpravi: %{url}'
       change_email_preferences_html: "Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>."
       change_preferences: 'Spremeni svoje email nastavitve:'
-      new_motion: '%{who} je predlagal/a:'
       motion_closing_soon: 'Predlog se zaključi v 24 urah:'
       proposal_closed: 'Zaključen predlog:'
       specify_outcome_html: "Tvoj predlog je zaključen. <a href='%{link}'>Opiši izid</a> in obvesti še ostale o rezultatu."
       specify_outcome: 'Tvoj predlog je zaključen. Opiši izid, da lahko vse obvestiš o rezultatu.'
-      outcome_created: '%{who} je določil/a izid predloga:'
       you_agreed: 'Ti si %{past_tense_position}'
   footer:
     about: O nas

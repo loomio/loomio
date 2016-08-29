@@ -42,12 +42,6 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     EmojiService.listen $scope, $scope.discussion, 'description', $scope.descriptionSelector
 
     AttachmentService.listenForPaste $scope
+    AttachmentService.listenForAttachments $scope, $scope.discussion
     KeyEventService.submitOnEnter $scope
     MentionService.applyMentions $scope, $scope.discussion
-
-    $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
-    $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false
-    $scope.$on 'attachmentRemoved', (event, attachment) ->
-      ids = $scope.discussion.newAttachmentIds
-      ids.splice ids.indexOf(attachment.id), 1
-      attachment.destroy() unless _.contains $scope.discussion.attachmentIds, attachment.id

@@ -6,8 +6,6 @@ he:
       link: הצטרפות לדיון
     view_discussion: לחצו כאן להצגת דיון זה
     view_proposal: הצגת הצעה זו ב Loomio
-    create_discussion:
-      intro: '%{who} התחילו דיון ב%{which_group}:'
     create_proposal:
       intro: הצעה חדשה נוצרה בקבוצה אליה את/ה משויכ/ת.
       subject: 'הצעה חדשה %{which}'
@@ -17,10 +15,6 @@ he:
       subject: אתמול בLoomio
       mark_as_read: סמן כנקרא
       thanks_for_reading: 'תודה שקראת. יום טוב!'
-    invitation:
-      hi: 'שלום %{name},'
-    new_motion_created:
-      context: '%{author} יצר/ה הצעה ב %{group_full_name}:'
     proposal_closing_soon:
       summary: סיכום
     thread_mailer:

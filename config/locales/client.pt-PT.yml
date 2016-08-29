@@ -1,7 +1,5 @@
 pt-PT:
   error_page:
     forbidden: Não tem permissão para o fazer.
-  sidebar:
-    explore: Explorar grupos públicos
   discussion_form:
     privacy_label: Privacidade

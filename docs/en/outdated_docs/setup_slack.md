@@ -1,6 +1,6 @@
 Setting up a slack integration to notify you and your team of new events in Loomio is easy. Here are the steps:
 
-- Visit `<your_team>.slack.com/services/new`, and search for 'Incoming Webhooks'
+- Visit `https://<your-team-name>.slack.com/services/new/incoming-webhook/`
 - Select the channel you'd like the posts to go into, and click 'Add Incoming Webhooks Integration'
 - Find the 'Webhook URL' on the resulting page; it should start with `https://hooks.slack.com/`. Copy this value to your clipboard.
 - Enter the rails console (`rails c`, or, in an instance running on heroku, `heroku run rails c`), and create a new webhook object, like so:

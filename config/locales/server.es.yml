@@ -30,26 +30,38 @@ es:
       content: 'Has sido invitado/a a participar en la discusión: %{discussion}'
       message_intro: '%{who} dice:'
       link: Únete a la discusión
+    value_proposition: 'Loomio es un espacio para que grupos tomen decisiones juntos. '
+    view_group: Ver grupo
     to_join_group:
       subject: '%{member} te ha invitado a unirte a %{group_name} en Loomio'
-      invitation_text_html: '<strong>%{member}</strong> te ha invitado a unirte al grupo <strong>%{group_name}</strong>'
+      invitation_text: '%{member} te ha invitado a unirte a su grupo %{group_name} '
+      invitation_text_html: te ha invitado a unirte a su grupo
+      link_help: 'Haz clic en el enlace para unirte al grupo:'
       accept_invitation: "Aceptar invitación\n "
-      tagline: 'Loomio es un espacio para que grupos tomen decisiones juntos. '
     resend_to_join_group:
       subject: '%{member} todavía está esperando que te sumes al grupo %{group_name} en Loomio'
     to_start_group:
       subject: 'Configura tu nuevo grupo en Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} te ha adherido a %{which_group}'
-      content: '%{who} te ha añadido a %{which_group} en Loomio. Pulsa aquí para ir al grupo:'
+      hi: 'Hola %{name},'
+      intro: 'Haz clic en el siguiente enlace para configurar tu grupo %{group_name}:'
+      intro_html: 'Haz clic en el siguiente enlace para configurar tu grupo:'
+      start_group: Iniciar mi grupo
+      closing_message: 'Si necesitas ayuda o si tienes alguna pregunta, responde a este email.'
+      thanks: 'Gracias, '
+      loomio_team: El Equipo de Loomio
+    user_added_to_group:
+      subject: '%{who} te ha adherido a %{which_group} en Loomio'
+      content: '%{who} te ha adherido a %{which_group}'
+      content_html: '<strong>%{who}</strong> te ha añadido a <strong>%{which_group}</strong>.'
+      link_help: 'Haz clic en el enlace para ir al grupo:'
     unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
     view_comment: Haz clic aquí para ver el comentario en Loomio
     view_discussion: 'Haz clic aquí para ver esta discusión '
-    view_group: Haz clic aquí para ver el grupo en Loomio
     view_proposal: Ver esta propuesta en Loomio
     create_discussion:
-      intro: '%{who} empezó una discusión en %{which_group}:'
+      intro_html: 'inicio un hilo:'
+      intro: '%{who} inicio un hilo: '
     create_proposal:
       intro: Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces.
       closes_in: Cierra en
@@ -66,26 +78,29 @@ es:
       heres_what_happened: 'Esto es lo que paso en Loomio ayer. '
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
     comment_replied_to:
-      context: '%{author_name} respondió a tu comentario en la discusión "%{discussion_title}"'
+      context_html: contestó a tu comentario en
+      context: '%{author_name} respondió a tu comentario en %{discussion_title}'
       subject: '%{who} respondió a tu comentario en el grupo %{which} en Loomio.'
+    new_comment:
+      context: 'comentó en  '
     group_membership_approved:
-      intro: "Tu solicitud para acceder al grupo '%{group_name}' en Loomio ha sido aprobada."
-      subject: '%{prefix} Membresía aprobada'
-    invitation:
-      hi: 'Hola %{name},'
-      intro: 'Haz clic en el enlace de abajo para configurar tu grupo %{group_name}:'
-      closing_message: 'Si tienes alguna pregunta o hay cualquier cosa con la que te podamos ayudar a mantenerte en marcha, nos encantará saber de ti; tan solo responde a este correo electrónico.'
-      thanks: "Gracias!⏎\nEl Equipo de Loomio⏎ \n"
+      intro: 'Tu solicitud para acceder al grupo %{group_name} ha sido aprobada.'
+      intro_html: 'Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada.'
+      link_help: 'Haz clic en el siguiente enlace para unirte a %{group_name} y comenzar:'
+      subject: 'Tu solicitud para unirte al grupo %{group_name} en Loomio ha sido aprobada.'
+      join_group: Unirte al grupo
+      view_group_text: 'Haz clic en el siguiente enlace para ver el grupo en Loomio:'
     membership_request:
       intro: '%{name} (%{email}) ha solicitado el acceso a uno de tus grupos de Loomio.'
       subject: '%{who} solicitó el acceso a %{which_group}'
       view_group: Puedes aceptar o denegar la solicitud aquí
     mentioned:
-      context: '%{author_name} le mencionó en la discusión  "%{discussion_title}"'
+      context_html: 'te mencionó en la discusión '
+      context: '%{author_name} te mencionó en la discusión %{discussion_title}'
       subject: '%{who} te ha mencionado en la discusión "%{which}" '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
-      context: '%{author} ha creado una propuesta en %{group_full_name}:'
+      context: 'comenzó una propuesta en %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: La propuesta se ha cerrado
       specify_outcome_and_notify_group: '¡Crear un resultado y envíalo a tu grupo!'
@@ -109,13 +124,29 @@ es:
       turn_on_notifications_text: 'Activar el correo electrónico para recibir la actividad futura en esta discusión: %{url}'
       change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos."
       change_preferences: Cambiar sus preferencias de email
-      new_motion: '%{who} propuso:'
+      new_motion_html: 'Comenzó una propuesta:'
+      new_motion: '%{who} comenzó una propuesta:'
       motion_closing_soon: Cierra en 24 Horas
       proposal_closed: 'Proposición cerrada:'
       specify_outcome_html: "Tu propuesta se ha cerrado. <a href='%{link}'>Especifica un resultado </a> para que todos los conozcan."
       specify_outcome: ' Su propuesta ha cerrado. Especifique un resultado para que todos lo conozcan:'
-      outcome_created: '%{who} anunció el resultado de la propuesta '
+      outcome_created_html: 'publicó el resultado para la propuesta:'
+      outcome_created: '%{who} publicó el resultado para la propuesta:'
       you_agreed: 'Tú %{past_tense_position}'
+    analytics:
+      subject: 'semana de %{which_group} en Loomio'
+      title: 'Tu resumen semanal para %{since} - %{till}'
+      stats: '<strong>%{active_members}</strong> de <strong>%{group_members}</strong> en tu grupo eran activos durante la semana pasada. Tu grupo presentó <strong>%{motions}</strong> e hizo <strong>%{comments}</strong> en <strong>%{discussions}</strong>.'
+      contact_us: "Buscas mas estadísticas? <a href='%{contact_link}'>Contáctanos</a>."
+      trial_subscription: "%{which_group} sigue con una <strong>prueba gratis</strong> hasta <strong>%{expires_at}</strong>. Se puede escoger un plan de suscripción <a href='%{subscription_link}'>aqui</a>."
+      trial_expired: '%{which_group} ha llegado al fin de su periodo de prueba gratis de Loomio.'
+      heart: ❤ de parte del equipo de Loomio
+      unsubscribe: "Enviamos este mensaje a los coordinadores de grupos activos en Loomio. <br />Si prefieres no recibir estos mensajes, <a href='%{contact_link}'>dejanos saber</a>."
+      user_table:
+        motions_created: Propuestas
+        discussions_created: Discusiones
+        comments_created: Comentarios
+        votes_created: Votos
   footer:
     about: Sobre Loomio
     blog: Blog
@@ -191,10 +222,34 @@ es:
     forbidden_passwords: "Contraseñas comunes como \"contraseña' están prohibidas para mantener tu cuenta segura."
   introduction_thread:
     title: 'Bienvenida/o a %{group_name}'
-    description: "Por favor tomate un momento para presentarte: **agrega un comentario** en la casilla de comentarios debajo.\n\nSi tienes las intenciones claras para este grupo de Loomio, puedes compartirlas aquí para que todas/os tengan una idea de lo quieren realizar juntos. \n"
+    description: >
+      Por favor tomate un momento para presentarte: **agrega un comentario** en
+      la casilla de comentarios debajo.
+
+
+
+      Si tienes las intenciones claras para este grupo de Loomio, puedes
+      compartirlas aquí para que todas/os tengan una idea de lo quieren realizar
+      juntos.
   how_it_works_thread:
     title: Cómo usar Loomio
-    description: "Bienvenida/o a Loomio, un lugar online donde tomar decisiones juntos.\n\nEste es un **Hilo** de discusión de ejemplo. Usa este espacio para dar la información relevante que el grupo necesite para tener una discusión productiva. \n\nEl panel de la **Propuesta** es donde tomas las decisiones. Ahí puedes comenzar propuestas o participar en las mismas.\n\nEl panel de **Actividad** muestra todo lo que ha pasado en este hilo.\n"
+    description: >
+      Bienvenida/o a Loomio, un lugar online donde tomar decisiones juntos.
+
+
+
+      Este es un **Hilo** de discusión de ejemplo. Usa este espacio para dar la
+      información relevante que el grupo necesite para tener una discusión
+      productiva.
+
+
+
+      El panel de la **Propuesta** es donde tomas las decisiones. Ahí puedes
+      comenzar propuestas o participar en las mismas.
+
+
+
+      El panel de **Actividad** muestra todo lo que ha pasado en este hilo.
   first_comment:
     body: >
       Hola, soy el ayudante de Loomio.
@@ -224,7 +279,34 @@ es:
       Loomio](http://help.loomio.org).
   first_proposal:
     name: 'Propuesta de demostración: Aquí vamos!  '
-    description: "Esta es la **descripción** de la propuesta. Aquí puedes explicar el curso de acción que propones y dar los detalles necesarios para que todas/os puedan tomar estén bien informados al tomar una decisión.\n\nPara participar en la propuesta elige una de estas opciones:\n\n- **De acuerdo**: \"Estoy de acuerdo con la propuesta y quiero que se realice\".\n- **Me abstengo**: \"Estoy feliz de que el grupo decida sin mi.\"\n- **En desacuerdo**: \"Creo que podemos hacer algo mejor.\"\n- **Bloqueo**: \"Tengo fuertes objeciones sobre esta propuesta y no quiero que siga adelante.\"\n\nAl seleccionar una posición, podrás dar una breve explicación sobre tu elección. Puedes cambiar tu posición en cualquier momento mientras la propuesta aún esté activa.   \n"
+    description: >
+      Esta es la **descripción** de la propuesta. Aquí puedes explicar el curso
+      de acción que propones y dar los detalles necesarios para que todas/os
+      puedan tomar estén bien informados al tomar una decisión.
+
+
+
+      Para participar en la propuesta elige una de estas opciones:
+
+
+
+      - **De acuerdo**: "Estoy de acuerdo con la propuesta y quiero que se
+      realice".
+
+      - **Me abstengo**: "Estoy feliz de que el grupo decida sin mi."
+
+      - **En desacuerdo**: "Creo que podemos hacer algo mejor."
+
+      - **Bloqueo**: "Tengo fuertes objeciones sobre esta propuesta y no quiero
+      que siga adelante."
+
+
+
+      Al seleccionar una posición, podrás dar una breve explicación sobre tu
+      elección. Puedes cambiar tu posición en cualquier momento mientras la
+      propuesta aún esté activa.
+  first_vote:
+    statement: 'Vamos!'
   contact_page:
     contact_us: Contáctanos
     faq_prompt_html: 'Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes.'
@@ -288,14 +370,23 @@ es:
     links:
       title: |
         ## Enlaces e imágenes
-      body: |
+      body: >
         Repite en voz alta:
 
-        Corchetes para nombres y paréntesis para URL.
+
+
+        Corchetes para los nombres luego paréntesis para las URL. Sin espacio
+        entre ellos.
+
+
 
         [Loomio Homepage](https://www.loomio.org/)
 
-        Para imágenes es igual pero precedido por un signo se exclamación.
+
+
+        Las imágenes son iguales, pero precedidas por un signo de exclamación.
+
+
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
   beta_banner:
