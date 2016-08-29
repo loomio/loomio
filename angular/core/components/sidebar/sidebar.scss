@@ -12,11 +12,12 @@
 }
 
 .sidebar__list-item-button {
+  width: 100%;
+  margin: 0;
+  padding: 0 15px;
   display: block;
   text-align: left;
   border-radius: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
   text-transform: none;
   span {
     font-weight: 600;
