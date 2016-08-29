@@ -67,10 +67,12 @@ ActiveAdmin.register Group do
     column :description, :sortable => :description do |group|
       group.description
     end
-    column :is_commercial
     column :archived_at
     column :analytics_enabled
     column :enable_experiments
+    column "Subscription" do |group|
+      group.subscription.kind if group.subscription
+    end
     actions
   end
 
@@ -79,6 +81,7 @@ ActiveAdmin.register Group do
       row :group_request
       row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
       row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
+      row('Subscription status') do |group| group.subscription.kind if group.subscription end
       group.attributes.each do |k,v|
         row k, v.inspect
       end
