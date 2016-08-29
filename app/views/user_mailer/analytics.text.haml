@@ -4,7 +4,7 @@
 = raw t(:"email.analytics.stats", @stats)
 
 - if @stats[:has_activity]
-  = "Name | Motions created | Discussions created | Comments created | Votes created"
+  = raw t(:"email.analytics.table_header")
   = '---------------------------------------------------------------------------'
 
   - @stats[:active_users].each do |u|

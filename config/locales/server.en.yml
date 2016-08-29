@@ -132,6 +132,7 @@ en:
     analytics:
       subject: "%{which_group}'s week on Loomio"
       title: "Your summary for the week starting %{since}"
+      table_header: "Name | Motions created | Discussions created | Comments created | Votes created"
       stats: "<strong>%{active_members}</strong> out of <strong>%{group_members}</strong> in your group were active in the last week. Your group raised <strong>%{motions}</strong> and made <strong>%{comments}</strong> in <strong>%{discussions}</strong>."
       contact_us: "Looking for more stats? <a href='%{contact_link}'>Get in touch</a>."
       no_activity: "Want to talk with one of our collaboration coaches about getting the most out of Loomio? <a href='%{contact_link}'>Get in touch</a>"
