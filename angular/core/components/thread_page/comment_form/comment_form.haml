@@ -17,6 +17,7 @@
         %button.lmo-btn--default.comment-form-button{type: "button", translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null"}
         %attachment_form{model: "comment"}
         %button#post-comment-cancel.lmo-btn--default{type: "button", translate: "common.action.cancel", ng-click: "cancel($event)", ng-hide: "comment.isNew()"}
+        %outlet{name: "after-comment-post", model: "comment"}
         %a.comment-form-button{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
           %span{translate: "common.formatting_help.label"}
       %validation_errors{subject: "comment", field: "file"}
