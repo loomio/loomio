@@ -31,7 +31,7 @@
         %button.email-settings-page__change-default-link.lmo-btn-link{ng-click: "emailSettingsPage.changeDefaultMembershipVolume()", translate: "email_settings_page.change_default"}
         %ul.email-settings-page__groups
           %li.email-settings-page__group{ng-repeat: "group in emailSettingsPage.user.groups() track by group.id"}
-            %img.lmo-box--medium{ng-src: "{{group.logoUrl()}}"}
+            %group_avatar{group: "group", size: "medium"}
             .email-settings-page__group-details
               %strong.email-settings-page__group-name
                 %span{ng-if: "group.isSubgroup()"}>
