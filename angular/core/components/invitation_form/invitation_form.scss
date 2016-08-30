@@ -2,9 +2,8 @@
   min-height: 100px;
 }
 
-.invitation-form__flex {
-  @include displayFlex;
-  align-items: flex-start; // | flex-end | center | baseline | stretch;
+.invitation-form__flex md-input-container {
+  flex-grow: 1;
 }
 
 .invitation-form__group-select,

@@ -261,7 +261,7 @@ textarea.form-control {
 
 .lmo-action-dock {
   position: absolute;
-  bottom: 0;
+  bottom: 37px;
   right: 0;
 }
 
@@ -273,6 +273,20 @@ textarea.form-control {
   padding-top: $navbar-height;
 }
 
+.lmo-input-container {
+  width: 100%;
+}
+
+.lmo-flex-container {
+  @include displayFlex;
+  align-items: flex-start; // | flex-end | center | baseline | stretch;
+}
+
+.lmo-separator {
+  display: inline-block;
+  width: 10px;
+}
+
 img.emojione {
   width: 25px;
   height: 25px;
@@ -281,6 +295,10 @@ img.emojione {
 md-dialog {
   min-width: 320px;
   background-color: $modal-background-color;
+}
+
+md-checkbox {
+  display: block;
 }
 
 @keyframes fadeIn {

@@ -7,95 +7,83 @@
 
     .modal-body
       .group-form__basic
-        .group-form__name
+        %md-input-container.lmo-input-container.group-form__name
           %label{for: "group-name", translate: "{{i18n.group_name}}"}
-          %input.form-control.lmo-primary-form-input#group-name{placeholder: "{{ 'group_form.group_name_placeholder' | translate }}", ng-required: true, ng-model: "group.name", maxlength: "255"}
+          %input.lmo-primary-form-input#group-name{placeholder: "{{ 'group_form.group_name_placeholder' | translate }}", ng-required: true, ng-model: "group.name", maxlength: "255"}
           %validation_errors{subject: "group", field: "name"}
 
-        .group-form__description
+        %md-input-container.lmo-input-container.group-form__description
           %label{for: "group-description", translate: "group_form.description"}
-          %textarea.lmo-textarea.form-control.lmo-primary-form-input#group-description{placeholder: "{{ 'group_form.description_placeholder' | translate }}", msd-elastic: "true", ng-model: "group.description"}
+          %textarea.lmo-textarea.lmo-primary-form-input#group-description{placeholder: "{{ 'group_form.description_placeholder' | translate }}", msd-elastic: "true", ng-model: "group.description"}
 
         .group-form__privacy-statement
           {{privacyStatement()}}
 
-        .group-form__privacy.lmo-form-group
+        .group-form__privacy
           %label{translate: "group_form.privacy"}
 
-          %label.lmo-form-labelled-input{ng-if: "!group.isSubgroupOfSecretParent()"}
-            %input.group-form__privacy-open{type: "radio", ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()", value: "open", name: "groupPrivacy"}
-            %span
-              %strong{translate: "common.privacy.open"}
-              %span.seperator
-              {{ privacyStringFor("open") }}
-
-          %label.lmo-form-labelled-input
-            %input.group-form__privacy-closed{type: "radio", ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()", value: "closed", name: "groupPrivacy"}
-            %span
-              %strong{translate: "common.privacy.closed"}
-              %span.seperator
-              {{ privacyStringFor("closed") }}
-
-          %label.lmo-form-labelled-input
-            %input.group-form__privacy-secret{type: "radio", ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()", value: "secret", name: "groupPrivacy"}
-            %span
-              %strong{translate: "common.privacy.secret"}
-              %span.seperator
-              {{ privacyStringFor("secret") }}
+        %md-input-container
+          %md-radio-group{ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()"}
+            %md-radio-button{value: "open", ng-if: "!group.isSubgroupOfSecretParent()"}
+              %span
+                %strong{translate: "common.privacy.open"}
+                %span.lmo-separator
+                {{ privacyStringFor("open") }}
+            %md-radio-button{value: "closed"}
+              %span
+                %strong{translate: "common.privacy.closed"}
+                %span.lmo-separator
+                {{ privacyStringFor("closed") }}
+            %md-radio-button{value: "secret"}
+              %span
+                %strong{translate: "common.privacy.secret"}
+                %span.lmo-separator
+                {{ privacyStringFor("secret") }}
 
       %button.lmo-link.group-form__advanced-link{type: "button", ng-show: "!expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
 
       .group-form__advanced{ng-show: "expanded"}
-        .group-form__joining.lmo-form-group{ng-if: "group.privacyIsOpen()"}
+
+        .group-form__membership-granted{ng-if: "group.privacyIsOpen()"}
           %label{translate: "group_form.how_do_people_join"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__membership-granted-upon-request{type: "radio", ng-model: "group.membershipGrantedUpon", value: "request", name: "membership-granted-upon"}
-            %span{translate: "group_form.membership_granted_upon_request"}
-
-          %label.lmo-form-labelled-input
-            %input.group-form__membership-granted-upon-approval{type: "radio", ng-model: "group.membershipGrantedUpon", value: "approval", name: "membership-granted-upon"}
-            %span{translate: "group_form.membership_granted_upon_approval"}
+          %md-input-container.group-form__joining
+            %md-radio-group{ng-model: "group.membershipGrantedUpon"}
+              %md-radio-button{value: "request"}
+                %span{translate: "group_form.membership_granted_upon_request"}
+              %md-radio-button{value: "approval"}
+                %span{translate: "group_form.membership_granted_upon_approval"}
 
         .group-form__permissions.lmo-form-group
           %label{translate: "group_form.permissions"}
 
-          %label.lmo-form-labelled-input{ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
-            %input.group-form__allow-public-threads{type: "checkbox", ng-model: "buh.allowPublicThreads", ng-change: "allowPublicThreadsClicked()"}
+          %md-checkbox.group-form__allow-public-threads{ng-model: "buh.allowPublicThreads", ng-change: "allowPublicThreadsClicked()", ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
             %span{translate: "group_form.allow_public_threads"}
 
-          %label.lmo-form-labelled-input{ng-if: "group.isSubgroup() && group.privacyIsClosed()"}
-            %input.group-form__parent-members-can-see-discussions{type: "checkbox", ng-model: "group.parentMembersCanSeeDiscussions"}
+          %md-checkbox.group-form__parent-members-can-see-discussions{ng-if: "group.isSubgroup() && group.privacyIsClosed()", ng-model: "group.parentMembersCanSeeDiscussions"}
             %span{translate: "group_form.parent_members_can_see_discussions", translate-value-parent: "{{group.parent().name}}"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__members-can-add-members{type: "checkbox", ng-model: "group.membersCanAddMembers"}
+          %md-checkbox.group-form__members-can-add-members{ng-model: "group.membersCanAddMembers"}
             %span{translate: "group_form.members_can_add_members"}
 
-          %label.lmo-form-labelled-input{ng-if: "group.isParent()"}
-            %input.group-form__members-can-create-subgroups{type: "checkbox", ng-model: "group.membersCanCreateSubgroups"}
+          %md-checkbox.group-form__members-can-create-subgroups{ng-if: "group.isParent()", ng-model: "group.membersCanCreateSubgroups"}
             %span{translate: "group_form.members_can_create_subgroups"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__members-can-start-discussions{type: "checkbox", ng-model: "group.membersCanStartDiscussions"}
+          %md-checkbox.group-form__members-can-start-discussions{ng-model: "group.membersCanStartDiscussions"}
             %span{translate: "group_form.members_can_start_discussions"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__members-can-edit-discussions{type: "checkbox", ng-model: "group.membersCanEditDiscussions"}
+          %md-checkbox.group-form__members-can-edit-discussions{ng-model: "group.membersCanEditDiscussions"}
             %span{translate: "group_form.members_can_edit_discussions"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__members-can-edit-comments{type: "checkbox", ng-model: "group.membersCanEditComments"}
+          %md-checkbox.group-form__members-can-edit-comments{ng-model: "group.membersCanEditComments"}
             %span{translate: "group_form.members_can_edit_comments"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__members-can-raise-motions{type: "checkbox", ng-model: "group.membersCanRaiseMotions"}
+          %md-checkbox.group-form__members-can-raise-motions{ng-model: "group.membersCanRaiseMotions"}
             %span{translate: "group_form.members_can_raise_motions"}
 
-          %label.lmo-form-labelled-input
-            %input.group-form__members-can-vote{type: "checkbox", ng-model: "group.membersCanVote"}
+          %md-checkbox.group-form__members-can-vote{ng-model: "group.membersCanVote"}
             %span{translate: "group_form.members_can_vote"}
 
     .modal-footer
-      %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
-      %button.lmo-btn--submit.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}
+      %md-button.md-raised.pull-left{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      %md-button.md-raised.md-primary.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}
