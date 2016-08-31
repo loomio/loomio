@@ -146,9 +146,10 @@ en:
 
   mute_explanation_modal:
     mute_thread: Mute thread
-    body: |
-      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone @mentions you.</p>
-      <p>Muted threads are hidden from Recent threads and Unread pages too. To find your Muted threads, visit the Recent threads page and select "Muted" from the "Filter threads" menu:</p>
+    body_html: |
+      <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone <strong>@mentions you</strong>.</p>
+      <p>Muted threads are hidden from <strong>Recent</strong> and <strong>Unread</strong> pages too. To find your Muted threads, select the <strong>Muted</strong> option in the sidebar:</p>
+    image_alt: Muted threads option in sidebar
 
   inbox:
     clear: 'Clear'
@@ -814,6 +815,14 @@ en:
     view_recent: View all recent threads?
     load_more: Load more threads
     mark_as_read: Mark as read
+    explain_mute:
+      title: You haven't muted any threads yet.
+      explanation_html: |
+        Muting is a way to hide or silence threads you're not interested in.
+        Muting means you won't see it in <strong>Recent</strong> or <strong>Unread</strong>, and you won't be notified about activity in that thread, like proposals.
+        You'll only be alerted if someone <strong>@mentions</strong> your name.
+      instructions: 'To mute a thread, hover over it and click the mute icon.'
+      see_muted_html: 'To see your muted threads, click <strong>"Muted"</strong>. You can unmute by hovering and clicking the same icon.'
     filtering:
       filter_threads: Filter Threads
       filter_threads_aria_label: Filter Threads

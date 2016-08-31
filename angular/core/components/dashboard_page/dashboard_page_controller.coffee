@@ -1,8 +1,10 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, ModalService, GroupForm) ->
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, $mdMedia, ModalService, GroupForm) ->
 
   $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
   $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
+
+  @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
 
   @perPage = 50
   @loaded =
@@ -70,5 +72,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     ModalService.open GroupForm, group: -> Records.groups.build()
 
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
+
+  @showLargeImage = -> $mdMedia("gt-sm")
 
   return
