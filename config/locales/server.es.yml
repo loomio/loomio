@@ -135,6 +135,7 @@ es:
       you_agreed: 'Tú %{past_tense_position}'
     analytics:
       subject: 'semana de %{which_group} en Loomio'
+      title: 'Tu resumen semanal para %{since} '
       stats: '<strong>%{active_members}</strong> de <strong>%{group_members}</strong> en tu grupo eran activos durante la semana pasada. Tu grupo presentó <strong>%{motions}</strong> e hizo <strong>%{comments}</strong> en <strong>%{discussions}</strong>.'
       contact_us: "Buscas mas estadísticas? <a href='%{contact_link}'>Contáctanos</a>."
       trial_subscription: "%{which_group} sigue con una <strong>prueba gratis</strong> hasta <strong>%{expires_at}</strong>. Se puede escoger un plan de suscripción <a href='%{subscription_link}'>aqui</a>."
