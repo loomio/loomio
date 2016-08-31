@@ -154,6 +154,7 @@ module Development::NintiesMoviesHelper
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true)
       @another_test_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      @another_test_subgroup.add_admin! patrick
     end
     @another_test_subgroup
   end
