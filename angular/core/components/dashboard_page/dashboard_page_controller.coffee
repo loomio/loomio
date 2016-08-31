@@ -13,6 +13,8 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     recent: {}
     groups: {}
 
+  @loading = -> !AppConfig.dashboardLoaded
+
   @timeframes =
     today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
     yesterday: { from: '1 day ago',    to: '1 second ago' }
@@ -31,6 +33,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     _.contains ['show_muted'], @filter
 
   @updateQueries = =>
+    AppConfig.dashboardLoaded = true
     @currentBaseQuery = ThreadQueryService.filterQuery(['only_threads_in_my_groups', @filter])
     if @displayByGroup()
       _.each @groups(), (group) =>
