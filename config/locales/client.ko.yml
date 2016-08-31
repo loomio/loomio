@@ -10,6 +10,7 @@ ko:
     notification_volume: 알림 볼륨
     group: 그룹
     groups: 그룹
+    help: 도움
     privacy:
       privacy: 개인정보
       public: 공개
@@ -36,7 +37,9 @@ ko:
       update_settings: 설정 저장
       reply: 답글
       edit: 편집
+      remove: 제거
       like: 좋아요
+      back: 이전
       unlike: 싫어요
       update: 업데이트
       cancel: 취소
@@ -47,6 +50,7 @@ ko:
       loading: 로딩중...
       translate: 번역
       translated: Bing으로 번역
+      upload: 업로드
       uploading: 업로딩중...
     formatting_help:
       label: 포맷설정 도움말
@@ -85,6 +89,8 @@ ko:
     quiet: 조용히
     mute: 소거
     unmute: 소거해제
+  change_volume_form:
+    mute_label: 음소거
   inbox:
     clear: 지우기
     latest: 최신

@@ -1,11 +1,18 @@
 class SearchVector < ActiveRecord::Base
 
   WEIGHT_VALUES = [
-    1.0,   # A
-    0.3,  # B
-    0.1,  # C
-    0.03 # D
+    ENV.fetch('SEARCH_WEIGHT_A', 1.0),
+    ENV.fetch('SEARCH_WEIGHT_B', 0.3),
+    ENV.fetch('SEARCH_WEIGHT_C', 0.1),
+    ENV.fetch('SEARCH_WEIGHT_D', 0.03)
   ].reverse.freeze
+
+  RECENCY_VALUES = [
+    ENV.fetch('SEARCH_RECENCY_A', 1.0),
+    ENV.fetch('SEARCH_RECENCY_B', 0.8),
+    ENV.fetch('SEARCH_RECENCY_C', 0.5),
+    ENV.fetch('SEARCH_RECENCY_D', 0.1)
+  ].freeze
 
   DISCUSSION_FIELD_WEIGHTS = {
     'discussions.title'        => :A,
@@ -25,18 +32,35 @@ class SearchVector < ActiveRecord::Base
     Queries::VisibleDiscussions.apply_privacy_sql(
       user: user,
       group_ids: user.group_ids,
-      relation: joins(discussion: :group).search_without_privacy!(query, user, opts)
-    )
+      relation: search_without_privacy!(query)
+    ).offset(opts.fetch(:from, 0)).limit(opts.fetch(:per, 10))
   end
 
-  scope :search_without_privacy!, ->(query, user, opts = {}) do
+  scope :search_without_privacy!, ->(query) do
     query = sanitize(query)
-    self.select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')
-        .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) as rank")
-        .where("search_vector @@ plainto_tsquery(#{query})")
-        .order('rank DESC')
-        .offset(opts.fetch(:from, 0))
-        .limit(opts.fetch(:per, 10))
+
+    joins(discussion: :group)
+   .select(:discussion_id, :search_vector, 'groups.full_name as result_group_name')
+   .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{query})) * #{recency_multiplier} as rank")
+   .where("search_vector @@ plainto_tsquery(#{query})")
+   .order('rank DESC')
+  end
+
+  # NB: I am a convenience method which should be removed soon after we think this thing actually works
+  scope :relevence_table, ->(query) do
+    search_without_privacy!(query)
+      .select("date_part('day', current_date - last_activity_at) as days_old")
+      .select("ts_rank_cd('{#{WEIGHT_VALUES.join(',')}}', search_vector, plainto_tsquery(#{sanitize(query)})) as orig_rank")
+      .select("#{recency_multiplier} as mult")
+      .limit(25).map { |r| puts "|#{r.days_old} | #{r.mult} | #{'%.2f' % r.orig_rank} | #{'%.2f' % r.rank} |" }.compact
+  end
+
+  def self.recency_multiplier
+    "CASE WHEN date_part('day', current_date - last_activity_at) BETWEEN 0 AND 7   THEN #{RECENCY_VALUES[0]}
+          WHEN date_part('day', current_date - last_activity_at) BETWEEN 7 AND 21  THEN #{RECENCY_VALUES[1]}
+          WHEN date_part('day', current_date - last_activity_at) BETWEEN 21 AND 42 THEN #{RECENCY_VALUES[2]}
+          ELSE                                                                          #{RECENCY_VALUES[3]}
+     END"
   end
 
   class << self

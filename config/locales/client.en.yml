@@ -57,6 +57,10 @@ en:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
 
+  devise:
+    failure:
+      inactive: 'There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.'
+
   error_page:
     forbidden: 'You do not have permission to do this.'
     page_not_found: 'We were unable to find that. It may have been deleted or moved.'
@@ -212,6 +216,7 @@ en:
     recent: 'Recent'
     unread: 'Unread'
     muted: 'Muted'
+    start_group: 'Start new group'
     explore: 'Public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
@@ -752,6 +757,16 @@ en:
       question: 'Would you tell us why you are deactivating your account?'
       placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
       submit: 'Deactivate account'
+    deactivation_modal:
+      introduction: 'When you deactivate your account:'
+      no_longer_group_member: 'You will no longer be listed as a member of any groups'
+      name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
+      no_emails: 'You will no longer receive Loomio-related emails'
+      contact_for_reactivation: 'You will need to contact us to reactivate your account'
+      submit: 'Yes, I want to deactivate'
+    only_coordinator_modal:
+      explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
+      instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
     change_picture_link: 'Change picture'
     change_password_link: 'Change password'
     deactivate_user_link: 'Deactivate account...'

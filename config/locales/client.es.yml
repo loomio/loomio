@@ -55,6 +55,9 @@ es:
     formatting_help:
       label: 'Ayuda de formato '
       title: Aprende a usar Markdown para dar formato a tu texto en Loomio
+  devise:
+    failure:
+      inactive: Hay una cuenta Desactivada asociada a este email. Contáctanos si quieres Reactivar tu cuenta.
   error_page:
     forbidden: No tienes permisos para hacer esto.
     page_not_found: No encontramos lo que estás buscando. Podría haber sido borrado o movido.
@@ -199,6 +202,7 @@ es:
     recent: 'Reciente '
     unread: 'No leído '
     muted: 'Silenciado '
+    start_group: Crea un nuevo grupo
     explore: Grupos públicos
     edit_profile: 'Editar perfil '
     email_settings: 'Ajustes de correo  '
@@ -609,6 +613,7 @@ es:
   invitation_form:
     invite_people: Invita gente
     group: Grupo
+    group_placeholder: Selecciona un grupo
     shareable_link: Enlace para compartir
     copy_link: Copiar enlace
     email_addresses: Correo electrónico
@@ -688,6 +693,16 @@ es:
       question: ¿Nos contarías por qué estás desactivando tu cuenta?
       placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar Loomio :)'
       submit: Desactiva tu cuenta
+    deactivation_modal:
+      introduction: 'Cuando desactivas tu cuenta:'
+      no_longer_group_member: Ya no serás listado como miembro en ningún grupo
+      name_removed: 'Comentarios, propuestas e hilos que has realizado permanecerán, pero tu nombre será removido de los mismos'
+      no_emails: Ya no recibirás correo relacionados con Loomio
+      contact_for_reactivation: Deberás contactarnos para reactivar su cuenta
+      submit: 'Si, quiero desactivar mi cuenta'
+    only_coordinator_modal:
+      explanation: 'Un grupo debe tener al menos un coordinador. Tú eres el único coordinador de los siguientes grupos:'
+      instructions: 'Para poder desactivar su cuenta, necesitarás visitar cada uno de los grupo mencionados arriba y o bien nombrar a otro coordinador o desactivar el grupo.'
     change_picture_link: Cambiar imagen
     change_password_link: Cambiar la contraseña
     deactivate_user_link: Desactivar cuenta...
