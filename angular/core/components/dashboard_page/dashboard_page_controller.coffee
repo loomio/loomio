@@ -4,7 +4,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
   $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
 
-  @userHasMuted    = -> Session.user().hasMuted
+  @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
 
   @perPage = 50
   @loaded =
