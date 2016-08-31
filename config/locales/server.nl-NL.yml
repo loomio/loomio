@@ -84,7 +84,7 @@ nl-NL:
       you_agreed: 'Je %{past_tense_position}'
     analytics:
       subject: "%{which_group}'s week op Loomio"
-      title: 'Je wekelijkse samenvatting voor %{since} - %{till}'
+      title: 'Je wekelijkse samenvatting voor %{since} '
       stats: '<strong>%{active_members}</strong> van <strong>%{group_members}</strong> in je groep waren in de afgelopen week actief. Je groep resulteerde in <strong>%{motions}</strong> en had <strong>%{comments}</strong> in <strong>%{discussions}</strong>.'
       heart: ❤ van team Loomio
       user_table:
