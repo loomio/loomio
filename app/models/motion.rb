@@ -55,15 +55,19 @@ class Motion < ActiveRecord::Base
   scope :chronologically,          -> { order('created_at asc') }
   scope :with_outcomes,            -> { where('motions.outcome IS NOT NULL AND motions.outcome != ?', '') }
 
-  scope :closing_soon_not_published, -> {
+  # recency threshold is the minimum length of time for a new motion_closing_soon event to
+  # be published. So, if the proposal is extended by 2 hours, we don't want to publish another
+  # motion closing soon event, but if it's extended by 10 days, we do.
+  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      voting
-    .joins("LEFT OUTER JOIN events e ON e.eventable_id = motions.id AND e.eventable_type = 'Motion'")
+    .distinct
+    .where(closing_at: timeframe)
     .where("NOT EXISTS (SELECT 1 FROM events
                 WHERE events.created_at     > ? AND
                       events.eventable_id   = motions.id AND
                       events.eventable_type = 'Motion' AND
-                      events.kind           = 'motion_closing_soon')", 2.days.ago)
-  }
+                      events.kind           = 'motion_closing_soon')", recency_threshold)
+  end
 
   def proposal_title
     name

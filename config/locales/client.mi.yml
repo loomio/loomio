@@ -2,6 +2,8 @@ mi:
   common:
     group: Rōpū
     groups: Ngā Rōpū
+    privacy:
+      privacy: Matatapu
     date_range:
       today: Ākuanei
     action:
@@ -19,6 +21,7 @@ mi:
   discussion_form:
     group_label: Rōpū
     title_label: Taitara
+    privacy_label: Matatapu
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
@@ -26,6 +29,8 @@ mi:
     options_label: Ngā Kōwhiringa
     options:
       label: Ngā Kōwhiringa
+  group_form:
+    privacy: Matatapu
   memberships_page:
     members: Ngā Mema
     name_label: Ingoa

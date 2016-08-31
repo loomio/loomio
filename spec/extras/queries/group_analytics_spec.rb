@@ -67,6 +67,15 @@ describe Queries::GroupAnalytics do
       expect(subject.stats[:discussions]).to eq "1 discussion thread"
     end
 
+    it 'sets has_activity to true when there is activity' do
+      new_comment_event
+      expect(subject.stats[:has_activity]).to eq true
+    end
+
+    it 'sets has_activity to false when there is no activity' do
+      expect(subject.stats[:has_activity]).to eq false
+    end
+
     it 'sorts users by their motion creation activity' do
       new_motion_event; another_user_motion_event; yet_another_user_motion_event
       expect(subject.stats[:active_users][0][:name]).to eq another_user.name
