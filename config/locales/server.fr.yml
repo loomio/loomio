@@ -97,6 +97,7 @@ fr:
       you_agreed: 'Vous %{past_tense_position}'
     analytics:
       subject: 'Semaine de %{which_group} sur Loomio'
+      title: 'Votre résumé hebdomadaire pour %{since} '
       contact_us: "Besoin de plus de stats ? <a href='%{contact_link}'>Contactez-nous</a>."
       heart: "❤ de l'équipe Loomio"
       user_table:
