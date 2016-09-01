@@ -18,11 +18,17 @@ a:visited { color: #4076D4; }
   padding: 0 20px;
 }
 
+.marketing__arrow-image {
+  max-width: 100px;
+  padding: 100px 0 0;
+}
+
 @media (max-width: 600px) {
   .marketing__hero-button { display: none; }
   .marketing__loomio-process-text {
     text-align: center;
   }
+  .marketing__arrow-image { display: none; }
   .marketing__loomio-process-image,
   .marketing__loomio-process-image { padding: 0px; }
   .marketing__feature {
@@ -49,10 +55,6 @@ a:visited { color: #4076D4; }
   -webkit-order: -1;
   -ms-flex-order: -1;
   order: -1;
-}
-
-.marketing__content {
-  padding-top: 30px;
 }
 
 .marketing__section {
