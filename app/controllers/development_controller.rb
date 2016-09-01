@@ -79,7 +79,7 @@ class DevelopmentController < ApplicationController
 
   def setup_new_group
     group = Group.new(name: 'Fresh group')
-    StartGroupService.start_group(group)
+    GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: group)
     membership.experienced! 'welcomeModal'
@@ -107,8 +107,8 @@ class DevelopmentController < ApplicationController
                               is_visible_to_public: true,
                               membership_granted_upon: :request)
     group = Group.new(name: 'Welcomed group')
-    StartGroupService.start_group(another_group)
-    StartGroupService.start_group(group)
+    GroupService.create(group: another_group, actor: LoggedOutUser.new)
+    GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     sign_in patrick
     redirect_to group_url(group)

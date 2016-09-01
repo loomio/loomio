@@ -55,6 +55,9 @@ zh-TW:
     formatting_help:
       label: 格式化說明
       title: 學習如何使用 Markdown 來格式化您在 Loomio 上的文字
+  devise:
+    failure:
+      inactive: 與此電子郵件關聯的帳號已停用。若您想要重新啟用您的帳號，請聯絡我們。
   error_page:
     forbidden: 您沒有足夠的權限。
     page_not_found: 我們找不到它。它可能已經被刪除或移動了。
@@ -194,6 +197,7 @@ zh-TW:
     recent: 最近
     unread: 未讀
     muted: 已靜音
+    start_group: 啟動新的群組
     explore: 公開群組
     edit_profile: 編輯簡歷
     email_settings: 電子郵件設定
@@ -680,6 +684,16 @@ zh-TW:
       question: 您可以告訴我們為何您現在要凍結您的帳號嗎？
       placeholder: '回答這個問題是選擇性的。您所分享的任何資訊將會幫助我們改進 Loomio :)'
       submit: 凍結帳號
+    deactivation_modal:
+      introduction: 當您停用您的帳號：
+      no_longer_group_member: 您將不會再被任何群組列為成員
+      name_removed: 您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。
+      no_emails: 您將不再收到與 Loomio 相關的電子郵件
+      contact_for_reactivation: 您將會需要聯絡我們以重新啟用您的帳號
+      submit: 是的，我想要停用
+    only_coordinator_modal:
+      explanation: 一個群組至少必須有一個協調者。您是以下群組的唯一協調者：
+      instructions: 為了凍結您的帳號，您需要看看上面列出的每一個群組，增加其他的協調者，或是凍結群組。
     change_picture_link: 變更照片
     change_password_link: 變更密碼
     deactivate_user_link: 凍結帳號...

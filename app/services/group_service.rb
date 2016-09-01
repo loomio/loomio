@@ -1,5 +1,9 @@
 module GroupService
-  def self.create(group:, actor:)
+  def self.ab_test_alternative?(group)
+    group.segment_seed % 2 == 0
+  end
+
+  def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
     return false unless group.valid?
@@ -7,11 +11,15 @@ module GroupService
     if group.is_parent?
       group.update(default_group_cover: DefaultGroupCover.sample)
       ExampleContent.new(group).add_to_group!
+
+      if SubscriptionService.available?
+        group.subscription = Subscription.new_gift if ab_test_alternative?(group)
+      end
     else
       group.save!
     end
 
-    group.add_admin! actor
+    group.add_admin! actor if actor.is_logged_in?
 
     EventBus.broadcast('group_create', group, actor)
   end

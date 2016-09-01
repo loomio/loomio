@@ -12,11 +12,12 @@
 }
 
 .sidebar__list-item-button {
+  width: 100%;
+  margin: 0;
+  padding: 0 15px;
   display: block;
   text-align: left;
   border-radius: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
   text-transform: none;
   span {
     font-weight: 600;
@@ -24,19 +25,13 @@
 }
 
 .sidebar__list-item-button--subgroup {
+  width: 100%;
+  margin: 0;
   text-transform: none;
   display: block;
   border-radius: 0px;
-  margin-bottom: 0px;
-  margin-top: 0px;
   text-align: left;
-  padding-left: 42px;
-}
-
-.sidebar__scrollable-list {
-  overflow-y: scroll;
-  -webkit-flex: 1;
-  flex: 1;
+  padding-left: 53px;
 }
 
 .sidebar__list-item-icon {

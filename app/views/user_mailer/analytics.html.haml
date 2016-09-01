@@ -1,24 +1,27 @@
-%h2= t(:"email.analytics.title", since: @stats[:since].strftime('%m/%d'), till:  @stats[:till].strftime('%m/%d'))
+%h2= t(:"email.analytics.title", since: @stats[:since].strftime('%d %B'))
 
 %p= raw t(:"email.analytics.stats", @stats)
 
-%table.stats-table
-  %thead
-    %th
-    %th= t(:"email.analytics.user_table.motions_created")
-    %th= t(:"email.analytics.user_table.discussions_created")
-    %th= t(:"email.analytics.user_table.comments_created")
-    %th= t(:"email.analytics.user_table.votes_created")
-  %tbody
-    - @stats[:active_users].each do |u|
-      %tr
-        %td= u[:name]
-        %td= (u[:motions_created]     if u[:motions_created] > 0)
-        %td= (u[:discussions_created] if u[:discussions_created] > 0)
-        %td= (u[:comments_created]    if u[:comments_created] > 0)
-        %td= (u[:votes_created]       if u[:votes_created] > 0)
+- if @stats[:has_activity]
+  %table.stats-table
+    %thead
+      %th
+      %th= t(:"email.analytics.user_table.motions_created")
+      %th= t(:"email.analytics.user_table.discussions_created")
+      %th= t(:"email.analytics.user_table.comments_created")
+      %th= t(:"email.analytics.user_table.votes_created")
+    %tbody
+      - @stats[:active_users].each do |u|
+        %tr
+          %td.align-left= u[:name]
+          %td= (u[:motions_created]     if u[:motions_created] > 0)
+          %td= (u[:discussions_created] if u[:discussions_created] > 0)
+          %td= (u[:comments_created]    if u[:comments_created] > 0)
+          %td= (u[:votes_created]       if u[:votes_created] > 0)
 
-%p= raw t(:"email.analytics.contact_us", contact_link: contact_url)
+  %p= raw t(:"email.analytics.contact_us", contact_link: contact_url)
+- else
+  %p= raw t(:"email.analytics.no_activity", contact_link: contact_url)
 
 - if @stats[:is_trial]
   - if @stats[:expires_at] > Time.zone.now
