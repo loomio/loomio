@@ -12,12 +12,14 @@ describe Queries::UsersToEmailQuery do
   let(:user_membership_quiet) { FactoryGirl.create :user, all_emails_disabled }
   let(:user_membership_mute) { FactoryGirl.create :user, all_emails_disabled }
   let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
+  let(:user_mentioned) { FactoryGirl.create :user }
+  let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
 
-  let(:discussion) { FactoryGirl.create :discussion }
+  let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
   let(:mentioned_user) {FactoryGirl.create :user, username: 'sam' }
   let(:parent_comment) { FactoryGirl.create :comment, discussion: discussion}
   let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
-  let(:motion) { FactoryGirl.create :motion, discussion: discussion }
+  let(:motion) { FactoryGirl.create :motion, discussion: discussion, description: user_mentioned_text }
   let(:vote) { FactoryGirl.create :vote, motion: motion }
 
   before do
@@ -33,6 +35,7 @@ describe Queries::UsersToEmailQuery do
     discussion.group.add_member!(user_thread_normal).set_volume! :mute
     discussion.group.add_member!(user_thread_quiet).set_volume! :mute
     discussion.group.add_member!(user_thread_mute).set_volume! :mute
+    discussion.group.add_member!(user_mentioned)
 
     DiscussionReader.for(discussion: discussion, user: user_thread_loud).set_volume! :loud
     DiscussionReader.for(discussion: discussion, user: user_thread_normal).set_volume! :normal
@@ -102,6 +105,7 @@ describe Queries::UsersToEmailQuery do
     users.should_not include user_thread_mute
 
     users.should_not include discussion.author
+    users.should_not include user_mentioned
   end
 
   it 'new_motion' do
@@ -119,6 +123,7 @@ describe Queries::UsersToEmailQuery do
     users.should_not include user_thread_mute
 
     users.should_not include motion.author
+    users.should_not include user_mentioned
   end
 
   it 'motion_closing_soon' do
