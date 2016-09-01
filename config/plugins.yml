@@ -15,3 +15,7 @@ loomio_truncate_comment:
 loomio_comment_preview:
   repo:         gdpelican/loomio_comment_preview
   experimental: true
+
+loomio_markdown_helper:
+  repo:         gdpelican/loomio_markdown_helper
+  experimental: true
