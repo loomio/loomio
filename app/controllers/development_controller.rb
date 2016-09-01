@@ -439,6 +439,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(another_test_group)
   end
 
+  def visit_group_as_subgroup_member
+    sign_in jennifer
+    test_subgroup.add_member! jennifer
+    another_test_subgroup.add_member! jennifer
+    redirect_to group_url(another_test_group)
+  end
+
   def params_membership_granted_upon
     if ['request', 'approval', 'invitation'].include? params[:membership_granted_upon]
       params[:membership_granted_upon]

@@ -3,6 +3,14 @@ describe 'Group Page', ->
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
+  describe 'visiting a parent group as a subgroup member', ->
+    it 'displays parent group in sidebar if member of a subgroup', ->
+      page.loadPath 'visit_group_as_subgroup_member'
+      page.expectText '.group-theme__name', 'Point Break'
+      page.expectElement '.join-group-button__ask-to-join-group'
+      page.click '.navbar__sidenav-toggle'
+      page.expectElement '.sidebar__list-item--selected'
+
   describe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
