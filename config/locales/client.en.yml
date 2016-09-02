@@ -596,7 +596,7 @@ en:
   subscription_success_modal:
     heading: You're all set!
     receipt: You'll receive an email with your receipt, including a link to the customer portal, where you can change, upgrade, or cancel your subscription, and access billing history.
-    change_subscription: If you'd like to set up Slack integration or your custom domain name,
+    change_subscription: "If you'd like to set up Slack integration or your custom domain name, "
     contact_link: please contact us.
     sign_off: ❤ from the Loomio team
     ok_got_it: Ok, got it!
