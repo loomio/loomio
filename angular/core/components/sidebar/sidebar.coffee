@@ -42,7 +42,7 @@ angular.module('loomioApp').directive 'sidebar', ->
         $mdSidenav('left').close()
 
     $scope.groups = ->
-      Session.user().groups()
+      Session.user().groups().concat(Session.user().orphanParents())
 
     $scope.currentUser = ->
       Session.user()

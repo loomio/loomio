@@ -835,7 +835,6 @@ ActiveRecord::Schema.define(version: 20160901230819) do
     t.boolean  "angular_ui_enabled",               default: true,       null: false
     t.boolean  "email_on_participation",           default: false,      null: false
     t.integer  "default_membership_volume",        default: 2,          null: false
-    t.boolean  "has_muted",                        default: false,      null: false
     t.jsonb    "experiences",                      default: {},         null: false
     t.string   "country"
     t.string   "region"
