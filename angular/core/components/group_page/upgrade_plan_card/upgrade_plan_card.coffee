@@ -10,5 +10,8 @@ angular.module('loomioApp').directive 'upgradePlanCard', ->
       $scope.group.subscriptionKind == 'gift' and
       AppConfig.chargify?
 
+    $scope.segmentA = ->
+      parseInt(($scope.group.segmentSeed).toString()[0])%2 == 0
+
     $scope.openUpgradeModal = ->
       ModalService.open ChoosePlanModal, group: -> $scope.group

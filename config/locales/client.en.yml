@@ -517,11 +517,10 @@ en:
       aria_label: 'Group privacy: {{privacy}}'
 
   confirm_gift_plan_modal:
-    heading: Donations are appreciated.
-    body: "<p>Loomio exists to help all kinds of people collaborate and make good decisions together. We are delighted to be able to provide Loomio for free to groups who cannot pay for a subscription. </p><p>Please note that members of your free group will occasionally be asked to consider making a voluntary donation to support the ongoing running and development costs of Loomio.</p>"
-    confirm_selection: "I'm happy for people in my group to be asked to support Loomio with a donation."
-    got_it: "Ok, got it!"
-    go_back: Go back
+    heading: Free groups are donation supported
+    body: Donations make it possible for groups who need it to use Loomio for free. We will occasionally ask users of free groups to make a voluntary contribution.
+    got_it: Stay on free
+    go_back: Upgrade
 
   donation_modal:
     heading: Make a donation to Loomio?
@@ -535,9 +534,12 @@ en:
     make_a_contribution: Make a contribution
 
   upgrade_plan_card:
-    heading: Upgrade your plan
-    body: "<strong>{{name}}</strong> is on the free plan. If you are rich, you're on the wrong plan."
+    heading: Do you use slack?
+    body: Loomio and Slack work great together! Link them up.
     upgrade_plan: Change plan
+    heading_alt: Want a custom domain?
+    body_alt: Make your Loomio group easy to find with yourname.loomio.org
+    upgrade_plan: Upgrade now
 
   trial_card:
     title: '30-day trial'
@@ -592,9 +594,9 @@ en:
     select: Select
 
   subscription_success_modal:
-    heading: Thanks for setting up your subscription!
-    receipt: You’ll receive an email with a receipt.
-    change_subscription: "If you ever want to change or cancel your subscription, or if you have any other queries, "
+    heading: You're all set!
+    receipt: You'll receive an email with your receipt, including a link to the customer portal, where you can change, upgrade, or cancel your subscription, and access billing history.
+    change_subscription: If you'd like to set up Slack integration or your custom domain name,
     contact_link: please contact us.
     sign_off: ❤ from the Loomio team
     ok_got_it: Ok, got it!
