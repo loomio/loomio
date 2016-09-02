@@ -6,7 +6,7 @@
       %input{type: "hidden", ng-model: "comment.usesMarkdown"}
       %span{translate: "comment_form.in_reply_to", translate-value-name: "{{comment.parent().authorName()}}", ng-show: "comment.parent().authorName()"}
       .lmo-relative
-        %textarea.lmo-textarea.form-control.comment-form__comment-field.lmo-primary-form-input{ng-disabled: "isDisabled", msd-elastic: "true", aria-labelledby: "comment-form-title", name: "body", placeholder: "Say something...", ng_model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
+        %textarea.lmo-textarea.form-control.comment-form__comment-field.lmo-primary-form-input{ng-disabled: "isDisabled", msd-elastic: "true", ng-trim: "false", aria-labelledby: "comment-form-title", name: "body", placeholder: "Say something...", ng_model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
         %emoji_picker.lmo-action-dock{target-selector: "bodySelector"}
         %outlet{name: "after-comment-input", model: "comment"}
       %validation_errors{subject: "comment", field: "body"}
