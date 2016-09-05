@@ -1,4 +1,5 @@
-# Loomio QA checklist
+# Loomio QA checklist template
+Copy this into the context panel of a QA thread, so that people can update it as they QA the branch.
 
 ## Smoke test
 
