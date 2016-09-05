@@ -27,13 +27,12 @@
   display: -webkit-flex;
   -webkit-align-items: center;
   -webkit-flex-direction: column;
-
   display: flex;
   align-items: center;
   flex-direction: column;
-
   padding-top: 10px;
   padding-bottom: 10px;
+  z-index: 1;
 }
 
 @media (max-width: 600px) {

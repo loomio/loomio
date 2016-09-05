@@ -20,7 +20,7 @@ a:visited { color: #4076D4; }
 
 .marketing__arrow-image {
   max-width: 100px;
-  padding: 100px 0 0;
+  margin: 200px 0 0;
 }
 
 @media (max-width: 600px) {
@@ -35,6 +35,12 @@ a:visited { color: #4076D4; }
     max-width: 100%;
     margin: 20px 0;
     padding: 0 20px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .marketing__arrow-image {
+    margin: 100px 0 0;
   }
 }
 
