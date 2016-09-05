@@ -1,5 +1,9 @@
 # Loomio QA checklist template
-Copy this into the context panel of a QA thread, so that people can update it as they QA the branch.
+Copy this into the context panel of a QA thread.
+Deploy your feature branch to a public test environment, provide a link to the environment and give instructions about how to test the feature.
+
+When testers have checked aspects of the branch, they should add a √ symbol to the corresponding line.
+
 
 ## Smoke test
 
