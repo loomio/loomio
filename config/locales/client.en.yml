@@ -923,7 +923,7 @@ en:
       image_alt: 'Attached image'
 
   print_modal:
-    retrieving_records: Retrieving thread records...
+    load_discussion: Loading entire discussion...
 
   delete_comment_dialog:
     title: 'Delete comment'
