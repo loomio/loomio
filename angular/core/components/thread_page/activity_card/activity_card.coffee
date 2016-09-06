@@ -3,7 +3,12 @@ angular.module('loomioApp').directive 'activityCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
-  controller: ($scope, $location, $rootScope, Records, AppConfig, AbilityService, PaginationService, LoadingService) ->
+  controller: ($scope, $location, $mdDialog, $rootScope, $window, $timeout, Records, AppConfig, AbilityService, PaginationService, LoadingService, ModalService) ->
+
+    $scope.$on 'fetchRecordsForPrint', (event, options = {}) ->
+      $scope.loadEvents(per: Number.MAX_SAFE_INTEGER).then ->
+        $mdDialog.cancel()
+        $timeout -> $window.print()
 
     $scope.firstLoadedSequenceId = 0
     $scope.lastLoadedSequenceId = 0
