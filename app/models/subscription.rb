@@ -30,4 +30,7 @@ class Subscription < ActiveRecord::Base
     self.group = Group.find(id)
   end
 
+  def is_paid?
+    self.kind.to_s == 'paid'
+  end
 end

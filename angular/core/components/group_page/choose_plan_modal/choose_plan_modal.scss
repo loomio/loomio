@@ -82,8 +82,7 @@
 }
 
 .choose-plan-modal__plan {
-  height: 100%;
-  display: flex;
+  @include displayFlex;
   flex-direction: column;
   justify-content: space-between;
   border-collapse: collapse;

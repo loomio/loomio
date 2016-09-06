@@ -5,6 +5,9 @@ en:
       must_close_in_future: Proposal must close in the future.
       one_at_a_time: There is another active proposal.
 
+  subscriptions:
+    gift_plan_selected_for_group: Free plan selected for %{group}
+
   email:
     reset_password:
       greeting: |
