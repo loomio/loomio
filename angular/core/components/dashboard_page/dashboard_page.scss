@@ -20,7 +20,9 @@
   padding: 0 $cardPaddingSize;
 }
 
-.dashboard-page__no-threads, .dashboard-page__no-groups {
+.dashboard-page__no-threads,
+.dashboard-page__no-groups,
+.dashboard-page__explain-mute {
   margin-left: $cardPaddingSize;
 }
 
@@ -54,4 +56,18 @@
 
 .dashboard-page__show-more a:hover{
   color: $primary-text-color;
+}
+
+.dashboard-page__mute-image--large {
+  img {
+    max-width: $small-max-px;
+    padding: 0px 40px 0 0;
+  }
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.dashboard-page__mute-image--small {
+  text-align: center;
+  margin: 0 0 10px;
 }

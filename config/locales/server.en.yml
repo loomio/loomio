@@ -131,9 +131,11 @@ en:
       you_agreed: You %{past_tense_position}
     analytics:
       subject: "%{which_group}'s week on Loomio"
-      title: "Your weekly summary for %{since} - %{till}"
+      title: "Your summary for the week starting %{since}"
+      table_header: "Name | Motions created | Discussions created | Comments created | Votes created"
       stats: "<strong>%{active_members}</strong> out of <strong>%{group_members}</strong> in your group were active in the last week. Your group raised <strong>%{motions}</strong> and made <strong>%{comments}</strong> in <strong>%{discussions}</strong>."
       contact_us: "Looking for more stats? <a href='%{contact_link}'>Get in touch</a>."
+      no_activity: "Want to talk with one of our collaboration coaches about getting the most out of Loomio? <a href='%{contact_link}'>Get in touch</a>"
       trial_subscription: "%{which_group} is on a <strong>free trial</strong> ending <strong>%{expires_at}</strong>. You can choose a subscription plan <a href='%{subscription_link}'>here</a>."
       trial_expired: "%{which_group} has reached the end of its free Loomio trial. "
       heart: "❤ from team Loomio"

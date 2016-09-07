@@ -175,3 +175,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   color: #666;
   font-size: small;
 }
+
+.align-left {
+  text-align: left;
+}
