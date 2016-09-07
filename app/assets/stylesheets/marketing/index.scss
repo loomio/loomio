@@ -170,3 +170,18 @@ a:visited { color: #4076D4; }
   border: 3px solid #dcdcdc;
   border-radius: .2rem;
 }
+
+.img-can-shrink{
+  width: 100%;
+  height: auto;
+}
+
+.can-shrink {
+  flex-shrink: 1;
+}
+
+.img-can-shrink--hero {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+}

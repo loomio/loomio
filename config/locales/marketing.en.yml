@@ -164,4 +164,14 @@ en:
       transparent_body: |
         The Loomio Co-operative will be surrounded by a valued community of users and contributors. This community must be confident that the Loomio Co-operative is doing what it says it is.
         We are committed to high standards for sharing information.
-
+  titles:
+    new_tab: Opens in new tab
+    start_group: Start group form
+    about_us: About us page
+    pricing: Pricing page
+    contact: Contact form
+    sign_in: Sign in form
+    terms_of_service: Terms of service page
+    privacy: Privacy page
+    translation: Translation guide
+    home: Home page
