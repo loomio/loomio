@@ -11,10 +11,13 @@ document.getElementsByClassName("header__resources-dropdown")[0].addEventListene
     e.parentElement.setAttribute('aria-expanded', 'true')
     e.style.display = "block"
 
-if document.getElementsByClassName("header__menu-bars")[0]
-  document.getElementsByClassName("header__menu-bars")[0].addEventListener "click", ->
-    e = document.getElementsByClassName("header__menu")[0]
-    if e.style.display == "flex"
-      e.style.display = "none"
+if document.getElementsByClassName("header__menu-collapsed-button")[0]
+  triggerElement = document.getElementsByClassName("header__menu-collapsed-button")[0]
+  triggerElement.addEventListener "click", ->
+    menu = document.getElementsByClassName("header__menu")[0]
+    if menu.style.display == "flex"
+      triggerElement.setAttribute('aria-expanded', 'false')
+      menu.style.display = "none"
     else
-      e.style.display = "flex"
+      triggerElement.setAttribute('aria-expanded', 'true')
+      menu.style.display = "flex"

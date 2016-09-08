@@ -14,8 +14,13 @@ img { border-radius: .2rem; }
 
 a:visited { color: #4076D4; }
 
+.marketing__content {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 .marketing__hero-wrapper {
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 .marketing__arrow-image {
@@ -183,6 +188,6 @@ a:visited { color: #4076D4; }
 .img-can-shrink--hero {
   width: 100%;
   height: auto;
-  max-width: 500px;
+  max-width: 450px;
   margin: auto;
 }

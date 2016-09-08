@@ -4,6 +4,7 @@ en:
     resources: Resources
     resources_dropdown: Resources dropdown
     resources_submenu: Resources submenu
+    header_menu_label: Header menu
     case_studies: Case studies
     help: Help
     guides_and_tips: "Guides & tips"
@@ -25,7 +26,7 @@ en:
 
   marketing:
     hero:
-      dilemma_html: Making good decisions with your group</nobr> <nobr>shouldn’t be</nobr> <nobr>so hard</nobr>.
+      dilemma_html: Making good decisions with your group shouldn’t be so hard.
       dilemma_image_alt: Unhappy group members gathered around messy table struggling to communicate
       solution: With Loomio you can make decisions without a mess of emails or meetings.
       solution_image_alt: Happy group members holding devices gathered around lightbulb and connected by interwoven threads
