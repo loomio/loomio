@@ -26,7 +26,7 @@
   .thread-item__body.new-comment__body.lmo-markdown-wrapper{marked: "comment.cookedBody()"}
   %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
 
-  %outlet{name: "after-comment-body", model: "comment"}
+  %outlet{name: "after-comment-body", model: "comment", aria-hidden: "true"}
 
   .thread-item__attachments
     .thread-item__attachment{ng-repeat: "attachment in comment.attachments() | orderBy:'createdAt' track by attachment.id"}
