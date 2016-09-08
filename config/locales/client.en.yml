@@ -518,22 +518,29 @@ en:
       aria_label: 'Group privacy: {{privacy}}'
 
   confirm_gift_plan_modal:
-    heading: Gift plan selected
-    body: "If your group doesn't have the budget to pay for software, you don't need to pay a subscription. Your group members will periodically be invited to make a voluntary donation."
-    confirm_selection: "I'm happy for people in my group to be asked to support Loomio with a donation."
-    got_it: "Ok, got it!"
-    go_back: Go back
+    heading: Free groups are donation supported
+    body: Donations make it possible for groups who need it to use Loomio for free. We will occasionally ask users of free groups to make a voluntary contribution.
+    got_it: Stay on free
+    go_back: Upgrade
 
   donation_modal:
-    heading: Would you like to support Loomio?
+    heading: Make a donation to Loomio?
     body: "Loomio is a social enterprise. Our mission is to create a world where it's easy for anyone to participate in the decisions that affect them."
     contribute: Make a contribution
-    got_to_group: Just take me to my group
+    got_to_group: Not now, thank you.
 
   gift_card:
     heading: Gift plan
     body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
     make_a_contribution: Make a contribution
+
+  upgrade_plan_card:
+    heading: Do you use slack?
+    body: Loomio and Slack work great together! Link them up.
+    upgrade_plan: Change plan
+    heading_alt: Want a custom domain?
+    body_alt: Make your Loomio group easy to find with yourname.loomio.org
+    upgrade_plan: Upgrade now
 
   trial_card:
     title: '30-day trial'
@@ -542,39 +549,56 @@ en:
     expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
 
   choose_plan_modal:
-    heading: 'Please choose a plan for your group'
-    gift: Gift
+    heading: Please choose a plan for your group
+    free: Free
     standard: Standard
-    plus: Plus
-    free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
-    start_group: "Start group"
-    gift_body: For groups without a budget
-    support_before: I'm happy to
-    support_link: talk with you
-    support_after: about extending your trial, or with any other questions you may have.
-    remind_me_later: Remind me later
-    gift_donation_ask: We’ll ask your group members to donate
-    unlimited_members: unlimited members
-    unlimited_decisions: unlimited decisions
-    email_support: email support
-    slack_integration_html: |
-      <strong>Slack</strong> integration
-    standard_price_html: |
-      US<strong>$19</strong>/month<br><span>or</span> $190/year
-    plus_body: 'Everything in Standard, plus:'
-    multiple_groups: multiple groups
-    premium_support: premium support
-    custom_subdomain_html: |
-      custom subdomain,<br />
-      e.g. <strong>yourgroup</strong>.loomio.org
-    plus_price_html: |
-      US<strong>$179</strong>/month<br><span>or</span> $1790/year
+    pro: Pro
+    per_month: /month
+    standard_group_description: Everything you need for one group.
+    free_group_description: Donation supported plan for community groups.
+    pro_group_description: For organisations with <nobr>multiple groups.</nobr>
+    benefit_1_group: 1 group
+    benefit_10_groups: 10 groups
+    benefit_unlimited_members: Unlimited members
+    benefit_unlimited_decisions: Unlimited decisions
+    benefit_priority_support: Premium support
+    benefit_help_with_setup: Help with initial setup
+    benefit_community_support: Community support
+    benefit_slack_integration: Slack integration
+    benefit_custom_domain: Custom domain
+    benefit_analytics_reports: Analytics reports
+    benefit_csv_export: CSV data export
+    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
+    # start_group: "Start group"
+    # gift_body: For groups without a budget
+    # support_before: I'm happy to
+    support_link: Let's talk!
+    prices_in_us_dollars: Prices are in US dollars, plus sales tax where applicable.
+    need_help_please: Need something else?
+    # support_after: about extending your trial, or with any other questions you may have.
+    # remind_me_later: Remind me later
+    # gift_donation_ask: We’ll ask your group members to donate
+    # unlimited_members: unlimited members
+    # unlimited_decisions: unlimited decisions
+    # email_support: email support
+    # slack_integration_html: |
+    #   <strong>Slack</strong> integration
+    # standard_price_html: |
+    #   US<strong>$19</strong>/month<br><span>or</span> $190/year
+    # plus_body: 'Everything in Standard, plus:'
+    # multiple_groups: multiple groups
+    # premium_support: premium support
+    # custom_subdomain_html: |
+    #   custom subdomain,<br />
+    #   e.g. <strong>yourgroup</strong>.loomio.org
+    # plus_price_html: |
+    #   US<strong>$179</strong>/month<br><span>or</span> $1790/year
     select: Select
 
   subscription_success_modal:
-    heading: Thanks for setting up your subscription!
-    receipt: You’ll receive an email with a receipt.
-    change_subscription: "If you ever want to change or cancel your subscription, or if you have any other queries, "
+    heading: You're all set!
+    receipt: You'll receive an email with your receipt, including a link to the customer portal, where you can change, upgrade, or cancel your subscription, and access billing history.
+    change_subscription: "If you'd like to set up Slack integration or your custom domain name, "
     contact_link: please contact us.
     sign_off: ❤ from the Loomio team
     ok_got_it: Ok, got it!

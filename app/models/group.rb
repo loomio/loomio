@@ -502,6 +502,7 @@ class Group < ActiveRecord::Base
     self.is_visible_to_public ||= false
     self.discussion_privacy_options ||= 'private_only'
     self.membership_granted_upon ||= 'approval'
+    self.segment_seed = rand(1000) if self.segment_seed == 0
   end
 
   def guess_cohort

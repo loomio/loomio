@@ -1,5 +1,12 @@
 class SubscriptionsController < ApplicationController
 
+  def select_gift_plan
+    group = Group.find_by!(key: params[:group_key])
+    SubscriptionService.new(group).start_gift_unless_paying!
+    flash[:notice] = I18n.t('subscriptions.gift_plan_selected_for_group', group: group.full_name)
+    redirect_to group
+  end
+
   def webhook
     if SubscriptionService.available?
       case params[:event].try(:to_sym)
@@ -24,6 +31,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def group_from_reference
-    @group_from_reference ||= Group.find(subscription_params['customer']['reference'].split('|')[0])
+    @group_from_reference ||= Group.find(subscription_params['customer']['reference'].split('-')[0])
   end
 end
