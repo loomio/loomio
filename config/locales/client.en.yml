@@ -561,7 +561,8 @@ en:
     benefit_10_groups: 10 groups
     benefit_unlimited_members: Unlimited members
     benefit_unlimited_decisions: Unlimited decisions
-    benefit_priority_support: Priority support
+    benefit_priority_support: Premium support
+    benefit_help_with_setup: Help with initial setup
     benefit_community_support: Community support
     benefit_slack_integration: Slack integration
     benefit_custom_domain: Custom domain
