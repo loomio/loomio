@@ -60,7 +60,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @handleSubscriptionSuccess = ->
     if $location.search().chargify_success?
-      @subscriptionSuccess = true
+      Session.subscriptionSuccess = true
       @group.subscriptionKind = 'paid' # incase the webhook is slow
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
@@ -83,7 +83,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     @group.isParent() and
     Session.user().isMemberOf(@group) and
     !Session.user().isAdminOf(@group) and
-    !@subscriptionSuccess and
+    !Session.subscriptionSuccess and
     !(Session.user().hasExperienced("welcomeModal") or
       Session.user().hasExperienced("welcomeModal", @group)) # honour old experiences on memberships
 
