@@ -11,6 +11,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
     if AbilityService.isLoggedIn()
       MessageChannelService.subscribeToGroup(@group)
+
       @handleChoosePlanModal()
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
@@ -75,21 +76,16 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     if @shouldShowChoosePlanModal()
       ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
 
-  @showChoosePlanModal = =>
-    AbilityService.canSeeTrialCard(@group) and
-    $location.search().payment?
-
-  @showWelcomeModal = ->
+  @shouldShowWelcomeModal = ->
+    !@shouldShowChoosePlanModal() and
     @group.isParent() and
     Session.user().isMemberOf(@group) and
-    !Session.user().isAdminOf(@group) and
     !Session.subscriptionSuccess and
-    !(Session.user().hasExperienced("welcomeModal") or
-      Session.user().hasExperienced("welcomeModal", @group)) # honour old experiences on memberships
+    !Session.user().hasExperienced("welcomeModal")
 
 
   @handleWelcomeModal = =>
-    if @showWelcomeModal()
+    if @shouldShowWelcomeModal()
       ModalService.open GroupWelcomeModal, group: => @group
       Records.users.saveExperience("welcomeModal")
 
