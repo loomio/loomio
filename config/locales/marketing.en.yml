@@ -2,10 +2,14 @@ en:
   navigation:
     blog: Blog
     resources: Resources
+    resources_dropdown: Resources dropdown
+    resources_submenu: Resources submenu
+    header_menu_label: Header menu
     case_studies: Case studies
     help: Help
     guides_and_tips: "Guides & tips"
     developers: Developers
+    coop_handbook: Co-op handbook
     about: About
     pricing: Pricing
     contact: Contact
@@ -22,10 +26,11 @@ en:
 
   marketing:
     hero:
-      dilemma_html: Making good decisions with your group</nobr> <nobr>shouldn’t be</nobr> <nobr>so hard</nobr>.
+      dilemma_html: Making good decisions with your group shouldn’t be so hard.
       dilemma_image_alt: Unhappy group members gathered around messy table struggling to communicate
       solution: With Loomio you can make decisions without a mess of emails or meetings.
       solution_image_alt: Happy group members holding devices gathered around lightbulb and connected by interwoven threads
+      arrow_alt: Arrow pointing from dilemma image to solution image
     macbook_android_image_alt: Loomio on laptop and Android device
     make_decisions_html: Loomio is a place for your group to <strong>make decisions together</strong>.
     gather:
@@ -160,4 +165,14 @@ en:
       transparent_body: |
         The Loomio Co-operative will be surrounded by a valued community of users and contributors. This community must be confident that the Loomio Co-operative is doing what it says it is.
         We are committed to high standards for sharing information.
-
+  titles:
+    new_tab: Opens in new tab
+    start_group: Start group form
+    about_us: About us page
+    pricing: Pricing page
+    contact: Contact form
+    sign_in: Sign in form
+    terms_of_service: Terms of service page
+    privacy: Privacy page
+    translation: Translation guide
+    home: Home page
