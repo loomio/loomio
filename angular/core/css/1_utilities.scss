@@ -245,10 +245,6 @@
   text-align: center;
 }
 
-textarea.form-control {
-  max-height: 400px;
-}
-
 .option-icon {
   /* a helper class to display inline icons and avatars */
   margin: 5px 5px 5px 0;
@@ -276,11 +272,6 @@ textarea.form-control {
 img.emojione {
   width: 25px;
   height: 25px;
-}
-
-md-dialog {
-  min-width: 320px;
-  background-color: $modal-background-color;
 }
 
 @keyframes fadeIn {
