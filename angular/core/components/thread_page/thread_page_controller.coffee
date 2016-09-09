@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -121,8 +121,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @showRevisionHistory = ->
     ModalService.open RevisionHistoryModal, model: => @discussion
 
-  @print = ->
-    $window.print() and true
+  @requestPagePrinted = ->
+    ModalService.open PrintModal, preventClose: -> true
+    $rootScope.$broadcast 'fetchRecordsForPrint'
 
   TranslationService.listenForTranslations($scope, @)
 

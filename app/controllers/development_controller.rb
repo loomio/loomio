@@ -163,6 +163,16 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion, from: 5)
   end
 
+  def setup_busy_discussion_with_signed_in_user
+    test_group.add_member! emilio
+    100.times do |i|
+      comment = FactoryGirl.build(:comment, discussion: test_discussion, body: "#{i} bottles of beer on the wall")
+      CommentService.create(comment: comment, actor: emilio)
+    end
+    sign_in patrick
+    redirect_to discussion_url(test_discussion)
+  end
+
   def setup_group_on_trial_admin
     group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
     GroupService.create(group: group_on_trial, actor: patrick)
