@@ -12,7 +12,7 @@ describe 'Group Page', ->
       page.expectElement '.sidebar__list-item--selected'
 
   describe 'start group from home page', ->
-    fit 'allows starting a group via the start_group route', ->
+    it 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
       staticPage.click '.header__item--start-button'
       staticPage.fillIn '#group_name', 'My First Group'
