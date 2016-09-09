@@ -244,6 +244,7 @@ en:
       comments: 'Comments'
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
+    logo_title: 'Home page'
 
   start_menu:
     title: 'Action button'
