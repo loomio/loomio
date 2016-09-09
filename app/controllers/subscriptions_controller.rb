@@ -3,8 +3,7 @@ class SubscriptionsController < ApplicationController
   def select_gift_plan
     group = Group.find_by!(key: params[:group_key])
     SubscriptionService.new(group).start_gift_unless_paying!
-    flash[:notice] = I18n.t('subscriptions.gift_plan_selected_for_group', group: group.full_name)
-    redirect_to group
+    render html: I18n.t('subscriptions.gift_plan_selected_for_group_html', group: group.full_name, group_key: group.key).html_safe
   end
 
   def webhook

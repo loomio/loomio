@@ -6,7 +6,9 @@ en:
       one_at_a_time: There is another active proposal.
 
   subscriptions:
-    gift_plan_selected_for_group: Free plan selected for %{group}
+    gift_plan_selected_for_group_html: |
+      <h1>Success.</h1>
+      <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
   email:
     reset_password:
