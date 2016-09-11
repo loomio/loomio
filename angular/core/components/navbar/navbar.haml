@@ -6,9 +6,9 @@
           %md_icon.fa.fa-lg.fa-bars
 
       .navbar__middle
-        %a{href: "/"}
+        %a{lmo-static-href: "/", aria-label: "{{ 'navbar.logo_title' | translate }}"}
           .navbar__logo-container
-            %img.navbar__logo{src: "/img/logo.png"}
+            %img.navbar__logo{src: "/img/logo.png", alt: "Loomio logo"}
 
       .navbar__right
         %navbar_search{ng-show: "isLoggedIn()"}
