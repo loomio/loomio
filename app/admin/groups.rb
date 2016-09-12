@@ -142,6 +142,15 @@ ActiveAdmin.register Group do
         link_to 'Unarchive this group', unarchive_admin_group_path(group), method: :post, data: {confirm: "Are you sure you wanna unarchive #{group.name}, pal?"}
       end
     end
+
+    panel 'Move group' do
+      form action: move_admin_group_path(group), method: :post do |f|
+        f.label "Parent group id"
+        f.input name: :parent_id, value: group.parent_id
+        f.input type: :submit, value: "Move group"
+      end
+    end
+
     active_admin_comments
   end
 
@@ -163,6 +172,15 @@ ActiveAdmin.register Group do
 
   collection_action :massey_data, method: :get do
     render json: Group.visible_to_public.pluck(:id, :parent_id, :name, :description)
+  end
+
+  member_action :move, method: :post do
+    group = Group.friendly.find(params[:id])
+    if parent = Group.friendly.find_by(id: params[:parent_id])
+      group.subscription&.destroy
+      group.update(parent: parent)
+    end
+    redirect_to admin_group_path(group)
   end
 
   member_action :archive, :method => :post do
