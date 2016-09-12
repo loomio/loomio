@@ -9,54 +9,54 @@ When testers have checked aspects of the branch, they should add a √ symbol to
 
 A developer who did not build the feature should check that:
 
-[] happy path works
-[] sad paths work
-[] invalid data gives appropriate response.
+- happy path works
+- sad paths work
+- invalid data gives appropriate response.
 
 ## Code review:
 
-[] BEM is correctly used in the CSS
-[] all strings been extracted into translation files
-[] the right amount of unit tests are present and passing
-[] there are e2e tests to confirm the feature works
-[] a green apple has been given
-[] images are the right size for the job
+- BEM is correctly used in the CSS
+- all strings been extracted into translation files
+- the right amount of unit tests are present and passing
+- there are e2e tests to confirm the feature works
+- a green apple has been given
+- images are the right size for the job
 
 ## Browser Compatibility
 
 desktop:
-[] Chrome
-[] Firefox
-[] Safari
-[] IE/Edge
+- Chrome
+- Firefox
+- Safari
+- IE/Edge
 
 mobile:
-[] chrome
-[] firefox
-[] safari
+- chrome
+- firefox
+- safari
 
 ## Accessibility
 
 See the [a11y guide](accessibility.md) for more info.
-[] headings are semantic
-[] titles are present on links
-[] alt tags on images
-[] key sections have aria labels
-[] screen reader based operation is possible
+- headings are semantic
+- titles are present on links
+- alt tags on images
+- key sections have aria labels
+- screen reader based operation is possible
 
 ## Production readyness
 
-[] deployment to loomio-clone ok
-[] background jobs for things that take time or use external services.
-[] intercom behaves correctly
-[] google analytics records actions
-[] background jobs have crontasks
-[] migrations have been tested on a copy of the production database
+- deployment to loomio-clone ok
+- background jobs for things that take time or use external services.
+- intercom behaves correctly
+- google analytics records actions
+- background jobs have crontasks
+- migrations have been tested on a copy of the production database
 
 ## Open source ready
-[] The code does not contain any Loomio.org specific stuff
-[] The design makes sense when used on domains other than loomio.org
+- The code does not contain any Loomio.org specific stuff
+- The design makes sense when used on domains other than loomio.org
 
 ## Emails
-[] Have as simple as can be HTML & CSS confirming to BEM where possible
-[] Are within the max width of 600px
+- Have as simple as can be HTML & CSS confirming to BEM where possible
+- Are within the max width of 600px

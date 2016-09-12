@@ -244,6 +244,7 @@ en:
       comments: 'Comments'
     sign_in: 'Log In'
     toggle_sidebar: 'Toggle sidebar'
+    logo_title: 'Home page'
 
   start_menu:
     title: 'Action button'
@@ -945,6 +946,9 @@ en:
     attachment_display:
       aria_label: 'File attached:'
       image_alt: 'Attached image'
+
+  print_modal:
+    load_discussion: Loading entire discussion...
 
   delete_comment_dialog:
     title: 'Delete comment'

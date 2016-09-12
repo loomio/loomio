@@ -12,3 +12,7 @@ header, .lmo-no-print, .sr-only { display: none !important; }
 .lmo-sidebar-and-main-container {
   display: block;
 }
+
+@media print {
+  .lmo-sidebar-and-main-container { overflow: visible !important; }
+}
