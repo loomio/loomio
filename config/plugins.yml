@@ -10,5 +10,4 @@ loomio_tags:
 
 loomio_truncate_comment:
   repo:         loomio/loomio_truncate_comment
-  branch:       iterate-comment-truncation
   experimental: true
