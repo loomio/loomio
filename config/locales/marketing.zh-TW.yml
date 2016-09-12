@@ -2,10 +2,14 @@ zh-TW:
   navigation:
     blog: 部落格
     resources: 資源
+    resources_dropdown: 資源下拉選單
+    resources_submenu: 資源子選單
+    header_menu_label: 標題選單
     case_studies: 案例探討
     help: 教學文件
     guides_and_tips: 指南與提示
     developers: 開發者
+    coop_handbook: 協作手冊
     about: 關於
     pricing: 價格
     contact: 聯絡我們
@@ -21,21 +25,31 @@ zh-TW:
     trademark_statement: © 2016 Loomio 有限公司。保留所有權利。“Loomio” 是 Loomio 有限公司的註冊商標。
   marketing:
     hero:
-      dilemma_html: '與您的群組做出好的決策</nobr> <nobr>不應是</nobr> <nobr>困難的</nobr>。'
+      dilemma_html: 與您的群組共同做出好的決策不應該是困難的。
+      dilemma_image_alt: 不開心的小組成員圍繞著凌亂的桌子掙扎著溝通
       solution: 使用 Loomio，您可以不用透過大量的電子郵件或是會議來做出決策。
+      solution_image_alt: 快樂的小組成員拿著以燈泡與交織的線路連接而成的裝置。
+      arrow_alt: 箭頭從困境圖指向解決方案圖
+    macbook_android_image_alt: 在筆記型電腦與 Android 裝置上的 Loomio
     make_decisions_html: 'Loomio 是一個讓您的群組<strong>共同做出決策</strong>的地方。'
     gather:
       heading: 聚集
       explanation: 讓對的人與對的資訊相遇。無障礙、易用、可自訂，與隱私和安全相關的細膩選項。
+      image_alt: 圍繞著問號的小組
     discuss:
       heading: 討論
       explanation: 有清楚、不離題的對話。保持最新的資訊，並過濾噪音。它是為了建設性合作所準備的空間。
+      image_alt: 分享資訊與有著彩色對話泡泡的表達意見小組
     propose:
       heading: 提案
       explanation: 視覺化的摘要讓您可以快速了解每個人的立場，以及為什麼。若您同意，就可以很快地找到。或是切入其問題所在並開始建立共識。
+      image_alt: 以彩色對話泡泡與圓餅圖討論的群組
     decide_act:
       heading: 決定與行動
       explanation: 為每個提案在您設定的時間內取得明確的結果。每個人都會收到結果的通知，然後您就可以繼續向前並共同採取行動。
+      image_alt: 有著綠色大姆指向上的群組
+    try_it_now: 現在就試試
+    start_free_group: 啟動免費群組
     fast_inclusive_effective: 快速、包容、有效率將會是您的新常規。
     debt_resistance_uk:
       heading: 會議中到會議間都能有生產力
@@ -72,6 +86,7 @@ zh-TW:
       deliberation_explanation: Loomio 專為建設性討論建立了一個簡單的決策框架。不要拘泥於衝突，一同工作並找出最佳解法。
       iterate_heading: 提案隨著您的思維逐步進化。
       iterate_explanation: 共同決策非常強大，即便初始的提案沒有取得共識。透過解決分歧來進一步結合並提出新的解決方案。
+      deadlines_heading: 截止日期驅策前進。
       deadlines_explanation: Loomio 的提案是有時間限制的，以確保您的團隊在欲振乏力前繼續前行。每個人都能知道其提出意見的時間限制，並在截止日期前會有自動提醒。
       fewer_meetings_heading: 在沒有會議時也能有生產力。
       fewer_meetings_explanation: 持續的討論而不必在同一間房間裡。在線上完成更多事情，然後您就可以將寶貴的會議時間留給那些真正需要面對面討論的事項。
@@ -92,6 +107,7 @@ zh-TW:
       first_paragraph: Loomio 是開放原始碼軟體，其由合作社（worker-owned cooperative）式的社會企業所建造。我們位於 Aotearoa（毛利語中的紐西蘭之意），且是它的一部份：
       second_paragraph: 我們相信多個群組實踐有效率、包容性的決策能改變全球性的組織動態。Loomio 的存在讓任何人都可以在任何地方參與會影響他們的生活的討論。
       link_text: 了解更多關於我們的團隊、我們的故事、我們的宗旨與價值觀…
+      image_alt: Loomio 團隊 -  2016年4月
   about:
     heading: 關於我們
     introduction:
@@ -153,3 +169,14 @@ zh-TW:
       transparent_body: |
         Loomio 合作社由重要的使用者與貢獻者社群所環繞。這個社群必須相信 Loomio 合作社言行一致。
         我們致力於高標準的資訊共享。
+  titles:
+    new_tab: 在新分頁中開啟
+    start_group: 建立新群組表單
+    about_us: 「關於我們」頁面
+    pricing: 「價格」頁面
+    contact: 聯絡表單
+    sign_in: 登入表單
+    terms_of_service: 「服務條款」頁面
+    privacy: 「隱私權」頁面
+    translation: 翻譯指南
+    home: 首頁

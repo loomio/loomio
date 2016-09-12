@@ -23,13 +23,18 @@ cs:
     more_help: Další pomoc
     models:
       proposal: Návrh
+    copy: Kopírovat text
+    copied: Zkopírováno
     action:
+      close: Zavřít
       save: Uložit
       save_changes: Uložit změny
       update_settings: Aktualizovat nastavení
       reply: Odpovědět
       edit: Upravit
+      remove: Odebrat
       like: To se mi líbí
+      back: Zpět
       unlike: To se mi nelíbí
       update: Aktualizovat
       cancel: Zrušit
@@ -40,7 +45,10 @@ cs:
       loading: Načítá se
       translate: Přeložit
       translated: Překlad Bing Translator
+      upload: Nahrát
       uploading: Nahrává se
+    formatting_help:
+      label: Pomoc s formátováním
   error_page:
     forbidden: K této akci nemáte oprávnění.
   start_proposal_card:
@@ -66,6 +74,11 @@ cs:
   proposal_collapsed:
     expand: Rozbalit
     outcome: 'Výsledek: {{outcome}}'
+  change_volume_form:
+    discussion:
+      title: 'Nastavení emailu pro {{title}}'
+    membership:
+      title: 'Nastavení emailu pro {{title}}'
   inbox:
     clear: Vyčistit
     latest: Nejnovější
@@ -76,6 +89,9 @@ cs:
     email_placeholder: vy@priklad.cz
     password_label: 'Heslo:'
     signed_in: Úspěšně jste se přihlásil/a.
+    oauth:
+      google: Přihlásit se pomocí Google
+      github: Přihlásit se pomocí Github
   sign_up_form:
     name_label: 'Vaše jméno:'
     email_label: 'Email:'
@@ -84,6 +100,7 @@ cs:
     password_confirmation_label: 'Stejné heslo znovu:'
     sign_in_message: Už máte účet?
     sign_in: Přihlásit se
+    sign_up: Vytvořit účet
   comment_form:
     aria_label: Přidat komentář
     attachments:
@@ -140,6 +157,7 @@ cs:
     motion_closed_by_expiry: 'Návrh byl uzavřen <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} k návrhu <strong>{{proposal}}</strong>'
     new_comment: '<strong>{{name}}</strong> komentoval(a) <strong>{{discussion}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> přijal/a vaši pozvánku do skupiny <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Vyjádřete svůj názor
   vote_form:
@@ -285,21 +303,10 @@ cs:
       submit: 'Ano, opustit tuto skupinu'
       cannot_leave_group: 'Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat.'
       add_coordinator: Přidat koordinátora
-  confirm_gift_plan_modal:
-    got_it: 'OK, chápu!'
   choose_plan_modal:
-    gift: Dar
     standard: Standardní
-    plus: Plus
-    free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
-    unlimited_members: neomezený počet členů
-    unlimited_decisions: neomezený počet rozhodnutí
-    email_support: e-mailová podpora
-    premium_support: prémiová podpora
     select: Vybrat
   subscription_success_modal:
-    heading: 'Děkujeme vám za zřízení předplatného!'
-    change_subscription: 'Pokud někdy budete chtít změnit nebo zrušit předplatné, nebo pokud máte nějaké další dotazy,'
     contact_link: prosím kontaktujte nás.
     ok_got_it: 'OK, chápu!'
   group_form:

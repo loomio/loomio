@@ -98,14 +98,11 @@ el:
       please_hold: Παρακαλώ περιμέντε το πολύ 5 λεπτά μέχρι να έρθει το email και ελέγξτε την ανεπιθύμητη αλληλογραφία.
     start_making_decisions: 'Για να αρχίσετε να λαμβάνετε συλλογικά αποφάσεις στο Loomio, φτιάξτε μια ομάδα δωρεάν:'
   pricing_page:
-    gift: Δώρο
     standard: Τυπικό
-    plus: Πρόσθετο
     get_started_for_free: Ξεκινήστε δωρεάν
     unlimited_members: απεριόριστα μέλη
     unlimited_decisions: απεριόριστες αποφάσεις
     email_support: υποστήριξη μέσω ηλεκτρονικού ταχυδρομείου
-    plus_body: 'Ότι περιέχει το Τυπικό πακέτο, συν:'
     usage_statistics: στατιστικά χρήσης
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.

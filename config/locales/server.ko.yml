@@ -58,15 +58,12 @@ ko:
     success:
       header: 거의 다 되었습니다. 이메일을 확인해 주세요.
   pricing_page:
-    gift: 선물
     standard: 일반
-    plus: 게다가
     free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
     get_started_for_free: 무료로 시작하기
     unlimited_members: 멤버 제한 없음
     unlimited_decisions: 의사결정 횟수 제한 없음
     email_support: 이메일 지원
-    plus_body: '일반 플랜의 모든 사항, 게다가:'
     premium_support: 프리미엄 지원
     usage_statistics: 사용량 통계
   contact_page:

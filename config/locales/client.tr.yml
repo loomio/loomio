@@ -359,17 +359,9 @@ tr:
       parent_members: 'Gizlilik: Bu grup sadece {{parentGroupName}} ve {{groupName}} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
       aria_label: 'Grup gizliliği: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Hediye planı seçildi
-    body: 'Eğer grubunuzun yazılımı ödemek için bütçesi yoksa, bir abonelik ücreti ödemeniz gerekmez. Grup üyeleriniz belirli aralıklarla gönüllü bağış yapmaya davet edilecektir.'
-    confirm_selection: "Grubumdaki kişilerin Loomiyo'yu desteklemek adına gönüllü bağış yapmak için davet edilmesine razıyım."
-    got_it: 'Tamam, anladım!'
-    go_back: Geri dön
   donation_modal:
-    heading: "Loomio'yu desteklemek ister misiniz?"
     body: 'Loomio bir sosyal kuruluştur. Misyonumuz herkes için, kendisini etkileyen kararlara katılmanın kolay olduğu bir dünya yaratmak.'
     contribute: Bir katkıda bulunun
-    got_to_group: Sadece beni grubuma götür
   gift_card:
     heading: Hediye planı
     body: "<strong>{{name}}</strong> hediye destekli bir gruptur. Sizinki gibi gruplara yardımcı olan Loomio'yu desteklemek için buraya tıklayın:"
@@ -381,24 +373,9 @@ tr:
     expired_body_html: "<strong>{{name}}</strong> grubunun Loomio'yu deneme süreci bitti. Kullanmaya devam etmek için, grubunuza uygun bir fiyatlandırma planı seçmeniz gerekir."
   choose_plan_modal:
     heading: Lütfen grubunuz için bir plan seçiniz
-    gift: Hediye
     standard: Standart
-    plus: Plus
-    free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
-    support_before: "'na razıyım"
-    support_link: Sizinle konuşmak
-    support_after: 'deneme sürenizin uzatılması hakkında, ya da başka olabilecek herhangi bir sorunuz ile.'
-    remind_me_later: Bana daha sonra hatırlat
-    unlimited_members: sınırsız üyeler
-    unlimited_decisions: sınırsız kararlar
-    email_support: e-posta desteği
-    plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
-    premium_support: Premium destek
     select: Seç
   subscription_success_modal:
-    heading: 'Aboneliğinizi ayarladığınız için teşekkürler!'
-    receipt: Makbunuzunu bir e-posta ile alacaksınız.
-    change_subscription: 'Eğer aboneliğinizi değiştirmek ya da iptal etmek isterseniz veya başka herhangi bir isteğiniz varsa,'
     contact_link: lütfen bizimle iletişime geçin.
     sign_off: Loomio ekibinden ❤
     ok_got_it: 'Tamam, anladım!'
