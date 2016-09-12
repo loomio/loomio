@@ -1,8 +1,4 @@
 module GroupService
-  def self.ab_test_alternative?(group)
-    group.segment_seed % 2 == 0
-  end
-
   def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
@@ -13,7 +9,7 @@ module GroupService
       ExampleContent.new(group).add_to_group!
 
       if SubscriptionService.available?
-        group.subscription = Subscription.new_gift if ab_test_alternative?(group)
+        group.subscription = Subscription.new_gift unless group.segments['bx_choose_plan']
       end
     else
       group.save!

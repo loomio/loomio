@@ -69,6 +69,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @shouldShowChoosePlanModal = =>
     !($location.search().chargify_success?) and
     !@group.hasSubscription() and
+    @group.segments.bx_choose_plan and
     @group.isParent() and
     Session.user().isAdminOf(@group)
 
