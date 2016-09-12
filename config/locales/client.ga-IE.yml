@@ -350,25 +350,12 @@ ga-IE:
       normal: 'Seol an ghníomhaíocht is tábhachtaí chugam i ríomhphost: Snáitheanna agus tograí nua, torthaí agus araile.'
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
       mute: Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom.
-  confirm_gift_plan_modal:
-    got_it: 'Tuigim é!'
-    go_back: Téigh siar
   donation_modal:
-    heading: Ar mhaith leat tacaíocht a thabhairt do Loomio?
     contribute: Bronn airgead
-    got_to_group: Tabhair chuig mo bhaicle mé
   gift_card:
     make_a_contribution: Bronn airgead
   choose_plan_modal:
     standard: Caighdeánach
-    plus: Breise
-    start_group: Cuir baicle ar bun
-    gift_body: Le haghaidh dreamanna nach bhfuil acmhainní acu
-    support_before: Táim sásta
-    support_link: labhairt libh
-    remind_me_later: Meabhraigh dom é níos déanaí
-    unlimited_decisions: cinntí gan teorainn
-    email_support: tacaíocht trí ríomhphost
     select: Roghnaigh seo
   subscription_success_modal:
     contact_link: déan teagmháil linn.

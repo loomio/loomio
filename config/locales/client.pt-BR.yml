@@ -131,14 +131,6 @@ pt-BR:
         quiet: Você não receberá e-mail sobre novos grupos.
   mute_explanation_modal:
     mute_thread: Calar tópico
-    body: >
-      <p>Silenciar significa que você <strong>não será notificado sobre
-      propostas</strong>, ou qualquer outra atividade neste tópico, a menos que
-      alguém @mencione você.</p>
-
-      <p>Tópicos silenciados estão escondidos de tópicos recentes e páginas não
-      lidas também. Para encontrar os seus tópicos silenciados, visite a página
-      tópicos recentes e selecione "Silenciado" no menu "Filtrar tópicos":</p>
   inbox:
     clear: Limpar
     latest: Último
@@ -450,17 +442,9 @@ pt-BR:
       parent_members: 'Privacidade: Este grupo é visível para os membros de {{parentGroupName}} e os membros de {{groupName}}'
       public: 'Privacidade: Este grupo é visível na web'
       aria_label: 'Privacidade do grupo: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Plano Presente selecionado
-    body: 'Se o seu grupo não tem orçamento para pagar por software, você não precisa pagar uma assinatura. Membros do seu grupo vão ser periodicamente convidados a fazer uma doação voluntária.'
-    confirm_selection: Fico feliz pelas pessoas no meu grupo serem convidadas a apoiar o Loomio com uma doação.
-    got_it: 'Ok, entendi!'
-    go_back: Voltar
   donation_modal:
-    heading: Gostaria de apoiar o Loomio?
     body: Loomio é uma empresa social. Nossa missão é criar um mundo onde seja fácil para as pessoas participarem nas decisões que as afetem.
     contribute: Faça uma contribuição
-    got_to_group: Apenas leve-me ao meu grupo
   gift_card:
     heading: Plano Presente
     body: '<strong>{{name}}</strong> é um grupo baseado na economia do presente. Para apoiar o Loomio a continuar ajudando grupos como o seu, clique aqui:'
@@ -472,37 +456,9 @@ pt-BR:
     expired_body_html: '<strong>{{name}}</strong> chegou ao fim do teste no Loomio. Para continuar utilizando, você precisa escolher um plano de preços que se adapte ao seu grupo.'
   choose_plan_modal:
     heading: 'Por favor, escolha um plano para o seu grupo'
-    gift: Presente
     standard: Padrão
-    plus: Plus
-    free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
-    start_group: Iniciar grupo
-    gift_body: Para grupos sem orçamento
-    support_before: Estou feliz por
-    support_link: falar com você
-    support_after: 'sobre como estender o seu teste, ou com quaisquer outras perguntas você pode ter.'
-    remind_me_later: Lembrar-me mais tarde
-    gift_donation_ask: Nós pediremos aos membros do seu grupo por doações
-    unlimited_members: membros ilimitados
-    unlimited_decisions: decisões ilimitadas
-    email_support: suporte por e-mail
-    slack_integration_html: |
-      integração <strong>Slack</strong>
-    standard_price_html: |
-      US<strong>$19</strong>/mês<br><span>or</span> $190/ano
-    plus_body: 'Tudo do Padrão, mais:'
-    multiple_groups: múltiplos grupos
-    premium_support: suporte premium
-    custom_subdomain_html: |
-      subdomínio personalizado,<br />
-      e.g. <strong>seugrupo</strong>.loomio.org
-    plus_price_html: |
-      US<strong>$179</strong>/mês<br><span>or</span> $1790/ano
     select: Selecione
   subscription_success_modal:
-    heading: 'Obrigado por configurar sua inscrição!'
-    receipt: Você vai receber um e-mail com um recibo.
-    change_subscription: 'Caso você queira alterar ou cancelar a sua assinatura, ou se você tiver quaisquer outras consultas,'
     contact_link: 'por favor, entre em contato conosco.'
     sign_off: ❤ da equipe Loomio
     ok_got_it: 'Ok, entendi!'

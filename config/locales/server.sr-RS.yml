@@ -101,15 +101,12 @@ sr-RS:
       please_hold: Молимо допустите до 5 минута да еПорука пристигне и будите сигурни да сте проверили фасциклу са нежељеним порукама.
     start_making_decisions: 'Да почнете доносити одлуке заједно на Лумију, креирајте групу бесплатно:'
   pricing_page:
-    gift: Поклон
     standard: Стандард
-    plus: Плус
     free_trial_html: 'Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна.'
     get_started_for_free: Почни бесплатно
     unlimited_members: неограничено чланова
     unlimited_decisions: неограничено одлука
     email_support: подршка еПорукама
-    plus_body: 'Све у Стандард, плус:'
     premium_support: премијум подршка
     usage_statistics: статистика коришћења
   password_reset:
