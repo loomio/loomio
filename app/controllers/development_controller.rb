@@ -79,7 +79,7 @@ class DevelopmentController < ApplicationController
 
   def setup_new_group
     group = Group.new(name: 'Fresh group')
-    StartGroupService.start_group(group)
+    GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: group)
     membership.experienced! 'welcomeModal'
@@ -107,8 +107,8 @@ class DevelopmentController < ApplicationController
                               is_visible_to_public: true,
                               membership_granted_upon: :request)
     group = Group.new(name: 'Welcomed group')
-    StartGroupService.start_group(another_group)
-    StartGroupService.start_group(group)
+    GroupService.create(group: another_group, actor: LoggedOutUser.new)
+    GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     sign_in patrick
     redirect_to group_url(group)
@@ -161,6 +161,16 @@ class DevelopmentController < ApplicationController
       CommentService.create(comment: comment, actor: emilio)
     end
     redirect_to discussion_url(test_discussion, from: 5)
+  end
+
+  def setup_busy_discussion_with_signed_in_user
+    test_group.add_member! emilio
+    100.times do |i|
+      comment = FactoryGirl.build(:comment, discussion: test_discussion, body: "#{i} bottles of beer on the wall")
+      CommentService.create(comment: comment, actor: emilio)
+    end
+    sign_in patrick
+    redirect_to discussion_url(test_discussion)
   end
 
   def setup_group_on_trial_admin
@@ -436,6 +446,13 @@ class DevelopmentController < ApplicationController
     another_test_group.add_member! jennifer
     test_subgroup.add_member! jennifer
     another_test_subgroup
+    redirect_to group_url(another_test_group)
+  end
+
+  def visit_group_as_subgroup_member
+    sign_in jennifer
+    test_subgroup.add_member! jennifer
+    another_test_subgroup.add_member! jennifer
     redirect_to group_url(another_test_group)
   end
 

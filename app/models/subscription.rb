@@ -22,8 +22,15 @@ class Subscription < ActiveRecord::Base
     self.new(kind: 'trial', expires_at: 30.days.from_now.to_date)
   end
 
+  def self.new_gift
+    self.new(kind: :gift, activated_at: Time.zone.now)
+  end
+
   def group_id=(id)
     self.group = Group.find(id)
   end
 
+  def is_paid?
+    self.kind.to_s == 'paid'
+  end
 end
