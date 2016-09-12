@@ -145,7 +145,7 @@ ActiveAdmin.register Group do
 
     panel 'Move group' do
       form action: move_admin_group_path(group), method: :post do |f|
-        f.label "Parent group id"
+        f.label "Parent group id / key"
         f.input name: :parent_id, value: group.parent_id
         f.input type: :submit, value: "Move group"
       end
@@ -176,7 +176,7 @@ ActiveAdmin.register Group do
 
   member_action :move, method: :post do
     group = Group.friendly.find(params[:id])
-    if parent = Group.friendly.find_by(id: params[:parent_id])
+    if parent = Group.find_by(key: params[:parent_id]) || Group.find_by(id: params[:parent_id].to_i)
       group.subscription&.destroy
       group.update(parent: parent)
     end
