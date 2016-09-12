@@ -10,11 +10,11 @@
     .group-theme__logo--compact{aria-hidden: "true"}
       %a{lmo-href-for: "group"}
         %img{ng-src: "{{group.logoUrl()}}"}
-    .group-theme__name--compact
-      %a{ng-if: "group.isSubgroup()", lmo-href-for: "group.parent()"}
+    .group-theme__name--compact{aria-label: "breadcrumb", role: "navigation"}
+      %a{ng-if: "group.isSubgroup()", lmo-href-for: "group.parent()", aria-level: "1"}
         {{group.parentName()}}
       %span{ng-if: "group.isSubgroup()"}> \-
-      %a{lmo-href-for: "group"}
+      %a{lmo-href-for: "group", aria-level: "2"}
         {{group.name}}
 
   .group-theme__header{ng-if: "!compact"}
