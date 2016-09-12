@@ -104,14 +104,11 @@ it:
       email_not_arrived: "L'email non è arrivata?"
     start_making_decisions: 'Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo'
   pricing_page:
-    gift: Regalo
     standard: Standard
-    plus: Plus
     get_started_for_free: Inizia gratis
     unlimited_members: numero di membri illimitato
     unlimited_decisions: numero di decisioni illimitato
     email_support: supporto email
-    plus_body: 'Ciò che include la versione Standard, più:'
     premium_support: supporto premium
     usage_statistics: "statistiche d'uso"
   password_reset:

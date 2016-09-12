@@ -135,7 +135,6 @@ es:
       you_agreed: 'Tú %{past_tense_position}'
     analytics:
       subject: 'semana de %{which_group} en Loomio'
-      title: 'Tu resumen semanal para %{since} '
       stats: '<strong>%{active_members}</strong> de <strong>%{group_members}</strong> en tu grupo eran activos durante la semana pasada. Tu grupo presentó <strong>%{motions}</strong> e hizo <strong>%{comments}</strong> en <strong>%{discussions}</strong>.'
       contact_us: "Buscas mas estadísticas? <a href='%{contact_link}'>Contáctanos</a>."
       trial_subscription: "%{which_group} sigue con una <strong>prueba gratis</strong> hasta <strong>%{expires_at}</strong>. Se puede escoger un plan de suscripción <a href='%{subscription_link}'>aqui</a>."
@@ -186,29 +185,23 @@ es:
       all_email_addresses_belong_to_members: 'No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo.'
   pricing_page:
     header: 'Planes grupales '
-    gift: 'Donación '
+    gift: 'Gratis '
     standard: 'Estándar '
-    plus: Plus
+    plus: Pro
     free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
     get_started_for_free: 'Comienza gratis '
-    gift_body: Para grupos sin presupuesto
-    gift_donation_ask: Les pediremos a los miembros de tu grupo si quieren dar una donación
+    gift_body: 'Plan suportado a donación para grupos comunitarios. '
+    pro_body_html: 'Para organizaciones con <nobr>múltiples grupos.</nobr>'
     unlimited_members: Cantidad ilimitada de miembros
     unlimited_decisions: 'Cantidad ilimitada de decisiones '
     email_support: 'soporte por correo electrónico '
     slack_integration_html: |
       Integración con <strong>Slack</strong>
-    standard_price_html: |
-      US<strong>$19</strong>/al mes<br><span>o</span>$190/al año
-    plus_body: 'Todo en Estándar, más: '
-    multiple_groups: múltiples grupos
     premium_support: 'soporte especial '
     custom_subdomain_html: |
       subdominio personalizado<br />
       ej. <strong>tugrupo</strong>.loomio.org
     usage_statistics: Estadísticas de uso
-    plus_price_html: |
-      US<strong>$179</strong>/al mes<br><span>o</span> $1790/al año
   password_reset:
     email_guidelines_html: >
       <p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en

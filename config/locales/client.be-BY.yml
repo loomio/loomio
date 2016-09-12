@@ -122,21 +122,7 @@ be-BY:
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
       mute: Прыбраць гэту групу з галоўнай старонкі і нагадваць толькі калі @mentioned.
   choose_plan_modal:
-    gift: Падарунак
     standard: Стандарт
-    plus: Плюс
-    free_trial_html: 'Пасля сыходу <span>30-дзённай пробнай версіі</span> мы папросім Вас абраць тарыфны план. Крэдытная картка не патрэбна.'
-    gift_body: Для груп без бюджету
-    unlimited_members: неабмежаваная колькасць удзельникаў
-    unlimited_decisions: бязмежнасць рашэнняў
-    email_support: падтрымка па электроннай пошце
-    plus_body: Стандартны пакет +
-    multiple_groups: Шматлікія суполкі
-    premium_support: Прэміум-падтрымка
-    custom_subdomain_html: |
-      сабдамен карыстальніка,<br />
-
-      напрыклад <strong>yourgroup</strong>.loomio.org
   group_form:
     description_placeholder: 'Апішыце мэты вашай групы, каб чальцы групы ведалі, навошта яны тут.'
   membership_requests_page:
