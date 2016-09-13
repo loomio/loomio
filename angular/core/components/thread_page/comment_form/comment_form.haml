@@ -8,6 +8,7 @@
       .lmo-relative
         %textarea.lmo-textarea.form-control.comment-form__comment-field.lmo-primary-form-input{ng-disabled: "isDisabled", msd-elastic: "true", aria-labelledby: "comment-form-title", name: "body", placeholder: "Say something...", ng_model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
         %emoji_picker.lmo-action-dock{target-selector: "bodySelector"}
+        %outlet{name: "after-comment-input", model: "comment"}
       %validation_errors{subject: "comment", field: "body"}
       .comment-form__privacy-notice{ng-if: "threadIsPublic()", translate: "comment_form.public_privacy_notice"}
       .comment-form__privacy-notice{ng-if: "threadIsPrivate()", translate: "comment_form.private_privacy_notice", translate-value-group-name: "{{comment.group().fullName}}"}
@@ -17,6 +18,7 @@
         %button.lmo-btn--default.comment-form-button{type: "button", translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null"}
         %attachment_form{model: "comment"}
         %button#post-comment-cancel.lmo-btn--default{type: "button", translate: "common.action.cancel", ng-click: "cancel($event)", ng-hide: "comment.isNew()"}
+        %outlet{name: "after-comment-post", model: "comment"}
         %a.comment-form-button{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
           %span{translate: "common.formatting_help.label"}
       %validation_errors{subject: "comment", field: "file"}
