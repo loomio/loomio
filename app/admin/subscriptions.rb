@@ -14,6 +14,22 @@ ActiveAdmin.register Subscription do
     actions
   end
 
+  show do
+    attributes_table do
+      row :id
+      row :kind
+      row :expires_at
+      row :trial_ended_at
+      row :activated_at
+      row :chargify_subscription_id do |subscription|
+        link_to subscription.chargify_subscription_id,
+                ChargifyService.new(subscription.chargify_subscription_id).subscription_url
+      end
+      row :plan
+      row :payment_method
+    end
+  end
+
   form do |f|
     inputs 'Subscription' do
       input :kind, label: "Kind (paid / trial / gift)"

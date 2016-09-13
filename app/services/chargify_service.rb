@@ -47,6 +47,10 @@ class ChargifyService
     "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
   end
 
+  def subscription_url
+    "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{subscription.chargify_subscription_id}"
+  end
+
   def basic_auth
     {
       username: Rails.application.secrets.chargify_api_key,
