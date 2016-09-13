@@ -26,7 +26,7 @@ module Development::NintiesMoviesHelper
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
                                password: 'gh0stmovie',
-                               angular_ui_enabled: true)
+                               angular_ui_enabled: true).tap {|u| u.experienced! 'welcomeModal'}
   end
 
   def max
