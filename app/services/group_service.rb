@@ -5,6 +5,11 @@ module GroupService
     return false unless group.valid?
 
     if group.is_parent?
+      unless Rails.env.test?
+        group.segments['bx_choose_plan'] = [true, false].sample
+        group.save
+      end
+
       group.update(default_group_cover: DefaultGroupCover.sample)
       ExampleContent.new(group).add_to_group!
 

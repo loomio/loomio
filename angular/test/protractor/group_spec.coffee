@@ -29,7 +29,6 @@ describe 'Group Page', ->
       staticPage.click  '#create-account'
 
       page.expectFlash 'Welcome! You have signed up successfully'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
 
     it 'allows starting a group with an existing email', ->
@@ -48,7 +47,6 @@ describe 'Group Page', ->
       staticPage.click '#sign-in-btn'
 
       page.expectFlash 'Signed in successfully'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
 
   describe 'non-member views group', ->
@@ -139,7 +137,6 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Open please'
       page.click '.group-form__submit-button'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Open'
 
     it 'shows the welcome modal when group is created', ->
@@ -172,7 +169,6 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Closed please'
       page.click '.group-form__submit-button'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Closed'
 
     it 'starts a secret group', ->
@@ -187,7 +183,6 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Secret please'
       page.click '.group-form__submit-button'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Secret'
 
   describe 'starting a subgroup', ->

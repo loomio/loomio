@@ -109,6 +109,7 @@ class DevelopmentController < ApplicationController
     group = Group.new(name: 'Welcomed group')
     GroupService.create(group: another_group, actor: LoggedOutUser.new)
     GroupService.create(group: group, actor: patrick)
+    patrick.experienced!('welcomeModal', false)
     group.add_admin! patrick
     sign_in patrick
     redirect_to group_url(group)
@@ -173,34 +174,20 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
-  def setup_group_on_trial_admin
-    group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
-    GroupService.create(group: group_on_trial, actor: patrick)
-    membership = Membership.find_by(user: patrick, group: group_on_trial)
-    membership.experienced! 'welcomeModal'
-    group_on_trial.add_member! jennifer
+  def setup_group_on_free_plan
+    group = Group.new(name: 'Ghostbusters',
+                      is_visible_to_public: true)
+    GroupService.create(group: group, actor: patrick)
+    membership = Membership.find_by(user: patrick, group: group)
+    group.add_member! jennifer
     sign_in patrick
-    redirect_to group_url(group_on_trial)
+    redirect_to group_url(group)
   end
 
-  def setup_group_on_trial
+  def setup_group_and_select_plan
+    test_group.segments['bx_choose_plan'] = true
+    test_group.save
     GroupService.create(group: test_group, actor: patrick)
-    sign_in jennifer
-    redirect_to group_url(test_group)
-  end
-
-  def setup_group_with_expired_trial
-    GroupService.create(group: test_group, actor: patrick)
-    subscription = test_group.subscription
-    subscription.update_attribute :expires_at, 1.day.ago
-    sign_in patrick
-    redirect_to group_url(test_group)
-  end
-
-  def setup_group_with_overdue_trial
-    GroupService.create(group: test_group, actor: patrick)
-    subscription = test_group.subscription
-    subscription.update_attribute :expires_at, 20.days.ago
     sign_in patrick
     redirect_to group_url(test_group)
   end
