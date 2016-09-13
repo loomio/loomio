@@ -1,6 +1,6 @@
 module GroupService
   def self.ab_testing_enabled?
-    Rails.env.production? or ENV['LOOMIO_AB_TESTING_ENABLED']
+
   end
 
   def self.create(group:, actor: )
@@ -9,7 +9,7 @@ module GroupService
     return false unless group.valid?
 
     if group.is_parent?
-      if ab_testing_enabled?
+      if ENV['LOOMIO_AB_TEST']
         group.segments['bx_choose_plan'] = [true, false].sample
         group.save
       end

@@ -421,6 +421,7 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_public_group_to_join_upon_request
+    jennifer.experienced!('welcomeModal', false)
     sign_in jennifer
     another_test_group.update(group_privacy: 'open')
     another_test_group.update(membership_granted_upon: 'request')
