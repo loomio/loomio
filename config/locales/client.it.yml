@@ -352,36 +352,15 @@ it:
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
       aria_label: 'Privacy del gruppo: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Piano regalo selezionato
-    got_it: Ok
-    go_back: Vai indietro
-  donation_modal:
-    heading: Vuoi supportare Loomio?
-    got_to_group: Portami al mio gruppo
   gift_card:
     heading: Piano Regalo
   trial_card:
     title: Prova di 30 giorni
     choose_plan: Scegli il tuo piano
   choose_plan_modal:
-    gift: Regalo
     standard: Standard
-    plus: Plus
-    support_before: I sono contento di
-    support_link: parlare con te
-    support_after: 'di estendere la tua versione di prova, o di qualsiasi altra domanda tu possa avere'
-    remind_me_later: Ricorda in seguito
-    unlimited_members: numero di membri illimitato
-    unlimited_decisions: numero di decisioni illimitato
-    email_support: supporto email
-    plus_body: 'Ciò che include la versione Standard, più:'
-    premium_support: supporto premium
     select: Seleziona
   subscription_success_modal:
-    heading: 'Grazie per aver completato la tua sottoscrizione!'
-    receipt: "Riceverai un'email con la ricevuta del pagamento."
-    change_subscription: 'Se volessi modificare o cancellare la tua sottoscrizione, o se avessi altre domande,'
     contact_link: non esitare a contattarci.
     sign_off: ❤ dal team Loomio
     ok_got_it: Ok

@@ -131,14 +131,6 @@ sr:
         quiet: Nećete primati ePoruke o novim grupama.
   mute_explanation_modal:
     mute_thread: Utišaj nit
-    body: >
-      <p>Utišati znači da <strong>nećete biti obaveštavani o predlozima</strong>,
-      ili o bilo kojoj drugoj aktivnosti u ovoj niti, sve dok Vas neko ne
-      @naznači imenom.</p>
-
-      <p>Utišane niti su skrivene na Najnovije niti i Nepročitane strane takođe.
-      D nađete Utišane niti, posetite stranicu Najnovije niti i odaberite
-      "Utišano" iz "Filter niti" menija:</p>
   inbox:
     clear: Očisti
     latest: Poslednje
@@ -475,17 +467,9 @@ sr:
       parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
       public: 'Privatnost: Ova grupa je vidljiva na mreži'
       aria_label: 'Privatnost grupe:  {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Odabran je poklon plan
-    body: 'Ako Vaša grupa nema budžet za plaćanje softvera, ne morate da platite pretplatu. Vaši članovi grupe biće povremeno pozvani da volonterski doniraju.'
-    confirm_selection: Raduje me zbog ljudi u mojoj grupi koji će biti pitani da podrže Lumio donacijom.
-    got_it: 'U redu, shvatam!'
-    go_back: Idi nazad
   donation_modal:
-    heading: Da li biste voleli da podržite Loomio?
     body: Lumio je društvena kompanija. Naša misija je da kreiramo svet u kome je lako svakome da se uključi u odluke koje utiču na na njega.
     contribute: Donirajte
-    got_to_group: Odbaci me do moje grupe
   gift_card:
     heading: Poklon plan
     body: '<strong>{{name}}</strong> je grupa podržana poklonima. Kako bi podržao Lumio da nastavi pomagati grupama kao što je tvoja, škljocni ovde:'
@@ -497,37 +481,9 @@ sr:
     expired_body_html: '<strong>{{name}}</strong> je ostario/la kraj probnog perioda Lumija. Da nastavite sa upotrebom, trebate odabrati plan cene koja odgovara Vašoj grupi.'
   choose_plan_modal:
     heading: Molim izaberite plan za svoju grupu
-    gift: Poklon
     standard: Standardno
-    plus: Plus
-    free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
-    start_group: Kreiraj grupu
-    gift_body: Za grupe bez budžeta
-    support_before: Imam čast da
-    support_link: pričam sa tobom
-    support_after: o produženju probnog perioda ili o bilo kom pitanju koje možda imaš.
-    remind_me_later: Podseti me kasnije
-    gift_donation_ask: Pitaćemo članove Vaše grupe da doniraju
-    unlimited_members: neograničeno članova
-    unlimited_decisions: neograničeno odluka
-    email_support: podrška ePorukom
-    slack_integration_html: |
-      <strong>Slack</strong> integracija
-    standard_price_html: |
-      US<strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
-    plus_body: 'Sve u Standardno, plus:'
-    multiple_groups: više grupa
-    premium_support: premijum podrška
-    custom_subdomain_html: |
-      namenski poddomen,<br />
-      npr. <strong>vašagrupa</strong>.loomio.org
-    plus_price_html: |
-      US<strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
     select: Odaberi
   subscription_success_modal:
-    heading: 'Hvala za postavljanje tvoje pretplate!'
-    receipt: Dobićete jednu eporuku sa potvrdom.
-    change_subscription: 'Ako ikada poželite da promenite ili otkažete svoju pretplatu ili ako imate bilo kakvih drugih pitanja,'
     contact_link: molimo kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: 'U redu, shvatam!'

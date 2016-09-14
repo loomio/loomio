@@ -96,11 +96,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     if !AbilityService.isLoggedIn() and error.status == 403
       ModalService.open(SignInForm, preventClose: -> true)
 
-  $scope.$on 'trialIsOverdue', (event, group) ->
-    if AbilityService.canAdministerGroup(group) and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
-      ModalService.open ChoosePlanModal, group: -> group
-      AppConfig.chargify.nagCache[group.key] = true
-
   $scope.$on 'setBackgroundImageUrl', (event, url) ->
     angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
 

@@ -126,29 +126,19 @@ de:
       please_hold: Bitte gib der eMail 5 Minuten Zeit und prüfe auch Deinen Spam-Ordner.
     start_making_decisions: 'Um gemeinsam auf Loomio Entscheidungen zu treffen, erstelle kostenlos eine Gruppe:'
   pricing_page:
-    gift: Geschenk
     standard: Standard
-    plus: Plus
     free_trial_html: 'Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Vertragsmodell fragen. Es ist keine Kreditkarte notwendig.'
     get_started_for_free: Starte nun kostenlos
-    gift_body: 'Für Gruppen, die kein Budget haben'
-    gift_donation_ask: Wir werden Deine Gruppenmitglieder um Spenden bitten.
     unlimited_members: unbegrenzte Mitglieder
     unlimited_decisions: unbegrenzte Abstimmungen
     email_support: eMail-Support
     slack_integration_html: |
       <strong>Slack</strong> Integration
-    standard_price_html: |
-      US-<strong>$19</strong>/Monat<br><span>or</span> $190/Jahr
-    plus_body: 'Wie in Standard, zusätzlich:'
-    multiple_groups: mehrere Gruppen
     premium_support: Premium Support
     custom_subdomain_html: |
       gruppenspezifische Subdomain,<br />
       z.B. <strong>DeineGruppe</strong>.loomio.org
     usage_statistics: Nutzerstatistiken
-    plus_price_html: |
-      US<strong>$179</strong>/Monat<br><span>oder</span> $1790/Jahr
   password_reset:
     email_guidelines_html: >
       <p>Gib die eMail-Adresse Deines Loomio-Konto's in das untenstehende Feld

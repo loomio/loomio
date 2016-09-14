@@ -215,22 +215,8 @@ nl-NL:
       loud: E-mail als er activiteit is.
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       mute: Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word.
-  confirm_gift_plan_modal:
-    got_it: "Okee, ik snap 't!"
   choose_plan_modal:
-    gift: Kado
     standard: Standaard
-    plus: Plus
-    start_group: Start groep
-    email_support: e-mailondersteuning
-    slack_integration_html: |
-      <strong>Slack</strong> integratie
-    standard_price_html: |
-      US<strong>$19</strong>/maand<br><span>of</span> $190/jaar
-    plus_body: 'Alles in Standaard, plus:'
-    multiple_groups: meerdere groepen
-    plus_price_html: |
-      US<strong>$179</strong>/maand<br><span>of</span> $1790/jaar
   subscription_success_modal:
     ok_got_it: "Okee, ik snap 't!"
   group_form:

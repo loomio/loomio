@@ -55,6 +55,9 @@ fr:
     formatting_help:
       label: Aide pour le formatage
       title: Apprenez à utiliser Markdown pour formater votre texte sur Loomio
+  devise:
+    failure:
+      inactive: 'Il existe un compte désactivé associé à cette adresse mail. Si vous voulez réactiver votre compte, contactez nous.'
   error_page:
     forbidden: "Vous n'avez pas la permission de faire cela."
     page_not_found: "Nous n'avons pas pu trouver cela. Cela a dû être supprimé ou déplacé."
@@ -131,7 +134,6 @@ fr:
         quiet: Vous ne recevrez aucun courriel concernant les nouveaux groupes.
   mute_explanation_modal:
     mute_thread: Désactiver la discussion
-    body: "<p>Rendre muet signifie que vous <strong>ne recevrez aucune notification concernant les propositions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu'un vous @mentionnne.</p>\n<p>Les fils de discussion muets sont également invisibles dans les fils Récents et Non lus. Pour retrouver vos fils muets, parcourez la page des fils Récents et choisissez «\_Muets\_» dans le menu des fils de discussion filtrés\_:</p>\n"
   inbox:
     clear: Vider
     latest: Dernier
@@ -449,17 +451,9 @@ fr:
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de {{parentGroupName}} et les membres de {{groupName}}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: "Groupe privé\_: {{privacy}}"
-  confirm_gift_plan_modal:
-    heading: Plan Gratuit sélectionné
-    body: "Si votre groupe n'a pas le budget pour payer un logiciel, vous n'avez pas besoin de payer de souscription. Les membres de votre groupe seront invités de temps en temps à faire un don."
-    confirm_selection: "J'accepte que les gens de mon groupe soient sollicités pour soutenir Loomio par une donation."
-    got_it: "Ok, j'ai compris !"
-    go_back: Retour
   donation_modal:
-    heading: Voudriez-vous soutenir Loomio ?
     body: Loomio est une entreprise sociale. Notre mission est de créer un monde où il soit facile pour chacun-e de prendre part aux décisions qui les concernent.
     contribute: Faire une contribution
-    got_to_group: Aller directement à mon groupe
   gift_card:
     heading: Plan cadeau
     body: '<strong>{{name}}</strong> est un groupe soutenu par les dons. Pour aider Loomio à continuer à soutenir des groupes tel que le vôtre, cliquez ici :'
@@ -471,37 +465,9 @@ fr:
     expired_body_html: "<strong>{{name}}</strong> a désormais atteint la fin de son essai à Loomio. Si vous souhaitez continuer à l'utiliser, vous aurez besoin de choisir une option d'abonnement."
   choose_plan_modal:
     heading: Veuillez choisir votre option tarifaire
-    gift: Cadeau
     standard: Standard
-    plus: Plus
-    free_trial_html: "Nous vous demanderons de choisir votre option tarifaire après une <span>période d'essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire."
-    start_group: Créer un groupe
-    gift_body: Pour les groupes sans budget.
-    support_before: Je suis heureux de
-    support_link: discuter avec vous
-    support_after: "de la prolongation de votre essai, ou de n'importe quelle autre question que vous pourriez avoir."
-    remind_me_later: Relancez-moi plus tard
-    gift_donation_ask: Nous demanderons aux membres de votre groupe de faire des donations
-    unlimited_members: membres illimités
-    unlimited_decisions: décisions illimitées
-    email_support: Support courriel
-    slack_integration_html: |
-      Intégration à <strong>Slack</strong>
-    standard_price_html: |
-      <strong>19$</strong>US/mois<br><span>ou</span> 190$/an
-    plus_body: 'Tout ce qui est compris dans Standard, plus :'
-    multiple_groups: groupes multiples
-    premium_support: support Premium
-    custom_subdomain_html: |
-      Sous nom de domaine personnalisé,<br />
-      ex. <strong>votregroupe</strong>.loomio.org
-    plus_price_html: |
-      <strong>179$US</strong>/mois<br><span>ou</span> 1790$/year
     select: Sélectionner
   subscription_success_modal:
-    heading: 'Merci pour votre souscription !'
-    receipt: Vous allez recevoir un courriel avec un reçu.
-    change_subscription: "Si vous souhaitez modifier ou annuler votre souscription, ou pour n'importe quelle autre demande,"
     contact_link: Contactez-nous
     sign_off: "❤ de la part de l'équipe Loomio"
     ok_got_it: "Ok, j'ai compris !"

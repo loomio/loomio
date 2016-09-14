@@ -108,15 +108,12 @@ ar:
     error:
       all_email_addresses_belong_to_members: لم نقم بإرسال دعوات لعناوين البريد الالكتروني التي زودتها لأنها تعود لأشخاص هم مسبقاً أعضاء في المجموعة.
   pricing_page:
-    gift: منحة
     standard: قياسية
-    plus: زائدة
     free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
     get_started_for_free: قم بالبدء مجاناً
     unlimited_members: عدد غير محدود من الأعضاء.
     unlimited_decisions: عدد غير محدود من القرارات.
     email_support: بريد إلكتروني للدعم
-    plus_body: 'كل شيء قياسي، زائد:'
     premium_support: دعم ممتاز
     usage_statistics: إحصائيات الاستخدام
   password_reset:

@@ -16,6 +16,18 @@ class InvitationService
     Invitation.create(args)
   end
 
+  def self.invite_admin_to_group(group: , name:, email:)
+    invitation = InvitationService.create_invite_to_start_group(group: group,
+                                                                inviter: User.helper_bot,
+                                                                recipient_email: email,
+                                                                recipient_name: name)
+
+    InvitePeopleMailer.delay(priority: 1).to_start_group(invitation: invitation,
+                                                         sender_email: User.helper_bot_email,
+                                                         locale: I18n.locale)
+    invitation
+  end
+
   def self.invite_to_group(recipient_emails: nil,
                            message: nil,
                            group: nil,

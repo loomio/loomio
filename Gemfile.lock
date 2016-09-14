@@ -741,7 +741,7 @@ DEPENDENCIES
   omniauth-twitter (~> 1.2.0)
   paper_trail (~> 4.0.0.beta2)
   paperclip (~> 4.3.6)
-  pg (~> 0.18.3)
+  pg (~> 0.18.4)
   poltergeist
   premailer-rails
   private_pub!
@@ -779,6 +779,9 @@ DEPENDENCIES
   twitter-text
   uglifier (~> 3.0.0)
   webmock
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
