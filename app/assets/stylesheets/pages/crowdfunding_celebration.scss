@@ -1,0 +1,33 @@
+.crowdfunding__section {
+  padding-bottom: 30px;
+}
+
+.crowdfunding__image {
+  margin: 20px auto;
+}
+
+.crowdfunding__header {
+  justify-content: center;
+  align-items: center;
+}
+
+.crowdfunding__header-icon-container {
+  flex: 1;
+}
+
+.crowdfunding__thanks,
+.crowdfunding__get-in-touch {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .crowdfunding__header-text-container {
+    text-align: center;
+  }
+}
+
+@media (min-width: 600px) {
+  .crowdfunding__header-text-container {
+    text-align: left;
+  }
+}
