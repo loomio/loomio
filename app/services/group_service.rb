@@ -1,8 +1,4 @@
 module GroupService
-  def self.ab_testing_enabled?
-
-  end
-
   def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
