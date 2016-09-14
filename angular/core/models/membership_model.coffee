@@ -37,9 +37,5 @@ angular.module('loomioApp').factory 'MembershipModel', (BaseModel, AppConfig) ->
     isMuted: ->
       @volume == 'mute'
 
-    events: ->
-      @recordStore.events.find()
-
     beforeRemove: ->
-      _.each @recordStore.events.find('eventable.type': 'membership', 'eventable.id': @id), (e) ->
-        e.remove()
+      _.invoke(@recordStore.events.find('eventable.type': 'membership', 'eventable.id': @id), 'remove')

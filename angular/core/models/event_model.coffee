@@ -28,5 +28,4 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
     beforeRemove: ->
-      _.each @notifications(), (notification) ->
-        notification.remove()
+      _.invoke(@notifications(), 'remove')
