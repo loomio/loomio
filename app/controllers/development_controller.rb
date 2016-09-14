@@ -185,7 +185,7 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_group_and_select_plan
-    test_group.segments['bx_choose_plan'] = true
+    test_group.experiences['bx_choose_plan'] = true
     test_group.save
     GroupService.create(group: test_group, actor: patrick)
     sign_in patrick

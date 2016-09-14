@@ -10,7 +10,7 @@ module GroupService
 
     if group.is_parent?
       if ENV['LOOMIO_AB_TEST']
-        group.segments['bx_choose_plan'] = [true, false].sample
+        group.experiences['bx_choose_plan'] = [true, false].sample
         group.save
       end
 
@@ -18,7 +18,7 @@ module GroupService
       ExampleContent.new(group).add_to_group!
 
       if SubscriptionService.available?
-        group.subscription = Subscription.new_gift unless group.segments['bx_choose_plan']
+        group.subscription = Subscription.new_gift unless group.experiences['bx_choose_plan']
       end
     else
       group.save!

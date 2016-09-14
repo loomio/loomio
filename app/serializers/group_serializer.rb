@@ -42,7 +42,7 @@ class GroupSerializer < ActiveModel::Serializer
              :show_legacy_trial_expired_modal,
              :enable_experiments,
              :locale,
-             :segments
+             :experiences
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 
