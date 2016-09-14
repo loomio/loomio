@@ -1,19 +1,20 @@
 module GroupService
-  def self.ab_test_alternative?(group)
-    group.segment_seed % 2 == 0
-  end
-
   def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
     return false unless group.valid?
 
     if group.is_parent?
+      if ENV['LOOMIO_AB_TEST']
+        group.experiences['bx_choose_plan'] = [true, false].sample
+        group.save
+      end
+
       group.update(default_group_cover: DefaultGroupCover.sample)
       ExampleContent.new(group).add_to_group!
 
       if SubscriptionService.available?
-        group.subscription = Subscription.new_gift if ab_test_alternative?(group)
+        group.subscription = Subscription.new_gift unless group.experiences['bx_choose_plan']
       end
     else
       group.save!

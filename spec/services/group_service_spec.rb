@@ -29,15 +29,15 @@ describe 'GroupService' do
       expect(group.reload.cover_photo).to be_blank
     end
 
-    it 'creates a new gift subscription for even segments' do
-      group.segment_seed = 0
+    it 'creates a new gift subscription for even experiences' do
+      group.experiences['bx_choose_plan'] = false
       GroupService.create(group: group, actor: user)
       subscription = group.reload.subscription
       expect(subscription.kind.to_sym).to eq :gift
     end
 
-    it 'creates no subscription for odd segments' do
-      group.segment_seed = 1
+    it 'creates no subscription for odd experiences' do
+      group.experiences['bx_choose_plan'] = true
       GroupService.create(group: group, actor: user)
       expect(group.reload.subscription).to be nil
     end
