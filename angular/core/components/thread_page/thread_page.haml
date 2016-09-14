@@ -66,6 +66,7 @@
           %start_proposal_button.table-cell.thread-start-proposal-button{discussion: "threadPage.discussion"}
       %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()"}
       %previous_proposals_card{discussion: "threadPage.discussion"}
+      %members_card{group: "threadPage.discussion.group()"}
 
     .lmo-thread-column-left
       %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.activeCommentId"}
