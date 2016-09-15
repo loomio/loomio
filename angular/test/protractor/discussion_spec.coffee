@@ -65,6 +65,17 @@ describe 'Discussion Page', ->
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
 
+  describe 'muting and unmuting a thread', ->
+    it 'lets you mute and unmute', ->
+      page.loadPath 'setup_multiple_discussions'
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-mute'
+      page.click '.mute-explanation-modal__mute-thread'
+      page.expectFlash 'Thread muted'
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-unmute'
+      page.expectFlash 'Thread unmuted'
+
   describe 'move thread', ->
     it 'lets you move a thread', ->
       page.loadPath 'setup_multiple_discussions'

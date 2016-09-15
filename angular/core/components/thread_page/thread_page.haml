@@ -19,6 +19,10 @@
 
                 %li.lmo-dropdown-menu-item{ng-if: "threadPage.canEditThread()"}
                   %a.thread-context__dropdown-options-edit.lmo-dropdown-menu-item-label{href: "", ng-click: "threadPage.editThread()", translate: "thread_context.edit_thread"}
+                %li.lmo-dropdown-menu-item{ng-show: "!threadPage.discussion.isMuted()"}
+                  %a.thread-context__dropdown-options-mute.lmo-dropdown-menu-item-label{href: "", ng-click: "threadPage.muteThread()", translate: "volume_levels.mute"}
+                %li.lmo-dropdown-menu-item{ng-show: "threadPage.discussion.isMuted()"}
+                  %a.thread-context__dropdown-options-unmute.lmo-dropdown-menu-item-label{href: "", ng-click: "threadPage.unmuteThread()", translate: "volume_levels.unmute"}
                 %li.lmo-dropdown-menu-item{ng-if: "threadPage.canMoveThread()"}
                   %a.thread-context__dropdown-options-move.lmo-dropdown-menu-item-label{href: "", ng-click: "threadPage.moveThread()", translate: "thread_context.move_thread"}
                 %li.lmo-dropdown-menu-item
