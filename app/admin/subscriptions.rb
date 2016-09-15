@@ -24,7 +24,7 @@ ActiveAdmin.register Subscription do
       row :chargify_subscription_id do |subscription|
         if subscription.chargify_subscription_id
           link_to subscription.chargify_subscription_id,
-                  ChargifyService.new(subscription.chargify_subscription_id).subscription_url, target: '_blank'
+                  chargify_subscription_url(subscription), target: '_blank'
         end
       end
       row :plan
