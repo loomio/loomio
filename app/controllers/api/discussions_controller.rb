@@ -1,6 +1,6 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :move]
-  load_resource only: [:create, :update, :star, :unstar, :dismiss, :set_volume]
+  load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
+  load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 
   def index
