@@ -75,6 +75,12 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def not_dismissed
+    join_to_discussion_readers && join_to_memberships
+    @relation = @relation.where('(dv.dismissed_at IS NULL) OR (dv.dismissed_at < discussions.last_activity_at)')
+    self
+  end
+
   def muted
     join_to_discussion_readers && join_to_memberships
     @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ',

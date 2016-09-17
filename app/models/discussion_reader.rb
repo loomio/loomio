@@ -36,6 +36,11 @@ class DiscussionReader < ActiveRecord::Base
     update_attribute :participating, true
   end
 
+  def dismiss!
+    update_attribute :dismissed_at, Time.zone.now
+    EventBus.broadcast('discussion_reader_dismissed!', discussion, user)
+  end
+
   def volume
     if persisted?
       super || membership && membership.volume || 'normal'
