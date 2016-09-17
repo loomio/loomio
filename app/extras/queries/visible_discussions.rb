@@ -71,13 +71,9 @@ class Queries::VisibleDiscussions < Delegator
 
   def unread
     join_to_discussion_readers
-    @relation = @relation.where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
-    self
-  end
-
-  def not_dismissed
-    join_to_discussion_readers && join_to_memberships
-    @relation = @relation.where('(dv.dismissed_at IS NULL) OR (dv.dismissed_at < discussions.last_activity_at)')
+    @relation = @relation.
+                  where('(dv.dismissed_at IS NULL) OR (dv.dismissed_at < discussions.last_activity_at)').
+                  where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
     self
   end
 

@@ -44,6 +44,7 @@ class DiscussionSerializer < ActiveModel::Serializer
                          :last_read_sequence_id,
                          :discussion_reader_volume,
                          :last_read_at,
+                         :dismissed_at,
                          :participating,
                          :starred
 

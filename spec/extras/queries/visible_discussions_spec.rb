@@ -53,22 +53,11 @@ describe Queries::VisibleDiscussions do
       #user.discussions.should include discussion
       subject.unread.should include discussion
     end
-  end
-
-  describe 'not_dismissed' do
-    before do
-      group.add_member! author
-      group.add_member! user
-    end
 
     it 'does not include dismissed discussions' do
-      #user.discussions.should include discussion
-      DiscussionReader.for(discussion: discussion,
-                           user: user).dismiss!
-      subject.should include discussion
-      subject.not_dismissed.should_not include discussion
+      DiscussionReader.for(discussion: discussion, user: user).dismiss!
+      subject.unread.should_not include discussion
     end
-
   end
 
   describe 'with_active_motions' do

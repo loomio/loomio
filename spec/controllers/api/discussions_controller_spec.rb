@@ -84,6 +84,14 @@ describe API::DiscussionsController do
         expect(json['discussions']).to be_blank
       end
 
+      it 'does not return dismissed threads' do
+        CommentService.create(comment: new_comment, actor: another_user)
+        DiscussionReader.for(discussion: discussion, user: user).dismiss!
+        get :inbox
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to be_blank
+      end
+
       it 'does not return threads in muted discussions' do
         CommentService.create(comment: new_comment, actor: another_user)
         DiscussionService.update_reader(discussion: discussion, params: { volume: :mute}, actor: user)
@@ -263,6 +271,25 @@ describe API::DiscussionsController do
         get :show, id: private_discussion.id, format: :json
         expect(response.status).to eq 403
       end
+    end
+  end
+
+  describe 'dismiss' do
+    before { sign_in user }
+
+    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+
+    before do
+      group.add_admin! user
+      sign_in user
+      reader.update(volume: DiscussionReader.volumes[:normal])
+      reader.reload
+    end
+
+    it "updates dismissed_at", focus: true do
+      patch :dismiss, id: discussion.key
+      expect(response.status).to eq 200
+      expect(reader.reload.dismissed_at).to be_present
     end
   end
 
