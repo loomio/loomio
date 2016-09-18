@@ -1,11 +1,9 @@
-angular.module('loomioApp').directive 'threadPreview', ->
-  scope: {thread: '='}
-  restrict: 'E'
+angular.module('loomioApp').component 'threadPreview',
+  bindings: {thread: '='}
   templateUrl: 'generated/components/thread_preview/thread_preview.html'
-  replace: true
   controller: ($scope, Records, Session, LmoUrlService, FlashService, ModalService, MuteExplanationModal) ->
-    $scope.lastVoteByCurrentUser = (thread) ->
-      thread.activeProposal().lastVoteByUser(Session.user())
+    $scope.lastVoteByCurrentUser = ->
+      $scope.thread.activeProposal().lastVoteByUser(Session.user())
 
     $scope.changeVolume = (volume) ->
       if !Session.user().hasExperienced("mutingThread")
@@ -21,7 +19,7 @@ angular.module('loomioApp').directive 'threadPreview', ->
 
     $scope.undo = -> $scope.changeVolume($scope.previousVolume)
 
-    $scope.translationData = (thread) ->
-      position: $scope.lastVoteByCurrentUser(thread).position
+    $scope.translationData = ->
+      position: $scope.lastVoteByCurrentUser().position
 
     return
