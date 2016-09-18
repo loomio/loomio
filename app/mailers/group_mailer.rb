@@ -1,4 +1,5 @@
 class GroupMailer < BaseMailer
+  layout 'invite_people_mailer', only: [:membership_request]
   def self.new_membership_request(membership_request)
     @membership_request = membership_request
     @group = membership_request.group
@@ -10,6 +11,7 @@ class GroupMailer < BaseMailer
   def membership_request(admin, membership_request)
     @membership_request = membership_request
     @group = membership_request.group
+    @introduction = membership_request.introduction
     send_single_mail  to: admin.name_and_email,
                       reply_to: "#{@membership_request.name} <#{@membership_request.email}>",
                       subject_key: "email.membership_request.subject",

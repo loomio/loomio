@@ -107,15 +107,12 @@ tr:
     error:
       all_email_addresses_belong_to_members: Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik.
   pricing_page:
-    gift: Hediye
     standard: Standart
-    plus: Plus
     free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
     get_started_for_free: Ücretsiz başlayın
     unlimited_members: sınırsız üyeler
     unlimited_decisions: sınırsız kararlar
     email_support: e-posta desteği
-    plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
     premium_support: Premium destek
     usage_statistics: kullanım istatistikleri
   password_reset:

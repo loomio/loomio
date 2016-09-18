@@ -4,16 +4,17 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
-  $routeParams.key = $routeParams.key.split('|')[0]
+  # we include the timestamp so chargify sees unique values
+  $routeParams.key = $routeParams.key.split('-')[0]
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
 
     if AbilityService.isLoggedIn()
-      $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
       MessageChannelService.subscribeToGroup(@group)
+
+      @handleChoosePlanModal()
       @handleSubscriptionSuccess()
       @handleWelcomeModal()
-      @handlePaymentModal()
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
@@ -59,31 +60,34 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     ModalService.open LogoPhotoForm, group: => @group
 
   @handleSubscriptionSuccess = ->
-    if (AppConfig.chargify or AppConfig.environment == 'development') and $location.search().chargify_success?
-      @subscriptionSuccess = true
+    if $location.search().chargify_success?
+      Session.subscriptionSuccess = true
       @group.subscriptionKind = 'paid' # incase the webhook is slow
       $location.search 'chargify_success', null
       ModalService.open SubscriptionSuccessModal
 
-  @showWelcomeModal = ->
+  @shouldShowChoosePlanModal = =>
+    !($location.search().chargify_success?) and
+    !@group.hasSubscription() and
+    @group.experiences.bx_choose_plan and
+    @group.isParent() and
+    Session.user().isAdminOf(@group)
+
+  @handleChoosePlanModal = ->
+    if @shouldShowChoosePlanModal()
+      ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
+
+  @shouldShowWelcomeModal = ->
+    !@shouldShowChoosePlanModal() and
     @group.isParent() and
     Session.user().isMemberOf(@group) and
-    !@group.trialIsOverdue() and
-    !@subscriptionSuccess and
-    !(Session.user().hasExperienced("welcomeModal") or
-      Session.user().hasExperienced("welcomeModal", @group)) # honour old experiences on memberships
+    !Session.subscriptionSuccess and
+    !Session.user().hasExperienced("welcomeModal")
 
-  @showPaymentModal = =>
-    AbilityService.canSeeTrialCard(@group) and
-    $location.search().payment?
 
   @handleWelcomeModal = =>
-    if @showWelcomeModal()
+    if @shouldShowWelcomeModal()
       ModalService.open GroupWelcomeModal, group: => @group
       Records.users.saveExperience("welcomeModal")
-
-  @handlePaymentModal = =>
-    if @showPaymentModal()
-      ModalService.open(ChoosePlanModal, group: => @group)
 
   return

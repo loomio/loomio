@@ -124,3 +124,11 @@ md-dialog {
     clear: left;
   }
 }
+
+.modal-body {
+  flex-shrink: 0;
+}
+
+.md-dialog {
+  max-width: 400px;
+}

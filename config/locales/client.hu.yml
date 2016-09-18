@@ -130,15 +130,6 @@ hu:
         quiet: Ne küldj e-mailt új csoportokról.
   mute_explanation_modal:
     mute_thread: Témakör némítása
-    body: >
-      <p>A némitás azt jelenti, hogy <strong>nem kap értesítést
-      javaslatokról</strong> és semmilyen más tevékenységről ezen témakörön
-      belül, csak amennyiben valaki @megemlíti az azonosítóját használva.</p>
-
-      <p>A némított témakörök rejtve maradnak mind a Legutóbbi témakörök és az
-      Olvasatlan témakörök oldalon. Megtekinthetők amennyiben a Legutóbbi
-      témakörök oldalon a "Témakörök szűrése" menü alatt a "Némított"-at
-      választja:</p>
   inbox:
     clear: Töröl
     latest: Legutóbbi

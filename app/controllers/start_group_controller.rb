@@ -22,8 +22,8 @@ class StartGroupController < ApplicationController
 
     # check for valid name and email
     if @group.valid? and @errors.empty?
-      StartGroupService.start_group(@group)
-      StartGroupService.invite_admin_to_group(group: @group,
+      GroupService.create(group: @group, actor: LoggedOutUser.new)
+      InvitationService.invite_admin_to_group(group: @group,
                                               name: @name,
                                               email: @email)
     else

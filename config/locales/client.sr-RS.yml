@@ -208,26 +208,13 @@ sr-RS:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: Сакриј ову групу и не обавештавај док ме неко не @означи.
-  confirm_gift_plan_modal:
-    got_it: 'У реду, схватам!'
-    go_back: Иди назад
   donation_modal:
-    heading: Да ли би сте волели да подржите Лумио?
     contribute: Допринесите
-    got_to_group: Одбаци ме до моје групе
   gift_card:
     heading: План поклона
     make_a_contribution: Допринесите
   choose_plan_modal:
-    gift: Поклон
     standard: Стандард
-    plus: Плус
-    free_trial_html: 'Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна.'
-    unlimited_members: неограничено чланова
-    unlimited_decisions: неограничено одлука
-    email_support: подршка еПорукама
-    plus_body: 'Све у Стандард, плус:'
-    premium_support: премијум подршка
   subscription_success_modal:
     ok_got_it: 'У реду, схватам!'
   group_form:

@@ -100,4 +100,4 @@ nvm alias default 4.4.5
 npm install -g gulp
 ```
 
-Ok that's it, you're not ready to [install Loomio](quickstart.md) (or any other ruby or node app)
+Ok that's it, you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)
