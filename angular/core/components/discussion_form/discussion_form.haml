@@ -68,7 +68,7 @@
             %span.lmo-separator
             %span{ng-bind-html: "privacyPrivateDescription()"}
 
-  .modal-footer
+  .lmo-modal-footer
     %md-button.md-primary.md-raised.pull-right.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
     %a.discussion-form__formatting-help{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
       %span{translate: "common.formatting_help.label"}

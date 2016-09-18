@@ -283,6 +283,16 @@
   width: 10px;
 }
 
+.lmo-modal-header {
+  border-bottom: 1px solid $modal-border-color;
+}
+
+.lmo-modal-footer {
+  text-align: right;
+  padding: 5px;
+  border-top: 1px solid $modal-border-color;
+}
+
 img.emojione {
   width: 25px;
   height: 25px;

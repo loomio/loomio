@@ -15,13 +15,10 @@
         %md-input-container.lmo-input-container.group-form__description
           %label{for: "group-description", translate: "group_form.description"}
           %textarea.lmo-textarea.lmo-primary-form-input#group-description{placeholder: "{{ 'group_form.description_placeholder' | translate }}", msd-elastic: "true", ng-model: "group.description"}
+          .group-form__privacy-statement
+            {{privacyStatement()}}
 
-        .group-form__privacy-statement
-          {{privacyStatement()}}
-
-        .group-form__privacy
-          %label{translate: "group_form.privacy"}
-
+        %label{translate: "group_form.privacy"}
         %md-input-container
           %md-radio-group{ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()"}
             %md-radio-button{value: "open", ng-if: "!group.isSubgroupOfSecretParent()"}
@@ -46,7 +43,6 @@
 
         .group-form__membership-granted{ng-if: "group.privacyIsOpen()"}
           %label{translate: "group_form.how_do_people_join"}
-
           %md-input-container.group-form__joining
             %md-radio-group{ng-model: "group.membershipGrantedUpon"}
               %md-radio-button{value: "request"}
@@ -84,6 +80,6 @@
           %md-checkbox.group-form__members-can-vote{ng-model: "group.membersCanVote"}
             %span{translate: "group_form.members_can_vote"}
 
-    .modal-footer
+    .lmo-modal-footer
       %md-button.md-raised.pull-left{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
       %md-button.md-raised.md-primary.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}
