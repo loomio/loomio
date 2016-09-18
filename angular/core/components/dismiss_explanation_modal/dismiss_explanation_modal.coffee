@@ -4,6 +4,6 @@ angular.module('loomioApp').factory 'DismissExplanationModal', ->
     $scope.thread = thread
 
     $scope.dismiss = ->
-      thread.dismiss()
+      $scope.thread.dismiss()
       FlashService.success('dashboard_page.thread_dismissed')
       $scope.$close()

@@ -80,7 +80,7 @@ class DiscussionService
   end
 
   def self.dismiss(discussion:, params:, actor:)
-    actor.ability.authorize! :show, discussion
+    actor.ability.authorize! :dismiss, discussion
     DiscussionReader.for(user: actor, discussion: discussion).dismiss!
   end
 

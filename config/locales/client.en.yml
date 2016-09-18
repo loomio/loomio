@@ -154,8 +154,8 @@ en:
   dismiss_explanation_modal:
     dismiss_thread: Dismiss thread
     body_html: |
-      <p>Dismissing a thread removes it from your unread items until there is more activity.</p>
-      <p>The thread is still available from your Recent threads, and the Group page related to the thread.</p>
+      <p>Dismissing a thread removes it from your unread items. If any new
+        activity occurs in the thread, it will show as unread again.</p>
 
   inbox:
     clear: 'Clear'
