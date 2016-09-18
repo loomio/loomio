@@ -10,4 +10,5 @@
       .activity-card__last-item{ng-if: "$last"}
       .activity-card-content{id: "sequence-{{event.sequenceId}}", ng-include: "'generated/components/thread_page/activity_card/'+ event.kind + '.html'", ng-if: "!event.deleted"}
       .activity-card__last-read-activity{ng-if: "event.sequenceId == lastReadSequenceId", ng-class: "{'activity-card__new-activity': hasNewActivity}", translate: "activity_card.new_activity"}
+  %outlet{name: "after-thread-activity", model: "comment"}
   %loading.activity-card__loading.page-loading{ng-show: "loadEventsForwardsExecuting"}
