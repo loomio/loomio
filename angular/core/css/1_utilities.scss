@@ -293,6 +293,12 @@
   border-top: 1px solid $modal-border-color;
 }
 
+.lmo-material-label {
+  position: static;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+}
+
 img.emojione {
   width: 25px;
   height: 25px;
@@ -305,6 +311,10 @@ md-dialog {
 
 md-checkbox {
   display: block;
+}
+
+md-input-container .md-errors-spacer {
+  min-height: 0px;
 }
 
 @keyframes fadeIn {

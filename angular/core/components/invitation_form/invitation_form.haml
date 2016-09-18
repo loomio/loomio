@@ -12,9 +12,9 @@
           {{group.fullName}}
 
     .invitation-form__flex
-      %md-input-container
+      %md-input-container.invitation-form__shareable-link
         %label{translate: "invitation_form.shareable_link"}
-        %input.invitation-form__shareable-link-field{ng-disabled: "true", value: "{{invitationLink()}}"}
+        %input{ng-disabled: "true", value: "{{invitationLink()}}"}
       %md-button.md-raised.md-primary.invitation-form__copy-button{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
         {{ 'invitation_form.copy_link' | translate}}
 
@@ -38,6 +38,6 @@
       %button.invitation-form__add-members.lmo-btn-link--blue{translate: "invitation_form.add_members", ng-click: "addMembers()"}>
       %span{translate: "invitation_form.from_parent_group", translate-values: "{name: form.group().parentName()}"}
 
-  .modal-footer
-    %md-button.md-raised.md-primary.invitation-form__submit{ng-click: "submit()", translate: "{{submitText()}}", translate-value-count: "{{invitationsCount()}}", ng-disabled: "invalidEmail()"}
-    %md-button.md-raised.pull-left{ng-click: "$close()", translate: "common.action.cancel"}
+  .lmo-modal-footer
+    %md-button.md-raised.md-primary.invitation-form__submit{ng-click: "submit()", translate: "{{submitText()}}", translate-value-count: "{{invitationsCount()}}", ng-disabled: "invalidEmail()", aria-label: "{{submitText()}}"}
+    %md-button.md-raised.pull-left{ng-click: "$close()", translate: "common.action.cancel", aria-label: "common.action.cancel"}

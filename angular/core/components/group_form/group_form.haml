@@ -9,7 +9,7 @@
       .group-form__basic
         %md-input-container.lmo-input-container.group-form__name
           %label{for: "group-name", translate: "{{i18n.group_name}}"}
-          %input.lmo-primary-form-input#group-name{placeholder: "{{ 'group_form.group_name_placeholder' | translate }}", ng-required: true, ng-model: "group.name", maxlength: "255"}
+          %input.lmo-primary-form-input#group-name{placeholder: "{{ 'group_form.group_name_placeholder' | translate }}", ng-required: "true", ng-model: "group.name", maxlength: "255"}
           %validation_errors{subject: "group", field: "name"}
 
         %md-input-container.lmo-input-container.group-form__description
@@ -18,8 +18,8 @@
           .group-form__privacy-statement
             {{privacyStatement()}}
 
-        %label{translate: "group_form.privacy"}
         %md-input-container
+          %label.lmo-material-label{translate: "group_form.privacy"}
           %md-radio-group{ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()"}
             %md-radio-button{value: "open", ng-if: "!group.isSubgroupOfSecretParent()"}
               %span
@@ -40,46 +40,45 @@
       %button.lmo-link.group-form__advanced-link{type: "button", ng-show: "!expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
 
       .group-form__advanced{ng-show: "expanded"}
-
         .group-form__membership-granted{ng-if: "group.privacyIsOpen()"}
-          %label{translate: "group_form.how_do_people_join"}
           %md-input-container.group-form__joining
+            %label.lmo-material-label{translate: "group_form.how_do_people_join"}
             %md-radio-group{ng-model: "group.membershipGrantedUpon"}
               %md-radio-button{value: "request"}
                 %span{translate: "group_form.membership_granted_upon_request"}
               %md-radio-button{value: "approval"}
                 %span{translate: "group_form.membership_granted_upon_approval"}
 
-        .group-form__permissions.lmo-form-group
-          %label{translate: "group_form.permissions"}
+        %md-input-container.group-form__permissions
+          %label.lmo-material-label{translate: "group_form.permissions"}
 
-          %md-checkbox.group-form__allow-public-threads{ng-model: "buh.allowPublicThreads", ng-change: "allowPublicThreadsClicked()", ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()"}
+          %md-checkbox.group-form__allow-public-threads{ng-model: "buh.allowPublicThreads", ng-change: "allowPublicThreadsClicked()", ng-if: "group.privacyIsClosed() && !group.isSubgroupOfSecretParent()", aria-label: "group_form.allow_public_threads"}
             %span{translate: "group_form.allow_public_threads"}
 
-          %md-checkbox.group-form__parent-members-can-see-discussions{ng-if: "group.isSubgroup() && group.privacyIsClosed()", ng-model: "group.parentMembersCanSeeDiscussions"}
+          %md-checkbox.group-form__parent-members-can-see-discussions{ng-if: "group.isSubgroup() && group.privacyIsClosed()", ng-model: "group.parentMembersCanSeeDiscussions", aria-label: "group_form.parent_members_can_see_discussions"}
             %span{translate: "group_form.parent_members_can_see_discussions", translate-value-parent: "{{group.parent().name}}"}
 
-          %md-checkbox.group-form__members-can-add-members{ng-model: "group.membersCanAddMembers"}
+          %md-checkbox.group-form__members-can-add-members{ng-model: "group.membersCanAddMembers", aria-label: "group_form.members_can_add_members"}
             %span{translate: "group_form.members_can_add_members"}
 
-          %md-checkbox.group-form__members-can-create-subgroups{ng-if: "group.isParent()", ng-model: "group.membersCanCreateSubgroups"}
+          %md-checkbox.group-form__members-can-create-subgroups{ng-if: "group.isParent()", ng-model: "group.membersCanCreateSubgroups", aria-label: "group_form.members_can_create_subgroups"}
             %span{translate: "group_form.members_can_create_subgroups"}
 
-          %md-checkbox.group-form__members-can-start-discussions{ng-model: "group.membersCanStartDiscussions"}
+          %md-checkbox.group-form__members-can-start-discussions{ng-model: "group.membersCanStartDiscussions", aria-label: "group_form.members_can_start_discussions"}
             %span{translate: "group_form.members_can_start_discussions"}
 
-          %md-checkbox.group-form__members-can-edit-discussions{ng-model: "group.membersCanEditDiscussions"}
+          %md-checkbox.group-form__members-can-edit-discussions{ng-model: "group.membersCanEditDiscussions", aria-label: "group_form.members_can_edit_discussions"}
             %span{translate: "group_form.members_can_edit_discussions"}
 
-          %md-checkbox.group-form__members-can-edit-comments{ng-model: "group.membersCanEditComments"}
+          %md-checkbox.group-form__members-can-edit-comments{ng-model: "group.membersCanEditComments", aria-label: "group_form.members_can_edit_comments"}
             %span{translate: "group_form.members_can_edit_comments"}
 
-          %md-checkbox.group-form__members-can-raise-motions{ng-model: "group.membersCanRaiseMotions"}
+          %md-checkbox.group-form__members-can-raise-motions{ng-model: "group.membersCanRaiseMotions", aria-label: "group_form.members_can_raise_motions"}
             %span{translate: "group_form.members_can_raise_motions"}
 
-          %md-checkbox.group-form__members-can-vote{ng-model: "group.membersCanVote"}
+          %md-checkbox.group-form__members-can-vote{ng-model: "group.membersCanVote", aria-label: "group_form.members_can_vote"}
             %span{translate: "group_form.members_can_vote"}
 
     .lmo-modal-footer
-      %md-button.md-raised.pull-left{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
-      %md-button.md-raised.md-primary.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}
+      %md-button.md-raised.pull-left{ng-click: "$close()", type: "button", translate: "common.action.cancel", aria-label: "common.action.cancel"}
+      %md-button.md-raised.md-primary.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}", aria-label: "{{i18n.submit}}"}
