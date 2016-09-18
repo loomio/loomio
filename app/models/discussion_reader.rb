@@ -20,6 +20,14 @@ class DiscussionReader < ActiveRecord::Base
     self.for(user: actor || model.author, discussion: model.is_a?(Discussion) ? model : model.discussion)
   end
 
+  def watch!(event_kind)
+    update watching: true, watching_reason: event_kind
+  end
+
+  def unwatch!
+    update_attribute :watching, false
+  end
+
   def author_thread_item!(time)
     set_volume_as_required!
     participate!

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912023530) do
+ActiveRecord::Schema.define(version: 20160917231203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,6 +244,9 @@ ActiveRecord::Schema.define(version: 20160912023530) do
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
     t.boolean  "starred",                  default: false, null: false
+    t.datetime "dismissed_at"
+    t.boolean  "watching",                 default: false, null: false
+    t.string   "watching_reason"
   end
 
   add_index "discussion_readers", ["discussion_id"], name: "index_discussion_readers_on_discussion_id", using: :btree
@@ -486,7 +489,8 @@ ActiveRecord::Schema.define(version: 20160912023530) do
     t.boolean  "enable_experiments",                 default: false
     t.boolean  "analytics_enabled",                  default: false,          null: false
     t.integer  "proposal_outcomes_count",            default: 0,              null: false
-    t.jsonb    "experiences",                           default: {},             null: false
+    t.jsonb    "experiences",                        default: {},             null: false
+    t.boolean  "watching_enabled",                   default: false,          null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -834,11 +838,12 @@ ActiveRecord::Schema.define(version: 20160912023530) do
     t.boolean  "email_when_mentioned",             default: true,       null: false
     t.boolean  "angular_ui_enabled",               default: true,       null: false
     t.boolean  "email_on_participation",           default: false,      null: false
-    t.integer  "default_membership_volume",        default: 2,          null: false
+    t.integer  "default_membership_volume",        default: 1,          null: false
     t.jsonb    "experiences",                      default: {},         null: false
     t.string   "country"
     t.string   "region"
     t.string   "city"
+    t.boolean  "email_watched_threads",            default: false,      null: false
   end
 
   add_index "users", ["deactivated_at"], name: "index_users_on_deactivated_at", using: :btree
