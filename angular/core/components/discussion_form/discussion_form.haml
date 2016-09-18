@@ -39,13 +39,13 @@
 
       %md-input-container{ng-show: "showPrivacyForm()"}
         %md-radio-group{ng-model: "discussion.private"}
-          %md-radio-button.md-primary{value: "false", aria-label: "common.privacy.public"}
+          %md-radio-button.md-primary.discussion-form__public{value: "false", aria-label: "common.privacy.public"}
             %span
               %i.fa.fa-globe>
               %strong{translate: "common.privacy.public" }
               %span.lmo-separator
               %span{translate: "discussion_form.privacy_public"}
-          %md-radio-button{value: "true", aria-label: "common.privacy.private"}
+          %md-radio-button.discussion-form__private{value: "true", aria-label: "common.privacy.private"}
             %span
               %i.fa.fa-lock>
               %strong{translate: "common.privacy.private"}

@@ -14,7 +14,7 @@
     .invitation-form__flex
       %md-input-container.invitation-form__shareable-link
         %label{translate: "invitation_form.shareable_link"}
-        %input{ng-disabled: "true", value: "{{invitationLink()}}"}
+        %input.invitation-form__shareable-link-field{ng-disabled: "true", value: "{{invitationLink()}}"}
       %md-button.md-raised.md-primary.invitation-form__copy-button{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
         {{ 'invitation_form.copy_link' | translate}}
 

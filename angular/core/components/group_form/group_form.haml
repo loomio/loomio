@@ -21,17 +21,17 @@
         %md-input-container
           %label.lmo-material-label{translate: "group_form.privacy"}
           %md-radio-group{ng-model: "group.groupPrivacy", ng-change: "groupPrivacyChanged()"}
-            %md-radio-button{value: "open", ng-if: "!group.isSubgroupOfSecretParent()"}
+            %md-radio-button.group-form__privacy-open{value: "open", ng-if: "!group.isSubgroupOfSecretParent()"}
               %span
                 %strong{translate: "common.privacy.open"}
                 %span.lmo-separator
                 {{ privacyStringFor("open") }}
-            %md-radio-button{value: "closed"}
+            %md-radio-button.group-form__privacy-closed{value: "closed"}
               %span
                 %strong{translate: "common.privacy.closed"}
                 %span.lmo-separator
                 {{ privacyStringFor("closed") }}
-            %md-radio-button{value: "secret"}
+            %md-radio-button.group-form__privacy-secret{value: "secret"}
               %span
                 %strong{translate: "common.privacy.secret"}
                 %span.lmo-separator
