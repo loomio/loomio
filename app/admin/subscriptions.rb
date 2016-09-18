@@ -22,10 +22,7 @@ ActiveAdmin.register Subscription do
       row :trial_ended_at
       row :activated_at
       row :chargify_subscription_id do |subscription|
-        if subscription.chargify_subscription_id
-          link_to subscription.chargify_subscription_id,
-                  chargify_subscription_url(subscription), target: '_blank'
-        end
+        chargify_subscription_link(subscription)
       end
       row :plan
       row :payment_method
