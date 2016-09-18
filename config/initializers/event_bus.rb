@@ -37,6 +37,18 @@ EventBus.configure do |config|
   config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
   config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
 
+  # update watching status after events happen
+  config.listen('new_discussion_event',
+                'new_motion_event',
+                'new_comment_event',
+                'new_vote_event') do |event|
+    DiscussionReader.for_model(event.eventable).watch!(event.kind)
+  end
+
+  config.listen('user_mentioned_event', 'comment_replied_to_event') do |event, user|
+    DiscussionReader.for_model(event.eventable, user).watch!(event.kind)
+  end
+
   # update discussion reader after thread item creation
   config.listen('new_comment_event',
                 'new_motion_event',
