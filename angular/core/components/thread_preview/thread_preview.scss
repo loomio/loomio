@@ -46,6 +46,10 @@
   }
 }
 
+.thread-preview__screen-only {
+  overflow: hidden;
+}
+
 .thread-preview__link {
   display: block;
   padding: $thinPaddingSize $cardPaddingSize;
