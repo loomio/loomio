@@ -915,6 +915,7 @@ en:
     edited: 'Edited'
     volume:
       mute_message: 'Thread muted.'
+      unmute_message: 'Thread unmuted'
   thread_group:
     aria_label: 'Group name'
   thread_context:
@@ -922,6 +923,7 @@ en:
     thread_options: 'Thread options'
     email_settings: 'Email settings'
     edit_thread: 'Edit'
+    mute_thread: 'Mute'
     move_thread: 'Move'
     print_thread: 'Print'
     delete_thread: 'Delete'

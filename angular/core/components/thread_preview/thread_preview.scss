@@ -30,7 +30,8 @@
   @include lmoBtnSm;
 }
 
-.thread-preview__mute{
+.thread-preview__mute,
+.thread-preview__unmute {
   @include lmoBtnDefault;
   @include lmoBtnSm;
   margin-left: 5px;
