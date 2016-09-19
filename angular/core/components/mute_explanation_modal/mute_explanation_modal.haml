@@ -9,5 +9,5 @@
       %img{src: "/img/muted-threads-sidebar.png", alt: "{{ 'muted_explanation_modal.image_alt' | translate }}"}
 
   .modal-footer.lmo-clearfix
-    %button.mute-explanation-modal__mute-thread{type: "button", ng-click: "changeVolume('mute')", translate: "mute_explanation_modal.mute_thread"}
+    %button.mute-explanation-modal__mute-thread{type: "button", ng-click: "muteThread()", translate: "mute_explanation_modal.mute_thread"}
     %button.mute-explanation-modal__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}

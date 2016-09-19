@@ -97,6 +97,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_membership_request_approved_notification
+    sign_in max
+    membership_request = MembershipRequest.new(user: max, group: test_group)
+    MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
+    redirect_to group_url(test_group)
+  end
+
   def setup_multiple_groups
     sign_in patrick
     multiple_groups.each do |group|
