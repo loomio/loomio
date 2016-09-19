@@ -13,6 +13,10 @@ class DevelopmentController < ApplicationController
     render layout: false
   end
 
+  def show
+    send params[:route]
+  end
+
   def last_email
     @email = ActionMailer::Base.deliveries.last
     render layout: false
