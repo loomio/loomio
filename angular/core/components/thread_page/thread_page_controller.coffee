@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, KeyEventService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -126,5 +126,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast 'fetchRecordsForPrint'
 
   TranslationService.listenForTranslations($scope, @)
+
+  checkInView = ->
+    angular.element(window).triggerHandler('checkInView')
+
+  KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
+  KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView
 
   return
