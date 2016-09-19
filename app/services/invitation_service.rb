@@ -67,17 +67,10 @@ class InvitationService
   end
 
   def self.redeem(invitation, user)
-    if invitation.cancelled?
-      raise Invitation::InvitationCancelled
-    end
+    raise Invitation::InvitationCancelled   if invitation.cancelled?
+    raise Invitation::InvitationAlreadyUsed if invitation.accepted?
 
-    if invitation.accepted?
-      raise Invitation::InvitationAlreadyUsed
-    end
-
-    if invitation.single_use?
-      invitation.accepted_at = DateTime.now
-    end
+    invitation.accepted_at = DateTime.now if invitation.single_use?
 
     if invitation.to_be_admin?
       membership = invitation.group.add_admin!(user, invitation.inviter)

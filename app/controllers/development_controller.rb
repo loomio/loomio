@@ -4,7 +4,6 @@ class DevelopmentController < ApplicationController
   include PrettyUrlHelper
 
   before_action :ensure_testing_environment
-  before_action :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
 
   def index
     @routes = DevelopmentController.action_methods.select do |action|
@@ -14,6 +13,7 @@ class DevelopmentController < ApplicationController
   end
 
   def show
+    cleanup_database unless [:last_email, :index, :accept_last_invitation].include?(params[:route].to_sym)
     send params[:route]
   end
 
