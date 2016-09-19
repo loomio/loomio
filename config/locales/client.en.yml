@@ -574,7 +574,7 @@ en:
     benefit_slack_integration: Slack integration
     benefit_custom_domain: Custom domain
     benefit_analytics_reports: Analytics reports
-    benefit_csv_export: CSV data export
+    benefit_data_export: Data export
     # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
     # start_group: "Start group"
     # gift_body: For groups without a budget
@@ -923,6 +923,7 @@ en:
     edited: 'Edited'
     volume:
       mute_message: 'Thread muted.'
+      unmute_message: 'Thread unmuted'
   thread_group:
     aria_label: 'Group name'
   thread_context:
@@ -930,6 +931,7 @@ en:
     thread_options: 'Thread options'
     email_settings: 'Email settings'
     edit_thread: 'Edit'
+    mute_thread: 'Mute'
     move_thread: 'Move'
     print_thread: 'Print'
     delete_thread: 'Delete'

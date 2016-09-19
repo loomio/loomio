@@ -45,7 +45,7 @@ See the [a11y guide](accessibility.md) for more info.
 - screen reader based operation is possible
 
 ## Production readyness
-
+- does the user help manual need updating?
 - deployment to loomio-clone ok
 - background jobs for things that take time or use external services.
 - intercom behaves correctly

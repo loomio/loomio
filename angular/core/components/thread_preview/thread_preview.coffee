@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'threadPreview', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_preview/thread_preview.html'
   replace: true
-  controller: ($scope, Records, Session, LmoUrlService, FlashService, ModalService, MuteExplanationModal, DismissExplanationModal) ->
+  controller: ($scope, Records, Session, LmoUrlService, FlashService, ModalService, MuteExplanationModal, DismissExplanationModal, ThreadService) ->
     $scope.lastVoteByCurrentUser = (thread) ->
       thread.activeProposal().lastVoteByUser(Session.user())
 
@@ -15,24 +15,11 @@ angular.module('loomioApp').directive 'threadPreview', ->
         $scope.thread.dismiss()
         FlashService.success "dashboard_page.thread_dismissed"
 
-    $scope.undismiss = ->
-      $scope.thread.dismiss()
-      FlashService.success "dashboard_page.thread_dismissed"
+    $scope.muteThread = ->
+      ThreadService.mute($scope.thread)
 
-
-    $scope.changeVolume = (volume) ->
-      if !Session.user().hasExperienced("mutingThread")
-        Records.users.saveExperience("mutingThread")
-        Records.users.updateProfile(Session.user()).then ->
-          ModalService.open MuteExplanationModal, thread: -> $scope.thread
-      else
-        $scope.previousVolume = $scope.thread.volume()
-        $scope.thread.saveVolume(volume).then ->
-          FlashService.success "discussion.volume.#{volume}_message",
-            name: $scope.thread.title
-          , 'undo', $scope.undo
-
-    $scope.undo = -> $scope.changeVolume($scope.previousVolume)
+    $scope.unmuteThread = ->
+      ThreadService.unmute($scope.thread)
 
     $scope.translationData = (thread) ->
       position: $scope.lastVoteByCurrentUser(thread).position
