@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, KeyEventService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, KeyEventService, ThreadService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -102,6 +102,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @canChangeVolume = ->
     Session.user().isMemberOf(@discussion.group())
+
+  @muteThread = ->
+    ThreadService.mute(@discussion)
+
+  @unmuteThread = ->
+    ThreadService.unmute(@discussion)
 
   @canEditThread = =>
     AbilityService.canEditThread(@discussion)
