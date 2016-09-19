@@ -3,6 +3,10 @@ zh-TW:
     motion:
       must_close_in_future: 提案必須在未來定案。
       one_at_a_time: 有其他活躍的提案。
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>成功。</h1>
+      <p>您為您的群組 <a href="/g/%{group_key}">%{group}</a> 選擇了免費方案</p>
   email:
     reset_password:
       greeting: |
@@ -128,9 +132,11 @@ zh-TW:
       you_agreed: '您%{past_tense_position}'
     analytics:
       subject: '%{which_group} 在 Loomio 上的一週'
-      title: '您的 %{since} - %{till} 週總結'
+      title: '您的自 %{since} 起的週總結'
+      table_header: '名稱 | 已建立的提案 | 已建立的討論 | 已建立的意見 | 已建立的投票'
       stats: '<strong>%{group_members}</strong> 中的 <strong>%{active_members}</strong> 在過去一週中在您的群組中相當活躍。您的群組提升了 <strong>%{motions}</strong> 並在<strong>%{discussions}</strong> 中做出了 <strong>%{comments}</strong>。'
       contact_us: "想看更多統計？<a href='%{contact_link}'>與我們聯絡</a>。"
+      no_activity: "想要與我們的其中一個協作教練討論關於更多 Loomio 的資訊？<a href='%{contact_link}'>與我們聯絡</a>"
       trial_subscription: "%{which_group} 目前<strong>免費試用</strong>結束於 <strong>%{expires_at}</strong>。您可以在<a href='%{subscription_link}'>這裡</a>選擇一個訂閱計畫。"
       trial_expired: '%{which_group} 的 Loomio 免費試用已結束。'
       heart: 從 Loomio 而來的 ❤
@@ -179,29 +185,37 @@ zh-TW:
       all_email_addresses_belong_to_members: 我們不會將邀請函寄送給提供的電子郵件地址，因為它們是屬於已經在群組中的人們的。
   pricing_page:
     header: 群組計畫
-    gift: 禮物方案
+    gift: 免費
     standard: 標準方案
-    plus: PLUS
+    plus: 專業
     free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
     get_started_for_free: 免費開始
-    gift_body: 給沒有預算的群組
-    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
+    gift_body: 社群群組捐款支援計畫。
+    standard_body_html: '在 <nobr>一個群組</nobr> 中您可能需要的每樣東西'
+    pro_body_html: '有 <nobr>多個群組</nobr> 的組織。'
+    one_group: 一個群組
     unlimited_members: 不限成員數量
     unlimited_decisions: 不限決策數量
     email_support: 電子郵件支援
     slack_integration_html: |
       <strong>Slack</strong> 整合
-    standard_price_html: |
-      美元 <strong>$19</strong>/月<br><span>或</span> $190/年
-    plus_body: 包含標準方案，再加上：
-    multiple_groups: 多重群組
+    standard_price_html: '<strong>$19</strong>／月'
+    gift_price_html: '<strong>$0</strong>'
+    plus_includes_standard: 在標準價格中的每樣東西，再加上：
+    standard_includes_free: 在免費方案中的每樣東西，再加上：
+    multiple_groups: 多達 10 個群組
     premium_support: 進階支援
+    help_with_setup: 初始設定協助
+    custom_subdomain: 自訂子網域
+    analytics_reports: 分析報告
+    csv_export: CSV 匯出
+    contact_us_html: |
+      價格是以美元計費，再加上營業稅。需要其他東西？<a href="/contact">讓我們談談！</a>
     custom_subdomain_html: |
       自訂子網域，<br />
       例如 <strong>yourgroup</strong>.loomio.org
     usage_statistics: 使用統計
-    plus_price_html: |
-      美元 <strong>$179</strong>/月<br><span>或</span> $1790/年
+    plus_price_html: '<strong>$99</strong>／月'
   password_reset:
     email_guidelines_html: >
       <p>在下面的欄位中填入您 Loomio 帳號的電子郵件地址，然後您將會收到一個密碼的重置連結。</p>

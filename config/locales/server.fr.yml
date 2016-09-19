@@ -97,7 +97,6 @@ fr:
       you_agreed: 'Vous %{past_tense_position}'
     analytics:
       subject: 'Semaine de %{which_group} sur Loomio'
-      title: 'Votre résumé hebdomadaire pour %{since} - %{till}'
       contact_us: "Besoin de plus de stats ? <a href='%{contact_link}'>Contactez-nous</a>."
       heart: "❤ de l'équipe Loomio"
       user_table:
@@ -144,29 +143,19 @@ fr:
       all_email_addresses_belong_to_members: 'Nous n’avons pas envoyé d’invitation aux adresses de courriel fournies, car elles appartiennent à des personnes qui sont déjà dans le groupe.'
   pricing_page:
     header: Formules de groupe
-    gift: Cadeau
     standard: Standard
-    plus: Plus
     free_trial_html: 'Nous vous demanderons de choisir votre option tarifaire après une <span>période d’essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire.'
     get_started_for_free: Commencez gratuitement
-    gift_body: Pour les groupes sans budget.
-    gift_donation_ask: Nous demanderons aux membres de votre groupe de faire des donations
     unlimited_members: membres illimités
     unlimited_decisions: décisions illimitées
     email_support: Support courriel
     slack_integration_html: |
       Intégration à <strong>Slack</strong>
-    standard_price_html: |
-      <strong>19$</strong>US/mois<br><span>ou</span> 190$/an
-    plus_body: 'Tout ce qui est compris dans Standard, plus :'
-    multiple_groups: groupes multiples
     premium_support: support Premium
     custom_subdomain_html: |
       Sous nom de domaine personnalisé,<br />
       ex. <strong>votregroupe</strong>.loomio.org
     usage_statistics: statistiques d’utilisation
-    plus_price_html: |
-      <strong>179$US</strong>/mois<br><span>ou</span> 1790$/year
   password_reset:
     email_guidelines_html: >
       <p>Entrez l’adresse email de votre compte Loomio dans le champ ci-dessous

@@ -134,29 +134,19 @@ pt-BR:
       all_email_addresses_belong_to_members: Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo.
   pricing_page:
     header: Planos do grupo
-    gift: Presente
     standard: Padrão
-    plus: Plus
     free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
     get_started_for_free: Comece de graça
-    gift_body: Para grupos sem orçamento
-    gift_donation_ask: Nós pediremos aos membros do seu grupo por doações
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte por e-mail
     slack_integration_html: |
       integração <strong>Slack</strong>
-    standard_price_html: |
-      US<strong>$19</strong>/mês<br><span>or</span> $190/ano
-    plus_body: 'Tudo do Padrão, mais:'
-    multiple_groups: múltiplos grupos
     premium_support: suporte premium
     custom_subdomain_html: |
       subdomínio personalizado,<br />
       e.g. <strong>seugrupo</strong>.loomio.org
     usage_statistics: estatísticas de uso
-    plus_price_html: |
-      US<strong>$179</strong>/mês<br><span>or</span> $1790/ano
   password_reset:
     email_guidelines_html: >
       <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo

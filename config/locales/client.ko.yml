@@ -10,6 +10,7 @@ ko:
     notification_volume: 알림 볼륨
     group: 그룹
     groups: 그룹
+    help: 도움
     privacy:
       privacy: 개인정보
       public: 공개
@@ -36,7 +37,9 @@ ko:
       update_settings: 설정 저장
       reply: 답글
       edit: 편집
+      remove: 제거
       like: 좋아요
+      back: 이전
       unlike: 싫어요
       update: 업데이트
       cancel: 취소
@@ -47,6 +50,7 @@ ko:
       loading: 로딩중...
       translate: 번역
       translated: Bing으로 번역
+      upload: 업로드
       uploading: 업로딩중...
     formatting_help:
       label: 포맷설정 도움말
@@ -85,6 +89,8 @@ ko:
     quiet: 조용히
     mute: 소거
     unmute: 소거해제
+  change_volume_form:
+    mute_label: 음소거
   inbox:
     clear: 지우기
     latest: 최신
@@ -343,17 +349,9 @@ ko:
       private: '공개정책 : 이 그룹은 멤버에게만 공개됩니다.'
       parent_members: '공개정책 : 이 그룹은 {{parentGroupName}}의 멤버와 {{groupName}}의 멤버에게 공개됩니다.'
       public: '공개정책 : 이 그룹은 인터넷에  공개됩니다.'
-  confirm_gift_plan_modal:
-    heading: 재능기부 선택
-    body: '귀하의 그룹이 소프트웨어 비용을 낼 예산이 없다면, 귀하는 기부금을 내실 필요가 없습니다. 귀하의 그룹 멤버들에게 자발적으로 기부를 하라는 요청이 주기적으로 전달될 것입니다.'
-    confirm_selection: 내 그룹 사람들에게 루미오를 후원하는 기부를 권장해도 좋습니다.
-    got_it: '네, 알겠습니다!'
-    go_back: 돌아가기
   donation_modal:
-    heading: 루미오를 후원해주시겠어요?
     body: '루미오는 사회적 기업입니다. 우리의 사명은 누구나 자기에게 영향을 미치는 의사결정에 쉽게 참여할 수 있는 세계를 만드는 것입니다. '
     contribute: 공헌하기
-    got_to_group: 그냥 내 그룹으로 갈께요
   gift_card:
     heading: 선물 계획
     body: '<strong>{{name}}</strong>은 재능 기부를 받는 그룹입니다. 귀하의 그룹과 같은 조직들을 지속적으로 도우려는 루미오를 지원해주시려면 여기를 클릭해주세요:'
@@ -365,24 +363,9 @@ ko:
     expired_body_html: '<strong>{{name}}</strong> 님의 루미오 시범 사용이 만료되었습니다. 계속 사용하시려면 귀하의 그룹에 적합한 가격체계를 선택하세요.'
   choose_plan_modal:
     heading: 귀하의 그룹에 적합한 가격 체계를 선택하세요.
-    gift: 선물
     standard: 일반
-    plus: 게다가
-    free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
-    support_before: 하게 되어 기쁩니다.
-    support_link: 당신과 이야기하게 되어
-    support_after: 시범 사용 기간 연장에 대해서나 혹은 무엇이든 물어보세요.
-    remind_me_later: 나중에 상기시켜 주세요
-    unlimited_members: 멤버 제한 없음
-    unlimited_decisions: 의사결정 횟수 제한 없음
-    email_support: 이메일 지원
-    plus_body: '일반 플랜의 모든 사항, 게다가:'
-    premium_support: 프리미엄 지원
     select: 선택
   subscription_success_modal:
-    heading: 기부해 주셔서 감사드립니다.
-    receipt: 영수증은 이메일로 전송됩니다.
-    change_subscription: '구독을 변경하거나 취소하고 싶은 경우, 혹은 다른 궁금한 사항이 있는 경우'
     contact_link: 연락해 주세요.
     sign_off: 루미오 팀으로부터 ❤
     ok_got_it: '네, 알겠습니다!'

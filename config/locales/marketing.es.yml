@@ -21,7 +21,6 @@ es:
     trademark_statement: '© 2016 Loomio Cooperative Limited. Todos los derechos reservados. "Loomio"es una marca registrada de Loomio Cooperative Limited.'
   marketing:
     hero:
-      dilemma_html: 'Tomar decisiones con tu grupo</nobr> <nobr>no debería</nobr> <nobr>ser tan difícil</nobr>.'
       solution: 'Con Loomio puedes tomar decisiones sin una larga lista de emails o reuniones. '
     make_decisions_html: 'Loomio es un lugar para que tu grupo <strong>tome decisiones juntos</strong>.'
     gather:
@@ -91,6 +90,7 @@ es:
       deliberation_explanation: Loomio usa un simple marco de trabajo para la toma de decisiones diseñado para la deliberación constructiva. No te conformes con el conflicto - trabaja juntos para encontrar una mejor solución.
       iterate_heading: Itere propuestas para avanzar las ideas.
       iterate_explanation: 'Tomar decisiones juntos puede ser poderoso, aún cuando una propuesta inicial no gana consenso. Trabaja a través de los desacuerdos para evolucionar y sintetizar nuevas soluciones.'
+      deadlines_heading: Las fechas limites crean el impulso.
       deadlines_explanation: 'Las propuestas de Loomio están atadas a fechas para asegurar que tu grupo pueda moverse adelante sin demorarse. Todos conocen el plazo para contribuir, con recordatorios automáticos antes de la fecha de cierre.  '
       fewer_meetings_heading: 'Se productivo sin reuniones. '
       fewer_meetings_explanation: Continua las conversaciones sin necesidad de estar en el mismo cuarto. Haz más cosas online para poder ahorrar tiempo en las reuniones para lo que necesita suceder cara a cara.

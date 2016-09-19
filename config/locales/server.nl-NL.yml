@@ -84,7 +84,6 @@ nl-NL:
       you_agreed: 'Je %{past_tense_position}'
     analytics:
       subject: "%{which_group}'s week op Loomio"
-      title: 'Je wekelijkse samenvatting voor %{since} - %{till}'
       stats: '<strong>%{active_members}</strong> van <strong>%{group_members}</strong> in je groep waren in de afgelopen week actief. Je groep resulteerde in <strong>%{motions}</strong> en had <strong>%{comments}</strong> in <strong>%{discussions}</strong>.'
       heart: ❤ van team Loomio
       user_table:
@@ -119,20 +118,12 @@ nl-NL:
       header: 'Je bent bijna klaar! Bekijk je e-mail.'
       email_not_arrived: E-mail niet aangekomen?
   pricing_page:
-    gift: Kado
     standard: Standaard
-    plus: Plus
     get_started_for_free: Ga gratis aan de slag
     email_support: e-mailondersteuning
     slack_integration_html: |
       <strong>Slack</strong> integratie
-    standard_price_html: |
-      US<strong>$19</strong>/maand<br><span>of</span> $190/jaar
-    plus_body: 'Alles in Standaard, plus:'
-    multiple_groups: meerdere groepen
     usage_statistics: gebruiksstatistieken
-    plus_price_html: |
-      US<strong>$179</strong>/maand<br><span>of</span> $1790/jaar
   password_reset:
     length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
   introduction_thread:

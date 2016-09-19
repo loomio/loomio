@@ -19,13 +19,18 @@ lt:
       thismonth: Šį Mėnesį
     models:
       proposal: Pasiūlymas
+    copy: Kopijuoti tekstą
+    copied: Nukopijuota į iškarpinę
     action:
+      close: Užverti
       save: Įrašyti
       save_changes: Įrašyti pakeitimus
       update_settings: Atnaujinti nustatymus
       reply: Atsakyti
       edit: Redaguoti
+      remove: Šalinti
       like: Patinka
+      back: Atgal
       unlike: Nebepatinka
       update: Atnaujinti
       cancel: Atšaukti
@@ -48,7 +53,13 @@ lt:
     quiet: Tylus
     mute: Nutildyti
   sign_in_form:
+    password_label: 'Slaptažodis:'
     sign_in: Prisijungti
+    signed_in: Sėkmingai prisijungta
+  sign_up_form:
+    password_label: 'Slaptažodis:'
+  signed_out_modal:
+    ok: Gerai
   comment_form:
     aria_label: Pridėk komentarą
     attachments:
@@ -187,8 +198,6 @@ lt:
       quiet_aria_description: Tavo pranešimų garsumas šiai grupei yra nustatytas į Tylus. Tau nebus siunčiami el. laiškai apie šioje grupėje vykstančią veiklą. Grupės veikla bus rodoma tavo Skydelyje.
     privacy:
       public: 'Privatumas: Ši grupė yra matoma saityne'
-  confirm_gift_plan_modal:
-    got_it: 'Gerai, supratau!'
   subscription_success_modal:
     ok_got_it: 'Gerai, supratau!'
   group_form:

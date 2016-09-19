@@ -2,10 +2,14 @@ en:
   navigation:
     blog: Blog
     resources: Resources
+    resources_dropdown: Resources dropdown
+    resources_submenu: Resources submenu
+    header_menu_label: Header menu
     case_studies: Case studies
     help: Help
     guides_and_tips: "Guides & tips"
     developers: Developers
+    coop_handbook: Co-op handbook
     about: About
     pricing: Pricing
     contact: Contact
@@ -22,21 +26,29 @@ en:
 
   marketing:
     hero:
-      dilemma_html: Making good decisions with your group</nobr> <nobr>shouldn’t be</nobr> <nobr>so hard</nobr>.
+      dilemma_html: Making good decisions with your group shouldn’t be so hard.
+      dilemma_image_alt: Unhappy group members gathered around messy table struggling to communicate
       solution: With Loomio you can make decisions without a mess of emails or meetings.
+      solution_image_alt: Happy group members holding devices gathered around lightbulb and connected by interwoven threads
+      arrow_alt: Arrow pointing from dilemma image to solution image
+    macbook_android_image_alt: Loomio on laptop and Android device
     make_decisions_html: Loomio is a place for your group to <strong>make decisions together</strong>.
     gather:
       heading: Gather
       explanation: "Bring together the right people and the right information. Accessible, easy to use, customisable, with fine-grained options for privacy and security."
+      image_alt: Group gathered in a circle around a question mark
     discuss:
       heading: Discuss
       explanation: "Have clear, on-topic conversations. Stay on track, surface the right information, and filter the noise. It’s a dedicated space for constructive collaboration."
+      image_alt: Group sharing information and expressing opinions with coloured speech bubbles
     propose:
       heading: Propose
       explanation: "Visual summaries make it easy to quickly understand where everyone stands, and why. If you agree, find out fast. Or hone directly in on the crux of the issue and start building shared understanding."
+      image_alt: "Group gathered around pie-chart stating positions with coloured speech bubbles"
     decide_act:
       heading: Decide and Act
       explanation: "Achieve a clear outcome for every proposal, within the timeframe you set. Everyone gets notified of the results, so you can move forward and take action together."
+      image_alt: Group launching upwards from green thumb with arms in the air
     try_it_now: Try it now
     start_free_group: Start free group
     fast_inclusive_effective: "Fast, inclusive, and effective can be your new normal."
@@ -94,6 +106,7 @@ en:
       first_paragraph: "Loomio is open source software, built by a worker-owned cooperative social enterprise. We are based in Aotearoa New Zealand, and are part of the"
       second_paragraph: "We believe that more groups practicing effective, inclusive decision-making can change organisational dynamics at a global scale. Loomio exists to make it easy for anyone, anywhere, to participate in decisions that affect their lives."
       link_text: "Find out more about our team, our story, and our purpose and values…"
+      image_alt: Loomio team - April 2016
 
   about:
     heading: About us
@@ -152,4 +165,14 @@ en:
       transparent_body: |
         The Loomio Co-operative will be surrounded by a valued community of users and contributors. This community must be confident that the Loomio Co-operative is doing what it says it is.
         We are committed to high standards for sharing information.
-
+  titles:
+    new_tab: Opens in new tab
+    start_group: Start group form
+    about_us: About us page
+    pricing: Pricing page
+    contact: Contact form
+    sign_in: Sign in form
+    terms_of_service: Terms of service page
+    privacy: Privacy page
+    translation: Translation guide
+    home: Home page

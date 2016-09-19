@@ -1,0 +1,12 @@
+.blank
+  .lmo-blank{ng-if: "show()"}
+    %section.upgrade-plan-card{ng-if: "showOriginal"}
+      %h2.lmo-card-heading{translate: "upgrade_plan_card.heading"}
+      %p{translate: "upgrade_plan_card.body", translate-value-name: "{{group.name}}"}
+      %button.upgrade-plan-card__confirm-button.upgrade-plan-card__original{ng-click: "openUpgradeModal()"}
+        %span{translate: "upgrade_plan_card.upgrade_plan"}
+    %section.upgrade-plan-card{ng-if: "!showOriginal"}
+      %h2.lmo-card-heading{translate: "upgrade_plan_card.heading_alt"}
+      %p{translate: "upgrade_plan_card.body_alt", translate-value-name: "{{group.name}}"}
+      %button.upgrade-plan-card__confirm-button.upgrade-plan-card__alternative{ng-click: "openUpgradeModal()"}
+        %span{translate: "upgrade_plan_card.upgrade_plan"}

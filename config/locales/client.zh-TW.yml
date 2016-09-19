@@ -55,6 +55,9 @@ zh-TW:
     formatting_help:
       label: 格式化說明
       title: 學習如何使用 Markdown 來格式化您在 Loomio 上的文字
+  devise:
+    failure:
+      inactive: 與此電子郵件關聯的帳號已停用。若您想要重新啟用您的帳號，請聯絡我們。
   error_page:
     forbidden: 您沒有足夠的權限。
     page_not_found: 我們找不到它。它可能已經被刪除或移動了。
@@ -131,9 +134,12 @@ zh-TW:
         quiet: 您將不會收到任何關於新群組的電子郵件。
   mute_explanation_modal:
     mute_thread: 討論串設為靜音
-    body: |
-      <p>靜音代表您<strong>將不會被提醒關於提案的事情</strong>，或是任何其他在此討論串的動態，除非某人 @提及 您。</p>
-      <p>已靜音也會從最近的討論串與未讀頁面中隱藏。要尋找您已靜音的討論串，請拜訪最近討論串頁面並從「過濾討論串」選單中選取「已靜音」：</p>
+    body_html: >
+      <p>靜音代表您<strong>將不會被提醒關於提案的事情</strong>，或是任何其他在此討論串的動態，除非某人 <strong>@提及
+      您</strong>。</p>
+
+      <p>已靜音也會從<strong>最近的</strong>討論串與<strong>未讀</strong>頁面中隱藏。要尋找您已靜音的討論串，請從側邊欄選取<strong>已靜音</strong>選項：</p>
+    image_alt: 在側邊欄中的已靜音討論串選項
   inbox:
     clear: 清除
     latest: 最新
@@ -194,6 +200,7 @@ zh-TW:
     recent: 最近
     unread: 未讀
     muted: 已靜音
+    start_group: 啟動新的群組
     explore: 公開群組
     edit_profile: 編輯簡歷
     email_settings: 電子郵件設定
@@ -466,20 +473,25 @@ zh-TW:
       public: 隱私權：此群組現在能在網路上被看到
       aria_label: '群組隱私：{{privacy}}'
   confirm_gift_plan_modal:
-    heading: 已選取禮物方案
-    body: 如果您的團隊沒有足夠的預算來支付軟體費用，您就不需要支付訂閱的費用。您的群組成員是否有自願性的捐款。
-    confirm_selection: 我很高興在我的群組中的人們被詢問是否要以捐款支持 Loomio。
-    got_it: 好的，知道了！
-    go_back: 回前頁
+    heading: 免費的群組是依靠捐款支援的
+    body: 捐款讓那些需要免費使用 Loomio 的群組變為可能。我們將會不定期詢問免費群組的人們是否願意捐款。
+    got_it: 保持免費
+    go_back: 升級
   donation_modal:
-    heading: 您想要支援 Loomio 嗎？
+    heading: 捐款給 Loomio？
     body: Loomio 是一個社會企業。我們的使命是締造一個任何人都能輕鬆參與、討論決策、影響他人的世界。
     contribute: 作出貢獻
-    got_to_group: 直接到我的群組
+    got_to_group: 不是現在，謝謝。
   gift_card:
     heading: 禮物方案
     body: '<strong>{{name}}</strong> 是接受禮物方案支援的群組。若想支援 Loomio 繼續協助其他像您一樣接受禮物方案支援的群組，請點擊這裡：'
     make_a_contribution: 作出貢獻
+  upgrade_plan_card:
+    heading: 您使用 Slack 嗎？
+    body: Loomio 與 Slack 可以共同運作！把它們連結起來吧。
+    heading_alt: 想要自訂網域？
+    body_alt: 您的名稱.loomio.org 讓您的 Loomio 群組更容易被找到
+    upgrade_plan: 立刻升級
   trial_card:
     title: 30 天試用
     choose_plan: 選擇您的定價方案
@@ -487,37 +499,32 @@ zh-TW:
     expired_body_html: '<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。'
   choose_plan_modal:
     heading: 請為您的群組選擇方案
-    gift: 禮物方案
+    free: 免費
     standard: 標準方案
-    plus: PLUS
-    free_trial_html: '我們將會在<span>30天的免費試用</span>後，詢問您要選擇哪一個價格方案。不需要信用卡。'
-    start_group: 啟動群組
-    gift_body: 給沒有預算的群組
-    support_before: 我很高興的
-    support_link: 告訴您
-    support_after: 關於延長您的試用期，或是任何其有您可能會有的需求。
-    remind_me_later: 稍後提醒我
-    gift_donation_ask: 我們將會詢問您的群組成員是否捐款。
-    unlimited_members: 不限成員數量
-    unlimited_decisions: 不限決策數量
-    email_support: 電子郵件支援
-    slack_integration_html: |
-      <strong>Slack</strong> 整合
-    standard_price_html: |
-      美元 <strong>$19</strong>/月<br><span>或</span> $190/年
-    plus_body: 包含標準方案，再加上：
-    multiple_groups: 多重群組
-    premium_support: 進階支援
-    custom_subdomain_html: |
-      自訂子網域，<br />
-      例如 <strong>yourgroup</strong>.loomio.org
-    plus_price_html: |
-      美元 <strong>$179</strong>/月<br><span>或</span> $1790/年
+    pro: 專業
+    per_month: ／月
+    standard_group_description: 在一個群組中您可能需要的每樣東西
+    free_group_description: 社群群組捐款支援計畫。
+    pro_group_description: '有 <nobr>多個群組</nobr> 的組織。'
+    benefit_1_group: 1個群組
+    benefit_10_groups: 10個群組
+    benefit_unlimited_members: 無限的成員
+    benefit_unlimited_decisions: 無限的決策
+    benefit_priority_support: 進階支援
+    benefit_help_with_setup: 初始設定協助
+    benefit_community_support: 社群支援
+    benefit_slack_integration: Slack 整合
+    benefit_custom_domain: 自訂網域
+    benefit_analytics_reports: 分析報告
+    benefit_csv_export: CSV 資料匯出
+    support_link: 讓我們說說話！
+    prices_in_us_dollars: 價格是以美元計費，再加上營業稅。
+    need_help_please: 需要其他東西？
     select: 選取
   subscription_success_modal:
-    heading: 感謝您決定訂閱！
-    receipt: 您將會收到一封包含收據的電子郵件。
-    change_subscription: 若您想要變更或是取消您的訂閱，或是若您有其他疑問，
+    heading: 您全部都設定好了！
+    receipt: 您將會收到一封包含收據的電子郵件，其中也會包含客戶入口的連結，您可以在那裡變更、升級或是取消您的訂閱，並存取帳單歷史。
+    change_subscription: 若您想要設定 Slack 整合或是您的自訂網域名稱，
     contact_link: 請聯絡我們。
     sign_off: 從 Loomio 團隊而來的 ❤
     ok_got_it: 好的，了解了！
@@ -680,6 +687,16 @@ zh-TW:
       question: 您可以告訴我們為何您現在要凍結您的帳號嗎？
       placeholder: '回答這個問題是選擇性的。您所分享的任何資訊將會幫助我們改進 Loomio :)'
       submit: 凍結帳號
+    deactivation_modal:
+      introduction: 當您停用您的帳號：
+      no_longer_group_member: 您將不會再被任何群組列為成員
+      name_removed: 您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。
+      no_emails: 您將不再收到與 Loomio 相關的電子郵件
+      contact_for_reactivation: 您將會需要聯絡我們以重新啟用您的帳號
+      submit: 是的，我想要停用
+    only_coordinator_modal:
+      explanation: 一個群組至少必須有一個協調者。您是以下群組的唯一協調者：
+      instructions: 為了凍結您的帳號，您需要看看上面列出的每一個群組，增加其他的協調者，或是凍結群組。
     change_picture_link: 變更照片
     change_password_link: 變更密碼
     deactivate_user_link: 凍結帳號...
@@ -726,6 +743,16 @@ zh-TW:
     view_recent: 檢視所有最近的討論串？
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
+    explain_mute:
+      title: 您尚未靜音任何討論串。
+      explanation_html: >
+        靜音是一種讓您不感興趣的討論串隱藏或消失的方法。
+
+        靜音代表您將不會在<strong>最近的</strong>或是<strong>未讀</strong>中看到它，且您將不會被提醒關於該討論串的動態，像是提案等。
+
+        您將只會在有人 <strong>@提及</strong> 您的名稱時被通知。
+      instructions: 要靜音討論串，滑鼠移到其上並點選靜音圖示。
+      see_muted_html: '要檢視您已靜音的討論串，點選<strong>「已靜音」</strong>。您也可以將滑鼠移到其上並點選相同的圖示以解除靜音。'
     filtering:
       filter_threads: 過濾討論串
       filter_threads_aria_label: 過濾討論串
@@ -817,6 +844,8 @@ zh-TW:
     attachment_display:
       aria_label: 已附加檔案
       image_alt: 已附加的圖片
+  print_modal:
+    load_discussion: 正在載入全部的討論...
   delete_comment_dialog:
     title: 刪除意見
     question: 您確定要刪除這個意見嗎？

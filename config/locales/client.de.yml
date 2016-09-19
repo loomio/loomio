@@ -131,15 +131,6 @@ de:
         quiet: Du wirst über nichts aus Deinen neuen Gruppen benachrichtigt.
   mute_explanation_modal:
     mute_thread: Diskussion stumm schalten
-    body: >
-      <p>Stumm schalten meint, dass Du <strong>nicht über Vorschläge
-      benachrichtigt wirst</strong>, oder irgendeine andere Aktivität in dieser
-      Diskussion, außer wenn Du @erwähnt wirst.</p>
-
-      <p>Stumme Diskussionen werden in den "Aktuellen Diskussionen" und auch in
-      den "Ungelesenen Diskussionen" ausgeblendet. Um Deine stummen Diskussionen
-      zu finden, gehe auf "Aktuell" und wähle im "Themen filtern"-Menü den Punkt
-      "Verstummt" :</p>
   inbox:
     clear: Leeren
     latest: Letzte
@@ -452,17 +443,9 @@ de:
       parent_members: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
       public: 'Privatsphäre: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Geschenk-Plan gewählt
-    body: 'Wenn Deine Gruppe keine Finanzen hat, um Software zu bezahlen, dann müsst ihr kein Abo zahlen. Wir werden gelegentlich eure Gruppenmitglieder um freiwillige Spenden bitten.'
-    confirm_selection: 'Ich finde es gut, wenn Mitglieder meiner Gruppe nach Spenden für Loomio gefragt werden.'
-    got_it: 'Okay, ich hab´s!'
-    go_back: Zurück
   donation_modal:
-    heading: Würdest Du Loomio unterstützen?
     body: 'Loomio ist ein gemeinnütziges Unternehmen. Unsere Mission ist eine Welt zu erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen.'
     contribute: Mache eine Spende
-    got_to_group: Bring mich zu meiner Gruppe
   gift_card:
     heading: Geschenk-Plan
     body: '<strong>{{name}}</strong> ist eine spendenbasierte Gruppe. Um Loomio dabei zu unterstützen Gruppen wie Deiner zu helfen, klicke hier:'
@@ -474,37 +457,9 @@ de:
     expired_body_html: '<strong>{{name}}</strong> hat das Ende des Loomio Probezeitraums erreicht. Um es weiterhin zu nutzen musst Du ein Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt.'
   choose_plan_modal:
     heading: Bitte wähle ein Vertragsmodell für Deine Gruppe.
-    gift: Geschenk
     standard: Standard
-    plus: Plus
-    free_trial_html: 'Nach einem <span>30-tägigen kostenlosen Probezeitraum</span> werden wir Dich nach Deinem Vertragsmodell fragen. Es ist keine Kreditkarte notwendig.'
-    start_group: Gruppe gründen
-    gift_body: 'Für Gruppen, die kein Budget haben'
-    support_before: Ich freue mich
-    support_link: mit Dir zu reden
-    support_after: 'um Deinen Probezeitraum zu verlängern oder wegen anderer Fragen, die Du hast.'
-    remind_me_later: Errinere mich später
-    gift_donation_ask: Wir werden Deine Gruppenmitglieder um Spenden bitten.
-    unlimited_members: unbegrenzte Mitglieder
-    unlimited_decisions: unbegrenzte Abstimmungen
-    email_support: eMail-Support
-    slack_integration_html: |
-      <strong>Slack</strong> Integration
-    standard_price_html: |
-      US-<strong>$19</strong>/Monat<br><span>or</span> $190/Jahr
-    plus_body: 'Wie in Standard, zusätzlich:'
-    multiple_groups: mehrere Gruppen
-    premium_support: Premium Support
-    custom_subdomain_html: |
-      gruppenspezifische Subdomain,<br />
-      z.B. <strong>DeineGruppe</strong>.loomio.org
-    plus_price_html: |
-      US<strong>$179</strong>/Monat<br><span>oder</span> $1790/Jahr
     select: Wähle
   subscription_success_modal:
-    heading: 'Danke für Dein Abonnement!'
-    receipt: Du wirst per eMail eine Bestätigung erhalten.
-    change_subscription: 'Wenn Du Dein Abonnement ändern oder stornieren möchtest oder wenn Du andere Fragen hast,'
     contact_link: bitt kontaktiere uns.
     sign_off: ❤ vom Loomio-Team
     ok_got_it: 'Okay, ich hab´s!'

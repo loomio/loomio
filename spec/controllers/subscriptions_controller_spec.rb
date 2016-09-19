@@ -8,9 +8,29 @@ describe SubscriptionsController do
     subscription: {
       id: subscription.id,
       product: {},
-      customer: { reference: "#{group.id}|#{Time.now.to_i}" }
+      customer: { reference: "#{group.id}-#{Time.now.to_i}" }
     }
   }.with_indifferent_access }
+
+  describe 'select_gift_plan' do
+    it 'puts groups onto free plan'  do
+
+      post :select_gift_plan, group_key: group.key
+      expect(group.subscription.reload.kind).to eq 'gift'
+    end
+
+    it 'unless group is paying'  do
+      group.subscription.update kind:                     :paid,
+                                payment_method:           :chargify,
+                                activated_at:             Time.now,
+                                expires_at:               Time.now,
+                                plan:                     'standard',
+                                chargify_subscription_id: 1
+
+      post :select_gift_plan, group_key: group.key
+      expect(group.subscription.reload.kind).to eq 'paid'
+    end
+  end
 
   describe 'webhook' do
     it 'performs a signup_success' do

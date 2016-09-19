@@ -46,6 +46,5 @@
             .form-group
               .col-sm-8.col-sm-offset-4
                 = f.submit t(:"common.start_group"), class: 'btn btn-success btn-block', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
-                %p.small= t :"start_group_form.terms_html", link: terms_of_service_path
-
-            %p.pricing= t :"start_group_form.pricing_html", link: pricing_path
+                %p
+                  %small= t :"start_group_form.terms_html", link: terms_of_service_path

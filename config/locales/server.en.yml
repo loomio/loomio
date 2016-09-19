@@ -5,6 +5,11 @@ en:
       must_close_in_future: Proposal must close in the future.
       one_at_a_time: There is another active proposal.
 
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>Success.</h1>
+      <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
+
   email:
     reset_password:
       greeting: |
@@ -88,8 +93,10 @@ en:
       view_group_text: "Click below to view the group on Loomio:"
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
+      intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
+      button_text: View request
     mentioned:
       context_html: "mentioned you while discussing"
       context: "%{author_name} mentioned you while discussing %{discussion_title}"
@@ -131,9 +138,11 @@ en:
       you_agreed: You %{past_tense_position}
     analytics:
       subject: "%{which_group}'s week on Loomio"
-      title: "Your weekly summary for %{since} - %{till}"
+      title: "Your summary for the week starting %{since}"
+      table_header: "Name | Motions created | Discussions created | Comments created | Votes created"
       stats: "<strong>%{active_members}</strong> out of <strong>%{group_members}</strong> in your group were active in the last week. Your group raised <strong>%{motions}</strong> and made <strong>%{comments}</strong> in <strong>%{discussions}</strong>."
       contact_us: "Looking for more stats? <a href='%{contact_link}'>Get in touch</a>."
+      no_activity: "Want to talk with one of our collaboration coaches about getting the most out of Loomio? <a href='%{contact_link}'>Get in touch</a>"
       trial_subscription: "%{which_group} is on a <strong>free trial</strong> ending <strong>%{expires_at}</strong>. You can choose a subscription plan <a href='%{subscription_link}'>here</a>."
       trial_expired: "%{which_group} has reached the end of its free Loomio trial. "
       heart: "❤ from team Loomio"
@@ -182,31 +191,38 @@ en:
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
   pricing_page:
     header: Group plans
-    gift: Gift
+    gift: Free
     standard: Standard
-    plus: Plus
+    plus: Pro
     free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
     get_started_for_free: Get started for free
-    gift_body: For groups without a budget
-    gift_donation_ask: We’ll ask your group members to donate
+    gift_body: Donation supported plan for community groups.
+    standard_body_html: Everything you need for <nobr>one group.</nobr>
+    pro_body_html: For organisations with <nobr>multiple groups.</nobr>
+    one_group: one group
     unlimited_members: unlimited members
     unlimited_decisions: unlimited decisions
     email_support: email support
     slack_integration_html: |
       <strong>Slack</strong> integration
-    standard_price_html: 'US<strong>$19</strong>/month<br><span>or</span> $190/year
-
-'
-    plus_body: 'Everything in Standard, plus:'
-    multiple_groups: multiple groups
+    standard_price_html: '<strong>$19</strong>/month'
+    gift_price_html: '<strong>$0</strong>'
+    plus_includes_standard: 'Everything in Standard, plus:'
+    standard_includes_free: 'Everything in Free, plus:'
+    multiple_groups: "up to 10 groups"
     premium_support: premium support
+    help_with_setup: help with initial setup
+    custom_subdomain: custom subdomain
+    analytics_reports: analytics reports
+    data_export: Data export
+    contact_us_html: |
+      Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
+
     custom_subdomain_html: |
       custom subdomain,<br />
       e.g. <strong>yourgroup</strong>.loomio.org
     usage_statistics: usage statistics
-    plus_price_html: 'US<strong>$179</strong>/month<br><span>or</span> $1790/year
-
-'
+    plus_price_html: '<strong>$99</strong>/month'
   password_reset:
     email_guidelines_html: |
       <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>

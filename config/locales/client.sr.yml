@@ -131,14 +131,6 @@ sr:
         quiet: Nećete primati ePoruke o novim grupama.
   mute_explanation_modal:
     mute_thread: Utišaj nit
-    body: >
-      <p>Utišati znači da <strong>nećete biti obaveštavani o predlozima</strong>,
-      ili o bilo kojoj drugoj aktivnosti u ovoj niti, sve dok Vas neko ne
-      @naznači imenom.</p>
-
-      <p>Utišane niti su skrivene na Najnovije niti i Nepročitane strane takođe.
-      D nađete Utišane niti, posetite stranicu Najnovije niti i odaberite
-      "Utišano" iz "Filter niti" menija:</p>
   inbox:
     clear: Očisti
     latest: Poslednje
@@ -199,6 +191,7 @@ sr:
     recent: Najnovije
     unread: Nepročitano
     muted: Utišano
+    start_group: 'Pokreni novu grupu!'
     explore: Javne grupe
     edit_profile: Izmeni profil
     email_settings: ePoruke
@@ -259,6 +252,7 @@ sr:
   vote_form:
     heading: Recite šta imate
     no_statement: Nema izjava.
+    statement_over_limit: 'Previše reči! Kraći stav omogućava svima da brzo shvate predlog.'
     i_agree: Slažem se
     i_agree_details: Podržavam ovo i želim da se nastavi.
     i_abstain: Suzdržan
@@ -304,13 +298,13 @@ sr:
     what_does_a_proposal_do: Predlozi omogućavaju da vidite kako se svi osećaju po pitanju određenog kursa akcije.
     proposal_ideas: Trebaju ti ideje za pisanje dobrog predloga?
     proposal_ideas_title: 9 načina da koristite Lumio predloge da preokrenete konverzaciju u akciju
-    editing_title_and_description_forbidden: 'Ne možeš promeniti naslov ili opis predloga nakon što su ljudi glasali. Ako su se detalji promenili, molim te da zatvoriš predlog i napraviš drugi.'
+    editing_title_and_description_forbidden: 'Ne možete promeniti naslov ili opis predloga nakon što su ljudi glasali. Ako su se detalji promenili, molimo Vas zatvorite predlog i iznesite novi.'
     title_placeholder: 'Npr: Hajdemo na mesec'
     title_label: Naslov
     closes_at_label: 'Zatvara se '
     closes: Zatvaranja
     details_label: Detalji
-    details_placeholder: Dajte dovoljno detalja kako bi svi znali šta tačno znači složiti se ili se ne sa tvojim predlogom
+    details_placeholder: Dajte dovoljno detalja kako bi svi znali šta tačno znači složiti se ili ne sa Vašim predlogom
   discussion_record:
     created: 'Nit {{title}} je uspešno kreirana u {{groupName}}'
     updated: 'Sačuvane promene za {{title}}'
@@ -348,18 +342,28 @@ sr:
   proposal_position_block: Blokiranje
   legacy_trial_expired_modal:
     heading: 'Hvala što ste koristili Loomio ove godine!'
+    body: >
+      <p>Zaista cenimo Vašu podršku tokom godine i totalno smo uzbuđeni oko toga
+      da učinimo Lumio još boljim u 2016.</p>
+
+      <p>Da li je Lumio koristan Vašoj grupi? Upravo smo objavili plan cena
+      i pitamo grupe koje već koriste Lumio neko vreme da odaberu plan koji im
+      odgovara.</p>
     submit: Pokaži mi pakete
   angular_welcome_modal:
     heading: 'Dobrodošli na novi Lumio!'
-    context: 'Naporno smo radili da izgradimo fantastičan novi Lumio. Sve tvoje diskusije i omiljene karakteristike Lumia su i dalje tu, plus sjajne nove promene:'
-    cleaner: 'Čistiji, intuitivniji interfejs: lakše je osnovati grupe, pozvati ljude i konfigurisati podešavanja.'
+    context: 'Naporno smo radili da izgradimo fantastičan novi Lumio. Sve tvoje diskusije i omiljene karakteristike Lumija su i dalje tu, plus sjajne nove promene:'
+    cleaner: 'Čistiji, intuitivniji interfejs: lakše je pokretati grupe, pozvati ljude i izvršiti podešavanja.'
+    interactive: 'Interaktivna tabla čini praćenje lakšim: ažuriranja se uživo dešavaju na ekranu.'
     mobile_ready: 'Dizajniran je za sve Vaše uređaje, od pametnih telefona do ličnih računara.'
+    accessible: "Pristupačno je slepim i slabovidim osobama i prevod je urađen na <a href='https://loomio.org/translation' target='_blank'>mnoštvu jezika</a>."
     emojis: 'I možete koristiti emoje!'
     ok_got_it: 'U redu, shvatam!'
   group_welcome_modal:
     creator_heading: Dobrodošli u svoju novu grupu
     member_heading: Dobrodošli na Lumio
-    member_info: 'Pogledaj ovaj video da shvatiš kako Lumio radi. Zatim pokušaj komentarisati u niti diskusije, ili napravi vlastitu! '
+    creator_info: 'Vi ste <strong>koordinator</strong> grupe, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
+    member_info: 'Pogledaj ovaj video da shvatiš kako Lumio radi. Zatim pokušaj komentarisati u niti diskusije, ili napravi vlastitu!'
     creator_footer: 'Kada ste spremni, <strong>pozovite ljude</strong> unutra.'
     ok_got_it: 'U redu, shvatam!'
   group_cover_modal:
@@ -414,6 +418,7 @@ sr:
     group_logo: Logo grupe
     new_photo: nova fotografija
     description: Opis grupe
+    description_placeholder: 'Koordinatori grupa mogu koristiti ovu oblast da opišu svrhu grupe, tako da svako zna zašto je tu.'
     discussions: Niti
     discussions_placeholder: Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.
     members: Članovi
@@ -462,56 +467,23 @@ sr:
       parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
       public: 'Privatnost: Ova grupa je vidljiva na mreži'
       aria_label: 'Privatnost grupe:  {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Odabran je poklon plan
-    body: 'Ako Vaša grupa nema budžet za plaćanje softvera, ne morate da platite pretplatu. Vaši članovi grupe biće povremeno pozvani da volonterski doniraju.'
-    confirm_selection: Raduje me zbog ljudi u mojoj grupi koji će biti pitani da podrže Lumio donacijom.
-    got_it: 'U redu, shvatam!'
-    go_back: Idi nazad
   donation_modal:
-    heading: Da li biste voleli da podržite Loomio?
     body: Lumio je društvena kompanija. Naša misija je da kreiramo svet u kome je lako svakome da se uključi u odluke koje utiču na na njega.
     contribute: Donirajte
-    got_to_group: Odbaci me do moje grupe
   gift_card:
     heading: Poklon plan
-    body: '<strong>{{name}}</strong> je grupa koja podržava poklone. Kako bi podržao Lumiu da nastavi pomagati grupama kao što je tvoja, klikni ovde:'
+    body: '<strong>{{name}}</strong> je grupa podržana poklonima. Kako bi podržao Lumio da nastavi pomagati grupama kao što je tvoja, škljocni ovde:'
     make_a_contribution: Doniraj
   trial_card:
     title: 30-odnevna proba
     choose_plan: Odaberi svoj plan plaćanja
-    in_progress_body: 'Hvala što ste isporbali Lumio sa <strong>{{name}}</strong>. Bilo kada možeš izabrati plan plaćanja koji odgovara tvojoj grupi. '
+    in_progress_body: 'Hvala što ste isprobali Lumio sa <strong>{{name}}</strong>. Uvek možeš izabrati plan plaćanja koji odgovara tvojoj grupi.'
     expired_body_html: '<strong>{{name}}</strong> je ostario/la kraj probnog perioda Lumija. Da nastavite sa upotrebom, trebate odabrati plan cene koja odgovara Vašoj grupi.'
   choose_plan_modal:
-    heading: Molim vas izaberite plan za vašu grupu
-    gift: Poklon
+    heading: Molim izaberite plan za svoju grupu
     standard: Standardno
-    plus: Plus
-    free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
-    start_group: Kreiraj grupu
-    gift_body: Za grupe bez budžeta
-    support_before: Imam čast da
-    support_link: pričam sa tobom
-    support_after: o produženju probnog perioda ili o bilo kom pitanju koje možda imaš.
-    remind_me_later: Podseti me kasnije
-    gift_donation_ask: Pitaćemo članove Vaše grupe da doniraju
-    unlimited_members: neograničeno članova
-    unlimited_decisions: neograničeno odluka
-    email_support: podrška ePorukom
-    slack_integration_html: |
-      <strong>Slack</strong> integracija
-    standard_price_html: |
-      US<strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
-    plus_body: 'Sve u Standardno, plus:'
-    multiple_groups: više grupa
-    premium_support: premijum podrška
-    plus_price_html: |
-      US<strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
     select: Odaberi
   subscription_success_modal:
-    heading: 'Hvala za postavljanje tvoje pretplate!'
-    receipt: Dobićete jednu eporuku sa potvrdom.
-    change_subscription: 'Ako ikada poželite da promenite ili otkažete svoju pretplatu ili ako imate bilo kakvih drugih pitanja,'
     contact_link: molimo kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: 'U redu, shvatam!'
@@ -532,7 +504,7 @@ sr:
     privacy: Privatnost
     group_privacy_is_open_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su javne.
     group_privacy_is_closed_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su privatne.
-    group_privacy_is_closed_public_threads_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Niti mogu biti privatne ili javne.
+    group_privacy_is_closed_public_threads_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Niti mogu biti javne ili privatne.
     group_privacy_is_secret_description: 'samo pozvani članovi mogu naći grupu, videti ko je u njoj i videti niti.'
     confirm_change_to_secret: 'Ako nastavite, sve niti u ovoj grupi i njenim podgrupama će postati privatne.'
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
@@ -540,8 +512,8 @@ sr:
     confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
     subgroup_privacy_is_open_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su javne.
     subgroup_privacy_is_closed_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su privatne.
-    subgroup_privacy_is_closed_public_threads_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Niti mogu biti privatne ili javne.
-    subgroup_privacy_is_closed_secret_parent_description: 'članovi grupe {{parent}} mogu pronaći ovu podgrupu i pitati dase pridruže. Sve niti su privatne. Samo članovi mogu videti ko je u grupi.'
+    subgroup_privacy_is_closed_public_threads_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Niti mogu biti javne ili privatne.
+    subgroup_privacy_is_closed_secret_parent_description: 'članovi {{parent}} mogu pronaći ovu podgrupu i tražiti da se pridruže. Sve niti su privatne. Samo članovi mogu videti ko je u grupi.'
     subgroup_privacy_is_secret_description: 'samo pozvani članovi mogu naći ovu podgrupu, videti ko je u njoj i videti niti.'
     advanced_settings: Napredne opcije
     how_do_people_join: Kako se ljudi pridružuju?
@@ -555,7 +527,7 @@ sr:
     private_threads: Samo članovi mogu videti diskusije
     permissions: Dozvole
     allow_public_threads: Dopusti javne niti u ovoj grupi.
-    parent_members_can_see_discussions: 'Članovi grupe {{parent}} mogu videti privatne niti.'
+    parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti privatne niti.'
     members_can_add_members: Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.
     members_can_create_subgroups: Članovi mogu kreirati podgrupe.
     members_can_edit_discussions: Članovi mogu izmeniti kontekst i naslov svake niti.
@@ -599,8 +571,8 @@ sr:
     copy_link: Kopiraj vezu
     email_addresses: Adrese ePošte
     email_addresses_placeholder: 'kao helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Kopiraj link i pošalji ga svima, za koje želiš da se pridruže grupi. Klik na link će im obezbediti neposredan pristup.'
-    email_explanation: 'Alternativno, unesi eAdrese ispod i Lumio će im poslati ePoruku pozivnice.'
+    shareable_link_explanation: Kopiraj adresu i pošalji je bilo kome ako želiš da se priključi grupi. Škljoc na adresu će im obezbediti neposredan pristup.
+    email_explanation: 'Alternativno, unesi adrese ePošte ispod i Lumio će im poslati ePoruku sa pozivnicom.'
     add_custom_message: 'Učini svoje poziv ličnim,'
     add_custom_message_link: dodaj svoju poruku.
     custom_message: Tvoja poruka
@@ -689,16 +661,17 @@ sr:
     header: ePoruke
     all_groups: Opcije svih grupa
     daily_summary_label: Dnevni izveštaj ePorukom
-    on_participation_label: Pretplati se na učestvovanje
-    on_participation_description: 'Kada se pridružite niti, o svim budućim aktivnostima bićete odmah obavešteni.'
+    daily_summary_description: 'Svakog jutra, dobićete jednu ePoruku sa svim aktivnostima koje ste propustili dan ranije. Ova ePoruka pruža jednu jednostavnu rutinu da ostanete obavešteni do dana sa Lumio aktivnostima.'
+    on_participation_label: Pretplati se na učešće
+    on_participation_description: 'Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom.'
     mentioned_label: Pominjanja
     mentioned_description: 'Kada neko želi da Vam skrene pažnju, @pomenuće Vas. Preporučujemo da ostavite ovo uključeno, tako da dobijete jednu ePoruku kada se ovo dogodi.'
     update_settings: Ažuriraj opcije svih grupa
     specific_groups: Opcije određenih grupa
     default_settings:
-      loud_description: 'Kada se pridružiš novoj grupi, ti ćes biti obavešten ePorukom <strong>kada god bude aktivnosti</strong>.'
-      normal_description: 'Kada se pridružiš novoj grupi, ti ćes biti obavešten ePorukom o <strong>novim nitima i predlozima</strong>.'
-      quiet_description: 'Kada se pridružiš novoj grupi, ti <strong>nećes biti obavešten ePorukom o aktivnosti</strong>.'
+      loud_description: 'Kada se pridružite novoj grupi, bićete obavešteni ePorukom <strong>kada god bude aktivnosti u njoj</strong>.'
+      normal_description: 'Kada se pridružite novoj grupi, bićete obavešteni ePorukom o <strong>novim nitima i predlozima</strong>.'
+      quiet_description: 'Kada se pridružite novoj grupi, <strong>nećete biti obavešteni ePorukom o aktivnostima</strong>.'
     change_default: Izmeni uobičajeno
     edit: Uredi
     messages:
@@ -706,7 +679,7 @@ sr:
   dashboard_page:
     aria_label: Tabla
     no_groups:
-      show_all: Nemaš skorih niti jer nisi član ni jedne grupe.
+      show_all: Nemaš novih niti jer nisi član ni jedne grupe.
       show_muted: Nemaš prigušenih niti jer nisi član ni jedne grupe.
       start: Start
       or: ili
@@ -723,7 +696,7 @@ sr:
       filter_threads: Filtriraj Niti
       filter_threads_aria_label: Filtriraj Niti
       dropdown_heading: Filtriraj radnu površinu
-      all: Skorašnjw niti
+      all: Skorašnje Niti
       all_aria_label: Trenutno prikazuje najnovije niti
       all_description: Vidi novije niti
       starred: Omiljene Niti
@@ -844,7 +817,7 @@ sr:
     description_name: ažirirao/la naslov predloga i opis
     closing_at_name: ažurirao/la naslov predloga i datum isteka
     closing_at_description: ažurirao/la opis predloga i datum isteka
-    closing_at_description_name: 'ažurirao/la naslov predloga, opis i datum isteka'
+    closing_at_description_name: 'ažurirao/la naslov predloga, opis i datum zatvaranja'
   proposal_outcome_created_item:
     proposal_outcome_created: 'objavio/la ishod predloga:'
   proposal_outcome_updated_item:
@@ -1076,7 +1049,7 @@ sr:
     enable:
       invite: 'Probaj novi Loomio!'
       title: Probaj novi Loomio
-      intro: 'Reizgradili smo Loomio i potrebna nam je tvoja pomoć da budemo sigurni da je fenomenalan!'
+      intro: 'Reizgradili smo Lumio i potrebna nam je tvoja pomoć da sigurno bude fenomenalan!'
       body_html: >
         <p></p>
 
@@ -1119,14 +1092,15 @@ sr:
       button_text: Prebaci na stari Loomio
   global:
     messages:
-      app_update: Nova verzija Lumia je dostupna
+      app_update: Nova verzija Lumija je takođe dostupna
       reload: Osveži
   emoji_picker:
     search: Naži jedan emoji
-    no_emojis_found: "Nema pronađenih emojia za '{{term}}'!"
+    no_emojis_found: "Nema emoja za '{{term}}'!"
   authorized_apps_page:
-    title: Odobrene aplikacije
-    no_applications: Nisi dozvolio ni jednu aplikaciju treće stranke još uvek.
+    title: Odobrene Aplikacije
+    no_applications: Niste odobrili ni jednu aplikaciju treće strane još uvek.
+    notice: "Dali ste sledećim aplikacijama dopuštenje da koriste Vaš nalog. Škljocnite na 'Opozovi' da ih isključite."
     revoke: Povuci
   registered_apps_page:
     title: Registrovane Aplikacije

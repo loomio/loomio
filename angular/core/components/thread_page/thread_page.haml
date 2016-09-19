@@ -22,7 +22,7 @@
                 %li.lmo-dropdown-menu-item{ng-if: "threadPage.canMoveThread()"}
                   %a.thread-context__dropdown-options-move.lmo-dropdown-menu-item-label{href: "", ng-click: "threadPage.moveThread()", translate: "thread_context.move_thread"}
                 %li.lmo-dropdown-menu-item
-                  %a.thread-context__dropdown-options-print{ng-click: "threadPage.print()"}
+                  %a.thread-context__dropdown-options-print{ng-click: "threadPage.requestPagePrinted()"}
                     %span{translate: "thread_context.print_thread"}
                 %li.lmo-dropdown-menu-item{ng-if: "threadPage.canDeleteThread()"}
                   %a.thread-context__dropdown-options-delete.lmo-dropdown-menu-item-label{href: "", ng-click: "threadPage.deleteThread()", translate: "thread_context.delete_thread"}
@@ -66,6 +66,7 @@
           %start_proposal_button.table-cell.thread-start-proposal-button{discussion: "threadPage.discussion"}
       %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()"}
       %previous_proposals_card{discussion: "threadPage.discussion"}
+      %members_card{group: "threadPage.discussion.group()"}
 
     .lmo-thread-column-left
       %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.activeCommentId"}

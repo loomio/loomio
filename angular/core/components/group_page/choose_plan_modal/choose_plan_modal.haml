@@ -1,0 +1,212 @@
+.choose-plan-modal
+  .modal-header
+    %modal_header_cancel_button{ng-if: "group.hasSubscription()"}
+    %h1.lmo-h1.modal-title{translate: "choose_plan_modal.heading"}
+
+  .modal-body
+    .mobile-choose-plan-modal__flex
+      .buh-flex-child
+        .choose-plan-modal__plan.choose-plan-modal--featured
+          .choose-plan-modal__plan--details
+            .choose-plan-modal__plan-name{translate: "choose_plan_modal.standard"}
+            .choose-plan-modal__plan-price
+              %span.choose-plan-modal__dollar-sign
+                $
+              19
+              %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+            .choose-plan-modal__plan-description{translate: "choose_plan_modal.standard_group_description"}
+          .choose-plan-modal__plan--button
+            %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('standard')", translate: "choose_plan_modal.select"}
+          %ul.choose-plan-modal__benefits
+            %li{translate: "choose_plan_modal.benefit_1_group"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_members"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+            %li{translate: "choose_plan_modal.benefit_slack_integration"}
+            %li{translate: "choose_plan_modal.benefit_custom_domain"}
+            %li{translate: "choose_plan_modal.benefit_analytics_reports"}
+
+      .buh-flex-child
+        .choose-plan-modal__plan.choose-plan-modal--boring
+          .choose-plan-modal__plan--details
+            .choose-plan-modal__plan-name{translate: "choose_plan_modal.pro"}
+            .choose-plan-modal__plan-price
+              %span.choose-plan-modal__dollar-sign
+                $
+              99
+              %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+            .choose-plan-modal__plan-description{translate: "choose_plan_modal.pro_group_description"}
+          .choose-plan-modal__plan--button
+            %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('plus')", translate: "choose_plan_modal.select"}
+          %ul.choose-plan-modal__benefits
+            %li{translate: "choose_plan_modal.benefit_10_groups"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_members"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+            %li{translate: "choose_plan_modal.benefit_slack_integration"}
+            %li{translate: "choose_plan_modal.benefit_custom_domain"}
+            %li{translate: "choose_plan_modal.benefit_priority_support"}
+            %li{translate: "choose_plan_modal.benefit_help_with_setup"}
+            %li{translate: "choose_plan_modal.benefit_analytics_reports"}
+            %li{translate: "choose_plan_modal.benefit_data_export"}
+
+      .buh-flex-child
+        .choose-plan-modal__plan.choose-plan-modal--boring
+          .choose-plan-modal__plan--details
+            .choose-plan-modal__plan-name{translate: "choose_plan_modal.free"}
+            .choose-plan-modal__plan-price
+              %span.choose-plan-modal__dollar-sign
+                $
+              0
+            .choose-plan-modal__plan-description{translate: "choose_plan_modal.free_group_description"}
+          .choose-plan-modal__plan--button
+            %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift{ng-disabled: "group.subscriptionKind == 'gift'", ng-click: "chooseGiftPlan()", translate: "choose_plan_modal.select"}
+          %ul.choose-plan-modal__benefits
+            %li{translate: "choose_plan_modal.benefit_1_group"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_members"}
+            %li{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+            %li{translate: "choose_plan_modal.benefit_community_support"}
+
+
+    .u-table.choose-plan-modal__table
+      .u-tr
+        .u-td.choose-plan-modal__cell--robot-image
+          &nbsp;
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          .choose-plan-modal__plan
+            .choose-plan-modal__plan--details
+              .choose-plan-modal__plan-name{translate: "choose_plan_modal.free"}
+              .choose-plan-modal__plan-price
+                %span.choose-plan-modal__dollar-sign
+                  $
+                0
+              .choose-plan-modal__plan-description{translate: "choose_plan_modal.free_group_description"}
+            .choose-plan-modal__plan--button
+              %button.choose-plan-modal__select-button.choose-plan-modal__select-button--gift{ng-disabled: "group.subscriptionKind == 'gift'", ng-click: "chooseGiftPlan()", translate: "choose_plan_modal.select"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          .choose-plan-modal__plan.choose-plan-modal--featured
+            .choose-plan-modal__plan--details
+              .choose-plan-modal__plan-name{translate: "choose_plan_modal.standard"}
+              .choose-plan-modal__plan-price
+                %span.choose-plan-modal__dollar-sign
+                  $
+                19
+                %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+              .choose-plan-modal__plan-description{translate: "choose_plan_modal.standard_group_description"}
+            .choose-plan-modal__plan--button
+              %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('standard')", translate: "choose_plan_modal.select"}
+
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          .choose-plan-modal__plan
+            .choose-plan-modal__plan--details
+              .choose-plan-modal__plan-name{translate: "choose_plan_modal.pro"}
+              .choose-plan-modal__plan-price
+                %span.choose-plan-modal__dollar-sign
+                  $
+                99
+                %span.choose-plan-modal__payment-frequency{translate: "choose_plan_modal.per_month"}
+              .choose-plan-modal__plan-description{translate: "choose_plan_modal.pro_group_description"}
+            .choose-plan-modal__plan--button
+              %button.choose-plan-modal__select-button{ng-click: "choosePaidPlan('plus')", translate: "choose_plan_modal.select"}
+
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit
+          Groups
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %strong 1
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          %strong 1
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %strong 10
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_unlimited_members"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_unlimited_decisions"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_slack_integration"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_custom_domain"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+          %i.fa.fa-check
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_priority_support"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_help_with_setup"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_analytics_reports"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+      .u-tr.choose-plan-modal__row--benefit
+        .u-td.choose-plan-modal__cell--benefit{translate: "choose_plan_modal.benefit_data_export"}
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--featured
+        .u-td.choose-plan-modal__gutter-cell
+        .u-td.choose-plan-modal__cell.choose-plan-modal--boring
+          %i.fa.fa-check
+  .modal-footer
+    .choose_plan_modal__footer
+      .choose-plan-modal__footer--row
+        .choose_plan_modal__footer--left
+          %img.choose_plan_modal__mhjbs-head{src: "/img/mhjb.png"}
+        .choose_plan_modal__footer--right
+          %span{translate: "choose_plan_modal.prices_in_us_dollars"}
+          %br
+          %span{translate: "choose_plan_modal.need_help_please"}
+          %button.choose-plan-modal__contact-link{translate: "choose_plan_modal.support_link", ng-click: "openIntercom()"}>

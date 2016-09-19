@@ -67,9 +67,12 @@ ActiveAdmin.register Group do
     column :description, :sortable => :description do |group|
       group.description
     end
-    column :is_commercial
     column :archived_at
     column :analytics_enabled
+    column :enable_experiments
+    column "Subscription" do |group|
+      group.subscription.kind if group.subscription
+    end
     actions
   end
 
@@ -78,6 +81,7 @@ ActiveAdmin.register Group do
       row :group_request
       row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
       row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
+      row('Subscription status') do |group| group.subscription.kind if group.subscription end
       group.attributes.each do |k,v|
         row k, v.inspect
       end
@@ -138,6 +142,15 @@ ActiveAdmin.register Group do
         link_to 'Unarchive this group', unarchive_admin_group_path(group), method: :post, data: {confirm: "Are you sure you wanna unarchive #{group.name}, pal?"}
       end
     end
+
+    panel 'Move group' do
+      form action: move_admin_group_path(group), method: :post do |f|
+        f.label "Parent group id / key"
+        f.input name: :parent_id, value: group.parent_id
+        f.input type: :submit, value: "Move group"
+      end
+    end
+
     active_admin_comments
   end
 
@@ -151,6 +164,7 @@ ActiveAdmin.register Group do
       f.input :max_size
       f.input :is_commercial
       f.input :analytics_enabled
+      f.input :enable_experiments
       f.input :category_id, as: :select, collection: Category.all
     end
     f.actions
@@ -158,6 +172,15 @@ ActiveAdmin.register Group do
 
   collection_action :massey_data, method: :get do
     render json: Group.visible_to_public.pluck(:id, :parent_id, :name, :description)
+  end
+
+  member_action :move, method: :post do
+    group = Group.friendly.find(params[:id])
+    if parent = Group.find_by(key: params[:parent_id]) || Group.find_by(id: params[:parent_id].to_i)
+      group.subscription&.destroy
+      group.update(parent: parent)
+    end
+    redirect_to admin_group_path(group)
   end
 
   member_action :archive, :method => :post do

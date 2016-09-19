@@ -250,7 +250,11 @@ Rails.application.routes.draw do
                                     registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  namespace(:subscriptions) { post :webhook }
+  namespace(:subscriptions) do
+    get :select_gift_plan
+    post :webhook
+  end
+  
   resources :invitations, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 

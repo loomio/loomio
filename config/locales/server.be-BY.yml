@@ -126,17 +126,12 @@ be-BY:
       all_email_addresses_belong_to_members: 'Мы не адпраўлялі запрашэння на прадстаўленыя адрасы электроннай пошты таму, што яны належаць людзям з групы.'
   pricing_page:
     header: Планы групы
-    gift: Падарунак
     standard: Стандарт
-    plus: Плюс
     free_trial_html: 'Пасля сыходу <span>30-дзённай пробнай версіі</span> мы папросім Вас абраць тарыфны план. Крэдытная картка не патрэбна.'
     get_started_for_free: Пачніце работу бясплатна
-    gift_body: Для груп без бюджету
     unlimited_members: неабмежаваная колькасць удзельникаў
     unlimited_decisions: бязмежнасць рашэнняў
     email_support: падтрымка па электроннай пошце
-    plus_body: Стандартны пакет +
-    multiple_groups: Шматлікія суполкі
     premium_support: Прэміум-падтрымка
     custom_subdomain_html: |+
       сабдамен карыстальніка,<br />
