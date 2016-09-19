@@ -197,7 +197,7 @@ describe Group do
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
                         parent: create(:group),
-                        parent_members_can_see_discussions: true) }.to raise_error
+                        parent_members_can_see_discussions: true) }.to raise_error ActiveRecord::RecordInvalid
       end
 
       it "does not error for a visible to parent subgroup" do

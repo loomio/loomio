@@ -10,19 +10,19 @@ describe Griddler::EmailsController do
       text: "Hi!",
       subject: "Greetings!",
       from: [{ name: user.name, address: user.email }],
-      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"}],
-      cc: [],
+      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@reply.loomio.example.org"}],
+      cc: [{name: user.name, address: user.email }],
       headers: {}
     }
   }}
   let(:email_params) { EmailParams.new(
     OpenStruct.new(
       to: [{
-        host: "loomiohost.org",
+        host: "reply.loomio.example.org",
         token: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
       }],
       body: "This is a comment!"),
-    reply_host: "loomiohost.org")
+    reply_host: "reply.loomio.example.org")
   }
 
   before do
