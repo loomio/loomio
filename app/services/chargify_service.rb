@@ -36,10 +36,6 @@ class ChargifyService
     subscription_from_chargify :put, { subscription: { product_handle: product_handle } }
   end
 
-  def subscription_url
-    chargify_subscription_url
-  end
-
   private
 
   def subscription_from_chargify(action, payload = {})
@@ -49,10 +45,6 @@ class ChargifyService
 
   def chargify_api_endpoint
     "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
-  end
-
-  def chargify_subscription_url
-    "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}"
   end
 
   def basic_auth
