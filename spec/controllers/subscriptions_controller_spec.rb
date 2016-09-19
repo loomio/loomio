@@ -15,7 +15,7 @@ describe SubscriptionsController do
   describe 'select_gift_plan' do
     it 'puts groups onto free plan'  do
 
-      post :select_gift_plan, group_key: group.key
+      post :select_gift_plan, params: { group_key: group.key }
       expect(group.subscription.reload.kind).to eq 'gift'
     end
 
@@ -27,7 +27,7 @@ describe SubscriptionsController do
                                 plan:                     'standard',
                                 chargify_subscription_id: 1
 
-      post :select_gift_plan, group_key: group.key
+      post :select_gift_plan, params: { group_key: group.key }
       expect(group.subscription.reload.kind).to eq 'paid'
     end
   end
