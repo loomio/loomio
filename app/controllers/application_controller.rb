@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include ProtectedFromForgery
   include LoadAndAuthorize
   include CurrentUserHelper
+  include SubscriptionHelper
 
   helper :analytics_data
   helper :locales
@@ -74,7 +75,7 @@ class ApplicationController < ActionController::Base
       session[:user_return_to]
     end
   end
-  
+
   def current_user_groups
     @current_user_groups ||= current_user_or_visitor.groups
   end
