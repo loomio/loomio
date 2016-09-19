@@ -10,7 +10,7 @@ describe Griddler::EmailsController do
       text: "Hi!",
       subject: "Greetings!",
       from: [{ name: user.name, address: user.email }],
-      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@loomiohost.org"}],
+      to: [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{reply_host}"}],
       cc: [{name: user.name, address: user.email }],
       headers: {}
     }
@@ -18,12 +18,13 @@ describe Griddler::EmailsController do
   let(:email_params) { EmailParams.new(
     OpenStruct.new(
       to: [{
-        host: "loomiohost.org",
+        host: reply_host,
         token: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
       }],
       body: "This is a comment!"),
-    reply_host: "loomiohost.org")
+    reply_host: reply_host)
   }
+  let(:reply_host) { ENV['REPLY_HOSTNAME'] || ENV['CANONICAL_HOST'] || 'loomiohost.org' }
 
   before do
     discussion.group.add_member! user
