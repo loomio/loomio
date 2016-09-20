@@ -174,6 +174,7 @@ class Ability
     can [:show,
          :print,
          :mark_as_read,
+         :dismiss,
          :subscribe_to], Discussion do |discussion|
       if discussion.archived_at.present?
         false

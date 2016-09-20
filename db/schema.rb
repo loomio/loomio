@@ -233,6 +233,7 @@ ActiveRecord::Schema.define(version: 20160919091714) do
     t.integer  "volume"
     t.boolean  "participating",            default: false, null: false
     t.boolean  "starred",                  default: false, null: false
+    t.datetime "dismissed_at"
     t.index ["discussion_id"], name: "index_motion_read_logs_on_discussion_id", using: :btree
     t.index ["participating"], name: "index_discussion_readers_on_participating", using: :btree
     t.index ["starred"], name: "index_discussion_readers_on_starred", using: :btree

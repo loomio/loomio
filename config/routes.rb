@@ -103,6 +103,7 @@ Rails.application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       patch :mark_as_read, on: :member
+      patch :dismiss, on: :member
       patch :set_volume, on: :member
       patch :star, on: :member
       patch :unstar, on: :member

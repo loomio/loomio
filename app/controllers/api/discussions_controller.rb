@@ -29,6 +29,11 @@ class Api::DiscussionsController < Api::RestfulController
     respond_with_resource
   end
 
+  def dismiss
+    service.dismiss discussion: fetch_resource, params: params, actor: current_user
+    respond_with_resource
+  end
+
   def star
     service.update_reader discussion: fetch_resource, params: { starred: true }, actor: current_user
     respond_with_resource
