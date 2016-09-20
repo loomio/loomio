@@ -287,7 +287,7 @@ describe Api::DiscussionsController do
     end
 
     it "updates dismissed_at", focus: true do
-      patch :dismiss, id: discussion.key
+      patch :dismiss, params: { id: discussion.key }
       expect(response.status).to eq 200
       expect(reader.reload.dismissed_at).to be_present
     end
