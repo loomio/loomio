@@ -9,25 +9,26 @@
   .modal-body
     %form_errors{record: "discussion"}
 
-    .thread-helptext{translate: "discussion_form.discussion_helptext", ng-show: "discussion.isNew()"}
+    .discussion-form__helptext{translate: "discussion_form.discussion_helptext", ng-show: "discussion.isNew()"}
 
-    .lmo-form-group{ng-show: "showGroupSelect"}
+    %md-input-container.lmo-input-container{ng-show: "showGroupSelect"}
       %label{for: "discussion-group-field", translate: "discussion_form.group_label"}
-      %select.discussion-form__group-select.form-control#discussion-group-field{ng-model: "discussion.groupId", ng-required: "true", ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
-        %option{value: "", translate: "discussion_form.group_placeholder"}
+      %md-select.discussion-form__group-select#discussion-group-field{ng-model: "discussion.groupId", ng-required: "true", ng-change: "restoreRemoteDraft(); updatePrivacy()"}
+        %md-option{value: "", translate: "discussion_form.group_placeholder"}
+        %md-option{ng-repeat: "group in availableGroups() track by group.id | orderBy: 'fullName'", ng-value: "group.id"}
+          {{group.fullName}}
 
-    .discussion-group-selected{ng_if: "discussion.groupId"}
-      .lmo-form-group
+    .discussion-group-selected{ng-if: "discussion.groupId"}
+      %md-input-container.lmo-input-container
         %label{for: "discussion-title", translate: "discussion_form.title_label"}
-        .lmo-relative
-          %input.discussion-form__title-input.form-control.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
+        %input.discussion-form__title-input.lmo-primary-form-input#discussion-title{placeholder: "{{ 'discussion_form.title_placeholder' | translate }}", ng-model: "discussion.title", ng-required: "true", maxlength: "255"}
         %validation_errors{subject: "discussion", field: "title"}
 
-      .lmo-form-group
-        %label{for: "discussion-context", translate: "discussion_form.context_label"}
-        .lmo-relative
-          %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
-          %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
+      .discussion-form__context-container.lmo-flex-container.lmo-relative
+        %md-input-container.lmo-input-container
+          %label{for: "discussion-context", translate: "discussion_form.context_label"}
+          %textarea.lmo-textarea.discussion-form__description-input.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
+        %emoji_picker.lmo-material-emoji-picker{target-selector: "descriptionSelector"}
 
       .discussion-form__attachments
         %attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
@@ -36,41 +37,39 @@
           %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in discussion.newAttachments() | orderBy: 'id' track by attachment.id"}
         .clearfix
 
-      .lmo-form-group{ng-show: "showPrivacyForm()"}
-        %label.lmo-form-labelled-input.discussion-form__public
-          %input{type: "radio", ng-model: "discussion.private", ng-value: "false"}
-          %span
-            %i.fa.fa-globe>
-            %strong{translate: "common.privacy.public" }
-            %span.seperator
-            %span{translate: "discussion_form.privacy_public"}
-
-        %label.lmo-form-labelled-input.discussion-form__private
-          %input{type: "radio", ng-model: "discussion.private", ng-value: "true"}
-          %span
-            %i.fa.fa-lock>
-            %strong{translate: "common.privacy.private"}
-            %span.seperator
-            %span{ng-bind-html: "privacyPrivateDescription()"}
+      %md-input-container{ng-show: "showPrivacyForm()"}
+        %md-radio-group{ng-model: "discussion.private"}
+          %md-radio-button.md-primary.discussion-form__public{value: "false", aria-label: "common.privacy.public"}
+            %span
+              %i.fa.fa-globe>
+              %strong{translate: "common.privacy.public" }
+              %span.lmo-separator
+              %span{translate: "discussion_form.privacy_public"}
+          %md-radio-button.discussion-form__private{value: "true", aria-label: "common.privacy.private"}
+            %span
+              %i.fa.fa-lock>
+              %strong{translate: "common.privacy.private"}
+              %span.lmo-separator
+              %span{ng-bind-html: "privacyPrivateDescription()"}
 
       .privacy-notice{ng-show: "!showPrivacyForm()"}
         %label.lmo-form-labelled-input{ng_hide: "discussion.private"}
           %span
             %i.fa.fa-globe>
             %strong{translate: "common.privacy.public"}
-            %span.seperator
+            %span.lmo-separator
             %span{translate: "discussion_form.privacy_public"}
 
         %label.lmo-form-labelled-input{ng-show: "discussion.private"}
           %span
             %i.fa.fa-lock>
             %strong{translate: "common.privacy.private"}
-            %span.seperator
+            %span.lmo-separator
             %span{ng-bind-html: "privacyPrivateDescription()"}
 
-  .modal-footer
-    %button.pull-right.lmo-btn--submit.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
+  .lmo-modal-footer
+    %md-button.md-primary.md-raised.pull-right.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()", aria-label: "discussion_form.new_discussion_submit"}
     %a.discussion-form__formatting-help{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
       %span{translate: "common.formatting_help.label"}
-    %button.lmo-btn--primary.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "discussion_form.edit_discussion_submit", ng-hide: "discussion.isNew()" }
-    %button.lmo-btn--cancel.discussion-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+    %md-button.md-primary.md-raised.pull-right.discussion-form__update{type: "submit", ng-disabled: "submitIsDisabled", translate: "discussion_form.edit_discussion_submit", ng-hide: "discussion.isNew()", aria-label: "discussion_form.edit_discussion_submit"}
+    %md-button.md-raised.pull-left.discussion-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel", aria-label: "common.action.cancel"}

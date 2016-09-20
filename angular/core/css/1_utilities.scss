@@ -272,9 +272,57 @@
   padding-top: $navbar-height;
 }
 
+.lmo-input-container {
+  width: 100%;
+}
+
+.lmo-flex-container {
+  @include displayFlex;
+  align-items: flex-start; // | flex-end | center | baseline | stretch;
+}
+
+.lmo-separator {
+  display: inline-block;
+  width: 10px;
+}
+
+.lmo-modal-header {
+  border-bottom: 1px solid $modal-border-color;
+}
+
+.lmo-modal-footer {
+  text-align: right;
+  padding: 5px;
+  border-top: 1px solid $modal-border-color;
+}
+
+.lmo-material-label {
+  position: static;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+}
+
+.lmo-material-emoji-picker {
+  margin-bottom: 24px;
+  .emoji-picker__menu { margin-bottom: 24px; }
+}
+
 img.emojione {
   width: 25px;
   height: 25px;
+}
+
+md-dialog {
+  min-width: 320px;
+  background-color: $modal-background-color;
+}
+
+md-checkbox {
+  display: block;
+}
+
+md-input-container .md-errors-spacer {
+  min-height: 0px;
 }
 
 @keyframes fadeIn {

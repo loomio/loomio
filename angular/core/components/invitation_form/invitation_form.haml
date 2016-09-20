@@ -4,34 +4,40 @@
     %modal_header_cancel_button
     %h1.lmo-h1.modal-title{translate: "invitation_form.invite_people"}
   .modal-body
-    %label{for: "group-select", translate: "invitation_form.group"}
-    %select.invitation-form__group-select.form-control#group-select{ng-model: "form.groupId", ng-required: true, ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'", ng-change: "restoreRemoteDraft(); fetchShareableInvitation()"}
-      %option{value: "", translate: "invitation_form.group_placeholder"}
+    %md-input-container.lmo-input-container
+      %label{for: "group-select", translate: "invitation_form.group"}
+      %md-select.invitation-form__group-select#group-select{ng-model: "form.groupId", ng-required: true, ng-change: "restoreRemoteDraft(); fetchShareableInvitation()"}
+        %md-option{value: "", translate: "invitation_form.group_placeholder"}
+        %md-option{ng-repeat: "group in availableGroups() | orderBy: 'fullName'", ng-value: "group.id"}
+          {{group.fullName}}
 
-    %label{translate: "invitation_form.shareable_link"}
     .invitation-form__flex
-      %input.invitation-form__shareable-link-field.form-control{value: "{{invitationLink()}}"}
-      %button.invitation-form__copy-button.lmo-btn--primary{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
+      %md-input-container.invitation-form__shareable-link
+        %label{translate: "invitation_form.shareable_link"}
+        %input.invitation-form__shareable-link-field{ng-disabled: "true", value: "{{invitationLink()}}"}
+      %md-button.md-raised.md-primary.invitation-form__copy-button{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
         {{ 'invitation_form.copy_link' | translate}}
 
     .invitation-form__shareable-link-explanation{translate: "invitation_form.shareable_link_explanation"}
     .invitation-form__email-explanation{translate: "invitation_form.email_explanation"}
 
-    %label{for: "email-addresses", translate: "invitation_form.email_addresses"}
-    %textarea.lmo-textarea.invitation-form__email-addresses.form-control#email-addresses{ng-model: "form.emails", ng-required: true, msd-elastic: "true", rows: 1, placeholder: "{{ 'invitation_form.email_addresses_placeholder' | translate }}" }
-    %validation_errors.invitation-form__validation-errors{subject: "form", field: "emails"}
-    .invitation-form__no-invitations.lmo-validation-error{ng-show: "noInvitations", translate: "invitation_form.messages.no_invitations"}
-    .invitation-form__max-invitations.lmo-validation-error{ng-show: "maxInvitations()", translate: "invitation_form.messages.max_invitations"}
+    %md-input-container.lmo-input-container
+      %label{for: "email-addresses", translate: "invitation_form.email_addresses"}
+      %textarea.lmo-textarea.invitation-form__email-addresses#email-addresses{ng-model: "form.emails", ng-required: true, msd-elastic: "true", rows: 1, placeholder: "{{ 'invitation_form.email_addresses_placeholder' | translate }}" }
+      %validation_errors.invitation-form__validation-errors{subject: "form", field: "emails"}
+      .invitation-form__no-invitations.lmo-validation-error{ng-show: "noInvitations", translate: "invitation_form.messages.no_invitations"}
+      .invitation-form__max-invitations.lmo-validation-error{ng-show: "maxInvitations()", translate: "invitation_form.messages.max_invitations"}
+
     %p{ng-if: "!showCustomMessageField()"}
       %span{translate: "invitation_form.add_custom_message"}>
       %button.invitation-form__add-custom-message-link.lmo-btn-link--blue{translate: "invitation_form.add_custom_message_link", ng-click: "addCustomMessage()"}>
-    .blank{ng-if: "showCustomMessageField()"}
+    %md-input-container.lmo-input-container{ng-if: "showCustomMessageField()"}
       %label{for: "custom-message", translate: "invitation_form.custom_message"}
-      %textarea.lmo-textarea.invitation-form__custom-message.form-control#custom-message{ng-model: "form.message", msd-elastic: "true", placeholder: "{{ 'invitation_form.custom_message_placeholder' | translate }}"}
+      %textarea.lmo-textarea.invitation-form__custom-message#custom-message{ng-model: "form.message", msd-elastic: "true", placeholder: "{{ 'invitation_form.custom_message_placeholder' | translate }}"}
     %p{ng-if: "form.group().isSubgroup()"}
       %button.invitation-form__add-members.lmo-btn-link--blue{translate: "invitation_form.add_members", ng-click: "addMembers()"}>
       %span{translate: "invitation_form.from_parent_group", translate-values: "{name: form.group().parentName()}"}
 
-  .modal-footer
-    %button.invitation-form__submit.lmo-btn--submit{ng-click: "submit()", translate: "{{submitText()}}", translate-value-count: "{{invitationsCount()}}", ng-disabled: "invalidEmail()"}
-    %button.lmo-btn--cancel{ng-click: "$close()", translate: "common.action.cancel"}
+  .lmo-modal-footer
+    %md-button.md-raised.md-primary.invitation-form__submit{ng-click: "submit()", translate: "{{submitText()}}", translate-value-count: "{{invitationsCount()}}", ng-disabled: "invalidEmail()", aria-label: "{{submitText()}}"}
+    %md-button.md-raised.pull-left{ng-click: "$close()", translate: "common.action.cancel", aria-label: "common.action.cancel"}

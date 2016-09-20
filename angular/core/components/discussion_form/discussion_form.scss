@@ -1,6 +1,11 @@
 .discussion-form__formatting-help {
   margin-right: 10px;
-  line-height: 30px;
+  cursor: pointer;
+  line-height: 48px;
+}
+
+.discussion-form__context-container {
+  align-items: flex-end;
 }
 
 .discussion-form__attachments {
@@ -15,7 +20,10 @@
   margin-right: 10px;
 }
 
+.discussion-form__helptext {
+  margin-bottom: 15px;
+}
+
 @media (max-width: $small-max-px){
   .discussion-form__formatting-help { display: none; }
-  .thread-helptext { display: none; }
 }

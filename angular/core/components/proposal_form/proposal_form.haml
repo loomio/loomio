@@ -12,22 +12,20 @@
     %form_errors{record: "proposal"}
 
     %fieldset{ng-disabled: "!proposal.canBeEdited()"}
-      .lmo-form-group
+      %md-input-container
         %label{for: "proposal-title-field", translate: "proposal_form.title_label"}
-        .lmo-relative
-          %input.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}
+        %input.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}
         %validation_errors{subject: "proposal", field: "name"}
         .proposal-form__proposal_ideas{ng-if: "proposal.isNew()"}
           %a{href: "{{nineWaysArticleLink()}}", title: "{{ 'proposal_form.proposal_ideas_title' | translate }}", target: "_blank"}
             %span{translate: "proposal_form.proposal_ideas"}
 
-      .lmo-form-group
+      %md-input-container
         %label{for: "proposal-details-field", translate: "proposal_form.details_label"}
-        .lmo-relative
-          %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{debounce: 150}"}
-          %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
+        %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{debounce: 150}"}
+        %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
 
-      .proposal-form__attachments
+      .proposal-form__attachment
         %attachment_form.proposal-form__attachment-form{model: "proposal", ng-if: "proposal.discussion().groupId", show-label: "true"}
         %validation_errors.proposal-form__attachment-errors{subject: "proposal", field: "file"}
         %label.lmo-form-labelled-input
@@ -37,7 +35,7 @@
       %closing_at_field{proposal: "proposal"}
       %validation_errors{subject: "proposal", field: "closingAt"}
 
-  .modal-footer
+  .lmo-modal-footer
     %button.lmo-btn--submit.proposal-form__start-btn{ng-if: "proposal.isNew()", type: "submit", translate: "proposal_form.start_proposal"}
     %button.lmo-btn--submit.proposal-form__save-changes-btn{ng-if: "!proposal.isNew()", type: "submit", translate: "common.action.save_changes"}
     %button.lmo-btn--cancel.proposal-form__cancel-btn{ng-click: "$close($event)", type: "button", translate: "common.action.cancel"}
