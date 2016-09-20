@@ -151,6 +151,12 @@ en:
       <p>Muted threads are hidden from <strong>Recent</strong> and <strong>Unread</strong> pages too. To find your Muted threads, select the <strong>Muted</strong> option in the sidebar:</p>
     image_alt: Muted threads option in sidebar
 
+  dismiss_explanation_modal:
+    dismiss_thread: Dismiss thread
+    body_html: |
+      <p>Dismissing a thread removes it from your unread items. If any new
+        activity occurs in the thread, it will show as unread again.</p>
+
   inbox:
     clear: 'Clear'
     latest: 'Latest'
@@ -840,6 +846,8 @@ en:
     view_recent: View all recent threads?
     load_more: Load more threads
     mark_as_read: Mark as read
+    dismiss: Dismiss
+    thread_dismissed: Thread dismissed.
     explain_mute:
       title: You haven't muted any threads yet.
       explanation_html: |

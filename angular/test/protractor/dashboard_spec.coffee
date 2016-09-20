@@ -18,6 +18,16 @@ describe 'Dashboard Page', ->
     page.expectNoText('.dashboard-page__collections', 'Muted group discussion')
     page.expectNoText('.dashboard-page__collections', 'Old discussion')
 
+describe 'dismiss', ->
+  it 'dismisses a thread', ->
+    page.loadPath 'setup_dashboard'
+    threadPreview = page.findFirst('.thread-preview')
+    browser.actions().mouseMove(threadPreview).perform()
+    page.clickFirst '.thread-preview__dismiss'
+    page.expectText '.dismiss-explanation-modal__title', 'Dismiss thread'
+    page.click '.dismiss-explanation-modal__dismiss-thread'
+    page.expectFlash 'Thread dismissed.'
+
 describe 'muted threads', ->
   threadPreview = page.findFirst('.thread-preview')
 

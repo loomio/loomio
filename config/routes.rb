@@ -105,6 +105,7 @@ Loomio::Application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       patch :mark_as_read, on: :member
+      patch :dismiss, on: :member
       patch :set_volume, on: :member
       patch :star, on: :member
       patch :unstar, on: :member
@@ -185,7 +186,7 @@ Loomio::Application.routes.draw do
     get :select_gift_plan
     post :webhook
   end
-  
+
   resources :invitations, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 

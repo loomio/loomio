@@ -79,6 +79,11 @@ class DiscussionService
     DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at
   end
 
+  def self.dismiss(discussion:, params:, actor:)
+    actor.ability.authorize! :dismiss, discussion
+    DiscussionReader.for(user: actor, discussion: discussion).dismiss!
+  end
+
   def self.moved_discussion_privacy_for(discussion, destination)
     case destination.discussion_privacy_options
     when 'public_only'  then false

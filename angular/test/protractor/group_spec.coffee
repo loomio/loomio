@@ -92,7 +92,7 @@ describe 'Group Page', ->
 
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
-        page.expectNoElement('.thread-preview__mark-as-read')
+        page.expectNoElement('.thread-preview__dismiss')
         page.expectNoElement('.thread-preview__mute')
 
       it 'open group displays previous proposals', ->
