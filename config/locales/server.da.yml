@@ -13,17 +13,11 @@ da:
       subject: '%{member} har inviteret dig til at blive medlem af %{group_name} på Loomio'
     to_start_group:
       subject: 'Indstil din nye Loomio-gruppe: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} har tilføjet dig til %{which_group}'
-      content: '%{who} har tilføjet dig til %{which_group} på Loomio. Klik her for at gå til gruppen:'
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     view_comment: Klik her for at se kommentaren på Loomio
     view_discussion: Klik her for at se denne diskussion
-    view_group: Klik her for at se gruppen på Loomio
     view_proposal: Se dette forslag på Loomio
-    create_discussion:
-      intro: '%{who} startede en diskussion i %{which_group}:'
     create_proposal:
       intro: Et nyt forslag blev oprettet i en Loomio-gruppe som du tilhører.
       closes_in: 'Lukker om '
@@ -37,24 +31,12 @@ da:
       mark_as_read: Marker som læst
       thanks_for_reading: 'Tak fordi du læste, hav en god dag!'
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
-    group_membership_approved:
-      intro: "Din anmodning om adgang til gruppen '%{group_name}' på Loomio er blevet godkendt."
-    invitation:
-      hi: 'Hej %{name},'
-      intro: 'Klik på linket herunder for at opsætte din gruppe %{group_name}:'
-      closing_message: 'Hvis du har nogle spørgsmål eller hvis der er noget vi kan gøre for at hjælpe dig med at komme i gang, så vil vi elske at høre fra dig - du skal blot besvare denne e-mail.'
-      thanks: |
-        Tak!
-        Loomio-holdet
     membership_request:
       intro: '%{name} (%{email}) har anmodet om adgang til en af dine Loomio-grupper.'
       subject: '%{who} har anmodet om medlemskab af %{which_group}'
       view_group: Du kan godkende eller afvise anmodningen her
-    mentioned:
-      context: '%{author_name} omtalte dig under diskussion af "%{discussion_title}"'
     new_motion_created:
       subject: 'Forslag: %{proposal_title}'
-      context: '%{author} oprettede et forslag i %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Forslaget er lukket.
       specify_outcome_and_notify_group: 'Opret et resultat og send det til din gruppe!'
@@ -69,12 +51,10 @@ da:
       summary: Opsummering
     thread_mailer:
       change_preferences: 'Rediger dine e-mail-indstillinger:'
-      new_motion: '%{who} foreslog:'
       motion_closing_soon: 'Forslag lukket om 24 timer:'
       proposal_closed: 'Forslag lukket:'
       specify_outcome_html: "Dit forslag er lukket. <a href='%{link}'>Angiv et resultat</a> for at lade alle vide hvad resultatet blev."
       specify_outcome: 'Dit forslag er lukket. Angiv et resultat for at lade alle vide hvad resultatet er:'
-      outcome_created: '%{who} har angivet resultatet af et forslag:'
       you_agreed: 'Dit standpunkt var %{past_tense_position}'
   footer:
     about: Om

@@ -1,1 +1,4 @@
-cs: {}
+cs:
+  navigation:
+    help: Nápověda
+    privacy: Soukromí

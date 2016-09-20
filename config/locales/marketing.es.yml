@@ -21,7 +21,6 @@ es:
     trademark_statement: '© 2016 Loomio Cooperative Limited. Todos los derechos reservados. "Loomio"es una marca registrada de Loomio Cooperative Limited.'
   marketing:
     hero:
-      dilemma_html: 'Tomar decisiones con tu grupo</nobr> <nobr>no debería</nobr> <nobr>ser tan difícil</nobr>.'
       solution: 'Con Loomio puedes tomar decisiones sin una larga lista de emails o reuniones. '
     make_decisions_html: 'Loomio es un lugar para que tu grupo <strong>tome decisiones juntos</strong>.'
     gather:
@@ -50,7 +49,11 @@ es:
       link_text: Lee más sobre como un grupo comunitario en UK sigue trabajando entre reuniones para crear una sociedad más democrática...
     pathways:
       heading: Incrementa la participación y satisfacción de tu equipo
-      quote: "Loomio cambia fundamentalmente los niveles de satisfacción y participación del equipo. Parecería ser mágico. Naturalmente soporta la evolución de la organización, y es generado por las mismas personas. ¿Qué más puedes pedir siendo el director general?  \n"
+      quote: >
+        Loomio cambia fundamentalmente los niveles de satisfacción
+        y participación del equipo. Parecería ser mágico. Naturalmente soporta la
+        evolución de la organización, y es generado por las mismas personas. ¿Qué
+        más puedes pedir siendo el director general?
       link_text: 'Lee más sobre como una gran ONG en Nueva Zelanda usa Loomio para incluir al equipo en las decisiones... '
     welsh_government:
       heading: Evoluciona la consulta a los ciudadanos y a las partes interesadas
@@ -63,7 +66,12 @@ es:
       link_text: Lee más sobre como la Asamblea Nacional par Gales uso Loomio para consultar con proveedores y usuarios de servicios...
     ouishare:
       heading: 'Escalar globalmente una comunidad colaborativa '
-      quote: "Necesitas crear confianza. La gente quiere entender lo que está pasando. Hay una necesidad de documentación: poder mostrar que una decisión fue tomada, que todos estaban de acuerdo. Y es genial para la gente nueva que se suma, el poder ver lo que ya ha sido discutido. Es critico el poder convertirse en una organización de aprendizaje. \n"
+      quote: >
+        Necesitas crear confianza. La gente quiere entender lo que está pasando.
+        Hay una necesidad de documentación: poder mostrar que una decisión fue
+        tomada, que todos estaban de acuerdo. Y es genial para la gente nueva que
+        se suma, el poder ver lo que ya ha sido discutido. Es critico el poder
+        convertirse en una organización de aprendizaje.
       link_text: 'Lee más sobre como OuiShare, un gran movimiento social que se expande por diferentes países, usa Loomio para operar transparente y colectivamente...'
     urban_adventures:
       heading: Colaboración remota para equipos distribuidos
@@ -82,6 +90,7 @@ es:
       deliberation_explanation: Loomio usa un simple marco de trabajo para la toma de decisiones diseñado para la deliberación constructiva. No te conformes con el conflicto - trabaja juntos para encontrar una mejor solución.
       iterate_heading: Itere propuestas para avanzar las ideas.
       iterate_explanation: 'Tomar decisiones juntos puede ser poderoso, aún cuando una propuesta inicial no gana consenso. Trabaja a través de los desacuerdos para evolucionar y sintetizar nuevas soluciones.'
+      deadlines_heading: Las fechas limites crean el impulso.
       deadlines_explanation: 'Las propuestas de Loomio están atadas a fechas para asegurar que tu grupo pueda moverse adelante sin demorarse. Todos conocen el plazo para contribuir, con recordatorios automáticos antes de la fecha de cierre.  '
       fewer_meetings_heading: 'Se productivo sin reuniones. '
       fewer_meetings_explanation: Continua las conversaciones sin necesidad de estar en el mismo cuarto. Haz más cosas online para poder ahorrar tiempo en las reuniones para lo que necesita suceder cara a cara.

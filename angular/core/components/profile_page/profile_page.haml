@@ -35,7 +35,7 @@
 
       .lmo-vertical-spacer
         %button.profile-page__change-password.lmo-link{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
-    .profile-page-card{ng-if: "profilePage.canDeactivateUser()"}
+    .profile-page-card
       %h3.lmo-h3{translate: "profile_page.deactivate_user.title"}
 
-      %button.lmo-link.lmo-vertical-spacer{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}
+      %button.profile-page__deactivate.lmo-link.lmo-vertical-spacer{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}

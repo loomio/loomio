@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     plan: group.subscriptionKind
     subscription_kind: group.subscriptionKind
     subscription_plan: group.subscriptionPlan
-    subscription_expires_at: group.subscriptionExpiresAt.format()
+    subscription_expires_at: group.subscriptionExpiresAt? && group.subscriptionExpiresAt.format()
     creator_id: group.creatorId
     group_privacy: group.groupPrivacy
     cohort_id: group.cohortId
@@ -73,10 +73,14 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       else
         $window.location = LmoUrlService.contactForm()
 
-  $rootScope.$on 'analyticsSetGroup', (event, group) ->
-    service.updateWithGroup(group)
+  if $window? and $window.Intercom?
+    $rootScope.$watch ->
+      Session.currentGroup? && mapGroup(Session.currentGroup)
+    , ->
+      Session.currentGroup? && service.updateWithGroup(Session.currentGroup)
+    , true
 
-  $rootScope.$on 'logout', (event, group) ->
-    service.shutdown()
+    $rootScope.$on 'logout', (event, group) ->
+      service.shutdown()
 
   service

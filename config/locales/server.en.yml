@@ -5,6 +5,11 @@ en:
       must_close_in_future: Proposal must close in the future.
       one_at_a_time: There is another active proposal.
 
+  subscriptions:
+    gift_plan_selected_for_group_html: |
+      <h1>Success.</h1>
+      <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
+
   email:
     reset_password:
       greeting: |
@@ -26,24 +31,34 @@ en:
       content: 'You''ve been invited to participate in the discussion: %{discussion}'
       message_intro: "%{who} says:"
       link: Join the discussion
+    value_proposition: "Loomio is a place for groups to make decisions together"
+    view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on Loomio"
+      invitation_text: "%{member} has invited you to join their group %{group_name}."
       invitation_text_html: "has invited you to join their group"
+      link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
-      place_for_groups: "Loomio is a place for groups to"
-      make_decisions_together: "make decisions together"
     resend_to_join_group:
       subject: "%{member} is still waiting for you to join %{group_name} on Loomio"
     to_start_group:
-      subject: 'Set up your new Loomio group: %{group_name}'
-    user_added_to_a_group:
-      subject: "%{who} has added you to %{which_group}"
-      content: "%{who} has added you to %{which_group} on Loomio. Click here to go to the group:"
+      subject: "Set up your new Loomio group: %{group_name}"
+      hi: "Hi %{name},"
+      intro: "Click the link below to set up your group %{group_name}:"
+      intro_html: "Click below to set up your group:"
+      start_group: "Start my group"
+      closing_message: "If you need help or have a question, just reply to this email."
+      thanks: "Thanks,"
+      loomio_team: "The Loomio Team"
+    user_added_to_group:
+      subject: "%{who} has added you to %{which_group} on Loomio"
+      content: "%{who} has added you to %{which_group}."
+      content_html: "<strong>%{who}</strong> has added you to <strong>%{which_group}</strong>."
+      link_help: "Click the link below to go to the group:"
     unsubscribe: 'Unsubscribe or change your email preferences:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     view_comment: Click here to view the comment on Loomio
     view_discussion: Click here to view this discussion
-    view_group: Click here to view the group on Loomio
     view_proposal: View this proposal on Loomio
     create_discussion:
       intro_html: "started a thread:"
@@ -70,19 +85,18 @@ en:
     new_comment:
       context: 'commented in'
     group_membership_approved:
-      intro: Your request for access to the group '%{group_name}' on Loomio has been approved.
-      subject: "%{prefix} Membership approved"
-    invitation:
-      hi: Hi %{name},
-      intro: 'Click the link below to set up your group %{group_name}:'
-      closing_message: If you’ve got any questions or if there’s anything at all we can do to help you get up and running, we’d love to hear from you - just reply to this email.
-      thanks: |
-        Thanks!
-        The Loomio Team
+      intro: "Your request for access to the group %{group_name} has been approved."
+      intro_html: "Your request for access to the group <strong>%{group_name}</strong> has been approved."
+      link_help: "Click the link below to join %{group_name} and get started:"
+      subject: "Your request to join %{group_name} on Loomio has been approved"
+      join_group: "Join group"
+      view_group_text: "Click below to view the group on Loomio:"
     membership_request:
       intro: "%{name} (%{email}) has requested access to one of your Loomio groups."
+      intro_html: has requested access to one of your groups.
       subject: "%{who} has requested to join %{which_group}"
       view_group: You can approve or decline the request here
+      button_text: View request
     mentioned:
       context_html: "mentioned you while discussing"
       context: "%{author_name} mentioned you while discussing %{discussion_title}"
@@ -124,9 +138,11 @@ en:
       you_agreed: You %{past_tense_position}
     analytics:
       subject: "%{which_group}'s week on Loomio"
-      title: "Your weekly summary for %{since} - %{till}"
+      title: "Your summary for the week starting %{since}"
+      table_header: "Name | Motions created | Discussions created | Comments created | Votes created"
       stats: "<strong>%{active_members}</strong> out of <strong>%{group_members}</strong> in your group were active in the last week. Your group raised <strong>%{motions}</strong> and made <strong>%{comments}</strong> in <strong>%{discussions}</strong>."
       contact_us: "Looking for more stats? <a href='%{contact_link}'>Get in touch</a>."
+      no_activity: "Want to talk with one of our collaboration coaches about getting the most out of Loomio? <a href='%{contact_link}'>Get in touch</a>"
       trial_subscription: "%{which_group} is on a <strong>free trial</strong> ending <strong>%{expires_at}</strong>. You can choose a subscription plan <a href='%{subscription_link}'>here</a>."
       trial_expired: "%{which_group} has reached the end of its free Loomio trial. "
       heart: "❤ from team Loomio"
@@ -175,31 +191,38 @@ en:
       all_email_addresses_belong_to_members: "We didn't send invitations to the email addresses provided because they belong to people already in the group."
   pricing_page:
     header: Group plans
-    gift: Gift
+    gift: Free
     standard: Standard
-    plus: Plus
+    plus: Pro
     free_trial_html: We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required.
     get_started_for_free: Get started for free
-    gift_body: For groups without a budget
-    gift_donation_ask: We’ll ask your group members to donate
+    gift_body: Donation supported plan for community groups.
+    standard_body_html: Everything you need for <nobr>one group.</nobr>
+    pro_body_html: For organisations with <nobr>multiple groups.</nobr>
+    one_group: one group
     unlimited_members: unlimited members
     unlimited_decisions: unlimited decisions
     email_support: email support
     slack_integration_html: |
       <strong>Slack</strong> integration
-    standard_price_html: 'US<strong>$19</strong>/month<br><span>or</span> $190/year
-
-'
-    plus_body: 'Everything in Standard, plus:'
-    multiple_groups: multiple groups
+    standard_price_html: '<strong>$19</strong>/month'
+    gift_price_html: '<strong>$0</strong>'
+    plus_includes_standard: 'Everything in Standard, plus:'
+    standard_includes_free: 'Everything in Free, plus:'
+    multiple_groups: "up to 10 groups"
     premium_support: premium support
+    help_with_setup: help with initial setup
+    custom_subdomain: custom subdomain
+    analytics_reports: analytics reports
+    data_export: Data export
+    contact_us_html: |
+      Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
+
     custom_subdomain_html: |
       custom subdomain,<br />
       e.g. <strong>yourgroup</strong>.loomio.org
     usage_statistics: usage statistics
-    plus_price_html: 'US<strong>$179</strong>/month<br><span>or</span> $1790/year
-
-'
+    plus_price_html: '<strong>$99</strong>/month'
   password_reset:
     email_guidelines_html: |
       <p>Enter the email address for your Loomio account into the field below and you will be sent a password reset link.</p>

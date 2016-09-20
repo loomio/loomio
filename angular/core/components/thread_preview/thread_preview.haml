@@ -16,7 +16,7 @@
       %span{ng-if: "thread.activeProposal()", translate: "dashboard_page.aria_thread.current_proposal", translate-value-name: "{{ thread.activeProposal().name }}"}
       %span{ng-if: "thread.activeProposal() && lastVoteByCurrentUser(thread)", translate: "dashboard_page.aria_thread.you_voted", translate-value-position: " {{lastVoteByCurrentUser(thread).position}} "}
 
-    .screen-only{aria-hidden: "true"}
+    .thread-preview__screen-only.screen-only{aria-hidden: "true"}
       .thread-preview__text-container
         .thread-preview__title{ng-class: "{'thread-preview--unread': thread.isUnread() }"}
           {{thread.title}}
@@ -39,10 +39,10 @@
     %star_toggle{thread: "thread", aria-hidden: "true"}
 
   .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
-    %button.thread-preview__mark-as-read{ng-click: "thread.markAsRead()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.mark_as_read' | translate }}"}>
+    %button.thread-preview__dismiss{ng-click: "dismiss()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
       %i.fa.fa-check>
-    %button.thread-preview__mute{ng-click: "changeVolume('mute')", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}" }>
+    %button.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}" }>
       %i.fa.fa-volume-off
       %i.fa.fa-times>
-    %button.thread-preview__mute{ng-click: "changeVolume('normal')", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}"}>
+    %button.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}"}>
       %i.fa.fa-volume-down>

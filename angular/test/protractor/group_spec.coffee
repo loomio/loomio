@@ -3,6 +3,14 @@ describe 'Group Page', ->
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
+  describe 'visiting a parent group as a subgroup member', ->
+    it 'displays parent group in sidebar if member of a subgroup', ->
+      page.loadPath 'visit_group_as_subgroup_member'
+      page.expectText '.group-theme__name', 'Point Break'
+      page.expectElement '.join-group-button__ask-to-join-group'
+      page.click '.navbar__sidenav-toggle'
+      page.expectElement '.sidebar__list-item--selected'
+
   describe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
@@ -21,7 +29,6 @@ describe 'Group Page', ->
       staticPage.click  '#create-account'
 
       page.expectFlash 'Welcome! You have signed up successfully'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
 
     it 'allows starting a group with an existing email', ->
@@ -40,7 +47,6 @@ describe 'Group Page', ->
       staticPage.click '#sign-in-btn'
 
       page.expectFlash 'Signed in successfully'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-theme__name', 'My First Group'
 
   describe 'non-member views group', ->
@@ -86,7 +92,7 @@ describe 'Group Page', ->
 
       it 'does not allow mark as read or mute', ->
         page.loadPath('view_open_group_as_visitor')
-        page.expectNoElement('.thread-preview__mark-as-read')
+        page.expectNoElement('.thread-preview__dismiss')
         page.expectNoElement('.thread-preview__mute')
 
       it 'open group displays previous proposals', ->
@@ -131,7 +137,6 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Open please'
       page.click '.group-form__submit-button'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Open'
 
     it 'shows the welcome modal when group is created', ->
@@ -164,7 +169,6 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Closed please'
       page.click '.group-form__submit-button'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Closed'
 
     it 'starts a secret group', ->
@@ -179,7 +183,6 @@ describe 'Group Page', ->
 
       page.fillIn '#group-name', 'Secret please'
       page.click '.group-form__submit-button'
-      page.click '.group-welcome-modal__close-button'
       page.expectText '.group-privacy-button', 'Secret'
 
   describe 'starting a subgroup', ->
@@ -274,7 +277,7 @@ describe 'Group Page', ->
       page.fillIn('#group-name', 'Clean Dancing Shoes')
       page.fillIn('#group-description', 'Dusty sandles')
       page.click('.group-form__submit-button')
-      page.expectFlash('Group updated')
+      # page.expectFlash('Group updated')
       page.expectText('.group-theme__name', 'Clean Dancing Shoes')
       page.expectText('.group-page__description-text', 'Dusty sandles')
 
@@ -354,6 +357,18 @@ describe 'Group Page', ->
       page.expectText('.leave-group-form', 'You cannot leave this group')
       page.click('.leave-group-form__add-coordinator')
       page.expectElement('.memberships-page__memberships h2')
+
+    it 'destroys group-related events and notifications', ->
+      page.loadPath 'setup_membership_request_approved_notification'
+      page.click '.group-welcome-modal__close-button'
+      page.click '.notifications__button'
+      page.expectText '.notifications__dropdown', 'approved your request'
+      page.click '.notifications__button'
+      page.click '.group-page-actions__button',
+                 '.group-page-actions__leave-group',
+                 '.leave-group-form__submit'
+      page.click '.notifications__button'
+      page.expectText '.notifications__dropdown', "You don't have any notifications"
 
   describe 'archiving a group', ->
 

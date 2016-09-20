@@ -79,7 +79,7 @@ class DevelopmentController < ApplicationController
 
   def setup_new_group
     group = Group.new(name: 'Fresh group')
-    StartGroupService.start_group(group)
+    GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: group)
     membership.experienced! 'welcomeModal'
@@ -90,6 +90,13 @@ class DevelopmentController < ApplicationController
   def setup_group
     sign_in patrick
     test_group.add_member! emilio
+    redirect_to group_url(test_group)
+  end
+
+  def setup_membership_request_approved_notification
+    sign_in max
+    membership_request = MembershipRequest.new(user: max, group: test_group)
+    MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
     redirect_to group_url(test_group)
   end
 
@@ -107,8 +114,9 @@ class DevelopmentController < ApplicationController
                               is_visible_to_public: true,
                               membership_granted_upon: :request)
     group = Group.new(name: 'Welcomed group')
-    StartGroupService.start_group(another_group)
-    StartGroupService.start_group(group)
+    GroupService.create(group: another_group, actor: LoggedOutUser.new)
+    GroupService.create(group: group, actor: patrick)
+    patrick.experienced!('welcomeModal', false)
     group.add_admin! patrick
     sign_in patrick
     redirect_to group_url(group)
@@ -163,34 +171,30 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion, from: 5)
   end
 
-  def setup_group_on_trial_admin
-    group_on_trial = Group.new(name: 'Ghostbusters', is_visible_to_public: true)
-    GroupService.create(group: group_on_trial, actor: patrick)
-    membership = Membership.find_by(user: patrick, group: group_on_trial)
-    membership.experienced! 'welcomeModal'
-    group_on_trial.add_member! jennifer
+  def setup_busy_discussion_with_signed_in_user
+    test_group.add_member! emilio
+    100.times do |i|
+      comment = FactoryGirl.build(:comment, discussion: test_discussion, body: "#{i} bottles of beer on the wall")
+      CommentService.create(comment: comment, actor: emilio)
+    end
     sign_in patrick
-    redirect_to group_url(group_on_trial)
+    redirect_to discussion_url(test_discussion)
   end
 
-  def setup_group_on_trial
-    GroupService.create(group: test_group, actor: patrick)
-    sign_in jennifer
-    redirect_to group_url(test_group)
-  end
-
-  def setup_group_with_expired_trial
-    GroupService.create(group: test_group, actor: patrick)
-    subscription = test_group.subscription
-    subscription.update_attribute :expires_at, 1.day.ago
+  def setup_group_on_free_plan
+    group = Group.new(name: 'Ghostbusters',
+                      is_visible_to_public: true)
+    GroupService.create(group: group, actor: patrick)
+    membership = Membership.find_by(user: patrick, group: group)
+    group.add_member! jennifer
     sign_in patrick
-    redirect_to group_url(test_group)
+    redirect_to group_url(group)
   end
 
-  def setup_group_with_overdue_trial
+  def setup_group_and_select_plan
+    test_group.experiences['bx_choose_plan'] = true
+    test_group.save
     GroupService.create(group: test_group, actor: patrick)
-    subscription = test_group.subscription
-    subscription.update_attribute :expires_at, 20.days.ago
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -372,6 +376,15 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(@test_group)
   end
 
+  def view_proposal_as_visitor
+    @test_group = Group.create!(name: 'Secret Dirty Dancing Shoes',
+                                group_privacy: 'secret')
+    @test_group.add_admin! patrick
+    @test_discussion = @test_group.discussions.create!(title: 'This thread is private', private: true, author: patrick)
+    @test_proposal   = @test_discussion.motions.create(name: 'lets go hiking', author: patrick)
+    redirect_to motion_url(@test_proposal)
+  end
+
   def setup_open_group
     @test_group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')
@@ -415,6 +428,7 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_public_group_to_join_upon_request
+    jennifer.experienced!('welcomeModal', false)
     sign_in jennifer
     another_test_group.update(group_privacy: 'open')
     another_test_group.update(membership_granted_upon: 'request')
@@ -427,6 +441,13 @@ class DevelopmentController < ApplicationController
     another_test_group.add_member! jennifer
     test_subgroup.add_member! jennifer
     another_test_subgroup
+    redirect_to group_url(another_test_group)
+  end
+
+  def visit_group_as_subgroup_member
+    sign_in jennifer
+    test_subgroup.add_member! jennifer
+    another_test_subgroup.add_member! jennifer
     redirect_to group_url(another_test_group)
   end
 

@@ -108,7 +108,6 @@ ro:
     recent: Recent
     unread: Necitit
     muted: Dezactivat
-    explore: Exploreaza grupuri publice
     edit_profile: Modificare profil
     email_settings: Setari email
     help: Ajutor
@@ -260,7 +259,6 @@ ro:
       or: sau
     no_threads:
       show_all: Nu ai nici o discutie recenta.
-      show_participating: Nu ai participat la nici o discutie recenta.
       show_starred: Nu ai nici o discutie cu steluta.
       show_muted: Nu ai nici o discutie dezactivata.
     view_recent: Vezi toate discuțiile recente?
@@ -275,9 +273,6 @@ ro:
       starred: Discutiile cu steluta
       starred_aria_label: Discutii in curs pe care le-am marcat ca importante
       starred_description: Vezi doar discutii pe care le-ai marcat ca importante
-      participating: Discutii participative
-      participating_aria_label: Discutii in curs la care am participat
-      participating_description: Vezi doar discutii la care ai participat
       proposals: Propuneri
       proposals_aria_label: Discutii in curs care au propuneri active
       proposals_description: Vezi doar discutii care au propuneri active
@@ -339,8 +334,48 @@ ro:
 
       Aici sunt cateva sfaturi  care vor ajuta grupul tau sa reuseasca:
     different_ways: Modalitati diferite de a folosi Loomio
-    engaging_html: "<h2>Sfaturi pentru implicarea grupului tau</h2>\n<p>Oamenii vor fi incantati sa se alature si sa  sa participe cand apare o propunere\ninteresanta pe masa. O propunere buna contine un plan de actiune pentru grup, incat \neste evident imediat ce inseamna sa fii de acord sau nu. Gandeste-te cum poti sa identifici\ndiscutii/decizii pe care grupul le ia in acest moment prin discutii fata in fata sau pe email\nsi care ar fi mai usor de luat pe Loomio.</p>\n<p>Daca grupul tau este in formare, poti sa incepi cu o decizie usoara pentru a da sansa tuturor\nsa se joaca cu instrumentul si sa observe procesul de luare a deciziilor in actiune.</p>\n<p>O alta metoda simpla sa incurajezi oamenii intr-o discutie este sa folosesti functia @mentiune\npentru a notifica oameni; aceasta le va trimite un email spunandu-le ca au fost mentionati intr-un comentariu.</p>\n"
-    example1_html: "<h3>Ai nevoie ca grupul sa discute o tema mai larga si sa ajunga la o solutie comuna</h3>\n<p>Strategie: discuta o tema pentru un timp inainte sa lansezi o propunere.</p>\n<p>Discutiile adesea ajung la cel mai bun rezultat daca dezvolta o intelegere comuna despre\nproblema inainte de a sari la o anumita solutie. Cand oamenii ajung sa participe in acest proces, \neste mai probabil ca vor fi de acord cu rezultatul lui.</p>\n"
+    engaging_html: >
+      <h2>Sfaturi pentru implicarea grupului tau</h2>
+
+      <p>Oamenii vor fi incantati sa se alature si sa  sa participe cand apare
+      o propunere
+
+      interesanta pe masa. O propunere buna contine un plan de actiune pentru
+      grup, incat
+
+      este evident imediat ce inseamna sa fii de acord sau nu. Gandeste-te cum
+      poti sa identifici
+
+      discutii/decizii pe care grupul le ia in acest moment prin discutii fata in
+      fata sau pe email
+
+      si care ar fi mai usor de luat pe Loomio.</p>
+
+      <p>Daca grupul tau este in formare, poti sa incepi cu o decizie usoara
+      pentru a da sansa tuturor
+
+      sa se joaca cu instrumentul si sa observe procesul de luare a deciziilor in
+      actiune.</p>
+
+      <p>O alta metoda simpla sa incurajezi oamenii intr-o discutie este sa
+      folosesti functia @mentiune
+
+      pentru a notifica oameni; aceasta le va trimite un email spunandu-le ca au
+      fost mentionati intr-un comentariu.</p>
+    example1_html: >
+      <h3>Ai nevoie ca grupul sa discute o tema mai larga si sa ajunga la
+      o solutie comuna</h3>
+
+      <p>Strategie: discuta o tema pentru un timp inainte sa lansezi
+      o propunere.</p>
+
+      <p>Discutiile adesea ajung la cel mai bun rezultat daca dezvolta
+      o intelegere comuna despre
+
+      problema inainte de a sari la o anumita solutie. Cand oamenii ajung sa
+      participe in acest proces,
+
+      este mai probabil ca vor fi de acord cu rezultatul lui.</p>
     example2_html: >
       <h3>Ai deja o propunere in minte, si vrei sa obtii acordul grupului pentru
       a merge mai departe.</h3>
@@ -361,12 +396,37 @@ ro:
     getting_started_description: 'In partea stanga, grupul discuta o tema, schimband idei si informatii. Cand exista o decizie luata de grup, ea apare in partea dreapta.'
     getting_the_most: Obtine cat mai mult din folosirea Loomio
     have_your_say: Sa ai ceva de spus
-    have_your_say_details_html: "<p>Cand esti pregatit sa-ti spui parerea, apasa pe unul dintre cele patru butoane de decizie.</p>\n<p>Cand iti exprimi parerea, introdu o scurta explicatie. Sub graficul Pie, poti sa vezi ce cred ceilalti. \nAceasta face rapida si usoara intelegerea discutiei. Cand apar noi informatii, poti sa-ti schimbi in orice moment pozitia.</p>\n"
+    have_your_say_details_html: >
+      <p>Cand esti pregatit sa-ti spui parerea, apasa pe unul dintre cele patru
+      butoane de decizie.</p>
+
+      <p>Cand iti exprimi parerea, introdu o scurta explicatie. Sub graficul Pie,
+      poti sa vezi ce cred ceilalti.
+
+      Aceasta face rapida si usoara intelegerea discutiei. Cand apar noi
+      informatii, poti sa-ti schimbi in orice moment pozitia.</p>
     have_a_discussion: Poarta o discutie
     have_a_discussion_description: Tema si informatiile relevante sunt in partea de sus a paginii. Foloseste casuta de comentarii pentru a-ti face auzita vocea in discutie.
     help: Ajutor
     how_it_works: Cum functioneaza
-    invitation_html: "<h2>Cum sa scrii o invitatie excelenta</h2>\n<p>Prima intrebare pe care fiecare nou membru o va avea este 'pentru ce este creat acest grup?'</p>\n<p>Gandeste-te la cea mai simpla descriere a grupului: Ce vrei sa obtineti impreuna?\n Ce tipuri de decizii veti lua? Cine va fi implicat?</p><p>Poate fi o idee buna sa vorbesti cu grupul tau \ninainte de ai invita pe Loomio</p>\n<p> Oamenii vor voi sa stie de ce au fost invitati si ce se asteapta de la ei si de ce merita sa-si investeasca\ntimpul in a invata cum sa foloseasca un nou instrument.</p>\n"
+    invitation_html: >
+      <h2>Cum sa scrii o invitatie excelenta</h2>
+
+      <p>Prima intrebare pe care fiecare nou membru o va avea este 'pentru ce
+      este creat acest grup?'</p>
+
+      <p>Gandeste-te la cea mai simpla descriere a grupului: Ce vrei sa obtineti
+      impreuna?
+
+      Ce tipuri de decizii veti lua? Cine va fi implicat?</p><p>Poate fi o idee
+      buna sa vorbesti cu grupul tau
+
+      inainte de ai invita pe Loomio</p>
+
+      <p> Oamenii vor voi sa stie de ce au fost invitati si ce se asteapta de la
+      ei si de ce merita sa-si investeasca
+
+      timpul in a invata cum sa foloseasca un nou instrument.</p>
     join_the_community: Alatura-te comunitatii
     images_and_text_formatting: Formatarea imaginilor si a textului
     images_and_text_formatting_html: >
@@ -380,7 +440,20 @@ ro:
 
       despre folosirea Markdown</p>
     keep_up_to_date: Mentine actualizat
-    keep_up_to_date_html: "<p>Apasand pe numele grupului in partea de sus a paginii vei ajunge in Pagina Grupului,\nunde poti vizualiza o lista a tututor discutiilor si deciziilor din acel grup.. Daca esti membru in \nmai mult de un grup, poti sa vezi toate activitatile din grupurile tale direct din Pagina de Start.</p>\n<p>Vei primi notificari pe email cand se intampla lucruri importante in grupul tau.\nPoti sa schimbi preferintele de email <a href=\"%{link}\"\">aici</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Apasand pe numele grupului in partea de sus a paginii vei ajunge in
+      Pagina Grupului,
+
+      unde poti vizualiza o lista a tututor discutiilor si deciziilor din acel
+      grup.. Daca esti membru in
+
+      mai mult de un grup, poti sa vezi toate activitatile din grupurile tale
+      direct din Pagina de Start.</p>
+
+      <p>Vei primi notificari pe email cand se intampla lucruri importante in
+      grupul tau.
+
+      Poti sa schimbi preferintele de email <a href="%{link}"">aici</a>.</p>
     make_a_decision: Ia o decizie
     make_a_decision_description: 'Cand un grup este pregatit sa ia o decizie, oricine poate face o propunere. Descrie clar scopul si adauga cateva informatii suplimentare astfel incat sa fie clar pentru toti ce inseamna sa fii de acord sau nu.'
     prompt_people_details: "Daca vrei sa obtii atentia unei anumite persoane din grup, scrie '@' urmat de numele lor. Ei vor primi un email care ii va anunta ca i-ai mentionat intr-un comentariu."
@@ -402,7 +475,7 @@ ro:
       <p>In timpul discutiilor, sectiunea context poate fi improspatata pe masura
       ce apar noi
 
-       informatii. Poti folosi acest spatiu pentru a clarifica subiectul,
+      informatii. Poti folosi acest spatiu pentru a clarifica subiectul,
       transmite informatii,
 
       face un rezumat al discutiei pe masura ce evolueaza, sau sublinia
@@ -410,7 +483,28 @@ ro:
 
       luare a deciziilor pe care grupul tau il foloseste.</p>
     start_proposal: Scrierea unei propuneri clare
-    start_proposal_html: "<p>Daca ai un titlu clar si succint, oamenii vor sti imediat ce inseamna sa fii de acord sau impotriva.</p>\n<p>Nu este sfarsitul lumii daca o propunere nu obtine un punct de vedere comun imediat.\nDaca grupul nu iubeste prima propunere, oricine poate incepe o noua propunere pentru\na adresa rezervele ridicate, si a conduce mai departe procesul.</p>\n<p>Prin acest proces dinamic, inteligenta colectiva a grupului poate genera idei mai bune decat ar putea\ngenera oricine ar incerca sa o faca singur.</p>\n<p>Termenul limita al unei propuneri poate fi extins oricand, daca devine clar ca o decizie \nare nevoie de mai mult timp. Toata lumea va primi o notificare pe email cu 24 de ore inainta ca o propunere sa se inchida.</p>\n"
+    start_proposal_html: >
+      <p>Daca ai un titlu clar si succint, oamenii vor sti imediat ce inseamna sa
+      fii de acord sau impotriva.</p>
+
+      <p>Nu este sfarsitul lumii daca o propunere nu obtine un punct de vedere
+      comun imediat.
+
+      Daca grupul nu iubeste prima propunere, oricine poate incepe o noua
+      propunere pentru
+
+      a adresa rezervele ridicate, si a conduce mai departe procesul.</p>
+
+      <p>Prin acest proces dinamic, inteligenta colectiva a grupului poate genera
+      idei mai bune decat ar putea
+
+      genera oricine ar incerca sa o faca singur.</p>
+
+      <p>Termenul limita al unei propuneri poate fi extins oricand, daca devine
+      clar ca o decizie
+
+      are nevoie de mai mult timp. Toata lumea va primi o notificare pe email cu
+      24 de ore inainta ca o propunere sa se inchida.</p>
     video_id: '52025402'
     video_tutorial: Tutorial video
     video_tutorial_description: Urmareste acest video pentru o scurta demonstratie despre cum sa folosesti Loomio.

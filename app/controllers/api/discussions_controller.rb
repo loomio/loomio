@@ -1,5 +1,5 @@
 class API::DiscussionsController < API::RestfulController
-  load_and_authorize_resource only: [:show, :mark_as_read, :move]
+  load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
 
@@ -28,6 +28,11 @@ class API::DiscussionsController < API::RestfulController
 
   def mark_as_read
     service.mark_as_read discussion: resource, params: params, actor: current_user
+    respond_with_resource
+  end
+
+  def dismiss
+    service.dismiss discussion: resource, params: params, actor: current_user
     respond_with_resource
   end
 

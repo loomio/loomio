@@ -25,12 +25,13 @@
   margin-top: $thinPaddingSize;
 }
 
-.thread-preview__mark-as-read{
+.thread-preview__dismiss{
   @include lmoBtnDefault;
   @include lmoBtnSm;
 }
 
-.thread-preview__mute{
+.thread-preview__mute,
+.thread-preview__unmute {
   @include lmoBtnDefault;
   @include lmoBtnSm;
   margin-left: 5px;
@@ -46,11 +47,16 @@
   }
 }
 
+.thread-preview__screen-only {
+  overflow: hidden;
+}
+
 .thread-preview__link {
   display: block;
   padding: $thinPaddingSize $cardPaddingSize;
   color: $primary-text-color;
   text-decoration: none;
+  @include displayFlex;
 }
 
 .thread-preview__link:hover {
@@ -60,7 +66,6 @@
 
 .thread-preview__icon {
   @include boxMedium;
-  float: left;
 }
 
 .thread-preview__pie-canvas {

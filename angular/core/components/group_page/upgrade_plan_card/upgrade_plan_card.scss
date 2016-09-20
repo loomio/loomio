@@ -1,0 +1,10 @@
+.upgrade-plan-card {
+  @include card;
+  p { color: $grey-on-white; }
+}
+
+.upgrade-plan-card__confirm-button {
+  @include lmoBtnOffer;
+  @include lmoBtnIcon;
+  @include lmoBtnBlock;
+}

@@ -27,6 +27,13 @@ describe DiscussionReader do
     end
   end
 
+  describe 'dismissed!' do
+    it 'publishes a simple serialized discussion' do
+      expect(MessageChannelService).to receive(:publish)
+      reader.dismiss!
+    end
+  end
+
   describe 'reset_counts!' do
     let!(:other_membership) { create(:membership, user: other_user, group: group) }
     let!(:older_item) { CommentService.create(comment: build(:comment, discussion: discussion, created_at: 5.days.ago), actor: other_user) }

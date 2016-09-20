@@ -4,9 +4,9 @@ class SubscriptionService
     Rails.application.secrets.chargify_app_name && Rails.application.secrets.chargify_api_key
   end
 
-  def initialize(group, actor)
+  def initialize(group, actor = nil)
     raise 'Chargify ENV variables are not correctly set! Please set CHARGIFY_APP_NAME and CHARGIFY_API_KEY.' unless self.class.available?
-    actor.ability.authorize! :choose_subscription_plan, group
+    actor.ability.authorize!(:choose_subscription_plan, group) if actor
     @subscription = group.subscription || group.build_subscription
   end
 
@@ -17,6 +17,10 @@ class SubscriptionService
                          expires_at:               nil,
                          plan:                     nil,
                          chargify_subscription_id: nil
+  end
+
+  def start_gift_unless_paying!
+    start_gift! unless @subscription.is_paid?
   end
 
   def start_subscription!(subscription_id)

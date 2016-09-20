@@ -1,8 +1,6 @@
 class ProposalsClosingSoonJob < ActiveJob::Base
   def perform
-    Motion.closing_soon_not_published.where(closing_at: this_hour_tomorrow).each do |motion|
-      Events::MotionClosingSoon.publish!(motion)
-    end
+    Motion.closing_soon_not_published(this_hour_tomorrow).each { |m| Events::MotionClosingSoon.publish!(m) }
   end
 
   private

@@ -15,7 +15,7 @@
       .lmo-form-group
         %label{for: "proposal-title-field", translate: "proposal_form.title_label"}
         .lmo-relative
-          %textarea.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{msd-elastic: "true", rows: 1, placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}
+          %input.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}
         %validation_errors{subject: "proposal", field: "name"}
         .proposal-form__proposal_ideas{ng-if: "proposal.isNew()"}
           %a{href: "{{nineWaysArticleLink()}}", title: "{{ 'proposal_form.proposal_ideas_title' | translate }}", target: "_blank"}
@@ -26,6 +26,13 @@
         .lmo-relative
           %textarea.lmo-textarea.proposal-form__details-field.form-control.lmo-primary-form-input#proposal-details-field{msd-elastic: "true", ng-model: "proposal.description", placeholder: "{{ 'proposal_form.details_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{debounce: 150}"}
           %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
+
+      .proposal-form__attachments
+        %attachment_form.proposal-form__attachment-form{model: "proposal", ng-if: "proposal.discussion().groupId", show-label: "true"}
+        %validation_errors.proposal-form__attachment-errors{subject: "proposal", field: "file"}
+        %label.lmo-form-labelled-input
+          %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in proposal.newAttachments() | orderBy: 'id' track by attachment.id"}
+        .clearfix
 
       %closing_at_field{proposal: "proposal"}
       %validation_errors{subject: "proposal", field: "closingAt"}

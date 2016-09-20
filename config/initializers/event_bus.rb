@@ -79,7 +79,8 @@ EventBus.configure do |config|
     DiscussionReader.for_model(model, actor).set_volume_as_required!
   end
 
-  config.listen('discussion_reader_viewed!') do |discussion, actor|
+  config.listen('discussion_reader_viewed!',
+                'discussion_reader_dismissed!') do |discussion, actor|
 
     reader_cache = DiscussionReaderCache.new(user: actor, discussions: Array(discussion))
     collection = ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkedAsRead::DiscussionSerializer, root: 'discussions', scope: { reader_cache: reader_cache } )

@@ -9,7 +9,7 @@ module Development::NintiesMoviesHelper
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               detected_locale: 'en',
-                              angular_ui_enabled: true)
+                              angular_ui_enabled: true).tap {|u| u.experienced! 'welcomeModal'}
   end
 
   def patricks_contact
@@ -26,7 +26,7 @@ module Development::NintiesMoviesHelper
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
                                password: 'gh0stmovie',
-                               angular_ui_enabled: true)
+                               angular_ui_enabled: true).tap {|u| u.experienced! 'welcomeModal'}
   end
 
   def max
@@ -62,9 +62,6 @@ module Development::NintiesMoviesHelper
       @test_group.add_admin!  patrick
       @test_group.add_member! jennifer
       @test_group.add_member! emilio
-      @test_group.memberships.each do |membership|
-        membership.experienced! 'welcomeModal'
-      end
     end
     @test_group
   end
@@ -154,6 +151,7 @@ module Development::NintiesMoviesHelper
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true)
       @another_test_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      @another_test_subgroup.add_admin! patrick
     end
     @another_test_subgroup
   end

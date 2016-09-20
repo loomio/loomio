@@ -45,7 +45,7 @@ class UserMailerPreview < ActionMailer::Preview
     inviter = FactoryGirl.create(:user)
     group = FactoryGirl.create(:group)
     group.add_member!(inviter)
-    message = "Hello! It's been a long time coming but I though you would be the best person to invite to the group now that we're developing a univfying agreement plan consenting process"
+    message = "Hello! It's been a long time coming but I thought you would be the best person to invite to the group now that we're developing a unifying agreement plan consenting process"
     UserMailer.added_to_group(user: user, inviter: inviter, group: group, message: message)
   end
 end

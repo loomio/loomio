@@ -1,0 +1,201 @@
+.u-table {
+  display: table;
+}
+
+.u-tr {
+  display: table-row;
+}
+
+.u-td {
+  display: table-cell;
+}
+
+.modal-dialog.modal-choose-plan-modal {
+  max-width: 800px;
+  width: auto;
+}
+
+.choose-plan-modal__table {
+  width: 100%;
+  text-align: center;
+  border-spacing: 10px 0;
+  border-collapse: collapse;
+}
+
+.choose-plan-modal__cell {
+  vertical-align: middle;
+  width: 25%;
+  height: 1px;
+}
+
+.choose-plan-modal__cell--benefit {
+  vertical-align: middle;
+}
+
+.choose-plan-modal__gutter-cell {
+  width: 20px;
+}
+
+// .choose-plan-modal__cell--featured {
+//   background-color: orange !important;
+//   margin: 0 5px;
+//   border-color: #e3a455;
+// }
+
+.choose-plan-modal__cell--robot-image {
+  background-image: url(/img/mascot.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #f6f6f6 !important;
+  padding: 30px;
+}
+
+.choose-plan-modal__row--benefit {
+  height: 30px;
+  border-top: 1px solid #f4f4f4;
+  // border-bottom: 1px solid #e6e6e6;
+}
+
+.choose-plan-modal__plan-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 12px;
+}
+
+.choose-plan-modal__plan-price {
+  font-weight: bold;
+  padding-bottom: 14px;
+  font-size: 40px;
+}
+.choose-plan-modal__plan-description {
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.choose-plan-modal__dollar-sign {
+  font-size: 20px;
+}
+
+.choose-plan-modal__payment-frequency {
+  font-size: 20px;
+}
+
+.choose-plan-modal__plan {
+  @include displayFlex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-collapse: collapse;
+  vertical-align: top;
+  padding: 5px;
+}
+
+.choose-plan-modal__plan--button {
+  text-align: center;
+}
+
+.choose-plan-modal__benefit {
+  text-align: left;
+  background-color: #f6f6f6 !important;
+}
+
+.choose_plan_modal__mhjbs-head {
+  width: 48px;
+  height: 48px;
+}
+
+.choose_plan_modal__footer {
+  display: table;
+  text-align: left;
+}
+
+.choose-plan-modal__footer--row {
+  display: table-row;
+}
+
+.choose_plan_modal__footer--left {
+  display: table-cell;
+}
+
+.choose_plan_modal__footer--right {
+  padding-left: 10px;
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+.choose-plan-modal__contact-link {
+  @include lmoBtnLink;
+  color: $link-color;
+}
+
+.choose-plan-modal__select-button {
+  @include lmoBtnOffer;
+  margin: 10px 0;
+}
+
+.mobile-choose-plan-modal__flex {
+  @include displayFlex;
+  flex-direction: column;
+}
+
+.choose-plan-modal__plan {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.choose-plan-modal--featured {
+  background-color: #EE9F49;
+}
+
+.choose-plan-modal--boring {
+  background-color: #dfdfdf;
+}
+
+ul.choose-plan-modal__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// .mobile-choose-plan-modal__plan {
+//   padding: 10px;
+//   background-color: gray;
+// }
+
+// .mobile-choose-plan-modal__plan--featured {
+//   background-color: gold;
+// }
+// @media only screen
+// and (min-device-width : 320px)
+// and (max-device-width : 780px) {
+//   .choose-plan-modal {
+//     background-color: blue;
+//   }
+// }
+
+
+// @media (max-width: 680px){
+//   .choose-plan-modal__table {
+//     display: none;
+//   }
+// }
+//
+// @media (min-width: 680px){
+//   .mobile-choose-plan-modal__flex {
+//     display: none;
+//   }
+// }
+//
+
+@media (max-width: 767px){
+  .choose-plan-modal__table {
+    display: none;
+  }
+}
+
+@media (min-width: 768px){
+  .mobile-choose-plan-modal__flex {
+    display: none;
+  }
+}

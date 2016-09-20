@@ -55,6 +55,9 @@ es:
     formatting_help:
       label: 'Ayuda de formato '
       title: Aprende a usar Markdown para dar formato a tu texto en Loomio
+  devise:
+    failure:
+      inactive: Hay una cuenta Desactivada asociada a este email. Contáctanos si quieres Reactivar tu cuenta.
   error_page:
     forbidden: No tienes permisos para hacer esto.
     page_not_found: No encontramos lo que estás buscando. Podría haber sido borrado o movido.
@@ -131,14 +134,16 @@ es:
         quiet: No recibirás correo electrónico de los nuevos grupos.
   mute_explanation_modal:
     mute_thread: Silenciar hilo
-    body: >
+    body_html: >
       <p>Silenciar significa<strong>que no recibirás notificaciones sobre
       propuestas</strong>, o ninguna otra actividad en este hilo, a no ser que
-      alguien te @mencione.</p>
+      alguien te <strong>@mencione.</strong></p>
 
-      <p>Los hilos silenciados tampoco serán visibles en tus páginas Recientes
-      y No leído. Para encontrar tus hilos silenciados, visita la página Reciente
-      y selecciona "Silenciado" desde el menú "Filtrar hilos":</p>
+      <p>Los hilos silenciados tampoco serán visibles en tus páginas
+      <strong>Recientes</strong> y <strong>No leído</strong>. Para encontrar tus
+      hilos silenciados, selecciona <strong>Silenciado</strong> en la barra
+      lateral de navegación:</p>
+    image_alt: 'Opción de hilos silenciados en la barra lateral '
   inbox:
     clear: Limpiar
     latest: Últimos
@@ -159,6 +164,17 @@ es:
       twitter: Iniciar sesión con Twitter
       google: Iniciar sesión con Google
       github: Iniciar sesión con Github
+  sign_up_form:
+    title: '¡Bienvenido/a a Loomio! Te haremos comenzar enseguida'
+    name_label: Tu nombre
+    name_placeholder: Fulano de tal
+    email_label: 'Correo electrónico:'
+    email_placeholder: tu@ejemplo.com
+    password_label: 'Contraseña:'
+    password_confirmation_label: 'Esa contraseña otra vez:'
+    sign_in_message: ¿Ya tienes una cuenta?
+    sign_in: Entrar
+    sign_up: Crear una Cuenta
   signed_out_modal:
     title: 'Tu sesión ha sido terminada  '
     message: 'Tu sesión ha sido terminada en Loomio desde otra pestaña del navegador. Por favor vuelve a entrar para continuar. '
@@ -188,12 +204,18 @@ es:
     recent: 'Reciente '
     unread: 'No leído '
     muted: 'Silenciado '
-    explore: 'Explorar grupos públicos '
+    start_group: Crea un nuevo grupo
+    explore: Grupos públicos
     edit_profile: 'Editar perfil '
     email_settings: 'Ajustes de correo  '
     help: 'Ayuda  '
     contact: 'Contactar a Loomio '
     sign_out: 'Salir '
+    aria_labels:
+      heading: 'Barra Lateral '
+      threads_list: Acciones del hilo
+      groups_list: Grupos
+      user_list: Acciones de usuario
   navbar:
     recent_title: Ir al Escritorio
     unread_title: Ver los mensajes no leídos
@@ -333,7 +355,13 @@ es:
   proposal_position_block: Bloquear
   legacy_trial_expired_modal:
     heading: 'Gracias por usar Loomio este año!'
-    body: "<p>Realmente apreciamos tu apoyo en este año, y estamos entusiasmados de mejorar Loomio aún más en 2016.</p> \n<p>¿Encuentras que Loomio es útil para tu grupo? Acabamos de lanzar nuestros planes de pago y le estamos pidiendo a los grupos que han utilizado Loomio por un tiempo que elijan un plan que les convenga.</p> \n"
+    body: >
+      <p>Realmente apreciamos tu apoyo en este año, y estamos entusiasmados de
+      mejorar Loomio aún más en 2016.</p>
+
+      <p>¿Encuentras que Loomio es útil para tu grupo? Acabamos de lanzar
+      nuestros planes de pago y le estamos pidiendo a los grupos que han
+      utilizado Loomio por un tiempo que elijan un plan que les convenga.</p>
     submit: Muéstrame los planes
   angular_welcome_modal:
     heading: '¡Bienvenido/a al nuevo Loomio!'
@@ -347,8 +375,8 @@ es:
   group_welcome_modal:
     creator_heading: Bienvenido/a a tu nuevo grupo
     member_heading: Bienvenido/a a Loomio
-    creator_info: 'Eres el <strong>coordinador</strong> del grupo, que es como ser el anfitrión. Mira el video y los hilos de ejemplo.'
-    member_info: 'Mira éste vídeo para tener una idea de como funciona Loomio. Luego, pruébalo ingresando un comentario en un hilo de discusión, o inicia un hilo nuevo.'
+    creator_info: 'Eres el <strong>coordinador</strong> del grupo, que es como ser el anfitrión. Mira el vídeo y los hilos de ejemplo.'
+    member_info: 'Mira éste vídeo para tener una idea de como funciona Loomio. Luego, pruébalo haciendo un comentario en un hilo de discusión, o inicia un hilo nuevo.'
     creator_footer: 'Cuando estés listo, <strong>invita gente</strong> a sumarse. '
     ok_got_it: 'Bien, ¡lo tengo!'
   group_cover_modal:
@@ -453,20 +481,25 @@ es:
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: {{privacy}}'
   confirm_gift_plan_modal:
-    heading: 'Plan Donación a sido seleccionado. '
-    body: 'Si tu grupo no tiene presupuesto para pagar por software, no tienes que pagar una suscripción. Los miembros de tu grupo serán regularmente invitados a hacer una donación voluntaria.'
-    confirm_selection: Estoy de acuerdo con que a la gente de mi grupo se le pida hacer una contribución para apoyar a Loomio.
-    got_it: 'Bien, ¡lo tengo!'
-    go_back: 'Volver '
+    heading: 'Grupos Gratis son soportados a donación  '
+    body: Las donaciones hacen posible que grupos sin presupuesto usen Loomio de forma gratuita. Ocasionalmente invitaremos a los miembros de grupo en plan Gratis a realizar una donación voluntaria.
+    got_it: Quédate en plan Gratis
+    go_back: Cambia el plan
   donation_modal:
-    heading: ¿Te gustaría apoyar a Loomio?
+    heading: ¿Quieres hacer una donación a Loomio?
     body: 'Loomio es una empresa social. Nuestra misión es crear un mundo donde sea fácil para todos el participar en decisiones que los afectan. '
     contribute: Has una contribución
-    got_to_group: Llevame a mi grupo
+    got_to_group: 'No ahora, gracias.'
   gift_card:
     heading: 'Plan Donación '
     body: '<strong>{{name}}</strong> es un grupo a Donación. Si quieres ayuda a que Loomio pueda seguir apoyando grupos como el tuyo, has clic aquí:'
     make_a_contribution: 'Haz una contribución '
+  upgrade_plan_card:
+    heading: ¿Usas Slack.com?
+    body: 'Loomio y Slack funcionan muy bien juntos! Enlázalos.'
+    heading_alt: ¿Quieres un dominio personalizado?
+    body_alt: Haz tu grupo de Loomio fácil de encontrar con tunombre.loomio.org
+    upgrade_plan: Cambia tu plan ahora
   trial_card:
     title: '30 días de prueba '
     choose_plan: Elige tu plan de pago
@@ -474,37 +507,32 @@ es:
     expired_body_html: '<strong>{{name}}</strong> ha llegado al final de su prueba de Loomio. Si quieres seguir usándolo tienes que elegir un plan de pago a la medida de tu grupo.'
   choose_plan_modal:
     heading: Por favor elige un plan de pago para tu grupo.
-    gift: Donación
+    free: 'Gratis '
     standard: 'Estándar '
-    plus: Plus
-    free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
-    start_group: Crear un grupo
-    gift_body: Para grupos sin presupuesto
-    support_before: Estoy feliz de
-    support_link: hablar contigo
-    support_after: "a cerca de una extensión de tu prueba gratis, o sobre cualquier otra pregunta que puedas tener.\n "
-    remind_me_later: Recuérdamelo luego
-    gift_donation_ask: Les pediremos a los miembros de tu grupo si quieren dar una donación
-    unlimited_members: Cantidad ilimitada de miembros
-    unlimited_decisions: 'Cantidad ilimitada de decisiones '
-    email_support: 'soporte por correo electrónico '
-    slack_integration_html: |
-      Integración con <strong>Slack</strong>
-    standard_price_html: |
-      US<strong>$19</strong>/al mes<br><span>o</span>$190/al año
-    plus_body: 'Todo en Estándar, más: '
-    multiple_groups: múltiples grupos
-    premium_support: 'soporte especial '
-    custom_subdomain_html: |
-      subdominio personalizado<br />
-      ej. <strong>tugrupo</strong>.loomio.org
-    plus_price_html: |
-      US<strong>$179</strong>/al mes<br><span>o</span> $1790/al año
+    pro: Pro
+    per_month: /al mes
+    standard_group_description: Todo lo que necesitas para un grupo.
+    free_group_description: 'Plan suportado a donación para grupos comunitarios. '
+    pro_group_description: 'Para organizaciones con <nobr>múltiples grupos.</nobr>'
+    benefit_1_group: 1 grupo
+    benefit_10_groups: 10 grupos
+    benefit_unlimited_members: Ilimitados miembros
+    benefit_unlimited_decisions: Ilimitadas decisiones
+    benefit_priority_support: 'Apoyo personalizado '
+    benefit_help_with_setup: Ayuda con la configuración inicial
+    benefit_community_support: 'Apoyo comunitario '
+    benefit_slack_integration: Integración con Slack.com
+    benefit_custom_domain: 'Dominio personalizado '
+    benefit_analytics_reports: 'Reporte analítico '
+    benefit_csv_export: Exportación de datos CSV
+    support_link: 'Hablemos! '
+    prices_in_us_dollars: 'Precios en dolares US, más impuestos en la venta donde aplique  '
+    need_help_please: ¿Necesitas algo más?
     select: 'Selecciona '
   subscription_success_modal:
-    heading: Gracias por configurar tu suscripción
-    receipt: 'Recibirás un correo electrónico con un Recibo. '
-    change_subscription: 'Si en cualquier momento quieres cambiar o cancelar tu suscripción, o si tienes cualquier otra pregunta, '
+    heading: 'Estás listo!'
+    receipt: 'Recibirás un correo electrónico con el recibo y un enlace de acceso al portal de clientes, desde donde podrás cambiar o cancelar tu suscripción y acceder al historial de pago.  '
+    change_subscription: 'Si deseas configurar tu integración con Slack.com o tu dominio personalizado,'
     contact_link: por favor contáctanos.
     sign_off: ❤ de parte del equipo de Loomio
     ok_got_it: 'Bien, ¡lo tengo!'
@@ -587,6 +615,7 @@ es:
   invitation_form:
     invite_people: Invita gente
     group: Grupo
+    group_placeholder: Selecciona un grupo
     shareable_link: Enlace para compartir
     copy_link: Copiar enlace
     email_addresses: Correo electrónico
@@ -666,6 +695,16 @@ es:
       question: ¿Nos contarías por qué estás desactivando tu cuenta?
       placeholder: 'Contestar a esta pregunta es opcional. Cualquier información que compartas nos ayudará a mejorar Loomio :)'
       submit: Desactiva tu cuenta
+    deactivation_modal:
+      introduction: 'Cuando desactivas tu cuenta:'
+      no_longer_group_member: Ya no serás listado como miembro en ningún grupo
+      name_removed: 'Comentarios, propuestas e hilos que has realizado permanecerán, pero tu nombre será removido de los mismos'
+      no_emails: Ya no recibirás correo relacionados con Loomio
+      contact_for_reactivation: Deberás contactarnos para reactivar su cuenta
+      submit: 'Si, quiero desactivar mi cuenta'
+    only_coordinator_modal:
+      explanation: 'Un grupo debe tener al menos un coordinador. Tú eres el único coordinador de los siguientes grupos:'
+      instructions: 'Para poder desactivar su cuenta, necesitarás visitar cada uno de los grupo mencionados arriba y o bien nombrar a otro coordinador o desactivar el grupo.'
     change_picture_link: Cambiar imagen
     change_password_link: Cambiar la contraseña
     deactivate_user_link: Desactivar cuenta...
@@ -698,24 +737,32 @@ es:
       updated: Configuración de correo electrónico actualizadas
   dashboard_page:
     aria_label: Escritorio
-    options:
-      aria_label: Opciones de filtrado de Escritorio
     no_groups:
       show_all: 'No tienes ningún hilo reciente porque no eres miembro de ningún grupo. '
-      show_participating: 'No haz participado en ningún hilo porque no eres miembro de ningún grupo. '
       show_muted: No tienes ningún hilo silenciado porque no eres miembro de ningún grupo.
       start: 'Empezar '
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.  '
     no_threads:
       show_all: No tienes ningún hilo reciente.
-      show_participating: No has participado en ningún hilo recientemente.
       show_starred: No tienes ningún hilo destacado.
       show_proposals: No hay propuestas activas en este momento.
       show_muted: No tienes ningún hilo silenciado.
     view_recent: ¿Ver todos los hilos recientes?
     load_more: Cargar más hilos
     mark_as_read: Marcar como leído
+    explain_mute:
+      title: No tienes ningún hilo silenciado.
+      explanation_html: >
+        Silenciar es una forma de esconder hilos en los que no estas interesada.
+
+        Silenciar significa que no veras el hilo en <strong>Recientes</strong>
+        o <strong>No leído</strong>, y no serás notificado sobre ninguna
+        actividad en ese hilo.
+
+        Solo serás alertada cuando alguien te <strong>@mencione</strong>.
+      instructions: 'Para silenciar un hilo, pasa el cursor por encima y selecciona el icono para silenciar.'
+      see_muted_html: 'Para ver tus hilos silenciados, selecciona <strong>Silenciado</strong> en la barra lateral. Puedes des-silenciar pasando el cursor por encima y seleccionando el mismo icono.'
     filtering:
       filter_threads: Filtrar hilos
       filter_threads_aria_label: 'Filtrar hilos '
@@ -726,9 +773,6 @@ es:
       starred: Hilos destacados
       starred_aria_label: Mostrando hilos que he marcado como importantes
       starred_description: Viendo sólo hilos que has marcado como importantes
-      participating: Hilos participativos
-      participating_aria_label: Mostrando hilos en los que he participado
-      participating_description: Ver únicamente hilos en los que has partiticpado
       proposals: Propuestas
       proposals_aria_label: Mostrando hilos con propuestas activas
       proposals_description: Ver únicamente hilos con propuestas activas
@@ -810,6 +854,8 @@ es:
     attachment_display:
       aria_label: 'Archivo adjunto:'
       image_alt: Imagen adjunta
+  print_modal:
+    load_discussion: 'Cargando la discusión... '
   delete_comment_dialog:
     title: Borrar comentario
     question: ¿Estás seguro de que quieres borrar este comentario?
@@ -905,7 +951,7 @@ es:
       discusión es usando la característica de @mention para aludir
       a determinadas personas; esto les enviará un correo avisándoles que han
       sido mencionados en un comentario.</p>
-    example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎ \ncompartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable que esten satisfechos con⏎\nel resultado o decision final.⏎</p>\\n"
+    example1_html: "<h3>El grupo debe discutir sobre un tema amplio y desarrollar una solucion conjunta</h3>⏎\n<p>Estrategia: Discutir el tema durante un tiempo antes de iniciar una propuesta.</p>⏎\n<p>A menudo, las discusiones obtienen los mejores resultados si se crea un entendimiento⏎\ncompartido sobre el problema antes de decantarse por una solucion concreta. Cuando la gente⏎\nempieza a participar en el proceso, es mucho mas probable que esten satisfechos con⏎\nel resultado o decision final.⏎</p>\\n"
     example2_html: >
       <h3>Tienes ya en mente una propuesta, y quieres alcanzar un refrendo del
       grupo para seguir adelante.</h3>
@@ -1040,7 +1086,40 @@ es:
       invite: Prueba el nuevo Loomio
       title: 'Prueba el nuevo Loomio '
       intro: 'Hemos reconstruido Loomio y necesitamos tu ayuda para asegurarnos de que es genial!'
-      body_html: "<p></p>\n<h3>;¿Cuál es la diferencia?</h3> \n\n<p> La nueva interfaz es como la antigua pero más nueva:\n<ul>\n<li> Todo en la pagina se actualiza en vivo, como va sucediendo </li>\n<li> Está diseñada para todos tus dispositivos, desde tu smartphone al ordenador de escritorio </li>\n<li> Es accesible para gente ciega, y esta traducido <a href=\"https://www.loomio.org/translation\">a muchos idiomas</a>\n</ul>\n</p>\n\n<p> Usa la misma base de datos que la interfaz antigua, esto significa que tiene todos tus grupos existentes y discusiones.</p>\n<p>Hay un enlace para dar \"Comentarios para Loomio\" en la parte inferior izquierda del nuevo app.También veras un enlace para \"Volver al Loomio antiguo\" que estara disponible por un tiempo más.</p>\n<p>Esperamos recibir tus comentarios, muchas gracias por tu tiempo y apoyo.</p> \n"
+      body_html: >
+        <p></p>
+
+        <h3>;¿Cuál es la diferencia?</h3>
+
+
+
+        <p> La nueva interfaz es como la antigua pero más nueva:
+
+        <ul>
+
+        <li> Todo en la pagina se actualiza en vivo, como va sucediendo </li>
+
+        <li> Está diseñada para todos tus dispositivos, desde tu smartphone al
+        ordenador de escritorio </li>
+
+        <li> Es accesible para gente ciega, y esta traducido <a
+        href="https://www.loomio.org/translation">a muchos idiomas</a>
+
+        </ul>
+
+        </p>
+
+
+
+        <p> Usa la misma base de datos que la interfaz antigua, esto significa
+        que tiene todos tus grupos existentes y discusiones.</p>
+
+        <p>Hay un enlace para dar "Comentarios para Loomio" en la parte inferior
+        izquierda del nuevo app.También veras un enlace para "Volver al Loomio
+        antiguo" que estara disponible por un tiempo más.</p>
+
+        <p>Esperamos recibir tus comentarios, muchas gracias por tu tiempo
+        y apoyo.</p>
       button_text: Habilita el nuevo Loomio
     disable:
       title: Gracias por probar el nuevo Loomio
