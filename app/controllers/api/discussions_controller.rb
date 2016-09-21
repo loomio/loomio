@@ -12,13 +12,13 @@ class API::DiscussionsController < API::RestfulController
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     instantiate_collection { |collection| collection_for_dashboard collection }
-    respond_with_collection
+    respond_with_collection(serializer: Dashboard::DiscussionSerializer)
   end
 
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     instantiate_collection { |collection| collection_for_inbox collection }
-    respond_with_collection
+    respond_with_collection(serializer: Dashboard::DiscussionSerializer)
   end
 
   def move
