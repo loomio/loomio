@@ -1,5 +1,8 @@
 module AngularHelper
 
+  SHORT_TIME = 3500       # 3.5 seconds
+  LONG_TIME  = 2147483645 # freaking forever
+
   def boot_angular_ui
     redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
     metadata                                      if browser.bot? && respond_to?(:metadata, true)
@@ -42,8 +45,9 @@ module AngularHelper
         exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
       },
       flashTimeout: {
-        short: (ENV['FLASH_TIMEOUT_SHORT'] || 3500).to_i,
-        long:  (ENV['FLASH_TIMEOUT_LONG']  || 2147483645).to_i
+        # NB: in test environments the flash will persist forever, so the tests can always see them
+        short: Rails.env.test? ? LONG_TIME : ENV.fetch('FLASH_TIMEOUT_SHORT', SHORT_TIME).to_i,
+        long:  ENV.fetch('FLASH_TIMEOUT_LONG', LONG_TIME).to_i
       },
       oauthProviders: [
         ({ name: :facebook, href: user_facebook_omniauth_authorize_path } if ENV['FACEBOOK_KEY']),
