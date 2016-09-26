@@ -32,4 +32,8 @@ class API::EventsController < API::RestfulController
   def resource_serializer
     nil
   end
+
+  def default_scope
+    { include_attachments: true, include_likers: true }
+  end
 end
