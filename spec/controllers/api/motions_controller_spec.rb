@@ -16,6 +16,7 @@ describe API::MotionsController do
     discussion_id: discussion.id
   }}
   let(:my_vote) { create :vote, motion: motion, author: user }
+  let(:attachment) { create :attachment }
 
   before do
     group.admins << user
@@ -162,6 +163,25 @@ describe API::MotionsController do
         post :update, id: motion.id, motion: motion_params, format: :json
         expect(response).to be_success
         expect(motion.reload.name).to eq motion_params[:name]
+      end
+
+      it 'adds attachments' do
+        motion_params[:attachment_ids] = attachment.id
+        post :update, id: motion.id, motion: motion_params, format: :json
+        expect(motion.reload.attachments).to include attachment
+        json = JSON.parse(response.body)
+        attachment_ids = json['attachments'].map { |a| a['id'] }
+        expect(attachment_ids).to include attachment.id
+      end
+
+      it 'removes attachments' do
+        attachment.update(attachable: discussion)
+        motion_params[:attachment_ids] = []
+        post :update, id: motion.id, motion: motion_params, format: :json
+        expect(motion.reload.attachments).to be_empty
+        json = JSON.parse(response.body)
+        attachment_ids = json['attachments'].map { |a| a['id'] }
+        expect(attachment_ids).to_not include attachment.id
       end
     end
 

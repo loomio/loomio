@@ -2,6 +2,7 @@ class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
+  include UsesFullSerializer
 
   def index
     load_and_authorize(:group, optional: true)
@@ -12,13 +13,13 @@ class API::DiscussionsController < API::RestfulController
   def dashboard
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     instantiate_collection { |collection| collection_for_dashboard collection }
-    respond_with_collection(serializer: Dashboard::DiscussionSerializer)
+    respond_with_collection
   end
 
   def inbox
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     instantiate_collection { |collection| collection_for_inbox collection }
-    respond_with_collection(serializer: Dashboard::DiscussionSerializer)
+    respond_with_collection
   end
 
   def move
