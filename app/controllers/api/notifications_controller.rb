@@ -11,4 +11,8 @@ class API::NotificationsController < API::RestfulController
     Notification.includes(event: [:eventable, :user]).where(user_id: current_user.id).order(created_at: :desc)
   end
 
+  def default_scope
+    { skip_comment_relations: true }
+  end
+
 end
