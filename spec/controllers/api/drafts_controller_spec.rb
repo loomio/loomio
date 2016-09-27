@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe API::DraftsController do
+describe Api::DraftsController do
 
   let(:user) { create :user }
   let(:another_user) { create :user }
@@ -53,19 +53,19 @@ describe API::DraftsController do
     describe 'show' do
       it 'returns unauthorized for a group' do
         group_draft
-        get :show, draftable_type: 'Group', draftable_id: group.id, format: :json
+        get :show, params: { draftable_type: 'Group', draftable_id: group.id, format: :json }
         expect(response.status).to eq 403
       end
 
       it 'returns unauthorized for a discussion' do
         discussion_draft
-        get :show, draftable_type: 'Group', draftable_id: discussion.id, format: :json
+        get :show, params: { draftable_type: 'Group', draftable_id: discussion.id, format: :json }
         expect(response.status).to eq 403
       end
 
       it 'returns unauthorized for a motion' do
         motion_draft
-        get :show, draftable_type: 'Motion', draftable_id: motion.id, format: :json
+        get :show, params: { draftable_type: 'Motion', draftable_id: motion.id, format: :json }
         expect(response.status).to eq 403
       end
     end
@@ -79,7 +79,7 @@ describe API::DraftsController do
 
     describe 'create' do
       it 'creates a new user draft' do
-        post :update, draft: user_draft_params, draftable_type: 'user', draftable_id: user.id
+        post :update, params: { draft: user_draft_params, draftable_type: 'user', draftable_id: user.id }
         expect(response.status).to eq 200
 
         draft = Draft.last
@@ -94,7 +94,7 @@ describe API::DraftsController do
       end
 
       it 'creates a new group draft' do
-        post :update, draft: group_draft_params, draftable_type: 'group', draftable_id: group.id
+        post :update, params: { draft: group_draft_params, draftable_type: 'group', draftable_id: group.id }
         expect(response.status).to eq 200
 
         draft = Draft.last
@@ -109,7 +109,7 @@ describe API::DraftsController do
       end
 
       it 'creates a new discussion draft' do
-        post :update, draft: discussion_draft_params, draftable_type: 'discussion', draftable_id: discussion.id
+        post :update, params: { draft: discussion_draft_params, draftable_type: 'discussion', draftable_id: discussion.id }
         expect(response.status).to eq 200
 
         draft = Draft.last
@@ -126,7 +126,7 @@ describe API::DraftsController do
       end
 
       it 'creates a new motion draft' do
-        post :update, draft: motion_draft_params, draftable_type: 'motion', draftable_id: motion.id
+        post :update, params: { draft: motion_draft_params, draftable_type: 'motion', draftable_id: motion.id }
         expect(response.status).to eq 200
 
         draft = Draft.last
@@ -140,7 +140,7 @@ describe API::DraftsController do
 
       it 'overwrites a user draft' do
         user_draft
-        post :update, draft: user_draft_params, draftable_type: 'user', draftable_id: user.id
+        post :update, params: { draft: user_draft_params, draftable_type: 'user', draftable_id: user.id }
         expect(response.status).to eq 200
 
         user_draft.reload
@@ -156,7 +156,7 @@ describe API::DraftsController do
 
       it 'overwrites a group draft' do
         group_draft
-        post :update, draft: group_draft_params, draftable_type: 'group', draftable_id: group.id
+        post :update, params: { draft: group_draft_params, draftable_type: 'group', draftable_id: group.id }
         expect(response.status).to eq 200
 
         group_draft.reload
@@ -172,7 +172,7 @@ describe API::DraftsController do
 
       it 'overwrites a discussion draft' do
         discussion_draft
-        post :update, draft: discussion_draft_params, draftable_type: 'discussion', draftable_id: discussion.id
+        post :update, params: { draft: discussion_draft_params, draftable_type: 'discussion', draftable_id: discussion.id }
         expect(response.status).to eq 200
 
         discussion_draft.reload
@@ -190,7 +190,7 @@ describe API::DraftsController do
 
       it 'overwrites a motion draft' do
         motion_draft
-        post :update, draft: motion_draft_params, draftable_type: 'motion', draftable_id: motion.id
+        post :update, params: { draft: motion_draft_params, draftable_type: 'motion', draftable_id: motion.id }
         expect(response.status).to eq 200
 
         motion_draft.reload
@@ -203,7 +203,7 @@ describe API::DraftsController do
       end
 
       it 'cannot access a group the user does not have access to' do
-        expect { post :update, draft: group_draft_params, draftable_type: 'group', draftable_id: another_group.id }.not_to change { Draft.count }
+        expect { post :update, params: { draft: group_draft_params, draftable_type: 'group', draftable_id: another_group.id } }.not_to change { Draft.count }
         expect(response.status).to eq 403
       end
     end

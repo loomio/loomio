@@ -38,7 +38,7 @@ module Plugins
 
     def use_database_table(table_name, &block)
       raise NoCodeSpecifiedError.new unless block_given?
-      return if ActiveRecord::Base.connection.table_exists?(table_name)
+      return if ActiveRecord::Base.connection.data_source_exists?(table_name)
       puts "Adding #{table_name} for plugin #{name}..."
 
       migration = ActiveRecord::Migration.new

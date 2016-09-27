@@ -178,7 +178,7 @@ class Ability
          :subscribe_to], Discussion do |discussion|
       if discussion.archived_at.present?
         false
-      elsif discussion.group.archived_at.present?
+      elsif discussion.group&.archived_at.present?
         false
       else
         discussion.public? or

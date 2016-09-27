@@ -14,7 +14,7 @@ describe EmailActionsController do
 
     it 'stops email notifications for the discussion' do
       expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'loud'
-      get :unfollow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
+      get :unfollow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
       expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'quiet'
     end
   end
@@ -31,7 +31,7 @@ describe EmailActionsController do
     end
 
     it 'enables emails for the discussion' do
-      get :follow_discussion, discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token
+      get :follow_discussion, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token }
       expect(DiscussionReader.for(discussion: @discussion, user: @user).volume).to eq 'loud'
     end
   end
@@ -47,12 +47,12 @@ describe EmailActionsController do
     end
 
     it 'marks the discussion as read at event created_at' do
-      get :mark_discussion_as_read, discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
+      get :mark_discussion_as_read, params: { discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token }
       expect(DiscussionReader.for(discussion: @discussion, user: @user).unread_activity_count).to eq 0
     end
 
     it 'does not error when discussion is not found' do
-      get :mark_discussion_as_read, discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
+      get :mark_discussion_as_read, params: { discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token }
       expect(DiscussionReader.for(discussion: @discussion, user: @user).unread_activity_count).to eq 1
       expect(response.status).to eq 200
     end

@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
   include UsesMetadata
-  before_filter :we_dont_serve_images_here_google_bot
+  before_action :we_dont_serve_images_here_google_bot
 
   private
 

@@ -1,4 +1,4 @@
-class API::RegistrationsController < Devise::RegistrationsController
+class Api::RegistrationsController < Devise::RegistrationsController
   include DeviseControllerHelper
 
   def create

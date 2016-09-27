@@ -7,7 +7,7 @@ require 'capybara/poltergeist'
 Capybara.default_selector = :css
 ActionController::Base.allow_rescue = false
 Cucumber::Rails::Database.javascript_strategy = :truncation
-Capybara.default_wait_time = 5
+Capybara.default_max_wait_time = 5
 ENV['LOOMIO_NEW_USERS_ON_BETA'] = '1'
 
 polter_options = {
@@ -28,4 +28,3 @@ Capybara.javascript_driver = :poltergeist
 Before do |scenario|
   stub_request(:head, /gravatar.com/).with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).to_return(:status => 200, :body => "", :headers => {})
 end
-

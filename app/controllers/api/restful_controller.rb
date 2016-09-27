@@ -1,9 +1,12 @@
-class API::RestfulController < ActionController::Base
+class Api::RestfulController < ActionController::Base
   include ::LocalesHelper
   include ::ProtectedFromForgery
-  include ::LoadAndAuthorize
-  before_filter :set_application_locale
-  before_filter :set_paper_trail_whodunnit
+  include ::FetchAndAuthorize
+
+  before_action :set_application_locale
+  before_action :set_paper_trail_whodunnit
+  before_action :fetch_and_authorize_resource, only: :show
+  before_action :fetch_resource, only: [:update, :destroy]
   snorlax_used_rest!
 
   private
@@ -69,5 +72,9 @@ class API::RestfulController < ActionController::Base
 
   def resources_to_serialize
     Array(resource || collection)
+  end
+
+  def load_resource
+    nil
   end
 end

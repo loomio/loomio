@@ -12,7 +12,7 @@ class StartGroupController < ApplicationController
 
   def create
     # TODO: move these validations into the group model... where they should already be really.
-    @group = Group.new(permitted_params.group, is_referral: false)
+    @group = Group.new(permitted_params.group)
     @email = params[:email]
     @name =  params[:name]
     @errors = []

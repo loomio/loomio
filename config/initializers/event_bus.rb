@@ -121,7 +121,7 @@ EventBus.configure do |config|
 
   # notify users of motion outcome created
   config.listen('motion_outcome_created_event') do |event|
-    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
+    Queries::UsersToEmailQuery.motion_outcome_created(event.motion).find_each { |user| event.notify!(user) }
   end
 
   # notify users of comment liked

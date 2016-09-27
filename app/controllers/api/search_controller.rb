@@ -1,4 +1,4 @@
-class API::SearchController < API::RestfulController
+class Api::SearchController < Api::RestfulController
 
   def index
     @search = resource_class.search_for(params[:q], current_user, search_params)
@@ -8,7 +8,7 @@ class API::SearchController < API::RestfulController
   private
 
   def search_params
-    params.slice(:from, :per).compact
+    params.slice(:from, :per)
   end
 
   def serializer_root

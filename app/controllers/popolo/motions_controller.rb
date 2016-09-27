@@ -1,4 +1,4 @@
-class Popolo::MotionsController < API::MotionsController
+class Popolo::MotionsController < Api::MotionsController
 
   private
 

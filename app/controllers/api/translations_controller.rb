@@ -1,4 +1,5 @@
-class API::TranslationsController < API::RestfulController
+class Api::TranslationsController < Api::RestfulController
+  skip_before_action :fetch_and_authorize_resource
 
   class TranslationUnavailableError < Exception; end
   rescue_from(TranslationUnavailableError) { |e| respond_with_standard_error e, 400 }
@@ -10,7 +11,7 @@ class API::TranslationsController < API::RestfulController
   def inline
     params[:model] = 'motion' if params[:model] == 'proposal' # >:-o
     raise TranslationUnavailableError.new unless TranslationService.available?
-    self.resource = TranslationService.new.translate(load_and_authorize(params[:model]), to: params[:to])
+    self.resource = TranslationService.new.translate(fetch_and_authorize(params[:model]), to: params[:to])
     respond_with_resource
   end
 

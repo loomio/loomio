@@ -17,25 +17,25 @@ class Queries::UsersToEmailQuery
     Queries::UsersByVolumeQuery.normal_or_loud(discussion).
                        distinct.
                        without(discussion.author).
-                       without(discussion.mentioned_group_members)
+                       without(*discussion.mentioned_group_members)
   end
 
   def self.new_motion(motion)
     Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).
                        distinct.
                        without(motion.author).
-                       without(motion.mentioned_group_members)
+                       without(*motion.mentioned_group_members)
   end
 
   def self.motion_closing_soon(motion)
-    User.distinct.where.any_of(Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion),
-                               User.email_proposal_closing_soon_for(motion.group))
+    User.distinct.from("(#{Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).to_sql} UNION
+                         #{User.email_proposal_closing_soon_for(motion.group).to_sql}) as users")
   end
 
   def self.motion_outcome_created(motion)
     Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).
                        distinct.
-                       without(motion.outcome_author)
+                       where.not(id: motion.outcome_author_id)
   end
 
   def self.motion_closed(motion)

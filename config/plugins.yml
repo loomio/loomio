@@ -6,6 +6,7 @@ loomio_org_plugin:
 
 loomio_tags:
   repo:         loomio/loomio_tags
+  branch:       rails5
   experimental: true
 
 loomio_truncate_comment:

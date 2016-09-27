@@ -15,7 +15,7 @@ describe InvitationsController do
     context 'invitation not found' do
       render_views
       it 'renders error page with not found message' do
-        get :show, id: 'asdjhadjkhaskjdsahda'
+        get :show, params: { id: 'asdjhadjkhaskjdsahda' }
         expect(response.body).to match(/could not find invitation/i)
       end
     end
@@ -28,14 +28,14 @@ describe InvitationsController do
       end
 
       it 'says sorry invitatino already used' do
-        get :show, id: invitation.token
+        get :show, params: { id: invitation.token }
         expect(response).to redirect_to(invitation.invitable)
       end
     end
 
     context "user not signed in" do
       before do
-        get :show, id: invitation.token
+        get :show, params: { id: invitation.token }
       end
 
       it "sets session attribute of the invitation token" do
@@ -60,7 +60,7 @@ describe InvitationsController do
       context 'get with invitation token in query' do
 
         it "accepts invitation and redirects to group " do
-          get :show, id: invitation.token
+          get :show, params: { id: invitation.token }
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present
@@ -75,7 +75,7 @@ describe InvitationsController do
         end
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
-          get :show, id: invitation.token
+          get :show, params: { id: invitation.token }
           response.should redirect_to group_url(group)
           invitation.reload
           expect(invitation.accepted?).to be true

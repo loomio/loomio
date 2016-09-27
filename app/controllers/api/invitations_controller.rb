@@ -1,6 +1,6 @@
-class API::InvitationsController < API::RestfulController
+class Api::InvitationsController < Api::RestfulController
   def create
-    load_and_authorize :group, :invite_people
+    fetch_and_authorize :group, :invite_people
     @invitations = InvitationService.invite_to_group(recipient_emails: email_addresses,
                                                      group: @group,
                                                      inviter: current_user,
@@ -13,20 +13,19 @@ class API::InvitationsController < API::RestfulController
   end
 
   def pending
-    load_and_authorize :group, :view_pending_invitations
+    fetch_and_authorize :group, :view_pending_invitations
     @invitations = page_collection(@group.invitations.pending)
     respond_with_collection
   end
 
   def shareable
-    load_and_authorize :group, :view_shareable_invitation
-    @invitations = [InvitationService.shareable_invitation_for(@group)]
+    fetch_and_authorize :group, :view_shareable_invitation
+    @invitations = [service.shareable_invitation_for(@group)]
     respond_with_collection
   end
 
   def destroy
-    @invitation = Invitation.find(params[:id])
-    InvitationService.cancel(invitation: @invitation, actor: current_user)
+    service.cancel(invitation: fetch_resource, actor: current_user)
     respond_with_resource
   end
 

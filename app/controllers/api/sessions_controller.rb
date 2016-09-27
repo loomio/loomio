@@ -1,4 +1,4 @@
-class API::SessionsController < Devise::SessionsController
+class Api::SessionsController < Devise::SessionsController
   include DeviseControllerHelper
 
   def create

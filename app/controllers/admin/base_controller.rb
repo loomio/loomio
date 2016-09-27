@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
-  skip_before_filter :check_browser, :check_for_invitation, :set_time_zone_from_javascript
-  before_filter :require_admin
+  skip_before_action :check_browser, :check_for_invitation, :set_time_zone_from_javascript
+  before_action :require_admin
 
   def url_info
 

@@ -1,4 +1,4 @@
-Loomio::Application.routes.draw do
+Rails.application.routes.draw do
 
   use_doorkeeper do
     skip_controllers :applications, :authorized_applications
@@ -13,10 +13,8 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  resources(:development, only: :index) do
-    get 'last_email', on: :collection, as: :last_email
-    get ':action', on: :collection
-  end
+  resources :development, only: :index
+  get 'development/:route', to: 'development#show'
 
   namespace :admin do
     get 'url_info' => 'base#url_info'

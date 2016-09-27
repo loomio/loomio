@@ -229,7 +229,7 @@ Now, we’ll define our index action in a new controller:
 
 ```
 # plugins/loomio_tags/controllers/discussion_tags_controller.rb
-class ::API::DiscussionTagsController < API::RestfulController
+class ::Api::DiscussionTagsController < Api::RestfulController
   def index
     instantiate_collection { |collection| collection.where('discussions.key': params[:discussion_keys]) }
     respond_with_collection

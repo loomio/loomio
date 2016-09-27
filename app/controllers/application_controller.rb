@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include AngularHelper
   include ProtectedFromForgery
-  include LoadAndAuthorize
+  include FetchAndAuthorize
   include CurrentUserHelper
   include SubscriptionHelper
 
@@ -12,11 +12,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_or_visitor
   helper_method :dashboard_or_root_path
 
-  before_filter :set_application_locale
-  around_filter :user_time_zone, if: :user_signed_in?
+  before_action :set_application_locale
+  before_action :set_paper_trail_whodunnit
+  around_action :user_time_zone, if: :user_signed_in?
 
   # intercom
-  skip_after_filter :intercom_rails_auto_include
+  skip_after_action :intercom_rails_auto_include
 
   rescue_from(ActionView::MissingTemplate)  { |exception| raise exception unless %w[txt text gif png].include?(params[:format]) }
   rescue_from(ActiveRecord::RecordNotFound) { respond_with_error :"error.not_found", status: :not_found }
@@ -88,7 +89,7 @@ class ApplicationController < ActionController::Base
     [nil, root_url, new_user_password_url, '']
   end
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|

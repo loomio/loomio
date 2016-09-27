@@ -7,6 +7,7 @@
 @import '1_lmo_card.scss';
 @import '1_lmo_headers.scss';
 
+// warning: removing this will 100% b0rk the automated testing. I don't know why.
 body { position: static; }
 
 .lmo-sidebar-and-main-container {

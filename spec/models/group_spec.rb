@@ -197,7 +197,7 @@ describe Group do
                         is_visible_to_public: false,
                         is_visible_to_parent_members: false,
                         parent: create(:group),
-                        parent_members_can_see_discussions: true) }.to raise_error
+                        parent_members_can_see_discussions: true) }.to raise_error ActiveRecord::RecordInvalid
       end
 
       it "does not error for a visible to parent subgroup" do
@@ -206,30 +206,6 @@ describe Group do
                         is_visible_to_parent_members: true,
                         parent: create(:group),
                         parent_members_can_see_discussions: true) }.to_not raise_error
-      end
-    end
-  end
-
-  describe "parent_members_can_see_group_is_valid?" do
-    context "parent_members_can_see_group = true" do
-      it "for a parent group" do
-        expect { create(:group,
-                        parent_members_can_see_group: true) }.to raise_error
-      end
-
-      it "for a hidden subgroup" do
-        expect { create(:group,
-                        is_visible_to_public: false,
-                        is_visible_to_parent_members: true,
-                        parent: create(:group)) }.to_not raise_error
-      end
-
-      it "for a visible subgroup" do
-        expect { create(:group,
-                        is_visible_to_public: true,
-                        parent: create(:group,
-                                       is_visible_to_public: true),
-                        parent_members_can_see_group: true) }.to raise_error
       end
     end
   end

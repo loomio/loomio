@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'VersionRecordsInterface', (BaseRecordsInter
       @fetch
         params:
           model: 'discussion'
-          discussion_id: discussionKey
+          discussion_key: discussionKey
 
     fetchByComment: (commentId, options = {}) ->
       @fetch

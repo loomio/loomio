@@ -12,7 +12,7 @@ module UsesMetadata
   private
 
   def load_resource_by_key
-    instance_variable_set "@#{controller_name.singularize}", controller_name.classify.constantize.find(params[:id] || params[:key])
+    instance_variable_set "@#{controller_name.singularize}", controller_name.classify.constantize.friendly.find(params[:id] || params[:key])
   end
 
   def metadata

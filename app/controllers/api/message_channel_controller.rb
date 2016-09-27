@@ -1,4 +1,4 @@
-class API::MessageChannelController < API::RestfulController
+class Api::MessageChannelController < Api::RestfulController
 
   rescue_from(MessageChannelService::AccessDeniedError)   { |e| respond_with_standard_error e, 400 }
   rescue_from(MessageChannelService::UnknownChannelError) { |e| respond_with_standard_error e, 400 }
@@ -15,8 +15,8 @@ class API::MessageChannelController < API::RestfulController
   end
 
   def subscription_models
-    (params[:group_key] && load_and_authorize(:group)) ||
-    (params[:discussion_key] && load_and_authorize(:discussion)) ||
+    (params[:group_key] && fetch_and_authorize(:group)) ||
+    (params[:discussion_key] && fetch_and_authorize(:discussion)) ||
     subscriptions_for_user
   end
 

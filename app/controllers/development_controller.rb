@@ -3,8 +3,7 @@ class DevelopmentController < ApplicationController
   include Development::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_filter :ensure_testing_environment
-  before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
+  before_action :ensure_testing_environment
 
   def index
     @routes = DevelopmentController.action_methods.select do |action|
@@ -13,9 +12,14 @@ class DevelopmentController < ApplicationController
     render layout: false
   end
 
+  def show
+    cleanup_database unless [:last_email, :index, :accept_last_invitation].include?(params[:route].to_sym)
+    send params[:route]
+  end
+
   def last_email
     @email = ActionMailer::Base.deliveries.last
-    render layout: false
+    render 'last_email', layout: false
   end
 
   def accept_last_invitation
@@ -270,33 +274,33 @@ class DevelopmentController < ApplicationController
     test_group
     judd
     pending_invitation
-    redirect_to last_email_development_index_path
+    redirect_to '/development/last_email'
   end
 
   def setup_new_user_invitation
     test_group
     pending_invitation
-    redirect_to last_email_development_index_path
+    redirect_to '/development/last_email'
   end
 
   def setup_used_invitation
     test_group
     emilio
     InvitationService.redeem(pending_invitation, judd)
-    redirect_to last_email_development_index_path
+    redirect_to '/development/last_email'
   end
 
   def setup_accepted_membership_request
     membership_request = MembershipRequest.new(name: "Judd Nelson", email: "judd@example.com", group: test_group)
     MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
-    redirect_to last_email_development_index_path
+    redirect_to '/development/last_email'
   end
 
   def setup_cancelled_invitation
     test_group
     judd
     InvitationService.cancel(invitation: pending_invitation, actor: patrick)
-    redirect_to last_email_development_index_path
+    redirect_to 'development#last_email'
   end
 
   def setup_team_invitation_link

@@ -1,7 +1,7 @@
-class API::ProfileController < API::RestfulController
+class Api::ProfileController < Api::RestfulController
 
   def show
-    load_and_authorize :user
+    fetch_and_authorize :user
     respond_with_resource serializer: UserSerializer
   end
 
@@ -46,8 +46,8 @@ class API::ProfileController < API::RestfulController
     { user: current_user, actor: current_user, params: permitted_params.user }
   end
 
-  def resource_class
-    User
+  def resource_name
+    :user
   end
 
   def resource_serializer

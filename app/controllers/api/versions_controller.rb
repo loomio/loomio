@@ -1,4 +1,4 @@
-class API::VersionsController < API::RestfulController
+class Api::VersionsController < Api::RestfulController
 
   private
 
@@ -7,7 +7,7 @@ class API::VersionsController < API::RestfulController
   end
 
   def accessible_records
-    records = load_and_authorize(params[:model]).versions.order(created_at: :desc)
+    records = fetch_and_authorize(params[:model]).versions.order(created_at: :desc)
     records = records.where(event: 'update') if params[:model] == 'discussion'
     records
   end
