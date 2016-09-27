@@ -35,8 +35,7 @@ class DiscussionSerializer < ActiveModel::Serializer
              :updated_at,
              :archived_at,
              :private,
-             :versions_count,
-             :mentioned_usernames
+             :versions_count
 
   attributes_from_reader :discussion_reader_id,
                          :read_items_count,
@@ -52,7 +51,6 @@ class DiscussionSerializer < ActiveModel::Serializer
   has_one :group, serializer: GroupSerializer, root: :groups
   has_one :active_proposal, serializer: MotionSerializer, root: :proposals
   has_one :active_proposal_vote, serializer: VoteSerializer, root: :votes
-  has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
   def include_active_proposal_vote?
     reader.present? && active_proposal.present?

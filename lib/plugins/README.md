@@ -309,15 +309,30 @@ but might not be ready for all of our users to see just yet. To enable this, we'
 added the ability to mark some plugins as 'experimental', which means they will
 only be loaded for groups who have opted in to see our mad science.
 
-In order to mark a plugin as an experiment, simply add the line `experiment: true`
+In order to mark a plugin as an experiment, simply add the line `experimental: true`
 to the plugin's entry in `plugins.yml`, like so:
 
 ```yaml
 kickflip:
-  repo:       loomio/kickflip
-  version:    master
-  experiment: true
+  repo:         loomio/kickflip
+  branch:       master
+  experimental: true
 ```
+
+###### Constraining a plugin to certain subscription levels
+
+We also have plugins which we only want to appear for our paying customers. In order to do this on your instance,
+you can provide the config with a list of 'plans', like so:
+
+```yaml
+kickflip:
+  repo:     loomio/kickflip
+  plans:
+    - standard
+    - plus
+```
+
+This will be compared to the 'plan' field of the group's subscription when deciding whether to display the plugin or not.
 
 ###### How this works:
 

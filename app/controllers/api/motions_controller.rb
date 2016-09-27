@@ -1,10 +1,6 @@
 class Api::MotionsController < Api::RestfulController
   include UsesDiscussionReaders
-
-  def show
-    fetch_and_authorize(:motion)
-    respond_with_resource
-  end
+  include UsesFullSerializer
 
   def close
     @event = service.close_by_user(fetch_and_authorize(:motion, :close), current_user)

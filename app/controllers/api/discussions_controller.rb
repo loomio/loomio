@@ -1,5 +1,6 @@
 class Api::DiscussionsController < Api::RestfulController
   include UsesDiscussionReaders
+  include UsesFullSerializer
 
   def index
     fetch_and_authorize(:group, optional: true)
