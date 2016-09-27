@@ -1,3 +1,5 @@
+Ahoy.throttle = Rails.env.production?
+
 if Rails.env.production?
   Rack::Attack.cache.store = Rails.cache
   Rack::Attack.throttled_response = ->(env) { [429, {}, [ActionView::Base.new.render(file: 'public/429.html')]] }
