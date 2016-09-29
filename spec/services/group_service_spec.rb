@@ -51,7 +51,7 @@ describe 'GroupService' do
     it 'cancels the subscription' do
       group.add_admin! user
       instance = OpenStruct.new
-      allow(SubscriptionService).to receive_message_chain(:delay, :new).and_return(instance)
+      allow(SubscriptionService).to receive(:new).and_return(instance)
       expect(instance).to receive :end_subscription!
       GroupService.archive(group: group, actor: user)
     end
