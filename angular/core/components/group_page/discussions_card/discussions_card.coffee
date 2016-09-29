@@ -4,23 +4,19 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   templateUrl: 'generated/components/group_page/discussions_card/discussions_card.html'
   replace: true
   controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
-    $scope.threadLimit = $scope.pageWindow.current
-    $scope.init = ->
-      $scope.discussions = ThreadQueryService.groupQuery($scope.group, filter: 'all', queryType: 'all')
-    $scope.init()
-    $scope.$on 'subgroupsLoaded', $scope.init
+    $scope.threadIds = []
+    $scope.hasMoreDiscussions = true
 
     $scope.loadMore = ->
       current = $scope.pageWindow.current
       $scope.pageWindow.current += $scope.pageWindow.pageSize
-      $scope.threadLimit        += $scope.pageWindow.pageSize
-      Records.discussions.fetchByGroup($scope.group.key, from: current, per: $scope.pageWindow.pageSize)
+      Records.discussions.fetchByGroup($scope.group.key, from: current, per: $scope.pageWindow.pageSize).then (response) ->
+        $scope.threadIds          += _.pluck(response.discussions, 'id')
+        $scope.hasMoreDiscussions =  response.discussions.length == $scope.pageWindow.pageSize
+        $scope.discussions        =  ThreadQueryService.threadIdQuery "#{$scope.group.key}Threads", $scope.threadIds
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
     $scope.loadMore()
-
-    $scope.canLoadMoreDiscussions = ->
-      $scope.pageWindow.current < $scope.pageWindow.max
 
     $scope.openDiscussionForm = ->
       ModalService.open DiscussionForm,
