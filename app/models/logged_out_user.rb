@@ -45,7 +45,7 @@ class LoggedOutUser
   end
 
   def can?(*args)
-    false
+    ability.can?(*args)
   end
 
   def ability
