@@ -39,14 +39,13 @@ class ChargifyService
   private
 
   def subscription_from_chargify(action, payload = {})
-    byebug
-    req = HTTParty.send(action, chargify_api_endpoint, body: payload, basic_auth: basic_auth, follow_redirects: true)
+    req = HTTParty.send(action, chargify_api_endpoint, body: payload, basic_auth: basic_auth)
     json = JSON.parse req.body
     json['subscription'] if json.present?
   end
 
   def chargify_api_endpoint
-    "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
+    "https://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
   end
 
   def basic_auth
