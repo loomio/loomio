@@ -5,6 +5,7 @@
       .lmo-disabled-form{ng-show: "isDisabled"}
       %input{type: "hidden", ng-model: "comment.usesMarkdown"}
       %span{translate: "comment_form.in_reply_to", translate-value-name: "{{comment.parent().authorName()}}", ng-show: "comment.parent().authorName()"}
+      %outlet{name: "before-comment-form-textarea", model: "comment"}
       .lmo-relative.comment-form__textarea-wrapper
         %textarea.lmo-textarea.form-control.comment-form__comment-field.lmo-primary-form-input{ng-disabled: "isDisabled", msd-elastic: "true", aria-labelledby: "comment-form-title", name: "body", placeholder: "Say something...", ng_model: "comment.body", mentio: true, mentio-trigger-char: "'@'", mentio_items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", ng-model-options: "{ updateOn: 'default blur', debounce: {'default': 150, 'blur': 0} }"}
         %emoji_picker.lmo-action-dock{target-selector: "bodySelector"}
