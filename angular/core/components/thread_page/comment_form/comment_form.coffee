@@ -50,6 +50,7 @@ angular.module('loomioApp').directive 'commentForm', ->
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
+      $scope.comment.parentAuthorName = parentComment.authorName()
       ScrollService.scrollTo('.comment-form__comment-field')
 
     $scope.bodySelector = '.comment-form__comment-field'
