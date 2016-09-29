@@ -46,6 +46,7 @@ angular.module('loomioApp').directive 'commentForm', ->
           name: successMessageName
         successCallback: $scope.init
       $scope.listenForSubmitOnEnter()
+      $scope.$broadcast 'commentFormInit', $scope.comment
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
