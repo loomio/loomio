@@ -39,7 +39,9 @@ class ChargifyService
   private
 
   def subscription_from_chargify(action, payload = {})
-    json = JSON.parse HTTParty.send(action, chargify_api_endpoint, body: payload, basic_auth: basic_auth).body
+    byebug
+    req = HTTParty.send(action, chargify_api_endpoint, body: payload, basic_auth: basic_auth, follow_redirects: true)
+    json = JSON.parse req.body
     json['subscription'] if json.present?
   end
 

@@ -22,6 +22,8 @@ class API::GroupsController < API::RestfulController
     load_resource
     GroupService.archive(group: @group, actor: current_user)
     respond_with_resource
+  rescue => e
+    byebug
   end
 
   def subgroups
