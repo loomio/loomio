@@ -79,6 +79,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasUnreadActivity: ->
       @isUnread() && @unreadActivityCount() > 0
 
+    hasContext: ->
+      !!@description
+
     isImportant: ->
       @starred or @hasActiveProposal()
 
