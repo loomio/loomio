@@ -8,9 +8,9 @@ ModelLocator = Struct.new(:model, :params) do
     elsif model.to_sym == :user
       resource_class.find_by(username: params[:id] || params[:username]) || resource_class.find(params[:id])
     elsif resource_class.respond_to?(:friendly)
-      resource_class.friendly.find params[:id] || params[:key]
+      resource_class.friendly.find params[:key] || params[:id]
     else
-      resource_class.find params[:id] || params[:key]
+      resource_class.find params[:key] || params[:id]
     end
   end
 
