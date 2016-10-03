@@ -1,7 +1,8 @@
-angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope) ->
+angular.module('loomioApp').factory 'ModalService', ($mdDialog, $rootScope, $timeout) ->
   currentModal = null
   new class ModalService
     open: (modal, resolve = {}, opts = {}) ->
+      $timeout -> document.querySelector('.modal-header h1').focus()
       $rootScope.$broadcast 'modalOpened', modal
       $scope = $rootScope.$new(true)
       $scope.$close = $mdDialog.cancel
