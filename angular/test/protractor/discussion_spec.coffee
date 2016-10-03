@@ -4,6 +4,8 @@ describe 'Discussion Page', ->
   discussionForm = require './helpers/discussion_form_helper.coffee'
   threadPage = require './helpers/thread_helper.coffee'
   flashHelper = require './helpers/flash_helper.coffee'
+  emailhelper = require './helpers/email_helper.coffee'
+  staticPage = require './helpers/static_page_helper.coffee'
   page = require './helpers/page_helper.coffee'
 
   describe 'starting a thread via start menu', ->
@@ -215,3 +217,10 @@ describe 'Discussion Page', ->
       threadPage.selectDeleteCommentOption()
       threadPage.confirmCommentDeletion()
       expect(threadPage.activityPanel()).not.toContain('original comment right thur')
+
+  describe 'following a link in a thread email', ->
+    it 'successfully takes you to relevant comment', ->
+      page.loadPath 'setup_reply_email'
+      emailhelper.openLastEmail()
+      staticPage.click 'a'
+      page.expectText '.activity-card', 'Hello Jennifer'
