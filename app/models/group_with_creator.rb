@@ -1,11 +1,5 @@
 GroupWithCreator = Struct.new(:params) do
 
-  def start!
-    return unless errors.empty?
-    GroupService.delay.create(group: group, actor: LoggedOutUser.new)
-    InvitationService.delay.invite_admin_to_group(group: group, name: name, email: email)
-  end
-
   def group
     @group ||= Group.new(group_params)
   end
