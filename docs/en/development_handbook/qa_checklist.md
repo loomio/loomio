@@ -21,6 +21,7 @@ A developer who did not build the feature should check that:
 - there are e2e tests to confirm the feature works
 - a green apple has been given
 - images are the right size for the job
+- have you read https://github.com/ankane/secure_rails recently?
 
 ## Browser Compatibility
 

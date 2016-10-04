@@ -214,7 +214,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/export'                      => 'groups#export',    as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
   get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
-  get 'd/:key/comment/(:id)'               => 'discussions#show', as: :comment
+  get 'd/:key/comment/:comment_id'         => 'discussions#show', as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
   get 'u/:username/'                       => 'users#show',       as: :user
 
