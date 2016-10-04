@@ -22,7 +22,7 @@ module GroupService
 
     group.add_admin! actor if actor.is_logged_in?
 
-    EventBus.broadcast('group_create', group, params, actor)
+    EventBus.broadcast('group_create', group, actor)
   end
 
   def self.update(group:, params:, actor:)

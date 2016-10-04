@@ -8,9 +8,7 @@ class StartGroupController < ApplicationController
 
   def create
     if group_with_creator.errors.empty?
-      GroupService.create(group:  group_with_creator.group,
-                          params: group_with_creator.creator,
-                          actor:  current_user_or_visitor)
+      GroupService.create(group:  group_with_creator.group, actor: group_with_creator.creator)
     else
       render :new
     end

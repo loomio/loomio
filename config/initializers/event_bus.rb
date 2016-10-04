@@ -6,10 +6,12 @@ EventBus.configure do |config|
   config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
   config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
 
-  config.listen('group_create') do |group, params|
-    InvitationService.delay.invite_admin_to_group(group: group,
-                                                  name:  params.dig(:creator, :name),
-                                                  email: params.dig(:creator, :email)) if params[:creator]
+  config.listen('group_create') do |group, actor|
+    InvitationService.delay.invite_admin_to_group(
+      group: group,
+      name:  actor.name,
+      email: actor.email
+    ) unless actor.is_logged_in?
   end
 
   # Index search vectors after model creation
