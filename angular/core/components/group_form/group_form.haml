@@ -2,7 +2,7 @@
   %form{ng-submit: "submit()",  ng-disabled: "group.processing", name: "groupForm" }
     .lmo-disabled-form{ng-show: "isDisabled"}
     .modal-header
-      %modal_header_cancel_button
+      %modal_header_cancel_button{aria-hidden: "true"}
       %h1.lmo-h1{translate: "{{i18n.heading}}"}
 
     .modal-body

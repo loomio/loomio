@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'GroupForm', ->
   templateUrl: 'generated/components/group_form/group_form.html'
+  ariaLabel: 'Group form'
   controller: ($scope, $rootScope, $location, group, KeyEventService, FormService, Records, $translate, PrivacyString) ->
     $scope.group = group.clone()
 

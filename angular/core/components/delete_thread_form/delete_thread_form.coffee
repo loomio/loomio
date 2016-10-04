@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'DeleteThreadForm', ->
   templateUrl: 'generated/components/delete_thread_form/delete_thread_form.html'
+  ariaLabel: 'Delete thread'
   controller: ($scope, $location, discussion, FormService, LmoUrlService) ->
     $scope.discussion = discussion
     $scope.group = discussion.group()

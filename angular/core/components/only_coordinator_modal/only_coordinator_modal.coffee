@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'OnlyCoordinatorModal', ->
   templateUrl: 'generated/components/only_coordinator_modal/only_coordinator_modal.html'
+  ariaLabel: 'Unable to deactivate account'
   controller: ($scope, $location, Session, LmoUrlService) ->
 
     $scope.groups = ->

@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'LeaveGroupForm', ->
   templateUrl: 'generated/components/leave_group_form/leave_group_form.html'
+  ariaLabel: 'Leave group'
   controller: ($scope, $location, $rootScope, group, FormService, Session, AbilityService) ->
     $scope.group = group
     $scope.membership = $scope.group.membershipFor(Session.user())

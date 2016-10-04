@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'AddMembersModal', ->
   templateUrl: 'generated/components/invitation_form/add_members_modal/add_members_modal.html'
+  ariaLabel: 'Add members from parent group'
   controller: ($scope, Records, LoadingService, group, AppConfig, FlashService, ModalService, InvitationForm) ->
     $scope.isDisabled = false
     $scope.group = group

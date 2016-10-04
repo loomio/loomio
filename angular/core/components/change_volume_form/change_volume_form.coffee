@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'ChangeVolumeForm', ->
   templateUrl: 'generated/components/change_volume_form/change_volume_form.html'
+  ariaLabel: 'Change email settings'
   controller: ($scope, model, FormService, Session, FlashService) ->
     $scope.model = model.clone()
     $scope.volumeLevels = ["loud", "normal", "quiet"]
@@ -9,7 +10,7 @@ angular.module('loomioApp').factory 'ChangeVolumeForm', ->
         when 'discussion' then $scope.model.volume()
         when 'membership' then $scope.model.volume
         when 'user'       then $scope.model.defaultMembershipVolume
-    
+
     $scope.buh =
       volume: $scope.defaultVolume()
 

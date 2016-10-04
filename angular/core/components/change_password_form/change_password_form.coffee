@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'ChangePasswordForm', ->
   templateUrl: 'generated/components/change_password_form/change_password_form.html'
+  ariaLabel: 'Change password form'
   controller: ($scope, $rootScope, Session, Records, FormService) ->
     $scope.user = Session.user().clone()
 

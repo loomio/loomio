@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'SignUpForm', ->
   templateUrl: 'generated/components/sign_up_form/sign_up_form.html'
+  ariaLabel: 'Sign up form'
   controller: ($scope, $location, $window, preventClose, ModalService, SignInForm, Session, AppConfig, Records, FormService) ->
     $scope.registration = Records.registrations.build()
     $scope.preventClose = preventClose

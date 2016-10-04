@@ -1,5 +1,6 @@
 angular.module('loomioApp').factory 'DeactivationModal', ->
   templateUrl: 'generated/components/deactivation_modal/deactivation_modal.html'
+  ariaLabel: 'Deactivate account'
   controller: ($scope, AbilityService, ModalService, DeactivateUserForm, OnlyCoordinatorModal) ->
 
     $scope.submit = ->
