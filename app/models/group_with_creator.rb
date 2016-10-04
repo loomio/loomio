@@ -10,7 +10,7 @@ GroupWithCreator = Struct.new(:params) do
 
   def errors
     return [] if params[:action] == 'new'
-    [
+    @errors ||= [
       ('group_name' unless group.valid?),
       ('email'      unless creator.email.present?),
       ('name'       unless creator.name.present?)

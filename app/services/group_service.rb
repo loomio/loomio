@@ -1,5 +1,5 @@
 module GroupService
-  def self.create(group:, params: {}, actor:)
+  def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
     return false unless group.valid?
