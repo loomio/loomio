@@ -7,10 +7,9 @@ EventBus.configure do |config|
   config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
 
   config.listen('group_create') do |group, params|
-    return unless params[:creator]
     InvitationService.delay.invite_admin_to_group(group: group,
                                                   name:  params.dig(:creator, :name),
-                                                  email: params.dig(:creator, :email))
+                                                  email: params.dig(:creator, :email)) if params[:creator]
   end
 
   # Index search vectors after model creation
