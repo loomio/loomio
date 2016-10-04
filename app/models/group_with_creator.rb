@@ -4,8 +4,12 @@ GroupWithCreator = Struct.new(:params) do
     @group ||= Group.new(group_params)
   end
 
+  def creator
+    { creator: params.slice(:name, :email) }
+  end
+
   def errors
-    return [] if new?
+    return [] if params[:action] == 'new'
     [
       ('group_name' unless group.valid?),
       ('email'      unless params[:email].present?),
@@ -15,12 +19,7 @@ GroupWithCreator = Struct.new(:params) do
 
   private
 
-  def new?
-    params[:action] == 'new'
-  end
-
   def group_params
-    return {} if new?
     { name: params.dig(:group, :name), description: params.dig(:group, :description) }
   end
 

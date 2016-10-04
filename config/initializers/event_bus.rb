@@ -6,6 +6,13 @@ EventBus.configure do |config|
   config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
   config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
 
+  config.listen('group_create') do |group, params|
+    return unless params[:creator]
+    InvitationService.delay.invite_admin_to_group(group: group,
+                                                  name:  params.dig(:creator, :name),
+                                                  email: params.dig(:creator, :email))
+  end
+
   # Index search vectors after model creation
   config.listen('discussion_create', 'discussion_update') { |discussion| SearchVector.index! discussion.id }
   config.listen('motion_create', 'motion_update')         { |motion|     SearchVector.index! motion.discussion_id }
