@@ -7,8 +7,8 @@ class StartGroupController < ApplicationController
   end
 
   def create
-    if group.with_creator.errors.empty?
-      StartGroupJob.perform_later(group_with_creator)
+    if group_with_creator.errors.empty?
+      StartGroupJob.perform_later(params)
     else
       render :new
     end

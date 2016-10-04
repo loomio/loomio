@@ -4,20 +4,12 @@ GroupWithCreator = Struct.new(:params) do
     @group ||= Group.new(group_params)
   end
 
-  def email
-    @email ||= params[:email]
-  end
-
-  def name
-    @name  ||= params[:name]
-  end
-
   def errors
     return [] if new?
     [
       ('group_name' unless group.valid?),
-      ('email'      unless email.present?),
-      ('name'       unless name.present?)
+      ('email'      unless params[:email].present?),
+      ('name'       unless params[:name].present?)
     ].compact
   end
 
