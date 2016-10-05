@@ -146,6 +146,8 @@
     font-size: inherit;
   }
   table {
+    table-layout: fixed;
+    width: 100%;
     margin-bottom: 10px;
   }
   table td {
