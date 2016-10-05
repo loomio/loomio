@@ -231,51 +231,44 @@ en:
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
   introduction_thread:
-    title: Welcome to %{group_name}
+    title: Welcome! Please introduce yourself
     description: |
-      Please take a moment to introduce yourself: **post a comment** in the form below.
+      Take a moment to let the group know a bit about who you are. Post a comment below.
 
-      If you have clear intentions for this Loomio group, you could share them here so everyone has an idea of what they want to achieve together.
+      What’s your role or approach to participation in this group? What should people know about you to understand where you’re coming from?
   how_it_works_thread:
-    title: How To Use Loomio
+    title: How to use Loomio
     description: |
       Welcome to Loomio, an online place to make decisions together.
 
-      This is an example discussion **thread**. Why not use this space to try out Loomio’s features?
+      This is an example discussion **thread**. You can add comments below. A thread is a conversation on a given topic. This thread is about how Loomio works, so post questions about that here.
 
-      You are currently reading the thread **context**. Use this space to give the background information the group needs for a productive discussion.
+      You are currently reading the thread **context**, a space for background information. You can update it as the discussion progresses.
 
-      The **proposal** panel is where you make decisions. You can start proposals and participate in them there.
+      To get started with Loomio:
+      1. Upload a [profile picture](/profile)
+      2. Introduce yourself in the [Welcome thread](%{thread_url})
+      3. Post in existing threads, or start a new one
 
-      The **activity** panel below shows everything that’s happened in this thread.
-  first_comment:
-    body: |
-      Hi folks, I’m the Loomio Helper Bot.
+      Tips for posting on Loomio:
+      * To notify a specific person, type @ followed by their name.
+      * Click the paperclip icon to add attachments.
 
-      If you want to get the attention of a specific person in your group, type @ into the comment field, followed by their name :)
+      If you’ve got questions, check the [Loomio help manual](http://help.loomio.org).
 
-      Here are some things you might want to try to get things under way:
-
-      - Set your [profile picture](/profile)
-      - Configure your [email settings](/email_preferences)
-      - Introduce yourself to the group in the [Welcome to %{group_name} thread](%{thread_url})
-
-      If you’ve got any questions, the first place to check is the [Loomio help manual](http://help.loomio.org).
   first_proposal:
-    name: 'Demonstration proposal: let’s go!'
+    name: Demonstration proposal
     description: |
-      This the proposal **description**. Here you can explain the proposed course of action and give enough detail so that everyone can make a well informed decision.
+      This is a **proposal**, where you can make a decision together. You can start a proposal once a discussion is underway.
 
-      To participate in the proposal, choose one of these options:
+      Everyone is asked to **state a position** by the **deadline**. You can extend the deadline if you need to, or close a proposal early.
 
-      - **Agree**: “I agree with this and want it to go ahead.”
-      - **Abstain**: “I am happy for the group to decide without me.”
-      - **Disagree**: “I think we can probably do better.”
-      - **Block**: “I have strong objections to this proposal and am not OK with it going ahead.”
+      You can **change your position** while the proposal is open. You might reconsider your view as you listen to others.
 
-      When you have chosen, you’ll be prompted for a short statement to explain why you feel the way you do. You can change your position at any time while the proposal is still open.
-  first_vote:
-    statement: Let's go!
+      Sometimes groups work through a **series of proposals** to build solutions together. You can raise sequential proposals in this thread.
+
+      **Try participating! Click one of the four buttons**.
+
   contact_page:
     contact_us: Contact us
     faq_prompt_html: Got a question for the Loomio team? Before contacting us, you might be able to find the answer in our frequently asked questions.
