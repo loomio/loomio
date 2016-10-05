@@ -42,6 +42,6 @@ module GroupService
   def self.archive(group:, actor:)
     actor.ability.authorize! :archive, group
     group.archive!
-    EventBus.broadcast('group_archive', group)
+    EventBus.broadcast('group_archive', group, actor)
   end
 end
