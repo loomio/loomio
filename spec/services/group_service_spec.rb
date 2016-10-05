@@ -46,4 +46,14 @@ describe 'GroupService' do
       expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
   end
+
+  describe 'archive!' do
+    it 'cancels the subscription' do
+      group.add_admin! user
+      instance = OpenStruct.new
+      allow(SubscriptionService).to receive(:new).and_return(instance)
+      expect(instance).to receive :end_subscription!
+      GroupService.archive(group: group, actor: user)
+    end
+  end
 end

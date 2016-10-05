@@ -535,6 +535,15 @@ class DevelopmentController < ApplicationController
     redirect_to dashboard_url
   end
 
+  def setup_reply_email
+    sign_in jennifer
+    comment = Comment.new(discussion: test_discussion, body: 'Hello Patrick')
+    CommentService.create(comment: comment, actor: jennifer)
+    reply = Comment.new(discussion: test_discussion, body: 'Hello Jennifer', parent: comment)
+    CommentService.create(comment: reply, actor: patrick)
+    redirect_to discussion_url(test_discussion)
+  end
+
   def email_settings_as_logged_in_user
     test_group
     sign_in patrick

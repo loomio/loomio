@@ -111,7 +111,7 @@ class Motion < ActiveRecord::Base
   def close!
     did_not_votes.delete_all
     non_voters = group_members - voters
-    DidNotVote.create! non_voters.map { |user| {motion: self, user: user} }
+    DidNotVote.create! non_voters.uniq.map { |user| {motion: self, user: user} }
     update(closed_at: Time.now, members_count: group.memberships_count)
   end
 

@@ -1,6 +1,5 @@
 Loomio::Application.configure do
   config.log_level = :info
-  config.action_dispatch.tld_length = (ENV['TLD_LENGTH'] || 1).to_i
 
   # Code is not reloaded between requests
   config.cache_classes = true
