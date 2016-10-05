@@ -5,11 +5,12 @@ module Plugins
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
   Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans)
+  StaticAsset = Struct.new(:path, :filename)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :actions, :events, :outlets, :routes, :translations, :enabled
+    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :enabled
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -18,7 +19,7 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new
+      @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
       @config = YAML.load_file([@name, 'config.yml'].join('/'))
     end
 
@@ -56,6 +57,10 @@ module Plugins
 
     def use_asset_directory(glob)
       use_directory(glob) { |path| use_asset(path) }
+    end
+
+    def use_static_asset(path, filename)
+      @static_assets.add StaticAsset.new([@name, path].join('/'), filename)
     end
 
     def use_translations(path, filename = :client)
