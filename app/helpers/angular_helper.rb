@@ -35,6 +35,10 @@ module AngularHelper
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       chargify:            app_config_chargify,
+      inlineTranslation: {
+        isAvailable:       TranslationService.available?,
+        supportedLangs:    Translation::SUPPORTED_LANGUAGES
+      },
       pageSize: {
         default:           ENV['DEFAULT_PAGE_SIZE'] || 30,
         groupThreads:      ENV['GROUP_PAGE_SIZE'],

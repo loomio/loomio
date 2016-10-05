@@ -140,8 +140,8 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
 
 
     canTranslate: (model) ->
-      AppConfig.canTranslate and
-      Session.user().locale and
+      AppConfig.inlineTranslation.isAvailable? and
+      _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
     canMention: (model, member) ->
