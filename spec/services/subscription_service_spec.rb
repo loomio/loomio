@@ -69,6 +69,11 @@ describe SubscriptionService do
 
   describe 'end_subscription!' do
     it 'shifts the group into gift mode' do
+      subscription.update kind: :paid
+      service.start_subscription! 4321
+      subscription.reload
+      service.end_subscription!
+      expect(subscription.kind).to eq 'gift'
     end
   end
 end

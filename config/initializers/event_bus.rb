@@ -130,4 +130,6 @@ EventBus.configure do |config|
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
+  config.listen('group_archive') { |group| SubscriptionService.new(group).end_subscription! }
+
 end
