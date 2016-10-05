@@ -17,8 +17,6 @@ class InvitationService
   end
 
   def self.invite_creator_to_group(group:, creator:)
-    return unless creator.email.present?
-
     InvitePeopleMailer.delay(priority: 1).to_start_group(
       invitation: InvitationService.create_invite_to_start_group(
         group:           group,
