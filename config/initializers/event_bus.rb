@@ -22,11 +22,7 @@ EventBus.configure do |config|
 
   # send bulk emails after events
   Event::BULK_MAIL_KINDS.each do |kind|
-    config.listen("#{kind}_event") do |event|
-      BaseMailer.send_bulk_mail(to: Queries::UsersToEmailQuery.send(kind, event.eventable)) do |user|
-        ThreadMailer.delay(priority: 2).send(kind, user, event)
-      end
-    end
+    config.listen("#{kind}_event") { |event| SendBulkEmailJob.perform_later(event.id) }
   end
 
   # send individual emails after thread events
