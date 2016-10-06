@@ -5,7 +5,7 @@ class InvitationService
     args[:intent] = 'start_group'
     args[:invitable] = args[:group]
     args.delete(:group)
-    Invitation.create(args)
+    Invitation.create!(args)
   end
 
   def self.create_invite_to_join_group(args)
@@ -13,7 +13,7 @@ class InvitationService
     args[:intent] = 'join_group'
     args[:invitable] = args[:group]
     args.delete(:group)
-    Invitation.create(args)
+    Invitation.create!(args)
   end
 
   def self.invite_creator_to_group(group:, creator:)
