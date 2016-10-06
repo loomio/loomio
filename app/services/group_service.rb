@@ -5,13 +5,22 @@ module GroupService
     return false unless group.valid?
 
     if group.is_parent?
-      group.default_group_cover           = DefaultGroupCover.sample
-      group.experiences['bx_choose_plan'] = [true, false].sample if ENV['LOOMIO_AB_TEST']
-      group.subscription                  = Subscription.new_gift unless group.experiences['bx_choose_plan']
+      if ENV['LOOMIO_AB_TEST']
+        group.experiences['bx_choose_plan'] = [true, false].sample
+        group.save
+      end
+
+      group.update(default_group_cover: DefaultGroupCover.sample)
       ExampleContent.new(group).add_to_group!
+
+      if SubscriptionService.available?
+        group.subscription = Subscription.new_gift unless group.experiences['bx_choose_plan']
+      end
+    else
+      group.save!
     end
 
-    group.save!
+    group.add_admin! actor if actor.is_logged_in?
 
     EventBus.broadcast('group_create', group, actor)
   end

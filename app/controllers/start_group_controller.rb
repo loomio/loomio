@@ -1,26 +1,33 @@
 class StartGroupController < ApplicationController
-  before_action :redirect_to_dashboard
 
   def new
-    group_with_creator
-    render :new
-  end
-
-  def create
-    if group_with_creator.errors.empty?
-      GroupService.create(group: group_with_creator.group, actor: group_with_creator.creator)
-    else
+    @errors = []
+    @group = Group.new
+    if !current_user_or_visitor.is_logged_in?
       render :new
+    else
+      redirect_to dashboard_path(start_group: true)
     end
   end
 
-  private
+  def create
+    # TODO: move these validations into the group model... where they should already be really.
+    @group = Group.new(permitted_params.group, is_referral: false)
+    @email = params[:email]
+    @name =  params[:name]
+    @errors = []
+    @errors << 'name' if @name.blank?
+    @errors << 'email' unless /^[^@]+@[^@]+\.[^@]+$/.match @email
+    @errors << 'group_name' if @group.name.blank?
 
-  def group_with_creator
-    @group_with_creator ||= GroupWithCreator.new(params)
-  end
-
-  def redirect_to_dashboard
-    redirect_to dashboard_path(start_group: true) if current_user_or_visitor.is_logged_in?
+    # check for valid name and email
+    if @group.valid? and @errors.empty?
+      GroupService.create(group: @group, actor: LoggedOutUser.new)
+      InvitationService.invite_admin_to_group(group: @group,
+                                              name: @name,
+                                              email: @email)
+    else
+      render :new
+    end
   end
 end

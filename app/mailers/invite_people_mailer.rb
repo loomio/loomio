@@ -1,7 +1,10 @@
 class InvitePeopleMailer < BaseMailer
   layout 'invite_people_mailer'
 
-  def to_start_group(invitation:, sender_email: User.helper_bot_email, locale: I18n.locale)
+  def to_start_group(invitation:,
+                     sender_email: ,
+                     locale: )
+
     @invitation = invitation
     send_single_mail to:       @invitation.recipient_email,
                      locale:   locale,
