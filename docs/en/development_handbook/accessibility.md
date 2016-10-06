@@ -73,13 +73,9 @@ If the heading is not visible, we use `aria-label` instead, passing in a string:
 
 `<section class="thread-group" aria-label: "Thread group">`
 
-### Using alerts/flash messages
-
-When a user performs a successful action, they should be alerted to the result of their action via a focused flash message. For example, when a user successfully posts a comment in a thread, this action should prompt a flash message that informs them their comment was posted successfully. The flash message should hold the focus for a short period before disappearing, at which time the focus should return to the relevant element on the page. In the comment example, this might be the body of the user's comment.
-
 ### Using focus to draw attention to modals and popups
 
-When a modal or popup is launched the focus should be on the modal header, not on an element that is now in the background.
+Modals should have a header with an h1. When a modal or popup is launched, the focus should be transferred to the modal h1. We also use `aria-labels` to label the modal.
 
 ### Color contrast
 
