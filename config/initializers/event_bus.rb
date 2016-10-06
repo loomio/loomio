@@ -11,7 +11,7 @@ EventBus.configure do |config|
     if actor.is_logged_in?
       group.add_admin! actor
     elsif actor.email.present?
-      InvitationService.delay.invite_creator_to_group(group: group, creator: actor)
+      InvitationService.invite_creator_to_group(group: group, creator: actor)
     end
   end
 
