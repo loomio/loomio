@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'ProposalForm', ->
   templateUrl: 'generated/components/proposal_form/proposal_form.html'
-  ariaLabel: 'Proposal form'
   controller: ($scope, $rootScope, proposal, FormService, MentionService, KeyEventService, ScrollService, EmojiService, UserHelpService, Records, AttachmentService) ->
     $scope.nineWaysArticleLink = ->
       UserHelpService.nineWaysArticleLink()

@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'InvitationForm', ->
   templateUrl: 'generated/components/invitation_form/invitation_form.html'
-  ariaLabel: 'Invitation form'
   controller: ($scope, group, Records, Session, AbilityService, FormService, FlashService, RestfulClient, ModalService, AddMembersModal) ->
 
     $scope.availableGroups = ->

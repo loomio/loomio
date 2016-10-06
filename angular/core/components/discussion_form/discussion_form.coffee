@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'DiscussionForm', ->
   templateUrl: 'generated/components/discussion_form/discussion_form.html'
-  ariaLabel: 'Thread form'
   controller: ($scope, $controller, $location, discussion, Session, Records, AbilityService, FormService, MentionService, AttachmentService, KeyEventService, PrivacyString, EmojiService) ->
     $scope.discussion = discussion.clone()
 

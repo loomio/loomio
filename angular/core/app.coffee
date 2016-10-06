@@ -57,7 +57,7 @@ angular.module('loomioApp', ['ngNewRouter',
   $analyticsProvider.withAutoBase(true);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService, AhoyService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, ChoosePlanModal, AbilityService, AhoyService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -75,7 +75,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
     ModalService.open(GroupForm, group: -> Records.groups.build()) if $location.search().start_group?
-    ModalService.open(AngularWelcomeModal)                         if AppConfig.showWelcomeModal
     IntercomService.boot()
     MessageChannelService.subscribe()
 

@@ -1,14 +1,14 @@
 .only-coordinator-modal
   .modal-header
     %modal_header_cancel_button
-    %h1.lmo-h1{translate: "profile_page.deactivate_user.title"}
+    %h1.lmo-h1{translate: "deactivate_user_form.title"}
 
   .modal-body
-    %p{translate: "profile_page.only_coordinator_modal.explanation"}
+    %p{translate: "only_coordinator_modal.explanation"}
     %ul.only-coordinator-modal__list
       %li.only-coordinator-modal__list-item{ng-repeat: "group in groups()"}
         %a.lmo-link{ng-click: "redirectToGroup(group)"}
           {{group.fullName}}
-    %p{translate: "profile_page.only_coordinator_modal.instructions"}
+    %p{translate: "only_coordinator_modal.instructions"}
   .modal-footer
     %button.only-coordinator-modal__list__button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

@@ -41,8 +41,8 @@
   .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
     %button.thread-preview__dismiss{ng-click: "dismiss()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
       %i.fa.fa-check>
-    %button.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}" }>
+    %button.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
       %i.fa.fa-volume-off
       %i.fa.fa-times>
-    %button.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}"}>
+    %button.thread-preview__unmute{ng-click: "unmuteThread()", ng-show: "thread.isMuted()", title: "{{ 'volume_levels.unmute' | translate }}", aria-label: "{{ 'volume_levels.unmute' | translate }}"}>
       %i.fa.fa-volume-down>

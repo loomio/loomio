@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'ArchiveGroupForm', ->
   templateUrl: 'generated/components/archive_group_form/archive_group_form.html'
-  ariaLabel: 'Deactivate group'
   controller: ($scope, $rootScope, $location, group, FormService, Records) ->
     $scope.group = group
 

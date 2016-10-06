@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'ChangePictureForm', ->
   templateUrl: 'generated/components/change_picture_form/change_picture_form.html'
-  ariaLabel: 'Change picture form'
   controller: ($scope, $timeout, Session, Records, FormService) ->
     $scope.user = Session.user().clone()
 

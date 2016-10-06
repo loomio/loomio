@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'DismissExplanationModal', ->
   templateUrl: 'generated/components/dismiss_explanation_modal/dismiss_explanation_modal.html'
-  ariaLabel: 'Dismiss thread'
   controller: ($scope, thread, Records, FlashService) ->
     $scope.thread = thread
 

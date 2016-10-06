@@ -1,6 +1,5 @@
 angular.module('loomioApp').factory 'SignInForm', ->
   templateUrl: 'generated/components/sign_in_form/sign_in_form.html'
-  ariaLabel: 'Sign in form'
   controller: ($scope, $location, $window, preventClose, KeyEventService, Session, AppConfig, Records, FormService) ->
     $scope.session = Records.sessions.build(type: 'password', rememberMe: true)
     $scope.preventClose = preventClose
