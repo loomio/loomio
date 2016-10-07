@@ -260,6 +260,32 @@ We could include that css by writing
 
 _NB: that this will compile files with extensions `js`, or `coffee` into `application.js`, those with `css` or `scss` into `application.css` and ignore all other files._
 
+If you want to include assets in the asset pipeline without including them in the default manifest files (`application.js` and `application.css`, you can use the 'standalone' option.
+
+```ruby
+  plugin.use_static_asset 'assets', 'kickflip.scss'
+```
+
+This means the file won't be included in the manifests, but still exist in the asset pipeline and can be included in individual views by writing
+```
+stylesheet_link_tag 'kickflip'
+```
+
+We also provide a `use_static_asset_directory` method, which will include all files in the given directory.
+
+```ruby
+  # include all files in my_plugin/assets in application.js / css
+  plugin.use_static_asset_directory 'assets'
+```
+
+_NB: Note that only files with extensions `js`, `coffee`, `css`, or `scss` will be included in the manifest. All other files will be made available in the asset pipeline. Be careful not to include ruby files in this way!_
+
+This method also accepts a 'standalone' option, which will make the files available in the asset pipeline, but not add them to the manifest files.
+```ruby
+  # include all files in my_plugin/assets in the asset pipeline
+  plugin.use_static_asset_directory 'assets', standalone: true
+```
+
 ### Add database migrations
 If you need a spot in the database to store all the cool stuff your plugin is doing, we can make a new table using the `use_database_table` command like this:
 

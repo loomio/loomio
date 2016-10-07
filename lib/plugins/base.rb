@@ -5,7 +5,7 @@ module Plugins
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
   Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans)
-  StaticAsset = Struct.new(:path, :filename)
+  StaticAsset = Struct.new(:path, :filename, :standalone)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
@@ -59,8 +59,12 @@ module Plugins
       use_directory(glob) { |path| use_asset(path) }
     end
 
-    def use_static_asset(path, filename)
-      @static_assets.add StaticAsset.new([@name, path].join('/'), filename)
+    def use_static_asset(path, filename, standalone: false)
+      @static_assets.add StaticAsset.new([@name, path].join('/'), filename, standalone)
+    end
+
+    def use_static_asset_directory(path, standalone: false)
+      Dir.entries([@name.to_s, path].join('/')).drop(2).each { |filename| use_static_asset(path, filename, standalone: standalone) }
     end
 
     def use_translations(path, filename = :client)
