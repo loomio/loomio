@@ -215,6 +215,77 @@ If you want to make an angular something which isn't a component (like a filter 
 
 NB: We only support coffeescript at the moment, but in the future we'll allow plugin authors to write their client side code in ES6, TypeScript, vanilla javascript, even Clojure!
 
+### Add non-angular code
+
+##### Add vanilla rails views
+
+While it's not encouraged, it is possible to add vanilla rails views to your Loomio instance.
+(We do this for things like the about page, or the terms of service page on loomio.org)
+
+In order to add a page to your app, use `plugin.use_page`, passing it a view and a controller action.
+
+For example, given a view in `kickflip/views/kickflip.html.erb`, we could write
+
+```ruby
+  # route /kickflip to the #index action of KickflipsController
+  plugin.use_page :kickflip, "kickflips#index"
+```
+
+##### Add redirects to external pages
+
+Have an external blog, forum, or other page you'd like to link from within your loomio? Try the `redirect` option on `use_page`, and pass through an absolute URL to redirect to.
+
+```ruby
+  # have /blog point to an external url
+  plugin.use_page :blog, 'https://kickflip.com/blog', redirect: true
+```
+
+##### Add assets to the asset pipeline
+
+Angular assets are not served through the asset pipeline, and so will be unavailable on static pages. In order to serve static assets which will be picked up in your views, you'll want to use `plugin.use_static_asset`
+
+For example, if we wanted to style the content on `users/sign_in`, with an awesome background image, we could write a file `assets/kickflip.scss`
+
+```css
+  .signin-container {
+    background-image: url('kickflip.png');
+  }
+```
+
+We could include that css by writing
+
+```ruby
+  plugin.use_static_asset 'assets', 'kickflip.scss'
+```
+
+_NB: that this will compile files with extensions `js`, or `coffee` into `application.js`, those with `css` or `scss` into `application.css` and ignore all other files._
+
+If you want to include assets in the asset pipeline without including them in the default manifest files (`application.js` and `application.css`, you can use the 'standalone' option.
+
+```ruby
+  plugin.use_static_asset 'assets', 'kickflip.scss'
+```
+
+This means the file won't be included in the manifests, but still exist in the asset pipeline and can be included in individual views by writing
+```
+stylesheet_link_tag 'kickflip'
+```
+
+We also provide a `use_static_asset_directory` method, which will include all files in the given directory.
+
+```ruby
+  # include all files in my_plugin/assets in application.js / css
+  plugin.use_static_asset_directory 'assets'
+```
+
+_NB: Note that only files with extensions `js`, `coffee`, `css`, or `scss` will be included in the manifest. All other files will be made available in the asset pipeline. Be careful not to include ruby files in this way!_
+
+This method also accepts a 'standalone' option, which will make the files available in the asset pipeline, but not add them to the manifest files.
+```ruby
+  # include all files in my_plugin/assets in the asset pipeline
+  plugin.use_static_asset_directory 'assets', standalone: true
+```
+
 ### Add database migrations
 If you need a spot in the database to store all the cool stuff your plugin is doing, we can make a new table using the `use_database_table` command like this:
 
