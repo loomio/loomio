@@ -53,6 +53,7 @@ module Plugins
       assets = Rails.application.config.assets
       path   = Rails.root.join('plugins', asset.path).to_s
       assets.paths << path unless assets.paths.include?(path)
+      assets.precompile += Array(asset.filename) unless assets.precompile.include?(asset.filename)
     end
     private_class_method :save_static_asset
 
