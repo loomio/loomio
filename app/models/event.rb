@@ -34,8 +34,8 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
-  def notify!(user)
-    notifications.create!(user: user) if user
+  def users_to_notify
+    User.none
   end
 
   private
