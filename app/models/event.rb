@@ -34,7 +34,11 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
-  def users_to_notify
+  def notify!(user)
+    notifications.create!(user: user) if user
+  end
+
+  def users_to_notify # overridden for events which have more complicated rules for notifying users
     User.none
   end
 
