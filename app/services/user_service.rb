@@ -1,6 +1,6 @@
 class UserService
   def self.delete_spam(user)
-    Group.created_by(user).destroy_all
+    Group.where(creator_id: user.id).destroy_all
     user.destroy
     EventBus.broadcast('user_delete_spam', user)
   end

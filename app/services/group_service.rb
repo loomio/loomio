@@ -9,9 +9,9 @@ module GroupService
       group.experiences['bx_choose_plan'] = [true, false].sample if ENV['LOOMIO_AB_TEST']
       group.subscription                  = Subscription.new_gift unless group.experiences['bx_choose_plan']
       ExampleContent.new(group).add_to_group!
+    else
+      group.save!
     end
-
-    group.save!
 
     EventBus.broadcast('group_create', group, actor)
   end

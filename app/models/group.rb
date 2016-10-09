@@ -37,7 +37,6 @@ class Group < ActiveRecord::Base
 
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
-  scope :created_by, -> (user) { where(creator_id: user.id) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
@@ -199,38 +198,8 @@ class Group < ActiveRecord::Base
     end
   end
 
-  before_save :set_creator_if_blank
-
-  def set_creator_if_blank
-    if self[:creator_id].blank? and admins.any?
-      self.creator = admins.first
-    end
-  end
-
-  alias_method :real_creator, :creator
-
-  def creator
-    self.real_creator || admins.first || members.first
-  end
-
-  def creator_id
-    self[:creator_id] || creator.try(:id)
-  end
-
   def locale
-    creator.try(:locale)
-  end
-
-  def coordinators
-    admins
-  end
-
-  def contact_person
-    admins.order('id asc').first
-  end
-
-  def requestor_name_and_email
-    "#{requestor_name} <#{requestor_email}>"
+    creator&.locale
   end
 
   def requestor_name
@@ -244,9 +213,7 @@ class Group < ActiveRecord::Base
   def archive!
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(archived_at: DateTime.now)
-    subgroups.each do |group|
-      group.archive!
-    end
+    subgroups.map(&:archive!)
   end
 
   def unarchive!
@@ -369,7 +336,6 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, inviter=nil)
     begin
-      save!
       memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
     rescue ActiveRecord::RecordNotUnique
       retry
