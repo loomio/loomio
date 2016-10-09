@@ -22,9 +22,10 @@ class MembershipService
     membership.update admin: false
   end
 
-  def self.join_group(actor: nil, group: nil)
+  def self.join_group(group:, actor:)
      actor.ability.authorize! :join, group
      membership = group.add_member!(actor)
+     EventBus.broadcast('membership_join_group', group, actor)
      Events::UserJoinedGroup.publish!(membership)
    end
 
