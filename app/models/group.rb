@@ -121,7 +121,6 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  after_create :set_is_referral
   after_create :guess_cohort
 
   alias :users :members
@@ -336,7 +335,7 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, inviter=nil)
     begin
-      memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
+      tap(&:save).memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
     rescue ActiveRecord::RecordNotUnique
       retry
     end
@@ -455,12 +454,6 @@ class Group < ActiveRecord::Base
       else
         true
       end
-    end
-  end
-
-  def set_is_referral
-    if creator && creator.groups.size > 0
-      update_attribute(:is_referral, true)
     end
   end
 

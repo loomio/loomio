@@ -2,7 +2,7 @@ ExampleContent = Struct.new(:group) do
   include Routing
 
   def add_to_group!
-    group.tap(&:save).add_member!(helper_bot).tap do
+    group.add_member!(helper_bot).tap do
       Events::NewDiscussion.publish!(introduction_thread)
       Events::NewMotion.publish!(example_motion)
     end.destroy # remove helper bot after s/he has made example content
