@@ -219,7 +219,7 @@ es:
     help_with_setup: Ayuda con la configuración inicial
     custom_subdomain: 'Dominio personalizado '
     analytics_reports: 'Reporte analítico '
-    csv_export: Exportación de datos CSV
+    data_export: Exportación de datos
     contact_us_html: >
       Precios en dolares US, más impuestos a la venta donde aplique. ¿Necesitas
       algo más? <a href="/contact">Hablemos</a>
@@ -240,16 +240,15 @@ es:
     length_restriction: La contraseña debe tener al menos 8 caracteres.
     forbidden_passwords: "Contraseñas comunes como \"contraseña' están prohibidas para mantener tu cuenta segura."
   introduction_thread:
-    title: 'Bienvenida/o a %{group_name}'
+    title: 'Bienvenid@! Por favor  preséntate al grupo'
     description: >
-      Por favor tomate un momento para presentarte: **agrega un comentario** en
-      la casilla de comentarios debajo.
+      Tomate un momento para dejarle saber al grupo algo sobre ti. Añade un
+      comentario debajo.
 
 
 
-      Si tienes las intenciones claras para este grupo de Loomio, puedes
-      compartirlas aquí para que todas/os tengan una idea de lo quieren realizar
-      juntos.
+      ¿Cuál es tu rol o porque te unes al grupo? ¿Qué es lo que la gente debería
+      saber sobre ti para entender de donde vienes?
   how_it_works_thread:
     title: Cómo usar Loomio
     description: >
@@ -259,73 +258,60 @@ es:
 
       Este es un **Hilo** de discusión de ejemplo. Usa este espacio para dar la
       información relevante que el grupo necesite para tener una discusión
-      productiva.
+      productiva. Este hilo es sobre como Loomio funciona, así que añade
+      cualquier pregunta al respecto aquí.
 
 
 
-      El panel de la **Propuesta** es donde tomas las decisiones. Ahí puedes
-      comenzar propuestas o participar en las mismas.
+      Estas leyendo el **Contexto** del hilo, un espacio para la información
+      relevante. Puedes cambiarlo a medida que la discusión avanza.
 
 
 
-      El panel de **Actividad** muestra todo lo que ha pasado en este hilo.
-  first_comment:
-    body: >
-      Hola, soy el ayudante de Loomio.
+      Para comenzar en Loomio:
+
+      1. Añade una [foto de perfil](/profile)
+
+      2. Preséntate al grupo en el [Hilo de bienvenida](%{thread_url})
+
+      3. Comenta en hilos existentes o inicia uno nuevo
 
 
 
-      Si quieres llamar la atención de un integrante de tu grupo en particular,
-      escribe @ en el campo del comentario seguido inmediatamente por su nombre
-      :)
+      Consejos para comentar en Loomio:
+
+      * Para notificar a una persona en particular escribe @seguido de su nombre
+
+      * Haz clic en el icono del sujetapapeles para añadir adjuntos
 
 
 
-      Aquí hay algunas sugerencias de lo que puedes hacer para comenzar:
-
-
-
-      - Sube tu [foto de perfil](/profile)
-
-      - Configura tus [preferencias de correo electrónico](/email_preferences)
-
-      - Preséntate al grupo en el [hilo Bienvedida/o
-      a %{group_name}](%{thread_url})
-
-
-
-      Si tienes alguna duda el primer lugar a recurrir es el [Manual de ayuda de
-      Loomio](http://help.loomio.org).
+      Si tienes preguntas lee el [Manual de Usuario](http://help.loomio.org).
   first_proposal:
-    name: 'Propuesta de demostración: Aquí vamos!  '
+    name: Propuesta de demostración
     description: >
-      Esta es la **descripción** de la propuesta. Aquí puedes explicar el curso
-      de acción que propones y dar los detalles necesarios para que todas/os
-      puedan tomar estén bien informados al tomar una decisión.
+      Esta es una **Propuesta**, donde tomas las decisiones juntos. Puedes
+      iniciar un propuesta una vez que la discusión está en camino.
 
 
 
-      Para participar en la propuesta elige una de estas opciones:
+      Se les pide a todos que **tomen una posición** antes de la **fecha de
+      cierre**. Puedes extender la fecha de cierre si lo necesitas o puedes
+      cerrar la propuesta con anticipación.
 
 
 
-      - **De acuerdo**: "Estoy de acuerdo con la propuesta y quiero que se
-      realice".
-
-      - **Me abstengo**: "Estoy feliz de que el grupo decida sin mi."
-
-      - **En desacuerdo**: "Creo que podemos hacer algo mejor."
-
-      - **Bloqueo**: "Tengo fuertes objeciones sobre esta propuesta y no quiero
-      que siga adelante."
+      Puede que reconsideres tu posición al escuchar a otros, podrás **cambiar tu
+      posición** en cualquier momento mientras la propuesta aún esté activa.
 
 
 
-      Al seleccionar una posición, podrás dar una breve explicación sobre tu
-      elección. Puedes cambiar tu posición en cualquier momento mientras la
-      propuesta aún esté activa.
-  first_vote:
-    statement: 'Vamos!'
+      A veces grupo trabajan con una **serie de propuestas** para construir una
+      solución juntos. Puedes crear propuestas en secuencia en este hilo.
+
+
+
+      **Prueba participar, haz clic en uno de los 4 botones**
   contact_page:
     contact_us: Contáctanos
     faq_prompt_html: 'Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes.'

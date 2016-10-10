@@ -107,10 +107,6 @@ el:
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.
     forbidden_passwords: 'Κοινοί κωδικοί όπως "password" απαγορεύονται για να προστατευτεί ο λογαριασμός σου.'
-  introduction_thread:
-    title: 'Καλωσήλθες στην ομάδα %{group_name}'
-  how_it_works_thread:
-    title: Πως να χρησιμοποιείς το Loomio
   contact_page:
     contact_us: Επικοινωνήστε με μας
     contact_form: Φόρμα επικοινωνίας

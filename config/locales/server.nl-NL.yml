@@ -126,8 +126,6 @@ nl-NL:
     usage_statistics: gebruiksstatistieken
   password_reset:
     length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
-  introduction_thread:
-    title: 'Welkom bij %{group_name}'
   contact_page:
     contact_us: Neem contact op
     contact_form: Contactformulier

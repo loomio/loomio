@@ -1,15 +1,56 @@
 mi:
   common:
+    closing_in: E kati ana
+    closed_ago: Kua kati
+    volume: Te kaha o te reo
+    notification_volume: Tohu kaha o te reo
     group: Rōpū
     groups: Ngā Rōpū
+    help: Awhina mai
     privacy:
-      privacy: Matatapu
+      privacy: Matatapunga
+      public: Matawhanui
+      open: E huaki ana
+      closed: Kua kati
+      private: Matatapu
+      secret: Korero muna
+    selected: Kua kowhiria
     date_range:
-      today: Ākuanei
+      today: I tenei ra
+      yesterday: Inanahi
+      thisweek: I tenei wiki
+      thismonth: I tenei marama
+      older: no mua noa atu
+    more_help: He awhina ano
+    models:
+      proposal: Tono
+    copy: Taruatia te korero
+    copied: Kua taruatia ki te papa whakapine
     action:
+      close: Katia
       save: Tiaki
-      edit: Whakatika
-      cancel: Whakakore
+      save_changes: Puritia nga panonitanga
+      update_settings: Whakahoungia nga ritenga
+      reply: Whakautua
+      edit: Whakatikaina
+      remove: Unuhia
+      like: Rawe
+      back: E hoki
+      unlike: Kaua te rawe
+      update: Whakahoungia
+      cancel: Whakakorea
+      show_more: Me whakaatu etahi atu
+      view_all: Tirohia katoatia
+      new_thread: Aho hou
+      add_subgroup: Tapirihia he ropu whaiti
+      loading: 'Kei te utaina '
+      translate: Whakawhitihia te reo
+      translated: Whakawhitihia ma te whakawhiti Bing
+      upload: Whakautangia atu
+      uploading: Kei te whakautangia
+    formatting_help:
+      label: Awhina whakahoahoa
+      title: Akona te Markdown hei whakahoahoa i o tuhinga i runga o Loomio
   sidebar:
     help: Āwhina
   navbar:
@@ -22,6 +63,8 @@ mi:
     group_label: Rōpū
     title_label: Taitara
     privacy_label: Matatapu
+  proposal_expanded:
+    closed_badge: Kua kati
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
@@ -31,6 +74,9 @@ mi:
       label: Ngā Kōwhiringa
   group_form:
     privacy: Matatapu
+    submit_update: Whakahoungia nga ritenga
+  group_help_card:
+    title: Awhina mai
   memberships_page:
     members: Ngā Mema
     name_label: Ingoa
@@ -41,10 +87,15 @@ mi:
     name_label: Ingoa
     email_label: Īmēra
     locale_label: Reo
+  email_settings_page:
+    edit: Whakatikaina
   dashboard_page:
     threads_from:
       today: Ākuanei
+      yesterday: Inanahi
   thread_group:
     aria_label: Ingoa rōpū
+  thread_context:
+    edit_thread: Whakatikaina
   help_page:
     help: Āwhina
