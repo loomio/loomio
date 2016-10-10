@@ -166,26 +166,6 @@ fr:
     reset_email_timeframe: 'Cela peut prendre jusqu’à 5 minutes à l’e-mail pour arriver. S’il n’apparaît pas, vérifier votre dossier pourriel.'
     length_restriction: Les mots de passe doivent au moins avoir 8 caractères de long.
     forbidden_passwords: 'Les mots de passe communs tels que "motdepasse" (password) sont interdits afin de garder votre compte sécurisé.'
-  introduction_thread:
-    title: 'Bienvenue dans %{group_name}'
-    description: >
-      S’il vous plaît prenez un moment pour vous présenter : utilisez la zone
-      **commentaire** ci-dessous.
-
-
-
-      Vous pourriez aimer partager la manière dont vous correspondez avec ce
-      groupe Loomio.
-  how_it_works_thread:
-    title: Comment utiliser Loomio
-    description: "Bienvenue sur Loomio , une plate-forme en ligne pour prendre des décisions ensemble.\n\nCeci est un exemple de **fil de discussion** . Pourquoi ne pas utiliser cet espace pour essayer les fonctions de Loomio\_?\n\nVous lisez actuellement le fil de discussion **contexte**. Utilisez cet espace pour fournir l'information de fond dont le groupe a besoin pour une discussion productive.\n\nLe panneau **proposition** est l'endroit où vous prenez les décisions. Vous pouvez démarrer des propositions et y contribuer.\n\nLe panneau **activité** ci-dessous montre tout ce qu'il s'est passé dans la discussion.\n"
-  first_comment:
-    body: "Bonjour les amis, je suis le robot d'assistance Loomio.\n\nSi vous voulez attirer l'attention d'une personne spécifique de votre groupe, tapez @ dans le champs commentaire, suivi de son nom :)\n\nVoici quelques choses que vous pourriez vouloir essayer\_:\n\n– Changer votre [photo de profil](/profile)\n– Configurer vos [préférences couriels](/email_preferances)\n– Vous présenter au groupe dans la discussion [Bienvenue sur la discussion %{group_name}](%{thread_url})\n\nSi vous avez la moindre question, le premier endroit à visiter est [la documentation Loomio](http://help.loomio.org).\n"
-  first_proposal:
-    name: 'Proposition de démonstration: c’est parti!'
-    description: "Ceci est la **description** de la proposition. C'est ici que vous pouvez expliquer le plan d'action proposé et donner assez de détails pour que tout le monde puisse prendre une décision en connaissance de cause.\n\nPour participer à la proposition, choisissez l'une de ces options\_:\n\n–\_**D'accord**\_: «\_Je suis d'accord avec cela et je veux qu'on avance.\_»\n–\_**S'abstient**\_: «\_Merci au groupe de décider sans moi.\_»\n–\_**Pas d'accord**\_: «\_Je pense que nous pouvons faire mieux.\_»\n–\_**Bloquer**\_: «\_J'ai de grande objections contre cette proposition et je ne veux pas qu'elle avance.\_»\n\nQuand vous avez choisi, vous serez invité à écrire une brève déclaration pour expliquer le choix que vous venez de faire. Vous pouvez changer voter position n'importe quand tant que la proposition est ouverte.\n"
-  first_vote:
-    statement: 'Allons-y !'
   contact_page:
     contact_us: Contactez-nous
     faq_prompt_html: 'Vous avez une question pour l’équipe de Loomio? Avant de nous contacter, vous pourriez trouver la réponse dans notre FAQ'

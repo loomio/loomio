@@ -81,7 +81,9 @@ cs:
       email_not_arrived: E-mail nebyl doručen?
     start_making_decisions: 'Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:'
   pricing_page:
+    gift: Bezplatný
     standard: Standardní
+    plus: Profesionální
     free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
     unlimited_members: neomezený počet členů
     unlimited_decisions: neomezený počet rozhodnutí
@@ -90,10 +92,6 @@ cs:
     usage_statistics: statistiky využití
   password_reset:
     length_restriction: Hesla musí být alespoň 8 znaků dlouhé.
-  introduction_thread:
-    title: 'Vítejte v %{group_name}'
-  how_it_works_thread:
-    title: Jak používat Loomio
   contact_page:
     contact_us: Kontaktujte nás
     contact_form: Kontaktní formulář

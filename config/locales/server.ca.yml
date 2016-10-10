@@ -138,12 +138,6 @@ ca:
     usage_statistics: ús de les estadístiques
   password_reset:
     forbidden_passwords: 'Les contrasenyes com "password" estan prohibides per raons de seguretat.'
-  introduction_thread:
-    title: 'Benvingut a %{group_name}'
-  first_proposal:
-    name: 'Proposta de demostració: som-hi!'
-  first_vote:
-    statement: 'Som-hi!'
   contact_page:
     contact_us: Contacteu
     contact_form: Formulari de contacte

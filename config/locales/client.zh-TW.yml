@@ -140,6 +140,11 @@ zh-TW:
 
       <p>已靜音也會從<strong>最近的</strong>討論串與<strong>未讀</strong>頁面中隱藏。要尋找您已靜音的討論串，請從側邊欄選取<strong>已靜音</strong>選項：</p>
     image_alt: 在側邊欄中的已靜音討論串選項
+  dismiss_explanation_modal:
+    dismiss_thread: 暫時忽略討論串
+    body_html: |
+      <p>暫時忽略討論串會將其從您的未讀項目中移除。若有任何新的
+      動態在該討論串發生，它將會再次顯示在您的未讀項目中。</p>
   inbox:
     clear: 清除
     latest: 最新
@@ -227,6 +232,7 @@ zh-TW:
       comments: 意見
     sign_in: 登入
     toggle_sidebar: 切換側邊欄
+    logo_title: 首頁
   start_menu:
     title: 動作按鈕
     start_group: 啟動群組
@@ -516,7 +522,7 @@ zh-TW:
     benefit_slack_integration: Slack 整合
     benefit_custom_domain: 自訂網域
     benefit_analytics_reports: 分析報告
-    benefit_csv_export: CSV 資料匯出
+    benefit_data_export: 資料匯出
     support_link: 讓我們說說話！
     prices_in_us_dollars: 價格是以美元計費，再加上營業稅。
     need_help_please: 需要其他東西？
@@ -612,7 +618,7 @@ zh-TW:
     copy_link: 複製連結
     email_addresses: 電子郵件地址
     email_addresses_placeholder: '範例：helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 複製連結並將其傳送給任何您想要將其加入群組中的人。只要點選連結就會立即將他們加入群組中。
+    shareable_link_explanation: 複製連結並傳送給任何您想要讓他加入群組的人。這將會給予他們存取在該群組中的所有討論串的權限。
     email_explanation: 或是在下面輸入電子郵件，Loomio 將會以電子郵件的方式傳送一封邀請函給他們。
     add_custom_message: 讓您的邀請變為私人的，
     add_custom_message_link: 加入一段自訂的訊息。
@@ -743,6 +749,8 @@ zh-TW:
     view_recent: 檢視所有最近的討論串？
     load_more: 載入更多討論串
     mark_as_read: 設為已讀
+    dismiss: 暫時忽略
+    thread_dismissed: 討論串已暫時忽略。
     explain_mute:
       title: 您尚未靜音任何討論串。
       explanation_html: >
@@ -816,6 +824,7 @@ zh-TW:
     edited: 已編輯
     volume:
       mute_message: 討論串已靜音。
+      unmute_message: 討論串靜音
   thread_group:
     aria_label: 群組名稱
   thread_context:
@@ -823,6 +832,7 @@ zh-TW:
     thread_options: 討論串選項
     email_settings: 電子郵件設定
     edit_thread: 編輯
+    mute_thread: 靜音
     move_thread: 移動
     print_thread: 列印
     delete_thread: 刪除
