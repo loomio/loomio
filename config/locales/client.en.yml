@@ -77,6 +77,7 @@ en:
     edit_outcome_link: Edit proposal outcome
 
   proposal_outcome_form:
+    aria_label: Proposal outcome form
     set_outcome: Set proposal outcome
     update_outcome: Update proposal outcome
     outcome_label: Proposal outcome
@@ -104,6 +105,7 @@ en:
     unmute: 'Unmute'
 
   change_volume_form:
+    aria_label: "Change email settings form"
     loud_label: "All activity"
     normal_label: "Important activity"
     quiet_label: "No emails"
@@ -145,6 +147,7 @@ en:
         quiet: "You won't be emailed about new groups."
 
   mute_explanation_modal:
+    aria_label: Mute thread
     mute_thread: Mute thread
     body_html: |
       <p>Muting means you <strong>won't be notified about proposals</strong>, or any other activity in this thread, unless someone <strong>@mentions you</strong>.</p>
@@ -152,6 +155,7 @@ en:
     image_alt: Muted threads option in sidebar
 
   dismiss_explanation_modal:
+    aria_label: Dismiss thread
     dismiss_thread: Dismiss thread
     body_html: |
       <p>Dismissing a thread removes it from your unread items. If any new
@@ -164,6 +168,7 @@ en:
     closing_in: 'Closing '
 
   sign_in_form:
+    aria_label: 'Sign in form'
     title: 'Sign In to Loomio'
     email_label: 'Email:'
     email_placeholder: 'you@example.com'
@@ -180,6 +185,7 @@ en:
       github: 'Log in with Github'
 
   sign_up_form:
+    aria_label: 'Sign up form'
     title: "Welcome to Loomio! Let's get you set up"
     name_label: 'Your name:'
     name_placeholder: 'Jane Doe'
@@ -192,7 +198,8 @@ en:
     sign_up: 'Create an Account'
 
   signed_out_modal:
-    title: "Your session has been ended"
+    aria_label: 'Session ended'
+    title: "Your session has ended"
     message: "You have been logged out of Loomio from another window. Please sign back in to continue."
     ok: "Ok"
 
@@ -253,7 +260,8 @@ en:
     logo_title: 'Home page'
 
   start_menu:
-    title: 'Action button'
+    label: 'User actions'
+    title: 'Action'
     start_group: 'Start Group'
     start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
@@ -320,6 +328,7 @@ en:
     participation_statement: '{{percentage}}% of members have stated their position ({{number}}/{{total}})'
 
   close_proposal_form:
+    aria_label: 'Close proposal'
     close_proposal: 'Close proposal'
     helptext: 'Are you sure you want to close this proposal now?'
     close_proposal_submit: 'Yes, close proposal'
@@ -327,11 +336,13 @@ en:
       success: Proposal closed
 
   extend_proposal_form:
+    aria_label: Change close time
     title: 'Change close time'
     success: 'Proposal close time updated'
     submit: 'Update closing time'
 
   proposal_form:
+    aria_label: 'Proposal form'
     messages:
       created: 'Proposal started'
       updated: 'Proposal updated'
@@ -354,6 +365,7 @@ en:
     updated: 'Saved changes to {{title}}'
 
   discussion_form:
+    aria_label: 'Thread form'
     messages:
       created: 'Thread started'
       updated: 'Thread updated'
@@ -396,18 +408,8 @@ en:
       <p>Is Loomio useful to your group? We’ve just released our pricing plans and we’re asking groups who’ve been using Loomio for a while to pick a plan that suits them.</p>
     submit: "Show me the plans"
 
-  angular_welcome_modal:
-    heading: "Welcome to the new Loomio!"
-    context: "We've been working hard at building a fancy new Loomio. All your discussions and favourite Loomio features are still here, plus new great changes:"
-    cleaner: "Cleaner, more intuitive interface: easier to start groups, invite people in and configure settings."
-    interactive: "Interactive dashboard makes it easier to stay up-to-date: updates happen live on the screen."
-    mobile_ready: "It's designed for all your devices, from smartphone to desktop."
-    accessible: "It's accessible to people who are blind and translated into <a href='https://loomio.org/translation' target='_blank'>heaps of languages</a>."
-    emojis: "And you can use emojis!"
-    ok_got_it: "Ok, got it!"
-
   group_welcome_modal:
-
+    aria_label: "Welcome"
     creator_heading: "Welcome to your new group"
     member_heading: "Welcome to Loomio"
     creator_info: "You are the group <strong>coordinator</strong>, which is like being a host. Watch the video, then check out the example threads."
@@ -415,19 +417,20 @@ en:
     creator_footer: "When you’re ready, <strong>invite people</strong> in."
     ok_got_it: "Ok, got it!"
 
-  group_cover_modal:
+  cover_photo_form:
+    aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
     helptext: 'Looking for inspiration? Check out <a href="https://unsplash.com/">Unsplash</a>, a gallery of beautiful, free images'
     image_size_helptext: 'Ideal image size is 1400 x 320px'
     upload_success: 'Cover photo successfully updated'
 
-  group_logo_modal:
+  logo_photo_form:
+    aria_label: 'Change group logo form'
     heading: 'New group logo'
     upload_link: 'Upload new group logo'
     image_size_helptext: 'Ideal image size is 100 x 100px'
     upload_success: 'Logo successfully updated'
-
 
   join_group_button:
     join_group: Join group
@@ -437,6 +440,7 @@ en:
       joined_group: 'You are now a member of {{group}}'
 
   membership_request_form:
+    aria_label: Membership request form
     heading: Ask to join group
     name_label: Name
     email_label: Email
@@ -446,6 +450,7 @@ en:
       membership_requested: 'You have requested membership to {{group}}'
 
   revision_history_modal:
+    aria_label: Revision history
     thread_header: Thread context revision history
     comment_header: Comment edit revision history
     started_by: 'Started by <strong>{{name}}</strong>'
@@ -473,6 +478,8 @@ en:
       archive_group_success: 'This group has been deactivated'
     group_logo: 'Group logo'
     new_photo: 'new photo'
+    new_cover_photo: 'Upload new cover photo'
+    new_group_logo: 'Upload new group logo'
     description: 'Group description'
     description_placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
     discussions: 'Threads'
@@ -495,16 +502,6 @@ en:
       email_settings: 'Email settings'
       leave_group: 'Leave Group'
       deactivate_group: 'Deactivate Group'
-    deactivate_group:
-      title: 'Deactivate group'
-      question: 'Are you sure you want to deactivate this group?'
-      submit: 'Yes, Deactivate this group'
-    leave_group:
-      title: 'Leave group'
-      question: 'Are you sure you want to leave this group?'
-      submit: 'Yes, leave this group'
-      cannot_leave_group: 'You cannot leave this group because you are the last coordinator. You will need to choose another coordinator or deactivate the group.'
-      add_coordinator: 'Add a coordinator'
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
@@ -523,6 +520,20 @@ en:
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
+
+  leave_group_form:
+    aria_label: 'Leave group'
+    title: 'Leave group'
+    question: 'Are you sure you want to leave this group?'
+    submit: 'Yes, leave this group'
+    cannot_leave_group: 'You cannot leave this group because you are the last coordinator. You will need to choose another coordinator or deactivate the group.'
+    add_coordinator: 'Add a coordinator'
+
+  archive_group_form:
+    aria_label: 'Deactivate group'
+    title: 'Deactivate group'
+    question: 'Are you sure you want to deactivate this group?'
+    submit: 'Yes, Deactivate this group'
 
   confirm_gift_plan_modal:
     heading: Free groups are donation supported
@@ -556,6 +567,7 @@ en:
     expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
 
   choose_plan_modal:
+    aria_label: Choose plan
     heading: Please choose a plan for your group
     free: Free
     standard: Standard
@@ -603,6 +615,7 @@ en:
     select: Select
 
   subscription_success_modal:
+    aria_label: Supscription success
     heading: You're all set!
     receipt: You'll receive an email with your receipt, including a link to the customer portal, where you can change, upgrade, or cancel your subscription, and access billing history.
     change_subscription: "If you'd like to set up Slack integration or your custom domain name, "
@@ -611,6 +624,7 @@ en:
     ok_got_it: Ok, got it!
 
   group_form:
+    aria_label: 'Group form'
     start_group_heading: 'Start a group'
     start_subgroup_heading: 'Start a subgroup'
     edit_group_heading: 'Edit group settings'
@@ -625,20 +639,20 @@ en:
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "anyone can find the group and ask to join. Only members can see who is in the group. All threads are public."
-    group_privacy_is_closed_description: "anyone can find the group and ask to join. Only members can see who is in the group. All threads are private."
-    group_privacy_is_closed_public_threads_description: "anyone can find the group and ask to join. Only members can see who is in the group. Threads can be public or private."
-    group_privacy_is_secret_description: 'only invited members can find the group, see who is in it and see threads.'
+    group_privacy_is_open_description: "Anyone can find the group and ask to join. Only members can see who is in the group. All threads are public."
+    group_privacy_is_closed_description: "Anyone can find the group and ask to join. Only members can see who is in the group. All threads are private."
+    group_privacy_is_closed_public_threads_description: "Anyone can find the group and ask to join. Only members can see who is in the group. Threads can be public or private."
+    group_privacy_is_secret_description: "Only invited members can find the group, see who is in it and see threads."
     confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
     confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
     confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
 
-    subgroup_privacy_is_open_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
-    subgroup_privacy_is_closed_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
-    subgroup_privacy_is_closed_public_threads_description: "anyone can find this subgroup and ask to join. Only members can see who is in the group. Threads can be public or private."
-    subgroup_privacy_is_closed_secret_parent_description: "members of {{parent}} can find this subgroup and ask to join. All threads are private. Only members can see who is in the group."
-    subgroup_privacy_is_secret_description: 'only invited members can find this subgroup, see who is in it and see threads.'
+    subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
+    subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
+    subgroup_privacy_is_closed_public_threads_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. Threads can be public or private."
+    subgroup_privacy_is_closed_secret_parent_description: "Members of {{parent}} can find this subgroup and ask to join. All threads are private. Only members can see who is in the group."
+    subgroup_privacy_is_secret_description: 'Only invited members can find this subgroup, see who is in it and see threads.'
 
     advanced_settings: "Advanced settings"
     how_do_people_join: "How do people join?"
@@ -699,8 +713,8 @@ en:
     heading: Previous proposals
     see_more: See more
 
-
   invitation_form:
+    aria_label: 'Invitation form'
     invite_people: 'Invite People'
     group: 'Group'
     group_placeholder: 'Select a group'
@@ -727,6 +741,7 @@ en:
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
   add_members_modal:
+    aria_label: 'Add members from parent group'
     heading: 'Add people from {{name}}'
     add_members: 'Add members'
     user_added_to_subgroup: '{{name}} added to Subgroup'
@@ -743,12 +758,14 @@ en:
       remove_member_success: 'Removed {{name}}'
       make_admin_success: '{{name}} is now a coordinator'
       remove_admin_success: '{{name}} is no longer a coordinator'
-    remove_membership:
-      title: 'Remove member'
-      question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
-      submit: 'Remove'
     remove_admin_from_self:
       question: 'Are you sure you no longer want to be a coordinator?'
+
+  remove_membership_form:
+    aria_label: 'Remove member'
+    title: 'Remove member'
+    question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
+    submit: 'Remove'
 
   pending_invitations_card:
     heading: Pending invitations
@@ -770,34 +787,6 @@ en:
       picture_changed: 'Profile picture updated'
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
-    change_picture:
-      title: 'Change picture'
-      helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> account, you can use that.'
-      use_initials: 'Use initials'
-      use_gravatar: 'Use gravatar'
-      use_uploaded: 'Upload new picture'
-    change_password:
-      title: 'Change Password'
-      helptext: 'Passwords must be 8 characters long. Common passwords such as "password" are forbidden to keep your account safe.'
-      current_password_label: 'Current password'
-      new_password_label: 'New password'
-      password_confirmation_label: 'Confirm new password'
-      submit: 'Update password'
-    deactivate_user:
-      title: 'Deactivate account'
-      question: 'Would you tell us why you are deactivating your account?'
-      placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
-      submit: 'Deactivate account'
-    deactivation_modal:
-      introduction: 'When you deactivate your account:'
-      no_longer_group_member: 'You will no longer be listed as a member of any groups'
-      name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-      no_emails: 'You will no longer receive Loomio-related emails'
-      contact_for_reactivation: 'You will need to contact us to reactivate your account'
-      submit: 'Yes, I want to deactivate'
-    only_coordinator_modal:
-      explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
-      instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
     change_picture_link: 'Change picture'
     change_password_link: 'Change password'
     deactivate_user_link: 'Deactivate account...'
@@ -809,6 +798,45 @@ en:
     email_label: 'Email'
     locale_label: 'Language'
     update_profile: 'Update profile'
+    deactivate_account: 'Deactivate account'
+
+  change_picture_form:
+    aria_label: 'Change picture form'
+    title: 'Change picture'
+    helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> account, you can use that.'
+    use_initials: 'Use initials'
+    use_gravatar: 'Use gravatar'
+    use_uploaded: 'Upload new picture'
+
+  change_password_form:
+    aria_label: 'Change password form'
+    title: 'Change Password'
+    helptext: 'Passwords must be 8 characters long. Common passwords such as "password" are forbidden to keep your account safe.'
+    current_password_label: 'Current password'
+    new_password_label: 'New password'
+    password_confirmation_label: 'Confirm new password'
+    submit: 'Update password'
+
+  deactivation_modal:
+    aria_label: 'Deactivate account'
+    introduction: 'When you deactivate your account:'
+    no_longer_group_member: 'You will no longer be listed as a member of any groups'
+    name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
+    no_emails: 'You will no longer receive Loomio-related emails'
+    contact_for_reactivation: 'You will need to contact us to reactivate your account'
+    submit: 'Yes, I want to deactivate'
+
+  deactivate_user_form:
+    aria_label: 'Deactivate account confirm'
+    title: 'Deactivate account'
+    question: 'Would you tell us why you are deactivating your account?'
+    placeholder: 'Answering this question is optional. Any information you share will help us to improve Loomio :)'
+    submit: 'Deactivate account'
+
+  only_coordinator_modal:
+    aria_label: 'Unable to deactivate account'
+    explanation: 'A group must have at least one coordinator. You are the only coordinator of the following groups:'
+    instructions: 'In order to deactivate your account, you need to visit each of the groups listed above and either make someone else a coordinator, or deactivate the group.'
 
   email_settings_page:
     header: Email settings
@@ -937,6 +965,7 @@ en:
     delete_thread: 'Delete'
 
   delete_thread_form:
+    aria_label: 'Delete thread'
     title: Delete thread
     body: Are you sure you want to delete this thread?
     confirm: 'Yes, delete the thread'
@@ -944,6 +973,7 @@ en:
       success: Thread deleted
 
   move_thread_form:
+    aria_label: Move thread
     title: Move thread
     body: 'Destination group:'
     confirm: Move thread

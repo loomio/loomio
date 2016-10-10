@@ -248,7 +248,7 @@ describe 'Group Page', ->
 
       it 'closed subgroup', ->
         page.click '.group-form__privacy-closed'
-        page.expectText '.group-form__privacy', 'members of Secret Dirty Dancing Shoes can find this subgroup and ask to join. All threads are private. Only members can see who is in the group.'
+        page.expectText '.group-form__privacy', 'Members of Secret Dirty Dancing Shoes can find this subgroup and ask to join. All threads are private. Only members can see who is in the group.'
         page.expectNoElement '.group-form__joining'
         page.expectElement '.group-form__parent-members-can-see-discussions'
         page.expectNoElement '.group-form__allow-public-threads'

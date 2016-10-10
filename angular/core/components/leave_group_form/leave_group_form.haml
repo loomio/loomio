@@ -3,13 +3,13 @@
   .leave-group-form
     .modal-header
       %modal_header_cancel_button
-      %h1.lmo-h1{translate: "group_page.leave_group.title"}
+      %h1.lmo-h1{translate: "leave_group_form.title"}
 
     .modal-body
-      %span{ng-if: "canLeaveGroup()", translate: "group_page.leave_group.question"}
-      %span{ng-if: "!canLeaveGroup()", translate: "group_page.leave_group.cannot_leave_group"}
+      %span{ng-if: "canLeaveGroup()", translate: "leave_group_form.question"}
+      %span{ng-if: "!canLeaveGroup()", translate: "leave_group_form.cannot_leave_group"}
     .modal-footer
-      %button.lmo-btn--submit.leave-group-form__submit{ng-if: "canLeaveGroup()", type: "submit", translate: "group_page.leave_group.submit"}
+      %button.lmo-btn--submit.leave-group-form__submit{ng-if: "canLeaveGroup()", type: "submit", translate: "leave_group_form.submit"}
       %a.lmo-btn--primary.leave-group-form__add-coordinator{ng-if: "!canLeaveGroup()", lmo-href-for: "group", lmo-href-action: "memberships", ng-click: "$close()"}
-        %span{translate: "group_page.leave_group.add_coordinator"}
+        %span{translate: "leave_group_form.add_coordinator"}
       %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}

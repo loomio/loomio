@@ -34,8 +34,8 @@
 
   .thread-item__footer.new-comment__footer
     .thread-item__actions{ng-if: "showCommentActions()"}
-      %button.thread-item__action.thread-item__action--like.lmo-no-print{type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng_click: "like()"}>
-      %button.thread-item__action.lmo-no-print{type: "button", translate: "common.action.unlike", ng_click: "unlike()", ng-show: "currentUserLikesIt()"}>
+      %button.thread-item__action.thread-item__action--like.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng-click: "like()"}>
+      %button.thread-item__action.thread-item__action--unlike.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.unlike", ng-click: "unlike()", ng-show: "currentUserLikesIt()"}>
       %span.lmo-no-print{aria-hidden: "true"}>·
       %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
       %translate_button.lmo-no-print{model: "comment", showdot: "true"}

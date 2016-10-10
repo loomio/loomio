@@ -2,11 +2,11 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
     %modal_header_cancel_button
-    %h1.lmo-h1{translate: "profile_page.deactivate_user.title"}
+    %h1.lmo-h1{translate: "deactivate_user_form.title"}
 
   .modal-body
-    %h4.lmo-h4{translate: "profile_page.deactivate_user.question"}
-    %textarea.lmo-textarea.form-control{ng-model: "user.deactivationResponse", placeholder: "{{ 'profile_page.deactivate_user.placeholder' | translate }}"}
+    %h4.lmo-h4{translate: "deactivate_user_form.question"}
+    %textarea.lmo-textarea.form-control{ng-model: "user.deactivationResponse", placeholder: "{{ 'deactivate_user_form.placeholder' | translate }}"}
   .modal-footer
-    %button.lmo-btn--danger{type: "submit", translate: "profile_page.deactivate_user.submit"}
+    %button.lmo-btn--danger{type: "submit", translate: "deactivate_user_form.submit"}
     %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
