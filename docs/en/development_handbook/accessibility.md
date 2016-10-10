@@ -75,7 +75,7 @@ If the heading is not visible, we use `aria-label` instead, passing in a string:
 
 ### Using focus to draw attention to modals and popups
 
-Modals should have a header with an h1. When a modal or popup is launched, the focus should be transferred to the modal h1. We also use `aria-labels` to label the modal.
+Modals should have a header with an h1. When a modal or popup is launched, the focus should be transferred to the modal h1. Use an `aria-label` to define a string that labels the modal.
 
 ### Color contrast
 
