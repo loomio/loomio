@@ -1,0 +1,27 @@
+.blank
+  %section.group-progress-card
+    %h2.lmo-card-heading{translate: "group_progress_card.title"}
+
+    .group-progress-card__checkbox
+      %input.group-progress-card__set-description#set-group-description{type: "checkbox", ng-checked: "group.description"}
+      %label{for: "set-group-description", translate: "group_progress_card.set_description"}>
+
+    .group-progress-card__checkbox
+      %input.group-progress-card__set-profile-photon#set-profile-photo{type: "checkbox", ng-checked: "userHasProfilePicture()"}
+      %label{for: "set-profile-photo", translate: "group_progress_card.set_profile_photo"}>
+
+    .group-progress-card__checkbox
+      %input.group-progress-card__set-cover-photo#set-cover-photo{type: "checkbox", ng-checked: "group.hasCustomCover"}
+      %label{for: "set-cover_photo", translate: "group_progress_card.set_cover_photo"}>
+
+    .group-progress-card__checkbox
+      %input.group-progress-card__invite-people#invite-people{type: "checkbox", ng-checked: "group.hasMultipleMembers()"}
+      %label{for: "invite-people", translate: "group_progress_card.invite_people_in"}>
+
+    .group-progress-card__checkbox
+      %input.group-progress-card__start-thread#start-thread{type: "checkbox", ng-checked: "group.hasMultipleThreads()"}
+      %label{for: "start-thread", translate: "group_progress_card.start-thread"}>
+
+    .group-progress-card__checkbox
+      %input.group-progress-card__start-proposal#start-proposal{type: "checkbox", ng-checked: "group.hasMultipleProposals()"}
+      %label{for: "start-proposal", translate: "group_progress_card.start-proposal"}>

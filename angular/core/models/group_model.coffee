@@ -47,6 +47,15 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       _.filter @proposals(), (proposal) ->
         proposal.isClosed()
 
+    hasMultipleMembers: ->
+      @membershipsCount > 1
+
+    hasMultipleThreads: ->
+      @discussionsCount > 2
+
+    hasMultipleProposals: ->
+      @motionsCount > 1
+
     hasPreviousProposals: ->
       _.some @closedProposals()
 
@@ -169,3 +178,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
 
     isSubgroupOfSecretParent: ->
       @isSubgroup() && @parent().privacyIsSecret()
+
+    setupComplete: ->
+      @description &&
+      @hasCustomCover &&
+      @hasMultipleMembers() &&
+      @hasMultipleThreads() &&
+      @hasMultipleProposals()
