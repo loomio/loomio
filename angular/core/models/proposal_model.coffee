@@ -86,6 +86,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
     hasOutcome: ->
       _.some(@outcome)
 
+    hasContext: ->
+      !!@description
+
     undecidedMembers: ->
       if @isActive()
         _.difference(@group().members(), @voters())

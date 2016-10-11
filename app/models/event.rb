@@ -38,6 +38,10 @@ class Event < ActiveRecord::Base
     notifications.create!(user: user) if user
   end
 
+  def users_to_notify # overridden for events which have more complicated rules for notifying users
+    User.none
+  end
+
   private
 
   def call_thread_item_created

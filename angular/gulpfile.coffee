@@ -12,5 +12,8 @@ gulp.task 'compile', ['fonts', 'app','vendor','scss', 'execjs']
 
 gulp.task 'dev', -> sequence('compile', require('./tasks/watch'))
 
-gulp.task 'protractor:now', require('./tasks/protractor')
+gulp.task 'protractor:core', require('./tasks/protractor/core')
+gulp.task 'protractor:plugins', require('./tasks/protractor/plugins')
+
 gulp.task 'protractor', -> sequence('compile', 'protractor:now')
+gulp.task 'protractor:now', -> sequence('protractor:core', 'protractor:plugins')

@@ -119,14 +119,9 @@ EventBus.configure do |config|
                 'invitation_accepted_event',
                 'new_coordinator_event') { |event, user| event.notify!(user) }
 
-  # notify users of motion closing soon
-  config.listen('motion_closing_soon_event') do |event|
-    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).find_each { |user| event.notify!(user) }
-  end
-
-  # notify users of motion outcome created
-  config.listen('motion_outcome_created_event') do |event|
-    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
+  # notify users of motion closing soon and motion outcome created
+  config.listen('motion_outcome_created_event', 'motion_closing_soon_event') do |event|
+    event.notifications.import event.users_to_notify.map { |user| event.notifications.build(user: user) }
   end
 
   # notify users of comment liked

@@ -31,4 +31,6 @@ module.exports =
   protractor:
     config:       'test/protractor.coffee'
     screenshots:  'test/protractor/screenshots'
-    specs:        'test/protractor/*_spec.coffee'
+    specs:
+      core:        'test/protractor/*_spec.coffee'
+      plugins:     ['../plugins/**/*_spec.coffee', 'test/protractor/testing_spec.coffee']

@@ -443,6 +443,8 @@ end
 ### Add tests
 The official Loomio plugins will all have just the right amount of tests, and so can you!
 
+##### RSpec tests
+
 Putting regular rspec tests into the `spec` folder will allow you to run tests for your plugins by executing `bundle exec rspec plugins` from the root folder.
 
 ```
@@ -467,6 +469,76 @@ end
 ```bash
   bundle exec rspec plugins/kickflip/spec/models/kickflip_spec.rb:3
 ```
+
+##### End to end testing
+
+Loomio uses [protractor](http://github.com/angular/protractor), which is a framework for running automated tests on Angular. We use a very simple DSL to write these tests; you can look at examples in `angular/test/protractor`
+
+In order to write angular tests in your application, add a file that follows the pattern `*_spec.coffee` anywhere in your plugin. (Such as `plugins/kickflip/test/kickflip_spec.coffee`). You can then write angular specs in there as in the main repo (and they will be run by our CI.)
+
+Most tests will follow this pattern:
+
+###### Load a setup route
+Check out `app/controllers/development controller.rb` to see existing routes. You can define your own with the following command in `plugin.rb`:
+
+```ruby
+plugin.use_test_route(:kickflip_route) do
+  @group = Group.create(name: "My group")
+  redirect_to group_path(@group)
+end
+```
+
+Note that this provides a `/development/kickflip_route` route, which can then be called in your spec using loadPath:
+
+```coffeescript
+  page = require './helpers/page_helper.coffee'
+  page.loadPath 'kickflip_route'
+```
+
+###### Perform some actions on the page
+
+The page helper also provides several methods for interacting with the page
+
+```coffeescript
+  page = require './helpers/page_helper.coffee'
+  # fill in a form field
+  page.fillIn '.page__input-field', '100 points!'
+
+  # click on an element by css selector
+  page.click '.page__submit-button'
+
+  # click on the first or last element with the given selector
+  page.clickFirst 'a[href]'
+  page.clickLast 'ul.list-items li'
+```
+
+_NB: we use [BEM]() rules, which should make it easier to pick a specific element. Using clickFirst and clickLast
+is more fragile and prone to future breakage._
+
+###### Ensure an element or some text is present
+
+Once we've performed some interactions with our page, we can check to ensure that the page looks as we expect it to, either by verifying the existence of a particular element, or checking for some specified text on the page.
+
+```coffeescript
+  page = require './helpers/page_helper.coffee'
+
+  # expect the '.page__element' element to be present on the screen
+  page.expectElement '.page__element'
+  # expect the text 'It worked!' to appear inside the element '.page__element'
+  page.expectText '.page__element', 'It worked!'
+```
+
+_NB: If you're dealing with a page which does not use angular (such as our marketing page, or the sign in / sign up form), you'll need to use the static page helper, rather than the regular page helper. This is because the regular page helper waits until it can detect angular on the page before performing its actions. (This is a pretty uncommon use case)_
+
+```coffeescript
+  staticPage = require './helpers/static_page_helper.coffee'
+  staticPage.fillIn '.page__input-field'
+  staticPage.fillIn '.page__submit-button'
+```
+
+###### Running the specs
+
+In order to run only plugin specs, run the command `gulp protractor:plugins`. Plugin specs will also be run after the core specs have been run using `gulp protractor:now`.
 
 ### Add factories
 

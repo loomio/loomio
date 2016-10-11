@@ -25,9 +25,11 @@
 
       .lmo-form-group
         %label{for: "discussion-context", translate: "discussion_form.context_label"}
-        .lmo-relative
+        %outlet{name: "before-discussion-form-textarea", model: "discussion"}
+        .lmo-relative.lmo-textarea-wrapper
           %textarea.lmo-textarea.discussion-form__description-input.form-control.lmo-primary-form-input#discussion-context{msd-elastic: "true", ng-model: "discussion.description", placeholder: "{{ 'discussion_form.context_placeholder' | translate }}", mentio: "true", mentio-trigger-char: "'@'", mentio-items: "mentionables", mentio-template-url: "generated/components/thread_page/comment_form/mentio_menu.html", mentio-search: "fetchByNameFragment(term)", mentio-id: "discussion-field", ng-model-options: "{debounce: 150}"}
           %emoji_picker.lmo-action-dock{target-selector: "descriptionSelector"}
+        %outlet{name: "after-discussion-form-textarea", model: "discussion"}
 
       .discussion-form__attachments
         %attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
