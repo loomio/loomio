@@ -87,6 +87,11 @@ module Plugins
       @routes.add({ path: path, component: component.to_s.camelize(:lower) })
     end
 
+    def use_test_route(path, &block)
+      raise NoCodeSpecifiedError.new unless block_given?
+      extend_class(DevelopmentController) { define_method(path, &block) }
+    end
+
     def use_route(verb, route, action)
       @actions.add Proc.new {
         Loomio::Application.routes.prepend do
