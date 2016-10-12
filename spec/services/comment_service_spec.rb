@@ -99,6 +99,14 @@ describe 'CommentService' do
         comment.parent = create :comment, author: user
         expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.where(kind: 'comment_replied_to').count }
       end
+
+      it 'does not notify the parent author even if mentioned' do
+        comment.parent = create :comment, author: another_user, discussion: discussion
+        comment.body = "A mention for @#{another_user.username}!"
+
+        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.where(kind: 'user_mentioned').count }
+        expect(comment.mentioned_group_members).to include comment.parent.author
+      end
     end
 
     context 'comment is invalid' do

@@ -18,6 +18,10 @@ module HasMentions
     extract_mentioned_screen_names(mentionable_text).uniq - [self.author.username]
   end
 
+  def users_to_not_mention
+    [] # overridden with specific users to not receive mentions
+  end
+
   private
 
   def mentionable_text
