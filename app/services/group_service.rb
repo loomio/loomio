@@ -4,14 +4,17 @@ module GroupService
 
     return false unless group.valid?
 
+    group.is_referral = actor.groups.size > 0
+
     if group.is_parent?
       group.default_group_cover           = DefaultGroupCover.sample
-      group.experiences['bx_choose_plan'] = [true, false].sample if ENV['LOOMIO_AB_TEST']
+      group.experiences['bx_choose_plan'] = [true, false].sample  if ENV['LOOMIO_AB_TEST']
       group.subscription                  = Subscription.new_gift unless group.experiences['bx_choose_plan']
+      group.creator                       = actor                 if actor.is_logged_in?
       ExampleContent.new(group).add_to_group!
+    else
+      group.save!
     end
-
-    group.save!
 
     EventBus.broadcast('group_create', group, actor)
   end

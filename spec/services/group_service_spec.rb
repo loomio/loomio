@@ -45,6 +45,29 @@ describe 'GroupService' do
     it 'does not send excessive emails' do
       expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
+
+    it 'sets the actor as group creator if logged in' do
+      GroupService.create(group: group, actor: user)
+      expect(group.reload.creator).to eq user
+    end
+
+    it 'leaves the group creator nil if user does not have account' do
+      GroupService.create(group: group, actor: LoggedOutUser.new)
+      expect(group.reload.creator).to be_nil
+    end
+
+    context "is_referral" do
+      it "is false for first group" do
+        GroupService.create(group: group, actor: user)
+        expect(group.is_referral).to be false
+      end
+
+      it "is true for second group" do
+        create(:group).add_admin! user
+        GroupService.create(group: group, actor: user)
+        expect(group.is_referral).to be true
+      end
+    end
   end
 
   describe 'archive!' do
