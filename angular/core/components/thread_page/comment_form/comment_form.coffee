@@ -5,9 +5,6 @@ angular.module('loomioApp').directive 'commentForm', ->
   replace: true
   controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, SignInForm) ->
 
-    $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
-    $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
-
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
 
