@@ -70,7 +70,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
     cookedBody: ->
       cooked = @body
       _.each @mentionedUsernames, (username) ->
-        cooked = cooked.replace(///@#{username}///g, "[[@#{username}]]")
+        cooked = cooked.replace(///\s@#{username}///g, " [[@#{username}]]")
       cooked
 
     edited: ->
