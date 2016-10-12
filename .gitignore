@@ -31,7 +31,6 @@ disabled_plugins/
 
 # NB: To reveal a plugin to hack on it locally, add a line here telling .gitignore to reveal it:
 # !plugins/my_awesome_plugin
-!plugins/loomio_group_progress_card
 
 angular/node_modules
 angular/tasks/config/plugins.yml
