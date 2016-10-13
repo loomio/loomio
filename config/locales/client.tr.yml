@@ -462,7 +462,6 @@ tr:
     copy_link: Bağlantıyı kopyala
     email_addresses: E-posta adresleri
     email_addresses_placeholder: 'Örn. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: Linki kopyalayın ve gruba katılmak isteyen herkese gönderin. Linki tıklamak onlara anında erişim verecektir.
     email_explanation: 'Alternatif olarak, e-posta adreslerini aşağıdaki alana girin ve Loomio e-posta ile onlara bir davetiye gönderecek.'
     add_custom_message: 'Davetinizi kişiselleştirin,'
     add_custom_message_link: özel bir mesaj ekleyin.

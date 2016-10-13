@@ -1,15 +1,16 @@
 .loading-wrapper.container.main-container.lmo-one-column-layout
   %loading{ng-if: "!userPage.user"}
   %main.user-page.main-container.lmo-row{ng-if: "userPage.user"}
-    .user-page__profile
-      .user-page__left
-        %user_avatar{user: "userPage.user", size: "featured"}
-      .user-page__right
-        %h1.user-page__name {{userPage.user.name}}
-        %h4.user-page__username @{{userPage.user.username}}
+    .user-page__top-margin
+      .user-page__profile
+        .user-page__left
+          %user_avatar{user: "userPage.user", size: "featured"}
+        .user-page__right
+          %h1.user-page__name {{userPage.user.name}}
+          %h4.user-page__username @{{userPage.user.username}}
 
-        %h2.lmo-h2.user-page__groups-title{translate: "common.groups"}
-        .user-page__groups{ng-repeat: "group in userPage.user.groups() | orderBy: 'fullName' track by group.id"}
-          %a{lmo-href-for: "group"} {{group.fullName}}
-        %loading{ng-if: "userPage.loadGroupsForExecuting"}
-      .clearfix
+          %h2.lmo-h2.user-page__groups-title{translate: "common.groups"}
+          .user-page__groups{ng-repeat: "group in userPage.user.groups() | orderBy: 'fullName' track by group.id"}
+            %a{lmo-href-for: "group"} {{group.fullName}}
+          %loading{ng-if: "userPage.loadGroupsForExecuting"}
+        .clearfix

@@ -3,7 +3,7 @@
     .inner-container
       .start-group__success
         %h1= t :"start_group_form.success.header"
-        %p= t :"start_group_form.success.email_delivered", email: @email
+        %p= t :"start_group_form.success.email_delivered", email: @group_with_creator.params[:email]
 
         %h3= t :"start_group_form.success.email_not_arrived"
         %p= t :"start_group_form.success.please_hold"

@@ -73,6 +73,10 @@ If the heading is not visible, we use `aria-label` instead, passing in a string:
 
 `<section class="thread-group" aria-label: "Thread group">`
 
+### Using focus to draw attention to modals and popups
+
+Modals should have a header with an h1. When a modal or popup is launched, the focus should be transferred to the modal h1. Use an `aria-label` to define a string that labels the modal.
+
 ### Color contrast
 
 The WCAG standards specify the required contrast ratio to ensure your text is legible.

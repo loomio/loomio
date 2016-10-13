@@ -25,7 +25,7 @@ class Ability
     end
 
     can :create, NetworkMembershipRequest do |request|
-      request.group.coordinators.include?(request.requestor) and
+      request.group.admins.include?(request.requestor) and
       request.group.is_parent? and
       !request.network.groups.include?(request.group)
     end

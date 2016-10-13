@@ -546,7 +546,6 @@ de:
     copy_link: Link kopieren
     email_addresses: eMail-Adressen
     email_addresses_placeholder: 'z.B. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Kopiere diesen Link und sende ihn all jenen, die Deiner Meinung nach an dieser Gruppe teilnehmen sollten. Dieser Link ermöglicht sofortigen Zutritt.'
     email_explanation: Alternativ kannst Du eMail-Adressen hier unterhalb eitragen und Loomio wird ihnen Einladungsmails senden.
     add_custom_message: "Mach' Deine Einladung persönlich,"
     add_custom_message_link: füge eine persönliche Nachricht hinzu.

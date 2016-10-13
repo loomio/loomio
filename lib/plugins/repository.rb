@@ -35,7 +35,7 @@ module Plugins
 
     def self.static_assets
       @@static_assets ||= begin
-        assets = active_plugins.map(&:static_assets).reduce(&:merge).map(&:filename)
+        assets = active_plugins.map(&:static_assets).reduce(&:merge).reject(&:standalone).map(&:filename)
         {
           css: assets.select { |filename| ['scss', 'css'].include?  filename.split('.').last },
           js:  assets.select { |filename| ['js', 'coffee'].include? filename.split('.').last }
@@ -52,8 +52,8 @@ module Plugins
     def self.save_static_asset(asset)
       assets = Rails.application.config.assets
       path   = Rails.root.join('plugins', asset.path).to_s
-      assets.paths << path unless assets.paths.include?(path)
-      assets.precompile += Array(asset.filename) unless assets.precompile.include?(asset.filename)
+      assets.precompile << asset.filename if asset.standalone && !assets.precompile.include?(asset.filename)
+      assets.paths      << path           unless assets.paths.include?(path)
     end
     private_class_method :save_static_asset
 

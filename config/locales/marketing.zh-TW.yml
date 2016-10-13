@@ -169,6 +169,8 @@ zh-TW:
       transparent_body: |
         Loomio 合作社由重要的使用者與貢獻者社群所環繞。這個社群必須相信 Loomio 合作社言行一致。
         我們致力於高標準的資訊共享。
+    postal_address: 郵寄位置：
+    physical_address: 實際位置：
   titles:
     new_tab: 在新分頁中開啟
     start_group: 建立新群組表單

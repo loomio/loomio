@@ -532,7 +532,6 @@ ca:
     copy_link: "Copia l'enllaç"
     email_addresses: Adreces de correu electrònic
     email_addresses_placeholder: 'p. ex. marc@loomio.org, martina@loomio.org'
-    shareable_link_explanation: "Copieu l'enllaç i envieu-lo a qualsevol persona desitgeu que s'uneixi al grup. Clicant a l'enllaç obtindran l'accés immediat."
     email_explanation: Introduïu a sota les adreces de correu electrònic i Loomio els enviarà una invitació.
     add_custom_message: 'Creeu una invitació personal,'
     add_custom_message_link: afegiu un missatge personalitzat.

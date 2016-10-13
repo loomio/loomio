@@ -545,7 +545,6 @@ pt-BR:
     copy_link: Copiar link
     email_addresses: Endereço de e-mail
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: Copie o link e envie para quem você deseja que se junte ao grupo. Clicar no link garante acesso imediato.
     email_explanation: 'Como alternativa, introduza endereços de e-mail abaixo e o Loomio irá enviar os convites por e-mail.'
     add_custom_message: 'Faça seu convite pessoal,'
     add_custom_message_link: adicionar uma mensagem personalizada.

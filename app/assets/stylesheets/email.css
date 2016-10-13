@@ -62,7 +62,7 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 .invite-people-mailer__message_body {
   font-size: 14px;
   font-style: italic;
-  margin: 15px 50px 30px;
+  margin: 15px 30px 30px;
 }
 
 .invite-people-mailer__button {

@@ -2,10 +2,14 @@ es:
   navigation:
     blog: Blog
     resources: 'Recursos '
+    resources_dropdown: Menú desplegable de recursos
+    resources_submenu: submenú de recursos
+    header_menu_label: 'Menú superior '
     case_studies: Estudio de casos
     help: 'Ayuda '
     guides_and_tips: 'Guías y consejos '
     developers: ' Desarrolladores '
+    coop_handbook: Manual de la cooperativa
     about: 'Sobre Loomio '
     pricing: 'Precios '
     contact: Contactarnos
@@ -21,20 +25,29 @@ es:
     trademark_statement: '© 2016 Loomio Cooperative Limited. Todos los derechos reservados. "Loomio"es una marca registrada de Loomio Cooperative Limited.'
   marketing:
     hero:
+      dilemma_html: Tomar decisiones con tu grupo no debería ser tan difícil.
+      dilemma_image_alt: 'Miembros del grupo que no parecen felices reunidos alrededor de una mesa desorganizada '
       solution: 'Con Loomio puedes tomar decisiones sin una larga lista de emails o reuniones. '
+      solution_image_alt: 'Felices miembros del grupo con distintos dispositivos móviles reunidos alrededor de una lamparita e interconectados por hilos   '
+      arrow_alt: 'Flecha que apunta de la imagen del problema a la imagen de la solución '
+    macbook_android_image_alt: 'Loomio en el ordenador y dispositivos móviles  '
     make_decisions_html: 'Loomio es un lugar para que tu grupo <strong>tome decisiones juntos</strong>.'
     gather:
       heading: 'Juntarse   '
       explanation: 'Trae a la gente indicada y a la información necesaria. Accesible, fácil de usar, adaptable, con detalles optimizadles para la privacidad y seguridad. '
+      image_alt: 'Grupo reunido en circulo alrededor de un signo de pregunta '
     discuss:
       heading: 'Dialoga '
       explanation: 'Ten conversaciones claras sobre temas particulares. Mantente al día, lee la información relevante y filtra el ruido. Es un espacio dedicado para la colaboración constructiva. '
+      image_alt: 'Grupo compartiendo información y expresando opiniones con burbujas de dialogo coloridas '
     propose:
       heading: 'Propone '
       explanation: 'Resúmenes visuales facilitan el entendimiento de las posiciones de los demás. Entérate rápidamente si están de acuerdo. O ve fácilmente la causa del desacuerdo y comienza a construir un entendimiento compartido.  '
+      image_alt: Grupo reunido alrededor de un gráfico circular que muestra los distintos votos con colores
     decide_act:
       heading: 'Decide y Actúa '
       explanation: 'Llega a un resultado claro para cada propuesta, dentro del tiempo fijado. Todos serán notificados sobre el resultado, para que puedan avanzar juntos y ponerse en acción. '
+      image_alt: 'Grupo sale volando desde el pulgar verde hacia arriba con los brazos en alto  '
     try_it_now: 'Pruébalo ahora '
     start_free_group: Crea un grupo gratis
     fast_inclusive_effective: 'Tu nueva normalidad puede ser rápida, inclusiva y eficiente.'
@@ -111,6 +124,7 @@ es:
       first_paragraph: 'Loomio es un software de código abierto, construido por una empresa social y cooperativa que es propiedad de sus trabajadores. Estamos basados en Aotearoa Nueva Zelanda y somos parte de la Red de '
       second_paragraph: 'Creemos que más grupos practicando la toma de decisiones de forma efectiva e inclusiva, puede cambiar la dinámica de organizaciones a escala global. Loomio existe para facilitar que cualquier persona en cualquier lugar pueda participar en la toma de decisiones que afecta sus vidas.  '
       link_text: 'Entérate más sobre nuestro equipo, nuestra historia y nuestro propósito y valores... '
+      image_alt: Equipo de Loomio - Abril 2016
   about:
     heading: Acerca de Loomio
     introduction:
@@ -192,3 +206,16 @@ es:
         de Loomio hará lo que dice que hará.
 
         Estamos comprometidos a altos estándares para compartir información.
+    postal_address: 'Dirección postal '
+    physical_address: 'Dirección física '
+  titles:
+    new_tab: Abre en nueva ventana
+    start_group: Formulario para crear grupo
+    about_us: Página acerca de
+    pricing: Página de precio
+    contact: Formulario de contacto.
+    sign_in: Formulario de entrada
+    terms_of_service: 'Página de términos del servicio '
+    privacy: Página de privacidad
+    translation: 'guía de traducción '
+    home: Página principal

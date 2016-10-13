@@ -29,7 +29,7 @@
 
   = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"
 
-  = render 'application/google_analytics'
+  = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID_FOR_MARKETING']
 
   %meta{'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0'}
 

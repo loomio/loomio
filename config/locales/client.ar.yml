@@ -464,7 +464,6 @@ ar:
     copy_link: نسخ الرابط
     email_addresses: عناوين البريد الإلكتروني
     email_addresses_placeholder: 'مثال: helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: انسخ الرابط و أرسله إلى أي شخص ترغب في دعوته للانضمام. الضغط على الرابط سيمنحهم وصولاً فورياً.
     email_explanation: عوضاً عن ذلك، يمكنك إدخال عناوين البريد الإلكتروني في الأسفل و سيقوم لوميو بإرسال الدعوات لهم عبر البريد الإلكتروني.
     add_custom_message: قم بجعل دعوتك شخصية،
     add_custom_message_link: قم بإضافة رسالة مخصصة.

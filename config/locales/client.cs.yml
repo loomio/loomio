@@ -85,11 +85,15 @@ cs:
     unread: Nepřečteno
     closing_in: Zavřené
   sign_in_form:
+    title: Přihlásit se na Loomio
     email_label: 'Email:'
     email_placeholder: vy@priklad.cz
     password_label: 'Heslo:'
+    forgot_password: Zapomněli jste své heslo?
     signed_in: Úspěšně jste se přihlásil/a.
     oauth:
+      facebook: Přihlásit se pomocí účtu Facebook
+      twitter: Přihlásit se pomocí účtu Twitter
       google: Přihlásit se pomocí Google
       github: Přihlásit se pomocí Github
   sign_up_form:
@@ -108,6 +112,7 @@ cs:
       remove_attachment: Odebrat přílohu
     messages:
       created: Komentář přidán
+      replied: '{{name}} upozorněn/a na odpověď'
       updated: Komentář aktualizován
       destroyed: Komentář smazán
     edit_comment: Upravit komentář
@@ -122,6 +127,7 @@ cs:
     recent: Aktuální
     unread: Nepřečteno
     muted: Ztlumená
+    start_group: Vytvořit novou skupinu
     explore: Veřejné skupiny
     edit_profile: Upravit profil
     email_settings: Nastavení emailu
@@ -142,6 +148,7 @@ cs:
       proposals: Návrhy
       comments: Komentáře
     sign_in: Přihlásit se
+    logo_title: Domovská stránka
   start_menu:
     start_group: Vytvořit skupinu
     start_subgroup: Vytvořit podskupinu
@@ -149,6 +156,7 @@ cs:
     invite_people: Pozvat lidi
   notifications:
     header: Upozornění
+    no_notifications: Nemáte žádná upozornění.
     new_discussion: '<strong>{{name}}</strong> zahájil(a) diskusi <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> vytvořil(a) návrh <strong>{{proposal}}</strong>'
     motion_closed: 'Návrh uzavřen: <strong>{{proposal}}</strong>'
@@ -157,6 +165,7 @@ cs:
     motion_closed_by_expiry: 'Návrh byl uzavřen <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} k návrhu <strong>{{proposal}}</strong>'
     new_comment: '<strong>{{name}}</strong> komentoval(a) <strong>{{discussion}}</strong>'
+    user_added_to_group_no_inviter: 'Byl/a jste přidán/a do skupiny <strong>{{group}}</strong>'
     invitation_accepted: '<strong>{{name}}</strong> přijal/a vaši pozvánku do skupiny <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Vyjádřete svůj názor
@@ -238,6 +247,8 @@ cs:
   proposal_position_abstain: Zdržet se
   proposal_position_no: Nesouhlasit
   proposal_position_block: Zamítnout
+  angular_welcome_modal:
+    ok_got_it: 'OK, chápu!'
   group_welcome_modal:
     ok_got_it: 'OK, chápu!'
   group_cover_modal:
@@ -304,10 +315,23 @@ cs:
       cannot_leave_group: 'Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat.'
       add_coordinator: Přidat koordinátora
   choose_plan_modal:
+    free: Bezplatný
     standard: Standardní
+    pro: Profesionální
+    per_month: /měsíc
+    standard_group_description: 'Vše, co potřebujete, pro jednu skupinu.'
+    benefit_1_group: 1 skupina
+    benefit_10_groups: 10 skupin
+    benefit_unlimited_members: Neomezeně členů
+    benefit_unlimited_decisions: Neomezeně rozhodnutí
+    benefit_slack_integration: Integrace se Slack
+    benefit_custom_domain: Vlastní doména
+    need_help_please: Potřebujete něco jiného?
     select: Vybrat
   subscription_success_modal:
+    heading: 'Jste připraven/a!'
     contact_link: prosím kontaktujte nás.
+    sign_off: ❤ od týmu Loomio
     ok_got_it: 'OK, chápu!'
   group_form:
     start_group_heading: Vytvořit skupinu

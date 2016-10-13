@@ -114,35 +114,6 @@ it:
   password_reset:
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: 'Le password banali come "password" sono vietate per tenere al sicuro il vostro account.'
-  introduction_thread:
-    title: 'Benvenuto su %{group_name}'
-  how_it_works_thread:
-    title: Come usare Loomio
-    description: >
-      Benvenuto in Loomio, uno spazio online dove prendere decisioni assieme.
-
-
-
-      Questa è una discussione di prova **discussione**. Perchè non usare questo
-      spazio per provare le funzionalità di Loomio?
-
-
-
-      In questo momento stai leggento la discussione **contesto**. Usa questo
-      spazio per comunicare le informazioni di contesto necessarie al gruppo per
-      iniziare discussioni produttive.
-
-
-
-      Il pannello delle **proposte** é dove vengono prese le decisioni. Puoi
-      lanciare una proposta o partecipare al voto in quella sezione.
-
-
-
-      Il pannello **attività** in basso mostra tutto ciò che è successo in questa
-      discussione.
-  first_proposal:
-    name: 'Proposta di prova: andiamo!'
   contact_page:
     contact_us: Contattaci
     faq_prompt_html: 'Hai una domanda per il team di Loomio? Prima di contattarci, potresti trovare la risposta tra le domande frequenti (FAQ)'

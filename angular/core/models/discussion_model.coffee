@@ -79,6 +79,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     hasUnreadActivity: ->
       @isUnread() && @unreadActivityCount() > 0
 
+    hasContext: ->
+      !!@description
+
     isImportant: ->
       @starred or @hasActiveProposal()
 
@@ -96,6 +99,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     maxLoadedSequenceId: ->
       item = _.max @events(), (event) -> event.sequenceId or 0
       item.sequenceId
+
+    allEventsLoaded: ->
+      @recordStore.events.find(discussionId: @id).length == @itemsCount
 
     membership: ->
       @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]

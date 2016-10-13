@@ -571,7 +571,6 @@ sr:
     copy_link: Kopiraj vezu
     email_addresses: Adrese ePošte
     email_addresses_placeholder: 'kao helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: Kopiraj adresu i pošalji je bilo kome ako želiš da se priključi grupi. Škljoc na adresu će im obezbediti neposredan pristup.
     email_explanation: 'Alternativno, unesi adrese ePošte ispod i Lumio će im poslati ePoruku sa pozivnicom.'
     add_custom_message: 'Učini svoje poziv ličnim,'
     add_custom_message_link: dodaj svoju poruku.

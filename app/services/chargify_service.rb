@@ -44,7 +44,7 @@ class ChargifyService
   end
 
   def chargify_api_endpoint
-    "http://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
+    "https://#{Rails.application.secrets.chargify_app_name}.chargify.com/subscriptions/#{@subscription_id}.json"
   end
 
   def basic_auth

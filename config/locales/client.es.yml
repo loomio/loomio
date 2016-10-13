@@ -144,6 +144,13 @@ es:
       hilos silenciados, selecciona <strong>Silenciado</strong> en la barra
       lateral de navegación:</p>
     image_alt: 'Opción de hilos silenciados en la barra lateral '
+  dismiss_explanation_modal:
+    dismiss_thread: Ignorar hilo
+    body_html: >
+      <p>Ignorar un hilo lo remueve de tu lista de no leídos. Si alguna nueva
+
+      actividad ocurre en el hilo, volverá a aparecer como no leído
+      nuevamente.</p>
   inbox:
     clear: Limpiar
     latest: Últimos
@@ -231,6 +238,7 @@ es:
       comments: 'Comentarios '
     sign_in: Iniciar sesión
     toggle_sidebar: Alternar barra lateral
+    logo_title: Página principal
   start_menu:
     title: 'Botones de acción '
     start_group: Crear un grupo nuevo
@@ -524,7 +532,7 @@ es:
     benefit_slack_integration: Integración con Slack.com
     benefit_custom_domain: 'Dominio personalizado '
     benefit_analytics_reports: 'Reporte analítico '
-    benefit_csv_export: Exportación de datos CSV
+    benefit_data_export: Exportación de datos
     support_link: 'Hablemos! '
     prices_in_us_dollars: 'Precios en dolares US, más impuestos en la venta donde aplique  '
     need_help_please: ¿Necesitas algo más?
@@ -620,7 +628,7 @@ es:
     copy_link: Copiar enlace
     email_addresses: Correo electrónico
     email_addresses_placeholder: 'ej. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: 'Copia el enlace y envíalo a cualquier persona que quieras que se una a tu grupo. Hacer clic en el enlace les dará acceso inmediato. '
+    shareable_link_explanation: 'Copia el enlace y envíalo a cualquier persona que quieras que se una a tu grupo. Esto les dará acceso a todos los hilos de tu grupo. '
     email_explanation: 'Alternativamente, ingresa las direcciones de email debajo y Loomio les enviará una invitación.'
     add_custom_message: 'Personaliza tu invitación,'
     add_custom_message_link: 'agrega un mensaje personalizado '
@@ -751,6 +759,8 @@ es:
     view_recent: ¿Ver todos los hilos recientes?
     load_more: Cargar más hilos
     mark_as_read: Marcar como leído
+    dismiss: Ignorar
+    thread_dismissed: 'Hilo ignorado '
     explain_mute:
       title: No tienes ningún hilo silenciado.
       explanation_html: >
@@ -826,6 +836,7 @@ es:
     edited: Editado
     volume:
       mute_message: 'Hilo silenciado. '
+      unmute_message: 'Hilo silenciado '
   thread_group:
     aria_label: Nombre del grupo
   thread_context:
@@ -833,6 +844,7 @@ es:
     thread_options: Preferencias del hilo
     email_settings: 'Ajustes de correo '
     edit_thread: Editar
+    mute_thread: Silenciar
     move_thread: Mover
     print_thread: 'Imprimir '
     delete_thread: Eliminar

@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'ChangeVolumeForm', ->
         when 'discussion' then $scope.model.volume()
         when 'membership' then $scope.model.volume
         when 'user'       then $scope.model.defaultMembershipVolume
-    
+
     $scope.buh =
       volume: $scope.defaultVolume()
 

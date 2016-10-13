@@ -5,9 +5,6 @@ angular.module('loomioApp').directive 'commentForm', ->
   replace: true
   controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, SignInForm) ->
 
-    $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
-    $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
-
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
 
@@ -37,7 +34,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.$on 'proposalCreated', $scope.listenForSubmitOnEnter
 
     $scope.init = ->
-      $scope.comment = Records.comments.build(discussionId: $scope.discussion.id)
+      $scope.comment = Records.comments.build(discussionId: $scope.discussion.id, authorId: Session.user().id)
       $scope.submit = FormService.submit $scope, $scope.comment,
         draftFields: ['body']
         submitFn: $scope.comment.save
@@ -46,10 +43,12 @@ angular.module('loomioApp').directive 'commentForm', ->
           name: successMessageName
         successCallback: $scope.init
       $scope.listenForSubmitOnEnter()
+      $scope.$broadcast 'commentFormInit', $scope.comment
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
+      $scope.comment.parentAuthorName = parentComment.authorName()
       ScrollService.scrollTo('.comment-form__comment-field')
 
     $scope.bodySelector = '.comment-form__comment-field'

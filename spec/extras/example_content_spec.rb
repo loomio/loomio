@@ -13,14 +13,6 @@ describe ExampleContent do
       expect { subject.add_to_group! }.to change { group.motions.count }.by(1)
     end
 
-    it 'creates an example vote' do
-      expect { subject.add_to_group! }.to change { Vote.count }.by(1)
-    end
-
-    it 'creates an example comment' do
-      expect { subject.add_to_group! }.to change { Comment.count }.by(1)
-    end
-
     it 'does not send emails' do
       expect { subject.add_to_group! }.to_not change { ActionMailer::Base.deliveries.count }
     end
