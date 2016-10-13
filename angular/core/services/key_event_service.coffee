@@ -31,5 +31,7 @@ angular.module('loomioApp').factory 'KeyEventService', ($rootScope) ->
       @previousScope.$$listeners['pressedEnter'] = null if @previousScope?
       @previousScope = scope
       @registerKeyEvent scope, 'pressedEnter', scope.submit, (active, event) =>
+        !scope.isDisabled and
+        !scope.submitIsDisabled and
         (event.ctrlKey or event.metaKey) and
         _.contains(active.classList, 'lmo-primary-form-input')
