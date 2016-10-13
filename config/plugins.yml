@@ -12,10 +12,8 @@ loomio_truncate_comment:
   repo:         loomio/loomio_truncate_comment
   experimental: true
 
-
 loomio_group_progress_card:
   repo: loomio/loomio_group_progress_card
-  experimental: true
 
 loomio_content_preview:
   repo:         gdpelican/loomio_content_preview
