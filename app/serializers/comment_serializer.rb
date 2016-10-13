@@ -7,15 +7,41 @@ class CommentSerializer < ActiveModel::Serializer
   has_many :likers, serializer: UserSerializer, root: :users
   has_many :attachments, serializer: AttachmentSerializer, root: :attachments
 
-  def parent_author_name
-    object.parent.author_name if object.parent
+  def likers
+    from_cache :likers
   end
 
-  def include_comment_relations?
-    !Hash(scope)[:skip_comment_relations]
+  def mentioned_usernames
+    from_cache :mentions
   end
-  alias :include_mentioned_usernames? :include_comment_relations?
-  alias :include_likers?              :include_comment_relations?
-  alias :include_attachments?         :include_comment_relations?
+
+  def attachments
+    from_cache :attachments
+  end
+
+  def include_likers?
+    from_cache(:likers).present?
+  end
+
+  def include_mentioned_usernames?
+    from_cache(:mentions).present?
+  end
+
+  def include_attachments?
+    from_cache(:attachments).present?
+  end
+
+  def parent_author_name
+    object.parent&.author_name
+  end
+
+  private
+
+  # pull the specified attributes from the cache passed in via serializer scope
+  # This allows us to make 1 query to fetch all attachments, or likers for a series
+  # of comments, rather than needing to do a separate query for each comment
+  def from_cache(field)
+    Hash(scope).dig(:cache, field, object.id)
+  end
 
 end
