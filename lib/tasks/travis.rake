@@ -1,7 +1,6 @@
 namespace :travis do
   task :prepare do
     puts "Creating test assets for v#{Loomio::Version.current}..."
-    Plugins::Repository.install_plugins!
     system("cd angular && gulp compile")
     raise "Asset creation failed!" unless $?.exitstatus == 0
   end
