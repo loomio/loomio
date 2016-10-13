@@ -13,6 +13,9 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
       usesMarkdown: true
       discussionId: null
       body: ''
+      likerIds:           []
+      attachmentIds:      []
+      mentionedUsernames: []
 
     relationships: ->
       @belongsTo 'author', from: 'users'
