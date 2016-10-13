@@ -10,4 +10,4 @@ angular.module('loomioApp').factory 'LogoPhotoForm', ->
       uploadKind:     'logo'
       submitFn:       group.uploadPhoto
       loadingMessage: 'common.action.uploading'
-      flashSuccess:   'group_logo_modal.upload_success'
+      flashSuccess:   'logo_photo_form.upload_success'
