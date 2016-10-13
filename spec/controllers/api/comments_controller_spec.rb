@@ -101,7 +101,7 @@ describe API::CommentsController do
         it 'responds with json' do
           post :create, comment: comment_params
           json = JSON.parse(response.body)
-          expect(json.keys).to include *(%w[users attachments comments])
+          expect(json.keys).to include *(%w[users comments])
         end
 
         describe 'mentioning' do
