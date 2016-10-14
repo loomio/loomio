@@ -2,17 +2,11 @@ pl:
   email:
     missed_yesterday:
       mark_as_read: Oznaczenie jako przeczytane
-    invitation:
-      hi: 'Witaj %{name},'
-      thanks: |
-        Dziękujemy!
-        Zespół Loomio
     proposal_closing_soon:
       closes_at: 'Zamyka się o '
       summary: Podsumowanie
     thread_mailer:
       change_preferences: Zmiana ustawień poczty.
-      new_motion: '%{who} zaproponował/ła:'
       motion_closing_soon: 'Zamknięcie propozycji w ciągu 24 godzin:'
       proposal_closed: 'Propozycja zamknięta:'
   footer:

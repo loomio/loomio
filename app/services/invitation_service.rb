@@ -5,7 +5,7 @@ class InvitationService
     args[:intent] = 'start_group'
     args[:invitable] = args[:group]
     args.delete(:group)
-    Invitation.create(args)
+    Invitation.create!(args)
   end
 
   def self.create_invite_to_join_group(args)
@@ -13,7 +13,18 @@ class InvitationService
     args[:intent] = 'join_group'
     args[:invitable] = args[:group]
     args.delete(:group)
-    Invitation.create(args)
+    Invitation.create!(args)
+  end
+
+  def self.invite_creator_to_group(group:, creator:)
+    InvitePeopleMailer.delay(priority: 1).to_start_group(
+      invitation: InvitationService.create_invite_to_start_group(
+        group:           group,
+        inviter:         User.helper_bot,
+        recipient_email: creator.email,
+        recipient_name:  creator.name
+      )
+    )
   end
 
   def self.invite_to_group(recipient_emails: nil,

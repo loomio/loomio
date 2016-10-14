@@ -14,6 +14,12 @@ So instead of `<a href: '/dashboard'>`, we use `<a href: '/dashboard', title: "D
 
 (At the same time as we’re doing accessibility improvements, we’re also trying to support [33 languages](https://www.loomio.org/translation), so in reality instead of just plopping a string in like ‘Dashboard’, we would actually pass it to the translate filter.)
 
+### Indicate whether an element displays pop-up content with `aria-haspopup` and `aria-collapsed`
+
+The `aria-haspopup` element indicates that an element has a pop-up menu or sub-level menu (a group of items that appear on top of the main page content). This means that activating the element (via a click, for example) renders additional content.
+
+Additionally, you can add an `aria-expanded` element to indicate whether the pop-up content is expanded or collapsed. The value of `aria-expanded` should be true when the pop-up element is visible, and false when it is not.
+
 ### Distinguishing between the visual and audio
 
 As a rule, the user experience for people who are blind should follow as closely as possible to that for sighted people.
@@ -30,6 +36,8 @@ So for example, on most devices, the Notifications menu is indicated by a bell i
 <div class="sr-only">Notifications</div>
 <i class="fa-bell" aria-hidden="true"></i>
 ```
+
+Where possible, we also try to exclude HTML elements that add unnecessary confusion to the screen reader experience, such as `<nobr>`.
 
 ### Using headings for hierarchy
 
@@ -64,6 +72,10 @@ If the heading is visible on screen, we use `aria-labelled-by` and pass in the i
 If the heading is not visible, we use `aria-label` instead, passing in a string:
 
 `<section class="thread-group" aria-label: "Thread group">`
+
+### Using focus to draw attention to modals and popups
+
+Modals should have a header with an h1. When a modal or popup is launched, the focus should be transferred to the modal h1. Use an `aria-label` to define a string that labels the modal.
 
 ### Color contrast
 

@@ -1,9 +1,8 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ThreadService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
   @requestedCommentId   = parseInt($routeParams.comment or $location.search().comment)
-  $location.url($location.path())
 
   handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
@@ -14,6 +13,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     ScrollService.scrollTo @elementToFocus(), 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
     (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
+    $location.url($location.path())
 
   @openVoteModal = ->
     $location.search().position and
@@ -54,6 +54,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
       $rootScope.$broadcast 'currentComponent',
         page: 'threadPage'
+        group: @discussion.group()
         links:
           canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
@@ -102,6 +103,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @canChangeVolume = ->
     Session.user().isMemberOf(@discussion.group())
 
+  @muteThread = ->
+    ThreadService.mute(@discussion)
+
+  @unmuteThread = ->
+    ThreadService.unmute(@discussion)
+
   @canEditThread = =>
     AbilityService.canEditThread(@discussion)
 
@@ -120,9 +127,19 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @showRevisionHistory = ->
     ModalService.open RevisionHistoryModal, model: => @discussion
 
-  @print = ->
-    $window.print() and true
+  @requestPagePrinted = ->
+    unless @discussion.allEventsLoaded()
+      ModalService.open PrintModal, preventClose: -> true
+      $rootScope.$broadcast 'fetchRecordsForPrint'
+    else
+      $timeout -> $window.print()
 
   TranslationService.listenForTranslations($scope, @)
+
+  checkInView = ->
+    angular.element(window).triggerHandler('checkInView')
+
+  KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
+  KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView
 
   return

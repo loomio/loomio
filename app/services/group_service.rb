@@ -1,17 +1,17 @@
 module GroupService
-  def self.create(group:, actor:)
+  def self.create(group:, actor: )
     actor.ability.authorize! :create, group
 
     return false unless group.valid?
 
     if group.is_parent?
-      group.update(default_group_cover: DefaultGroupCover.sample, subscription: Subscription.new_trial)
+      group.default_group_cover           = DefaultGroupCover.sample
+      group.experiences['bx_choose_plan'] = [true, false].sample if ENV['LOOMIO_AB_TEST']
+      group.subscription                  = Subscription.new_gift unless group.experiences['bx_choose_plan']
       ExampleContent.new(group).add_to_group!
-    else
-      group.save!
     end
 
-    group.add_admin! actor
+    group.save!
 
     EventBus.broadcast('group_create', group, actor)
   end

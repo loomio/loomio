@@ -3,6 +3,10 @@
   max-width: 750px;
 }
 
+.pricing-table__wrapper {
+  padding-top: 24px;
+}
+
 .pricing-table__header {
   margin-left: 10px;
   margin-bottom: 20px;
@@ -16,14 +20,13 @@
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   h2 {
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 0;
   }
   ul {
     list-style-type: none;
-    margin: 0 auto 24px;
+    margin: 0 auto;
     text-align: center;
     padding: 0;
     li { margin-bottom: 7px; }
@@ -34,7 +37,15 @@
     text-align: center; }
 }
 
-.pricing-table__free-trial, .pricing-table__get-started {
+
+.pricing-table__plan-description {
+  margin-bottom: 15px;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+
+.pricing-table__contact-us, .pricing-table__get-started {
   text-align: center;
   span{
     font-weight: bold;
@@ -69,6 +80,6 @@
   }
 }
 
-.pricing-table__free-trial {
+.pricing-table__contact-us {
   margin-top: 3rem;
 }

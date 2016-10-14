@@ -13,17 +13,11 @@ sv:
       subject: '%{member} har bjudit in dig att gå med i  %{group_name} på Loomio'
     to_start_group:
       subject: 'Starta din nya Loomiogrupp: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} har lagt till dig i %{which_group}'
-      content: '%{who} har lagt till dig i %{which_group} i Loomio. Klicka här för att gå till gruppen:'
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
     view_comment: Klicka här för att se kommentaren på Loomio
     view_discussion: Klicka här för att se denna diskussionen
-    view_group: Klicka här för att se gruppen på Loomio
     view_proposal: Visa detta förslag på Loomio
-    create_discussion:
-      intro: '%{who} startade en diskussion i %{which_group}:'
     create_proposal:
       intro: Ett nytt förslag skapades i en Loomiogrupp som du är med i.
       closes_in: Stänger om
@@ -37,24 +31,12 @@ sv:
       mark_as_read: Markera som läst
       thanks_for_reading: 'Tack för läsning, ha en bra dag!'
       marked_as_read_success: Allt från mail har markerats som läst
-    group_membership_approved:
-      intro: "Din begäran att få tillgång till gruppen '%{group_name}' i Loomio har godkänts."
-    invitation:
-      hi: 'Hej %{name},'
-      intro: 'Klicka på länken nedan för att starta din grupp %{group_name}:'
-      closing_message: 'Om du har någon fråga, eller om det är något vi kan göra för att hjälpa dig att komma igång, hör gärna av dig - enklast genom att svara på detta email.'
-      thanks: |
-        Tack!
-        Loomioteamet
     membership_request:
       intro: '%{name} (%{email}) har begärt att få tillgång till en av dina Loomiogrupper.'
       subject: '%{who} har begärt att få gå med %{which_group}'
       view_group: Du kan godkänna eller avslå begäran här
-    mentioned:
-      context: '%{author_name} nämnde dig medan diskutera "%{discussion_title}"'
     new_motion_created:
       subject: 'Förslag: %{proposal_title}'
-      context: '%{author} skapade ett förslag i %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Förslaget är stängt.
       specify_outcome_and_notify_group: 'Skapa ett resultat och skicka det till din grupp!'
@@ -69,12 +51,10 @@ sv:
       summary: Sammanfattning
     thread_mailer:
       change_preferences: 'Ändra dina e-postinställningar:'
-      new_motion: '%{who} föreslog:'
       motion_closing_soon: 'Förslag som stänger inom 24 timmar:'
       proposal_closed: 'Förslag som är stängt:'
       specify_outcome_html: "Ert förslag har stängt. <a href='%{link}'>Ange ett utfall</a> att låta alla veta vad resultatet blir."
       specify_outcome: 'Ert förslag har stängt. Ange ett utfall för att låta alla veta vad resultatet är:'
-      outcome_created: '%{who} satt ett förslag utfall:'
       you_agreed: 'Du %{past_tense_position}'
   footer:
     about: Om

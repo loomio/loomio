@@ -94,6 +94,7 @@ describe 'MotionService' do
   describe 'closing the motion' do
 
     describe '.close' do
+      before { motion.save }
 
       it 'stores users that did not vote' do
         MotionService.close(motion)

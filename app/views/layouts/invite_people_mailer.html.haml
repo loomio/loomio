@@ -1,0 +1,10 @@
+<!DOCTYPE HTML>
+%html
+  %head
+    = stylesheet_link_tag 'email'
+  %body
+    .invite-people-mailer
+      .invite-people-mailer__container
+        = render '/mailer_header'
+        .invite-people-mailer__body
+          = yield

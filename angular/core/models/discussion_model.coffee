@@ -70,10 +70,17 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @activeProposal()?
 
     isUnread: ->
+      !@isDismissed() and
       @discussionReaderId? and (!@lastReadAt? or @unreadActivityCount() > 0)
+
+    isDismissed: ->
+      @discussionReaderId? and @dismissedAt? and @dismissedAt.isSameOrAfter(@lastActivityAt)
 
     hasUnreadActivity: ->
       @isUnread() && @unreadActivityCount() > 0
+
+    hasContext: ->
+      !!@description
 
     isImportant: ->
       @starred or @hasActiveProposal()
@@ -92,6 +99,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     maxLoadedSequenceId: ->
       item = _.max @events(), (event) -> event.sequenceId or 0
       item.sequenceId
+
+    allEventsLoaded: ->
+      @recordStore.events.find(discussionId: @id).length == @itemsCount
 
     membership: ->
       @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
@@ -126,6 +136,10 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       if @discussionReaderId? and (_.isNull(@lastReadAt) or @lastReadSequenceId < sequenceId)
         @remote.patchMember @keyOrId(), 'mark_as_read', sequence_id: sequenceId
         @update(lastReadAt: moment(), lastReadSequenceId: sequenceId)
+
+    dismiss: ->
+      @remote.patchMember @keyOrId(), 'dismiss'
+      @update(dismissedAt: moment())
 
     move: =>
       @remote.patchMember @keyOrId(), 'move', { group_id: @groupId }

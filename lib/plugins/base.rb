@@ -4,12 +4,13 @@ module Plugins
   class NoCodeSpecifiedError < Exception; end
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
-  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental)
+  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans)
+  StaticAsset = Struct.new(:path, :filename, :standalone)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :actions, :events, :outlets, :routes, :translations, :enabled
+    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :enabled
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -18,7 +19,7 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new
+      @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
       @config = YAML.load_file([@name, 'config.yml'].join('/'))
     end
 
@@ -58,6 +59,14 @@ module Plugins
       use_directory(glob) { |path| use_asset(path) }
     end
 
+    def use_static_asset(path, filename, standalone: false)
+      @static_assets.add StaticAsset.new([@name, path].join('/'), filename, standalone)
+    end
+
+    def use_static_asset_directory(path, standalone: false)
+      Dir.entries([@name.to_s, path].join('/')).drop(2).each { |filename| use_static_asset(path, filename, standalone: standalone) }
+    end
+
     def use_translations(path, filename = :client)
       raise NoCodeSpecifiedError.new unless path
       Dir.chdir(@name.to_s) { Dir.glob("#{path}/#{filename}.*.yml").each { |path| use_translation(path) } }
@@ -70,12 +79,17 @@ module Plugins
 
     def use_component(component, outlet: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental']) }
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental'], @config['plans']) }
     end
 
     def use_client_route(path, component)
       use_component(component)
       @routes.add({ path: path, component: component.to_s.camelize(:lower) })
+    end
+
+    def use_test_route(path, &block)
+      raise NoCodeSpecifiedError.new unless block_given?
+      extend_class(DevelopmentController) { define_method(path, &block) }
     end
 
     def use_route(verb, route, action)

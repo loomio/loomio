@@ -7,8 +7,6 @@ fi:
       subject: '%{member} on kutsunut sinut liittymään ryhmään %{group_name} Loomiossa'
     to_start_group:
       subject: 'Aseta uusi Loomio-ryhmä: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} on lisännyt sinut %{which_group}-ryhmään'
     unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
   footer:
     blog: Blogi

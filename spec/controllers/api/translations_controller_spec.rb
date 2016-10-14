@@ -49,6 +49,13 @@ describe API::TranslationsController do
         expect(translatable_types).to include 'Comment'
       end
 
+      it 'does not translate an unknown language' do
+        get :inline, model: 'comment', id: comment.id, to: :wark
+        expect(response.status).to eq 422
+        json = JSON.parse(response.body)
+        expect(json['errors'].keys).to include 'language'
+      end
+
     end
   end
 

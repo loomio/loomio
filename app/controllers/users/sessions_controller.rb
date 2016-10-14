@@ -9,6 +9,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def new
     super do |user|
+      resource.remember_me = true
       @invitation = invitation_from_session
       user.email = @invitation&.recipient_email
     end

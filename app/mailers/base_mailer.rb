@@ -7,7 +7,7 @@ class BaseMailer < ActionMailer::Base
 
   add_template_helper(PrettyUrlHelper)
 
-  NOTIFICATIONS_EMAIL_ADDRESS = "notifications@#{ENV['REPLY_HOSTNAME']}"
+  NOTIFICATIONS_EMAIL_ADDRESS = "notifications@#{ENV['SMTP_DOMAIN']}"
   default :from => "Loomio <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
   before_action :utm_hash
 

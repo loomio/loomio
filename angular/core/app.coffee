@@ -57,7 +57,7 @@ angular.module('loomioApp', ['ngNewRouter',
   $analyticsProvider.withAutoBase(true);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AngularWelcomeModal, ChoosePlanModal, AbilityService, AhoyService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, ChoosePlanModal, AbilityService, AhoyService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -75,11 +75,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
     ModalService.open(GroupForm, group: -> Records.groups.build()) if $location.search().start_group?
-    ModalService.open(AngularWelcomeModal)                         if AppConfig.showWelcomeModal
     IntercomService.boot()
     MessageChannelService.subscribe()
 
   $scope.$on 'currentComponent', (event, options = {}) ->
+    Session.currentGroup = options.group
     $scope.pageError = null
     $scope.$broadcast('clearBackgroundImageUrl')
     ScrollService.scrollTo(options.scrollTo or 'h1')
@@ -94,11 +94,6 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     $scope.pageError = error
     if !AbilityService.isLoggedIn() and error.status == 403
       ModalService.open(SignInForm, preventClose: -> true)
-
-  $scope.$on 'trialIsOverdue', (event, group) ->
-    if AbilityService.canAdministerGroup(group) and AppConfig.chargify and !AppConfig.chargify.nagCache[group.key]
-      ModalService.open ChoosePlanModal, group: -> group
-      AppConfig.chargify.nagCache[group.key] = true
 
   $scope.$on 'setBackgroundImageUrl', (event, url) ->
     angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")

@@ -5,29 +5,20 @@ class TranslationService
   end
 
   def translate(model, to: I18n.locale)
-    if model.translations.to_language(to).exists?
-      translation = model.translations.to_language(to).first
-    else
-      translation = Translation.new translatable: model, language: to, fields: {}
-    end
+    translation = model.translations.find_by(language: to) ||
+                  Translation.new(translatable: model, language: to, fields: {})
 
     model.class.translatable_fields.each do |field|
       translation.fields[field.to_s] ||= @translator.translate(model.send(field), from: model.locale_field, to: to)
-    end
-    translation.save
-    translation
+    end if translation.valid?
+
+    translation.tap(&:save)
   end
 
   def self.available?
     ENV.fetch('BING_TRANSLATE_APPID', nil) &&
     ENV.fetch('BING_TRANSLATE_SECRET', nil) &&
     true # don't return the secret!
-  end
-
-  def self.can_translate?(translatable)
-    self.available? &&
-    translatable.locale_field != nil &&
-    translatable.locale_field != I18n.locale.to_s
   end
 
 end

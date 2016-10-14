@@ -121,6 +121,7 @@
   @include button-variant(white, #4185DE, transparent);
   i.fa{ color: #fff; }
 }
+
 .lmo-btn--offer {
   @include lmoBtnOffer;
 }

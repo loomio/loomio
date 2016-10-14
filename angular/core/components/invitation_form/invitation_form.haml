@@ -6,6 +6,7 @@
   .modal-body
     %label{for: "group-select", translate: "invitation_form.group"}
     %select.invitation-form__group-select.form-control#group-select{ng-model: "form.groupId", ng-required: true, ng-options: "group.id as group.fullName for group in availableGroups() | orderBy: 'fullName'", ng-change: "restoreRemoteDraft(); fetchShareableInvitation()"}
+      %option{value: "", translate: "invitation_form.group_placeholder"}
 
     %label{translate: "invitation_form.shareable_link"}
     .invitation-form__flex
@@ -17,7 +18,7 @@
     .invitation-form__email-explanation{translate: "invitation_form.email_explanation"}
 
     %label{for: "email-addresses", translate: "invitation_form.email_addresses"}
-    %textarea.invitation-form__email-addresses.form-control#email-addresses{ng-model: "form.emails", ng-required: true, msd-elastic: "true", rows: 1, placeholder: "{{ 'invitation_form.email_addresses_placeholder' | translate }}" }
+    %textarea.lmo-textarea.invitation-form__email-addresses.form-control#email-addresses{ng-model: "form.emails", ng-required: true, msd-elastic: "true", rows: 1, placeholder: "{{ 'invitation_form.email_addresses_placeholder' | translate }}" }
     %validation_errors.invitation-form__validation-errors{subject: "form", field: "emails"}
     .invitation-form__no-invitations.lmo-validation-error{ng-show: "noInvitations", translate: "invitation_form.messages.no_invitations"}
     .invitation-form__max-invitations.lmo-validation-error{ng-show: "maxInvitations()", translate: "invitation_form.messages.max_invitations"}

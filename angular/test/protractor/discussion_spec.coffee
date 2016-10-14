@@ -4,7 +4,18 @@ describe 'Discussion Page', ->
   discussionForm = require './helpers/discussion_form_helper.coffee'
   threadPage = require './helpers/thread_helper.coffee'
   flashHelper = require './helpers/flash_helper.coffee'
+  emailhelper = require './helpers/email_helper.coffee'
+  staticPage = require './helpers/static_page_helper.coffee'
   page = require './helpers/page_helper.coffee'
+
+  describe 'starting a thread via start menu', ->
+    it 'preselects current group', ->
+      page.loadPath 'setup_dashboard'
+      page.click '.sidebar__list-item-button--muted'
+      page.clickLast '.thread-preview__link'
+      page.click '.start-menu__start-button'
+      page.click '.start-menu__startThread'
+      page.expectText '.discussion-form__group-select', 'Muted Point Blank'
 
   describe 'viewing while logged out', ->
     it 'should display content for a public thread', ->
@@ -56,6 +67,17 @@ describe 'Discussion Page', ->
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
 
+  describe 'muting and unmuting a thread', ->
+    it 'lets you mute and unmute', ->
+      page.loadPath 'setup_multiple_discussions'
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-mute'
+      page.click '.mute-explanation-modal__mute-thread'
+      page.expectFlash 'Thread muted'
+      page.click '.thread-context__dropdown-button',
+                 '.thread-context__dropdown-options-unmute'
+      page.expectFlash 'Thread unmuted'
+
   describe 'move thread', ->
     it 'lets you move a thread', ->
       page.loadPath 'setup_multiple_discussions'
@@ -65,9 +87,9 @@ describe 'Discussion Page', ->
       element(By.cssContainingText('option', 'Point Break')).click()
       page.click '.move-thread-form'
       page.click '.move-thread-form__submit'
-      page.expectText '.group-theme__name--compact','Point Break'
       page.expectFlash 'Thread has been moved to Point Break'
       page.expectText '.thread-item__title', 'Patrick Swayze moved the thread from Dirty Dancing Shoes'
+      page.expectText '.group-theme__name--compact','Point Break'
 
   describe 'delete thread', ->
     beforeEach ->
@@ -195,3 +217,10 @@ describe 'Discussion Page', ->
       threadPage.selectDeleteCommentOption()
       threadPage.confirmCommentDeletion()
       expect(threadPage.activityPanel()).not.toContain('original comment right thur')
+
+  describe 'following a link in a thread email', ->
+    it 'successfully takes you to relevant comment', ->
+      page.loadPath 'setup_reply_email'
+      emailhelper.openLastEmail()
+      staticPage.click 'a'
+      page.expectText '.activity-card', 'Hello Jennifer'

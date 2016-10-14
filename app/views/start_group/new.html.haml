@@ -5,18 +5,18 @@
         .col-md-8.col-md-offset-2.col-xs-12
           %h1= t :"start_group_form.header"
           %h2= t :"start_group_form.start_making_decisions"
-          = form_for @group, url: start_group_path, html: {class: 'form-horizontal'} do |f|
+          = form_for @group_with_creator.group, url: start_group_path, html: {class: 'form-horizontal'} do |f|
             .form-group
               .col-sm-3
               .col-sm-9
-                - if @errors.any?
+                - if @group_with_creator.errors.any?
                   .form__error= t :"start_group_form.form_error"
 
             .form-group
               .col-sm-4
                 %label.control-label{for: 'group_name'}= t :"start_group_form.group_name"
               .col-sm-8
-                - if @errors.include? 'group_name'
+                - if @group_with_creator.errors.include? 'group_name'
                   .form__error= t :"start_group_form.group_name_error"
                 = f.text_field :name, class: 'form-control', id: 'group_name'
 
@@ -31,7 +31,7 @@
                 .col-sm-4
                   %label.control-label{for: 'name'}= t :"start_group_form.name"
                 .col-sm-8
-                  - if @errors.include? 'name'
+                  - if @group_with_creator.errors.include? 'name'
                     .form__error= t :"start_group_form.name_error"
                   %input.form-control{type: 'text', name: 'name', value: "#{params[:name]}", id: 'name'}
 
@@ -39,13 +39,12 @@
                 .col-sm-4
                   %label.control-label{for: 'email'}= t :"start_group_form.email"
                 .col-sm-8
-                  - if @errors.include? 'email'
+                  - if @group_with_creator.errors.include? 'email'
                     .form__error= t :"start_group_form.email_error"
                   %input.form-control{type: 'text', name: 'email', value: "#{params[:email]}", id: 'email'}
 
             .form-group
               .col-sm-8.col-sm-offset-4
                 = f.submit t(:"common.start_group"), class: 'btn btn-success btn-block', :data => { :disable_with => t(:"common.start_group") }, id: 'sign-up-submit'
-                %p.small= t :"start_group_form.terms_html", link: terms_of_service_path
-
-            %p.pricing= t :"start_group_form.pricing_html", link: pricing_path
+                %p
+                  %small= t :"start_group_form.terms_html", link: terms_of_service_path

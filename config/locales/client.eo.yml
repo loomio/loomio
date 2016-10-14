@@ -57,7 +57,6 @@ eo:
   sidebar:
     recent: Lastaj
     unread: Nelegitaj
-    explore: Esplori publikajn grupojn
     edit_profile: Redakti profilon
     email_settings: Retpoŝtaj agordoj
     help: Helpo
@@ -150,7 +149,6 @@ eo:
       or: aŭ
     no_threads:
       show_all: Vi ne havas lastatempajn fadenojn.
-      show_participating: Vi laste ne partoprenis en ajnaj fadenoj.
     view_recent: Ĉu vidi ĉiujn lastatempajn fadenojn?
     mark_as_read: Marki kiel legita
     filtering:
@@ -316,7 +314,18 @@ eo:
     positions_disagree_description: '<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido.'
     positions_block_description: '<span>Blokado</span> volas diri ke vi serioze obĵetas kaj ke vi tre malfeliĉos se ĉi tiu propono estos efektigata.'
     start_discussion: Komence de egaĝiĝa diskuto
-    start_discussion_html: "<p>Kiam vi starigas diskuton, certiĝu ke la titolo indikas malmultvorte pri kio ĝi temas.  \nUzu la Kunteksto-Panelo por doni  ĉ.iujn fonajn informojn bezonatajn por ke la grupo havu produktivan kaj bone informitan diskuton,</p>\n<p>Dum la diskutado, la Kunteksto-Panelo povas esti ĝisdatigita kiam novaj informoj aperas.  Vi povs uzi tiun ĉ.i spacon ne nur por klarigi la temon, sed ankaŭ  por dividi utilajn informfontojn, resumi la diksuton dum ĝi progresas aŭ  por skizi la decido-faran proceduron uzatan de la grupo..</p>\n"
+    start_discussion_html: >
+      <p>Kiam vi starigas diskuton, certiĝu ke la titolo indikas malmultvorte pri
+      kio ĝi temas.
+
+      Uzu la Kunteksto-Panelo por doni  ĉ.iujn fonajn informojn bezonatajn por ke
+      la grupo havu produktivan kaj bone informitan diskuton,</p>
+
+      <p>Dum la diskutado, la Kunteksto-Panelo povas esti ĝisdatigita kiam novaj
+      informoj aperas.  Vi povs uzi tiun ĉ.i spacon ne nur por klarigi la temon,
+      sed ankaŭ  por dividi utilajn informfontojn, resumi la diksuton dum ĝi
+      progresas aŭ  por skizi la decido-faran proceduron uzatan de la
+      grupo..</p>
     start_proposal: Verkante klaran proponon
     start_proposal_html: >
       <p> Farante la titolon klara kaj mallonga, homoj tuj scios kion signifas

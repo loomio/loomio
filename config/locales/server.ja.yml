@@ -11,14 +11,10 @@ ja:
       subject: '%{member} が Loomioの %{group_name} にあなたを招待しました'
     to_start_group:
       subject: '新しいLoomioグループを立ち上げる： %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who}　が　%{which_group}　にあなたを追加しました'
-      content: '%{who} があなたをLoomioの %{which_group} に追加しました。グループに行くにはここをクリック：'
     unsubscribe: 購読をやめる、またはEメール設定を変更する：
     unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
     view_comment: Loomioのコメントを見るにはここをクリックしてください
     view_discussion: このディスカッションを見るにはここをクリックしてください
-    view_group: Loomioのグループを見るにはここをクリックしてください
     view_proposal: Loomioでこの提案を見る
     create_proposal:
       intro: あなたのいるLoomioグループで新しい提案が作成されました
@@ -28,21 +24,10 @@ ja:
       heading: あなたのLoomioイベント
       intro: 過去24時間にあなたのLoomioグループで起こったことを表示
       subject: Loomio - 過去24時間の要約
-    group_membership_approved:
-      intro: '%{group_name}　というLoomio グループへのメンバーリクエストが承認されました。'
-    invitation:
-      hi: 'こんにちは %{name}、'
-      intro: '下のリンクをクリックしてあなたのグループ %{group_name} を立ち上げてください：'
-      closing_message: 何か質問があったり、あなたを助けるために私たちにできることがあるなら、是非お聞きしたいです　ーただこのメールに返信してください
-      thanks: |
-        ありがとう！
-        Loomioチーム
     membership_request:
       intro: '%{name}  (%{email}) はあなたのLoomioグループのうち一つのグループへのアクセスを要求しました'
       subject: ' %{who}  が %{which_group} に参加するようにお願いしています'
       view_group: ここでリクエストを承認または拒否できます
-    new_motion_created:
-      context: '%{author} は  %{group_full_name} で提案を作成しました：'
     proposal_closed:
       specify_outcome_and_notify_group: 結論を出してあなたのグループに送りましょう！
       specify_outcome_and_notify_group_html: 結論を出してあなたのグループに送りましょう！

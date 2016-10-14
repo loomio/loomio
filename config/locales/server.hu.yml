@@ -13,17 +13,11 @@ hu:
       subject: '%{member} mehívott hogy kapcsolódj a %{group_name} csoporthoz a Loomio-n'
     to_start_group:
       subject: 'Állítsd be az új Loomio csoportodat: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} hozzáadott a %{which_group} csoporthoz'
-      content: '%{who} hozzáadott a %{which_group} a Loomio-n. Kattints ide, hogy belépj a csoportba:'
     unsubscribe: 'Leiratkozás vagy az e-mail beállítások megváltoztatása:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, hogy leiratkozz vagy megváltoztasd az e-mail beállításaidat."
     view_comment: 'Kattints ide, hogy megnézd a hozzászólást a Loomión.'
     view_discussion: Ide kattintva nézheted meg ezt a témát
-    view_group: 'Kattints ide, hogy megnézd a csoportot a Loomión.'
     view_proposal: Nézd meg ezt a javaslatot a Loomio-n
-    create_discussion:
-      intro: '%{who} megbeszélést indított a %{which_group} csoportban:'
     create_proposal:
       intro: Új javaslatot hoztak létre egy Loomio csoportodban.
       closes_in: Lezárul
@@ -39,26 +33,13 @@ hu:
       thanks_for_reading: 'Köszönjük az elolvasást, kellemes napot!'
       marked_as_read_success: Minden olvasottként van jelölve
     comment_replied_to:
-      context: '%{author_name} válaszolt a hozzászólásodra a "%{discussion_title}" című vitában.'
       subject: '%{who} válaszolt a hozzászólásodra a %{which} csoportban, a Loomion'
-    group_membership_approved:
-      intro: "Jóváhagták a kérésedet, hogy csatlakozz a '%{group_name}' Loomio csoporthoz."
-    invitation:
-      hi: 'Helló %{name}!'
-      intro: 'Klikk az alábbi linkre, hogy beállítsd az új Loomio csoportodat: %{group_name}'
-      closing_message: 'Ha bármi kérdésed van vagy bármiben segíthetünk, hogy elindítsd és működtesd, írj nekünk bátran - csak válaszolj erre az e-mailre.'
-      thanks: |
-        Köszi!
-        A Loomio Csapat
     membership_request:
       intro: '%{name} (%{email}) hozzáférést kért egy Loomio csoportodhoz.'
       subject: '%{who} kérte hogy csatlakozhasson a %{which_group} csoporthoz'
       view_group: Jóváhagyhatod vagy elvetheted a kérelmet itt.
-    mentioned:
-      context: '%{author_name} megemlített téged ebben a megbeszélésben: "%{discussion_title}"'
     new_motion_created:
       subject: 'Javaslat: %{proposal_title}'
-      context: '%{author} létrehozott egy javaslatot a %{group_full_name} csoportban:'
     proposal_closed:
       proposal_has_closed: Ez a javaslat lezárult.
       specify_outcome_and_notify_group: 'Készíts egy összegzést és küldd ki a tagoknak!'
@@ -80,12 +61,10 @@ hu:
       turn_on_notifications_text: 'Emailek bekapcsolása a további aktivitások jelzéséhez ebben a vitában: %{url}'
       change_email_preferences_html: "Változtasd meg <a href='%{email_preferences_url}'>email beállításaidat</a> a leíratkozáshoz ezekről a levelekről."
       change_preferences: 'E-mail beállítások megváltoztatása:'
-      new_motion: '%{who} javaslata:'
       motion_closing_soon: '24 órán belül lezáródó javaslat:'
       proposal_closed: 'A javaslat lezárva:'
       specify_outcome_html: "A javaslatod lezárult. <a href='%{link}'>Készíts egy összegzést</a> hogy mindenki megtudja az eredményt."
       specify_outcome: 'A javaslatod lezárult. Készíts egy összegzést hogy mindenki megtudja az eredményt:'
-      outcome_created: '%{who} összegezte egy javaslat eredményét:'
       you_agreed: 'Te %{past_tense_position}'
   footer:
     about: Rólunk

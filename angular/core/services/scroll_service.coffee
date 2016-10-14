@@ -6,5 +6,6 @@ angular.module('loomioApp').factory 'ScrollService', ($timeout) ->
       elem      = document.querySelector(target)
       container = document.querySelector('.lmo-main-content')
       if elem && container
-        angular.element(container).scrollToElement(elem, offset, speed)
+        angular.element(container).scrollToElement(elem, offset, speed).then ->
+          angular.element(window).triggerHandler('checkInView')
         elem.focus()

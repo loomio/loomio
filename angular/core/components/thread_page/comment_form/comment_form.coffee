@@ -37,7 +37,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.$on 'proposalCreated', $scope.listenForSubmitOnEnter
 
     $scope.init = ->
-      $scope.comment = Records.comments.build(discussionId: $scope.discussion.id)
+      $scope.comment = Records.comments.build(discussionId: $scope.discussion.id, authorId: Session.user().id)
       $scope.submit = FormService.submit $scope, $scope.comment,
         draftFields: ['body']
         submitFn: $scope.comment.save
@@ -46,20 +46,16 @@ angular.module('loomioApp').directive 'commentForm', ->
           name: successMessageName
         successCallback: $scope.init
       $scope.listenForSubmitOnEnter()
+      $scope.$broadcast 'commentFormInit', $scope.comment
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
+      $scope.comment.parentAuthorName = parentComment.authorName()
       ScrollService.scrollTo('.comment-form__comment-field')
 
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
     AttachmentService.listenForPaste $scope
     MentionService.applyMentions $scope, $scope.comment
-
-    $scope.$on 'disableAttachmentForm', -> $scope.submitIsDisabled = true
-    $scope.$on 'enableAttachmentForm',  -> $scope.submitIsDisabled = false
-    $scope.$on 'attachmentRemoved', (event, attachment) ->
-      ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachment.id), 1
-      attachment.destroy() unless _.contains $scope.comment.attachmentIds, attachment.id
+    AttachmentService.listenForAttachments $scope, $scope.comment

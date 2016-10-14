@@ -16,6 +16,7 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'actor', from: 'users'
       @belongsTo 'version'
+      @hasMany  'notifications'
 
     delete: ->
       @deleted = true
@@ -25,3 +26,6 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
 
     model: ->
       @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
+
+    beforeRemove: ->
+      _.invoke(@notifications(), 'remove')

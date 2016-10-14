@@ -11,10 +11,11 @@ module Plugins
         next unless plugin.enabled
 
         plugin.actions.map(&:call)
-        plugin.assets.map  { |asset|  save_asset(asset) }
-        plugin.outlets.map { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
-        plugin.routes.map  { |route|  save_route(route) }
-        plugin.events.map  { |events| events.call(EventBus) }
+        plugin.assets.map        { |asset|  save_asset(asset) }
+        plugin.static_assets.map { |asset|  save_static_asset(asset) }
+        plugin.outlets.map       { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
+        plugin.routes.map        { |route|  save_route(route) }
+        plugin.events.map        { |events| events.call(EventBus) }
         plugin.installed = true
       end
       save_plugin_yaml
@@ -32,11 +33,29 @@ module Plugins
       }
     end
 
+    def self.static_assets
+      @@static_assets ||= begin
+        assets = active_plugins.map(&:static_assets).reduce(&:merge).reject(&:standalone).map(&:filename)
+        {
+          css: assets.select { |filename| ['scss', 'css'].include?  filename.split('.').last },
+          js:  assets.select { |filename| ['js', 'coffee'].include? filename.split('.').last }
+        }
+      end
+    end
+
     def self.save_asset(asset)
       ext = asset.split('.').last
       plugin_yaml[ext] = Array(plugin_yaml[ext]) | Array(asset)
     end
     private_class_method :save_asset
+
+    def self.save_static_asset(asset)
+      assets = Rails.application.config.assets
+      path   = Rails.root.join('plugins', asset.path).to_s
+      assets.precompile << asset.filename if asset.standalone && !assets.precompile.include?(asset.filename)
+      assets.paths      << path           unless assets.paths.include?(path)
+    end
+    private_class_method :save_static_asset
 
     def self.save_route(route)
       Loomio::Application.routes.prepend { get route[:path] => 'application#boot_angular_ui' }

@@ -17,7 +17,7 @@
     %link{href: client_asset_path(:"print.min.css"), rel: 'stylesheet', media: 'print'}
 
     = render 'angular/metadata'
-    = render 'application/google_analytics'
+    = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
     = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}

@@ -24,7 +24,6 @@ ml:
     delete_comment: അഭിപ്രായം നീക്കം ചെയ്യുക
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
   sidebar:
-    explore: പൊതുവായ ഗ്രൂപ്പുകൾ സന്ദർശിക്കുക
     email_settings: ഈമെയിൽ  ക്രമീകരണങ്ങള്‍
     help: സഹായം
     sign_out: പുറത്തു കടക്കുക

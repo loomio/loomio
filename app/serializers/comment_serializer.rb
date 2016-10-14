@@ -10,4 +10,12 @@ class CommentSerializer < ActiveModel::Serializer
   def parent_author_name
     object.parent.author_name if object.parent
   end
+
+  def include_comment_relations?
+    !Hash(scope)[:skip_comment_relations]
+  end
+  alias :include_mentioned_usernames? :include_comment_relations?
+  alias :include_likers?              :include_comment_relations?
+  alias :include_attachments?         :include_comment_relations?
+
 end
