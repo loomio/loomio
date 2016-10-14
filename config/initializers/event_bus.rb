@@ -22,7 +22,8 @@ EventBus.configure do |config|
 
   # send bulk emails after events
   Event::BULK_MAIL_KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event| SendBulkEmailJob.perform_later(event.id) }
+    delay = ENV.fetch('BULK_MAIL_DELAY', 0).to_i.seconds
+    config.listen("#{kind}_event") { |event| SendBulkEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
   # send individual emails after thread events
