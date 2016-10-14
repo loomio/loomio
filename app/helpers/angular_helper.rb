@@ -34,7 +34,6 @@ module AngularHelper
       baseUrl:             root_url,
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
-      chargify:            app_config_chargify,
       inlineTranslation: {
         isAvailable:       TranslationService.available?,
         supportedLangs:    Translation::SUPPORTED_LANGUAGES
@@ -55,26 +54,6 @@ module AngularHelper
         ({ name: :google,   href: user_google_omniauth_authorize_path   } if ENV['OMNI_CONTACTS_GOOGLE_KEY']),
         ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_ID'])
       ].compact
-    }
-  end
-
-  def app_config_chargify
-    return unless Rails.application.secrets.chargify_app_name
-    {
-      appName: Rails.application.secrets.chargify_app_name,
-      host: "https://#{Rails.application.secrets.chargify_app_name}.chargify.com/",
-      plans: {
-        standard: {
-          name: Rails.application.secrets.chargify_standard_plan_name,
-          path: "subscribe/#{Rails.application.secrets.chargify_standard_plan_key}/#{Rails.application.secrets.chargify_standard_plan_name}",
-        },
-        plus: {
-          name: Rails.application.secrets.chargify_plus_plan_name,
-          path: "subscribe/#{Rails.application.secrets.chargify_plus_plan_key}/#{Rails.application.secrets.chargify_plus_plan_name}"
-        }
-      },
-      donation_url: Rails.application.secrets.chargify_donation_url,
-      nagCache: {}
     }
   end
 

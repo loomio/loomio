@@ -20,7 +20,7 @@ module Plugins
       @name = name
       @translations = {}
       @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
-      @config = YAML.load_file([@name, 'config.yml'].join('/'))
+      @config = YAML.load(ERB.new(File.read([@name, 'config.yml'].join('/'))).result)
     end
 
     def enabled=(value)

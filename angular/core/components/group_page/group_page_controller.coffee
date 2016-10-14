@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
 
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
@@ -75,8 +75,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     Session.user().isAdminOf(@group)
 
   @handleChoosePlanModal = ->
-    if @shouldShowChoosePlanModal()
-      ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
+    # if @shouldShowChoosePlanModal()
+    #   ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
 
   @shouldShowWelcomeModal = ->
     !@shouldShowChoosePlanModal() and
