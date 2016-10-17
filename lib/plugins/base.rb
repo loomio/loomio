@@ -20,7 +20,7 @@ module Plugins
       @name = name
       @translations = {}
       @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
-      @config = YAML.load_file([@name, 'config.yml'].join('/'))
+      @config = File.exists?(config_file_path) ? YAML.load(ERB.new(File.read(config_file_path)).result) : {}
     end
 
     def enabled=(value)
@@ -135,6 +135,10 @@ module Plugins
     end
 
     private
+
+    def config_file_path
+      [@name, 'config.yml'].join('/')
+    end
 
     def use_translation(path)
       @translations.deep_merge! YAML.load_file(path)
