@@ -70,25 +70,21 @@ ActiveAdmin.register Group do
     column :archived_at
     column :analytics_enabled
     column :enable_experiments
-    column "Subscription" do |group|
-      group.subscription.kind if group.subscription
-    end
+    # column "Subscription" do |group|
+    #   group.subscription.kind if group.subscription
+    # end
     actions
   end
 
   show do |group|
     attributes_table do
       row :group_request
-      row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
-      row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
-      row('Subscription status') do |group| group.subscription.kind if group.subscription end
+      # row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
+      # row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
+      # row('Subscription status') do |group| group.subscription.kind if group.subscription end
       group.attributes.each do |k,v|
         row k, v.inspect
       end
-    end
-
-    panel('Subscription links') do
-      table
     end
 
     panel("Group Admins") do
