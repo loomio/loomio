@@ -8,8 +8,7 @@ angular.module('loomioApp').factory 'ChoosePlanModal', ->
       ModalService.open ConfirmGiftPlanModal, group: -> $scope.group
 
     $scope.choosePaidPlan = (kind) ->
-      $window.location = "#{AppConfig.chargify.host}#{AppConfig.chargify.plans[kind].path}?#{ChargifyService.encodedParams($scope.group)}"
+      $window.open "#{AppConfig.chargify.host}#{AppConfig.chargify.plans[kind].path}?#{ChargifyService.encodedParams($scope.group)}"
 
     $scope.openIntercom = ->
       IntercomService.contactUs()
-      $scope.$close()
