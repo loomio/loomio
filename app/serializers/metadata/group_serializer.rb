@@ -6,6 +6,10 @@ class Metadata::GroupSerializer < ActiveModel::Serializer
     object.full_name
   end
 
+  def description
+    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description)
+  end
+
   def image_url
     object.logo.url
   end
