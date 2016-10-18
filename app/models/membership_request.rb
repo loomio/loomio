@@ -8,6 +8,8 @@ class MembershipRequest < ActiveRecord::Base
 
   validates :group, presence: true
 
+  validates_length_of :introduction, maximum: 250
+
   belongs_to :group
   belongs_to :requestor, class_name: 'User'
   belongs_to :user, foreign_key: 'requestor_id' # duplicate relationship for eager loading
