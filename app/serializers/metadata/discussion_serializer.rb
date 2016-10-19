@@ -1,4 +1,4 @@
-require 'redcarpet/strip_down'
+require 'redcarpet/render_strip'
 
 class Metadata::DiscussionSerializer < ActiveModel::Serializer
   attributes :title, :description, :image_url

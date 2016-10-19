@@ -1,4 +1,4 @@
-require 'redcarpet/strip_down'
+require 'redcarpet/render_strip'
 
 class Metadata::MotionSerializer < ActiveModel::Serializer
   attributes :title, :description
