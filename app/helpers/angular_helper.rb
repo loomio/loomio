@@ -24,7 +24,7 @@ module AngularHelper
       flash:               flash.to_h,
       currentUserId:       current_user_or_visitor.id,
       currentUserLocale:   current_user_or_visitor.locale,
-      currentUserData:     CurrentUserData.new(current_user_or_visitor).data,
+      currentUserData:     CurrentUserData.new(current_user_or_visitor, user_is_restricted?).data,
       currentUrl:          request.original_url,
       canTranslate:        TranslationService.available?,
       permittedParams:     PermittedParamsSerializer.new({}),

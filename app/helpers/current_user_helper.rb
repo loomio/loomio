@@ -3,6 +3,10 @@ module CurrentUserHelper
     @current_user_or_visitor ||= current_user || restricted_user || LoggedOutUser.new
   end
 
+  def user_is_restricted?
+    current_user_or_visitor == restricted_user
+  end
+
   private
 
   def restricted_user
