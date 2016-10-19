@@ -12,6 +12,7 @@ CurrentUserData = Struct.new(:user, :restricted) do
   private
 
   def serializer_scope
+    return {} unless user.is_logged_in?
     {
       cache: {
         memberships:   memberships,
