@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProposalRedirectController', ($router, $rootScope, $routeParams, $location, Records, LmoUrlService) ->
+angular.module('loomioApp').controller 'ProposalRedirectController', ($router, $timeout, $rootScope, $routeParams, $location, Records, LmoUrlService) ->
   $rootScope.$broadcast('currentComponent', 'proposalRedirect')
   Records.proposals.findOrFetchById($routeParams.key).then (proposal) =>
     Records.discussions.findOrFetchById(proposal.discussionId).then (discussion) =>
@@ -6,7 +6,7 @@ angular.module('loomioApp').controller 'ProposalRedirectController', ($router, $
       if $location.search().position?
         params.position = $location.search().position
         $location.search 'position', null
-      $location.path LmoUrlService.proposal proposal, params
+      $timeout -> $location.path LmoUrlService.proposal proposal, params
   , (error) ->
     $rootScope.$broadcast('pageError', error)
 
