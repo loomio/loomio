@@ -28,6 +28,10 @@ class LoggedOutUser
     Membership.none
   end
 
+  def notifications
+    Notification.none
+  end
+
   def locale
     I18n.locale
   end
