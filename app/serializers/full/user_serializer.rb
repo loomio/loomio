@@ -17,7 +17,7 @@ class Full::UserSerializer < UserSerializer
   end
 
   def unread_threads
-    from_scope :unread_threads
+    from_scope :unread
   end
 
   def notifications

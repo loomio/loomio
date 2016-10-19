@@ -17,7 +17,8 @@ CurrentUserData = Struct.new(:user) do
         memberships:   memberships,
         notifications: notifications,
         unread:        unread
-      }
+      },
+      reader_cache: DiscussionReaderCache.new(user: user, discussions: unread)
     }
   end
 
