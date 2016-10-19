@@ -4,7 +4,7 @@ module CurrentUserHelper
   end
 
   def user_is_restricted?
-    current_user_or_visitor == restricted_user
+    current_user.nil? && current_user_or_visitor == restricted_user
   end
 
   private
