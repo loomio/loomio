@@ -18,7 +18,6 @@ angular.module('loomioApp').controller 'InboxPageController', ($scope, $rootScop
     _.each @groups(), (group) =>
       @views.groups[group.key] = ThreadQueryService.groupQuery(group, filter: filters)
   $scope.$on 'currentUserMembershipsLoaded', @init
-  $scope.$on 'currentUserInboxLoaded', @init
   @init()
 
   @hasThreads = ->

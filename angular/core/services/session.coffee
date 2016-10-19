@@ -6,20 +6,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
     data.users.push(data.current_user)
     Records.import(data)
 
-    _.merge AppConfig,
-      currentUserId: data.current_user.id
-      inboxLoaded: false
-      notificationsLoaded: false
-      membershipsLoaded: true
-
-    if !data.current_user.restricted?
-      Records.discussions.fetchInbox().then ->
-        AppConfig.inboxLoaded = true
-        $rootScope.$broadcast 'currentUserInboxLoaded'
-
-      Records.notifications.fetchMyNotifications().then ->
-        AppConfig.notificationsLoaded = true
-        $rootScope.$broadcast 'notificationsLoaded'
+    _.merge AppConfig, currentUserId: data.current_user.id
 
     $translate.use(@user().locale)
     $rootScope.$broadcast 'loggedIn', @user()

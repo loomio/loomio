@@ -12,4 +12,3 @@
         %li.selector-list-item.media{ng-class: "{'lmo-active': !notification.viewed}", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
           %a.selector-list-item-link{class: "navbar-notifications__{{notification.kind()}}", lmo-href-for: "notification.actionModel()", lmo-href-action: "{{notification.actionPath()}}", ng-click: "broadcastThreadEvent(notification)"}
             .blank{ng-include: "'generated/components/notifications/' + notification.kind() + '.html'"}
-      %loading{ng-if: "loading()"}
