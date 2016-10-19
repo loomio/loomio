@@ -5,7 +5,7 @@ class Metadata::DiscussionSerializer < ActiveModel::Serializer
   root false
 
   def description
-    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description)
+    Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(object.description.to_s)
   end
 
   def image_url
