@@ -4,16 +4,11 @@ class Full::UserSerializer < UserSerializer
              :default_membership_volume, :experiences, :is_coordinator
 
   has_many :memberships, serializer: MembershipSerializer, root: :memberships
-  has_many :groups, serializer: GroupSerializer, root: :groups
   has_many :unread_threads, serializer: DiscussionSerializer, root: :discussions
   has_many :notifications, serializer: NotificationSerializer, root: :notifications
 
   def memberships
     from_scope :memberships
-  end
-
-  def groups
-    from_scope :groups
   end
 
   def unread_threads
