@@ -1,7 +1,7 @@
 CurrentUserData = Struct.new(:user, :restricted) do
   def data
     if restricted
-      Resricted::UserSerializer.new(user).as_json
+      Restricted::UserSerializer.new(user).as_json
     else
       Full::UserSerializer.new(user, scope: serializer_scope, root: :current_user).as_json.tap do |json|
         json[:current_user].except!(:group_ids, :membership_ids)
