@@ -64,7 +64,9 @@ module Plugins
     end
 
     def use_static_asset_directory(path, standalone: false)
-      Dir.entries([@name.to_s, path].join('/')).drop(2).each { |filename| use_static_asset(path, filename, standalone: standalone) }
+      Dir.entries([@name.to_s, path].join('/'))
+         .reject { |p| ['..', '.'].include?(p) }
+         .each { |filename| use_static_asset(path, filename, standalone: standalone) }
     end
 
     def use_translations(path, filename = :client)
