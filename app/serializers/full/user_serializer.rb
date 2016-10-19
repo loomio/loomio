@@ -35,6 +35,6 @@ class Full::UserSerializer < UserSerializer
   private
 
   def from_scope(field)
-    Array(Hash(scope).dig(:cache, field))
+    Array(Hash(scope)[field])
   end
 end
