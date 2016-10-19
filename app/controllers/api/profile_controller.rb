@@ -38,20 +38,24 @@ class API::ProfileController < API::RestfulController
 
   private
 
-  def respond_with_resource
-    if resource.errors.empty?
-      render json: CurrentUserData.new(resource).data  # always respond with the current user
-    else
-      respond_with_errors
-    end
-  end
-
   def resource
     @user || current_user
   end
 
   def current_user_params
     { user: current_user, actor: current_user, params: permitted_params.user }
+  end
+
+  def serializer_root
+    :users
+  end
+
+  def resource_serializer
+    if current_user.is_logged_in?
+      Full::UserSerializer
+    else
+      Restricted::UserSerializer
+    end
   end
 
   def resource_class
