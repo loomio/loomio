@@ -46,20 +46,20 @@ class API::ProfileController < API::RestfulController
     { user: current_user, actor: current_user, params: permitted_params.user }
   end
 
-  def serializer_root
-    :users
+  def resource_class
+    User
   end
 
   def resource_serializer
-    if current_user.is_logged_in?
+    if current_user == restricted_user
       Full::UserSerializer
     else
       Restricted::UserSerializer
     end
   end
 
-  def resource_class
-    User
+  def serializer_root
+    :users
   end
 
   def service
