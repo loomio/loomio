@@ -36,4 +36,8 @@ CurrentUserData = Struct.new(:user, :restricted) do
   def unread
     @unread ||= Queries::VisibleDiscussions.new(user: user).not_muted.unread.sorted_by_latest_activity
   end
+
+  def readers
+    @readers ||= DiscussionReaderCache.new(user: user, discussions: unread)
+  end
 end
