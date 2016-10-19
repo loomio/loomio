@@ -38,6 +38,14 @@ class API::ProfileController < API::RestfulController
 
   private
 
+  def respond_with_resource
+    if resource.errors.empty?
+      render json: CurrentUserData.new(resource).data  # always respond with the current user
+    else
+      respond_with_errors
+    end
+  end
+
   def resource
     @user || current_user
   end
@@ -48,18 +56,6 @@ class API::ProfileController < API::RestfulController
 
   def resource_class
     User
-  end
-
-  def resource_serializer
-    if current_user == restricted_user
-      Restricted::UserSerializer
-    else
-      Full::UserSerializer
-    end
-  end
-
-  def serializer_root
-    :users
   end
 
   def service
