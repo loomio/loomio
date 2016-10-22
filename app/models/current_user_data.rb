@@ -34,7 +34,7 @@ CurrentUserData = Struct.new(:user, :restricted) do
   end
 
   def unread
-    @unread ||= Queries::VisibleDiscussions.new(user: user).not_muted.unread.sorted_by_latest_activity
+    @unread ||= Queries::VisibleDiscussions.new(user: user).recent.unread.not_muted.sorted_by_latest_activity
   end
 
   def readers
