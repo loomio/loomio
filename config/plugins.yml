@@ -7,6 +7,7 @@ loomio_org_plugin:
 
 loomio_tags:
   repo:         loomio/loomio_tags
+  branch:       tags-refactor
   experimental: true
 
 loomio_truncate_comment:
