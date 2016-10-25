@@ -39,7 +39,7 @@
     %star_toggle{thread: "thread", aria-hidden: "true"}
 
   .thread-preview__actions.hidden-xs{ng-if: "thread.discussionReaderId"}
-    %button.thread-preview__dismiss{ng-click: "dismiss()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
+    %button.thread-preview__dismiss{ng-click: "dismiss()", ng-disabled: "!thread.isUnread()", ng-class: "{disabled: !thread.isUnread()}", title: "{{'dashboard_page.dismiss' | translate }}"}>
       %i.fa.fa-check>
     %button.thread-preview__mute{ng-click: "muteThread()", ng-show: "!thread.isMuted()", title: "{{ 'volume_levels.mute' | translate }}", aria-label: "{{ 'volume_levels.mute' | translate }}" }>
       %i.fa.fa-volume-off

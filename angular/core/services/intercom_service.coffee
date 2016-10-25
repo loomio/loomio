@@ -69,7 +69,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
 
     contactUs: ->
       if @available()
-        $window.Intercom.public_api.showNewMessage()
+        $window.Intercom('showNewMessage')
       else
         $window.open LmoUrlService.contactForm(), '_blank'
 

@@ -63,6 +63,7 @@
         %a.thread-context__edit-link.lmo-card-minor-action.lmo-no-print{href: "", ng-click: "threadPage.editThread()", translate: "thread_context.edit_thread", ng-if: "threadPage.canEditThread()"}
 
     .lmo-thread-column-right
+      %outlet{name: "before_thread_column_right", model: "threadPage.discussion"}
       %section.start-proposal-card.lmo-no-print{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.canStartProposal()", aria-label: "{{ 'start_proposal_card.title' | translate }}"}
         %h2.lmo-card-heading{translate: "common.models.proposal"}
         .lmo-placeholder.lmo-hint-text.table-cell{translate: "start_proposal_card.helptext"}
@@ -73,7 +74,7 @@
       %members_card{group: "threadPage.discussion.group()"}
 
     .lmo-thread-column-left
-      %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.activeCommentId"}
+      %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId"}
       %comment_form.lmo-no-print{discussion: "threadPage.discussion"}
       %outlet{name: "thread-page-column-right"}
 
