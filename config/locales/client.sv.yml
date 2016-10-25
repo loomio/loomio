@@ -90,8 +90,6 @@ sv:
     options_label: Alternativ
     options:
       label: Alternativ
-    leave_group:
-      title: Lämna gruppen
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
@@ -100,18 +98,7 @@ sv:
     name_label: Namn
     coordinator_label: Koordinator
     remove_member_label: Ta bort
-    remove_membership:
-      submit: Ta bort
   profile_page:
-    change_picture:
-      use_initials: Använd initialer
-    change_password:
-      current_password_label: Nuvarande lösenord
-      new_password_label: Nytt lösenord
-      password_confirmation_label: Konfirmera det nya lösenordet
-    deactivate_user:
-      title: Avaktivera kontot
-      submit: Avaktivera kontot
     profile: Profil
     picture_label: Bild
     name_label: Namn

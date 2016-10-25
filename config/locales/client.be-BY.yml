@@ -115,8 +115,6 @@ be-BY:
     options_label: Опцыі
     options:
       label: Опцыі
-    leave_group:
-      title: Выйсці з групы
     volume:
       loud: Дасылаць лісты пра ўсе новыя падзеі.
       quiet: Не дасылаць лісты пра гэту групу. Яе дзейнасць будзе бачна на галоўнай старонцы.
@@ -135,24 +133,11 @@ be-BY:
     name_label: Імя
     coordinator_label: Каардынатар
     remove_member_label: Выдаліць
-    remove_membership:
-      title: Выдаліць удзельніка
-      submit: Выдаліць
   pending_invitations_card:
     heading: Актуальныя запрашэнні
   cancel_invitation_form:
     cancel: Не
   profile_page:
-    change_picture:
-      use_initials: Выкарыстоўваць ініцыялы
-      use_gravatar: Выкарыстоўваць gravatar
-    change_password:
-      current_password_label: Дзейсны пароль
-      new_password_label: Новы пароль
-      password_confirmation_label: Пацвердзіць новы пароль
-    deactivate_user:
-      title: Адключыць акаунт
-      submit: Адключыць акаунт
     profile: Профіль
     picture_label: Фота
     name_label: Імя

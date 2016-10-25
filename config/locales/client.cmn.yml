@@ -50,18 +50,12 @@ cmn:
     options_label: 选项
     options:
       label: 选项
-    leave_group:
-      title: 离开团队
   membership_requests_page:
     approve: 批准
   memberships_page:
     members: 成员
     name_label: 名字
   profile_page:
-    change_password:
-      current_password_label: 当前密码
-      new_password_label: 新的密码
-      password_confirmation_label: 确认新密码
     picture_label: 图片
     name_label: 名字
     email_label: 邮件

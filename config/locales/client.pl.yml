@@ -249,16 +249,6 @@ pl:
     options_label: Opcje
     options:
       label: Opcje
-    deactivate_group:
-      title: Deaktywacja Grupy
-      question: Czy na pewno chcesz deaktywować tę grupę?
-      submit: 'Tak, Deaktywuj tę grupę'
-    leave_group:
-      title: Opuść grupę
-      question: Czy na pewno chcesz opuścić tę grupę?
-      submit: 'Tak, wypisz mnie z grupy'
-      cannot_leave_group: Nie możesz opuścić tej grupy ponieważ jesteś jej ostatnim koordynatorem. Musisz wybrać innego koordynatora lub wyłączyć grupę.
-      add_coordinator: Dodanie koordynatora
     volume:
       loud: Wyślij wiadomość jeśli pojawi się aktywność.
       loud_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Głośno. Będziesz otrzymywać wiadomości w przypadku każdej aktywności.
@@ -287,34 +277,12 @@ pl:
       remove_member_success: 'Usunięto {{name}}'
       make_admin_success: '{{name}} został/a koordynatorem'
       remove_admin_success: '{{name}} przestał/a być koordynatorem'
-    remove_membership:
-      title: Usunięcie członka
-      question: 'Czy na pewno chcesz usunąć {{name}} z grupy {{group}}?'
-      submit: Usunięcie
   profile_page:
     messages:
       updated: Profil zmieniony
       picture_changed: Zdjęcie profilowe zmienione
       password_changed: Hasło zmienione
       deactivated: Konto wyłączone
-    change_picture:
-      title: Zmiana zdjęcia
-      helptext: 'Możesz przesłać swoje wasne zdjęcie profilowe lub jeśli masz konto <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> możesz go użyć.'
-      use_initials: Użyj inicjałów
-      use_gravatar: Użyj gravatar
-      use_uploaded: Prześlij nowe zdjęcie
-    change_password:
-      title: Zmiana Hasła
-      helptext: 'Hasła muszą mieć conajmniej 8 znaków. Używanie potocznych wyrazów, takie jak "hasło" są zabronione.'
-      current_password_label: Obecne hasło
-      new_password_label: Nowe hasło
-      password_confirmation_label: Potwierdź nowe hasło
-      submit: Zmiana hasła
-    deactivate_user:
-      title: Deaktywacja konta
-      question: Czy powiesz nam czemu wyłączasz swoje konto?
-      placeholder: 'Odpowiedź na to pytanie jest opcjonalna. Każda informacja jaką nam prześlesz pomoże nam poprawić Loomio :)'
-      submit: Deaktywacja konta
     change_picture_link: Zmiana zdjęcia
     change_password_link: Zmiana hasła
     deactivate_user_link: Wyłączenie hasła...

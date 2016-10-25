@@ -1,1 +1,15 @@
-fr: {}
+fr:
+  navigation:
+    help: Aide
+    developers: Développeurs
+    about: A propos
+    contact: Contact
+    start_group: Commencer un groupe
+    home: Acceuil
+    translation: Traduction
+    newsletter: Newsletter
+    twitter: Twitter
+    facebook: Facebook
+  titles:
+    sign_in: Formulaire de connexion
+    home: "Page d'accueil"

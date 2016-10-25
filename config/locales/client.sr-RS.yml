@@ -163,15 +163,10 @@ sr-RS:
   proposal_position_block: Одбијање
   legacy_trial_expired_modal:
     heading: 'Хвала што користите Лумио ове године! '
-  angular_welcome_modal:
-    emojis: 'И можеш користити емоје!'
-    ok_got_it: 'У реду, схватам!'
   group_welcome_modal:
     creator_heading: Добродошли у своју нову групу
     member_heading: Добродошли на Лумио
     ok_got_it: 'У реду, схватам!'
-  group_cover_modal:
-    heading: Нова фотографија заглавља
   join_group_button:
     join_group: Придружи се групи
     ask_to_join_group: Питај да се придружиш групи
@@ -198,12 +193,6 @@ sr-RS:
       email_settings: Опције еПорука
       leave_group: Напусти Групу
       deactivate_group: Деактивирај Групу
-    deactivate_group:
-      title: Деактивирај групу
-      question: Сигурни сте да желите деактивирати ову групу?
-      submit: 'Да, Деактивирај ову групу'
-    leave_group:
-      title: Напусти групу
     volume:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
@@ -237,18 +226,7 @@ sr-RS:
     name_label: Име
     coordinator_label: Координатор
     remove_member_label: Уклони
-    remove_membership:
-      submit: Уклони
   profile_page:
-    change_picture:
-      use_initials: Користи иницијале
-    change_password:
-      current_password_label: Тренутна лозинка
-      new_password_label: Нова лозинка
-      password_confirmation_label: Потврди нову лозинку
-    deactivate_user:
-      title: Деактивирај налог
-      submit: Деактивирај налог
     profile: Профил
     picture_label: Слика
     name_label: Име

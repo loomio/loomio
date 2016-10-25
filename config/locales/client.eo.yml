@@ -116,8 +116,6 @@ eo:
     options_label: Opcioj
     options:
       label: Opcioj
-    leave_group:
-      title: Elirii grupon
   membership_requests_page:
     approve: Aprobi
     ignore: Ignori
@@ -126,18 +124,7 @@ eo:
     name_label: Nomo
     coordinator_label: Kunordiganto
     remove_member_label: Forviŝi
-    remove_membership:
-      submit: Forviŝi
   profile_page:
-    change_picture:
-      use_initials: Uzi unuajn literojn de nomo
-    change_password:
-      current_password_label: Nuna pasvorto
-      new_password_label: Nova pasvorto
-      password_confirmation_label: Konfirmi novan pasvorton
-    deactivate_user:
-      title: Malaktivigi konton
-      submit: Malaktivigi konton
     profile: Profilo
     picture_label: Bildo
     name_label: Nomo

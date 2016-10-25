@@ -74,8 +74,6 @@ id:
     options_label: Pilihan
     options:
       label: Pilihan
-    leave_group:
-      title: Tinggalkan kelompok
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
@@ -84,13 +82,7 @@ id:
     name_label: Nama
     coordinator_label: Koordinator
     remove_member_label: Hapus
-    remove_membership:
-      submit: Hapus
   profile_page:
-    change_password:
-      current_password_label: Kata sandi saat ini
-      new_password_label: Kata sandi baru
-      password_confirmation_label: Konfirmasi kata sandi
     picture_label: Gambar
     name_label: Nama
     email_label: Surel
