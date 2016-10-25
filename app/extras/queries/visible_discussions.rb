@@ -91,6 +91,11 @@ class Queries::VisibleDiscussions < Delegator
     self
   end
 
+  def recent
+    @relation = @relation.where('last_activity_at > ?', 6.weeks.ago)
+    self
+  end
+
   def sorted_by_latest_activity
     @relation = @relation.order(last_activity_at: :desc)
     self
