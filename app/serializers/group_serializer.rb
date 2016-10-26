@@ -29,7 +29,7 @@ class GroupSerializer < ActiveModel::Serializer
              :membership_granted_upon,
              :discussion_privacy_options,
              :logo_url_medium,
-             :cover_url_desktop,
+             :cover_urls,
              :has_discussions,
              :has_multiple_admins,
              :archived_at,
@@ -86,8 +86,12 @@ class GroupSerializer < ActiveModel::Serializer
     object.logo.present?
   end
 
-  def cover_url_desktop
-    cover_photo.url(:desktop)
+  def cover_urls
+    {
+      small:  cover_photo.url(:card),
+      medium: cover_photo.url(:desktop),
+      large:  cover_photo.url(:largedesktop)
+    }
   end
 
   def has_custom_cover
