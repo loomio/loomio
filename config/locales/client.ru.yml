@@ -194,8 +194,6 @@ ru:
     options:
       label: Опции
       email_settings: Настройки Email
-    leave_group:
-      title: Покинуть группу
   choose_plan_modal:
     benefit_1_group: 1 группа
     benefit_10_groups: 10 групп
@@ -220,16 +218,7 @@ ru:
     name_label: Имя
     coordinator_label: Координатор
     remove_member_label: Удалить
-    remove_membership:
-      submit: Удалить
   profile_page:
-    change_password:
-      current_password_label: Действующий пароль
-      new_password_label: Новый пароль
-      password_confirmation_label: Повторите новый пароль
-    deactivate_user:
-      title: Деактивировать учетную запись
-      submit: Деактивировать учетную запись
     profile: Профиль
     name_label: Имя
     email_label: Email

@@ -163,7 +163,6 @@ ca:
     sign_in: Entra
     sign_up: Creeu un compte
   signed_out_modal:
-    title: "La sessió s'ha finalitzat"
     message: "La sessió s'ha finalitzat a Loomio des d'una altra finestra. Torneu a entrar per continuar."
     ok: "D'acord"
   comment_form:
@@ -214,7 +213,6 @@ ca:
       comments: Comentaris
     sign_in: Inicia la sessió
   start_menu:
-    title: "Botó d'acció"
     start_group: Crea un grup
     start_subgroup: Crea un subgrup
     start_thread: Crea una discussió
@@ -335,24 +333,9 @@ ca:
   legacy_trial_expired_modal:
     heading: 'Gràcies per utilitzar Loomio aquest any!'
     submit: Mostra els plans
-  angular_welcome_modal:
-    heading: 'Us donem la benvinguda al nou Loomio!'
-    mobile_ready: "Està dissenyat per a tots els dispositius, des del mòbil fins a l'ordinador d'escriptori."
-    emojis: I podeu utilitzar emoticones.
   group_welcome_modal:
     creator_heading: Benvingut al grup nou
     member_heading: Benvingut a Loomio
-  group_cover_modal:
-    heading: Nova foto de portada
-    upload_link: Carrega una nova foto de portada
-    helptext: 'Busqueu inspiració? doneu una ullada a <a href="https://unsplash.com/">Unsplash</a>, una galeria de precioses imatges gratuïtes.'
-    image_size_helptext: La mida ideal de la imatge és 1400 x 320 px
-    upload_success: Foto de portada actualitzada correctament
-  group_logo_modal:
-    heading: Nou logo del grup
-    upload_link: Carrega un nou logo del grup
-    image_size_helptext: La mida ideal de la imatge és 100 x 100 px
-    upload_success: Logo actualitzat correctament
   join_group_button:
     join_group: Uneix-te al grup
     ask_to_join_group: Sol·licita unir-te al grup
@@ -411,16 +394,6 @@ ca:
       email_settings: Configuració de correu
       leave_group: Abandona el grup
       deactivate_group: Desactiva el grup
-    deactivate_group:
-      title: Desactivació del grup
-      question: Esteu segur que voleu desactivar aquest grup?
-      submit: 'Si, desactiva aquest grup'
-    leave_group:
-      title: Abandona el grup
-      question: Esteu segur que voleu abandonar aquest grup?
-      submit: 'Si, abandona aquest grup'
-      cannot_leave_group: "No podeu abandonar aquest grup perquè sou l'últim coordinador. Necessiteu escollir un altre coordinador o desactivar el grup."
-      add_coordinator: Afegeix un coordinador
     volume:
       loud_message: "Rebreu correus electrònics de tota l'activitat de \"{{name}}.\""
       normal_message: 'Només rebre correus electrònics dels esdeveniments importants de "{{name}}."'
@@ -464,19 +437,10 @@ ca:
       private_to_group: El nom i la descripció només seran visible pels membres.
       private_to_parent_members: 'El nom i la descripció només seran visibles pels membres de {{parent}}'
     privacy: Privacitat
-    group_privacy_is_open_description: qualsevol pot trobar el grup i demanar per unir-se. Només els membres poden veure qui està en el grup. Totes les discussions són públiques.
-    group_privacy_is_closed_description: qualsevol pot trobar el grup i demanar per unir-se. Només els membres poden veure qui està en el grup. Totes les discussions són privades.
-    group_privacy_is_closed_public_threads_description: qualsevol pot trobar el grup i demanar per unir-se. Només els membres poden veure qui està en el grup. Les discussions poden ser públiques o privades.
-    group_privacy_is_secret_description: "només els membres convidats poden trobar aquest grup, veure qui n'és membre i veure'n les discussions."
     confirm_change_to_secret: "Si continueu, totes les discussions d'aquest grup i dels seus subgrups seran privades."
     confirm_change_to_secret_subgroup: 'Si continueu, totes les discussions seran privades.'
     confirm_change_to_public: "Si continueu, totes les discussions d'aquest grup es faran públiques a internet."
     confirm_change_to_private_discussions_only: "Si continueu, totes les discussions públiques d'aquest grup seran privades."
-    subgroup_privacy_is_open_description: "qualsevol pot trobar aquest subgrup i sol·licitar unir-se. Només els membres poden veure qui n'és membre. Totes les discussions són públiques."
-    subgroup_privacy_is_closed_description: "qualsevol pot trobar aquest subgrup i sol·licitar unir-se. Només els membres poden veure qui n'és membre. Totes les discussions són privades."
-    subgroup_privacy_is_closed_public_threads_description: "qualsevol pot trobar aquest subgrup i sol·licitar unir-se. Només els membres poden veure qui n'és membre. Les discussions poden ser públiques o privades."
-    subgroup_privacy_is_closed_secret_parent_description: "membre de {{parent}} poden trobar aquest subgrup i sol·licitar unir-se. Totes les discussions són privades. Només els membres poden veure qui n'és membre."
-    subgroup_privacy_is_secret_description: "només els membres convidats poden trobar aquest subgrup, veure qui n'és membre i veure'n les discussions."
     advanced_settings: Configuració avançada
     how_do_people_join: "Com s'uneix la gent?"
     membership_granted_upon_request: Tothom es pot unir al grup.
@@ -564,10 +528,6 @@ ca:
       remove_member_success: '{{name}} eliminat'
       make_admin_success: '{{name}} ara és un coordinador'
       remove_admin_success: '{{name}} ha deixat de ser coordinador'
-    remove_membership:
-      title: Elimina un membre
-      question: "Esteu segur d'eliminar {{name}} com a membre de {{group}}?"
-      submit: Elimina
     remove_admin_from_self:
       question: Esteu segur de deixar de ser coordinador?
   pending_invitations_card:
@@ -588,33 +548,6 @@ ca:
       picture_changed: Fotografia del perfil actualitzada
       password_changed: Contrasenya actualitzada
       deactivated: Compte desactivat
-    change_picture:
-      title: Canvia la fotografia
-      helptext: "Podeu penjar la vostra fotografia de perfil, o si el teniu, podeu utilitzar la d'un compte de <a href=\"https://en.gravatar.com/support/what-is-gravatar/\">Gravatar</a>."
-      use_initials: Utilitza les inicials
-      use_gravatar: Utilitza el gravatar
-      use_uploaded: Penja una fotografia nova
-    change_password:
-      title: Canvia la contrasenya
-      helptext: 'Les contrasenyes han de tenir 8 caràcters. Les contrasenyes com "password" estan prohibides per raons de seguretat.'
-      current_password_label: Contrasenya actual
-      new_password_label: Nova contrasenya
-      password_confirmation_label: Confirma la nova contrasenya
-      submit: Canvia la contrasenya
-    deactivate_user:
-      title: Desactivar el compte
-      question: Podríeu explicar-nos perquè heu desactivat el compte?
-      placeholder: 'Respondre a aquesta pregunta és opcional. Qualsevol informació que compartiu ens ajudarà a millorar Loomio. :)'
-      submit: Desactiva el compte
-    deactivation_modal:
-      introduction: 'Quan desactiveu el vostre compte:'
-      no_longer_group_member: Deixareu de ser membre de tots els grups.
-      name_removed: 'Els comentaris, les propostes i les discussions que hágiu fet romandran, però el vostre nom serà eliminat.'
-      no_emails: No rebreu més correus electrònics relacionats amb Loomio.
-      contact_for_reactivation: Necessitareu contactar amb nosaltres per reactivar el compte.
-      submit: 'Si, vull desactivar-lo'
-    only_coordinator_modal:
-      explanation: "Un grup ha de tenir almenys un coordinador. Sou l'únic coordinador dels grups següents:"
     change_picture_link: Canvia la fotografia
     change_password_link: Canvia la contrasenya
     deactivate_user_link: Desactiva el compte...

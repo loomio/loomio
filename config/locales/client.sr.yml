@@ -163,7 +163,6 @@ sr:
     sign_in: Prijavi Se
     sign_up: Napravi nalog
   signed_out_modal:
-    title: Vaša sesija je okončana
     message: Odjavljeni ste sa Lumija sa drugog prozora. Molim prijavite se ponovo da nastavite.
     ok: U redu
   comment_form:
@@ -219,7 +218,6 @@ sr:
     sign_in: Prijavi se
     toggle_sidebar: Uklj/Isklj traku
   start_menu:
-    title: Dugme akcije
     start_group: Kreiraj Grupu
     start_subgroup: Kreiraj Podgrupu
     start_thread: Kreiraj nit
@@ -350,15 +348,6 @@ sr:
       i pitamo grupe koje već koriste Lumio neko vreme da odaberu plan koji im
       odgovara.</p>
     submit: Pokaži mi pakete
-  angular_welcome_modal:
-    heading: 'Dobrodošli na novi Lumio!'
-    context: 'Naporno smo radili da izgradimo fantastičan novi Lumio. Sve tvoje diskusije i omiljene karakteristike Lumija su i dalje tu, plus sjajne nove promene:'
-    cleaner: 'Čistiji, intuitivniji interfejs: lakše je pokretati grupe, pozvati ljude i izvršiti podešavanja.'
-    interactive: 'Interaktivna tabla čini praćenje lakšim: ažuriranja se uživo dešavaju na ekranu.'
-    mobile_ready: 'Dizajniran je za sve Vaše uređaje, od pametnih telefona do ličnih računara.'
-    accessible: "Pristupačno je slepim i slabovidim osobama i prevod je urađen na <a href='https://loomio.org/translation' target='_blank'>mnoštvu jezika</a>."
-    emojis: 'I možete koristiti emoje!'
-    ok_got_it: 'U redu, shvatam!'
   group_welcome_modal:
     creator_heading: Dobrodošli u svoju novu grupu
     member_heading: Dobrodošli na Lumio
@@ -366,17 +355,6 @@ sr:
     member_info: 'Pogledaj ovaj video da shvatiš kako Lumio radi. Zatim pokušaj komentarisati u niti diskusije, ili napravi vlastitu!'
     creator_footer: 'Kada ste spremni, <strong>pozovite ljude</strong> unutra.'
     ok_got_it: 'U redu, shvatam!'
-  group_cover_modal:
-    heading: Nova pokrivna slika
-    upload_link: Prosledi novu pokrivnu sliku
-    helptext: 'Tražiš inspiraciju? Pogledaj <a href="https://unsplash.com/">Unsplash</a>, galeriju lepih, besplatnih slika'
-    image_size_helptext: Idealna veličina slike je 1400 x 320px
-    upload_success: Pokrivna fotografija je uspešno izmenjena
-  group_logo_modal:
-    heading: Novi logotip grupe
-    upload_link: Prosledi novi logotip grupe
-    image_size_helptext: Idealna veličina slije je 100 x 100px
-    upload_success: Logotip je uspešno promenjen
   join_group_button:
     join_group: Pridruži se grupi
     ask_to_join_group: Pitaj da se pridružiš grupi
@@ -439,16 +417,6 @@ sr:
       email_settings: Opcije ePoruka
       leave_group: Napusti Grupu
       deactivate_group: Deaktiviraj Grupu
-    deactivate_group:
-      title: Deaktiviraj grupu
-      question: Da li ste sigurni da želite deaktivirati ovu grupu?
-      submit: 'Da, deaktiviraj ovu grupu'
-    leave_group:
-      title: Napusti grupu
-      question: Da li ste sigurni da želite napustiti ovu grupu?
-      submit: 'Da, napusti ovu grupu'
-      cannot_leave_group: 'Ne možete napustiti ovu grupu, jer ste poslednji koordinator. Morate odabrati drugog koordinatora ili deaktivirati grupu.'
-      add_coordinator: Dodaj koordinatora
     volume:
       loud: ePoruka kada god ima aktivnosti.
       loud_aria_description: Obim tvojih obaveštenja za ovu grupu je postavljen na Glasno. Dobijaćeš ePoruke kada god ima aktivnosti ovde.
@@ -502,19 +470,10 @@ sr:
       private_to_group: Naziv i opis će biti vidljivi samo članovima.
       private_to_parent_members: 'Naziv i opis će biti vidljivi samo članovima  {{parent}}'
     privacy: Privatnost
-    group_privacy_is_open_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su javne.
-    group_privacy_is_closed_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su privatne.
-    group_privacy_is_closed_public_threads_description: svako može naći grupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Niti mogu biti javne ili privatne.
-    group_privacy_is_secret_description: 'samo pozvani članovi mogu naći grupu, videti ko je u njoj i videti niti.'
     confirm_change_to_secret: 'Ako nastavite, sve niti u ovoj grupi i njenim podgrupama će postati privatne.'
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
     confirm_change_to_public: 'Ako nastavite, sve niti u ovoj grupi postaće javne na mreži.'
     confirm_change_to_private_discussions_only: 'Ako nastavite, sve javne niti u ovoj grupi će postati privatne.'
-    subgroup_privacy_is_open_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su javne.
-    subgroup_privacy_is_closed_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Sve niti su privatne.
-    subgroup_privacy_is_closed_public_threads_description: svako može naći ovu podgrupu i pitati da se pridruži. Samo članovi mogu videti ko je u grupi. Niti mogu biti javne ili privatne.
-    subgroup_privacy_is_closed_secret_parent_description: 'članovi {{parent}} mogu pronaći ovu podgrupu i tražiti da se pridruže. Sve niti su privatne. Samo članovi mogu videti ko je u grupi.'
-    subgroup_privacy_is_secret_description: 'samo pozvani članovi mogu naći ovu podgrupu, videti ko je u njoj i videti niti.'
     advanced_settings: Napredne opcije
     how_do_people_join: Kako se ljudi pridružuju?
     membership_granted_upon_request: Svako se može pridružiti grupi.
@@ -603,10 +562,6 @@ sr:
       remove_member_success: 'Uklonjen(a) {{name}}'
       make_admin_success: '{{name}} je sada koordinator'
       remove_admin_success: '{{name}} nije više koordinator'
-    remove_membership:
-      title: Ukloni člana
-      question: 'Da li ste sigurni da želite ukloniti {{name}} kao člana {{group}} grupe?'
-      submit: Ukloni
     remove_admin_from_self:
       question: Da li ste sigurni da ne želite više biti koordinator?
   pending_invitations_card:
@@ -627,24 +582,6 @@ sr:
       picture_changed: Profilna slika izmenjena
       password_changed: Lozinka izmenjena
       deactivated: Nalog deaktiviran
-    change_picture:
-      title: Promeni sliku
-      helptext: 'Možete proslediti svoju sliku profila ili ako imate <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> nalog, možete upotrebiti to.'
-      use_initials: Koristi inicijale
-      use_gravatar: Koristi gravatar
-      use_uploaded: Prosledi novu sliku
-    change_password:
-      title: Promeni Lozinku
-      helptext: "Lozinka mora biti 8 znakova duga. Česte lozinke kao što je 'password' su zabranjene da održe tvoj nalog bezbednim."
-      current_password_label: Trenutna lozinka
-      new_password_label: Nova lozinka
-      password_confirmation_label: Potvrdi novu lozinku
-      submit: Izmeni lozinku
-    deactivate_user:
-      title: Deaktiviraj nalog
-      question: Hoćeš li nam reći zašto deaktiviraš svoj nalog?
-      placeholder: 'Odgovor na ovo pitanje nije obavezan. Svaka informacija koju podeliš sa nama će nam pomoći da unapredimo Loomio :)'
-      submit: Deaktiviraj nalog
     change_picture_link: Promeni sliku
     change_password_link: Promeni lozinku
     deactivate_user_link: Deaktiviranje naloga...

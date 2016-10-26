@@ -159,8 +159,6 @@ da:
     options_label: Indstillinger
     options:
       label: Indstillinger
-    leave_group:
-      title: Forlad gruppe
   membership_requests_page:
     approve: Godkend
     ignore: Ignorer
@@ -169,18 +167,7 @@ da:
     name_label: Navn
     coordinator_label: Koordinator
     remove_member_label: Fjern
-    remove_membership:
-      submit: Fjern
   profile_page:
-    change_picture:
-      use_initials: Brug initialer
-    change_password:
-      current_password_label: Nuværende adgangskode
-      new_password_label: Ny adgangskode
-      password_confirmation_label: Bekræft ny adgangskode
-    deactivate_user:
-      title: Slet konto
-      submit: Slet konto
     profile: Profil
     picture_label: Billede
     name_label: Navn

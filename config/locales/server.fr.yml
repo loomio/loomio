@@ -30,18 +30,37 @@ fr:
       content: 'Quelqu’un vous invite à participer à la discussion : %{discussion}'
       message_intro: '%{who} dit :'
       link: Rejoindre la discussion
+    value_proposition: Loomio permet aux groupes de prendre des décisions ensembles
+    view_group: Voir le groupe
     to_join_group:
       subject: '%{member} vous invite à rejoindre %{group_name} sur Loomio'
+      invitation_text: '%{member} vous a invité à rejoindre son groupe %{group_name}.'
+      invitation_text_html: vous a invité à rejoindre son groupe
+      link_help: "Cliquez sur le lien ci-dessous pour accepter l'invitation:"
       accept_invitation: "Accepter l'invitation"
     resend_to_join_group:
       subject: '%{member} attend toujours que vous rejoigniez le groupe %{group_name} sur Loomio'
     to_start_group:
       subject: 'Préparez votre nouveau groupe Loomio: %{group_name}'
+      hi: 'Salut %{name},'
+      intro: 'Cliquez sur le lien ci-dessous pour paramétrer votre group %{group_name}:'
+      intro_html: 'Cliquez ci-dessous pour paramétrer votre groupe:'
+      start_group: Commencer mon groupe
+      closing_message: "Si vous avez besoin d'aide ou que vous avez une question, répondez simplement à cet email."
+      thanks: 'Merci,'
+      loomio_team: "L'Equipe de Loomio"
+    user_added_to_group:
+      subject: '%{who} vous a ajouté à %{which_group} sur Loomio'
+      content: '%{who} vous a ajouté à %{which_group}.'
+      link_help: 'Cliquez sur le lien ci-dessous pour aller au groupe:'
     unsubscribe: 'Désabonnement ou changement d’e-mail :'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pour se désabonner ou changer votre e-mail."
     view_comment: Cliquez ici pour voir le commentaire sur Loomio
     view_discussion: Cliquer ici pour voir la discussion
     view_proposal: Voir cette proposition sur Loomio
+    create_discussion:
+      intro_html: 'commencer une discussion:'
+      intro: '%{who} a commencé une discussion:'
     create_proposal:
       intro: Une nouvelle proposition a été créée dans un groupe Loomio auquel vous appartenez
       closes_in: Ferme dans
@@ -58,12 +77,24 @@ fr:
       heres_what_happened: Voici ce qui s’est passé hier sur Loomio.
       marked_as_read_success: Tout le contenu de cet email a été marqué comme lu
     comment_replied_to:
+      context_html: a répondu à votre commentaire dans
+      context: '%{author_name} a répondu à votre commentaire dans %{discussion_title}'
       subject: '%{who} a répondu à votre commentaire dans le groupe %{which} sur Loomio'
+    new_comment:
+      context: commenté dans
+    group_membership_approved:
+      intro: "Votre demande d'accès au groupe %{group_name} a été acceptée."
+      join_group: Rejoindre le groupe
+      view_group_text: 'Cliquez ci-dessous pour voir le groupe dans Loomio:'
     membership_request:
       intro: '%{name} (%{email}) a demandé l’accès à l’un de vos groupes Loomio.'
+      intro_html: "a demandé l'accès à l'un de vos groupes."
       subject: '%{who} a demandé à rejoindre %{which_group}'
       view_group: Vous pouvez accepter ou rejeter cette demande
+      button_text: Voir la demande
     mentioned:
+      context_html: vous a mentionné en parlant dans
+      context: '%{author_name} vous a mentionné en parlant dans %{discussion_title}'
       subject: '%{who} vous a mentionné à propos de « %{which} »'
     new_motion_created:
       subject: 'Proposition : %{proposal_title}'
@@ -90,6 +121,7 @@ fr:
       turn_on_notifications_text: "Activer les courriers électroniques pour recevoir les activités futures dans cette discussion\_: %{url}"
       change_email_preferences_html: "Changez vos <a href='%{email_preferences_url}'>paramètres de notification</a> pour vous désabonner de ces courriers électroniques."
       change_preferences: 'Modifiez vos préférences de courriel :'
+      new_motion_html: 'a démarré une proposition:'
       motion_closing_soon: 'Proposition clôturée dans 24 heures :'
       proposal_closed: 'Proposition clôturée :'
       specify_outcome_html: "Votre proposition est terminée. Veuillez <a href='%{link}'>publier le résultat</a> pour tout le monde."
@@ -143,15 +175,20 @@ fr:
       all_email_addresses_belong_to_members: 'Nous n’avons pas envoyé d’invitation aux adresses de courriel fournies, car elles appartiennent à des personnes qui sont déjà dans le groupe.'
   pricing_page:
     header: Formules de groupe
+    gift: Gratuit
     standard: Standard
+    plus: Pro
     free_trial_html: 'Nous vous demanderons de choisir votre option tarifaire après une <span>période d’essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire.'
     get_started_for_free: Commencez gratuitement
+    gift_body: Soutien du projet de don pour les groupes de la communauté.
+    pro_body_html: 'Pour les organismes avec <nobr>de multiples groupes.</nobr>'
     unlimited_members: membres illimités
     unlimited_decisions: décisions illimitées
     email_support: Support courriel
     slack_integration_html: |
       Intégration à <strong>Slack</strong>
     premium_support: support Premium
+    data_export: Exportation des données
     custom_subdomain_html: |
       Sous nom de domaine personnalisé,<br />
       ex. <strong>votregroupe</strong>.loomio.org

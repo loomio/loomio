@@ -18,6 +18,9 @@
       .lmo-form-group
         %label{for: "membership-request-introduction", translate: "membership_request_form.introduction_label"}
         %textarea.lmo-textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: "membershipRequest.introduction", ng-required: "false"}
+        .membership-request-form__chars-left{ng-class: "{ overlimit: membershipRequest.overCharLimit() }"}>
+          {{ membershipRequest.charsLeft() }}
+        .membership-request-form__over-limit.lmo-validation-error{ng-if: "membershipRequest.overCharLimit()", translate: "membership_request_form.introduction_over_limit"}
 
   .modal-footer
     %button.membership-request-form__submit-btn{type: "submit", translate: "membership_request_form.submit_button"}

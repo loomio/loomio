@@ -444,8 +444,9 @@ en:
     heading: Ask to join group
     name_label: Name
     email_label: Email
-    introduction_label: Introduce yourself
+    introduction_label: Why do you want to join?
     submit_button: Ask to join group
+    introduction_over_limit: Response too long
     messages:
       membership_requested: 'You have requested membership to {{group}}'
 

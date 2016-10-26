@@ -10,5 +10,5 @@ angular.module('loomioApp').factory 'CoverPhotoForm', ->
       submitFn:       group.uploadPhoto
       loadingMessage: 'common.action.uploading'
       successCallback: (data) ->
-        $rootScope.$broadcast('setBackgroundImageUrl', group.coverUrl())
+        $rootScope.$broadcast('setBackgroundImageUrl', group)
       flashSuccess:   'cover_photo_form.upload_success'

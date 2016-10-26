@@ -81,8 +81,6 @@ mi:
     members: Ngā Mema
     name_label: Ingoa
     remove_member_label: Tango
-    remove_membership:
-      submit: Tango
   profile_page:
     name_label: Ingoa
     email_label: Īmēra

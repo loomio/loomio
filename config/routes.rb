@@ -148,7 +148,7 @@ Loomio::Application.routes.draw do
       get :inline, to: 'translations#inline'
     end
 
-    resources :notifications, only: :index do
+    resources :notifications, only: [] do
       post :viewed, on: :collection
     end
 

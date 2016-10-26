@@ -247,20 +247,8 @@ cs:
   proposal_position_abstain: Zdržet se
   proposal_position_no: Nesouhlasit
   proposal_position_block: Zamítnout
-  angular_welcome_modal:
-    ok_got_it: 'OK, chápu!'
   group_welcome_modal:
     ok_got_it: 'OK, chápu!'
-  group_cover_modal:
-    heading: Nová titulní fotka
-    upload_link: Nahrát novou titulní fotku
-    image_size_helptext: Ideální velikost obrázku je 1400 x 320px
-    upload_success: Titulní fotka byla úspěšně aktualizována
-  group_logo_modal:
-    heading: Nové logo skupiny
-    upload_link: Nahrát nové logo skupiny
-    image_size_helptext: Ideální velikost obrázku je 100 x 100px
-    upload_success: Logo úspěšně nahráno
   join_group_button:
     join_group: Připojit ke skupině
     ask_to_join_group: Zažádat o členství
@@ -304,16 +292,6 @@ cs:
       add_subgroup: Přidání skupiny
       leave_group: Opuštění skupiny
       deactivate_group: Deaktivování skupiny
-    deactivate_group:
-      title: Deaktivovat skupinu
-      question: Opravdu chcete deaktivovat tuto skupinu?
-      submit: 'Ano, deaktivovat tuto skupinu'
-    leave_group:
-      title: Opustit skupinu
-      question: Opravdu chcete opustit tuto skupinu?
-      submit: 'Ano, opustit tuto skupinu'
-      cannot_leave_group: 'Nemůžete opustit tuto skupinu, protože jste posledním koordinátorem. Budete muset vybrat dalšího koordinátora nebo tuto skupinu deaktivovat.'
-      add_coordinator: Přidat koordinátora
   choose_plan_modal:
     free: Bezplatný
     standard: Standardní
@@ -383,9 +361,6 @@ cs:
       remove_member_success: 'Odebrán {{name}}'
       make_admin_success: '{{name}} je nyní koordinátorem'
       remove_admin_success: '{{name}} již není koordinátor'
-    remove_membership:
-      title: Odebrat člena
-      submit: Vyloučit
   pending_invitations_card:
     heading: Nevyřízené pozvánky
     email: Email
@@ -404,22 +379,6 @@ cs:
       picture_changed: Profilová fotka aktualizována
       password_changed: Heslo aktualizováno
       deactivated: Účet deaktivován
-    change_picture:
-      title: Změnit obrázek
-      use_initials: Použít iniciály
-      use_gravatar: Použít gravatar
-      use_uploaded: Nahrát nový obrázek
-    change_password:
-      title: Změnit heslo
-      helptext: 'Hesla musí obsahovat alespoň 8 znaků. Běžná hesla jako "password" jsou zakázaná, aby váš účet zůstal bezpečným.'
-      current_password_label: Současné heslo
-      new_password_label: Nové heslo
-      password_confirmation_label: Potvrdit nové heslo
-      submit: Aktualizovat heslo
-    deactivate_user:
-      title: Deaktivovat účet
-      question: 'Mohl(a) byste nám říct, proč jste se rozhodl(a) deaktivovat svůj účet?'
-      submit: Deaktivovat účet
     change_picture_link: Změnit obrázek
     change_password_link: Změnit heslo
     deactivate_user_link: Deaktivovat účet...

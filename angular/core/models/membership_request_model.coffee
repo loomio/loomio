@@ -33,3 +33,9 @@ angular.module('loomioApp').factory 'MembershipRequestModel', (BaseModel, AppCon
 
     formattedResponse: ->
       _.capitalize(@response)
+
+    charsLeft: ->
+      250 - (@introduction or '').toString().length
+
+    overCharLimit: ->
+      @charsLeft() < 0

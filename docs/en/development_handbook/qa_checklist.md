@@ -61,3 +61,7 @@ See the [a11y guide](accessibility.md) for more info.
 ## Emails
 - Have as simple as can be HTML & CSS confirming to BEM where possible
 - Are within the max width of 600px
+
+## After deploy, test on production if:
+- code touches groups, check you can start a group from the homepage
+- code touches payments, check you can start a subscription. (ask mhjb for 100% discount code)

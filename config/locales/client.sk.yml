@@ -93,8 +93,6 @@ sk:
     options_label: Nastavenia
     options:
       label: Nastavenia
-    leave_group:
-      title: Opustiť skupinu
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
@@ -103,18 +101,7 @@ sk:
     name_label: Meno
     coordinator_label: Koordinátor
     remove_member_label: Vylúčiť
-    remove_membership:
-      submit: Vylúčiť
   profile_page:
-    change_picture:
-      use_initials: Použiť iniciály
-    change_password:
-      current_password_label: Súčasné heslo
-      new_password_label: Nové heslo
-      password_confirmation_label: Potvrdiť nové heslo
-    deactivate_user:
-      title: Deaktivovať účet
-      submit: Deaktivovať účet
     profile: Profil
     picture_label: Fotka
     name_label: Meno

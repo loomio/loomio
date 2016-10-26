@@ -2,13 +2,22 @@ require 'rails_helper'
 
 describe MembershipRequest do
   let(:group) { create(:group) }
-  let(:membership_request) do
-    m = MembershipRequest.new(name: 'Bob Dogood', email: 'this@that.org.nz', introduction: 'we talked yesterday, can you approve this please?')
-    m.group = group
-    m
-  end
+  let(:membership_request) { group.membership_requests.new(name: 'Bob Dogood', email: 'this@that.org.nz', introduction: 'we talked yesterday, can you approve this please?') }
+  let(:long_introduction) { "h#{'i' * 400}!"}
   let(:responder) { stub_model User }
   let(:requestor) { create(:user) }
+
+  describe 'introduction length' do
+    it 'validates length on create' do
+      membership_request.introduction = long_introduction
+      expect(membership_request.valid?).to eq false
+    end
+
+    it 'does not validate length on update' do
+      membership_request.save
+      expect(membership_request.update(introduction: long_introduction)).to eq true
+    end
+  end
 
   context 'user' do
     it 'cannot have multiple pending requests' do
