@@ -1,0 +1,28 @@
+.blank
+  .introduction-carousel{ng-if: "show()"}
+    .introduction-carousel__slide-wrapper
+      %a.introduction-carousel__arrow-prev{ng-click: "nextSlide()"}
+        .introduction-carousel__icon-container
+          %i.fa.fa-2x.fa-long-arrow-left
+
+      .introduction-carousel__slides
+        .introduction_carousel__slide{ng-repeat: "slide in slides", ng-hide: "!isCurrentSlideIndex($index)"}
+          %img.introduction-carousel__slide-image{ng-src: "{{slide.image}}"}
+          .introduction-carousel__slide-title
+            %strong {{ slide.title }}
+          .introduction-carousel__slide-description
+            {{ slide.description }}
+          .introduction-carousel__actions
+            .introduction-carousel__button
+              %button.lmo-btn--featured{ng-click: ""} LEARN MORE
+            .introduction-carousel__button
+              %button.lmo-btn--featured{ng-click: "dismiss()"} GET STARTED
+
+      %a.introduction-carousel__arrow-next{ng-click: "prevSlide()"}
+        .introduction-carousel__icon-container
+          %i.fa.fa-2x.fa-long-arrow-right
+
+    .introduction-carousel__navigation
+      %ul.introduction-carousel__dots
+        %li{ng-repeat:"slide in slides"}
+          %a.introduction-carousel__dot{ng-class: "{'introduction__carousel-dot--active':isCurrentSlideIndex($index)}", ng-click: "setCurrentSlideIndex($index)"}
