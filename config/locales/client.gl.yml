@@ -80,8 +80,6 @@ gl:
     options_label: Opcións
     options:
       label: Opcións
-    leave_group:
-      title: Deixar grupo
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
@@ -90,18 +88,7 @@ gl:
     name_label: Nome
     coordinator_label: Coordinador/a
     remove_member_label: Borrar
-    remove_membership:
-      submit: Borrar
   profile_page:
-    change_picture:
-      use_initials: Usar iniciais
-    change_password:
-      current_password_label: Contrasinal actual
-      new_password_label: Novo contrasinal
-      password_confirmation_label: Confirmar contrasinal
-    deactivate_user:
-      title: Elimina a túa conta
-      submit: Elimina a túa conta
     profile: Perfil
     picture_label: Imaxe
     name_label: Nome

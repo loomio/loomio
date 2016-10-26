@@ -183,9 +183,6 @@ nl-NL:
   proposal_position_yes: Eens
   proposal_position_abstain: Onthouden
   proposal_position_block: Blokkeren
-  angular_welcome_modal:
-    heading: 'Welkom bij de nieuwe Loomio!'
-    ok_got_it: "Okee, ik snap 't!"
   group_welcome_modal:
     member_heading: Welkom bij Loomio
     ok_got_it: "Okee, ik snap 't!"
@@ -209,8 +206,6 @@ nl-NL:
     options_label: Opties
     options:
       label: Opties
-    leave_group:
-      title: Verlaat groep
     volume:
       loud: E-mail als er activiteit is.
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
@@ -235,19 +230,7 @@ nl-NL:
     name_label: Naam
     coordinator_label: Coördinator
     remove_member_label: Verwijder
-    remove_membership:
-      submit: Verwijder
   profile_page:
-    change_picture:
-      title: 'Wijzigen afbeelding:'
-      use_initials: Gebruik initialen
-    change_password:
-      current_password_label: Huidig wachtwoord
-      new_password_label: Nieuw wachtwoord
-      password_confirmation_label: Bevestig nieuw wachtwoord
-    deactivate_user:
-      title: Deactiveer account
-      submit: Deactiveer account
     change_picture_link: 'Wijzigen afbeelding:'
     change_password_link: Wijzigen wachtwoord
     deactivate_user_link: Deactiveren account...

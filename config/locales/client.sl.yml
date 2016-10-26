@@ -116,8 +116,6 @@ sl:
     options_label: Možnosti
     options:
       label: Možnosti
-    leave_group:
-      title: Zapusti skupino
     volume:
       loud: Pošlji email ob vsaki aktivnosti.
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
@@ -130,20 +128,9 @@ sl:
     name_label: Ime
     coordinator_label: Koordinator
     remove_member_label: Odstrani
-    remove_membership:
-      submit: Odstrani
   pending_invitations_card:
     email: Email
   profile_page:
-    change_picture:
-      use_initials: Uporabi inicialke
-    change_password:
-      current_password_label: Trenutno geslo
-      new_password_label: Novo geslo
-      password_confirmation_label: Potrdi novo geslo
-    deactivate_user:
-      title: Deaktiviraj račun
-      submit: Deaktiviraj račun
     profile: Profil
     picture_label: Slika
     name_label: Ime

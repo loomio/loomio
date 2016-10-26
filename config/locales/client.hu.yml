@@ -162,7 +162,6 @@ hu:
     sign_in: Bejelentkezés
     sign_up: Fiók létrehozása
   signed_out_modal:
-    title: A csatlakozás megszünt
     message: 'Egy másik ablakban kilépett a Loomio portálról. A folytatáshoz, kérjük jelentkezzen be újra.'
     ok: Rendben
   comment_form:
@@ -211,7 +210,6 @@ hu:
     sign_in: Bejelentkezés
     toggle_sidebar: Oldal panel ki/be kapcsolása
   start_menu:
-    title: Művelet gomb
     start_group: Csoport indítása
     start_subgroup: Alcsoport indítása
     start_thread: Témakör indítása
@@ -290,10 +288,6 @@ hu:
     edit_proposal: Javaslat szerkesztése
     close_proposal: Javaslat lezárása
     closed_badge: Zárva
-  group_logo_modal:
-    heading: Új csoport logó
-    upload_link: Új csoport logó feltöltése
-    upload_success: A logót sikeresen feltöltötted
   join_group_button:
     join_group: Kapcsolódj a csoporthoz
     ask_to_join_group: Kérj belépőt a csoportba
@@ -314,8 +308,6 @@ hu:
     options_label: Lehetőségek
     options:
       label: Lehetőségek
-    leave_group:
-      title: kilépés a csoportból
     volume:
       loud: Emailezzen ha aktivitás van.
       quiet: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
@@ -338,18 +330,7 @@ hu:
     name_label: Név
     coordinator_label: Koordonátor
     remove_member_label: Visszavonás
-    remove_membership:
-      submit: Visszavonás
   profile_page:
-    change_picture:
-      use_initials: Használj kezőbetűket
-    change_password:
-      current_password_label: Aktuális jelszó
-      new_password_label: Új jelszó
-      password_confirmation_label: Az új jelszó megerősításe
-    deactivate_user:
-      title: Fiók deaktiválása
-      submit: Fiók deaktiválása
     profile: Profil
     picture_label: Kép
     name_label: Név

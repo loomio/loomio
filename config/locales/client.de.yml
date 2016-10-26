@@ -195,7 +195,6 @@ de:
       comments: Kommentare
     sign_in: Anmelden
   start_menu:
-    title: Aktions-Button
     start_group: Gruppe gründen
     start_subgroup: Untergruppe gründen
     start_thread: Diskussion eröffnen
@@ -326,15 +325,6 @@ de:
       bereits testen konnten, ein Vertragsmodell zu wählen, das zu ihnen
       passt.</p>
     submit: "Zeig' mir die Modelle"
-  angular_welcome_modal:
-    heading: 'Willkommen beim neuen Loomio!'
-    context: 'Wir haben hart gearbeitet um ein originelles neues Loomio zu kreieren. Alle Deine Diskussionen und Lieblingsfeatures sind immer noch drin und ein paar neue, großartige Änderungen:'
-    cleaner: 'Aufgeräumtes, intuitiver-bedienbare Schnittstelle: einfacher Gruppen zu starten, Menschen einzuladen und Einstellungen zu konfigurieren.'
-    interactive: 'Der Interaktive Schreibtisch macht es einfacher aktuell zu bleiben: Aktualisierungen werden live angezeigt.'
-    mobile_ready: 'Es wurde für alle Geräte designed, von Smartphone bis Dektop-PC.'
-    accessible: "Es ist auch für blinde Menschen zugänglich und in <a href='https://loomio.org/translation' target='_blank'>haufenweise Sprachen</a> übersetzt."
-    emojis: 'Und Du kannst emojis nutzen!'
-    ok_got_it: 'Ok, kapiert!'
   group_welcome_modal:
     creator_heading: Willkommen in Deiner neuen Gruppe
     member_heading: Willkommen bei Loomio
@@ -342,17 +332,6 @@ de:
     member_info: 'Schau Dir das Video an, um einen Überblick über die Funktion von Loomio zu erhalten. Danach versuche zu eine Diskussion zu kommentieren oder beginne eine eigene Diskussion!'
     creator_footer: 'Wenn Du fertig bist, <strong>lade Menschen</strong> ein.'
     ok_got_it: 'Okay, ich hab´s!'
-  group_cover_modal:
-    heading: Neues Cover-Foto
-    upload_link: Neues Cover-Foto hochladen
-    helptext: 'Suchst Du Ideen? Schau mal bei <a href="https://unsplash.com/">Unsplash</a>, eine Gallerie voll schöner, freier Bilder'
-    image_size_helptext: Ideale Bildgröße ist 1400 x 320 px
-    upload_success: Cover-Foto erfolgreich aktualisiert
-  group_logo_modal:
-    heading: Neues Gruppenlogo
-    upload_link: Neues Gruppenlogo hochladen
-    image_size_helptext: Ideale Bildgröße ist 100 x 100 px
-    upload_success: Logo erfolgreich aktualisiert
   join_group_button:
     join_group: Der Gruppe beitreten
     ask_to_join_group: Gruppenbeitritt anfragen
@@ -415,16 +394,6 @@ de:
       email_settings: eMail-Einstellungen
       leave_group: Gruppe verlassen
       deactivate_group: Gruppe deaktivieren
-    deactivate_group:
-      title: Gruppe deaktivieren
-      question: 'Sicher, dass Du diese Gruppe deaktivieren willst?'
-      submit: 'Ja, diese Gruppe deaktivieren'
-    leave_group:
-      title: Gruppe verlassen
-      question: 'Sicher, dass Du diese Gruppe verlassen willst?'
-      submit: 'Ja, diese Gruppe verlassen'
-      cannot_leave_group: 'Du kannst diese Gruppe nicht verlassen, da Du der einzige Koordinator bist. Du kannst die Gruppe entweder über "Optionen" deaktivieren oder einen neuen Koordinator hinzufügen.'
-      add_coordinator: Füge einen Koordinator hinzu
     volume:
       loud: 'E-Mail, sobald es Aktuelles gibt.'
       loud_aria_description: 'Deine Benachrichtigungseinstellungen für diese Gruppe steht auf "Laut". Du wirst per eMail informiert, sobald etwas in der Gruppe geschieht.'
@@ -478,19 +447,10 @@ de:
       private_to_group: Name und Beschreibung sind nur Mitgliedern sichtbar
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: Privatsphäre
-    group_privacy_is_open_description: 'jede.r kann die Gruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen sind öffentlich.'
-    group_privacy_is_closed_description: 'jede.r kann die Gruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen sind privat.'
-    group_privacy_is_closed_public_threads_description: 'jede.r kann die Gruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen können öffentlich oder privat sein.'
-    group_privacy_is_secret_description: 'nur eingeladene Mitglieder können diese Gruppe finden, sehen, wer dabei ist, und die Diskussionen sehen.'
     confirm_change_to_secret: Wenn Du fortfährst werden alle Diskussionen dieser Gruppe und all ihrer Untergruppen privat.
     confirm_change_to_secret_subgroup: Wenn Du fortfährst werden alle Diskussionen privat.
     confirm_change_to_public: Wenn Du fortfährst werden alle Diskussionen in der Gruppe öffentlich sichtbar im Web.
     confirm_change_to_private_discussions_only: Wenn Du fortfährst werden alle öffentlichen Diskussionen dieser Gruppe privat.
-    subgroup_privacy_is_open_description: 'jede.r kann diese Untergruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen sind öffentlich.'
-    subgroup_privacy_is_closed_description: 'jede.r kann diese Untergruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen sind privat.'
-    subgroup_privacy_is_closed_public_threads_description: 'jede.r kann diese Untergruppe finden und um Aufnahme bitten. Nur Mitglieder können sehen, wer dabei ist. Alle Diskussionen können öffentlich oder privat sein.'
-    subgroup_privacy_is_closed_secret_parent_description: 'nur Mitglieder von {{parent}} können diese Untergruppe finden und um Aufnhame bitten. Alle Diskussionen sind privat. Nur Gruppen-Mitglieder können sehen wer dabei ist.'
-    subgroup_privacy_is_secret_description: 'nur eingeladene Mitglieder können diese Gruppe finden, sehen, wer dabei ist, und die Diskussionen sehen.'
     advanced_settings: Erweiterte Einstellungen
     how_do_people_join: Wie kann jemand teilnehmen?
     membership_granted_upon_request: JedeR kann der Gruppe beitreten.
@@ -578,10 +538,6 @@ de:
       remove_member_success: '{{name}} enfernt'
       make_admin_success: '{{name}} ist nun ein Koordinator'
       remove_admin_success: '{{name}} ist nun kein Koordinator mehr'
-    remove_membership:
-      title: Mitglied entfernen
-      question: 'Bist Du sicher, dass Du {{name}} aus {{group}} entfernen möchtest?'
-      submit: entfernen
     remove_admin_from_self:
       question: 'Bist Du sicher, dass Du nicht mehr Koordinator bleiben willst?'
   pending_invitations_card:
@@ -602,24 +558,6 @@ de:
       picture_changed: Profil-Bild aktualisiert
       password_changed: Passwort aktualisiert
       deactivated: Konto deaktiviert
-    change_picture:
-      title: Bild tauschen
-      helptext: 'Du kannst Dein eigenes Profilbild hochladen oder falls Du ein <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a>-Konto hast, kannst Du jenes benutzen'
-      use_initials: Initialen benutzen
-      use_gravatar: Gravatar benutzen
-      use_uploaded: Neues Bild hochladen
-    change_password:
-      title: Passwort ändern
-      helptext: 'Passwörter müssen mindestens 8 Zeichen entalten. Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie "passwort" und ähnliches verboten.'
-      current_password_label: Aktuelles Passwort
-      new_password_label: Neues Passwort
-      password_confirmation_label: Neues Passwort erneut eingeben
-      submit: Passwort aktualisieren
-    deactivate_user:
-      title: Konto deaktivieren
-      question: 'Würdest Du uns bitte mitteilen, warum Du Dein Konto deaktivierst?'
-      placeholder: 'Antwort ist freiwillig. Jegliche Mitteilung, die Du uns gibst, wird uns bei der Verbesserung von Loomio helfen :)'
-      submit: Konto deaktivieren
     change_picture_link: Bild tauschen
     change_password_link: Passwort ändern
     deactivate_user_link: Konto deaktivieren...

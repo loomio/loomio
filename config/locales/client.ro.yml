@@ -126,7 +126,6 @@ ro:
       proposals: Propuneri
       comments: Comentarii
   start_menu:
-    title: Buton activare
     start_thread: Creaza o discutie
   notifications:
     header: Notificari
@@ -201,8 +200,6 @@ ro:
     options_label: Optiuni
     options:
       label: Optiuni
-    leave_group:
-      title: Paraseste grupul
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
@@ -233,18 +230,7 @@ ro:
     name_label: Nume
     coordinator_label: Coordonator
     remove_member_label: Elimina
-    remove_membership:
-      submit: Elimina
   profile_page:
-    change_picture:
-      use_initials: Foloseste initiale
-    change_password:
-      current_password_label: Parola curenta
-      new_password_label: Parola noua
-      password_confirmation_label: Confirma noua parola
-    deactivate_user:
-      title: Dezactiveaza contul
-      submit: Dezactiveaza contul
     profile: Profil
     picture_label: Fotografie
     name_label: Nume

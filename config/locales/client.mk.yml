@@ -77,8 +77,6 @@ mk:
     options_label: Опции
     options:
       label: Опции
-    leave_group:
-      title: Напушти ја групата
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
@@ -87,13 +85,7 @@ mk:
     name_label: Име
     coordinator_label: Координатор
     remove_member_label: Избриши
-    remove_membership:
-      submit: Избриши
   profile_page:
-    change_password:
-      current_password_label: Моментална лозинка
-      new_password_label: Нова лозинка
-      password_confirmation_label: Потврди ја новата лозинка
     profile: Профил
     picture_label: Фотографија
     name_label: Име

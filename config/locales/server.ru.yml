@@ -2,6 +2,7 @@ ru:
   email:
     to_join_discussion:
       message_intro: '%{who} сказал(а):'
+      link: Присоедениться к обсуждению
     missed_yesterday:
       subject: Вчера на Loomio
       mark_as_read: Отметить прочитанным

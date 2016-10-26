@@ -82,8 +82,6 @@ he:
     options_label: אפשרויות
     options:
       label: אפשרויות
-    leave_group:
-      title: עזיבת הקבוצה
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י
@@ -92,18 +90,7 @@ he:
     name_label: שם
     coordinator_label: מתאם
     remove_member_label: הסרה
-    remove_membership:
-      submit: הסרה
   profile_page:
-    change_picture:
-      use_initials: שימוש באותיות הראשונות
-    change_password:
-      current_password_label: סיסמא נוכחית
-      new_password_label: סיסמא חדשה
-      password_confirmation_label: אישרור סיסמא חדשה
-    deactivate_user:
-      title: השהיית חשבון
-      submit: השהיית חשבון
     profile: פרופיל
     picture_label: תמונה
     name_label: שם

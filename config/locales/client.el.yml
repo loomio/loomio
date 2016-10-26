@@ -128,7 +128,6 @@ el:
       proposals: Προτάσεις
       comments: Σχόλια
   start_menu:
-    title: Κουμπί ενέργειας
     start_group: Ξεκινήστε μια ομάδα
     start_subgroup: Ξεκινήστε μια υπο-ομάδα
     start_thread: Ξεκινήστε ένα θέμα
@@ -270,8 +269,6 @@ el:
     options_label: Ρυθμίσεις
     options:
       label: Ρυθμίσεις
-    leave_group:
-      title: Φύγετε από την ομάδα
     volume:
       loud: Αποστολή ηλεκτρονικού μηνύματος όποτε υπάρχει δραστηριότητα.
       quiet: Μην στείλετε ηλεκτρονικό μήνυμα για αυτή την ομάδα. Η δραστηριότητα θα εμφανιστεί στο ταμπλό.
@@ -293,18 +290,7 @@ el:
     name_label: Όνομα
     coordinator_label: Συντονιστής
     remove_member_label: Αφαιρέστε
-    remove_membership:
-      submit: Αφαιρέστε
   profile_page:
-    change_picture:
-      use_initials: Χρησιμοποιήστε αρχικά
-    change_password:
-      current_password_label: Τωρινός κωδικός
-      new_password_label: Νέος Κωδικός
-      password_confirmation_label: Επιβεβαίωση νέου κωδικού
-    deactivate_user:
-      title: Απενεργοποίηση λογαριασμού
-      submit: Απενεργοποίηση λογαριασμού
     profile: Προφίλ
     picture_label: Εικόνα
     name_label: Όνομα
