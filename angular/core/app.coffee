@@ -96,7 +96,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
       ModalService.open(SignInForm, preventClose: -> true)
 
   $scope.$on 'setBackgroundImageUrl', (event, group) ->
-    url = group.coverUrl(ViewportService.width())
+    url = group.coverUrl(ViewportService.viewportSize())
     angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
 
   $scope.$on 'clearBackgroundImageUrl', (event) ->
