@@ -8,7 +8,7 @@ class MembershipRequest < ActiveRecord::Base
 
   validates :group, presence: true
 
-  validates_length_of :introduction, maximum: 250
+  validates_length_of :introduction, maximum: 250, unless: :persisted?
 
   belongs_to :group
   belongs_to :requestor, class_name: 'User'
