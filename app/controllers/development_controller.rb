@@ -93,6 +93,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_experimental_group
+    sign_in patrick
+    test_group.add_member! emilio
+    test_group.update(enable_experiments: true)
+    redirect_to group_url(test_group)
+  end
+
   def setup_membership_request_approved_notification
     sign_in max
     membership_request = MembershipRequest.new(user: max, group: test_group)
