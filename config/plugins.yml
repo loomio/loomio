@@ -15,6 +15,7 @@ loomio_truncate_comment:
 
 loomio_group_progress_card:
   repo: loomio/loomio_group_progress_card
+  branch: add-intro-carousel
 
 loomio_content_preview:
   repo:         gdpelican/loomio_content_preview
