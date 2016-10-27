@@ -23,7 +23,6 @@
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
     %navbar
-    %introduction_carousel{ng_if: "isLoggedIn()"}
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
       %sidebar{ng_if: "isLoggedIn()"}
       %md_content.lmo-main-content{flex: ""}

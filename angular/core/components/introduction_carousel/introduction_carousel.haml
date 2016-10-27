@@ -5,18 +5,17 @@
         .introduction-carousel__icon-container
           %i.fa.fa-2x.fa-long-arrow-left
 
-      .introduction-carousel__slides
-        .introduction_carousel__slide{ng-repeat: "slide in slides", ng-hide: "!isCurrentSlideIndex($index)"}
-          %img.introduction-carousel__slide-image{ng-src: "{{slide.image}}"}
-          .introduction-carousel__slide-title
-            %strong {{ slide.title }}
-          .introduction-carousel__slide-description
-            {{ slide.description }}
-          .introduction-carousel__actions
-            .introduction-carousel__button
-              %button.lmo-btn--featured{ng-click: ""} LEARN MORE
-            .introduction-carousel__button
-              %button.lmo-btn--featured{ng-click: "dismiss()"} GET STARTED
+      .introduction_carousel__slide.animated{ng-repeat: "slide in slides", ng-hide: "!isCurrentSlideIndex($index)"}
+        %img.introduction-carousel__slide-image{ng-src: "{{slide.image}}"}
+        .introduction-carousel__slide-title
+          %strong {{ slide.title }}
+        .introduction-carousel__slide-description
+          {{ slide.description }}
+        .introduction-carousel__actions
+          .introduction-carousel__button
+            %button.lmo-btn--featured{ng-click: ""} LEARN MORE
+          .introduction-carousel__button
+            %button.lmo-btn--featured{ng-click: "dismiss()"} GET STARTED
 
       %a.introduction-carousel__arrow-next{ng-click: "prevSlide()"}
         .introduction-carousel__icon-container

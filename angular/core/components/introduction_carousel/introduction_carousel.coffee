@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'introductionCarousel', ->
   restrict: 'E'
   templateUrl: 'generated/components/introduction_carousel/introduction_carousel.html'
   replace: true
-  controller: ($scope, $animate, $timeout) ->
+  controller: ($scope) ->
 
     $scope.dismissed = false
 

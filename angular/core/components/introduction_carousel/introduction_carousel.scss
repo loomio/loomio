@@ -1,22 +1,21 @@
 .introduction-carousel {
   background-color: #e0e0e0;
   height: 100%;
+  left: 0;
   position: fixed;
+  top: 45px;
   width: 100%;
   z-index: 1 !important;
 }
 
 .introduction-carousel__slide-wrapper {
   align-items: center;
-  justify-content: center;
   display: flex;
-  margin: 20px auto;
+  justify-content: center;
+  margin: 50px auto 20px;
 }
 
-.introduction-carousel__slides {
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
+.introduction_carousel__slide {
   background-color: #fff;
   border: 1px solid;
   border-radius: 20px;
@@ -29,6 +28,32 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 300px;
+}
+
+.animated.ng-hide-add,
+.animated.ng-hide-remove {
+  -webkit-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  -moz-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  -ms-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  -o-transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  transition: 200ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.animated.ng-hide-add {
+  left: 100%;
+}
+
+.animated.ng-hide-add-active {
+  left: 0;
+  opacity: 0;
+}
+
+.animated.ng-hide-remove {
+  left: 0;
+}
+
+.animated.ng-hide-remove-active {
+  opacity: 0;
 }
 
 .introduction-carousel__slide-title {

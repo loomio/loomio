@@ -15,7 +15,6 @@ angular.module('loomioApp', ['ngNewRouter',
                              'angularMoment',
                              'offClick',
                              'ngMaterial',
-                             'angular-carousel',
                              'angulartics',
                              'angulartics.google.tagmanager']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, $analyticsProvider) ->
 
