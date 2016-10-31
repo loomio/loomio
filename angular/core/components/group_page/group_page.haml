@@ -2,20 +2,20 @@
   %loading{ng-if: "!groupPage.group"}
   %main.group-page.lmo-row{ng-if: "groupPage.group"}
     %outlet{name: "before_group_page", model: "groupPage.group"}
-      %group_theme{group: "groupPage.group", home-page: "true"}
-      .lmo-row
-        .lmo-group-column-left
-          %section.group-page__description{aria-labelledby: "description-card-title"}
-            %h2#description-card-title.lmo-card-heading{ translate: "group_page.description"}
-            .group-page__description-placeholder.lmo-placeholder.lmo-hint-text{translate: "group_page.description_placeholder", ng-if: "groupPage.showDescriptionPlaceholder()" }
-            .group-page__description-text.lmo-last.lmo-markdown-wrapper{ marked: "groupPage.group.description" }
-          %discussions_card{group: "groupPage.group", page_window: "groupPage.pageWindow"}
-        .lmo-group-column-right
-          %outlet{name: "before_group_column_right", model: "groupPage.group"}
-          %gift_card{group: "groupPage.group"}
-          %upgrade_plan_card{group: "groupPage.group"}
-          %membership_requests_card{group: "groupPage.group"}
-          %members_card{group: "groupPage.group"}
-          %group_previous_proposals_card{group: "groupPage.group"}
-          %subgroups_card{group: "groupPage.group"}
-          %group_help_card{group: "groupPage.group"}
+    %group_theme{group: "groupPage.group", home-page: "true"}
+    .lmo-row
+      .lmo-group-column-left
+        %section.group-page__description{aria-labelledby: "description-card-title"}
+          %h2#description-card-title.lmo-card-heading{ translate: "group_page.description"}
+          .group-page__description-placeholder.lmo-placeholder.lmo-hint-text{translate: "group_page.description_placeholder", ng-if: "groupPage.showDescriptionPlaceholder()" }
+          .group-page__description-text.lmo-last.lmo-markdown-wrapper{ marked: "groupPage.group.description" }
+        %discussions_card{group: "groupPage.group", page_window: "groupPage.pageWindow"}
+      .lmo-group-column-right
+        %outlet{name: "before_group_column_right", model: "groupPage.group"}
+        %gift_card{group: "groupPage.group"}
+        %upgrade_plan_card{group: "groupPage.group"}
+        %membership_requests_card{group: "groupPage.group"}
+        %members_card{group: "groupPage.group"}
+        %group_previous_proposals_card{group: "groupPage.group"}
+        %subgroups_card{group: "groupPage.group"}
+        %group_help_card{group: "groupPage.group"}
