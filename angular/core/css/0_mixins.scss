@@ -30,6 +30,9 @@ $abstain-color: #F6A82B;
 $disagree-color: #F96168;
 $block-color: #CE261B;
 
+// z-indexes
+$over-intercom: 2147483001; // On top of Intercom's arbitrarily high widget
+
 @mixin fontTiny {
   font-size: 12px;
   line-height: 14px;
