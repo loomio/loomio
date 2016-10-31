@@ -23,7 +23,11 @@ namespace :travis do
 
   task :protractor => :environment do
     puts "Starting to run protractor..."
-    system("cd angular && gulp protractor:now")
-    raise "protractor failed!" unless $?.exitstatus == 0
+    system("cd angular && gulp protractor:core")
+    raise "protractor:core failed!" unless $?.exitstatus == 0
+
+    puts "Starting to run plugin protractor..."
+    system("cd angular && gulp protractor:plugins")
+    raise "protractor:plugins failed!" unless $?.exitstatus == 0
   end
 end

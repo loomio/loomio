@@ -148,11 +148,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       return member.id != Session.user().id and
              member.id != model.authorId
 
-    canSeeTrialCard: (group) ->
-      group.subscriptionKind == 'trial' and
-      @canAdministerGroup(group) and
-      AppConfig.chargify?
-
     requireLoginFor: (page) ->
       return false if @isLoggedIn()
       switch page

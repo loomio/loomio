@@ -71,7 +71,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       if @available()
         $window.Intercom('showNewMessage')
       else
-        $window.location = LmoUrlService.contactForm()
+        $window.open LmoUrlService.contactForm(), '_blank'
 
   if $window? and $window.Intercom?
     $rootScope.$watch ->

@@ -27,6 +27,10 @@ md-dialog {
   background-color: $modal-background-color;
 }
 
+.md-dialog-container {
+  z-index: $over-intercom;
+}
+
 .modal-body {
   max-height: calc(90vh - 125px);
   overflow: auto;

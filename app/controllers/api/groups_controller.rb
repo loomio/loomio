@@ -29,15 +29,6 @@ class API::GroupsController < API::RestfulController
     respond_with_collection
   end
 
-  def use_gift_subscription
-    if SubscriptionService.available?
-      SubscriptionService.new(resource, current_user).start_gift!
-      respond_with_resource
-    else
-      respond_with_standard_error ActionController::BadRequest, 400
-    end
-  end
-
   def upload_photo
     ensure_photo_params
     service.update group: resource, actor: current_user, params: { params[:kind] => params[:file] }
