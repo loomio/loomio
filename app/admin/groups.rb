@@ -80,10 +80,10 @@ ActiveAdmin.register Group do
 
   show do |group|
     attributes_table do
-      row :group_request
       if const_defined?(Plugins.const_defined?("LoomioBuyerExperience"))
         row :standard_plan_link do link_to("standard subscription link", ChargifyService.standard_plan_url(group), target: '_blank' ) end
         row :plus_plan_link do link_to("plus subscription link", ChargifyService.plus_plan_url(group), target: '_blank') end
+        row :stats_report_link do link_to("Metabase!", "https://metabase.loomio.io/dash/14?parent_group_id=" + group.id.to_s, target: '_blank') end
         row('Subscription status') do |group| group.subscription.kind if group.subscription end
       end
       group.attributes.each do |k,v|

@@ -35,7 +35,7 @@ module Plugins
 
     def self.static_assets
       @@static_assets ||= begin
-        assets = active_plugins.map(&:static_assets).reduce(&:merge).reject(&:standalone).map(&:filename)
+        assets = Array(active_plugins.map(&:static_assets).reduce(&:merge)).reject(&:standalone).map(&:filename)
         {
           css: assets.select { |filename| ['scss', 'css'].include?  filename.split('.').last },
           js:  assets.select { |filename| ['js', 'coffee'].include? filename.split('.').last }
