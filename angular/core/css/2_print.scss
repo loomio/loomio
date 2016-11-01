@@ -13,6 +13,14 @@ header, .lmo-no-print, .sr-only { display: none !important; }
   display: block;
 }
 
-@media print {
-  .lmo-sidebar-and-main-container { overflow: visible !important; }
+.lmo-sidebar-and-main-container { overflow: visible !important; }
+
+.thread-page {
+  .group-theme__header--compact {
+    margin: 0 0 15px 0;
+  }
+
+  a[href]:after {
+    content: "" !important;
+  }
 }
