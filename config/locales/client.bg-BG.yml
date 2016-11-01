@@ -61,8 +61,6 @@ bg-BG:
     options_label: Опции
     options:
       label: Опции
-    leave_group:
-      title: Напусни групата
   membership_requests_page:
     approve: Одобряване
     ignore: Игнориране
@@ -71,13 +69,7 @@ bg-BG:
     name_label: Име
     coordinator_label: Координатор
     remove_member_label: Отстраняване
-    remove_membership:
-      submit: Отстраняване
   profile_page:
-    change_password:
-      current_password_label: Текуща парола
-      new_password_label: Нова парола
-      password_confirmation_label: Потвърди нов парола
     picture_label: Изображение
     name_label: Име
     email_label: E-mail

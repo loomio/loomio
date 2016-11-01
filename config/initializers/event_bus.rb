@@ -22,7 +22,8 @@ EventBus.configure do |config|
 
   # send bulk emails after events
   Event::BULK_MAIL_KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event| SendBulkEmailJob.perform_later(event.id) }
+    delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
+    config.listen("#{kind}_event") { |event| SendBulkEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
   # send individual emails after thread events
@@ -132,8 +133,5 @@ EventBus.configure do |config|
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
-
-  # end subscription for archived groups
-  config.listen('group_archive') { |group| SubscriptionService.new(group).end_subscription! }
 
 end

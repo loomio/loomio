@@ -1,6 +1,6 @@
 fr:
   common:
-    confirm_discard_changes: Annuler vos modifications?
+    confirm_discard_changes: Annuler vos modifications ?
     time:
       am: am
       pm: pm
@@ -93,6 +93,7 @@ fr:
     mute: Désactivé
     unmute: Réactiver le son
   change_volume_form:
+    aria_label: Changer le formulaire des paramètres des emails
     loud_label: "Toute l'activité"
     normal_label: Activité importante
     quiet_label: Aucun courriel
@@ -133,13 +134,20 @@ fr:
         normal: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans les nouveaux groupes
         quiet: Vous ne recevrez aucun courriel concernant les nouveaux groupes.
   mute_explanation_modal:
+    aria_label: Rendre muet le fil de discussion
     mute_thread: Désactiver la discussion
+    body_html: "<p>Rendre muet signifie que vous <strong>ne recevrez aucune notification concernant les propositions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu'un vous @mentionnne.</p>\n<p>Les fils de discussion muets sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos fils muets, sélectionnez l'option <strong>Muets</strong> de la barre latérale\_:</p>\n"
+    image_alt: Option fils de discussion muets dans la barre latérale
+  dismiss_explanation_modal:
+    aria_label: Passer la discussion
+    dismiss_thread: Passer la discussion
   inbox:
     clear: Vider
     latest: Dernier
     unread: Non lu
     closing_in: Fermeture
   sign_in_form:
+    aria_label: Formulaire de connexion
     title: Enregistrez-vous sur Loomio
     email_label: "Courriel\_:"
     email_placeholder: vous@exemple.com
@@ -154,8 +162,21 @@ fr:
       twitter: Se connecter avec Twitter
       google: Se connecter avec Google
       github: Se connecter avec Github
+  sign_up_form:
+    aria_label: Formulaire de connexion
+    title: 'Bienvenue sur Loomio ! Commençons votre installation'
+    name_label: 'Votre nom :'
+    name_placeholder: Madame X
+    email_label: Adresse e-mail
+    email_placeholder: vous@exemple.com
+    password_label: "Mot de passe\_:"
+    password_confirmation_label: 'Ce mot de passe à nouveau :'
+    sign_in_message: Vous avez déjà un compte ?
+    sign_in: Se connecter
+    sign_up: Créer un compte
   signed_out_modal:
-    title: Votre session a été clôturée
+    aria_label: Session terminée
+    title: Votre session est terminée
     message: Vous avez été déconnecté de Loomio depuis une autre fenêtre. Identifiez-vous pour continuer.
     ok: Ok
   comment_form:
@@ -183,11 +204,18 @@ fr:
     recent: Récent
     unread: Non lu
     muted: Désactivé
+    start_group: Démarrer un nouveau groupe
+    explore: Groupes publics
     edit_profile: Éditer le profil
     email_settings: Paramètres e-mail
     help: Aide
     contact: Contacter Loomio
     sign_out: Se déconnecter
+    aria_labels:
+      heading: Barre latérale
+      threads_list: Actions du fil de discussion
+      groups_list: Groupes
+      user_list: Actions utilisateur
   navbar:
     recent_title: Aller sur le tableau de bord
     unread_title: Voir les nouvelles activités
@@ -202,8 +230,11 @@ fr:
       proposals: Propositions
       comments: Commentaires
     sign_in: Se connecter
+    toggle_sidebar: Activer/désactiver la barre latérale
+    logo_title: Accueil
   start_menu:
-    title: "Bouton d'action"
+    label: Actions utilisateur
+    title: Action
     start_group: Créer un groupe
     start_subgroup: Créer un sous-groupe
     start_thread: Démarrer une discussion
@@ -263,16 +294,19 @@ fr:
   proposal_pie_chart:
     participation_statement: '{{percentage}}% des membres ont précisé leur position ({{number}}/{{total}})'
   close_proposal_form:
+    aria_label: Fermer la proposition
     close_proposal: Fermer la proposition
     helptext: Êtes-vous sûr de vouloir fermer cette proposition maintenant ?
     close_proposal_submit: 'Oui, fermer la proposition'
     messages:
       success: Proposition fermée
   extend_proposal_form:
+    aria_label: Changer la date de clôture
     title: "Modifier l'heure de fermeture"
     success: "L'heure de fermeture de la proposition a été modifiée"
     submit: "Modifier l'heure de fermeture"
   proposal_form:
+    aria_label: Suggestion de forme
     messages:
       created: Proposition créée
       updated: Proposition mise à jour
@@ -293,6 +327,7 @@ fr:
     created: 'La discussion {{title}} a bien été créée dans  {{groupName}}'
     updated: 'Modifications de {{title}} enregistrées'
   discussion_form:
+    aria_label: Forme de la discussion
     messages:
       created: Discussion démarrée
       updated: Discussion mise à jour
@@ -334,33 +369,27 @@ fr:
       demandons aux groupes qui utilisent Loomio depuis quelque temps de
       sélectionner une des options qui leur convienne.</p>
     submit: Montrez-moi les options
-  angular_welcome_modal:
-    heading: "Bienvenue sur le nouveau Loomio\_!"
-    context: "Nous avons travaillé dur pour construire ce nouveau Loomio optimisé. Toutes vos discussions et vos fonctionnalités préférées sont toujours là, avec en supplément de nouveaux gros changements\_:"
-    cleaner: "Une interface plus propre et plus intuitive\_: commencez des groupes plus facilement, invitez des gens et configurez les paramètres."
-    interactive: "Le tableau de bord interactif permet de rester informé plus facilement\_: les mises à jour ont lieu en direct sur l'écran."
-    mobile_ready: "C'est conçu pour tous vos appareils, du smartphone à l'ordinateur."
-    accessible: "C'est accessible pour les mal-voyants et traduit dans <a href='https://loomio.org/translation' target='_blank'>de nombreuses langues</a>."
-    emojis: "Et vous pouvez utiliser des emojis\_!"
-    ok_got_it: "D'accord, j'ai compris"
   group_welcome_modal:
+    aria_label: Bienvenue
     creator_heading: Bienvenue dans votre nouveau groupe
     member_heading: Bienvenue sur Loomio
     creator_info: "Vous êtes le <strong>coordinateur</strong> du groupe, c'est-à-dire l'hôte des discussions du groupe. Regardez la video et les exemples de discussions."
     member_info: 'Regardez cette vidéo pour une présentation du fonctionnement de Loomio. Ensuite essayez de publier un commentaire dans une discussion, ou commencez-en une !'
     creator_footer: 'Quand vous vous sentez prêt, vous pouvez commencer à <strong>inviter des personnes</strong> à vous rejoindre.'
     ok_got_it: "Ok, j'ai compris !"
-  group_cover_modal:
+  cover_photo_form:
+    aria_label: Changer la forme de la photo de couverture
     heading: Nouvelle photo de couverture
     upload_link: Charger une nouvelle photo de couverture
-    helptext: "En panne d'inspiration ? Allez voir <a href=\"https://unsplash.com/\">Unsplash</a>, une galerie d'images superbes et gratuites"
+    helptext: "À la recherche d'inspiration ? Allez voir <a href=\"https://unsplash.com/\">Unsplash</a>, une galerie d'images superbes et gratuites"
     image_size_helptext: "La taille d'image idéale est de 1400 x 320px"
-    upload_success: La photo de couverture a bien été modifiée
-  group_logo_modal:
+    upload_success: La photo de couverture a été mise à jour avec succès
+  logo_photo_form:
+    aria_label: Changer la forme du logo du groupe
     heading: Nouveau logo de groupe
     upload_link: Charger un nouveau logo de groupe
     image_size_helptext: "La taille d'image idéale est de 100 x 100px"
-    upload_success: Le logo a bien été modifié
+    upload_success: Le logo a été mis à jour avec succès
   join_group_button:
     join_group: Rejoindre le groupe
     ask_to_join_group: Demander à rejoindre le groupe
@@ -368,6 +397,7 @@ fr:
     messages:
       joined_group: 'Vous êtes désormais membre de {{group}}'
   membership_request_form:
+    aria_label: "Formulaire de demande d'adhésion"
     heading: Demander à rejoindre le groupe
     name_label: Nom
     email_label: E-mail
@@ -376,6 +406,7 @@ fr:
     messages:
       membership_requested: "Vous avez demandé l'accès à {{group}}"
   revision_history_modal:
+    aria_label: Historique de révision
     thread_header: Historique de révision du contexte de la discussion
     comment_header: Historique de révision du commentaire
     started_by: 'Démarrée par <strong>{{name}}</strong>'
@@ -401,6 +432,8 @@ fr:
       archive_group_success: Ce groupe a été désactivé
     group_logo: Logo du groupe
     new_photo: Nouvelle photo
+    new_cover_photo: Charger une nouvelle photo de couverture
+    new_group_logo: Charger un nouveau logo de groupe
     description: Description du groupe
     description_placeholder: 'Les coordinateurs des groupes peuvent utiliser cet espace pour décrire les propositions des groupes, de façon à ce que tout le monde sache pourquoi ils sont présents.'
     discussions: Discussions
@@ -423,16 +456,6 @@ fr:
       email_settings: Paramètres e-mail
       leave_group: Quitter le groupe
       deactivate_group: Désactiver le groupe
-    deactivate_group:
-      title: Désactiver le groupe
-      question: Êtes-vous sûr de vouloir désactiver ce groupe ?
-      submit: 'Oui, désactiver ce groupe'
-    leave_group:
-      title: Quitter le groupe
-      question: Êtes-vous sûr de vouloir quitter ce groupe ?
-      submit: 'Oui, quitter ce groupe'
-      cannot_leave_group: Vous ne pouvez pas quitter ce groupe car vous êtes le dernier coordinateur. Vous devez choisir un autre coordinateur ou désactiver le groupe.
-      add_coordinator: Ajouter un coordinateur
     volume:
       loud: "Envoyer un courriel dès qu'il y a de l'activité."
       loud_aria_description: "Votre volume de notification pour ce groupe est réglé sur Fort. Vous recevrez un courriel à chaque fois qu'il y a une activité."
@@ -451,27 +474,76 @@ fr:
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de {{parentGroupName}} et les membres de {{groupName}}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: "Groupe privé\_: {{privacy}}"
+  leave_group_form:
+    aria_label: Quitter le groupe
+    title: Quitter le groupe
+    question: Êtes-vous sûr de vouloir quitter ce groupe ?
+    submit: 'Oui, quitter ce groupe'
+    cannot_leave_group: Vous ne pouvez pas quitter ce groupe car vous êtes le dernier coordinateur. Vous devez choisir un autre coordinateur ou désactiver le groupe.
+    add_coordinator: Ajouter un coordinateur
+  archive_group_form:
+    aria_label: Désactiver le groupe
+    title: Désactiver le groupe
+    question: Êtes-vous sûr de vouloir désactiver ce groupe ?
+    submit: 'Oui, désactiver ce groupe'
+  confirm_gift_plan_modal:
+    heading: Les groupes gratuits sont supportés par les dons
+    body: "Les dons permettent aux groupes qui en ont besoin d'utiliser Loomio gratuitement. Nous demanderons occasionnellement aux utilisateurs des groupes gratuite de faire une contribution volontaire."
+    got_it: Rester sur la version gratuite
+    go_back: Améliorer
   donation_modal:
+    heading: Faire un don à Loomio ?
     body: Loomio est une entreprise sociale. Notre mission est de créer un monde où il soit facile pour chacun-e de prendre part aux décisions qui les concernent.
     contribute: Faire une contribution
+    got_to_group: 'Pas maintenant, merci.'
   gift_card:
     heading: Plan cadeau
     body: '<strong>{{name}}</strong> est un groupe soutenu par les dons. Pour aider Loomio à continuer à soutenir des groupes tel que le vôtre, cliquez ici :'
     make_a_contribution: Apporter une contribution
+  upgrade_plan_card:
+    heading: Est-ce que vous utilisez slack ?
+    body: 'Loomio et Slack fonctionnent bien ensemble ! Connectez-les.'
+    heading_alt: Vous voulez un nom de domaine personnalisé ?
+    body_alt: Rendez votre loomio facile à trouver avec votrenom.loomio.org
+    upgrade_plan: Améliorer maintenant
   trial_card:
     title: "30 jours d'essai"
     choose_plan: Choisissez votre option tarifaire
     in_progress_body: "Merci d'essayer Loomio avec <strong>{{name}}</strong>. Vous pouvez choisir l'option tarifaire qui vous convient à n'importe quel moment."
     expired_body_html: "<strong>{{name}}</strong> a désormais atteint la fin de son essai à Loomio. Si vous souhaitez continuer à l'utiliser, vous aurez besoin de choisir une option d'abonnement."
   choose_plan_modal:
+    aria_label: Choisissez un projet
     heading: Veuillez choisir votre option tarifaire
+    free: Gratuit
     standard: Standard
+    pro: Pro
+    per_month: /mois
+    standard_group_description: Tout ce dont vous avez besoin pour un groupe.
+    free_group_description: Soutien du projet de don pour les groupes de la communauté.
+    pro_group_description: 'Pour les organismes avec <nobr>plusieurs groupes.</nobr>'
+    benefit_1_group: 1 groupe
+    benefit_10_groups: 10 groupes
+    benefit_unlimited_members: Membres illimités
+    benefit_unlimited_decisions: Décisions illimitées
+    benefit_priority_support: Aide Premium
+    benefit_help_with_setup: "Aide avec l'installation initiale"
+    benefit_community_support: Soutient de la communauté
+    benefit_slack_integration: Intégration de Slack
+    benefit_custom_domain: Domaine personnalisé
+    benefit_analytics_reports: Rapports analytiques
+    benefit_data_export: Exportation des données
+    support_link: 'Parlons!'
+    prices_in_us_dollars: "Les prix sont en Dollars US, plus les taxes de vente là où elles s'appliquent."
+    need_help_please: "Besoin d'autre chose?"
     select: Sélectionner
   subscription_success_modal:
+    aria_label: Abonnement réussit
+    heading: "Vous êtes tous d'accord!"
     contact_link: Contactez-nous
     sign_off: "❤ de la part de l'équipe Loomio"
     ok_got_it: "Ok, j'ai compris !"
   group_form:
+    aria_label: Forme du groupe
     start_group_heading: Créer un groupe
     start_subgroup_heading: Créer un sous-groupe
     edit_group_heading: Modifier les paramètres du groupe
@@ -486,19 +558,12 @@ fr:
       private_to_group: Le nom et la description ne seront visibles que par les membres du groupe.
       private_to_parent_members: 'Le nom et la description ne seront visibles que par les membres du groupe {{parent}}.'
     privacy: Confidentialité
-    group_privacy_is_open_description: "n'importe qui peut trouver ce groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont publiques."
-    group_privacy_is_closed_description: "n'importe qui peut trouver ce groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont privées."
-    group_privacy_is_closed_public_threads_description: "n'importe qui peut trouver ce groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Les discussions peuvent être publiques ou privées."
-    group_privacy_is_secret_description: 'seules les personnes invitées peuvent trouver ce sous-groupe, voir qui sont les membres et lire les discussions.'
+    group_privacy_is_open_description: Tout le monde peut trouver le groupe et demander à le rejoindre. Seul les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques.
+    group_privacy_is_closed_description: Tout le monde peut trouver le groupe et demander à le rejoindre. Seul les membres peuvent voir qui est dans le groupe. Toutes les discussions sont privées.
     confirm_change_to_secret: 'Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées.'
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.'
     confirm_change_to_private_discussions_only: 'Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.'
-    subgroup_privacy_is_open_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont publiques."
-    subgroup_privacy_is_closed_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Toutes les discussions sont privées."
-    subgroup_privacy_is_closed_public_threads_description: "n'importe qui peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui appartient au groupe. Les discussions peuvent être publiques ou privées."
-    subgroup_privacy_is_closed_secret_parent_description: 'les membres de {{parent}} peuvent trouver ce sous-groupe et demander à le rejoindre. Toutes les discussions sont privées.  Seuls les membres peuvent voir qui appartient au groupe.'
-    subgroup_privacy_is_secret_description: 'seules les personnes invitées peuvent trouver ce sous-groupe, voir qui sont les membres et lire les discussions.'
     advanced_settings: Paramètres avancés
     how_do_people_join: Comment les personnes peuvent-elles rejoindre le groupe ?
     membership_granted_upon_request: "N'importe qui peut rejoindre le groupe"
@@ -550,10 +615,12 @@ fr:
   invitation_form:
     invite_people: Inviter des personnes
     group: Groupe
+    group_placeholder: Sélectionnez un groupe
     shareable_link: Lien partageable
     copy_link: Copier le lien
     email_addresses: Adresses e-mail
     email_addresses_placeholder: 'ex. helperbot@loomio.org, friendlybot@loomio.org'
+    shareable_link_explanation: Copiez le lien et envoyez-le à tout ceux que vous voulez ajouter au groupe. Cela leur donnera accès à toutes les discussions du groupe.
     email_explanation: Vous pouvez aussi entrer des adresse e-mail ci-dessous et Loomio leur enverra une invitation par e-mail.
     add_custom_message: Personnalisez votre invitation
     add_custom_message_link: ajouter un message personnalisé
@@ -571,6 +638,7 @@ fr:
       no_invitations: "Oh-oh ! Merci de vérifier l'adresse mail puis de réessayer."
       max_invitations: "Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d'équipe."
   add_members_modal:
+    aria_label: Ajoutez des membres du groupe parent
     heading: 'Ajouter des personnes de {{name}}'
     add_members: Ajouter des membres
     user_added_to_subgroup: '{{name}} ajouté au sous-groupe'
@@ -586,12 +654,13 @@ fr:
       remove_member_success: 'Enlever {{name}}'
       make_admin_success: '{{name}} est désormais un coordinateur'
       remove_admin_success: "{{name}} n'est plus un coordinateur"
-    remove_membership:
-      title: Supprimer le membre
-      question: 'Êtes-vous certain de vouloir supprimer {{name}} comme membre de {{group}} ?'
-      submit: Retirer
     remove_admin_from_self:
       question: Êtes-vous certain de ne plus pouvoir être coordinateur ?
+  remove_membership_form:
+    aria_label: Supprimer le membre
+    title: Supprimer le membre
+    question: 'Etes-vous sûr de vouloir supprimer {{name}} des membres de {{group}}?'
+    submit: Supprimer
   pending_invitations_card:
     heading: Invitations en attente
     email: Adresse e-mail
@@ -610,24 +679,6 @@ fr:
       picture_changed: Photo de profil mise à jour
       password_changed: Mot de passe mis à jour
       deactivated: Compte désactivé
-    change_picture:
-      title: Changer la photo
-      helptext: "Vous pouvez charger votre propre photo de profil, ou si vous avez un compte <a href=\"https://en.gravatar.com/support/what-is-gravatar/\">Gravatar</a>, vous pouvez l'utiliser."
-      use_initials: Utiliser les initiales
-      use_gravatar: Utiliser gravatar
-      use_uploaded: Charger une nouvelle photo
-    change_password:
-      title: Modifier le mot de passe
-      helptext: 'Les mots de passe doivent comporter au moins 8 caractères. Les mots de passe simples comme "motdepasse" sont interdits afin de préserver la sécurité de votre compte.'
-      current_password_label: Mot de passe actuel
-      new_password_label: Nouveau mot de passe
-      password_confirmation_label: Confirmer le nouveau mot de passe
-      submit: Mettre à jour le mot de passe
-    deactivate_user:
-      title: Désactivation du compte
-      question: Pourriez-vous nous dire pourquoi vous désactivez votre compte ?
-      placeholder: 'Cette réponse est facultative. Toute information que vous pourrez nous donner nous aidera à améliorer Loomio :)'
-      submit: Désactivation du compte
     change_picture_link: Changer de photo
     change_password_link: Modifier le mot de passe
     deactivate_user_link: Désactiver le compte...
@@ -639,6 +690,35 @@ fr:
     email_label: E-mail
     locale_label: Langue
     update_profile: Mettre à jour le profil
+    deactivate_account: Désactiver le compte
+  change_picture_form:
+    aria_label: "Changer la forme de l'image"
+    title: "Changer l'image"
+    use_uploaded: Télécharger une nouvelle image
+  change_password_form:
+    aria_label: Formulaire de changement de mot de psse
+    title: Changer le Mot de Passe
+    helptext: 'Le mot de passe doit contenir 8 caractères. Les mots de passe communs tels que "motdepas" sont interdits pour la sécurité de votre compte.'
+    current_password_label: Mot de passe actuel
+    new_password_label: Nouveau mot de passe
+    password_confirmation_label: Nouveau mot de passe confirmé
+    submit: Mettre à jour le mot de passe
+  deactivation_modal:
+    aria_label: Désactiver le compte
+    introduction: 'Quand vous désactivez votre compte:'
+    no_longer_group_member: "Vous ne serez plus enregistré comme membre d'aucun groupe"
+    no_emails: "Vous ne recevrez plus d'emails concernant Loomio"
+    contact_for_reactivation: Vous aurez besoin de nous recontacter pour réactiver votre compte
+    submit: 'Oui, je veux désactiver'
+  deactivate_user_form:
+    aria_label: Désactivation du compte
+    title: Compte désactivé
+    question: Pouvez-vous nous dire pourquoi vous désactivez votre compte?
+    placeholder: "Vous n'êtes pas obligé de répondre à cette question. Toute information que vous nous partagerez nous aidera à améliorer Loomio :)"
+    submit: Désactiver le compte
+  only_coordinator_modal:
+    aria_label: Impossible de désactiver le compte
+    explanation: 'Un groupe doit avoir au moins un coordinateur. Vous êtes le seul coordinateur des groupes suivants:'
   email_settings_page:
     header: Réglages de courriel
     all_groups: Paramètres pour tous les groupes
@@ -674,6 +754,10 @@ fr:
     view_recent: Voir toutes les discussions récentes ?
     load_more: Charger plus de discussions
     mark_as_read: Marquer comme lu
+    dismiss: Laisser.
+    thread_dismissed: Discussion laissée.
+    explain_mute:
+      title: "Vous n'avez pas encore désactivé toutes les discussions."
     filtering:
       filter_threads: Filtrer les discussions
       filter_threads_aria_label: Filtrer les discussions
@@ -737,6 +821,7 @@ fr:
     edited: Modifié
     volume:
       mute_message: Discussion désactivée.
+      unmute_message: Discussion réactivée
   thread_group:
     aria_label: Nom du groupe
   thread_context:
@@ -744,10 +829,12 @@ fr:
     thread_options: Options de la discussion
     email_settings: Paramètres e-mail
     edit_thread: Editer
+    mute_thread: Muet
     move_thread: Déplacer
     print_thread: Imprimer
     delete_thread: Supprimer
   delete_thread_form:
+    aria_label: Supprimer la discussion
     title: Supprimer la discussion
     body: Êtes vous sûr de vouloir supprimer cette discussion ?
     confirm: 'Oui, supprimer la discussion'
@@ -1047,7 +1134,7 @@ fr:
     give_feedback: Donner votre avis
     collapse: Réduire
     enable:
-      invite: 'Essayer le nouveau Loomio !'
+      invite: 'Essayez le nouveau Loomio !'
       title: Essayer le nouveau Loomio
       intro: "Nous avons reconstruit Loomio et nous avons besoin de votre aide pour nous assurer qu'il est génial\_!"
       body_html: >
@@ -1102,8 +1189,8 @@ fr:
   authorized_apps_page:
     title: Applications autorisées
     no_applications: "Vous n'avez pas encore autorisé d'application tierce."
-    notice: "Vous avez donné aux applications tierces suivantes les permissions pour utiliser votre compte. cliquez sur «Révoquer\_» pour désactiver ces permissions."
-    revoke: Révoquer
+    notice: "Vous avez donné aux applications tierces suivantes la permission d'utiliser votre compte. cliquez sur «Retirer\_» pour désactiver ces permissions."
+    revoke: Retirer
   registered_apps_page:
     title: Applications enregistrées
     no_applications: 'Aucune application OAuth ! Cliquez ci-dessous pour en créer une.'
@@ -1112,6 +1199,7 @@ fr:
     create_new_application: Nouvelle application
   registered_app_page:
     uid: "ID de l'application"
+    secret: Application secrète
   registered_app_form:
     new_application_title: Nouvelle application
     edit_application_title: "Mettre à jour l'application"
@@ -1123,12 +1211,12 @@ fr:
     new_application_submit: "Créer l'application"
     edit_application_submit: "Mettre à jour l'application"
     messages:
-      logo_changed: Commentaire mis à jour.
+      logo_changed: Logo mis à jour.
       created: "'{{name}}' créé"
       updated: "'{{name}}' mis à jour"
   remove_app_form:
     title: 'Désactiver {{name}}'
-    question: "Êtes-vous sûr de pouvoir désactiver l'application  '{{name}}'\_? Cette action est irréversible."
+    question: "Êtes-vous sûr de vouloir désactiver l'application  '{{name}}'\_? Cette action est irréversible."
     submit: Désactiver
     messages:
       success: "'{{name}} a été désactivé avec succès"

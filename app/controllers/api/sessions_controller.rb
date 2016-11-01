@@ -5,7 +5,7 @@ class API::SessionsController < Devise::SessionsController
     if user = warden.authenticate(scope: resource_name)
       sign_in resource_name, user
       flash[:notice] = t(:'devise.sessions.signed_in')
-      render json: CurrentUserSerializer.new(user).as_json
+      render json: CurrentUserData.new(user).data
     else
       render json: { errors: { password: [t(:"devise.failure.invalid")] } }, status: 401
     end

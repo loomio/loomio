@@ -47,16 +47,11 @@ hr:
         membership_is_invitation_only: Za pridruživanje grupi mora vas pozvati član / ica grupe.
         membership_is_invitation_by_admin_only: U ovu grupu mora vas pozvati koordinator / ica.
     invite_people: Pozovi ljude
-    leave_group:
-      title: Napusti grupu
   membership_requests_page:
     ignore: Ignoriraj
   memberships_page:
     members: Članovi
   profile_page:
-    deactivate_user:
-      title: Deaktiviraj račun
-      submit: Deaktiviraj račun
     profile: Profil
   thread_group:
     aria_label: Ime grupe

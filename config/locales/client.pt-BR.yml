@@ -195,7 +195,6 @@ pt-BR:
       comments: Comentários
     sign_in: Entrar
   start_menu:
-    title: Botão de ação
     start_group: Iniciar Grupo
     start_subgroup: Iniciar Subgrupo
     start_thread: Iniciar Tópico
@@ -325,15 +324,6 @@ pt-BR:
       preços e estamos pedindo grupos que tenham usado Loomio por um tempo para
       escolher um plano que lhes for convieniente.</p>
     submit: Mostre-me os planos
-  angular_welcome_modal:
-    heading: 'Bem-vindo ao novo Loomio!'
-    context: 'Temos trabalhado duro para construir um fantástico novo Loomio. Todas as suas discussões e recursos favoritos no Loomio ainda estão aqui, além de novas grandes mudanças:'
-    cleaner: 'Interface mais clara e intuitiva: mais fácil para começar grupos, convidar pessoas e configurar definições.'
-    interactive: 'O painel interativo torna mais fácil ficar em dia: atualizações acontecem ao vivo na tela.'
-    mobile_ready: 'Projetado para todos os seus dispositivos, desde smartphone até desktop.'
-    accessible: "É acessível a pessoas cegas e traduzido para <a href='https://loomio.org/translation' target='_blank'>montões de idiomas</a>."
-    emojis: 'E você pode utilizar emojis!'
-    ok_got_it: 'OK, entendi!'
   group_welcome_modal:
     creator_heading: Bem-vindo ao seu novo grupo
     member_heading: Bem-vindo ao Loomio
@@ -341,17 +331,6 @@ pt-BR:
     member_info: 'Assista esse vídeo para uma visão geral de como o Loomio funciona. Em seguida, tente postar um comentário em uma discussão ou iniciar uma!'
     creator_footer: 'Quando estiver pronto, <strong>convide pessoas</strong>.'
     ok_got_it: 'OK, entendi!'
-  group_cover_modal:
-    heading: Nova foto da capa
-    upload_link: Carregar nova foto da capa
-    helptext: 'Buscando inspiração? Dê uma olhada em <a href="https://unsplash.com/">Unsplash</a>, uma galeria de lindas imagens gratuitas'
-    image_size_helptext: O tamanho ideal da magem é 1400 x 320px
-    upload_success: Foto da capa atualizada com sucesso
-  group_logo_modal:
-    heading: Nova logo do grupo
-    upload_link: Carregar nova logo do grupo
-    image_size_helptext: O tamanho ideal da imagem é 100 x 100px
-    upload_success: Logo atualizada com sucesso
   join_group_button:
     join_group: Entrar no grupo
     ask_to_join_group: Pedir para entrar no grupo
@@ -414,16 +393,6 @@ pt-BR:
       email_settings: Configurações de e-mail
       leave_group: Sair do Grupo
       deactivate_group: Desativar Grupo
-    deactivate_group:
-      title: Desativar grupo
-      question: Você tem certeza que deseja desativar este grupo?
-      submit: 'Sim, Desative este grupo'
-    leave_group:
-      title: Sair do grupo
-      question: Você tem certeza que deseja sair deste grupo?
-      submit: 'Sim, sair deste grupo'
-      cannot_leave_group: Você não pode deixar este grupo porque você é o último coordenador. Você precisa escolher um outro coordenador ou desativar o grupo.
-      add_coordinator: Adicionar um coordenador
     volume:
       loud: Enviar e-mail sempre que houver atividade.
       loud_aria_description: O seu volume de notificação para este grupo está definido como Alto. Você receberá um e-mail sempre que houver atividade.
@@ -477,19 +446,10 @@ pt-BR:
       private_to_group: Nome e descrição estarão visíveis apenas para membros
       private_to_parent_members: 'Nome e descrição estarão visíveis para membros de {{parent}}'
     privacy: Privacidade
-    group_privacy_is_open_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são públicos.
-    group_privacy_is_closed_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são particulares.
-    group_privacy_is_closed_public_threads_description: qualquer pessoa pode encontrar o grupo e pedir para participar. Somente usuários podem ver quem está no grupo. Tópicos podem ser públicos ou privados.
-    group_privacy_is_secret_description: 'apenas membros convidados podem encontrar o grupo, ver quem está nele e ver tópicos.'
     confirm_change_to_secret: 'Se você continuar, todos os tópicos neste grupo e seus subgrupos serão privados.'
     confirm_change_to_secret_subgroup: 'Se você continuar, todos os tópicos serão privados.'
     confirm_change_to_public: 'Se você continuar, os tópicos neste grupo serão públicos na web.'
     confirm_change_to_private_discussions_only: 'Se você continuar, qualquer tópico público deste grupo será privado.'
-    subgroup_privacy_is_open_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são públicos.
-    subgroup_privacy_is_closed_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Todos os tópicos são particulares.
-    subgroup_privacy_is_closed_public_threads_description: qualquer pessoa pode encontrar este subgrupo e pedir para participar. Somente usuários podem ver quem está no grupo. Tópicos podem ser públicos ou privados.
-    subgroup_privacy_is_closed_secret_parent_description: 'membros de {{parent}} pode encontrar este subgrupo e pedir para participar. Todos os tópicos são privados. Somente usuários podem ver quem está no grupo.'
-    subgroup_privacy_is_secret_description: 'apenas membros convidados podem encontrar este subgrupo, ver quem está nele e ver tópicos.'
     advanced_settings: Configurações avançadas
     how_do_people_join: Como as pessoas participam?
     membership_granted_upon_request: Qualquer um pode entrar no grupo
@@ -577,10 +537,6 @@ pt-BR:
       remove_member_success: 'Removido {{name}}'
       make_admin_success: '{{name}} agora é um coordenador'
       remove_admin_success: '{{name}} não é mais um coordenador'
-    remove_membership:
-      title: Remover membro
-      question: 'Você tem certeza que deseja remover {{name}} como membro de {{group}}?'
-      submit: Remover
     remove_admin_from_self:
       question: Você tem certeza que não deseja mais ser coordenador?
   pending_invitations_card:
@@ -601,24 +557,6 @@ pt-BR:
       picture_changed: Imagem do perfil atualizada
       password_changed: Senha atualizada
       deactivated: Conta desativada
-    change_picture:
-      title: Mudar foto
-      helptext: 'Você pode enviar sua própria foto do perfil ou, se você tiver uma conta <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a>, você pode usá-la.'
-      use_initials: Use iniciais
-      use_gravatar: Usar gravatar
-      use_uploaded: Enviar uma nova foto
-    change_password:
-      title: Mudar Senha
-      helptext: 'Senhas devem ter 8 caracteres. Senhas comuns, tais como "senha", são proibidas para manter sua conta segura.'
-      current_password_label: Senha atual
-      new_password_label: Nova senha
-      password_confirmation_label: Confirmar a nova senha
-      submit: Atualizar senha
-    deactivate_user:
-      title: Desativar conta
-      question: Você nos diria por que está desativando a sua conta?
-      placeholder: 'Responder esta pergunta é opcional. Qualquer informação que você compartilhar nos ajudará a melhorar o Loomio :)'
-      submit: Desativar conta
     change_picture_link: Mudar imagem
     change_password_link: Mudar senha
     deactivate_user_link: Desativar conta...

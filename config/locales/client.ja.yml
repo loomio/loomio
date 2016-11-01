@@ -99,8 +99,6 @@ ja:
     options_label: オプション
     options:
       label: オプション
-    leave_group:
-      title: グループを離れます
   group_form:
     privacy: プライバシー
     submit_update: 設定更新
@@ -112,13 +110,7 @@ ja:
     name_label: 氏名
     coordinator_label: コーディネーター
     remove_member_label: 削除
-    remove_membership:
-      submit: 削除
   profile_page:
-    change_password:
-      current_password_label: 現在のパスワード
-      new_password_label: 新しいパスワード
-      password_confirmation_label: 新しいパスワードを再入力してください
     profile: プロフィール
     picture_label: 画像
     name_label: 氏名

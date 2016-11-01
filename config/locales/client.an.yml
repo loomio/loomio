@@ -93,8 +93,6 @@ an:
     options_label: Opcions
     options:
       label: Opcions
-    leave_group:
-      title: Abandonar grupo
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
@@ -103,18 +101,7 @@ an:
     name_label: Nombre
     coordinator_label: Coordinador
     remove_member_label: Borrar
-    remove_membership:
-      submit: Borrar
   profile_page:
-    change_picture:
-      use_initials: Usar inicials
-    change_password:
-      current_password_label: Clau actual
-      new_password_label: Nueva clau
-      password_confirmation_label: Confirmar nueva clau
-    deactivate_user:
-      title: Desactiva a tuya cuenta
-      submit: Desactiva a tuya cuenta
     profile: Perfil
     picture_label: Imachen
     name_label: Nombre

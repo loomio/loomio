@@ -133,7 +133,6 @@ ar:
       proposals: المقترحات
       comments: التعليقات
   start_menu:
-    title: زر العمل
     start_group: إبدأ مجموعة
     start_subgroup: إبدأ مجموعة فرعية
     start_thread: إبدأ موضوعاً
@@ -262,17 +261,6 @@ ar:
     submit: أرني الخطط
   group_welcome_modal:
     ok_got_it: 'حسناً، لقد فهمت!'
-  group_cover_modal:
-    heading: صورة غلاف جديدة.
-    upload_link: قم بتحميل صورة غلاف جديدة
-    helptext: 'هل تبحث عن إلهام؟ قم باستعراض معرض الصور المجانية <a href="https://unsplash.com/">Unsplash</a>.'
-    image_size_helptext: الحجم المثالي للصورة 1400x320px
-    upload_success: تم تحديث صورة الغلاف بنجاح
-  group_logo_modal:
-    heading: شعار جديد للمجموعة
-    upload_link: قم بتحميل شعار جديد للمجموعة
-    image_size_helptext: الحجم المثالي للصورة 100x100px
-    upload_success: تم تحديث الشعار بنجاح
   join_group_button:
     join_group: انضم للمجموعة
     ask_to_join_group: قم بطلب الانضمام للمجموعة
@@ -333,16 +321,6 @@ ar:
       manage_subscription: إدارة اشتراكات المجموعة
       leave_group: غادر المجموعة
       deactivate_group: إلغاء المجموعة
-    deactivate_group:
-      title: إلغاء المجموعة
-      question: هل أنت متأكد أنك تريد إلغاء المجموعة؟
-      submit: أجل، قم بإلغاء المجموعة
-    leave_group:
-      title: غادر المجموعة
-      question: هل أنت متأكد أنك تريد مغادرة المجموعة؟
-      submit: أجل، غادر المجموعة
-      cannot_leave_group: لا يمكنك مغادرة هذه المجموعة لأنك المنسق الأخير. عليك أن تقوم باختيار منسق آخر أو أن تقوم بإلغاء المجموعة.
-      add_coordinator: إضافة منسق
     volume:
       loud: قم بإرسال رسالة الكترونية عندما يكون هناك أي نشاط.
       loud_aria_description: صوت التنبيه لتبليغات هذه المجموعة عالٍ. سيتم إبلاغك برسالة الكترونية عندما يكون هناك أي نشاط.
@@ -396,19 +374,10 @@ ar:
       private_to_group: سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
     privacy: الخصوصية
-    group_privacy_is_open_description: يمكن لأي شخص إيجاد المجموعة و طلب الانضمام. يمكن للأعضاء فقط رؤية من هو في داخل المجموعة. كل الموضوعات عامة.
-    group_privacy_is_closed_description: يمكن لأي شخص إيجاد المجموعة و طلب الانضمام. يمكن للأعضاء فقط رؤية من في داخل المجموعة. كل الموضوعات خاصة.
-    group_privacy_is_closed_public_threads_description: يمكن لأي شخص إيجاد المجموعة و طلب الانضمام. يمكن للأعضاء فقط رؤية من في داخل المجموعة. يمكن للموضوعات أن تكون عامة أو خاصة.
-    group_privacy_is_secret_description: فقط الأعضاء الذين يتم دعوتهم يمكنهم إيجاد المجموعة، و رؤية من في داخل المجموعة و رؤية الموضوعات.
     confirm_change_to_secret: في حالة الاستمرار، سيتم تحويل كل الموضوعات في المجموعة و المجموعات الفرعية لموضوعات خاصة.
     confirm_change_to_secret_subgroup: في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.
     confirm_change_to_public: في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.
     confirm_change_to_private_discussions_only: في حالة الاستمرار سيتم تحويل كافة المواضيع العامة في المجموعة إلى خاصة.
-    subgroup_privacy_is_open_description: يمكن لأي شخص إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. كل المواضيع عامة.
-    subgroup_privacy_is_closed_description: يمكن لأي شخص إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. كل المواضيع خاصة.
-    subgroup_privacy_is_closed_public_threads_description: يمكن لأي شخص إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. يمكن للمواضيع أن تكون عامة أو خاصة.
-    subgroup_privacy_is_closed_secret_parent_description: 'يمكن لأعضاء {{parent}} إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. كل المواضيع خاصة.'
-    subgroup_privacy_is_secret_description: يمكن فقط للأعضاء الذين تتم دعوتهم إيجاد هذه المجموعة الفرعية و رؤية من فيها و رؤية المواضيع.
     advanced_settings: إعدادات متقدمة
     how_do_people_join: كيف يمكن للأشخاص الانضمام؟
     membership_granted_upon_request: يمكن لأي شخص الانضمام
@@ -496,10 +465,6 @@ ar:
       remove_member_success: 'تمت إزالة {{name}}'
       make_admin_success: 'تم تعيين {{name}} منسقاً'
       remove_admin_success: '{{name}} لم يعد منسقاً'
-    remove_membership:
-      title: إزالة عضو
-      question: 'هل أنت متأكد أنك تريد إزالة {{name}} من عضوية {{group}}؟'
-      submit: إزالة
     remove_admin_from_self:
       question: هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟
   pending_invitations_card:
@@ -520,24 +485,6 @@ ar:
       picture_changed: تم تحديث صورة الملف الشخصي
       password_changed: تم تحديث كلمة المرور
       deactivated: تم إلغاء الحساب
-    change_picture:
-      title: تغيير الصورة
-      helptext: 'بإمكانك تحميل الصور على ملفك الشخصي، أو إذا كان لديك حساب على <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> يمكنك استخدامه.'
-      use_initials: استخدام أحرف الأسم الأولى
-      use_gravatar: استخدام الغرافاتار
-      use_uploaded: تحميل صورة جديدة
-    change_password:
-      title: تغيير كلمة المرور
-      helptext: 'يجب على كلمة المرور أن تكون بطول 8 أحرف. كلمات المرور المألوفة مثل "password" ممنوعة من أجل سلامة حسابك.'
-      current_password_label: كلمة المرور الحالية
-      new_password_label: كلمة المرور الجديدة
-      password_confirmation_label: قم بتأكيد كلمة المرور الجديدة
-      submit: تحديث كلمة المرور
-    deactivate_user:
-      title: إلغاء الحساب
-      question: هل يمكنك أن تخبرنا بسبب إلغاء حسابك؟
-      placeholder: 'الإجابة على هذا السؤال اختيارية. أي معلومات تشاركها ستساعدنا على تحسين لوميو :)'
-      submit: إلغاء الحساب
     change_picture_link: تغيير الصورة
     change_password_link: تغيير كلمة المرور
     deactivate_user_link: إلغاء الحساب

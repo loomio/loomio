@@ -71,6 +71,7 @@ zh-TW:
     set_outcome_btn: 確立提案結果
     edit_outcome_link: 編輯提案結果
   proposal_outcome_form:
+    aria_label: 提案成果表單
     set_outcome: 確立提案結果
     update_outcome: 更新提案結果
     outcome_label: 提案成果
@@ -93,6 +94,7 @@ zh-TW:
     mute: 靜音
     unmute: 解除靜音
   change_volume_form:
+    aria_label: 變更電子郵件設定表單
     loud_label: 所有動態
     normal_label: 重要動態
     quiet_label: 不寄電子郵件
@@ -133,6 +135,7 @@ zh-TW:
         normal: 您將會收到任何新群組的新討論串與提案的電子郵件。
         quiet: 您將不會收到任何關於新群組的電子郵件。
   mute_explanation_modal:
+    aria_label: 討論串設為靜音
     mute_thread: 討論串設為靜音
     body_html: >
       <p>靜音代表您<strong>將不會被提醒關於提案的事情</strong>，或是任何其他在此討論串的動態，除非某人 <strong>@提及
@@ -141,6 +144,7 @@ zh-TW:
       <p>已靜音也會從<strong>最近的</strong>討論串與<strong>未讀</strong>頁面中隱藏。要尋找您已靜音的討論串，請從側邊欄選取<strong>已靜音</strong>選項：</p>
     image_alt: 在側邊欄中的已靜音討論串選項
   dismiss_explanation_modal:
+    aria_label: 暫時忽略討論串
     dismiss_thread: 暫時忽略討論串
     body_html: |
       <p>暫時忽略討論串會將其從您的未讀項目中移除。若有任何新的
@@ -151,6 +155,7 @@ zh-TW:
     unread: 未讀
     closing_in: 定案
   sign_in_form:
+    aria_label: 登入表單
     title: 登入 Loomio
     email_label: 電子郵件：
     email_placeholder: you@example.com
@@ -166,6 +171,7 @@ zh-TW:
       google: 使用 Google 登入
       github: 使用 GitHub 登入
   sign_up_form:
+    aria_label: 註冊表單
     title: 歡迎來到 Loomio！我們來設定一下吧
     name_label: 您的名字
     name_placeholder: Jane Doe
@@ -177,6 +183,7 @@ zh-TW:
     sign_in: 登入
     sign_up: 建立帳號
   signed_out_modal:
+    aria_label: 工作階段已結束
     title: 您的工作階段已結束
     message: 您已經從其他視窗登出 Loomio。請重新登入以繼續。
     ok: 確定
@@ -234,7 +241,8 @@ zh-TW:
     toggle_sidebar: 切換側邊欄
     logo_title: 首頁
   start_menu:
-    title: 動作按鈕
+    label: 使用者動作
+    title: 動作
     start_group: 啟動群組
     start_subgroup: 啟動子群組
     start_thread: 啟動討論串
@@ -294,16 +302,19 @@ zh-TW:
   proposal_pie_chart:
     participation_statement: '{{percentage}}% 的成員已經陳述他們的立場 ({{number}}/{{total}})'
   close_proposal_form:
+    aria_label: 提議定案
     close_proposal: 提議定案
     helptext: 您確定想要現在定案此提案嗎？
     close_proposal_submit: 是的，定案提案
     messages:
       success: 提議已定案
   extend_proposal_form:
+    aria_label: 變更定案時間
     title: 變更定案時間
     success: 提案關閉時間已更新
     submit: 更新定案時間
   proposal_form:
+    aria_label: 提案表單
     messages:
       created: 提案已啟動
       updated: 提案已更新
@@ -324,6 +335,7 @@ zh-TW:
     created: '討論串 {{title}} 已在 {{groupName}} 中成功的被建立'
     updated: '儲存變更到 {{title}}'
   discussion_form:
+    aria_label: 討論串表單
     messages:
       created: 討論串已啟動
       updated: 討論串已更新
@@ -361,29 +373,23 @@ zh-TW:
       <p>我們非常感謝您過去一年來的支持，我們也很興奮，想要讓 Loomio 可以在 2016 年變得更好。</p>
       <p>Loomio 對您的群組有用嗎？我們剛發佈我們的定價模式，且正在詢問已經使用 Loomio 的群組挑選一組適合他們的定價方案。</p>
     submit: 給我看定價方案
-  angular_welcome_modal:
-    heading: 歡迎來到新的 Loomio！
-    context: 我們努力建立了一個炫麗的新 Loomio。您所有的討論與最愛的 Loomio 功能都還在那裡，再加上超棒的變更：
-    cleaner: 更簡潔、更直觀的介面：啟動群組、邀請夥伴進入與設定更簡單。
-    interactive: 互動式儀表板讓跟上更新更簡單：更新會即時在螢幕上呈現。
-    mobile_ready: 其設計給您所有的裝置使用，從智慧型手機到桌上型電腦都可以用。
-    accessible: "其讓盲人可以使用並翻譯成<a href='https://loomio.org/translation' target='_blank'>多種語言</a>。"
-    emojis: 而且您可以使用表情符號了！
-    ok_got_it: 好，知道了！
   group_welcome_modal:
+    aria_label: 歡迎
     creator_heading: 歡迎來到您的新群組
     member_heading: 歡迎使用 Loomio
     creator_info: '您是群組的<strong>協調者</strong>，這就像是主人一樣。觀看影片，然後再看看範例討論串。'
     member_info: 觀看簡介 Loomio 如何運作的影片。然後嘗試在討論串中貼出意見，或是啟動一個您自己的討論串！
     creator_footer: '當您準備好時，<strong>邀請伙伴們</strong>進來。'
     ok_got_it: 好的，了解了！
-  group_cover_modal:
+  cover_photo_form:
+    aria_label: 變更封面照片表單
     heading: 新的封面圖片
     upload_link: 上傳新的封面圖片
     helptext: '正在尋找靈感嗎？看看 <a href="https://unsplash.com/">Unsplash</a> 吧，這是一個有著免費的美麗圖片的藝廊網站'
     image_size_helptext: 理想的圖片尺寸是 1400 x 320 像素
     upload_success: 成功更新封面圖片
-  group_logo_modal:
+  logo_photo_form:
+    aria_label: 變更群組圖示表單
     heading: 新的群組圖示
     upload_link: 上傳新的群組圖示
     image_size_helptext: 理想的圖片尺寸是 100 x 100 像素
@@ -395,6 +401,7 @@ zh-TW:
     messages:
       joined_group: '您現在是 {{group}} 的成員了'
   membership_request_form:
+    aria_label: 成員資格申請表單
     heading: 要求加入群組
     name_label: 名字
     email_label: 電子郵件
@@ -403,6 +410,7 @@ zh-TW:
     messages:
       membership_requested: '您已經申請 {{group}} 的成員資格'
   revision_history_modal:
+    aria_label: 修訂歷史
     thread_header: 討論串內容修訂歷史
     comment_header: 評論編輯修訂歷史
     started_by: '由 <strong>{{name}}</strong> 所啟動'
@@ -428,6 +436,8 @@ zh-TW:
       archive_group_success: 這個群組已被停用
     group_logo: 群組標誌
     new_photo: 新圖片
+    new_cover_photo: 上傳新的封面圖片
+    new_group_logo: 上傳新的群組圖示
     description: 群組描述
     description_placeholder: 群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。
     discussions: 討論
@@ -450,16 +460,6 @@ zh-TW:
       email_settings: 電子郵件設定
       leave_group: 離開群組
       deactivate_group: 停用群組
-    deactivate_group:
-      title: 停用群組
-      question: 您確定您想要停用此群組嗎？
-      submit: 是的，停用此群組
-    leave_group:
-      title: 離開群組
-      question: 您確定您想要離開此群組嗎？
-      submit: 是的，離開此群組
-      cannot_leave_group: 您無法離開這個群組，因為您是僅存的協調者。您將會需要選擇其他的協調者或是停用這個群組。
-      add_coordinator: 加入協調者
     volume:
       loud: 只要有活動就立刻寄發電子郵件。
       loud_aria_description: 您在此群組的通知音量設定為大聲。只要一有動態，您就會收到電子郵件。
@@ -478,6 +478,18 @@ zh-TW:
       parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
       public: 隱私權：此群組現在能在網路上被看到
       aria_label: '群組隱私：{{privacy}}'
+  leave_group_form:
+    aria_label: 離開群組
+    title: 離開群組
+    question: 您確定您想要離開此群組嗎？
+    submit: 是的，離開此群組
+    cannot_leave_group: 您無法離開這個群組，因為您是僅存的協調者。您將會需要選擇其他的協調者或是停用這個群組。
+    add_coordinator: 新增協調者
+  archive_group_form:
+    aria_label: 停用群組
+    title: 停用群組
+    question: 您確定您想要停用此群組嗎？
+    submit: 是的，停用此群組
   confirm_gift_plan_modal:
     heading: 免費的群組是依靠捐款支援的
     body: 捐款讓那些需要免費使用 Loomio 的群組變為可能。我們將會不定期詢問免費群組的人們是否願意捐款。
@@ -504,6 +516,7 @@ zh-TW:
     in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的群組的定價方案。'
     expired_body_html: '<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。'
   choose_plan_modal:
+    aria_label: 選擇方案
     heading: 請為您的群組選擇方案
     free: 免費
     standard: 標準方案
@@ -528,6 +541,7 @@ zh-TW:
     need_help_please: 需要其他東西？
     select: 選取
   subscription_success_modal:
+    aria_label: 訂閱成功
     heading: 您全部都設定好了！
     receipt: 您將會收到一封包含收據的電子郵件，其中也會包含客戶入口的連結，您可以在那裡變更、升級或是取消您的訂閱，並存取帳單歷史。
     change_subscription: 若您想要設定 Slack 整合或是您的自訂網域名稱，
@@ -535,6 +549,7 @@ zh-TW:
     sign_off: 從 Loomio 團隊而來的 ❤
     ok_got_it: 好的，了解了！
   group_form:
+    aria_label: 群組表單
     start_group_heading: 啟動群組
     start_subgroup_heading: 啟動子群組
     edit_group_heading: 編輯群組設定
@@ -549,10 +564,10 @@ zh-TW:
       private_to_group: 名稱與描述都將只會對成員可見。
       private_to_parent_members: '名稱與描述將會對 {{parent}} 的成員可見'
     privacy: 隱私權
-    group_privacy_is_open_description: 任何人都可以找到群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
-    group_privacy_is_closed_description: 任何人都可以找到群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
-    group_privacy_is_closed_public_threads_description: 任何人都可以找到群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。
-    group_privacy_is_secret_description: 只有被邀請的成員才能找到群組，並檢視有誰在裡面以及觀看討論串。
+    group_privacy_is_open_description: 任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
+    group_privacy_is_closed_description: 任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
+    group_privacy_is_closed_public_threads_description: 任何人都可以找到這個群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。
+    group_privacy_is_secret_description: 只有被邀請的成員才能找到此群組，並檢視有誰在裡面以及觀看討論串。
     confirm_change_to_secret: 若您繼續，所有在此群組及其子群組的討論串都會變為非公開。
     confirm_change_to_secret_subgroup: 若您繼續，所有的討論串都會變為非公開。
     confirm_change_to_public: 若您繼續，所有在此群組的討論串都將會變為公開在網路上。
@@ -560,7 +575,7 @@ zh-TW:
     subgroup_privacy_is_open_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是公開的。
     subgroup_privacy_is_closed_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。所有的討論串都是私密的。
     subgroup_privacy_is_closed_public_threads_description: 任何人都可以找到這個子群組並要求加入。只有成員才能看見誰在群組裡。討論串可以是公開或私密的。
-    subgroup_privacy_is_closed_secret_parent_description: '{{parent}} 的成員可以找到此子群組並要求加入。所有討論串均為私密。只有成員才能看見有誰在群組裡。'
+    subgroup_privacy_is_closed_secret_parent_description: '{{parent}} 的成員可以找到這個子群組並要求加入。所有討論串都是私密的。只有成員才能看見誰在群組裡。'
     subgroup_privacy_is_secret_description: 只有被邀請的成員才能找到此子群組，並檢視有誰在裡面以及觀看討論串。
     advanced_settings: 進階設定
     how_do_people_join: 夥伴要怎樣加入？
@@ -611,6 +626,7 @@ zh-TW:
     heading: 上一個提案
     see_more: 查看詳細資訊
   invitation_form:
+    aria_label: 邀請表單
     invite_people: 邀請夥伴
     group: 群組
     group_placeholder: 選擇一個群組
@@ -636,6 +652,7 @@ zh-TW:
       no_invitations: 唉呀！請確認電子郵件地址是否正確定並再試一次。
       max_invitations: 若您想要寄出多於 100 封邀請函，使用團隊連結。
   add_members_modal:
+    aria_label: 從主群組加入成員
     heading: '從 {{name}} 加入夥伴'
     add_members: 增加成員
     user_added_to_subgroup: '{{name}} 已加入到子群組中'
@@ -651,12 +668,13 @@ zh-TW:
       remove_member_success: '已移除 {{name}}'
       make_admin_success: '{{name}} 現在是新的協調者'
       remove_admin_success: '{{name}} 已不再是協調者'
-    remove_membership:
-      title: 移除成員
-      question: '您確定您想要移除 {{group}} 的成員 {{name}} 嗎？'
-      submit: 移除
     remove_admin_from_self:
       question: 您確定您真的不想要再當協調者？
+  remove_membership_form:
+    aria_label: 移除成員
+    title: 移除成員
+    question: '您確定您想要移除 {{group}} 的成員 {{name}} 嗎？'
+    submit: 移除
   pending_invitations_card:
     heading: 擱置中的邀請函
     email: 電子郵件
@@ -675,34 +693,6 @@ zh-TW:
       picture_changed: 簡歷照片已更新
       password_changed: 密碼已更新
       deactivated: 帳號已停用
-    change_picture:
-      title: 變更照片
-      helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> 帳號，您可以使用它。'
-      use_initials: 使用縮寫
-      use_gravatar: 使用 gravatar
-      use_uploaded: 上傳新照片
-    change_password:
-      title: 變更密碼
-      helptext: 密碼必須至少 8 個字元長。常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
-      current_password_label: 目前的密碼
-      new_password_label: 新密碼
-      password_confirmation_label: 確認新密碼
-      submit: 更新密碼
-    deactivate_user:
-      title: 凍結帳號
-      question: 您可以告訴我們為何您現在要凍結您的帳號嗎？
-      placeholder: '回答這個問題是選擇性的。您所分享的任何資訊將會幫助我們改進 Loomio :)'
-      submit: 凍結帳號
-    deactivation_modal:
-      introduction: 當您停用您的帳號：
-      no_longer_group_member: 您將不會再被任何群組列為成員
-      name_removed: 您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。
-      no_emails: 您將不再收到與 Loomio 相關的電子郵件
-      contact_for_reactivation: 您將會需要聯絡我們以重新啟用您的帳號
-      submit: 是的，我想要停用
-    only_coordinator_modal:
-      explanation: 一個群組至少必須有一個協調者。您是以下群組的唯一協調者：
-      instructions: 為了凍結您的帳號，您需要看看上面列出的每一個群組，增加其他的協調者，或是凍結群組。
     change_picture_link: 變更照片
     change_password_link: 變更密碼
     deactivate_user_link: 凍結帳號...
@@ -714,6 +704,40 @@ zh-TW:
     email_label: 電子郵件
     locale_label: 語言
     update_profile: 更新簡歷
+    deactivate_account: 凍結帳號
+  change_picture_form:
+    aria_label: 變更照片表單
+    title: 變更照片
+    helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> 帳號，您可以使用它。'
+    use_initials: 使用縮寫
+    use_gravatar: 使用 gravatar
+    use_uploaded: 上傳新照片
+  change_password_form:
+    aria_label: 變更密碼表單
+    title: 變更密碼
+    helptext: 密碼必須至少 8 個字元長。常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
+    current_password_label: 目前的密碼
+    new_password_label: 新密碼
+    password_confirmation_label: 確認新密碼
+    submit: 更新密碼
+  deactivation_modal:
+    aria_label: 凍結帳號
+    introduction: 當您停用您的帳號：
+    no_longer_group_member: 您將不會再被任何群組列為成員
+    name_removed: 您在群組中作出的意見、提案與討論串會留下，但您的大名將會從中移除。
+    no_emails: 您將不再收到與 Loomio 相關的電子郵件
+    contact_for_reactivation: 您將會需要聯絡我們以重新啟用您的帳號
+    submit: 是的，我想要停用
+  deactivate_user_form:
+    aria_label: 確認凍結帳號
+    title: 凍結帳號
+    question: 您可以告訴我們為何您現在要凍結您的帳號嗎？
+    placeholder: '回答這個問題是選擇性的。您所分享的任何資訊將會幫助我們改進 Loomio :)'
+    submit: 凍結帳號
+  only_coordinator_modal:
+    aria_label: 無法凍結帳號
+    explanation: 一個群組至少必須有一個協調者。您是以下群組的唯一協調者：
+    instructions: 為了凍結您的帳號，您需要看看上面列出的每一個群組，增加其他的協調者，或是凍結群組。
   email_settings_page:
     header: 電子郵件設定
     all_groups: 所有群組的設定
@@ -837,12 +861,14 @@ zh-TW:
     print_thread: 列印
     delete_thread: 刪除
   delete_thread_form:
+    aria_label: 刪除討論串
     title: 刪除討論串
     body: 您確定要刪除這個討論串嗎？
     confirm: 是的，刪除討論串
     messages:
       success: 討論串已刪除
   move_thread_form:
+    aria_label: 移動討論串
     title: 移動討論串
     body: 目標群組：
     confirm: 移動討論串

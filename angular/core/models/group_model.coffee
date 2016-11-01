@@ -147,11 +147,11 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else
         '/img/default-logo-medium.png'
 
-    coverUrl: ->
+    coverUrl: (size) ->
       if @isSubgroup() && !@hasCustomCover
-        @parent().coverUrl()
+        @parent().coverUrl(size)
       else
-        @coverUrlDesktop
+        @coverUrls[size] || @coverUrls.small
 
     archive: =>
       @remote.patchMember(@key, 'archive').then =>

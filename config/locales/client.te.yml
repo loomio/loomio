@@ -55,8 +55,6 @@ te:
     options_label: ఐచ్ఛికాలు
     options:
       label: ఐచ్ఛికాలు
-    leave_group:
-      title: సమూహాన్ని వదిలివెళ్ళండి
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు
@@ -65,13 +63,7 @@ te:
     name_label: పేరు
     coordinator_label: సమన్వయకర్త
     remove_member_label: తీసివేయి
-    remove_membership:
-      submit: తీసివేయి
   profile_page:
-    change_password:
-      current_password_label: ప్రస్తుత సంకేతపదం
-      new_password_label: కొత్త సంకేతపదం
-      password_confirmation_label: కొత్త సంకేతపదాన్ని నిర్థారించండి
     picture_label: చిత్రం
     name_label: పేరు
     email_label: ఈమెయిలు

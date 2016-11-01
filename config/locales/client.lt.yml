@@ -148,10 +148,6 @@ lt:
   proposal_position_no: Nepritariu
   group_welcome_modal:
     ok_got_it: 'Gerai, supratau!'
-  group_cover_modal:
-    image_size_helptext: Tobulas paveikslo dydis yra 1400 x 320tšk
-  group_logo_modal:
-    image_size_helptext: Tobulas paveikslo dydis yra 100 x 100tšk
   join_group_button:
     messages:
       joined_group: 'Dabar tu esi {{group}} grupės narys'
@@ -182,15 +178,6 @@ lt:
     options_label: Parinktys
     options:
       label: Parinktys
-    deactivate_group:
-      title: Pasyvinti grupę
-      question: Ar tikrai nori pasyvinti šią grupę?
-      submit: 'Taip, Pasyvinti šią grupę'
-    leave_group:
-      title: Palikti grupę
-      question: Tu tikrai nori palikti šią grupę?
-      submit: 'Taip, palikti šią grupę'
-      add_coordinator: Pridėti koordinatorių
     volume:
       loud: Siųsti el. laišką kai tik atsiranda kokia nors veikla.
       loud_aria_description: 'Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla.'
@@ -213,9 +200,6 @@ lt:
     messages:
       make_admin_success: '{{name}} dabar yra koordinatorius'
       remove_admin_success: '{{name}} daugiau nebėra koordinatorius'
-    remove_membership:
-      title: Šalinti narį
-      submit: Šalinti
     remove_admin_from_self:
       question: Ar tikrai daugiau nebenori būti koordinatoriumi?
   pending_invitations_card:
@@ -232,21 +216,6 @@ lt:
       updated: Profilis atnaujintas
       picture_changed: Profilio paveikslas atnaujintas
       password_changed: Slaptažodis atnaujintas
-    change_picture:
-      title: Keisti paveikslą
-      use_initials: Naudoti inicialus
-      use_gravatar: Naudoti gravatar
-      use_uploaded: Įkelti naują paveikslą
-    change_password:
-      title: Keisti Slaptažodį
-      current_password_label: Dabartinis slaptažodis
-      new_password_label: Naujas slaptažodis
-      password_confirmation_label: Patvirtink naują slaptažodį
-      submit: Atnaujinti slaptažodį
-    deactivate_user:
-      title: Pasyvinti paskyrą
-      placeholder: 'Atsakinėti į klausimą nėra privaloma. Bet kokia informacija, kuria pasidalinsi, padės mums tobulinti Loomio :)'
-      submit: Pasyvinti paskyrą
     change_picture_link: Keisti paveikslą
     change_password_link: Keisti slaptažodį
     deactivate_user_link: Pasyvinti paskyrą...

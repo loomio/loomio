@@ -110,8 +110,6 @@ fi:
     group: Ryhmä
   memberships_page:
     remove_member_label: Poista
-    remove_membership:
-      submit: Poista
   dashboard_page:
     threads_from:
       today: Tänään

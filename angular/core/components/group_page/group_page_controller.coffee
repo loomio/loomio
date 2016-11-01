@@ -1,17 +1,19 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, ChoosePlanModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   # we include the timestamp so chargify sees unique values
   $routeParams.key = $routeParams.key.split('-')[0]
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
+    @init(group)
+  , (error) ->
+    $rootScope.$broadcast('pageError', error)
+
+  @init = (group) =>
     @group = group
 
     if AbilityService.isLoggedIn()
       MessageChannelService.subscribeToGroup(@group)
-
-      @handleChoosePlanModal()
-      @handleSubscriptionSuccess()
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
@@ -38,9 +40,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
         prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
 
-  , (error) ->
-    $rootScope.$broadcast('pageError', error)
-
   @showDescriptionPlaceholder = ->
     !@group.description
 
@@ -51,28 +50,12 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     AbilityService.canAdministerGroup(@group)
 
   @openUploadCoverForm = ->
-    ModalService.open CoverPhotoForm, group: => @group
+    @openModal.open CoverPhotoForm, group: => @group
 
   @openUploadLogoForm = ->
-    ModalService.open LogoPhotoForm, group: => @group
+    @openModal LogoPhotoForm, group: => @group
 
-  @handleSubscriptionSuccess = ->
-    if $location.search().chargify_success?
-      Session.subscriptionSuccess = true
-      @group.subscriptionKind = 'paid' # incase the webhook is slow
-      $location.search 'chargify_success', null
-      ModalService.open SubscriptionSuccessModal
-
-  @shouldShowChoosePlanModal = =>
-    AppConfig.chargify? and
-    !($location.search().chargify_success?) and
-    !@group.hasSubscription() and
-    @group.experiences.bx_choose_plan and
-    @group.isParent() and
-    Session.user().isAdminOf(@group)
-
-  @handleChoosePlanModal = ->
-    if @shouldShowChoosePlanModal()
-      ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
+  @openModal = (modal, resolve)->
+    ModalService.open modal, resolve
 
   return

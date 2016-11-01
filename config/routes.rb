@@ -46,7 +46,6 @@ Loomio::Application.routes.draw do
       get :count_explore_results, on: :collection
       patch :archive, on: :member
       put :archive, on: :member
-      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
@@ -149,7 +148,7 @@ Loomio::Application.routes.draw do
       get :inline, to: 'translations#inline'
     end
 
-    resources :notifications, only: :index do
+    resources :notifications, only: [] do
       post :viewed, on: :collection
     end
 

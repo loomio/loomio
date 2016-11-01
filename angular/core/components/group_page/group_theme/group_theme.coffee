@@ -5,7 +5,7 @@ angular.module('loomioApp').directive 'groupTheme', ->
   replace: true
   controller: ($scope, $rootScope, Session, AbilityService, ModalService, CoverPhotoForm, LogoPhotoForm) ->
 
-    $rootScope.$broadcast('setBackgroundImageUrl', $scope.group.coverUrl())
+    $rootScope.$broadcast('setBackgroundImageUrl', $scope.group)
 
     $scope.logoStyle = ->
       { 'background-image': "url(#{$scope.group.logoUrl()})" }

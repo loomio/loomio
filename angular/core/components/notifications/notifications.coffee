@@ -33,9 +33,6 @@ angular.module('loomioApp').directive 'notifications', ->
     $scope.broadcastThreadEvent = (notification) ->
       $rootScope.$broadcast 'threadPageEventsLoaded', notification.event()
 
-    $scope.loading = ->
-      !AppConfig.notificationsLoaded
-
     $scope.toggled = (open) ->
       Records.notifications.viewed() if open
 
