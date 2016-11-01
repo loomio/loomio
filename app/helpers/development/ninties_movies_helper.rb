@@ -9,7 +9,7 @@ module Development::NintiesMoviesHelper
                               username: 'patrickswayze',
                               password: 'gh0stmovie',
                               detected_locale: 'en',
-                              angular_ui_enabled: true).tap {|u| u.experienced! 'welcomeModal'}
+                              angular_ui_enabled: true)
   end
 
   def patricks_contact
@@ -26,7 +26,7 @@ module Development::NintiesMoviesHelper
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
                                password: 'gh0stmovie',
-                               angular_ui_enabled: true).tap {|u| u.experienced! 'welcomeModal'}
+                               angular_ui_enabled: true)
   end
 
   def max

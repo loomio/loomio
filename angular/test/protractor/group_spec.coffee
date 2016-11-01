@@ -139,24 +139,6 @@ describe 'Group Page', ->
       page.click '.group-form__submit-button'
       page.expectText '.group-privacy-button', 'Open'
 
-    it 'shows the welcome modal when group is created', ->
-      page.loadPath('setup_group_with_welcome_modal')
-      page.expectElement '.group-welcome-modal'
-
-    it 'only shows the welcome model once per user', ->
-      page.loadPath('setup_group_with_welcome_modal')
-      page.click '.group-welcome-modal__close-button'
-      page.click '.sidebar__list-item-button--explore'
-      page.clickLast '.explore-page__group'
-      page.click '.join-group-button__join-group'
-      page.expectNoElement '.group-welcome-modal'
-
-    it 'does not reshow the welcome modal', ->
-      page.loadPath('setup_group_with_welcome_modal')
-      page.click '.group-welcome-modal__close-button'
-      browser.refresh()
-      page.expectNoElement '.group-welcome-modal'
-
     it 'starts a closed group', ->
       page.loadPath('setup_new_group')
       page.click '.start-menu__start-button',

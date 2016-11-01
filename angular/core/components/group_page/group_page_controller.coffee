@@ -1,7 +1,5 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, ChoosePlanModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, ChoosePlanModal) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
-
-  $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   # we include the timestamp so chargify sees unique values
@@ -14,7 +12,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
       @handleChoosePlanModal()
       @handleSubscriptionSuccess()
-      @handleWelcomeModal()
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
@@ -77,18 +74,5 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @handleChoosePlanModal = ->
     if @shouldShowChoosePlanModal()
       ModalService.open ChoosePlanModal, group: (=> @group), preventClose: (-> true)
-
-  @shouldShowWelcomeModal = ->
-    !@shouldShowChoosePlanModal() and
-    @group.isParent() and
-    Session.user().isMemberOf(@group) and
-    !Session.subscriptionSuccess and
-    !Session.user().hasExperienced("welcomeModal")
-
-
-  @handleWelcomeModal = =>
-    if @shouldShowWelcomeModal()
-      ModalService.open GroupWelcomeModal, group: => @group
-      Records.users.saveExperience("welcomeModal")
 
   return
