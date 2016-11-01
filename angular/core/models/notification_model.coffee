@@ -7,9 +7,9 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
       @belongsTo 'event'
       @belongsTo 'user'
 
-    actor:      -> @event().actor()
-    model:      -> @event().model()
-    kind:       -> @event().kind
+    actor:      -> @event().actor() if @event()
+    model:      -> @event().model() if @event()
+    kind:       -> @event().kind    if @event()
 
     group: ->
       switch @model().constructor.singular
