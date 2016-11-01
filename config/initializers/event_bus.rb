@@ -97,6 +97,13 @@ EventBus.configure do |config|
     MessageChannelService.publish(collection, to: actor)
   end
 
+  # alert clients that notifications have been read
+  config.listen('notification_viewed') do |actor|
+    notifications = Queries::Notifications.new(user: actor).recent
+    collection = ActiveModel::ArraySerializer.new(notifications, each_serializer: NotificationSerializer, root: :notifications).as_json
+    MessageChannelService.publish(collection, to: actor)
+  end
+
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update') do |model|
     model.update_versions_count
