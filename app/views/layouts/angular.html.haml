@@ -13,8 +13,7 @@
     %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
     %link{rel: 'manifest', href: '/manifest.json'}
 
-    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
-    %link{href: client_asset_path(:"print.min.css"), rel: 'stylesheet', media: 'print'}
+    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
 
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
