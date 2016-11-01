@@ -6,7 +6,4 @@
 @import '1_lmo_form.scss';
 @import '1_lmo_card.scss';
 @import '1_lmo_headers.scss';
-
-@media print {
-  @import '2_print.scss';
-}
+@import '2_print.scss';
