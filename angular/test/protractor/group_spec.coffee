@@ -342,7 +342,6 @@ describe 'Group Page', ->
 
     it 'destroys group-related events and notifications', ->
       page.loadPath 'setup_membership_request_approved_notification'
-      page.click '.group-welcome-modal__close-button'
       page.click '.notifications__button'
       page.expectText '.notifications__dropdown', 'approved your request'
       page.click '.notifications__button'
