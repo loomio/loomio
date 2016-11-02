@@ -87,6 +87,8 @@ describe API::MembershipsController do
       before do
         parent_group.add_member!(user)
         parent_group.add_member!(parent_member)
+        subgroup.add_member!(user)
+        sign_in user
       end
 
       it "adds parent members to subgroup" do
