@@ -86,19 +86,3 @@ When(/^I fill in the start group form$/) do
   fill_in :group_name, with: @group_name
   click_on 'Start group'
 end
-
-When(/^I fill in my group name and choose subscription and submit$/) do
-  @group_name = 'Hank\'s Hankeys and Handkerchiefs'
-  fill_in :group_name, with: @group_name
-  click_on 'Start group'
-end
-
-When(/^I choose to create an account now$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^the group should be on a trial subscription$/) do
-  @group = Group.where(name: @group_name).first
-  expect(@group.subscription.kind).to eq 'trial'
-  expect(@group.subscription.expires_at).to eq 30.days.from_now.to_date
-end

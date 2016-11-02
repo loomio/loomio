@@ -9,8 +9,6 @@ class Queries::GroupAnalytics
     {
       since:              @since,
       till:               @till,
-      is_trial:           @group.subscription&.kind == 'trial',
-      expires_at:         @group.subscription&.expires_at,
       group_members:      @group.memberships.count,
       motions:            pluralize(eventables[:motion].count, 'proposal'),
       comments:           pluralize(eventables[:comment].count, 'comment'),

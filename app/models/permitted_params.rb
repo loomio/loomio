@@ -1,6 +1,6 @@
 class PermittedParams < Struct.new(:params)
 
-  %w[user vote subscription motion membership_request membership
+  %w[user vote motion membership_request membership
    invitation group_request group discussion discussion_reader comment
    attachment contact_message theme user_deactivation_response network_membership_request
    draft oauth_application].each do |kind|
@@ -32,10 +32,6 @@ class PermittedParams < Struct.new(:params)
 
   def network_membership_request_attributes
     [:group_id, :network_id, :message]
-  end
-
-  def subscription_attributes
-    [:position, :statement]
   end
 
   def motion_attributes
