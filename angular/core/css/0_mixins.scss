@@ -227,6 +227,14 @@ $cardPaddingSize: 15px;
   }
 }
 
+@mixin lmoH1{
+  @include fontHelveticaBold;
+  @include fontGrande;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
 .lmo-version {
   color: #666;
   font-size: 11px;

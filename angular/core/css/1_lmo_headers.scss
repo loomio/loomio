@@ -1,10 +1,3 @@
-@mixin lmoH1{
-  @include fontHelveticaBold;
-  @include fontGrande;
-  padding: 0;
-  margin: 0;
-  outline: 0;
-}
 .lmo-h1{
   @include lmoH1;
 }

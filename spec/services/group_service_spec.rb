@@ -29,19 +29,6 @@ describe 'GroupService' do
       expect(group.reload.cover_photo).to be_blank
     end
 
-    it 'creates a new gift subscription for even experiences' do
-      group.experiences['bx_choose_plan'] = false
-      GroupService.create(group: group, actor: user)
-      subscription = group.reload.subscription
-      expect(subscription.kind.to_sym).to eq :gift
-    end
-
-    it 'creates no subscription for odd experiences' do
-      group.experiences['bx_choose_plan'] = true
-      GroupService.create(group: group, actor: user)
-      expect(group.reload.subscription).to be nil
-    end
-
     it 'does not send excessive emails' do
       expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
@@ -67,16 +54,6 @@ describe 'GroupService' do
         GroupService.create(group: group, actor: user)
         expect(group.is_referral).to be true
       end
-    end
-  end
-
-  describe 'archive!' do
-    it 'cancels the subscription' do
-      group.add_admin! user
-      instance = OpenStruct.new
-      allow(SubscriptionService).to receive(:new).and_return(instance)
-      expect(instance).to receive :end_subscription!
-      GroupService.archive(group: group, actor: user)
     end
   end
 end

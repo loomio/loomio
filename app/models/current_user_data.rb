@@ -30,7 +30,7 @@ CurrentUserData = Struct.new(:user, :restricted) do
   end
 
   def notifications
-    @notifications ||= user.notifications.includes(event: [:eventable, :user]).order(created_at: :desc).limit(30)
+    @notifications ||= Queries::Notifications.new(user: user).recent
   end
 
   def unread

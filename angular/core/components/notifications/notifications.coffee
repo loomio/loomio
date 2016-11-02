@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'notifications', ->
       'invitation_accepted',
       'new_coordinator'
     ]
-    eventFilter = (notification) -> _.contains kinds, notification.event().kind
+    eventFilter = (notification) -> _.contains kinds, notification.kind()
 
     notificationsView = Records.notifications.collection.addDynamicView("notifications")
                                .applyWhere(eventFilter)
