@@ -36,7 +36,6 @@ js:
   - angular-aria/angular-aria.js
   - angulartics/src/angulartics.js
   - angulartics/src/angulartics-gtm.js
-  - angular-touch/angular-touch.js
 execjs:
   - emojione/lib/js/emojione.js
 css:

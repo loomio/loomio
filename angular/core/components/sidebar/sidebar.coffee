@@ -7,11 +7,11 @@ angular.module('loomioApp').directive 'sidebar', ->
     $scope.showSidebar = $mdMedia("gt-md")
     $scope.currentState = ""
 
-   $scope.$on 'toggleSidebar', (event, show) ->
-    if !_.isUndefined(show)
-      $scope.showSidebar = show
-    else
-      $scope.showSidebar = !$scope.showSidebar
+    $scope.$on 'toggleSidebar', (event, show) ->
+      if !_.isUndefined(show)
+        $scope.showSidebar = show
+      else
+        $scope.showSidebar = !$scope.showSidebar
 
     $scope.$on 'currentComponent', (el, component) ->
       $scope.currentState = component

@@ -10,6 +10,8 @@ module Development::NintiesMoviesHelper
                               password: 'gh0stmovie',
                               detected_locale: 'en',
                               angular_ui_enabled: true)
+    @patrick.experienced!("introductionCarousel")
+    @patrick
   end
 
   def patricks_contact
@@ -27,6 +29,8 @@ module Development::NintiesMoviesHelper
                                username: 'jennifergrey',
                                password: 'gh0stmovie',
                                angular_ui_enabled: true)
+    @jennifer.experienced!("introductionCarousel")
+    @jennifer
   end
 
   def max
@@ -36,6 +40,8 @@ module Development::NintiesMoviesHelper
                           password: 'gh0stmovie',
                           username: 'mingthemerciless',
                           angular_ui_enabled: true)
+    @max.experienced!("introductionCarousel")
+    @max
   end
 
   def emilio
