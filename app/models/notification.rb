@@ -14,14 +14,6 @@ class Notification < ActiveRecord::Base
 
   scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
 
-  def baked?
-    url.present? && translation_values.present?
-  end
-
-  def bake!(persist: true)
-    assign_attributes(event.notification_attributes).tap { save! if persist }
-  end
-
   def publish_message
     MessageChannelService.publish(NotificationSerializer.new(self).as_json, to: self.user)
   end
