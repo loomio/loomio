@@ -30,7 +30,7 @@ CurrentUserData = Struct.new(:user, :restricted) do
   end
 
   def notifications
-    @notifications ||= Queries::Notifications.new(user: user).recent
+    @notifications ||= NotificationCollection.new(user).notifications
   end
 
   def unread
