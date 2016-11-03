@@ -194,10 +194,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  def locale
-    creator&.locale
-  end
-
   def requestor_name
     group_request.try(:admin_name)
   end
