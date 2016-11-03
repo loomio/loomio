@@ -37,6 +37,7 @@ EventBus.configure do |config|
 
   # send individual emails after user events
   config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.eventable.group) }
+  config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
 
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
@@ -136,9 +137,6 @@ EventBus.configure do |config|
                 'comment_liked_event') do |event|
     event.notifications.import event.users_to_notify.map { |user| event.notify!(user, persist: false) }
   end
-
-  # email admins about new membership requests
-  config.listen('membership_requested_event') { |event| GroupMailer.new_membership_request(event.eventable) }
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
