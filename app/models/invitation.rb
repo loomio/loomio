@@ -13,6 +13,7 @@ class Invitation < ActiveRecord::Base
   belongs_to :canceller, class_name: User
 
   update_counter_cache :invitable, :invitations_count
+  update_counter_cache :invitable, :pending_invitations_count
 
   validates_presence_of :invitable, :intent
   validates_inclusion_of :invitable_type, :in => ['Group', 'Discussion']

@@ -488,7 +488,8 @@ en:
     members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    all_members: All members ({{count}})
+    see_all_members: 'See all: ({{count}}) members'
+    pending_invitations: '+ ({{count}}) pending'
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'

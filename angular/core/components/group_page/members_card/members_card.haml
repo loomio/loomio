@@ -11,4 +11,5 @@
         %i.fa.fa-lg.fa-plus>
         %span{translate: "group_page.invite_people" }
     %a.members-card__manage-members{lmo-href-for: "group", lmo-href-action: "memberships"}
-      %span{translate: "group_page.all_members", translate-value-count: "{{group.membershipsCount}}"}
+      %span{translate: "group_page.see_all_members", translate-value-count: "{{group.membershipsCount}}"}>
+      %span{ng-if: "group.pendingInvitationsCount", translate: "group_page.pending_invitations", translate-value-count: "{{group.pendingInvitationsCount}}"}
