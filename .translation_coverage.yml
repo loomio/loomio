@@ -7,7 +7,7 @@ ar:
   marketing: 0
   server: 51
 be-BY:
-  main_1_0: 19
+  main_1_0: 18
   marketing: 0
   server: 54
 bg-BG:
@@ -23,7 +23,7 @@ cmn:
   marketing: 0
   server: 3
 cs:
-  main_1_0: 51
+  main_1_0: 50
   marketing: 2
   server: 39
 da:
@@ -194,7 +194,7 @@ sl:
   marketing: 0
   server: 33
 sr:
-  main_1_0: 84
+  main_1_0: 83
   marketing: 81
   server: 86
 sr-RS:

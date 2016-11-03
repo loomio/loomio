@@ -102,7 +102,6 @@ sl:
     heading: Prosi za pridružitev skupini
     name_label: Ime
     email_label: Email
-    introduction_label: Predstavi se
     submit_button: Prosi za pridružitev skupini
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'

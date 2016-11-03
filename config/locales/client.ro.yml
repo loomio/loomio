@@ -181,7 +181,6 @@ ro:
     heading: Cere sa fi inclus in grup
     name_label: Nume
     email_label: Email
-    introduction_label: Prezinta-te
     submit_button: Cere sa fi inclus in grup
   group_page:
     thread_list:

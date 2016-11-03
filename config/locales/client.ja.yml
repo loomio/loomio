@@ -87,7 +87,6 @@ ja:
     heading: グループへの参加依頼
     name_label: 氏名
     email_label: Eメール
-    introduction_label: 自己紹介をしてください
     submit_button: グループへの参加依頼
   group_page:
     thread_list:

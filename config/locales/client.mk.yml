@@ -65,7 +65,6 @@ mk:
     heading: Побарај да се придружиш на групата
     name_label: Име
     email_label: Email
-    introduction_label: Претстави се
     submit_button: Побарај да се придружиш на групата
   group_page:
     thread_list:

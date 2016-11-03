@@ -341,7 +341,6 @@ pt-BR:
     heading: Pedir para entrar no grupo
     name_label: Nome
     email_label: E-mail
-    introduction_label: Apresente-se
     submit_button: Pedir para entrar no grupo
     messages:
       membership_requested: 'Você solicitou adesão ao(à) {{group}}'

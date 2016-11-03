@@ -147,7 +147,6 @@ da:
     heading: Anmod om gruppemedlemskab
     name_label: Navn
     email_label: E-mail
-    introduction_label: Introducer dig selv
     submit_button: Anmod om gruppemedlemskab
   group_page:
     thread_list:

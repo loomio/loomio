@@ -401,7 +401,6 @@ fr:
     heading: Demander à rejoindre le groupe
     name_label: Nom
     email_label: E-mail
-    introduction_label: Présentez-vous
     submit_button: Demander à rejoindre le groupe
     messages:
       membership_requested: "Vous avez demandé l'accès à {{group}}"
