@@ -1,0 +1,14 @@
+.notification {
+  @include displayFlex;
+  padding: 13px;
+}
+
+.notification:hover {
+  text-decoration: none;
+  background-color: $list-hover-color;
+}
+
+
+.notification__avatar {
+  margin-right: 10px;
+}

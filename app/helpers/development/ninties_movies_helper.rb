@@ -278,8 +278,13 @@ module Development::NintiesMoviesHelper
     MembershipService.add_users_to_group(users: [patrick], group: another_group, inviter: jennifer, message: 'join in')
 
     #'new_coordinator',
-    #notify jennifer that patrick has made her a coordinator
+    #notify patrick that jennifer has made him a coordinator
     membership = Membership.find_by(user_id: patrick.id, group_id: another_group.id)
     new_coordinator_event = MembershipService.make_admin(membership: membership, actor: jennifer)
+
+    #'invitation_accepted',
+    #notify patrick that his invitation to emilio has been accepted
+    invitation = InvitationService.invite_to_group(recipient_emails: [emilio.email], group: another_group, inviter: patrick)
+    InvitationService.redeem(invitation.first, emilio)
   end
 end

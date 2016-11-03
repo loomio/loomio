@@ -7,6 +7,7 @@ describe 'Notifications', ->
     page.expectText '.notifications__activity', '10'
     page.click '.notifications__button'
 
+    page.expectText '.notifications__dropdown', 'accepted your invitation to join'
     page.expectText '.notifications__dropdown', 'added you to the group'
     page.expectText '.notifications__dropdown', 'approved your request'
     page.expectText '.notifications__dropdown', 'requested membership to'
