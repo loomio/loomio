@@ -82,28 +82,28 @@ describe API::MembershipsController do
     context 'permitted' do
       let(:parent_member) { FactoryGirl.create(:user) }
       let(:parent_group) { FactoryGirl.create(:group) }
+      let(:subgroup) { create(:group, parent: parent_group) }
 
       before do
         parent_group.add_member!(user)
         parent_group.add_member!(parent_member)
-        group.parent = parent_group
-        group.subscription = nil
-        group.save!
+        subgroup.add_member!(user)
+        sign_in user
       end
 
       it "adds parent members to subgroup" do
-        post(:add_to_subgroup, {group_id: group.id,
+        post(:add_to_subgroup, {group_id: subgroup.id,
                                 parent_group_id: parent_group.id,
                                 user_ids: [parent_member.id]})
 
         json = JSON.parse(response.body)
         expect(json.keys).to include *(%w[users memberships groups])
 
-        expect(group.members).to include(parent_member)
+        expect(subgroup.members).to include(parent_member)
       end
 
       it "does not add aliens to subgroup" do
-        post(:add_to_subgroup, {group_id: group.id,
+        post(:add_to_subgroup, {group_id: subgroup.id,
                                 parent_group_id: parent_group.id,
                                 user_ids: [alien_named_bang.id]})
 
