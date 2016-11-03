@@ -81,7 +81,6 @@ sk:
     heading: Požiadať o členstvo
     name_label: Meno
     email_label: E-mail
-    introduction_label: Predstavte sa
     submit_button: Požiadať o členstvo
   group_page:
     thread_list:

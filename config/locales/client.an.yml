@@ -81,7 +81,6 @@ an:
     heading: Pedir pertenencia a o grupo
     name_label: Nombre
     email_label: Correu electronico
-    introduction_label: Presienta-te
     submit_button: Pedir pertenencia a o grupo
   group_page:
     thread_list:

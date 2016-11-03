@@ -245,7 +245,6 @@ uk:
     heading: Запросити участь у групі
     name_label: Ім’я
     email_label: Електронна пошта
-    introduction_label: Розкажіть про себе
     submit_button: Запросити участь у групі
     messages:
       membership_requested: 'У вас є запити на приєднання до {{group}}'

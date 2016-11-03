@@ -295,7 +295,6 @@ hu:
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
-    introduction_label: 'Mutatkozz be!'
     submit_button: Kérj belépőt a csoportba
   group_page:
     thread_list:

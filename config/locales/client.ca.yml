@@ -346,7 +346,6 @@ ca:
     heading: Demana unir-te al grup
     name_label: Nom
     email_label: Correu electrònic
-    introduction_label: Presenteu-vos
     submit_button: Demana unir-te al grup
     messages:
       membership_requested: 'Heu sol·licitat la pertinença a {{group}}'

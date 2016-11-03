@@ -216,7 +216,6 @@ pl:
     heading: Prośba o dołączenie do grupy
     name_label: Nazwa
     email_label: E-mail
-    introduction_label: Przedstaw się
     submit_button: Prośba o dołączenie do grupy
     messages:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'

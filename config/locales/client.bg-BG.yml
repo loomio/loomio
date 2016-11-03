@@ -54,7 +54,6 @@ bg-BG:
   membership_request_form:
     name_label: Име
     email_label: E-mail
-    introduction_label: Представете се
   group_page:
     discussions: Дискусии
     invite_people: Поканете хора

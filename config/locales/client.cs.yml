@@ -258,7 +258,6 @@ cs:
     heading: Zažádat o členství
     name_label: Jméno
     email_label: E-mail
-    introduction_label: Představte se
     submit_button: Zažádat o členství
     messages:
       membership_requested: 'Zažádali jste o členství v {{group}}'
