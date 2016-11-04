@@ -595,6 +595,11 @@ es:
       'no': No estoy de acuerdo
       abstain: Me abstengo
       block: Bloqueo
+  vote_button_alt_text:
+    'yes': 'De acuerdo'
+    abstain: 'Me abstengo'
+    'no': 'En desacuerdo'
+    block: 'Bloqueo'
   unable_to_vote:
     permission_denied: No tienes permiso para votar en esta propuesta.
     motion_closed: Esta propuesta ya se ha cerrado
