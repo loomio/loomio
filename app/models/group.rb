@@ -173,14 +173,15 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
-  define_counter_cache(:motions_count)            { |group| group.discussions.published.sum(:motions_count) }
-  define_counter_cache(:closed_motions_count)     { |group| group.motions.closed.count }
-  define_counter_cache(:discussions_count)        { |group| group.discussions.published.count }
-  define_counter_cache(:public_discussions_count) { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:memberships_count)        { |group| group.memberships.count }
-  define_counter_cache(:admin_memberships_count)  { |group| group.admin_memberships.count }
-  define_counter_cache(:invitations_count)        { |group| group.invitations.count }
-  define_counter_cache(:proposal_outcomes_count)  { |group| group.motions.with_outcomes.count }
+  define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
+  define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
+  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
+  define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
+  define_counter_cache(:invitations_count)         { |group| group.invitations.count }
+  define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
+  define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
