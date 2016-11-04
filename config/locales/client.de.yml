@@ -342,7 +342,6 @@ de:
     heading: Gruppenbeitritt anfragen
     name_label: Name
     email_label: eMail
-    introduction_label: Stelle dich vor
     submit_button: Gruppenbeitritt anfragen
     messages:
       membership_requested: 'Du hast die Mitgliedschaft für {{group}} angefragt'

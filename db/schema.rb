@@ -488,6 +488,7 @@ ActiveRecord::Schema.define(version: 20161103113952) do
     t.boolean  "analytics_enabled",                  default: false,          null: false
     t.integer  "proposal_outcomes_count",            default: 0,              null: false
     t.jsonb    "experiences",                        default: {},             null: false
+    t.integer  "pending_invitations_count",          default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree

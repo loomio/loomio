@@ -72,7 +72,6 @@ gl:
     heading: Pedir unirse ó grupo
     name_label: Nome
     email_label: Correo electrónico
-    introduction_label: Introdúcete
     submit_button: Pedir unirse ó grupo
   group_page:
     discussions: Debates

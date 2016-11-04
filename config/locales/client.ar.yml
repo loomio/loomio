@@ -270,7 +270,6 @@ ar:
     heading: قم بطلب الانضمام للمجموعة
     name_label: الإسم
     email_label: البريد الإلكتروني
-    introduction_label: قم بتعريف نفسك
     submit_button: قم بطلب الانضمام للمجموعة
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'

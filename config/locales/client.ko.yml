@@ -266,7 +266,6 @@ ko:
     heading: 그룹에 가입신청하기
     name_label: 이름
     email_label: 이메일
-    introduction_label: 자기소개
     submit_button: 그룹에 가입신청하기
     messages:
       membership_requested: '{{group}}에 가입을 요청하였습니다'

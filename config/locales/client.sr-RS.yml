@@ -174,7 +174,6 @@ sr-RS:
     heading: Питај да се придружиш групи
     name_label: Име
     email_label: еПорука
-    introduction_label: Представите се
     submit_button: Питај да се придружиш групи
   revision_history_modal:
     started_by: 'Креирао/ла <strong>{{name}}</strong>'

@@ -284,7 +284,6 @@ ga-IE:
     heading: Iarr cead dul isteach sa bhaicle
     name_label: Ainm
     email_label: Seoladh ríomhphoist
-    introduction_label: Cuir tú féin in aithne do dhaoine
     submit_button: Iarr cead dul isteach sa bhaicle
     messages:
       membership_requested: "D'iarr tú cead bheith i do chomhalta de {{group}}"

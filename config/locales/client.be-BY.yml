@@ -103,7 +103,6 @@ be-BY:
     heading: Запытаць пра далучэнне да групы
     name_label: Імя
     email_label: Email
-    introduction_label: 'Прадстаўцеся, калі ласка'
     submit_button: Запытаць пра далучэнне да групы
   group_page:
     thread_list:
