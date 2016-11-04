@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
       actor:              notification_actor,
       url:                notification_url,
       translation_values: notification_translation_values
-    ).tap { |n| n.save! if persist }
+    ).tap { |n| n.save if persist }
   end
 
   def users_to_notify # overridden for events which have more complicated rules for notifying users
