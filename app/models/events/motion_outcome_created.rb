@@ -10,11 +10,9 @@ class Events::MotionOutcomeCreated < Event
     Queries::UsersByVolumeQuery.normal_or_loud(discussion).without(eventable.outcome_author)
   end
 
-  def motion
-    eventable
-  end
+  private
 
-  def discussion
-    eventable.discussion
+  def notification_actor
+    eventable.outcome_author
   end
 end

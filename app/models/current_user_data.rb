@@ -26,11 +26,11 @@ CurrentUserData = Struct.new(:user, :restricted) do
   end
 
   def memberships
-    @memberships ||= user.memberships.includes(group: [:default_group_cover]).order(created_at: :desc)
+    @memberships ||= user.memberships.includes(:user, :inviter, group: [{parent: :default_group_cover}, :default_group_cover]).order(created_at: :desc)
   end
 
   def notifications
-    @notifications ||= Queries::Notifications.new(user: user).recent
+    @notifications ||= NotificationCollection.new(user).notifications
   end
 
   def unread

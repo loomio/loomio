@@ -5,14 +5,12 @@ class Events::MotionClosingSoon < Event
   end
 
   def users_to_notify
-    Queries::UsersByVolumeQuery.normal_or_loud(discussion)
+    Queries::UsersByVolumeQuery.normal_or_loud(eventable)
   end
 
-  def motion
-    eventable
-  end
+  private
 
-  def discussion
-    motion.discussion
+  def notification_actor
+    nil
   end
 end

@@ -4,12 +4,4 @@ class Events::DiscussionDescriptionEdited < Event
            eventable: discussion,
            user: editor).tap { |e| EventBus.broadcast('discussion_description_edited_event', e) }
   end
-
-  def discussion_key
-    eventable.key
-  end
-
-  def discussion
-    eventable
-  end
 end

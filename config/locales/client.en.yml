@@ -280,7 +280,7 @@ en:
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{discussion}}</strong>"
     comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{discussion}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{discussion}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{group}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{group}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{group}}</strong>"
