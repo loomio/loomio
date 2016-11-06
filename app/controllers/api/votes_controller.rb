@@ -17,4 +17,8 @@ class API::VotesController < API::RestfulController
     @motion.votes.most_recent.order(:created_at)
   end
 
+  def resource_class
+    "Votes::#{(resource&.kind || 'loomio').camelize}".constantize
+  end
+
 end

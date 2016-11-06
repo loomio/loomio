@@ -15,7 +15,7 @@ angular.module('loomioApp').directive 'proposalPositionsPanel', ->
       if $scope.voteIsMine(vote)
         0
       else
-        positionValues[vote.position]
+        positionValues[vote.stance.position]
 
     $scope.curatedVotes = ->
       _.sortBy $scope.proposal.uniqueVotes(), (vote) ->

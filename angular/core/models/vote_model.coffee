@@ -19,28 +19,28 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel, AppConfig) ->
       @author().name
 
     positionVerb: ->
-      switch @position
+      switch @stance.position
         when 'yes' then 'agree'
         when 'no' then 'disagree'
-        else @position # abstain and block are the same
+        else @stance.position # abstain and block are the same
 
     hasStatement: ->
       @statement? && @statement.toString().length > 0
 
     anyPosition: ->
-      @position
+      @stance.position
 
     isAgree: ->
-      @position == 'yes'
+      @stance.position == 'yes'
 
     isDisagree: ->
-      @position == 'no'
+      @stance.position == 'no'
 
     isAbstain: ->
-      @position == 'abstain'
+      @stance.position == 'abstain'
 
     isBlock: ->
-      @position == 'block'
+      @stance.position == 'block'
 
     charsLeft: ->
       250 - (@statement or '').toString().length

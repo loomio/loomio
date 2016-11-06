@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103113952) do
+ActiveRecord::Schema.define(version: 20161106104314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -602,6 +602,7 @@ ActiveRecord::Schema.define(version: 20161103113952) do
     t.string   "key"
     t.integer  "members_count",       default: 0,    null: false
     t.integer  "voters_count",        default: 0,    null: false
+    t.string   "kind",                            default: "loomio", null: false
   end
 
   add_index "motions", ["author_id"], name: "index_motions_on_author_id", using: :btree
@@ -902,6 +903,7 @@ ActiveRecord::Schema.define(version: 20161103113952) do
     t.string   "statement"
     t.integer  "age",              default: 0, null: false
     t.integer  "previous_vote_id"
+    t.jsonb    "stance",                       default: {}, null: false
   end
 
   add_index "votes", ["created_at"], name: "index_votes_on_created_at", using: :btree

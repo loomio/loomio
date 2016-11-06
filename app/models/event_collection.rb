@@ -2,7 +2,7 @@ class EventCollection
   attr_reader :events
 
   def initialize(events)
-    @events = Array(events)
+    @events = Event.find(events.map(&:id))
   end
 
   def any?

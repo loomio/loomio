@@ -1,13 +1,10 @@
 class Vote < ActiveRecord::Base
-  POSITIONS = %w[yes abstain no block]
-  default_scope { includes(:previous_vote) }
   belongs_to :motion, counter_cache: true, touch: :last_vote_at
   belongs_to :user
   belongs_to :previous_vote, class_name: 'Vote'
   has_many :events, as: :eventable, dependent: :destroy
 
-  validates_presence_of :motion, :user, :position
-  validates_inclusion_of :position, in: POSITIONS
+  validates_presence_of :motion, :user
   validates_length_of :statement, maximum: 250
 
   include Translatable
@@ -31,12 +28,11 @@ class Vote < ActiveRecord::Base
   delegate :discussion_id, to: :motion
   delegate :title, to: :discussion, prefix: :discussion
   delegate :key, to: :motion
+  delegate :kind, to: :motion
   delegate :id, to: :group, prefix: :group
 
   before_create :age_previous_votes, :associate_previous_vote
 
-  after_create :update_motion_vote_counts
-  after_destroy :update_motion_vote_counts
   update_counter_cache :motion, :voters_count
 
   # alias_method does not work for the following obvious methods
@@ -64,15 +60,6 @@ class Vote < ActiveRecord::Base
     user
   end
 
-  def position_verb
-    case position
-    when 'yes' then 'agree'
-    when 'no' then 'disagree'
-    when 'abstain' then 'abstain'
-    when 'block' then 'block'
-    end
-  end
-
   private
 
   def associate_previous_vote
@@ -86,10 +73,5 @@ class Vote < ActiveRecord::Base
         vote.update_attribute(:age, vote.age + 1)
       end
     end
-    #motion.votes.where(user_id: user_id).update_all('age = age + 1')
-  end
-
-  def update_motion_vote_counts
-    motion.update_vote_counts! if motion&.discussion.present?
   end
 end

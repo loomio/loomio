@@ -1,6 +1,6 @@
 class VoteSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :position, :statement, :proposal_id, :created_at
+  attributes :id, :statement, :proposal_id, :created_at, :stance
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :proposal, serializer: MotionSerializer, root: :proposals

@@ -160,29 +160,6 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  # recount all the final votes.
-  # rather expensive
-  def update_vote_counts!
-    position_counts = {}
-
-    Vote::POSITIONS.each do |position|
-      position_counts[position] = 0
-    end
-
-    reload.unique_votes.each do |vote|
-      position_counts[vote.position] += 1
-    end
-
-    Vote::POSITIONS.each do |position|
-      self.send("#{position}_votes_count=", position_counts[position])
-    end
-
-    # set the activity count
-    self[:votes_count] = votes.count
-
-    save!
-  end
-
   def user_has_voted?(user)
     user.present? && votes.find_by(user: user).present?
   end

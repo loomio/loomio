@@ -22,6 +22,6 @@ angular.module('loomioApp').directive 'threadPreview', ->
       ThreadService.unmute($scope.thread)
 
     $scope.translationData = (thread) ->
-      position: $scope.lastVoteByCurrentUser(thread).position
+      position: $scope.lastVoteByCurrentUser(thread).stance.position
 
     return

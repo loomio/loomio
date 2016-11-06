@@ -165,7 +165,7 @@ describe Motion do
       let(:motion){FactoryGirl.create :motion, discussion: discussion}
 
       before do
-        Vote::POSITIONS.each do |position|
+        Vote::Loomio::POSITIONS.each do |position|
           user = create(:user)
           group.add_member!(user)
 
