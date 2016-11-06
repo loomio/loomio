@@ -34,7 +34,6 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
   delegate :locale, to: :user
-  delegate :followers, to: :discussion
   delegate :title, to: :discussion, prefix: :discussion
   has_paper_trail only: [:name, :description, :closing_at, :outcome]
 
@@ -86,10 +85,6 @@ class Motion < ActiveRecord::Base
 
   def user
     author
-  end
-
-  def voters
-    votes.map(&:user).uniq.compact
   end
 
   def voting?
@@ -189,8 +184,7 @@ class Motion < ActiveRecord::Base
   end
 
   def user_has_voted?(user)
-    return false if user.nil?
-    votes.for_user(user.id).exists?
+    user.present? && votes.find_by(user: user).present?
   end
 
   def closed_or_closing_at

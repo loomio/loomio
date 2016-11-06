@@ -78,32 +78,6 @@ describe Vote do
     expect(vote).to_not be_valid
   end
 
-  # it 'updates motion last_vote_at on create' do
-  #   vote = Vote.new(position: "yes")
-  #   vote.motion = motion
-  #   vote.user = user
-  #   vote.save!
-  #   vote.reload
-  #   motion.reload
-  #   expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
-  # end
-
-  describe 'other_group_members' do
-    before do
-      @user1 = create :user
-      group.add_member!(@user1)
-      @vote = create :vote, user: user, motion: motion
-    end
-
-    it 'returns members in the group' do
-      expect(@vote.other_group_members).to include @user1
-    end
-
-    it 'does not return the voter' do
-      expect(@vote.other_group_members).to_not include user
-    end
-  end
-
   describe "previous_vote" do
     it "gets position from previous vote on same motion by same user
         (if any)" do

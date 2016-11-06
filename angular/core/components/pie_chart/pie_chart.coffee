@@ -11,10 +11,6 @@ angular.module('loomioApp').directive 'pieChart', ->
       half = size / 2.0
       radius = half
 
-      # setting canvas scaling on element resize
-      #draw.setViewBox(0, 0, size, size, true );
-      #draw.canvas.setAttribute('preserveAspectRatio', 'none');
-
       arcPath = (startAngle, endAngle) ->
         rad = Math.PI / 180
         x1 = half + radius * Math.cos(-startAngle * rad)
