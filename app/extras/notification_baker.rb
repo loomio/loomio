@@ -6,13 +6,13 @@ class NotificationBaker
   # This code isn't very pretty, but it gets the job done and once all users have rebaked their
   # notifications, we can get rid of it.
   def self.bake!(notifications)
-    notifications.reject { |n| n.url && n.translation_values }.each do |notification|
+    notifications.includes(:event).reject { |n| n.url && n.translation_values }.each do |notification|
       @event = Events.const_get(notification.kind.camelize).new(notification.event.as_json)
       notification.update(
         url:                @event.send(:notification_url),
         actor:              @event.send(:notification_actor),
         translation_values: @event.send(:notification_translation_values)
-      )
+      ) if notification.event.present?
     end
   end
 end
