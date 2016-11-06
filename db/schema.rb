@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103113952) do
+ActiveRecord::Schema.define(version: 20161106082314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -309,6 +309,8 @@ ActiveRecord::Schema.define(version: 20161103113952) do
     t.string  "draftable_type"
     t.json    "payload",        default: {}, null: false
   end
+
+  add_index "drafts", ["user_id", "draftable_type", "draftable_id"], name: "index_drafts_on_user_id_and_draftable_type_and_draftable_id", unique: true, using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "kind"
