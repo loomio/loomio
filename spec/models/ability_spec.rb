@@ -342,7 +342,7 @@ describe "User abilities" do
     let(:user_comment) { create :comment, discussion: discussion, author: user }
     let(:another_user_comment) { create :comment, discussion: discussion }
     let(:user_motion) { create(:motion, author: user, discussion: discussion) }
-    let(:user_vote) { create(:vote, user: user, motion: user_motion)}
+    let(:user_vote) { Votes::Loomio.create(user: user, motion: user_motion, position: "yes") }
     let(:other_users_motion) { create(:motion, author: other_user, discussion: discussion) }
     let(:new_motion) { Motion.new(discussion_id: discussion.id) }
     let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago) }

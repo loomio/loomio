@@ -20,7 +20,7 @@ class Votes::Loomio < Vote
   end
 
   def position=(position)
-    self.stance['position'] = position
+    self.stance['position'] = position.to_s
   end
 
   private

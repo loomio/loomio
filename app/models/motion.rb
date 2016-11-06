@@ -88,7 +88,7 @@ class Motion < ActiveRecord::Base
   end
 
   def voters
-    votes.includes(:user).map(&:user).uniq.compact
+    unique_votes.map(&:user).uniq.compact
   end
 
   def voting?
