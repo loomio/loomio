@@ -55,7 +55,9 @@ published_at "2015-11-18 14:28:30"
       if group.parent.present?
         group.parent.admins << user
       end
-      group.subscription = build(:subscription) if group.is_parent?
+      if Plugins.const_defined?("LoomioBuyerExperience")
+        group.subscription = build(:subscription) if group.is_parent?
+      end
       group.admins << user
       group.save!
     end
@@ -157,7 +159,6 @@ published_at "2015-11-18 14:28:30"
   factory :vote do
     user
     motion
-    ##  update below with Vote::POSITIONS content if changed###
     position %w[yes no abstain block].sample
     statement "A short statement explaining my position."
     after(:build) do |vote|

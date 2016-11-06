@@ -87,6 +87,10 @@ class Motion < ActiveRecord::Base
     author
   end
 
+  def voters
+    votes.includes(:user).map(&:user).uniq.compact
+  end
+
   def voting?
     closed_at.nil?
   end

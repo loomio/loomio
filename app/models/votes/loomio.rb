@@ -19,6 +19,10 @@ class Votes::Loomio < Vote
     self.stance['position']
   end
 
+  def position=(position)
+    self.stance['position'] = position
+  end
+
   private
 
   # Hi, this is opaque, sorry.

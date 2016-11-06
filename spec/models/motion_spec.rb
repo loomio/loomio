@@ -165,20 +165,16 @@ describe Motion do
       let(:motion){FactoryGirl.create :motion, discussion: discussion}
 
       before do
-        Vote::Loomio::POSITIONS.each do |position|
+        Votes::Loomio::POSITIONS.keys.each do |position|
           user = create(:user)
           group.add_member!(user)
-
-          vote = Vote.new(position: position)
-          vote.motion = motion
-          vote.user = user
-          vote.save!
-          motion.reload
+          Votes::Loomio.create(motion: motion, user: user, stance: { position: position })
         end
       end
 
       context 'after updating the vote_counts' do
         it 'has counts of 1' do
+          motion.reload
           expect(motion.yes_votes_count).to eq 1
           expect(motion.no_votes_count).to eq 1
           expect(motion.abstain_votes_count).to eq 1
