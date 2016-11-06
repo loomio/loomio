@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106082314) do
+ActiveRecord::Schema.define(version: 20161106203437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -337,28 +337,6 @@ ActiveRecord::Schema.define(version: 20161106082314) do
 
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
-
-  create_table "group_measurements", force: :cascade do |t|
-    t.integer "group_id"
-    t.date    "period_end_on"
-    t.integer "members_count"
-    t.integer "admins_count"
-    t.integer "subgroups_count"
-    t.integer "invitations_count"
-    t.integer "discussions_count"
-    t.integer "proposals_count"
-    t.integer "comments_count"
-    t.integer "likes_count"
-    t.integer "group_visits_count"
-    t.integer "group_member_visits_count"
-    t.integer "organisation_visits_count"
-    t.integer "organisation_member_visits_count"
-    t.integer "age",                              null: false
-  end
-
-  add_index "group_measurements", ["group_id", "period_end_on"], name: "index_group_measurements_on_group_id_and_period_end_on", unique: true, using: :btree
-  add_index "group_measurements", ["group_id"], name: "index_group_measurements_on_group_id", using: :btree
-  add_index "group_measurements", ["period_end_on"], name: "index_group_measurements_on_period_end_on", using: :btree
 
   create_table "group_requests", force: :cascade do |t|
     t.string   "name"
