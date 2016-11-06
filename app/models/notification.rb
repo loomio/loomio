@@ -9,8 +9,8 @@ class Notification < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: :event_id
   after_create :publish_message
 
-  delegate :kind, to: :event
-  delegate :eventable, to: :event
+  delegate :kind, to: :event, allow_nil: true
+  delegate :eventable, to: :event, allow_nil: true
 
   scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
 
