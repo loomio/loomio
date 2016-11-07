@@ -20,5 +20,4 @@ loomio_content_preview:
   experimental: true
 
 loomio_buyer_experience:
-  repo:         gdpelican/loomio_buyer_experience
-  branch:       donation_modal
+  repo:         loomio/loomio_buyer_experience
