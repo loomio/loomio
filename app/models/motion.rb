@@ -39,9 +39,7 @@ class Motion < ActiveRecord::Base
 
   after_initialize :set_default_closing_at
 
-  define_counter_cache :voters_count do |motion|
-    motion.unique_votes.count
-  end
+  define_counter_cache(:voters_count) { |motion| motion.unique_votes.count }
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }

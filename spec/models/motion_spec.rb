@@ -85,7 +85,7 @@ describe Motion do
     it "returns the number of members who did not vote" do
       user = create :user
       motion.group.add_member! user
-      create :vote, :motion => motion, :position => "yes", :user => user
+      Votes::Loomio.create(motion: motion, user: user, position: 'yes')
       motion.reload
       expect(motion.non_voters_count).to eq motion.group_members.count - 1
     end
@@ -93,9 +93,9 @@ describe Motion do
     it "still works if the same user votes multiple times" do
       user = create :user
       motion.group.add_member! user
-      vote1 = create :vote, :motion => motion, :position => "yes", :user => user
-      vote2 = create :vote, :motion => motion, :position => "no", :user => user
-      expect(motion.non_voters_count).to eq motion.group_members.count - 1
+      vote1 = Votes::Loomio.create(motion: motion, user: user, position: 'yes')
+      vote2 = Votes::Loomio.create(motion: motion, user: user, position: 'no')
+      expect(motion.reload.non_voters_count).to eq motion.group_members.count - 1
     end
 
     context "for a closed motion" do
