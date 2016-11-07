@@ -29,17 +29,6 @@ ActiveAdmin.register Cohort do
           end
         end
       end
-
-      h2 'activated'
-      ul do
-        cohort.activated_organisations.each do |group|
-          li do
-            a(href: admin_group_path(group)) do
-              group.name
-            end
-          end
-        end
-      end
     end
   end
 

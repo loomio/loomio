@@ -11,6 +11,10 @@ class Event < ActiveRecord::Base
   BULK_MAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
                        new_discussion new_motion new_vote)
 
+  NOTIFICATION_KINDS = %w(comment_liked motion_closing_soon comment_replied_to user_mentioned membership_requested
+                          membership_request_approved user_added_to_group motion_closed motion_closing_soon
+                          motion_outcome_created invitation_accepted new_coordinator)
+
   SINGLE_MAIL_KINDS = %w(comment_replied_to user_mentioned)
 
   has_many :notifications, dependent: :destroy

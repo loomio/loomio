@@ -22,6 +22,6 @@ class Events::CommentLiked < Event
   end
 
   def comment
-    @comment ||= eventable.comment
+    @comment ||= eventable&.comment || Comment.new
   end
 end
