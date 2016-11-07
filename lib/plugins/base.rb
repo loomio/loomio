@@ -9,8 +9,16 @@ module Plugins
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
-    attr_accessor :name, :installed
-    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :enabled
+    PLUGIN_FIELD_SETS = [:assets,
+                         :static_assets,
+                         :actions,
+                         :events,
+                         :outlets,
+                         :routes,
+                         :proposal_kinds]
+   attr_accessor :name, :installed
+   attr_reader *PLUGIN_FIELD_SETS
+   attr_reader :enabled, :translations
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -19,7 +27,7 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
+      PLUGIN_FIELD_SETS.map { |field| instance_variable_set "@#{field}", Set.new }
       @config = File.exists?(config_file_path) ? YAML.load(ERB.new(File.read(config_file_path)).result) : {}
     end
 
@@ -134,6 +142,12 @@ module Plugins
     def use_asset(path)
       raise InvalidAssetType.new unless VALID_ASSET_TYPES.include? path.split('.').last.to_sym
       @assets.add [@name, path].join('/')
+    end
+
+    def register_proposal_kind(kind, expanded:, collapsed:)
+      @proposal_kinds.add(kind)
+      use_component(expanded, outlet: :proposal_expanded)
+      use_component(collapsed, outlet: :proposal_collapsed)
     end
 
     private

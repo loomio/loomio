@@ -13,6 +13,10 @@
 
     %fieldset{ng-disabled: "!proposal.canBeEdited()"}
       .lmo-form-group
+        %label{for: "proposal-kind-field", translate: "proposal_form.kind_label"}
+        .lmo-relative
+          %select.form-control{ng-model: "proposal.kind", class: "proposal-form__select-kind", ng-options: "kind for kind in proposalKinds"}
+
         %label{for: "proposal-title-field", translate: "proposal_form.title_label"}
         .lmo-relative
           %input.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}

@@ -22,3 +22,6 @@ loomio_content_preview:
 loomio_buyer_experience:
   repo:         gdpelican/loomio_buyer_experience
   branch:       donation_modal
+
+loomio_voting:
+  repo:         gdpelican/loomio_voting
