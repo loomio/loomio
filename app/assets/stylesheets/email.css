@@ -47,13 +47,29 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   border-radius: 4px;
 }
 
+.invite-people-mailer__avatar-initials {
+  margin-right: 10px;
+  float: left;
+  border: 1px solid #dcdcdc;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.invite-people-mailer__avatar-image {
+  margin-right: 10px;
+  float: left;
+}
+
 .invite-people-mailer__body {
   padding: 30px 20px;
 }
 
 .invite-people-mailer__context--left-align {
   text-align: left;
-  padding: 0 20px;
+  padding: 5px 20px 0;
 }
 
 .invite-people-mailer__message-container {
@@ -114,8 +130,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 }
 
 .thread-mailer__avatar-image {
-  width: 30px;
-  height: 30px;
   margin-right: 10px;
   float: left;
 }

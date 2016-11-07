@@ -1,5 +1,5 @@
+= render 'avatar', author: @invitation.inviter
 .invite-people-mailer__context--left-align
-  = render 'thread_mailer/avatar', author: @invitation.inviter
   %strong= @invitation.inviter.name
   = t(:"email.to_join_group.invitation_text_html")
   %strong= @invitation.invitable_name
