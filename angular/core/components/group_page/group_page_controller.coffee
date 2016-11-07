@@ -1,8 +1,6 @@
 angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
 
-  # $scope.$on 'joinedGroup', => @handleWelcomeModal()
-
   @launchers = []
   @addLauncher = (action, condition = (-> true), opts = {}) =>
     @launchers.push

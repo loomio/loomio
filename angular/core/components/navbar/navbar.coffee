@@ -7,6 +7,10 @@ angular.module('loomioApp').directive 'navbar', ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
     $scope.officialLoomio = AppConfig.isLoomioDotOrg
+    $scope.showNavbar = true
+
+    $scope.$on 'toggleNavbar', (event, show) ->
+      $scope.showNavbar = show
 
     $scope.hostName = parser.hostname
 
@@ -14,6 +18,7 @@ angular.module('loomioApp').directive 'navbar', ->
 
     $scope.toggleSidebar = ->
       $rootScope.$broadcast 'toggleSidebar'
+
 
     $scope.signIn = ->
       ModalService.open SignInForm
