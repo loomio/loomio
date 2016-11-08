@@ -1,3 +1,14 @@
 .proposal-accordian {
-	margin-top: 7px;
+	margin: 7px 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.proposal-accordian--link {
+	@include displayFlex;
+}
+
+.proposal-link {
+	margin-left: 10px;
+	cursor: pointer;
 }

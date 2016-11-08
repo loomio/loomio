@@ -144,10 +144,12 @@ module Plugins
       @assets.add [@name, path].join('/')
     end
 
-    def register_proposal_kind(kind, expanded:, collapsed:)
+    def register_proposal_kind(kind, expanded:, collapsed:, preview_large: nil, preview_small: nil)
       @proposal_kinds.add(kind)
-      use_component(expanded, outlet: :proposal_expanded)
-      use_component(collapsed, outlet: :proposal_collapsed)
+      use_component expanded,      outlet: :proposal_expanded
+      use_component collapsed,     outlet: :proposal_collapsed
+      use_component preview_large, outlet: :proposal_preview_large if preview_large
+      use_component preview_small, outlet: :proposal_preview_small if preview_small
     end
 
     private

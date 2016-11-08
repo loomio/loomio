@@ -6,7 +6,6 @@ class Queries::VisibleMotions < Delegator
     @relation = Motion.joins(discussion: :group)
                       .includes(:discussion)
                       .where('groups.archived_at IS NULL')
-                      .where(kind: Plugins::Repository.to_config.proposal_kinds)
     @relation = Queries::VisibleDiscussions.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
 
     super(@relation)

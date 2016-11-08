@@ -68,10 +68,6 @@
   @include boxMedium;
 }
 
-.thread-preview__pie-canvas {
-  @include boxMedium;
-}
-
 .thread-preview__text-container{
   @include displayFlex;
   line-height: 22px;
@@ -115,46 +111,6 @@
 .thread-preview__proposal-closing-at {
   @include fontTiny;
   color: $highlight-red;
-}
-
-.thread-preview__position-icon-container {
-  width: 23px;
-  height: 23px;
-  position: absolute;
-  left: 15px;
-  top: 43px;
-  background-color: white;
-  border-radius: 100%;
-  box-shadow: 0 2px 1px rgba(0,0,0,.15);
-}
-
-.thread-preview__position-icon {
-  background-repeat: no-repeat;
-  height: 21px;
-  margin: 1px 0 0 1px;
-  width: 21px;
-}
-
-.thread-preview__position-icon--yes {
-  background-image: url(/img/agree.svg);
-}
-
-.thread-preview__position-icon--no {
-  background-image: url(/img/disagree.svg);
-}
-
-.thread-preview__position-icon--block {
-  background-image: url(/img/block.svg);
-}
-
-.thread-preview__position-icon--abstain {
-  background-image: url(/img/abstain.svg);
-}
-
-.thread-preview__undecided-icon {
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
 }
 
 .thread-preview__actions button {

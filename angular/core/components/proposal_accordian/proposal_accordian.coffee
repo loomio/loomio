@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'proposalAccordian', ->
-  scope: {model: '=', selectedProposalId: '=?'}
+  scope: {model: '=', selectedProposalId: '=?', expandable: '=?', limit: '@'}
   restrict: 'E'
   templateUrl: 'generated/components/proposal_accordian/proposal_accordian.html'
   replace: true
