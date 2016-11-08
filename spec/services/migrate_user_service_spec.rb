@@ -63,8 +63,8 @@ describe MigrateUserService do
     @vote = Vote.new(position: 'yes', motion: @motion, statement: 'I agree!')
     VoteService.create(vote: @vote, actor: @patrick)
 
-    @attachment = Attachment.create(file: fixture_for('images', 'strongbad.png'),
-                                    user_id: @patrick.id)
+    # @attachment = Attachment.create(file: fixture_for('images', 'strongbad.png'),
+    #                                 user_id: @patrick.id)
 
     @contact = Contact.create(name: Faker::Name.name,
                               email: Faker::Internet.email,
@@ -106,7 +106,7 @@ describe MigrateUserService do
      @like,
      @motion,
      @vote,
-     @attachment,
+    #  @attachment,
      @contact,
      @discussion_reader,
      @draft,
@@ -126,7 +126,7 @@ describe MigrateUserService do
     assert_equal @motion.author, @jennifer
     assert_equal @motion.outcome_author, @jennifer
     assert_equal @vote.author, @jennifer
-    assert_equal @attachment.user_id, @jennifer.id
+    # assert_equal @attachment.user_id, @jennifer.id
     assert_equal @contact.user_id, @jennifer.id
     assert_equal @discussion_reader.user_id, @jennifer.id
     assert_equal @draft.user_id, @jennifer.id

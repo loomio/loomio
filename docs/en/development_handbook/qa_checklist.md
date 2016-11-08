@@ -53,6 +53,7 @@ See the [a11y guide](accessibility.md) for more info.
 - google analytics records actions
 - background jobs have crontasks
 - migrations have been tested on a copy of the production database
+- has migrate user service been updated to handle new records or changes?
 
 ## Open source ready
 - The code does not contain any Loomio.org specific stuff
