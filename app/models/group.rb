@@ -13,7 +13,6 @@ class Group < ActiveRecord::Base
   validates_inclusion_of :discussion_privacy_options, in: DISCUSSION_PRIVACY_OPTIONS
   validates_inclusion_of :membership_granted_upon, in: MEMBERSHIP_GRANTED_UPON_OPTIONS
   validates :name, length: { maximum: 250 }
-  validates :subscription, absence: true, if: :is_subgroup?
 
   validate :limit_inheritance
   validate :validate_parent_members_can_see_discussions
@@ -37,7 +36,6 @@ class Group < ActiveRecord::Base
 
   scope :visible_to_public, -> { published.where(is_visible_to_public: true) }
   scope :hidden_from_public, -> { published.where(is_visible_to_public: false) }
-  scope :created_by, -> (user) { where(creator_id: user.id) }
 
   scope :explore_search, ->(query) { where("name ilike :q or description ilike :q", q: "%#{query}%") }
 
@@ -122,7 +120,6 @@ class Group < ActiveRecord::Base
 
   after_initialize :set_defaults
 
-  after_create :set_is_referral
   after_create :guess_cohort
 
   alias :users :members
@@ -152,8 +149,6 @@ class Group < ActiveRecord::Base
            class_name: 'Group',
            foreign_key: :parent_id
 
-  belongs_to :subscription, dependent: :destroy
-
   delegate :include?, to: :users, prefix: true
   delegate :users, to: :parent, prefix: true
   delegate :members, to: :parent, prefix: true
@@ -178,14 +173,15 @@ class Group < ActiveRecord::Base
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
 
-  define_counter_cache(:motions_count)            { |group| group.discussions.published.sum(:motions_count) }
-  define_counter_cache(:closed_motions_count)     { |group| group.motions.closed.count }
-  define_counter_cache(:discussions_count)        { |group| group.discussions.published.count }
-  define_counter_cache(:public_discussions_count) { |group| group.discussions.visible_to_public.count }
-  define_counter_cache(:memberships_count)        { |group| group.memberships.count }
-  define_counter_cache(:admin_memberships_count)  { |group| group.admin_memberships.count }
-  define_counter_cache(:invitations_count)        { |group| group.invitations.count }
-  define_counter_cache(:proposal_outcomes_count)  { |group| group.motions.with_outcomes.count }
+  define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
+  define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
+  define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
+  define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
+  define_counter_cache(:memberships_count)         { |group| group.memberships.count }
+  define_counter_cache(:admin_memberships_count)   { |group| group.admin_memberships.count }
+  define_counter_cache(:invitations_count)         { |group| group.invitations.count }
+  define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
+  define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
@@ -199,40 +195,6 @@ class Group < ActiveRecord::Base
     end
   end
 
-  before_save :set_creator_if_blank
-
-  def set_creator_if_blank
-    if self[:creator_id].blank? and admins.any?
-      self.creator = admins.first
-    end
-  end
-
-  alias_method :real_creator, :creator
-
-  def creator
-    self.real_creator || admins.first || members.first
-  end
-
-  def creator_id
-    self[:creator_id] || creator.try(:id)
-  end
-
-  def locale
-    creator.try(:locale)
-  end
-
-  def coordinators
-    admins
-  end
-
-  def contact_person
-    admins.order('id asc').first
-  end
-
-  def requestor_name_and_email
-    "#{requestor_name} <#{requestor_email}>"
-  end
-
   def requestor_name
     group_request.try(:admin_name)
   end
@@ -244,9 +206,7 @@ class Group < ActiveRecord::Base
   def archive!
     self.update_attribute(:archived_at, DateTime.now)
     memberships.update_all(archived_at: DateTime.now)
-    subgroups.each do |group|
-      group.archive!
-    end
+    subgroups.map(&:archive!)
   end
 
   def unarchive!
@@ -369,8 +329,7 @@ class Group < ActiveRecord::Base
 
   def add_member!(user, inviter=nil)
     begin
-      save!
-      memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
+      tap(&:save!).memberships.find_or_create_by(user: user) { |m| m.inviter = inviter }
     rescue ActiveRecord::RecordNotUnique
       retry
     end
@@ -489,12 +448,6 @@ class Group < ActiveRecord::Base
       else
         true
       end
-    end
-  end
-
-  def set_is_referral
-    if creator && creator.groups.size > 0
-      update_attribute(:is_referral, true)
     end
   end
 

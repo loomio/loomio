@@ -54,7 +54,7 @@ class API::ProfileController < API::RestfulController
     if current_user == restricted_user
       Restricted::UserSerializer
     else
-      CurrentUserSerializer
+      Full::UserSerializer
     end
   end
 

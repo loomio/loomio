@@ -18,7 +18,7 @@
           %input.proposal-form__title-field.form-control.lmo-primary-form-input#proposal-title-field{placeholder: "{{ 'proposal_form.title_placeholder' | translate }}", ng-model: "proposal.name", ng-required: "false", maxlength: "255"}
         %validation_errors{subject: "proposal", field: "name"}
         .proposal-form__proposal_ideas{ng-if: "proposal.isNew()"}
-          %a{href: "{{nineWaysArticleLink()}}", title: "{{ 'proposal_form.proposal_ideas_title' | translate }}", target: "_blank"}
+          %a.proposal-form__proposal_ideas_link{href: "{{nineWaysArticleLink()}}", title: "{{ 'proposal_form.proposal_ideas_title' | translate }}", target: "_blank"}
             %span{translate: "proposal_form.proposal_ideas"}
 
       .lmo-form-group

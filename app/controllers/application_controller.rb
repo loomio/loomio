@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include ProtectedFromForgery
   include LoadAndAuthorize
   include CurrentUserHelper
-  include SubscriptionHelper
 
   helper :analytics_data
   helper :locales

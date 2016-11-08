@@ -93,6 +93,13 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
+  def setup_experimental_group
+    sign_in patrick
+    test_group.add_member! emilio
+    test_group.update(enable_experiments: true)
+    redirect_to group_url(test_group)
+  end
+
   def setup_membership_request_approved_notification
     sign_in max
     membership_request = MembershipRequest.new(user: max, group: test_group)
@@ -179,32 +186,6 @@ class DevelopmentController < ApplicationController
     end
     sign_in patrick
     redirect_to discussion_url(test_discussion)
-  end
-
-  def setup_group_on_free_plan
-    group = Group.new(name: 'Ghostbusters',
-                      is_visible_to_public: true)
-    GroupService.create(group: group, actor: patrick)
-    membership = Membership.find_by(user: patrick, group: group)
-    group.add_member! jennifer
-    sign_in patrick
-    redirect_to group_url(group)
-  end
-
-  def setup_group_and_select_plan
-    test_group.experiences['bx_choose_plan'] = true
-    test_group.save
-    GroupService.create(group: test_group, actor: patrick)
-    sign_in patrick
-    redirect_to group_url(test_group)
-  end
-
-  def setup_group_on_paid_plan
-    GroupService.create(group: test_group, actor: patrick)
-    subscription = test_group.subscription
-    subscription.update_attribute :kind, 'paid'
-    sign_in patrick
-    redirect_to group_url(test_group)
   end
 
   def setup_public_group_with_public_content

@@ -1,7 +1,7 @@
 ExampleContent = Struct.new(:group) do
   include Routing
 
-  def add_to_group!(admin_invite: nil)
+  def add_to_group!
     group.add_member!(helper_bot).tap do
       Events::NewDiscussion.publish!(introduction_thread)
       Events::NewMotion.publish!(example_motion)

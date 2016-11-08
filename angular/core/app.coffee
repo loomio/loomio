@@ -57,7 +57,7 @@ angular.module('loomioApp', ['ngNewRouter',
   $analyticsProvider.withAutoBase(true);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, ChoosePlanModal, AbilityService, AhoyService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -95,7 +95,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     if !AbilityService.isLoggedIn() and error.status == 403
       ModalService.open(SignInForm, preventClose: -> true)
 
-  $scope.$on 'setBackgroundImageUrl', (event, url) ->
+  $scope.$on 'setBackgroundImageUrl', (event, group) ->
+    url = group.coverUrl(ViewportService.viewportSize())
     angular.element(document.querySelector('.lmo-main-background')).attr('style', "background-image: url(#{url})")
 
   $scope.$on 'clearBackgroundImageUrl', (event) ->

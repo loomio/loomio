@@ -76,7 +76,7 @@ class API::MembershipsController < API::RestfulController
   private
 
   def accessible_records
-    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent, :subscription]})
+    visible = resource_class.joins(:group).includes(:user, :inviter, {group: [:parent]})
     if current_user.group_ids.any?
       visible.where("group_id IN (#{current_user.group_ids.join(',')}) OR groups.is_visible_to_public = 't'")
     else

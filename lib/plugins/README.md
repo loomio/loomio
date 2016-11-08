@@ -215,6 +215,63 @@ If you want to make an angular something which isn't a component (like a filter 
 
 NB: We only support coffeescript at the moment, but in the future we'll allow plugin authors to write their client side code in ES6, TypeScript, vanilla javascript, even Clojure!
 
+### Extend existing angular code
+
+Sometimes you just can't get around modifying existing angular code in the app. This is discouraged if you can avoid it, but it is possible to do so (it's not that intuitive though, so hold on to your hats!)
+
+#### Services / directives
+As of Angular 1.4, there is some decent support for adding custom code to existing services and directives. To do so, we'll use the `$provide` service.
+
+1. Write a new `config` block for our angular module, injecting the `$provide` service.
+2. Create a new decorator for our service or directive
+3. Use the `$delegate` service to get an instance of our controller
+4. Use the arguments to determine whether this is the controller we want to modify or not (after all, this `$controller` is run once for each controller in our app)
+5. Modify our controller instance to the desired affect.
+6. Return our newly modified controller instance
+
+```coffee
+angular.module('loomioApp').config ($provide) -> # 1
+  $provide.decorator 'kickflipDirective', ($delegate) -> # 2
+    directive = _.first($delegate) # $delegate is an array here :/
+    directive.compile = ->
+      (scope, elem) ->
+        directive.link.apply(this, arguments)
+        if modal = scope.parentMentio.targetElement[0].closest('.modal')
+          modal.appendChild(elem[0])
+    $delegate
+```
+
+#### Controllers
+If you need to overwrite some controller code, things get a little bit trickier.
+
+1. Write a new `config` block for our angular module, injecting the `$provide` service.
+2. Create a new decorator for our `$controller` service, passing in whatever dependencies we need, along with the `$delegate` service.
+3. Use the `$delegate` service to get an instance of our controller
+4. Use the arguments to determine whether this is the controller we want to modify or not (after all, this `$controller` is run once for each controller in our app)
+5. Modify our controller instance to the desired affect.
+6. Return our newly modified controller instance
+
+Here's what a simple implementation might look like, given we've got a `KickflipPageController` with the following method:
+
+```coffee
+@kickflip = -> "100 points!"
+```
+
+We can update this method with the following:
+```coffee
+angular.module('loomioApp').config ($provide) -> # 1
+  $provide.decorator '$controller', ($delegate, Session) -> # 2
+     ->
+      ctrl = $delegate arguments... # 3
+      if _.get(arguments, '[1].$router.name') == 'kickflipPage' # 4
+        oldKickflip = ctrl.kickflip
+        ctrl.kickflip = -> oldKickflip() + ", and 100 more points!" # 5
+
+      return ctrl # 6
+```
+
+Now, when our KickflipPageController calls `kickflip()`, we get "100 points, and 100 more points!" :D
+
 ### Add non-angular code
 
 ##### Add vanilla rails views

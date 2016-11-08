@@ -1,11 +1,13 @@
+body {
+  position: static;
+  z-index: -2 !important;
+}
+
 .lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
   padding-bottom: 25px;
   z-index: 0;
   min-width: 320px;
-}
-body {
-  z-index: -2 !important;
 }
 
 .lmo-one-column-layout{
@@ -25,6 +27,25 @@ md-dialog {
   min-width: $tiny-max-px;
   max-height: 90%;
   background-color: $modal-background-color;
+}
+
+.lmo-sidebar-and-main-container {
+  position: relative;
+}
+
+.lmo-main-content{
+  overflow-y: scroll;
+  position: relative;
+}
+.lmo-main-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 320px;
+}
+
+.md-dialog-container {
+  z-index: $over-intercom;
 }
 
 .modal-body {

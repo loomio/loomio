@@ -20,7 +20,7 @@ module Plugins
       @name = name
       @translations = {}
       @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
-      @config = YAML.load_file([@name, 'config.yml'].join('/'))
+      @config = File.exists?(config_file_path) ? YAML.load(ERB.new(File.read(config_file_path)).result) : {}
     end
 
     def enabled=(value)
@@ -64,7 +64,9 @@ module Plugins
     end
 
     def use_static_asset_directory(path, standalone: false)
-      Dir.entries([@name.to_s, path].join('/')).drop(2).each { |filename| use_static_asset(path, filename, standalone: standalone) }
+      Dir.entries([@name.to_s, path].join('/'))
+         .reject { |p| ['.', '..'].include?(p) }
+         .each { |filename| use_static_asset(path, filename, standalone: standalone) }
     end
 
     def use_translations(path, filename = :client)
@@ -135,6 +137,10 @@ module Plugins
     end
 
     private
+
+    def config_file_path
+      [@name, 'config.yml'].join('/')
+    end
 
     def use_translation(path)
       @translations.deep_merge! YAML.load_file(path)

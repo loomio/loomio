@@ -6,29 +6,6 @@ describe Group do
   let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group }
 
-  context "is_referral" do
-    it "is false for first group" do
-      expect(group.is_referral).to be false
-    end
-
-    it "is true for second group" do
-      group2 = create(:group, creator: group.creator)
-      expect(group2.is_referral).to be true
-    end
-  end
-
-  context "group creator" do
-    it "stores the admin as a creator" do
-      expect(group.creator).to eq group.admins.first
-    end
-
-    it "delegates language to the group creator" do
-      @user = create :user, selected_locale: :fr
-      group = create :group, creator: @user
-      expect(group.locale).to eq group.creator.locale
-    end
-  end
-
   context 'default cover photo' do
 
     it 'returns an uploaded cover url if one exists' do
@@ -53,7 +30,7 @@ describe Group do
   context "counter caches" do
     describe 'invitations_count' do
       before do
-        @group = create(:group)
+        @group = create(:group, creator: create(:user))
         @user  = create(:user)
       end
 

@@ -1,7 +1,19 @@
 class Events::CommentLiked < Event
+  include PrettyUrlHelper
+
   def self.publish!(comment_vote)
     create(kind: "comment_liked",
            eventable: comment_vote).tap { |e| EventBus.broadcast('comment_liked_event', e) }
+  end
+
+  def users_to_notify
+    Array((comment.author if notify_author?))
+  end
+
+  private
+
+  def notification_url
+    polymorphic_url comment
   end
 
   def notify_author?
@@ -10,6 +22,6 @@ class Events::CommentLiked < Event
   end
 
   def comment
-    @comment ||= eventable.comment
+    @comment ||= eventable&.comment || Comment.new
   end
 end

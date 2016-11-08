@@ -46,7 +46,6 @@ Loomio::Application.routes.draw do
       get :count_explore_results, on: :collection
       patch :archive, on: :member
       put :archive, on: :member
-      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
@@ -149,7 +148,7 @@ Loomio::Application.routes.draw do
       get :inline, to: 'translations#inline'
     end
 
-    resources :notifications, only: :index do
+    resources :notifications, only: [] do
       post :viewed, on: :collection
     end
 
@@ -231,11 +230,11 @@ Loomio::Application.routes.draw do
   get 'apps/registered/:id/:slug'          => 'application#boot_angular_ui'
   get 'd/:key/proposal/:proposal'          => 'application#boot_angular_ui', as: :discussion_motion
   get 'd/:key/comment/:comment'            => 'application#boot_angular_ui', as: :discussion_comment
-  get 'd/:key/proposal/:proposal/:outcome' => 'application#boot_angular_ui', as: :discussion_motion_outcome
+  get 'd/:key/proposal/:proposal/outcome'  => 'application#boot_angular_ui', as: :discussion_motion_outcome
   get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
-  get 'g/:key/memberships/:username'       => 'application#boot_angular_ui'
+  get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
 
   get '/notifications/dropdown_items'      => 'application#gone'
   get '/u/:key(/:stub)'                    => 'application#gone'

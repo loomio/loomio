@@ -2,8 +2,7 @@
   %main.inbox-page
     .thread-preview-collection__container
       %h1.lmo-h1-medium.inbox-page__heading{translate: "inbox_page.unread_threads"}
-      %loading{ng-if: "inboxPage.loading()"}
-      .inbox-page__threads{ng-if: "!inboxPage.loading()"}
+      .inbox-page__threads
         .inbox-page__no-threads{ng-show: "!inboxPage.hasThreads() && !inboxPage.noGroups()"}
           %span{translate: "inbox_page.no_threads"}>
           %span

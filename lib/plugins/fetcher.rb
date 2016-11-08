@@ -28,8 +28,10 @@ module Plugins
     end
 
     def set_config
+      return unless @config.present?
       Dir.chdir(@folder) do
-        File.open('config.yml', 'w+') { |f| f.write @config.to_yaml }
+        `touch config.yml`
+        File.open('config.yml', 'a+') { |f| f.write @config.to_yaml.gsub('---', '') }
       end
     end
   end

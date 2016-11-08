@@ -187,7 +187,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_email(email)
-    User.where('lower(email) = ?', email.downcase).first
+    User.where('lower(email) = ?', email.to_s.downcase).first
   end
 
   def self.helper_bot

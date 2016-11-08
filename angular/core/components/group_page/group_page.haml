@@ -10,9 +10,7 @@
           .group-page__description-text.lmo-last.lmo-markdown-wrapper{ marked: "groupPage.group.description" }
         %discussions_card{group: "groupPage.group", page_window: "groupPage.pageWindow"}
       .lmo-group-column-right
-        %trial_card{group: "groupPage.group"}
-        %gift_card{group: "groupPage.group"}
-        %upgrade_plan_card{group: "groupPage.group"}
+        %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
         %membership_requests_card{group: "groupPage.group"}
         %members_card{group: "groupPage.group"}
         %group_previous_proposals_card{group: "groupPage.group"}

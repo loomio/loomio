@@ -1,0 +1,28 @@
+@media print {
+  header, .lmo-no-print, .sr-only { display: none !important; }
+
+  .lmo-one-column-layout,
+  .lmo-two-column-layout {
+    padding-top: 0 !important;
+  }
+
+  .lmo-print-only {
+    display: block !important;
+  }
+
+  .lmo-sidebar-and-main-container {
+    display: block;
+  }
+
+  .lmo-sidebar-and-main-container { overflow: visible !important; }
+
+  .thread-page {
+    .group-theme__header--compact {
+      margin: 0 0 15px 0;
+    }
+
+    a[href]:after {
+      content: "" !important;
+    }
+  }
+}

@@ -29,31 +29,31 @@ describe 'GroupService' do
       expect(group.reload.cover_photo).to be_blank
     end
 
-    it 'creates a new gift subscription for even experiences' do
-      group.experiences['bx_choose_plan'] = false
-      GroupService.create(group: group, actor: user)
-      subscription = group.reload.subscription
-      expect(subscription.kind.to_sym).to eq :gift
-    end
-
-    it 'creates no subscription for odd experiences' do
-      group.experiences['bx_choose_plan'] = true
-      GroupService.create(group: group, actor: user)
-      expect(group.reload.subscription).to be nil
-    end
-
     it 'does not send excessive emails' do
       expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
     end
-  end
 
-  describe 'archive!' do
-    it 'cancels the subscription' do
-      group.add_admin! user
-      instance = OpenStruct.new
-      allow(SubscriptionService).to receive(:new).and_return(instance)
-      expect(instance).to receive :end_subscription!
-      GroupService.archive(group: group, actor: user)
+    it 'sets the actor as group creator if logged in' do
+      GroupService.create(group: group, actor: user)
+      expect(group.reload.creator).to eq user
+    end
+
+    it 'leaves the group creator nil if user does not have account' do
+      GroupService.create(group: group, actor: LoggedOutUser.new)
+      expect(group.reload.creator).to be_nil
+    end
+
+    context "is_referral" do
+      it "is false for first group" do
+        GroupService.create(group: group, actor: user)
+        expect(group.is_referral).to be false
+      end
+
+      it "is true for second group" do
+        create(:group).add_admin! user
+        GroupService.create(group: group, actor: user)
+        expect(group.is_referral).to be true
+      end
     end
   end
 end
