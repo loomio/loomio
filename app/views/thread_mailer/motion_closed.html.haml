@@ -1,3 +1,5 @@
+= render "thread_mailer/#{@motion.kind}"
+
 -if @recipient == @motion.author
   %p= t(:"email.thread_mailer.specify_outcome_html", link: discussion_url(@motion.discussion, @utm_hash.merge(proposal: @motion, focus_outcome_input: "true")))
 -else
