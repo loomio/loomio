@@ -102,6 +102,11 @@ module Plugins
       extend_class(DevelopmentController) { define_method(path, &block) }
     end
 
+    def use_view_path(path, controller: ApplicationController)
+      raise NoCodeSpecifiedError.new unless path.present?
+      @actions.add Proc.new { controller.prepend_view_path [:plugins, @name, path].join('/') }
+    end
+
     def use_route(verb, route, action)
       @actions.add Proc.new {
         Loomio::Application.routes.prepend do
