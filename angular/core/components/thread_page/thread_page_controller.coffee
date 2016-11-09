@@ -37,7 +37,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
       '.activity-card__last-read-activity'
     else
-      '.thread-context'
+      '.context-panel'
 
   @threadElementsLoaded = ->
     @eventsLoaded and @proposalsLoaded

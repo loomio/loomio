@@ -85,13 +85,13 @@ module.exports = new class ThreadHelper
     @mentionList().element(By.css('li'))
 
   clickThreadOptionsDropdownButton: ->
-    element(By.css('.thread-context__dropdown-button')).click()
+    element(By.css('.context-panel__dropdown-button')).click()
 
   clickThreadOptionsDropdownEdit: ->
-    element(By.css('.thread-context__dropdown-options-edit')).click()
+    element(By.css('.context-panel__dropdown-options--edit')).click()
 
   clickThreadOptionsDropdownMove: ->
-    element(By.css('.thread-context__dropdown-options-move')).click()
+    element(By.css('.context-panel__dropdown-options-move')).click()
 
   threadTitleInput: ->
     element(By.css('.discussion-form__title-input')).clear().sendKeys('Edited thread title')
@@ -137,26 +137,22 @@ module.exports = new class ThreadHelper
     element(By.css('.activity-card')).getText()
 
   openThreadOptionsDropdown: ->
-    element(By.css('.thread-context__dropdown-button')).click()
-
-  openEditThreadForm: ->
-    @openThreadOptionsDropdown()
-    element(By.css('.thread-context__dropdown-options-edit')).click()
+    element(By.css('.context-panel__dropdown-button')).click()
 
   groupTitle: ->
     element(By.css('.group-theme__name--compact')).getText()
 
   discussionTitle: ->
-    element(By.css('.thread-context')).getText()
+    element(By.css('.context-panel')).getText()
 
   selectDeleteThreadOption: ->
-    element(By.css('.thread-context__dropdown-options-delete')).click()
+    element(By.css('.context-panel__dropdown-options--delete')).click()
 
   confirmThreadDeletion: ->
     element(By.css('.delete_thread_form__submit')).click()
 
   threadOptionsDropdown: ->
-    element(By.css('.thread-context__dropdown'))
+    element(By.css('.context-panel__dropdown'))
 
   angularFeedbackCard: ->
     element(By.css('#angular-feedback-card'))
