@@ -62,7 +62,7 @@ describe 'Discussion Page', ->
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form__description-input', 'Revised description'
       page.click '.discussion-form__update'
-      page.click '.thread-context__edited-link'
+      page.click '.context-panel__edited'
       page.expectText '.revision-history-modal__body', 'Revised title'
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
