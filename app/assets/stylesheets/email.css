@@ -47,9 +47,12 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   border-radius: 4px;
 }
 
+.invite-people-mailer__context {
+  margin-bottom: 30px;
+}
+
 .invite-people-mailer__avatar-initials {
-  margin-right: 10px;
-  float: left;
+  margin: 0 10px 10px 0;
   border: 1px solid #dcdcdc;
   font-size: 18px;
   line-height: 50px;
@@ -59,17 +62,11 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 }
 
 .invite-people-mailer__avatar-image {
-  margin-right: 10px;
-  float: left;
+  margin: 0 10px 10px 0;
 }
 
 .invite-people-mailer__body {
   padding: 30px 20px;
-}
-
-.invite-people-mailer__context--left-align {
-  text-align: left;
-  padding: 5px 20px 0;
 }
 
 .invite-people-mailer__message-container {
