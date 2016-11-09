@@ -55,7 +55,7 @@ published_at "2015-11-18 14:28:30"
       if group.parent.present?
         group.parent.admins << user
       end
-      group.subscription = build(:subscription) if group.is_parent?
+      # group.subscription = build(:subscription) if group.is_parent?
       group.admins << user
       group.save!
     end

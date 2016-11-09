@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106203437) do
+ActiveRecord::Schema.define(version: 20161108215035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -432,7 +432,6 @@ ActiveRecord::Schema.define(version: 20161106203437) do
     t.string   "discussion_privacy_options",                                  null: false
     t.boolean  "members_can_add_members",            default: true,           null: false
     t.string   "membership_granted_upon",                                     null: false
-    t.text     "enabled_beta_features"
     t.string   "subdomain"
     t.integer  "theme_id"
     t.string   "cover_photo_file_name"
@@ -469,6 +468,7 @@ ActiveRecord::Schema.define(version: 20161106203437) do
     t.integer  "proposal_outcomes_count",            default: 0,              null: false
     t.jsonb    "experiences",                        default: {},             null: false
     t.integer  "pending_invitations_count",          default: 0,              null: false
+    t.jsonb    "features",                           default: {},             null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree

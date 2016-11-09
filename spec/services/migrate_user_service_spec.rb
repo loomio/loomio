@@ -73,7 +73,7 @@ describe MigrateUserService do
 
     @discussion_reader = DiscussionReader.for(discussion: @discussion, user: @patrick)
 
-    @draft = Draft.create(user_id: @patrick.id, draftable: @discussion)
+    # @draft = Draft.create(user_id: @patrick.id, draftable: @discussion)
 
     @invitation = Invitation.create(inviter_id: @patrick.id, invitable: @group, intent: 'start_group')
 
@@ -109,7 +109,7 @@ describe MigrateUserService do
     #  @attachment,
      @contact,
      @discussion_reader,
-     @draft,
+    #  @draft,
      @invitation,
      @membership_request,
      @omniauth_identity,
@@ -129,7 +129,7 @@ describe MigrateUserService do
     # assert_equal @attachment.user_id, @jennifer.id
     assert_equal @contact.user_id, @jennifer.id
     assert_equal @discussion_reader.user_id, @jennifer.id
-    assert_equal @draft.user_id, @jennifer.id
+    # assert_equal @draft.user_id, @jennifer.id
     assert_equal @invitation.inviter, @jennifer
     assert_equal @membership_request.requestor, @jennifer
     assert_equal @omniauth_identity.user, @jennifer
