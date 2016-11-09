@@ -103,7 +103,7 @@ ActiveAdmin.register User do
     end
 
     panel ("Merge two users") do
-      div "Current user (#{user.email}) will be deleted and their records will be associated with the email address entered below:"
+      div "THIS USER, #{user.email}, WILL BE DELETED! Their records will be associated with the email address entered below:"
       form(action: merge_admin_users_path, method: :post) do |f|
         f.input name: :unwanted_user_email, type: :hidden, value: user.email
         f.input name: :wanted_user_email
