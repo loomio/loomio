@@ -4,7 +4,19 @@
       .active-proposal{ng-if: "selectedProposalId == proposal.id"}
         %outlet{name: "proposal-expanded", model: "proposal"}
       .inactive-proposal{ng-if: "selectedProposalId != proposal.id", ng-click: "selectProposal(proposal)"}
-        %outlet{name: "proposal-collapsed", model: "proposal"}
+        %a.proposal-collapsed{href: "", id: "proposal-{{proposal.key}}"}
+          .sr-only
+            {{proposal.name}}.
+            %proposal_closing_time{proposal: "proposal"}.
+          .screen-only.proposal-collapsed__flex{aria-hidden: "true"}
+            %outlet{name: "proposal-preview-large", model: "proposal"}
+            .proposal-collapsed__body
+              .proposal-collapsed__title
+                {{proposal.name}}
+                %proposal_closing_time.proposal-collapsed__closed-at{proposal: "proposal"}.
+              .proposal-collapsed__outcome{ng-if: "proposal.hasOutcome()"}
+                %span{translate: "proposal_collapsed.outcome"}>
+                %span{marked: "proposal.outcome"}
 
     .proposal-accordian--link{ng-if: "!expandable"}
       %outlet{name: "proposal-preview-large", model: "proposal"}

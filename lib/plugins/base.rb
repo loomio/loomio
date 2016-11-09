@@ -4,7 +4,7 @@ module Plugins
   class NoCodeSpecifiedError < Exception; end
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
-  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans)
+  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans, :proposal_kind)
   StaticAsset = Struct.new(:path, :filename, :standalone)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
@@ -87,9 +87,9 @@ module Plugins
       @events.add block.to_proc
     end
 
-    def use_component(component, outlet: nil)
+    def use_component(component, outlet: nil, proposal_kind: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental'], @config['plans']) }
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental'], @config['plans'], proposal_kind) }
     end
 
     def use_client_route(path, component)
@@ -149,13 +149,12 @@ module Plugins
       @assets.add [@name, path].join('/')
     end
 
-    def register_proposal_kind(kind, expanded:, collapsed:, vote_form:, preview_large: nil, preview_small: nil)
+    def register_proposal_kind(kind, expanded:, vote_form:, preview_large: nil, preview_small: nil)
       @proposal_kinds.add(kind)
-      use_component expanded,      outlet: :proposal_expanded
-      use_component collapsed,     outlet: :proposal_collapsed
-      use_component vote_form,     outlet: :proposal_vote_form
-      use_component preview_large, outlet: :proposal_preview_large if preview_large
-      use_component preview_small, outlet: :proposal_preview_small if preview_small
+      use_component expanded,      outlet: :proposal_expanded, proposal_kind: kind
+      use_component vote_form,     outlet: :proposal_vote_form, proposal_kind: kind
+      use_component preview_large, outlet: :proposal_preview_large, proposal_kind: kind if preview_large
+      use_component preview_small, outlet: :proposal_preview_small, proposal_kind: kind if preview_small
     end
 
     private
