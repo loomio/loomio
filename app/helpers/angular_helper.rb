@@ -48,6 +48,9 @@ module AngularHelper
         short: (ENV['FLASH_TIMEOUT_SHORT'] || 3500).to_i,
         long:  (ENV['FLASH_TIMEOUT_LONG']  || 2147483645).to_i
       },
+      drafts: {
+        debounce: (ENV['LOOMIO_DRAFT_DEBOUNCE'] || 750).to_i
+      },
       oauthProviders: [
         ({ name: :facebook, href: user_facebook_omniauth_authorize_path } if ENV['FACEBOOK_KEY']),
         ({ name: :twitter,  href: user_twitter_omniauth_authorize_path  } if ENV['TWITTER_KEY']),

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'DraftService', ($timeout) ->
+angular.module('loomioApp').factory 'DraftService', ($timeout, AppConfig) ->
   new class DraftService
 
     applyDrafting: (scope, model, watchFields) ->
@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'DraftService', ($timeout) ->
       , ->
         return unless draftMode()
         $timeout.cancel(timeout)
-        timeout = $timeout((-> model.updateDraft()), 300)
+        timeout = $timeout((-> model.updateDraft()), AppConfig.drafts.debounce)
       , true
 
       scope.restoreDraft = ->
