@@ -17,10 +17,10 @@
         %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId"}
         %comment_form.lmo-no-print{discussion: "threadPage.discussion"}
         %outlet{name: "thread-page-column-right"}
-      .thread-page__members
-        %members_card{group: "threadPage.discussion.group()"}
       .thread-page__outlet
         %outlet{name: "before-thread-page-column-right", model: "threadPage.discussion"}
+      .thread-page__members
+        %members_card{group: "threadPage.discussion.group()"}
 
     .thread-page__main-content--large{ng-if: "threadPage.windowIsLarge"}
       .lmo-thread-column-left
