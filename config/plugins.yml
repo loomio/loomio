@@ -25,3 +25,6 @@ loomio_buyer_experience:
 
 loomio_voting:
   repo:         gdpelican/loomio_voting
+
+loomio_clicker:
+  repo:         gdpelican/loomio_clicker
