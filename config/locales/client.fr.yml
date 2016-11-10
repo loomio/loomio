@@ -406,7 +406,10 @@ fr:
     heading: Demander à rejoindre le groupe
     name_label: Nom
     email_label: E-mail
+<<<<<<< HEAD
     introduction_label: Pourquoi voulez-vous rejoindre?
+=======
+>>>>>>> 5c4dedbac2ddf4dc114635a6c2cbb1156737e0b5
     submit_button: Demander à rejoindre le groupe
     introduction_over_limit: Réponse trop longue
     messages:
