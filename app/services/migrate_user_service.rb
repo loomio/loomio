@@ -88,11 +88,11 @@ class MigrateUserService
 
     # look into using
     # table.constantize.where(column_name => @old_id).delete_all
-    delete_sql.each do |line|
-      ActiveRecord::Base.connection.execute line
-    end
+    # delete_sql.each do |line|
+    #   ActiveRecord::Base.connection.execute line
+    # end
 
-    User.find(@old_id).destroy
+    # User.find(@old_id).destroy
 
     ActiveRecord::Base.connection.execute update_paperclip_versions_sql
     update_counters
