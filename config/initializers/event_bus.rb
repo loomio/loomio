@@ -55,10 +55,10 @@ EventBus.configure do |config|
                 'motion_closed_by_user_event',
                 'motion_outcome_created_event',
                 'motion_outcome_updated_event') do |event|
-    DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at)
+    DiscussionReader.for_model(event.eventable).update_reader(read_at: event.created_at, participate: true, volume: :loud)
   end
 
-  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
+  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).update_reader(participate: true) }
 
   config.listen('new_discussion_event',
                 'new_motion_event',
@@ -81,12 +81,10 @@ EventBus.configure do |config|
   end
 
   # update discussion reader after discussion creation / edition
-  config.listen('discussion_create') do |discussion, actor|
-    DiscussionReader.for(discussion: discussion, user: actor).set_volume!(:loud) if actor.email_on_participation?
-  end
-
-  config.listen('discussion_update', 'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).set_volume_as_required!
+  config.listen('discussion_create',
+                'discussion_update',
+                'comment_like') do |model, actor|
+    DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
   end
 
   config.listen('discussion_reader_viewed!',

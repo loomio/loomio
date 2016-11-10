@@ -7,12 +7,16 @@ module HasVolume
   end
 
   def set_volume!(volume)
-    if self.class.volumes.include? volume
+    if volume_is_valid?(volume)
       update_attribute :volume, volume
     else
       self.errors.add :volume, I18n.t(:"activerecord.errors.messages.invalid")
       false
     end
+  end
+
+  def volume_is_valid?(volume)
+    self.class.volumes.include?(volume)
   end
 
   def volume_is_loud?
