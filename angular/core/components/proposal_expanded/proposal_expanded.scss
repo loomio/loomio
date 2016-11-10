@@ -1,0 +1,79 @@
+.proposal-expanded__proposal-name-link:hover{
+  text-decoration: none !important;
+}
+
+.proposal-expanded {
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+  padding: 0 15px 15px 15px;
+}
+
+.proposal-expanded__proposal-name{
+  @include fontLarge;
+  @include fontHelveticaBold;
+  margin-bottom: 0.4em;
+}
+
+.proposal-expanded__collapse{
+  @include fontSmall;
+  color: $grey-on-white;
+  text-decoration: underline;
+}
+
+.proposal-expanded__started-by {
+  @include fontSmall;
+  color: $grey-on-white;
+  margin-bottom: 15px;
+}
+
+.proposal-expanded-votes {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.proposal-expanded__attachments {
+  margin-top: 16px;
+}
+
+.proposal-pie-chart__legend{
+  @include fontSmall;
+  color: $grey-on-white;
+  padding-top: 16px;
+  padding-left: 20px;
+  table { min-width: 110px; }
+  td { padding-bottom: 10px; }
+}
+
+.proposal-pie-chart__label{
+  border-width: 2px;
+  border-bottom-style: solid;
+}
+
+.proposal-pie-chart__label--yes{
+  border-color: $agree-color;
+}
+
+.proposal-pie-chart__label--abstain{
+  border-color: $abstain-color;
+}
+
+.proposal-pie-chart__label--no{
+  border-color: $disagree-color;
+}
+
+.proposal-pie-chart__label--block{
+  border-color: $block-color;
+}
+
+.proposal-pie-chart__participation-statement {
+  margin-top: 10px;
+  @include fontSmall;
+  color: $grey-on-white;
+}
+
+@media (max-width: $tiny-max-px) {
+  .proposal-pie-chart__legend{
+    display: block;
+  }
+}

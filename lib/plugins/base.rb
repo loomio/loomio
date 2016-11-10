@@ -149,10 +149,10 @@ module Plugins
       @assets.add [@name, path].join('/')
     end
 
-    def register_proposal_kind(kind, expanded:, vote_form:, preview_large: nil, preview_small: nil)
+    def register_proposal_kind(kind, proposal:, vote_form:, preview_large: nil, preview_small: nil)
       @proposal_kinds.add(kind)
-      use_component expanded,      outlet: :proposal_expanded, proposal_kind: kind
-      use_component vote_form,     outlet: :proposal_vote_form, proposal_kind: kind
+      use_component proposal,      outlet: :proposal_display,       proposal_kind: kind
+      use_component vote_form,     outlet: :proposal_vote_form,     proposal_kind: kind
       use_component preview_large, outlet: :proposal_preview_large, proposal_kind: kind if preview_large
       use_component preview_small, outlet: :proposal_preview_small, proposal_kind: kind if preview_small
     end

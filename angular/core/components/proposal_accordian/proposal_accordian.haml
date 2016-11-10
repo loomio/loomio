@@ -2,7 +2,7 @@
   %li.lmo-wrap{ng-repeat: "proposal in model.closedProposals() | orderBy:'-closedOrClosingAt' | limitTo: limit track by proposal.id", id: "proposal-{{proposal.id}}"}
     .proposal-accordian--expandable{ng-if: "expandable"}
       .active-proposal{ng-if: "selectedProposalId == proposal.id"}
-        %outlet{name: "proposal-expanded", model: "proposal"}
+        %proposal_expanded{proposal: "proposal"}
       .inactive-proposal{ng-if: "selectedProposalId != proposal.id", ng-click: "selectProposal(proposal)"}
         %a.proposal-collapsed{href: "", id: "proposal-{{proposal.key}}"}
           .sr-only
