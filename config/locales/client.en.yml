@@ -280,7 +280,7 @@ en:
     new_comment: "<strong>{{name}}</strong> commented on <strong>{{discussion}}</strong>"
     comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{discussion}}</strong>"
     comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{discussion}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{discussion}}</strong>"
     membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{group}}</strong>"
     membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{group}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{group}}</strong>"
@@ -488,7 +488,8 @@ en:
     members: 'Members'
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    all_members: All members ({{count}})
+    see_all_members: 'See all: ({{count}}) members'
+    pending_invitations: '+ ({{count}}) pending'
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
     invite_people: 'Invite people'

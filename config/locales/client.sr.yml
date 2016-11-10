@@ -365,7 +365,6 @@ sr:
     heading: Pitaj da se pridružiš grupi
     name_label: Ime
     email_label: ePošta
-    introduction_label: Predstavite se
     submit_button: Pitaj da se pridružiš grupi
     messages:
       membership_requested: 'Zahtevali ste članstvo u {{group}}'

@@ -17,7 +17,6 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
     group_privacy: group.groupPrivacy
     cohort_id: group.cohortId
     created_at: group.createdAt.format()
-    locale: group.locale
     motions_count: group.motionsCount
     discussions_count: group.discussionsCount
     memberships_count: group.membershipsCount

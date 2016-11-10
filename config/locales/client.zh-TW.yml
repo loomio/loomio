@@ -405,8 +405,9 @@ zh-TW:
     heading: 要求加入群組
     name_label: 名字
     email_label: 電子郵件
-    introduction_label: 介紹您自己
+    introduction_label: 為什麼您想要加入？
     submit_button: 要求加入群組
+    introduction_over_limit: 回應太長了
     messages:
       membership_requested: '您已經申請 {{group}} 的成員資格'
   revision_history_modal:

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
+angular.module('loomioApp').factory 'NotificationModel', (BaseModel, $translate) ->
   class NotificationModel extends BaseModel
     @singular: 'notification'
     @plural: 'notifications'
@@ -6,26 +6,10 @@ angular.module('loomioApp').factory 'NotificationModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'event'
       @belongsTo 'user'
+      @belongsTo 'actor', from: 'users'
 
-    actor:      -> @event().actor() if @event()
-    model:      -> @event().model() if @event()
-    kind:       -> @event().kind    if @event()
-
-    group: ->
-      switch @model().constructor.singular
-        when 'group' then @model()
-        else              @model().group()
-
-    discussion: ->
-      switch @model().constructor.singular
-        when 'discussion' then @model()
-        else                   @model().discussion()
-
-    actionModel: ->
-      if @model().constructor.singular == 'membership'
-        @model().group()
-      else
-        @model()
+    content: ->
+      $translate.instant("notifications.#{@kind}", @translationValues)
 
     actionPath: ->
       switch @kind()

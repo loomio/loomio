@@ -1,21 +1,11 @@
 class Events::UserAddedToGroup < Event
-  after_create :notify_users!
-
   def self.publish!(membership, inviter)
     create(kind: "user_added_to_group",
            user: inviter,
-           eventable: membership).tap { |e| EventBus.broadcast('user_added_to_group_event', e) }
+           eventable: membership).tap { |e| EventBus.broadcast('user_added_to_group_event', e, membership.user) }
   end
 
-  def membership
-    eventable
+  def notification_actor
+    eventable.inviter
   end
-
-  private
-
-  def notify_users!
-    notify!(membership.user)
-  end
-
-  handle_asynchronously :notify_users!
 end

@@ -1,5 +1,5 @@
 %md-sidenav.md-sidenav-left.lmo-no-print{md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "$mdMedia('gt-md') && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}"}
-  .sidebar__user-panel
+  .sidebar__user-panel.lmo-no-print
     .sidebar__user-avatar-container
       %user_avatar{user: "currentUser()", size: "medium-circular", ng-if: "currentUser().avatarKind != 'initials'"}
       .sidebar__user-icon-container{ng-if: "currentUser().avatarKind == 'initials'"}
@@ -10,7 +10,7 @@
       .sidebar__user-username
         @{{currentUser().username}}
   .sidebar__divider
-  %md_content.sidebar__content{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
+  %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
     %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
       %md_list_item
         %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", lmo-href: "/dashboard", ng-click: "isActive()", aria-label: "{{ 'sidebar.recent' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage')}"}

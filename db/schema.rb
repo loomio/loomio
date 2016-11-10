@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917001329) do
+ActiveRecord::Schema.define(version: 20161106203437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -310,6 +310,8 @@ ActiveRecord::Schema.define(version: 20160917001329) do
     t.json    "payload",        default: {}, null: false
   end
 
+  add_index "drafts", ["user_id", "draftable_type", "draftable_id"], name: "index_drafts_on_user_id_and_draftable_type_and_draftable_id", unique: true, using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "kind"
     t.datetime "created_at"
@@ -335,28 +337,6 @@ ActiveRecord::Schema.define(version: 20160917001329) do
 
   add_index "group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "group_anc_desc_udx", unique: true, using: :btree
   add_index "group_hierarchies", ["descendant_id"], name: "group_desc_idx", using: :btree
-
-  create_table "group_measurements", force: :cascade do |t|
-    t.integer "group_id"
-    t.date    "period_end_on"
-    t.integer "members_count"
-    t.integer "admins_count"
-    t.integer "subgroups_count"
-    t.integer "invitations_count"
-    t.integer "discussions_count"
-    t.integer "proposals_count"
-    t.integer "comments_count"
-    t.integer "likes_count"
-    t.integer "group_visits_count"
-    t.integer "group_member_visits_count"
-    t.integer "organisation_visits_count"
-    t.integer "organisation_member_visits_count"
-    t.integer "age",                              null: false
-  end
-
-  add_index "group_measurements", ["group_id", "period_end_on"], name: "index_group_measurements_on_group_id_and_period_end_on", unique: true, using: :btree
-  add_index "group_measurements", ["group_id"], name: "index_group_measurements_on_group_id", using: :btree
-  add_index "group_measurements", ["period_end_on"], name: "index_group_measurements_on_period_end_on", using: :btree
 
   create_table "group_requests", force: :cascade do |t|
     t.string   "name"
@@ -488,6 +468,7 @@ ActiveRecord::Schema.define(version: 20160917001329) do
     t.boolean  "analytics_enabled",                  default: false,          null: false
     t.integer  "proposal_outcomes_count",            default: 0,              null: false
     t.jsonb    "experiences",                        default: {},             null: false
+    t.integer  "pending_invitations_count",          default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -660,9 +641,13 @@ ActiveRecord::Schema.define(version: 20160917001329) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
-    t.boolean  "viewed",     default: false, null: false
+    t.boolean  "viewed",             default: false, null: false
+    t.jsonb    "translation_values", default: {},    null: false
+    t.string   "url"
+    t.integer  "actor_id"
   end
 
+  add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
   add_index "notifications", ["created_at"], name: "index_notifications_on_created_at", order: {"created_at"=>:desc}, using: :btree
   add_index "notifications", ["event_id"], name: "index_notifications_on_event_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree

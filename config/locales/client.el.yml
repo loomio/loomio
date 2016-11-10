@@ -256,7 +256,6 @@ el:
     heading: Δηλώστε συμμετοχή στην ομάδα
     name_label: Όνομα
     email_label: Ηλεκτρονική Διεύθυνση
-    introduction_label: Συστηθείτε
     submit_button: Δηλώστε συμμετοχή στην ομάδα
   group_page:
     thread_list:

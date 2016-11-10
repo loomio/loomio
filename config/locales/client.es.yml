@@ -415,8 +415,9 @@ es:
     heading: Solicita unirte al grupo
     name_label: Nombre
     email_label: Correo electrónico
-    introduction_label: Preséntate
+    introduction_label: ¿Porqué quieres unirte?
     submit_button: Solicita unirte al grupo
+    introduction_over_limit: La respuesta es muy larga
     messages:
       membership_requested: 'Ya has solicitado unirte a {{group}}'
   revision_history_modal:

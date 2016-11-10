@@ -262,7 +262,6 @@ it:
     heading: Chiedi di unirti al gruppo
     name_label: Nome
     email_label: Email
-    introduction_label: Presentati
     submit_button: Chiedi di unirti al gruppo
     messages:
       membership_requested: 'Hai richiesto di partecipare al gruppo {{group}}'

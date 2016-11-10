@@ -56,7 +56,6 @@ vi:
   membership_request_form:
     name_label: Tên
     email_label: Email
-    introduction_label: Tự giới thiệu bản thân bạn
   group_page:
     discussions: Các phần thảo luận
     invite_people: Mời thành viên

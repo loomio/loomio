@@ -5,8 +5,4 @@ class Events::UserMentioned < Event
            user: actor,
            created_at: model.created_at).tap { |e| EventBus.broadcast('user_mentioned_event', e, mentioned_user) }
   end
-
-  def comment
-    eventable
-  end
 end

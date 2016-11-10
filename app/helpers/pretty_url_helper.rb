@@ -8,4 +8,13 @@ module PrettyUrlHelper
   def group_url(group, options = {})
     super group, options.merge(slug: group.name.parameterize)
   end
+
+  def polymorphic_url(model, opts = {})
+    return unless model
+    case model
+    when Comment then comment_url(model.discussion, model, opts)
+    else super
+    end
+  end
+
 end

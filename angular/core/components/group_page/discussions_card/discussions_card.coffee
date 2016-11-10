@@ -27,6 +27,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
                         discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
     $scope.showThreadsPlaceholder = ->
+      AbilityService.canStartThread($scope.group) and
       $scope.group.discussions().length < 4
 
     $scope.whyImEmpty = ->

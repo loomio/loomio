@@ -193,7 +193,6 @@ nl-NL:
     heading: Vraag om lid te worden van groep
     name_label: Naam
     email_label: E-mail
-    introduction_label: Introduceer jezelf
     submit_button: Vraag om lid te worden van groep
   group_page:
     thread_list:

@@ -4,7 +4,13 @@ class Events::InvitationAccepted < Event
            eventable: membership).tap { |e| EventBus.broadcast('invitation_accepted_event', e, e.eventable.inviter) }
   end
 
-  def membership
-    eventable
+  private
+
+  def notification_actor
+    eventable.user
+  end
+
+  def notification_url
+    group_memberships_username_url(eventable.group, eventable.user.username) if eventable
   end
 end
