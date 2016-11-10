@@ -17,11 +17,12 @@ class Events::CommentLiked < Event
   end
 
   def notify_author?
+    return false unless comment
     user != comment.author &&                               # you didn't like your own comment
     comment.group.memberships.find_by(user: comment.author) # the author is still in the group
   end
 
   def comment
-    @comment ||= eventable&.comment || Comment.new
+    @comment ||= eventable&.comment
   end
 end

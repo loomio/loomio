@@ -10,6 +10,7 @@ module PrettyUrlHelper
   end
 
   def polymorphic_url(model, opts = {})
+    return unless model
     case model
     when Comment then comment_url(model.discussion, model, opts)
     else super
