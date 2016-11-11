@@ -28,8 +28,8 @@ class DiscussionReader < ActiveRecord::Base
     save(validate: false)               if changed?
   end
 
-  def viewed!(read_at = discussion.last_activity_at, persist: true)
-    return unless should_update_counts?(read_at)
+  def viewed!(read_at, persist: true)
+    return if self.last_read_at && self.last_read_at > read_at
     assign_attributes(read_attributes(read_at))
     EventBus.broadcast('discussion_reader_viewed!', discussion, user)
     save if persist
@@ -72,11 +72,6 @@ class DiscussionReader < ActiveRecord::Base
         read_salient_items_count: read_salient_items.count
       }
     end
-  end
-
-  def should_update_counts?(read_at = self.last_read_at)
-    (read_at && !self.last_read_at) ||                           # new read time is given and no existing read time exists
-    (read_at && self.last_read_at && read_at > self.last_read_at) # last read time exists, but is before the new read time
   end
 
   def should_update_volume?(volume)

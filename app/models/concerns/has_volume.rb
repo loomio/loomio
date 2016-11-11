@@ -8,7 +8,7 @@ module HasVolume
 
   def set_volume!(volume, persist: true)
     if self.class.volumes.include?(volume)
-      update_attributes(volume: volume)
+      self.volume = volume
       save if persist
     else
       self.errors.add :volume, I18n.t(:"activerecord.errors.messages.invalid")

@@ -40,7 +40,7 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
       end
 
       def view_discussion
-        discussion_reader.viewed!
+        discussion_reader.viewed!(discussion_reader.discussion.last_activity_at)
       end
 
       def discussion_reader
