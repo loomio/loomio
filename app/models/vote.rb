@@ -2,6 +2,7 @@ class Vote < ActiveRecord::Base
   belongs_to :motion, counter_cache: true, touch: :last_vote_at
   belongs_to :user
   belongs_to :previous_vote, class_name: 'Vote'
+  has_one :discussion, through: :motion
   has_many :events, as: :eventable, dependent: :destroy
 
   validates_presence_of :motion, :user
