@@ -78,6 +78,7 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
         view_discussion
         create_second_comment
         delete_first_comment
+        reload_everything
         expect(discussion.salient_items_count -
                discussion_reader.read_salient_items_count).to eq 1
       end
