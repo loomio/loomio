@@ -1,7 +1,7 @@
 class Vote < ActiveRecord::Base
   POSITIONS = %w[yes abstain no block]
   default_scope { includes(:previous_vote) }
-  belongs_to :motion, counter_cache: true, touch: :last_vote_at
+  belongs_to :motion, touch: :last_vote_at
   belongs_to :user
   belongs_to :previous_vote, class_name: 'Vote'
   has_many :events, as: :eventable, dependent: :destroy
@@ -39,6 +39,7 @@ class Vote < ActiveRecord::Base
   after_create :update_motion_vote_counts
   after_destroy :update_motion_vote_counts
   update_counter_cache :motion, :voters_count
+  update_counter_cache :motion, :votes_count
 
   # alias_method does not work for the following obvious methods
   def author=(obj)

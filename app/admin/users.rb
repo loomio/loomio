@@ -101,6 +101,15 @@ ActiveAdmin.register User do
         div "#{user.deactivation_response.body}"
       end
     end
+
+    panel ("Merge two users") do
+      div "#{user.email}, WILL BE DELETED if you continue! Their records will be associated with the email address entered below:"
+      form(action: merge_admin_users_path, method: :post) do |f|
+        f.input name: :unwanted_user_email, type: :hidden, value: user.email
+        f.input name: :wanted_user_email
+        f.button :submit, confirm: "Are you sure??"
+      end
+    end
     active_admin_comments
   end
 
@@ -121,5 +130,16 @@ ActiveAdmin.register User do
     raw = user.send(:set_reset_password_token)
 
     render text: edit_user_password_url(reset_password_token: raw)
+  end
+
+  collection_action :merge, method: :post do
+    begin
+      unwanted_user = User.find_by!(email: params[:unwanted_user_email])
+      wanted_user = User.find_by!(email: params[:wanted_user_email])
+      MigrateUserService.new(old_id: unwanted_user.id, new_id: wanted_user.id).commit!
+      redirect_to admin_user_path(wanted_user), notice: "Merged #{params[:unwanted_user_email]} records into #{params[:wanted_user_email]} successfully"
+    rescue ActiveRecord::RecordNotFound => e
+      render text: "user not found by email: #{params[:wanted_user_email]}"+e.inspect+params.inspect
+    end
   end
 end
