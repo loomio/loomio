@@ -20,24 +20,46 @@ class DiscussionReader < ActiveRecord::Base
     self.for(user: actor || model.author, discussion: model.discussion)
   end
 
-  def viewed!(read_at = discussion.last_activity_at)
-    update_reader(read_at: read_at)
+  def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
+    viewed!(read_at, persist: false)    if read_at
+    set_volume!(volume, persist: false) if should_update_volume?(volume)
+    participate!(persist: false)        if participate
+    dismiss!(persist: false)            if dismiss
+    save(validate: false)               if changed?
   end
 
-  def dismiss!
-    update_reader(dismissed: true)
+  def viewed!(read_at = discussion.last_activity_at, persist: true)
+    return unless should_update_counts?(read_at)
+    assign_attributes(read_attributes(read_at))
+    EventBus.broadcast('discussion_reader_viewed!', discussion, user)
+    save if persist
   end
 
-  def update_reader(read_at: nil, participate: false, dismissed: false, volume: nil)
-    assign_attributes(read_attributes(read_at))    if should_update_counts?(read_at)
-    assign_attributes(volume: volume)              if should_update_volume?(volume)
-    assign_attributes(participating: true)         if participate
-    assign_attributes(dismissed_at: Time.zone.now) if dismissed
-    save(validate: false)                          if changed?
-
-    EventBus.broadcast('discussion_reader_viewed!',    discussion, user) if should_update_counts?(read_at)
-    EventBus.broadcast('discussion_reader_dismissed!', discussion, user) if dismissed
+  def dismiss!(persist: true)
+    self.dismissed_at = Time.zone.now
+    EventBus.broadcast('discussion_reader_dismissed!', discussion, user)
+    save if persist
   end
+
+  def participate!(persist: true)
+    self.participating = true
+    save if persist
+  end
+
+  def volume
+    if persisted?
+      super || membership&.volume || 'normal'
+    else
+      membership.volume
+    end
+  end
+
+  def discussion_reader_volume
+    # Crazy James says: necessary in order to get a string back from the volume enum, rather than an integer
+    self.class.volumes.invert[self[:volume]]
+  end
+
+  private
 
   def read_attributes(read_at)
     @read_attributes ||= begin
@@ -58,20 +80,7 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def should_update_volume?(volume)
-    volume_is_valid?(volume) && (volume != :loud || user.email_on_participation?)
-  end
-
-  def volume
-    if persisted?
-      super || membership&.volume || 'normal'
-    else
-      membership.volume
-    end
-  end
-
-  def discussion_reader_volume
-    # Crazy James says: necessary in order to get a string back from the volume enum, rather than an integer
-    self.class.volumes.invert[self[:volume]]
+    volume != :loud || user.email_on_participation?
   end
 
   def membership
