@@ -1,7 +1,6 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, $mdMedia, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
 
-  @windowIsSmall = $mdMedia('sm') || $mdMedia('xs')
   @windowIsLarge = $mdMedia('gt-sm')
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal

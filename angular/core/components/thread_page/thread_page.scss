@@ -53,20 +53,6 @@
   float: left;
 }
 
-.start-proposal-card {
-  @include card;
-  i { color: white; }
-}
-
-.start-proposal-card__start-proposal-button {
-  margin-top: 10px;
-}
-
-.thread-start-proposal-button {
-  vertical-align: middle;
-  padding-right: 10px;
-}
-
 .thread-page__main-content--small {
   display: flex;
   flex-wrap: wrap;

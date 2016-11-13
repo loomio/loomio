@@ -33,11 +33,11 @@ angular.module('loomioApp').directive 'contextPanel', ->
       ModalService.open MoveThreadForm, discussion: => $scope.discussion
 
     $scope.requestPagePrinted = ->
-      unless discussion.allEventsLoaded()
+      if $scope.discussion.allEventsLoaded()
+        $timeout -> $window.print()
+      else
         ModalService.open PrintModal, preventClose: -> true
         $rootScope.$broadcast 'fetchRecordsForPrint'
-      else
-        $timeout -> $window.print()
 
     $scope.canDeleteThread = ->
       AbilityService.canDeleteThread($scope.discussion)
