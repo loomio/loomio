@@ -144,7 +144,7 @@ class Discussion < ActiveRecord::Base
 
     discussion_readers.
       where('last_read_at <= ?', item.created_at).
-      map { |dr| dr.viewed!(item.created_at) }
+      map { |dr| dr.viewed!(dr.last_read_at) }
 
     true
   end
