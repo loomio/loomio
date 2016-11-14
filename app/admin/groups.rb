@@ -151,6 +151,15 @@ ActiveAdmin.register Group do
       end
     end
 
+    panel 'Data export' do
+      export_enabled = group.features['dataExport']
+      form action: toggle_export_admin_group_path(group), method: :post do |f|
+        f.label "Data Export is enabled" if export_enabled
+        f.label "Data Export is not enabled" unless export_enabled
+        f.input type: :submit, value: 'Toggle data export'
+      end
+    end
+
     active_admin_comments
   end
 
@@ -194,6 +203,20 @@ ActiveAdmin.register Group do
     group = Group.friendly.find(params[:id])
     group.unarchive!
     flash[:notice] = "Unarchived #{group.name}"
+    redirect_to [:admin, :groups]
+  end
+
+  member_action :toggle_export, :method => :post do
+    group = Group.friendly.find(params[:id])
+    export_enabled = group.features.fetch 'dataExport', false
+    if export_enabled
+      group.features['dataExport'] = false
+      flash[:notice] = "data export disabled for #{group.name}"
+    else
+      group.features['dataExport'] = true
+      flash[:notice] = "data export enabled for #{group.name}"
+    end
+    group.save
     redirect_to [:admin, :groups]
   end
 

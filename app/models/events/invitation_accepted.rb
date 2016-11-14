@@ -11,6 +11,6 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_url
-    group_memberships_username_url(eventable.group, eventable.user.username)
+    group_memberships_username_url(eventable.group, eventable.user.username) if eventable
   end
 end
