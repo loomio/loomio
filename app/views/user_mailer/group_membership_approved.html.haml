@@ -1,4 +1,4 @@
-.invita-people-mailer__context
+.invite-people-mailer__context
   = t(:"email.group_membership_approved.intro_html", group_name: @group.name)
 .invite-people-mailer__message-container
   = link_to t(:"email.view_group"), group_url(@group, @utm_hash), class: "invite-people-mailer__button"

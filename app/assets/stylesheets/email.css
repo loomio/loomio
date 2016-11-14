@@ -47,8 +47,22 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   border-radius: 4px;
 }
 
-.invita-people-mailer__context {
+.invite-people-mailer__context {
   margin-bottom: 30px;
+}
+
+.invite-people-mailer__avatar-initials {
+  margin: 0 10px 10px 0;
+  border: 1px solid #dcdcdc;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.invite-people-mailer__avatar-image {
+  margin: 0 10px 10px 0;
 }
 
 .invite-people-mailer__body {
@@ -56,13 +70,14 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 }
 
 .invite-people-mailer__message-container {
-  padding: 30px 20px;
+  padding: 30px 0;
 }
 
 .invite-people-mailer__message_body {
   font-size: 14px;
   font-style: italic;
-  margin: 15px 30px 30px;
+  margin-bottom: 45px;
+  padding: 0 20px;
 }
 
 .invite-people-mailer__button {
@@ -112,8 +127,6 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
 }
 
 .thread-mailer__avatar-image {
-  width: 30px;
-  height: 30px;
   margin-right: 10px;
   float: left;
 }
