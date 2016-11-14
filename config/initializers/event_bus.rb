@@ -39,6 +39,16 @@ EventBus.configure do |config|
   config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.eventable.group) }
   config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
 
+  # notify user of acceptance to group
+  config.listen('user_added_to_group_event') do |event, message|
+    UserMailer.delay(priority: 1).added_to_group(
+      user:    event.eventable.user,
+      group:   event.eventable.group,
+      inviter: event.user,
+      message: message
+    )
+  end
+
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 
