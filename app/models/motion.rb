@@ -110,7 +110,7 @@ class Motion < ActiveRecord::Base
 
   def close!
     did_not_votes.delete_all
-    did_not_votes.import (group_members - voters).map { |user| did_not_votes.build(user: user) }
+    did_not_votes.import (group_members - voters).map { |user| did_not_votes.build(user: user) }, validate: false
     update(closed_at: Time.now, members_count: group.memberships_count)
   end
 
