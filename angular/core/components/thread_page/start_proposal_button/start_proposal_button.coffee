@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'startProposalButton', ->
   scope: { discussion: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/start_proposal_button/start_proposal_button.html'
+  templateUrl: 'generated/components/thread_page/start_proposal_button/start_proposal_button.html'
   replace: true
   controller: ($scope, Records, ModalService, ProposalForm, AbilityService) ->
 

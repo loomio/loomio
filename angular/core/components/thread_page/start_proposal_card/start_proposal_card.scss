@@ -1,0 +1,13 @@
+.start-proposal-card {
+  @include card;
+  i { color: white; }
+}
+
+.start-proposal-card__button-container {
+  margin-top: 10px;
+}
+
+.start-proposal-card__button {
+  vertical-align: middle;
+  padding-right: 10px;
+}
