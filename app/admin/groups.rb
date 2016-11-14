@@ -86,8 +86,23 @@ ActiveAdmin.register Group do
         row :stats_report_link do link_to("Metabase!", "https://metabase.loomio.io/dash/14?parent_group_id=" + group.id.to_s, target: '_blank') end
         row('Subscription status') do |group| group.subscription.kind if group.subscription end
       end
-      group.attributes.each do |k,v|
-        row k, v.inspect
+
+      row :id
+      row :name
+      row :created_at
+      row :updated_at
+      row :parent
+
+      row "Group Privacy" do
+        if  group.is_visible_to_public == true && group.discussion_privacy_options == 'public_only'
+          "Open"
+        elsif group.is_visible_to_public == true && group.discussion_privacy_options != 'public_only'
+          "Closed"
+        elsif group.is_visible_to_public = false
+          "Secret"
+        else
+          "Group privacy unknown"
+        end
       end
     end
 
