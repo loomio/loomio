@@ -39,6 +39,13 @@ describe NotificationBaker do
     expect(notification.translation_values).to_not be_present
   end
 
+  it 'does not error if the notification does not have an eventable' do
+    notification.event.update_attribute(:eventable_id, nil)
+    subject
+    expect(notification.url).to_not be_present
+    expect(notification.translation_values).to_not be_present
+  end
+
   it 'does not do anything for unsupported notification kinds' do
     notification.event.update_attribute(:kind, 'not_a_kind')
     subject
