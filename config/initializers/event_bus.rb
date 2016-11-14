@@ -40,7 +40,7 @@ EventBus.configure do |config|
   config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
 
   # notify user of acceptance to group
-  config.listen('user_added_to_group_event') do |event, message|
+  config.listen('user_added_to_group_event') do |event, user, message|
     UserMailer.delay(priority: 1).added_to_group(
       user:    event.eventable.user,
       group:   event.eventable.group,

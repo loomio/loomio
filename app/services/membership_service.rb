@@ -31,8 +31,9 @@ class MembershipService
 
   def self.add_users_to_group(users: , group: , inviter: , message: nil)
     inviter.ability.authorize!(:add_members, group)
-    memberships = group.add_members!(users, inviter)
-    Events::UserAddedToGroup.bulk_publish!(memberships, inviter, message)
+    group.add_members!(users, inviter).tap do |memberships|
+      Events::UserAddedToGroup.bulk_publish!(memberships, inviter, message)
+    end
   end
 
   def self.destroy(membership:, actor:)

@@ -6,7 +6,7 @@ describe NotificationBaker do
   let(:discussion) { create :discussion, group: group }
   let(:motion) { create :motion, discussion: discussion }
   let(:event) { Events::MotionClosingSoon.publish!(motion) }
-  let(:added_event) { Events::UserAddedToGroup.publish!(Membership.find_by(user: user, group: group), nil) }
+  let(:added_event) { Events::UserAddedToGroup.publish!(Membership.find_by(user: user, group: group), user) }
   let(:notification) { Notification.find_by(event: event, user: user) }
   let(:added_notification) { Notification.find_by(event: added_event, user: user) }
   subject { NotificationBaker.bake!(user.notifications) }

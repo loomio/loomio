@@ -4,10 +4,9 @@ class Events::UserAddedToGroup < Event
   end
 
   def self.bulk_publish!(memberships, inviter, message = nil)
-    memberships.map { |membership| new(kind: 'user_added_to_group', user: inviter, eventable: membership) }.tap do |events|
-      import(events)
-      events.map { |event| EventBus.broadcast('user_added_to_group', event, message) }
-    end
+    memberships.map { |membership| new(kind: 'user_added_to_group', user: inviter, eventable: membership) }
+               .tap { |events| import(events) }
+               .tap { |events| events.map { |event| EventBus.broadcast('user_added_to_group_event', event, event.user, message) } }
   end
 
   def notification_actor
