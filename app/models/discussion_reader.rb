@@ -75,7 +75,7 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def should_update_volume?(volume)
-    volume != :loud || user.email_on_participation?
+    (volume != :loud) || user.email_on_participation?
   end
 
   def membership
