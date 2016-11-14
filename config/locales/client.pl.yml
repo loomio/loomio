@@ -116,7 +116,6 @@ pl:
     new_comment: '<strong>{{name}}</strong> skomentował/a <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> odpowiedział/a na Twój komentarz do <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> polubił/a Twój komentarz do <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> wspomniał/a o Tobie w <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> wysłał/a prośbę o dołączenie do <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> zaakceptował/a Twoją prośbę o dołączenie do <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> dodał/a Cię do grupy <strong>{{group}}</strong>'

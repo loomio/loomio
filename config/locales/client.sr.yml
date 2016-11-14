@@ -235,7 +235,6 @@ sr:
     new_comment: '<strong>{{name}}</strong> je komentarisao/la na <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> je odgovorio/la na tvoj komentar u <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> se sviđa tvoj komentar u <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> te je pomenuo/la u <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> želi biti član u <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> je odobrio/la tvoj zahtev da se priključiš u <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> te je dodao/la u grupu <strong>{{group}}</strong>'
@@ -401,7 +400,6 @@ sr:
     members: Članovi
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
     member_options: Opcije člana
-    all_members: 'Svi članovi ({{count}})'
     subgroups: Podgrupe
     subgroups_placeholder: Podgrupe tu omogućavaju da podeliš grupu u različite timove.
     invite_people: Pozovi ljude

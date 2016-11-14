@@ -211,7 +211,6 @@ pt-BR:
     new_comment: '<strong>{{name}}</strong> comentou em <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> respondeu seu comentário em <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> curtiu seu comentário em <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> mencionou você em <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> solicitou adesão para <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> aprovou sua solicitação para unir-se <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> adicionou você ao grupo <strong>{{group}}</strong>'
@@ -377,7 +376,6 @@ pt-BR:
     members: 'Membros ({{count}})'
     members_placeholder: 'Você é a única pessoa aqui: convide outras para se juntar a você!'
     member_options: Opçoes de membros
-    all_members: 'Todos os membros ({{count}})'
     subgroups: Subgrupos
     subgroups_placeholder: Subgrupos permitem dividir o grupo em diferentes times
     invite_people: Convidar pessoas

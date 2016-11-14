@@ -87,3 +87,9 @@ te:
     make_a_decision: ఒక నిర్ణయాన్ని తీసుకోండి
     video_id: '52025402'
     video_tutorial: దృశ్యక ఉపశిక్షణ
+  registered_apps_page:
+    name: పేరు
+    create_new_application: kotta firyaadu
+  registered_app_form:
+    new_application_title: కొత్త ఫిర్యాదు
+    name_label: పేరు

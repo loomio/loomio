@@ -230,7 +230,6 @@ ca:
     new_comment: '<strong>{{name}}</strong> ha comentat a <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> ha respost al vostre comentari a <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> li agrada el vostre comentari a <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> us ha mencionat a <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> ha sol·licitat ser membre de <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> ha aprovat la vostra sol·licitud per ser membre de <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> us ha afegit al grup <strong>{{group}}</strong>'
@@ -378,7 +377,6 @@ ca:
     discussions_placeholder: Una discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.
     members: Membres
     member_options: Opcions de membres
-    all_members: 'Tots els membres ({{count}})'
     subgroups: Subgrups
     subgroups_placeholder: Els subgrups us permeten dividir el grup en diferents equips.
     invite_people: Convida gent

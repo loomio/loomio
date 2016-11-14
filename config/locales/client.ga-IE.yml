@@ -174,7 +174,6 @@ ga-IE:
     new_comment: 'Thrácht <strong>{{name}}</strong> ar <strong>{{discussion}}</strong>'
     comment_replied_to: "D'fhreagair <strong>{{name}}</strong> do thrácht i <strong>{{discussion}}</strong>"
     comment_liked: 'Léirigh <strong>{{name}}</strong> go dtaitníonn do thrácht in <strong>{{discussion}}</strong> léi nó leis'
-    user_mentioned: 'Luaigh <strong>{{name}}</strong> thú i <strong>{{title}}</strong>'
     membership_requested: "D'iarr <strong>{{name}}</strong> cead bheith mar chomhalta de <strong>{{group}}</strong>"
     membership_request_approved: "Cheadaigh <strong>{{name}}</strong> d'iarratas chun a bheith mar chomhalta de <strong>{{group}}</strong>"
     user_added_to_group: 'Chuir <strong>{{name}}</strong> thú leis an mbaicle <strong>{{group}}</strong>'
