@@ -58,7 +58,7 @@ EventBus.configure do |config|
     DiscussionReader.for_model(event.eventable).update_reader(read_at: event.created_at, participate: true, volume: :loud)
   end
 
-  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).update_reader(participate: true) }
+  config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
 
   config.listen('new_discussion_event',
                 'new_motion_event',
@@ -84,7 +84,7 @@ EventBus.configure do |config|
   config.listen('discussion_create',
                 'discussion_update',
                 'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
+    DiscussionReader.for_model(model, actor).set_volume!(:loud)
   end
 
   config.listen('discussion_reader_viewed!',
