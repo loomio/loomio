@@ -28,6 +28,11 @@ class DiscussionReader < ActiveRecord::Base
     save(validate: false)               if changed?
   end
 
+  def set_volume!(volume)
+    return if (volume.to_sym == :loud) && !user.email_on_participation?
+    super
+  end
+
   def viewed!(read_at, persist: true)
     return if self.last_read_at && self.last_read_at > read_at
     assign_attributes(read_attributes(read_at))
