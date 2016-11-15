@@ -22,15 +22,10 @@ class DiscussionReader < ActiveRecord::Base
 
   def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
     viewed!(read_at, persist: false)    if read_at
-    set_volume!(volume, persist: false) if volume
+    set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
     participate!(persist: false)        if participate
     dismiss!(persist: false)            if dismiss
     save(validate: false)               if changed?
-  end
-
-  def set_volume!(volume, persist: true)
-    return if (volume.to_sym == :loud) && !user.email_on_participation?
-    super
   end
 
   def viewed!(read_at, persist: true)
