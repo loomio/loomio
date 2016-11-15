@@ -22,7 +22,7 @@ class DiscussionReader < ActiveRecord::Base
 
   def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
     viewed!(read_at, persist: false)    if read_at
-    set_volume!(volume, persist: false) if should_update_volume?(volume)
+    set_volume!(volume, persist: false) if volume
     participate!(persist: false)        if participate
     dismiss!(persist: false)            if dismiss
     save(validate: false)               if changed?
@@ -72,10 +72,6 @@ class DiscussionReader < ActiveRecord::Base
         read_salient_items_count: read_salient_items.count
       }
     end
-  end
-
-  def should_update_volume?(volume)
-    (volume != :loud) || user.email_on_participation?
   end
 
   def membership

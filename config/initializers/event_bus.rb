@@ -84,7 +84,7 @@ EventBus.configure do |config|
   config.listen('discussion_create',
                 'discussion_update',
                 'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).set_volume!(:loud)
+    DiscussionReader.for_model(model, actor).set_volume!(:loud) if actor.email_on_participation?
   end
 
   config.listen('discussion_reader_viewed!',
