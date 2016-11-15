@@ -20,6 +20,11 @@
   overflow: hidden;
 }
 
+.user-avatar__initials {
+  color: $primary-text-color;
+  text-decoration: none !important;
+}
+
 .user-avatar__initials--small{
   border: 1px solid $border-color;
   font-size: 12px;
