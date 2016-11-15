@@ -6,9 +6,10 @@ module HasVolume
     scope :volume, ->(volume) { where(volume: volumes[volume]) }
   end
 
-  def set_volume!(volume)
-    if self.class.volumes.include? volume
-      update_attribute :volume, volume
+  def set_volume!(volume, persist: true)
+    if self.class.volumes.include?(volume)
+      self.volume = volume
+      save if persist
     else
       self.errors.add :volume, I18n.t(:"activerecord.errors.messages.invalid")
       false
