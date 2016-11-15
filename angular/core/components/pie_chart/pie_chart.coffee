@@ -1,7 +1,8 @@
 angular.module('loomioApp').directive 'pieChart', ->
-  templateUrl: 'generated/components/pie_chart/pie_chart.html'
+  template: '<div class="pie-chart"></div>'
   replace: true
-  scope: {proposal: '='}
+  scope:
+    votes: '='
   restrict: 'E'
   controller: ($scope, $element) ->
     size = $element[0].offsetWidth
@@ -25,12 +26,12 @@ angular.module('loomioApp').directive 'pieChart', ->
       ["M", half, half, "L", x1, y1, "A", radius, radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
 
     uniquePositionsCount = ->
-      _.sum $scope.proposal.voteCounts, (num) -> +(num > 0)
+      _.sum $scope.votes, (num) -> +(num > 0)
 
     sortedPositions = ->
-      _.sortBy(_.pairs($scope.proposal.voteCounts), ([_, count]) -> - count)
+      _.sortBy(_.pairs($scope.votes), ([_, count]) -> - count)
 
-    $scope.$watchCollection 'proposal.voteCounts', ->
+    $scope.$watchCollection 'votes', ->
       console.time('pieDraw')
       _.each shapes, (shape) -> shape.remove()
       start = 90
@@ -48,7 +49,7 @@ angular.module('loomioApp').directive 'pieChart', ->
         else
           _.each sortedPositions(), ([position, votes]) ->
             return unless votes > 0
-            angle = 360/_.sum($scope.proposal.voteCounts)*votes
+            angle = 360/_.sum($scope.votes)*votes
             shapes.push draw.path(arcPath(start, start + angle)).attr
               'stroke-width': 0
               fill: positionColors[position]
