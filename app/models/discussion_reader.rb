@@ -28,7 +28,7 @@ class DiscussionReader < ActiveRecord::Base
     save(validate: false)               if changed?
   end
 
-  def set_volume!(volume)
+  def set_volume!(volume, persist: true)
     return if (volume.to_sym == :loud) && !user.email_on_participation?
     super
   end
