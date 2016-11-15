@@ -14,6 +14,11 @@ describe Events::UserAddedToGroup do
     it 'returns an event' do
       expect(Events::UserAddedToGroup.publish!(membership, inviter)).to be_a Event
     end
+
+    it 'sends an email' do
+      expect(UserMailer).to receive(:added_to_group).and_return(OpenStruct.new(deliver: nil))
+      Events::UserAddedToGroup.publish!(membership, inviter)
+    end
   end
 
   describe "::bulk_publish!" do
@@ -25,6 +30,10 @@ describe Events::UserAddedToGroup do
       result = Events::UserAddedToGroup.bulk_publish!(memberships, inviter)
       expect(result).to be_a Array
       expect(result[0]).to be_a Event
+    end
+
+    it 'sends emails' do
+      expect { Events::UserAddedToGroup.bulk_publish!(memberships, inviter) }.to change { ActionMailer::Base.deliveries.count }.by(2)
     end
   end
 end
