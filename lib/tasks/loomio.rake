@@ -3,6 +3,10 @@ namespace :loomio do
     puts Loomio::Version.current
   end
 
+  task daily_tasks: :environment do
+    CountGroupRecentActivityJob.perform_later
+  end
+
   task hourly_tasks: :environment do
     MotionService.close_all_lapsed_motions
     SendMissedYesterdayEmailJob.perform_later
