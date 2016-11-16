@@ -1,5 +1,5 @@
 .pie-with-position
-  %pie_chart.pie-with-position__pie-canvas{votes: "proposal.voteCounts"}
+  %pie_chart.pie-with-position__pie-canvas{votes: "proposal.voteCounts", diameter: "50"}
   .pie-with-position__position-icon-container
     .pie-with-position__position-icon{ng-if: "lastVoteByCurrentUser(proposal)", class: "thread-preview__position-icon--{{lastVoteByCurrentUser(proposal).position}} "}
     .pie-with-position__undecided-icon{ng-if: "!lastVoteByCurrentUser(proposal)"}

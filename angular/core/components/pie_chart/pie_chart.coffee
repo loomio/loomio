@@ -3,11 +3,11 @@ angular.module('loomioApp').directive 'pieChart', ->
   replace: true
   scope:
     votes: '='
+    diameter: '@'
   restrict: 'E'
   controller: ($scope, $element) ->
-    size = $element[0].offsetWidth
     draw = SVG($element[0]).size('100%', '100%')
-    half = size / 2.0
+    half = $scope.diameter / 2.0
     radius = half
     shapes = []
 
@@ -38,12 +38,12 @@ angular.module('loomioApp').directive 'pieChart', ->
 
       switch uniquePositionsCount()
         when 0
-          shapes.push draw.circle(size).attr
+          shapes.push draw.circle($scope.diameter).attr
             'stroke-width': 0
             fill: '#aaa'
         when 1
           position = sortedPositions()[0][0]
-          shapes.push draw.circle(size).attr
+          shapes.push draw.circle($scope.diameter).attr
             'stroke-width': 0
             fill: positionColors[position]
         else
