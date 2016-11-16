@@ -55,7 +55,7 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
       $window.Intercom('shutdown')
 
     updateWithGroup: (group) ->
-      return unless @available()
+      return unless group? and @available()
       return if _.isEqual(lastGroup, mapGroup(group))
       return if group.isSubgroup()
       user = Session.user()
@@ -71,13 +71,6 @@ angular.module('loomioApp').factory 'IntercomService', ($rootScope, $window, App
         $window.Intercom('showNewMessage')
       else
         $window.open LmoUrlService.contactForm(), '_blank'
-
-  if $window? and $window.Intercom?
-    $rootScope.$watch ->
-      Session.currentGroup? && mapGroup(Session.currentGroup)
-    , ->
-      Session.currentGroup? && service.updateWithGroup(Session.currentGroup)
-    , true
 
     $rootScope.$on 'logout', (event, group) ->
       service.shutdown()

@@ -84,6 +84,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.$on 'currentComponent', (event, options = {}) ->
     Session.currentGroup = options.group
+    IntercomService.updateWithGroup(Session.currentGroup)
+
     $scope.pageError = null
     $scope.$broadcast('clearBackgroundImageUrl')
     ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
