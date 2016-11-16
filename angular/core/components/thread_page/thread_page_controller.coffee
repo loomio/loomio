@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, $mdMedia, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
-  $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
+  $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   @windowIsLarge = $mdMedia('gt-sm')
 
@@ -62,6 +62,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
           prev:        LmoUrlService.discussion(@discussion, from: @pageWindow.prev) if @pageWindow.prev?
           next:        LmoUrlService.discussion(@discussion, from: @pageWindow.next) if @pageWindow.next?
+        skipScroll: true
 
   @init Records.discussions.find $routeParams.key
   Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->

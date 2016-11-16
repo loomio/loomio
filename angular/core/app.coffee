@@ -82,7 +82,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     Session.currentGroup = options.group
     $scope.pageError = null
     $scope.$broadcast('clearBackgroundImageUrl')
-    ScrollService.scrollTo(options.scrollTo or 'h1')
+    ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     $scope.links = options.links or {}
     if AbilityService.requireLoginFor(options.page)
       ModalService.open(SignInForm, preventClose: -> true)

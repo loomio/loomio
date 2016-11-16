@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, GroupWelcomeModal) ->
-  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
+  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
