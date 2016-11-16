@@ -231,8 +231,6 @@ ActiveAdmin.register Group do
       f.input :description
       f.input :subdomain
       f.input :theme, as: :select, collection: Theme.all
-      f.input :max_size
-      f.input :is_commercial
       f.input :analytics_enabled
       f.input :enable_experiments
       f.input :category_id, as: :select, collection: Category.all
