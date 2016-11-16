@@ -57,7 +57,7 @@ angular.module('loomioApp', ['ngNewRouter',
   $analyticsProvider.withAutoBase(true);
 
 # Finally the Application controller lives here.
-angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService) ->
+angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeout, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -71,6 +71,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   if document.location.protocol.match(/https/) && navigator.serviceWorker?
     navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
+
+  $scope.renderSidebar = $mdMedia('gt-md')
+  $scope.$on 'toggleSidebar', ->
+    $scope.renderSidebar = true
 
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()

@@ -23,7 +23,7 @@
     %flash
     %navbar
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
-      %sidebar{ng_if: "isLoggedIn()"}
+      %sidebar{ng_if: "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}
         .lmo-main-background
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
