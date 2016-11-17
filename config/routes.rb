@@ -84,6 +84,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :profile, only: [:show] do
+      get  :me, on: :collection
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection

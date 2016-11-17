@@ -5,6 +5,12 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def me
+    raise CanCan::AccessDenied.new unless current_user.is_logged_in?
+    self.resource = current_user
+    respond_with_resource serializer: UserSerializer
+  end
+
   def update_profile
     service.update(current_user_params)
     respond_with_resource
