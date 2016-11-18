@@ -23,7 +23,7 @@ module LocalesHelper
     I18n.locale = (locale_from_param              | # locale from request param
                    locale_from_user_preference    | # locale from selected user preference
                    locales_from_browser_detection | # locales from browser headers
-                   I18n.default_locale).compact.first
+                   [I18n.default_locale]).compact.first
   end
 
   private
@@ -37,9 +37,11 @@ module LocalesHelper
     filter_locales(current_user.selected_locale, selectable_locales)
   end
 
-  def locale_from_browser_detection
+  def locales_from_browser_detection
     parser = HttpAcceptLanguage::Parser.new(request.env["HTTP_ACCEPT_LANGUAGE"])
-    filter_locales(parser.user_preferred_languages, detectable_locales)
+    locales = parser.user_preferred_languages +
+              parser.user_preferred_languages.map { |l| l.split('-').first } # to catch locales like fr-fr, or en-nz
+    filter_locales(locales, detectable_locales)
   end
 
   def filter_locales(input_locales, valid_locales)
