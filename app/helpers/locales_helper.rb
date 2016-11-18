@@ -28,7 +28,7 @@ module LocalesHelper
 
   private
 
-  def locale_from_param
+  def locales_from_param
     filter_locales params[:locale], I18n.available_locales
   end
 
