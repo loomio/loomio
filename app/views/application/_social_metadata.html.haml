@@ -19,7 +19,7 @@
 %meta{ property: 'og:url', content: request.original_url }
 %meta{ property: 'fb:app_id', content:ENV['FB_APP_ID_META']}
 
-%meta{property:'og:locale', content: current_locale}
+%meta{property:'og:locale', content: I18n.locale}
 - detectable_locales.each do |locale|
   %meta{property:'og:locale:alternate', content: locale}
 

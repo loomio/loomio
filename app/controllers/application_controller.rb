@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    save_detected_locale(resource)
+    resource.update_attribute(:detected_locale, detected_locale)
     user_return_path.tap { clear_stored_location }
   end
 
