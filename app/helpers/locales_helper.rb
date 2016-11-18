@@ -20,10 +20,10 @@ module LocalesHelper
   end
 
   def set_application_locale
-    I18n.locale = (locale_from_param              | # locale from request param
-                   locale_from_user_preference    | # locale from selected user preference
-                   locales_from_browser_detection | # locales from browser headers
-                   [I18n.default_locale]).compact.first
+    I18n.locale = (Array(locales_from_param)             | # locale from request param
+                   Array(locales_from_user_preference)   | # locale from selected user preference
+                   Array(locales_from_browser_detection) | # locales from browser headers
+                   Array(I18n.default_locale)).first
   end
 
   private
