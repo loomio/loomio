@@ -32,7 +32,7 @@ module LocalesHelper
     filter_locales params[:locale], I18n.available_locales
   end
 
-  def locale_from_user_preference
+  def locales_from_user_preference
     return unless current_user&.is_logged_in?
     filter_locales(current_user.selected_locale, selectable_locales)
   end
