@@ -1,30 +1,103 @@
 sv:
   common:
+    confirm_discard_changes: Kasta bort dina ändringar?
+    time:
+      am: förmiddag
+      pm: eftermiddag
+    closing_in: 'Stänger {{time}}'
+    closed_ago: 'Stängd {{time}}'
+    volume: Volym
+    notification_volume: Notifieringsvolym
     group: Grupp
     groups: Grupper
+    help: Hjälp
     privacy:
+      privacy: Integritet
       public: Offentlig
+      open: Öppen
+      closed: Stängd
       private: Privat
+      secret: Hemlig
+    selected: Vald
     date_range:
       today: I dag
+      yesterday: Igår
+      thisweek: Denna Vecka
+      thismonth: Denna Månad
+      older: Äldre
+    more_help: Mer hjälp
     models:
       proposal: Förslag
+    copy: Kopiera text
+    copied: Kopierad till urklipp
     action:
+      close: Stäng
       save: Spara
+      save_changes: Spara ändringar
+      update_settings: Uppdatera inställningar
+      reply: Svara
       edit: Redigera
+      remove: Ta bort
       like: Gilla
+      back: Tillbaka
       unlike: Sluta gilla
+      update: Uppdatera
       cancel: Ångra
+      show_more: Visa mer
+      view_all: Visa Alla
+      new_thread: Ny tråd
+      add_subgroup: Skapa undergrupp
+      loading: Laddar
+      translate: Översätt
+      translated: Översättning av Bing Translator
+      upload: Ladda upp
+      uploading: Laddar upp
+    formatting_help:
+      label: Formateringshjälp
+      title: Lär dig hur du använder Markdown för att formatera din text på Loomio
+  devise:
+    failure:
+      inactive: 'Det är ett deaktiverat konto associerat med denna e-postadress. Om du vill återaktivera ditt konto, kontakta oss.'
   error_page:
     forbidden: Du saknar behörighet att göra detta.
+  start_proposal_card:
+    title: Starta ett förslag
+    helptext: Redo att fatta ett beslut?
   proposal_outcome_panel:
     heading: Resultat
   proposal_outcome_form:
     outcome_label: Resultat av förslaget
     publish_outcome: publicera status
+  proposal_collapsed:
+    expand: Expandera
+  volume_levels:
+    normal: Normal
+    quiet: Tyst
+    mute: Tysta ned
+    unmute: Ta bort nedtystning
+  change_volume_form:
+    aria_label: Byt epostinställningars formulär
+    loud_label: All aktivitet
+    normal_label: Viktig aktivitet
+    mute_label: Tysta ned
   inbox:
     clear: Klar
+    latest: Senaste
     unread: Olästa
+    closing_in: Stänger
+  sign_in_form:
+    aria_label: Inloggningsformulär
+    title: Logga in på Loomio
+    email_label: 'E-post:'
+    email_placeholder: you@example.com
+    password_label: 'Lösenord:'
+    remember_me: Kom ihåg mig
+    forgot_password: Glömt lösenord?
+    sign_in: Logga in
+  sign_up_form:
+    email_label: 'E-post:'
+    email_placeholder: du@exempel.se
+    password_label: 'Lösenord:'
   comment_form:
     edit_comment: Edit kommentar
     delete_comment: Ta bort kommentaren
@@ -59,6 +132,7 @@ sv:
     close_proposal: Stäng förslag
   proposal_form:
     start_proposal: Starta ett förslag
+    start_a_proposal: Starta ett förslag
     edit_proposal: Redigera förslag
     title_label: Titel
     closes_at_label: Stänger vid
@@ -71,6 +145,7 @@ sv:
   proposal_expanded:
     edit_proposal: Redigera förslag
     close_proposal: Stäng förslag
+    closed_badge: Stängd
   join_group_button:
     join_group: Bli medlem i gruppen
     ask_to_join_group: Be att få gå med
@@ -89,6 +164,11 @@ sv:
     options_label: Alternativ
     options:
       label: Alternativ
+  group_form:
+    privacy: Integritet
+    submit_update: Uppdatera inställningar
+  group_help_card:
+    title: Hjälp
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
@@ -97,6 +177,8 @@ sv:
     name_label: Namn
     coordinator_label: Koordinator
     remove_member_label: Ta bort
+  remove_membership_form:
+    submit: Ta bort
   profile_page:
     profile: Profil
     picture_label: Bild
@@ -111,11 +193,14 @@ sv:
     mark_as_read: Markera som läst
     threads_from:
       today: I dag
+      yesterday: Igår
   inbox_page:
     no_groups:
       or: eller
   thread_group:
     aria_label: Gruppnamn
+  thread_context:
+    mute_thread: Tysta ned
   delete_comment_dialog:
     title: Ta bort kommentaren
     question: Är du säker på att du vill ta bort denna kommentaren?

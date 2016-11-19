@@ -150,7 +150,6 @@ tr:
     new_comment: '<strong>{{name}}</strong> <strong>{{discussion}}</strong> müzakeresine yorum yaptı'
     comment_replied_to: '<strong>{{name}}</strong> <strong>{{discussion}}</strong> müzakeresindeki yorumunu yanıtladı'
     comment_liked: '<strong>{{name}}</strong>  <strong>{{discussion}}</strong> müzakeresindeki yorumunu beğendi'
-    user_mentioned: '<strong>{{name}}</strong> <strong>{{title}}</strong> başlığında senden bahsetti'
     membership_requested: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna üyelik başvurusunda bulundu'
     membership_request_approved: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna yaptığın üyelik başvurusunu onayladı'
     user_added_to_group: '<strong>{{name}}</strong> seni <strong>{{group}}</strong> grubuna ekledi'
@@ -304,7 +303,6 @@ tr:
     members: Üyeler
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
-    all_members: 'Tüm üyeler ({{count}})'
     subgroups: Alt gruplar
     subgroups_placeholder: Altgruplar grup içinde farklı takımlar oluşmanızı sağlar.
     invite_people: Kişileri davet et

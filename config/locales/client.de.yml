@@ -211,7 +211,6 @@ de:
     new_comment: '<strong>{{name}}</strong> kommentierte in <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> antwortete auf Deinem Kommentar in <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> gefällt Dein Kommentar in <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> erwähnte Dich in <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> bestätigte Deine Mitgliedschaft in <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> prüfte Deine Beitrittsanfrage für <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> fügte Dich der Gruppe <strong>{{group}}</strong> hinzu'
@@ -378,7 +377,6 @@ de:
     members: 'Mitglieder ({{count}})'
     members_placeholder: 'Du bist allein hier: lade einige Leute ein!'
     member_options: Mitgliedseinstellungen
-    all_members: 'Alle Mitglieder ({{count}})'
     subgroups: Untergruppen
     subgroups_placeholder: Untergruppen ermöglichen Dir die Gruppe in verschiedene Teams aufzuteilen
     invite_people: Leute einladen

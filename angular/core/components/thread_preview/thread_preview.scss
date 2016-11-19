@@ -66,6 +66,9 @@
 
 .thread-preview__icon {
   @include boxMedium;
+  .user-avatar {
+    pointer-events: none;
+  }
 }
 
 .thread-preview__text-container{

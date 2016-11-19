@@ -1,0 +1,6 @@
+.invite-people-mailer__avatar-container
+  - if author.avatar_kind == 'initials'
+    .invite-people-mailer__avatar-initials
+      = author.avatar_initials
+  - else
+    = image_tag author.avatar_url(:"medium"), alt: "#{author.name}", class: "invite-people-mailer__avatar-image"

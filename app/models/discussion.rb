@@ -97,6 +97,10 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :proposal_outcomes_count
 
+  def discussion
+    self
+  end
+
   def organisation_id
     group.parent_id || group_id
   end
@@ -140,7 +144,7 @@ class Discussion < ActiveRecord::Base
 
     discussion_readers.
       where('last_read_at <= ?', item.created_at).
-      each(&:reset_counts!)
+      map { |dr| dr.viewed!(dr.last_read_at) }
 
     true
   end

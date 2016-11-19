@@ -384,8 +384,8 @@ describe 'Group Page', ->
       page.fillIn('#discussion-context', "I've had the time of my life")
       page.click('.discussion-form__submit')
       page.expectFlash('Thread started')
-      page.expectText('.thread-context', 'Nobody puts baby in a corner' )
-      page.expectText('.thread-context', "I've had the time of my life" )
+      page.expectText('.context-panel', 'Nobody puts baby in a corner' )
+      page.expectText('.context-panel', "I've had the time of my life" )
 
     it 'automatically saves drafts', ->
       page.click('.discussions-card__new-thread-button')

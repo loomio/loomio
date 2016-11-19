@@ -1,5 +1,7 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ThreadService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm, PrintModal) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, $mdMedia, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
+
+  @windowIsLarge = $mdMedia('gt-sm')
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
   @requestedCommentId   = parseInt($routeParams.comment or $location.search().comment)
@@ -18,7 +20,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @openVoteModal = ->
     $location.search().position and
     @discussion.hasActiveProposal() and
-    @discussion.activeProposal().key == $location.search().proposal and
+    @discussion.activeProposal().key == ($routeParams.proposal or $location.search().proposal or $routeParams.proposal) and
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @openOutcomeModal = ->
@@ -34,7 +36,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
       '.activity-card__last-read-activity'
     else
-      '.thread-context'
+      '.context-panel'
 
   @threadElementsLoaded = ->
     @eventsLoaded and @proposalsLoaded
@@ -79,60 +81,14 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @group = ->
     @discussion.group()
 
-  @showLintel = (bool) ->
-    $rootScope.$broadcast('showThreadLintel', bool)
-
-  @editThread = ->
-    ModalService.open DiscussionForm, discussion: => @discussion
-
-  @moveThread = ->
-    ModalService.open MoveThreadForm, discussion: => @discussion
-
-  @deleteThread = ->
-    ModalService.open DeleteThreadForm, discussion: => @discussion
-
-  @showContextMenu = =>
-    AbilityService.canChangeThreadVolume(@discussion)
-
   @canStartProposal = ->
     AbilityService.canStartProposal(@discussion)
-
-  @openChangeVolumeForm = ->
-    ModalService.open ChangeVolumeForm, model: => @discussion
-
-  @canChangeVolume = ->
-    Session.user().isMemberOf(@discussion.group())
-
-  @muteThread = ->
-    ThreadService.mute(@discussion)
-
-  @unmuteThread = ->
-    ThreadService.unmute(@discussion)
-
-  @canEditThread = =>
-    AbilityService.canEditThread(@discussion)
-
-  @canMoveThread = =>
-    AbilityService.canMoveThread(@discussion)
-
-  @canDeleteThread = =>
-    AbilityService.canDeleteThread(@discussion)
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview
 
   @proposalButtonInView = ($inview) ->
     $rootScope.$broadcast 'proposalButtonInView', $inview
-
-  @showRevisionHistory = ->
-    ModalService.open RevisionHistoryModal, model: => @discussion
-
-  @requestPagePrinted = ->
-    unless @discussion.allEventsLoaded()
-      ModalService.open PrintModal, preventClose: -> true
-      $rootScope.$broadcast 'fetchRecordsForPrint'
-    else
-      $timeout -> $window.print()
 
   TranslationService.listenForTranslations($scope, @)
 

@@ -65,7 +65,7 @@ describe 'MotionService' do
       it 'ensures a discussion stays read' do
         CommentService.create(comment: comment, actor: another_user)
         reader = DiscussionReader.for(user: user, discussion: discussion)
-        reader.viewed!
+        reader.viewed!(reader.discussion.last_activity_at)
         MotionService.create(motion: motion, actor: user)
         expect(reader.reload.last_read_sequence_id).to eq discussion.reload.last_sequence_id
       end

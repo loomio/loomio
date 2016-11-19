@@ -149,7 +149,6 @@ ar:
     new_comment: '<strong>{{name}}</strong> قام بالتعليق على <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> قام بالرد على تعليقك في <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> قام بالإعجاب بتعليقك في <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> قام بذكرك في <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> قام بطلب عضوية ل<strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> قام بالموافقة على طلبك للإنضمام لمجموعة<strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> قام بإضافتك لمجموعة <strong>{{group}}</strong>'
@@ -306,7 +305,6 @@ ar:
     members: أعضاء
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
-    all_members: 'جميع الأعضاء ({{count}})'
     subgroups: مجموعة فرعية
     subgroups_placeholder: تتيح لك المجموعات الفرعية تقسيم المجموعة إلى فرق مختلفة.
     invite_people: قم بدعوة أشخاص

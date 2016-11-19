@@ -150,7 +150,6 @@ it:
     new_comment: '<strong>{{name}}</strong> ha inserito un commento nella discussione <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> ha risposto al tuo commento nella discussione su <strong>{{discussion}}</strong>'
     comment_liked: 'A <strong>{{name}}</strong> piace il tuo commento nella discussione <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> ti ha citato in <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> ha chiesto di entrare nel gruppo <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> ha approvato la tua richiesta di unirti al gruppo  <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> ti ha aggiunto al gruppo <strong>{{group}}</strong>'
@@ -298,7 +297,6 @@ it:
     members: Membri
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
-    all_members: 'Tutti i  ({{count}}) membri'
     subgroups: Sottogruppi
     subgroups_placeholder: I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.
     invite_people: Invita persone

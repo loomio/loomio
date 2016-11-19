@@ -151,7 +151,6 @@ ko:
     new_comment: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 댓글을 달았습니다.'
     comment_replied_to: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 있는 당신의 댓글에 답글을 달았습니다.'
     comment_liked: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 있는 당신의 댓글을 좋아합니다.'
-    user_mentioned: '<strong>{{name}}</strong>가  <strong>{{title}}</strong>에서 당신을 언급하였습니다.'
     membership_requested: '<strong>{{name}}</strong>가 <strong>{{group}}</strong>그룹으로의 회원가입 요청을 보냈습니다.'
     membership_request_approved: '<strong>{{name}}</strong>가  <strong>{{group}}</strong> 그룹으로의 당신의 회원가입 요청을 승인하였습니다.'
     user_added_to_group: '<strong>{{name}}</strong>가 당신을 <strong>{{group}}</strong> 그룹에 추가하였습니다.'
@@ -295,7 +294,6 @@ ko:
     members: 멤버
     members_placeholder: 이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.
     member_options: 멤버 옵션
-    all_members: '모든 멤버 {{count}}'
     subgroups: 소그룹
     subgroups_placeholder: 소그룹으로 그룹을 여러 다른 팀으로 나눕니다.
     invite_people: 초대 명단

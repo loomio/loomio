@@ -10,4 +10,4 @@ describe 'Search', ->
       page.click('.sidebar__list-item-button--recent')
       page.fillIn('.navbar-search__input', 'what star')
       page.click('.navbar-search__results a.selector-list-item-link')
-      page.expectText('.thread-context', "What star sign are you?")
+      page.expectText('.context-panel', "What star sign are you?")

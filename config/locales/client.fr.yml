@@ -71,6 +71,7 @@ fr:
     set_outcome_btn: Définir le résultat de la proposition
     edit_outcome_link: Modifier le résultat de la proposition
   proposal_outcome_form:
+    aria_label: Formulaire du résultat de la proposition
     set_outcome: Définir le résultat de la proposition
     update_outcome: Mettre à jour le résultat de la proposition
     outcome_label: Résultat de la proposition
@@ -141,6 +142,10 @@ fr:
   dismiss_explanation_modal:
     aria_label: Passer la discussion
     dismiss_thread: Passer la discussion
+    body_html: >
+      <p>Passer une discussion la retire de vos non-lus. S'il y a une nouvelle
+
+      activité dans la discussion, elle sera affichée de nouveau en non-lu.</p>
   inbox:
     clear: Vider
     latest: Dernier
@@ -252,7 +257,7 @@ fr:
     new_comment: '<strong>{{name}}</strong> a commenté <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> a répondu à votre commentaire dans <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> a aimé votre commentaire dans <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> vous a mentionné dans <strong>{{title}}</strong>'
+    user_mentioned: '<strong>{{name}}</strong>  vous a mentionné dans <strong>{{discussion}}</strong>'
     membership_requested: '<strong>{{name}}</strong> a demandé à faire partie de <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> a approuvé votre demande de rejoindre <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> vous a ajouté au groupe <strong>{{group}}</strong>'
@@ -401,7 +406,9 @@ fr:
     heading: Demander à rejoindre le groupe
     name_label: Nom
     email_label: E-mail
+    introduction_label: Pourquoi voulez-vous rejoindre?
     submit_button: Demander à rejoindre le groupe
+    introduction_over_limit: Réponse trop longue
     messages:
       membership_requested: "Vous avez demandé l'accès à {{group}}"
   revision_history_modal:
@@ -440,7 +447,8 @@ fr:
     members: Les membres
     members_placeholder: 'Vous êtes le seul membre ici: invitez des personnes à vous rejoindre !'
     member_options: Options des membres
-    all_members: 'Tous les membres ({{count}})'
+    see_all_members: 'Voir les ({{count}}) membres'
+    pending_invitations: '+ ({{count}}) en attente'
     subgroups: Sous-groupes
     subgroups_placeholder: Les sous-groupes vous permettent de diviser le groupe en plusieurs équipes.
     invite_people: Inviter des personnes
@@ -538,6 +546,8 @@ fr:
   subscription_success_modal:
     aria_label: Abonnement réussit
     heading: "Vous êtes tous d'accord!"
+    receipt: "Vous recevrez un email avec votre reçu, incluant un lien vers l'accueil client, où vous pouvez changer, améliorer, ou annuler votre abonnement, et accéder à l'historique des facturations."
+    change_subscription: "Si vous voulez mettre en place l'intégration de Slack ou votre nom de domaine personnalisé,"
     contact_link: Contactez-nous
     sign_off: "❤ de la part de l'équipe Loomio"
     ok_got_it: "Ok, j'ai compris !"
@@ -559,10 +569,17 @@ fr:
     privacy: Confidentialité
     group_privacy_is_open_description: Tout le monde peut trouver le groupe et demander à le rejoindre. Seul les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques.
     group_privacy_is_closed_description: Tout le monde peut trouver le groupe et demander à le rejoindre. Seul les membres peuvent voir qui est dans le groupe. Toutes les discussions sont privées.
+    group_privacy_is_closed_public_threads_description: Tout le monde peut trouver le groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Les discussions peuvent être publiques ou privées.
+    group_privacy_is_secret_description: 'Seuls les membres invités peuvent trouver le groupe, voir qui en fait partie et voir les discussions.'
     confirm_change_to_secret: 'Si vous confirmez, toutes les discussions dans ce groupe et ses sous-groupes seront rendues privées.'
     confirm_change_to_secret_subgroup: 'Si vous confirmez, toutes les discussions seront rendues privées.'
     confirm_change_to_public: 'Si vous confirmez, toutes les discussions de ce groupe seront rendues publiques.'
     confirm_change_to_private_discussions_only: 'Si vous confirmez, toutes les discussions publiques dans ce groupe seront rendues privées.'
+    subgroup_privacy_is_open_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Toutes les discussions sont publiques.
+    subgroup_privacy_is_closed_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans ce groupe. Toutes les discussions sont privées.
+    subgroup_privacy_is_closed_public_threads_description: Tout le monde peut trouver ce sous-groupe et demander à le rejoindre. Seuls les membres peuvent voir qui est dans le groupe. Les discussions peuvent être publiques ou privées.
+    subgroup_privacy_is_closed_secret_parent_description: 'Les membres de {{parent}} peuvent trouver ce sous-groupe et demander à le rejoindre. Toutes les discussions sont privées. Seuls ses membres peuvent voir qui est dans le groupe.'
+    subgroup_privacy_is_secret_description: 'Seuls les membres invités peuvent trouver ce sous-groupe, voir les membres et voir les discussions.'
     advanced_settings: Paramètres avancés
     how_do_people_join: Comment les personnes peuvent-elles rejoindre le groupe ?
     membership_granted_upon_request: "N'importe qui peut rejoindre le groupe"
@@ -612,6 +629,7 @@ fr:
     heading: Propositions précédentes
     see_more: Voir plus
   invitation_form:
+    aria_label: "Formulaire d'invitation"
     invite_people: Inviter des personnes
     group: Groupe
     group_placeholder: Sélectionnez un groupe
@@ -693,6 +711,9 @@ fr:
   change_picture_form:
     aria_label: "Changer la forme de l'image"
     title: "Changer l'image"
+    helptext: "Vous pouvez télécharger votre propre photo de profil, ou si vous avez un compte <a href=\"https://en.gravatar.com/support/what-is-gravatar/\">Gravatar</a>, vous pouvez l'utiliser."
+    use_initials: Utiliser mes initiales
+    use_gravatar: Utiliser gravatar
     use_uploaded: Télécharger une nouvelle image
   change_password_form:
     aria_label: Formulaire de changement de mot de psse
@@ -706,6 +727,7 @@ fr:
     aria_label: Désactiver le compte
     introduction: 'Quand vous désactivez votre compte:'
     no_longer_group_member: "Vous ne serez plus enregistré comme membre d'aucun groupe"
+    name_removed: 'Les commentaires, les propositions et les discussions que vous avez fait resteront mais votre nom en sera retiré'
     no_emails: "Vous ne recevrez plus d'emails concernant Loomio"
     contact_for_reactivation: Vous aurez besoin de nous recontacter pour réactiver votre compte
     submit: 'Oui, je veux désactiver'
@@ -718,6 +740,7 @@ fr:
   only_coordinator_modal:
     aria_label: Impossible de désactiver le compte
     explanation: 'Un groupe doit avoir au moins un coordinateur. Vous êtes le seul coordinateur des groupes suivants:'
+    instructions: "Afin de désactiver votre compte, vous devez visiter chaque groupe ci-dessus et pour chacun faire de quelqu'un d'autre un coordinateur, ou désactiver le groupe."
   email_settings_page:
     header: Réglages de courriel
     all_groups: Paramètres pour tous les groupes
@@ -757,6 +780,19 @@ fr:
     thread_dismissed: Discussion laissée.
     explain_mute:
       title: "Vous n'avez pas encore désactivé toutes les discussions."
+      explanation_html: >
+        Rendre muette une discussion est un moyen de la cacher si elle ne vous
+        intéresse pas.
+
+        La rendre muette signifie que vous ne la verrez pas
+        dans  <strong>Récent</strong> ou <strong>Non-lu</strong>, et vous ne
+        serez pas tenu au courant de l'activité dans cette discussion, comme les
+        propositions.
+
+        Vous serez seulement alertés si quelqu'un <strong>@mentionne</strong>
+        votre nom.
+      instructions: "Pour désactiver la discussion, passez la souris dessus et cliquez sur l'icône de désactivation."
+      see_muted_html: 'Pour voir vos discussion désactivées, cliquez sur <strong>"Désactivé"</strong>. Vous pouvez la réactiver en cliquant sur la même icône.'
     filtering:
       filter_threads: Filtrer les discussions
       filter_threads_aria_label: Filtrer les discussions
@@ -828,7 +864,7 @@ fr:
     thread_options: Options de la discussion
     email_settings: Paramètres e-mail
     edit_thread: Editer
-    mute_thread: Muet
+    mute_thread: Désactiver
     move_thread: Déplacer
     print_thread: Imprimer
     delete_thread: Supprimer
@@ -840,6 +876,7 @@ fr:
     messages:
       success: Discussion supprimée
   move_thread_form:
+    aria_label: Déplacer le sujet
     title: Déplacer la discussion
     body: 'Groupe de destination :'
     confirm: Déplacer la discussion
@@ -851,6 +888,8 @@ fr:
     attachment_display:
       aria_label: 'Pièce jointe :'
       image_alt: Image jointe
+  print_modal:
+    load_discussion: Chargement de la discussion intégrale
   delete_comment_dialog:
     title: Effacer le commentaire
     question: Êtes-vous sûr de vouloir effacer ce commentaire ?

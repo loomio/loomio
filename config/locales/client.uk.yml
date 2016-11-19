@@ -140,7 +140,6 @@ uk:
     new_comment: '<strong>{{name}}</strong> прокоментував <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> відповів на ваш коментар у <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> вподобав ваш коментар у <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> згадав вас у <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> зробив запит на приєднання до <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> схвалив ваш запит на приєднання до <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> додав вас до групи <strong>{{group}}</strong>'
@@ -274,7 +273,6 @@ uk:
     members: Учасники
     members_placeholder: 'Ви єдиний тут: запросіть когось долучитись до вас!'
     member_options: Опції участі
-    all_members: 'Усього учасників ({{count}})'
     subgroups: Підгрупи
     subgroups_placeholder: Підгрупи дозволяють розділити групи на різні команди.
     invite_people: Запросити людей

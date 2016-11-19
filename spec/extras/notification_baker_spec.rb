@@ -6,7 +6,7 @@ describe NotificationBaker do
   let(:discussion) { create :discussion, group: group }
   let(:motion) { create :motion, discussion: discussion }
   let(:event) { Events::MotionClosingSoon.publish!(motion) }
-  let(:added_event) { Events::UserAddedToGroup.publish!(Membership.find_by(user: user, group: group), nil) }
+  let(:added_event) { Events::UserAddedToGroup.publish!(Membership.find_by(user: user, group: group), user) }
   let(:notification) { Notification.find_by(event: event, user: user) }
   let(:added_notification) { Notification.find_by(event: added_event, user: user) }
   subject { NotificationBaker.bake!(user.notifications) }
@@ -32,10 +32,26 @@ describe NotificationBaker do
     expect(added_notification.translation_values).to be_present
   end
 
+  it 'does not error if added_to_group does not have an eventable' do
+    added_notification.update_attribute(:url, nil)
+    added_notification.update_attribute(:translation_values, {})
+    added_notification.update_attribute(:event_id, nil)
+    subject
+    expect(added_notification.reload.url).to_not be_present
+    expect(added_notification.translation_values).to_not be_present
+  end
+
   it 'does not error if the notification does not have an event' do
     notification.update_attribute(:event_id, nil)
     subject
     expect(notification.reload.url).to_not be_present
+    expect(notification.translation_values).to_not be_present
+  end
+
+  it 'does not error if the notification does not have an event' do
+    notification.event.update_attribute(:eventable_id, nil)
+    subject
+    expect(notification.url).to_not be_present
     expect(notification.translation_values).to_not be_present
   end
 

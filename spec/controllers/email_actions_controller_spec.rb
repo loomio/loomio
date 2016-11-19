@@ -48,12 +48,12 @@ describe EmailActionsController do
 
     it 'marks the discussion as read at event created_at' do
       get :mark_discussion_as_read, discussion_id: @discussion.id, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).unread_activity_count).to eq 0
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).last_read_at).to be_within(1.second).of @event.created_at
     end
 
     it 'does not error when discussion is not found' do
       get :mark_discussion_as_read, discussion_id: :notathing, event_id: @event.id, unsubscribe_token: @user.unsubscribe_token
-      expect(DiscussionReader.for(discussion: @discussion, user: @user).unread_activity_count).to eq 1
+      expect(DiscussionReader.for(discussion: @discussion, user: @user).last_read_sequence_id).to eq 0
       expect(response.status).to eq 200
     end
   end
