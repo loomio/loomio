@@ -12,7 +12,7 @@ loomio_truncate_comment:
   repo:         loomio/loomio_truncate_comment
   experimental: true
 
-loomio_onboarding:
+loomio_group_progress_card:
   repo:         loomio/loomio_onboarding
 
 loomio_content_preview:
