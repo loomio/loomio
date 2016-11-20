@@ -482,6 +482,7 @@ ActiveRecord::Schema.define(version: 20161115224853) do
   add_index "groups", ["name"], name: "index_groups_on_name", using: :btree
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
   add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
+  add_index "groups", ["recent_activity_count"], name: "index_groups_on_recent_activity_count", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.string   "recipient_email"
@@ -544,7 +545,6 @@ ActiveRecord::Schema.define(version: 20161115224853) do
 
   add_index "memberships", ["created_at"], name: "index_memberships_on_created_at", using: :btree
   add_index "memberships", ["group_id", "user_id", "is_suspended", "archived_at"], name: "active_memberships", using: :btree
-  add_index "memberships", ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true, using: :btree
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["inviter_id"], name: "index_memberships_on_inviter_id", using: :btree
   add_index "memberships", ["user_id", "volume"], name: "index_memberships_on_user_id_and_volume", using: :btree
