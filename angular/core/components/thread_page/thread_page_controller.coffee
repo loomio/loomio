@@ -20,7 +20,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @openVoteModal = ->
     $location.search().position and
     @discussion.hasActiveProposal() and
-    @discussion.activeProposal().key == $location.search().proposal and
+    @discussion.activeProposal().key == ($routeParams.proposal or $location.search().proposal or $routeParams.proposal) and
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @openOutcomeModal = ->

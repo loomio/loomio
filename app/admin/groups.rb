@@ -86,9 +86,70 @@ ActiveAdmin.register Group do
         row :stats_report_link do link_to("Metabase!", "https://metabase.loomio.io/dash/14?parent_group_id=" + group.id.to_s, target: '_blank') end
         row('Subscription status') do |group| group.subscription.kind if group.subscription end
       end
-      group.attributes.each do |k,v|
-        row k, v.inspect
+
+      row :id
+      row :name
+      row :key
+      row :full_name
+      row :created_at
+      row :updated_at
+      row :parent
+      row :creator_id
+      row :description
+      row :archived_at
+      row :discussions_count
+      row :memberships_count
+      row :admin_memberships_count
+      row :invitations_count
+      row :pending_invitations_count
+      row :public_discussions_count
+      row :motions_count
+      row :closed_motions_count
+      row :proposal_outcomes_count
+      row :payment_plan
+
+      row "Group Privacy" do
+        if group.is_visible_to_public && group.discussion_privacy_options == 'public_only'
+          "Open"
+        elsif group.is_visible_to_public && group.discussion_privacy_options != 'public_only'
+          "Closed"
+        elsif group.is_visible_to_parent_members && !group.is_visible_to_public
+          "Closed"
+        elsif !group.is_visible_to_parent_members && !group.is_visible_to_public
+          "Secret"
+        else
+          "Group privacy unknown"
+        end
       end
+
+      row :is_visible_to_public
+      row :discussion_privacy_options
+      row :is_visible_to_parent_members
+      row :parent_members_can_see_discussions
+      row :members_can_add_members
+      row :membership_granted_upon
+      row :members_can_edit_discussions
+      row :members_can_edit_comments
+      row :members_can_raise_motions
+      row :members_can_vote
+      row :members_can_start_discussions
+      row :members_can_create_subgroups
+      row :subdomain
+      row :is_referral
+      row :cohort_id
+      row :subscription_id
+      row :enable_experiments
+      row :analytics_enabled
+      row :experiences
+      row :features
+      row :theme_id
+      row :cover_photo_file_name
+      row :cover_photo_content_type
+      row :cover_photo_updated_at
+      row :logo_file_name
+      row :logo_content_type
+      row :logo_file_size
+      row :logo_updated_at
     end
 
     panel("Group Admins") do
@@ -170,8 +231,6 @@ ActiveAdmin.register Group do
       f.input :description
       f.input :subdomain
       f.input :theme, as: :select, collection: Theme.all
-      f.input :max_size
-      f.input :is_commercial
       f.input :analytics_enabled
       f.input :enable_experiments
       f.input :category_id, as: :select, collection: Category.all

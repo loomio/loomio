@@ -5,4 +5,10 @@ class API::NotificationsController < API::RestfulController
     head :ok
   end
 
+  private
+
+  def accessible_records
+    NotificationCollection.new(current_user).notifications
+  end
+
 end
