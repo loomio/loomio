@@ -1,4 +1,10 @@
-%p= t('email.mentioned.context', discussion_title: @discussion.title, author_name: @comment.author.name)
-= render_rich_text(@comment.body, @comment.uses_markdown)
-= render "attachments", comment: @comment if @comment.attachments.any?
-= render "footer", link: comment_url_helper(@comment)
+= render 'avatar', author: @author
+.thread-mailer__subject
+  %strong= @author.name
+  %span= t(:"email.mentioned.context_html")
+  %span
+    %strong
+      = link_to @discussion.title, polymorphic_url(@eventable)
+= render_rich_text(@text, true)
+- if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
+  = render 'attachments', resource: @eventable

@@ -9,7 +9,7 @@
           %a.lmo-dropdown-menu-item-label.thread-item__edit-link{href: "", ng-click: "editComment()", translate: "new_comment_item.context_menu.edit_comment"}
         %li.lmo-dropdown-menu-item{ng-if: "canDeleteComment()"}
           %a.lmo-dropdown-menu-item-label.thread-item__delete-link{href: "", ng-click: "deleteComment()", translate: "new_comment_item.context_menu.delete_comment"}
-  %outlet.lmo-relative.pull-right{name: "before-comment-dropdown"}
+  %outlet.lmo-relative.pull-right{name: "before-comment-dropdown", model: "comment"}
 
   .thread-item__header.media
     .media-left
@@ -23,17 +23,19 @@
         %a{lmo-href-for: "comment.author()"}> {{ comment.authorName() }}
       .sr-only{ng-if: "!comment.parentId", id: "event-{{event.id}}", translate: "new_comment_item.aria_label", translate-value-author: "{{comment.authorName()}}"}
 
-  .thread-item__body.lmo-markdown-wrapper{marked: "comment.cookedBody()" }
+  .thread-item__body.new-comment__body.lmo-markdown-wrapper{marked: "comment.cookedBody()"}
   %translation.thread-item__body{ng-if: "translation", translation: "translation", field: "body"}
+
+  %outlet{name: "after-comment-body", model: "comment"}
 
   .thread-item__attachments
     .thread-item__attachment{ng-repeat: "attachment in comment.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "thread"}
 
-  .thread-item__footer
+  .thread-item__footer.new-comment__footer
     .thread-item__actions{ng-if: "showCommentActions()"}
-      %button.thread-item__action.thread-item__action--like.lmo-no-print{type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng_click: "like()"}>
-      %button.thread-item__action.lmo-no-print{type: "button", translate: "common.action.unlike", ng_click: "unlike()", ng-show: "currentUserLikesIt()"}>
+      %button.thread-item__action.thread-item__action--like.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.like", ng-show: "!currentUserLikesIt()", ng-click: "like()"}>
+      %button.thread-item__action.thread-item__action--unlike.lmo-no-print{tabindex: 0, type: "button", translate: "common.action.unlike", ng-click: "unlike()", ng-show: "currentUserLikesIt()"}>
       %span.lmo-no-print{aria-hidden: "true"}>·
       %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
       %translate_button.lmo-no-print{model: "comment", showdot: "true"}
@@ -45,6 +47,6 @@
         %button.thread-item__action--view-edits{ng-click: "showRevisionHistory()", translate: "new_comment_item.edited"}>
 
     .clearfix
-    %outlet{name: "after-comment-event"}
+    %outlet{name: "after-comment-event", model: "comment"}
     .thread-item__liked-by{ng_show: "anybodyLikesIt()"}
       {{ likedBySentence }}

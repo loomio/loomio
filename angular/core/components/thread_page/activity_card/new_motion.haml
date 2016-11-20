@@ -1,10 +1,10 @@
-.thread-item
+.thread-item{ng_controller: "NewMotionItemController"}
   .thread-item__header.media
     .media-left
       %user_avatar{user: "event.actor()", size: "small"}
     .media-body
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %strong
-          %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
-        %span{translate: "new_proposal_item.author_created_proposal", translate-value-title: "{{event.proposal().name}}"}>
+          %a.thread-item__title-link{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
+        %span{translate: "new_proposal_item.author_created_proposal", translate-value-title: "{{proposal.name}}"}>
         %timeago.timeago--inline{timestamp: "event.createdAt"}

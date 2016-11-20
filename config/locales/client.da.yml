@@ -65,15 +65,9 @@ da:
     latest: Sidste
     unread: Ulæst
     closing_in: Ved at lukke
-  session_form:
-    email_label: Email
-    password_label: Password
-    remember_me: Husk Mig
-    sign_in: Login
   comment_form:
     aria_label: Tilføj en kommentar
     attachments:
-      aria_label: Vedhæft en fil
       remove_attachment: Fjern vedhæftet fil
     messages:
       created: Kommentar tilføjet
@@ -87,22 +81,18 @@ da:
     in_reply_to: 'Som svar på <strong>{{name}}</strong>:'
     submit_button:
       label: Post
-  navbar:
+  sidebar:
     recent: Nye
     unread: Ulæst
-    groups: Grupper
+    edit_profile: Rediger profil
+    email_settings: Emailindstillinger
+    help: Hjælp
+    sign_out: Log ud
+  navbar:
     recent_title: Gå til oversigtssiden
     unread_title: Se ulæst aktivitet
-    groups_title: Se dine grupper
     start_thread: Start en ny tråd
     notifications: Meddelelsespanel
-    user_options:
-      contact_us: Kontakt os
-      new_thread: Ny tråd
-      new_group: Ny gruppe
-      profile: Profil
-      email_settings: Emailindstillinger
-      help: Hjælp
     search:
       close: Luk søgepanelet
       placeholder: Søg
@@ -157,7 +147,6 @@ da:
     heading: Anmod om gruppemedlemskab
     name_label: Navn
     email_label: E-mail
-    introduction_label: Introducer dig selv
     submit_button: Anmod om gruppemedlemskab
   group_page:
     thread_list:
@@ -169,8 +158,6 @@ da:
     options_label: Indstillinger
     options:
       label: Indstillinger
-    leave_group:
-      title: Forlad gruppe
   membership_requests_page:
     approve: Godkend
     ignore: Ignorer
@@ -179,18 +166,7 @@ da:
     name_label: Navn
     coordinator_label: Koordinator
     remove_member_label: Fjern
-    remove_membership:
-      submit: Fjern
   profile_page:
-    change_picture:
-      use_initials: Brug initialer
-    change_password:
-      current_password_label: Nuværende adgangskode
-      new_password_label: Ny adgangskode
-      password_confirmation_label: Bekræft ny adgangskode
-    deactivate_user:
-      title: Slet konto
-      submit: Slet konto
     profile: Profil
     picture_label: Billede
     name_label: Navn
@@ -200,12 +176,17 @@ da:
     header: Emailindstillinger
   dashboard_page:
     aria_label: Instrumentbræt
+    no_groups:
+      or: eller
     mark_as_read: Marker som læst
     filtering:
       proposals: Forslag
     threads_from:
       today: Idag
       yesterday: I går
+  inbox_page:
+    no_groups:
+      or: eller
   discussion:
     proposals: Forslag
     previous_proposals: Tidligere Forslag

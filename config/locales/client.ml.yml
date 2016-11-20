@@ -23,11 +23,11 @@ ml:
   comment_form:
     delete_comment: അഭിപ്രായം നീക്കം ചെയ്യുക
     confirm_delete_message: 'തീര്‍ച്ചയായും ഈ അഭിപ്രായം കളയണോ? '
+  sidebar:
+    email_settings: ഈമെയിൽ  ക്രമീകരണങ്ങള്‍
+    help: സഹായം
+    sign_out: പുറത്തു കടക്കുക
   navbar:
-    groups: കൂട്ടങ്ങള്‍
-    user_options:
-      new_group: പുതിയ കൂട്ടം
-      help: സഹായം
     search:
       placeholder: തിരയുക
       discussions: ചര്‍ച്ചകള്‍
@@ -67,7 +67,6 @@ ml:
     heading: കൂട്ടത്തില്‍ ചേരാന്‍ ചോദിക്കുക
     name_label: പേരു്
     email_label: ഈമെയില്‍
-    introduction_label: സ്വയം പരിചയപ്പെടുത്തുക
     submit_button: കൂട്ടത്തില്‍ ചേരാന്‍ ചോദിക്കുക
   group_page:
     discussions: ചര്‍ച്ചകള്‍
@@ -75,8 +74,6 @@ ml:
     options_label: ഐച്ഛികങ്ങള്‍
     options:
       label: ഐച്ഛികങ്ങള്‍
-    leave_group:
-      title: കൂട്ടം വിടുക
   membership_requests_page:
     approve: സ്ഥിരീകരിക്കുക
     ignore: നിരസ്സിക്കുക
@@ -85,13 +82,7 @@ ml:
     name_label: പേരു്
     coordinator_label: എകോപകൻ
     remove_member_label: നീക്കുക
-    remove_membership:
-      submit: നീക്കുക
   profile_page:
-    change_password:
-      current_password_label: ഇപ്പോഴത്തെ അടയാളവാക്ക്
-      new_password_label: പുതിയ അടയാളവാക്ക്
-      password_confirmation_label: പുതിയ അടയാളവാക്ക് തീര്‍ച്ചപ്പെടുത്തുക
     picture_label: ചിത്രം
     name_label: പേരു്
     email_label: ഈമെയില്‍

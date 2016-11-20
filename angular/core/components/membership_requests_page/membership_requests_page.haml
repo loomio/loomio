@@ -1,6 +1,7 @@
 .loading-wrapper.lmo-one-column-layout
   %loading{ng-if: "!membershipRequestsPage.group"}
   %main.membership-requests-page{ng-if: "membershipRequestsPage.group"}
+    .lmo-group-theme-padding
     %group_theme{group: "membershipRequestsPage.group"}
     .membership-requests-page__pending-requests
       %h2.lmo-h2{translate: "membership_requests_page.heading"}

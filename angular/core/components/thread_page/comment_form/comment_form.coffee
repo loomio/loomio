@@ -3,10 +3,7 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, ScrollService, EmojiService, ModalService, SignInForm) ->
-
-    $scope.$on 'disableCommentForm', -> $scope.submitIsDisabled = true
-    $scope.$on 'enableCommentForm',  -> $scope.submitIsDisabled = false
+  controller: ($scope, $rootScope, FormService, Records, Session, KeyEventService, AbilityService, MentionService, AttachmentService, ScrollService, EmojiService, ModalService, SignInForm) ->
 
     $scope.showCommentForm = ->
       AbilityService.canAddComment($scope.discussion)
@@ -37,7 +34,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.$on 'proposalCreated', $scope.listenForSubmitOnEnter
 
     $scope.init = ->
-      $scope.comment = Records.comments.build(discussionId: $scope.discussion.id)
+      $scope.comment = Records.comments.build(discussionId: $scope.discussion.id, authorId: Session.user().id)
       $scope.submit = FormService.submit $scope, $scope.comment,
         draftFields: ['body']
         submitFn: $scope.comment.save
@@ -46,27 +43,16 @@ angular.module('loomioApp').directive 'commentForm', ->
           name: successMessageName
         successCallback: $scope.init
       $scope.listenForSubmitOnEnter()
+      $scope.$broadcast 'commentFormInit', $scope.comment
     $scope.init()
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
+      $scope.comment.parentAuthorName = parentComment.authorName()
       ScrollService.scrollTo('.comment-form__comment-field')
-
-    $scope.$on 'attachmentRemoved', (event, attachmentId) ->
-      ids = $scope.comment.newAttachmentIds
-      ids.splice ids.indexOf(attachmentId), 1
 
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
-
-    $scope.updateMentionables = (fragment) ->
-      regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
-      allMembers = _.filter $scope.discussion.group().members(), (member) ->
-        return false if member.id == Session.user().id
-        (regex.test(member.name) or regex.test(member.username))
-      $scope.mentionables = allMembers.slice(0, 5)
-
-    $scope.fetchByNameFragment = (fragment) ->
-      $scope.updateMentionables(fragment)
-      Records.memberships.fetchByNameFragment(fragment, $scope.discussion.group().key).then ->
-        $scope.updateMentionables(fragment)
+    AttachmentService.listenForPaste $scope
+    MentionService.applyMentions $scope, $scope.comment
+    AttachmentService.listenForAttachments $scope, $scope.comment

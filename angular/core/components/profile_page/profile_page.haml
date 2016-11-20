@@ -1,7 +1,8 @@
 .loading-wrapper.lmo-one-column-layout
   %loading{ng-if: "!profilePage.user"}
   %main.profile-page{ng-if: "profilePage.user"}
-    %h1.lmo-h1.lmo-vertical-spacer-lg{translate: "profile_page.profile"}
+    .lmo-page-heading
+      %h1.lmo-h1-medium{translate: "profile_page.profile"}
     .profile-page-card
       .lmo-disabled-form{ng-show: "profilePage.isDisabled"}
       %h3.lmo-h3{translate: "profile_page.edit_profile"}
@@ -34,7 +35,7 @@
 
       .lmo-vertical-spacer
         %button.profile-page__change-password.lmo-link{ng-click: "profilePage.changePassword()", translate: "profile_page.change_password_link"}
-    .profile-page-card{ng-if: "profilePage.canDeactivateUser()"}
-      %h3.lmo-h3{translate: "profile_page.deactivate_user.title"}
+    .profile-page-card
+      %h3.lmo-h3{translate: "profile_page.deactivate_account"}
 
-      %button.lmo-link.lmo-vertical-spacer{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}
+      %button.profile-page__deactivate.lmo-link.lmo-vertical-spacer{ng-click: "profilePage.deactivateUser()", translate: "profile_page.deactivate_user_link"}

@@ -66,15 +66,9 @@ pl:
     latest: Ostatnie
     unread: Nieprzeczytane
     closing_in: Zamykane
-  session_form:
-    email_label: 'Email:'
-    password_label: 'Hasło:'
-    remember_me: Zapamiętaj mnie
-    sign_in: Login
   comment_form:
     aria_label: Dodanie komentarza
     attachments:
-      aria_label: Załączenie pliku
       remove_attachment: Usunięcie załącznika
     messages:
       created: Komentarz dodany
@@ -88,22 +82,18 @@ pl:
     in_reply_to: 'W odpowiedzi na <strong>{{name}}</strong>:'
     submit_button:
       label: Wysłanie
-  navbar:
+  sidebar:
     recent: Ostatnie
     unread: Nieprzeczytane
-    groups: Grupy
+    muted: Wyciszone
+    email_settings: Ustawienia poczty
+    help: Pomoc
+    sign_out: Wyloguj się
+  navbar:
     recent_title: Idź do pulpitu
     unread_title: Zobacz nieprzeczytaną aktywność
-    groups_title: Zobacz Twoje grupy
     start_thread: Rozpoczęcie nowego wątku
     notifications: Panel powiadomień
-    user_options:
-      contact_us: Kontakt
-      new_thread: Nowy wątek
-      new_group: Nowa grupa
-      profile: Profil
-      email_settings: Ustawienia poczty
-      help: Pomoc
     search:
       close: Zamknij panel wyszukiwania
       placeholder: Szukaj
@@ -126,7 +116,6 @@ pl:
     new_comment: '<strong>{{name}}</strong> skomentował/a <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> odpowiedział/a na Twój komentarz do <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> polubił/a Twój komentarz do <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> wspomniał/a o Tobie w <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> wysłał/a prośbę o dołączenie do <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> zaakceptował/a Twoją prośbę o dołączenie do <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> dodał/a Cię do grupy <strong>{{group}}</strong>'
@@ -180,13 +169,10 @@ pl:
     start_a_proposal: Uruchomienie rekomendacji
     edit_proposal: Edycja rekomendacji
     what_does_a_proposal_do: Rekomendacje pozwalają poznać opinie innych osób o wybranym kierunku działań.
-    editing_title_and_description_forbidden: 'Nie możesz zmienić tytułu i opisu rekomendacji po tym jak ktoś zagłosował. Jeśli szczegóły zostały zmienione, proszę zamknąć rekomendację i uruchomić nową'
-    title_placeholder: 'Np.: Idź na księżyc'
     title_label: Tytuł
     closes_at_label: 'Zamyka się o '
     closes: Zamyka się
     details_label: Szczegóły
-    details_placeholder: Podaj dostatecznie dużo szczegółów aby wszyscy wiedzieli co oznacza zgoda lub jej brak
   discussion_record:
     created: 'Wątek {{title}} został pomyślnie utworzony w  {{groupName}}'
     updated: 'Zapisano zmiany w {{title}}'
@@ -219,7 +205,6 @@ pl:
   proposal_position_no: Nie zgadzam się
   proposal_position_block: Blokuję
   group_welcome_modal:
-    heading: Witamy w Twojej nowej grupie
     ok_got_it: 'OK, zrobione!'
   join_group_button:
     join_group: Dołączenie do grupy
@@ -230,7 +215,6 @@ pl:
     heading: Prośba o dołączenie do grupy
     name_label: Nazwa
     email_label: E-mail
-    introduction_label: Przedstaw się
     submit_button: Prośba o dołączenie do grupy
     messages:
       membership_requested: 'Wysłałeś/aś prośbę o dołączenie do grupy  {{group}}'
@@ -263,16 +247,6 @@ pl:
     options_label: Opcje
     options:
       label: Opcje
-    deactivate_group:
-      title: Deaktywacja Grupy
-      question: Czy na pewno chcesz deaktywować tę grupę?
-      submit: 'Tak, Deaktywuj tę grupę'
-    leave_group:
-      title: Opuść grupę
-      question: Czy na pewno chcesz opuścić tę grupę?
-      submit: 'Tak, wypisz mnie z grupy'
-      cannot_leave_group: Nie możesz opuścić tej grupy ponieważ jesteś jej ostatnim koordynatorem. Musisz wybrać innego koordynatora lub wyłączyć grupę.
-      add_coordinator: Dodanie koordynatora
     volume:
       loud: Wyślij wiadomość jeśli pojawi się aktywność.
       loud_aria_description: Poziom powiadamiania dla tej grupy jest ustawiony na Głośno. Będziesz otrzymywać wiadomości w przypadku każdej aktywności.
@@ -301,34 +275,12 @@ pl:
       remove_member_success: 'Usunięto {{name}}'
       make_admin_success: '{{name}} został/a koordynatorem'
       remove_admin_success: '{{name}} przestał/a być koordynatorem'
-    remove_membership:
-      title: Usunięcie członka
-      question: 'Czy na pewno chcesz usunąć {{name}} z grupy {{group}}?'
-      submit: Usunięcie
   profile_page:
     messages:
       updated: Profil zmieniony
       picture_changed: Zdjęcie profilowe zmienione
       password_changed: Hasło zmienione
       deactivated: Konto wyłączone
-    change_picture:
-      title: Zmiana zdjęcia
-      helptext: 'Możesz przesłać swoje wasne zdjęcie profilowe lub jeśli masz konto <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> możesz go użyć.'
-      use_initials: Użyj inicjałów
-      use_gravatar: Użyj gravatar
-      use_uploaded: Prześlij nowe zdjęcie
-    change_password:
-      title: Zmiana Hasła
-      helptext: 'Hasła muszą mieć conajmniej 8 znaków. Używanie potocznych wyrazów, takie jak "hasło" są zabronione.'
-      current_password_label: Obecne hasło
-      new_password_label: Nowe hasło
-      password_confirmation_label: Potwierdź nowe hasło
-      submit: Zmiana hasła
-    deactivate_user:
-      title: Deaktywacja konta
-      question: Czy powiesz nam czemu wyłączasz swoje konto?
-      placeholder: 'Odpowiedź na to pytanie jest opcjonalna. Każda informacja jaką nam prześlesz pomoże nam poprawić Loomio :)'
-      submit: Deaktywacja konta
     change_picture_link: Zmiana zdjęcia
     change_password_link: Zmiana hasła
     deactivate_user_link: Wyłączenie hasła...
@@ -348,11 +300,8 @@ pl:
       updated: Ustawienia poczty zmienione
   dashboard_page:
     aria_label: Pulpit
-    options:
-      aria_label: Opcje filtrowania pulpitu
     no_threads:
       show_all: Nie masz żadnych ostatnich wątków.
-      show_participating: Nie uczestniczyłeś/aś ostatnio w żadnych wątkach.
       show_starred: Nie masz wątków oznaczonych gwiazdką.
       show_proposals: Brak aktywnych rekomendacji
       show_muted: Nie masz wyciszonych wątków.
@@ -368,9 +317,6 @@ pl:
       starred: Wątki z Gwiazdką
       starred_aria_label: Pokazywane są wątki oznaczone jako ważne
       starred_description: Pokazywane są tylko wątki oznaczone przez Ciebie jako ważne
-      participating: Wątki w których uczestniczysz
-      participating_aria_label: Pokazywane są wątki w których brałeś/aś udział
-      participating_description: Przegląd tylko wątków w których brałeś/aś udział
       proposals: Rekomendacje
       proposals_aria_label: Pokazywane są wątki z aktywnymi rekomendacjami
       proposals_description: Zobacz tylko wątki  aktywnymi rekomendacjami
@@ -534,7 +480,17 @@ pl:
 
       po informacje jak używać Markdown.</p>
     keep_up_to_date: Informują na bieżąco
-    keep_up_to_date_html: "<p>Klikając na nazwę grupy na górze ekranu przejdziesz na Stronę Grupy, \ngdzie możesz zobaczyć listę wszystkich dyskusji i decyzji dla grupy. Jeśli jesteś w więcej niż jednej grupie, możesz zobaczyć aktywność wszystkoich Twoich grup na Stronie Domowej.</p>\n<p>Otrzymasz powiadomienia pocztą jeśli ważne rzeczy zdarzą się w Twojej grupie.\nMożesz zmienić ustawienia Twojej poczty <a href=\"%{link}\"\">tutaj</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Klikając na nazwę grupy na górze ekranu przejdziesz na Stronę Grupy,
+
+      gdzie możesz zobaczyć listę wszystkich dyskusji i decyzji dla grupy. Jeśli
+      jesteś w więcej niż jednej grupie, możesz zobaczyć aktywność wszystkoich
+      Twoich grup na Stronie Domowej.</p>
+
+      <p>Otrzymasz powiadomienia pocztą jeśli ważne rzeczy zdarzą się w Twojej
+      grupie.
+
+      Możesz zmienić ustawienia Twojej poczty <a href="%{link}"">tutaj</a>.</p>
     make_a_decision: Podejmij decyzję
     make_a_decision_description: 'Kiedy ta grupa jest gotowa aby podjąć decyzję, każdy może utworzyć rekomendację. Opisz jasno kierunek działania i podaj trochę ogólnych informacji tak aby wszyscy wiedzieli co dokładnie oznacza ich zgoda lub jej brak.'
     prompt_people_details: "Jeśli chcesz zwrócić uwagę konkretnej osoby w grupie, napisz znak '@'  oraz jego nazwę. Otrzyma wiadomość z informacją, że wspomniałeś o nim/niej w komentarzy."

@@ -1,6 +1,8 @@
 Loomio::Application.routes.draw do
 
-  use_doorkeeper
+  use_doorkeeper do
+    skip_controllers :applications, :authorized_applications
+  end
 
   constraints(GroupSubdomainConstraints) do
     get '/' => 'redirect#group_subdomain'
@@ -44,7 +46,6 @@ Loomio::Application.routes.draw do
       get :count_explore_results, on: :collection
       patch :archive, on: :member
       put :archive, on: :member
-      post :use_gift_subscription, on: :member
       post 'upload_photo/:kind', on: :member, action: :upload_photo
     end
 
@@ -83,6 +84,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :profile, only: [:show] do
+      get  :me, on: :collection
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
@@ -103,6 +105,7 @@ Loomio::Application.routes.draw do
 
     resources :discussions, only: [:show, :index, :create, :update, :destroy] do
       patch :mark_as_read, on: :member
+      patch :dismiss, on: :member
       patch :set_volume, on: :member
       patch :star, on: :member
       patch :unstar, on: :member
@@ -179,7 +182,11 @@ Loomio::Application.routes.draw do
                                     registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  namespace(:subscriptions) { post :webhook }
+  namespace(:subscriptions) do
+    get :select_gift_plan
+    post :webhook
+  end
+
   resources :invitations, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 
@@ -205,6 +212,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/export'                      => 'groups#export',    as: :group_export
   get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
   get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
+  get 'd/:key/comment/:comment_id'         => 'discussions#show', as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
   get 'u/:username/'                       => 'users#show',       as: :user
 
@@ -213,6 +221,7 @@ Loomio::Application.routes.draw do
   get '/index'                             => 'application#index', format: :js
 
   get 'dashboard'                          => 'application#index', as: :dashboard
+  get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
   get 'groups'                             => 'application#index', as: :groups
   get 'explore'                            => 'application#index', as: :explore
@@ -224,11 +233,16 @@ Loomio::Application.routes.draw do
   get 'apps/registered/:id/:slug'          => 'application#index'
   get 'd/:key/proposal/:proposal'          => 'application#index', as: :discussion_motion
   get 'd/:key/comment/:comment'            => 'application#index', as: :discussion_comment
-  get 'd/:key/proposal/:proposal/:outcome' => 'application#index', as: :discussion_motion_outcome
+  get 'd/:key/proposal/:proposal/outcome'  => 'application#index', as: :discussion_motion_outcome
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships
   get 'g/:key/previous_proposals'          => 'application#index', as: :group_previous_proposals
-  get 'g/:key/memberships/:username'       => 'application#index'
+  get 'g/:key/memberships/:username'       => 'application#index', as: :group_memberships_username
+
+  get '/notifications/dropdown_items'      => 'application#gone'
+  get '/u/:key(/:stub)'                    => 'application#gone'
+  get '/g/:key/membership_requests/new'    => 'application#gone'
+  get '/comments/:id'                      => 'application#gone'
 
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end

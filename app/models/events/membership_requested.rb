@@ -1,22 +1,20 @@
 class Events::MembershipRequested < Event
-  after_create :notify_users!
-
   def self.publish!(membership_request)
     create(kind: "membership_requested",
            eventable: membership_request).tap { |e| EventBus.broadcast('membership_requested_event', e) }
   end
 
-  def membership_request
-    eventable
+  def users_to_notify
+    eventable.admins.active
   end
 
   private
 
-  def notify_users!
-    GroupMailer.new_membership_request(eventable)
-    membership_request.group_admins.active.each do |admin|
-      notify!(admin)
-    end
+  def notification_actor
+    eventable.requestor
   end
-  handle_asynchronously :notify_users!
+
+  def notification_translation_values
+    { name: eventable.requestor&.name || eventable.name, group: eventable.group.full_name }
+  end
 end

@@ -1,6 +1,6 @@
 class API::GroupsController < API::RestfulController
   load_and_authorize_resource only: :show, find_by: :key
-  load_resource only: [:upload_photo, :use_gift_subscription], find_by: :key
+  load_resource only: [:upload_photo], find_by: :key
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
@@ -13,7 +13,7 @@ class API::GroupsController < API::RestfulController
   end
 
   def create
-    instantiate_resouce
+    instantiate_resource
     create_action
     respond_with_resource(scope: {current_user: current_user})
   end
@@ -25,18 +25,8 @@ class API::GroupsController < API::RestfulController
   end
 
   def subgroups
-    load_and_authorize :group
-    @groups = @group.subgroups.select{|g| can? :show, g }
+    self.collection = load_and_authorize(:group).subgroups.select { |g| can? :show, g }
     respond_with_collection
-  end
-
-  def use_gift_subscription
-    if SubscriptionService.available?
-      SubscriptionService.new(resource, current_user).start_gift!
-      respond_with_resource
-    else
-      respond_with_standard_error ActionController::BadRequest, 400
-    end
   end
 
   def upload_photo
@@ -56,4 +46,8 @@ class API::GroupsController < API::RestfulController
     Queries::ExploreGroups.new
   end
 
+  # serialize out the parent with the group
+  def resources_to_serialize
+    Array(collection || [resource, resource&.parent].compact)
+  end
 end

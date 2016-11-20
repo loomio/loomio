@@ -32,14 +32,13 @@ an:
     edit_comment: Editar comentario
     delete_comment: Borrar comentario
     confirm_delete_message: Yes seguro que quiers borrar iste comentario?
-  navbar:
+  sidebar:
     unread: No leyiu
-    groups: Grupos
-    user_options:
-      contact_us: Contacta con nusatros
-      new_group: Nuevo grupo
-      profile: Perfil
-      help: Aduya
+    edit_profile: Editar perfil
+    email_settings: "Configuración d'o correu electronico"
+    help: Aduya
+    sign_out: Salir
+  navbar:
     search:
       placeholder: Buscar
       discussions: Discusions
@@ -82,7 +81,6 @@ an:
     heading: Pedir pertenencia a o grupo
     name_label: Nombre
     email_label: Correu electronico
-    introduction_label: Presienta-te
     submit_button: Pedir pertenencia a o grupo
   group_page:
     thread_list:
@@ -94,11 +92,6 @@ an:
     options_label: Opcions
     options:
       label: Opcions
-    leave_group:
-      title: Abandonar grupo
-  group_help_card:
-    ten_tips_article_link: 'https://loomio.wordpress.com/2015/08/17/10-consejos-para-tomar-decisiones-con-loomio/?frame-nonce=7455d1c7aa&preview=true&iframe=true'
-    nine_ways_to_use_proposals_link: 'https://loomio.wordpress.com/2015/08/17/9-formas-de-utilizar-propuestas-en-loomio-para-convertir-conversaciones-en-accion/?frame-nonce=7455d1c7aa&preview=true&iframe=true'
   membership_requests_page:
     approve: Aprebar
     ignore: Ignorar
@@ -107,18 +100,7 @@ an:
     name_label: Nombre
     coordinator_label: Coordinador
     remove_member_label: Borrar
-    remove_membership:
-      submit: Borrar
   profile_page:
-    change_picture:
-      use_initials: Usar inicials
-    change_password:
-      current_password_label: Clau actual
-      new_password_label: Nueva clau
-      password_confirmation_label: Confirmar nueva clau
-    deactivate_user:
-      title: Desactiva a tuya cuenta
-      submit: Desactiva a tuya cuenta
     profile: Perfil
     picture_label: Imachen
     name_label: Nombre
@@ -127,9 +109,14 @@ an:
     locale_label: Idioma
   dashboard_page:
     aria_label: Panel de control
+    no_groups:
+      or: u
     mark_as_read: Marcar como leyiu
     threads_from:
       today: Hue
+  inbox_page:
+    no_groups:
+      or: u
   thread_group:
     aria_label: "Nombre d'o grupo"
   delete_comment_dialog:

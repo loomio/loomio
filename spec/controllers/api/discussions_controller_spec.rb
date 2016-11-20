@@ -66,7 +66,7 @@ describe API::DiscussionsController do
     context 'logged in' do
       before do
         sign_in user
-        reader.viewed!
+        reader.viewed!(reader.discussion.last_activity_at)
         group.add_member! another_user
       end
 
@@ -79,6 +79,14 @@ describe API::DiscussionsController do
       end
 
       it 'does not return read threads' do
+        get :inbox
+        json = JSON.parse(response.body)
+        expect(json['discussions']).to be_blank
+      end
+
+      it 'does not return dismissed threads' do
+        CommentService.create(comment: new_comment, actor: another_user)
+        DiscussionReader.for(discussion: discussion, user: user).dismiss!
         get :inbox
         json = JSON.parse(response.body)
         expect(json['discussions']).to be_blank
@@ -263,6 +271,25 @@ describe API::DiscussionsController do
         get :show, id: private_discussion.id, format: :json
         expect(response.status).to eq 403
       end
+    end
+  end
+
+  describe 'dismiss' do
+    before { sign_in user }
+
+    let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
+
+    before do
+      group.add_admin! user
+      sign_in user
+      reader.update(volume: DiscussionReader.volumes[:normal])
+      reader.reload
+    end
+
+    it "updates dismissed_at", focus: true do
+      patch :dismiss, id: discussion.key
+      expect(response.status).to eq 200
+      expect(reader.reload.dismissed_at).to be_present
     end
   end
 
@@ -477,12 +504,32 @@ describe API::DiscussionsController do
 
   describe 'update' do
     before { sign_in user }
+    let(:attachment) { create(:attachment) }
 
     context 'success' do
       it "updates a discussion" do
         post :update, id: discussion.id, discussion: discussion_params, format: :json
         expect(response).to be_success
         expect(discussion.reload.title).to eq discussion_params[:title]
+      end
+
+      it 'adds attachments' do
+        discussion_params[:attachment_ids] = attachment.id
+        post :update, id: discussion.id, discussion: discussion_params, format: :json
+        expect(discussion.reload.attachments).to include attachment
+        json = JSON.parse(response.body)
+        attachment_ids = json['attachments'].map { |a| a['id'] }
+        expect(attachment_ids).to include attachment.id
+      end
+
+      it 'removes attachments' do
+        attachment.update(attachable: discussion)
+        discussion_params[:attachment_ids] = []
+        post :update, id: discussion.id, discussion: discussion_params, format: :json
+        expect(discussion.reload.attachments).to be_empty
+        json = JSON.parse(response.body)
+        attachment_ids = json['attachments'].map { |a| a['id'] }
+        expect(attachment_ids).to_not include attachment.id
       end
     end
 
@@ -537,6 +584,19 @@ describe API::DiscussionsController do
           author_id
           group_id
         ])
+      end
+
+      describe 'mentioning' do
+        it 'mentions appropriate users' do
+          group.add_member! another_user
+          discussion_params[:description] = "Hello, @#{another_user.username}!"
+          expect { post :create, discussion: discussion_params, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+        end
+
+        it 'does not mention users not in the group' do
+          discussion_params[:description] = "Hello, @#{another_user.username}!"
+          expect { post :create, discussion: discussion_params, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
+        end
       end
     end
 

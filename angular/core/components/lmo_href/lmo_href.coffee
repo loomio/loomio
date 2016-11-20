@@ -1,14 +1,12 @@
-angular.module('loomioApp').directive 'lmoHref', (TransitionService) ->
+angular.module('loomioApp').directive 'lmoHref', ($window, $router) ->
   restrict: 'A'
   scope:
     route: '@lmoHref'
-    transition: '@lmoHrefTransition'
-    transitionOpts: '@lmoHrefTransitionOptions'
+    target: '@target'
   link: (scope, elem, attrs) ->
-    scope.$watch 'route', ->
-      elem.attr 'href', scope.route
     elem.bind 'click', ($event) ->
-      if $event.ctrlKey or $event.metaKey
+      if $event.ctrlKey or $event.metaKey or scope.target == '_blank'
         $event.stopImmediatePropagation()
+        $window.open(scope.route, '_blank')
       else
-        TransitionService.beginTransition(scope.transition, scope.transitionOpts)
+        $router.navigate(scope.route)

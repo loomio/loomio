@@ -1,0 +1,221 @@
+es:
+  navigation:
+    blog: Blog
+    resources: 'Recursos '
+    resources_dropdown: Menú desplegable de recursos
+    resources_submenu: submenú de recursos
+    header_menu_label: 'Menú superior '
+    case_studies: Estudio de casos
+    help: 'Ayuda '
+    guides_and_tips: 'Guías y consejos '
+    developers: ' Desarrolladores '
+    coop_handbook: Manual de la cooperativa
+    about: 'Sobre Loomio '
+    pricing: 'Precios '
+    contact: Contactarnos
+    login: 'Entrar '
+    start_group: 'Crear un grupo '
+    home: 'Página principal '
+    terms_of_service: 'Términos del servicio '
+    privacy: 'Privacidad '
+    translation: 'Traducción  '
+    newsletter: 'Boletín informativo '
+    twitter: 'Twitter '
+    facebook: Facebook
+    trademark_statement: '© 2016 Loomio Cooperative Limited. Todos los derechos reservados. "Loomio"es una marca registrada de Loomio Cooperative Limited.'
+  marketing:
+    hero:
+      dilemma_html: Tomar decisiones con tu grupo no debería ser tan difícil.
+      dilemma_image_alt: 'Miembros del grupo que no parecen felices reunidos alrededor de una mesa desorganizada '
+      solution: 'Con Loomio puedes tomar decisiones sin una larga lista de emails o reuniones. '
+      solution_image_alt: 'Felices miembros del grupo con distintos dispositivos móviles reunidos alrededor de una lamparita e interconectados por hilos   '
+      arrow_alt: 'Flecha que apunta de la imagen del problema a la imagen de la solución '
+    macbook_android_image_alt: 'Loomio en el ordenador y dispositivos móviles  '
+    make_decisions_html: 'Loomio es un lugar para que tu grupo <strong>tome decisiones juntos</strong>.'
+    gather:
+      heading: 'Juntarse   '
+      explanation: 'Trae a la gente indicada y a la información necesaria. Accesible, fácil de usar, adaptable, con detalles optimizadles para la privacidad y seguridad. '
+      image_alt: 'Grupo reunido en circulo alrededor de un signo de pregunta '
+    discuss:
+      heading: 'Dialoga '
+      explanation: 'Ten conversaciones claras sobre temas particulares. Mantente al día, lee la información relevante y filtra el ruido. Es un espacio dedicado para la colaboración constructiva. '
+      image_alt: 'Grupo compartiendo información y expresando opiniones con burbujas de dialogo coloridas '
+    propose:
+      heading: 'Propone '
+      explanation: 'Resúmenes visuales facilitan el entendimiento de las posiciones de los demás. Entérate rápidamente si están de acuerdo. O ve fácilmente la causa del desacuerdo y comienza a construir un entendimiento compartido.  '
+      image_alt: Grupo reunido alrededor de un gráfico circular que muestra los distintos votos con colores
+    decide_act:
+      heading: 'Decide y Actúa '
+      explanation: 'Llega a un resultado claro para cada propuesta, dentro del tiempo fijado. Todos serán notificados sobre el resultado, para que puedan avanzar juntos y ponerse en acción. '
+      image_alt: 'Grupo sale volando desde el pulgar verde hacia arriba con los brazos en alto  '
+    try_it_now: 'Pruébalo ahora '
+    start_free_group: Crea un grupo gratis
+    fast_inclusive_effective: 'Tu nueva normalidad puede ser rápida, inclusiva y eficiente.'
+    debt_resistance_uk:
+      heading: 'Productividad en las reuniones y entre las mismas. '
+      quote: >
+        Nos comunicábamos por email entre reuniones, pero muchas veces no
+        llegábamos a tomar una decisión. En Loomio podemos tener una discusión
+        y tomar una decisión. Y si tenemos muchas cosas que discutir en una
+        reunión, puedes decir "Podemos decidir esto en Loomio". Ha hecho las
+        reuniones cara a cara más eficientes.
+      link_text: Lee más sobre como un grupo comunitario en UK sigue trabajando entre reuniones para crear una sociedad más democrática...
+    pathways:
+      heading: Incrementa la participación y satisfacción de tu equipo
+      quote: >
+        Loomio cambia fundamentalmente los niveles de satisfacción
+        y participación del equipo. Parecería ser mágico. Naturalmente soporta la
+        evolución de la organización, y es generado por las mismas personas. ¿Qué
+        más puedes pedir siendo el director general?
+      link_text: 'Lee más sobre como una gran ONG en Nueva Zelanda usa Loomio para incluir al equipo en las decisiones... '
+    welsh_government:
+      heading: Evoluciona la consulta a los ciudadanos y a las partes interesadas
+      quote: >
+        Los participantes hablaban entre si y también con nosotros. Usaron Loomio
+        para decirnos que problemas habían tenido, y que querían que el Gobierno
+        de Gales haga al respecto... Usar Loomio para aumentar nuestra sesión del
+        comité nos permitió mejorar la satisfacción y efectividad del proceso de
+        participación en su totalidad.
+      link_text: Lee más sobre como la Asamblea Nacional par Gales uso Loomio para consultar con proveedores y usuarios de servicios...
+    ouishare:
+      heading: 'Escalar globalmente una comunidad colaborativa '
+      quote: >
+        Necesitas crear confianza. La gente quiere entender lo que está pasando.
+        Hay una necesidad de documentación: poder mostrar que una decisión fue
+        tomada, que todos estaban de acuerdo. Y es genial para la gente nueva que
+        se suma, el poder ver lo que ya ha sido discutido. Es critico el poder
+        convertirse en una organización de aprendizaje.
+      link_text: 'Lee más sobre como OuiShare, un gran movimiento social que se expande por diferentes países, usa Loomio para operar transparente y colectivamente...'
+    urban_adventures:
+      heading: Colaboración remota para equipos distribuidos
+      quote: >
+        Cuando te vas al final de día la conversación continúa a través de
+        diferentes zonas horarias, que significa que te acercas a una decisión
+        incluso cuando duermes. Esto lo acelera todo e incrementa la precisión de
+        tomar la decisión correcta la primera vez. En el mundo de las empresas
+        start-up, esa combinación en oro.
+      link_text: 'Lee más sobre como un negocio con empleados desde Australia a Vietnam a Canada, usa Loomio para colaborar como un equipo...'
+    features:
+      heading: 'Cada función de Loomio ayuda a tu grupo a discutir, decidir y moverse a la acción. Es diferente a las encuestas, sondeo o redes sociales.'
+      choose_participants_heading: Elije quien tiene que decidir que cosa.
+      choose_participants_explanation: 'El proceso de ingresar y usar Loomio te ayuda a clarificar como sucede la toma de decisiones en tu organización. Los grupos pueden ser públicos o privados, con subgrupos con controles de privacidad refinados. '
+      deliberation_heading: "Hazlo mejor que 'la mayoría manda'."
+      deliberation_explanation: Loomio usa un simple marco de trabajo para la toma de decisiones diseñado para la deliberación constructiva. No te conformes con el conflicto - trabaja juntos para encontrar una mejor solución.
+      iterate_heading: Itere propuestas para avanzar las ideas.
+      iterate_explanation: 'Tomar decisiones juntos puede ser poderoso, aún cuando una propuesta inicial no gana consenso. Trabaja a través de los desacuerdos para evolucionar y sintetizar nuevas soluciones.'
+      deadlines_heading: Las fechas limites crean el impulso.
+      deadlines_explanation: 'Las propuestas de Loomio están atadas a fechas para asegurar que tu grupo pueda moverse adelante sin demorarse. Todos conocen el plazo para contribuir, con recordatorios automáticos antes de la fecha de cierre.  '
+      fewer_meetings_heading: 'Se productivo sin reuniones. '
+      fewer_meetings_explanation: Continua las conversaciones sin necesidad de estar en el mismo cuarto. Haz más cosas online para poder ahorrar tiempo en las reuniones para lo que necesita suceder cara a cara.
+      notifications_heading: Las notificaciones te mantienen informado.
+      notifications_explanation: 'Notificaciones personalizables, significa que todos reciben la información que necesitan (pero no la que no quieren)'
+      archive_heading: Un archivo automático de decisiones.
+      archive_explanation: 'Con Loomio, las notas de las reuniones se escriben solas. Tendrás un archivo donde puedes buscar cada decisión, que marca quien estuvo involucrado, los puntos claves y el resultado final.'
+      email_or_mobile_heading: 'Participa por email o con el móvil. '
+      email_or_mobile_explanation: 'Loomio funciona donde tu trabajas. Si prefieres manejarte con tu email, puedes participar de esa forma. Y puedes acceder a la plataforma de todos tus dispositivos.'
+      accessible_heading: Accesible y Multi-Lengua.
+      accessible_explanation: 'Loomio esta disponible en más de 30 lenguajes, y tiene traducción en-linea automática. Está diseñado con accesibilidad en mente, y funciona muy bien con tecnología asistencial como los lectores de pantalla.   '
+    press:
+      fast_company: La belleza de Loomio esta en su simplicidad. Hace exactamente lo que tiene que hacer y no más.
+      boingboing: 'Loomio parece tener un buena mixtura de inteligencia política, conocimiento técnico y sentido del diseño.'
+      bbc: 'Loomio esta preparado para sel el Facebook de la red ciudadana. '
+    about_us:
+      heading: Acerca de Loomio
+      first_paragraph: 'Loomio es un software de código abierto, construido por una empresa social y cooperativa que es propiedad de sus trabajadores. Estamos basados en Aotearoa Nueva Zelanda y somos parte de la Red de '
+      second_paragraph: 'Creemos que más grupos practicando la toma de decisiones de forma efectiva e inclusiva, puede cambiar la dinámica de organizaciones a escala global. Loomio existe para facilitar que cualquier persona en cualquier lugar pueda participar en la toma de decisiones que afecta sus vidas.  '
+      link_text: 'Entérate más sobre nuestro equipo, nuestra historia y nuestro propósito y valores... '
+      image_alt: Equipo de Loomio - Abril 2016
+  about:
+    heading: Acerca de Loomio
+    introduction:
+      first_paragraph: 'Loomio es un software de código abierto, construido por una empresa social y cooperativa que es propiedad de sus trabajadores. Estamos basados en Aotearoa Nueva Zelanda y somos parte de la Red de  '
+      second_paragraph: 'Creemos que más grupos practicando la toma de decisiones de forma efectiva e inclusiva, puede cambiar la dinámica de organizaciones a escala global. Loomio existe para facilitar que cualquier persona en cualquier lugar pueda participar en la toma de decisiones que afecta sus vidas.   '
+    story:
+      heading: 'Historia '
+      first_paragraph: >
+        Loomio comenzó en el 2011 cuando activistas del movimiento Occupy
+        y emprendedores sociales de la red Enspiral, se dieron cuenta que
+        necesitaban resolver el mismo problema: la rápida, inclusiva y efectiva
+        toma de decisiones sin reuniones.
+
+        En el 2012, formamos nuestra cooperativa y lanzamos un prototipo (Loomio
+        Beta). Encontramos que muchos alrededor del mundo necesitaban la misma
+        solución.
+      second_paragraph: >
+        En el 2013 hicimos una campaña de financiamiento colectivo que nos
+        permitió trabajar en una nueva versión del software, Loomio 1.0, que fue
+        lanzado al año siguiente.
+
+        En el 2015 logramos obtener una una ronda de capital ético y estamos
+        trabajando para proveer la toma de decisiones colaborativas a millones de
+        personas alrededor del mundo.
+    people:
+      heading: Personas
+      introduction: 'Somos un equipo apasionado con una gran experiencia en facilitación grupal, cambio social, iniciativa empresarial y desarrollo de tecnologías abiertas. '
+      alanna: 'Cofundadora, facilitadora, geek del liderazgo sin jefe, directora del Enspiral Foundation, amante de los gatos '
+      babs: 'Secretaria de la empresa, operaciones, activista, amante de la naturaleza'
+      ben: 'Cofundador y director, organizador comunitario, investigador de inteligencia colectiva'
+      hannah: 'Desarrollador de software, soporte al usuario, ilustrador y publicista DIY, activista creativo'
+      james: 'Desarrollador de software, coordinador de comunidades de código abierto, bravucón atrevido'
+      mary: 'Wrangler de organizaciones, colaboradora, entrenadora de equipos, anfitriona de cenas compartidas, observadora de estrellas'
+      matthew: 'Cuidador de usuarios, números y diseño'
+      michael: 'Director, desarrollador de negocios, coordinador, mentor de start-up, motociclista '
+      mj: 'Directora, estratega basada en US, conectora de puntos, entrenadora, orgullosa madre '
+      natalia: 'Coordinadora de traducciones, soporte al usuario, activista'
+      richard: 'Cofundador y desarrollador de software, activista, hacker de hardware libre'
+      robert: 'Desarrollador senior, DevOps, arquitectura. Piensa ideas y las escribe en software '
+      vivien: 'Cofundadora, miembro de la junta directiva de Loomio, directora ejecutiva de UNICEF Nueva Zelanda'
+    advisors:
+      heading: 'Consejeros  '
+      introduction: Nos respalda un Consejo de Asesores con algunas de las mentes más brillantes en democracia y tecnología a nivel internacional.
+      sascha: Fundador de X-lab y Instituto de Tecnologías Abiertas
+      katherine: 'Previamente Vicepresidente Senior, AOL, Vice Chair of Root Capital '
+      joi: 'Director del MIT Media Lab, Cofundador Creative Commons, Junta de la Fundación Mozilla'
+      douglas: 'Autor de bestsellers, comentarista de la CNN, teórico de medios'
+      matthew_and_brian: 'Cofundadores de Inflection, Fundación Namaste '
+    purpose_and_values:
+      heading: 'Propósito y Valores '
+      mission_statement: La cooperativa de Loomio existe para crear un mundo en el que es fácil para todos participar en las decisiones que les afectan.
+      introduction: >
+        Con el proceso colaborativo indicado los grupos generan mejores ideas,
+        decisiones y acciones de las que cualquier individuo puede generar solo.
+
+        La Cooperativa de Loomio intenta romper las barreras para participar en
+        la toma de decisiones en todo nivel: en los barrios, organizaciones
+        comunitarias, negocios, movimientos sociales, gobiernos locales
+        y nacionales.
+      coop_heading: Cooperativa y empresa social
+      coop_body: >
+        Loomio es una empresa social que le pertenece, de forma colectiva, a la
+        gente que trabaja en ella. A diferencia de una empresa tradicional
+        enfocada en maximizar el capital, los ingresos no son el fin en si mismo,
+        sino los medios para alcanzar el propósito social central.
+
+        La estructura de una cooperativa de trabajadores es una forma poderosa de
+        vivir nuestros valores de colaboración y propiedad colectiva.
+      independent_heading: Independiente y neutral
+      independent_body: 'Loomio se compromete a permanecer independiente para poder proveer un lugar neutral para que cualquier grupo pueda juntarse. '
+      open_source_heading: Colaboración de código abierto
+      open_source_body: Loomio pretende desarrollar herramientas de código abierto que hagan la colaboración accesible a cualquier persona.
+      adaptive_heading: 'Adaptativa, reflexiva, orientada para los usuarios'
+      adaptive_body: 'Loomio pretende desarrollar herramientas que sean iterativas, reflexivas y adaptativas, orientadas por la sabiduría colectiva de la comunidad de usuarios.'
+      transparent_heading: 'Transparencia '
+      transparent_body: >
+        La Cooperativa de Loomio estara rodeada de una valorada comunidad de
+        usuarios y colaboradores. Esta comunidad debe confiar que la Cooperativa
+        de Loomio hará lo que dice que hará.
+
+        Estamos comprometidos a altos estándares para compartir información.
+    postal_address: 'Dirección postal '
+    physical_address: 'Dirección física '
+  titles:
+    new_tab: Abre en nueva ventana
+    start_group: Formulario para crear grupo
+    about_us: Página acerca de
+    pricing: Página de precio
+    contact: Formulario de contacto.
+    sign_in: Formulario de entrada
+    terms_of_service: 'Página de términos del servicio '
+    privacy: Página de privacidad
+    translation: 'guía de traducción '
+    home: Página principal

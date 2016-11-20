@@ -6,6 +6,15 @@ EventBus.configure do |config|
   config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
   config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
 
+  # Add creator to group on group creation
+  config.listen('group_create') do |group, actor|
+    if actor.is_logged_in?
+      group.add_admin! actor
+    elsif actor.email.present?
+      InvitationService.invite_creator_to_group(group: group, creator: actor)
+    end
+  end
+
   # Index search vectors after model creation
   config.listen('discussion_create', 'discussion_update') { |discussion| SearchVector.index! discussion.id }
   config.listen('motion_create', 'motion_update')         { |motion|     SearchVector.index! motion.discussion_id }
@@ -13,11 +22,8 @@ EventBus.configure do |config|
 
   # send bulk emails after events
   Event::BULK_MAIL_KINDS.each do |kind|
-    config.listen("#{kind}_event") do |event|
-      BaseMailer.send_bulk_mail(to: Queries::UsersToEmailQuery.send(kind, event.eventable)) do |user|
-        ThreadMailer.delay(priority: 2).send(kind, user, event)
-      end
-    end
+    delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
+    config.listen("#{kind}_event") { |event| SendBulkEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
   # send individual emails after thread events
@@ -30,7 +36,21 @@ EventBus.configure do |config|
 
 
   # send individual emails after user events
-  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.group) }
+  config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.eventable.group) }
+  config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
+
+  # notify user of acceptance to group
+  config.listen('user_added_to_group_event') do |event, user, message|
+    UserMailer.delay(priority: 1).added_to_group(
+      user:    event.eventable.user,
+      group:   event.eventable.group,
+      inviter: event.user,
+      message: message
+    )
+  end
+
+  # add creator to group if one doesn't exist
+  config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 
   # send memos to client side after comment change
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
@@ -45,7 +65,7 @@ EventBus.configure do |config|
                 'motion_closed_by_user_event',
                 'motion_outcome_created_event',
                 'motion_outcome_updated_event') do |event|
-    DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at)
+    DiscussionReader.for_model(event.eventable).update_reader(read_at: event.created_at, participate: true, volume: :loud)
   end
 
   config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
@@ -63,26 +83,32 @@ EventBus.configure do |config|
                 'discussion_description_edited_event',
                 'motion_description_edited_event',
                 'comment_liked_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable.group)
+    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable.group)
   end
 
   config.listen('discussion_moved_event') do |event|
-    MessageChannelService.publish(EventSerializer.new(event), to: event.eventable)
+    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable)
   end
 
   # update discussion reader after discussion creation / edition
   config.listen('discussion_create',
                 'discussion_update',
                 'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).set_volume_as_required!
+    DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
   end
 
-  config.listen('discussion_reader_viewed!') do |discussion, actor|
+  config.listen('discussion_reader_viewed!',
+                'discussion_reader_dismissed!') do |discussion, actor|
 
     reader_cache = DiscussionReaderCache.new(user: actor, discussions: Array(discussion))
     collection = ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkedAsRead::DiscussionSerializer, root: 'discussions', scope: { reader_cache: reader_cache } )
 
     MessageChannelService.publish(collection, to: actor)
+  end
+
+  # alert clients that notifications have been read
+  config.listen('notification_viewed') do |actor|
+    MessageChannelService.publish(NotificationCollection.new(actor).serialize!, to: actor)
   end
 
   # update discussion or comment versions_count when title or description edited
@@ -92,11 +118,15 @@ EventBus.configure do |config|
 
   # publish reply and mention events after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
-  config.listen('comment_create') { |comment| comment.notified_group_members.each { |user| Events::UserMentioned.publish!(comment, user) } }
 
-  # publish new mention events after comment edition
-  config.listen('comment_update') do |comment, new_mentions|
-    User.where(username: new_mentions).each { |user| Events::UserMentioned.publish!(comment, user) } if new_mentions.present?
+  # publish mention events after model create / update
+  config.listen('comment_create',
+                'comment_update',
+                'motion_create',
+                'motion_update',
+                'discussion_create',
+                'discussion_update') do |model, actor|
+    Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
   # notify users of events
@@ -105,21 +135,15 @@ EventBus.configure do |config|
                 'user_mentioned_event',
                 'motion_closed_event',
                 'invitation_accepted_event',
-                'new_coordinator_event') { |event, user| event.notify!(user) }
+                'new_coordinator_event',
+                'user_added_to_group_event') { |event, user| event.notify!(user) }
 
-  # notify users of motion closing soon
-  config.listen('motion_closing_soon_event') do |event|
-    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).find_each { |user| event.notify!(user) }
-  end
-
-  # notify users of motion outcome created
-  config.listen('motion_outcome_created_event') do |event|
-    Queries::UsersByVolumeQuery.normal_or_loud(event.discussion).without(event.motion.outcome_author).find_each { |user| event.notify!(user) }
-  end
-
-  # perform group creation
-  config.listen('group_create') do |group, actor|
-    group.add_default_content! if group.is_parent?
+  # bulk notify users of events
+  config.listen('motion_outcome_created_event',
+                'motion_closing_soon_event',
+                'membership_requested_event',
+                'comment_liked_event') do |event|
+    event.notifications.import event.users_to_notify.map { |user| event.notify!(user, persist: false) }
   end
 
   # collect user deactivation response

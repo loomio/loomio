@@ -17,28 +17,38 @@ class DiscussionReader < ActiveRecord::Base
   end
 
   def self.for_model(model, actor = nil)
-    self.for(user: actor || model.author, discussion: model.is_a?(Discussion) ? model : model.discussion)
+    self.for(user: actor || model.author, discussion: model.discussion)
   end
 
-  def author_thread_item!(time)
-    set_volume_as_required!
-    participate!
-    viewed! time
+  def update_reader(read_at: nil, volume: nil, participate: false, dismiss: false)
+    viewed!(read_at, persist: false)    if read_at
+    set_volume!(volume, persist: false) if volume && (volume != :loud || user.email_on_participation?)
+    participate!(persist: false)        if participate
+    dismiss!(persist: false)            if dismiss
+    save(validate: false)               if changed?
   end
 
-  def set_volume_as_required!
-    if user.email_on_participation?
-      set_volume! :loud unless volume_is_loud?
-    end
+  def viewed!(read_at, persist: true)
+    return if self.last_read_at && self.last_read_at > read_at
+    assign_attributes(read_attributes(read_at))
+    EventBus.broadcast('discussion_reader_viewed!', discussion, user)
+    save if persist
   end
 
-  def participate!
-    update_attribute :participating, true
+  def dismiss!(persist: true)
+    self.dismissed_at = Time.zone.now
+    EventBus.broadcast('discussion_reader_dismissed!', discussion, user)
+    save if persist
+  end
+
+  def participate!(persist: true)
+    self.participating = true
+    save if persist
   end
 
   def volume
     if persisted?
-      super || membership && membership.volume || 'normal'
+      super || membership&.volume || 'normal'
     else
       membership.volume
     end
@@ -49,47 +59,19 @@ class DiscussionReader < ActiveRecord::Base
     self.class.volumes.invert[self[:volume]]
   end
 
-  def unread_items_count
-    discussion.items_count - read_items_count
-  end
+  private
 
-  def unread_activity_count
-    if last_read_at.blank?
-      discussion.salient_items_count + 1
-    else
-      discussion.salient_items_count - read_salient_items_count
+  def read_attributes(read_at)
+    @read_attributes ||= begin
+      read_items         = discussion.items.where('events.created_at <= ?', read_at)
+      read_salient_items = discussion.salient_items.where('events.created_at <= ?', read_at)
+      {
+        last_read_at:             read_at,
+        last_read_sequence_id:    read_items.maximum(:sequence_id).to_i,
+        read_items_count:         read_items.count,
+        read_salient_items_count: read_salient_items.count
+      }
     end
-  end
-
-  def viewed!(age_of_last_read_item = nil)
-    return if user.nil?
-    read_at = age_of_last_read_item || discussion.last_activity_at
-
-    if self.last_read_at.nil? or (read_at >= self.last_read_at)
-      self.last_read_at = read_at
-      reset_counts!
-    end
-
-    EventBus.broadcast('discussion_reader_viewed!', discussion, user)
-  end
-
-  def reset_counts!
-    self.read_items_count = read_items.count
-    self.read_salient_items_count = read_salient_items.count
-    self.last_read_sequence_id = if read_items_count == 0
-                                   0
-                                 else
-                                   read_items.last.sequence_id
-                                 end
-    save!(validate: false)
-  end
-
-  def read_items(time = nil)
-    discussion.items.where('events.created_at <= ?', time || last_read_at).chronologically
-  end
-
-  def read_salient_items(time = nil)
-    discussion.salient_items.where('events.created_at <= ?', time || last_read_at).chronologically
   end
 
   def membership

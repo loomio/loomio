@@ -1,5 +1,25 @@
 pt-BR:
+  validate:
+    motion:
+      must_close_in_future: Proposta deve encerrar no futuro.
+      one_at_a_time: Há outra proposta ativa.
   email:
+    reset_password:
+      greeting: >
+        Oi %{name}
+
+        Aqui está um link que você pode usar para redefinir a senha da sua conta
+        Loomio:
+      link_text: Redefina sua senha
+      signoff: >
+        Você recebeu este e-mail porque o seu foi requerido no formulário
+        "Esqueci minha senha" em %{hostname}.
+
+        No entanto, sua senha não será alterada até que você siga o link acima
+        e preencha o formulário.
+
+        Se você continuar a ter problemas de login, responda a este e-mail para
+        entrar em contato com uma pessoa do suporte técnico.
     custom: '%{text}'
     group_email:
       intro: '%{who} anunciou para %{group}:'
@@ -12,19 +32,16 @@ pt-BR:
       link: Participar da discussão
     to_join_group:
       subject: '%{member} foi convidada(o) a participar do grupo %{group_name} no Loomio'
+      accept_invitation: Aceitar convite
+    resend_to_join_group:
+      subject: '%{member} ainda está esperando você para entrar em %{group_name} no Loomio'
     to_start_group:
       subject: 'Configure seu novo grupo Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} lhe adicionou ao grupo %{which_group}'
-      content: '%{who} adicionou você ao %{which_group} no Loomio. Clique aqui para visitar o grupo:'
     unsubscribe: 'Cancelar inscrição ou modificar suas preferências de e-mail:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para cancelar sua inscrição ou modificar suas preferências de e-mail."
     view_comment: Clique aqui para ver o comentário no Loomio
     view_discussion: Clique aqui para ver esta discussão
-    view_group: Clique aqui para ver o grupo no Loomio
     view_proposal: Ver esta proposta no Loomio
-    create_discussion:
-      intro: '%{who} iniciou uma discussão em %{which_group}:'
     create_proposal:
       intro: Uma nova proposta foi criada em um dos grupos do Loomio dos quais você faz parte.
       closes_in: Encerra em
@@ -41,28 +58,15 @@ pt-BR:
       heres_what_happened: Eis o que aconteceu ontem no Loomio.
       marked_as_read_success: Tudo no e-mail foi marcado como lido
     comment_replied_to:
-      context: '%{author_name} respondeu ao seu comentário na discussão "%{discussion_title}"'
       subject: '%{who} respondeu ao seu comentário no grupo %{which} do Loomio'
-    group_membership_approved:
-      intro: "Sua solicitação para ter acesso ao grupo '%{group_name}' no Loomio foi aprovada."
-      subject: '%{prefix} Adesão aprovada'
-    invitation:
-      hi: 'Olá %{name},'
-      intro: 'Clique no link abaixo para configurar o seu grupo %{group_name}:'
-      closing_message: 'Se tiver perguntas ou se houver qualquer coisa que possamos fazer para ajudar a deixar tudo funcionando, adoraríamos ouvir de você - é só responder a este e-mail.'
-      thanks: |
-        Muito Obrigado!
-        Equipe Loomio
     membership_request:
       intro: '%{name} (%{email}) solicitou acesso a um de seus grupos no Loomio.'
       subject: '%{who} solicitou entrada em %{which_group}'
       view_group: Você pode aprovar ou recusar o pedido aqui
     mentioned:
-      context: '%{author_name} mencionou você durante a discussão "%{discussion_title}"'
       subject: '%{who} mencionou você durante a discussão "%{which}"'
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
-      context: '%{author} criou uma proposta no grupo %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: A proposta foi encerrada.
       specify_outcome_and_notify_group: 'Crie um resultado e envie para seu grupo!'
@@ -86,12 +90,10 @@ pt-BR:
       turn_on_notifications_text: 'Ligar e-mail para receber atividades nesta discussão: %{url}'
       change_email_preferences_html: "Modifique suas <a href='%{email_preferences_url}'>preferências de e-mail</a> para cancelar subscrições destes e-mails."
       change_preferences: 'Modifique suas preferências de e-mail:'
-      new_motion: '%{who} propôs:'
       motion_closing_soon: 'Proposta encerra em 24 horas:'
       proposal_closed: 'Proposta encerrada:'
       specify_outcome_html: "Sua proposta foi encerrada. <a href='%{link}'>Especifique um resultado</a> para que todos saibam."
       specify_outcome: Sua proposta foi encerrada. Especifique um resultado para que todos saibam.
-      outcome_created: '%{who} definiu um resultado da proposta:'
       you_agreed: 'Você %{past_tense_position}'
   footer:
     about: Sobre
@@ -131,23 +133,20 @@ pt-BR:
     error:
       all_email_addresses_belong_to_members: Não enviamos convites para os endereços de e-mail fornecidos porque pertencem a pessoas que já estão no grupo.
   pricing_page:
-    gift: Presente
+    header: Planos do grupo
     standard: Padrão
-    plus: Plus
     free_trial_html: 'Vamos pedir-lhe para escolher o seu plano de pagamento após um <span>teste de 30 dias</span>. Não precisa cartão de crédito.'
     get_started_for_free: Comece de graça
     unlimited_members: membros ilimitados
     unlimited_decisions: decisões ilimitadas
     email_support: suporte por e-mail
-    standard_price_html: |+
-      US <strong>$19</strong>/mês<br><span>ou</span> $190/ano
-
-
-    plus_body: 'Tudo do Padrão, mais:'
+    slack_integration_html: |
+      integração <strong>Slack</strong>
     premium_support: suporte premium
+    custom_subdomain_html: |
+      subdomínio personalizado,<br />
+      e.g. <strong>seugrupo</strong>.loomio.org
     usage_statistics: estatísticas de uso
-    plus_price_html: |
-      US <strong>$179</strong>/mês<br><span>ou</span> $1790/ano
   password_reset:
     email_guidelines_html: >
       <p>Insira o endereço de e-mail da sua conta Loomio no campo abaixo
@@ -158,95 +157,6 @@ pt-BR:
     reset_email_timeframe: 'Poderá demorar até 5 minutos para o e-mail chegar. Se não aparecer, certifique-se de verificar sua pasta de spam.'
     length_restriction: Senhas devem ter pelo menos 8 caracteres.
     forbidden_passwords: 'Senhas comuns como, por exemplo, “senha” são proibidas para manter a sua conta segura.'
-  introduction_thread:
-    title: 'Bem-vindo ao %{group_name}'
-    description: >
-      Por favor, tire um tempo para se apresentar: **poste um comentário** no
-      formulário abaixo.
-
-
-
-      Se você tem intenções claras para este grupo Loomio, você pode
-      compartilhá-las aqui para que todos tenham uma idéia do que querem alcançar
-      juntos.
-  how_it_works_thread:
-    title: Como Utilizar o Loomio
-    description: >
-      Bem-vindo ao Loomio, um local online para tomar decisões em conjunto.
-
-
-
-      Este é um exemplo de **tópico** de discussão. Por que não usar este espaço
-      para experimentar os recursos do Loomio?
-
-
-
-      No momento, você está lendo o segmento **contexto**. Utilize este espaço
-      para fornecer as informações que o grupo precisa para uma discussão
-      produtiva.
-
-
-
-      O painel de **proposta** é onde você tomar decisões. Você pode iniciar
-      propostas e participar de outras lá.
-
-
-
-      O painel de **atividade** abaixo mostra tudo o que aconteceu neste tópico.
-  first_comment:
-    body: >
-      Oi pessoal, eu sou o Loomio Helper Bot.
-
-
-
-      Se você quiser chamar a atenção de uma pessoa específica no seu grupo,
-      digite @ no campo de comentário, seguido do nome dela :)
-
-
-
-      Aqui estão algumas coisas que você pode querer tentar fazer para colocar as
-      coisas em andamento:
-
-
-
-      - Configure sua [profile picture](/profile)
-
-      - Configure seu [email settings](/email_preferences)
-
-      - Apresente-se ao grupo em [Welcome to %{group_name}
-      thread](%{thread_url})
-
-
-
-      Se você tem alguma dúvida, o primeiro lugar para verificar é o [Loomio help
-      manual](http://help.loomio.org).
-  first_proposal:
-    name: 'Proposta demonstração: vamos lá!'
-    description: >
-      Esta é a **descrição** da proposta. Aqui você pode explicar o curso de ação
-      proposto e dar detalhes suficientes para que todos possam tomar uma decisão
-      bem informada.
-
-
-
-      Para participar da proposta, escolha uma destas opções:
-
-
-
-      -**Concordar**: "Eu concordo com isso e quero que siga em frente."
-
-      -**Abster**: "Eu estou contente pelo grupo escolher por mim."
-
-      -**Discordar**: "Eu acho que provavelmente podemos fazer melhor."
-
-      -**Bloquear**: "Eu tenho fortes objeções a esta proposta e não estou bem
-      com isso seguindo em frente".
-
-
-
-      Quando você tiver escolhido, você será solicitado a dar uma breve
-      declaração para explicar porque você sente dessa forma. Você pode mudar sua
-      posição a qualquer momento enquanto a proposta ainda estiver aberta.
   contact_page:
     contact_us: Contato
     faq_prompt_html: 'Tem uma pergunta para a equipe Loomio? Antes de entrar em contato conosco, talvez você encontre a resposta na nossa seção de perguntas frequentes.'
@@ -309,13 +219,16 @@ pt-BR:
     links:
       title: |
         ## Links e Imagens
-      body: |
-        Repita em voz alta:
+  beta_banner:
+    new_loomio_html: >
+      <strong>O novo Loomio é mais rápido, mais bonito, e melhor!</strong>
+      Estamos mudando para todos.
+    upgrade_browser_html: >
+      Nós só suportamos versões modernas do Internet Explorer (10+). Você
+      precisará <a href='http://outdatedbrowser.com/en' target='_blank'>atualizar
+      o seu navegador</a> para continuar usando o Loomio.
 
-        Colchetes para nome e parênteses para URL.
-
-        [Loomio Homepage](https://www.loomio.org/)
-
-        O mesmo com imagens, mas precedidas com um ponto de exclamação.
-
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)
+      <strong>O Novo Loomio está aqui!</strong> É mais rápido, mais bonito
+      e pronto para dispositíveis móveis.
+    more_info: Mais informações...
+    button_text: Mudar para o novo Loomio

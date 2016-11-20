@@ -67,7 +67,7 @@ Make sure you have either joined/ created a language (and have a Transifex accou
 
 2. select the resource you want to translate
 ![image](https://cloud.githubusercontent.com/assets/2665886/4144159/08dd77f4-33da-11e4-8c49-7c7214865f7e.png)
- _(start with Main resource, then move on to frontpage)_
+ _(start with Main app resource, then move on to frontpage)_
 
 3. click 'Translate'
 
@@ -77,17 +77,26 @@ Make sure you have either joined/ created a language (and have a Transifex accou
 (d) save
 [![image](https://cloud.githubusercontent.com/assets/2665886/4144302/df681dd6-33dc-11e4-9ff6-a6589c630631.png)](https://cloud.githubusercontent.com/assets/2665886/4144302/df681dd6-33dc-11e4-9ff6-a6589c630631.png)
 
+**What to ignore**
+
+Ignore anything in angle brackets or curly braces. E.g.:
+```
+<h2>Welcome</h2>
+<p>
+%{who} invited you to Loomio! 
+<a href='%{link}'>Click here to visit %{group_name}!</a>
+</p>
+```
+
+The `<h2>`, `<p>`, and `<a>` is html code (for heading, paragraph and link), so *they don't need to be translated*.
+
+The text inside the `%{curly braces}` will get replaced by the software, so it's important to keep it unmodified.
 
 ### + more advanced translation
 
 **- language style guide**
 www.loomio.org/d/xDUZJPrp/language-style-guide-for-translators
 
-**- code-like translations** 
-e.g. `show %{group}`  
-or `see the <a href=%{link}>discussion on Loomio</a>`
-
-www.loomio.org/d/sf8ZJcdC/technical-guidelines-for-translators  
 
 ### + working within a community of translators
 

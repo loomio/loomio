@@ -1,6 +1,4 @@
 //= depend_on "link-icon.png"
-@import "marketing/color";
-@import "marketing/buttons";
 
 // CSS reset - does this exist elsewhere?
 ul, ol, li {
@@ -429,6 +427,11 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
         font-size: 15px;
         text-align: center;
         opacity: .9;
+      }
+      .sign_up {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 24px;
       }
     }
   }

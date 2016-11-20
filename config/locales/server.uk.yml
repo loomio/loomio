@@ -13,17 +13,11 @@ uk:
       subject: '%{member} запросив вас приєднатися до групи  %{group_name} в Loomio'
     to_start_group:
       subject: 'Створіть вашу нову Loomio групу: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} додав вас до групи %{which_group}'
-      content: '%{who} додав вас до групи %{which_group} у Loomio. Натисніть тут, щоб потрапити до групи:'
     unsubscribe: 'Відпісатися, або змінити Ваші налаштування електронної пошти:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> аби відписатися або змінити налаштування електронної пошти"
     view_comment: Натисніть тут щоб переглянути коментар на Loomio
     view_discussion: Натисніть тут для перегляду дискусії
-    view_group: Натисніть тут щоб переглянути групу на Loomio
     view_proposal: Переглянути цю пропозицію на Loomio
-    create_discussion:
-      intro: '%{who} почав(ла) дискусію у %{which_group}:'
     create_proposal:
       intro: 'В групі на Loomio, де ви є учасником, створено нову пропозицію.'
       closes_in: Буде закрито через
@@ -36,19 +30,10 @@ uk:
       subject: Вчора на Loomio
       mark_as_read: Відмітити як прочитане
       thanks_for_reading: 'Дякуємо за читання, гарного дня!'
-    group_membership_approved:
-      intro: "Ваш запит на участь у групі '%{group_name}' на Loomio було підтверджено."
-    invitation:
-      hi: 'Привіт %{name},'
-      intro: 'Натисніть на посилання внизу для того чтоб створити вашу групу %{group_name}:'
-      closing_message: 'Якщо у вас є будь-які запитання, або вам потрібна будь-яка допомога для того, щоб розпочати роботу, - ми були б раді почути вас. Для цього - просто надішліть відповідь на цей email.'
-      thanks: "Дякуємо!\nКоманда Loomio \n"
     membership_request:
       intro: '%{name} (%{email}) запросив доступ до однієї з Ваших груп на Loomio.'
       subject: '%{who} зробив запит на приєднання до %{which_group}'
       view_group: Тут ви можете підтвердити або відхилити запит
-    new_motion_created:
-      context: '%{author} створив пропозицію у %{group_full_name}:'
     proposal_closed:
       specify_outcome_and_notify_group: Визначте результат та надішліть його своїй группі.
       specify_outcome_and_notify_group_html: Визначте результат та надішліть його своїй группі.
@@ -61,7 +46,6 @@ uk:
       summary: Підсумок
     thread_mailer:
       change_preferences: 'Змінити Ваші налаштування електронної пошти:'
-      new_motion: '%{who} запропонував(ла)'
       motion_closing_soon: Пропозиція закривається через 24 години
       proposal_closed: 'Пропозиція закрита:'
   footer:
@@ -83,25 +67,14 @@ uk:
       header: 'Ви майже закінчили! Перевірте Вашу електронну пошту.'
     start_making_decisions: 'Щоб почати приймати рішення разом на Loomio, створіть групу безкоштовно:'
   pricing_page:
-    gift: Подарунок.
     standard: Стандарт
-    plus: Плюс
     free_trial_html: 'Ми попросимо вас вибрати тарифний план після <span>30-денного безкоштовного пробного використання</span>. Кредитна карта не потрібна.'
     get_started_for_free: Почніть безкоштовно
     unlimited_members: необмежена кількість членів
     unlimited_decisions: необмежена кількість рішень
     email_support: підтримка по електронній пошті
-    standard_price_html: |+
-      US <strong>$19</strong>/місяць<br><span>або</span> $190/рік
-
-
-    plus_body: 'Все що входить у Стандарт, плюс:'
     premium_support: преміум підтримка
     usage_statistics: статистика використання
-    plus_price_html: |+
-      US <strong>$179</strong>/місяць<br><span>або</span> $1790/рік
-
-
   contact_page:
     contact_us: Контакти
     labels:

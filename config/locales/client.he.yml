@@ -30,14 +30,13 @@ he:
   comment_form:
     delete_comment: מחקו תגובה
     confirm_delete_message: למחוק את התגובה? בטוחים?
-  navbar:
+  sidebar:
     unread: לא-נקרא
-    groups: קבוצות
-    user_options:
-      contact_us: צרו קשר
-      new_group: קבוצה חדשה
-      profile: פרופיל
-      help: עזרה
+    edit_profile: עריכת פרופיל
+    email_settings: הגדרות דוא״ל
+    help: עזרה
+    sign_out: התנתקות
+  navbar:
     search:
       placeholder: חיפוש
       discussions: דיונים
@@ -75,7 +74,6 @@ he:
     heading: בקשת הצטרפות לקבוצה
     name_label: שם
     email_label: דואל
-    introduction_label: הצג/י את עצמך
     submit_button: בקשת הצטרפות לקבוצה
   group_page:
     discussions: דיונים
@@ -83,8 +81,6 @@ he:
     options_label: אפשרויות
     options:
       label: אפשרויות
-    leave_group:
-      title: עזיבת הקבוצה
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י
@@ -93,18 +89,7 @@ he:
     name_label: שם
     coordinator_label: מתאם
     remove_member_label: הסרה
-    remove_membership:
-      submit: הסרה
   profile_page:
-    change_picture:
-      use_initials: שימוש באותיות הראשונות
-    change_password:
-      current_password_label: סיסמא נוכחית
-      new_password_label: סיסמא חדשה
-      password_confirmation_label: אישרור סיסמא חדשה
-    deactivate_user:
-      title: השהיית חשבון
-      submit: השהיית חשבון
     profile: פרופיל
     picture_label: תמונה
     name_label: שם

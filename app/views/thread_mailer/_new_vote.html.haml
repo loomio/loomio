@@ -4,7 +4,7 @@
 %table
   %tr
     %td.icon.activity-icon
-      = image_tag "thread_mailer/#{position}-24.png", alt: "#{vote.position} icon"
+      = image_tag "thread_mailer/vote-icon-#{vote.position}.png", alt: "#{vote.position} icon", class: "thread-mailer__vote-icon"
     %td.content
       %b= vote.author.name
       - past_tense_position = I18n.t("position_verbs.past_tense.#{position}")

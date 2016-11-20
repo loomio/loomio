@@ -1,12 +1,18 @@
 module GroupService
-  def self.create(group:, actor:)
+  def self.create(group:, actor: )
     actor.ability.authorize! :create, group
-    group.creator = actor
 
     return false unless group.valid?
-    group.save!
-    
-    group.add_admin! actor
+
+    group.is_referral = actor.groups.size > 0
+
+    if group.is_parent?
+      group.default_group_cover = DefaultGroupCover.sample
+      group.creator             = actor if actor.is_logged_in?
+      ExampleContent.new(group).add_to_group!
+    else
+      group.save!
+    end
 
     EventBus.broadcast('group_create', group, actor)
   end

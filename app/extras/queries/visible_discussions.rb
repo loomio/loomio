@@ -58,24 +58,30 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def participating
+    return self unless @user.is_logged_in?
     join_to_discussion_readers
     @relation = @relation.where('dv.participating = true')
     self
   end
 
   def starred
+    return self unless @user.is_logged_in?
     join_to_discussion_readers
     @relation = @relation.where('dv.starred = true')
     self
   end
 
   def unread
+    return self unless @user.is_logged_in?
     join_to_discussion_readers
-    @relation = @relation.where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
+    @relation = @relation.
+                  where('(dv.dismissed_at IS NULL) OR (dv.dismissed_at < discussions.last_activity_at)').
+                  where('dv.last_read_at IS NULL OR (dv.last_read_at < discussions.last_activity_at)')
     self
   end
 
   def muted
+    return self unless @user.is_logged_in?
     join_to_discussion_readers && join_to_memberships
     @relation = @relation.where('(dv.volume = :mute) OR (dv.volume IS NULL AND m.volume = :mute) ',
                                 {mute: DiscussionReader.volumes[:mute]})
@@ -83,9 +89,15 @@ class Queries::VisibleDiscussions < Delegator
   end
 
   def not_muted
+    return self unless @user.is_logged_in?
     join_to_discussion_readers && join_to_memberships
     @relation = @relation.where('(dv.volume > :mute) OR (dv.volume IS NULL AND m.volume > :mute)',
                                 {mute: DiscussionReader.volumes[:mute]})
+    self
+  end
+
+  def recent
+    @relation = @relation.where('last_activity_at > ?', 6.weeks.ago)
     self
   end
 

@@ -1,0 +1,27 @@
+= raw t(:"email.analytics.title", since: @stats[:since].strftime('%d %B'))
+= '---------------------------------------------------------------------------'
+
+= raw t(:"email.analytics.stats", @stats)
+
+- if @stats[:has_activity]
+  = raw t(:"email.analytics.table_header")
+  = '---------------------------------------------------------------------------'
+
+  - @stats[:active_users].each do |u|
+    = "#{u[:name]}|#{u[:motions_created]}|#{u[:discussions_created]}|#{u[:comments_created]}|#{u[:votes_created]}"
+
+
+  = raw t(:"email.analytics.contact_us", contact_link: contact_url)
+- else
+  = raw t(:"email.analytics.no_activity", contact_link: contact_url)
+
+- if @stats[:is_trial]
+  - if @stats[:expires_at] > Time.zone.now
+    = raw t(:"email.analytics.trial_subscription", which_group: @group.full_name, expires_at: @stats[:expires_at], subscription_link: group_url(@group, payment: true))
+  - else
+    = raw t(:"email.analytics.trial_expired", which_group: @group.full_name)
+
+= t(:"email.analytics.heart")
+
+= '---------------------------------------------------------------------------'
+= raw t(:"email.analytics.unsubscribe", contact_link: contact_url)

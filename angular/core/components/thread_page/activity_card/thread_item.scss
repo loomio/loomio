@@ -16,14 +16,16 @@
 .thread-item__title {
   color: $grey-on-white;
   display: inline-block;
-  & > span {
-    padding-right: 5px;
-  }
-  a { color: $primary-text-color; }
+  & > span { padding-right: 5px; }
+}
+
+.thread-item__title-link {
+  color: $primary-text-color;
 }
 
 .thread-item__body {
   margin: 10px 0 10px 0;
+  ol { padding-left: 23px; }
 }
 
 .thread-item__footer {

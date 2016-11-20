@@ -4,11 +4,13 @@ class Events::MotionClosingSoon < Event
            eventable: motion).tap { |e| EventBus.broadcast('motion_closing_soon_event', e) }
   end
 
-  def motion
-    eventable
+  def users_to_notify
+    Queries::UsersByVolumeQuery.normal_or_loud(eventable)
   end
 
-  def discussion
-    motion.discussion
+  private
+
+  def notification_actor
+    nil
   end
 end

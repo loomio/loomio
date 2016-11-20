@@ -1,9 +1,13 @@
-%p= t("email.invitation.hi", name: @invitation.recipient_name.to_s.split(" ").first)
-
-%p= t("email.invitation.intro", group_name: @invitation.invitable_name)
-
-= link_to "#{invitation_url(@invitation)}", invitation_url(@invitation, @utm_hash), data: {skip_click: true}
-
-%p= t("email.invitation.closing_message")
-
-%p= simple_format t('email.invitation.thanks')
+= t(:"email.to_start_group.hi", name: @invitation.recipient_name.to_s.split(" ").first)
+%p
+  = t(:"email.to_start_group.intro_html")
+  %br
+  %strong= @invitation.invitable_name
+.invite-people-mailer__message-container
+  = link_to t(:"email.to_start_group.start_group"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__button"
+%p= t(:"email.to_start_group.closing_message")
+= image_tag '/img/emojis//emojione/2764.png', alt: 'Heart', class: 'invite-people-mailer__heart-icon'
+%br
+= t(:"email.to_start_group.loomio_team")
+.invite-people-mailer__value-proposition
+  = t(:"email.value_proposition")

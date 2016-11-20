@@ -10,6 +10,7 @@ hu:
     notification_volume: Értesítési hangerő
     group: Csoport
     groups: Csoportok
+    help: Segítség
     privacy:
       privacy: Adatvédelem
       public: Nyilvános
@@ -27,22 +28,32 @@ hu:
     more_help: További segítség
     models:
       proposal: Javaslat
+    copy: szöveg másolása
+    copied: Vágólapra másolva
     action:
+      close: Bezár
       save: Mentés
       save_changes: Változások mentése
       update_settings: Beállítások frissítése
       reply: Válasz
       edit: Módosítás
+      remove: Visszavonás
       like: Tetszik
+      back: Vissza
       unlike: Nem tetszik
       update: Frissítés
       cancel: Mégse
       show_more: Bővebben
       view_all: Mutasd mind
+      new_thread: Új téma
       add_subgroup: Alcsoport létrehozása
       loading: Betöltés
+      translate: Fordítás
+      translated: '"Bing-Translator"-ral fordítva'
+      upload: Feltöltés
       uploading: Feltöltés
     formatting_help:
+      label: Formázási segítség
       title: 'Tanuld meg, hogyan kell a Markdown-t használni szöveged formázásához a Loomion'
   error_page:
     forbidden: Ehhez nincs jogosultságod.
@@ -60,68 +71,179 @@ hu:
     set_outcome: A javaslat eredményének megfogalmazása
     update_outcome: A javaslat eredményének frissítése
     outcome_label: Javaslat eredménye
+    outcome_placeholder: Tedd nyilvánossá mindenki számára a javaslat eredményét.
     publish_outcome: Eredmény közlése
     messages:
       created: Javaslat közzétéve
+      updated: Javaslat frissítve
   previous_proposals_card:
     heading: Előző javaslatok
+  previous_proposals_page:
+    heading: Előző javaslatok
+  proposal_collapsed:
+    expand: Kibővítés
   volume_levels:
     loud: Hangos
     normal: Normál
     quiet: Csendes
     mute: Néma
+    unmute: Néma üzemmód kikapcsolása
+  change_volume_form:
+    loud_label: Összes tevékenység
+    normal_label: Fontos tevékenységek
+    quiet_label: Nincs új e-mail
+    mute_label: Néma
+    discussion:
+      title: 'Email beállítások {{title}}-hez'
+      loud_description: 'Azonnali értesítés e-mailben, új tevékenység esetén ezen a témakörön belül.'
+      normal_description: 'Azonnali értesítés e-mailben, amennyiben egy javaslat született, zárás következik vagy ha összegzést tettek közzé.'
+      quiet_description: Ne küldj e-mailt ezen témakör változásairól.
+      apply_to_all: Ezen beállítások alkalmazása a csoporton belüli összes témakörre.
+      messages:
+        loud: 'Azonnali értesítés e-mailben, új tevékenység esetén ezen a témakörön belül.'
+        normal: 'Azonnali értesítés e-mailben, új javaslat esetén ezen a témakörön belül.'
+        quiet: Ne küldj e-mailt ezen témakör változásairól.
+    membership:
+      title: 'Email beállítások {{title}}-hez'
+      loud_description: 'Azonnali értesítés e-mailben, új tevékenység esetén ezen csoporton belül.'
+      normal_description: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörök létrehozásakor ezen csoporton belül.'
+      quiet_description: Ne küldj e-mailt ezen csoport tevékenységeiről.
+      apply_to_all: Ezen beállítások alkalmazása minden csoportomra.
+      messages:
+        loud: Értesítés e-mailben ezen csoporton belüli összes tevékenységről.
+        normal: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörön létrehozásakor ezen csoporton belül.'
+        quiet: Ne küldj e-mailt ezen csoport tevékenységeiről.
+    all_groups:
+      messages:
+        loud: Értesítés e-mailben minden csoport összes tevékenységről aminek tagja vagyok.
+        normal: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörök létrehozásakor minden csoporton belül aminek tagja vagyok.'
+        quiet: Ne küldj e-mailt egyik csoportom tevékenységeiről sem.
+    user:
+      title: E-mail beállítások új csoportokra
+      loud_description: 'Azonnali értesítés e-mailben, új tevékenység esetén valamennyi új csoportomon belül.'
+      normal_description: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörök létrehozásakor valamennyi új csoportomon belül.'
+      quiet_description: Ne küldj e-mailt az új csoportjaim tevékenységeiről.
+      apply_to_all: Ezen beállítások alkalmazása minden csoportomra.
+      messages:
+        loud: Értesítés e-mailben az új csoportjaim belüli összes tevékenységről.
+        normal: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörön létrehozásakor az új csoportjaimon belül.'
+        quiet: Ne küldj e-mailt új csoportokról.
+  mute_explanation_modal:
+    mute_thread: Témakör némítása
   inbox:
     clear: Töröl
+    latest: Legutóbbi
     unread: Olvasatlan
     closing_in: Zárás
-  session_form:
-    email_label: 'email:'
+  sign_in_form:
+    title: Bejelentkezés a Loomio-ba
+    email_label: 'E-mail:'
+    email_placeholder: te@valahol.hu
     password_label: 'Jelszó:'
-    remember_me: 'Emlékezz rám:'
+    remember_me: Emlékezz rám
+    forgot_password: Elfelejtetted a jelszót?
     sign_in: Belépés
+    signed_in: Sikeresen bejelentkeztél
+    oauth:
+      title: 'Vagy lépj be egy külső fiókkal:'
+      facebook: Lépj be a Facebook-kal
+      twitter: Lépj be a Twitter-rel
+      google: Lépj be a Google-lel
+      github: Lépj be a Github-al
+  sign_up_form:
+    title: 'Üdvözlünk a Loomio oldalán! Kezdjük a beállításokkal'
+    name_label: 'Neved:'
+    name_placeholder: Jane Doe
+    email_label: 'E-mail:'
+    email_placeholder: te@valahol.hu
+    password_label: 'Jelszó:'
+    password_confirmation_label: 'Jelszó megismétlése:'
+    sign_in_message: Már van felhasználóneve?
+    sign_in: Bejelentkezés
+    sign_up: Fiók létrehozása
+  signed_out_modal:
+    message: 'Egy másik ablakban kilépett a Loomio portálról. A folytatáshoz, kérjük jelentkezzen be újra.'
+    ok: Rendben
   comment_form:
     aria_label: Hozzászólás
     attachments:
-      aria_label: Fájl csatolása
+      add_attachment: Fájl csatolása
       remove_attachment: Csatolmány eltávolítása
     messages:
+      created: Hozzászólás megjelenítve
+      replied: '{{name}} értesítve a válaszról'
       updated: Hozzászólás frissítve
       destroyed: Hozzászólás törölve
     edit_comment: Hozzászólást módosít
     delete_comment: Hozzászólás törlése
+    cancel_reply: Válasz törlése
     confirm_delete_message: Biztosan törölni akarod ezt a hozzászólást?
     confirm_delete: 'Igen, biztos vagyok benne'
+    in_reply_to: 'Válasz @<strong>{{name}}</strong>:'
+    submit_button:
+      label: Bejegyzés
     private_privacy_notice: 'A hozzászólásod csak a {{groupName}} csoport tagjainak lesz látható.'
-  navbar:
+    public_privacy_notice: A hozzászólás mindenki számára nyilvános lesz.
+    sign_in: 'Lépj be, hogy hozzászolhass a témakörhöz.'
+  sidebar:
+    recent: Legutóbbiak
     unread: Olvasatlan
-    groups: Csoportok
-    user_options:
-      contact_us: Értesíts minket
-      new_group: Új csoport
-      profile: Profil
-      help: Segítség
+    muted: Némított
+    edit_profile: Profil szerkesztése
+    email_settings: Email beállítások
+    help: Segítség
+    contact: Kapcsolatfelvétel
+    sign_out: Kijelentkezés
+  navbar:
+    recent_title: Irány az eszközökhöz
+    unread_title: Olvasatlan tevékenységek megtekintése
+    start_thread: Egy új téma indítása
+    notifications: Értesítések
     search:
+      no_results: Nem található eredmény erre a témakörre
       close: Kereső panel bezárása
       placeholder: Keresés
       loading: Eredmények betöltése...
       discussions: Szálak
       proposals: Javaslatok
       comments: Hozzászólások
+    sign_in: Bejelentkezés
+    toggle_sidebar: Oldal panel ki/be kapcsolása
   start_menu:
     start_group: Csoport indítása
     start_subgroup: Alcsoport indítása
+    start_thread: Témakör indítása
+    invite_people: Hívj meg másokat
   notifications:
     header: Értesítések
-    user_mentioned: '<strong>{{name}}</strong> megemlített téged a <strong>{{title}}</strong> témában'
+    no_notifications: Nincsenek új értesítések.
+    new_discussion: '<strong>{{name}}</strong> elindította ezt a megbeszélést: <strong>{{discussion}}</strong>'
+    new_motion: '<strong>{{name}}</strong> létrehozta a következő javaslatot: <strong>{{proposal}}</strong>'
+    motion_closed: 'Ez a javaslat lezárult: <strong>{{proposal}}</strong>'
+    publish_outcome: Eredmény közlése
+    motion_closed_by_user: '<strong>{{name}}</strong> bezárta a következő  javaslatot: <strong>{{proposal}}</strong>'
+    motion_closed_by_expiry: 'Ez a javaslat lezárult: <strong>{{proposal}}</strong>'
+    new_vote: '<strong>{{name}}</strong> álláspontja: {{position}} a <strong>{{proposal}}</strong> javaslathoz.'
+    new_comment: '<strong>{{name}}</strong> hozzászólt a következőhöz: <strong>{{discussion}}</strong>'
+    comment_replied_to: '<strong>{{name}}</strong> válaszolt a hozzászólásodra, itt: <strong>{{discussion}}</strong>'
+    comment_liked: '<strong>{{name}}</strong> like-olta a hozzászólásodat, itt: <strong>{{discussion}}</strong>'
     membership_requested: '<strong>{{name}}</strong> tagságot kért a <strong>{{group}}</strong> csoportba'
     membership_request_approved: '<strong>{{name}}</strong> érvényesítette csatlakozási kérelmedet a <strong>{{group}}</strong> csoporthoz'
     user_added_to_group: '<strong>{{name}}</strong> hozzáadott téged a <strong>{{group}}</strong> csoporthoz'
     user_added_to_group_no_inviter: 'Hozzáadtak a <strong>{{group}}</strong> csoporthoz'
+    motion_closing_soon: 'Ez a javaslat hamarosan lezárul: <strong>{{proposal}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> közzétett egy eredményt a következő javaslatra: <strong>{{proposal}}</strong>'
+    motion_outcome_updated: '<strong>{{name}}</strong> frissítette a következő javaslat: <strong>{{proposal}}</strong> eredményét'
+    invitation_accepted: '<strong>{{name}}</strong> elfogadta a meghívásodat a <strong>{{group}}</strong> csoportba'
+    new_coordinator: '<strong>{{name}}</strong> beállított a <strong>{{group}}</strong> csoport koordinátorának.'
   position_buttons_panel:
     heading: Szólj bele
   vote_form:
     heading: Szólj bele
+    no_statement: Nincs indoklás.
+    statement_over_limit: 'Túl szövevényes! A vélemény rövid megfogalmazása mindenkinek segít a javaslat gyorsabb kiértékelésében.'
     i_agree: Egyetértek
+    i_agree_details: 'Támogatom, legyen így.'
     i_abstain: Tartózkodom
     i_abstain_details: Nyugodtan döntsön a csoport nélkülem.
     i_disagree: Nem értek egyet
@@ -129,8 +251,22 @@ hu:
     i_block: Blokkolom
     i_block_details: 'Komoly ellenvetéseim vannak a javaslattal szemben és nem szeretném, hogy így döntsünk.'
     submit_position: Álláspont megadása
+    change_position: Álláspontod megváltoztatása
+    select_position: Válassz álláspontot
+    statement_placeholder: Oszd meg gondolataidat a csoporttal.
+    aria_statement_label: Bővebb leírás hozzáadása az álláspontodhoz. Választható.
+    messages:
+      created: Szavazat hozzáadva
   proposal_positions_panel:
     heading: Álláspontok
+    no_votes_yet: Erre a javaslatra még senki nem szavazott.
+    change_your_vote: Változtasd meg az álláspontod.
+  undecided_panel:
+    aria_label: Ők még nem döntöttek.
+    show_undecided: 'Mutasd azokat, akik még nem döntöttek.'
+    hide_undecided: 'Rejtsd el azokat, akik még nem döntöttek.'
+  proposal_pie_chart:
+    participation_statement: '{{percentage}}% a tagok közül állást foglalt ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Javaslat lezárása
   proposal_form:
@@ -141,6 +277,7 @@ hu:
     closes_at_label: Lezáródik
     details_label: Részletek
   discussion_form:
+    new_discussion_title: Új téma indítása
     group_label: Csoport
     title_label: Cím
     context_label: Leírás
@@ -157,47 +294,41 @@ hu:
     heading: Kérj belépőt a csoportba
     name_label: Név
     email_label: E-mail
-    introduction_label: 'Mutatkozz be!'
     submit_button: Kérj belépőt a csoportba
   group_page:
     thread_list:
       empty:
         membership_is_invitation_only: A belépéshez meghívóra van szükséged egy csoporttagtól.
         membership_is_invitation_by_admin_only: A belépéshez egy koordinátor meghívójára van szükséged.
+    group_logo: Csoport logó
     discussions: Szálak
     invite_people: Hívj meg embereket
     options_label: Lehetőségek
     options:
       label: Lehetőségek
-    leave_group:
-      title: kilépés a csoportból
     volume:
       loud: Emailezzen ha aktivitás van.
       quiet: Nem kérek emailt erről a csoportról. Az aktivitások megjelennek a műszerfalon.
       mute: Ez a csoport ne jelenjen meg a műszerfalon és ne értesítsen amíg nem @említenek meg.
   group_form:
     privacy: Adatvédelem
+    members_can_start_discussions: A tagok felvethetnek új támékat.
     submit_update: Beállítások frissítése
+  group_help_card:
+    title: Segítség
   membership_requests_page:
     approve: Érvényesítés
     ignore: Figyelmen kívül hagyás
+  group_previous_proposals_card:
+    heading: Előző javaslatok
+  invitation_form:
+    invite_people: Hívj meg másokat
   memberships_page:
     members: Tagok
     name_label: Név
     coordinator_label: Koordonátor
     remove_member_label: Visszavonás
-    remove_membership:
-      submit: Visszavonás
   profile_page:
-    change_picture:
-      use_initials: Használj kezőbetűket
-    change_password:
-      current_password_label: Aktuális jelszó
-      new_password_label: Új jelszó
-      password_confirmation_label: Az új jelszó megerősításe
-    deactivate_user:
-      title: Fiók deaktiválása
-      submit: Fiók deaktiválása
     profile: Profil
     picture_label: Kép
     name_label: Név
@@ -206,12 +337,18 @@ hu:
     locale_label: Nyelv
   dashboard_page:
     aria_label: Műszerfal
+    no_groups:
+      or: vagy
     mark_as_read: Olvasottként jelöl
     filtering:
       proposals: Javaslatok
+      muted: Némított
     threads_from:
       today: Ma
       yesterday: Tegnap
+  inbox_page:
+    no_groups:
+      or: vagy
   discussion:
     proposals: Javaslatok
     previous_proposals: Előző javaslatok
@@ -369,3 +506,6 @@ hu:
     invitation: Hogyan írj jó meghívót
     proposal: Hogyan írj egyértelmű javaslatot
     vote: Bármikor megváltoztathatod az álláspontodat
+  registered_app_form:
+    messages:
+      logo_changed: Logó frissítve.

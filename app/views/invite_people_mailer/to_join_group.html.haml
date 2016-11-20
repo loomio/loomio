@@ -1,11 +1,12 @@
-%p
-  = t(:"invitation.link_help", group_name: @invitation.invitable_name)
-  %br
-  = link_to "#{invitation_url(@invitation)}", invitation_url(@invitation, @utm_hash)
-%p
-  = simple_format @message_body
-%p
-  = t(:"invitation.value_proposition")
-%p
-  = t(:"invitation.thanks")
-= @invitation.inviter.name
+= render 'avatar', author: @invitation.inviter
+%strong= @invitation.inviter.name
+= t(:"email.to_join_group.invitation_text_html")
+%br
+%strong= @invitation.invitable_name
+.invite-people-mailer__message-container
+  - if @message_body
+    .invite-people-mailer__message_body
+      = simple_format @message_body
+  = link_to t(:"email.to_join_group.accept_invitation"), invitation_url(@invitation, @utm_hash), class: "invite-people-mailer__button"
+.invite-people-mailer__value-proposition
+  = t(:"email.value_proposition")

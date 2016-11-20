@@ -17,11 +17,10 @@ vi:
   comment_form:
     delete_comment: Xóa bình luận
     confirm_delete_message: Bạn có chắc muốn xóa bình luận này?
+  sidebar:
+    help: Trợ giúp
+    sign_out: Đăng xuất
   navbar:
-    groups: Các nhóm
-    user_options:
-      new_group: Tạo nhóm mới
-      help: Trợ giúp
     search:
       placeholder: Tìm kiếm
       discussions: Các phần thảo luận
@@ -57,15 +56,12 @@ vi:
   membership_request_form:
     name_label: Tên
     email_label: Email
-    introduction_label: Tự giới thiệu bản thân bạn
   group_page:
     discussions: Các phần thảo luận
     invite_people: Mời thành viên
     options_label: Tùy chọn
     options:
       label: Tùy chọn
-    leave_group:
-      title: Rời khỏi nhóm
   membership_requests_page:
     approve: Chấp thuậ
     ignore: Bỏ qua
@@ -74,13 +70,7 @@ vi:
     name_label: Tên
     coordinator_label: Điều hành viên
     remove_member_label: Loại bỏ
-    remove_membership:
-      submit: Loại bỏ
   profile_page:
-    change_password:
-      current_password_label: Mật khẩu hiện tại
-      new_password_label: Tạo mật khẩu mới
-      password_confirmation_label: Xác định việc tạo mới mật khẩu
     picture_label: Hình ảnh
     name_label: Tên
     email_label: Email

@@ -1,7 +1,6 @@
 page = require './helpers/page_helper.coffee'
 
 describe 'Dashboard Page', ->
-  threadPreview = page.findFirst('.thread-preview')
 
   beforeEach ->
     page.loadPath('setup_dashboard')
@@ -19,26 +18,39 @@ describe 'Dashboard Page', ->
     page.expectNoText('.dashboard-page__collections', 'Muted group discussion')
     page.expectNoText('.dashboard-page__collections', 'Old discussion')
 
-  it 'displays a view of participating threads', ->
-    page.click('.dashboard-page__filter-dropdown button')
-    page.click('.dashboard-page__filter-participating a')
-    page.expectNoText('.dashboard-page__collections','Starred proposal discussion')
-    page.expectNoText('.dashboard-page__collections','Recent discussion')
-    page.expectText('.dashboard-page__collections', 'Participating discussion')
-
-  it 'displays a mute explanation modal when you first mute', ->
+describe 'dismiss', ->
+  it 'dismisses a thread', ->
+    page.loadPath 'setup_dashboard'
+    threadPreview = page.findFirst('.thread-preview')
     browser.actions().mouseMove(threadPreview).perform()
-    page.clickFirst('.thread-preview__mute')
+    page.clickFirst '.thread-preview__dismiss'
+    page.expectText '.dismiss-explanation-modal__title', 'Dismiss thread'
+    page.click '.dismiss-explanation-modal__dismiss-thread'
+    page.expectFlash 'Thread dismissed.'
+
+describe 'muted threads', ->
+  threadPreview = page.findFirst('.thread-preview')
+
+  it 'explains muting if you have not yet muted a thread', ->
+    page.loadPath 'setup_discussion'
+    page.click '.sidebar__list-item-button--muted'
+    page.expectText '.dashboard-page__explain-mute', "You haven't muted any threads yet"
+
+  it 'displays a mute explanation modal when you first mute a thread', ->
+    page.loadPath 'setup_dashboard'
+    browser.actions().mouseMove(threadPreview).perform()
+    page.clickFirst '.thread-preview__mute'
     browser.driver.sleep(1000)
-    page.expectText('.mute-explanation-modal__title', 'Mute thread')
+    page.expectText '.mute-explanation-modal__title', 'Mute thread'
 
   it 'lets you mute a thread', ->
+    page.loadPath 'setup_dashboard'
     browser.actions().mouseMove(threadPreview).perform()
-    page.clickFirst('.thread-preview__mute')
-    page.click('.mute-explanation-modal__mute-thread')
+    page.clickFirst '.thread-preview__mute'
+    page.click '.mute-explanation-modal__mute-thread'
     browser.actions().mouseMove(threadPreview).perform()
-    page.clickFirst('.thread-preview__mute')
-    page.expectFlash('Thread muted.')
+    page.clickFirst '.thread-preview__mute'
+    page.expectFlash 'Thread muted.'
 
 describe 'Logged out', ->
   it 'forces visitors to log in', ->
@@ -46,4 +58,5 @@ describe 'Logged out', ->
     page.fillIn '#user-email', 'patrick_swayze@example.com'
     page.fillIn '#user-password', 'gh0stmovie'
     page.click '.sign-in-form__submit-button'
+    page.waitForReload()
     page.expectText '.thread-previews-container', 'Recent discussion'

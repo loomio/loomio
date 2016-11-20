@@ -24,13 +24,11 @@ mk:
     edit_comment: Измени го коментарот
     delete_comment: Избриши го коментарот
     confirm_delete_message: Дали си сигурен/а дека сакаш да го избришиш коментарот?
+  sidebar:
+    edit_profile: Измени го профилот
+    help: Помош
+    sign_out: Одјави се
   navbar:
-    groups: Групи
-    user_options:
-      contact_us: Контактирајте не
-      new_group: Нова група
-      profile: Профил
-      help: Помош
     search:
       placeholder: Пребарувај
       discussions: Дискусии
@@ -67,7 +65,6 @@ mk:
     heading: Побарај да се придружиш на групата
     name_label: Име
     email_label: Email
-    introduction_label: Претстави се
     submit_button: Побарај да се придружиш на групата
   group_page:
     thread_list:
@@ -79,8 +76,6 @@ mk:
     options_label: Опции
     options:
       label: Опции
-    leave_group:
-      title: Напушти ја групата
   membership_requests_page:
     approve: Одобри
     ignore: Игнорирај
@@ -89,22 +84,21 @@ mk:
     name_label: Име
     coordinator_label: Координатор
     remove_member_label: Избриши
-    remove_membership:
-      submit: Избриши
   profile_page:
-    change_password:
-      current_password_label: Моментална лозинка
-      new_password_label: Нова лозинка
-      password_confirmation_label: Потврди ја новата лозинка
     profile: Профил
     picture_label: Фотографија
     name_label: Име
     email_label: Email
     locale_label: Јазик
   dashboard_page:
+    no_groups:
+      or: или
     mark_as_read: Означи го како прочитано
     threads_from:
       today: Денес
+  inbox_page:
+    no_groups:
+      or: или
   thread_group:
     aria_label: Име на групата
   delete_comment_dialog:

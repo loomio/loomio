@@ -93,15 +93,9 @@ ar:
     latest: الأحدث
     unread: غير مقروءة
     closing_in: الإغلاق
-  session_form:
-    email_label: 'البريد الالكتروني:'
-    password_label: 'كلمة المرور '
-    remember_me: تذكرني
-    sign_in: 'تسجيل دخول:'
   comment_form:
     aria_label: إضافة تعليق
     attachments:
-      aria_label: إرفاق ملف
       remove_attachment: حذف المرفق
     messages:
       created: تمت إضافة التعليق
@@ -118,25 +112,18 @@ ar:
       label: نشر
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
     public_privacy_notice: تعليقك سيظهر للجميع
-  navbar:
+  sidebar:
     recent: حديث
     unread: غير مقروءة
-    groups: المجموعات
+    muted: صامت
+    email_settings: إرسال الإعدادات برسالة الكترونية
+    help: مساعدة
+    sign_out: الخروج
+  navbar:
     recent_title: اذهب إلى لوحة التحكم
     unread_title: أظهر النشاطات الغير مقروءة
-    groups_title: أظهر المجموعات
     start_thread: إبدأ موضوعاً جديداً
     notifications: لوحة التبليغات
-    user_actions: نشاطات العضو
-    user_options:
-      label: خيارات العضو
-      contact_us: اتصل بنا
-      new_thread: موضوع جديد
-      new_group: مجموعة جديدة
-      profile: ملف شخصي
-      email_settings: إرسال الإعدادات برسالة الكترونية
-      help: مساعدة
-      sign_out: الخروج
     search:
       no_results: لا يوجد مواضيع
       close: أغلق منصة البحث
@@ -146,7 +133,6 @@ ar:
       proposals: المقترحات
       comments: التعليقات
   start_menu:
-    title: زر العمل
     start_group: إبدأ مجموعة
     start_subgroup: إبدأ مجموعة فرعية
     start_thread: إبدأ موضوعاً
@@ -163,7 +149,6 @@ ar:
     new_comment: '<strong>{{name}}</strong> قام بالتعليق على <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> قام بالرد على تعليقك في <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> قام بالإعجاب بتعليقك في <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> قام بذكرك في <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> قام بطلب عضوية ل<strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> قام بالموافقة على طلبك للإنضمام لمجموعة<strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> قام بإضافتك لمجموعة <strong>{{group}}</strong>'
@@ -222,13 +207,10 @@ ar:
     start_a_proposal: إبدأ مقترحاً
     edit_proposal: تعديل المقترح
     what_does_a_proposal_do: تتيح لك المقترحات معرفة كيف يشعر الجميع حول نشاط معين.
-    editing_title_and_description_forbidden: لا يمكنك تغيير العنوان أو وصف المقترح بعد تصويت الأعضاء. إذا كان هناك تغيير يرجى إغلاق الإقتراح و البدء باقتراح آخر.
-    title_placeholder: 'مثال: اذهب إلى القمر'
     title_label: العنوان
     closes_at_label: يغلق في
     closes: يغلق
     details_label: التفاصيل
-    details_placeholder: قم بتزويد تفاصيل كافية حتى يعرف الجميع ماذا يعني بالضبط أن يوافقوا أو يرفضوا.
   discussion_record:
     created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
     updated: 'حفظ التغييرات في {{title}}'
@@ -277,21 +259,7 @@ ar:
       للمجموعة</p>
     submit: أرني الخطط
   group_welcome_modal:
-    heading: أهلا بك في مجموعتك الجديدة
-    first_step: 'أنت <strong>منسق</strong> المجموعة، و هذا يشبه أن تكون مضيفاً. قم برؤية الفيديو، ثم قم باستعراض نماذج المواضيع.'
-    second_step: 'عندما تكون جاهزاً، <strong>قم بدعوة أشخاص</strong>.'
     ok_got_it: 'حسناً، لقد فهمت!'
-  group_cover_modal:
-    heading: صورة غلاف جديدة.
-    upload_link: قم بتحميل صورة غلاف جديدة
-    helptext: 'هل تبحث عن إلهام؟ قم باستعراض معرض الصور المجانية <a href="https://unsplash.com/">Unsplash</a>.'
-    image_size_helptext: الحجم المثالي للصورة 1400x320px
-    upload_success: تم تحديث صورة الغلاف بنجاح
-  group_logo_modal:
-    heading: شعار جديد للمجموعة
-    upload_link: قم بتحميل شعار جديد للمجموعة
-    image_size_helptext: الحجم المثالي للصورة 100x100px
-    upload_success: تم تحديث الشعار بنجاح
   join_group_button:
     join_group: انضم للمجموعة
     ask_to_join_group: قم بطلب الانضمام للمجموعة
@@ -301,7 +269,6 @@ ar:
     heading: قم بطلب الانضمام للمجموعة
     name_label: الإسم
     email_label: البريد الإلكتروني
-    introduction_label: قم بتعريف نفسك
     submit_button: قم بطلب الانضمام للمجموعة
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
@@ -338,7 +305,6 @@ ar:
     members: أعضاء
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
-    all_members: 'جميع الأعضاء ({{count}})'
     subgroups: مجموعة فرعية
     subgroups_placeholder: تتيح لك المجموعات الفرعية تقسيم المجموعة إلى فرق مختلفة.
     invite_people: قم بدعوة أشخاص
@@ -352,16 +318,6 @@ ar:
       manage_subscription: إدارة اشتراكات المجموعة
       leave_group: غادر المجموعة
       deactivate_group: إلغاء المجموعة
-    deactivate_group:
-      title: إلغاء المجموعة
-      question: هل أنت متأكد أنك تريد إلغاء المجموعة؟
-      submit: أجل، قم بإلغاء المجموعة
-    leave_group:
-      title: غادر المجموعة
-      question: هل أنت متأكد أنك تريد مغادرة المجموعة؟
-      submit: أجل، غادر المجموعة
-      cannot_leave_group: لا يمكنك مغادرة هذه المجموعة لأنك المنسق الأخير. عليك أن تقوم باختيار منسق آخر أو أن تقوم بإلغاء المجموعة.
-      add_coordinator: إضافة منسق
     volume:
       loud: قم بإرسال رسالة الكترونية عندما يكون هناك أي نشاط.
       loud_aria_description: صوت التنبيه لتبليغات هذه المجموعة عالٍ. سيتم إبلاغك برسالة الكترونية عندما يكون هناك أي نشاط.
@@ -380,17 +336,9 @@ ar:
       parent_members: 'الخصوصية: هذه المجموعة ظاهرة لأعضاء {{parentGroupName}} و أعضاء {{groupName}}'
       public: 'الخصوصية: هذه المجموعة ظاهرة على الشبكة.'
       aria_label: 'خصوصية المجموعة: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: تم اختيار خطة المنحة
-    body: إن لم يكن هناك ميزانية لمجموعتك للدفع للبرنامج، ليس عليك فع اشتراك. سيتم دعوة أعضاء مجموعتك بشكل تدريجي للقيام بتبرعات طوعية.
-    confirm_selection: أنا سعيد بفكرة الطلب من أعضاء مجموعتي لدعم لوميو بتبرع.
-    got_it: 'حسناً، لقد فهمت!'
-    go_back: عودة
   donation_modal:
-    heading: هل ترغب بدعم لوميو؟
     body: لوميو هو مشروع اجتماعي. مهمتنا هي خلق عالم حيث يكون من السهل للأشخاص المشاركة في صناعة القرارات التي تؤثر عليهم.
     contribute: قم بالمساهمة
-    got_to_group: خدني إلى المجموعة
   gift_card:
     heading: خطة منحة
     body: '<strong>{{name}}</strong> هي مجموعة تعتمد على خطة منحة. لدعم لوميو للاستمرار بدعم مجموعات كمجموعتك قم بالضغط هنا: '
@@ -402,31 +350,9 @@ ar:
     expired_body_html: 'لقد بلغت <strong>{{name}}</strong> نهاية المدة التجريبية للوميو. للاستمرار في استخدامه عليك اختيار خطة تسعير تناسب مجموعتك.'
   choose_plan_modal:
     heading: الرجاء اختيار خطة تناسب مجموعتك.
-    gift: منحة
     standard: قياسية
-    plus: زائدة
-    free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
-    get_started_for_free: قم بالبدء مجاناً
-    support_before: 'يسعدني هذا '
-    support_link: التحدث معك
-    support_after: حول تمديد المدة التجريبية، أو حول أي سؤال قد يكون لديك.
-    remind_me_later: ذكرني لاحقاً
-    unlimited_members: عدد غير محدود من الأعضاء.
-    unlimited_decisions: عدد غير محدود من القرارات.
-    email_support: ' برسالة الكترونية للدعم'
-    standard_price_html: >
-      <strong>19 دولار أمريكي</strong> في الشهر <br><span>أو</span> دولار أمريكي
-      190 في السنة
-    plus_body: 'كل شيء قياسي، زائد:'
-    premium_support: دعم ممتاز
-    plus_price_html: >
-      <strong> إما 197 دولار أمريكي</strong> في الشهر <br><span>أو</span> في
-      السنة 1790 دولار أمريكي
     select: اختيار
   subscription_success_modal:
-    heading: 'شكراً لتحديد اشتراكك!'
-    receipt: سيتم إرسال رسالة الكترونية لك بإيصال الدفع.
-    change_subscription: إن كنت تريد تغيير أو إلغاء اشتراكك، أو إن كان لديك استفسارات أخرى،
     contact_link: الرجاء الاتصال بنا
     sign_off: ❤ من فريق لوميو
     ok_got_it: 'حسناً، لقد فهمت!'
@@ -445,19 +371,10 @@ ar:
       private_to_group: سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
     privacy: الخصوصية
-    group_privacy_is_open_description: يمكن لأي شخص إيجاد المجموعة و طلب الانضمام. يمكن للأعضاء فقط رؤية من هو في داخل المجموعة. كل الموضوعات عامة.
-    group_privacy_is_closed_description: يمكن لأي شخص إيجاد المجموعة و طلب الانضمام. يمكن للأعضاء فقط رؤية من في داخل المجموعة. كل الموضوعات خاصة.
-    group_privacy_is_closed_public_threads_description: يمكن لأي شخص إيجاد المجموعة و طلب الانضمام. يمكن للأعضاء فقط رؤية من في داخل المجموعة. يمكن للموضوعات أن تكون عامة أو خاصة.
-    group_privacy_is_secret_description: فقط الأعضاء الذين يتم دعوتهم يمكنهم إيجاد المجموعة، و رؤية من في داخل المجموعة و رؤية الموضوعات.
     confirm_change_to_secret: في حالة الاستمرار، سيتم تحويل كل الموضوعات في المجموعة و المجموعات الفرعية لموضوعات خاصة.
     confirm_change_to_secret_subgroup: في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.
     confirm_change_to_public: في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.
     confirm_change_to_private_discussions_only: في حالة الاستمرار سيتم تحويل كافة المواضيع العامة في المجموعة إلى خاصة.
-    subgroup_privacy_is_open_description: يمكن لأي شخص إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. كل المواضيع عامة.
-    subgroup_privacy_is_closed_description: يمكن لأي شخص إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. كل المواضيع خاصة.
-    subgroup_privacy_is_closed_public_threads_description: يمكن لأي شخص إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. يمكن للمواضيع أن تكون عامة أو خاصة.
-    subgroup_privacy_is_closed_secret_parent_description: 'يمكن لأعضاء {{parent}} إيجاد هذه المجموعة الفرعية و طلب الانضمام. يمكن فقط للأعضاء رؤية من هو في داخل المجموعة. كل المواضيع خاصة.'
-    subgroup_privacy_is_secret_description: يمكن فقط للأعضاء الذين تتم دعوتهم إيجاد هذه المجموعة الفرعية و رؤية من فيها و رؤية المواضيع.
     advanced_settings: إعدادات متقدمة
     how_do_people_join: كيف يمكن للأشخاص الانضمام؟
     membership_granted_upon_request: يمكن لأي شخص الانضمام
@@ -491,9 +408,7 @@ ar:
   group_help_card:
     title: مساعدة
     ten_tips_article_title: 10 نصائح لمساعدتك في صناعة نقاشات رائعة مع لوميو
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: 9 طرق لاستخدام مقترحات لوميو لتحويل المحادثة إلى فعل
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: طلبات العضوية
     approve: موافقة
@@ -515,7 +430,6 @@ ar:
     copy_link: نسخ الرابط
     email_addresses: عناوين البريد الإلكتروني
     email_addresses_placeholder: 'مثال: helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: انسخ الرابط و أرسله إلى أي شخص ترغب في دعوته للانضمام. الضغط على الرابط سيمنحهم وصولاً فورياً.
     email_explanation: عوضاً عن ذلك، يمكنك إدخال عناوين البريد الإلكتروني في الأسفل و سيقوم لوميو بإرسال الدعوات لهم عبر البريد الإلكتروني.
     add_custom_message: قم بجعل دعوتك شخصية،
     add_custom_message_link: قم بإضافة رسالة مخصصة.
@@ -548,10 +462,6 @@ ar:
       remove_member_success: 'تمت إزالة {{name}}'
       make_admin_success: 'تم تعيين {{name}} منسقاً'
       remove_admin_success: '{{name}} لم يعد منسقاً'
-    remove_membership:
-      title: إزالة عضو
-      question: 'هل أنت متأكد أنك تريد إزالة {{name}} من عضوية {{group}}؟'
-      submit: إزالة
     remove_admin_from_self:
       question: هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟
   pending_invitations_card:
@@ -572,24 +482,6 @@ ar:
       picture_changed: تم تحديث صورة الملف الشخصي
       password_changed: تم تحديث كلمة المرور
       deactivated: تم إلغاء الحساب
-    change_picture:
-      title: تغيير الصورة
-      helptext: 'بإمكانك تحميل الصور على ملفك الشخصي، أو إذا كان لديك حساب على <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> يمكنك استخدامه.'
-      use_initials: استخدام أحرف الأسم الأولى
-      use_gravatar: استخدام الغرافاتار
-      use_uploaded: تحميل صورة جديدة
-    change_password:
-      title: تغيير كلمة المرور
-      helptext: 'يجب على كلمة المرور أن تكون بطول 8 أحرف. كلمات المرور المألوفة مثل "password" ممنوعة من أجل سلامة حسابك.'
-      current_password_label: كلمة المرور الحالية
-      new_password_label: كلمة المرور الجديدة
-      password_confirmation_label: قم بتأكيد كلمة المرور الجديدة
-      submit: تحديث كلمة المرور
-    deactivate_user:
-      title: إلغاء الحساب
-      question: هل يمكنك أن تخبرنا بسبب إلغاء حسابك؟
-      placeholder: 'الإجابة على هذا السؤال اختيارية. أي معلومات تشاركها ستساعدنا على تحسين لوميو :)'
-      submit: إلغاء الحساب
     change_picture_link: تغيير الصورة
     change_password_link: تغيير كلمة المرور
     deactivate_user_link: إلغاء الحساب
@@ -609,11 +501,8 @@ ar:
       updated: تم تحديث إعدادات البريد الإلكتروني
   dashboard_page:
     aria_label: لوحة التحكم
-    options:
-      aria_label: خيارات الانتقاء في لوحة التحكم
     no_threads:
       show_all: ليس لديك أي مواضيع حديثة.
-      show_participating: لم تقم بالمشاركة في أي مواضيع حديثاً.
       show_starred: ليس لديك أي مواضيع مميزة.
       show_proposals: ليس هناك أي مقترحات نشطة حالياً.
       show_muted: ليس هناك أي مواضيع صامتة.
@@ -630,9 +519,6 @@ ar:
       starred: المواضيع المميزة
       starred_aria_label: يتم إظهار المواضيع التي قمت بتصنيفها كمهمة
       starred_description: إظهار المواضيع التي تم تصنيفها كمهمة فقط
-      participating: مواضيع المشاركة
-      participating_aria_label: يتم إظهار المواضيع التي شاركت بها
-      participating_description: إظهار المواضيع التي شاركت بها فقط
       proposals: المقترحات
       proposals_aria_label: يتم إظهار المواضيع ذات المقترحات النشطة
       proposals_description: إظهار المواضيع ذات المقترحات النشطة فقط
@@ -838,9 +724,14 @@ ar:
       <p>سيرغب الأشخاص أن يعرفوا لماذا تمت دعوتهم، و ماهو المتوقع منهم، و لماذا
       يستحق الأمر أن يمضوا وقتهم لتعلم كيفية استخدام الأدوات الجديدة.</p>
     join_the_community: إنضم للمجتمع
-    join_the_community_description_html: "الجميع مرحب به للانضمام لمجتمع لوميو، حيث نتحدث حول كيفية الاستفادة من الأدوات، و كيفية تطويرها. <br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'> اضغط هنا للذهاب إلى مجموعة مجتمع لوميو."
+    join_the_community_description_html: "الجميع مرحب به للانضمام لمجتمع لوميو، حيث نتحدث حول كيفية الاستفادة من الأدوات، و كيفية تطويرها. <br/><br/><a href='https://www.loomio.org/g/WmPCB3IR'> اضغط هنا للذهاب إلى مجموعة مجتمع لوميو.<a/>"
     images_and_text_formatting: تنسيق النص و الصور
-    images_and_text_formatting_html: "<p>يستخدم لوميو نظام التخفيض لتضمين الصور و تنسيق النصوص. يمكنك تفعيل نظام التخفيض عبر الأيقونة الصغيرة الرمادية تحت صندوق التعليقات.</p> \n<p><a href='https://www.loomio.org/discussions/1124'>اضغط هنا</a> للمعلومات حول كيفية استخدام نظام التخفيض.</p>\n"
+    images_and_text_formatting_html: >
+      <p>يستخدم لوميو نظام التخفيض لتضمين الصور و تنسيق النصوص. يمكنك تفعيل نظام
+      التخفيض عبر الأيقونة الصغيرة الرمادية تحت صندوق التعليقات.</p>
+
+      <p><a href='https://www.loomio.org/discussions/1124'>اضغط هنا</a> للمعلومات
+      حول كيفية استخدام نظام التخفيض.</p>
     keep_up_to_date: البقاء على تواصل
     keep_up_to_date_html: >
       <p>بالضغط على اسم مجموعتك في أعلى الصفحة ستنتقل إلى صفحة مجموعتك، حيث يمكنك
@@ -868,7 +759,23 @@ ar:
       توضيح الموضوع، يمكنك استخدام هذه المساحة لمشاركة المصادر، تلخيص النقاش خلال
       تقدمه، أو وضع الخطوط العريضة لطريقة صناعة القرار التي تعتمدها مجموعتك.</p>
     start_proposal: كتابة مقترح واضح
-    start_proposal_html: "<p>عندما تجعل العنوان واضحاً و موجزاً، فإن الأشخاص سيعلمون فوراً ماذا تعني موافقتهم أو رفضهم.</p>\n<p> ليست نهاية العالم إن لم تحصل على موافقة فورية على المقترح. \nإن لم تحب المجموعة المقترح الأول، يمكن لأي شخص البدء بمقترح جديد\nللاستجابة للمخاوف التي تم طرحها، الحكمة الجمعية في مجموعتك ستولد أفكاراً أفضل\nمن أي شيء قد يأتي به شخص بمفرده.</p>\n<p>يمكن تمديد الموعد النهائي للمقترح في أي وقت، إن كان يبدو أن القرار\n بحاجة لبعض المساحة. سوف يستقبل الجميع رسالة الكترونية تبلغهم قبل 24 ساعة من إغلاق المقترح.\n"
+    start_proposal_html: >
+      <p>عندما تجعل العنوان واضحاً و موجزاً، فإن الأشخاص سيعلمون فوراً ماذا تعني
+      موافقتهم أو رفضهم.</p>
+
+      <p> ليست نهاية العالم إن لم تحصل على موافقة فورية على المقترح.
+
+      إن لم تحب المجموعة المقترح الأول، يمكن لأي شخص البدء بمقترح جديد
+
+      للاستجابة للمخاوف التي تم طرحها، الحكمة الجمعية في مجموعتك ستولد أفكاراً
+      أفضل
+
+      من أي شيء قد يأتي به شخص بمفرده.</p>
+
+      <p>يمكن تمديد الموعد النهائي للمقترح في أي وقت، إن كان يبدو أن القرار
+
+      بحاجة لبعض المساحة. سوف يستقبل الجميع رسالة الكترونية تبلغهم قبل 24 ساعة من
+      إغلاق المقترح.
     video_id: '52025402'
     video_tutorial: الفيديو التعليمي
     video_tutorial_description: شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام لوميو.

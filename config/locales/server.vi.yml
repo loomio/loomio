@@ -6,7 +6,6 @@ vi:
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> để bỏ việc đăng ký theo dõi hoặc thay đổi tùy chọn về địa chỉ email của bạn."
     view_comment: Click vào đây để xem các bình luận trên Loomio
     view_discussion: Click vào đây để xem phần thảo luận này
-    view_group: Click vào đây để xem nhóm trên Loomio
     create_proposal:
       intro: Một lời đề nghị mới vừa được tạo trong nhóm Loomio mà bạn đã tham gia vào.
       closes_in: Đóng lại vào
@@ -14,11 +13,6 @@ vi:
       heading: Các hoạt động trên Loomio của bạn
       intro: Hiển thị các sự kiện đang xảy ra trong các nhóm mà bạn đã tham gia vào trong vòng 24 giờ vừa qua
       subject: Loomio - Bản tóm tắt sự kiện 24 giờ vừa qua
-    group_membership_approved:
-      intro: "Đề nghị của bạn nhằm tham gia vào nhóm '%{group_name}' trên Loomio đã được chấp thuận."
-    invitation:
-      hi: 'Xin chào %{name},'
-      intro: 'Xin hãy click vào đường dẫn liên kết bên dưới để cài đặt nhóm của riêng bạn %{group_name}:'
     membership_request:
       intro: '%{name} (%{email}) đã gửi lời yêu cầu tham gia vào một trong các nhóm trên Loomio của bạn.'
       view_group: Bạn có thể chấp thuận hoặc từ chối các lời đề nghị kết nối tại đây

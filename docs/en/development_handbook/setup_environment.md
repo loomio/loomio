@@ -17,9 +17,7 @@ With that done, use Homebrew to install Git and PostgreSQL
 ```
 $ brew install git postgresql pkgconfig
 $ brew install ImageMagick --with-perl
-$ mkdir -p ~/Library/LaunchAgents
-$ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+$ brew services start postgresql
 ```
 
 And that's it. You can jump to 'Install rbenv and ruby-build'
@@ -43,7 +41,7 @@ From here onwards the instructions apply to both OSX and Linux.
 
 I recommend that you don't use managed (Homebrew, APT etc) versions of ruby, rbenv and ruby-build. They're no easier to use, and they tend to be out of date just when you need the latest version.
 
-First we install [rbenv](https://github.com/sstephenson/rbenv). (Replace ~/.bash_profile with ~/.bashrc depending on what file name/operating system you use).
+First we install [rbenv](https://github.com/sstephenson/rbenv). (Replace ~/.bash_profile with  ~/.zshrc, ~/.profile, or ~/.bashrc depending on what filename you use).
 
 ```
 $ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -84,6 +82,22 @@ At the time of writing 2.3.0 is the latest version.
 $ rbenv install 2.3.0
 $ rbenv global 2.3.0
 $ gem install bundler
+$ rbenv rehash
 ```
 
-Ok that's it, you're not ready to [install Loomio](quickstart.md) (or any other rails app)
+## Install Node.js
+
+You'll need Node.js and it's best if you use `nvm` to install it. From [https://github.com/creationix/nvm](https://github.com/creationix/nvm) You'll find that you need to run:
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+```
+
+Now build and install node
+
+```
+nvm install 4.4.5
+nvm alias default 4.4.5
+npm install -g gulp
+```
+
+Ok that's it, you're now ready to [install Loomio](quickstart.md) (or any other ruby or node app)

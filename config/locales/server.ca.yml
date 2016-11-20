@@ -1,20 +1,56 @@
 ca:
+  validate:
+    motion:
+      one_at_a_time: Hi ha una altra proposta activa.
   email:
+    reset_password:
+      greeting: >
+        Hola %{name}
+
+        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de
+        Loomio:
+      link_text: Reinicieu la contrasenya
+    custom: '%{text}'
     group_email:
       intro: '%{who} ha fet un anunci a %{group}:'
+    by_who: 'per %{person}'
+    reply_to_this_discussion: Responeu a aquesta discussió
+    to_join_discussion:
+      subject: '%{who} vol que us uniu a la discussió a Loomio'
+      content: 'Heu estat convidats a participar en la discussió: %{discussion}'
+      message_intro: '%{who} diu:'
+      link: Uniu-vos a la discussió
+    value_proposition: Loomio és un lloc per a grups per a prendre decisions conjuntament
+    view_group: Mostra el grup
     to_join_group:
-      subject: "%{member} t'ha convidat a unir-te a %{group_name} a Loomio"
+      subject: '%{member} us ha convidat a unir-vos a %{group_name} a Loomio'
+      invitation_text: '%{member} us ha convidat a unir-vos al seu grup %{group_name}'
+      invitation_text_html: us ha convidat a unir-vos al seu grup
+      link_help: "Cliqueu a l'enllaç de sota per acceptar la invitació:"
+      accept_invitation: Accepta la invitació
+    resend_to_join_group:
+      subject: '%{member} encara està esperant que us uniu a %{group_name} a Loomio'
     to_start_group:
-      subject: 'Configura el teu nou grup de Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: "%{who} t'ha afegit a %{which_group}"
-      content: "%{who} t'ha afegit a %{which_group} a Loomio. Clica aquí per visitar el grup:"
-    unsubscribe: "Dóna't de baixa o canvia les teves preferències de correu:"
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-te de baixa o canviar les preferències de correu."
-    view_comment: Fes click per veure el comentari a Loomio
+      subject: 'Configureu el nou grup de Loomio: %{group_name}'
+      hi: 'Hola %{name},'
+      intro: "Cliqueu a l'enllaç de sota per configurar el grup %{group_name}"
+      intro_html: 'Cliqueu a sota per configurar el grup:'
+      start_group: Crea un grup
+      closing_message: 'Si necessiteu ajuda o teniu algun dubte, responeu a aquest correu.'
+      thanks: 'Gràcies,'
+      loomio_team: "L'equip de Loomio"
+    user_added_to_group:
+      subject: '%{who} us ha afegit a %{which_group} a Loomio'
+      content: '%{who} us ha afegit a %{which_group}'
+      content_html: '<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>.'
+      link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
+    unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
+    view_comment: Feu clic aquí per veure el comentari a Loomio
     view_discussion: Fes click aquí per veure aquesta discussió
-    view_group: Fes click per veure el grup a Loomio
     view_proposal: Veure aquesta proposta a Loomio
+    create_discussion:
+      intro: '%{who} ha creat una discussió:'
     create_proposal:
       intro: "S'ha creat una nova proposta a un grup de Loomio al què pertanys."
       closes_in: Tanca en
@@ -23,53 +59,106 @@ ca:
       heading: La teva Activitat a Loomio
       intro: Mostrant el què ha passat als teus grups de loomio les darreres 24 hores
       subject: Loomio - Resum de les darreres 24 hores
+    missed_yesterday:
+      subject: Ahir a Loomio
+      headlines: Capçaleres
+      mark_as_read: Marca com a llegit
+      heres_what_happened: Això és el que ahir va passar a Loomio.
     group_membership_approved:
-      intro: "La teva sol·licitut per accedir al grup '%{group_name}' a Loomio ha estat aprovada."
-    invitation:
-      hi: 'Ei %{name},'
-      intro: "Fes clic a l'enllaç de sota per configurar el grup %{group_name}:"
-      closing_message: 'Si tens alguna pregunta o si hi ha alguna cosa que puguem fer per ajudar a posar-te en marxa, ens encantaria saber de tu - simplement respon aquest correu electrònic.'
-      thanks: |
-        Mercès!
-        L'equip de Loomio
+      view_group_text: 'Cliqueu a sota per veure el grup a Loomio:'
     membership_request:
       intro: '%{name} (%{email}) ha sol·licitat accés a un dels teus grups de Loomio.'
       subject: '%{who} ha demanat unir-se a %{which_group}'
       view_group: Pots aprovar o denegar la sol·licitud aquí
+    mentioned:
+      context: '%{author_name} us ha mencionat en la discussió %{discussion_title}'
     new_motion_created:
-      context: '%{author} ha fet una proposta a %{group_full_name}:'
+      subject: 'Proposta: %{proposal_title}'
+      context: "s'ha creat una proposta a %{group_full_name}:"
     proposal_closed:
+      proposal_has_closed: "La proposta s'ha tancat."
       specify_outcome_and_notify_group: "Detalla un resultat i envia'l al grup!"
       specify_outcome_and_notify_group_html: "Detalla un resultat i envia'l al grup!"
       subject: 'Proposta tancada - %{which}'
+    proposal_outcome:
+      subject: 'Resultat de la proposta: %{motion}'
     proposal_closing_soon:
       closes_on: Tanca el
       closes_at: Tanca a
       closes_in: Tanca en
-      headline: 'La proposta de %{author} a %{group} tancarà aviat:'
+      subject: 'Es tancarà en 24 hores: %{proposal_title}'
+      headline: 'La proposta de %{author} a %{group} es tancarà aviat:'
       summary: Sumari
     thread_mailer:
       change_preferences: Canvia les preferències de correu electrònic
+      motion_closing_soon: 'La proposta es tancarà en 24 hores:'
       proposal_closed: 'Proposta tancada:'
+      outcome_created: '%{who} ha compartit el resultat de la proposta:'
       you_agreed: '%{past_tense_position}'
+    analytics:
+      heart: "❤ de l'equip de Loomio"
+      user_table:
+        motions_created: Propostes
+        discussions_created: Discussions
+        comments_created: Comentaris
+        votes_created: Vots
   footer:
     about: Quant a
-    blog: Blog
+    blog: Bloc
     contact: Contacte
     help: Ajuda
-    privacy: Prvacitat
+    privacy: Privacitat
     pricing: Preus
     public_groups: Grups públics
     terms: Condicions
   start_group_form:
     header: Comença un nou grup
     name: El teu nom
+    email: El teu correu
+    email_error: Adreça de correu invàlida.
     group_name: Nom del grup
     group_description: Descripció del grup
+    group_description_placeholder: Descriviu el propòsit del grup per tal de que els membres coneguin perquè estan aquí.
     success:
       header: 'Ja quasi ho tens! Comprova el teu correu electrònic.'
+      email_not_arrived: No us ha arribat el correu electrònic?
+    start_making_decisions: 'Per començar a prendre decisions junts a Loomio, configureu un grup gratuïtament:'
+  pricing_page:
+    standard: Estàndard
+    free_trial_html: 'Us demanarem que escolliu un pla de pagament després dels <span>30 dies de prova</span>. No és necessari cap targeta de crèdit.'
+    unlimited_members: membres il·limitats
+    unlimited_decisions: decisions il·limitades
+    email_support: assistència per correu electrònic
+    slack_integration_html: |
+      integració amb <strong>Slack</strong>
+    premium_support: assistència premium
+    custom_subdomain_html: |
+      subdomini personalitzable,<br/>
+      per exemple: <strong>elteugrup</strong>.loomio.org
+    usage_statistics: ús de les estadístiques
+  password_reset:
+    forbidden_passwords: 'Les contrasenyes com "password" estan prohibides per raons de seguretat.'
   contact_page:
+    contact_us: Contacteu
+    contact_form: Formulari de contacte
     labels:
       name: El teu nom
       email: Adreça de correu
       message: El teu missatge
+      submit: Envia el missatge
+  markdown:
+    paragraphs:
+      title: |
+        ## Paràgrafs
+    emphasis:
+      title: |
+        ## Èmfasis
+    lists:
+      title: |
+        ## Llistes
+    links:
+      title: |
+        ## Enllaços i imatges
+  beta_banner:
+    more_info: Més informació...
+    button_text: Canvia al nou Loomio

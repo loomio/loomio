@@ -13,17 +13,11 @@ el:
       subject: 'Ο/Η %{member} σας προσκάλεσε για να συμμετάσχετε στην ομάδα %{group_name} στο Loomio'
     to_start_group:
       subject: 'Ρυθμίστε την νέα σας Loomio ομάδα: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} σας πρόσθεσε στην ομάδα %{which_group}'
-      content: '%{who} σας πρόσθεσε στην ομάδα %{which_group} στο Loomio. Πατήστε εδώ για να πάτε στην ομάδα:'
     unsubscribe: 'Διαγραφείτε ή αλλάξτε τις ρυθμίσεις του ηλεκτρονικού ταχυδρομείου:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> για να διαγραφείτε ή για να αλλάξετε τις ρυθμίσεις ηλεκτρονικού ταχυδρομείου."
     view_comment: Πατήστε εδώ για να δείτε το σχόλιο στο Loomio
     view_discussion: Πατήστε εδώ για να δείτε αυτή την συζήτηση
-    view_group: Πατήστε εδώ για να δείτε την ομάδα στο Loomio
     view_proposal: Εμφάνιση αυτής της πρότασης στο Loomio
-    create_discussion:
-      intro: '%{who} ξεκίνησε μια συζήτηση στην ομάδα %{which_group}:'
     create_proposal:
       intro: Μια νέα πρόταση δημιουργήθηκε σε ομάδα του Loomio που ανήκετε.
       closes_in: Κλείνει σε
@@ -39,26 +33,13 @@ el:
       thanks_for_reading: 'Ευχαριστούμε που διαβάζετε, να έχετε μια υπέροχη μέρα!'
       marked_as_read_success: Όλα έχουν σημαδευτεί ως διαβασμένα από το ηλεκτρονικό ταχυδρομείο
     comment_replied_to:
-      context: 'Ο/Η %{author_name} απάντησε στο σχόλιο σας στην συζήτηση "%{discussion_title}"'
       subject: 'Ο/Η %{who} απάντησε στο σχόλιο σας στην ομάδα %{which} στο Loomio'
-    group_membership_approved:
-      intro: "Η αίτηση σας για πρόσβαση στην ομάδα '%{group_name}' στο Loomio έχει εγκριθεί."
-    invitation:
-      hi: 'Γειά %{name},'
-      intro: 'Πατήστε τον σύνδεσμο παρακάτω για να δημιουργήσετε την ομάδα σας %{group_name}:'
-      closing_message: 'Εάν έχετε ερωτήσεις ή εάν υπάρχει κάτι άλλο που μπορούμε να κάνουμε για να σας βοηθήσουμε για να οργανωθείτε και να λειτουργήσετε, θα θέλαμε να το ακούσουμε - απλώς απαντώντας σε αυτό το ηλεκτρονικό μήνυμα.'
-      thanks: |
-        Ευχαριστούμε!
-        Η ομάδα του Loomio
     membership_request:
       intro: 'Ο/Η %{name} (%{email}) έχει ζητήσει πρόσβαση σε μία από τις Loomio ομάδες σας.'
       subject: '%{who} έχει αιτηθεί να συμμετάσχει στην ομάδα %{which_group}'
       view_group: Μπορείς να εγκρίνεις ή να απορρίψεις την αίτηση εδώ
-    mentioned:
-      context: '%{author_name} σε ανέφερε όταν συζητούσε στο θέμα "%{discussion_title}"'
     new_motion_created:
       subject: 'Πρόταση: %{proposal_title}'
-      context: '%{author} δημιούργησε μια πρόταση στο %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Η πρόταση έκλεισε.
       specify_outcome_and_notify_group: 'Δημιουργήστε ένα αποτέλεσμα και στείλτε το στην ομάδα σας!'
@@ -82,12 +63,10 @@ el:
       turn_on_notifications_text: 'Ενεργοποιήστε το ηλεκτρονικό ταχυδρομείο για να λάβετε περαιτέρω δραστηριότητα σε αυτή τη συζήτηση.: %{url}'
       change_email_preferences_html: "Αλλάξτε <a href='%{email_preferences_url}'>τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας</a> για να διαγραφείτε από αυτά τα ηλεκτρονικά μηνύματα."
       change_preferences: 'Αλλάξτε τις προτιμήσεις του ηλεκτρονικού ταχυδρομείου σας:'
-      new_motion: '%{who} πρότεινε:'
       motion_closing_soon: 'Η πρόταση κλείνει σε 24 ώρες:'
       proposal_closed: 'Η πρόταση έκλεισε:'
       specify_outcome_html: "Η πρόταση σας έκλεισε. <a href='%{link}'>Καθορίστε ένα αποτέλεσμα</a> για να γνωρίζουν όλοι ποιο είναι το αποτέλεσμα."
       specify_outcome: Η πρόταση σας έκλεισε. Καθορίστε ένα αποτέλεσμα για να γνωρίζουν όλοι ποιο είναι το αποτέλεσμα.
-      outcome_created: '%{who} καθόρισε ένα αποτέλεσμα πρότασης:'
       you_agreed: 'Εσείς %{past_tense_position}'
   footer:
     about: Σχετικά
@@ -119,22 +98,15 @@ el:
       please_hold: Παρακαλώ περιμέντε το πολύ 5 λεπτά μέχρι να έρθει το email και ελέγξτε την ανεπιθύμητη αλληλογραφία.
     start_making_decisions: 'Για να αρχίσετε να λαμβάνετε συλλογικά αποφάσεις στο Loomio, φτιάξτε μια ομάδα δωρεάν:'
   pricing_page:
-    gift: Δώρο
     standard: Τυπικό
-    plus: Πρόσθετο
     get_started_for_free: Ξεκινήστε δωρεάν
     unlimited_members: απεριόριστα μέλη
     unlimited_decisions: απεριόριστες αποφάσεις
     email_support: υποστήριξη μέσω ηλεκτρονικού ταχυδρομείου
-    plus_body: 'Ότι περιέχει το Τυπικό πακέτο, συν:'
     usage_statistics: στατιστικά χρήσης
   password_reset:
     length_restriction: Οι κωδικοί πρέπει να είναι τουλάχιστον 8 χαρακτήρες.
     forbidden_passwords: 'Κοινοί κωδικοί όπως "password" απαγορεύονται για να προστατευτεί ο λογαριασμός σου.'
-  introduction_thread:
-    title: 'Καλωσήλθες στην ομάδα %{group_name}'
-  how_it_works_thread:
-    title: Πως να χρησιμοποιείς το Loomio
   contact_page:
     contact_us: Επικοινωνήστε με μας
     contact_form: Φόρμα επικοινωνίας

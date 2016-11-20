@@ -41,12 +41,14 @@ class DiscussionService
   def self.update(discussion:, params:, actor:)
     actor.ability.authorize! :update, discussion
 
-    discussion.assign_attributes(params.slice(:private, :title, :description, :uses_markdown))
-    discussion.assign_attributes(params.slice(:iframe_src)) if actor.ability.can? :update, discussion.group
+    discussion.assign_attributes(params.slice(:private, :title, :description))
+    version_service = DiscussionVersionService.new(discussion: discussion, new_version: discussion.changes.empty?)
+    discussion.attachment_ids = params[:attachment_ids]
 
-    return false unless discussion.valid? && discussion.changed? && discussion.changed != ['uses_markdown']
+    return false unless discussion.valid?
     discussion.save!
 
+    version_service.handle_version_update!
     EventBus.broadcast('discussion_update', discussion, actor, params)
     Events::DiscussionEdited.publish!(discussion, actor)
   end
@@ -75,6 +77,11 @@ class DiscussionService
 
     target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]).first || discussion
     DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at
+  end
+
+  def self.dismiss(discussion:, params:, actor:)
+    actor.ability.authorize! :dismiss, discussion
+    DiscussionReader.for(user: actor, discussion: discussion).dismiss!
   end
 
   def self.moved_discussion_privacy_for(discussion, destination)

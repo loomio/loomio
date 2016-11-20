@@ -29,17 +29,11 @@ be-BY:
       subject: '%{member} запрасіў вас далучыцца да %{group_name} на Loomio'
     to_start_group:
       subject: 'Стварыць новую групу на Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} дадаў Вас да %{which_group}'
-      content: '%{who} дадаў Вас да %{which_group} на Loomio. Клікніце сюды, каб перайсці да гэтай групы.'
     unsubscribe: 'Адпісацца ці змяніць свае налады электроннай пошты:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> каб адпісацца ці змяніць свае налады электроннай пошты."
     view_comment: Націсніце каб праглядзець каментар на Loomio
     view_discussion: 'Націсніце сюды, каб праглядзець гэта абмеркаванне'
-    view_group: 'Націсніце тут, каб перайсці да гэтай групы на Loomio'
     view_proposal: Праглядзець гэту прапанову на Loomio
-    create_discussion:
-      intro: 'Карыстальнік %{who} распачаў абмеркаванне ў групе %{which_group}:'
     create_proposal:
       intro: 'У групе на Loomio, у якой вы ўдзельнічаеце, была створана новая прапанова.'
       closes_in: Закрываецца праз
@@ -56,28 +50,15 @@ be-BY:
       heres_what_happened: Вось што адбывалася ў Loomio учора.
       marked_as_read_success: Усе паведамленні з ліста былі пазначаны як прачытаныя
     comment_replied_to:
-      context: 'Карыстальнік %{author_name} адказаў на ваш каментар у абмеркаванні "%{discussion_title}"'
       subject: 'Карыстальнік %{who} адказаў на ваш каментар у %{which} групе на Loomio'
-    group_membership_approved:
-      intro: "Ваш запыт на далучэнне да гурпы '%{group_name}' на Loomio быў зацверджаны."
-      subject: '%{prefix} Членства зацверджана'
-    invitation:
-      hi: 'Вітаем %{name},'
-      intro: 'Націсніце на спаслыку знізу, каб распачаць сваю групу %{group_name}:'
-      closing_message: 'Калі ў вас ёсць любыя пытанні ці калі мы можам чым-небудзь вам дапамагчы, мы будзем рады пачуць ад вас - проста напішыце адказ на гэты ліст.'
-      thanks: |
-        Дзякуем!
-        Каманда Loomio
     membership_request:
       intro: '%{name} (%{email}) запытаў далучэння да адной з вашых груп на Loomio.'
       subject: '%{who} запытаў далучэння да %{which_group}'
       view_group: Вы можаце зацвердзіць ці адмовіць запыт тут
     mentioned:
-      context: 'Карыстальнік %{author_name} узгадаў вас у абмеркаванні "%{discussion_title}"'
       subject: '%{who} узгадаў(ла) вас у абмеркаванні "%{which}"'
     new_motion_created:
       subject: 'Прапанова: %{proposal_title}'
-      context: 'Карыстальнік %{author} стварыў прапанову ў %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Прапанова зачынена.
       specify_outcome_and_notify_group: 'Аформіце вынік і адпраўце сваёй групе!'
@@ -101,12 +82,10 @@ be-BY:
       turn_on_notifications_text: 'Уключыце электронную пошту, каб атрымаць далейшую актыўнасць у гэтым абмеркаванні: %{url}'
       change_email_preferences_html: "Змяніце свае <a href='%{email_preferences_url}'>налады email</a> каб адпісацца ад гэтых лістоў."
       change_preferences: 'Змяніць свае налады электроннай пошты:'
-      new_motion: 'Карыстальнік %{who} прапанаваў:'
       motion_closing_soon: 'Прапанова закрываецца праз 24 гадзіны:'
       proposal_closed: 'Прапанова закрыта:'
       specify_outcome_html: "Ваша прапанова закрыта. <a href='%{link}'>Падагульніце зыход</a>, каб паведаміць усім пра вынік."
       specify_outcome: 'Ваша прапанова закрыта. Падагульніце зыход, каб паведаміць усім пра вынік:'
-      outcome_created: 'Карыстальнік %{who} усталяваў вынік прапановы:'
       you_agreed: 'Вы %{past_tense_position}'
   footer:
     about: Пра нас
@@ -147,19 +126,12 @@ be-BY:
       all_email_addresses_belong_to_members: 'Мы не адпраўлялі запрашэння на прадстаўленыя адрасы электроннай пошты таму, што яны належаць людзям з групы.'
   pricing_page:
     header: Планы групы
-    gift: Падарунак
     standard: Стандарт
-    plus: Плюс
     free_trial_html: 'Пасля сыходу <span>30-дзённай пробнай версіі</span> мы папросім Вас абраць тарыфны план. Крэдытная картка не патрэбна.'
     get_started_for_free: Пачніце работу бясплатна
-    gift_body: Для груп без бюджету
     unlimited_members: неабмежаваная колькасць удзельникаў
     unlimited_decisions: бязмежнасць рашэнняў
     email_support: падтрымка па электроннай пошце
-    standard_price_html: |
-      19$ за месяц або 190$ за год
-    plus_body: Стандартны пакет +
-    multiple_groups: Шматлікія суполкі
     premium_support: Прэміум-падтрымка
     custom_subdomain_html: |+
       сабдамен карыстальніка,<br />
@@ -168,8 +140,6 @@ be-BY:
 
 
     usage_statistics: статыстыка выкарыстання
-    plus_price_html: |
-      ЗША <strong>$179</strong>/месяцh<br><span>ці</span> $1790/год
   password_reset:
     email_guidelines_html: >
       <p>Каб скінуць пароль, увядзіце адрас электроннай пошты для вашага акаўнта
@@ -182,22 +152,6 @@ be-BY:
     reset_email_timeframe: 'Ліст прыйдзе не пазней, чым праз 5 хвілін. Калі вы яго не бачыце, праверце, калі ласка, тэчку "Спам".'
     length_restriction: Пароль павінен утрымліваць не менш за 8 сімвалаў.
     forbidden_passwords: 'Звычайны пароль, як напрыклад,  "пароль" выкарыстоўваць нельга, каб захаваць свой акаўнт у бяспецы.'
-  introduction_thread:
-    title: 'Запрашаем у %{group_name}'
-    description: >
-      Калі ласка, прадстаўцеся. Гэта не зойме шмат часу: **пакіньце каментар**
-      у форму ніжэй.
-
-
-
-
-
-      Калі ў вас ёсць канкрэтныя прапановы для гэтай групы ў Loomio, вы маглі
-      б выказаць іх тут. Тады кожны будзе мець уяўленне пра тое, чаго можна
-      дасягнуць разам.
-  how_it_works_thread:
-    title: Як карыстацца Loomio
-    description: "Вітаем на Loomio, платформе для прыняцця сумесных рашэнняў онлайн. \n\n\nГэта прыклад **стужкі** абмеркавання. Чаму б не выкарыстаць гэтую прастору, каб паспрабаваць магчымасці Loomio?\n\n\nЗараз вы чытаеце **кантэкст** стужкі. Гэтую прастору можна выкарыстоўваць для дадатковай інфармацыі, якая патрэбна групе для плённага абмеркавання.\n\n\nПанэль **прапаноў** - гэта месца, дзе прымаюцца рашэнні. Тут можна распачаць прапанову і удзельнічаць у ёй.\n\n\nПанэль **актыўнасці** ніжэй паказвае ўсё, што адбылася ў стужцы.\n\n"
   contact_page:
     contact_us: Звязацца з намі
     labels:
@@ -226,14 +180,3 @@ be-BY:
 
 
         Вы можаце зрабіць слова __тоўстым__ шляхам падваення **вылучэння**.
-    links:
-      body: |
-        Паўтарайце ўслых:
-
-        Імя - у квадратных дужках, URL - у круглых.
-
-        [Loomio Homepage](https://www.loomio.org/)
-
-        Выявы - таксама, але перад дужкамі павінен стаяць клічнік.
-
-        ![loomio logo](https://i.imgur.com/Fvtworb.png)

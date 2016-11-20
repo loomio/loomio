@@ -87,15 +87,13 @@ fi:
     in_reply_to: 'Vastaus henkilölle <strong>{{name}}</strong>:'
     private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.'
     public_privacy_notice: Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.
-  navbar:
+  sidebar:
     recent: Viimeisin
     unread: Lukematon
-    groups: Ryhmät
+    sign_out: Kirjaudu ulos
+  navbar:
     recent_title: Mene kojelaudalle
     unread_title: Katso lukemattomat toiminnat
-    user_options:
-      contact_us: Ota meihin yhteyttä
-      new_thread: Uusi aihe
   notifications:
     header: Ilmoitukset
   proposal_form:
@@ -112,8 +110,6 @@ fi:
     group: Ryhmä
   memberships_page:
     remove_member_label: Poista
-    remove_membership:
-      submit: Poista
   dashboard_page:
     threads_from:
       today: Tänään

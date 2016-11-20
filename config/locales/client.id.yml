@@ -23,11 +23,10 @@ id:
   comment_form:
     delete_comment: Hapus komentar
     confirm_delete_message: Apakah Anda ingin menghapus komentar ini?
+  sidebar:
+    help: Bantuan
+    sign_out: Keluar
   navbar:
-    groups: Kelompok
-    user_options:
-      new_group: Kelompok baru
-      help: Bantuan
     search:
       placeholder: Cari
       discussions: Diskusi
@@ -67,7 +66,6 @@ id:
     heading: Minta untuk bergabung dalam kelompok
     name_label: Nama
     email_label: Surel
-    introduction_label: Kenalkan diri Anda
     submit_button: Minta untuk bergabung dalam kelompok
   group_page:
     discussions: Diskusi
@@ -75,8 +73,6 @@ id:
     options_label: Pilihan
     options:
       label: Pilihan
-    leave_group:
-      title: Tinggalkan kelompok
   membership_requests_page:
     approve: Setuju
     ignore: Abaikan
@@ -85,13 +81,7 @@ id:
     name_label: Nama
     coordinator_label: Koordinator
     remove_member_label: Hapus
-    remove_membership:
-      submit: Hapus
   profile_page:
-    change_password:
-      current_password_label: Kata sandi saat ini
-      new_password_label: Kata sandi baru
-      password_confirmation_label: Konfirmasi kata sandi
     picture_label: Gambar
     name_label: Nama
     email_label: Surel
@@ -201,7 +191,17 @@ id:
 
       untuk informasi penggunaan Penanda.</p>
     keep_up_to_date: Pantau perubahan
-    keep_up_to_date_html: "<p>Klik nama kelompok Anda di atas untuk menuju ke Laman Kelompok, dan Anda dapat melihat daftar seluruh diskusi dan \nkeputusan. Apabila Anda berada di dalam lebih dari satu kelompok, Anda dapat melihat seluruh aktivitas semua kelompok pada Laman Beranda.</p>\n<p>Anda akan mendapatkan surel notifikasi saat ada hal penting yang terjadi di dalam kelompok.\nAnda dapat mengubah preferensi surel <a href=\"%{link}\"\">di sini</a>.</p>\n"
+    keep_up_to_date_html: >
+      <p>Klik nama kelompok Anda di atas untuk menuju ke Laman Kelompok, dan Anda
+      dapat melihat daftar seluruh diskusi dan
+
+      keputusan. Apabila Anda berada di dalam lebih dari satu kelompok, Anda
+      dapat melihat seluruh aktivitas semua kelompok pada Laman Beranda.</p>
+
+      <p>Anda akan mendapatkan surel notifikasi saat ada hal penting yang terjadi
+      di dalam kelompok.
+
+      Anda dapat mengubah preferensi surel <a href="%{link}"">di sini</a>.</p>
     make_a_decision: Buat keputusan
     make_a_decision_description: 'Saat kelompok sudah siap untuk membuat keputusan, setiap anggota dapat memberikan usulan. Jelaskan tindakan yang ingin diambil dan latar belakangnya sehingga anggota kelompok dapat segera memilih untuk setuju atau tidak setuju.'
     prompt_people_details: "Apabila Anda ingin seseorang memperhatikan tulisan Anda di dalam kelompok, ketik '@' diikuti nama mereka. Mereka akan mendapatkan surel yang mengabari bahwa Anda menyebutkan nama mereka di dalam komentar"

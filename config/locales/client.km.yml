@@ -22,11 +22,10 @@ km:
   comment_form:
     delete_comment: 'លុបមតិយោបល់ '
     confirm_delete_message: តើអ្នកប្រាកដថាអ្នកចង់លុបមតិយោបល់នេះ?
+  sidebar:
+    help: ជួយ
+    sign_out: ចេញក្រៅ
   navbar:
-    groups: ក្រុម
-    user_options:
-      new_group: ក្រុមថ្មី
-      help: ជួយ
     search:
       placeholder: ស្វែងរក
       discussions: ការពិភាក្សារ
@@ -66,7 +65,6 @@ km:
     heading: សួរទៅក្រុមចូលរួម
     name_label: ឈ្មោះ
     email_label: អ៊ីម៉ែល
-    introduction_label: ណែនាំខ្លួនអ្នក
     submit_button: សួរទៅក្រុមចូលរួម
   group_page:
     discussions: ការពិភាក្សារ
@@ -74,8 +72,6 @@ km:
     options_label: 'ជម្រើស '
     options:
       label: 'ជម្រើស '
-    leave_group:
-      title: ចាកចេញពីក្រុម
   membership_requests_page:
     approve: 'អនុម័ត '
     ignore: មិនអើពើ
@@ -84,13 +80,7 @@ km:
     name_label: ឈ្មោះ
     coordinator_label: សម្របសម្រួល
     remove_member_label: យក
-    remove_membership:
-      submit: យក
   profile_page:
-    change_password:
-      current_password_label: ពាក្យសម្ងាត់បច្ចុប្បន្ន
-      new_password_label: លេខសម្ងាត់ថ្មី
-      password_confirmation_label: បញ្ចាក់ពាក្យសម្ងាត់ថ្មី
     name_label: ឈ្មោះ
     email_label: អ៊ីម៉ែល
     locale_label: ភាសា

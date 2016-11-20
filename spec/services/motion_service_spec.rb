@@ -46,6 +46,12 @@ describe 'MotionService' do
         expect(reader.volume.to_sym).to eq :loud
       end
 
+      it 'notifies new mentions' do
+        motion.description = "A mention for @#{another_user.username}!"
+        expect(Events::UserMentioned).to receive(:publish!).with(motion, user, another_user)
+        MotionService.create(motion: motion, actor: user)
+      end
+
       it "creates an event" do
         expect(Events::NewMotion).to receive(:publish!).with(motion)
         MotionService.create(motion: motion, actor: user)
@@ -59,7 +65,7 @@ describe 'MotionService' do
       it 'ensures a discussion stays read' do
         CommentService.create(comment: comment, actor: another_user)
         reader = DiscussionReader.for(user: user, discussion: discussion)
-        reader.viewed!
+        reader.viewed!(reader.discussion.last_activity_at)
         MotionService.create(motion: motion, actor: user)
         expect(reader.reload.last_read_sequence_id).to eq discussion.reload.last_sequence_id
       end
@@ -88,6 +94,7 @@ describe 'MotionService' do
   describe 'closing the motion' do
 
     describe '.close' do
+      before { motion.save }
 
       it 'stores users that did not vote' do
         MotionService.close(motion)
@@ -222,6 +229,20 @@ describe 'MotionService' do
         Events::MotionOutcomeUpdated.should_not_receive(:publish!)
         MotionService.update_outcome(motion: motion, params: {}, actor: user)
       end
+    end
+  end
+
+  describe '.update' do
+    let(:motion_params) { { description: "A mention for @#{another_user.username}" } }
+
+    it 'notifies new mentions' do
+      expect(Events::UserMentioned).to receive(:publish!).with(motion, user, another_user)
+      MotionService.update(motion: motion, params: motion_params, actor: user)
+    end
+
+    it 'does not renotify old mentions' do
+      expect { MotionService.update(motion: motion, params: motion_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+      expect { MotionService.update(motion: motion, params: motion_params, actor: user) }.to_not change  { another_user.notifications.count }
     end
   end
 end

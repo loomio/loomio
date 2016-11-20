@@ -1,0 +1,34 @@
+nl-NL:
+  navigation:
+    blog: Blog
+    resources: Bronnen
+    case_studies: Voorbeelden
+    help: Help
+    guides_and_tips: 'Handleidingen & Tips'
+    developers: Ontwikkelaars
+    about: Over
+    pricing: Prijsplan
+    contact: Contact
+    login: Inloggen
+    start_group: Start groep
+    home: Home
+    terms_of_service: Gebruiksvoorwaarden
+    privacy: Privacy
+    translation: Vertaling
+    newsletter: Nieuwsbrief
+    twitter: Twitter
+    facebook: Facebook
+  marketing:
+    gather:
+      heading: Verzamelen
+    discuss:
+      heading: Bespreken
+    propose:
+      heading: Voorstellen
+    try_it_now: Probeer het nu
+  about:
+    advisors:
+      heading: Adviseurs
+    purpose_and_values:
+      heading: Doel en waarden
+      transparent_heading: Transparantie

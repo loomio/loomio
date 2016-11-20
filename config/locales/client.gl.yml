@@ -28,14 +28,13 @@ gl:
   comment_form:
     edit_comment: Editar commentario
     delete_comment: Borrar comentario
-  navbar:
+  sidebar:
     unread: Sin ler
-    groups: Grupos
-    user_options:
-      contact_us: Contáctenos
-      new_group: Novo grupo
-      profile: Perfil
-      help: Axuda
+    edit_profile: Editar perfíl
+    email_settings: Opcións do correo
+    help: Axuda
+    sign_out: Pechar sesión
+  navbar:
     search:
       placeholder: Buscar
       discussions: Debates
@@ -73,7 +72,6 @@ gl:
     heading: Pedir unirse ó grupo
     name_label: Nome
     email_label: Correo electrónico
-    introduction_label: Introdúcete
     submit_button: Pedir unirse ó grupo
   group_page:
     discussions: Debates
@@ -81,8 +79,6 @@ gl:
     options_label: Opcións
     options:
       label: Opcións
-    leave_group:
-      title: Deixar grupo
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
@@ -91,18 +87,7 @@ gl:
     name_label: Nome
     coordinator_label: Coordinador/a
     remove_member_label: Borrar
-    remove_membership:
-      submit: Borrar
   profile_page:
-    change_picture:
-      use_initials: Usar iniciais
-    change_password:
-      current_password_label: Contrasinal actual
-      new_password_label: Novo contrasinal
-      password_confirmation_label: Confirmar contrasinal
-    deactivate_user:
-      title: Elimina a túa conta
-      submit: Elimina a túa conta
     profile: Perfil
     picture_label: Imaxe
     name_label: Nome
@@ -111,8 +96,13 @@ gl:
     locale_label: Lingua
   dashboard_page:
     aria_label: Panel de control
+    no_groups:
+      or: ou
     threads_from:
       today: Hoxe
+  inbox_page:
+    no_groups:
+      or: ou
   thread_group:
     aria_label: Nome do grupo
   delete_comment_dialog:

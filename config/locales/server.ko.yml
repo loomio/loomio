@@ -11,14 +11,10 @@ ko:
       subject: '%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다.'
     to_start_group:
       subject: '새로운 루미오 그룹 설정 : %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} 님이 사용자을 %{which_group} 그룹에 추가하였습니다. '
-      content: '%{who} 님이 사용자를 루미오에 %{which_group} 그룹에 추가하였습니다. 그룹으로 이동하기 위해서는 이 링크를 클릭해 주세요. '
     unsubscribe: 구독중지 혹은 이메일 설정을 변경하세요.
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
     view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
     view_discussion: 토론을 보기 위해서 여기를 선택하세요.
-    view_group: 루미오에 그룹을 보기 위해서 여기를 클릭하세요.
     view_proposal: 루미오에서 이 제안 보기
     create_proposal:
       intro: 사용자가 소속되어 있는 루미오 그룹에 새로운 제안이 만들어졌습니다.
@@ -30,21 +26,10 @@ ko:
       subject: 루미오 - 지난 24시간 동안의 요약
     missed_yesterday:
       mark_as_read: 읽음으로 표시
-    group_membership_approved:
-      intro: " '%{group_name}' 그룹에 접근하기 위한 요청에 대해서 승인이 되었습니다."
-    invitation:
-      hi: '%{name}님 안녕하세요,'
-      intro: '%{group_name} 그룹의 설정을 위해서는 아래 링크를 클릭해 주세요.'
-      closing_message: '만일 어떤 질문이 있거나 여러분이 운영을 하는데 우리가 도울 수 있는 어떤 것이 있다면, 여러분의 의견을 듣기를 원합니다. - 이 메일에 답장을 하시면 됩니다.'
-      thanks: |
-        고맙습니다.
-        루미오 팀
     membership_request:
       intro: '%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다.'
       subject: '%{who}님이  %{which_group}에 가입을 요청했습니다. '
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
-    new_motion_created:
-      context: '%{author} 님이  %{group_full_name} 그룹에 제안을 시작했습니다.'
     proposal_closed:
       specify_outcome_and_notify_group: 결과를 만들고 그룹 멤버들에게 보내기
       specify_outcome_and_notify_group_html: 결과를 만들고 그룹 멤버들에게 보내기
@@ -73,21 +58,14 @@ ko:
     success:
       header: 거의 다 되었습니다. 이메일을 확인해 주세요.
   pricing_page:
-    gift: 선물
     standard: 일반
-    plus: 게다가
     free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
     get_started_for_free: 무료로 시작하기
     unlimited_members: 멤버 제한 없음
     unlimited_decisions: 의사결정 횟수 제한 없음
     email_support: 이메일 지원
-    standard_price_html: |
-      <strong>$19</strong>미국달러/월<br><span>또는 </span> $190 미국달러/년
-    plus_body: '일반 플랜의 모든 사항, 게다가:'
     premium_support: 프리미엄 지원
     usage_statistics: 사용량 통계
-    plus_price_html: |
-      <strong>$179</strong>미국달러/월<br><span>또는 </span> $1790 미국달러/년
   contact_page:
     contact_us: 연락하기
     labels:

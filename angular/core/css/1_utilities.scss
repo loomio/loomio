@@ -145,6 +145,11 @@
   blockquote{
     font-size: inherit;
   }
+  table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 10px;
+  }
   table td {
     padding: 6px 13px;
     border: 1px solid #ddd;
@@ -177,6 +182,11 @@
 .lmo-box--featured {
   text-align: center;
   @include boxFeatured;
+}
+
+.lmo-box--medium-circular {
+  border-radius: 50% !important;
+  @include boxMediumCircular;
 }
 
 .lmo-rounded-corners {
@@ -240,10 +250,6 @@
   text-align: center;
 }
 
-textarea.form-control {
-  max-height: 400px;
-}
-
 .option-icon {
   /* a helper class to display inline icons and avatars */
   margin: 5px 5px 5px 0;
@@ -264,13 +270,13 @@ textarea.form-control {
   display: none;
 }
 
+.lmo-group-theme-padding {
+  padding-top: $navbar-height;
+}
+
 img.emojione {
   width: 25px;
   height: 25px;
-}
-
-.modal-content {
-  background-color: $modal-background-color;
 }
 
 @keyframes fadeIn {

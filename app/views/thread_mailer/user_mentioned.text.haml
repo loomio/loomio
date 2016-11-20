@@ -1,6 +1,6 @@
-= t('email.mentioned.context', discussion_title: @discussion.title, author_name: @comment.author.name)
+= t('email.mentioned.context', discussion_title: @discussion.title, author_name: @author.name)
 
-= @comment.body
-= render "attachments", comment: @comment if @comment.attachments.any?
+= @text
 
-= render "footer", link: comment_url_helper(@comment)
+- if @eventable.respond_to?(:attachments) && @eventable.attachments.any?
+  = render "attachments", resource: @eventable

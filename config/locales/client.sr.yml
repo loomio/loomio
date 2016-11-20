@@ -1,6 +1,6 @@
 sr:
   common:
-    confirm_discard_changes: Otkaži učinjene promene?
+    confirm_discard_changes: Otkaži promene?
     time:
       am: am
       pm: pm
@@ -10,6 +10,7 @@ sr:
     notification_volume: Obim Notifikacija
     group: Grupa
     groups: Grupe
+    help: Pomoć
     privacy:
       privacy: Privatnost
       public: Javno
@@ -88,20 +89,86 @@ sr:
     quiet: Tiho
     mute: Isključeno
     unmute: Uključi
+  change_volume_form:
+    loud_label: Sva aktivnost
+    normal_label: Važne aktivnosti
+    quiet_label: Nema ePoruka
+    mute_label: Utišaj
+    discussion:
+      title: 'Opcije ePoruka za {{title}}'
+      loud_description: Dobičete ePoruku kada god ima aktivnosti u ovoj niti.
+      normal_description: 'Dobićete ePoruku kada se pojavi predlog, pred njegovo zatvaranje ili kada je ishod određen.'
+      quiet_description: Nećete biti obaveštavani o ovoj niti.
+      apply_to_all: Primeni ove opcije na svim nitima u ovoj grupi.
+      messages:
+        loud: Dobićete ePoruku o aktivnostima u ovoj niti.
+        normal: Bićete obavešteni ePorukom o predlozima u ovoj niti.
+        quiet: Nećete biti obaveštavani ePorukom o ovoj grupi.
+    membership:
+      title: 'Opcije ePoruka za {{title}}'
+      loud_description: Dobićete ePoruku kada god ima aktivnosti u ovoj grupi.
+      normal_description: Bićete obavešteni ePorukom o novim nitima i predlozima u ovoj grupi.
+      quiet_description: Nećete dobijati ePoruke o aktivnostima u ovoj grupi.
+      apply_to_all: Primeni ove opcije na sve moje grupe.
+      messages:
+        loud: Bićete obaveštavani ePorukama o svim aktivnostima u ovoj grupi.
+        normal: Bićete obavešteni ePorukom o novim nitima i predlozima u ovoj grupi.
+        quiet: Nećete biti obaveštavani ePorukom o ovoj grupi.
+    all_groups:
+      messages:
+        loud: Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi.
+        normal: Bićete obavešteni ePorukom o novim nitima i predlozima u svim vašim grupama.
+        quiet: Nećete primati ePoruke ni o jednoj od vaših grupa.
+    user:
+      title: Opcije ePoruka za nove grupe
+      loud_description: Bičete obavešteni ePorukom kada ima aktivnosti u nekoj grupi kojoj ste se priključili.
+      normal_description: Bićete obavešteni ePorukom o novim nitima i predlozima u svim novim grupama kojima se priključite.
+      quiet_description: Nećete dobijati ePoruke o aktivnostima u grupama kojima se priključite.
+      apply_to_all: Primeni ove opcije na sve moje grupe.
+      messages:
+        loud: Bićete obaveštavani ePorukama o svim aktivnostima u novim grupama.
+        normal: Bićete obavešteni ePorukom o novim nitima i predlozima u novim grupama.
+        quiet: Nećete primati ePoruke o novim grupama.
+  mute_explanation_modal:
+    mute_thread: Utišaj nit
   inbox:
     clear: Očisti
     latest: Poslednje
     unread: Nepročitano
     closing_in: Zatvaranje
-  session_form:
-    email_label: 'eAdresa:'
+  sign_in_form:
+    title: Prijavite se na Lumio
+    email_label: 'ePoruka:'
+    email_placeholder: tvojeime@primer.com
     password_label: 'Lozinka:'
-    remember_me: Zapamti Me
+    remember_me: Zapamti me
+    forgot_password: Zaboravljena lozinka?
     sign_in: Prijava
+    signed_in: Uspešno ste se prijavili
+    oauth:
+      title: 'Ili se prijavite pomoću naloga sa:'
+      facebook: Upotrebi Facebook
+      twitter: Upotrebi Twitter
+      google: Upotrebi Google
+      github: Upotrebi Github
+  sign_up_form:
+    title: 'Dobrodošli na Lumio! Hajde da Vas pripremimo'
+    name_label: 'Tvoje ime:'
+    name_placeholder: Džejn Do
+    email_label: 'eAdresa:'
+    email_placeholder: tvojeime@primer.com
+    password_label: 'Lozinka:'
+    password_confirmation_label: 'Ponovite lozinku:'
+    sign_in_message: Imate već nalog?
+    sign_in: Prijavi Se
+    sign_up: Napravi nalog
+  signed_out_modal:
+    message: Odjavljeni ste sa Lumija sa drugog prozora. Molim prijavite se ponovo da nastavite.
+    ok: U redu
   comment_form:
     aria_label: Dodaj komentar
     attachments:
-      aria_label: Prikači datoteku
+      add_attachment: Prikači datoteku
       remove_attachment: Ukloni dodatak
     messages:
       created: Komentar je dodat
@@ -118,25 +185,28 @@ sr:
       label: Upiši
     private_privacy_notice: 'Vaš komentar će biti vidljiv samo za članove {{groupName}}.'
     public_privacy_notice: Vaš komentar će biti vidljiv svima na mreži.
-  navbar:
-    recent: Poslednje
+    sign_in: Prijavite se za priključivanje konverzaciji
+  sidebar:
+    recent: Najnovije
     unread: Nepročitano
-    groups: Grupe
+    muted: Utišano
+    start_group: 'Pokreni novu grupu!'
+    explore: Javne grupe
+    edit_profile: Izmeni profil
+    email_settings: ePoruke
+    help: Pomoć
+    contact: Kontaktiraj Lumio
+    sign_out: Odjava
+    aria_labels:
+      heading: Traka
+      threads_list: Opcije niti
+      groups_list: Grupe
+      user_list: Akcije korisnika
+  navbar:
     recent_title: Idi na radnu površinu
     unread_title: Vidi nepročitane aktivnosti
-    groups_title: Vidi svoje grupe
     start_thread: Kreiraj novu nit
     notifications: Tabla obaveštenja
-    user_actions: Akcije korisnika
-    user_options:
-      label: Korisničke opcije
-      contact_us: Kontaktirajte nas
-      new_thread: Nova nit
-      new_group: Nova grupa
-      profile: Profil
-      email_settings: ePoruke
-      help: Pomoć
-      sign_out: Odjava
     search:
       no_results: Niti nisu pronađene
       close: Zatvori tablu pretrage
@@ -145,14 +215,16 @@ sr:
       discussions: Niti
       proposals: Predlozi
       comments: Komentari
+    sign_in: Prijavi se
+    toggle_sidebar: Uklj/Isklj traku
   start_menu:
-    title: Dugme akcije
     start_group: Kreiraj Grupu
     start_subgroup: Kreiraj Podgrupu
     start_thread: Kreiraj nit
     invite_people: Pozovi Ljude
   notifications:
     header: Obaveštenja
+    no_notifications: Nemate nikakvih obaveštenja
     new_discussion: '<strong>{{name}}</strong> je počeo/la diskusiju <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> je kreirao/la predlog <strong>{{proposal}}</strong>'
     motion_closed: 'Zatvoren predlog: <strong>{{proposal}}</strong>'
@@ -163,7 +235,6 @@ sr:
     new_comment: '<strong>{{name}}</strong> je komentarisao/la na <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> je odgovorio/la na tvoj komentar u <strong>{{discussion}}</strong>'
     comment_liked: '<strong>{{name}}</strong> se sviđa tvoj komentar u <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> te je pomenuo/la u <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> želi biti član u <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> je odobrio/la tvoj zahtev da se priključiš u <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> te je dodao/la u grupu <strong>{{group}}</strong>'
@@ -171,11 +242,14 @@ sr:
     motion_closing_soon: 'Predlog ističe uskoro: <strong>{{proposal}}</strong>'
     motion_outcome_created: '<strong>{{name}}</strong> je objavio/la jedan ishod predloga <strong>{{proposal}}</strong>'
     motion_outcome_updated: '<strong>{{name}}</strong> izmenio/la ishod za predlog <strong>{{proposal}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> je prihvatio/la tvoj zahtev da se priključiš <strong>{{group}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> Vas je promovisao u koordinatora <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Recite šta imate
   vote_form:
     heading: Recite šta imate
     no_statement: Nema izjava.
+    statement_over_limit: 'Previše reči! Kraći stav omogućava svima da brzo shvate predlog.'
     i_agree: Slažem se
     i_agree_details: Podržavam ovo i želim da se nastavi.
     i_abstain: Suzdržan
@@ -219,13 +293,15 @@ sr:
     start_a_proposal: Kreiraj predlog
     edit_proposal: Izmeni predlog
     what_does_a_proposal_do: Predlozi omogućavaju da vidite kako se svi osećaju po pitanju određenog kursa akcije.
+    proposal_ideas: Trebaju ti ideje za pisanje dobrog predloga?
+    proposal_ideas_title: 9 načina da koristite Lumio predloge da preokrenete konverzaciju u akciju
     editing_title_and_description_forbidden: 'Ne možete promeniti naslov ili opis predloga nakon što su ljudi glasali. Ako su se detalji promenili, molimo Vas zatvorite predlog i iznesite novi.'
-    title_placeholder: Npr. Idemo na mars
+    title_placeholder: 'Npr: Hajdemo na mesec'
     title_label: Naslov
     closes_at_label: 'Zatvara se '
     closes: Zatvaranja
     details_label: Detalji
-    details_placeholder: Dajte dovoljno detalja tako da svi tačno znaju šta znači složiti se ili ne složiti se ili šta god
+    details_placeholder: Dajte dovoljno detalja kako bi svi znali šta tačno znači složiti se ili ne sa Vašim predlogom
   discussion_record:
     created: 'Nit {{title}} je uspešno kreirana u {{groupName}}'
     updated: 'Sačuvane promene za {{title}}'
@@ -263,33 +339,31 @@ sr:
   proposal_position_block: Blokiranje
   legacy_trial_expired_modal:
     heading: 'Hvala što ste koristili Loomio ove godine!'
+    body: >
+      <p>Zaista cenimo Vašu podršku tokom godine i totalno smo uzbuđeni oko toga
+      da učinimo Lumio još boljim u 2016.</p>
+
+      <p>Da li je Lumio koristan Vašoj grupi? Upravo smo objavili plan cena
+      i pitamo grupe koje već koriste Lumio neko vreme da odaberu plan koji im
+      odgovara.</p>
     submit: Pokaži mi pakete
   group_welcome_modal:
-    heading: Dobrodošli u svoju novu grupu
-    first_step: 'Vi ste <strong>koordinator</strong>, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
-    second_step: 'Kada ste spremni, <strong>pozovite ljude</strong> da uđu.'
+    creator_heading: Dobrodošli u svoju novu grupu
+    member_heading: Dobrodošli na Lumio
+    creator_info: 'Vi ste <strong>koordinator</strong> grupe, što je slično tome da ste domaćin/ca. Pogledajte video, potom proverite niti sa primerima.'
+    member_info: 'Pogledaj ovaj video da shvatiš kako Lumio radi. Zatim pokušaj komentarisati u niti diskusije, ili napravi vlastitu!'
+    creator_footer: 'Kada ste spremni, <strong>pozovite ljude</strong> unutra.'
     ok_got_it: 'U redu, shvatam!'
-  group_cover_modal:
-    heading: Nova pokrivna slika
-    upload_link: Prosledi novu pokrivnu sliku
-    helptext: 'Tražiš inspiraciju? Pogledaj <a href="https://unsplash.com/">Unsplash</a>, galeriju lepih, besplatnih slika'
-    image_size_helptext: Idealna veličina slike je 1400 x 320px
-    upload_success: Pokrivna fotografija je uspešno izmenjena
-  group_logo_modal:
-    heading: Novi logotip grupe
-    upload_link: Prosledi novi logotip grupe
-    image_size_helptext: Idealna veličina slije je 100 x 100px
-    upload_success: Logotip je uspešno promenjen
   join_group_button:
     join_group: Pridruži se grupi
     ask_to_join_group: Pitaj da se pridružiš grupi
+    membership_requested: Zahtev za članstvom je na čekanju
     messages:
       joined_group: 'Vi ste sada član {{group}}'
   membership_request_form:
     heading: Pitaj da se pridružiš grupi
     name_label: Ime
     email_label: ePošta
-    introduction_label: Predstavite se
     submit_button: Pitaj da se pridružiš grupi
     messages:
       membership_requested: 'Zahtevali ste članstvo u {{group}}'
@@ -320,12 +394,12 @@ sr:
     group_logo: Logo grupe
     new_photo: nova fotografija
     description: Opis grupe
+    description_placeholder: 'Koordinatori grupa mogu koristiti ovu oblast da opišu svrhu grupe, tako da svako zna zašto je tu.'
     discussions: Niti
     discussions_placeholder: Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.
     members: Članovi
     members_placeholder: 'Samo si ti ovde: pozovi neke ljude da ti se pridruže!'
     member_options: Opcije člana
-    all_members: 'Svi članovi ({{count}})'
     subgroups: Podgrupe
     subgroups_placeholder: Podgrupe tu omogućavaju da podeliš grupu u različite timove.
     invite_people: Pozovi ljude
@@ -337,18 +411,9 @@ sr:
       manage_members: Upravljanje Članovima
       add_subgroup: Dodaj Podgrupu
       manage_subscription: Upravljaj Praćenjem Grupa
+      email_settings: Opcije ePoruka
       leave_group: Napusti Grupu
       deactivate_group: Deaktiviraj Grupu
-    deactivate_group:
-      title: Deaktiviraj grupu
-      question: Da li ste sigurni da želite deaktivirati ovu grupu?
-      submit: 'Da, deaktiviraj ovu grupu'
-    leave_group:
-      title: Napusti grupu
-      question: Da li ste sigurni da želite napustiti ovu grupu?
-      submit: 'Da, napusti ovu grupu'
-      cannot_leave_group: 'Ne možete napustiti ovu grupu, jer ste poslednji koordinator. Morate odabrati drugog koordinatora ili deaktivirati grupu.'
-      add_coordinator: Dodaj koordinatora
     volume:
       loud: ePoruka kada god ima aktivnosti.
       loud_aria_description: Obim tvojih obaveštenja za ovu grupu je postavljen na Glasno. Dobijaćeš ePoruke kada god ima aktivnosti ovde.
@@ -367,47 +432,23 @@ sr:
       parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
       public: 'Privatnost: Ova grupa je vidljiva na mreži'
       aria_label: 'Privatnost grupe:  {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Odabran je poklon plan
-    body: 'Ako Vaša grupa nema budžet za plaćanje softvera, ne morate da platite pretplatu. Vaši članovi grupe biće povremeno pozvani da volonterski doniraju.'
-    confirm_selection: Raduje me zbog ljudi u mojoj grupi koji će biti pitani da podrže Lumio donacijom.
-    got_it: 'U redu, shvatam!'
-    go_back: Idi nazad
   donation_modal:
-    heading: Da li biste voleli da podržite Loomio?
     body: Lumio je društvena kompanija. Naša misija je da kreiramo svet u kome je lako svakome da se uključi u odluke koje utiču na na njega.
     contribute: Donirajte
-    got_to_group: Odbaci me do moje grupe
   gift_card:
     heading: Poklon plan
+    body: '<strong>{{name}}</strong> je grupa podržana poklonima. Kako bi podržao Lumio da nastavi pomagati grupama kao što je tvoja, škljocni ovde:'
     make_a_contribution: Doniraj
   trial_card:
     title: 30-odnevna proba
     choose_plan: Odaberi svoj plan plaćanja
+    in_progress_body: 'Hvala što ste isprobali Lumio sa <strong>{{name}}</strong>. Uvek možeš izabrati plan plaćanja koji odgovara tvojoj grupi.'
+    expired_body_html: '<strong>{{name}}</strong> je ostario/la kraj probnog perioda Lumija. Da nastavite sa upotrebom, trebate odabrati plan cene koja odgovara Vašoj grupi.'
   choose_plan_modal:
-    gift: Poklon
+    heading: Molim izaberite plan za svoju grupu
     standard: Standardno
-    plus: Plus
-    free_trial_html: 'Pitaćemo Vas da odaberete svoj plan plaćanja nakon <span>30 dana besplatne probe</span>. Kreditna kartica nije potrebna.'
-    get_started_for_free: Počni besplatno
-    support_before: Imam čast da
-    support_link: pričam sa tobom
-    support_after: o produženju probnog perioda ili o bilo kom pitanju koje možda imaš.
-    remind_me_later: Podseti me kasnije
-    unlimited_members: neograničeno članova
-    unlimited_decisions: neograničeno odluka
-    email_support: podrška ePorukom
-    standard_price_html: |
-      US <strong>$19</strong>/mesečno<br><span>ili</span> $190/godišnje
-    plus_body: 'Sve u Standardno, plus:'
-    premium_support: premijum podrška
-    plus_price_html: |
-      US <strong>$179</strong>/mesečno<br><span>ili</span> $1790/godišnje
     select: Odaberi
   subscription_success_modal:
-    heading: 'Hvala za postavljanje tvoje pretplate!'
-    receipt: Dobićete jednu eporuku sa potvrdom.
-    change_subscription: 'Ako ikada poželite da promenite ili otkažete svoju pretplatu ili ako imate bilo kakvih drugih pitanja,'
     contact_link: molimo kontaktirajte nas.
     sign_off: ❤ od Loomio tima
     ok_got_it: 'U redu, shvatam!'
@@ -417,6 +458,7 @@ sr:
     edit_group_heading: Promeni osobine grupe
     edit_subgroup_heading: Izmeni opcije podgrupe
     group_name: Naziv Grupe
+    group_name_placeholder: Kako želite da se Vaša grupa zove?
     subgroup_name: Naziv Podgrupe
     description: Opis
     description_placeholder: Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.
@@ -441,6 +483,7 @@ sr:
     private_threads: Samo članovi mogu videti diskusije
     permissions: Dozvole
     allow_public_threads: Dopusti javne niti u ovoj grupi.
+    parent_members_can_see_discussions: 'Članovi {{parent}} mogu videti privatne niti.'
     members_can_add_members: Članovi mogu pozivati ljude i odobravati zahteve da se pridruže.
     members_can_create_subgroups: Članovi mogu kreirati podgrupe.
     members_can_edit_discussions: Članovi mogu izmeniti kontekst i naslov svake niti.
@@ -479,13 +522,16 @@ sr:
   invitation_form:
     invite_people: Pozovi Ljude
     group: Grupa
+    group_placeholder: Odaberi grupu
     shareable_link: Deljivi link
     copy_link: Kopiraj vezu
     email_addresses: Adrese ePošte
     email_addresses_placeholder: 'kao helperbot@loomio.org, friendlybot@loomio.org'
+    email_explanation: 'Alternativno, unesi adrese ePošte ispod i Lumio će im poslati ePoruku sa pozivnicom.'
     add_custom_message: 'Učini svoje poziv ličnim,'
     add_custom_message_link: dodaj svoju poruku.
     custom_message: Tvoja poruka
+    custom_message_placeholder: Unesite ličnu poruku koja će biti deo pozivnice.
     team_invitation_message: 'Alternativno,'
     team_invitation_link: uzmi vezu za prosleđivanje.
     add_members: Dodaj članove
@@ -502,6 +548,7 @@ sr:
     add_members: Dodaj članove
     user_added_to_subgroup: '{{name}} je u Podgrupi'
     users_added_to_subgroup: '{{count}} Korisnika dodato u Podgrupu'
+    no_members_to_add: 'Svi članovi {{parent}} pripadaju ovoj podgrupi'
   memberships_page:
     members: Članovi
     name_label: Ime
@@ -512,10 +559,6 @@ sr:
       remove_member_success: 'Uklonjen(a) {{name}}'
       make_admin_success: '{{name}} je sada koordinator'
       remove_admin_success: '{{name}} nije više koordinator'
-    remove_membership:
-      title: Ukloni člana
-      question: 'Da li ste sigurni da želite ukloniti {{name}} kao člana {{group}} grupe?'
-      submit: Ukloni
     remove_admin_from_self:
       question: Da li ste sigurni da ne želite više biti koordinator?
   pending_invitations_card:
@@ -536,24 +579,6 @@ sr:
       picture_changed: Profilna slika izmenjena
       password_changed: Lozinka izmenjena
       deactivated: Nalog deaktiviran
-    change_picture:
-      title: Promeni sliku
-      helptext: 'Možete proslediti svoju sliku profila ili ako imate <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> nalog, možete upotrebiti to.'
-      use_initials: Koristi inicijale
-      use_gravatar: Koristi gravatar
-      use_uploaded: Prosledi novu sliku
-    change_password:
-      title: Promeni Lozinku
-      helptext: "Lozinka mora biti 8 znakova duga. Česte lozinke kao što je 'password' su zabranjene da održe tvoj nalog bezbednim."
-      current_password_label: Trenutna lozinka
-      new_password_label: Nova lozinka
-      password_confirmation_label: Potvrdi novu lozinku
-      submit: Izmeni lozinku
-    deactivate_user:
-      title: Deaktiviraj nalog
-      question: Hoćeš li nam reći zašto deaktiviraš svoj nalog?
-      placeholder: 'Odgovor na ovo pitanje nije obavezan. Svaka informacija koju podeliš sa nama će nam pomoći da unapredimo Loomio :)'
-      submit: Deaktiviraj nalog
     change_picture_link: Promeni sliku
     change_password_link: Promeni lozinku
     deactivate_user_link: Deaktiviranje naloga...
@@ -567,17 +592,33 @@ sr:
     update_profile: Promena profila
   email_settings_page:
     header: ePoruke
+    all_groups: Opcije svih grupa
     daily_summary_label: Dnevni izveštaj ePorukom
+    daily_summary_description: 'Svakog jutra, dobićete jednu ePoruku sa svim aktivnostima koje ste propustili dan ranije. Ova ePoruka pruža jednu jednostavnu rutinu da ostanete obavešteni do dana sa Lumio aktivnostima.'
+    on_participation_label: Pretplati se na učešće
+    on_participation_description: 'Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom.'
+    mentioned_label: Pominjanja
     mentioned_description: 'Kada neko želi da Vam skrene pažnju, @pomenuće Vas. Preporučujemo da ostavite ovo uključeno, tako da dobijete jednu ePoruku kada se ovo dogodi.'
+    update_settings: Ažuriraj opcije svih grupa
+    specific_groups: Opcije određenih grupa
+    default_settings:
+      loud_description: 'Kada se pridružite novoj grupi, bićete obavešteni ePorukom <strong>kada god bude aktivnosti u njoj</strong>.'
+      normal_description: 'Kada se pridružite novoj grupi, bićete obavešteni ePorukom o <strong>novim nitima i predlozima</strong>.'
+      quiet_description: 'Kada se pridružite novoj grupi, <strong>nećete biti obavešteni ePorukom o aktivnostima</strong>.'
+    change_default: Izmeni uobičajeno
+    edit: Uredi
     messages:
       updated: Tvoja podešavanja su ažurirana
   dashboard_page:
     aria_label: Tabla
-    options:
-      aria_label: Opcije filtriranja
+    no_groups:
+      show_all: Nemaš novih niti jer nisi član ni jedne grupe.
+      show_muted: Nemaš prigušenih niti jer nisi član ni jedne grupe.
+      start: Start
+      or: ili
+      join_group: '<a href="/explore">priključi se</a> grupi da vidiš niti.'
     no_threads:
       show_all: Nemate skorih niti
-      show_participating: Niste se pridružili u skorije vreme nekoj niti.
       show_starred: Nemate omiljenih niti.
       show_proposals: Nema trenutno aktivnih predloga.
       show_muted: Nemate utišanih niti.
@@ -588,15 +629,12 @@ sr:
       filter_threads: Filtriraj Niti
       filter_threads_aria_label: Filtriraj Niti
       dropdown_heading: Filtriraj radnu površinu
-      all: Skorašnjw niti
+      all: Skorašnje Niti
       all_aria_label: Trenutno prikazuje najnovije niti
       all_description: Vidi novije niti
       starred: Omiljene Niti
       starred_aria_label: Trenutno prikazuje niti označene kao važne
       starred_description: Vidi samo niti koje su označene kao važne
-      participating: Niti u kojima učestvujem
-      participating_aria_label: Trenutno prikazuje niti u kojima učestvujem
-      participating_description: Vidi samo niti u kojima si
       proposals: Predlozi
       proposals_aria_label: Trenutno prikazuje niti sa aktivnim predlozima
       proposals_description: Vidi samo niti sa aktivnim predlozima
@@ -607,6 +645,9 @@ sr:
       unread: '{{count}} nepročitanih stavki.'
       current_proposal: 'Trenutni predlog: {{name}}.'
       you_voted: 'Vaš glas: {{position}}.'
+    thread_preview:
+      you_voted: 'Glasali ste {{position}}'
+      undecided: Neodlučni ste
     threads_from:
       group: Niti od
       proposals: Predlozi
@@ -622,6 +663,11 @@ sr:
     no_threads: 'Juhu! Pročitali ste sve niti u svom sandučetu.'
     unread_threads: Nepročitane Niti
     view_more: Vidi Više
+    no_groups:
+      explanation: Nemaš nepročitanih niti jer nisi član ni jedne grupe.
+      start: Start
+      or: ili
+      join_group: '<a href="/explore">priključi se</a> grupi da vidiš niti.'
   groups_page:
     page_header: Tvoje grupe
   discussion:
@@ -640,11 +686,14 @@ sr:
     liked_by_names_and_name: 'Sviđa se {{joinedNames}} i {{name}}.'
     started_by: 'Kreirano od strane <strong>{{name}}</strong> '
     edited: Izmenjeno
+    volume:
+      mute_message: Nit je utišana.
   thread_group:
     aria_label: Naziv grupe
   thread_context:
     aria_label: Kontekst niti
     thread_options: Opcije niti
+    email_settings: Opcije ePoruka
     edit_thread: Izmene
     move_thread: Premesti
     print_thread: Štampa
@@ -677,17 +726,48 @@ sr:
       aria_label: Opcije komentara
       edit_comment: Izmeni komentar
       delete_comment: Obriši komentar
+    in_reply_to: 'kao odgovor <strong>{{recipient}}</strong>'
     edited: Izmenjeno
   new_vote_item:
     agree: slažu se
     abstain: susdražani
     disagree: ne slaže se
     block: blokira
+    agree_with_statement: 'saglasno: <span>{{statement}}</span>'
+    abstain_with_statement: 'uzdržano: <span>{{statement}}</span>'
+    disagree_with_statement: 'nesaglasno: <span>{{statement}}</span>'
+    block_with_statement: 'blokira: <span>{{statement}}</span>'
+  new_proposal_item:
+    author_created_proposal: 'pokrenulo predlog: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'Predlog je istekao: <span>{{title}}</span>'
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: 'zatvorilo predlog: <span>{{title}}</span>'
+  proposal_edited_item:
+    name: 'ažuriralo naslov predloga: <span>{{title}}</span>'
+    description: ažirirao/la opis predloga
+    closing_at: 'ažurirao/la rok isteka predloga za <span>{{time}}</span>'
+    description_name: ažirirao/la naslov predloga i opis
+    closing_at_name: ažurirao/la naslov predloga i datum isteka
+    closing_at_description: ažurirao/la opis predloga i datum isteka
+    closing_at_description_name: 'ažurirao/la naslov predloga, opis i datum zatvaranja'
+  proposal_outcome_created_item:
+    proposal_outcome_created: 'objavio/la ishod predloga:'
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: 'ažurirao/la ishod predloga:'
   discussion_edited_item:
+    attachment_ids: ažurirao/la priloge niti
+    title: 'ažurirao/la naslov niti: <span>{{title}}</span>'
+    description: ažurirao/la  kontekst niti
+    description_title: ažurirao/la naslov niti i kontekst
+    private: ažurirao/la privatnost niti kao
     public_to_private: privatno
     private_to_public: javno
+    private_title: ažurirao/la  naslov i privatnost niti
+    description_private: ažurirao/la kontekst i privatnost niti
+    description_private_title: 'ažurirao/la  naslov niti, kontekst i privatnost'
+  discussion_moved_item:
+    discussion_moved: 'pomerio/la nit iz <span>{{group}}</span>'
   contact_message_form:
     contact_us: Kontakiraj nas
     name_label: Tvoje ime
@@ -776,7 +856,18 @@ sr:
       Kada postoji odluka koju grupa treba doneti, ona se pojavljuje na desnoj strani.
     getting_the_most: Iskoristite Lumio na najbolji način
     have_your_say: Recite šta imate
-    have_your_say_details_html: "<p>Kada ste spremni da kažete svoje, škljocnite na jednu od četiri ikona za odlučivanje.</p>\n<p>Kada ste se odlučili, napišite kratko objašnjenje. Ispod grafičkog prikaza statistike,\nmožete videti šta ostali misle. Na taj način lako možete pratiti \ndiskusiju. Kada pristigne nova informacija, možete promeniti svoju\npoziciju bilo kada.</p>\n"
+    have_your_say_details_html: >
+      <p>Kada ste spremni da kažete svoje, škljocnite na jednu od četiri ikona za
+      odlučivanje.</p>
+
+      <p>Kada ste se odlučili, napišite kratko objašnjenje. Ispod grafičkog
+      prikaza statistike,
+
+      možete videti šta ostali misle. Na taj način lako možete pratiti
+
+      diskusiju. Kada pristigne nova informacija, možete promeniti svoju
+
+      poziciju bilo kada.</p>
     have_a_discussion: Diskutujte
     have_a_discussion_description: Tema i svaka relevantna prateća informacija stoji na vrhu strane. Koristite polje za komentar da iskažete svoj glas u diskusiji.
     help: Pomoć
@@ -831,7 +922,22 @@ sr:
     positions_disagree_description: '<span>Ne slažem se</span> znači da misliš da postoji bolje rešenje, ali da si spreman da nastaviš sa odlukom grupe.'
     positions_block_description: '<span>Blokiraj</span> znači da imate ozbiljne primedbe i bićete prilično nezadovoljni ako ovaj predlog nastavi dalje u tom pravcu.'
     start_discussion: Početi jednu zanimljivu diskusiju
-    start_discussion_html: "<p>Kada pokrenete diskusiju, potrudite se da naziv diskusije detaljno opiše temu.\nKoristite Kontekst Panel da iznesete sve prateće, neophodne informacije za\ngrupu, kako bi vaša diskusija bila produktivna i informatisana dovoljno.</p>\n<p>Tokom diskusije Kontekst Panel može biti dopunjen kada saznate \nnešto novo. Takođe, kako tema krene da se razjašnjava, možete ga koristiti i za deljenje resursa, sumiranje diskusije kako ona napreduje ili za isticanje\nprotokola koje grupa koristi za donošenje odluke.</p>\n"
+    start_discussion_html: >
+      <p>Kada pokrenete diskusiju, potrudite se da naziv diskusije detaljno opiše
+      temu.
+
+      Koristite Kontekst Panel da iznesete sve prateće, neophodne informacije za
+
+      grupu, kako bi vaša diskusija bila produktivna i informatisana
+      dovoljno.</p>
+
+      <p>Tokom diskusije Kontekst Panel može biti dopunjen kada saznate
+
+      nešto novo. Takođe, kako tema krene da se razjašnjava, možete ga koristiti
+      i za deljenje resursa, sumiranje diskusije kako ona napreduje ili za
+      isticanje
+
+      protokola koje grupa koristi za donošenje odluke.</p>
     start_proposal: Kako napisati jasan predlog
     start_proposal_html: >
       <p> Ako napravite jasan i sažet naslov, ljudi će odmah tačno znati
@@ -863,6 +969,12 @@ sr:
     invitation: Saveti za pisanje sjajnog poziva
     proposal: Saveti za pisanje jasnog predloga
     vote: Možete promeniti svoj stav bilo kada
+  explore_page:
+    header: Istraži Lumio grupe
+    search_placeholder: Traži javne Lumio grupe
+    single_search_result: '1 javna grupa se podudara sa <strong>{{searchTerm}}:</strong>'
+    multiple_search_results: '{{resultCount}} javnih grupa se podudara sa <strong>{{searchTerm}}:</strong>'
+    no_results_found: "<strong>Ne možeš naći grupu koju tražiš?</strong> Ako je grupa 'tajna', neće se pojaviti ovde. Ako poznaješ koordinatora grupe, možeš ga pitati za pozivnicu."
   angular:
     switch_back: Vrati se na stari Lumio
     give_feedback: Objasnite nam
@@ -870,6 +982,41 @@ sr:
     enable:
       invite: 'Probaj novi Loomio!'
       title: Probaj novi Loomio
+      intro: 'Reizgradili smo Lumio i potrebna nam je tvoja pomoć da sigurno bude fenomenalan!'
+      body_html: >
+        <p></p>
+
+        <h3>Kakva je razlika zapravo?</h3>
+
+
+
+        <p>
+
+        Novi interfejs je kao stari interfejs ali noviji:
+
+        <ul>
+
+        <li>Sve se prikazuje uživo na stranici odmah kada se dogodi</li>
+
+        <li>Dizajniran je za sve Vaše uređaje, od pametnog telefona do ličnog
+        računara</li>
+
+        <li>Pristupačan je slabovidim i slepim osobama, i preveden je na <a
+        href="https://www.loomio.org/translation">mnoštvo jezika</a>
+
+        </ul>
+
+        </p>
+
+
+
+        <p>Koristi istu bazu podataka kao i stari interfejs, što znači da će
+        zadržati sve Vaše postojeće grupe i diskusije.</p>
+
+        <p>Tu je i funkcija "Javite nam" u donjem levom uglu. Takođe, videćete
+        i "Vrati stari Lumio", što će ostati na raspolaganju još neko vreme.</p>
+
+        <p>Zaista očekujemo da nam javite, hvala na Vašem vremenu i podršci.</p>
       button_text: Omogući novi Loomio
     disable:
       title: Hvala što probate novi Loomio
@@ -878,14 +1025,21 @@ sr:
       button_text: Prebaci na stari Loomio
   global:
     messages:
+      app_update: Nova verzija Lumija je takođe dostupna
       reload: Osveži
   emoji_picker:
     search: Naži jedan emoji
+    no_emojis_found: "Nema emoja za '{{term}}'!"
   authorized_apps_page:
+    title: Odobrene Aplikacije
+    no_applications: Niste odobrili ni jednu aplikaciju treće strane još uvek.
+    notice: "Dali ste sledećim aplikacijama dopuštenje da koriste Vaš nalog. Škljocnite na 'Opozovi' da ih isključite."
     revoke: Povuci
   registered_apps_page:
     title: Registrovane Aplikacije
+    no_applications: 'Nemate ni jednu OAuth aplikaciju još uvek! Škljocnite ispod da kreirate jednu.'
     name: Ime
+    redirect_uris: URI preusmeravanja
     create_new_application: Nova Aplikacija
   registered_app_page:
     uid: ID Aplikacije
@@ -894,4 +1048,25 @@ sr:
     new_application_title: Nova Aplikacija
     edit_application_title: Osveži aplikaciju
     name_label: Ime
+    name_placeholder: Kako se zove Vaša aplikacija?
+    redirect_uri_label: Preusmeri URI
+    redirect_uri_placeholder: 'Pozivni URI Vaše aplikacije, npr: https://mojaaplikacija.com/lumio/poziv'
+    redirect_uri_note: "(jedna linija po URI, koristi 'urn:ietf:wg:oauth:2.0:oob' za lokalne testove)"
+    new_application_submit: Kreiraj Aplikaciju
     edit_application_submit: Osveži aplikaciju
+    messages:
+      logo_changed: Logo je ažuriran.
+      created: "Napravljeno '{{name}}'"
+      updated: "Ažurirano '{{name}}'"
+  remove_app_form:
+    title: 'Deaktiviraj {{name}}'
+    question: "Da li ste sigurni da želite deajtivirati aplikaciju '{{name}}'? Ova akcija se ne može opozvati."
+    submit: Deaktiviraj
+    messages:
+      success: "'{{name}}' je uspešno deaktivirano"
+  revoke_app_form:
+    title: 'Ukini pristup za {{name}}'
+    question: "Da li ste sigurni da želite onemogućiti '{{name}}' da koristi Vaš nalog?"
+    submit: Ukini pristup
+    messages:
+      success: "'{{name}}' ne može više koristiti Vaš nalog."

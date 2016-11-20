@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig) ->
+angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Records, FormService, $location, AbilityService, ModalService, ChangePictureForm, ChangePasswordForm, DeactivateUserForm, $translate, Session, AppConfig, DeactivationModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'profilePage'})
 
   @init = =>
@@ -22,9 +22,6 @@ angular.module('loomioApp').controller 'ProfilePageController', ($rootScope, Rec
     ModalService.open ChangePasswordForm
 
   @deactivateUser = ->
-    ModalService.open DeactivateUserForm
-
-  @canDeactivateUser = ->
-    AbilityService.canDeactivateUser()
+    ModalService.open DeactivationModal
 
   return

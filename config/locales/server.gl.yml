@@ -12,10 +12,8 @@ gl:
       summary: Resumo
     thread_mailer:
       change_preferences: 'Cambiar as preferencias de correo:'
-      new_motion: '%{who} propuxo:'
       motion_closing_soon: 'Propostas que vencen en 24 horas:'
       proposal_closed: 'Propostas pechadas:'
-      outcome_created: '%{who} propuxo dar por feita a proposta:'
       you_agreed: 'Ti %{past_tense_position}'
   footer:
     about: Acerca de

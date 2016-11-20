@@ -13,10 +13,9 @@ cmn:
   comment_form:
     delete_comment: 删掉评论
     confirm_delete_message: 你确定你想要删掉这条评论吗？
+  sidebar:
+    sign_out: 推出
   navbar:
-    groups: 组群
-    user_options:
-      new_group: 新组
     search:
       discussions: 讨论
   vote_form:
@@ -51,18 +50,12 @@ cmn:
     options_label: 选项
     options:
       label: 选项
-    leave_group:
-      title: 离开团队
   membership_requests_page:
     approve: 批准
   memberships_page:
     members: 成员
     name_label: 名字
   profile_page:
-    change_password:
-      current_password_label: 当前密码
-      new_password_label: 新的密码
-      password_confirmation_label: 确认新密码
     picture_label: 图片
     name_label: 名字
     email_label: 邮件

@@ -1,0 +1,6 @@
+.thread-mailer__avatar-container
+  - if author.avatar_kind == 'initials'
+    .thread-mailer__avatar-initials
+      = author.avatar_initials
+  - else
+    = image_tag author.avatar_url(:small), alt: "#{author.name}", class: "thread-mailer__avatar-image"

@@ -101,7 +101,20 @@ describe API::CommentsController do
         it 'responds with json' do
           post :create, comment: comment_params
           json = JSON.parse(response.body)
-          expect(json.keys).to include *(%w[users attachments comments])
+          expect(json.keys).to include *(%w[users comments])
+        end
+
+        describe 'mentioning' do
+          it 'mentions appropriate users' do
+            group.add_member! another_user
+            comment_params[:body] = "Hello, @#{another_user.username}!"
+            expect { post :create, comment: comment_params, format: :json }.to change { Event.where(kind: :user_mentioned).count }.by(1)
+          end
+
+          it 'does not mention users not in the group' do
+            comment_params[:body] = "Hello, @#{another_user.username}!"
+            expect { post :create, comment: comment_params, format: :json }.to_not change { Event.where(kind: :user_mentioned).count }
+          end
         end
       end
 

@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'AddMembersModal', ->
     $scope.selectedIds = []
 
     $scope.load = ->
-      Records.memberships.fetchByGroup(group.parent().key, {per: 500})
+      Records.memberships.fetchByGroup(group.parent().key, {per: group.parent().membershipsCount})
 
     $scope.members = ->
       _.filter group.parent().members(), (user)->

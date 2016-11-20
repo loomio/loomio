@@ -1,0 +1,17 @@
+- comment = item.eventable
+- user = comment.user
+
+- user_url(user) do
+  - if user.is_logged_in?
+    - if user.avatar_kind == 'initials'
+      = user.avatar_initials
+    - else
+      = image_tag user.avatar_url(:medium)
+  - else
+
+= comment.author.name
+\
+- if comment
+  = render_email_plaintext(comment.body)
+- if comment.attachments.any?
+  = render 'thread_mailer/attachments', resource: comment

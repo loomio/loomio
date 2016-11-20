@@ -4,44 +4,19 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     @plural: 'events'
     @indices: ['id', 'discussionId']
 
-    @eventTypeMap: {
-      'user_added_to_group':            'group',
-      'membership_request_approved':    'group',
-      'discussion_moved' :              'group',
-      'membership_requested':           'membershipRequest',
-      'new_discussion':                 'discussion',
-      'discussion_edited':              'discussion',
-      'new_motion':                     'proposal',
-      'motion_closed':                  'proposal',
-      'motion_closed_by_user':          'proposal',
-      'motion_edited':                  'proposal',
-      'new_vote':                       'proposal',
-      'motion_closing_soon':            'proposal',
-      'motion_outcome_created':         'proposal',
-      'new_comment':                    'comment',
-      'comment_liked':                  'comment',
-      'comment_replied_to':             'comment',
-      'user_mentioned':                 'comment',
-      'invitation_accepted':            'membership',
-      'new_coordinator':                'membership'
-    }
+    @eventTypeMap:
+      group:              'groups'
+      discussion:         'discussions'
+      motion:             'proposals'
+      comment:            'comments'
+      comment_vote:       'comments'
+      membership:         'memberships'
+      membership_request: 'membershipRequests'
 
     relationships: ->
-      @belongsTo 'membership'
-      @belongsTo 'membershipRequest'
-      @belongsTo 'discussion'
-      @belongsTo 'comment'
-      @belongsTo 'proposal'
-      @belongsTo 'vote'
       @belongsTo 'actor', from: 'users'
       @belongsTo 'version'
-
-    group: ->
-      switch @kind
-        when 'discussion_moved', 'membership_request_approved', 'user_added_to_group' then @recordStore.groups.find(@groupId)
-        when 'membership_requested' then @membershipRequest().group()
-        when 'invitation_accepted', 'new_coordinator' then @membership().group()
-        when 'new_discussion', 'discussion_edited' then @discussion().group()
+      @hasMany  'notifications'
 
     delete: ->
       @deleted = true
@@ -49,8 +24,8 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     actorName: ->
       @actor().name
 
-    relevantRecordType: ->
-      @constructor.eventTypeMap[@kind]
+    model: ->
+      @recordStore[@constructor.eventTypeMap[@eventable.type]].find(@eventable.id)
 
-    relevantRecord: ->
-      @[@relevantRecordType()]()
+    beforeRemove: ->
+      _.invoke(@notifications(), 'remove')

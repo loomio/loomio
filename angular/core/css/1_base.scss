@@ -2,8 +2,10 @@ body {
   @include fontHelvetica;
   @include fontMedium;
   background-color: $background-color;
-  word-break: break-word;
+  word-wrap: break-word;
 }
+
+header { min-height: $navbar-height; }
 
 h1, h2, h3, h4{
   @include fontReset;

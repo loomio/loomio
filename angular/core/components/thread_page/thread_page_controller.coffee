@@ -1,8 +1,10 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, Records, MessageChannelService, ModalService, DiscussionForm, MoveThreadForm, DeleteThreadForm, ScrollService, AbilityService, Session, ChangeVolumeForm, PaginationService, LmoUrlService, TranslationService, RevisionHistoryModal, ProposalOutcomeForm) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, $mdMedia, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
+  $rootScope.$broadcast('currentComponent', { page: 'threadPage'})
+
+  @windowIsLarge = $mdMedia('gt-sm')
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
   @requestedCommentId   = parseInt($routeParams.comment or $location.search().comment)
-  $location.url($location.path())
 
   handleCommentHash = do ->
     if match = $location.hash().match /comment-(\d+)/
@@ -13,11 +15,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     ScrollService.scrollTo @elementToFocus(), 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
     (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
+    $location.url($location.path())
 
   @openVoteModal = ->
     $location.search().position and
     @discussion.hasActiveProposal() and
-    @discussion.activeProposal().key == $location.search().proposal and
+    @discussion.activeProposal().key == ($routeParams.proposal or $location.search().proposal or $routeParams.proposal) and
     AbilityService.canVoteOn(@discussion.activeProposal())
 
   @openOutcomeModal = ->
@@ -33,7 +36,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     else if Records.events.findByDiscussionAndSequenceId(@discussion, @sequenceIdToFocus)
       '.activity-card__last-read-activity'
     else
-      '.thread-context'
+      '.context-panel'
 
   @threadElementsLoaded = ->
     @eventsLoaded and @proposalsLoaded
@@ -53,6 +56,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
       $rootScope.$broadcast 'currentComponent',
         page: 'threadPage'
+        group: @discussion.group()
         links:
           canonical:   LmoUrlService.discussion(@discussion, {}, absolute: true)
           rss:         LmoUrlService.discussion(@discussion) + '.xml' if !@discussion.private
@@ -64,7 +68,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageEventsLoaded',    (e, event) =>
-    $window.location.reload() if @eventRequiresReload(event)
+    $window.location.reload() if @discussion.requireReloadFor(event)
     @eventsLoaded = true
     @comment = Records.comments.find(@requestedCommentId) unless isNaN(@requestedCommentId)
     @performScroll() if @proposalsLoaded or !@discussion.anyClosedProposals()
@@ -74,44 +78,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
 
-  @eventRequiresReload = (event) ->
-    event and event.discussion() == @discussion and !@discussion.eventIsLoaded(event)
-
   @group = ->
     @discussion.group()
 
-  @showLintel = (bool) ->
-    $rootScope.$broadcast('showThreadLintel', bool)
-
-  @editThread = ->
-    ModalService.open DiscussionForm, discussion: => @discussion
-
-  @moveThread = ->
-    ModalService.open MoveThreadForm, discussion: => @discussion
-
-  @deleteThread = ->
-    ModalService.open DeleteThreadForm, discussion: => @discussion
-
-  @showContextMenu = =>
-    @canEditThread(@discussion)
-
   @canStartProposal = ->
     AbilityService.canStartProposal(@discussion)
-
-  @openChangeVolumeForm = ->
-    ModalService.open ChangeVolumeForm, model: => @discussion
-
-  @canChangeVolume = ->
-    Session.user().isMemberOf(@discussion.group())
-
-  @canEditThread = =>
-    AbilityService.canEditThread(@discussion)
-
-  @canMoveThread = =>
-    AbilityService.canMoveThread(@discussion)
-
-  @canDeleteThread = =>
-    AbilityService.canDeleteThread(@discussion)
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview
@@ -119,12 +90,12 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @proposalButtonInView = ($inview) ->
     $rootScope.$broadcast 'proposalButtonInView', $inview
 
-  @showRevisionHistory = ->
-    ModalService.open RevisionHistoryModal, model: => @discussion
-
-  @print = ->
-    $window.print() and true
-
   TranslationService.listenForTranslations($scope, @)
+
+  checkInView = ->
+    angular.element(window).triggerHandler('checkInView')
+
+  KeyEventService.registerKeyEvent $scope, 'pressedUpArrow', checkInView
+  KeyEventService.registerKeyEvent $scope, 'pressedDownArrow', checkInView
 
   return

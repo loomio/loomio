@@ -1,0 +1,184 @@
+zh-TW:
+  navigation:
+    blog: 部落格
+    resources: 資源
+    resources_dropdown: 資源下拉選單
+    resources_submenu: 資源子選單
+    header_menu_label: 標題選單
+    case_studies: 案例探討
+    help: 教學文件
+    guides_and_tips: 指南與提示
+    developers: 開發者
+    coop_handbook: 協作手冊
+    about: 關於
+    pricing: 價格
+    contact: 聯絡我們
+    login: 登入
+    start_group: 啟動群組
+    home: 主畫面
+    terms_of_service: 服務條款
+    privacy: 隱私權
+    translation: 翻譯
+    newsletter: 電子報
+    twitter: Twitter
+    facebook: Facebook
+    trademark_statement: © 2016 Loomio 有限公司。保留所有權利。“Loomio” 是 Loomio 有限公司的註冊商標。
+  marketing:
+    hero:
+      dilemma_html: 與您的群組共同做出好的決策不應該是困難的。
+      dilemma_image_alt: 不開心的小組成員圍繞著凌亂的桌子掙扎著溝通
+      solution: 使用 Loomio，您可以不用透過大量的電子郵件或是會議來做出決策。
+      solution_image_alt: 快樂的小組成員拿著以燈泡與交織的線路連接而成的裝置。
+      arrow_alt: 箭頭從困境圖指向解決方案圖
+    macbook_android_image_alt: 在筆記型電腦與 Android 裝置上的 Loomio
+    make_decisions_html: 'Loomio 是一個讓您的群組<strong>共同做出決策</strong>的地方。'
+    gather:
+      heading: 聚集
+      explanation: 讓對的人與對的資訊相遇。無障礙、易用、可自訂，與隱私和安全相關的細膩選項。
+      image_alt: 圍繞著問號的小組
+    discuss:
+      heading: 討論
+      explanation: 有清楚、不離題的對話。保持最新的資訊，並過濾噪音。它是為了建設性合作所準備的空間。
+      image_alt: 分享資訊與有著彩色對話泡泡的表達意見小組
+    propose:
+      heading: 提案
+      explanation: 視覺化的摘要讓您可以快速了解每個人的立場，以及為什麼。若您同意，就可以很快地找到。或是切入其問題所在並開始建立共識。
+      image_alt: 以彩色對話泡泡與圓餅圖討論的群組
+    decide_act:
+      heading: 決定與行動
+      explanation: 為每個提案在您設定的時間內取得明確的結果。每個人都會收到結果的通知，然後您就可以繼續向前並共同採取行動。
+      image_alt: 有著綠色大姆指向上的群組
+    try_it_now: 現在就試試
+    start_free_group: 啟動免費群組
+    fast_inclusive_effective: 快速、包容、有效率將會是您的新常規。
+    debt_resistance_uk:
+      heading: 會議中到會議間都能有生產力
+      quote: >
+        我們以前透過電子郵件溝通，但常常沒有做出決定。在 Loomio 上，我們可以討論並做出決策。以及若您在會議中討論了很多事情，您可以說：「我們在
+        Loomio 上決定吧」。這讓面對面的會議更有效率。
+      link_text: 閱讀更多關於在英國的一個社群組織如何在會議間繼續工作，以建立更民主的社會...
+    pathways:
+      heading: 提高工作人員的參與度與滿意度
+      quote: |
+        Loomio 從根本上改變了工作人員的參與度與滿意度。這似乎是不可思議地自然支援組織的成長，但其實是由人們自己產生的。您還要一個 CEO 嗎？
+      link_text: 閱讀更多關於一個大型的紐西蘭非政府組織使用 Loomio 來讓工作人員決策更有效率...
+    welsh_government:
+      heading: 讓公民與利益相關者相互磋商
+      quote: >
+        參與者們互相交談，也與我們交談。他們使用 Loomio 告訴我們他們經歷了哪些問題，以及他們想要威爾斯政府做些什麼...。使用 Loomio
+        強化了我們的委員會會議，整體改善了我們參與過程的滿意度與有效程度。
+      link_text: 閱讀更多關於威爾斯國民議會如何使用 Loomio 來服務使用者與提供諮詢...
+    ouishare:
+      heading: 全球協作的大型社群
+      quote: >
+        您需要建立信任。人們想要了解發生了什麼事。這就需要文件了：能夠顯示這個決策是怎麼被做出來的，且所有人都同意。而其對新加入的人來說也是很好的，因為其可以看到舊的討論。這是成為學習型組織的關鍵。
+      link_text: 閱讀更多關於 OuiShare，一個跨國的大型社會運動如何使用 Loomio 來進行透明與集體的行動...。
+    urban_adventures:
+      heading: 分散式團隊的遠端協作
+      quote: >
+        當您在一天結束時，對話仍在不同時區間進行，代表您即使在睡覺時也可以離決策更進一步。每件事都將因此加速且增加第一此就做出正確決策的機會。在剛開始的世界中，這是絕佳的組合。
+      link_text: 閱讀更多關於一個工作人員從澳洲到越南再到加拿大的商業機構如何使用 Loomio 來團隊協作...
+    features:
+      heading: Loomio 的每個功能都能協助您團隊討論、決定與更向前走。其不同於投票、問卷或是社群網路。
+      choose_participants_heading: 選擇誰需要決定什麼。
+      choose_participants_explanation: 取得過程並使用 Loomio 可以協助您釐清在您的組織中是如何做出決策的。群組可以是公開或是私人的，有相當細膩的隱私控制。
+      deliberation_heading: 用做的比用說的好。
+      deliberation_explanation: Loomio 專為建設性討論建立了一個簡單的決策框架。不要拘泥於衝突，一同工作並找出最佳解法。
+      iterate_heading: 提案隨著您的思維逐步進化。
+      iterate_explanation: 共同決策非常強大，即便初始的提案沒有取得共識。透過解決分歧來進一步結合並提出新的解決方案。
+      deadlines_heading: 截止日期驅策前進。
+      deadlines_explanation: Loomio 的提案是有時間限制的，以確保您的團隊在欲振乏力前繼續前行。每個人都能知道其提出意見的時間限制，並在截止日期前會有自動提醒。
+      fewer_meetings_heading: 在沒有會議時也能有生產力。
+      fewer_meetings_explanation: 持續的討論而不必在同一間房間裡。在線上完成更多事情，然後您就可以將寶貴的會議時間留給那些真正需要面對面討論的事項。
+      notifications_heading: 通知讓您了解最新資訊。
+      notifications_explanation: 可自訂的通知代表每個人都能取得他們所需要的資訊（以及忽略他們不想知道的資訊）。
+      archive_heading: 自動決策封存。
+      archive_explanation: 在 Loomio 上，會議紀錄會自動撰寫。每個決策都會有可以搜尋的封存供您使用，其記錄了哪些人參與過、關鍵要務以及最終決策。
+      email_or_mobile_heading: 透過電子郵件或是行動裝置參與。
+      email_or_mobile_explanation: Loomio 可以在任何地方運作。若您偏好您的電子郵件收件匣，您還是可以透過這個方法參與。您也可以在各種裝置上存取應用程式。
+      accessible_heading: 無障礙與多語系
+      accessible_explanation: Loomio 提供了超過 30 種語言，其也有自動行內翻譯功能。它在設計時就考慮到了無障礙計技術，其與像是螢幕閱讀器等的輔助科技一同運作良好。
+    press:
+      fast_company: Loomio 之美在於它的簡潔。它只做它需要做的事，並無更多。
+      boingboing: Loomio 似乎是政治頭腦、技術知識與設計感的絕佳組合。
+      bbc: Loomio 被設定為公民網路界的 Facebook。
+    about_us:
+      heading: 關於我們
+      first_paragraph: Loomio 是開放原始碼軟體，其由合作社（worker-owned cooperative）式的社會企業所建造。我們位於 Aotearoa（毛利語中的紐西蘭之意），且是它的一部份：
+      second_paragraph: 我們相信多個群組實踐有效率、包容性的決策能改變全球性的組織動態。Loomio 的存在讓任何人都可以在任何地方參與會影響他們的生活的討論。
+      link_text: 了解更多關於我們的團隊、我們的故事、我們的宗旨與價值觀…
+      image_alt: Loomio 團隊 -  2016年4月
+  about:
+    heading: 關於我們
+    introduction:
+      first_paragraph: Loomio 是開放原始碼軟體，其由合作社（worker-owned cooperative）式的社會企業所建造。我們位於 Aotearoa（毛利語中的紐西蘭之意），且是它的一部份：
+      second_paragraph: 我們相信多個群組實踐有效率、包容性的決策能改變全球性的組織動態。Loomio 的存在讓任何人都可以在任何地方參與會影響他們的生活的討論。
+    story:
+      heading: 故事
+      first_paragraph: >
+        Loomio 開始於2011年，當佔領華爾街的活動家與 Enspiral
+        網路的企業家意識到，他們需要解決同樣的問題：快速、包容、不需會議的有效率決策。
+
+        2012年，我們成立了我們的合作社，並釋出了原型 (Loomio Beta)。我們發現在這世界上也有許多其他的人需要同樣的解決方案。
+      second_paragraph: |
+        2013年，我們執行了一個成功的國際募款活動，讓我們能夠在接下來的幾年內釋出軟體的新版本，Loomio 1.0。
+        2015年，我們得到了一輪道德融資，並正努力將共同做出決策帶給世界各地的數百萬人。
+    people:
+      heading: 夥伴
+      introduction: 我們是一個充滿熱情的團隊，在促進小組發展、社會變動、創業以及開放技術發展方面有深厚的專業素養。
+      alanna: 共同創辦人、促進者、無老闆領導專家、Enspiral 基金會董事、貓奴
+      babs: 公司秘書、營運、社運活動家、自然愛好者
+      ben: 共同創辦人暨董事、社群組織者、群眾智慧研究員
+      hannah: 軟體開發者、使用者支援、插畫師與 DIY 發佈者、創意活動家
+      james: 資深軟體開發者、開放原始碼社群協調者、勇敢的劍客
+      mary: 組織指導員、協作者、團隊教練、pot luck 主持人、天文愛好者
+      matthew: 看顧客戶、數字與設計
+      michael: 董事、商業與客戶開發、協調者、啟動教練、摩托車手
+      mj: 董事、美國戰略家、點連接者、教練、感到驕傲的媽媽
+      natalia: 翻譯協調者、使用者支援、社運活動家
+      richard: 共同創辦人暨軟體開發者、活動家、開放硬體駭客
+      robert: 資深開發者、DevOps、架構。設計想法並將其寫入軟體內
+      vivien: 共同創辦人、Loomio 董事會主席、聯合國兒童基金會紐西蘭委員會執行總監
+    advisors:
+      heading: 顧問
+      introduction: 國際上關心民主與科技的絕頂聰明人士組成在背後支持我們的顧問委員會。
+      sascha: X-Lab 與開放科技研究所的創辦人
+      katherine: 美國線上前資深副總裁、Root Captial 副主席
+      joi: MIT 媒體實驗室董事、Creative Commons 共同創辦人、Mozilla 基金會董事會
+      douglas: 暢銷書作家、CNN 評論員、媒體理論學家
+      matthew_and_brian: Namaste 基金會，Inflection 創辦人
+    purpose_and_values:
+      heading: 宗旨與價值
+      mission_statement: Loomio 合作社的存在是為了建立一個讓任何人都能輕易的參與可能會影響他們的討論。
+      introduction: |
+        有了正確的協作過程，群體可以產生比裡面的每個單獨個體更好的想法、決策與行動。
+        Loomio 合作社的目標是打破不同階層間參與決策的藩籬：像是鄰居間、社群組織、商業、社會運動、以及地方與中央政府。
+      coop_heading: 合作社式社會企業
+      coop_body: >
+        Loomio
+        是一個由建立它的人們所擁有的社會企業。不像傳統的以追求利潤最大化為優先的公司，對我們來說，收入本身不是最終目的，而是實現核心社會目的的手段。
+
+        合作社式 (worker-owned cooperative) 的結構是活絡我們的協作與集體所有權的強而有力的方式。
+      independent_heading: 獨立並且中立
+      independent_body: Loomio 致力於保持獨立以提供任何團體都可以前來使用的中立區域。
+      open_source_heading: 開放原始碼協作
+      open_source_body: Loomio 的目標是開發開放原始碼的工具，來讓每個人都很輕易的就能夠協作。
+      adaptive_heading: 高適應性、反省、使用者驅動
+      adaptive_body: Loomio 的目標是開發迭代、自我反省、高適應性的工具，由使用者社群的集體智慧所驅動。
+      transparent_heading: 透明
+      transparent_body: |
+        Loomio 合作社由重要的使用者與貢獻者社群所環繞。這個社群必須相信 Loomio 合作社言行一致。
+        我們致力於高標準的資訊共享。
+    postal_address: 郵寄位置：
+    physical_address: 實際位置：
+  titles:
+    new_tab: 在新分頁中開啟
+    start_group: 建立新群組表單
+    about_us: 「關於我們」頁面
+    pricing: 「價格」頁面
+    contact: 聯絡表單
+    sign_in: 登入表單
+    terms_of_service: 「服務條款」頁面
+    privacy: 「隱私權」頁面
+    translation: 翻譯指南
+    home: 首頁

@@ -1,8 +1,0 @@
-.blank
-  %section.trial-card{ng-if: "show()"}
-    %h2#trial-card__title.lmo-card-heading{ translate: "trial_card.title"}
-    %p{ng-if: "!isExpired()", translate: "trial_card.in_progress_body", translate-values: "{name: group.name}"}
-    %p{ng-if: "isExpired()", translate: "trial_card.expired_body_html", translate-values: "{name: group.name}"}
-    %button.trial-card__choose-plan-button{ng-click: "choosePlan()"}
-      %i.fa.fa-lg.fa-calendar-check-o>
-      %span{translate: "trial_card.choose_plan"}

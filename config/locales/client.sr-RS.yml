@@ -10,6 +10,7 @@ sr-RS:
     notification_volume: Обим Обавештења
     group: Група
     groups: Групе
+    help: Помоћ
     privacy:
       privacy: Приватност
       public: Јавно
@@ -20,45 +21,103 @@ sr-RS:
     selected: Означено
     date_range:
       today: Данас
+      yesterday: Јуче
+      thisweek: Ове Недеље
+      thismonth: Овог Месеца
+      older: Старије
+    more_help: Још помоћи
     models:
       proposal: Предлог
+    copy: Копирај текст
+    copied: Копирано
     action:
+      close: Затвори
       save: Сними
+      save_changes: Сачувај промене
+      update_settings: Ажурирај опције
+      reply: Одговори
       edit: Уреди
+      remove: Уклони
       like: Свиђа ми се
+      back: Назад
       unlike: Не Свиђа
+      update: Ажурирај
       cancel: Откажи
+      show_more: Прикажи још
+      view_all: Прикажи Све
+      new_thread: Нова нит
+      add_subgroup: Додај подгрупу
+      loading: Учитавање
+      translate: Преведи
+      translated: Превео Bing Translator
+      upload: Отпремљено
+      uploading: Отпремање
+    formatting_help:
+      label: Помоћ о уређивању
   error_page:
     forbidden: Немате дозволу да ово урадите.
+  start_proposal_card:
+    title: Креирај предлог
+    helptext: Спремни да донесете одлуку?
   proposal_outcome_panel:
     heading: Исход
+    set_outcome_btn: Поставите исход предлога
+    edit_outcome_link: Измени исход предлога
   proposal_outcome_form:
+    set_outcome: Поставите исход предлога
+    update_outcome: Ажурирај исход предлога
     outcome_label: Исход предлога
     publish_outcome: Објави исход
+    messages:
+      created: Исход је објављен
+      updated: Исход је ажуриран
+  previous_proposals_card:
+    heading: Претходни Предлози
+  previous_proposals_page:
+    heading: Претходни Предлози
+  proposal_collapsed:
+    expand: Опширније
+    outcome: 'Исход: {{outcome}}'
   volume_levels:
     loud: Гласно
     normal: Нормално
     quiet: Тихо
     mute: Искључено
+  change_volume_form:
+    loud_label: Сва активност
+    normal_label: Важна активност
+    quiet_label: Без еПорука
+    mute_label: Утишај
+    discussion:
+      title: 'Подешавања еПорука za {{title}}'
+    membership:
+      title: 'Подешавања еПорука za {{title}}'
   inbox:
     clear: Очисти
     unread: Непрочитано
+  sign_in_form:
+    oauth:
+      facebook: Употреби Facebook
+      twitter: Употреби Twitter
+      google: Употреби Google
+      github: Употреби Github
   comment_form:
     edit_comment: Измени коментар
     delete_comment: Обриши коментар
     confirm_delete_message: Да ли сте сигурни да желите обрисати овај коментар?
-  navbar:
+  sidebar:
     unread: Непрочитано
-    groups: Групе
-    user_options:
-      contact_us: Контактирајте нас
-      new_group: Нова група
-      profile: Профил
-      help: Помоћ
+    edit_profile: Уреди профил
+    email_settings: Подешавања еПорука
+    help: Помоћ
+    sign_out: Одјави се
+  navbar:
     search:
       placeholder: Тражи
       discussions: Низови
       proposals: Предлози
+  start_menu:
+    invite_people: Позови Људе
   notifications:
     header: Обавештења
   position_buttons_panel:
@@ -79,6 +138,7 @@ sr-RS:
     close_proposal: Затвори предлог
   proposal_form:
     start_proposal: Почетни предлог
+    start_a_proposal: Креирај предлог
     edit_proposal: Измени предлог
     title_label: Наслов
     closes_at_label: 'Затвара се '
@@ -89,8 +149,24 @@ sr-RS:
     context_label: Контекст
     privacy_label: Приватност
   proposal_expanded:
+    collapse: Склопи
+    current_votes: Тренутни гласови
+    started_by: 'Креирао/ла <strong>{{name}}</strong>'
+    only_voter_is_you: Други чланови нису још увек гласали.
+    extend_proposal: Промени датум затварања
     edit_proposal: Измени предлог
     close_proposal: Затвори предлог
+    closed_badge: Истекло
+  proposal_position_yes: Сагласност
+  proposal_position_abstain: Уздржаност
+  proposal_position_no: Несагласност
+  proposal_position_block: Одбијање
+  legacy_trial_expired_modal:
+    heading: 'Хвала што користите Лумио ове године! '
+  group_welcome_modal:
+    creator_heading: Добродошли у своју нову групу
+    member_heading: Добродошли на Лумио
+    ok_got_it: 'У реду, схватам!'
   join_group_button:
     join_group: Придружи се групи
     ask_to_join_group: Питај да се придружиш групи
@@ -98,8 +174,10 @@ sr-RS:
     heading: Питај да се придружиш групи
     name_label: Име
     email_label: еПорука
-    introduction_label: Представите се
     submit_button: Питај да се придружиш групи
+  revision_history_modal:
+    started_by: 'Креирао/ла <strong>{{name}}</strong>'
+    posted: Објављено
   group_page:
     thread_list:
       empty:
@@ -111,65 +189,73 @@ sr-RS:
     options_label: Опције
     options:
       label: Опције
-    leave_group:
-      title: Напусти групу
+      email_settings: Опције еПорука
+      leave_group: Напусти Групу
+      deactivate_group: Деактивирај Групу
     volume:
       loud: Обавести увек када има активности.
       quiet: Не обавештавај о овој групи. Активност ће бити приказана на почетној страни.
       mute: Сакриј ову групу и не обавештавај док ме неко не @означи.
+  donation_modal:
+    contribute: Допринесите
+  gift_card:
+    heading: План поклона
+    make_a_contribution: Допринесите
   choose_plan_modal:
-    gift: Поклон
     standard: Стандард
-    plus: Плус
-    free_trial_html: 'Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна.'
-    get_started_for_free: Почни бесплатно
-    unlimited_members: неограничено чланова
-    unlimited_decisions: неограничено одлука
-    email_support: подршка еПорукама
-    standard_price_html: |
-      US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње
-    plus_body: 'Све у Стандард, плус:'
-    premium_support: премијум подршка
-    plus_price_html: |
-      US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње
+  subscription_success_modal:
+    ok_got_it: 'У реду, схватам!'
+  group_form:
+    description: Опис
+    advanced_settings: Напредне опције
+    submit_update: Ажурирај опције
+  group_help_card:
+    title: Помоћ
   membership_requests_page:
     approve: Одобри
     ignore: Игнориши
+  group_previous_proposals_card:
+    heading: Претходни Предлози
+    see_more: Види више
+  invitation_form:
+    invite_people: Позови Људе
+    group: Група
   memberships_page:
     members: Чланови
     name_label: Име
     coordinator_label: Координатор
     remove_member_label: Уклони
-    remove_membership:
-      submit: Уклони
   profile_page:
-    change_picture:
-      use_initials: Користи иницијале
-    change_password:
-      current_password_label: Тренутна лозинка
-      new_password_label: Нова лозинка
-      password_confirmation_label: Потврди нову лозинку
-    deactivate_user:
-      title: Деактивирај налог
-      submit: Деактивирај налог
     profile: Профил
     picture_label: Слика
     name_label: Име
     username_label: Корисничко Име
     email_label: еПорука
     locale_label: Језик
+  email_settings_page:
+    header: Опције еПорука
   dashboard_page:
     aria_label: Радна табла
+    no_groups:
+      or: или
     mark_as_read: Означи као прочитано
     filtering:
       proposals: Предлози
     threads_from:
       proposals: Предлози
       today: Данас
+      yesterday: Јуче
+  inbox_page:
+    no_groups:
+      or: или
   discussion:
     proposals: Предлози
+    previous_proposals: Претходни Предлози
+    started_by: 'Креирао/ла <strong>{{name}}</strong>'
   thread_group:
     aria_label: Назив групе
+  thread_context:
+    email_settings: Опције еПорука
   delete_comment_dialog:
     title: Обриши коментар
     question: Да ли сте сигурни да желите обрисати овај коментар?
@@ -259,7 +345,18 @@ sr-RS:
       Када постоји одлука коју група треба донети, она се појављује на десној страни.
     getting_the_most: Искористите Лумио на најбољи начин
     have_your_say: Реците шта имате
-    have_your_say_details_html: "<p>Када сте спремни да кажете своје, шкљоцните на једну од четири икона за одлучивање.</p>\n<p>Када сте се одлучили, напишите кратко објашњење. Испод графичког приказа статистике,\nможете видети шта остали мисле. На тај начин лако можете пратити \nдискусију. Када пристигне нова информација, можете променити своју\nпозицију било када.</p>\n"
+    have_your_say_details_html: >
+      <p>Када сте спремни да кажете своје, шкљоцните на једну од четири икона за
+      одлучивање.</p>
+
+      <p>Када сте се одлучили, напишите кратко објашњење. Испод графичког приказа
+      статистике,
+
+      можете видети шта остали мисле. На тај начин лако можете пратити
+
+      дискусију. Када пристигне нова информација, можете променити своју
+
+      позицију било када.</p>
     have_a_discussion: Дискутујте
     have_a_discussion_description: Тема и свака релевантна пратећа информација стоји на врху стране. Користите поље за коментар да искажете свој глас у дискусији.
     help: Помоћ
@@ -313,7 +410,21 @@ sr-RS:
     positions_disagree_description: '<span>Не слажем се</span> значи да мислиш да постоји боље решење, али да си спреман да наставиш са одлуком групе.'
     positions_block_description: '<span>Блокирај</span> значи да имате озбиљне примедбе и бићете прилично незадовољни ако овај предлог настави даље у том правцу.'
     start_discussion: Почети једну занимљиву дискусију
-    start_discussion_html: "<p>Када покренете дискусију, потрудите се да назив дискусије детаљно опише тему.\nКористите Контекст Панел да изнесете све пратеће, неопходне информације за\nгрупу, како би ваша дискусија била продуктивна и информатисана довољно.</p>\n<p>Током дискусије Контекст Панел може бити допуњен када сазнате \nнешто ново. Такође, како тема крене да се разјашњава, можете га користити и за дељење ресурса, сумирање дискусије како она напредује или за истицање\nпротокола које група користи за доношење одлуке.</p>\n"
+    start_discussion_html: >
+      <p>Када покренете дискусију, потрудите се да назив дискусије детаљно опише
+      тему.
+
+      Користите Контекст Панел да изнесете све пратеће, неопходне информације за
+
+      групу, како би ваша дискусија била продуктивна и информатисана
+      довољно.</p>
+
+      <p>Током дискусије Контекст Панел може бити допуњен када сазнате
+
+      нешто ново. Такође, како тема крене да се разјашњава, можете га користити
+      и за дељење ресурса, сумирање дискусије како она напредује или за истицање
+
+      протокола које група користи за доношење одлуке.</p>
     start_proposal: Како написати јасан предлог
     start_proposal_html: >
       <p> Ако направите јасан и сажет наслов, људи ће одмах тачно знати
@@ -345,3 +456,5 @@ sr-RS:
     invitation: Савети за писање сјајног позива
     proposal: Савети за писање јасног предлога
     vote: Можете променити свој став било када
+  angular:
+    collapse: Склопи

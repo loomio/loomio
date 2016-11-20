@@ -1,19 +1,34 @@
 .notifications__button {
   position: relative;
-}
-
-.notifications__dropdown {
+  i { font-size: 24px; }
 }
 
 .notifications__activity {
-  font-size: 0.5em;
-  color: white;
-  padding: 2px;
+  display: inline-block;
+  min-width: 10px;
+  padding: 5px 5px;
+  color: #fff!important;
+  vertical-align: middle;
+  font-size: 10px;
   position: absolute;
-  left: 18px;
-  top: 4px;
+  left: 24px;
+  top: -4px;
+  background: #4A90E2!important;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  line-height: 5px;
+  text-align: center
 }
 
 .notifications__link {
   color: $primary-text-color;
+}
+
+.notifications__dropdown {
+  margin-top: 8px !important;
+}
+
+.navbar-notifications__blank-message {
+  text-align: center;
+  margin: 10px 0;
 }

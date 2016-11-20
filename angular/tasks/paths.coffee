@@ -15,7 +15,6 @@ module.exports =
     coffee:       _.flatten(['core/**/*.coffee', include(plugins, 'coffee')])
     haml:         _.flatten(['core/components/**/*.haml', include(plugins, 'haml')])
     scss:         _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss', include(plugins, 'scss')])
-    print:        _.flatten([include(vendor, 'css'), 'core/css/main.scss', 'core/components/**/*.scss', include(plugins, 'scss'), 'core/css/print/**/*.scss'])
     scss_include: _.flatten([include(vendor, 'css_includes'), 'core/css'])
   dist:
     fonts:        '../public/client/fonts'
@@ -33,4 +32,6 @@ module.exports =
   protractor:
     config:       'test/protractor.coffee'
     screenshots:  'test/protractor/screenshots'
-    specs:        'test/protractor/*_spec.coffee'
+    specs:
+      core:        'test/protractor/*_spec.coffee'
+      plugins:     ['../plugins/**/*_spec.coffee', 'test/protractor/testing_spec.coffee']

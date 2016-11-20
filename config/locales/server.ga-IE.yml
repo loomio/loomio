@@ -9,13 +9,8 @@ ga-IE:
       link: Bí istigh sa phlé
     to_start_group:
       subject: 'Cuir do bhaicle Loomio nua ar bun: %{group_name}'
-    user_added_to_a_group:
-      subject: 'Chuir %{who} thú le %{which_group}'
     view_discussion: Brúigh anseo chun an plé seo a fheiceáil
-    view_group: Brúigh anseo chun an bhaicle ar fheiceáil ar Loomio
     view_proposal: Féach an togra seo ar Loomio
-    create_discussion:
-      intro: 'Thosaigh %{who} plé i %{which_group}:'
     create_proposal:
       closes_in: Dúnann sé i gceann
       subject: 'Togra nua: %{which}'
@@ -27,11 +22,6 @@ ga-IE:
       subject: Inné ar Loomio
       mark_as_read: Rianaigh mar léite
       thanks_for_reading: 'Go raibh maith agat as ucht é a léamh. Bíodh lá den scoth agat!'
-    invitation:
-      hi: 'Hóra a %{name},'
-      thanks: |
-        Go raibh maith agat!
-        Lucht Loomio
     membership_request:
       subject: "D'iarr %{who} cead dul isteach i %{which_group}"
       view_group: Tig leat an t-iarratas a cheadú nó diúltú dó anseo
@@ -48,7 +38,6 @@ ga-IE:
       summary: Achoimre
     thread_mailer:
       change_preferences: 'Athraigh do shainroghanna ríomhphoist:'
-      new_motion: 'Mhol %{who}:'
       motion_closing_soon: 'Togra a dhúnfaidh i gceann 24 uair:'
       proposal_closed: 'Tá an togra dúnta:'
   footer:
@@ -77,8 +66,9 @@ ga-IE:
       email_not_arrived: Nár bhfuair tú an ríomhphost?
     start_making_decisions: 'Chun tosú ag déanamh cinntí le chéile ar Loomio, cuir baicle ar bun saor in aisce:'
   pricing_page:
-    standard_price_html: |
-      US <strong>$19</strong>/míosa<br><span>nó</span> $190/bliana
+    standard: Caighdeánach
+    unlimited_decisions: cinntí gan teorainn
+    email_support: tacaíocht trí ríomhphost
   contact_page:
     contact_us: Déan teagmháil linn
     contact_form: An fhoirm teagmhála

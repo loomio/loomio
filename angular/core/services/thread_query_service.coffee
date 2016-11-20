@@ -8,22 +8,25 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
       threadQueryFor createTimeframeView(options['name'], options['filter'] or 'show_all', 'timeframe', options['timeframe']['from'], options['timeframe']['to'])
 
     groupQuery: (group = {}, options = {}) ->
-      threadQueryFor createGroupView(group, options['filter'] or 'show_unread', options['queryType'] or 'inbox')
+      threadQueryFor createGroupView(group, options['filter'] or 'show_unread', options['queryType'] or 'inbox', options['applyWhere'])
 
     threadQueryFor = (view) ->
       threads: -> view.data()
       length: ->  @threads().length
       any: ->     @length() > 0
+      constructor:
+        singular: 'query'
 
     createBaseView = (filters, queryType) ->
       view = Records.discussions.collection.addDynamicView 'default'
       applyFilters(view, filters, queryType)
       view
 
-    createGroupView = (group, filters, queryType) ->
+    createGroupView = (group, filters, queryType, applyWhere) ->
       view = Records.discussions.collection.addDynamicView group.name
       view.applyFind({groupId: { $in: group.organisationIds() }})
       applyFilters(view, filters, queryType)
+      view.applyWhere(applyWhere) if applyWhere?
       view
 
     createTimeframeView = (name, filters, queryType, from, to) ->
@@ -51,6 +54,7 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
         when 'inbox'
           view.applyFind(lastActivityAt: { $gt: moment().startOf('day').subtract(6, 'week').toDate() })
           view.applyWhere (thread) -> thread.isUnread()
+          view.applyWhere (thread) -> !thread.isDismissed()
           filters.push('show_not_muted')
 
       _.each filters, (filter) ->
@@ -60,7 +64,6 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
           when 'show_not_muted'
             view.applyWhere (thread) -> thread.volume() != 'mute'
           when 'only_threads_in_my_groups' then view.applyFind(groupId: {$in: Session.user().groupIds()})
-          when 'show_participating'        then view.applyFind(participating: true)
           when 'show_starred'              then view.applyFind(starred: true)
           when 'show_proposals'            then view.applyWhere (thread) -> thread.hasActiveProposal()
           when 'hide_proposals'            then view.applyWhere (thread) -> !thread.hasActiveProposal()

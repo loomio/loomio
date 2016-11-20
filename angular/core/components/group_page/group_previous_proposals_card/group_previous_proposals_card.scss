@@ -7,11 +7,15 @@
 }
 
 .group-previous-proposals-card__previous_proposal {
-  display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.pie-with-position {
+	margin-right: 10px;
 }
 
 .group-previous-proposals-card__proposal-title {
-  margin-left: 10px;
   color: $primary-text-color;
 }

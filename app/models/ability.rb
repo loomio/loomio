@@ -25,7 +25,7 @@ class Ability
     end
 
     can :create, NetworkMembershipRequest do |request|
-      request.group.coordinators.include?(request.requestor) and
+      request.group.admins.include?(request.requestor) and
       request.group.is_parent? and
       !request.network.groups.include?(request.group)
     end
@@ -66,8 +66,7 @@ class Ability
     end
 
     can :export, Group do |group|
-      user.is_admin? or
-      (user_is_admin_of?(group.id) && group.enabled_beta_features.include?('export'))
+      user_is_admin_of?(group.id) && group.features['dataExport']
     end
 
     can [:members_autocomplete,
@@ -101,12 +100,10 @@ class Ability
       # otherwise, the group must be a subgroup
       # inwhich case we need to confirm membership and permission
 
+      group.is_parent? ||
       user.is_logged_in? &&
-      (
-        group.is_parent? ||
-        user_is_admin_of?(group.parent_id) ||
-        (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?)
-      )
+      ( user_is_admin_of?(group.parent_id) ||
+        (user_is_member_of?(group.parent_id) && group.parent.members_can_create_subgroups?) )
     end
 
     can :join, Group do |group|
@@ -176,6 +173,7 @@ class Ability
     can [:show,
          :print,
          :mark_as_read,
+         :dismiss,
          :subscribe_to], Discussion do |discussion|
       if discussion.archived_at.present?
         false
@@ -316,5 +314,10 @@ class Ability
       @user.is_logged_in?
     end
 
+    add_additional_abilities
+  end
+
+  def add_additional_abilities
+    # For plugins to add their own abilities
   end
 end

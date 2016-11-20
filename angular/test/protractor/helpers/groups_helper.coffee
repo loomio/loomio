@@ -137,20 +137,8 @@ module.exports = new class GroupsHelper
   clickAddSubgroupLink: ->
     element(By.css('.group-page-actions__add-subgroup-link')).click()
 
-  groupVolumeCard: ->
-    element(By.css('.group-volume-card')).getText()
-
-  clickChangeInGroupVolumeCard: ->
-    element(By.css('.group-volume-card__change-volume-link')).click()
-
   clickFirstThread: ->
     element(By.css('.thread-preview__link')).click()
-
-  changeGroupVolumeToLoud: ->
-    element(By.id('volume-loud')).click()
-
-  submitChangeVolumeForm: ->
-    element(By.css('.change-volume-form__submit')).click()
 
   welcomeModal: ->
     element(By.css('.group-welcome-modal'))

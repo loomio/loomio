@@ -1,6 +1,7 @@
 class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
+  include HasMentions
 
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
@@ -8,12 +9,14 @@ class Motion < ActiveRecord::Base
 
   belongs_to :discussion
   update_counter_cache :discussion, :motions_count
+  update_counter_cache :discussion, :closed_motions_count
 
   has_many :votes,         -> { includes(:user) },  dependent: :destroy
   has_many :unique_votes,  -> { includes(:user).where(age: 0) }, class_name: 'Vote'
   has_many :did_not_votes, -> { includes(:user) }, dependent: :destroy
   has_many :did_not_voters, through: :did_not_votes, source: :user
   has_many :events,        -> { includes(:eventable) }, as: :eventable, dependent: :destroy
+  has_many :attachments, as: :attachable, dependent: :destroy
 
   validates_presence_of :name, :discussion, :author, :closing_at
   validate :closes_in_future_unless_closed
@@ -22,6 +25,7 @@ class Motion < ActiveRecord::Base
 
   include Translatable
   is_translatable on: [:name, :description]
+  is_mentionable  on: :description
 
   delegate :email, to: :author, prefix: :author
   delegate :name, to: :author, prefix: :author
@@ -37,7 +41,7 @@ class Motion < ActiveRecord::Base
   after_initialize :set_default_closing_at
 
   define_counter_cache :voters_count do |motion|
-    motion.voters.count
+    motion.unique_votes.count
   end
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
@@ -48,17 +52,22 @@ class Motion < ActiveRecord::Base
   scope :visible_to_public,        -> { joins(:discussion).merge(Discussion.visible_to_public) }
   scope :voting_or_closed_after,   -> (time) { where('motions.closed_at IS NULL OR (motions.closed_at > ?)', time) }
   scope :closing_in_24_hours,      -> { where('motions.closing_at > ? AND motions.closing_at <= ?', Time.now, 24.hours.from_now) }
-  scope :chronologically, -> { order('created_at asc') }
+  scope :chronologically,          -> { order('created_at asc') }
+  scope :with_outcomes,            -> { where('motions.outcome IS NOT NULL AND motions.outcome != ?', '') }
 
-  scope :closing_soon_not_published, -> {
+  # recency threshold is the minimum length of time for a new motion_closing_soon event to
+  # be published. So, if the proposal is extended by 2 hours, we don't want to publish another
+  # motion closing soon event, but if it's extended by 10 days, we do.
+  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      voting
-    .joins("LEFT OUTER JOIN events e ON e.eventable_id = motions.id AND e.eventable_type = 'Motion'")
+    .distinct
+    .where(closing_at: timeframe)
     .where("NOT EXISTS (SELECT 1 FROM events
                 WHERE events.created_at     > ? AND
                       events.eventable_id   = motions.id AND
                       events.eventable_type = 'Motion' AND
-                      events.kind           = 'motion_closing_soon')", 2.days.ago)
-  }
+                      events.kind           = 'motion_closing_soon')", recency_threshold)
+  end
 
   def proposal_title
     name
@@ -101,8 +110,7 @@ class Motion < ActiveRecord::Base
 
   def close!
     did_not_votes.delete_all
-    non_voters = group_members - voters
-    DidNotVote.create! non_voters.map { |user| {motion: self, user: user} }
+    did_not_votes.import (group_members - voters).map { |user| did_not_votes.build(user: user) }, validate: false
     update(closed_at: Time.now, members_count: group.memberships_count)
   end
 

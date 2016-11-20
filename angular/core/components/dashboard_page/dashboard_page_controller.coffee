@@ -1,17 +1,21 @@
-angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AppConfig) ->
-  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage' })
-  $rootScope.$broadcast('setTitle', 'Dashboard')
+angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $scope, Records, Session, LoadingService, ThreadQueryService, AbilityService, AppConfig, $routeParams, $mdMedia, ModalService, GroupForm) ->
+
+  $rootScope.$broadcast('currentComponent', { page: 'dashboardPage', filter: $routeParams.filter })
+  $rootScope.$broadcast('setTitle', 'Recent')
   $rootScope.$broadcast('analyticsClearGroup')
+
+  @userHasMuted    = -> Session.user().hasExperienced("mutingThread")
 
   @perPage = 50
   @loaded =
     show_all:           0
     show_muted:         0
-    show_participating: 0
 
   @views =
     recent: {}
     groups: {}
+
+  @loading = -> !AppConfig.dashboardLoaded
 
   @timeframes =
     today:     { from: '1 second ago', to: '-10 year ago' } # into the future!
@@ -31,6 +35,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     _.contains ['show_muted'], @filter
 
   @updateQueries = =>
+    AppConfig.dashboardLoaded = true if @loaded[@filter] > 0
     @currentBaseQuery = ThreadQueryService.filterQuery(['only_threads_in_my_groups', @filter])
     if @displayByGroup()
       _.each @groups(), (group) =>
@@ -63,9 +68,16 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     @filter = filter
     @updateQueries()
     @loadMore() if @loaded[@filter] == 0
-  @setFilter()
+  @setFilter($routeParams.filter || 'show_all')
+
+  @noGroups = ->
+    !Session.user().hasAnyGroups()
+
+  @startGroup = ->
+    ModalService.open GroupForm, group: -> Records.groups.build()
 
   $scope.$on 'currentUserMembershipsLoaded', => @setFilter()
-  $scope.$on 'homePageClicked', => @setFilter()
+
+  @showLargeImage = -> $mdMedia("gt-sm")
 
   return

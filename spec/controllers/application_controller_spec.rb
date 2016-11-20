@@ -4,6 +4,14 @@ describe ApplicationController do
   let(:user) { FactoryGirl.create(:user) }
   before { sign_in user }
 
+  describe 'GET gone' do
+    it 'responds with gone' do
+      get :gone
+      expect(response.status).to eq 410
+      expect(response.body.present?).to eq false
+    end
+  end
+
   describe "GET 'boot_angular_ui'" do
     context 'angular_ui_enabled' do
       it 'does not show a welcome modal for current angular users' do

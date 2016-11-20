@@ -22,19 +22,17 @@ class MembershipService
     membership.update admin: false
   end
 
-  def self.join_group(actor: nil, group: nil)
+  def self.join_group(group:, actor:)
      actor.ability.authorize! :join, group
      membership = group.add_member!(actor)
+     EventBus.broadcast('membership_join_group', group, actor)
      Events::UserJoinedGroup.publish!(membership)
    end
 
   def self.add_users_to_group(users: , group: , inviter: , message: nil)
     inviter.ability.authorize!(:add_members, group)
-    memberships = group.add_members!(users, inviter)
-    memberships.each do |m|
-      Events::UserAddedToGroup.publish!(m, inviter)
-      UserMailer.delay(priority: 1).added_to_group(user: m.user, inviter: inviter,
-                                      group: m.group, message: message)
+    group.add_members!(users, inviter).tap do |memberships|
+      Events::UserAddedToGroup.bulk_publish!(memberships, inviter, message)
     end
   end
 

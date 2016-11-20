@@ -1,12 +1,15 @@
 class ThreadMailer < BaseMailer
   helper :email
   helper :application
+  layout 'thread_mailer'
+  REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
   def new_discussion(recipient, event)
     @recipient = recipient
     @event = event
-    @discussion = event.discussion
-    @author = event.discussion.author
+    @discussion = event.eventable
+    @author = @discussion.author
+    @link = polymorphic_url(@discussion, @utm_hash)
     send_thread_email
   end
 
@@ -16,15 +19,21 @@ class ThreadMailer < BaseMailer
     @comment = event.eventable
     @discussion = @comment.discussion
     @author = @comment.author
+    @link = polymorphic_url(@comment, @utm_hash)
     send_thread_email
   end
 
   def user_mentioned(recipient, event)
     @recipient = recipient
     @event = event
-    @comment = event.eventable
-    @discussion = @comment.discussion
-    @author = @comment.author
+    @eventable = event.eventable
+    @text = case @eventable
+    when Discussion, Motion then @eventable.description
+    when Comment            then @eventable.body
+    end
+    @discussion = @eventable.is_a?(Discussion) ? @eventable : @eventable.discussion
+    @author = @eventable.author
+    @link = polymorphic_url(@eventable)
     send_thread_email(subject_key: 'email.mentioned.subject',
                       subject_params: { who: @author.name,
                                         which: @discussion.title } )
@@ -36,6 +45,7 @@ class ThreadMailer < BaseMailer
     @reply = event.eventable
     @discussion = @reply.discussion
     @author = @reply.author
+    @link = polymorphic_url(@reply, @utm_hash)
     send_thread_email(subject_key: 'email.comment_replied_to.subject',
                       subject_params: { who: @author.name,
                                         which: @discussion.group.full_name })
@@ -48,6 +58,7 @@ class ThreadMailer < BaseMailer
     @discussion = @vote.motion.discussion
     @author = @vote.author
     @motion = @vote.motion
+    @link = polymorphic_url(@motion, @utm_hash)
     send_thread_email
   end
 
@@ -58,6 +69,7 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @author = @motion.author
     @group = @discussion.group
+    @link = polymorphic_url(@motion, @utm_hash)
     send_thread_email(subject_key: "email.new_motion_created.subject",
                       subject_params: {proposal_title: @motion.title})
   end
@@ -69,6 +81,7 @@ class ThreadMailer < BaseMailer
     @author = @motion.author
     @discussion = @motion.discussion
     @group = @discussion.group
+    @link = polymorphic_url(@motion, @utm_hash)
     send_thread_email(subject_key: "email.proposal_closing_soon.subject",
                       subject_params: {proposal_title: @motion.title})
   end
@@ -80,6 +93,7 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @author = @motion.outcome_author
     @group = @motion.group
+    @link = polymorphic_url(@motion, @utm_hash)
     send_thread_email(subject_key: "email.proposal_outcome.subject",
                       subject_params: {motion: @motion.name})
   end
@@ -92,6 +106,7 @@ class ThreadMailer < BaseMailer
     @author = @motion.author
     @motion = @motion
     @group = @motion.group
+    @link = polymorphic_url(@motion, @utm_hash)
     send_thread_email(subject_key: "email.proposal_closed.subject",
                       subject_params: {which: @motion.name})
   end

@@ -4,30 +4,7 @@ describe Group do
   let(:motion) { create(:motion, discussion: discussion) }
   let(:user) { create(:user) }
   let(:group) { create(:group) }
-  let(:discussion) { create :discussion }
-
-  context "is_referral" do
-    it "is false for first group" do
-      expect(group.is_referral).to be false
-    end
-
-    it "is true for second group" do
-      group2 = create(:group, creator: group.creator)
-      expect(group2.is_referral).to be true
-    end
-  end
-
-  context "group creator" do
-    it "stores the admin as a creator" do
-      expect(group.creator).to eq group.admins.first
-    end
-
-    it "delegates language to the group creator" do
-      @user = create :user, selected_locale: :fr
-      group = create :group, creator: @user
-      expect(group.locale).to eq group.creator.locale
-    end
-  end
+  let(:discussion) { create :discussion, group: group }
 
   context 'default cover photo' do
 
@@ -53,7 +30,7 @@ describe Group do
   context "counter caches" do
     describe 'invitations_count' do
       before do
-        @group = create(:group)
+        @group = create(:group, creator: create(:user))
         @user  = create(:user)
       end
 
@@ -94,7 +71,32 @@ describe Group do
           @discussion.destroy
         }.to change { @group.reload.motions_count }.by(-1)
       end
+    end
 
+    describe "#closed_motions_count" do
+      before do
+        motion.close!
+      end
+
+      it "returns a count of closed motions" do
+        expect(group.reload.closed_motions_count).to eq 1
+      end
+
+      it "updates correctly after motion is closed" do
+        expect {
+          discussion.motions.create(attributes_for(:motion).merge({ author: user })).close!
+        }.to change { group.reload.closed_motions_count }.by(1)
+      end
+
+      it "updates correctly after deleting a motion" do
+        expect { motion.destroy }.to change { group.reload.closed_motions_count }.by(-1)
+      end
+
+      it "updates correctly after its discussion is destroyed" do
+        expect {
+          discussion.destroy
+        }.to change { group.reload.closed_motions_count }.by(-1)
+      end
     end
 
     describe "#discussions_count" do
@@ -149,11 +151,18 @@ describe Group do
     it "can promote existing member to admin" do
       @group.add_member!(@user)
       @group.add_admin!(@user)
+      expect(@group.admins).to include @user
     end
 
     it "can add a member" do
       @group.add_member!(@user)
-      @group.users.should include(@user)
+      expect(@group.users).to include @user
+    end
+
+    it 'sets the first admin to be the creator' do
+      @group = Group.new(name: "Test group")
+      @group.add_admin!(@user)
+      expect(@group.creator).to eq @user
     end
   end
 
@@ -215,7 +224,7 @@ describe Group do
       end
 
       it 'archives the memberships of the group' do
-        group.memberships.all?{|m| m.archived_at.should be_present}
+        group.memberships.reload.all?{|m| m.reload.archived_at.should be_present}
       end
     end
 

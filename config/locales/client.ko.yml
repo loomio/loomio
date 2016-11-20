@@ -10,6 +10,7 @@ ko:
     notification_volume: 알림 볼륨
     group: 그룹
     groups: 그룹
+    help: 도움
     privacy:
       privacy: 개인정보
       public: 공개
@@ -27,6 +28,8 @@ ko:
     more_help: 도움말 자세히
     models:
       proposal: 제안
+    copy: 복사
+    copied: 클립보드에 붙여넣기
     action:
       close: 닫기
       save: 저장
@@ -34,7 +37,9 @@ ko:
       update_settings: 설정 저장
       reply: 답글
       edit: 편집
+      remove: 제거
       like: 좋아요
+      back: 이전
       unlike: 싫어요
       update: 업데이트
       cancel: 취소
@@ -45,6 +50,7 @@ ko:
       loading: 로딩중...
       translate: 번역
       translated: Bing으로 번역
+      upload: 업로드
       uploading: 업로딩중...
     formatting_help:
       label: 포맷설정 도움말
@@ -83,20 +89,16 @@ ko:
     quiet: 조용히
     mute: 소거
     unmute: 소거해제
+  change_volume_form:
+    mute_label: 음소거
   inbox:
     clear: 지우기
     latest: 최신
     unread: 읽지않음
     closing_in: 닫는중
-  session_form:
-    email_label: '이메일:'
-    password_label: '비밀번호:'
-    remember_me: 로그인 상태 유지
-    sign_in: 로그인
   comment_form:
     aria_label: 댓글 추가하기
     attachments:
-      aria_label: 파일 첨부하기
       remove_attachment: 첨부파일 삭제
     messages:
       created: 댓글을 추가하였습니다.
@@ -113,25 +115,19 @@ ko:
       label: 저장하기
     private_privacy_notice: '작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.'
     public_privacy_notice: 작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.
-  navbar:
+  sidebar:
     recent: 최신
     unread: 읽지않음
-    groups: 그룹
+    muted: 알림 비활성화
+    edit_profile: 프로필 편집
+    email_settings: 이메일 설정
+    help: 도움말
+    sign_out: 로그아웃
+  navbar:
     recent_title: 대시보드로 이동
     unread_title: 읽지 않은 활동 보기
-    groups_title: 활동중인 그룹 보기
     start_thread: 새 쓰레드 만들기
     notifications: 알림 패널
-    user_actions: 사용자 액션
-    user_options:
-      label: 사용자 옵션
-      contact_us: 연락하기
-      new_thread: 새로운 쓰레드
-      new_group: 새 그룹
-      profile: 프로필
-      email_settings: 이메일 설정
-      help: 도움말
-      sign_out: 로그아웃
     search:
       no_results: 쓰레드가 없습니다.
       close: 검색패널 닫기
@@ -141,7 +137,6 @@ ko:
       proposals: 제안
       comments: 댓글
   start_menu:
-    title: 액션 버튼
     start_group: 그룹 시작하기
     start_subgroup: 소그룹 시작하기
     start_thread: 쓰레드 시작하기
@@ -156,7 +151,6 @@ ko:
     new_comment: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 댓글을 달았습니다.'
     comment_replied_to: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 있는 당신의 댓글에 답글을 달았습니다.'
     comment_liked: '<strong>{{name}}</strong> 가 <strong>{{discussion}}</strong>에 있는 당신의 댓글을 좋아합니다.'
-    user_mentioned: '<strong>{{name}}</strong>가  <strong>{{title}}</strong>에서 당신을 언급하였습니다.'
     membership_requested: '<strong>{{name}}</strong>가 <strong>{{group}}</strong>그룹으로의 회원가입 요청을 보냈습니다.'
     membership_request_approved: '<strong>{{name}}</strong>가  <strong>{{group}}</strong> 그룹으로의 당신의 회원가입 요청을 승인하였습니다.'
     user_added_to_group: '<strong>{{name}}</strong>가 당신을 <strong>{{group}}</strong> 그룹에 추가하였습니다.'
@@ -212,13 +206,10 @@ ko:
     start_a_proposal: 제안 시작하기
     edit_proposal: 제안 수정하기
     what_does_a_proposal_do: 제안은 특정한 행동방침에 대해 다른 사람들이 어떻게 생각하는지를 보여줍니다.
-    editing_title_and_description_forbidden: '투표를 받은 제안은 제목이나 내용을 고칠 수 없습니다. 내용이 변경되었다면, 이 제안을 닫고 새로 만드세요.'
-    title_placeholder: '예: 달 탐사'
     title_label: 제목
     closes_at_label: 에 종료됩니다.
     closes: 종료
     details_label: 세부사항
-    details_placeholder: '모든 사람들이 동의하거나 아니면 동의하지 않음이 어떤 뜻인지 정확히 알 수 있도록, 충분하고 자세하게 설명해주세요.'
   discussion_record:
     created: '해당 쓰레드 {{title}}은 {{groupName}}에 성공적으로 생성되었습니다.'
     updated: '제목을 {{title}}으로 바꾸었습니다.'
@@ -264,21 +255,7 @@ ko:
       단체들에게 자신들에게 적합한 정책plan을 선택해달라고 요청했습니다.</p>
     submit: 계획을 보여주세요
   group_welcome_modal:
-    heading: 새로운 그룹에 오신것을 환영합니다
-    first_step: '당신은  단체의 <strong>코디네이터</strong>인데, 관리자host와 비슷합니다. 비디오를 시청하시고, 예제 threads를 확인하세요.'
-    second_step: '준비되면, <strong>사람들을 초대하세요</strong>.'
     ok_got_it: '네, 알겠습니다!'
-  group_cover_modal:
-    heading: 새로운 커버 사진
-    upload_link: 새로운 커버 사진 올리기
-    helptext: '영감이 필요한가요?  아름다운 공짜 이미지 갤러리 <a href="https://unsplash.com/">Unsplash</a>를 방문해보세요. '
-    image_size_helptext: 이미지 크기는 1400 x 320px이 제일 좋습니다.
-    upload_success: 커버 사진을 수정하였습니다.
-  group_logo_modal:
-    heading: 새로운 그룹 로고
-    upload_link: 새로운 그룹 로고 올리기
-    image_size_helptext: 최적의 크기는 100x100px 입니다
-    upload_success: 로고를 수정하였습니다
   join_group_button:
     join_group: 그룹에 가입
     ask_to_join_group: 그룹에 가입신청하기
@@ -288,7 +265,6 @@ ko:
     heading: 그룹에 가입신청하기
     name_label: 이름
     email_label: 이메일
-    introduction_label: 자기소개
     submit_button: 그룹에 가입신청하기
     messages:
       membership_requested: '{{group}}에 가입을 요청하였습니다'
@@ -318,7 +294,6 @@ ko:
     members: 멤버
     members_placeholder: 이 그룹에 현재 회원님 뿐입니다. 다른 사람들을 초대해 보세요.
     member_options: 멤버 옵션
-    all_members: '모든 멤버 {{count}}'
     subgroups: 소그룹
     subgroups_placeholder: 소그룹으로 그룹을 여러 다른 팀으로 나눕니다.
     invite_people: 초대 명단
@@ -332,16 +307,6 @@ ko:
       manage_subscription: 그룹 가입 관리
       leave_group: 그룹 떠나기
       deactivate_group: 그룹 비활성화
-    deactivate_group:
-      title: 그룹 비활성화
-      question: 정말 이 그룹을 비활성화하시겠습니까?
-      submit: '네, 이 그룹을 비활성화하겠습니다.'
-    leave_group:
-      title: 그룹 탈퇴
-      question: 정말 이 그룹을 떠나겠습니까?
-      submit: '네, 이 그룹을 떠나겠습니다.'
-      cannot_leave_group: '당신은 마지막 코디네이터이기 때문에 이 그룹을 떠날 수 없습니다.  다른 코디네이터를 지정하거나, 그룹을 비활성화하거나 해야 합니다.'
-      add_coordinator: 코디네이터 추가하기
     volume:
       loud: 활동이 있을 때마다 이메일 합니다.
       loud_aria_description: 이 그룹의 알림 소리를 크게 설정합니다. 이 그룹에 활동이 있을 때마다 이메일을 받습니다.
@@ -359,17 +324,9 @@ ko:
       private: '공개정책 : 이 그룹은 멤버에게만 공개됩니다.'
       parent_members: '공개정책 : 이 그룹은 {{parentGroupName}}의 멤버와 {{groupName}}의 멤버에게 공개됩니다.'
       public: '공개정책 : 이 그룹은 인터넷에  공개됩니다.'
-  confirm_gift_plan_modal:
-    heading: 재능기부 선택
-    body: '귀하의 그룹이 소프트웨어 비용을 낼 예산이 없다면, 귀하는 기부금을 내실 필요가 없습니다. 귀하의 그룹 멤버들에게 자발적으로 기부를 하라는 요청이 주기적으로 전달될 것입니다.'
-    confirm_selection: 내 그룹 사람들에게 루미오를 후원하는 기부를 권장해도 좋습니다.
-    got_it: '네, 알겠습니다!'
-    go_back: 돌아가기
   donation_modal:
-    heading: 루미오를 후원해주시겠어요?
     body: '루미오는 사회적 기업입니다. 우리의 사명은 누구나 자기에게 영향을 미치는 의사결정에 쉽게 참여할 수 있는 세계를 만드는 것입니다. '
     contribute: 공헌하기
-    got_to_group: 그냥 내 그룹으로 갈께요
   gift_card:
     heading: 선물 계획
     body: '<strong>{{name}}</strong>은 재능 기부를 받는 그룹입니다. 귀하의 그룹과 같은 조직들을 지속적으로 도우려는 루미오를 지원해주시려면 여기를 클릭해주세요:'
@@ -381,29 +338,9 @@ ko:
     expired_body_html: '<strong>{{name}}</strong> 님의 루미오 시범 사용이 만료되었습니다. 계속 사용하시려면 귀하의 그룹에 적합한 가격체계를 선택하세요.'
   choose_plan_modal:
     heading: 귀하의 그룹에 적합한 가격 체계를 선택하세요.
-    gift: 선물
     standard: 일반
-    plus: 게다가
-    free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
-    get_started_for_free: 무료로 시작하기
-    support_before: 하게 되어 기쁩니다.
-    support_link: 당신과 이야기하게 되어
-    support_after: 시범 사용 기간 연장에 대해서나 혹은 무엇이든 물어보세요.
-    remind_me_later: 나중에 상기시켜 주세요
-    unlimited_members: 멤버 제한 없음
-    unlimited_decisions: 의사결정 횟수 제한 없음
-    email_support: 이메일 지원
-    standard_price_html: |
-      <strong>$19</strong>미국달러/월<br><span>또는 </span> $190 미국달러/년
-    plus_body: '일반 플랜의 모든 사항, 게다가:'
-    premium_support: 프리미엄 지원
-    plus_price_html: |
-      <strong>$179</strong>미국달러/월<br><span>또는 </span> $1790 미국달러/년
     select: 선택
   subscription_success_modal:
-    heading: 기부해 주셔서 감사드립니다.
-    receipt: 영수증은 이메일로 전송됩니다.
-    change_subscription: '구독을 변경하거나 취소하고 싶은 경우, 혹은 다른 궁금한 사항이 있는 경우'
     contact_link: 연락해 주세요.
     sign_off: 루미오 팀으로부터 ❤
     ok_got_it: '네, 알겠습니다!'
@@ -507,10 +444,6 @@ ko:
       remove_member_success: '삭제된 {{name}}'
       make_admin_success: '이제 {{name}}님은 코디네이터입니다.'
       remove_admin_success: '{{name}}은 더 이상 코디네이터가 아닙니다.'
-    remove_membership:
-      title: 멤버 삭제
-      question: '{{name}}을 {{group}}의 멤버에서 삭제하시겠습니까?'
-      submit: 삭제
     remove_admin_from_self:
       question: 코디네이터를 그만 두시겠습니까?
   pending_invitations_card:
@@ -531,24 +464,6 @@ ko:
       picture_changed: 프로필 사진을 수정했습니다.
       password_changed: 비밀번호를 변경했습니다.
       deactivated: 계정을 비활성화했습니다.
-    change_picture:
-      title: 사진 교체
-      helptext: '프로필 사진을 올리거나 <a href="https://en.gravatar.com/support/what-is-gravatar/">그라바타 (Gravatar)</a> 계정이 있으면 사용할 수 있습니다.'
-      use_initials: 이니셜 사용
-      use_gravatar: 그라바타 사용
-      use_uploaded: 새 사진 올리기
-    change_password:
-      title: 비밀번호 변경
-      helptext: '비밀번호는 8글자가 되어야 합니다. 계정 보호를 위해 "password"와 같이 흔한 비밀번호는 사용이 금지되어 있습니다.'
-      current_password_label: 현재 비밀번호
-      new_password_label: 새로운 비밀번호
-      password_confirmation_label: 새로운 비밀번호 확인
-      submit: 비밀번호 수정
-    deactivate_user:
-      title: 계정 비활성화
-      question: 왜 계정을 비활성화시키는지 알려주실 수 있나요?
-      placeholder: '이 질문에 답하지 않으셔도 됩니다. 이렇게 정보를 공유해주시면 루미오를 향상시키는데 도움이 됩니다. :)'
-      submit: 계정 비활성화
     change_picture_link: 사진 교체
     change_password_link: 비밀번호 변경
     deactivate_user_link: 계정을 비활성화합니다...
@@ -568,11 +483,10 @@ ko:
       updated: 이메일 설정을 저장했습니다.
   dashboard_page:
     aria_label: 대시보드
-    options:
-      aria_label: 대시보드 필터링 옵션
+    no_groups:
+      or: 혹은
     no_threads:
       show_all: 최근 주제가 없습니다.
-      show_participating: '최근 어떤 주제에도 참여하지 않았습니다. '
       show_starred: 별표 체크한 주제가 없습니다.
       show_proposals: 현재 활성화된 제안이 없습니다.
       show_muted: 알림이 묵음 처리된 주제가 없습니다.
@@ -589,9 +503,6 @@ ko:
       starred: 별표 체크된 주제
       starred_aria_label: 당신이 중요하다고 표시한 토론을 보고 있음
       starred_description: 중요 표시한 주제만 보기
-      participating: 참여 중인 주제
-      participating_aria_label: 참여한 주제만 보기
-      participating_description: 참여한 주제만 보기
       proposals: 제안
       proposals_aria_label: 활성화된 제안이 있는 주제만 보기
       proposals_description: 활성화된 제안이 있는 주제만 보기
@@ -617,6 +528,8 @@ ko:
     no_threads: '이야! inbox의 모든 주제를 읽었군요.'
     unread_threads: 읽지 않은 쓰레드
     view_more: 더보기
+    no_groups:
+      or: 혹은
   groups_page:
     page_header: 내가 속한 그룹
   discussion:
@@ -721,7 +634,21 @@ ko:
       함께 훌륭한 의사결정을 만들어내는 새로운 프로세스를 배우게 될 것입니다.
       여기 성공적인 그룹을 만드는데 도움이 되는 몇가지 요령이 있습니다.
     different_ways: 루미오를 사용하기 위한 다른 방법들
-    engaging_html: "<h2>그룹에서 활동하기 위한 팁</h2>\n<p>사람들은 논의할 만한 매력적인 제안이 있으면 뛰어들어 참여하고 싶어할 겁니다.\n좋은 제안은 해당 그룹의 활동 계획이 있어서, 즉시 찬성, 반대를 결정할 수 있을 정도로 명확합니다. \n직접 대화하거나 혹은 사람들이 루미오에 있다면 더 편할 수도 있는 이메일을 활용해 어떻게 하면 그룹이 현재 진행해야 하는 논의나 결정을 포착할 수 있을지 생각해보세요. </p>\n<p>그룹이 막 시작했다면, 좀 가벼운 결정으로 시작해서 모든 사람에게 이 도구를 사용해볼 기회를 주고 실제 의사 결정 과정을 지켜볼 수도 있습니다.</p>\n<p>사람들이 논의에 좀 더 적극적으로 참여하게 만드는 단순한 방법은 특정한 사람에게 @언급 기능을 활용하는 것입니다. 이렇게 하면 그 사람에게 댓글에서 그 사람이 언급됐다는 것을 이메일로 알려줄 수 있습니다.</p>\n"
+    engaging_html: >
+      <h2>그룹에서 활동하기 위한 팁</h2>
+
+      <p>사람들은 논의할 만한 매력적인 제안이 있으면 뛰어들어 참여하고 싶어할 겁니다.
+
+      좋은 제안은 해당 그룹의 활동 계획이 있어서, 즉시 찬성, 반대를 결정할 수 있을 정도로 명확합니다.
+
+      직접 대화하거나 혹은 사람들이 루미오에 있다면 더 편할 수도 있는 이메일을 활용해 어떻게 하면 그룹이 현재 진행해야 하는 논의나 결정을
+      포착할 수 있을지 생각해보세요. </p>
+
+      <p>그룹이 막 시작했다면, 좀 가벼운 결정으로 시작해서 모든 사람에게 이 도구를 사용해볼 기회를 주고 실제 의사 결정 과정을 지켜볼
+      수도 있습니다.</p>
+
+      <p>사람들이 논의에 좀 더 적극적으로 참여하게 만드는 단순한 방법은 특정한 사람에게 @언급 기능을 활용하는 것입니다. 이렇게 하면
+      그 사람에게 댓글에서 그 사람이 언급됐다는 것을 이메일로 알려줄 수 있습니다.</p>
     example1_html: >
       <h3>폭넓은 주제에 대해 논의하고 함께 해결책을 만들어가기 위해 그룹이 필요합니다.</h3>
 
@@ -752,7 +679,14 @@ ko:
     have_a_discussion_description: "주제와 관련된 정보와 배경 정보는 페이지의 상단에 위치해 있습니다. \n토론에 여러분의 목소리를 담기 위해서는 댓글 상자를 이용하세요."
     help: 도움말
     how_it_works: 사용설명
-    invitation_html: "<h2>훌륭한 초대글 작성하기</h2>\n<p>새로 온 사람들이면 누구나 궁금해하는 첫 질문은 ‘이 그룹은 뭐하는 곳이지?’입니다.</p>\n<p>그룹을 설명할 수 있는 가장 단순한 방법에 대해 생각해보세요: 무엇을 함께 해보고 \n싶나요? 어떤 종류의 결정을 하죠?</p>\n<p>사람들을 루미오에 가입하도록 초대하기 전에 우선 사람들과 이야기해 보는게 좋습니다.</p>\n<p>사람들은 왜 내가 초대받았는지, 나에게 뭘 기대하는지\n왜 시간을 들여 새로운 도구를 사용하는 방법을 배워야 하는지 알고 싶어하겠죠.</p>\n"
+    invitation_html: |
+      <h2>훌륭한 초대글 작성하기</h2>
+      <p>새로 온 사람들이면 누구나 궁금해하는 첫 질문은 ‘이 그룹은 뭐하는 곳이지?’입니다.</p>
+      <p>그룹을 설명할 수 있는 가장 단순한 방법에 대해 생각해보세요: 무엇을 함께 해보고
+      싶나요? 어떤 종류의 결정을 하죠?</p>
+      <p>사람들을 루미오에 가입하도록 초대하기 전에 우선 사람들과 이야기해 보는게 좋습니다.</p>
+      <p>사람들은 왜 내가 초대받았는지, 나에게 뭘 기대하는지
+      왜 시간을 들여 새로운 도구를 사용하는 방법을 배워야 하는지 알고 싶어하겠죠.</p>
     join_the_community: 커뮤니티에 참여하기
     join_the_community_description_html: "우리가 루미오라는 도구를 최대한 활용하는 방법과 어떻게 하면 더 향상시킬 수 있을지에 대해 이야기하는 루미오 커뮤니티에 들어오는 모든 사람들을 환영합니다.<br /><br /><a href='https://www.loomio.org/g/WmPCB3IR'>루미오 커뮤니티에 가려면 여기를 클릭하세요</a>."
     images_and_text_formatting: 이미지와 문자 형식
@@ -781,23 +715,23 @@ ko:
     start_discussion_html: >
       <p>논의를 시작할 때 제목이 주제를 간결하게 전달하고 있는지 생각해 보세요.
 
-       상황 패널을 활용하면 그룹이 생산적이고 정보를 바탕으로 한 논의를 진행하는데 필수적인 모든 배경 지식을 제공할 수 있습니다.</p>
+      상황 패널을 활용하면 그룹이 생산적이고 정보를 바탕으로 한 논의를 진행하는데 필수적인 모든 배경 지식을 제공할 수 있습니다.</p>
 
-       <p>논의를 진행하면서 새로운 정보를 알게 되면 상황 패널을 업데이트할 수 있습니다.주제를 명확하게 하는 것 뿐만 아니라 리소스를
+      <p>논의를 진행하면서 새로운 정보를 알게 되면 상황 패널을 업데이트할 수 있습니다.주제를 명확하게 하는 것 뿐만 아니라 리소스를
       공유하고 논의의 진행 상황을 요약하거나 그룹이 사용하고 있는 의사결정 계획안의 윤곽을 그려보는 용도로 활용할 수 있습니다.</p>
     start_proposal: 명확한 제안 작성하기
     start_proposal_html: >
       <p> 제목을 명확하고 간결하게 만들면, 사람들은 즉시 동의할지 아니면 반대할지 알 수 있게 됩니다.</p>
 
-       <p>제안이 바로 명확한 합의에 이르지 못한다고 해서 세계가 멸망하는 건 아니죠.
+      <p>제안이 바로 명확한 합의에 이르지 못한다고 해서 세계가 멸망하는 건 아니죠.
 
-       그룹이 첫 번째 제안을 좋아하지 않으면 누구나 새로운 제안을 시작해서 제기한 문제를 해결하고 앞으로 나아가기 위한 과정을 계속할
+      그룹이 첫 번째 제안을 좋아하지 않으면 누구나 새로운 제안을 시작해서 제기한 문제를 해결하고 앞으로 나아가기 위한 과정을 계속할
       수 있습니다.</p>
 
-       <p>이런 역동적인 과정 속에서, 그룹의 집단적 지혜를 통해 누구나 각자 생각할 수 있는 것보다 더 좋은 생각에 도달할
+      <p>이런 역동적인 과정 속에서, 그룹의 집단적 지혜를 통해 누구나 각자 생각할 수 있는 것보다 더 좋은 생각에 도달할
       수 있습니다.</p>
 
-       <p>결정하는데 여유가 더 필요한 것 같으면, 언제든 제안 마감시간을 연장할 수 있습니다. 제안 마감 24 시간 전에 모든 사람들은
+      <p>결정하는데 여유가 더 필요한 것 같으면, 언제든 제안 마감시간을 연장할 수 있습니다. 제안 마감 24 시간 전에 모든 사람들은
       이메일 알림을 받게 됩니다.</p>
     video_id: '52025402'
     video_tutorial: 동영상 설명

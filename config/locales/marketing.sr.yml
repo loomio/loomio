@@ -1,0 +1,191 @@
+sr:
+  navigation:
+    blog: Blog
+    resources: Resursi
+    case_studies: Studije slučaja
+    help: Pomoć
+    guides_and_tips: Smernice i saveti
+    developers: Programeri
+    about: O nama
+    pricing: Cene
+    contact: Kontakt
+    login: Prijava
+    start_group: Kreiraj grupu
+    home: Početna
+    terms_of_service: Uslovi Korišćenja
+    privacy: Privatnost
+    translation: Prevod
+    newsletter: Bilten
+    twitter: Twitter
+    facebook: Facebook
+    trademark_statement: © 2016 Loomio Cooperative Limited. Sva prava zadržana. “Loomio” je registrovano trgovinsko ime Loomio Cooperative Limited.
+  marketing:
+    hero:
+      solution: Sa Lumijem mozeš donositi odluke bez nepotrebnih ePoruka ili sastanaka.
+    make_decisions_html: 'Lumio je mesto za tvoju grupu gde <strong>odlučujete zajedno</strong>.'
+    gather:
+      heading: Okupiti
+      explanation: 'Okupi prave ljude i prave informacije. Pristupačan, jednostavan za upotrebu, prilagodljiv, sa pažljivo odabranim opcijama za privatnost i sigurnost.'
+    discuss:
+      heading: Diskutuj
+      explanation: 'Vodite jasnu, tematsku konverzaciju. Ne skrećite sa teme, istaknite prave informacije i filtrirajte loše. Ovo je mesto posvećeno konstruktivnoj saradnji.'
+    propose:
+      heading: Predloži
+      explanation: 'Vizuelni rezime omogućava da se lako i brzo shvati gde svačije stanovište i zašto je ono takvo. Ako se slažeš, saznaj brzo. Ili zađi direktno u srž problema i počni graditi zajedničko shvatanje.'
+    decide_act:
+      heading: Odluči i Deluj
+      explanation: 'Ostvarite jasne rezultate svakog predloga, u roku koji ste sami postavili. Svi će biti obavešteni o rezultatima, tako da možete krenuti dalje i preduzeti akcije zajedno.'
+    try_it_now: Probaj odmah
+    start_free_group: Pokreni besplatno grupu
+    fast_inclusive_effective: 'Brzo, inkluzivno i efikasno može biti Vaše novo normalno.'
+    debt_resistance_uk:
+      heading: Produktivnost na sastancima i između
+      quote: >
+        Komunicirali smo između sastanaka putem ePoruka, ali često nismo uspevali
+        da donesemo konačnu odluku. Na Lumiju, u mogućnosti smo da vodimo
+        diskusiju i donesemo odluku. Takođe, ako ima puno stvari za diskusiju na
+        sastanku, možemo reći: "Odlučićemo o ovome na Lumiju". Time su sastanci
+        licem u lice postali mnogo efikasniji.
+      link_text: 'Saznaj više o tome kako zajednica u UK nastavlja da radi između sastanaka, kako bi stvorila bolje demokratsko društvo...'
+    pathways:
+      heading: Povećaj angažovanje ljudstva i satisfakciju
+      quote: >
+        Lumio iz korena menja nivo satisfakcije i uključenosti osoblja. Izgleda
+        kao da magično i prirodno podržava razvoj organizacije, i u stvari, to
+        ostvaruju sami ljudi. Šta više možete poželeti kao izvršni direktor?
+      link_text: Pročitajte više o tome kako velika Novozelanska NVO koristi Lumio da efikasno uključi osoblje u proces odlučivanja...
+    welsh_government:
+      heading: Razvija konsultaciju stanovništva i zainteresovanih strana
+      quote: >
+        Učesnici, osim što su razgovarali međusobno, takođe su razgovarali i sa
+        nama. Koristili su Loomio platformu da nam opišu probleme koje su imali,
+        a takođe i šta žele da vlada Velsa učini po tom pitanju.  Povećali smo
+        zadovoljstvo i efikasnost učestvovanja u čitavom procesu, koristeći
+        Loomio kao platformu za obogaćenje i unapređenje sednica odbora.
+      link_text: 'Pročitajte više o tome kako je Nacionalna skupština Velsa koristila Lumio da se konsultuje sa korisnicima usluga, kao i sa pružaocima istih...'
+    ouishare:
+      heading: 'Globalno uvećava saradničku zajednicu '
+      quote: >
+        Potrebno je kreirati poverenje. Ljudi žele da znaju šta se događa. Javila
+        se potreba za dokumentacijom jer je bilo potrebno pokazati da je odluka
+        donešena. Oko toga su se svi složili. Takođe je korisno za nove članove,
+        jer mogu da vide o čemu su se vodile dosadašnje diskusije. Preko je
+        potrebno postati organizacija koja se razvija.
+      link_text: 'Saznaj više o tome kako OuiShare, veliki socijalni pokret koji spaja države, koristi Lumio kako bi funkcionisao transparentno i kolektivno...'
+    urban_adventures:
+      heading: Udaljena saradnja za distribuirane timove
+      quote: >
+        Kako se dan bliži kraju, konverzacija se nastavlja u drugim vremenskim
+        zonama što nas približava odlukama čak i dok spavamo. To značajno ubrzava
+        proces, kao i šansu da se donese dobra odluka već iz prvog pokušaja.
+        U svetu startapa, ova kombinacija zlata vredi.
+      link_text: 'Saznaj više o tome kako poslovna osoblja od Australije, preko Vijetnama, do Kanade koriste Lumio kako bi sarađivali kao tim...'
+    features:
+      heading: 'Sve karakteristike Lumia pomažu tvojoj grupi u diskusiji, odlučivanju i napredovanju. Razlikuje se od glasanja, anketa ili socijalnih mreža.'
+      choose_participants_heading: Biraj ko treba šta da odluči.
+      choose_participants_explanation: 'Proces navikavanja i korištenja Lumia ti pomaže da shvatiš kako se odluke donose u tvojoj organizaciji. Grupe mogu biti javne ili privatne, sa podgrupama koje imaju detaljne opcije za sigurnost.'
+      deliberation_heading: Uradi bolje od većinskih pravila.
+      deliberation_explanation: 'Loomio koristi jednostavna okvir za donošenje odluka dizajniran za konstruktivno razmatranje. Nemojte se sukobljavati, radite zajedno da biste došli do najboljeg rešenja.'
+      iterate_heading: Posmatrajte predloge da razvijete svoje mišljenje.
+      iterate_explanation: 'I ukoliko inicijalni predlog ne dobije konsenzus, donošenje zajedničkih odluka može biti moćan alat. Rešite nesuglasice i krenite ka novim, zajedničkim rešenjima.'
+      deadlines_heading: Rokovi vode impulsivnost.
+      deadlines_explanation: 'Loomio predlozi su vremenski ograničeni da bi se obezbedio konstantan napredak grupe. Svi su upoznati sa vremenskim okvirima u kojima mogu da izvrše akcije koje se od njih očekuju; sa automatizovanim podsetnicima pre isteka roka. '
+      fewer_meetings_heading: Budite produktivni bez sastanaka.
+      fewer_meetings_explanation: 'Nastavite razgovor i kada niste u istoj prostoriji. Uradite više dok ste na mreži, kako bi dragoceno vreme na sastancima iskoristili za stvari koje se moraju rešiti uživo.'
+      notifications_heading: Obaveštenja Vas čine informisanim.
+      notifications_explanation: Prilagodljivost notifikacija znači da svi dobijaju informacije koje su im potrebne (a ne dobijaju nepotrebne).
+      archive_heading: Automatska arhiva odluka.
+      archive_explanation: 'Sa Loomio-om, beleške se same pišu. Svaka odluka može da se pronađe u arhivi, zajedno sa ključnim tačkama, učesnicima i finalnom odlukom.'
+      email_or_mobile_heading: Pridružite se ePorukom ili mobilno.
+      email_or_mobile_explanation: 'Lumio radi gde i ti. Ako se držiš sandučića za ePoruke, možeš učestvovati na taj način. Takođe možeš pristupiti aplikaciji putem svih vrsta uređaja.'
+      accessible_heading: Pristupačno i Višejezično.
+      accessible_explanation: 'Loomio je dostupan u više od 30 jezika i ima automatsko prevođenje. Dizajniran je da bude pristupačan i radi odlično sa tehnologijama za ispomoć, kao npr. čitačima ekrana.'
+    press:
+      fast_company: Lepota Lumia je u njegovoj jednostavnosti. On radi tačno ono što je i potrebno bez suvišnosti.
+      boingboing: 'Lumio, izgleda, poseduje dobru mešavinu političke mudrosti, tehničkog znanja i osećaja za dizajn.'
+      bbc: Lumio je zamišljen kao Facebook građana www mreže.
+    about_us:
+      heading: O nama
+      first_paragraph: 'Lumio je softver otvorenog koda, društvena kompanija građena od strane onih koji ga poseduju i njihovom saradnjom. Sedište nam je u Aotearoai, na Novom Zelandu čiji smo deo'
+      second_paragraph: 'Verujemo da grupe koje praktikuju efikasno donošenje odluka, gde su svi članovi uključeni, mogu da promene organzacionu dinamiku na globalnoj skali. Loomio je tu da svima bude jednostavno i da učestvuju u donošenju odluka koje se tiču njih samih, gde god da se nalaze.'
+      link_text: 'Saznaj više o našem timu, našoj priči i našoj svrsi i vrednosti...'
+  about:
+    heading: O nama
+    introduction:
+      first_paragraph: 'Lumio je softver otvorenog koda, društvena kompanija građena od strane onih koji ga poseduju kroz njihovu saradnju. Sedište nam je u Aotearoai, na Novom Zelandu, čiji smo deo'
+      second_paragraph: 'Verujemo da grupe koje praktikuju efikasno donošenje odluka, gde su svi članovi uključeni, mogu da promene organzacionu dinamiku na globalnoj skali. Loomio je tu da svima bude jednostavno i da učestvuju u donošenju odluka koje se tiču njih samih, gde god da se nalaze.'
+    story:
+      heading: Priča
+      first_paragraph: >
+        Loomio je nastao 2011., kada su aktivisti grupe Occupy Wall Street
+        i socijalni preduzetnici iz Ensipral Network-a shvatili da imaju potrebu
+        da reše isti problem; brzo i efikasno donošenje odluka u koje su
+        uključeni svi članovi, bez potrebe da organizuju sastanke.
+
+        2012. smo se udružili i izbačen je prototip (Loomio Beta). Shvatili smo
+        da je potreba za takvim rešenjem globalna.
+      second_paragraph: >
+        2013. smo pokrenuli uspešnu internacionalnu kampanju za prikupljanje
+        sredstava, što nam je omogućilo da radimo na sledećim verzijama
+        aplikacije. Loomio 1.0 je ugledao svetlo dana naredne godine.
+
+        2015. smo uspešno završili kampanju za dobijanje etičkog kapitala,
+        i nastavili smo da radimo kako bi isporučili alat za kolaborativno
+        donošenje odluka milionima ljudi širom sveta.
+    people:
+      heading: Ljudi
+      introduction: 'Mi smo posvećeni tim sa dubokim iskustvom u procesu optimizacije procesa u grupama, socijalnim promenama, preduzetništvu kao i razvoju otvorenih tehnologija.'
+      alanna: 'Suosnivač, moderator, samostalni geek, Enspiral Foundation direktor, ljubitelj mačaka'
+      babs: 'Sekretar kompanije, operacije, aktivist, ljubitelj prirode'
+      ben: 'Suosnivač i direktor, oranizator zajednica, istraživač kolektivne inteligencije'
+      hannah: 'Software developer, korisnička podrška, ilustrator i uradi sam izdavač, kreativni aktivista'
+      james: 'Stariji inženjer softvera, koordinator zajednice otvorenog koda, odvažni megdandžija'
+      mary: 'Organizavioni žongler, saradnik, trener tima, domaćin ko-šta-donese večera, posmatrač zvezda'
+      matthew: 'Vodi brigu o korisnicima, brojevima i dizajnu'
+      michael: 'Direktor, poslovni i korisnički razvoj, koordinator, startup trener, motociklista'
+      mj: 'Direktor, strateg iz Sjedinjenih Američkih Država, povezivač tačaka, trener, ponosna mama'
+      natalia: 'Koordinator prevoda, korisnička podrška, aktivista'
+      richard: 'Suosnivač i inženjer softvera, aktivista, open source haker hardvera'
+      robert: 'Stariji inženjer, DevOps, arhitektura. Izmišlja ideje i pretvara ih u softver'
+      vivien: 'Suosnivač, Član Lumio Odbora, Izvršni direktor UNICEF-a Novog Zelanda'
+    advisors:
+      heading: Savetnici
+      introduction: Podržava nas Savetodavno Veće sa nekim od najbriljantnijih umova u demokratiji i tehnologiji širom sveta.
+      sascha: Osnivač X-Lab-a i Instituta Otvorene Tehnologije
+      katherine: 'Nekadašnja Starija Podpredsednica, AOL, podpredsenica Root Capital'
+      joi: 'Direktor MIT Media Lab, Suosnivač Creative Commons, Odbora Mozilla Fondacije'
+      douglas: 'Najprodavaniji autor, CNN komentator, teoretičar medija'
+      matthew_and_brian: 'Suosnivači Inflection, Namaste fondacije'
+    purpose_and_values:
+      heading: Svrha i Vrednosti
+      mission_statement: Lumio Saradnici postoje da kreiraju svet u kome je svima lako učestvovati u donošenju odluka koje ih pogađaju.
+      introduction: >
+        Dobar proces saradnje omogućava grupama da donose bolje odluke, da dođu
+        do boljih ideja i akcija nego što bi bilo ko individualno mogao da
+        osmisli ili sprovede.
+
+        Loomio Co-operative cilja na rušenje prepreka učestvovanju u donešenju
+        odluka na svakom nivou;  u komšiluku, zajednicama, poslu, socijalnim
+        pokretima, kao i lokalnim i nacionalnim vladama.
+      coop_heading: Zajednička socijalna kompanija
+      coop_body: >
+        Lumio je društvena kompanija koju poseduju ljudi koji je i grade. Za
+        razliku od tradicionalnih kompanija koje žele maksimalnu zaradu, prihod
+        nije glavni cilj, nego sredstvo za ostvarenje osnovnih društvenih
+        potreba.
+
+        Struktura u kojoj radnici poseduju kompaniju je moćan način da oživimo
+        vrednosti saradnje i kolektivne imovine.
+      independent_heading: Nezavisno i neutralno
+      independent_body: Lumio je posvećen da ostane nezavisan kako bi obezbedio neutralno mesto za okupljanje bilo koje grupe.
+      open_source_heading: Transparentna saradnja
+      open_source_body: Lumio nastoji da razvije alate otvorenog koda koji čine saradnju lakšom svima.
+      adaptive_heading: 'Prilagodljiv, refleksni, korisnički vođen'
+      adaptive_body: 'Lumio pomaže razvoj alata koji su iterativni, samorefleksni i prilagodljivi, a pokreće kolektivna mudrost korisničke zajednice.'
+      transparent_heading: Transparentnost
+      transparent_body: >
+        Loomio Co'operative će biti okružen dragocenom zajednicom korisnika
+        i saradnika. Ova zajednica mora biti uverena da Loomio Co-operative radi
+        ono što tvrdi da radi.
+
+        Privrženi smo visokim standardima deljenja informacija.

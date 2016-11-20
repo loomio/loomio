@@ -42,15 +42,8 @@ describe API::InvitationsController do
         expect(last_email).to have_body_text 'Please make decisions with us!'
         expect(last_email).to deliver_to 'hannah@example.com'
       end
-
-      it 'includes default message when no custom message' do
-        post :create, invitation_form: invitation_params, group_id: group.id
-        json = JSON.parse(response.body)
-        last_email = ActionMailer::Base.deliveries.last
-        expect(last_email).to have_body_text "Click the link to join #{group.name} and get started:"
-      end
-
     end
+
     context 'failure' do
       it 'responds with unauthorized for non logged in users' do
         @controller.stub(:current_user).and_return(LoggedOutUser.new)
@@ -59,7 +52,8 @@ describe API::InvitationsController do
       end
 
       it 'responds with bad request if no emails are provided' do
-        expect { post :create, invitation_form: {}, group_id: group.id }.to raise_error { ActionController::ParameterMissing }
+        post :create, invitation_form: {}, group_id: group.id
+        expect(response.status).to eq 400
       end
     end
   end

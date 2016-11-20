@@ -5,12 +5,4 @@ class Events::NewMotion < Event
            discussion: motion.discussion,
            created_at: motion.created_at).tap { |e| EventBus.broadcast('new_motion_event', e) }
   end
-
-  def group_key
-    discussion.group.key
-  end
-
-  def motion
-    eventable
-  end
 end

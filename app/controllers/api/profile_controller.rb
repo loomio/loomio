@@ -5,6 +5,12 @@ class API::ProfileController < API::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def me
+    raise CanCan::AccessDenied.new unless current_user.is_logged_in?
+    self.resource = current_user
+    respond_with_resource serializer: UserSerializer
+  end
+
   def update_profile
     service.update(current_user_params)
     respond_with_resource
@@ -21,7 +27,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def change_password
-    service.change_password(current_user_params) { sign_in resource, bypass: true }
+    service.change_password(current_user_params) { bypass_sign_in resource }
     respond_with_resource
   end
 
@@ -54,7 +60,7 @@ class API::ProfileController < API::RestfulController
     if current_user == restricted_user
       Restricted::UserSerializer
     else
-      CurrentUserSerializer
+      Full::UserSerializer
     end
   end
 

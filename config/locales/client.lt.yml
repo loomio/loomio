@@ -19,13 +19,18 @@ lt:
       thismonth: Šį Mėnesį
     models:
       proposal: Pasiūlymas
+    copy: Kopijuoti tekstą
+    copied: Nukopijuota į iškarpinę
     action:
+      close: Užverti
       save: Įrašyti
       save_changes: Įrašyti pakeitimus
       update_settings: Atnaujinti nustatymus
       reply: Atsakyti
       edit: Redaguoti
+      remove: Šalinti
       like: Patinka
+      back: Atgal
       unlike: Nebepatinka
       update: Atnaujinti
       cancel: Atšaukti
@@ -47,14 +52,17 @@ lt:
     normal: Normalus
     quiet: Tylus
     mute: Nutildyti
-  session_form:
-    email_label: 'El. paštas:'
+  sign_in_form:
     password_label: 'Slaptažodis:'
-    remember_me: Prisiminti Mane
+    sign_in: Prisijungti
+    signed_in: Sėkmingai prisijungta
+  sign_up_form:
+    password_label: 'Slaptažodis:'
+  signed_out_modal:
+    ok: Gerai
   comment_form:
     aria_label: Pridėk komentarą
     attachments:
-      aria_label: Pridėti failą
       remove_attachment: Šalinti priedą
     messages:
       created: Komentaras pridėtas
@@ -69,23 +77,15 @@ lt:
     submit_button:
       label: Išsiųsti
     private_privacy_notice: 'Tavo komentaras bus matomas tik {{groupName}} grupės nariams.'
+  sidebar:
+    email_settings: El. pašto nustatymai
+    help: Pagalba
+    sign_out: Atsijungti
   navbar:
-    groups: Grupės
     recent_title: Pereiti į skydelį
     unread_title: Žiūrėti neperskaitytas veiklas
-    groups_title: Žiūrėti savo grupes
     start_thread: Kurti naują giją
     notifications: Pranešimų skydelis
-    user_actions: Naudotojo veiksmai
-    user_options:
-      label: Naudotojo parinktys
-      contact_us: Susisiekti su mumis
-      new_thread: Nauja gija
-      new_group: Nauja grupė
-      profile: Profilis
-      email_settings: El. pašto nustatymai
-      help: Pagalba
-      sign_out: Atsijungti
     search:
       no_results: Gijų nerasta
       loading: Įkeliami rezultatai...
@@ -128,10 +128,8 @@ lt:
     start_a_proposal: Pateikti pasiūlymą
     edit_proposal: Redaguoti pasiūlymą
     what_does_a_proposal_do: 'Pasiūlymai parodo, ką kiekvienas žmogus mano apie tam tikrą veiksmų planą.'
-    title_placeholder: 'Pvz: Skristi į mėnulį'
     title_label: Antraštė
     details_label: Išsamesnė Informacija
-    details_placeholder: 'Suteik pakankamai išsamios informacijos, kad visi žinotų ką tai reiškia ir galėtų pritarti arba nepritarti, arba dar kažką.'
   discussion_form:
     new_discussion_title: Kurti naują giją
     edit_discussion_title: Redaguoti giją
@@ -149,12 +147,7 @@ lt:
   proposal_position_abstain: Susilaikau
   proposal_position_no: Nepritariu
   group_welcome_modal:
-    heading: Sveikiname atvykus į savo naują grupę
     ok_got_it: 'Gerai, supratau!'
-  group_cover_modal:
-    image_size_helptext: Tobulas paveikslo dydis yra 1400 x 320tšk
-  group_logo_modal:
-    image_size_helptext: Tobulas paveikslo dydis yra 100 x 100tšk
   join_group_button:
     messages:
       joined_group: 'Dabar tu esi {{group}} grupės narys'
@@ -185,15 +178,6 @@ lt:
     options_label: Parinktys
     options:
       label: Parinktys
-    deactivate_group:
-      title: Pasyvinti grupę
-      question: Ar tikrai nori pasyvinti šią grupę?
-      submit: 'Taip, Pasyvinti šią grupę'
-    leave_group:
-      title: Palikti grupę
-      question: Tu tikrai nori palikti šią grupę?
-      submit: 'Taip, palikti šią grupę'
-      add_coordinator: Pridėti koordinatorių
     volume:
       loud: Siųsti el. laišką kai tik atsiranda kokia nors veikla.
       loud_aria_description: 'Tavo pranešimų garsumas šiai grupei yra nustatytas į Garsus. Tau bus siunčiami el. laiškai, kai tik atsiras kokia nors veikla.'
@@ -201,8 +185,6 @@ lt:
       quiet_aria_description: Tavo pranešimų garsumas šiai grupei yra nustatytas į Tylus. Tau nebus siunčiami el. laiškai apie šioje grupėje vykstančią veiklą. Grupės veikla bus rodoma tavo Skydelyje.
     privacy:
       public: 'Privatumas: Ši grupė yra matoma saityne'
-  confirm_gift_plan_modal:
-    got_it: 'Gerai, supratau!'
   subscription_success_modal:
     ok_got_it: 'Gerai, supratau!'
   group_form:
@@ -218,9 +200,6 @@ lt:
     messages:
       make_admin_success: '{{name}} dabar yra koordinatorius'
       remove_admin_success: '{{name}} daugiau nebėra koordinatorius'
-    remove_membership:
-      title: Šalinti narį
-      submit: Šalinti
     remove_admin_from_self:
       question: Ar tikrai daugiau nebenori būti koordinatoriumi?
   pending_invitations_card:
@@ -237,21 +216,6 @@ lt:
       updated: Profilis atnaujintas
       picture_changed: Profilio paveikslas atnaujintas
       password_changed: Slaptažodis atnaujintas
-    change_picture:
-      title: Keisti paveikslą
-      use_initials: Naudoti inicialus
-      use_gravatar: Naudoti gravatar
-      use_uploaded: Įkelti naują paveikslą
-    change_password:
-      title: Keisti Slaptažodį
-      current_password_label: Dabartinis slaptažodis
-      new_password_label: Naujas slaptažodis
-      password_confirmation_label: Patvirtink naują slaptažodį
-      submit: Atnaujinti slaptažodį
-    deactivate_user:
-      title: Pasyvinti paskyrą
-      placeholder: 'Atsakinėti į klausimą nėra privaloma. Bet kokia informacija, kuria pasidalinsi, padės mums tobulinti Loomio :)'
-      submit: Pasyvinti paskyrą
     change_picture_link: Keisti paveikslą
     change_password_link: Keisti slaptažodį
     deactivate_user_link: Pasyvinti paskyrą...

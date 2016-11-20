@@ -5,7 +5,10 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   replace: true
   controller: ($scope, $location, Records, ModalService, DiscussionForm, ThreadQueryService,  KeyEventService, LoadingService, AbilityService) ->
     $scope.threadLimit = $scope.pageWindow.current
-    $scope.discussions = ThreadQueryService.groupQuery($scope.group, filter: 'all', queryType: 'all')
+    $scope.init = ->
+      $scope.discussions = ThreadQueryService.groupQuery($scope.group, filter: 'all', queryType: 'all')
+    $scope.init()
+    $scope.$on 'subgroupsLoaded', $scope.init
 
     $scope.loadMore = ->
       current = $scope.pageWindow.current
@@ -24,6 +27,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
                         discussion: -> Records.discussions.build(groupId: $scope.group.id)
 
     $scope.showThreadsPlaceholder = ->
+      AbilityService.canStartThread($scope.group) and
       $scope.group.discussions().length < 4
 
     $scope.whyImEmpty = ->

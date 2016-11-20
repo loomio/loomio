@@ -1,2 +1,2 @@
-angular.module('loomioApp').controller 'MotionClosedItemController', ($scope) ->
-  $scope.proposal = $scope.event.proposal()
+angular.module('loomioApp').controller 'MotionClosedItemController', ($scope, Records) ->
+  $scope.proposal = Records.proposals.find($scope.event.eventable.id)

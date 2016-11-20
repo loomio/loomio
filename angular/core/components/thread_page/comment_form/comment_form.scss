@@ -4,8 +4,6 @@
 
 .comment-form {
   @include card;
-  /*make room for the "turn off angular" link */
-  margin-bottom: 5em;
   position: relative;
 }
 
@@ -15,6 +13,9 @@
 
 .comment-form-button {
   margin-left: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .comment-form-container{
@@ -24,11 +25,6 @@
 .comment-form__privacy-notice {
   font-size: 13px;
   color: #767676;
-}
-
-.comment-form-attachments{
-  display: inline-block;
-  margin-left: 10px;
 }
 
 .thread-comment-form-actions {

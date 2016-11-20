@@ -11,6 +11,13 @@ namespace :loomio do
     LocateUsersAndGroupsJob.perform_later
   end
 
+  # http://stackoverflow.com/a/9835162
+  task weekly_tasks: :environment do
+    if Time.now.monday?
+      SendAnalyticsEmailJob.perform_later
+    end
+  end
+
   task resend_ignored_invitations: :environment do
     InvitationService.resend_ignored(send_count: 1, since: 1.day.ago)
     InvitationService.resend_ignored(send_count: 2, since: 3.days.ago)
@@ -67,18 +74,6 @@ namespace :loomio do
 
   task tag_and_measure_cohorts: :environment do
     CohortService.tag_groups
-    MeasurementService.measure_groups(Date.yesterday)
-  end
-
-  task measure_groups_lots: :environment do
-    CohortService.tag_groups
-    date = 10.weeks.ago.to_date
-    while(date < Date.today) do
-      puts 'hi'
-      MeasurementService.measure_groups(date)
-      puts "measured #{date}"
-      date = date + 1.day
-    end
   end
 
   task update_blog_stories: :environment do

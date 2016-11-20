@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'DiscussionService' do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
+  let(:admin) { create(:user) }
   let(:group) { create(:group) }
   let(:another_group) { create(:group, is_visible_to_public: false) }
   let(:discussion) { create(:discussion, author: user, group: group) }
@@ -14,6 +15,7 @@ describe 'DiscussionService' do
                          discussion: discussion,
                          destroy: true,
                          author: user) }
+  let(:attachment) { create(:attachment) }
   let(:discussion_params) { {title: "new title", description: "new description", private: true, uses_markdown: true} }
 
   describe 'create' do
@@ -44,9 +46,33 @@ describe 'DiscussionService' do
                                  actor: user)
       end
 
+      it 'notifies new mentions' do
+        discussion.group.add_member! another_user
+        discussion.description = "A mention for @#{another_user.username}!"
+        expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
+        DiscussionService.create(discussion: discussion, actor: user)
+      end
+
+      it 'does not notify users outside the group' do
+        discussion.description = "A mention for @#{another_user.username}!"
+        expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, user, another_user)
+        DiscussionService.create(discussion: discussion, actor: user)
+      end
+
       it 'marks the discussion reader as participating' do
         DiscussionService.create(discussion: discussion, actor: user)
         expect(DiscussionReader.for(user: user, discussion: discussion).participating).to eq true
+      end
+
+      it 'sets the volume to loud if the user has set email_on_participation' do
+        user.update(email_on_participation: true)
+        DiscussionService.create(discussion: discussion, actor: user)
+        expect(DiscussionReader.for(user: user, discussion: discussion).volume).to eq 'loud'
+      end
+
+      it 'does not set the volume if the user has not set email_on_participation' do
+        DiscussionService.create(discussion: discussion, actor: user)
+        expect(DiscussionReader.for(user: user, discussion: discussion).volume).to_not eq 'loud'
       end
 
       it 'fires a NewDiscussion event' do
@@ -69,6 +95,35 @@ describe 'DiscussionService' do
       DiscussionService.update discussion: discussion,
                                params: discussion_params,
                                actor: user
+    end
+
+    it 'notifies new mentions' do
+      discussion.group.add_member! another_user
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect(Events::UserMentioned).to receive(:publish!).with(discussion, user, another_user)
+      DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
+    end
+
+    it 'notifies new mentions with editor' do
+      discussion.group.add_member! another_user
+      discussion.group.add_admin! admin
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect(Events::UserMentioned).to receive(:publish!).with(discussion, admin, another_user)
+      DiscussionService.update(discussion: discussion, params: discussion_params, actor: admin)
+    end
+
+    it 'does not renotify old mentions' do
+      discussion.group.add_member! another_user
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect { DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+      discussion_params[:description] = "Hello again @#{another_user.username}"
+      expect { DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to_not change  { another_user.notifications.count }
+    end
+
+    it 'does not notify users outside of the group' do
+      discussion_params[:description] = "A mention for @#{another_user.username}!"
+      expect(Events::UserMentioned).to_not receive(:publish!).with(discussion, user, another_user)
+      DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
     end
 
     it 'sets params' do
@@ -102,6 +157,45 @@ describe 'DiscussionService' do
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
+      end
+
+      it 'creates a version with updated title / description / private values' do
+        DiscussionService.update discussion: discussion,
+                                 params: discussion_params,
+                                 actor: user
+        version = PaperTrail::Version.last
+        expect(version.object_changes['title'][1]).to eq discussion_params[:title]
+        expect(version.object_changes['description'][1]).to eq discussion_params[:description]
+      end
+
+      it 'creates a version with updated attachment_ids' do
+        expect { DiscussionService.update discussion: discussion,
+                   params: { attachment_ids: [attachment.id] },
+                   actor: user }.to change { discussion.versions.count }.by(1)
+        version = PaperTrail::Version.last
+        expect(version.object_changes['attachment_ids'][0]).to eq []
+        expect(version.object_changes['attachment_ids'][1]).to eq [attachment.id]
+      end
+
+      it 'updates the existing version with attachment_ids' do
+        discussion_params[:attachment_ids] = [attachment.id]
+        expect { DiscussionService.update discussion: discussion,
+                   params: discussion_params,
+                   actor: user }.to change { discussion.versions.count }.by(1)
+        version = PaperTrail::Version.last
+        expect(version.object_changes['title'][1]).to eq discussion_params[:title]
+        expect(version.object_changes['attachment_ids'][0]).to eq []
+        expect(version.object_changes['attachment_ids'][1]).to eq [attachment.id]
+      end
+
+      it 'removes attachments in the version' do
+        discussion.update(attachment_ids: [attachment.id])
+        expect { DiscussionService.update discussion: discussion,
+                   params: { attachment_ids: [] },
+                   actor: user }.to change { discussion.versions.count }.by(1)
+        version = PaperTrail::Version.last
+        expect(version.object_changes['attachment_ids'][0]).to eq [attachment.id]
+        expect(version.object_changes['attachment_ids'][1]).to eq []
       end
     end
 

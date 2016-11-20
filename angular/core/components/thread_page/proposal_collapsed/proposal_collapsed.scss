@@ -26,6 +26,7 @@
 
 .proposal-collapsed__outcome {
   color: $grey-on-white;
+  img { max-width: 100%; }
 }
 
 .proposal-collapsed__closed-at {

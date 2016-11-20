@@ -3,6 +3,7 @@ describe API::GroupsController do
 
   let(:user) { create :user }
   let(:group) { create :group }
+  let(:subgroup) { create :group, parent: group }
   let(:discussion) { create :discussion, group: group }
 
   before do
@@ -28,6 +29,14 @@ describe API::GroupsController do
         members_can_vote])
     end
 
+    it 'returns the parent group information' do
+      get :show, id: subgroup.key, format: :json
+      json = JSON.parse(response.body)
+      group_ids = json['groups'].map { |g| g['id'] }
+      expect(group_ids).to include subgroup.id
+      expect(group_ids).to include group.id
+    end
+
     context 'logged out' do
       before { @controller.stub(:current_user).and_return(LoggedOutUser.new) }
       let(:private_group) { create(:group, is_visible_to_public: false) }
@@ -45,21 +54,6 @@ describe API::GroupsController do
       end
     end
 
-  end
-
-  describe 'use_gift_subscription' do
-    it 'creates a gift subscription for the group' do
-      post :use_gift_subscription, id: group.key
-      group_json = JSON.parse(response.body)['groups'][0]
-      expect(group_json['subscription_kind']).to eq 'gift'
-    end
-
-    it 'does not set a gift subscription unless chargify is set up' do
-      SubscriptionService.stub(:available?).and_return(false)
-      post :use_gift_subscription, id: group.key
-      expect(response.status).to eq 400
-      expect(group.subscription.reload.kind).to_not eq 'gift'
-    end
   end
 
   describe 'update' do

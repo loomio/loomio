@@ -156,6 +156,31 @@ To tell the plugin to use your component, put a line in our `plugin.rb` like thi
 
 This will make your component available within the app.
 
+### Add routes to the angular app
+
+If you're adding an entirely new page to Loomio, you'll need to add a route in order to allow us to
+navigate to your new page properly. To do this, use the `use_client_route` command
+
+```ruby
+plugin.use_client_route '/kickflips', :kickflip_page
+```
+
+In the above, `kickflip_page` is simply a component, same as you'd write in the `use_component` command.
+So now we can simply write our controller code as normal:
+
+```
+/plugins
+  /components
+    /kickflip_page
+      kickflip_page.haml
+      kickflip_page.scss
+      kickflip_page.coffee
+```
+
+For examples on how to write page controllers (which are subtly different from regular components), check out [thread_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/thread_page/thread_page_controller.coffee) or [group_page_controller.coffee](https://github.com/loomio/loomio/blob/master/angular/core/components/group_page/group_page_controller.coffee) in the core Loomio repo.
+
+_NB: you don't need to call `use_component` as well, calling `use_client_route` will do this for you!)_
+
 ### Attach components to outlets in the Angular interface
 Now that the component is loaded into our angular app, how to make it appear on the interface?
 
@@ -189,6 +214,134 @@ If you want to make an angular something which isn't a component (like a filter 
 ```
 
 NB: We only support coffeescript at the moment, but in the future we'll allow plugin authors to write their client side code in ES6, TypeScript, vanilla javascript, even Clojure!
+
+### Extend existing angular code
+
+Sometimes you just can't get around modifying existing angular code in the app. This is discouraged if you can avoid it, but it is possible to do so (it's not that intuitive though, so hold on to your hats!)
+
+#### Services / directives
+As of Angular 1.4, there is some decent support for adding custom code to existing services and directives. To do so, we'll use the `$provide` service.
+
+1. Write a new `config` block for our angular module, injecting the `$provide` service.
+2. Create a new decorator for our service or directive
+3. Use the `$delegate` service to get an instance of our controller
+4. Use the arguments to determine whether this is the controller we want to modify or not (after all, this `$controller` is run once for each controller in our app)
+5. Modify our controller instance to the desired affect.
+6. Return our newly modified controller instance
+
+```coffee
+angular.module('loomioApp').config ($provide) -> # 1
+  $provide.decorator 'kickflipDirective', ($delegate) -> # 2
+    directive = _.first($delegate) # $delegate is an array here :/
+    directive.compile = ->
+      (scope, elem) ->
+        directive.link.apply(this, arguments)
+        if modal = scope.parentMentio.targetElement[0].closest('.modal')
+          modal.appendChild(elem[0])
+    $delegate
+```
+
+#### Controllers
+If you need to overwrite some controller code, things get a little bit trickier.
+
+1. Write a new `config` block for our angular module, injecting the `$provide` service.
+2. Create a new decorator for our `$controller` service, passing in whatever dependencies we need, along with the `$delegate` service.
+3. Use the `$delegate` service to get an instance of our controller
+4. Use the arguments to determine whether this is the controller we want to modify or not (after all, this `$controller` is run once for each controller in our app)
+5. Modify our controller instance to the desired affect.
+6. Return our newly modified controller instance
+
+Here's what a simple implementation might look like, given we've got a `KickflipPageController` with the following method:
+
+```coffee
+@kickflip = -> "100 points!"
+```
+
+We can update this method with the following:
+```coffee
+angular.module('loomioApp').config ($provide) -> # 1
+  $provide.decorator '$controller', ($delegate, Session) -> # 2
+     ->
+      ctrl = $delegate arguments... # 3
+      if _.get(arguments, '[1].$router.name') == 'kickflipPage' # 4
+        oldKickflip = ctrl.kickflip
+        ctrl.kickflip = -> oldKickflip() + ", and 100 more points!" # 5
+
+      return ctrl # 6
+```
+
+Now, when our KickflipPageController calls `kickflip()`, we get "100 points, and 100 more points!" :D
+
+### Add non-angular code
+
+##### Add vanilla rails views
+
+While it's not encouraged, it is possible to add vanilla rails views to your Loomio instance.
+(We do this for things like the about page, or the terms of service page on loomio.org)
+
+In order to add a page to your app, use `plugin.use_page`, passing it a view and a controller action.
+
+For example, given a view in `kickflip/views/kickflip.html.erb`, we could write
+
+```ruby
+  # route /kickflip to the #index action of KickflipsController
+  plugin.use_page :kickflip, "kickflips#index"
+```
+
+##### Add redirects to external pages
+
+Have an external blog, forum, or other page you'd like to link from within your loomio? Try the `redirect` option on `use_page`, and pass through an absolute URL to redirect to.
+
+```ruby
+  # have /blog point to an external url
+  plugin.use_page :blog, 'https://kickflip.com/blog', redirect: true
+```
+
+##### Add assets to the asset pipeline
+
+Angular assets are not served through the asset pipeline, and so will be unavailable on static pages. In order to serve static assets which will be picked up in your views, you'll want to use `plugin.use_static_asset`
+
+For example, if we wanted to style the content on `users/sign_in`, with an awesome background image, we could write a file `assets/kickflip.scss`
+
+```css
+  .signin-container {
+    background-image: url('kickflip.png');
+  }
+```
+
+We could include that css by writing
+
+```ruby
+  plugin.use_static_asset 'assets', 'kickflip.scss'
+```
+
+_NB: that this will compile files with extensions `js`, or `coffee` into `application.js`, those with `css` or `scss` into `application.css` and ignore all other files._
+
+If you want to include assets in the asset pipeline without including them in the default manifest files (`application.js` and `application.css`, you can use the 'standalone' option.
+
+```ruby
+  plugin.use_static_asset 'assets', 'kickflip.scss'
+```
+
+This means the file won't be included in the manifests, but still exist in the asset pipeline and can be included in individual views by writing
+```
+stylesheet_link_tag 'kickflip'
+```
+
+We also provide a `use_static_asset_directory` method, which will include all files in the given directory.
+
+```ruby
+  # include all files in my_plugin/assets in application.js / css
+  plugin.use_static_asset_directory 'assets'
+```
+
+_NB: Note that only files with extensions `js`, `coffee`, `css`, or `scss` will be included in the manifest. All other files will be made available in the asset pipeline. Be careful not to include ruby files in this way!_
+
+This method also accepts a 'standalone' option, which will make the files available in the asset pipeline, but not add them to the manifest files.
+```ruby
+  # include all files in my_plugin/assets in the asset pipeline
+  plugin.use_static_asset_directory 'assets', standalone: true
+```
 
 ### Add database migrations
 If you need a spot in the database to store all the cool stuff your plugin is doing, we can make a new table using the `use_database_table` command like this:
@@ -277,24 +430,77 @@ GITHUB_USERNAME=my_username
 GITHUB_PASSWORD=my_password
 ```
 
-### Add gem dependencies
+##### Marking a plugin as an experiment
 
-Sometimes you'll want to add gems to your plugin. To do this, we can add a list of dependencies to the `plugins.yml` file, like so:
+On Loomio.org, we have plugins that we'd like to try out in a production environment,
+but might not be ready for all of our users to see just yet. To enable this, we've
+added the ability to mark some plugins as 'experimental', which means they will
+only be loaded for groups who have opted in to see our mad science.
 
-```yml
+In order to mark a plugin as an experiment, simply add the line `experimental: true`
+to the plugin's entry in `plugins.yml`, like so:
+
+```yaml
 kickflip:
-  repo: gdpelican/kickflip
-  gemfile:
-    - skateboard
-    - mad_skillz
+  repo:         loomio/kickflip
+  branch:       master
+  experimental: true
 ```
 
-This will run the `gemrat` command with the list of dependencies, which will add the 'skateboard' and 'mad_skillz' gems to your Gemfile and bundle them automagically. (More on gemrat [here](https://github.com/DruRly/gemrat))
+###### Constraining a plugin to certain subscription levels
 
-(NB: We only support installing the latest version of a gem right now; a PR to make this more better is welcome!)
+We also have plugins which we only want to appear for our paying customers. In order to do this on your instance,
+you can provide the config with a list of 'plans', like so:
+
+```yaml
+kickflip:
+  repo:     loomio/kickflip
+  plans:
+    - standard
+    - plus
+```
+
+This will be compared to the 'plan' field of the group's subscription when deciding whether to display the plugin or not.
+
+###### How this works:
+
+Most of our plugin outlets have a group passed into them, like this:
+```haml
+%outlet{name: "my-cool-outlet", group: "theGroup"}
+```
+
+If an outlet has a group associated with it, it will load experimental plugins for that group
+_only if_ that group has opted into experiments (ie, `group.enable_experiments` is true)
+
+More succinctly:
+- If the outlet has a group with enable_experiments == true, it will load all components
+- If the outlet has a group with enable_experiments == false, it will load only non-experimental plugin components
+- If the outlet has no group, it will load all plugin components
+
+###### But be careful!
+
+Note that this affects _only_ the loading of components into plugin outlets. If you create an
+experimental plugin, and it changes the way the API works, or user permissions, or how a class
+behaves, those changes will take place across the entire instance.
+
+### Add user permissions
+
+For most of the actions that occur in Loomio, you'll want to ensure that the current user is able to perform that action. We use [cancan](), and store our permissions in the `app/models/ability.rb` file.
+
+Unfortunately, overwriting this file directly isn't an option, but you can add new abilities by overriding the `add_additional_abilties` method, like so:
+
+```ruby
+plugin.extend_class Ability do
+  def add_additional_abilties
+    can :perform, Kickflip { |skater| skater.has_mad_skillz? }
+  end
+end
+```
 
 ### Add tests
 The official Loomio plugins will all have just the right amount of tests, and so can you!
+
+##### RSpec tests
 
 Putting regular rspec tests into the `spec` folder will allow you to run tests for your plugins by executing `bundle exec rspec plugins` from the root folder.
 
@@ -320,3 +526,92 @@ end
 ```bash
   bundle exec rspec plugins/kickflip/spec/models/kickflip_spec.rb:3
 ```
+
+##### End to end testing
+
+Loomio uses [protractor](http://github.com/angular/protractor), which is a framework for running automated tests on Angular. We use a very simple DSL to write these tests; you can look at examples in `angular/test/protractor`
+
+In order to write angular tests in your application, add a file that follows the pattern `*_spec.coffee` anywhere in your plugin. (Such as `plugins/kickflip/test/kickflip_spec.coffee`). You can then write angular specs in there as in the main repo (and they will be run by our CI.)
+
+Most tests will follow this pattern:
+
+###### Load a setup route
+Check out `app/controllers/development controller.rb` to see existing routes. You can define your own with the following command in `plugin.rb`:
+
+```ruby
+plugin.use_test_route(:kickflip_route) do
+  @group = Group.create(name: "My group")
+  redirect_to group_path(@group)
+end
+```
+
+Note that this provides a `/development/kickflip_route` route, which can then be called in your spec using loadPath:
+
+```coffeescript
+  page = require './helpers/page_helper.coffee'
+  page.loadPath 'kickflip_route'
+```
+
+###### Perform some actions on the page
+
+The page helper also provides several methods for interacting with the page
+
+```coffeescript
+  page = require './helpers/page_helper.coffee'
+  # fill in a form field
+  page.fillIn '.page__input-field', '100 points!'
+
+  # click on an element by css selector
+  page.click '.page__submit-button'
+
+  # click on the first or last element with the given selector
+  page.clickFirst 'a[href]'
+  page.clickLast 'ul.list-items li'
+```
+
+_NB: we use [BEM]() rules, which should make it easier to pick a specific element. Using clickFirst and clickLast
+is more fragile and prone to future breakage._
+
+###### Ensure an element or some text is present
+
+Once we've performed some interactions with our page, we can check to ensure that the page looks as we expect it to, either by verifying the existence of a particular element, or checking for some specified text on the page.
+
+```coffeescript
+  page = require './helpers/page_helper.coffee'
+
+  # expect the '.page__element' element to be present on the screen
+  page.expectElement '.page__element'
+  # expect the text 'It worked!' to appear inside the element '.page__element'
+  page.expectText '.page__element', 'It worked!'
+```
+
+_NB: If you're dealing with a page which does not use angular (such as our marketing page, or the sign in / sign up form), you'll need to use the static page helper, rather than the regular page helper. This is because the regular page helper waits until it can detect angular on the page before performing its actions. (This is a pretty uncommon use case)_
+
+```coffeescript
+  staticPage = require './helpers/static_page_helper.coffee'
+  staticPage.fillIn '.page__input-field'
+  staticPage.fillIn '.page__submit-button'
+```
+
+###### Running the specs
+
+In order to run only plugin specs, run the command `gulp protractor:plugins`. Plugin specs will also be run after the core specs have been run using `gulp protractor:now`.
+
+### Add factories
+
+We use [FactoryGirl](https://github.com/thoughtbot/factory_girl) for our unit testing, which allows us to easily create minimum viable models to test with.
+
+If you've created a new model, and want to test it (you do!) then it's a good idea to set up a factory
+for it. This allows you to use things like `let(:kickflip) { create(:kickflip) }` in your tests, same
+way we do in the core codebase.
+
+To define a factory, use the `use_factory` command.
+
+```ruby
+plugin.use_factory(:kickflip) do
+  user
+  reaction "That was sweet!"
+end
+```
+
+Note that this supports any syntax which would normally go into a `factory` block for FactoryGirl.

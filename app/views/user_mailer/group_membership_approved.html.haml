@@ -1,3 +1,6 @@
-%p= t("email.group_membership_approved.intro", group_name: @group.name)
-
-%p= link_to(t("email.view_group"), group_url(@group, @utm_hash))
+.invite-people-mailer__context
+  = t(:"email.group_membership_approved.intro_html", group_name: @group.name)
+.invite-people-mailer__message-container
+  = link_to t(:"email.view_group"), group_url(@group, @utm_hash), class: "invite-people-mailer__button"
+.invite-people-mailer__value-proposition
+  = t(:"email.value_proposition")

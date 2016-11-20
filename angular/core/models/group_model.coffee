@@ -35,6 +35,11 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       @hasMany 'subgroups', from: 'groups', with: 'parentId', of: 'id'
       @belongsTo 'parent', from: 'groups'
 
+    parentOrSelf: ->
+      if @isParent() then @ else @parent()
+
+    group: -> @
+
     shareableInvitation: ->
       @recordStore.invitations.find(singleUse:false, groupId: @id)[0]
 
@@ -142,11 +147,11 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else
         '/img/default-logo-medium.png'
 
-    coverUrl: ->
+    coverUrl: (size) ->
       if @isSubgroup() && !@hasCustomCover
-        @parent().coverUrl()
+        @parent().coverUrl(size)
       else
-        @coverUrlDesktop
+        @coverUrls[size] || @coverUrls.small
 
     archive: =>
       @remote.patchMember(@key, 'archive').then =>
@@ -154,14 +159,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
         _.each @memberships(), (m) -> m.remove()
 
     uploadPhoto: (file, kind) =>
-      @remote.upload("#{@key}/upload_photo/#{kind}", file)
+      @remote.upload("#{@key}/upload_photo/#{kind}", file, {}, ->)
 
-    hasNoSubscription: ->
-      !@subscriptionKind?
-
-    trialIsOverdue: ->
-      return false if @subscriptionKind != 'trial' or !@subscriptionExpiresAt?
-      @subscriptionExpiresAt.clone().add(1, 'days') < moment()
+    hasSubscription: ->
+      @subscriptionKind?
 
     noInvitationsSent: ->
       @membershipsCount < 2 and @invitationsCount < 2

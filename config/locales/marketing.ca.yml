@@ -1,0 +1,125 @@
+ca:
+  navigation:
+    blog: Bloc
+    resources: Recursos
+    case_studies: "Casos d'estudi"
+    help: Ajuda
+    guides_and_tips: Guies i consells
+    developers: Desenvolupadors
+    coop_handbook: Cooperació
+    about: Quant a
+    pricing: Preus
+    contact: Contacte
+    login: Entra
+    start_group: Crea un grup
+    home: Inici
+    terms_of_service: Termes del servei
+    privacy: Privacitat
+    translation: Traducció
+    newsletter: Butlletí
+    twitter: Twitter
+    facebook: Facebook
+    trademark_statement: '© 2016 Loomio Cooperative Limited. Tots els drets reservats. "Loomio" és una marca registrada de Loomio Cooperative Limited.'
+  marketing:
+    hero:
+      dilemma_html: Prendre decisions amb el vostre equip no hauria de ser tan difícil.
+      dilemma_image_alt: "Un grup de persones s'intenten comunicar al voltant d'una taula sense èxit"
+      solution: Amb Loomio podeu prendre decisions sense una llarga llista de correus o de reunions.
+      solution_image_alt: Un grup de persones estan reunides i es communiquen amb els seus dispositius
+      arrow_alt: "Una fletxa apuntant d'esquerra a dreta"
+    macbook_android_image_alt: Loomio a un ordinador portàtil i a un dispositiu Android
+    make_decisions_html: 'Loomio és un lloc perquè el vostre grup <strong>prengui decisions conjuntament</strong>.'
+    gather:
+      heading: Reuniu
+      explanation: "Reuniu les persones indicades i la informació necessària. És accessible, fàcil d'utilitzar, personalitzable i amb moltes opcions de privacitat i seguretat."
+      image_alt: "Un grup de persones reunides en cercle al voltant d'un signe d'interrogació"
+    discuss:
+      heading: Discutiu
+      explanation: 'Tingueu converses clares sobre temes concrets. Manteniu-vos al dia, llegiu la informació rellevant i filtreu el soroll. És un espai dedicat a la col·laboració constructiva.'
+      image_alt: Un grup de persones compartint informació i expressant opinions
+    propose:
+      heading: Proposeu
+      explanation: "Els resums visuals faciliten la comprensió de les posicions de tothom. Descobriu ràpid si esteu d'acord, o aneu directament a la raó del desacord i construïu una entesa compartida."
+      image_alt: Un grup de persones reunides expressen la seva posició
+    decide_act:
+      heading: Decidiu i actueu
+      explanation: Arribeu a un resultat clar per a cada proposta dintre del temps estimat. Tothom serà notificat del resultat per així poder avançar i prendre una acció conjuntament.
+      image_alt: Un grup de persones amb els braços aixecats enlaire
+    try_it_now: Proveu-ho ara
+    start_free_group: Crea un grup
+    fast_inclusive_effective: 'La vostra nova normalitat pot ser ràpida, inclusiva i efectiva.'
+    debt_resistance_uk:
+      heading: Productivitat en les reunions i entre elles
+      quote: >
+        Ens comunicàvem per correu electrònic entre les reunions, però molt
+        sovint no arribàvem a prendre una decisió. A Loomioo, podem tenir una
+        discussió i prendre una decisió. I si tenim moltes coses a discutir en
+        una reunió, pots dir: "Ho podem decidir a Loomio". Ha fet les reunions
+        cara a cara molt més eficients.
+      link_text: Llegiu més sobre com una comunitat del Regne Unit segueix treballant entre reunions per crear una societat més democràtica...
+    pathways:
+      heading: Incrementeu la participació i la satisfacció dels vostres empleats
+      quote: >
+        Principalment, Loomio canvia els nivells de satisfacció i de participació
+        dels empleats. Sembla màgia, suporta de forma natural l'evolució de
+        l'organització i és creat per les mateixes persones. Què més pots demanar
+        com a directora general?
+      link_text: Llegiu més sobre com una gran ONG de Nova Zelanda va utilitzar Loomio per implicar a tots els empleats en la presa de decisions...
+    welsh_government:
+      heading: Evolucioneu la consulta amb els ciutadans i amb totes les parts implicades
+      quote: >+
+        Els participants parlaven entre ells i també amb nosaltres. Van utilitzar
+        Loomio per comentar-nos quins problemes havien tingut i que volien que
+        fes el govern de Gal·les al respecte... Utilitzar Loomio per eixamplar
+        les sessions de la nostra comissió ens va permetre millorar globalment la
+        satisfacció i la eficiència del procés de participació.
+
+
+      link_text: "Llegiu més sobre com l'Assemblea Nacional de Gal·les va utilitzar Loomio per consultar els usuaris i els proveïdors..."
+    ouishare:
+      heading: Escaleu globalment una comunitat col·laborativa
+    urban_adventures:
+      heading: Col·laboració remota per equips distribuïts
+      link_text: 'Llegiu més sobre com una empresa amb treballadors a Austràlia, Vietnam i Canadà, utilitza Loomio per col·laborar com un equip...'
+    features:
+      heading: 'Cada característica de Loomio ajuda al vostre grup a discutir, decidir i tirar endavant. És diferent de les enquestes, dels sondejos o de les xarxes socials.'
+      choose_participants_heading: Escolliu qui ha de decidir cada cosa.
+      deliberation_heading: "Feu-ho millor que 'ho diu la majoria'"
+      iterate_explanation: 'Prendre decisions conjuntament pot ser un recurs molt potent, fins i tot quan la proposta inicial no aconsegueix el consens. Treballeu a partir dels desacords i busqueu noves solucions.'
+      deadlines_heading: "Les dates límit creen l'impuls."
+      fewer_meetings_heading: Sigueu productiu sense reunions.
+      notifications_heading: Les notificacions us mantenen informat.
+      archive_heading: Un arxiu automàtic de decisions.
+      email_or_mobile_heading: Participeu amb el correu electrònic o el mòbil.
+      accessible_heading: Accessible i Multi-Idioma.
+    press:
+      boingboing: "Loomio sembla una bona barreja d'intel·ligència política, coneixement tècnic i bon disseny."
+      bbc: Loomio està preparat per a ser el Facebook de la xarxa ciutadana.
+    about_us:
+      heading: Quant a nosaltres
+      first_paragraph: 'Loomio és un software de codi obert, creat per una cooperativa social. Estem situats a Aotearoa, Nova Zelanda, i som part de'
+      link_text: 'Descobriu més sobre el nostre equip, la nostra història i el nostre propòsit i valors...'
+      image_alt: Equip de Loomio - Abril de 2016
+  about:
+    heading: Nosaltres
+    introduction:
+      first_paragraph: 'Loomio és un software de codi obert creat per una cooperativa social. Estem establerts a Aotearoa, Nova Zelanda, i som part de'
+    story:
+      heading: Història
+    people:
+      heading: Gent
+      natalia: "Coordinadora de traduccions, suport a l'usuari i activista"
+    advisors:
+      heading: Consellers
+      introduction: "Estem recolzats per un Consell d'Assessors amb algunes de les ments més brillants en democràcia i tecnologia a nivell internacional."
+      sascha: Fundador de X-Lab i Open Technology Institute
+      joi: 'Director del MIT Media Lab, cofundador de Creative Commons, consell de la Fundació Mozilla'
+      douglas: 'Escriptor bestseller, comentarista de la CNN, teòric dels mitjans de comunicació'
+      matthew_and_brian: 'Cofundadors de Inflection, Fundació Namaste'
+    purpose_and_values:
+      heading: Propòsits i valors
+      coop_heading: Cooperativa i empresa social
+      independent_heading: Independent i neutral
+      open_source_heading: Col·laboració en codi obert
+      adaptive_heading: "Adaptativa, reflexiva i orientada a l'usuari"
+      transparent_heading: Transparència

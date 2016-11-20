@@ -93,15 +93,9 @@ tr:
     latest: En yeniler
     unread: Okunmamış
     closing_in: Kapanış
-  session_form:
-    email_label: 'Eposta:'
-    password_label: 'Şifre:'
-    remember_me: Beni Hatırla
-    sign_in: Oturum aç
   comment_form:
     aria_label: Bir yorum ekle
     attachments:
-      aria_label: Bir dosya ekle
       remove_attachment: Eki kaldır
     messages:
       created: Yorum eklendi
@@ -118,25 +112,19 @@ tr:
       label: Gönder
     private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
     public_privacy_notice: Yorumunuz web üzerindeki herkese görünür olacak.
-  navbar:
+  sidebar:
     recent: En yeni
     unread: Okunmamış
-    groups: Gruplar
+    muted: Sesi kısıldı
+    edit_profile: Profili düzenle
+    email_settings: E-posta ayarları
+    help: Yardım
+    sign_out: Oturumu kapat
+  navbar:
     recent_title: Kontrol paneline git
     unread_title: Okunmamış etkinlikleri görüntüle
-    groups_title: Gruplarını görüntüle
     start_thread: Yeni bir konu başlat
     notifications: Bildirim paneli
-    user_actions: Kullanıcı eylemleri
-    user_options:
-      label: Kullanıcı seçenekleri
-      contact_us: Bize yazın
-      new_thread: Yeni konu
-      new_group: Yeni grup
-      profile: Profil
-      email_settings: E-posta ayarları
-      help: Yardım
-      sign_out: Oturumu kapat
     search:
       no_results: Hiçbir konu bulunamadı
       close: Arama panelini kapat
@@ -146,7 +134,6 @@ tr:
       proposals: Öneriler
       comments: Yorumlar
   start_menu:
-    title: Aksiyon düğmesi
     start_group: Grup Başlat
     start_subgroup: Alt Grup Başlat
     start_thread: Konu Başlat
@@ -163,7 +150,6 @@ tr:
     new_comment: '<strong>{{name}}</strong> <strong>{{discussion}}</strong> müzakeresine yorum yaptı'
     comment_replied_to: '<strong>{{name}}</strong> <strong>{{discussion}}</strong> müzakeresindeki yorumunu yanıtladı'
     comment_liked: '<strong>{{name}}</strong>  <strong>{{discussion}}</strong> müzakeresindeki yorumunu beğendi'
-    user_mentioned: '<strong>{{name}}</strong> <strong>{{title}}</strong> başlığında senden bahsetti'
     membership_requested: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna üyelik başvurusunda bulundu'
     membership_request_approved: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna yaptığın üyelik başvurusunu onayladı'
     user_added_to_group: '<strong>{{name}}</strong> seni <strong>{{group}}</strong> grubuna ekledi'
@@ -221,13 +207,10 @@ tr:
     start_a_proposal: Bir öneri başlat
     edit_proposal: Öneri düzenle
     what_does_a_proposal_do: 'Öneriler, belirli bir davranış biçimi hakkında diğer herkesin nasıl hissettiğini görmenizi sağlar.'
-    editing_title_and_description_forbidden: 'Kişiler oy kullandıktan sonra bir önerinin başlığını ya da açıklamasını değiştiremezsiniz. Eğer ayrıntılar değiştiyse, lütfen öneriyi kapatın ve başka bir tane başlatın '
-    title_placeholder: 'Örn: Aya git'
     title_label: Başlık
     closes_at_label: de kapanır
     closes: Kapanış
     details_label: Detaylar
-    details_placeholder: 'Yeterli detay verin ki herkes katılımın, reddetmenin ya da her ne karar veriyorlarsa bunun ne anlama geldiğini tam olarak bilsin'
   discussion_record:
     created: '{{title}} konusu {{groupName}} grubunda başarıyla oluşturuldu '
     updated: 'Değişiklikleri {{title}} konusuna kaydet'
@@ -274,21 +257,7 @@ tr:
       almalarını rica ediyoruz.</p>
     submit: Bana planları göster
   group_welcome_modal:
-    heading: Yeni grubuna hoşgeldin
-    first_step: 'Siz grup <strong>koordinatörüsünüz</strong> ve bu bir ev sahipliği yapmak gibi birşey. Videoyu izleyin ve örnek konuları kontrol edin.'
-    second_step: 'Hazır olduğunuz zaman <strong>başkalarını davet edin</strong>.'
     ok_got_it: 'Tamam, anladım!'
-  group_cover_modal:
-    heading: Yeni kapak fotoğrafı
-    upload_link: Yeni kapak fotoğrafı yükle
-    helptext: "İlham mı arıyorsunuz?  <a href=\"https://unsplash.com/\">Unsplash</a>'in güzel ve ücretsiz resim galerisine bir göz atın."
-    image_size_helptext: 'İdeal resim boyutu: 1400 x 320px'
-    upload_success: Kapak fotoğrafı başarıyla güncellendi
-  group_logo_modal:
-    heading: Yeni grup logosu
-    upload_link: Yeni grup logosu yükle
-    image_size_helptext: 'İdeal resim boyutu: 100 x 100px'
-    upload_success: Logo başarıyla güncellendi
   join_group_button:
     join_group: Gruba katıl
     ask_to_join_group: Gruba katılmak için talep gönder
@@ -298,7 +267,6 @@ tr:
     heading: Gruba katılmak için talep gönder
     name_label: İsim
     email_label: E-posta
-    introduction_label: Kendini tanıt
     submit_button: Gruba katılmak için talep gönder
     messages:
       membership_requested: '{{group}} grubuna üyelik talebi gönderdin.'
@@ -335,7 +303,6 @@ tr:
     members: Üyeler
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
-    all_members: 'Tüm üyeler ({{count}})'
     subgroups: Alt gruplar
     subgroups_placeholder: Altgruplar grup içinde farklı takımlar oluşmanızı sağlar.
     invite_people: Kişileri davet et
@@ -349,16 +316,6 @@ tr:
       manage_subscription: Grup Aboneliğini Yönet
       leave_group: Gruptan Ayrıl
       deactivate_group: Grubu Devre Dışı Bırak
-    deactivate_group:
-      title: Grubu devre dışı bırak
-      question: Bu grubu devre dışı bırakmak istediğinizden emin misiniz?
-      submit: 'Evet, Bu grubu devre dışı bırak'
-    leave_group:
-      title: Gruptan ayrıl
-      question: Bu grubu bırakmak istediğinden emin misin?
-      submit: 'Evet, bu gruptan ayrıl'
-      cannot_leave_group: Grubun son koordinatörü olarak bu grubu terk edemezsiniz. Gruba başka bir koordinatör seçebilir ya da bu grubu devre dışı bırakabilirsiniz.
-      add_coordinator: Bir koordinatör ekle
     volume:
       loud: Herhangi bir etkinlik olduğunda e-posta gönder.
       loud_aria_description: "Bu grup için bildirim ses düzeyiniz Yüksek Ses'e ayarlandı. Her ne zaman bir faaliyet olursa size e-posta gönderilecektir."
@@ -377,17 +334,9 @@ tr:
       parent_members: 'Gizlilik: Bu grup sadece {{parentGroupName}} ve {{groupName}} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
       aria_label: 'Grup gizliliği: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Hediye planı seçildi
-    body: 'Eğer grubunuzun yazılımı ödemek için bütçesi yoksa, bir abonelik ücreti ödemeniz gerekmez. Grup üyeleriniz belirli aralıklarla gönüllü bağış yapmaya davet edilecektir.'
-    confirm_selection: "Grubumdaki kişilerin Loomiyo'yu desteklemek adına gönüllü bağış yapmak için davet edilmesine razıyım."
-    got_it: 'Tamam, anladım!'
-    go_back: Geri dön
   donation_modal:
-    heading: "Loomio'yu desteklemek ister misiniz?"
     body: 'Loomio bir sosyal kuruluştur. Misyonumuz herkes için, kendisini etkileyen kararlara katılmanın kolay olduğu bir dünya yaratmak.'
     contribute: Bir katkıda bulunun
-    got_to_group: Sadece beni grubuma götür
   gift_card:
     heading: Hediye planı
     body: "<strong>{{name}}</strong> hediye destekli bir gruptur. Sizinki gibi gruplara yardımcı olan Loomio'yu desteklemek için buraya tıklayın:"
@@ -399,29 +348,9 @@ tr:
     expired_body_html: "<strong>{{name}}</strong> grubunun Loomio'yu deneme süreci bitti. Kullanmaya devam etmek için, grubunuza uygun bir fiyatlandırma planı seçmeniz gerekir."
   choose_plan_modal:
     heading: Lütfen grubunuz için bir plan seçiniz
-    gift: Hediye
     standard: Standart
-    plus: Plus
-    free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
-    get_started_for_free: Ücretsiz başlayın
-    support_before: "'na razıyım"
-    support_link: Sizinle konuşmak
-    support_after: 'deneme sürenizin uzatılması hakkında, ya da başka olabilecek herhangi bir sorunuz ile.'
-    remind_me_later: Bana daha sonra hatırlat
-    unlimited_members: sınırsız üyeler
-    unlimited_decisions: sınırsız kararlar
-    email_support: e-posta desteği
-    standard_price_html: |
-      US <strong>$19</strong>/aylık<br><span>ya da</span> $190/yıllık
-    plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
-    premium_support: Premium destek
-    plus_price_html: |
-      US <strong>$179</strong>/aylık<br><span>ya da</span> $1790/yıllık
     select: Seç
   subscription_success_modal:
-    heading: 'Aboneliğinizi ayarladığınız için teşekkürler!'
-    receipt: Makbunuzunu bir e-posta ile alacaksınız.
-    change_subscription: 'Eğer aboneliğinizi değiştirmek ya da iptal etmek isterseniz veya başka herhangi bir isteğiniz varsa,'
     contact_link: lütfen bizimle iletişime geçin.
     sign_off: Loomio ekibinden ❤
     ok_got_it: 'Tamam, anladım!'
@@ -440,19 +369,10 @@ tr:
       private_to_group: Ad ve açıklama sadece grup üyelerine görünür olacaktır.
       private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
     privacy: Gizlilik
-    group_privacy_is_open_description: herhangi biri grubu bulabilir ve katılmak için talep gönderebilir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. Tüm konular kamuya açıktır.
-    group_privacy_is_closed_description: herhangi biri grubu bulabilir ve katılmak için talep gönderebilir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. Tüm konular gizlidir.
-    group_privacy_is_closed_public_threads_description: herhangi biri grubu bulabilir ve katılmak için talep gönderebilir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. Konular kamuya açık ya da gizli olabilir.
-    group_privacy_is_secret_description: 'grubu sadece davet edilmiş üyeler bulabilir, kimlerin dahil olduğunu ve konuları görebilir.'
     confirm_change_to_secret: 'Eğer devam ederseniz, bu gruptaki tüm konular ve onların alt grupları gizlenecektir.'
     confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm konular gizli yapılacaktır.'
     confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm konular web üzerinde herkese açık olacaktır.'
     confirm_change_to_private_discussions_only: 'Eğer devam ederseniz, bu gruptaki tüm kamuya açık konular gizlenecektir.'
-    subgroup_privacy_is_open_description: herhangi biri bu alt grubu bulabilir ve katılmak için talep gönderebilir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. Tüm konular kamuya açıktır.
-    subgroup_privacy_is_closed_description: herhangi biri bu alt grubu bulabilir ve katılmak için talep gönderebilir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. Tüm konular gizlidir.
-    subgroup_privacy_is_closed_public_threads_description: herhangi biri bu alt grubu bulabilir ve katılmak için talep gönderebilir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. Konular kamuya açık ya da gizli olabilir.
-    subgroup_privacy_is_closed_secret_parent_description: '{{parent}} grubunun üyeleri bu alt grubu bulabilir ve katılmak için talep gönderebilir. Tüm konular gizlidir. Sadece üyeler gruba kimlerin dahil olduğunu görebilir. '
-    subgroup_privacy_is_secret_description: 'bu alt grubu sadece davet edilmiş üyeler bulabilir, kimlerin dahil olduğunu ve konuları görebilir.'
     advanced_settings: Gelişmiş ayarlar
     how_do_people_join: Kişiler nasıl katılabilir?
     membership_granted_upon_request: Herkes gruba katılabilir.
@@ -486,9 +406,7 @@ tr:
   group_help_card:
     title: Yardım
     ten_tips_article_title: Loomio ile mükemmel kararlar verebilmek için 10 ipucu
-    ten_tips_article_link: 'https://blog.loomio.org/2015/09/10/10-tips-for-making-great-decisions-with-loomio/'
     nine_ways_to_use_proposals: Bir sohbeti eyleme çevirmek için Loomio önerilerini kullanmanın 9 yolu
-    nine_ways_to_use_proposals_link: 'https://blog.loomio.org/2015/09/18/9-ways-to-use-a-loomio-proposal-to-turn-a-conversation-into-action/'
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -510,7 +428,6 @@ tr:
     copy_link: Bağlantıyı kopyala
     email_addresses: E-posta adresleri
     email_addresses_placeholder: 'Örn. helperbot@loomio.org, friendlybot@loomio.org'
-    shareable_link_explanation: Linki kopyalayın ve gruba katılmak isteyen herkese gönderin. Linki tıklamak onlara anında erişim verecektir.
     email_explanation: 'Alternatif olarak, e-posta adreslerini aşağıdaki alana girin ve Loomio e-posta ile onlara bir davetiye gönderecek.'
     add_custom_message: 'Davetinizi kişiselleştirin,'
     add_custom_message_link: özel bir mesaj ekleyin.
@@ -543,10 +460,6 @@ tr:
       remove_member_success: '{{name}} kaldırıldı'
       make_admin_success: '{{name}} şimdi bir koordinatör'
       remove_admin_success: '{{name}} artık bir koordinatör değil'
-    remove_membership:
-      title: Üyeyi kaldır
-      question: '{{name}} üyesini {{group}} grubundan çıkartmak istediğinize emin misiniz?'
-      submit: Kaldır
     remove_admin_from_self:
       question: Artık bir koordinatör olmak istemediğinizden emin misiniz?
   pending_invitations_card:
@@ -567,24 +480,6 @@ tr:
       picture_changed: Profil resmi güncellendi
       password_changed: Şifre güncellendi
       deactivated: Hesap devre dışı bırakıldı
-    change_picture:
-      title: Resmi değiştir
-      helptext: 'Kendi profil resminizi yükleyebilirsiniz, ya da eğer bir <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> hesabınız varsa, onu kullanabilirsiniz.'
-      use_initials: Baş harfleri kullan
-      use_gravatar: Gravatar kullan
-      use_uploaded: Yeni resim yükle
-    change_password:
-      title: Şifreyi Değiştir
-      helptext: 'Şifreler 8 karakter uzunluğunda olmalıdır. "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
-      current_password_label: Mevcut şifre
-      new_password_label: Yeni şifre
-      password_confirmation_label: Yeni şifreyi doğrulayın
-      submit: Şifreyi güncelle
-    deactivate_user:
-      title: Hesabınızı devre dışı bırakın
-      question: Hesabınızı devre dışı bırakma nedeninizi bize söyleyebilir misiniz?
-      placeholder: "Bu soruyu cevaplamak isteğe bağlıdır. Paylaştığınız her bilgi, Loomio'yu geliştirmemiz için bize yardımcı olacaktır :)"
-      submit: Hesabınızı devre dışı bırakın
     change_picture_link: Resmi değiştir
     change_password_link: Şifreyi değiştir
     deactivate_user_link: Hesabınızı devre dışı bırakın
@@ -604,11 +499,10 @@ tr:
       updated: E-posta ayarları güncellendi
   dashboard_page:
     aria_label: Kontrol paneli
-    options:
-      aria_label: Kontrol paneli filtreleme seçnekleri
+    no_groups:
+      or: veya
     no_threads:
       show_all: Herhangi bir yeni konunuz yok.
-      show_participating: Yakın zamanda herhangi bir konuya katılım göstermediniz.
       show_starred: Herhangi bir yıldızlı konunuz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
       show_muted: Sesi kısılmış herhangi bir konunuz yok.
@@ -625,9 +519,6 @@ tr:
       starred: Yıldızlı Konular
       starred_aria_label: Şu anda önemli olarak işaretlediğim konular görüntüleniyor
       starred_description: Sadece önemli olarak işaretlediğiniz konuları görüntüleyin.
-      participating: Konulara katılım
-      participating_aria_label: Şu anda katılım gösterdiğim konular görüntüleniyor
-      participating_description: Sadece katılım gösterdiğiniz konuları görüntüleyin.
       proposals: Öneriler
       proposals_aria_label: Şu anda aktif önerileri olan konular görüntüleniyor
       proposals_description: Sadece aktif önerileri olan konuları görüntüle
@@ -653,6 +544,8 @@ tr:
     no_threads: 'Yaşasın! Gelen kutunuzdaki bütün konuları okudunuz.'
     unread_threads: Okunmamış konular
     view_more: Daha Fazla Göster
+    no_groups:
+      or: veya
   groups_page:
     page_header: Grupların
   discussion:
@@ -757,10 +650,56 @@ tr:
     new_contact_message: 'Mesajınız için teşekkürler; yakında irtibat halinde olacağız!'
   help_page:
     coordinating: Loomio grubunu koordine etmek
-    coordinating_details: "Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten \nsen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı sıra, grubun\ndaha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler öğrenecek.\nİşte grubunun başarılı olmasını desteklemen için bazı ipuçları:\n"
+    coordinating_details: >
+      Koordinatör olarak, Loomio grubunu düzenlemek ve kişileri davet etmekten
+
+      sen sorumlusun. Yeni bir yazılımın nasıl kullanıldığını öğrenmenin yanı
+      sıra, grubun
+
+      daha etkili işbirliği ve birlikte iyi kararlar almak için yeni süreçler
+      öğrenecek.
+
+      İşte grubunun başarılı olmasını desteklemen için bazı ipuçları:
     different_ways: "Loomio'yu kullanmanın çeşitli yolları"
-    engaging_html: "<h2>Grubunla etkileşime girmen için ipuçları</h2>\n<p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden\ngrubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli olacaktır. Eğer kişilerin yüzyüze \nya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio aracılığıyla yapılıyor olsaydı\nbunları tanımlamak çok daha kolay olurdu.</p>\n<p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>\n<p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay yolu ise \n@bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir yorumda onlardan bahsedildiğini haber veren\nbir e-posta gönderir.</p>\n"
-    example1_html: "<h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm geliştirmesine ihtiyacın var</h3>\n<p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu tartışın.</p>\n<p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir anlayış geliştirirsen, \nmüzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece\nkatılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha olasıdır.</p>\n"
+    engaging_html: >
+      <h2>Grubunla etkileşime girmen için ipuçları</h2>
+
+      <p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için
+      istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden
+
+      grubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli
+      olacaktır. Eğer kişilerin yüzyüze
+
+      ya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio
+      aracılığıyla yapılıyor olsaydı
+
+      bunları tanımlamak çok daha kolay olurdu.</p>
+
+      <p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir
+      şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için
+      endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>
+
+      <p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay
+      yolu ise
+
+      @bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir
+      yorumda onlardan bahsedildiğini haber veren
+
+      bir e-posta gönderir.</p>
+    example1_html: >
+      <h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm
+      geliştirmesine ihtiyacın var</h3>
+
+      <p>Strateji: Bir öneri oluşturmadan önce bir süre için konuyu
+      tartışın.</p>
+
+      <p>Eğer belirli bir çözüme varmadan önce grup içinde soruna karşı ortak bir
+      anlayış geliştirirsen,
+
+      müzakereler genellikle en iyi sonuca ulaşır. Kişiler bu sürece
+
+      katılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha
+      olasıdır.</p>
     example2_html: >
       <h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>
 
@@ -822,7 +761,20 @@ tr:
       <p>Markdown kullanımı hakkında daha fazla bilgi için <a
       href='https://www.loomio.org/discussions/1124'>burayı tıklayın.</a></p>
     keep_up_to_date: Güncel tutun
-    keep_up_to_date_html: "<p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki müzakereleri\nve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer\nbirden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri \nAna Sayfada tek bir seferde görebilirsiniz.</p>\n<p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.\nE-posta tercihlerinizi <a href=\"%{link}\"\">buradan</a> değiştirebilirsiniz.</p>\n"
+    keep_up_to_date_html: >
+      <p>Ekranın üst kısmındaki grup adını tıklamak sizi grup içindeki
+      müzakereleri
+
+      ve kararları görüntüleyebileceğiniz Grup Sayfasına götürür. Eğer
+
+      birden fazla gruba dahilseniz, bu gruplardaki tüm aktiviteleri
+
+      Ana Sayfada tek bir seferde görebilirsiniz.</p>
+
+      <p>Grubunuzda önemli şeyler olduğunda e-posta bildirimi alırsınız.
+
+      E-posta tercihlerinizi <a href="%{link}"">buradan</a>
+      değiştirebilirsiniz.</p>
     make_a_decision: Bir karar ver
     make_a_decision_description: Grup karar vermeye hazır olduğunda herkes teklifte bulunabilir. Kararın ne getireceğini açık bir şekilde anlat ve insanlara onaylamanın veya reddetmenin ne anlama geleceğini anlamaları için gerekli bilgileri ver.
     prompt_people_details: "Eğer, grubunuzdaki belirli bir kişinin dikkatini çekmek istiyorsanız, onun rumuz ismi'ni ‘@’ ile beraber yazın. Sonrasında, sizin, bir yorumda ondan bahsettiğinizi bildirecek bir e-posta o kişinin tarafına gönderilecektir."
@@ -832,9 +784,48 @@ tr:
     positions_disagree_description: '<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir.'
     positions_block_description: '<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir.'
     start_discussion: İlgi çekici bir müzakere başlatma
-    start_discussion_html: "<p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir şekilde aktardığından emin olun.\nGrubun üretken ve bilgilendirilmiş bir durumda müzakere\nedebilmesini sağlayacak olan tüm temel verileri girmek için \nİçerik Panelini kullanın.</p>\n<p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli güncellenebilir.\nBu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı yapabilir, \nmüzakere ilerledikçe özet bilgileri yayınlayabilir ya da \ngrubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>\n"
+    start_discussion_html: >
+      <p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir
+      şekilde aktardığından emin olun.
+
+      Grubun üretken ve bilgilendirilmiş bir durumda müzakere
+
+      edebilmesini sağlayacak olan tüm temel verileri girmek için
+
+      İçerik Panelini kullanın.</p>
+
+      <p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli
+      güncellenebilir.
+
+      Bu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı
+      yapabilir,
+
+      müzakere ilerledikçe özet bilgileri yayınlayabilir ya da
+
+      grubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>
     start_proposal: Anlaşılır bir öneri yazma
-    start_proposal_html: "<p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da\nkatılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>\n<p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu demek değil.\nEğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri \ngidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam eder.</p>\n<p>Bu dinamik süreçte, grubunuzun ortak bilgeliği, kişilerin tek\nbaşına bulabileceğinden daha iyi fikirler üretir.</p>\n<p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim tarihi her an ileriye atılabilir.\nBir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi alır.</p>\n\n"
+    start_proposal_html: >
+      <p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da
+
+      katılmıyorum demenin tam olarak ne anlama geldiğini anında bilirler.</p>
+
+      <p> Eğer bir öneride anında net bir anlaşma sağlanamazsa bu dünyanın sonu
+      demek değil.
+
+      Eğer grup ilk öneriyi beğenmediyse, herhangi biri endişeleri
+
+      gidermek için yeni bir öneri başlatabilir ve ilerleme süreci devam
+      eder.</p>
+
+      <p>Bu dinamik süreçte, grubunuzun ortak bilgeliği, kişilerin tek
+
+      başına bulabileceğinden daha iyi fikirler üretir.</p>
+
+      <p>Eğer kararın bulunması zaman alacak gibi görünüyorsa, önerinin teslim
+      tarihi her an ileriye atılabilir.
+
+      Bir önerinin süresi dolmadan 24 saat önce herkes bir e-posta bildirimi
+      alır.</p>
     video_id: '52025402'
     video_tutorial: Eğitim videosu
     video_tutorial_description: Loomio nasıl kullanılır tanıtım videosuna göz at.

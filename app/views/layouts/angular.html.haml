@@ -13,18 +13,21 @@
     %link{rel: 'next', 'ng-if' => 'links.next', 'ng-href' => '{{links.next}}'}
     %link{rel: 'manifest', href: '/manifest.json'}
 
-    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet', media: 'screen'}
-    %link{href: client_asset_path(:"print.min.css"), rel: 'stylesheet', media: 'print'}
+    %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
 
     = render 'angular/metadata'
-    = render 'angular/google_analytics'
+    = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
     = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
 
-  %body{'ng-keydown' => 'keyDown($event)'}
+  %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
     %navbar
-    %ng_outlet{'ng-if' => '!refreshing && !pageError'}
-    %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
+    %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
+      %sidebar{ng_if: "isLoggedIn()"}
+      %md_content.lmo-main-content{flex: ""}
+        .lmo-main-background
+          %ng_outlet{'ng-if' => '!refreshing && !pageError'}
+          %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
     %start_menu{'ng-if' => 'isLoggedIn()'}
     %outlet{name: 'after-start-menu'}
 

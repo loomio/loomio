@@ -32,14 +32,13 @@ sk:
     edit_comment: Upraviť komentár
     delete_comment: Odstrániť komentár
     confirm_delete_message: Naozaj chcete odstrániť tento komentár?
-  navbar:
+  sidebar:
     unread: Neprečítané
-    groups: Skupiny
-    user_options:
-      contact_us: Kontaktujte nás
-      new_group: Nová skupina
-      profile: Profil
-      help: Pomocník
+    edit_profile: Upraviť profil
+    email_settings: Nastavenia emailu
+    help: Pomocník
+    sign_out: Odhlásiť sa
+  navbar:
     search:
       placeholder: Vyhľadávať
       discussions: Diskusie
@@ -82,7 +81,6 @@ sk:
     heading: Požiadať o členstvo
     name_label: Meno
     email_label: E-mail
-    introduction_label: Predstavte sa
     submit_button: Požiadať o členstvo
   group_page:
     thread_list:
@@ -94,8 +92,6 @@ sk:
     options_label: Nastavenia
     options:
       label: Nastavenia
-    leave_group:
-      title: Opustiť skupinu
   membership_requests_page:
     approve: Schváliť
     ignore: Ignorovať
@@ -104,18 +100,7 @@ sk:
     name_label: Meno
     coordinator_label: Koordinátor
     remove_member_label: Vylúčiť
-    remove_membership:
-      submit: Vylúčiť
   profile_page:
-    change_picture:
-      use_initials: Použiť iniciály
-    change_password:
-      current_password_label: Súčasné heslo
-      new_password_label: Nové heslo
-      password_confirmation_label: Potvrdiť nové heslo
-    deactivate_user:
-      title: Deaktivovať účet
-      submit: Deaktivovať účet
     profile: Profil
     picture_label: Fotka
     name_label: Meno
@@ -124,9 +109,14 @@ sk:
     locale_label: Jazyk
   dashboard_page:
     aria_label: Ovládací panel
+    no_groups:
+      or: alebo
     mark_as_read: Označiť ako prečítané
     threads_from:
       today: Dnes
+  inbox_page:
+    no_groups:
+      or: alebo
   thread_group:
     aria_label: Názov skupiny
   delete_comment_dialog:
@@ -175,7 +165,19 @@ sk:
 
       jeho/jej výroku; Loomio zašle email s upozornením, že ich meno bolo
       spomenuté v komentári</p>
-    example1_html: "<h3>Vaša skupina potrebuje dosiahnuť riešenie komplexného problému</h3>\n<p>Stratégia: Predtým než sformulujete návrh, diskutujte o probléme istý čas.</p>\n<p>Diskusie často vedú k jednotnému pohľadu na problém a ten zvyšuje pravdepodobnosť,\nže bude sformulovaný kvalitný návrh. Ak sú ľudia od počiatku zaangažovaní v diskusii o \nprobléme, zvyšuje sa pravdepodobnosť že aj prijmú konečné rozhodnutie.</p>\n"
+    example1_html: >
+      <h3>Vaša skupina potrebuje dosiahnuť riešenie komplexného problému</h3>
+
+      <p>Stratégia: Predtým než sformulujete návrh, diskutujte o probléme istý
+      čas.</p>
+
+      <p>Diskusie často vedú k jednotnému pohľadu na problém a ten zvyšuje
+      pravdepodobnosť,
+
+      že bude sformulovaný kvalitný návrh. Ak sú ľudia od počiatku zaangažovaní
+      v diskusii o
+
+      probléme, zvyšuje sa pravdepodobnosť že aj prijmú konečné rozhodnutie.</p>
     example2_html: >
       <h3>V mysli už máte sformulovaný návrh a od skupiny chcete len konečné
       rozhodnutie.</h3>
@@ -195,7 +197,17 @@ sk:
     getting_started_description: 'Naľavo skupina prediskutuje tému, vymení si názory a informácie. Keď nastane čas na rozhodnutie, toto sa objaví napravo.'
     getting_the_most: Získajte čo najviac z Loomia
     have_your_say: Vyjadrite svoj názor
-    have_your_say_details_html: "<p>Ak ste pripravený/á hlasovať, voľte kliknutím na jedno z hlasovacích tlačidiel.</p>\n<p>Môžte prípadne aj poskytnúť stručné zdôvodnenie vašej voľby. Pod grafom je vidieť \npoznámky uvedené inými hlasujúcimi. Počas hlasovanie môžte meniť svoj postoj, ak\nsa tento mení pod vplyvom názorov iných hlasujúcich.</p>\n"
+    have_your_say_details_html: >
+      <p>Ak ste pripravený/á hlasovať, voľte kliknutím na jedno z hlasovacích
+      tlačidiel.</p>
+
+      <p>Môžte prípadne aj poskytnúť stručné zdôvodnenie vašej voľby. Pod grafom
+      je vidieť
+
+      poznámky uvedené inými hlasujúcimi. Počas hlasovanie môžte meniť svoj
+      postoj, ak
+
+      sa tento mení pod vplyvom názorov iných hlasujúcich.</p>
     have_a_discussion: Diskutujte
     have_a_discussion_description: Téma a akékoľvek relevantné súvisiace informácie sa nachádzajú v hornej časti stránky. Pomocou poľa pre komentár vneste svoj názor do diskusie.
     help: Pomocník
@@ -257,9 +269,46 @@ sk:
     positions_disagree_description: '<span>Nesúhlasím</span> znamená, že myslíte, že by mohla existovať lepšia možnosť, ale ste ochotný(á) prijať rozhodnutie skupiny.'
     positions_block_description: '<span>Zamietam</span> znamená, že máte vážne námietky a budete veľmi nešťastná/ý, pokiaľ sa bude podľa návrhu postupovať.'
     start_discussion: Zahájenie pútavej diskusie
-    start_discussion_html: "<p>Pre nové diskusie ktoré začnete sa snažte napísať výstižné opisy.\nNa poskytnutie kontextuálnej informácie ktorú členovia skupiny budú potrebovať \nna vedenie zmysluplnej diskusie použite Kontext panel .</p>\n<p>Počas diskusie, informácia v Kontext paneli môže byť priebežne aktualizovaná\nnovo zistenými skutočnosťami. Tento priestor môže byť okrem opisu kontextu \nvyužitý aj na zdieľanie informácií z iných webov, priebežné zhrnutia stavu diskusie,\nalebo na opis protokolu používaného v skupine na dosiahnutie rozhodnutí.</p>\n"
+    start_discussion_html: >
+      <p>Pre nové diskusie ktoré začnete sa snažte napísať výstižné opisy.
+
+      Na poskytnutie kontextuálnej informácie ktorú členovia skupiny budú
+      potrebovať
+
+      na vedenie zmysluplnej diskusie použite Kontext panel .</p>
+
+      <p>Počas diskusie, informácia v Kontext paneli môže byť priebežne
+      aktualizovaná
+
+      novo zistenými skutočnosťami. Tento priestor môže byť okrem opisu kontextu
+
+      využitý aj na zdieľanie informácií z iných webov, priebežné zhrnutia stavu
+      diskusie,
+
+      alebo na opis protokolu používaného v skupine na dosiahnutie
+      rozhodnutí.</p>
     start_proposal: Napísanie jasného návrhu
-    start_proposal_html: "<p> Ak zvolíte výstižný názov, ľudia budú hneď vedieť čo v nej znamená súhlasiť \nalebo nesúhlasiť.</p>\n<p>Nebude tragédiou ak návrh hneď nedosiahne jasný súhlas. Ak väčšina považuje prvý \nnávrh za nezaujímavý,  ktokoľvek môže začať nový.</p>\n<p>Týmto dynamickým procesom sa môže skupina kolektívne dopracovať k lepším \nformuláciam problému ako by to dokázal jednotlivec.</p>\n<p>Konečný termín na uzatvorenie diskusie sa dá kedykoľvek posunúť, ak to vyzerá \ntak, že diskusia potrebuje viac času. Každý dostane email 24 hodín pred jej uzatvorením.</p>\n"
+    start_proposal_html: >
+      <p> Ak zvolíte výstižný názov, ľudia budú hneď vedieť čo v nej znamená
+      súhlasiť
+
+      alebo nesúhlasiť.</p>
+
+      <p>Nebude tragédiou ak návrh hneď nedosiahne jasný súhlas. Ak väčšina
+      považuje prvý
+
+      návrh za nezaujímavý,  ktokoľvek môže začať nový.</p>
+
+      <p>Týmto dynamickým procesom sa môže skupina kolektívne dopracovať
+      k lepším
+
+      formuláciam problému ako by to dokázal jednotlivec.</p>
+
+      <p>Konečný termín na uzatvorenie diskusie sa dá kedykoľvek posunúť, ak to
+      vyzerá
+
+      tak, že diskusia potrebuje viac času. Každý dostane email 24 hodín pred jej
+      uzatvorením.</p>
     video_id: '52025402'
     video_tutorial: Zobraziť tutoriál
     video_tutorial_description: 'Pozrite si rýchlu ukážku toho, ako sa Loomio používa.'

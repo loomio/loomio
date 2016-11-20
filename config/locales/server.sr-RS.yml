@@ -13,17 +13,11 @@ sr-RS:
       subject: '%{member} Вас је позвао/ла да се придружите %{group_name} на Лумију'
     to_start_group:
       subject: 'Подесите своју нову Лумио групу: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} те је додао/ла у %{which_group}'
-      content: '%{who} те је додао/ла у %{which_group} на Лумију. Шкљоцни овде да одеш у групу:'
     unsubscribe: Одјавите се или промените подешавања еПоште
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> за одјаву са листе за обавештења или промену подешавања Ваше еПоште."
     view_comment: Шкљоцните овде да би видели коментар на Лумију
     view_discussion: Шкљоцни овде да видиш ову дискусију
-    view_group: Шкљоцни овде да видиш групу на Лумију
     view_proposal: Погледајте овај предлог на Лумију
-    create_discussion:
-      intro: '%{who} почео/ла дискусију у %{which_group}:'
     create_proposal:
       intro: Нови предлог је покренут у Лумио групи којој припадате
       closes_in: Истиче
@@ -39,26 +33,13 @@ sr-RS:
       thanks_for_reading: 'Хвала на читању, пријатан дан!'
       marked_as_read_success: Све еПоруке су означене као прочитане
     comment_replied_to:
-      context: '%{author_name} је одговорио/ла на твој коментар у дискусији "%{discussion_title}"'
       subject: '%{who} је одговорио/ла на твој коментар у %{which} групи на Лумију'
-    group_membership_approved:
-      intro: "Ваш захтев за приступ групи '%{group_name}' на Лумију је одобрен."
-    invitation:
-      hi: 'Здраво %{name},'
-      intro: 'Шкљоцните на линк испод да подесите своју групу %{group_name}:'
-      closing_message: 'Ако имате било каквих питања или ако постоји било који начин да помогнемо око бржег прилагођавања, волели бисмо да то чујемо од Вас - довољно је да одговорите на ову еПоруку.'
-      thanks: |
-        Хвала!
-        Лумио тим
     membership_request:
       intro: '%{name} (%{email}) је затражио приступ једној од твојих Лумио група.'
       subject: '%{who} је затражио/ла да се придружи %{which_group}'
       view_group: Овде можете одобрити или одбити захтев
-    mentioned:
-      context: '%{author_name} Вас је поменуо/ла током дискусије "%{discussion_title}"'
     new_motion_created:
       subject: 'Предлог: %{proposal_title}'
-      context: '%{author} је предложио/ла у %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Предлог је истекао.
       specify_outcome_and_notify_group: 'Одредите исход и пошаљите то својој групи!'
@@ -80,12 +61,10 @@ sr-RS:
       turn_on_notifications_text: 'Укључи обавештења да добијаш информације о будућим активностима у овој дискусији: %{url}'
       change_email_preferences_html: "Промени <a href='%{email_preferences_url}'>особине еПорука</a> да се одјавиш са обавештавања."
       change_preferences: 'Промени особине својих еПорука:'
-      new_motion: '%{who} предлаже:'
       motion_closing_soon: 'Предлог истиче кроз 24 часа:'
       proposal_closed: 'Предлог истекао:'
       specify_outcome_html: "Ваш предлог је истекао. <a href='%{link}'>Одредите један исход</a> да сви знају који је резултат."
       specify_outcome: 'Ваш предлог је истекао. Одредите један исход да сви виде који је резултат:'
-      outcome_created: '%{who} је поставио/ла исход предлога:'
       you_agreed: 'Ви %{past_tense_position}'
   footer:
     about: О нама
@@ -122,39 +101,18 @@ sr-RS:
       please_hold: Молимо допустите до 5 минута да еПорука пристигне и будите сигурни да сте проверили фасциклу са нежељеним порукама.
     start_making_decisions: 'Да почнете доносити одлуке заједно на Лумију, креирајте групу бесплатно:'
   pricing_page:
-    gift: Поклон
     standard: Стандард
-    plus: Плус
     free_trial_html: 'Питаћемо те да одабереш свој план плаћања након <span>30 дана пробног периода</span>. Кредитна картица није неопходна.'
     get_started_for_free: Почни бесплатно
     unlimited_members: неограничено чланова
     unlimited_decisions: неограничено одлука
     email_support: подршка еПорукама
-    standard_price_html: |
-      US <strong>$19</strong>/месечно<br><span>или</span> $190/годишње
-    plus_body: 'Све у Стандард, плус:'
     premium_support: премијум подршка
     usage_statistics: статистика коришћења
-    plus_price_html: |
-      US <strong>$179</strong>/месечно<br><span>или</span> $1790/годишње
   password_reset:
     reset_email_timeframe: 'Молимо допустите до 5 минута да еПорука пристигне. Ако се не појави, будите сигурни да сте проверили фасциклу са нежељеним порукама.'
     length_restriction: Лозинка мора бити најмање 8 знакова дуга.
     forbidden_passwords: Уобичајене лозинке као што је ”лозинка” су забрањене да би твој налог био безбедан.
-  introduction_thread:
-    title: 'Добродошли у %{group_name}'
-    description: >
-      Молимо Вас, одвојите моменат и представите себе: **напишите коментар**
-      у поље испод.
-
-
-
-      Ако имате јасне намере за ову Лумио групу, можете их поделити овде тако да
-      сви имају идеју шта желе заједно да остваре.
-  how_it_works_thread:
-    title: Како користити Лумио
-  first_proposal:
-    name: 'Показни предлог: почнимо!'
   contact_page:
     contact_us: Контактирајте нас
     contact_information: 'Ако не пронађеш оно што тражиш, можеш видети наше контакт информације на дну стране.'

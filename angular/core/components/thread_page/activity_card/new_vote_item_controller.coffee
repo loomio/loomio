@@ -1,5 +1,4 @@
-angular.module('loomioApp').controller 'NewVoteItemController', ($scope, TranslationService) ->
-  vote = $scope.event.vote()
-  $scope.vote = vote
+angular.module('loomioApp').controller 'NewVoteItemController', ($scope, Records, TranslationService) ->
+  $scope.vote = Records.votes.find($scope.event.eventable.id)
 
   TranslationService.listenForTranslations($scope)

@@ -8,7 +8,5 @@
     .navbar-notifications
       %ul.selector-list
         %li.selector-list-header{translate: "notifications.header", role: "heading"}
-        %li.selector-list-item.media{ng-class: "{'lmo-active': !notification.viewed}", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}
-          %a.selector-list-item-link{class: "navbar-notifications__{{notification.kind()}}", lmo-href-for: "notification.relevantRecord()", lmo-href-action: "{{notification.actionPath()}}", ng-click: "broadcastThreadEvent(notification)"}
-            .blank{ng-include: "'generated/components/notifications/' + notification.kind() + '.html'"}
-      %loading{ng-if: "loading()"}
+        .navbar-notifications__blank-message{ng-if: "notifications().length < 1", translate: "notifications.no_notifications"}
+        %notification{notification: "notification", ng-repeat: "notification in notifications() | orderBy: '-createdAt' track by notification.id"}

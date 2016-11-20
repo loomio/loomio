@@ -119,6 +119,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session, $loca
     canViewPrivateContent: (group) ->
       Session.user().isMemberOf(group)
 
+    canCreateContentFor: (group) ->
+      Session.user().isMemberOf(group)
+
     canViewMemberships: (group) ->
       Session.user().isMemberOf(group)
 
@@ -133,18 +136,22 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session, $loca
     canRequestMembership: (group) ->
       (group.membershipGrantedUpon == 'approval') and
       @canViewGroup(group) and
-      !Session.user().isMemberOf(group) and
-      !group.hasPendingMembershipRequestFrom(Session.user())
+      !Session.user().isMemberOf(group)
+
 
     canTranslate: (model) ->
-      AppConfig.canTranslate and
-      Session.user().locale and
+      AppConfig.inlineTranslation.isAvailable? and
+      _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
+
+    canMention: (model, member) ->
+      return member.id != Session.user().id and
+             member.id != model.authorId
 
     requireLoginFor: (page) ->
       return false if @isLoggedIn()
       switch page
-        when 'emailSettingsPage' then !$location.search().unsubscribe_token
+        when 'emailSettingsPage' then !Session.user().restricted?
         when 'groupsPage',         \
              'dashboardPage',      \
              'inboxPage',          \

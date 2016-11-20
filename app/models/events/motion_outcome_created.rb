@@ -6,11 +6,13 @@ class Events::MotionOutcomeCreated < Event
            user: user).tap { |e| EventBus.broadcast('motion_outcome_created_event', e) }
   end
 
-  def motion
-    eventable
+  def users_to_notify
+    Queries::UsersByVolumeQuery.normal_or_loud(discussion).without(eventable.outcome_author)
   end
 
-  def discussion
-    eventable.discussion
+  private
+
+  def notification_actor
+    eventable.outcome_author
   end
 end

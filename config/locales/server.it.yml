@@ -14,17 +14,11 @@ it:
       subject: '%{member} ti ha invitato ad unirti a %{group_name} su Loomio'
     to_start_group:
       subject: 'Imposta il tuo nuovo gruppo Loomio: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} ti ha aggiunto in %{which_group}'
-      content: '%{who} ti ha aggiunto in %{which_group} su Loomio. Clicca qui per andare nel gruppo:'
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     view_comment: Clicca qui per vedere il commento su Loomio
     view_discussion: Clicca qui per vedere la discussione
-    view_group: Clicca qui per vedere il gruppo su Loomio
     view_proposal: Vedi questa proposta su Loomio
-    create_discussion:
-      intro: '%{who} ha iniziato una discussione in %{which_group}:'
     create_proposal:
       intro: È stata creata una nuova proposta in un gruppo Loomio al quale partecipi.
       closes_in: Chiude tra
@@ -41,28 +35,15 @@ it:
       heres_what_happened: "Ecco cos'è successo ieri su Loomio"
       marked_as_read_success: Tutte le email sono state contrassegnate come lette
     comment_replied_to:
-      context: '%{author_name} ha risposto al tuo commento nella discussione  "%{discussion_title}"'
       subject: '%{who} ha risposto al tuo commento nel gruppo %{which} su Loomio'
-    group_membership_approved:
-      intro: "La tua richiesta di accesso al gruppo '%{group_name}' su Loomio è stata approvata."
-      subject: '%{prefix} Iscrizione approvata'
-    invitation:
-      hi: 'Ciao %{name},'
-      intro: 'Fai clic sul link in basso per impsotare il tuo gruppo %{group_name}:'
-      closing_message: 'Se hai domande o per qualsiasi cosa possiamo fare per aiutarti a partire, fatti sentire rispondendo a questa email.'
-      thanks: |
-        Grazie!
-        Il team di Loomio
     membership_request:
       intro: "%{name} (%{email}) ha richiesto l'accesso a uno dei tuoi gruppi Loomio."
       subject: '%{who} ha richiesto di entrare in %{which_group}'
       view_group: Puoi approvare o rifiutare la richiesta qui
     mentioned:
-      context: '%{author_name} ti ha citato mentre discuteva su "%{discussion_title}"'
       subject: '%{who} ti ha menzionato discutendo di "%{which}"'
     new_motion_created:
       subject: 'Proposta: %{proposal_title}'
-      context: '%{author} ha creato una proposta in %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: La proposta è chiusa.
       specify_outcome_and_notify_group: 'Crea un risultato e mandalo al tuo gruppo!'
@@ -86,12 +67,10 @@ it:
       turn_on_notifications_text: "Attiva le email per ricevere più notifiche sull'attività di questa discussione: %{url}"
       change_email_preferences_html: "Cambia le tue <a href='%{email_preferences_url}'> opzioni email </a> per disiscriverti da queste email."
       change_preferences: 'Cambia le tue opzioni email:'
-      new_motion: '%{who} ha proposto:'
       motion_closing_soon: 'La proposta chiude in 24 ore:'
       proposal_closed: 'Proposta chiusa:'
       specify_outcome_html: "La tua proposta è chiusa. <a href='%{link}'>Specifica un risultato</a> per far sapere a tutti qual è l'esito."
       specify_outcome: "La tua proposta è chiusa. Specifica un risultato per far sapere a tutti qual è l'esito."
-      outcome_created: '%{who} ha impostato un risultato per la proposta:'
       you_agreed: 'Tu %{past_tense_position}'
   footer:
     about: About
@@ -125,52 +104,16 @@ it:
       email_not_arrived: "L'email non è arrivata?"
     start_making_decisions: 'Per iniziare a prendere decisioni insieme su Loomio, crea un gruppo'
   pricing_page:
-    gift: Regalo
     standard: Standard
-    plus: Plus
     get_started_for_free: Inizia gratis
     unlimited_members: numero di membri illimitato
     unlimited_decisions: numero di decisioni illimitato
     email_support: supporto email
-    standard_price_html: |
-      US <strong>$19</strong>/mese<br><span>oppure</span> $190/anno
-    plus_body: 'Ciò che include la versione Standard, più:'
     premium_support: supporto premium
     usage_statistics: "statistiche d'uso"
-    plus_price_html: |
-      US <strong>$179</strong>/mese<br><span>oppure</span> $1790/anno
   password_reset:
     length_restriction: Le password devono essere lunghe almeno 8 caratteri.
     forbidden_passwords: 'Le password banali come "password" sono vietate per tenere al sicuro il vostro account.'
-  introduction_thread:
-    title: 'Benvenuto su %{group_name}'
-  how_it_works_thread:
-    title: Come usare Loomio
-    description: >
-      Benvenuto in Loomio, uno spazio online dove prendere decisioni assieme.
-
-
-
-      Questa è una discussione di prova **discussione**. Perchè non usare questo
-      spazio per provare le funzionalità di Loomio?
-
-
-
-      In questo momento stai leggento la discussione **contesto**. Usa questo
-      spazio per comunicare le informazioni di contesto necessarie al gruppo per
-      iniziare discussioni produttive.
-
-
-
-      Il pannello delle **proposte** é dove vengono prese le decisioni. Puoi
-      lanciare una proposta o partecipare al voto in quella sezione.
-
-
-
-      Il pannello **attività** in basso mostra tutto ciò che è successo in questa
-      discussione.
-  first_proposal:
-    name: 'Proposta di prova: andiamo!'
   contact_page:
     contact_us: Contattaci
     faq_prompt_html: 'Hai una domanda per il team di Loomio? Prima di contattarci, potresti trovare la risposta tra le domande frequenti (FAQ)'

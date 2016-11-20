@@ -4,8 +4,4 @@ class Events::UserJoinedGroup < Event
            user: membership.user,
            eventable: membership).tap { |e| EventBus.broadcast('user_joined_group_event', e) }
   end
-
-  def membership
-    eventable
-  end
 end

@@ -41,13 +41,12 @@ ja:
   comment_form:
     delete_comment: コメントを削除します
     confirm_delete_message: 本当にコメントを削除しますか？
+  sidebar:
+    edit_profile: プロフィールを編集する
+    email_settings: Eメール設定
+    help: ヘルプ
+    sign_out: サインアウト
   navbar:
-    groups: グループ
-    user_options:
-      contact_us: 問い合わせをする
-      new_group: 新しいグループ
-      profile: プロフィール
-      help: ヘルプ
     search:
       placeholder: 検索
       discussions: ディスカッション
@@ -88,7 +87,6 @@ ja:
     heading: グループへの参加依頼
     name_label: 氏名
     email_label: Eメール
-    introduction_label: 自己紹介をしてください
     submit_button: グループへの参加依頼
   group_page:
     thread_list:
@@ -100,8 +98,6 @@ ja:
     options_label: オプション
     options:
       label: オプション
-    leave_group:
-      title: グループを離れます
   group_form:
     privacy: プライバシー
     submit_update: 設定更新
@@ -113,22 +109,21 @@ ja:
     name_label: 氏名
     coordinator_label: コーディネーター
     remove_member_label: 削除
-    remove_membership:
-      submit: 削除
   profile_page:
-    change_password:
-      current_password_label: 現在のパスワード
-      new_password_label: 新しいパスワード
-      password_confirmation_label: 新しいパスワードを再入力してください
     profile: プロフィール
     picture_label: 画像
     name_label: 氏名
     email_label: Eメール
     locale_label: 言語
   dashboard_page:
+    no_groups:
+      or: または
     threads_from:
       today: 本日
       yesterday: 昨日
+  inbox_page:
+    no_groups:
+      or: または
   thread_group:
     aria_label: グループ名
   delete_comment_dialog:

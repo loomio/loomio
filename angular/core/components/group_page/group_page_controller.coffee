@@ -1,20 +1,24 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, SubscriptionSuccessModal, GroupWelcomeModal, LegacyTrialExpiredModal) ->
-  $rootScope.$broadcast 'currentComponent', {page: 'groupPage'}
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, GroupWelcomeModal) ->
+  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
 
   $scope.$on 'joinedGroup', => @handleWelcomeModal()
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
-  $routeParams.key = $routeParams.key.split('|')[0]
+  # we include the timestamp so chargify sees unique values
+  $routeParams.key = $routeParams.key.split('-')[0]
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
+    @init(group)
+  , (error) ->
+    $rootScope.$broadcast('pageError', error)
+
+  @init = (group) =>
     @group = group
 
     if AbilityService.isLoggedIn()
-      $rootScope.$broadcast 'trialIsOverdue', @group if @group.trialIsOverdue()
       MessageChannelService.subscribeToGroup(@group)
-      Records.drafts.fetchFor(@group)
-      @handleSubscriptionSuccess()
       @handleWelcomeModal()
-      LegacyTrialExpiredModal.showIfAppropriate(@group, Session.user())
+
+    Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
     maxDiscussions = if AbilityService.canViewPrivateContent(@group)
       @group.discussionsCount
@@ -31,14 +35,13 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'currentComponent',
       page: 'groupPage'
+      group: @group
+      key: @group.key
       links:
         canonical:   LmoUrlService.group(@group, {}, absolute: true)
         rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
         prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
-
-  , (error) ->
-    $rootScope.$broadcast('pageError', error)
 
   @showDescriptionPlaceholder = ->
     !@group.description
@@ -50,28 +53,20 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     AbilityService.canAdministerGroup(@group)
 
   @openUploadCoverForm = ->
-    ModalService.open CoverPhotoForm, group: => @group
+    @openModal.open CoverPhotoForm, group: => @group
 
   @openUploadLogoForm = ->
-    ModalService.open LogoPhotoForm, group: => @group
+    @openModal LogoPhotoForm, group: => @group
 
-  @handleSubscriptionSuccess = ->
-    if (AppConfig.chargify or AppConfig.environment == 'development') and $location.search().chargify_success?
-      @subscriptionSuccess = true
-      @group.subscriptionKind = 'paid' # incase the webhook is slow
-      $location.search 'chargify_success', null
-      ModalService.open SubscriptionSuccessModal
-
-  @showWelcomeModel = ->
-    @group.isParent() and
-    Session.user().isMemberOf(@group) and
-    !@group.trialIsOverdue() and
-    !@subscriptionSuccess and
-    !Session.user().hasExperienced("welcomeModal", @group)
+  @openModal = (modal, resolve)->
+    ModalService.open modal, resolve
 
   @handleWelcomeModal = =>
-    if @showWelcomeModel()
-      ModalService.open GroupWelcomeModal, group: => @group
-      Records.memberships.saveExperience("welcomeModal", Session.user().membershipFor(@group))
+    return unless @group.isParent() and
+      Session.user().isMemberOf(@group) and
+      !Session.user().hasExperienced('welcomeModal')
+    @openModal GroupWelcomeModal, group: => @group
+    Records.users.saveExperience("welcomeModal")
+    true
 
   return

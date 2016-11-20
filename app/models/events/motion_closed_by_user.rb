@@ -6,11 +6,13 @@ class Events::MotionClosedByUser < Events::MotionClosed
            user: closer).tap { |e| EventBus.broadcast('motion_closed_by_user_event', e) }
   end
 
-  def group_key
-    motion.group.key
+  private
+
+  def notification_translation_values
+    super.merge(publish_outcome: true)
   end
 
-  def motion
-    eventable
+  def notification_url
+    discussion_motion_outcome_url(eventable.discussion, eventable)
   end
 end

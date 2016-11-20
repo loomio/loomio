@@ -13,14 +13,10 @@ cs:
       subject: '%{member} vás pozval(a) do skupiny %{group_name} na Loomio'
     to_start_group:
       subject: 'Zřiďte si svou novou Loomio skupinu: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} vás přidal(a) k %{which_group}'
-      content: '%{who} vás přidal(a) k %{which_group} na Loomio. Klikněte sem, abyste navštívil(a) skupinu:'
     unsubscribe: 'Odhlašte se nebo si změňte nastavení emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
     view_comment: Klikněte sem pro zobrazení komentáře na Loomio
     view_discussion: Klikněte sem pro zobrazení této diskuze
-    view_group: Klikněte sem pro zobrazení skupiny na Loomio
     view_proposal: Zobrazte si tento návrh na Loomio
     create_proposal:
       intro: 'Nový návrh byl vytvořen v Loomio skupině, ke které patříte'
@@ -34,21 +30,10 @@ cs:
       subject: Včera na Loomio
       mark_as_read: Označit jako přečtené
       thanks_for_reading: 'Děkujeme za přečtení a přejeme hezký den!'
-    group_membership_approved:
-      intro: 'Vaše žádost o přístup ke skupině ‚%{group_name}‘ na Loomio byla přijata.'
-    invitation:
-      hi: 'Ahoj %{name},'
-      intro: 'Klikněte na odkaz níže, abyste si zřídil(a) svou skupinu %{group_name}:'
-      closing_message: 'Pokud máte nějaké otázky nebo pokud existuje způsob, jak vám pomoct se rozjet, rádi od vás uslyšíme - stačí odepsat na tento email.'
-      thanks: |
-        Děkujeme!
-        Tým Loomio
     membership_request:
       intro: '%{name} (%{email}) zažádal(a) o přístup k jedné z vašich Loomio skupin.'
       subject: '%{who} zažádal(a) o členství v %{which_group}'
       view_group: Můžete schválit či odmítnout žádost zde
-    new_motion_created:
-      context: '%{author} vytvořil(a) návrh v %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Návrh je uzavřen.
       specify_outcome_and_notify_group: 'Vytvořte výsledek a pošlete ho své skupině!'
@@ -96,25 +81,17 @@ cs:
       email_not_arrived: E-mail nebyl doručen?
     start_making_decisions: 'Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:'
   pricing_page:
-    gift: Dar
+    gift: Bezplatný
     standard: Standardní
-    plus: Plus
-    free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</ span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
+    plus: Profesionální
+    free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
     unlimited_members: neomezený počet členů
     unlimited_decisions: neomezený počet rozhodnutí
     email_support: e-mailová podpora
-    standard_price_html: |
-      <strong>19$(US)</strong>/měsíčně<br><span>nebo</span> 190$(US)/ročně
     premium_support: prémiová podpora
     usage_statistics: statistiky využití
-    plus_price_html: |
-      <strong>179$(US)</strong>/měsíc<br><span>nebo</span> 1790$(US)/rok
   password_reset:
     length_restriction: Hesla musí být alespoň 8 znaků dlouhé.
-  introduction_thread:
-    title: 'Vítejte v %{group_name}'
-  how_it_works_thread:
-    title: Jak používat Loomio
   contact_page:
     contact_us: Kontaktujte nás
     contact_form: Kontaktní formulář

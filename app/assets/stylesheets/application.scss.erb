@@ -1,0 +1,11 @@
+@import "unstructured/index";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+<% Plugins::Repository.static_assets[:css].map { |asset| require_asset(asset) } %>

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
@@ -117,6 +117,7 @@ class User < ActiveRecord::Base
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
+  scope :mentioned_in, ->(model) { where(id: model.notifications.user_mentions.pluck(:user_id)) }
 
   # move to ThreadMailerQuery
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
@@ -186,7 +187,20 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_email(email)
-    User.where('lower(email) = ?', email.downcase).first
+    User.where('lower(email) = ?', email.to_s.downcase).first
+  end
+
+  def self.helper_bot
+    find_by(email: helper_bot_email) ||
+    create!(email: helper_bot_email,
+            name: 'Loomio Helper Bot',
+            password: SecureRandom.hex(20),
+            uses_markdown: true,
+            avatar_kind: :gravatar)
+  end
+
+  def self.helper_bot_email
+    ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org'
   end
 
   def subgroups
@@ -267,6 +281,11 @@ class User < ActiveRecord::Base
 
   def send_devise_notification(notification, *args)
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
+  protected
+  def password_required?
+    !password.nil? || !password_confirmation.nil?
   end
 
   private

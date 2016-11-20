@@ -14,10 +14,9 @@ hr:
     edit_comment: Ažuriranje komentara
     delete_comment: Obriši komentar
     confirm_delete_message: Jeste li sigurni da želite obrisati komentar?
-  navbar:
-    user_options:
-      new_group: Nova grupa
-      profile: Profil
+  sidebar:
+    email_settings: Postavke emaila
+    sign_out: Odjava
   notifications:
     header: Notifikacije
   vote_form:
@@ -48,16 +47,11 @@ hr:
         membership_is_invitation_only: Za pridruživanje grupi mora vas pozvati član / ica grupe.
         membership_is_invitation_by_admin_only: U ovu grupu mora vas pozvati koordinator / ica.
     invite_people: Pozovi ljude
-    leave_group:
-      title: Napusti grupu
   membership_requests_page:
     ignore: Ignoriraj
   memberships_page:
     members: Članovi
   profile_page:
-    deactivate_user:
-      title: Deaktiviraj račun
-      submit: Deaktiviraj račun
     profile: Profil
   thread_group:
     aria_label: Ime grupe

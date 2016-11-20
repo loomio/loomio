@@ -7,6 +7,10 @@ describe 'GroupService' do
   let(:subgroup) { build(:group, parent: parent) }
 
   describe 'create' do
+    it 'creates a new group' do
+      expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
+    end
+
     it 'assigns a default group cover' do
       default = create(:default_group_cover)
       GroupService.create(group: group, actor: user)
@@ -25,11 +29,31 @@ describe 'GroupService' do
       expect(group.reload.cover_photo).to be_blank
     end
 
-    it 'creates a new trial subscription' do
+    it 'does not send excessive emails' do
+      expect { GroupService.create(group: group, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
+    end
+
+    it 'sets the actor as group creator if logged in' do
       GroupService.create(group: group, actor: user)
-      subscription = group.reload.subscription
-      expect(subscription.kind.to_sym).to eq :trial
-      expect(subscription.expires_at.to_date).to eq 30.days.from_now.to_date
+      expect(group.reload.creator).to eq user
+    end
+
+    it 'leaves the group creator nil if user does not have account' do
+      GroupService.create(group: group, actor: LoggedOutUser.new)
+      expect(group.reload.creator).to be_nil
+    end
+
+    context "is_referral" do
+      it "is false for first group" do
+        GroupService.create(group: group, actor: user)
+        expect(group.is_referral).to be false
+      end
+
+      it "is true for second group" do
+        create(:group).add_admin! user
+        GroupService.create(group: group, actor: user)
+        expect(group.is_referral).to be true
+      end
     end
   end
 end

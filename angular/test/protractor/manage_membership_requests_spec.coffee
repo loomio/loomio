@@ -20,7 +20,6 @@ describe 'Managing membership requests', ->
     it 'adds existing users to group upon approval', ->
       membershipRequestsHelper.clickApproveButton()
       membershipRequestsHelper.clickApproveButton()
-      membershipRequestsHelper.clickNavbarGroupLink()
       membershipRequestsHelper.clickGroupName()
       expect(groupsHelper.membersList()).toContain('MVS')
 
@@ -28,7 +27,7 @@ describe 'Managing membership requests', ->
       membershipRequestsHelper.clickApproveButton()
       membershipRequestsHelper.clickApproveButton()
       emailHelper.openLastEmail()
-      expect(emailHelper.lastEmailSubject().getText()).toContain('Membership approved')
+      expect(emailHelper.lastEmailSubject().getText()).toContain('Your request to join Dirty Dancing Shoes on Loomio has been approved')
 
     it 'displays the correct flash message', ->
       membershipRequestsHelper.clickApproveButton()

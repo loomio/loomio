@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootScope, $timeout, AppConfig, LoadingService) ->
-  $rootScope.$broadcast('currentComponent', {page: 'explorePage'})
+  $rootScope.$broadcast('currentComponent', { page: 'explorePage'})
 
   @groupIds = []
   @resultsCount = 0
@@ -30,7 +30,7 @@ angular.module('loomioApp').controller 'ExplorePageController', (Records, $rootS
   @search()
 
   @groupCover = (group) ->
-    { 'background-image': "url(#{group.coverUrl()})" }
+    { 'background-image': "url(#{group.coverUrl('small')})" }
 
   @groupDescription = (group) ->
     _.trunc group.description, 100 if group.description

@@ -5,6 +5,6 @@
     .media-body
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %strong
-          %a{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
-        %span{translate: "discussion_moved_item.discussion_moved", translate-value-group: "{{groupName}}"}
+          %a.thread-item__title-link{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
+        %span{translate: "discussion_moved_item.discussion_moved", translate-value-group: "{{group.name}}"}
         %timeago.timeago--inline{timestamp: "event.createdAt"}

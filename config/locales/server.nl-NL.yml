@@ -1,5 +1,12 @@
 nl-NL:
+  validate:
+    motion:
+      must_close_in_future: Voorstel moet in de toekomst sluiten.
+      one_at_a_time: Er is een ander voorstel in behandeling.
   email:
+    reset_password:
+      link_text: Herstel je wachtwoord
+    custom: '%{text}'
     group_email:
       intro: '%{who} maakte een aankondiging aan %{group}:'
     by_who: 'door %{person}'
@@ -11,19 +18,17 @@ nl-NL:
       link: Doe mee aan de discussie
     to_join_group:
       subject: '%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio'
+      accept_invitation: Accepteren uitnodiging
     to_start_group:
       subject: 'Stel je nieuwe Loomio groep in: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} heeft je toegevoegd aan %{which_group}'
-      content: '%{who} heeft je toegevoegd aan %{which_group} op Loomio. Klik hier om naar de groep te gaan:'
     unsubscribe: 'Uitschrijven of je e-mail voorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mail voorkeuren aan te passen."
     view_comment: Klik hier om de reactie op Loomio te zien
     view_discussion: Klik hier om deze discussie te bekijken
-    view_group: Klik hier om de groep op Loomio te bekijken
     view_proposal: Bekijk dit voorstel op Loomio
     create_discussion:
-      intro: '%{who} begon een discussie in %{which_group}:'
+      intro_html: begon een discussie
+      intro: '%{who} begon een discussie:'
     create_proposal:
       intro: Een nieuw voorstel is gemaakt in een Loomio groep waar je lid van bent.
       closes_in: Sluit over
@@ -39,31 +44,24 @@ nl-NL:
       thanks_for_reading: 'Bedankt voor het lezen, een fijne dag gewenst!'
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
     comment_replied_to:
-      context: '%{author_name} reageerde op jouw reactie in de discussie "%{discussion_title}"'
       subject: '%{who} reageerde op jouw reactie in de %{which} groep op Loomio'
-    group_membership_approved:
-      intro: "Je verzoek om toegang tot de groep '%{group_name}' op Loomio is goedgekeurd."
-    invitation:
-      hi: 'Hoi %{name},'
-      intro: 'Klik op de link hieronder om jouw groep %{group_name} in te stellen:'
-      closing_message: 'Als je vragen hebt of als er iets is wat we kunnen doen zodat je aan de slag kan, dan horen we graag van je - antwoord gewoon op deze e-mail.'
-      thanks: |
-        Bedankt!
-        Het Loomio Team
+    new_comment:
+      context: reageerde op
     membership_request:
       intro: '%{name} (%{email}) heeft toegang gevraagd tot een van je Loomio groepen.'
       subject: '%{who} heeft aangevraagd om lid te worden van %{which_group}'
       view_group: Je kan hier de aanvraag goed- of afkeuren
     mentioned:
-      context: '%{author_name} noemde je in de discussie "%{discussion_title}"'
+      context_html: vermeldde je in discussie
     new_motion_created:
       subject: 'Voorstel: %{proposal_title}'
-      context: '%{author} heeft een voorstel gedaan in %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Het voorstel is gesloten.
       specify_outcome_and_notify_group: 'Maak een uitkomst en verzend deze naar je groep!'
       specify_outcome_and_notify_group_html: 'Maak een uitkomst en verzend deze naar je groep!'
       subject: 'Voorstel gesloten - %{which}'
+    proposal_outcome:
+      subject: 'Uitkomst voorstel: %{motion}'
     proposal_closing_soon:
       closes_on: Sluit op
       closes_at: Sluit om
@@ -79,13 +77,20 @@ nl-NL:
       turn_on_notifications_html: "<a href='%{url}'>Zet e-mails aan voor deze discussie</a> om nieuwe activiteit te ontvangen."
       change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: 'Verander je e-mail voorkeuren:'
-      new_motion: '%{who} stelde voor:'
       motion_closing_soon: 'Voorstel sluit binnen 24 uur:'
       proposal_closed: 'Voorstel sloot:'
       specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."
       specify_outcome: 'Je voorstel is gesloten. Specificeer een uitkomst om iedereen te laten weten wat het resultaat is:'
-      outcome_created: '%{who} heeft een uitkomst van een voorstel opgesteld:'
       you_agreed: 'Je %{past_tense_position}'
+    analytics:
+      subject: "%{which_group}'s week op Loomio"
+      stats: '<strong>%{active_members}</strong> van <strong>%{group_members}</strong> in je groep waren in de afgelopen week actief. Je groep resulteerde in <strong>%{motions}</strong> en had <strong>%{comments}</strong> in <strong>%{discussions}</strong>.'
+      heart: ❤ van team Loomio
+      user_table:
+        motions_created: Voorstellen
+        discussions_created: Discussies
+        comments_created: Reacties
+        votes_created: Stemmen
   footer:
     about: Over
     blog: Blog
@@ -97,6 +102,9 @@ nl-NL:
     terms: Voorwaarden
     independent_install_html: '%{hostname} draait als een onafhankelijke kopie van Loomio: <a href="http://github.com/loomio/loomio">meer informatie</a>.'
   start_group_form:
+    enable_angular:
+      header: Nieuwe groepen starten in Loomio 1.0
+      switch_to_angular: Begin een groep in de nieuwe Loomio
     header: Begin een nieuwe groep
     form_error: Sommige informatie mist of is incorrect.
     name: Je naam
@@ -109,8 +117,18 @@ nl-NL:
     success:
       header: 'Je bent bijna klaar! Bekijk je e-mail.'
       email_not_arrived: E-mail niet aangekomen?
+  pricing_page:
+    standard: Standaard
+    get_started_for_free: Ga gratis aan de slag
+    email_support: e-mailondersteuning
+    slack_integration_html: |
+      <strong>Slack</strong> integratie
+    usage_statistics: gebruiksstatistieken
+  password_reset:
+    length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
   contact_page:
     contact_us: Neem contact op
+    contact_form: Contactformulier
     labels:
       name: Je naam
       email: Je e-mailadres
@@ -118,3 +136,35 @@ nl-NL:
       submit: Verstuur bericht
     messages:
       email_html: "Vul dit formulier in of stuur een e-mail naar <a href='mailto:%{email}'>%{email}</a>"
+      social_html: "Je kan ons ook volgen op<br/><a href='%{facebook}' target='_blank'>facebook</a>, <a href='%{google}' target='_blank'>google+</a>en <a href='%{twitter}' target='_blank'>twitter</a>!"
+  markdown:
+    intro:
+      title: |
+        # Wat is markdown?
+    headers:
+      body: |
+        ## Kopteksten
+
+        Gebruik hekjes om tekst in een kop te veranderen.
+
+        # Dit is een h1
+        ## Dit is een h2
+        #### Dit is een h4
+    paragraphs:
+      title: |
+        ## Paragrafen
+    emphasis:
+      title: |
+        ## Nadruk
+    lists:
+      title: |
+        ## Lists
+    links:
+      title: |
+        ## Links en afbeeldingen
+  beta_banner:
+    new_loomio_html: >
+      <strong>De Nieuwe Loomio is sneller, mooie, en beter!</strong> Iedereen
+      wordt overgezet.
+    more_info: Meer info...
+    button_text: Stap over op de nieuwe Loomio

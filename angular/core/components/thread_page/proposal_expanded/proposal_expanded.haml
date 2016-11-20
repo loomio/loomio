@@ -13,7 +13,11 @@
       %proposal_closing_time{proposal: "proposal"}>
     %translate_button.lmo-link-color{model: "proposal", showdot: "true"}
 
-  .proposal-expanded-description.lmo-markdown-wrapper{marked: "proposal.description" }
+  .proposal-expanded-description.lmo-markdown-wrapper{marked: "proposal.cookedDescription()" }
+
+  .proposal-expanded__attachments{ng-repeat: "attachment in proposal.attachments() | orderBy:'createdAt' track by attachment.id"}
+    %attachment_preview{attachment: "attachment", mode: "context"}
+
   %translation{ng-if: "translation && proposal.description", translation: "translation", field: "description"}
   %proposal_outcome_panel{ng-if: "showOutcomePanel()", proposal: "proposal"}
   %translation{ng-if: "translation && proposal.outcome", translation: "translation", field: "outcome"}

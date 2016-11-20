@@ -1,6 +1,6 @@
 it:
   common:
-    confirm_discard_changes: Rinunci ai cambiamenti?
+    confirm_discard_changes: Scarta le modifiche?
     time:
       am: am
       pm: pm
@@ -93,15 +93,9 @@ it:
     latest: Più recente
     unread: Non letto
     closing_in: In chiusura
-  session_form:
-    email_label: 'Email:'
-    password_label: Password
-    remember_me: Ricordami
-    sign_in: Login
   comment_form:
     aria_label: Aggiungi un commento
     attachments:
-      aria_label: Allega un file
       remove_attachment: "Rimuovi l'allegato"
     messages:
       created: Commento inserito
@@ -118,25 +112,19 @@ it:
       label: Post
     private_privacy_notice: 'Il tuo commento sarà visibile solamente ai membri di {{groupName}}.'
     public_privacy_notice: Il tuo commento sarà visibile a qualsiasi persona sul web.
-  navbar:
+  sidebar:
     recent: Recente
     unread: Non letto
-    groups: Gruppi
+    muted: Silenziato
+    edit_profile: Modifica profilo
+    email_settings: Impostazioni Email
+    help: Aiuto
+    sign_out: Esci
+  navbar:
     recent_title: Vai alla dashboard
     unread_title: Vedi le attività non lette
-    groups_title: Visualizza i tuoi gruppi
     start_thread: Lancia una nuova discussione
     notifications: Pannello delle notifiche
-    user_actions: Azioni utente
-    user_options:
-      label: Opzioni utente
-      contact_us: Contattaci
-      new_thread: Nuova discussione
-      new_group: Nuovo gruppo
-      profile: Profilo
-      email_settings: Impostazioni Email
-      help: Aiuto
-      sign_out: Esci
     search:
       no_results: Nessuna discussione trovata
       close: Chiudi ricerca
@@ -146,7 +134,6 @@ it:
       proposals: Proposte
       comments: Commenti
   start_menu:
-    title: Pulsante azione
     start_group: Crea un gruppo
     start_subgroup: Crea un sottogruppo
     start_thread: Inizia una discussione
@@ -163,7 +150,6 @@ it:
     new_comment: '<strong>{{name}}</strong> ha inserito un commento nella discussione <strong>{{discussion}}</strong>'
     comment_replied_to: '<strong>{{name}}</strong> ha risposto al tuo commento nella discussione su <strong>{{discussion}}</strong>'
     comment_liked: 'A <strong>{{name}}</strong> piace il tuo commento nella discussione <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> ti ha citato in <strong>{{title}}</strong>'
     membership_requested: '<strong>{{name}}</strong> ha chiesto di entrare nel gruppo <strong>{{group}}</strong>'
     membership_request_approved: '<strong>{{name}}</strong> ha approvato la tua richiesta di unirti al gruppo  <strong>{{group}}</strong>'
     user_added_to_group: '<strong>{{name}}</strong> ti ha aggiunto al gruppo <strong>{{group}}</strong>'
@@ -222,13 +208,10 @@ it:
     start_a_proposal: Lancia una proposta
     edit_proposal: Modifica proposta
     what_does_a_proposal_do: "Le proposte permettono di vedere l'opinione di tutti su un particolare corso d'azione."
-    editing_title_and_description_forbidden: "Non puoi cambiare il titolo di una proposta dopo che altre persone hanno espresso il loro voto su di essa. Se qualcosa è cambiato, chiudi questa proposta e fanne iniziare un'altra"
-    title_placeholder: 'Ad esempio: andiamo sulla Luna'
     title_label: Titolo
     closes_at_label: Chiude a
     closes: Chiude
     details_label: Dettagli
-    details_placeholder: "Fornisci informazioni sufficienti perché tutti sappiano esattamente cosa significa essere o non essere d'accordo."
   discussion_record:
     created: 'La discussione {{title}} è stata creata con successo nel gruppo {{groupName}}.'
     updated: 'Salva i cambiamenti a {{title}}'
@@ -268,21 +251,7 @@ it:
     heading: "Grazie per aver usato Loomio quest'anno!"
     submit: Mostra i piani tariffari
   group_welcome_modal:
-    heading: 'Benvenuto/a nel tuo nuovo gruppo!'
-    first_step: "Tu sei il <strong>coordinatore</strong> del gruppo, che è un po' come essere il padrone di casa. Guarda il video, e poi dai un'occhiata alle discussioni di esempio."
-    second_step: 'Quando sei pronto, <strong>invita altre persone</strong> a partecipare.'
     ok_got_it: 'E vai!'
-  group_cover_modal:
-    heading: Nuova immagine di copertina
-    upload_link: Carica nuova immagine di copertina
-    helptext: "Cerchi un'ispirazione? Guarda <a href=\"https://unsplash.com/\">Unsplash</a>, una galleria di belle immagini gratuite"
-    image_size_helptext: La dimensione ideale delle immagini è 1400 x 320 px
-    upload_success: Immagine di copertina caricata correttamente
-  group_logo_modal:
-    heading: Nuovo logo del gruppo
-    upload_link: Carica nuovo logo del gruppo
-    image_size_helptext: "La dimensione ideale dell'immagine è 100 x 100 px"
-    upload_success: Logo caricato correttamente
   join_group_button:
     join_group: Unisciti al gruppo
     ask_to_join_group: Chiedi di unirti al gruppo
@@ -292,7 +261,6 @@ it:
     heading: Chiedi di unirti al gruppo
     name_label: Nome
     email_label: Email
-    introduction_label: Presentati
     submit_button: Chiedi di unirti al gruppo
     messages:
       membership_requested: 'Hai richiesto di partecipare al gruppo {{group}}'
@@ -329,7 +297,6 @@ it:
     members: Membri
     members_placeholder: 'Sei da solo qui: invita altre persone!'
     member_options: Opzioni dei membri del gruppo
-    all_members: 'Tutti i  ({{count}}) membri'
     subgroups: Sottogruppi
     subgroups_placeholder: I sottogruppi permettono di dividere il gruppo più grande in gruppi di lavoro.
     invite_people: Invita persone
@@ -343,16 +310,6 @@ it:
       manage_subscription: Gestisci le sottoscrizioni al gruppo
       leave_group: Abbandona il gruppo
       deactivate_group: Disattiva gruppo
-    deactivate_group:
-      title: Disattiva il gruppo
-      question: Sei sicuro/a di volere disattivare il gruppo?
-      submit: 'Si, disattiva il gruppo'
-    leave_group:
-      title: Abbandona il gruppo
-      question: Sei sicuro/a di volere lasciare questo gruppo?
-      submit: 'Si, voglio lasciare il gruppo'
-      cannot_leave_group: "Non puoi lasciare il gruppo perché ne sei l'ultimo coordinatore/ice. Devi scegliere un altro coordinatore/coordinatrice o disattivare prima il gruppo."
-      add_coordinator: Aggiungi un coordinatore/ice.
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
@@ -370,41 +327,15 @@ it:
       parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
       public: 'Privacy: Questo gruppo è visibile sul web'
       aria_label: 'Privacy del gruppo: {{privacy}}'
-  confirm_gift_plan_modal:
-    heading: Piano regalo selezionato
-    got_it: Ok
-    go_back: Vai indietro
-  donation_modal:
-    heading: Vuoi supportare Loomio?
-    got_to_group: Portami al mio gruppo
   gift_card:
     heading: Piano Regalo
   trial_card:
     title: Prova di 30 giorni
     choose_plan: Scegli il tuo piano
   choose_plan_modal:
-    gift: Regalo
     standard: Standard
-    plus: Plus
-    get_started_for_free: Inizia gratis
-    support_before: I sono contento di
-    support_link: parlare con te
-    support_after: 'di estendere la tua versione di prova, o di qualsiasi altra domanda tu possa avere'
-    remind_me_later: Ricorda in seguito
-    unlimited_members: numero di membri illimitato
-    unlimited_decisions: numero di decisioni illimitato
-    email_support: supporto email
-    standard_price_html: |
-      US <strong>$19</strong>/mese<br><span>oppure</span> $190/anno
-    plus_body: 'Ciò che include la versione Standard, più:'
-    premium_support: supporto premium
-    plus_price_html: |
-      US <strong>$179</strong>/mese<br><span>oppure</span> $1790/anno
     select: Seleziona
   subscription_success_modal:
-    heading: 'Grazie per aver completato la tua sottoscrizione!'
-    receipt: "Riceverai un'email con la ricevuta del pagamento."
-    change_subscription: 'Se volessi modificare o cancellare la tua sottoscrizione, o se avessi altre domande,'
     contact_link: non esitare a contattarci.
     sign_off: ❤ dal team Loomio
     ok_got_it: Ok
@@ -478,10 +409,6 @@ it:
       remove_member_success: '{{name}} rimosso.'
       make_admin_success: '{{name}} è ora coordinatore/ice'
       remove_admin_success: '{{name}} non è più un coordinatore/trice'
-    remove_membership:
-      title: Espelli membro
-      question: 'Sei sicuro/a di volere rimuovere {{name}} dal gruppo {{group}}?'
-      submit: Rimuovi
   pending_invitations_card:
     heading: Inviti in sospeso
     email: Email
@@ -497,24 +424,6 @@ it:
       picture_changed: Immagine del profilo aggiornata
       password_changed: Password aggiornata
       deactivated: Account disattivato
-    change_picture:
-      title: Cambia immagine
-      helptext: 'Puoi caricare una tua foto nel profilo, oppure se hai un account  <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a>  puoi usare quello.'
-      use_initials: Usa iniziali
-      use_gravatar: Usa Gravatar
-      use_uploaded: Carica una nuova immagine
-    change_password:
-      title: Cambia la tua password
-      helptext: 'Le password devono avere una lunghezza di 8 caratteri. Le password banali come "password" sono vietate per tenere al sicuro il vostro account.'
-      current_password_label: Attuale password
-      new_password_label: Nuova password
-      password_confirmation_label: Conferma la nuova password
-      submit: Aggiorna la password
-    deactivate_user:
-      title: "Disattiva l'account"
-      question: Ci diresti perché stai disattivando il tuo account?
-      placeholder: 'Rispondere a questa domanda è opzionale. Ogni informazione che condividi ci aiuterà a migliorare Loomio :)'
-      submit: "Disattiva l'account"
     change_picture_link: Cambia immagine
     change_password_link: Cambia password
     deactivate_user_link: Disattiva account...
@@ -534,6 +443,8 @@ it:
       updated: Impostazioni della posta elettronica aggiornate.
   dashboard_page:
     aria_label: Dashboard
+    no_groups:
+      or: o
     no_threads:
       show_proposals: Non ci sono proposte attive in questo momento.
     mark_as_read: Contrassegnato come letto
@@ -541,7 +452,6 @@ it:
       filter_threads: Filtra discussioni
       filter_threads_aria_label: Filtra discussioni
       all: Discussioni recenti
-      participating_description: Visualizza solo le discussioni cui hai partecipato
       proposals: Proposte
       proposals_description: Visualizza solo le discussioni che contengono proposte attive
       muted: Silenziato
@@ -562,6 +472,8 @@ it:
     no_threads: 'Woohoo! Hai letto tutte le discussioni nella tua casella di posta..'
     unread_threads: Discussioni non lette
     view_more: Mostra di più
+    no_groups:
+      or: o
   groups_page:
     page_header: I tuoi gruppi
   discussion:

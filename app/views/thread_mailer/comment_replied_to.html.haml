@@ -1,4 +1,9 @@
-%p= t('email.comment_replied_to.context', discussion_title: @discussion.title, author_name: @author.name)
+= render 'avatar', author: @author 
+.thread-mailer__subject
+  %strong= @author.name
+  %span= t(:"email.comment_replied_to.context_html")
+  %span
+    %strong
+      = link_to @discussion.title, discussion_url(@discussion)
 = render_rich_text(@reply.body, @reply.uses_markdown)
-= render "attachments", comment: @reply if @reply.attachments.any?
-= render "footer", link: comment_url_helper(@reply)
+= render 'attachments', resource: @reply if @reply.attachments.any?

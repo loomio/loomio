@@ -17,11 +17,10 @@ bg-BG:
   comment_form:
     delete_comment: Изтрий коментар
     confirm_delete_message: 'Сигурни ли сте, че искате да изтриете този коментар?'
+  sidebar:
+    help: Помощ
+    sign_out: Изход
   navbar:
-    groups: Групи
-    user_options:
-      new_group: Нова група
-      help: Помощ
     search:
       discussions: Дискусии
   notifications:
@@ -55,15 +54,12 @@ bg-BG:
   membership_request_form:
     name_label: Име
     email_label: E-mail
-    introduction_label: Представете се
   group_page:
     discussions: Дискусии
     invite_people: Поканете хора
     options_label: Опции
     options:
       label: Опции
-    leave_group:
-      title: Напусни групата
   membership_requests_page:
     approve: Одобряване
     ignore: Игнориране
@@ -72,13 +68,7 @@ bg-BG:
     name_label: Име
     coordinator_label: Координатор
     remove_member_label: Отстраняване
-    remove_membership:
-      submit: Отстраняване
   profile_page:
-    change_password:
-      current_password_label: Текуща парола
-      new_password_label: Нова парола
-      password_confirmation_label: Потвърди нов парола
     picture_label: Изображение
     name_label: Име
     email_label: E-mail

@@ -1,27 +1,68 @@
-.lmo-one-column-layout{
+body {
+  position: static;
+  z-index: -2 !important;
+}
+
+.lmo-one-column-layout, .lmo-two-column-layout{
   margin: auto;
-  max-width: $small-max-px;
-  padding-top: 48px;
   padding-bottom: 25px;
   z-index: 0;
   min-width: 320px;
 }
+
+.lmo-one-column-layout{
+  max-width: $small-max-px;
+}
+
 .lmo-two-column-layout{
-  margin: auto;
   max-width: $max-container-size;
   padding-top: 48px;
-  z-index: 0;
-  padding-bottom: 25px;
-  min-width: 320px;
 }
 
 .lmo-row{
   @include lmoRow;
 }
 
-@media (max-width: $tiny-max-px){
-  /* applied to tiny phone screens */
+md-dialog {
+  min-width: $tiny-max-px;
+  max-height: 90%;
+  background-color: $modal-background-color;
+}
 
+.lmo-sidebar-and-main-container {
+  position: relative;
+}
+
+.lmo-main-content{
+  overflow-y: scroll;
+  position: relative;
+}
+.lmo-main-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 320px;
+}
+
+.md-dialog-container {
+  z-index: $over-intercom;
+}
+
+.modal-body {
+  max-height: calc(90vh - 125px);
+  overflow: auto;
+  flex-shrink: 0; // fix for safari and maybe ie11 squishing the modal-body
+}
+
+@media (max-width: $tiny-max-px){
+  md-dialog {
+    min-width: 100%;
+    max-height: 100%;
+  }
+
+  .modal-body {
+    max-height: calc(100vh - 125px);
+  }
 }
 
 @media (min-width: $tiny-max-px) and (max-width: $small-max-px){
@@ -103,4 +144,12 @@
     float: left;
     clear: left;
   }
+}
+
+.modal-body {
+  flex-shrink: 0;
+}
+
+.md-dialog {
+  max-width: 400px;
 }

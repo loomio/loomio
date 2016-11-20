@@ -5,10 +5,190 @@
 .light-discussion .description {margin-bottom: 1em;}
 .activity-feed {margin-top: 1em;}
 .light-proposal .icon img { width: 50px; padding-top: 10px }
-table { width: 600px }
+table { max-width: 600px }
+
+table.stats-table {
+  text-align: center;
+}
+table.stats-table th { font-weight: bold; color: #666; }
+
 .content { width: 550px }
 .light-discussion { width: 600px; margin-bottom: 3em;}
 .light-proposal {margin-bottom: 2em;}
 .motion-pie { float: right }
-img { max-width: 600px }
-body { width: 600px }
+.footer { font-size: 12px; color: #666; }
+img { max-width: 500px; }
+img.emojione { width: 25px; vertical-align: bottom; }
+body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica Neue", "Arial", sans-serif; }
+
+
+.mailer__header {
+  text-align: center;
+}
+
+.mailer__header-logo-image {
+  margin: 15px 0 10px 0;
+  max-width: 200px;
+}
+
+.mailer__header-logo {
+  border-bottom: 1px solid #F7A915;
+  margin: 0 10px;
+}
+
+.invite-people-mailer {
+  text-align: center;
+  background-color: #F1F1F1;
+  padding: 35px 25px;
+}
+
+.invite-people-mailer__container {
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.invite-people-mailer__context {
+  margin-bottom: 30px;
+}
+
+.invite-people-mailer__avatar-initials {
+  margin: 0 10px 10px 0;
+  border: 1px solid #dcdcdc;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.invite-people-mailer__avatar-image {
+  margin: 0 10px 10px 0;
+}
+
+.invite-people-mailer__body {
+  padding: 30px 20px;
+}
+
+.invite-people-mailer__message-container {
+  padding: 30px 0;
+}
+
+.invite-people-mailer__message_body {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 45px;
+  padding: 0 20px;
+}
+
+.invite-people-mailer__button {
+  background-color: #5cb85c;
+  border: #4cae4c;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline;
+  font-size: 16px;
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 80px;
+  padding: 12px 30px;
+}
+
+.invite-people-mailer__value-proposition {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 30px 0 0;
+}
+
+.invite-people-mailer__heart-icon {
+  width: 30px;
+}
+
+.thread-mailer__list {
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.thread-mailer__list-item {
+  list-style-type: none;
+  margin-left: 0px;
+}
+
+.thread-mailer__avatar-initials {
+  margin-right: 10px;
+  float: left;
+  border: 1px solid #dcdcdc;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+}
+
+.thread-mailer__avatar-image {
+  margin-right: 10px;
+  float: left;
+}
+
+.thread-mailer__vote-buttons {
+  margin-bottom: 15px;
+}
+
+.thread-mailer__vote-button {
+  text-align: center;
+  padding-right: 10px;
+}
+
+.thread-mailer__vote-button img {
+  width: 55px;
+}
+
+.thread-mailer__vote-button-link {
+  text-decoration: none;
+}
+
+.thread-mailer__vote-button-verb {
+  text-decoration: underline;
+}
+
+.thread-mailer__vote {
+  margin-bottom: 20px;
+}
+
+.thread-mailer__motion-pie-icon {
+  float:left;
+  margin: 0 10px 0 0;
+  width: 50px;
+  height: 50px;
+}
+
+.thread-mailer__vote-icon {
+  float:left;
+  margin: 0 10px 0 0;
+  width: 24px;
+}
+
+.thread-mailer__subject {
+  margin-bottom: 20px;
+  padding: 5px 0;
+}
+
+.thread-mailer__body img {
+  margin-top: 15px;
+}
+
+.thread-mailer__attachment-icon {
+  vertical-align: -30%;
+  margin-right: 5px;
+}
+
+.thread-mailer__footer {
+  clear: both;
+  color: #666;
+  font-size: small;
+}
+
+.align-left {
+  text-align: left;
+}

@@ -32,11 +32,16 @@ js:
   - private_pub/app/assets/javascripts/private_pub.js
   - emojione/lib/js/emojione.js
   - angular-off-click/offClick.js
+  - angular-material/angular-material.js
+  - angular-aria/angular-aria.js
+  - angulartics/src/angulartics.js
+  - angulartics/src/angulartics-gtm.js
 execjs:
   - emojione/lib/js/emojione.js
 css:
   - bootstrap-sass/assets/stylesheets/_bootstrap.scss
   - font-awesome/css/font-awesome.css
+  - angular-material/angular-material.css
 css_includes:
   - bootstrap-sass/assets/stylesheets
 fonts:

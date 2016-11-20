@@ -1,3 +1,9 @@
-%p= t("email.user_added_to_a_group.content", which_group: @group.full_name, who: @inviter.name)
-%p= link_to group_url(@group), group_url(@group, @utm_hash)
-%p= @message
+.invite-people-mailer__context
+  = t(:"email.user_added_to_group.content_html", which_group: @group.full_name, who: @inviter.name)
+.invite-people-mailer__message-container
+  - if @message
+    .invite-people-mailer__message_body
+      = simple_format @message
+  = link_to t(:"email.view_group"), group_url(@group, @utm_hash), class: "invite-people-mailer__button"
+.invite-people-mailer__value-proposition
+  = t(:"email.value_proposition")

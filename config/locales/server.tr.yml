@@ -14,17 +14,11 @@ tr:
       subject: "%{member} , Loomio'da sizi  %{group_name} grubuna katılmaya davet etti"
     to_start_group:
       subject: 'Yeni Loomio grubunu aç: %{group_name}'
-    user_added_to_a_group:
-      subject: '%{who} sizi %{which_group} grubuna ekledi'
-      content: "%{who}, Loomio'da sizi %{which_group} grubuna ekledi. Gruba gitmek için buraya tıklayınız:"
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     view_comment: "Bu yorumu Loomio'da görüntülemek için buraya tıkla"
     view_discussion: Bu müzakereyi görüntülemek için buraya tıkla
-    view_group: "Bu grubu Loomio'da görüntülemek için buraya tıkla"
     view_proposal: Bu öneriyi Loomio üzerinde görüntüle
-    create_discussion:
-      intro: '%{who} , %{which_group} grubunda bir müzakere başlattı:'
     create_proposal:
       intro: Ait olduğunuz bir Loomio grubunda yeni bir öneri oluşturuldu.
       closes_in: içinde kapanacak
@@ -40,27 +34,13 @@ tr:
       thanks_for_reading: 'Okuduğunuz için teşekkürler. Güzel günler dileriz!'
       marked_as_read_success: "E-posta'daki herşey okundu olarak isaretlendi"
     comment_replied_to:
-      context: '%{author_name} "%{discussion_title}" müzakeresindeki yorumunuzu yanıtladı'
       subject: "%{who} Loomio'daki %{which} grubunda yorumunuzu yanıtladı"
-    group_membership_approved:
-      intro: "Loomio üzerindeki '%{group_name}' grubuna erişim talebin onaylandı."
-      subject: '%{prefix} Üyelik onaylandı'
-    invitation:
-      hi: 'Merhaba %{name},'
-      intro: '%{group_name} grubunu açmak için aşağıdaki linki tıkla:'
-      closing_message: 'Herhangi bir sorunuz varsa ya da size yardımcı olabileceğimiz herhangi bir konu varsa, bu e-postayı yanıtlamanız yeterli. Sizlerden haber almak bizi memnun edecektir.'
-      thanks: |
-        Teşekkürler!
-        Loomio Takımı
     membership_request:
       intro: '%{name} (%{email}) Loomio gruplarından birine erişim hakkı istedi.'
       subject: '%{who} %{which_group} grubuna katılmak için talep gönderdi'
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
-    mentioned:
-      context: "\"%{discussion_title}\" isimli müzakere'de %{author_name} sizden bahsetti"
     new_motion_created:
       subject: 'Öneri: %{proposal_title}'
-      context: '%{author} %{group_full_name} grubunda bir öneri oluşturdu:'
     proposal_closed:
       proposal_has_closed: Öneri kapatıldı.
       specify_outcome_and_notify_group: 'Bir sonuç oluştur ve grubuna gönder!'
@@ -84,12 +64,10 @@ tr:
       turn_on_notifications_text: 'Bundan sonraki faaliyet bildirimlerini alabilmek için bu müzakerenin e-posta servisini aktive edin: %{url}'
       change_email_preferences_html: "Bu e-posta listesinden çıkmak için <a href='%{email_preferences_url}'>e-posta tercihlerinizi</a> değişitirin."
       change_preferences: 'E-posta tercihlerini değiştir:'
-      new_motion: '%{who} teklif etti:'
       motion_closing_soon: 'Teklif 24 saat içinde kapanıyor:'
       proposal_closed: 'Öneri kapandı:'
       specify_outcome_html: "Sizin öneriniz kapandı. Herkesin bilmesi için <a href='%{link}'>bir sonuç belirtin</a>."
       specify_outcome: 'Sizin öneriniz kapandı. Herkesin bilmesi için bir sonuç belirtin:'
-      outcome_created: '%{who} bir öneri sonucu belirledi'
       you_agreed: 'Sen %{past_tense_position}'
   footer:
     about: Hakkında
@@ -129,21 +107,14 @@ tr:
     error:
       all_email_addresses_belong_to_members: Sağladığınız e-posta adresleri zaten grupta bulunan kişilere ait olduğundan dolayı bunlara davetiye göndermedik.
   pricing_page:
-    gift: Hediye
     standard: Standart
-    plus: Plus
     free_trial_html: '<span>30 günlük ücretsiz deneme</span> süresinden sonra fiyatlandırma planı seçmenizi isteyeceğiz. Kredi kartı gerekli değildir.'
     get_started_for_free: Ücretsiz başlayın
     unlimited_members: sınırsız üyeler
     unlimited_decisions: sınırsız kararlar
     email_support: e-posta desteği
-    standard_price_html: |
-      US <strong>$19</strong>/aylık<br><span>ya da</span> $190/yıllık
-    plus_body: "Standart'a dahil olan her şey, ve ayrıca:"
     premium_support: Premium destek
     usage_statistics: kullanım istatistikleri
-    plus_price_html: |
-      US <strong>$179</strong>/aylık<br><span>ya da</span> $1790/yıllık
   password_reset:
     email_guidelines_html: >
       <p>Aşağıdaki alana Loomio hesabınızın e-posta adresini girin. Size bir
@@ -154,92 +125,6 @@ tr:
     reset_email_timeframe: 'E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.'
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
-  introduction_thread:
-    title: '%{group_name} grubuna hoşgeldiniz'
-    description: >
-      Lütfen kendinizi tanıtmak için bir dakikanızı ayırın: aşağıdaki forma **bir
-      yorum girin**.
-
-
-
-      Eğer bu Loomio grubu için belirli bir amacınız varsa, onu burada paylaşın
-      ki herkesin birlikte ne başarmak istenildiğine dair bir fikri olsun.
-  how_it_works_thread:
-    title: Loomio Nasıl Kullanılır
-    description: >
-      Birlikte kararlar almaya yarayan online yardımcınız Loomio'ya hoş
-      geldiniz.
-
-
-
-      Bu bir örnek müzakere **konu**su. Neden Loomio'nun özelliklerini denemek
-      için bu alanı kullanmıyorsunuz?
-
-
-
-      Şu anda konu **içeriği**ni okuyorsunuz. Grubun üretken bir şekilde müzakere
-      etmesi için ihtiyacı olan arka plan bilgisi bu alanı kullanarak verin.
-
-
-
-      **Öneri** paneli kararları aldığınız yerdir. Orada öneriler başlatabilir
-      veya onlara katılabilirsiniz. Aşağıdaki **faaliyet** paneli bu konuda olan
-      her faaliyeti gösterir.
-  first_comment:
-    body: >
-      Merhaba millet, ben Loomio Yardımcısı Botuyum
-
-
-
-      Eğer gruptaki belirli bir kişinin dikkatini çekmek istiyorsanız, açıklama
-      alanına @ ve ardından o kişinin adını yazın :)
-
-
-
-      İşte yola koyulmak için denemek isteyebileceğiniz bazı şeyler:
-
-
-
-      -  [profile picture](/profile) ayarlayın
-
-      - [email settings](/email_preferences) ayarlayın
-
-      - [Welcome to %{group_name} thread](%{thread_url}) konusunda kendinizi
-      gruba tanıtın
-
-
-
-      Eğer herhangi bir sorunuz var ise, kontrol etmeniz için ilk yer [Loomio
-      help manual](http://help.loomio.org).
-  first_proposal:
-    name: 'Demo önerisi: Haydi gidelim!'
-    description: >
-      Bu önerinin **açıklama**sı. Burada önerilen aksiyonu açıklayabilir ve
-      herkesin iyi bilgilendirilmiş bir karar almasını sağlayacak olan gerekli
-      ayrıntıyı verebilirsiniz.
-
-
-
-      Öneriye katkıda bulunmak için, bu seçeneklerden birini seçin:
-
-
-
-      - **Katılıyorum**: "Ben bu öneriyi kabul ediyor ve devam etmesini
-      istiyorum."
-
-      - **Çekimser**: “Grubun bensiz karar almasından memnunum.”
-
-      - **Katılmıyorum**: "Ben muhtemelen bundan daha iyisini yapabileceğimizi
-      düşünüyorum".
-
-      - **Engelle**: "Bu öneriye şiddetle karşı çıkıyorum ve devam etmesini
-      istemiyorum".
-
-
-
-      Seçiminizi yaptıktan sonra, neden bu şekilde hissettiğinize dair kısa bir
-      açıklama yapmanız istenecektir. Öneri açık olduğu sürece, istediğiniz zaman
-      pozisyonunuzu değiştirebilirsiniz.
   contact_page:
     contact_us: Bize yazın
     faq_prompt_html: 'Loomia takımına bir sorunuz mu var? Bize başvurmadan önce, sıkça sorulan sorular alanında cevabı bulmanız mümkün olabilir.'

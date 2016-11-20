@@ -1,4 +1,5 @@
 angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $rootScope, $translate, Records, Session, ModalService, EditCommentForm, DeleteCommentForm, AbilityService, TranslationService, RevisionHistoryModal) ->
+  $scope.comment = Records.comments.find($scope.event.eventable.id)
   renderLikedBySentence = ->
     otherIds = _.without($scope.comment.likerIds, Session.user().id)
     otherUsers = _.filter $scope.comment.likers(), (user) -> _.contains(otherIds, user.id)
@@ -34,8 +35,6 @@ angular.module('loomioApp').controller 'NewCommentItemController', ($scope, $roo
           joinedNames = otherNames.slice(0, -1).join(', ')
           name = otherNames.slice(-1)[0]
           $translate('discussion.liked_by_many_others', joinedNames: joinedNames, name: name).then updateLikedBySentence
-
-  $scope.comment = $scope.event.comment()
 
   $scope.editComment = ->
     ModalService.open EditCommentForm, comment: -> $scope.comment

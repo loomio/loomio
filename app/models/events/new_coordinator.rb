@@ -4,8 +4,4 @@ class Events::NewCoordinator < Event
            user: actor,
            eventable: membership).tap { |e| EventBus.broadcast('new_coordinator_event', e, membership.user) }
   end
-
-  def membership
-    eventable
-  end
 end

@@ -2,18 +2,18 @@ ru:
   email:
     to_join_discussion:
       message_intro: '%{who} сказал(а):'
+      link: Присоедениться к обсуждению
     missed_yesterday:
       subject: Вчера на Loomio
       mark_as_read: Отметить прочитанным
-    invitation:
-      hi: 'Здравствуйте, %{name},'
     thread_mailer:
       change_preferences: 'Измените настройки уведомлений:'
-      new_motion: '%{who} предложил:'
       motion_closing_soon: 'Предложение закроется через 24 часа:'
       proposal_closed: Предложение закрыто
-      outcome_created: '%{who} подвел итоги:'
       you_agreed: 'Вы %{past_tense_position}'
+    analytics:
+      user_table:
+        motions_created: Голосования
   footer:
     about: О нас
     blog: Блог

@@ -1,14 +1,11 @@
-angular.module('loomioApp').factory 'FlashService', ($rootScope) ->
+angular.module('loomioApp').factory 'FlashService', ($rootScope, AppConfig) ->
   new class FlashService
-
-    SHORT_TIME = 3500
-    LONG_TIME = 2147483645
 
     createFlashLevel = (level, duration) =>
       (translateKey, translateValues, actionKey, actionFn) =>
         $rootScope.$broadcast 'flashMessage',
           level:     level
-          duration:  duration or SHORT_TIME
+          duration:  duration or AppConfig.flashTimeout.short
           message:   translateKey
           options:   translateValues
           action:    actionKey
@@ -18,6 +15,6 @@ angular.module('loomioApp').factory 'FlashService', ($rootScope) ->
     info:    createFlashLevel 'info'
     warning: createFlashLevel 'warning'
     error:   createFlashLevel 'error'
-    loading: createFlashLevel 'loading', LONG_TIME
-    update:  createFlashLevel 'update', LONG_TIME
+    loading: createFlashLevel 'loading', AppConfig.flashTimeout.long
+    update:  createFlashLevel 'update', AppConfig.flashTimeout.long
     dismiss: createFlashLevel 'loading', 1

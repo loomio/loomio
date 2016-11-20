@@ -9,9 +9,14 @@ nl-NL:
     notification_volume: Melding Volume
     group: Groep
     groups: Groepen
+    help: Help
     privacy:
+      privacy: Privacy
       public: Openbaar
+      open: Openen
+      closed: Gesloten
       private: Besloten
+      secret: Geheim
     selected: Geselecteerd
     date_range:
       today: Vandaag
@@ -19,14 +24,21 @@ nl-NL:
       thisweek: Deze week
       thismonth: Deze maand
       older: Ouder
+    more_help: Meer help
     models:
       proposal: Voorstel
+    copy: Kopiëren tekst
+    copied: Gekopieerd naar klembord
     action:
+      close: Sluiten
       save: Bewaren
       save_changes: Wijzigingen bewaren
+      update_settings: Instellingen bijwerken
       reply: Antwoorden
       edit: Bewerken
+      remove: Verwijderen
       like: Vind ik leuk
+      back: Terug
       unlike: Vind ik niet meer leuk
       update: Updaten
       cancel: Annuleren
@@ -35,6 +47,8 @@ nl-NL:
       new_thread: Nieuwe discussie
       add_subgroup: Toevoegen subgroep
       loading: Aan het laden
+      translate: Vertalen
+      upload: Uploaden
       uploading: Aan het uploaden
   error_page:
     forbidden: Je bent niet gemachtigd om dit te doen.
@@ -65,19 +79,38 @@ nl-NL:
     normal: Normaal
     quiet: Stil
     mute: Dempen
+  change_volume_form:
+    loud_label: Alle activiteit
+    quiet_label: Geen e-mails
+    mute_label: Dempen
+    discussion:
+      title: 'E-mail instellingen voor {{title}}'
+    membership:
+      title: 'E-mail instellingen voor {{title}}'
+  mute_explanation_modal:
+    mute_thread: Discussie dempen
   inbox:
     clear: Leegmaken
     latest: Laatste
     unread: Ongelezen
-  session_form:
+    closing_in: Afsluiten
+  sign_in_form:
+    title: Inloggen in Loomio
     email_label: 'E-mailadres:'
-    password_label: Wachtwoord
+    email_placeholder: jij@voorbeeld.org
+    password_label: 'Wachtwoord:'
     remember_me: Onthoud mij
+    forgot_password: Wachtwoord vergeten?
     sign_in: Inloggen
+    signed_in: Succevol ingelogd
+    oauth:
+      facebook: Inloggen met Facebook
+      twitter: Inloggen met Twitter
+      google: Inloggen met Google
+      github: Inloggen met Github
   comment_form:
     aria_label: Toevoegen reactie
     attachments:
-      aria_label: Bestand toevoegen
       remove_attachment: Verwijderen bijlage
     messages:
       created: Reactie toegevoegd
@@ -91,23 +124,24 @@ nl-NL:
     in_reply_to: 'In antwoord op <strong>{{name}}</strong>:'
     submit_button:
       label: Plaatsen
-  navbar:
+  sidebar:
     recent: Recent
     unread: Ongelezen
-    groups: Groepen
+    edit_profile: Bewerk profiel
+    email_settings: E-mail instellingen
+    help: Help
+    sign_out: Uitloggen
+  navbar:
     recent_title: Ga naar dashboard
-    user_options:
-      contact_us: Neem contact op
-      new_thread: Nieuwe discussie
-      new_group: Nieuwe groep
-      profile: Profiel
-      email_settings: E-mail instellingen
-      help: Help
     search:
       placeholder: Zoek
       discussions: Discussies
       proposals: Voorstellen
       comments: Reacties
+    sign_in: Inloggen
+  start_menu:
+    start_group: 'Begin groep!'
+    start_subgroup: Start Subgroep
   notifications:
     header: Meldingen
   position_buttons_panel:
@@ -135,12 +169,23 @@ nl-NL:
     details_label: Details
   discussion_form:
     group_label: Groep
+    group_placeholder: Selecteer een groep
     title_label: Titel
     context_label: Beschrijving
     privacy_label: Privacy
+    new_discussion_submit: Start discussie
+    edit_discussion_submit: Bijwerken discussie
   proposal_expanded:
+    collapse: Inklappen
     edit_proposal: Bewerk voorstel
     close_proposal: Sluit voorstel
+    closed_badge: Gesloten
+  proposal_position_yes: Eens
+  proposal_position_abstain: Onthouden
+  proposal_position_block: Blokkeren
+  group_welcome_modal:
+    member_heading: Welkom bij Loomio
+    ok_got_it: "Okee, ik snap 't!"
   join_group_button:
     join_group: Word lid van groep
     ask_to_join_group: Vraag om lid te worden van groep
@@ -148,7 +193,6 @@ nl-NL:
     heading: Vraag om lid te worden van groep
     name_label: Naam
     email_label: E-mail
-    introduction_label: Introduceer jezelf
     submit_button: Vraag om lid te worden van groep
   group_page:
     thread_list:
@@ -161,12 +205,20 @@ nl-NL:
     options_label: Opties
     options:
       label: Opties
-    leave_group:
-      title: Verlaat groep
     volume:
       loud: E-mail als er activiteit is.
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       mute: Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word.
+  choose_plan_modal:
+    standard: Standaard
+  subscription_success_modal:
+    ok_got_it: "Okee, ik snap 't!"
+  group_form:
+    privacy: Privacy
+    submit_start_group: Start groep
+    submit_update: Instellingen bijwerken
+  group_help_card:
+    title: Help
   membership_requests_page:
     approve: Goedkeuren
     ignore: Negeer
@@ -177,19 +229,7 @@ nl-NL:
     name_label: Naam
     coordinator_label: Coördinator
     remove_member_label: Verwijder
-    remove_membership:
-      submit: Verwijder
   profile_page:
-    change_picture:
-      title: 'Wijzigen afbeelding:'
-      use_initials: Gebruik initialen
-    change_password:
-      current_password_label: Huidig wachtwoord
-      new_password_label: Nieuw wachtwoord
-      password_confirmation_label: Bevestig nieuw wachtwoord
-    deactivate_user:
-      title: Deactiveer account
-      submit: Deactiveer account
     change_picture_link: 'Wijzigen afbeelding:'
     change_password_link: Wijzigen wachtwoord
     deactivate_user_link: Deactiveren account...
@@ -205,15 +245,20 @@ nl-NL:
     header: E-mail instellingen
   dashboard_page:
     aria_label: Dashboard
+    no_groups:
+      or: of
     mark_as_read: Markeer als gelezen
     filtering:
       proposals: Voorstellen
     threads_from:
       group: Discussies van
+      proposals: Voorstellen
       today: Vandaag
       yesterday: Gisteren
   inbox_page:
     view_more: Bekijk meer
+    no_groups:
+      or: of
   groups_page:
     page_header: Jouw groepen
   discussion:
@@ -277,7 +322,21 @@ nl-NL:
       met betrekking tot het probleem alvorens tot een oplossing te komen. Als
       mensen betrokken zijn bij het proces, zullen ze eerder geneigd zijn dit
       resultaat te steunen.</p>
-    example2_html: "<h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de groep om verder te kunnen.</h3>\n<p>Strategie: Begin een discussie over een specifieke beslissing en maak meteen een voorstel.</p>\n<p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er zeker van zijn dat niemand bezwaar heeft, \nkan je het voorstel gebruiken om snelle feedback te krijgen met betrekking tot een beslissing.</p>\n<p>Je kan dingen doen als een document afronden, een aanvraag goedkeuren of een streep zetten onder een klus.</p>\n"
+    example2_html: >
+      <h3>Je hebt al een voorstel in gedachten en je wilt een besluit van de
+      groep om verder te kunnen.</h3>
+
+      <p>Strategie: Begin een discussie over een specifieke beslissing en maak
+      meteen een voorstel.</p>
+
+      <p>Als je reeds een heldere uitkomst in gedachten hebt, maar je wilt er
+      zeker van zijn dat niemand bezwaar heeft,
+
+      kan je het voorstel gebruiken om snelle feedback te krijgen met betrekking
+      tot een beslissing.</p>
+
+      <p>Je kan dingen doen als een document afronden, een aanvraag goedkeuren of
+      een streep zetten onder een klus.</p>
     get_in_touch: Neem contact op
     get_in_touch_description_html: "Als je vragen of opmerkingen hebt, <a href='%{link}'>stuur ons een berichtje</a>."
     getting_started: Aan de slag
@@ -380,3 +439,5 @@ nl-NL:
     invitation: Tips voor het schrijven van een goede uitnodiging
     proposal: Tips voor het schrijven van een helder voorstel
     vote: Je kunt je standpunt ten alle tijde veranderen
+  angular:
+    collapse: Inklappen

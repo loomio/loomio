@@ -14,11 +14,10 @@ te:
       cancel: రద్దుచేయి
   comment_form:
     delete_comment: వ్యాఖ్యను తొలగించు
+  sidebar:
+    help: సహాయం
+    sign_out: నిష్క్రమించండి
   navbar:
-    groups: సమూహాలు
-    user_options:
-      new_group: కొత్త సమూహం
-      help: సహాయం
     search:
       placeholder: వెతుకు
       discussions: చర్చలు
@@ -48,7 +47,6 @@ te:
     heading: సమూహంలో చేరుటకు అడగండి
     name_label: పేరు
     email_label: ఈమెయిలు
-    introduction_label: మిమ్మల్ని పరిచయం చేసుకోండి
     submit_button: సమూహంలో చేరుటకు అడగండి
   group_page:
     discussions: చర్చలు
@@ -56,8 +54,6 @@ te:
     options_label: ఐచ్ఛికాలు
     options:
       label: ఐచ్ఛికాలు
-    leave_group:
-      title: సమూహాన్ని వదిలివెళ్ళండి
   membership_requests_page:
     approve: ఆమోదించండి
     ignore: విస్మరించు
@@ -66,13 +62,7 @@ te:
     name_label: పేరు
     coordinator_label: సమన్వయకర్త
     remove_member_label: తీసివేయి
-    remove_membership:
-      submit: తీసివేయి
   profile_page:
-    change_password:
-      current_password_label: ప్రస్తుత సంకేతపదం
-      new_password_label: కొత్త సంకేతపదం
-      password_confirmation_label: కొత్త సంకేతపదాన్ని నిర్థారించండి
     picture_label: చిత్రం
     name_label: పేరు
     email_label: ఈమెయిలు
@@ -97,3 +87,9 @@ te:
     make_a_decision: ఒక నిర్ణయాన్ని తీసుకోండి
     video_id: '52025402'
     video_tutorial: దృశ్యక ఉపశిక్షణ
+  registered_apps_page:
+    name: పేరు
+    create_new_application: kotta firyaadu
+  registered_app_form:
+    new_application_title: కొత్త ఫిర్యాదు
+    name_label: పేరు

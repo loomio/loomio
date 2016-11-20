@@ -95,6 +95,15 @@ describe 'Proposals', ->
       page.expectFlash 'Outcome updated'
       page.expectText '.proposal-outcome-panel__outcome', 'Gonna make things happen!'
 
+  describe 'redirecting to a proposal', ->
+    it 'succeeds when a visitor logs in', ->
+      page.loadPath 'view_proposal_as_visitor'
+      page.fillIn '#user-email', 'patrick_swayze@example.com'
+      page.fillIn '#user-password', 'gh0stmovie'
+      page.click '.sign-in-form__submit-button'
+      page.waitForReload()
+      page.expectText '.proposal-expanded', 'lets go hiking'
+
   describe 'voting by email', ->
 
     beforeEach ->
