@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'sidebar', ->
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
-  controller: ($scope, Session, $rootScope, $window, RestfulClient, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdSidenav, LmoUrlService, Records, ModalService, GroupForm) ->
+  controller: ($scope, Session, $rootScope, $window, RestfulClient, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdMedia, $mdSidenav, LmoUrlService, Records, ModalService, GroupForm) ->
     $scope.currentState = ""
     $scope.showSidebar = true
 
