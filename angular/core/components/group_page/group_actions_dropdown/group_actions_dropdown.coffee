@@ -12,9 +12,6 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
     @canEditGroup = =>
       AbilityService.canEditGroup($scope.group)
 
-    @canManageGroupSubscription = ->
-      AbilityService.canManageGroupSubscription($scope.group)
-
     @canAddSubgroup = ->
       AbilityService.canCreateSubgroups($scope.group)
 
@@ -38,12 +35,5 @@ angular.module('loomioApp').directive 'groupActionsDropdown', ->
 
     @archiveGroup = ->
       ModalService.open ArchiveGroupForm, group: -> $scope.group
-
-    @manageSubscriptions = ->
-      $window.open "https://www.billingportal.com/s/#{AppConfig.chargify.appName}/login/magic", '_blank'
-      true
-
-    # @choosePlan = ->
-    #   ModalService.open ChoosePlanModal, group: -> $scope.group
 
     return
