@@ -20,4 +20,3 @@ loomio_content_preview:
 
 loomio_buyer_experience:
   repo:         loomio/loomio_buyer_experience
-  branch:       fix-subscription-link
