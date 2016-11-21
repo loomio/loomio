@@ -24,7 +24,7 @@ body {
 }
 
 md-dialog {
-  width: 60%;
+  min-width: $tiny-max-px;
   max-height: 90%;
   background-color: $modal-background-color;
 }
