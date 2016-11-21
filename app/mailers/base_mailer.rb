@@ -29,7 +29,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def locale_for(*user)
-    [user, I18n].compact.first.locale
+    [*user, I18n].compact.first.locale
   end
 
   def self.send_bulk_mail(to:)
