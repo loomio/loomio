@@ -297,7 +297,7 @@ en:
   vote_form:
     heading: Have your say
     no_statement: No statement.
-    statement_over_limit: 'Too many words! Short position statements let everyone quickly catch up on the proposal.'
+    statement_over_limit: 'Character limit reached. Short position statements create a succinct summary. If you want to say more, post a comment.'
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
