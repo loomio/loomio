@@ -22,14 +22,14 @@
     .thread-page__main-content--large{ng-if: "threadPage.windowIsLarge"}
       .lmo-thread-column-left
         %context_panel{discussion: "threadPage.discussion"}
-      .lmo-thread-column-right{ng-if: "threadPage.eventsLoaded"}
-        %outlet{name: "before-thread-page-column-right", model: "threadPage.discussion"}
+      .lmo-thread-column-right
+        %outlet{name: "before-thread-page-column-right", ng-if: "threadPage.eventsLoaded", model: "threadPage.discussion"}
         %start_proposal_card.lmo-no-print{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.canStartProposal()", discussion: "threadPage.discussion"}
-        %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()"}
-        %previous_proposals_card{discussion: "threadPage.discussion"}
-        %members_card{group: "threadPage.discussion.group()"}
+        %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()", loading: "!threadPage.eventsLoaded"}
+        %previous_proposals_card{discussion: "threadPage.discussion", ng-if: "threadPage.eventsLoaded"}
+        %members_card{group: "threadPage.discussion.group()", ng-if: "threadPage.eventsLoaded"}
       .lmo-thread-column-left
-        %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId"}
+        %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId", loading: "!threadPage.eventsLoaded"}
       .lmo-thread-column-left{ng-if: "threadPage.eventsLoaded"}
         %comment_form.lmo-no-print{discussion: "threadPage.discussion"}
         %outlet{name: "thread-page-column-right"}

@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'activityCard', ->
-  scope: {discussion: '=', activeCommentId: '=?'}
+  scope: {discussion: '=', loading: '=', activeCommentId: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/activity_card/activity_card.html'
   replace: true
