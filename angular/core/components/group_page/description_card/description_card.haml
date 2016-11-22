@@ -1,0 +1,12 @@
+%section.description-card{aria-labelledby: "description-card-title"}
+  %h2#description-card-title.lmo-card-heading{ translate: "group_page.description"}
+  %div{ng-hide: "editorEnabled"}
+    .description-card__placeholder.lmo-placeholder.lmo-hint-text{translate: "group_page.description_placeholder", ng-if: "showDescriptionPlaceholder()"}
+    .description-card__text.lmo-last.lmo-markdown-wrapper{marked: "group.description"}
+    %button.description-card__edit.lmo-link{ng-click: "enableEditor()"} Edit
+  %div{ng-show: "editorEnabled"}
+    .lmo-form-group
+      .lmo-relative.lmo-textarea-wrapper
+        %textarea.lmo-textarea.description-card__textarea.form-control.lmo-primary-form-input{msd-elastic: "true", ng-model: "editableDescription", ng-model-options: "{debounce: 150}"}
+    %button.description-card__save.lmo-link{ng-click: "save()"} Save
+    %button.description-card__cancel.lmo-link{ng-click: "disableEditor()"} Cancel

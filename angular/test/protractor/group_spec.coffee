@@ -267,7 +267,17 @@ describe 'Group Page', ->
     #   page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
     #   page.expectText('.group-theme__name', 'The Breakfast Club')
 
-  describe 'editing group settings', ->
+  describe 'editing group description from description card', ->
+    it 'allows you to edit the description inline', ->
+      page.loadPath 'setup_group'
+      page.expectElement '.description-card__placeholder'
+      page.click '.description-card__edit'
+      page.fillIn '.description-card__textarea', "Brand spankin' new group description"
+      page.click '.description-card__save'
+      page.expectNoElement '.description-card__placeholder'
+      page.expectText '.description-card__text', "Brand spankin' new group description"
+
+  describe 'editing group settings via group form', ->
     beforeEach ->
       page.loadPath('setup_group')
       page.click('.group-page-actions__button',
