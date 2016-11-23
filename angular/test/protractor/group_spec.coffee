@@ -289,7 +289,7 @@ describe 'Group Page', ->
       page.click('.group-form__submit-button')
       # page.expectFlash('Group updated')
       page.expectText('.group-theme__name', 'Clean Dancing Shoes')
-      page.expectText('.group-page__description-text', 'Dusty sandles')
+      page.expectText('.description-card__text', 'Dusty sandles')
 
     it 'displays a validation error when name is blank', ->
       page.fillIn('#group-name', '')
