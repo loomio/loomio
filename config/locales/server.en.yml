@@ -214,7 +214,7 @@ en:
     help_with_setup: help with initial setup
     custom_subdomain: custom subdomain
     analytics_reports: analytics reports
-    data_export: Data export
+    data_export: data export
     contact_us_html: |
       Prices are in US dollars, plus sales tax where applicable. Need something else? <a href="/contact">Let's talk!</a>
 
