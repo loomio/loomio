@@ -22,8 +22,7 @@
   %proposal_outcome_panel{ng-if: "showOutcomePanel()", proposal: "proposal"}
   %translation{ng-if: "translation && proposal.outcome", translation: "translation", field: "outcome"}
 
-  %position_buttons_panel{proposal: "proposal"}
-  %proposal_positions_panel{proposal: "proposal"}
+  %outlet{name: "proposal-display", model: "proposal"}
 
   %a.proposal-expanded__collapse.pull-right{href: "", ng-click: "collapse()", translate: "proposal_expanded.collapse", ng-show: "canCollapse"}
   .clearfix

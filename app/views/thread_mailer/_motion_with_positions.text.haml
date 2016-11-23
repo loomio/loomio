@@ -8,7 +8,7 @@
 \
 = t(:positions).capitalize
 - @motion.grouped_unique_votes.each do |vote|
-  = "#{vote.user_name} #{vote.position_to_s}"
+  = "#{vote.user_name} #{t(vote.position, scope: [:position_verbs, :past_tense])}"
   = vote.statement
   \
 \

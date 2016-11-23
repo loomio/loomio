@@ -7,11 +7,7 @@
 
     .modal-body
       %form_errors{record: "vote"}
-      %select.form-control{ng-model: "vote.position", class: "vote-form__select-position"}
-        %option{value: "yes", translate: "vote_form.i_agree"}
-        %option{value: "abstain", translate: "vote_form.i_abstain"}
-        %option{value: "no", translate: "vote_form.i_disagree"}
-        %option{value: "block", translate: "vote_form.i_block"}
+      %outlet{name: "vote-form", model: "vote"}
       %fieldset
         .lmo-form-group
           .lmo-relative

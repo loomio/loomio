@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'proposalExpanded', ->
   scope: {proposal: '=', canCollapse: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/proposal_expanded/proposal_expanded.html'
+  templateUrl: 'generated/components/proposal_expanded/proposal_expanded.html'
   replace: true
   controller: ($scope, Records, Session, AbilityService, TranslationService) ->
     Records.proposals.findOrFetchById($scope.proposal.key)

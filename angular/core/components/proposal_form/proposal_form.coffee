@@ -1,10 +1,12 @@
 angular.module('loomioApp').factory 'ProposalForm', ->
   templateUrl: 'generated/components/proposal_form/proposal_form.html'
-  controller: ($scope, $rootScope, proposal, FormService, MentionService, KeyEventService, ScrollService, EmojiService, UserHelpService, Records, AttachmentService) ->
+  controller: ($scope, $rootScope, proposal, AppConfig, FormService, MentionService, KeyEventService, ScrollService, EmojiService, UserHelpService, Records, AttachmentService) ->
     $scope.nineWaysArticleLink = ->
       UserHelpService.nineWaysArticleLink()
 
+    $scope.proposalKinds = AppConfig.plugins.proposal_kinds
     $scope.proposal = proposal.clone()
+    $scope.proposal.kind = $scope.proposal.kind or _.first($scope.proposalKinds)
 
     actionName = if $scope.proposal.isNew() then 'created' else 'updated'
 

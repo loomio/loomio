@@ -13,8 +13,16 @@ class API::VotesController < API::RestfulController
   private
 
   def accessible_records
-    load_and_authorize :motion
-    @motion.votes.most_recent.order(:created_at)
+    load_and_authorize(:motion).votes.most_recent.order(:created_at)
+  end
+
+  def instantiate_resource
+    @motion = Motion.find(params.dig(:vote, :proposal_id))
+    self.resource = "Votes::#{@motion.kind.camelize}".constantize.new(resource_params)
+  end
+
+  def resource_class
+    "Votes::#{(resource&.kind || 'loomio').camelize}".constantize
   end
 
 end

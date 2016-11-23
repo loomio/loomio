@@ -10,13 +10,15 @@ describe Popolo::MotionsController do
   let(:public_motion) { create :motion, discussion: public_discussion }
   let(:private_motion) { create :motion, discussion: private_discussion }
 
-  let(:old_vote) { create :vote, position: :abstain, motion: public_motion, user: public_motion.author, age: 1 }
-  let(:yes_vote) { create :vote, position: :yes, motion: public_motion, user: public_motion.author }
-  let(:no_vote) { create :vote, position: :no, motion: public_motion }
+  let(:old_vote) { Votes::Loomio.create(position: :abstain, motion: public_motion, user: public_motion.author, age: 1) }
+  let(:yes_vote) { Votes::Loomio.create(position: :yes, motion: public_motion, user: public_motion.author) }
+  let(:no_vote)  { Votes::Loomio.create(position: :no, motion: public_motion, user: no_user) }
 
-  let(:user) { create :user }
+  let(:no_user) { create(:user) }
+  let(:user) { create(:user) }
 
   before do
+    public_motion.group.add_member! no_user
     private_motion
     old_vote; yes_vote; no_vote
   end

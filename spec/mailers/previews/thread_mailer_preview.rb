@@ -77,7 +77,7 @@ class ThreadMailerPreview < ActionMailer::Preview
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
-    vote = FactoryGirl.create :vote, motion: motion
+    vote = Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'yes')
     event = Events::NewVote.create(kind: 'new_vote', eventable: vote, discussion_id: discussion)
     ThreadMailer.new_vote user, event
   end
@@ -137,9 +137,9 @@ class ThreadMailerPreview < ActionMailer::Preview
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion
-    vote = FactoryGirl.create :vote, motion: motion
-    vote = FactoryGirl.create :vote, motion: motion
-    vote = FactoryGirl.create :vote, motion: motion
+    Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'yes')
+    Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'no')
+    Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'abstain')
     event = MotionService.close(motion)
     ThreadMailer.motion_closed user, event
   end
@@ -151,9 +151,9 @@ class ThreadMailerPreview < ActionMailer::Preview
     DiscussionReader.for(user: user, discussion: discussion).set_volume! :loud
     group.add_member! user
     motion = FactoryGirl.create :motion, discussion: discussion, author: user
-    vote = FactoryGirl.create :vote, motion: motion
-    vote = FactoryGirl.create :vote, motion: motion
-    vote = FactoryGirl.create :vote, motion: motion
+    Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'yes')
+    Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'no')
+    Votes::Loomio.create(motion: motion, user: FactoryGirl.create(:user), position: 'abstain')
     MotionService.close(motion)
     event = Events::MotionOutcomeCreated.create(kind: "motion_outcome_created",
                                                 eventable: motion,

@@ -5,6 +5,7 @@ describe Vote do
   let(:group) { create(:group) }
   let(:discussion) { create :discussion, group: group, author: user }
   let(:motion) { create(:motion, discussion: discussion) }
+  let(:loomio_vote) { Votes::Loomio.new(user: user, motion: motion, position: 'yes') }
 
   context 'user votes' do
     let(:vote) { Vote.create(user: user, motion: motion, position: "no") }
@@ -58,9 +59,8 @@ describe Vote do
   end
 
   it 'should only accept valid position values' do
-    vote = build(:vote, position: 'bad', motion: motion)
-    vote.valid?
-    expect(vote).to have(1).errors_on(:position)
+    loomio_vote.position = 'bad'
+    expect(loomio_vote).to_not be_valid
   end
 
   it 'can have a statement' do
@@ -76,32 +76,6 @@ describe Vote do
     vote.user = user
     vote.statement = "a"*251
     expect(vote).to_not be_valid
-  end
-
-  # it 'updates motion last_vote_at on create' do
-  #   vote = Vote.new(position: "yes")
-  #   vote.motion = motion
-  #   vote.user = user
-  #   vote.save!
-  #   vote.reload
-  #   motion.reload
-  #   expect(motion.last_vote_at.to_s).to eq vote.created_at.to_s
-  # end
-
-  describe 'other_group_members' do
-    before do
-      @user1 = create :user
-      group.add_member!(@user1)
-      @vote = create :vote, user: user, motion: motion
-    end
-
-    it 'returns members in the group' do
-      expect(@vote.other_group_members).to include @user1
-    end
-
-    it 'does not return the voter' do
-      expect(@vote.other_group_members).to_not include user
-    end
   end
 
   describe "previous_vote" do

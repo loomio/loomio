@@ -3,7 +3,9 @@ class Queries::VisibleMotions < Delegator
     @user = user || LoggedOutUser.new
     @group_ids = group_ids.presence || Array(groups).map(&:id)
 
-    @relation = Motion.joins(discussion: :group).includes(:discussion).where('groups.archived_at IS NULL')
+    @relation = Motion.joins(discussion: :group)
+                      .includes(:discussion)
+                      .where('groups.archived_at IS NULL')
     @relation = Queries::VisibleDiscussions.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
 
     super(@relation)

@@ -4,13 +4,21 @@ module Plugins
   class NoCodeSpecifiedError < Exception; end
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
-  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans)
+  Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans, :proposal_kind)
   StaticAsset = Struct.new(:path, :filename, :standalone)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
-    attr_accessor :name, :installed
-    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :enabled
+    PLUGIN_FIELD_SETS = [:assets,
+                         :static_assets,
+                         :actions,
+                         :events,
+                         :outlets,
+                         :routes,
+                         :proposal_kinds]
+   attr_accessor :name, :installed
+   attr_reader *PLUGIN_FIELD_SETS
+   attr_reader :enabled, :translations
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -19,7 +27,7 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
+      PLUGIN_FIELD_SETS.map { |field| instance_variable_set "@#{field}", Set.new }
       @config = File.exists?(config_file_path) ? YAML.load(ERB.new(File.read(config_file_path)).result) : {}
     end
 
@@ -79,9 +87,9 @@ module Plugins
       @events.add block.to_proc
     end
 
-    def use_component(component, outlet: nil)
+    def use_component(component, outlet: nil, proposal_kind: nil)
       [:coffee, :scss, :haml].each { |ext| use_asset("components/#{component}/#{component}.#{ext}") }
-      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental'], @config['plans']) }
+      Array(outlet).each { |o| @outlets.add Outlet.new(@name, component, o, @config['experimental'], @config['plans'], proposal_kind) }
     end
 
     def use_client_route(path, component)
@@ -92,6 +100,11 @@ module Plugins
     def use_test_route(path, &block)
       raise NoCodeSpecifiedError.new unless block_given?
       extend_class(DevelopmentController) { define_method(path, &block) }
+    end
+
+    def use_view_path(path, controller: ApplicationController)
+      raise NoCodeSpecifiedError.new unless path.present?
+      @actions.add Proc.new { controller.prepend_view_path [:plugins, @name, path].join('/') }
     end
 
     def use_route(verb, route, action)
@@ -134,6 +147,16 @@ module Plugins
     def use_asset(path)
       raise InvalidAssetType.new unless VALID_ASSET_TYPES.include? path.split('.').last.to_sym
       @assets.add [@name, path].join('/')
+    end
+
+    def register_proposal_kind(kind, vote:, proposal:, vote_form:, proposal_form: nil, preview_large: nil, preview_small: nil)
+      @proposal_kinds.add(kind)
+      use_component vote,          outlet: :vote_display,           proposal_kind: kind
+      use_component proposal,      outlet: :proposal_display,       proposal_kind: kind
+      use_component vote_form,     outlet: :vote_form,              proposal_kind: kind
+      use_component proposal_form, outlet: :proposal_form,          proposal_kind: kind if proposal_form
+      use_component preview_large, outlet: :proposal_preview_large, proposal_kind: kind if preview_large
+      use_component preview_small, outlet: :proposal_preview_small, proposal_kind: kind if preview_small
     end
 
     private

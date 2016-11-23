@@ -5,6 +5,9 @@ angular.module('loomioApp').directive 'outlet', ($compile, AppConfig) ->
   link: (scope, elem, attrs) ->
 
     shouldCompile = (outlet) ->
+      # model is a proposal outlet for a different kind of proposal
+      return false if outlet.proposal_kind and outlet.proposal_kind != scope.model.kind
+
       # model is not associated with a group
       return true if !scope.model? or !scope.model.group?
 

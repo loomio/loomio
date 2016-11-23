@@ -27,7 +27,12 @@ class PermittedParams < Struct.new(:params)
   end
 
   def vote_attributes
-    [:position, :statement, :proposal_id, :motion_id]
+    [:statement, :proposal_id, :motion_id, :stance, {stance: stance_fields}]
+  end
+
+  # plugins may override this method to permit additional types of vote stances
+  def stance_fields
+    [:position]
   end
 
   def network_membership_request_attributes
@@ -35,7 +40,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def motion_attributes
-    [:name, :description, :discussion_id, :closing_at, :outcome, :attachment_ids, {attachment_ids: []}]
+    [:kind, :name, :description, :discussion_id, :closing_at, :outcome, :attachment_ids, {attachment_ids: []}]
   end
   alias_method :proposal_attributes, :motion_attributes
 

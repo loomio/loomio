@@ -3,7 +3,7 @@
 %table
   %tr
     %td
-      = render 'motion_pie', motion: @motion
+      = yield 'motion_preview'
     %td
       = render_rich_text(@motion.description, true)
 %p
@@ -13,12 +13,6 @@
 
 -if @motion.unique_votes.present?
   %h4= t(:positions).capitalize
-  %table
-    -@motion.grouped_unique_votes.each do |vote|
-      %tr
-        %td
-          = image_tag "thread_mailer/vote-icon-#{vote.position}.png", alt: "#{vote.position} icon", class: "thread-mailer__vote-icon"
-        %td= vote.user_name
-        %td= render_rich_text(vote.statement)
+  %table= yield 'motion_votes'
 
 %p= t(:engagement_on_closed_proposal, percent: @motion.percent_voted, :numerator => @motion.voters_count, denominator:  @motion.members_count)

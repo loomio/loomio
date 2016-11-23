@@ -1,4 +1,6 @@
 = render 'avatar', author: @author
+= render @motion.kind
+
 .thread-mailer__subject
   - if @following
     %strong
@@ -16,4 +18,4 @@
 
 %p= t(:'email.proposal_closing_soon.closes_on') + ' ' + motion_closing_time_for(@recipient)
 %h4= t(:'help.have_your_say')
-= render 'vote_buttons', motion: @motion
+= content_for 'motion_voting'

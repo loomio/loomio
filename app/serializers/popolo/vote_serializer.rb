@@ -6,6 +6,6 @@ class Popolo::VoteSerializer < ActiveModel::Serializer
   end
 
   def option
-    object.position
+    object.stance['position']
   end
 end

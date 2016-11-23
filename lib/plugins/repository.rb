@@ -11,11 +11,12 @@ module Plugins
         next unless plugin.enabled
 
         plugin.actions.map(&:call)
-        plugin.assets.map        { |asset|  save_asset(asset) }
-        plugin.static_assets.map { |asset|  save_static_asset(asset) }
-        plugin.outlets.map       { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
-        plugin.routes.map        { |route|  save_route(route) }
-        plugin.events.map        { |events| events.call(EventBus) }
+        plugin.assets.map         { |asset|  save_asset(asset) }
+        plugin.static_assets.map  { |asset|  save_static_asset(asset) }
+        plugin.outlets.map        { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
+        plugin.routes.map         { |route|  save_route(route) }
+        plugin.events.map         { |events| events.call(EventBus) }
+        plugin.proposal_kinds.map { |kind|   save_proposal_kind(kind) }
         plugin.installed = true
       end
       save_plugin_yaml
@@ -26,10 +27,11 @@ module Plugins
     end
 
     def self.to_config
-      {
-        installed:    active_plugins,
-        outlets:      active_outlets,
-        routes:       active_routes
+      @@config ||= {
+        installed:      active_plugins,
+        outlets:        active_outlets,
+        routes:         active_routes,
+        proposal_kinds: active_proposal_kinds
       }
     end
 
@@ -63,6 +65,11 @@ module Plugins
     end
     private_class_method :save_route
 
+    def self.save_proposal_kind(kind)
+      active_proposal_kinds.push(kind)
+    end
+    private_class_method :save_proposal_kind
+
     def self.active_plugins
       repository.values.select(&:installed)
     end
@@ -87,6 +94,11 @@ module Plugins
       @@active_routes ||= []
     end
     private_class_method :active_routes
+
+    def self.active_proposal_kinds
+      @@active_proposal_kinds ||= []
+    end
+    private_class_method :active_proposal_kinds
 
     def self.repository
       @@repository ||= Hash.new

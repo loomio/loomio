@@ -12,7 +12,7 @@ describe API::VotesController do
   let(:my_other_vote)         { create :vote, motion: another_motion, user: user }
   let(:other_guys_vote)       { create :vote, motion: motion, user: create(:user) }
   let(:vote_params) {{
-    position: 'yes',
+    stance: { position: 'yes' },
     statement: 'code all the things',
     motion_id: motion.id
   }}
@@ -127,7 +127,7 @@ describe API::VotesController do
         expect(json.keys).to include *(%w[users votes])
         expect(json['votes'][0].keys).to include *(%w[
           id
-          position
+          stance
           statement
           proposal_id
           author_id
@@ -157,11 +157,11 @@ describe API::VotesController do
       end
 
       it "responds with validation errors when they exist" do
-        vote_params[:position] = ''
+        vote_params[:stance][:position] = ''
         post :create, vote: vote_params
         json = JSON.parse(response.body)
         expect(response.status).to eq 422
-        expect(json['errors']['position']).to include 'can\'t be blank'
+        expect(json['errors']['position']).to be_present
       end
 
     end

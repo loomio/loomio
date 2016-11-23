@@ -34,15 +34,12 @@ class Motion < ActiveRecord::Base
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
   delegate :locale, to: :user
-  delegate :followers, to: :discussion
   delegate :title, to: :discussion, prefix: :discussion
   has_paper_trail only: [:name, :description, :closing_at, :outcome]
 
   after_initialize :set_default_closing_at
 
-  define_counter_cache :voters_count do |motion|
-    motion.unique_votes.count
-  end
+  define_counter_cache(:voters_count) { |motion| motion.unique_votes.count }
 
   scope :voting,                   -> { where(closed_at: nil).order(closed_at: :asc) }
   scope :lapsed,                   -> { where('closing_at < ?', Time.now) }
@@ -89,7 +86,7 @@ class Motion < ActiveRecord::Base
   end
 
   def voters
-    votes.map(&:user).uniq.compact
+    unique_votes.map(&:user).uniq.compact
   end
 
   def voting?
@@ -165,32 +162,8 @@ class Motion < ActiveRecord::Base
     end
   end
 
-  # recount all the final votes.
-  # rather expensive
-  def update_vote_counts!
-    position_counts = {}
-
-    Vote::POSITIONS.each do |position|
-      position_counts[position] = 0
-    end
-
-    reload.unique_votes.each do |vote|
-      position_counts[vote.position] += 1
-    end
-
-    Vote::POSITIONS.each do |position|
-      self.send("#{position}_votes_count=", position_counts[position])
-    end
-
-    # set the activity count
-    self[:votes_count] = votes.count
-
-    save!
-  end
-
   def user_has_voted?(user)
-    return false if user.nil?
-    votes.for_user(user.id).exists?
+    user.present? && votes.find_by(user: user).present?
   end
 
   def closed_or_closing_at
