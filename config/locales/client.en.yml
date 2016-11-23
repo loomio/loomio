@@ -421,7 +421,6 @@ en:
     aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
-    helptext: 'Looking for inspiration? Check out <a href="https://unsplash.com/">Unsplash</a>, a gallery of beautiful, free images'
     image_size_helptext: 'Ideal image size is 1400 x 320px'
     upload_success: 'Cover photo successfully updated'
 
