@@ -43,9 +43,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
         prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
 
-  @showDescriptionPlaceholder = ->
-    !@group.description
-
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
 
