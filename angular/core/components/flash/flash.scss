@@ -14,7 +14,46 @@
   padding: 15px;
   width: 100%;
   border-radius: 6px;
+  position: relative;
   @include displayFlex;
+}
+
+.flash-root__container.ng-enter {
+  animation: 0.2s dropIn ease-in;
+}
+
+.flash-root__container.ng-leave {
+  animation: 0.25s dropOut ease-out;
+}
+
+@keyframes dropIn {
+  from {
+    width:   110%;
+    bottom:  15px;
+    right:   5%;
+    opacity: 0;
+  }
+  to {
+    width:   100%;
+    bottom:  0;
+    right:   0;
+    opacity: 1;
+  }
+}
+
+@keyframes dropOut {
+  from {
+    width:   100%;
+    top:     0;
+    left:    0;
+    opacity: 1;
+  }
+  to {
+    width:   80%;
+    top:     15px;
+    left:    5%;
+    opacity: 0;
+  }
 }
 
 .flash-root__message {
