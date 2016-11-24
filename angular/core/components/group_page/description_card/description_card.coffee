@@ -18,6 +18,3 @@ angular.module('loomioApp').directive 'descriptionCard', ->
       prepareFn: -> $scope.group.description = $scope.editableDescription
       flashSuccess: 'description_card.messages.description_updated'
       successCallback: -> $scope.disableEditor()
-
-    submitForm = FormService.submit $scope, $scope.group,
-      draftFields: ['description']
