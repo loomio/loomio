@@ -481,8 +481,6 @@ en:
     new_photo: 'new photo'
     new_cover_photo: 'Upload new cover photo'
     new_group_logo: 'Upload new group logo'
-    description: 'Group description'
-    description_placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'
@@ -522,6 +520,12 @@ en:
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
+
+  description_card:
+    title: 'Group description'
+    placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    messages:
+      description_updated: 'Description updated'
 
   leave_group_form:
     aria_label: 'Leave group'

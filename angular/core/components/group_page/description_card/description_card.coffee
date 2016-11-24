@@ -5,8 +5,6 @@ angular.module('loomioApp').directive 'descriptionCard', ->
   replace: true
   controller: ($scope, FormService) ->
     $scope.editorEnabled = false;
-    $scope.showDescriptionPlaceholder = ->
-      !$scope.group.description
 
     $scope.enableEditor = ->
       $scope.editorEnabled = true
@@ -15,10 +13,11 @@ angular.module('loomioApp').directive 'descriptionCard', ->
     $scope.disableEditor = ->
      $scope.editorEnabled = false
 
-    $scope.save = ->
-      $scope.group.description = $scope.editableDescription
-      submitForm().then ->
-        $scope.disableEditor()
+    $scope.save = FormService.submit $scope, $scope.group,
+      draftFields: ['description'],
+      prepareFn: -> $scope.group.description = $scope.editableDescription
+      flashSuccess: 'description_card.messages.description_updated'
+      successCallback: -> $scope.disableEditor()
 
     submitForm = FormService.submit $scope, $scope.group,
       draftFields: ['description']
