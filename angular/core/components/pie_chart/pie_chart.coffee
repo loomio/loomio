@@ -32,7 +32,6 @@ angular.module('loomioApp').directive 'pieChart', ->
       _.sortBy(_.pairs($scope.votes), ([_, count]) -> - count)
 
     $scope.$watchCollection 'votes', ->
-      console.time('pieDraw')
       _.each shapes, (shape) -> shape.remove()
       start = 90
 
@@ -54,4 +53,3 @@ angular.module('loomioApp').directive 'pieChart', ->
               'stroke-width': 0
               fill: positionColors[position]
             start += angle
-      console.timeEnd('pieDraw')
