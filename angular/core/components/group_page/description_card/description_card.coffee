@@ -3,8 +3,11 @@ angular.module('loomioApp').directive 'descriptionCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/group_page/description_card/description_card.html'
   replace: true
-  controller: ($scope, FormService) ->
+  controller: ($scope, FormService, AbilityService) ->
     $scope.editorEnabled = false;
+
+    $scope.canEditGroup = ->
+      AbilityService.canEditGroup($scope.group)
 
     $scope.enableEditor = ->
       $scope.editorEnabled = true
