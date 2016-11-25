@@ -268,7 +268,7 @@ describe 'Group Page', ->
     #   page.expectText('.group-theme__name', 'The Breakfast Club')
 
   describe 'editing group description from description card', ->
-    it 'allows you to edit the description inline', ->
+    it 'allows coordinators to edit description inline', ->
       page.loadPath 'setup_group'
       page.expectElement '.description-card__placeholder'
       page.click '.description-card__edit'
@@ -276,6 +276,10 @@ describe 'Group Page', ->
       page.click '.description-card__save'
       page.expectNoElement '.description-card__placeholder'
       page.expectText '.description-card__text', "Brand spankin' new group description"
+
+    it 'prevents non-coordinators from editing description inline', ->
+      page.loadPath 'setup_group_as_member'
+      page.expectNoElement '.description-card__edit'
 
   describe 'editing group settings via group form', ->
     beforeEach ->

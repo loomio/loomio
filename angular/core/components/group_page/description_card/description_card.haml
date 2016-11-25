@@ -3,7 +3,7 @@
   %div{ng-hide: "editorEnabled"}
     .description-card__placeholder.lmo-placeholder.lmo-hint-text{translate: "description_card.placeholder", ng-if: "!group.description"}
     .description-card__text.lmo-last.lmo-markdown-wrapper{marked: "group.description"}
-    %button.description-card__edit.lmo-link{ng-click: "enableEditor()", translate: "common.action.edit"}
+    %button.description-card__edit.lmo-link{ng-if: "canEditGroup()", ng-click: "enableEditor()", translate: "common.action.edit"}
   %div{ng-show: "editorEnabled"}
     .lmo-form-group
       .lmo-relative.lmo-textarea-wrapper
