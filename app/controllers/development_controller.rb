@@ -308,6 +308,7 @@ class DevelopmentController < ApplicationController
     group_privacy: 'open')
     @test_group.add_admin! jennifer
     @test_discussion = Discussion.create!(title: "I carried a watermelon", private: false, author: patrick, group: @test_group)
+    CommentService.create(comment: Comment.new(body: "It was real seedy", discussion: @test_discussion), actor: jennifer)
     redirect_to group_url(test_group)
   end
 
