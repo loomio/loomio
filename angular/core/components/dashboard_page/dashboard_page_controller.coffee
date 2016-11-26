@@ -25,6 +25,7 @@ angular.module('loomioApp').controller 'DashboardPageController', ($rootScope, $
     older:     { from: '3 month ago',  to: '1 month ago' }
   @timeframeNames = _.map @timeframes, (timeframe, name) -> name
 
+  @loadingViewNames = ['proposals', 'today', 'yesterday']
   @recentViewNames = ['proposals', 'starred', 'today', 'yesterday', 'thisweek', 'thismonth', 'older']
 
   @groupThreadLimit = 5
