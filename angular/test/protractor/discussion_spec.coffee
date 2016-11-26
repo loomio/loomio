@@ -26,6 +26,11 @@ describe 'Discussion Page', ->
       page.click('.thread-preview__link')
       page.expectText('.context-panel', 'I carried a watermelon')
 
+    it 'should display timestamps on content', ->
+      page.loadPath('view_open_group_as_non_member')
+      page.click('.thread-preview__link')
+      page.expectElement('.timeago')
+
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')
