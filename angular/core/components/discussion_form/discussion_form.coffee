@@ -44,4 +44,4 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     AttachmentService.listenForPaste $scope
     AttachmentService.listenForAttachments $scope, $scope.discussion
     KeyEventService.submitOnEnter $scope
-    MentionService.applyMentions $scope, $scope.discussion.group()
+    MentionService.applyMentions $scope, $scope.discussion
