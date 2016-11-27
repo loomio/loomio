@@ -70,6 +70,7 @@
   .thread-page__main-content {
     @include displayFlex;
     flex-direction: column;
+    -webkit-flex-direction: column;
   }
   .context-panel           { order: 10; }
   .start-proposal-card     { order: 20; }
