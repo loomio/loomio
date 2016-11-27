@@ -1,14 +1,6 @@
 angular.module('loomioApp').factory 'MentionService', (Records, AbilityService) ->
   new class MentionService
-    applyMentions: (scope, model) ->
-      scope.updateMentionables = (fragment) ->
-        regex = new RegExp("(^#{fragment}| +#{fragment})", 'i')
-        allMembers = _.filter model.group().members(), (member) ->
-          return unless AbilityService.canMention(model, member)
-          (regex.test(member.name) or regex.test(member.username))
-        scope.mentionables = allMembers.slice(0, 5)
-
+    applyMentions: (scope, group) ->
       scope.fetchByNameFragment = (fragment) ->
-        scope.updateMentionables(fragment)
-        Records.memberships.fetchByNameFragment(fragment, model.group().key).then ->
-          scope.updateMentionables(fragment)
+        Records.memberships.fetchByNameFragment(fragment, group.key).then (response) ->
+          scope.mentionables = Records.users.find(_.pluck(response.users, 'id'))

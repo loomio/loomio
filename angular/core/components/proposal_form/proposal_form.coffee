@@ -24,5 +24,5 @@ angular.module('loomioApp').factory 'ProposalForm', ->
     EmojiService.listen $scope, $scope.proposal, 'description', $scope.descriptionSelector
 
     KeyEventService.submitOnEnter $scope
-    MentionService.applyMentions $scope, $scope.proposal
+    MentionService.applyMentions $scope, $scope.proposal.group()
     AttachmentService.listenForAttachments $scope, $scope.proposal

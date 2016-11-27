@@ -54,5 +54,5 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.bodySelector = '.comment-form__comment-field'
     EmojiService.listen $scope, $scope.comment, 'body', $scope.bodySelector
     AttachmentService.listenForPaste $scope
-    MentionService.applyMentions $scope, $scope.comment
+    MentionService.applyMentions $scope, $scope.comment.group()
     AttachmentService.listenForAttachments $scope, $scope.comment
