@@ -144,10 +144,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
-    canMention: (model, member) ->
-      return member.id != Session.user().id and
-             member.id != model.authorId
-
     requireLoginFor: (page) ->
       return false if @isLoggedIn()
       switch page
