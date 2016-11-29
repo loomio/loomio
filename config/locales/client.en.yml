@@ -226,6 +226,9 @@ en:
     sign_in: "Log in to join the conversation"
 
   sidebar:
+    my_threads: 'My threads'
+    my_groups: 'My groups'
+    my_settings: 'My settings'
     recent: 'Recent'
     unread: 'Unread'
     muted: 'Muted'
