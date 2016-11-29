@@ -249,7 +249,21 @@ describe 'Group Page', ->
     #   page.expectText('.group-theme__name', 'Dirty Dancing Shoes')
     #   page.expectText('.group-theme__name', 'The Breakfast Club')
 
-  describe 'editing group settings', ->
+  describe 'editing group description from description card', ->
+    it 'allows coordinators to edit description inline', ->
+      page.loadPath 'setup_group'
+      page.expectElement '.description-card__placeholder'
+      page.click '.description-card__edit'
+      page.fillIn '.description-card__textarea', "Brand spankin' new group description"
+      page.click '.description-card__save'
+      page.expectNoElement '.description-card__placeholder'
+      page.expectText '.description-card__text', "Brand spankin' new group description"
+
+    it 'prevents non-coordinators from editing description inline', ->
+      page.loadPath 'setup_group_as_member'
+      page.expectNoElement '.description-card__edit'
+
+  describe 'editing group settings via group form', ->
     beforeEach ->
       page.loadPath('setup_group')
       page.click('.group-page-actions__button',
@@ -261,7 +275,7 @@ describe 'Group Page', ->
       page.click('.group-form__submit-button')
       # page.expectFlash('Group updated')
       page.expectText('.group-theme__name', 'Clean Dancing Shoes')
-      page.expectText('.group-page__description-text', 'Dusty sandles')
+      page.expectText('.description-card__text', 'Dusty sandles')
 
     it 'displays a validation error when name is blank', ->
       page.fillIn('#group-name', '')
@@ -366,8 +380,8 @@ describe 'Group Page', ->
       page.fillIn('#discussion-context', "I've had the time of my life")
       page.click('.discussion-form__submit')
       page.expectFlash('Thread started')
-      page.expectText('.thread-context', 'Nobody puts baby in a corner' )
-      page.expectText('.thread-context', "I've had the time of my life" )
+      page.expectText('.context-panel', 'Nobody puts baby in a corner' )
+      page.expectText('.context-panel', "I've had the time of my life" )
 
     it 'automatically saves drafts', ->
       page.click('.discussions-card__new-thread-button')

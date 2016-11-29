@@ -34,16 +34,21 @@ describe 'CommentService' do
   end
 
   describe 'destroy' do
-    after do
-      CommentService.destroy(comment: comment, actor: user)
-    end
 
     it 'checks the actor has permission' do
       user.ability.should_receive(:authorize!).with(:destroy, comment)
+      CommentService.destroy(comment: comment, actor: user)
     end
 
     it 'deletes the comment' do
       comment.should_receive :destroy
+      CommentService.destroy(comment: comment, actor: user)
+    end
+
+    it 'nullifies the parent_id of replies' do
+      child = create(:comment, discussion: comment.discussion, parent: comment)
+      CommentService.destroy(comment: comment, actor: user)
+      expect(child.reload.parent_id).to eq nil
     end
   end
 

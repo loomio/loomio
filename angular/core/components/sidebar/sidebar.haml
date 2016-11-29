@@ -1,6 +1,6 @@
 %md-sidenav.md-sidenav-left.lmo-no-print{md-component-id: "left", md-is-open: "showSidebar", md-is-locked-open: "$mdMedia('gt-md') && showSidebar", md-whiteframe: "4", aria-label: "{{ 'sidebar.aria_labels.heading' | translate }}"}
   .sidebar__user-panel.lmo-no-print
-    .sidebar__user-avatar-container
+    %a.sidebar__user-avatar-container{lmo-href: "/profile"}
       %user_avatar{user: "currentUser()", size: "medium-circular", ng-if: "currentUser().avatarKind != 'initials'"}
       .sidebar__user-icon-container{ng-if: "currentUser().avatarKind == 'initials'"}
         %i.sidebar__user-icon.fa.fa-lg.fa-user

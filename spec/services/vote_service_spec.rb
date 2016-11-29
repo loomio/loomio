@@ -46,7 +46,7 @@ describe 'VoteService' do
         it 'ensures a discussion stays read' do
           group.add_member! another_user
           CommentService.create(comment: comment, actor: another_user)
-          reader.viewed!
+          reader.viewed!(reader.discussion.last_activity_at)
           VoteService.create(vote: vote, actor: user)
           expect(reader.reload.last_read_sequence_id).to eq discussion.reload.last_sequence_id
         end

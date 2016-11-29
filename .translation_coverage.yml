@@ -1,3 +1,7 @@
+af:
+  main_1_0: 0
+  marketing: 0
+  server: 0
 an:
   main_1_0: 15
   marketing: 0
@@ -15,7 +19,7 @@ bg-BG:
   marketing: 0
   server: 8
 ca:
-  main_1_0: 79
+  main_1_0: 78
   marketing: 62
   server: 55
 cmn:
@@ -68,9 +72,9 @@ fi:
   marketing: 0
   server: 5
 fr:
-  main_1_0: 97
-  marketing: 8
-  server: 83
+  main_1_0: 100
+  marketing: 70
+  server: 100
 fr-BE:
   main_1_0: 0
   marketing: 0
@@ -202,11 +206,11 @@ sr-RS:
   marketing: 0
   server: 48
 sv:
-  main_1_0: 15
-  marketing: 0
+  main_1_0: 23
+  marketing: 2
   server: 30
 te:
-  main_1_0: 6
+  main_1_0: 7
   marketing: 0
   server: 9
 te-IN: {}
@@ -216,11 +220,11 @@ th-TH:
   marketing: 0
   server: 0
 tr:
-  main_1_0: 67
+  main_1_0: 66
   marketing: 0
   server: 51
 uk:
-  main_1_0: 56
+  main_1_0: 55
   marketing: 0
   server: 31
 ur:

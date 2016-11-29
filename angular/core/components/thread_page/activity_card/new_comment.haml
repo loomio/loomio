@@ -40,6 +40,7 @@
       %button.thread-item__action.thread-item__action--reply.lmo-no-print{translate: "common.action.reply", type: "button", ng_click: "reply()"}>
       %translate_button.lmo-no-print{model: "comment", showdot: "true"}
       %span.lmo-no-print{aria-hidden: "true"}>·
+    .thread-item__actions
       %a{lmo-href-for: "comment"}>
         %timeago{timestamp: "comment.createdAt" }>
       %span{ng-if: "comment.edited()"}

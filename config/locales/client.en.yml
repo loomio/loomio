@@ -297,7 +297,7 @@ en:
   vote_form:
     heading: Have your say
     no_statement: No statement.
-    statement_over_limit: 'Too many words! Short position statements let everyone quickly catch up on the proposal.'
+    statement_over_limit: 'Character limit reached. Short position statements create a succinct summary. If you want to say more, post a comment.'
     i_agree: 'I agree'
     i_agree_details: 'I support this and want it to go ahead.'
     i_abstain: 'I abstain'
@@ -421,7 +421,6 @@ en:
     aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
-    helptext: 'Looking for inspiration? Check out <a href="https://unsplash.com/">Unsplash</a>, a gallery of beautiful, free images'
     image_size_helptext: 'Ideal image size is 1400 x 320px'
     upload_success: 'Cover photo successfully updated'
 
@@ -481,8 +480,6 @@ en:
     new_photo: 'new photo'
     new_cover_photo: 'Upload new cover photo'
     new_group_logo: 'Upload new group logo'
-    description: 'Group description'
-    description_placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
     discussions: 'Threads'
     discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
     members: 'Members'
@@ -522,6 +519,12 @@ en:
       parent_members: 'Privacy: This group is visible to members of {{parentGroupName}} and members of {{groupName}}'
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: {{privacy}}'
+
+  description_card:
+    title: 'Group description'
+    placeholder: 'Groups coordinators can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    messages:
+      description_updated: 'Description updated'
 
   leave_group_form:
     aria_label: 'Leave group'

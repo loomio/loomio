@@ -1,0 +1,16 @@
+.description-card {
+  @include card;
+}
+
+.description-card__textarea {
+  width: 100%;
+}
+
+.description-card__edit {
+  padding: 10px 0;
+}
+
+.description-card__actions {
+  display: flex;
+  justify-content: space-between;
+}

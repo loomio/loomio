@@ -2,12 +2,27 @@
   border: 2px solid $loomio-orange !important;
 }
 
+.user-avatar__profile-link {
+  cursor: pointer;
+  &:hover,
+  &:active,
+  &:visited {
+    color: $primary-text-color;
+    text-decoration: none !important;
+  }
+}
+
 .user-avatar{
   @include roundedCorners;
   background-color: $background-color;
   box-sizing: border-box;
   text-align: center;
   overflow: hidden;
+}
+
+.user-avatar__initials {
+  color: $primary-text-color;
+  text-decoration: none !important;
 }
 
 .user-avatar__initials--small{

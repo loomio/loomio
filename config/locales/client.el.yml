@@ -142,7 +142,6 @@ el:
     new_comment: 'Ο/Η <strong>{{name}}</strong> σχολίασε στην συζήτηση <strong>{{discussion}}</strong>'
     comment_replied_to: 'Ο/Η <strong>{{name}}</strong> απάντησε στο σχόλιο σας στην συζήτηση <strong>{{discussion}}</strong>'
     comment_liked: 'Ο/Η <strong>{{name}}</strong> του/της άρεσε το σχόλιο σας στην συζήτηση <strong>{{discussion}}</strong>'
-    user_mentioned: 'Ο/Η <strong>{{name}}</strong> σας ανέφερε στον τίτλο <strong>{{title}}</strong>'
     membership_requested: 'Ο/Η <strong>{{name}}</strong> ζήτησε συμμετοχή ως μέλος στην ομάδα  <strong>{{group}}</strong>'
     membership_request_approved: 'Ο/Η <strong>{{name}}</strong> ενέκρινε την αίτηση σας να συμμετάσχετε σαν μέλος στην ομάδα <strong>{{group}}</strong>'
     user_added_to_group: 'Ο/Η <strong>{{name}}</strong> σας πρόσθεσε στην ομάδα <strong>{{group}}</strong>'

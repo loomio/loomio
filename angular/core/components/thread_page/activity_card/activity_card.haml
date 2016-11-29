@@ -1,13 +1,15 @@
 %section.activity-card{aria-labelledby: "activity-card-title"}
   %h2.lmo-card-heading#activity-card-title{translate: "discussion.activity"}
-  %a.activity-card__load-backwards.lmo-no-print{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
-    %i.fa.fa-refresh>
-    %span{translate: "discussion.load_previous", translate-value-count: "{{beforeCount()}}"}
-  %loading.activity-card__loading.page-loading{ng-show: "loadEventsBackwardsExecuting"}
-  .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "noEvents()", translate: "discussion.activity_placeholder"}
-  %ul.activity-card__activity-list
-    %li.activity-card__activity-list-item{ng_repeat: "event in events() track by event.id", in-view: "($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))", in-view-options: "{debounce: 100}", aria-labelledby: "event-{{event.id}}"}
-      .activity-card__last-item{ng-if: "$last"}
-      .activity-card-content{id: "sequence-{{event.sequenceId}}", ng-include: "'generated/components/thread_page/activity_card/'+ event.kind + '.html'", ng-if: "!event.deleted"}
-      .activity-card__last-read-activity{ng-if: "event.sequenceId == lastReadSequenceId", ng-class: "{'activity-card__new-activity': hasNewActivity}", translate: "activity_card.new_activity"}
-  %loading.activity-card__loading.page-loading{ng-show: "loadEventsForwardsExecuting"}
+  %loading_content{ng-if: "loading", block-count: 2}
+  .activity-card__content{ng-if: "!loading"}
+    %a.activity-card__load-backwards.lmo-no-print{href: "", ng-show: "canLoadBackwards()", ng-click: "loadEventsBackwards()", tabindex: "0"}
+      %i.fa.fa-refresh>
+      %span{translate: "discussion.load_previous", translate-value-count: "{{beforeCount()}}"}
+    %loading.activity-card__loading.page-loading{ng-show: "loadEventsBackwardsExecuting"}
+    .activity-card__no-activity.lmo-placeholder.align-center{ng-if: "noEvents()", translate: "discussion.activity_placeholder"}
+    %ul.activity-card__activity-list
+      %li.activity-card__activity-list-item{ng_repeat: "event in events() track by event.id", in-view: "($inview&&threadItemVisible(event)) || (!$inview&&threadItemHidden(event))", in-view-options: "{debounce: 100}", aria-labelledby: "event-{{event.id}}"}
+        .activity-card__last-item{ng-if: "$last"}
+        .activity-card-content{id: "sequence-{{event.sequenceId}}", ng-include: "'generated/components/thread_page/activity_card/'+ event.kind + '.html'", ng-if: "!event.deleted"}
+        .activity-card__last-read-activity{ng-if: "event.sequenceId == lastReadSequenceId", ng-class: "{'activity-card__new-activity': hasNewActivity}", translate: "activity_card.new_activity"}
+    %loading.activity-card__loading.page-loading{ng-show: "loadEventsForwardsExecuting"}

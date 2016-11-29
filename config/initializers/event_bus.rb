@@ -39,6 +39,16 @@ EventBus.configure do |config|
   config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.eventable.group) }
   config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
 
+  # notify user of acceptance to group
+  config.listen('user_added_to_group_event') do |event, user, message|
+    UserMailer.delay(priority: 1).added_to_group(
+      user:    event.eventable.user,
+      group:   event.eventable.group,
+      inviter: event.user,
+      message: message
+    )
+  end
+
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 
@@ -55,7 +65,7 @@ EventBus.configure do |config|
                 'motion_closed_by_user_event',
                 'motion_outcome_created_event',
                 'motion_outcome_updated_event') do |event|
-    DiscussionReader.for_model(event.eventable).author_thread_item!(event.created_at)
+    DiscussionReader.for_model(event.eventable).update_reader(read_at: event.created_at, participate: true, volume: :loud)
   end
 
   config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
@@ -81,12 +91,10 @@ EventBus.configure do |config|
   end
 
   # update discussion reader after discussion creation / edition
-  config.listen('discussion_create') do |discussion, actor|
-    DiscussionReader.for(discussion: discussion, user: actor).set_volume!(:loud) if actor.email_on_participation?
-  end
-
-  config.listen('discussion_update', 'comment_like') do |model, actor|
-    DiscussionReader.for_model(model, actor).set_volume_as_required!
+  config.listen('discussion_create',
+                'discussion_update',
+                'comment_like') do |model, actor|
+    DiscussionReader.for_model(model, actor).update_reader(volume: :loud)
   end
 
   config.listen('discussion_reader_viewed!',
@@ -141,4 +149,5 @@ EventBus.configure do |config|
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
+  config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 end

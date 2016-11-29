@@ -10,5 +10,12 @@
 
 
 .notification__avatar {
-  margin-right: 10px;
+  flex-grow: 2;
+  -webkit-flex-grow: 2;
+  margin-right: 13px;
+}
+
+.notification__content {
+  flex-shrink: 2;
+  -webkit-flex-shrink: 2;
 }

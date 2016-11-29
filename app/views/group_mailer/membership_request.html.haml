@@ -1,6 +1,7 @@
-%strong= @membership_request.name
-%span="(#{@membership_request.email})"
-= t(:"email.membership_request.intro_html")
+.invite-people-mailer__context
+  %strong= @membership_request.name
+  %span="(#{@membership_request.email})"
+  = t(:"email.membership_request.intro_html")
 .invite-people-mailer__message-container
   - if @introduction
     .invite-people-mailer__message_body

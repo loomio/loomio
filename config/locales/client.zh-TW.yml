@@ -260,7 +260,7 @@ zh-TW:
     new_comment: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 上提出了意見'
     comment_replied_to: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 中回應了您的意見'
     comment_liked: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 對您的意見按了讚'
-    user_mentioned: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 提到了你'
+    user_mentioned: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 中提到您'
     membership_requested: '<strong>{{name}}</strong> 申請 <strong>{{group}}</strong> 的成員資格'
     membership_request_approved: '<strong>{{name}}</strong> 核準了您要加入 <strong>{{group}}</strong> 的申請'
     user_added_to_group: '<strong>{{name}}</strong> 將您加入到了群組 <strong>{{group}}</strong>'
@@ -446,7 +446,8 @@ zh-TW:
     members: '成員 ({{count}})'
     members_placeholder: 不能只有你 ── 邀請一些夥伴來加入吧！
     member_options: 成員選項
-    all_members: '所有成員 ({{count}}) '
+    see_all_members: '檢視全部：({{count}}) 位成員'
+    pending_invitations: '+ ({{count}}) 個擱置中'
     subgroups: 子群組
     subgroups_placeholder: 子群組讓您將大群組分成不同的小組。
     invite_people: 邀請夥伴

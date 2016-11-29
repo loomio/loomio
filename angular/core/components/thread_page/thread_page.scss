@@ -1,18 +1,3 @@
-.thread-actions{
-  margin-right: -10px;
-}
-
-.thread-actions .star-toggle {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  width: 30px;
-  a {
-    min-width: 30px;
-    text-align: center;
-  }
-}
-
 .thread-notification-level {
   display: inline-block;
 }
@@ -30,27 +15,6 @@
 
 .thread-group__icon img{
   @include smallIcon;
-}
-
-.thread-context{
-  @include card;
-  .lmo-card-heading {
-    margin-top: 7px;
-  }
-}
-
-.thread-context__details{
-  @include fontSmall;
-  color: $grey-on-white;
-  margin-bottom: 15px;
-}
-
-.thread-context__description p:last-of-type{
-  margin-bottom: 0;
-}
-
-.thread-context__edit-link {
-  cursor: pointer;
 }
 
 .thread-container .lmo-dropdown-menu-right{
@@ -89,20 +53,18 @@
   float: left;
 }
 
-.start-proposal-card {
-  @include card;
-  i { color: white; }
+.thread-page__main-content--small {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.start-proposal-card__start-proposal-button {
-  margin-top: 10px;
-}
-
-.thread-start-proposal-button {
-  vertical-align: middle;
-  padding-right: 10px;
-}
-
-.thread-context__attachments {
-  margin-top: 16px;
+@media (max-width: $small-max-px) {
+  .thread-page__context,
+  .thread-page__proposals,
+  .thread-page__activity,
+  .thread-page__members,
+  .thread-page__comment-form,
+  .thread-page__outlet {
+    width: 100%;
+  }
 }

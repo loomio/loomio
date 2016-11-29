@@ -62,12 +62,6 @@ module.exports = new class GroupsHelper
   clearGroupNameInput: ->
     @groupNameInput().clear()
 
-  editGroupDescription: (description) ->
-    element(By.css('.group-form__description textarea')).sendKeys(description)
-
-  groupPageDescriptionText: ->
-    element(By.css('.group-page__description-text'))
-
   submitGroupForm: ->
     element(By.css('.group-form__submit-button')).click()
 
@@ -93,7 +87,7 @@ module.exports = new class GroupsHelper
     element(By.css('.members-card'))
 
   groupDescriptionPanel: ->
-    element(By.css('.group-page__description'))
+    element(By.css('.description-card'))
 
   groupThreadsList: ->
     element(By.css('.discussions-card'))

@@ -24,45 +24,50 @@ describe 'Discussion Page', ->
       page.expectText('.thread-previews-container', 'I carried a watermelon')
       page.expectText('.navbar__right', 'Log In')
       page.click('.thread-preview__link')
-      page.expectText('.thread-context', 'I carried a watermelon')
+      page.expectText('.context-panel', 'I carried a watermelon')
+
+    it 'should display timestamps on content', ->
+      page.loadPath('view_open_group_as_non_member')
+      page.click('.thread-preview__link')
+      page.expectElement('.timeago')
 
   describe 'edit thread', ->
     beforeEach ->
       page.loadPath('setup_discussion')
 
     it 'lets you edit title, context and privacy', ->
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-edit'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--edit'
       page.fillIn('.discussion-form__title-input', 'better title')
       page.fillIn('.discussion-form__description-input', 'improved description')
       page.click('.discussion-form__private')
       page.click('.discussion-form__update')
-      page.expectText('.thread-context', 'better title')
-      page.expectText('.thread-context', 'improved description')
-      page.expectText('.thread-context', 'Private')
+      page.expectText('.context-panel', 'better title')
+      page.expectText('.context-panel', 'improved description')
+      page.expectText('.context-panel', 'Private')
       page.expectText('.thread-item__title', 'updated the thread title, context and privacy')
 
     it 'does not store cancelled thread info', ->
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-edit'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--edit'
 
       page.fillIn('.discussion-form__title-input', 'dumb title')
       page.fillIn('.discussion-form__description-input', 'rubbish description')
 
       page.click('.discussion-form__cancel')
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-edit'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--edit'
 
       page.expectNoText('.discussion-form__title-input', 'dumb title')
       page.expectNoText('.discussion-form__description-input', 'rubbish description')
 
     it 'lets you view thread revision history', ->
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-edit'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form__description-input', 'Revised description'
       page.click '.discussion-form__update'
-      page.click '.thread-context__edited-link'
+      page.click '.context-panel__edited'
       page.expectText '.revision-history-modal__body', 'Revised title'
       page.expectText '.revision-history-modal__body', 'Revised description'
       page.expectText '.revision-history-modal__body', 'What star sign are you?'
@@ -70,19 +75,19 @@ describe 'Discussion Page', ->
   describe 'muting and unmuting a thread', ->
     it 'lets you mute and unmute', ->
       page.loadPath 'setup_multiple_discussions'
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-mute'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--mute'
       page.click '.mute-explanation-modal__mute-thread'
       page.expectFlash 'Thread muted'
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-unmute'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--unmute'
       page.expectFlash 'Thread unmuted'
 
   describe 'move thread', ->
     it 'lets you move a thread', ->
       page.loadPath 'setup_multiple_discussions'
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-move'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--move'
       page.click '.move-thread-form__group-dropdown'
       element(By.cssContainingText('option', 'Point Break')).click()
       page.click '.move-thread-form'
@@ -107,15 +112,15 @@ describe 'Discussion Page', ->
     beforeEach ->
       page.loadPath('setup_discussion')
     it 'lets you change thread volume', ->
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-email-settings',
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--email-settings',
                  '#volume-loud',
                  '.change-volume-form__submit'
       page.expectFlash 'You will be emailed activity in this thread.'
 
     it 'lets you change the volume for all threads in the group', ->
-      page.click '.thread-context__dropdown-button',
-                 '.thread-context__dropdown-options-email-settings',
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--email-settings',
                  '#volume-loud',
                  '.change-volume-form__apply-to-all',
                  '.change-volume-form__submit'

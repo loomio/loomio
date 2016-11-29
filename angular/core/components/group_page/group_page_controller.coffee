@@ -1,5 +1,5 @@
 angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService) ->
-  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key}
+  $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []
   @addLauncher = (action, condition = (-> true), opts = {}) =>
@@ -53,9 +53,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
         rss:         LmoUrlService.group(@group, {}, absolute: true, ext: 'xml') if !@group.privacyIsSecret()
         prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
-
-  @showDescriptionPlaceholder = ->
-    !@group.description
 
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)

@@ -84,6 +84,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :profile, only: [:show] do
+      get  :me, on: :collection
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
@@ -148,7 +149,7 @@ Loomio::Application.routes.draw do
       get :inline, to: 'translations#inline'
     end
 
-    resources :notifications, only: [] do
+    resources :notifications, only: :index do
       post :viewed, on: :collection
     end
 

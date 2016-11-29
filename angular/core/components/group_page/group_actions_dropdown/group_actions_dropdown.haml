@@ -13,13 +13,7 @@
         %a.group-page-actions__manage-memberships-link{lmo-href-for: "group", lmo-href-action: "memberships"}
           %i.fa.fa-lg.fa-users>
           %span{translate: "group_page.options.manage_members"}
-      %li.lmo-dropdown-menu-item{ng-if: "groupActions.canManageGroupSubscription()"}
-        %a.group-page-actions__manage-subscription-link{ng-if: "group.subscriptionKind == 'paid'", ng-click: "groupActions.manageSubscriptions()"}
-          %i.fa.fa-lg.fa-calendar-check-o>
-          %span{translate: "group_page.options.manage_subscription"}
-        %a.group-page-actions__manage-subscription-link{ng-if: "group.subscriptionKind == 'gift'", ng-click: "groupActions.choosePlan()"}
-          %i.fa.fa-lg.fa-gift>
-          %span{translate: "group_page.options.manage_subscription"}
+      %outlet{name: "after-group-actions-manage-memberships", model: "group"}
       %li.lmo-dropdown-menu-item{ng-if: "groupActions.canAddSubgroup()"}
         %a.group-page-actions__add-subgroup-link{href: "", ng-click: "groupActions.addSubgroup()"}
           %i.fa.fa-lg.fa-plus>

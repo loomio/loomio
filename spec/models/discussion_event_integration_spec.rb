@@ -40,7 +40,7 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
       end
 
       def view_discussion
-        discussion_reader.viewed!
+        discussion_reader.viewed!(discussion_reader.discussion.last_activity_at)
       end
 
       def discussion_reader
@@ -59,7 +59,8 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
         create_second_comment
         delete_first_comment
         reload_everything
-        discussion_reader.unread_items_count.should == 1
+        expect(discussion.salient_items_count -
+               discussion_reader.read_salient_items_count).to eq 1
       end
 
       it "user sees discussion before the comments" do
@@ -67,7 +68,9 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
         create_first_comment
         create_second_comment
         delete_first_comment
-        discussion_reader.unread_items_count.should == 1
+        reload_everything
+        expect(discussion.salient_items_count -
+               discussion_reader.read_salient_items_count).to eq 1
       end
 
       it "user sees discussion before second comment" do
@@ -75,9 +78,10 @@ describe "Discussions and Discussion Items Working together as one beautiful eco
         view_discussion
         create_second_comment
         delete_first_comment
-        discussion_reader.unread_items_count.should == 1
+        reload_everything
+        expect(discussion.salient_items_count -
+               discussion_reader.read_salient_items_count).to eq 1
       end
     end
   end
 end
-

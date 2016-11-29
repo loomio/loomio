@@ -18,7 +18,6 @@ loomio_onboarding:
 
 loomio_content_preview:
   repo:         loomio/loomio_content_preview
-  experimental: true
 
 loomio_buyer_experience:
   repo:         loomio/loomio_buyer_experience
