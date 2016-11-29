@@ -31,6 +31,7 @@
   border-radius: 4px;
   text-transform: none;
   font-size: 13px;
+  @include truncateText;
 }
 
 .sidebar__list-item-button--subgroup {
