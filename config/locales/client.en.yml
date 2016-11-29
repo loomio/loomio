@@ -1045,7 +1045,7 @@ en:
 
   discussion_edited_item:
     attachment_ids: 'updated the thread attachments'
-    title: 'updated the thread title: <span>{{title}}</span>'
+    title: 'updated the thread title from <span>{{oldtitle}}</span> to <span>{{title}}</span>'
     description: 'updated the thread context'
     description_title: 'updated the thread title and context'
     private: 'updated the thread privacy to'

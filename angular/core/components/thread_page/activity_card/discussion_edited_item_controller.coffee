@@ -7,6 +7,13 @@ angular.module('loomioApp').controller 'DiscussionEditedItemController', ($scope
       version.changes.title[1]
     else
       ''
+
+  $scope.oldtitle =
+    if version.attributeEdited('title')
+      version.changes.title[0]
+    else
+      ''
+
   $scope.onlyPrivacyEdited = ->
     version.attributeEdited('private') and
     !version.attributeEdited('title') and

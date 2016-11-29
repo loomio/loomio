@@ -6,7 +6,7 @@
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %strong
           %a.thread-item__title-link{lmo-href-for: "event.actor()"}> {{ event.actorName() }}
-        %span{translate: "discussion_edited_item.{{translationKey}}", translate-value-title: "{{title}}"}
+        %span{translate: "discussion_edited_item.{{translationKey}}", translate-value-oldtitle: "{{oldtitle}}", translate-value-title: "{{title}}"}
         %span
           %span{ng-if: "onlyPrivacyEdited()", translate: "{{privacyKey()}}"}
         %timeago.timeago--inline{timestamp: "event.createdAt"}
