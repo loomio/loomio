@@ -2,37 +2,16 @@
   %loading{ng-if: "!threadPage.discussion"}
   %main.thread-page.lmo-row{ng-if: "threadPage.discussion"}
     %group_theme{group: "threadPage.discussion.group()", compact: "true"}
-    .thread-page__main-content--small{ng-if: "!threadPage.windowIsLarge"}
-      .thread-page__context
-        %context_panel{discussion: "threadPage.discussion"}
-      .thread-page__proposals{ng-if: "threadPage.eventsLoaded"}
-        %start_proposal_card.lmo-no-print{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.canStartProposal()", discussion: "threadPage.discussion"}
-        %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()"}
-        %previous_proposals_card{discussion: "threadPage.discussion"}
-      .thread-page__activity
-        %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId"}
-      .thread-page__comment-form{ng-if: "threadPage.eventsLoaded"}
-        %comment_form.lmo-no-print{discussion: "threadPage.discussion"}
-        %outlet{name: "thread-page-column-right"}
-      .thread-page__outlet{ng-if: "threadPage.eventsLoaded"}
-        %outlet{name: "before-thread-page-column-right", model: "threadPage.discussion"}
-      .thread-page__members{ng-if: "threadPage.events.Loaded"}
-        %members_card{group: "threadPage.discussion.group()"}
-
-    .thread-page__main-content--large{ng-if: "threadPage.windowIsLarge"}
-      .lmo-thread-column-left
-        %context_panel{discussion: "threadPage.discussion"}
-      .lmo-thread-column-right
-        %outlet{name: "before-thread-page-column-right", ng-if: "threadPage.eventsLoaded", model: "threadPage.discussion"}
-        %start_proposal_card.lmo-no-print{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.canStartProposal()", discussion: "threadPage.discussion"}
-        %current_proposal_card{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()", loading: "!threadPage.eventsLoaded"}
-        %previous_proposals_card{discussion: "threadPage.discussion", ng-if: "threadPage.eventsLoaded"}
-        %members_card{group: "threadPage.discussion.group()", ng-if: "threadPage.eventsLoaded"}
-      .lmo-thread-column-left
-        %activity_card{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId", loading: "!threadPage.eventsLoaded"}
-      .lmo-thread-column-left{ng-if: "threadPage.eventsLoaded"}
-        %comment_form.lmo-no-print{discussion: "threadPage.discussion"}
-        %outlet{name: "thread-page-column-right"}
+    .thread-page__main-content
+      %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", ng-if: "threadPage.eventsLoaded", model: "threadPage.discussion"}
+      %start_proposal_card.lmo-no-print.lmo-column-right{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.canStartProposal()", discussion: "threadPage.discussion"}
+      %current_proposal_card.lmo-column-right{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()", loading: "!threadPage.eventsLoaded"}
+      %previous_proposals_card.lmo-column-right{discussion: "threadPage.discussion", ng-if: "threadPage.eventsLoaded"}
+      %members_card.lmo-column-right{ng-if: "threadPage.canViewMemberships()", group: "threadPage.discussion.group()"}
+      %outlet.after-column-right.lmo-column-right{name: "thread-page-column-right"}
+      %context_panel.lmo-column-left{discussion: "threadPage.discussion"}
+      %activity_card.lmo-column-left{discussion: "threadPage.discussion", active-comment-id: "threadPage.requestedCommentId", loading: "!threadPage.eventsLoaded"}
+      %comment_form.lmo-no-print.lmo-column-left{discussion: "threadPage.discussion"}
 
     %thread_lintel
     .clearfix

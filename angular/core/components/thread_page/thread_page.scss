@@ -53,18 +53,32 @@
   float: left;
 }
 
-.thread-page__main-content--small {
-  display: flex;
-  flex-wrap: wrap;
+@media (min-width: $small-max-px) {
+  .lmo-column-left {
+    display: inline-block;
+    width: 60%;
+  }
+
+  .lmo-column-right {
+    float: right;
+    clear: right;
+    width: calc(40% - 10px);
+  }
 }
 
 @media (max-width: $small-max-px) {
-  .thread-page__context,
-  .thread-page__proposals,
-  .thread-page__activity,
-  .thread-page__members,
-  .thread-page__comment-form,
-  .thread-page__outlet {
-    width: 100%;
+  .thread-page__main-content {
+    @include displayFlex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
   }
+  .context-panel           { order: 10; }
+  .start-proposal-card     { order: 20; }
+  .current-proposal-card   { order: 30; }
+  .previous-proposals-card { order: 40; }
+  .activity-card           { order: 50; }
+  .comment-form            { order: 60; }
+  .before-column-right     { order: 70; }
+  .members-card            { order: 80; }
+  .after-column-right      { order: 90; }
 }
