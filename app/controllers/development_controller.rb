@@ -82,7 +82,6 @@ class DevelopmentController < ApplicationController
     GroupService.create(group: group, actor: patrick)
     group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: group)
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(group)
   end
@@ -91,6 +90,12 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_group.add_member! emilio
     redirect_to group_url(test_group)
+  end
+
+  def setup_subgroup
+    test_subgroup.add_member! jennifer
+    sign_in jennifer
+    redirect_to group_url(test_subgroup)
   end
 
   def setup_experimental_group
@@ -123,7 +128,6 @@ class DevelopmentController < ApplicationController
     group = Group.new(name: 'Welcomed group')
     GroupService.create(group: another_group, actor: LoggedOutUser.new)
     GroupService.create(group: group, actor: patrick)
-    patrick.experienced!('welcomeModal', false)
     group.add_admin! patrick
     sign_in patrick
     redirect_to group_url(group)
@@ -218,7 +222,6 @@ class DevelopmentController < ApplicationController
                                 group_privacy: 'secret')
     @test_group.add_admin! patrick
     membership = Membership.find_by(user: patrick, group: @test_group)
-    membership.experienced! 'welcomeModal'
     test_empty_draft
     redirect_to group_url(test_group)
   end
@@ -373,7 +376,6 @@ class DevelopmentController < ApplicationController
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @test_group)
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -384,7 +386,6 @@ class DevelopmentController < ApplicationController
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @test_group)
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -395,7 +396,6 @@ class DevelopmentController < ApplicationController
     @test_group.add_admin!  patrick
     @test_group.add_member! jennifer
     membership = Membership.find_by(user: patrick, group: @test_group)
-    membership.experienced! 'welcomeModal'
     sign_in patrick
     redirect_to group_url(test_group)
   end
@@ -410,7 +410,6 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_public_group_to_join_upon_request
-    jennifer.experienced!('welcomeModal', false)
     sign_in jennifer
     another_test_group.update(group_privacy: 'open')
     another_test_group.update(membership_granted_upon: 'request')

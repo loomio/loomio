@@ -28,10 +28,6 @@ describe 'Joining group', ->
       expect(flashHelper.flashMessage()).toContain('You are now a member of')
       expect(groupsHelper.membersList().getText()).toContain('JG')
 
-    it 'shows you the welcome modal when you have joined', ->
-      groupsHelper.clickJoinGroupButton()
-      page.expectText '.group-welcome-modal', 'Welcome to Loomio'
-
   describe 'membership granted upon approval', ->
     beforeEach ->
       groupsHelper.loadPath('setup_closed_group_to_join')
