@@ -10,7 +10,7 @@
       .lmo-group-column-right
         %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
         %membership_requests_card{group: "groupPage.group"}
-        %members_card{group: "groupPage.group"}
+        %members_card{group: "groupPage.group", ng-if: "groupPage.canViewMemberships()"}
         %group_previous_proposals_card{group: "groupPage.group"}
         %subgroups_card{group: "groupPage.group"}
         %group_help_card{group: "groupPage.group"}
