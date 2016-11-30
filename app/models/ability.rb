@@ -66,7 +66,8 @@ class Ability
     end
 
     can :export, Group do |group|
-      user_is_admin_of?(group.id) && group.features['dataExport']
+      user.is_admin? or
+      (user_is_admin_of?(group.id) && group.features['dataExport'])
     end
 
     can [:members_autocomplete,

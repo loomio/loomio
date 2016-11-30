@@ -66,6 +66,7 @@ group :development, :test do
   gem 'minitest'
   gem 'timecop'
   gem 'byebug'
+  gem 'rb-readline'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
