@@ -14,11 +14,9 @@ loomio_truncate_comment:
 
 loomio_onboarding:
   repo: loomio/loomio_onboarding
-  branch: add-intro-carousel
 
 loomio_content_preview:
   repo:         loomio/loomio_content_preview
 
 loomio_buyer_experience:
   repo:         loomio/loomio_buyer_experience
-  branch:       accommodate-intro-carousel
