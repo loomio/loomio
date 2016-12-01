@@ -4,7 +4,7 @@ class API::GroupsController < API::RestfulController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    instantiate_collection { |collection| collection.search_for params[:q] }
+    instantiate_collection { |collection| collection.search_for(params[:q]).order(recent_activity_count: :desc) }
     respond_with_collection
   end
 

@@ -403,11 +403,12 @@ ActiveRecord::Schema.define(version: 20161116013510) do
     t.string   "city"
     t.integer  "closed_motions_count",               default: 0,     null: false
     t.boolean  "enable_experiments",                 default: false
-    t.boolean  "analytics_enabled",                  default: false, null: false
-    t.integer  "proposal_outcomes_count",            default: 0,     null: false
-    t.jsonb    "experiences",                        default: {},    null: false
-    t.integer  "pending_invitations_count",          default: 0,     null: false
-    t.jsonb    "features",                           default: {},    null: false
+    t.boolean  "analytics_enabled",                  default: false,          null: false
+    t.integer  "proposal_outcomes_count",            default: 0,              null: false
+    t.jsonb    "experiences",                        default: {},             null: false
+    t.integer  "pending_invitations_count",          default: 0,              null: false
+    t.jsonb    "features",                           default: {},             null: false
+    t.integer  "recent_activity_count",              default: 0,              null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -420,6 +421,7 @@ ActiveRecord::Schema.define(version: 20161116013510) do
   add_index "groups", ["name"], name: "index_groups_on_name", using: :btree
   add_index "groups", ["parent_id"], name: "index_groups_on_parent_id", using: :btree
   add_index "groups", ["parent_members_can_see_discussions"], name: "index_groups_on_parent_members_can_see_discussions", using: :btree
+  add_index "groups", ["recent_activity_count"], name: "index_groups_on_recent_activity_count", using: :btree
 
   create_table "invitations", force: :cascade do |t|
     t.string   "recipient_email"
