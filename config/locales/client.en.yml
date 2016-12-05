@@ -561,6 +561,8 @@ en:
     heading: Upgrade for premium features
     slack_html: "<strong>Slack integration</strong>: Loomio and Slack work great together! Link them up."
     domain_html: "<strong>Custom domain</strong>: Make your group easy to find with yourname.loomio.org"
+    help_html: "<strong>Expert help</strong>: Loomio's collaboration consultants will get your group humming"
+    analytics_html: "<strong>Analytics reports</strong>: Get insights into your group's engagement"
     donations: Your group members will no longer be asked to donate.
     more: … and lots more.
     upgrade: Upgrade now
