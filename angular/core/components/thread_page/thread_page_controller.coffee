@@ -1,7 +1,5 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, $mdMedia, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
-
-  @windowIsLarge = $mdMedia('gt-sm')
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
   @requestedCommentId   = parseInt($routeParams.comment or $location.search().comment)
@@ -84,6 +82,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @canStartProposal = ->
     @eventsLoaded && AbilityService.canStartProposal(@discussion)
+
+  @canViewMemberships = ->
+    @eventsLoaded && AbilityService.canViewMemberships(@group)
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview

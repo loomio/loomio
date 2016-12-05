@@ -1,6 +1,7 @@
 .loading-wrapper.lmo-two-column-layout
   %loading{ng-if: "!groupPage.group"}
   %main.group-page.lmo-row{ng-if: "groupPage.group"}
+    %outlet{name: "before-group-page", model: "groupPage.group"}
     %group_theme{group: "groupPage.group", home-page: "true"}
     .lmo-row
       .lmo-group-column-left
@@ -9,7 +10,7 @@
       .lmo-group-column-right
         %outlet{name: "before-group-page-column-right", model: "groupPage.group"}
         %membership_requests_card{group: "groupPage.group"}
-        %members_card{group: "groupPage.group"}
+        %members_card{group: "groupPage.group", ng-if: "groupPage.canViewMemberships()"}
         %group_previous_proposals_card{group: "groupPage.group"}
         %subgroups_card{group: "groupPage.group"}
         %group_help_card{group: "groupPage.group"}

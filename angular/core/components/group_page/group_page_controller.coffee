@@ -1,7 +1,20 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService, GroupWelcomeModal) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
-  $scope.$on 'joinedGroup', => @handleWelcomeModal()
+  @launchers = []
+  @addLauncher = (action, condition = (-> true), opts = {}) =>
+    @launchers.push
+      priority:       opts.priority || 9999
+      action:         action
+      condition:      condition
+      allowContinue:  opts.allowContinue
+
+  @performLaunch = ->
+    @launchers.sort((a, b) -> a.priority - b.priority).map (launcher) =>
+      return if (typeof launcher.action != 'function') || @launched
+      if launcher.condition()
+        launcher.action()
+        @launched = true unless launcher.allowContinue
 
   # allow for chargify reference, which comes back #{groupKey}|#{timestamp}
   # we include the timestamp so chargify sees unique values
@@ -13,10 +26,8 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @init = (group) =>
     @group = group
-
-    if AbilityService.isLoggedIn()
-      MessageChannelService.subscribeToGroup(@group)
-      @handleWelcomeModal()
+    @performLaunch()
+    MessageChannelService.subscribeToGroup(@group) if AbilityService.isLoggedIn()
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 
@@ -43,6 +54,9 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
         prev:        LmoUrlService.group(@group, from: @pageWindow.prev)         if @pageWindow.prev?
         next:        LmoUrlService.group(@group, from: @pageWindow.next)         if @pageWindow.next?
 
+  @canViewMemberships = ->
+    AbilityService.canViewMemberships(@group)
+
   @canManageMembershipRequests = ->
     AbilityService.canManageMembershipRequests(@group)
 
@@ -57,13 +71,5 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @openModal = (modal, resolve)->
     ModalService.open modal, resolve
-
-  @handleWelcomeModal = =>
-    return unless @group.isParent() and
-      Session.user().isMemberOf(@group) and
-      !Session.user().hasExperienced('welcomeModal')
-    @openModal GroupWelcomeModal, group: => @group
-    Records.users.saveExperience("welcomeModal")
-    true
 
   return

@@ -134,12 +134,6 @@ module.exports = new class GroupsHelper
   clickFirstThread: ->
     element(By.css('.thread-preview__link')).click()
 
-  welcomeModal: ->
-    element(By.css('.group-welcome-modal'))
-
-  dismissWelcomeModal: ->
-    element(By.css('.lmo-btn--primary')).click()
-
   visitMembersPage: ->
     element(By.css('.members-card__manage-members')).click()
 
