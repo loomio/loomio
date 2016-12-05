@@ -421,14 +421,14 @@ en:
     aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
-    image_size_helptext: 'Ideal image size is 1400×320px'
+    # image_size_helptext: 'Ideal image size is 1400×320px'
     upload_success: 'Cover photo successfully updated'
 
   logo_photo_form:
     aria_label: 'Change group logo form'
     heading: 'New group logo'
     upload_link: 'Upload new group logo'
-    image_size_helptext: 'Ideal image size is 100×100px'
+    # image_size_helptext: 'Ideal image size is 100×100px'
     upload_success: 'Logo successfully updated'
 
   join_group_button:
@@ -552,25 +552,14 @@ en:
     contribute: Make a contribution
     got_to_group: Not now, thank you.
 
-  gift_card:
-    heading: Gift plan
-    body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
-    make_a_contribution: Make a contribution
-
   upgrade_plan_card:
-    heading: Upgrade for premium features
-    slack_html: "<strong>Slack integration</strong>: Loomio and Slack work great together! Link them up."
-    domain_html: "<strong>Custom domain</strong>: Make your group easy to find with yourname.loomio.org"
-    donations: Your group members will no longer be asked to donate.
-    more: … and lots more.
+    heading: Upgrade your group for premium features
+    slack_html: <strong>Slack integration</strong>: Loomio and Slack work great together! Link them up.
+    domain_html: <strong>Custom domain</strong>: Make your group easy to find with yourname.loomio.org
+    donations: Your group members will no longer be asked to donate.
+    # more: … and lots more.
     upgrade: Upgrade now
     donate: Donate
-
-  trial_card:
-    title: '30-day trial'
-    choose_plan: 'Choose your pricing plan'
-    in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
-    expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
 
   choose_plan_modal:
     aria_label: Choose plan
@@ -593,31 +582,9 @@ en:
     benefit_custom_domain: Custom domain
     benefit_analytics_reports: Analytics reports
     benefit_data_export: Data export
-    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
-    # start_group: "Start group"
-    # gift_body: For groups without a budget
-    # support_before: I'm happy to
     support_link: Let's talk!
     prices_in_us_dollars: Prices are in US dollars, plus sales tax where applicable.
     need_help_please: Need something else?
-    # support_after: about extending your trial, or with any other questions you may have.
-    # remind_me_later: Remind me later
-    # gift_donation_ask: We’ll ask your group members to donate
-    # unlimited_members: unlimited members
-    # unlimited_decisions: unlimited decisions
-    # email_support: email support
-    # slack_integration_html: |
-    #   <strong>Slack</strong> integration
-    # standard_price_html: |
-    #   US<strong>$19</strong>/month<br><span>or</span> $190/year
-    # plus_body: 'Everything in Standard, plus:'
-    # multiple_groups: multiple groups
-    # premium_support: premium support
-    # custom_subdomain_html: |
-    #   custom subdomain,<br />
-    #   e.g. <strong>yourgroup</strong>.loomio.org
-    # plus_price_html: |
-    #   US<strong>$179</strong>/month<br><span>or</span> $1790/year
     select: Select
 
   subscription_success_modal:
