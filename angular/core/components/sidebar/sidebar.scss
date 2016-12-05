@@ -56,6 +56,14 @@
   font-size: 20px;
 }
 
+.fa-inbox {
+  color: #5cb85c;
+}
+
+.fa-clock-o {
+  color: #337ab7;
+}
+
 .sidebar__list-item-group-logo {
   margin-right: 16px;
 }
@@ -70,7 +78,7 @@
   font-weight: 600;
 }
 
-.sidebar__list-item--selected .sidebar__list-item-icon {
+.sidebar__list-item--selected {
   color: black;
 }
 
