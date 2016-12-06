@@ -33,6 +33,7 @@ angular.module('loomioApp').directive 'contextPanel', ->
       ModalService.open MoveThreadForm, discussion: => $scope.discussion
 
     $scope.requestPagePrinted = ->
+      $rootScope.$broadcast('toggleSidebar', false)
       if $scope.discussion.allEventsLoaded()
         $timeout -> $window.print()
       else
