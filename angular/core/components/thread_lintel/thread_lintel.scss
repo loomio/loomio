@@ -1,7 +1,9 @@
-@media (max-width: 480px){
+@media (min-width: 480px){
   .thread-lintel__wrapper {
+    padding: 0 20px 0 0 !important;
   }
 }
+
 @media (min-width: 480px) and (max-width: 768px){
   .thread-lintel__wrapper{
     max-width: 768px;
