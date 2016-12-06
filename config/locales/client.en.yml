@@ -963,11 +963,13 @@ en:
     aria_label: 'Thread context'
     thread_options: 'Thread options'
     email_settings: 'Email settings'
-    edit_thread: 'Edit'
+    edit: 'Edit'
+    edit_thread: 'Edit thread'
     mute_thread: 'Mute'
     move_thread: 'Move'
     print_thread: 'Print'
     delete_thread: 'Delete'
+    add_comment: 'Add comment'
 
   delete_thread_form:
     aria_label: 'Delete thread'

@@ -11,7 +11,7 @@
           %li.lmo-dropdown-menu-item{ng-if: "canChangeVolume()"}
             %a.context-panel__dropdown-options--email-settings.lmo-dropdown-menu-item-label{href: "", ng-click: "openChangeVolumeForm()", translate: "thread_context.email_settings"}
           %li.lmo-dropdown-menu-item{ng-if: "canEditThread()"}
-            %a.context-panel__dropdown-options--edit.lmo-dropdown-menu-item-label{href: "", ng-click: "editThread()", translate: "thread_context.edit_thread"}
+            %a.context-panel__dropdown-options--edit.lmo-dropdown-menu-item-label{href: "", ng-click: "editThread()", translate: "thread_context.edit"}
           %li.lmo-dropdown-menu-item{ng-show: "!discussion.isMuted()"}
             %a.context-panel__dropdown-options--mute.lmo-dropdown-menu-item-label{href: "", ng-click: "muteThread()", translate: "volume_levels.mute"}
           %li.lmo-dropdown-menu-item{ng-show: "discussion.isMuted()"}
@@ -52,4 +52,5 @@
     .context-panel__attachment{ng-repeat: "attachment in discussion.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "context"}
 
-  %a.context-panel__edit-link.lmo-card-minor-action.lmo-no-print{href: "", ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
+  %button.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment"}
+  %button.context-panel__edit.lmo-no-print{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
