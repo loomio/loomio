@@ -77,14 +77,11 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
 
-  @group = ->
-    @discussion.group()
-
   @canStartProposal = ->
     @eventsLoaded && AbilityService.canStartProposal(@discussion)
 
   @canViewMemberships = ->
-    @eventsLoaded && AbilityService.canViewMemberships(@group)
+    @eventsLoaded && AbilityService.canViewMemberships(@discussion.group())
 
   @proposalInView = ($inview) ->
     $rootScope.$broadcast 'proposalInView', $inview
