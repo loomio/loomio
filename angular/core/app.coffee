@@ -73,8 +73,11 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     navigator.serviceWorker.register(document.location.origin + '/service-worker.js', scope: './')
 
   $scope.renderSidebar = $mdMedia('gt-md')
-  $scope.$on 'toggleSidebar', ->
-    $scope.renderSidebar = true
+  $scope.$on 'toggleSidebar', (event, show) ->
+    if !_.isUndefined(show)
+      $scope.renderSidebar = show
+    else
+      $scope.renderSidebar = !$scope.renderSidebar
 
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
