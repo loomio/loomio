@@ -53,3 +53,6 @@ angular.module('loomioApp').directive 'contextPanel', ->
 
     $scope.showRevisionHistory = ->
       ModalService.open RevisionHistoryModal, model: => $scope.discussion
+
+    $scope.canAddComment = ->
+      AbilityService.canAddComment($scope.discussion)

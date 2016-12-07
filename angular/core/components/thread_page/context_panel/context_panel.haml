@@ -52,5 +52,5 @@
     .context-panel__attachment{ng-repeat: "attachment in discussion.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "context"}
 
-  %button.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment"}
+  %button.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
   %button.context-panel__edit.lmo-no-print{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
