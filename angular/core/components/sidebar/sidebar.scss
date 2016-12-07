@@ -1,14 +1,25 @@
 .md-sidenav-left {
-  background-color: #fff;
-  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  background: #ebebeb;
   min-height: 100%;
   display: block !important;
   max-width: 250px;
   border-top: 1px solid rgba(0,0,0,.14);
 }
 
+.md-whiteframe-4dp {
+  -webkit-box-shadow: 16px 0px 0px 0px rgba(235,235,235,0.3);
+  -moz-box-shadow: 16px 0px 0px 0px rgba(235,235,235,0.3);
+  box-shadow: 16px 0px 0px 0px rgba(235,235,235,0.3);
+}
+
 .sidebar__content {
-  margin: 8px 0;
+  margin: 8px;
+}
+
+.sidebar__list-subhead {
+    margin: 0px 0 0 12px;
+    font-size: 12px;
+    color: #777;
 }
 
 .sidebar__list-item-button {
@@ -17,11 +28,10 @@
   padding: 0 15px;
   display: block;
   text-align: left;
-  border-radius: 0px;
+  border-radius: 4px;
   text-transform: none;
-  span {
-    font-weight: 600;
-  }
+  font-size: 13px;
+  @include truncateText;
 }
 
 .sidebar__list-item-button--subgroup {
@@ -29,30 +39,47 @@
   margin: 0;
   text-transform: none;
   display: block;
-  border-radius: 0px;
+  border-radius: 4px;
   text-align: left;
   padding-left: 53px;
+  font-size: 13px;
 }
 
 .sidebar__list-item-icon {
   width: 20px;
   margin-right: 16px;
+  font-size: 22px;
+  color: #666;
+}
+
+.fa-envelope-o {
+  font-size: 20px;
+}
+
+.fa-inbox {
+  color: #5cb85c;
+}
+
+.fa-clock-o {
+  color: #337ab7;
 }
 
 .sidebar__list-item-group-logo {
   margin-right: 16px;
 }
 
-.fa-envelope-o {
-  font-size: 16px;
-}
-
 .sidebar__divider {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ddd;
+  margin-bottom: 12px;
 }
 
 .sidebar__list-item--selected {
-  background-color: #EBEBEB;
+  background-color: #ddd;
+  font-weight: 600;
+}
+
+.sidebar__list-item--selected {
+  color: black;
 }
 
 .sidebar__user-panel {
