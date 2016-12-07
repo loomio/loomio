@@ -1,11 +1,11 @@
 .navbar-search
   .navbar-search__input-wrapper
-    %label.sr-only{ translate: "navbar.search.placeholder" }
-    %input.navbar-search__input.form-control#primary-search-input{ng-model: "query", ng-model-options: "{debounce: {default: 400, blur: 200}}", ng-change: "getSearchResults(query)", placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: "focused = true", ng-blur: "handleSearchBlur()", tabindex: 2}
+    %label.sr-only{translate: "navbar.search.label"}
+    %input.navbar-search__input.form-control#primary-search-input{ng-model: "query", ng-model-options: "{debounce: {default: 400, blur: 200}}", ng-change: "getSearchResults(query)", placeholder: "{{ 'navbar.search.placeholder' | translate }}", ng-focus: "focused = true", ng-blur: "handleSearchBlur()", tabindex: 2, aria-haspopup: "true"}
     %i.fa.fa-fw.fa-search.navbar-search__input-icon{ng-hide: "query", aria-hidden: "true"}
-    %i.fa.fa-fw.fa-times.navbar-search__input-icon{ng-show: "query", ng-click: "clearAndFocusInput()", title: "{{ 'navbar.search.close' | translate }}"}
+    %i.fa.fa-fw.fa-times.navbar-search__input-icon{ng-show: "query", ng-click: "clearAndFocusInput()", title: "{{ 'navbar.search.close' | translate }}", aria-label: "{{ 'navbar.search.close' | translate }}"}
 
-  .navbar-search__results{ng-show: "showDropdown()"}
+  .navbar-search__results{ng-show: "showDropdown()", aria-label: "{{ 'navbar.search.results_aria_label' | translate }}"}
     %ul.group-selector-list.selector-list
       %li.navbar-search__list-item.selector-list-header{ng-show: "groups().length > 0"}
         %h3.lmo-dropdown-heading{translate: "common.groups"}
