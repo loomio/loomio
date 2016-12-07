@@ -74,10 +74,8 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $scope.renderSidebar = $mdMedia('gt-md')
   $scope.$on 'toggleSidebar', (event, show) ->
-    if !_.isUndefined(show)
-      $scope.renderSidebar = show
-    else
-      $scope.renderSidebar = !$scope.renderSidebar
+    return if show == false
+    $scope.renderSidebar = true
 
   $scope.$on 'loggedIn', (event, user) ->
     $scope.refresh()
