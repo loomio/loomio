@@ -251,6 +251,8 @@ en:
     start_thread: 'Start a new thread'
     notifications: 'Notifications panel'
     search:
+      label: 'Search field; search for groups and threads'
+      results_aria_label: 'Search results'
       no_results: 'No threads found'
       close: 'Close search panel'
       placeholder: 'Search'

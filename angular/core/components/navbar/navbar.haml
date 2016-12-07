@@ -3,7 +3,7 @@
     %md_toolbar
       .md-toolbar-tools.lmo-relative
         .navbar__left
-          %md_icon_button.navbar__sidenav-toggle{ng-show: "isLoggedIn()", ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
+          %md_icon_button.navbar__sidenav-toggle{aria-hidden: "true", ng-show: "isLoggedIn()", ng-click: "toggleSidebar()", aria-label: "{{ 'navbar.toggle_sidebar' | translate }}"}
             %md_icon.fa.fa-lg.fa-bars
 
         .navbar__middle
