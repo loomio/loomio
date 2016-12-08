@@ -48,9 +48,10 @@
   .context-panel__description.lmo-markdown-wrapper{marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
   %translation{ng-if: "translation && discussion.description", translation: "translation", field: "description"}
 
-  .context-panel__attachments
+  .context-panel__attachments{ng-if: "discussion.hasAttachments()"}
     .context-panel__attachment{ng-repeat: "attachment in discussion.attachments() | orderBy:'createdAt' track by attachment.id"}
       %attachment_preview{attachment: "attachment", mode: "context"}
 
-  %button.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
-  %button.context-panel__edit.lmo-no-print{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
+  .context-panel__actions
+    %button.context-panel__add-comment.lmo-card-minor-action.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
+    %button.context-panel__edit.lmo-card-minor-action.lmo-no-print.lmo-card-minor-action{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
