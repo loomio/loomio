@@ -2,6 +2,14 @@
 	margin-top: 7px;
 }
 
+.proposal-expanded {
+  padding-bottom: 15px;
+}
+
+.proposal-accordian__active {
+  padding: 0 15px;
+}
+
 .proposal-accordian__proposal {
 	border-bottom: 1px solid $border-color;
 }
