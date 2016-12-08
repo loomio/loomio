@@ -300,6 +300,7 @@ en:
     heading: Have your say
 
   vote_form:
+    aria_label: Vote form
     heading: Have your say
     no_statement: No statement.
     statement_over_limit: 'Character limit reached. Short position statements create a succinct summary. If you want to say more, post a comment.'

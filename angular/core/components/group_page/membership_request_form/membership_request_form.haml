@@ -1,7 +1,7 @@
 %form.membership-request-form{ng-submit: "submit()", ng-disabled: "membership_request.processing"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{aria-hidden: "true"}
     %h1.lmo-h1{translate: "membership_request_form.heading"}
 
   .modal-body

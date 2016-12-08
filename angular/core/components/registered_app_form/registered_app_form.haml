@@ -1,7 +1,7 @@
 %form.registered-app-form{name: "registeredAppForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{aria-hidden: "true"}
     %h1.lmo-h1.modal-title{translate: "registered_app_form.new_application_title", ng-show: "application.isNew()"}
     %h1.lmo-h1.modal-title{translate: "registered_app_form.edit_application_title", ng-hide: "application.isNew()"}
 

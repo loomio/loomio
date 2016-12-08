@@ -1,6 +1,6 @@
 .revision-history-modal
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{aria-hidden: "true"}
     %h1.lmo-h1{translate: "{{header}}"}
   %loading{ng-if: "loadExecuting"}
   .modal-body.revision-history-modal__body{ng-if: "!loadExecuting"}
