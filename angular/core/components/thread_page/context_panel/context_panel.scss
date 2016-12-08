@@ -33,6 +33,20 @@
   margin-top: 16px;
 }
 
-.context-panel__edit-link {
+.context-panel__edit,
+.context-panel__add-comment {
+  @include lmoBtnLink;
+  @include fontHelveticaMedium;
+  @include fontSmall;
   cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  margin-right: 30px;
+}
+.context-panel__add-comment {
+  color: $brand-success;
+}
+
+.context-panel__edit {
+  color: $grey-on-white;
 }
