@@ -56,6 +56,19 @@
 @media (min-width: $small-max-px) {
   .lmo-column-left {
     display: inline-block;
+    width: 52%;
+  }
+
+  .lmo-column-right {
+    float: right;
+    clear: right;
+    width: calc(48% - 10px);
+  }
+}
+
+@media (min-width: $medium-max-px) {
+  .lmo-column-left {
+    display: inline-block;
     width: 60%;
   }
 
