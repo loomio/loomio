@@ -17,5 +17,4 @@ angular.module('loomioApp').directive 'undecidedPanel', ->
       $scope.undecidedPanelOpen = false
 
     $scope.remindUndecided = ->
-      ScrollService.scrollTo('.comment-form__comment-field')
-      $rootScope.$broadcast 'remindUndecided', undecided: $scope.proposal.undecidedUsernames()
+      $rootScope.$broadcast 'remindUndecided'
