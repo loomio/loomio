@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'undecidedPanel', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/undecided_panel/undecided_panel.html'
   replace: true
-  controller: ($scope, $timeout, Records) ->
+  controller: ($scope, $timeout, $rootScope, Records, ScrollService) ->
 
     $scope.undecidedPanelOpen = false
 
@@ -15,3 +15,7 @@ angular.module('loomioApp').directive 'undecidedPanel', ->
 
     $scope.hideUndecided = ->
       $scope.undecidedPanelOpen = false
+
+    $scope.remindUndecided = ->
+      ScrollService.scrollTo('.comment-form__comment-field')
+      $rootScope.$broadcast 'remindUndecided', undecided: $scope.proposal.undecidedUsernames()

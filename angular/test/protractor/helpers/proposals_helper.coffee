@@ -1,5 +1,5 @@
 module.exports = new class ProposalsHelper
-  
+
   startProposalBtn: ->
     element(By.css('.start-proposal-card .start-proposal-button__button'))
 
@@ -51,15 +51,6 @@ module.exports = new class ProposalsHelper
 
   voteFormPositionSelect: ->
     element(By.css('.vote-form__select-position'))
-
-  clickShowUndecidedLink: ->
-    element(By.css('a.undecided-panel__show-undecided-link')).click()
-
-  undecidedPanel: ->
-    element(By.css('.undecided-panel')).getText()
-
-  clickHideUndecidedLink: ->
-    element(By.css('a.undecided-panel__hide-undecided-link')).click()
 
   positionButtons: ->
     element(By.css('.position-buttons-panel'))
