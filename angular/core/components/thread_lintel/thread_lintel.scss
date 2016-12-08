@@ -10,6 +10,12 @@
   max-width: 1120px;
 }
 
+// Account for lintel with sidebar locked open
+.md-locked-open + .lmo-main-content .thread-lintel__wrapper {
+  transform: translateX(125px);
+  -webkit-transform: translateX(125px);
+}
+
 .thread-lintel__content {
   @include box_shadow(1);
   border: 1px solid $border-color;
