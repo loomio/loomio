@@ -1,6 +1,6 @@
 %form{ng-submit: "submit()"}
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{aria-hidden: "true"}
     %h1.lmo-h1{translate: "revoke_app_form.title", translate-value-name: "{{application.name}}"}
 
   .modal-body

@@ -1,7 +1,7 @@
 %form.close-proposal-form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{aria-hidden: "true"}
     %h1.lmo-h1{translate: "close_proposal_form.close_proposal"}
 
   .modal-body

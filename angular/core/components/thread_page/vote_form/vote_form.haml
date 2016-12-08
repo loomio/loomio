@@ -2,7 +2,7 @@
     %form{ng-submit: "submit()",  ng-disabled: "vote.processing", name: "voteForm" }
       .lmo-disabled-form{ng-show: "isDisabled"}
       .modal-header
-        %modal_header_cancel_button
+        %modal_header_cancel_button{aria-hidden: "true"}
         %h1.lmo-h1.modal-title{translate: "vote_form.heading"}
 
       .modal-body
