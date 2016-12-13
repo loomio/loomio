@@ -1,0 +1,60 @@
+require 'rails_helper'
+
+describe PollService do
+  let(:new_poll) { build :poll, poll_template: poll_template }
+  let(:poll) { create :poll, poll_template: poll_template }
+  let(:poll_template) { create :poll_template, poll_options: [create(:poll_option)]}
+  let(:community) { create :community }
+  let(:user) { create :user }
+  let(:visitor) { LoggedOutUser.new }
+
+  describe '#create' do
+    it 'creates a new poll' do
+      expect { PollService.create(poll: new_poll, actor: user) }.to change { Poll.count }.by(1)
+    end
+
+    it 'populates a public community if none are given' do
+      PollService.create(poll: new_poll, actor: user)
+
+      poll = Poll.last
+      expect(poll.communities.count).to eq 1
+      expect(poll.communities.last).to be_a Communities::Public
+    end
+
+    it 'populates communities if given' do
+      PollService.create(poll: new_poll, actor: user, communities: [community])
+
+      poll = Poll.last
+      expect(poll.communities.count).to eq 1
+      expect(poll.communities.last).to eq community
+    end
+
+    it 'populates polling actions for the new poll' do
+      PollService.create(poll: new_poll, actor: user)
+
+      poll = Poll.last
+      expect(poll.poll_options.count).to eq 1
+      expect(poll.poll_options.last).to eq poll_template.poll_options.last
+    end
+
+    it 'does not create an invalid poll' do
+      new_poll.name = ''
+      expect { PollService.create(poll: new_poll, actor: user) }.to_not change { Poll.count }
+    end
+
+    it 'does not allow visitors to create polls' do
+      expect { PollService.create(poll: new_poll, actor: visitor) }.to raise_error { CanCan::AccessDenied }
+    end
+
+  end
+
+  describe '#update' do
+    it 'updates an existing poll' do
+
+    end
+
+    it 'does not save an invalid poll' do
+
+    end
+  end
+end

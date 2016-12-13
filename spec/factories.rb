@@ -243,4 +243,23 @@ published_at "2015-11-18 14:28:30"
     association :application, factory: :application
   end
 
+  factory :poll_option do
+    name "Plan A"
+    icon_url "uploads.example.com/option.jpg"
+  end
+
+  factory :poll_template do
+    name "Consensus"
+  end
+
+  factory :poll do
+    poll_template
+    name "This is a poll"
+    description "with a description"
+    association :author, factory: :user
+  end
+
+  factory :community, class: Communities::Visitor do
+  end
+
 end

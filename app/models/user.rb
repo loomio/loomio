@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
+  has_many :stances, as: :participant
+
   has_attached_file :uploaded_avatar,
     styles: {
               large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
@@ -171,7 +173,7 @@ class User < ActiveRecord::Base
   end
 
   def is_member_of?(group)
-    memberships.where(group_id: group.id).any?
+    !!memberships.find_by(group_id: group.id)
   end
 
   def time_zone_city

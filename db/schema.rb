@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116013510) do
+ActiveRecord::Schema.define(version: 20161209112736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -669,6 +669,55 @@ ActiveRecord::Schema.define(version: 20161116013510) do
   add_index "organisation_visits", ["organisation_id"], name: "index_organisation_visits_on_organisation_id", using: :btree
   add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
+  create_table "permits", force: :cascade do |t|
+    t.jsonb "details", default: {}, null: false
+  end
+
+  create_table "poll_communities", force: :cascade do |t|
+    t.integer "poll_id"
+    t.integer "community_id"
+  end
+
+  create_table "poll_options", force: :cascade do |t|
+    t.integer "poll_template_id"
+    t.string  "name"
+    t.string  "icon_url"
+  end
+
+  create_table "poll_poll_options", force: :cascade do |t|
+    t.integer "poll_id"
+    t.integer "poll_option_id"
+  end
+
+  create_table "poll_templates", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.integer  "poll_template_id"
+    t.integer  "author_id"
+    t.integer  "outcome_author_id"
+    t.string   "outcome"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stances", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.integer  "poll_option_id"
+    t.integer  "participant_id"
+    t.string   "participant_type"
+    t.string   "statement"
+    t.boolean  "latest",           default: true, null: false
+    t.integer  "score",            default: 1,    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", force: :cascade do |t|
     t.string  "kind"
     t.date    "expires_at"
@@ -786,6 +835,14 @@ ActiveRecord::Schema.define(version: 20161116013510) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "visitors", force: :cascade do |t|
+    t.string   "participation_token"
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visitor_id"

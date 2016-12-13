@@ -315,6 +315,14 @@ class Ability
       @user.is_logged_in?
     end
 
+    can :create, Poll do |poll|
+      @user.is_logged_in?
+    end
+
+    can :participate, Poll do |poll|
+      poll.communities.detect { |community| community.includes?(user) }
+    end
+
     add_additional_abilities
   end
 
