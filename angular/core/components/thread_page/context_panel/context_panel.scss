@@ -37,7 +37,7 @@
 }
 
 .context-panel__actions {
-  display: flex;
+  @include displayFlex;
   margin-top: 16px;
 }
 
