@@ -1,5 +1,8 @@
 class Communities::Email < Communities::Base
-  attr_accessor :emails
+  set_community_type :email
+  set_custom_fields  :emails
+
+  validates :emails, length: { minimum: 1 }
 
   def includes?(participant)
     emails.include?(participant.email)

@@ -259,7 +259,19 @@ published_at "2015-11-18 14:28:30"
     association :author, factory: :user
   end
 
-  factory :community, class: Communities::Visitor do
+  factory :community, class: Communities::Base do
+  end
+
+  factory :loomio_community, class: Communities::Loomio do
+  end
+
+  factory :email_community, class: Communities::Email do
+  end
+
+  factory :visitor do
+    name "John Doe"
+    email "john@doe.com"
+    participation_token SecureRandom.hex(8)
   end
 
 end

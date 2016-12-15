@@ -7,7 +7,7 @@ class Communities::Base < ActiveRecord::Base
   end
 
   def self.set_custom_fields(*fields)
-    fields.each do |field|
+    fields.map(&:to_s).each do |field|
       define_method field,        ->        { self[:custom_fields][field] }
       define_method :"#{field}=", ->(value) { self[:custom_fields][field] = value }
     end
@@ -20,16 +20,6 @@ class Communities::Base < ActiveRecord::Base
     "Communities::#{attributes.fetch('community_type', 'base').classify}".constantize
   rescue NameError
     self
-  end
-
-  def custom_fields=(value)
-    warn "Setting custom fields directly is not recommended. Please use the getters and setters provided by the 'set_custom_fields' method instead."
-    super
-  end
-
-  def custom_fields
-    warn "Accessing custom fields directly is not recommended. Please use the getters and setters provided by the 'set_custom_fields' method instead."
-    super
   end
 
   def includes?(participant)
