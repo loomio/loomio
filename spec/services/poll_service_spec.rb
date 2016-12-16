@@ -4,11 +4,13 @@ describe PollService do
   let(:new_poll) { build :poll, poll_template: poll_template }
   let(:poll) { create :poll, poll_template: poll_template }
   let(:poll_template) { create :poll_template, poll_options: [create(:poll_option)]}
-  let(:community) { create :community }
   let(:user) { create :user }
   let(:visitor) { LoggedOutUser.new }
   let(:group) { create :group }
+  let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
+
+  before { group.add_member! user }
 
   describe '#create' do
     it 'creates a new poll' do
@@ -24,11 +26,11 @@ describe PollService do
     end
 
     it 'populates communities if given' do
-      PollService.create(poll: new_poll, actor: user, communities: [community])
+      PollService.create(poll: new_poll, actor: user, communities: [group.community])
 
       poll = Poll.last
       expect(poll.communities.count).to eq 1
-      expect(poll.communities.last).to eq community
+      expect(poll.communities.last).to eq group.community
     end
 
     it 'populates polling actions for the new poll' do
@@ -46,6 +48,10 @@ describe PollService do
 
     it 'does not allow visitors to create polls' do
       expect { PollService.create(poll: new_poll, actor: visitor) }.to raise_error { CanCan::AccessDenied }
+    end
+
+    it 'does not allow users to create polls for communities they are not a part of' do
+      expect { PollService.create(poll: new_poll, actor: user, parent: another_group) }.to raise_error { CanCan::AccessDenied }
     end
 
     it 'creates a poll which references the group community' do

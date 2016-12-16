@@ -316,7 +316,8 @@ class Ability
     end
 
     can :create, Poll do |poll|
-      @user.is_logged_in?
+      @user.is_logged_in? &&
+      poll.communities.all? { |community| community.includes?(@user) }
     end
 
     can :participate, Poll do |poll|

@@ -1,10 +1,10 @@
 class PollService
   def self.create(poll:, actor:, communities: [], parent: nil)
+    poll.communities = apply_communities(communities: communities, parent: parent)
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(
       author:           actor,
-      communities:      apply_communities(communities: communities, parent: parent),
       poll_options:     PollOption.where(poll_template_id: poll.poll_template_id)
     )
 
