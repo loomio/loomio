@@ -320,8 +320,8 @@ class Ability
       poll.communities.all? { |community| community.includes?(@user) }
     end
 
-    can :participate, Poll do |poll|
-      poll.communities.detect { |community| community.includes?(@user) }
+    can :create, Stance do |stance|
+      stance.poll.communities.detect { |community| community.includes?(@user) }
     end
 
     add_additional_abilities

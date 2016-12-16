@@ -260,6 +260,12 @@ published_at "2015-11-18 14:28:30"
     after(:build) { |poll| poll.communities.build(community_type: :email) }
   end
 
+  factory :stance do
+    poll
+    poll_option
+    association :participant, factory: :user
+  end
+
   factory :community, class: Communities::Base do
     community_type 'test'
   end
