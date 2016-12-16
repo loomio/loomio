@@ -257,9 +257,11 @@ published_at "2015-11-18 14:28:30"
     name "This is a poll"
     description "with a description"
     association :author, factory: :user
+    after(:build) { |poll| poll.communities.build(community_type: :email) }
   end
 
   factory :community, class: Communities::Base do
+    community_type 'test'
   end
 
   factory :loomio_group_community, class: Communities::LoomioGroup do

@@ -1,10 +1,10 @@
 class PollService
-  def self.create(poll:, actor:, communities:)
+  def self.create(poll:, actor:, communities: [], parent: nil)
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(
       author:           actor,
-      communities:      communities,
+      communities:      apply_communities(communities: communities, parent: parent),
       poll_options:     PollOption.where(poll_template_id: poll.poll_template_id)
     )
 
@@ -22,5 +22,11 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
+  end
+
+  def self.apply_communities(communities:, parent:)
+    communities << parent&.community
+    communities << parent.group&.community if parent.respond_to?(:group)
+    communities.compact.presence || [Communities::Public.new]
   end
 end

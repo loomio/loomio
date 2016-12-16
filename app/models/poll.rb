@@ -14,7 +14,6 @@ class Poll < ActiveRecord::Base
   has_many :communities,  through: :poll_communities
 
   validates :name, presence: true
-  validates :poll_options, length: { minimum: 1 }
   validates :communities,  length: { minimum: 1 }
 
   # NB this is an Array and NOT an ActiveRecord::Relation. This could likely be improved.

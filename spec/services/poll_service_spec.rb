@@ -8,12 +8,7 @@ describe PollService do
   let(:user) { create :user }
   let(:visitor) { LoggedOutUser.new }
   let(:group) { create :group }
-
-  before do
-    # this will need to be migrated in the real app so it happens automatically
-    group.update(community: Communities::LoomioGroup.new(group: group))
-    discussion.update(community: Communities::LoomioDiscussion.new(discussion: discussion))
-  end
+  let(:discussion) { create :discussion }
 
   describe '#create' do
     it 'creates a new poll' do
@@ -54,7 +49,7 @@ describe PollService do
     end
 
     it 'creates a poll which references the group community' do
-      PollService.create(poll: new_poll, actor: visitor, parent: group)
+      PollService.create(poll: new_poll, actor: user, parent: group)
 
       poll = Poll.last
       expect(poll.communities.length).to eq 1
@@ -63,7 +58,7 @@ describe PollService do
     end
 
     it 'creates a poll which references the discussion community' do
-      PollService.create(poll: new_poll, actor: visitor, parent: discussion)
+      PollService.create(poll: new_poll, actor: user, parent: discussion)
 
       poll = Poll.last
       expect(poll.communities.length).to eq 2
