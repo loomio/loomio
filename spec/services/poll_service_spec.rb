@@ -8,7 +8,7 @@ describe PollService do
   let(:user) { create :user }
   let(:visitor) { LoggedOutUser.new }
   let(:group) { create :group }
-  let(:discussion) { create :discussion }
+  let(:discussion) { create :discussion, group: group }
 
   describe '#create' do
     it 'creates a new poll' do
