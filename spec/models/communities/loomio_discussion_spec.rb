@@ -5,8 +5,8 @@ require 'rails_helper'
    let(:group) { create :group }
    let(:another_group) { create :group }
    let(:discussion) { create :discussion, group: group }
+   let(:community) { discussion.community }
    let(:another_discussion) { create :discussion, group: another_group }
-   let(:community) { create :loomio_discussion_community, discussion: discussion }
    let(:user) { create :user }
    let(:non_member) { create :user }
    let(:visitor) { create :visitor }
@@ -40,6 +40,13 @@ require 'rails_helper'
 
      it 'returns false for visitors' do
        expect(community.includes?(visitor)).to eq false
+     end
+
+     it 'only includes admins for groups where members cannot vote' do
+       group.update(members_can_vote: false)
+       expect(community.reload.includes?(user)).to eq false
+       Membership.find_by(user: user, group: group).update(admin: true)
+       expect(community.reload.includes?(user)).to eq true
      end
    end
 

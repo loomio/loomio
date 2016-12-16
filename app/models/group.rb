@@ -186,6 +186,11 @@ class Group < ActiveRecord::Base
   define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
 
+  def community
+    self[:community_id] ||= Communities::LoomioGroup.create(group: self).id
+    super
+  end
+
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
   def default_cover_photo

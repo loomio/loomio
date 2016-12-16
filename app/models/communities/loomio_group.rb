@@ -14,7 +14,8 @@ class Communities::LoomioGroup < Communities::Base
   end
 
   def includes?(participant)
-    participant.is_member_of?(self.group) if self.group
+    participant.is_admin_of?(self.group) ||
+    (participant.is_member_of?(self.group) && group.members_can_vote?)
   end
 
   def participants

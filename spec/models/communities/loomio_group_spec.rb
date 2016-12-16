@@ -39,6 +39,13 @@ require 'rails_helper'
      it 'returns false for visitors' do
        expect(community.includes?(visitor)).to eq false
      end
+
+     it 'only includes admins for groups where members cannot vote' do
+       group.update(members_can_vote: false)
+       expect(community.includes?(user)).to eq false
+       Membership.find_by(user: user, group: group).update(admin: true)
+       expect(community.reload.includes?(user)).to eq true
+     end
    end
 
    describe 'participants' do

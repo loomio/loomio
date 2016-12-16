@@ -18,11 +18,10 @@ class Communities::LoomioDiscussion < Communities::Base
   end
 
   def includes?(participant)
-    participant.is_admin_of?(self.group) ||
-    self.group.members_can_vote? && participant.is_member_of?(self.group)
+    self.group.community.includes?(participant)
   end
 
   def participants
-    @participants ||= group.members_can_vote? ? group.members : group.admins
+    self.group.community.participants
   end
 end

@@ -99,6 +99,11 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :proposal_outcomes_count
 
+  def community
+    self[:community_id] ||= Communities::LoomioDiscussion.create(discussion: self).id
+    super
+  end
+
   def discussion
     self
   end
