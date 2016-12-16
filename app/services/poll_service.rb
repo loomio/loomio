@@ -27,6 +27,6 @@ class PollService
   def self.apply_communities(communities:, parent:)
     communities << parent&.community
     communities << parent.group&.community if parent.respond_to?(:group)
-    communities.compact.presence || [Communities::Public.new]
+    communities.compact.uniq.presence || [Communities::Public.new]
   end
 end

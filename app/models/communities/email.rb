@@ -9,6 +9,6 @@ class Communities::Email < Communities::Base
   end
 
   def participants
-    @participants ||= email.map { |email| Visitor.new(email: email) }
+    @participants ||= emails.map { |email| Visitor.new(email: email) }
   end
 end

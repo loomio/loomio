@@ -33,6 +33,14 @@ describe PollService do
       expect(poll.communities.last).to eq group.community
     end
 
+    it 'does not duplicate communities' do
+      PollService.create(poll: new_poll, actor: user, communities: [group.community], parent: group)
+
+      poll = Poll.last
+      expect(poll.communities.count).to eq 1
+      expect(poll.communities.last).to eq group.community
+    end
+
     it 'populates polling actions for the new poll' do
       PollService.create(poll: new_poll, actor: user)
 

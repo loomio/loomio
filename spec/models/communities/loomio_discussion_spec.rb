@@ -15,6 +15,17 @@ require 'rails_helper'
      group.add_member! user
    end
 
+   describe 'group' do
+     it 'returns the discussions group' do
+       expect(community.group).to eq discussion.group
+     end
+
+     it 'returns nil if the discussion is not defined' do
+       community.discussion_key = nil
+       expect(community.group).to be_nil
+     end
+   end
+
    describe 'discussion' do
      it 'allows setting discussion by key' do
        community.update(discussion_key: another_discussion.key)
@@ -22,7 +33,7 @@ require 'rails_helper'
        expect(community.discussion).to eq another_discussion
      end
 
-     it 'allows setting group by reference' do
+     it 'allows setting discussion by reference' do
        community.update(discussion: another_discussion)
        expect(community.reload.discussion_key).to eq another_discussion.key
        expect(community.discussion).to eq another_discussion
@@ -42,7 +53,7 @@ require 'rails_helper'
        expect(community.includes?(visitor)).to eq false
      end
 
-     it 'only includes admins for groups where members cannot vote' do
+     it 'only includes admins for discussions where members cannot vote' do
        group.update(members_can_vote: false)
        expect(community.reload.includes?(user)).to eq false
        Membership.find_by(user: user, group: group).update(admin: true)
@@ -51,7 +62,7 @@ require 'rails_helper'
    end
 
    describe 'participants' do
-     it 'returns the members of the group' do
+     it 'returns the members of the discussions group' do
        participants = community.participants
        expect(participants).to include user
        expect(participants).to_not include non_member

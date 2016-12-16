@@ -321,7 +321,7 @@ class Ability
     end
 
     can :participate, Poll do |poll|
-      poll.communities.detect { |community| community.includes?(user) }
+      poll.communities.detect { |community| community.includes?(@user) }
     end
 
     add_additional_abilities

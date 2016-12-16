@@ -19,4 +19,16 @@ require 'rails_helper'
      end
    end
 
+   describe 'includes?' do
+     it 'raises a not implemented error' do
+       expect { Communities::Base.new.includes?(User.last) }.to raise_error { NotImplementedError }
+     end
+   end
+
+   describe 'participants' do
+     it 'raises a not implemented error' do
+       expect { Communities::Base.new.participants }.to raise_error { NotImplementedError }
+     end
+   end
+
  end
