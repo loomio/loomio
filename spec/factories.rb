@@ -262,7 +262,10 @@ published_at "2015-11-18 14:28:30"
   factory :community, class: Communities::Base do
   end
 
-  factory :loomio_community, class: Communities::Loomio do
+  factory :loomio_group_community, class: Communities::LoomioGroup do
+  end
+
+  factory :loomio_discussion_community, class: Communities::LoomioDiscussion do
   end
 
   factory :email_community, class: Communities::Email do

@@ -173,7 +173,11 @@ class User < ActiveRecord::Base
   end
 
   def is_member_of?(group)
-    !!memberships.find_by(group_id: group.id)
+    !!memberships.find_by(group_id: group&.id)
+  end
+
+  def is_admin_of?(group)
+    !!memberships.find_by(group_id: group&.id, admin: true)
   end
 
   def time_zone_city

@@ -1,11 +1,12 @@
-class Communities::Loomio < Communities::Base
-  set_community_type :loomio
+class Communities::LoomioGroup < Communities::Base
+  set_community_type :loomio_group
   set_custom_fields  :group_key
 
   validates :group, presence: true
 
   def group
-    Group.find_by(key: self.group_key)
+    @group = nil unless @group&.key == self.group_key
+    @group ||= Group.find_by(key: self.group_key)
   end
 
   def group=(group)

@@ -118,6 +118,8 @@ class Group < ActiveRecord::Base
 
   has_many :comments, through: :discussions
 
+  has_many :polls, through: :community
+
   after_initialize :set_defaults
 
   after_create :guess_cohort
@@ -135,6 +137,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
+  belongs_to :community, class_name: 'Communities::LoomioGroup'
   belongs_to :default_group_cover
 
   has_many :subgroups,

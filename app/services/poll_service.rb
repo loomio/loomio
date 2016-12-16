@@ -1,10 +1,11 @@
 class PollService
-  def self.create(poll:, actor:, communities: [Communities::Public.new])
+  def self.create(poll:, actor:, communities:)
     actor.ability.authorize! :create, poll
+
     poll.assign_attributes(
-      author:      actor,
-      communities: communities,
-      poll_options: PollOption.where(poll_template_id: poll.poll_template_id)
+      author:           actor,
+      communities:      communities,
+      poll_options:     PollOption.where(poll_template_id: poll.poll_template_id)
     )
 
     return false unless poll.valid?

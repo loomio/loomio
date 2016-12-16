@@ -42,6 +42,10 @@ module NullUser
     false
   end
 
+  def is_admin_of?(group)
+    false
+  end
+
   def can?(*args)
     ability.can?(*args)
   end

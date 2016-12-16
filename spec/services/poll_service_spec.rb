@@ -7,6 +7,13 @@ describe PollService do
   let(:community) { create :community }
   let(:user) { create :user }
   let(:visitor) { LoggedOutUser.new }
+  let(:group) { create :group }
+
+  before do
+    # this will need to be migrated in the real app so it happens automatically
+    group.update(community: Communities::LoomioGroup.new(group: group))
+    discussion.update(community: Communities::LoomioDiscussion.new(discussion: discussion))
+  end
 
   describe '#create' do
     it 'creates a new poll' do
@@ -44,6 +51,26 @@ describe PollService do
 
     it 'does not allow visitors to create polls' do
       expect { PollService.create(poll: new_poll, actor: visitor) }.to raise_error { CanCan::AccessDenied }
+    end
+
+    it 'creates a poll which references the group community' do
+      PollService.create(poll: new_poll, actor: visitor, parent: group)
+
+      poll = Poll.last
+      expect(poll.communities.length).to eq 1
+      expect(poll.communities).to include group.community
+      expect(group.polls).to include poll
+    end
+
+    it 'creates a poll which references the discussion community' do
+      PollService.create(poll: new_poll, actor: visitor, parent: discussion)
+
+      poll = Poll.last
+      expect(poll.communities.length).to eq 2
+      expect(poll.communities).to include discussion.community
+      expect(poll.communities).to include group.community
+      expect(group.polls).to include poll
+      expect(discussion.polls).to include poll
     end
 
   end

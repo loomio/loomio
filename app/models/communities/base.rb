@@ -2,6 +2,9 @@ class Communities::Base < ActiveRecord::Base
   self.table_name = :communities
   validates :community_type, presence: true
 
+  has_many :poll_communities
+  has_many :polls, through: :poll_communities
+
   def self.set_community_type(type)
     after_initialize { self.community_type = type }
   end
