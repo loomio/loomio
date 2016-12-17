@@ -320,13 +320,4 @@ describe Discussion do
       end
     end
   end
-
-  describe 'community' do
-    it 'creates a new community if one does not exist' do
-      expect(discussion.community_id).to be_nil
-      expect(discussion.community).to be_a Communities::LoomioDiscussion
-      expect(discussion.community.discussion).to eq discussion
-      expect(discussion.community.group).to eq discussion.group
-    end
-  end
 end

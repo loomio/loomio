@@ -48,7 +48,6 @@ class Discussion < ActiveRecord::Base
   has_paper_trail only: [:title, :description, :private]
 
   belongs_to :group
-  belongs_to :community, class_name: 'Communities::LoomioDiscussion'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy
@@ -67,7 +66,7 @@ class Discussion < ActiveRecord::Base
   has_many :salient_items, -> { includes(:user).where(kind: SALIENT_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
 
   has_many :discussion_readers
-  has_many :polls, through: :community
+  has_many :polls
 
   scope :search_for, ->(query, user, opts = {}) do
     query = sanitize(query)
@@ -98,11 +97,6 @@ class Discussion < ActiveRecord::Base
   update_counter_cache :group, :motions_count
   update_counter_cache :group, :closed_motions_count
   update_counter_cache :group, :proposal_outcomes_count
-
-  def community
-    self[:community_id] ||= Communities::LoomioDiscussion.create(discussion: self).id
-    super
-  end
 
   def discussion
     self

@@ -274,10 +274,6 @@ published_at "2015-11-18 14:28:30"
     group
   end
 
-  factory :loomio_discussion_community, class: Communities::LoomioDiscussion do
-    discussion
-  end
-
   factory :email_community, class: Communities::Email do
     emails ["test@test.com"]
   end

@@ -3,6 +3,9 @@ class Poll < ActiveRecord::Base
   belongs_to :author, class_name: "User", required: true
   belongs_to :outcome_author, class_name: "User", required: false
 
+  belongs_to :discussion, required: false
+  belongs_to :group, required: false
+
   has_many :stances
   has_many :users,        through: :stances, source: :participant, source_type: "User"
   has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"

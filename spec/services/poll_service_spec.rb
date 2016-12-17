@@ -71,13 +71,14 @@ describe PollService do
       expect(group.polls).to include poll
     end
 
-    it 'creates a poll which references the discussion community' do
+    it 'creates a poll which references the group community from a discussion' do
       PollService.create(poll: new_poll, actor: user, parent: discussion)
 
       poll = Poll.last
-      expect(poll.communities.length).to eq 2
-      expect(poll.communities).to include discussion.community
+      expect(poll.communities.length).to eq 1
       expect(poll.communities).to include group.community
+      expect(poll.discussion).to eq discussion
+      expect(poll.group).to eq discussion.group
       expect(group.polls).to include poll
       expect(discussion.polls).to include poll
     end

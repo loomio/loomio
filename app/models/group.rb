@@ -118,7 +118,7 @@ class Group < ActiveRecord::Base
 
   has_many :comments, through: :discussions
 
-  has_many :polls, through: :community
+  has_many :polls
 
   after_initialize :set_defaults
 
