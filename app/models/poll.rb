@@ -11,7 +11,7 @@ class Poll < ActiveRecord::Base
   has_many :poll_options, through: :poll_poll_options
 
   has_many :poll_communities
-  has_many :communities,  through: :poll_communities
+  has_many :communities, through: :poll_communities
 
   has_many :poll_references
 
@@ -30,10 +30,12 @@ class Poll < ActiveRecord::Base
   end
 
   validates :name, presence: true
-  validates :communities,  length: { minimum: 1 }
+  validates :communities, length: { minimum: 1 }
 
-  # NB this is an Array and NOT an ActiveRecord::Relation. This could likely be improved.
-  def participants
-    @participants ||= users + visitors
+  # NB this is an Array and NOT an ActiveRecord::Relation.
+  # This could possibly be improved.
+  # Also, maybe it doesn't matter.
+  def voters
+    @voters ||= users + visitors
   end
 end

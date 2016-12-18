@@ -9,7 +9,4 @@ class StanceService
 
     EventBus.broadcast 'stance_create', stance, actor
   end
-
-  def self.update
-  end
 end
