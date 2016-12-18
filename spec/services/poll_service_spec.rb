@@ -154,4 +154,27 @@ describe PollService do
       expect { PollService.convert(motions: motion) }.to_not change { Poll.count }
     end
   end
+
+  describe 'close' do
+    it 'closes a poll' do
+      PollService.create(poll: new_poll, actor: user)
+      PollService.close(poll: new_poll)
+      expect(new_poll.reload.closed_at).to be_present
+    end
+
+    it 'disallows the creation of new stances' do
+      PollService.create(poll: new_poll, actor: user)
+      new_stance = build(:stance, poll: new_poll)
+      expect(user.ability.can?(:create, new_stance)).to eq true
+      PollService.close(poll: new_poll)
+      expect(user.ability.can?(:create, new_stance)).to eq false
+    end
+
+    it 'freezes the possible participants from a group' do
+      PollService.create(poll: new_poll, actor: user, reference: group_reference)
+      PollService.close(poll: new_poll)
+      group.add_member! another_user
+      expect(poll.communities.first.includes?(another_user)).to eq false
+    end
+  end
 end

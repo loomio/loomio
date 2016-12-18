@@ -321,6 +321,7 @@ class Ability
     end
 
     can :create, Stance do |stance|
+      stance.poll.closed_at.nil? &&
       stance.poll.communities.detect { |community| community.includes?(@user) }
     end
 

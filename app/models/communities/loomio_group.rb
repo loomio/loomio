@@ -4,6 +4,10 @@ class Communities::LoomioGroup < Communities::Base
 
   validates :group, presence: true
 
+  def to_user_community
+    Communities::LoomioUsers.new(loomio_user_ids: participants.pluck(:id), group_key: self.group_key)
+  end
+
   def group
     @group = nil unless @group&.key == self.group_key
     @group ||= Group.find_by(key: self.group_key)

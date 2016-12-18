@@ -17,9 +17,12 @@ class PollService
   def self.close(poll:, actor: nil)
     actor.ability.authorize!(:close, poll) if actor
 
-    poll.poll_communities.joins(:communities).where('communities.community_type': :loomio_group).each do |pc|
-      pc.update(community: pc.community.clone)
+    poll.update(closed_at: Time.now)
+    poll.poll_communities.for(:loomio_group).each do |poll_community|
+      poll_community.update(community: poll_community.community.to_user_community)
     end
+
+    EventBus.broadcast('poll_close', poll, actor)
   end
 
   def self.update(poll:, params:, actor:)
