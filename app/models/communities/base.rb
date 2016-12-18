@@ -20,7 +20,7 @@ class Communities::Base < ActiveRecord::Base
   # fallback to a Communities::Base if we can't find an appropriate subclass
   # (note that Communities::Base will error when sent the 'includes?' or 'participants' message)
   def self.discriminate_class_for_record(attributes)
-    "Communities::#{attributes.fetch('community_type', 'base').classify}".constantize
+    "Communities::#{attributes.fetch('community_type', 'base').camelize}".constantize
   rescue NameError
     self
   end

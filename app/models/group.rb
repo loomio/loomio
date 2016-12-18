@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
+  include HasPolls
   include MessageChannel
 
   class MaximumMembershipsExceeded < Exception
@@ -117,8 +118,6 @@ class Group < ActiveRecord::Base
            dependent: :destroy
 
   has_many :comments, through: :discussions
-
-  has_many :polls
 
   after_initialize :set_defaults
 

@@ -1,17 +1,25 @@
 class PollService
-  def self.create(poll:, actor:, communities: [], parent: nil)
-    poll.communities = apply_communities(communities: communities, parent: parent)
-    actor.ability.authorize! :create, poll
-
+  def self.create(poll:, actor:, communities: [], reference: PollReferences::Null.new)
     poll.assign_attributes(
-      author:           actor,
-      poll_options:     PollOption.where(poll_template_id: poll.poll_template_id)
+      poll_references: reference.references,
+      poll_options:    poll.poll_template.poll_options,
+      communities:     (communities + reference.communities).uniq.presence || [Communities::Public.new],
+      author:          actor
     )
+    actor.ability.authorize! :create, poll
 
     return false unless poll.valid?
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
+  end
+
+  def self.close(poll:, actor: nil)
+    actor.ability.authorize!(:close, poll) if actor
+
+    poll.poll_communities.joins(:communities).where('communities.community_type': :loomio_group).each do |pc|
+      pc.update(community: pc.community.clone)
+    end
   end
 
   def self.update(poll:, params:, actor:)
@@ -24,9 +32,40 @@ class PollService
     EventBus.broadcast('poll_update', poll, actor)
   end
 
-  def self.apply_communities(communities:, parent:)
-    communities << parent&.community
-    communities << parent.group&.community if parent.respond_to?(:group)
-    communities.compact.uniq.presence || [Communities::Public.new]
+  def self.convert(motions:)
+    template  = PollTemplate.motion_template
+    options   = template.poll_options
+
+    # create a new poll from the motion
+    Array(motions).map do |motion|
+      reference = PollReferences::Motion.new(motion)
+      Poll.create(
+        poll_template:     template,
+        poll_options:      options,
+        poll_references:   reference.references,
+        communities:       reference.communities,
+        name:              motion.name,
+        description:       motion.description,
+        author_id:         motion.author_id,
+        outcome_author_id: motion.outcome_author_id,
+        outcome:           motion.outcome,
+        created_at:        motion.created_at,
+        updated_at:        motion.updated_at,
+        closing_at:        motion.closing_at,
+        closed_at:         motion.closed_at,
+        stances:           motion.votes.map do |vote|
+          Stance.new(
+            poll_option:      options.detect { |o| o.name == vote.position_verb },
+            statement:        vote.statement,
+            participant_type: 'User',
+            participant_id:   vote.user_id,
+            latest:           vote.age.zero?,
+            created_at:       vote.created_at,
+            updated_at:       vote.updated_at
+          )
+        end
+      ) unless motion.polls.any? # don't duplicate polls from a motion
+    end
   end
+
 end

@@ -20,6 +20,7 @@ class Discussion < ActiveRecord::Base
   include Translatable
   include HasTimeframe
   include HasMentions
+  include HasPolls
   include MessageChannel
 
   scope :archived, -> { where('archived_at is not null') }
@@ -66,7 +67,6 @@ class Discussion < ActiveRecord::Base
   has_many :salient_items, -> { includes(:user).where(kind: SALIENT_ITEM_KINDS).order('created_at ASC') }, class_name: 'Event'
 
   has_many :discussion_readers
-  has_many :polls
 
   scope :search_for, ->(query, user, opts = {}) do
     query = sanitize(query)
