@@ -174,7 +174,7 @@ describe PollService do
       PollService.create(poll: new_poll, actor: user, reference: group_reference)
       PollService.close(poll: new_poll)
       group.add_member! another_user
-      expect(poll.communities.first.includes?(another_user)).to eq false
+      expect(new_poll.reload.communities.first.includes?(another_user)).to eq false
     end
   end
 end
