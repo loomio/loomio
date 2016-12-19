@@ -315,8 +315,18 @@ class Ability
       @user.is_logged_in?
     end
 
+    can :poll, Communities::Base do |community|
+      community.includes?(@user)
+    end
+
     can :create, Poll do |poll|
       @user.is_logged_in? &&
+      poll.communities.all? { |community| user.ability.can?(:poll, community) }
+    end
+
+    can :set_communities, Poll do |poll|
+      @user == poll.author &&
+      poll.stances.empty? &&
       poll.communities.all? { |community| community.includes?(@user) }
     end
 

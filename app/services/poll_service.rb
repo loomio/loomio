@@ -1,10 +1,10 @@
 class PollService
-  def self.create(poll:, actor:, communities: [], reference: nil)
+  def self.create(poll:, actor:, reference: nil)
     reference = PollReferences::Base.for(reference)
     poll.assign_attributes(
+      communities:     reference.communities.presence || [Communities::Public.new],
       poll_references: reference.references,
       poll_options:    poll.poll_template.poll_options,
-      communities:     (communities + reference.communities).uniq.presence || [Communities::Public.new],
       author:          actor
     )
     actor.ability.authorize! :create, poll
@@ -13,6 +13,20 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
+  end
+
+  def self.set_communities(poll:, actor:, communities:)
+    return false unless communities.any?
+
+    actor.ability.authorize! :set_communities, poll
+    communities.each { |community| actor.ability.authorize! :poll, community }
+
+    poll.assign_attributes(communities: communities)
+
+    return false unless poll.valid?
+    poll.save!
+
+    EventBus.broadcast('poll_set_communities', poll, actor)
   end
 
   def self.close(poll:, actor: nil)

@@ -12,6 +12,7 @@ describe PollService do
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:stance) { create :stance, poll: new_poll }
 
   before { group.add_member! user }
 
@@ -20,28 +21,12 @@ describe PollService do
       expect { PollService.create(poll: new_poll, actor: user) }.to change { Poll.count }.by(1)
     end
 
-    it 'populates a public community if none are given' do
+    it 'populates a public community if no reference is given' do
       PollService.create(poll: new_poll, actor: user)
 
       poll = Poll.last
       expect(poll.communities.count).to eq 1
       expect(poll.communities.last).to be_a Communities::Public
-    end
-
-    it 'populates communities if given' do
-      PollService.create(poll: new_poll, actor: user, communities: [group.community])
-
-      poll = Poll.last
-      expect(poll.communities.count).to eq 1
-      expect(poll.communities.last).to eq group.community
-    end
-
-    it 'does not duplicate communities' do
-      PollService.create(poll: new_poll, actor: user, communities: [group.community], reference: group)
-
-      poll = Poll.last
-      expect(poll.communities.count).to eq 1
-      expect(poll.communities.last).to eq group.community
     end
 
     it 'populates polling actions for the new poll' do
@@ -59,10 +44,6 @@ describe PollService do
 
     it 'does not allow visitors to create polls' do
       expect { PollService.create(poll: new_poll, actor: visitor) }.to raise_error { CanCan::AccessDenied }
-    end
-
-    it 'does not allow users to create polls for communities they are not a part of' do
-      expect { PollService.create(poll: new_poll, actor: another_user, reference: group) }.to raise_error { CanCan::AccessDenied }
     end
 
     it 'creates a poll which references the group community' do
@@ -86,6 +67,10 @@ describe PollService do
       expect(discussion.polls).to include poll
     end
 
+    it 'does not allow users to create polls for communities they are not a part of' do
+      expect { PollService.create(poll: new_poll, actor: another_user, reference: group) }.to raise_error { CanCan::AccessDenied }
+    end
+
     describe 'announcements' do
       it 'announces the poll to a group' do
         new_poll.announce_on_create = true
@@ -102,6 +87,37 @@ describe PollService do
       end
     end
 
+  end
+
+  describe 'set_communities' do
+    before { PollService.create(poll: new_poll, actor: user) }
+
+    it 'sets the communities of the poll' do
+      PollService.set_communities(poll: new_poll, actor: user, communities: [group.community])
+      expect(new_poll.communities.length).to eq 1
+      expect(new_poll.communities).to include group.community
+    end
+
+    it 'does not allow the communities to change once voting has begun' do
+      stance
+      expect { PollService.set_communities(poll: new_poll, actor: user, communities: [group.community]) }.to raise_error { CanCan::AccessDenied }
+      expect(new_poll.communities).to_not include group.community
+    end
+
+    it 'does not allow anyone other than the author to change communities' do
+      expect { PollService.set_communities(poll: new_poll, actor: another_user, communities: [group.community]) }.to raise_error { CanCan::AccessDenied }
+      expect(new_poll.reload.communities.first).to be_a Communities::Public
+    end
+
+    it 'does not allow adding communities the author is not a part of' do
+      expect { PollService.set_communities(poll: new_poll, actor: user, communities: [another_group.community] ) }.to raise_error { CanCan::AccessDenied }
+    end
+
+    it 'does not allow removing all communities' do
+      PollService.set_communities(poll: new_poll, actor: user, communities: [])
+      expect(new_poll.communities.count).to eq 1
+      expect(new_poll.communities.first).to be_a Communities::Public
+    end
   end
 
   describe '#update' do
