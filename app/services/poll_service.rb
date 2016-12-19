@@ -1,5 +1,6 @@
 class PollService
-  def self.create(poll:, actor:, communities: [], reference: PollReferences::Null.new)
+  def self.create(poll:, actor:, communities: [], reference: nil)
+    reference = PollReferences::Base.for(reference)
     poll.assign_attributes(
       poll_references: reference.references,
       poll_options:    poll.poll_template.poll_options,

@@ -10,10 +10,8 @@ describe PollService do
   let(:vote) { create :vote, motion: motion, statement: "I am a statement" }
   let(:visitor) { LoggedOutUser.new }
   let(:group) { create :group }
-  let(:group_reference) { PollReferences::Group.new(group) }
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:discussion_reference) { PollReferences::Discussion.new(discussion) }
 
   before { group.add_member! user }
 
@@ -39,7 +37,7 @@ describe PollService do
     end
 
     it 'does not duplicate communities' do
-      PollService.create(poll: new_poll, actor: user, communities: [group.community], reference: group_reference)
+      PollService.create(poll: new_poll, actor: user, communities: [group.community], reference: group)
 
       poll = Poll.last
       expect(poll.communities.count).to eq 1
@@ -64,11 +62,11 @@ describe PollService do
     end
 
     it 'does not allow users to create polls for communities they are not a part of' do
-      expect { PollService.create(poll: new_poll, actor: another_user, reference: group_reference) }.to raise_error { CanCan::AccessDenied }
+      expect { PollService.create(poll: new_poll, actor: another_user, reference: group) }.to raise_error { CanCan::AccessDenied }
     end
 
     it 'creates a poll which references the group community' do
-      PollService.create(poll: new_poll, actor: user, reference: group_reference)
+      PollService.create(poll: new_poll, actor: user, reference: group)
 
       poll = Poll.last
       expect(poll.communities.length).to eq 1
@@ -77,7 +75,7 @@ describe PollService do
     end
 
     it 'creates a poll which references the group community from a discussion' do
-      PollService.create(poll: new_poll, actor: user, reference: discussion_reference)
+      PollService.create(poll: new_poll, actor: user, reference: discussion)
 
       poll = Poll.last
       expect(poll.communities.length).to eq 1
@@ -187,7 +185,7 @@ describe PollService do
     end
 
     it 'freezes the possible participants from a group' do
-      PollService.create(poll: new_poll, actor: user, reference: group_reference)
+      PollService.create(poll: new_poll, actor: user, reference: group)
       PollService.close(poll: new_poll)
       group.add_member! another_user
       expect(new_poll.reload.communities.first.includes?(another_user)).to eq false
