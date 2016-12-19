@@ -1,10 +1,24 @@
 .undecided-panel__icon {
-  font-size: 1.7em !important;
-  width: 24px;
-  height: 24px;
+  font-size: 30px;
+  line-height: 24px;
+  padding: 0 10px 0 2px;
 }
 
 .undecided-panel__list {
   list-style: none;
   padding-left: 0px;
+}
+
+.undecided-panel__list-item {
+  margin-top: 15px;
+  display: flex;
+}
+
+.undecided-panel__actions {
+  display: flex;
+}
+
+.undecided-panel__show,
+.undecided-panel__remind {
+  margin: 0 10px 0 0;
 }

@@ -327,7 +327,9 @@ en:
 
   undecided_panel:
     aria_label: 'Undecided members'
-    show_undecided: Show undecided members
+    show: Show
+    remind: Remind
+    undecided: undecided
     hide_undecided: Hide undecided members
 
   proposal_pie_chart:

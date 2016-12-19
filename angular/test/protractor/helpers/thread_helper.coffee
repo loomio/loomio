@@ -8,9 +8,6 @@ module.exports = new class ThreadHelper
   loadWithActiveProposal: ->
     browser.get('development/setup_proposal')
 
-  loadWithActiveProposalWithVotes: ->
-    browser.get('development/setup_proposal_with_votes')
-
   loadWithClosedProposal: ->
     browser.get('development/setup_closed_proposal')
 
