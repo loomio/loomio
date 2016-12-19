@@ -28,25 +28,22 @@
   margin-bottom: 0;
 }
 
-.context-panel__attachments,
+.context-panel__attachments {
+  margin: 16px 0;
+}
+
 .context-panel__attachment {
+  margin-top: 16px;
+}
+
+.context-panel__actions {
+  @include displayFlex;
   margin-top: 16px;
 }
 
 .context-panel__edit,
 .context-panel__add-comment {
   @include lmoBtnLink;
-  @include fontHelveticaMedium;
-  @include fontSmall;
   cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: .3px;
-  margin-right: 30px;
-}
-.context-panel__add-comment {
-  color: $brand-success;
-}
-
-.context-panel__edit {
-  color: $grey-on-white;
+  margin: 16px 16px 0 0;
 }

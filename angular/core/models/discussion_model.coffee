@@ -153,6 +153,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     attachments: ->
       @recordStore.attachments.find(attachableId: @id, attachableType: 'Discussion')
 
+    hasAttachments: ->
+      _.some @attachments()
+
     attributeForVersion: (attr, version) ->
       return '' unless version
       if version.changes[attr]
