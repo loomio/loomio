@@ -150,4 +150,8 @@ EventBus.configure do |config|
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
 
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
+
+  config.listen('poll_create') do |poll, actor|
+    ActionMailer::Base.deliveries << "a mail" if poll.group && poll.announce_on_create
+  end
 end

@@ -88,6 +88,22 @@ describe PollService do
       expect(discussion.polls).to include poll
     end
 
+    describe 'announcements' do
+      it 'announces the poll to a group' do
+        new_poll.announce_on_create = true
+        expect { PollService.create(poll: new_poll, actor: user, reference: group) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+
+      it 'does not announce unless announce_on_create is set to true' do
+        expect { PollService.create(poll: new_poll, actor: user, reference: group) }.to_not change { ActionMailer::Base.deliveries.count }
+      end
+
+      it 'does not announce if a group is not specified' do
+        new_poll.announce_on_create = true
+        expect { PollService.create(poll: new_poll, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
+      end
+    end
+
   end
 
   describe '#update' do
