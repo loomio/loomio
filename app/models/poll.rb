@@ -3,7 +3,7 @@ class Poll < ActiveRecord::Base
   belongs_to :author, class_name: "User", required: true
   belongs_to :outcome_author, class_name: "User", required: false
 
-  attr_accessor :announce_on_create
+  attr_accessor :make_announcement
 
   has_many :stances
   has_many :users,        through: :stances, source: :participant, source_type: "User"

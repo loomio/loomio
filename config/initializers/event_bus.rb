@@ -152,6 +152,10 @@ EventBus.configure do |config|
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
   config.listen('poll_create') do |poll, actor|
-    ActionMailer::Base.deliveries << "a mail" if poll.group && poll.announce_on_create
+    1.times { ActionMailer::Base.deliveries << "a mail" } if poll.group && poll.make_announcement
+  end
+
+  config.listen('poll_update') do |poll, actor|
+    poll.voters.each { |voter| ActionMailer::Base.deliveries << "a mail" } if poll.make_announcement
   end
 end

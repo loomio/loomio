@@ -324,6 +324,10 @@ class Ability
       poll.communities.all? { |community| user.ability.can?(:poll, community) }
     end
 
+    can :update, Poll do |poll|
+      @user == poll.author || Array(poll.group&.admins).include?(@user)
+    end
+
     can :set_communities, Poll do |poll|
       @user == poll.author &&
       poll.stances.empty? &&

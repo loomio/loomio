@@ -73,16 +73,16 @@ describe PollService do
 
     describe 'announcements' do
       it 'announces the poll to a group' do
-        new_poll.announce_on_create = true
+        new_poll.make_announcement = true
         expect { PollService.create(poll: new_poll, actor: user, reference: group) }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
-      it 'does not announce unless announce_on_create is set to true' do
+      it 'does not announce unless make_announcement is set to true' do
         expect { PollService.create(poll: new_poll, actor: user, reference: group) }.to_not change { ActionMailer::Base.deliveries.count }
       end
 
       it 'does not announce if a group is not specified' do
-        new_poll.announce_on_create = true
+        new_poll.make_announcement = true
         expect { PollService.create(poll: new_poll, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
       end
     end
@@ -121,12 +121,29 @@ describe PollService do
   end
 
   describe '#update' do
-    it 'updates an existing poll' do
+    before { PollService.create(poll: new_poll, actor: user) }
 
+    it 'updates an existing poll' do
+      PollService.update(poll: new_poll, params: { description: "A new description" }, actor: user)
+      expect(new_poll.reload.description).to eq "A new description"
+    end
+
+    it 'does not allow randos to edit proposals' do
+      expect { PollService.update(poll: new_poll, params: { description: "A new description" }, actor: another) }.to raise_error { CanCan::AccessDenied }
+      expect(new_poll.reload.description).to_not eq "A new description"
     end
 
     it 'does not save an invalid poll' do
+      old_name = new_poll.name
+      PollService.update(poll: new_poll, params: { name: "" }, actor: user)
+      expect(new_poll.reload.name).to eq old_name
+    end
 
+    it 'makes an announcement to voters if make_announcement is true' do
+      stance
+      expect {
+        PollService.update(poll: new_poll, params: { description: "A new description", make_announcement: true }, actor: user)
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end
 
