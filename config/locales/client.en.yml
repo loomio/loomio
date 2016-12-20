@@ -429,14 +429,14 @@ en:
     aria_label: 'Change cover photo form'
     heading: 'New cover photo'
     upload_link: 'Upload new cover photo'
-    image_size_helptext: 'Ideal image size is 1400 x 320px'
+    image_size_helptext: 'Ideal image size is 1400×320px'
     upload_success: 'Cover photo successfully updated'
 
   logo_photo_form:
     aria_label: 'Change group logo form'
     heading: 'New group logo'
     upload_link: 'Upload new group logo'
-    image_size_helptext: 'Ideal image size is 100 x 100px'
+    image_size_helptext: 'Ideal image size is 100×100px'
     upload_success: 'Logo successfully updated'
 
   join_group_button:
@@ -566,12 +566,15 @@ en:
     make_a_contribution: Make a contribution
 
   upgrade_plan_card:
-    heading: Do you use slack?
-    body: Loomio and Slack work great together! Link them up.
-    upgrade_plan: Change plan
-    heading_alt: Want a custom domain?
-    body_alt: Make your Loomio group easy to find with yourname.loomio.org
-    upgrade_plan: Upgrade now
+    heading: Upgrade for premium features
+    slack_html: "<strong>Slack integration</strong>: Loomio and Slack work great together! Link them up."
+    domain_html: "<strong>Custom domain</strong>: Make your group easy to find with yourname.loomio.org"
+    help_html: "<strong>Expert help</strong>: Loomio's collaboration consultants will get your group humming"
+    analytics_html: "<strong>Analytics reports</strong>: Get insights into your group's engagement"
+    donations: Your group members will no longer be asked to donate.
+    more: … and lots more.
+    upgrade: Upgrade now
+    donate: Donate
 
   trial_card:
     title: '30-day trial'

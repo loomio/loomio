@@ -36,7 +36,6 @@ class GroupSerializer < ActiveModel::Serializer
              :archived_at,
              :has_custom_cover,
              :is_subgroup_of_hidden_parent,
-             :show_legacy_trial_expired_modal,
              :enable_experiments,
              :experiences,
              :recent_activity_count
@@ -53,10 +52,6 @@ class GroupSerializer < ActiveModel::Serializer
 
   def include_current_user_membership?
     scope && scope[:current_user]
-  end
-
-  def show_legacy_trial_expired_modal
-    ENV['TRIAL_EXPIRED_GROUP_IDS'].to_s.split(' ').map(&:to_i).include? object.id
   end
 
   def logo_url_medium

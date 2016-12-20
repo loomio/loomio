@@ -145,22 +145,6 @@ class DevelopmentController < ApplicationController
     redirect_to group_url(test_group)
   end
 
-  def setup_group_with_expired_legacy_trial
-    sign_in jennifer
-    GroupService.create(group: test_group, actor: patrick)
-    test_group.update_attribute(:cohort_id, 3)
-    redirect_to group_url(test_group)
-  end
-
-  def setup_group_with_expired_legacy_trial_admin
-    sign_in patrick
-    test_group.add_member! emilio
-    test_group.update_attribute(:cohort_id, 3)
-    ENV['TRIAL_EXPIRED_GROUP_IDS'] = test_group.id.to_s
-
-    redirect_to group_url(test_group)
-  end
-
   def setup_group_with_many_discussions
     test_group.add_member! emilio
     40.times do
