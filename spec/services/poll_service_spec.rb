@@ -7,6 +7,7 @@ describe PollService do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:motion) { create(:motion, discussion: discussion) }
+  let(:closed_motion) { create(:motion, discussion: discussion, closed_at: 1.day.ago, outcome: "an outcome", outcome_author: user) }
   let(:vote) { create :vote, motion: motion, statement: "I am a statement" }
   let(:visitor) { LoggedOutUser.new }
   let(:group) { create :group }
@@ -166,6 +167,14 @@ describe PollService do
       expect(poll.poll_options.map(&:name).sort).to eq ['abstain', 'agree', 'block', 'disagree']
       expect(poll.stances.count).to eq motion.votes.count
       expect(poll.stances.first.statement).to eq vote.statement
+      expect(poll.outcome).to be_nil
+    end
+
+    it 'saves an outcome on a closed motion' do
+      PollService.convert(motions: closed_motion)
+      poll = Poll.last
+      expect(poll.outcome.statement).to eq closed_motion.outcome
+      expect(poll.outcome.author).to eq closed_motion.outcome_author
     end
 
     it 'does not alter the existing motion' do

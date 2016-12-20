@@ -325,11 +325,12 @@ class Ability
     end
 
     can :update, Poll do |poll|
-      @user == poll.author || Array(poll.group&.admins).include?(@user)
+      user_is_author_of?(poll) ||
+      Array(poll.group&.admins).include?(@user)
     end
 
     can :set_communities, Poll do |poll|
-      @user == poll.author &&
+      user_is_author_of?(poll) &&
       poll.stances.empty? &&
       poll.communities.all? { |community| community.includes?(@user) }
     end
@@ -337,6 +338,11 @@ class Ability
     can :create, Stance do |stance|
       stance.poll.closed_at.nil? &&
       stance.poll.communities.detect { |community| community.includes?(@user) }
+    end
+
+    can [:create, :update], Outcome do |outcome|
+      !outcome.poll.open? &&
+      user.ability.can?(:update, outcome.poll)
     end
 
     add_additional_abilities

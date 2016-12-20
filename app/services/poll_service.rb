@@ -56,7 +56,9 @@ class PollService
 
     # create a new poll from the motion
     Array(motions).map do |motion|
+      next if motion.polls.any?
       reference = PollReferences::Motion.new(motion)
+      outcome   = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome
       Poll.create(
         poll_template:     template,
         poll_options:      options,
@@ -65,8 +67,6 @@ class PollService
         name:              motion.name,
         description:       motion.description,
         author_id:         motion.author_id,
-        outcome_author_id: motion.outcome_author_id,
-        outcome:           motion.outcome,
         created_at:        motion.created_at,
         updated_at:        motion.updated_at,
         closing_at:        motion.closing_at,
@@ -81,8 +81,9 @@ class PollService
             created_at:       vote.created_at,
             updated_at:       vote.updated_at
           )
-        end
-      ) unless motion.polls.any? # don't duplicate polls from a motion
+        end,
+        outcome:           outcome
+      )
     end
   end
 

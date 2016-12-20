@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218101145) do
+ActiveRecord::Schema.define(version: 20161220101215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -676,6 +676,14 @@ ActiveRecord::Schema.define(version: 20161218101145) do
   add_index "organisation_visits", ["organisation_id"], name: "index_organisation_visits_on_organisation_id", using: :btree
   add_index "organisation_visits", ["visit_id", "organisation_id"], name: "index_organisation_visits_on_visit_id_and_organisation_id", unique: true, using: :btree
 
+  create_table "outcomes", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.string   "statement",  null: false
+    t.integer  "author_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "permits", force: :cascade do |t|
     t.jsonb "details", default: {}, null: false
   end
@@ -712,8 +720,6 @@ ActiveRecord::Schema.define(version: 20161218101145) do
   create_table "polls", force: :cascade do |t|
     t.integer  "poll_template_id"
     t.integer  "author_id",                            null: false
-    t.integer  "outcome_author_id"
-    t.string   "outcome"
     t.string   "name",                                 null: false
     t.text     "description"
     t.boolean  "allow_custom_options", default: false, null: false

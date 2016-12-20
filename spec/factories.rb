@@ -260,6 +260,12 @@ published_at "2015-11-18 14:28:30"
     communities [Communities::Public.new]
   end
 
+  factory :outcome do
+    poll
+    association :author, factory: :user
+    statement "An outcome"
+  end
+
   factory :stance do
     poll
     poll_option

@@ -1,7 +1,7 @@
 class Poll < ActiveRecord::Base
   belongs_to :poll_template, required: true
   belongs_to :author, class_name: "User", required: true
-  belongs_to :outcome_author, class_name: "User", required: false
+  has_one    :outcome
 
   attr_accessor :make_announcement
 
@@ -46,6 +46,10 @@ class Poll < ActiveRecord::Base
   # Also, maybe it doesn't matter.
   def voters
     @voters ||= users + visitors
+  end
+
+  def open?
+    closed_at.nil?
   end
 
   private
