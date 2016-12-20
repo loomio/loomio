@@ -17,6 +17,8 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_references
 
+  delegate :allow_custom_options, to: :poll_template, prefix: :template
+
   # there's some duplication here, but it's pretty unlikely we'll need references
   # to other models, so it's unlikely to blow out
   def group
@@ -34,10 +36,23 @@ class Poll < ActiveRecord::Base
   validates :name, presence: true
   validates :communities, length: { minimum: 1 }
 
+  # don't allow folks to set new poll types on this poll unless the template allows for it
+  validates :allow_custom_options, inclusion: { in: [false] }, unless: :template_allow_custom_options
+
+  validate  :factory_poll_options, unless: :allow_custom_options
+
   # NB this is an Array and NOT an ActiveRecord::Relation.
   # This could possibly be improved.
   # Also, maybe it doesn't matter.
   def voters
     @voters ||= users + visitors
+  end
+
+  private
+
+  def factory_poll_options
+    if poll_template && poll_template.poll_option_ids != self.poll_option_ids
+      self.errors.add(:poll_options, "Cannot alter poll options for this proposal type")
+    end
   end
 end

@@ -681,51 +681,53 @@ ActiveRecord::Schema.define(version: 20161218101145) do
   end
 
   create_table "poll_communities", force: :cascade do |t|
-    t.integer "poll_id"
-    t.integer "community_id"
+    t.integer "poll_id",      null: false
+    t.integer "community_id", null: false
   end
 
   create_table "poll_options", force: :cascade do |t|
     t.integer "poll_template_id"
-    t.string  "name"
+    t.string  "name",             null: false
     t.string  "icon_url"
   end
 
   create_table "poll_poll_options", force: :cascade do |t|
-    t.integer "poll_id"
-    t.integer "poll_option_id"
+    t.integer "poll_id",        null: false
+    t.integer "poll_option_id", null: false
   end
 
   create_table "poll_references", force: :cascade do |t|
-    t.integer "reference_id"
-    t.string  "reference_type"
-    t.integer "poll_id"
+    t.integer "reference_id",   null: false
+    t.string  "reference_type", null: false
+    t.integer "poll_id",        null: false
   end
 
   create_table "poll_templates", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                                 null: false
+    t.boolean  "allow_custom_options", default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "polls", force: :cascade do |t|
     t.integer  "poll_template_id"
-    t.integer  "author_id"
+    t.integer  "author_id",                            null: false
     t.integer  "outcome_author_id"
     t.string   "outcome"
-    t.string   "name"
+    t.string   "name",                                 null: false
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean  "allow_custom_options", default: false, null: false
     t.datetime "closing_at"
     t.datetime "closed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stances", force: :cascade do |t|
-    t.integer  "poll_id"
-    t.integer  "poll_option_id"
-    t.integer  "participant_id"
-    t.string   "participant_type"
+    t.integer  "poll_id",                         null: false
+    t.integer  "poll_option_id",                  null: false
+    t.integer  "participant_id",                  null: false
+    t.string   "participant_type",                null: false
     t.string   "statement"
     t.boolean  "latest",           default: true, null: false
     t.integer  "score",            default: 1,    null: false
@@ -756,15 +758,15 @@ ActiveRecord::Schema.define(version: 20161218101145) do
 
   create_table "themes", force: :cascade do |t|
     t.text     "style"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "pages_logo_file_name"
-    t.string   "pages_logo_content_type"
+    t.string   "name",                    limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "pages_logo_file_name",    limit: 255
+    t.string   "pages_logo_content_type", limit: 255
     t.integer  "pages_logo_file_size"
     t.datetime "pages_logo_updated_at"
-    t.string   "app_logo_file_name"
-    t.string   "app_logo_content_type"
+    t.string   "app_logo_file_name",      limit: 255
+    t.string   "app_logo_content_type",   limit: 255
     t.integer  "app_logo_file_size"
     t.datetime "app_logo_updated_at"
     t.text     "javascript"
@@ -772,11 +774,11 @@ ActiveRecord::Schema.define(version: 20161218101145) do
 
   create_table "translations", force: :cascade do |t|
     t.integer  "translatable_id"
-    t.string   "translatable_type"
+    t.string   "translatable_type", limit: 255
     t.hstore   "fields"
-    t.string   "language"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "language",          limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "translations", ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id", using: :btree

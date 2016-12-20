@@ -7,13 +7,14 @@ class AddPolls < ActiveRecord::Migration
       t.string     :outcome
       t.string     :name, null: false
       t.text       :description
+      t.boolean    :allow_custom_options, null: false, default: false
       t.datetime   :closing_at
       t.datetime   :closed_at
       t.timestamps
     end
 
     create_table   :poll_options do |t|
-      t.belongs_to :poll_template, null: false
+      t.belongs_to :poll_template
       t.string     :name, null: false
       t.string     :icon_url
     end
@@ -25,6 +26,7 @@ class AddPolls < ActiveRecord::Migration
 
     create_table   :poll_templates do |t|
       t.string     :name, null: false
+      t.boolean    :allow_custom_options, null: false, default: false
       t.timestamps
     end
 
