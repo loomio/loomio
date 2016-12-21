@@ -128,6 +128,12 @@ Loomio::Application.routes.draw do
       get  :closed, on: :collection
     end
 
+    resources :polls,       only: [:show, :index, :create, :update] do
+      post :close, on: :member
+    end
+
+    resource :outcomes,     only: [               :create, :update]
+
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end

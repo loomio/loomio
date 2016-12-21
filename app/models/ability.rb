@@ -319,9 +319,15 @@ class Ability
       community.includes?(@user)
     end
 
+    can :show, Poll do |poll|
+      can?(:show, poll.discussion)
+    end
+
     can :create, Poll do |poll|
-      @user.is_logged_in? &&
-      poll.communities.all? { |community| user.ability.can?(:poll, community) }
+      user_is_admin_of?(poll.group_id) ||
+      (poll.group.members_can_raise_motions? && user_is_member_of?(poll.group_id))
+      # @user.is_logged_in? &&
+      # poll.communities.all? { |community| user.ability.can?(:poll, community) }
     end
 
     can :update, Poll do |poll|
@@ -329,15 +335,19 @@ class Ability
       Array(poll.group&.admins).include?(@user)
     end
 
-    can :set_communities, Poll do |poll|
-      user_is_author_of?(poll) &&
-      poll.stances.empty? &&
-      poll.communities.all? { |community| community.includes?(@user) }
+    can :close, Poll do |poll|
+      poll.open? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
+    # can :set_communities, Poll do |poll|
+    #   user_is_author_of?(poll) &&
+    #   poll.stances.empty? &&
+    #   poll.communities.all? { |community| community.includes?(@user) }
+    # end
+
     can :create, Stance do |stance|
-      stance.poll.closed_at.nil? &&
-      stance.poll.communities.detect { |community| community.includes?(@user) }
+      stance.poll.closed_at.nil?
+      # stance.poll.communities.detect { |community| community.includes?(@user) }
     end
 
     can [:create, :update], Outcome do |outcome|

@@ -257,7 +257,7 @@ published_at "2015-11-18 14:28:30"
     name "This is a poll"
     description "with a description"
     association :author, factory: :user
-    communities [Communities::Public.new]
+    # communities [Communities::Public.new]
   end
 
   factory :outcome do

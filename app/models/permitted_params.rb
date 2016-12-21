@@ -1,6 +1,6 @@
 class PermittedParams < Struct.new(:params)
 
-  %w[user vote motion membership_request membership
+  %w[user vote motion membership_request membership poll outcome
    invitation group_request group discussion discussion_reader comment
    attachment contact_message theme user_deactivation_response network_membership_request
    draft oauth_application].each do |kind|
@@ -38,6 +38,14 @@ class PermittedParams < Struct.new(:params)
     [:name, :description, :discussion_id, :closing_at, :outcome, :attachment_ids, {attachment_ids: []}]
   end
   alias_method :proposal_attributes, :motion_attributes
+
+  def poll_attributes
+    [:name, :description, :discussion_id, :closing_at, :poll_template_id]
+  end
+
+  def outcome_attributes
+    [:statement, :author_id]
+  end
 
   def membership_request_attributes
     [:name, :email, :introduction, :group_id]

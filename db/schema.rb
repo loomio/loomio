@@ -693,6 +693,11 @@ ActiveRecord::Schema.define(version: 20161220101215) do
     t.integer "community_id", null: false
   end
 
+  create_table "poll_did_not_votes", force: :cascade do |t|
+    t.integer "poll_id"
+    t.integer "user_id"
+  end
+
   create_table "poll_options", force: :cascade do |t|
     t.integer "poll_template_id"
     t.string  "name",             null: false
@@ -727,6 +732,8 @@ ActiveRecord::Schema.define(version: 20161220101215) do
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "discussion_id"
+    t.string   "key",                                  null: false
   end
 
   create_table "stances", force: :cascade do |t|
