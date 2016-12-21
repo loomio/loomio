@@ -2,6 +2,7 @@ class OutcomeService
   def self.create(outcome:, actor:)
     actor.ability.authorize! :create, outcome
 
+    outcome.assign_attributes(author: actor)
     return false unless outcome.valid?
     outcome.save!
 
@@ -11,7 +12,7 @@ class OutcomeService
   def self.update(outcome:, params:, actor:)
     actor.ability.authorize! :update, outcome
 
-    outcome.assign_attributes(params)
+    outcome.assign_attributes(params.slice(:statement))
     return false unless outcome.valid?
     outcome.save!
 

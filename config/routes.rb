@@ -138,7 +138,14 @@ Loomio::Application.routes.draw do
       get :my_votes, on: :collection
     end
 
+    resources :stances,     only: [       :index, :create, :update] do
+      get :my_stances, on: :collection
+    end
+
+    resources :outcomes,    only: [               :create, :update]
+
     resources :did_not_votes, only: :index
+    resources :poll_did_not_votes, only: :index
 
     resources :comments,    only: [:create, :update, :destroy] do
       post :like, on: :member
