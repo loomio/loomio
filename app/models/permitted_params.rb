@@ -1,6 +1,6 @@
 class PermittedParams < Struct.new(:params)
 
-  %w[user vote motion membership_request membership poll outcome
+  %w[user vote motion membership_request membership poll outcome stance
    invitation group_request group discussion discussion_reader comment
    attachment contact_message theme user_deactivation_response network_membership_request
    draft oauth_application].each do |kind|
@@ -41,6 +41,10 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [:name, :description, :discussion_id, :closing_at, :poll_template_id]
+  end
+
+  def stance_attributes
+    [:poll_id, :poll_option_id, :statement, :score]
   end
 
   def outcome_attributes

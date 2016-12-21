@@ -138,7 +138,7 @@ Loomio::Application.routes.draw do
       get :my_votes, on: :collection
     end
 
-    resources :stances,     only: [       :index, :create, :update] do
+    resources :stances,     only: [       :index, :create         ] do
       get :my_stances, on: :collection
     end
 

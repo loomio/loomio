@@ -346,8 +346,10 @@ class Ability
     # end
 
     can :create, Stance do |stance|
-      stance.poll.closed_at.nil?
-      # stance.poll.communities.detect { |community| community.includes?(@user) }
+      poll = stance.poll
+      poll.open? &&
+      (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
+      # poll.communities.detect { |community| community.includes?(@user) }
     end
 
     can [:create, :update], Outcome do |outcome|
