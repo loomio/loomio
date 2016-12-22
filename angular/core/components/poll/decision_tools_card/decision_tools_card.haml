@@ -1,0 +1,9 @@
+.decision-tools-card.lmo-card
+  %h2.lmo-h2.decision-tools-card__title{translate: "decision_tools_card.title"}
+  %ul.decision-tools-card__poll-types
+    %li.decision-tools-card__poll-type{ng-repeat: "pollType in pollTypes"}
+      %a.decision-tools-card__poll-type-link{ng-click: "startPoll(pollType.name)"}
+        %i.material-icons {{pollType.icon}}
+        .decision-tools-card__content
+          %h3.decision-tools-card__poll-type-title{translate: "decision_tools_card.{{pollType.name}}_title"}
+          .decision-tools-card__poll-type-subtitle{translate: "decision_tools_card.{{pollType.name}}_subtitle"}

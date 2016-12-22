@@ -3,12 +3,9 @@ class PollService
     # reference = PollReferences::Base.for(reference)
     actor.ability.authorize! :create, poll
 
-    poll.assign_attributes(
+    poll.assign_attributes(author: actor)
     # communities:     reference.communities.presence || [Communities::Public.new],
     # poll_references: reference.references,
-      poll_options:    poll.poll_template.poll_options,
-      author:          actor
-    )
 
     return false unless poll.valid?
     poll.save!
@@ -55,6 +52,7 @@ class PollService
   end
 
   def self.convert(motions:)
+
     template  = PollTemplate.motion_template
     options   = template.poll_options
 
@@ -64,7 +62,6 @@ class PollService
       # reference = PollReferences::Motion.new(motion)
       outcome   = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome
       Poll.create(
-        poll_template:     template,
         poll_options:      options,
         # poll_references:   reference.references,
         # communities:       reference.communities,

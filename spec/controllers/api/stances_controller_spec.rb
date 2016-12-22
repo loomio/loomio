@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::StancesController do
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let(:poll) { create :poll, poll_template: PollTemplate.motion_template, discussion: discussion }
+  let(:poll) { create :poll, discussion: discussion }
   let(:poll_option) { PollTemplate.motion_template.poll_options.first }
   let(:old_stance) { create :stance, poll: poll, participant: user, poll_option: poll_option }
   let(:discussion) { create :discussion, group: group }

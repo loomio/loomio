@@ -1,0 +1,24 @@
+proposal:
+  poll_options_attributes:
+    - name: "agree"
+      icon_url: "agree.svg"
+    - name: "disagree"
+      icon_url: "disagree.svg"
+    - name: "abstain"
+      icon_url: "abstain.svg"
+    - name: "block"
+      icon_url: "block.svg"
+  can_add_options: true
+  graph_type: pie
+
+engagement:
+  poll_options_attributes:
+    - name: "i_have"
+      icon_url: "engage.svg"
+  graph_type: check
+
+poll:
+  poll_options_attributes: []
+  can_add_options: true
+  can_remove_options: true
+  graph_type: bar

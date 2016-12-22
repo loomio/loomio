@@ -1,0 +1,38 @@
+%form.poll-proposal-form
+  .modal-header
+    %modal_header_cancel_button
+    %i.material-icons thumbs_up_down
+    %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
+    %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
+  .modal-body
+    .poll-proposal-form__tip
+      %p{translate: "poll_proposal_form.tip"}
+      .lmo-flex
+        %i.material-icons book
+        %p{translate: "poll_proposal_form.learn_more"}
+
+    %md-input-container.md-block
+      %label{translate: "poll_proposal_form.title"}
+      %input{type: "text", placeholder: "{{poll_proposal_form.title_placeholder | translate}}", ng-model: "poll.title", md-maxlength="250"}
+
+    %md-input-container.md-block
+      %label{translate: "poll_proposal_form.details"}
+      %textarea{ng-model: "poll.details", placeholder: "{{poll_proposal_form.details_placeholder | translate}}"}
+
+    %md-list.md-block
+      %label{translate: "poll_proposal_form.options"}
+      %md-list-item{ng-repeat: "option in poll.pollOptions() track by option.id"}
+        {{option.name}}
+
+    %poll_closing_at_field.md-block{poll: "poll"}
+
+    %md-list.md-block
+      %md-list-item
+        .md-list-item-text
+          %h3{translate: "poll_proposal_form.notify_group"}
+          %p{translate: "poll_proposal_form.notify_group_members_count", translate-values: "{ count: poll.group().membersCount }"}
+        %md-checkbox{ng-model: "poll.makeAnnouncement"}
+
+  .modal-footer
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start"}

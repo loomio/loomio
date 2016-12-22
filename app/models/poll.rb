@@ -1,7 +1,7 @@
 class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
+  TEMPLATES = YAML.load_file('config/poll_templates.yml')
 
-  belongs_to :poll_template, required: true
   belongs_to :author, class_name: "User", required: true
   has_one    :outcome
 
@@ -17,8 +17,8 @@ class Poll < ActiveRecord::Base
   has_many :voters,       through: :stances, source: :participant, source_type: "User"
   # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
-  has_many :poll_poll_options
-  has_many :poll_options, through: :poll_poll_options
+  has_many :poll_options
+  accepts_nested_attributes_for :poll_options
 
   has_many :poll_did_not_votes
 
@@ -26,8 +26,6 @@ class Poll < ActiveRecord::Base
   # has_many :communities, through: :poll_communities
 
   # has_many :poll_references
-
-  # delegate :allow_custom_options, to: :poll_template, prefix: :template
 
   # there's some duplication here, but it's pretty unlikely we'll need references
   # to other models, so it's unlikely to blow out
@@ -44,12 +42,14 @@ class Poll < ActiveRecord::Base
   # end
 
   validates :name, presence: true
+  validates :graph_type, presence: true
+  validates :poll_type, inclusion: { in: TEMPLATES.keys }
   # validates :communities, length: { minimum: 1 }
 
-  # don't allow folks to set new poll types on this poll unless the template allows for it
-  # validates :allow_custom_options, inclusion: { in: [false] }, unless: :template_allow_custom_options
-
-  # validate  :factory_poll_options, unless: :allow_custom_options
+  def poll_type=(type)
+    self[:poll_type] = type
+    assign_attributes(TEMPLATES.fetch(type, {}))
+  end
 
   # NB this is an Array and NOT an ActiveRecord::Relation.
   # This could possibly be improved.
@@ -62,11 +62,4 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
-  private
-
-  # def factory_poll_options
-  #   if poll_template && poll_template.poll_option_ids != self.poll_option_ids
-  #     self.errors.add(:poll_options, "Cannot alter poll options for this proposal type")
-  #   end
-  # end
 end

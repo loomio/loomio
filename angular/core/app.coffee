@@ -16,7 +16,7 @@ angular.module('loomioApp', ['ngNewRouter',
                              'offClick',
                              'ngMaterial',
                              'angulartics',
-                             'angulartics.google.tagmanager']).config ($provide, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, $analyticsProvider) ->
+                             'angulartics.google.tagmanager']).config ($provide, $mdDateLocaleProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, $analyticsProvider) ->
 
   # a decorator to allow mentio to work within modals
   # https://github.com/jeff-collins/ment.io/issues/68#issuecomment-200746901
@@ -28,6 +28,9 @@ angular.module('loomioApp', ['ngNewRouter',
         if modal = scope.parentMentio.targetElement[0].closest('.modal')
           modal.appendChild(elem[0])
     $delegate
+
+  $mdDateLocaleProvider.formatDate = (date) ->
+    moment(date).format('YYYY-M-D')
 
   # this should make stuff faster but you need to add "animated" class to animated things.
   # http://www.bennadel.com/blog/2935-enable-animations-explicitly-for-a-performance-boost-in-angularjs.htm

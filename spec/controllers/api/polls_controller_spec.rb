@@ -8,15 +8,14 @@ describe API::PollsController do
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let!(:poll) { create :poll, discussion: discussion, author: user, poll_template: poll_template }
+  let!(:poll) { create :poll, discussion: discussion, author: user }
   let(:another_poll) { create :poll, discussion: another_discussion }
   let(:non_group_poll) { create :poll }
-  let(:poll_template) { PollTemplate.motion_template }
   let(:poll_params) {{
     name: "hello",
+    type: "proposal",
     description: "is it me you're looking for?",
     discussion_id: discussion.id,
-    poll_template_id: poll_template.id,
     closing_at: 3.days.from_now
   }}
 
@@ -64,7 +63,6 @@ describe API::PollsController do
 
       poll = Poll.last
       expect(poll.name).to eq poll_params[:name]
-      expect(poll.poll_template).to eq poll_template
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
 

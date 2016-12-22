@@ -1,0 +1,11 @@
+.poll-closing-at-field {
+  @include displayFlex;
+}
+
+.md-datepicker-calendar-pane {
+  z-index: $over-intercom !important;
+}
+
+.md-select-menu-container {
+  z-index: $over-intercom !important;
+}

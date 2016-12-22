@@ -1281,3 +1281,19 @@ en:
     submit: Revoke Access
     messages:
       success: "'{{name}}' can no longer use your account."
+
+  poll_proposal_form:
+    start_a_proposal: Start a proposal
+    edit_proposal: Edit proposal
+    tip: Harness the collective wisdom of the group to build a better decision than any single person could
+    learn_more: "Learn about: <a href='https://loomio.school/beginner/proposals.html'>Writing an effective proposal</a>"
+    title: Title
+    title_placeholder: E.g. Let's go to the moon!
+    details: Details
+    details_placeholder: Give enough information so everyone knows what it means to agree or disagree
+    options: Options
+    closing: Closing
+    notify_group: Notify group
+    notify_group_members_count: "{{count}} people will be notified"
+    start: Start proposal
+    update: Update proposal

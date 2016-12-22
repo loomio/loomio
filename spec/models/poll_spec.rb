@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 describe Poll do
-  let(:template) { create :poll_template, poll_options: [poll_option], allow_custom_options: false }
   let(:poll_option) { create :poll_option }
-  let(:poll) { build :poll, poll_options: [poll_option], poll_template: template, allow_custom_options: false }
+  let(:poll) { build :poll, poll_options: [poll_option] }
 
   it 'validates correctly if no poll option changes have been made' do
     expect(poll.valid?).to eq true

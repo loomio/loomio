@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 describe PollService do
-  let(:new_poll) { build :poll, poll_template: poll_template }
-  let(:poll) { create :poll, poll_template: poll_template }
-  let(:poll_template) { create :poll_template, poll_options: [create(:poll_option)]}
+  let(:new_poll) { build :poll }
+  let(:poll) { create :poll }
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:motion) { create(:motion, discussion: discussion) }
@@ -35,7 +34,6 @@ describe PollService do
 
       poll = Poll.last
       expect(poll.poll_options.count).to eq 1
-      expect(poll.poll_options.last).to eq poll_template.poll_options.last
     end
 
     it 'does not create an invalid poll' do
@@ -163,7 +161,6 @@ describe PollService do
       expect(poll.closing_at).to eq motion.closing_at
       expect(poll.closed_at).to eq motion.closed_at
       expect(poll.users).to eq motion.voters
-      expect(poll.poll_template).to eq PollTemplate.motion_template
       expect(poll.poll_options.map(&:name).sort).to eq ['abstain', 'agree', 'block', 'disagree']
       expect(poll.stances.count).to eq motion.votes.count
       expect(poll.stances.first.statement).to eq vote.statement

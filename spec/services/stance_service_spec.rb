@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 describe StanceService do
-  let(:template) { create :poll_template }
-  let(:poll_option) { create :poll_option, poll_template: template }
+  let(:poll_option) { create :poll_option }
   let(:group) { create :group }
-  let(:group_poll) { create :poll, poll_template: template, communities: [group.community] }
+  let(:group_poll) { create :poll, communities: [group.community] }
   let(:user) { create :user }
   let(:another_group_member) { create :user }
   let(:another_user) { create :user }
