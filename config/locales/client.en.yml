@@ -1282,6 +1282,15 @@ en:
     messages:
       success: "'{{name}}' can no longer use your account."
 
+  decision_tools_card:
+    title: Decision tools
+    proposal_title: Proposal
+    proposal_subtitle: Find consensus
+    engagement_title: Engagement check
+    engagement_subtitle: Track who has completed a task
+    poll_title: Poll
+    poll_subtitle: Choose from a list of options
+
   poll_proposal_form:
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal

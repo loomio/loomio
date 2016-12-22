@@ -7,8 +7,8 @@
   .modal-body
     .poll-proposal-form__tip
       %p{translate: "poll_proposal_form.tip"}
-      .lmo-flex
-        %i.material-icons book
+      .poll-proposal-form__learn-more
+        %i.material-icons import_contacts
         %p{translate: "poll_proposal_form.learn_more"}
 
     %input{type: "hidden", ng-model: "poll.pollType"}
@@ -24,16 +24,16 @@
     %md-list.md-block
       %label{translate: "poll_proposal_form.options"}
       %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
-        %img{src: "{{option.iconUrl}}"}
+        %img.poll-proposal-form__icon{src: "{{option.icon_url}}"}
         {{option.name}}
 
     %poll_closing_at_field.md-block{poll: "poll"}
 
     %md-list.md-block
       %md-list-item
-        .md-list-item-text
+        .md-list-item-text.poll-proposal-form__notify-group
           %h3{translate: "poll_proposal_form.notify_group"}
-          %p{translate: "poll_proposal_form.notify_group_members_count", translate-values: "{ count: poll.group().membersCount }"}
+          %p{translate: "poll_proposal_form.notify_group_members_count", translate-value-count: "{{poll.group().membershipsCount}}"}
         %md-checkbox{ng-model: "poll.makeAnnouncement"}
 
   .modal-footer
