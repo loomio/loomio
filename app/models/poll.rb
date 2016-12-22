@@ -5,11 +5,9 @@ class Poll < ActiveRecord::Base
   belongs_to :author, class_name: "User", required: true
   has_one    :outcome
 
-  belongs_to :discussion
-  has_one    :group, through: :discussion
   belongs_to :motion
-
-  delegate :group_id, to: :discussion, prefix: false
+  belongs_to :discussion
+  delegate   :group, :group_id, to: :discussion, allow_nil: true
 
   attr_accessor :make_announcement
 
@@ -41,15 +39,13 @@ class Poll < ActiveRecord::Base
   #   @motion     ||= poll_references.find_by(reference_type: 'Motion')&.reference
   # end
 
-  validates :name, presence: true
+  validates :title, presence: true
   validates :graph_type, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
   # validates :communities, length: { minimum: 1 }
 
-  def poll_type=(type)
-    self[:poll_type] = type
-    assign_attributes(TEMPLATES.fetch(type, {}))
-  end
+  validate :added_poll_options, unless: :can_add_options
+  validate :removed_poll_options, unless: :can_remove_options
 
   # NB this is an Array and NOT an ActiveRecord::Relation.
   # This could possibly be improved.
@@ -60,6 +56,29 @@ class Poll < ActiveRecord::Base
 
   def open?
     closed_at.nil?
+  end
+
+  def poll_type=(type)
+    self[:poll_type] = type
+    assign_attributes(TEMPLATES.fetch(type, {}))
+  end
+
+  private
+
+  def options_from_template
+    Array(TEMPLATES.dig(self.poll_type, 'poll_options_attributes'))
+  end
+
+  def added_poll_options
+    if (self.poll_options.map(&:name) - options_from_template.map { |o| o['name'] }).length > 0
+      self.errors.add(:poll_options, "Cannot add options to this poll")
+    end
+  end
+
+  def removed_poll_options
+    if self.poll_options.length < options_from_template.length
+      self.errors.add(:poll_options, "Cannot remove options from this poll")
+    end
   end
 
 end

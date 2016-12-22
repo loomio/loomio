@@ -719,8 +719,8 @@ ActiveRecord::Schema.define(version: 20161222040839) do
   create_table "polls", force: :cascade do |t|
     t.integer  "poll_template_id"
     t.integer  "author_id",                            null: false
-    t.string   "name",                                 null: false
-    t.text     "description"
+    t.string   "title",                                null: false
+    t.text     "details"
     t.boolean  "allow_custom_options", default: false, null: false
     t.datetime "closing_at"
     t.datetime "closed_at"
@@ -732,6 +732,7 @@ ActiveRecord::Schema.define(version: 20161222040839) do
     t.boolean  "can_remove_options",   default: false, null: false
     t.string   "poll_type",                            null: false
     t.string   "graph_type",                           null: false
+    t.integer  "motion_id"
   end
 
   create_table "stances", force: :cascade do |t|

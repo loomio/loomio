@@ -250,8 +250,9 @@ published_at "2015-11-18 14:28:30"
 
   factory :poll do
     poll_type "proposal"
-    name "This is a poll"
-    description "with a description"
+    poll_options PollOption.for("proposal")
+    title "This is a poll"
+    details "with a description"
     association :author, factory: :user
     # communities [Communities::Public.new]
   end
