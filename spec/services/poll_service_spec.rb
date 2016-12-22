@@ -33,6 +33,14 @@ describe PollService do
       PollService.create(poll: new_poll, actor: user)
 
       poll = Poll.last
+      expect(poll.poll_options.map(&:name).sort).to eq ['abstain','agree','block','disagree']
+    end
+
+    it 'populates removing custom poll actions' do
+      new_poll.poll_options_attributes = [{ name: "agree", icon_url: "/img/agree.svg"}]
+      PollService.create(poll: new_poll, actor: user)
+
+      poll = Poll.last
       expect(poll.poll_options.count).to eq 1
     end
 
@@ -141,7 +149,7 @@ describe PollService do
     it 'makes an announcement to voters if make_announcement is true' do
       stance
       expect {
-        PollService.update(poll: new_poll, params: { description: "A new description", make_announcement: true }, actor: user)
+        PollService.update(poll: new_poll, params: { details: "A new description", make_announcement: true }, actor: user)
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end

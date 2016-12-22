@@ -52,40 +52,41 @@ class PollService
   end
 
   def self.convert(motions:)
-    poll_options = PollOption.for("proposal")
-
     # create a new poll from the motion
     Array(motions).map do |motion|
       next if motion.polls.any?
       # reference = PollReferences::Motion.new(motion)
       Poll.create!(
-        poll_type:         "proposal",
-        poll_options:      poll_options,
-        graph_type:        "pie",
+        Poll::TEMPLATES.fetch('proposal', {}).merge(
         # poll_references:   reference.references,
         # communities:       reference.communities,
-        discussion:        motion.discussion,
-        motion:            motion,
-        title:             motion.name,
-        details:           motion.description,
-        author_id:         motion.author_id,
-        created_at:        motion.created_at,
-        updated_at:        motion.updated_at,
-        closing_at:        motion.closing_at,
-        closed_at:         motion.closed_at,
-        stances:           motion.votes.map do |vote|
-          Stance.new(
-            poll_option:      poll_options.detect { |o| o.name == vote.position_verb },
-            statement:        vote.statement,
-            participant_type: 'User',
-            participant_id:   vote.user_id,
-            latest:           vote.age.zero?,
-            created_at:       vote.created_at,
-            updated_at:       vote.updated_at
-          )
-        end,
-        outcome: (Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome)
-      )
+          poll_type:         "proposal",
+          discussion:        motion.discussion,
+          motion:            motion,
+          title:             motion.name,
+          details:           motion.description,
+          author_id:         motion.author_id,
+          created_at:        motion.created_at,
+          updated_at:        motion.updated_at,
+          closing_at:        motion.closing_at,
+          closed_at:         motion.closed_at,
+          outcome: (Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome)
+        )
+      ).tap do |poll|
+        poll.update(
+          stances: motion.votes.map do |vote|
+            Stance.new(
+              poll_option:      poll.poll_options.detect { |o| o.name == vote.position_verb },
+              statement:        vote.statement,
+              participant_type: 'User',
+              participant_id:   vote.user_id,
+              latest:           vote.age.zero?,
+              created_at:       vote.created_at,
+              updated_at:       vote.updated_at
+            )
+          end
+        )
+      end
     end
   end
 

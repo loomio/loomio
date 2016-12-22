@@ -58,27 +58,26 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
-  def poll_type=(type)
-    self[:poll_type] = type
-    assign_attributes(TEMPLATES.fetch(type, {}))
+  def self.template_for(poll_type)
+    TEMPLATES.fetch(poll_type.to_s, {})
   end
 
   private
 
-  def options_from_template
-    Array(TEMPLATES.dig(self.poll_type, 'poll_options_attributes'))
-  end
-
   def added_poll_options
-    if (self.poll_options.map(&:name) - options_from_template.map { |o| o['name'] }).length > 0
+    if (self.poll_options.map(&:name) - poll_options_for_template.map { |o| o['name'] }).length > 0
       self.errors.add(:poll_options, "Cannot add options to this poll")
     end
   end
 
   def removed_poll_options
-    if self.poll_options.length < options_from_template.length
+    if self.poll_options.length < poll_options_for_template.length
       self.errors.add(:poll_options, "Cannot remove options from this poll")
     end
+  end
+
+  def poll_options_for_template
+    Array(self.class.template_for(self.poll_type)['poll_options_attributes'])
   end
 
 end

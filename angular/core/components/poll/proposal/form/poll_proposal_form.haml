@@ -11,6 +11,8 @@
         %i.material-icons book
         %p{translate: "poll_proposal_form.learn_more"}
 
+    %input{type: "hidden", ng-model: "poll.pollType"}
+
     %md-input-container.md-block
       %label{translate: "poll_proposal_form.title"}
       %input{type: "text", placeholder: "{{poll_proposal_form.title_placeholder | translate}}", ng-model: "poll.title", md-maxlength="250"}
@@ -21,7 +23,8 @@
 
     %md-list.md-block
       %label{translate: "poll_proposal_form.options"}
-      %md-list-item{ng-repeat: "option in poll.pollOptions() track by option.id"}
+      %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
+        %img{src: "{{option.iconUrl}}"}
         {{option.name}}
 
     %poll_closing_at_field.md-block{poll: "poll"}

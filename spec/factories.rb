@@ -250,7 +250,8 @@ published_at "2015-11-18 14:28:30"
 
   factory :poll do
     poll_type "proposal"
-    poll_options PollOption.for("proposal")
+    poll_options_attributes Poll::TEMPLATES.dig('proposal', 'poll_options_attributes')
+    graph_type              Poll::TEMPLATES.dig('proposal', 'graph_type')
     title "This is a poll"
     details "with a description"
     association :author, factory: :user

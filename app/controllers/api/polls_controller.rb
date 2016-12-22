@@ -23,6 +23,11 @@ class API::PollsController < API::RestfulController
 
   private
 
+  def resource_params
+    template = resource_class.template_for(params.dig(resource_name, :poll_type))
+    super.reverse_merge(template).permit!
+  end
+
   def accessible_records
     Queries::VisiblePolls.new(user: current_user)
   end
