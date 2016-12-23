@@ -3,13 +3,14 @@ require 'rails_helper'
 describe StanceService do
   let(:poll_option) { create :poll_option }
   let(:group) { create :group }
-  let(:group_poll) { create :poll, communities: [group.community] }
+  let(:discussion) { create :discussion, group: group }
+  let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_group_member) { create :user }
   let(:another_user) { create :user }
-  let(:stance) { create :stance, poll: group_poll, poll_option: poll_option, participant: user, statement: "Old one" }
-  let(:another_stance) { create :stance, poll: group_poll, poll_option: poll_option, participant: another_group_member }
-  let(:new_stance) { build :stance, poll: group_poll, poll_option: poll_option, participant: nil }
+  let(:stance) { create :stance, poll: poll, poll_option: poll_option, participant: user, reason: "Old one" }
+  let(:another_stance) { create :stance, poll: poll, poll_option: poll_option, participant: another_group_member }
+  let(:new_stance) { build :stance, poll: poll, poll_option: poll_option, participant: nil }
 
   before do
     group.add_member! user
