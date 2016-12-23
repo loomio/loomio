@@ -15,6 +15,10 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     relationships: ->
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
+      @hasMany   'pollOptions'
+
+    latestStances: ->
+      @recordStore.stances.find(pollId: @id, latest: true)
 
     group: ->
       @discussion().group()

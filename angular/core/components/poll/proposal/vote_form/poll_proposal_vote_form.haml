@@ -1,0 +1,23 @@
+%form.poll-proposal-vote-form
+  .modal-header
+    %modal_header_cancel_button
+    %i.material-icons thumbs_up_down
+    %h1.lmo-h1{ng-if: "stance.isNew()", translate: "poll_proposal_vote_form.have_your_say"}
+    %h1.lmo-h1{ng-if: "!stance.isNew()", translate: "poll_proposal_vote_form.edit_your_typo"}
+
+  .modal-body
+    %label{translate: "poll_common.your_response"}
+    .poll-proposal-vote-form__chosen-option.lmo-flex
+      .poll-proposal-vote-form__chosen-option--icon
+        %img.poll-proposal-form__icon{src: "/img/{{stance.pollOption().name}}.svg"}
+      .poll-proposal-vote-form__chosen-option--name{translate: "poll_proposal_option.{{stance.pollOption().name}}"}
+    .poll-proposal-vote-form__option-meaning{translate: "poll_proposal_option.{{stance.pollOption().name}}_meaning"}
+
+    %md-input-container.md-block
+      %label{translate: "poll_proposal_vote_form.reason"}
+      %input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.statement", md-maxlength="250"}
+      %validation_errors{subject: "stance", field: "reason"}
+    {{stance}}
+
+  .modal-footer
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_proposal_vote_form.vote"}

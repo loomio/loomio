@@ -1293,6 +1293,9 @@ en:
     poll_title: Poll
     poll_subtitle: Choose from a list of options
 
+  poll_common:
+    your_response: Your response
+
   poll_proposal_form:
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal
@@ -1308,3 +1311,22 @@ en:
     notify_group_members_count: "{{count}} people will be notified"
     start: Start proposal
     update: Update proposal
+
+  poll_proposal_vote_form:
+    have_your_say: Have your say
+    abstain_reason_placeholder: Please explain why you abstain on this proposal.
+    agree_reason_placeholder: What do you like about the proposal and how will it benefit the group? Any concerns?
+    disagree_reason_placeholder: Why can’t you support this proposal and changes should be made?
+    block_reason_placeholder: What is the reason for blocking this proposal and what might resolve this for you?
+    vote: Vote
+    reason: Reason
+
+  poll_proposal_option:
+    agree: Agree
+    agree_meaning: This proposal is good enough to be adopted by the group
+    abstain: Abstain
+    abstain_meaning: Not sure, don’t know or don’t mind. Will support the outcome either way
+    disagree: Disagree
+    disagree_meaning: I don’t support the proposal. It should not go ahead.
+    block: Block
+    block_meaning: The urgent attention of the group is required to address a deep concern

@@ -8,4 +8,5 @@ class PollSerializer < ActiveModel::Serializer
 
   has_one :discussion, serializer: DiscussionSerializer
   has_one :author, serializer: UserSerializer, root: :users
+  has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
 end

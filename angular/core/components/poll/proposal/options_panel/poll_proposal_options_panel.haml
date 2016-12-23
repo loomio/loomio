@@ -1,2 +1,6 @@
 .poll-proposal-options-panel
-  options panel
+  %md-list.md-block{ng-if: "!userHasVoted()"}
+    %label{translate: "poll_common.your_response"}
+    %md-list-item{ng-click: "openVoteForm(option)", ng-repeat: "option in poll.pollOptions() track by option.id"}
+      %img.poll-proposal-form__icon{src: "/img/{{option.name}}.svg"}
+      {{option.name}}
