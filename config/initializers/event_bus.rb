@@ -5,6 +5,7 @@ EventBus.configure do |config|
   config.listen('comment_create')    { |comment|    Draft.purge_without_delay(user: comment.user, draftable: comment.discussion, field: :comment) }
   config.listen('motion_create')     { |motion|     Draft.purge(user: motion.author, draftable: motion.discussion, field: :motion) }
   config.listen('vote_create')       { |vote|       Draft.purge(user: vote.user, draftable: vote.motion, field: :vote) }
+  config.listen('poll_create')       { |poll|       Draft.purge(user: poll.author, draftable: poll.discussion, field: :poll) }
 
   # Add creator to group on group creation
   config.listen('group_create') do |group, actor|
@@ -125,7 +126,9 @@ EventBus.configure do |config|
                 'motion_create',
                 'motion_update',
                 'discussion_create',
-                'discussion_update') do |model, actor|
+                'discussion_update',
+                'poll_create',
+                'poll_update') do |model, actor|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
@@ -151,13 +154,11 @@ EventBus.configure do |config|
 
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
-  # make announcements of new poll
-  config.listen('poll_create') do |poll, actor|
-    1.times { ActionMailer::Base.deliveries << "a mail" } if poll.group && poll.make_announcement
-  end
+  # handle emails for poll events
+  config.listen('poll_create')       { |poll|    PollMailer.poll_create       'poll_create',       poll }
+  config.listen('poll_update')       { |poll|    PollMailer.poll_update       'poll_update',       poll }
+  config.listen('poll_closing_soon') { |poll|    PollMailer.poll_closing_soon 'poll_closing_soon', poll }
+  config.listen('outcome_create')    { |outcome| PollMailer.outcome_create    'outcome_create',    outcome.poll }
+  config.listen('outcome_update')    { |outcome| PollMailer.outcome_update    'outcome_update',    outcome.poll }
 
-  # make announcement of edited poll
-  config.listen('poll_update') do |poll|
-    poll.voters.each { |voter| ActionMailer::Base.deliveries << "a mail" } if poll.make_announcement
-  end
 end

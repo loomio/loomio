@@ -41,4 +41,38 @@ class Queries::UsersToEmailQuery
   def self.motion_closed(motion)
     Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).distinct
   end
+
+  def self.poll_create(poll)
+    return User.none unless poll.make_announcement
+    listeners_for(poll).without(poll.author)
+  end
+
+  def self.poll_update(poll)
+    return User.none unless poll.make_announcement
+    poll.voters
+  end
+
+  def self.poll_closing_soon(poll)
+    listeners_for(poll).without(poll.voters)
+  end
+
+  def self.outcome_created(poll)
+    return User.none unless poll.make_announcement
+    listeners_for(poll) # maybe just poll voters?
+  end
+
+  def self.outcome_updated(poll)
+    return User.none unless poll.make_announcement
+    listeners_for(poll)
+  end
+
+  # this should probably end up as poll.listeners somehow
+  def self.listeners_for(poll)
+    if poll.discussion
+      Queries::UsersByVolumeQuery.normal_or_loud(poll.discussion).distinct
+    else
+      # TODO: look at poll communities for interested parties
+    end
+  end
+  private_class_method :listeners_for
 end
