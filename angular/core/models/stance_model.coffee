@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     @draftParent: 'poll'
 
     defaultValues: ->
-      statement: ''
+      reason: ''
 
 
     relationships: ->

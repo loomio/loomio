@@ -17,7 +17,6 @@
       %label{translate: "poll_proposal_vote_form.reason"}
       %input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength="250"}
       %validation_errors{subject: "stance", field: "reason"}
-    {{stance}}
 
   .modal-footer
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_proposal_vote_form.vote"}
