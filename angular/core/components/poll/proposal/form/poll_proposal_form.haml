@@ -15,16 +15,18 @@
 
     %md-input-container.md-block
       %label{translate: "poll_proposal_form.title"}
-      %input{type: "text", placeholder: "{{poll_proposal_form.title_placeholder | translate}}", ng-model: "poll.title", md-maxlength="250"}
+      %input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+      %validation_errors{subject: "poll", field: "title"}
 
     %md-input-container.md-block
       %label{translate: "poll_proposal_form.details"}
-      %textarea{ng-model: "poll.details", placeholder: "{{poll_proposal_form.details_placeholder | translate}}"}
+      %textarea{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}"}
+      %validation_errors{subject: "poll", field: "details"}
 
     %md-list.md-block
       %label{translate: "poll_proposal_form.options"}
       %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
-        %img.poll-proposal-form__icon{src: "{{option.icon_url}}"}
+        %img.poll-proposal-form__icon{src: "/img/{{option.name}}.svg"}
         {{option.name}}
 
     %poll_closing_at_field.md-block{poll: "poll"}

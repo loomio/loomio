@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig) ->
+angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, MentionLinkService) ->
   class PollModel extends DraftableModel
     @singular: 'poll'
     @plural: 'polls'
@@ -18,3 +18,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig) ->
 
     group: ->
       @discussion().group()
+
+    cookedDetails: ->
+      MentionLinkService.cook(@mentionedUsernames, @details)
+
+    isActive: ->
+      !@closedAt?

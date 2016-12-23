@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222040839) do
+ActiveRecord::Schema.define(version: 20161222231731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -704,10 +704,8 @@ ActiveRecord::Schema.define(version: 20161222040839) do
   end
 
   create_table "poll_options", force: :cascade do |t|
-    t.integer "poll_template_id"
-    t.string  "name",             null: false
-    t.string  "icon_url"
-    t.integer "poll_id",          null: false
+    t.string  "name",    null: false
+    t.integer "poll_id"
   end
 
   create_table "poll_references", force: :cascade do |t|
@@ -717,21 +715,16 @@ ActiveRecord::Schema.define(version: 20161222040839) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "poll_template_id"
-    t.integer  "author_id",                            null: false
-    t.string   "title",                                null: false
+    t.integer  "author_id",     null: false
+    t.string   "title",         null: false
     t.text     "details"
-    t.boolean  "allow_custom_options", default: false, null: false
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                  null: false
-    t.boolean  "can_add_options",      default: false, null: false
-    t.boolean  "can_remove_options",   default: false, null: false
-    t.string   "poll_type",                            null: false
-    t.string   "graph_type",                           null: false
+    t.string   "key",           null: false
+    t.string   "poll_type",     null: false
     t.integer  "motion_id"
   end
 

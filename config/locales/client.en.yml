@@ -1,4 +1,6 @@
 en:
+  poll_types:
+    proposal: Proposal
   common:
     confirm_discard_changes: Discard your changes?
     time:

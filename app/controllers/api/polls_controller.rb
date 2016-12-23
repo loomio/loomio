@@ -4,6 +4,7 @@ class API::PollsController < API::RestfulController
   def index
     instantiate_collection do |collection|
       collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
+      collection = collection.active                         if params[:active]
       collection.order(:created_at)
     end
     respond_with_collection
@@ -22,11 +23,6 @@ class API::PollsController < API::RestfulController
   end
 
   private
-
-  def resource_params
-    template = resource_class.template_for(params.dig(resource_name, :poll_type))
-    super.reverse_merge(template).permit!
-  end
 
   def accessible_records
     Queries::VisiblePolls.new(user: current_user)

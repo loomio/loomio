@@ -1,24 +1,22 @@
 proposal:
   poll_options_attributes:
-    - name:     "agree"
-      icon_url: "img/agree.svg"
-    - name:     "disagree"
-      icon_url: "img/disagree.svg"
-    - name:     "abstain"
-      icon_url: "img/abstain.svg"
-    - name:     "block"
-      icon_url: "img/block.svg"
-  can_add_options: true
-  graph_type: pie
+    - name:           "agree"
+    - name:           "disagree"
+    - name:           "abstain"
+    - name:           "block"
+  graph_type:         pie
+  material_icon:      thumbs_up_down
+  can_remove_options: true
 
 engagement:
   poll_options_attributes:
-    - name:     "engage"
-      icon_url: "img/engage.svg"
-  graph_type: check
+    - name:           "engage"
+  graph_type:         check
+  material_icon:      check_circle
 
 poll:
   poll_options_attributes: []
-  can_add_options: true
+  graph_type:         bar
+  material_icon:      equalizer
+  can_add_options:    true
   can_remove_options: true
-  graph_type: bar

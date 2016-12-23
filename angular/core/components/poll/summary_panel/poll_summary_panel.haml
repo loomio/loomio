@@ -1,0 +1,11 @@
+.poll-summary-panel
+  %i.material-icons thumbs_up_down
+  %h2.lmo-card-heading{translate: "poll_types.{{poll.pollType}}"}
+
+  %h3.poll-summary-panel__title {{poll.title}}
+  .poll-summmary-panel__started-by
+    %span{translate: "poll_card.started_by"}
+    %span{aria-hidden: "true"}>·
+    %proposal_closing_time{proposal: "poll"}
+
+  .poll-summary-panel__details.lmo-markdown-wrapper{marked: "poll.cookedDetails()"}

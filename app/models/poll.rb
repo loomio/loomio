@@ -39,13 +39,14 @@ class Poll < ActiveRecord::Base
   #   @motion     ||= poll_references.find_by(reference_type: 'Motion')&.reference
   # end
 
+  scope :active, -> { where(closed_at: nil) }
+
   validates :title, presence: true
   validates :graph_type, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
   # validates :communities, length: { minimum: 1 }
 
-  validate :added_poll_options, unless: :can_add_options
-  validate :removed_poll_options, unless: :can_remove_options
+  validate :poll_options_are_valid
 
   # NB this is an Array and NOT an ActiveRecord::Relation.
   # This could possibly be improved.
@@ -54,30 +55,51 @@ class Poll < ActiveRecord::Base
   #   @voters ||= users + visitors
   # end
 
+  def material_icon
+    template['material_icon']
+  end
+
+  def can_add_options
+    template['can_add_options']
+  end
+
+  def can_remove_options
+    template['can_remove_options']
+  end
+
+  def graph_type
+    template['graph_type']
+  end
+
   def open?
     closed_at.nil?
   end
 
-  def self.template_for(poll_type)
-    TEMPLATES.fetch(poll_type.to_s, {})
-  end
-
   private
 
-  def added_poll_options
-    if (self.poll_options.map(&:name) - poll_options_for_template.map { |o| o['name'] }).length > 0
+  def template
+    TEMPLATES.fetch(self.poll_type, {})
+  end
+
+  def poll_options_are_valid
+    prevent_added_options   unless can_add_options
+    prevent_removed_options unless can_remove_options
+  end
+
+  def prevent_added_options
+    if (self.poll_options.map(&:name) - template_poll_options).any?
       self.errors.add(:poll_options, "Cannot add options to this poll")
     end
   end
 
-  def removed_poll_options
-    if self.poll_options.length < poll_options_for_template.length
+  def prevent_removed_options
+    if (template_poll_options - self.poll_options.map(&:name)).any?
       self.errors.add(:poll_options, "Cannot remove options from this poll")
     end
   end
 
-  def poll_options_for_template
-    Array(self.class.template_for(self.poll_type)['poll_options_attributes'])
+  def template_poll_options
+    Array(template['poll_options_attributes']).map { |o| o['name'] }
   end
 
 end
