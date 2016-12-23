@@ -57,6 +57,18 @@ class Poll < ActiveRecord::Base
   #   @voters ||= users + visitors
   # end
 
+  def update_stance_data
+    update(
+      stance_data: self.class.connection.select_all(%{
+        SELECT poll_options.name, sum(stances.score) as total
+        FROM stances
+        INNER JOIN poll_options ON poll_options.id = stances.poll_option_id
+        WHERE stances.latest = true AND stances.poll_id = #{self.id}
+        GROUP BY poll_options.name
+      }).map { |row| [row['name'], row['total'].to_i] }.to_h
+    )
+  end
+
   def material_icon
     template['material_icon']
   end

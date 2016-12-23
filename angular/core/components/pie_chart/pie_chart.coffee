@@ -12,8 +12,10 @@ angular.module('loomioApp').directive 'pieChart', ->
     shapes = []
 
     positionColors =
+      agree: '#00D177'
       yes: '#00D177'
       abstain: '#F6A82B'
+      disagree: '#F96168'
       no: '#F96168'
       block: '#CE261B'
 

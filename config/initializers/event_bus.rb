@@ -161,4 +161,5 @@ EventBus.configure do |config|
   config.listen('outcome_create')    { |outcome| PollMailer.outcome_create    'outcome_create',    outcome.poll }
   config.listen('outcome_update')    { |outcome| PollMailer.outcome_update    'outcome_update',    outcome.poll }
 
+  config.listen('stance_create')     { |stance| stance.poll.update_stance_data }
 end

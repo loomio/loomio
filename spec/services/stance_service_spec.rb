@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 describe StanceService do
-  let(:poll_option) { create :poll_option }
+  let(:agree) { create :poll_option, name: "agree" }
+  let(:disagree) { create :poll_option, name: "disagree" }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_group_member) { create :user }
   let(:another_user) { create :user }
-  let(:stance) { create :stance, poll: poll, poll_option: poll_option, participant: user, reason: "Old one" }
-  let(:another_stance) { create :stance, poll: poll, poll_option: poll_option, participant: another_group_member }
-  let(:new_stance) { build :stance, poll: poll, poll_option: poll_option, participant: nil }
+  let(:stance) { create :stance, poll: poll, poll_option: agree, participant: user, reason: "Old one" }
+  let(:another_stance) { create :stance, poll: poll, poll_option: disagree, participant: another_group_member }
+  let(:new_stance) { build :stance, poll: poll, poll_option: agree, participant: nil }
 
   before do
     group.add_member! user
@@ -37,6 +38,16 @@ describe StanceService do
 
     it 'does not allow an unauthorized member to create a stance' do
       expect { StanceService.create(stance: new_stance, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+    end
+
+    it 'updates stance data on the poll' do
+      expect { StanceService.create(stance: new_stance, actor: user) }.to change { poll.stance_data['agree'].to_i }.by(1)
+    end
+
+    it 'does not include old stance data on the poll' do
+      stance
+      poll.update_stance_data
+      expect { StanceService.create(stance: new_stance, actor: user) }.to_not change { poll.stance_data['agree'].to_i }
     end
   end
 end
