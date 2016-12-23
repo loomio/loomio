@@ -12,9 +12,9 @@ describe API::PollsController do
   let(:another_poll) { create :poll, discussion: another_discussion }
   let(:non_group_poll) { create :poll }
   let(:poll_params) {{
-    name: "hello",
-    type: "proposal",
-    description: "is it me you're looking for?",
+    title: "hello",
+    poll_type: "proposal",
+    details: "is it me you're looking for?",
     discussion_id: discussion.id,
     closing_at: 3.days.from_now
   }}
@@ -62,7 +62,7 @@ describe API::PollsController do
       expect(response.status).to eq 200
 
       poll = Poll.last
-      expect(poll.name).to eq poll_params[:name]
+      expect(poll.title).to eq poll_params[:title]
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
 
@@ -87,8 +87,8 @@ describe API::PollsController do
     it 'updates a poll' do
       sign_in user
       post :update, id: poll.key, poll: poll_params
-      expect(poll.reload.name).to eq poll_params[:name]
-      expect(poll.description).to eq poll_params[:description]
+      expect(poll.reload.title).to eq poll_params[:title]
+      expect(poll.details).to eq poll_params[:details]
       expect(poll.closing_at).to be_within(1.second).of(poll_params[:closing_at])
 
       expect(response.status).to eq 200

@@ -151,11 +151,13 @@ EventBus.configure do |config|
 
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
+  # make announcements of new poll
   config.listen('poll_create') do |poll, actor|
     1.times { ActionMailer::Base.deliveries << "a mail" } if poll.group && poll.make_announcement
   end
 
-  config.listen('poll_update') do |poll, actor|
+  # make announcement of edited poll
+  config.listen('poll_update') do |poll|
     poll.voters.each { |voter| ActionMailer::Base.deliveries << "a mail" } if poll.make_announcement
   end
 end

@@ -1,7 +1,7 @@
 class Stance < ActiveRecord::Base
   include HasMentions
 
-  is_mentionable  on: :statement
+  is_mentionable  on: :reason
 
   belongs_to :poll, required: true
   belongs_to :poll_option, required: true

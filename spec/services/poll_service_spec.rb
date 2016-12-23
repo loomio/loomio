@@ -29,19 +29,18 @@ describe PollService do
     #   expect(poll.communities.last).to be_a Communities::Public
     # end
 
-    it 'populates polling actions for the new poll' do
-      PollService.create(poll: new_poll, actor: user)
-
-      poll = Poll.last
-      expect(poll.poll_options.map(&:name).sort).to eq ['abstain','agree','block','disagree']
-    end
-
     it 'populates removing custom poll actions' do
-      new_poll.poll_options_attributes = [{ name: "agree", icon_url: "/img/agree.svg"}]
+      new_poll.poll_options_attributes = [{ name: "agree"}]
       PollService.create(poll: new_poll, actor: user)
 
       poll = Poll.last
       expect(poll.poll_options.count).to eq 1
+      expect(poll.poll_options)
+    end
+
+    it 'does not allow adding custom proposal actions' do
+      new_poll.poll_options_attributes = [{name: "superagree"}]
+      expect { PollService.create(poll: new_poll, actor: user) }.to_not change { Poll.count }
     end
 
     it 'does not create an invalid poll' do
@@ -96,8 +95,8 @@ describe PollService do
 
   end
 
-  describe 'set_communities' do
-    before { PollService.create(poll: new_poll, actor: user) }
+  # describe 'set_communities' do
+  #   before { PollService.create(poll: new_poll, actor: user) }
 
     # it 'sets the communities of the poll' do
     #   PollService.set_communities(poll: new_poll, actor: user, communities: [group.community])
@@ -125,7 +124,7 @@ describe PollService do
     #   expect(new_poll.communities.count).to eq 1
     #   expect(new_poll.communities.first).to be_a Communities::Public
     # end
-  end
+  # end
 
   describe '#update' do
     before { PollService.create(poll: new_poll, actor: user) }
@@ -168,10 +167,10 @@ describe PollService do
       expect(discussion.polls).to include poll
       expect(poll.closing_at).to eq motion.closing_at
       expect(poll.closed_at).to eq motion.closed_at
-      expect(poll.users).to eq motion.voters
+      expect(poll.voters).to eq motion.voters
       expect(poll.poll_options.map(&:name).sort).to eq ['abstain', 'agree', 'block', 'disagree']
       expect(poll.stances.count).to eq motion.votes.count
-      expect(poll.stances.first.statement).to eq vote.statement
+      expect(poll.stances.first.reason).to eq vote.statement
       expect(poll.outcome).to be_nil
     end
 

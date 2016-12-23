@@ -1,6 +1,9 @@
 class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
+  include HasMentions
   TEMPLATES = YAML.load_file('config/poll_templates.yml')
+
+  is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
   has_one    :outcome
@@ -42,7 +45,6 @@ class Poll < ActiveRecord::Base
   scope :active, -> { where(closed_at: nil) }
 
   validates :title, presence: true
-  validates :graph_type, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
   # validates :communities, length: { minimum: 1 }
 

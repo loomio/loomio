@@ -1,4 +1,4 @@
 .poll-proposal-votes-panel
   .stances{ng-repeat: "stance in poll.latestStances() track by stance.id"}
     {{stance.pollOption().name}}
-    {{stance.statement}}
+    {{stance.reason}}
