@@ -9,7 +9,6 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     defaultValues: ->
       reason: ''
 
-
     relationships: ->
       @belongsTo 'poll'
       @belongsTo 'pollOption'
