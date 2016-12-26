@@ -12,3 +12,6 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
     relationships: ->
       @belongsTo 'author', from: 'users'
       @belongsTo 'poll'
+
+    group: ->
+      @poll().group()

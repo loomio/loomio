@@ -30,13 +30,7 @@
         {{option.name}}
 
     %poll_closing_at_field.md-block{poll: "poll"}
-
-    %md-list.md-block
-      %md-list-item
-        .md-list-item-text.poll-proposal-form__notify-group
-          %h3{translate: "poll_proposal_form.notify_group"}
-          %p{translate: "poll_proposal_form.notify_group_members_count", translate-value-count: "{{poll.group().membershipsCount}}"}
-        %md-checkbox{ng-model: "poll.makeAnnouncement"}
+    %poll_notify_group{model: "poll"}
 
   .modal-footer
     %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update"}

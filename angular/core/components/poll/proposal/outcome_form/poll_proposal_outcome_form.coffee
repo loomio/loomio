@@ -2,6 +2,7 @@ angular.module('loomioApp').factory 'PollProposalOutcomeForm', ->
   templateUrl: 'generated/components/poll/proposal/outcome_form/poll_proposal_outcome_form.html'
   controller: ($scope, $translate, outcome, FormService, TranslationService, KeyEventService) ->
     $scope.outcome = outcome.clone()
+    $scope.outcome.makeAnnouncement = outcome.isNew()
 
     actionName = if $scope.outcome.isNew() then 'created' else 'updated'
 

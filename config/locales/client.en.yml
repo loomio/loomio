@@ -1312,6 +1312,8 @@ en:
     change_your_stance_title: Changed your mind?
     change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
+    notify_group: Notify group
+    notify_group_members_count: "{{count}} people will be notified"
 
   poll_card:
     started_by: Started by {{name}}
@@ -1327,8 +1329,6 @@ en:
     details_placeholder: Give enough information so everyone knows what it means to agree or disagree
     options: Options
     closing: Closing
-    notify_group: Notify group
-    notify_group_members_count: "{{count}} people will be notified"
     start: Start proposal
     update: Update proposal
 

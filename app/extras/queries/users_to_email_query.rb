@@ -56,14 +56,14 @@ class Queries::UsersToEmailQuery
     listeners_for(poll).without(poll.voters)
   end
 
-  def self.outcome_created(poll)
-    return User.none unless poll.make_announcement
-    listeners_for(poll) # maybe just poll voters?
+  def self.outcome_create(outcome)
+    return User.none unless outcome.make_announcement
+    listeners_for(outcome.poll).without(outcome.author) # maybe just poll voters?
   end
 
-  def self.outcome_updated(poll)
-    return User.none unless poll.make_announcement
-    listeners_for(poll)
+  def self.outcome_update(outcome)
+    return User.none unless outcome.make_announcement
+    listeners_for(outcome.poll).without(outcome.author)
   end
 
   # this should probably end up as poll.listeners somehow

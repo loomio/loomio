@@ -11,5 +11,7 @@
       %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement"}
       %validation_errors{subject: "outcome", field: "statement"}
 
+  %poll_notify_group{model: "outcome"}
+
   .modal-footer
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common.set_outcome"}

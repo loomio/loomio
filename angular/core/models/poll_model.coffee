@@ -28,7 +28,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       _.find @latestStances(), (stance) -> stance.participantId == user.id
 
     group: ->
-      @discussion().group()
+      @discussion().group() if @discussion()
 
     cookedDetails: ->
       MentionLinkService.cook(@mentionedUsernames, @details)

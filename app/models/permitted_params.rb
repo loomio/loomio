@@ -51,7 +51,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def outcome_attributes
-    [:statement, :poll_id]
+    [:statement, :poll_id, :make_announcement]
   end
 
   def membership_request_attributes
