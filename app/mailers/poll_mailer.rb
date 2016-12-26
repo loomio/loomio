@@ -36,7 +36,7 @@ class PollMailer < ActionMailer::Base
         locale:        locale_for(user),
         to:            user.email,
         utm_hash:      utm_hash,
-        subject_key:   "poll_mailer.#{action_name}_subject"
+        subject_key:   "poll_mailer.#{action_name}_subject",
         subject_params: {
           poll_title:  poll.title,
           poll_author: poll.author.name
