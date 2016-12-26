@@ -12,11 +12,11 @@ class PollMailer < ActionMailer::Base
     send_poll_mail(poll)
   end
 
-  def outcome_created(poll)
+  def outcome_create(poll)
     send_poll_mail(poll)
   end
 
-  def outcome_updated(poll)
+  def outcome_update(poll)
     send_poll_mail(poll)
   end
 
