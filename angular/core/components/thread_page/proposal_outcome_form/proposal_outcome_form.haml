@@ -1,7 +1,7 @@
 %form.proposal-form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header
-    %modal_header_cancel_button
+    %modal_header_cancel_button{aria-hidden: "true"}
     %h1.lmo-h1{ng-if: "!hasOutcome", translate: "proposal_outcome_form.set_outcome"}
     %h1.lmo-h1{ng-if: "hasOutcome", translate: "proposal_outcome_form.update_outcome"}
 

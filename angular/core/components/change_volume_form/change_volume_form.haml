@@ -2,7 +2,7 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   %form{ng-submit: "submit()"}
     .modal-header
-      %modal_header_cancel_button
+      %modal_header_cancel_button{aria-hidden: "true"}
       %h1.lmo-h1.change-volume-form__title{translate: "{{translateKey()}}.title", translate-value-title: "{{model.title || model.groupName()}}"}
     .modal-body
       %ul.change-volume-form__list

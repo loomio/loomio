@@ -1,10 +1,14 @@
 .undecided-panel
-  %a.undecided-panel__show-undecided-link.lmo-card-minor-action.lmo-no-print{href: "", ng-click: "showUndecided()", ng-show: "!undecidedPanelOpen", translate: "undecided_panel.show_undecided"}
+  %div{ng-show: "!undecidedPanelOpen"}
+    .undecided-panel__undecided-count.lmo-card-subheading
+      %span> ({{proposal.undecidedMembers().length}})
+      %span{translate: "undecided_panel.undecided"}>
+    .undecided-panel__actions
+      %button.undecided-panel__show.lmo-btn-link.lmo-card-minor-action.lmo-no-print{ng-click: "showUndecided()", translate: "undecided_panel.show"}
+      %button.undecided-panel__remind.lmo-btn-link.lmo-card-minor-action.lmo-no-print{ng-click: "remindUndecided()", translate: "undecided_panel.remind"}
   %h3.undecided-panel__heading.sr-only{ng-show: "undecidedPanelOpen", translate: "undecided_panel.aria_label", tabindex: 0}
   %ul.undecided-panel__list{ng-if: "undecidedPanelOpen"}
-    %li.media{ng-repeat: "user in proposal.undecidedMembers() track by user.id"}
-      .media-left
-        %i.fa.fa-question-circle.undecided-panel__icon
-      .media-body
-        %span.undecided-panel__user {{user.name}}
-  %a.undecided-panel__hide-undecided-link.lmo-card-minor-action{href: "", ng-click: "hideUndecided()", ng-show: "undecidedPanelOpen", translate: "undecided_panel.hide_undecided"}
+    %li.undecided-panel__list-item{ng-repeat: "user in proposal.undecidedMembers() track by user.id"}
+      %i.fa.fa-question-circle.undecided-panel__icon
+      %span.undecided-panel__user {{user.name}}
+  %button.undecided-panel__hide-undecided.lmo-btn-link.lmo-card-minor-action{href: "", ng-click: "hideUndecided()", ng-show: "undecidedPanelOpen", translate: "undecided_panel.hide_undecided"}

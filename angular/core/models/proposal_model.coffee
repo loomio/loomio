@@ -95,6 +95,9 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
       else
         @recordStore.users.find(_.pluck(@didNotVotes(), 'userId'))
 
+    undecidedUsernames: ->
+      _.pluck(@undecidedMembers(), 'username')
+
     hasUndecidedMembers: ->
       @membersCount > @votersCount
 
