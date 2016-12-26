@@ -3,17 +3,10 @@ angular.module('loomioApp').directive 'decisionToolsCard', ->
   restrict: 'E'
   templateUrl: 'generated/components/poll/decision_tools_card/decision_tools_card.html'
   replace: true
-  controller: ($scope, AppConfig, Records, ModalService, PollProposalForm) ->
-    $scope.pollForms =
-      proposal:   PollProposalForm
-      # engagement: EngagementProposalForm
-      # poll:       PollPollForm
-
-    $scope.fieldFromTemplate = (pollType, field) ->
-      AppConfig.pollTemplates[pollType][field]
+  controller: ($scope, AppConfig, Records, ModalService, PollService) ->
 
     $scope.startPoll = (pollType) ->
-      ModalService.open $scope.pollForms[pollType], poll: -> Records.polls.build
+      ModalService.open PollService.formFor(pollType), poll: -> Records.polls.build
         pollType:              pollType
         discussionId:          $scope.discussion.id
-        pollOptionsAttributes: $scope.fieldFromTemplate(pollType, 'poll_options_attributes')
+        pollOptionsAttributes: PollService.optionsFor(pollType)

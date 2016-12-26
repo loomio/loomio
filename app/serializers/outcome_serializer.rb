@@ -1,4 +1,5 @@
 class OutcomeSerializer < ActiveModel::Serializer
+  embed :ids, include: true
   attributes :id, :statement
 
   has_one :poll, serializer: PollSerializer

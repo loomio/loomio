@@ -1,0 +1,11 @@
+%form.close-proposal-form{ng-submit: "submit()"}
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header
+    %modal_header_cancel_button
+    %h1.lmo-h1{translate: "poll_close_form.close_poll"}
+
+  .modal-body
+    %span{translate: "poll_close_form.helptext"}
+
+  .modal-footer
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_close_form.close_poll"}

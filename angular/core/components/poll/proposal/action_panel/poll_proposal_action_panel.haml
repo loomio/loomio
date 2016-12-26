@@ -1,0 +1,20 @@
+.poll-proposal-action-panel
+  %section{ng-if: "!poll.closedAt"}
+    %md-list.md-block{ng-if: "userHasVoted()"}
+      %h3{translate: "poll_common.change_your_stance_title"}
+      %p{translate: "poll_common.change_your_stance_text"}
+      %md-button.md-primary{ng-click: "openVoteForm(currentUserStance.pollOption())", translate: "poll_common.change_your_stance"}
+    %md-list.md-block{ng-if: "!userHasVoted()"}
+      %label{translate: "poll_common.your_response"}
+      %md-list-item{ng-click: "openVoteForm(option)", ng-repeat: "option in poll.pollOptions() track by option.id"}
+        %img.poll-proposal-form__icon{src: "/img/{{option.name}}.svg"}
+        {{option.name}}
+  %section{ng-if: "poll.closedAt"}
+    %md-list.md-block{ng-if: "!poll.outcome().statement"}
+      %h3{translate: "poll_common.set_outcome_title"}
+      %p{translate: "poll_common.set_outcome_text"}
+      %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.set_outcome"}
+    %md-list.md-block{ng-if: "poll.outcome().statement"}
+      %h3{translate: "poll_common.outcome"}
+      %p {{poll.outcome().statement}}
+      %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.update_outcome"}

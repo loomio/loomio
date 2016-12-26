@@ -1,0 +1,14 @@
+angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, MentionLinkService) ->
+  class OutcomeModel extends DraftableModel
+    @singular: 'outcome'
+    @plural: 'outcomes'
+    @indices: ['pollId', 'authorId']
+    @serializableAttributes: AppConfig.permittedParams.outcome
+    @draftParent: 'poll'
+
+    defaultValues: ->
+      statement: ''
+
+    relationships: ->
+      @belongsTo 'author', from: 'users'
+      @belongsTo 'poll'

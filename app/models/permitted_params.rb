@@ -1,9 +1,12 @@
 class PermittedParams < Struct.new(:params)
+  MODELS = %w(
+    user vote motion membership_request membership poll outcome
+    stance invitation group_request group discussion discussion_reader comment
+    attachment contact_message user_deactivation_response network_membership_request
+    draft oauth_application
+  )
 
-  %w[user vote motion membership_request membership poll outcome stance
-   invitation group_request group discussion discussion_reader comment
-   attachment contact_message theme user_deactivation_response network_membership_request
-   draft oauth_application].each do |kind|
+  MODELS.each do |kind|
     define_method(kind) do
       permitted_attributes = self.send("#{kind}_attributes")
       params.require(kind).permit(*permitted_attributes)
@@ -40,7 +43,7 @@ class PermittedParams < Struct.new(:params)
   alias_method :proposal_attributes, :motion_attributes
 
   def poll_attributes
-    [:title, :details, :poll_type, :discussion_id, :closing_at, :make_announcement, poll_options_attributes: [:name, :_deleted]]
+    [:title, :details, :poll_type, :discussion_id, :closing_at, :make_announcement, :poll_options_attributes, poll_options_attributes: [:name, :_deleted]]
   end
 
   def stance_attributes

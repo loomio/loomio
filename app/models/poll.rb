@@ -18,6 +18,8 @@ class Poll < ActiveRecord::Base
   has_many :voters,       through: :stances, source: :participant, source_type: "User"
   # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
+  has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
+
   has_many :poll_options
   accepts_nested_attributes_for :poll_options
 

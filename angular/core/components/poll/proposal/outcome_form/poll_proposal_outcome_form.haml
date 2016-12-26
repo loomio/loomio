@@ -1,0 +1,15 @@
+%form.poll-proposal-vote-form
+  .modal-header
+    %modal_header_cancel_button
+    %i.material-icons thumbs_up_down
+    %h1.lmo-h1{ng-if: "stance.isNew()", translate: "poll_common.set_an_outcome"}
+    %h1.lmo-h1{ng-if: "!stance.isNew()", translate: "poll_common.update_outcome"}
+
+  .modal-body
+    %md-input-container.md-block
+      %label{translate: "poll_common.statement"}
+      %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement"}
+      %validation_errors{subject: "outcome", field: "statement"}
+
+  .modal-footer
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common.set_outcome"}

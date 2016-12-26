@@ -144,6 +144,15 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
+    canEditPoll: (poll) ->
+      poll.isActive() and
+      (@canAdministerGroup(poll.group()) or
+      # NB: discussion dependency here, to be factored out.
+      (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
+
+    canClosePoll: (poll) ->
+      @canEditPoll(poll)
+
     requireLoginFor: (page) ->
       return false if @isLoggedIn()
       switch page
