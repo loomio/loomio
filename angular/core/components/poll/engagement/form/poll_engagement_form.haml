@@ -1,0 +1,23 @@
+%form.poll-proposal-form
+  .modal-header
+    %modal_header_cancel_button
+    %i.material-icons thumbs_up_down
+    %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_engagement_form.start_a_proposal"}
+    %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_engagement_form.edit_proposal"}
+  .modal-body
+    .poll-proposal-form__tip
+      %p{translate: "poll_engagement_form.tip"}
+      .poll-proposal-form__learn-more
+        %i.material-icons import_contacts
+        %p{translate: "poll_engagement_form.learn_more"}
+
+    %input{type: "hidden", ng-model: "poll.pollType"}
+
+    ENGAGEMENT_FORM_STUFF
+
+    %poll_closing_at_field.md-block{poll: "poll"}
+    %poll_notify_group{model: "poll"}
+
+  .modal-footer
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_engagement_form.update"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_engagement_form.start"}
