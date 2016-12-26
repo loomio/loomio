@@ -26,7 +26,7 @@
     %md-list.md-block
       %label{translate: "poll_proposal_form.options"}
       %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
-        %img.poll-proposal-form__icon{src: "/img/{{option.name}}.svg"}
+        %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
         {{option.name}}
 
     %poll_closing_at_field.md-block{poll: "poll"}

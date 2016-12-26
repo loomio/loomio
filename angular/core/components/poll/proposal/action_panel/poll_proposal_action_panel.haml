@@ -7,7 +7,7 @@
     %md-list.md-block{ng-if: "!userHasVoted()"}
       %label{translate: "poll_common.your_response"}
       %md-list-item{ng-click: "openVoteForm(option)", ng-repeat: "option in poll.pollOptions() track by option.id"}
-        %img.poll-proposal-form__icon{src: "/img/{{option.name}}.svg"}
+        %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
         {{option.name}}
   %section{ng-if: "poll.closedAt"}
     %md-list.md-block{ng-if: "!poll.outcome().statement"}

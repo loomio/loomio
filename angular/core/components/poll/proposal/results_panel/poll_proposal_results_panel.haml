@@ -1,2 +1,8 @@
 .poll-proposal-results-panel
-  %pie_chart{votes: "poll.stanceData", diameter: "200"}
+  %pie_chart.poll-proposal-results-panel__pie-chart{votes: "poll.stanceData", diameter: "200"}
+  %table.poll-proposal-results-panel__legend{role: "presentation"}
+    %tbody
+      %tr{ng-repeat: "option in poll.pollOptions()"}
+        %td
+          .poll-proposal-results-panel__label{class: "poll-proposal-results-panel__label--{{option.name}}"}
+            {{ countFor(option) }} {{ translationFor(option) }}

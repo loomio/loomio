@@ -1,4 +1,6 @@
 .poll-proposal-votes-panel
-  .stances{ng-repeat: "stance in poll.latestStances() track by stance.id"}
-    {{stance.pollOption().name}}
-    {{stance.reason}}
+  .poll-proposal-votes-panel__stance.lmo-flex{ng-repeat: "stance in poll.latestStances() track by stance.id"}
+    %img.poll-proposal-votes-panel__stance-icon{ng-src: "/img/{{stance.pollOption().name}}.svg"}
+    .poll-proposal-votes-panel__stance-content
+      %div {{stance.pollOption().name}}
+      %div {{stance.reason}}
