@@ -1,7 +1,7 @@
 .decision-tools-card.lmo-card
   %h2.lmo-h2.decision-tools-card__title{translate: "decision_tools_card.title"}
   %md-list.decision-tools-card__poll-types
-    %md-list-item.decision-tools-card__poll-type{ng-click: "startPoll(pollType)", ng-repeat: "(pollType, _) in pollForms track by $index"}
+    %md-list-item.decision-tools-card__poll-type{ng-click: "startPoll(pollType)", ng-repeat: "pollType in pollTypes() track by $index"}
       %i.material-icons {{fieldFromTemplate(pollType, 'material_icon')}}
       .decision-tools-card__content
         %h3.decision-tools-card__poll-type-title{translate: "decision_tools_card.{{pollType}}_title"}
