@@ -1,8 +1,8 @@
-.poll-proposal-results-panel {
+.poll-proposal-results-panel__chart-container {
   @include displayFlex;
 }
 
-.poll-proposal-results-panel__pie-chart {
+.poll-proposal-results-panel__chart {
   height: 200px;
   width: 200px;
 }

@@ -1,8 +1,10 @@
 .poll-proposal-results-panel
-  %pie_chart.poll-proposal-results-panel__pie-chart{votes: "poll.stanceData", diameter: "200"}
-  %table.poll-proposal-results-panel__legend{role: "presentation"}
-    %tbody
-      %tr{ng-repeat: "option in poll.pollOptions()"}
-        %td
-          .poll-proposal-results-panel__label{class: "poll-proposal-results-panel__label--{{option.name}}"}
-            {{ countFor(option) }} {{ translationFor(option) }}
+  %h3.lmo-card-subheading{translate: "poll_common.results"}
+  .poll-proposal-results-panel__chart-container
+    %pie_chart.poll-proposal-results-panel__chart{votes: "poll.stanceData", diameter: "200"}
+    %table.poll-proposal-results-panel__legend{role: "presentation"}
+      %tbody
+        %tr{ng-repeat: "option in poll.pollOptions()"}
+          %td
+            .poll-proposal-results-panel__label{class: "poll-proposal-results-panel__label--{{option.name}}"}
+              {{ countFor(option) }} {{ translationFor(option) }}

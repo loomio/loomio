@@ -5,7 +5,7 @@
     %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
     %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
   .modal-body
-    .poll-proposal-form__tip
+    .poll-proposal-form__tip{ng-if: "poll.isNew()"}
       %p{translate: "poll_proposal_form.tip"}
       .poll-proposal-form__learn-more
         %i.material-icons import_contacts
@@ -23,7 +23,7 @@
       %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}"}
       %validation_errors{subject: "poll", field: "details"}
 
-    %md-list.md-block
+    %md-list.md-block{ng-if: "poll.isNew()"}
       %label{translate: "poll_proposal_form.options"}
       %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
         %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}

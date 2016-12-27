@@ -1305,6 +1305,7 @@ en:
     set_outcome_title: This proposal has closed
     set_outcome_text: Some text about how setting outcomes is important
     set_outcome: Set outcome
+    results: Results
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
