@@ -1,6 +1,6 @@
-angular.module('loomioApp').directive 'pollSummaryPanel', ->
+angular.module('loomioApp').directive 'pollCommonSummaryPanel', ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/summary_panel/poll_summary_panel.html'
+  templateUrl: 'generated/components/poll/common/summary_panel/poll_common_summary_panel.html'
   controller: ($scope, AbilityService, PollService) ->
     $scope.pollHasActions = ->
       AbilityService.canEditPoll($scope.poll) ||

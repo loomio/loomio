@@ -1312,8 +1312,17 @@ en:
     change_your_stance_title: Changed your mind?
     change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
+
+  poll_common_notify_group:
     notify_group: Notify group
-    notify_group_members_count: "{{count}} people will be notified"
+    members_count: "{{count}} people will be notified"
+
+  poll_common_close_form:
+    title: Close a poll early
+    helptext: Some text here
+    close_poll: Close poll
+    messages:
+      success: Poll closed
 
   poll_card:
     started_by: Started by {{name}}
@@ -1356,10 +1365,3 @@ en:
     disagree_meaning: I don’t support the proposal. It should not go ahead.
     block: Block
     block_meaning: The urgent attention of the group is required to address a deep concern
-
-  poll_close_form:
-    title: Close a poll early
-    helptext: Some text here
-    close_poll: Close poll
-    messages:
-      success: Poll closed

@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'PollCloseForm', ->
-  templateUrl: 'generated/components/poll/close_form/poll_close_form.html'
+angular.module('loomioApp').factory 'PollCommonCloseForm', ->
+  templateUrl: 'generated/components/poll/common/close_form/poll_common_close_form.html'
   controller: ($scope, poll, FormService) ->
 
     $scope.submit = FormService.submit $scope, poll,

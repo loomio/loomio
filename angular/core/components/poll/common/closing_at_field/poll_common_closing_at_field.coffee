@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'pollClosingAtField', ->
+angular.module('loomioApp').directive 'pollCommonClosingAtField', ->
   scope: {poll: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/poll/closing_at_field/poll_closing_at_field.html'
+  templateUrl: 'generated/components/poll/common/closing_at_field/poll_common_closing_at_field.html'
   replace: true
   controller: ($scope) ->
     $scope.hours = [1..24]

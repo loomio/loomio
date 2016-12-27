@@ -1,0 +1,12 @@
+.poll-common-summary-panel
+  %poll_common_actions_dropdown.pull-right{poll: "poll", ng-if: "pollHasActions()"}
+  %i.material-icons {{icon()}}
+  %h2.lmo-card-heading{translate: "poll_types.{{poll.pollType}}"}
+
+  %h3.poll-common-summary-panel__title {{poll.title}}
+  .poll-common-summmary-panel__started-by
+    %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
+    %span{aria-hidden: "true"}>·
+    %proposal_closing_time{proposal: "poll"}
+
+  .poll-common-summary-panel__details.lmo-markdown-wrapper{marked: "poll.cookedDetails()"}
