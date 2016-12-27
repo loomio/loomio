@@ -49,6 +49,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
         max:      @discussion.lastSequenceId
         pageType: 'activityItems'
 
+      Records.polls.fetchByDiscussion(@discussion.key)
+      Records.stances.fetchMyStancesByDiscussion(@discussion.key)
+
       $rootScope.$broadcast 'viewingThread', @discussion
       $rootScope.$broadcast 'setTitle', @discussion.title
       $rootScope.$broadcast 'analyticsSetGroup', @discussion.group()
