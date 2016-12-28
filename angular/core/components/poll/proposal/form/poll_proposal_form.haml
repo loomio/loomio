@@ -1,9 +1,9 @@
 %form.poll-proposal-form
-  .modal-header
-    %modal_header_cancel_button
+  .modal-header.lmo-poll-modal-header
     %i.material-icons thumbs_up_down
     %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
     %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
+    %modal_header_cancel_button
   .modal-body
     .poll-proposal-form__tip{ng-if: "poll.isNew()"}
       %p{translate: "poll_proposal_form.tip"}

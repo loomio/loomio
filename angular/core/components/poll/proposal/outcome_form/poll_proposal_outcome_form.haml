@@ -1,9 +1,9 @@
 %form.poll-proposal-vote-form
-  .modal-header
-    %modal_header_cancel_button
+  .modal-header.lmo-poll-modal-header
     %i.material-icons thumbs_up_down
     %h1.lmo-h1{ng-if: "stance.isNew()", translate: "poll_common.set_an_outcome"}
     %h1.lmo-h1{ng-if: "!stance.isNew()", translate: "poll_common.update_outcome"}
+    %modal_header_cancel_button
 
   .modal-body
     %md-input-container.md-block

@@ -1345,6 +1345,7 @@ en:
 
   poll_proposal_vote_form:
     have_your_say: Have your say
+    change_your_stance: Change your vote
     abstain_reason_placeholder: Please explain why you abstain on this proposal.
     agree_reason_placeholder: What do you like about the proposal and how will it benefit the group? Any concerns?
     disagree_reason_placeholder: Why can’t you support this proposal and changes should be made?

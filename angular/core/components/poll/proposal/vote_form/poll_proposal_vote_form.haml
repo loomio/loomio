@@ -1,16 +1,16 @@
 %form.poll-proposal-vote-form
-  .modal-header
-    %modal_header_cancel_button
+  .modal-header.lmo-poll-modal-header
     %i.material-icons thumbs_up_down
     %h1.lmo-h1{ng-if: "stance.isNew()", translate: "poll_proposal_vote_form.have_your_say"}
-    %h1.lmo-h1{ng-if: "!stance.isNew()", translate: "poll_proposal_vote_form.edit_your_typo"}
+    %h1.lmo-h1{ng-if: "!stance.isNew()", translate: "poll_proposal_vote_form.change_your_stance"}
+    %modal_header_cancel_button
 
   .modal-body
     %label{translate: "poll_common.your_response"}
-    .poll-proposal-vote-form__chosen-option.lmo-flex
-      .poll-proposal-vote-form__chosen-option--icon
-        %img.poll-proposal-form__icon{src: "/img/{{stance.pollOption().name}}.svg"}
-      .poll-proposal-vote-form__chosen-option--name{translate: "poll_proposal_options.{{stance.pollOption().name}}"}
+    %md-radio-group{ng-model: "stance.pollOptionId"}
+      %md-radio-button.poll-proposal-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option.id"}
+        %img.poll-proposal-form__icon{src: "/img/{{option.name}}.svg"}
+        %span.poll-proposal-vote-form__chosen-option--name{translate: "poll_proposal_options.{{option.name}}"}
     .poll-proposal-vote-form__option-meaning{translate: "poll_proposal_options.{{stance.pollOption().name}}_meaning"}
 
     %md-input-container.md-block

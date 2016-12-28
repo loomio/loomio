@@ -2,3 +2,12 @@
   @include fontSmall;
   font-style: italic;
 }
+
+.lmo-poll-modal-header {
+  @include displayFlex;
+}
+
+.lmo-poll-modal-header h1 {
+  flex-grow: 10;
+  margin: -5px 0 0 10px;
+}
