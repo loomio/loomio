@@ -1,3 +1,12 @@
 .poll-proposal-votes-panel__stance {
-  max-height: 40px;
+  margin: 7px 0;
+}
+
+.poll-proposal-votes-panel__stance-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.poll-proposal-votes-panel__stance-content {
+  margin-left: 10px;
 }

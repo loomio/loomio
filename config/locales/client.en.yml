@@ -1306,6 +1306,7 @@ en:
     set_outcome_text: Some text about how setting outcomes is important
     set_outcome: Set outcome
     results: Results
+    votes: Votes
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
@@ -1342,12 +1343,6 @@ en:
     start: Start proposal
     update: Update proposal
 
-  poll_proposal_results_panel:
-    agree:     Agree
-    abstain:   Abstain
-    disagree:  Disagree
-    block:     Block
-
   poll_proposal_vote_form:
     have_your_say: Have your say
     abstain_reason_placeholder: Please explain why you abstain on this proposal.
@@ -1357,12 +1352,16 @@ en:
     vote: Vote
     reason: Reason
 
-  poll_proposal_option:
+  poll_proposal_options:
     agree: Agree
+    agree_verb: "agreed"
     agree_meaning: This proposal is good enough to be adopted by the group
     abstain: Abstain
+    abstain_verb: "abstained"
     abstain_meaning: Not sure, don’t know or don’t mind. Will support the outcome either way
     disagree: Disagree
+    disagree_verb: "disagreed"
     disagree_meaning: I don’t support the proposal. It should not go ahead.
     block: Block
+    block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern

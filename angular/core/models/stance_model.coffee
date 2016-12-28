@@ -12,6 +12,7 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     relationships: ->
       @belongsTo 'poll'
       @belongsTo 'pollOption'
+      @belongsTo 'participant', from: 'users'
 
     cookedStatement: ->
       MentionLinkService.cook(@mentionedUsernames, @statement)

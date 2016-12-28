@@ -12,5 +12,8 @@
 .poll-common-summary-panel__started-by {
   @include fontSmall;
   color: $grey-on-white;
-  margin-bottom: 15px;
+}
+
+.poll-common-summary-panel__details {
+  margin-top: 10px;
 }

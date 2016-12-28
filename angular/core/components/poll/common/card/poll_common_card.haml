@@ -4,10 +4,10 @@
   -# Here's our poll type switch statement. I've made it very explicit for now; we can be cute with this later if we feel the need to.
   .poll-proposal-panel{ng-if: "poll.pollType == 'proposal'"}
     %poll_proposal_action_panel{poll: "poll"}
-    %poll_proposal_results_panel{poll: "poll"}
+    %poll_proposal_chart_panel{poll: "poll"}
     %poll_proposal_votes_panel{poll: "poll"}
 
   .poll-engagement-panel{ng-if: "poll.pollType == 'engagement'"}
     %poll_engagement_action_panel{poll: "poll"}
-    %poll_engagement_results_panel{poll: "poll"}
+    %poll_engagement_chart_panel{poll: "poll"}
     %poll_engagement_votes_panel{poll: "poll"}

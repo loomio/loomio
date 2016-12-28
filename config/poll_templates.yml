@@ -1,8 +1,8 @@
 proposal:
   poll_options_attributes:
     - name:           "agree"
-    - name:           "disagree"
     - name:           "abstain"
+    - name:           "disagree"
     - name:           "block"
   graph_type:         pie
   material_icon:      thumbs_up_down
