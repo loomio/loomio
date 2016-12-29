@@ -3,14 +3,6 @@
   font-style: italic;
 }
 
-.poll-proposal-form__learn-more {
-  @include displayFlex;
-  @include fontTiny;
-  line-height: 18px;
-  font-style: normal;
-  margin-bottom: 30px;
-}
-
 .poll-proposal-form__learn-more i {
   margin-right: 5px;
   font-size: 18px;

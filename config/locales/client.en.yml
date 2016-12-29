@@ -1,6 +1,7 @@
 en:
   poll_types:
     proposal: Proposal
+    engagement: Engagement Check
   common:
     confirm_discard_changes: Discard your changes?
     time:
@@ -1303,14 +1304,14 @@ en:
     your_response: Your response
     set_an_outcome: Set an outcome
     set_outcome_title: This proposal has closed
-    set_outcome_text: Some text about how setting outcomes is important
+    set_outcome_text: This proposal has closed - It's up to you to decide what the results of the proposal mean to the group
     set_outcome: Set outcome
     results: Results
     votes: Votes
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
-    statement_placeholder: What should happen or be agreed upon because of this proposal?
+    statement_placeholder: What is your conclusion of this proposal and what will happen next?
     change_your_stance_title: Changed your mind?
     change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
@@ -1326,6 +1327,9 @@ en:
     messages:
       success: Poll closed
 
+  poll_common_school_link:
+    learn_about: "Learn about:"
+
   poll_card:
     started_by: Started by {{name}}
 
@@ -1333,7 +1337,7 @@ en:
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal
     tip: Harness the collective wisdom of the group to build a better decision than any single person could
-    learn_more: "Learn about: <a href='https://loomio.school/beginner/proposals.html'>Writing an effective proposal</a>"
+    learn_more: Writing an effective proposal
     title: Title
     title_placeholder: E.g. Let's go to the moon!
     details: Details
@@ -1366,3 +1370,16 @@ en:
     block: Block
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
+
+  poll_engagement_form:
+    new_engagement_check: New engagement check
+    update_engagement_checl: Update engagement check
+    tip: Use an engagement check to ensure that everyone has seen a particular bit of content. Need to discuss something which may have differing opinions? Try a <a href="#">proposal</a>.
+    learn_more: How to use engagement checks
+    title: Title
+    title_placeholder: E.g. I've given my thoughts on the annual report
+    details: Details
+    details_placeholder: Give some additional details. If you want people to engage with a particular document, be sure to link to it here!
+    action: Action
+    action_placeholder: E.g. I've done it!
+    start: Start engagement check

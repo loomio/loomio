@@ -7,9 +7,7 @@
   .modal-body
     .poll-proposal-form__tip{ng-if: "poll.isNew()"}
       %p{translate: "poll_proposal_form.tip"}
-      .poll-proposal-form__learn-more
-        %i.material-icons import_contacts
-        %p{translate: "poll_proposal_form.learn_more"}
+      %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_proposal_form.learn_more"}
 
     %input{type: "hidden", ng-model: "poll.pollType"}
 
