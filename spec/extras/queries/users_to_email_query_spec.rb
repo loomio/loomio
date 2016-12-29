@@ -14,6 +14,8 @@ describe Queries::UsersToEmailQuery do
   let(:user_motion_closing_soon) { FactoryGirl.create :user, all_emails_disabled.merge(email_when_proposal_closing_soon: true) }
   let(:user_mentioned) { FactoryGirl.create :user }
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
+  let(:user_poll_voted) { FactoryGirl.create :user }
+  let(:user_outcome_author) { FactoryGirl.create :user }
 
   let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
   let(:mentioned_user) {FactoryGirl.create :user, username: 'sam' }
@@ -21,8 +23,12 @@ describe Queries::UsersToEmailQuery do
   let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
   let(:motion) { FactoryGirl.create :motion, discussion: discussion, description: user_mentioned_text }
   let(:vote) { FactoryGirl.create :vote, motion: motion }
+  let(:poll) { FactoryGirl.create :poll, discussion: discussion }
+  let(:outcome) { FactoryGirl.create :outcome, author: user_outcome_author, poll: poll }
+  let(:stance) { FactoryGirl.create :stance, participant: user_poll_voted, poll: poll }
 
   before do
+    stance
     parent_comment
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
@@ -36,6 +42,8 @@ describe Queries::UsersToEmailQuery do
     discussion.group.add_member!(user_thread_quiet).set_volume! :mute
     discussion.group.add_member!(user_thread_mute).set_volume! :mute
     discussion.group.add_member!(user_mentioned)
+    discussion.group.add_member!(user_poll_voted).set_volume! :normal
+    discussion.group.add_admin!(user_outcome_author).set_volume! :normal
 
     DiscussionReader.for(discussion: discussion, user: user_thread_loud).set_volume! :loud
     DiscussionReader.for(discussion: discussion, user: user_thread_normal).set_volume! :normal
@@ -173,5 +181,116 @@ describe Queries::UsersToEmailQuery do
 
     users.should_not include user_membership_mute
     users.should_not include user_thread_mute
+  end
+
+  describe 'polls' do
+
+    describe 'poll_create' do
+      it 'sends emails when make announcement is true' do
+        poll.make_announcement = true
+        users = Queries::UsersToEmailQuery.poll_create(poll)
+        users.should     include user_thread_loud
+        users.should     include user_membership_loud
+
+        users.should     include user_membership_normal
+        users.should     include user_thread_normal
+
+        users.should_not include user_membership_quiet
+        users.should_not include user_thread_quiet
+
+        users.should_not include user_membership_mute
+        users.should_not include user_thread_mute
+        users.should_not include poll.author
+      end
+
+      it 'does not send emails when make announcement is false' do
+        poll.make_announcement = false
+        users = Queries::UsersToEmailQuery.poll_create(poll)
+        users.should be_empty
+      end
+    end
+
+    describe 'poll_update' do
+      it 'sends emails to voters when make announcement is true' do
+        poll.make_announcement = true
+        users = Queries::UsersToEmailQuery.poll_update(poll)
+        users.should     include user_poll_voted
+        users.should_not include user_thread_loud
+      end
+
+      it 'does not send emails when make announcement is false' do
+        poll.make_announcement = false
+        users = Queries::UsersToEmailQuery.poll_update(poll)
+        users.should be_empty
+      end
+    end
+
+    describe 'poll_closing_soon' do
+      it 'sends emails to non-voters' do
+        users = Queries::UsersToEmailQuery.poll_closing_soon(poll)
+        users.should     include user_thread_loud
+        users.should     include user_membership_loud
+
+        users.should     include user_membership_normal
+        users.should     include user_thread_normal
+
+        users.should_not include user_membership_quiet
+        users.should_not include user_thread_quiet
+
+        users.should_not include user_membership_mute
+        users.should_not include user_thread_mute
+        users.should_not include user_poll_voted
+      end
+    end
+
+    describe 'outcome_create' do
+      it 'sends emails to listeners when make announcement is true' do
+        outcome.make_announcement = true
+        users = Queries::UsersToEmailQuery.outcome_create(outcome)
+        users.should     include user_thread_loud
+        users.should     include user_membership_loud
+
+        users.should     include user_membership_normal
+        users.should     include user_thread_normal
+
+        users.should_not include user_membership_quiet
+        users.should_not include user_thread_quiet
+
+        users.should_not include user_membership_mute
+        users.should_not include user_thread_mute
+        users.should_not include user_outcome_author
+      end
+
+      it 'does not send emails when make announcement is false' do
+        outcome.make_announcement = false
+        users = Queries::UsersToEmailQuery.outcome_create(outcome)
+        users.should be_empty
+      end
+    end
+
+    describe 'outcome_update' do
+      it 'sends emails to listeners when make announcement is true' do
+        outcome.make_announcement = true
+        users = Queries::UsersToEmailQuery.outcome_update(outcome)
+        users.should     include user_thread_loud
+        users.should     include user_membership_loud
+
+        users.should     include user_membership_normal
+        users.should     include user_thread_normal
+
+        users.should_not include user_membership_quiet
+        users.should_not include user_thread_quiet
+
+        users.should_not include user_membership_mute
+        users.should_not include user_thread_mute
+        users.should_not include user_outcome_author
+      end
+
+      it 'does not send emails when make announcement is false' do
+        outcome.make_announcement = false
+        users = Queries::UsersToEmailQuery.outcome_update(outcome)
+        users.should be_empty
+      end
+    end
   end
 end

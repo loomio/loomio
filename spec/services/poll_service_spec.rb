@@ -145,7 +145,7 @@ describe PollService do
       expect(new_poll.reload.title).to eq old_title
     end
 
-    it 'makes an announcement to voters if make_announcement is true' do
+    it 'makes an announcement to participants if make_announcement is true' do
       stance
       expect {
         PollService.update(poll: new_poll, params: { details: "A new description", make_announcement: true }, actor: user)
@@ -167,7 +167,7 @@ describe PollService do
       expect(discussion.polls).to include poll
       expect(poll.closing_at).to eq motion.closing_at
       expect(poll.closed_at).to eq motion.closed_at
-      expect(poll.voters).to eq motion.voters
+      expect(poll.participants).to eq motion.voters
       expect(poll.poll_options.map(&:name).sort).to eq ['abstain', 'agree', 'block', 'disagree']
       expect(poll.stances.count).to eq motion.votes.count
       expect(poll.stances.first.reason).to eq vote.statement

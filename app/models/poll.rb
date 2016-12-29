@@ -15,7 +15,7 @@ class Poll < ActiveRecord::Base
   attr_accessor :make_announcement
 
   has_many :stances
-  has_many :voters,       through: :stances, source: :participant, source_type: "User"
+  has_many :participants, through: :stances, source: :participant, source_type: "User"
   # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
@@ -58,6 +58,14 @@ class Poll < ActiveRecord::Base
   # def voters
   #   @voters ||= users + visitors
   # end
+
+  def listeners
+    if discussion.present?
+      Queries::UsersByVolumeQuery.normal_or_loud(discussion).distinct
+    else
+      # TODO: look at communities when communities exist
+    end
+  end
 
   def update_stance_data
     update(

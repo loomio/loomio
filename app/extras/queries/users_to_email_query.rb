@@ -44,35 +44,25 @@ class Queries::UsersToEmailQuery
 
   def self.poll_create(poll)
     return User.none unless poll.make_announcement
-    listeners_for(poll).without(poll.author)
+    poll.listeners.without(poll.author)
   end
 
   def self.poll_update(poll)
     return User.none unless poll.make_announcement
-    poll.voters
+    poll.participants
   end
 
   def self.poll_closing_soon(poll)
-    listeners_for(poll).without(poll.voters)
+    poll.listeners.without(poll.participants)
   end
 
   def self.outcome_create(outcome)
     return User.none unless outcome.make_announcement
-    listeners_for(outcome.poll).without(outcome.author) # maybe just poll voters?
+    outcome.poll.listeners.without(outcome.author) # maybe just poll participants?
   end
 
   def self.outcome_update(outcome)
     return User.none unless outcome.make_announcement
-    listeners_for(outcome.poll).without(outcome.author)
+    outcome.poll.listeners.without(outcome.author)
   end
-
-  # this should probably end up as poll.listeners somehow
-  def self.listeners_for(poll)
-    if poll.discussion
-      Queries::UsersByVolumeQuery.normal_or_loud(poll.discussion).distinct
-    else
-      # TODO: look at poll communities for interested parties
-    end
-  end
-  private_class_method :listeners_for
 end

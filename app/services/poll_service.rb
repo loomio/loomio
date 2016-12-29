@@ -35,7 +35,7 @@ class PollService
     #   poll_community.update(community: poll_community.community.to_user_community)
     # end
     poll.poll_did_not_votes.delete_all
-    non_voters = poll.group.members - poll.voters
+    non_voters = poll.group.members - poll.participants
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
 
     EventBus.broadcast('poll_close', poll, actor)
