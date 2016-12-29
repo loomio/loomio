@@ -1,28 +1,28 @@
 class PollMailer < ActionMailer::Base
 
   def poll_create(poll)
-    send_poll_mail(poll)
+    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_create(poll)
   end
 
   def poll_update(poll)
-    send_poll_mail(poll)
+    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_update(poll)
   end
 
   def poll_closing_soon(poll)
-    send_poll_mail(poll)
+    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closing_soon(poll)
   end
 
-  def outcome_create(poll)
-    send_poll_mail(poll)
+  def outcome_create(outcome)
+    send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_create(outcome)
   end
 
-  def outcome_update(poll)
-    send_poll_mail(poll)
+  def outcome_update(outcome)
+    send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_update(outcome)
   end
 
   private
 
-  def send_poll_mail(poll, priority: 2)
+  def send_poll_mail(poll:, recipients:, priority: 2)
     @poll = poll
 
     headers = {
@@ -31,7 +31,7 @@ class PollMailer < ActionMailer::Base
       "Auto-Submitted":           :"auto-generated"
     }
 
-    delay(priority: priority).send_bulk_mail(to: Queries::UsersToEmailQuery.send(action_name, poll)) do |user|
+    delay(priority: priority).send_bulk_mail(to: recipients) do |user|
       send_single_mail(
         locale:        locale_for(user),
         to:            user.email,
