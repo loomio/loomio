@@ -16,3 +16,6 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     cookedStatement: ->
       MentionLinkService.cook(@mentionedUsernames, @statement)
+
+    group: ->
+      @poll().group() if @poll()

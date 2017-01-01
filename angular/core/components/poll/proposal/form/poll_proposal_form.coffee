@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'PollProposalForm', ->
   templateUrl: 'generated/components/poll/proposal/form/poll_proposal_form.html'
-  controller: ($scope, poll, FormService, KeyEventService, TranslationService) ->
+  controller: ($scope, poll, FormService, KeyEventService, MentionService, TranslationService) ->
     $scope.poll = poll.clone()
     $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
@@ -14,4 +14,5 @@ angular.module('loomioApp').factory 'PollProposalForm', ->
       titlePlaceholder:   'poll_proposal_form.title_placeholder'
       detailsPlaceholder: 'poll_proposal_form.details_placeholder'
 
+    MentionService.applyMentions($scope, $scope.poll)
     KeyEventService.submitOnEnter($scope)

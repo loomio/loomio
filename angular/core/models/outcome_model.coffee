@@ -14,4 +14,4 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
       @belongsTo 'poll'
 
     group: ->
-      @poll().group()
+      @poll().group() if @poll()

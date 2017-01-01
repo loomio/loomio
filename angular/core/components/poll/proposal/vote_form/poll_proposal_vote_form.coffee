@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'PollProposalVoteForm', ->
   templateUrl: 'generated/components/poll/proposal/vote_form/poll_proposal_vote_form.html'
-  controller: ($scope, stance, FormService, TranslationService, KeyEventService) ->
+  controller: ($scope, stance, FormService, TranslationService, MentionService, KeyEventService) ->
     $scope.stance = stance.clone()
 
     actionName = if $scope.stance.isNew() then 'created' else 'updated'
@@ -12,4 +12,5 @@ angular.module('loomioApp').factory 'PollProposalVoteForm', ->
     TranslationService.eagerTranslate
       detailsPlaceholder: 'poll_common.statement_placeholder'
 
+    MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)
