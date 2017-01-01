@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'PollProposalVoteForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.stance,
       flashSuccess: "poll_proposal_vote_form.messages.#{actionName}"
-      draftFields: ['title', 'details']
+      draftFields: ['reason']
 
     TranslationService.eagerTranslate
       detailsPlaceholder: 'poll_common.statement_placeholder'

@@ -319,7 +319,7 @@ class Ability
       community.includes?(@user)
     end
 
-    can :show, Poll do |poll|
+    can [:make_draft, :show], Poll do |poll|
       can?(:show, poll.discussion)
     end
 
