@@ -17,15 +17,22 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
       @hasMany   'pollOptions'
+      @hasMany   'stances'
 
     outcome: ->
       @recordStore.outcomes.find(pollId: @id)[0]
 
-    latestStances: ->
-      @recordStore.stances.find(pollId: @id, latest: true)
+    uniqueStances: ->
+      _.values @uniqueStancesByUserId()
+
+    uniqueStancesByUserId: ->
+      stancesByUserId = {}
+      _.each _.sortBy(@stances(), 'createdAt'), (stance) ->
+        stancesByUserId[stance.participantId] = stance
+      stancesByUserId
 
     stanceFor: (user) ->
-      _.find @latestStances(), (stance) -> stance.participantId == user.id
+      @uniqueStancesByUserId()[user.id]
 
     group: ->
       @discussion().group() if @discussion()

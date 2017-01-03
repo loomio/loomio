@@ -1,6 +1,6 @@
 .poll-proposal-votes-panel
   %h3.lmo-card-subheading{translate: "poll_common.votes"}
-  .poll-proposal-votes-panel__stance.lmo-flex{ng-repeat: "stance in poll.latestStances() track by stance.id"}
+  .poll-proposal-votes-panel__stance.lmo-flex{ng-repeat: "stance in poll.uniqueStances() track by stance.id"}
     %img.poll-proposal-votes-panel__stance-icon{ng-src: "/img/{{stance.pollOption().name}}.svg"}
     .poll-proposal-votes-panel__stance-content
       %strong> {{stance.participant().name}}
