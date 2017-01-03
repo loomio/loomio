@@ -59,7 +59,7 @@ class Poll < ActiveRecord::Base
   #   @voters ||= users + visitors
   # end
 
-  def listeners
+  def watchers
     if discussion.present?
       Queries::UsersByVolumeQuery.normal_or_loud(discussion).distinct
     else

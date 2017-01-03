@@ -44,7 +44,7 @@ class Queries::UsersToEmailQuery
 
   def self.poll_create(poll)
     return User.none unless poll.make_announcement
-    poll.listeners.without(poll.author)
+    poll.watchers.without(poll.author)
   end
 
   def self.poll_update(poll)
@@ -53,16 +53,16 @@ class Queries::UsersToEmailQuery
   end
 
   def self.poll_closing_soon(poll)
-    poll.listeners.without(poll.participants)
+    poll.watchers.without(poll.participants)
   end
 
   def self.outcome_create(outcome)
     return User.none unless outcome.make_announcement
-    outcome.poll.listeners.without(outcome.author) # maybe just poll participants?
+    outcome.poll.watchers.without(outcome.author) # maybe just poll participants?
   end
 
   def self.outcome_update(outcome)
     return User.none unless outcome.make_announcement
-    outcome.poll.listeners.without(outcome.author)
+    outcome.poll.watchers.without(outcome.author)
   end
 end
