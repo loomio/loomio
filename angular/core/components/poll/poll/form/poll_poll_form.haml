@@ -21,6 +21,17 @@
       %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
       %validation_errors{subject: "poll", field: "details"}
 
+    %md-list.md-block
+      %label{translate: "poll_proposal_form.options"}
+      %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
+        {{option.name}}
+        %md-button{ng-click: "removeOption(option)"}
+          %i.material-icons clear
+
+    %md-input-container.md-block
+      %input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
+      %md-button{translate: "poll_poll_form.add_option", ng-click: "addOption()"}
+
     %poll_common_closing_at_field.md-block{poll: "poll"}
     %poll_common_notify_group{model: "poll"}
 

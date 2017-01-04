@@ -25,6 +25,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     uniqueStances: ->
       _.values @uniqueStancesByUserId()
 
+    lastStanceByUser: (user) ->
+      @uniqueStancesByUserId()[user.id]
+
+    userHasVoted: (user) ->
+      @lastStanceByUser(user)?
+
     uniqueStancesByUserId: ->
       stancesByUserId = {}
       _.each _.sortBy(@stances(), 'createdAt'), (stance) ->

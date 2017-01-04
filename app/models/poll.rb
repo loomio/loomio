@@ -2,6 +2,7 @@ class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
   TEMPLATES = YAML.load_file('config/poll_templates.yml')
+  COLORS    = YAML.load_file('config/colors.yml')
 
   is_mentionable on: :details
 
@@ -25,6 +26,7 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_did_not_votes
 
+  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
   # has_many :poll_communities
   # has_many :communities, through: :poll_communities
 
@@ -61,7 +63,7 @@ class Poll < ActiveRecord::Base
 
   def watchers
     if discussion.present?
-      Queries::UsersByVolumeQuery.normal_or_loud(discussion).distinct
+      Queries::UsersByVolumeQuery.normal_or_loud(discussion)
     else
       # TODO: look at communities when communities exist
     end

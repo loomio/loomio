@@ -57,7 +57,8 @@ module AngularHelper
         ({ name: :google,   href: user_google_omniauth_authorize_path   } if ENV['OMNI_CONTACTS_GOOGLE_KEY']),
         ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_ID'])
       ].compact,
-      pollTemplates: Poll::TEMPLATES
+      pollTemplates: Poll::TEMPLATES,
+      pollColors: Poll::COLORS
     }
   end
 

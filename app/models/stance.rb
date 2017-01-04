@@ -7,6 +7,8 @@ class Stance < ActiveRecord::Base
   belongs_to :poll_option, required: true
   belongs_to :participant, polymorphic: true, required: true
 
+  update_counter_cache :poll, :stances_count
+
   scope :latest, -> { where(latest: true) }
 
   def author

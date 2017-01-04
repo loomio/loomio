@@ -2,6 +2,7 @@
   %md-input-container
     %label{translate: "poll_proposal_form.closing"}
     %md-datepicker{ng-model: "closingDate", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
+    %timeago{timestamp: "poll.closingAt"}>
   %md-input-container
     %md-select{ng-model: "closingHour"}
       %md-option{ng-repeat: "hour in hours", ng-value: "hour", ng-selected: "hour == closingHour"}

@@ -1,0 +1,19 @@
+.poll-poll-action-panel
+  %section{ng-if: "!poll.closedAt"}
+    %md-list.md-block{ng-if: "userHasVoted()"}
+      %h3.lmo-card-subheading{translate: "poll_common.change_your_stance_title"}
+      %p.lmo-poll-helptext{translate: "poll_common.change_your_stance_text"}
+      %md-button.md-primary{ng-click: "openVoteForm(currentUserStance.pollOption())", translate: "poll_common.change_your_stance"}
+    %md-list.md-block{ng-if: "!userHasVoted()"}
+      %h3.lmo-card-subheading{translate: "poll_common.your_response"}
+      %md-list-item{ng-click: "openVoteForm(option)", ng-repeat: "option in poll.pollOptions() track by option.id"}
+        {{option.name}}
+  %section{ng-if: "poll.closedAt"}
+    %md-list.md-block{ng-if: "!poll.outcome().statement"}
+      %h3.lmo-card-subheading{translate: "poll_common.set_outcome_title"}
+      %p.lmo-poll-helptext{translate: "poll_common.set_outcome_text"}
+      %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.set_outcome"}
+    %md-list.md-block{ng-if: "poll.outcome().statement"}
+      %h3.lmo-card-subheading{translate: "poll_common.outcome"}
+      %p {{poll.outcome().statement}}
+      %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.update_outcome"}

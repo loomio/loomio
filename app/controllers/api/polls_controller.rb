@@ -23,6 +23,9 @@ class API::PollsController < API::RestfulController
   end
 
   private
+  def default_scope
+    super.merge my_stances_cache: MyStancesCache.new(user: current_user, polls: collection)
+  end
 
   def accessible_records
     Queries::VisiblePolls.new(user: current_user)
