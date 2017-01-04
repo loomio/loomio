@@ -11,7 +11,15 @@ class API::StancesController < API::RestfulController
   private
 
   def accessible_records
-    load_and_authorize(:poll).stances.latest.order(:created_at)
+    apply_order load_and_authorize(:poll).stances.latest
+  end
+
+  def apply_order(collection)
+    if resource_class::ORDER_SCOPES.include?(params[:order].to_s)
+      collection.send(params[:order])
+    else
+      collection
+    end
   end
 
 end
