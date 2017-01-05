@@ -1,28 +1,28 @@
-%form.poll-proposal-form
+%form.poll-poll-form
   .modal-header.lmo-poll-modal-header
     %i.material-icons thumbs_up_down
-    %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
-    %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
+    %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_poll_form.start_header"}
+    %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_poll_form.edit_header"}
     %modal_header_cancel_button
   .modal-body
     .poll-proposal-form__tip{ng-if: "poll.isNew()"}
-      %p{translate: "poll_proposal_form.tip"}
-      %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_proposal_form.learn_more"}
+      %p{translate: "poll_poll_form.tip"}
+      %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_poll_form.learn_more"}
 
     %input{type: "hidden", ng-model: "poll.pollType"}
 
     %md-input-container.md-block
-      %label{translate: "poll_proposal_form.title"}
+      %label{translate: "poll_poll_form.title"}
       %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
       %validation_errors{subject: "poll", field: "title"}
 
     %md-input-container.md-block
-      %label{translate: "poll_proposal_form.details"}
+      %label{translate: "poll_poll_form.details"}
       %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
       %validation_errors{subject: "poll", field: "details"}
 
     %md-list.md-block
-      %label{translate: "poll_proposal_form.options"}
+      %label{translate: "poll_poll_form.options"}
       %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
         {{option.name}}
         %md-button{ng-click: "removeOption(option)"}
@@ -36,5 +36,5 @@
     %poll_common_notify_group{model: "poll"}
 
   .modal-footer
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_poll_form.update"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_poll_form.start"}

@@ -1318,7 +1318,7 @@ en:
 
   poll_common_card:
     show_results: Show results
-    
+
   poll_common_notify_group:
     notify_group: Notify group
     members_count: "{{count}} people will be notified"
@@ -1386,3 +1386,17 @@ en:
     action: Action
     action_placeholder: E.g. I've done it!
     start: Start engagement check
+
+  poll_poll_form:
+    start_header: Start a poll
+    edit_header: Edit poll
+    tip: Survey the preferences on the group.
+    learn_more: Using polls effectively
+    title: Question
+    title_placeholder: E.g. What's you're favourite colour?
+    details: Details
+    details_placeholder: Provide any clarifying details people might need to answer the question.
+    options: Options
+    closing: Closing
+    start: Start poll
+    update: Update poll
