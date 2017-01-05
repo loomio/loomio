@@ -16,7 +16,59 @@ describe API::StancesController do
   before { group.add_member! user }
 
   describe 'index' do
+    let(:recent_stance) { create :stance, poll: poll, created_at: 1.day.ago }
+    let(:old_stance) { create :stance, poll: poll, created_at: 5.days.ago }
+    let(:high_priority_stance) { create :stance, poll: poll, poll_option: create(:poll_option, priority: 0) }
+    let(:low_priority_stance) { create :stance, poll: poll, poll_option: create(:poll_option, priority: 10) }
 
+    it 'can order by recency asc' do
+      sign_in user
+      recent_stance; old_stance
+      get :index, poll_id: poll.id, order: :newest_first
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+
+      expect(json['stances'][0]['id']).to eq recent_stance.id
+      expect(json['stances'][1]['id']).to eq old_stance.id
+    end
+
+    it 'can order by recency desc' do
+      sign_in user
+      recent_stance; old_stance
+      get :index, poll_id: poll.id, order: :oldest_first
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+
+      expect(json['stances'][0]['id']).to eq old_stance.id
+      expect(json['stances'][1]['id']).to eq recent_stance.id
+    end
+
+    it 'can order by priority asc' do
+      sign_in user
+      high_priority_stance; low_priority_stance
+      get :index, poll_id: poll.id, order: :priority_first
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+
+      expect(json['stances'][0]['id']).to eq high_priority_stance.id
+      expect(json['stances'][1]['id']).to eq low_priority_stance.id
+    end
+
+    it 'can order by priority desc' do
+      sign_in user
+      high_priority_stance; low_priority_stance
+      get :index, poll_id: poll.id, order: :priority_last
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+
+      expect(json['stances'][0]['id']).to eq low_priority_stance.id
+      expect(json['stances'][1]['id']).to eq high_priority_stance.id
+    end
+
+    it 'does not allow unauthorized users to get stances' do
+      get :index, poll_id: poll.id
+      expect(response.status).to eq 403
+    end
   end
 
   describe 'create' do

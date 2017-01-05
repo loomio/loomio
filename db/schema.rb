@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104023409) do
+ActiveRecord::Schema.define(version: 20170104222944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -695,9 +695,12 @@ ActiveRecord::Schema.define(version: 20170104023409) do
   end
 
   create_table "poll_options", force: :cascade do |t|
-    t.string  "name",    null: false
+    t.string  "name",                 null: false
     t.integer "poll_id"
+    t.integer "priority", default: 0, null: false
   end
+
+  add_index "poll_options", ["priority"], name: "index_poll_options_on_priority", using: :btree
 
   create_table "poll_references", force: :cascade do |t|
     t.integer "reference_id",   null: false
