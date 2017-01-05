@@ -1,4 +1,4 @@
 class PollOptionSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :name, :id, :poll_id
+  attributes :name, :id, :poll_id, :priority
 end

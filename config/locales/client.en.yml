@@ -181,7 +181,7 @@ en:
     sign_in: 'Login'
     signed_in: 'Signed in successfully'
     oauth:
-      title: 'Or log in with a third-party account:'
+      title: 'Or log in with a thirdparty account:'
       facebook: 'Log in with Facebook'
       twitter: 'Log in with Twitter'
       google: 'Log in with Google'
@@ -565,7 +565,7 @@ en:
 
   gift_card:
     heading: Gift plan
-    body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
+    body: "<strong>{{name}}</strong> is a giftsupported group. To support Loomio to keep helping groups like yours, click here:"
     make_a_contribution: Make a contribution
 
   upgrade_plan_card:
@@ -580,7 +580,7 @@ en:
     donate: Donate
 
   trial_card:
-    title: '30-day trial'
+    title: '30day trial'
     choose_plan: 'Choose your pricing plan'
     in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
     expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
@@ -606,7 +606,7 @@ en:
     benefit_custom_domain: Custom domain
     benefit_analytics_reports: Analytics reports
     benefit_data_export: Data export
-    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
+    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30day free trial</span>. No credit card required."
     # start_group: "Start group"
     # gift_body: For groups without a budget
     # support_before: I'm happy to
@@ -678,7 +678,7 @@ en:
     membership_granted_upon_request: 'Anyone can join the group.'
     membership_granted_upon_approval: 'Anyone can request to join but must be approved.'
 
-    membership_granted_upon_approval_secret_parent: '<strong>By request</strong> - anyone from {{parent}} can ask to join the group.'
+    membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from {{parent}} can ask to join the group.'
 
     permissions: 'Permissions'
     thread_privacy: 'Thread privacy'
@@ -756,7 +756,7 @@ en:
     messages:
       invitation_sent: 'Invitation sent.'
       invitations_sent: '{{count}} invitations sent.'
-      no_invitations: 'Uh-oh! Please verify the email address is correct and try again.'
+      no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
   add_members_modal:
@@ -822,7 +822,7 @@ en:
   change_picture_form:
     aria_label: 'Change picture form'
     title: 'Change picture'
-    helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> account, you can use that.'
+    helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.'
     use_initials: 'Use initials'
     use_gravatar: 'Use gravatar'
     use_uploaded: 'Upload new picture'
@@ -841,7 +841,7 @@ en:
     introduction: 'When you deactivate your account:'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-    no_emails: 'You will no longer receive Loomio-related emails'
+    no_emails: 'You will no longer receive Loomiorelated emails'
     contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
@@ -1100,8 +1100,8 @@ en:
       that it’s immediately obvious what it means to agree or disagree. Think about how you
       can identify discussions/decisions the group is currently undertaking in person or by
       email that would be easier if they were on Loomio.</p>
-      <p>If your group is just starting out, you could start a light-hearted decision, to give
-      everyone a chance to play with the tool and see the decision-making process in action.</p>
+      <p>If your group is just starting out, you could start a lighthearted decision, to give
+      everyone a chance to play with the tool and see the decisionmaking process in action.</p>
       <p>Another simple way to encourage people to engage in a discussion is to use the @mention
       feature to prompt specific people; this will send them an email to tell them they’ve been
       mentioned in a comment.</p>
@@ -1112,11 +1112,11 @@ en:
       about the problem before jumping to a specific solution. When people get to
       participate in the process, they’re much more likely to be on board with the outcome.</p>
     example2_html: |
-      <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
+      <h3>You already have a proposal in mind, and you want to get signoff from the group to move forward.</h3>
       <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
       <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
       you can use the proposal to get quick input into a decision.</p>
-      <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
+      <p>You can do things like finalise a document, approve an application, or signoff on a piece of work.</p>
     get_in_touch: "Get in touch"
     get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
     getting_started: "Getting started"
@@ -1173,7 +1173,7 @@ en:
       <p>During the discussion, the Context Panel can be updated as new information
       comes to light. As well as clarifying the topic, you can use this space for
       sharing resources, summarising the discussion as it progresses, or outlining the
-      decision-making protocols your group is using.</p>
+      decisionmaking protocols your group is using.</p>
     start_proposal: "Writing a clear proposal"
     start_proposal_html: |
       <p> If you make the title clear and succinct, people will immediately know exactly
@@ -1248,7 +1248,7 @@ en:
   authorized_apps_page:
     title: Authorized Apps
     no_applications: "You haven't authorized any third party apps yet."
-    notice: "You've given the following third-party apps permission to use your account. Click 'Revoke' to disable them."
+    notice: "You've given the following thirdparty apps permission to use your account. Click 'Revoke' to disable them."
     revoke: Revoke
 
   registered_apps_page:
@@ -1304,7 +1304,7 @@ en:
     your_response: Your response
     set_an_outcome: Set an outcome
     set_outcome_title: This proposal has closed
-    set_outcome_text: This proposal has closed - It's up to you to decide what the results of the proposal mean to the group
+    set_outcome_text: This proposal has closed  It's up to you to decide what the results of the proposal mean to the group
     set_outcome: Set outcome
     results: Results
     votes: Votes
@@ -1336,6 +1336,11 @@ en:
   poll_card:
     started_by: Started by {{name}}
 
+  poll_proposal_votes_panel:
+    newest_first: Newest first
+    oldest_first: Oldest first
+    priority_first: Agree first
+    priority_last: Block first
   poll_proposal_form:
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal

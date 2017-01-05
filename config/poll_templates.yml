@@ -11,11 +11,9 @@ proposal:
   graph_type:         pie
   material_icon:      thumbs_up_down
   can_remove_options: true
-  sort_scopes:
+  sort_options:
     - newest_first
     - oldest_first
-    - voter_a_to_z
-    - voter_z_to_a
     - priority_first
     - priority_last
 
@@ -24,7 +22,7 @@ engagement:
     - name:           "engage"
   graph_type:         check
   material_icon:      check_circle
-  sort_scopes:
+  sort_options:
     - newest_first
     - oldest_first
     - voter_a_to_z
@@ -36,7 +34,7 @@ poll:
   material_icon:      equalizer
   can_add_options:    true
   can_remove_options: true
-  sort_scopes:
+  sort_options:
     - newest_first
     - oldest_first
     - voter_a_to_z
