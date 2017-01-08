@@ -53,6 +53,12 @@ GIT
     jstz-rails (1.0.4.1)
       railties (>= 3.1)
 
+PATH
+  remote: ../activerecord-polymorph
+  specs:
+    activerecord-polymorph (0.1.0)
+      activerecord (~> 4.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -678,6 +684,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   activeadmin!
   activerecord-import
+  activerecord-polymorph!
   activerecord_any_of
   ahoy_email (~> 0.3.1)
   ahoy_matey (~> 1.1.1)

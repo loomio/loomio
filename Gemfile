@@ -61,6 +61,7 @@ gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 gem 'activerecord-import'
+gem 'activerecord-polymorph'
 
 group :development, :test do
   gem 'minitest'
