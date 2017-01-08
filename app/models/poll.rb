@@ -16,8 +16,7 @@ class Poll < ActiveRecord::Base
   attr_accessor :make_announcement
 
   has_many :stances
-  has_many :participants, through: :stances, source: :participant, source_type: "User"
-  # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
+  polymorph :participants, through: :stances, source_types: [:users, :visitors], fields: [:id, :name, :email, :created_at, :updated_at]
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
