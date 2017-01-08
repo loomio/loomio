@@ -2,19 +2,20 @@ angular.module('loomioApp').directive 'pollProposalVotesPanel', (Records, PollSe
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/proposal/votes_panel/poll_proposal_votes_panel.html'
   controller: ($scope) ->
-    $scope.sortOptions = PollService.fieldFromTemplate('proposal', 'sort_options')
-    $scope.votesOrder = $scope.sortOptions[0]
+    per = 1 # limit
+    from = 0 # offset
+    total = 0
 
-    # per = limit
-    # from = offset
-    per = 1
-    from = 0
+    # sorry. ng-if and md-select break. github.com/angular/material/issues/3940
+    $scope.fix = {}
+    $scope.sortOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'sort_options')
+    $scope.fix.votesOrder = $scope.sortOptions[0]
 
-    $scope.loadMore = ->
-      from += per
-      $scope.fetchRecords()
+    $scope.hasSomeVotes = ->
+      $scope.stances().length > 0
 
-    idSet = new Set();
+    $scope.moreToLoad = ->
+      $scope.stances().length < $scope.poll.stancesCount
 
     sortFn =
       newest_first: (stance) ->
@@ -27,17 +28,25 @@ angular.module('loomioApp').directive 'pollProposalVotesPanel', (Records, PollSe
         -(stance.pollOption().priority)
 
     $scope.stances = ->
-      filteredStances = _.filter $scope.poll.uniqueStances(), (stance) -> idSet.has(stance.id)
-      _.sortBy filteredStances, sortFn[$scope.votesOrder]
+      $scope.poll.uniqueStances(sortFn[$scope.fix.votesOrder], total)
 
     $scope.fetchRecords = ->
       Records.stances.fetch
         params:
           poll_id: $scope.poll.key
-          order: $scope.votesOrder
+          order: $scope.fix.votesOrder
           from: from
           per: per
-      .then (response) ->
-        _.each response.stances, (stance) -> idSet.add(stance.id)
+      .then (data) ->
+        total += data.stances.length
+
+    $scope.loadMore = ->
+      from += per
+      $scope.fetchRecords()
+
+    $scope.changeOrder = ->
+      from = 0 # offset
+      total = 0
+      $scope.fetchRecords()
 
     $scope.fetchRecords()

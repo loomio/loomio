@@ -10,3 +10,8 @@
 .poll-proposal-votes-panel__stance-content {
   margin-left: 10px;
 }
+
+.poll-proposal-votes-panel__no-votes {
+  color: $grey-on-white;
+  font-style: italic;
+}

@@ -15,13 +15,13 @@
     .poll-common-card__results-hidden{ng-if: "!showResults()"}
       %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
-    %poll_engagement_chart_panel{poll: "poll"}
-    %poll_engagement_votes_panel{poll: "poll"}
+      %poll_engagement_chart_panel{poll: "poll"}
+      %poll_engagement_votes_panel{poll: "poll"}
 
   .poll-poll-panel{ng-if: "poll.pollType == 'poll'"}
     %poll_poll_action_panel{poll: "poll"}
     .poll-common-card__results-hidden{ng-if: "!showResults()"}
       %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
-    %poll_poll_chart_panel{poll: "poll"}
-    -# %poll_poll_votes_panel{poll: "poll"}
+      %poll_poll_chart_panel{poll: "poll"}
+      -# %poll_poll_votes_panel{poll: "poll"}
