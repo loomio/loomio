@@ -1,6 +1,6 @@
-angular.module('loomioApp').directive 'pollProposalVotesPanel', (Records, PollService) ->
+angular.module('loomioApp').directive 'pollCommonVotesPanel', (Records, PollService) ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/proposal/votes_panel/poll_proposal_votes_panel.html'
+  templateUrl: 'generated/components/poll/proposal/votes_panel/poll_common_votes_panel.html'
   controller: ($scope) ->
     per = 1 # limit
     from = 0 # offset

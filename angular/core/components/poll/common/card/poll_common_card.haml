@@ -8,7 +8,7 @@
       %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
       %poll_proposal_chart_panel{poll: "poll"}
-      %poll_proposal_votes_panel{poll: "poll"}
+      %poll_common_votes_panel{poll: "poll"}
 
   .poll-engagement-panel{ng-if: "poll.pollType == 'engagement'"}
     %poll_engagement_action_panel{poll: "poll"}
