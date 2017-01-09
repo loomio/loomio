@@ -11,6 +11,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
+    Events::NewPoll.publish!(poll)
   end
 
   # def self.set_communities(poll:, actor:, communities:)

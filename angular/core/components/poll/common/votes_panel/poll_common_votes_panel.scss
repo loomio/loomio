@@ -1,10 +1,7 @@
 .poll-common-votes-panel__stance {
+  @include displayFlex;
+  align-items: center;
   margin: 7px 0;
-}
-
-.poll-common-votes-panel__stance-icon {
-  width: 40px;
-  height: 40px;
 }
 
 .poll-common-votes-panel__stance-content {

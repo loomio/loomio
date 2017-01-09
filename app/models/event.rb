@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
              new_comment new_motion new_vote motion_close_date_edited motion_name_edited motion_description_edited
              motion_edited motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created
              motion_outcome_updated membership_requested invitation_accepted user_added_to_group user_joined_group
-             new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted]
+             new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted
+             new_poll new_stance]
 
   BULK_MAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
                        new_discussion new_motion new_vote)

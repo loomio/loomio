@@ -1,10 +1,12 @@
 angular.module('loomioApp').directive 'pollCommonVotesPanel', (Records, PollService) ->
   scope: {poll: '='}
-  templateUrl: 'generated/components/poll/proposal/votes_panel/poll_common_votes_panel.html'
+  templateUrl: 'generated/components/poll/common/votes_panel/poll_common_votes_panel.html'
   controller: ($scope) ->
     per = 1 # limit
     from = 0 # offset
     total = 0
+
+    $scope.translateOptionName = PollService.fieldFromTemplate($scope.poll.pollType, 'translate_option_name')
 
     # sorry. ng-if and md-select break. github.com/angular/material/issues/3940
     $scope.fix = {}

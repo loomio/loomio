@@ -1,16 +1,18 @@
 proposal:
   poll_options_attributes:
-    - name:           "agree"
-      priority:       0
-    - name:           "abstain"
-      priority:       1
-    - name:           "disagree"
-      priority:       2
-    - name:           "block"
-      priority:       3
-  graph_type:         pie
-  material_icon:      thumbs_up_down
-  can_remove_options: true
+    - name:              "agree"
+      priority:          0
+    - name:              "abstain"
+      priority:          1
+    - name:              "disagree"
+      priority:          2
+    - name:              "block"
+      priority:          3
+  option_icon_type:      svg # could be avatar or none
+  translate_option_name: true
+  graph_type:            pie
+  material_icon:         thumbs_up_down
+  can_remove_options:    true
   sort_options:
     - newest_first
     - oldest_first
@@ -25,11 +27,10 @@ engagement:
   sort_options:
     - newest_first
     - oldest_first
-    - voter_a_to_z
-    - voter_z_to_a
 
 poll:
   poll_options_attributes: []
+  option_icon_type:   avatar
   graph_type:         bar
   material_icon:      equalizer
   can_add_options:    true
@@ -37,5 +38,5 @@ poll:
   sort_options:
     - newest_first
     - oldest_first
-    - voter_a_to_z
-    - voter_z_to_a
+    # - voter_a_to_z
+    # - voter_z_to_a

@@ -83,7 +83,9 @@ EventBus.configure do |config|
                 'motion_name_edited_event',
                 'discussion_description_edited_event',
                 'motion_description_edited_event',
-                'comment_liked_event') do |event|
+                'comment_liked_event',
+                'new_poll_event',
+                'new_stance_event') do |event|
     MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable.group)
   end
 

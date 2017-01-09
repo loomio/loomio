@@ -1,0 +1,9 @@
+class Events::NewPoll < Event
+  def self.publish!(poll)
+    create(kind: "new_poll",
+           user: poll.author,
+           eventable: poll,
+           discussion: poll.discussion,
+           created_at: poll.created_at).tap { |e| EventBus.broadcast('new_poll_event', e) }
+  end
+end
