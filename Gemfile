@@ -69,10 +69,6 @@ group :development, :test do
   gem 'rb-readline'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'rspec-rails'
-  gem 'rspec-its'
-  gem 'rspec-collection_matchers'
-  gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
   gem 'dotenv-rails', require: 'dotenv/rails-now'
   gem 'capybara'
@@ -111,6 +107,10 @@ group :production do
   gem 'dalli'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-activemodel-mocks'
 end
 
 Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
