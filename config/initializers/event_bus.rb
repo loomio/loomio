@@ -1,3 +1,5 @@
+require 'event_bus'
+
 EventBus.configure do |config|
 
   # Purge drafts after model creation
