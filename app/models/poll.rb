@@ -22,7 +22,7 @@ class Poll < ActiveRecord::Base
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
   has_many :poll_options
-  accepts_nested_attributes_for :poll_options
+  accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes
 
