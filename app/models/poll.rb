@@ -56,13 +56,6 @@ class Poll < ActiveRecord::Base
 
   validate :poll_options_are_valid
 
-  # NB this is an Array and NOT an ActiveRecord::Relation.
-  # This could possibly be improved.
-  # Also, maybe it doesn't matter.
-  # def voters
-  #   @voters ||= users + visitors
-  # end
-
   def watchers
     if discussion.present?
       Queries::UsersByVolumeQuery.normal_or_loud(discussion)
@@ -72,15 +65,13 @@ class Poll < ActiveRecord::Base
   end
 
   def update_stance_data
-    update(
-      stance_data: self.class.connection.select_all(%{
-        SELECT poll_options.name, sum(stances.score) as total
-        FROM stances
-        INNER JOIN poll_options ON poll_options.id = stances.poll_option_id
-        WHERE stances.latest = true AND stances.poll_id = #{self.id}
-        GROUP BY poll_options.name
-      }).map { |row| [row['name'], row['total'].to_i] }.to_h
-    )
+    update_attribute(:stance_data, self.class.connection.select_all(%{
+      SELECT poll_options.name, sum(stances.score) as total
+      FROM stances
+      INNER JOIN poll_options ON poll_options.id = stances.poll_option_id
+      WHERE stances.latest = true AND stances.poll_id = #{self.id}
+      GROUP BY poll_options.name
+    }).map { |row| [row['name'], row['total'].to_i] }.to_h)
   end
 
   def material_icon
@@ -109,7 +100,7 @@ class Poll < ActiveRecord::Base
 
   def poll_option_names=(names)
     existing = Array(poll_options.pluck(:name))
-    (names - existing).each { |name| poll_options.build(name: name) }
+    (Array(names) - existing).each { |name| poll_options.build(name: name) }
     @poll_option_removed_names = (existing - names)
   end
 
