@@ -1405,6 +1405,7 @@ en:
     details: Details
     details_placeholder: Provide any clarifying details people might need to answer the question.
     options: Options
+    add_option_placeholder: Add option
     closing: Closing
     start: Start poll
     update: Update poll

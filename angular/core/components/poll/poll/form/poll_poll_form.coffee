@@ -6,16 +6,13 @@ angular.module('loomioApp').factory 'PollPollForm', ->
 
     actionName = if $scope.poll.isNew() then 'created' else 'updated'
 
-    $scope.submit = FormService.submit $scope, $scope.poll,
-      flashSuccess: "poll_poll_form.messages.#{actionName}"
-      draftFields: ['title', 'details']
-
     TranslationService.eagerTranslate $scope,
-      titlePlaceholder:   'poll_poll_form.title_placeholder'
-      detailsPlaceholder: 'poll_poll_form.details_placeholder'
+      titlePlaceholder:     'poll_poll_form.title_placeholder'
+      detailsPlaceholder:   'poll_poll_form.details_placeholder'
+      addOptionPlaceholder: 'poll_poll_form.add_option_placeholder'
 
-    $scope.addOption = ->
-      return unless $scope.newOptionName.length > 0
+    $scope.addOption =  ->
+      return unless $scope.newOptionName
       $scope.poll.pollOptionsAttributes.push
         name: $scope.newOptionName
       $scope.newOptionName = ''
@@ -23,6 +20,11 @@ angular.module('loomioApp').factory 'PollPollForm', ->
     $scope.removeOption = (option) ->
       _.pull $scope.poll.pollOptionsAttributes, option
 
+    $scope.submit = FormService.submit $scope, $scope.poll,
+      flashSuccess: "poll_poll_form.messages.#{actionName}"
+      draftFields: ['title', 'details']
+      prepareFn: $scope.addOption
+
     KeyEventService.submitOnEnter($scope)
-    # KeyEventService.registerKeyEvent $scope, 'pressedEnter', (active) ->
-    #   $scope.addOption() if $scope.addOptionActive(active)
+    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
+      active.classList.contains('poll-poll-form__add-option-input')

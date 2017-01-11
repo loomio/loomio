@@ -1,4 +1,5 @@
 %form.poll-poll-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header.lmo-poll-modal-header
     %i.material-icons thumbs_up_down
     %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_poll_form.start_header"}
@@ -24,13 +25,15 @@
     %md-list.md-block
       %label{translate: "poll_poll_form.options"}
       %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name"}
-        {{option.name}}
-        %md-button{ng-click: "removeOption(option)"}
-          %i.material-icons clear
-
-    %md-input-container.md-block
-      %input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
-      %md-button{translate: "poll_poll_form.add_option", ng-click: "addOption()"}
+        %span.poll-poll-form__option-text {{option.name}}
+        %md-button.poll-poll-form__option-button{ng-click: "removeOption(option)"}
+          %i.material-icons.poll-poll-form__option-icon clear
+      %md-list-item.poll-poll-form__add-option{flex: "true", layout: "row"}
+        %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
+          %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
+        %div
+          %md-button.poll-poll-form__option-button{ng-click: "addOption()"}
+            %i.material-icons.poll-poll-form__option-icon add
 
     %poll_common_closing_at_field.md-block{poll: "poll"}
     %poll_common_notify_group{model: "poll"}
