@@ -24,9 +24,9 @@
 
     %md-list.md-block
       %label{translate: "poll_poll_form.options"}
-      %md-list-item{ng-repeat: "option in poll.pollOptionsAttributes track by option.name", ng-if: "!option._destroy"}
-        %span.poll-poll-form__option-text {{option.name}}
-        %md-button.poll-poll-form__option-button{ng-click: "removeOption(option)"}
+      %md-list-item{ng-repeat: "name in poll.pollOptionNames track by $index"}
+        %span.poll-poll-form__option-text {{name}}
+        %md-button.poll-poll-form__option-button{ng-click: "removeOption(name)"}
           %i.material-icons.poll-poll-form__option-icon clear
       %md-list-item.poll-poll-form__add-option{flex: "true", layout: "row"}
         %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}

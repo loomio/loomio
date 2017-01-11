@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       title: ''
       details: ''
       closingAt: moment().add(3, 'days').startOf('hour')
-      pollOptionsAttributes: []
+      pollOptionNames: []
 
     relationships: ->
       @belongsTo 'author', from: 'users'

@@ -15,13 +15,15 @@ class Poll < ActiveRecord::Base
 
   attr_accessor :make_announcement
 
+  after_update :remove_poll_options
+
   has_many :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options
+  has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes
@@ -101,7 +103,22 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
+  def poll_option_names
+    poll_options.pluck(:name)
+  end
+
+  def poll_option_names=(names)
+    existing = Array(poll_options.pluck(:name))
+    (names - existing).each { |name| poll_options.build(name: name) }
+    @poll_option_removed_names = (existing - names)
+  end
+
   private
+
+  def remove_poll_options
+    return unless @poll_option_removed_names.present?
+    poll_options.where(name: @poll_option_removed_names).destroy_all
+  end
 
   def template
     TEMPLATES.fetch(self.poll_type, {})

@@ -6,9 +6,6 @@ angular.module('loomioApp').factory 'PollPollForm', ->
 
     actionName = if $scope.poll.isNew() then 'created' else 'updated'
 
-    $scope.poll.pollOptionsAttributes = _.map $scope.poll.pollOptions(), (option) ->
-      {id: option.id, name: option.name}
-
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:     'poll_poll_form.title_placeholder'
       detailsPlaceholder:   'poll_poll_form.details_placeholder'
@@ -16,15 +13,11 @@ angular.module('loomioApp').factory 'PollPollForm', ->
 
     $scope.addOption =  ->
       return unless $scope.newOptionName
-      $scope.poll.pollOptionsAttributes.push
-        name: $scope.newOptionName
+      $scope.poll.pollOptionNames.push $scope.newOptionName
       $scope.newOptionName = ''
 
-    $scope.removeOption = (option) ->
-      $scope.pollOptionsAttributeFor(option.name)._destroy = true
-
-    $scope.pollOptionsAttributeFor = (name) ->
-      _.find($scope.poll.pollOptionsAttributes, (attrs) -> name == attrs.name) or {}
+    $scope.removeOption = (name) ->
+      _.pull $scope.poll.pollOptionNames, name
 
     $scope.submit = FormService.submit $scope, $scope.poll,
       flashSuccess: "poll_poll_form.messages.#{actionName}"

@@ -44,12 +44,13 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    poll.assign_attributes(params.slice(:title, :details, :closing_at, :make_announcement, :poll_options_attributes))
+    poll.assign_attributes(params.slice(:title, :details, :closing_at, :make_announcement, :poll_option_names))
 
     return false unless poll.valid?
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
+    Events::PollEdited.publish!(poll, actor)
   end
 
   def self.convert(motions:)
