@@ -8,6 +8,7 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     defaultValues: ->
       reason: ''
+      stanceChoicesAttributes: []
 
     relationships: ->
       @belongsTo 'poll'
@@ -25,3 +26,6 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     pollOptionIds: ->
       _.pluck @stanceChoices, 'pollOptionId'
+
+    choose: (options) ->
+      @stanceChoicesAttributes = _.map(_.flatten(options), (option) -> { pollOptionId: option.id })
