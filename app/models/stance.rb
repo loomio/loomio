@@ -24,6 +24,8 @@ class Stance < ActiveRecord::Base
   scope :priority_first, -> { joins(:poll_option).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_option).order('poll_options.priority DESC') }
 
+  validates :stance_choices, length: { minimum: 1 }
+
   delegate :group, to: :poll, allow_nil: true
   def author
     participant
