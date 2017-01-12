@@ -11,11 +11,17 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     relationships: ->
       @belongsTo 'poll'
-      @belongsTo 'pollOption'
+      @hasMany 'stanceChoices'
       @belongsTo 'participant', from: 'users'
 
-    cookedStatement: ->
-      MentionLinkService.cook(@mentionedUsernames, @statement)
+    stanceChoice: ->
+      _.first @stanceChoices()
 
-    group: ->
-      @poll().group() if @poll()
+    pollOption: ->
+      @stanceChoice().pollOption()
+
+    pollOptions: ->
+      @recordStore.pollOptions.where(id: @pollOptionIds())
+
+    pollOptionIds: ->
+      _.pluck @stanceChoices, 'pollOptionId'

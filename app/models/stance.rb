@@ -6,7 +6,11 @@ class Stance < ActiveRecord::Base
   is_mentionable  on: :reason
 
   belongs_to :poll, required: true
-  belongs_to :poll_option, required: true
+  has_many :stance_choices
+  has_many :poll_options, through: :stance_choices
+
+  accepts_nested_attributes_for :stance_choices
+
   belongs_to :participant, polymorphic: true, required: true
 
   update_counter_cache :poll, :stances_count
@@ -19,7 +23,6 @@ class Stance < ActiveRecord::Base
   # scope :voters_z_to_a,  -> { joins(:participant).order('participants.name ASC') }
   scope :priority_first, -> { joins(:poll_option).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_option).order('poll_options.priority DESC') }
-
 
   delegate :group, to: :poll, allow_nil: true
   def author

@@ -47,7 +47,11 @@ class PermittedParams < Struct.new(:params)
   end
 
   def stance_attributes
-    [:poll_id, :poll_option_id, :reason, :score]
+    [:poll_id, :reason, :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
+  end
+
+  def stance_choice_attributes
+    [:score, :poll_option_id, :stance_id]
   end
 
   def outcome_attributes

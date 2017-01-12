@@ -1,17 +1,19 @@
 require 'rails_helper'
 
 describe StanceService do
-  let(:agree) { create :poll_option, name: "agree" }
-  let(:disagree) { create :poll_option, name: "disagree" }
+  let(:agree) { create :poll_option, poll: poll, name: "agree" }
+  let(:disagree) { create :poll_option, poll: poll, name: "disagree" }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_group_member) { create :user }
   let(:another_user) { create :user }
-  let(:stance) { create :stance, poll: poll, poll_option: agree, participant: user, reason: "Old one" }
-  let(:another_stance) { create :stance, poll: poll, poll_option: disagree, participant: another_group_member }
-  let(:new_stance) { build :stance, poll: poll, poll_option: agree, participant: nil }
+  let(:stance) { create :stance, poll: poll, stance_choices: [agree_choice], participant: user, reason: "Old one" }
+  let(:another_stance) { create :stance, poll: poll, stance_choices: [disagree_choice], participant: another_group_member }
+  let(:new_stance) { build :stance, poll: poll, stance_choices: [agree_choice], participant: nil }
+  let(:agree_choice) { build(:stance_choice, poll_option: agree) }
+  let(:disagree_choice) { build(:stance_choice, poll_option: disagree) }
 
   before do
     group.add_member! user
@@ -24,7 +26,7 @@ describe StanceService do
     end
 
     it 'does not create an invalid stance' do
-      new_stance.poll_option = nil
+      new_stance.stance_choices = []
       expect { StanceService.create(stance: new_stance, actor: user) }.to_not change { Stance.count }
     end
 

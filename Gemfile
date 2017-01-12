@@ -97,6 +97,10 @@ group :test do
   gem 'webmock'
   gem "codeclimate-test-reporter", require: false
   gem 'rack_session_access'
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-activemodel-mocks'
 end
 
 group :production do
@@ -107,10 +111,6 @@ group :production do
   gem 'dalli'
   gem 'newrelic_rpm'
   gem 'heroku-deflater'
-  gem 'rspec-rails'
-  gem 'rspec-its'
-  gem 'rspec-collection_matchers'
-  gem 'rspec-activemodel-mocks'
 end
 
 Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|

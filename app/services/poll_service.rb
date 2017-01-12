@@ -76,11 +76,11 @@ class PollService
       ).tap do |poll|
         poll.update(
           stances: motion.votes.map do |vote|
-            Stance.new(
-              poll_option:      poll.poll_options.detect { |o| o.name == vote.position_verb },
-              reason:           vote.statement,
+            stance = Stance.new(
+              stance_choices:   [StanceChoice.new(poll_option: poll.poll_options.detect { |o| o.name == vote.position_verb })],
               participant_type: 'User',
               participant_id:   vote.user_id,
+              reason:           vote.statement,
               latest:           vote.age.zero?,
               created_at:       vote.created_at,
               updated_at:       vote.updated_at

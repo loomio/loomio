@@ -263,8 +263,11 @@ published_at "2015-11-18 14:28:30"
 
   factory :stance do
     poll
-    poll_option
     association :participant, factory: :user
+  end
+
+  factory :stance_choice do
+    poll_option
   end
 
   factory :community, class: Communities::Base do

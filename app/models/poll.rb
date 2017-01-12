@@ -66,9 +66,10 @@ class Poll < ActiveRecord::Base
 
   def update_stance_data
     update_attribute(:stance_data, self.class.connection.select_all(%{
-      SELECT poll_options.name, sum(stances.score) as total
+      SELECT poll_options.name, sum(stance_choices.score) as total
       FROM stances
-      INNER JOIN poll_options ON poll_options.id = stances.poll_option_id
+      INNER JOIN stance_choices ON stance_choices.stance_id = stances.id
+      INNER JOIN poll_options ON poll_options.id = stance_choices.poll_option_id
       WHERE stances.latest = true AND stances.poll_id = #{self.id}
       GROUP BY poll_options.name
     }).map { |row| [row['name'], row['total'].to_i] }.to_h)
@@ -99,8 +100,9 @@ class Poll < ActiveRecord::Base
   end
 
   def poll_option_names=(names)
+    names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    (Array(names) - existing).each { |name| poll_options.build(name: name) }
+    (names - existing).each { |name| poll_options.build(name: name) }
     @poll_option_removed_names = (existing - names)
   end
 
