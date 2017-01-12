@@ -19,6 +19,12 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @hasMany   'pollOptions'
       @hasMany   'stances'
 
+    afterConstruction: ->
+      # find pollOptions not in @pollOptionIds and destroy
+      _.each @pollOptions(), (pollOption) ->
+        pollOption.remove() unless _.includes(@pollOptionIds, pollOption.id)
+        true
+
     outcome: ->
       @recordStore.outcomes.find(pollId: @id)[0]
 

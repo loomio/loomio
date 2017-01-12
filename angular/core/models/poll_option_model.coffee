@@ -6,3 +6,10 @@ angular.module('loomioApp').factory 'PollOptionModel', (BaseModel) ->
 
     relationships: ->
       @belongsTo 'poll'
+      @hasMany   'stanceChoices'
+
+    stances: ->
+      _.map @stanceChoices(), (stanceChoice) -> stanceChoice.stance()
+
+    beforeRemove: ->
+      _.each @stances(), (stance) -> stance.remove()

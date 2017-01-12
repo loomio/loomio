@@ -6,7 +6,7 @@ class Stance < ActiveRecord::Base
   is_mentionable  on: :reason
 
   belongs_to :poll, required: true
-  has_many :stance_choices
+  has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
   accepts_nested_attributes_for :stance_choices

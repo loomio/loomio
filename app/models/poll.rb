@@ -111,6 +111,8 @@ class Poll < ActiveRecord::Base
   def remove_poll_options
     return unless @poll_option_removed_names.present?
     poll_options.where(name: @poll_option_removed_names).destroy_all
+    @poll_option_removed_names = nil
+    update_stance_data
   end
 
   def template

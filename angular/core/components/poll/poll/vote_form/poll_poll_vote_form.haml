@@ -8,8 +8,8 @@
 
   .modal-body
     %label{translate: "poll_common.your_response"}
-    %md-radio-group{ng-model: "stance.pollOptionId"}
-      %md-radio-button.poll-poll-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option.id"}
+    %md-radio-group{ng-model: "pollOption"}
+      %md-radio-button.poll-poll-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option"}
         %span.poll-poll-vote-form__chosen-option--name {{option.name}}
 
     %md-input-container.md-block
