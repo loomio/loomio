@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111230739) do
+ActiveRecord::Schema.define(version: 20170112233757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -709,19 +709,20 @@ ActiveRecord::Schema.define(version: 20170111230739) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                  null: false
-    t.string   "title",                      null: false
+    t.integer  "author_id",                       null: false
+    t.string   "title",                           null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                        null: false
-    t.string   "poll_type",                  null: false
+    t.string   "key",                             null: false
+    t.string   "poll_type",                       null: false
     t.integer  "motion_id"
-    t.jsonb    "stance_data",   default: {}
-    t.integer  "stances_count", default: 0,  null: false
+    t.jsonb    "stance_data",     default: {}
+    t.integer  "stances_count",   default: 0,     null: false
+    t.boolean  "multiple_choice", default: false, null: false
   end
 
   create_table "stance_choices", force: :cascade do |t|

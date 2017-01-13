@@ -35,6 +35,9 @@
           %md-button.poll-poll-form__option-button{ng-click: "addOption()"}
             %i.material-icons.poll-poll-form__option-icon add
 
+    %md-checkbox{ng-model: "poll.multipleChoice"}
+      %span{translate: "poll_poll_form.multiple_choice"}
+
     %poll_common_closing_at_field.md-block{poll: "poll"}
     %poll_common_notify_group{model: "poll"}
 

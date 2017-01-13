@@ -44,7 +44,7 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    poll.assign_attributes(params.slice(:title, :details, :closing_at, :make_announcement, :poll_option_names))
+    poll.assign_attributes(params.except(:poll_type, :discussion_id))
 
     return false unless poll.valid?
     poll.save!

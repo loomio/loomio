@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'PollOptionModel', (BaseModel) ->
       @hasMany   'stanceChoices'
 
     stances: ->
-      _.map @stanceChoices(), (stanceChoice) -> stanceChoice.stance()
+      _.compact _.map(@stanceChoices(), (stanceChoice) -> stanceChoice.stance())
 
     beforeRemove: ->
       _.each @stances(), (stance) -> stance.remove()
