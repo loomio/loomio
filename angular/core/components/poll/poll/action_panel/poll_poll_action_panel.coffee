@@ -9,9 +9,11 @@ angular.module('loomioApp').directive 'pollPollActionPanel', (ModalService, Reco
       $scope.currentUserStance()?
 
     $scope.openVoteForm = (option) ->
+      # only time option is passed is new stance.
+      stance = $scope.currentUserStance() or
+               Records.stances.build(pollId: $scope.poll.id).choose([option])
       ModalService.open PollPollVoteForm,
-        stance: -> $scope.currentUserStance() or Records.stances.build(pollId: $scope.poll.id)
-        option: -> option or $scope.currentUserStance().pollOption()
+        stance: -> stance
 
     $scope.openOutcomeForm = ->
       ModalService.open PollProposalOutcomeForm, outcome: ->

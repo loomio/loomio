@@ -9,11 +9,11 @@
   .modal-body
     %label{translate: "poll_common.your_response"}
     .poll-poll-vote-form__options{ng-if: "!stance.poll().multipleChoice"}
-      %md-radio-group{ng-model: "pollOption"}
-        %md-radio-button.poll-poll-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option"}
+      %md-radio-group{ng-model: "vars.pollOptionId"}
+        %md-radio-button.poll-poll-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option.id"}
           %span.poll-poll-vote-form__chosen-option--name {{option.name}}
     .poll-poll-vote-form__options{ng-if: "stance.poll().multipleChoice"}
-      %md-checkbox.poll-poll-vote-form__checkbox{ng-repeat: "option in stance.poll().pollOptions()", ng-model: "pollOptionIds[option.id]"}
+      %md-checkbox.poll-poll-vote-form__checkbox{ng-repeat: "option in stance.poll().pollOptions()", ng-model: "pollOptionIdsChecked[option.id]"}
         %span.poll-poll-vote-form__chosen-option--name {{option.name}}
 
     %md-input-container.md-block
