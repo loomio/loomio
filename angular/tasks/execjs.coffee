@@ -12,7 +12,6 @@ module.exports = ->
     expect({errorOnFailure: true}, paths.js.execjs), # ensure all execjs files are present
     concat('execjs.js'),                      # concatenate execjs files
     gulp.dest(paths.dist.assets),             # write assets/execjs.js
-    uglify(),                                 # minify vendor.js
     rename(suffix: '.min'),                   # rename stream to vendor.min.js
     gulp.dest(paths.dist.assets)              # write assets/vendor.min.js
   ]
