@@ -2,6 +2,7 @@ en:
   poll_types:
     proposal: Proposal
     engagement: Engagement Check
+    poll: Poll
   common:
     confirm_discard_changes: Discard your changes?
     time:
