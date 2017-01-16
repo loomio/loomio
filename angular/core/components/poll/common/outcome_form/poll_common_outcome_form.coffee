@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'PollProposalOutcomeForm', ->
-  templateUrl: 'generated/components/poll/proposal/outcome_form/poll_proposal_outcome_form.html'
+angular.module('loomioApp').factory 'PollCommonOutcomeForm', ->
+  templateUrl: 'generated/components/poll/common/outcome_form/poll_common_outcome_form.html'
   controller: ($scope, $translate, outcome, FormService, TranslationService, MentionService, KeyEventService) ->
     $scope.outcome = outcome.clone()
     $scope.outcome.makeAnnouncement = outcome.isNew()
@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'PollProposalOutcomeForm', ->
     actionName = if $scope.outcome.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.outcome,
-      flashSuccess: "poll_proposal_outcome_form.messages.#{actionName}"
+      flashSuccess: "poll_common_outcome_form.messages.#{actionName}"
       draftFields: ['statement']
 
     TranslationService.eagerTranslate $scope,

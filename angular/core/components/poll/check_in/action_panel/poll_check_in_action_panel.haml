@@ -4,11 +4,4 @@
       %h3.lmo-card-subheading{translate: "poll_common.your_response"}
       %poll_check_in_vote_form{stance: "myStance"}
   %section{ng-if: "poll.closedAt"}
-    %md-list.md-block{ng-if: "!poll.outcome().statement"}
-      %h3.lmo-card-subheading{translate: "poll_common.set_outcome_title"}
-      %p.lmo-poll-helptext{translate: "poll_common.set_outcome_text"}
-      %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.set_outcome"}
-    %md-list.md-block{ng-if: "poll.outcome().statement"}
-      %h3.lmo-card-subheading{translate: "poll_common.outcome"}
-      %p {{poll.outcome().statement}}
-      %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.update_outcome"}
+    %poll_common_outcome_panel{poll: "poll"}

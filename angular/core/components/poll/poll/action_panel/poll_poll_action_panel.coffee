@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollPollActionPanel', (ModalService, Records, PollPollVoteForm, PollProposalOutcomeForm) ->
+angular.module('loomioApp').directive 'pollPollActionPanel', (ModalService, Records, PollPollVoteForm, PollCommonOutcomeForm) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/poll/action_panel/poll_poll_action_panel.html'
   controller: ($scope, Records, Session) ->
@@ -16,6 +16,6 @@ angular.module('loomioApp').directive 'pollPollActionPanel', (ModalService, Reco
         stance: -> stance
 
     $scope.openOutcomeForm = ->
-      ModalService.open PollProposalOutcomeForm, outcome: ->
+      ModalService.open PollCommonOutcomeForm, outcome: ->
         $scope.poll.outcome() or
         Records.outcomes.build(pollId: $scope.poll.id)
