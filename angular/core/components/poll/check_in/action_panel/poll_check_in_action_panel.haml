@@ -1,7 +1,8 @@
-.poll-proposal-action-panel
+.poll-check-in-action-panel
   %section{ng-if: "!poll.closedAt && !userHasVoted()"}
     %md-list.md-block
       %h3.lmo-card-subheading{translate: "poll_common.your_response"}
+      %poll_check_in_vote_form{stance: "myStance"}
   %section{ng-if: "poll.closedAt"}
     %md-list.md-block{ng-if: "!poll.outcome().statement"}
       %h3.lmo-card-subheading{translate: "poll_common.set_outcome_title"}

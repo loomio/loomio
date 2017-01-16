@@ -1,7 +1,7 @@
 en:
   poll_types:
     proposal: Proposal
-    engagement: Engagement Check
+    check_in: Check-in
     poll: Poll
   common:
     confirm_discard_changes: Discard your changes?
@@ -1296,8 +1296,8 @@ en:
     title: Decision tools
     proposal_title: Proposal
     proposal_subtitle: Find consensus
-    engagement_title: Engagement check
-    engagement_subtitle: Track who has completed a task
+    check_in_title: Engagement check
+    check_in_subtitle: Track who has completed a task
     poll_title: Poll
     poll_subtitle: Choose from a list of options
 
@@ -1383,7 +1383,7 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
-  poll_engagement_form:
+  poll_check_in_form:
     new_engagement_check: New engagement check
     update_engagement_checl: Update engagement check
     tip: Use an engagement check to ensure that everyone has seen a particular bit of content. Need to discuss something which may have differing opinions? Try a <a href="#">proposal</a>.
