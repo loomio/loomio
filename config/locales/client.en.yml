@@ -1303,11 +1303,14 @@ en:
 
   poll_common:
     your_response: Your response
+    change_your_response: Change your response
+    reason: Reason
     set_an_outcome: Set an outcome
     set_outcome_title: This proposal has closed
     set_outcome_text: This proposal has closed  It's up to you to decide what the results of the proposal mean to the group
     set_outcome: Set outcome
     results: Results
+    vote: Vote
     votes: Votes
     update_outcome: Update outcome
     outcome: Outcome
@@ -1331,6 +1334,10 @@ en:
     messages:
       success: Poll closed
 
+  poll_common_closing_at_field:
+    closing: Closing
+    closing_hour: Closing hour
+
   poll_common_school_link:
     learn_about: "Learn about:"
 
@@ -1343,6 +1350,7 @@ en:
     priority_first: Agree first
     priority_last: Block first
     no_votes_yet: No votes have been placed yet.
+    change_results_order: Change results order
 
   poll_common_accordion:
     title: Previous activity
@@ -1360,16 +1368,16 @@ en:
     closing: Closing
     start: Start proposal
     update: Update proposal
+    proposal_created: Proposal created
+    proposal_updated: Proposal updated
 
   poll_proposal_vote_form:
-    have_your_say: Have your say
-    change_your_stance: Change your vote
     abstain_reason_placeholder: Please explain why you abstain on this proposal.
     agree_reason_placeholder: What do you like about the proposal and how will it benefit the group? Any concerns?
     disagree_reason_placeholder: Why can’t you support this proposal and changes should be made?
     block_reason_placeholder: What is the reason for blocking this proposal and what might resolve this for you?
-    vote: Vote
-    reason: Reason
+    stance_created: Vote created
+    stance_updated: Vote updated
 
   poll_proposal_options:
     agree: Agree
@@ -1398,6 +1406,12 @@ en:
     action_placeholder: E.g. I've done it!
     start: Start check-in
     update: Update check-in
+    check_in_created: Check-in created
+    check_in_updated: Check-in updated
+
+  poll_check_in_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated
 
   poll_poll_form:
     start_header: Start a poll
@@ -1410,7 +1424,14 @@ en:
     details_placeholder: Provide any clarifying details people might need to answer the question.
     options: Options
     add_option_placeholder: Add option
+    remove_option: Remove option
     closing: Closing
     start: Start poll
     update: Update poll
     multiple_choice: Multiple choice
+    poll_created: Poll created
+    poll_updated: Poll updated
+
+  poll_poll_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated

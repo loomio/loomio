@@ -1,7 +1,7 @@
 .poll-common-votes-panel
   .poll-common-votes-panel__header
     %h3.lmo-card-subheading{translate: "poll_common.votes"}
-    %md-select.md-no-underline{ng-model: "fix.votesOrder", ng-change: "changeOrder()"}
+    %md-select.md-no-underline{ng-model: "fix.votesOrder", ng-change: "changeOrder()", aria-label: "{{ 'poll_common_votes_panel.change_results_order' | translate }}"}
       %md-option{ng-repeat: "opt in sortOptions", ng-value: "opt", translate: "poll_common_votes_panel.{{opt}}"}
   .poll-common-votes-panel__no-votes{ng-if: "!hasSomeVotes()", translate: "poll_common_votes_panel.no_votes_yet"}
   .poll-common-votes-panel__has-votes{ng-if: "hasSomeVotes()"}

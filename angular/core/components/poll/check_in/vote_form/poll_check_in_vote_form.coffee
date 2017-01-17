@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'pollCheckInVoteForm', (AppConfig, Records
     actionName = if $scope.stance.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.stance,
-      flashSuccess: "poll_check_in_vote_form.messages.#{actionName}"
+      flashSuccess: "poll_check_in_vote_form.stance_#{actionName}"
       draftFields: ['reason']
 
     TranslationService.eagerTranslate

@@ -26,5 +26,5 @@
       %poll_common_notify_group{model: "poll"}
 
     .modal-footer
-      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update"}
-      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start"}
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update", aria-label: "{{ 'poll_proposal_form.update' | translate }}"}
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start", aria-label: "{{ 'poll_proposal_form.start' | translate }}"}

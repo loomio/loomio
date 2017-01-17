@@ -20,7 +20,7 @@ angular.module('loomioApp').factory 'PollPollForm', ->
       _.pull $scope.poll.pollOptionNames, name
 
     $scope.submit = FormService.submit $scope, $scope.poll,
-      flashSuccess: "poll_poll_form.messages.#{actionName}"
+      flashSuccess: "poll_poll_form.poll_#{actionName}"
       draftFields: ['title', 'details']
       prepareFn: $scope.addOption
 

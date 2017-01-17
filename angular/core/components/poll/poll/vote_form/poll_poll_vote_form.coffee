@@ -26,7 +26,7 @@ angular.module('loomioApp').factory 'PollPollVoteForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.stance,
       prepareFn: serializeForm
-      flashSuccess: "poll_proposal_vote_form.messages.#{actionName}"
+      flashSuccess: "poll_poll_vote_form.stance_#{actionName}"
       draftFields: ['reason']
 
     TranslationService.eagerTranslate

@@ -87,6 +87,10 @@ class Poll < ActiveRecord::Base
     template['can_remove_options']
   end
 
+  def must_have_options
+    template['must_have_options']
+  end
+
   def graph_type
     template['graph_type']
   end
@@ -122,17 +126,24 @@ class Poll < ActiveRecord::Base
   def poll_options_are_valid
     prevent_added_options   unless can_add_options
     prevent_removed_options unless can_remove_options
+    prevent_empty_options   if     must_have_options
   end
 
   def prevent_added_options
     if (self.poll_options.map(&:name) - template_poll_options).any?
-      self.errors.add(:poll_options, "Cannot add options to this poll")
+      self.errors.add(:poll_options, I18n.t(:"poll.error.cannot_add_options"))
     end
   end
 
   def prevent_removed_options
     if (template_poll_options - self.poll_options.map(&:name)).any?
-      self.errors.add(:poll_options, "Cannot remove options from this poll")
+      self.errors.add(:poll_options, I18n.t(:"poll.error.cannot_remove_options"))
+    end
+  end
+
+  def prevent_empty_options
+    if self.poll_options.empty?
+      self.errors.add(:poll_options, I18n.t(:"poll.error.must_have_options"))
     end
   end
 
