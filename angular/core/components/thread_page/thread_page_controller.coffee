@@ -43,16 +43,20 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      @closedPollCollection = polls: => @discussion.closedPolls()
+
+      # use new poll functionality
+      if @usePolls = (@discussion.group().features.use_polls && !$location.search().proposalView)
+        @closedPollCollection = polls: => @discussion.closedPolls()
+        Records.polls.fetchByDiscussion(@discussion.key)
+        Records.stances.fetchMyStancesByDiscussion(@discussion.key)
+
       @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId)
+
       @pageWindow = PaginationService.windowFor
         current:  @sequenceIdToFocus
         min:      @discussion.firstSequenceId
         max:      @discussion.lastSequenceId
         pageType: 'activityItems'
-
-      Records.polls.fetchByDiscussion(@discussion.key)
-      Records.stances.fetchMyStancesByDiscussion(@discussion.key)
 
       $rootScope.$broadcast 'viewingThread', @discussion
       $rootScope.$broadcast 'setTitle', @discussion.title

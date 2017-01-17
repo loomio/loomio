@@ -38,6 +38,7 @@ class GroupSerializer < ActiveModel::Serializer
              :is_subgroup_of_hidden_parent,
              :enable_experiments,
              :experiences,
+             :features,
              :recent_activity_count
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
