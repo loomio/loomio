@@ -12,3 +12,12 @@
   color: $grey-on-white;
   font-style: italic;
 }
+
+.poll-common-votes-panel__header {
+  @include displayFlex;
+  justify-content: space-between;
+}
+
+.poll-common-votes-panel__header md-select {
+  margin-bottom: 0;
+}
