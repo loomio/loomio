@@ -1,0 +1,5 @@
+.poll-common-accordion
+  .lmo-card--no-padding
+    %h2.lmo-card-heading.lmo-card-heading-padding{translate: "poll_common_accordion.title"}
+    %ng-repeat{ng-repeat: "poll in pollCollection.polls()"}
+      {{poll.title}}

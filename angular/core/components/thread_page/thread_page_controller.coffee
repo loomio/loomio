@@ -43,7 +43,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
-      console.log @discussion.relationships()()
+      @closedPollCollection = polls: => @discussion.closedPolls()
       @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId)
       @pageWindow = PaginationService.windowFor
         current:  @sequenceIdToFocus
