@@ -1,46 +1,47 @@
-%form.poll-poll-form
-  .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header.lmo-poll-modal-header
-    %i.material-icons thumbs_up_down
-    %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_poll_form.start_header"}
-    %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_poll_form.edit_header"}
-    %modal_header_cancel_button
-  .modal-body
-    .poll-proposal-form__tip{ng-if: "poll.isNew()"}
-      %p{translate: "poll_poll_form.tip"}
-      %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_poll_form.learn_more"}
+%md-dialog.poll-common-modal
+  %form.poll-poll-form
+    .lmo-disabled-form{ng-show: "isDisabled"}
+    .modal-header.poll-common-modal-header
+      %i.material-icons thumbs_up_down
+      %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_poll_form.start_header"}
+      %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_poll_form.edit_header"}
+      %modal_header_cancel_button
+    .modal-body
+      .poll-proposal-form__tip{ng-if: "poll.isNew()"}
+        %p{translate: "poll_poll_form.tip"}
+        %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_poll_form.learn_more"}
 
-    %input{type: "hidden", ng-model: "poll.pollType"}
+      %input{type: "hidden", ng-model: "poll.pollType"}
 
-    %md-input-container.md-block
-      %label{translate: "poll_poll_form.title"}
-      %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
-      %validation_errors{subject: "poll", field: "title"}
+      %md-input-container.md-block
+        %label{translate: "poll_poll_form.title"}
+        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+        %validation_errors{subject: "poll", field: "title"}
 
-    %md-input-container.md-block
-      %label{translate: "poll_poll_form.details"}
-      %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
-      %validation_errors{subject: "poll", field: "details"}
+      %md-input-container.md-block
+        %label{translate: "poll_poll_form.details"}
+        %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+        %validation_errors{subject: "poll", field: "details"}
 
-    %md-list.md-block
-      %label{translate: "poll_poll_form.options"}
-      %md-list-item{ng-repeat: "name in poll.pollOptionNames track by $index"}
-        %span.poll-poll-form__option-text {{name}}
-        %md-button.poll-poll-form__option-button{ng-click: "removeOption(name)"}
-          %i.material-icons.poll-poll-form__option-icon clear
-      %md-list-item.poll-poll-form__add-option{flex: "true", layout: "row"}
-        %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
-          %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
-        %div
-          %md-button.poll-poll-form__option-button{ng-click: "addOption()"}
-            %i.material-icons.poll-poll-form__option-icon add
+      %md-list.md-block
+        %label{translate: "poll_poll_form.options"}
+        %md-list-item{ng-repeat: "name in poll.pollOptionNames track by $index"}
+          %span.poll-poll-form__option-text {{name}}
+          %md-button.poll-poll-form__option-button{ng-click: "removeOption(name)"}
+            %i.material-icons.poll-poll-form__option-icon clear
+        %md-list-item.poll-poll-form__add-option{flex: "true", layout: "row"}
+          %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
+            %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
+          %div
+            %md-button.poll-poll-form__option-button{ng-click: "addOption()"}
+              %i.material-icons.poll-poll-form__option-icon add
 
-    %md-checkbox{ng-model: "poll.multipleChoice"}
-      %span{translate: "poll_poll_form.multiple_choice"}
+      %md-checkbox{ng-model: "poll.multipleChoice"}
+        %span{translate: "poll_poll_form.multiple_choice"}
 
-    %poll_common_closing_at_field.md-block{poll: "poll"}
-    %poll_common_notify_group{model: "poll"}
+      %poll_common_closing_at_field.md-block{poll: "poll"}
+      %poll_common_notify_group{model: "poll"}
 
-  .modal-footer
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_poll_form.update"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_poll_form.start"}
+    .modal-footer
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_poll_form.update"}
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_poll_form.start"}

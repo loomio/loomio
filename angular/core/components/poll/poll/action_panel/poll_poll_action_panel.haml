@@ -2,7 +2,7 @@
   %section{ng-if: "!poll.closedAt"}
     %md-list.md-block{ng-if: "userHasVoted()"}
       %h3.lmo-card-subheading{translate: "poll_common.change_your_stance_title"}
-      %p.lmo-poll-helptext{translate: "poll_common.change_your_stance_text"}
+      %p.poll-common-helptext{translate: "poll_common.change_your_stance_text"}
       %md-button.md-primary{ng-click: "openVoteForm()", translate: "poll_common.change_your_stance"}
     %md-list.md-block{ng-if: "!userHasVoted()"}
       %h3.lmo-card-subheading{translate: "poll_common.your_response"}

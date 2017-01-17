@@ -1,29 +1,30 @@
-%form.poll-proposal-form
-  .modal-header.lmo-poll-modal-header
-    %i.material-icons thumbs_up_down
-    %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
-    %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
-    %modal_header_cancel_button
-  .modal-body
-    .poll-proposal-form__tip{ng-if: "poll.isNew()"}
-      %p{translate: "poll_proposal_form.tip"}
-      %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_proposal_form.learn_more"}
+%md-dialog.poll-common-modal
+  %form.poll-proposal-form
+    .modal-header.poll-common-modal-header
+      %i.material-icons thumbs_up_down
+      %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
+      %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
+      %modal_header_cancel_button
+    .modal-body
+      .poll-proposal-form__tip{ng-if: "poll.isNew()"}
+        %p{translate: "poll_proposal_form.tip"}
+        %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_proposal_form.learn_more"}
 
-    %input{type: "hidden", ng-model: "poll.pollType"}
+      %input{type: "hidden", ng-model: "poll.pollType"}
 
-    %md-input-container.md-block
-      %label{translate: "poll_proposal_form.title"}
-      %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
-      %validation_errors{subject: "poll", field: "title"}
+      %md-input-container.md-block
+        %label{translate: "poll_proposal_form.title"}
+        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+        %validation_errors{subject: "poll", field: "title"}
 
-    %md-input-container.md-block
-      %label{translate: "poll_proposal_form.details"}
-      %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
-      %validation_errors{subject: "poll", field: "details"}
+      %md-input-container.md-block
+        %label{translate: "poll_proposal_form.details"}
+        %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+        %validation_errors{subject: "poll", field: "details"}
 
-    %poll_common_closing_at_field.md-block{poll: "poll"}
-    %poll_common_notify_group{model: "poll"}
+      %poll_common_closing_at_field.md-block{poll: "poll"}
+      %poll_common_notify_group{model: "poll"}
 
-  .modal-footer
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start"}
+    .modal-footer
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update"}
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start"}

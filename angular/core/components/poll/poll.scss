@@ -1,13 +1,17 @@
-.lmo-poll-helptext {
+.poll-common-helptext {
   @include fontSmall;
   font-style: italic;
 }
 
-.lmo-poll-modal-header {
+.poll-common-modal-header {
   @include displayFlex;
 }
 
-.lmo-poll-modal-header h1 {
+.poll-common-modal-header h1 {
   flex-grow: 10;
   margin: -5px 0 0 10px;
+}
+
+.poll-common-modal {
+  max-width: 400px;
 }

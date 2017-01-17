@@ -1,9 +1,10 @@
-.poll-check-in-vote-form
-  %form.poll-check-in-vote-form
-    %md-input-container.md-block
-      %label{translate: "poll_check_in_vote_form.reason"}
-      %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength: "250"}
-      %validation_errors{subject: "stance", field: "reason"}
+%md-dialog.poll-common-modal
+  .poll-check-in-vote-form
+    %form.poll-check-in-vote-form
+      %md-input-container.md-block
+        %label{translate: "poll_check_in_vote_form.reason"}
+        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength: "250"}
+        %validation_errors{subject: "stance", field: "reason"}
 
-    %md-button.md-primary.md-raised{ng-click: "submit()"}
-      {{stance.poll().firstOption().name}}
+      %md-button.md-primary.md-raised{ng-click: "submit()"}
+        {{stance.poll().firstOption().name}}

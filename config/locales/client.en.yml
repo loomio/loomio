@@ -1384,8 +1384,8 @@ en:
     block_meaning: The urgent attention of the group is required to address a deep concern
 
   poll_check_in_form:
-    new_engagement_check: New engagement check
-    update_engagement_checl: Update engagement check
+    new_check_in: New check-in
+    update_check_in: Update check-in
     tip: Use an engagement check to ensure that everyone has seen a particular bit of content. Need to discuss something which may have differing opinions? Try a <a href="#">proposal</a>.
     learn_more: How to use engagement checks
     title: Title
@@ -1394,7 +1394,8 @@ en:
     details_placeholder: Give some additional details. If you want people to engage with a particular document, be sure to link to it here!
     action: Action
     action_placeholder: E.g. I've done it!
-    start: Start engagement check
+    start: Start check-in
+    update: Update check-in
 
   poll_poll_form:
     start_header: Start a poll
