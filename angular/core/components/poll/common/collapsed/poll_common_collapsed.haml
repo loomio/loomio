@@ -1,3 +1,4 @@
 .poll-common-collapsed.lmo-card-padding
-  %strong {{formattedPollType(poll.pollType)}}:
+  %bar_chart{ng-if: "poll.pollType == 'poll'", stance_data: "poll.stanceData", width: "50"}
+  %strong.poll-common-collapsed__poll-type> {{formattedPollType(poll.pollType)}}:
   %span> {{poll.title}}

@@ -1,0 +1,9 @@
+.poll-common-collapsed {
+  @include displayFlex;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.poll-common-collapsed__poll-type {
+  margin: 0 5px 0 10px;
+}

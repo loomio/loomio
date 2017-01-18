@@ -86,6 +86,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
 
+  @hasClosedPolls = ->
+    _.any @closedPollCollection.polls()
+
   @canStartProposal = ->
     @eventsLoaded && AbilityService.canStartProposal(@discussion)
 
