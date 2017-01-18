@@ -3,11 +3,8 @@
     %md-list.md-block{ng-if: "userHasVoted()"}
       %h3.lmo-card-subheading{translate: "poll_common.change_your_stance_title"}
       %p.poll-common-helptext{translate: "poll_common.change_your_stance_text"}
-      %md-button.md-primary{ng-click: "openVoteForm(currentUserStance().pollOption())", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
+      %md-button.md-primary{ng-click: "openVoteForm()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
     %md-list.md-block{ng-if: "!userHasVoted()"}
-      %h3.lmo-card-subheading{translate: "poll_common.your_response"}
-      %md-list-item{ng-click: "openVoteForm(option)", ng-repeat: "option in poll.pollOptions() track by option.id"}
-        %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
-        {{option.name}}
+      %poll_proposal_vote_form{stance: "myNewStance"}
   %section{ng-if: "poll.closedAt"}
     %poll_common_outcome_panel{poll: "poll"}

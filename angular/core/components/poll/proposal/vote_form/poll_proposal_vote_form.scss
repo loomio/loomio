@@ -11,3 +11,9 @@
 .poll-proposal-vote-form__radio-button .md-label {
   margin-left: 0;
 }
+
+.poll-proposal-vote-form__actions {
+  @include displayFlex;
+  justify-content: flex-end;
+  align-items: center;
+}
