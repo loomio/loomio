@@ -91,8 +91,8 @@ class Poll < ActiveRecord::Base
     template['must_have_options']
   end
 
-  def graph_type
-    template['graph_type']
+  def chart_type
+    template['chart_type']
   end
 
   def open?
