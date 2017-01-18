@@ -1353,7 +1353,8 @@ en:
     change_results_order: Change results order
 
   poll_common_accordion:
-    title: Previous activity
+    title: Recent activity
+    all_activity: All activity
 
   poll_proposal_form:
     start_a_proposal: Start a proposal
