@@ -65,14 +65,15 @@ class Poll < ActiveRecord::Base
   end
 
   def update_stance_data
-    update_attribute(:stance_data, self.class.connection.select_all(%{
-      SELECT poll_options.name, sum(stance_choices.score) as total
-      FROM stances
-      INNER JOIN stance_choices ON stance_choices.stance_id = stances.id
-      INNER JOIN poll_options ON poll_options.id = stance_choices.poll_option_id
-      WHERE stances.latest = true AND stances.poll_id = #{self.id}
-      GROUP BY poll_options.name
-    }).map { |row| [row['name'], row['total'].to_i] }.to_h)
+    update_attribute(:stance_data, zeroed_poll_options.merge(
+      self.class.connection.select_all(%{
+        SELECT poll_options.name, sum(stance_choices.score) as total
+        FROM stances
+        INNER JOIN stance_choices ON stance_choices.stance_id = stances.id
+        INNER JOIN poll_options ON poll_options.id = stance_choices.poll_option_id
+        WHERE stances.latest = true AND stances.poll_id = #{self.id}
+        GROUP BY poll_options.name
+      }).map { |row| [row['name'], row['total'].to_i] }.to_h))
   end
 
   def material_icon
@@ -111,6 +112,11 @@ class Poll < ActiveRecord::Base
   end
 
   private
+
+  # provides a base hash of 0's to merge with stance data
+  def zeroed_poll_options
+    self.poll_options.map { |option| [option.name, 0] }.to_h
+  end
 
   def remove_poll_options
     return unless @poll_option_removed_names.present?

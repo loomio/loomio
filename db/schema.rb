@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112233757) do
+ActiveRecord::Schema.define(version: 20170118205508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -723,6 +723,7 @@ ActiveRecord::Schema.define(version: 20170112233757) do
     t.jsonb    "stance_data",     default: {}
     t.integer  "stances_count",   default: 0,     null: false
     t.boolean  "multiple_choice", default: false, null: false
+    t.jsonb    "custom_fields",   default: {},    null: false
   end
 
   create_table "stance_choices", force: :cascade do |t|
