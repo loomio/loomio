@@ -19,7 +19,10 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
       _.first @stanceChoices()
 
     pollOption: ->
-      @stanceChoice().pollOption()
+      @stanceChoice().pollOption() if @stanceChoice()
+
+    pollOptionId: ->
+      (@pollOption() or {}).id
 
     pollOptions: ->
       @recordStore.pollOptions.find(@pollOptionIds())
@@ -33,7 +36,7 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     choose: (options) ->
       _.each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
         stanceChoice.remove()
-        
+
       _.each options, (option) =>
         @recordStore.stanceChoices.create(pollOptionId: option.id, stanceId: @id)
       @
