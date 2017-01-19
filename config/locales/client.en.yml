@@ -1414,6 +1414,9 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_check_in_chart_panel:
+    out_of: out of {{goal}}
+
   poll_poll_form:
     start_header: Start a poll
     edit_header: Edit poll

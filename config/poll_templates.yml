@@ -23,7 +23,7 @@ proposal:
 check_in:
   poll_options_attributes:
     - name:           "engage"
-  chart_type:         check
+  chart_type:         progress
   material_icon:      check_circle
   must_have_options:  true
   sort_options:

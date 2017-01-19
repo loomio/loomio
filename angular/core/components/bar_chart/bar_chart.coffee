@@ -3,7 +3,7 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
   replace: true
   scope:
     stanceData: '='
-    width: '@'
+    size: '@'
   restrict: 'E'
   controller: ($scope, $element) ->
     draw = SVG($element[0]).size('100%', '100%')
@@ -17,15 +17,15 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
       _.max _.map(scoreData(), (data) -> data.score)
 
     drawPlaceholder = ->
-      draw.rect($scope.width, $scope.width).fill("#ccc")
+      draw.rect($scope.size, $scope.size).fill("#ccc")
 
     $scope.$watchCollection 'stanceData', ->
       _.each shapes, (shape) -> shape.remove()
       return drawPlaceholder() unless scoreData().length > 0 and scoreMaxValue() > 0
-      barHeight = $scope.width / scoreData().length
+      barHeight = $scope.size / scoreData().length
 
       _.map scoreData(), (scoreData) ->
-        barWidth = _.max([($scope.width * scoreData.score) / scoreMaxValue(), 2])
+        barWidth = _.max([($scope.size * scoreData.score) / scoreMaxValue(), 2])
         draw.rect(barWidth, barHeight-2)
             .fill(scoreData.color)
             .x(0)

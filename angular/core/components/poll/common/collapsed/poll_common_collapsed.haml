@@ -1,4 +1,6 @@
 .poll-common-collapsed.lmo-card-padding
-  %bar_chart{ng-if: "poll.pollType == 'poll'", stance_data: "poll.stanceData", width: "50"}
+  %bar_chart{ng-if: "poll.pollType == 'poll'", stance_data: "poll.stanceData", size: "50"}
+  %progress_chart{ng-if: "poll.pollType == 'check_in'", stance_data: "poll.stanceData", goal: "poll.customFields.goal", size: "50"}
+  %pie_chart.poll-common-collapsed__pie-chart{ng-if: "poll.pollType == 'proposal'", votes: "poll.stanceData", diameter: "50"}
   %strong.poll-common-collapsed__poll-type> {{formattedPollType(poll.pollType)}}:
   %span> {{poll.title}}
