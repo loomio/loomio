@@ -9,6 +9,10 @@ class Queries::VisiblePolls < Delegator
     super(@relation)
   end
 
+  def closed
+    @relation.closed
+  end
+
   def __getobj__
     @relation
   end

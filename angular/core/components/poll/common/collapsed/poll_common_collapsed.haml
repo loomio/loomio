@@ -2,5 +2,11 @@
   %bar_chart{ng-if: "poll.pollType == 'poll'", stance_data: "poll.stanceData", size: "50"}
   %progress_chart{ng-if: "poll.pollType == 'check_in'", stance_data: "poll.stanceData", goal: "poll.customFields.goal", size: "50"}
   %pie_chart.poll-common-collapsed__pie-chart{ng-if: "poll.pollType == 'proposal'", votes: "poll.stanceData", diameter: "50"}
-  %strong.poll-common-collapsed__poll-type> {{formattedPollType(poll.pollType)}}:
-  %span> {{poll.title}}
+  .poll-common-collapsed__content
+    .md-subhead.md-primary
+      %strong> {{formattedPollType(poll.pollType)}}:
+      %span> {{poll.title}}
+    .md-body-1.md-secondary
+      %span{translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.author().name}}"}>
+      %span>·
+      %poll_common_closing_at{poll: "poll"}

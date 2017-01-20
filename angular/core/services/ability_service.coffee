@@ -128,6 +128,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canViewPreviousProposals: (group) ->
       @canViewGroup(group)
 
+    canViewPreviousPolls: (group) ->
+      @canViewGroup(group)
+
     canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and
       @canViewGroup(group) and

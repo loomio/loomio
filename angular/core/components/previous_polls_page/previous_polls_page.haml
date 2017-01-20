@@ -1,0 +1,12 @@
+.loading-wrapper.lmo-one-column-layout
+  %loading{ng-if: "!previousPollsPage.group"}
+  %main.previous-proposals-page{ng-if: "previousPollsPage.group"}
+    .lmo-group-theme-padding
+    %group_theme{group: "previousPollsPage.group"}
+    .previous-proposals-page__previous-proposals
+      .lmo-card-left-right-padding
+        %h2.lmo-h2{translate: "previous_polls_page.heading", translate-value-name: "{{previousPollsPage.group.fullName}}"}
+      %poll_common_accordion.lmo-card-left-right-padding{poll_collection: "previousPollsPage.pollCollection"}
+      .previous-polls-page__count.lmo-card-left-right-padding{translate: "previous_polls_page.polls_count", translate-value-loaded: "{{previousPollsPage.group.closedPolls().length}}", translate-value-total: "{{previousPollsPage.group.closedPollsCount}}"}
+      .previous-polls-page__load-more
+        %md-button.md-primary{translate: "poll_common.load_more", ng-click: "loadMore()"}

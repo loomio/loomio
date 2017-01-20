@@ -6,3 +6,9 @@ angular.module('loomioApp').factory 'PollRecordsInterface', (BaseRecordsInterfac
       options['discussion_id'] = discussionKey
       @fetch
         params: options
+
+    fetchClosedByGroup: (groupKey, options = {}) ->
+      options['group_key'] = groupKey
+      @fetch
+        path: 'closed'
+        params: options

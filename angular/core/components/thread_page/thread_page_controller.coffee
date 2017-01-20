@@ -46,7 +46,6 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
       # use new poll functionality
       if @usePolls = (@discussion.group().features.use_polls && !$location.search().proposalView)
-        @closedPollCollection = polls: => @discussion.closedPolls()
         Records.polls.fetchByDiscussion(@discussion.key)
         Records.stances.fetchMyStancesByDiscussion(@discussion.key)
 
@@ -87,7 +86,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @performScroll() if @eventsLoaded
 
   @hasClosedPolls = ->
-    _.any @closedPollCollection.polls()
+    _.any @discussion.closedPolls()
 
   @canStartProposal = ->
     @eventsLoaded && AbilityService.canStartProposal(@discussion)

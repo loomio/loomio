@@ -97,6 +97,10 @@ en:
   previous_proposals_page:
     heading: Previous proposals
 
+  previous_polls_page:
+    heading: Activities in {{name}}
+    polls_count: Showing {{loaded}} of {{total}} activities
+
   proposal_collapsed:
     expand: Expand
     outcome: 'Outcome: {{outcome}}'
@@ -733,6 +737,10 @@ en:
     heading: Previous proposals
     see_more: See more
 
+  group_previous_polls_card:
+    heading: Previous Activities
+    see_more: "See all: ({{count}}) activities"
+
   invitation_form:
     aria_label: 'Invitation form'
     invite_people: 'Invite People'
@@ -1319,9 +1327,13 @@ en:
     change_your_stance_title: Changed your mind?
     change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
+    load_more: Load more
 
   poll_common_card:
     show_results: Show results
+
+  poll_common_collapsed:
+    by_who: "by {{name}}"
 
   poll_common_notify_group:
     notify_group: Notify group
@@ -1354,7 +1366,6 @@ en:
 
   poll_common_accordion:
     title: Recent activity
-    all_activity: All activity
 
   poll_proposal_form:
     start_a_proposal: Start a proposal

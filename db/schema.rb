@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118205508) do
+ActiveRecord::Schema.define(version: 20170119231339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -271,6 +271,7 @@ ActiveRecord::Schema.define(version: 20170118205508) do
     t.integer  "salient_items_count",  default: 0,     null: false
     t.integer  "versions_count",       default: 0
     t.integer  "closed_motions_count", default: 0,     null: false
+    t.integer  "closed_polls_count",   default: 0,     null: false
   end
 
   add_index "discussions", ["author_id"], name: "index_discussions_on_author_id", using: :btree
@@ -417,6 +418,7 @@ ActiveRecord::Schema.define(version: 20170118205508) do
     t.jsonb    "features",                           default: {},    null: false
     t.integer  "recent_activity_count",              default: 0,     null: false
     t.integer  "community_id"
+    t.integer  "closed_polls_count",                 default: 0,     null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree

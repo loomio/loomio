@@ -134,6 +134,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/g/:key/memberships/:username', component: 'membershipsPage'},
     {path: '/g/:key/membership_requests', component: 'membershipRequestsPage'},
     {path: '/g/:key/previous_proposals', component: 'previousProposalsPage'},
+    {path: '/g/:key/previous_polls', component: 'previousPollsPage'},
     {path: '/g/:key', component: 'groupPage' },
     {path: '/g/:key/:stub', component: 'groupPage' },
     {path: '/u/:key', component: 'userPage' },

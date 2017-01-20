@@ -1,11 +1,7 @@
 .poll-common-accordion__poll {
-  border-top: 1px solid $border-color;
-}
-
-.poll-common-accordion__poll:last-child {
   border-bottom: 1px solid $border-color;
 }
 
-.poll-common-accordion__all-activity {
-  margin: 0;
+.poll-common-accordion__poll:last-child {
+  border-bottom: 0;
 }

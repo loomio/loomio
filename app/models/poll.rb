@@ -13,6 +13,8 @@ class Poll < ActiveRecord::Base
   belongs_to :discussion
   delegate   :group, :group_id, to: :discussion, allow_nil: true
 
+  update_counter_cache :discussion, :closed_polls_count
+
   attr_accessor :make_announcement
 
   after_update :remove_poll_options
@@ -49,6 +51,7 @@ class Poll < ActiveRecord::Base
   # end
 
   scope :active, -> { where(closed_at: nil) }
+  scope :closed, -> { where("closed_at IS NOT NULL") }
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
