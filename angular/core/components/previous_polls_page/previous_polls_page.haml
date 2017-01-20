@@ -10,6 +10,7 @@
           %i.material-icons search
           %input{ng-model: "previousPollsPage.fragment", placeholder: "{{previousPollsPage.translations.searchPlaceholder}}", ng-change: "previousPollsPage.searchPolls()", ng-model-options: "{debounce: 250}"}
         %poll_common_accordion{poll_collection: "previousPollsPage.pollCollection"}
+        %loading{ng-if: "previousPollsPage.searchPollsExecuting"}
         .previous-polls-page__count{translate: "previous_polls_page.polls_count", translate-value-loaded: "{{previousPollsPage.pollCollection.polls().length}}", translate-value-total: "{{previousPollsPage.group.closedPollsCount}}"}
       .previous-polls-page__load-more
         %md-button.md-primary{translate: "poll_common.load_more", ng-click: "previousPollsPage.loadMore()", ng-if: "!previousPollsPage.fragment"}

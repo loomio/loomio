@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $rootScope, $routeParams, Records, AbilityService, TranslationService) ->
+angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $rootScope, $routeParams, Records, AbilityService, TranslationService, LoadingService) ->
   $rootScope.$broadcast('currentComponent', { page: 'previousPollsPage'})
 
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
@@ -20,8 +20,9 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
   @loadMore = ->
     console.log('loading more...')
 
-  @searchPolls = ->
-    console.log('searching polls...', @fragment)
+  @searchPolls = =>
+    Records.polls.search(@group.key, @fragment, per: 10)
+  LoadingService.applyLoadingFunction @, 'searchPolls'
 
   @translations = TranslationService.eagerTranslate @,
     searchPlaceholder: 'previous_polls_page.search_activities'
