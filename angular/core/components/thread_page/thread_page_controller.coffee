@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -45,7 +45,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       @discussion = discussion
 
       # use new poll functionality
-      if @usePolls = (@discussion.group().features.use_polls && !$location.search().proposalView)
+      if @usePolls = PollService.usePollsFor(@discussion)
         Records.polls.fetchByDiscussion(@discussion.key)
         Records.stances.fetchMyStancesByDiscussion(@discussion.key)
 

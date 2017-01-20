@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', (AppConfig, Records, PollProposalForm, PollCheckInForm, PollPollForm) ->
+angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Records, PollProposalForm, PollCheckInForm, PollPollForm) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -27,3 +27,6 @@ angular.module('loomioApp').factory 'PollService', (AppConfig, Records, PollProp
 
     formFor: (pollType) ->
       pollForms[pollType]
+
+    usePollsFor: (model) ->
+      model.group().features.use_polls && !$location.search().proposalView

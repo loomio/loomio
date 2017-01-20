@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, ModalService) ->
+angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $location, $routeParams, $scope, Records, Session, MessageChannelService, AbilityService, AppConfig, LmoUrlService, PaginationService, PollService, ModalService) ->
   $rootScope.$broadcast 'currentComponent', {page: 'groupPage', key: $routeParams.key, skipScroll: true }
 
   @launchers = []
@@ -29,7 +29,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     @performLaunch()
     MessageChannelService.subscribeToGroup(@group) if AbilityService.isLoggedIn()
 
-    @usePolls = (@group.features.use_polls && !$location.search().proposalView)
+    @usePolls = PollService.usePollsFor(@group)
 
     Records.drafts.fetchFor(@group) if AbilityService.canCreateContentFor(@group)
 

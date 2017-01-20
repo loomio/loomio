@@ -77,6 +77,9 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
     closedPolls: ->
       _.filter @polls(), (poll) ->
         !poll.isActive()
+    
+    activePoll: ->
+      _.first @activePolls()
 
     isUnread: ->
       !@isDismissed() and

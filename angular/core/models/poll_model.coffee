@@ -20,6 +20,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @hasMany   'pollOptions'
       @hasMany   'stances'
 
+    group: ->
+      @discussion().group() if @discussion()
+
     firstOption: ->
       _.first @pollOptions()
 
@@ -52,6 +55,10 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     isActive: ->
       !@closedAt?
+
+    goal: ->
+      # NB: discussion dependency
+      @customFields.goal or @group().membershipsCount
 
     close: =>
       @remote.postMember(@id, 'close')
