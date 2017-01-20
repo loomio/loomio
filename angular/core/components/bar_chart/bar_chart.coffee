@@ -17,7 +17,17 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
       _.max _.map(scoreData(), (data) -> data.score)
 
     drawPlaceholder = ->
-      draw.rect($scope.size, $scope.size).fill("#ccc")
+      barHeight = $scope.size / 3
+      barWidths =
+        0: $scope.size
+        1: 2 * $scope.size / 3
+        2: $scope.size / 3
+
+      _.each barWidths, (width, index) ->
+        draw.rect(width, barHeight - 2)
+            .fill("#ebebeb")
+            .x(0)
+            .y(index * barHeight)
 
     $scope.$watchCollection 'stanceData', ->
       _.each shapes, (shape) -> shape.remove()
