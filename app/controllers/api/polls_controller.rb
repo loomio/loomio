@@ -22,6 +22,14 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
+  def search
+    params.require(:q)
+    instantiate_collection do |collection|
+      collection.where(discussion_id: load_and_authorize(:group).discussion_ids).search_for(params[:q])
+    end
+    respond_with_collection
+  end
+
   private
   def default_scope
     super.merge my_stances_cache: MyStancesCache.new(user: current_user, polls: collection)

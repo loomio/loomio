@@ -114,6 +114,59 @@ describe API::PollsController do
     end
   end
 
+  describe 'autocomplete' do
+    let!(:red_poll) { create(:poll, discussion: discussion,  title: "I am a red ranger!") }
+    let!(:blue_poll) { create(:poll, discussion: discussion, title: "I am a blue bassoon!") }
+
+    it 'returns polls whose title matches the search fragment' do
+      sign_in user
+      get :search, group_id: group.id, q: 'red'
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      poll_ids = json['polls'].map { |p| p['id'] }
+
+      expect(poll_ids).to include red_poll.id
+      expect(poll_ids).to_not include blue_poll.id
+    end
+
+    it 'requires a group id' do
+      sign_in user
+      get :search, q: "red"
+      expect(response.status).to eq 404
+    end
+
+    it 'requires a search query' do
+      sign_in user
+      get :search, group_id: group.id
+      expect(response.status).to eq 400
+    end
+
+    it 'does not search by details' do
+      sign_in user
+      blue_poll.update(details: "Zed's red, baby")
+      get :search, group_id: group.id, q: "red"
+
+      json = JSON.parse(response.body)
+      poll_ids = json['polls'].map { |p| p['id'] }
+
+      expect(poll_ids).to include red_poll.id
+      expect(poll_ids).to_not include blue_poll.id
+    end
+
+    it 'does not return polls the user cannot see' do
+      sign_in another_user
+      get :search, group_id: group.id, q: "red"
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      poll_ids = json['polls'].map { |p| p['id'] }
+
+      expect(poll_ids).to_not include red_poll.id
+      expect(poll_ids).to_not include blue_poll.id
+    end
+  end
+
   describe 'close' do
     it 'closes a poll' do
       sign_in user

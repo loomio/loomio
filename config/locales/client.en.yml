@@ -100,6 +100,7 @@ en:
   previous_polls_page:
     heading: Activities in {{name}}
     polls_count: Showing {{loaded}} of {{total}} activities
+    search_activities: Search activities
 
   proposal_collapsed:
     expand: Expand

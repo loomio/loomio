@@ -6,7 +6,10 @@
     .previous-proposals-page__previous-proposals
       .lmo-card-left-right-padding
         %h2.lmo-h2{translate: "previous_polls_page.heading", translate-value-name: "{{previousPollsPage.group.fullName}}"}
-      %poll_common_accordion.lmo-card-left-right-padding{poll_collection: "previousPollsPage.pollCollection"}
-      .previous-polls-page__count.lmo-card-left-right-padding{translate: "previous_polls_page.polls_count", translate-value-loaded: "{{previousPollsPage.group.closedPolls().length}}", translate-value-total: "{{previousPollsPage.group.closedPollsCount}}"}
+        %md-input-container.previous-polls-page__search.lmo-search-container{md-no-float: "true"}
+          %i.material-icons search
+          %input{ng-model: "previousPollsPage.fragment", placeholder: "{{previousPollsPage.translations.searchPlaceholder}}", ng-change: "previousPollsPage.searchPolls()", ng-model-options: "{debounce: 250}"}
+        %poll_common_accordion{poll_collection: "previousPollsPage.pollCollection"}
+        .previous-polls-page__count{translate: "previous_polls_page.polls_count", translate-value-loaded: "{{previousPollsPage.pollCollection.polls().length}}", translate-value-total: "{{previousPollsPage.group.closedPollsCount}}"}
       .previous-polls-page__load-more
-        %md-button.md-primary{translate: "poll_common.load_more", ng-click: "loadMore()"}
+        %md-button.md-primary{translate: "poll_common.load_more", ng-click: "previousPollsPage.loadMore()", ng-if: "!previousPollsPage.fragment"}

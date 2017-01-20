@@ -248,10 +248,11 @@ published_at "2015-11-18 14:28:30"
   end
 
   factory :poll do
-    poll_type "proposal"
+    poll_type "check_in"
     title "This is a poll"
     details "with a description"
     association :author, factory: :user
+    poll_option_names ["engage"]
     # communities [Communities::Public.new]
   end
 

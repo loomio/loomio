@@ -52,6 +52,7 @@ class Poll < ActiveRecord::Base
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
+  scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
