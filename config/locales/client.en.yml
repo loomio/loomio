@@ -1385,10 +1385,11 @@ en:
     proposal_updated: Proposal updated
 
   poll_proposal_vote_form:
-    abstain_reason_placeholder: Please explain why you abstain on this proposal.
-    agree_reason_placeholder: What do you like about the proposal and how will it benefit the group? Any concerns?
-    disagree_reason_placeholder: Why can’t you support this proposal and changes should be made?
-    block_reason_placeholder: What is the reason for blocking this proposal and what might resolve this for you?
+    default_reason_placeholder: Please explain your reasoning
+    abstain_reason_placeholder: Let people know why you’re opting out of this decision
+    agree_reason_placeholder: What do you like about the proposal and how will it benefit the group?
+    disagree_reason_placeholder: How could this proposal be improved so that you can support it?
+    block_reason_placeholder: Explain your objection to this proposal and why it should not go ahead
     stance_created: Vote created
     stance_updated: Vote updated
 

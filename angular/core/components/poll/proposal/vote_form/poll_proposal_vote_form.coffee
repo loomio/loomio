@@ -14,8 +14,16 @@ angular.module('loomioApp').directive 'pollProposalVoteForm', ->
 
     $scope.cancelOption = -> $scope.stance.selected = null
 
-    TranslationService.eagerTranslate
-      detailsPlaceholder: 'poll_common.statement_placeholder'
+    $scope.reasonPlaceholder = ->
+      pollOptionName = ($scope.stance.selectedOption or {}).name
+      $scope.translations["#{pollOptionName or 'default'}Placeholder"]
+
+    TranslationService.eagerTranslate $scope,
+      defaultPlaceholder:  'poll_proposal_vote_form.default_reason_placeholder'
+      agreePlaceholder:    'poll_proposal_vote_form.agree_reason_placeholder'
+      abstainPlaceholder:  'poll_proposal_vote_form.abstain_reason_placeholder'
+      disagreePlaceholder: 'poll_proposal_vote_form.disagree_reason_placeholder'
+      blockPlaceholder:    'poll_proposal_vote_form.block_reason_placeholder'
 
     MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)
