@@ -5,7 +5,7 @@
   .poll-proposal-panel{ng-if: "poll.pollType == 'proposal'"}
     %poll_proposal_action_panel{poll: "poll"}
     .poll-common-card__results-hidden{ng-if: "!showResults()"}
-      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results"}
+      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results", aria-label: "{{poll_common_card.show_results | translate}}"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
       %poll_proposal_chart_panel{poll: "poll"}
       %poll_common_votes_panel{poll: "poll"}
@@ -13,7 +13,7 @@
   .poll-engagement-panel{ng-if: "poll.pollType == 'check_in'"}
     %poll_check_in_action_panel{poll: "poll"}
     .poll-common-card__results-hidden{ng-if: "!showResults()"}
-      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results"}
+      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results", aria-label: "{{poll_common_card.show_results | translate}}"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
       %poll_check_in_chart_panel{poll: "poll"}
       %poll_common_votes_panel{poll: "poll"}
@@ -21,7 +21,7 @@
   .poll-poll-panel{ng-if: "poll.pollType == 'poll'"}
     %poll_poll_action_panel{poll: "poll"}
     .poll-common-card__results-hidden{ng-if: "!showResults()"}
-      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results"}
+      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results", aria-label: "{{poll_common_card.show_results | translate}}"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
       %poll_poll_chart_panel{poll: "poll"}
       %poll_common_votes_panel{poll: "poll"}

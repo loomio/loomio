@@ -2,8 +2,8 @@
   %md-list.md-block{ng-if: "!poll.outcome().statement"}
     %h3.lmo-card-subheading{translate: "poll_common.set_outcome_title"}
     %p.poll-common-helptext{translate: "poll_common.set_outcome_text"}
-    %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.set_outcome"}
+    %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.set_outcome", aria-label: "{{poll_common.set_outcome | translate}}"}
   %md-list.md-block{ng-if: "poll.outcome().statement"}
     %h3.lmo-card-subheading{translate: "poll_common.outcome"}
     %p {{poll.outcome().statement}}
-    %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.update_outcome"}
+    %md-button.md-primary{ng-click: "openOutcomeForm()", translate: "poll_common.update_outcome", aria-label: "{{poll_common.update_outcome | translate}}"}
