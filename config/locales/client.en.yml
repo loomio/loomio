@@ -1342,7 +1342,7 @@ en:
 
   poll_common_close_form:
     title: Close a poll early
-    helptext: Some text here
+    helptext: Are you sure you're ready to close this early?
     close_poll: Close poll
     messages:
       success: Poll closed
@@ -1367,6 +1367,10 @@ en:
 
   poll_common_accordion:
     title: Recent activity
+
+  poll_common_outcome_form:
+    outcome_created: Outcome created
+    outcome_updated: Outcome updated
 
   poll_proposal_form:
     start_a_proposal: Start a proposal

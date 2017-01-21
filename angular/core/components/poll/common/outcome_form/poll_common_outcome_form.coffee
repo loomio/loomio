@@ -7,7 +7,7 @@ angular.module('loomioApp').factory 'PollCommonOutcomeForm', ->
     actionName = if $scope.outcome.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.outcome,
-      flashSuccess: "poll_common_outcome_form.messages.#{actionName}"
+      flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
       draftFields: ['statement']
 
     TranslationService.eagerTranslate $scope,
