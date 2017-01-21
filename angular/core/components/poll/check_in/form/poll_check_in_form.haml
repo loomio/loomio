@@ -20,7 +20,7 @@
       %md-input-container.md-block
         %label{translate: "poll_check_in_form.details"}
         %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}"}
-        %validation_errors{subject: "poll", field: "details"}
+        %outlet{name: "after-check-in-form-textarea", model: "poll"}
 
       %poll_closing_at_field.md-block{poll: "poll"}
       %poll_common_notify_group{model: "poll"}
