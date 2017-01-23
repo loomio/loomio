@@ -7,10 +7,6 @@
       %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_poll_form.edit_header"}
       %modal_header_cancel_button
     .modal-body
-      .poll-proposal-form__tip{ng-if: "poll.isNew()"}
-        %p{translate: "poll_poll_form.tip"}
-        %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_poll_form.learn_more"}
-
       %input{type: "hidden", ng-model: "poll.pollType"}
 
       %md-input-container.md-block
