@@ -4,9 +4,7 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
   Records.groups.findOrFetchById($routeParams.key).then (group) =>
     @group = group
     @loadMore()
-  , throwPageError
-
-  throwPageError = (error) ->
+  , (error) ->
     $rootScope.$broadcast('pageError', error)
 
   from = 0
@@ -27,7 +25,7 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
       return [] unless @group?
       _.sortBy(
         _.filter(@group.closedPolls(), (poll) =>
-          _.isEmpty(@fragment) or poll.title.match(@fragment)), '-closedAt')
+          _.isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-closedAt')
 
 
   @translations = TranslationService.eagerTranslate @,
