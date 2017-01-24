@@ -2,6 +2,5 @@
   %md-list-item{ng-if: "model.group()"}
     .md-list-item-text.poll-common-notify-group__list-item
       %h3{translate: "poll_common_notify_group.notify_group"}
-      -# NB: poll discussion dependency here.
-      %p{translate: "poll_common_notify_group.members_count", translate-value-count: "{{model.group().membershipsCount}}"}
+      %p{translate: "poll_common_notify_group.members_count", translate-value-count: "{{model.communitySize()}}"}
     %md-checkbox{ng-model: "model.makeAnnouncement"}
