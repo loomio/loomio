@@ -11,13 +11,13 @@ class DevelopmentController < ApplicationController
     sign_in patrick
     test_poll(stance_data: {red: 2, green: 3, blue: 4})
     poll_email_info
-    render 'poll_mailer/poll/poll', layout: false
+    render 'poll_mailer/poll/poll', layout: 'poll_mailer'
   end
 
   def setup_proposal_email
     sign_in patrick
     poll_email_info(poll: test_proposal)
-    render 'poll_mailer/proposal/proposal', layout: false
+    render 'poll_mailer/proposal/proposal', layout: 'poll_mailer'
   end
 
   def setup_proposal_closed_email
@@ -25,7 +25,7 @@ class DevelopmentController < ApplicationController
     test_agree; test_disagree; test_abstain
     test_proposal.update_stance_data
     poll_email_info
-    render 'poll_mailer/proposal/proposal_closed', layout: false
+    render 'poll_mailer/proposal/proposal_closed', layout: 'poll_mailer'
   end
 
   def index

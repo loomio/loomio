@@ -1,5 +1,6 @@
 class PollMailer < BaseMailer
   helper :email
+  REPLY_DELIMITER = "--"
 
   def poll_create(poll)
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_create(poll)

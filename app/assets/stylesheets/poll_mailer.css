@@ -1,0 +1,30 @@
+.poll-proposal-results__poll-option {
+  border-left: 5px solid;
+  padding-left: 10px;
+}
+
+.poll-common-avatar__initials {
+  margin-right: 10px;
+  border: 1px solid #dcdcdc;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+}
+
+.poll-common-avatar__image {
+  margin-right: 10px;
+  float: left;
+}
+
+.poll-common-footer {
+  margin-top: 20px;
+  clear: both;
+  color: #666;
+  font-size: small;
+}
+
+.poll-common-footer__text {
+  margin-bottom: 20px;
+}

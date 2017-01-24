@@ -2,17 +2,14 @@ class PollEmailInfo
   include Routing
   attr_reader :poll, :recipient
 
-  def initialize(poll:, recipient:, utm: {})
-    @poll, @recipient, @utm = poll, recipient, utm
+  def send_reason
+    # TODO: determine why this recipient is receiving this email
+    # PollEmailService.reason_for(@poll, @recipient) ????
+    "some reason"
   end
 
-  # creates a hash which has a PollOption as a key, and a list of stance
-  # choices associated with that PollOption as a value
-  def grouped_stance_options
-    @grouped_stance_options ||=
-      @poll.stance_choices
-           .includes(:poll_option, stance: :participant)
-           .to_a.group_by(&:poll_option)
+  def initialize(poll:, recipient:, utm: {})
+    @poll, @recipient, @utm = poll, recipient, utm
   end
 
   def links

@@ -5,6 +5,7 @@ module Development::PollsHelper
   def test_poll(stance_data: { red: 3, green: 1, blue: 2 })
     @test_proposal ||= FactoryGirl.create :poll,
       poll_type: 'poll',
+      closing_at: 3.days.from_now,
       poll_option_names: ['red', 'green', 'blue'],
       discussion: test_discussion,
       stance_data: stance_data,
@@ -14,6 +15,7 @@ module Development::PollsHelper
   def test_proposal(stance_data: { agree: 5, abstain: 3, disagree: 2, block: 1 })
     @test_proposal ||= FactoryGirl.create :poll,
       poll_type: 'proposal',
+      closing_at: 3.days.from_now,
       poll_option_names: ['agree', 'disagree', 'abstain', 'block'],
       discussion: test_discussion,
       stance_data: stance_data,

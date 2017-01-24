@@ -69,6 +69,12 @@ class Poll < ActiveRecord::Base
     end
   end
 
+  # creates a hash which has a PollOption as a key, and a list of stance
+  # choices associated with that PollOption as a value
+  def grouped_stance_choices
+    @grouped_stance_choices ||= stance_choices.includes(:poll_option, stance: :participant).to_a.group_by(&:poll_option)
+  end
+
   def update_stance_data
     update_attribute(:stance_data, zeroed_poll_options.merge(
       self.class.connection.select_all(%{
