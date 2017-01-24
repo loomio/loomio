@@ -1,0 +1,6 @@
+.poll-proposal-results
+  - @info.grouped_stance_options.each do |poll_option, stance_choices|
+    %h3= poll_option.name
+    - stance_choices.each do |stance_choice|
+      = stance_choice.stance.participant.name
+      = stance_choice.stance.reason

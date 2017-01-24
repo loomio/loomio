@@ -16,14 +16,14 @@ class DevelopmentController < ApplicationController
 
   def setup_proposal_email
     sign_in patrick
-    test_poll(stance_data: {agree: 5, disagree: 2, abstain: 3, block: 1})
-    poll_email_info
+    poll_email_info(poll: test_proposal)
     render 'poll_mailer/proposal/proposal', layout: false
   end
 
   def setup_proposal_closed_email
     sign_in patrick
-    test_agree
+    test_agree; test_disagree; test_abstain
+    test_proposal.update_stance_data
     poll_email_info
     render 'poll_mailer/proposal/proposal_closed', layout: false
   end

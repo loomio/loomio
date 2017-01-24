@@ -2,7 +2,7 @@
 
   -# NB: discussion dependency
   %h1= link_to @info.poll.title, @info.links[:target]
-  - if @poll.active?
+  - if @info.poll.active?
     %p= t(:"poll_mailer.common.closing_at", timestamp: @info.poll.closing_at)
   - else
     %p= t(:"poll_mailer.common.closed_at", timestamp: @info.poll.closed_at)

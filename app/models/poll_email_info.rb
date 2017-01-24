@@ -6,6 +6,15 @@ class PollEmailInfo
     @poll, @recipient, @utm = poll, recipient, utm
   end
 
+  # creates a hash which has a PollOption as a key, and a list of stance
+  # choices associated with that PollOption as a value
+  def grouped_stance_options
+    @grouped_stance_options ||=
+      @poll.stance_choices
+           .includes(:poll_option, stance: :participant)
+           .to_a.group_by(&:poll_option)
+  end
+
   def links
     {
       unsubscribe: unsubscribe_url,

@@ -20,6 +20,7 @@ class Poll < ActiveRecord::Base
   after_update :remove_poll_options
 
   has_many :stances
+  has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
