@@ -1,4 +1,4 @@
 .poll-common-preview
   %bar_chart{ng-if: "chartType() == 'bar'", stance_data: "poll.stanceData", size: "50"}
   %progress_chart{ng-if: "chartType() == 'progress'", stance_data: "poll.stanceData", goal: "poll.goal()", size: "50"}
-  %pie_chart.poll-common-collapsed__pie-chart{ng-if: "chartType() == 'pie'", votes: "poll.stanceData", diameter: "50"}
+  %poll_proposal_pie_chart{ng-if: "chartType() == 'pie'", stance_data: "poll.stanceData", my_stance: "myStance()"}

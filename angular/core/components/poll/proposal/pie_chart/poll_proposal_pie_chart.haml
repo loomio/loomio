@@ -1,0 +1,6 @@
+.poll-proposal-pie-chart
+  %pie_chart.poll-common-collapsed__pie-chart{votes: "stanceData", diameter: "50"}
+  .poll-proposal-pie-chart__stance-container
+    .poll-proposal-pie-chart__stance{ng-if: "myStance", class: "poll-proposal-pie-chart__stance--{{myStance.pollOption().name}} "}
+    .poll-proposal-pie-chart__stance.poll-proposal-pie-chart__stance--undecided{ng-if: "!myStance"}
+      %i.fa.fa-question
