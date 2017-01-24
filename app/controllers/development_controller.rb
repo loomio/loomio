@@ -1,16 +1,22 @@
 class DevelopmentController < ApplicationController
   include Development::DashboardHelper
   include Development::NintiesMoviesHelper
+  include Development::PollsHelper
   include PrettyUrlHelper
 
   before_filter :ensure_testing_environment
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
 
-  def setup_bar_chart
-    discussion = FactoryGirl.create :discussion, group: test_group
-    @poll = FactoryGirl.build :poll, poll_type: 'poll', discussion: discussion, stance_data: {'red': 2, 'green': 3, 'blue': 4}
-    poll = PollService.create(poll: @poll, actor: emilio)
-    render 'poll_mailer/poll_closing_soon', locals: { poll: @poll }, layout: false
+  def setup_poll_email
+    sign_in patrick
+    test_poll(stance_data: {red: 2, green: 3, blue: 4})
+    render 'poll_mailer/poll/poll', layout: false
+  end
+
+  def setup_proposal_email
+    sign_in patrick
+    test_poll(stance_data: {agree: 5, abstain: 1})
+    render 'poll_mailer/proposal/proposal', layout: false
   end
 
   def index

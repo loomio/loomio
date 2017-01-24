@@ -1,6 +1,5 @@
 class PollMailer < BaseMailer
-  layout 'thread_mailer'
-  helper 'email'
+  helper :email
 
   def poll_create(poll)
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_create(poll)
@@ -26,6 +25,9 @@ class PollMailer < BaseMailer
 
   def send_poll_mail(poll:, recipients:, priority: 2)
     @poll = poll
+    # needs:
+    # target_url ('view it on Loomio')
+    # unsubscribe_url
 
     headers = {
       "Precendence":              :bulk,

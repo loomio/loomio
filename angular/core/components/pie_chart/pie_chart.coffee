@@ -11,14 +11,6 @@ angular.module('loomioApp').directive 'pieChart', ->
     radius = half
     shapes = []
 
-    positionColors =
-      agree: '#00D177'
-      yes: '#00D177'
-      abstain: '#F6A82B'
-      disagree: '#F96168'
-      no: '#F96168'
-      block: '#CE261B'
-
     arcPath = (startAngle, endAngle) ->
       rad = Math.PI / 180
       x1 = half + radius * Math.cos(-startAngle * rad)
@@ -46,12 +38,12 @@ angular.module('loomioApp').directive 'pieChart', ->
           position = sortedPositions()[0][0]
           shapes.push draw.circle($scope.diameter).attr
             'stroke-width': 0
-            fill: positionColors[position]
+            fill: AppConfig.pollColors.proposal[position]
         else
           _.each sortedPositions(), ([position, votes]) ->
             return unless votes > 0
             angle = 360/_.sum($scope.votes)*votes
             shapes.push draw.path(arcPath(start, start + angle)).attr
               'stroke-width': 0
-              fill: positionColors[position]
+              fill: AppConfig.pollColors.proposal[position]
             start += angle

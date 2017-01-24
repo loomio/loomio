@@ -336,7 +336,7 @@ class Ability
     end
 
     can :close, Poll do |poll|
-      poll.open? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
+      poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
     # can :set_communities, Poll do |poll|
@@ -347,13 +347,13 @@ class Ability
 
     can :create, Stance do |stance|
       poll = stance.poll
-      poll.open? &&
+      poll.active? &&
       (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
       # poll.communities.detect { |community| community.includes?(@user) }
     end
 
     can [:create, :update], Outcome do |outcome|
-      !outcome.poll.open? &&
+      !outcome.poll.active? &&
       user.ability.can?(:update, outcome.poll)
     end
 

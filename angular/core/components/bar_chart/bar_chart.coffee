@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
 
     scoreData = ->
       _.take(_.map(_.pairs($scope.stanceData), ([_, score], index) ->
-        { color: AppConfig.pollColors[index], index: index, score: score }), 5)
+        { color: AppConfig.pollColors.poll[index], index: index, score: score }), 5)
 
     scoreMaxValue = ->
       _.max _.map(scoreData(), (data) -> data.score)

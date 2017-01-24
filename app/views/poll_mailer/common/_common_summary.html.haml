@@ -1,0 +1,10 @@
+.poll-common-summary
+
+  -# NB: discussion dependency
+  %h1= link_to @poll.title, discussion_url(@poll.discussion)
+  - if @poll.active?
+    %p= t(:"poll_mailer.closing_at", timestamp: @poll.closing_at)
+  - else
+    %p= t(:"poll_mailer.closed_at", timestamp: @poll.closed_at)
+
+  %p= @poll.details

@@ -11,7 +11,7 @@ angular.module('loomioApp').directive 'pollPollChartPanel', (AppConfig, Records)
       "#{100 * $scope.countFor(option) / max}%"
 
     $scope.colorFor = (index) ->
-      AppConfig.pollColors[index]
+      AppConfig.pollColors.poll[index]
 
     $scope.barTextFor = (option) ->
       "#{option.name} - #{$scope.countFor(option)}".replace(/\s/g, '\u00a0')

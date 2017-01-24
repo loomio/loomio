@@ -1,0 +1,5 @@
+.poll-common-footer
+  = link_to t(:"poll.common.view_on_loomio"), @target_url
+  %span= t(:"poll.common.or")
+  = link_to t(:"poll.common.unsubscribe"), @unsubscribe_url
+  = image_tag "logo.png", alt: "Loomio"

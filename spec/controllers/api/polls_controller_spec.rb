@@ -172,7 +172,7 @@ describe API::PollsController do
       sign_in user
       post :close, id: poll.key
       expect(response.status).to eq 200
-      expect(poll.reload.open?).to eq false
+      expect(poll.reload.active?).to eq false
     end
 
     it 'does not close an already closed poll' do
@@ -185,14 +185,14 @@ describe API::PollsController do
     it 'does not allow visitors to close polls' do
       post :close, id: poll.key
       expect(response.status).to eq 403
-      expect(poll.reload.open?).to eq true
+      expect(poll.reload.active?).to eq true
     end
 
     it 'does not allow members other than the author to close polls' do
       sign_in another_user
       post :close, id: poll.key
       expect(response.status).to eq 403
-      expect(poll.reload.open?).to eq true
+      expect(poll.reload.active?).to eq true
     end
   end
 end

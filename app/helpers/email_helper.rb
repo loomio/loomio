@@ -48,6 +48,25 @@ module EmailHelper
     end
   end
 
+  def proposal_colors
+    Poll::COLORS['proposal']
+  end
+
+  def proposal_color_values
+    proposal_colors.values
+                   .take(4)
+                   .map { |color| color.sub('#', '') }
+                   .join('|')
+  end
+
+  def proposal_sparkline(poll)
+    proposal_colors.keys
+                   .take(4)
+                   .map { |position| poll.stance_data[position.to_s] }
+                   .map(&:to_i)
+                   .join(',')
+  end
+
   def percentage_for(poll, key)
     max = poll.stance_data.values.max
     if max == 0

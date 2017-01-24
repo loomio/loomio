@@ -100,7 +100,7 @@ class Poll < ActiveRecord::Base
     template['chart_type']
   end
 
-  def open?
+  def active?
     closed_at.nil?
   end
 
