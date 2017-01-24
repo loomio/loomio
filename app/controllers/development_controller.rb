@@ -15,7 +15,7 @@ class DevelopmentController < ApplicationController
 
   def setup_proposal_email
     sign_in patrick
-    test_poll(stance_data: {agree: 5, abstain: 1})
+    test_poll(stance_data: {agree: 5, disagree: 2, abstain: 3, block: 1})
     render 'poll_mailer/proposal/proposal', layout: false
   end
 
