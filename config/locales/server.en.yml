@@ -359,3 +359,10 @@ en:
       <strong>The New Loomio is here!</strong> It's faster, prettier, and mobile-ready.
     more_info: More info...
     button_text: Switch to the new Loomio
+
+  poll_mailer:
+    common:
+      closing_at: Closing at %{timestamp}
+      closed_at: Closed at %{timestamp}
+      view_on_loomio: View it on Loomio
+      unsubscribe: Unsubscribe from these emails

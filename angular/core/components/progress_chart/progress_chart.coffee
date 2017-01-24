@@ -16,7 +16,7 @@ angular.module('loomioApp').directive 'progressChart', (AppConfig) ->
       progressHeight = ($scope.size * count()) / $scope.goal
 
       draw.rect($scope.size, progressHeight)
-          .fill(AppConfig.pollColors.check_in))
+          .fill(AppConfig.pollColors.check_in)
           .x(0)
           .y($scope.size - progressHeight)
 

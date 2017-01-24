@@ -10,13 +10,22 @@ class DevelopmentController < ApplicationController
   def setup_poll_email
     sign_in patrick
     test_poll(stance_data: {red: 2, green: 3, blue: 4})
+    poll_email_info
     render 'poll_mailer/poll/poll', layout: false
   end
 
   def setup_proposal_email
     sign_in patrick
     test_poll(stance_data: {agree: 5, disagree: 2, abstain: 3, block: 1})
+    poll_email_info
     render 'poll_mailer/proposal/proposal', layout: false
+  end
+
+  def setup_proposal_closed_email
+    sign_in patrick
+    test_agree
+    poll_email_info
+    render 'poll_mailer/proposal/proposal_closed', layout: false
   end
 
   def index

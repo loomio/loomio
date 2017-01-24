@@ -24,22 +24,17 @@ class PollMailer < BaseMailer
   private
 
   def send_poll_mail(poll:, recipients:, priority: 2)
-    @poll = poll
-    # needs:
-    # target_url ('view it on Loomio')
-    # unsubscribe_url
-
     headers = {
       "Precendence":              :bulk,
       "X-Auto-Response-Suppress": :OOF,
       "Auto-Submitted":           :"auto-generated"
     }
 
-    delay(priority: priority).send_bulk_mail(to: recipients) do |user|
+    delay(priority: priority).send_bulk_mail(to: recipients) do |recipient|
+      @info = PollEmailInfo(poll: poll, recipient: recipient, utm: utm_hash)
       send_single_mail(
         locale:        locale_for(user),
-        to:            user.email,
-        utm_hash:      utm_hash,
+        to:            recipient.email,
         subject_key:   "poll_mailer.#{action_name}_subject",
         subject_params: {
           poll_title:  poll.title,
