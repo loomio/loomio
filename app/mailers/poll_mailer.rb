@@ -1,4 +1,6 @@
-class PollMailer < ActionMailer::Base
+class PollMailer < BaseMailer
+  layout 'thread_mailer'
+  helper 'email'
 
   def poll_create(poll)
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_create(poll)

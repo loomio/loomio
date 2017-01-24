@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
              new_poll new_stance poll_edited]
 
   BULK_MAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
-                       new_discussion new_motion new_vote)
+                       new_discussion new_motion new_vote poll_closing_soon)
 
   NOTIFICATION_KINDS = %w(comment_liked motion_closing_soon comment_replied_to user_mentioned membership_requested
                           membership_request_approved user_added_to_group motion_closed motion_closing_soon

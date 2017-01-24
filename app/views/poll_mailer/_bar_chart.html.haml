@@ -1,0 +1,9 @@
+%table
+  - @poll.stance_data.keys.each_with_index do |key, index|
+    %tr
+      %td= key
+    %tr
+      %td
+        %table
+          %tr
+            %td{width: percentage_for(@poll, key), height: '40px', style: "background-color: #{Poll::COLORS[index]}"}

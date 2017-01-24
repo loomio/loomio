@@ -6,6 +6,13 @@ class DevelopmentController < ApplicationController
   before_filter :ensure_testing_environment
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
 
+  def setup_bar_chart
+    discussion = FactoryGirl.create :discussion, group: test_group
+    @poll = FactoryGirl.build :poll, poll_type: 'poll', discussion: discussion, stance_data: {'red': 2, 'green': 3, 'blue': 4}
+    poll = PollService.create(poll: @poll, actor: emilio)
+    render 'poll_mailer/poll_closing_soon', locals: { poll: @poll }, layout: false
+  end
+
   def index
     @routes = DevelopmentController.action_methods.select do |action|
       action.starts_with? 'setup'

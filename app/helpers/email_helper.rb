@@ -47,4 +47,13 @@ module EmailHelper
       l(time.to_date, format: :for_this_year)
     end
   end
+
+  def percentage_for(poll, key)
+    max = poll.stance_data.values.max
+    if max == 0
+      0
+    else
+      (100 * poll.stance_data[key].to_f / max).to_i
+    end
+  end
 end
