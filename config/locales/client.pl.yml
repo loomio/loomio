@@ -147,7 +147,6 @@ pl:
     heading: Stanowiska
     no_votes_yet: Nikt jeszcze nie głosował tej rekomendacji.
   undecided_panel:
-    show_undecided: Pokaż niezdecydowanych członków
     hide_undecided: Ukryj niezdecydowanych członków
   proposal_pie_chart:
     participation_statement: '{{percentage}}% członków, którzy określili swoje stanowisko ({{number}}/{{total}})'

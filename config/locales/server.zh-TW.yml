@@ -210,7 +210,6 @@ zh-TW:
     help_with_setup: 初始設定協助
     custom_subdomain: 自訂子網域
     analytics_reports: 分析報告
-    data_export: 資料匯出
     contact_us_html: |
       價格是以美元計費，再加上營業稅。需要其他東西？<a href="/contact">讓我們談談！</a>
     custom_subdomain_html: |

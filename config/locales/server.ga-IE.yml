@@ -66,7 +66,9 @@ ga-IE:
       email_not_arrived: Nár bhfuair tú an ríomhphost?
     start_making_decisions: 'Chun tosú ag déanamh cinntí le chéile ar Loomio, cuir baicle ar bun saor in aisce:'
   pricing_page:
+    gift: Saor in aisce
     standard: Caighdeánach
+    plus: Pro
     unlimited_decisions: cinntí gan teorainn
     email_support: tacaíocht trí ríomhphost
   contact_page:

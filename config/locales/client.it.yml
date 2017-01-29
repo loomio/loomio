@@ -164,7 +164,6 @@ it:
   vote_form:
     heading: Dite la vostra
     no_statement: Nessuna dichiarazione
-    statement_over_limit: 'Troppe parole! Descrizioni sintetiche permettono a tutti di cogliere rapidamente come stanno andando le votazioni'
     i_agree: "Sono d'accordo"
     i_agree_details: Sostengo la proposta e voglio che sia implementata.
     i_abstain: Mi astengo
@@ -186,7 +185,6 @@ it:
     change_your_vote: Cambia la tua posizione.
   undecided_panel:
     aria_label: Indecisi
-    show_undecided: Mostra indecisi
     hide_undecided: Nascondi indecisi
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dei votanti ha espresso la propria posizione ({{number}}/{{total}})'
@@ -290,8 +288,6 @@ it:
       archive_group_success: Gruppo disattivato
     group_logo: Logo del gruppo
     new_photo: nuova immagine
-    description: Descrizione del gruppo
-    description_placeholder: "I coordinatori del gruppo possono usare questa area per descrivere l'obiettivo del gruppo, così che tutti sappiano perché sono qui."
     discussions: Discussioni
     discussions_placeholder: La discussione è il luogo dove tutti possono dibattere su un tema e prendere assieme delle decisioni.
     members: Membri

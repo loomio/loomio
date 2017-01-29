@@ -10,7 +10,7 @@ ko:
     notification_volume: 알림 볼륨
     group: 그룹
     groups: 그룹
-    help: 도움
+    help: 도움말
     privacy:
       privacy: 개인정보
       public: 공개
@@ -29,7 +29,7 @@ ko:
     models:
       proposal: 제안
     copy: 복사
-    copied: 클립보드에 붙여넣기
+    copied: 복사됨
     action:
       close: 닫기
       save: 저장
@@ -184,7 +184,6 @@ ko:
     change_your_vote: 나의 선택 변경
   undecided_panel:
     aria_label: 결정하지 않은 멤버들
-    show_undecided: 아직 참여하지 않은 멤버 보기
     hide_undecided: 결정하지 않은 멤버들을 보여주지 않음
   proposal_pie_chart:
     participation_statement: '{{percentage}}%의 회원이 입장을 선택했습니다({{number}}/{{total}})'
@@ -288,7 +287,6 @@ ko:
       archive_group_success: 이 그룹은 현재 사용할수 없습니다.
     group_logo: 그룹 로고
     new_photo: 새로운 사진
-    description: 그룹 설명
     discussions: 토론
     discussions_placeholder: '이 쓰레드는 누구나 토론할 수 있고, 함께 의사결정을 하는 곳입니다.'
     members: 멤버
@@ -552,7 +550,6 @@ ko:
   thread_context:
     aria_label: 주제 컨텍스트
     thread_options: 쓰레드 옵션
-    edit_thread: 편집
     move_thread: 이동
     print_thread: 인쇄
     delete_thread: 삭제
