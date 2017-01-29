@@ -193,7 +193,6 @@ cs:
     change_your_vote: Změnit svůj postoj.
   undecided_panel:
     aria_label: Nerozhodnutí členové
-    show_undecided: Zobrazit nerozhodnuté členy
     hide_undecided: Skrýt nerozhodnuté členy
   proposal_pie_chart:
     participation_statement: '{{percentage}}% členů vyjádřilo svůj postoj ({{number}}/{{total}})'
@@ -275,7 +274,6 @@ cs:
       archive_group_success: Tato skupina byla deaktivována
     group_logo: Logo skupiny
     new_photo: nová fotografie
-    description: Popis skupiny
     discussions: Diskuze
     members: Členové
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
@@ -460,7 +458,6 @@ cs:
   thread_context:
     aria_label: Kontext tématu
     thread_options: Možnosti tématu
-    edit_thread: Upravit
     move_thread: Přesunout
     print_thread: Tisk
     delete_thread: Smazat

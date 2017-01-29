@@ -281,7 +281,6 @@ es:
   vote_form:
     heading: 'Danos tu opinión '
     no_statement: Sin opinión.
-    statement_over_limit: 'Demasiadas palabras! Las frases cortas ayudan a que todos se pongan al día rápidamente.  '
     i_agree: Estoy de acuerdo
     i_agree_details: Estoy de acuerdo con esto y quiero que siga adelante.
     i_abstain: Me abstengo
@@ -303,7 +302,6 @@ es:
     change_your_vote: Cambia tu posición.
   undecided_panel:
     aria_label: 'Miembros indecisos '
-    show_undecided: Mostrar miembros indecisos
     hide_undecided: Ocultar miembros indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% de los miembros ha manifestado su decisión ({{number}}/{{total}})'
@@ -395,14 +393,11 @@ es:
     aria_label: 'Formulario de carga para la foto de portada '
     heading: 'Nueva foto de portada '
     upload_link: Subir nueva foto de portada
-    helptext: '¿Buscando inspiración? hecha un vistazo en <a href="https://unsplash.com/">Unsplash</a>, una galería de hermosas fotos gratis.  '
-    image_size_helptext: El tamaño de imagen ideal es 1400 x 320px
     upload_success: La foto de portada ha sido actualizada con éxito
   logo_photo_form:
     aria_label: Formulario de cambio del logo del grupo
     heading: Nuevo logo del grupo
     upload_link: cargar nuevo logo del grupo
-    image_size_helptext: El tamaño ideal de la imagen es 100 x 100px
     upload_success: El logo ha sido actualizado con éxito
   join_group_button:
     join_group: Unirse al grupo
@@ -449,8 +444,6 @@ es:
     new_photo: 'Nueva foto '
     new_cover_photo: 'Carga una nueva foto de portada '
     new_group_logo: Cargar nuevo logo del grupo
-    description: 'Descripción del grupo '
-    description_placeholder: 'Los coordinadores pueden usar esta área para describir el propósito del grupo, para que todos sepan para que están aquí. '
     discussions: Hilos
     discussions_placeholder: Un hilo es donde todo el mundo puede discutir un tema y tomar decisiones juntos.
     members: 'Miembros '
@@ -516,12 +509,6 @@ es:
     heading: 'Plan Donación '
     body: '<strong>{{name}}</strong> es un grupo a Donación. Si quieres ayuda a que Loomio pueda seguir apoyando grupos como el tuyo, has clic aquí:'
     make_a_contribution: 'Haz una contribución '
-  upgrade_plan_card:
-    heading: ¿Usas Slack.com?
-    body: 'Loomio y Slack funcionan muy bien juntos! Enlázalos.'
-    heading_alt: ¿Quieres un dominio personalizado?
-    body_alt: Haz tu grupo de Loomio fácil de encontrar con tunombre.loomio.org
-    upgrade_plan: Cambia tu plan ahora
   trial_card:
     title: '30 días de prueba '
     choose_plan: Elige tu plan de pago
@@ -869,7 +856,6 @@ es:
     aria_label: Contexto del hilo
     thread_options: Preferencias del hilo
     email_settings: 'Ajustes de correo '
-    edit_thread: Editar
     mute_thread: Silenciar
     move_thread: Mover
     print_thread: 'Imprimir '

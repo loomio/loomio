@@ -6,6 +6,8 @@ ru:
     missed_yesterday:
       subject: Вчера на Loomio
       mark_as_read: Отметить прочитанным
+    proposal_closing_soon:
+      closes_at: Закрывается в
     thread_mailer:
       change_preferences: 'Измените настройки уведомлений:'
       motion_closing_soon: 'Предложение закроется через 24 часа:'

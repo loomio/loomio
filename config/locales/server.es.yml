@@ -219,7 +219,6 @@ es:
     help_with_setup: Ayuda con la configuración inicial
     custom_subdomain: 'Dominio personalizado '
     analytics_reports: 'Reporte analítico '
-    data_export: Exportación de datos
     contact_us_html: >
       Precios en dolares US, más impuestos a la venta donde aplique. ¿Necesitas
       algo más? <a href="/contact">Hablemos</a>

@@ -163,7 +163,6 @@ tr:
   vote_form:
     heading: Söz sahibi ol
     no_statement: Yorum yok.
-    statement_over_limit: 'Çok fazla kelime var! Kısa pozisyon ifadeleri herkesin öneri hakkında çabucak bilgilenmesini sağlar.'
     i_agree: Katılıyorum
     i_agree_details: Ben bunu destekliyorum ve devam etmesini istiyorum.
     i_abstain: Çekimserim
@@ -185,7 +184,6 @@ tr:
     change_your_vote: Konumunu değiştir
   undecided_panel:
     aria_label: Kararsız üyeler
-    show_undecided: Kararsız üyeleri göster
     hide_undecided: Kararsız üyeleri sakla
   proposal_pie_chart:
     participation_statement: 'Üyelerin {{percentage}}% kadarı kendi konumlarını belirtti ({{number}}/{{total}})'
@@ -296,8 +294,6 @@ tr:
       archive_group_success: Bu grup devre dışı bırakıldı
     group_logo: Grup logosu
     new_photo: yeni fotoğraf
-    description: Grup açıklaması
-    description_placeholder: 'Grup koordinatörleri grubun amacını açıklamak için bu alanı kullanabilirler, böylece herkes neden burada olduklarını bilir.'
     discussions: Müzakereler
     discussions_placeholder: 'Konu, herkesin bir başlık hakkında müzakere ederek birlikte kararlar aldığı yerdir.'
     members: Üyeler
@@ -569,7 +565,6 @@ tr:
   thread_context:
     aria_label: Konu içeriği
     thread_options: Konu seçenekleri
-    edit_thread: Düzenle
     move_thread: Taşı
     print_thread: Yazdır
     delete_thread: Sil

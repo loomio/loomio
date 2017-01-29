@@ -1,7 +1,123 @@
 sv:
   navigation:
+    blog: Blog
+    resources: Resurser
+    resources_dropdown: Resursers rullgardinsmeny
+    resources_submenu: Resurser undermeny
+    header_menu_label: Startmeny
+    case_studies: Fallstudier
     help: Hjälp
+    guides_and_tips: Beskrivningar och tips
+    developers: Konstruktörer
+    coop_handbook: Handbok för kooperativ
+    about: Om oss
+    pricing: Priser
+    contact: Kontakt
     login: Logga in
+    start_group: Startgrupp
+    home: Hem
+    terms_of_service: Servicevillkor
     privacy: Integritet
+    translation: Översättning
+    newsletter: Nyhetsbrev
+    twitter: Twitter
+    facebook: Facebook
+    trademark_statement: © 2016 Loomio Cooperative Limited. Eftertryck förbjudes. “Loomio” är ett registrerat varumärke för Loomio Cooperative Limited.
+  marketing:
+    hero:
+      dilemma_html: Att fatta bra beslut med din grupp behöver inte vara svårt.
+      dilemma_image_alt: Missbelåtna gruppmedlemmar samlade runt ett stökigt bord i ett försök att samarbeta.
+      solution: Med Loomio kan du fatta beslut utan en massa meddelanden och möten.
+      solution_image_alt: Glada gruppmedlemmar samlade kring en glödlampa och hållande i utrustningar och anslutna med sammanvävda trådar
+      arrow_alt: Pil som pekar från svårigheter till lösningar.
+    macbook_android_image_alt: Loomio på persondator och Android enheter.
+    make_decisions_html: 'Loomio är en plats för din grupp att <strong>ta beslut tillsammans</strong>.'
+    gather:
+      heading: Samling
+      explanation: 'Samlar rätt personer med rätt information. Tillgänglig, lätt att använda, anpassningsbar, med många möjligheter för integritet och säkerhet.'
+      image_alt: En grupp samlad kring ett problem.
+    discuss:
+      heading: Diskussion
+      explanation: 'Har klara aktuella samtal. Håller sig till ämnet, behandlar de rätta frågorna och sorterar bort det oväsentliga. Utarbetat för konstruktivt samarbete.'
+      image_alt: Grupp som delar information och framför åsikter med färgade pratbubblor.
+    propose:
+      heading: Förslag
+      explanation: Visuella sammanfatningar gör det lätt att snabbt förstå var var och en befinner sig och varför. Eller ta direkt tag i frågeställningen och sätt igång att skapa förståelse hos alla.
+      image_alt: 'Grupp samlad kring en tårtbitsgraf, som visar läget med färgade pratbubblor.'
+    decide_act:
+      heading: Besluta och agera
+      explanation: 'Ernå ett klart resultat för varje förslag, inom den tidsram du satt. Var och en blir blir informerad om resultaten, så att du kan fortsätta och utverka planer tillsammans.'
+      image_alt: Gruppen signalerar start med armarna i vädret.
+    try_it_now: Försök nu
+    start_free_group: Starta en fri grupp
+    fast_inclusive_effective: 'Snabbt, inkluderande och effektivt blir i fortsättningen det normala.'
+    debt_resistance_uk:
+      heading: Produktiv vid möten och däremellan.
+      quote: >
+        Mellan möten kommunicerade vi med e-post, men mycket sällan kom vi till
+        ett beslut. Med Loomio får vi möjlighet att ha diskussioner samt fatta
+        beslut. Om du har många frågor att diskutera vid ett möte kan du säga "Vi
+        kan besluta detta med Loomio i stället". Detta gör möten där alla
+        deltager mer effektiva.
+      link_text: Läs mer hur en kommunal församling i England arbetar mellan möten för att skapa en mer demokratisk organisation...
+    pathways:
+      heading: Öka personalens engagemang och tillfredsställelse
+      quote: >
+        Loomio ändrar på ett grundläggande sätt personalens tillfredsställelse
+        och engagemang. Det verkar på ett naturligt sätt utveckla gruppen och
+        i verkligheten är det gruppen själv som åstadkommit detta.Vad kan du mer
+        begära som gruppledare?
+      link_text: Läs mer hur en stor organisation i Nya Zeeland använde Loomio för att engagera personalen i beslutfattandet..
+    welsh_government:
+      heading: Inbegrip medborgare och andra intressenter i överläggningar
+      quote: >
+        Deltagarna talade med såväl oss som med varandra. De använde Loomio för
+        att tala om vilka problem de hade upplevt och vad de önskade att den
+        Welshiska regeringen skulle göra åt detta. Genom att använda Loomio ökade
+        vår kommittés möjligheter att förbättra tillfredsställelsen och
+        effektiviteten i hela arbetet.
+      link_text: Läs mer hur kommunrådet för Wales använde Loomio för att rådslå med brukare och leverantörer...
+    ouishare:
+      heading: Skala upp en samarbetande gemenskap globalt
+    urban_adventures:
+      heading: Distansbaserat samarbete för distribuerade team
+    features:
+      choose_participants_heading: Välj vem som behöver bestämma vad.
+      deliberation_heading: Gör bättre än att majoriteten styr.
+      iterate_heading: Iterera förslag för att utveckla ditt tänkande.
+      deadlines_heading: Deadlines driver momentum.
+      fewer_meetings_heading: Var produktiv utan möten.
+      fewer_meetings_explanation: 'Kontinuerliga konversationer utan att vara i samma rum. Få mer gjort online, så att du kan använda värdefull mötestid för vad som behöver hända ansikte mot ansikte.'
+      notifications_heading: Notifikationer håller dig informerad.
+      archive_heading: Automatiskt arkiv för beslut.
+      email_or_mobile_heading: Delta genom e-post eller mobil.
+      accessible_heading: Tillgängligt och Flerspråkigt.
+    press:
+      bbc: Loomio siktar på att vara Facebook för den medborgerliga webben.
+    about_us:
+      heading: Om oss
+      image_alt: Loomios team - april 2016
+  about:
+    heading: Om oss
+    story:
+      heading: Berättelse
+    people:
+      heading: Människor
+    advisors:
+      heading: Rådgivare
+    purpose_and_values:
+      heading: 'Syfte & Värderingar'
+      transparent_heading: Transparens
+    postal_address: 'Postadress:'
+    physical_address: 'Fysisk adress:'
   titles:
+    new_tab: Öppnas i en ny flik
+    start_group: Starta grupp-formulär
+    about_us: Om oss-sida
+    pricing: Sida för prissättning
+    contact: Kontaktformulär
     sign_in: Inloggningsformulär
+    terms_of_service: Sida för Användarvillkor
+    privacy: Sida om Integritet och Sekretess
+    translation: Översättningsguide
+    home: Hemsida

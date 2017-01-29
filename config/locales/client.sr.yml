@@ -249,7 +249,6 @@ sr:
   vote_form:
     heading: Recite šta imate
     no_statement: Nema izjava.
-    statement_over_limit: 'Previše reči! Kraći stav omogućava svima da brzo shvate predlog.'
     i_agree: Slažem se
     i_agree_details: Podržavam ovo i želim da se nastavi.
     i_abstain: Suzdržan
@@ -271,7 +270,6 @@ sr:
     change_your_vote: Promeni svoju poziciju.
   undecided_panel:
     aria_label: Neodlučni članovi
-    show_undecided: Prikaži neodlučne članove
     hide_undecided: Sakrij neodlučne članove
   proposal_pie_chart:
     participation_statement: '{{percentage}}% članova je odredilo svoju poziciju ({{number}}/{{total}})'
@@ -393,8 +391,6 @@ sr:
       archive_group_success: Ova grupa je bila deaktivirana
     group_logo: Logo grupe
     new_photo: nova fotografija
-    description: Opis grupe
-    description_placeholder: 'Koordinatori grupa mogu koristiti ovu oblast da opišu svrhu grupe, tako da svako zna zašto je tu.'
     discussions: Niti
     discussions_placeholder: Nit je mesto gde svako može diskutovati o temi i donositi odluke sa drugima.
     members: Članovi
@@ -694,7 +690,6 @@ sr:
     aria_label: Kontekst niti
     thread_options: Opcije niti
     email_settings: Opcije ePoruka
-    edit_thread: Izmene
     move_thread: Premesti
     print_thread: Štampa
     delete_thread: Obriši

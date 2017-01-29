@@ -114,8 +114,6 @@ fi:
     threads_from:
       today: Tänään
       yesterday: Eilen
-  thread_context:
-    edit_thread: Muokkaa
   delete_comment_dialog:
     title: Poista kommentti
     confirm: Poista kommentti

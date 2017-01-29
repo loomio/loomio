@@ -183,7 +183,6 @@ sr-RS:
       empty:
         membership_is_invitation_only: Да бисте се прикључили овој групи морате бити позвани од стране неког члана.
         membership_is_invitation_by_admin_only: Да бисте се придружили овој групи морате бити позвани од стране координатора.
-    description: Опис групе
     discussions: Низови
     invite_people: Позови људе
     options_label: Опције

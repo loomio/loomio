@@ -1,5 +1,11 @@
 sv:
+  validate:
+    motion:
+      must_close_in_future: Förslaget måste stängas i framtiden.
   email:
+    reset_password:
+      link_text: Återställ ditt lösenord
+    custom: '%{text}'
     group_email:
       intro: '%{who} gjorde ett upprop till  %{group}:'
     by_who: 'av %{person}'
@@ -74,6 +80,7 @@ sv:
       header: 'Du är nästan klar! Kolla din email.'
   contact_page:
     contact_us: Kontakta oss
+    contact_form: Kontaktformulär
     labels:
       name: Ditt namn
       email: Din emailadress
@@ -81,3 +88,5 @@ sv:
       submit: Skicka meddelande
     messages:
       email_html: "Fyll i detta formulär, eller skicka ett email till <a href='mailto:%{email}'>%{email}</a>"
+  beta_banner:
+    more_info: Mer info...
