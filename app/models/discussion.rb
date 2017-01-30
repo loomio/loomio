@@ -14,7 +14,12 @@ class Discussion < ActiveRecord::Base
                          motion_outcome_created
                          motion_outcome_updated
                          discussion_edited
-                         discussion_moved]
+                         discussion_moved
+                         new_poll
+                         new_stance
+                         new_outcome
+                         poll_closed
+                       ]
 
   include ReadableUnguessableUrls
   include Translatable

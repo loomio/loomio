@@ -52,6 +52,10 @@ class Queries::UsersToEmailQuery
     poll.participants
   end
 
+  def self.poll_closed(poll)
+    Array(poll.author)
+  end
+
   def self.poll_closing_soon(poll)
     poll.watchers.without(poll.participants)
   end

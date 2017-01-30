@@ -40,6 +40,7 @@ class PollService
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
 
     EventBus.broadcast('poll_close', poll, actor)
+    Events::PollClosed.publish!(poll, actor)
   end
 
   def self.update(poll:, params:, actor:)
@@ -50,7 +51,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll, actor)
+    Events::PollEdited.publish!(poll.versions.last, actor)
   end
 
   def self.convert(motions:)

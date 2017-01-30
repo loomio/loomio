@@ -37,7 +37,6 @@ EventBus.configure do |config|
     end
   end
 
-
   # send individual emails after user events
   config.listen('membership_request_approved_event') { |event, user| UserMailer.delay(priority: 2).group_membership_approved(user, event.eventable.group) }
   config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
@@ -162,6 +161,7 @@ EventBus.configure do |config|
   config.listen('poll_create')       { |poll|    PollMailer.poll_create       'poll_create',       poll }
   config.listen('poll_update')       { |poll|    PollMailer.poll_update       'poll_update',       poll }
   config.listen('poll_closing_soon') { |poll|    PollMailer.poll_closing_soon 'poll_closing_soon', poll }
+  config.listen('poll_closed')       { |poll|    PollMailer.poll_closed       'poll_closed',       poll }
   config.listen('outcome_create')    { |outcome| PollMailer.outcome_create    'outcome_create',    outcome }
   config.listen('outcome_update')    { |outcome| PollMailer.outcome_update    'outcome_update',    outcome }
 

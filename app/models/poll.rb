@@ -31,6 +31,8 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_did_not_votes
 
+  has_paper_trail only: [:title, :details, :closing_at]
+
   define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
   # has_many :poll_communities
   # has_many :communities, through: :poll_communities
