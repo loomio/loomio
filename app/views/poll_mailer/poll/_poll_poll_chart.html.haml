@@ -1,7 +1,7 @@
 %table{style: "width: 100%"}
   - @info.poll.stance_data.keys.each_with_index do |key, index|
     %tr
-      %td= key
+      %td= "#{key} - #{@info.poll.stance_data[key]}"
     %tr
       %td
         %table{style: "width: #{percentage_for(@info.poll, key)}%"}

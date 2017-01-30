@@ -91,6 +91,10 @@ class Poll < ActiveRecord::Base
     template['material_icon']
   end
 
+  def translate_option_name
+    template['translate_option_name']
+  end
+
   def can_add_options
     template['can_add_options']
   end
@@ -118,7 +122,7 @@ class Poll < ActiveRecord::Base
   def poll_option_names=(names)
     names    = Array(names)
     existing = Array(poll_options.pluck(:name))
-    (names - existing).each { |name| poll_options.build(name: name) }
+    (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: priority) }
     @poll_option_removed_names = (existing - names)
   end
 

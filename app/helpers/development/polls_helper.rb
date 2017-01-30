@@ -3,13 +3,24 @@ module Development::PollsHelper
   private
 
   def test_poll(stance_data: { red: 3, green: 1, blue: 2 })
-    @test_proposal ||= FactoryGirl.create :poll,
+    @test_poll ||= FactoryGirl.create :poll,
       poll_type: 'poll',
       closing_at: 3.days.from_now,
-      poll_option_names: ['red', 'green', 'blue'],
+      poll_option_names: ['grape', 'apple', 'banana'],
       discussion: test_discussion,
       stance_data: stance_data,
       author: patrick
+  end
+
+  def test_poll_with_stances
+    test_poll.tap do |poll|
+      grape = poll.poll_options.find_by(name: 'grape')
+      banana = poll.poll_options.find_by(name: 'banana')
+      poll.stances.create(participant: patrick,  reason: "I am patrick", stance_choices_attributes: [{ poll_option_id: grape.id }])
+      poll.stances.create(participant: jennifer, stance_choices_attributes: [{ poll_option_id: banana.id }])
+      poll.stances.create(participant: emilio,   reason: "I am Emilio!", stance_choices_attributes: [{ poll_option_id: grape.id }, { poll_option_id: banana.id }])
+      poll.update_stance_data
+    end
   end
 
   def test_proposal(stance_data: { agree: 5, abstain: 3, disagree: 2, block: 1 })
@@ -52,7 +63,7 @@ module Development::PollsHelper
       }]
   end
 
-  def poll_email_info(poll: test_poll, recipient: patrick, utm: {})
+  def poll_email_info(poll:, recipient: patrick, utm: {})
     @info ||= PollEmailInfo.new(poll: poll, recipient: recipient, utm: utm)
   end
 end

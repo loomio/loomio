@@ -368,3 +368,8 @@ en:
       unsubscribe: Unsubscribe from these emails
       results: Results
       responses: Responses
+    proposal:
+      agree: Agree
+      disagree: Disagree
+      abstain: Abstain
+      block: Block

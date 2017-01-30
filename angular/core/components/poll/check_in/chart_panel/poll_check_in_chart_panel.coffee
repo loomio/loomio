@@ -5,4 +5,4 @@ angular.module('loomioApp').directive 'pollCheckInChartPanel', (AppConfig, Recor
     $scope.percentComplete = ->
       "#{100 * $scope.poll.stancesCount / $scope.poll.goal()}%"
 
-    $scope.completeColor = AppConfig.pollColors.check_in
+    $scope.completeColor = AppConfig.pollColors.check_in[0]

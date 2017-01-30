@@ -48,23 +48,26 @@ module EmailHelper
     end
   end
 
-  def proposal_colors
-    Poll::COLORS['proposal']
+  def google_pie_chart_url(poll)
+    sparkline = proposal_sparkline(poll)
+    colors = poll_color_values(poll.poll_type).map { |color| color.sub('#', '') }.join('|')
+    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
   end
 
-  def proposal_color_values
-    proposal_colors.values
-                   .take(4)
-                   .map { |color| color.sub('#', '') }
-                   .join('|')
+  def poll_color_for(poll_type, priority)
+    poll_color_values(poll_type).fetch(priority, Poll::COLORS['missing'])
+  end
+
+  def poll_color_values(poll_type)
+    Poll::COLORS.fetch(poll_type, [])
   end
 
   def proposal_sparkline(poll)
-    proposal_colors.keys
-                   .take(4)
-                   .map { |position| poll.stance_data[position.to_s] }
-                   .map(&:to_i)
-                   .join(',')
+    poll.poll_options
+        .order(:priority)
+        .pluck(:name)
+        .map { |name| poll.stance_data[name] }
+        .join(',')
   end
 
   def percentage_for(poll, key)

@@ -8,10 +8,10 @@ poll:
   - "#C19A93"
   - "#F68AC6"
 proposal:
-  agree:    "#00D177"
-  abstain:  "#F6A82B"
-  disagree: "#F96168"
-  block:    "#CE261B"
-  yes:      "#00D177" # these are legacy values for agree / disagree
-  no:       "#F96168"
-check_in: "#70C9F8"
+  - "#00D177"
+  - "#F6A82B"
+  - "#F96168"
+  - "#CE261B"
+check_in:
+  - "#70C9F8"
+missing: "#FF0000"

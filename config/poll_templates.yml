@@ -1,13 +1,9 @@
 proposal:
   poll_options_attributes:
     - name:              "agree"
-      priority:          0
     - name:              "abstain"
-      priority:          1
     - name:              "disagree"
-      priority:          2
     - name:              "block"
-      priority:          3
   option_icon_type:      svg # could be avatar or none
   translate_option_name: true
   chart_type:            pie
