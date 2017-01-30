@@ -1,0 +1,6 @@
+.thread-item{ng_controller: "NewOutcomeItemController"}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: "event.actor()", size: "small"}
+    .media-body
+      NEW OUTCOME: {{outcome.statement}}

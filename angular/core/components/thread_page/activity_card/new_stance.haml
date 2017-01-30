@@ -1,0 +1,6 @@
+.thread-item{ng-controller: "NewStanceItemController"}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{user: "event.actor()", size: "small"}
+    .media-body
+      A NEW STANCE: {{stance.pollOption().name}} {{stance.reason}}

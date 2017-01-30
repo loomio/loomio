@@ -1456,3 +1456,6 @@ en:
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
+
+  poll_thread_item:
+    author_created_poll: 'started a {{type}}: <span>{{title}}</span>'

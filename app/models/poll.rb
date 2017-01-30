@@ -7,7 +7,8 @@ class Poll < ActiveRecord::Base
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
-  has_one    :outcome
+  has_many   :outcomes
+  has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
   belongs_to :motion
   belongs_to :discussion
