@@ -63,11 +63,7 @@ module EmailHelper
   end
 
   def proposal_sparkline(poll)
-    poll.poll_options
-        .order(:priority)
-        .pluck(:name)
-        .map { |name| poll.stance_data[name] }
-        .join(',')
+    poll.stance_counts.join(',')
   end
 
   def percentage_for(poll, key)

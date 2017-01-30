@@ -1,10 +1,10 @@
-.poll-proposal-pie-chart {
+.poll-proposal-chart-preview {
   width: 50px;
   height: 50px;
   position: relative;
 }
 
-.poll-proposal-pie-chart__stance-container {
+.poll-proposal-chart-preview__stance-container {
   width: 23px;
   height: 23px;
   position: absolute;
@@ -15,30 +15,30 @@
   box-shadow: 0 2px 1px rgba(0,0,0,.15);
 }
 
-.poll-proposal-pie-chart__stance {
+.poll-proposal-chart-preview__stance {
   background-repeat: no-repeat;
   height: 21px;
   width: 21px;
   margin: 1px 0 0 1px;
 }
 
-.poll-proposal-pie-chart__stance--agree {
+.poll-proposal-chart-preview__stance--agree {
   background-image: url(/img/agree.svg);
 }
 
-.poll-proposal-pie-chart__stance--disagree {
+.poll-proposal-chart-preview__stance--disagree {
   background-image: url(/img/disagree.svg);
 }
 
-.poll-proposal-pie-chart__stance--block {
+.poll-proposal-chart-preview__stance--block {
   background-image: url(/img/block.svg);
 }
 
-.poll-proposal-pie-chart__stance--abstain {
+.poll-proposal-chart-preview__stance--abstain {
   background-image: url(/img/abstain.svg);
 }
 
-.poll-proposal-pie-chart__stance--undecided {
+.poll-proposal-chart-preview__stance--undecided {
   font-size: 16px;
   margin-top: 0px;
   text-align: center;

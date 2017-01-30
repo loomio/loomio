@@ -85,6 +85,11 @@ class Poll < ActiveRecord::Base
         WHERE stances.latest = true AND stances.poll_id = #{self.id}
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
+
+      update_attribute(:stance_counts,
+        poll_options.order(:priority)
+                    .pluck(:name)
+                    .map { |name| stance_data[name] })
   end
 
   def material_icon
