@@ -1,0 +1,10 @@
+.thread-item{ng-controller: "PollEditedItemController"}
+  .thread-item__header.media
+    .media-left
+      %user_avatar{ng-if: "event.actor()", user: "event.actor()", size: "small"}
+    .media-body
+      %h3.thread-item__title{id: "event-{{event.id}}"}
+        %strong> {{ event.actor().name }}
+        %span{translate: "poll_thread_item.poll_{{poll.pollType}}_edited"}
+        %span
+          %span {{ poll.title }}
