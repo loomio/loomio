@@ -18,7 +18,7 @@ class API::PollsController < API::RestfulController
   end
 
   def close
-    service.close(poll: load_and_authorize(:poll, :close), actor: current_user)
+    @event = service.close(poll: load_and_authorize(:poll, :close), actor: current_user)
     respond_with_resource
   end
 

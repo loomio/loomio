@@ -54,10 +54,6 @@ module EmailHelper
     URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
   end
 
-  def poll_color_for(poll_type, priority)
-    poll_color_values(poll_type).fetch(priority, Poll::COLORS['missing'])
-  end
-
   def poll_color_values(poll_type)
     Poll::COLORS.fetch(poll_type, [])
   end

@@ -3,4 +3,8 @@
     .media-left
       %user_avatar{user: "event.actor()", size: "small"}
     .media-body
-      A NEW STANCE: {{stance.pollOption().name}} {{stance.reason}}
+      %h3.thread-item__title{id: "event-{{event.id}}"}
+        %strong> {{event.actor().name }}
+        %span{translate: "poll_thread_item.new_{{stance.poll().pollType}}_stance"}>
+        %poll_common_stance_choice{ng-repeat: "choice in stance.stanceChoices()", stance_choice: "choice"}
+      %div {{ stance.reason }}

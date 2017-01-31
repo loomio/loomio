@@ -1343,9 +1343,12 @@ en:
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close this early?
+    close_proposal: Close proposal
     close_poll: Close poll
-    messages:
-      success: Poll closed
+    close_check_in: Close check-in
+    proposal_closed: Proposal closed
+    poll_closed: Poll closed
+    check_in_closed: Check-in closed
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1458,4 +1461,16 @@ en:
     stance_updated: Vote updated
 
   poll_thread_item:
-    author_created_poll: 'started a {{type}}: <span>{{title}}</span>'
+    new_proposal_poll: 'started a new proposal:'
+    new_poll_poll: 'started a new poll:'
+    new_check_in_poll: 'started a check-in:'
+    new_proposal_stance: '{{author}} voted:'
+    new_poll_stance: '{{author}} chose:'
+    new_check_in_stance: '{{author}} checked in:'
+    new_outcome: 'set an outcome:'
+    proposal_poll_closed: 'A proposal has closed:'
+    poll_poll_closed: 'A poll has closed:'
+    check_in_poll_closed: 'A check-in round has ended:'
+    proposal_poll_closed_by_user: 'has closed a proposal:'
+    poll_poll_closed_by_user: 'has closed a poll:'
+    check_in_poll_closed_by_user: 'has ended a check-in round:'
