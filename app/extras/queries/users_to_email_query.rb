@@ -52,7 +52,7 @@ class Queries::UsersToEmailQuery
     poll.participants
   end
 
-  def self.poll_closed(poll)
+  def self.poll_expired(poll)
     Array(poll.author)
   end
 

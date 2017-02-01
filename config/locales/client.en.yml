@@ -1461,18 +1461,26 @@ en:
     stance_updated: Vote updated
 
   poll_thread_item:
-    new_proposal_poll: 'started a new proposal:'
-    new_poll_poll: 'started a new poll:'
-    new_check_in_poll: 'started a check-in:'
-    new_proposal_stance: '{{author}} voted:'
-    new_poll_stance: '{{author}} voted:'
-    new_check_in_stance: '{{author}} checked in:'
-    new_outcome: 'set an outcome:'
-    poll_poll_edited: '{{author}} edited the poll:'
-    poll_proposal_edited: '{{author}} edited the proposal:'
-    proposal_poll_closed: 'A proposal has closed:'
-    poll_poll_closed: 'A poll has closed:'
-    check_in_poll_closed: 'A check-in round has ended:'
-    proposal_poll_closed_by_user: 'has closed a proposal:'
-    poll_poll_closed_by_user: 'has closed a poll:'
-    check_in_poll_closed_by_user: 'has ended a check-in round:'
+    # poll_poll
+    new_poll_poll: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'
+    new_poll_stance: '<strong>{{author}}</strong> voted:'
+    poll_poll_edited: '<strong>{{author}}</strong> edited the poll: <span>{{title}}</span>'
+    poll_poll_expired: 'Poll closed: <span>{{title}}</span>'
+    poll_poll_closed_by_user: '<strong>{{author}}</strong> closed the poll: <span>{{title}}</span>'
+
+    # poll_proposal
+    new_poll_proposal: '<strong>{{author}}</strong> started a proposal: <span>{{title}}</span>'
+    new_proposal_stance: '<strong>{{author}}</strong> voted:'
+    poll_proposal_edited: '<strong>{{author}}</strong> edited the proposal: <span>{{title}}</span>'
+    poll_proposal_expired: 'Proposal closed: <span>{{title}}</span>'
+    poll_proposal_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
+
+    # poll_check_in
+    new_poll_check_in: '<strong>{{author}}</strong> started a check-in: <span>{{title}}</span>'
+    new_check_in_stance: '<strong>{{author}}</strong> checked in:'
+    poll_check_in_edited: '<strong>{{author}}</strong> edited the check-in: <span>{{title}}</span>'
+    poll_check_in_expired: 'Check-in round finished: <span>{{title}}</span>'
+    poll_check_in_closed_by_user: '<strong>{{author}}</strong> closed the check-in round: <span>{{title}}</span>'
+
+    # outcome
+    new_outcome: '<strong>{{author}}</strong> shared an outcome:'

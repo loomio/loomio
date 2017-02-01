@@ -4,7 +4,6 @@
       %user_avatar{user: "event.actor()", size: "small"}
     .media-body
       %h3.thread-item__title{id: "event-{{event.id}}"}
-        %strong> {{event.actor().name }}
-        %span{translate: "poll_thread_item.new_{{stance.poll().pollType}}_stance"}>
+        %span{translate: "poll_thread_item.new_{{stance.poll().pollType}}_stance", translate-values: "{author: event.actor().name}"}>
         %poll_common_stance_choice{ng-repeat: "choice in stance.stanceChoices()", stance_choice: "choice"}
-      %div {{ stance.reason }}
+      %p {{ stance.reason }}

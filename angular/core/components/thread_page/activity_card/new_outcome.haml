@@ -4,6 +4,5 @@
       %user_avatar{user: "event.actor()", size: "small"}
     .media-body
       %h3.thread-item__title{id: "event-{{event.id}}"}
-        %strong> {{ event.actor().name }}
-        %span{translate: "poll_thread_item.new_outcome"}
-      %div {{ outcome.statement }}
+        %span{translate: "poll_thread_item.new_outcome", translate-values: "{author: event.actor().name}"}>
+      %p {{ outcome.statement }}

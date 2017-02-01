@@ -5,7 +5,7 @@ class Discussion < ActiveRecord::Base
                           motion_closed
                           motion_closed_by_user
                           motion_outcome_created]
-                          
+
   THREAD_ITEM_KINDS = %w[new_comment
                          new_motion
                          new_vote
@@ -20,7 +20,8 @@ class Discussion < ActiveRecord::Base
                          poll_edited
                          new_stance
                          new_outcome
-                         poll_closed
+                         poll_expired
+                         poll_closed_by_user
                        ]
 
   include ReadableUnguessableUrls

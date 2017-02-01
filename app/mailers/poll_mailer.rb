@@ -14,8 +14,8 @@ class PollMailer < BaseMailer
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closing_soon(poll)
   end
 
-  def poll_closed(poll)
-    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closed(poll)
+  def poll_expired(poll)
+    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_expired(poll)
   end
 
   def outcome_create(outcome)

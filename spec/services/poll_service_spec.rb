@@ -215,10 +215,10 @@ describe PollService do
     end
   end
 
-  describe 'close' do
+  describe 'close', focus: true do
     it 'closes a poll' do
       PollService.create(poll: new_poll, actor: user)
-      PollService.close(poll: new_poll)
+      PollService.close(poll: new_poll, actor: user)
       expect(new_poll.reload.closed_at).to be_present
     end
 
@@ -226,7 +226,7 @@ describe PollService do
       PollService.create(poll: new_poll, actor: user)
       new_stance = build(:stance, poll: new_poll)
       expect(user.ability.can?(:create, new_stance)).to eq true
-      PollService.close(poll: new_poll)
+      PollService.close(poll: new_poll, actor: user)
       expect(user.ability.can?(:create, new_stance)).to eq false
     end
 
@@ -236,5 +236,26 @@ describe PollService do
     #   group.add_member! another_user
     #   expect(new_poll.reload.communities.first.includes?(another_user)).to eq false
     # end
+  end
+
+  describe 'expire_lapsed_polls', focus: true do
+    it 'expires a lapsed poll' do
+      PollService.create(poll: new_poll, actor: user)
+      new_poll.update_attribute(:closing_at,1.day.ago)
+      PollService.expire_lapsed_polls
+      expect(new_poll.reload.closed_at).to be_present
+    end
+
+    it 'does not expire active poll' do
+      PollService.create(poll: new_poll, actor: user)
+      PollService.expire_lapsed_polls
+      expect(new_poll.reload.closed_at).to_not be_present
+    end
+
+    it 'does not touch closed polls' do
+      PollService.create(poll: new_poll, actor: user)
+      new_poll.update_attributes(closing_at: 1.day.ago, closed_at: 1.day.ago)
+      expect { PollService.expire_lapsed_polls }.to_not change { new_poll.reload.closed_at }
+    end
   end
 end

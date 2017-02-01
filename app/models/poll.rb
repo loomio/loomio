@@ -57,12 +57,15 @@ class Poll < ActiveRecord::Base
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
+  scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
   # validates :communities, length: { minimum: 1 }
 
   validate :poll_options_are_valid
+
+  alias_method :user, :author
 
   def watchers
     if discussion.present?

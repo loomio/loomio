@@ -28,9 +28,23 @@ class PollService
   #   EventBus.broadcast('poll_set_communities', poll, actor)
   # end
 
-  def self.close(poll:, actor: nil)
-    actor.ability.authorize!(:close, poll) if actor
 
+  def self.close(poll:, actor:)
+    actor.ability.authorize!(:close, poll)
+    do_closing_work(poll: poll)
+    EventBus.broadcast('poll_close', poll, actor)
+    Events::PollClosedByUser.publish!(poll, actor)
+  end
+
+  def self.expire_lapsed_polls
+    Poll.lapsed_but_not_closed.each do |poll|
+      do_closing_work(poll: poll)
+      EventBus.broadcast('poll_expire', poll)
+      Events::PollExpired.publish!(poll)
+    end
+  end
+
+  def self.do_closing_work(poll:)
     poll.update(closed_at: Time.now)
     # poll.poll_communities.for(:loomio_group).each do |poll_community|
     #   poll_community.update(community: poll_community.community.to_user_community)
@@ -38,10 +52,8 @@ class PollService
     poll.poll_did_not_votes.delete_all
     non_voters = poll.group.members - poll.participants
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
-
-    EventBus.broadcast('poll_close', poll, actor)
-    Events::PollClosed.publish!(poll, actor)
   end
+
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll

@@ -158,12 +158,12 @@ EventBus.configure do |config|
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
   # handle emails for poll events
-  config.listen('poll_create')       { |poll|    PollMailer.poll_create       'poll_create',       poll }
-  config.listen('poll_update')       { |poll|    PollMailer.poll_update       'poll_update',       poll }
-  config.listen('poll_closing_soon') { |poll|    PollMailer.poll_closing_soon 'poll_closing_soon', poll }
-  config.listen('poll_closed')       { |poll|    PollMailer.poll_closed       'poll_closed',       poll }
-  config.listen('outcome_create')    { |outcome| PollMailer.outcome_create    'outcome_create',    outcome }
-  config.listen('outcome_update')    { |outcome| PollMailer.outcome_update    'outcome_update',    outcome }
+  config.listen('poll_create')       { |poll|    PollMailer.poll_create       poll }
+  config.listen('poll_update')       { |poll|    PollMailer.poll_update       poll }
+  config.listen('poll_closing_soon') { |poll|    PollMailer.poll_closing_soon poll }
+  config.listen('poll_expire')       { |poll|    PollMailer.poll_expired      poll }
+  config.listen('outcome_create')    { |outcome| PollMailer.outcome_create    outcome }
+  config.listen('outcome_update')    { |outcome| PollMailer.outcome_update    outcome }
 
   config.listen('stance_create')     { |stance| stance.poll.update_stance_data }
 end

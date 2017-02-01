@@ -235,6 +235,51 @@ module Development::NintiesMoviesHelper
     @test_empty_draft
   end
 
+  def setup_poll_activity_items_work
+    # create poll
+    options = {poll: %w[apple turnip peach],
+               check_in: %w[yip nup],
+               proposal: %w[agree disagree abstain block]}
+
+    Poll::TEMPLATES.keys.each do |poll_type|
+      poll = Poll.new(poll_type: poll_type,
+                      title: poll_type,
+                      details: 'fine print',
+                      poll_option_names: options[poll_type.to_sym],
+                      discussion: test_discussion)
+      PollService.create(poll: poll, actor: patrick)
+
+      # edit the poll
+      PollService.update(poll: poll, params: {title: 'choose!'}, actor: patrick)
+
+      # vote on the poll
+      stance = Stance.new(poll: poll,
+                          stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}],
+                          reason: 'democracy is in my shoes')
+      StanceService.create(stance: stance, actor: patrick)
+
+      # close the poll
+      PollService.close(poll: poll, actor: patrick)
+
+      # set an outcome
+      outcome = Outcome.new(poll: poll, statement: 'We all voted')
+      OutcomeService.create(outcome: outcome, actor: patrick)
+
+      # create poll
+      poll = Poll.new(poll_type: poll_type,
+                      title: 'Which one?',
+                      details: 'fine print',
+                      poll_option_names: options[poll_type.to_sym],
+                      discussion: test_discussion)
+      PollService.create(poll: poll, actor: patrick)
+      poll.update_attribute(:closing_at, 1.day.ago)
+
+      # expire the poll
+      PollService.expire_lapsed_polls
+    end
+
+  end
+
   def setup_all_notifications_work
     #'comment_liked'
     comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')

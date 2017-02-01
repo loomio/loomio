@@ -28,10 +28,10 @@ class DevelopmentController < ApplicationController
     render 'poll_mailer/proposal/proposal_closed', layout: 'poll_mailer'
   end
 
-  def setup_poll_closed_email
+  def setup_poll_expired_email
     sign_in patrick
     poll_email_info(poll: test_poll_with_stances)
-    render 'poll_mailer/poll/poll_closed', layout: 'poll_mailer'
+    render 'poll_mailer/poll/poll_expired', layout: 'poll_mailer'
   end
 
   def index
@@ -496,6 +496,12 @@ class DevelopmentController < ApplicationController
   def setup_proposal_closing_soon
     sign_in patrick
     test_proposal.update_attribute(:closing_at, 6.hours.from_now)
+    redirect_to discussion_url(test_discussion)
+  end
+
+  def setup_poll_activity_items
+    sign_in patrick
+    setup_poll_activity_items_work
     redirect_to discussion_url(test_discussion)
   end
 
