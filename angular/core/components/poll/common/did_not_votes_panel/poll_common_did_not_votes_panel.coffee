@@ -6,14 +6,32 @@ angular.module('loomioApp').directive 'pollCommonDidNotVotesPanel', (Records, Re
     $scope.canShowUndecided = ->
       $scope.poll.undecidedCount() > 0 and !$scope.showingUndecided
 
+    collection = $scope.poll.isActive() ? 'memberships' : 'poll_did_not_votes'
+
     $scope.loader = new RecordLoader
-      collection: 'poll_did_not_votes'
+      collection: collection
       per: 1
       params:
         poll_id: $scope.poll.key
 
+    didNotVotesLoader = new RecordLoader
+      collection: 'poll_did_not_votes'
+      params:
+        poll_id: $scope.poll.key
+
+    membershipsLoader = new RecordLoader
+      collection: 'memberships'
+      path: 'undecided'
+      params:
+        poll_id: $scope.poll.key
+
+    $scope.loader = if $scope.poll.group() and $scope.poll.isActive()
+      membershipsLoader
+    else
+      didNotVotesLoader
+
     $scope.moreToLoad = ->
-      $scope.poll.undecidedCount() > $scope.loader.numLoaded
+      $scope.loader.numLoaded < $scope.poll.undecidedCount()
 
     $scope.showUndecided = ->
       $scope.showingUndecided = true

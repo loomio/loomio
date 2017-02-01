@@ -292,4 +292,47 @@ describe API::MembershipsController do
     end
   end
 
+  describe 'undecided' do
+    let(:poll) { create :poll, discussion: discussion }
+    let(:another_poll) { create :poll }
+    let(:stance) { create :stance, poll: poll, participant: user, stance_choices_attributes: [{ poll_option_id: poll.poll_options.first.id }] }
+
+    it 'fetches an undecided membership' do
+      get :undecided, poll_id: poll.id
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      user_ids = json['users'].map { |u| u['id'] }
+
+      expect(user_ids).to include user.id
+    end
+
+    it 'does not fetch a membership from another group' do
+      alien_named_biff
+      get :undecided, poll_id: poll.id
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      user_ids = json['users'].map { |u| u['id'] }
+
+      expect(user_ids).to_not include alien_named_biff.id
+    end
+
+    it 'does not fetch a membership who has voted' do
+      stance
+      get :undecided, poll_id: poll.id
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      user_ids = json['users'].map { |u| u['id'] }
+
+      expect(user_ids).to_not include user.id
+    end
+
+    it 'does not fetch memberships for polls you dont have access to' do
+      get :undecided, poll_id: another_poll.id
+      expect(response.status).to eq 403
+    end
+  end
+
 end

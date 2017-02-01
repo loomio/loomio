@@ -59,6 +59,7 @@ Loomio::Application.routes.draw do
         get :for_user
         get :my_memberships
         get :invitables
+        get :undecided
       end
       member do
         post :make_admin

@@ -57,6 +57,7 @@ en:
       translated: 'Translation by Bing Translator'
       upload: 'Upload'
       uploading: 'Uploading'
+      load_more: 'Load More'
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -1367,6 +1368,7 @@ en:
     priority_last: Block first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
+    show_undecided: Show undecided
 
   poll_common_did_not_votes_panel:
     undecided: Undecided ({{count}})

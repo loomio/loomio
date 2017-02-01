@@ -73,6 +73,14 @@ class API::MembershipsController < API::RestfulController
     respond_with_resource
   end
 
+  def undecided
+    load_and_authorize(:poll)
+    instantiate_collection do |collection|
+      collection.where(group: @poll.group).where(":ids IS NULL OR memberships.user_id NOT IN (:ids)", ids: @poll.participant_ids)
+    end
+    respond_with_collection
+  end
+
   private
 
   def accessible_records
