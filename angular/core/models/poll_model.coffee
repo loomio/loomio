@@ -18,7 +18,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
       @hasMany   'pollOptions'
-      @hasMany   'stances'
+      @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
 
     group: ->
       @discussion().group() if @discussion()
@@ -38,6 +38,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     uniqueStances: (order, limit) ->
       _.slice(_.sortBy(_.values(@uniqueStancesByUserId()), order), 0, limit)
 
+    stanceFor: (user) ->
+      @uniqueStancesByUserId()[user.id]
+
     lastStanceByUser: (user) ->
       @uniqueStancesByUserId()[user.id]
 
@@ -47,11 +50,8 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     uniqueStancesByUserId: ->
       stancesByUserId = {}
       _.each @stances(), (stance) ->
-        stancesByUserId[stance.participantId] = stance
+        stancesByUserId[stance.participantId] = stancesByUserId[stance.participantId] or stance
       stancesByUserId
-
-    stanceFor: (user) ->
-      @uniqueStancesByUserId()[user.id]
 
     group: ->
       @discussion().group() if @discussion()
