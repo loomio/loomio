@@ -52,6 +52,7 @@ class PollService
     poll.poll_did_not_votes.delete_all
     non_voters = poll.group.members - poll.participants
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
+    poll.update_did_not_votes_count
   end
 
 

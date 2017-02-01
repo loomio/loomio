@@ -30,11 +30,13 @@ class Poll < ActiveRecord::Base
   has_many :poll_options, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
-  has_many :poll_did_not_votes
+  has_many :poll_did_not_votes, dependent: :destroy
 
   has_paper_trail only: [:title, :details, :closing_at]
 
-  define_counter_cache(:stances_count) { |poll| poll.stances.latest.count }
+  define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
+  define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
+
   # has_many :poll_communities
   # has_many :communities, through: :poll_communities
 

@@ -19,15 +19,31 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @belongsTo 'discussion'
       @hasMany   'pollOptions'
       @hasMany   'stances', sortBy: 'createdAt', sortDesc: true
+      @hasMany   'pollDidNotVotes'
 
     group: ->
       @discussion().group() if @discussion()
+
+    voters: ->
+      @recordStore.users.find(_.pluck(@stances(), 'participantId'))
 
     communitySize: ->
       if @group()
         @group().membershipsCount
       else
         0
+
+    undecidedCount: ->
+      if @isActive()
+        _.max [@communitySize() - @stancesCount, 0]
+      else
+        @didNotVotesCount
+
+    undecidedMembers: ->
+      if @isActive()
+        _.difference(@group().members(), @voters())
+      else
+        @recordStore.users.find(_.pluck(@pollDidNotVotes(), 'userId'))
 
     firstOption: ->
       _.first @pollOptions()

@@ -1368,6 +1368,10 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
 
+  poll_common_did_not_votes_panel:
+    undecided: Undecided ({{count}})
+    show_undecided: Show undecided
+
   poll_common_accordion:
     title: Recent activity
 
