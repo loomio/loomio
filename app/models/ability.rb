@@ -330,6 +330,7 @@ class Ability
       # poll.communities.all? { |community| user.ability.can?(:poll, community) }
     end
 
+    # NB: discussion dependency on polls
     can :update, Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
