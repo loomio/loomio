@@ -22,10 +22,6 @@ class PollMailer < BaseMailer
     send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_create(outcome)
   end
 
-  def outcome_update(outcome)
-    send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_update(outcome)
-  end
-
   private
 
   def send_poll_mail(poll:, recipients:, priority: 2)
@@ -41,10 +37,7 @@ class PollMailer < BaseMailer
         locale:        locale_for(user),
         to:            recipient.email,
         subject_key:   "poll_mailer.#{action_name}_subject",
-        subject_params: {
-          poll_title:  poll.title,
-          poll_author: poll.author.name
-        }
+        subject_params: { poll_title:  poll.title, poll_author: poll.author.name }
       )
     end
   end

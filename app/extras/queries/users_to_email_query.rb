@@ -64,9 +64,4 @@ class Queries::UsersToEmailQuery
     return User.none unless outcome.make_announcement
     outcome.poll.watchers.without(outcome.author) # maybe just poll participants?
   end
-
-  def self.outcome_update(outcome)
-    return User.none unless outcome.make_announcement
-    outcome.poll.watchers.without(outcome.author)
-  end
 end
