@@ -3,6 +3,7 @@ class DevelopmentController < ApplicationController
   include Development::NintiesMoviesHelper
   include Development::PollsHelper
   include PrettyUrlHelper
+  include Development::BaseHelper
 
   before_filter :ensure_testing_environment
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
@@ -560,17 +561,4 @@ class DevelopmentController < ApplicationController
     redirect_to discussion_url(test_discussion)
   end
 
-  private
-
-  def ensure_testing_environment
-    raise "Do not call me." if Rails.env.production?
-  end
-
-  def cleanup_database
-    User.delete_all
-    Group.delete_all
-    Membership.delete_all
-
-    ActionMailer::Base.deliveries = []
-  end
 end

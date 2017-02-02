@@ -283,7 +283,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_username
-    self.username ||= UsernameGenerator.new(self).generate
+    self.username ||= ::UsernameGenerator.new(self).generate
   end
 
   def send_devise_notification(notification, *args)

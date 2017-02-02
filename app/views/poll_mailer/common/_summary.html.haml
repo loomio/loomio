@@ -3,11 +3,12 @@
   -# NB: discussion dependency
   %h1= link_to @info.poll.title, @info.links[:target]
   %p
+
+  %p= @info.poll.details
+
   - if @info.poll.active?
-    %span= t(:closed)
+    %span= t(:closing)
     %span= time_formatted_relative_to_age(@info.poll.closing_at)
   - else
     %span= t(:closed)
     %span= time_formatted_relative_to_age(@info.poll.closed_at)
-
-  %p= @info.poll.details

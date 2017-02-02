@@ -1,0 +1,6 @@
+%table
+  - @info.poll.poll_options.each do |option|
+    %tr
+      %td= render 'poll_mailer/common/chip', color: option.color
+      %td= image_tag 'poll_mailer/radio_off.png', alt: 'single choice'
+      %td= option.name

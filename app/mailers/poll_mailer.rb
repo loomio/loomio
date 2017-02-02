@@ -2,11 +2,11 @@ class PollMailer < BaseMailer
   helper :email
   REPLY_DELIMITER = "--"
 
-  def poll_create(poll)
+  def poll_created(poll)
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_create(poll)
   end
 
-  def poll_update(poll)
+  def poll_updated(poll)
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_update(poll)
   end
 
@@ -33,11 +33,12 @@ class PollMailer < BaseMailer
 
     delay(priority: priority).send_bulk_mail(to: recipients) do |recipient|
       @info = PollEmailInfo(poll: poll, recipient: recipient, utm: utm_hash)
+
       send_single_mail(
         locale:        locale_for(user),
         to:            recipient.email,
-        subject_key:   "poll_mailer.#{action_name}_subject",
-        subject_params: { poll_title:  poll.title, poll_author: poll.author.name }
+        subject_key:   "poll_mailer.#{poll_type}.subject.#{action_name}",
+        subject_params: { title: poll.title, actor: poll.author.name }
       )
     end
   end
