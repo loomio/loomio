@@ -1,13 +1,12 @@
-angular.module('loomioApp').directive 'pollPollActionPanel', (ModalService, Records, PollPollEditVoteModal, PollCommonOutcomeForm) ->
+angular.module('loomioApp').directive 'pollPollActionPanel', ($location, ModalService, Records, PollPollEditVoteModal) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/poll/action_panel/poll_poll_action_panel.html'
   controller: ($scope, Records, Session) ->
-    $scope.currentUserStance = ->
-      $scope.poll.stanceFor(Session.user())
-    $scope.myNewStance = Records.stances.build(pollId: $scope.poll.id) unless $scope.currentUserStance()
+    $scope.stance = $scope.poll.stanceFor(Session.user()) or
+                    Records.stances.build(pollId: $scope.poll.id).choose($location.search().pollOptionId)
 
     $scope.userHasVoted = ->
-      $scope.currentUserStance()?
+      $scope.stance.id
 
     $scope.openVoteForm = (option) ->
-      ModalService.open PollPollEditVoteModal, stance: -> $scope.currentUserStance()
+      ModalService.open PollPollEditVoteModal, stance: -> $scope.stance

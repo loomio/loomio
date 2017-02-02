@@ -1,0 +1,5 @@
+.lmo-one-column-layout
+  %loading{ng-if: "!pollPage.poll"}
+  %main.poll-page.lmo-row{ng-if: "pollPage.poll"}
+    .poll-page__main-content.lmo-flex
+      %poll_common_card.lmo-card--no-padding{poll: "pollPage.poll"}

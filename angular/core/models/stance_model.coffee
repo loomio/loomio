@@ -33,12 +33,12 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     pollOptionIds: ->
       _.pluck @stanceChoices(), 'pollOptionId'
 
-    choose: (options) ->
+    choose: (optionIds) ->
       _.each @recordStore.stanceChoices.find(stanceId: @id), (stanceChoice) ->
         stanceChoice.remove()
 
-      _.each options, (option) =>
-        @recordStore.stanceChoices.create(pollOptionId: option.id, stanceId: @id)
+      _.each _.flatten([optionIds]), (optionId) =>
+        @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
       @
 
     # prepareForForm: ->
