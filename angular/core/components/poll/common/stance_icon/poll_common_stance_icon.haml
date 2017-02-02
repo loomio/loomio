@@ -1,2 +1,3 @@
-%img.poll-common-stance-icon__svg{ng-if: "iconType() == 'svg'", ng-src: "/img/{{stance.pollOption().name}}.svg"}
-%user_avatar{ng-if: "iconType() == 'avatar'", user: "stance.participant()", size: "small"}
+.poll-common-stance-icon
+  %img.poll-common-stance-icon__svg{ng-if: "useOptionIcon", ng-src: "/img/{{stanceChoice.pollOption().name}}.svg"}
+  .poll-common-stance-icon__chip{ng-if: "!useOptionIcon", ng-style: "{'border-color': '{{stanceChoice.pollOption().color}}'}"}

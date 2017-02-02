@@ -6,8 +6,6 @@ angular.module('loomioApp').directive 'pollCommonVotesPanel', (Records, PollServ
     from = 0 # offset
     total = 0
 
-    $scope.translateOptionName = PollService.fieldFromTemplate($scope.poll.pollType, 'translate_option_name')
-
     # sorry. ng-if and md-select break. github.com/angular/material/issues/3940
     $scope.fix = {}
     $scope.sortOptions = PollService.fieldFromTemplate($scope.poll.pollType, 'sort_options')

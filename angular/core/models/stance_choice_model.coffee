@@ -11,3 +11,6 @@ angular.module('loomioApp').factory 'StanceChoiceModel', (BaseModel, AppConfig) 
     relationships: ->
       @belongsTo 'pollOption'
       @belongsTo 'stance'
+
+    poll: ->
+      @stance().poll() if @stance()

@@ -4,7 +4,7 @@ proposal:
     - name:              "abstain"
     - name:              "disagree"
     - name:              "block"
-  option_icon_type:      svg # could be avatar or none
+  has_option_icons:      true
   translate_option_name: true
   chart_type:            pie
   material_icon:         thumbs_up_down
@@ -30,7 +30,6 @@ check_in:
 
 poll:
   poll_options_attributes: []
-  option_icon_type:   avatar
   chart_type:         bar
   material_icon:      equalizer
   can_add_options:    true
