@@ -14,6 +14,11 @@ class DevelopmentController < ApplicationController
     render 'poll_mailer/poll/poll', layout: 'poll_mailer'
   end
 
+  def setup_poll
+    sign_in patrick
+    redirect_to test_poll
+  end
+
   def setup_proposal_email
     sign_in patrick
     poll_email_info(poll: test_proposal)

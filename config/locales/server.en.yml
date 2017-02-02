@@ -368,21 +368,3 @@ en:
       unsubscribe: Unsubscribe from these emails
       results: Results
       responses: Responses
-    proposal:
-      outcome_create:
-      poll_closing_soon: '<strong>%{author}</strong?'s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
-      poll_create:
-      poll_expired:
-      poll_update:
-    poll:
-      outcome_create:
-      poll_closing_soon:
-      poll_create:
-      poll_expired:
-      poll_update:
-    check_in:
-      outcome_create:
-      poll_closing_soon:
-      poll_create:
-      poll_expired:
-      poll_update:
