@@ -5,6 +5,6 @@
       %p.poll-common-helptext{translate: "poll_common.change_your_stance_text"}
       %md-button.md-primary{ng-click: "openVoteModal()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
     %md-list.md-block{ng-if: "!userHasVoted()"}
-      %poll_proposal_vote_form{stance: "myNewStance"}
+      %poll_proposal_vote_form{stance: "stance"}
   %section{ng-if: "poll.closedAt"}
     %poll_common_outcome_panel{poll: "poll"}
