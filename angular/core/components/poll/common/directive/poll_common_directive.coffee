@@ -1,4 +1,5 @@
 angular.module('loomioApp').directive 'pollCommonDirective', ($compile) ->
-  scope: {poll: '=', name: '@'}
+  scope: {poll: '=?', stance: '=?', name: '@'}
   link: ($scope, element) ->
-    element.append $compile("<poll_#{$scope.poll.pollType}_#{$scope.name} poll='poll' />")($scope)
+    $scope.poll = $scope.stance.poll() if $scope.stance and !$scope.poll
+    element.append $compile("<poll_#{$scope.poll.pollType}_#{$scope.name} poll='poll' stance='stance' />")($scope)

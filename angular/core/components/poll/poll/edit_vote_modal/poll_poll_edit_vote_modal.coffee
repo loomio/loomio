@@ -3,4 +3,4 @@ angular.module('loomioApp').factory 'PollPollEditVoteModal', ->
   controller: ($scope, stance) ->
     $scope.stance = stance.clone()
 
-    $scope.$on '$close', $scope.$close
+    $scope.$on 'stanceSaved', $scope.$close

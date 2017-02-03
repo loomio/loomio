@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Records, PollProposalForm, PollCheckInForm, PollPollForm) ->
+angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Records, PollProposalForm, PollCheckInForm, PollPollForm, PollProposalEditVoteModal, PollPollEditVoteModal) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -10,9 +10,14 @@ angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Record
     # This will also make it easier to switch poll types on and off per instance, and per group.
 
     pollForms =
-      proposal:   PollProposalForm
-      check_in:   PollCheckInForm
-      poll:       PollPollForm
+      proposal:
+        poll:   PollProposalForm
+        stance: PollProposalEditVoteModal
+      check_in:
+        poll:   PollCheckInForm
+      poll:
+        poll:   PollPollForm
+        stance: PollPollEditVoteModal
 
     activePollTemplates: ->
       # this could have group-specific logic later.
@@ -25,8 +30,8 @@ angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Record
     templateFor: (pollType) ->
       @activePollTemplates()[pollType]
 
-    formFor: (pollType) ->
-      pollForms[pollType]
+    formFor: (pollType, formType) ->
+      pollForms[pollType][formType]
 
     usePollsFor: (model) ->
       model.group().features.use_polls && !$location.search().proposalView

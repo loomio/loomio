@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'pollProposalVoteForm', ->
     $scope.submit = FormService.submit $scope, $scope.stance,
       prepareFn: ->
         $scope.stance.stanceChoicesAttributes = [{ poll_option_id: $scope.stance.selectedOption.id }]
-      successCallback: -> $scope.$emit '$close'
+      successCallback: -> $scope.$emit 'stanceSaved'
       flashSuccess: "poll_proposal_vote_form.stance_#{actionName}"
       draftFields: ['reason']
 

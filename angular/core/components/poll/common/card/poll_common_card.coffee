@@ -8,3 +8,6 @@ angular.module('loomioApp').directive 'pollCommonCard', (Session) ->
 
     $scope.showResults = ->
       $scope.buttonPressed || $scope.poll.userHasVoted(Session.user())
+
+    $scope.$on 'stanceSaved', ->
+      $scope.$broadcast 'refreshStance'

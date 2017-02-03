@@ -25,7 +25,7 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
     actionName = if $scope.stance.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.stance,
-      successCallback: -> $scope.$emit '$close'
+      successCallback: -> $scope.$emit 'stanceSaved'
       prepareFn: serializeForm
       flashSuccess: "poll_poll_vote_form.stance_#{actionName}"
       draftFields: ['reason']
