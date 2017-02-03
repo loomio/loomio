@@ -1,9 +1,4 @@
-%table
-  %tr
-    %td= render "poll_mailer/common/avatar", participant: @info.actor
-    %td
-      %span=raw t(:"poll_mailer.#{@info.poll.poll_type}.header.poll_created", actor: @info.actor.name)
-
+= render "poll_mailer/common/header"
 = render "poll_mailer/common/summary"
 = render "poll_mailer/#{@info.poll_type}/vote"
 = render "poll_mailer/common/footer"

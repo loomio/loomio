@@ -1,6 +1,6 @@
 class PollEmailInfo
   include Routing
-  attr_reader :poll, :recipient, :actor
+  attr_reader :poll, :recipient, :actor, :action_name
 
   def send_reason
     # TODO: determine why this recipient is receiving this email
@@ -12,8 +12,12 @@ class PollEmailInfo
     @poll.poll_type
   end
 
-  def initialize(poll:, actor:, recipient:, utm: {})
-    @poll, @actor, @recipient, @utm = poll, actor, recipient, utm
+  def initialize(poll:, actor:, recipient:, action_name:, utm: {})
+    @poll = poll
+    @actor = actor
+    @recipient = recipient
+    @action_name = action_name
+    @utm = utm
   end
 
   def links

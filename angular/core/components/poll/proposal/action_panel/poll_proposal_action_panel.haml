@@ -3,7 +3,7 @@
     %md-list.md-block{ng-if: "userHasVoted()"}
       %h3.lmo-card-subheading{translate: "poll_common.change_your_stance_title"}
       %p.poll-common-helptext{translate: "poll_common.change_your_stance_text"}
-      %md-button.md-primary{ng-click: "openVoteModal()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
+      %md-button.md-primary{ng-click: "openVoteForm()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
     %md-list.md-block{ng-if: "!userHasVoted()"}
       %poll_proposal_vote_form{stance: "stance"}
   %section{ng-if: "poll.closedAt"}

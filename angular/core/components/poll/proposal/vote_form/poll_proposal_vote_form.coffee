@@ -1,9 +1,9 @@
 angular.module('loomioApp').directive 'pollProposalVoteForm', ->
-  scope: {stance: '=', pollOption: '=?'}
+  scope: {stance: '='}
   templateUrl: 'generated/components/poll/proposal/vote_form/poll_proposal_vote_form.html'
   controller: ($scope, FormService, TranslationService, MentionService, KeyEventService) ->
     actionName = if $scope.stance.isNew() then 'created' else 'updated'
-    $scope.stance.selectedOption = $scope.pollOption
+    $scope.stance.selectedOption = $scope.stance.pollOption()
 
     $scope.submit = FormService.submit $scope, $scope.stance,
       prepareFn: ->

@@ -63,7 +63,7 @@ module Development::PollsHelper
       }]
   end
 
-  def poll_email_info(poll:, recipient: patrick, actor:,  utm: {})
-    @info ||= PollEmailInfo.new(poll: poll, recipient: recipient, actor: actor, utm: utm)
+  def poll_email_info(poll:, recipient: patrick, actor:, action_name:,  utm: {})
+    @info ||= PollEmailInfo.new(poll: poll, recipient: recipient, actor: actor, action_name: action_name, utm: utm)
   end
 end
