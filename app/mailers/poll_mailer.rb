@@ -14,12 +14,16 @@ class PollMailer < BaseMailer
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closing_soon(poll)
   end
 
+  def poll_closing_soon_author(poll)
+    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closing_soon_author(poll)
+  end
+
   def poll_expired(poll)
     send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_expired(poll)
   end
 
-  def outcome_create(outcome)
-    send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_create(outcome)
+  def outcome_created(outcome)
+    send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_created(outcome)
   end
 
   private
@@ -31,7 +35,7 @@ class PollMailer < BaseMailer
       "Auto-Submitted":           :"auto-generated"
     }
 
-    delay(priority: priority).send_bulk_mail(to: recipients) do |recipient|
+    send_bulk_mail(to: recipients) do |recipient|
       @info = PollEmailInfo(poll: poll, recipient: recipient, utm: utm_hash)
 
       send_single_mail(

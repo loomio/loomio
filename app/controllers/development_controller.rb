@@ -8,36 +8,39 @@ class DevelopmentController < ApplicationController
   before_filter :ensure_testing_environment
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
 
-  def setup_poll_email
-    sign_in patrick
-    test_poll(stance_data: {red: 2, green: 3, blue: 4})
-    poll_email_info(poll: test_poll)
-    render 'poll_mailer/poll/poll', layout: 'poll_mailer'
-  end
-
   def setup_poll
     sign_in patrick
-    redirect_to test_poll
+    redirect_to existing_poll
   end
 
-  def setup_proposal_email
-    sign_in patrick
-    poll_email_info(poll: test_proposal)
-    render 'poll_mailer/proposal/proposal', layout: 'poll_mailer'
+  def setup_poll_created_email
+    PollMailer.poll_created(existing_poll(make_announcement: true))
+    last_email
   end
 
-  def setup_proposal_closed_email
-    sign_in patrick
-    test_agree; test_disagree; test_abstain
-    test_proposal.update_stance_data
-    poll_email_info(poll: test_proposal)
-    render 'poll_mailer/proposal/proposal_closed', layout: 'poll_mailer'
+  def setup_poll_updated_email
+    PollMailer.poll_updated(existing_poll(make_announcement: true))
+    last_email
+  end
+
+  def setup_poll_closing_soon_email
+    PollMailer.poll_closing_soon(existing_poll(closing_at: 1.day.from_now))
+    last_email
+  end
+
+  def setup_poll_closing_soon_author_email
+    PollMailer.poll_closing_soon_author(existing_poll(closing_at: 1.day.from_now))
+    last_email
   end
 
   def setup_poll_expired_email
-    sign_in patrick
-    poll_email_info(poll: test_poll_with_stances)
-    render 'poll_mailer/poll/poll_expired', layout: 'poll_mailer'
+    PollMailer.poll_expired(existing_poll(closing_at: 1.minute.ago, closed_at: 1.minute.ago))
+    last_email
+  end
+
+  def setup_outcome_created_email
+    PollMailer.outcome_created(existing_outcome)
+    last_email
   end
 
   def index
@@ -49,7 +52,7 @@ class DevelopmentController < ApplicationController
 
   def last_email
     @email = ActionMailer::Base.deliveries.last
-    render layout: false
+    render template: 'development/last_email', layout: false
   end
 
   def accept_last_invitation

@@ -57,10 +57,14 @@ class Queries::UsersToEmailQuery
   end
 
   def self.poll_closing_soon(poll)
-    poll.watchers.without(poll.participants)
+    poll.watchers.without(poll.participants).without(poll.author)
   end
 
-  def self.outcome_create(outcome)
+  def self.poll_closing_soon_author(poll)
+    Array(poll.author)
+  end
+
+  def self.outcome_created(outcome)
     return User.none unless outcome.make_announcement
     outcome.poll.watchers.without(outcome.author) # maybe just poll participants?
   end

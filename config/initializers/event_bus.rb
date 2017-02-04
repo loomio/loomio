@@ -158,11 +158,12 @@ EventBus.configure do |config|
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
   # handle emails for poll events
-  config.listen('poll_create')       { |poll|    PollMailer.poll_created       poll }
-  config.listen('poll_update')       { |poll|    PollMailer.poll_updated       poll }
-  config.listen('poll_closing_soon') { |poll|    PollMailer.poll_closing_soon poll }
-  config.listen('poll_expire')       { |poll|    PollMailer.poll_expired      poll }
-  config.listen('outcome_create')    { |outcome| PollMailer.outcome_created    outcome }
+  config.listen('poll_create')              { |poll|    PollMailer.poll_created             poll }
+  config.listen('poll_update')              { |poll|    PollMailer.poll_updated             poll }
+  config.listen('poll_closing_soon')        { |poll|    PollMailer.poll_closing_soon        poll }
+  config.listen('poll_closing_soon_author') { |poll|    PollMailer.poll_closing_soon_author poll }
+  config.listen('poll_expire')              { |poll|    PollMailer.poll_expired             poll }
+  config.listen('outcome_create')           { |outcome| PollMailer.outcome_created          outcome }
 
-  config.listen('stance_create')     { |stance| stance.poll.update_stance_data }
+  config.listen('stance_create')            { |stance| stance.poll.update_stance_data }
 end
