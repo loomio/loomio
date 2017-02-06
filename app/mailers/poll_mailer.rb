@@ -2,49 +2,49 @@ class PollMailer < BaseMailer
   helper :email
   REPLY_DELIMITER = "--"
 
-  def poll_created(poll)
-    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_create(poll)
+  def new_poll(recipient, event)
+    send_poll_email recipient, event
   end
 
-  def poll_updated(poll)
-    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_update(poll)
+  def poll_edited(recipient, event)
+    send_poll_email recipient, event
   end
 
-  def poll_closing_soon(poll)
-    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closing_soon(poll)
+  def poll_expired(recipient, event)
+    send_poll_email recipient, event
   end
 
-  def poll_closing_soon_author(poll)
-    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_closing_soon_author(poll)
+  def poll_closed_by_user(recipient, event)
+    send_poll_email recipient, event
   end
 
-  def poll_expired(poll)
-    send_poll_mail poll: poll, recipients: Queries::UsersToEmailQuery.poll_expired(poll)
+  def poll_closing_soon(recipient, event)
+    send_poll_email recipient, event
   end
 
-  def outcome_created(outcome)
-    send_poll_mail poll: outcome.poll, recipients: Queries::UsersToEmailQuery.outcome_created(outcome)
+  def poll_closing_soon_author(recipient, event)
+    send_poll_email recipient, event
+  end
+
+  def new_outcome(recipient, event)
+    send_poll_email recipient, event
   end
 
   private
 
-  def send_poll_mail(poll:, recipients:, priority: 2)
+  def send_poll_email(recipient, event)
     headers = {
-      "Precendence":              :bulk,
+      "Precedence":               :bulk,
       "X-Auto-Response-Suppress": :OOF,
       "Auto-Submitted":           :"auto-generated"
     }
 
-    send_bulk_mail(to: recipients) do |recipient|
-      @info = PollEmailInfo(poll: poll, recipient: recipient, utm: utm_hash)
-
-      send_single_mail(
-        locale:        locale_for(user),
-        to:            recipient.email,
-        subject_key:   "poll_mailer.#{poll_type}.subject.#{action_name}",
-        subject_params: { title: poll.title, actor: poll.author.name }
-      )
+    @info = PollEmailInfo.new(recipient: recipient, event: event, utm_hash: utm_hash)
+    send_single_mail(
+      locale:        locale_for(recipient),
+      to:            recipient.email,
+      subject_key:   "poll_mailer.#{poll.poll_type}.subject.#{action_name}",
+      subject_params: { title: poll.title, actor: actor.name })
     end
   end
-
 end

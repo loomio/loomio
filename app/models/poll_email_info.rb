@@ -1,6 +1,6 @@
 class PollEmailInfo
   include Routing
-  attr_reader :poll, :recipient, :actor, :action_name
+  attr_reader :recipient, :poll, :actor, :utm_hash
 
   def send_reason
     # TODO: determine why this recipient is receiving this email
@@ -12,12 +12,11 @@ class PollEmailInfo
     @poll.poll_type
   end
 
-  def initialize(poll:, actor:, recipient:, action_name:, utm: {})
-    @poll = poll
-    @actor = actor
+  def initialize(recipient:, event:, utm_hash:)
     @recipient = recipient
-    @action_name = action_name
-    @utm = utm
+    @poll      = event.eventable.poll
+    @actor     = event.user
+    @utm_hash  = utm_hash
   end
 
   def links
@@ -30,14 +29,10 @@ class PollEmailInfo
   private
 
   def unsubscribe_url
-    email_preferences_url @utm.merge(unsubscribe_token: @recipient.unsubscribe_token)
+    email_preferences_url utm_hash.merge(unsubscribe_token: recipient.unsubscribe_token)
   end
 
   def target_url
-    if @poll.discussion
-      discussion_url @poll.discussion, @utm
-    else
-      # TODO: poll_url poll, utm_hash
-    end
+    poll_url poll, utm_hash
   end
 end

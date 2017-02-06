@@ -42,30 +42,26 @@ class Queries::UsersToEmailQuery
     Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).distinct
   end
 
-  def self.poll_create(poll)
-    return User.none unless poll.make_announcement
-    poll.watchers.without(poll.author)
+  def self.new_poll(event)
+    return User.none unless event.announcement
+    event.eventable.watchers
+         .without(event.user)
   end
 
-  def self.poll_update(poll)
-    return User.none unless poll.make_announcement
-    poll.participants
+  def self.poll_edited(event)
+    return User.none unless event.announcement
+    event.eventable.participants
   end
 
-  def self.poll_expired(poll)
-    Array(poll.author)
+  def self.poll_closing_soon(event)
+    event.eventable.watchers
+         .without(event.eventable.participants)
+         .without(event.eventable.author)
   end
 
-  def self.poll_closing_soon(poll)
-    poll.watchers.without(poll.participants).without(poll.author)
-  end
-
-  def self.poll_closing_soon_author(poll)
-    Array(poll.author)
-  end
-
-  def self.outcome_created(outcome)
-    return User.none unless outcome.make_announcement
-    outcome.poll.watchers.without(outcome.author) # maybe just poll participants?
+  def self.new_outcome(event)
+    return User.none unless event.announcement
+    event.eventable.poll.watchers
+         .without(event.user) # maybe just poll participants?
   end
 end

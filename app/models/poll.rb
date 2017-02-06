@@ -69,6 +69,10 @@ class Poll < ActiveRecord::Base
 
   alias_method :user, :author
 
+  def poll
+    self
+  end
+
   def watchers
     if discussion.present?
       Queries::UsersByVolumeQuery.normal_or_loud(discussion)

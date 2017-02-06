@@ -9,14 +9,15 @@ class Event < ActiveRecord::Base
              new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted
              new_poll new_stance new_outcome poll_closed_by_user poll_expired poll_edited]
 
-  BULK_MAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
+  THREAD_EMAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
                        new_discussion new_motion new_vote poll_closing_soon)
+  POLL_EMAIL_KINDS   = %w(new_poll poll_closing_soon poll_closed_by_user new_outcome)
 
   NOTIFICATION_KINDS = %w(comment_liked motion_closing_soon comment_replied_to user_mentioned membership_requested
                           membership_request_approved user_added_to_group motion_closed motion_closing_soon
                           motion_outcome_created invitation_accepted new_coordinator)
 
-  SINGLE_MAIL_KINDS = %w(comment_replied_to user_mentioned)
+  MENTIONED_USER_EVENTS = %w(comment_replied_to user_mentioned)
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true

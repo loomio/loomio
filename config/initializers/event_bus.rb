@@ -23,15 +23,24 @@ EventBus.configure do |config|
   config.listen('motion_create', 'motion_update')         { |motion|     SearchVector.index! motion.discussion_id }
   config.listen('comment_create', 'comment_update')       { |comment|    SearchVector.index! comment.discussion_id }
 
-  # send bulk emails after events
-  Event::BULK_MAIL_KINDS.each do |kind|
+  # notify users of thread events
+  Event::THREAD_EMAIL_EVENTS.each do |kind|
     delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
-    config.listen("#{kind}_event") { |event| SendBulkEmailJob.set(wait: delay).perform_later(event.id) }
+    config.listen("#{kind}_event") { |event| SendThreadEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
+  # notify users of poll events
+  Event::POLL_EMAIL_EVENTS.each do |kind|
+    delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
+    config.listen("#{kind}_event") { |event| SendPollEmailJob.set(wait: delay).perform_later(event.id) }
+  end
+
+  # notify poll author of events related to his/her poll
+  config.listen("poll_closing_soon_event") { |event| PollMailer.poll_closing_soon_author(event.eventable.author, event) }
+  config.listen("poll_expired_event")      { |event| PollMailer.poll_expired(event.eventable.author, event) }
+
   # send individual emails after thread events
-  # Single mail kinds is only Comment replied to and User mentioned.
-  Event::SINGLE_MAIL_KINDS.each do |kind|
+  Event::MENTIONED_USER_EVENTS.each do |kind|
     config.listen("#{kind}_event") do |event, user|
       ThreadMailer.delay(priority: 2).send(kind, user, event) if user.email_when_mentioned
     end
@@ -157,13 +166,5 @@ EventBus.configure do |config|
 
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
-  # handle emails for poll events
-  config.listen('poll_create')              { |poll|    PollMailer.poll_created             poll }
-  config.listen('poll_update')              { |poll|    PollMailer.poll_updated             poll }
-  config.listen('poll_closing_soon')        { |poll|    PollMailer.poll_closing_soon        poll }
-  config.listen('poll_closing_soon_author') { |poll|    PollMailer.poll_closing_soon_author poll }
-  config.listen('poll_expire')              { |poll|    PollMailer.poll_expired             poll }
-  config.listen('outcome_create')           { |outcome| PollMailer.outcome_created          outcome }
-
-  config.listen('stance_create')            { |stance| stance.poll.update_stance_data }
+  config.listen('stance_create')   { |stance| stance.poll.update_stance_data }
 end

@@ -64,7 +64,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll.versions.last, actor)
+    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement)
   end
 
   def self.convert(motions:)
