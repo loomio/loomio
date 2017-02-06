@@ -39,12 +39,18 @@ class PollMailer < BaseMailer
       "Auto-Submitted":           :"auto-generated"
     }
 
-    @info = PollEmailInfo.new(recipient: recipient, event: event, utm_hash: utm_hash)
+    @info = PollEmailInfo.new(
+      recipient:   recipient,
+      poll:        event.eventable.poll,
+      actor:       event.user,
+      action_name: action_name
+    )
+
     send_single_mail(
       locale:        locale_for(recipient),
       to:            recipient.email,
-      subject_key:   "poll_mailer.#{poll.poll_type}.subject.#{action_name}",
-      subject_params: { title: poll.title, actor: actor.name })
-    end
+      subject_key:   "poll_mailer.#{@info.poll_type}.subject.#{action_name}",
+      subject_params: { title: @info.poll.title, actor: @info.actor.name }
+    )
   end
 end

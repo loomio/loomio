@@ -1,6 +1,6 @@
 class PollEmailInfo
   include Routing
-  attr_reader :recipient, :poll, :actor, :utm_hash
+  attr_reader :recipient, :poll, :actor, :action_name
 
   def send_reason
     # TODO: determine why this recipient is receiving this email
@@ -12,10 +12,10 @@ class PollEmailInfo
     @poll.poll_type
   end
 
-  def initialize(recipient:, event:, utm_hash:)
+  def initialize(recipient:, poll:, actor:, action_name:)
     @recipient = recipient
-    @poll      = event.eventable.poll
-    @actor     = event.user
+    @poll      = poll
+    @actor     = actor
     @utm_hash  = utm_hash
   end
 
@@ -34,5 +34,9 @@ class PollEmailInfo
 
   def target_url
     poll_url poll, utm_hash
+  end
+
+  def utm_hash
+    { utm_medium: 'email', utm_campaign: 'poll_mailer', utm_source: action_name }
   end
 end

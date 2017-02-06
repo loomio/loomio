@@ -14,7 +14,7 @@ class DevelopmentController < ApplicationController
   end
 
   def setup_poll_created_email
-    PollMailer.poll_created(existing_poll(make_announcement: true))
+    PollService.create(poll: build_poll(make_announcement: true), actor: patrick)
     last_email
   end
 

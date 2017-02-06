@@ -371,7 +371,7 @@ en:
 
     proposal:
       subject:
-        poll_created: '%{actor} started a proposal: %{title}'
+        new_poll: '%{actor} started a proposal: %{title}'
         poll_updated: '%{actor} edited the proposal: %{title}'
         poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
         poll_closing_soon_yours: 'Your proposal closes in 24 hours: %{title}'
@@ -379,7 +379,7 @@ en:
         outcome_create: '%{actor} shared a proposal outcome: %{title}'
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a proposal'
+        new_poll: '<strong>%{actor}</strong> started a proposal'
         poll_updated: '<strong>%{actor}</strong> edited the proposal'
         poll_closing_soon: '<strong>%{actor}</strong>''s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_yours: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
@@ -388,7 +388,7 @@ en:
 
     poll:
       subject:
-        poll_created: '%{actor} started a poll: %{title}'
+        new_poll: '%{actor} started a poll: %{title}'
         poll_updated: '%{actor} edited the poll: %{title}'
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_yours: 'Your poll closes in 24 hours: %{title}'
@@ -396,7 +396,7 @@ en:
         outcome_create: '%{actor} shared a poll outcome: %{title}'
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a poll'
+        new_poll: '<strong>%{actor}</strong> started a poll'
         poll_updated: '<strong>%{actor}</strong> edited the poll'
         poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_yours: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
@@ -405,7 +405,7 @@ en:
 
     check_in:
       subject:
-        poll_created: '%{actor} started a check-in round: %{title}'
+        new_poll: '%{actor} started a check-in round: %{title}'
         poll_updated: '%{actor} edited the check-in: %{title}'
         poll_closing_soon: 'Check-in closing in 24 hours: %{title}'
         poll_closing_soon_yours: 'Your check-in closes in 24 hours: %{title}'
@@ -413,7 +413,7 @@ en:
         outcome_create: '%{actor} shared a check-in summary: %{title}'
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a check-in round'
+        new_poll: '<strong>%{actor}</strong> started a check-in round'
         poll_updated: '<strong>%{actor}</strong> edited the check-in'
         poll_closing_soon: '<strong>%{actor}</strong>''s check-in is closing in 24 hours.'
         poll_closing_soon_yours: 'Your check-in is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'

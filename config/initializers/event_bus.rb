@@ -23,16 +23,16 @@ EventBus.configure do |config|
   config.listen('motion_create', 'motion_update')         { |motion|     SearchVector.index! motion.discussion_id }
   config.listen('comment_create', 'comment_update')       { |comment|    SearchVector.index! comment.discussion_id }
 
-  # notify users of thread events
-  Event::THREAD_EMAIL_EVENTS.each do |kind|
+  # announce thread events
+  Event::THREAD_EMAIL_KINDS.each do |kind|
     delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
-    config.listen("#{kind}_event") { |event| SendThreadEmailJob.set(wait: delay).perform_later(event.id) }
+    config.listen("#{kind}_event") { |event| Announcements::ThreadEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
-  # notify users of poll events
-  Event::POLL_EMAIL_EVENTS.each do |kind|
+  # announce poll events
+  Event::POLL_EMAIL_KINDS.each do |kind|
     delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
-    config.listen("#{kind}_event") { |event| SendPollEmailJob.set(wait: delay).perform_later(event.id) }
+    config.listen("#{kind}_event") { |event| Announcements::PollEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
   # notify poll author of events related to his/her poll
