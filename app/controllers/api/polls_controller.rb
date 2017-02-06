@@ -1,4 +1,5 @@
 class API::PollsController < API::RestfulController
+  include UsesFullSerializer
   load_and_authorize_resource only: :show
 
   def index

@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'groupTheme', ->
-  scope: {group: '=', homePage: '=', compact: '='}
+  scope: {group: '=', homePage: '=', compact: '=', discussion: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/group_page/group_theme/group_theme.html'
   replace: true
