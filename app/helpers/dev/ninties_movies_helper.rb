@@ -96,7 +96,7 @@ module Dev::NintiesMoviesHelper
     @muted_group
   end
 
-  def another_create_group
+  def create_another_group
     unless @another_group
       @another_group = Group.create!(name: 'Point Break',
                                           group_privacy: 'closed',
@@ -123,7 +123,7 @@ module Dev::NintiesMoviesHelper
     unless @another_discussion
       @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
                                                     private: false,
-                                                    group: another_create_group,
+                                                    group: create_another_group,
                                                     author: patrick)
     end
     @another_discussion
@@ -133,7 +133,7 @@ module Dev::NintiesMoviesHelper
     unless @another_discussion
       @another_discussion = Discussion.create!(title: 'But are you crazy enough?',
                                                     private: true,
-                                                    group: another_create_group,
+                                                    group: create_another_group,
                                                     author: patrick)
     end
     @another_discussion
@@ -142,7 +142,7 @@ module Dev::NintiesMoviesHelper
   def create_subgroup
     unless @subgroup
       @subgroup = Group.create!(name: 'Johnny Utah',
-                                     parent: another_create_group,
+                                     parent: create_another_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed')
       @subgroup.add_admin! patrick
@@ -153,7 +153,7 @@ module Dev::NintiesMoviesHelper
   def another_create_subgroup
     unless @another_subgroup
       @another_subgroup = Group.create!(name: 'Bodhi',
-                                             parent: another_create_group,
+                                             parent: create_another_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true)

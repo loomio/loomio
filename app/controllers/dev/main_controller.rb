@@ -34,7 +34,7 @@ class Dev::MainController < Dev::BaseController
   def setup_logged_out_member_of_multiple_groups
     patrick
     create_group
-    another_create_group
+    create_another_group
     redirect_to new_user_session_url
   end
 
@@ -64,7 +64,7 @@ class Dev::MainController < Dev::BaseController
 
   def setup_inbox
     sign_in patrick
-    starred_discussion; recent_discussion group: another_create_group
+    starred_discussion; recent_discussion group: create_another_group
     old_discussion; muted_discussion
     redirect_to inbox_url
   end
@@ -169,7 +169,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_public_group_with_public_content
-    another_create_group
+    create_another_group
     create_public_proposal
     sign_in jennifer
     redirect_to discussion_url(create_public_discussion)
@@ -264,8 +264,8 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_group_for_invitations
-    setup_group
-    another_create_group
+    create_group
+    create_another_group
     patricks_contact
   end
 
@@ -378,34 +378,34 @@ class Dev::MainController < Dev::BaseController
 
   def setup_closed_group_to_join
     sign_in jennifer
-    another_create_group
+    create_another_group
     create_public_discussion
     private_create_discussion
     create_subgroup
-    redirect_to group_url(another_create_group)
+    redirect_to group_url(create_another_group)
   end
 
   def setup_public_group_to_join_upon_request
     sign_in jennifer
-    another_create_group.update(group_privacy: 'open')
-    another_create_group.update(membership_granted_upon: 'request')
+    create_another_group.update(group_privacy: 'open')
+    create_another_group.update(membership_granted_upon: 'request')
     create_public_discussion
-    redirect_to group_url(another_create_group)
+    redirect_to group_url(create_another_group)
   end
 
   def setup_group_with_subgroups
     sign_in jennifer
-    another_create_group.add_member! jennifer
+    create_another_group.add_member! jennifer
     create_subgroup.add_member! jennifer
     another_create_subgroup
-    redirect_to group_url(another_create_group)
+    redirect_to group_url(create_another_group)
   end
 
   def visit_group_as_subgroup_member
     sign_in jennifer
     create_subgroup.add_member! jennifer
     another_create_subgroup.add_member! jennifer
-    redirect_to group_url(another_create_group)
+    redirect_to group_url(create_another_group)
   end
 
   def params_membership_granted_upon
@@ -476,7 +476,7 @@ class Dev::MainController < Dev::BaseController
   def setup_membership_requests
     sign_in patrick
     create_group
-    another_create_group
+    create_another_group
     3.times do
       membership_request_from_logged_out
     end

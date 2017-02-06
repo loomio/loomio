@@ -50,8 +50,9 @@ class Dev::PollsController < Dev::BaseController
 
   def test_poll_expired_email
     sign_in patrick
-    create_poll(poll: create_poll_with_stances)
-    render 'poll_mailer/poll/poll_expired', layout: 'poll_mailer'
+    create_poll(closed_at: 1.day.ago,
+                closing_at: 1.day.ago)
+    render 'poll_mailer/poll_expired', layout: 'poll_mailer'
   end
 
   def test_poll_created_email
