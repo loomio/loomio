@@ -13,11 +13,6 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  concern :dev_routes do
-    get '/' => :index
-    get ':action'
-  end
-
   namespace :dev do
     namespace :polls do
       get '/' => :index

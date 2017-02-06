@@ -86,26 +86,26 @@ module Dev::NintiesMoviesHelper
   end
 
   def muted_create_group
-    unless @muted_create_group
-      @muted_create_group = Group.create!(name: 'Muted Point Blank',
+    unless @muted_group
+      @muted_group = Group.create!(name: 'Muted Point Blank',
                                         group_privacy: 'closed',
                                         discussion_privacy_options: 'public_or_private')
-      @muted_create_group.add_admin! patrick
-      Membership.find_by(group: @muted_create_group, user: patrick).set_volume! :mute
+      @muted_group.add_admin! patrick
+      Membership.find_by(group: @muted_group, user: patrick).set_volume! :mute
     end
-    @muted_create_group
+    @muted_group
   end
 
   def another_create_group
-    unless @another_create_group
-      @another_create_group = Group.create!(name: 'Point Break',
+    unless @another_group
+      @another_group = Group.create!(name: 'Point Break',
                                           group_privacy: 'closed',
                                           discussion_privacy_options: 'public_or_private',
                                           description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.')
-      @another_create_group.add_admin! patrick
-      @another_create_group.add_member! max
+      @another_group.add_admin! patrick
+      @another_group.add_member! max
     end
-    @another_create_group
+    @another_group
   end
 
   def create_discussion
@@ -120,23 +120,23 @@ module Dev::NintiesMoviesHelper
   end
 
   def create_public_discussion
-    unless @another_create_discussion
-      @another_create_discussion = Discussion.create!(title: "The name's Johnny Utah!",
+    unless @another_discussion
+      @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
                                                     private: false,
                                                     group: another_create_group,
                                                     author: patrick)
     end
-    @another_create_discussion
+    @another_discussion
   end
 
   def private_create_discussion
-    unless @another_create_discussion
-      @another_create_discussion = Discussion.create!(title: 'But are you crazy enough?',
+    unless @another_discussion
+      @another_discussion = Discussion.create!(title: 'But are you crazy enough?',
                                                     private: true,
                                                     group: another_create_group,
                                                     author: patrick)
     end
-    @another_create_discussion
+    @another_discussion
   end
 
   def create_subgroup
@@ -151,16 +151,16 @@ module Dev::NintiesMoviesHelper
   end
 
   def another_create_subgroup
-    unless @another_create_subgroup
-      @another_create_subgroup = Group.create!(name: 'Bodhi',
+    unless @another_subgroup
+      @another_subgroup = Group.create!(name: 'Bodhi',
                                              parent: another_create_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true)
-      @another_create_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
-      @another_create_subgroup.add_admin! patrick
+      @another_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      @another_subgroup.add_admin! patrick
     end
-    @another_create_subgroup
+    @another_subgroup
   end
 
   def create_proposal
@@ -184,11 +184,11 @@ module Dev::NintiesMoviesHelper
   end
 
   def create_vote
-    unless @create_vote
-      @create_vote = Vote.new(position: 'yes', motion: test_proposal, statement: 'I agree!')
-      VoteService.create(vote: @create_vote, actor: patrick)
+    unless @vote
+      @vote = Vote.new(position: 'yes', motion: test_proposal, statement: 'I agree!')
+      VoteService.create(vote: @vote, actor: patrick)
     end
-    @create_vote
+    @vote
   end
 
   def another_create_vote

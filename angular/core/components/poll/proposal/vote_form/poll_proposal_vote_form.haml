@@ -8,9 +8,7 @@
 
     %md-input-container.md-block.poll-common-vote-form__reason
       %label{translate: "poll_common.reason"}
-      %textarea.lmo-primary-form-input{ng-model: "stance.reason", md-max-length: "250"}
-      .hint
-        {{reasonPlaceholder()}}
+      %input.lmo-primary-form-input{type: "text", placeholder: "{{reasonPlaceholder()}}", ng-model: "stance.reason", md-max-length: "250"}
       %validation_errors{subject: "stance", field: "reason"}
 
     .poll-common-form__actions
