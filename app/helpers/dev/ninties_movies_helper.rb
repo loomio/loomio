@@ -1,4 +1,4 @@
-module Development::NintiesMoviesHelper
+module Dev::NintiesMoviesHelper
   # try to just return objects here. Don't knit them together. Leave that for
   # the development controller action to do if possible
   def patrick
@@ -60,17 +60,17 @@ module Development::NintiesMoviesHelper
                            angular_ui_enabled: true)
   end
 
-  def test_group
-    unless @test_group
-      @test_group = Group.create!(name: 'Dirty Dancing Shoes',
+  def create_group
+    unless @group
+      @group = Group.create!(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
                                   discussion_privacy_options: 'public_or_private',
                                   features: { use_polls: true })
-      @test_group.add_admin!  patrick
-      @test_group.add_member! jennifer
-      @test_group.add_member! emilio
+      @group.add_admin!  patrick
+      @group.add_member! jennifer
+      @group.add_member! emilio
     end
-    @test_group
+    @group
   end
 
   def multiple_groups
@@ -85,122 +85,122 @@ module Development::NintiesMoviesHelper
     @groups
   end
 
-  def muted_test_group
-    unless @muted_test_group
-      @muted_test_group = Group.create!(name: 'Muted Point Blank',
+  def muted_create_group
+    unless @muted_create_group
+      @muted_create_group = Group.create!(name: 'Muted Point Blank',
                                         group_privacy: 'closed',
                                         discussion_privacy_options: 'public_or_private')
-      @muted_test_group.add_admin! patrick
-      Membership.find_by(group: @muted_test_group, user: patrick).set_volume! :mute
+      @muted_create_group.add_admin! patrick
+      Membership.find_by(group: @muted_create_group, user: patrick).set_volume! :mute
     end
-    @muted_test_group
+    @muted_create_group
   end
 
-  def another_test_group
-    unless @another_test_group
-      @another_test_group = Group.create!(name: 'Point Break',
+  def another_create_group
+    unless @another_create_group
+      @another_create_group = Group.create!(name: 'Point Break',
                                           group_privacy: 'closed',
                                           discussion_privacy_options: 'public_or_private',
                                           description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.')
-      @another_test_group.add_admin! patrick
-      @another_test_group.add_member! max
+      @another_create_group.add_admin! patrick
+      @another_create_group.add_member! max
     end
-    @another_test_group
+    @another_create_group
   end
 
-  def test_discussion
-    unless @test_discussion
-      @test_discussion = Discussion.create(title: 'What star sign are you?',
+  def create_discussion
+    unless @discussion
+      @discussion = Discussion.create(title: 'What star sign are you?',
                                            private: false,
-                                           group: test_group,
+                                           group: create_group,
                                            author: jennifer)
-      DiscussionService.create(discussion: @test_discussion, actor: @test_discussion.author)
+      DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     end
-    @test_discussion
+    @discussion
   end
 
-  def public_test_discussion
-    unless @another_test_discussion
-      @another_test_discussion = Discussion.create!(title: "The name's Johnny Utah!",
+  def create_public_discussion
+    unless @another_create_discussion
+      @another_create_discussion = Discussion.create!(title: "The name's Johnny Utah!",
                                                     private: false,
-                                                    group: another_test_group,
+                                                    group: another_create_group,
                                                     author: patrick)
     end
-    @another_test_discussion
+    @another_create_discussion
   end
 
-  def private_test_discussion
-    unless @another_test_discussion
-      @another_test_discussion = Discussion.create!(title: 'But are you crazy enough?',
+  def private_create_discussion
+    unless @another_create_discussion
+      @another_create_discussion = Discussion.create!(title: 'But are you crazy enough?',
                                                     private: true,
-                                                    group: another_test_group,
+                                                    group: another_create_group,
                                                     author: patrick)
     end
-    @another_test_discussion
+    @another_create_discussion
   end
 
-  def test_subgroup
-    unless @test_subgroup
-      @test_subgroup = Group.create!(name: 'Johnny Utah',
-                                     parent: another_test_group,
+  def create_subgroup
+    unless @subgroup
+      @subgroup = Group.create!(name: 'Johnny Utah',
+                                     parent: another_create_group,
                                      discussion_privacy_options: 'public_or_private',
                                      group_privacy: 'closed')
-      @test_subgroup.add_admin! patrick
+      @subgroup.add_admin! patrick
     end
-    @test_subgroup
+    @subgroup
   end
 
-  def another_test_subgroup
-    unless @another_test_subgroup
-      @another_test_subgroup = Group.create!(name: 'Bodhi',
-                                             parent: another_test_group,
+  def another_create_subgroup
+    unless @another_create_subgroup
+      @another_create_subgroup = Group.create!(name: 'Bodhi',
+                                             parent: another_create_group,
                                              group_privacy: 'closed',
                                              discussion_privacy_options: 'public_or_private',
                                              is_visible_to_parent_members: true)
-      @another_test_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
-      @another_test_subgroup.add_admin! patrick
+      @another_create_subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
+      @another_create_subgroup.add_admin! patrick
     end
-    @another_test_subgroup
+    @another_create_subgroup
   end
 
-  def test_proposal
-    unless @test_proposal
-      @test_proposal = Motion.new(name: 'lets go hiking to the moon and never ever ever come back!',
+  def create_proposal
+    unless @proposal
+      @proposal = Motion.new(name: 'lets go hiking to the moon and never ever ever come back!',
                                 closing_at: 3.days.from_now.beginning_of_hour,
-                                discussion: test_discussion)
-      MotionService.create(motion: @test_proposal, actor: jennifer)
+                                discussion: create_discussion)
+      MotionService.create(motion: @proposal, actor: jennifer)
     end
-    @test_proposal
+    @proposal
   end
 
-  def public_test_proposal
-    unless @public_test_proposal
-      @public_test_proposal = Motion.new(name: 'Lets holiday on Earth instead',
+  def create_public_proposal
+    unless @public_proposal
+      @public_proposal = Motion.new(name: 'Lets holiday on Earth instead',
                                          closing_at: 3.days.from_now.beginning_of_hour,
-                                         discussion: public_test_discussion)
-      MotionService.create(motion: @public_test_proposal, actor: patrick)
+                                         discussion: create_public_discussion)
+      MotionService.create(motion: @public_proposal, actor: patrick)
     end
-    @public_test_proposal
+    @public_proposal
   end
 
-  def test_vote
-    unless @test_vote
-      @test_vote = Vote.new(position: 'yes', motion: test_proposal, statement: 'I agree!')
-      VoteService.create(vote: @test_vote, actor: patrick)
+  def create_vote
+    unless @create_vote
+      @create_vote = Vote.new(position: 'yes', motion: test_proposal, statement: 'I agree!')
+      VoteService.create(vote: @create_vote, actor: patrick)
     end
-    @test_vote
+    @create_vote
   end
 
-  def another_test_vote
-    unless @another_test_vote
-      @another_test_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
-      VoteService.create(vote: @another_test_vote, actor: jennifer)
+  def another_create_vote
+    unless @another_create_vote
+      @another_create_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
+      VoteService.create(vote: @another_create_vote, actor: jennifer)
     end
-    @another_test_vote
+    @another_create_vote
   end
 
   def membership_request_from_logged_out
-    membership_request = MembershipRequest.new(group: test_group,
+    membership_request = MembershipRequest.new(group: create_group,
                                                name: Faker::Name.name,
                                                email: Faker::Internet.email,
                                                introduction: Faker::Hacker.say_something_smart)
@@ -210,7 +210,7 @@ module Development::NintiesMoviesHelper
 
   def membership_request_from_user
     unless @membership_request_from_user
-      @membership_request_from_user = MembershipRequest.new(group: test_group,
+      @membership_request_from_user = MembershipRequest.new(group: create_group,
                                                             requestor: max,
                                                             introduction: "I'd like to make decisions with y'all")
       MembershipRequestService.create(membership_request: @membership_request_from_user)
@@ -222,67 +222,23 @@ module Development::NintiesMoviesHelper
     unless @pending_invitation
       @pending_invitation = InvitationService.invite_to_group(recipient_emails: ['judd@example.com'],
                                                               message: 'Come and join the group!',
-                                                              group: test_group,
+                                                              group: create_group,
                                                               inviter: patrick).last
     end
     @pending_invitation
   end
 
-  def test_empty_draft
-    unless @test_empty_draft
-      @test_empty_draft = Draft.create(draftable: test_group, user: patrick, payload: { discussion: { title: "", private: nil }})
+  def create_empty_draft
+    unless @empty_draft
+      @empty_draft = Draft.create(draftable: create_group, user: patrick, payload: { discussion: { title: "", private: nil }})
     end
-    @test_empty_draft
+    @empty_draft
   end
 
-  def setup_poll_activity_items_work
-    # create poll
-    options = {poll: %w[apple turnip peach],
-               check_in: %w[yip nup],
-               proposal: %w[agree disagree abstain block]}
 
-    Poll::TEMPLATES.keys.each do |poll_type|
-      poll = Poll.new(poll_type: poll_type,
-                      title: poll_type,
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: test_discussion)
-      PollService.create(poll: poll, actor: patrick)
-
-      # edit the poll
-      PollService.update(poll: poll, params: {title: 'choose!'}, actor: patrick)
-
-      # vote on the poll
-      stance = Stance.new(poll: poll,
-                          stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}],
-                          reason: 'democracy is in my shoes')
-      StanceService.create(stance: stance, actor: patrick)
-
-      # close the poll
-      PollService.close(poll: poll, actor: patrick)
-
-      # set an outcome
-      outcome = Outcome.new(poll: poll, statement: 'We all voted')
-      OutcomeService.create(outcome: outcome, actor: patrick)
-
-      # create poll
-      poll = Poll.new(poll_type: poll_type,
-                      title: 'Which one?',
-                      details: 'fine print',
-                      poll_option_names: options[poll_type.to_sym],
-                      discussion: test_discussion)
-      PollService.create(poll: poll, actor: patrick)
-      poll.update_attribute(:closing_at, 1.day.ago)
-
-      # expire the poll
-      PollService.expire_lapsed_polls
-    end
-
-  end
-
-  def setup_all_notifications_work
+  def create_all_notifications
     #'comment_liked'
-    comment = Comment.new(discussion: test_discussion, body: 'I\'m rather likeable')
+    comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
     new_comment_event = CommentService.create(comment: comment, actor: patrick)
     comment_liked_event = CommentService.like(comment: comment, actor: jennifer)
 
@@ -292,11 +248,11 @@ module Development::NintiesMoviesHelper
     closing_soon_event = Events::MotionClosingSoon.publish!(test_proposal)
 
     #'motion_closed'
-    second_motion_created_event = MotionService.create(motion: public_test_proposal,
+    second_motion_created_event = MotionService.create(motion: create_public_proposal,
                                                        actor: patrick)
 
 
-    motion_closed_event = MotionService.close(public_test_proposal)
+    motion_closed_event = MotionService.close(create_public_proposal)
 
     #'motion_outcome_created'
     outcome_event = MotionService.create_outcome(motion: test_proposal,
@@ -304,16 +260,16 @@ module Development::NintiesMoviesHelper
                                                  actor: jennifer)
 
     #'comment_replied_to'
-    reply_comment = Comment.new(discussion: test_discussion,
+    reply_comment = Comment.new(discussion: create_discussion,
                                 body: 'I agree with you', parent: comment)
     CommentService.create(comment: reply_comment, actor: jennifer)
 
     #'user_mentioned'
-    comment = Comment.new(discussion: test_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
+    comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
     CommentService.create(comment: comment, actor: jennifer)
 
     #'membership_requested',
-    membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: test_group)
+    membership_request = MembershipRequest.new(name: 'The Ghost', email: 'boooooo@invisible.co', group: create_group)
     event = MembershipRequestService.create(membership_request: membership_request, actor: LoggedOutUser.new)
 
     #'membership_request_approved',

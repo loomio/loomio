@@ -1,4 +1,4 @@
-module Development::PollsHelper
+module Dev::PollsHelper
 
   private
 
@@ -7,7 +7,7 @@ module Development::PollsHelper
       poll_type: 'poll',
       closing_at: 3.days.from_now,
       poll_option_names: ['grape', 'apple', 'banana'],
-      discussion: test_discussion,
+      discussion: create_discussion,
       stance_data: stance_data,
       author: patrick
   end
@@ -28,7 +28,7 @@ module Development::PollsHelper
       poll_type: 'proposal',
       closing_at: 3.days.from_now,
       poll_option_names: ['agree', 'abstain', 'disagree', 'block'],
-      discussion: test_discussion,
+      discussion: create_discussion,
       stance_data: stance_data,
       author: patrick
   end

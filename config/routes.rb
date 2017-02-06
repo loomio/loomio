@@ -13,16 +13,22 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  namespace :development do
-    namespace :mailers do
+  concern :dev_routes do
+    get '/' => :index
+    get ':action'
+  end
+
+  namespace :dev do
+    namespace :polls do
       get '/' => :index
       get ':action'
     end
-  end
 
-  resources(:development, only: :index) do
-    get 'last_email', on: :collection, as: :last_email
-    get ':action', on: :collection
+    scope controller: 'main' do
+      get '/' => :index
+      get ':action'
+      get 'last_email'
+    end
   end
 
   namespace :admin do
