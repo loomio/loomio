@@ -43,13 +43,11 @@ class Queries::UsersToEmailQuery
   end
 
   def self.new_poll(event)
-    return User.none unless event.announcement
     event.eventable.watchers
          .without(event.user)
   end
 
   def self.poll_edited(event)
-    return User.none unless event.announcement
     event.eventable.participants
   end
 
@@ -60,7 +58,6 @@ class Queries::UsersToEmailQuery
   end
 
   def self.new_outcome(event)
-    return User.none unless event.announcement
     event.eventable.poll.watchers
          .without(event.user) # maybe just poll participants?
   end

@@ -33,8 +33,8 @@ EventBus.configure do |config|
   Event::POLL_EMAIL_KINDS.each do |kind|
     config.listen("#{kind}_event") do |event|
       Queries::UsersToEmailQuery.send(event.kind, event).each do |recipient|
-        PollMailer.delay(priority: 2).send(event.kind, event)
-      end
+        PollMailer.delay(priority: 2).send(event.kind, recipient, event)
+      end if event.announcement
     end
   end
 

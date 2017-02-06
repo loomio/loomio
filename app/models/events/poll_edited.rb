@@ -1,5 +1,5 @@
 class Events::PollEdited < Event
-  def self.publish!(version, actor, announcement)
+  def self.publish!(version, actor, announcement = false)
     create(kind: "poll_edited",
            user: actor,
            eventable: version,

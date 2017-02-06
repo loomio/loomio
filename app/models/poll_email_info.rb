@@ -13,10 +13,10 @@ class PollEmailInfo
   end
 
   def initialize(recipient:, poll:, actor:, action_name:)
-    @recipient = recipient
-    @poll      = poll
-    @actor     = actor
-    @utm_hash  = utm_hash
+    @recipient   = recipient
+    @poll        = poll
+    @actor       = actor
+    @action_name = action_name
   end
 
   def links
