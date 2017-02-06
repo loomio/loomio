@@ -26,13 +26,16 @@ EventBus.configure do |config|
   # announce thread events
   Event::THREAD_EMAIL_KINDS.each do |kind|
     delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
-    config.listen("#{kind}_event") { |event| Announcements::ThreadEmailJob.set(wait: delay).perform_later(event.id) }
+    config.listen("#{kind}_event") { |event| SendBulkEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
   # announce poll events
   Event::POLL_EMAIL_KINDS.each do |kind|
-    delay = ENV.fetch("LOOMIO_BULK_MAIL_DELAY", 0).to_i.seconds
-    config.listen("#{kind}_event") { |event| Announcements::PollEmailJob.set(wait: delay).perform_later(event.id) }
+    config.listen("#{kind}_event") do |event|
+      Queries::UsersToEmailQuery.send(event.kind, event).each do |recipient|
+        PollMailer.delay(priority: 2).send(event.kind, event)
+      end
+    end
   end
 
   # notify poll author of events related to his/her poll
