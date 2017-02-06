@@ -6,9 +6,10 @@
 
   %p= @info.poll.details
 
-  - if @info.poll.active?
-    %span= t(:closing)
-    %span= time_formatted_relative_to_age(@info.poll.closing_at)
-  - else
-    %span= t(:closed)
-    %span= time_formatted_relative_to_age(@info.poll.closed_at)
+  %p
+    - if @info.poll.active?
+      = t(:closing)
+      = time_formatted_relative_to_age(@info.poll.closing_at)
+    - else
+      = t(:closed)
+      = time_formatted_relative_to_age(@info.poll.closed_at)

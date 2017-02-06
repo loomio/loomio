@@ -13,10 +13,7 @@ class Dev::PollsController < Dev::BaseController
     # poll   = FactoryGirl.create :poll
     poll = create_poll(poll_type: 'proposal')
 
-    @info = PollEmailInfo.new(poll: poll,
-                              recipient: patrick,
-                              actor: patrick,
-                              action_name: action_name)
+    create_info(poll: poll)
 
     render 'poll_mailer/poll_created', layout: 'poll_mailer'
     # PollMailer.poll_created(poll).deliver
@@ -29,10 +26,7 @@ class Dev::PollsController < Dev::BaseController
     # poll   = FactoryGirl.create :poll
     poll = create_poll(poll_type: 'proposal')
 
-    @info = PollEmailInfo.new(poll: poll,
-                              recipient: patrick,
-                              actor: patrick,
-                              action_name: action_name)
+    create_info(poll: poll)
 
     render 'poll_mailer/poll_created', layout: 'poll_mailer'
     # PollMailer.poll_created(poll).deliver
@@ -59,6 +53,7 @@ class Dev::PollsController < Dev::BaseController
     # author = FactoryGirl.create :user
     # poll   = FactoryGirl.create :poll
     poll = create_poll
+    crate
 
     @info = PollEmailInfo.new(poll: poll,
                               recipient: patrick,
@@ -86,6 +81,12 @@ class Dev::PollsController < Dev::BaseController
   # end
 
   private
+  def create_info(poll: , recipient: patrick, actor: patrick)
+    @info = PollEmailInfo.new(poll: poll,
+                              recipient: patrick,
+                              actor: patrick,
+                              action_name: action_name)
+  end
 
   def create_poll(args = {})
     group = Group.create!(name: 'group', features: {use_polls: true})

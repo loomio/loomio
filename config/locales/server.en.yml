@@ -365,7 +365,7 @@ en:
       or: or
       why_send_this: You are receiving this email because %{reason}
       view_on_loomio: View it on Loomio
-      unsubscribe: Unsubscribe from these emails
+      unsubscribe: Unsubscribe
       results: Results
       responses: Responses
 

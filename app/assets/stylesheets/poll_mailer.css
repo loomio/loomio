@@ -30,5 +30,8 @@
 }
 
 .poll-mailer__select-ui {
-  width: 20px
+  width: 20px;
+}
+.poll-mailer-proposal__thumb-image {
+  width: 55px;
 }
