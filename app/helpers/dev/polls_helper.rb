@@ -1,69 +1,78 @@
 module Dev::PollsHelper
+  include Dev::FakeDataHelper
 
   private
 
-  def test_poll(stance_data: { red: 3, green: 1, blue: 2 })
-    @test_poll ||= FactoryGirl.create :poll,
-      poll_type: 'poll',
-      closing_at: 3.days.from_now,
-      poll_option_names: ['grape', 'apple', 'banana'],
-      discussion: create_discussion,
-      stance_data: stance_data,
-      author: patrick
+  def render_poll_email(poll, action_name)
+    create_info(poll: poll)
+    render "poll_mailer/#{action_name}", layout: 'poll_mailer'
   end
 
-  def test_poll_with_stances
-    test_poll.tap do |poll|
-      grape = poll.poll_options.find_by(name: 'grape')
-      banana = poll.poll_options.find_by(name: 'banana')
-      poll.stances.create(participant: patrick,  reason: "I am patrick", stance_choices_attributes: [{ poll_option_id: grape.id }])
-      poll.stances.create(participant: jennifer, stance_choices_attributes: [{ poll_option_id: banana.id }])
-      poll.stances.create(participant: emilio,   reason: "I am Emilio!", stance_choices_attributes: [{ poll_option_id: grape.id }, { poll_option_id: banana.id }])
-      poll.update_stance_data
+  def create_info(poll: , recipient: fake_user, actor: fake_user)
+    @info = PollEmailInfo.new(poll: poll,
+                              recipient: recipient,
+                              actor: actor,
+                              action_name: action_name)
+  end
+
+  def create_fake_poll_with_stances(args = {})
+    poll = saved fake_poll(args)
+    create_fake_stances(poll: poll)
+    poll
+  end
+
+  def create_fake_stances(poll: )
+    poll.poll_option_names.each do |name|
+      (1..5).to_a.sample.times do
+        poll.stances.create(poll: poll,
+                           choice: name,
+                           participant: fake_user,
+                           reason: Faker::Hipster.sentence)
+      end
     end
   end
 
-  def test_proposal(stance_data: { agree: 5, abstain: 3, disagree: 2, block: 1 })
-    @test_proposal ||= FactoryGirl.create :poll,
-      poll_type: 'proposal',
-      closing_at: 3.days.from_now,
-      poll_option_names: ['agree', 'abstain', 'disagree', 'block'],
-      discussion: create_discussion,
-      stance_data: stance_data,
-      author: patrick
-  end
+  def create_activity_items(discussion: , actor: )
+    # create poll
+    options = {poll: %w[apple turnip peach],
+               check_in: %w[yip nup],
+               proposal: %w[agree disagree abstain block]}
 
-  def test_agree
-    @test_agree ||= FactoryGirl.create :stance,
-      poll: test_proposal,
-      reason: "I am agreeing!",
-      participant: patrick,
-      stance_choices_attributes: [{
-        poll_option_id: test_proposal.poll_options.find_by(name: 'agree').id
-      }]
-  end
+    Poll::TEMPLATES.keys.each do |poll_type|
+      poll = Poll.new(poll_type: poll_type,
+                      title: poll_type,
+                      details: 'fine print',
+                      poll_option_names: options[poll_type.to_sym],
+                      discussion: discussion)
+      PollService.create(poll: poll, actor: actor)
 
-  def test_abstain
-    @test_abstain ||= FactoryGirl.create :stance,
-      poll: test_proposal,
-      reason: "I am abstaining!",
-      participant: emilio,
-      stance_choices_attributes: [{
-        poll_option_id: test_proposal.poll_options.find_by(name: 'abstain').id
-      }]
-  end
+      # edit the poll
+      PollService.update(poll: poll, params: {title: 'choose!'}, actor: actor)
 
-  def test_disagree
-    @test_disagree ||= FactoryGirl.create :stance,
-      poll: test_proposal,
-      reason: "I am disagreeing!",
-      participant: jennifer,
-      stance_choices_attributes: [{
-        poll_option_id: test_proposal.poll_options.find_by(name: 'disagree').id
-      }]
-  end
+      # vote on the poll
+      stance = Stance.new(poll: poll,
+                          choice: poll.poll_option_names.first,
+                          reason: 'democracy is in my shoes')
+      StanceService.create(stance: stance, actor: actor)
 
-  def poll_email_info(poll:, recipient: patrick, actor:, action_name:,  utm: {})
-    @info ||= PollEmailInfo.new(poll: poll, recipient: recipient, actor: actor, action_name: action_name, utm: utm)
+      # close the poll
+      PollService.close(poll: poll, actor: actor)
+
+      # set an outcome
+      outcome = Outcome.new(poll: poll, statement: 'We all voted')
+      OutcomeService.create(outcome: outcome, actor: actor)
+
+      # create poll
+      poll = Poll.new(poll_type: poll_type,
+                      title: 'Which one?',
+                      details: 'fine print',
+                      poll_option_names: options[poll_type.to_sym],
+                      discussion: discussion)
+      PollService.create(poll: poll, actor: actor)
+      poll.update_attribute(:closing_at, 1.day.ago)
+
+      # expire the poll
+      PollService.expire_lapsed_polls
+    end
   end
 end
