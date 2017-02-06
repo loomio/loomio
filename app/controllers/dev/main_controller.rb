@@ -438,7 +438,7 @@ class Dev::MainController < Dev::BaseController
   def setup_proposal_with_votes
     sign_in patrick
     create_vote
-    another_create_vote
+    create_another_vote
 
     redirect_to discussion_url(create_discussion)
   end

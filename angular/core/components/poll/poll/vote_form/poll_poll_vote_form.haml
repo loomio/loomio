@@ -8,7 +8,7 @@
       %p.poll-poll-vote-form__chosen-option--name {{option.name}}
       %md-checkbox.md-block.poll-poll-vote-form__checkbox{ng-model: "pollOptionIdsChecked[option.id]"}
 
-  %md-input-container.md-block.poll-common-vote-form__reason
+  %md-input-container.md-block
     %label{translate: "poll_common.reason"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength: "250"}
     %validation_errors{subject: "stance", field: "reason"}

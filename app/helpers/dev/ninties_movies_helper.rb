@@ -191,12 +191,12 @@ module Dev::NintiesMoviesHelper
     @vote
   end
 
-  def another_create_vote
-    unless @another_create_vote
-      @another_create_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
-      VoteService.create(vote: @another_create_vote, actor: jennifer)
+  def create_another_vote
+    unless @another_vote
+      @another_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
+      VoteService.create(vote: @another_vote, actor: jennifer)
     end
-    @another_create_vote
+    @another_vote
   end
 
   def membership_request_from_logged_out
