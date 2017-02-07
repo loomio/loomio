@@ -1,15 +1,19 @@
-%p.email-to
-  to:
-  = @email.to
+%head
+  %title=action_name
 
-%p.email-from
-  from:
-  = @email.from
+%body
+  %p.email-to
+    to:
+    = @email.to
 
-%p.email-subject
-  subject:
-  = @email.subject
+  %p.email-from
+    from:
+    = @email.from
 
-%p.email-body
-  body:
-  =  raw @email.body.parts.last.decoded
+  %p.email-subject
+    subject:
+    = @email.subject
+
+  %p.email-body
+    body:
+    =  raw @email.body.parts.last.decoded

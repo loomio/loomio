@@ -24,6 +24,10 @@ module EmailHelper
                                                   format: format)
   end
 
+  def formatted_time_in_zone(time, zone)
+    time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
+  end
+
   def motion_closing_time_for(user)
     @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
   end

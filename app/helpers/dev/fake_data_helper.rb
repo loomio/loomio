@@ -8,7 +8,7 @@ module Dev::FakeDataHelper
   def fake_user(args = {})
     User.new({
       name: Faker::Name.name,
-      email: Faker::Internet.safe_email,
+      email: Faker::Internet.email,
       password: Faker::Internet.password,
       detected_locale: 'en'
     }.merge(args))
@@ -27,20 +27,22 @@ module Dev::FakeDataHelper
   end
 
   def fake_poll(args = {})
+    option_names = {
+      poll: 3.times.map{ Faker::Food.ingredient },
+      proposal: %w[agree abstain disagree block],
+      check_in: %w[accept decline]
+    }.with_indifferent_access
+
     options = {
       author: fake_user,
       discussion: fake_discussion,
       poll_type: 'poll',
       title: Faker::Superhero.name,
-      poll_option_names: 3.times.map{ Faker::Food.ingredient },
+      poll_option_names: option_names[args.fetch(:poll_type, :poll)],
       closing_at: 3.days.from_now,
       multiple_choice: false,
       details: Faker::Hipster.paragraph
     }.merge args
-
-    if options[:poll_type] == 'proposal'
-      options[:poll_option_names] = %w[agree abstain disagree block]
-    end
 
     Poll.new(options)
   end

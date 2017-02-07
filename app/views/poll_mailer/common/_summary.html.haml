@@ -14,7 +14,7 @@
   %p
     - if @info.poll.active?
       = t(:closing)
-      = time_formatted_relative_to_age(@info.poll.closing_at)
+      = formatted_time_in_zone(@info.poll.closing_at, @info.recipient.time_zone)
     - else
       = t(:closed)
-      = time_formatted_relative_to_age(@info.poll.closed_at)
+      = formatted_time_in_zone(@info.poll.closed_at, @info.recipient.time_zone)
