@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'progressChart', (AppConfig) ->
   template: '<div class="progress-chart"></div>'
   replace: true
   scope:
-    stanceData: '='
+    stanceCounts: '='
     goal: '='
     size: '@'
   restrict: 'E'
@@ -10,9 +10,9 @@ angular.module('loomioApp').directive 'progressChart', (AppConfig) ->
     draw = SVG($element[0]).size('100%', '100%')
 
     count = ->
-      _.sum(_.values($scope.stanceData))
+      parseInt($scope.stanceCounts[0]) || 0
 
-    $scope.$watchCollection 'stanceData', ->
+    $scope.$watchCollection 'stanceCounts', ->
       progressHeight = ($scope.size * count()) / $scope.goal
 
       draw.rect($scope.size, progressHeight)

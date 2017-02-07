@@ -5,5 +5,5 @@
       .poll-check-in-chart-panel__incomplete
       .poll-check-in-chart-panel__complete{ng-style: "{'flex-basis': percentComplete(), 'background-color': completeColor}"}
     .poll-check-in-chart-panel__data
-      .poll-check-in-chart-panel__numerator {{poll.stancesCount}}
+      .poll-check-in-chart-panel__numerator {{poll.stanceCounts[0]}}
       .poll-check-in-chart-panel__denominator{translate: "poll_check_in_chart_panel.out_of", translate-value-goal: "{{poll.goal()}}"}

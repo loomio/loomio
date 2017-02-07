@@ -1,6 +1,13 @@
 class Dev::PollsController < Dev::BaseController
   include Dev::PollsHelper
 
+  def test_discussion
+    group = create_group_with_members
+    discussion = saved fake_discussion(group: group)
+    sign_in group.admins.first
+    redirect_to discussion_url(discussion)
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group
@@ -50,14 +57,6 @@ class Dev::PollsController < Dev::BaseController
     poll       = create_fake_poll_with_stances(discussion: discussion,
                                                closing_at: 1.day.ago)
     PollService.expire_lapsed_polls
-    last_email
-  end
-
-  def test_poll_closed_by_user_email
-    discussion = fake_discussion(group: create_group_with_members)
-    actor      = discussion.group.admins.first
-    poll       = saved(fake_poll(discussion: discussion, author: actor))
-    PollService.close(poll: poll, actor: actor)
     last_email
   end
 

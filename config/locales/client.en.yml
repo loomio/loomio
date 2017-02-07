@@ -1306,7 +1306,7 @@ en:
     title: Decision tools
     proposal_title: Proposal
     proposal_subtitle: Find consensus
-    check_in_title: Engagement check
+    check_in_title: Check-in
     check_in_subtitle: Track who has completed a task
     poll_title: Poll
     poll_subtitle: Choose from a list of options
@@ -1423,18 +1423,22 @@ en:
   poll_check_in_form:
     new_check_in: New check-in
     update_check_in: Update check-in
-    tip: Use an engagement check to ensure that everyone has seen a particular bit of content. Need to discuss something which may have differing opinions? Try a <a href="#">proposal</a>.
-    learn_more: How to use engagement checks
+    tip: Use an check-in to ask a simple yes/no question
+    learn_more: Learn more
     title: Title
     title_placeholder: E.g. I've given my thoughts on the annual report
     details: Details
-    details_placeholder: Give some additional details. If you want people to engage with a particular document, be sure to link to it here!
+    details_placeholder: Include any relevant details such as time or place or urls people will need.
     action: Action
     action_placeholder: E.g. I've done it!
     start: Start check-in
     update: Update check-in
     check_in_created: Check-in created
     check_in_updated: Check-in updated
+    affirmative_label: Affirmative choice
+    affirmative_placeholder: E.g. Accept
+    negative_label: Negative choice (optional)
+    negative_placeholder: E.g. Decline
 
   poll_check_in_vote_form:
     stance_created: Vote created
