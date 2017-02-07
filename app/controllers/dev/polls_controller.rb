@@ -8,6 +8,14 @@ class Dev::PollsController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
+  def test_poll_in_discussion
+    group = create_group_with_members
+    sign_in group.admins.first
+    discussion = saved fake_discussion(group: group)
+    poll = saved fake_poll(discussion: discussion)
+    redirect_to poll_url(poll)
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group

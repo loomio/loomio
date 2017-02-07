@@ -1,5 +1,10 @@
 .poll-common-closing-at-field {
   @include displayFlex;
+  flex-direction: column;
+}
+
+.poll-common-closing-at-field__inputs {
+  @include displayFlex;
 }
 
 .md-datepicker-calendar-pane {
