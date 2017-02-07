@@ -66,12 +66,11 @@ module EmailHelper
     poll.stance_counts.join(',')
   end
 
-  def percentage_for(poll, key)
-    max = poll.stance_data.values.max
-    if max == 0
+  def percentage_for(poll, index)
+    if poll.stance_counts.max <= 0
       0
     else
-      (100 * poll.stance_data[key].to_f / max).to_i
+      (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i
     end
   end
 end

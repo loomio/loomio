@@ -28,7 +28,7 @@ class Dev::PollsController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
-  def test_new_check_in_email
+  def test_check_in_created_email
     poll_created_scenario(poll_type: 'check_in')
     last_email
   end
@@ -53,7 +53,7 @@ class Dev::PollsController < Dev::BaseController
     last_email
   end
 
-  def test_new_proposal_email
+  def test_proposal_created_email
     poll_created_scenario(poll_type: 'proposal')
     last_email
   end
