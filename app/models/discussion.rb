@@ -46,7 +46,7 @@ class Discussion < ActiveRecord::Base
   scope :joined_to_current_motion, -> { joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL') }
   scope :chronologically, -> { order('created_at asc') }
 
-  validates_presence_of :title, :group, :author, :group_id
+  validates_presence_of :title, :group, :author
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates_inclusion_of :uses_markdown, in: [true,false]

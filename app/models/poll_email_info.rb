@@ -8,15 +8,19 @@ class PollEmailInfo
     "some reason"
   end
 
+  def initialize(recipient:, poll:, actor:, action_name:)
+    @recipient   = recipient
+    @poll        = poll
+    @actor       = actor || LoggedOutUser.new
+    @action_name = action_name
+  end
+
   def poll_type
     @poll.poll_type
   end
 
-  def initialize(recipient:, poll:, actor:, action_name:)
-    @recipient   = recipient
-    @poll        = poll
-    @actor       = actor
-    @action_name = action_name
+  def outcome
+    @poll.current_outcome
   end
 
   def links

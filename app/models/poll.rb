@@ -1,6 +1,7 @@
 class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
+  include MakesAnnouncements
   TEMPLATES = YAML.load_file('config/poll_templates.yml')
   COLORS    = YAML.load_file('config/colors.yml')
 
@@ -15,8 +16,6 @@ class Poll < ActiveRecord::Base
   delegate   :group, :group_id, to: :discussion, allow_nil: true
 
   update_counter_cache :discussion, :closed_polls_count
-
-  attr_accessor :make_announcement
 
   after_update :remove_poll_options
 
@@ -60,6 +59,17 @@ class Poll < ActiveRecord::Base
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
+
+  scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
+     active
+    .distinct
+    .where(closing_at: timeframe)
+    .where("NOT EXISTS (SELECT 1 FROM events
+                WHERE events.created_at     > ? AND
+                      events.eventable_id   = polls.id AND
+                      events.eventable_type = 'Poll' AND
+                      events.kind           = 'poll_closing_soon')", recency_threshold)
+  end
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }

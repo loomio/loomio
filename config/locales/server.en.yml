@@ -365,7 +365,7 @@ en:
       or: or
       why_send_this: You are receiving this email because %{reason}
       view_on_loomio: View it on Loomio
-      unsubscribe: Unsubscribe from these emails
+      unsubscribe: Unsubscribe
       results: Results
       responses: Responses
 
@@ -376,7 +376,7 @@ en:
         poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
         poll_closing_soon_yours: 'Your proposal closes in 24 hours: %{title}'
         poll_expired: 'Your proposal has closed. Please share an outcome for: %{title}'
-        outcome_create: '%{actor} shared a proposal outcome: %{title}'
+        new_outcome: '%{actor} shared a proposal outcome: %{title}'
 
       header:
         new_poll: '<strong>%{actor}</strong> started a proposal'
@@ -384,7 +384,7 @@ en:
         poll_closing_soon: '<strong>%{actor}</strong>''s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_yours: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
-        outcome_create: '<strong>%{actor}</strong> shared a proposal outcome.'
+        new_outcome: '<strong>%{actor}</strong> shared a proposal outcome.'
 
     poll:
       subject:
@@ -393,7 +393,7 @@ en:
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_yours: 'Your poll closes in 24 hours: %{title}'
         poll_expired: 'Your poll has closed. Please share an outcome for: %{title}'
-        outcome_create: '%{actor} shared a poll outcome: %{title}'
+        new_outcome: '%{actor} shared a poll outcome: %{title}'
 
       header:
         new_poll: '<strong>%{actor}</strong> started a poll'
@@ -401,7 +401,7 @@ en:
         poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_yours: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
-        outcome_create: '<strong>%{actor}</strong> shared a poll outcome.'
+        new_outcome: '<strong>%{actor}</strong> shared a poll outcome.'
 
     check_in:
       subject:
@@ -410,7 +410,7 @@ en:
         poll_closing_soon: 'Check-in closing in 24 hours: %{title}'
         poll_closing_soon_yours: 'Your check-in closes in 24 hours: %{title}'
         poll_expired: 'Your check-in has closed. Please share an outcome: %{title}'
-        outcome_create: '%{actor} shared a check-in summary: %{title}'
+        new_outcome: '%{actor} shared a check-in summary: %{title}'
 
       header:
         new_poll: '<strong>%{actor}</strong> started a check-in round'
@@ -418,4 +418,4 @@ en:
         poll_closing_soon: '<strong>%{actor}</strong>''s check-in is closing in 24 hours.'
         poll_closing_soon_yours: 'Your check-in is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Your check-in has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
-        outcome_create: '<strong>%{actor}</strong> shared a check-in summary.'
+        new_outcome: '<strong>%{actor}</strong> shared a check-in summary.'

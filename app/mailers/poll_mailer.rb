@@ -18,15 +18,15 @@ class PollMailer < BaseMailer
     send_poll_email recipient, event
   end
 
+  def new_outcome(recipient, event)
+    send_poll_email recipient, event
+  end
+
   def poll_closing_soon(recipient, event)
     send_poll_email recipient, event
   end
 
   def poll_closing_soon_author(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def new_outcome(recipient, event)
     send_poll_email recipient, event
   end
 
