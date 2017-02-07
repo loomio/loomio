@@ -7,4 +7,8 @@ class Events::PollEdited < Event
            discussion: version.item.discussion,
            created_at: version.created_at).tap { |e| EventBus.broadcast('poll_edited_event', e) }
   end
+
+  def users_to_notify
+    eventable.participants
+  end
 end

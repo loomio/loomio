@@ -41,24 +41,4 @@ class Queries::UsersToEmailQuery
   def self.motion_closed(motion)
     Queries::UsersByVolumeQuery.normal_or_loud(motion.discussion).distinct
   end
-
-  def self.new_poll(event)
-    event.eventable.watchers
-         .without(event.user)
-  end
-
-  def self.poll_edited(event)
-    event.eventable.participants
-  end
-
-  def self.poll_closing_soon(event)
-    event.eventable.watchers
-         .without(event.eventable.participants)
-         .without(event.eventable.author)
-  end
-
-  def self.new_outcome(event)
-    event.eventable.poll.watchers
-         .without(event.user) # maybe just poll participants?
-  end
 end

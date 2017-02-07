@@ -7,4 +7,8 @@ class Events::NewOutcome < Event
            discussion: outcome.poll.discussion,
            created_at: outcome.created_at).tap { |e| EventBus.broadcast('new_outcome_event', e) }
   end
+
+  def users_to_notify
+    eventable.poll.watchers.without(self.user) # maybe just poll participants?
+  end
 end

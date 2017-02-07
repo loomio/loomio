@@ -9,8 +9,12 @@ class Dev::BaseController < ApplicationController
     render 'dev/main/index', layout: false
   end
 
-  def last_email
-    @email = ActionMailer::Base.deliveries.last
+  def last_email(to: nil)
+    @email = if to.present?
+      ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(to) }
+    else
+      ActionMailer::Base.deliveries
+    end.last
     render template: 'dev/main/last_email', layout: false
   end
 
@@ -23,6 +27,8 @@ class Dev::BaseController < ApplicationController
     User.delete_all
     Group.delete_all
     Membership.delete_all
+    Poll.delete_all
+    Motion.delete_all
     ActionMailer::Base.deliveries = []
   end
 end

@@ -31,10 +31,10 @@ EventBus.configure do |config|
 
   # announce poll events
   config.listen("new_poll_event",
+                "poll_edited_event",
                 "poll_closing_soon_event",
-                "poll_closed_by_user_event",
                 "new_outcome_event") do |event|
-    Queries::UsersToEmailQuery.send(event.kind, event).each do |recipient|
+    event.users_to_notify.each do |recipient|
       PollMailer.delay.send(event.kind, recipient, event)
     end if event.announcement
   end

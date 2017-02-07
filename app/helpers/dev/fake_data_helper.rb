@@ -32,7 +32,7 @@ module Dev::FakeDataHelper
       discussion: fake_discussion,
       poll_type: 'poll',
       title: Faker::Superhero.name,
-      poll_option_names: 5.times.map{ Faker::Food.ingredient },
+      poll_option_names: 3.times.map{ Faker::Food.ingredient },
       closing_at: 3.days.from_now,
       multiple_choice: false,
       details: Faker::Hipster.paragraph

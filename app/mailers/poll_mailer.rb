@@ -2,6 +2,7 @@ class PollMailer < BaseMailer
   helper :email
   REPLY_DELIMITER = "--"
 
+  # emails sent to the group
   def new_poll(recipient, event)
     send_poll_email recipient, event
   end
@@ -10,19 +11,16 @@ class PollMailer < BaseMailer
     send_poll_email recipient, event
   end
 
-  def poll_expired(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def poll_closed_by_user(recipient, event)
-    send_poll_email recipient, event
-  end
-
   def new_outcome(recipient, event)
     send_poll_email recipient, event
   end
 
   def poll_closing_soon(recipient, event)
+    send_poll_email recipient, event
+  end
+
+  # emails sent to the poll author
+  def poll_expired(recipient, event)
     send_poll_email recipient, event
   end
 

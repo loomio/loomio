@@ -34,7 +34,7 @@ module Dev::PollsHelper
 
   def create_fake_stances(poll: )
     poll.poll_option_names.each do |name|
-      (1..5).to_a.sample.times do
+      (0..3).to_a.sample.times do
         poll.stances.create(poll: poll,
                            choice: name,
                            participant: fake_user,

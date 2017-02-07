@@ -38,17 +38,27 @@ class Dev::PollsController < Dev::BaseController
   # end
 
   def test_poll_closing_soon_email
-    discussion = saved(fake_discussion(group: create_group_with_members))
+    discussion = fake_discussion(group: create_group_with_members)
+    non_voter  = saved(fake_user)
+    discussion.group.add_member! non_voter
     actor      = discussion.group.admins.first
-    poll       = create_fake_poll_with_stances(discussion: discussion,
-                                               closing_at: 1.day.from_now)
+    poll       = saved(create_fake_poll_with_stances(make_announcement: true,
+                                                     author: actor,
+                                                     discussion: discussion,
+                                                     closing_at: 1.day.from_now))
+    PollService.create(poll: poll, actor: actor)
     PollService.publish_closing_soon
-    last_email
+    last_email(to: non_voter.email)
   end
 
-  def test_poll_closing_soon_yours_email
-    poll = create_fake_poll_with_stances
-    render_poll_email(poll, 'poll_closing_soon_yours')
+  def test_poll_closing_soon_author_email
+    discussion = fake_discussion(group: create_group_with_members)
+    actor      = discussion.group.admins.first
+    poll       = saved(create_fake_poll_with_stances(author: actor,
+                                                     discussion: discussion,
+                                                     closing_at: 1.day.from_now))
+    PollService.publish_closing_soon
+    last_email(to: actor.email)
   end
 
   def test_poll_expired_email

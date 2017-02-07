@@ -40,7 +40,10 @@ class PollService
     hour_start = 1.day.from_now.at_beginning_of_hour
     hour_finish = hour_start + 1.hour
     this_hour_tomorrow = hour_start..hour_finish
-    Poll.closing_soon_not_published(this_hour_tomorrow).each { |poll| Events::PollClosingSoon.publish!(poll) }
+    Poll.closing_soon_not_published(this_hour_tomorrow).each do |poll|
+      announcement = (poll.events.find_by(kind: 'new_poll') || Event.new).announcement
+      Events::PollClosingSoon.publish!(poll, announcement)
+    end
   end
 
   def self.expire_lapsed_polls
