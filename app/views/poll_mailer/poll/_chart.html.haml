@@ -1,9 +1,1 @@
-%table{style: "width: 100%"}
-  - @info.poll.poll_options.each_with_index do |poll_option, index|
-    %tr
-      %td= "#{poll_option.name} - #{@info.poll.stance_counts[index]}"
-    %tr
-      %td
-        %table{style: "width: #{percentage_for(@info.poll, index)}%"}
-          %tr
-            %td{height: '40px', style: "background-color: #{Poll::COLORS.dig('poll', index)}"}
+= render "poll_mailer/common/bar_chart"
