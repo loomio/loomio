@@ -36,6 +36,13 @@ class PollService
     Events::PollClosedByUser.publish!(poll, actor)
   end
 
+  def self.publish_closing_soon
+    hour_start = 1.day.from_now.at_beginning_of_hour
+    hour_finish = hour_start + 1.hour
+    this_hour_tomorrow = hour_start..hour_finish
+    Poll.closing_soon_not_published(this_hour_tomorrow).each { |poll| Events::PollClosingSoon.publish!(poll) }
+  end
+
   def self.expire_lapsed_polls
     Poll.lapsed_but_not_closed.each do |poll|
       do_closing_work(poll: poll)
@@ -64,7 +71,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_update', poll, actor)
-    Events::PollEdited.publish!(poll.versions.last, actor)
+    Events::PollEdited.publish!(poll.versions.last, actor, poll.make_announcement)
   end
 
   def self.convert(motions:)

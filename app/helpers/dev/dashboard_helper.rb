@@ -1,4 +1,4 @@
-module Development::DashboardHelper
+module Dev::DashboardHelper
   def starred_proposal_discussion
     create_discussion!(:starred_proposal_discussion) { |discussion| star!(discussion); add_proposal!(discussion) }
   end
@@ -15,7 +15,7 @@ module Development::DashboardHelper
     create_discussion!(:participating_discussion) { |discussion| participate!(discussion) }
   end
 
-  def recent_discussion(group: test_group)
+  def recent_discussion(group: create_group)
     create_discussion!(:recent_discussion, group: group)
   end
 
@@ -28,12 +28,12 @@ module Development::DashboardHelper
   end
 
   def muted_group_discussion
-    create_discussion!(:muted_group_discussion, group: muted_test_group)
+    create_discussion!(:muted_group_discussion, group: muted_create_group)
   end
 
   private
 
-  def create_discussion!(name, group: test_group, author: patrick)
+  def create_discussion!(name, group: create_group, author: patrick)
     var_name = :"@#{name}"
     if existing = instance_variable_get(var_name)
       existing

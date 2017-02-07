@@ -3,6 +3,7 @@ class Events::NewPoll < Event
     create(kind: "new_poll",
            user: poll.author,
            eventable: poll,
+           announcement: poll.make_announcement,
            discussion: poll.discussion,
            created_at: poll.created_at).tap { |e| EventBus.broadcast('new_poll_event', e) }
   end

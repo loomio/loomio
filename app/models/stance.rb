@@ -30,4 +30,18 @@ class Stance < ActiveRecord::Base
   def author
     participant
   end
+
+  def choice=(choice)
+    if choice.kind_of?(Hash)
+      self.stance_choices_attributes = poll.poll_options.where(name: choice.keys).map do |option|
+        {poll_option_id: option.id,
+         score: choice[option.name]}
+      end
+    else
+      options = poll.poll_options.where(name: choice)
+      self.stance_choices_attributes = options.map do |option|
+        {poll_option_id: option.id}
+      end
+    end
+  end
 end
