@@ -1472,25 +1472,25 @@ en:
 
   poll_thread_item:
     # poll_poll
-    new_poll_poll: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'
-    new_poll_stance: '<strong>{{author}}</strong> voted:'
+    poll_created_poll: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'
+    poll_created_stance: '<strong>{{author}}</strong> voted:'
     poll_poll_edited: '<strong>{{author}}</strong> edited the poll: <span>{{title}}</span>'
     poll_poll_expired: 'Poll closed: <span>{{title}}</span>'
     poll_poll_closed_by_user: '<strong>{{author}}</strong> closed the poll: <span>{{title}}</span>'
 
     # poll_proposal
-    new_poll_proposal: '<strong>{{author}}</strong> started a proposal: <span>{{title}}</span>'
+    poll_created_proposal: '<strong>{{author}}</strong> started a proposal: <span>{{title}}</span>'
     new_proposal_stance: '<strong>{{author}}</strong> voted:'
     poll_proposal_edited: '<strong>{{author}}</strong> edited the proposal: <span>{{title}}</span>'
     poll_proposal_expired: 'Proposal closed: <span>{{title}}</span>'
     poll_proposal_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
 
     # poll_check_in
-    new_poll_check_in: '<strong>{{author}}</strong> started a check-in: <span>{{title}}</span>'
+    poll_created_check_in: '<strong>{{author}}</strong> started a check-in: <span>{{title}}</span>'
     new_check_in_stance: '<strong>{{author}}</strong> checked in:'
     poll_check_in_edited: '<strong>{{author}}</strong> edited the check-in: <span>{{title}}</span>'
     poll_check_in_expired: 'Check-in round finished: <span>{{title}}</span>'
     poll_check_in_closed_by_user: '<strong>{{author}}</strong> closed the check-in round: <span>{{title}}</span>'
 
     # outcome
-    new_outcome: '<strong>{{author}}</strong> shared an outcome:'
+    outcome_created: '<strong>{{author}}</strong> shared an outcome:'

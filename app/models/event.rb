@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
              motion_edited motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created
              motion_outcome_updated membership_requested invitation_accepted user_added_to_group user_joined_group
              new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted
-             new_poll new_stance new_outcome poll_closed_by_user poll_expired poll_edited]
+             poll_created stance_created outcome_created poll_closed_by_user poll_expired poll_edited]
 
   THREAD_EMAIL_KINDS = %w(new_comment motion_closing_soon motion_closed motion_outcome_created
                        new_discussion new_motion new_vote poll_closing_soon)

@@ -11,7 +11,7 @@ class PollService
     poll.save!
 
     EventBus.broadcast('poll_create', poll, actor)
-    Events::NewPoll.publish!(poll)
+    Events::PollCreated.publish!(poll)
   end
 
   # def self.set_communities(poll:, actor:, communities:)
@@ -41,7 +41,7 @@ class PollService
     hour_finish = hour_start + 1.hour
     this_hour_tomorrow = hour_start..hour_finish
     Poll.closing_soon_not_published(this_hour_tomorrow).each do |poll|
-      announcement = (poll.events.find_by(kind: 'new_poll') || Event.new).announcement
+      announcement = (poll.events.find_by(kind: 'poll_created') || Event.new).announcement
       Events::PollClosingSoon.publish!(poll, announcement)
     end
   end

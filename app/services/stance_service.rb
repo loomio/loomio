@@ -7,6 +7,6 @@ class StanceService
     actor.stances.where(poll: stance.poll).update_all(latest: false)
     stance.save!
     EventBus.broadcast 'stance_create', stance, actor
-    Events::NewStance.publish! stance
+    Events::StanceCreated.publish! stance
   end
 end

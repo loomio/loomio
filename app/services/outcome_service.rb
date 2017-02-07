@@ -8,6 +8,6 @@ class OutcomeService
     outcome.save!
 
     EventBus.broadcast 'outcome_create', outcome, actor
-    Events::NewOutcome.publish!(outcome)
+    Events::OutcomeCreated.publish!(outcome)
   end
 end

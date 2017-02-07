@@ -3,7 +3,7 @@ class PollMailer < BaseMailer
   REPLY_DELIMITER = "--"
 
   # emails sent to the group
-  def new_poll(recipient, event)
+  def poll_created(recipient, event)
     send_poll_email recipient, event
   end
 
@@ -11,7 +11,7 @@ class PollMailer < BaseMailer
     send_poll_email recipient, event
   end
 
-  def new_outcome(recipient, event)
+  def outcome_created(recipient, event)
     send_poll_email recipient, event
   end
 

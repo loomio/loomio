@@ -16,10 +16,10 @@ class Discussion < ActiveRecord::Base
                          motion_outcome_updated
                          discussion_edited
                          discussion_moved
-                         new_poll
+                         poll_created
                          poll_edited
-                         new_stance
-                         new_outcome
+                         stance_created
+                         outcome_created
                          poll_expired
                          poll_closed_by_user
                        ]

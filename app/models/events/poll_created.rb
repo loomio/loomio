@@ -1,11 +1,11 @@
-class Events::NewPoll < Event
+class Events::PollCreated < Event
   def self.publish!(poll)
-    create(kind: "new_poll",
+    create(kind: "poll_created",
            user: poll.author,
            eventable: poll,
            announcement: poll.make_announcement,
            discussion: poll.discussion,
-           created_at: poll.created_at).tap { |e| EventBus.broadcast('new_poll_event', e) }
+           created_at: poll.created_at).tap { |e| EventBus.broadcast('poll_created_event', e) }
   end
 
   def users_to_notify

@@ -78,7 +78,7 @@ class Dev::PollsController < Dev::BaseController
     last_email
   end
 
-  def test_new_poll_email
+  def test_poll_created_email
     poll_created_scenario(poll_type: 'poll')
     last_email
   end

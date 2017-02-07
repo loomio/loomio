@@ -30,10 +30,10 @@ EventBus.configure do |config|
   end
 
   # announce poll events
-  config.listen("new_poll_event",
+  config.listen("poll_created_event",
                 "poll_edited_event",
                 "poll_closing_soon_event",
-                "new_outcome_event") do |event|
+                "outcome_created_event") do |event|
     event.users_to_notify.each do |recipient|
       PollMailer.delay.send(event.kind, recipient, event)
     end if event.announcement
@@ -98,8 +98,8 @@ EventBus.configure do |config|
                 'discussion_description_edited_event',
                 'motion_description_edited_event',
                 'comment_liked_event',
-                'new_poll_event',
-                'new_stance_event') do |event|
+                'poll_created_event',
+                'stance_created_event') do |event|
     MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable.group)
   end
 
