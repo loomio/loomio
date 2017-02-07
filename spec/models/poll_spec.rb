@@ -12,4 +12,20 @@ describe Poll do
     poll.poll_options.build
     expect(poll.valid?).to eq false
   end
+
+  it 'allows closing dates in the future' do
+    poll.closing_at = 1.day.from_now
+    expect(poll).to be_valid
+  end
+
+  it 'disallows closing dates in the past' do
+    poll.closing_at = 1.day.ago
+    expect(poll).to_not be_valid
+  end
+
+  it 'allows past closing dates if it is closed' do
+    poll.closed_at = 1.day.ago
+    poll.closing_at = 1.day.ago
+    expect(poll).to be_valid
+  end
 end

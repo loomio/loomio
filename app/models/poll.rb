@@ -76,6 +76,7 @@ class Poll < ActiveRecord::Base
   # validates :communities, length: { minimum: 1 }
 
   validate :poll_options_are_valid
+  validate :closes_in_future
 
   alias_method :user, :author
 
@@ -184,6 +185,11 @@ class Poll < ActiveRecord::Base
     prevent_added_options   unless can_add_options
     prevent_removed_options unless can_remove_options
     prevent_empty_options   if     must_have_options
+  end
+
+  def closes_in_future
+    return if !self.active? || !self.closing_at || self.closing_at > Time.zone.now
+    errors.add(:closing_at, I18n.t(:"validate.motion.must_close_in_future"))
   end
 
   def prevent_added_options
