@@ -143,6 +143,10 @@ class Poll < ActiveRecord::Base
     template['chart_type']
   end
 
+  def has_variable_score
+    template['has_variable_score']
+  end
+
   def active?
     closed_at.nil?
   end
