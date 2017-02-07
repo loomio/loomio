@@ -88,11 +88,11 @@ class Dev::PollsController < Dev::BaseController
     last_email
   end
 
-  def test_proposal_closed_email
+  def test_proposal_expired_email
     discussion = fake_discussion(group: create_group_with_members)
     actor      = discussion.group.admins.first
-    poll       = saved(fake_poll(poll_type: 'proposal', discussion: discussion, author: actor))
-    PollService.close(poll: poll, actor: actor)
+    poll       = create_fake_poll_with_stances(discussion: discussion, poll_type: 'proposal', closing_at: 1.day.ago)
+    PollService.expire_lapsed_polls
     last_email
   end
 end
