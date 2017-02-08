@@ -1,6 +1,6 @@
-angular.module('loomioApp').directive 'pollCommonOutcomePanel', (Records, ModalService) ->
+angular.module('loomioApp').directive 'pollCommonOutcomePanel', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/outcome_panel/poll_common_outcome_panel.html'
-  controller: ($scope) ->
+  controller: ($scope, AbilityService) ->
     showUpdateButton: ->
       AbilityService.canSetPollOutcome($scope.poll)
