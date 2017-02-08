@@ -51,3 +51,14 @@
 .poll-mailer__text-align-center {
   text-align: center;
 }
+
+.poll-mailer-proposal__chart-legend {
+  display: inline-block;
+  vertical-align: top;
+  padding: 20px;
+}
+
+.poll-mailer-proposal__chart-legend td {
+  border-bottom: 2px solid;
+  padding-top: 10px;
+}
