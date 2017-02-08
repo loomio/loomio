@@ -116,6 +116,25 @@ module Dev::PollsHelper
       poll: poll}
   end
 
+  def poll_closing_soon_with_vote_scenario(poll_type:)
+    discussion = fake_discussion(group: create_group_with_members)
+    actor      = discussion.group.admins.first
+    poll       = saved(create_fake_poll_with_stances(make_announcement: true,
+                                                     author: actor,
+                                                     poll_type: poll_type,
+                                                     discussion: discussion,
+                                                     closing_at: 1.day.from_now))
+    voter      = poll.stances.last.participant
+    discussion.group.add_member! voter
+    PollService.create(poll: poll, actor: actor)
+    PollService.publish_closing_soon
+
+    { discussion: discussion,
+      voter: voter,
+      actor: actor,
+      poll: poll}
+  end
+
   def poll_expired_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor      = discussion.group.admins.first

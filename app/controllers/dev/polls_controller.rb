@@ -38,6 +38,11 @@ class Dev::PollsController < Dev::BaseController
     last_email(to: scenario[:non_voter].email)
   end
 
+  def test_check_in_closing_soon_with_vote_email
+    scenario = poll_closing_soon_with_vote_scenario(poll_type: 'check_in')
+    last_email(to: scenario[:voter].email)
+  end
+
   def test_check_in_closing_soon_author_email
     scenario = poll_closing_soon_scenario(poll_type: 'check_in')
     last_email(to: scenario[:actor].email)
@@ -63,6 +68,12 @@ class Dev::PollsController < Dev::BaseController
     last_email(to: scenario[:non_voter].email)
   end
 
+  def test_proposal_closing_soon_with_vote_email
+    scenario = poll_closing_soon_with_vote_scenario(poll_type: 'proposal')
+    last_email(to: scenario[:voter].email)
+  end
+
+
   def test_proposal_closing_soon_author_email
     scenario = poll_closing_soon_scenario(poll_type: 'proposal')
     last_email(to: scenario[:actor].email)
@@ -86,6 +97,11 @@ class Dev::PollsController < Dev::BaseController
   def test_poll_closing_soon_email
     scenario = poll_closing_soon_scenario(poll_type: 'poll')
     last_email(to: scenario[:non_voter].email)
+  end
+
+  def test_poll_closing_soon_with_vote_email
+    scenario = poll_closing_soon_with_vote_scenario(poll_type: 'poll')
+    last_email(to: scenario[:voter].email)
   end
 
   def test_poll_closing_soon_author_email

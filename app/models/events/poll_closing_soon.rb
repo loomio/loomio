@@ -7,7 +7,6 @@ class Events::PollClosingSoon < Event
   end
 
   def users_to_notify
-    eventable.watchers.without(eventable.participants)
-                      .without(eventable.author)
+    eventable.watchers.without(eventable.author)
   end
 end
