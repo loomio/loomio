@@ -80,7 +80,8 @@ class Dev::PollsController < Dev::BaseController
   end
 
   def test_proposal_expired_email
-    poll_expired_scenario(poll_type: 'proposal')
+    scenario = poll_expired_scenario(poll_type: 'proposal')
+    sign_in scenario[:actor]
     last_email
   end
 
@@ -101,6 +102,7 @@ class Dev::PollsController < Dev::BaseController
 
   def test_poll_closing_soon_with_vote_email
     scenario = poll_closing_soon_with_vote_scenario(poll_type: 'poll')
+    sign_in scenario[:voter]
     last_email(to: scenario[:voter].email)
   end
 

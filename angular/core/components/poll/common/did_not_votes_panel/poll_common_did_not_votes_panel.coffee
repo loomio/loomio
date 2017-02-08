@@ -8,12 +8,6 @@ angular.module('loomioApp').directive 'pollCommonDidNotVotesPanel', (Records, Re
 
     collection = $scope.poll.isActive() ? 'memberships' : 'poll_did_not_votes'
 
-    $scope.loader = new RecordLoader
-      collection: collection
-      per: 1
-      params:
-        poll_id: $scope.poll.key
-
     didNotVotesLoader = new RecordLoader
       collection: 'poll_did_not_votes'
       params:

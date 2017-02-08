@@ -213,6 +213,10 @@ $cardPaddingSize: 15px;
   @include displayFlex;
 }
 
+.lmo-flex__no-shrink {
+  flex-shrink: 0;
+}
+
 @mixin flexRow {
   flex-direction: row;
   -webkit-flex-direction: row;

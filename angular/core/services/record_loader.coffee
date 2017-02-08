@@ -8,6 +8,10 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
       @per        = opts.per or 25
       @numLoaded  = opts.numLoaded or 0
 
+    reset: ->
+      @from       = 0
+      @numLoaded  = 0
+
     fetchRecords: ->
       Records[_.camelCase(@collection)].fetch
         path:   @path
