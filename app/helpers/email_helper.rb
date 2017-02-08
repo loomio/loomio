@@ -67,7 +67,7 @@ module EmailHelper
   end
 
   def percentage_for(poll, index)
-    if poll.stance_counts.max <= 0
+    if poll.stance_counts.max.to_i <= 0
       0
     else
       (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i

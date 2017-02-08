@@ -91,9 +91,12 @@ module Dev::PollsHelper
   def poll_created_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor = discussion.group.admins.first
+    user  = saved(fake_user)
+    discussion.group.add_member! user
     PollService.create(poll: fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type), actor: actor)
 
     {discussion: discussion,
+     recipient: user,
      actor: actor}
   end
 

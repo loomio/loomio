@@ -78,6 +78,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     isActive: ->
       !@closedAt?
 
+    isClosed: ->
+      @closedAt?
+
     goal: ->
       @customFields.goal or @communitySize()
 

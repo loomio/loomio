@@ -35,3 +35,19 @@
 .poll-mailer-proposal__thumb-image {
   width: 55px;
 }
+
+.poll-mailer__create-outcome-button {
+  background-color: #5cb85c;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 80px;
+  padding: 12px 30px;
+}
+
+.poll-mailer__text-align-center {
+  text-align: center;
+}

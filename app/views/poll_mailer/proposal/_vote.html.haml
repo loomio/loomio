@@ -1,14 +1,15 @@
 %h3= t(:"poll_mailer.your_response")
 - if @info.recipient_stance
+  - option = @info.recipient_stance.poll_options.first
   %table
     %tr
       %td= image_tag "poll_mailer/vote-button-#{option.name}.png", alt: "#{option.name} icon", class: 'poll-mailer-proposal__thumb-image'
-      %td= @info.recipient_stance.poll_option.name
-      %td= link_to t(:"poll_mailer.change_your_stance", poll_url(@info.poll, utm_hash.merge(change_vote: true)))
+      %td= t("poll_proposal_options.#{option.name}")
+      %td= link_to t(:"poll_mailer.common.change_your_stance"), poll_url(@info.poll, @utm_hash.merge(change_vote: true))
   %p= @info.recipient_stance.reason
 - else
   %table
-  - @info.poll.poll_options.each do |option|
-    %tr
-      %td= image_tag "poll_mailer/vote-button-#{option.name}.png", alt: "#{option.name} icon", class: 'poll-mailer-proposal__thumb-image'
-      %td= link_to t("poll_proposal_options.#{option.name}"), poll_url(@info.poll, utm_hash.merge(poll_option_id: option.id))
+    - @info.poll.poll_options.each do |option|
+      %tr
+        %td= image_tag "poll_mailer/vote-button-#{option.name}.png", alt: "#{option.name} icon", class: 'poll-mailer-proposal__thumb-image'
+        %td= link_to t("poll_proposal_options.#{option.name}"), poll_url(@info.poll, @utm_hash.merge(poll_option_id: option.id))

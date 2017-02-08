@@ -368,6 +368,8 @@ en:
       unsubscribe: Unsubscribe
       results: Results
       responses: Responses
+      change_your_stance: Change
+      create_outcome: Share outcome
 
     proposal:
       subject:
