@@ -16,8 +16,10 @@
   max-width: 400px;
 }
 
-.poll-common-vote-form__radio-button {
-  margin-right: 20px;
+.poll-common-vote-form__radio-button--poll {
+  border-left: 8px solid;
+  margin-left: -16px;
+  padding-left: 16px;
 }
 
 .poll-common-vote-form__radio-button .md-container {
