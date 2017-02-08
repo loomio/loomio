@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'PollCommonOutcomeForm', ->
       draftFields: ['statement']
 
     TranslationService.eagerTranslate $scope,
-      statementPlaceholder: 'poll_common.statement_placeholder'
+      statementPlaceholder: 'poll_common_outcome_form.statement_placeholder'
 
     MentionService.applyMentions($scope, $scope.outcome)
     KeyEventService.submitOnEnter($scope)

@@ -1315,17 +1315,12 @@ en:
     your_response: Your response
     change_your_response: Change your response
     reason: Reason
-    set_an_outcome: Set an outcome
-    set_outcome_title: This proposal has closed
-    set_outcome_text: This proposal has closed  It's up to you to decide what the results of the proposal mean to the group
-    set_outcome: Set outcome
     results: Results
     vote: Vote
     votes: Votes
     update_outcome: Update outcome
     outcome: Outcome
     statement: Statement
-    statement_placeholder: What is your conclusion of this proposal and what will happen next?
     change_your_stance_title: Changed your mind?
     change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
@@ -1377,9 +1372,22 @@ en:
   poll_common_accordion:
     title: Recent activity
 
+  poll_common_set_outcome_panel:
+    share_outcome: Share outcome
+    poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
+    proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
+    check_in: 'This check-in has closed. <strong>Share an outcome</strong> to complete the process.'
+
   poll_common_outcome_form:
+    new_title: Share an outcome
+    update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
+    statement_placeholder: Summarise the responses and explain what will happen next.
+    submit: Share outcome
+
+  poll_common_outcome_panel:
+    authored_by: 'By {{name}}'
 
   poll_proposal_form:
     start_a_proposal: Start a proposal

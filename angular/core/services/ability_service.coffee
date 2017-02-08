@@ -148,7 +148,12 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       Session.user().locale != model.author().locale
 
     canEditPoll: (poll) ->
-      poll.isActive() and
+      poll.isActive() and @isPollAuthorOrGroupAdmin(poll)
+
+    canSetPollOutcome: (poll) ->
+      poll.isClosed() and @isPollAuthorOrGroupAdmin(poll)
+
+    isPollAuthorOrGroupAdmin: (poll) ->
       (@canAdministerGroup(poll.group()) or
       # NB: discussion dependency here, to be factored out.
       (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))

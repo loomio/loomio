@@ -6,5 +6,3 @@
       %md-button.md-primary{ng-click: "openStanceForm()", translate: "poll_common.change_your_stance", aria-label: "{{ 'poll_common.change_your_stance' | translate }}"}
     %md-list.md-block{ng-if: "!userHasVoted()"}
       %poll_common_directive{stance: "stance", name: "vote_form"}
-  %section{ng-if: "poll.closedAt"}
-    %poll_common_outcome_panel{poll: "poll"}

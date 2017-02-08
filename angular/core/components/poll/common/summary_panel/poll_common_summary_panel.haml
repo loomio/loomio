@@ -1,10 +1,7 @@
 .poll-common-summary-panel
-  %poll_common_actions_dropdown.pull-right{poll: "poll", ng-if: "pollHasActions()"}
-  .poll-common-summary-panel__header.lmo-flex
-    %i.material-icons {{icon()}}
-    %h2.lmo-card-heading{translate: "poll_types.{{poll.pollType}}"}
-
   %h3.poll-common-summary-panel__title {{poll.title}}
+  %poll_common_outcome_panel{poll: "poll"}
+  %h3.lmo-card-subheading{translate: "poll_types.{{poll.pollType}}"}
   .poll-common-summary-panel__started-by
     %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
     %span{aria-hidden: "true"}>·

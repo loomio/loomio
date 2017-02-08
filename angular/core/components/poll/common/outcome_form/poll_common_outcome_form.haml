@@ -2,17 +2,17 @@
   .lmo-disabled-form{ng-show: "isDisabled"}
   .modal-header.poll-common-modal-header
     %i.material-icons thumbs_up_down
-    %h1.lmo-h1{ng-if: "outcome.isNew()", translate: "poll_common.set_an_outcome"}
-    %h1.lmo-h1{ng-if: "!outcome.isNew()", translate: "poll_common.update_outcome"}
+    %h1.lmo-h1{ng-if: "outcome.isNew()", translate: "poll_common_outcome_form.new_title"}
+    %h1.lmo-h1{ng-if: "!outcome.isNew()", translate: "poll_common_outcome_form.update_title"}
     %modal_header_cancel_button
 
   .modal-body
     %md-input-container.md-block
       %label{translate: "poll_common.statement"}
-      %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
+      %textarea.lmo-primary-form-input{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
       %validation_errors{subject: "outcome", field: "statement"}
 
   %poll_common_notify_group{model: "outcome"}
 
   .modal-footer
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common.set_outcome", aria-label: "{{poll_common.set_outcome | translate}}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}
