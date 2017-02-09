@@ -1,6 +1,9 @@
+-# optionally display only stances created since a given date
+- since ||= 100.years.ago
+
 .poll-mailer-common-responses
   %h3= t(:"poll_mailer.common.responses")
-  - @info.poll.grouped_stance_choices.each do |poll_option, stance_choices|
+  - @info.poll.grouped_stance_choices(since: since).each do |poll_option, stance_choices|
     .poll-mailer-common-responses__poll-option{style: "border-color: #{poll_option.color}"}
       %h4
         - if @info.poll.translate_option_name

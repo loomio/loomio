@@ -84,6 +84,12 @@ class Dev::PollsController < Dev::BaseController
     view_last_email_for(scenario[:observer])
   end
 
+  def test_proposal_missed_yesterday_email
+    scenario = poll_missed_yesterday_scenario(poll_type: 'proposal')
+    UserMailer.missed_yesterday(scenario[:recipient]).deliver_now
+    last_email
+  end
+
   def test_proposal_outcome_created_email
     scenario = poll_outcome_created_scenario(poll_type: 'proposal')
     view_last_email_for(scenario[:observer])
@@ -119,22 +125,12 @@ class Dev::PollsController < Dev::BaseController
     view_last_email_for(scenario[:observer])
   end
 
+  def test_poll_missed_yesterday_email
+    scenario = poll_missed_yesterday_scenario(poll_type: 'poll')
+    UserMailer.missed_yesterday(scenario[:recipient]).deliver_now
+    last_email
+  end
 
-  # def test_proposal_created_email
-  #   discussion = fake_discussion(group: create_group_with_members)
-  #   actor = discussion.group.admins.first
-  #   PollService.create(poll: fake_poll(discussion: discussion, poll_type: 'proposal', make_announcement: true), actor: actor)
-  #   last_email
-  # end
-  #
-  # def test_proposal_expired_email
-  #   discussion = fake_discussion(group: create_group_with_members)
-  #   actor      = discussion.group.admins.first
-  #   poll       = create_fake_poll_with_stances(discussion: discussion, poll_type: 'proposal')
-  #   poll.update_attribute(:closing_at, 1.day.ago)
-  #   PollService.expire_lapsed_polls
-  #   last_email
-  # end
   # TODO: make this not broken
   # def test_poll_edited_email
   #   discussion = fake_discussion(group: create_group_with_members)

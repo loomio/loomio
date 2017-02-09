@@ -59,6 +59,7 @@ class Poll < ActiveRecord::Base
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
+  scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      active
@@ -99,8 +100,11 @@ class Poll < ActiveRecord::Base
 
   # creates a hash which has a PollOption as a key, and a list of stance
   # choices associated with that PollOption as a value
-  def grouped_stance_choices
-    @grouped_stance_choices ||= stance_choices.includes(:poll_option, stance: :participant).to_a.group_by(&:poll_option)
+  def grouped_stance_choices(since: nil)
+    @grouped_stance_choices ||= stance_choices.where("stance_choices.created_at > ?", since || 100.years.ago)
+                                              .includes(:poll_option, stance: :participant)
+                                              .to_a
+                                              .group_by(&:poll_option)
   end
 
   def update_stance_data
@@ -142,6 +146,10 @@ class Poll < ActiveRecord::Base
 
   def chart_type
     template['chart_type']
+  end
+
+  def has_option_icons
+    template['has_option_icons']
   end
 
   def has_variable_score

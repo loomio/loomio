@@ -8,7 +8,7 @@ class PollEmailInfo
     "some reason"
   end
 
-  def initialize(recipient:, poll:, actor:, action_name:)
+  def initialize(recipient:, poll:, actor: nil, action_name:)
     @recipient   = recipient
     @poll        = poll
     @actor       = actor || LoggedOutUser.new
@@ -27,11 +27,20 @@ class PollEmailInfo
     @poll.current_outcome
   end
 
+  def choice_img
+    prefix = @info.poll.multiple_choice ? 'check' : 'radio'
+    "poll_mailer/#{prefix}_off.png"
+  end
+
   def links
     {
       unsubscribe: unsubscribe_url,
       target:      target_url
     }
+  end
+
+  def utm_hash(args = {})
+    { utm_medium: 'email', utm_campaign: 'poll_mailer', utm_source: action_name }.merge(args)
   end
 
   private
@@ -42,9 +51,5 @@ class PollEmailInfo
 
   def target_url
     poll_url poll, utm_hash
-  end
-
-  def utm_hash
-    { utm_medium: 'email', utm_campaign: 'poll_mailer', utm_source: action_name }
   end
 end
