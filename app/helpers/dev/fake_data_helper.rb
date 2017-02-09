@@ -47,6 +47,24 @@ module Dev::FakeDataHelper
     Poll.new(options)
   end
 
+  def fake_stance(args = {})
+    poll = args[:poll] || saved(fake_poll)
+    Stance.new({
+      poll: poll,
+      participant: fake_user,
+      reason: Faker::Hacker.say_something_smart,
+      stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}]
+    }.merge(args))
+  end
+
+  def fake_comment(args = {})
+    Comment.new({
+      discussion: fake_discussion,
+      body: Faker::ChuckNorris.fact,
+      author: fake_user
+    }.merge(args))
+  end
+
   def fake_outcome(args = {})
     Outcome.new({poll: fake_poll,
                 author: fake_user,

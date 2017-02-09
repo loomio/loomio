@@ -388,6 +388,9 @@ en:
         poll_expired: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
 
+      body:
+        voted: '<strong>%{participant}</strong> voted:'
+
     poll:
       subject:
         poll_created: '%{actor} started a poll: %{title}'
@@ -405,6 +408,9 @@ en:
         poll_expired: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
 
+      body:
+        voted: '<strong>%{participant}</strong> chose:'
+
     check_in:
       subject:
         poll_created: '%{actor} started a check-in round: %{title}'
@@ -421,3 +427,6 @@ en:
         poll_closing_soon_author: 'Your check-in is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Your check-in has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a check-in summary.'
+
+      body:
+        voted: '<strong>%{participant}</strong> checked in:'

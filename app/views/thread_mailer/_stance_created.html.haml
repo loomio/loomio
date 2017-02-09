@@ -1,0 +1,16 @@
+- stance = item.eventable
+
+%table
+  %tr
+    %td.icon
+      = link_to user_url(stance.participant) do
+        %div{class: "medium-user-avatar #{stance.participant.avatar_kind}-user-avatar avatar-canvas"}
+          = render "poll_mailer/common/avatar", participant: stance.participant
+    %td
+      %table
+        %tr
+          %td= raw t(:"poll_mailer.#{stance.poll.poll_type}.body.voted", participant: stance.participant.name)
+          - stance.stance_choices.each do |choice|
+            = render "poll_mailer/common/poll_option", poll_option: choice.poll_option
+  %tr
+    %td{colspan: 100}= render_rich_text(stance.reason)

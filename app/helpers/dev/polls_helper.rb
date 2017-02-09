@@ -3,18 +3,6 @@ module Dev::PollsHelper
 
   private
 
-  def render_poll_email(poll, action_name)
-    create_info(poll: poll)
-    render "poll_mailer/#{action_name}", layout: 'poll_mailer'
-  end
-
-  def create_info(poll: , recipient: fake_user, actor: fake_user)
-    @info = PollEmailInfo.new(poll: poll,
-                              recipient: recipient,
-                              actor: actor,
-                              action_name: action_name)
-  end
-
   def create_fake_poll_with_stances(args = {})
     poll = saved fake_poll(args)
     create_fake_stances(poll: poll)
@@ -162,5 +150,19 @@ module Dev::PollsHelper
       actor: actor,
       outcome: outcome,
       poll: poll}
+  end
+
+  def poll_missed_yesterday_scenario(poll_type:)
+    scenario  = poll_expired_scenario(poll_type: poll_type)
+    recipient = saved fake_user
+    scenario[:discussion].group.add_member! recipient
+    poll = scenario[:poll]
+    poll.update(multiple_choice: poll_type.to_sym == :poll)
+    choices =  [{poll_option_id: poll.poll_option_ids[0]}]
+    choices += [{poll_option_id: poll.poll_option_ids[1]}] if poll.multiple_choice
+
+    StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: recipient)
+
+    scenario.merge(recipient: recipient)
   end
 end

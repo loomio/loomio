@@ -6,6 +6,5 @@
     - @info.poll.poll_options.each do |option|
       %tr
         %td= render 'poll_mailer/common/chip', color: option.color
-        - prefix = @info.poll.multiple_choice ? 'check' : 'radio'
-        %td= image_tag "poll_mailer/#{prefix}_off.png", alt: 'single choice', class: 'poll-mailer__select-ui'
+        %td= image_tag @info.choice_img, class: 'poll-mailer__select-ui'
         %td= link_to option.name, poll_url(@info.poll, poll_option_id: option.id)
