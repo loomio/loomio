@@ -38,3 +38,6 @@ angular.module('loomioApp').directive 'pollCommonVotesPanel', (PollService, Reco
       $scope.loader.fetchRecords()
 
     $scope.loader.fetchRecords()
+    
+    $scope.$on 'refreshStance', ->
+      $scope.loader.fetchRecords()

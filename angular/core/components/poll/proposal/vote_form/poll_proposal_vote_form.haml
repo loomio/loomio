@@ -6,6 +6,7 @@
         %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
         %span.poll-proposal-vote-form__chosen-option--name{translate: "poll_proposal_options.{{option.name}}"}
 
+  .poll-common-vote-form__reason
     %md-input-container.md-block
       %label{translate: "poll_common.reason"}
       %input.lmo-primary-form-input{type: "text", placeholder: "{{reasonPlaceholder()}}", ng-model: "stance.reason", md-max-length: "250"}

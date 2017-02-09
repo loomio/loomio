@@ -155,8 +155,8 @@ $boxFeaturedSize: 175px;
   i{ color: $grey-on-white; }
 }
 
-$thinPaddingSize: 10px;
-$cardPaddingSize: 15px;
+$thinPaddingSize: 8px;
+$cardPaddingSize: 16px;
 @mixin cardPadding {
   padding: $cardPaddingSize;
 }

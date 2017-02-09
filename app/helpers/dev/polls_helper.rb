@@ -143,10 +143,11 @@ module Dev::PollsHelper
     actor      = discussion.group.admins.first
     poll       = create_fake_poll_with_stances(discussion: discussion, poll_type: poll_type)
     poll.update_attribute(:closing_at, 1.day.ago)
+    poll.discussion.group.add_member! poll.author
     PollService.expire_lapsed_polls
     { discussion: discussion,
       actor: actor,
-      observer: actor,
+      observer: poll.author,
       poll: poll}
   end
 
@@ -160,7 +161,7 @@ module Dev::PollsHelper
                                                closed_at: 1.day.ago,
                                                closing_at: 1.day.ago)
     outcome    = fake_outcome(poll: poll, make_announcement: true)
-    
+
     OutcomeService.create(outcome: outcome, actor: actor)
     { discussion: discussion,
       observer: observer,

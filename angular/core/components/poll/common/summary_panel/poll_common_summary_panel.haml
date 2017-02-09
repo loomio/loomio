@@ -1,7 +1,7 @@
 .poll-common-summary-panel
   %h3.poll-common-summary-panel__title {{poll.title}}
   %poll_common_outcome_panel{poll: "poll"}
-  %h3.lmo-card-subheading{translate: "poll_types.{{poll.pollType}}"}
+  %h3.lmo-card-subheading{translate: "poll_types.{{poll.pollType}}", ng-if: "poll.outcome()"}
   .poll-common-summary-panel__started-by
     %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
     %span{aria-hidden: "true"}>·

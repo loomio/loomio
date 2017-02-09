@@ -10,7 +10,7 @@ class Dev::BaseController < ApplicationController
   end
 
   def view_last_email_for(recipient)
-    @email = ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(recipient.email) }.first
+    @email = ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(recipient.email) }.last
     sign_in recipient
     render template: 'dev/main/last_email', layout: false
   end

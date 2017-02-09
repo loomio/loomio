@@ -30,65 +30,63 @@ class Dev::PollsController < Dev::BaseController
 
   def test_check_in_created_email
     scenario = poll_created_scenario(poll_type: 'check_in')
-    sign_in scenario['recipient']
-    last_email
+    view_last_email_for(scenario[:observer])
   end
 
   def test_check_in_closing_soon_email
     scenario = poll_closing_soon_scenario(poll_type: 'check_in')
-    last_email(to: scenario[:non_voter].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_check_in_closing_soon_with_vote_email
     scenario = poll_closing_soon_with_vote_scenario(poll_type: 'check_in')
-    last_email(to: scenario[:voter].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_check_in_closing_soon_author_email
     scenario = poll_closing_soon_scenario(poll_type: 'check_in')
-    last_email(to: scenario[:actor].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_check_in_expired_email
-    poll_expired_scenario(poll_type: 'check_in')
-    last_email
+    scenario = poll_expired_scenario(poll_type: 'check_in')
+    view_last_email_for(scenario[:observer])
   end
 
   def test_check_in_outcome_created_email
-    poll_outcome_created_scenario(poll_type: 'check_in')
-    last_email
+    scenario = poll_outcome_created_scenario(poll_type: 'check_in')
+    view_last_email_for(scenario[:observer])
   end
 
   def test_proposal_created_email
-    poll_created_scenario(poll_type: 'proposal')
-    last_email
+    scenario = poll_created_scenario(poll_type: 'proposal')
+    view_last_email_for(scenario[:observer])
   end
 
   def test_proposal_closing_soon_email
     scenario = poll_closing_soon_scenario(poll_type: 'proposal')
-    last_email(to: scenario[:non_voter].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_proposal_closing_soon_with_vote_email
     scenario = poll_closing_soon_with_vote_scenario(poll_type: 'proposal')
-    last_email(to: scenario[:voter].email)
+    view_last_email_for(scenario[:observer])
   end
 
 
   def test_proposal_closing_soon_author_email
     scenario = poll_closing_soon_scenario(poll_type: 'proposal')
-    last_email(to: scenario[:actor].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_proposal_expired_email
     scenario = poll_expired_scenario(poll_type: 'proposal')
-    sign_in scenario[:actor]
-    last_email
+    view_last_email_for(scenario[:observer])
   end
 
   def test_proposal_outcome_created_email
-    poll_outcome_created_scenario(poll_type: 'proposal')
-    last_email
+    scenario = poll_outcome_created_scenario(poll_type: 'proposal')
+    view_last_email_for(scenario[:observer])
   end
 
   def test_poll_created_email
@@ -108,7 +106,7 @@ class Dev::PollsController < Dev::BaseController
 
   def test_poll_closing_soon_author_email
     scenario = poll_closing_soon_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:observer])
+    view_last_email_for(scenario[:actor])
   end
 
   def test_poll_expired_email
