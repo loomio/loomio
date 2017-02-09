@@ -1,7 +1,7 @@
 %form.poll-poll-vote-form
   .poll-poll-vote-form__options{ng-if: "!stance.poll().multipleChoice"}
     %md-radio-group{ng-model: "vars.pollOptionId"}
-      %md-radio-button.poll-common-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option.id"}
+      %md-radio-button.poll-common-vote-form__radio-button.poll-common-vote-form__radio-button--poll{ng-repeat: "option in stance.poll().pollOptions()", ng-style: "{'border-color': option.color}", ng-value: "option.id"}
         %span.poll-poll-vote-form__chosen-option--name {{option.name}}
   %md-list.poll-poll-vote-form__options{ng-if: "stance.poll().multipleChoice"}
     %md-list-item{ng-repeat: "option in stance.poll().pollOptions()"}
