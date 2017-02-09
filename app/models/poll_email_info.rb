@@ -28,7 +28,7 @@ class PollEmailInfo
   end
 
   def choice_img
-    prefix = @info.poll.multiple_choice ? 'check' : 'radio'
+    prefix = @poll.multiple_choice ? 'check' : 'radio'
     "poll_mailer/#{prefix}_off.png"
   end
 
