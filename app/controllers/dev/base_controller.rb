@@ -9,6 +9,12 @@ class Dev::BaseController < ApplicationController
     render 'dev/main/index', layout: false
   end
 
+  def view_last_email_for(recipient)
+    @email = ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(recipient.email) }.first
+    sign_in recipient
+    render template: 'dev/main/last_email', layout: false
+  end
+
   def last_email(to: nil)
     @email = if to.present?
       ActionMailer::Base.deliveries.select { |email| Array(email.to).include?(to) }

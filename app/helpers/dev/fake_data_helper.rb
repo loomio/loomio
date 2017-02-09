@@ -48,8 +48,9 @@ module Dev::FakeDataHelper
   end
 
   def fake_outcome(args = {})
-    Outcome.new({poll: fake_poll,
-                author: fake_user,
+    poll = fake_poll
+    Outcome.new({poll: poll,
+                author: poll.author,
                 statement: Faker::Hipster.sentence}.merge(args))
   end
 

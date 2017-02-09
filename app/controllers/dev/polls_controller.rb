@@ -29,7 +29,8 @@ class Dev::PollsController < Dev::BaseController
   end
 
   def test_check_in_created_email
-    poll_created_scenario(poll_type: 'check_in')
+    scenario = poll_created_scenario(poll_type: 'check_in')
+    sign_in scenario['recipient']
     last_email
   end
 
@@ -92,34 +93,32 @@ class Dev::PollsController < Dev::BaseController
 
   def test_poll_created_email
     scenario = poll_created_scenario(poll_type: 'poll')
-    last_email(to: scenario[:recipient].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_poll_closing_soon_email
     scenario = poll_closing_soon_scenario(poll_type: 'poll')
-    last_email(to: scenario[:non_voter].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_poll_closing_soon_with_vote_email
     scenario = poll_closing_soon_with_vote_scenario(poll_type: 'poll')
-    sign_in scenario[:voter]
-    last_email(to: scenario[:voter].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_poll_closing_soon_author_email
     scenario = poll_closing_soon_scenario(poll_type: 'poll')
-    last_email(to: scenario[:actor].email)
+    view_last_email_for(scenario[:observer])
   end
 
   def test_poll_expired_email
     scenario = poll_expired_scenario(poll_type: 'poll')
-    sign_in scenario[:actor]
-    last_email
+    view_last_email_for(scenario[:observer])
   end
 
   def test_poll_outcome_created_email
     poll_outcome_created_scenario(poll_type: 'poll')
-    last_email
+    view_last_email_for(scenario[:observer])
   end
 
 
