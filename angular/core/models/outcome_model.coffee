@@ -15,3 +15,6 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
 
     group: ->
       @poll().group() if @poll()
+
+    communitySize: ->
+      @poll().communitySize()
