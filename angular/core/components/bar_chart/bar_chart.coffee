@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
   template: '<div class="bar-chart"></div>'
   replace: true
   scope:
-    stanceData: '='
+    stanceCounts: '='
     size: '@'
   restrict: 'E'
   controller: ($scope, $element) ->
@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
     shapes = []
 
     scoreData = ->
-      _.take(_.map(_.pairs($scope.stanceData), ([_, score], index) ->
+      _.take(_.map($scope.stanceCounts, (score, index) ->
         { color: AppConfig.pollColors.poll[index], index: index, score: score }), 5)
 
     scoreMaxValue = ->
@@ -29,7 +29,7 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
             .x(0)
             .y(index * barHeight)
 
-    $scope.$watchCollection 'stanceData', ->
+    $scope.$watchCollection 'stanceCounts', ->
       _.each shapes, (shape) -> shape.remove()
       return drawPlaceholder() unless scoreData().length > 0 and scoreMaxValue() > 0
       barHeight = $scope.size / scoreData().length
