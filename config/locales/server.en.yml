@@ -1,5 +1,8 @@
 ---
 en:
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
   validate:
     motion:
       must_close_in_future: Proposal must close in the future.
@@ -377,7 +380,7 @@ en:
       subject:
         poll_created: '%{actor} started a proposal: %{title}'
         poll_updated: '%{actor} edited the proposal: %{title}'
-        poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
+        poll_closing_soon: 'Final reminder: Please respond before 5pm Friday: %{title}'
         poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
         poll_expired: 'Your proposal has closed. Please share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'

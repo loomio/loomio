@@ -1,6 +1,7 @@
+= l Time.now, :poll_mailer_closing_soon
 = render "poll_mailer/common/header"
 = render "poll_mailer/common/summary"
 = render "poll_mailer/#{@info.poll_type}/vote"
-= render "poll_mailer/#{@info.poll_type}/chart"
-= render "poll_mailer/common/responses"
+-# = render "poll_mailer/#{@info.poll_type}/chart"
+-# = render "poll_mailer/common/responses"
 = render "poll_mailer/common/footer"
