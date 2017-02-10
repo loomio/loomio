@@ -4,7 +4,7 @@
     .md-subhead.md-primary
       %strong> {{formattedPollType(poll.pollType)}}:
       %span> {{poll.title}}
-    .md-body-1.md-secondary
+    .md-caption.lmo-grey-on-white
       %span{translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.author().name}}"}>
       %span>·
       %poll_common_closing_at{poll: "poll"}

@@ -33,6 +33,10 @@ $block-color: #CE261B;
 // z-indexes
 $over-intercom: 2147483001; // On top of Intercom's arbitrarily high widget
 
+.lmo-grey-on-white {
+  color: $grey-on-white;  
+}
+
 @mixin fontTiny {
   font-size: 12px;
   line-height: 14px;

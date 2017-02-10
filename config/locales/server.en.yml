@@ -370,6 +370,8 @@ en:
       responses: Responses
       change_your_stance: Change
       create_outcome: Share outcome
+      your_response: Your response
+      please_respond: Please respond
 
     proposal:
       subject:

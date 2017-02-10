@@ -1,7 +1,8 @@
-%h3= t(:"poll_mailer.your_response")
 - if @info.recipient_stance
+  %h3= t(:"poll_mailer.common.your_response")
   = render 'poll_mailer/common/your_response'
 - else
+  %h3= t(:"poll_mailer.common.please_respond")
   %table
     - @info.poll.poll_options.each do |option|
       %tr

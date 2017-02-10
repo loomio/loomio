@@ -1325,6 +1325,7 @@ en:
     change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
     change_your_stance: Change your vote
     load_more: Load more
+    details: Details
 
   poll_common_card:
     show_results: Show results

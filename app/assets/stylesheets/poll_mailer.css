@@ -53,6 +53,19 @@
   padding: 12px 30px;
 }
 
+.poll-mailer__vote-button {
+  /*border: 1px solid #70c9f8;*/
+  border: 2px solid black;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  /*background-color: #70c9f8;*/
+  /*color: white;*/
+}
+
+.poll-mailer__vote-buttons-list {
+}
+
 .poll-mailer__text-align-center {
   text-align: center;
 }

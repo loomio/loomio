@@ -1,5 +1,5 @@
-%h3= t(:"poll_mailer.your_response")
 - if @info.recipient_stance
+  %h3= t(:"poll_mailer.common.your_response")
   - option = @info.recipient_stance.poll_options.first
   %table
     %tr
@@ -8,6 +8,7 @@
       %td= link_to t(:"poll_mailer.common.change_your_stance"), poll_url(@info.poll, @info.utm_hash(change_vote: true))
   %p= @info.recipient_stance.reason
 - else
+  %h3= t(:"poll_mailer.common.please_respond")
   %table
     - @info.poll.poll_options.each do |option|
       %tr
