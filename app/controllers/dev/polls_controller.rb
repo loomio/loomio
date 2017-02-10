@@ -31,7 +31,7 @@ class Dev::PollsController < Dev::BaseController
 
   def self.observe_scenario(scenario_name, view_as_observer: true, email: false)
     Poll::TEMPLATES.keys.each do |poll_type|
-      define_method :"test_#{poll_type}_#{scenario_name}" do
+      define_method :"test_#{poll_type}_#{scenario_name}#{'_email' if email}" do
         scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
         sign_in(scenario[:observer]) if view_as_observer
         if email
