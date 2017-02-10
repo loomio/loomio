@@ -1,5 +1,6 @@
 class Dev::PollsController < Dev::BaseController
   include Dev::PollsHelper
+  include Dev::PollsScenarioHelper
   skip_before_filter :cleanup_database
 
   def test_discussion
@@ -28,117 +29,26 @@ class Dev::PollsController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
-  def test_check_in_created_email
-    scenario = poll_created_scenario(poll_type: 'check_in')
-    view_last_email_for(scenario[:observer])
+  def self.observe_scenario(scenario_name, view_as_observer: true, email: false)
+    Poll::TEMPLATES.keys.each do |poll_type|
+      define_method :"test_#{poll_type}_#{scenario_name}" do
+        scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
+        sign_in(scenario[:observer]) if view_as_observer
+        if email
+          last_email to: scenario[:observer]
+        else
+          redirect_to poll_url(scenario[:poll])
+        end
+      end
+    end
   end
 
-  def test_check_in_closing_soon_email
-    scenario = poll_closing_soon_scenario(poll_type: 'check_in')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_check_in_closing_soon_with_vote_email
-    scenario = poll_closing_soon_with_vote_scenario(poll_type: 'check_in')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_check_in_closing_soon_author_email
-    scenario = poll_closing_soon_scenario(poll_type: 'check_in')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_check_in_expired_email
-    scenario = poll_expired_scenario(poll_type: 'check_in')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_check_in_outcome_created_email
-    scenario = poll_outcome_created_scenario(poll_type: 'check_in')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_proposal_created_email
-    scenario = poll_created_scenario(poll_type: 'proposal')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_proposal_closing_soon_email
-    scenario = poll_closing_soon_scenario(poll_type: 'proposal')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_proposal_closing_soon_with_vote_email
-    scenario = poll_closing_soon_with_vote_scenario(poll_type: 'proposal')
-    view_last_email_for(scenario[:observer])
-  end
-
-
-  def test_proposal_closing_soon_author_email
-    scenario = poll_closing_soon_scenario(poll_type: 'proposal')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_proposal_expired_email
-    scenario = poll_expired_scenario(poll_type: 'proposal')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_proposal_missed_yesterday_email
-    scenario = poll_missed_yesterday_scenario(poll_type: 'proposal')
-    UserMailer.missed_yesterday(scenario[:recipient]).deliver_now
-    last_email
-  end
-
-  def test_proposal_outcome_created_email
-    scenario = poll_outcome_created_scenario(poll_type: 'proposal')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_poll_created_email
-    scenario = poll_created_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_poll_closing_soon_email
-    scenario = poll_closing_soon_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_poll_closing_soon_with_vote_email
-    scenario = poll_closing_soon_with_vote_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_poll_closing_soon_author_email
-    scenario = poll_closing_soon_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:actor])
-  end
-
-  def test_poll_expired_email
-    scenario = poll_expired_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_poll_outcome_created_email
-    poll_outcome_created_scenario(poll_type: 'poll')
-    view_last_email_for(scenario[:observer])
-  end
-
-  def test_poll_missed_yesterday_email
-    scenario = poll_missed_yesterday_scenario(poll_type: 'poll')
-    UserMailer.missed_yesterday(scenario[:recipient]).deliver_now
-    last_email
-  end
-
-  # TODO: make this not broken
-  # def test_poll_edited_email
-  #   discussion = fake_discussion(group: create_group_with_members)
-  #   actor      = discussion.group.admins.first
-  #   PollService.update(
-  #     poll: saved(fake_poll(discussion: discussion)),
-  #     params: {make_announcement: true, title: "Some other title"},
-  #     actor: actor)
-  #   last_email
-  # end
+  observe_scenario :poll_created,                email: true
+  observe_scenario :poll_closing_soon,           email: true
+  observe_scenario :poll_closing_soon_with_vote, email: true
+  observe_scenario :poll_closing_soon_author,    email: true
+  observe_scenario :poll_expired,                email: true
+  observe_scenario :poll_outcome_created,        email: true
+  observe_scenario :poll_missed_yesterday,       email: true
+  # TODO: add poll edited
 end

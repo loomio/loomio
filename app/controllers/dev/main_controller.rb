@@ -11,7 +11,7 @@ class Dev::MainController < Dev::BaseController
   # end
 
   def index
-    @routes = DevelopmentController.action_methods.select do |action|
+    @routes = self.class.action_methods.select do |action|
       action.starts_with? 'setup'
     end
     render layout: false

@@ -91,7 +91,7 @@ module Plugins
 
     def use_test_route(path, &block)
       raise NoCodeSpecifiedError.new unless block_given?
-      extend_class(DevelopmentController) { define_method(path, &block) }
+      extend_class(Dev::MainController) { define_method(path, &block) }
     end
 
     def use_route(verb, route, action)
