@@ -41,8 +41,7 @@ class PollService
     hour_finish = hour_start + 1.hour
     this_hour_tomorrow = hour_start..hour_finish
     Poll.closing_soon_not_published(this_hour_tomorrow).each do |poll|
-      announcement = (poll.events.find_by(kind: 'poll_created') || Event.new).announcement
-      Events::PollClosingSoon.publish!(poll, announcement)
+      Events::PollClosingSoon.publish!(poll)
     end
   end
 

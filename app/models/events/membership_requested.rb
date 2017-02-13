@@ -4,7 +4,7 @@ class Events::MembershipRequested < Event
            eventable: membership_request).tap { |e| EventBus.broadcast('membership_requested_event', e) }
   end
 
-  def users_to_notify
+  def notification_recipients
     eventable.admins.active
   end
 

@@ -1,4 +1,6 @@
 class Events::OutcomeCreated < Event
+  include PollNotificationEvent
+
   def self.publish!(outcome)
     create(kind: "outcome_created",
            user: outcome.author,
@@ -6,9 +8,5 @@ class Events::OutcomeCreated < Event
            announcement: outcome.make_announcement,
            discussion: outcome.poll.discussion,
            created_at: outcome.created_at).tap { |e| EventBus.broadcast('outcome_created_event', e) }
-  end
-
-  def users_to_notify
-    eventable.poll.watchers.without(self.user) # maybe just poll participants?
   end
 end

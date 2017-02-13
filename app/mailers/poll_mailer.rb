@@ -19,12 +19,11 @@ class PollMailer < BaseMailer
     send_poll_email recipient, event
   end
 
-  # emails sent to the poll author
-  def poll_expired(recipient, event)
+  def poll_closing_soon_author(recipient, event)
     send_poll_email recipient, event
   end
 
-  def poll_closing_soon_author(recipient, event)
+  def poll_expired(recipient, event)
     send_poll_email recipient, event
   end
 

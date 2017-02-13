@@ -6,7 +6,7 @@ class Events::CommentLiked < Event
            eventable: comment_vote).tap { |e| EventBus.broadcast('comment_liked_event', e) }
   end
 
-  def users_to_notify
+  def notification_recipients
     Array((comment.author if notify_author?))
   end
 

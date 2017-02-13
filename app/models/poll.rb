@@ -85,14 +85,6 @@ class Poll < ActiveRecord::Base
     self
   end
 
-  def watchers
-    if discussion.present?
-      Queries::UsersByVolumeQuery.normal_or_loud(discussion)
-    else
-      # TODO: look at communities when communities exist
-    end
-  end
-
   # todo.. i guess we gotta add attachements to this but it's boring.
   def attachments
     []

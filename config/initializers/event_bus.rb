@@ -34,20 +34,6 @@ EventBus.configure do |config|
     config.listen("#{kind}_event") { |event| SendBulkEmailJob.set(wait: delay).perform_later(event.id) }
   end
 
-  # announce poll events
-  config.listen("poll_created_event",
-                "poll_edited_event",
-                "poll_closing_soon_event",
-                "outcome_created_event") do |event|
-    event.users_to_notify.each do |recipient|
-      PollMailer.delay.send(event.kind, recipient, event)
-    end if event.announcement
-  end
-
-  # notify poll author of events related to his/her poll
-  config.listen("poll_closing_soon_event") { |event| PollMailer.delay.poll_closing_soon_author(event.eventable.author, event) }
-  config.listen("poll_expired_event")      { |event| PollMailer.delay.poll_expired(event.eventable.author, event) }
-
   # send individual emails after thread events
   Event::MENTIONED_USER_EVENTS.each do |kind|
     config.listen("#{kind}_event") do |event, user|
@@ -163,9 +149,20 @@ EventBus.configure do |config|
   config.listen('motion_outcome_created_event',
                 'motion_closing_soon_event',
                 'membership_requested_event',
-                'comment_liked_event') do |event|
-    event.notifications.import event.users_to_notify.map { |user| event.notify!(user, persist: false) }
-  end
+                'comment_liked_event',
+                'poll_created_event',
+                'poll_edited_event',
+                'poll_closing_soon_event',
+                'poll_expired_event',
+                'outcome_created_event') { |event| event.notify_users! }
+
+  # announce poll events
+  # TODO: follow this pattern for thread events as well
+  config.listen('poll_created_event',
+                'poll_edited_event',
+                'poll_closing_soon_event',
+                'poll_expired_event',
+                'outcome_created_event') { |event| event.email_users! }
 
   # collect user deactivation response
   config.listen('user_deactivate') { |user, actor, params| UserDeactivationResponse.create(user: user, body: params[:deactivation_response]) }
