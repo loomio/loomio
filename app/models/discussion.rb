@@ -113,6 +113,10 @@ class Discussion < ActiveRecord::Base
     self
   end
 
+  def discussion_id
+    self.id
+  end
+
   def organisation_id
     group.parent_id || group_id
   end

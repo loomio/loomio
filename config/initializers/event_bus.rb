@@ -19,9 +19,14 @@ EventBus.configure do |config|
   end
 
   # Index search vectors after model creation
-  config.listen('discussion_create', 'discussion_update') { |discussion| SearchVector.index! discussion.id }
-  config.listen('motion_create', 'motion_update')         { |motion|     SearchVector.index! motion.discussion_id }
-  config.listen('comment_create', 'comment_update')       { |comment|    SearchVector.index! comment.discussion_id }
+  config.listen('discussion_create',
+                'discussion_update',
+                'motion_create',
+                'motion_update',
+                'comment_create',
+                'comment_update',
+                'poll_create',
+                'poll_update') { |model| SearchVector.index! model.discussion_id }
 
   # announce thread events
   Event::THREAD_EMAIL_KINDS.each do |kind|
