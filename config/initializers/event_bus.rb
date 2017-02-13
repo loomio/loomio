@@ -104,12 +104,9 @@ EventBus.configure do |config|
                 'motion_description_edited_event',
                 'comment_liked_event',
                 'poll_created_event',
-                'stance_created_event') do |event|
+                'stance_created_event',
+                'discussion_moved_event') do |event|
     MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable.group)
-  end
-
-  config.listen('discussion_moved_event') do |event|
-    MessageChannelService.publish(EventCollection.new(event).serialize!, to: event.eventable)
   end
 
   # update discussion reader after discussion creation / edition
