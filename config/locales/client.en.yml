@@ -1304,12 +1304,14 @@ en:
 
   decision_tools_card:
     title: Decision tools
+    purpose: Clear input from everyone. Move the conversation forward. Hear from many people at once. Create shared
+    purpose: Collect individual views to understand the whole.
     proposal_title: Proposal
-    proposal_subtitle: Find consensus
+    proposal_subtitle: Build consensus within the group
     check_in_title: Check-in
-    check_in_subtitle: Track who has completed a task
+    check_in_subtitle: Ask a yes/no question
     poll_title: Poll
-    poll_subtitle: Choose from a list of options
+    poll_subtitle: Measure popularity of various options
 
   poll_common:
     your_response: Your response
