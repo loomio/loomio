@@ -4,13 +4,14 @@
 }
 
 .decision-tools-card__poll-type {
+  line-height: 24px;
   list-style-type: none;
 }
 
 .decision-tools-card__poll-type-link {
   @include displayFlex;
   cursor: pointer;
-  padding: 15px 0;
+  // padding: 15px 0;
   text-decoration: none;
   &:hover { text-decoration: none; }
 }
@@ -19,10 +20,14 @@
   padding: 10px 10px 10px 0;
 }
 
-.decision-tools-card__poll-type-subtitle {
-  line-height: 20px;
-}
+// .decision-tools-card__poll-type-subtitle {
+//   line-height: 20px;
+// }
 
+.decision-tools-card__icon {
+  margin-left: -16px;
+}
 .decision-tools-card__content {
-  margin-left: 10px;
+  margin-left: 16px;
+  line-height: 24px;
 }
