@@ -32,11 +32,13 @@ class InvitationService
                            group: nil,
                            inviter: nil)
 
-    if group.invitations_count > ENV.fetch('MAX_INVITATIONS', 200).to_i
-      raise "Too many invitations. Please use a sharable link"
+    emails = (recipient_emails - group.members.pluck(:email)).take(100)
+
+    if (group.pending_invitations_count + emails.length) > ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i
+      raise "Too many pending invitations"
     end
 
-    (recipient_emails - group.members.pluck(:email)).map do |recipient_email|
+    emails.map do |recipient_email|
       invitation = create_invite_to_join_group(recipient_email: recipient_email,
                                                group: group,
                                                message: message,

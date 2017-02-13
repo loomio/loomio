@@ -30,16 +30,14 @@ describe API::InvitationsController do
 
   describe 'create' do
     context 'success' do
-      it 'creates invitations with custom message' do
+      it 'creates invitations' do
         ActionMailer::Base.deliveries = []
-        invitation_params[:message] = 'Please make decisions with us!'
         post :create, invitation_form: invitation_params, group_id: group.id
         json = JSON.parse(response.body)
         invitation = json['invitations'].last
         last_email = ActionMailer::Base.deliveries.last
         expect(ActionMailer::Base.deliveries.size).to eq 2
         expect(invitation['recipient_email']).to eq 'hannah@example.com'
-        expect(last_email).to have_body_text 'Please make decisions with us!'
         expect(last_email).to deliver_to 'hannah@example.com'
       end
     end
