@@ -46,7 +46,7 @@ EventBus.configure do |config|
   config.listen('membership_requested_event')        { |event| GroupMailer.new_membership_request(event.eventable) }
 
   # notify user of acceptance to group
-  config.listen('user_added_to_group_event') do |event, user, message|
+  config.listen('user_added_to_group_event') do |event, message|
     UserMailer.delay(priority: 1).added_to_group(
       user:    event.eventable.user,
       group:   event.eventable.group,
@@ -129,24 +129,19 @@ EventBus.configure do |config|
                 'motion_create',
                 'motion_update',
                 'discussion_create',
-                'discussion_update',
-                'poll_create',
-                'poll_update') do |model, actor|
+                'discussion_update') do |model, actor|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
-  # notify users of events
-  # DEPRECATED
+  # bulk notify users of events
   config.listen('membership_request_approved_event',
                 'comment_replied_to_event',
-                'user_mentioned_event',
                 'motion_closed_event',
                 'invitation_accepted_event',
                 'new_coordinator_event',
-                'user_added_to_group_event') { |event, user| event.notify!(user) }
-
-  # bulk notify users of events
-  config.listen('motion_outcome_created_event',
+                'user_mentioned_event',
+                'user_added_to_group_event',
+                'motion_outcome_created_event',
                 'motion_closing_soon_event',
                 'membership_requested_event',
                 'comment_liked_event',
@@ -156,8 +151,8 @@ EventBus.configure do |config|
                 'poll_expired_event',
                 'outcome_created_event') { |event| event.notify_users! }
 
-  # announce poll events
-  # TODO: follow this pattern for thread events as well
+  # bulk email users about events
+  # TODO: follow this pattern for emailing thread events as well
   config.listen('poll_created_event',
                 'poll_edited_event',
                 'poll_closing_soon_event',

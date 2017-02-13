@@ -17,4 +17,8 @@ class Events::PollEdited < Event
     eventable.poll.participants
   end
   alias :announcement_email_recipients :announcement_notification_recipients
+
+  def specified_notification_recipients
+    Queries::UsersToMentionQuery.for(eventable.item)
+  end
 end

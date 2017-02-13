@@ -20,7 +20,7 @@ require 'rails_helper'
 
       it 'returns the current users notifications' do
         event = CommentService.create(comment: build(:comment, discussion: unread), actor: user)
-        notification = event.notify!(user)
+        notification = event.notify_users!.first
         expect(subject.data[:notifications].map { |n| n[:id] }).to include notification.id
       end
 
@@ -46,7 +46,7 @@ require 'rails_helper'
 
       it 'does not return the current users notifications' do
         event = CommentService.create(comment: build(:comment, discussion: unread), actor: user)
-        notification = event.notify!(user)
+        notification = event.notify_users!.first
         expect(restricted_subject.data[:notifications]).to_not be_present
       end
 

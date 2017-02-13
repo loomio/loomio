@@ -11,7 +11,7 @@ module PollNotificationEvent
   end
 
   def announcement_notification_recipients
-    Queries::UsersByVolumeQuery.loud(eventable.discussion)
+    eventable.group.members
   end
 
   def specified_notification_recipients

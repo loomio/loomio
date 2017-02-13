@@ -40,22 +40,18 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
-  def notify!(user, persist: true)
-    notifications.build(
-      user:               user,
-      actor:              notification_actor,
-      url:                notification_url,
-      translation_values: notification_translation_values
-    ).tap { |n| n.save if persist }
-  end
-
   def email_users!
     email_recipients.without(user).each { |recipient| mailer.send(kind, recipient, self).deliver_now }
   end
   handle_asynchronously :email_users!
 
   def notify_users!
-    notifications.import(notification_recipients.map { |recipient| notify!(recipient, persist: false) })
+    notifications.import(notification_recipients.map do |recipient|
+      notifications.build(user:               user,
+                          actor:              notification_actor,
+                          url:                notification_url,
+                          translation_values: notification_translation_values)
+    end)
   end
   handle_asynchronously :notify_users!
 
@@ -83,10 +79,7 @@ class Event < ActiveRecord::Base
 
   # defines the link that clicking on the notification takes you to
   def notification_url
-    @notification_url ||= case eventable
-    when Membership, MembershipRequest then polymorphic_url eventable.group
-    else                                    polymorphic_url eventable
-    end
+    @notification_url ||= polymorphic_url(eventable)
   end
 
   # defines the values that are passed to the translation for notification text
@@ -95,11 +88,10 @@ class Event < ActiveRecord::Base
   def notification_translation_values
     { name: notification_actor&.name }.tap do |hash|
       case eventable
-      when Comment, CommentVote then hash[:discussion] = eventable.discussion.title
-      when Motion               then hash[:proposal]   = eventable.name
-      when Discussion           then hash[:discussion] = eventable.title
-      when Group                then hash[:group]      = eventable.full_name
-      when Membership           then hash[:group]      = eventable.group.full_name
+      when Comment, CommentVote, Discussion then hash[:discussion] = eventable.discussion.title
+      when Group, Membership                then hash[:group]      = eventable.group.full_name
+      when Motion                           then hash[:proposal]   = eventable.name
+      when Poll                             then hash[:poll]       = eventable.title
       end
     end
   end

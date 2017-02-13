@@ -12,7 +12,8 @@ module PrettyUrlHelper
   def polymorphic_url(model, opts = {})
     return unless model
     case model
-    when Comment then comment_url(model.discussion, model, opts)
+    when Membership, MembershipRequest then group_url(model.group, opts)
+    when Comment                       then comment_url(model.discussion, model, opts)
     else super
     end
   end
