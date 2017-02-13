@@ -32,7 +32,7 @@ class InvitationService
                            group: nil,
                            inviter: nil)
 
-    if group.invitations_count > ENV.fetch('MAX_INVITATIONS', 200)
+    if group.invitations_count > ENV.fetch('MAX_INVITATIONS', 200).to_i
       raise "Too many invitations. Please use a sharable link"
     end
 
