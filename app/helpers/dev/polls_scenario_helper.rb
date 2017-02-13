@@ -14,10 +14,11 @@ module Dev::PollsScenarioHelper
     actor = discussion.group.admins.first
     user  = saved(fake_user)
     discussion.group.add_member! user
-    PollService.create(poll: fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type), actor: actor)
+    event = PollService.create(poll: fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type), actor: actor)
 
     {discussion: discussion,
      observer: user,
+     poll:     event.eventable,
      actor:    actor}
   end
 
@@ -109,5 +110,9 @@ module Dev::PollsScenarioHelper
     UserMailer.missed_yesterday(observer).deliver_now
 
     scenario.merge(observer: observer)
+  end
+
+  def poll_notifications_scenario(poll_type:)
+    scenario = poll_created_scenario(poll_type: poll_type)
   end
 end

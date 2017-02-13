@@ -50,5 +50,6 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_expired,                email: true
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
+  observe_scenario :poll_notifications
   # TODO: add poll edited
 end

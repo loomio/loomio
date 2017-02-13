@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
 
   def notify_users!
     notifications.import(notification_recipients.map do |recipient|
-      notifications.build(user:               user,
+      notifications.build(user:               recipient,
                           actor:              notification_actor,
                           url:                notification_url,
                           translation_values: notification_translation_values)

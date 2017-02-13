@@ -305,6 +305,11 @@ en:
     motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
     invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{group}}</strong>"
     new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{group}}</strong>"
+    poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{poll}}</strong>"
+    poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{poll}}</strong>"
+    poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{poll}}</strong>"
+    poll_expired: "{{poll_type}} closed: <strong>{{poll}}</strong>"
+    outcome_created: "{{name}} shared an outcome"
 
   position_buttons_panel:
     heading: Have your say
