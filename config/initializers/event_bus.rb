@@ -131,9 +131,8 @@ EventBus.configure do |config|
   end
 
   # update discussion or comment versions_count when title or description edited
-  config.listen('discussion_update', 'comment_update') do |model|
-    model.update_versions_count
-  end
+  config.listen('discussion_update',
+                'comment_update') { |model| model.update_versions_count }
 
   # publish reply and mention events after comment creation
   config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
@@ -151,6 +150,7 @@ EventBus.configure do |config|
   end
 
   # notify users of events
+  # DEPRECATED
   config.listen('membership_request_approved_event',
                 'comment_replied_to_event',
                 'user_mentioned_event',
