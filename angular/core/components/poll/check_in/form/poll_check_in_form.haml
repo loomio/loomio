@@ -22,12 +22,12 @@
         %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
         %outlet{name: "after-check-in-form-textarea", model: "poll"}
 
-      %md-input-container.md-block
+      %md-input-container.md-block{ng-if: "poll.isNew()"}
         %label{translate: "poll_check_in_form.affirmative_label"}
         %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.affirmativePlaceholder}}", ng-model: "poll.affirmativeText", md-maxlength="200"}
         -# %validation_errors{subject: "poll", field: "title"}
 
-      %md-input-container.md-block
+      %md-input-container.md-block{ng-if: "poll.isNew()"}
         %label{translate: "poll_check_in_form.negative_label"}
         %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.negativePlaceholder}}", ng-model: "poll.negativeText", md-maxlength="200"}
         -# %validation_errors{subject: "poll", field: "title"}
