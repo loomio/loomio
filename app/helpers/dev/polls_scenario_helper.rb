@@ -22,6 +22,22 @@ module Dev::PollsScenarioHelper
      actor:    actor}
   end
 
+  def poll_edited_scenario(poll_type:)
+    discussion = fake_discussion(group: create_group_with_members)
+    actor      = discussion.group.admins.first
+    poll       = saved fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
+    observer   = saved(fake_user)
+    discussion.group.add_admin! actor
+    discussion.group.add_member! observer
+
+    StanceService.create(stance: fake_stance(poll: poll), actor: observer)
+    PollService.update(poll: poll, params: { make_announcement: true, title: "New title" }, actor: actor)
+
+    {discussion: discussion,
+     observer: observer,
+     actor:    actor}
+  end
+
   def poll_closing_soon_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     non_voter  = saved(fake_user)
@@ -113,6 +129,35 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_notifications_scenario(poll_type:)
-    scenario = poll_created_scenario(poll_type: poll_type)
+    discussion = saved fake_discussion(group: create_group_with_members)
+    observer   = saved fake_user
+    admin      = saved fake_user
+    discussion.group.add_member! observer
+    discussion.group.add_admin! admin
+    admin_poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type, closing_at: 24.hours.from_now)
+    observer_poll = saved fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
+
+    # poll_created
+    PollService.create(poll: admin_poll, actor: admin)
+
+    # poll_edited
+    StanceService.create(stance: fake_stance(poll: admin_poll), actor: observer)
+    PollService.update(poll: admin_poll, params: { make_announcement: true, title: "New title" }, actor: admin)
+
+    # poll closing soon
+    PollService.publish_closing_soon # (closing soon for admin_poll)
+
+    # poll expired
+    observer_poll.update_attribute(:closing_at, 1.day.ago)
+    admin_poll.update_attribute(:closing_at, 1.day.ago)
+    PollService.expire_lapsed_polls # (closes observer_poll)
+
+    # outcome_created
+    OutcomeService.create(outcome: fake_outcome(poll: admin_poll.reload, make_announcement: true), actor: admin)
+
+    {discussion: discussion,
+     observer:   observer,
+     poll:       observer_poll,
+     admin:      admin}
   end
 end

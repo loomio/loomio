@@ -20,7 +20,7 @@ module Dev::FakeDataHelper
   end
 
   def fake_discussion(args = {})
-    Discussion.new({title: Faker::Friends.quote,
+    Discussion.new({title: Faker::Friends.quote.first(150),
                     private: true,
                     group: fake_group,
                     author: fake_user}.merge(args))

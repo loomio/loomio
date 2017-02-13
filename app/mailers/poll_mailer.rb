@@ -38,7 +38,7 @@ class PollMailer < BaseMailer
 
     @info = PollEmailInfo.new(
       recipient:   recipient,
-      poll:        event.eventable.poll,
+      poll:        event.poll,
       actor:       event.user,
       action_name: action_name
     )

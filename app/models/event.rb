@@ -88,10 +88,11 @@ class Event < ActiveRecord::Base
   def notification_translation_values
     { name: notification_actor&.name }.tap do |hash|
       case eventable
-      when Comment, CommentVote, Discussion then hash[:discussion] = eventable.discussion.title
-      when Group, Membership                then hash[:group]      = eventable.group.full_name
-      when Motion                           then hash[:proposal]   = eventable.name
-      when Poll                             then hash[:poll]       = eventable.title
+      when PaperTrail::Version       then hash[:title] = eventable.item.title
+      when Comment, CommentVote      then hash[:title] = eventable.discussion.title
+      when Group, Membership         then hash[:title] = eventable.group.full_name
+      when Poll, Discussion, Outcome then hash[:title] = eventable.poll.title
+      when Motion                    then hash[:title] = eventable.name
       end
     end
   end
