@@ -1,4 +1,7 @@
 class Events::MotionClosed < Event
+  include Events::NotifyUser
+  include Events::EmailUser
+
   def self.publish!(motion)
     create(kind: 'motion_closed',
            eventable: motion,
@@ -21,5 +24,9 @@ class Events::MotionClosed < Event
 
   def notification_actor
     nil
+  end
+  
+  def email_recipients
+    Queries::UsersByVolumeQuery.normal_or_loud(eventable.discussion)
   end
 end

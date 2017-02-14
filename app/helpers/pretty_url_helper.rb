@@ -16,6 +16,7 @@ module PrettyUrlHelper
     when Membership, MembershipRequest then group_url(model.group, opts)
     when Outcome                       then poll_url(model.poll, opts)
     when Comment                       then comment_url(model.discussion, model, opts)
+    when CommentVote                   then comment_url(model.discussion, model.comment, opts)
     else super
     end
   end

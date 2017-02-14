@@ -1,4 +1,8 @@
 class Events::CommentRepliedTo < Event
+  include Events::LiveUpdate
+  include Events::NotifyUser
+  include Events::EmailUser
+
   def self.publish!(comment)
     return unless comment.parent && comment.parent.author != comment.author
     create(kind: 'comment_replied_to',

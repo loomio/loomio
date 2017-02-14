@@ -1,4 +1,6 @@
 class Events::StanceCreated < Event
+  include Events::LiveUpdate
+
   def self.publish!(stance)
     create(kind: "stance_created",
            user: stance.participant,

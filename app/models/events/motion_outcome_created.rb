@@ -1,4 +1,8 @@
 class Events::MotionOutcomeCreated < Event
+  include Events::LiveUpdate
+  include Events::NotifyUser
+  include Events::EmailUser
+
   def self.publish!(motion, user)
     create(kind: "motion_outcome_created",
            eventable: motion,
@@ -6,11 +10,12 @@ class Events::MotionOutcomeCreated < Event
            user: user).tap { |e| EventBus.broadcast('motion_outcome_created_event', e) }
   end
 
-  def notification_recipients
-    Queries::UsersByVolumeQuery.normal_or_loud(discussion).without(eventable.outcome_author)
-  end
-
   private
+
+  def notification_recipients
+    Queries::UsersByVolumeQuery.normal_or_loud(eventable.discussion).without(eventable.outcome_author)
+  end
+  alias :email_recipients :notification_recipients
 
   def notification_actor
     eventable.outcome_author

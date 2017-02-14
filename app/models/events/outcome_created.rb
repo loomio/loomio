@@ -1,5 +1,5 @@
 class Events::OutcomeCreated < Event
-  include PollNotificationEvent
+  include Events::PollEvent
 
   def self.publish!(outcome)
     create(kind: "outcome_created",

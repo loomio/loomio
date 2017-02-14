@@ -1,5 +1,5 @@
 class Events::PollEdited < Event
-  include PollNotificationEvent
+  include Events::PollEvent
 
   def self.publish!(version, actor, announcement = false)
     create(kind: "poll_edited",

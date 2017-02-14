@@ -1,5 +1,5 @@
 class Events::PollExpired < Event
-  include PollNotificationEvent
+  include Events::PollEvent
 
   def self.publish!(poll)
     create(kind: "poll_expired",

@@ -1,5 +1,5 @@
 class Events::PollClosingSoon < Event
-  include PollNotificationEvent
+  include Events::PollEvent
 
   def self.publish!(poll, make_announcement = false)
     create(kind: "poll_closing_soon",

@@ -7,7 +7,7 @@ class NotificationBaker
   # notifications, we can get rid of it.
   def self.bake!(notifications)
     notifications.includes(event: :eventable).reject { |n| n.url && n.translation_values }.each do |notification|
-      return unless notification&.event&.eventable && Event::NOTIFICATION_KINDS.include?(notification.kind)
+      return unless notification&.event&.eventable && notification&.event&.respond_to?(:notification_recipients)
       @event = Events.const_get(notification.kind.camelize).new(notification.event.as_json)
       notification.update(
         url:                @event.send(:notification_url),
