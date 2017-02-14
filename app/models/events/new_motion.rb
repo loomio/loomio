@@ -1,6 +1,7 @@
 class Events::NewMotion < Event
   include Events::LiveUpdate
   include Events::EmailUser
+  include Events::JoinDiscussion
 
   def self.publish!(motion)
     create(kind: "new_motion",

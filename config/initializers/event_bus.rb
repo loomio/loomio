@@ -28,16 +28,6 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
-  # notify user of acceptance to group
-  config.listen('user_added_to_group_event') do |event, message|
-    UserMailer.delay(priority: 1).added_to_group(
-      user:    event.eventable.user,
-      group:   event.eventable.group,
-      inviter: event.user,
-      message: message
-    )
-  end
-
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 
@@ -45,17 +35,6 @@ EventBus.configure do |config|
   config.listen('comment_destroy') { |comment|      Memos::CommentDestroyed.publish!(comment) }
   config.listen('comment_update')  { |comment|      Memos::CommentUpdated.publish!(comment) }
   config.listen('comment_unlike')  { |comment_vote| Memos::CommentUnliked.publish!(comment: comment_vote.comment, user: comment_vote.user) }
-
-  # update discussion reader after thread item creation
-  config.listen('new_comment_event',
-                'new_motion_event',
-                'new_vote_event',
-                'motion_closed_event',
-                'motion_closed_by_user_event',
-                'motion_outcome_created_event',
-                'motion_outcome_updated_event') do |event|
-    DiscussionReader.for_model(event.eventable).update_reader(read_at: event.created_at, participate: true, volume: :loud)
-  end
 
   config.listen('new_discussion_event') { |event| DiscussionReader.for_model(event.eventable).participate! }
 
@@ -83,11 +62,11 @@ EventBus.configure do |config|
   # update discussion or comment versions_count when title or description edited
   config.listen('discussion_update', 'comment_update') { |model| model.update_versions_count }
 
-  # publish reply and mention events after comment creation
-  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
-
   # update stance data for polls
-  config.listen('stance_create')   { |stance| stance.poll.update_stance_data }
+  config.listen('stance_create')  { |stance| stance.poll.update_stance_data }
+
+  # publish reply event after comment creation
+  config.listen('comment_create') { |comment| Events::CommentRepliedTo.publish!(comment) }
 
   # publish mention events after model create / update
   config.listen('comment_create',
@@ -99,16 +78,12 @@ EventBus.configure do |config|
     Queries::UsersToMentionQuery.for(model).each { |user| Events::UserMentioned.publish!(model, actor, user) }
   end
 
+  # email and notify users of events
   Event::KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event| event.trigger! }
+    config.listen("#{kind}_event") { |event, args| event.trigger!(args) }
   end
 
-  config.listen('comment_replied_to_event', 'user_mentioned_event') do |event, user_id|
-    target_user = User.where(id: user_id) # we need a relation to pass to notify_users!
-    event.notify_users!(target_user)
-    event.email_users!(target_user.where(email_when_mentioned: true))
-  end
-
+  # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 
   # collect user deactivation response

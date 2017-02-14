@@ -1,6 +1,7 @@
 class Events::NewVote < Event
   include Events::LiveUpdate
   include Events::EmailUser
+  include Events::JoinDiscussion
 
   def self.publish!(vote)
     create(kind: 'new_vote',

@@ -2,6 +2,7 @@ class Events::MotionOutcomeCreated < Event
   include Events::LiveUpdate
   include Events::NotifyUser
   include Events::EmailUser
+  include Events::JoinDiscussion
 
   def self.publish!(motion, user)
     create(kind: "motion_outcome_created",

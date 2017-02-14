@@ -36,10 +36,10 @@ class UserMailer < BaseMailer
                      locale: locale_for(@user)
   end
 
-  def added_to_group(user: nil, inviter: nil, group: nil, message: nil)
-    @user = user
-    @inviter = inviter || group.admins.first
-    @group = group
+  def user_added_to_group(recipient, event, message)
+    @user    = recipient
+    @group   = event.eventable.group
+    @inviter = event.eventable.inviter || @group.admins.first
     @message = message
 
     send_single_mail to: @user.email,

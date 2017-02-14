@@ -1,6 +1,7 @@
 class Events::NewComment < Event
   include Events::LiveUpdate
   include Events::EmailUser
+  include Events::JoinDiscussion
 
   def self.publish!(comment)
     create(kind: 'new_comment',
