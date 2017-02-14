@@ -135,17 +135,17 @@ module Dev::PollsScenarioHelper
     discussion.group.add_member! observer
     discussion.group.add_admin! admin
     admin_poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type, closing_at: 24.hours.from_now)
-    observer_poll = saved fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
+    observer_poll = saved fake_poll(discussion: discussion, author: observer, make_announcement: true, poll_type: poll_type)
 
     # poll_created
     PollService.create(poll: admin_poll, actor: admin)
 
+    # poll closing soon
+    PollService.publish_closing_soon # (closing soon for admin_poll)
+
     # poll_edited
     StanceService.create(stance: fake_stance(poll: admin_poll), actor: observer)
     PollService.update(poll: admin_poll, params: { make_announcement: true, title: "New title" }, actor: admin)
-
-    # poll closing soon
-    PollService.publish_closing_soon # (closing soon for admin_poll)
 
     # poll expired
     observer_poll.update_attribute(:closing_at, 1.day.ago)

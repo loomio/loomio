@@ -19,6 +19,7 @@ angular.module('loomioApp').directive 'notifications', ->
       'invitation_accepted',
       'new_coordinator',
       'poll_created',
+      'poll_closing_soon',
       'poll_edited',
       'poll_expired',
       'outcome_created'

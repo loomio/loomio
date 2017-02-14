@@ -25,9 +25,9 @@ class UserMailer < BaseMailer
     end
   end
 
-  def group_membership_approved(user, group)
-    @user = user
-    @group = group
+  def membership_request_approved(recipient, event)
+    @user = recipient
+    @group = event.eventable.group
 
     send_single_mail to: @user.email,
                      reply_to: @group.admin_email,

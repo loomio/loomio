@@ -8,4 +8,9 @@ class Events::MembershipRequestApproved < Event
   def notification_recipients
     User.where(id: eventable.user_id)
   end
+  alias :email_recipients :notification_recipients
+
+  def mailer
+    UserMailer
+  end
 end

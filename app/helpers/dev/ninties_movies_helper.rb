@@ -183,20 +183,14 @@ module Dev::NintiesMoviesHelper
     @public_proposal
   end
 
-  def create_vote
-    unless @vote
-      @vote = Vote.new(position: 'yes', motion: test_proposal, statement: 'I agree!')
-      VoteService.create(vote: @vote, actor: patrick)
+  def create_another_public_proposal
+    unless @another_public_proposal
+      @another_public_proposal = Motion.new(name: 'Lets holiday on Venus instead',
+                                         closing_at: 3.days.from_now.beginning_of_hour,
+                                         discussion: create_public_discussion)
+      MotionService.create(motion: @another_public_proposal, actor: jennifer)
     end
-    @vote
-  end
-
-  def create_another_vote
-    unless @another_vote
-      @another_vote = Vote.new(position: 'no', motion: test_proposal, statement: 'I disagree!')
-      VoteService.create(vote: @another_vote, actor: jennifer)
-    end
-    @another_vote
+    @another_public_proposal
   end
 
   def membership_request_from_logged_out
@@ -241,11 +235,12 @@ module Dev::NintiesMoviesHelper
     comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
     new_comment_event = CommentService.create(comment: comment, actor: patrick)
     comment_liked_event = CommentService.like(comment: comment, actor: jennifer)
+    create_another_group.add_member! jennifer
 
     #'motion_closing_soon'
-    motion_created_event = MotionService.create(motion: test_proposal,
+    motion_created_event = MotionService.create(motion: create_another_public_proposal,
                                                 actor: jennifer)
-    closing_soon_event = Events::MotionClosingSoon.publish!(test_proposal)
+    closing_soon_event = Events::MotionClosingSoon.publish!(create_another_public_proposal)
 
     #'motion_closed'
     second_motion_created_event = MotionService.create(motion: create_public_proposal,
@@ -255,7 +250,7 @@ module Dev::NintiesMoviesHelper
     motion_closed_event = MotionService.close(create_public_proposal)
 
     #'motion_outcome_created'
-    outcome_event = MotionService.create_outcome(motion: test_proposal,
+    outcome_event = MotionService.create_outcome(motion: create_another_public_proposal,
                                                  params: {outcome: 'Were going hiking tomorrow'},
                                                  actor: jennifer)
 

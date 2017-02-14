@@ -16,8 +16,6 @@ class Event < ActiveRecord::Base
                           membership_request_approved user_added_to_group motion_closed motion_closing_soon
                           motion_outcome_created invitation_accepted new_coordinator).freeze
 
-  MENTIONED_USER_EVENTS = %w(comment_replied_to user_mentioned).freeze
-
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
   belongs_to :discussion
@@ -40,13 +38,13 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
-  def email_users!
-    email_recipients.without(user).each { |recipient| mailer.send(kind, recipient, self).deliver_now }
+  def email_users!(recipients = email_recipients)
+    recipients.without(user).each { |recipient| mailer.send(kind, recipient, self).deliver_now }
   end
   handle_asynchronously :email_users!
 
-  def notify_users!
-    notifications.import(notification_recipients.map do |recipient|
+  def notify_users!(recipients = notification_recipients)
+    notifications.import(recipients.map do |recipient|
       notifications.build(user:               recipient,
                           actor:              notification_actor,
                           url:                notification_url,
