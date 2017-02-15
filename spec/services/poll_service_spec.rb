@@ -21,13 +21,14 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: user) }.to change { Poll.count }.by(1)
     end
 
-    # it 'populates a public community if no reference is given' do
-    #   PollService.create(poll: poll_created, actor: user)
-    #
-    #   poll = Poll.last
-    #   expect(poll.communities.count).to eq 1
-    #   expect(poll.communities.last).to be_a Communities::Public
-    # end
+    it 'populates a public community by default' do
+      poll_created.discussion = nil
+      PollService.create(poll: poll_created, actor: user)
+
+      poll = Poll.last
+      expect(poll.communities.count).to eq 1
+      expect(poll.communities.last).to be_a Communities::Public
+    end
 
     it 'populates removing custom poll actions' do
       poll_created.poll_type = 'poll'
@@ -54,30 +55,21 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: visitor) }.to raise_error { CanCan::AccessDenied }
     end
 
-    # it 'creates a poll which references the group community' do
-    #   PollService.create(poll: poll_created, actor: user, reference: group)
-    #
-    #   poll = Poll.last
-    #   expect(poll.communities.length).to eq 1
-    #   expect(poll.communities).to include group.community
-    #   expect(group.polls).to include poll
-    # end
-    #
-    # it 'creates a poll which references the group community from a discussion' do
-    #   PollService.create(poll: poll_created, actor: user, reference: discussion)
-    #
-    #   poll = Poll.last
-    #   expect(poll.communities.length).to eq 1
-    #   expect(poll.communities).to include group.community
-    #   expect(poll.discussion).to eq discussion
-    #   expect(poll.group).to eq discussion.group
-    #   expect(group.polls).to include poll
-    #   expect(discussion.polls).to include poll
-    # end
+    it 'creates a poll which references the group community from a discussion' do
+      PollService.create(poll: poll_created, actor: user)
 
-    # it 'does not allow users to create polls for communities they are not a part of' do
-    #   expect { PollService.create(poll: poll_created, actor: another_user, reference: group) }.to raise_error { CanCan::AccessDenied }
-    # end
+      poll = Poll.last
+      expect(poll.communities.length).to eq 1
+      expect(poll.communities).to include group.community
+      expect(poll.discussion).to eq discussion
+      expect(poll.group).to eq discussion.group
+      expect(group.polls).to include poll
+      expect(discussion.polls).to include poll
+    end
+
+    it 'does not allow users to create polls for communities they are not a part of' do
+      expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+    end
 
     describe 'announcements' do
       it 'announces the poll to a group' do
@@ -188,28 +180,28 @@ describe PollService do
       expect(motion.reload).to eq motion
     end
 
-    # it 'uses the groups community for voting motions' do
-    #   PollService.convert(motions: motion)
-    #   group.add_member! another_user
-    #
-    #   poll = Poll.last
-    #   expect(poll.communities.count).to eq 1
-    #   expect(poll.communities).to include motion.group.community
-    #   expect(poll.communities.first.includes?(vote.user)).to eq true
-    #   expect(poll.communities.first.includes?(another_user)).to eq true
-    # end
+    it 'uses the groups community for voting motions' do
+      PollService.convert(motions: motion)
+      group.add_member! another_user
 
-    # it 'creates a new community based on the participants for closed motions' do
-    #   motion.close!
-    #   PollService.convert(motions: motion)
-    #   group.add_member! another_user
-    #
-    #   poll = Poll.last
-    #   expect(poll.communities.count).to eq 1
-    #   expect(poll.communities.first).to be_a Communities::LoomioUsers
-    #   expect(poll.communities.first.includes?(vote.user)).to eq true
-    #   expect(poll.communities.first.includes?(another_user)).to eq false
-    # end
+      poll = Poll.last
+      expect(poll.communities.count).to eq 1
+      expect(poll.communities).to include motion.group.community
+      expect(poll.communities.first.includes?(vote.user)).to eq true
+      expect(poll.communities.first.includes?(another_user)).to eq true
+    end
+
+    it 'creates a new community based on the participants for closed motions' do
+      motion.close!
+      PollService.convert(motions: motion)
+      group.add_member! another_user
+
+      poll = Poll.last
+      expect(poll.communities.count).to eq 1
+      expect(poll.communities.first).to be_a Communities::LoomioUsers
+      expect(poll.communities.first.includes?(vote.user)).to eq true
+      expect(poll.communities.first.includes?(another_user)).to eq false
+    end
 
     it 'does not create duplicate polls for the same motion' do
       PollService.convert(motions: motion)
@@ -232,12 +224,12 @@ describe PollService do
       expect(user.ability.can?(:create, stance_created)).to eq false
     end
 
-    # it 'freezes the possible participants from a group' do
-    #   PollService.create(poll: poll_created, actor: user, reference: group)
-    #   PollService.close(poll: poll_created)
-    #   group.add_member! another_user
-    #   expect(poll_created.reload.communities.first.includes?(another_user)).to eq false
-    # end
+    it 'freezes the possible participants from a group' do
+      PollService.create(poll: poll_created, actor: user)
+      PollService.close(poll: poll_created, actor: user)
+      group.add_member! another_user
+      expect(poll_created.reload.communities.first.includes?(another_user)).to eq false
+    end
   end
 
   describe 'expire_lapsed_polls', focus: true do

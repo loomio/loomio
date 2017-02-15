@@ -4,8 +4,6 @@ class PollService
 
     poll.assign_attributes(author: actor)
 
-    PollCommunityService.assign_communities_for(poll)
-
     return false unless poll.valid?
     poll.save!
 
@@ -51,7 +49,7 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    poll.assign_attributes(params.except(:poll_type, :discussion_id))
+    poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
 
     return false unless poll.valid?
     poll.save!
@@ -67,8 +65,6 @@ class PollService
       # reference = PollReferences::Motion.new(motion)
       outcome = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome
       Poll.create!(
-      # poll_references:   reference.references,
-      # communities:       reference.communities,
         poll_type:               "proposal",
         poll_options_attributes: Poll::TEMPLATES.dig('proposal', 'poll_options_attributes'),
         discussion:              motion.discussion,
@@ -95,6 +91,7 @@ class PollService
             )
           end
         )
+        do_closing_work(poll: poll) if motion.closed?
       end
     end
   end

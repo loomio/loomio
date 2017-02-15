@@ -3,6 +3,11 @@ module Events::PollEvent
   include Events::NotifyUser
   include Events::EmailUser
 
+  def trigger!(args)
+    super
+    poll.communities.each { |community| community.notify!(self) }
+  end
+
   def poll
     eventable.poll
   end

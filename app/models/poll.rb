@@ -17,6 +17,7 @@ class Poll < ActiveRecord::Base
 
   update_counter_cache :discussion, :closed_polls_count
 
+  before_validation :set_default_community
   after_update :remove_poll_options
 
   has_many :stances
@@ -61,6 +62,7 @@ class Poll < ActiveRecord::Base
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
+  validates :communities, length: { minimum: 1 }
 
   validate :poll_options_are_valid
   validate :closes_in_future
@@ -69,10 +71,6 @@ class Poll < ActiveRecord::Base
 
   def poll
     self
-  end
-
-  def communities
-    super.presence || Communities::Public.instance_relation
   end
 
   # todo.. i guess we gotta add attachements to this but it's boring.
@@ -151,6 +149,15 @@ class Poll < ActiveRecord::Base
     existing = Array(poll_options.pluck(:name))
     (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: priority) }
     @poll_option_removed_names = (existing - names)
+  end
+
+  def set_default_community
+    return unless poll_communities.empty?
+    if group
+      poll_communities.build(community: group.community)
+    else
+      poll_communities.build(community: Communities::Public.instance)
+    end
   end
 
   private
