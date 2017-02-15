@@ -16,10 +16,11 @@ describe Stance do
       expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 1})
     end
 
+    # TODO: when we have poll types which accept alternate scores, update this test to test that.
     it "map" do
-      stance = Stance.create(poll: poll, participant: author, choice: {'dog' => 2, 'cat' => 3})
+      stance = Stance.create(poll: poll, participant: author, choice: {'dog' => 1, 'cat' => 1})
       poll.update_stance_data
-      expect(poll.stance_data).to eq({'dog' => 2, 'cat' => 3})
+      expect(poll.stance_data).to eq({'dog' => 1, 'cat' => 1})
     end
 
   end
