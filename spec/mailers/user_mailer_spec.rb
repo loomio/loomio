@@ -41,7 +41,7 @@ describe UserMailer do
       @user = create(:user)
       @inviter = create(:user)
       @group = create(:group, full_name: "Group full name")
-      @membership = create(:membership, user: @user, inviter: create(:user))
+      @membership = create(:membership, user: @user, group: @group, inviter: @inviter)
       @event = Events::UserAddedToGroup.create(kind: 'user_added_to_group', user: @inviter, eventable: @membership)
       @mail = UserMailer.user_added_to_group(@user, @event)
     end
