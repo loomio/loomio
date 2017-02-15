@@ -324,10 +324,8 @@ class Ability
     end
 
     can :create, Poll do |poll|
-      user_is_admin_of?(poll.group_id) ||
-      (poll.group.members_can_raise_motions? && user_is_member_of?(poll.group_id))
-      # @user.is_logged_in? &&
-      # poll.communities.all? { |community| user.ability.can?(:poll, community) }
+      @user.is_logged_in? &&
+      (!poll.group || user.ability.can?(:poll, poll.group.community))
     end
 
     # NB: discussion dependency on polls

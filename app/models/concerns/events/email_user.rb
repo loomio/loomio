@@ -1,8 +1,4 @@
 module Events::EmailUser
-  def trigger!(args = {})
-    super
-    email_users!
-  end
 
   # send event emails
   def email_users!

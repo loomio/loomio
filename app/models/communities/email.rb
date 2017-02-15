@@ -11,4 +11,8 @@ class Communities::Email < Communities::Base
   def participants
     @participants ||= emails.map { |email| Visitor.new(email: email) }
   end
+
+  def notify!(event)
+    # TODO
+  end
 end

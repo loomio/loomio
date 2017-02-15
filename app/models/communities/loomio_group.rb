@@ -1,6 +1,7 @@
 class Communities::LoomioGroup < Communities::Base
   set_community_type :loomio_group
   set_custom_fields  :group_key
+  include Communities::Loomio
 
   validates :group, presence: true
 

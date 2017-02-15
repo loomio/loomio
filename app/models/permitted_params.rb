@@ -43,7 +43,11 @@ class PermittedParams < Struct.new(:params)
   alias_method :proposal_attributes, :motion_attributes
 
   def poll_attributes
-    [:title, :details, :poll_type, :discussion_id, :closing_at, :make_announcement, :multiple_choice, :poll_option_names, {poll_option_names: []}]
+    [:title, :details, :poll_type, :discussion_id, :closing_at,
+     :make_announcement, :multiple_choice,
+     :participant_emails, {participant_emails: []},
+     :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
+     :poll_option_names, {poll_option_names: []}]
   end
 
   def stance_attributes

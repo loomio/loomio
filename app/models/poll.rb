@@ -36,24 +36,11 @@ class Poll < ActiveRecord::Base
   define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
   define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
 
-  # has_many :poll_communities
-  # has_many :communities, through: :poll_communities
+  has_many :poll_communities
+  has_many :communities, through: :poll_communities
+  accepts_nested_attributes_for :communities
 
-  # has_many :poll_references
-
-  # there's some duplication here, but it's pretty unlikely we'll need references
-  # to other models, so it's unlikely to blow out
-  # def group
-  #   @group      ||= poll_references.find_by(reference_type: 'Group')&.reference
-  # end
-  #
-  # def discussion
-  #   @discussion ||= poll_references.find_by(reference_type: 'Discussion')&.reference
-  # end
-  #
-  # def motion
-  #   @motion     ||= poll_references.find_by(reference_type: 'Motion')&.reference
-  # end
+  attr_accessor :participant_emails
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
@@ -74,7 +61,6 @@ class Poll < ActiveRecord::Base
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
-  # validates :communities, length: { minimum: 1 }
 
   validate :poll_options_are_valid
   validate :closes_in_future
@@ -83,6 +69,10 @@ class Poll < ActiveRecord::Base
 
   def poll
     self
+  end
+
+  def communities
+    super.presence || Communities::Public.instance_relation
   end
 
   # todo.. i guess we gotta add attachements to this but it's boring.

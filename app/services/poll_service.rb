@@ -1,11 +1,10 @@
 class PollService
   def self.create(poll:, actor:)
-    # reference = PollReferences::Base.for(reference)
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
-    # communities:     reference.communities.presence || [Communities::Public.new],
-    # poll_references: reference.references,
+
+    PollCommunityService.assign_communities_for(poll)
 
     return false unless poll.valid?
     poll.save!
@@ -13,21 +12,6 @@ class PollService
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll)
   end
-
-  # def self.set_communities(poll:, actor:, communities:)
-  #   return false unless communities.any?
-  #
-  #   actor.ability.authorize! :set_communities, poll
-  #   communities.each { |community| actor.ability.authorize! :poll, community }
-  #
-  #   poll.assign_attributes(communities: communities)
-  #
-  #   return false unless poll.valid?
-  #   poll.save!
-  #
-  #   EventBus.broadcast('poll_set_communities', poll, actor)
-  # end
-
 
   def self.close(poll:, actor:)
     actor.ability.authorize!(:close, poll)
@@ -55,15 +39,15 @@ class PollService
 
   def self.do_closing_work(poll:)
     poll.update(closed_at: Time.now)
-    # poll.poll_communities.for(:loomio_group).each do |poll_community|
-    #   poll_community.update(community: poll_community.community.to_user_community)
-    # end
+    poll.poll_communities.for(:loomio_group).each do |poll_community|
+      poll_community.update(community: poll_community.community.to_user_community)
+    end
+
     poll.poll_did_not_votes.delete_all
     non_voters = poll.group.members - poll.participants
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
     poll.update_did_not_votes_count
   end
-
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
