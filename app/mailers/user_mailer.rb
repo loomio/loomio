@@ -1,7 +1,7 @@
 class UserMailer < BaseMailer
   helper :email
   helper :application
-  layout 'invite_people_mailer', only: [:group_membership_approved, :added_to_group]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group]
 
   def missed_yesterday(user, time_since = nil)
     @recipient = @user = user
@@ -36,7 +36,7 @@ class UserMailer < BaseMailer
                      locale: locale_for(@user)
   end
 
-  def user_added_to_group(recipient, event, message)
+  def user_added_to_group(recipient, event, message = nil)
     @user    = recipient
     @group   = event.eventable.group
     @inviter = event.eventable.inviter || @group.admins.first
@@ -44,9 +44,9 @@ class UserMailer < BaseMailer
 
     send_single_mail to: @user.email,
                      from: from_user_via_loomio(@inviter),
-                     reply_to: inviter.try(:name_and_email),
+                     reply_to: @inviter.try(:name_and_email),
                      subject_key: "email.user_added_to_group.subject",
-                     subject_params: { which_group: group.full_name, who: @inviter.name },
+                     subject_params: { which_group: @group.full_name, who: @inviter.name },
                      locale: locale_for(@user, @inviter)
   end
 

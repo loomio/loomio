@@ -30,15 +30,17 @@ describe PollService do
     # end
 
     it 'populates removing custom poll actions' do
-      poll_created.poll_options_attributes = [{ name: "agree"}]
-      PollService.create(poll: poll_created, actor: user)
+      poll_created.poll_type = 'poll'
+      poll_created.poll_options_attributes = [{ name: "green"}]
+      expect { PollService.create(poll: poll_created, actor: user) }.to change { Poll.count }.by(1)
 
       poll = Poll.last
       expect(poll.poll_options.count).to eq 1
-      expect(poll.poll_options)
+      expect(poll.poll_options.first.name).to eq "green"
     end
 
     it 'does not allow adding custom proposal actions' do
+      poll_created.poll_type = 'proposal'
       poll_created.poll_options_attributes = [{name: "superagree"}]
       expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
     end
@@ -171,14 +173,14 @@ describe PollService do
       expect(poll.poll_options.map(&:name).sort).to eq ['abstain', 'agree', 'block', 'disagree']
       expect(poll.stances.count).to eq motion.votes.count
       expect(poll.stances.first.reason).to eq vote.statement
-      expect(poll.outcome).to be_nil
+      expect(poll.current_outcome).to be_nil
     end
 
     it 'saves an outcome on a closed motion' do
       PollService.convert(motions: closed_motion)
       poll = Poll.last
-      expect(poll.outcome.statement).to eq closed_motion.outcome
-      expect(poll.outcome.author).to eq closed_motion.outcome_author
+      expect(poll.current_outcome.statement).to eq closed_motion.outcome
+      expect(poll.current_outcome.author).to eq closed_motion.outcome_author
     end
 
     it 'does not alter the existing motion' do

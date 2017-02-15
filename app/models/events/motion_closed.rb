@@ -16,7 +16,7 @@ class Events::MotionClosed < Event
   end
 
   def notification_url
-    discussion_motion_outcome_path(eventable.discussion, eventable)
+    discussion_motion_outcome_url(eventable.discussion, eventable)
   end
 
   def notification_translation_values

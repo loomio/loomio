@@ -5,21 +5,23 @@ describe API::StancesController do
   let(:another_user) { create :user }
   let(:poll) { create :poll, discussion: discussion }
   let(:poll_option) { create :poll_option, poll: poll }
-  let(:old_stance) { create :stance, poll: poll, participant: user, poll_option: poll_option }
+  let(:old_stance) { create :stance, poll: poll, participant: user, poll_options: [poll_option] }
   let(:discussion) { create :discussion, group: group }
   let(:group) { create :group }
   let(:stance_params) {{
     poll_id: poll.id,
-    poll_option_id: poll_option.id,
+    stance_choices_attributes: [{poll_option_id: poll_option.id}],
     reason: "here is my stance"
   }}
   before { group.add_member! user }
 
   describe 'index' do
-    let(:recent_stance) { create :stance, poll: poll, created_at: 1.day.ago }
-    let(:old_stance) { create :stance, poll: poll, created_at: 5.days.ago }
-    let(:high_priority_stance) { create :stance, poll: poll, poll_option: create(:poll_option, priority: 0) }
-    let(:low_priority_stance) { create :stance, poll: poll, poll_option: create(:poll_option, priority: 10) }
+    let(:recent_stance) { create :stance, poll: poll, created_at: 1.day.ago, choice: [low_priority_option.name] }
+    let(:old_stance) { create :stance, poll: poll, created_at: 5.days.ago, choice: [low_priority_option.name] }
+    let(:high_priority_stance) { create :stance, poll: poll, choice: [high_priority_option.name] }
+    let(:low_priority_stance) { create :stance, poll: poll, choice: [low_priority_option.name] }
+    let(:high_priority_option) { create(:poll_option, poll: poll, priority: 0) }
+    let(:low_priority_option) { create(:poll_option, poll: poll, priority: 10) }
 
     it 'can order by recency asc' do
       sign_in user
@@ -78,7 +80,7 @@ describe API::StancesController do
 
       stance = Stance.last
       expect(stance.poll).to eq poll
-      expect(stance.poll_option).to eq poll_option
+      expect(stance.poll_options.first).to eq poll_option
       expect(stance.reason).to eq stance_params[:reason]
       expect(stance.latest).to eq true
 
@@ -86,8 +88,7 @@ describe API::StancesController do
       json = JSON.parse(response.body)
       expect(json['stances'].length).to eq 1
       expect(json['stances'][0]['id']).to eq stance.id
-      expect(json['poll_options'].length).to eq 1
-      expect(json['poll_options'][0]['name']).to eq poll_option.name
+      expect(json['poll_options'].map { |o| o['name'] }).to include poll_option.name
     end
 
     it 'overwrites existing stances' do
@@ -111,7 +112,7 @@ describe API::StancesController do
 
     it 'does not allow creating an invalid stance' do
       sign_in user
-      stance_params[:poll_option_id] = nil
+      stance_params[:stance_choices_attributes] = []
       expect { post :create, stance: stance_params }.to_not change { Stance.count }
       expect(response.status).to eq 422
     end

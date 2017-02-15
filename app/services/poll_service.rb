@@ -81,6 +81,7 @@ class PollService
     Array(motions).map do |motion|
       next if motion.poll.present?
       # reference = PollReferences::Motion.new(motion)
+      outcome = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome
       Poll.create!(
       # poll_references:   reference.references,
       # communities:       reference.communities,
@@ -95,7 +96,7 @@ class PollService
         updated_at:              motion.updated_at,
         closing_at:              motion.closing_at,
         closed_at:               motion.closed_at,
-        outcome: (Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome)
+        outcomes:                Array(outcome)
       ).tap do |poll|
         poll.update(
           stances: motion.votes.map do |vote|

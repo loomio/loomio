@@ -1,4 +1,5 @@
 class Events::UserAddedToGroup < Event
+  include Events::EmailUser
   include Events::NotifyUser
 
   def self.publish!(membership, inviter, message = nil)
@@ -14,7 +15,7 @@ class Events::UserAddedToGroup < Event
   private
 
   def email_users!
-    mailer.send(kind, eventable.user, self, @trigger_args[:message])
+    mailer.send(kind, eventable.user, self, @trigger_args[:message]).deliver_now
   end
 
   def notification_recipients

@@ -25,6 +25,7 @@ module EmailHelper
   end
 
   def formatted_time_in_zone(time, zone)
+    return unless time && zone
     time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
   end
 

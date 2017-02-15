@@ -16,6 +16,7 @@ describe API::PollsController do
     poll_type: "proposal",
     details: "is it me you're looking for?",
     discussion_id: discussion.id,
+    poll_option_names: ["agree", "abstain", "disagree", "block"],
     closing_at: 3.days.from_now
   }}
 

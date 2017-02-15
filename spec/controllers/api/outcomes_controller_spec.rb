@@ -5,6 +5,7 @@ describe API::OutcomesController do
   let(:another_user) { create :user }
   let(:outcome) { create :outcome, poll: poll, author: user }
   let(:poll) { create :poll, discussion: discussion, closed_at: 1.day.ago, author: user }
+  let(:another_poll) { create :poll, discussion: discussion, closed_at: 1.day.ago, author: user }
   let(:discussion) { create :discussion, group: group }
   let(:group) { create :group }
   let(:outcome_params) {{ poll_id: poll.id, statement: "We should do this" }}
@@ -48,11 +49,17 @@ describe API::OutcomesController do
   end
 
   describe 'update' do
-    it 'updates an existing outcome' do
+    it 'creates a new outcome in place of an existing one' do
       sign_in user
-      post :update, id: outcome.id, outcome: outcome_params
+      outcome
+      expect { post :update, id: outcome.id, outcome: outcome_params }.to change { Outcome.count }.by(1)
       expect(response.status).to eq 200
-      expect(outcome.reload.statement).to eq outcome_params[:statement]
+
+      new_outcome = Outcome.last
+
+      expect(new_outcome.statement).to eq outcome_params[:statement]
+      expect(new_outcome.latest).to eq true
+      expect(outcome.reload.latest).to eq false
     end
 
     it 'does not allow updating to an invalid outcome' do
@@ -64,8 +71,8 @@ describe API::OutcomesController do
 
     it 'does not allow outcomes to switch polls' do
       sign_in user
-      post :update, id: outcome.id, outcome: { poll_id: create(:poll).id }
-      expect(response.status).to eq 200
+      post :update, id: outcome.id, outcome: { poll_id: another_poll.id }
+      expect(response.status).to eq 422
       expect(outcome.reload.poll).to eq poll
     end
 

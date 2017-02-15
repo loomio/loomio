@@ -16,8 +16,7 @@ describe Events::CommentRepliedTo do
     end
 
     it 'emails the parent author' do
-      expect(ThreadMailer).to receive(:delay).and_return(double(comment_replied_to: true))
-      expect { Events::CommentRepliedTo.publish!(comment) }.to change { Event.count }.by(1)
+      expect { Events::CommentRepliedTo.publish!(comment) }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
     it 'creates a notification' do

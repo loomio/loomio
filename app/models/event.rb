@@ -31,9 +31,9 @@ class Event < ActiveRecord::Base
   end
 
   def trigger!(args = {})
-    @trigger_args = args
     # this is called after create, and calls methods defined by the event concerns
     # included per event type
+    @trigger_args = args
   end
 
   private
