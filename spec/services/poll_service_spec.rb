@@ -12,7 +12,7 @@ describe PollService do
   let(:group) { create :group }
   let(:another_group) { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:stance) { create :stance, poll: poll_created }
+  let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
 
   before { group.add_member! user }
 
@@ -31,17 +31,17 @@ describe PollService do
 
     it 'populates removing custom poll actions' do
       poll_created.poll_type = 'poll'
-      poll_created.poll_options_attributes = [{ name: "green"}]
+      poll_created.poll_options = []
+      poll_created.poll_option_names = ["green"]
       expect { PollService.create(poll: poll_created, actor: user) }.to change { Poll.count }.by(1)
 
-      poll = Poll.last
-      expect(poll.poll_options.count).to eq 1
-      expect(poll.poll_options.first.name).to eq "green"
+      expect(poll_created.reload.poll_options.count).to eq 1
+      expect(poll_created.poll_options.first.name).to eq "green"
     end
 
     it 'does not allow adding custom proposal actions' do
       poll_created.poll_type = 'proposal'
-      poll_created.poll_options_attributes = [{name: "superagree"}]
+      poll_created.poll_option_names = ["superagree"]
       expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
     end
 
@@ -82,7 +82,7 @@ describe PollService do
     describe 'announcements' do
       it 'announces the poll to a group' do
         poll_created.make_announcement = true
-        expect { PollService.create(poll: poll_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect { PollService.create(poll: poll_created, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(poll_created.group.members.count - 1)
       end
 
       it 'does not announce unless make_announcement is set to true' do
