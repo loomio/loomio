@@ -18,7 +18,7 @@ angular.module('loomioApp').directive 'pollPollForm', ->
       _.pull $scope.poll.pollOptionNames, name
 
     $scope.submit = FormService.submit $scope, $scope.poll,
-      successCallback: -> $scope.$emit 'pollSaved'
+      successCallback: (data) -> $scope.$emit 'pollSaved', data.polls[0].key
       flashSuccess: "poll_poll_form.poll_#{actionName}"
       draftFields: ['title', 'details']
       prepareFn: $scope.addOption

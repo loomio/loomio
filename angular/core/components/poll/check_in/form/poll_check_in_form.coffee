@@ -6,8 +6,7 @@ angular.module('loomioApp').directive 'pollCheckInForm', ->
     $scope.submit = FormService.submit $scope, $scope.poll,
       successCallback: (data) -> $scope.$emit 'pollSaved', data.polls[0].key
       prepareFn: ->
-        $scope.poll.pollOptionNames = [$scope.poll.affirmativeText,
-                                       $scope.poll.negativeText]
+        $scope.poll.pollOptionNames = [$scope.poll.affirmativeText, $scope.poll.negativeText]
       flashSuccess: "poll_check_in_form.check_in_#{actionName}"
       draftFields: ['title', 'details', 'affirmativeText', 'negativeText']
 
