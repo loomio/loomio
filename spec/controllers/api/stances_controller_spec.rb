@@ -100,7 +100,7 @@ describe API::StancesController do
       expect(json['poll_options'].map { |o| o['name'] }).to include poll_option.name
     end
 
-    it 'can create a stance with a logged out user' do
+    it 'can create a stance with a visitor' do
       expect { post :create, stance: visitor_stance_params }.to change { Stance.count }.by(1)
 
       stance = Stance.last
@@ -114,6 +114,16 @@ describe API::StancesController do
 
       expect(names).to  include visitor_stance_params[:visitor_attributes][:name]
       expect(emails).to include visitor_stance_params[:visitor_attributes][:email]
+    end
+
+    it 'does not create a stance with an incomplete visitor' do
+      visitor_stance_params[:visitor_attributes] = {}
+      expect { post :create, stance: visitor_stance_params }.to_not change { Stance.count }
+      expect(response.status).to eq 422
+
+      json = JSON.parse(response.body)
+      expect(json['errors']['participant_name']).to be_present
+      expect(json['errors']['participant_email']).to be_present
     end
 
     it 'does not allow unauthorized visitors to create stances' do
@@ -130,7 +140,7 @@ describe API::StancesController do
       expect(old_stance.reload.latest).to eq false
     end
 
-    it 'does not allow visitors to create stances' do
+    it 'does not allow unauthorized visitors to create stances' do
       expect { post :create, stance: stance_params }.to_not change { Stance.count }
       expect(response.status).to eq 403
     end

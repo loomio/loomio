@@ -26,6 +26,7 @@ class Stance < ActiveRecord::Base
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
 
   validates :stance_choices, length: { minimum: 1 }
+  validate :participant_is_complete
 
   delegate :group, to: :poll, allow_nil: true
   def author
@@ -44,5 +45,12 @@ class Stance < ActiveRecord::Base
         {poll_option_id: option.id}
       end
     end
+  end
+
+  private
+
+  def participant_is_complete
+    return if participant.valid?
+    participant.errors.each { |k,v| errors.add("participant_#{k}", v) }
   end
 end
