@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.3.0
+  - 2.4.0
 cache: bundler
 sudo: false
 cache:
@@ -46,7 +46,7 @@ after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 addons:
-  postgresql: "9.4"
+  postgresql: "9.5"
   apt:
     sources:
       - heroku
