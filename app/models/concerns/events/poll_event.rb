@@ -9,7 +9,7 @@ module Events::PollEvent
   end
 
   def poll
-    eventable.poll
+    @poll ||= eventable.poll
   end
 
   private

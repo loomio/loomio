@@ -17,7 +17,7 @@ require 'rails_helper'
 
    describe 'participants' do
      it 'returns an empty array' do
-       expect(community.participants.length).to eq 0
+       expect(community.members.length).to eq 0
      end
    end
 
