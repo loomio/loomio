@@ -172,5 +172,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
              'profilePage',        \
              'authorizedAppsPage', \
              'registeredAppsPage', \
-             'registeredAppPage' then true
+             'registeredAppPage',  \
+             'startPollPage' then true
         else false

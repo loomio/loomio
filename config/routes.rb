@@ -262,6 +262,7 @@ Loomio::Application.routes.draw do
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',                as: :motion
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
+  get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/:username/'                       => 'users#show',                  as: :user
 
   get '/notifications/dropdown_items'      => 'application#gone'
