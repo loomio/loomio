@@ -13,6 +13,15 @@ describe API::StancesController do
     stance_choices_attributes: [{poll_option_id: poll_option.id}],
     reason: "here is my stance"
   }}
+
+  let(:public_poll) { create :poll }
+  let(:public_poll_option) { create :poll_option, poll: public_poll }
+  let(:visitor_stance_params) {{
+    poll_id: public_poll.id,
+    stance_choices_attributes: [{poll_option_id: public_poll_option.id}],
+    visitor_attributes: { name: "John Doe", email: "john@doe.ninja" }
+  }}
+
   before { group.add_member! user }
 
   describe 'index' do
@@ -89,6 +98,28 @@ describe API::StancesController do
       expect(json['stances'].length).to eq 1
       expect(json['stances'][0]['id']).to eq stance.id
       expect(json['poll_options'].map { |o| o['name'] }).to include poll_option.name
+    end
+
+    it 'can create a stance with a logged out user' do
+      expect { post :create, stance: visitor_stance_params }.to change { Stance.count }.by(1)
+
+      stance = Stance.last
+      expect(stance.participant.name).to  eq visitor_stance_params[:visitor_attributes][:name]
+      expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
+
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      names  = json['visitors'].map { |u| u['name'] }
+      emails = json['visitors'].map { |u| u['email'] }
+
+      expect(names).to  include visitor_stance_params[:visitor_attributes][:name]
+      expect(emails).to include visitor_stance_params[:visitor_attributes][:email]
+    end
+
+    it 'does not allow unauthorized visitors to create stances' do
+      visitor_stance_params[:poll_id] = poll.id
+      expect { post :create, stance: visitor_stance_params }.to_not change { Stance.count }
+      expect(response.status).to eq 403
     end
 
     it 'overwrites existing stances' do

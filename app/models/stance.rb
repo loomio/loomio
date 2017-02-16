@@ -10,6 +10,7 @@ class Stance < ActiveRecord::Base
   has_many :poll_options, through: :stance_choices
 
   accepts_nested_attributes_for :stance_choices
+  attr_accessor :visitor_attributes
 
   belongs_to :participant, polymorphic: true, required: true
 

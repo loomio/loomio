@@ -354,7 +354,7 @@ class Ability
       if poll.discussion
         (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
       else
-        poll.communities.detect { |community| community.includes?(@user) }
+        poll.communities.any? { |community| community.includes?(@user) }
       end
     end
 

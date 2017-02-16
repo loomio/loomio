@@ -10,6 +10,10 @@ class API::StancesController < API::RestfulController
 
   private
 
+  def create_action
+    @event = service.create(stance: resource, actor: current_user.presence || Visitor.new(resource_params[:visitor_attributes]))
+  end
+
   def accessible_records
     apply_order load_and_authorize(:poll).stances.latest
   end
