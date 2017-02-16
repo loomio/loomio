@@ -1333,6 +1333,8 @@ en:
     change_your_stance: Change your vote
     load_more: Load more
     details: Details
+    participant_name: Your name
+    participant_email: Email address
 
   poll_common_card:
     show_results: Show results

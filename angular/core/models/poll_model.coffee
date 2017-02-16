@@ -52,22 +52,17 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @recordStore.outcomes.find(pollId: @id, latest: true)[0]
 
     uniqueStances: (order, limit) ->
-      _.slice(_.sortBy(_.values(@uniqueStancesByUserId()), order), 0, limit)
-
-    stanceFor: (user) ->
-      @uniqueStancesByUserId()[user.id]
+      _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
     lastStanceByUser: (user) ->
-      @uniqueStancesByUserId()[user.id]
+      criteria =
+        pollId: @id
+        latest: true
+      criteria["#{user.constructor.singular}Id"] = user.id
+      _.first _.sortBy(@recordStore.stances.find(criteria), 'createdAt')
 
     userHasVoted: (user) ->
       @lastStanceByUser(user)?
-
-    uniqueStancesByUserId: ->
-      stancesByUserId = {}
-      _.each @stances(), (stance) ->
-        stancesByUserId[stance.participantId] = stancesByUserId[stance.participantId] or stance
-      stancesByUserId
 
     group: ->
       @discussion().group() if @discussion()

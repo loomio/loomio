@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences
+  include HasGravatar
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
@@ -40,9 +41,6 @@ class User < ActiveRecord::Base
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
-
-  include Gravtastic
-  gravtastic rating: :pg, default: :none
 
   has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
@@ -111,8 +109,6 @@ class User < ActiveRecord::Base
   before_save :set_avatar_initials,
               :ensure_unsubscribe_token,
               :ensure_email_api_key
-
-  before_create :set_default_avatar_kind
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
@@ -272,18 +268,6 @@ class User < ActiveRecord::Base
     selected_locale || detected_locale || I18n.default_locale
   end
 
-  def has_gravatar?(options = {})
-    return false if Rails.env.test?
-    hash = Digest::MD5.hexdigest(email.to_s.downcase)
-    options = { :rating => 'x', :timeout => 2 }.merge(options)
-    http = Net::HTTP.new('www.gravatar.com', 80)
-    http.read_timeout = options[:timeout]
-    response = http.request_head("/avatar/#{hash}?rating=#{options[:rating]}&default=http://gravatar.com/avatar")
-    response.code != '302'
-  rescue StandardError, Timeout::Error
-    false  # Don't show "gravatar" if the service is down or slow
-  end
-
   def generate_username
     self.username ||= ::UsernameGenerator.new(self).generate
   end
@@ -298,12 +282,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def set_default_avatar_kind
-    if has_gravatar?
-      self.avatar_kind = "gravatar"
-    end
-  end
 
   def ensure_email_api_key
     self.email_api_key ||= SecureRandom.hex(16)
