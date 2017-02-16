@@ -1,0 +1,11 @@
+.poll-common-form
+  .poll-common-form__select-poll-type{ng-if: "!poll.pollType"}
+    %md-list-item.decision-tools-card__poll-type{ng-click: "poll.pollType = pollType", ng-repeat: "pollType in pollTypes() track by $index"}
+      %i.material-icons.decision-tools-card__icon {{fieldFromTemplate(pollType, 'material_icon')}}
+      .decision-tools-card__content
+        .decision-tools-card__poll-type-title.md-body-2{translate: "decision_tools_card.{{pollType}}_title"}
+        .decision-tools-card__poll-type-subtitle.md-caption{translate: "decision_tools_card.{{pollType}}_subtitle"}
+  -# .poll-common-form__select-community{ng-if: "poll.pollType && !poll.communityType"}
+    -# SELECT A COMMUNITY FOR {{poll.pollType}}
+  .poll-common-form__create-poll{ng-if: "poll.pollType"}
+    %poll_common_directive{poll: "poll", name: "form"}

@@ -1,12 +1,10 @@
-angular.module('loomioApp').factory 'PollCheckInForm', ->
+angular.module('loomioApp').directive 'pollCheckInForm', ->
   templateUrl: 'generated/components/poll/check_in/form/poll_check_in_form.html'
-  controller: ($scope, poll, FormService, KeyEventService, TranslationService) ->
-    $scope.poll = poll.clone()
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
-
+  controller: ($scope, FormService, KeyEventService, TranslationService) ->
     actionName = if $scope.poll.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.poll,
+      successCallback: -> $scope.$emit 'pollSaved'
       prepareFn: ->
         $scope.poll.pollOptionNames = [$scope.poll.affirmativeText,
                                        $scope.poll.negativeText]

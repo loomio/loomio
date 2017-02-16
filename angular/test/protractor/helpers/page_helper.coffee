@@ -11,7 +11,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000
 
 module.exports = new class PageHelper
   loadPath: (path) ->
-    browser.get('development/'+path)
+    browser.get('dev/'+path)
     browser.driver.manage().window().setSize(1280, 1024)
 
   waitForReload: (time=1000)->

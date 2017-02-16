@@ -235,14 +235,6 @@ Loomio::Application.routes.draw do
   get  'start_group' => 'start_group#new'
   post 'start_group' => 'start_group#create'
 
-  get 'g/:key/export'                      => 'groups#export',    as: :group_export
-  get 'g/:key(/:slug)'                     => 'groups#show',      as: :group
-  get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
-  get 'd/:key/comment/:comment_id'         => 'discussions#show', as: :comment
-  get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
-  get 'p/:key(/:slug)'                     => 'polls#show',       as: :poll
-  get 'u/:username/'                       => 'users#show',       as: :user
-
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
   get 'dashboard/:filter'                  => 'application#boot_angular_ui'
   get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
@@ -262,6 +254,15 @@ Loomio::Application.routes.draw do
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
   get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
+  get 'p/new(/:type)'                      => 'application#boot_angular_ui', as: :new_poll
+
+  get 'g/:key/export'                      => 'groups#export',               as: :group_export
+  get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
+  get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
+  get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
+  get 'm/:key(/:slug)'                     => 'motions#show',                as: :motion
+  get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
+  get 'u/:username/'                       => 'users#show',                  as: :user
 
   get '/notifications/dropdown_items'      => 'application#gone'
   get '/u/:key(/:stub)'                    => 'application#gone'

@@ -88,6 +88,8 @@ class User < ActiveRecord::Base
            foreign_key: 'author_id',
            dependent: :destroy
 
+  has_many :polls, foreign_key: :author_id
+
   has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
   has_many :stances, as: :participant, dependent: :destroy

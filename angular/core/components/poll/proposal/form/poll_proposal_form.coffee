@@ -1,12 +1,11 @@
-angular.module('loomioApp').factory 'PollProposalForm', ->
+angular.module('loomioApp').directive 'pollProposalForm', ->
+  scope: {poll: '='}
   templateUrl: 'generated/components/poll/proposal/form/poll_proposal_form.html'
-  controller: ($scope, poll, FormService, KeyEventService, MentionService, TranslationService) ->
-    $scope.poll = poll.clone()
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
-
+  controller: ($scope, FormService, KeyEventService, MentionService, TranslationService) ->
     actionName = if $scope.poll.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.poll,
+      successCallback: -> $scope.$emit 'pollSaved'
       flashSuccess: "poll_proposal_form.proposal_#{actionName}"
       draftFields: ['title', 'details']
 
