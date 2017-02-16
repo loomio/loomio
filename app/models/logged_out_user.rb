@@ -15,4 +15,12 @@ class LoggedOutUser
   def created_at
     nil
   end
+
+  def avatar_url(size)
+    nil
+  end
+
+  def avatar_kind
+    'initials'
+  end
 end

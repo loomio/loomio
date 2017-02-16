@@ -29,14 +29,6 @@ module NullUser
     I18n.locale
   end
 
-  def avatar_url(size)
-    nil
-  end
-
-  def avatar_kind
-    'initials'
-  end
-
   def is_member_of?(group)
     false
   end

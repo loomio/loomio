@@ -8,7 +8,11 @@ module HasGravatar
   end
 
   def set_default_avatar_kind
-    self.avatar_kind = "gravatar" if has_gravatar?
+    self.avatar_kind = if has_gravatar?
+      "gravatar"
+    else
+      "initials"
+    end
   end
 
   def has_gravatar?(options = {})
