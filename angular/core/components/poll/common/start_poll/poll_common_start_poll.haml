@@ -8,4 +8,7 @@
   -# .poll-common-form__select-community{ng-if: "poll.pollType && !poll.communityType"}
     -# SELECT A COMMUNITY FOR {{poll.pollType}}
   .poll-common-form__create-poll{ng-if: "poll.pollType"}
+    .poll-common-card-header.lmo-flex
+      %i.material-icons {{ fieldFromTemplate(poll.pollType, 'material_icon') }}
+      %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{poll.pollType}}"}
     %poll_common_directive{poll: "poll", name: "form"}
