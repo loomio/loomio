@@ -55,7 +55,7 @@ published_at "2015-11-18 14:28:30"
       if group.parent.present?
         group.parent.admins << user
       end
-      group.subscription = build(:subscription) if group.is_parent?
+      # group.subscription = build(:subscription) if group.is_parent?
       group.admins << user
       group.save!
     end
@@ -221,10 +221,10 @@ published_at "2015-11-18 14:28:30"
     cover_photo_updated_at { 10.days.ago }
   end
 
-  factory :subscription do
-    kind :trial
-    expires_at 1.month.from_now
-  end
+  # factory :subscription do
+  #   kind :trial
+  #   expires_at 1.month.from_now
+  # end
 
   factory :draft do
     user
