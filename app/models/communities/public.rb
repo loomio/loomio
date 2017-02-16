@@ -17,15 +17,15 @@ class Communities::Public < Communities::Base
     end
   end
 
-  def includes?(participant)
+  def includes?(member)
     true
   end
 
-  def participants
+  def members
     []
   end
 
   def notify!(event)
-    # noop
+    # NOOP
   end
 end

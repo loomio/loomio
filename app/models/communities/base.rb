@@ -18,18 +18,22 @@ class Communities::Base < ActiveRecord::Base
 
   # ensure that we're instantiating the correct community type for each community fetched
   # fallback to a Communities::Base if we can't find an appropriate subclass
-  # (note that Communities::Base will error when sent the 'includes?' or 'participants' message)
+  # (note that Communities::Base will error when sent the 'includes?', 'notify!' or 'members' message)
   def self.discriminate_class_for_record(attributes)
     "Communities::#{attributes.fetch('community_type', 'base').camelize}".constantize
   rescue NameError
     self
   end
 
-  def includes?(participant)
+  def includes?(member)
     raise NotImplementedError.new
   end
 
-  def participants
+  def members
+    raise NotImplementedError.new
+  end
+
+  def notify!(event)
     raise NotImplementedError.new
   end
 

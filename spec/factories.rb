@@ -255,7 +255,6 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ["engage"]
-    # communities [Communities::Public.new]
   end
 
   factory :outcome do

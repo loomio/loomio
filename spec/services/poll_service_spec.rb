@@ -232,7 +232,7 @@ describe PollService do
     end
   end
 
-  describe 'expire_lapsed_polls', focus: true do
+  describe 'expire_lapsed_polls' do
     it 'expires a lapsed poll' do
       PollService.create(poll: poll_created, actor: user)
       poll_created.update_attribute(:closing_at,1.day.ago)

@@ -62,7 +62,6 @@ class Poll < ActiveRecord::Base
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
-  validates :communities, length: { minimum: 1 }
 
   validate :poll_options_are_valid
   validate :closes_in_future

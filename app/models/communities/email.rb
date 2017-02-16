@@ -4,15 +4,15 @@ class Communities::Email < Communities::Base
 
   validates :emails, length: { minimum: 1 }
 
-  def includes?(participant)
-    emails.include?(participant.email)
+  def includes?(member)
+    emails.include?(member.email)
   end
 
-  def participants
-    @participants ||= emails.map { |email| Visitor.new(email: email) }
+  def members
+    @members ||= emails.map { |email| Visitor.new(email: email) }
   end
 
   def notify!(event)
-    # TODO
+    # send an email about the event if appropriate
   end
 end

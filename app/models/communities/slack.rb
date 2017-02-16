@@ -1,12 +1,12 @@
 class Communities::Slack < Communities::Base
   set_custom_fields :slack_team_name, :slack_access_token
 
-  def includes?(user)
-    participants.map(&:token).include? user.participation_token
+  def includes?(member)
+    members.map(&:token).include? member.participation_token
   end
 
-  def participants
-    @participants ||= Array(fetch_participants.dig('members')).map do |participant|
+  def members
+    @members ||= Array(fetch_members.dig('members')).map do |participant|
       Visitor.new(
         name:  participant.dig('profile', 'real_name'),
         email: participant['email'],
@@ -15,9 +15,13 @@ class Communities::Slack < Communities::Base
     end
   end
 
+  def notify!(event)
+    # send the event to a slack channel
+  end
+
   private
 
-  def fetch_participants
+  def fetch_members
     HTTParty.get("https://slack.com/api/users.list?token=#{slack_access_token}")
   end
 end

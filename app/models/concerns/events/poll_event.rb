@@ -3,7 +3,7 @@ module Events::PollEvent
   include Events::NotifyUser
   include Events::EmailUser
 
-  def trigger!(args)
+  def trigger!(args = {})
     super
     poll.communities.each { |community| community.notify!(self) }
   end
@@ -15,6 +15,7 @@ module Events::PollEvent
   private
 
   def notification_recipients
+    return User.none unless poll.group
     if announcement
       announcement_notification_recipients
     else
@@ -31,6 +32,7 @@ module Events::PollEvent
   end
 
   def email_recipients
+    return User.none unless poll.group
     if announcement
       announcement_email_recipients
     else
