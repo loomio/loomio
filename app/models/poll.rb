@@ -151,15 +151,20 @@ class Poll < ActiveRecord::Base
   end
 
   def set_default_community
-    return unless poll_communities.empty?
-    if group
-      poll_communities.build(community: group.community)
-    else
-      poll_communities.build(community: Communities::Public.instance)
-    end
+    poll_communities.build(community: default_community) if poll_communities.empty?
   end
 
   private
+
+  def default_community
+    if group
+      group.community
+    elsif participant_emails.presence
+      Communities::Email.new(community_type: :email, emails: participant_emails)
+    else
+      Communities::Public.instance
+    end
+  end
 
   # provides a base hash of 0's to merge with stance data
   def zeroed_poll_options
