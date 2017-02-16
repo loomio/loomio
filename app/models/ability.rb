@@ -320,7 +320,11 @@ class Ability
     end
 
     can [:make_draft, :show], Poll do |poll|
-      can?(:show, poll.discussion)
+      if poll.discussion
+        can?(:show, poll.discussion)
+      else
+        poll.communities.any? { |community| community.includes?(@user) }
+      end
     end
 
     can :create, Poll do |poll|
@@ -346,9 +350,12 @@ class Ability
 
     can :create, Stance do |stance|
       poll = stance.poll
-      poll.active? &&
-      (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
-      # poll.communities.detect { |community| community.includes?(@user) }
+      return false unless poll.active?
+      if poll.discussion
+        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
+      else
+        poll.communities.detect { |community| community.includes?(@user) }
+      end
     end
 
     can [:create, :update], Outcome do |outcome|

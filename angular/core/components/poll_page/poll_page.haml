@@ -1,6 +1,6 @@
 .lmo-one-column-layout
   %loading{ng-if: "!pollPage.poll"}
   %main.poll-page.lmo-row{ng-if: "pollPage.poll"}
-    %group_theme{group: "pollPage.poll.group()", discussion: "pollPage.poll.discussion()", compact: "true"}
+    %group_theme{ng-if: "pollPage.poll.group()", group: "pollPage.poll.group()", discussion: "pollPage.poll.discussion()", compact: "true"}
     .poll-page__main-content.lmo-flex
       %poll_common_card.lmo-card--no-padding{poll: "pollPage.poll"}

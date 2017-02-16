@@ -154,8 +154,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       poll.isClosed() and @canAdministerPoll(poll)
 
     canAdministerPoll: (poll) ->
-      # NB: discussion dependency here, to be factored out.
-      (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
+      if poll.group()
+        (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
+      else
+        Session.user().isAuthorOf(poll)
 
     canClosePoll: (poll) ->
       @canEditPoll(poll)

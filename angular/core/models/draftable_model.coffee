@@ -2,18 +2,26 @@ angular.module('loomioApp').factory 'DraftableModel', (BaseModel) ->
   class DraftableModel extends BaseModel
     @draftParent: 'undefined'
 
+    draftParent: ->
+      @[@constructor.draftParent]()
+
     draft: ->
-      @recordStore.drafts.findOrBuildFor(@[@constructor.draftParent]())
+      return unless parent = @draftParent()
+      @recordStore.drafts.findOrBuildFor(parent)
 
     fetchDraft: =>
-      @recordStore.drafts.fetchFor(@[@constructor.draftParent]())
+      return unless parent = @draftParent()
+      @recordStore.drafts.fetchFor(parent)
 
     restoreDraft: ->
+      return unless draft = @draft()
       payloadField = _.snakeCase(@constructor.serializationRoot or @constructor.singular)
-      @update _.omit(@draft().payload[payloadField], _.isNull)
+      @update _.omit(draft.payload[payloadField], _.isNull)
 
     resetDraft: ->
-      @draft().updateFrom(@recordStore[@constructor.plural].build())
+      return unless draft = @draft()
+      draft.updateFrom(@recordStore[@constructor.plural].build())
 
     updateDraft: ->
-      @draft().updateFrom(@)
+      return unless draft = @draft()
+      draft.updateFrom(@)

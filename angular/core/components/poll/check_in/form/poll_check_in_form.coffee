@@ -4,12 +4,12 @@ angular.module('loomioApp').directive 'pollCheckInForm', ->
     actionName = if $scope.poll.isNew() then 'created' else 'updated'
 
     $scope.submit = FormService.submit $scope, $scope.poll,
-      successCallback: -> $scope.$emit 'pollSaved'
+      successCallback: (data) -> $scope.$emit 'pollSaved', data.polls[0].key
       prepareFn: ->
         $scope.poll.pollOptionNames = [$scope.poll.affirmativeText,
                                        $scope.poll.negativeText]
       flashSuccess: "poll_check_in_form.check_in_#{actionName}"
-      draftFields: ['title', 'details', 'action']
+      draftFields: ['title', 'details', 'affirmativeText', 'negativeText']
 
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:   'poll_check_in_form.title_placeholder'

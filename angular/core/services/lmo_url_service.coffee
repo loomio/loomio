@@ -18,6 +18,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
+    poll: (p, params = {}, options = {}) ->
+      @buildModelRoute('p', p.key, p.title, params, options)
+
     searchResult: (r, params = {}, options = {}) ->
       @discussion r, params, options
 
@@ -27,8 +30,10 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     proposal: (p, params = {}) ->
       @route model: p.discussion(), action: "proposal/#{p.key}", params: params
 
+
     comment: (c, params = {}) ->
       @route model: c.discussion(), action: "comment/#{c.id}", params: params
+
 
     membership: (m, params = {}, options = {}) ->
       @route model: m.group(), action: 'memberships', params: params
