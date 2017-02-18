@@ -10,7 +10,7 @@ class Events::MotionClosingSoon < Event
   private
 
   def notification_recipients
-    Queries::UsersByVolumeQuery.normal_or_loud(eventable)
+    Queries::UsersByVolumeQuery.normal_or_loud(eventable.discussion)
   end
 
   def notification_actor
