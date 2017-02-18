@@ -1,1 +1,9 @@
-uk: {}
+uk:
+  navigation:
+    blog: Блог
+    resources: Ресурси
+    help: Допомога
+    login: Увійти
+  titles:
+    sign_in: Форма входу
+    home: На головну

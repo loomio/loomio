@@ -4,7 +4,7 @@ fr:
     time:
       am: am
       pm: pm
-    closing_in: 'Fermeture à {{time}}'
+    closing_in: 'Fermera {{time}}'
     closed_ago: 'Fermée à {{time}}'
     volume: Volume
     notification_volume: Fréquence de notification
@@ -201,11 +201,14 @@ fr:
     confirm_delete: "Oui, j'en suis sûr"
     in_reply_to: 'En réponse à <strong>{{name}}</strong>:'
     submit_button:
-      label: Ecrire un message
+      label: Publier
     private_privacy_notice: 'Votre commentaire sera visible seulement des membres de {{groupName}}.'
     public_privacy_notice: Votre commentaire sera visible par tout le monde sur internet.
     sign_in: Connectez-vous pour rejoindre la discussion
   sidebar:
+    my_threads: Mes discussions
+    my_groups: Mes groupes
+    my_settings: Mes paramètres
     recent: Récent
     unread: Non lu
     muted: Désactivé
@@ -227,6 +230,8 @@ fr:
     start_thread: Démarrer une nouvelle discussion
     notifications: Panneau des notifications
     search:
+      label: Champ de recherche ; chercher des groupes et des discussions
+      results_aria_label: Résultats de la recherche
       no_results: Aucune discussion trouvée
       close: Fermer le panneau de recherche
       placeholder: Chercher
@@ -270,9 +275,10 @@ fr:
   position_buttons_panel:
     heading: Prenez la parole
   vote_form:
+    aria_label: Formulaire de vote
     heading: Prenez la parole
     no_statement: Pas de déclaration
-    statement_over_limit: "Trop de mots\_! Les prises de position courtes permettent de prendre position sur la proposition plus rapidement."
+    statement_over_limit: 'La limite du nombre de caractères a été atteinte. Les prises de position courtes créent un résumé succin. Si vous voulez en dire davantage, postez un commentaire.'
     i_agree: "Je suis d'accord"
     i_agree_details: Je soutiens cela et souhaite que cela avance.
     i_abstain: "Je m'abstiens"
@@ -294,7 +300,6 @@ fr:
     change_your_vote: Modifier votre position
   undecided_panel:
     aria_label: Membres indécis
-    show_undecided: Montrer les membres indécis
     hide_undecided: Cacher les membres indécis
   proposal_pie_chart:
     participation_statement: '{{percentage}}% des membres ont précisé leur position ({{number}}/{{total}})'
@@ -386,14 +391,13 @@ fr:
     aria_label: Changer la forme de la photo de couverture
     heading: Nouvelle photo de couverture
     upload_link: Charger une nouvelle photo de couverture
-    helptext: "À la recherche d'inspiration ? Allez voir <a href=\"https://unsplash.com/\">Unsplash</a>, une galerie d'images superbes et gratuites"
-    image_size_helptext: "La taille d'image idéale est de 1400 x 320px"
+    image_size_helptext: "La taille d'image idéale est de 1400×320px"
     upload_success: La photo de couverture a été mise à jour avec succès
   logo_photo_form:
     aria_label: Changer la forme du logo du groupe
     heading: Nouveau logo de groupe
     upload_link: Charger un nouveau logo de groupe
-    image_size_helptext: "La taille d'image idéale est de 100 x 100px"
+    image_size_helptext: "La taille d'image idéale est de 100x100px"
     upload_success: Le logo a été mis à jour avec succès
   join_group_button:
     join_group: Rejoindre le groupe
@@ -440,8 +444,6 @@ fr:
     new_photo: Nouvelle photo
     new_cover_photo: Charger une nouvelle photo de couverture
     new_group_logo: Charger un nouveau logo de groupe
-    description: Description du groupe
-    description_placeholder: 'Les coordinateurs des groupes peuvent utiliser cet espace pour décrire les propositions des groupes, de façon à ce que tout le monde sache pourquoi ils sont présents.'
     discussions: Discussions
     discussions_placeholder: "Une discussion est l'endroit où tout le monde peut discuter d'un sujet et prendre des décisions collectives."
     members: Les membres
@@ -481,6 +483,11 @@ fr:
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de {{parentGroupName}} et les membres de {{groupName}}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: "Groupe privé\_: {{privacy}}"
+  description_card:
+    title: Description du groupe
+    placeholder: 'Les coordinateurs de groupes peuvent utiliser cet espace pour décrire le but du groupe, afin que tout le monde puisse savoir pourquoi ils sont là.'
+    messages:
+      description_updated: Description mise à jour
   leave_group_form:
     aria_label: Quitter le groupe
     title: Quitter le groupe
@@ -508,11 +515,10 @@ fr:
     body: '<strong>{{name}}</strong> est un groupe soutenu par les dons. Pour aider Loomio à continuer à soutenir des groupes tel que le vôtre, cliquez ici :'
     make_a_contribution: Apporter une contribution
   upgrade_plan_card:
-    heading: Est-ce que vous utilisez slack ?
-    body: 'Loomio et Slack fonctionnent bien ensemble ! Connectez-les.'
-    heading_alt: Vous voulez un nom de domaine personnalisé ?
-    body_alt: Rendez votre loomio facile à trouver avec votrenom.loomio.org
-    upgrade_plan: Améliorer maintenant
+    donations: Les membres de votre groupe ne seront plus invités à faire un don.
+    more: ... et beaucoup plus.
+    upgrade: Améliorer maintenant
+    donate: Faire un don
   trial_card:
     title: "30 jours d'essai"
     choose_plan: Choisissez votre option tarifaire
@@ -863,11 +869,13 @@ fr:
     aria_label: Contexte de la discussion
     thread_options: Options de la discussion
     email_settings: Paramètres e-mail
-    edit_thread: Editer
+    edit: Modifier
+    edit_thread: Modifier la discussion
     mute_thread: Désactiver
     move_thread: Déplacer
     print_thread: Imprimer
     delete_thread: Supprimer
+    add_comment: Ajouter un commentaire
   delete_thread_form:
     aria_label: Supprimer la discussion
     title: Supprimer la discussion

@@ -223,10 +223,10 @@ FactoryGirl.define do
     cover_photo_updated_at { 10.days.ago }
   end
 
-  factory :subscription do
-    kind :trial
-    expires_at 1.month.from_now
-  end
+  # factory :subscription do
+  #   kind :trial
+  #   expires_at 1.month.from_now
+  # end
 
   factory :draft do
     user

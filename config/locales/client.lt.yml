@@ -117,7 +117,6 @@ lt:
   proposal_positions_panel:
     heading: Nuomonės
   undecided_panel:
-    show_undecided: Rodyti neapsisprendusius narius
     hide_undecided: Slėpti neapsisprendusius narius
   proposal_pie_chart:
     participation_statement: '{{percentage}}% narių išreiškė savo nuomonę ({{number}}/{{total}})'

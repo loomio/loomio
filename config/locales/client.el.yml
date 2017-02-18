@@ -175,7 +175,6 @@ el:
     change_your_vote: Άλλαξε την θέση σου.
   undecided_panel:
     aria_label: Αναποφάσιστα μέλη
-    show_undecided: Δείξε τα αναποφάσιστα μέλη
     hide_undecided: Κρύψε τα αναποφάσιστα μέλη
   proposal_pie_chart:
     participation_statement: '{{percentage}}% των μελών έχουν πάρει θέση ({{number}}/{{total}})'
@@ -261,7 +260,6 @@ el:
       empty:
         membership_is_invitation_only: Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από ένα μέλος.
         membership_is_invitation_by_admin_only: Για να συμμετάσχετε σε αυτή την ομάδα πρέπει να έχετε προσκεκληθεί από έναν συντονιστή.
-    description: Περιγραφή ομάδας
     discussions: Θέματα
     invite_people: Προσκαλέστε άτομα
     options_label: Ρυθμίσεις

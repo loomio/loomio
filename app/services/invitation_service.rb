@@ -31,7 +31,15 @@ class InvitationService
                            message: nil,
                            group: nil,
                            inviter: nil)
-    (recipient_emails - group.members.pluck(:email)).map do |recipient_email|
+
+    emails = (recipient_emails - group.members.pluck(:email)).take(100)
+
+    num_used = group.pending_invitations_count + emails.length
+    max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + group.memberships_count
+
+    raise "Too many pending invitations - group_id: #{group.id}" if num_used > max_allowed
+
+    emails.map do |recipient_email|
       invitation = create_invite_to_join_group(recipient_email: recipient_email,
                                                group: group,
                                                message: message,

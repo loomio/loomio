@@ -112,6 +112,7 @@ sv:
     search:
       placeholder: Sök
       discussions: Diskussioner
+    logo_title: Hemsida
   notifications:
     header: Notifieringar
   position_buttons_panel:
@@ -164,8 +165,15 @@ sv:
     options_label: Alternativ
     options:
       label: Alternativ
+  confirm_gift_plan_modal:
+    go_back: Uppgradera
+  upgrade_plan_card:
+    donate: Donera
+  choose_plan_modal:
+    support_link: 'Låt oss samtala!'
   group_form:
     privacy: Integritet
+    submit_start_group: Startgrupp
     submit_update: Uppdatera inställningar
   group_help_card:
     title: Hjälp

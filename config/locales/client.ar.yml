@@ -163,7 +163,6 @@ ar:
   vote_form:
     heading: شارك برأيك
     no_statement: لا تعليق
-    statement_over_limit: 'هناك الكثير من الكلمات! الجمل القصيرة المفيدة تتيح للجميع الالتحاق بالمقترح.'
     i_agree: موافق
     i_agree_details: أنا أدعم هذا و أريد الاستمرار.
     i_abstain: أمتنع
@@ -185,7 +184,6 @@ ar:
     change_your_vote: قم بتغيير موقفك.
   undecided_panel:
     aria_label: الأعضاء الذين لم يقرروا بعد
-    show_undecided: قم باستعراض الأعضاء الذين لم يقرروا بعد
     hide_undecided: قم بإخفاء الأعضاء الذين لم يقرروا بعد
   proposal_pie_chart:
     participation_statement: '{{percentage}}% من الأعضاء قاموا بتقرير موقفهم ({{number}}/{{total}})'
@@ -298,8 +296,6 @@ ar:
       archive_group_success: تم إلغاء المجموعة.
     group_logo: شعار المجموعة
     new_photo: صورة جديدة
-    description: وصف المجموعة
-    description_placeholder: يمكن لمنسقي المجموعات استخدام هذه المساحة لوصف هدف المجموعة، لكي يعرف جميع الأعضاء لماذا هم في المجموعة.
     discussions: المواضيع
     discussions_placeholder: الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.
     members: أعضاء
@@ -567,7 +563,6 @@ ar:
   thread_context:
     aria_label: سياق الموضوع
     thread_options: خيارات الموضوع
-    edit_thread: تعديل
     move_thread: نقل
     print_thread: طباعة
     delete_thread: حذف
