@@ -6,6 +6,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @serializableAttributes: AppConfig.permittedParams.poll
     @draftParent: 'discussion'
 
+    afterConstruction: ->
+      @newAttachmentIds = _.clone(@attachmentIds) or []
+
     defaultValues: ->
       discussionId: null
       title: ''
@@ -13,6 +16,11 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       closingAt: moment().add(3, 'days').startOf('hour')
       pollOptionNames: []
       pollOptionIds: []
+
+    serialize: ->
+      data = @baseSerialize()
+      data.poll.attachment_ids = @newAttachmentIds
+      data
 
     relationships: ->
       @belongsTo 'author', from: 'users'
@@ -26,6 +34,15 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     voters: ->
       @recordStore.users.find(_.pluck(@stances(), 'participantId'))
+
+    newAttachments: ->
+      @recordStore.attachments.find(@newAttachmentIds)
+
+    attachments: ->
+      @recordStore.attachments.find(attachableId: @id, attachableType: 'Poll')
+
+    hasAttachments: ->
+      _.some @attachments()
 
     communitySize: ->
       if @group()

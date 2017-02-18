@@ -1,0 +1,6 @@
+.poll-common-attachment-form
+  %attachment_form{model: "poll", show-label: "true"}
+  %validation_errors{subject: "poll", field: "file"}
+  %label.lmo-form-labelled-input
+    %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in poll.newAttachments() | orderBy: 'id' track by attachment.id"}
+  .clearfix

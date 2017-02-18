@@ -2,6 +2,7 @@
 path: node_modules
 js:
   - moment/moment.js
+  - lodash/index.js
   - ng-file-upload/dist/angular-file-upload-shim.js
   - angular/angular.js
   - angular-sanitize/angular-sanitize.js

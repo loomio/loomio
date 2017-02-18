@@ -5,6 +5,7 @@ class PollSerializer < ActiveModel::Serializer
   has_one :author, serializer: UserSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
+  has_many :attachments, serializer: AttachmentSerializer, root: :attachments
   has_one :my_stance, serializer: StanceSerializer, root: :stances
 
   def removed_poll_option_ids

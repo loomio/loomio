@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'PollCheckInForm', ->
   templateUrl: 'generated/components/poll/check_in/form/poll_check_in_form.html'
-  controller: ($scope, poll, FormService, KeyEventService, TranslationService) ->
+  controller: ($scope, poll, FormService, AttachmentService, KeyEventService, TranslationService) ->
     $scope.poll = poll.clone()
     $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
@@ -10,6 +10,7 @@ angular.module('loomioApp').factory 'PollCheckInForm', ->
       prepareFn: ->
         $scope.poll.pollOptionNames = [$scope.poll.affirmativeText,
                                        $scope.poll.negativeText]
+      successCallback: AttachmentService.cleanupAfterUpdate('poll')
       flashSuccess: "poll_check_in_form.check_in_#{actionName}"
       draftFields: ['title', 'details', 'action']
 

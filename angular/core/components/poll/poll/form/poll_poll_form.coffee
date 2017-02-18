@@ -1,6 +1,6 @@
 angular.module('loomioApp').factory 'PollPollForm', ->
   templateUrl: 'generated/components/poll/poll/form/poll_poll_form.html'
-  controller: ($scope, poll, FormService, KeyEventService, TranslationService) ->
+  controller: ($scope, poll, FormService, AttachmentService, KeyEventService, TranslationService) ->
     $scope.poll = poll.clone()
     $scope.poll.makeAnnouncement = $scope.poll.isNew()
 
@@ -21,6 +21,7 @@ angular.module('loomioApp').factory 'PollPollForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.poll,
       flashSuccess: "poll_poll_form.poll_#{actionName}"
+      successCallback: AttachmentService.cleanupAfterUpdate('poll')
       draftFields: ['title', 'details']
       prepareFn: $scope.addOption
 

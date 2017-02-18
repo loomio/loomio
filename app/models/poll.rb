@@ -22,6 +22,7 @@ class Poll < ActiveRecord::Base
   has_many :stances
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :attachments, as: :attachable, dependent: :destroy
   # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
@@ -83,11 +84,6 @@ class Poll < ActiveRecord::Base
 
   def poll
     self
-  end
-
-  # todo.. i guess we gotta add attachements to this but it's boring.
-  def attachments
-    []
   end
 
   # creates a hash which has a PollOption as a key, and a list of stance
