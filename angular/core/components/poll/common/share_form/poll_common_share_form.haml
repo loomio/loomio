@@ -1,0 +1,30 @@
+%md-list.poll-common-share-form
+  %h3{translate: "poll_common_share_form.share_a_link"}
+  %md-list-item
+    .md-list-item-text.poll-common-notify-group__list-item
+      %p{translate: "poll_common_share_form.anyone_can_participate"}
+    %md-checkbox{ng-model: "poll.public"}
+
+  %md-list-item{ng-if: "poll.public"}
+    %input{type: "hidden", ng-model: "poll.key"}
+
+    %md-input-container.md-block
+      %label{translate: "poll_common_share_form.url"}
+      %input.lmo-primary-form-input{disabled: "true", type: "text", ng-model: "poll.url"}
+
+  %md-list.md-block{ng-if: "!poll.public"}
+    %label{translate: "poll_common_share_form.participant_emails"}
+    %validation_errors{subject: "poll", field: "participantEmails"}
+    %md-list-item{ng-repeat: "email in poll.participantEmails track by $index"}
+      %span.poll-poll-form__option-text {{email}}
+      %md-button.poll-poll-form__option-button{ng-click: "removeOption(email)", aria-label: "{{ 'poll_common_share_form.remove_email' | translate }}"}
+        %i.material-icons.poll-poll-form__option-icon clear
+    %md-list-item.poll-poll-form__add-option{flex: "true", layout: "row"}
+      %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
+        %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addEmailPlaceholder}}", ng-model: "newEmailName"}
+      %div
+        %md-button.poll-poll-form__option-button{ng-click: "addEmail()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
+          %i.material-icons.poll-poll-form__option-icon add
+
+  %md-button.md-raised{translate: "common.action.back", ng-click: "clearPollType()"}
+  %md-button.md-primary.md-raised{translate: "common.action.save", ng-click: "setCommunity()"}

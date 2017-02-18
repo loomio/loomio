@@ -31,6 +31,10 @@ class API::PollsController < API::RestfulController
     respond_with_collection
   end
 
+  def generate_key
+    render json: { key: resource_class.new.send(:generate_unique_key) }
+  end
+
   private
   def default_scope
     super.merge my_stances_cache: MyStancesCache.new(user: current_user, polls: collection)
