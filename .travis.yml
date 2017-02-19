@@ -21,7 +21,6 @@ before_install:
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd angular; yarn; cd ..
-  - npm rebuild node-sass # :(
 
 branches:
   only:
