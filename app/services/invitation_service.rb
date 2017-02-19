@@ -35,7 +35,7 @@ class InvitationService
     emails = (recipient_emails - group.members.pluck(:email)).take(100)
 
     num_used = group.pending_invitations_count + emails.length
-    max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + group.memberships_count
+    max_allowed = ENV.fetch('MAX_PENDING_INVITATIONS', 100).to_i + (group.memberships_count * 2)
 
     raise "Too many pending invitations - group_id: #{group.id}" if num_used > max_allowed
 
