@@ -10,7 +10,7 @@ given =  (args) ->
 module.exports = new class StaticPageHelper
 
   loadPath: (path) ->
-    browser.driver.get('localhost:3000/development/'+path)
+    browser.driver.get('localhost:3000/dev/'+path)
     browser.driver.manage().window().setSize(1280, 1024)
 
   elementFor: (selector) ->

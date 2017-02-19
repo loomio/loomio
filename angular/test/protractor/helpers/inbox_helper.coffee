@@ -1,7 +1,7 @@
 module.exports = new class InboxHelper
 
   load: ->
-    browser.get('development/setup_inbox')
+    browser.get('dev/setup_inbox')
 
   firstGroup: ->
     element.all(By.css('.inbox-page__group')).first().getText()

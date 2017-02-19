@@ -1,18 +1,18 @@
 module.exports = new class GroupsHelper
   load: (timeout) ->
-    browser.get('development/setup_group', timeout)
+    browser.get('dev/setup_group', timeout)
 
   loadPath: (path, timeout) ->
-    browser.get('development/'+path, timeout)
+    browser.get('dev/'+path, timeout)
 
   loadNew: ->
-    browser.get('development/setup_new_group')
+    browser.get('dev/setup_new_group')
 
   loadToJoin: (value) ->
-    browser.get("development/setup_group_to_join?membership_granted_upon=#{value}")
+    browser.get("dev/setup_group_to_join?membership_granted_upon=#{value}")
 
   loadWithMultipleCoordinators: ->
-    browser.get('development/setup_group_with_multiple_coordinators')
+    browser.get('dev/setup_group_with_multiple_coordinators')
 
   membersList: ->
     element(By.css('.members-card')).getText()
