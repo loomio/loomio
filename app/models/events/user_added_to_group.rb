@@ -23,7 +23,7 @@ class Events::UserAddedToGroup < Event
   private
 
   def email_users!
-    mailer.send(kind, eventable.user, self, custom_fields[:message]).deliver_now
+    mailer.send(kind, eventable.user, self, custom_fields['message']).deliver_now
   end
 
   def notification_recipients

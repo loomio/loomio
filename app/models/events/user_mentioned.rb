@@ -17,6 +17,6 @@ class Events::UserMentioned < Event
   end
 
   def notification_recipients
-    User.where(id: custom_fields[:mentioned_user_id].to_i)
+    User.where(id: custom_fields['mentioned_user_id'].to_i)
   end
 end

@@ -79,8 +79,8 @@ describe Event do
 
   describe 'user_mentioned' do
     it 'notifies the mentioned user' do
-      Events::NewComment.publish!(comment)
-      event = Events::UserMentioned.last
+      CommentService.create(comment: comment, actor: comment.author)
+      event = Events::UserMentioned.where(kind: :user_mentioned).last
       expect(event.eventable).to eq comment
       email_users = event.send(:email_recipients)
       expect(email_users.length).to eq 1
