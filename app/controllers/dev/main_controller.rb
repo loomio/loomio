@@ -443,7 +443,7 @@ class Dev::MainController < Dev::BaseController
     create_another_vote
     create_public_discussion.group.add_member! jennifer
 
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_url(create_public_discussion)
   end
 
   def setup_closed_proposal
