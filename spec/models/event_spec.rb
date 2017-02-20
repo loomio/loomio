@@ -55,7 +55,7 @@ describe Event do
     discussion.group.add_member!(user_motion_closing_soon).set_volume! :mute
   end
 
-  it 'new comment' do
+  it 'new_comment' do
     event = Events::NewComment.publish!(comment)
     email_users = event.send(:email_recipients)
     email_users.should     include user_thread_loud
@@ -75,6 +75,21 @@ describe Event do
     email_users.should_not include comment.author
     email_users.should_not include mentioned_user
     email_users.should_not include comment.parent.author
+  end
+
+  describe 'user_mentioned' do
+    it 'notifies the mentioned user' do
+      Events::NewComment.publish!(comment)
+      event = Events::UserMentioned.last
+      expect(event.eventable).to eq comment
+      email_users = event.send(:email_recipients)
+      expect(email_users.length).to eq 1
+      expect(email_users).to include mentioned_user
+
+      notification_users = event.send(:notification_recipients)
+      expect(notification_users.length).to eq 1
+      expect(notification_users).to include mentioned_user
+    end
   end
 
   it 'new_vote' do

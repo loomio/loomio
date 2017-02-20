@@ -30,10 +30,9 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
-  def trigger!(args = {})
+  def trigger!
     # this is called after create, and calls methods defined by the event concerns
     # included per event type
-    @trigger_args = args
   end
 
   private

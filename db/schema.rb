@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208221512) do
+ActiveRecord::Schema.define(version: 20170220045422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -302,6 +302,7 @@ ActiveRecord::Schema.define(version: 20170208221512) do
     t.integer  "discussion_id"
     t.integer  "sequence_id"
     t.boolean  "announcement",   default: false, null: false
+    t.jsonb    "custom_fields",  default: {},    null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree
@@ -877,6 +878,8 @@ ActiveRecord::Schema.define(version: 20170208221512) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_kind",         default: "initials", null: false
+    t.string   "avatar_initials"
   end
 
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|

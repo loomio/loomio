@@ -1,5 +1,5 @@
 module Events::EmailUser
-  def trigger!(args = {})
+  def trigger!
     super
     email_users!
   end
@@ -17,6 +17,7 @@ module Events::EmailUser
   end
 
   # which users should receive an email about this event?
+  # (NB: This must return an ActiveRecord::Relation)
   def email_recipients
     User.none
   end
