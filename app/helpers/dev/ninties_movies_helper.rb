@@ -64,8 +64,7 @@ module Dev::NintiesMoviesHelper
     unless @group
       @group = Group.create!(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
-                                  discussion_privacy_options: 'public_or_private',
-                                  features: { use_polls: true })
+                                  discussion_privacy_options: 'public_or_private')
       @group.add_admin!  patrick
       @group.add_member! jennifer
       @group.add_member! emilio

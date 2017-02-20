@@ -433,8 +433,8 @@ class Dev::MainController < Dev::BaseController
 
   def setup_proposal
     sign_in patrick
-    create_public_proposal
-    redirect_to discussion_url(create_public_discussion)
+    create_proposal
+    redirect_to discussion_url(create_discussion)
   end
 
   def setup_proposal_with_votes
@@ -443,7 +443,7 @@ class Dev::MainController < Dev::BaseController
     create_another_vote
     create_public_discussion.group.add_member! jennifer
 
-    redirect_to discussion_url(create_public_discussion)
+    redirect_to discussion_url(create_discussion)
   end
 
   def setup_closed_proposal
