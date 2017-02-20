@@ -57,7 +57,6 @@ FactoryGirl.define do
       if group.parent.present?
         group.parent.admins << user
       end
-      # group.subscription = build(:subscription) if group.is_parent?
       group.admins << user
       group.save!
     end
@@ -222,11 +221,6 @@ FactoryGirl.define do
     cover_photo_content_type { "image/jpeg" }
     cover_photo_updated_at { 10.days.ago }
   end
-
-  # factory :subscription do
-  #   kind :trial
-  #   expires_at 1.month.from_now
-  # end
 
   factory :draft do
     user
