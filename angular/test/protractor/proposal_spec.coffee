@@ -64,7 +64,7 @@ describe 'Proposals', ->
       proposalsHelper.clickProposalActionsDropdownClose()
       proposalsHelper.clickCloseProposalButton()
       expect(flashHelper.flashMessage()).toContain('Proposal closed')
-      expect(proposalsHelper.previousProposalsList()).toContain('lets go hiking')
+      expect(proposalsHelper.previousProposalsList()).toContain('Lets holiday on Earth instead')
       expect(proposalsHelper.previousProposalsList()).toContain('Closed')
       expect(proposalsHelper.positionButtons().isPresent()).toBe(false)
 
