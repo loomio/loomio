@@ -12,7 +12,7 @@ proposal:
   - "#F6A82B"
   - "#F96168"
   - "#CE261B"
-check_in:
+yes_no:
   - "#70C9F8"
   - "#C8E56E"
   - "#D38FE1"

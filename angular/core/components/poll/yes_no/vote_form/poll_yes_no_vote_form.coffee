@@ -1,6 +1,6 @@
-angular.module('loomioApp').directive 'pollCheckInVoteForm', (AppConfig, Records, FormService, TranslationService, MentionService, KeyEventService) ->
+angular.module('loomioApp').directive 'pollYesNoVoteForm', (AppConfig, Records, FormService, TranslationService, MentionService, KeyEventService) ->
   scope: {stance: '='}
-  templateUrl: 'generated/components/poll/check_in/vote_form/poll_check_in_vote_form.html'
+  templateUrl: 'generated/components/poll/yes_no/vote_form/poll_yes_no_vote_form.html'
   controller: ($scope) ->
     $scope.stance.stanceChoicesAttributes = [{poll_option_id: $scope.stance.poll().firstOption().id}]
 
@@ -10,7 +10,7 @@ angular.module('loomioApp').directive 'pollCheckInVoteForm', (AppConfig, Records
       prepareFn: (option) ->
         $scope.stance.stanceChoicesAttributes = [poll_option_id: option.id]
       successCallback: -> $scope.$emit 'stanceSaved'
-      flashSuccess: "poll_check_in_vote_form.stance_#{actionName}"
+      flashSuccess: "poll_yes_no_vote_form.stance_#{actionName}"
       draftFields: ['reason']
 
     TranslationService.eagerTranslate

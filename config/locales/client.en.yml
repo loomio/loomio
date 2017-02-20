@@ -1,7 +1,7 @@
 en:
   poll_types:
     proposal: Proposal
-    check_in: Check-in
+    yes_no: Yes/No
     poll: Poll
   common:
     confirm_discard_changes: Discard your changes?
@@ -1313,8 +1313,8 @@ en:
     purpose: Collect individual views to understand the whole.
     proposal_title: Proposal
     proposal_subtitle: Build consensus within the group
-    check_in_title: Check-in
-    check_in_subtitle: Ask a yes/no question
+    yes_no_title: Yes/No
+    yes_no_subtitle: Ask a yes/no question
     poll_title: Poll
     poll_subtitle: Measure popularity of various options
 
@@ -1349,10 +1349,10 @@ en:
     helptext: Are you sure you're ready to close this early?
     close_proposal: Close proposal
     close_poll: Close poll
-    close_check_in: Close check-in
+    close_yes_no: Close yes-no
     proposal_closed: Proposal closed
     poll_closed: Poll closed
-    check_in_closed: Check-in closed
+    yes_no_closed: Yes/No closed
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1384,7 +1384,7 @@ en:
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
-    check_in: 'This check-in has closed. <strong>Share an outcome</strong> to complete the process.'
+    yes_no: 'This yes-no has closed. <strong>Share an outcome</strong> to complete the process.'
 
   poll_common_outcome_form:
     new_title: Share an outcome
@@ -1436,10 +1436,10 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
-  poll_check_in_form:
-    new_check_in: New check-in
-    update_check_in: Update check-in
-    tip: Use an check-in to ask a simple yes/no question
+  poll_yes_no_form:
+    new_yes_no: New yes-no
+    update_yes_no: Update yes-no
+    tip: Use an yes-no to ask a simple yes/no question
     learn_more: Learn more
     title: Title
     title_placeholder: E.g. I've given my thoughts on the annual report
@@ -1447,20 +1447,20 @@ en:
     details_placeholder: Include any relevant details such as time or place or urls people will need.
     action: Action
     action_placeholder: E.g. I've done it!
-    start: Start check-in
-    update: Update check-in
-    check_in_created: Check-in created
-    check_in_updated: Check-in updated
+    start: Start yes-no
+    update: Update yes-no
+    yes_no_created: Yes/No created
+    yes_no_updated: Yes/No updated
     affirmative_label: Affirmative choice
     affirmative_placeholder: E.g. Accept
     negative_label: Negative choice (optional)
     negative_placeholder: E.g. Decline
 
-  poll_check_in_vote_form:
+  poll_yes_no_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
 
-  poll_check_in_chart_panel:
+  poll_yes_no_chart_panel:
     out_of: out of {{goal}}
 
   poll_poll_form:
@@ -1501,12 +1501,12 @@ en:
       poll_expired: 'Proposal closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
 
-    check_in:
-      poll_created: '<strong>{{author}}</strong> started a check-in: <span>{{title}}</span>'
+    yes_no:
+      poll_created: '<strong>{{author}}</strong> started a yes-no: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> checked in:'
-      poll_edited: '<strong>{{author}}</strong> edited the check-in: <span>{{title}}</span>'
-      poll_expired: 'Check-in round finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the check-in round: <span>{{title}}</span>'
+      poll_edited: '<strong>{{author}}</strong> edited the yes-no: <span>{{title}}</span>'
+      poll_expired: 'Yes/No round finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the yes-no round: <span>{{title}}</span>'
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'
