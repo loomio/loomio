@@ -433,8 +433,8 @@ class Dev::MainController < Dev::BaseController
 
   def setup_proposal
     sign_in patrick
-    create_proposal
-    redirect_to discussion_url(create_discussion)
+    create_public_proposal
+    redirect_to discussion_url(create_public_discussion)
   end
 
   def setup_proposal_with_votes
