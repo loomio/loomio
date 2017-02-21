@@ -225,7 +225,6 @@ de:
   vote_form:
     heading: Komme zu Wort
     no_statement: Keine Begründung.
-    statement_over_limit: 'Zu viele Worte! Kurze Stellungnahmen lassen jede.n schnell den Vorschlag erfassen'
     i_agree: Ich stimme zu
     i_agree_details: Ich stimme zu und bin für die Umsetzung dieses Vorschlags.
     i_abstain: Ich enthalte mich
@@ -247,7 +246,6 @@ de:
     change_your_vote: Deine Meinung ändern.
   undecided_panel:
     aria_label: Unentschlossene Mitglieder
-    show_undecided: Zeige unentschlossene Mitglieder
     hide_undecided: Verstecke unentschlossene Mitglieder
   proposal_pie_chart:
     participation_statement: '{{percentage}}% der Mitglieder haben bereits abgestimmt ({{number}}/{{total}})'
@@ -370,8 +368,6 @@ de:
       archive_group_success: Diese Gruppe wurde deaktiviert
     group_logo: Gruppen-Logo
     new_photo: Neues Foto
-    description: Gruppenbeschreibung
-    description_placeholder: 'Gruppen-Koordinator.innen können hier die Absicht der Gruppe beschreiben, damit jede.r weiß warum sie dabei ist.'
     discussions: Themen
     discussions_placeholder: In einer Diskussion kann jeder diskutieren und es können gemeinsam Entscheidungen getroffen werden.
     members: 'Mitglieder ({{count}})'
@@ -663,7 +659,6 @@ de:
     aria_label: Diskussionsbeschreibung
     thread_options: Diskussionsoptionen
     email_settings: eMail-Einstellungen
-    edit_thread: Bearbeiten
     move_thread: Verschieben
     print_thread: Drucken
     delete_thread: Löschen

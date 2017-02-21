@@ -545,7 +545,7 @@ plugin.use_test_route(:kickflip_route) do
 end
 ```
 
-Note that this provides a `/development/kickflip_route` route, which can then be called in your spec using loadPath:
+Note that this provides a `/dev/kickflip_route` route, which can then be called in your spec using loadPath:
 
 ```coffeescript
   page = require './helpers/page_helper.coffee'

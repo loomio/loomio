@@ -22,12 +22,12 @@
     %validation_errors.invitation-form__validation-errors{subject: "form", field: "emails"}
     .invitation-form__no-invitations.lmo-validation-error{ng-show: "noInvitations", translate: "invitation_form.messages.no_invitations"}
     .invitation-form__max-invitations.lmo-validation-error{ng-show: "maxInvitations()", translate: "invitation_form.messages.max_invitations"}
-    %p{ng-if: "!showCustomMessageField()"}
-      %span{translate: "invitation_form.add_custom_message"}>
-      %button.invitation-form__add-custom-message-link.lmo-btn-link--blue{translate: "invitation_form.add_custom_message_link", ng-click: "addCustomMessage()"}>
-    .blank{ng-if: "showCustomMessageField()"}
-      %label{for: "custom-message", translate: "invitation_form.custom_message"}
-      %textarea.lmo-textarea.invitation-form__custom-message.form-control#custom-message{ng-model: "form.message", msd-elastic: "true", placeholder: "{{ 'invitation_form.custom_message_placeholder' | translate }}"}
+    -# %p{ng-if: "!showCustomMessageField()"}
+    -#   %span{translate: "invitation_form.add_custom_message"}>
+    -#   %button.invitation-form__add-custom-message-link.lmo-btn-link--blue{translate: "invitation_form.add_custom_message_link", ng-click: "addCustomMessage()"}>
+    -# .blank{ng-if: "showCustomMessageField()"}
+    -#   %label{for: "custom-message", translate: "invitation_form.custom_message"}
+    -#   %textarea.lmo-textarea.invitation-form__custom-message.form-control#custom-message{ng-model: "form.message", msd-elastic: "true", placeholder: "{{ 'invitation_form.custom_message_placeholder' | translate }}"}
     %p{ng-if: "form.group().isSubgroup()"}
       %button.invitation-form__add-members.lmo-btn-link--blue{translate: "invitation_form.add_members", ng-click: "addMembers()"}>
       %span{translate: "invitation_form.from_parent_group", translate-values: "{name: form.group().parentName()}"}

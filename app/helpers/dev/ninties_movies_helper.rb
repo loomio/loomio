@@ -64,8 +64,7 @@ module Dev::NintiesMoviesHelper
     unless @group
       @group = Group.create!(name: 'Dirty Dancing Shoes',
                                   group_privacy: 'closed',
-                                  discussion_privacy_options: 'public_or_private',
-                                  features: { use_polls: true })
+                                  discussion_privacy_options: 'public_or_private')
       @group.add_admin!  patrick
       @group.add_member! jennifer
       @group.add_member! emilio
@@ -191,6 +190,22 @@ module Dev::NintiesMoviesHelper
       MotionService.create(motion: @another_public_proposal, actor: jennifer)
     end
     @another_public_proposal
+  end
+
+  def create_vote
+    unless @public_vote
+      @public_vote = Vote.new(statement: "Indeed!", position: "yes", motion: create_public_proposal)
+      VoteService.create(vote: @public_vote, actor: patrick)
+    end
+    @public_vote
+  end
+
+  def create_another_vote
+    unless @another_public_vote
+      @another_public_vote = Vote.new(statement: "Nayy!", position: "no", motion: create_public_proposal)
+      VoteService.create(vote: @another_public_vote, actor: max)
+    end
+    @another_public_vote
   end
 
   def membership_request_from_logged_out

@@ -267,8 +267,6 @@ nl-NL:
     previous_proposals: Vorige voorstellen
   thread_group:
     aria_label: Groepsnaam
-  thread_context:
-    edit_thread: Bewerken
   delete_comment_dialog:
     title: Verwijder reactie
     question: Weet je zeker dat je deze reactie wilt verwijderen?

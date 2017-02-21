@@ -241,7 +241,6 @@ hu:
   vote_form:
     heading: Szólj bele
     no_statement: Nincs indoklás.
-    statement_over_limit: 'Túl szövevényes! A vélemény rövid megfogalmazása mindenkinek segít a javaslat gyorsabb kiértékelésében.'
     i_agree: Egyetértek
     i_agree_details: 'Támogatom, legyen így.'
     i_abstain: Tartózkodom
@@ -263,7 +262,6 @@ hu:
     change_your_vote: Változtasd meg az álláspontod.
   undecided_panel:
     aria_label: Ők még nem döntöttek.
-    show_undecided: 'Mutasd azokat, akik még nem döntöttek.'
     hide_undecided: 'Rejtsd el azokat, akik még nem döntöttek.'
   proposal_pie_chart:
     participation_statement: '{{percentage}}% a tagok közül állást foglalt ({{number}}/{{total}})'

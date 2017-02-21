@@ -263,7 +263,6 @@ ca:
     change_your_vote: Canvia la decisió.
   undecided_panel:
     aria_label: Membres indecisos
-    show_undecided: Mostra els membres indecisos
     hide_undecided: Oculta els membres indecisos
   proposal_pie_chart:
     participation_statement: '{{percentage}}% dels membres han manifestat la seva decisió ({{number}}/{{total}})'
@@ -372,7 +371,6 @@ ca:
       archive_group_success: Aquest grup està desactivat
     group_logo: Logo del grup
     new_photo: Nova fotografia
-    description: Descripció del grup
     discussions: Discussions
     discussions_placeholder: Una discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.
     members: Membres
@@ -660,7 +658,6 @@ ca:
     aria_label: Context de la discussió
     thread_options: Opcions de la discussió
     email_settings: Configuració del correu electrònic
-    edit_thread: Edita
     move_thread: Mou
     print_thread: Imprimeix
     delete_thread: Elimina

@@ -63,7 +63,7 @@ class PollService
     Array(motions).map do |motion|
       next if motion.poll.present?
       # reference = PollReferences::Motion.new(motion)
-      outcome = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome
+      outcome = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome.present?
       Poll.create!(
         poll_type:               "proposal",
         poll_options_attributes: Poll::TEMPLATES.dig('proposal', 'poll_options_attributes'),
@@ -92,6 +92,7 @@ class PollService
           end
         )
         do_closing_work(poll: poll) if motion.closed?
+        poll.update_stance_data
       end
     end
   end

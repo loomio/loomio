@@ -10,7 +10,8 @@ module Dev::FakeDataHelper
       name: Faker::Name.name,
       email: Faker::Internet.email,
       password: Faker::Internet.password,
-      detected_locale: 'en'
+      detected_locale: 'en',
+      is_admin: true
     }.merge(args))
   end
 
@@ -30,7 +31,7 @@ module Dev::FakeDataHelper
     option_names = {
       poll: 3.times.map{ Faker::Food.ingredient },
       proposal: %w[agree abstain disagree block],
-      check_in: %w[accept decline]
+      yes_no: %w[accept decline]
     }.with_indifferent_access
 
     options = {

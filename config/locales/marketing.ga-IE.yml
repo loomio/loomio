@@ -1,3 +1,6 @@
 ga-IE:
   navigation:
+    login: Síniú isteach
     start_group: Cuir baicle ar bun
+  titles:
+    home: An clár cinn

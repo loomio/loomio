@@ -209,6 +209,9 @@ zh-TW:
     public_privacy_notice: 您的意見將會讓任何在網路上的人看到。
     sign_in: 登入以加入對話
   sidebar:
+    my_threads: 我的討論串
+    my_groups: 我的群組
+    my_settings: 我的設定
     recent: 最近
     unread: 未讀
     muted: 已靜音
@@ -230,6 +233,8 @@ zh-TW:
     start_thread: 啟動新的討論串
     notifications: 通知面板
     search:
+      label: 搜尋欄；搜尋群組與討論串
+      results_aria_label: 搜尋結果
       no_results: 找不到討論串
       close: 關閉搜尋面板
       placeholder: 搜尋
@@ -273,9 +278,10 @@ zh-TW:
   position_buttons_panel:
     heading: 擁有發言權
   vote_form:
+    aria_label: 投票表單
     heading: 擁有發言權
     no_statement: 沒寫。
-    statement_over_limit: 太多字了！簡短的立場聲明讓大家能迅速了解提議。
+    statement_over_limit: 已到達字數限制。簡短的立場聲明可以建立簡潔的結論。若您想要說更多東西，請張貼評論。
     i_agree: 我贊成
     i_agree_details: 我支持這決定，就這麼進行。
     i_abstain: 我棄權
@@ -297,7 +303,9 @@ zh-TW:
     change_your_vote: 變更您的立場。
   undecided_panel:
     aria_label: 尚未決定的成員
-    show_undecided: 顯示未決定的成員
+    show: 顯示
+    remind: 提醒
+    undecided: 未決定
     hide_undecided: 隱藏未決定的成員
   proposal_pie_chart:
     participation_statement: '{{percentage}}% 的成員已經陳述他們的立場 ({{number}}/{{total}})'
@@ -385,14 +393,13 @@ zh-TW:
     aria_label: 變更封面照片表單
     heading: 新的封面圖片
     upload_link: 上傳新的封面圖片
-    helptext: '正在尋找靈感嗎？看看 <a href="https://unsplash.com/">Unsplash</a> 吧，這是一個有著免費的美麗圖片的藝廊網站'
-    image_size_helptext: 理想的圖片尺寸是 1400 x 320 像素
+    image_size_helptext: 理想的圖片尺寸是 1400x320 像素
     upload_success: 成功更新封面圖片
   logo_photo_form:
     aria_label: 變更群組圖示表單
     heading: 新的群組圖示
     upload_link: 上傳新的群組圖示
-    image_size_helptext: 理想的圖片尺寸是 100 x 100 像素
+    image_size_helptext: 理想的圖片尺寸是 100x100 像素
     upload_success: 成功更新圖示
   join_group_button:
     join_group: 加入群組
@@ -439,8 +446,6 @@ zh-TW:
     new_photo: 新圖片
     new_cover_photo: 上傳新的封面圖片
     new_group_logo: 上傳新的群組圖示
-    description: 群組描述
-    description_placeholder: 群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。
     discussions: 討論
     discussions_placeholder: 討論串是供每個人討論主題並共同作出決策的地方。
     members: '成員 ({{count}})'
@@ -480,6 +485,11 @@ zh-TW:
       parent_members: '隱私權：討論串只會被 {{parentGroupName}} 群組的成員以及 {{groupName}} 群組的成員看到。'
       public: 隱私權：此群組現在能在網路上被看到
       aria_label: '群組隱私：{{privacy}}'
+  description_card:
+    title: 群組描述
+    placeholder: 群組協調者可以使用這個區域來描述群組的目的，這樣才能讓每個人都知道為什麼他們會在這裡。
+    messages:
+      description_updated: 描述已更新
   leave_group_form:
     aria_label: 離開群組
     title: 離開群組
@@ -507,11 +517,15 @@ zh-TW:
     body: '<strong>{{name}}</strong> 是接受禮物方案支援的群組。若想支援 Loomio 繼續協助其他像您一樣接受禮物方案支援的群組，請點擊這裡：'
     make_a_contribution: 作出貢獻
   upgrade_plan_card:
-    heading: 您使用 Slack 嗎？
-    body: Loomio 與 Slack 可以共同運作！把它們連結起來吧。
-    heading_alt: 想要自訂網域？
-    body_alt: 您的名稱.loomio.org 讓您的 Loomio 群組更容易被找到
-    upgrade_plan: 立刻升級
+    heading: 升級使用進階功能
+    slack_html: '<strong>Slack 整合</strong>：Loomio 與 Slack 可以共同運作！把它們連結起來吧。'
+    domain_html: '<strong>自訂網域</strong>：您的名稱.loomio.org 讓您的 Loomio 群組更容易被找到'
+    help_html: '<strong>專家協助</strong>：Loomio 的協作顧問可以讓您的團隊更強大'
+    analytics_html: '<strong>分析報告</strong>：深入了解您的群組的參與程度'
+    donations: 您的群組成員將不會再被詢問是否要捐款。
+    more: ……以及更多。
+    upgrade: 立刻升級
+    donate: 捐款
   trial_card:
     title: 30 天試用
     choose_plan: 選擇您的定價方案
@@ -857,11 +871,13 @@ zh-TW:
     aria_label: 討論串內容
     thread_options: 討論串選項
     email_settings: 電子郵件設定
-    edit_thread: 編輯
+    edit: 編輯
+    edit_thread: 編輯討論串
     mute_thread: 靜音
     move_thread: 移動
     print_thread: 列印
     delete_thread: 刪除
+    add_comment: 加入意見
   delete_thread_form:
     aria_label: 刪除討論串
     title: 刪除討論串

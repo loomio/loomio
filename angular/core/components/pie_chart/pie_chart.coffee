@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pieChart', ->
+angular.module('loomioApp').directive 'pieChart', (AppConfig) ->
   template: '<div class="pie-chart"></div>'
   replace: true
   scope:
@@ -25,6 +25,14 @@ angular.module('loomioApp').directive 'pieChart', ->
     sortedPositions = ->
       _.sortBy(_.pairs($scope.votes), ([_, count]) -> - count)
 
+    colors =
+      agree:    "#00D177"
+      yes:      "#00D177"
+      abstain:  "#F6A82B"
+      disagree: "#F96268"
+      no:       "#F96168"
+      block:    "#CE261B"
+
     $scope.$watchCollection 'votes', ->
       _.each shapes, (shape) -> shape.remove()
       start = 90
@@ -38,12 +46,12 @@ angular.module('loomioApp').directive 'pieChart', ->
           position = sortedPositions()[0][0]
           shapes.push draw.circle($scope.diameter).attr
             'stroke-width': 0
-            fill: AppConfig.pollColors.proposal[position]
+            fill: colors[position]
         else
           _.each sortedPositions(), ([position, votes]) ->
             return unless votes > 0
             angle = 360/_.sum($scope.votes)*votes
             shapes.push draw.path(arcPath(start, start + angle)).attr
               'stroke-width': 0
-              fill: AppConfig.pollColors.proposal[position]
+              fill: colors[position]
             start += angle

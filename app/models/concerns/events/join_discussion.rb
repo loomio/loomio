@@ -1,5 +1,5 @@
 module Events::JoinDiscussion
-  def trigger!(args = {})
+  def trigger!
     super
     join_discussion!
   end

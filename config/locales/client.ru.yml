@@ -25,9 +25,11 @@ ru:
       thisweek: Эта неделя
       thismonth: Этот месяц
       older: Ранее
+    more_help: Дополнительная справка
     models:
       proposal: Предложение
     copy: Копировать текст
+    copied: Скопировать в буфер
     action:
       close: Закрыть
       save: Сохранить
@@ -47,8 +49,15 @@ ru:
       add_subgroup: Добавить подгруппу
       loading: Загрузка
       translate: Перевести
+      translated: Переведено с помощью Бинг
       upload: Скачать
       uploading: скачивание
+    formatting_help:
+      label: Форматирование помощь
+      title: Узнать как использовать Пометки для форматирования вашего текста в Лумио
+  devise:
+    failure:
+      inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
   error_page:
     forbidden: У вас недостаточно прав
     page_not_found: Не найдено. Возможно было удалено или перемещено.
@@ -58,9 +67,11 @@ ru:
     helptext: Готовы принять решение?
   proposal_outcome_panel:
     heading: Итог
+    set_outcome_hint: 'Используйте это поле '
     set_outcome_btn: Подвести итоги голосования
     edit_outcome_link: Редактировать итоги голосования
   proposal_outcome_form:
+    aria_label: Результат голосования
     set_outcome: 'Подвести итоги голосования '
     update_outcome: Обновить итоги голосования
     outcome_label: Результат голосования
@@ -71,6 +82,8 @@ ru:
       updated: Результат обновлен
   previous_proposals_card:
     heading: Предыдущие голосования
+  previous_proposals_page:
+    heading: Предыдущие предложения
   proposal_collapsed:
     expand: Расширить
     outcome: 'Решения: {{outcome}}'
@@ -81,17 +94,28 @@ ru:
     mute: Заглушен
     unmute: Включить
   change_volume_form:
+    loud_label: Вся активность
+    normal_label: Важная активность
+    quiet_label: 'Нет '
     mute_label: Заглушен
     discussion:
       title: 'Настройки email для {{title}}'
     membership:
       title: Настройки Email
+      apply_to_all: Применить эти настройки для всех моих групп
+    user:
+      title: Настройки почты для новых групп
+      apply_to_all: Применить эти настройки для всех моих групп
+  mute_explanation_modal:
+    aria_label: Выключить уведомления
+    mute_thread: Выключить уведомления
   inbox:
     clear: Очистить
     latest: Последний
     unread: Непрочитанные
     closing_in: Закрывается
   sign_in_form:
+    email_label: 'Email:'
     password_label: 'Пароль:'
     remember_me: Запомнить меня
     forgot_password: Забыли пароль?
@@ -102,10 +126,18 @@ ru:
       google: Войти с помощью Google
       github: Войти с помощью Github
   sign_up_form:
+    name_label: 'Ваше имя:'
+    name_placeholder: Имя Фамилия
+    email_label: 'Email:'
     password_label: 'Пароль:'
+    password_confirmation_label: 'Введите пароль повторно:'
+    sign_in_message: Уже зарегистрированы?
+    sign_in: Войти
+    sign_up: Зарегистрироваться
   comment_form:
     aria_label: 'Добавить комментарий '
     attachments:
+      add_attachment: Прикрепить файл
       remove_attachment: Удалить вложение
     messages:
       created: Комментарий добавлен
@@ -119,29 +151,39 @@ ru:
       label: Опубликовать
     public_privacy_notice: Ваш комментарий будет виден всем пользователям сети
   sidebar:
+    my_groups: Мои группы
+    my_settings: Мои настройки
     unread: Непрочитанные
     muted: Заглушен
     start_group: Создать новую группу
     explore: Публичная группа
+    edit_profile: Редактировать профиль
     email_settings: Настройки email
     help: Помощь
     sign_out: Выйти
     aria_labels:
       groups_list: Группы
   navbar:
+    start_thread: Начать новую тему
+    notifications: Панель уведомлений
     search:
       close: Закрыть панель поиска
       placeholder: Поиск
       discussions: Обсуждения
       proposals: Голосования
       comments: Комментарии
+    logo_title: Домашняя страница
   start_menu:
+    start_subgroup: Создать группу
+    start_thread: Начать тему
     invite_people: Пригласить людей
   notifications:
     header: Уведомления
+    no_notifications: У Вас нет уведомлений
   position_buttons_panel:
     heading: Выразить свое мнение
   vote_form:
+    aria_label: Форма для голосования
     heading: Выразить свое мнение
     i_agree: Я согласен
     i_agree_details: Всецело поддерживаю
@@ -160,15 +202,34 @@ ru:
   proposal_positions_panel:
     heading: Позиция
     no_votes_yet: Еще никто не проголосовал по этому предложению
+    change_your_vote: Изменить свой выбор
+  undecided_panel:
+    aria_label: Непроголосовавшие
+    show: Показать
+    remind: Напомнить
+    undecided: неопределившиеся
+    hide_undecided: Скрыть неопределившихся
+  proposal_pie_chart:
+    participation_statement: '{{percentage}}% oучастников группы сделали свой выбор ({{number}}/{{total}})'
   close_proposal_form:
     close_proposal: Закрыть предложение
     close_proposal_submit: 'Да, закрыть голосование'
     messages:
       success: Голосование закрыто
   proposal_form:
+    messages:
+      created: Предложение размещено
+      updated: Предложение изменено
+    start_proposal: Разместить предложение
     start_a_proposal: Создать голосование
+    edit_proposal: Изменить предложение
+    proposal_ideas: Нужны идеи чтобы написать хорошее предложение?
     title_label: Название
+    closes_at_label: Закрывается в
+    closes: Закрывается
     details_label: Детали
+  discussion_record:
+    updated: 'Сохранить изменения для {{title}}'
   discussion_form:
     group_label: Группа
     group_placeholder: Выбрать группу
@@ -176,8 +237,19 @@ ru:
     context_label: Описание
     privacy_label: Конфиденциальность
   proposal_expanded:
+    edit_proposal: Изменить предложение
     close_proposal: Закрыть предложение
     closed_badge: Закрыть
+  cover_photo_form:
+    heading: Новое фото обложки
+    upload_link: Загрузить новое фото обложки
+    upload_success: Фото обложки успешно загружено
+  logo_photo_form:
+    aria_label: Изменить логотип группы
+    heading: ' Новый логотип группы'
+    upload_link: Загрузить новый логотип группы
+    image_size_helptext: Идеальный размер изображения 100х100px
+    upload_success: Логотип успешно изменен
   join_group_button:
     join_group: Вступить в группу
     ask_to_join_group: Подать заявку на вступление
@@ -186,13 +258,31 @@ ru:
     name_label: Имя
     email_label: Email
     submit_button: Подать заявку на вступление
+  revision_history_modal:
+    aria_label: История изменений
+    posted: Размещено
   group_page:
+    new_cover_photo: Загрузить новое фото обложки
+    new_group_logo: Загрузить новый логотип группы
     discussions: Обсуждения
+    subgroups: Подгруппы
     invite_people: Пригласите людей
+    visibility_label: Видимость
     options_label: Опции
     options:
       label: Опции
+      manage_members: Управлять участниками
+      add_subgroup: Добавить подгруппу
+      manage_subscription: Управлять подписками группы
       email_settings: Настройки Email
+      leave_group: Покинуть группу
+      deactivate_group: Деактивировать группу
+  leave_group_form:
+    submit: 'Да, покинуть эту группу'
+    add_coordinator: Добавить координатора
+  archive_group_form:
+    aria_label: Деактивировать группу
+    title: Деактивировать группу
   choose_plan_modal:
     benefit_1_group: 1 группа
     benefit_10_groups: 10 групп
@@ -212,6 +302,16 @@ ru:
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
+  group_previous_proposals_card:
+    heading: Предыдущие предложения
+  invitation_form:
+    add_members: Добавить участников
+    messages:
+      invitation_sent: Приглашение отправлено
+  add_members_modal:
+    aria_label: Добавить участников из основной группы
+    heading: 'Добавить участников из {{name}}'
+    add_members: Добавить участников
   memberships_page:
     members: Участники
     name_label: Имя
@@ -260,7 +360,6 @@ ru:
   thread_context:
     thread_options: Настройки обсуждения
     email_settings: Настройки Email
-    edit_thread: Редактировать
     mute_thread: Заглушен
     print_thread: Печать
     delete_thread: Удалить

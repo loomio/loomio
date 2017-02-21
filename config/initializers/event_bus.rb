@@ -80,7 +80,7 @@ EventBus.configure do |config|
 
   # email and notify users of events
   Event::KINDS.each do |kind|
-    config.listen("#{kind}_event") { |event, args| event.trigger!(args) }
+    config.listen("#{kind}_event") { |event| event.trigger! }
   end
 
   # nullify parent_id on children of destroyed comment

@@ -3,8 +3,7 @@ class API::InvitationsController < API::RestfulController
     load_and_authorize :group, :invite_people
     @invitations = InvitationService.invite_to_group(recipient_emails: email_addresses,
                                                      group: @group,
-                                                     inviter: current_user,
-                                                     message: invitation_form_params[:message])
+                                                     inviter: current_user)
     if @invitations.any?
       respond_with_collection
     else
@@ -37,7 +36,7 @@ class API::InvitationsController < API::RestfulController
   end
 
   def email_addresses
-    invitation_form_params[:emails].scan(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/).take(100)
+    invitation_form_params[:emails].scan(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/)
   end
 
   def respond_with_errors

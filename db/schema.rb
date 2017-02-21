@@ -302,6 +302,7 @@ ActiveRecord::Schema.define(version: 20170216210217) do
     t.integer  "discussion_id"
     t.integer  "sequence_id"
     t.boolean  "announcement",   default: false, null: false
+    t.jsonb    "custom_fields",  default: {},    null: false
   end
 
   add_index "events", ["created_at"], name: "index_events_on_created_at", using: :btree

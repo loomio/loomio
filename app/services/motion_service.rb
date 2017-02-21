@@ -60,7 +60,7 @@ class MotionService
 
     motion.save!
     EventBus.broadcast('motion_create_outcome', motion, params, actor)
-    Events::MotionOutcomeCreated.publish!(motion, actor)
+    Events::MotionOutcomeCreated.publish!(motion)
   end
 
   def self.update_outcome(motion:, params:, actor:)

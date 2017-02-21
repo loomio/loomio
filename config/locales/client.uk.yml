@@ -10,6 +10,7 @@ uk:
     notification_volume: Рівень гучності сповіщень
     group: Група
     groups: Групи
+    help: Допомога
     privacy:
       privacy: Конфіденційність
       public: Відкрита
@@ -27,13 +28,18 @@ uk:
     more_help: Бiльше допомоги
     models:
       proposal: Пропозиція
+    copy: Копіювати текст
+    copied: Скопіювати до буферу обміну
     action:
+      close: Закрити
       save: Зберегти
       save_changes: Зберегти зміни
       update_settings: Оновити налаштування
       reply: Відповісти
       edit: Видалити
+      remove: Вилучити
       like: Мені подобається
+      back: Назад
       unlike: Не подобається
       update: Оновити
       cancel: Скасувати
@@ -42,10 +48,16 @@ uk:
       new_thread: Нова тема
       add_subgroup: Додати підгрупу
       loading: Завантаження
+      translate: Перекласти
+      translated: Переклад Bing Translator
+      upload: Завантажити
       uploading: Завантажити
     formatting_help:
       label: Допомога з форматування
       title: Дізнайтесь як використовувати Markdown для форматування вашого текту в Loomio
+  devise:
+    failure:
+      inactive: 'З цією адресою електронної пошти вже пов’язано обліковий запис. Якщо ви бежаєте відновити свій обліковий запис, зверніться, будь ласка, до нас.'
   error_page:
     forbidden: Бракує прав для цієї дії.
     page_not_found: Ми не змогли це знайти. Можливо воно було видалене або переміщено.
@@ -59,6 +71,7 @@ uk:
     set_outcome_btn: Вказати рішення по пропозиції
     edit_outcome_link: Редагувати рішення по пропозиції
   proposal_outcome_form:
+    aria_label: Форма для пропозицій
     set_outcome: Вказати рішення по пропозиції
     update_outcome: Оновити рішення по пропозиції
     outcome_label: Рішення по пропозиції
@@ -80,14 +93,94 @@ uk:
     quiet: Спокійно
     mute: Вимкнено
     unmute: Включити
+  change_volume_form:
+    aria_label: Форма зміни електронної адреси
+    loud_label: Всі події
+    normal_label: Важливі події
+    quiet_label: Без поштових сповіщень
+    mute_label: Беззвучно
+    discussion:
+      title: 'Налаштування електронної пошти для {{title}}'
+      loud_description: Вас буде оповіщено поштою як тільки буде якась активність у цій темі.
+      normal_description: 'Вам буде надіслане сповіщення по електронній пошті у разі внесення пропозиції, її закриття та публікації рішення.'
+      quiet_description: Ви не будете отримувати поштові сповіщення з цієї теми.
+      apply_to_all: Застосуваті ці налаштування до всіх тем в цій групі.
+      messages:
+        loud: Вам буде надіслане сповіщення поштою про активність у цій темі.
+        normal: Вам буде надіслане сповіщення поштою щодо пропозиції у цій темі.
+        quiet: Ви не будете отримувати поштові сповіщення з цієї теми.
+    membership:
+      title: 'Налаштування електронної пошти для {{title}}'
+      loud_description: Вас буде оповіщено поштою як тільки буде якась активність у цій групі.
+      normal_description: Вам буде надіслане поштове сповіщення про нові теми та пропозиції в цій групі.
+      quiet_description: Ви не будете отримувати поштові сповіщення про активність у цій групі.
+      apply_to_all: Застосуваті ці налаштування до всіх моїх груп.
+      messages:
+        loud: Вас буде оповіщено поштою про будь-яку активність у цій групі.
+        normal: Вам буде надіслане поштове сповіщення про нові теми та пропозиції в цій групі.
+        quiet: Ви не будете отримувати поштові сповіщення з цієї групи.
+    all_groups:
+      messages:
+        loud: Вас буде оповіщено поштою про будь-яку активність в усіх ваших групах.
+        normal: Вас буде оповіщено поштою про нові теми та пропозиції в усіх ваших групах.
+        quiet: Ви не будете отримувати поштові сповіщення з жодної з ваших груп.
+    user:
+      title: Налаштування електронної пошти для нових груп
+      loud_description: Вас буде оповіщено поштою про будь-яку активність в нових групах до яких ви долучились.
+      normal_description: Вас буде оповіщено поштою про нові теми та пропозиції в нових групах до яких ви долучились.
+      quiet_description: Ви не будете отримувати поштові сповіщення про активність в нових групах до яких ви долучились.
+      apply_to_all: Застосуваті ці налаштування до всіх моїх груп.
+      messages:
+        loud: Вас буде оповіщено поштою про будь-яку активність у нових групах.
+        normal: Вас буде оповіщено поштою про нові теми та пропозиції в нових групах.
+        quiet: Ви не будете отримувати поштові сповіщення про створення нових груп.
+  mute_explanation_modal:
+    aria_label: Вимкнути сповіщення для теми
+    mute_thread: Вимкнути сповіщення для теми
+  dismiss_explanation_modal:
+    aria_label: Відхилити тему
+    dismiss_thread: Відхилити тему
   inbox:
     clear: Очистити
     latest: Останній
     unread: Непрочитані
     closing_in: Закрито
+  sign_in_form:
+    aria_label: Форма входу
+    title: Увійти до Loomio
+    email_label: 'Електронна адреса:'
+    email_placeholder: you@example.com
+    password_label: 'Пароль:'
+    remember_me: Запам’ятати мене
+    forgot_password: Забули пароль?
+    sign_in: Увійти
+    signed_in: Вхід виконано успішно
+    oauth:
+      title: 'Або увійдіть за допомогою зовнішнього акаунту:'
+      facebook: Увійти через Facebook
+      twitter: Увійти через Twitter
+      google: Увійти через Google
+      github: Увійти через Github
+  sign_up_form:
+    aria_label: Форма реєстрації
+    title: 'Ласкаво просимо до Loomio! Налаштуйте систему'
+    name_label: "Ваше ім'я:"
+    name_placeholder: Василь Коваль
+    email_label: 'Електронна адреса:'
+    email_placeholder: you@example.com
+    password_label: 'Пароль:'
+    password_confirmation_label: 'Введіть пароль ще раз:'
+    sign_in_message: Вже зареєстровані?
+    sign_in: Увійти
+    sign_up: Створити обліковий запис
+  signed_out_modal:
+    aria_label: Сесія закінчилась
+    title: Ваша сесія закінчилась
+    ok: Ok
   comment_form:
     aria_label: Прокоментувати
     attachments:
+      add_attachment: Додати файл
       remove_attachment: Видалити додаток
     messages:
       created: Коментар додано
@@ -104,20 +197,33 @@ uk:
       label: Опублікувати
     private_privacy_notice: 'Ваш коментар зможуть бачити тільки учасники {{groupName}}.'
     public_privacy_notice: Ваш коментар зможе бачити будь-хто в мережі
+    sign_in: 'Авторизуйтесь, щоб приєднатися до розмови'
   sidebar:
+    my_threads: Мої теми
+    my_groups: Мої групи
+    my_settings: Мої налаштування
     recent: Недавні
     unread: Непрочитані
     muted: Вимкнуто
+    start_group: Створити нову групу
+    explore: Відкриті групи
     edit_profile: Редагувати профіль
     email_settings: Налаштування електронної пошти
     help: Допомога
+    contact: "Зв'язатись з Loomio"
     sign_out: Вийти
+    aria_labels:
+      heading: Бокова панель
+      groups_list: Групи
+      user_list: Дії користувача
   navbar:
     recent_title: Перейти до інформаційної панелі
     unread_title: Переглянути непрочитані повідомлення про активність
     start_thread: Створити нову тему
     notifications: Панель сповіщень
     search:
+      label: Поле пошуку; пошук груп та тем
+      results_aria_label: Результати пошуку
       no_results: Не знайдено тем
       close: Закрити панель пошуку
       placeholder: Пошук
@@ -125,15 +231,21 @@ uk:
       discussions: Теми
       proposals: Пропозиції
       comments: Коментарі
+    sign_in: Увійти
+    logo_title: На головну
   start_menu:
+    label: Дії користувача
     start_group: Створити групу
     start_subgroup: Створити підгрупу
     start_thread: Створити тему
     invite_people: Запросити людей
   notifications:
     header: Сповіщення
+    no_notifications: У Вас нема жодних оповіщень
     new_discussion: '<strong>{{name}}</strong> розпочав(ла) обговорення <strong>{{discussion}}</strong>'
     new_motion: '<strong>{{name}}</strong> внести пропозицію <strong>{{proposal}}</strong>'
+    motion_closed: 'Пропозицію <strong>{{proposal}}</strong> закрито'
+    publish_outcome: Опублікувати результат
     motion_closed_by_user: '<strong>{{name}}</strong> закрити пропозицію <strong>{{proposal}}</strong>'
     motion_closed_by_expiry: 'Пропозицію закрито <strong>{{proposal}}</strong>'
     new_vote: '<strong>{{name}}</strong> {{position}} на пропозицію <strong>{{proposal}}</strong>'
@@ -150,6 +262,7 @@ uk:
   position_buttons_panel:
     heading: Висловіть свою думку
   vote_form:
+    aria_label: Форма голосування
     heading: Висловіть свою думку
     no_statement: Без пояснень.
     i_agree: Я згоден
@@ -170,23 +283,29 @@ uk:
   proposal_positions_panel:
     heading: Ставлення
     no_votes_yet: Ще ніхто не проголосував за цю пропозицію.
+    change_your_vote: Змінити Ваше ставлення.
   undecided_panel:
     aria_label: Учасники що не прийняли рішення
-    show_undecided: Показати учасників що не прийняли рішення
+    show: Показати
+    remind: Нагадати
+    undecided: не прийняли рішення
     hide_undecided: Сховати учасників що не прийняли рішення
   proposal_pie_chart:
     participation_statement: '{{percentage}}% учасників заявили про свою позицію ({{number}}/{{total}})'
   close_proposal_form:
+    aria_label: Закрити пропозицію
     close_proposal: Закрити пропозицію
     helptext: Ви дійсно бажаєте закрити цю пропозицію зараз?
     close_proposal_submit: 'Так, закрити пропозицію'
     messages:
       success: Пропозицію закрито
   extend_proposal_form:
+    aria_label: Змінити термін закриття
     title: Змінити термін закриття
     success: Термін закриття пропозиції оновлено
     submit: Оновити термін закриття
   proposal_form:
+    aria_label: Форма для пропозицій
     messages:
       created: Пропозицію внесено
       updated: Пропопозицію оновлено
@@ -194,6 +313,9 @@ uk:
     start_a_proposal: Внести пропозицію
     edit_proposal: Редагувати пропозицію
     what_does_a_proposal_do: "Пропозиції дозволяють з'ясувати ставлення всіх до конкретного напрямку дій."
+    proposal_ideas: Підказки щодо написання чіткої пропозиції
+    proposal_ideas_title: 9 способів використання пропозицій Loomio щоб перейти від розмов до дій
+    title_placeholder: 'Наприклад: Давайте полетимо на місяць'
     title_label: Назва
     closes_at_label: Закривається о
     closes: Закрито
@@ -202,6 +324,7 @@ uk:
     created: 'Тему {{title}} було успішно створено у {{groupName}}'
     updated: 'Зберегти зміни у {{title}}'
   discussion_form:
+    aria_label: Форма для теми
     messages:
       created: Тему створено
       updated: Оновленні теми
@@ -233,20 +356,46 @@ uk:
   proposal_position_abstain: Утриматись
   proposal_position_no: Проти
   proposal_position_block: Блокувати
+  legacy_trial_expired_modal:
+    heading: 'Дякуємо що користувались Loomio у цьому році!'
+    submit: Показати ці плани
   group_welcome_modal:
+    aria_label: Ласкаво просимо
+    creator_heading: Ласкаво просимо до Вашої нової групи
+    member_heading: Ласкаво просимо до Loomio
     ok_got_it: 'Добре, зрозуміло!'
+  cover_photo_form:
+    aria_label: Змінити фото обкладинки
+    heading: Нове фото обкладинки
+    upload_link: Завантажити нове фото обкладинки
+    image_size_helptext: Найкращій розмір зображення 1400x320px
+    upload_success: Фото обкладинки успішно оновлено
+  logo_photo_form:
+    aria_label: Форма зміни логотипу групи
+    heading: Логотип для нової групи
+    upload_link: Завантажити новий логотип для групи
+    image_size_helptext: Найкращій розмір зображення 100x100px
+    upload_success: Логотип успішно оновлено
   join_group_button:
     join_group: Приєднатись до групи
     ask_to_join_group: Запросити участь у групі
+    membership_requested: Запити на участь в очікувані
     messages:
       joined_group: 'Тепер ви учасник {{group}}'
   membership_request_form:
+    aria_label: Форма для запиту на участь
     heading: Запросити участь у групі
     name_label: Ім’я
     email_label: Електронна пошта
+    introduction_label: Чому ви бажаєте приєднатись?
     submit_button: Запросити участь у групі
+    introduction_over_limit: Відповідь занадто довга
     messages:
       membership_requested: 'У вас є запити на приєднання до {{group}}'
+  revision_history_modal:
+    started_by: '<strong>{{name}}</strong> розпочав(ла) обговорення'
+    edited_by: '<strong>{{name}}</strong> відредагував(ла)'
+    posted: Опубліковані
   group_page:
     thread_list:
       empty:
@@ -267,12 +416,15 @@ uk:
       archive_group_success: Цю групу було закрито
     group_logo: Логотип групи
     new_photo: нове фото
-    description: Опис групи
+    new_cover_photo: Завантажити нове фото обкладинки
+    new_group_logo: Завантажити новий логотип для групи
     discussions: Теми
     discussions_placeholder: У темі всі можуть приняти участь в обговоренні питання та прийняти спільне рішення.
     members: Учасники
     members_placeholder: 'Ви єдиний тут: запросіть когось долучитись до вас!'
     member_options: Опції участі
+    see_all_members: 'Переглянути усіх: ({{count}}) учасників'
+    pending_invitations: '+ ({{count}}) в очікуванні'
     subgroups: Підгрупи
     subgroups_placeholder: Підгрупи дозволяють розділити групи на різні команди.
     invite_people: Запросити людей
@@ -284,6 +436,7 @@ uk:
       manage_members: Керувати учасниками
       add_subgroup: Додати підгрупу
       manage_subscription: Керувати підпискою групи
+      email_settings: Налаштування електронної пошти
       leave_group: Залишити групу
       deactivate_group: Закрити групу
     volume:
@@ -303,20 +456,72 @@ uk:
       private: 'Конфіденційність: Ця група відображається тільки для учасників'
       parent_members: 'Конфіденційність: Ця група відображається для учасників {{parentGroupName}} та учасників {{groupName}}'
       public: 'Конфіденційність: Ця група відображається для всіх у мережі'
+      aria_label: 'Доступ до групи: {{privacy}}'
+  description_card:
+    title: Опис групи
+    messages:
+      description_updated: Опис оновлено
+  leave_group_form:
+    aria_label: Залишити групу
+    title: Залишити групу
+    question: Ви дійсно хочете залишити цю групу?
+    submit: 'Так, залишити групу'
+    add_coordinator: Додати координатора
+  archive_group_form:
+    aria_label: Закрити групу
+    title: Закрити групу
+    question: Ви дійсно бажаєте закрити цю групу?
+    submit: 'Так, закрити групу'
+  confirm_gift_plan_modal:
+    heading: Безкоштовні групи підтримуються через пожертви
+  donation_modal:
+    heading: Зробити пожертву на Loomio?
+    contribute: Зробити внесок
+    got_to_group: 'Дякую, не зараз'
   gift_card:
     heading: Подарунковий план
     make_a_contribution: Зробіть свій внесок
+  upgrade_plan_card:
+    heading: Перейти на план з додатковими функціями
+    slack_html: "<strong>Інтеграція з Slack</strong>: Loomio та Slack чудово працюють разом! Зв'яжіть їх."
+    domain_html: "<strong>Власне доменне ім'я</strong>: Використовуйте адресу яку легко знайти yourname.loomio.org"
+    help_html: '<strong>Експертна допомога</strong>: Консультанти Loomio зі співпраці допоможуть вашій груі стати більш дієвою'
+    analytics_html: '<strong>Аналітичні звіти</strong>: Отримати розуміння залучення учасників групи'
+    donations: Учасникам вашої групи більше не будуть надходити пропозиції щодо пожертв.
+    more: ... та багато іншщого.
+    donate: Пожертвувати
   trial_card:
     title: 30-денне безкоштовне пробне використання
     choose_plan: Виберіть тарифний план
   choose_plan_modal:
+    aria_label: Вибрати план
+    heading: Будь ласка виберіть план для вашої групи
+    free: Безкоштовний
     standard: Стандарт
+    pro: Про
+    per_month: /на місяць
+    standard_group_description: Все що потрібно для однієї групи.
+    benefit_1_group: 1 група
+    benefit_10_groups: 10 груп
+    benefit_unlimited_members: Необмежена кількість учасників
+    benefit_unlimited_decisions: Необмежена кількість рішень
+    benefit_priority_support: Преміальна підтримка
+    benefit_help_with_setup: Допомога у початковому налаштуванні
+    benefit_community_support: Підтримка спільноти
+    benefit_slack_integration: Інтеграція зі Slack
+    benefit_custom_domain: "Власне доменне ім'я"
+    benefit_analytics_reports: Аналітичні звіти
+    benefit_data_export: Експорт даних
+    support_link: 'Звертайтесь!'
+    prices_in_us_dollars: 'Ціни вказані в доларах США; додатково нараховується податок з продажів у випадках, де він має бути застосованим.'
+    need_help_please: Потрібно щось ще?
     select: Вибрати
   subscription_success_modal:
     contact_link: "будь ласка, зв'яжіться з нами."
     sign_off: З ❤ від команди Loomio
     ok_got_it: 'Добре, зрозуміло!'
   group_form:
+    aria_label: Форма для створення групи
     start_group_heading: Створити групу
     start_subgroup_heading: Створити підгрупу
     edit_group_heading: Редагувати налаштування групи
@@ -370,7 +575,7 @@ uk:
     heading: Запити на приєднання
     approve: Підтримую
     ignore: Ігнорувати
-    no_pending_requests: Наразі нема запитів в очікуванні на приєднання до цієї групи.
+    no_pending_requests: Наразі нема запитів на приєднання до цієї групи
     no_previous_requests: Наразі нема попередніх запитів на приєднання до цієї групи.
     previous_requests: Попередні запити
     previous_request_response: '{{response}} від {{responder}} '
@@ -380,6 +585,27 @@ uk:
   group_previous_proposals_card:
     heading: Попередні пропозиції
     see_more: Переглянути більше
+  invitation_form:
+    aria_label: Форма для запрошення
+    invite_people: Запросити людей
+    group: Група
+    group_placeholder: Вибрати групу
+    shareable_link: Посилання для поширення
+    copy_link: Копіювати посилання
+    email_addresses: Адреса електроної пошти
+    add_custom_message: 'Зробіть ваше запрошення особистим,'
+    add_custom_message_link: додати власне повідомлення
+    custom_message: Ваше повідомлення
+    send: Відправити
+    done: Виконано
+    messages:
+      invitation_sent: Надіслані запрошення.
+      invitations_sent: '{{count}} запрошень надіслано.'
+      no_invitations: Гммм... Будь ласка перевірте що адрес пошти вірний та спробуйте ще раз.
+      max_invitations: 'Якщо Ви хочете надіслати більш ніж 100 запрошень, використовуйте посилання для команди.'
+  add_members_modal:
+    aria_label: Додати учасників з батьківської групи
+    heading: 'Додати людей з {{name}}'
   memberships_page:
     members: Учасники
     name_label: Ім’я
@@ -392,6 +618,8 @@ uk:
       remove_admin_success: '{{name}} більше не координатор'
     remove_admin_from_self:
       question: Ви дійсно більше не хочете бути координатором?
+  remove_membership_form:
+    submit: Вилучити
   pending_invitations_card:
     heading: Запрошення в очікуванні
     email: Електронна пошта
@@ -420,15 +648,31 @@ uk:
     email_label: Електронна пошта
     locale_label: Мова
     update_profile: Оновити профіль
+    deactivate_account: Закрити обліковий запис
+  change_password_form:
+    current_password_label: Поточний пароль
+    new_password_label: Новий пароль
+    password_confirmation_label: Підтвердіть новий пароль
+    submit: Оновити пароль
+  deactivation_modal:
+    aria_label: Закрити обліковий запис
+    introduction: Коли Ви закриєте обліковий запис
+    no_longer_group_member: Ви більше не будете в списках учасників жодної з груп
+  deactivate_user_form:
+    title: Закрити обліковий запис
+    submit: Закрити обліковий запис
   email_settings_page:
     header: Налаштування електронної пошти
     daily_summary_label: Щоденний підсумковий лист
     mentioned_description: 'Коли хтось захоче привернути вашу увагу, він(вона) згадає вас @особисто. Ми радимо залишити цю опцію вімкнутою, для того щоб отримати поштові сповіщення коли це трапиться.'
+    change_default: Змінити налаштування за умовчанням
+    edit: Редагувати
     messages:
       updated: Налаштування електронної пошти оновлено
   dashboard_page:
     aria_label: Інформаційна панель
     no_groups:
+      start: Почати
       or: або
     no_threads:
       show_all: У вас нема жодних недавніх тем.
@@ -474,11 +718,13 @@ uk:
     unread_threads: Непрочитані теми
     view_more: Переглянути більше
     no_groups:
+      start: Почати
       or: або
   groups_page:
     page_header: Ваші групи
   discussion:
     activity: Активність
+    activity_placeholder: 'Поки нема жодної активності!'
     proposals: Пропозиції
     previous_proposals: Попередні пропозиції
     load_previous: Завантажити попередню активність
@@ -491,21 +737,31 @@ uk:
     liked_by_name: 'Сподобалось {{name}}.'
     liked_by_names_and_name: 'Сподобалось {{joinedNames}} та {{name}}.'
     started_by: 'Створено <strong>{{name}}</strong>'
+    edited: Відредаговано
+    volume:
+      mute_message: Сповіщення для тема вимкнуто.
   thread_group:
     aria_label: Назва групи
   thread_context:
     aria_label: Контекст теми
     thread_options: Налаштування теми
-    edit_thread: Редагувати
+    email_settings: Налаштування електронної пошти
+    edit: Редагувати
+    edit_thread: Редагувати тему
+    mute_thread: Беззвучно
     move_thread: Перемістити
+    print_thread: Друкувати
     delete_thread: Видалити
+    add_comment: Додати коментар
   delete_thread_form:
+    aria_label: Видалити тему
     title: Видалити тему
     body: Ви впевнені що хочете видалити цю тему?
     confirm: 'Так, видалити тему'
     messages:
       success: Тему видалено
   move_thread_form:
+    aria_label: Перемістити тему
     title: Перемістити тему
     body: 'Група до якої перемістити:'
     confirm: Перемістити тему
@@ -526,8 +782,35 @@ uk:
       aria_label: Налаштування коментаря
       edit_comment: Редагувати коментар
       delete_comment: Видалити коментар
+    edited: Відредаговано
+  new_vote_item:
+    agree: згоден(на)
+    abstain: утримався(лась)
+    disagree: не згоден(на)
+    block: заблокував(ла)
+  new_proposal_item:
+    author_created_proposal: 'додав(ла) пропозицію: <span>{{title}}</span>'
   proposal_closed_item:
     proposal_closed: 'Було закрито пропозицію: <span>{{title}}</span>'
+  proposal_closed_by_user_item:
+    proposal_closed_by_user: 'закрив(ла) пропозицію: <span>{{title}}</span>'
+  proposal_edited_item:
+    name: 'оновив(ла) назву пропозиції: <span>{{title}}</span>'
+    description: оновив(ла) опис пропозиції
+    closing_at: 'оновив(ла) час закриття пропозиції на <span>{{time}}</span>'
+    description_name: оновив(ла) назву та опис пропозиції
+    closing_at_name: оновив(ла) назву та час закриття пропозиції
+    closing_at_description: оновив(ла) опис та час закриття пропозиції
+    closing_at_description_name: 'оновив(ла) назву, опис та час закриття пропозиції'
+  proposal_outcome_created_item:
+    proposal_outcome_created: 'опублікував(ла) рішення щодо пропозиції:'
+  proposal_outcome_updated_item:
+    proposal_outcome_updated: 'оновив(ла) рішення щодо пропозиції:'
+  discussion_edited_item:
+    attachment_ids: оновив(ла) вкладення до теми
+    title: 'оновив(ла) назву пропозиції: <span>{{title}}</span>'
+    public_to_private: закрита
+    private_to_public: відкрита
   contact_message_form:
     contact_us: Контакти
     name_label: "Ваше ім'я"
@@ -700,6 +983,9 @@ uk:
     invitation: Підказки щодо написання влучного запрошення.
     proposal: Підказки щодо написання чіткої пропозиції
     vote: Ви можете змінити Ваше ставлення будь-коли
+  explore_page:
+    header: Переглянути групи Loomio
+    search_placeholder: Шукати відкриті групи Loomio
   angular:
     switch_back: Повернутися до старого Loomio
     give_feedback: "Зворотний зв'язок"
@@ -713,3 +999,26 @@ uk:
       body_html: '<p>Ой, ми зробили щось не так? Вибачте якщо вам не сподобався новий Loomio.</p>'
       give_feedback: Перш ніж ви підете будь ласка поділіться вашими враженнями щоб ми могли їх врахувати.
       button_text: Повернутись до старого Loomio
+  global:
+    messages:
+      reload: Перезавантажити
+  registered_apps_page:
+    name: Назва
+    create_new_application: Новий додаток
+  registered_app_page:
+    uid: ID додатку
+  registered_app_form:
+    new_application_title: Новий додаток
+    edit_application_title: Оновити додаток
+    name_label: Назва
+    name_placeholder: Як називається Ваш додаток?
+    new_application_submit: Створити додаток
+    edit_application_submit: Оновити додаток
+    messages:
+      logo_changed: Логотип оновлено.
+      created: "'{{name}}' створено"
+      updated: "'{{name}}' оновлено"
+  remove_app_form:
+    title: '{{name}} деактивовано'
+    question: "Ви впевнені, що хочете деактивувати додаток '{{name}}'? Ця дія незворотня."
+    submit: Деактивувати

@@ -26,7 +26,7 @@ group_creation_minute:
 
 group_creation_day:
   period: 86400
-  limit: 20
+  limit: 10
   path: ^\/g$
 
 comment_creation_minute:

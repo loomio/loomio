@@ -5,11 +5,6 @@ class Dev::MainController < Dev::BaseController
 
   before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
 
-  # def setup_poll
-  #   sign_in fake_user
-  #   redirect_to existing_poll
-  # end
-
   def index
     @routes = self.class.action_methods.select do |action|
       action.starts_with? 'setup'
@@ -237,33 +232,33 @@ class Dev::MainController < Dev::BaseController
     create_group
     judd
     pending_invitation
-    redirect_to last_email_development_index_path
+    redirect_to dev_last_email_path
   end
 
   def setup_new_user_invitation
     create_group
     pending_invitation
-    redirect_to last_email_development_index_path
+    redirect_to dev_last_email_path
   end
 
   def setup_used_invitation
     create_group
     emilio
     InvitationService.redeem(pending_invitation, judd)
-    redirect_to last_email_development_index_path
+    redirect_to dev_last_email_path
   end
 
   def setup_accepted_membership_request
     membership_request = MembershipRequest.new(name: "Judd Nelson", email: "judd@example.com", group: create_group)
     MembershipRequestService.approve(membership_request: membership_request, actor: patrick)
-    redirect_to last_email_development_index_path
+    redirect_to dev_last_email_path
   end
 
   def setup_cancelled_invitation
     create_group
     judd
     InvitationService.cancel(invitation: pending_invitation, actor: patrick)
-    redirect_to last_email_development_index_path
+    redirect_to dev_last_email_path
   end
 
   def setup_team_invitation_link
@@ -446,8 +441,9 @@ class Dev::MainController < Dev::BaseController
     sign_in patrick
     create_vote
     create_another_vote
+    create_public_discussion.group.add_member! jennifer
 
-    redirect_to discussion_url(create_discussion)
+    redirect_to discussion_url(create_public_discussion)
   end
 
   def setup_closed_proposal

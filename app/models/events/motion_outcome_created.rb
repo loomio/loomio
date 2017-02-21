@@ -4,11 +4,11 @@ class Events::MotionOutcomeCreated < Event
   include Events::EmailUser
   include Events::JoinDiscussion
 
-  def self.publish!(motion, user)
+  def self.publish!(motion)
     create(kind: "motion_outcome_created",
            eventable: motion,
            discussion: motion.discussion,
-           user: user).tap { |e| EventBus.broadcast('motion_outcome_created_event', e) }
+           user: motion.outcome_author).tap { |e| EventBus.broadcast('motion_outcome_created_event', e) }
   end
 
   private

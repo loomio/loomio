@@ -7,15 +7,23 @@ class Events::UserAddedToGroup < Event
   end
 
   def self.bulk_publish!(memberships, inviter, message = nil)
-    memberships.map { |membership| new(kind: 'user_added_to_group', user: inviter, eventable: membership) }
-               .tap { |events| import(events) }
-               .tap { |events| events.map { |event| EventBus.broadcast('user_added_to_group_event', event, message: message) } }
+    memberships.map do |membership|
+      new(
+        kind: 'user_added_to_group',
+        user: inviter,
+        eventable: membership,
+        custom_fields: { message: message }
+      )
+    end.tap do |events|
+      import(events)
+      events.map { |event| EventBus.broadcast('user_added_to_group_event', event) }
+    end
   end
 
   private
 
   def email_users!
-    mailer.send(kind, eventable.user, self, @trigger_args[:message]).deliver_now
+    mailer.send(kind, eventable.user, self, custom_fields['message']).deliver_now
   end
 
   def notification_recipients

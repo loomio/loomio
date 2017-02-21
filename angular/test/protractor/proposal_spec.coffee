@@ -117,7 +117,7 @@ describe 'Proposals', ->
 
       it 'shows all undecided members when the show link is clicked', ->
         page.click '.undecided-panel__show'
-        page.expectText '.undecided-panel', 'Emilio'
+        page.expectText '.undecided-panel', 'Jennifer Grey'
         page.expectText '.undecided-panel', 'Hide undecided members'
 
       it 'hides all undecided members when hide link is clicked', ->
@@ -128,7 +128,7 @@ describe 'Proposals', ->
       it 'allows you to remind undecided members', ->
         page.click '.undecided-panel__remind'
         # workaround for weird webdriver quirk which results in getText() always being empty for <input> elements
-        expect(threadHelper.commentForm().getAttribute('value')).toEqual('@emilioestevez')
+        expect(threadHelper.commentForm().getAttribute('value')).toEqual('@jennifergrey')
 
     describe 'when proposal is closed', ->
       beforeEach ->

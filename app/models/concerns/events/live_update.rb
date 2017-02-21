@@ -1,5 +1,5 @@
 module Events::LiveUpdate
-  def trigger!(args = {})
+  def trigger!
     super
     notify_clients!
   end

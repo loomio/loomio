@@ -6,7 +6,8 @@ class Events::UserMentioned < Event
     create(kind: 'user_mentioned',
            eventable: model,
            user: actor,
-           created_at: model.created_at).tap { |e| EventBus.broadcast('user_mentioned_event', e, mentioned_user_id: mentioned_user.id) }
+           custom_fields: { mentioned_user_id: mentioned_user.id },
+           created_at: model.created_at).tap { |e| EventBus.broadcast('user_mentioned_event', e) }
   end
 
   private
@@ -16,6 +17,6 @@ class Events::UserMentioned < Event
   end
 
   def notification_recipients
-    User.where(id: @trigger_args[:mentioned_user_id])
+    User.where(id: custom_fields['mentioned_user_id'].to_i)
   end
 end

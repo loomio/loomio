@@ -90,6 +90,7 @@ ga-IE:
     mute: Gan fhuaim
     unmute: Díbhalbhaigh é
   change_volume_form:
+    aria_label: Athraigh foirm shocruithe ríomhphoist
     loud_label: Gach gníomhaíocht
     normal_label: Gníomhaíocht thábhachtach
     quiet_label: Gan ríomhphoist
@@ -103,15 +104,28 @@ ga-IE:
         quiet: Ní sheolfar ríomhphoist chugat i dtaca leis an snáithe seo.
     membership:
       title: 'Socruithe ríomhphoist i gcomhair {{title}}'
+      apply_to_all: Cuir na socruithe seo i bhfeidhm ar gach ceann de mo bhaiclí.
+    user:
+      title: Socruithe ríomhphoist i gcomhair baiclí nua
+      apply_to_all: Cuir na socruithe seo i bhfeidhm ar gach ceann de mo bhaiclí.
+  mute_explanation_modal:
+    aria_label: Balbhaigh an tsnáthaid
+    mute_thread: Balbhaigh an tsnáthaid
+  dismiss_explanation_modal:
+    aria_label: Déan neamhaird den snáthaid
+    dismiss_thread: Déan neamhaird den snáthaid
   inbox:
     clear: Glan
     latest: Is déanaí
     unread: Neamhléite
     closing_in: Ag dúnadh
   sign_in_form:
+    email_label: 'Seoladh ríomhphoist:'
+    email_placeholder: tusa@suiomh.com
     password_label: 'Focal Faire:'
     remember_me: Cuimhnigh orm
     forgot_password: "Ar dhearmad tú d'fhocal faire?"
+    sign_in: Síniú isteach
     signed_in: Nasctha go rathúil
     oauth:
       title: 'Nó nasc le cuntas ó dhream eile:'
@@ -119,6 +133,22 @@ ga-IE:
       twitter: Nasc le Twitter
       google: Nasc le Google
       github: Nasc le Github
+  sign_up_form:
+    aria_label: Foirm le clárú
+    title: 'Fáilte go Loomio! Cuirimis tús le rudaí'
+    name_label: "D'ainm:"
+    name_placeholder: Siobhán Ní Shúilleabhán
+    email_label: 'Seoladh ríomhphoist:'
+    email_placeholder: tusa@suiomh.com
+    password_label: 'Focal faire:'
+    password_confirmation_label: 'An focal faire arís:'
+    sign_in_message: An bhfuil cuntas agat cheana féin?
+    sign_in: Sínigh isteach
+    sign_up: Cruthaigh cuntas
+  signed_out_modal:
+    aria_label: Críochnaigh an dreas
+    title: Chríochnaigh do dhreas
+    ok: Tá go maith
   comment_form:
     aria_label: Cuir trácht leis
     attachments:
@@ -137,19 +167,29 @@ ga-IE:
     submit_button:
       label: Foilsigh é
   sidebar:
+    my_groups: Mo bhaiclí
+    my_settings: Mo shocruithe
     recent: Le déanaí
     unread: Neamhléite
     muted: Balbhaithe
+    start_group: Cuir baicle nua ar bun
+    explore: Baiclí poiblí
     edit_profile: Cuir do bheathaisnéisín in eagar
     email_settings: Socruithe ríomhphoist
     help: Cabhair
+    contact: Déan teagmháil le Loomio
     sign_out: Scoir
+    aria_labels:
+      heading: Taobhbharra
+      groups_list: Baiclí
   navbar:
     recent_title: Téigh chuig an clár rialaithe
     unread_title: Féach gníomhaíocht neamhléite
     start_thread: Cuir tús le snáithe nua
     notifications: Clár na bhfógraí
     search:
+      results_aria_label: Torthaí cuardaigh
+      no_results: Níor aimsíodh aon snáthaid
       close: Dún an clár cuardaigh
       placeholder: Cuardaigh
       loading: Ag luchtú na torthaí...
@@ -157,13 +197,16 @@ ga-IE:
       proposals: Tograí
       comments: Tráchtanna
     sign_in: Sínigh isteach
+    logo_title: An clár cinn
   start_menu:
+    title: Gníomh
     start_group: Tosaigh Baicle
     start_subgroup: Cuir Fobhaicle ar bun
     start_thread: Tosaigh Snáith
     invite_people: Tabhair Cuireadh Do Dhaoine
   notifications:
     header: Fógraí
+    no_notifications: Níl aon fhógra agat
     new_discussion: 'Chuir <strong>{{name}}</strong> tús le plé <strong>{{discussion}}</strong>'
     new_motion: 'Chruthaigh <strong>{{name}}</strong> togra <strong>{{proposal}}</strong>'
     motion_closed: 'Togra dúnta: <strong>{{proposal}}</strong>'
@@ -207,17 +250,21 @@ ga-IE:
     change_your_vote: Athraigh do sheasamh.
   undecided_panel:
     aria_label: Comhaltaí nár rinne cinneadh
-    show_undecided: Taispeáin na daoine nach bhfuil cinneadh déanta acu fós
+    show: Taispeáin
+    remind: Meabhraigh dom é
+    undecided: éiginnte
     hide_undecided: Folaigh na daoine nach bhfuil cinneadh déanta acu fós
   proposal_pie_chart:
     participation_statement: '{{percentage}}% na gcomhaltaí a luaigh a seasamh ({{number}}/{{total}})'
   close_proposal_form:
+    aria_label: Dún an togra
     close_proposal: Dún an togra
     helptext: An bhfuil tú cinnte gur mian leat an togra seo a dhúnadh anois?
     close_proposal_submit: Táim cinnte. Dún an togra.
     messages:
       success: Tá an togra dúnta
   extend_proposal_form:
+    aria_label: Athraigh an t-am a dhúnfar é
     title: Athraigh an t-am a dhúnfar an togra
     success: Nuashonraíodh an t-am a dhúnfar an togra
     submit: Nuashonraigh an t-am a dhúnfar an togra
@@ -272,7 +319,10 @@ ga-IE:
     heading: 'Go raibh maith agat as ucht feidhm a bhaint as Loomio an bhliain seo!'
     submit: Taispeáin na bearta chugam
   group_welcome_modal:
+    aria_label: Fáilte
+    creator_heading: Fáilte chuig do bhaicle nua
     member_heading: Fáilte go dtí Loomio
+    creator_footer: 'Nuair atá tú réidh, <strong>tabhair cuirí do dhaoine</strong> chun teacht isteach ann.'
     ok_got_it: 'Maith go leor, tuigim é!'
   join_group_button:
     join_group: Cláraigh leis an mbaicle
@@ -283,6 +333,7 @@ ga-IE:
     heading: Iarr cead dul isteach sa bhaicle
     name_label: Ainm
     email_label: Seoladh ríomhphoist
+    introduction_label: Cén fáth is mian leat bheith mar chuid de?
     submit_button: Iarr cead dul isteach sa bhaicle
     messages:
       membership_requested: "D'iarr tú cead bheith i do chomhalta de {{group}}"
@@ -308,7 +359,6 @@ ga-IE:
       archive_group_success: Cuireadh deireadh leis an mbaicle seo
     group_logo: Lógó na baicle
     new_photo: grianghraf nua
-    description: Cur síos ar an mbaicle
     discussions: Pléití
     discussions_placeholder: Is áit í snáithe inar féidir le gach duine ábhar a phlé agus cinntí a dhéanamh le chéile.
     members: Comhaltaí
@@ -325,20 +375,49 @@ ga-IE:
       add_subgroup: Cuir fobhaicle leis
       email_settings: Socruithe ríomhphoist
       leave_group: Fág an bhaicle seo
+      deactivate_group: Díghníomhachtaigh an bhaicle
     volume:
       loud: Seol ríomhphost chugam nuair a bhíonn gníomhaíocht ann.
       loud_aria_description: Is é Ard an socrú i gcomhair fógraí atá agat don bhaicle seo. Seolfar ríomhphost chugat gach uair a bhfuil gníomhaíocht.
       normal: 'Seol an ghníomhaíocht is tábhachtaí chugam i ríomhphost: Snáitheanna agus tograí nua, torthaí agus araile.'
       quiet: Ná seol ríomhphost faoin mbaicle seo chugam. Taispeánfar gníomhaíocht ar an gclár rialaithe.
       mute: Folaigh an bhaicle seo ón gclár rialaithe agus ná taispeáin fógraí uaithi ach amháin má @dhéantar tagairt dom.
+  leave_group_form:
+    aria_label: Fág an bhaicle
+    title: Fág an bhaicle
+    question: An bhfuil tú cinnte gur mian leat an bhaicle seo a fhágáil?
+    submit: 'Táim, fág an bhaicle'
+    add_coordinator: Cuir comheagraí leis
+  archive_group_form:
+    aria_label: Díghníomhachtaigh an bhaicle
+    title: Díghníomhachtaigh an bhaicle
+    question: An bhfuil tú cinnte gur mian leat an bhaicle seo a dhíghníomhachtú?
+    submit: 'Táim, díghníomhachtaigh an bhaicle'
+  confirm_gift_plan_modal:
+    got_it: Fan mar shaor in aisce
+    go_back: Uasghrádaigh
   donation_modal:
+    heading: An bhronnfá airgead ar Loomio?
     contribute: Bronn airgead
+    got_to_group: 'Ní anois, go raibh maith agaibh.'
   gift_card:
     make_a_contribution: Bronn airgead
+  upgrade_plan_card:
+    more: ... agus a lán eile.
+    upgrade: Uasghrádaigh anois
+    donate: Bronn airgid
   choose_plan_modal:
+    free: Saor in aisce
     standard: Caighdeánach
+    pro: Pro
+    per_month: /mí
+    standard_group_description: Gach rud atá de dhíth i gcomhair baicle amháin.
+    benefit_1_group: 1 bhaicle amháin
+    benefit_10_groups: 10 mbaicle
+    support_link: B
     select: Roghnaigh seo
   subscription_success_modal:
+    heading: 'Tá tú réidh!'
     contact_link: déan teagmháil linn.
     sign_off: ❤ ó fhoireann Loomio
     ok_got_it: 'Tuigim é!'
@@ -401,6 +480,8 @@ ga-IE:
       remove_member_success: 'Baineadh {{name}}'
       make_admin_success: 'Is comhordaitheoir anois {{name}}'
       remove_admin_success: 'Ní comhordaitheoir a thuilleadh é {{name}}'
+  remove_membership_form:
+    submit: Bain
   pending_invitations_card:
     heading: Cuirí ar feitheamh
     email: Ríomhphost
@@ -430,17 +511,35 @@ ga-IE:
     email_label: Seoladh ríomhphoist
     locale_label: Teanga
     update_profile: Nuashonraigh an bheathaisnéisín
+    deactivate_account: Díghníomhachtaigh an cuntas
+  change_picture_form:
+    title: Athraigh an pictiúr
+    use_uploaded: Uasluchtaigh pictiúr nua
+  change_password_form:
+    title: Athraigh an focal faire
+    current_password_label: An focal faire reatha
+    new_password_label: An focal faire nua
+    password_confirmation_label: Deimhnigh an focal faire nua
+    submit: Nuashonraigh an focal faire
+  deactivation_modal:
+    aria_label: Díghníomhachtaigh an cuntas
+    introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
+  deactivate_user_form:
+    title: Díghníomhachtaigh an cuntas
+    submit: Díghníomhachtaigh an cuntas
   email_settings_page:
     header: Socruithe ríomhphoist
     all_groups: Socruithe i gcomhair gach baicle
     daily_summary_label: Ríomhphost le hachoimre laethúil
     mentioned_description: "Nuair is mian le duine éigin d'aird a tharraing orthu, @déanfaidh siad tagairt duit. Molaimid duit é sin a fhágáil ar siúl, ionas go bhfaighfear ríomhphost nuair a tharlaíonn seo."
+    change_default: Athraigh an réamhshocrú
     edit: Eagar
     messages:
       updated: Nuashonraigh na socruithe ríomhphoist
   dashboard_page:
     aria_label: An clár rialaithe
     no_groups:
+      start: Tosaigh
       or: nó
     no_threads:
       show_all: Níl aon snáithe le déanaí agat.
@@ -450,6 +549,7 @@ ga-IE:
     view_recent: Féach ar gach snáithe le déanaí?
     load_more: Luchtaigh tuilleadh snáitheanna
     mark_as_read: Rianaigh mar léite
+    dismiss: Déan neamhaird de seo
     filtering:
       filter_threads: Scag na Snáitheanna
       filter_threads_aria_label: Scag na Snáitheanna
@@ -488,6 +588,7 @@ ga-IE:
     unread_threads: Snáitheanna Neamhléite
     view_more: Féach Tuilleadh
     no_groups:
+      start: 'Tosaigh '
       or: nó
   groups_page:
     page_header: Do bhaiclí
@@ -515,7 +616,7 @@ ga-IE:
     aria_label: Comhthéacs na snáithe
     thread_options: Roghanna na snáithe
     email_settings: Socruithe ríomhphoist
-    edit_thread: Cuir in eagar é
+    edit: Eagar
     move_thread: Bog é
     print_thread: Clóbhuail
     delete_thread: Scrios

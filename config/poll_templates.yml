@@ -16,7 +16,7 @@ proposal:
     - priority_first
     - priority_last
 
-check_in:
+yes_no:
   poll_options_attributes:
     - name:           "engage"
   chart_type:         progress
