@@ -5,6 +5,7 @@
 .poll-proposal-chart-panel__chart {
   height: 200px;
   width: 200px;
+  flex-shrink: 0;
 }
 
 .poll-proposal-chart-panel__label{
