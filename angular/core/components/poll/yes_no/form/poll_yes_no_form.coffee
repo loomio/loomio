@@ -8,8 +8,9 @@ angular.module('loomioApp').factory 'PollYesNoForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.poll,
       prepareFn: ->
-        $scope.poll.pollOptionNames = [$scope.poll.affirmativeText,
-                                       $scope.poll.negativeText]
+        $scope.poll.pollOptionNames = [
+          $scope.poll.affirmativeText, $scope.poll.negativeText
+        ] if $scope.poll.isNew()
       successCallback: AttachmentService.cleanupAfterUpdate('poll')
       flashSuccess: "poll_yes_no_form.yes_no_#{actionName}"
       draftFields: ['title', 'details', 'action']
