@@ -1,0 +1,16 @@
+.poll-common-closing-at-field {
+  @include displayFlex;
+  flex-direction: column;
+}
+
+.poll-common-closing-at-field__inputs {
+  @include displayFlex;
+}
+
+.md-datepicker-calendar-pane {
+  z-index: $over-intercom !important;
+}
+
+.md-select-menu-container {
+  z-index: $over-intercom !important;
+}

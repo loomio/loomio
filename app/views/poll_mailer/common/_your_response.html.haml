@@ -1,0 +1,7 @@
+%table
+  %tr
+    - @info.recipient_stance.poll_options.each do |option|
+      %td= render('poll_mailer/common/chip', color: option.color)
+      %td= option.name
+    %td= link_to t(:"poll_mailer.common.change_your_stance"), poll_url(@info.poll, @info.utm_hash(change_vote: true))
+%p= @info.recipient_stance.reason

@@ -17,8 +17,10 @@ class SearchVector < ActiveRecord::Base
   DISCUSSION_FIELD_WEIGHTS = {
     'discussions.title'        => :A,
     'motion_names'             => :B,
+    'poll_titles'              => :B,
     'discussions.description'  => :C,
     'motion_descriptions'      => :C,
+    'poll_details'             => :C,
     'comment_bodies'           => :D
   }.freeze
 
@@ -92,6 +94,7 @@ class SearchVector < ActiveRecord::Base
   def vector_for_discussion
     Discussion.select(self.class.discussion_field_weights + ' as search_vector')
               .joins("LEFT JOIN (#{vector_for_motions.to_sql})  motions ON TRUE")
+              .joins("LEFT JOIN (#{vector_for_polls.to_sql})    polls ON TRUE")
               .joins("LEFT JOIN (#{vector_for_comments.to_sql}) comments ON TRUE")
               .where(id: self.discussion_id)
   end
@@ -100,6 +103,12 @@ class SearchVector < ActiveRecord::Base
     Motion.select("string_agg(name, ',')                     AS motion_names")
           .select("LEFT(string_agg(description, ','), 10000) AS motion_descriptions")
           .where(discussion_id: self.discussion_id)
+  end
+
+  def vector_for_polls
+    Poll.select("string_agg(title, ',')                AS poll_titles")
+        .select("LEFT(string_agg(details, ','), 10000) AS poll_details")
+        .where(discussion_id: self.discussion_id)
   end
 
   def vector_for_comments

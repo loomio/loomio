@@ -1,0 +1,42 @@
+%md-dialog.poll-common-modal
+  %form.poll-yes-no-form
+    .modal-header.poll-common-modal-header
+      %i.material-icons thumbs_up_down
+      %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_yes_no_form.new_yes_no"}
+      %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_yes_no_form.update_yes_no"}
+      %modal_header_cancel_button
+    .modal-body
+      .poll-yes-no__tip
+        %p{translate: "poll_yes_no_form.tip"}
+        %poll_common_school_link{href: "https://loomio.school/beginner/engagements.html", translation: "poll_yes_no_form.learn_more"}
+
+      %input{type: "hidden", ng-model: "poll.pollType"}
+
+      %md-input-container.md-block
+        %label{translate: "poll_yes_no_form.title"}
+        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="200"}
+        %validation_errors{subject: "poll", field: "title"}
+
+      %md-input-container.md-block
+        %label{translate: "poll_yes_no_form.details"}
+        %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+        %outlet{name: "after-yes-no-form-textarea", model: "poll"}
+
+      %md-input-container.md-block{ng-if: "poll.isNew()"}
+        %label{translate: "poll_yes_no_form.affirmative_label"}
+        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.affirmativePlaceholder}}", ng-model: "poll.affirmativeText", md-maxlength="200"}
+        -# %validation_errors{subject: "poll", field: "title"}
+
+      %md-input-container.md-block{ng-if: "poll.isNew()"}
+        %label{translate: "poll_yes_no_form.negative_label"}
+        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.negativePlaceholder}}", ng-model: "poll.negativeText", md-maxlength="200"}
+        -# %validation_errors{subject: "poll", field: "title"}
+
+
+      %poll_common_closing_at_field.md-block{poll: "poll"}
+      %poll_common_attachment_form{poll: "poll"}
+      %poll_common_notify_group{model: "poll"}
+
+    .modal-footer
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_yes_no_form.update", aria-label: "{{ 'poll_yes_no_form.update' | translate }}"}
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_yes_no_form.start", aria-label: "{{ 'poll_yes_no_form.start' | translate }}"}

@@ -15,6 +15,8 @@
 
     %link{href: client_asset_path(:"app.min.css"), rel: 'stylesheet'}
 
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
+
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
     = render 'angular/intercom' if current_user_or_visitor.is_logged_in?

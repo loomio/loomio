@@ -1,0 +1,5 @@
+.poll-mailer-common-avatar__container
+  - if participant.avatar_kind == 'initials'
+    .poll-mailer-common-avatar__initials= participant.avatar_initials
+  - else
+    = image_tag participant.avatar_url(:small), alt: participant.name, class: "common-avatar__image"

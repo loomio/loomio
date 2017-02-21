@@ -1,0 +1,14 @@
+.poll-common-summary-panel
+  %h3.poll-common-summary-panel__title {{poll.title}}
+  %poll_common_outcome_panel{poll: "poll"}
+  %h3.lmo-card-subheading{translate: "poll_common.details", ng-if: "poll.outcome()"}
+  .poll-common-summary-panel__started-by
+    %span{translate: "poll_card.started_by", translate-value-name: "{{poll.author().name}}"}
+    %span{aria-hidden: "true"}>·
+    %poll_common_closing_at{poll: "poll"}
+
+  .poll-common-summary-panel__details.lmo-markdown-wrapper{marked: "poll.cookedDetails()"}
+
+  .poll-common-summary-panel__attachments{ng-if: "poll.hasAttachments()"}
+    .poll-common-summary-panel__attachment{ng-repeat: "attachment in poll.attachments() | orderBy:'createdAt' track by attachment.id"}
+      %attachment_preview{attachment: "attachment", mode: "context"}

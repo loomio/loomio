@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
+  include HasPolls
   include MessageChannel
 
   class MaximumMembershipsExceeded < Exception
@@ -128,6 +129,7 @@ class Group < ActiveRecord::Base
   has_many :admins, through: :admin_memberships, source: :user
   has_many :discussions, dependent: :destroy
   has_many :motions, through: :discussions
+  has_many :polls, through: :discussions
   has_many :votes, through: :motions
 
   belongs_to :parent, class_name: 'Group'
@@ -135,6 +137,7 @@ class Group < ActiveRecord::Base
   belongs_to :category
   belongs_to :theme
   belongs_to :cohort
+  belongs_to :community, class_name: 'Communities::LoomioGroup'
   belongs_to :default_group_cover
 
   has_many :subgroups,
@@ -175,6 +178,7 @@ class Group < ActiveRecord::Base
 
   define_counter_cache(:motions_count)             { |group| group.discussions.published.sum(:motions_count) }
   define_counter_cache(:closed_motions_count)      { |group| group.motions.closed.count }
+  define_counter_cache(:closed_polls_count)        { |group| group.polls.closed.count }
   define_counter_cache(:discussions_count)         { |group| group.discussions.published.count }
   define_counter_cache(:public_discussions_count)  { |group| group.discussions.visible_to_public.count }
   define_counter_cache(:memberships_count)         { |group| group.memberships.count }
@@ -182,6 +186,15 @@ class Group < ActiveRecord::Base
   define_counter_cache(:invitations_count)         { |group| group.invitations.count }
   define_counter_cache(:proposal_outcomes_count)   { |group| group.motions.with_outcomes.count }
   define_counter_cache(:pending_invitations_count) { |group| group.invitations.pending.count }
+
+  def group
+    self
+  end
+
+  def community
+    self[:community_id] ||= Communities::LoomioGroup.create(group: self).id
+    super
+  end
 
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo

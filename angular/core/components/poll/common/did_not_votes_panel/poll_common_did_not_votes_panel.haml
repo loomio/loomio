@@ -1,0 +1,8 @@
+  .poll-common-votes-panel__did-not-votes
+    %h3.lmo-card-subheading{translate: "poll_common_did_not_votes_panel.undecided", translate-values: "{count: poll.undecidedCount()}"}
+    %md-button{ng-if: "canShowUndecided()", ng-click: "showUndecided()", translate: "poll_common_votes_panel.show_undecided", aria-label: "poll-common-votes-panel.show_undecided"}
+    .poll-common-votes-panel__did-not-voters{ng-if: "showingUndecided"}
+      .poll-common-votes-panel__did-not-voter.poll-common-votes-panel__stance{ng-repeat: "user in poll.undecidedMembers()"}
+        %user_avatar{user: "user", size: "small"}
+        %span.poll-common-votes-panel__stance-content {{user.name}}
+      %md-button{translate: "common.action.load_more", aria-label: "common.action.load_more", ng-click: "loader.loadMore()", ng-if: "moreToLoad()"}

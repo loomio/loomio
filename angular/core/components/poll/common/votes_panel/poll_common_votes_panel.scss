@@ -1,0 +1,27 @@
+.poll-common-votes-panel__stance {
+  @include displayFlex;
+  align-items: center;
+  margin: 7px 0;
+}
+
+.poll-common-votes-panel__stance-content {
+  margin-left: 10px;
+}
+
+.poll-common-votes-panel__no-votes {
+  color: $grey-on-white;
+  font-style: italic;
+}
+
+.poll-common-votes-panel__header {
+  @include displayFlex;
+  justify-content: space-between;
+}
+
+.poll-common-votes-panel__header md-select {
+  margin-bottom: 0;
+}
+
+.poll-common-votes-panel__did-not-voter {
+  @include displayFlex;
+}

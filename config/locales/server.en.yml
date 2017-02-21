@@ -1,5 +1,8 @@
 ---
 en:
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
   validate:
     motion:
       must_close_in_future: Proposal must close in the future.
@@ -359,3 +362,76 @@ en:
       <strong>The New Loomio is here!</strong> It's faster, prettier, and mobile-ready.
     more_info: More info...
     button_text: Switch to the new Loomio
+
+  poll_mailer:
+    common:
+      or: or
+      why_send_this: You are receiving this email because %{reason}
+      view_on_loomio: View it on Loomio
+      unsubscribe: Unsubscribe
+      results: Results
+      responses: Responses
+      change_your_stance: Change
+      create_outcome: Share outcome
+      your_response: Your response
+      please_respond: Please respond
+
+    proposal:
+      subject:
+        poll_created: '%{actor} started a proposal: %{title}'
+        poll_updated: '%{actor} edited the proposal: %{title}'
+        poll_closing_soon: 'Final reminder: Please respond before 5pm Friday: %{title}'
+        poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
+        poll_expired: 'Your proposal has closed. Please share an outcome for: %{title}'
+        outcome_created: '%{actor} shared a proposal outcome: %{title}'
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a proposal'
+        poll_updated: '<strong>%{actor}</strong> edited the proposal'
+        poll_closing_soon: '<strong>%{actor}</strong>''s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+        poll_closing_soon_author: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
+        poll_expired: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
+        outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
+
+      body:
+        voted: '<strong>%{participant}</strong> voted:'
+
+    poll:
+      subject:
+        poll_created: '%{actor} started a poll: %{title}'
+        poll_updated: '%{actor} edited the poll: %{title}'
+        poll_closing_soon: 'Poll closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
+        poll_expired: 'Your poll has closed. Please share an outcome for: %{title}'
+        outcome_created: '%{actor} shared a poll outcome: %{title}'
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a poll'
+        poll_updated: '<strong>%{actor}</strong> edited the poll'
+        poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+        poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
+        poll_expired: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
+        outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
+
+      body:
+        voted: '<strong>%{participant}</strong> chose:'
+
+    yes_no:
+      subject:
+        poll_created: '%{actor} started a yes-no round: %{title}'
+        poll_updated: '%{actor} edited the yes-no: %{title}'
+        poll_closing_soon: 'Yes/No closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your yes-no closes in 24 hours: %{title}'
+        poll_expired: 'Your yes-no has closed. Please share an outcome: %{title}'
+        outcome_created: '%{actor} shared a yes-no summary: %{title}'
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a yes-no round'
+        poll_updated: '<strong>%{actor}</strong> edited the yes-no'
+        poll_closing_soon: '<strong>%{actor}</strong>''s yes-no is closing in 24 hours.'
+        poll_closing_soon_author: 'Your yes-no is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
+        poll_expired: 'Your yes-no has <strong>closed</strong>. Please take time to consider what as been said and <strong>share a outcome</strong> with the group, so people know what’ll happen next.'
+        outcome_created: '<strong>%{actor}</strong> shared a yes-no summary.'
+
+      body:
+        voted: '<strong>%{participant}</strong> checked in:'

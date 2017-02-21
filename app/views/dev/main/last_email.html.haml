@@ -1,0 +1,21 @@
+- raise "No emails sent!" unless @email
+
+%head
+  %title=action_name
+
+%body
+  %p.email-to
+    to:
+    = @email.to
+
+  %p.email-from
+    from:
+    = @email.from
+
+  %p.email-subject
+    subject:
+    = @email.subject
+
+  %p.email-body
+    body:
+    =  raw @email.body.parts.last.decoded

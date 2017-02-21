@@ -315,6 +315,49 @@ class Ability
       @user.is_logged_in?
     end
 
+    can :poll, Communities::Base do |community|
+      community.includes?(@user)
+    end
+
+    can [:make_draft, :show], Poll do |poll|
+      can?(:show, poll.discussion)
+    end
+
+    can :create, Poll do |poll|
+      user_is_admin_of?(poll.group_id) ||
+      (poll.group.members_can_raise_motions? && user_is_member_of?(poll.group_id))
+      # @user.is_logged_in? &&
+      # poll.communities.all? { |community| user.ability.can?(:poll, community) }
+    end
+
+    # NB: discussion dependency on polls
+    can :update, Poll do |poll|
+      user_is_author_of?(poll) ||
+      Array(poll.group&.admins).include?(@user)
+    end
+
+    can :close, Poll do |poll|
+      poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
+    end
+
+    # can :set_communities, Poll do |poll|
+    #   user_is_author_of?(poll) &&
+    #   poll.stances.empty? &&
+    #   poll.communities.all? { |community| community.includes?(@user) }
+    # end
+
+    can :create, Stance do |stance|
+      poll = stance.poll
+      poll.active? &&
+      (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
+      # poll.communities.detect { |community| community.includes?(@user) }
+    end
+
+    can [:create, :update], Outcome do |outcome|
+      !outcome.poll.active? &&
+      user.ability.can?(:update, outcome.poll)
+    end
+
     add_additional_abilities
   end
 

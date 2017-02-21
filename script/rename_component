@@ -1,0 +1,41 @@
+#! /usr/bin/env ruby
+
+require 'active_support/all'
+old_name = ARGV[0]
+new_name = ARGV[1]
+puts "old_name: #{old_name}, new_name: #{new_name}"
+
+raise "Missing arg" if old_name.nil? or new_name.nil?
+
+def uncapitalize_first(str)
+  str[0,1].downcase + str[1..-1]
+end
+
+commands = []
+
+Dir.glob('angular/core/**/*.{haml,scss,coffee,yml}') do |filename|
+  if filename.match(/#{old_name.underscore}/)
+    puts "git mv #{filename} #{filename.gsub(old_name.underscore, new_name.underscore)}"
+  end
+
+  # snake case
+  commands << "sed -i '' -e 's/#{old_name.underscore}/#{new_name.underscore}/g' #{filename}"
+
+  # camelize
+  commands << "sed -i '' -e 's/#{old_name.camelize}/#{new_name.camelize}/g' #{filename}"
+
+  # directives only
+  commands << "sed -i '' -e 's/#{uncapitalize_first(old_name.camelize)}/#{uncapitalize_first(new_name.camelize)}/g' #{filename}"
+
+  # kebab case
+  commands << "sed -i '' -e 's/#{old_name.dasherize}/#{new_name.dasherize}/g' #{filename}"
+end
+
+Dir.glob('config/locales/*.yml') do |filename|
+  # snake case
+  commands << "sed -i '' -e 's/#{old_name.underscore}/#{new_name.underscore}/g' #{filename}"
+end
+
+commands.each do |command|
+  `#{command}`
+end

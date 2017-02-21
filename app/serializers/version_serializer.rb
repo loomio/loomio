@@ -9,6 +9,7 @@ class VersionSerializer < ActiveModel::Serializer
   has_one :discussion
   has_one :comment
   has_one :proposal
+  has_one :poll
 
   def changes
     object.object_changes
@@ -19,6 +20,10 @@ class VersionSerializer < ActiveModel::Serializer
   end
 
   def discussion
+    object.item
+  end
+
+  def poll
     object.item
   end
 
@@ -36,6 +41,10 @@ class VersionSerializer < ActiveModel::Serializer
 
   def include_discussion?
     object.item_type == 'Discussion'
+  end
+
+  def include_poll?
+    object.item_type == 'Poll'
   end
 
   def include_comment?

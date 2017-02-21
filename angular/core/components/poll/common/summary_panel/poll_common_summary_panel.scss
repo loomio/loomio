@@ -1,0 +1,14 @@
+.poll-common-summary-panel__title {
+  @include fontLarge;
+  @include fontHelveticaBold;
+  margin-bottom: 0.4em;
+}
+
+.poll-common-summary-panel__started-by {
+  @include fontSmall;
+  color: $grey-on-white;
+}
+
+.poll-common-summary-panel__details {
+  margin-top: 10px;
+}

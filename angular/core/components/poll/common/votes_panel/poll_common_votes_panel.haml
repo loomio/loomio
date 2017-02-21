@@ -1,0 +1,16 @@
+.poll-common-votes-panel
+  .poll-common-votes-panel__header
+    %h3.lmo-card-subheading{translate: "poll_common.votes"}
+    %md-select.md-no-underline{ng-model: "fix.votesOrder", ng-change: "changeOrder()", aria-label: "{{ 'poll_common_votes_panel.change_results_order' | translate }}"}
+      %md-option{ng-repeat: "opt in sortOptions", ng-value: "opt", translate: "poll_common_votes_panel.{{opt}}"}
+  .poll-common-votes-panel__no-votes{ng-if: "!hasSomeVotes()", translate: "poll_common_votes_panel.no_votes_yet"}
+  .poll-common-votes-panel__has-votes{ng-if: "hasSomeVotes()"}
+    .poll-common-votes-panel__stance{ng-repeat: "stance in stances() track by stance.id"}
+      %user_avatar.lmo-flex__no-shrink{user: "stance.participant()", size: "small"}
+      .poll-common-votes-panel__stance-content
+        .poll-common-votes-panel__stance-name-and-option
+          %strong> {{stance.participant().name}}
+          %poll_common_stance_choice{stance_choice: "choice", ng-repeat: "choice in stance.stanceChoices()"}
+        .poll-common-votes-panel__stance-reason{ng-if: "stance.reason"} {{stance.reason}}
+    %md-button{ng-if: "moreToLoad()", translate: "common.action.load_more", ng-click: "loader.loadMore()"}
+  %poll_common_did_not_votes_panel{poll: "poll"}

@@ -1,0 +1,5 @@
+- if poll_option.poll.has_option_icons
+  %td= image_tag "poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: 'poll-mailer-proposal__thumb-image--small'
+- else
+  %td= render 'poll_mailer/common/chip', color: poll_option.color
+%td= poll_option.name

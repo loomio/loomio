@@ -38,6 +38,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       @hasMany 'comments', sortBy: 'createdAt'
       @hasMany 'events', sortBy: 'sequenceId'
       @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
+      @hasMany 'polls', sortBy: 'createdAt', sortDesc: true
       @hasMany 'versions', sortBy: 'createdAt'
       @belongsTo 'group'
       @belongsTo 'author', from: 'users'
@@ -68,6 +69,17 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
 
     hasActiveProposal: ->
       @activeProposal()?
+
+    activePolls: ->
+      _.filter @polls(), (poll) ->
+        poll.isActive()
+
+    closedPolls: ->
+      _.filter @polls(), (poll) ->
+        !poll.isActive()
+    
+    activePoll: ->
+      _.first @activePolls()
 
     isUnread: ->
       !@isDismissed() and

@@ -274,6 +274,35 @@
   padding-top: $navbar-height;
 }
 
+.lmo-search-container {
+  border-radius: 2px;
+  display: block;
+  height: 40px;
+  position: relative;
+  overflow: visible;
+  min-width: 190px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+}
+
+.lmo-search-container i {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.lmo-search-container input {
+  font-size: 14px;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+  outline: 0;
+  background: 0 0;
+  width: 100%;
+  padding: 0 15px 0 35px;
+  line-height: 40px;
+  height: 40px;
+}
+
 img.emojione {
   width: 25px;
   height: 25px;

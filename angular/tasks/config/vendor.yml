@@ -1,8 +1,8 @@
 ---
 path: node_modules
 js:
-  - lodash/index.js
   - moment/moment.js
+  - lodash/index.js
   - ng-file-upload/dist/angular-file-upload-shim.js
   - angular/angular.js
   - angular-sanitize/angular-sanitize.js
@@ -37,6 +37,7 @@ js:
   - angulartics/src/angulartics.js
   - angulartics/src/angulartics-gtm.js
 execjs:
+  - lodash/index.js
   - emojione/lib/js/emojione.js
 css:
   - bootstrap-sass/assets/stylesheets/_bootstrap.scss

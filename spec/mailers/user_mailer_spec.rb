@@ -15,7 +15,9 @@ describe UserMailer do
     before :each do
       @user = create(:user)
       @group = create(:group)
-      @mail = UserMailer.group_membership_approved(@user, @group)
+      @membership = create(:membership, user: @user, group: @group)
+      @event = Events::MembershipRequestApproved.create(kind: 'membership_request_approved', user: @user, eventable: @membership)
+      @mail = UserMailer.membership_request_approved(@user, @event)
     end
 
     it_behaves_like 'email_meta'
@@ -39,7 +41,9 @@ describe UserMailer do
       @user = create(:user)
       @inviter = create(:user)
       @group = create(:group, full_name: "Group full name")
-      @mail = UserMailer.added_to_group(user: @user, inviter: @inviter, group: @group)
+      @membership = create(:membership, user: @user, group: @group, inviter: @inviter)
+      @event = Events::UserAddedToGroup.create(kind: 'user_added_to_group', user: @inviter, eventable: @membership)
+      @mail = UserMailer.user_added_to_group(@user, @event)
     end
 
     it 'renders the subject' do

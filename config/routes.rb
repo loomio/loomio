@@ -13,9 +13,17 @@ Loomio::Application.routes.draw do
 
   root to: 'root#index'
 
-  resources(:development, only: :index) do
-    get 'last_email', on: :collection, as: :last_email
-    get ':action', on: :collection
+  namespace :dev do
+    namespace :polls do
+      get '/' => :index
+      get ':action'
+    end
+
+    scope controller: 'main' do
+      get '/' => :index
+      get ':action'
+      get 'last_email'
+    end
   end
 
   namespace :admin do
@@ -59,6 +67,7 @@ Loomio::Application.routes.draw do
         get :for_user
         get :my_memberships
         get :invitables
+        get :undecided
       end
       member do
         post :make_admin
@@ -128,11 +137,26 @@ Loomio::Application.routes.draw do
       get  :closed, on: :collection
     end
 
+    resources :polls,       only: [:show, :index, :create, :update] do
+      post :close, on: :member
+      get  :closed, on: :collection
+      get  :search, on: :collection
+    end
+
+    resource :outcomes,     only: [               :create, :update]
+
     resources :votes,       only: [       :index, :create, :update] do
       get :my_votes, on: :collection
     end
 
+    resources :stances,     only: [       :index, :create, :update] do
+      get :my_stances, on: :collection
+    end
+
+    resources :outcomes,    only: [               :create, :update]
+
     resources :did_not_votes, only: :index
+    resources :poll_did_not_votes, only: :index
 
     resources :comments,    only: [:create, :update, :destroy] do
       post :like, on: :member
@@ -216,6 +240,7 @@ Loomio::Application.routes.draw do
   get 'd/:key(/:slug)'                     => 'discussions#show', as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show', as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',     as: :motion
+  get 'p/:key(/:slug)'                     => 'polls#show',       as: :poll
   get 'u/:username/'                       => 'users#show',       as: :user
 
   get 'dashboard'                          => 'application#boot_angular_ui', as: :dashboard
@@ -235,6 +260,7 @@ Loomio::Application.routes.draw do
   get 'g/:key/membership_requests'         => 'application#boot_angular_ui', as: :group_membership_requests
   get 'g/:key/memberships'                 => 'application#boot_angular_ui', as: :group_memberships
   get 'g/:key/previous_proposals'          => 'application#boot_angular_ui', as: :group_previous_proposals
+  get 'g/:key/previous_polls'              => 'application#boot_angular_ui', as: :group_previous_polls
   get 'g/:key/memberships/:username'       => 'application#boot_angular_ui', as: :group_memberships_username
 
   get '/notifications/dropdown_items'      => 'application#gone'

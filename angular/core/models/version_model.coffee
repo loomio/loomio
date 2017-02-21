@@ -8,6 +8,7 @@ angular.module('loomioApp').factory 'VersionModel', (BaseModel) ->
       @belongsTo 'discussion'
       @belongsTo 'comment'
       @belongsTo 'proposal'
+      @belongsTo 'poll'
       @belongsTo 'author', from: 'users', by: 'whodunnit'
 
     editedAttributeNames: ->
