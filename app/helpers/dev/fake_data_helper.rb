@@ -10,7 +10,8 @@ module Dev::FakeDataHelper
       name: Faker::Name.name,
       email: Faker::Internet.email,
       password: Faker::Internet.password,
-      detected_locale: 'en'
+      detected_locale: 'en',
+      is_admin: true
     }.merge(args))
   end
 
