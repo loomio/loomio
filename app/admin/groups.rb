@@ -228,8 +228,8 @@ ActiveAdmin.register Group do
           f.label "Polls is enabled"
         else
           f.label "Polls disabled"
-          f.input type: :submit, value: 'Enable polls'
         end
+        f.input type: :submit, value: 'Enable polls'
       end
     end
 
@@ -281,6 +281,7 @@ ActiveAdmin.register Group do
     group = Group.friendly.find(params[:id])
     group.features['use_polls'] = true
     flash[:notice] = "polls enabled for #{group.name}"
+    Poll.where(id: group.motions.map(&:poll_id)).destroy_all
     PollService.delay.convert(motions: group.motions)
     group.save!
     redirect_to [:admin, :groups]
