@@ -141,7 +141,6 @@ Loomio::Application.routes.draw do
       post :close, on: :member
       get  :closed, on: :collection
       get  :search, on: :collection
-      get  :generate_key, on: :collection
     end
 
     resource :outcomes,     only: [               :create, :update]

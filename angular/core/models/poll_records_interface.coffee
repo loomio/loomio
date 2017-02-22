@@ -13,11 +13,6 @@ angular.module('loomioApp').factory 'PollRecordsInterface', ($q, BaseRecordsInte
         path: 'closed'
         params: options
 
-    fetchKey: (options = {}) ->
-      @fetch
-        path: 'generate_key'
-        params: options
-
     search: (groupKey, fragment, options = {}) ->
       return $q.when() unless fragment
       options['group_key'] = groupKey

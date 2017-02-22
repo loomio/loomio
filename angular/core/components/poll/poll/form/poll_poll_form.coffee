@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollPollForm', ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/poll/form/poll_poll_form.html'
-  controller: ($scope, poll, PollService, AttachmentService, KeyEventService, TranslationService) ->
+  controller: ($scope, PollService, AttachmentService, KeyEventService, TranslationService) ->
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:     'poll_poll_form.title_placeholder'
       detailsPlaceholder:   'poll_poll_form.details_placeholder'
