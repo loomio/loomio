@@ -133,6 +133,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/p/new', component: 'startPollPage'},
     {path: '/p/new/:poll_type', component: 'startPollPage'},
     {path: '/p/:key/', component: 'pollPage'},
+    {path: '/p/:key/manage', component: 'managePollPage'},
     {path: '/p/:key/:stub', component: 'pollPage'},
     {path: '/vote/:key/', component: 'pollPage'},
     {path: '/vote/:key/:stub', component: 'pollPage'},

@@ -261,7 +261,7 @@ Loomio::Application.routes.draw do
   get 'd/:key(/:slug)'                     => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'm/:key(/:slug)'                     => 'motions#show',                as: :motion
-  get 'p/:key/admin'                       => 'polls#show',                  as: :admin_poll
+  get 'p/:key/manage'                      => 'polls#show',                  as: :manage_poll
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/:username/'                       => 'users#show',                  as: :user

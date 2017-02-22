@@ -1512,3 +1512,6 @@ en:
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'
+
+  poll_admin_page:
+    title: Admin - {{title}}

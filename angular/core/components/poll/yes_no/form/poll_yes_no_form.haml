@@ -1,27 +1,27 @@
 .poll-check-in-form
   .poll-check-in__tip
-    %p{translate: "poll_check_in_form.tip"}
-    %poll_common_school_link{href: "https://loomio.school/beginner/engagements.html", translation: "poll_check_in_form.learn_more"}
+    %p{translate: "poll_yes_no_form.tip"}
+    %poll_common_school_link{href: "https://loomio.school/beginner/engagements.html", translation: "poll_yes_no_form.learn_more"}
 
   %input{type: "hidden", ng-model: "poll.pollType"}
 
   %md-input-container.md-block
-    %label{translate: "poll_check_in_form.title"}
+    %label{translate: "poll_yes_no_form.title"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="200"}
     %validation_errors{subject: "poll", field: "title"}
 
   %md-input-container.md-block
-    %label{translate: "poll_check_in_form.details"}
+    %label{translate: "poll_yes_no_form.details"}
     %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
     %outlet{name: "after-check-in-form-textarea", model: "poll"}
 
   %md-input-container.md-block{ng-if: "poll.isNew()"}
-    %label{translate: "poll_check_in_form.affirmative_label"}
+    %label{translate: "poll_yes_no_form.affirmative_label"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.affirmativePlaceholder}}", ng-model: "poll.affirmativeText", md-maxlength="200"}
     -# %validation_errors{subject: "poll", field: "title"}
 
   %md-input-container.md-block{ng-if: "poll.isNew()"}
-    %label{translate: "poll_check_in_form.negative_label"}
+    %label{translate: "poll_yes_no_form.negative_label"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.negativePlaceholder}}", ng-model: "poll.negativeText", md-maxlength="200"}
     -# %validation_errors{subject: "poll", field: "title"}
 
@@ -31,5 +31,5 @@
   %poll_common_notify_group{model: "poll"}
 
   %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
-  %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_check_in_form.update", aria-label: "{{ 'poll_check_in_form.update' | translate }}"}
-  %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_check_in_form.start", aria-label: "{{ 'poll_check_in_form.start' | translate }}"}
+  %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_yes_no_form.update", aria-label: "{{ 'poll_yes_no_form.update' | translate }}"}
+  %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_yes_no_form.start", aria-label: "{{ 'poll_yes_no_form.start' | translate }}"}

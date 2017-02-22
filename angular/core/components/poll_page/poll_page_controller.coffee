@@ -12,7 +12,6 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope
       if $location.search().change_vote
         ModalService.open PollService.formFor(poll.pollType, 'stance'), stance: -> poll.lastStanceByUser(Session.user())
 
-  @init Records.polls.find $routeParams.key
   Records.polls.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
