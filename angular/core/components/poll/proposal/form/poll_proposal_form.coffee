@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'pollProposalForm', ->
-  scope: {poll: '='}
+  scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/proposal/form/poll_proposal_form.html'
   controller: ($scope, PollService, AttachmentService, KeyEventService, MentionService, TranslationService) ->
     $scope.submit = PollService.submitPoll $scope, $scope.poll,

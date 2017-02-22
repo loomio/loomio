@@ -3,6 +3,6 @@ angular.module('loomioApp').controller 'StartPollPageController', ($scope, $wind
   @poll = Records.polls.build(pollType: $routeParams.poll_type)
 
   $scope.$on 'pollSaved', (event, pollKey) ->
-    $window.location = LmoUrlService.poll(Records.polls.find(pollKey))
+    $window.location = LmoUrlService.poll(Records.polls.find(pollKey), {}, action: 'admin')
 
   return

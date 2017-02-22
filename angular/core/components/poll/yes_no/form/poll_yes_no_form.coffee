@@ -1,4 +1,5 @@
 angular.module('loomioApp').directive 'pollYesNoForm', ->
+  scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/yes_no/form/poll_yes_no_form.html'
   controller: ($scope, PollService, AttachmentService, KeyEventService, TranslationService) ->
     $scope.submit = PollService.submitPoll $scope, $scope.poll,
