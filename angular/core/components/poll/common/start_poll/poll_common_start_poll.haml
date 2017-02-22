@@ -5,9 +5,9 @@
       .decision-tools-card__content
         .decision-tools-card__poll-type-title.md-body-2{translate: "decision_tools_card.{{pollType}}_title"}
         .decision-tools-card__poll-type-subtitle.md-caption{translate: "decision_tools_card.{{pollType}}_subtitle"}
-  .poll-common-form__header.lmo-flex{ng-if: "poll.pollType"}
-    %i.material-icons {{ fieldFromTemplate(poll.pollType, 'material_icon') }}
-    %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{poll.pollType}}"}
-  .poll-common-form__content{ng-if: "poll.pollType"}
-    %poll_common_share_form{poll: "poll", ng-if: "!poll.communitiesAttributes.length"}
-    %poll_common_directive{poll: "poll", name: "form", ng-if: "poll.communitiesAttributes.length"}
+  .poll-common-form__enter-details{ng-if: "poll.pollType"}
+    .poll-common-form__header.lmo-flex
+      %i.material-icons {{ fieldFromTemplate(poll.pollType, 'material_icon') }}
+      %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{poll.pollType}}"}
+    .poll-common-form__content
+      %poll_common_directive{poll: "poll", name: "form"}
