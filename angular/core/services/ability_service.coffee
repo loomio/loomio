@@ -128,6 +128,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
     canViewPreviousProposals: (group) ->
       @canViewGroup(group)
 
+    canViewPreviousPolls: (group) ->
+      @canViewGroup(group)
+
     canJoinGroup: (group) ->
       (group.membershipGrantedUpon == 'request') and
       @canViewGroup(group) and
@@ -143,6 +146,19 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       AppConfig.inlineTranslation.isAvailable? and
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
+
+    canEditPoll: (poll) ->
+      poll.isActive() and @canAdministerPoll(poll)
+
+    canSetPollOutcome: (poll) ->
+      poll.isClosed() and @canAdministerPoll(poll)
+
+    canAdministerPoll: (poll) ->
+      # NB: discussion dependency here, to be factored out.
+      (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
+
+    canClosePoll: (poll) ->
+      @canEditPoll(poll)
 
     requireLoginFor: (page) ->
       return false if @isLoggedIn()

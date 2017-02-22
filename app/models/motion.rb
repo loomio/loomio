@@ -2,10 +2,12 @@ class Motion < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasTimeframe
   include HasMentions
+  include HasPolls
 
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id' # duplicate author relationship for eager loading
   belongs_to :outcome_author, class_name: 'User'
+  has_one :poll
 
   belongs_to :discussion
   update_counter_cache :discussion, :motions_count

@@ -30,6 +30,11 @@ en:
   attachment:
     error:
       too_large: The file you tried to attach is larger than 50MB, please choose a smaller file.
+  poll:
+    error:
+      cannot_add_options: Cannot add options to this poll
+      cannot_remove_options: Cannot remove options from this poll
+      must_have_options: Must have at least one poll option
   time:
     formats:
       for_today: "%l:%M %P"

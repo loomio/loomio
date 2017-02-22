@@ -1,8 +1,10 @@
-FactoryGirl.define do  factory :blog_story do
+FactoryGirl.define do
+
+  factory :blog_story do
     title "MyString"
-url "MyString"
-image_url "MyString"
-published_at "2015-11-18 14:28:30"
+    url "MyString"
+    image_url "MyString"
+    published_at "2015-11-18 14:28:30"
   end
 
   factory :blacklisted_password do
@@ -55,7 +57,6 @@ published_at "2015-11-18 14:28:30"
       if group.parent.present?
         group.parent.admins << user
       end
-      # group.subscription = build(:subscription) if group.is_parent?
       group.admins << user
       group.save!
     end
@@ -221,11 +222,6 @@ published_at "2015-11-18 14:28:30"
     cover_photo_updated_at { 10.days.ago }
   end
 
-  # factory :subscription do
-  #   kind :trial
-  #   expires_at 1.month.from_now
-  # end
-
   factory :draft do
     user
     association :draftable, factory: :discussion
@@ -241,6 +237,52 @@ published_at "2015-11-18 14:28:30"
   factory :access_token, class: Doorkeeper::AccessToken do
     resource_owner_id { create(:user).id }
     association :application, factory: :application
+  end
+
+  factory :poll_option do
+    name "Plan A"
+  end
+
+  factory :poll do
+    poll_type "yes_no"
+    title "This is a poll"
+    details "with a description"
+    association :author, factory: :user
+    poll_option_names ["engage"]
+    # communities [Communities::Public.new]
+  end
+
+  factory :outcome do
+    poll
+    association :author, factory: :user
+    statement "An outcome"
+  end
+
+  factory :stance do
+    poll
+    association :participant, factory: :user
+  end
+
+  factory :stance_choice do
+    poll_option
+  end
+
+  factory :community, class: Communities::Base do
+    community_type 'test'
+  end
+
+  factory :loomio_group_community, class: Communities::LoomioGroup do
+    group
+  end
+
+  factory :email_community, class: Communities::Email do
+    emails ["test@test.com"]
+  end
+
+  factory :visitor do
+    name "John Doe"
+    email "john@doe.com"
+    participation_token SecureRandom.hex(8)
   end
 
 end

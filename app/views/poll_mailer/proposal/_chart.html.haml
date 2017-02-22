@@ -1,0 +1,8 @@
+.poll-mailer-proposal__chart
+  %h3= t(:"poll_mailer.common.results")
+  %img.poll-mailer-proposal__chart-image{src: google_pie_chart_url(@info.poll)}
+  .poll-mailer-proposal__chart-legend
+    %table
+      - @info.poll.poll_options.each_with_index do |option, index|
+        %tr.poll-mailer-proposal__chart-legend-option
+          %td{style: "border-color: #{option.color};"}= "#{option.name.humanize} - #{@info.poll.stance_counts[index]}"

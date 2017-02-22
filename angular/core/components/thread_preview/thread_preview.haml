@@ -1,6 +1,11 @@
 .thread-preview
   %a.thread-preview__link{lmo-href-for: "thread"}
-    .thread-preview__icon
+
+    .thread-preview__icon{ng-if: "usePolls()"}
+      %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
+      %poll_common_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
+
+    .thread-preview__icon{ng-if: "!usePolls()"}
       %user_avatar{ng-if: "!thread.activeProposal()", user: "thread.author()", size: "medium"}
       .thread-preview__pie-container{ng-if: "thread.activeProposal()"}
         %pie_chart.thread-preview__pie-canvas{votes: "thread.activeProposal().voteCounts", diameter: "50", ng-if: "lastVoteByCurrentUser(thread)", title: "{{ 'dashboard_page.thread_preview.you_voted' | translate:translationData(thread) }}"}

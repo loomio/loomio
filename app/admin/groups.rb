@@ -221,6 +221,18 @@ ActiveAdmin.register Group do
       end
     end
 
+    panel 'Polls' do
+      enabled = group.features['use_polls']
+      form action: use_polls_admin_group_path(group), method: :post do |f|
+        if enabled
+          f.label "Polls is enabled"
+        else
+          f.label "Polls disabled"
+        end
+        f.input type: :submit, value: 'Enable polls'
+      end
+    end
+
     active_admin_comments
   end
 
@@ -262,6 +274,17 @@ ActiveAdmin.register Group do
     group = Group.friendly.find(params[:id])
     group.unarchive!
     flash[:notice] = "Unarchived #{group.name}"
+    redirect_to [:admin, :groups]
+  end
+
+  member_action :use_polls, :method => :post do
+    group = Group.friendly.find(params[:id])
+    group.features['use_polls'] = true
+    flash[:notice] = "polls enabled for #{group.name}"
+
+    group.polls.where('motion_id is not null').destroy_all
+    PollService.delay.convert(motions: group.motions)
+    group.save!
     redirect_to [:admin, :groups]
   end
 

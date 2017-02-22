@@ -1,0 +1,20 @@
+.poll-common-stance-icon {
+  display: inline-block;
+}
+
+.poll-common-stance-icon__svg {
+  @include boxTiny;
+  margin-right: 4px;
+  position: relative;
+  bottom: 1px;
+}
+
+.poll-common-stance-icon__chip {
+  border-left: 8px solid;
+  padding-left: 4px;
+  margin-left: 4px;
+  display: inline-block;
+  position: relative;
+  top: 7px;
+  height: 24px;
+}

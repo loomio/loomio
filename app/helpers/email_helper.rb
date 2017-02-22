@@ -24,6 +24,11 @@ module EmailHelper
                                                   format: format)
   end
 
+  def formatted_time_in_zone(time, zone)
+    return unless time && zone
+    time.in_time_zone(TimeZoneToCity.convert zone).strftime('%l:%M%P - %A %-d %b %Y')
+  end
+
   def motion_closing_time_for(user)
     @motion.closing_at.in_time_zone(TimeZoneToCity.convert user.time_zone).strftime('%A %-d %b - %l:%M%P')
   end
@@ -45,6 +50,28 @@ module EmailHelper
       l(time.to_date, format: :for_another_year)
     else
       l(time.to_date, format: :for_this_year)
+    end
+  end
+
+  def google_pie_chart_url(poll)
+    sparkline = proposal_sparkline(poll)
+    colors = poll_color_values(poll.poll_type).map { |color| color.sub('#', '') }.join('|')
+    URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=200x200&chd=t:#{sparkline}&chco=#{colors}")
+  end
+
+  def poll_color_values(poll_type)
+    Poll::COLORS.fetch(poll_type, [])
+  end
+
+  def proposal_sparkline(poll)
+    poll.stance_counts.join(',')
+  end
+
+  def percentage_for(poll, index)
+    if poll.stance_counts.max.to_i <= 0
+      0
+    else
+      (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i
     end
   end
 end

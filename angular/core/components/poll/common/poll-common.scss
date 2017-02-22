@@ -1,0 +1,37 @@
+.poll-common-helptext {
+  @include fontSmall;
+  font-style: italic;
+}
+
+.poll-common-modal-header {
+  @include displayFlex;
+}
+
+.poll-common-modal-header h1 {
+  flex-grow: 10;
+  margin: -5px 0 0 10px;
+}
+
+.poll-common-modal {
+  max-width: 400px;
+}
+
+.poll-common-vote-form__radio-button .md-container {
+  // display radio button floated to right of container
+  right: 0;
+  left: auto;
+}
+
+.poll-common-vote-form__radio-button .md-label {
+  margin-left: 0;
+}
+
+.poll-common-vote-form__reason {
+  margin-top: 43px;
+}
+
+.poll-common-form__actions {
+  @include displayFlex;
+  justify-content: flex-end;
+  align-items: center;
+}

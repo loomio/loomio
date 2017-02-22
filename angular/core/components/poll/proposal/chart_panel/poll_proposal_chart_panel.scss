@@ -1,0 +1,40 @@
+.poll-proposal-chart-panel__chart-container {
+  @include displayFlex;
+}
+
+.poll-proposal-chart-panel__chart {
+  height: 200px;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.poll-proposal-chart-panel__label{
+  border-width: 2px;
+  border-bottom-style: solid;
+  @include fontSmall;
+}
+
+.poll-proposal-chart-panel__legend {
+  margin-left: 25px;
+  min-width: 110px;
+}
+
+.poll-proposal-chart-panel__legend td {
+  padding-bottom: 10px;
+}
+
+.poll-proposal-chart-panel__label--agree {
+  border-color: $agree-color;
+}
+
+.poll-proposal-chart-panel__label--abstain{
+  border-color: $abstain-color;
+}
+
+.poll-proposal-chart-panel__label--disagree {
+  border-color: $disagree-color;
+}
+
+.poll-proposal-chart-panel__label--block{
+  border-color: $block-color;
+}

@@ -1,26 +1,13 @@
 require "rails_helper"
 
 describe GroupMailer do
-
-  describe '#new_membership request' do
-    it 'sends email to all the admins' do
-      @group = create(:group)
-      @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
-      mailer = double "mailer"
-
-      mailer.should_receive(:deliver_later)
-      GroupMailer.should_receive(:membership_request).with(@group.admins.first, @membership_request).
-        and_return(mailer)
-      GroupMailer.new_membership_request(@membership_request)
-    end
-  end
-
-  describe '#membership_request' do
+  describe '#membership_requested' do
     before do
       @group = create(:group)
       @admin = @group.admins.first
       @membership_request = create(:membership_request, group: @group, name: 'bob jones', email: "bobby@jones.org")
-      @mail = GroupMailer.membership_request(@admin, @membership_request)
+      @event = Event.create(kind: 'membership_requested', eventable: @membership_request)
+      @mail = GroupMailer.membership_requested(@admin, @event)
     end
 
     it 'renders the subject' do
@@ -47,45 +34,4 @@ describe GroupMailer do
 
     context "requestor is not a loomio user"
   end
-
-  describe "#deliver_group_email" do
-    let(:group) { stub_model Group }
-
-    it "sends email to every group member except the sender" do
-      sender = stub_model User
-      member = stub_model User
-      group.stub(:users).and_return([sender, member])
-      email_subject = "i have something really important to say!"
-      email_body = "goobly"
-      mailer = double "mailer"
-
-      mailer.should_receive(:deliver_later)
-      GroupMailer.should_receive(:group_email).
-        with(group, sender, email_subject, email_body, member).
-        and_return(mailer)
-      GroupMailer.should_not_receive(:group_email).
-        with(group, sender, email_subject, email_body, sender)
-      GroupMailer.deliver_group_email(group, sender,
-                                      email_subject, email_body)
-    end
-  end
-
-  describe "#group_email" do
-    before :each do
-      @group = stub_model Group, :name => "Blue", full_name: "Marvin: Blue", :admin_email => "goodbye@world.com", key: 'abc123'
-      @sender = stub_model User, :name => "Marvin"
-      @recipient = stub_model User, :email => "hello@world.com"
-      @subject = "meeby"
-      @message = "what in the?!"
-      @mail = GroupMailer.group_email(@group, @sender, @subject,
-                                     @message, @recipient)
-    end
-
-    subject { @mail }
-
-    its(:subject) { should == "[Loomio: #{@group.full_name}] #{@subject}" }
-    its(:to) { should == [@recipient.email] }
-    its(:from) { should include BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS }
-  end
-
 end

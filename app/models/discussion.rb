@@ -5,6 +5,7 @@ class Discussion < ActiveRecord::Base
                           motion_closed
                           motion_closed_by_user
                           motion_outcome_created]
+
   THREAD_ITEM_KINDS = %w[new_comment
                          new_motion
                          new_vote
@@ -14,12 +15,20 @@ class Discussion < ActiveRecord::Base
                          motion_outcome_created
                          motion_outcome_updated
                          discussion_edited
-                         discussion_moved]
+                         discussion_moved
+                         poll_created
+                         poll_edited
+                         stance_created
+                         outcome_created
+                         poll_expired
+                         poll_closed_by_user
+                       ]
 
   include ReadableUnguessableUrls
   include Translatable
   include HasTimeframe
   include HasMentions
+  include HasPolls
   include MessageChannel
 
   scope :archived, -> { where('archived_at is not null') }
@@ -37,7 +46,7 @@ class Discussion < ActiveRecord::Base
   scope :joined_to_current_motion, -> { joins('LEFT OUTER JOIN motions ON motions.discussion_id = discussions.id AND motions.closed_at IS NULL') }
   scope :chronologically, -> { order('created_at asc') }
 
-  validates_presence_of :title, :group, :author, :group_id
+  validates_presence_of :title, :group, :author
   validate :private_is_not_nil
   validates :title, length: { maximum: 150 }
   validates_inclusion_of :uses_markdown, in: [true,false]
@@ -51,6 +60,7 @@ class Discussion < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
   has_many :motions, dependent: :destroy
+  has_many :polls, dependent: :destroy
   has_one :current_motion, -> { where('motions.closed_at IS NULL') }, class_name: 'Motion'
   has_one :most_recent_motion, -> { order('motions.created_at DESC') }, class_name: 'Motion'
   has_one :search_vector
@@ -89,16 +99,22 @@ class Discussion < ActiveRecord::Base
 
   define_counter_cache(:motions_count)        { |discussion| discussion.motions.count }
   define_counter_cache(:closed_motions_count) { |discussion| discussion.motions.closed.count }
+  define_counter_cache(:closed_polls_count)   { |discussion| discussion.polls.closed.count }
   define_counter_cache(:versions_count)       { |discussion| discussion.versions.where(event: :update).count }
 
   update_counter_cache :group, :discussions_count
   update_counter_cache :group, :public_discussions_count
   update_counter_cache :group, :motions_count
   update_counter_cache :group, :closed_motions_count
+  update_counter_cache :group, :closed_polls_count
   update_counter_cache :group, :proposal_outcomes_count
 
   def discussion
     self
+  end
+
+  def discussion_id
+    self.id
   end
 
   def organisation_id

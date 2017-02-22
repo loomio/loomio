@@ -1,4 +1,6 @@
 class Events::MotionOutcomeUpdated < Event
+  include Events::JoinDiscussion
+
   def self.publish!(motion, user)
     create(kind: "motion_outcome_updated",
            eventable: motion,

@@ -1,0 +1,20 @@
+.poll-mailer-common-summary
+
+  %h1= link_to @info.poll.title, @info.links[:target]
+  %p
+
+  - if @info.outcome
+    %h2= t(:"poll_common.outcome")
+    %p= @info.outcome.statement
+
+    %h2= t(:"poll_types.#{@info.poll_type}")
+
+  %p= @info.poll.details
+
+  %p
+    - if @info.poll.active?
+      = t(:closing)
+      = formatted_time_in_zone(@info.poll.closing_at, @info.recipient.time_zone)
+    - else
+      = t(:closed)
+      = formatted_time_in_zone(@info.poll.closed_at, @info.recipient.time_zone)

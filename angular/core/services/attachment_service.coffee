@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'AttachmentService', ->
+angular.module('loomioApp').factory 'AttachmentService', (Records) ->
   new class AttachmentService
 
     listenForAttachments: (scope, model) ->
@@ -18,3 +18,10 @@ angular.module('loomioApp').factory 'AttachmentService', ->
           lastModified: moment()
           type:         item.type
         scope.$broadcast 'attachmentPasted', file
+
+    cleanupAfterUpdate: (modelType) ->
+      (response) ->
+        model = _.first(response["#{modelType}s"])
+        Records.attachments.find(attachableId: model.id, attachableType: _.capitalize(modelType))
+                           .filter (attachment) -> !_.contains(model.attachment_ids, attachment.id)
+                           .map    (attachment) -> attachment.remove()

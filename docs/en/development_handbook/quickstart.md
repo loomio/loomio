@@ -28,6 +28,7 @@ rails s
   - `gulp dev`: Automatically rebuild the javascript app as you make changes
   - `gulp protractor`: Run the automated frontend tests
   - `gulp protractor:now`: Rebuild the javascript app, then run the automated frontend tests
+  - `PRIVATE_PUB_SECRET_TOKEN=abc123 bundle exec rackup private_pub.ru -E production` is how your start faye in development
 
 ##### Having trouble?
 

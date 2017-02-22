@@ -1,0 +1,15 @@
+-# NB: We're rendering directives polymorphically here with 'poll_common_directive'
+-# This takes a poll and a name, and renders the appropriate directive based on the
+-# poll type
+%section.poll-common-card.lmo-card-padding
+  %poll_common_card_header{poll: "poll"}
+  %poll_common_set_outcome_panel{poll: "poll"}
+  %poll_common_summary_panel{poll: "poll"}
+  .poll-proposal-panel
+    .poll-common-card__results-shown{ng-if: "showResults()"}
+      %poll_common_directive{poll: "poll", name: "chart_panel"}
+    %poll_common_action_panel{poll: "poll"}
+    .poll-common-card__results-hidden{ng-if: "!showResults()"}
+      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results", aria-label: "{{poll_common_card.show_results | translate}}"}
+    .poll-common-card__results-shown{ng-if: "showResults()"}
+      %poll_common_votes_panel{poll: "poll"}

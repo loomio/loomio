@@ -15,12 +15,10 @@ describe 'Invitations', ->
     page.fillIn '.invitation-form__email-addresses', 'invalidemailaddress'
     page.expectDisabledElement '.invitation-form__submit'
 
-  it 'sends custom invitation to a person', ->
+  it 'allows entering email addresses to send invitations to', ->
     page.loadPath 'setup_new_group'
     page.click '.members-card__invite-members-btn'
     page.fillIn '.invitation-form__email-addresses', 'dilly@example.com'
-    page.click '.invitation-form__add-custom-message-link'
-    page.fillIn '.invitation-form__custom-message', 'Hey friends, join the team.'
     page.click '.invitation-form__submit'
     page.expectFlash 'Invitation sent.'
 

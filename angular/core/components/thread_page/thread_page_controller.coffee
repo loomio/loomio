@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, $window, $timeout, Records, MessageChannelService, KeyEventService, ModalService, ScrollService, AbilityService, Session, PaginationService, LmoUrlService, TranslationService, ProposalOutcomeForm, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'threadPage', skipScroll: true })
 
   @requestedProposalKey = $routeParams.proposal or $location.search().proposal
@@ -39,10 +39,18 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
   @threadElementsLoaded = ->
     @eventsLoaded and @proposalsLoaded
 
+
   @init = (discussion) =>
     if discussion and !@discussion?
       @discussion = discussion
+
+      # use new poll functionality
+      if @usePolls = PollService.usePollsFor(@discussion)
+        Records.polls.fetchByDiscussion(@discussion.key)
+        Records.stances.fetchMyStancesByDiscussion(@discussion.key)
+
       @sequenceIdToFocus = parseInt($location.search().from or @discussion.lastReadSequenceId)
+
       @pageWindow = PaginationService.windowFor
         current:  @sequenceIdToFocus
         min:      @discussion.firstSequenceId
@@ -76,6 +84,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     @proposal = Records.proposals.find(@requestedProposalKey)
     $rootScope.$broadcast 'setSelectedProposal', @proposal
     @performScroll() if @eventsLoaded
+
+  @hasClosedPolls = ->
+    _.any @discussion.closedPolls()
 
   @canStartProposal = ->
     @eventsLoaded && AbilityService.canStartProposal(@discussion)

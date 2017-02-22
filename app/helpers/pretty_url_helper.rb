@@ -10,9 +10,13 @@ module PrettyUrlHelper
   end
 
   def polymorphic_url(model, opts = {})
-    return unless model
     case model
-    when Comment then comment_url(model.discussion, model, opts)
+    when NilClass                      then nil
+    when PaperTrail::Version           then polymorphic_url(model.item, opts)
+    when Membership, MembershipRequest then group_url(model.group, opts)
+    when Outcome                       then poll_url(model.poll, opts)
+    when Comment                       then comment_url(model.discussion, model, opts)
+    when CommentVote                   then comment_url(model.discussion, model.comment, opts)
     else super
     end
   end

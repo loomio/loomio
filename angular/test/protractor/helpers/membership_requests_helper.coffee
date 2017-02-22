@@ -1,7 +1,7 @@
 module.exports = new class MembershipRequestsHelper
 
   loadWithMembershipRequests: ->
-    browser.get('development/setup_membership_requests')
+    browser.get('dev/setup_membership_requests')
 
   clickMembershipRequestsLink: ->
     element(By.css('.membership-requests-card__link')).click()

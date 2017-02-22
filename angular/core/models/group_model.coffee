@@ -29,6 +29,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     relationships: ->
       @hasMany 'discussions'
       @hasMany 'proposals'
+      @hasMany 'polls'
       @hasMany 'membershipRequests'
       @hasMany 'memberships'
       @hasMany 'invitations'
@@ -46,6 +47,10 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     closedProposals: ->
       _.filter @proposals(), (proposal) ->
         proposal.isClosed()
+
+    closedPolls: ->
+      _.filter @polls(), (poll) ->
+        !poll.isActive()
 
     hasPreviousProposals: ->
       _.some @closedProposals()

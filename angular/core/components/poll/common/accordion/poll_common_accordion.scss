@@ -1,0 +1,7 @@
+.poll-common-accordion__poll {
+  border-bottom: 1px solid $border-color;
+}
+
+.poll-common-accordion__poll:last-child {
+  border-bottom: 0;
+}

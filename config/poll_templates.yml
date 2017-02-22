@@ -1,0 +1,42 @@
+proposal:
+  poll_options_attributes:
+    - name:              "agree"
+    - name:              "abstain"
+    - name:              "disagree"
+    - name:              "block"
+  has_option_icons:      true
+  translate_option_name: true
+  chart_type:            pie
+  material_icon:         thumbs_up_down
+  can_remove_options:    true
+  must_have_options:     true
+  sort_options:
+    - newest_first
+    - oldest_first
+    - priority_first
+    - priority_last
+
+yes_no:
+  poll_options_attributes:
+    - name:           "engage"
+  chart_type:         progress
+  material_icon:      check_circle
+  must_have_options:  true
+  can_add_options:    true
+  can_remove_options: true
+  sort_options:
+    - newest_first
+    - oldest_first
+
+poll:
+  poll_options_attributes: []
+  chart_type:         bar
+  material_icon:      equalizer
+  can_add_options:    true
+  can_remove_options: true
+  must_have_options:  true
+  sort_options:
+    - newest_first
+    - oldest_first
+    # - voter_a_to_z
+    # - voter_z_to_a

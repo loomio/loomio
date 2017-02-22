@@ -13,7 +13,7 @@
       .lmo-form-group
         %label{for: "proposal-outcome-field", translate: "proposal_outcome_form.outcome_label"}
         .lmo-relative
-          %textarea.lmo-textarea.proposal-form__outcome-field.form-control#proposal-outcome-field{placeholder: "{{ 'proposal_outcome_form.outcome_placeholder' | translate }}", ng-model: "proposal.outcome", ng-required: "true"}
+          %textarea.lmo-textarea.proposal-form__outcome-field.form-control#proposal-outcome-field{placeholder: "{{ 'proposal_outcome_form.outcome_placeholder' | translate }}", ng-model: "proposal.outcome", ng-required: "true", mention-field: "true"}
           %emoji_picker.lmo-action-dock{target-selector: "outcomeSelector"}
 
   .modal-footer

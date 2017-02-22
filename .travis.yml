@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.3.0
+  - 2.3.1
 cache: bundler
 sudo: false
 cache:
@@ -14,7 +14,6 @@ env:
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  # - npm install -g npm@'~2.14.20'
   - nvm install 7.4.0
   - nvm use 7.4.0
   - npm install -g yarn

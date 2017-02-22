@@ -1,0 +1,10 @@
+%md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .modal-header.poll-common-modal-header
+    %i.material-icons thumbs_up_down
+    %h1.lmo-h1{ng-if: "stance.isNew()", translate: "poll_common.your_response"}
+    %h1.lmo-h1{ng-if: "!stance.isNew()", translate: "poll_common.change_your_response"}
+    %modal_header_cancel_button
+
+  .modal-body
+    %poll_proposal_vote_form{stance: "stance"}

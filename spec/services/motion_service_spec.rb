@@ -184,7 +184,7 @@ describe 'MotionService' do
 
     it 'authorizes the user can set the outcome' do
       user.ability.should_receive(:authorize!).with(:create_outcome, motion)
-      Events::MotionOutcomeCreated.should_receive(:publish!).with(motion, user)
+      Events::MotionOutcomeCreated.should_receive(:publish!).with(motion)
       MotionService.create_outcome(motion: motion, params: {}, actor: user)
     end
 

@@ -16,7 +16,7 @@ describe Events::UserAddedToGroup do
     end
 
     it 'sends an email' do
-      expect(UserMailer).to receive(:added_to_group).and_return(OpenStruct.new(deliver: nil))
+      expect(UserMailer).to receive(:user_added_to_group).and_return(OpenStruct.new(deliver: nil))
       Events::UserAddedToGroup.publish!(membership, inviter)
     end
   end

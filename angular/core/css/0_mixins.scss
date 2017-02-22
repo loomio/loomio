@@ -33,6 +33,10 @@ $block-color: #CE261B;
 // z-indexes
 $over-intercom: 2147483001; // On top of Intercom's arbitrarily high widget
 
+.lmo-grey-on-white {
+  color: $grey-on-white;  
+}
+
 @mixin fontTiny {
   font-size: 12px;
   line-height: 14px;
@@ -155,8 +159,8 @@ $boxFeaturedSize: 175px;
   i{ color: $grey-on-white; }
 }
 
-$thinPaddingSize: 10px;
-$cardPaddingSize: 15px;
+$thinPaddingSize: 8px;
+$cardPaddingSize: 16px;
 @mixin cardPadding {
   padding: $cardPaddingSize;
 }
@@ -209,6 +213,14 @@ $cardPaddingSize: 15px;
   display: -webkit-flex;
 }
 
+.lmo-flex {
+  @include displayFlex;
+}
+
+.lmo-flex__no-shrink {
+  flex-shrink: 0;
+}
+
 @mixin flexRow {
   flex-direction: row;
   -webkit-flex-direction: row;
@@ -230,6 +242,7 @@ $cardPaddingSize: 15px;
 @mixin lmoH1{
   @include fontHelveticaBold;
   @include fontGrande;
+  display: inline-block;
   padding: 0;
   margin: 0;
   outline: 0;

@@ -9,13 +9,16 @@
       - else
         = render_email_plaintext discussion.description
 
-  - if motion = discussion.motions.voting_or_closed_after(@time_start).first
+  - if discussion.group.features['use_polls']
+    - discussion.polls.active_or_closed_after(@time_start).each do |poll|
+      = render "poll_mailer/common/missed_yesterday", poll: poll
+  - elsif motion = discussion.motions.voting_or_closed_after(@time_start).first
     = render 'thread_mailer/motion', motion: motion
 
   .activity-feed
     - reader = @reader_cache.get_for(discussion)
     - discussion.items.where('created_at > ?', reader.last_read_at || @time_start).order('created_at').each do |item|
-      - next unless ['new_comment', 'new_vote' ].include? item.kind
+      - next unless ['new_comment', 'new_vote', 'stance_created'].include? item.kind
       = render "thread_mailer/#{item.kind}", item: item
 
   %p= link_to t(:"email.reply_to_this_discussion"), discussion_url(discussion, @utm_hash)

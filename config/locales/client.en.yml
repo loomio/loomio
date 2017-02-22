@@ -1,4 +1,8 @@
 en:
+  poll_types:
+    proposal: Proposal
+    yes_no: Yes/No
+    poll: Poll
   common:
     confirm_discard_changes: Discard your changes?
     time:
@@ -53,6 +57,7 @@ en:
       translated: 'Translation by Bing Translator'
       upload: 'Upload'
       uploading: 'Uploading'
+      load_more: 'Load More'
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -92,6 +97,11 @@ en:
 
   previous_proposals_page:
     heading: Previous proposals
+
+  previous_polls_page:
+    heading: Activities in {{name}}
+    polls_count: Showing {{loaded}} of {{total}} activities
+    search_activities: Search activities
 
   proposal_collapsed:
     expand: Expand
@@ -178,7 +188,7 @@ en:
     sign_in: 'Login'
     signed_in: 'Signed in successfully'
     oauth:
-      title: 'Or log in with a third-party account:'
+      title: 'Or log in with a thirdparty account:'
       facebook: 'Log in with Facebook'
       twitter: 'Log in with Twitter'
       google: 'Log in with Google'
@@ -275,26 +285,31 @@ en:
   notifications:
     header: "Notifications"
     no_notifications: "You don't have any notifications"
-    new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{discussion}}</strong>"
-    new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{proposal}}</strong>"
-    motion_closed: "Proposal closed: <strong>{{proposal}}</strong>"
+    new_discussion: "<strong>{{name}}</strong> started a discussion <strong>{{title}}</strong>"
+    new_motion: "<strong>{{name}}</strong> created a proposal <strong>{{title}}</strong>"
+    motion_closed: "Proposal closed: <strong>{{title}}</strong>"
     publish_outcome: "Publish an outcome"
-    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{proposal}}</strong>"
-    motion_closed_by_expiry: "Proposal has closed <strong>{{proposal}}</strong>"
-    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{proposal}}</strong>"
-    new_comment: "<strong>{{name}}</strong> commented on <strong>{{discussion}}</strong>"
-    comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{discussion}}</strong>"
-    comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{discussion}}</strong>"
-    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{discussion}}</strong>"
-    membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{group}}</strong>"
-    membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{group}}</strong>'
-    user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{group}}</strong>"
-    user_added_to_group_no_inviter: "You were added the group <strong>{{group}}</strong>"
-    motion_closing_soon: "Proposal is closing soon: <strong>{{proposal}}</strong>"
-    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{proposal}}</strong>"
-    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{proposal}}</strong>"
-    invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{group}}</strong>"
-    new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{group}}</strong>"
+    motion_closed_by_user: "<strong>{{name}}</strong> closed the proposal <strong>{{title}}</strong>"
+    motion_closed_by_expiry: "Proposal has closed <strong>{{title}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} on the proposal <strong>{{title}}</strong>"
+    new_comment: "<strong>{{name}}</strong> commented on <strong>{{title}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong> replied to your comment in <strong>{{title}}</strong>"
+    comment_liked: "<strong>{{name}}</strong> liked your comment in <strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> mentioned you in <strong>{{title}}</strong>"
+    membership_requested: "<strong>{{name}}</strong> requested membership to <strong>{{title}}</strong>"
+    membership_request_approved: '<strong>{{name}}</strong> approved your request to join <strong>{{title}}</strong>'
+    user_added_to_group: "<strong>{{name}}</strong> added you to the group <strong>{{title}}</strong>"
+    user_added_to_group_no_inviter: "You were added the group <strong>{{title}}</strong>"
+    motion_closing_soon: "Proposal is closing soon: <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong> published an outcome for the proposal <strong>{{title}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> updated the outcome for the proposal <strong>{{title}}</strong>"
+    invitation_accepted: "<strong>{{name}}</strong> accepted your invitation to join <strong>{{title}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> made you a coordinator of <strong>{{title}}</strong>"
+    poll_created: "<strong>{{name}}</strong> started a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_edited: "<strong>{{name}}</strong> edited a {{poll_type}}: <strong>{{title}}</strong>"
+    poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
+    outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
 
   position_buttons_panel:
     heading: Have your say
@@ -562,7 +577,7 @@ en:
 
   gift_card:
     heading: Gift plan
-    body: "<strong>{{name}}</strong> is a gift-supported group. To support Loomio to keep helping groups like yours, click here:"
+    body: "<strong>{{name}}</strong> is a giftsupported group. To support Loomio to keep helping groups like yours, click here:"
     make_a_contribution: Make a contribution
 
   upgrade_plan_card:
@@ -577,7 +592,7 @@ en:
     donate: Donate
 
   trial_card:
-    title: '30-day trial'
+    title: '30day trial'
     choose_plan: 'Choose your pricing plan'
     in_progress_body: 'Thanks for trying out Loomio with <strong>{{name}}</strong>. You can pick a pricing plan that suits your group at any time.'
     expired_body_html: "<strong>{{name}}</strong> has reached the end of its Loomio trial. To keep using it, you’ll need to pick a pricing plan that suits your group."
@@ -603,7 +618,7 @@ en:
     benefit_custom_domain: Custom domain
     benefit_analytics_reports: Analytics reports
     benefit_data_export: Data export
-    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30-day free trial</span>. No credit card required."
+    # free_trial_html: "We'll ask you to choose your pricing plan after a <span>30day free trial</span>. No credit card required."
     # start_group: "Start group"
     # gift_body: For groups without a budget
     # support_before: I'm happy to
@@ -675,7 +690,7 @@ en:
     membership_granted_upon_request: 'Anyone can join the group.'
     membership_granted_upon_approval: 'Anyone can request to join but must be approved.'
 
-    membership_granted_upon_approval_secret_parent: '<strong>By request</strong> - anyone from {{parent}} can ask to join the group.'
+    membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from {{parent}} can ask to join the group.'
 
     permissions: 'Permissions'
     thread_privacy: 'Thread privacy'
@@ -729,6 +744,10 @@ en:
     heading: Previous proposals
     see_more: See more
 
+  group_previous_polls_card:
+    heading: Previous Activities
+    see_more: "See all: ({{count}}) activities"
+
   invitation_form:
     aria_label: 'Invitation form'
     invite_people: 'Invite People'
@@ -753,7 +772,7 @@ en:
     messages:
       invitation_sent: 'Invitation sent.'
       invitations_sent: '{{count}} invitations sent.'
-      no_invitations: 'Uh-oh! Please verify the email address is correct and try again.'
+      no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
       max_invitations: 'If you want to send more than 100 invitations, use a team link.'
 
   add_members_modal:
@@ -819,7 +838,7 @@ en:
   change_picture_form:
     aria_label: 'Change picture form'
     title: 'Change picture'
-    helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> account, you can use that.'
+    helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.'
     use_initials: 'Use initials'
     use_gravatar: 'Use gravatar'
     use_uploaded: 'Upload new picture'
@@ -838,7 +857,7 @@ en:
     introduction: 'When you deactivate your account:'
     no_longer_group_member: 'You will no longer be listed as a member of any groups'
     name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-    no_emails: 'You will no longer receive Loomio-related emails'
+    no_emails: 'You will no longer receive Loomiorelated emails'
     contact_for_reactivation: 'You will need to contact us to reactivate your account'
     submit: 'Yes, I want to deactivate'
 
@@ -863,7 +882,7 @@ en:
     on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
     mentioned_label: Mentions
     mentioned_description: "When someone wants to get you're attention, they'll @mention you. We recommend you leave this on, so that you'll get an email when this happens."
-    update_settings: Update settings for all groups
+    update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:
       loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
@@ -1097,8 +1116,8 @@ en:
       that it’s immediately obvious what it means to agree or disagree. Think about how you
       can identify discussions/decisions the group is currently undertaking in person or by
       email that would be easier if they were on Loomio.</p>
-      <p>If your group is just starting out, you could start a light-hearted decision, to give
-      everyone a chance to play with the tool and see the decision-making process in action.</p>
+      <p>If your group is just starting out, you could start a lighthearted decision, to give
+      everyone a chance to play with the tool and see the decisionmaking process in action.</p>
       <p>Another simple way to encourage people to engage in a discussion is to use the @mention
       feature to prompt specific people; this will send them an email to tell them they’ve been
       mentioned in a comment.</p>
@@ -1109,11 +1128,11 @@ en:
       about the problem before jumping to a specific solution. When people get to
       participate in the process, they’re much more likely to be on board with the outcome.</p>
     example2_html: |
-      <h3>You already have a proposal in mind, and you want to get sign-off from the group to move forward.</h3>
+      <h3>You already have a proposal in mind, and you want to get signoff from the group to move forward.</h3>
       <p>Strategy: Start a discussion about a specific decision and make a proposal immediately.</p>
       <p>If you’ve got a clear outcome in mind but you want to make sure there aren’t any critical concerns,
       you can use the proposal to get quick input into a decision.</p>
-      <p>You can do things like finalise a document, approve an application, or sign-off on a piece of work.</p>
+      <p>You can do things like finalise a document, approve an application, or signoff on a piece of work.</p>
     get_in_touch: "Get in touch"
     get_in_touch_description_html: "If you have any questions or feedback, <a href='%{link}'>drop us a line</a>."
     getting_started: "Getting started"
@@ -1170,7 +1189,7 @@ en:
       <p>During the discussion, the Context Panel can be updated as new information
       comes to light. As well as clarifying the topic, you can use this space for
       sharing resources, summarising the discussion as it progresses, or outlining the
-      decision-making protocols your group is using.</p>
+      decisionmaking protocols your group is using.</p>
     start_proposal: "Writing a clear proposal"
     start_proposal_html: |
       <p> If you make the title clear and succinct, people will immediately know exactly
@@ -1245,7 +1264,7 @@ en:
   authorized_apps_page:
     title: Authorized Apps
     no_applications: "You haven't authorized any third party apps yet."
-    notice: "You've given the following third-party apps permission to use your account. Click 'Revoke' to disable them."
+    notice: "You've given the following thirdparty apps permission to use your account. Click 'Revoke' to disable them."
     revoke: Revoke
 
   registered_apps_page:
@@ -1287,3 +1306,207 @@ en:
     submit: Revoke Access
     messages:
       success: "'{{name}}' can no longer use your account."
+
+  decision_tools_card:
+    title: Decision tools
+    purpose: Clear input from everyone. Move the conversation forward. Hear from many people at once. Create shared
+    purpose: Collect individual views to understand the whole.
+    proposal_title: Proposal
+    proposal_subtitle: Build consensus within the group
+    yes_no_title: Yes/No
+    yes_no_subtitle: Ask a yes/no question
+    poll_title: Poll
+    poll_subtitle: Measure popularity of various options
+
+  poll_common:
+    your_response: Your response
+    change_your_response: Change your response
+    reason: Reason
+    results: Results
+    vote: Vote
+    votes: Votes
+    update_outcome: Update outcome
+    outcome: Outcome
+    statement: Statement
+    change_your_stance_title: Changed your mind?
+    change_your_stance_text: The best group decisions happen when people work to understand each others position. If what other people have said has changed your mind, change your vote.
+    change_your_stance: Change your vote
+    load_more: Load more
+    details: Details
+
+  poll_common_card:
+    show_results: Show results
+
+  poll_common_collapsed:
+    by_who: "by {{name}}"
+
+  poll_common_notify_group:
+    notify_group: Notify group
+    members_count: "{{count}} people will be notified"
+
+  poll_common_close_form:
+    title: Close a poll early
+    helptext: Are you sure you're ready to close this early?
+    close_proposal: Close proposal
+    close_poll: Close poll
+    close_yes_no: Close yes-no
+    proposal_closed: Proposal closed
+    poll_closed: Poll closed
+    yes_no_closed: Yes/No closed
+
+  poll_common_closing_at_field:
+    closing: Closing
+    closing_hour: Closing hour
+
+  poll_common_school_link:
+    learn_about: "Learn about:"
+
+  poll_card:
+    started_by: Started by {{name}}
+
+  poll_common_votes_panel:
+    newest_first: Newest first
+    oldest_first: Oldest first
+    priority_first: Agree first
+    priority_last: Block first
+    no_votes_yet: No votes have been placed yet.
+    change_results_order: Change results order
+    show_undecided: Show undecided
+
+  poll_common_did_not_votes_panel:
+    undecided: Undecided ({{count}})
+    show_undecided: Show undecided
+
+  poll_common_accordion:
+    title: Recent activity
+
+  poll_common_set_outcome_panel:
+    share_outcome: Share outcome
+    poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
+    proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
+    yes_no: 'This yes-no has closed. <strong>Share an outcome</strong> to complete the process.'
+
+  poll_common_outcome_form:
+    new_title: Share an outcome
+    update_title: Update outcome
+    outcome_created: Outcome created
+    outcome_updated: Outcome updated
+    statement_placeholder: Summarise the responses and explain what will happen next.
+    submit: Share outcome
+
+  poll_common_outcome_panel:
+    authored_by: 'By {{name}}'
+
+  poll_proposal_form:
+    start_a_proposal: Start a proposal
+    edit_proposal: Edit proposal
+    tip: Harness the collective wisdom of the group to build a better decision than any single person could
+    learn_more: Writing an effective proposal
+    title: Title
+    title_placeholder: E.g. Let's go to the moon!
+    details: Details
+    details_placeholder: Give enough information so everyone knows what it means to agree or disagree
+    options: Options
+    closing: Closing
+    start: Start proposal
+    update: Update proposal
+    proposal_created: Proposal created
+    proposal_updated: Proposal updated
+
+  poll_proposal_vote_form:
+    default_reason_placeholder: Please explain your reasoning
+    abstain_reason_placeholder: Let people know why you’re opting out of this decision
+    agree_reason_placeholder: What do you like about the proposal and how will it benefit the group?
+    disagree_reason_placeholder: How could this proposal be improved so that you can support it?
+    block_reason_placeholder: Explain your objection to this proposal and why it should not go ahead
+    stance_created: Vote created
+    stance_updated: Vote updated
+
+  poll_proposal_options:
+    agree: Agree
+    agree_verb: "agreed"
+    agree_meaning: This proposal is good enough to be adopted by the group
+    abstain: Abstain
+    abstain_verb: "abstained"
+    abstain_meaning: Not sure, don’t know or don’t mind. Will support the outcome either way
+    disagree: Disagree
+    disagree_verb: "disagreed"
+    disagree_meaning: I don’t support the proposal. It should not go ahead.
+    block: Block
+    block_verb: "blocked"
+    block_meaning: The urgent attention of the group is required to address a deep concern
+
+  poll_yes_no_form:
+    new_yes_no: New yes-no
+    update_yes_no: Update yes-no
+    tip: Use an yes-no to ask a simple yes/no question
+    learn_more: Learn more
+    title: Title
+    title_placeholder: E.g. I've given my thoughts on the annual report
+    details: Details
+    details_placeholder: Include any relevant details such as time or place or urls people will need.
+    action: Action
+    action_placeholder: E.g. I've done it!
+    start: Start yes-no
+    update: Update yes-no
+    yes_no_created: Yes/No created
+    yes_no_updated: Yes/No updated
+    affirmative_label: Affirmative choice
+    affirmative_placeholder: E.g. Accept
+    negative_label: Negative choice (optional)
+    negative_placeholder: E.g. Decline
+
+  poll_yes_no_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated
+
+  poll_yes_no_chart_panel:
+    out_of: out of {{goal}}
+
+  poll_poll_form:
+    start_header: Start a poll
+    edit_header: Edit poll
+    tip: Survey the preferences on the group.
+    learn_more: Using polls effectively
+    title: Question
+    title_placeholder: E.g. What's you're favourite colour?
+    details: Details
+    details_placeholder: Provide any clarifying details people might need to answer the question.
+    options: Options
+    add_option_placeholder: Add option
+    remove_option: Remove option
+    closing: Closing
+    start: Start poll
+    update: Update poll
+    multiple_choice: Multiple choice
+    poll_created: Poll created
+    poll_updated: Poll updated
+
+  poll_poll_vote_form:
+    stance_created: Vote created
+    stance_updated: Vote updated
+
+  poll_thread_item:
+    poll:
+      poll_created: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> voted:'
+      poll_edited: '<strong>{{author}}</strong> edited the poll: <span>{{title}}</span>'
+      poll_expired: 'Poll closed: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the poll: <span>{{title}}</span>'
+
+    proposal:
+      poll_created: '<strong>{{author}}</strong> started a proposal: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> voted:'
+      poll_edited: '<strong>{{author}}</strong> edited the proposal: <span>{{title}}</span>'
+      poll_expired: 'Proposal closed: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
+
+    yes_no:
+      poll_created: '<strong>{{author}}</strong> started a yes-no: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> checked in:'
+      poll_edited: '<strong>{{author}}</strong> edited the yes-no: <span>{{title}}</span>'
+      poll_expired: 'Yes/No round finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the yes-no round: <span>{{title}}</span>'
+
+    # outcome
+    outcome_created: '<strong>{{author}}</strong> shared an outcome:'

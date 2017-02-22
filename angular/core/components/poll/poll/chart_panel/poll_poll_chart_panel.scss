@@ -1,0 +1,18 @@
+.poll-poll-chart-panel__chart-container {
+  @include displayFlex;
+  flex-flow: column nowrap;
+}
+
+.poll-poll-chart-panel__bar {
+  height: 50px;
+  min-width: 4px;
+  margin-top: 10px;
+}
+
+.poll-poll-chart-panel__bar-label {
+  float: left;
+  display: inline-block;
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+}

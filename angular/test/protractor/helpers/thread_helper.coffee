@@ -1,21 +1,21 @@
 module.exports = new class ThreadHelper
   load: ->
-    browser.get('development/setup_discussion')
+    browser.get('dev/setup_discussion')
 
   loadWithPublicContent: ->
-    browser.get('development/setup_public_group_with_public_content')
+    browser.get('dev/setup_public_group_with_public_content')
 
   loadWithActiveProposal: ->
-    browser.get('development/setup_proposal')
+    browser.get('dev/setup_proposal')
 
   loadWithClosedProposal: ->
-    browser.get('development/setup_closed_proposal')
+    browser.get('dev/setup_closed_proposal')
 
   loadWithSetOutcome: ->
-    browser.get('development/setup_closed_proposal_with_outcome')
+    browser.get('dev/setup_closed_proposal_with_outcome')
 
   loadWithMultipleDiscussions: ->
-    browser.get('development/setup_multiple_discussions')
+    browser.get('dev/setup_multiple_discussions')
 
   addComment: (body) ->
     @enterCommentText(body)
