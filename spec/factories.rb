@@ -244,7 +244,7 @@ FactoryGirl.define do
   end
 
   factory :poll do
-    poll_type "count"
+    poll_type "poll"
     title "This is a poll"
     details "with a description"
     association :author, factory: :user
