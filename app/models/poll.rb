@@ -13,7 +13,7 @@ class Poll < ActiveRecord::Base
 
   belongs_to :motion
   belongs_to :discussion
-  delegate   :group, :group_id, to: :discussion, allow_nil: true
+  belongs_to :group
 
   update_counter_cache :discussion, :closed_polls_count
 
@@ -24,7 +24,7 @@ class Poll < ActiveRecord::Base
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   has_many :attachments, as: :attachable, dependent: :destroy
-  # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
+  has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 

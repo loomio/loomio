@@ -3,7 +3,7 @@
   %form{ng-if: "hasAvailableGroups()"}
     %md-input-container.md-block
       %label{translate: "poll_common_manage_card.loomio_group_placeholder"}
-      %md-select.md-no-underline{ng-model: "poll.groupId",, aria-label: "{{ 'poll_common_manage_card.loomio_group_select' | translate }}"}
+      %md-select.md-no-underline{ng-model: "poll.groupId", ng-change: "setGroup()", aria-label: "{{ 'poll_common_manage_card.loomio_group_select' | translate }}"}
         %md-option{ng-repeat: "group in groupOptions()", ng-value: "group.id"}
           {{group.fullName}}
 
@@ -12,7 +12,7 @@
     %md-list.md-block
       %md-list-item.lmo-flex
         %p{translate: "poll_common_manage_card.anyone_can_participate"}
-        %md-checkbox{ng-model: "poll.anyoneCanParticipate"}
+        %md-checkbox{ng-model: "poll.anyoneCanParticipate", ng-change: "setAnyoneCanParticipate()"}
     %md-input-container.md-block{ng-if: "poll.anyoneCanParticipate"}
       %label{translate: "poll_common_manage_card.shareable_link"}
       .lmo-flex
@@ -20,8 +20,15 @@
         %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
           %i.fa.fa-copy>
 
+  %h3{translate: "poll_common_manage_card.send_emails"}
+  .poll-common-manage-card__existing-emails
+    .poll-common-manage-card__existing-email{ng-repeat: "email in visitorEmails"}
+
+  .poll-common-manage-card__new-emails
+    .poll-common-manage-card__new-email{ng-repeat: "email in newEmails"}
+      {{email}}
+
   %form
-    %h3{translate: "poll_common_manage_card.send_emails"}
     %md-list
       %md-list-item{ng-repeat: "email in poll.participantEmails track by $index"}
         %span.poll-poll-form__option-text {{email}}
@@ -29,7 +36,7 @@
           %i.material-icons.poll-poll-form__option-icon clear
       %md-list-item.poll-poll-form__add-option{flex: "true", layout: "row"}
         %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
-          %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addEmailPlaceholder}}", ng-model: "newEmailName"}
+          %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addEmailPlaceholder}}", ng-model: "newEmail"}
         %div
           %md-button.poll-poll-form__option-button{ng-click: "addEmail()", aria-label: "{{ 'poll_common_manage_card.add_email_placeholder' | translate }}"}
             %i.material-icons.poll-poll-form__option-icon add
