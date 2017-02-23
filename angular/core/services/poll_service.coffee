@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Records, PollProposalForm, PollYesNoForm, PollPollForm, PollProposalEditVoteModal, PollPollEditVoteModal, PollYesNoEditVoteModal) ->
+angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Records, PollProposalForm, PollCountForm, PollPollForm, PollProposalEditVoteModal, PollPollEditVoteModal, PollCountEditVoteModal) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -13,9 +13,9 @@ angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Record
       proposal:
         poll:   PollProposalForm
         stance: PollProposalEditVoteModal
-      yes_no:
-        poll:   PollYesNoForm
-        stance: PollYesNoEditVoteModal
+      count:
+        poll:   PollCountForm
+        stance: PollCountEditVoteModal
       poll:
         poll:   PollPollForm
         stance: PollPollEditVoteModal

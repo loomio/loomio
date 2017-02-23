@@ -35,7 +35,7 @@ module Dev::PollsHelper
   def create_activity_items(discussion: , actor: )
     # create poll
     options = {poll: %w[apple turnip peach],
-               yes_no: %w[yip nup],
+               count: %w[yes no],
                proposal: %w[agree disagree abstain block]}
 
     Poll::TEMPLATES.keys.each do |poll_type|
