@@ -4,7 +4,7 @@
     %md-input-container.md-block
       %label{translate: "poll_common_manage_card.loomio_group_placeholder"}
       %md-select.md-no-underline{ng-model: "poll.groupId",, aria-label: "{{ 'poll_common_manage_card.loomio_group_select' | translate }}"}
-        %md-option{ng-repeat: "group in availableGroups()", ng-value: "group.id"}
+        %md-option{ng-repeat: "group in groupOptions()", ng-value: "group.id"}
           {{group.fullName}}
 
   %form
