@@ -1,22 +1,22 @@
-.poll-yes-no-chart-panel__chart-container {
+.poll-count-chart-panel__chart-container {
   width: 200px;
   height: 200px;
   position: relative;
 }
 
-.poll-yes-no-chart-panel__progress {
+.poll-count-chart-panel__progress {
   @include displayFlex;
   flex-direction: column;
   height: 100%;
   width: 100%;
 }
 
-.poll-yes-no-chart-panel__incomplete {
+.poll-count-chart-panel__incomplete {
   flex-grow: 1;
   background-color: $background-color;
 }
 
-.poll-yes-no-chart-panel__data {
+.poll-count-chart-panel__data {
   @include displayFlex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@
   width: 100%;
 }
 
-.poll-yes-no-chart-panel__numerator {
+.poll-count-chart-panel__numerator {
   font-size: 72px;
   line-height: 72px;
 }

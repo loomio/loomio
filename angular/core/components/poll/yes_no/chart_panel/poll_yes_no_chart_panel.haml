@@ -1,9 +1,0 @@
-.poll-yes-no-chart-panel
-  %h3.lmo-card-subheading{translate: "poll_common.results"}
-  .poll-yes-no-chart-panel__chart-container
-    .poll-yes-no-chart-panel__progress
-      .poll-yes-no-chart-panel__incomplete
-      .poll-yes-no-chart-panel__complete{ng-style: "{'flex-basis': percentComplete(), 'background-color': completeColor}"}
-    .poll-yes-no-chart-panel__data
-      .poll-yes-no-chart-panel__numerator {{poll.stanceCounts[0]}}
-      .poll-yes-no-chart-panel__denominator{translate: "poll_yes_no_chart_panel.out_of", translate-value-goal: "{{poll.goal()}}"}

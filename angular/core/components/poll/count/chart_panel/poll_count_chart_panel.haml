@@ -1,0 +1,9 @@
+.poll-count-chart-panel
+  %h3.lmo-card-subheading{translate: "poll_common.results"}
+  .poll-count-chart-panel__chart-container
+    .poll-count-chart-panel__progress
+      .poll-count-chart-panel__incomplete
+      .poll-count-chart-panel__complete{ng-style: "{'flex-basis': percentComplete(), 'background-color': completeColor}"}
+    .poll-count-chart-panel__data
+      .poll-count-chart-panel__numerator {{poll.stanceCounts[0]}}
+      .poll-count-chart-panel__denominator{translate: "poll_count_chart_panel.out_of", translate-value-goal: "{{poll.goal()}}"}
