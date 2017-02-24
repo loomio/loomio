@@ -1,12 +1,13 @@
-angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormService, Records, Session, FlashService, AbilityService, LmoUrlService) ->
+angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormService, Records, Session, FlashService, AbilityService, KeyEventService, LmoUrlService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/manage_card/poll_common_manage_card.html'
   controller: ($scope) ->
-    clone = $scope.poll.clone()
+    Records.visitors.fetchByPoll($scope.poll.key)
+
     $scope.newEmails = []
+    $scope.newEmail  = ''
     $scope.shareableLink = LmoUrlService.poll($scope.poll, {}, absolute: true)
-    $scope.visitorEmails = Records.visitors.find(pollId: $scope.poll.id)
 
     noGroupOption = Records.groups.build(id: null, fullName: $translate.instant("poll_common_manage_card.no_group_selected"))
     availableGroups = _.filter Session.user().groups(), (group) ->
@@ -18,9 +19,29 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
     $scope.setAnyoneCanParticipate = FormService.submit $scope, $scope.poll,
       flashSuccess: "poll_common_manage_card.anyone_can_participate_success"
 
+    $scope.hasNewEmails = ->
+      $scope.newEmails.length > 0
+
     $scope.addEmail = ->
-      $scope.newEmails.push $scope.newEmail
-      $scope.newEmail = ''
+      if $scope.newEmail.length <= 0
+        console.log 'Please enter an email'
+      else if _.contains $scope.newEmails, $scope.newEmail
+        console.log 'Email already in list'
+      else
+        $scope.newEmails.push $scope.newEmail
+        $scope.newEmail = ''
+
+    $scope.remove = (email) ->
+      _.pull $scope.newEmails, email
+
+    $scope.revoke = (visitor) ->
+      visitor.destroy()
+
+    $scope.remind = (visitor) ->
+      visitor.reminding = true
+      visitor.remind()
+             .then ->    visitor.reminded = true
+             .finally -> visitor.reminding = false
 
     $scope.groupOptions = ->
       [noGroupOption].concat(availableGroups)
@@ -30,3 +51,6 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
 
     $scope.copied = ->
       FlashService.success('common.copied')
+
+    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addEmail, (active) ->
+      active.classList.contains('poll-common-manage-card__add-option-input')

@@ -143,17 +143,21 @@ Loomio::Application.routes.draw do
       get  :search, on: :collection
     end
 
-    resource :outcomes,     only: [               :create, :update]
+    resources :visitors,    only: [:index, :destroy] do
+      post :remind, on: :member
+    end
 
-    resources :votes,       only: [       :index, :create, :update] do
+    resource :outcomes,     only: [:create, :update]
+
+    resources :votes,       only: [:index, :create, :update] do
       get :my_votes, on: :collection
     end
 
-    resources :stances,     only: [       :index, :create, :update] do
+    resources :stances,     only: [:index, :create, :update] do
       get :my_stances, on: :collection
     end
 
-    resources :outcomes,    only: [               :create, :update]
+    resources :outcomes,    only: [:create, :update]
 
     resources :did_not_votes, only: :index
     resources :poll_did_not_votes, only: :index

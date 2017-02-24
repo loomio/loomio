@@ -49,7 +49,7 @@ class PollService
 
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
+    poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes, :participant_emails))
 
     return false unless poll.valid?
     poll.save!

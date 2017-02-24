@@ -1,3 +1,19 @@
 poll_common_manage_card {
   flex-grow: 1;
 }
+
+.poll-common-manage-card__add-option {
+  align-items: flex-start;
+}
+
+.poll-common-manage-card__option-icon {
+  margin: auto;
+}
+
+.poll-common-manage-card__visitor {
+  justify-content: space-between;
+}
+
+.poll-common-manage-card__email {
+  line-height: 48px;
+}

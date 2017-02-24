@@ -342,6 +342,10 @@ class Ability
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
+    can [:remind, :destroy], Visitor do |visitor|
+      @user.ability.can? :update, visitor.poll
+    end
+
     # can :set_communities, Poll do |poll|
     #   user_is_author_of?(poll) &&
     #   poll.stances.empty? &&

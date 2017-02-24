@@ -279,6 +279,7 @@ FactoryGirl.define do
   end
 
   factory :visitor do
+    poll
     name "John Doe"
     email "john@doe.com"
     participation_token SecureRandom.hex(8)

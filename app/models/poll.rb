@@ -23,8 +23,8 @@ class Poll < ActiveRecord::Base
   has_many :stances
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :visitors
   has_many :attachments, as: :attachable, dependent: :destroy
-  has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 

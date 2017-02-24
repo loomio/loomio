@@ -65,6 +65,10 @@ class PermittedParams < Struct.new(:params)
     [:statement, :poll_id, :make_announcement]
   end
 
+  def visitor_attributes
+    [:name, :email, :revoked]
+  end
+
   def membership_request_attributes
     [:name, :email, :introduction, :group_id]
   end
