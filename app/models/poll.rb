@@ -17,7 +17,6 @@ class Poll < ActiveRecord::Base
 
   update_counter_cache :discussion, :closed_polls_count
 
-  before_validation :set_default_community
   after_update :remove_poll_options
 
   has_many :stances
@@ -146,20 +145,20 @@ class Poll < ActiveRecord::Base
     @poll_option_removed_names = (existing - names)
   end
 
-  def set_default_community
-    poll_communities.build(community: default_community) if poll_communities.empty?
+  def participant_emails=(emails)
+    return unless Array(emails).any?
+    (emails - visitors.pluck(:email)).map { |email| self.visitors.create!(email: email) }
+    email_community.update(visitor_ids: reload.visitor_ids)
   end
 
   private
 
-  def default_community
-    if group
-      group.community
-    elsif participant_emails.presence
-      Communities::Email.new(community_type: :email, emails: participant_emails)
-    else
-      Communities::Public.instance
-    end
+  def group_community
+    @group_community ||= group.community
+  end
+
+  def email_community
+    communities.detect { |c| c.community_type == :email } || Communities::Email.new
   end
 
   # provides a base hash of 0's to merge with stance data

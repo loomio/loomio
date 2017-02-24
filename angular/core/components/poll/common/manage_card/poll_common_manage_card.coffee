@@ -43,6 +43,17 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
              .then ->    visitor.reminded = true
              .finally -> visitor.reminding = false
 
+    $scope.invite = ->
+      $scope.addEmail()
+      $scope.poll.inviting = true
+      $scope.poll.participantEmails = $scope.newEmails
+      $scope.poll.save()
+                 .then ->
+                    Records.visitors.fetchByPoll($scope.poll.key)
+                    $scope.newEmails = []
+                 .finally ->
+                   $scope.poll.inviting = false
+
     $scope.groupOptions = ->
       [noGroupOption].concat(availableGroups)
 

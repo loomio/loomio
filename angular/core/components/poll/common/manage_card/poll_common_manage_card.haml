@@ -38,7 +38,7 @@
 
   %form
     %md-list
-      %md-list-item{ng-repeat: "email in poll.participantEmails track by $index"}
+      %md-list-item{ng-repeat: "email in poll.newEmails track by $index"}
         %span.lmo-flex__grow {{email}}
         %md-button.lmo-flex{ng-click: "removeOption(email)", aria-label: "{{ 'poll_common_manage_card.remove_email' | translate }}"}
           %i.material-icons.poll-common-manage-card__option-icon clear
@@ -48,6 +48,6 @@
         %div
           %md-button.poll-common-manage-card__option-button.lmo-inline-action{ng-click: "addEmail()", aria-label: "{{ 'poll_common_manage_card.add_email_placeholder' | translate }}"}
             %i.material-icons.poll-common-manage-card__option-icon add
-      %md-button.md-primary.md-raised{translate: "poll_common_manage_card.send_emails", ng-click: "saveEmails()"}
+      %md-button.md-primary.md-raised{translate: "poll_common_manage_card.send_emails", ng-click: "invite()"}
 
   %h3{translate: "poll_common_manage_card.connect_community", ng-if: "false"}
