@@ -30,6 +30,7 @@ angular.module('loomioApp').directive 'barChart', (AppConfig) ->
             .y(index * barHeight)
 
     $scope.$watchCollection 'stanceCounts', ->
+      console.log $scope.stanceCounts, scoreMaxValue(), scoreData().length
       _.each shapes, (shape) -> shape.remove()
       return drawPlaceholder() unless scoreData().length > 0 and scoreMaxValue() > 0
       barHeight = $scope.size / scoreData().length

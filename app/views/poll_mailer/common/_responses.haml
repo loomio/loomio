@@ -14,4 +14,6 @@
         - stance_choices.each do |stance_choice|
           %tr
             %td= render partial: 'poll_mailer/common/avatar', locals: { participant: stance_choice.stance.participant }
-            %td.poll-mailer-common-responses__reason= stance_choice.stance.reason
+            %td.poll-mailer-common-responses__reason
+              #{stance_choice.stance.participant.name}:
+              = stance_choice.stance.reason
