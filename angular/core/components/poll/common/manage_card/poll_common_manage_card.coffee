@@ -36,6 +36,9 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
 
     $scope.revoke = (visitor) ->
       visitor.destroy()
+             .then ->
+               visitor.revoking = true
+               FlashService.success "poll_common_manage_card.visitor_revoked"
 
     $scope.remind = (visitor) ->
       visitor.reminding = true
@@ -44,12 +47,13 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
              .finally -> visitor.reminding = false
 
     $scope.invite = ->
-      $scope.addEmail()
+      $scope.addEmail() if $scope.newEmail.length > 0
       $scope.poll.inviting = true
       $scope.poll.participantEmails = $scope.newEmails
       $scope.poll.save()
                  .then ->
                     Records.visitors.fetchByPoll($scope.poll.key)
+                    FlashService.success "poll_common_manage_card.users_invited"
                     $scope.newEmails = []
                  .finally ->
                    $scope.poll.inviting = false

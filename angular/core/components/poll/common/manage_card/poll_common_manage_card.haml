@@ -1,53 +1,72 @@
 .poll-common-manage-card.lmo-card
-
-  %md-input-container.md-block{ng-if: "hasAvailableGroups()"}
-    %label{translate: "poll_common_manage_card.loomio_group_placeholder"}
-    %md-select.md-no-underline{ng-model: "poll.groupId", ng-change: "setGroup()", aria-label: "{{ 'poll_common_manage_card.loomio_group_select' | translate }}"}
-      %md-option{ng-repeat: "group in groupOptions()", ng-value: "group.id"}
-        {{group.fullName}}
-
-  %h3{translate: "poll_common_manage_card.share_a_link"}
-  %md-list.md-block
-    %md-list-item.lmo-flex
-      %p{translate: "poll_common_manage_card.anyone_can_participate"}
-      %md-checkbox{ng-model: "poll.anyoneCanParticipate", ng-change: "setAnyoneCanParticipate()"}
-  %md-input-container.md-block{ng-if: "poll.anyoneCanParticipate"}
-    %label{translate: "poll_common_manage_card.shareable_link"}
+  %section
     .lmo-flex
-      %input.lmo-primary-form-input{disabled: "true", type: "text", ng-model: "shareableLink"}
-      %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
-        %i.fa.fa-copy>
+      %i.material-icons.poll-common-manage-card__icon link
+      %h3.lmo-h3{translate: "poll_common_manage_card.share_a_link"}
 
-  .poll-common-manage-card__existing-emails
-    %h3{translate: "poll_common_manage_card.existing_emails"}
-    .poll-common-manage-card__visitor.lmo-flex{ng-repeat: "visitor in poll.visitors()"}
-      .poll-common-manage-card__email.lmo-flex__grow {{visitor.email}}
-      %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!visitor.reminded && !visitor.reminding"}
-        %i.material-icons redo
-      %loading{ng-if: "visitor.reminding"}
-      %span{ng-if: "visitor.reminded", translate: "poll_common_manage_card.reminded"}
-      %md-button.lmo-inline-action{ng-click: "revoke(visitor)"}
-        %i.material-icons clear
+    %md-list.md-block
+      %md-list-item.lmo-flex
+        %p{translate: "poll_common_manage_card.anyone_can_participate"}
+        %md-checkbox{ng-model: "poll.anyoneCanParticipate", ng-change: "setAnyoneCanParticipate()"}
+      %md-list-item{ng-if: "poll.anyoneCanParticipate"}
+        %md-input-container.lmo-flex.poll-common-manage-card__shareable-link{ng-if: "poll.anyoneCanParticipate"}
+          %input.lmo-primary-form-input.lmo-flex__grow{disabled: "true", type: "text", ng-model: "shareableLink"}
+          %md-button.md-primary.md-raised.poll-common-manage-card__copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
+            %span{translate: "common.copy"}
+      %md-list-item
+        %p.poll-common-manage-card__helptext{translate: "poll_common_manage_card.poll_is_shareable", ng-if: "poll.anyoneCanParticipate"}
+        %p.poll-common-manage-card__helptext{translate: "poll_common_manage_card.poll_is_private", ng-if: "!poll.anyoneCanParticipate"}
 
-  .poll-common-manage-card__new-emails{ng-if: "hasNewEmails()"}
-    %h3{translate: "poll_common_manage_card.new_emails"}
-    .poll-common-manage-card__new-visitor.lmo-flex{ng-repeat: "email in newEmails"}
-      .poll-common-manage-card__email.lmo-flex__grow {{email}}
-      %md-button.lmo-inline-action{ng-click: "remove(email)"}
-        %i.material-icons clear
+  %hr
 
-  %form
+  %section{ng-if: "hasAvailableGroups()"}
+    .lmo-flex
+      %i.material-icons.poll-common-manage-card__icon group
+      %h3.lmo-h3{translate: "poll_common_manage_card.loomio_group"}
+
     %md-list
-      %md-list-item{ng-repeat: "email in poll.newEmails track by $index"}
-        %span.lmo-flex__grow {{email}}
-        %md-button.lmo-flex{ng-click: "removeOption(email)", aria-label: "{{ 'poll_common_manage_card.remove_email' | translate }}"}
-          %i.material-icons.poll-common-manage-card__option-icon clear
+      %md-list-item.poll-common-manage-card__loomio-group
+        %md-input-container
+          %md-select.md-no-underline{ng-model: "poll.groupId", ng-change: "setGroup()", aria-label: "{{ 'poll_common_manage_card.loomio_group_select' | translate }}"}
+            %md-option{ng-repeat: "group in groupOptions()", ng-value: "group.id"}
+              {{group.fullName}}
+        %p.poll-common-manage-card__helptext{translate: "poll_common_manage_card.has_loomio_group"}
+
+  %hr
+
+  %section
+    .lmo-flex
+      %i.material-icons.poll-common-manage-card__icon mail
+      %h3.lmo-h3{translate: "poll_common_manage_card.invite_guests"}
+
+    %md-list.md-block
+      %md-list-item.poll-common-manage-card__emails{layout: "column"}
+        %h4.lmo-h4{translate: "poll_common_manage_card.existing_guests", ng-if: "poll.visitors().length > 0"}
+        .poll-common-manage-card__visitor.lmo-flex{ng-repeat: "visitor in poll.visitors()"}
+          .poll-common-manage-card__email.lmo-flex__grow {{visitor.email}}
+          %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!visitor.reminded && !visitor.reminding"}
+            %i.material-icons redo
+          %loading{ng-if: "visitor.reminding"}
+          %span.poll-common-manage-card__reminded{ng-if: "visitor.reminded", translate: "poll_common_manage_card.reminded"}
+          %md-button.lmo-inline-action{ng-click: "revoke(visitor)"}
+            %i.material-icons clear
+
+        %h4.lmo-h4{translate: "poll_common_manage_card.new_guests", ng-if: "newEmails.length > 0"}
+        .poll-common-manage-card__visitor.lmo-flex{ng-repeat: "email in newEmails"}
+          .poll-common-manage-card__email.lmo-flex__grow {{email}}
+          %md-button.lmo-inline-action{ng-click: "remove(email)"}
+            %i.material-icons clear
+
       %md-list-item.poll-common-manage-card__add-option{flex: "true", layout: "row"}
         %md-input-container.lmo-flex__grow{md-no-float: "true"}
-          %input.poll-common-manage-card__add-option-input{type: "text", placeholder: "{{translations.addEmailPlaceholder}}", ng-model: "newEmail"}
+          %input.poll-common-manage-card__add-option-input{type: "text", placeholder: "{{ 'poll_common_manage_card.enter_email' | translate }}", ng-model: "newEmail"}
         %div
           %md-button.poll-common-manage-card__option-button.lmo-inline-action{ng-click: "addEmail()", aria-label: "{{ 'poll_common_manage_card.add_email_placeholder' | translate }}"}
             %i.material-icons.poll-common-manage-card__option-icon add
-      %md-button.md-primary.md-raised{translate: "poll_common_manage_card.send_emails", ng-click: "invite()"}
+      %md-button.md-primary.md-raised.pull-right.poll-common-manage-card__send-emails{ng-disabled: "newEmails.length <= 0", translate: "poll_common_manage_card.send_emails", translate-value-count: "{{newEmails.length}}", ng-click: "invite()"}
+      .clearfix
+
+  %a.md-button.md-primary.md-raised{lmo-href-for: "poll"}
+    %span{translate: "poll_common_manage_card.view_poll"}
 
   %h3{translate: "poll_common_manage_card.connect_community", ng-if: "false"}

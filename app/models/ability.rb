@@ -320,11 +320,9 @@ class Ability
     end
 
     can [:make_draft, :show], Poll do |poll|
-      if poll.discussion
-        can?(:show, poll.discussion)
-      else
-        poll.communities.any? { |community| community.includes?(@user) }
-      end
+      user_is_author_of?(poll) ||
+      can?(:show, poll.discussion) ||
+      poll.communities.any? { |community| community.includes?(@user) }
     end
 
     can :create, Poll do |poll|

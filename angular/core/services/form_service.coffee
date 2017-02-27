@@ -38,8 +38,9 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
           model: model
           response: response
 
-    cleanup = (scope) ->
+    cleanup = (scope, model, options) ->
       ->
+        options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
         scope.isDisabled = false
 
     submit: (scope, model, options = {}) ->
@@ -64,7 +65,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
             success(scope, model, options),
             failure(scope, model, options)
           ).finally(
-            cleanup(scope)
+            cleanup(scope, model, options)
           )
 
     calculateFlashOptions = (options) ->

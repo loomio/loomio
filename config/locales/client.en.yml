@@ -32,7 +32,8 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
-    copy: 'Copy text'
+    copy: 'Copy'
+    copy_text: 'Copy text'
     copied: 'Copied to clipboard'
     action:
       back: 'Back'
@@ -1515,3 +1516,22 @@ en:
 
   poll_admin_page:
     title: Admin - {{title}}
+
+  poll_common_manage_card:
+    loomio_group: Loomio group
+    no_group_selected: No group selected
+    share_a_link: Shareable link
+    anyone_can_participate: Anyone can participate
+    shareable_link_created: Anyone can now participate in this poll
+    shareable_link_revoked: This poll is now invite-only
+    shareable_link: Shareable link
+    invite_guests: Invite guests
+    existing_guests: Existing guests
+    new_guests: New emails to invite
+    enter_email: "E.g. guest@example.com"
+    reminded: Reminder email sent!
+    send_emails: Send invitations ({{count}})
+    has_loomio_group: Members of this group will be able to view and participate in this poll.
+    poll_is_shareable: Anyone who has the link to this poll can vote. Send the link above to anyone you wish to participate.
+    poll_is_private: Users must be invited in order to view and participate in this poll.
+    view_poll: View poll
