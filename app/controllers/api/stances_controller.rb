@@ -11,7 +11,11 @@ class API::StancesController < API::RestfulController
   private
 
   def create_action
-    @event = service.create(stance: resource, actor: current_user.presence || Visitor.new(resource_params[:visitor_attributes]))
+    @event = service.create(stance: resource, actor: current_user.presence || identify_visitor)
+  end
+
+  def identify_visitor
+    VisitorIdentifier.new(resource_params[:visitor_attributes]).identify_for(resource.poll)
   end
 
   def accessible_records

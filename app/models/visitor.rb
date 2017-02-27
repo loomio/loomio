@@ -6,7 +6,7 @@ class Visitor < ActiveRecord::Base
   before_create :set_avatar_initials
 
   belongs_to :community, required: true, class_name: "Communities::Base"
-  has_one :stance, as: :participant
+  has_many :stances, as: :participant
 
   private
 

@@ -12,7 +12,7 @@ class API::VisitorsController < API::RestfulController
   end
 
   def accessible_records
-    load_and_authorize(:poll).community_of_type(params.fetch(:community_type, :email), build: true).members
+    load_and_authorize(:poll).community_of_type(params.fetch(:community_type, :email))&.members || resource_class.none
   end
 
 end

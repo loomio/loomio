@@ -7,7 +7,7 @@ class Communities::Email < Communities::Base
   end
 
   def includes?(member)
-    emails.include?(member.email)
+    visitors.where(revoked: false).pluck(:email).include?(member.email)
   end
 
   def members
