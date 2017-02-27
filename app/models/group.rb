@@ -192,7 +192,7 @@ class Group < ActiveRecord::Base
   end
 
   def community
-    self[:community_id] ||= Communities::LoomioGroup.create(group: self).id
+    update(community: Communities::LoomioGroup.create(group: self)) unless self[:community_id]
     super
   end
 

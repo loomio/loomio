@@ -156,13 +156,22 @@ class Poll < ActiveRecord::Base
     if emails.any?
       email_community.add_members!(emails)
     else
-      community_of_type(:email, build: true)&.destroy
+      community_of_type(:email)&.destroy
+    end
+  end
+
+  def group_id=(group_id)
+    return if self[:group_id] == group_id
+    super
+    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
+    if g = Group.find_by(id: group_id)
+      poll_communities.build(community: g.community)
     end
   end
 
   def community_of_type(community_type, build: false)
     communities.find_by(community_type: community_type) ||
-    (build && communities.build(community_type: community_type))
+    (build && communities.build(community_type: community_type)).presence
   end
 
   private

@@ -77,4 +77,33 @@ describe Poll do
       expect { poll.update(participant_emails: []) }.to_not change { poll.communities.count }
     end
   end
+
+  describe 'group_id=' do
+    before { group.community; another_group.community; poll.save }
+    let(:group) { create :group }
+    let(:another_group) { create :group }
+
+    it 'creates a group community if true' do
+      expect { poll.update(group_id: group.id) }.to change { poll.communities.count }.by(1)
+      expect(poll.communities.last).to eq group.community
+      expect(poll.reload.group_id).to eq group.id
+    end
+
+    it 'removes the group community if it exists' do
+      poll.update(group_id: group.id)
+      expect { poll.update(group_id: nil) }.to change { poll.communities.count }.by(-1)
+      expect(poll.reload.group_id).to be_nil
+    end
+
+    it 'updates the existing group community if it exists' do
+      poll.update(group_id: group.id)
+      expect { poll.update(group_id: another_group.id) }.to_not change { poll.communities.count }
+      expect(poll.reload.communities.last).to eq another_group.community
+      expect(poll.reload.group_id).to eq another_group.id
+    end
+
+    it 'does nothing if group community doesnt exist' do
+      expect { poll.update(group_id: nil) }.to_not change { poll.communities.count }
+    end
+  end
 end
