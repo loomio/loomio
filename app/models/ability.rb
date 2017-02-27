@@ -331,7 +331,7 @@ class Ability
     end
 
     # NB: discussion dependency on polls
-    can :update, Poll do |poll|
+    can [:remind, :update], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
     end
@@ -340,15 +340,9 @@ class Ability
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
-    can [:remind, :destroy], Visitor do |visitor|
-      @user.ability.can? :update, visitor.poll
+    can [:destroy], Visitor do |visitor|
+      visitor.community.polls.any? { |poll| @user.ability.can? :update, poll }
     end
-
-    # can :set_communities, Poll do |poll|
-    #   user_is_author_of?(poll) &&
-    #   poll.stances.empty? &&
-    #   poll.communities.all? { |community| community.includes?(@user) }
-    # end
 
     can :create, Stance do |stance|
       poll = stance.poll

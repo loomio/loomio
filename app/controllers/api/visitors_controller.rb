@@ -1,7 +1,7 @@
 class API::VisitorsController < API::RestfulController
 
   def remind
-    service.remind(visitor: load_resource, actor: current_user)
+    service.remind(visitor: load_resource, actor: current_user, poll: ModelLocator.new(:poll, params).locate)
     respond_with_resource
   end
 
@@ -12,11 +12,7 @@ class API::VisitorsController < API::RestfulController
   end
 
   def accessible_records
-    if community = load_and_authorize(:poll).community_of_type(params.fetch(:community_type, :email))
-      community.members
-    else
-      Visitor.none
-    end
+    load_and_authorize(:poll).community_of_type(params.fetch(:community_type, :email), build: true).members
   end
 
 end

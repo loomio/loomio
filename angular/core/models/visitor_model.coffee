@@ -3,5 +3,5 @@ angular.module('loomioApp').factory 'VisitorModel', (BaseModel) ->
     @singular: 'visitor'
     @plural: 'visitors'
 
-    remind: =>
-      @remote.postMember(@id, 'remind')
+    remind: (poll) =>
+      @remote.postMember(@id, 'remind', {poll_id: poll.key})

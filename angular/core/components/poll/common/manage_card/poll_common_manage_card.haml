@@ -41,8 +41,8 @@
 
     %md-list.md-block
       %md-list-item.poll-common-manage-card__emails{layout: "column"}
-        %h4.lmo-h4{translate: "poll_common_manage_card.existing_guests", ng-if: "poll.visitors().length > 0"}
-        .poll-common-manage-card__visitor.lmo-flex{ng-repeat: "visitor in poll.visitors()"}
+        %h4.lmo-h4{translate: "poll_common_manage_card.existing_guests", ng-if: "visitors().length > 0"}
+        .poll-common-manage-card__visitor.lmo-flex{ng-repeat: "visitor in visitors()"}
           .poll-common-manage-card__email.lmo-flex__grow {{visitor.email}}
           %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!visitor.reminded && !visitor.reminding"}
             %i.material-icons redo

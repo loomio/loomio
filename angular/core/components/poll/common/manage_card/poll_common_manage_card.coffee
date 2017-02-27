@@ -3,8 +3,12 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/manage_card/poll_common_manage_card.html'
   controller: ($scope) ->
-    Records.visitors.fetchByPoll($scope.poll.key)
+    $scope.fetchVisitors = ->
+      Records.visitors.fetchByPoll($scope.poll.key).then (response) ->
+        $scope.allVisitors = Records.visitors.find(_.pluck(response.visitors, 'id'))
+    $scope.fetchVisitors()
 
+    $scope.allVisitors = []
     $scope.newEmails = []
     $scope.newEmail  = ''
     $scope.shareableLink = LmoUrlService.poll($scope.poll, {}, absolute: true)
@@ -12,6 +16,9 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
     noGroupOption = Records.groups.build(id: null, fullName: $translate.instant("poll_common_manage_card.no_group_selected"))
     availableGroups = _.filter Session.user().groups(), (group) ->
       AbilityService.canStartPoll(group)
+
+    $scope.visitors = ->
+      _.filter $scope.allVisitors, (visitor) -> !visitor.revoked
 
     $scope.setGroup = FormService.submit $scope, $scope.poll,
       flashSuccess: "poll_common_manage_card.set_group"
@@ -37,12 +44,12 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
     $scope.revoke = (visitor) ->
       visitor.destroy()
              .then ->
-               visitor.revoking = true
+               visitor.revoked = true
                FlashService.success "poll_common_manage_card.visitor_revoked"
 
     $scope.remind = (visitor) ->
       visitor.reminding = true
-      visitor.remind()
+      visitor.remind($scope.poll)
              .then ->    visitor.reminded = true
              .finally -> visitor.reminding = false
 
@@ -52,7 +59,7 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
       $scope.poll.participantEmails = $scope.newEmails
       $scope.poll.save()
                  .then ->
-                    Records.visitors.fetchByPoll($scope.poll.key)
+                    $scope.fetchVisitors()
                     FlashService.success "poll_common_manage_card.users_invited"
                     $scope.newEmails = []
                  .finally ->
