@@ -6,9 +6,7 @@
       %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_count_form.update_count"}
       %modal_header_cancel_button
     .modal-body
-      .poll-count__tip
-        %p{translate: "poll_count_form.tip"}
-        %poll_common_school_link{href: "https://loomio.school/beginner/engagements.html", translation: "poll_count_form.learn_more"}
+      %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_count_form.tip"}
 
       %input{type: "hidden", ng-model: "poll.pollType"}
 
@@ -22,9 +20,9 @@
         %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
         %outlet{name: "after-count-form-textarea", model: "poll"}
 
-      %poll_common_closing_at_field.md-block{poll: "poll"}
-      %poll_common_attachment_form{poll: "poll"}
+      %poll_common_closing_at_field{poll: "poll"}
       %poll_common_notify_group{model: "poll"}
+      %poll_common_attachment_form{poll: "poll"}
 
     .modal-footer
       %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_count_form.update", aria-label: "{{ 'poll_count_form.update' | translate }}"}

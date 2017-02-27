@@ -1400,8 +1400,7 @@ en:
   poll_proposal_form:
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal
-    tip: Harness the collective wisdom of the group to build a better decision than any single person could
-    learn_more: Writing an effective proposal
+    tip: Proposals are a convergence tool. Use them to bring the discussion to a clear outcome. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
     title: Title
     title_placeholder: E.g. Let's go to the moon!
     details: Details
@@ -1443,8 +1442,7 @@ en:
   poll_count_form:
     new_count: Start a count
     update_count: Edit count
-    tip: Get a quick count of "Who in the group..."
-    learn_more: Learn more
+    tip: 'A count is like asking: "Can I get a show of hands..". Use it to follow up on tasks or seek participants.'
     title: Title
     title_placeholder: E.g. Who wants to join the working group?
     details: Details
@@ -1466,8 +1464,7 @@ en:
   poll_poll_form:
     start_header: Start a poll
     edit_header: Edit poll
-    tip: Survey the preferences on the group.
-    learn_more: Using polls effectively
+    tip: Polls can be used to measure support for different options to understand preferences in the group.
     title: Question
     title_placeholder: E.g. What's you're favourite colour?
     details: Details
@@ -1479,6 +1476,7 @@ en:
     start: Start poll
     update: Update poll
     multiple_choice: Multiple choice
+    multiple_choice_explained: Voters can choose more than 1 option.
     poll_created: Poll created
     poll_updated: Poll updated
 
