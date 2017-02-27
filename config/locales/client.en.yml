@@ -1,7 +1,7 @@
 en:
   poll_types:
     proposal: Proposal
-    yes_no: Yes/No
+    count: Count
     poll: Poll
   common:
     confirm_discard_changes: Discard your changes?
@@ -1313,11 +1313,11 @@ en:
     purpose: Clear input from everyone. Move the conversation forward. Hear from many people at once. Create shared
     purpose: Collect individual views to understand the whole.
     proposal_title: Proposal
-    proposal_subtitle: Build consensus within the group
-    yes_no_title: Yes/No
-    yes_no_subtitle: Ask a yes/no question
+    proposal_subtitle: Find consensus
+    count_title: Count
+    count_subtitle: Track who has completed a task
     poll_title: Poll
-    poll_subtitle: Measure popularity of various options
+    poll_subtitle: Measure popularity of different options
 
   poll_common:
     your_response: Your response
@@ -1352,10 +1352,10 @@ en:
     helptext: Are you sure you're ready to close this early?
     close_proposal: Close proposal
     close_poll: Close poll
-    close_yes_no: Close yes-no
+    close_count: Close count
     proposal_closed: Proposal closed
     poll_closed: Poll closed
-    yes_no_closed: Yes/No closed
+    count_closed: Count closed
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1387,7 +1387,7 @@ en:
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
-    yes_no: 'This yes-no has closed. <strong>Share an outcome</strong> to complete the process.'
+    count: 'This count has closed. <strong>Share an outcome</strong> to complete the process.'
 
   poll_common_outcome_form:
     new_title: Share an outcome
@@ -1403,8 +1403,7 @@ en:
   poll_proposal_form:
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal
-    tip: Harness the collective wisdom of the group to build a better decision than any single person could
-    learn_more: Writing an effective proposal
+    tip: Proposals are a convergence tool. Use them to bring the discussion to a clear outcome. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
     title: Title
     title_placeholder: E.g. Let's go to the moon!
     details: Details
@@ -1439,38 +1438,36 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
-  poll_yes_no_form:
-    new_yes_no: New yes-no
-    update_yes_no: Update yes-no
-    tip: Use an yes-no to ask a simple yes/no question
-    learn_more: Learn more
-    title: Title
-    title_placeholder: E.g. I've given my thoughts on the annual report
-    details: Details
-    details_placeholder: Include any relevant details such as time or place or urls people will need.
-    action: Action
-    action_placeholder: E.g. I've done it!
-    start: Start yes-no
-    update: Update yes-no
-    yes_no_created: Yes/No created
-    yes_no_updated: Yes/No updated
-    affirmative_label: Affirmative choice
-    affirmative_placeholder: E.g. Accept
-    negative_label: Negative choice (optional)
-    negative_placeholder: E.g. Decline
+  poll_count_options:
+    'yes': 'Yes'
+    'no': 'No'
 
-  poll_yes_no_vote_form:
+  poll_count_form:
+    new_count: Start a count
+    update_count: Edit count
+    tip: 'A count is like asking: "Can I get a show of hands..". Use it to follow up on tasks or seek participants.'
+    title: Title
+    title_placeholder: E.g. Who wants to join the working group?
+    details: Details
+    details_placeholder: Explain what opting-in involves, or give details about how to participate.
+    start: Start count
+    update: Update count
+    count_created: Count created
+    count_updated: Count updated
+
+  poll_count_vote_form:
+    reason_label: Message
+    reason_placeholder: message (optional)
     stance_created: Vote created
     stance_updated: Vote updated
 
-  poll_yes_no_chart_panel:
+  poll_count_chart_panel:
     out_of: out of {{goal}}
 
   poll_poll_form:
     start_header: Start a poll
     edit_header: Edit poll
-    tip: Survey the preferences on the group.
-    learn_more: Using polls effectively
+    tip: Polls can be used to measure support for different options to understand preferences in the group.
     title: Question
     title_placeholder: E.g. What's you're favourite colour?
     details: Details
@@ -1482,6 +1479,7 @@ en:
     start: Start poll
     update: Update poll
     multiple_choice: Multiple choice
+    multiple_choice_explained: Voters can choose more than 1 option.
     poll_created: Poll created
     poll_updated: Poll updated
 
@@ -1504,12 +1502,12 @@ en:
       poll_expired: 'Proposal closed: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
 
-    yes_no:
-      poll_created: '<strong>{{author}}</strong> started a yes-no: <span>{{title}}</span>'
-      stance_created: '<strong>{{author}}</strong> checked in:'
-      poll_edited: '<strong>{{author}}</strong> edited the yes-no: <span>{{title}}</span>'
-      poll_expired: 'Yes/No round finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the yes-no round: <span>{{title}}</span>'
+    count:
+      poll_created: '<strong>{{author}}</strong> started a count: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> responded:'
+      poll_edited: '<strong>{{author}}</strong> edited the count: <span>{{title}}</span>'
+      poll_expired: 'Count round finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the count round: <span>{{title}}</span>'
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'

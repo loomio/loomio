@@ -1,6 +1,19 @@
 .poll-common-closing-at-field {
+  margin-top: -16px;
   @include displayFlex;
   flex-direction: column;
+}
+
+.poll-common-closing-at-field__zone {
+  position: relative;
+  top: 5px;
+  color: rgba(0,0,0,0.38);
+}
+
+
+.poll-common-closing-at-field__label {
+  overflow: visible !important;
+  color: rgba(0,0,0,0.38);
 }
 
 .poll-common-closing-at-field__inputs {

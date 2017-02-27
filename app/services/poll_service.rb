@@ -36,7 +36,7 @@ class PollService
   end
 
   def self.do_closing_work(poll:)
-    poll.update(closed_at: Time.now)
+    poll.update(closed_at: Time.now) unless poll.closed_at.present?
     poll.poll_communities.for(:loomio_group).each do |poll_community|
       poll_community.update(community: poll_community.community.to_user_community)
     end

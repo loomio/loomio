@@ -1,0 +1,16 @@
+- if @info.recipient_stance
+  %h3= t(:"poll_mailer.common.your_response")
+  - option = @info.recipient_stance.poll_options.first
+  %table
+    %tr
+      %td= image_tag "poll_mailer/vote-button-#{option.name}.png", alt: "#{option.name} icon", class: "poll-mailer-#{@info.poll.poll_type}__option-icon"
+      %td= t("poll_#{@info.poll.poll_type}_options.#{option.name}")
+      %td= link_to t(:"poll_mailer.common.change_your_stance"), poll_url(@info.poll, @info.utm_hash(change_vote: true))
+  %p= @info.recipient_stance.reason
+- else
+  %h3= t(:"poll_mailer.common.please_respond")
+  %table
+    - @info.poll.poll_options.each do |option|
+      %tr
+        %td= image_tag "poll_mailer/vote-button-#{option.name}.png", alt: "#{option.name} icon", class: "poll-mailer-#{@info.poll.poll_type}__option-icon"
+        %td= link_to t("poll_#{@info.poll.poll_type}_options.#{option.name}"), poll_url(@info.poll, @info.utm_hash(poll_option_id: option.id))

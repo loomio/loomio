@@ -16,17 +16,23 @@ proposal:
     - priority_first
     - priority_last
 
-yes_no:
+count:
   poll_options_attributes:
-    - name:           "engage"
+    - name:           "yes"
+    - name:           "no"
+  translate_option_name: true
+  has_option_icons:      true
   chart_type:         progress
   material_icon:      check_circle
   must_have_options:  true
-  can_add_options:    true
-  can_remove_options: true
+  can_add_options:    false
+  can_remove_options: false
+  must_have_options:  true
   sort_options:
     - newest_first
     - oldest_first
+    - priority_first
+    - priority_last
 
 poll:
   poll_options_attributes: []

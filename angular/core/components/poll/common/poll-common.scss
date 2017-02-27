@@ -3,6 +3,12 @@
   font-style: italic;
 }
 
+.poll-common-tip {
+  @include fontSmall;
+  font-style: italic;
+  margin-bottom: 32px;
+}
+
 .poll-common-modal-header {
   @include displayFlex;
 }
@@ -34,4 +40,12 @@
   @include displayFlex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.poll-common-checkbox-option {
+  @include displayFlex;
+  margin-bottom: 16px;
+}
+.poll-common-checkbox-option__text{
+  flex-grow: 1
 }

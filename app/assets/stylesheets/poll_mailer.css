@@ -33,11 +33,19 @@
   width: 20px;
 }
 
-.poll-mailer-proposal__thumb-image {
+.poll-mailer-count__option-icon {
+  width: 18px;
+}
+
+.poll-mailer-count__option-icon--small {
+  width: 18px;
+}
+
+.poll-mailer-proposal__option-icon {
   width: 55px;
 }
 
-.poll-mailer-proposal__thumb-image--small {
+.poll-mailer-proposal__option-icon--small {
   width: 24px;
 }
 

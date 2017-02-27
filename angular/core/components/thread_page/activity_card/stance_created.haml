@@ -6,4 +6,6 @@
       %h3.thread-item__title{id: "event-{{event.id}}"}
         %span{translate: "poll_thread_item.{{stance.poll().pollType}}.{{event.kind}}", translate-values: "{author: event.actor().name}"}>
         %poll_common_stance_choice{ng-repeat: "choice in stance.stanceChoices()", stance_choice: "choice"}
+        &nbsp;
       %p {{ stance.reason }}
+      %timeago.timeago--inline{timestamp: "event.createdAt"}

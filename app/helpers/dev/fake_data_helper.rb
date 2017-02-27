@@ -31,7 +31,7 @@ module Dev::FakeDataHelper
     option_names = {
       poll: 3.times.map{ Faker::Food.ingredient },
       proposal: %w[agree abstain disagree block],
-      yes_no: %w[accept decline]
+      count: %w[yes no]
     }.with_indifferent_access
 
     options = {
