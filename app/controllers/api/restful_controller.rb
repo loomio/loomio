@@ -21,7 +21,7 @@ class API::RestfulController < ActionController::Base
   end
 
   def current_user
-    super || token_user || restricted_user || LoggedOutUser.new
+    super || token_user || restricted_user || visitor_user || LoggedOutUser.new
   end
 
   def token_user
@@ -32,6 +32,10 @@ class API::RestfulController < ActionController::Base
 
   def restricted_user
     @restricted_user ||= User.find_by(unsubscribe_token: params[:unsubscribe_token]) if params[:unsubscribe_token]
+  end
+
+  def visitor_user
+    @visitor_user ||= Visitor.find_by(participation_token: params[:participation_token]) if params[:participation_token]
   end
 
   def permitted_params
