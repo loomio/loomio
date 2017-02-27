@@ -12,7 +12,11 @@ class API::VisitorsController < API::RestfulController
   end
 
   def accessible_records
-    load_and_authorize(:poll).visitors.where(revoked: false)
+    if community = load_and_authorize(:poll).community_of_type(params.fetch(:community_type, :email))
+      community.members
+    else
+      Visitor.none
+    end
   end
 
 end

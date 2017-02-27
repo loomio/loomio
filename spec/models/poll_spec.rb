@@ -28,4 +28,53 @@ describe Poll do
     poll.closing_at = 1.day.ago
     expect(poll).to be_valid
   end
+
+  describe 'anyone_can_participate=' do
+    before { poll.save }
+    let(:community) { poll.communities.create(community_type: :public) }
+
+    it 'creates a public community if true' do
+      expect { poll.update(anyone_can_participate: true) }.to change { poll.communities.count }.by(1)
+    end
+
+    it 'removes the public community if it exists' do
+      community
+      expect { poll.update(anyone_can_participate: false) }.to change { poll.communities.count }.by(-1)
+    end
+
+    it 'does nothing if public community is already present' do
+      community
+      expect { poll.update(anyone_can_participate: true) }.to_not change { poll.communities.count }
+    end
+
+    it 'does nothing if public community doesnt exist' do
+      expect { poll.update(anyone_can_participate: false) }.to_not change { poll.communities.count }
+    end
+  end
+
+  describe 'participant_emails=' do
+    before { poll.save }
+    let(:community) { poll.communities.create(community_type: :email) }
+    let(:emails) { ["one@one.com", "two@two.com"] }
+
+    it 'creates a email community if true' do
+      expect { poll.update(participant_emails: emails) }.to change { poll.communities.count }.by(1)
+      expect(Communities::Email.last.visitors.pluck(:email)).to eq emails
+    end
+
+    it 'removes the email community if it exists' do
+      community
+      expect { poll.update(participant_emails: []) }.to change { poll.communities.count }.by(-1)
+    end
+
+    it 'updates the existing email community if it exists' do
+      community
+      expect { poll.update(participant_emails: emails) }.to_not change { poll.communities.count }
+      expect(community.visitors.pluck(:email)).to eq emails
+    end
+
+    it 'does nothing if email community doesnt exist' do
+      expect { poll.update(participant_emails: []) }.to_not change { poll.communities.count }
+    end
+  end
 end

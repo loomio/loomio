@@ -22,7 +22,7 @@ class Poll < ActiveRecord::Base
   has_many :stances
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
-  has_many :visitors
+  has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
@@ -39,7 +39,6 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_communities
   has_many :communities, through: :poll_communities
-  accepts_nested_attributes_for :communities
 
   attr_accessor :participant_emails
 
@@ -145,20 +144,35 @@ class Poll < ActiveRecord::Base
     @poll_option_removed_names = (existing - names)
   end
 
+  def anyone_can_participate=(boolean)
+    if boolean && !has_public_community?
+      community_of_type(:public, build: true)
+    elsif !boolean && has_public_community?
+      community_of_type(:public).destroy
+    end
+  end
+
   def participant_emails=(emails)
-    return unless Array(emails).any?
-    (emails - visitors.pluck(:email)).map { |email| self.visitors.create!(email: email) }
-    email_community.update(visitor_ids: reload.visitor_ids)
+    if emails.any?
+      email_community.add_members!(emails)
+    else
+      community_of_type(:email, build: true)&.destroy
+    end
+  end
+
+  def community_of_type(community_type, build: false)
+    communities.find_by(community_type: community_type) ||
+    (build && communities.build(community_type: community_type))
   end
 
   private
 
-  def group_community
-    @group_community ||= group.community
+  def has_public_community?
+    @has_public_community ||= community_of_type(:public).present?
   end
 
   def email_community
-    communities.detect { |c| c.community_type == :email } || Communities::Email.new
+    community_of_type(:email) || poll_communities.create(community: Communities::Email.new).community
   end
 
   # provides a base hash of 0's to merge with stance data

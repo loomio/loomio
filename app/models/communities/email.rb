@@ -1,15 +1,16 @@
 class Communities::Email < Communities::Base
   set_community_type :email
-  set_custom_fields  :visitor_ids
 
-  validates :visitor_ids, length: { minimum: 1 }
+  def add_members!(emails)
+    (emails - visitors.pluck(:email)).map { |email| visitors.create!(email: email) }
+  end
 
   def includes?(member)
     emails.include?(member.email)
   end
 
   def members
-    @members ||= Visitor.where(id: visitor_ids, revoked: false)
+    @members ||= visitors.where(revoked: false)
   end
 
   def notify!(event)

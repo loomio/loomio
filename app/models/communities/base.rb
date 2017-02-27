@@ -4,6 +4,7 @@ class Communities::Base < ActiveRecord::Base
 
   has_many :poll_communities, foreign_key: :community_id
   has_many :polls, through: :poll_communities
+  has_many :visitors, foreign_key: :community_id
 
   def self.set_community_type(type)
     after_initialize { self.community_type = type }
