@@ -145,10 +145,12 @@ class Poll < ActiveRecord::Base
   end
 
   def anyone_can_participate=(boolean)
-    if boolean && !has_public_community?
+    return if self[:anyone_can_participate] == boolean
+    super
+    if boolean
       community_of_type(:public, build: true)
-    elsif !boolean && has_public_community?
-      community_of_type(:public).destroy
+    else
+      community_of_type(:public)&.destroy
     end
   end
 

@@ -1522,9 +1522,14 @@ en:
     no_group_selected: No group selected
     share_a_link: Shareable link
     anyone_can_participate: Anyone can participate
+    anyone_can_participate_true: Shareable link created
+    anyone_can_participate_false: Shareable link revoked
+    set_group: Loomio group updated
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
+    guests_invited: Invited {{count}} guests
+    guest_revoked: Revoked access for {{email}}
     invite_guests: Invite guests
     existing_guests: Existing guests
     new_guests: New emails to invite

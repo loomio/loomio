@@ -20,11 +20,18 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
     $scope.visitors = ->
       _.filter $scope.allVisitors, (visitor) -> !visitor.revoked
 
-    $scope.setGroup = FormService.submit $scope, $scope.poll,
-      flashSuccess: "poll_common_manage_card.set_group"
+    $scope.setGroup = ->
+      $scope.settingGroup = true
+      $scope.poll.save()
+                 .then -> FlashService.success "poll_common_manage_card.set_group"
+                 .finally -> $scope.settingGroup = false
 
-    $scope.setAnyoneCanParticipate = FormService.submit $scope, $scope.poll,
-      flashSuccess: "poll_common_manage_card.anyone_can_participate_success"
+
+    $scope.setAnyoneCanParticipate = ->
+      $scope.settingAnyoneCanParticipate = true
+      $scope.poll.save()
+            .then -> FlashService.success "poll_common_manage_card.anyone_can_participate_#{$scope.poll.anyoneCanParticipate}"
+            .finally -> $scope.settingAnyoneCanParticipate = false
 
     $scope.hasNewEmails = ->
       $scope.newEmails.length > 0
@@ -45,7 +52,7 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
       visitor.destroy()
              .then ->
                visitor.revoked = true
-               FlashService.success "poll_common_manage_card.visitor_revoked"
+               FlashService.success "poll_common_manage_card.guest_revoked", email: visitor.email
 
     $scope.remind = (visitor) ->
       visitor.reminding = true
@@ -60,7 +67,7 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
       $scope.poll.save()
                  .then ->
                     $scope.fetchVisitors()
-                    FlashService.success "poll_common_manage_card.users_invited"
+                    FlashService.success "poll_common_manage_card.guests_invited", count: $scope.newEmails.length
                     $scope.newEmails = []
                  .finally ->
                    $scope.poll.inviting = false
