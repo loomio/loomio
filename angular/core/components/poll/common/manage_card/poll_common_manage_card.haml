@@ -30,7 +30,8 @@
           %md-select.md-no-underline{ng-model: "poll.groupId", ng-change: "setGroup()", aria-label: "{{ 'poll_common_manage_card.loomio_group_select' | translate }}"}
             %md-option{ng-repeat: "group in groupOptions()", ng-value: "group.id"}
               {{group.fullName}}
-        %p.poll-common-manage-card__helptext{translate: "poll_common_manage_card.has_loomio_group"}
+        %p.poll-common-manage-card__helptext{ng-if: "poll.groupId", translate: "poll_common_manage_card.has_loomio_group"}
+        %p.poll-common-manage-card__helptext{ng-if: "!poll.groupId", translate: "poll_common_manage_card.no_loomio_group"}
 
   %hr
 

@@ -1536,6 +1536,7 @@ en:
     enter_email: "E.g. guest@example.com"
     reminded: Reminder email sent!
     send_emails: Send invitations ({{count}})
+    no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
     poll_is_shareable: Anyone who has the link to this poll can vote. Send the link above to anyone you wish to participate.
     poll_is_private: Users must be invited in order to view and participate in this poll.
