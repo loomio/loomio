@@ -8,13 +8,8 @@ class LoggedOutUser
     set_avatar_initials if (@name || @email)
   end
 
-  def id
-    nil
-  end
-
-  def created_at
-    nil
-  end
+  NIL_METHODS = [:id, :participation_token, :created_at]
+  NIL_METHODS.each { |method| define_method(method, -> { nil }) }
 
   def avatar_url(size)
     nil

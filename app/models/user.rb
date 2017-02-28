@@ -144,6 +144,10 @@ class User < ActiveRecord::Base
     id
   end
 
+  def participation_token
+    nil
+  end
+
   def is_logged_in?
     true
   end

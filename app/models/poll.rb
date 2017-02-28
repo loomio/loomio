@@ -162,6 +162,14 @@ class Poll < ActiveRecord::Base
     end
   end
 
+  def discussion=(discussion)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
+  def discussion_id=(discussion_id)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
   def group_id=(group_id)
     return if self[:group_id] == group_id
     super
