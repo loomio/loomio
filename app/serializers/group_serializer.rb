@@ -22,6 +22,7 @@ class GroupSerializer < ActiveModel::Serializer
              :proposal_outcomes_count,
              :discussions_count,
              :public_discussions_count,
+             :announcement_recipients_count,
              :group_privacy,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,

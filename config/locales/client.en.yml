@@ -408,6 +408,7 @@ en:
     new_discussion_submit: 'Start thread'
     edit_discussion_submit: 'Update thread'
     make_announcement: Announcement
+    notified_count: '{{count}} people will be emailed'
 
   proposal_expanded:
     collapse: Collapse
