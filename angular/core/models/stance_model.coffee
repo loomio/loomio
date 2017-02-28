@@ -6,6 +6,11 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     @serializableAttributes: AppConfig.permittedParams.stance
     @draftParent: 'poll'
 
+    afterConstruction: ->
+      @visitorAttributes =
+        name:  @participant().name
+        email: @participant().email
+
     defaultValues: ->
       reason: ''
       stanceChoicesAttributes: []
