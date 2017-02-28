@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, Records, $location, ModalService, PollCommonOutcomeForm, PollService, Session) ->
+angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, Records, $location, ModalService, PollCommonOutcomeForm, PollCommonEditVoteModal, Session) ->
   $rootScope.$broadcast('currentComponent', { page: 'pollPage', skipScroll: true })
 
   @init = (poll) =>
@@ -10,7 +10,7 @@ angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope
         ModalService.open PollCommonOutcomeForm, outcome: -> Records.outcomes.build(pollId: poll.id)
 
       if $location.search().change_vote
-        ModalService.open PollService.formFor(poll.pollType, 'stance'), stance: -> poll.lastStanceByUser(Session.user())
+        ModalService.open PollCommonEditVoteModal, stance: -> poll.lastStanceByUser(Session.user())
 
   Records.polls.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)

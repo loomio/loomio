@@ -1,15 +1,10 @@
-angular.module('loomioApp').factory 'PollCountForm', ->
+angular.module('loomioApp').directive 'pollCountForm', ->
+  scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/count/form/poll_count_form.html'
-  controller: ($scope, poll, FormService, AttachmentService, KeyEventService, TranslationService) ->
-    $scope.poll = poll.clone()
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
-
-    actionName = if $scope.poll.isNew() then 'created' else 'updated'
-
-    $scope.submit = FormService.submit $scope, $scope.poll,
-      successCallback: AttachmentService.cleanupAfterUpdate('poll')
-      flashSuccess: "poll_count_form.count_#{actionName}"
-      draftFields: ['title', 'details', 'action']
+  controller: ($scope, FormService, AttachmentService, PollService, KeyEventService, TranslationService) ->
+    $scope.submit = PollService.submitPoll $scope, $scope.poll,
+      prepareFn: ->
+        $scope.poll.pollOptionNames = _.pluck PollService.fieldFromTemplate('count', 'poll_options_attributes'), 'name'
 
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:   'poll_count_form.title_placeholder'

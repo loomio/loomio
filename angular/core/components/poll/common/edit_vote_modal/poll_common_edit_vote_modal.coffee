@@ -1,0 +1,9 @@
+angular.module('loomioApp').factory 'PollCommonEditVoteModal', (PollService) ->
+  templateUrl: 'generated/components/poll/common/edit_vote_modal/poll_common_edit_vote_modal.html'
+  controller: ($scope, stance) ->
+    $scope.stance = stance.clone()
+
+    $scope.$on 'stanceSaved', $scope.$close
+
+    $scope.icon = ->
+      PollService.fieldFromTemplate($scope.stance.poll().pollType, 'material_icon')

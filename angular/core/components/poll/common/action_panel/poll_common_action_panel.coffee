@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, ModalService, Records, PollService) ->
+angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, ModalService, Records, PollCommonEditVoteModal) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/action_panel/poll_common_action_panel.html'
   controller: ($scope, Records, Session) ->
@@ -12,8 +12,5 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, Modal
     $scope.userHasVoted = ->
       $scope.poll.lastStanceByUser(Session.user())
 
-    $scope.stanceForm = ->
-      PollService.formFor($scope.poll.pollType, 'stance')
-
     $scope.openStanceForm = ->
-      ModalService.open $scope.stanceForm(), stance: -> $scope.stance
+      ModalService.open PollCommonEditVoteModal, stance: -> $scope.stance
