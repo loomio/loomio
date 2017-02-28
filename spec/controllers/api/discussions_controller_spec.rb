@@ -566,6 +566,17 @@ describe API::DiscussionsController do
         expect(Discussion.last).to be_present
       end
 
+      describe 'make_announcement' do
+        it 'does not email users for non-announcements' do
+          expect { post :create, discussion: discussion_params, format: :json }.to_not change { ActionMailer::Base.deliveries.count }
+        end
+
+        it 'makes an announcement' do
+          discussion_params[:make_announcement] = true
+          expect { post :create, discussion: discussion_params, format: :json }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        end
+      end
+
       it 'responds with json' do
         post :create, discussion: discussion_params, format: :json
         json = JSON.parse(response.body)
