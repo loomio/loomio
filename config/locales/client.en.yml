@@ -407,6 +407,7 @@ en:
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
     new_discussion_submit: 'Start thread'
     edit_discussion_submit: 'Update thread'
+    make_announcement: Announcement
 
   proposal_expanded:
     collapse: Collapse

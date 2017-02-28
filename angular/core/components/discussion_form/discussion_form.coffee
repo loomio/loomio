@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
     $scope.discussion = discussion.clone()
 
     if $scope.discussion.isNew()
+      $scope.discussion.makeAnnouncement = true
       $scope.showGroupSelect = true
 
     actionName = if $scope.discussion.isNew() then 'created' else 'updated'
