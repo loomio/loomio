@@ -1,14 +1,15 @@
 class LoggedOutUser
   include NullUser
-  attr_accessor :name, :email, :avatar_initials
+  attr_accessor :name, :email, :participation_token, :avatar_initials
 
-  def initialize(name: nil, email: nil)
+  def initialize(name: nil, email: nil, participation_token: nil)
     @name = name
     @email = email
+    @participation_token = participation_token
     set_avatar_initials if (@name || @email)
   end
 
-  NIL_METHODS = [:id, :participation_token, :created_at]
+  NIL_METHODS = [:id, :created_at]
   NIL_METHODS.each { |method| define_method(method, -> { nil }) }
 
   def avatar_url(size)

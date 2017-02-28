@@ -49,6 +49,10 @@ angular-clipboard@latest:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/angular-clipboard/-/angular-clipboard-1.5.0.tgz#5dcfacd8f91184d165852a71c485e675c4233802"
 
+angular-cookies@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.6.2.tgz#ffb69f35f84d1efe71addac20a2905476b658884"
+
 angular-elastic@latest:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/angular-elastic/-/angular-elastic-2.5.1.tgz#e938ab1bd8c76415b8ca6514b15fe3593a5df535"

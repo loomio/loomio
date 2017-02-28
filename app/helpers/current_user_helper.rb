@@ -1,6 +1,6 @@
 module CurrentUserHelper
   def current_user_or_visitor
-    @current_user_or_visitor ||= current_user || restricted_user || LoggedOutUser.new
+    @current_user_or_visitor ||= current_user || restricted_user || LoggedOutUser.new(participation_token: cookies[:participation_token])
   end
 
   def user_is_restricted?

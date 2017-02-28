@@ -21,7 +21,7 @@ class API::RestfulController < ActionController::Base
   end
 
   def current_user
-    super || token_user || restricted_user || visitor_user || LoggedOutUser.new
+    super || token_user || restricted_user || visitor_user || LoggedOutUser.new(participation_token: cookies[:participation_token])
   end
 
   def token_user

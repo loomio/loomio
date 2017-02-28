@@ -6,6 +6,7 @@ class Full::UserSerializer < UserSerializer
   has_many :memberships, serializer: MembershipSerializer, root: :memberships
   has_many :unread_threads, serializer: DiscussionSerializer, root: :discussions
   has_many :notifications, serializer: NotificationSerializer, root: :notifications
+  has_many :visitors, serializer: VisitorSerializer, root: :visitors
 
   def memberships
     from_scope :memberships
@@ -17,6 +18,10 @@ class Full::UserSerializer < UserSerializer
 
   def notifications
     from_scope :notifications
+  end
+
+  def visitors
+    from_scope :visitors
   end
 
   def is_coordinator
