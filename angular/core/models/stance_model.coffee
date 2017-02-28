@@ -7,9 +7,10 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
     @draftParent: 'poll'
 
     afterConstruction: ->
-      @visitorAttributes =
-        name:  @participant().name
-        email: @participant().email
+      if @participant()
+        @visitorAttributes =
+          name:  @participant().name
+          email: @participant().email
 
     defaultValues: ->
       reason: ''
