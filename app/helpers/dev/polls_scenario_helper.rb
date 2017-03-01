@@ -128,6 +128,15 @@ module Dev::PollsScenarioHelper
     scenario.merge(observer: observer)
   end
 
+  def visitor_scenario(poll_type:)
+    poll = fake_poll(poll_type: poll_type, anyone_can_participate: true, discussion: nil)
+    author = saved fake_user
+    PollService.create(poll: poll, actor: author)
+
+    {poll: poll,
+     author: author}
+  end
+
   def poll_notifications_scenario(poll_type:)
     discussion = saved fake_discussion(group: create_group_with_members)
     observer   = saved fake_user
