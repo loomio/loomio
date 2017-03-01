@@ -1343,7 +1343,7 @@ en:
     by_who: "by {{name}}"
 
   poll_common_notify_group:
-    notify_group: Notify group
+    notify_group: Announcement
     members_count: "{{count}} people will be notified"
 
   poll_common_close_form:
