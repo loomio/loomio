@@ -330,7 +330,6 @@ class Ability
       (!poll.group || user.ability.can?(:poll, poll.group.community))
     end
 
-    # NB: discussion dependency on polls
     can [:remind, :update, :manage], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)

@@ -270,16 +270,16 @@ FactoryGirl.define do
     community_type 'test'
   end
 
+  factory :public_community, class: Communities::Public
+  factory :email_community, class: Communities::Email
+
   factory :loomio_group_community, class: Communities::LoomioGroup do
     group
   end
 
-  factory :email_community, class: Communities::Email do
-    emails ["test@test.com"]
-  end
 
   factory :visitor do
-    poll
+    association :community, factory: :public_community
     name "John Doe"
     email "john@doe.com"
     participation_token SecureRandom.hex(8)

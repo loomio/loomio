@@ -5,7 +5,7 @@ class Visitor < ActiveRecord::Base
   before_create :generate_participation_token
   before_create :set_avatar_initials
 
-  belongs_to :community, required: true, class_name: "Communities::Base"
+  belongs_to :community, class_name: "Communities::Base"
   has_many :stances, as: :participant
 
   private

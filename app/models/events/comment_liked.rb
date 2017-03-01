@@ -14,7 +14,7 @@ class Events::CommentLiked < Event
     return User.none if !comment ||                # there is no comment
                          user == comment.author || # you liked your own comment
                          !comment.group.memberships.find_by(user: comment.author) # the author has left the group
-    Array(comment.author)
+    User.where(id: comment.author_id)
   end
 
   def comment

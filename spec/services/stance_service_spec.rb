@@ -6,7 +6,7 @@ describe StanceService do
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
-  let(:public_poll) { create :poll }
+  let(:public_poll) { create :poll, anyone_can_participate: true }
   let(:public_stance) { build :stance, poll: public_poll, stance_choices: [agree_choice], participant: nil }
   let(:user) { create :user }
   let(:visitor) { build :visitor }

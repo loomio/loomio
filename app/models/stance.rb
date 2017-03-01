@@ -29,9 +29,7 @@ class Stance < ActiveRecord::Base
   validate :participant_is_complete
 
   delegate :group, to: :poll, allow_nil: true
-  def author
-    participant
-  end
+  alias :author :participant
 
   def choice=(choice)
     if choice.kind_of?(Hash)
@@ -50,7 +48,9 @@ class Stance < ActiveRecord::Base
   private
 
   def participant_is_complete
-    return if participant.valid?
-    participant.errors.each { |k,v| errors.add("participant_#{k}", v) }
+    if participant&.name.blank?
+      errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
+      participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))
+    end
   end
 end

@@ -82,8 +82,7 @@ describe API::PollsController do
       poll = Poll.last
       expect(poll.discussion).to eq nil
       expect(poll.group).to eq nil
-      expect(poll.communities.length).to eq 1
-      expect(poll.communities.first).to be_a Communities::Public
+      expect(poll.communities).to be_empty
     end
 
     it 'can create an email list poll' do

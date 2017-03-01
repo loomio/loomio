@@ -166,7 +166,6 @@ describe API::StancesController do
 
       json = JSON.parse(response.body)
       expect(json['errors']['participant_name']).to be_present
-      expect(json['errors']['participant_email']).to be_present
     end
 
     it 'does not allow unauthorized visitors to create stances' do
