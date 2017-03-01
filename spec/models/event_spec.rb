@@ -110,6 +110,7 @@ describe Event do
   end
 
   it 'new_discussion' do
+    discussion.make_announcement = true
     email_users = Events::NewDiscussion.publish!(discussion).send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
