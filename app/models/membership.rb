@@ -9,6 +9,7 @@ class Membership < ActiveRecord::Base
   belongs_to :group
   update_counter_cache :group, :memberships_count
   update_counter_cache :group, :admin_memberships_count
+  update_counter_cache :group, :announcement_recipients_count
 
   belongs_to :user, counter_cache: true
   belongs_to :inviter, class_name: 'User'

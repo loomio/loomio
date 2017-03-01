@@ -30,6 +30,7 @@ class Discussion < ActiveRecord::Base
   include HasMentions
   include HasPolls
   include MessageChannel
+  include MakesAnnouncements
 
   scope :archived, -> { where('archived_at is not null') }
   scope :published, -> { where(archived_at: nil, is_deleted: false) }

@@ -3,7 +3,8 @@ module HasVolume
 
   included do
     enum volume: [:mute, :quiet, :normal, :loud]
-    scope :volume, ->(volume) { where(volume: volumes[volume]) }
+    scope :volume,          ->(volume) { where(volume: volumes[volume]) }
+    scope :volume_at_least, ->(volume) { where('volume >= ?', volumes[volume]) }
   end
 
   def set_volume!(volume, persist: true)
