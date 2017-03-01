@@ -60,7 +60,7 @@ end
 
 When(/^I start a new discussion$/) do
   reset_mailer
-  @discussion = FactoryGirl.build :discussion, author: @user, group: @group
+  @discussion = FactoryGirl.build :discussion, author: @user, group: @group, make_announcement: true
   @event = DiscussionService.create(discussion: @discussion, actor: @discussion.author)
 end
 
@@ -331,7 +331,7 @@ When(/^I vote on the proposal$/) do
   @vote = FactoryGirl.build :vote, motion: @motion, user: @user
   @cast_vote_event = VoteService.create vote: @vote, actor: @user
 end
-  
+
 When(/^my proposal is about to close$/) do
   step 'I start a new discussion'
   @motion = FactoryGirl.build :motion, discussion: @discussion, author: @user
