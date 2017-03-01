@@ -89,7 +89,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :starred, {attachment_ids: []}]
+    [:title, :attachment_ids, :description, :uses_markdown, :group_id, :private, :iframe_src, :starred, :make_announcement, {attachment_ids: []}]
   end
 
   def comment_attributes

@@ -70,6 +70,14 @@
             %span.seperator
             %span{ng-bind-html: "privacyPrivateDescription()"}
 
+      %label.lmo-form-labelled-input{ng-if: "discussion.isNew()"}
+        %input.discussion-form__make-announcement{type: "checkbox", ng-model: "discussion.makeAnnouncement"}
+        %span
+          %i.fa.fa-bell>
+          %strong{translate: "discussion_form.make_announcement"}>
+          %span.seperator{ng-if: "discussion.makeAnnouncement"}
+          %span{translate: "discussion_form.notified_count", ng-if: "discussion.makeAnnouncement", translate-values: "{count: discussion.group().announcementRecipientsCount}"}
+
   .modal-footer
     %button.pull-right.lmo-btn--submit.discussion-form__submit{type: "submit", ng-disabled: "submitIsDisabled || !discussion.groupId", translate: "discussion_form.new_discussion_submit", ng-show: "discussion.isNew()" }
     %a.discussion-form__formatting-help{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}

@@ -37,6 +37,18 @@ describe 'DiscussionService' do
       expect(draft.reload.payload['discussion']).to be_blank
     end
 
+    describe 'make_announcement' do
+      it 'notifies users when make_announcement is true' do
+        discussion.make_announcement = true
+        expect { DiscussionService.create(discussion: discussion, actor: user) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+
+      it 'does not notify userse when make_announcement is false' do
+        discussion.make_announcement = false
+        expect { DiscussionService.create(discussion: discussion, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
+      end
+    end
+
     context 'the discussion is valid' do
       before { discussion.stub(:valid?).and_return(true) }
 
