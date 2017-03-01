@@ -76,7 +76,8 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
       [noGroupOption].concat(availableGroups)
 
     $scope.hasAvailableGroups = ->
-      _.any availableGroups
+      # _.any availableGroups
+      false # we're not doing groups for this iteration
 
     $scope.copied = ->
       FlashService.success('common.copied')

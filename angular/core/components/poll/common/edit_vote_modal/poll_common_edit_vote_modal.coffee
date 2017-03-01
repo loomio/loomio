@@ -7,4 +7,4 @@ angular.module('loomioApp').factory 'PollCommonEditVoteModal', (PollService) ->
     $scope.$on 'stanceSaved', $scope.$close
 
     $scope.icon = ->
-      PollService.fieldFromTemplate($scope.stance.poll().pollType, 'material_icon')
+      PollService.iconFor($scope.stance.poll())

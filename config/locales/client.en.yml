@@ -1541,3 +1541,6 @@ en:
     poll_is_shareable: Anyone who has the link to this poll can vote. Send the link above to anyone you wish to participate.
     poll_is_private: Users must be invited in order to view and participate in this poll.
     view_poll: View poll
+
+  manage_poll_page:
+    title: Share poll - {{title}}

@@ -17,7 +17,7 @@
         %p.poll-common-manage-card__helptext{translate: "poll_common_manage_card.poll_is_shareable", ng-if: "poll.anyoneCanParticipate"}
         %p.poll-common-manage-card__helptext{translate: "poll_common_manage_card.poll_is_private", ng-if: "!poll.anyoneCanParticipate"}
 
-  %hr
+  %hr{ng-if: "hasAvailableGroups()"}
 
   %section{ng-if: "hasAvailableGroups()"}
     .lmo-flex
@@ -69,5 +69,3 @@
 
   %a.md-button.md-primary.md-raised{lmo-href-for: "poll"}
     %span{translate: "poll_common_manage_card.view_poll"}
-
-  %h3{translate: "poll_common_manage_card.connect_community", ng-if: "false"}

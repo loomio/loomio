@@ -20,6 +20,9 @@ angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Record
     templateFor: (pollType) ->
       @activePollTemplates()[pollType]
 
+    iconFor: (poll) ->
+      @fieldFromTemplate(poll.pollType, 'material_icon')
+
     usePollsFor: (model) ->
       model.group().features.use_polls && !$location.search().proposalView
 

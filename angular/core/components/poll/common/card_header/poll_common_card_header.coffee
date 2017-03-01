@@ -7,4 +7,4 @@ angular.module('loomioApp').directive 'pollCommonCardHeader', ->
       AbilityService.canClosePoll($scope.poll)
 
     $scope.icon = ->
-      PollService.fieldFromTemplate($scope.poll.pollType, 'material_icon')
+      PollService.iconFor($scope.poll)
