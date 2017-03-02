@@ -143,7 +143,6 @@ class Poll < ActiveRecord::Base
   end
 
   def anyone_can_participate=(boolean)
-    return if self[:anyone_can_participate] == boolean
     if boolean
       community_of_type(:public, build: true)
     else
@@ -152,11 +151,10 @@ class Poll < ActiveRecord::Base
   end
 
   def participant_emails=(emails)
-    email_community = community_of_type(:email) || poll_communities.build(community: Communities::Email.new).community
     if emails.any?
-      email_community.add_members!(emails)
+      community_of_type(:email, build: true).add_members!(emails)
     else
-      email_community.destroy
+      community_of_type(:email)&.destroy
     end
   end
 
@@ -178,18 +176,13 @@ class Poll < ActiveRecord::Base
   end
 
   def community_of_type(community_type, build: false)
-    communities.find_by(community_type: community_type) ||
-    (build && communities.build(community_type: community_type)).presence
+    communities.find_by(community_type: community_type) || (build && build_community(community_type)).presence
   end
 
   private
 
-  def has_public_community?
-    @has_public_community ||= community_of_type(:public).present?
-  end
-
-  def email_community
-    community_of_type(:email) || poll_communities.build(community: Communities::Email.new).community
+  def build_community(community_type)
+    poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new).community
   end
 
   # provides a base hash of 0's to merge with stance data
