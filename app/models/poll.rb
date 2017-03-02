@@ -142,6 +142,10 @@ class Poll < ActiveRecord::Base
     @poll_option_removed_names = (existing - names)
   end
 
+  def anyone_can_participate
+    @anyone_can_participate ||= community_of_type(:public).present?
+  end
+
   def anyone_can_participate=(boolean)
     if boolean
       community_of_type(:public, build: true)
