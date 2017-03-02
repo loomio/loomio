@@ -24,14 +24,11 @@ class Events::UserAddedToGroup < Event
     mailer.send(kind, eventable.user, self, custom_fields['message']).deliver_now
   end
 
-  def notify_users!
-    notifications.create(user:               user,
-    actor:              notification_actor,
-    url:                notification_url,
-    translation_values: notification_translation_values)
-  end
-
   private
+
+  def notification_recipients
+    User.where(id: eventable.user_id)
+  end
 
   def notification_actor
     eventable.inviter
