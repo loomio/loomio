@@ -19,6 +19,7 @@
   %poll_common_attachment_form{poll: "poll"}
   %poll_common_notify_group{model: "poll"}
 
-  %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
-  %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update", aria-label: "{{ 'poll_proposal_form.update' | translate }}"}
-  %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start", aria-label: "{{ 'poll_proposal_form.start' | translate }}"}
+  .poll-common__actions.lmo-flex
+    %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update", aria-label: "{{ 'poll_proposal_form.update' | translate }}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_proposal_form.start", aria-label: "{{ 'poll_proposal_form.start' | translate }}"}

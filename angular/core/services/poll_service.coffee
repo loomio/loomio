@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Records, FormService, AttachmentService) ->
+angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfig, Records, FormService, LmoUrlService, AttachmentService) ->
   new class PollService
 
     # NB: this is an intersection of data and code that's a little uncomfortable at the moment.
@@ -31,7 +31,8 @@ angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Record
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
         successCallback: (data) ->
-          scope.$emit 'pollSaved', data.polls[0].key
+          scope.$emit 'pollSaved'
+          $window.location = LmoUrlService.poll(Records.polls.find(data.polls[0].key), {share: true})
           AttachmentService.cleanupAfterUpdate(data.polls[0], 'poll')
         draftFields: ['title', 'details']
       , options))

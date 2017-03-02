@@ -282,6 +282,7 @@ en:
     start_group: 'Start Group'
     start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
+    start_poll: 'Start Poll'
     invite_people: 'Invite People'
 
   notifications:
@@ -1342,6 +1343,7 @@ en:
     share_poll: Share poll
     share_proposal: Share proposal
     share_count: Share count
+    start_poll: Start a new poll
 
   poll_common_card:
     show_results: Show results
