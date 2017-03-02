@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormService, Records, Session, FlashService, AbilityService, KeyEventService, LmoUrlService) ->
-  scope: {poll: '='}
+angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormService, Records, Session, FlashService, AbilityService, KeyEventService, LmoUrlService) ->
+  scope: {poll: '=', back: '=?'}
   restrict: 'E'
-  templateUrl: 'generated/components/poll/common/manage_card/poll_common_manage_card.html'
+  templateUrl: 'generated/components/poll/common/share_form/poll_common_share_form.html'
   controller: ($scope) ->
     $scope.fetchVisitors = ->
       Records.visitors.fetchByPoll($scope.poll.key).then (response) ->
@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
     $scope.newEmail  = ''
     $scope.shareableLink = LmoUrlService.poll($scope.poll, {}, absolute: true)
 
-    noGroupOption = Records.groups.build(id: null, fullName: $translate.instant("poll_common_manage_card.no_group_selected"))
+    noGroupOption = Records.groups.build(id: null, fullName: $translate.instant("poll_common_share_form.no_group_selected"))
     availableGroups = _.filter Session.user().groups(), (group) ->
       AbilityService.canStartPoll(group)
 
@@ -23,14 +23,14 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
     $scope.setGroup = ->
       $scope.settingGroup = true
       $scope.poll.save()
-                 .then -> FlashService.success "poll_common_manage_card.set_group"
+                 .then -> FlashService.success "poll_common_share_form.set_group"
                  .finally -> $scope.settingGroup = false
 
 
     $scope.setAnyoneCanParticipate = ->
       $scope.settingAnyoneCanParticipate = true
       $scope.poll.save()
-            .then -> FlashService.success "poll_common_manage_card.anyone_can_participate_#{$scope.poll.anyoneCanParticipate}"
+            .then -> FlashService.success "poll_common_share_form.anyone_can_participate_#{$scope.poll.anyoneCanParticipate}"
             .finally -> $scope.settingAnyoneCanParticipate = false
 
     $scope.hasNewEmails = ->
@@ -52,7 +52,7 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
       visitor.destroy()
              .then ->
                visitor.revoked = true
-               FlashService.success "poll_common_manage_card.guest_revoked", email: visitor.email
+               FlashService.success "poll_common_share_form.guest_revoked", email: visitor.email
 
     $scope.remind = (visitor) ->
       visitor.reminding = true
@@ -67,7 +67,7 @@ angular.module('loomioApp').directive 'pollCommonManageCard', ($translate, FormS
       $scope.poll.save()
                  .then ->
                     $scope.fetchVisitors()
-                    FlashService.success "poll_common_manage_card.guests_invited", count: $scope.newEmails.length
+                    FlashService.success "poll_common_share_form.guests_invited", count: $scope.newEmails.length
                     $scope.newEmails = []
                  .finally ->
                    $scope.poll.inviting = false

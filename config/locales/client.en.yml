@@ -59,6 +59,7 @@ en:
       upload: 'Upload'
       uploading: 'Uploading'
       load_more: 'Load More'
+      share: Share
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -1338,6 +1339,9 @@ en:
     details: Details
     participant_name: Your name
     participant_email: Email address
+    share_poll: Share poll
+    share_proposal: Share proposal
+    share_count: Share count
 
   poll_common_card:
     show_results: Show results
@@ -1517,7 +1521,7 @@ en:
   poll_admin_page:
     title: Admin - {{title}}
 
-  poll_common_manage_card:
+  poll_common_share_form:
     loomio_group: Loomio group
     no_group_selected: No group selected
     share_a_link: Shareable link
@@ -1542,5 +1546,5 @@ en:
     poll_is_private: Users must be invited in order to view and participate in this poll.
     view_poll: View poll
 
-  manage_poll_page:
+  share_poll_page:
     title: Share poll - {{title}}

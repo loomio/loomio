@@ -29,7 +29,7 @@ angular.module('loomioApp').factory 'PollService', ($location, AppConfig, Record
     submitPoll: (scope, model, options = {}) ->
       actionName = if scope.poll.isNew() then 'created' else 'updated'
       FormService.submit(scope, model, _.merge(
-        flashSuccess: "poll_proposal_form.#{model.pollType}_#{actionName}"
+        flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
         successCallback: (data) ->
           scope.$emit 'pollSaved', data.polls[0].key
           AttachmentService.cleanupAfterUpdate(data.polls[0], 'poll')

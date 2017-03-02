@@ -151,6 +151,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
+    canSharePoll: (poll) ->
+      @canEditPoll(poll)
+
     canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)
 
