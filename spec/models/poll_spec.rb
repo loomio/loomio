@@ -39,6 +39,7 @@ describe Poll do
 
     it 'removes the public community if it exists' do
       community
+      poll.update(anyone_can_participate: true)
       expect { poll.update(anyone_can_participate: false) }.to change { poll.communities.count }.by(-1)
     end
 

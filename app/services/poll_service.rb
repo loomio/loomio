@@ -12,7 +12,7 @@ class PollService
   end
 
   def self.close(poll:, actor:)
-    actor.ability.authorize!(:close, poll)
+    actor.ability.authorize! :close, poll
     do_closing_work(poll: poll)
     EventBus.broadcast('poll_close', poll, actor)
     Events::PollClosedByUser.publish!(poll, actor)

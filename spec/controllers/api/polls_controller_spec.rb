@@ -8,7 +8,7 @@ describe API::PollsController do
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let!(:poll) { create :poll, discussion: discussion, author: user, communities: [discussion.group.community] }
+  let!(:poll) { create :poll, discussion: discussion, author: user }
   let(:another_poll) { create :poll, discussion: another_discussion }
   let(:non_group_poll) { create :poll }
   let(:poll_params) {{

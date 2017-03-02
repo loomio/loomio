@@ -40,8 +40,6 @@ class Poll < ActiveRecord::Base
   has_many :poll_communities
   has_many :communities, through: :poll_communities
 
-  attr_accessor :participant_emails
-
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
@@ -146,7 +144,6 @@ class Poll < ActiveRecord::Base
 
   def anyone_can_participate=(boolean)
     return if self[:anyone_can_participate] == boolean
-    super
     if boolean
       community_of_type(:public, build: true)
     else
@@ -155,10 +152,11 @@ class Poll < ActiveRecord::Base
   end
 
   def participant_emails=(emails)
+    email_community = community_of_type(:email) || poll_communities.build(community: Communities::Email.new).community
     if emails.any?
       email_community.add_members!(emails)
     else
-      community_of_type(:email)&.destroy
+      email_community.destroy
     end
   end
 
@@ -191,7 +189,7 @@ class Poll < ActiveRecord::Base
   end
 
   def email_community
-    community_of_type(:email) || poll_communities.create(community: Communities::Email.new).community
+    community_of_type(:email) || poll_communities.build(community: Communities::Email.new).community
   end
 
   # provides a base hash of 0's to merge with stance data
