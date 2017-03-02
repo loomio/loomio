@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe PollService do
   let(:poll_created) { build :poll, discussion: discussion }
+  let(:public_poll) { build :poll, anyone_can_participate: true }
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
@@ -14,7 +15,7 @@ describe PollService do
   let(:discussion) { create :discussion, group: group }
   let(:stance) { create :stance, poll: poll_created, choice: poll_created.poll_options.first.name }
 
-  before { group.add_member! user }
+  before { group.add_member!(user); group.community }
 
   describe '#create' do
     it 'creates a new poll' do
@@ -22,8 +23,7 @@ describe PollService do
     end
 
     it 'populates a public community by default' do
-      poll_created.discussion = nil
-      PollService.create(poll: poll_created, actor: user)
+      PollService.create(poll: public_poll, actor: user)
 
       poll = Poll.last
       expect(poll.communities.count).to eq 1
