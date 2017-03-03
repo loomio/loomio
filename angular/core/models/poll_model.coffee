@@ -16,6 +16,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       closingAt: moment().add(3, 'days').startOf('hour')
       pollOptionNames: []
       pollOptionIds: []
+      customFields: {}
 
     serialize: ->
       data = @baseSerialize()

@@ -418,7 +418,7 @@ en:
 
     count:
       subject:
-        poll_created: '%{actor} started a count round: %{title}'
+        poll_created: '%{actor} started a count: %{title}'
         poll_updated: '%{actor} edited the count: %{title}'
         poll_closing_soon: 'Count closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your count closes in 24 hours: %{title}'
@@ -426,7 +426,7 @@ en:
         outcome_created: '%{actor} shared a count summary: %{title}'
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a count round'
+        poll_created: '<strong>%{actor}</strong> started a count'
         poll_updated: '<strong>%{actor}</strong> edited the count'
         poll_closing_soon: '<strong>%{actor}</strong>''s count is closing in 24 hours.'
         poll_closing_soon_author: 'Your count is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'

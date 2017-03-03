@@ -5,6 +5,6 @@ class StanceChoice < ActiveRecord::Base
   delegate :has_variable_score, to: :poll
 
   validates_presence_of :poll_option
-  validates :score, numericality: { greater_than_or_equal_to: 1 }
+  validates :score, numericality: { greater_than_or_equal_to: 0 }
   validates :score, numericality: { equal_to: 1 }, unless: :has_variable_score
 end

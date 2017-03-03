@@ -31,8 +31,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
         successCallback: (data) ->
-          scope.$emit 'pollSaved'
-          $window.location = LmoUrlService.poll(Records.polls.find(data.polls[0].key), {share: true})
+          scope.$emit 'pollSaved', data.polls[0].key
           AttachmentService.cleanupAfterUpdate(data.polls[0], 'poll')
         draftFields: ['title', 'details']
       , options))
