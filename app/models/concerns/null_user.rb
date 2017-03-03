@@ -26,6 +26,10 @@ module NullUser
     Notification.none
   end
 
+  def stances
+    Stance.none
+  end
+
   def locale
     I18n.locale
   end
