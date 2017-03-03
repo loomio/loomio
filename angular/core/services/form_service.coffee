@@ -38,7 +38,7 @@ angular.module('loomioApp').factory 'FormService', ($rootScope, FlashService, Dr
           model: model
           response: response
 
-    cleanup = (scope, model, options) ->
+    cleanup = (scope, model, options = {}) ->
       ->
         options.cleanupFn(scope, model) if typeof options.cleanupFn is 'function'
         scope.isDisabled = false
