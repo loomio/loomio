@@ -340,7 +340,7 @@ class Ability
     end
 
     can [:destroy], Visitor do |visitor|
-      visitor.community.polls.any? { |poll| @user.ability.can? :update, poll }
+      @user.visitors.include?(visitor)
     end
 
     can :update, Visitor do |visitor|

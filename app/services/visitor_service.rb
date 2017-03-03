@@ -19,6 +19,6 @@ class VisitorService
     return false unless poll_event = Events::PollCreated.find_by(kind: :poll_created, eventable: poll)
     PollMailer.delay.poll_created(visitor, poll_event)
 
-    EventBus.broadcast('visitor_remind', visitor, actor)
+    EventBus.broadcast('visitor_remind', visitor, actor, poll)
   end
 end

@@ -6,6 +6,3 @@ angular.module('loomioApp').factory 'VisitorRecordsInterface', (BaseRecordsInter
       options['poll_id'] = pollKey
       @fetch
         params: options
-
-    remind: (user, comment, success) ->
-      @remote.postMember comment.id, "unlike"
