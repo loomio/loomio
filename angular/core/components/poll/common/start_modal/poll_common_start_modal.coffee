@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'PollCommonStartModal', (PollService) ->
   controller: ($scope, poll) ->
     $scope.poll = poll.clone()
 
-    $scope.$on 'pollSaved', (event, pollKey)->
+    $scope.$on 'pollSaved', (event, pollKey) ->
       $window.location = LmoUrlService.poll(Records.polls.find(pollKey), {share: true})
 
     $scope.icon = ->
