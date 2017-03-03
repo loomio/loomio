@@ -1548,5 +1548,15 @@ en:
     poll_is_private: Users must be invited in order to view and participate in this poll.
     view_poll: View poll
 
+  poll_common_participant_form:
+    participant_name_placeholder: What is your name?
+
+  poll_common_subscribe_form:
+    receive_updates_title: Your vote has been recorded
+    receive_updates_helptext: If you'd like to receive an email about the outcome of this poll, enter your email address below
+    email_saved: You will receive an email about the outcome of this poll
+    subscribe: Subscribe
+    no_thanks: No thanks
+
   share_poll_page:
     title: Share poll - {{title}}

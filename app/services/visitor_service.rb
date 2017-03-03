@@ -6,6 +6,13 @@ class VisitorService
     EventBus.broadcast('visitor_destroy', visitor, actor)
   end
 
+  def self.update(visitor:, params:, actor:)
+    actor.ability.authorize! :update, visitor
+
+    visitor.update(params.slice(:name, :email))
+    EventBus.broadcast('visitor_update', visitor, actor)
+  end
+
   def self.remind(visitor:, actor:, poll:)
     actor.ability.authorize! :remind, poll
 

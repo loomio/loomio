@@ -343,6 +343,10 @@ class Ability
       visitor.community.polls.any? { |poll| @user.ability.can? :update, poll }
     end
 
+    can :update, Visitor do |visitor|
+      @user.participation_token == visitor.participation_token
+    end
+
     can :create, Stance do |stance|
       poll = stance.poll
       if !poll.active?

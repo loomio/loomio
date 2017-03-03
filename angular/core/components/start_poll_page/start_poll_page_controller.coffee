@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'StartPollPageController', ($scope, $rootScope, $routeParams, Records, PollService) ->
+angular.module('loomioApp').controller 'StartPollPageController', ($scope, $window, $rootScope, $routeParams, Records, LmoUrlService, PollService) ->
   $rootScope.$broadcast('currentComponent', { page: 'startPollPage', skipScroll: true })
   @poll = Records.polls.build(pollType: $routeParams.poll_type)
 

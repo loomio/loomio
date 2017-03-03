@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollCommonStartModal', (PollService) ->
+angular.module('loomioApp').factory 'PollCommonStartModal', ($window, PollService, LmoUrlService, Records) ->
   templateUrl: 'generated/components/poll/common/start_modal/poll_common_start_modal.html'
   controller: ($scope, poll) ->
     $scope.poll = poll.clone()

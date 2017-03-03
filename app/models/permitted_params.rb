@@ -1,6 +1,6 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
-    user vote motion membership_request membership poll outcome
+    user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response network_membership_request
     draft oauth_application
@@ -27,6 +27,10 @@ class PermittedParams < Struct.new(:params)
      :email_missed_yesterday, :deactivation_response,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation,
      {email_new_discussions_and_proposals_group_ids: []}]
+  end
+
+  def visitor_attributes
+    [:name, :email]
   end
 
   def vote_attributes
