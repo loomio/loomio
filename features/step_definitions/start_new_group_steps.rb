@@ -42,7 +42,7 @@ Then(/^I should see the thank you page$/) do
   page.should have_css(".start-group__success")
 end
 
-Then (/^I should recieve an email with an invitation link$/) do
+Then (/^I should receive an email with an invitation link$/) do
   open_email('hank.schrader@cops.com')
   @invitation = Invitation.find_by_recipient_email('hank.schrader@cops.com')
   current_email.should have_content(invitation_path(@invitation))

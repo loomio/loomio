@@ -1,6 +1,6 @@
 Feature: Blocking bots
   As a Loomio user
-  I don't want my prefered username to already be taken by some bot
+  I don't want my preferred username to already be taken by some bot
 
   Scenario: A bot auto-fills all registration fields and gets an error
     Given I am on the user registration page

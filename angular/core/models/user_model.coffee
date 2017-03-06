@@ -6,7 +6,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
     @serializableAttributes: AppConfig.permittedParams.user
 
     relationships: ->
-      # note we should move these to a User extends UserModel so that all our authors dont get views created
+      # note we should move these to a User extends UserModel so that all our authors don't get views created
       @hasMany 'memberships'
       @hasMany 'notifications'
       @hasMany 'contacts'

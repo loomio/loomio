@@ -158,7 +158,7 @@ en:
           Describe what the group is set up to do, for example "A public group for gallery coordinators to approve requests for use of the gallery space" or "The space for our board members to consider budget proposals".
           The purpose of your group can change over time but it's helpful if the description gives new members a clear understanding of what that group is for.
           You are also able to choose your group category.
-          If you are a public group and you want people to be able to join the conversation, it's helpful to choose a category so others can use this to search on the the <a href="http://loomio.org/explore">Explore page</a>.
+          If you are a public group and you want people to be able to join the conversation, it's helpful to choose a category so others can use this to search on the <a href="http://loomio.org/explore">Explore page</a>.
       group_privacy:
         title: Group privacy
         intro_html: |

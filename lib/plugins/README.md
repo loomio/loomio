@@ -353,7 +353,7 @@ If you need a spot in the database to store all the cool stuff your plugin is do
     table.timestamps
   end
 ```
-Note that that `do` block can accept anything you'd put in a typical `create_table` block in a migration
+Note that `do` block can accept anything you'd put in a typical `create_table` block in a migration
 
 Also note that while you can add new tables to the schema, we don't support modifying the existing tables in Loomio core via plugin.
 
