@@ -353,7 +353,7 @@ If you need a spot in the database to store all the cool stuff your plugin is do
     table.timestamps
   end
 ```
-Note that that `do` block can accept anything you'd put in a typical `create_table` block in a migration
+Note that `do` block can accept anything you'd put in a typical `create_table` block in a migration
 
 Also note that while you can add new tables to the schema, we don't support modifying the existing tables in Loomio core via plugin.
 
@@ -487,11 +487,11 @@ behaves, those changes will take place across the entire instance.
 
 For most of the actions that occur in Loomio, you'll want to ensure that the current user is able to perform that action. We use [cancan](), and store our permissions in the `app/models/ability.rb` file.
 
-Unfortunately, overwriting this file directly isn't an option, but you can add new abilities by overriding the `add_additional_abilties` method, like so:
+Unfortunately, overwriting this file directly isn't an option, but you can add new abilities by overriding the `add_additional_abilities` method, like so:
 
 ```ruby
 plugin.extend_class Ability do
-  def add_additional_abilties
+  def add_additional_abilities
     can :perform, Kickflip { |skater| skater.has_mad_skillz? }
   end
 end

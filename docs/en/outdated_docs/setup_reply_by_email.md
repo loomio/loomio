@@ -31,7 +31,7 @@ pull the docker file
 sudo docker pull robguthrie/loomio-email-gateway
 ```
 
-### Know your envrionment variables
+### Know your environment variables
 You need to provide two environment variables to docker when starting the container. Here they are with example values.
 
 ```
