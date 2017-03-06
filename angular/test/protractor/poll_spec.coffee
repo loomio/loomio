@@ -10,7 +10,7 @@ describe 'Polls', ->
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
 
-    page.click '.poll-common-vote-form__radio-button:first'
+    page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
     page.click '.poll-proposal-vote-form__submit'
 
@@ -38,7 +38,7 @@ describe 'Polls', ->
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
 
-    page.click '.poll-common-vote-form__radio-button:first'
+    page.click '.poll-common-vote-form__radio-button--agree'
     page.fillIn '.poll-common-vote-form__reason textarea', 'A reason'
     page.click '.poll-proposal-vote-form__submit'
 

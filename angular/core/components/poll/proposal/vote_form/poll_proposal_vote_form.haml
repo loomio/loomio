@@ -2,7 +2,7 @@
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
   .poll-proposal-vote-form__option
     %md-radio-group{ng-model: "stance.selectedOption"}
-      %md-radio-button.poll-common-vote-form__radio-button{ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option", aria-label: "{{option.name}}"}
+      %md-radio-button.poll-common-vote-form__radio-button{class: "poll-common-vote-form__radio-button--{{option.name}}", ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option", aria-label: "{{option.name}}"}
         %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
         %span.poll-proposal-vote-form__chosen-option--name{translate: "poll_proposal_options.{{option.name}}"}
 
