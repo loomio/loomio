@@ -44,7 +44,7 @@ class PollEmailInfo
       utm_medium: 'email',
       utm_campaign: 'poll_mailer',
       utm_source: action_name,
-      participant_token: @recipient.participation_token
+      participation_token: @recipient.participation_token
     }.merge(args)
   end
 

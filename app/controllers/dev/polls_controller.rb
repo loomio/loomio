@@ -33,11 +33,11 @@ class Dev::PollsController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
-  def self.observe_scenario(scenario_name, view_as_observer: true, email: false)
+  def self.observe_scenario(scenario_name, email: false)
     Poll::TEMPLATES.keys.each do |poll_type|
       define_method :"test_#{poll_type}_#{scenario_name}#{'_email' if email}" do
         scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
-        sign_in(scenario[:observer]) if view_as_observer
+        sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
         if email
           last_email to: scenario[:observer]
         else
@@ -56,5 +56,5 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
   observe_scenario :poll_notifications
-  observe_scenario :visitor,                     view_as_observer: false
+  observe_scenario :poll_created_as_visitor,     email: true
 end

@@ -21,7 +21,7 @@ class API::RestfulController < ActionController::Base
   end
 
   def current_user
-    super || token_user || restricted_user || visitor_user || LoggedOutUser.new(participation_token: cookies[:participation_token])
+    super || token_user || restricted_user || visitor_user || LoggedOutUser.new
   end
 
   def token_user
@@ -35,7 +35,7 @@ class API::RestfulController < ActionController::Base
   end
 
   def visitor_user
-    @visitor_user ||= Visitor.find_by(participation_token: params[:participation_token]) if params[:participation_token]
+    @visitor_user ||= Visitor.find_by(participation_token: cookies[:participation_token]) if cookies[:participation_token]
   end
 
   def permitted_params
