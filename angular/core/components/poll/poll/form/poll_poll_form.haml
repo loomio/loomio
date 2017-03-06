@@ -1,5 +1,5 @@
 .poll-poll-form
-  %input{type: "hidden", ng-model: "poll.pollType"}
+  %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_poll_form.tip"}
 
   %md-input-container.md-block
     %label{translate: "poll_poll_form.title"}

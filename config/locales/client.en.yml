@@ -1412,6 +1412,8 @@ en:
     authored_by: 'By {{name}}'
 
   poll_proposal_form:
+    start_header: Start a proposal
+    edit_header: Edit proposal
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal
     tip: Proposals are a convergence tool. Use them to bring the discussion to a clear outcome. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
@@ -1454,6 +1456,8 @@ en:
     'no': 'No'
 
   poll_count_form:
+    start_header: Start a count
+    edit_header: Edit count
     new_count: Start a count
     update_count: Edit count
     tip: 'A count is like asking: "Can I get a show of hands..". Use it to follow up on tasks or seek participants.'
@@ -1499,6 +1503,9 @@ en:
     stance_updated: Vote updated
 
   poll_dot_vote_form:
+    tip: Dot voting is a form of cumulative voting. Use it to understand preferences with more detail than a single vote.
+    start_header: Start a dot vote
+    edit_header: Edit dot vote
     title: Title
     title_placeholder: 'E.g. how should we allocate our resources?'
     details: Details
@@ -1510,6 +1517,10 @@ en:
     update: Update Dot Vote
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
+
+  poll_dot_vote_vote_form:
+    dots_remaining: You have {{count}} dots remaining.
+    too_many_dots: You have used too many dots.
 
   poll_thread_item:
     poll:

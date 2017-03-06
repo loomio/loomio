@@ -1,9 +1,5 @@
 .poll-proposal-form
-  .poll-proposal-form__tip{ng-if: "poll.isNew()"}
-    %p{translate: "poll_proposal_form.tip"}
-    %poll_common_school_link{href: "https://loomio.school/beginner/proposals.html", translation: "poll_proposal_form.learn_more"}
-
-  %input{type: "hidden", ng-model: "poll.pollType"}
+  %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_proposal_form.tip"}
 
   %md-input-container.md-block
     %label{translate: "poll_proposal_form.title"}

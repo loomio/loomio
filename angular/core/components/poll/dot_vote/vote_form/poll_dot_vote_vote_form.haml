@@ -2,8 +2,9 @@
   %md-list.poll-dot-vote-vote-form__options
     %md-list-item{ng-repeat: "choice in stanceChoices"}
       %p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': optionFor(choice).color}"} {{ optionFor(choice).name }}
-      %input{type: "number", ng-model: "choice.score"}
+      %input{type: "number", ng-model: "choice.score", min: "0", step: "1"}
   .poll-dot-vote-vote-form__too-many-dots{ng-if: "tooManyDots()", translate: "poll_dot_vote_vote_form.too_many_dots"}
+  .poll-dot-vote-vote-form__dots-remaining{ng-if: "!tooManyDots()", translate: "poll_dot_vote_vote_form.dots_remaining", translate-value-count: "{{dotsRemaining()}}"}
 
   .poll-common-vote-form__reason
     %md-input-container.md-block
