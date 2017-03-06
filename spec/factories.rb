@@ -277,12 +277,10 @@ FactoryGirl.define do
     group
   end
 
-
   factory :visitor do
     association :community, factory: :public_community
     name "John Doe"
     email "john@doe.com"
-    participation_token SecureRandom.hex(8)
   end
 
 end

@@ -30,12 +30,20 @@ class Event < ActiveRecord::Base
     Events::BaseSerializer
   end
 
+  # this is called after create, and calls methods defined by the event concerns
+  # included per event type
   def trigger!
-    # this is called after create, and calls methods defined by the event concerns
-    # included per event type
+    communities.each { |community| community.notify!(self) }
   end
 
   private
+
+  # soon, events will need to know that they are part of a Loomio::Group
+  # community, but for now we can just default to no communities
+  # Polls override this to look at the communities associated with the poll.
+  def communities
+    Communities::Base.none
+  end
 
   def call_thread_item_created
     discussion.thread_item_created!(self) if discussion_id.present?

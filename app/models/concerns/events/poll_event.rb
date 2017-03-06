@@ -7,7 +7,15 @@ module Events::PollEvent
     @poll ||= eventable.poll
   end
 
+  def mailer
+    PollMailer
+  end
+
   private
+
+  def communities
+    @communities ||= poll.communities
+  end
 
   def notification_recipients
     return User.none unless poll.group
@@ -45,9 +53,5 @@ module Events::PollEvent
 
   def notification_translation_values
     super.merge(poll_type: I18n.t(:"poll_types.#{poll.poll_type}").downcase)
-  end
-
-  def mailer
-    PollMailer
   end
 end

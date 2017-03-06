@@ -1,4 +1,5 @@
 class Communities::Email < Communities::Base
+  include Communities::EmailVisitors
   set_community_type :email
 
   def add_members!(emails)
@@ -8,14 +9,10 @@ class Communities::Email < Communities::Base
   end
 
   def includes?(member)
-    members.pluck(:email).include?(member.email)
+    members.pluck(:participation_token).include?(member.participation_token)
   end
 
   def members
     @members ||= visitors.where(revoked: false)
-  end
-
-  def notify!(event)
-    # send an email about the event if appropriate
   end
 end

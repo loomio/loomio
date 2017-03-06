@@ -1,15 +1,12 @@
 class Communities::Public < Communities::Base
   set_community_type :public
+  include Communities::EmailVisitors
 
   def includes?(member)
     true
   end
 
   def members
-    []
-  end
-
-  def notify!(event)
-    # NOOP
+    visitors.where(revoked: false)
   end
 end

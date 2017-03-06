@@ -25,7 +25,17 @@ describe Event do
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
 
+  let(:public_poll) { FactoryGirl.create :poll, anyone_can_participate: true }
+  let(:public_outcome) { FactoryGirl.create :outcome, poll: public_poll }
+
+  let(:email_community) { Communities::Email.create.tap { |c| c.polls << public_poll } }
+  let(:email_visitor) { FactoryGirl.create(:visitor, community: email_community) }
+
+  let(:public_community) { Communities::Public.create.tap { |c| c.polls << public_poll } }
+  let(:public_visitor) { FactoryGirl.create(:visitor, community: public_community) }
+
   before do
+    ActionMailer::Base.deliveries = []
     parent_comment
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
@@ -431,6 +441,28 @@ describe Event do
       notification_users = event.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include user_mentioned
+    end
+
+    describe 'notifies visitors' do
+      it 'notifies members of an email community' do
+        email_visitor
+        Events::OutcomeCreated.publish!(public_outcome)
+        expect(ActionMailer::Base.deliveries.count).to eq 1
+        expect(ActionMailer::Base.deliveries.map(&:to).flatten).to include email_visitor.email
+      end
+
+      it 'notifies members of a public community that have emails' do
+        public_visitor
+        Events::OutcomeCreated.publish!(public_outcome)
+        expect(ActionMailer::Base.deliveries.count).to eq 1
+        expect(ActionMailer::Base.deliveries.map(&:to).flatten).to include public_visitor.email
+      end
+
+      it 'does not notify members without emails' do
+        email_visitor.update(email: nil)
+        Events::OutcomeCreated.publish!(public_outcome)
+        expect(ActionMailer::Base.deliveries).to be_empty
+      end
     end
   end
 
