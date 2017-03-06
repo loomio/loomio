@@ -117,7 +117,7 @@ en:
   change_volume_form:
     aria_label: "Change email settings form"
     loud_label: "All activity"
-    normal_label: "Important activity"
+    normal_label: "Announcements"
     quiet_label: "No emails"
     mute_label: "Mute"
     discussion:
@@ -133,27 +133,27 @@ en:
     membership:
       title: "Email settings for {{title}}"
       loud_description: "You will be emailed whenever there is activity in this group."
-      normal_description: "You will be emailed about new threads and proposals in this group."
+      normal_description: "You will only be emailed announcements in this group."
       quiet_description: "You won't be emailed about activity in this group."
       apply_to_all: "Apply these settings to all my groups."
       messages:
         loud: "You will be emailed all activity in this group."
-        normal: "You will be emailed about new threads and proposals in this group."
+        normal: "You will only be emailed announcements in this group."
         quiet: "You won't be emailed about this group."
     all_groups:
       messages:
         loud: "You will be emailed all activity in all your groups."
-        normal: "You will be emailed about new threads and proposals in all your groups."
+        normal: "You will only be emailed announcements in all your groups."
         quiet: "You won't be emailed about any of your groups."
     user:
       title: Email settings for new groups
       loud_description: "You will be emailed whenever there is activity in any new groups you join."
-      normal_description: "You will be emailed about new threads and proposals in any new groups you join."
+      normal_description: "You will be emailed about announcements in any new groups you join."
       quiet_description: "You won't be emailed about activity in any new groups you join."
       apply_to_all: "Apply these settings to all my groups."
       messages:
         loud: "You will be emailed all activity in new groups."
-        normal: "You will be emailed about new threads and proposals in new groups."
+        normal: "You will be emailed about announcements in new groups."
         quiet: "You won't be emailed about new groups."
 
   mute_explanation_modal:
