@@ -6,7 +6,7 @@ angular.module('loomioApp').directive 'pollCommonStartPoll', ($window, PollServi
       _.keys PollService.activePollTemplates()
 
     $scope.iconFor = (pollType) ->
-      PollService.iconFor(pollType)
+      PollService.fieldFromTemplate(pollType, 'material_icon')
 
     $scope.editPollType = ->
       $scope.poll.pollType = null
