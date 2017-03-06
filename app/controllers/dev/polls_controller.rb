@@ -18,6 +18,10 @@ class Dev::PollsController < Dev::BaseController
     redirect_to poll_url(poll)
   end
 
+  def start_poll
+    redirect_to new_poll_url
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group

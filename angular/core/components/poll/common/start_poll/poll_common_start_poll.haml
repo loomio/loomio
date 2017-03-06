@@ -1,7 +1,7 @@
 .poll-common-start-poll
   .poll-common-start-poll__select-poll-type{ng-if: "!poll.pollType"}
-    %md-list-item.decision-tools-card__poll-type{ng-click: "poll.pollType = pollType", ng-repeat: "pollType in pollTypes() track by $index"}
-      %i.material-icons.decision-tools-card__icon {{fieldFromTemplate(pollType, 'material_icon')}}
+    %md-list-item.poll-common-start-poll__poll-type{class: "poll-common-start-poll__poll-type--{{pollType}}", ng-click: "poll.pollType = pollType", ng-repeat: "pollType in pollTypes() track by $index"}
+      %i.material-icons.decision-tools-card__icon {{iconFor(pollType)}}
       .decision-tools-card__content
         .decision-tools-card__poll-type-title.md-body-2{translate: "decision_tools_card.{{pollType}}_title"}
         .decision-tools-card__poll-type-subtitle.md-caption{translate: "decision_tools_card.{{pollType}}_subtitle"}
