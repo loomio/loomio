@@ -97,32 +97,6 @@ vi:
       quyết định cùng nhau trong nhóm. Ở đây là các gợi ý về việc hỗ trợ cho nhóm
       bạn nhằm hướng đến sự thành công mong muốn:
     different_ways: Các cách khác nhau để sử dụng Loomio
-    engaging_html: >
-      <h2>Gợi ý giúp nhóm của bạn trở nên hấp dẫn hơn với các thành viên</h2>
-
-      <p>Mọi người sẽ nhanh chóng trở nên thích thú và tham gia ngay vào thảo
-      luận khi có lời đề nghị độc đáo nào đó. Một lời đề nghị độc đáo cần chứa
-      một kế hoạch rõ ràng, vì thế
-
-      cần tạo sự rõ ràng giữa trạng thái đồng ý và không đồng ý trên chính nội
-      dung bàn thảo. Hãy nghĩ về cách xác định các phần thảo luận/đưa ra quyết
-      định mà nhóm hiện đang khởi thảo hoặc
-
-      cung cấp một địa chỉ email liên hệ trực tiếp trên Loomio.</p>
-
-      <p>Nếu nhóm của bạn chỉ vừa mới bắt đầu, bạn có thể đưa ra các lời đề nghị
-      đơn giản, nhằm giúp
-
-      mọi người có cơ hội tham gia vào và sử dụng các công cụ để họ đưa ra các
-      quyết định của riêng mình.</p>
-
-      <p>Một cách đơn giản khác là khuyến khích mọi người tham gia vào và sử dụng
-      tính năng @đề cập
-
-      để chỉ rõ từng cá nhân trong nhóm; điều này sẽ tác động đến họ theo cách
-      hiệu quả hơn vì họ được đề cập
-
-      trực tiếp trong một bình luận nào đó.</p>
     example1_html: >
       <h3>Bạn nên để nhóm của mình thảo luận theo dạng bàn tròn và phát triển các
       giải pháp cùng nhau không theo hướng riêng lẻ nào</h3>
@@ -138,22 +112,6 @@ vi:
 
       tham gia vào tiến trình, kết quả nhận được sẽ tốt hơn cho nhóm của
       bạn.</p>
-    example2_html: >
-      <h3>Bạn đã hình thành ý tưởng về lời đề nghị của mình, và bạn muốn cả nhóm
-      cùng thảo luận về ý tưởng đó.</h3>
-
-      <p>Chiến lược: Hãy bắt đầu một phần thảo luận cụ thể về việc đưa ra quyết
-      định và đưa ra lời đề nghị ngay lập tức.</p>
-
-      <p>Nếu bạn đã có một kết quả rõ ràng nhưng bạn muốn chắc rằng không có mối
-      lo ngại nào,
-
-      thì bạn có thể sử dụng lời để nghị để nhanh chóng tạo thành quyết định về
-      việc thi hành ý tưởng của mình.</p>
-
-      <p>Bạn cũng có thể thực hiện các thao tác khác chẳng hạn như tổng kết hóa
-      tài liệu, chấp thuận một ứng dụng, hoặc ký nhận về tiến độ của một phần
-      công việc nào đó.</p>
     get_in_touch: Giữ liên lạc
     getting_started: Chuẩn bị bắt đầu
     getting_started_description: 'Phía bên trái, là khu vực nhóm đang thảo luận về một chủ đề, trao đổi ý kiến cũng như thông tin liên quan. Khi việc quy trình thực thi các quyết định được diễn ra, phần này sẽ hiển thị phía trên bên phải.'

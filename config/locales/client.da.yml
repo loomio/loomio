@@ -107,8 +107,6 @@ da:
     invite_people: Inviter Folk
   notifications:
     header: Notifikationer
-    new_discussion: '<strong>{{name}}</strong> startede en diskussion <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> oprettede et forslag <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Sig din mening
   vote_form:
@@ -219,25 +217,6 @@ da:
       sammen. Her er nogle tips til at hjælpe dig med at gøre din gruppe til en
       succes:
     different_ways: Forskellige måder at bruge Loomio
-    engaging_html: >
-      <h2>Tips til at engagere din gruppe</h2>
-
-      <p>Folk vil være spændte på at hoppe ind og begynde at deltage når der er
-      spændende forslag på bordet. Et godt forslag indeholder en handlingsplan
-      for gruppen, så det med det samme er tydeligt hvad det vil sige at være
-      enig eller uenig. Tænk over hvordan du kan identificere
-      diskussioner/beslutninger som gruppen aktuelt er i gang med
-      ansigt-til-ansigt eller pr. mail, som ville være lettere at tage på
-      Loomio.</p>
-
-      <p>Hvis din gruppe er ved at starte op kunne du starte med en let, sjov
-      beslutning for at give alle muligheden for at lege med værktøjet og se
-      hvordan beslutningsprocessen fungerer i praksis.</p>
-
-      <p>En anden simpel måde at opmuntre folk til at engagere sig i en
-      diskussion er at bruge @omtale-funktionen til at foranledige en respons fra
-      bestemte folk; dette vil sende dem en e-mail og fortælle dem at de er
-      blevet nævnt i en kommentar.</p>
     example1_html: >
       <h3>Du har brug for at gruppen diskuterer et bredt emne og udvikler en
       løsning sammen</h3>
@@ -252,20 +231,6 @@ da:
 
       deltage i processen er der langt større sandsynlighed for at de vil
       acceptere resultatet.</p>
-    example2_html: >
-      <h3>Du har allerede et forslag i tankerne, og du ønsker at få grønt lys fra
-      gruppen.</h3>
-
-      <p>Strategi: Start en diskussion om en specifik beslutning og fremsæt
-      forslaget med det samme.</p>
-
-      <p>Hvis du har et klart resultat i tankerne, men du vil sikre sig at der
-      ikke er nogle alvorlige indvendinger,
-
-      kan du bruge forslaget til at få hurtige input til beslutningen.</p>
-
-      <p>Du kan gøre ting såsom at færdiggøre et dokument, godkende en
-      applikation eller få den endelige accept af et stykke arbejde.</p>
     get_in_touch: Få kontakt
     get_in_touch_description_html: "Hvis du har spørgsmål eller feedback så <a href='%{link}'>send os en besked</a>."
     getting_started: Kom godt i gang
@@ -341,19 +306,6 @@ da:
     positions_disagree_description: '<span>Uenig</span> betyder at du mener der kan være et bedre alternativ, men du er villig til at acceptere gruppens beslutning.'
     positions_block_description: '<span>Bloker</span> betyder at du har alvorlige indvendinger, og du vil blive ekstremt skuffet hvis forslaget bliver vedtaget.'
     start_discussion: At starte en levende diskussion
-    start_discussion_html: >
-      <p>Når du starter en diskussion skal du sikre dig at titlen beskriver emnet
-      kortfattet.
-
-      Brug kontekstpanelet til at give al den baggrundsinformation, der er
-      nødvendig for at gruppen kan have en produktiv og informeret
-      diskussion.</p>
-
-      <p>Under diskussionen kan kontekstpanelet opdateres efterhånden som ny
-      information kommer frem i lyset. Udover at tydeliggøre emnet kan du også
-      bruge dette område til at dele ressourcer, opsummere diskussionen
-      efterhånden som den skrider frem eller skitsere protokoller for
-      beslutningsprocessen, som jeres gruppe anvender.</p>
     start_proposal: At skrive et klart forslag
     start_proposal_html: >
       <p> Hvis du gør titlen klar og kortfattet, vil folk øjeblikkeligt vide

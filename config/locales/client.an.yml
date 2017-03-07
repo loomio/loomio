@@ -145,23 +145,6 @@ an:
       chuntos. Aquí puetz trobar qualques consellos ta que o tuyo grupo tienga
       muito exito:
     different_ways: "Trazas diferents d'usar Loomio"
-    engaging_html: >
-      <h2>Trucos ta embrecar a o grupo</h2>
-
-      <p>A chent se gosa animar a participar quan i hai una propuesta interesant
-      en a mesa. Una buena propuesta contién un plan d'acción ta o grupo, que fa
-      obvio saber qué significa estar d'alcuerdo u en desalcuerdo. Piensa en cómo
-      puetz identificar discusions/decisions que o grupo ye fendo presencialment
-      u por correo, pero que serían de millor fer en Loomio.</p>
-
-      <p>Si o grupo ye empecipiando, puetz empecipiar con una decisión que no
-      chenere controversias grieus, ta dar a totz a oportunidat de chugar con
-      a ferramienta y veyer en acción o proceso de decisión.</p>
-
-      <p>Unatra traza d'animar a la chent a embrecar-se en una discusión ye fer
-      servir a caracteristica @mention ta avisar a chent determinada; asinas se
-      les ninviará un correu pa decir-les que se les ha mencionau en un
-      comentario.</p>
     example1_html: >
       <h3>O grupo ha de discutir sobre un tema amplio y desembolicar una solucion
       conchunta</h3>
@@ -179,21 +162,6 @@ an:
       satisfeitos con
 
       o resultau u decision final.</p>
-    example2_html: >
-      <h3>Tiens ya en mente una propuesta, y quiers aconseguir un refrendo d'o
-      grupo ta seguir abance.</h3>
-
-      <p>Estratechia: Prencipia una discusión sobre una decisión especifica
-      y crea de camín una propuesta.</p>
-
-      <p>Si tiens en mente un resultau claro pero quiers asegurar-te que no i hai
-      garra problema critico,
-
-      puetz usar a propuesta ta obtener una rapida contribución en
-      a decisión.</p>
-
-      <p>Puetz fer cosetas como finalizar un documento, aprebar una solicitut,
-      u refrendar una obra realizada.</p>
     get_in_touch: Mete-te en contacto
     get_in_touch_description_html: "Si tiens preguntas u sucherencias, <a href='%{link}'> escribe a</a>."
     getting_started: Primers pasos
@@ -267,18 +235,6 @@ an:
     positions_disagree_description: "<span>En desalcuerdo</span>, significa que piensas que i hai una millor alternativa, pero no tiens problema con seguir a decisión d'o grupo."
     positions_block_description: '<span>Blocar</span>, significa que tiens serias obcheccions y no te faría brenca goyo si a propuesta seguise enta debant.'
     start_discussion: Empecipiar una discusión participativa
-    start_discussion_html: >
-      <p>Quan prencipias una discusión, asegura-te que o titol transmite
-      succintament l'afer.
-
-      Usa o panel de contexto ta aportar tot o trasfondo necesario ta que o grupo
-      tienga una discusión productiva y bien fundamentada.</p>
-
-      <p>Entre a discusión, o panel de contexto puede actualizar-se seguntes
-      salga a la luz nueva información. Amás de clarificar o tema, puetz usar
-      iste espacio ta compartir recursos, recapitular a discusión seguntes
-      progresa, u resumir os protocolos de prene de decisions que ye usando
-      o tuyo grupo.</p>
     start_proposal: Crear una propuesta clara
     start_proposal_html: >
       <p> Si fas un titol claro y succinto, a chent sabrán de camín qué significa

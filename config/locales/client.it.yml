@@ -140,25 +140,7 @@ it:
     invite_people: Invita persone
   notifications:
     header: Notifiche
-    new_discussion: '<strong>{{name}}</strong> ha creato una discussione <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> ha creato una proposta <strong>{{proposal}}</strong>'
-    motion_closed: 'Proposta chiusa: <strong>{{proposal}}</strong>'
     publish_outcome: Pubblica un risultato
-    motion_closed_by_user: '<strong>{{name}}</strong> ha chiuso la proposta <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'La proposta <strong>{{proposal}}</strong> è chiusa.'
-    new_vote: '<strong>{{name}}</strong> {{position}} sulla proposta <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> ha inserito un commento nella discussione <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> ha risposto al tuo commento nella discussione su <strong>{{discussion}}</strong>'
-    comment_liked: 'A <strong>{{name}}</strong> piace il tuo commento nella discussione <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> ha chiesto di entrare nel gruppo <strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> ha approvato la tua richiesta di unirti al gruppo  <strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> ti ha aggiunto al gruppo <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'Sei stato/a aggiunto/a al gruppo <strong>{{group}}</strong>'
-    motion_closing_soon: 'La proposta  <strong>{{proposal}}</strong> è in chiusura.'
-    motion_outcome_created: '<strong>{{name}}</strong> ha reso pubblico un risultato sulla proposta <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> ha aggiornato il risultato della proposta <strong>{{proposal}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> ha accettato il tuo invito ad unirsi a <strong>{{group}}</strong>'
-    new_coordinator: '<strong>{{name}}</strong> ti ha reso coordinatore di  <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dite la vostra
   vote_form:
@@ -326,7 +308,6 @@ it:
   gift_card:
     heading: Piano Regalo
   trial_card:
-    title: Prova di 30 giorni
     choose_plan: Scegli il tuo piano
   choose_plan_modal:
     standard: Standard
@@ -391,7 +372,6 @@ it:
     messages:
       invitation_sent: Invito spedito.
       invitations_sent: '{{count}} inviti spediti.'
-      no_invitations: "Uh-oh! Controlla che l'indirizzo email sia corretto e prova di nuovo."
       max_invitations: 'Se vuoi inviare più di 100 inviti, usa un team link.'
   add_members_modal:
     add_members: Aggiungi membri
@@ -533,36 +513,6 @@ it:
       collettive. Ecco alcuni consigli su come guidare il tuo gruppo verso il
       successo:
     different_ways: Diversi modi di utilizzare Loomio
-    engaging_html: >
-      <h2>Consigli per coinvolgere il tuo gruppo</h2>
-
-      <p>Le persone saranno felici di buttarsi nell'attività del gruppo e di
-      cominciare a partecipare se c'è una proposta
-
-      interessante da discutere. Una buona proposta comprende un piano d'azione
-      per il gruppo, di modo che
-
-      sia immediatamente chiaro cosa significhi essere d'accordo o meno. Pensa
-      a come puoi identificare
-
-      discussioni/decisioni che il gruppo attualmente sta prendendo dal vivo
-      o via email e che potrebbe
-
-      essere facilitate dall'uso di Loomio.</p>
-
-      <p>Se il tuo gruppo ha appena cominciato, potresti partire da una decisione
-      scherzosa, per dare
-
-      a tutti un'opportunità di giocare con il tool e vedere il processo di
-      decision-making in azione.</p>
-
-      <p> Un altro modo per incoraggiare con semplicità le persone a partecipare
-      a una discussione è utilizzare
-
-      la funzione @citazione per spingere specifiche persone a contribuire; gli
-      arriverà una email che gli dice
-
-      di essere stati citati in un commento.</p>
     example1_html: >
       <h3>Hai bisogno che il gruppo discuta un argomento ampio e sviluppi una
       soluzione insieme</h3>
@@ -578,20 +528,6 @@ it:
 
       partecipano al processo, è molto più probabile che siano d'accordo con il
       risultato</p>
-    example2_html: >
-      <h3>Hai già una proposta in mente e vuoi che venga approvata dal gruppo per
-      andare avanti.</h3>
-
-      <p>Strategia: Comincia una discussione in merito a una decisione specifica
-      e fai immediatamente una proposta</p>
-
-      <p>Se hai in mente un risultato chiaro, ma vuoi essere sicuro che non ci
-      siano criticità importanti,
-
-      puoi usare la proposta per velocizzare il processo di decisione</p>
-
-      <p>In questo modo puoi, ad esempio, finalizzare un documento, approvare una
-      richiesta o chiudere una parte di un lavoro</p>
     get_in_touch: Contattaci
     get_in_touch_description_html: "Se hai qualsiasi domanda o feedback, <a href='%{link}'>scrivici due righe</a>."
     getting_started: Per cominciare
@@ -669,19 +605,6 @@ it:
     positions_disagree_description: "<span>Non sono d'accordo</span> significa che pensi ci sia un'alternativa migliore, ma ti sta bene anche accodarti alla decisione del gruppo."
     positions_block_description: '<span>Blocco</span> significa che hai obiezioni serie e che saresti estremamente insoddisfatto se la proposta dovesse passare.'
     start_discussion: Iniziare una discussione coinvolgente
-    start_discussion_html: >
-      <p>Quando inizi una discussione, assicurati che il titolo comunichi
-      l'argomento con poche parole.
-
-      Usa il Pannello Contestuale per dare tutte le informazioni contestuali
-      necessarie al gruppo per avviare una discussione produttiva
-      e informata.</p>
-
-      <p>Durante la discussione, il Pannello Contestuale può essere aggiornato
-      man mano che nuove informazioni vengono alla luce. Oltre a chiarire
-      l'argomento, puoi usare questo spazio per condividere risorse, riassumere
-      la discussione mentre progredisce, o evidenziare le procedure decisionali
-      che usa il tuo gruppo.</p>
     start_proposal: Scrivere una proposta chiara
     start_proposal_html: >
       <p> Se rendi il titolo chiaro e breve, le persone sapranno immediatamente
