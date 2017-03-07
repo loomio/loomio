@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.3.1
 cache: bundler
-sudo: false
+sudo: required
 cache:
   directories:
     - vendor/bundle
@@ -13,6 +13,8 @@ env:
 
 before_install:
   - export DISPLAY=:99.0
+  - sudo apt-get update
+  - sudo apt-get install chromium-chromedriver
   - sh -e /etc/init.d/xvfb start
   - nvm install 7.4.0
   - nvm use 7.4.0
@@ -35,6 +37,7 @@ before_script:
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
   - RAILS_ENV=test bundle exec rails server > /dev/null &
+  - sleep 3
 
 script:
   - bundle exec rake travis:rspec
