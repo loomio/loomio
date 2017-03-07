@@ -3,6 +3,7 @@ class PollService
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
+    poll.community_of_type(:email, build: true)
 
     return false unless poll.valid?
     poll.save!

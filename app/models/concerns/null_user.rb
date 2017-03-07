@@ -25,6 +25,10 @@ module NullUser
     Notification.none
   end
 
+  def communities
+    Communities::Base.none
+  end
+
   def stances
     Stance.none
   end

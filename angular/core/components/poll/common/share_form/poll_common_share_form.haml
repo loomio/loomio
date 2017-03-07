@@ -42,8 +42,7 @@
 
     %md-list.md-block
       %md-list-item.poll-common-share-form__emails{layout: "column"}
-        %h4.lmo-h4{translate: "poll_common_share_form.existing_guests", ng-if: "visitors().length > 0"}
-        .poll-common-share-form__visitor.lmo-flex{ng-repeat: "visitor in visitors()"}
+        .poll-common-share-form__visitor.lmo-flex{ng-repeat: "visitor in visitors() | orderBy: 'updatedAt'"}
           .poll-common-share-form__email.lmo-flex__grow {{visitor.email}}
           %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!visitor.reminded && !visitor.reminding"}
             %i.material-icons redo
@@ -52,17 +51,12 @@
           %md-button.lmo-inline-action{ng-click: "revoke(visitor)"}
             %i.material-icons clear
 
-        %h4.lmo-h4{translate: "poll_common_share_form.new_guests", ng-if: "newEmails.length > 0"}
-        .poll-common-share-form__visitor.lmo-flex{ng-repeat: "email in newEmails"}
-          .poll-common-share-form__email.lmo-flex__grow {{email}}
-          %md-button.lmo-inline-action{ng-click: "remove(email)"}
-            %i.material-icons clear
-
       %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
         %md-input-container.lmo-flex__grow{md-no-float: "true"}
-          %input.poll-common-share-form__add-option-input{type: "text", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newEmail"}
+          %input.poll-common-share-form__add-option-input{type: "text", ng-disabled: "newVisitor.reminding", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newVisitor.email"}
         %div
-          %md-button.poll-common-share-form__option-button.lmo-inline-action{ng-click: "addEmail()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
+          %loading.lmo-inline-action{ng-if: "newVisitor.reminding"}
+          %md-button.poll-common-share-form__option-button.lmo-inline-action{ng-if: "!newVisitor.reminding", ng-click: "invite()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
             %i.material-icons.poll-common-share-form__option-icon add
-      %md-button.md-primary.md-raised.pull-right.poll-common-share-form__send-emails{ng-disabled: "newEmails.length <= 0", translate: "poll_common_share_form.send_emails", translate-value-count: "{{newEmails.length}}", ng-click: "invite()"}
       .clearfix
+      .lmo-validation-error {{ emailValidationError }}

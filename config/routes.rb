@@ -143,9 +143,7 @@ Loomio::Application.routes.draw do
       get  :search, on: :collection
     end
 
-    resources :visitors,    only: [:index, :update, :destroy] do
-      post :remind, on: :member
-    end
+    resources :visitors,    only: [:index, :create, :update, :destroy]
 
     resource :outcomes,     only: [:create, :update]
 

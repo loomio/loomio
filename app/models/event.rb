@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   KINDS = %w(new_discussion discussion_title_edited discussion_description_edited discussion_edited discussion_moved
              new_comment new_motion new_vote motion_close_date_edited motion_name_edited motion_description_edited
-             motion_edited motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created
+             motion_edited motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created visitor_created
              motion_outcome_updated membership_requested invitation_accepted user_added_to_group user_joined_group
              new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted
              poll_created stance_created outcome_created poll_closed_by_user poll_expired poll_edited poll_closing_soon).freeze

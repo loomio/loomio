@@ -1524,7 +1524,6 @@ en:
     title: Admin - {{title}}
 
   poll_common_share_form:
-    loomio_group: Loomio group
     no_group_selected: No group selected
     share_a_link: Shareable link
     anyone_can_participate: Anyone can participate
@@ -1547,6 +1546,10 @@ en:
     poll_is_shareable: Anyone who has the link to this poll can vote. Send the link above to anyone you wish to participate.
     poll_is_private: Users must be invited in order to view and participate in this poll.
     view_poll: View poll
+    email_invited: 'Invitation email sent to {{email}}'
+    email_exists: '{{email}} has already been invited'
+    email_empty: 'Please enter an email'
+    email_invalid: "That doesn't appear to be a valid email"
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

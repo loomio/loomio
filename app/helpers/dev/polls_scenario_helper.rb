@@ -15,10 +15,11 @@ module Dev::PollsScenarioHelper
 
   def poll_created_as_visitor_scenario(poll_type:)
     actor = saved fake_user
-    event = PollService.create(poll: fake_poll(poll_type: poll_type, discussion: nil, participant_emails: ['hello@test.com'], make_announcement: true), actor: actor)
-    visitor = Visitor.last
+    poll = fake_poll(poll_type: poll_type, discussion: nil, make_announcement: true)
+    event = PollService.create(poll: poll, actor: actor)
+    visitor = Visitor.create(email: "hello@test.com", community: poll.community_of_type(:email))
 
-    {poll: event.eventable,
+    {poll: poll,
      observer: visitor,
      actor: actor}
   end

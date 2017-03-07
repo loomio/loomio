@@ -29,10 +29,6 @@ class PermittedParams < Struct.new(:params)
      {email_new_discussions_and_proposals_group_ids: []}]
   end
 
-  def visitor_attributes
-    [:name, :email]
-  end
-
   def vote_attributes
     [:position, :statement, :proposal_id, :motion_id]
   end
@@ -49,7 +45,6 @@ class PermittedParams < Struct.new(:params)
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate,
-     :participant_emails, {participant_emails: []},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
      :poll_option_names, {poll_option_names: []}]
@@ -70,7 +65,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def visitor_attributes
-    [:name, :email, :revoked]
+    [:name, :email, :revoked, :community_id]
   end
 
   def membership_request_attributes
