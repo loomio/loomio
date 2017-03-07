@@ -2,6 +2,7 @@ language: ruby
 rvm:
   - 2.3.1
 cache: bundler
+dist: trusty
 sudo: false
 cache:
   directories:
@@ -30,6 +31,8 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
@@ -45,6 +48,7 @@ after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 addons:
+  firefox: latest
   postgresql: "9.5"
   apt:
     sources:
