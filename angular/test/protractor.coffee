@@ -4,7 +4,7 @@ paths         = require('../tasks/paths')
 exports.config =
   seleniumServerJar: '../node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.0.jar'
   capabilities:
-    browserName:     'firefox'
+    browserName:     'chrome'
   baseUrl:           'http://localhost:3000'
   jasmineNodeOpts:
     onComplete: null
