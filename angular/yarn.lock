@@ -63,9 +63,9 @@ angular-gravatar@~0.2.4:
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/angular-inview/-/angular-inview-1.5.7.tgz#0eb72cc70a47a44766ca4424852b2957c82b4ef7"
 
-"angular-marked@~> 1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/angular-marked/-/angular-marked-1.0.1.tgz#09e0a44b7206b8d16a3636507560f67159395803"
+"angular-marked@~> 1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/angular-marked/-/angular-marked-1.2.2.tgz#031f81015dad5fb01adf8d48922c52feb3588de5"
   dependencies:
     marked "^0.3.3"
 
