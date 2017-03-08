@@ -334,6 +334,33 @@ describe Event do
   end
 
   describe 'poll_closing_soon' do
+    include Dev::FakeDataHelper
+    describe 'voters_review_responses', focus: true do
+      it 'true' do
+        poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
+        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        event = Events::PollClosingSoon.publish!(poll)
+
+        notified_users = event.send(:notification_recipients)
+        notified_users.should include user_thread_loud
+        notified_users.should include user_thread_normal
+      end
+
+      it 'false' do
+        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        event = Events::PollClosingSoon.publish!(poll)
+
+        notified_users = event.send(:notification_recipients)
+        notified_users.should_not include user_thread_loud
+        notified_users.should include user_thread_normal
+      end
+    end
+    it 'notifies all when voters_review_responses'
+    it 'only notifies undecided otherwise'
+    it 'deals with visitors'
+
     it 'makes an announcement' do
       Event.create(kind: 'poll_created', announcement: true, eventable: poll)
       event = Events::PollClosingSoon.publish!(poll)

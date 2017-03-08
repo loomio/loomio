@@ -10,6 +10,7 @@ proposal:
   material_icon:         thumbs_up_down
   can_remove_options:    true
   must_have_options:     true
+  voters_review_responses: true
   sort_options:
     - newest_first
     - oldest_first
