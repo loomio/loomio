@@ -66,8 +66,8 @@ describe API::PollsController do
       expect(poll.title).to eq poll_params[:title]
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
-      expect(poll.communities.count).to eq 1
-      expect(poll.communities.first).to be_a Communities::LoomioGroup
+      expect(poll.communities.map(&:class)).to include Communities::LoomioGroup
+      expect(poll.communities.map(&:class)).to include Communities::Email
 
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
@@ -82,20 +82,8 @@ describe API::PollsController do
       poll = Poll.last
       expect(poll.discussion).to eq nil
       expect(poll.group).to eq nil
-      expect(poll.communities).to be_empty
-    end
-
-    it 'can create an email list poll' do
-      sign_in user
-      poll_params[:discussion_id] = nil
-      poll_params[:participant_emails] = ['kat@dog.com', 'dog@kat.com']
-      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
-
-      poll = Poll.last
-      expect(poll.discussion).to eq nil
-      expect(poll.group).to eq nil
       expect(poll.communities.length).to eq 1
-      expect(poll.communities.first).to be_a Communities::Email
+      expect(poll.communities.map(&:class)).to include Communities::Email
     end
 
     it 'does not allow visitors to create polls' do
@@ -225,8 +213,8 @@ describe API::PollsController do
     it 'converts a poll in a loomio group to a loomio user community' do
       sign_in user
       post :close, id: poll.key
-      expect(poll.reload.communities.count).to eq 1
-      expect(poll.communities.first).to be_a Communities::LoomioUsers
+      expect(poll.communities.map(&:class)).to_not include Communities::LoomioGroup
+      expect(poll.communities.map(&:class)).to include Communities::LoomioUsers
     end
   end
 end

@@ -249,6 +249,10 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ["engage"]
+
+    after(:build) do |poll|
+      poll.community_of_type(:email, build: true).save
+    end
   end
 
   factory :outcome do
