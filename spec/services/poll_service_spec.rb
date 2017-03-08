@@ -3,6 +3,7 @@ require 'rails_helper'
 describe PollService do
   let(:poll_created) { build :poll, discussion: discussion }
   let(:public_poll) { build :poll, anyone_can_participate: true }
+  let(:private_poll) { build :poll }
   let(:poll) { create :poll, discussion: discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
@@ -22,12 +23,21 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: user) }.to change { Poll.count }.by(1)
     end
 
-    it 'populates a public community by default' do
-      PollService.create(poll: public_poll, actor: user)
+    it 'populates an email community by default' do
+      PollService.create(poll: private_poll, actor: user)
 
       poll = Poll.last
       expect(poll.communities.count).to eq 1
-      expect(poll.communities.last).to be_a Communities::Public
+      expect(poll.communities.last).to be_a Communities::Email
+    end
+
+    it 'populates a public poll if anyone_can_participate is true' do
+      PollService.create(poll: public_poll, actor: user)
+
+      poll = Poll.last
+      expect(poll.communities.count).to eq 2
+      expect(poll.communities.map(&:class)).to include Communities::Public
+      expect(poll.communities.map(&:class)).to include Communities::Email
     end
 
     it 'populates removing custom poll actions' do
@@ -59,7 +69,6 @@ describe PollService do
       PollService.create(poll: poll_created, actor: user)
 
       poll = Poll.last
-      expect(poll.communities.length).to eq 1
       expect(poll.communities).to include group.community
       expect(poll.discussion).to eq discussion
       expect(poll.group).to eq discussion.group
@@ -88,37 +97,6 @@ describe PollService do
     end
 
   end
-
-  # describe 'set_communities' do
-  #   before { PollService.create(poll: poll_created, actor: user) }
-
-    # it 'sets the communities of the poll' do
-    #   PollService.set_communities(poll: poll_created, actor: user, communities: [group.community])
-    #   expect(poll_created.communities.length).to eq 1
-    #   expect(poll_created.communities).to include group.community
-    # end
-
-    # it 'does not allow the communities to change once voting has begun' do
-    #   stance
-    #   expect { PollService.set_communities(poll: poll_created, actor: user, communities: [group.community]) }.to raise_error { CanCan::AccessDenied }
-    #   expect(poll_created.communities).to_not include group.community
-    # end
-
-    # it 'does not allow anyone other than the author to change communities' do
-    #   expect { PollService.set_communities(poll: poll_created, actor: another_user, communities: [group.community]) }.to raise_error { CanCan::AccessDenied }
-    #   expect(poll_created.reload.communities.first).to be_a Communities::Public
-    # end
-
-    # it 'does not allow adding communities the author is not a part of' do
-    #   expect { PollService.set_communities(poll: poll_created, actor: user, communities: [another_group.community] ) }.to raise_error { CanCan::AccessDenied }
-    # end
-
-    # it 'does not allow removing all communities' do
-    #   PollService.set_communities(poll: poll_created, actor: user, communities: [])
-    #   expect(poll_created.communities.count).to eq 1
-    #   expect(poll_created.communities.first).to be_a Communities::Public
-    # end
-  # end
 
   describe '#update' do
     before { PollService.create(poll: poll_created, actor: user) }

@@ -327,7 +327,7 @@ class Ability
 
     can :create, Poll do |poll|
       @user.is_logged_in? &&
-      (!poll.group || user.ability.can?(:poll, poll.group.community))
+      (!poll.group || poll.group.community.includes?(@user))
     end
 
     can [:update, :share], Poll do |poll|
