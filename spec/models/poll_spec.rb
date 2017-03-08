@@ -60,7 +60,7 @@ describe Poll do
 
     it 'creates a group community if true' do
       expect { poll.update(group_id: group.id) }.to change { poll.communities.count }.by(1)
-      expect(poll.communities.last).to eq group.community
+      expect(poll.communities).to include group.community
       expect(poll.reload.group_id).to eq group.id
     end
 
@@ -73,7 +73,7 @@ describe Poll do
     it 'updates the existing group community if it exists' do
       poll.update(group_id: group.id)
       expect { poll.update(group_id: another_group.id) }.to_not change { poll.communities.count }
-      expect(poll.reload.communities.last).to eq another_group.community
+      expect(poll.reload.communities).to include another_group.community
       expect(poll.reload.group_id).to eq another_group.id
     end
 
