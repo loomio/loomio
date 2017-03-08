@@ -1,5 +1,4 @@
 class API::VisitorsController < API::RestfulController
-  alias :update :create
 
   private
 
