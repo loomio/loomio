@@ -25,17 +25,7 @@ describe Event do
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
 
-  let(:public_poll) { FactoryGirl.create :poll, anyone_can_participate: true }
-  let(:public_outcome) { FactoryGirl.create :outcome, poll: public_poll }
-
-  let(:email_community) { Communities::Email.create.tap { |c| c.polls << public_poll } }
-  let(:email_visitor) { FactoryGirl.create(:visitor, community: email_community) }
-
-  let(:public_community) { Communities::Public.create.tap { |c| c.polls << public_poll } }
-  let(:public_visitor) { FactoryGirl.create(:visitor, community: public_community) }
-
   before do
-    ActionMailer::Base.deliveries = []
     parent_comment
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
@@ -344,7 +334,7 @@ describe Event do
   end
 
   describe 'poll_closing_soon' do
-    include Dev::FakeDataHelper
+    let(:visitor) { poll.community_of_type(:email, build: true).tap(&:save!).visitors.create(name: 'jimbo', email: 'helllloo@example.com')}
     describe 'voters_review_responses', focus: true do
       it 'true' do
         poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
@@ -355,6 +345,10 @@ describe Event do
         notified_users = event.send(:notification_recipients)
         notified_users.should include user_thread_loud
         notified_users.should include user_thread_normal
+
+        emailed_users = event.send(:email_recipients)
+        emailed_users.should include user_thread_loud
+        emailed_users.should include user_thread_normal
       end
 
       it 'false' do
@@ -365,11 +359,24 @@ describe Event do
         notified_users = event.send(:notification_recipients)
         notified_users.should_not include user_thread_loud
         notified_users.should include user_thread_normal
+
+        emailed_users = event.send(:email_recipients)
+        emailed_users.should_not include user_thread_loud
+        emailed_users.should include user_thread_normal
+      end
+
+      it 'deals with visitors' do
+        poll = FactoryGirl.create(:poll, discussion: discussion)
+        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        event = Events::PollClosingSoon.publish!(poll)
+
+        notified_users = event.send(:notification_recipients)
+        notified_users.should_not include user_thread_loud
+        notified_users.should include user_thread_normal
       end
     end
-    it 'notifies all when voters_review_responses'
-    it 'only notifies undecided otherwise'
-    it 'deals with visitors'
 
     it 'makes an announcement' do
       Event.create(kind: 'poll_created', announcement: true, eventable: poll)
@@ -468,28 +475,6 @@ describe Event do
       notification_users = event.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include user_mentioned
-    end
-
-    describe 'notifies visitors' do
-      it 'notifies members of an email community' do
-        email_visitor
-        Events::OutcomeCreated.publish!(public_outcome)
-        expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries.map(&:to).flatten).to include email_visitor.email
-      end
-
-      it 'notifies members of a public community that have emails' do
-        public_visitor
-        Events::OutcomeCreated.publish!(public_outcome)
-        expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries.map(&:to).flatten).to include public_visitor.email
-      end
-
-      it 'does not notify members without emails' do
-        email_visitor.update(email: nil)
-        Events::OutcomeCreated.publish!(public_outcome)
-        expect(ActionMailer::Base.deliveries).to be_empty
-      end
     end
   end
 

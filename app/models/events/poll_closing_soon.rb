@@ -32,5 +32,7 @@ class Events::PollClosingSoon < Event
   def specified_notification_recipients
     User.none
   end
+  
   alias :specified_email_recipients :specified_notification_recipients
+  alias :announcement_email_recipients :announcement_notification_recipients
 end
