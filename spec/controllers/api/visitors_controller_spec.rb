@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::VisitorsController do
   let(:admin) { create :user }
   let(:user) { create :user }
-  let(:poll) { create :poll, author: admin, communities: [community] }
+  let!(:poll) { create :poll, author: admin, communities: [community] }
   let(:community) { Communities::Email.create }
   let(:visitor) { create :visitor, community: community }
   let(:new_visitor_params) {{
@@ -26,7 +26,7 @@ describe API::VisitorsController do
       expect { post :create, visitor: new_visitor_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(Visitor.count).to eq visitors_count + 1
       expect(response.status).to eq 200
-      expect(Visitor.last.email).to eq visitor_params[:email]
+      expect(Visitor.last.email).to eq new_visitor_params[:email]
     end
 
     it 'reinvites a revoked visitor' do
@@ -50,7 +50,7 @@ describe API::VisitorsController do
     it 'does not allow non-admins to invite a visitor' do
       sign_in user
 
-      expect { post :create, visitor: visitor_params }.to_not change { ActionMailer::Base.deliveries.count }
+      expect { post :create, visitor: existing_visitor_params }.to_not change { ActionMailer::Base.deliveries.count }
       expect(response.status).to eq 403
     end
   end
