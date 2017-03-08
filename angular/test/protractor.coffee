@@ -2,7 +2,6 @@ screenshooter = require('protractor-jasmine2-screenshot-reporter');
 paths         = require('../tasks/paths')
 
 exports.config =
-
   directConnect: true
   # seleniumAddress: 'http://localhost:4444/wd/hub'
   capabilities:

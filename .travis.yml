@@ -31,6 +31,7 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   # - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
   - cp config/database.yml.$DB config/database.yml
