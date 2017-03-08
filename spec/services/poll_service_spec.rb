@@ -27,15 +27,13 @@ describe PollService do
       PollService.create(poll: private_poll, actor: user)
 
       poll = Poll.last
-      expect(poll.communities.count).to eq 1
-      expect(poll.communities.last).to be_a Communities::Email
+      expect(poll.communities.map(&:class)).to include Communities::Email
     end
 
     it 'populates a public poll if anyone_can_participate is true' do
       PollService.create(poll: public_poll, actor: user)
 
       poll = Poll.last
-      expect(poll.communities.count).to eq 2
       expect(poll.communities.map(&:class)).to include Communities::Public
       expect(poll.communities.map(&:class)).to include Communities::Email
     end
