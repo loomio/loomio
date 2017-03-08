@@ -37,10 +37,10 @@ angular.module('loomioApp', ['ngNewRouter',
   $animateProvider.classNameFilter( /\banimated\b/ );
 
   markedProvider.setOptions
-    renderer: renderProvider.$get(0).createRenderer()
     gfm: true
     sanitize: true
     breaks: true
+  markedProvider.setRenderer(renderProvider.$get(0).createRenderer())
 
   # enable html5 pushstate mode
   $locationProvider.html5Mode(true)
