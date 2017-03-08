@@ -54,7 +54,7 @@ You should see:
 -----> Application loomio created!
 ```
 
-We use environment variables to configure Loomio. The following command sets the configuration needed to get started. Run this dokku commmand on your local machine.
+We use environment variables to configure Loomio. The following command sets the configuration needed to get started. Run this dokku command on your local machine.
 
 ```
 dokku config:set loomio RACK_ENV=production \

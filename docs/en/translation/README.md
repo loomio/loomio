@@ -141,4 +141,4 @@ context: [Github](https://github.com/loomio/loomio) is where the working code of
 
 ## Improving processes, giving feedback
 
-If you'd would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Nati at nati@loomio.org  
+If you would like to suggest an improvement, or have some feedback on the translation process, please feel free to start a discussion in the [Loomio group](https://www.loomio.org/g/cpaM3Hsv/loomio-community-translation), or email Nati at nati@loomio.org  
