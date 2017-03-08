@@ -1,9 +1,5 @@
 class API::VisitorsController < API::RestfulController
-
-  def remind
-    service.remind(visitor: load_resource, actor: current_user, poll: ModelLocator.new(:poll, params).locate)
-    respond_with_resource
-  end
+  alias :update :create
 
   private
 
@@ -12,7 +8,13 @@ class API::VisitorsController < API::RestfulController
   end
 
   def accessible_records
-    load_and_authorize(:poll).community_of_type(params.fetch(:community_type, :email))&.members || resource_class.none
+    (community || current_user).visitors.where(revoked: false)
+  end
+
+  def community
+    @community ||= Communities::Base.find_by(id: params[:community_id]).tap do |community|
+      current_user.ability.authorize!(:show, community)
+    end
   end
 
 end

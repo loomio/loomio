@@ -75,4 +75,12 @@ module Dev::FakeDataHelper
                 statement: Faker::Hipster.sentence}.merge(args))
   end
 
+  def fake_visitor(args = {})
+    Visitor.new({
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      community: Communities::Public.new
+    }.merge(args))
+  end
+
 end

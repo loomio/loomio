@@ -11,6 +11,11 @@ module Events::EmailUser
   end
   handle_asynchronously :email_users!
 
+  # which mailer should be used to send emails about this event?
+  def mailer
+    ThreadMailer
+  end
+
   private
 
   def email_user!(recipient)
@@ -23,8 +28,4 @@ module Events::EmailUser
     User.none
   end
 
-  # which mailer should be used to send emails about this event?
-  def mailer
-    ThreadMailer
-  end
 end

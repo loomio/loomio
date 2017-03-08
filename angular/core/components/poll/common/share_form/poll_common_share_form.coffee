@@ -3,29 +3,26 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share_form/poll_common_share_form.html'
   controller: ($scope) ->
-    $scope.fetchVisitors = ->
-      Records.visitors.fetchByPoll($scope.poll.key).then (response) ->
-        $scope.allVisitors = Records.visitors.find(_.pluck(response.visitors, 'id'))
-    $scope.fetchVisitors()
+    Records.visitors.fetch(params: {community_id: $scope.poll.emailCommunityId})
 
-    $scope.allVisitors = []
-    $scope.newEmails = []
-    $scope.newEmail  = ''
+    $scope.init = ->
+      $scope.newVisitor = Records.visitors.build(email: '', communityId: $scope.poll.emailCommunityId)
+    $scope.init()
+
     $scope.shareableLink = LmoUrlService.poll($scope.poll, {}, absolute: true)
 
-    noGroupOption = Records.groups.build(id: null, fullName: $translate.instant("poll_common_share_form.no_group_selected"))
-    availableGroups = _.filter Session.user().groups(), (group) ->
-      AbilityService.canStartPoll(group)
+    # noGroupOption = Records.groups.build(id: null, fullName: $translate.instant("poll_common_share_form.no_group_selected"))
+    # availableGroups = _.filter Session.user().groups(), (group) ->
+    #   AbilityService.canStartPoll(group)
 
     $scope.visitors = ->
-      _.filter $scope.allVisitors, (visitor) -> !visitor.revoked
+      Records.visitors.find(communityId: $scope.poll.emailCommunityId)
 
-    $scope.setGroup = ->
-      $scope.settingGroup = true
-      $scope.poll.save()
-                 .then -> FlashService.success "poll_common_share_form.set_group"
-                 .finally -> $scope.settingGroup = false
-
+    # $scope.setGroup = ->
+    #   $scope.settingGroup = true
+    #   $scope.poll.save()
+    #              .then -> FlashService.success "poll_common_share_form.set_group"
+    #              .finally -> $scope.settingGroup = false
 
     $scope.setAnyoneCanParticipate = ->
       $scope.settingAnyoneCanParticipate = true
@@ -33,20 +30,18 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
             .then -> FlashService.success "poll_common_share_form.anyone_can_participate_#{$scope.poll.anyoneCanParticipate}"
             .finally -> $scope.settingAnyoneCanParticipate = false
 
-    $scope.hasNewEmails = ->
-      $scope.newEmails.length > 0
-
-    $scope.addEmail = ->
-      if $scope.newEmail.length <= 0
-        console.log 'Please enter an email'
-      else if _.contains $scope.newEmails, $scope.newEmail
-        console.log 'Email already in list'
+    $scope.invite = ->
+      if $scope.newVisitor.email.length <= 0
+        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_empty')
+      else if _.contains(_.pluck($scope.visitors(), 'email'), $scope.newVisitor.email)
+        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_exists', email: $scope.newVisitor.email)
+      else if !$scope.newVisitor.email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
+        $scope.emailValidationError = $translate.instant('poll_common_share_form.email_invalid')
       else
-        $scope.newEmails.push $scope.newEmail
-        $scope.newEmail = ''
-
-    $scope.remove = (email) ->
-      _.pull $scope.newEmails, email
+        $scope.emailValidationError = null
+        $scope.remind($scope.newVisitor).then ->
+          $scope.init()
+          document.querySelector('.poll-common-share-form__add-option-input').focus()
 
     $scope.revoke = (visitor) ->
       visitor.destroy()
@@ -55,25 +50,15 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
                FlashService.success "poll_common_share_form.guest_revoked", email: visitor.email
 
     $scope.remind = (visitor) ->
-      visitor.reminding = true
-      visitor.remind($scope.poll)
-             .then ->    visitor.reminded = true
-             .finally -> visitor.reminding = false
+      visitor.save()
+             .then ->
+               visitor.reminded = true
+               FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
+             .finally ->
+               visitor.reminding = false
 
-    $scope.invite = ->
-      $scope.addEmail() if $scope.newEmail.length > 0
-      $scope.poll.inviting = true
-      $scope.poll.participantEmails = $scope.newEmails
-      $scope.poll.save()
-                 .then ->
-                    $scope.fetchVisitors()
-                    FlashService.success "poll_common_share_form.guests_invited", count: $scope.newEmails.length
-                    $scope.newEmails = []
-                 .finally ->
-                   $scope.poll.inviting = false
-
-    $scope.groupOptions = ->
-      [noGroupOption].concat(availableGroups)
+    # $scope.groupOptions = ->
+    #   [noGroupOption].concat(availableGroups)
 
     $scope.hasAvailableGroups = ->
       # _.any availableGroups
@@ -82,5 +67,5 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
     $scope.copied = ->
       FlashService.success('common.copied')
 
-    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addEmail, (active) ->
-      active.classList.contains('poll-common-manage-card__add-option-input')
+    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.invite, (active) ->
+      active.classList.contains('poll-common-share-form__add-option-input')

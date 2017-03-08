@@ -315,8 +315,8 @@ class Ability
       @user.is_logged_in?
     end
 
-    can :poll, Communities::Base do |community|
-      community.includes?(@user)
+    can :show, Communities::Base do |community|
+      community.polls.any? { |poll| @user.can? :share, poll }
     end
 
     can [:make_draft, :show], Poll do |poll|
@@ -330,7 +330,7 @@ class Ability
       (!poll.group || user.ability.can?(:poll, poll.group.community))
     end
 
-    can [:remind, :update, :share], Poll do |poll|
+    can [:update, :share], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
     end
@@ -340,7 +340,15 @@ class Ability
     end
 
     can [:destroy], Visitor do |visitor|
-      visitor.community.polls.any? { |poll| @user.ability.can? :update, poll }
+      @user.visitors.include?(visitor)
+    end
+
+    can :create, Visitor do |visitor|
+      @user.communities.include?(visitor.community)
+    end
+
+    can :update, Visitor do |visitor|
+      @user.participation_token == visitor.participation_token
     end
 
     can :create, Stance do |stance|

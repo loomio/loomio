@@ -40,7 +40,12 @@ class PollEmailInfo
   end
 
   def utm_hash(args = {})
-    { utm_medium: 'email', utm_campaign: 'poll_mailer', utm_source: action_name }.merge(args)
+    {
+      utm_medium: 'email',
+      utm_campaign: 'poll_mailer',
+      utm_source: action_name,
+      participation_token: @recipient.participation_token
+    }.merge(args)
   end
 
   private

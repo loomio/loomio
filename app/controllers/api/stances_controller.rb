@@ -16,7 +16,7 @@ class API::StancesController < API::RestfulController
   end
 
   def identify_visitor
-    VisitorIdentifier.new(resource_params.fetch(:visitor_attributes, {})).identify_for(resource.poll)
+    VisitorIdentifier.new(cookies, resource_params[:visitor_attributes]).identify_for(resource.poll)
   end
 
   def set_participation_cookie

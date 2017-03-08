@@ -1,13 +1,4 @@
 module Dev::PollsScenarioHelper
-  def observe_scenario(scenario_name:, poll_type:, view_email: false, view_as_observer: true)
-    scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
-    sign_in(scenario[:observer]) if view_as_observer
-    if view_email
-      last_email to: scenario[:observer]
-    else
-      redirect_to poll_url(scenario[:poll])
-    end
-  end
 
   def poll_created_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
@@ -20,6 +11,17 @@ module Dev::PollsScenarioHelper
      observer: user,
      poll:     event.eventable,
      actor:    actor}
+  end
+
+  def poll_created_as_visitor_scenario(poll_type:)
+    actor = saved fake_user
+    poll = fake_poll(poll_type: poll_type, discussion: nil, make_announcement: true)
+    event = PollService.create(poll: poll, actor: actor)
+    visitor = Visitor.create(email: "hello@test.com", community: poll.community_of_type(:email))
+
+    {poll: poll,
+     observer: visitor,
+     actor: actor}
   end
 
   def poll_edited_scenario(poll_type:)
@@ -126,15 +128,6 @@ module Dev::PollsScenarioHelper
     UserMailer.missed_yesterday(observer).deliver_now
 
     scenario.merge(observer: observer)
-  end
-
-  def visitor_scenario(poll_type:)
-    poll = fake_poll(poll_type: poll_type, anyone_can_participate: true, discussion: nil)
-    author = saved fake_user
-    PollService.create(poll: poll, actor: author)
-
-    {poll: poll,
-     author: author}
   end
 
   def poll_notifications_scenario(poll_type:)

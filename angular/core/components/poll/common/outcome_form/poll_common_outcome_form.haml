@@ -9,10 +9,10 @@
   .modal-body
     %md-input-container.md-block
       %label{translate: "poll_common.statement"}
-      %textarea.lmo-primary-form-input{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
+      %textarea.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
       %validation_errors{subject: "outcome", field: "statement"}
 
   %poll_common_notify_group{model: "outcome"}
 
   .modal-footer
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}
+    %md-button.md-primary.md-raised.poll-common-outcome-form__submit{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}

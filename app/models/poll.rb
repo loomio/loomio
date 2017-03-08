@@ -158,14 +158,6 @@ class Poll < ActiveRecord::Base
     end
   end
 
-  def participant_emails=(emails)
-    if emails.any?
-      community_of_type(:email, build: true).add_members!(emails)
-    else
-      community_of_type(:email)&.destroy
-    end
-  end
-
   def discussion=(discussion)
     super.tap { self.group_id = self.discussion&.group_id }
   end
