@@ -255,6 +255,14 @@ FactoryGirl.define do
     end
   end
 
+  factory :poll_proposal, class: Poll do
+    poll_type "proposal"
+    title "This is a proposal"
+    details "with a description"
+    association :author, factory: :user
+    poll_option_names %w[agree abstain disagree block]
+  end
+
   factory :outcome do
     poll
     association :author, factory: :user

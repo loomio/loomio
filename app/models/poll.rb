@@ -127,6 +127,10 @@ class Poll < ActiveRecord::Base
     template['has_variable_score']
   end
 
+  def voters_review_responses
+    template['voters_review_responses']
+  end
+
   def active?
     closed_at.nil?
   end
