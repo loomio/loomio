@@ -13,26 +13,26 @@ class Events::PollClosingSoon < Event
     mailer.poll_closing_soon_author(user, self).deliver_now
   end
 
-  # if announcement and poll.voters_review_responses
-  #   notify all group
-  # else
-  #   notify only non voters
-
-
   private
+
   def announcement_notification_recipients
-    if poll.voters_review_responses
-      poll.group.members
-    else
-      poll.group.members.without(poll.participants)
-    end
+    return User.none unless poll.group
+    recipients = poll.group.members
+    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
+    recipients
+  end
+
+  def announcement_email_recipients
+    return User.none unless poll.group
+    recipients = Queries::UsersByVolumeQuery.normal_or_loud(poll.discussion)
+    recipients = recipients.without(poll.participants) unless poll.voters_review_responses
+    recipients
   end
 
   # don't notify mentioned users for poll closing soon
   def specified_notification_recipients
     User.none
   end
-  
   alias :specified_email_recipients :specified_notification_recipients
-  alias :announcement_email_recipients :announcement_notification_recipients
+
 end
