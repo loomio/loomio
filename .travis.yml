@@ -42,7 +42,7 @@ script:
   # - bundle exec rake travis:rspec
   # - bundle exec rake travis:cucumber
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
   - bundle exec rake travis:protractor
 
 after_script:
