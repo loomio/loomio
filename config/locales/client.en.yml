@@ -1521,6 +1521,8 @@ en:
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
     too_many_dots: You have used too many dots.
+    stance_created: Vote created
+    stance_updated: Vote updated
 
   poll_thread_item:
     poll:

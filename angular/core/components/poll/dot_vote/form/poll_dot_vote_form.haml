@@ -14,7 +14,7 @@
   %md-list.md-block
     %label{translate: "poll_dot_vote_form.options"}
     %validation_errors{subject: "poll", field: "pollOptions"}
-    %md-list-item.poll-dot-vote-form__poll-option-names{ng-repeat: "name in poll.pollOptionNames track by $index"}
+    %md-list-item.poll-dot-vote-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
       %span.poll-dot-vote-form__option-text.lmo-flex__grow {{name}}
       %md-button.poll-dot-vote-form__option-button.lmo-inline-action{ng-click: "removeOption(name)", aria-label: "{{ 'poll_dot_vote_form.remove_option' | translate }}"}
         %i.material-icons.poll-dot-vote-form__option-icon clear
