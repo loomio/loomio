@@ -2,7 +2,7 @@ screenshooter = require('protractor-jasmine2-screenshot-reporter');
 paths         = require('../tasks/paths')
 
 exports.config =
-  allScriptsTimeout: 30000
+  allScriptsTimeout: 60000
   directConnect: true
   # seleniumAddress: 'http://localhost:4444/wd/hub'
   capabilities:
@@ -13,7 +13,7 @@ exports.config =
     isVerbose: false
     showColors: true
     includeStackTrace: true
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 60000
   onPrepare: ->
     jasmine.getEnv().addReporter new screenshooter
       dest: paths.protractor.screenshots
