@@ -20,8 +20,8 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
         else
           [$scope.vars.pollOptionId]
 
-          $scope.stance.stanceChoicesAttributes =
-            _.map selectedOptionIds, (id) -> {poll_option_id: id}
+        $scope.stance.stanceChoicesAttributes =
+          _.map selectedOptionIds, (id) -> {poll_option_id: id}
 
 
     TranslationService.eagerTranslate
