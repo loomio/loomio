@@ -19,9 +19,9 @@ describe StanceChoice do
     expect(choice).to_not be_valid
   end
 
-  it 'does not allow scores < 1' do
-    poll.stub(:has_variable_score).and_return(true)
-    choice.score = 0
-    expect(choice).to_not be_valid
-  end
+  # it 'does not allow scores < 1' do
+  #   poll.stub(:has_variable_score).and_return(true)
+  #   choice.score = 0
+  #   expect(choice).to_not be_valid
+  # end
 end
