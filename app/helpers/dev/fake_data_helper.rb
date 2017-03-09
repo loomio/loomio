@@ -47,7 +47,7 @@ module Dev::FakeDataHelper
       custom_fields: {dots_per_person: 10}
     }.merge args
 
-    Poll.new(options)
+    Poll.new(options).tap { |p| p.community_of_type(:email, build: true) }
   end
 
   def fake_stance(args = {})

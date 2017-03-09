@@ -250,9 +250,7 @@ FactoryGirl.define do
     association :author, factory: :user
     poll_option_names ["engage"]
 
-    after(:build) do |poll|
-      poll.community_of_type(:email, build: true).save
-    end
+    after(:build) { |poll| poll.community_of_type(:email, build: true).save }
   end
 
   factory :poll_proposal, class: Poll do
@@ -261,6 +259,8 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names %w[agree abstain disagree block]
+
+    after(:build) { |poll| poll.community_of_type(:email, build: true) }
   end
 
   factory :outcome do
