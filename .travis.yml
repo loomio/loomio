@@ -37,12 +37,12 @@ before_script:
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
   - RAILS_ENV=test bundle exec rails server > /dev/null &
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
 
 script:
   # - bundle exec rake travis:rspec
   # - bundle exec rake travis:cucumber
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
   - bundle exec rake travis:protractor
 
 after_script:
