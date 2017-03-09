@@ -31,7 +31,6 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
