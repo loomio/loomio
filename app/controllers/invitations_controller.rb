@@ -4,7 +4,7 @@ class InvitationsController < ApplicationController
   rescue_from(ActiveRecord::RecordNotFound)    { respond_with_error :"invitation.invitation_not_found", status: :not_found }
   rescue_from(Invitation::InvitationCancelled) { respond_with_error :"invitation.invitation_cancelled" }
   rescue_from(Invitation::InvitationAlreadyUsed) do
-    if current_user_or_visitor.email == invitation.recipient_email
+    if current_user.email == invitation.recipient_email
       redirect_to invitation.invitable
     else
       respond_with_error :"invitation.invitation_already_used"
@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
   end
 
   def show
-    if current_user_or_visitor.is_logged_in?
+    if current_user.is_logged_in?
       InvitationService.redeem(invitation, current_user)
       session[:invitation_token] = nil
       redirect_to group_url(invitation.invitable)

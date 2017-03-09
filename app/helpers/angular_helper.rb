@@ -5,7 +5,7 @@ module AngularHelper
     metadata                                      if browser.bot? && respond_to?(:metadata, true)
     cookies[:participation_token] = params[:participation_token] if params[:participation_token]
     app_config
-    current_user_or_visitor.update(angular_ui_enabled: true) unless current_user_or_visitor.angular_ui_enabled?
+    current_user.update(angular_ui_enabled: true) unless current_user.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 
@@ -18,14 +18,14 @@ module AngularHelper
   def app_config
     @appConfig = {
       version:             Loomio::Version.current,
-      showWelcomeModal:    !current_user_or_visitor.angular_ui_enabled?,
+      showWelcomeModal:    !current_user.angular_ui_enabled?,
       reportErrors:        false,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash:               flash.to_h,
-      currentUserId:       current_user_or_visitor.id,
-      currentUserLocale:   current_user_or_visitor.locale,
-      currentUserData:     CurrentUserData.new(current_user_or_visitor, user_is_restricted?).data,
+      currentUserId:       current_user.id,
+      currentUserLocale:   current_user.locale,
+      currentUserData:     CurrentUserData.new(current_user, current_user == restricted_user.presence).data,
       currentUrl:          request.original_url,
       canTranslate:        TranslationService.available?,
       permittedParams:     PermittedParamsSerializer.new({}),

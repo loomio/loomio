@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   helper :analytics_data
   helper :locales
-  helper_method :current_user_or_visitor
+  helper_method :current_user
   helper_method :dashboard_or_root_path
 
   before_filter :set_application_locale
@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_groups
-    @current_user_groups ||= current_user_or_visitor.groups
+    @current_user_groups ||= current_user.groups
   end
 
   def user_time_zone(&block)
