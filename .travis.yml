@@ -32,8 +32,6 @@ branches:
 
 before_script:
   - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.gecko v0.14.0
-  # - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
@@ -43,7 +41,8 @@ before_script:
 script:
   # - bundle exec rake travis:rspec
   # - bundle exec rake travis:cucumber
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.gecko v0.14.0
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet
   - bundle exec rake travis:protractor
 
 after_script:
