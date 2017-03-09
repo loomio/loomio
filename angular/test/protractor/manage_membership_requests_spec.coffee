@@ -3,7 +3,6 @@ describe 'Managing membership requests', ->
   membershipRequestsHelper = require './helpers/membership_requests_helper.coffee'
   groupsHelper = require './helpers/groups_helper.coffee'
   emailHelper = require './helpers/email_helper.coffee'
-  flashHelper = require './helpers/flash_helper.coffee'
   page        = require './helpers/page_helper.coffee'
   staticPage  = require './helpers/static_page_helper.coffee'
 
@@ -31,7 +30,8 @@ describe 'Managing membership requests', ->
 
     it 'displays the correct flash message', ->
       membershipRequestsHelper.clickApproveButton()
-      expect(flashHelper.flashMessage()).toContain('Membership request approved')
+      browser.driver.sleep(300)
+      page.expectFlash('Membership request approved')
 
     it 'allows the user to join the group', ->
       staticPage.loadPath 'setup_accepted_membership_request'
@@ -51,7 +51,7 @@ describe 'Managing membership requests', ->
 
     it 'displays the correct flash message', ->
       membershipRequestsHelper.clickIgnoreButton()
-      expect(flashHelper.flashMessage()).toContain('Membership request ignored')
+      page.expectFlash('Membership request ignored')
 
   describe 'when there are no pending membership requests', ->
 
