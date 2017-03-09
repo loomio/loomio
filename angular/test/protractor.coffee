@@ -16,8 +16,8 @@ exports.config =
     showColors: true
     includeStackTrace: true
     defaultTimeoutInterval: 30000
-  onPrepare: ->
-    jasmine.getEnv().addReporter new screenshooter
-      dest: paths.protractor.screenshots
-      captureOnlyFailedSpecs: true
-      filename: 'index.html'
+  # onPrepare: ->
+  #   jasmine.getEnv().addReporter new screenshooter
+  #     dest: paths.protractor.screenshots
+  #     captureOnlyFailedSpecs: true
+  #     filename: 'index.html'
