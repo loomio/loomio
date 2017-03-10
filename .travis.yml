@@ -50,7 +50,7 @@ after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 addons:
-  firefox: latest
+  firefox: "52"
   postgresql: "9.5"
   apt:
     sources:
