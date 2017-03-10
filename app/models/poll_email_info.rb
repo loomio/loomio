@@ -25,7 +25,7 @@ class PollEmailInfo
 
   def formatted_datetime_for(date_string)
     date_time = DateTime.strptime(date_string, "%FT%T")
-    date_time.strftime(date_time.year == Date.today.year ? "%b %e %I:%M %P" : "%b %e %Y %I:%M %P")
+    date_time.strftime(date_time.year == Date.today.year ? "%e %b %l:%M %P" : "%e %b %Y %l:%M %P")
   rescue ArgumentError
     formatted_date_for(date_string)
   end
@@ -36,7 +36,7 @@ class PollEmailInfo
 
   def formatted_date_for(date_string)
     date = date_string.to_date
-    date.strftime(date.year == Date.today.year ? "%b %e" : "%b %e %Y")
+    date.strftime(date.year == Date.today.year ? "%e %b" : "%e %b %Y")
   end
 
   def outcome

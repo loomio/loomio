@@ -1315,7 +1315,7 @@ en:
       success: "'{{name}}' can no longer use your account."
 
   decision_tools_card:
-    title: Decision tools
+    title: Facilitation tools
     purpose: Clear input from everyone. Move the conversation forward. Hear from many people at once. Create shared
     purpose: Collect individual views to understand the whole.
     proposal_title: Proposal
@@ -1326,7 +1326,7 @@ en:
     poll_subtitle: Measure popularity of different options
     dot_vote_title: Dot Vote
     dot_vote_subtitle: Everyone gets some votes to spend
-    meeting_title: Meeting
+    meeting_title: Schedule Meeting
     meeting_subtitle: Find a time to meet
 
   poll_common:
@@ -1523,6 +1523,19 @@ en:
     update: Update Dot Vote
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
+
+  poll_meeting_form:
+    start_header: Schedule a time
+    tip: Find the time that best suits the group. Provide a list of times to meet and see which ones people can attend <a href='#'>Learn more</a>
+    title: Title
+    title_placeholder: E.g. When should we have our next meetup?
+    details: Details
+    details_placeholder: Provide any clarifying details people might need to participate
+    options: Times
+    start: Schedule a time
+    update: Update schedule
+    meeting_created: Meeting poll created
+    meeting_updated: Meeting poll updated
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
