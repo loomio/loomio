@@ -30,6 +30,10 @@ class PollEmailInfo
     formatted_date_for(date_string)
   end
 
+  def display_name_for(poll_option)
+    @poll.dates_as_options ? formatted_datetime_for(poll_option.name) : poll_option.name
+  end
+
   def formatted_date_for(date_string)
     date = date_string.to_date
     date.strftime(date.year == Date.today.year ? "%b %e" : "%b %e %Y")

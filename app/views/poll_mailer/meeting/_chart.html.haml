@@ -3,7 +3,7 @@
     %tr
       %td
       - @info.poll.poll_options.each do |option|
-        %td.poll-mailer-meeting__cell= @info.formatted_datetime_for(option.name)
+        %td.poll-mailer-meeting__cell= @info.display_name_for(option)
   %tbody
     %tr
       %td= t(:"poll_mailer.meeting.total")

@@ -131,6 +131,10 @@ class Poll < ActiveRecord::Base
     template['voters_review_responses']
   end
 
+  def dates_as_options
+    template['dates_as_options']
+  end
+
   def active?
     closed_at.nil?
   end
