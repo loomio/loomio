@@ -6,3 +6,6 @@ angular.module('loomioApp').directive 'pollCommonStanceChoice', (PollService) ->
 
     $scope.hasVariableScore = ->
       PollService.fieldFromTemplate($scope.stanceChoice.poll().pollType, 'has_variable_score')
+
+    $scope.datesAsOptions = ->
+      PollService.fieldFromTemplate($scope.stanceChoice.poll().pollType, 'dates_as_options')
