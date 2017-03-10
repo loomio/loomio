@@ -37,6 +37,7 @@ js:
   - angular-aria/angular-aria.js
   - angulartics/src/angulartics.js
   - angulartics/src/angulartics-gtm.js
+  - ng-facebook/ngFacebook.js
 execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js

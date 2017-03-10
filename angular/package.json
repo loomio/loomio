@@ -57,7 +57,8 @@
     "moment": "latest",
     "ng-file-upload": "~3.2.4",
     "private_pub": "latest",
-    "svg.js": "latest"
+    "svg.js": "latest",
+    "ng-facebook": "0.1.6"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
