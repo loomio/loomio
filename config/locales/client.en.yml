@@ -4,6 +4,7 @@ en:
     count: Count
     poll: Poll
     dot_vote: Dot Vote
+    meeting: Meeting
   common:
     confirm_discard_changes: Discard your changes?
     time:
@@ -1325,6 +1326,8 @@ en:
     poll_subtitle: Measure popularity of different options
     dot_vote_title: Dot Vote
     dot_vote_subtitle: Everyone gets some votes to spend
+    meeting_title: Meeting
+    meeting_subtitle: Find a time to meet
 
   poll_common:
     your_response: Your response
@@ -1479,6 +1482,9 @@ en:
   poll_count_chart_panel:
     out_of: out of {{goal}}
 
+  poll_meeting_chart_panel:
+    total: Total
+
   poll_poll_form:
     start_header: Start a poll
     edit_header: Edit poll
@@ -1545,6 +1551,13 @@ en:
       poll_edited: '<strong>{{author}}</strong> edited the count: <span>{{title}}</span>'
       poll_expired: 'Count finished: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the count: <span>{{title}}</span>'
+
+    dot_vote:
+      poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> voted:'
+      poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
+      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
 
     dot_vote:
       poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'

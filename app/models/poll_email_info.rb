@@ -23,6 +23,18 @@ class PollEmailInfo
     @poll.poll_type
   end
 
+  def formatted_datetime_for(date_string)
+    date_time = DateTime.strptime(date_string, "%FT%T")
+    date_time.strftime(date_time.year == Date.today.year ? "%b %e %I:%M %P" : "%b %e %Y %I:%M %P")
+  rescue ArgumentError
+    formatted_date_for(date_string)
+  end
+
+  def formatted_date_for(date_string)
+    date = date_string.to_date
+    date.strftime(date.year == Date.today.year ? "%b %e" : "%b %e %Y")
+  end
+
   def outcome
     @poll.current_outcome
   end
