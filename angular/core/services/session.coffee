@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'Session', ($rootScope, $cookies, $translate, $window, Records, AppConfig, FacebookService) ->
+angular.module('loomioApp').factory 'Session', ($rootScope, $cookies, $translate, $window, Records, AppConfig) ->
 
   login: (data) ->
     Records.import(data)
@@ -6,8 +6,6 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $cookies, $translate
     _.merge AppConfig, currentUserId: (data.current_user or {}).id
     return unless AppConfig.currentUserId?
 
-    FacebookService.init()
-    AppConfig.facebookService = FacebookService
     $translate.use(@user().locale)
     $rootScope.$broadcast 'loggedIn', @user()
     @user()

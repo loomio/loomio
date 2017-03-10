@@ -2278,10 +2278,6 @@ ncname@1.0.x:
   dependencies:
     xml-char-classes "^1.0.0"
 
-ng-facebook@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/ng-facebook/-/ng-facebook-0.1.6.tgz#26be85547d24c24cbd1b3900427cccdbc3d0868f"
-
 ng-file-upload@6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-6.1.0.tgz#f4cc25de9f4840f8719e5a21cd2cda5e68ffbd40"

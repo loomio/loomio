@@ -18,6 +18,5 @@ angular.module('loomioApp', [
   'ngMaterial',
   'angulartics',
   'angulartics.google.tagmanager',
-  'ngCookies',
-  'ngFacebook'
+  'ngCookies'
 ])
