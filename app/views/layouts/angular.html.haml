@@ -24,6 +24,13 @@
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
     %navbar
+    - if !current_user.facebook_community
+      %a{href: "https://www.facebook.com/v2.8/dialog/oauth?client_id=1198254923601207&redirect_uri=http://localhost:3000/facebook/authorize"}
+        CONNECT TO FACEBOOK
+    - else
+      CONNECTED TO FACEBOOK!
+      %form{action: unauthorize_facebook_path, method: :post}
+        %input{type: "submit", value: "Disconnect"}
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}

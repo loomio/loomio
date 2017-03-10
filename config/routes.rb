@@ -273,5 +273,8 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => 'application#gone'
   get '/comments/:id'                      => 'application#gone'
 
+  get '/facebook/authorize'                => 'communities/facebook#create', as: :authorize_facebook
+  get '/facebook/groups'                   => 'communities/facebook#groups'
+  post '/facebook'                         => 'communities/facebook#destroy', as: :unauthorize_facebook
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end
