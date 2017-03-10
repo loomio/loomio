@@ -5,7 +5,7 @@ class Communities::FacebookController < ApplicationController
     if current_user.save
       redirect_to dashboard_path
     else
-      render nothing: true, status: :bad_request
+      render json: { error: "Could not connect to facebook!" }, status: :bad_request
     end
   end
 
@@ -14,23 +14,22 @@ class Communities::FacebookController < ApplicationController
       community.destroy
       redirect_to dashboard_path
     else
-      render nothing: true, status: :bad_request
+      render json: { error: "Not connected to facebook!" }, status: :bad_request
     end
-    current_user.facebook_community&.destroy
   end
 
   def groups
     if community
       render json: fetch_groups
     else
-      render nothing: true, status: :bad_request
+      render json: { error: "Not connected to facebook!" }, status: :bad_request
     end
   end
 
   private
 
   def fetch_access_token
-    @access_token ||= client.post("oauth/access_token", { code: params[:code], redirect_uri: authorize_facebook_url }) { |response| response['access_token'] }
+    @access_token ||= client.post("oauth/access_token", { code: params[:code], redirect_uri: facebook_authorize_url }) { |response| response['access_token'] }
   end
 
   def fetch_user_id
@@ -42,7 +41,7 @@ class Communities::FacebookController < ApplicationController
   end
 
   def client
-    @client ||= FacebookClient.new('1198254923601207', '5abacfd24c732a4794f8e0d6c1a4fce7', community&.facebook_access_token)
+    @client ||= Clients::Facebook.new(ENV['FACEBOOK_APP_KEY'], ENV['FACEBOOK_APP_SECRET'], community&.facebook_access_token)
   end
 
   def community

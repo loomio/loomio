@@ -25,12 +25,21 @@
     %flash
     %navbar
     - if !current_user.facebook_community
-      %a{href: "https://www.facebook.com/v2.8/dialog/oauth?client_id=1198254923601207&redirect_uri=http://localhost:3000/facebook/authorize"}
+      %a{href: "https://www.facebook.com/v2.8/dialog/oauth?client_id=1198254923601207&redirect_uri=#{facebook_authorize_url}"}
         CONNECT TO FACEBOOK
     - else
       CONNECTED TO FACEBOOK!
-      %form{action: unauthorize_facebook_path, method: :post}
+      %form{action: facebook_unauthorize_path, method: :post}
         %input{type: "submit", value: "Disconnect"}
+
+    - if !current_user.slack_community
+      %a{href: "https://slack.com/oauth/authorize?client_id=3446116276.90539176993&scope=users:read,channels:read&redirect_uri=#{slack_authorize_url}"}
+        CONNECT TO SLACK
+    - else
+      CONNECTED TO SLACK!
+      %form{action: slack_unauthorize_path, method: :post}
+        %input{type: "submit", value: "Disconnect"}
+
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}

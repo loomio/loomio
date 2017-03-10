@@ -1,6 +1,4 @@
-FacebookClient = Struct.new(:key, :secret, :token) do
-  VERSION = "v2.8"
-  HOST = "https://graph.facebook.com/#{VERSION}"
+Clients::Facebook = Struct.new(:key, :secret, :token) do
 
   def get(path, params = {})
     yield response_for :get, path, { query: { access_token: token }.merge(params) }
@@ -12,7 +10,11 @@ FacebookClient = Struct.new(:key, :secret, :token) do
 
   private
 
+  def host
+    "https://graph.facebook.com/v2.8".freeze
+  end
+
   def response_for(method, path, params)
-    JSON.parse HTTParty.send(method, [HOST, path].join('/'), params.merge(headers: { 'Content-Type' => 'application/json' })).body
+    JSON.parse HTTParty.send(method, [host, path].join('/'), params.merge(headers: { 'Content-Type' => 'application/json' })).body
   end
 end

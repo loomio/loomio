@@ -273,8 +273,17 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => 'application#gone'
   get '/comments/:id'                      => 'application#gone'
 
-  get '/facebook/authorize'                => 'communities/facebook#create', as: :authorize_facebook
-  get '/facebook/groups'                   => 'communities/facebook#groups'
-  post '/facebook'                         => 'communities/facebook#destroy', as: :unauthorize_facebook
+  scope :facebook do
+    get :groups,                          to: 'communities/facebook#groups'
+    get :authorize,                       to: 'communities/facebook#create', as: :facebook_authorize
+    post '/',                             to: 'communities/facebook#destroy', as: :facebook_unauthorize
+  end
+
+  scope :slack do
+    get :channels,                        to: 'communities/slack#channels'
+    get :authorize,                       to: 'communities/slack#create', as: :slack_authorize
+    post '/',                             to: 'communities/slack#destroy', as: :slack_unauthorize
+  end
+
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end

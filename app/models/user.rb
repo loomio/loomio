@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
   belongs_to :facebook_community, class_name: "Communities::Facebook", required: false
+  belongs_to :slack_community, class_name: "Communities::Slack", required: false
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :honeypot
