@@ -1508,6 +1508,10 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_meeting_vote_form:
+    stance_created: Your times have been recorded
+    stance_updated: Your times have been updated
+
   poll_dot_vote_form:
     tip: Dot voting is a form of cumulative voting. Use it to understand preferences with more detail than a single vote.
     start_header: Start a dot vote
