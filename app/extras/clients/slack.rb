@@ -15,6 +15,6 @@ Clients::Slack = Struct.new(:key, :secret, :token) do
   end
 
   def response_for(method, path, params)
-    JSON.parse HTTParty.send(method, [HOST, path].join('/'), params.merge(headers: { 'Content-Type' => 'application/json' })).body
+    JSON.parse HTTParty.send(method, [host, path].join('/'), params.merge(headers: { 'Content-Type' => 'application/json' })).body
   end
 end
