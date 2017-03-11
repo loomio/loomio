@@ -277,10 +277,6 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(create_group)
   end
 
-  def view_homepage_as_visitor
-    patrick
-    redirect_to root_url
-  end
 
   def view_open_group_as_non_member
     sign_in patrick
