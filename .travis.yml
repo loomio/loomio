@@ -17,7 +17,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - nvm install 7.4.0
   - nvm use 7.4.0
-  - npm install -g yarn
+  - npm install -g yarn gulp
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
