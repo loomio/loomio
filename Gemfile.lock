@@ -18,6 +18,23 @@ GIT
       sprockets (< 4.1)
 
 GIT
+  remote: git://github.com/gdpelican/ahoy.git
+  revision: de4482fd32bbc114a294e121709847d0ac4a1ba5
+  branch: user-presence
+  specs:
+    ahoy_matey (1.4.2)
+      addressable
+      browser (~> 2.0)
+      geocoder
+      rack-attack
+      railties
+      referer-parser (>= 0.3.0)
+      request_store
+      safely_block (>= 0.1.1)
+      user_agent_parser
+      uuidtools
+
+GIT
   remote: git://github.com/loomio/griddler-mailin.git
   revision: 82df9ea881c70b94a346fecac11c523a166394f4
   specs:
@@ -104,16 +121,6 @@ GEM
       nokogiri
       rails
       safely_block
-    ahoy_matey (1.1.1)
-      addressable
-      browser (>= 0.4.0)
-      errbase
-      geocoder
-      rails
-      referer-parser (>= 0.3.0)
-      request_store
-      user_agent_parser
-      uuidtools
     airbrake (4.1.0)
       builder
       multi_json
@@ -138,7 +145,7 @@ GEM
     bourbon (4.3.3)
       sass (~> 3.4)
       thor (~> 0.19)
-    browser (1.1.0)
+    browser (2.3.0)
     builder (3.2.3)
     bullet (4.14.10)
       activesupport (>= 3.0.0)
@@ -683,12 +690,12 @@ DEPENDENCIES
   activerecord-import
   activerecord_any_of
   ahoy_email (~> 0.3.1)
-  ahoy_matey (~> 1.1.1)
+  ahoy_matey!
   airbrake
   awesome_print
   bing_translator
   bootstrap-sass (~> 3.3.4)
-  browser (~> 1.1.0)
+  browser (~> 2.3.0)
   bullet
   byebug
   cancancan
