@@ -1,4 +1,5 @@
 class Communities::Base < ActiveRecord::Base
+  extend HasCustomFields
   self.table_name = :communities
   validates :community_type, presence: true
 
@@ -6,18 +7,10 @@ class Communities::Base < ActiveRecord::Base
   has_many :polls, through: :poll_communities
   has_many :visitors, foreign_key: :community_id
 
-  # https://github.com/gdpelican/discriminator
   discriminate Communities, on: :community_type
 
   def self.set_community_type(type)
     after_initialize { self.community_type = type }
-  end
-
-  def self.set_custom_fields(*fields)
-    fields.map(&:to_s).each do |field|
-      define_method field,        ->        { self[:custom_fields][field] }
-      define_method :"#{field}=", ->(value) { self[:custom_fields][field] = value }
-    end
   end
 
   def includes?(member)

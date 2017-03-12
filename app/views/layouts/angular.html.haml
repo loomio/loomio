@@ -24,7 +24,7 @@
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
     %navbar
-    - if !current_user.facebook_community
+    - if !current_user.facebook_identity
       %a{href: "https://www.facebook.com/v2.8/dialog/oauth?client_id=1198254923601207&redirect_uri=#{facebook_authorize_url}"}
         CONNECT TO FACEBOOK
     - else
@@ -32,7 +32,7 @@
       %form{action: facebook_unauthorize_path, method: :post}
         %input{type: "submit", value: "Disconnect"}
 
-    - if !current_user.slack_community
+    - if !current_user.slack_identity
       %a{href: "https://slack.com/oauth/authorize?client_id=3446116276.90539176993&scope=users:read,channels:read&redirect_uri=#{slack_authorize_url}"}
         CONNECT TO SLACK
     - else

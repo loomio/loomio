@@ -12,14 +12,19 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  belongs_to :facebook_community, class_name: "Communities::Facebook", required: false
-  belongs_to :slack_community, class_name: "Communities::Slack", required: false
+  has_many :identities, class_name: "Identities::Base"
+  def slack_identity
+    identities.detect { |i| i.identity_type.to_sym == :slack }
+  end
+
+  def facebook_identity
+    identities.detect { |i| i.identity_type.to_sym == :facebook }
+  end
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :honeypot
 
   validates :email, presence: true, uniqueness: true, email: true
-  #validates :name, presence: true
   validates_inclusion_of :uses_markdown, in: [true,false]
 
   has_many :stances, as: :participant
