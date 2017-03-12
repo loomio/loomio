@@ -17,11 +17,12 @@ before_install:
   - sh -e /etc/init.d/xvfb start
   - nvm install 7.4.0
   - nvm use 7.4.0
-  - npm install -g yarn
+  - npm install -g yarn gulp
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd angular; yarn; cd ..
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
 
 branches:
   only:
@@ -31,10 +32,7 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
-  - npm install -g gulp
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - cp config/database.yml.$DB config/database.yml
-  - cp angular/protractor_package.json angular/node_modules/protractor/package.json
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
@@ -45,7 +43,6 @@ script:
   - bundle exec rake travis:rspec
   - bundle exec rake travis:cucumber
   # - bundle exec rake travis:protractor
-
 after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 

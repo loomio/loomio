@@ -81,7 +81,6 @@
     "gulp-uglify": "^1.5.1",
     "gulp-watch": "^4.3.5",
     "node-yaml-config": "0.0.3",
-    "protractor": "5.1.1",
-    "selenium-webdriver": "3.3.0"
+    "protractor": "5.1.1"
   }
 }
