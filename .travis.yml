@@ -3,7 +3,7 @@ rvm:
   - 2.3.1
 cache: bundler
 dist: trusty
-sudo: required
+sudo: false
 cache:
   directories:
     - vendor/bundle
@@ -49,7 +49,7 @@ after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 addons:
-  firefox: "52"
+  firefox: "52.0"
   postgresql: "9.5"
   apt:
     sources:
