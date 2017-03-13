@@ -32,11 +32,12 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
+  - ping -c 2 localhost
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
-  - RAILS_ENV=test bundle exec rails server &
+  - RAILS_ENV=test bundle exec rails server -b localhost &
   - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
 
 script:
