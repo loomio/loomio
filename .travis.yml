@@ -36,7 +36,7 @@ before_script:
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
-  - RAILS_ENV=test bundle exec rails server > /dev/null &
+  - RAILS_ENV=test bundle exec rails server &
   - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
 
 script:
