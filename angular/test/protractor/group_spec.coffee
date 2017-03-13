@@ -17,7 +17,7 @@ describe 'Group Page', ->
         staticPage.ignoreSynchronization ->
           page.loadPath 'view_open_group_as_visitor'
           page.click '.join-group-button__join-group'
-          browser.driver.sleep(1000)
+          browser.driver.sleep(2000)
           staticPage.fillIn '#user_name', 'Name'
           staticPage.fillIn '#user_email', 'test@example.com'
           staticPage.fillIn '#user_password', 'complex_password'
