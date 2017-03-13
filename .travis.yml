@@ -40,8 +40,8 @@ before_script:
   - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
 
 script:
-  - bundle exec rake travis:rspec
-  - bundle exec rake travis:cucumber
+  # - bundle exec rake travis:rspec
+  # - bundle exec rake travis:cucumber
   - bundle exec rake travis:protractor
 
 after_script:
