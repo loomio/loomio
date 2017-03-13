@@ -93,6 +93,7 @@ sv:
       email_or_mobile_heading: Delta genom e-post eller mobil.
       accessible_heading: Tillgängligt och Flerspråkigt.
     press:
+      fast_company: Skönheten av Loomio är i dess enkelhet. Det gör exakt vad det behöver och inget mer.
       bbc: Loomio siktar på att vara Facebook för den medborgerliga webben.
     about_us:
       heading: Om oss
@@ -105,8 +106,16 @@ sv:
       heading: Människor
     advisors:
       heading: Rådgivare
+      sascha: 'Grundare av X-Lab & Open Technology Institute'
+      joi: 'Direktör av MIT Media Lab, Medgrundare av Creative Commons, Styrelsen av Mozilla Foundation'
+      douglas: 'Bästsäljande författare, CNN-kommentator, mediateoretiker'
+      matthew_and_brian: 'Medgrundare av Inflection, Namaste Foundation'
     purpose_and_values:
       heading: 'Syfte & Värderingar'
+      coop_heading: Kooperativ socialt företag
+      independent_heading: Oberoende och neutral
+      open_source_heading: öppen kollaboration
+      adaptive_heading: 'Adaptiv, reflexiv, användardrivet'
       transparent_heading: Transparens
     postal_address: 'Postadress:'
     physical_address: 'Fysisk adress:'

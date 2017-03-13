@@ -140,24 +140,7 @@ tr:
     invite_people: Kişileri davet et
   notifications:
     header: Bildirimler
-    new_discussion: '<strong>{{name}}</strong> bir müzakere başlattı <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> bir öneri oluşturdu <strong>{{proposal}}</strong>'
-    motion_closed: 'Öneri kapandı: <strong>{{proposal}}</strong>'
     publish_outcome: Bir sonuç yayınla
-    motion_closed_by_user: '<strong>{{name}}</strong> <strong>{{proposal}}</strong> önerisini kapattı'
-    motion_closed_by_expiry: 'Öneri kapatıldı <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> <strong>{{proposal}}</strong> önerisinde {{position}}  pozisyonunda'
-    new_comment: '<strong>{{name}}</strong> <strong>{{discussion}}</strong> müzakeresine yorum yaptı'
-    comment_replied_to: '<strong>{{name}}</strong> <strong>{{discussion}}</strong> müzakeresindeki yorumunu yanıtladı'
-    comment_liked: '<strong>{{name}}</strong>  <strong>{{discussion}}</strong> müzakeresindeki yorumunu beğendi'
-    membership_requested: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna üyelik başvurusunda bulundu'
-    membership_request_approved: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna yaptığın üyelik başvurusunu onayladı'
-    user_added_to_group: '<strong>{{name}}</strong> seni <strong>{{group}}</strong> grubuna ekledi'
-    user_added_to_group_no_inviter: '<strong>{{group}}</strong> grubuna eklendin'
-    motion_closing_soon: 'Öneri yakında kapanıyor: <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> <strong>{{proposal}}</strong> önerisi için bir sonuç yayınladı'
-    motion_outcome_updated: '<strong>{{name}}</strong> <strong>{{proposal}}</strong> önerisinin sonucunu güncelledi'
-    invitation_accepted: '<strong>{{name}}</strong> <strong>{{group}}</strong> grubuna yaptığın üyelik başvurusunu onayladı'
   position_buttons_panel:
     heading: Söz sahibi ol
   vote_form:
@@ -335,10 +318,8 @@ tr:
     contribute: Bir katkıda bulunun
   gift_card:
     heading: Hediye planı
-    body: "<strong>{{name}}</strong> hediye destekli bir gruptur. Sizinki gibi gruplara yardımcı olan Loomio'yu desteklemek için buraya tıklayın:"
     make_a_contribution: Bir katkıda bulunun
   trial_card:
-    title: 30 günlük deneme
     choose_plan: Fiyatlandırma planınızı seçin
     in_progress_body: "Loomio'yu <strong>{{name}}</strong> ile denediğiniz için teşekkür ederiz. İstediğiniz zaman grubunuza uygun bir fiyatlandırma planı seçebilirsiniz."
     expired_body_html: "<strong>{{name}}</strong> grubunun Loomio'yu deneme süreci bitti. Kullanmaya devam etmek için, grubunuza uygun bir fiyatlandırma planı seçmeniz gerekir."
@@ -373,7 +354,6 @@ tr:
     how_do_people_join: Kişiler nasıl katılabilir?
     membership_granted_upon_request: Herkes gruba katılabilir.
     membership_granted_upon_approval: 'Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.'
-    membership_granted_upon_approval_secret_parent: '<strong>Talep üzerine </strong> - {{parent}} grubundan herhangi biri gruba katılmak isteyebilir.'
     thread_privacy: Konu gizliliği
     public_threads: Sadece kamuya açık konular
     public_discussions_subgroup: '{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir'
@@ -438,7 +418,6 @@ tr:
     messages:
       invitation_sent: Davetiye gönderildi.
       invitations_sent: '{{count}} davetiye gönderildi.'
-      no_invitations: 'Ah! Lütfen e-posta adresinin doğru olduğundan emin olun ve tekrar deneyin.'
       max_invitations: "Eğer 100'den fazla davetiye göndermek istiyorsanız, bir takım linki kullanınız."
   add_members_modal:
     heading: '{{name}} grubundan kişileri ekle'
@@ -656,31 +635,6 @@ tr:
 
       İşte grubunun başarılı olmasını desteklemen için bazı ipuçları:
     different_ways: "Loomio'yu kullanmanın çeşitli yolları"
-    engaging_html: >
-      <h2>Grubunla etkileşime girmen için ipuçları</h2>
-
-      <p>Kişiler masada etkileşimli bir öneri olduğu zaman katkıda bulunmak için
-      istekli olurlar. İyi bir öneri grup için bir eylem planı içerir, bu yüzden
-
-      grubun aynı fikirde olup olmadığı ve bunun ne anlama geldiği hemen belli
-      olacaktır. Eğer kişilerin yüzyüze
-
-      ya da email aracılığıyla yürüttüğü müzakereler ve aldığı kararlar Loomio
-      aracılığıyla yapılıyor olsaydı
-
-      bunları tanımlamak çok daha kolay olurdu.</p>
-
-      <p>Eğer grubun henüz yeni ise, herkesin Loomio aracıyla oynaması için bir
-      şans vermek ve karar verme sürecini  görebilmesine olanak tanımak için
-      endişe yaratmayacak bir karar ile işe başlayabilirsin.</p>
-
-      <p>Kişilerin müzakerelere dahil olmasını teşvik etmenin diğer bir kolay
-      yolu ise
-
-      @bahset özelliğini kullanarak onları davet etmek; bu özellik kişilere bir
-      yorumda onlardan bahsedildiğini haber veren
-
-      bir e-posta gönderir.</p>
     example1_html: >
       <h3>Grubunun geniş bir konuyu müzakere ederek birlikte bir çözüm
       geliştirmesine ihtiyacın var</h3>
@@ -695,18 +649,6 @@ tr:
 
       katılım gösterdileri sürece, sonuç hakkında fikir birliğinde olmaları daha
       olasıdır.</p>
-    example2_html: >
-      <h3>Aklında bir fikir var ve gruptan onay alıp ilerlemek istiyorsun.</h3>
-
-      <p>Strateji: Almak istediğin karar hakkında bir tartışma başlat ve hemen
-      teklif yap.</p>
-
-      <p>Eğer aklındaki sonuçlara dair öenmli çekincelerin olmadığında emin olmak
-      istiyorsan teklifi karara dair çabuk bir geri dönüş olarak
-      kullanabilirsin.</p>
-
-      <p>Bir döümanı tamamlamak, başvuruları onaylamak veya işin bir parçasını
-      kabul ettirmek gibi şeyler yapabilirsin.</p>
     get_in_touch: İletişime geç
     get_in_touch_description_html: "Herhangi bir sorunuz veya geri bildiriminiz varsa, <a href='%{link}'>bize yazın</a>."
     getting_started: Başlarken
@@ -779,25 +721,6 @@ tr:
     positions_disagree_description: '<span>Katılmıyorum</span> means daha iyi bir alternatif olabileceğini düşündüğün, ancak grubun aldığı karara uyduğun anlamına gelir.'
     positions_block_description: '<span>İtiraz ediyorum</span> öneriye şiddetle karşı çıktığın ve hayata geçirilmesine razı olmadığın anlamına gelir.'
     start_discussion: İlgi çekici bir müzakere başlatma
-    start_discussion_html: >
-      <p>Bir müzakere başladığınızda, başlığınızın ana konuyu kısa ve öz bir
-      şekilde aktardığından emin olun.
-
-      Grubun üretken ve bilgilendirilmiş bir durumda müzakere
-
-      edebilmesini sağlayacak olan tüm temel verileri girmek için
-
-      İçerik Panelini kullanın.</p>
-
-      <p>Müzakere esnasında yeni bilgiler ortaya çıktıkça İçerik Paneli
-      güncellenebilir.
-
-      Bu alanda; ana konuyu açıklığa kavuşturmanın yanı sıra kaynak paylaşımı
-      yapabilir,
-
-      müzakere ilerledikçe özet bilgileri yayınlayabilir ya da
-
-      grubunuzun kullandığı karar verme protokollerini paylaşabilirsin.</p>
     start_proposal: Anlaşılır bir öneri yazma
     start_proposal_html: >
       <p>Eğer başlığınız açık ve öz ise, kişiler katılıyorum ya da

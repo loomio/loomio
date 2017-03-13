@@ -128,7 +128,6 @@ ga-IE:
     sign_in: Síniú isteach
     signed_in: Nasctha go rathúil
     oauth:
-      title: 'Nó nasc le cuntas ó dhream eile:'
       facebook: Nasc le Facebook
       twitter: Nasc le Twitter
       google: Nasc le Google
@@ -207,23 +206,7 @@ ga-IE:
   notifications:
     header: Fógraí
     no_notifications: Níl aon fhógra agat
-    new_discussion: 'Chuir <strong>{{name}}</strong> tús le plé <strong>{{discussion}}</strong>'
-    new_motion: 'Chruthaigh <strong>{{name}}</strong> togra <strong>{{proposal}}</strong>'
-    motion_closed: 'Togra dúnta: <strong>{{proposal}}</strong>'
     publish_outcome: Foilsigh toradh
-    motion_closed_by_user: 'Dhún <strong>{{name}}</strong> an togra <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'Dhún an togra <strong>{{proposal}}</strong>'
-    new_vote: '{{position}} atá ag <strong>{{name}}</strong> ar an togra <strong>{{proposal}}</strong>'
-    new_comment: 'Thrácht <strong>{{name}}</strong> ar <strong>{{discussion}}</strong>'
-    comment_replied_to: "D'fhreagair <strong>{{name}}</strong> do thrácht i <strong>{{discussion}}</strong>"
-    comment_liked: 'Léirigh <strong>{{name}}</strong> go dtaitníonn do thrácht in <strong>{{discussion}}</strong> léi nó leis'
-    membership_requested: "D'iarr <strong>{{name}}</strong> cead bheith mar chomhalta de <strong>{{group}}</strong>"
-    membership_request_approved: "Cheadaigh <strong>{{name}}</strong> d'iarratas chun a bheith mar chomhalta de <strong>{{group}}</strong>"
-    user_added_to_group: 'Chuir <strong>{{name}}</strong> thú leis an mbaicle <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'Cuireadh leis an mbaicle <strong>{{group}}</strong> thú'
-    motion_closing_soon: 'Dúnfar an togra go luath: <strong>{{proposal}}</strong>'
-    motion_outcome_created: "D'fhoilsigh <strong>{{name}}</strong> toradh don togra <strong>{{proposal}}</strong>"
-    motion_outcome_updated: 'Nuashonraigh <strong>{{name}}</strong> toradh don togra <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Abair leat
   vote_form:

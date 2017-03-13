@@ -319,34 +319,6 @@ ro:
 
       Aici sunt cateva sfaturi  care vor ajuta grupul tau sa reuseasca:
     different_ways: Modalitati diferite de a folosi Loomio
-    engaging_html: >
-      <h2>Sfaturi pentru implicarea grupului tau</h2>
-
-      <p>Oamenii vor fi incantati sa se alature si sa  sa participe cand apare
-      o propunere
-
-      interesanta pe masa. O propunere buna contine un plan de actiune pentru
-      grup, incat
-
-      este evident imediat ce inseamna sa fii de acord sau nu. Gandeste-te cum
-      poti sa identifici
-
-      discutii/decizii pe care grupul le ia in acest moment prin discutii fata in
-      fata sau pe email
-
-      si care ar fi mai usor de luat pe Loomio.</p>
-
-      <p>Daca grupul tau este in formare, poti sa incepi cu o decizie usoara
-      pentru a da sansa tuturor
-
-      sa se joaca cu instrumentul si sa observe procesul de luare a deciziilor in
-      actiune.</p>
-
-      <p>O alta metoda simpla sa incurajezi oamenii intr-o discutie este sa
-      folosesti functia @mentiune
-
-      pentru a notifica oameni; aceasta le va trimite un email spunandu-le ca au
-      fost mentionati intr-un comentariu.</p>
     example1_html: >
       <h3>Ai nevoie ca grupul sa discute o tema mai larga si sa ajunga la
       o solutie comuna</h3>
@@ -361,20 +333,6 @@ ro:
       participe in acest proces,
 
       este mai probabil ca vor fi de acord cu rezultatul lui.</p>
-    example2_html: >
-      <h3>Ai deja o propunere in minte, si vrei sa obtii acordul grupului pentru
-      a merge mai departe.</h3>
-
-      <p>Strategie: incepe o discutie specifica deciziei si creeaza imediat
-      o propunere.</p>
-
-      <p>Daca ai un rezultat clar in minte dar vrei sa fii sigur ca nu sunt nici
-      un fel de rezerve importante
-
-      poti folosi propunerea pentru a obtine rapid pareri in decizie.</p>
-
-      <p> Poti face lucruri ca finalizarea unui document, aprobarea unei
-      aplicatii, sau semnaturi pentru o idee.</p>
     get_in_touch: Ia legatura
     get_in_touch_description_html: "Daca ai intrebari sau feedback, <a href='%{link}'>trimite-ne un mesaj</a>."
     getting_started: Notiuni de baza
@@ -448,25 +406,6 @@ ro:
     positions_disagree_description: '<span>Dezaprobare</span> inseamna ca tu crezi ca exista o alternativa mai buna, dar te supui deciziei grupului.'
     positions_block_description: '<span>Opunere</span> inseamna ca ai obiectii serioase si vei fi nemultumit daca propunerea este aprobata.'
     start_discussion: Cum sa initiezi o discutie captivanta
-    start_discussion_html: >
-      <p>Cand incepi o discutie, asigura-te ca titlul transmite intr-un mod
-      succint subiectul.
-
-      Foloseste sectiunea de context pentru a da toate informatiile necesare
-      pentru ca
-
-      grupul sa poata avea o discutie productiva si informata.</p>
-
-      <p>In timpul discutiilor, sectiunea context poate fi improspatata pe masura
-      ce apar noi
-
-      informatii. Poti folosi acest spatiu pentru a clarifica subiectul,
-      transmite informatii,
-
-      face un rezumat al discutiei pe masura ce evolueaza, sau sublinia
-      protocolul de
-
-      luare a deciziilor pe care grupul tau il foloseste.</p>
     start_proposal: Scrierea unei propuneri clare
     start_proposal_html: >
       <p>Daca ai un titlu clar si succint, oamenii vor sti imediat ce inseamna sa

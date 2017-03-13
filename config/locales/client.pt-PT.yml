@@ -3,3 +3,9 @@ pt-PT:
     forbidden: Não tem permissão para o fazer.
   discussion_form:
     privacy_label: Privacidade
+  confirm_gift_plan_modal:
+    go_back: Upgrade
+  upgrade_plan_card:
+    donate: Faça um donativo
+  choose_plan_modal:
+    support_link: 'Vamos falar!'

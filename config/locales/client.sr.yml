@@ -146,7 +146,6 @@ sr:
     sign_in: Prijava
     signed_in: Uspešno ste se prijavili
     oauth:
-      title: 'Ili se prijavite pomoću naloga sa:'
       facebook: Upotrebi Facebook
       twitter: Upotrebi Twitter
       google: Upotrebi Google
@@ -225,25 +224,7 @@ sr:
   notifications:
     header: Obaveštenja
     no_notifications: Nemate nikakvih obaveštenja
-    new_discussion: '<strong>{{name}}</strong> je počeo/la diskusiju <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> je kreirao/la predlog <strong>{{proposal}}</strong>'
-    motion_closed: 'Zatvoren predlog: <strong>{{proposal}}</strong>'
     publish_outcome: Objavi jedan ishod
-    motion_closed_by_user: '<strong>{{name}}</strong> je zatvorio/la predlog <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'Predlog je istekao <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> {{position}} o predlogu <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> je komentarisao/la na <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> je odgovorio/la na tvoj komentar u <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> se sviđa tvoj komentar u <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> želi biti član u <strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> je odobrio/la tvoj zahtev da se priključiš u <strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> te je dodao/la u grupu <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'Dodati ste grupi <strong>{{group}}</strong>'
-    motion_closing_soon: 'Predlog ističe uskoro: <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> je objavio/la jedan ishod predloga <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> izmenio/la ishod za predlog <strong>{{proposal}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> je prihvatio/la tvoj zahtev da se priključiš <strong>{{group}}</strong>'
-    new_coordinator: '<strong>{{name}}</strong> Vas je promovisao u koordinatora <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Recite šta imate
   vote_form:
@@ -433,10 +414,8 @@ sr:
     contribute: Donirajte
   gift_card:
     heading: Poklon plan
-    body: '<strong>{{name}}</strong> je grupa podržana poklonima. Kako bi podržao Lumio da nastavi pomagati grupama kao što je tvoja, škljocni ovde:'
     make_a_contribution: Doniraj
   trial_card:
-    title: 30-odnevna proba
     choose_plan: Odaberi svoj plan plaćanja
     in_progress_body: 'Hvala što ste isprobali Lumio sa <strong>{{name}}</strong>. Uvek možeš izabrati plan plaćanja koji odgovara tvojoj grupi.'
     expired_body_html: '<strong>{{name}}</strong> je ostario/la kraj probnog perioda Lumija. Da nastavite sa upotrebom, trebate odabrati plan cene koja odgovara Vašoj grupi.'
@@ -471,7 +450,6 @@ sr:
     how_do_people_join: Kako se ljudi pridružuju?
     membership_granted_upon_request: Svako se može pridružiti grupi.
     membership_granted_upon_approval: Svako može tražiti da se pridruži ali mora biti odobreno.
-    membership_granted_upon_approval_secret_parent: '<strong>Zahtevom</strong> - svako iz {{parent}} može pitati da se pridruži grupi.'
     thread_privacy: Privatnost niti
     public_threads: Samo javne niti
     public_discussions_subgroup: 'Svako u {{parentGroupName}} može videti diskusije'
@@ -537,7 +515,6 @@ sr:
     messages:
       invitation_sent: Poziv poslat.
       invitations_sent: '{{count}} pozivnica poslato.'
-      no_invitations: 'Uh-oh! Molim proverite da li je adresa ePošte tačna i pokušajte ponovo.'
       max_invitations: 'Ako želite da pošaljete više od 100 pozivnica, upotrebite tim vezu.'
   add_members_modal:
     heading: 'Dodaj ljude iz {{name}}'
@@ -595,7 +572,6 @@ sr:
     on_participation_description: 'Kada se priključite niti, sve dalje aktivnosti biće Vam odmah poslate ePorukom.'
     mentioned_label: Pominjanja
     mentioned_description: 'Kada neko želi da Vam skrene pažnju, @pomenuće Vas. Preporučujemo da ostavite ovo uključeno, tako da dobijete jednu ePoruku kada se ovo dogodi.'
-    update_settings: Ažuriraj opcije svih grupa
     specific_groups: Opcije određenih grupa
     default_settings:
       loud_description: 'Kada se pridružite novoj grupi, bićete obavešteni ePorukom <strong>kada god bude aktivnosti u njoj</strong>.'
@@ -786,36 +762,6 @@ sr:
 
       odluka. Evo nekih saveta kako da podržavate svoju grupu tako da uspe:
     different_ways: Različiti načini upotrebe Lumija
-    engaging_html: >
-      <h2>Saveti za podsticanje grupe</h2>
-
-      <p>Ljudi će početi veoma uzbuđeno da se priključuju diskusiji kada postoji
-
-      dobar motiv
-
-      pred njima. Dobar predlog sadrži plan akcija za grupu i to takav
-
-      da je odmah očigledno šta tačno znači slagati se ili ne. Razmislite o tome
-      kako
-
-      možete identifikovati diskusije/odluke koje grupa trenutno preduzima uživo
-      ili putem
-
-      slanja ePoruka da bi to bilo lakše da su na Lumiju.</p>
-
-      <p>Ukoliko vaša grupa tek počinje, možete pokrenuti diskusiju o nekoj manje
-      bitnoj odluci, kako bi
-
-      ostali imali šansu da se poigraju sa ovim alatom i vide proces donošenja
-      odluke u akciji.</p>
-
-      <p>Još jedan jednostavan način da ohrabrite ljude da se priključuju
-      diskusiji jeste da koristite @pomeni
-
-      opciju za pominjanje određenih ljudi; ovo će im poslati ePoruku
-      i obavestiti ih o tome da su
-
-      pomenuti u komentaru.</p>
     example1_html: >
       <h3>Potrebna Vam je grupa da diskutujete o raznim temama i razvijate
       rešenja zajedno.</h3>
@@ -828,21 +774,6 @@ sr:
       o problemu pre skoka na specifično rešenje. Kada se ljudi
 
       uključe u proces, uglavnom su aktivni na mestima sa ishodom.</p>
-    example2_html: >
-      <h3>Već imate predlog na umu i želite da dobijete odobrenje od grupe da
-      nastavite dalje.</h3>
-
-      <p>Strategija: Pokrenite diskusiju o određenoj odluci i odmah napravite
-      predlog.</p>
-
-      <p>Ukoliko imate jasnu sliku ishoda, ali biste hteli da se uverite da ne
-      postoje bilo kakve kritične zabrinutosti,
-
-      možete iskoristiti predlog da brzo dobijete povratne informacije pri
-      odlučivanju.</p>
-
-      <p>Možete dovršiti dokument, odobriti prijavu ili podržati neki
-      projekat.</p>
     get_in_touch: Ostani u kontaktu
     get_in_touch_description_html: "Ako imate nekih pitanja ili komentara, <a href='%{link}'>pišite nam</a>."
     getting_started: Odakle početi
@@ -917,22 +848,6 @@ sr:
     positions_disagree_description: '<span>Ne slažem se</span> znači da misliš da postoji bolje rešenje, ali da si spreman da nastaviš sa odlukom grupe.'
     positions_block_description: '<span>Blokiraj</span> znači da imate ozbiljne primedbe i bićete prilično nezadovoljni ako ovaj predlog nastavi dalje u tom pravcu.'
     start_discussion: Početi jednu zanimljivu diskusiju
-    start_discussion_html: >
-      <p>Kada pokrenete diskusiju, potrudite se da naziv diskusije detaljno opiše
-      temu.
-
-      Koristite Kontekst Panel da iznesete sve prateće, neophodne informacije za
-
-      grupu, kako bi vaša diskusija bila produktivna i informatisana
-      dovoljno.</p>
-
-      <p>Tokom diskusije Kontekst Panel može biti dopunjen kada saznate
-
-      nešto novo. Takođe, kako tema krene da se razjašnjava, možete ga koristiti
-      i za deljenje resursa, sumiranje diskusije kako ona napreduje ili za
-      isticanje
-
-      protokola koje grupa koristi za donošenje odluke.</p>
     start_proposal: Kako napisati jasan predlog
     start_proposal_html: >
       <p> Ako napravite jasan i sažet naslov, ljudi će odmah tačno znati
@@ -1028,7 +943,6 @@ sr:
   authorized_apps_page:
     title: Odobrene Aplikacije
     no_applications: Niste odobrili ni jednu aplikaciju treće strane još uvek.
-    notice: "Dali ste sledećim aplikacijama dopuštenje da koriste Vaš nalog. Škljocnite na 'Opozovi' da ih isključite."
     revoke: Povuci
   registered_apps_page:
     title: Registrovane Aplikacije

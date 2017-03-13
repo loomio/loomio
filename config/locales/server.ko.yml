@@ -58,6 +58,7 @@ ko:
     success:
       header: 거의 다 되었습니다. 이메일을 확인해 주세요.
   pricing_page:
+    gift: 무료
     standard: 일반
     free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
     get_started_for_free: 무료로 시작하기
@@ -68,6 +69,7 @@ ko:
     usage_statistics: 사용량 통계
   contact_page:
     contact_us: 연락하기
+    contact_form: 연락처양식
     labels:
       name: 이름
       email: 이메일 주소

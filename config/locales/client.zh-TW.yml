@@ -1,4 +1,8 @@
 zh-TW:
+  poll_types:
+    proposal: 提案
+    count: 數量
+    poll: 投票
   common:
     confirm_discard_changes: 丟棄您的變更？
     time:
@@ -52,6 +56,7 @@ zh-TW:
       translated: 採用 Bing 翻譯
       upload: 上傳
       uploading: 正在上傳
+      load_more: 載入更多
     formatting_help:
       label: 格式化說明
       title: 學習如何使用 Markdown 來格式化您在 Loomio 上的文字
@@ -84,6 +89,10 @@ zh-TW:
     heading: 上一個提案
   previous_proposals_page:
     heading: 上一個提案
+  previous_polls_page:
+    heading: '在 {{name}} 中的動態'
+    polls_count: '顯示 {{total}} 中的 {{loaded}} 個動態'
+    search_activities: 搜尋動態
   proposal_collapsed:
     expand: 展開
     outcome: '結果：{{outcome}}'
@@ -255,26 +264,31 @@ zh-TW:
   notifications:
     header: 通知
     no_notifications: 您沒有任何通知
-    new_discussion: '<strong>{{name}}</strong> 啟動了 <strong>{{discussion}}</strong> 討論串'
-    new_motion: '<strong>{{name}}</strong> 建立了一個提案 <strong>{{proposal}}</strong>'
-    motion_closed: '定案的提案：<strong>{{proposal}}</strong>'
+    new_discussion: '<strong>{{name}}</strong> 啟動了討論 <strong>{{title}}</strong> '
+    new_motion: '<strong>{{name}}</strong> 建立了一個提案 <strong>{{title}}</strong>'
+    motion_closed: '提案已定案：<strong>{{title}}</strong>'
     publish_outcome: 發表成果
-    motion_closed_by_user: '<strong>{{name}}</strong> 定案了一個提案 <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: '提案已定案 <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> {{position}} 在提案中 <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 上提出了意見'
-    comment_replied_to: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 中回應了您的意見'
-    comment_liked: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 對您的意見按了讚'
-    user_mentioned: '<strong>{{name}}</strong> 在 <strong>{{discussion}}</strong> 中提到您'
-    membership_requested: '<strong>{{name}}</strong> 申請 <strong>{{group}}</strong> 的成員資格'
-    membership_request_approved: '<strong>{{name}}</strong> 核準了您要加入 <strong>{{group}}</strong> 的申請'
-    user_added_to_group: '<strong>{{name}}</strong> 將您加入到了群組 <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: '您被加入到群組 <strong>{{group}}</strong>'
-    motion_closing_soon: '提案即將定案：<strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> 公佈了提案 <strong>{{proposal}}</strong> 的結果'
-    motion_outcome_updated: '<strong>{{name}}</strong> 已更新了提案 <strong>{{proposal}}</strong> 的結果'
-    invitation_accepted: '<strong>{{name}}</strong> 接受了您將其加入 <strong>{{group}}</strong> 的邀請'
-    new_coordinator: '<strong>{{name}}</strong> 讓您成為 <strong>{{group}}</strong> 群組的協調者'
+    motion_closed_by_user: '<strong>{{name}}</strong> 定案了一個提案 <strong>{{title}}</strong>'
+    motion_closed_by_expiry: '提案已定案 <strong>{{title}}</strong>'
+    new_vote: '<strong>{{name}}</strong> {{position}} 在提案 <strong>{{title}}</strong>'
+    new_comment: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 上評論'
+    comment_replied_to: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 回覆您的評論'
+    comment_liked: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 對您的評論按讚'
+    user_mentioned: '<strong>{{name}}</strong> 在 <strong>{{title}}</strong> 中提到您'
+    membership_requested: '<strong>{{name}}</strong> 請求 <strong>{{title}}</strong> 的成員資格'
+    membership_request_approved: '<strong>{{name}}</strong> 接受您加入 <strong>{{title}}</strong> 的請求'
+    user_added_to_group: '<strong>{{name}}</strong> 將您加入到群組 <strong>{{title}}</strong>'
+    user_added_to_group_no_inviter: '您被加入到群組 <strong>{{title}}</strong>'
+    motion_closing_soon: '提案即將定案：<strong>{{title}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> 發佈了提案 <strong>{{title}}</strong> 的成果'
+    motion_outcome_updated: '<strong>{{name}}</strong> 更新了提案 <strong>{{title}}</strong> 的成果'
+    invitation_accepted: '<strong>{{name}}</strong> 接受您的邀請加入 <strong>{{title}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> 讓您成為 <strong>{{title}}</strong> 的協調者'
+    poll_created: '<strong>{{name}}</strong> 啟動了一個 {{poll_type}}：<strong>{{title}}</strong>'
+    poll_edited: '<strong>{{name}}</strong> 編輯了一個 {{poll_type}}：<strong>{{title}}</strong>'
+    poll_closing_soon: '{{poll_type}} 即將關閉：<strong>{{title}}</strong>'
+    poll_expired: '{{poll_type}} 已關閉：<strong>{{title}}</strong>'
+    outcome_created: '<strong>{{name}}</strong> 分享了成果：<strong>{{title}}</strong>'
   position_buttons_panel:
     heading: 擁有發言權
   vote_form:
@@ -362,6 +376,8 @@ zh-TW:
     privacy_organisation: '此討論串只會被「{{parent}}」群組的成員以及「{{group}}」群組的成員看到。'
     new_discussion_submit: 啟動討論串
     edit_discussion_submit: 更新討論串
+    make_announcement: 公告
+    notified_count: '{{count}} 個夥伴將會收到電子郵件'
   proposal_expanded:
     collapse: 摺疊
     current_votes: 目前的投票
@@ -514,7 +530,7 @@ zh-TW:
     got_to_group: 不是現在，謝謝。
   gift_card:
     heading: 禮物方案
-    body: '<strong>{{name}}</strong> 是接受禮物方案支援的群組。若想支援 Loomio 繼續協助其他像您一樣接受禮物方案支援的群組，請點擊這裡：'
+    body: '<strong>{{name}}</strong> 是一個禮物支援群組。要像群組幫助您一樣支援 Loomio，點選這裡：'
     make_a_contribution: 作出貢獻
   upgrade_plan_card:
     heading: 升級使用進階功能
@@ -527,7 +543,7 @@ zh-TW:
     upgrade: 立刻升級
     donate: 捐款
   trial_card:
-    title: 30 天試用
+    title: 30天試用
     choose_plan: 選擇您的定價方案
     in_progress_body: '感謝試用 Loomio，<strong>{{name}}</strong>。您可以在任何時間挑選一個適合您的群組的定價方案。'
     expired_body_html: '<strong>{{name}}</strong> 已經結束了 Loomio 的試用。若您想要繼續使用它，您必須挑選一個適合您的定價方案。'
@@ -597,7 +613,7 @@ zh-TW:
     how_do_people_join: 夥伴要怎樣加入？
     membership_granted_upon_request: 任何人都能加入此群組。
     membership_granted_upon_approval: 任何人都可以要求加入，但必須經過審核。
-    membership_granted_upon_approval_secret_parent: '<strong>根據要求</strong> ── 任何人在 {{parent}} 群組的人都可以要求加入群組。'
+    membership_granted_upon_approval_secret_parent: '<strong>根據要求</strong>：任何在 {{parent}} 群組的人都可以要求加入群組。'
     thread_privacy: 討論串隱私權
     public_threads: 僅限公開討論串
     public_discussions_subgroup: '任何在 {{parentGroupName}} 群組的人都能看到這則討論串'
@@ -641,6 +657,9 @@ zh-TW:
   group_previous_proposals_card:
     heading: 上一個提案
     see_more: 查看詳細資訊
+  group_previous_polls_card:
+    heading: 之前的動態
+    see_more: '檢視全部：({{count}}) 個動態'
   invitation_form:
     aria_label: 邀請表單
     invite_people: 邀請夥伴
@@ -665,7 +684,7 @@ zh-TW:
     messages:
       invitation_sent: 邀請函已寄出。
       invitations_sent: '{{count}} 封邀請函已寄出。'
-      no_invitations: 唉呀！請確認電子郵件地址是否正確定並再試一次。
+      no_invitations: 喔喔！請檢查您的電子郵件地址是否正確，並再試一次。
       max_invitations: 若您想要寄出多於 100 封邀請函，使用團隊連結。
   add_members_modal:
     aria_label: 從主群組加入成員
@@ -724,7 +743,7 @@ zh-TW:
   change_picture_form:
     aria_label: 變更照片表單
     title: 變更照片
-    helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a> 帳號，您可以使用它。'
+    helptext: '您可以上傳您自己的簡歷照片，或是若您有一個 <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> 帳號，您可以使用它。'
     use_initials: 使用縮寫
     use_gravatar: 使用 gravatar
     use_uploaded: 上傳新照片
@@ -763,7 +782,7 @@ zh-TW:
     on_participation_description: 當您參與討論串時，之後所有的動態都會即時寄給您。
     mentioned_label: 提及
     mentioned_description: 當某人想要取得您的注意，他們將會以 @ 來提及您。我們建議您保持這個設定，這樣您就可以在有人提及您時收到一封電子郵件。
-    update_settings: 更新所有群組的設定
+    update_settings: 儲存變更
     specific_groups: 特定群組的設定
     default_settings:
       loud_description: '當您加入一個新群組時，您將會<strong>有動態時</strong>收到電子郵件。'
@@ -1112,7 +1131,7 @@ zh-TW:
   authorized_apps_page:
     title: 已授權的應用程式
     no_applications: 您尚未授權任何第三方的應用程式。
-    notice: 您已經給予下列這些第三方應用程式使用您的帳號的權限。點選「撤銷」以停用它們。
+    notice: 您已給予下列的第三方應用程式使用您的帳號的權限。點選「撤銷」來停用它們。
     revoke: 撤銷
   registered_apps_page:
     title: 已註冊的應用程式
@@ -1149,3 +1168,175 @@ zh-TW:
     submit: 撤銷存取權
     messages:
       success: '「{{name}}」已無法使用您的帳號'
+  decision_tools_card:
+    title: 決策工具
+    purpose: 收集個人觀點來了解全貌。
+    proposal_title: 提案
+    proposal_subtitle: 尋求共識
+    count_title: 數量
+    count_subtitle: 追蹤有誰已經完成任務
+    poll_title: 投票
+    poll_subtitle: 測量不同選項的人氣
+  poll_common:
+    your_response: 您的回應
+    change_your_response: 變更您的回應
+    reason: 理由
+    results: 結果
+    vote: 投票
+    votes: 投票
+    update_outcome: 更新結果
+    outcome: 成果
+    statement: 聲明
+    change_your_stance_title: 變更您的心意？
+    change_your_stance_text: 最佳的群組決策會在人們都互相了解彼此的立場時。若有其他人說了些什麼改變您的心意的話，就改變您的投票吧。
+    change_your_stance: 變更您的投票
+    load_more: 載入更多
+    details: 詳細內容
+  poll_common_card:
+    show_results: 顯示結果
+  poll_common_collapsed:
+    by_who: '由 {{name}}'
+  poll_common_notify_group:
+    notify_group: 公告
+    members_count: '{{count}} 個人將會被通知'
+  poll_common_close_form:
+    title: 提前關閉投票
+    helptext: 您確定您準備好提早關閉投票了嗎？
+    close_proposal: 提議定案
+    close_poll: 關閉投票
+    close_count: 關閉計數
+    proposal_closed: 提議已定案
+    poll_closed: 投票已關閉
+    count_closed: 計數已關閉
+  poll_common_closing_at_field:
+    closing: 關閉
+    closing_hour: 關閉時間
+  poll_common_school_link:
+    learn_about: 更多關於：
+  poll_card:
+    started_by: '由 {{name}} 啟動'
+  poll_common_votes_panel:
+    newest_first: 最新的放在最前面
+    oldest_first: 最舊的放在最前面
+    priority_first: 同意的放在最前面
+    priority_last: 阻擋的放在最前面
+    no_votes_yet: 尚未有人投票。
+    change_results_order: 變更您的結果順序
+    show_undecided: 顯示未決定的
+  poll_common_did_not_votes_panel:
+    undecided: '未決定的 ({{count}})'
+    show_undecided: 顯示未決定的
+  poll_common_accordion:
+    title: 最近動態
+  poll_common_set_outcome_panel:
+    share_outcome: 分享成果
+    poll: '此提案已關閉。與群組<strong>分享成果</strong>。'
+    proposal: '此提案已<strong>定案</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣人們才能知道接下來會發生什麼事情。'
+    count: '此計數已關閉。<strong>分享成果</strong>以繼續完成程序。'
+  poll_common_outcome_form:
+    new_title: 分享成果
+    update_title: 更新結果
+    outcome_created: 結果已建立
+    outcome_updated: 結果已更新
+    statement_placeholder: 總結回應並解釋接下來會發生什麼事。
+    submit: 分享成果
+  poll_common_outcome_panel:
+    authored_by: '由 {{name}}'
+  poll_proposal_form:
+    start_a_proposal: 啟動提案
+    edit_proposal: 編輯提案
+    tip: '提案是凝聚共識的工具。使用它們以帶來可以得出清晰結果的討論。<a href="https://www.loomio.school/beginner/proposals.html" target="_blank">更多資訊</a>'
+    title: 標題
+    title_placeholder: 例如：讓我們一起去月球！
+    details: 詳細內容
+    details_placeholder: 請提供足夠的資訊，讓每個人都能表示贊成或是反對。
+    options: 選項
+    closing: 關閉
+    start: 啟動提案
+    update: 更新提案
+    proposal_created: 提案已建立
+    proposal_updated: 提案已更新
+  poll_proposal_vote_form:
+    default_reason_placeholder: 請解釋您的理由
+    abstain_reason_placeholder: 讓人們知道您為什麼作出了這個決定
+    agree_reason_placeholder: 您對提案的感覺如何，以及其如何對群組產生助益？
+    disagree_reason_placeholder: 若您要支持它，此提案要如何改進？
+    block_reason_placeholder: 解釋您對此提案的反對意見，以及為什麼它不應該再繼續下去
+    stance_created: 已建立投票
+    stance_updated: 已更新投票
+  poll_proposal_options:
+    agree: 贊成
+    agree_verb: 同意
+    agree_meaning: 此提案好到可以被群組採納
+    abstain: 棄權
+    abstain_verb: 棄權
+    abstain_meaning: 不確定、不知道或是不關心。將以其他方式支持結果
+    disagree: 反對
+    disagree_verb: 反對
+    disagree_meaning: 我不支持提案。其不應該繼續。
+    block: 阻擋
+    block_verb: 阻擋
+    block_meaning: 需要群組的關注來解決更深層的問題
+  poll_count_options:
+    'yes': 是
+    'no': 否
+  poll_count_form:
+    new_count: 啟動一個計數
+    update_count: 編輯計數
+    tip: 一個用來詢問「我想知道這裡有多少人」的計數。使用它來看看任務有多少參與者。
+    title: 標題
+    title_placeholder: 例如：誰想要加入工作小組？
+    details: 詳細內容
+    details_placeholder: 解釋為什麼要參與，或是詳細說明要如何參與。
+    start: 啟動計數
+    update: 更新計數
+    count_created: 計數已建立
+    count_updated: 計數已更新
+  poll_count_vote_form:
+    reason_label: 訊息
+    reason_placeholder: 訊息（可選）
+    stance_created: 已建立投票
+    stance_updated: 已更新投票
+  poll_count_chart_panel:
+    out_of: '沒有 {{goal}}'
+  poll_poll_form:
+    start_header: 啟動投票
+    edit_header: 編輯投票
+    tip: 投票可以用於測量不同選項的支援程度以了解群組的偏好。
+    title: 問題
+    title_placeholder: 例如：您最喜歡的顏色是？
+    details: 詳細內容
+    details_placeholder: 提供人們回答此問題可能需要的資訊。
+    options: 選項
+    add_option_placeholder: 新增選項
+    remove_option: 移除選項
+    closing: 關閉
+    start: 啟動投票
+    update: 更新投票
+    multiple_choice: 多選
+    multiple_choice_explained: 投票者可以選擇多於一個選項。
+    poll_created: 投票已建立
+    poll_updated: 投票已更新
+  poll_poll_vote_form:
+    stance_created: 已建立投票
+    stance_updated: 已更新投票
+  poll_thread_item:
+    poll:
+      poll_created: '<strong>{{author}}</strong> 已啟動了一個新投票：<span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> 已投票：'
+      poll_edited: '<strong>{{author}}</strong> 編輯了投票：<span>{{title}}</span>'
+      poll_expired: '投票已關閉：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉投票：<span>{{title}}</span>'
+    proposal:
+      poll_created: '<strong>{{actor}}</strong> 已啟動一個提案：<span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> 已投票：'
+      poll_edited: '<strong>{{author}}</strong> 編輯了提案：<span>{{title}}</span>'
+      poll_expired: '提案已定案：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{actor}}</strong> 已定案了一個提案：<span>{{title}}</span>'
+    count:
+      poll_created: '<strong>{{author}}</strong> 已啟動了一個計數：<span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> 已回應：'
+      poll_edited: '<strong>{{author}}</strong> 編輯了計數：<span>{{title}}</span>'
+      poll_expired: '計數已結束：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 關閉了計數：<span>{{title}}</span>'
+    outcome_created: '<strong>{{author}}</strong> 已分享了成果：'

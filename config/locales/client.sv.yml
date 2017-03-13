@@ -235,37 +235,6 @@ sv:
 
       tillsammans. Här är några tips för att hjälpa din grupp att lyckas:
     different_ways: Olika sätt att använda Loomio
-    engaging_html: >
-      <h2>Tips för hur du engagerar din grupp</h2>
-
-      <p> Deltagarna kommer att bli entusiastiska och vilja delta när det finns
-      ett engagerande
-
-      förslag på bordet. Ett bra förslag innehåller en handlingsplan för gruppen,
-      så
-
-      att det är direkt uppenbart vad det är ni ska bli överens eller inte
-      överens om.
-
-      Tänk på de nuvarande diskussioner/beslut som din grupp är engagerade i, på
-      plats
-
-      eller per email, och hur mycket lättare det skulle kunna vara med
-      Loomio.</p>
-
-      <p>Om din grupp just har startat, kan du börja med ett enkelt beslut att
-      ge
-
-      alla en chans att lära känna verktyget och se beslutsprocessen
-      i handling.</p>
-
-      <p>Ett annat bra sätt att få personer att engagera sig i en diskussion är
-      att använda funktionen
-
-      @mention för att få med någon specifik person, vilket kommer att skicka ett
-      email och informera dem om att
-
-      de har blivit omnämnda i ett inlägg.</p>
     example1_html: >
       <h3>Din grupp behöver diskutera ett ämne och utveckla ett förslag
       tillsammans</h3>
@@ -281,21 +250,6 @@ sv:
 
       delta i processen kommer de att vara mer benägna att sluta upp kring
       resultatet.</p>
-    example2_html: >
-      <h3>Du har redan ett förslag i åtanke och vill få med dig gruppen att gå
-      vidare.</h3>
-
-      <p>Strategi: Starta en diskussion om ett särskilt beslut och lägg fram
-      förslaget direkt.</p>
-
-      <p>Om du har ett tydligt resultat i åtanke, men vill se till att det inte
-      finns några kritiska invändningar,
-
-      kan du använda förslaget för att få snabb återkoppling inför ett
-      beslut.</p>
-
-      <p>Du kan använda detta för att slutföra ett dokument, godkänna en ansökan,
-      eller få sign-off på ett arbete.</p>
     get_in_touch: Kontakta oss
     get_in_touch_description_html: "Om du har någon fråga eller vill ge feedback, <a href='%{link}'>skriv till oss</a>."
     getting_started: Håller på att starta
@@ -372,24 +326,6 @@ sv:
     positions_disagree_description: '<span>Håller inte med</span> innebär att du tror att det kan finnas ett bättre alternativ, men att du kan tänka dig att foga dig i gruppens beslut.'
     positions_block_description: '<span>Blockerar</span> innebär att du har allvarliga invändningar och att du skulle bli mycket missnöjd om detta förslag gick igenom.'
     start_discussion: Starta en engagerande diskussion
-    start_discussion_html: >
-      <p>När du startar en ny diskussion, se till att titeln förmedlar ämnet
-      kortfattat .
-
-      Använd Context Panel för att ge all bakgrundsinformation som är nödvändig
-
-      för att gruppen ska få en produktiv och givande diskussion.</p>
-
-      <p>Under diskussionens gång kan Context Panel uppdateras närhelst ny
-      information
-
-      tillkommer. Förutom att klargöra ämnet, kan du använda detta utrymme till
-      att
-
-      dela resurser, summera diskussionens utveckling, eller beskriva de
-      beslutssätt
-
-      din grupp använder.</p>
     start_proposal: Hur du skriver ett tydligt förslag
     start_proposal_html: >
       <p>Om titeln är tydlig och kortfattad kommer deltagarna direkt att förstå
