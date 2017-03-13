@@ -42,7 +42,8 @@ before_script:
 script:
   - bundle exec rake travis:rspec
   - bundle exec rake travis:cucumber
-  # - bundle exec rake travis:protractor
+  - bundle exec rake travis:protractor
+
 after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
