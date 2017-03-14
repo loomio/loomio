@@ -63,3 +63,17 @@ poll_common_manage_card {
   order: 10;
   i { color: rgba(255,255,255,0.87); }
 }
+
+.poll-common-share-form__community {
+  align-items: center;
+  width: 100%;
+}
+
+.poll-common-share-form__community-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.poll-common-share-form__h4 {
+  margin-top: 0;
+}

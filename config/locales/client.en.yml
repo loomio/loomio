@@ -1587,6 +1587,7 @@ en:
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
+    communities: Connect Community
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

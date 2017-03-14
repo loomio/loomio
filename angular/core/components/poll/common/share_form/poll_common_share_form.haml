@@ -63,5 +63,27 @@
 
   %hr
 
+  %section
+    .lmo-flex
+      %i.material-icons.poll-common-share-form__icon public
+      %h3.lmo-h3{translate: "poll_common_share_form.communities"}
+
+    %md-list.md-block
+      %md-list-item.poll-common-share-form__slack
+        %md-button.lmo-flex.poll-common-share-form__community{layout: "row"}
+          %img.poll-common-share-form__community-icon{src: "/img/slack-icon.svg"}
+          .lmo-flex{layout: "column"}
+            %h4.lmo-h4.poll-common-share-form__h4 SLACK
+            .poll-common-helptext subtitle
+
+      %md-list-item.poll-common-share-form__facebook
+        %md-button.lmo-flex.poll-common-share-form__community{layout: "row"}
+          %img.poll-common-share-form__community-icon{src: "/img/facebook-icon.svg"}
+          .lmo-flex{layout: "column"}
+            %h4.lmo-h4.poll-common-share-form__h4 FACEBOOK
+            .poll-common-helptext subtitle
+
+  %hr
+
   %md-button.md-primary.md-raised.pull-right{ng-if: "back", ng-click: "back()"}
     %span{translate: "common.action.ok"}
