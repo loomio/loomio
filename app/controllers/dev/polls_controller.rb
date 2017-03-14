@@ -19,6 +19,7 @@ class Dev::PollsController < Dev::BaseController
   end
 
   def start_poll
+    sign_in saved fake_user
     redirect_to new_poll_url
   end
 

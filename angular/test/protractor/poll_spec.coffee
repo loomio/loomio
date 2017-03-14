@@ -35,6 +35,8 @@ fdescribe 'Polls', ->
     page.fillIn '.poll-proposal-form__title', 'A new proposal'
     page.fillIn '.poll-proposal-form__details', 'Some details'
     page.click '.poll-proposal-form__submit'
+
+    page.click '.poll-common-share-form__ok'
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
 
@@ -49,7 +51,6 @@ fdescribe 'Polls', ->
     page.click '.poll-actions-dropdown__close'
     page.click '.poll-common-close-form__submit'
 
-    page.click '.poll-common-collapsed'
     page.click '.poll-common-set-outcome-panel__submit'
 
     page.fillIn '.poll-common-outcome-form__statement', 'This is an outcome'
