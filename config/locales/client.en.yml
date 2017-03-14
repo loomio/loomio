@@ -3,6 +3,7 @@ en:
     proposal: Proposal
     count: Count
     poll: Poll
+    dot_vote: Dot Vote
   common:
     confirm_discard_changes: Discard your changes?
     time:
@@ -32,7 +33,8 @@ en:
     more_help: 'More help'
     models:
       proposal: 'Proposal'
-    copy: 'Copy text'
+    copy: 'Copy'
+    copy_text: 'Copy text'
     copied: 'Copied to clipboard'
     action:
       back: 'Back'
@@ -58,6 +60,7 @@ en:
       upload: 'Upload'
       uploading: 'Uploading'
       load_more: 'Load More'
+      share: Share
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -280,6 +283,7 @@ en:
     start_group: 'Start Group'
     start_subgroup: 'Start Subgroup'
     start_thread: 'Start Thread'
+    start_poll: 'Start Poll'
     invite_people: 'Invite People'
 
   notifications:
@@ -1319,6 +1323,8 @@ en:
     count_subtitle: Track who has completed a task
     poll_title: Poll
     poll_subtitle: Measure popularity of different options
+    dot_vote_title: Dot Vote
+    dot_vote_subtitle: Everyone gets some votes to spend
 
   poll_common:
     your_response: Your response
@@ -1335,6 +1341,12 @@ en:
     change_your_stance: Change your vote
     load_more: Load more
     details: Details
+    participant_name: Your name
+    participant_email: Email address
+    share_poll: Share poll
+    share_proposal: Share proposal
+    share_count: Share count
+    start_poll: Start a new poll
 
   poll_common_card:
     show_results: Show results
@@ -1400,6 +1412,8 @@ en:
     authored_by: 'By {{name}}'
 
   poll_proposal_form:
+    start_header: Start a proposal
+    edit_header: Edit proposal
     start_a_proposal: Start a proposal
     edit_proposal: Edit proposal
     tip: Proposals are a convergence tool. Use them to bring the discussion to a clear outcome. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
@@ -1442,6 +1456,8 @@ en:
     'no': 'No'
 
   poll_count_form:
+    start_header: Start a count
+    edit_header: Edit count
     new_count: Start a count
     update_count: Edit count
     tip: 'A count is like asking: "Can I get a show of hands..". Use it to follow up on tasks or seek participants.'
@@ -1486,6 +1502,28 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_dot_vote_form:
+    tip: Dot voting is a form of cumulative voting. Use it to understand preferences with more detail than a single vote.
+    start_header: Start a dot vote
+    edit_header: Edit dot vote
+    title: Title
+    title_placeholder: 'E.g. how should we allocate our resources?'
+    details: Details
+    details_placeholder: Provide any clarifying details people might need to participate
+    options: Options
+    add_option_placeholder: Add option
+    dots_per_person: Dots per person
+    start: Start Dot Vote
+    update: Update Dot Vote
+    dot_vote_created: Dot vote created
+    dot_vote_updated: Dot vote updated
+
+  poll_dot_vote_vote_form:
+    dots_remaining: You have {{count}} dots remaining.
+    too_many_dots: You have used too many dots.
+    stance_created: Vote created
+    stance_updated: Vote updated
+
   poll_thread_item:
     poll:
       poll_created: '<strong>{{author}}</strong> started a new poll: <span>{{title}}</span>'
@@ -1505,8 +1543,59 @@ en:
       poll_created: '<strong>{{author}}</strong> started a count: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
       poll_edited: '<strong>{{author}}</strong> edited the count: <span>{{title}}</span>'
-      poll_expired: 'Count round finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the count round: <span>{{title}}</span>'
+      poll_expired: 'Count finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the count: <span>{{title}}</span>'
+
+    dot_vote:
+      poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> voted:'
+      poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
+      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'
+
+  poll_admin_page:
+    title: Admin - {{title}}
+
+  poll_common_share_form:
+    no_group_selected: No group selected
+    share_a_link: Shareable link
+    anyone_can_participate: Anyone can participate
+    anyone_can_participate_true: Shareable link created
+    anyone_can_participate_false: Shareable link revoked
+    set_group: Loomio group updated
+    shareable_link_created: Anyone can now participate in this poll
+    shareable_link_revoked: This poll is now invite-only
+    shareable_link: Shareable link
+    guests_invited: Invited {{count}} guests
+    guest_revoked: Revoked access for {{email}}
+    invite_guests: Invite guests
+    existing_guests: Existing guests
+    new_guests: New emails to invite
+    enter_email: "E.g. guest@example.com"
+    reminded: Reminder email sent!
+    send_emails: Send invitations ({{count}})
+    no_loomio_group: This poll is not currently associated with any Loomio group
+    has_loomio_group: Members of this group will be able to view and participate in this poll.
+    poll_is_shareable: Anyone who has the link to this poll can vote. Send the link above to anyone you wish to participate.
+    poll_is_private: Users must be invited in order to view and participate in this poll.
+    view_poll: View poll
+    email_invited: 'Invitation email sent to {{email}}'
+    email_exists: '{{email}} has already been invited'
+    email_empty: 'Please enter an email'
+    email_invalid: "That doesn't appear to be a valid email"
+
+  poll_common_participant_form:
+    participant_name_placeholder: What is your name?
+
+  poll_common_subscribe_form:
+    receive_updates_title: Your vote has been recorded
+    receive_updates_helptext: If you'd like to receive an email about the outcome of this poll, enter your email address below
+    email_saved: You will receive an email about the outcome of this poll
+    subscribe: Subscribe
+    no_thanks: No thanks
+
+  share_poll_page:
+    title: Share poll - {{title}}

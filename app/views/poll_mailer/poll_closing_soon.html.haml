@@ -1,6 +1,7 @@
 = render "poll_mailer/common/header"
 = render "poll_mailer/common/summary"
+- if @info.recipient_stance
+ = render "poll_mailer/#{@info.poll_type}/chart"
+ = render "poll_mailer/common/responses"
 = render "poll_mailer/common/vote"
--# = render "poll_mailer/#{@info.poll_type}/chart"
--# = render "poll_mailer/common/responses"
 = render "poll_mailer/common/footer"

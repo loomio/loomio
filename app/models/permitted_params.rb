@@ -1,6 +1,6 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
-    user vote motion membership_request membership poll outcome
+    user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response network_membership_request
     draft oauth_application
@@ -43,13 +43,18 @@ class PermittedParams < Struct.new(:params)
   alias_method :proposal_attributes, :motion_attributes
 
   def poll_attributes
-    [:title, :details, :poll_type, :discussion_id, :closing_at, :make_announcement, :multiple_choice,
+    [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
+     :make_announcement, :multiple_choice, :key, :anyone_can_participate,
+     :custom_fields, {custom_fields: [:dots_per_person]},
      :attachment_ids, {attachment_ids: []},
+     :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
      :poll_option_names, {poll_option_names: []}]
   end
 
   def stance_attributes
-    [:poll_id, :reason, :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
+    [:poll_id, :reason,
+     :visitor_attributes, {visitor_attributes: [:name, :email, :participation_token]},
+     :stance_choices_attributes, {stance_choices_attributes: [:score, :poll_option_id]}]
   end
 
   def stance_choice_attributes
@@ -58,6 +63,10 @@ class PermittedParams < Struct.new(:params)
 
   def outcome_attributes
     [:statement, :poll_id, :make_announcement]
+  end
+
+  def visitor_attributes
+    [:name, :email, :revoked, :community_id]
   end
 
   def membership_request_attributes

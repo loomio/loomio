@@ -13,6 +13,15 @@ describe API::StancesController do
     stance_choices_attributes: [{poll_option_id: poll_option.id}],
     reason: "here is my stance"
   }}
+
+  let(:public_poll) { create :poll, discussion: nil, anyone_can_participate: true }
+  let(:public_poll_option) { create :poll_option, poll: public_poll }
+  let(:visitor_stance_params) {{
+    poll_id: public_poll.id,
+    stance_choices_attributes: [{poll_option_id: public_poll_option.id}],
+    visitor_attributes: { name: "John Doe", email: "john@doe.ninja" }
+  }}
+
   before { group.add_member! user }
 
   describe 'index' do
@@ -91,6 +100,80 @@ describe API::StancesController do
       expect(json['poll_options'].map { |o| o['name'] }).to include poll_option.name
     end
 
+    it 'can create a stance with a visitor' do
+      expect { post :create, stance: visitor_stance_params }.to change { Stance.count }.by(1)
+
+      stance = Stance.last
+      expect(stance.participant.name).to  eq visitor_stance_params[:visitor_attributes][:name]
+      expect(stance.participant.email).to eq visitor_stance_params[:visitor_attributes][:email]
+
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      names  = json['visitors'].map { |u| u['name'] }
+      emails = json['visitors'].map { |u| u['email'] }
+
+      expect(names).to  include visitor_stance_params[:visitor_attributes][:name]
+      expect(emails).to include visitor_stance_params[:visitor_attributes][:email]
+    end
+
+    describe 'visitor token' do
+      it 'sets a visitor cookie if the actor is a visitor' do
+        expect { post :create, stance: visitor_stance_params }.to change { Visitor.count }.by(1)
+        expect(cookies[:participation_token]).to eq Visitor.last.participation_token
+      end
+
+      it 'does not set a visitor cookie for logged in users' do
+        sign_in user
+        expect { post :create, stance: stance_params }.to_not change { Visitor.count }
+        expect(cookies[:participation_token]).to be_nil
+      end
+
+      it 'resets the cookie if it exists already as a visitor' do
+        cookies[:participation_token] = "abcd"
+        post :create, stance: visitor_stance_params
+        expect(cookies[:participation_token]).to eq Visitor.last.participation_token
+      end
+
+      it 'resets to the cookie if it exists already as a signed in user' do
+        sign_in user
+        cookies[:participation_token] = "abcd"
+        post :create, stance: stance_params
+        expect(cookies[:participation_token]).to be_nil
+      end
+
+      it 'does not set participation token when the create fails for signed in user' do
+        cookies[:participation_token] = "abcd"
+        visitor_stance_params[:stance_choices_attributes] = []
+        post :create, visitor_stance_params
+        expect(response.status).to eq 400
+        expect(cookies[:participation_token]).to eq "abcd"
+      end
+
+      it 'does not set participation token when the create fails for signed in user' do
+        sign_in user
+        cookies[:participation_token] = "abcd"
+        stance_params[:stance_choices_attributes] = []
+        post :create, stance_params
+        expect(response.status).to eq 400
+        expect(cookies[:participation_token]).to eq "abcd"
+      end
+    end
+
+    it 'does not create a stance with an incomplete visitor' do
+      visitor_stance_params[:visitor_attributes] = {}
+      expect { post :create, stance: visitor_stance_params }.to_not change { Stance.count }
+      expect(response.status).to eq 422
+
+      json = JSON.parse(response.body)
+      expect(json['errors']['participant_name']).to be_present
+    end
+
+    it 'does not allow unauthorized visitors to create stances' do
+      visitor_stance_params[:poll_id] = poll.id
+      expect { post :create, stance: visitor_stance_params }.to_not change { Stance.count }
+      expect(response.status).to eq 403
+    end
+
     it 'overwrites existing stances' do
       sign_in user
       old_stance
@@ -99,7 +182,7 @@ describe API::StancesController do
       expect(old_stance.reload.latest).to eq false
     end
 
-    it 'does not allow visitors to create stances' do
+    it 'does not allow unauthorized visitors to create stances' do
       expect { post :create, stance: stance_params }.to_not change { Stance.count }
       expect(response.status).to eq 403
     end

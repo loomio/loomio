@@ -8,6 +8,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []
+      @customFields.dots_per_person = 8 if @pollType == 'dot_vote'
 
     defaultValues: ->
       discussionId: null
@@ -16,6 +17,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       closingAt: moment().add(3, 'days').startOf('hour')
       pollOptionNames: []
       pollOptionIds: []
+      customFields: {}
 
     serialize: ->
       data = @baseSerialize()
@@ -69,22 +71,19 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @recordStore.outcomes.find(pollId: @id, latest: true)[0]
 
     uniqueStances: (order, limit) ->
-      _.slice(_.sortBy(_.values(@uniqueStancesByUserId()), order), 0, limit)
-
-    stanceFor: (user) ->
-      @uniqueStancesByUserId()[user.id]
+      _.slice(_.sortBy(@recordStore.stances.find(pollId: @id, latest: true), order), 0, limit)
 
     lastStanceByUser: (user) ->
-      @uniqueStancesByUserId()[user.id]
+      visitor = _.first(@recordStore.visitors.find(participationToken: user.participationToken)) or {}
+      criteria =
+        pollId:    @id
+        latest:    true
+        visitorId: visitor.id or null
+        userId:    user.id or null
+      _.first _.sortBy(@recordStore.stances.find(criteria), 'createdAt')
 
     userHasVoted: (user) ->
       @lastStanceByUser(user)?
-
-    uniqueStancesByUserId: ->
-      stancesByUserId = {}
-      _.each @stances(), (stance) ->
-        stancesByUserId[stance.participantId] = stancesByUserId[stance.participantId] or stance
-      stancesByUserId
 
     group: ->
       @discussion().group() if @discussion()

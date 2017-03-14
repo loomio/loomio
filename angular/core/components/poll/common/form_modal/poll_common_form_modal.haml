@@ -1,0 +1,11 @@
+%md-dialog.poll-common-modal
+  %form.poll-poll-form
+    .lmo-disabled-form{ng-show: "isDisabled"}
+    .modal-header.poll-common-modal-header
+      %i.material-icons {{icon()}}
+      %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_{{poll.pollType}}_form.start_header"}
+      %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_{{poll.pollType}}_form.edit_header"}
+      %modal_header_cancel_button
+    .modal-body
+      %input{type: "hidden", ng-model: "poll.pollType"}
+      %poll_common_directive{poll: "poll", name: "form"}

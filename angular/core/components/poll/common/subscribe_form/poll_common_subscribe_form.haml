@@ -1,0 +1,7 @@
+.poll-common-subscribe-form
+  %h3.lmo-card-subheading{translate: "poll_common_subscribe_form.receive_updates_title"}
+  %p.poll-common-helptext{translate: "poll_common_subscribe_form.receive_updates_helptext"}
+  %md-input-container.md-block
+    %input{ng-model: "visitor.email"}
+  %md-button.md-primary{ng-click: "subscribe()", ng-disabled: "!validEmail()", translate: "poll_common_subscribe_form.subscribe"}
+  %md-button.md-secondary{ng-click: "declineUpdates()", translate: "poll_common_subscribe_form.no_thanks"}

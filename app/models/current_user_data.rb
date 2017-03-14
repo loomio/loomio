@@ -16,7 +16,7 @@ CurrentUserData = Struct.new(:user, :restricted) do
   end
 
   def serializer_scope
-    { memberships: memberships }.tap do |hash|
+    { memberships: memberships, visitors: visitors }.tap do |hash|
       hash.merge!(
         notifications: notifications,
         unread:        unread,
@@ -39,5 +39,9 @@ CurrentUserData = Struct.new(:user, :restricted) do
 
   def readers
     @readers ||= DiscussionReaderCache.new(user: user, discussions: unread)
+  end
+
+  def visitors
+    @visitors ||= Visitor.where(participation_token: user.participation_token)
   end
 end

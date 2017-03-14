@@ -18,6 +18,23 @@ GIT
       sprockets (< 4.1)
 
 GIT
+  remote: git://github.com/gdpelican/ahoy.git
+  revision: de4482fd32bbc114a294e121709847d0ac4a1ba5
+  branch: user-presence
+  specs:
+    ahoy_matey (1.4.2)
+      addressable
+      browser (~> 2.0)
+      geocoder
+      rack-attack
+      railties
+      referer-parser (>= 0.3.0)
+      request_store
+      safely_block (>= 0.1.1)
+      user_agent_parser
+      uuidtools
+
+GIT
   remote: git://github.com/loomio/griddler-mailin.git
   revision: 82df9ea881c70b94a346fecac11c523a166394f4
   specs:
@@ -34,9 +51,9 @@ GIT
 
 GIT
   remote: git://github.com/loomio/private_pub.git
-  revision: 48feb4b0eaead7480157a41719efbb438bdb425e
+  revision: 38155edf5387a27b0fed1cf6318fcaea59820e35
   specs:
-    private_pub (1.0.3)
+    private_pub (1.0.4)
       faye
 
 GIT
@@ -99,21 +116,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    ahoy_email (0.3.1)
+    ahoy_email (0.3.2)
       addressable
       nokogiri
       rails
       safely_block
-    ahoy_matey (1.1.1)
-      addressable
-      browser (>= 0.4.0)
-      errbase
-      geocoder
-      rails
-      referer-parser (>= 0.3.0)
-      request_store
-      user_agent_parser
-      uuidtools
     airbrake (4.1.0)
       builder
       multi_json
@@ -122,7 +129,7 @@ GEM
       nokogiri
     arbre (1.1.1)
       activesupport (>= 3.0.0)
-    arel (6.0.3)
+    arel (6.0.4)
     autoprefixer-rails (5.1.11)
       execjs
       json
@@ -135,10 +142,10 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
-    bourbon (4.2.7)
+    bourbon (4.3.3)
       sass (~> 3.4)
       thor (~> 0.19)
-    browser (1.1.0)
+    browser (2.3.0)
     builder (3.2.3)
     bullet (4.14.10)
       activesupport (>= 3.0.0)
@@ -171,10 +178,10 @@ GEM
     colored (1.2)
     columnize (0.9.0)
     concurrent-ruby (1.0.1)
-    cookiejar (0.3.2)
+    cookiejar (0.3.3)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
-    css_parser (1.4.5)
+    css_parser (1.4.9)
       addressable
     cucumber (1.3.19)
       builder (>= 2.1.2)
@@ -209,6 +216,8 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (0.12.0)
     diff-lcs (1.2.5)
+    discriminator (0.1.0)
+      activerecord (>= 4.0.2)
     docile (1.1.5)
     doorkeeper (3.0.1)
       railties (>= 3.2)
@@ -216,13 +225,13 @@ GEM
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
-    em-http-request (1.1.2)
+    em-http-request (1.1.5)
       addressable (>= 2.3.4)
-      cookiejar
+      cookiejar (!= 0.3.1)
       em-socksify (>= 0.3)
       eventmachine (>= 1.0.3)
       http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.0)
+    em-socksify (0.3.1)
       eventmachine (>= 1.0.0.beta.4)
     email_spec (1.6.0)
       launchy (~> 2.1)
@@ -241,7 +250,7 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    faye (1.1.1)
+    faye (1.2.4)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
       eventmachine (>= 0.12.0)
@@ -249,7 +258,7 @@ GEM
       multi_json (>= 1.0.0)
       rack (>= 1.0.0)
       websocket-driver (>= 0.5.1)
-    faye-websocket (0.9.2)
+    faye-websocket (0.10.7)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     ffi (1.9.8)
@@ -307,7 +316,7 @@ GEM
     fog-json (1.0.1)
       fog-core (~> 1.0)
       multi_json (~> 1.0)
-    fog-local (0.2.1)
+    fog-local (0.3.1)
       fog-core (~> 1.27)
     fog-powerdns (0.1.1)
       fog-core (~> 1.27)
@@ -352,17 +361,17 @@ GEM
     font-awesome-sass (4.3.2.1)
       sass (~> 3.2)
     formatador (0.2.5)
-    formtastic (3.1.4)
+    formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     gemrat (0.4.6)
       colored (= 1.2)
-    geocoder (1.3.1)
+    geocoder (1.4.3)
     gherkin (2.12.2)
       multi_json (~> 1.3)
-    globalid (0.3.6)
+    globalid (0.3.7)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
     gyoku (1.3.1)
@@ -375,9 +384,11 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
-    has_scope (0.6.0)
-      actionpack (>= 3.2, < 5)
-      activesupport (>= 3.2, < 5)
+    has_scope (0.7.0)
+      actionpack (>= 4.1, < 5.1)
+      activesupport (>= 4.1, < 5.1)
+    has_secure_token (1.0.0)
+      activerecord (>= 3.0)
     hashie (3.4.1)
     heroku-deflater (0.5.3)
       rack (>= 1.4.5)
@@ -394,19 +405,19 @@ GEM
       multi_xml (>= 0.5.2)
     httpi (2.4.0)
       rack
-    i18n (0.8.0)
+    i18n (0.8.1)
     inflecto (0.0.2)
-    inherited_resources (1.6.0)
-      actionpack (>= 3.2, < 5)
-      has_scope (~> 0.6.0.rc)
-      railties (>= 3.2, < 5)
+    inherited_resources (1.7.0)
+      actionpack (>= 3.2, < 5.1)
+      has_scope (~> 0.6)
+      railties (>= 3.2, < 5.1)
       responders
     intercom (2.5.4)
       json (~> 1.8)
     intercom-rails (0.2.28)
       activesupport (> 3.0)
     ipaddress (0.8.0)
-    jquery-rails (4.2.1)
+    jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -485,8 +496,8 @@ GEM
       websocket-driver (>= 0.2.0)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
-    premailer (1.8.7)
-      css_parser (>= 1.4.5)
+    premailer (1.10.0)
+      css_parser (>= 1.4.9)
       htmlentities (>= 4.0.0)
     premailer-rails (1.9.4)
       actionmailer (>= 3, < 6)
@@ -577,7 +588,7 @@ GEM
       fog
     safe_shell (1.0.3)
     safe_yaml (1.0.4)
-    safely_block (0.1.1)
+    safely_block (0.2.0)
       errbase
     sass (3.4.13)
     sass-rails (5.0.3)
@@ -617,7 +628,8 @@ GEM
     simplecov-html (0.10.0)
     snorlax (0.1.6)
       rails (> 4.1)
-    spring (1.3.6)
+    spring (2.0.1)
+      activesupport (>= 4.2)
     spring-commands-cucumber (1.0.1)
       spring (>= 0.9.1)
     spring-commands-rspec (1.0.4)
@@ -637,7 +649,7 @@ GEM
       eventmachine (~> 1.0)
       rack (~> 1.0)
     thor (0.19.4)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (1.4.1)
     timecop (0.7.3)
     twitter-text (1.12.0)
@@ -678,12 +690,12 @@ DEPENDENCIES
   activerecord-import
   activerecord_any_of
   ahoy_email (~> 0.3.1)
-  ahoy_matey (~> 1.1.1)
+  ahoy_matey!
   airbrake
   awesome_print
   bing_translator
   bootstrap-sass (~> 3.3.4)
-  browser (~> 1.1.0)
+  browser (~> 2.3.0)
   bullet
   byebug
   cancancan
@@ -699,6 +711,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.0.1)
   devise (~> 4.2.0)
   devise-i18n
+  discriminator
   doorkeeper
   doorkeeper-i18n
   dotenv-rails
@@ -713,6 +726,7 @@ DEPENDENCIES
   griddler!
   griddler-mailin!
   haml-rails (~> 0.9.0)
+  has_secure_token
   heroku-deflater
   http_accept_language
   httparty
@@ -776,4 +790,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.7
+   1.14.4

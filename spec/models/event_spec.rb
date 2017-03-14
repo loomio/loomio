@@ -334,6 +334,50 @@ describe Event do
   end
 
   describe 'poll_closing_soon' do
+    let(:visitor) { poll.community_of_type(:email, build: true).tap(&:save!).visitors.create(name: 'jimbo', email: 'helllloo@example.com')}
+    describe 'voters_review_responses', focus: true do
+      it 'true' do
+        poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
+        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        event = Events::PollClosingSoon.publish!(poll)
+
+        notified_users = event.send(:notification_recipients)
+        notified_users.should include user_thread_loud
+        notified_users.should include user_thread_normal
+
+        emailed_users = event.send(:email_recipients)
+        emailed_users.should include user_thread_loud
+        emailed_users.should include user_thread_normal
+      end
+
+      it 'false' do
+        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        event = Events::PollClosingSoon.publish!(poll)
+
+        notified_users = event.send(:notification_recipients)
+        notified_users.should_not include user_thread_loud
+        notified_users.should include user_thread_normal
+
+        emailed_users = event.send(:email_recipients)
+        emailed_users.should_not include user_thread_loud
+        emailed_users.should include user_thread_normal
+      end
+
+      it 'deals with visitors' do
+        poll = FactoryGirl.create(:poll, discussion: discussion)
+        Event.create(kind: 'poll_created', announcement: true, eventable: poll)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor)
+        FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
+        event = Events::PollClosingSoon.publish!(poll)
+
+        notified_users = event.send(:notification_recipients)
+        notified_users.should_not include user_thread_loud
+        notified_users.should include user_thread_normal
+      end
+    end
+
     it 'makes an announcement' do
       Event.create(kind: 'poll_created', announcement: true, eventable: poll)
       event = Events::PollClosingSoon.publish!(poll)

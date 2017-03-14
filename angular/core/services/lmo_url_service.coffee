@@ -18,6 +18,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
     discussion: (d, params = {}, options = {}) ->
       @buildModelRoute('d', d.key, d.title, params, options)
 
+    poll: (p, params = {}, options = {}) ->
+      @buildModelRoute('p', p.key, options.action or p.title, params, options)
+
     searchResult: (r, params = {}, options = {}) ->
       @discussion r, params, options
 
@@ -35,6 +38,9 @@ angular.module('loomioApp').factory 'LmoUrlService', (AppConfig) ->
 
     membershipRequest: (mr, params = {}, options = {}) ->
       @route model: mr.group(), action: 'membership_requests', params: params
+
+    visitor: ->
+      # NOOP for now
 
     oauthApplication: (a, params = {}, options = {}) ->
       @buildModelRoute('apps/registered', a.id, a.name, params, options)

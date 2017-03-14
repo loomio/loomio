@@ -14,5 +14,7 @@
       %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength: "250"}
       %validation_errors{subject: "stance", field: "reason"}
 
+  %poll_common_participant_form{stance: "stance"}
+
   .poll-common-form__actions
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}

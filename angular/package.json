@@ -25,6 +25,7 @@
     "angular-animate": "1.4.1",
     "angular-aria": "1.4.1",
     "angular-clipboard": "latest",
+    "angular-cookies": "^1.6.2",
     "angular-elastic": "latest",
     "angular-gravatar": "~0.2.4",
     "angular-inview": "~> 1.5.0",
@@ -80,8 +81,6 @@
     "gulp-uglify": "^1.5.1",
     "gulp-watch": "^4.3.5",
     "node-yaml-config": "0.0.3",
-    "protractor": "5.1.1",
-    "protractor-jasmine2-screenshot-reporter": "0.3.3",
-    "selenium-server-standalone-jar": "3.2.0"
+    "protractor": "5.1.1"
   }
 }

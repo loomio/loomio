@@ -28,6 +28,11 @@ EventBus.configure do |config|
                 'poll_create',
                 'poll_update') { |model| SearchVector.index! model.discussion_id }
 
+  # sync poll's discussion with it's group
+  config.listen('poll_create', 'poll_update') do |poll|
+    poll.update(group_id: poll.discussion.group_id) if poll.discussion
+  end
+
   # add creator to group if one doesn't exist
   config.listen('membership_join_group') { |group, actor| group.update(creator: actor) unless group.creator_id.present? }
 

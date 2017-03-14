@@ -9,7 +9,7 @@ module AvatarInitials
 
   def set_avatar_initials
     if name.blank? || name == email
-      initials = email[0..1]
+      initials = email.to_s[0..1]
     else
       initials = name.split.
                       map {|name| name[0] }.

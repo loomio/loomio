@@ -7,6 +7,6 @@ class RootController < ApplicationController
   private
 
   def destination
-    current_user_or_visitor.is_logged_in? ? dashboard_path : new_user_session_path
+    current_user.is_logged_in? ? dashboard_path : new_user_session_path
   end
 end

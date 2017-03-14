@@ -1,12 +1,10 @@
-angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window, Records, AppConfig) ->
+angular.module('loomioApp').factory 'Session', ($rootScope, $cookies, $translate, $window, Records, AppConfig) ->
 
   login: (data) ->
-    return unless data.current_user and data.current_user.id
-    data.users = data.users || []
-    data.users.push(data.current_user)
     Records.import(data)
 
-    _.merge AppConfig, currentUserId: data.current_user.id
+    _.merge AppConfig, currentUserId: (data.current_user or {}).id
+    return unless AppConfig.currentUserId?
 
     $translate.use(@user().locale)
     $rootScope.$broadcast 'loggedIn', @user()
@@ -17,7 +15,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
     Records.sessions.remote.destroy('').then -> $window.location.href = '/'
 
   user: ->
-    Records.users.find(AppConfig.currentUserId) or Records.users.build()
+    Records.users.find(AppConfig.currentUserId) or Records.users.build(participationToken: $cookies.get('participation_token'))
 
   currentGroupId: ->
     @currentGroup? && @currentGroup.id

@@ -20,11 +20,11 @@ class Events::UserAddedToGroup < Event
     end
   end
 
-  private
-
   def email_users!
     mailer.send(kind, eventable.user, self, custom_fields['message']).deliver_now
   end
+
+  private
 
   def notification_recipients
     User.where(id: eventable.user_id)

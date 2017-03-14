@@ -1,31 +1,21 @@
-%md-dialog.poll-common-modal
-  .lmo-disabled-form{ng-show: "isDisabled"}
-  %form.poll-proposal-form
-    .modal-header.poll-common-modal-header
-      %i.material-icons thumbs_up_down
-      %h1.lmo-h1{ng-if: "poll.isNew()", translate: "poll_proposal_form.start_a_proposal"}
-      %h1.lmo-h1{ng-if: "!poll.isNew()", translate: "poll_proposal_form.edit_proposal"}
-      %modal_header_cancel_button
-    .modal-body
-      %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_proposal_form.tip"}
+.poll-proposal-form
+  %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_proposal_form.tip"}
 
-      %input{type: "hidden", ng-model: "poll.pollType"}
+  %md-input-container.md-block
+    %label{translate: "poll_proposal_form.title"}
+    %input.lmo-primary-form-input.poll-proposal-form__title{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+    %validation_errors{subject: "poll", field: "title"}
 
-      %md-input-container.md-block
-        %label{translate: "poll_proposal_form.title"}
-        %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
-        %validation_errors{subject: "poll", field: "title"}
+  %md-input-container.md-block
+    %label{translate: "poll_proposal_form.details"}
+    %textarea.lmo-primary-form-input.poll-proposal-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+    %outlet{name: "after-poll-proposal-form-textarea", model: "poll"}
 
-      %md-input-container.md-block
-        %label{translate: "poll_proposal_form.details"}
-        %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
-        %outlet{name: "after-poll-proposal-form-textarea", model: "poll"}
+  %poll_common_closing_at_field.md-block{poll: "poll"}
+  %poll_common_attachment_form{poll: "poll"}
+  %poll_common_notify_group{model: "poll"}
 
-      %poll_common_closing_at_field{poll: "poll"}
-
-      %poll_common_notify_group{model: "poll"}
-      %poll_common_attachment_form{poll: "poll"}
-
-    .modal-footer
-      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update", aria-label: "{{ 'poll_proposal_form.update' | translate }}"}
-      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_proposal_form.start", aria-label: "{{ 'poll_proposal_form.start' | translate }}"}
+  .poll-common__actions.lmo-flex
+    %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
+    %md-button.md-primary.md-raised.poll-proposal-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_proposal_form.update", aria-label: "{{ 'poll_proposal_form.update' | translate }}"}
+    %md-button.md-primary.md-raised.poll-proposal-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_proposal_form.start", aria-label: "{{ 'poll_proposal_form.start' | translate }}"}

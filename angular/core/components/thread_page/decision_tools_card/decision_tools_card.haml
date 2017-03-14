@@ -1,9 +1,9 @@
-.decision-tools-card.lmo-card
+.decision-tools-card.lmo-card.lmo-no-print
   %h2.lmo-h2.decision-tools-card__title{translate: "decision_tools_card.title"}
   %p.decision-tools-card__purpose{translate: "decision_tools_card.purpose"}
   %md-list.decision-tools-card__poll-types
     %md-list-item.decision-tools-card__poll-type{ng-click: "startPoll(pollType)", ng-repeat: "pollType in pollTypes() track by $index"}
       %i.material-icons.decision-tools-card__icon {{fieldFromTemplate(pollType, 'material_icon')}}
-      .decision-tools-card__content
+      .decision-tools-card__content{class: "decision-tools-card__poll-type--{{pollType}}"}
         .decision-tools-card__poll-type-title.md-body-2{translate: "decision_tools_card.{{pollType}}_title"}
         .decision-tools-card__poll-type-subtitle.md-caption{translate: "decision_tools_card.{{pollType}}_subtitle"}

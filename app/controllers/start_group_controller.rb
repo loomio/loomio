@@ -21,6 +21,6 @@ class StartGroupController < ApplicationController
   end
 
   def redirect_to_dashboard
-    redirect_to dashboard_path(start_group: true) if current_user_or_visitor.is_logged_in?
+    redirect_to dashboard_path(start_group: true) if current_user.is_logged_in?
   end
 end

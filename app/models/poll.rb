@@ -13,7 +13,7 @@ class Poll < ActiveRecord::Base
 
   belongs_to :motion
   belongs_to :discussion
-  delegate   :group, :group_id, to: :discussion, allow_nil: true
+  belongs_to :group
 
   update_counter_cache :discussion, :closed_polls_count
 
@@ -22,8 +22,8 @@ class Poll < ActiveRecord::Base
   has_many :stances
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
+  has_many :visitors, through: :communities
   has_many :attachments, as: :attachable, dependent: :destroy
-  # has_many :visitors,     through: :stances, source: :participant, source_type: "Visitor"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
@@ -37,24 +37,8 @@ class Poll < ActiveRecord::Base
   define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
   define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
 
-  # has_many :poll_communities
-  # has_many :communities, through: :poll_communities
-
-  # has_many :poll_references
-
-  # there's some duplication here, but it's pretty unlikely we'll need references
-  # to other models, so it's unlikely to blow out
-  # def group
-  #   @group      ||= poll_references.find_by(reference_type: 'Group')&.reference
-  # end
-  #
-  # def discussion
-  #   @discussion ||= poll_references.find_by(reference_type: 'Discussion')&.reference
-  # end
-  #
-  # def motion
-  #   @motion     ||= poll_references.find_by(reference_type: 'Motion')&.reference
-  # end
+  has_many :poll_communities
+  has_many :communities, through: :poll_communities
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
@@ -75,7 +59,6 @@ class Poll < ActiveRecord::Base
 
   validates :title, presence: true
   validates :poll_type, inclusion: { in: TEMPLATES.keys }
-  # validates :communities, length: { minimum: 1 }
 
   validate :poll_options_are_valid
   validate :closes_in_future
@@ -144,6 +127,10 @@ class Poll < ActiveRecord::Base
     template['has_variable_score']
   end
 
+  def voters_review_responses
+    template['voters_review_responses']
+  end
+
   def active?
     closed_at.nil?
   end
@@ -159,7 +146,44 @@ class Poll < ActiveRecord::Base
     @poll_option_removed_names = (existing - names)
   end
 
+  def anyone_can_participate
+    @anyone_can_participate ||= community_of_type(:public).present?
+  end
+
+  def anyone_can_participate=(boolean)
+    if boolean
+      community_of_type(:public, build: true)
+    else
+      community_of_type(:public)&.destroy
+    end
+  end
+
+  def discussion=(discussion)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
+  def discussion_id=(discussion_id)
+    super.tap { self.group_id = self.discussion&.group_id }
+  end
+
+  def group_id=(group_id)
+    return if self[:group_id] == group_id
+    super
+    poll_communities.where(community: community_of_type(:loomio_group)).destroy_all
+    if g = Group.find_by(id: group_id)
+      poll_communities.build(community: g.community)
+    end
+  end
+
+  def community_of_type(community_type, build: false)
+    communities.find_by(community_type: community_type) || (build && build_community(community_type)).presence
+  end
+
   private
+
+  def build_community(community_type)
+    poll_communities.build(community: "Communities::#{community_type.to_s.camelize}".constantize.new).community
+  end
 
   # provides a base hash of 0's to merge with stance data
   def zeroed_poll_options

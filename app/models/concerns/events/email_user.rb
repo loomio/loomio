@@ -1,4 +1,5 @@
 module Events::EmailUser
+
   def trigger!
     super
     email_users!
@@ -9,6 +10,11 @@ module Events::EmailUser
     email_recipients.without(user).each { |recipient| email_user!(recipient) }
   end
   handle_asynchronously :email_users!
+
+  # which mailer should be used to send emails about this event?
+  def mailer
+    ThreadMailer
+  end
 
   private
 
@@ -22,8 +28,4 @@ module Events::EmailUser
     User.none
   end
 
-  # which mailer should be used to send emails about this event?
-  def mailer
-    ThreadMailer
-  end
 end

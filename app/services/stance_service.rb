@@ -1,5 +1,6 @@
 class StanceService
   def self.create(stance:, actor:)
+    actor.community ||= stance.poll.communities.detect { |c| c.includes?(actor) } unless actor.is_logged_in?
     actor.ability.authorize! :create, stance
 
     stance.assign_attributes(participant: actor)

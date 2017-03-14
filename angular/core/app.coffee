@@ -16,7 +16,8 @@ angular.module('loomioApp', ['ngNewRouter',
                              'offClick',
                              'ngMaterial',
                              'angulartics',
-                             'angulartics.google.tagmanager']).config ($provide, $mdDateLocaleProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, $analyticsProvider) ->
+                             'angulartics.google.tagmanager',
+                             'ngCookies']).config ($provide, $mdDateLocaleProvider, $locationProvider, $translateProvider, markedProvider, $compileProvider, $animateProvider, renderProvider, $analyticsProvider) ->
 
   # a decorator to allow mentio to work within modals
   # https://github.com/jeff-collins/ment.io/issues/68#issuecomment-200746901
@@ -130,7 +131,10 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
     {path: '/m/:key/', component: 'proposalRedirect' },
     {path: '/m/:key/:stub', component: 'proposalRedirect' },
     {path: '/m/:key/votes/new', component: 'proposalRedirect' },
+    {path: '/p/new', component: 'startPollPage'},
+    {path: '/p/new/:poll_type', component: 'startPollPage'},
     {path: '/p/:key/', component: 'pollPage'},
+    {path: '/p/:key/share', component: 'sharePollPage'},
     {path: '/p/:key/:stub', component: 'pollPage'},
     {path: '/g/:key/memberships', component: 'membershipsPage'},
     {path: '/g/:key/memberships/:username', component: 'membershipsPage'},

@@ -66,10 +66,24 @@ describe API::PollsController do
       expect(poll.title).to eq poll_params[:title]
       expect(poll.discussion).to eq discussion
       expect(poll.author).to eq user
+      expect(poll.communities.map(&:class)).to include Communities::LoomioGroup
+      expect(poll.communities.map(&:class)).to include Communities::Email
 
       json = JSON.parse(response.body)
       expect(json['polls'].length).to eq 1
       expect(json['polls'][0]['key']).to eq poll.key
+    end
+
+    it 'can create a standalone poll' do
+      sign_in user
+      poll_params[:discussion_id] = nil
+      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
+
+      poll = Poll.last
+      expect(poll.discussion).to eq nil
+      expect(poll.group).to eq nil
+      expect(poll.communities.length).to eq 1
+      expect(poll.communities.map(&:class)).to include Communities::Email
     end
 
     it 'does not allow visitors to create polls' do
@@ -194,6 +208,13 @@ describe API::PollsController do
       post :close, id: poll.key
       expect(response.status).to eq 403
       expect(poll.reload.active?).to eq true
+    end
+
+    it 'converts a poll in a loomio group to a loomio user community' do
+      sign_in user
+      post :close, id: poll.key
+      expect(poll.communities.map(&:class)).to_not include Communities::LoomioGroup
+      expect(poll.communities.map(&:class)).to include Communities::LoomioUsers
     end
   end
 end

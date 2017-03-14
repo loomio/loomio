@@ -249,7 +249,18 @@ FactoryGirl.define do
     details "with a description"
     association :author, factory: :user
     poll_option_names ["engage"]
-    # communities [Communities::Public.new]
+
+    after(:build) { |poll| poll.community_of_type(:email, build: true).save }
+  end
+
+  factory :poll_proposal, class: Poll do
+    poll_type "proposal"
+    title "This is a proposal"
+    details "with a description"
+    association :author, factory: :user
+    poll_option_names %w[agree abstain disagree block]
+
+    after(:build) { |poll| poll.community_of_type(:email, build: true) }
   end
 
   factory :outcome do
@@ -271,18 +282,17 @@ FactoryGirl.define do
     community_type 'test'
   end
 
+  factory :public_community, class: Communities::Public
+  factory :email_community, class: Communities::Email
+
   factory :loomio_group_community, class: Communities::LoomioGroup do
     group
   end
 
-  factory :email_community, class: Communities::Email do
-    emails ["test@test.com"]
-  end
-
   factory :visitor do
+    association :community, factory: :public_community
     name "John Doe"
     email "john@doe.com"
-    participation_token SecureRandom.hex(8)
   end
 
 end

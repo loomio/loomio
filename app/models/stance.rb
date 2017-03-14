@@ -10,6 +10,7 @@ class Stance < ActiveRecord::Base
   has_many :poll_options, through: :stance_choices
 
   accepts_nested_attributes_for :stance_choices
+  attr_accessor :visitor_attributes
 
   belongs_to :participant, polymorphic: true, required: true
 
@@ -25,11 +26,11 @@ class Stance < ActiveRecord::Base
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
 
   validates :stance_choices, length: { minimum: 1 }
+  validate :total_score_is_valid
+  validate :participant_is_complete
 
   delegate :group, to: :poll, allow_nil: true
-  def author
-    participant
-  end
+  alias :author :participant
 
   def choice=(choice)
     if choice.kind_of?(Hash)
@@ -42,6 +43,22 @@ class Stance < ActiveRecord::Base
       self.stance_choices_attributes = options.map do |option|
         {poll_option_id: option.id}
       end
+    end
+  end
+
+  private
+
+  def total_score_is_valid
+    return unless poll.poll_type == 'dot_vote'
+    if stance_choices.map(&:score).sum > poll.custom_fields['dots_per_person'].to_i
+      errors.add(:dots_per_person, "Too many dots")
+    end
+  end
+
+  def participant_is_complete
+    if participant&.name.blank?
+      errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
+      participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))
     end
   end
 end

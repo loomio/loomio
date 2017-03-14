@@ -1,6 +1,2 @@
 .poll-poll-chart-panel
-  %h3.lmo-card-subheading{translate: "poll_common.results"}
-  .poll-poll-chart-panel__chart-container
-    .poll-poll-chart-panel__bar{ng-repeat: "option in poll.pollOptions() track by option.id", ng-style: "{'background-color': option.color, width: percentageFor(option)}"}
-      %span.poll-poll-chart-panel__bar-label
-        {{barTextFor(option)}}
+  %poll_common_bar_chart_panel{poll: "poll"}
