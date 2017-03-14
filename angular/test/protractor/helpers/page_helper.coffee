@@ -14,7 +14,7 @@ module.exports = new class PageHelper
     browser.get('dev/'+path, 20000)
     browser.driver.manage().window().setSize(1680, 1024)
 
-  waitForReload: (time=2000)->
+  waitForReload: (time=3000)->
     browser.driver.sleep(time)
     browser.waitForAngular()
 
