@@ -3,7 +3,7 @@ fdescribe 'Group Page', ->
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
-  describe 'visiting a parent group as a subgroup member', ->
+  fdescribe 'visiting a parent group as a subgroup member', ->
     it 'displays parent group in sidebar if member of a subgroup', ->
       page.loadPath 'visit_group_as_subgroup_member'
       page.expectText '.group-theme__name', 'Point Break'
