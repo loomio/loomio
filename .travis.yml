@@ -51,7 +51,7 @@ addons:
   artifacts:
     paths:
       - screenshots
-  firefox: "52.0"
+  firefox: "53.0beta"
   postgresql: "9.5"
   apt:
     sources:
