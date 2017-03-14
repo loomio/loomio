@@ -13,8 +13,8 @@ env:
   - DB=postgresql CXX=g++-4.8
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install chromium-chromedriver
+  # - sudo apt-get update
+  # - sudo apt-get install chromium-chromedriver
   - nvm install 7.4.0
   - nvm use 7.4.0
   - npm install -g yarn gulp
@@ -23,7 +23,7 @@ install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update --versions.gecko v0.14.0
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
 
 branches:
   only:
@@ -49,7 +49,7 @@ script:
   - bundle exec rake travis:protractor
 
 after_script:
-  - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
+  # - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 addons:
   # artifacts:
