@@ -57,3 +57,11 @@ fdescribe 'Polls', ->
     page.click  '.poll-common-outcome-form__submit'
 
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
+
+  it 'can vote as a visitor', ->
+    page.loadPath 'polls/test_proposal_poll_created_as_visitor'
+    page.click '.poll-common-vote-form__radio-button--agree'
+    page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
+    page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
+    page.click '.poll-proposal-vote-form__submit'
+    # make sure you can see your vote
