@@ -27,9 +27,9 @@ namespace :travis do
     system("cd angular && gulp protractor:core")
     core_passed = $?.exitstatus == 0
 
-    # puts "Starting to run plugin protractor..."
-    # system("cd angular && gulp protractor:plugins")
-    # plugin_passed = $?.exitstatus == 0
-    # raise "protractor:plugins failed!" unless core_passed && plugin_passed
+    puts "Starting to run plugin protractor..."
+    system("cd angular && gulp protractor:plugins")
+    plugin_passed = $?.exitstatus == 0
+    raise "protractor:plugins failed!" unless core_passed && plugin_passed
   end
 end
