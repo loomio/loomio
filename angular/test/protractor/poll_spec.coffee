@@ -64,4 +64,5 @@ fdescribe 'Polls', ->
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.click '.poll-proposal-vote-form__submit'
+    page.expectFlash 'Vote created'
     # make sure you can see your vote
