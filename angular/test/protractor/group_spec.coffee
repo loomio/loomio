@@ -3,7 +3,7 @@ fdescribe 'Group Page', ->
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
-  fdescribe 'visiting a parent group as a subgroup member', ->
+  describe 'visiting a parent group as a subgroup member', ->
     it 'displays parent group in sidebar if member of a subgroup', ->
       page.loadPath 'visit_group_as_subgroup_member'
       page.expectText '.group-theme__name', 'Point Break'
@@ -35,7 +35,7 @@ fdescribe 'Group Page', ->
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
-      it 'should reload a closed group after logging in', ->
+      fit 'should reload a closed group after logging in', ->
         page.loadPath 'view_closed_group_as_visitor'
         page.click '.navbar__sign-in'
         page.fillIn '#user-email', 'jennifer_grey@example.com'

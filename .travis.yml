@@ -13,8 +13,8 @@ env:
   - DB=postgresql CXX=g++-4.8
 
 before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - sudo apt-get update
+  - sudo apt-get install chromium-chromedriver
   - nvm install 7.4.0
   - nvm use 7.4.0
   - npm install -g yarn gulp
@@ -33,6 +33,9 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
+  - "export PATH=$PATH:/usr/lib/chromium-browser/"
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
@@ -52,7 +55,7 @@ addons:
   # artifacts:
   #   paths:
   #     - screenshots
-  firefox: "52.0"
+  # firefox: "52.0"
   postgresql: "9.5"
   apt:
     sources:
