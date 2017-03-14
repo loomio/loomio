@@ -10,10 +10,10 @@ exports.config =
   # seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.3.0.jar'
   # seleniumAddress: 'http://localhost:4444/wd/hub'
   allScriptsTimeout: 30000
-  directConnect: true
-  # seleniumAddress: 'http://localhost:4444/wd/hub'
+  # directConnect: true
+  seleniumAddress: 'http://localhost:4444/wd/hub'
   capabilities:
-    browserName:     'chrome'
+    browserName:     'firefox'
   baseUrl:           'http://localhost:3000'
   jasmineNodeOpts:
     onComplete: null
