@@ -19,6 +19,7 @@ class Dev::PollsController < Dev::BaseController
   end
 
   def start_poll
+    sign_in saved fake_user
     redirect_to new_poll_url
   end
 
@@ -41,7 +42,7 @@ class Dev::PollsController < Dev::BaseController
         if email
           last_email to: scenario[:observer]
         else
-          redirect_to poll_url(scenario[:poll])
+          redirect_to poll_url(scenario[:poll], participation_token: scenario[:observer]&.participation_token)
         end
       end
     end
@@ -56,5 +57,5 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
   observe_scenario :poll_notifications
-  observe_scenario :poll_created_as_visitor,     email: true
+  observe_scenario :poll_created_as_visitor
 end
