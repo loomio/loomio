@@ -48,6 +48,9 @@ after_script:
   - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
 
 addons:
+  artifacts:
+    paths:
+      - screenshots
   firefox: "52.0"
   postgresql: "9.5"
   apt:
