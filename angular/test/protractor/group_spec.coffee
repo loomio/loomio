@@ -35,7 +35,7 @@ fdescribe 'Group Page', ->
         page.click '.membership-request-form__submit-btn'
         page.expectFlash 'You have requested membership to Closed Dirty Dancing Shoes'
 
-      fit 'should reload a closed group after logging in', ->
+      it 'should reload a closed group after logging in', ->
         page.loadPath 'view_closed_group_as_visitor'
         page.click '.navbar__sign-in'
         page.fillIn '#user-email', 'jennifer_grey@example.com'
