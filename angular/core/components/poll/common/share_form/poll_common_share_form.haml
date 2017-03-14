@@ -60,3 +60,8 @@
             %i.material-icons.poll-common-share-form__option-icon add
       .clearfix
       .lmo-validation-error {{ emailValidationError }}
+
+  %hr
+
+  %md-button.md-primary.md-raised.pull-right{ng-if: "back", ng-click: "back()"}
+    %span{translate: "common.action.ok"}

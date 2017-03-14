@@ -6,6 +6,7 @@ module Plugins
     end
 
     def self.install_plugins!
+      ::Module.prepend Plugins::ModuleConstMissing
       Dir.chdir('plugins') { Dir['*/plugin.rb'].each { |file| load file } }
       repository.values.each do |plugin|
         next unless plugin.enabled
@@ -16,6 +17,8 @@ module Plugins
         plugin.outlets.map       { |outlet| active_outlets[outlet.outlet_name] = active_outlets[outlet.outlet_name] << outlet }
         plugin.routes.map        { |route|  save_route(route) }
         plugin.events.map        { |events| events.call(EventBus) }
+        plugin.extensions.map    { |ext|    ext.proc.call(ext.const); reload_callbacks[ext.const.to_s.to_sym].add(ext.proc) }
+        plugin.extensions.clear
         plugin.installed = true
       end
       save_plugin_yaml
@@ -78,6 +81,10 @@ module Plugins
     end
     private_class_method :save_plugin_yaml
 
+    def self.reload_callbacks
+      @@reload_callbacks ||= Hash.new { |hash, key| hash[key] = Set.new }
+    end
+
     def self.active_outlets
       @@active_outlets ||= Hash.new { [] }
     end
@@ -92,6 +99,5 @@ module Plugins
       @@repository ||= Hash.new
     end
     private_class_method :repository
-
   end
 end

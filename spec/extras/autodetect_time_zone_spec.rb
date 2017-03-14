@@ -41,6 +41,6 @@ describe AutodetectTimeZone do
 
   it "doesn't error if there isn't a current_user" do
     @time_zone = "Wellington"
-    @dummy_controller.stub(current_user: nil)
+    @dummy_controller.stub(current_user: LoggedOutUser.new)
   end
 end

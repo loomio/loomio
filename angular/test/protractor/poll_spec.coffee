@@ -1,4 +1,4 @@
-describe 'Polls', ->
+fdescribe 'Polls', ->
   page = require './helpers/page_helper.coffee'
 
   it 'can start a poll in a group', ->
@@ -30,7 +30,7 @@ describe 'Polls', ->
     page.expectText '.poll-common-outcome-panel', 'This is an outcome'
 
   it 'can start a standalone poll', ->
-    page.loadPath 'polls/start_poll'
+    page.loadPath 'p/new'
     page.click '.poll-common-start-poll__poll-type--proposal'
     page.fillIn '.poll-proposal-form__title', 'A new proposal'
     page.fillIn '.poll-proposal-form__details', 'Some details'
