@@ -1,4 +1,4 @@
-describe 'Group Page', ->
+ddescribe 'Group Page', ->
 
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
