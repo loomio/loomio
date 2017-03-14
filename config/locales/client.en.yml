@@ -61,6 +61,7 @@ en:
       uploading: 'Uploading'
       load_more: 'Load More'
       share: Share
+      ok: Ok!
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'

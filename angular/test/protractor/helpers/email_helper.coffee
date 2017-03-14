@@ -1,6 +1,6 @@
 module.exports = new class EmailHelper
   openLastEmail: ->
-    browser.driver.get('localhost:3000/dev/last_email')
+    browser.driver.get('http://localhost:3000/dev/last_email')
     browser.driver.sleep(10)
 
   lastEmailSubject: ->
