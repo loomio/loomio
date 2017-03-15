@@ -1,4 +1,4 @@
-fdescribe 'Polls', ->
+describe 'Polls', ->
   page = require './helpers/page_helper.coffee'
 
   it 'can start a poll in a group', ->
