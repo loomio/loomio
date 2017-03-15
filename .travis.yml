@@ -11,8 +11,11 @@ cache:
 
 env:
   - DB=postgresql CXX=g++-4.8
+  - DISPLAY=:99.0
+  - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 
 before_install:
+  - sh -e /etc/init.d/xvfb start
   - nvm install 7.4.0
   - nvm use 7.4.0
   - npm install -g yarn gulp
@@ -22,6 +25,7 @@ install:
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
+  - mkdir bin && ln -s angular/node_modules/webdriver-manager/selenium/geckodriver-v0.15.0 bin/geckodriver
 
 branches:
   only:
@@ -31,29 +35,19 @@ branches:
     - /^[0-9]+\.[0-9]+$/
 
 before_script:
-  - "export PATH=$PATH:/usr/lib/chromium-browser/"
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup RAILS_ENV=test
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
   - RAILS_ENV=test bundle exec rails server > /dev/null &
-  # - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
 
 script:
-  - bundle exec rake travis:rspec
-  - bundle exec rake travis:cucumber
-  # - bundle exec rake travis:protractor
-
-after_script:
-  # - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
+  # - bundle exec rake travis:rspec
+  # - bundle exec rake travis:cucumber
+  - bundle exec rake travis:protractor
 
 addons:
-  # artifacts:
-  #   paths:
-  #     - screenshots
-  # firefox: "52.0"
+  firefox: "52.0"
   postgresql: "9.5"
   apt:
     sources:
