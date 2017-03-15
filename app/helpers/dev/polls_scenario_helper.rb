@@ -13,6 +13,24 @@ module Dev::PollsScenarioHelper
      actor:    actor}
   end
 
+  def poll_share_scenario(poll_type:)
+    observer = saved fake_user
+    event = PollService.create(poll: fake_poll(poll_type: poll_type), actor: observer)
+
+    {observer: observer,
+     actor: observer,
+     poll: event.eventable,
+     params: {share: true}}
+  end
+
+  def poll_created_as_logged_out_scenario(poll_type:)
+    scenario = poll_created_as_visitor_scenario(poll_type: poll_type)
+    scenario[:poll].update(anyone_can_participate: true)
+
+    {poll: scenario[:poll],
+     actor: scenario[:actor]}
+  end
+
   def poll_created_as_visitor_scenario(poll_type:)
     actor = saved fake_user
     poll = fake_poll(poll_type: poll_type, discussion: nil, make_announcement: true)
@@ -20,8 +38,8 @@ module Dev::PollsScenarioHelper
     visitor = Visitor.create(email: "hello@test.com", community: poll.community_of_type(:email))
 
     {poll: poll,
-     observer: visitor,
-     actor: actor}
+     actor: actor,
+     params: {participation_token: visitor.participation_token}}
   end
 
   def poll_edited_scenario(poll_type:)

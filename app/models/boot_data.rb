@@ -40,6 +40,6 @@ BootData = Struct.new(:user, :visitor) do
   end
 
   def visitors
-    @visitors ||= Array(visitor)
+    @visitors ||= Array(visitor.presence)
   end
 end

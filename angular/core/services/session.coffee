@@ -2,16 +2,16 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
 
   login: (data) ->
     Records.import(data)
+
+    if @visitor()
+      defaultParams = {participation_token: @visitor().participationToken}
+      Records.stances.remote.defaultParams = defaultParams
+      Records.polls.remote.defaultParams   = defaultParams
+
     return unless AppConfig.currentUserId?
 
     $translate.use(@user().locale)
     $rootScope.$broadcast 'loggedIn', @user()
-
-    if @visitor()
-      Records.stances.remote.defaultParams =
-        participation_token: @visitor().participationToken
-      Records.polls.remote.defaultParams =
-        participation_token: @visitor().participationToken
 
     @user()
 
