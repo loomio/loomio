@@ -10,9 +10,7 @@ cache:
     - angular/node_modules
 
 env:
-  - DB=postgresql CXX=g++-4.8
-  - DISPLAY=:99.0
-  - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
+  - DB=postgresql CXX=g++-4.8 DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin
 
 before_install:
   - sh -e /etc/init.d/xvfb start
