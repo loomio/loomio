@@ -44,9 +44,9 @@ before_script:
   - RAILS_ENV=test bundle exec rails server > /dev/null &
 
 script:
-  - if [ "$TASK" = "rspec" ] then bundle exec rake travis:rspec
-  - if [ "$TASK" = "cucumber" ] then bundle exec rake travis:cucumber
-  - if [ "$TASK" = "protractor" ] then bundle exec rake travis:protractor
+  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
+  - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
+  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
 
 addons:
   firefox: "52.0"
