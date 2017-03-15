@@ -16,7 +16,7 @@ class API::StancesController < API::RestfulController
   end
 
   def update_visitor
-    current_visitor.tap do |visitor|
+    (current_visitor.presence || Visitor.new).tap do |visitor|
       visitor.assign_attributes(Hash(resource_params[:visitor_attributes]).slice(:name, :email))
       visitor.community ||= resource.poll.community_of_type(:public)
     end
