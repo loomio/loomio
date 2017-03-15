@@ -10,7 +10,9 @@ cache:
     - angular/node_modules
 
 env:
-  - DB=postgresql CXX=g++-4.8 DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin
+  - DB=postgresql CXX=g++-4.8 DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin TASK=rspec
+  - DB=postgresql CXX=g++-4.8 DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin TASK=cucumber
+  - DB=postgresql CXX=g++-4.8 DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin TASK=protractor
 
 before_install:
   - sh -e /etc/init.d/xvfb start
@@ -42,9 +44,9 @@ before_script:
   - RAILS_ENV=test bundle exec rails server > /dev/null &
 
 script:
-  # - bundle exec rake travis:rspec
-  # - bundle exec rake travis:cucumber
-  - bundle exec rake travis:protractor
+  - if [ "$TASK" = "rspec" ] then bundle exec rake travis:rspec
+  - if [ "$TASK" = "cucumber" ] then bundle exec rake travis:cucumber
+  - if [ "$TASK" = "protractor" ] then bundle exec rake travis:protractor
 
 addons:
   firefox: "52.0"
