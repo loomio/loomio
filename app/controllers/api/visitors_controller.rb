@@ -1,6 +1,9 @@
 class API::VisitorsController < API::RestfulController
 
   private
+  def current_user
+    current_visitor.presence || super
+  end
 
   def default_page_size
     100
