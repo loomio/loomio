@@ -20,6 +20,17 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     templateFor: (pollType) ->
       @activePollTemplates()[pollType]
 
+    lastStanceBy: (participant, poll) ->
+      criteria =
+        latest:    true
+        pollId:    poll.id
+        visitorId: AppConfig.currentVisitorId or null
+        userId:    AppConfig.currentUserId or null
+      _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
+
+    userHasVoted: (participant, poll) ->
+      @lastStanceBy(participant, poll)?
+
     iconFor: (poll) ->
       @fieldFromTemplate(poll.pollType, 'material_icon')
 

@@ -60,5 +60,9 @@ class Stance < ActiveRecord::Base
       errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
       participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))
     end
+    if participant&.email.blank?
+      errors.add(:participant_email, I18n.t(:"activerecord.errors.messages.blank"))
+      participant.errors.add(:email, I18n.t(:"activerecord.errors.messages.blank"))
+    end
   end
 end

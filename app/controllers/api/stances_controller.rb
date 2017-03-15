@@ -11,12 +11,15 @@ class API::StancesController < API::RestfulController
   private
 
   def create_action
-    @event = service.create(stance: resource, actor: current_user.presence || identify_visitor)
+    @event = service.create(stance: resource, actor: current_user.presence || update_visitor)
     set_participation_cookie if events_to_serialize.any?
   end
 
-  def identify_visitor
-    VisitorIdentifier.new(cookies, resource_params[:visitor_attributes]).identify_for(resource.poll)
+  def update_visitor
+    (current_visitor.presence || Visitor.new).tap do |visitor|
+      visitor.assign_attributes(Hash(resource_params[:visitor_attributes]).slice(:name, :email))
+      visitor.community ||= resource.poll.community_of_type(:public)
+    end
   end
 
   def set_participation_cookie

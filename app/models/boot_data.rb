@@ -1,14 +1,12 @@
-CurrentUserData = Struct.new(:user, :restricted) do
+BootData = Struct.new(:user, :visitor) do
   def data
-    serializer.new(user, scope: serializer_scope, root: :current_user).as_json.tap do |json|
-      json[:current_user].except!(:group_ids, :membership_ids)
-    end
+    serializer.new(user, scope: serializer_scope).as_json
   end
 
   private
 
   def serializer
-    if restricted
+    if user.restricted
       Restricted::UserSerializer
     else
       Full::UserSerializer
@@ -18,10 +16,10 @@ CurrentUserData = Struct.new(:user, :restricted) do
   def serializer_scope
     { memberships: memberships, visitors: visitors }.tap do |hash|
       hash.merge!(
-        notifications: notifications,
-        unread:        unread,
-        reader_cache:  readers
-      ) unless restricted || !user.is_logged_in?
+        notifications:      notifications,
+        unread:             unread,
+        reader_cache:       readers
+      ) if user.is_logged_in? && !user.restricted
     end
   end
 
@@ -42,6 +40,6 @@ CurrentUserData = Struct.new(:user, :restricted) do
   end
 
   def visitors
-    @visitors ||= Visitor.where(participation_token: user.participation_token)
+    @visitors ||= Array(visitor)
   end
 end

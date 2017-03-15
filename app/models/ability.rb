@@ -10,7 +10,7 @@ class Ability
   end
 
   def user_is_author_of?(object)
-    object.author_id == @user.id
+    @user.is_logged_in? && @user.id == object.author_id
   end
 
   def initialize(user)
