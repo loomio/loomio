@@ -15,12 +15,20 @@ module Dev::PollsScenarioHelper
 
   def poll_share_scenario(poll_type:)
     observer = saved fake_user
-    event = PollService.create(poll: fake_poll(poll_type: poll_type), actor: observer)
+    event = PollService.create(poll: fake_poll(poll_type: poll_type, discussion: nil), actor: observer)
 
     {observer: observer,
      actor: observer,
      poll: event.eventable,
      params: {share: true}}
+  end
+
+  def poll_closed_scenario(poll_type:)
+    scenario = poll_share_scenario(poll_type: poll_type)
+    PollService.close(poll: scenario[:poll], actor: scenario[:observer])
+
+    {observer: scenario[:observer],
+     poll:     scenario[:poll]}
   end
 
   def poll_created_as_logged_out_scenario(poll_type:)

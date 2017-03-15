@@ -60,4 +60,5 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_created_as_visitor
   observe_scenario :poll_created_as_logged_out
   observe_scenario :poll_share
+  observe_scenario :poll_closed
 end

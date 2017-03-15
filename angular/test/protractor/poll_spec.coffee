@@ -17,11 +17,8 @@ describe 'Polls', ->
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Agree'
     page.expectText '.poll-common-votes-panel__stance-reason', 'A reason'
 
-    page.click '.poll-actions-dropdown'
-    page.click '.poll-actions-dropdown__close'
-    page.click '.poll-common-close-form__submit'
-
-    page.click '.poll-common-collapsed'
+  it 'can set an outcome', ->
+    page.loadPath 'polls/test_proposal_poll_closed'
     page.click '.poll-common-set-outcome-panel__submit'
 
     page.fillIn '.poll-common-outcome-form__statement', 'This is an outcome'
@@ -64,6 +61,7 @@ describe 'Polls', ->
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.click '.poll-proposal-vote-form__submit'
+
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
 
@@ -73,6 +71,8 @@ describe 'Polls', ->
     page.fillIn '.poll-proposal-vote-form__reason', 'This is a reason'
     page.fillIn '.poll-common-participant-form__name', 'Big Baloo'
     page.fillIn '.poll-common-participant-form__email', 'big@baloo.ninja'
+    page.click '.poll-proposal-vote-form__submit'
+
     page.expectFlash 'Vote created'
     page.expectText '.poll-common-votes-panel__stance-name-and-option', 'Big Baloo'
 
@@ -80,5 +80,6 @@ describe 'Polls', ->
     page.loadPath 'polls/test_proposal_poll_share'
     page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
     page.click '.poll-common-share-form__option-icon'
+    browser.driver.sleep(500)
 
     page.expectFlash 'Invitation email sent to loo@m.io'

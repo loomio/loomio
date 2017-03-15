@@ -7,10 +7,8 @@
 paths         = require('../tasks/paths')
 
 exports.config =
-  # seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.3.0.jar'
-  seleniumAddress: 'http://localhost:4444/wd/hub'
+  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.3.1.jar'
   allScriptsTimeout: 30000
-  # directConnect: true
   capabilities:
     browserName:     'firefox'
   baseUrl:           'http://localhost:3000'
