@@ -9,7 +9,7 @@ paths         = require('../tasks/paths')
 exports.config =
   seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.3.1.jar'
   # seleniumAddress: 'http://localhost:4444/wd/hub'
-  allScriptsTimeout: 30000
+  allScriptsTimeout: 40000
   # directConnect: true
   capabilities:
     browserName:     'firefox'
@@ -19,7 +19,7 @@ exports.config =
     isVerbose: false
     showColors: true
     includeStackTrace: true
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 40000
 
   # beforeLaunch: ->
   #   new Promise (resolve) ->
