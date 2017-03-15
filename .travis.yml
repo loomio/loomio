@@ -24,7 +24,7 @@ install:
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
-  - mkdir bin && ln -s angular/node_modules/webdriver-manager/selenium/geckodriver-v0.15.0 bin/geckodriver
+  - mkdir bin && cd bin && ln -s ../angular/node_modules/webdriver-manager/selenium/geckodriver-v0.15.0 geckodriver && cd ..
   - ls -la bin; pwd; which geckodriver
 
 branches:
