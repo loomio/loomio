@@ -61,10 +61,6 @@ angular-clipboard@latest:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/angular-clipboard/-/angular-clipboard-1.5.0.tgz#5dcfacd8f91184d165852a71c485e675c4233802"
 
-angular-cookies@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/angular-cookies/-/angular-cookies-1.6.2.tgz#ffb69f35f84d1efe71addac20a2905476b658884"
-
 angular-elastic@latest:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/angular-elastic/-/angular-elastic-2.5.1.tgz#e938ab1bd8c76415b8ca6514b15fe3593a5df535"
@@ -139,9 +135,9 @@ angular@*, angular@1.4.1, angular@>=1.0.6, angular@>=1.0.8:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.1.tgz#21af170852707c732560aad3ec18e90ddf7c8f26"
 
-angular_record_store@2.6.2:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.6.2.tgz#2b88c28c1b6a6960d7a37b55514902abb116d5e8"
+angular_record_store@2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/angular_record_store/-/angular_record_store-2.7.2.tgz#247047e8fa59a77911dcf3bfdd256c9ec6c1cd0d"
   dependencies:
     coffeeify "^1.1.0"
     lodash "^3.10.1"

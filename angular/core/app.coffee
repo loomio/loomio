@@ -152,6 +152,7 @@ angular.module('loomioApp').controller 'ApplicationController', ($scope, $timeou
 
   $router.config coreRoutes.concat window.Loomio.plugins.routes
 
+  AppConfig.records = Records
   AhoyService.init()
   Session.login(AppConfig.bootData)
 

@@ -12,7 +12,6 @@ class API::StancesController < API::RestfulController
 
   def create_action
     @event = service.create(stance: resource, actor: current_user.presence || update_visitor)
-    set_participation_cookie if events_to_serialize.any?
   end
 
   def update_visitor
@@ -20,13 +19,6 @@ class API::StancesController < API::RestfulController
       visitor.assign_attributes(Hash(resource_params[:visitor_attributes]).slice(:name, :email))
       visitor.community ||= resource.poll.community_of_type(:public)
     end
-  end
-
-  def set_participation_cookie
-    cookies[:participation_token] = {
-      value:      resource.participant.participation_token,
-      expires_at: resource.poll.closing_at
-    }
   end
 
   def accessible_records

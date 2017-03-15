@@ -28,7 +28,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
         userId:    AppConfig.currentUserId or null
       _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
 
-    userHasVoted: (participant, poll) ->
+    hasVoted: (participant, poll) ->
       @lastStanceBy(participant, poll)?
 
     iconFor: (poll) ->

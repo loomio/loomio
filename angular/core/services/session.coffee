@@ -6,6 +6,13 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
 
     $translate.use(@user().locale)
     $rootScope.$broadcast 'loggedIn', @user()
+
+    if @visitor()
+      Records.stances.remote.defaultParams =
+        participation_token: @visitor().participationToken
+      Records.polls.remote.defaultParams =
+        participation_token: @visitor().participationToken
+
     @user()
 
   logout: ->

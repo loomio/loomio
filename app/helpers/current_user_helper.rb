@@ -4,7 +4,7 @@ module CurrentUserHelper
   end
 
   def current_visitor
-    @current_visitor ||= Visitor.find_by(participation_token: cookies[:participation_token]) || LoggedOutUser.new
+    @current_visitor ||= Visitor.find_by(participation_token: params[:participation_token]) || LoggedOutUser.new
   end
 
   def current_participant

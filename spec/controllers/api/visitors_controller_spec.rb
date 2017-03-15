@@ -9,7 +9,8 @@ describe API::VisitorsController do
   let(:new_visitor_params) {{
     community_id: community.id,
     name: "Michael Scott",
-    email: "michael@dundermifflin.org"
+    email: "michael@dundermifflin.org",
+    participation_token: visitor.participation_token
   }}
   let(:existing_visitor_params) {{
     community_id: visitor.community_id,
@@ -75,7 +76,6 @@ describe API::VisitorsController do
 
   describe 'update' do
     it 'updates the name and email of a visitor' do
-      cookies[:participation_token] = visitor.participation_token
       post :update, id: visitor.id, visitor: new_visitor_params
       expect(response.status).to eq 200
       expect(visitor.reload.name).to eq new_visitor_params[:name]
@@ -83,7 +83,6 @@ describe API::VisitorsController do
     end
 
     it 'does not update the participation token' do
-      cookies[:participation_token] = visitor.participation_token
       new_visitor_params[:participation_token] = "new_token"
       expect { post :update, id: visitor.id, visitor: new_visitor_params }.to_not change { visitor.reload.participation_token }
       expect(response.status).to eq 400
@@ -96,7 +95,7 @@ describe API::VisitorsController do
     end
 
     it 'does not allow other visitors to update a visitor' do
-      cookies[:participation_token] = "abcd"
+      new_visitor_params[:participation_token] = "abcd"
       expect { post :update, id: visitor.id, visitor: new_visitor_params }.to_not change { visitor.reload.participation_token }
       expect(response.status).to eq 403
     end
