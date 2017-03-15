@@ -13,8 +13,6 @@ env:
   - DB=postgresql CXX=g++-4.8
 
 before_install:
-  # - sudo apt-get update
-  # - sudo apt-get install chromium-chromedriver
   - nvm install 7.4.0
   - nvm use 7.4.0
   - npm install -g yarn gulp
