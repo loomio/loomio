@@ -5,7 +5,7 @@ class StanceService
 
     stance.assign_attributes(participant: actor)
     return false unless stance.valid?
-    actor.stances.where(poll: stance.poll).update_all(latest: false)
+    stance.poll.stances.where(participant: actor).update_all(latest: false)
     stance.save!
     stance.participant.save!
     EventBus.broadcast 'stance_create', stance, actor
