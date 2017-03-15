@@ -10,9 +10,8 @@ angular.module('loomioApp').directive 'pollMeetingVoteForm', ->
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->
-        $scope.stance.stanceChoicesAttributes =
-          _.map _.compact(_.map($scope.pollOptionIdsChecked, (v,k) -> parseInt(k) if v)), (id) ->
-            {poll_option_id: id}
+        attrs = _.map _.compact(_.map($scope.pollOptionIdsChecked, (v,k) -> parseInt(k) if v)), (id) -> {poll_option_id: id}
+        $scope.stance.stanceChoicesAttributes = attrs if _.any(attrs)
 
     MentionService.applyMentions($scope, $scope.stance)
     KeyEventService.submitOnEnter($scope)

@@ -8,7 +8,6 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     defaultValues: ->
       reason: ''
-      stanceChoicesAttributes: []
       visitorAttributes: {}
 
     relationships: ->
