@@ -1,12 +1,12 @@
 require 'rails_helper'
 
- describe CurrentUserData do
+ describe BootData do
     let(:user) { create :user }
     let(:group) { create :group }
     let(:discussion) { create :discussion, group: group }
     let!(:membership) { group.add_member! user }
-    let(:subject) { CurrentUserData.new(user) }
-    let(:restricted_subject) { CurrentUserData.new(user, true) }
+    let(:subject) { BootData.new(user) }
+    let(:restricted_subject) { BootData.new(user, nil, true) }
     let(:notification) { create(:notification, user: user) }
     let(:unread) { create(:discussion, group: group) }
     let(:comment) { create(:comment, parent: create(:comment, discussion: discussion, author: user), discussion: discussion) }

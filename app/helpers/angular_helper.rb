@@ -17,15 +17,14 @@ module AngularHelper
 
   def app_config
     @appConfig = {
+      bootData:            BootData.new(current_user, current_visitor, restricted_user).data,
       version:             Loomio::Version.current,
-      showWelcomeModal:    !current_user.angular_ui_enabled?,
-      reportErrors:        false,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash:               flash.to_h,
       currentUserId:       current_user.id,
+      currentVisitorId:    current_visitor.id,
       currentUserLocale:   current_user.locale,
-      currentUserData:     CurrentUserData.new(current_user, current_user == restricted_user.presence).data,
       currentUrl:          request.original_url,
       canTranslate:        TranslationService.available?,
       permittedParams:     PermittedParamsSerializer.new({}),
