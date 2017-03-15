@@ -12,10 +12,10 @@ module CurrentUserHelper
   def token_user
     return unless doorkeeper_token.present?
     doorkeeper_render_error unless valid_doorkeeper_token?
-    @token_user ||= User.find(doorkeeper_token.resource_owner_id)
+    User.find(doorkeeper_token.resource_owner_id)
   end
 
   def restricted_user
-    @restricted_user ||= User.find_by(unsubscribe_token: params[:unsubscribe_token]) if params[:unsubscribe_token]
+    User.find_by(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
   end
 end

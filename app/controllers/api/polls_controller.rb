@@ -1,6 +1,10 @@
 class API::PollsController < API::RestfulController
   include UsesFullSerializer
-  load_and_authorize_resource only: :show
+
+  def show
+    self.resource = load_and_authorize(:poll)
+    respond_with_resource
+  end
 
   def index
     instantiate_collection do |collection|

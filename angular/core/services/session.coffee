@@ -13,7 +13,7 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
     Records.sessions.remote.destroy('').then -> $window.location.href = '/'
 
   user: ->
-    Records.users.find(AppConfig.currentUserId)
+    Records.users.find(AppConfig.currentUserId) or Records.users.build()
 
   visitor: ->
     Records.visitors.find(AppConfig.currentVisitorId)

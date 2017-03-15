@@ -17,7 +17,7 @@ module AngularHelper
 
   def app_config
     @appConfig = {
-      bootData:            BootData.new(current_user, current_visitor, restricted_user).data,
+      bootData:            BootData.new(current_user, current_visitor).data,
       version:             Loomio::Version.current,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),

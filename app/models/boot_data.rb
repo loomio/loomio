@@ -1,4 +1,4 @@
-BootData = Struct.new(:user, :visitor, :restricted) do
+BootData = Struct.new(:user, :visitor) do
   def data
     serializer.new(user, scope: serializer_scope).as_json
   end
@@ -6,7 +6,7 @@ BootData = Struct.new(:user, :visitor, :restricted) do
   private
 
   def serializer
-    if restricted
+    if user.restricted
       Restricted::UserSerializer
     else
       Full::UserSerializer
@@ -19,7 +19,7 @@ BootData = Struct.new(:user, :visitor, :restricted) do
         notifications:      notifications,
         unread:             unread,
         reader_cache:       readers
-      ) unless restricted || !user.is_logged_in?
+      ) if user.is_logged_in? && !user.restricted
     end
   end
 
