@@ -54,6 +54,7 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
         flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName}"
         successCallback: (data) ->
           model.poll().clearStaleStances()
+          AppConfig.currentVisitorId = data.stances[0].visitor_id
           scope.$emit 'stanceSaved', data.stances[0].key
         draftFields: ['reason']
       , options))

@@ -1,6 +1,6 @@
 BootData = Struct.new(:user, :visitor) do
   def data
-    serializer.new(user, scope: serializer_scope).as_json
+    ActiveModel::ArraySerializer.new(Array(user), scope: serializer_scope, each_serializer: serializer, root: :users).as_json
   end
 
   private
