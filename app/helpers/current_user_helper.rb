@@ -7,6 +7,10 @@ module CurrentUserHelper
     @current_visitor ||= Visitor.find_by(participation_token: cookies[:participation_token]) || Visitor.new
   end
 
+  def current_participant
+    current_user.presence || current_visitor
+  end
+
   private
 
   def token_user

@@ -7,6 +7,7 @@ class StanceService
     return false unless stance.valid?
     actor.stances.where(poll: stance.poll).update_all(latest: false)
     stance.save!
+    stance.participant.save!
     EventBus.broadcast 'stance_create', stance, actor
     Events::StanceCreated.publish! stance
   end
