@@ -1,5 +1,5 @@
-angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, MentionLinkService) ->
-  class PollModel extends DraftableModel
+angular.module('loomioApp').factory 'PollModel', (BaseModel, AppConfig, MentionLinkService) ->
+  class PollModel extends BaseModel
     @singular: 'poll'
     @plural: 'polls'
     @indices: ['discussionId', 'authorId']
