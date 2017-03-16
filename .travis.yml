@@ -1,10 +1,13 @@
 language: ruby
 rvm:
   - 2.3.1
-cache: bundler
+
 dist: trusty
 sudo: required
+
 cache:
+  bundler: true
+  yarn: true
   directories:
     - vendor/bundle
     - angular/node_modules
@@ -13,9 +16,15 @@ services:
   - postgresql
 
 env:
-  - DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin TASK=rspec
-  - DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin TASK=cucumber
-  - DISPLAY=:99.0 PATH=$PATH:$TRAVIS_BUILD_DIR/bin TASK=protractor
+  global:
+    - DB=postgres
+    - DISPLAY=:99.0
+    - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
+    - RAILS_ENV=test
+  matrix:
+    - TASK=rspec
+    - TASK=cucumber
+    - TASK=protractor
 
 before_install:
   - sh -e /etc/init.d/xvfb start
@@ -32,10 +41,10 @@ install:
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
-  - bundle exec rake db:setup RAILS_ENV=test
+  - bundle exec rake db:setup
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
-  - RAILS_ENV=test bundle exec rails server > /dev/null &
+  - if [ "$TASK" = "protractor" ]; then bundle exec rails server > /dev/null &; fi
 
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
