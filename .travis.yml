@@ -12,12 +12,24 @@ cache:
     - vendor/bundle
     - angular/node_modules
 
-services:
-  - postgresql
+addons:
+  firefox: "52.0"
+  postgresql: "9.5"
+  apt:
+    sources:
+      - heroku
+      - ubuntu-toolchain-r-test
+    packages:
+      - expect
+      - heroku-toolbelt
+      - g++-4.8
+  # code_climate:
+  #   repo_token:
+  #     secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
 
 env:
   global:
-    - DB=postgres
+    - DB=postgresql
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
@@ -33,7 +45,6 @@ before_install:
   - npm install -g yarn gulp
 
 install:
-  - echo $PATH
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
@@ -50,18 +61,3 @@ script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
   - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
   - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
-
-addons:
-  firefox: "52.0"
-  postgresql: "9.5"
-  apt:
-    sources:
-      - heroku
-      - ubuntu-toolchain-r-test
-    packages:
-      - expect
-      - heroku-toolbelt
-      - g++-4.8
-  code_climate:
-    repo_token:
-      secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
