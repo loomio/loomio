@@ -1,4 +1,4 @@
-fdescribe 'Invitations', ->
+describe 'Invitations', ->
   page = require './helpers/page_helper.coffee'
   staticPage = require './helpers/static_page_helper.coffee'
 
@@ -79,7 +79,7 @@ fdescribe 'Invitations', ->
     page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
     page.expectText '.members-card__list', 'JN'
 
-  it 'allows sign up for team invitation link', ->
+  xit 'allows sign up for team invitation link', ->
     staticPage.ignoreSynchronization ->
       staticPage.loadPath 'setup_team_invitation_link'
 
@@ -92,7 +92,7 @@ fdescribe 'Invitations', ->
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
       page.expectText '.members-card__list', 'JN'
 
-  it 'takes the user to the group if they\'ve already accepted', ->
+  xit 'takes the user to the group if they\'ve already accepted', ->
     staticPage.ignoreSynchronization ->
       staticPage.loadPath 'setup_used_invitation'
 
@@ -104,7 +104,7 @@ fdescribe 'Invitations', ->
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
       page.expectText '.members-card__list', 'JN'
 
-  it 'displays an error if logging in as a different user', ->
+  xit 'displays an error if logging in as a different user', ->
     staticPage.ignoreSynchronization ->
       staticPage.loadPath 'setup_used_invitation'
 
@@ -116,7 +116,7 @@ fdescribe 'Invitations', ->
 
       staticPage.expectText 'body.invitations', 'This invitation has already been used'
 
-  it 'displays an error if the invitation has been cancelled', ->
+  xit 'displays an error if the invitation has been cancelled', ->
     staticPage.ignoreSynchronization ->
       staticPage.loadPath 'setup_cancelled_invitation'
 
