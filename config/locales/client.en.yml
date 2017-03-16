@@ -1584,6 +1584,13 @@ en:
       poll_expired: 'Dot vote finished: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
 
+    meeting:
+      poll_created: '<strong>{{author}}</strong> started a meeting time poll: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> responded:'
+      poll_edited: '<strong>{{author}}</strong> edited the meeting time poll: <span>{{title}}</span>'
+      poll_expired: 'Meeting time poll finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the meeting time poll: <span>{{title}}</span>'
+
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'
 
