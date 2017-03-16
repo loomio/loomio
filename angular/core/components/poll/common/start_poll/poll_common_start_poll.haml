@@ -1,0 +1,10 @@
+.poll-common-start-poll
+  .poll-common-start-poll__select-poll-type{ng-if: "!poll.pollType"}
+    %div{class: "poll-common-start-poll__poll-type--{{pollType}}", ng-repeat: "pollType in pollTypes() track by $index"}
+      %md-list-item.poll-common-start-poll__poll-type{ng-click: "poll.pollType = pollType"}
+        %i.material-icons.poll-common-start-poll__icon {{iconFor(pollType)}}
+        .poll-common-start-poll__content{class: "poll-common-start-poll__start-poll--{{pollType}}"}
+          .poll-common-start-poll__poll-type-title.md-body-2{translate: "decision_tools_card.{{pollType}}_title"}
+          .poll-common-start-poll__poll-type-subtitle.md-caption{translate: "decision_tools_card.{{pollType}}_subtitle"}
+  .poll-common-start-poll__form{ng-if: "poll.pollType"}
+    %poll_common_directive{poll: "poll", name: "form", back: "editPollType"}

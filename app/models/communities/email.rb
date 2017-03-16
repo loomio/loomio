@@ -1,14 +1,18 @@
 class Communities::Email < Communities::Base
+  include Communities::EmailVisitors
   set_community_type :email
-  set_custom_fields  :emails
 
-  validates :emails, length: { minimum: 1 }
-
-  def includes?(participant)
-    emails.include?(participant.email)
+  def add_members!(emails)
+    visitors.where(revoked: true, email: emails).update_all(revoked: false)
+    (emails - visitors.pluck(:email)).map { |email| visitors.build(email: email) }
+    save if persisted?
   end
 
-  def participants
-    @participants ||= emails.map { |email| Visitor.new(email: email) }
+  def includes?(member)
+    members.pluck(:participation_token).include?(member.participation_token)
+  end
+
+  def members
+    @members ||= visitors.where(revoked: false)
   end
 end

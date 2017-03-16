@@ -1,0 +1,10 @@
+.poll-common-participant-form{ng-if: "showParticipantForm()"}
+  %md-input-container.md-block
+    %label{translate: "poll_common.participant_name"}
+    %input.lmo-primary-form-input.poll-common-participant-form__name{type: "text", placeholder: "{{poll_common_participant_form.participant_name_placeholder}}", ng-model: "stance.visitorAttributes.name"}
+    %validation_errors{subject: "stance", field: "participantName"}
+
+  %md-input-container.md-block{ng-if: "!stance.participant().email"}
+    %label{translate: "poll_common.participant_email"}
+    %input.lmo-primary-form-input.poll-common-participant-form__email{type: "email", placeholder: "{{poll_common_participant_form.participant_email_placeholder}}", ng-model: "stance.visitorAttributes.email"}
+    %validation_errors{subject: "stance", field: "participantEmail"}

@@ -8,7 +8,7 @@ module Events::NotifyUser
 
   # send event notifications
   def notify_users!
-    notifications.import(notification_recipients.map do |recipient|
+    notifications.import(notification_recipients.without(user).map do |recipient|
       notifications.build(user:               recipient,
                           actor:              notification_actor,
                           url:                notification_url,

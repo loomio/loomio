@@ -2,6 +2,7 @@ class API::RestfulController < ActionController::Base
   include ::LocalesHelper
   include ::ProtectedFromForgery
   include ::LoadAndAuthorize
+  include ::CurrentUserHelper
   before_filter :set_application_locale
   before_filter :set_paper_trail_whodunnit
   snorlax_used_rest!
@@ -18,20 +19,6 @@ class API::RestfulController < ActionController::Base
 
   def destroy_action
     service.destroy({resource_symbol => resource, actor: current_user})
-  end
-
-  def current_user
-    super || token_user || restricted_user || LoggedOutUser.new
-  end
-
-  def token_user
-    return unless doorkeeper_token.present?
-    doorkeeper_render_error unless valid_doorkeeper_token?
-    @token_user ||= User.find(doorkeeper_token.resource_owner_id)
-  end
-
-  def restricted_user
-    @restricted_user ||= User.find_by(unsubscribe_token: params[:unsubscribe_token]) if params[:unsubscribe_token]
   end
 
   def permitted_params

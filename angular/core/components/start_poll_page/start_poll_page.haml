@@ -1,0 +1,7 @@
+.lmo-one-column-layout
+  %main.start-poll-page.lmo-row
+    .start-poll-page__main-content.lmo-flex.lmo-card{layout: "column"}
+      .poll-common-start-poll__header.lmo-flex{ng-if: "startPollPage.poll.pollType"}
+        %i.material-icons {{ startPollPage.icon() }}
+        %h2.lmo-card-heading.poll-common-card-header__poll-type{translate: "poll_types.{{startPollPage.poll.pollType}}"}
+      %poll_common_start_poll.lmo-flex__grow{poll: "startPollPage.poll"}

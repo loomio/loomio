@@ -217,6 +217,10 @@ $cardPaddingSize: 16px;
   @include displayFlex;
 }
 
+.lmo-flex__grow {
+  flex-grow: 1;
+}
+
 .lmo-flex__no-shrink {
   flex-shrink: 0;
 }

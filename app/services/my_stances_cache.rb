@@ -1,16 +1,17 @@
 class MyStancesCache
-  attr_accessor :user, :cache
+  attr_reader :participant, :cache
 
-  def initialize(user: nil, polls: [])
-    @user, @cache = user, {}
-    return unless user && user.is_logged_in? && polls
+  def initialize(participant: LoggedOutUser.new, polls: [])
+    @cache = {}
+    return unless participant.presence && polls.presence
 
-    stances = Stance.latest.where(participant_id: user.id, poll_id: polls.map(&:id))
-    stances.each { |stance| cache[stance.poll_id] = stance }
+    Stance.latest.where(participant: participant, poll_id: polls.map(&:id)).each do |stance|
+      cache[stance.poll_id] = stance
+    end
   end
 
   def get_for(poll)
-    cache.fetch(poll.id) { Stance.latest.find_by(poll: poll, participant: user) }
+    cache.fetch(poll.id) { Stance.latest.find_by(poll: poll, participant: participant) }
   end
 
   def clear

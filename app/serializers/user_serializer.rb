@@ -23,6 +23,11 @@ class UserSerializer < ActiveModel::Serializer
     object.avatar_url :large
   end
 
+  def include_avatar_url?
+    object.avatar_kind == 'uploaded'
+  end
+  alias :include_profile_url? :include_avatar_url?
+
   def search_fragment
     scope[:q]
   end

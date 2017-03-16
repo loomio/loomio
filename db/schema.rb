@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228233138) do
+ActiveRecord::Schema.define(version: 20170314040259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -715,25 +715,25 @@ ActiveRecord::Schema.define(version: 20170228233138) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                              null: false
-    t.string   "title",                                  null: false
+    t.integer  "author_id",                           null: false
+    t.string   "title",                               null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                    null: false
-    t.string   "poll_type",                              null: false
+    t.string   "key",                                 null: false
+    t.string   "poll_type",                           null: false
     t.integer  "motion_id"
-    t.jsonb    "stance_data",            default: {}
-    t.integer  "stances_count",          default: 0,     null: false
-    t.boolean  "multiple_choice",        default: false, null: false
-    t.jsonb    "custom_fields",          default: {},    null: false
-    t.jsonb    "stance_counts",          default: [],    null: false
-    t.integer  "did_not_votes_count",    default: 0,     null: false
-    t.boolean  "anyone_can_participate", default: false, null: false
+    t.jsonb    "stance_data",         default: {}
+    t.integer  "stances_count",       default: 0,     null: false
+    t.boolean  "multiple_choice",     default: false, null: false
+    t.jsonb    "custom_fields",       default: {},    null: false
+    t.jsonb    "stance_counts",       default: [],    null: false
+    t.integer  "did_not_votes_count", default: 0,     null: false
     t.integer  "group_id"
+    t.jsonb    "matrix_counts",       default: [],    null: false
   end
 
   create_table "stance_choices", force: :cascade do |t|
@@ -883,6 +883,8 @@ ActiveRecord::Schema.define(version: 20170228233138) do
     t.datetime "updated_at"
     t.string   "avatar_kind",         default: "initials", null: false
     t.string   "avatar_initials"
+    t.integer  "community_id",                             null: false
+    t.boolean  "revoked",             default: false,      null: false
   end
 
   create_table "visits", id: :uuid, default: nil, force: :cascade do |t|

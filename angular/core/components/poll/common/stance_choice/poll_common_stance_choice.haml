@@ -1,4 +1,6 @@
 .poll-common-stance-choice
   %poll_common_stance_icon{stance_choice: "stanceChoice"}
+  %span{ng-if: "hasVariableScore()"}> {{stanceChoice.score}} -
   %span{ng-if: "translateOptionName", translate: "poll_{{stanceChoice.poll().pollType}}_options.{{stanceChoice.pollOption().name}}"}
-  %span{ng-if: "!translateOptionName"} {{stanceChoice.pollOption().name}}
+  %poll_meeting_time{ng-if: "!translateOptionName && datesAsOptions()", name: "stanceChoice.pollOption().name"}
+  %span{ng-if: "!translateOptionName && !datesAsOptions()"} {{stanceChoice.pollOption().name}}

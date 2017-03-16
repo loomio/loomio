@@ -4,7 +4,7 @@ module AngularHelper
     redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
     metadata                                      if browser.bot? && respond_to?(:metadata, true)
     app_config
-    current_user_or_visitor.update(angular_ui_enabled: true) unless current_user_or_visitor.angular_ui_enabled?
+    current_user.update(angular_ui_enabled: true) unless current_user.angular_ui_enabled?
     render 'layouts/angular', layout: false
   end
 
@@ -16,15 +16,14 @@ module AngularHelper
 
   def app_config
     @appConfig = {
+      bootData:            BootData.new(current_user, current_visitor).data,
       version:             Loomio::Version.current,
-      showWelcomeModal:    !current_user_or_visitor.angular_ui_enabled?,
-      reportErrors:        false,
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash:               flash.to_h,
-      currentUserId:       current_user_or_visitor.id,
-      currentUserLocale:   current_user_or_visitor.locale,
-      currentUserData:     CurrentUserData.new(current_user_or_visitor, user_is_restricted?).data,
+      currentUserId:       current_user.id,
+      currentVisitorId:    current_visitor.id,
+      currentUserLocale:   current_user.locale,
       currentUrl:          request.original_url,
       canTranslate:        TranslationService.available?,
       permittedParams:     PermittedParamsSerializer.new({}),

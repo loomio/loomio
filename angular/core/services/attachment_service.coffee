@@ -19,9 +19,7 @@ angular.module('loomioApp').factory 'AttachmentService', (Records) ->
           type:         item.type
         scope.$broadcast 'attachmentPasted', file
 
-    cleanupAfterUpdate: (modelType) ->
-      (response) ->
-        model = _.first(response["#{modelType}s"])
-        Records.attachments.find(attachableId: model.id, attachableType: _.capitalize(modelType))
-                           .filter (attachment) -> !_.contains(model.attachment_ids, attachment.id)
-                           .map    (attachment) -> attachment.remove()
+    cleanupAfterUpdate: (model, singular) ->
+      Records.attachments.find(attachableId: model.id, attachableType: _.capitalize(singular))
+                         .filter (attachment) -> !_.contains(model.attachment_ids, attachment.id)
+                         .map    (attachment) -> attachment.remove()

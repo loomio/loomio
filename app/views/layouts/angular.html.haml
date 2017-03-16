@@ -19,7 +19,7 @@
 
     = render 'angular/metadata'
     = render 'application/google_analytics', code: ENV['GOOGLE_TAG_MANAGER_ID']
-    = render 'angular/intercom' if current_user_or_visitor.is_logged_in?
+    = render 'angular/intercom' if current_user.is_logged_in?
 
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash

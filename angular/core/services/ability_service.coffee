@@ -1,8 +1,14 @@
 angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
   new class AbilityService
 
-    isLoggedIn: ->
-      Session.user().id? and ! Session.user().restricted?
+    isLoggedIn: =>
+      @isUser() and !Session.user().restricted?
+
+    isVisitor: ->
+      AppConfig.currentVisitorId?
+
+    isUser: ->
+      AppConfig.currentUserId?
 
     canAddComment: (thread) ->
       Session.user().isMemberOf(thread.group())
@@ -15,6 +21,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       !thread.hasActiveProposal() and
       (@canAdministerGroup(thread.group()) or
       (Session.user().isMemberOf(thread.group()) and thread.group().membersCanRaiseMotions))
+
+    canStartPoll: (group) ->
+      group and
+      (@canAdministerGroup(group) or Session.user().isMemberOf(group) and group.membersCanRaiseMotions)
 
     canEditThread: (thread) ->
       @canAdministerGroup(thread.group()) or
@@ -147,6 +157,9 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       _.contains(AppConfig.inlineTranslation.supportedLangs, Session.user().locale) and
       Session.user().locale != model.author().locale
 
+    canSharePoll: (poll) ->
+      @canEditPoll(poll)
+
     canEditPoll: (poll) ->
       poll.isActive() and @canAdministerPoll(poll)
 
@@ -154,8 +167,10 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
       poll.isClosed() and @canAdministerPoll(poll)
 
     canAdministerPoll: (poll) ->
-      # NB: discussion dependency here, to be factored out.
-      (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
+      if poll.group()
+        (@canAdministerGroup(poll.group()) or (Session.user().isMemberOf(poll.group()) and Session.user().isAuthorOf(poll)))
+      else
+        Session.user().isAuthorOf(poll)
 
     canClosePoll: (poll) ->
       @canEditPoll(poll)
@@ -170,5 +185,6 @@ angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
              'profilePage',        \
              'authorizedAppsPage', \
              'registeredAppsPage', \
-             'registeredAppPage' then true
+             'registeredAppPage',  \
+             'startPollPage' then true
         else false

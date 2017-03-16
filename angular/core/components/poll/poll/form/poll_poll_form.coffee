@@ -1,11 +1,7 @@
-angular.module('loomioApp').factory 'PollPollForm', ->
+angular.module('loomioApp').directive 'pollPollForm', ->
+  scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/poll/form/poll_poll_form.html'
-  controller: ($scope, poll, FormService, AttachmentService, KeyEventService, TranslationService) ->
-    $scope.poll = poll.clone()
-    $scope.poll.makeAnnouncement = $scope.poll.isNew()
-
-    actionName = if $scope.poll.isNew() then 'created' else 'updated'
-
+  controller: ($scope, PollService, AttachmentService, KeyEventService, TranslationService) ->
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:     'poll_poll_form.title_placeholder'
       detailsPlaceholder:   'poll_poll_form.details_placeholder'
@@ -19,10 +15,7 @@ angular.module('loomioApp').factory 'PollPollForm', ->
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
 
-    $scope.submit = FormService.submit $scope, $scope.poll,
-      flashSuccess: "poll_poll_form.poll_#{actionName}"
-      successCallback: AttachmentService.cleanupAfterUpdate('poll')
-      draftFields: ['title', 'details']
+    $scope.submit = PollService.submitPoll $scope, $scope.poll,
       prepareFn: $scope.addOption
 
     KeyEventService.submitOnEnter($scope)

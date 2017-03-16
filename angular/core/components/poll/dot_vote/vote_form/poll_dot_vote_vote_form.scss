@@ -1,0 +1,14 @@
+.poll-dot-vote-vote-form__option{
+  padding: 0 !important;
+}
+
+.poll-dot-vote-vote-form__input-container {
+  @include displayFlex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.poll-dot-vote-vote-form__dot-input {
+  width: 50px !important;
+  text-align: right;
+}

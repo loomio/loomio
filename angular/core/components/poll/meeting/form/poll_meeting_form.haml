@@ -1,0 +1,30 @@
+.poll-meeting-form
+  %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_meeting_form.tip"}
+
+  %md-input-container.md-block
+    %label{translate: "poll_meeting_form.title"}
+    %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+    %validation_errors{subject: "poll", field: "title"}
+
+  %md-input-container.md-block
+    %label{translate: "poll_meeting_form.details"}
+    %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+    %outlet{name: "after-poll-form-textarea", model: "poll"}
+
+  %md-list.md-block
+    %label{translate: "poll_meeting_form.options"}
+    %validation_errors{subject: "poll", field: "pollOptions"}
+    %md-list-item.poll-meeting-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
+      %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{name: "name"}
+      %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "removeOption(name)", aria-label: "{{ 'poll_meeting_form.remove_option' | translate }}"}
+        %i.material-icons.poll-meeting-form__option-icon clear
+    %poll_meeting_time_field{poll: "poll"}
+
+  %poll_common_closing_at_field.md-block.poll-meeting-form__closing-at{poll: "poll"}
+  %poll_common_attachment_form{poll: "poll"}
+  %poll_common_notify_group{model: "poll"}
+
+  .poll-common__actions.lmo-flex
+    %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_meeting_form.update", aria-label: "{{ 'poll_meeting_form.update' | translate }}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_meeting_form.start", aria-label: "{{ 'poll_meeting_form.start' | translate }}"}

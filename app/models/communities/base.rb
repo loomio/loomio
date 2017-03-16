@@ -4,6 +4,10 @@ class Communities::Base < ActiveRecord::Base
 
   has_many :poll_communities, foreign_key: :community_id
   has_many :polls, through: :poll_communities
+  has_many :visitors, foreign_key: :community_id
+
+  # https://github.com/gdpelican/discriminator
+  discriminate Communities, on: :community_type
 
   def self.set_community_type(type)
     after_initialize { self.community_type = type }
@@ -16,20 +20,15 @@ class Communities::Base < ActiveRecord::Base
     end
   end
 
-  # ensure that we're instantiating the correct community type for each community fetched
-  # fallback to a Communities::Base if we can't find an appropriate subclass
-  # (note that Communities::Base will error when sent the 'includes?' or 'participants' message)
-  def self.discriminate_class_for_record(attributes)
-    "Communities::#{attributes.fetch('community_type', 'base').camelize}".constantize
-  rescue NameError
-    self
-  end
-
-  def includes?(participant)
+  def includes?(member)
     raise NotImplementedError.new
   end
 
-  def participants
+  def members
+    raise NotImplementedError.new
+  end
+
+  def notify!(event)
     raise NotImplementedError.new
   end
 

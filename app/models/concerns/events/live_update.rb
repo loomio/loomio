@@ -9,5 +9,4 @@ module Events::LiveUpdate
     MessageChannelService.publish(EventCollection.new(self).serialize!, to: eventable.group)
   end
   handle_asynchronously :notify_clients!
-
 end

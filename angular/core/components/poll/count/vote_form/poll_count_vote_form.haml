@@ -5,6 +5,9 @@
       %md-input-container.md-block
         %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength: "250"}
         %validation_errors{subject: "stance", field: "reason"}
+
+      %poll_common_participant_form{stance: "stance"}
+
       %md-button.md-raised{ng-repeat: "option in stance.poll().pollOptions()", ng-click: "submit(option)"}
         %img{ng-src: "/img/{{option.name}}.svg"}
         %span{translate: "poll_count_options.{{option.name}}"}

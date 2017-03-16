@@ -31,7 +31,9 @@ module Dev::FakeDataHelper
     option_names = {
       poll: 3.times.map{ Faker::Food.ingredient },
       proposal: %w[agree abstain disagree block],
-      count: %w[yes no]
+      count: %w[yes no],
+      dot_vote: 3.times.map{ Faker::Artist.name },
+      meeting: 3.times.map { |i| i.days.from_now.to_date } + 3.times.map { |i| i.days.from_now.beginning_of_hour.utc.iso8601 }
     }.with_indifferent_access
 
     options = {
@@ -42,10 +44,11 @@ module Dev::FakeDataHelper
       poll_option_names: option_names[args.fetch(:poll_type, :poll)],
       closing_at: 3.days.from_now,
       multiple_choice: false,
-      details: Faker::Hipster.paragraph
+      details: Faker::Hipster.paragraph,
+      custom_fields: {dots_per_person: 10}
     }.merge args
 
-    Poll.new(options)
+    Poll.new(options).tap { |p| p.community_of_type(:email, build: true) }
   end
 
   def fake_stance(args = {})
@@ -71,6 +74,14 @@ module Dev::FakeDataHelper
     Outcome.new({poll: poll,
                 author: poll.author,
                 statement: Faker::Hipster.sentence}.merge(args))
+  end
+
+  def fake_visitor(args = {})
+    Visitor.new({
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      community: Communities::Public.new
+    }.merge(args))
   end
 
 end

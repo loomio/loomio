@@ -1,6 +1,6 @@
 class PollSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :discussion_id, :group_id, :key, :poll_type, :title, :details, :mentioned_usernames, :stance_data, :stance_counts, :closed_at, :closing_at, :stances_count, :did_not_votes_count, :created_at, :poll_option_names, :multiple_choice, :custom_fields
+  attributes :id, :discussion_id, :group_id, :key, :poll_type, :title, :details, :mentioned_usernames, :stance_data, :stance_counts, :matrix_counts, :closed_at, :closing_at, :stances_count, :did_not_votes_count, :created_at, :poll_option_names, :multiple_choice, :custom_fields, :email_community_id
 
   has_one :author, serializer: UserSerializer, root: :users
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
@@ -14,5 +14,13 @@ class PollSerializer < ActiveModel::Serializer
 
   def my_stance
     @my_stances_cache ||= scope[:my_stances_cache].get_for(object) if scope[:my_stances_cache]
+  end
+
+  def email_community_id
+    object.community_of_type(:email).id
+  end
+
+  def include_matrix_counts?
+    object.chart_type == 'matrix'
   end
 end

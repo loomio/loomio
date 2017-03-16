@@ -1,0 +1,20 @@
+%form.poll-dot-vote-vote-form
+  %md-list.poll-dot-vote-vote-form__options
+    %md-list-item.poll-dot-vote-vote-form__option{ng-repeat: "choice in stanceChoices"}
+      %md-input-container.poll-dot-vote-vote-form__input-container
+        %p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': optionFor(choice).color}"} {{ optionFor(choice).name }}
+        %input.poll-dot-vote-vote-form__dot-input{type: "number", ng-model: "choice.score", min: "0", step: "1"}
+  %validation_errors{subject: "stance", field: "stanceChoices"}
+  .poll-dot-vote-vote-form__too-many-dots{ng-if: "tooManyDots()", translate: "poll_dot_vote_vote_form.too_many_dots"}
+  .poll-dot-vote-vote-form__dots-remaining{ng-if: "!tooManyDots()", translate: "poll_dot_vote_vote_form.dots_remaining", translate-value-count: "{{dotsRemaining()}}"}
+
+  .poll-common-vote-form__reason
+    %md-input-container.md-block
+      %label{translate: "poll_common.reason"}
+      %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.reasonPlaceholder}}", ng-model: "stance.reason", md-maxlength: "250"}
+      %validation_errors{subject: "stance", field: "reason"}
+
+  %poll_common_participant_form{stance: "stance"}
+
+  .poll-common-form__actions
+    %md-button.md-primary.md-raised{ng-click: "submit()", ng-disabled: "tooManyDots()", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}

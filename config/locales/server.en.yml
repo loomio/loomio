@@ -380,10 +380,11 @@ en:
       subject:
         poll_created: '%{actor} started a proposal: %{title}'
         poll_updated: '%{actor} edited the proposal: %{title}'
-        poll_closing_soon: 'Final reminder: Please respond before 5pm Friday: %{title}'
+        poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
-        poll_expired: 'Your proposal has closed. Please share an outcome for: %{title}'
+        poll_expired: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
+        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -392,9 +393,10 @@ en:
         poll_closing_soon_author: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
+        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
 
       body:
-        voted: '<strong>%{participant}</strong> voted:'
+        voted: '<strong>%{participant}</strong>:'
 
     poll:
       subject:
@@ -402,8 +404,9 @@ en:
         poll_updated: '%{actor} edited the poll: %{title}'
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
-        poll_expired: 'Your poll has closed. Please share an outcome for: %{title}'
+        poll_expired: 'Your poll has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a poll outcome: %{title}'
+        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -412,26 +415,73 @@ en:
         poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
+        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
 
       body:
-        voted: '<strong>%{participant}</strong> chose:'
+        voted: '<strong>%{participant}</strong>:'
 
     count:
       subject:
-        poll_created: '%{actor} started a count round: %{title}'
+        poll_created: '%{actor} started a count: %{title}'
         poll_updated: '%{actor} edited the count: %{title}'
         poll_closing_soon: 'Count closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your count closes in 24 hours: %{title}'
-        poll_expired: 'Your count has closed. Please share an outcome: %{title}'
-        outcome_created: '%{actor} shared a count summary: %{title}'
+        poll_expired: 'Your count has closed. Share an outcome for: %{title}'
+        outcome_created: '%{actor} shared an outcome: %{title}'
+        visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a count round'
+        poll_created: '<strong>%{actor}</strong> started a count'
         poll_updated: '<strong>%{actor}</strong> edited the count'
         poll_closing_soon: '<strong>%{actor}</strong>''s count is closing in 24 hours.'
         poll_closing_soon_author: 'Your count is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
         poll_expired: 'Here are the results of your count. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
-        outcome_created: '<strong>%{actor}</strong> shared a count summary.'
+        outcome_created: '<strong>%{actor}</strong> shared an outcome.'
+        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
 
       body:
-        voted: '<strong>%{participant}</strong> responded:'
+        voted: '<strong>%{participant}</strong>:'
+
+    dot_vote:
+      subject:
+        poll_created: '%{actor} started a dot vote: %{title}'
+        poll_updated: '%{actor} edited the dot vote: %{title}'
+        poll_closing_soon: 'Dot vote closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your dot vote closes in 24 hours: %{title}'
+        poll_expired: 'Your dot vote has closed. Share an outcome for: %{title}'
+        outcome_created: '%{actor} shared an outcome: %{title}'
+        visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a dot vote'
+        poll_updated: '<strong>%{actor}</strong> edited the dot vote'
+        poll_closing_soon: '<strong>%{actor}</strong>''s dot vote is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+        poll_closing_soon_author: 'Your dot vote is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
+        poll_expired: 'Your dot vote has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
+        visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+
+      body:
+        voted: '<strong>%{participant}</strong>:'
+
+    meeting:
+      subject:
+        poll_created: '%{actor} started a meeting time poll: %{title}'
+        poll_updated: '%{actor} edited the meeting time poll: %{title}'
+        poll_closing_soon: 'Meeting time poll closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your meeting time poll closes in 24 hours: %{title}'
+        poll_expired: 'Your meeting time poll has closed. Share an outcome for: %{title}'
+        outcome_created: '%{actor} shared an outcome: %{title}'
+        visitor_reminded: '%{actor} is waiting for your response: %{title}'
+
+      header:
+        poll_created: '<strong>%{actor}</strong> started a meeting time poll'
+        poll_updated: '<strong>%{actor}</strong> edited the meeting time poll'
+        poll_closing_soon: '<strong>%{actor}</strong>''s meeting time poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
+        poll_closing_soon_author: 'Your meeting time poll is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
+        poll_expired: 'Your meeting time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
+        outcome_created: '<strong>%{actor}</strong> shared a meeting time poll outcome.'
+        visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
+
+      body:
+        voted: '<strong>%{participant}</strong>:'

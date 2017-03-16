@@ -6,4 +6,4 @@ angular.module('loomioApp').directive 'pollCommonPreview', (PollService, Session
       PollService.fieldFromTemplate($scope.poll.pollType, 'chart_type')
 
     $scope.myStance = ->
-      $scope.poll.stanceFor(Session.user())
+      PollService.lastStanceBy(Session.participant(), $scope.poll)

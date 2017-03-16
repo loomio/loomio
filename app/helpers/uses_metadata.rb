@@ -13,7 +13,7 @@ module UsesMetadata
   private
 
   def metadata
-    @metadata ||= if current_user_or_visitor.can? :show, resource
+    @metadata ||= if current_user.can? :show, resource
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)
     else
       {}

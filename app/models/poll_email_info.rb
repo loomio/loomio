@@ -23,6 +23,22 @@ class PollEmailInfo
     @poll.poll_type
   end
 
+  def formatted_datetime_for(date_string)
+    date_time = DateTime.strptime(date_string, "%FT%T")
+    date_time.strftime(date_time.year == Date.today.year ? "%e %b %l:%M %P" : "%e %b %Y %l:%M %P")
+  rescue ArgumentError
+    formatted_date_for(date_string)
+  end
+
+  def display_name_for(poll_option)
+    @poll.dates_as_options ? formatted_datetime_for(poll_option.name) : poll_option.name
+  end
+
+  def formatted_date_for(date_string)
+    date = date_string.to_date
+    date.strftime(date.year == Date.today.year ? "%e %b" : "%e %b %Y")
+  end
+
   def outcome
     @poll.current_outcome
   end
@@ -40,7 +56,12 @@ class PollEmailInfo
   end
 
   def utm_hash(args = {})
-    { utm_medium: 'email', utm_campaign: 'poll_mailer', utm_source: action_name }.merge(args)
+    {
+      utm_medium: 'email',
+      utm_campaign: 'poll_mailer',
+      utm_source: action_name,
+      participation_token: @recipient.participation_token
+    }.merge(args)
   end
 
   private

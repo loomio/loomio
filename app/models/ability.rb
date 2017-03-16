@@ -10,7 +10,7 @@ class Ability
   end
 
   def user_is_author_of?(object)
-    object.author_id == @user.id
+    @user.is_logged_in? && @user.id == object.author_id
   end
 
   def initialize(user)
@@ -315,23 +315,22 @@ class Ability
       @user.is_logged_in?
     end
 
-    can :poll, Communities::Base do |community|
-      community.includes?(@user)
+    can :show, Communities::Base do |community|
+      community.polls.any? { |poll| @user.can? :share, poll }
     end
 
     can [:make_draft, :show], Poll do |poll|
-      can?(:show, poll.discussion)
+      user_is_author_of?(poll) ||
+      can?(:show, poll.discussion) ||
+      poll.communities.any? { |community| community.includes?(@user) }
     end
 
     can :create, Poll do |poll|
-      user_is_admin_of?(poll.group_id) ||
-      (poll.group.members_can_raise_motions? && user_is_member_of?(poll.group_id))
-      # @user.is_logged_in? &&
-      # poll.communities.all? { |community| user.ability.can?(:poll, community) }
+      @user.is_logged_in? &&
+      (!poll.group || poll.group.community.includes?(@user))
     end
 
-    # NB: discussion dependency on polls
-    can :update, Poll do |poll|
+    can [:update, :share], Poll do |poll|
       user_is_author_of?(poll) ||
       Array(poll.group&.admins).include?(@user)
     end
@@ -340,17 +339,27 @@ class Ability
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
     end
 
-    # can :set_communities, Poll do |poll|
-    #   user_is_author_of?(poll) &&
-    #   poll.stances.empty? &&
-    #   poll.communities.all? { |community| community.includes?(@user) }
-    # end
+    can [:destroy], Visitor do |visitor|
+      @user.visitors.include?(visitor)
+    end
+
+    can [:create, :remind], Visitor do |visitor|
+      @user.communities.include?(visitor.community)
+    end
+
+    can :update, Visitor do |visitor|
+      @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
+    end
 
     can :create, Stance do |stance|
       poll = stance.poll
-      poll.active? &&
-      (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
-      # poll.communities.detect { |community| community.includes?(@user) }
+      if !poll.active?
+        false
+      elsif poll.discussion
+        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
+      else
+        user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
+      end
     end
 
     can [:create, :update], Outcome do |outcome|

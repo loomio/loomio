@@ -23,10 +23,10 @@ module Dev::PollsHelper
   def create_fake_stances(poll: )
     poll.poll_option_names.each do |name|
       (0..3).to_a.sample.times do
-        poll.stances.create(poll: poll,
-                           choice: name,
-                           participant: fake_user,
-                           reason: Faker::Hipster.sentence)
+        poll.stances.create!(poll: poll,
+                             choice: name,
+                             participant: fake_user,
+                             reason: Faker::Hipster.sentence)
       end
     end
     poll.update_stance_data
@@ -36,7 +36,8 @@ module Dev::PollsHelper
     # create poll
     options = {poll: %w[apple turnip peach],
                count: %w[yes no],
-               proposal: %w[agree disagree abstain block]}
+               proposal: %w[agree disagree abstain block],
+               dot_vote: %w[birds bees trees]}
 
     Poll::TEMPLATES.keys.each do |poll_type|
       poll = Poll.new(poll_type: poll_type,

@@ -1,11 +1,9 @@
 class PollService
   def self.create(poll:, actor:)
-    # reference = PollReferences::Base.for(reference)
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
-    # communities:     reference.communities.presence || [Communities::Public.new],
-    # poll_references: reference.references,
+    poll.community_of_type(:email, build: true)
 
     return false unless poll.valid?
     poll.save!
@@ -14,23 +12,8 @@ class PollService
     Events::PollCreated.publish!(poll)
   end
 
-  # def self.set_communities(poll:, actor:, communities:)
-  #   return false unless communities.any?
-  #
-  #   actor.ability.authorize! :set_communities, poll
-  #   communities.each { |community| actor.ability.authorize! :poll, community }
-  #
-  #   poll.assign_attributes(communities: communities)
-  #
-  #   return false unless poll.valid?
-  #   poll.save!
-  #
-  #   EventBus.broadcast('poll_set_communities', poll, actor)
-  # end
-
-
   def self.close(poll:, actor:)
-    actor.ability.authorize!(:close, poll)
+    actor.ability.authorize! :close, poll
     do_closing_work(poll: poll)
     EventBus.broadcast('poll_close', poll, actor)
     Events::PollClosedByUser.publish!(poll, actor)
@@ -55,19 +38,20 @@ class PollService
 
   def self.do_closing_work(poll:)
     poll.update(closed_at: Time.now) unless poll.closed_at.present?
-    # poll.poll_communities.for(:loomio_group).each do |poll_community|
-    #   poll_community.update(community: poll_community.community.to_user_community)
-    # end
+    poll.poll_communities.for(:loomio_group).each do |poll_community|
+      poll_community.update(community: poll_community.community.to_user_community)
+    end
+
+    return unless poll.group
     poll.poll_did_not_votes.delete_all
     non_voters = poll.group.members - poll.participants
     poll.poll_did_not_votes.import non_voters.map { |user| PollDidNotVote.new(user: user, poll: poll) }, validate: false
     poll.update_did_not_votes_count
   end
 
-
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
-    poll.assign_attributes(params.except(:poll_type, :discussion_id))
+    poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
 
     return false unless poll.valid?
     poll.save!
@@ -83,8 +67,6 @@ class PollService
       # reference = PollReferences::Motion.new(motion)
       outcome = Outcome.new(statement: motion.outcome, author: motion.outcome_author) if motion.outcome.present?
       Poll.create!(
-      # poll_references:   reference.references,
-      # communities:       reference.communities,
         poll_type:               "proposal",
         poll_options_attributes: Poll::TEMPLATES.dig('proposal', 'poll_options_attributes'),
         discussion:              motion.discussion,

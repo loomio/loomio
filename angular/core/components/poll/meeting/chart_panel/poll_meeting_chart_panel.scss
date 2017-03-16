@@ -1,0 +1,20 @@
+.poll-meeting-chart-panel {
+  overflow-x: scroll;
+}
+
+.poll-meeting-chart-panel__cell {
+  padding: 5px;
+  text-align: center;
+}
+
+.poll-meeting-chart-panel--inactive {
+  background: #D8D8D8;
+}
+
+.poll-meeting-chart-panel--active {
+  background: #70C9F8;
+}
+
+.poll-meeting-chart-panel__participant-name {
+  padding-right: 16px;
+}

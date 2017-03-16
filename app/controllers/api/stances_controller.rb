@@ -10,6 +10,17 @@ class API::StancesController < API::RestfulController
 
   private
 
+  def create_action
+    @event = service.create(stance: resource, actor: current_user.presence || update_visitor)
+  end
+
+  def update_visitor
+    (current_visitor.presence || Visitor.new).tap do |visitor|
+      visitor.assign_attributes(Hash(resource_params[:visitor_attributes]).slice(:name, :email))
+      visitor.community ||= resource.poll.community_of_type(:public)
+    end
+  end
+
   def accessible_records
     apply_order load_and_authorize(:poll).stances.latest
   end

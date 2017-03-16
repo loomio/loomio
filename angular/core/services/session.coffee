@@ -1,15 +1,18 @@
 angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window, Records, AppConfig) ->
 
   login: (data) ->
-    return unless data.current_user and data.current_user.id
-    data.users = data.users || []
-    data.users.push(data.current_user)
     Records.import(data)
 
-    _.merge AppConfig, currentUserId: data.current_user.id
+    if @visitor()
+      defaultParams = {participation_token: @visitor().participationToken}
+      Records.stances.remote.defaultParams = defaultParams
+      Records.polls.remote.defaultParams   = defaultParams
+
+    return unless AppConfig.currentUserId?
 
     $translate.use(@user().locale)
     $rootScope.$broadcast 'loggedIn', @user()
+
     @user()
 
   logout: ->
@@ -18,6 +21,12 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
 
   user: ->
     Records.users.find(AppConfig.currentUserId) or Records.users.build()
+
+  visitor: ->
+    Records.visitors.find(AppConfig.currentVisitorId)
+
+  participant: ->
+    @visitor() or @user()
 
   currentGroupId: ->
     @currentGroup? && @currentGroup.id

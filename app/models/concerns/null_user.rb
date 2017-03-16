@@ -1,9 +1,8 @@
 module NullUser
   include AvatarInitials
-  attr_accessor :name, :email, :avatar_initials
   alias :read_attribute_for_serialization :send
 
-  NIL_METHODS   = [:id, :key, :username, :avatar_url, :selected_locale, :deactivated_at, :time_zone, :default_membership_volume, :unsubscribe_token, :created_at, :participation_token]
+  NIL_METHODS   = [:key, :username, :avatar_url, :selected_locale, :deactivated_at, :time_zone, :time_zone_city, :default_membership_volume, :unsubscribe_token]
   FALSE_METHODS = [:is_logged_in?, :uses_markdown?, :is_organisation_coordinator?,
                    :email_when_proposal_closing_soon, :email_missed_yesterday, :email_when_mentioned, :email_on_participation, :is_group_admin?]
   EMPTY_METHODS = [:groups, :group_ids, :adminable_group_ids]
@@ -26,20 +25,16 @@ module NullUser
     Notification.none
   end
 
+  def communities
+    Communities::Base.none
+  end
+
   def stances
     Stance.none
   end
 
   def locale
     I18n.locale
-  end
-
-  def avatar_url(size)
-    nil
-  end
-
-  def avatar_kind
-    'initials'
   end
 
   def is_member_of?(group)

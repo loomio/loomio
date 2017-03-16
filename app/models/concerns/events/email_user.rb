@@ -1,4 +1,5 @@
 module Events::EmailUser
+
   def trigger!
     super
     email_users!
@@ -10,10 +11,15 @@ module Events::EmailUser
   end
   handle_asynchronously :email_users!
 
+  # which mailer should be used to send emails about this event?
+  def mailer
+    ThreadMailer
+  end
+
   private
 
   def email_user!(recipient)
-    mailer.send(kind, recipient, self).deliver_now
+    mailer.delay.send(kind, recipient, self)
   end
 
   # which users should receive an email about this event?
@@ -22,8 +28,4 @@ module Events::EmailUser
     User.none
   end
 
-  # which mailer should be used to send emails about this event?
-  def mailer
-    ThreadMailer
-  end
 end

@@ -1,0 +1,8 @@
+.lmo-one-column-layout
+  %loading{ng-if: "!sharePollPage.poll"}
+  %main.share-poll-page.lmo-row{ng-if: "sharePollPage.poll"}
+    %group_theme{ng-if: "sharePollPage.poll.group()", group: "sharePollPage.poll.group()", discussion: "sharePollPage.poll.discussion()", compact: "true"}
+    .share-poll-page__main-content.lmo-flex.lmo-card{layout: "column"}
+      %poll_common_share_form{poll: "sharePollPage.poll"}
+      %a.md-button.md-primary.md-raised{lmo-href-for: "sharePollPage.poll"}
+        %span{translate: "poll_common_share_form.view_poll"}

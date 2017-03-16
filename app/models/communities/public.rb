@@ -1,11 +1,12 @@
 class Communities::Public < Communities::Base
   set_community_type :public
+  include Communities::EmailVisitors
 
-  def includes?(participant)
+  def includes?(member)
     true
   end
 
-  def participants
-    []
+  def members
+    visitors.where(revoked: false)
   end
 end

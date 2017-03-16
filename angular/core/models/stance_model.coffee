@@ -8,12 +8,14 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     defaultValues: ->
       reason: ''
-      stanceChoicesAttributes: []
+      visitorAttributes: {}
 
     relationships: ->
       @belongsTo 'poll'
       @hasMany 'stanceChoices'
-      @belongsTo 'participant', from: 'users'
+
+    participant: ->
+      @recordStore.users.find(@userId) or @recordStore.visitors.find(@visitorId)
 
     stanceChoice: ->
       _.first @stanceChoices()
@@ -41,5 +43,5 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
         @recordStore.stanceChoices.create(pollOptionId: parseInt(optionId), stanceId: @id)
       @
 
-    # prepareForForm: ->
-    #   @stanceChoicesAttributes = _.map(@pollOptionIds(), (id) -> { pollOptionId: id })
+    votedFor: (option) ->
+      _.contains _.pluck(@pollOptions(), 'id'), option.id

@@ -57,7 +57,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def resource_serializer
-    if current_user == restricted_user
+    if current_user.restricted
       Restricted::UserSerializer
     else
       Full::UserSerializer

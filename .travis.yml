@@ -1,55 +1,19 @@
 language: ruby
 rvm:
   - 2.3.1
-cache: bundler
+
 dist: trusty
-sudo: false
+sudo: required
+
 cache:
+  bundler: true
+  yarn: true
   directories:
     - vendor/bundle
     - angular/node_modules
 
-env:
-  - DB=postgresql CXX=g++-4.8
-
-before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - nvm install 7.4.0
-  - nvm use 7.4.0
-  - npm install -g yarn
-
-install:
-  - bundle install --without development --deployment --jobs=3 --retry=3
-  - cd angular; yarn; cd ..
-
-branches:
-  only:
-    - 'master'
-    - 'user-testing'
-    - 'production'
-    - /^[0-9]+\.[0-9]+$/
-
-before_script:
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager clean
-  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
-  # - angular/node_modules/webdriver-manager/bin/webdriver-manager start --quiet &
-  - cp config/database.yml.$DB config/database.yml
-  - bundle exec rake db:setup RAILS_ENV=test
-  - bundle exec rake plugins:fetch plugins:install
-  - bundle exec rake travis:prepare
-  - RAILS_ENV=test bundle exec rails server > /dev/null &
-
-script:
-  # - bundle exec rake travis:rspec
-  # - bundle exec rake travis:cucumber
-  - bundle exec rake travis:protractor
-
-after_script:
-  - bundle exec ruby lib/tasks/travis_upload_screenshots.rb
-
 addons:
-  firefox: latest
+  firefox: "52.0"
   postgresql: "9.5"
   apt:
     sources:
@@ -59,6 +23,41 @@ addons:
       - expect
       - heroku-toolbelt
       - g++-4.8
-  code_climate:
-    repo_token:
-      secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
+  # code_climate:
+  #   repo_token:
+  #     secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
+
+env:
+  global:
+    - DB=postgresql
+    - DISPLAY=:99.0
+    - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
+    - RAILS_ENV=test
+  matrix:
+    - TASK=protractor
+    - TASK=rspec
+    - TASK=cucumber
+
+before_install:
+  - sh -e /etc/init.d/xvfb start
+  - nvm install 7.4.0
+  - nvm use 7.4.0
+  - npm install -g yarn gulp
+
+install:
+  - bundle install --without development --deployment --jobs=3 --retry=3
+  - cd angular; yarn; cd ..
+  - angular/node_modules/webdriver-manager/bin/webdriver-manager update
+  - mkdir bin && cd bin && ln -s ../angular/node_modules/webdriver-manager/selenium/geckodriver-v0.15.0 geckodriver && cd ..
+
+before_script:
+  - cp config/database.yml.$DB config/database.yml
+  - bundle exec rake db:setup
+  - bundle exec rake plugins:fetch plugins:install
+  - bundle exec rake travis:prepare
+  - bundle exec rails server > /dev/null &
+
+script:
+  - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
+  - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
+  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi

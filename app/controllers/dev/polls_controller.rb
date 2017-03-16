@@ -18,6 +18,11 @@ class Dev::PollsController < Dev::BaseController
     redirect_to poll_url(poll)
   end
 
+  def start_poll
+    sign_in saved fake_user
+    redirect_to new_poll_url
+  end
+
   def test_activity_items
     user = fake_user
     group = saved fake_group
@@ -29,15 +34,15 @@ class Dev::PollsController < Dev::BaseController
     redirect_to discussion_url(discussion)
   end
 
-  def self.observe_scenario(scenario_name, view_as_observer: true, email: false)
+  def self.observe_scenario(scenario_name, email: false)
     Poll::TEMPLATES.keys.each do |poll_type|
       define_method :"test_#{poll_type}_#{scenario_name}#{'_email' if email}" do
         scenario = send(:"#{scenario_name}_scenario", poll_type: poll_type)
-        sign_in(scenario[:observer]) if view_as_observer
+        sign_in(scenario[:observer]) if scenario[:observer].is_a?(User)
         if email
           last_email to: scenario[:observer]
         else
-          redirect_to poll_url(scenario[:poll])
+          redirect_to poll_url(scenario[:poll], Hash(scenario[:params]))
         end
       end
     end
@@ -52,4 +57,8 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
   observe_scenario :poll_notifications
+  observe_scenario :poll_created_as_visitor
+  observe_scenario :poll_created_as_logged_out
+  observe_scenario :poll_share
+  observe_scenario :poll_closed
 end
