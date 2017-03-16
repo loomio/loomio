@@ -1,6 +1,5 @@
 Feature: Persona Authentication
 
-@javascript
 Scenario: New user authenticates with omniauth before signing up
   Given I have authenticated with omniauth
   When I signup
