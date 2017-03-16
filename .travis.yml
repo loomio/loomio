@@ -17,7 +17,7 @@ services:
 
 env:
   global:
-    - DB=postgres
+    - DB=postgresql
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
