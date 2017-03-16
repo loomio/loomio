@@ -50,6 +50,7 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
                FlashService.success "poll_common_share_form.guest_revoked", email: visitor.email
 
     $scope.remind = (visitor) ->
+      visitor.reminding = true
       visitor.save()
              .then ->
                visitor.reminded = true

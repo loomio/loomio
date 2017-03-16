@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
   scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/vote_form/poll_dot_vote_vote_form.html'
-  controller: ($scope, Records, FormService, TranslationService, MentionService, KeyEventService) ->
+  controller: ($scope, Records, PollService, TranslationService, MentionService, KeyEventService) ->
     $scope.vars = {}
 
     $scope.stanceChoiceFor = (option) ->
@@ -22,13 +22,10 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
       poll_option_id: option.id
       score: $scope.stanceChoiceFor(option).score
 
-    actionName = if $scope.stance.isNew() then 'created' else 'updated'
-
-    $scope.submit = FormService.submit $scope, $scope.stance,
-      successCallback: -> $scope.$emit 'stanceSaved'
-      prepareFn: -> $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
-      flashSuccess: "poll_dot_vote_vote_form.stance_#{actionName}"
-      draftFields: ['reason']
+    $scope.submit = PollService.submitStance $scope, $scope.stance,
+      prepareFn: ->
+        return unless _.sum(_.pluck($scope.stanceChoices, 'score')) > 0
+        $scope.stance.stanceChoicesAttributes = $scope.stanceChoices
 
     TranslationService.eagerTranslate
       detailsPlaceholder: 'poll_common.statement_placeholder'

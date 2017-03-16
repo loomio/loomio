@@ -348,7 +348,7 @@ class Ability
     end
 
     can :update, Visitor do |visitor|
-      @user.participation_token == visitor.participation_token
+      @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
     end
 
     can :create, Stance do |stance|
