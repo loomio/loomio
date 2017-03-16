@@ -25,12 +25,12 @@ module.exports = new class StaticPageHelper
   click: ->
     _.each given(arguments), (selector) =>
       @elementFor(selector).click()
-    browser.driver.sleep(3000)
+    browser.driver.sleep(5000)
 
   fillIn: (selector, value) ->
     elem = @elementFor(selector)
     elem.clear().then -> elem.sendKeys(value)
-    browser.driver.sleep(3000)
+    browser.driver.sleep(1000)
 
   expectText: (selector, value) ->
     expect(@elementFor(selector).getText()).toContain(value)
