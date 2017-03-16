@@ -13,7 +13,7 @@ class Events::InvitationAccepted < Event
   end
 
   def notification_actor
-    eventable.user
+    eventable&.user
   end
 
   def notification_url
