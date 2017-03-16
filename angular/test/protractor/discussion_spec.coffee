@@ -223,7 +223,7 @@ describe 'Discussion Page', ->
       threadPage.confirmCommentDeletion()
       expect(threadPage.activityPanel()).not.toContain('original comment right thur')
 
-  describe 'following a link in a thread email', ->
+  xdescribe 'following a link in a thread email', ->
     it 'successfully takes you to relevant comment', ->
       page.loadPath 'setup_reply_email'
       emailhelper.openLastEmail()

@@ -33,7 +33,7 @@ describe 'Managing membership requests', ->
       browser.driver.sleep(300)
       page.expectFlash('Membership request approved')
 
-    it 'allows the user to join the group', ->
+    xit 'allows the user to join the group', ->
       staticPage.loadPath 'setup_accepted_membership_request'
       staticPage.click 'a[href]'
       staticPage.fillIn '#user_password', 'gh0stmovie'

@@ -11,6 +11,44 @@ describe 'Group Page', ->
       page.click '.navbar__sidenav-toggle'
       page.expectElement '.sidebar__list-item--selected'
 
+  xdescribe 'start group from home page', ->
+    it 'allows starting a group via the start_group route', ->
+      staticPage.loadPath 'view_homepage_as_visitor'
+      staticPage.click '.header__item--start-button'
+      staticPage.fillIn '#group_name', 'My First Group'
+      staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
+      staticPage.fillIn '#name', 'Test Example'
+      staticPage.fillIn '#email', 'test@example.com'
+      staticPage.click '#sign-up-submit'
+
+      staticPage.loadPath 'last_email'
+      staticPage.click 'a[href]'
+
+      staticPage.fillIn '#user_password', 'vivalarevolucion'
+      staticPage.fillIn '#user_password_confirmation', 'vivalarevolucion'
+      staticPage.click  '#create-account'
+
+      page.expectFlash 'Welcome! You have signed up successfully'
+      page.expectText '.group-theme__name', 'My First Group'
+
+    it 'allows starting a group with an existing email', ->
+      staticPage.loadPath 'view_homepage_as_visitor'
+      staticPage.click '.header__item--start-button'
+      staticPage.fillIn '#group_name', 'My First Group'
+      staticPage.fillIn '#group_description', 'Building a Better Bolshevik'
+      staticPage.fillIn '#name', 'Test Example'
+      staticPage.fillIn '#email', 'patrick_swayze@example.com'
+      staticPage.click '#sign-up-submit'
+
+      staticPage.loadPath 'last_email'
+      staticPage.click 'a[href]'
+
+      staticPage.fillIn '#user_password', 'gh0stmovie'
+      staticPage.click '#sign-in-btn'
+
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'My First Group'
+
   describe 'non-member views group', ->
     describe 'logged out user', ->
       it 'should allow you to join an open group', ->

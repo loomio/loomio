@@ -56,29 +56,28 @@ fdescribe 'Invitations', ->
     page.click '.start-menu__invitePeople'
     page.expectText '.invitation-form__group-select', 'Dirty Dancing Shoes'
 
-  it 'allows sign in for invitations with existing email addresses', ->
-    staticPage.ignoreSynchronization ->
-      staticPage.loadPath 'setup_existing_user_invitation'
-      staticPage.click 'a[href]'
+  xit 'allows sign in for invitations with existing email addresses', ->
+    staticPage.loadPath 'setup_existing_user_invitation'
+    staticPage.click 'a[href]'
 
-      staticPage.expectText 'h1', 'Dirty Dancing Shoes'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.click '#sign-in-btn'
-      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
-      page.expectText '.members-card__list', 'JN'
+    staticPage.expectText 'h1', 'Dirty Dancing Shoes'
+    staticPage.fillIn '#user_password', 'gh0stmovie'
+    staticPage.click '#sign-in-btn'
+    page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+    page.expectText '.members-card__list', 'JN'
 
-  it 'allows sign up for invitations with new email addresses', ->
-    staticPage.ignoreSynchronization ->
-      staticPage.loadPath 'setup_new_user_invitation'
-      staticPage.click 'a[href]'
+  xit 'allows sign up for invitations with new email addresses', ->
+    staticPage.loadPath 'setup_new_user_invitation'
+    staticPage.click 'a[href]'
 
-      staticPage.expectText 'h1', 'Dirty Dancing Shoes'
-      staticPage.fillIn '#user_name', 'Judd Nelson'
-      staticPage.fillIn '#user_password', 'gh0stmovie'
-      staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
-      staticPage.click '#create-account'
-      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
-      page.expectText '.members-card__list', 'JN'
+    staticPage.expectText 'h1', 'Dirty Dancing Shoes'
+    staticPage.fillIn '#user_name', 'Judd Nelson'
+    staticPage.fillIn '#user_password', 'gh0stmovie'
+    staticPage.fillIn '#user_password_confirmation', 'gh0stmovie'
+    staticPage.click '#create-account'
+
+    page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+    page.expectText '.members-card__list', 'JN'
 
   it 'allows sign up for team invitation link', ->
     staticPage.ignoreSynchronization ->
