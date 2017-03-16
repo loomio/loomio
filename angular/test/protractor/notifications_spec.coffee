@@ -22,10 +22,10 @@ describe 'Notifications', ->
   describe 'invitation accepted', ->
 
     it 'notifies inviter when invitation is accepted', ->
-      page.loadPath 'setup_group'
+      page.loadPath 'setup_group', 60000
       page.click '.members-card__invite-members-btn'
       page.fillIn '.invitation-form__email-addresses', 'max@example.com'
       page.click '.invitation-form__submit'
-      page.loadPath 'accept_last_invitation'
+      page.loadPath 'accept_last_invitation', 60000
       page.click '.notifications__button'
       page.expectText '.notifications__dropdown', 'Max Von Sydow accepted your invitation to join Dirty Dancing Shoes'
