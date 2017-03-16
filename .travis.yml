@@ -17,7 +17,7 @@ services:
 
 env:
   global:
-    - DB=postgresql
+    - DB=postgres
     - DISPLAY=:99.0
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
@@ -44,7 +44,7 @@ before_script:
   - bundle exec rake db:setup
   - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
-  - if [ "$TASK" = "protractor" ]; then bundle exec rails server > /dev/null &; fi
+  - bundle exec rails server > /dev/null &
 
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
