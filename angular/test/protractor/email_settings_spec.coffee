@@ -33,7 +33,7 @@ describe 'Email settings', ->
   describe 'logged in with unsubscribe token', ->
     it 'displays you as logged out', ->
       page.loadPath 'email_settings_as_logged_in_user'
-      page.expectElement '.navbar__sign-in'
+      page.expectNoElement '.navbar__sign-in'
 
   describe 'logged out', ->
     beforeEach ->

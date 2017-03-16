@@ -2,7 +2,7 @@ describe 'Notifications', ->
   page = require './helpers/page_helper.coffee'
 
   it 'has all the notifications', ->
-    page.loadPath 'setup_all_notifications'
+    page.loadPath 'setup_all_notifications', 60000
 
     page.expectText '.notifications__activity', '11'
     page.click '.notifications__button'
@@ -29,13 +29,3 @@ describe 'Notifications', ->
       page.loadPath 'accept_last_invitation'
       page.click '.notifications__button'
       page.expectText '.notifications__dropdown', 'Max Von Sydow accepted your invitation to join Dirty Dancing Shoes'
-
-  xdescribe 'motion closed', ->
-
-    it 'takes you to the proposal with outcome modal open', ->
-      page.loadPath 'setup_all_notifications'
-      page.click '.notifications__button'
-      page.click '.navbar-notifications__motion_closed'
-      browser.driver.sleep(100000)
-
-      page.expectText '.proposal-form', 'Set proposal outcome'

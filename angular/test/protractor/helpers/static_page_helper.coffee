@@ -14,10 +14,10 @@ module.exports = new class StaticPageHelper
     fn()
     browser.ignoreSynchronization = false
 
-  loadPath: (path) ->
-    browser.driver.get('http://localhost:3000/dev/'+path)
+  loadPath: (path, timeout = 20000) ->
+    browser.driver.get('http://localhost:3000/dev/'+path, timeout)
     browser.driver.manage().window().setSize(1280, 1024)
-    browser.driver.sleep(1000)
+    browser.driver.sleep(2000)
 
   elementFor: (selector) ->
     browser.driver.findElement(By.css(selector))
