@@ -10,7 +10,7 @@ given =  (args) ->
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 50000
 
 module.exports = new class PageHelper
-  loadPath: (path, timeout = 20000) ->
+  loadPath: (path, timeout = 40000) ->
     browser.get('dev/'+path, timeout)
     browser.driver.manage().window().setSize(1680, 1024)
 
