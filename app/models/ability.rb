@@ -343,7 +343,7 @@ class Ability
       @user.visitors.include?(visitor)
     end
 
-    can :create, Visitor do |visitor|
+    can [:create, :remind], Visitor do |visitor|
       @user.communities.include?(visitor.community)
     end
 

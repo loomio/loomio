@@ -27,6 +27,10 @@ class PollMailer < BaseMailer
     send_poll_email recipient, event
   end
 
+  def visitor_reminded(recipient, event)
+    send_poll_email recipient, event
+  end
+
   private
 
   def send_poll_email(recipient, event)
