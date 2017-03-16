@@ -4,7 +4,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     @plural: 'polls'
     @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.poll
-    @draftParent: 'discussion'
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []

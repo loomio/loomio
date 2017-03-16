@@ -1368,9 +1368,13 @@ en:
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close count
+    close_dot_vote: Close dot vote
+    close_meeting: Close meeting poll
     proposal_closed: Proposal closed
     poll_closed: Poll closed
     count_closed: Count closed
+    dot_vote_closed: Dote vote closed
+    meeting_closed: Meeting time poll closed
 
   poll_common_closing_at_field:
     closing: Closing
