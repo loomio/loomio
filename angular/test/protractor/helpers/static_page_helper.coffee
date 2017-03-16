@@ -17,7 +17,7 @@ module.exports = new class StaticPageHelper
   loadPath: (path, timeout = 20000) ->
     browser.driver.get('http://localhost:3000/dev/'+path, timeout)
     browser.driver.manage().window().setSize(1280, 1024)
-    browser.driver.sleep(2000)
+    browser.driver.sleep(3000)
 
   elementFor: (selector) ->
     browser.driver.findElement(By.css(selector))
@@ -25,11 +25,12 @@ module.exports = new class StaticPageHelper
   click: ->
     _.each given(arguments), (selector) =>
       @elementFor(selector).click()
-    browser.driver.sleep(2000)
+    browser.driver.sleep(3000)
 
   fillIn: (selector, value) ->
     elem = @elementFor(selector)
     elem.clear().then -> elem.sendKeys(value)
+    browser.driver.sleep(3000)
 
   expectText: (selector, value) ->
     expect(@elementFor(selector).getText()).toContain(value)
