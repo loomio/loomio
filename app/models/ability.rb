@@ -356,7 +356,9 @@ class Ability
       if !poll.active?
         false
       elsif poll.discussion
-        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
+        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id)) ||
+        user_is_admin_of?(poll.group_id) ||
+        poll.communities.any? { |community| community.includes?(@user) }
       else
         user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
       end
