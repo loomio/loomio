@@ -34,9 +34,9 @@ env:
     - PATH=$PATH:$TRAVIS_BUILD_DIR/bin
     - RAILS_ENV=test
   matrix:
+    - TASK=protractor
     - TASK=rspec
     - TASK=cucumber
-    - TASK=protractor
 
 before_install:
   - sh -e /etc/init.d/xvfb start
