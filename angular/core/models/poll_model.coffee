@@ -1,9 +1,10 @@
-angular.module('loomioApp').factory 'PollModel', (BaseModel, AppConfig, MentionLinkService) ->
-  class PollModel extends BaseModel
+angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, MentionLinkService) ->
+  class PollModel extends DraftableModel
     @singular: 'poll'
     @plural: 'polls'
     @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.poll
+    @draftParent: 'discussion'
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []

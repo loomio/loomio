@@ -1,9 +1,10 @@
-angular.module('loomioApp').factory 'StanceModel', (BaseModel, AppConfig, MentionLinkService) ->
-  class StanceModel extends BaseModel
+angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, MentionLinkService) ->
+  class StanceModel extends DraftableModel
     @singular: 'stance'
     @plural: 'stances'
     @indices: ['pollId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.stance
+    @draftParent: 'poll'
 
     defaultValues: ->
       reason: ''
