@@ -39,7 +39,7 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
         $scope.emailValidationError = $translate.instant('poll_common_share_form.email_invalid')
       else
         $scope.emailValidationError = null
-        $scope.remind($scope.newVisitor).then ->
+        $scope.newVisitor.save().then ->
           $scope.init()
           document.querySelector('.poll-common-share-form__add-option-input').focus()
 
@@ -50,13 +50,9 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
                FlashService.success "poll_common_share_form.guest_revoked", email: visitor.email
 
     $scope.remind = (visitor) ->
-      visitor.reminding = true
-      visitor.save()
-             .then ->
-               visitor.reminded = true
-               FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
-             .finally ->
-               visitor.reminding = false
+      visitor.remind($scope.poll).then ->
+        visitor.reminded = true
+        FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
 
     # $scope.groupOptions = ->
     #   [noGroupOption].concat(availableGroups)

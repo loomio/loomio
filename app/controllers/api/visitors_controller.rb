@@ -1,5 +1,10 @@
 class API::VisitorsController < API::RestfulController
 
+  def remind
+    service.remind(visitor: load_resource, actor: current_user, poll: load_and_authorize(:poll))
+    respond_with_resource
+  end
+
   private
   def current_user
     current_visitor.presence || super

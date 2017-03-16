@@ -88,7 +88,7 @@ describe API::VisitorsController do
     end
 
     it 'does not allow users other than the visitor to update itself' do
-      sign_in admin
+      sign_in user
       expect { post :update, id: visitor.id, visitor: new_visitor_params, participation_token: visitor.participation_token }.to_not change { visitor.reload.participation_token }
       expect(response.status).to eq 403
     end
