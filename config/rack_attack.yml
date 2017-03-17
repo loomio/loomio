@@ -19,8 +19,8 @@
 # NB: period is measured in seconds; (eg period: 120 = X requests per 2 minutes)
 
 ahoy_event_minute:
-  period: 60
-  limit: 30
+  period: 300
+  limit: 150
   path: ^\/ahoy\/events$
 
 group_creation_minute:
