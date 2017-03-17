@@ -20,7 +20,7 @@
 
 ahoy_event_minute:
   period: 300
-  limit: 150
+  limit: 200
   path: ^\/ahoy\/events$
 
 group_creation_minute:
