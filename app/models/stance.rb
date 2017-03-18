@@ -13,7 +13,7 @@ class Stance < ActiveRecord::Base
   attr_accessor :visitor_attributes
 
   belongs_to :identity
-  has_one :participant, through: :identity, polymorphic: true, required: true
+  belongs_to :participant, polymorphic: true, required: true
 
   update_counter_cache :poll, :stances_count
 

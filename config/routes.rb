@@ -277,13 +277,15 @@ Loomio::Application.routes.draw do
 
   scope :facebook do
     get :groups,                          to: 'identities/facebook#groups'
-    get :authorize,                       to: 'identities/facebook#create', as: :facebook_authorize
+    get :oauth,                           to: 'identities/facebook#oauth',   as: :facebook_oauth
+    get :authorize,                       to: 'identities/facebook#create',  as: :facebook_authorize
     post '/',                             to: 'identities/facebook#destroy', as: :facebook_unauthorize
   end
 
   scope :slack do
     get :channels,                        to: 'identities/slack#channels'
-    get :authorize,                       to: 'identities/slack#create', as: :slack_authorize
+    get :oauth,                           to: 'identities/slack#oauth',   as: :slack_oauth
+    get :authorize,                       to: 'identities/slack#create',  as: :slack_authorize
     post '/',                             to: 'identities/slack#destroy', as: :slack_unauthorize
   end
 

@@ -24,21 +24,17 @@
   %body{'ng-keydown' => 'keyDown($event)', layout: "column", flex: ""}
     %flash
     %navbar
-    - if !current_user.facebook_identity
-      %a{href: "https://www.facebook.com/v2.8/dialog/oauth?client_id=1198254923601207&redirect_uri=#{facebook_authorize_url}"}
-        CONNECT TO FACEBOOK
-    - else
-      CONNECTED TO FACEBOOK!
+    - if current_user.facebook_identity
       %form{action: facebook_unauthorize_path, method: :post}
-        %input{type: "submit", value: "Disconnect"}
+        %input{type: "submit", value: "DISCONNECT FROM FACEBOOK"}
+    - else
+      = link_to "CONNECT TO FACEBOOK", facebook_oauth_path, target: "_self"
 
     - if !current_user.slack_identity
-      %a{href: "https://slack.com/oauth/authorize?client_id=3446116276.90539176993&scope=users:read,channels:read&redirect_uri=#{slack_authorize_url}"}
-        CONNECT TO SLACK
+      = link_to "CONNECT TO SLACK", slack_oauth_path, target: "_self"
     - else
-      CONNECTED TO SLACK!
       %form{action: slack_unauthorize_path, method: :post}
-        %input{type: "submit", value: "Disconnect"}
+        %input{type: "submit", value: "DISCONNECT FROM SLACK"}
 
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
       %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
