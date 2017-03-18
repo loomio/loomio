@@ -1,6 +1,10 @@
 class API::PollsController < API::RestfulController
   include UsesFullSerializer
-  load_and_authorize_resource only: :show
+
+  def show
+    self.resource = load_and_authorize(:poll)
+    respond_with_resource
+  end
 
   def index
     instantiate_collection do |collection|
@@ -33,7 +37,7 @@ class API::PollsController < API::RestfulController
 
   private
   def default_scope
-    super.merge my_stances_cache: MyStancesCache.new(user: current_user, polls: collection)
+    super.merge my_stances_cache: MyStancesCache.new(participant: current_participant, polls: collection || Array(resource))
   end
 
   def accessible_records

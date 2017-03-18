@@ -6,7 +6,6 @@ js:
   - ng-file-upload/dist/angular-file-upload-shim.js
   - angular/angular.js
   - angular-sanitize/angular-sanitize.js
-  - angular-cookies/angular-cookies.js
   - loomio-angular-router/dist/router.es5.js
   - angular-translate/dist/angular-translate.js
   - angular-translate-loader-url/angular-translate-loader-url.js

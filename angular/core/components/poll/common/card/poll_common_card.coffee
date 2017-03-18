@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonCard', (Session) ->
+angular.module('loomioApp').directive 'pollCommonCard', (Session, PollService) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/card/poll_common_card.html'
   controller: ($scope) ->
@@ -7,7 +7,7 @@ angular.module('loomioApp').directive 'pollCommonCard', (Session) ->
       $scope.buttonPressed = true
 
     $scope.showResults = ->
-      $scope.buttonPressed || $scope.poll.userHasVoted(Session.user()) || $scope.poll.isClosed()
+      $scope.buttonPressed || PollService.hasVoted(Session.participant(), $scope.poll) || $scope.poll.isClosed()
 
     $scope.$on 'stanceSaved', ->
       $scope.$broadcast 'refreshStance'

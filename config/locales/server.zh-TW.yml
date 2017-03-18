@@ -1,4 +1,7 @@
 zh-TW:
+  time:
+    formats:
+      closing_soon_subject: '%d %b %H:%M'
   validate:
     motion:
       must_close_in_future: 提案必須在未來定案。
@@ -210,6 +213,7 @@ zh-TW:
     help_with_setup: 初始設定協助
     custom_subdomain: 自訂子網域
     analytics_reports: 分析報告
+    data_export: 匯出資料
     contact_us_html: |
       價格是以美元計費，再加上營業稅。需要其他東西？<a href="/contact">讓我們談談！</a>
     custom_subdomain_html: |
@@ -359,3 +363,66 @@ zh-TW:
       <strong>新的 Loomio 在這裡！</strong>它又快又漂亮，而且準備好給行動裝置使用了。
     more_info: 更多資訊...
     button_text: 切換到新的 Loomio
+  poll_mailer:
+    common:
+      or: 或
+      why_send_this: '因為 %{reason}，您收到了這封電子郵件'
+      view_on_loomio: 在 Loomio 上檢視
+      unsubscribe: 取消訂閱
+      results: 結果
+      responses: 回應
+      change_your_stance: 更改
+      create_outcome: 分享成果
+      your_response: 您的回應
+      please_respond: 請回應
+    proposal:
+      subject:
+        poll_created: '%{actor} 啟動了一個提案：%{title}'
+        poll_updated: '%{actor} 編輯了提案：%{title}'
+        poll_closing_soon: '最後通知：請在星期五的五點前回應：%{title}'
+        poll_closing_soon_author: '您的提案將於24小時內定案：%{title}'
+        poll_expired: '您的提議已經定案。請分享提案的成果：%{title}'
+        outcome_created: '%{actor} 分享了一個提案成果：%{title}'
+      header:
+        poll_created: '<strong>{actor}</strong> 已啟動了一個提案'
+        poll_updated: '<strong>{actor}</strong> 編輯了提案'
+        poll_closing_soon: '<strong>%{actor}</strong> 的提案將於24小時內定案。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
+        poll_closing_soon_author: 您的提案將於24小時內定案，現在正是您提醒其他人關於這個提案或是展延期限的絕佳時機。
+        poll_expired: '您的提案已<strong>定案</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        outcome_created: '<strong>%{actor}</strong> 已分享了提案的成果。'
+      body:
+        voted: '<strong>%{participant}</strong> 已投票：'
+    poll:
+      subject:
+        poll_created: '%{actor} 啟動了一個投票：%{title}'
+        poll_updated: '%{actor} 編輯了投票：%{title}'
+        poll_closing_soon: '24小時內關閉的投票：%{title}'
+        poll_closing_soon_author: '您的投票將於24小時內關閉：%{title}'
+        poll_expired: '您的投票已關閉。請分享投票的成果：%{title}'
+        outcome_created: '%{actor} 分享了一個投票成果：%{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> 已啟動了一個投票'
+        poll_updated: '<strong>%{actor}</strong> 編輯了投票'
+        poll_closing_soon: '<strong>%{actor}</strong> 的投票將於24小時內關閉。現在正是投票、變更您的心意或是鼓勵其他人來參與的好時機。'
+        poll_closing_soon_author: 您的投票將於24小時內關閉，現在正是您提醒其他人關於這個投票或是展延期限的絕佳時機。
+        poll_expired: '您的投票已<strong>關閉</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣其他人才能知道接下來會發生什麼事情。'
+        outcome_created: '<strong>%{actor}</strong> 已分享了投票的成果。'
+      body:
+        voted: '<strong>%{participant}</strong> 已選擇：'
+    count:
+      subject:
+        poll_created: '%{actor} 啟動了一個計數：%{title}'
+        poll_updated: '%{actor} 編輯了計數：%{title}'
+        poll_closing_soon: '24小時內關閉的計數：%{title}'
+        poll_closing_soon_author: '您的計數將於24小時內關閉：%{title}'
+        poll_expired: '您的計數已關閉。請分享投票的成果：%{title}'
+        outcome_created: '%{actor} 分享了一個計數總結：%{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> 已啟動了一個計數'
+        poll_updated: '<strong>%{actor}</strong> 編輯了計數'
+        poll_closing_soon: '<strong>%{actor}</strong> 的計數將於24小時內關閉。'
+        poll_closing_soon_author: 您的計數將於24小時內關閉，現在正是您提醒其他人關於這個計數或是展延期限的絕佳時機。
+        poll_expired: '這是您計數的結果。若需要的話，<strong>分享成果</strong>來盎其他人知道接下來會發生什麼事情。'
+        outcome_created: '<strong>%{actor}</strong> 已分享了計數的總結。'
+      body:
+        voted: '<strong>%{participant}</strong> 已回應：'

@@ -9,10 +9,11 @@ angular.module('loomioApp').directive 'decisionToolsCard', ->
       _.keys PollService.activePollTemplates()
 
     $scope.startPoll = (pollType) ->
-      ModalService.open PollCommonFormModal, poll: -> Records.polls.build
-        pollType:              pollType
-        discussionId:          $scope.discussion.id
-        pollOptionNames:       _.pluck $scope.fieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
+      ModalService.open PollCommonFormModal, poll: ->
+        Records.polls.build
+          pollType:              pollType
+          discussionId:          $scope.discussion.id
+          pollOptionNames:       _.pluck $scope.fieldFromTemplate(pollType, 'poll_options_attributes'), 'name'
 
     $scope.fieldFromTemplate = (pollType, field) ->
       PollService.fieldFromTemplate(pollType, field)

@@ -50,7 +50,7 @@ describe 'Proposals', ->
     it 'successfully edits a proposal when there are no votes', ->
       proposalsHelper.clickProposalActionsDropdown()
       proposalsHelper.clickProposalActionsDropdownEdit()
-      proposalsHelper.fillInProposalForm({ title: 'Edited proposal' })
+      page.fillIn('.proposal-form__title-field', 'Edited proposal')
       proposalsHelper.clickSaveProposalChangesButton()
       expect(proposalsHelper.currentProposalHeading()).toContain('Edited proposal')
 

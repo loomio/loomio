@@ -19,7 +19,7 @@ describe 'Dashboard Page', ->
     page.expectNoText('.dashboard-page__collections', 'Old discussion')
 
 describe 'dismiss', ->
-  it 'dismisses a thread', ->
+  xit 'dismisses a thread', ->
     page.loadPath 'setup_dashboard'
     threadPreview = page.findFirst('.thread-preview')
     browser.actions().mouseMove(threadPreview).perform()
@@ -36,14 +36,14 @@ describe 'muted threads', ->
     page.click '.sidebar__list-item-button--muted'
     page.expectText '.dashboard-page__explain-mute', "You haven't muted any threads yet"
 
-  it 'displays a mute explanation modal when you first mute a thread', ->
+  xit 'displays a mute explanation modal when you first mute a thread', ->
     page.loadPath 'setup_dashboard'
     browser.actions().mouseMove(threadPreview).perform()
     page.clickFirst '.thread-preview__mute'
     browser.driver.sleep(1000)
     page.expectText '.mute-explanation-modal__title', 'Mute thread'
 
-  it 'lets you mute a thread', ->
+  xit 'lets you mute a thread', ->
     page.loadPath 'setup_dashboard'
     browser.actions().mouseMove(threadPreview).perform()
     page.clickFirst '.thread-preview__mute'

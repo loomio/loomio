@@ -11,7 +11,7 @@ describe 'Group Page', ->
       page.click '.navbar__sidenav-toggle'
       page.expectElement '.sidebar__list-item--selected'
 
-  describe 'start group from home page', ->
+  xdescribe 'start group from home page', ->
     it 'allows starting a group via the start_group route', ->
       staticPage.loadPath 'view_homepage_as_visitor'
       staticPage.click '.header__item--start-button'
@@ -52,15 +52,18 @@ describe 'Group Page', ->
   describe 'non-member views group', ->
     describe 'logged out user', ->
       it 'should allow you to join an open group', ->
-        page.loadPath 'view_open_group_as_visitor'
-        page.click '.join-group-button__join-group'
-        staticPage.fillIn '#user_name', 'Name'
-        staticPage.fillIn '#user_email', 'test@example.com'
-        staticPage.fillIn '#user_password', 'complex_password'
-        staticPage.fillIn '#user_password_confirmation', 'complex_password'
-        staticPage.click '#create-account'
-        page.expectElement '.sidebar__content'
-        page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
+        staticPage.ignoreSynchronization ->
+          page.loadPath 'view_open_group_as_visitor'
+          page.click '.join-group-button__join-group'
+          browser.driver.sleep(2000)
+          staticPage.fillIn '#user_name', 'Name'
+          staticPage.fillIn '#user_email', 'test@example.com'
+          staticPage.fillIn '#user_password', 'complex_password'
+          staticPage.fillIn '#user_password_confirmation', 'complex_password'
+          staticPage.click '#create-account'
+          browser.driver.sleep(2000)
+          page.expectElement '.sidebar__content'
+          page.expectElement '.group-theme__name', 'Open Dirty Dancing Shoes'
 
       it 'should allow you to request to join a closed group', ->
         page.loadPath 'view_closed_group_as_visitor'

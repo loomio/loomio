@@ -10,7 +10,7 @@ class Ability
   end
 
   def user_is_author_of?(object)
-    object.author_id == @user.id
+    @user.is_logged_in? && @user.id == object.author_id
   end
 
   def initialize(user)
@@ -343,12 +343,12 @@ class Ability
       @user.visitors.include?(visitor)
     end
 
-    can :create, Visitor do |visitor|
+    can [:create, :remind], Visitor do |visitor|
       @user.communities.include?(visitor.community)
     end
 
     can :update, Visitor do |visitor|
-      @user.participation_token == visitor.participation_token
+      @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
     end
 
     can :create, Stance do |stance|
@@ -356,7 +356,9 @@ class Ability
       if !poll.active?
         false
       elsif poll.discussion
-        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id) || user_is_admin_of?(poll.group_id))
+        (poll.group.members_can_vote? && user_is_member_of?(poll.group_id)) ||
+        user_is_admin_of?(poll.group_id) ||
+        poll.communities.any? { |community| community.includes?(@user) }
       else
         user_is_author_of?(poll) || poll.communities.any? { |community| community.includes?(@user) }
       end

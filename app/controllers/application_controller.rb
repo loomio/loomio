@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def dashboard_or_root_path
-    user_signed_in? ? dashboard_path : root_path
+    current_user.is_logged_in? ? dashboard_path : root_path
   end
 
   def store_previous_location
@@ -77,6 +77,10 @@ class ApplicationController < ActionController::Base
 
   def current_user_groups
     @current_user_groups ||= current_user.groups
+  end
+
+  def user_signed_in?
+    current_user.is_logged_in?
   end
 
   def user_time_zone(&block)

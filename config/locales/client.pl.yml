@@ -108,21 +108,6 @@ pl:
     invite_people: Zaproszenie Osób
   notifications:
     header: Powiadomienia
-    new_discussion: '<strong>{{name}}</strong> uruchomił/a dyskusję <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> utworzył/a rekomendację <strong>{{proposal}}</strong>'
-    motion_closed_by_user: '<strong>{{name}}</strong> zamknął/ęła rekomendację <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'Rekomendacja została zamknięta <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> {{position}} dla rekomendacji <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> skomentował/a <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> odpowiedział/a na Twój komentarz do <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> polubił/a Twój komentarz do <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> wysłał/a prośbę o dołączenie do <strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> zaakceptował/a Twoją prośbę o dołączenie do <strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> dodał/a Cię do grupy <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'Zostałeś/aś dodany/a do grupy <strong>{{group}}</strong>'
-    motion_closing_soon: 'Rekomendacja zostanie wkrótce zamknięta: <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> opublikował/a wynik rekomendacji <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> zaktualizował/a wynik rekomendacji <strong>{{proposal}}</strong>'
   position_buttons_panel:
     heading: Wypowiedz się
   vote_form:
@@ -391,24 +376,6 @@ pl:
       efektywnej współpracy oraz wspólnego podejmowania dobrych decyzji. Oto
       kilka wskazówek jak wspierać Twoją grupę dla uzyskania sukcesu.
     different_ways: Różne sposoby używania Loomio
-    engaging_html: >
-      <h2>Wskazówki dla zaangażowania Twojej grupy</h2>
-
-      <p>Ludzie będą chętniej biorą udział jeśli na stole leży ciekaw
-      rekomendacja. Dobra rekomendacja zawiera taki plan działań dla grupy, że
-      jest czytelne co oznacza zgoda lub jej brak. Przemyśl jak możesz
-      zidentyfikować dyskusje/decyzje, które grupa obecnie rozważa bezpośrenio
-      lub mailowo, które będą łatwiejsze do podjęcia za pomocą Loomio. </p>
-
-      <p>Jeśli Twoja grupa właśnie zaczęła działać, możesz rozpocząć lekką
-      dyskusję, aby pozwolić wszystkim zapoznać się z narzędziem i zobaczyć
-      proces podejmowania decyzji w akcji.
-
-      </p>
-
-      <p>Inny prosty sposób aby zachęcić ludzi do zaangażowania w dyskusji to
-      użycie funkcji @wzmianek aby wezwać konkretne osoby; otrzymają wtedy
-      wiadomość, która powiadomi ich, że zostali wspomnieni w komentarzu</p>
     example1_html: >
       <h3>Potrzebujesz grupy aby przedyskutować duży temat i wypracować wspólne
       rozwiązanie</h3>
@@ -420,19 +387,6 @@ pl:
       zrozumienie problemu zanim przeskoczysz do konkretnego rozwiązania. Kiedy
       ludzie wezmą udział w procesie, wówczas chętniej wejdą na pokład
       z rozwiązaniem.</p>
-    example2_html: >
-      <h3>Masz opracowaną rekomendację i chcesz uzyskać akceptację grupy aby
-      posunąć się na przód.</h3>
-
-      <p>Strategia: Uruchom dyskusję o konkretnej decyzji i od razu utwórz
-      rekomendację.</p>
-
-      <p>Jeśli ma jasny wynik ale chcesz się upewnić, że nie ma krytycznych
-      wątpliwości, możesz użyć rekomendacji aby uzyskać szybki wkład do
-      dyskusji.</p>
-
-      <p>Można użyć do tematów jak akceptacja dokumentu, akceptacja aplikacji lub
-      potwierdzenie realizacji zadania.</p>
     get_in_touch: Skontaktujmy się
     get_in_touch_description_html: "Jeśli masz jakieś pytania lub feedback, <a href='%{link}'>napisz do nas</a>."
     getting_started: Rozpoczynanie
@@ -499,19 +453,6 @@ pl:
     positions_disagree_description: '<span>Nie zgadzam się</span> ocznacza, że myślisz, ze mogą być lepsze alternatywy ale zgadzasz się na pójście w zaproponowanym kierunku.'
     positions_block_description: '<span>Blokada</span> oznacza, że masz poważne obiekcje i nie zgadzasz się z podążaniem w zaproponowanym kierunku.'
     start_discussion: Rozpoczęcie zaangażowanej dyskusji
-    start_discussion_html: >
-      <p>Kiedy rozpoczynasz dyskusję, upewnij się, że tytuł komunikuje temat
-      zwięźle.
-
-      Użyj Panelu Kontekstu aby przekazać wszystkie dodatkowe informacje
-      niezbędne do tego aby grupa mogła skutecznie dyskutować.</p>
-
-      <p>W trakcie dyskusji, Panel Kontekstu może być aktalizowany nowymi
-      informacjami.
-
-      Poza wyjaśnianiem zagadnienia, możesz użyć tego miejsca aby dzielić się
-      zasobami, podsumowywać dyskusje w trakcie lub wyjaśniać protokół
-      podejmowania decyzji w Twojej grupie.</p>
     start_proposal: Pisanie czytelnej rekomendacji
     start_proposal_html: >
       <p> Jeśli stworzysz czytelny i zwięzły tytuł, ludzie będą wiedzieli

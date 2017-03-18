@@ -139,25 +139,7 @@ ar:
     invite_people: قم بدعوة أشخاص
   notifications:
     header: تبليغات
-    new_discussion: '<strong>{{name}}</strong> بدأ نقاش <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> بدأ مقترح <strong>{{proposal}}</strong>'
-    motion_closed: 'مقترح مغلق: <strong>{{proposal}}</strong>'
     publish_outcome: قم بنشر النتيجة
-    motion_closed_by_user: '<strong>{{name}}</strong> قام بإغلاق مقترح <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'لقد تم إغلاق مقترح <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> {{position}} في مقترح <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> قام بالتعليق على <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> قام بالرد على تعليقك في <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> قام بالإعجاب بتعليقك في <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> قام بطلب عضوية ل<strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> قام بالموافقة على طلبك للإنضمام لمجموعة<strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> قام بإضافتك لمجموعة <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'لقد تمت إضافتك لمجموعة <strong>{{group}}</strong>'
-    motion_closing_soon: 'سيتم إغلاق مقترح <strong>{{proposal}}</strong> قريباً'
-    motion_outcome_created: '<strong>{{name}}</strong> قام بنشر نتيجة المقترح  <strong>{{proposal}}</strong>'
-    motion_outcome_updated: ' <strong>{{proposal}}</strong> قام بتحديث نتيجة مقترح <strong>{{proposal}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> قام بقبول دعوتك للانضمام إلى <strong>{{group}}</strong>'
-    new_coordinator: '<strong>{{name}}</strong> قام بجعلك منسقاً <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: شارك برأيك
   vote_form:
@@ -337,10 +319,8 @@ ar:
     contribute: قم بالمساهمة
   gift_card:
     heading: خطة منحة
-    body: '<strong>{{name}}</strong> هي مجموعة تعتمد على خطة منحة. لدعم لوميو للاستمرار بدعم مجموعات كمجموعتك قم بالضغط هنا: '
     make_a_contribution: قم بالمساهمة
   trial_card:
-    title: مدة تجريبية لمدة 30 يوماً
     choose_plan: قم باختيار خطة التسعير خاصتك
     in_progress_body: 'شكراً جزيلاً لتجربة لوميو في <strong>{{name}}</strong>. يمكنك اختيار خطة التسعير التي تناسب مجموعتك في أي وقت.'
     expired_body_html: 'لقد بلغت <strong>{{name}}</strong> نهاية المدة التجريبية للوميو. للاستمرار في استخدامه عليك اختيار خطة تسعير تناسب مجموعتك.'
@@ -375,7 +355,6 @@ ar:
     how_do_people_join: كيف يمكن للأشخاص الانضمام؟
     membership_granted_upon_request: يمكن لأي شخص الانضمام
     membership_granted_upon_approval: يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.
-    membership_granted_upon_approval_secret_parent: '<strong>عبر الطلب</strong> - يمكن لأي شخص من {{parent}} طلب الانضمام للمجموعة.'
     thread_privacy: خصوصية المواضيع
     public_threads: المواضيع العامة فقط
     public_discussions_subgroup: 'يمكن لأي شخص من {{parentGroupName}} رؤية النقاش'
@@ -440,7 +419,6 @@ ar:
     messages:
       invitation_sent: تم إرسال الدعوة.
       invitations_sent: 'تم إرسال {{count}} دعوات.'
-      no_invitations: 'عذراً! يرجى تأكيد صحة عنوان البريد الإلكتروني و المحاولة من جديد.'
       max_invitations: إن كنت تريد إرسال أكثر من 100 دعوة، قم باستخدام رابط فريق.
   add_members_modal:
     heading: 'قم بإضافة أشخاص من {{name}}'
@@ -652,21 +630,6 @@ ar:
 
       لصنع قرارات جيدة معاً. هنا بعض النصائح لدعم مجموعتك للنجاح:
     different_ways: الطرق المختلفة لاستخدام لوميو
-    engaging_html: >
-      <h2>نصائح لإشراك مجموعتك</h2>
-
-      <p>سيكون الأشخاص متحمسين للبدء بالمشاركة عندما يكون هناك مقترح مشاركة على
-      الطاولة. المقترح الجيد يحتوي على خطة عمل للمجموعة، حتى يكون واضحاً فوراً
-      ماذا يعني أن توافق أو ترفض. قم بالتفكير بكيفية تحديد النقاشات/القرارات التي
-      تتعهدها المجموعة شخصياً أو عبر البريد الإلكتروني و التي قد تكون أسهل إن
-      كانت تتم عبر لوميو.</p>
-
-      <p> إن كانت مجموعتك تبدأ للتو، يمكنك البدء بقرارات بسيطة، لتعطي الفرصة
-      للجميع ليجربوا الأدوات و يروا آلية صناعة القرارات بشكل فعلي.</p>
-
-      <p>طريقة أخرى سهلة لتشجيع الأشخاص على المشاركة في القرارات هي أن تستخدم
-      ميزة @ذكر شخص ما لتحث أشخاصاً معينين على المشاركة؛ سيتم إرسال بريد إلكتروني
-      لهم لإخبارهم أنك قد ذكرتهم عبر تعليق.</p>
     example1_html: >
       <h3>ستحتاج مجموعتك لأن تناقش موضوعاً عاماً و تطور حلولاً سوياً</h3>
 
@@ -675,18 +638,6 @@ ar:
       </p> غالباً ما تبلغ النقاشات أفضل النتائج عندما تقوم ببناء تفاهمات مشتركة
       حول المشكلة قبل القفز إلى حل معين. عندما يتشارك الأشخاص في العملية، فمن
       المرجح أن يتقبلوا النتائج بشكل أفضل.</p>
-    example2_html: >
-      <h3>لديك في عقلك مقترح مسبق، و تريد موافقة المجموعة للمضي قدماً في هذا
-      المقترح.</h3>
-
-      <p> استراتيجية: قم بالبدء بنقاش حول القرار المحدد و قم بإنشاء مقترح
-      فوراً.</p>
-
-      <p> إن كان لديك نتيجة واضحة في عقلك و لكنك تريد التأكد من أنه ليس هناك أي
-      مخاوف مهمة، يمكنك استعمال المقترح للحصول على مساهمة سريعة في القرار.</p>
-
-      <p> يمكنك عمل أشياء كإنهاء وثيقة، الموافقة على تطبيق، أو الموافقة على عمل
-      ما.</p>
     get_in_touch: تواصل معنا
     get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <'{a href='%{link>تواصل معنا</a>."
     getting_started: من أجل البدء
@@ -745,14 +696,6 @@ ar:
     positions_disagree_description: '<span>"غير موافق"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة.'
     positions_block_description: '<span>"أعترض"</span> تعني أنه لديك اعتراضات جدية وأنك ستكون غير راضٍ إذا تم تبني المقترح.'
     start_discussion: البدء بنقاش تشاركي
-    start_discussion_html: >
-      <p>عندما تبدأ نقاشاً، تأكد من أن العنوان يوصل فكرة الموضوع بإيجاز. استخدم
-      منصة السياق لتزويد المعلومات الضرورية المتعلقة بالموضوع للمجموعة لكي تحصل
-      على نقاش بناء و مبني على معلومات.</p>
-
-      <p>خلال النقاش، يمكن تحديث منصة السياق بمعلومات جديدة قد تطرأ. بالإضافة إلى
-      توضيح الموضوع، يمكنك استخدام هذه المساحة لمشاركة المصادر، تلخيص النقاش خلال
-      تقدمه، أو وضع الخطوط العريضة لطريقة صناعة القرار التي تعتمدها مجموعتك.</p>
     start_proposal: كتابة مقترح واضح
     start_proposal_html: >
       <p>عندما تجعل العنوان واضحاً و موجزاً، فإن الأشخاص سيعلمون فوراً ماذا تعني
@@ -803,7 +746,6 @@ ar:
   authorized_apps_page:
     title: التطبيقات المخولة
     no_applications: لم تقم بتخويل أي تطبيقات من طرف ثالث بعد.
-    notice: 'لقد قمت بمنح الإذن لتطبيقات الطرف الثالث التالية لاستخدام حسابك. قم بالضغط على "سحب" لمنعهم.'
     revoke: سحب
   registered_apps_page:
     title: التطبيقات المسجلة

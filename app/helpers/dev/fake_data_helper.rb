@@ -33,6 +33,7 @@ module Dev::FakeDataHelper
       proposal: %w[agree abstain disagree block],
       count: %w[yes no],
       dot_vote: 3.times.map{ Faker::Artist.name },
+      meeting: 3.times.map { |i| i.days.from_now.to_date } + 3.times.map { |i| i.days.from_now.beginning_of_hour.utc.iso8601 }
     }.with_indifferent_access
 
     options = {

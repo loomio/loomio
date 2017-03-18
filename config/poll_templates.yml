@@ -57,3 +57,15 @@ dot_vote:
   sort_options:
     - newest_first
     - oldest_first
+
+meeting:
+  poll_options_attributes: []
+  chart_type:              matrix
+  material_icon:           date_range
+  can_add_options:         true
+  can_remove_options:      true
+  must_have_options:       true
+  dates_as_options:        true
+  sort_options:
+    - newest_first
+    - oldest_first

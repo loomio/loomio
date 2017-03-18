@@ -148,7 +148,6 @@ ca:
     forgot_password: Heu oblidat la contrasenya?
     sign_in: Inicia sessió
     oauth:
-      title: 'O entra amb un compte de tercers:'
       facebook: Inicia la sessió amb Facebook
       twitter: Inicia la sessió amb Twitter
       google: Inicia la sessió amb Google
@@ -220,25 +219,7 @@ ca:
   notifications:
     header: Notificacions
     no_notifications: No teniu cap notificació
-    new_discussion: '<strong>{{name}}</strong> ha creat la discussió <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> ha creat la proposta <strong>{{proposal}}</strong>'
-    motion_closed: 'Proposta tancada: <strong>{{proposal}}</strong>'
     publish_outcome: Publica un resultat
-    motion_closed_by_user: '<strong>{{name}}</strong> ha tancat la proposta <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: "S'ha tancat la proposta <strong>{{proposal}}</strong>"
-    new_vote: '<strong>{{name}}</strong> {{position}} amb la proposta <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> ha comentat a <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> ha respost al vostre comentari a <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> li agrada el vostre comentari a <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> ha sol·licitat ser membre de <strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> ha aprovat la vostra sol·licitud per ser membre de <strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> us ha afegit al grup <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'Heu estat afegits al grup <strong>{{group}}</strong>'
-    motion_closing_soon: 'La proposta es tancarà aviat: <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> ha publicat el resultat de la proposta <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> ha actualitzat el resultat de la proposta <strong>{{proposal}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> ha acceptat la vostra invitació per unir-se a <strong>{{group}}</strong>'
-    new_coordinator: '<strong>{{name}}</strong> us ha fet coordinador de <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Doneu la opinió
   vote_form:
@@ -407,7 +388,6 @@ ca:
     heading: Pla Donació
     make_a_contribution: Feu una donació
   trial_card:
-    title: 30 dies de prova
     choose_plan: Escolliu el pla de pagament
     expired_body_html: "<strong>{{name}}</strong> ha arribat al final del període de prova de Loomio. Per continuar utilitzant-lo, escolliu un pla de pagament que s'ajusti al vostre grup."
   choose_plan_modal:
@@ -440,7 +420,6 @@ ca:
     how_do_people_join: "Com s'uneix la gent?"
     membership_granted_upon_request: Tothom es pot unir al grup.
     membership_granted_upon_approval: "Tothom pot sol·licitar unir-se però és necessària l'aprovació."
-    membership_granted_upon_approval_secret_parent: '<strong>Per sol·licitud</strong> - tothom de {{parent}} pot demanar unir-se al grup.'
     thread_privacy: Privacitat de la discussió
     public_threads: Només discussions públiques
     public_discussions_subgroup: 'Qualsevol en {{parentGroupName}} pot veure les discussions'
@@ -505,7 +484,6 @@ ca:
     messages:
       invitation_sent: Invitació enviada.
       invitations_sent: '{{count}} invitacions enviades.'
-      no_invitations: "Verifiqueu que l'adreça de correu és correcta i torneu-ho a provar."
       max_invitations: "Si voleu enviar més de 100 invitacions, utilitzeu l'enllaç d'equip."
   add_members_modal:
     heading: 'Afegeix gent de {{name}}'
@@ -562,7 +540,6 @@ ca:
     on_participation_label: Subscriure a la participació
     mentioned_label: Mencions
     mentioned_description: 'Quan algú vulgui cridar la vostra atenció, us @mencionarà. Recomanem deixar activada aquesta opció, per a rebre un correu electrònic quan això passi.'
-    update_settings: Actualitza la configuració per tots els grups
     specific_groups: Configuració per grups específics
     default_settings:
       loud_description: 'Quan us uniu a un grup nou, rebre un correu electrònic <strong>cada cop que hi hagi activitat</strong>.'
@@ -755,35 +732,6 @@ ca:
 
       junts. Aquí teniu algunes claus per tal que el grup funcioni:
     different_ways: "Diferents maneres d'utilitzar Loomio"
-    engaging_html: >
-      <h2> Claus per engrescar el grup </h2>
-
-      <p>La gent estarà emocionada d'entrar i començar a participar quan hi ha
-      una
-
-      proposta estimulant sobre la taula. Una bona proposta conté un pla d'acció
-      per al grup, en
-
-      el que quedi clar què significa estar d'acord o en desacord. Pensa en com
-
-      pot identificar debats / decisions que el grup està duent a terme en
-      persona o per
-
-      correu electrònic i que seria més fàcil si estiguessin a Loomio. </p>
-
-      <p> Si el grup està començant, pots començar per una decisió simple, per
-      donar
-
-      a tothom l'oportunitat de jugar amb l'eina i experimentar el procés de
-      presa de decisions. </p>
-
-      <p> Una altra forma senzilla d'animar gent a participar en una discussió és
-      utilitzar la @menció
-
-      a persones específiques, als quals els arribarà un correu electrònic dient
-      que han estat
-
-      esmentats en un comentari.</p>
     example1_html: >
       <h3> Necessiteu que el grup discuteixi un tema molt ampli i desenvolupar
       una solució col·lectiva </h3>
@@ -798,19 +746,6 @@ ca:
       participa en el procés,
 
       és més propensa a arribar a un acord amb el resultat.</p>
-    example2_html: >
-      <h3> Ja teniu una proposta en ment, i voleu aconseguir la conclusió del
-      grup per seguir endavant. </h3>
-
-      <p> Estratègia: Enceteu un debat sobre una decisió específica i feu una
-      proposta.</p>
-
-      <p> Si teniu un resultat clar en ment, però voleu assegurar-vos que no hi
-      ha postures crítiques, podeu utilitzar la proposta per obtenir una anàlisi
-      ràpid de la decisió.</p>
-
-      <p> Podeu fer coses com finalitzar un document, aprovar una sol·licitud,
-      o completar un treball.</p>
     get_in_touch: Poseu-vos en contacte
     get_in_touch_description_html: "Si teniu alguna pregunta o comentari,  <a href='%{link}'> escriu-nos </a>."
     getting_started: Primers passos
@@ -887,18 +822,6 @@ ca:
     positions_disagree_description: "<span>No hi estic d'acord</span> vol dir que creus que hi pot haver una millor alternativa però acceptaràs la decisió que prengui el grup."
     positions_block_description: '<span>Blouejo</span> vol dir que tens objeccions importants i estaràs extremadament insatisfet si aquesta proposta tira endavant.'
     start_discussion: Començar una discussió engrescadora
-    start_discussion_html: >
-      <p> En iniciar una discussió, assegureu-vos que el títol s'ajusta al tema
-      perfectament.
-
-      Utilitzeu el Panell de Context per donar la informació bàsica necessària
-      per tenir una discussió productiva i informada. </p>
-
-      <p> Durant el debat, el Panell de Context pot ser actualitzat amb nova
-      informació. A més d'aclarir el tema, pots utilitzar aquest espai per
-      compartir recursos, resumir el debat a mesura que avança, o per fixar el
-
-      protocols de presa de decisions que el grup està utilitzant. </p>
     start_proposal: Escriure una proposta clara
     start_proposal_html: >
       <p> Si fas el títol clar i concís, la gent sabrà immediatament què
@@ -958,7 +881,6 @@ ca:
   authorized_apps_page:
     title: Aplicacions autoritzades
     no_applications: "Encara no heu autoritzat cap aplicació d'un tercer."
-    notice: "Heu donat permís per utilitzar el vostre compte a les següents aplicacions de tercers. Cliqueu 'Revoca' per deshabilitar-les."
     revoke: Revoca
   registered_apps_page:
     title: Aplicacions registrades

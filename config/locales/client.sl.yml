@@ -61,7 +61,6 @@ sl:
       discussions: Razprave
   notifications:
     header: Obvestila
-    comment_liked: '<strong>{{name}}</strong> je všečkal/a tvoj komentar v <strong>{{discussion}}</strong>'
   position_buttons_panel:
     heading: Izrazi svoje mnenje
   vote_form:
@@ -185,33 +184,6 @@ sl:
       novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih
       odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:
     different_ways: Različni načini uporabe Loomia
-    engaging_html: >
-      <h2>Nasveti za vključevanje tvoje skupine</h2>
-
-      <p>Ljudje bodo z veseljem sodelovali, če bo na tapeti zanimiv
-
-      predlog. Dober predlog vsebuje akcijski načrt za skupino, tako
-
-      da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu
-      nasprotujejo. Skušaj
-
-      ugotoviti, če bi nekatere razprave/odločitve, ki jih skupina trenutno
-      izvaja osebno ali po
-
-      emailu, bilo lažje izvajati na Loomiu.</p>
-
-      <p>Če je skupina še , lahko začneš z lahkotno odločitev, da imajo
-
-      vsi možnost probati novo orodje in začutiti postopek odločanja v akciji.
-      .</p>
-
-      <p>Še en preprost način za spodbujanje drugih k razpravi je funkcija
-      @omeni
-
-      za pozvati določeno osebo; to jim bo poslalo email s sporočilom, da so
-      bili
-
-      omenjeni v komentarju.</p>
     example1_html: >
       <h3>Skupina mora o neki temi razpravljati in skupaj razviti rešitev</h3>
 
@@ -222,25 +194,6 @@ sl:
       skupno razumevanje problema, preden se predlaga določeno rešitev. Kadar
       lahko vsi sodelujejo že v procesu, bodo namreč veliko verjetneje sprejeli
       rezultat.</p>
-    example2_html: >
-      <h3> Predlog že imaš v mislih, želiš pa potrditev skupine, da ga lahko
-      realiziraš.</h3>
-
-
-
-      <p> Strategija: Začni razpravo o konkretni odločitvi in takoj podaj svoj
-      predlog. </p>
-
-
-
-      <p> Če imaš zastavljen jasen rezultat, a želiš preveriti, da ni kakršnih
-      koli kritičnih pomislekov, lahko podaš svoj predlog in prejmeš hitro
-      povratno informacijo o odločitvi. </p>
-
-
-
-      <p> Na tak način lahko npr. dokončaš dokument, potrdiš prošnjo, ali odobriš
-      neko delo. </p>
     get_in_touch: Stopi v stik
     get_in_touch_description_html: "Če imaš kakšna vprašanja ali pripombe, <a href='%{link}'>nam piši</a>."
     getting_started: Prvi koraki
@@ -309,20 +262,6 @@ sl:
     positions_disagree_description: '<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine.'
     positions_block_description: '<span>Ugovarjam</span> pomeni, da imaš resna nasprotovanja in boš skrajno nesrečen/na, če bo predlog sprejet.'
     start_discussion: Kako začeti angažirano razpravo?
-    start_discussion_html: >
-      <p>Ko začneš razpravo, poskrbi da naslov jedrnato izraža temo.
-
-      V Opis vnesi vse potrebne informacije, da bo
-
-      skupina lahko imela produktivno in informirano razpravo. </p>
-
-      <p>Med razpravo je možno posodobiti Opis, če pride do novih informacij.
-      Poleg razjasnitve teme, lahko ta prostor uporabiš za
-
-      deljenje virov, povzemanje razprave tekom njenega napredovanja, ali za
-      opisovanje
-
-      odločevalskih protokolov, ki jih skupina uporablja.</p>
     start_proposal: Kako napisati jasen predlog
     start_proposal_html: >
       <p> Če napišeš jasen in jedrnat naslov, bodo vsi točno vedeli,

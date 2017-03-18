@@ -175,36 +175,6 @@ eo:
 
       por helpi vian grupon sukcesi:
     different_ways: Malsamaj manieroj por uzi Loomion
-    engaging_html: >
-      <h2>Konsiloj por engaĝigi vian grupon</h2>
-
-      <p>Oni ekscitiĝos ensalti kaj komenci partopreni se estas engaĝiga propono
-      sur la
-
-      tablo. Bona propono enhavas agoplanon por la grupo, por ke tuj estu klare
-      kion
-
-      signifas konsenti aŭ malkonsenti. Pripensu kiel vi povas identigi
-      diskutojn/decidojn
-
-      pri kiuj la grupo nun interkonsentiĝas persone aŭ retpoŝte por kiuj pli
-      facilus se ili
-
-      estus en Loomio.</p>
-
-      <p>Se via grupo ĵus komenciĝis, vi povus komenci per facilanima decido, por
-      doni
-
-      al ĉiuj la ŝancon ludi per la ilo kaj mem vidi la decidadon dum ĝi
-      okazas.</p>
-
-      <p>Alia simpla maniero por kuraĝigi personojn engaĝiĝi en diskuto estas uzi
-      la eblo
-
-      @mencii por indiki specifajn personojn; tio sendos retpoŝton al il por diri
-      ke ili estas
-
-      menciitaj en komento.</p>
     example1_html: >
       <h3>Vi bezonas ke la grupo diskutu larĝan temon kaj kune pripensu
       solvon</h3>
@@ -216,20 +186,6 @@ eo:
 
       pri la problemo antaŭ ol salti al specifa solvo. Kiam homoj partoprenas en
       la proceso, ili multe pli verŝajne konsentos kun la konkludo.</p>
-    example2_html: >
-      <h3>Vi jam pripensis proponon, kaj vi volas havi subtenon de la grupo por
-      antaŭeniri kun ĝi.</h3>
-
-      <p>Strategio: komencu diskuton pri specifa decido kaj tuj faru
-      proponon.</p>
-
-      <p>Se vi imagas klaran konkludon sed vi volas certigi ke ne estas esencaj
-      problemoj,
-
-      vi povas uzi la proponon por rapide havi retrokuplon pri decido.</p>
-
-      <p>Vi povas fari aferojn kiel finigi dokumenton, aprobi peton, aŭ
-      konsentigi laborpecon.</p>
     get_in_touch: Ekkontakti
     get_in_touch_description_html: "Se vi havas ajnajn demandojn aŭ retrokuplon, <a href='%{link}'>kontaktu nin</a>"
     getting_started: Ekkomenci
@@ -300,18 +256,6 @@ eo:
     positions_disagree_description: '<span>Malkonsento</span> volas diri ke vi pensas ke eble estas pli bona alternativo, sed vi pretas iri kun la grupa decido.'
     positions_block_description: '<span>Blokado</span> volas diri ke vi serioze obĵetas kaj ke vi tre malfeliĉos se ĉi tiu propono estos efektigata.'
     start_discussion: Komence de egaĝiĝa diskuto
-    start_discussion_html: >
-      <p>Kiam vi starigas diskuton, certiĝu ke la titolo indikas malmultvorte pri
-      kio ĝi temas.
-
-      Uzu la Kunteksto-Panelo por doni  ĉ.iujn fonajn informojn bezonatajn por ke
-      la grupo havu produktivan kaj bone informitan diskuton,</p>
-
-      <p>Dum la diskutado, la Kunteksto-Panelo povas esti ĝisdatigita kiam novaj
-      informoj aperas.  Vi povs uzi tiun ĉ.i spacon ne nur por klarigi la temon,
-      sed ankaŭ  por dividi utilajn informfontojn, resumi la diksuton dum ĝi
-      progresas aŭ  por skizi la decido-faran proceduron uzatan de la
-      grupo..</p>
     start_proposal: Verkante klaran proponon
     start_proposal_html: >
       <p> Farante la titolon klara kaj mallonga, homoj tuj scios kion signifas

@@ -6,7 +6,6 @@ angular.module('loomioApp').directive 'navbar', ->
   controller: ($scope, $rootScope, $window, Records, ModalService, SignInForm, AppConfig, AbilityService) ->
     parser = document.createElement('a')
     parser.href = AppConfig.baseUrl
-    $scope.officialLoomio = AppConfig.isLoomioDotOrg
     $scope.showNavbar = true
 
     $scope.$on 'toggleNavbar', (event, show) ->

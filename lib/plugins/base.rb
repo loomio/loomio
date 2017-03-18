@@ -1,16 +1,15 @@
-require "#{Rails.root}/lib/plugins/repository"
-
 module Plugins
   class NoCodeSpecifiedError < Exception; end
   class NoClassSpecifiedError < Exception; end
   class InvalidAssetType < Exception; end
   Outlet = Struct.new(:plugin, :component, :outlet_name, :experimental, :plans)
   StaticAsset = Struct.new(:path, :filename, :standalone)
+  Extension = Struct.new(:const, :proc)
   VALID_ASSET_TYPES = [:coffee, :scss, :haml, :js, :css]
 
   class Base
     attr_accessor :name, :installed
-    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :enabled
+    attr_reader :assets, :static_assets, :actions, :events, :outlets, :routes, :translations, :extensions, :enabled
 
     def self.setup!(name)
       Repository.store new(name).tap { |plugin| yield plugin }
@@ -19,7 +18,7 @@ module Plugins
     def initialize(name)
       @name = name
       @translations = {}
-      @assets, @static_assets, @actions, @events, @outlets, @routes = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
+      @assets, @static_assets, @actions, @events, @outlets, @routes, @extensions = Set.new, Set.new, Set.new, Set.new, Set.new, Set.new, Set.new
       @config = File.exists?(config_file_path) ? YAML.load(ERB.new(File.read(config_file_path)).result) : {}
     end
 
@@ -49,10 +48,10 @@ module Plugins
       migration.up(table_name, &block)
     end
 
-    def extend_class(klass, &block)
+    def extend_class(const, &block)
       raise NoCodeSpecifiedError.new unless block_given?
-      raise NoClassSpecifiedError.new unless klass.present?
-      klass.class_eval &block
+      raise NoClassSpecifiedError.new unless const.present?
+      @extensions.add Extension.new(const, Proc.new { |c| c.class_eval(&block) })
     end
 
     def use_asset_directory(glob)

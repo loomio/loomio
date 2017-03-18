@@ -104,24 +104,6 @@ id:
       berkolaborasi lebih efektif dan membuat keputusan yang baik bersama-sama.
       Berikut beberapa tips agar tujuan kelompok Anda tercapai:
     different_ways: Cara lain menggunakan Loomio
-    engaging_html: >
-      <h2>Tips untuk berinteraksi dengan kelompok Anda</h2>
-
-      <p>Anggota kelompok akan tertarik untuk masuk dan berpartisipasi apabila
-      ada usulan yang menarik. Usulan yang baik memiliki usulan tindakan untuk
-      kelompok, sehingga anggota kelompok dapat dengan jelas menyetujui atau
-      menolak. Pikirkan bagaimana Anda identifikasi diskusi/keputusan yang
-      dilakukan kelompok secara langsung atau melalui surel dapat lebih mudah
-      dilakukan melalui Loomio.</p>
-
-      <p>Apabila kelompok Anda baru memulai, Anda dapat membuat keputusan yang
-      singkat, memberikan kesempatan kepada yang lain untuk mencoba alat ini dan
-      melihat proses pengambilan keputusan.</p>
-
-      <p>Cara mudah lainnya untuk memancing anggota untuk berinteraksi dalam
-      diskusi adalah dengan menggunakan fitur @sebut untuk mengabari pihak
-      tertentu; fitur ini akan mengirimkan surel yang mengabari bahwa nama mereka
-      disebutkan di dalam komentar.</p>
     example1_html: >
       <h3>Kelompok Anda akan mendiskusikan sebuah topik dan membuat keputusan
       bersama</h3>
@@ -133,19 +115,6 @@ id:
       bersama mengenai masalah yang ada sebelum membuat keputusan. Apabila setiap
       orang berpartisipasi dalam proses tersebut, mereka akan mendukung
       tercapainya hasil yang diinginkan.</p>
-    example2_html: >
-      <h3>Anda telah memiliki usulan, dan Anda ingin mendapat persetujuan dari
-      kelompok.</h3>
-
-      <p>Strategi: Mulai diskusi tentang keputusan tertentu dan segera buat
-      usulan.</p>
-
-      <p>Apabila Anda memiliki hasil yang Anda harapkan dan ingin mengetahui
-      pertimbangan lainnya, Anda dapat menggunakan usulan untuk mendapatkan
-      masukan untuk keputusan.</p>
-
-      <p>Anda juga dapat melakukan finalisasi dokumen, menerima aplikasi, atau
-      menandatangani pekerjaan.</p>
     get_in_touch: Hubungi
     get_in_touch_description_html: "Apabila Anda memiliki pertanyaan atau masukan, <a href='%{link}'>silakan hubungi kami</a>."
     getting_started: Memulai
@@ -211,25 +180,6 @@ id:
     positions_disagree_description: '<span>Tidak setuju</span> berarti Anda merasa ada alternatif yang lebih baik, namun Anda akan menyetujui keputusan kelompok.'
     positions_block_description: '<span>Blokir</span> berarti Anda menolak keras dan Anda tidak setuju usulan ini diteruskan.'
     start_discussion: Memulai diskusi yang menarik
-    start_discussion_html: >
-      <p>When you start a discussion, make sure the title conveys the topic
-      succinctly.
-
-      Use the Context Panel to give all the background information necessary for
-      the
-
-      group to have a productive and informed discussion.</p>
-
-      <p>During the discussion, the Context Panel can be updated as new
-      information
-
-      comes to light. As well as clarifying the topic, you can use this space
-      for
-
-      sharing resources, summarising the discussion as it progresses, or
-      outlining the
-
-      decision-making protocols your group is using.</p>
     start_proposal: Menulis usulan yang baik
     start_proposal_html: >
       <p> Apabila Anda membuat judul yang jelas dan ringkas, anggota kelompok

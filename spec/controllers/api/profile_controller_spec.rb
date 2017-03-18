@@ -19,8 +19,6 @@ describe API::ProfileController do
         username
         avatar_initials
         avatar_kind
-        avatar_url
-        profile_url
         time_zone
         search_fragment
         label])

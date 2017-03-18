@@ -146,7 +146,6 @@ de:
     sign_in: Login
     signed_in: Erfolgreich registriert
     oauth:
-      title: 'Oder melden Sie sich mit einem Drittanbieter-Account an:'
       facebook: Anmelden mit Facebook
       twitter: Anmelden mit Twitter
       google: Anmelden mit Google
@@ -201,25 +200,7 @@ de:
     invite_people: Leute einladen
   notifications:
     header: Benachrichtigungen
-    new_discussion: '<strong>{{name}}</strong> eröffnete die Diskussion <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> erstellte den Vorschlag <strong>{{proposal}}</strong>'
-    motion_closed: 'Vorschlag geschlossen: <strong>{{proposal}}</strong>'
     publish_outcome: Ergebnis bekanntgeben
-    motion_closed_by_user: '<strong>{{name}}</strong> hat den Vorschlag <strong>{{proposal}}</strong> geschlossen'
-    motion_closed_by_expiry: 'Vorschlag <strong>{{proposal}}</strong> ist geschlossen'
-    new_vote: '<strong>{{name}}</strong> {{position}} im Vorschlag <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> kommentierte in <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> antwortete auf Deinem Kommentar in <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> gefällt Dein Kommentar in <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> bestätigte Deine Mitgliedschaft in <strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> prüfte Deine Beitrittsanfrage für <strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> fügte Dich der Gruppe <strong>{{group}}</strong> hinzu'
-    user_added_to_group_no_inviter: 'Du wurdest der Gruppe <strong>{{group}}</strong> hinzugefügt'
-    motion_closing_soon: 'Vorschlag endet bald: <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> veröffentlichte ein Ergebnis für den Vorschlag <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> aktualisierte das Ergbnis des Vorschlags <strong>{{proposal}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> hat Deine Einladung zu <strong>{{group}}</strong> angenommen'
-    new_coordinator: '<strong>{{name}}</strong> hat Dich zu einem Koordinator/in von <strong>{{group}}</strong> gemacht'
   position_buttons_panel:
     heading: Komme zu Wort
   vote_form:
@@ -410,10 +391,8 @@ de:
     contribute: Mache eine Spende
   gift_card:
     heading: Geschenk-Plan
-    body: '<strong>{{name}}</strong> ist eine spendenbasierte Gruppe. Um Loomio dabei zu unterstützen Gruppen wie Deiner zu helfen, klicke hier:'
     make_a_contribution: Mache eine Spende
   trial_card:
-    title: 30-Tage-Probe
     choose_plan: Wähle dein Vertragsmodell
     in_progress_body: 'Danke für das testen von Loomio in <strong>{{name}}</strong>. Du kannst jederzeit das Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt.'
     expired_body_html: '<strong>{{name}}</strong> hat das Ende des Loomio Probezeitraums erreicht. Um es weiterhin zu nutzen musst Du ein Vertragsmodell wählen, dass am Besten zu Deiner Gruppe passt.'
@@ -448,7 +427,6 @@ de:
     how_do_people_join: Wie kann jemand teilnehmen?
     membership_granted_upon_request: JedeR kann der Gruppe beitreten.
     membership_granted_upon_approval: Jede.r kann um Aufnahme bitten. Diese wird dann geprüft.
-    membership_granted_upon_approval_secret_parent: '<strong>Auf Anfrage</strong> - jede.r von {{parent}} kann um Aufnahme in die Gruppe bitten.'
     thread_privacy: Diskussions-Privatsphäre
     public_threads: Nur öffentliche Diskussionen
     public_discussions_subgroup: 'Jeder in {{parentGroupName}} kann Diskussionen sehen'
@@ -513,7 +491,6 @@ de:
     messages:
       invitation_sent: Einladung gesendet.
       invitations_sent: '{{count}} Einladungen versendet.'
-      no_invitations: 'Upps! Bitte überprüfe die eMail-Adresse und versuche es noch einmal.'
       max_invitations: 'Wenn Du mehr als 100 Einladungen zu verschicken hast, nutze einen Team-Link.'
   add_members_modal:
     heading: 'Mitglieder aus der Gruppe {{name}} hinzufügen'
@@ -571,7 +548,6 @@ de:
     on_participation_description: 'Wenn Du Dich an einer Diskussion beteiligst, wirst Du zukünftig sofort über alles per eMail informiert.'
     mentioned_label: Erwähnungen
     mentioned_description: 'Wenn jemand Deine Aufmerksamkeit erhalten will, wirst Du @erwähnt. Wir empfehlen diese Einstellung aktiv zu setzen, damit andere Dich ansprechen können.'
-    update_settings: Einstellungen für alle Gruppen aktualisieren
     specific_groups: Einstellungen für einzelne Gruppen
     default_settings:
       loud_description: 'Wenn Du einer Gruppe beitrittst, dann wirst Du per eMail benachrichtigt, <strong>sobald etwas passiert</strong>.'
@@ -755,28 +731,6 @@ de:
 
       Hier sind einige Tipps um Deiner Gruppe zum Erfolg zu verhelfen:
     different_ways: Verschiedene Wege um Loomio zu benutzen
-    engaging_html: >
-      <h2>Tipps um Deine Gruppe zu mobilisieren</h2>
-
-      <p>Die Leute werden begeistert sein und mitmachen, wenn ein einnehmender
-      Vorschlag auf dem Tisch liegt. Ein guter Vorschlag beinhaltet einen
-      Aktionsplan, so dass es sofort klar ist, was es bedeutet, zuzustimmen oder
-      abzulehnen. Denke darüber nach, ob
-
-      es Diskussionen oder Entscheidungen gibt, die momentan persönlich oder per
-      eMail geführt werden
-
-      und bei denen Du denkst es wäre besser, diese auf Loomio zu führen.</p>
-
-      <p>Wenn Deine Gruppe gerade beginnt, könntest Du eine unbeschwerte
-      Diskussion beginnen
-
-      damit jeder eine Chance bekommt mit Loomio rumzuspielen und es in Aktion zu
-      sehen.</p>
-
-      <p>Ein anderer Weg, um Leute zu animieren an einer Diskussion teilzunehmen,
-      ist das @erwähnen-Feature: damit wird dem/der erwähnten Person eine eMail
-      geschickt, dass er/sie in einem Kommentar erwähnt wurde.</p>
     example1_html: >
       <h3>Deine Gruppe soll ein umfassendes Thema diskutieren und zusammen eine
       Lösung finden?</h3>
@@ -792,19 +746,6 @@ de:
       sind, werden sie eher bereit
 
       sein, das Ergebnis zu akzeptieren.</p>
-    example2_html: >
-      <h3>Du hast schon einen Vorschlag vor Augen und Du möchtest das Okay von
-      der Gruppe um weiter machen zu können.</h3>
-
-      <p>Strategie: Beginne die Diskussion mit einem speziellen Thema und mache
-      deinen Vorschlag sofort.</p>
-
-      <p>Wenn du meinst, du wüsstest wie die Entscheidung ausfallen wird, aber
-      noch mal auf Nummer sicher gehen willst, kannst du den Vorschlag benutzen,
-      um schnell einen Eindruck zu bekommen.</p>
-
-      <p>So kannst du über finale Dokumente, eine Bewerbung oder die Abnahme
-      eines Projektes abstimmen.</p>
     get_in_touch: Kontakt aufnehmen
     get_in_touch_description_html: "Wenn Du Fragen oder Feedback hast, <a href='%{link}'>melde Dich bei uns</a>."
     getting_started: Loslegen
@@ -874,18 +815,6 @@ de:
     positions_disagree_description: '<span>Ablehnen</span> bedeutet, Du denkst es könnte eine bessere Alternative geben, aber Du wirst die Entscheidung der Gruppe akzeptieren.'
     positions_block_description: '<span>Blockieren</span> bedeutet, Du hast schwere Einwände gegen diesen Vorschlag und Du bist nicht einverstanden, dass dieser Vorschlag fortgeführt wird.'
     start_discussion: Starte eine einnehmende Diskussion
-    start_discussion_html: >
-      <p>Wenn Du eine Diskussion beginnst, stelle sicher, dass der Titel das
-      Thema prägnant vermittelt.
-
-      Benutze das Kontextmenü um alle Hintergrundinformationen anzugeben, die für
-      eine produktive und informative Diskussion der Gruppe nötig sind.</p>
-
-      <p>Während der Diskussion kann das Kontext-Feld aktualisiert werden, wenn
-      neue Informationen eintreffen. Neben der Erläuterung des Themas, kannst Du
-      diesen Bereich nutzen, um Ressourcen zu teilen und die fortlaufende
-      Diskussion zusammenzufassen. Weiterhin kannst Du den Prozess der
-      Entscheidungsfindung beschreiben, den Deine Gruppe nutzt.</p>
     start_proposal: Schreibe einen genauen Vorschlag
     start_proposal_html: >
       <p> Wenn Du den Titel kurz und klar machst, werden die Leute sofort wissen,
@@ -977,7 +906,6 @@ de:
   authorized_apps_page:
     title: Autorisierte Apps
     no_applications: Du hast bisher keine Drittanbieter-Apps autorisiert.
-    notice: 'Du hast den folgenden Drittanbietern-Apps erlaubt, Deinen Zugang zu nutzen. Klicke "Widerrufen" um dies abzuschalten.'
     revoke: Widerrufen
   registered_apps_page:
     title: Registrierte Anwendungen

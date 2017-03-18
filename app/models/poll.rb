@@ -89,10 +89,19 @@ class Poll < ActiveRecord::Base
         GROUP BY poll_options.name
       }).map { |row| [row['name'], row['total'].to_i] }.to_h))
 
-      update_attribute(:stance_counts,
-        poll_options.order(:priority)
-                    .pluck(:name)
-                    .map { |name| stance_data[name] })
+    update_attribute(:stance_counts,
+      poll_options.order(:priority)
+                  .pluck(:name)
+                  .map { |name| stance_data[name] })
+
+    # TODO: convert this to a SQL query (CROSS JOIN?)
+    update_attribute(:matrix_counts,
+      poll_options.limit(5).map do |option|
+        stances.latest.limit(5).map do |stance|
+          stance.poll_options.include?(option)
+        end
+      end
+    ) if chart_type == 'matrix'
   end
 
   def material_icon
@@ -129,6 +138,10 @@ class Poll < ActiveRecord::Base
 
   def voters_review_responses
     template['voters_review_responses']
+  end
+
+  def dates_as_options
+    template['dates_as_options']
   end
 
   def active?

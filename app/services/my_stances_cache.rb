@@ -1,8 +1,7 @@
 class MyStancesCache
   attr_reader :participant, :cache
 
-  def initialize(user: LoggedOutUser.new, polls: [])
-    @participant = user.presence || Visitor.find_by(participation_token: user.participation_token)
+  def initialize(participant: LoggedOutUser.new, polls: [])
     @cache = {}
     return unless participant.presence && polls.presence
 

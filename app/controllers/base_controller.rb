@@ -6,7 +6,6 @@ class BaseController < ApplicationController
 
   before_filter :check_for_omniauth_authentication,
                 :check_for_invitation,
-                :ensure_user_name_present,
                 :set_time_zone_from_javascript, unless: :ajax_request?
 
   helper_method :time_zone
@@ -15,12 +14,6 @@ class BaseController < ApplicationController
 
   def ajax_request?
     request.xhr? or not user_signed_in?
-  end
-
-  def ensure_user_name_present
-    unless current_user.name.present?
-      redirect_to profile_path, alert: "Please enter your name to continue"
-    end
   end
 
   def check_for_invitation

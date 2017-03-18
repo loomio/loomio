@@ -14,7 +14,7 @@ class API::RegistrationsController < Devise::RegistrationsController
   def respond_with(resource, args = {})
     if resource.persisted?
       flash[:notice] = t(:'devise.registrations.signed_up')
-      render json: CurrentUserData.new(resource).data
+      render json: BootData.new(resource).data
     else
       render json: { errors: resource.errors }, status: 422
     end

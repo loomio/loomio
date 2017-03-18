@@ -170,7 +170,6 @@ pt-BR:
     sign_in: Login
     signed_in: Entrou com sucesso
     oauth:
-      title: 'Ou entre com uma conta de terceiros:'
       facebook: Entre com o Facebook
       twitter: Entre com o Twitter
       google: Entre com o Google
@@ -260,26 +259,7 @@ pt-BR:
   notifications:
     header: Notificações
     no_notifications: Você não possui nenhuma notificação.
-    new_discussion: '<strong>{{name}}</strong> iniciou uma discussão <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> criou uma proposta <strong>{{proposal}}</strong>'
-    motion_closed: 'Proposta encerrada: <strong>{{proposal}}</strong>'
     publish_outcome: Publicar um resultado
-    motion_closed_by_user: '<strong>{{name}}</strong> fechou a proposta <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'Proposta encerrada <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> {{position}} sobre a proposta <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> comentou em <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> respondeu seu comentário em <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> curtiu seu comentário em <strong>{{discussion}}</strong>'
-    user_mentioned: '<strong>{{name}}</strong> mencionou você em <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> solicitou adesão para <strong>{{group}}</strong>'
-    membership_request_approved: '<strong>{{name}}</strong> aprovou sua solicitação para unir-se <strong>{{group}}</strong>'
-    user_added_to_group: '<strong>{{name}}</strong> adicionou você ao grupo <strong>{{group}}</strong>'
-    user_added_to_group_no_inviter: 'Você foi adicionado ao grupo <strong>{{group}}</strong>'
-    motion_closing_soon: 'Proposta encerrando em breve <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> publicou um resultado para a proposta <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> atualizou o resultado da proposta <strong>{{proposal}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> aceitou o seu convite para integrar <strong>{{group}}</strong>'
-    new_coordinator: '<strong>{{name}}</strong> colocou você como coordenador de <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Dê a sua opinião
   vote_form:
@@ -523,7 +503,6 @@ pt-BR:
     got_to_group: 'Agora não, obrigado.'
   gift_card:
     heading: Plano Presente
-    body: '<strong>{{name}}</strong> é um grupo baseado na economia do presente. Para apoiar o Loomio a continuar ajudando grupos como o seu, clique aqui:'
     make_a_contribution: Faça uma contribuição
   upgrade_plan_card:
     heading: Atualização para recursos premium
@@ -536,7 +515,6 @@ pt-BR:
     upgrade: Atualize agora
     donate: Doe
   trial_card:
-    title: Teste de 30 dias
     choose_plan: Escolha seu plano de pagamento
     in_progress_body: 'Obrigado por experimentar Loomio com <strong>{{name}}</strong>. Você pode escolher um plano de preços que se adapte ao seu grupo a qualquer momento.'
     expired_body_html: '<strong>{{name}}</strong> chegou ao fim do teste no Loomio. Para continuar utilizando, você precisa escolher um plano de preços que se adapte ao seu grupo.'
@@ -606,7 +584,6 @@ pt-BR:
     how_do_people_join: Como as pessoas participam?
     membership_granted_upon_request: Qualquer um pode entrar no grupo
     membership_granted_upon_approval: 'Qualquer pessoa pode pedir para participar, mas deve ser aprovada.'
-    membership_granted_upon_approval_secret_parent: '<strong>Por solicitaçãot</strong> - qualquer membro de {{parent}} pode pedir para se juntar ao grupo.'
     thread_privacy: Privacidade do tópico
     public_threads: Somente tópicos públicos
     public_discussions_subgroup: 'Qualquer pessoa em {{parentGroupName}} pode ver as discussões'
@@ -674,7 +651,6 @@ pt-BR:
     messages:
       invitation_sent: Convite enviado.
       invitations_sent: '{{count}} convites enviados.'
-      no_invitations: 'Ops! Por favor, verifique o endereço de e-mail está correto e tente novamente.'
       max_invitations: 'Se você quiser enviar mais de 100 convites, use um link de equipe.'
   add_members_modal:
     aria_label: Adicionar membros do grupo principal
@@ -733,7 +709,6 @@ pt-BR:
   change_picture_form:
     aria_label: Formulário para mudar foto
     title: Mudar foto
-    helptext: 'Você pode enviar sua própria foto do perfil ou, se você possuir uma conta <a href="https://en.gravatar.com/support/what-is-gravatar/">Gravatar</a>, você pode usá-la.'
     use_initials: Usar iniciais
     use_gravatar: Usar gravatar
     use_uploaded: Enviar uma nova foto
@@ -750,7 +725,6 @@ pt-BR:
     introduction: 'Quando você desativa sua conta:'
     no_longer_group_member: Você deixará de ser listado como membro de todos os grupos
     name_removed: 'Comentários, propostas e discussões feitas por você permanecerão, mas seu nome será removido dos mesmos'
-    no_emails: Você não receberá mais emails relacionados ao Loomio.
     contact_for_reactivation: Você precisará entrar em contato conosco para reativar sua conta
     submit: 'Sim, eu quero desativar'
   deactivate_user_form:
@@ -772,7 +746,6 @@ pt-BR:
     on_participation_description: 'Quando você participar de uma discussão, todas as atividades serão enviadas por e-mail para você imediatamente.'
     mentioned_label: Menções
     mentioned_description: 'Quando alguém quer chamar sua atenção, vai @mencionar você. Recomendamos que você deixe esta opção marcada para que receba um e-mail quando isso acontecer.'
-    update_settings: Atualizar configurações para todos os grupos
     specific_groups: Configurações para grupos específicos
     default_settings:
       loud_description: 'Quando você entrar em um novo grupo, você receberá e-mail <strong>sempre que houver atividade</strong>.'
@@ -989,34 +962,6 @@ pt-BR:
       em conjunto. Seguem abaixo algumas dicas para ajudar o seu grupo a dar
       certo:
     different_ways: Diferentes formas de usar o Loomio
-    engaging_html: >
-      <h2>Dicas para engajar seu grupo</h2>
-
-
-
-      <p>As pessoas ficarão empolgadas em se envolver e começar a participar
-      quando houver uma
-
-      proposta na mesa. Uma boa proposta contém um plano de ação para o grupo de
-      tal forma que
-
-      é imediatamente óbvio o que significa concordar ou discordar. Pense em como
-      você  pode
-
-      identificar os debates/decisões que o grupo está atualmente empreendendo
-      pessoalmente ou por email que seriam mais fáceis se estivessem no
-      Loomio.</p>
-
-      <p>Se seu grupo está apenas começando, você poderia inciar uma discussão
-      leve, para dar
-
-      a todos a chance de brincar com a ferramenta e ver o processo de tomar
-      decisões em ação</p>
-
-      <p>Outra maneira simples de encorajar as pessoas a se envolver no debate
-      é usar o recurso de @menção para estimular pessoas específicas; isso faz
-      enviá-las um e-mail para avisá-las que foram mencionadas em um
-      comentário.</p>
     example1_html: >
       <h3>Você precisa que o grupo discuta um tema amplo e desenvolva uma solução
       em conjunto</h3>
@@ -1030,21 +975,6 @@ pt-BR:
       compartilhado sobre o problema antes de pular para uma solução específica.
       Quando as pessoas participam do processo, elas são muito mais propensas
       a estar alinhadas com o resultado.</p>
-    example2_html: >
-      <h3>Você já tem uma proposta em mente e gostaria de obter validação do
-      grupo para seguir adiante.</h3>
-
-      <p>Estratégia: Iniciar uma discussão sobra uma decisão específica e abrir
-      uma proposta imediatamente.</p>
-
-      <p>Se você já tem claro em sua mente um resultado, mas quer assegurar que
-      não restam questões críticas,
-
-      você pode usar a proposta para rapidamente ter um feedback sobre uma
-      decisão.</p>
-
-      <p>Você pode fazer coisas como finalizar um documento, aprovar uma
-      aplicação ou validar um trabalho já feito.</p>
     get_in_touch: Entre em contato
     get_in_touch_description_html: "Se tiver qualquer pergunta ou sugestão, <a href='%{link}'>fale conosco</a>."
     getting_started: Primeiros passos
@@ -1129,25 +1059,6 @@ pt-BR:
     positions_disagree_description: '<span>Desacordo</span> significa que você acredita que deve haver uma alternativa melhor, mas que está disposta/o a aceitar a decisão da maioria.'
     positions_block_description: '<span>Bloqueio</span> significa que você tem sérias objeções à proposta e ficará muito insatisfeita/o se ela for aprovada.'
     start_discussion: Iniciar uma discussão envolvente
-    start_discussion_html: >
-      <p>Quando você iniciar uma discussão, certifique-se de que o título
-      comunica o tópico
-
-      de maneira sucinta. Use o Painel de Contexto para fornecer toda informação
-      necessária
-
-      para que o grupo tenha uma discussão produtiva e embasada.</p>
-
-      <p>Durante a discussão, o Painel de Contexto pode ser atualizado de acordo
-      com a
-
-      chegada de novas informações. Além de esclarecer o tópico, você pode usar
-      esse espaço
-
-      para compartilhar recursos, resumir a discussão enquanto ela avança ou
-      explicar os
-
-      protocolos de tomada de decisão que seu grupo está usando.</p>
     start_proposal: Escrever uma proposta clara
     start_proposal_html: >
       <p> Se escolher um título claro e sucinto, as pessoas saberão imediatamente
@@ -1250,7 +1161,6 @@ pt-BR:
   authorized_apps_page:
     title: Apps Autorizados
     no_applications: Você ainda não autorizou nenhum aplicativo de terceiros.
-    notice: 'Você deu a seguinte permissão para aplicativos de terceiros usarem a sua conta. Clique em "Revogar" para desativá-los.'
     revoke: Revogar
   registered_apps_page:
     title: Apps Registrados

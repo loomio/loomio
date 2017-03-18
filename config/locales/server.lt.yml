@@ -12,6 +12,7 @@ lt:
     contact: Susisiekite
     help: Pagalba
     privacy: Privatumas
+    pricing: Kainynas
     public_groups: Viešos grupės
     terms: Nuostatos
   start_group_form:
@@ -19,4 +20,4 @@ lt:
   contact_page:
     contact_us: Susisiekti su mumis
     labels:
-      email: Tavo el. pašto adresas
+      email: Jūsų el. pašto adresas

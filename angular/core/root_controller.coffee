@@ -51,6 +51,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
 
   $router.config AppConfig.routes.concat AppConfig.plugins.routes
 
+  AppConfig.records = Records
   AhoyService.init()
   Session.login(AppConfig.currentUserData)
 

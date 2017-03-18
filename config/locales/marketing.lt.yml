@@ -1,1 +1,11 @@
-lt: {}
+lt:
+  navigation:
+    blog: Tinklaraštis
+    help: Pagalba
+    about: Apie
+    pricing: Kainynas
+    privacy: Privatumas
+    translation: Vertimas
+    newsletter: Naujienlaiškis
+    twitter: Twitter
+    facebook: Facebook
