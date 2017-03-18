@@ -7,4 +7,5 @@ class Visitor < ActiveRecord::Base
 
   belongs_to :community, class_name: "Communities::Base"
   has_many :stances, as: :participant
+  has_one :identity, as: :participant
 end

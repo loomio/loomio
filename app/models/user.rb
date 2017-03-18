@@ -201,10 +201,6 @@ class User < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
-  def group_membership(group)
-    memberships.for_group(group).first
-  end
-
   def self.find_by_email(email)
     User.where('lower(email) = ?', email.to_s.downcase).first
   end
