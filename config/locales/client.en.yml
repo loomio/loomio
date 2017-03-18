@@ -4,6 +4,7 @@ en:
     count: Count
     poll: Poll
     dot_vote: Dot Vote
+    meeting: Meeting
   common:
     confirm_discard_changes: Discard your changes?
     time:
@@ -1315,7 +1316,7 @@ en:
       success: "'{{name}}' can no longer use your account."
 
   decision_tools_card:
-    title: Decision tools
+    title: Facilitation tools
     purpose: Clear input from everyone. Move the conversation forward. Hear from many people at once. Create shared
     purpose: Collect individual views to understand the whole.
     proposal_title: Proposal
@@ -1326,6 +1327,8 @@ en:
     poll_subtitle: Measure popularity of different options
     dot_vote_title: Dot Vote
     dot_vote_subtitle: Everyone gets some votes to spend
+    meeting_title: Schedule Meeting
+    meeting_subtitle: Find a time to meet
 
   poll_common:
     your_response: Your response
@@ -1365,9 +1368,13 @@ en:
     close_proposal: Close proposal
     close_poll: Close poll
     close_count: Close count
+    close_dot_vote: Close dot vote
+    close_meeting: Close meeting poll
     proposal_closed: Proposal closed
     poll_closed: Poll closed
     count_closed: Count closed
+    dot_vote_closed: Dote vote closed
+    meeting_closed: Meeting time poll closed
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1480,6 +1487,9 @@ en:
   poll_count_chart_panel:
     out_of: out of {{goal}}
 
+  poll_meeting_chart_panel:
+    total: Total
+
   poll_poll_form:
     start_header: Start a poll
     edit_header: Edit poll
@@ -1503,6 +1513,10 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_meeting_vote_form:
+    stance_created: Your times have been recorded
+    stance_updated: Your times have been updated
+
   poll_dot_vote_form:
     tip: Dot voting is a form of cumulative voting. Use it to understand preferences with more detail than a single vote.
     start_header: Start a dot vote
@@ -1518,6 +1532,19 @@ en:
     update: Update Dot Vote
     dot_vote_created: Dot vote created
     dot_vote_updated: Dot vote updated
+
+  poll_meeting_form:
+    start_header: Schedule a time
+    tip: Find the time that best suits the group. Provide a list of times to meet and see which ones people can attend <a href='#'>Learn more</a>
+    title: Title
+    title_placeholder: E.g. When should we have our next meetup?
+    details: Details
+    details_placeholder: Provide any clarifying details people might need to participate
+    options: Times
+    start: Schedule a time
+    update: Update schedule
+    meeting_created: Meeting poll created
+    meeting_updated: Meeting poll updated
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
@@ -1553,6 +1580,20 @@ en:
       poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
       poll_expired: 'Dot vote finished: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
+
+    dot_vote:
+      poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> voted:'
+      poll_edited: '<strong>{{author}}</strong> edited the dot vote: <span>{{title}}</span>'
+      poll_expired: 'Dot vote finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
+
+    meeting:
+      poll_created: '<strong>{{author}}</strong> started a meeting time poll: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> responded:'
+      poll_edited: '<strong>{{author}}</strong> edited the meeting time poll: <span>{{title}}</span>'
+      poll_expired: 'Meeting time poll finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the meeting time poll: <span>{{title}}</span>'
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'

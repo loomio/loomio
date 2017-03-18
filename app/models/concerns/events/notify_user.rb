@@ -27,7 +27,7 @@ module Events::NotifyUser
 
   # defines the avatar which appears next to the notification
   def notification_actor
-    @notification_actor ||= user || eventable.author
+    @notification_actor ||= user || eventable&.author
   end
 
   # defines the link that clicking on the notification takes you to

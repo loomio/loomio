@@ -140,31 +140,6 @@ sk:
       ktoré aplikácia ponúka využívané efektívne. Tu je niekoľko tipov ktoré vám
       pomôžu v tejto úlohe:
     different_ways: Rôzne spôsoby ako používať Loomio
-    engaging_html: >
-      <h2>Tipy na zvýšenie angažovanosti v skupine</h2>
-
-      <p>Ochota ľudí zúčastňovať sa na návrhoch sa zvýši ak sú kontroverzné alebo
-      inak zaujímavé.
-
-      Dobrý návrh obsahuje akčný plán, z ktorého je jasné čo znamená súhlasiť
-      a nesúhlasiť.
-
-      Rozmýšľajte o tom, ako by sa dali diskusie prebiehajúce tvári v tvár alebo
-      prostredníctvom
-
-      emailu ľahko uskutočniť prostredníctvom aplikácie Loomio.</p>
-
-      <p>Ak vaša skupina len práve začína, prvé diskusie by sa mali týkať
-      nekritických rozhodnutí,
-
-      aby mali členovia možnosť vyskúšať si a zžiť sa s rozhodovacím
-      procesom.</p>
-
-      <p>Ďalší jednoduchý trik ako prilákať ľudí do diskusie je @spomenutím
-      niekoho, alebo citovaním
-
-      jeho/jej výroku; Loomio zašle email s upozornením, že ich meno bolo
-      spomenuté v komentári</p>
     example1_html: >
       <h3>Vaša skupina potrebuje dosiahnuť riešenie komplexného problému</h3>
 
@@ -178,19 +153,6 @@ sk:
       v diskusii o
 
       probléme, zvyšuje sa pravdepodobnosť že aj prijmú konečné rozhodnutie.</p>
-    example2_html: >
-      <h3>V mysli už máte sformulovaný návrh a od skupiny chcete len konečné
-      rozhodnutie.</h3>
-
-      <p>Stratégia: Začnite diskusiu o špecifickom rozhodnutí a hneď aj vytvorte
-      návrh.</p>
-
-      <p>Ak máte jasnú predstavu o tom, ako by mal vyzerať výsledok hlasovania,
-      ale sa chcete uistiť že nikto nemá dôležité námietky, môžte použiť návrh na
-      získanie rýchlej spätnej väzby k návrhu. </p>
-
-      <p>Príklady použitia tejto stratégie: odobrenie obsahu článku, žiadosti
-      alebo iného typu dokumentu.</p>
     get_in_touch: Spojte sa s nami
     get_in_touch_description_html: "Pokiaľ máte akékoľvek otázky alebo pripomienky, <a href='%{link}'>napíšte nám</a>."
     getting_started: Ako začať
@@ -269,24 +231,6 @@ sk:
     positions_disagree_description: '<span>Nesúhlasím</span> znamená, že myslíte, že by mohla existovať lepšia možnosť, ale ste ochotný(á) prijať rozhodnutie skupiny.'
     positions_block_description: '<span>Zamietam</span> znamená, že máte vážne námietky a budete veľmi nešťastná/ý, pokiaľ sa bude podľa návrhu postupovať.'
     start_discussion: Zahájenie pútavej diskusie
-    start_discussion_html: >
-      <p>Pre nové diskusie ktoré začnete sa snažte napísať výstižné opisy.
-
-      Na poskytnutie kontextuálnej informácie ktorú členovia skupiny budú
-      potrebovať
-
-      na vedenie zmysluplnej diskusie použite Kontext panel .</p>
-
-      <p>Počas diskusie, informácia v Kontext paneli môže byť priebežne
-      aktualizovaná
-
-      novo zistenými skutočnosťami. Tento priestor môže byť okrem opisu kontextu
-
-      využitý aj na zdieľanie informácií z iných webov, priebežné zhrnutia stavu
-      diskusie,
-
-      alebo na opis protokolu používaného v skupine na dosiahnutie
-      rozhodnutí.</p>
     start_proposal: Napísanie jasného návrhu
     start_proposal_html: >
       <p> Ak zvolíte výstižný názov, ľudia budú hneď vedieť čo v nej znamená

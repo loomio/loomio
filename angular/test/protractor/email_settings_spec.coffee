@@ -31,9 +31,9 @@ describe 'Email settings', ->
     it 'lets you update email settings for all current memberships', testMembershipUpdate
 
   describe 'logged in with unsubscribe token', ->
-    it 'displays you as logged in', ->
+    it 'displays you as logged out', ->
       page.loadPath 'email_settings_as_logged_in_user'
-      page.expectElement '.sidebar__content'
+      page.expectNoElement '.navbar__sign-in'
 
   describe 'logged out', ->
     beforeEach ->

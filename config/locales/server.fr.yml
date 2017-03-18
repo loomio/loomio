@@ -201,8 +201,8 @@ fr:
     plus: Pro
     free_trial_html: 'Nous vous demanderons de choisir votre option tarifaire après une <span>période d’essai gratuite de 30 jours</span>. Aucun besoin de carte bancaire.'
     get_started_for_free: Commencez gratuitement
-    gift_body: Soutien du projet de don pour les groupes de la communauté.
-    standard_body_html: 'Tout ce dont vous avez besoin pour  <nobr>une groupe.</nobr>'
+    gift_body: Option de soutien par les dons aux groupes de la communauté.
+    standard_body_html: 'Tout ce dont vous avez besoin pour  <nobr>un groupe.</nobr>'
     pro_body_html: 'Pour les organismes avec <nobr>de multiples groupes.</nobr>'
     one_group: un groupe
     unlimited_members: membres illimités

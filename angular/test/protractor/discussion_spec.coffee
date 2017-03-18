@@ -138,7 +138,7 @@ describe 'Discussion Page', ->
       page.expectFlash 'Comment added'
 
     it 'allows logged in users to request to join a closed group', ->
-      page.loadPath 'view_closed_group_as_non_member', ->
+      page.loadPath 'view_closed_group_as_non_member'
       page.click '.thread-preview__link'
       page.click '.join-group-button__ask-to-join-group'
       page.click '.membership-request-form__submit-btn'
@@ -211,7 +211,7 @@ describe 'Discussion Page', ->
                  '.thread-item__edit-link'
       page.fillIn '.edit-comment-form__comment-field', 'Revised comment!'
       page.click  '.comment-form__submit-btn'
-      browser.sleep(5000)
+      browser.sleep(2000)
       page.click '.thread-item__action--view-edits'
       page.expectText '.revision-history-modal__body', 'Revised comment!'
       page.expectText '.revision-history-modal__body', 'Comment!'
@@ -223,7 +223,7 @@ describe 'Discussion Page', ->
       threadPage.confirmCommentDeletion()
       expect(threadPage.activityPanel()).not.toContain('original comment right thur')
 
-  describe 'following a link in a thread email', ->
+  xdescribe 'following a link in a thread email', ->
     it 'successfully takes you to relevant comment', ->
       page.loadPath 'setup_reply_email'
       emailhelper.openLastEmail()

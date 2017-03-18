@@ -1,3 +1,78 @@
 ko:
   navigation:
+    blog: 블로그
+    resources: 자료
+    resources_dropdown: 자료메뉴펼쳐보기
+    resources_submenu: 자료하위메뉴
+    header_menu_label: 상위메뉴
+    case_studies: 운영사례
     help: 도움말
+    guides_and_tips: '지침&팁'
+    developers: 개발자
+    coop_handbook: 협업핸드북
+    about: 소개
+    pricing: 비용
+    contact: 연락처
+    login: 로그인
+    start_group: 모임시작하기
+    home: 홈
+    terms_of_service: 서비스조건
+    privacy: 개인정보
+    translation: 번역
+    newsletter: 뉴스레터
+    twitter: 트위터
+    facebook: 페이스북
+    trademark_statement: '2016루미오협동조합에 모든 권리가 있습니다. "Lumio"는 루미오협동조합의 등록된 표시입니다.'
+  marketing:
+    hero:
+      dilemma_html: 여러분의 조직이 좋은 결정을 이끌어내는 것은 어렵지 않다.
+      dilemma_image_alt: '불행한 조직의 구성원들은 소통이 어려운 어지러운 테이블 주변으로 모인다. '
+      solution: '루미오는 여러분에게 많은 이메일과 회의 없이도 좋은 결정을 내릴 수 있다. '
+      solution_image_alt: 행복한 조직의 구성원들을 지지하는 장치는 불빛주변에 몰려서 실타래처럼 엉켜 연결된다.
+    macbook_android_image_alt: 노트북과 안드로이드용 루미오
+    gather:
+      heading: 모여라
+      explanation: '적격한 사람과 제대로된 정보를 함께 모아라.  접근성이 좋고, 쉽게 이용할 수 있고, 맞춤형이며 질높은 개인보호정책이 있다.'
+      image_alt: 그
+    discuss:
+      heading: 토론하라
+      explanation: 대화주제를 명확히 하라. 제대로된 정보를 표면화하고 필요없는 정보를 가려내는데 집중하라. 건설적인 협력을 위한 전용공간이다.
+    propose:
+      heading: 목적
+      explanation: 시각적으로 요약하는 것은 어떤 위치든 어떤 목적을 가진 사람이든 쉽게 이해하도록 해준다. 동의한다면 빨리 찾을 수 있다. 또는 문제의 핵심에 곧장 집중해 이해를 공유하도록 만들어가라.
+    decide_act:
+      heading: 결정하고 행동하라
+      explanation: 모든 제안에 대해 정해진 시간계획안에 명확한 결과를 달성하라.  모든 사람들에게 결과가 알려졌기 때문에 여러분은 앞으로 나아갈수 있고 함께 행동할 수 있다.
+    try_it_now: 바로시작하기
+    start_free_group: 무료로 그룹시작하기
+    fast_inclusive_effective: '빠르고, 폭넓고, 효과적이서 여러분의 새로운 일상이 될수 있다.'
+    about_us:
+      heading: 소개
+  about:
+    heading: 소개
+    people:
+      robert: '수석개발자, 데브옵스, 건축가'
+      vivien: '공동설립자, 루미오이사회 의장, 유니세프 뉴질랜드 사무총장'
+    advisors:
+      heading: 조언자
+      sascha: X-Lab과 오픈테크놀로지 연구소 설립자
+      katherine: '전 수석부사장, AOL, 루트캐피탈 부의장 '
+      joi: 'MIT 미디어랩 책임자,  크리에이티브커먼(CC) 공동설립자, 모질라재단 이사'
+      douglas: '베스트셀러작가,CNN 해설가, 매체연구자'
+      matthew_and_brian: 나마스떼 재단 공동설립자
+    purpose_and_values:
+      heading: '목표&가치'
+      mission_statement: '루미오 협동조합은  어디서나 누구나 영향을 주는 결정에 참여할 수 있는 세계를 만들기 위해 존재한다. '
+    postal_address: 우편주소
+    physical_address: 직장또는실제주소
+  titles:
+    new_tab: 새로운 탭 열기
+    start_group: 초보자조직양식
+    about_us: 소개페이지
+    pricing: 비용페이지
+    contact: 연락처양식
+    sign_in: 서명양식
+    terms_of_service: 서비스조건페이지
+    privacy: 개인보호정책소개
+    translation: 번역지침
+    home: 홈페이지

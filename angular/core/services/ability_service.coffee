@@ -1,8 +1,14 @@
 angular.module('loomioApp').factory 'AbilityService', (AppConfig, Session) ->
   new class AbilityService
 
-    isLoggedIn: ->
-      Session.user().id? and ! Session.user().restricted?
+    isLoggedIn: =>
+      @isUser() and !Session.user().restricted?
+
+    isVisitor: ->
+      AppConfig.currentVisitorId?
+
+    isUser: ->
+      AppConfig.currentUserId?
 
     canAddComment: (thread) ->
       Session.user().isMemberOf(thread.group())

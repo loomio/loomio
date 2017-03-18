@@ -1,0 +1,16 @@
+.poll-meeting-chart-panel
+  %table
+    %thead
+      %tr
+        %td
+        %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() track by option.id"}
+          %poll_meeting_time{name: "option.name"}
+    %tbody
+      %tr
+        %td{translate: "poll_meeting_chart_panel.total"}
+        %td.poll-meeting-chart-panel__cell{ng-repeat: "count in poll.stanceCounts track by $index"}
+          {{count}}
+      %tr{ng-repeat: "stance in poll.uniqueStances() track by stance.id"}
+        %td.poll-meeting-chart-panel__participant-name {{ stance.participant().name }}
+        %td.poll-meeting-chart-panel__cell{ng-class: "{'poll-meeting-chart-panel--active': stance.votedFor(option), 'poll-meeting-chart-panel--inactive': !stance.votedFor(option)}", ng-repeat: "option in poll.pollOptions() track by option.id"}
+          %i.material-icons{ng-if: "stance.votedFor(option)"} check

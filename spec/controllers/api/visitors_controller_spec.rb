@@ -75,29 +75,26 @@ describe API::VisitorsController do
 
   describe 'update' do
     it 'updates the name and email of a visitor' do
-      cookies[:participation_token] = visitor.participation_token
-      post :update, id: visitor.id, visitor: new_visitor_params
+      post :update, id: visitor.id, visitor: new_visitor_params, participation_token: visitor.participation_token
       expect(response.status).to eq 200
       expect(visitor.reload.name).to eq new_visitor_params[:name]
       expect(visitor.email).to eq new_visitor_params[:email]
     end
 
     it 'does not update the participation token' do
-      cookies[:participation_token] = visitor.participation_token
       new_visitor_params[:participation_token] = "new_token"
-      expect { post :update, id: visitor.id, visitor: new_visitor_params }.to_not change { visitor.reload.participation_token }
+      expect { post :update, id: visitor.id, visitor: new_visitor_params, participation_token: visitor.participation_token }.to_not change { visitor.reload.participation_token }
       expect(response.status).to eq 400
     end
 
     it 'does not allow users other than the visitor to update itself' do
-      sign_in admin
-      expect { post :update, id: visitor.id, visitor: new_visitor_params }.to_not change { visitor.reload.participation_token }
+      sign_in user
+      expect { post :update, id: visitor.id, visitor: new_visitor_params, participation_token: visitor.participation_token }.to_not change { visitor.reload.participation_token }
       expect(response.status).to eq 403
     end
 
     it 'does not allow other visitors to update a visitor' do
-      cookies[:participation_token] = "abcd"
-      expect { post :update, id: visitor.id, visitor: new_visitor_params }.to_not change { visitor.reload.participation_token }
+      expect { post :update, id: visitor.id, visitor: new_visitor_params, participation_token: "asdasdas" }.to_not change { visitor.reload.participation_token }
       expect(response.status).to eq 403
     end
   end

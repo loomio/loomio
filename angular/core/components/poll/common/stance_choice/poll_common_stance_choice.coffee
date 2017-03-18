@@ -5,4 +5,9 @@ angular.module('loomioApp').directive 'pollCommonStanceChoice', (PollService) ->
     $scope.translateOptionName = PollService.fieldFromTemplate($scope.stanceChoice.poll().pollType, 'translate_option_name')
 
     $scope.hasVariableScore = ->
+      return unless $scope.stanceChoice.poll()
       PollService.fieldFromTemplate($scope.stanceChoice.poll().pollType, 'has_variable_score')
+
+    $scope.datesAsOptions = ->
+      return unless $scope.stanceChoice.poll()
+      PollService.fieldFromTemplate($scope.stanceChoice.poll().pollType, 'dates_as_options')

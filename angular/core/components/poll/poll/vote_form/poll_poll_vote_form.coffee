@@ -20,6 +20,7 @@ angular.module('loomioApp').directive 'pollPollVoteForm', ->
         else
           [$scope.vars.pollOptionId]
 
+        if _.any selectedOptionIds
           $scope.stance.stanceChoicesAttributes =
             _.map selectedOptionIds, (id) -> {poll_option_id: id}
 

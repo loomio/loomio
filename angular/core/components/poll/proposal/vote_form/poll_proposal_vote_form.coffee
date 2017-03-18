@@ -6,6 +6,7 @@ angular.module('loomioApp').directive 'pollProposalVoteForm', ->
 
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: ->
+        return unless $scope.stance.selectedOption
         $scope.stance.stanceChoicesAttributes = [{ poll_option_id: $scope.stance.selectedOption.id }]
 
     $scope.cancelOption = -> $scope.stance.selected = null

@@ -20,6 +20,17 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     templateFor: (pollType) ->
       @activePollTemplates()[pollType]
 
+    lastStanceBy: (participant, poll) ->
+      criteria =
+        latest:    true
+        pollId:    poll.id
+        visitorId: AppConfig.currentVisitorId or null
+        userId:    AppConfig.currentUserId or null
+      _.first _.sortBy(Records.stances.find(criteria), 'createdAt')
+
+    hasVoted: (participant, poll) ->
+      @lastStanceBy(participant, poll)?
+
     iconFor: (poll) ->
       @fieldFromTemplate(poll.pollType, 'material_icon')
 
@@ -42,6 +53,8 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName}"
         successCallback: (data) ->
+          model.poll().clearStaleStances()
+          AppConfig.currentVisitorId = data.stances[0].visitor_id
           scope.$emit 'stanceSaved', data.stances[0].key
         draftFields: ['reason']
       , options))

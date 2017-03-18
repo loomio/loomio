@@ -9,7 +9,7 @@
         - if @info.poll.translate_option_name
           %span= t(:"poll_proposal_options.#{poll_option.name}")
         - else
-          %span= poll_option.name.humanize
+          %span= @info.display_name_for(poll_option)
       %table
         - stance_choices.each do |stance_choice|
           %tr

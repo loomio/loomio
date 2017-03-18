@@ -6,8 +6,8 @@
     %start_menu_option{text: "start_group", icon: "group", action: "startGroup", hotkey: "pressedG"}
     .start-menu__option--start-thread{ng-show: "hasAnyGroups()"}
       %start_menu_option{text: "start_thread", icon: "pencil", action: "startThread", hotkey: "pressedT"}
-    .start-menu__option--start-poll
-      %start_menu_option{text: "start_poll", icon: "pie-chart", action: "startPoll", hotkey: "pressedP"}
+    -# .start-menu__option--start-poll
+    -#   %start_menu_option{text: "start_poll", icon: "pie-chart", action: "startPoll", hotkey: "pressedP"}
 
   %button.start-menu__start-button.start-menu__menu-button.start-menu__over-modal{ng-click: "toggleStartMenu()", title: "{{'start_menu.title' | translate}}"}
     %i.fa.fa-plus.fa-2x{ng-if: "!startMenuOpen"}

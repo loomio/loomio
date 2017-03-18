@@ -21,12 +21,10 @@ class Stance < ActiveRecord::Base
 
   scope :newest_first,   -> { order(created_at: :desc) }
   scope :oldest_first,   -> { order(created_at: :asc) }
-  # scope :voters_a_to_z,  -> { joins(:participant).order('participants.name DESC') }
-  # scope :voters_z_to_a,  -> { joins(:participant).order('participants.name ASC') }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
 
-  validates :stance_choices, length: { minimum: 1 }
+  validates :stance_choices, length: { minimum: 1, message: I18n.t(:"stance.error.too_short") }
   validate :total_score_is_valid
   validate :participant_is_complete
 
@@ -60,6 +58,10 @@ class Stance < ActiveRecord::Base
     if participant&.name.blank?
       errors.add(:participant_name, I18n.t(:"activerecord.errors.messages.blank"))
       participant.errors.add(:name, I18n.t(:"activerecord.errors.messages.blank"))
+    end
+    if participant&.email.blank?
+      errors.add(:participant_email, I18n.t(:"activerecord.errors.messages.blank"))
+      participant.errors.add(:email, I18n.t(:"activerecord.errors.messages.blank"))
     end
   end
 end

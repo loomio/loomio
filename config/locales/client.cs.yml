@@ -157,16 +157,7 @@ cs:
   notifications:
     header: Upozornění
     no_notifications: Nemáte žádná upozornění.
-    new_discussion: '<strong>{{name}}</strong> zahájil(a) diskusi <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> vytvořil(a) návrh <strong>{{proposal}}</strong>'
-    motion_closed: 'Návrh uzavřen: <strong>{{proposal}}</strong>'
     publish_outcome: Zveřejnit výsledek
-    motion_closed_by_user: '<strong>{{name}}</strong> uzavřel(a) návrh <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'Návrh byl uzavřen <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> {{position}} k návrhu <strong>{{proposal}}</strong>'
-    new_comment: '<strong>{{name}}</strong> komentoval(a) <strong>{{discussion}}</strong>'
-    user_added_to_group_no_inviter: 'Byl/a jste přidán/a do skupiny <strong>{{group}}</strong>'
-    invitation_accepted: '<strong>{{name}}</strong> přijal/a vaši pozvánku do skupiny <strong>{{group}}</strong>'
   position_buttons_panel:
     heading: Vyjádřete svůj názor
   vote_form:
@@ -389,7 +380,6 @@ cs:
     update_profile: Aktualizovat profil
   email_settings_page:
     header: Nastavení emailu
-    update_settings: Aktualizovat nastavení pro všechny skupiny
     change_default: Změnit výchozí
     edit: Upravit
   dashboard_page:

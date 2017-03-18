@@ -19,7 +19,7 @@ module Events::EmailUser
   private
 
   def email_user!(recipient)
-    mailer.send(kind, recipient, self).deliver_now
+    mailer.delay.send(kind, recipient, self)
   end
 
   # which users should receive an email about this event?

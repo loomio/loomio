@@ -7,4 +7,4 @@
     - @info.poll.poll_options.each do |option|
       %tr
         %td= render 'poll_mailer/common/chip', color: option.color
-        %td= link_to option.name, poll_url(@info.poll, poll_option_id: option.id)
+        %td= link_to @info.display_name_for(option), poll_url(@info.poll, poll_option_id: option.id)

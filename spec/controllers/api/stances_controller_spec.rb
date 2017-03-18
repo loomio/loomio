@@ -116,49 +116,6 @@ describe API::StancesController do
       expect(emails).to include visitor_stance_params[:visitor_attributes][:email]
     end
 
-    describe 'visitor token' do
-      it 'sets a visitor cookie if the actor is a visitor' do
-        expect { post :create, stance: visitor_stance_params }.to change { Visitor.count }.by(1)
-        expect(cookies[:participation_token]).to eq Visitor.last.participation_token
-      end
-
-      it 'does not set a visitor cookie for logged in users' do
-        sign_in user
-        expect { post :create, stance: stance_params }.to_not change { Visitor.count }
-        expect(cookies[:participation_token]).to be_nil
-      end
-
-      it 'resets the cookie if it exists already as a visitor' do
-        cookies[:participation_token] = "abcd"
-        post :create, stance: visitor_stance_params
-        expect(cookies[:participation_token]).to eq Visitor.last.participation_token
-      end
-
-      it 'resets to the cookie if it exists already as a signed in user' do
-        sign_in user
-        cookies[:participation_token] = "abcd"
-        post :create, stance: stance_params
-        expect(cookies[:participation_token]).to be_nil
-      end
-
-      it 'does not set participation token when the create fails for signed in user' do
-        cookies[:participation_token] = "abcd"
-        visitor_stance_params[:stance_choices_attributes] = []
-        post :create, visitor_stance_params
-        expect(response.status).to eq 400
-        expect(cookies[:participation_token]).to eq "abcd"
-      end
-
-      it 'does not set participation token when the create fails for signed in user' do
-        sign_in user
-        cookies[:participation_token] = "abcd"
-        stance_params[:stance_choices_attributes] = []
-        post :create, stance_params
-        expect(response.status).to eq 400
-        expect(cookies[:participation_token]).to eq "abcd"
-      end
-    end
-
     it 'does not create a stance with an incomplete visitor' do
       visitor_stance_params[:visitor_attributes] = {}
       expect { post :create, stance: visitor_stance_params }.to_not change { Stance.count }

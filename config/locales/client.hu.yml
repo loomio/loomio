@@ -145,7 +145,6 @@ hu:
     sign_in: Belépés
     signed_in: Sikeresen bejelentkeztél
     oauth:
-      title: 'Vagy lépj be egy külső fiókkal:'
       facebook: Lépj be a Facebook-kal
       twitter: Lépj be a Twitter-rel
       google: Lépj be a Google-lel
@@ -217,25 +216,7 @@ hu:
   notifications:
     header: Értesítések
     no_notifications: Nincsenek új értesítések.
-    new_discussion: '<strong>{{name}}</strong> elindította ezt a megbeszélést: <strong>{{discussion}}</strong>'
-    new_motion: '<strong>{{name}}</strong> létrehozta a következő javaslatot: <strong>{{proposal}}</strong>'
-    motion_closed: 'Ez a javaslat lezárult: <strong>{{proposal}}</strong>'
     publish_outcome: Eredmény közlése
-    motion_closed_by_user: '<strong>{{name}}</strong> bezárta a következő  javaslatot: <strong>{{proposal}}</strong>'
-    motion_closed_by_expiry: 'Ez a javaslat lezárult: <strong>{{proposal}}</strong>'
-    new_vote: '<strong>{{name}}</strong> álláspontja: {{position}} a <strong>{{proposal}}</strong> javaslathoz.'
-    new_comment: '<strong>{{name}}</strong> hozzászólt a következőhöz: <strong>{{discussion}}</strong>'
-    comment_replied_to: '<strong>{{name}}</strong> válaszolt a hozzászólásodra, itt: <strong>{{discussion}}</strong>'
-    comment_liked: '<strong>{{name}}</strong> like-olta a hozzászólásodat, itt: <strong>{{discussion}}</strong>'
-    membership_requested: '<strong>{{name}}</strong> tagságot kért a <strong>{{group}}</strong> csoportba'
-    membership_request_approved: '<strong>{{name}}</strong> érvényesítette csatlakozási kérelmedet a <strong>{{group}}</strong> csoporthoz'
-    user_added_to_group: '<strong>{{name}}</strong> hozzáadott téged a <strong>{{group}}</strong> csoporthoz'
-    user_added_to_group_no_inviter: 'Hozzáadtak a <strong>{{group}}</strong> csoporthoz'
-    motion_closing_soon: 'Ez a javaslat hamarosan lezárul: <strong>{{proposal}}</strong>'
-    motion_outcome_created: '<strong>{{name}}</strong> közzétett egy eredményt a következő javaslatra: <strong>{{proposal}}</strong>'
-    motion_outcome_updated: '<strong>{{name}}</strong> frissítette a következő javaslat: <strong>{{proposal}}</strong> eredményét'
-    invitation_accepted: '<strong>{{name}}</strong> elfogadta a meghívásodat a <strong>{{group}}</strong> csoportba'
-    new_coordinator: '<strong>{{name}}</strong> beállított a <strong>{{group}}</strong> csoport koordinátorának.'
   position_buttons_panel:
     heading: Szólj bele
   vote_form:
@@ -374,21 +355,6 @@ hu:
       hanem azt is, hogy tud jól összedolgozni, hogyan tud közösen döntéseket
       hozni. Pár jótanács, hogy ez sikerüljön:
     different_ways: Többféleképpen használhatod a Loomiót
-    engaging_html: >
-      <h2>Hogyan vond be a csoportot</h2>
-
-      <p>Az emberek akkor fognak belevágni a közös gondolkodásba, ha már van
-      valamilyen érdekes javaslat. A jó javaslat előre mutat, megmutatja, mit
-      tegyen a csoport, így mindenkinek egyértelmű, hogy mit jelent, ha ellenzi
-      vagy támogatja. Gondold át, milyen vitákat folytat le a csoport személyesen
-      vagy e-mailben, amit megkönnyíthetne a Loomio használata.</p>
-
-      <p>Ha most alakult a csoport érdemes valami kisebb fajsúlyú témával
-      kezdeni, hogy mindenki kipróbálhassa a Loomio lehetőségeit.</p>
-
-      <p>Úgy is bevonhatsz másokat a vitába, ha használod a @név eszközt és
-      a megjegyzésekben megnevezel egyeseket, levelet fognak kapni róla, hogy te
-      megemlítetted őket.</p>
     example1_html: >
       <h3>Azt szeretnéd, hogy a csoport tárgyaljon meg egy szerteágazó témát és
       dolgozzon ki rá megoldást</h3>
@@ -400,18 +366,6 @@ hu:
       miről is van szó, mielőtt elhamarkodottan döntene. Ha a tagok részt vesznek
       a vitában és a javaslat kidolgozásában, sokkal jobban elfogadják a közös
       döntést is.</p>
-    example2_html: >
-      <h3>Ha már van döntési javaslatod és szeretnéd, hogy a csoport döntsön
-      róla, hogy továbbléphessetek</h3>
-
-      <p>Stratégia: Nyisd meg a témát és azonnal tegyél javaslatot is.</p>
-
-      <p>Ha konkrét elképzelésed van arról, hogy mit kellene tenni, de biztos
-      akarsz benne lenni, hogy senkinek nincs érdemi ellenvetése, a javaslat
-      előrelendítheti a közös döntést.</p>
-
-      <p>Hasznos lehet ez, ha jóvá kell hagyni egy dokumentumot, egy
-      jelentkezést, bármilyen elvégzett munkát.</p>
     get_in_touch: Kapcsolat
     get_in_touch_description_html: "Ha bármilyen kérdésed van vagy visszajelzést szertnél küldeni, <a href='%{link}'>hívj minket fel</a>."
     getting_started: Kezdjük
@@ -469,16 +423,6 @@ hu:
     positions_disagree_description: 'A <span>Nem értek egyet</span> azt jelenti, hogy szerinted lehet jobb megoldás, de ha így dönt a csoport, elfogadod.'
     positions_block_description: 'A <span>Blokkolom</span> azt jelenti, hogy komoly fenntartásaid vannak a javaslattal kapcsolatban és nagyon nagy bajnak tartanád, ha elfogadnák.'
     start_discussion: Kezdj izgalmas témát
-    start_discussion_html: >
-      <p>Ha új témát nyitsz, gondoskodj róla, hogy a cím egyértelműen utaljon
-      arra, miről van szó. A leírásban megadhatod mindazokat az információkat,
-      amikre a csoportnak szüksége van, hogy megalapozott döntést hozhasson.</p>
-
-      <p>A leírást frissítheted, ha már folyik a vita, hogy az újonnan felmerült
-      információk is belekerüljenek. Azon túl, hogy tovább tisztázod, miről is
-      van szó, arra is használhatod a leírást, hogy anyagokat ossz meg,
-      összefoglald az addig elhangzottakat vagy éppen vázold a döntéshozatal
-      menetét. </p>
     start_proposal: A javaslat legyen egyértelmű
     start_proposal_html: >
       <p>Ha a cím egyértelmű és tömör, a tagok rögtön tudni fogják, mit jelent ha
