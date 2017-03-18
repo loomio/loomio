@@ -79,6 +79,10 @@ class ApplicationController < ActionController::Base
     @current_user_groups ||= current_user.groups
   end
 
+  def user_signed_in?
+    current_user.is_logged_in?
+  end
+
   def user_time_zone(&block)
     Time.use_zone(current_user.time_zone_city, &block)
   end
