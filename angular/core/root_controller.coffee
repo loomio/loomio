@@ -53,6 +53,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
 
   AppConfig.records = Records
   AhoyService.init()
-  Session.login(AppConfig.currentUserData)
+  Session.login(AppConfig.bootData)
 
   return
