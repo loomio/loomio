@@ -35,7 +35,8 @@ angular.module('loomioApp').directive 'sidebar', ->
       ThreadQueryService.filterQuery(['show_unread', 'only_threads_in_my_groups'], queryType: 'inbox').length()
 
     $scope.showContactUs = ->
-      AppConfig.isLoomioDotOrg
+      # TODO: use loomio_org plugin to determine official site or not
+      AppConfig.baseUrl == 'https://www.loomio.org/'
 
     $scope.contactUs = ->
       IntercomService.contactUs()
