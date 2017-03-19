@@ -1,13 +1,5 @@
 class Identities::SlackController < Identities::BaseController
 
-  def channels
-    if identity.present?
-      render json: identity.fetch_channels
-    else
-      render json: { error: "Not connected to slack!" }, status: :bad_request
-    end
-  end
-
   private
 
   def identity

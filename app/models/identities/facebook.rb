@@ -5,7 +5,7 @@ class Identities::Facebook < Identities::Base
     self.uid ||= client.get("me") { |response| response['id'] }
   end
 
-  def fetch_admin_groups
-    client.get("#{self.uid}/groups") { |response| response }
+  def admin_groups
+    client.get("#{self.uid}/groups") { |response| response['data'] }
   end
 end

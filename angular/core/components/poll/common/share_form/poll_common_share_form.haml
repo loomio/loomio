@@ -69,19 +69,16 @@
       %h3.lmo-h3{translate: "poll_common_share_form.communities"}
 
     %md-list.md-block
-      %md-list-item.poll-common-share-form__slack
+      %md-list-item.poll-common-share-form__slack{ng-repeat: "community in communities()"}
         %md-button.lmo-flex.poll-common-share-form__community{layout: "row"}
-          %img.poll-common-share-form__community-icon{src: "/img/slack-icon.svg"}
+          %img.poll-common-share-form__community-icon{ng-src: "/img/{{community.communityType}}-icon.svg"}
           .lmo-flex{layout: "column"}
-            %h4.lmo-h4.poll-common-share-form__h4 SLACK
-            .poll-common-helptext subtitle
+            %h4.lmo-h4.poll-common-share-form__h4 {{community.name}}
+            .poll-common-helptext
+              {{community.membersCount}}
 
-      %md-list-item.poll-common-share-form__facebook
-        %md-button.lmo-flex.poll-common-share-form__community{layout: "row"}
-          %img.poll-common-share-form__community-icon{src: "/img/facebook-icon.svg"}
-          .lmo-flex{layout: "column"}
-            %h4.lmo-h4.poll-common-share-form__h4 FACEBOOK
-            .poll-common-helptext subtitle
+    %md-button.md-primary.md-raised{ng-click: "addCommunity()"}
+      %span{translate: "poll_common_share_form.add_community"}
 
   %hr
 

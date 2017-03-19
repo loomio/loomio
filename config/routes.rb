@@ -198,6 +198,8 @@ Loomio::Application.routes.draw do
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create
     end
+
+    get "identities/:id/:command", to: "identities#command"
   end
 
   get '/discussions/:id', to: 'redirect#discussion_id'

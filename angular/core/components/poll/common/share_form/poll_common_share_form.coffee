@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormService, Records, Session, FlashService, AbilityService, KeyEventService, LmoUrlService) ->
+angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, $location, FormService, Records, Session, FlashService, AbilityService, KeyEventService, LmoUrlService, ModalService, AddCommunityModal) ->
   scope: {poll: '=', back: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share_form/poll_common_share_form.html'
@@ -53,6 +53,9 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
       visitor.remind($scope.poll).then ->
         visitor.reminded = true
         FlashService.success 'poll_common_share_form.email_invited', email: visitor.email
+
+    $scope.addCommunity = ->
+      ModalService.open AddCommunityModal, poll: -> $scope.poll
 
     # $scope.groupOptions = ->
     #   [noGroupOption].concat(availableGroups)

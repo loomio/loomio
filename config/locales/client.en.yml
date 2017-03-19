@@ -1629,6 +1629,15 @@ en:
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
     communities: Connect Community
+    add_community: Add Community
+
+  add_community_form:
+    title: Add community
+    existing_communities: Previously connected communities
+    no_communities: You haven't connected any communities yet. Select one below to get started.
+    connect_new_community: Connect a new community
+    add_slack: ADD SLACK CHANNEL
+    add_facebook: ADD FACEBOOK GROUP
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

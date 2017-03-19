@@ -351,6 +351,10 @@ class Ability
       @user.can?(:create, visitor) || @user.participation_token == visitor.participation_token
     end
 
+    can :show, Identities::Base do |identity|
+      @user.identities.include? identity
+    end
+
     can :create, Stance do |stance|
       poll = stance.poll
       if !poll.active?
