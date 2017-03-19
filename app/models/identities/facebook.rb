@@ -1,11 +1,17 @@
 class Identities::Facebook < Identities::Base
   set_identity_type :facebook
 
-  def fetch_user_id
-    self.uid ||= client.get("me") { |response| response['id'] }
+  def fetch_user_info
+    me_response = client.fetch_user_info
+    self.uid  ||= me_response['id']
+    self.name ||= me_response['name']
+  end
+
+  def fetch_user_avatar
+    self.logo = client.fetch_user_avatar(self.uid)
   end
 
   def admin_groups
-    client.get("#{self.uid}/groups") { |response| response['data'] }
+    client.fetch_admin_groups(self.uid)
   end
 end

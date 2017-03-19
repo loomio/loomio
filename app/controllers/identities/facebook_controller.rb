@@ -10,16 +10,8 @@ class Identities::FacebookController < Identities::BaseController
 
   private
 
-  def identity
-    @identity ||= current_user.facebook_identity
-  end
-
-  def build_identity
-    @build_identity ||= Identities::Facebook.new(access_token: fetch_access_token).tap(&:fetch_user_id)
-  end
-
-  def fetch_access_token
-    @access_token ||= client.post("oauth/access_token", code: params[:code], redirect_uri: redirect_uri) { |response| response['access_token'] }
+  def build_identity(identity)
+    identity.fetch_user_info && identity.fetch_user_avatar
   end
 
   def oauth_url

@@ -5,7 +5,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if current_user.identities.push build_identity
+    if current_user.identities.push instantiate_identity
       redirect_to session.delete(:back_to) || root_path
     else
       render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
@@ -31,16 +31,27 @@ class Identities::BaseController < ApplicationController
     )
   end
 
+
+  def fetch_access_token
+    client.fetch_access_token(params[:code], redirect_uri)
+  end
+
   def redirect_uri
     send :"#{controller_name}_authorize_url"
   end
 
   def identity
-    raise NotImplementedError.new
+    current_user.send "#{controller_name}_identity"
   end
 
-  def build_identity
-    raise NotImplementedError.new
+  def instantiate_identity
+    "Identities::#{controller_name.classify}".constantize.new(access_token: fetch_access_token).tap do |identity|
+      build_identity(identity)
+    end
+  end
+
+  def build_identity(identity)
+    # override me with follow-up API calls if they're needed
   end
 
   def oauth_url

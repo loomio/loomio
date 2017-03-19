@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314040259) do
+ActiveRecord::Schema.define(version: 20170319204340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -669,13 +669,16 @@ ActiveRecord::Schema.define(version: 20170314040259) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
+    t.string   "identity_type"
     t.string   "uid"
     t.string   "name"
+    t.string   "access_token",  default: ""
+    t.jsonb    "custom_fields", default: {}, null: false
+    t.string   "logo"
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
-  add_index "omniauth_identities", ["provider", "uid"], name: "index_omniauth_identities_on_provider_and_uid", using: :btree
+  add_index "omniauth_identities", ["identity_type", "uid"], name: "index_omniauth_identities_on_identity_type_and_uid", using: :btree
   add_index "omniauth_identities", ["user_id"], name: "index_omniauth_identities_on_user_id", using: :btree
 
   create_table "organisation_visits", force: :cascade do |t|
