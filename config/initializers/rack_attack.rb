@@ -2,7 +2,6 @@ Rack::Attack.cache.store = Rails.cache
 Rack::Attack.throttled_response = ->(env) { [429, {}, [ActionView::Base.new.render(file: 'public/429.html')]] }
 
 ActiveSupport::Notifications.subscribe('rack.attack') do |name, start, finish, request_id, req|
-  raise "throttling", name, start, finish, request_id, req
   Airbrake.notify Exception.new(message: "rate limiting: #{req.ip} url #{req.url}", data: [req.params, name, start, finish, request_id, req])
 end
 
@@ -13,13 +12,9 @@ def from_config(key, field)
 end
 
 def throttle_request?(key, req)
-  production_or_testing_throttling? &&
+  ENV['RATE_LIMITING_ENABLED'] &&
   from_config(key, :method) == req.env['REQUEST_METHOD'] &&
   /#{from_config(key, :path)}/.match(req.path.to_s)
-end
-
-def production_or_testing_throttling?
-  Rails.env.production? || ENV['TESTING_RATE_LIMIT'] == '1'
 end
 
 @config.keys.each do |key|
