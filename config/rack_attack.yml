@@ -20,31 +20,9 @@
 
 ahoy_event_minute:
   period: 60
-  limit: 300
+  limit: 60
   path: ^\/ahoy\/events$
   method: POST
-
-group_creation_minute:
-  period: 60
-  limit: 3
-  path: ^\/g$
-
-group_creation_day:
-  period: 86400
-  limit: 10
-  path: ^\/g$
-
-comment_creation_minute:
-  path: ^\/d\/[A-Za-z0-9]*\/add_comment$
-
-discussion_creation:
-  path: ^\/d$
-
-motion_creation:
-  path: ^\/m$
-
-vote_creation:
-  path: ^\/m\/[A-Za-z0-9]*\/votes$
 
 default:
   period: 60
