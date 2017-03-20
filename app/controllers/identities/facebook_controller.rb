@@ -11,7 +11,8 @@ class Identities::FacebookController < Identities::BaseController
   private
 
   def build_identity(identity)
-    identity.fetch_user_info && identity.fetch_user_avatar
+    identity.fetch_user_info
+    identity.fetch_user_avatar
   end
 
   def oauth_url

@@ -31,11 +31,6 @@ class Identities::BaseController < ApplicationController
     )
   end
 
-
-  def fetch_access_token
-    client.fetch_access_token(params[:code], redirect_uri)
-  end
-
   def redirect_uri
     send :"#{controller_name}_authorize_url"
   end
@@ -45,17 +40,22 @@ class Identities::BaseController < ApplicationController
   end
 
   def instantiate_identity
-    "Identities::#{controller_name.classify}".constantize.new(access_token: fetch_access_token).tap do |identity|
+    "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params).tap do |identity|
       build_identity(identity)
     end
   end
 
   def build_identity(identity)
-    # override me with follow-up API calls if they're needed
+    # override me with follow-up API calls if they're needed to gather more info
+    # (such as logo url, user name, etc)
   end
 
   def oauth_url
     raise NotImplementedError.new
+  end
+
+  def oauth_identity_params
+    { access_token: client.fetch_oauth(params[:code], redirect_uri) }
   end
 
   def oauth_params

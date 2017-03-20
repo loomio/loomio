@@ -7,7 +7,16 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def build_identity(identity)
+    identity.fetch_user_info
     identity.fetch_team_info
+  end
+
+  def oauth_identity_params
+    response = Hash(client.fetch_oauth(params[:code], redirect_uri))
+    {
+      access_token: response['access_token'],
+      uid:          response['user_id']
+    }
   end
 
   def oauth_url
@@ -15,6 +24,6 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def oauth_params
-    super.merge(client_id: client.key, scope: "users:read,channels:read,team:read")
+    super.merge(client_id: client.key, scope: client.scope)
   end
 end

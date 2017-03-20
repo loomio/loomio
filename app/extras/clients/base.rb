@@ -15,6 +15,10 @@ class Clients::Base
     yield response_for :post, path, { body: default_params.merge(params) }
   end
 
+  def scope
+    ""
+  end
+
   private
 
   def default_params
