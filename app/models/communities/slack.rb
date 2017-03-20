@@ -1,7 +1,6 @@
 class Communities::Slack < Communities::Base
-  set_custom_fields :slack_team_id
+  set_custom_fields :slack_channel_id
   set_community_type :slack
-  validate :has_slack_info
 
   def includes?(member)
     members.map(&:token).include? member.participation_token

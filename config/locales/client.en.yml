@@ -1639,6 +1639,10 @@ en:
     add_slack: ADD SLACK CHANNEL
     add_facebook: ADD FACEBOOK GROUP
 
+  add_slack_community_form:
+    helptext: Select which channel to post updates into (You can change this later)
+    fragment_placeholder: Search for channels...
+
   poll_common_participant_form:
     participant_name_placeholder: What is your name?
 

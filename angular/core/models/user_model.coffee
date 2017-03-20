@@ -11,6 +11,13 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'notifications'
       @hasMany 'contacts'
       @hasMany 'versions'
+      @hasMany 'identities'
+
+    facebookIdentity: ->
+      _.detect @identities(), (i) -> i.identityType == 'facebook'
+
+    slackIdentity: ->
+      _.detect @identities(), (i) -> i.identityType == 'slack'
 
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)

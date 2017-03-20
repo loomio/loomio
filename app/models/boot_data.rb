@@ -18,7 +18,8 @@ BootData = Struct.new(:user, :visitor) do
       hash.merge!(
         notifications:      notifications,
         unread:             unread,
-        reader_cache:       readers
+        reader_cache:       readers,
+        identities:         user.identities
       ) if user.is_logged_in? && !user.restricted
     end
   end
