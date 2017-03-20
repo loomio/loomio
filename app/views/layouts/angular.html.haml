@@ -1,5 +1,5 @@
 !!!
-%html{'ng-app' => 'loomioApp', 'ng-controller' => 'ApplicationController as app'}
+%html{'ng-app' => 'loomioApp', 'ng-controller' => 'RootController as app'}
   %head
     %title Loomio
     %meta{charset: 'utf-8'}
@@ -25,7 +25,7 @@
     %flash
     %navbar
     %md_content.lmo-sidebar-and-main-container{layout: "row", flex: ""}
-      %sidebar{ng_if: "isLoggedIn() && renderSidebar"}
+      %sidebar{'ng-if': "isLoggedIn() && renderSidebar"}
       %md_content.lmo-main-content{flex: ""}
         .lmo-main-background
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
