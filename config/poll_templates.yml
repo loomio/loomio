@@ -54,6 +54,8 @@ dot_vote:
   can_remove_options:      true
   must_have_options:       true
   has_variable_score:      true
+  required_custom_fields:
+    - dots_per_person
   sort_options:
     - newest_first
     - oldest_first

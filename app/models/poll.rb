@@ -4,6 +4,15 @@ class Poll < ActiveRecord::Base
   include MakesAnnouncements
   TEMPLATES = YAML.load_file('config/poll_templates.yml')
   COLORS    = YAML.load_file('config/colors.yml')
+  TEMPLATE_FIELDS = %w(material_icon translate_option_name
+                       can_add_options can_remove_options
+                       must_have_options chart_type has_option_icons
+                       has_variable_score voters_review_responses
+                       dates_as_options required_custom_fields
+                       poll_options_attributes).freeze
+  TEMPLATE_FIELDS.each do |field|
+    define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
+  end
 
   is_mentionable on: :details
 
@@ -62,6 +71,7 @@ class Poll < ActiveRecord::Base
 
   validate :poll_options_are_valid
   validate :closes_in_future
+  validate :require_custom_fields
 
   alias_method :user, :author
 
@@ -102,46 +112,6 @@ class Poll < ActiveRecord::Base
         end
       end
     ) if chart_type == 'matrix'
-  end
-
-  def material_icon
-    template['material_icon']
-  end
-
-  def translate_option_name
-    template['translate_option_name']
-  end
-
-  def can_add_options
-    template['can_add_options']
-  end
-
-  def can_remove_options
-    template['can_remove_options']
-  end
-
-  def must_have_options
-    template['must_have_options']
-  end
-
-  def chart_type
-    template['chart_type']
-  end
-
-  def has_option_icons
-    template['has_option_icons']
-  end
-
-  def has_variable_score
-    template['has_variable_score']
-  end
-
-  def voters_review_responses
-    template['voters_review_responses']
-  end
-
-  def dates_as_options
-    template['dates_as_options']
   end
 
   def active?
@@ -210,10 +180,6 @@ class Poll < ActiveRecord::Base
     update_stance_data
   end
 
-  def template
-    TEMPLATES.fetch(self.poll_type, {})
-  end
-
   def poll_options_are_valid
     prevent_added_options   unless can_add_options
     prevent_removed_options unless can_remove_options
@@ -244,7 +210,12 @@ class Poll < ActiveRecord::Base
   end
 
   def template_poll_options
-    Array(template['poll_options_attributes']).map { |o| o['name'] }
+    Array(poll_options_attributes).map { |o| o['name'] }
   end
 
+  def require_custom_fields
+    Array(required_custom_fields).each do |field|
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank"))
+    end
+  end
 end
