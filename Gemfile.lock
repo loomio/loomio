@@ -798,7 +798,6 @@ DEPENDENCIES
   premailer-rails
   private_pub!
   puma
-  rack-attack (~> 4.4.1)
   rack_session_access
   rails (~> 4.2.5.2)
   rails_12factor
