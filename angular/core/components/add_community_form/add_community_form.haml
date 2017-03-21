@@ -1,5 +1,5 @@
 .add-community-form
-  .add-community-form__add{ng-if: "!communityForm"}
+  .add-community-form__add{ng-if: "!community.communityType"}
     %h3.lmo-h3{translate: "add_community_form.existing_communities"}
     .add-community-form__existing
       .add-community-form__community{ng-repeat: "community in communities()"}
@@ -7,15 +7,18 @@
 
     %h3.lmo-h3{translate: "add_community_form.connect_new_community"}
     %md-list.md-block.add-community-form__new
-      %md-list-item.poll-common-share-form__slack
-        %md-button.lmo-flex.poll-common-share-form__community{layout: "row", ng-click: "addCommunity('slack')"}
-          %img.poll-common-share-form__community-icon.poll-common-share-form__community-icon--slack{src: "/img/slack-icon.svg"}
-          %h4.lmo-h4.poll-common-share-form__h4{translate: "add_community_form.add_slack"}
+      %md-list-item.add-community-form__slack
+        %md-button.lmo-flex.add-community-form__community{layout: "row", ng-click: "addCommunity('slack')"}
+          %img.add-community-form__community-icon.add-community-form__community-icon--slack{src: "/img/slack-icon.svg"}
+          %h4.lmo-h4.add-community-form__h4{translate: "add_community_form.add_slack"}
 
-      %md-list-item.poll-common-share-form__facebook
-        %md-button.lmo-flex.poll-common-share-form__community{layout: "row", ng-click: "addCommunity('facebook')"}
-          %img.poll-common-share-form__community-icon.poll-common-share-form__community-icon--facebook{src: "/img/facebook-icon.svg"}
-          %h4.lmo-h4.poll-common-share-form__h4{translate: "add_community_form.add_facebook"}
+      %md-list-item.add-community-form__facebook
+        %md-button.lmo-flex.add-community-form__community{layout: "row", ng-click: "addCommunity('facebook')"}
+          %img.add-community-form__community-icon.add-community-form__community-icon--facebook{src: "/img/facebook-icon.svg"}
+          %h4.lmo-h4.add-community-form__h4{translate: "add_community_form.add_facebook"}
+    .poll-common__actions{ng-if: "community"}
+      %md-button{ng-click: "backToShareModal()"}
+        %span{translate: "common.action.back"}
 
-  %add_facebook_community_form{ng-if: "communityForm == 'facebook'"}
-  %add_slack_community_form{ng-if: "communityForm == 'slack'"}
+  %add_facebook_community_form{ng-if: "community.communityType == 'facebook'"}
+  %add_slack_community_form{ng-if: "community.communityType == 'slack'"}

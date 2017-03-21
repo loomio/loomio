@@ -1,22 +1,23 @@
 .add-slack-community-form
 
-  Currently signed into
-  .add-slack-community-form__header.lmo-flex
-    %img.add-slack-community-form__logo{ng-src: "{{identity().customFields.slack_team_logo}}"}>
-    .add-slack-community-form__name> {{ identity().customFields.slack_team_name}}
-    %a{href: "#", ng-click: "fetchAccessToken('slack')"} (Sign into another team)
+  %h3{translate: "add_slack_community_form.currently_signed_in_as"}
+  .add-community-form__header.lmo-flex
+    %img.add-community-form__logo{ng-src: "{{identity().customFields.slack_team_logo}}"}>
+    .add-community-form__name> {{ identity().customFields.slack_team_name}}
+    %a{href: "#", ng-click: "fetchAccessToken('slack')"}
+      %span{translate: "add_slack_community_form.another_team"}
 
   .poll-common-helptext{translate: "add_slack_community_form.helptext"}
 
-  %loading{ng-if: "fetchSlackChannelsExecuting"}
-  %md-input-container.lmo-search-container{ng-if: "!fetchSlackChannelsExecuting", md-no-float: "true"}
+  %md-input-container.lmo-search-container{md-no-float: "true"}
     %i.material-icons search
     %input{ng-model: "slack.fragment", placeholder: "{{add_slack_community_form.fragment_placeholder}}", ng-model-options: "{debounce: 250}"}
-  .add-slack-community-form__channels{ng-if: "!fetchSlackChannelsExecuting"}
-    .add-slack-community-form__channel{ng-if: "!fetchSlackChannelsExecuting"}
-      %md-radio-group{ng-model: "community.customFields.slack_channel_id"}
-        %md-radio-button.add-slack-community-form__radio-button{ng-repeat: "channel in slackChannels()", ng-value: "channel.id", aria-label: "{{channel.name}}"}
-          {{ channel.name }}
+
+  .add-community-form__options
+    %loading{ng-if: "fetchSlackChannelsExecuting"}
+    %md-radio-group{ng-if: "!fetchSlackChannelsExecuting", ng-model: "community.customFields.slack_channel_id"}
+      %md-radio-button.add-community-form__radio-button{ng-repeat: "channel in slackChannels()", ng-value: "channel.id", aria-label: "{{channel.name}}"}
+        {{ channel.name }}
 
   .poll-common__actions.lmo-flex
     %md-button{ng-click: "cancel()"}

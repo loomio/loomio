@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response network_membership_request
-    draft oauth_application
+    draft oauth_application community
   )
 
   MODELS.each do |kind|
@@ -41,6 +41,11 @@ class PermittedParams < Struct.new(:params)
     [:name, :description, :discussion_id, :closing_at, :outcome, :attachment_ids, {attachment_ids: []}]
   end
   alias_method :proposal_attributes, :motion_attributes
+
+  def community_attributes
+    [:community_type, :poll_ids,
+     :custom_fields, {custom_fields: [:facebook_group_id, :slack_channel_id]}]
+  end
 
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,

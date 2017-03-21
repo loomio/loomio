@@ -1603,6 +1603,7 @@ en:
 
   poll_common_share_form:
     no_group_selected: No group selected
+    no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
     share_a_link: Shareable link
     anyone_can_participate: Anyone can participate
     anyone_can_participate_true: Shareable link created
@@ -1638,10 +1639,19 @@ en:
     connect_new_community: Connect a new community
     add_slack: ADD SLACK CHANNEL
     add_facebook: ADD FACEBOOK GROUP
+    community_created: This poll is now connected to a {{type}} community
 
   add_slack_community_form:
+    currently_signed_in_as: "Currently signed in to:"
+    another_team: (Sign in to another team)
     helptext: Select which channel to post updates into (You can change this later)
     fragment_placeholder: Search for channels...
+
+  add_facebook_community_form:
+    currently_signed_in_as: "Currently signed in as:"
+    another_account: (Sign in to another account)
+    helptext: Select which facebook group to post updates into (You can change this later)
+    fragment_placeholder: Search for groups...
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

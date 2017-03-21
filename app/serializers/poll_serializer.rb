@@ -17,7 +17,7 @@ class PollSerializer < ActiveModel::Serializer
   end
 
   def email_community_id
-    object.community_of_type(:email).id
+    object.community_of_type(:email, build: true).tap(&:save).id
   end
 
   def include_matrix_counts?

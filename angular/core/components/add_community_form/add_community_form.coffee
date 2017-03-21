@@ -1,10 +1,14 @@
-angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, Records, Session, LoadingService) ->
+angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, Records, Session, FormService, ModalService, LoadingService, PollCommonShareModal) ->
+  scope: {poll: '='}
   templateUrl: 'generated/components/add_community_form/add_community_form.html'
   controller: ($scope) ->
 
+    $scope.community = Records.communities.build(pollIds: $scope.poll.id)
+
     $scope.addCommunity = (type) ->
       if $scope.identity(type)
-        $scope.communityForm = type
+        $scope.identityId = $scope.identity(type)
+        $scope.community.communityType = type
       else
         $scope.fetchAccessToken(type)
 
@@ -14,13 +18,20 @@ angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, R
       $window.location = "#{type}/oauth"
 
     $scope.cancel = ->
-      $scope.communityForm = null
+      $scope.community.communityType = null
+
+    $scope.submit = FormService.submit $scope, $scope.community,
+      flashSuccess: "add_community_form.community_created",
+      flashOptions: {type: $scope.community.communityType}
+      successCallback: -> $scope.backToShareModal()
+
+    $scope.backToShareModal = ->
+      ModalService.open PollCommonShareModal, poll: -> $scope.poll
 
     $scope.identity = (type) ->
-      switch (type or $scope.communityForm)
+      switch (type or $scope.community.communityType)
         when 'facebook' then Session.user().facebookIdentity()
         when 'slack'    then Session.user().slackIdentity()
 
-    # $scope.fetchFacebookGroups = ->
-    #   Records.identities.perform(Session.user().facebookIdentityId, 'admin_groups')
-    # LoadingService.applyLoadingFunction $scope, 'fetchFacebookGroups'
+    if $scope.identity($location.search().add_community)
+      $scope.communityForm = $location.search().add_community

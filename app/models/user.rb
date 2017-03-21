@@ -12,15 +12,6 @@ class User < ActiveRecord::Base
   SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
-  has_many :identities, class_name: "Identities::Base"
-  def slack_identity
-    identities.detect { |i| i.identity_type.to_sym == :slack }
-  end
-
-  def facebook_identity
-    identities.detect { |i| i.identity_type.to_sym == :facebook }
-  end
-
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
   attr_accessor :honeypot
   attr_accessor :restricted
@@ -96,7 +87,9 @@ class User < ActiveRecord::Base
            dependent: :destroy
 
   has_many :polls, foreign_key: :author_id
-  has_many :communities, through: :polls, class_name: "Communities::Base"
+
+  has_many :identities, class_name: "Identities::Base", dependent: :destroy
+  has_many :communities, through: :identities, class_name: "Communities::Base"
   has_many :visitors, through: :communities
 
   has_many :votes, dependent: :destroy
@@ -104,8 +97,6 @@ class User < ActiveRecord::Base
   has_many :stances, as: :participant, dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :omniauth_identities, dependent: :destroy
-
 
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -150,6 +141,14 @@ class User < ActiveRecord::Base
       all
     end
   }
+
+  def slack_identity
+    identities.find_by(identity_type: :slack)
+  end
+
+  def facebook_identity
+    identities.find_by(identity_type: :facebook)
+  end
 
   def user_id
     id

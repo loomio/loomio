@@ -319,6 +319,14 @@ class Ability
       community.polls.any? { |poll| @user.can? :share, poll }
     end
 
+    can :create, Communities::Base do |community|
+      @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
+    end
+
+    can :update, Communities::Base do |community|
+      @user.communities.include? community
+    end
+
     can [:make_draft, :show], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||
