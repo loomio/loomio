@@ -1,5 +1,5 @@
 loomio_i18n:
-  selectable_locales: [ en, ar, an, be-BY, bg-BG, ca, cs, zh-TW, da, de, eo, es, el, fr, ga-IE, id, it, he, hu, ja, ko, ml, pl, pt-BR, ro, sr, sr-RS, sk, sl, sv, vi, tr, uk ]
+  selectable_locales: [ en, ar, an, be-BY, bg-BG, ca, cs, zh-TW, da, de, eo, es, el, fr, ga-IE, id, it, he, hu, ja, ko, ml, nl-NL, pl, pt-BR, ro, sr, sr-RS, sk, sl, sv, vi, tr, uk ]
   additional_detectable_locales: [ be, pt, zh, zh-HK ]
 
   fallbacks:
