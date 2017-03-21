@@ -38,6 +38,16 @@ FactoryGirl.define do
     end
   end
 
+  factory :facebook_identity, class: Identities::Facebook do
+    user
+    identity_type "facebook"
+    access_token "access_dat"
+    uid "U123"
+    sequence(:name) { Faker::Name.name }
+    sequence(:email) { Faker::Internet.email }
+    custom_fields { { facebook_group_id: "G123" } }
+  end
+
   factory :contact do
     user
     sequence(:email) { Faker::Internet.email }

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe API::CommunitiesController do
-  let(:admin) { create :user }
-  let!(:poll) { create :poll, author: admin }
+  let(:user) { create :user }
+  let!(:poll) { create :poll, author: user }
   let(:new_community_params) {{
     community_type: :facebook,
     poll_ids: poll.id,
@@ -11,7 +11,7 @@ describe API::CommunitiesController do
 
   describe 'create' do
     it 'creates a new community' do
-      sign_in admin
+      sign_in user
 
       expect { post :create, community: new_community_params }.to change { poll.communities.count }.by(1)
       expect(response.status).to eq 200
@@ -20,6 +20,57 @@ describe API::CommunitiesController do
       expect(community.community_type).to eq new_community_params[:community_type].to_s
       expect(community.custom_fields[:facebook_group_id]).to eq new_community_params[:custom_fields]['facebook_group_id']
       expect(community.polls).to include poll
+    end
+
+    it 'does not allow logged out users to create communities' do
+      expect { post :create, community: new_community_params }.to_not change { poll.communities.count }
+      expect(response.status).to eq 403
+    end
+
+    it 'does not allow a community to be created without a type' do
+      sign_in user
+      new_community_params[:community_type] = ''
+
+      expect { post :create, community: new_community_params }.to_not change { poll.communities.count }
+      expect(response.status).to eq 422
+    end
+  end
+
+  describe 'index' do
+    let!(:user_community) { create :community, community_type: :slack, identity: identity }
+    let!(:poll_community) { create :community, community_type: :facebook, poll_ids: poll.id }
+    let!(:identity)       { create :facebook_identity, user: user }
+    let(:poll)            { create :poll, author: user }
+
+    it 'can get a list of communities on a user' do
+      sign_in user
+
+      get :index
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      community_ids = json['communities'].map { |c| c['id'] }
+      expect(community_ids).to_not include poll_community.id
+      expect(community_ids).to include user_community.id
+    end
+
+    it 'can get a list of communities on a poll' do
+      sign_in user
+
+      get :index, poll_id: poll.id
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body)
+      community_ids = json['communities'].map { |c| c['id'] }
+      expect(community_ids).to include poll_community.id
+      expect(community_ids).to_not include user_community.id
+    end
+
+    it 'does not show communities to logged out users' do
+      get :index
+      expect(response.status).to eq 200
+      json = JSON.parse(response.body)
+      expect(json['communities']).to be_empty
     end
   end
 end

@@ -3,7 +3,7 @@ class Communities::Base < ActiveRecord::Base
   self.table_name = :communities
   validates :community_type, presence: true
 
-  belongs_to :omniauth_identity, foreign_key: :identity_id
+  belongs_to :identity, foreign_key: :identity_id, class_name: "Identities::Base"
   has_many :poll_communities, foreign_key: :community_id
   has_many :polls, through: :poll_communities
   has_many :visitors, foreign_key: :community_id

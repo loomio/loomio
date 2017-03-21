@@ -5,6 +5,7 @@ class Identities::Base < ActiveRecord::Base
   validates :access_token, presence: true
 
   belongs_to :user, required: true
+  has_many :communities, class_name: "Communities::Base", foreign_key: :identity_id
 
   discriminate Identities, on: :identity_type
 
