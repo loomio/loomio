@@ -27,7 +27,6 @@ fi:
     more_help: Lisää apua
     models:
       proposal: Ehdotus
-    copy: Kopioi teksti
     copied: Kopioitu leikepöydälle
     action:
       close: Sulje

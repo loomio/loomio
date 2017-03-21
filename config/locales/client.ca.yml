@@ -28,7 +28,6 @@ ca:
     more_help: Més ajuda
     models:
       proposal: Proposta
-    copy: Copia el text
     copied: Copiat al porta-retalls
     action:
       close: Tanca
@@ -93,7 +92,6 @@ ca:
     unmute: Activa el so
   change_volume_form:
     loud_label: Tota la activitat
-    normal_label: Activitat important
     quiet_label: Cap correu electrònic
     mute_label: Silenci
     discussion:
@@ -109,27 +107,22 @@ ca:
     membership:
       title: 'Configuració de correu electrònic per {{title}}'
       loud_description: Rebreu correus electrònics sempre que hi hagi activitat en aquest grup.
-      normal_description: "Rebreu correus electrònics de noves discussions i propostes d'aquest grup."
       quiet_description: No rebreu cap correu electrònic sobre aquest grup.
       apply_to_all: Aplica aquesta configuració a tots els meus grups.
       messages:
         loud: "Rebreu l'activitat d'aquest grup per correu electrònic."
-        normal: "Rebreu les noves discussions i propostes d'aquest grup per correu electrònic."
         quiet: No rebreu cap correu electrònic sobre aquest grup.
     all_groups:
       messages:
         loud: "Rebreu l'activitat de tots els grups per correu electrònic."
-        normal: Rebreu les noves discussions i propostes de tots els grups per correu electrònic.
         quiet: No rebreu cap correu electrònic sobre cap grup.
     user:
       title: Configuració de correu per a grups nous
       loud_description: Rebreu correus electrònics sempre que hi hagi activitat en qualsevol grup nou que us uniu.
-      normal_description: Rebreu correus electrònics de noves discussions i propostes en qualsevol grup nou que us uniu.
       quiet_description: "No rebreu cap correu electrònic sobre l'activitat de cap grup nou que us uniu."
       apply_to_all: Aplica aquesta configuració a tots els meus grups.
       messages:
         loud: "Rebreu l'activitat dels grups nous per correu electrònic."
-        normal: Rebreu les noves discussions i propostes dels grups nous per correu electrònic.
         quiet: No rebreu cap correu electrònic sobre els grups nous.
   mute_explanation_modal:
     mute_thread: Discussió silenciada

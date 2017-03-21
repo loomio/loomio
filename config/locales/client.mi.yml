@@ -1,7 +1,5 @@
 mi:
   common:
-    closing_in: E kati ana
-    closed_ago: Kua kati
     volume: Te kaha o te reo
     notification_volume: Tohu kaha o te reo
     group: Rōpū
@@ -24,7 +22,6 @@ mi:
     more_help: He awhina ano
     models:
       proposal: Tono
-    copy: Taruatia te korero
     copied: Kua taruatia ki te papa whakapine
     action:
       close: Katia

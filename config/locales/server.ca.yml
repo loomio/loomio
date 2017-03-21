@@ -133,7 +133,7 @@ ca:
       integració amb <strong>Slack</strong>
     premium_support: assistència premium
     custom_subdomain_html: |
-      subdomini personalitzable,<br/>
+      subdomini personalitzable,<br />
       per exemple: <strong>elteugrup</strong>.loomio.org
     usage_statistics: ús de les estadístiques
   password_reset:

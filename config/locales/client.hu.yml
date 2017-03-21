@@ -28,7 +28,6 @@ hu:
     more_help: További segítség
     models:
       proposal: Javaslat
-    copy: szöveg másolása
     copied: Vágólapra másolva
     action:
       close: Bezár
@@ -90,7 +89,6 @@ hu:
     unmute: Néma üzemmód kikapcsolása
   change_volume_form:
     loud_label: Összes tevékenység
-    normal_label: Fontos tevékenységek
     quiet_label: Nincs új e-mail
     mute_label: Néma
     discussion:
@@ -106,27 +104,22 @@ hu:
     membership:
       title: 'Email beállítások {{title}}-hez'
       loud_description: 'Azonnali értesítés e-mailben, új tevékenység esetén ezen csoporton belül.'
-      normal_description: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörök létrehozásakor ezen csoporton belül.'
       quiet_description: Ne küldj e-mailt ezen csoport tevékenységeiről.
       apply_to_all: Ezen beállítások alkalmazása minden csoportomra.
       messages:
         loud: Értesítés e-mailben ezen csoporton belüli összes tevékenységről.
-        normal: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörön létrehozásakor ezen csoporton belül.'
         quiet: Ne küldj e-mailt ezen csoport tevékenységeiről.
     all_groups:
       messages:
         loud: Értesítés e-mailben minden csoport összes tevékenységről aminek tagja vagyok.
-        normal: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörök létrehozásakor minden csoporton belül aminek tagja vagyok.'
         quiet: Ne küldj e-mailt egyik csoportom tevékenységeiről sem.
     user:
       title: E-mail beállítások új csoportokra
       loud_description: 'Azonnali értesítés e-mailben, új tevékenység esetén valamennyi új csoportomon belül.'
-      normal_description: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörök létrehozásakor valamennyi új csoportomon belül.'
       quiet_description: Ne küldj e-mailt az új csoportjaim tevékenységeiről.
       apply_to_all: Ezen beállítások alkalmazása minden csoportomra.
       messages:
         loud: Értesítés e-mailben az új csoportjaim belüli összes tevékenységről.
-        normal: 'Azonnali értesítés e-mailben, új javaslatok illetve témakörön létrehozásakor az új csoportjaimon belül.'
         quiet: Ne küldj e-mailt új csoportokról.
   mute_explanation_modal:
     mute_thread: Témakör némítása

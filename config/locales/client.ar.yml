@@ -27,7 +27,6 @@ ar:
     more_help: مساعدة أكبر
     models:
       proposal: مقترح
-    copy: نسخ النص
     copied: تم النسخ
     action:
       close: مغلق
