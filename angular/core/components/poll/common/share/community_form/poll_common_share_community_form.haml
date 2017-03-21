@@ -1,0 +1,21 @@
+%section
+  .lmo-flex
+    %i.material-icons.poll-common-share-form__icon public
+    %h3.lmo-h3{translate: "poll_common_share_form.communities"}
+
+  %md-list.md-block
+    .poll-common-helptext{ng-if: "!poll.communities().length", translate: "poll_common_share_form.no_communities"}
+    %md-list-item.poll-common-share-form__community.lmo-flex{ng-repeat: "community in poll.communities()"}
+      .poll-common-share-form_.lmo-flex__grow.lmo-flex{layout: "row"}
+        %img.poll-common-share-form__community-icon{class: "poll-common-share-form__community-icon--{{community.communityType}}", ng-src: "/img/{{community.communityType}}-icon.svg"}
+        .poll-common-share-form__h3.lmo-inline-action {{community.displayName()}}
+
+      %md-button.lmo-inline-action{ng-click: "remind(community)", ng-if: "!community.reminded && !community.processing"}
+        %i.material-icons redo
+      %loading{ng-if: "community.processing"}
+      %span.poll-common-share-form__reminded{ng-if: "community.reminded", translate: "poll_common_share_form.reminded"}
+      %md-button.lmo-inline-action{ng-click: "revoke(community)"}
+        %i.material-icons clear
+
+  %md-button.md-primary.md-raised{ng-click: "addCommunity()"}
+    %span{translate: "poll_common_share_form.add_community"}

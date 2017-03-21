@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, Records, Session, FormService, ModalService, LoadingService, PollCommonShareModal) ->
+angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, AppConfig, Records, Session, FormService, ModalService, LoadingService, PollCommonShareModal) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/add_community_form/add_community_form.html'
   controller: ($scope) ->

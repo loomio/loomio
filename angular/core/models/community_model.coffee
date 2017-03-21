@@ -10,3 +10,9 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
     relationships: ->
       @belongsTo 'poll'
       @belongsTo 'user'
+      @belongsTo 'identity', from: 'identities'
+
+    displayName: ->
+      switch @communityType
+        when 'facebook' then @customFields.facebook_group_name
+        when 'slack'    then "#{@identity().customFields.slack_team_name} - ##{@customFields.slack_channel_name}"

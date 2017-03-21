@@ -323,7 +323,7 @@ class Ability
       @user.is_logged_in? # TODO: ensure user owns one of the community's polls?
     end
 
-    can :update, Communities::Base do |community|
+    can [:destroy, :update], Communities::Base do |community|
       @user.communities.include? community
     end
 

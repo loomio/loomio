@@ -199,7 +199,7 @@ Loomio::Application.routes.draw do
       resource :registrations, only: :create
     end
 
-    resources :communities, only: [:create, :update, :index]
+    resources :communities, only: [:create, :update, :index, :destroy]
 
     get "identities/:id/:command", to: "identities#command"
   end

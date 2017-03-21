@@ -1,0 +1,9 @@
+.poll-common-share-form
+  %poll_common_share_link_form{poll: "poll"}
+  %hr
+  %poll_common_share_visitor_form{poll: "poll"}
+  %hr
+  %poll_common_share_community_form{poll: "poll"}
+  %hr
+  %md-button.md-primary.md-raised.pull-right.poll-common-share-form__ok{ng-if: "back", ng-click: "back()"}
+    %span{translate: "common.action.ok"}

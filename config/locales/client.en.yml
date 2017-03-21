@@ -1618,7 +1618,7 @@ en:
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
-    reminded: Reminder email sent!
+    reminded: Reminder sent!
     send_emails: Send invitations ({{count}})
     no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
@@ -1631,6 +1631,7 @@ en:
     email_invalid: "That doesn't appear to be a valid email"
     communities: Connect Community
     add_community: Add Community
+    community_revoked: This community will no longer be able to participate
 
   add_community_form:
     title: Add community

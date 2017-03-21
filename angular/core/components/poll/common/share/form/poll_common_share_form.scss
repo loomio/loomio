@@ -19,6 +19,7 @@ poll_common_manage_card {
 
 .poll-common-share-form__add-option {
   align-items: flex-start;
+  margin-bottom: -50px;
 }
 
 .poll-common-share-form__option-icon {
@@ -74,6 +75,14 @@ poll_common_manage_card {
   height: 48px;
 }
 
-.poll-common-share-form__h4 {
+.poll-common-share-form__community-icon--slack {
+  padding: 5px;
+}
+
+.poll-common-share-form__community-icon--facebook {
+  padding: 10px;
+}
+
+.poll-common-share-form__h3 {
   margin-top: 0;
 }

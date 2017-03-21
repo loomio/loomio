@@ -1,6 +1,6 @@
 class Communities::Facebook < Communities::Base
   set_community_type :facebook
-  set_custom_fields :facebook_group_id
+  set_custom_fields :facebook_group_id, :facebook_group_name
 
   def includes?(member)
     members.map(&:token).include? member.participation_token

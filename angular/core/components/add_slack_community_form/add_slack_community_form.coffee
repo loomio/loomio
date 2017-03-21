@@ -3,6 +3,12 @@ angular.module('loomioApp').directive 'addSlackCommunityForm', (Records, Session
   controller: ($scope) ->
     $scope.slack = {}
 
+    $scope.$watch 'community.customFields.slack_channel_id', ->
+      return unless $scope.community.customFields.slack_channel_id
+      $scope.community.customFields.slack_channel_name = _.find($scope.allSlackChannels, (channel) ->
+        $scope.community.customFields.slack_channel_id == channel.id
+      ).name
+
     $scope.fetchSlackChannels = ->
       Records.identities.perform(Session.user().slackIdentity().id, 'channels').then (response) ->
         $scope.allSlackChannels = response.channels

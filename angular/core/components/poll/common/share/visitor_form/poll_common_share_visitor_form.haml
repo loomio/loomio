@@ -1,0 +1,25 @@
+%section
+  .lmo-flex
+    %i.material-icons.poll-common-share-form__icon mail
+    %h3.lmo-h3{translate: "poll_common_share_form.invite_guests"}
+
+  %md-list.md-block
+    %md-list-item.poll-common-share-form__emails{layout: "column"}
+      .poll-common-share-form__visitor.lmo-flex{ng-repeat: "visitor in visitors() | orderBy: 'updatedAt'"}
+        .poll-common-share-form__email.lmo-flex__grow {{visitor.email}}
+        %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!visitor.reminded && !visitor.processing"}
+          %i.material-icons redo
+        %loading{ng-if: "visitor.processing"}
+        %span.poll-common-share-form__reminded{ng-if: "visitor.reminded", translate: "poll_common_share_form.reminded"}
+        %md-button.lmo-inline-action{ng-click: "revoke(visitor)"}
+          %i.material-icons clear
+
+    %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
+      %md-input-container.lmo-flex__grow{md-no-float: "true"}
+        %input.poll-common-share-form__add-option-input{type: "text", ng-disabled: "newVisitor.processing", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newVisitor.email"}
+      %div
+        %loading.lmo-inline-action{ng-if: "newVisitor.processing"}
+        %md-button.poll-common-share-form__option-button.lmo-inline-action{ng-if: "!newVisitor.processing", ng-click: "invite()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
+          %i.material-icons.poll-common-share-form__option-icon add
+    .clearfix
+    .lmo-validation-error {{ emailValidationError }}
