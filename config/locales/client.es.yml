@@ -1,4 +1,9 @@
 es:
+  poll_types:
+    proposal: Propuesta
+    count: Conteo
+    poll: Encuesta
+    meeting: Reunión
   common:
     confirm_discard_changes: ¿Descartar tus cambios?
     time:
@@ -28,7 +33,8 @@ es:
     more_help: 'Mas ayuda '
     models:
       proposal: Propuesta
-    copy: Copiar texto
+    copy: Copiar
+    copy_text: Copiar texto
     copied: Copiado al portapapeles
     action:
       close: Cerrar
@@ -52,6 +58,9 @@ es:
       translated: Traducido mediante Bing Translator
       upload: 'Cargar '
       uploading: Cargando
+      load_more: Cargar Más
+      share: Compartir
+      ok: '¡Ok!'
     formatting_help:
       label: 'Ayuda de formato '
       title: Aprende a usar Markdown para dar formato a tu texto en Loomio
@@ -84,6 +93,10 @@ es:
     heading: Propuestas anteriores
   previous_proposals_page:
     heading: 'Propuestas previas '
+  previous_polls_page:
+    heading: 'Actividades en {{name}}'
+    polls_count: 'Mostrando {{loaded}} de {{total}} actividades'
+    search_activities: Buscar actividades
   proposal_collapsed:
     expand: Expandir
     outcome: 'Resultado: {{outcome}}'
@@ -96,7 +109,7 @@ es:
   change_volume_form:
     aria_label: Formulario para cambiar las notificaciones de email
     loud_label: Toda la actividad
-    normal_label: Actividad importante
+    normal_label: Anuncios
     quiet_label: No enviar correo
     mute_label: 'Silenciar '
     discussion:
@@ -112,27 +125,27 @@ es:
     membership:
       title: 'Configuración de correo electrónico para {{title}} '
       loud_description: Recibirás correo electrónico siempre que haya actividad en este grupo.
-      normal_description: Recibirás correo electrónico sobre nuevos hilos y propuestas en este grupo.
+      normal_description: Sólo se enviarán anuncios por correo electrónico en este grupo.
       quiet_description: No recibirás correo electrónico sobre la actividad en este grupo.
       apply_to_all: 'Aplicar esta configuración para todos mis grupos. '
       messages:
         loud: 'Recibirás correo electrónico sobre toda la actividad en este grupo. '
-        normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en este grupo.
+        normal: Sólo se enviarán anuncios por correo electrónico en este grupo.
         quiet: No recibirás correo electrónico sobre este grupo.
     all_groups:
       messages:
         loud: 'Recibirás correo electrónico sobre toda la actividad en todos tus grupos. '
-        normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos tus grupos.
+        normal: Sólo se te enviarán anuncios por correo electrónico en todos sus grupos.
         quiet: No recibirás correo electrónico sobre tus grupo.
     user:
       title: Configuración de correo electrónico para grupos nuevos
       loud_description: 'Recibirás correo electrónico sobre toda la actividad en cualquier grupo nuevo. '
-      normal_description: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
+      normal_description: Recibirás por correo electrónico los anuncios de cualquier grupo nuevo en el que participes.
       quiet_description: No recibirás correo electrónico sobre la actividad en ningún nuevo grupo en el que participes.
       apply_to_all: Aplicar esta configuración para todos mis grupos.
       messages:
         loud: 'Recibirás correo electrónico sobre toda la actividad en tus nuevos grupos. '
-        normal: Recibirás correo electrónico sobre nuevos hilos y propuestas en todos los nuevos grupo en los que participes.
+        normal: Recibirás por correo electrónico los anuncios de grupos nuevos.
         quiet: No recibirás correo electrónico de los nuevos grupos.
   mute_explanation_modal:
     aria_label: 'Silenciar hilo '
@@ -171,6 +184,7 @@ es:
     sign_in: Entrar
     signed_in: 'Cuenta creada satisfactoriamente '
     oauth:
+      title: 'O inicia sesión con tu cuenta de otra plataforma:'
       facebook: Iniciar sesión con Facebook
       twitter: Iniciar sesión con Twitter
       google: Iniciar sesión con Google
@@ -256,11 +270,36 @@ es:
     start_group: Crear un grupo nuevo
     start_subgroup: Crear subgrupo nuevo
     start_thread: Iniciar hilo nuevo
+    start_poll: Crear una encuesta
     invite_people: Invita a gente
   notifications:
     header: Notificaciones
     no_notifications: No tienes notificaciones
+    new_discussion: '<strong>{{name}}</strong> empezó una discusión <strong>{{title}}</strong>'
+    new_motion: '<strong>{{name}}</strong> creó una propuesta <strong>{{title}}</strong>'
+    motion_closed: 'Propuesta cerrada: <strong>{{title}}</strong>'
     publish_outcome: Publicar el resultado
+    motion_closed_by_user: '<strong>{{name}}</strong> cerró la propuesta <strong>{{title}}</strong>'
+    motion_closed_by_expiry: 'Se ha cerrado la propuesta <strong>{{title}}</strong>'
+    new_vote: '<strong>{{name}}</strong> {{position}} a la propuesta <strong>{{title}}</strong>'
+    new_comment: '<strong>{{name}}</strong> ha comentado en <strong>{{title}}</strong>'
+    comment_replied_to: '<strong>{{name}}</strong> ha contestado a tu comentario en <strong>{{title}}</strong>'
+    comment_liked: 'A <strong>{{name}}</strong> le ha gustado tu comentario en <strong>{{title}}</strong>'
+    user_mentioned: '<strong>{{name}}</strong> te ha mencionado en <strong>{{title}}</strong>'
+    membership_requested: '<strong>{{name}}</strong> ha solicitado unirse a <strong>{{title}}</strong>'
+    membership_request_approved: '<strong>{{name}}</strong> ha aprobado tu solicitud para unirte a <strong>{{title}}</strong>'
+    user_added_to_group: '<strong>{{name}}</strong> te ha añadido al grupo <strong>{{title}}</strong>'
+    user_added_to_group_no_inviter: 'Has sido añadido al grupo <strong>{{title}}</strong>'
+    motion_closing_soon: 'La propuesta está a punto de cerrarse: <strong>{{title}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> ha publicado un resultado para la propuesta <strong>{{title}}</strong>'
+    motion_outcome_updated: '<strong>{{name}}</strong> ha actualizado el resultado de la propuesta <strong>{{title}}</strong>'
+    invitation_accepted: '<strong>{{name}}</strong> ha aceptado tu invitación a unirse a <strong>{{title}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> te ha añadido como coordinador de <strong>{{title}}</strong>'
+    poll_created: '<strong>{{name}}</strong> empezó una {{poll_type}}: <strong>{{title}}</strong>'
+    poll_edited: '<strong>{{name}}</strong> editó una {{poll_type}}: <strong>{{title}}</strong>'
+    poll_closing_soon: '{{poll_type}} está a punto de cerrarse: <strong>{{title}}</strong>'
+    poll_expired: '{{poll_type}} se cerró: <strong>{{title}}</strong>'
+    outcome_created: '<strong>{{name}}</strong> compartió un resultado: <strong>{{title}}</strong>'
   position_buttons_panel:
     heading: 'Danos tu opinión '
   vote_form:
@@ -348,6 +387,8 @@ es:
     privacy_organisation: 'Los hilos serán visibles para miembros de {{parent}} y miembros de {{group}}.'
     new_discussion_submit: Empezar un hilo
     edit_discussion_submit: Actualizar hilo
+    make_announcement: Anuncio
+    notified_count: '{{count}} personas recibirán un correo electrónico'
   proposal_expanded:
     collapse: Contraer
     current_votes: Votos actuales
@@ -504,6 +545,7 @@ es:
     got_to_group: 'No ahora, gracias.'
   gift_card:
     heading: 'Plan Donación '
+    body: '<strong>{{name}}</strong> es un grupo apoyado por donaciones. Para que Loomio pueda seguir ayudando a grupos como el tuyo, haz clic aquí:'
     make_a_contribution: 'Haz una contribución '
   upgrade_plan_card:
     heading: Diferencias de los planes pagos
@@ -516,6 +558,7 @@ es:
     upgrade: 'Elige un plan '
     donate: 'Donación '
   trial_card:
+    title: Prueba de 30 días
     choose_plan: Elige tu plan de pago
     in_progress_body: 'Gracias por probar Loomio con <strong>{{name}}</strong>. En cualquier momento puedes elegir un plan de pago que funcione para tu grupo.'
     expired_body_html: '<strong>{{name}}</strong> ha llegado al final de su prueba de Loomio. Si quieres seguir usándolo tienes que elegir un plan de pago a la medida de tu grupo.'
@@ -585,6 +628,7 @@ es:
     how_do_people_join: ¿Cómo se unen las personas a este grupo?
     membership_granted_upon_request: Cualquiera puede unirse al grupo.
     membership_granted_upon_approval: 'Cualquiera puede pedir la membresía, pero debe ser aprobada.'
+    membership_granted_upon_approval_secret_parent: 'Cualquiera en {{parent}} puede pedir apuntarse al grupo <strong>por petición</strong>.'
     thread_privacy: Privacidad del hilo
     public_threads: Sólo hilos públicos
     public_discussions_subgroup: 'Cualquiera que pertenezca a {{parentGroupName}} puede ver las discusiones'
@@ -628,6 +672,8 @@ es:
   group_previous_proposals_card:
     heading: Propuestas previas
     see_more: Ver más
+  group_previous_polls_card:
+    heading: Actividades anteriores
   invitation_form:
     aria_label: Formulario de invitación
     invite_people: Invita gente
@@ -1155,3 +1201,9 @@ es:
     submit: 'Remover acceso '
     messages:
       success: "'{{name}}' ya no puede usar tu cuenta."
+  decision_tools_card:
+    proposal_title: Propuesta
+    count_title: Conteo
+    poll_title: 'Encuesta '
+  poll_common_notify_group:
+    notify_group: Anuncio

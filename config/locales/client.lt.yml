@@ -20,7 +20,6 @@ lt:
       thismonth: Šį mėnesį
     models:
       proposal: Pasiūlymas
-    copy: Kopijuoti tekstą
     copied: Nukopijuota į iškarpinę
     action:
       close: Užverti

@@ -28,7 +28,6 @@ sr:
     more_help: Još pomoći
     models:
       proposal: Predlog
-    copy: Kopiraj tekst
     copied: Kopirano
     action:
       close: Zatvori
@@ -91,7 +90,6 @@ sr:
     unmute: Uključi
   change_volume_form:
     loud_label: Sva aktivnost
-    normal_label: Važne aktivnosti
     quiet_label: Nema ePoruka
     mute_label: Utišaj
     discussion:
@@ -107,27 +105,22 @@ sr:
     membership:
       title: 'Opcije ePoruka za {{title}}'
       loud_description: Dobićete ePoruku kada god ima aktivnosti u ovoj grupi.
-      normal_description: Bićete obavešteni ePorukom o novim nitima i predlozima u ovoj grupi.
       quiet_description: Nećete dobijati ePoruke o aktivnostima u ovoj grupi.
       apply_to_all: Primeni ove opcije na sve moje grupe.
       messages:
         loud: Bićete obaveštavani ePorukama o svim aktivnostima u ovoj grupi.
-        normal: Bićete obavešteni ePorukom o novim nitima i predlozima u ovoj grupi.
         quiet: Nećete biti obaveštavani ePorukom o ovoj grupi.
     all_groups:
       messages:
         loud: Bićete obaveštavani ePorukama o svim aktivnostima u svakoj Vašoj grupi.
-        normal: Bićete obavešteni ePorukom o novim nitima i predlozima u svim vašim grupama.
         quiet: Nećete primati ePoruke ni o jednoj od vaših grupa.
     user:
       title: Opcije ePoruka za nove grupe
       loud_description: Bičete obavešteni ePorukom kada ima aktivnosti u nekoj grupi kojoj ste se priključili.
-      normal_description: Bićete obavešteni ePorukom o novim nitima i predlozima u svim novim grupama kojima se priključite.
       quiet_description: Nećete dobijati ePoruke o aktivnostima u grupama kojima se priključite.
       apply_to_all: Primeni ove opcije na sve moje grupe.
       messages:
         loud: Bićete obaveštavani ePorukama o svim aktivnostima u novim grupama.
-        normal: Bićete obavešteni ePorukom o novim nitima i predlozima u novim grupama.
         quiet: Nećete primati ePoruke o novim grupama.
   mute_explanation_modal:
     mute_thread: Utišaj nit

@@ -28,7 +28,6 @@ sv:
     more_help: Mer hjälp
     models:
       proposal: Förslag
-    copy: Kopiera text
     copied: Kopierad till urklipp
     action:
       close: Stäng
@@ -78,7 +77,6 @@ sv:
   change_volume_form:
     aria_label: Byt epostinställningars formulär
     loud_label: All aktivitet
-    normal_label: Viktig aktivitet
     mute_label: Tysta ned
   inbox:
     clear: Klar

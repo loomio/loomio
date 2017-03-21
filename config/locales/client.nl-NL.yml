@@ -8,8 +8,8 @@ nl-NL:
     time:
       am: am
       pm: pm
-    closing_in: 'Sluit over {{tijd}}'
-    closed_ago: 'Gesloten {{tijd}}'
+    closing_in: 'Sluit over {{time}}'
+    closed_ago: 'Gesloten {{time}}'
     volume: Volume
     notification_volume: Meldingenvolume
     group: Groep
@@ -32,7 +32,6 @@ nl-NL:
     more_help: Meer hulp
     models:
       proposal: Voorstel
-    copy: Kopiëren tekst
     copied: Gekopieerd naar klembord
     action:
       close: Sluiten
@@ -89,6 +88,10 @@ nl-NL:
     heading: Vorige voorstellen
   previous_proposals_page:
     heading: Vorige voorstellen
+  previous_polls_page:
+    heading: 'Activiteiten in {{name}}'
+    polls_count: 'Toon {{loaded}} van {{total}} activiteiten'
+    search_activities: Zoek activiteiten
   proposal_collapsed:
     expand: Uitbreiden
     outcome: 'Uitkomst: {{outcome}}'
@@ -101,7 +104,7 @@ nl-NL:
   change_volume_form:
     aria_label: Verander e-mail-instellingen formulier
     loud_label: Alle activiteit
-    normal_label: Belangrijke activiteit
+    normal_label: Aankondigingen
     quiet_label: Geen e-mails
     mute_label: Dempen
     discussion:
@@ -117,47 +120,49 @@ nl-NL:
     membership:
       title: 'E-mail-instellingen voor {{title}}'
       loud_description: Je onvangt een e-mail zodra er activiteit is in deze groep
-      normal_description: Je krijgt e-mail over nieuwe discussies en voorstellen in deze groep
+      normal_description: Je krijgt via e-mail alleen aankondigingen in deze groep
       quiet_description: Je krijgt geen e-mail over activiteit in deze groep
       apply_to_all: Pas deze instellingen toe op al mijn groepen
       messages:
         loud: Je krijgt e-mail over alle activiteit in deze groep
-        normal: Je krijgt e-mail over nieuwe discussies en voorstellen in deze groep
+        normal: Je krijgt via e-mail alleen aankondigingen in deze groep
         quiet: Je krijgt geen e-mails over deze groep
     all_groups:
       messages:
         loud: Je krijgt e-mail over alle activiteit in al je groepen
-        normal: Je krijgt e-mail over nieuwe discussies en voorstellen in al je groepen
+        normal: Je krijgt via e-mail alleen aankondigingen in al je groepen.
         quiet: Je krijgt over geen van je groepen e-mail
     user:
       title: E-mail-instellingen voor nieuwe groepen
       loud_description: Je krijgt e-mail wanneer er activiteit is in elke nieuwe groep waar je je bij aansluit
-      normal_description: Je krijgt e-mail over nieuwe diiscussies en voorstellen in elke nieuwe groep waar je je bij aansluit
+      normal_description: Je krijgt via e-mail aankondigingen in elke nieuwe groep waar je je bij aansluit.
       quiet_description: 'Je krijgt over geen enkele nieuwe groep waar je je bij aansluit e-mail over activiteit '
       apply_to_all: Pas deze instellingen toe op al mijn groepen
       messages:
         loud: Je krijgt e-mail van alle activiteit in nieuwe groepen
-        normal: Je krijgt email over nieuwe discussies en voorstellen in nieuwe groepen
+        normal: Je krijgt via e-mail aankondigingen in nieuwe groepen
         quiet: Je krijgt geen e-mail over nieuwe groepen
   mute_explanation_modal:
     aria_label: Demp discussie
     mute_thread: 'Demp discussie '
     body_html: >
-      Dempen betekent dat je geen meldingen ontvangt over voorstellen, of elke
-      andere activiteit in deze discussie, tenzij iemand je @vermeld.
+      <p>Dempen betekent dat je <strong>geen meldingen ontvangt</strong> over
+      voorstellen, of elke andere activiteit in deze discussie, tenzij
+      <strong>iemand je @vermeld</strong></p>.
 
-      Gedempte discussies zijn ook verborgen uit 'Recent' en 'Ongelezen'
-      pagina's. Om je gedempte discussies te vinden selecteer de 'Gedempt' optie
-      in de zijbalk.
+      <p>Gedempte discussies zijn ook verborgen uit <strong>Recent</strong> en
+      'Ongelezen' pagina's. Om je gedempte discussies te vinden selecteer de
+      <strong>Gedempt</strong> optie in de zijbalk:</p>
     image_alt: Gedempte discussies in de zijbalk
   dismiss_explanation_modal:
     aria_label: Negeer discussie
     dismiss_thread: Negeer discussie
     body_html: >
-      Het negeren van een discussie verwijdert deze uit je ongelezen items. Als
-      er nieuwe
+      <p>Het negeren van een discussie verwijdert deze uit je ongelezen items.
+      Als er nieuwe
 
-      activiteit voorkomt in de discussie, verschijnt deze opnieuw als ongelezen
+      activiteit voorkomt in de discussie, verschijnt deze opnieuw als
+      ongelezen.</p>
   inbox:
     clear: Leegmaken
     latest: Laatste
@@ -174,6 +179,7 @@ nl-NL:
     sign_in: Inloggen
     signed_in: Succesvol ingelogd
     oauth:
+      title: 'Of log in met een derde partij account:'
       facebook: Inloggen met Facebook
       twitter: Inloggen met Twitter
       google: Inloggen met Google
@@ -204,7 +210,7 @@ nl-NL:
       remove_attachment: Verwijderen bijlage
     messages:
       created: Reactie toegevoegd
-      replied: '{{naam}} op de hoogte gebracht van antwoord'
+      replied: '{{name}} op de hoogte gebracht van antwoord'
       updated: Reactie bijgewerkt
       destroyed: Reactie verwijderd
     edit_comment: Bewerk reactie
@@ -215,7 +221,7 @@ nl-NL:
     in_reply_to: 'In antwoord op <strong>{{name}}</strong>:'
     submit_button:
       label: Plaatsen
-    private_privacy_notice: 'Je commentaar is alleen zichtbaar voor leden van {{naam groep}}.'
+    private_privacy_notice: 'Je commentaar is alleen zichtbaar voor leden van {{groupName}}.'
     public_privacy_notice: Je commentaar is zichtbaar voor iedereen op het web.
     sign_in: Log in om mee te praten
   sidebar:
@@ -228,7 +234,7 @@ nl-NL:
     start_group: Start nieuwe groep
     explore: Openbare groepen
     edit_profile: Bewerk profiel
-    email_settings: E-mail-instellingen
+    email_settings: E-mailinstellingen
     help: Help
     contact: Neem contact op met Loomio
     sign_out: Uitloggen
@@ -243,7 +249,7 @@ nl-NL:
     start_thread: Start een nieuwe discussie
     notifications: Meldingenpaneel
     search:
-      label: Zoek veld; zoek naar groepen en discussies
+      label: Zoekveld; zoek naar groepen en discussies
       results_aria_label: Zoekresultaten
       no_results: Geen discussies gevonden
       close: Sluit zoekscherm
@@ -265,19 +271,31 @@ nl-NL:
   notifications:
     header: Meldingen
     no_notifications: Je hebt geen meldingen
-    new_discussion: '{{naam}} is een gesprek gestart {{titel}}'
-    new_motion: '{{naam}} heeft een voorstel gemaakt {{titel}}'
-    motion_closed: 'Voorstel gesloten: {{titel}}'
+    new_discussion: '<strong>{{name}}</strong> is een gesprek gestart <strong>{{title}}</strong>'
+    new_motion: '<strong>{{name}}</strong> heeft een voorstel gemaakt <strong>{{title}}</strong>'
+    motion_closed: 'Voorstel gesloten: <strong>{{title}}</strong>'
     publish_outcome: Publiceer een uitkomst
-    motion_closed_by_user: '{{naam}} heeft het voorstel gesloten {{titel}}'
-    motion_closed_by_expiry: 'Voorstel is gesloten: {{titel}}'
-    new_vote: '{{naam}} {{standpunt}} ten aanzien van het voorstel {{titel}}'
-    new_comment: '{{naam}} heeft gereageerd op {{titel}}'
-    comment_replied_to: '{{naam}} heeft geantwoord op je opmerking in {{titel}}'
-    comment_liked: '{{naam}} vindt je opmerking leuk in {{titel}}'
-    user_mentioned: '{{naam}} heeft je vermeld in {{titel}}'
-    membership_requested: '{{naam}} heeft gevraagd lid te mogen worden van {{titel}}'
-    membership_request_approved: '{{naam}} heeft je deelnameverzoek goedgekeurd {{titel}}'
+    motion_closed_by_user: '<strong>{{name}}</strong> heeft het voorstel gesloten <strong>{{title}}</strong>'
+    motion_closed_by_expiry: 'Voorstel is gesloten: <strong>{{title}}</strong>'
+    new_vote: '<strong>{{name}}</strong> {{position}} ten aanzien van het voorstel <strong>{{title}}</strong>'
+    new_comment: '<strong>{{name}}</strong> heeft gereageerd op <strong>{{title}}</strong>'
+    comment_replied_to: '<strong>{{name}}</strong> heeft geantwoord op je opmerking in <strong>{{title}}</strong>'
+    comment_liked: '<strong>{{name}}</strong> vindt je opmerking leuk in <strong>{{title}}</strong>'
+    user_mentioned: '<strong>{{name}}</strong> heeft je vermeld in <strong>{{title}}</strong>'
+    membership_requested: '<strong>{{name}}</strong> heeft gevraagd lid te mogen worden van <strong>{{title}}</strong>'
+    membership_request_approved: '<strong>{{name}}</strong> heeft je deelnameverzoek goedgekeurd <strong>{{title}}</strong>'
+    user_added_to_group: '<strong>{{name}}</strong> heeft je toegevoegd aan de groep <strong>{{title}}</strong>'
+    user_added_to_group_no_inviter: 'Je bent toegevoegd aan de groep <strong>{{title}}</strong>'
+    motion_closing_soon: 'Voorstel sluit binnenkort: <strong>{{title}}</strong>'
+    motion_outcome_created: '<strong>{{name}}</strong> heeft een uitkomst gepubliceerd voor het voorstel <strong>{{title}}</strong>'
+    motion_outcome_updated: '<strong>{{name}}</strong> heeft de uitkomst voor het voorstel <strong>{{title}}</strong> geactualiseerd'
+    invitation_accepted: '<strong>{{name}}</strong> heeft je uitnodiging geaccepteerd om deel te nemen aan <strong>{{title}}</strong>'
+    new_coordinator: '<strong>{{name}}</strong> heeft je coördinator gemaakt van <strong>{{title}}</strong>'
+    poll_created: '<strong>{{name}}</strong> heeft een {{poll_type}} gestart <strong>{{title}}</strong>'
+    poll_edited: '<strong>{{name}}</strong> heeft een {{poll_type}} aangepast <strong>{{title}}</strong>'
+    poll_closing_soon: '{{poll_type}} sluit binnenkort <strong>{{title}}</strong>'
+    poll_expired: '{{poll_type}} gesloten: <strong>{{title}}</strong>'
+    outcome_created: '<strong>{{name}}</strong> heeft een uitkomst gedeeld <strong>{{title}}</strong>'
   position_buttons_panel:
     heading: Laat je horen
   vote_form:
@@ -311,7 +329,7 @@ nl-NL:
     undecided: onbeslist
     hide_undecided: Verberg onbesliste leden
   proposal_pie_chart:
-    participation_statement: '{{percentage}}% van de leden heeft hun standpunt gedeeld ({{aantal}}/{{totaal}})'
+    participation_statement: '{{percentage}}% van de leden heeft hun standpunt gedeeld ({{number}}/{{total}})'
   close_proposal_form:
     aria_label: Sluit voorstel
     close_proposal: Sluit voorstel
@@ -343,8 +361,8 @@ nl-NL:
     details_label: Details
     details_placeholder: Geef voldoende informatie zodat iedereen exact weet wat het betekent om het eens of oneens te zijn
   discussion_record:
-    created: 'De discussie {{titel}} is met succes aangemaakt in {{groepsnaam}}'
-    updated: 'Wijzigingen aan {{titel}} opgeslagen'
+    created: 'De discussie {{title}} is met succes aangemaakt in {{groupName}}'
+    updated: 'Wijzigingen aan {{title}} opgeslagen'
   discussion_form:
     aria_label: Discussieformulier
     messages:
@@ -361,15 +379,16 @@ nl-NL:
     context_placeholder: Geef voldoende achtergrondinformatie voor de groep om een productief gesprek te hebben. De info kan worden aangevuld als het gesprek voortgaat
     privacy_label: Privacy
     privacy_public: Iedereen kan de discussie zien. Alleen leden kunnen deelnemen.
-    privacy_private: 'De discussie is enkel zichtbaar voor leden van {{groep}}'
-    privacy_organisation: 'De discussie is zichtbaar voor leden van {{hoofdgroep}} en leden van {{groep}}'
+    privacy_private: 'De discussie is enkel zichtbaar voor leden van {{group}}'
+    privacy_organisation: 'De discussie is zichtbaar voor leden van {{parent}} en leden van {{group}}'
     new_discussion_submit: Start discussie
     edit_discussion_submit: Bijwerken discussie
     make_announcement: Aankondiging
+    notified_count: '{{count}} mensen krijgen e-mail'
   proposal_expanded:
     collapse: Inklappen
     current_votes: Huidige stemmen
-    started_by: 'Gestart door {{naam}}'
+    started_by: 'Gestart door <strong>{{name}}</strong>'
     only_voter_is_you: Geen van de leden heeft nog gestemd
     extend_proposal: Verander sluitingstermijn
     edit_proposal: Bewerk voorstel
@@ -382,18 +401,18 @@ nl-NL:
   legacy_trial_expired_modal:
     heading: 'Bedankt voor je gebruik van Loomio dit jaar!'
     body: >
-      We stellen je ondersteuning gedurende het jaar echt op prijs en we hebben
-      er zin in om Loomio nog beter te maken in 2016.
+      <p>We stellen je ondersteuning gedurende het jaar echt op prijs en we
+      hebben er zin in om Loomio nog beter te maken in 2016.</p>
 
-      Is Loomio bruikbaar voor jouw groep? We hebben net onze prijsplannen
+      <p>Is Loomio bruikbaar voor jouw groep? We hebben net onze prijsplannen
       openbaar gemaakt en we vragen groepen die Loomio al gebruiken om een plan
-      te kiezen dat bij ze past.
+      te kiezen dat bij ze past.</p>
     submit: Toon me de plannen
   group_welcome_modal:
     aria_label: Welkom
     creator_heading: Welkom bij je nieuwe groep
     member_heading: Welkom bij Loomio
-    creator_info: 'Je bent groepscoördinator, een soort gastheer. Bekijk de film en bekijk dan de voorbeelddiscussies.'
+    creator_info: 'Je bent <strong>groepscoördinator</strong>, een soort gastheer. Bekijk de film en bekijk dan de voorbeelddiscussies.'
     member_info: 'Bekijk deze film om te zien hoe Loomio werkt. Probeer daarna een opmerking te plaatsen in een discussie, of begin je eigen discussie!'
     creator_footer: 'Als je er klaar voor bent, <strong> nodig dan mensen uit</strong>.'
     ok_got_it: "Okee, ik snap 't!"
@@ -414,7 +433,7 @@ nl-NL:
     ask_to_join_group: Vraag om lid te worden van groep
     membership_requested: Lidmaatschapsverzoek in behandeling
     messages:
-      joined_group: 'Je bent nu lid van {{groep}}'
+      joined_group: 'Je bent nu lid van {{group}}'
   membership_request_form:
     aria_label: Formulier lidmaatschapsverzoek
     heading: Vraag om lid te worden van groep
@@ -424,19 +443,19 @@ nl-NL:
     submit_button: Vraag om lid te worden van groep
     introduction_over_limit: Antwoord te lang
     messages:
-      membership_requested: 'Je hebt het lidmaatschap aangevraagd voor {{groep}}'
+      membership_requested: 'Je hebt het lidmaatschap aangevraagd voor {{group}}'
   revision_history_modal:
     aria_label: Mutatiegeschiedenis
     thread_header: Discussie context mutatiegeschiedenis
     comment_header: Opmerking bewerking mutatiegeschiedenis
-    started_by: 'Gestart door {{naam}}'
-    edited_by: 'Bijgewerkt door {{naam}}'
+    started_by: 'Gestart door <strong>{{name}}</strong>'
+    edited_by: 'Bijgewerkt door <strong>{{name}}</strong>'
     posted: Geplaatst
   group_page:
     thread_list:
       empty:
         no_discussions_in_group: Deze groep heeft nog geen discussies
-        no_discussions_matching_filters_html: Er zijn geen discussies die overeenkomen met met deze filters Wis filters
+        no_discussions_matching_filters_html: "Er zijn geen discussies die overeenkomen met met deze filters. <a href='%{link}'>Wis filters</a>."
         no_public_discussions: Er zijn openbare discussies in deze groep
         discussions_are_private: Alle discussies in deze groep zijn privé
         join_group: Om privédiscussies te zien moet je je aansluiten bij deze groep
@@ -459,8 +478,8 @@ nl-NL:
     members: Leden
     members_placeholder: 'Je bent de enige hier: nodig mensen uit om zich bij je aan te sluiten!'
     member_options: Opties voor leden
-    see_all_members: 'Zie alle: ({{aantal}}) leden'
-    pending_invitations: '+ ({{telling}}) bezig'
+    see_all_members: 'Zie alle: ({{count}}) leden'
+    pending_invitations: '+ ({{count}}) bezig'
     subgroups: Subgroepen
     subgroups_placeholder: Met subgroepen kun je de groep in verschillende teams verdelen.
     invite_people: Mensen uitnodigen
@@ -478,19 +497,19 @@ nl-NL:
     volume:
       loud: E-mail als er activiteit is.
       loud_aria_description: Je notificatievolume voor deze groep staat op Luid. Je ontvangt een e-mailbericht als er activiteit is.
-      loud_message: 'Je krijgt email over alle activiteit in "{{naam}}"'
+      loud_message: 'Je krijgt email over alle activiteit in "{{name}}"'
       normal: 'E-mail alleen belangrijke activiteit: Nieuwe discussies, uitkomsten etc.'
       normal_aria_description: 'Je notificatievolume staat op Normaal. Je ontvangt per e-mail alleen belangrijke activiteiten, zoals wanneer iemand een nieuwe discussie start, een voorstel doet, of een uitkomst vaststelt.'
-      normal_message: "Je krijgt alleen email over belangrijke gebeurtenissen in \n\"{{naam}}\""
+      normal_message: "Je krijgt alleen email over belangrijke gebeurtenissen in \n\"{{name}}\""
       quiet: Niet e-mailen over deze groep. Activiteit wordt weergegeven op het dashboard.
       quiet_aria_description: Je notificatievolume voor deze groep staat op Stil. Je krijgt geen e-mail over activiteit in deze groep. Groepsactiviteit wordt getoond op je dashboard.
-      quiet_message: 'Je krijgt geen email over activiteit in "{{naam}}".'
+      quiet_message: 'Je krijgt geen e-mail over activiteit in "{{name}}".'
       mute: Verberg deze groep van het dashboard en stuur geen notificatie tenzij ik @genoemd word.
       mute_aria_description: Je notificatievolume voor deze groep staat op Gedempt. Je krijgt geen e-mail tenzij iemand je vermeldt en groupsactiviteit wordt niet weergegeven op je Dahboard.
-      mute_message: '"{{naam}}" is verwijderd van je dashboard.'
+      mute_message: '"{{name}}" is verwijderd van je dashboard.'
     privacy:
       private: 'Privacy: Deze groep is alleen zichtbaar voor leden.'
-      parent_members: 'Privacy: Deze groep is zichtbaar voor leden van {{hoofdgroep naam}} en leden van {{groepsnaam}}'
+      parent_members: 'Privacy: Deze groep is zichtbaar voor leden van {{parentGroupName}} en leden van {{groupName}}'
       public: 'Privacy: Deze groep is zichtbaar op het web'
       aria_label: 'Groepsprivacy: {{privacy}}'
   description_card:
@@ -522,13 +541,14 @@ nl-NL:
     got_to_group: 'Niet nu, dank u.'
   gift_card:
     heading: Kadoplan
+    body: '<strong>{{name}}</strong> is een door giften ondersteunde groep. Om Loomio te ondersteunen om groepen, zoals de jouwe te blijven helpen, klik hier: '
     make_a_contribution: Geef een bijdrage
   upgrade_plan_card:
     heading: Upgrade voor eersteklas kenmerken
-    slack_html: 'Slack integratie: Loomio en Slack werken geweldig samen! Verbind ze met elkaar.'
-    domain_html: 'Aangepast domein: Zorg dat je groep makkelijk gevonden wordt met jouwnaam@loomio.org'
-    help_html: "Deskundige hulp: Loomio's samenwerkingsconsultants krijgen je groep aan de praat"
-    analytics_html: 'Analyserapport: Krijg inzicht in de betrokkenheid van je groep'
+    slack_html: '<strong>Slack integratie</strong>: Loomio en Slack werken geweldig samen! Verbind ze met elkaar.'
+    domain_html: '<strong>Aangepast domein</strong>: Zorg dat je groep makkelijk gevonden wordt met jouwnaam@loomio.org'
+    help_html: "<strong>Deskundige hulp</strong>: Loomio's samenwerkingsconsultants krijgen je groep aan de praat"
+    analytics_html: '<strong>Analyserapport</strong>: Krijg inzicht in de betrokkenheid van je groep'
     donations: Je groepsleden wordt niet langer gevraagd om te doneren.
     more: ... en nog veel meer.
     upgrade: Upgrade nu
@@ -536,8 +556,8 @@ nl-NL:
   trial_card:
     title: 30dagen proef
     choose_plan: Kies je prijsplan
-    in_progress_body: 'Bedankt dat je Loomio uitprobeert met {{naam}}. Je kunt op elk moment een prijsplan kiezen dat bij jouw groep past.'
-    expired_body_html: '{{naam}} heeft het einde van de Loomio proefperiode bereikt. Om het te blijven gebruiken, moet je een prijsplan kiezen dat bij je groep past.'
+    in_progress_body: 'Bedankt dat je Loomio uitprobeert met <strong>{{name}}</strong>. Je kunt op elk moment een prijsplan kiezen dat bij jouw groep past.'
+    expired_body_html: '<strong>{{name}}</strong> heeft het einde van de Loomio proefperiode bereikt. Om het te blijven gebruiken, moet je een prijsplan kiezen dat bij je groep past.'
   choose_plan_modal:
     aria_label: Kies plan
     heading: Kies alsjeblieft een plan voor jouw groep
@@ -547,7 +567,7 @@ nl-NL:
     per_month: /maand
     standard_group_description: Alles wat je nodig hebt voor één groep
     free_group_description: Door donaties ondersteund prijsplan voor gemeenschapsgroepen.
-    pro_group_description: Voor organisaties met meerdere groepen
+    pro_group_description: 'Voor organisaties met <nobr>meerdere groepen.</nobr>'
     benefit_1_group: 1 groep
     benefit_10_groups: 10 groepen
     benefit_unlimited_members: Onbeperkt aantal leden
@@ -585,7 +605,7 @@ nl-NL:
     privacy_statement:
       public_on_web: Naam en beschrijving zijn openbaar op het web
       private_to_group: Naam en beschrijving zijn uitsluitend zichtbaar voor leden.
-      private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{hoofdgroep}}'
+      private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{parent}}'
     privacy: Privacy
     group_privacy_is_open_description: Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar.
     group_privacy_is_closed_description: Iedereen kan de groep vinden en vragen om mee te doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn privé.
@@ -598,20 +618,21 @@ nl-NL:
     subgroup_privacy_is_open_description: Idereen kan deze subgroep vinden en vragen om mee te mogen doen. Alleen leden kunnen zien wie er in de groep zit. Alle discussies zijn openbaar.
     subgroup_privacy_is_closed_description: Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Alle discussies zijn privé.
     subgroup_privacy_is_closed_public_threads_description: Iedereen kan deze subgroep vinden en vragen om mee te doen. Alleen leden kunnen zie wie er in de groep zit. Discussies kunnen openbaar of privé zijn.
-    subgroup_privacy_is_closed_secret_parent_description: 'Leden van {{hoofdgroep}} kunnen deze subgroep vinden en vragen om mee te doen. Alle discussies zijn privé. Alleen leden kunnen zien wie er in de groep zit.'
+    subgroup_privacy_is_closed_secret_parent_description: 'Leden van {{parent}} kunnen deze subgroep vinden en vragen om mee te doen. Alle discussies zijn privé. Alleen leden kunnen zien wie er in de groep zit.'
     subgroup_privacy_is_secret_description: 'Alleen uitgenodigde leden kunnen deze subgroep vinden, zien wie er in zit en discussies zien.'
     advanced_settings: Geavanceerde instellingen
     how_do_people_join: Hoe sluiten mensen aan?
     membership_granted_upon_request: Iedereen kan zich bij de groep aansluiten.
     membership_granted_upon_approval: 'Iedereen kan verzoeken om mee te mogen doen, maar moet goedgekeurd worden.'
+    membership_granted_upon_approval_secret_parent: '<strong>Op verzoek</strong> kan iedereen van {{parent}} vragen om deel te nemen aan de groep.'
     thread_privacy: Discussie privacy
     public_threads: Alleen openbare discussies
-    public_discussions_subgroup: 'Iedereen in {{hoofdgroepnaam}} kan gesprekken zien'
+    public_discussions_subgroup: 'Iedereen in {{parentGroupName}} kan gesprekken zien'
     public_or_private_threads: Sta openbare en privé discussies toe
     private_threads: Alleen leden kunnen gesprekken zien
     permissions: Toestemmingen
     allow_public_threads: Sta openbare discussies toe in deze groep
-    parent_members_can_see_discussions: 'Leden van {{hoofdgroep}} kunnen privé discussies zien.'
+    parent_members_can_see_discussions: 'Leden van {{parent}} kunnen privédiscussies zien.'
     members_can_add_members: Leden kunnen mensen uitnodigen en instemmen met verzoeken om deelname.
     members_can_create_subgroups: Leden kunnen subgroepen aanmaken.
     members_can_edit_discussions: Leden kunnen de context en titel van elke discussie updaten.
@@ -628,7 +649,7 @@ nl-NL:
   membership_requests_card:
     heading: Lidmaatschapsverzoeken
     manage_requests: Beheer verzoeken
-    manage_requests_with_count: 'Beheer verzoeken ({{telling}})'
+    manage_requests_with_count: 'Beheer verzoeken ({{count}})'
   group_help_card:
     title: Help
     ten_tips_article_title: 10 tips om geweldige beslissingen te nemen met Loomio
@@ -640,7 +661,7 @@ nl-NL:
     no_pending_requests: Er zijn momenteel geen lidmaatschapsverzoeken voor deze groep in behandeling.
     no_previous_requests: Er zijn momenteel geen oude lidmaatschapsverzoeken voor deze groep.
     previous_requests: Vorige verzoeken
-    previous_request_response: '{{antwoord}} door {{beantwoorder}}'
+    previous_request_response: '{{response}} door {{responder}}'
     messages:
       request_approved_success: Lidmaatschapsverzoek goedgekeurd
       request_ignored_success: Lidmaatschapsverzoek genegeerd
@@ -649,7 +670,7 @@ nl-NL:
     see_more: Zie meer
   group_previous_polls_card:
     heading: Vorige activiteiten
-    see_more: 'Zie alle: ({{aantal}}) activiteiten'
+    see_more: 'Zie alle: ({{count}}) activiteiten'
   invitation_form:
     aria_label: Uitnodiging van
     invite_people: Nodig mensen uit
@@ -668,20 +689,21 @@ nl-NL:
     team_invitation_message: 'Anders,'
     team_invitation_link: verkrijg een link om te delen.
     add_members: Voeg leden toe
-    from_parent_group: 'van {{naam}}'
+    from_parent_group: 'van {{name}}'
     send: Versturen
     done: Klaar
     messages:
       invitation_sent: Uitnodiging verstuurd.
-      invitations_sent: '{{telling}} uitnodigingen verstuurd.'
+      invitations_sent: '{{count}} uitnodigingen verstuurd.'
+      no_invitations: 'Uhoh! Controleer alsjeblieft of het e-mailadres correct is en probeer het opnieuw.'
       max_invitations: 'Alls je meer dan 100 uitnodigingen wil versturen, gebruik een team link.'
   add_members_modal:
     aria_label: Voeg leden toe uit de hoofdgroep
-    heading: 'Voeg mensen toe uit {{naam}}'
+    heading: 'Voeg mensen toe uit {{name}}'
     add_members: Voeg leden toe
-    user_added_to_subgroup: '{{naam}} toegevoegd aan Subgroep'
-    users_added_to_subgroup: '{{telling}} Gebruikers toegevoegd aan Subgroep'
-    no_members_to_add: 'Alle leden van {{hoofdgroep}} horen bij deze subgroep'
+    user_added_to_subgroup: '{{name}} toegevoegd aan Subgroep'
+    users_added_to_subgroup: '{{count}} Gebruikers toegevoegd aan Subgroep'
+    no_members_to_add: 'Alle leden van {{parent}} horen bij deze subgroep'
   memberships_page:
     members: Leden
     name_label: Naam
@@ -689,15 +711,15 @@ nl-NL:
     remove_member_label: Verwijder
     fragment_placeholder: Filter gebruikers op naam of gebruiksnaam
     messages:
-      remove_member_success: 'Verwijderd {{naam}}'
-      make_admin_success: '{{naam}} is nu coördinator'
-      remove_admin_success: '{{naam}} is geen coördinator meer'
+      remove_member_success: 'Verwijderd {{name}}'
+      make_admin_success: '{{name}} is nu coördinator'
+      remove_admin_success: '{{name}} is geen coördinator meer'
     remove_admin_from_self:
       question: Weet je zeker dat je geen coördinator meer wil zijn?
   remove_membership_form:
     aria_label: Verwijder lid
     title: Verwijder lid
-    question: 'Weet je zeker dat je {{naam}} wil verwijderen als lid van {{groep}}?'
+    question: 'Weet je zeker dat je {{name}} wil verwijderen als lid van {{group}}?'
     submit: Verwijderen
   pending_invitations_card:
     heading: Uitnodigingen in behandeling
@@ -732,6 +754,7 @@ nl-NL:
   change_picture_form:
     aria_label: Verander fotoformulier
     title: Verander foto
+    helptext: 'Je kunt je eigen profiel foto uploaden, of als je een <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account hebt, kun je dat gebruiken.'
     use_initials: Gebruik initialen
     use_gravatar: Gebruik gravatar
     use_uploaded: Upload nieuwe foto
@@ -748,6 +771,7 @@ nl-NL:
     introduction: 'Als je je account deactiveert:'
     no_longer_group_member: 'Je staat bij geen enkele groep meer geregistreerd als lid '
     name_removed: 'Opmerkingen, voorstellen en gesprekken die je gemaakt hebt blijven bewaard, maar je naam wordt erbij verwijderd'
+    no_emails: Je ontvangt geen Loomiogerelateerde e-mails meer
     contact_for_reactivation: Je moet contact met ons opnemen om je account te heractiveren
     submit: Ja ik wil deactiveren
   deactivate_user_form:
@@ -763,17 +787,18 @@ nl-NL:
   email_settings_page:
     header: E-mailinstellingen
     all_groups: Instellingen voor alle groepen
-    daily_summary_label: Dagelijkse emailopsomming
+    daily_summary_label: Dagelijkse samenvatting per e-mail
     daily_summary_description: Elke ochtend krijg je een email met alle activiteit die je de dag ervoor gemist hebt. Deze email biedt een makkelijke manier om up to date te blijven met Loomio activiteit.
     on_participation_label: Abonneer op deelname
-    on_participation_description: 'Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je ge-emaild.'
+    on_participation_description: 'Als je deelneemt aan een discussie, wordt alle verdere activiteit direct naar je gemaild.'
     mentioned_label: Vermeldingen
     mentioned_description: 'Als iemand jouw aandacht wil krijgen, @vermelden ze je. We raden je aan om dit aan te laten staan, zodat je een e-mail ontvangt zodra dit gebeurt.'
+    update_settings: Bewaar veranderingen
     specific_groups: Instellingen voor specifieke groepen
     default_settings:
-      loud_description: 'Als je je aansluit bij een nieuwe groep, krijg je een email zodra er activiteit is.'
-      normal_description: 'Als je je aansluit bij een nieuwe groep, krijg je een email over nieuwe discussies en voorstellen.'
-      quiet_description: 'Als je je aansluit bij een nieuwe groep, krijg je geen email over activiteit.'
+      loud_description: 'Als je je aansluit bij een nieuwe groep, krijg je een email <strong>zodra er activiteit is</strong>.'
+      normal_description: 'Als je je aansluit bij een nieuwe groep, krijg je een email over <strong>nieuwe discussies en voorstellen</strong>.'
+      quiet_description: 'Als je je aansluit bij een nieuwe groep, krijg je <strong>geen email over activiteit</strong>.'
     change_default: Verander standaard
     edit: Bewerk
     messages:
@@ -785,7 +810,7 @@ nl-NL:
       show_muted: 'Je hebt geen gedempte discussies, omdat je geen lid bent van een groep.'
       start: Start
       or: of
-      join_group: wordt lid van een groep om discussies te zien.
+      join_group: '<a href="/explore">wordt lid</a> van een groep om discussies te zien.'
     no_threads:
       show_all: Je hebt geen recente discussies.
       show_starred: Je hebt geen gemarkeerde discussies.
@@ -802,13 +827,14 @@ nl-NL:
         Dempen is een manier om discussies te verbergen of stil te maken waar je
         geen interesse in hebt.
 
-        Dempen betekent dat je het de discussie niet ziet in Recent of Ongelezen
-        en dat je geen melding krijgt over activiteit in die discussies, zoals
-        voorstellen.
+        Dempen betekent dat je het de discussie niet ziet in
+        <strong>Recent</strong> of <strong>Ongelezen</strong> en dat je geen
+        melding krijgt over activiteit in die discussies, zoals voorstellen.
 
-        Je wordt alleen geïnformeerd als iemand je naam @vermeldt.
+        Je wordt alleen geïnformeerd als iemand je naam
+        <strong>@vermeldt</strong>.
       instructions: 'Om een discussie te dempen, zoek deze op en klik op het dempen icoon'
-      see_muted_html: 'Om je gedempte discussies te zien, klik je op "Gedempt". Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.'
+      see_muted_html: 'Om je gedempte discussies te zien, klik je op <strong>"Gedempt"</strong>. Je kunt dempen opheffen door op het bijbehorende pictogram te klikken.'
     filtering:
       filter_threads: Filter discussies
       filter_threads_aria_label: Filter discussies
@@ -826,11 +852,11 @@ nl-NL:
       muted_aria_label: Toont momenteel gedempte discussies
       muted_description: Bekijk alleen discussies die gedempt zijn
     aria_thread:
-      unread: '{{telling}} ongelezen items.'
-      current_proposal: 'Huidige voorstel {{naam}}.'
-      you_voted: 'Je hebt gestemd: {{standpunt}}'
+      unread: '{{count}} ongelezen items.'
+      current_proposal: 'Huidige voorstel {{name}}.'
+      you_voted: 'Je hebt gestemd: {{position}}'
     thread_preview:
-      you_voted: 'Je hebt {{standpunt}} gestemd'
+      you_voted: 'Je hebt {{position}} gestemd'
       undecided: Je bent onbeslist
     threads_from:
       group: Discussies van
@@ -851,7 +877,7 @@ nl-NL:
       explanation: 'Je hebt geen ongelezen discussies, omdat je geen lid bent van een groep.'
       start: Start
       or: of
-      join_group: wordt lidvan een groep om discussies te zien.
+      join_group: '<a href="/explore">wordt lid</a> van een groep om discussies te zien.'
   groups_page:
     page_header: Jouw groepen
   discussion:
@@ -861,14 +887,14 @@ nl-NL:
     previous_proposals: Vorige voorstellen
     load_previous: Laad eerdere activteit
     you_like_this: Je vindt dit leuk.
-    liked_by_you_and_someone: 'Jij en {{naam}} vinden dit leuk.'
-    liked_by_you_and_others: 'Leuk gevonden door jou {{aangesloten namen}} en {{naam}}.'
-    liked_by_someone: '{{naam}} vindt dit leuk.'
-    liked_by_two_others: '{{naam_1}} en {{naam_2}} vinden dit leuk.'
-    liked_by_many_others: 'Leuk gevonden door {{aangesloten namen}} en {{naam}}.'
-    liked_by_name: 'Leuk gevonden door {{naam}}.'
-    liked_by_names_and_name: 'Leuk gevonden door {{aangesloten namen}} en {{naam}}.'
-    started_by: 'Gestart door {{naam}}'
+    liked_by_you_and_someone: 'Jij en {{name}} vinden dit leuk.'
+    liked_by_you_and_others: 'Leuk gevonden door jou {{joinedNames}} en {{name}}.'
+    liked_by_someone: '{{name}} vindt dit leuk.'
+    liked_by_two_others: '{{name_1}} en {{name_2}} vinden dit leuk.'
+    liked_by_many_others: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
+    liked_by_name: 'Leuk gevonden door {{name}}.'
+    liked_by_names_and_name: 'Leuk gevonden door {{joinedNames}} en {{name}}.'
+    started_by: 'Gestart door <strong>{{name}}</strong>'
     edited: Bewerkt
     volume:
       mute_message: Discussie gedempt.
@@ -898,9 +924,9 @@ nl-NL:
     title: Verplaats discussie
     body: 'Bestemming groep:'
     confirm: Verplaats discussie
-    confirm_change_to_private_thread: '{{groepsnaam}} is een open groep. Als je doorgaat, wordt deze discussie openbaar.'
+    confirm_change_to_private_thread: '{{groupName}} is een open groep. Als je doorgaat, wordt deze discussie openbaar.'
     messages:
-      success: 'Discussie is verplaatst naar {{naam}}'
+      success: 'Discussie is verplaatst naar {{name}}'
   activity_card:
     new_activity: Nieuwe activiteit
     attachment_display:
@@ -913,32 +939,32 @@ nl-NL:
     question: Weet je zeker dat je deze reactie wilt verwijderen?
     confirm: Verwijder reactie
   new_comment_item:
-    aria_label: 'Opmerking door {{schrijver}}'
+    aria_label: 'Opmerking door {{author}}'
     context_menu:
       aria_label: Opmerking opties
       edit_comment: Bewerk reactie
       delete_comment: Verwijder reactie
-    in_reply_to: 'in reactie op {{ontvanger}}'
+    in_reply_to: 'in reactie op <strong>{{recipient}}</strong>'
     edited: Bewerkt
   new_vote_item:
     agree: eens
     abstain: onthouden
     disagree: oneens
     block: geblokkeerd
-    agree_with_statement: 'eens: {{verklaring}}'
-    abstain_with_statement: 'onthouden: {{verklaring}}'
-    disagree_with_statement: 'oneens: {{verklaring}}'
-    block_with_statement: 'geblokkeerd: {{verklaring}}'
+    agree_with_statement: 'eens: <span>{{statement}}</span>'
+    abstain_with_statement: 'onthouden: <span>{{statement}}</span>'
+    disagree_with_statement: 'oneens: <span>{{statement}}</span>'
+    block_with_statement: 'geblokkeerd: <span>{{statement}}</span>'
   new_proposal_item:
-    author_created_proposal: 'start een voorstel: {{titel}}'
+    author_created_proposal: 'start een voorstel: <span>{{title}}</span>'
   proposal_closed_item:
-    proposal_closed: 'Dit voorstel is gesloten: {{titel}}'
+    proposal_closed: 'Dit voorstel is gesloten:<span>{{title}}</span>'
   proposal_closed_by_user_item:
-    proposal_closed_by_user: 'voorstel gesloten: {{titel}}'
+    proposal_closed_by_user: 'voorstel gesloten: <span>{{title}}</span>'
   proposal_edited_item:
-    name: 'voorstel titel bijgewerkt: {{titel}}'
+    name: 'voorstel titel bijgewerkt: <span>{{title}}</span>'
     description: voorstel omschrijving bijgewerkt
-    closing_at: 'voorstel bijgewerkt om te sluiten op {{tijd}}'
+    closing_at: 'voorstel bijgewerkt om te sluiten op <span>{{time}}</span>'
     description_name: voorstel titel en omschrijving bijgewerkt
     closing_at_name: voorstel titel en sluitingstijd bijgewerkt
     closing_at_description: voorstel omschrijving en sluitingstijd bijgewerkt
@@ -949,7 +975,7 @@ nl-NL:
     proposal_outcome_updated: 'uitkomst voorstel bijgewerkt:'
   discussion_edited_item:
     attachment_ids: de discussie bijlagen bijgewerkt
-    title: 'de discussie titel bijgewerkt: {{titel}}'
+    title: 'de discussie titel bijgewerkt: <span>{{title}}</span>'
     description: discussie context bijgewerkt
     description_title: discussie titel en context bijgewerkt
     private: 'discussie privacy bijgewerkt naar '
@@ -959,7 +985,7 @@ nl-NL:
     description_private: de discussie context en privacy bijgewerkt
     description_private_title: 'de discussie titel, context en privacy bijgewerkt'
   discussion_moved_item:
-    discussion_moved: 'de discussie verplaatst van {{groep}}'
+    discussion_moved: 'de discussie verplaatst van <span>{{group}}</span>'
   contact_message_form:
     contact_us: Neem contact met ons op
     name_label: Je naam
@@ -982,6 +1008,36 @@ nl-NL:
 
       Hier zijn wat tips om jouw groep te laten slagen:
     different_ways: Verschillende manieren waarop je Loomio kunt gebruiken
+    engaging_html: >
+      <h2>Tips om je groep boeien</h2>
+
+      <p>Mensen zijn enthousiast om aan te haken en mee te doen als er een
+      boeiend
+
+      voorstel op tafel ligt. Een goed voorstel bevat een actielijst voor de
+      groep zodat
+
+      het direct duidelijk is wat het betekent om het er mee eens of oneens te
+      zijn. Denk na over hoe je
+
+      gesprekken/besluiten kunt identificeren waar de groep nu individueel of
+      via
+
+      e-mail mee bezig is die makkelijker zouden zijn als ze op Loomio zouden
+      staan.</p>
+
+      <p>Als je groep net begint, kun je beginnen met een eenvoudig besluit, om
+      iedereen
+
+      een kans te geven om met het instrument te spelen en het
+      besluitvormingsproces in actie te zien.</p>
+
+      <p>Een andere eenvoudige manier om mensen aan te moedigen om in een gesprek
+      deel te nemen
+
+      is door de @vermeld optie te gebruiken om specifieke mensen aan te spreken;
+      ze ontvangen een e-mail om ze te laten weten dat ze vermeld zijn in een
+      reactie.</p>
     example1_html: >
       <h3>Je hebt de groep nodig om een breed onderwerp te bespreken en om samen
       tot een oplossing te komen</h3>
@@ -993,6 +1049,21 @@ nl-NL:
       met betrekking tot het probleem alvorens tot een oplossing te komen. Als
       mensen betrokken zijn bij het proces, zullen ze eerder geneigd zijn dit
       resultaat te steunen.</p>
+    example2_html: >
+      <h3>Je hebt al een voorstel in gedachten en je wil een akkoord krijgen van
+      de groep om verder te gaan.</h3>
+
+      <p>Strategie: start een gesprek over een specifiek besluit en maak direct
+      een voorstel.</p>
+
+      <p>Als je een duidelijke uitkomst in gedachten hebt, maar je wil zeker
+      weten dat er geen zwaarwegende bezwaren zijn,
+
+      kun je het voorstel gebruiken om snelle inbreng te krijgen over een
+      beslissing.</p>
+
+      <p>Je kunt dingen doen, zoals een document afronden, een toepassing
+      goedkeuren, of instemmen met een stuk.</p>
     get_in_touch: Neem contact op
     get_in_touch_description_html: "Als je vragen of opmerkingen hebt, <a href='%{link}'>stuur ons een berichtje</a>."
     getting_started: Aan de slag
@@ -1060,6 +1131,25 @@ nl-NL:
     positions_disagree_description: '<span>Oneens</span> betekent dat je denkt dat er mogelijk een beter alternatief is, maar dat je mee wilt gaan met de beslissing van de groep.'
     positions_block_description: '<span>Blokkeren</span> betekent dat je serieuze bezwaren hebt en dat je het erg jammer zou vinden als het voorstel wordt aangenomen.'
     start_discussion: Begin een boeiende discussie
+    start_discussion_html: >
+      <p>Als je een gesprek begint, zorg dan dat de titel het onderwerp beknopt
+      beschrijft.
+
+      Gebruik het Inhoud Paneel om alle achtergrondinformatie te geven die voor
+      de groep nodig is
+
+      om een productief en goed geïnformeerd gesprek te voeren.</p>
+
+      <p>Tijdens het gesprek kan het Inhoud Paneel bijgewerkt worden als er
+      nieuwe informatie
+
+      bekend wordt. Naast het verduidelijken van het onderwerp kun je deze ruimte
+      gebruiken voor
+
+      het delen van hulpbronnen, het samenvatten van het gesprek terwijl het
+      voortgaat, of het
+
+      besluitvormingsproces dat groep gebruikt toelichten.</p>
     start_proposal: Het schrijven van een helder voorstel
     start_proposal_html: >
       <p> Als je de titel kort en bondig maakt, weten mensen precies wat het
@@ -1090,9 +1180,9 @@ nl-NL:
   explore_page:
     header: Verken Loomio groepen
     search_placeholder: Zoek openbare Loomio groepen
-    single_search_result: '1 openbare groep die overeen komt met {{zoekterm}}'
-    multiple_search_results: '{{resultaten telling}} openbare groepen die overeen komen met {{zoek term}}:'
-    no_results_found: "<Strong>Kun je de groep die je zoekt, niet vinden? </Strong> Als de privacy van een groep op 'geheim' staat, verschijnt die hier niet. Als je weet wie de groep coördineert, kun je hem of haar vragen om een uitnodiging."
+    single_search_result: '1 openbare groep die overeen komt met <strong>{{searchTerm}}:</strong>'
+    multiple_search_results: '{{resultCount}} openbare groepen die overeen komen met <strong>{{searchTerm}}:</strong>'
+    no_results_found: "<strong>Kun je de groep die je zoekt, niet vinden? </strong> Als de privacy van een groep op 'geheim' staat, verschijnt die hier niet. Als je weet wie de groep coördineert, kun je hem of haar vragen om een uitnodiging."
   angular:
     switch_back: Wissel terug naar de oude Loomio
     give_feedback: Geef feedback
@@ -1108,43 +1198,38 @@ nl-NL:
 
 
 
-
+        <p>
 
         De nieuwe interface is als de oude, maar nieuwer:
 
+        <ul>
 
+        <li>Alles update live op de pagina terwijl het gebeurt</li>
 
-        Alles update live op de pagina terwijl het gebeurt
+        <li>Het is ontworpen voor al je apparaten, van smartphone naar
+        desktop</li>
 
-        Het is ontworpen voor al je apparaten, van smartphone naar desktop
-
-        Het is toegankelijk voor mensen die blind zijn en vertaald in <a
+        <li>Het is toegankelijk voor mensen die blind zijn en vertaald in <a
         href="https://www.loomio.org/translation"> bergen talen</a>
 
+        </ul>
+
+        </p>
 
 
 
+        <p>Het gebruikt dezelfde database als bij de oude interface, dus bevat
+        het al je bestaande groepen en gesprekken.</p>
 
+        <p>Er is een link naar " Geef feedback" links onder in de hoek. Je ziet
+        ook een link naar " Wissel terug naar oude Loomio", die nog even
+        beschikbaar blijft.</p>
 
-
-
-
-        Het gebruikt dezelfde database als bij de oude interface, dus bevat het
-        al je bestaande groepen en gesprekken.
-
-
-
-        Er is een link naar " Geef feedback" links onder in de hoek. Je ziet ook
-        een link naar " Wissel terug naar oude Loomio", die nog even beschikbaar
-        blijft.
-
-
-
-        We zijn benieuwd naar je feedback, bedankt voor je tijd en steun.
+        <p>We zijn benieuwd naar je feedback, bedankt voor je tijd en steun.</p>
       button_text: Gebruik de nieuwe Loomio
     disable:
       title: Bedankt voor het proberen van de nieuwe Loomio
-      body_html: 'Oei, hebben we iets verkeerd gedaan? Het spijt ons als je het niet naar je zin hebt gehad in Loomio.'
+      body_html: '<p>Oei, hebben we iets verkeerd gedaan? Het spijt ons als je het niet naar je zin hebt gehad in Loomio</p>'
       give_feedback: 'Voordat je gaat, deel je feedback, zodat we dingen kunnen verbeteren.'
       button_text: Wissel terug naar de oude Loomio
   global:
@@ -1157,6 +1242,7 @@ nl-NL:
   authorized_apps_page:
     title: Toegestane apps
     no_applications: Je hebt nog geen andere apps toestemming gegeven.
+    notice: "Je hebt de volgende derde partij apps toestemming gegeven om je account te gebruiken. Klik ' Intrekken' om ze uit te schakelen."
     revoke: Intrekken
   registered_apps_page:
     title: Geregistreerde applicaties
@@ -1179,50 +1265,186 @@ nl-NL:
     edit_application_submit: Applicatie bijwerken
     messages:
       logo_changed: Logo bijgewerkt
-      created: "Gemaakt '{{naam}}' "
-      updated: "Bijgewerkt '{{naam}}' "
+      created: "Gemaakt '{{name}}' "
+      updated: "Bijgewerkt '{{name}}' "
   remove_app_form:
-    title: 'Deactiveer {{naam}}'
-    question: "Weet je zeker dat je de applicatie '{{naam}}' wil deactiveren? Dit kan niet ongedaan worden gemaakt."
+    title: 'Deactiveer {{name}}'
+    question: "Weet je zeker dat je de applicatie '{{name}}' wil deactiveren? Dit kan niet ongedaan worden gemaakt."
     submit: Deactiveer
     messages:
-      success: "'{{naam}}' is succesvol gedeactiveerd"
+      success: "'{{name}}' is succesvol gedeactiveerd"
   revoke_app_form:
-    title: 'Trek toegang in voor {{naam}}'
-    question: "Weet je zeker dat je '{{naam}}' geen gebruik meer wil laten maken van je account?"
+    title: 'Trek toegang in voor {{name}}'
+    question: "Weet je zeker dat je '{{name}}' geen gebruik meer wil laten maken van je account?"
     submit: Trek toegang in
     messages:
-      success: "'{{naam}}' kan geen gebruik meer maken van je account."
+      success: "'{{name}}' kan geen gebruik meer maken van je account."
   decision_tools_card:
+    purpose: Verzamel individuele meningen om het geheel te begrijpen.
     proposal_title: Voorstel
+    proposal_subtitle: Vind consensus
     count_title: Telling
+    count_subtitle: 'Volg wie er een taak af heeft '
     poll_title: Peiling
+    poll_subtitle: Meet de populariteit van verschillende mogelijkheden
   poll_common:
     your_response: Je antwoord
+    change_your_response: Verander je reactie
+    reason: Reden
     results: Resultaten
     vote: Stem
     votes: Stemmen
+    update_outcome: Actualiseer uitkomst
+    outcome: Uitkomst
+    statement: Verklaring
+    change_your_stance_title: Van gedachten veranderd?
+    change_your_stance_text: 'De beste groepsbeslissingen vinden plaats als mensen hun best doen om elkaars standpunt te begrijpen. Als je door wat andere mensen hebben gezegd van gedachten bent veranderd, verander je je stem.'
+    change_your_stance: Verander je stem
+    load_more: Laad meer
     details: Details
+  poll_common_card:
+    show_results: Toon resultaten
   poll_common_collapsed:
     by_who: 'door {{name}}'
   poll_common_notify_group:
     notify_group: Aankondiging
+    members_count: '{{count}} mensen worden gewaarschuwd'
+  poll_common_close_form:
+    title: Sluit een peiling voortijdig
+    helptext: Weet je zeker dat je dit voortijdig wil sluiten?
+    close_proposal: Sluit voorstel
+    close_poll: Sluit peiling
+    close_count: Sluit telling
+    proposal_closed: Voorstel gesloten
+    poll_closed: Peiling gesloten
+    count_closed: Telling gesloten
+  poll_common_closing_at_field:
+    closing: Sluit
+    closing_hour: Sluitingstijd
+  poll_common_school_link:
+    learn_about: 'Kom te weten over:'
+  poll_card:
+    started_by: 'Gestart door {{name}}'
+  poll_common_votes_panel:
+    newest_first: Nieuwste eerst
+    oldest_first: Oudste eerst
+    priority_first: Eens eerst
+    priority_last: Geblokkeerd eerst
+    no_votes_yet: Er zijn nog geen stemmen uitgebracht.
+    change_results_order: Verander volgorde resultaten
+    show_undecided: Toon onbeslist
+  poll_common_did_not_votes_panel:
+    undecided: 'Onbeslist ({{count}})'
+    show_undecided: Toon onbeslist
+  poll_common_accordion:
+    title: Recente activiteit
+  poll_common_set_outcome_panel:
+    share_outcome: Deel uitkomst
+    poll: 'Deze peiling is gesloten. <strong>Deel de uitkomst</strong> met de groep.'
+    proposal: 'Dit voorstel is gesloten. Denk na over wat er gezegd is en <strong>deel een uitkomst</strong>, zodat mensen weten wat er daarna gebeurt.'
+    count: 'Deze telling is gesloten. <strong>Deel een uitkomst</strong> om het proces te voltooien.'
   poll_common_outcome_form:
+    new_title: Deel een uitkomst
+    update_title: Actualiseer uitkomst
+    outcome_created: Uitkomst gemaakt
     outcome_updated: Uitkomst bijgewerkt
+    statement_placeholder: Vat de reacties samen en leg uit wat er daarna gebeurt.
+    submit: Deel uitkomst
+  poll_common_outcome_panel:
+    authored_by: 'Door {{name}}'
   poll_proposal_form:
+    start_a_proposal: Start een voorstel
+    edit_proposal: Pas voorstel aan
+    tip: 'Voorstellen zijn een instrument om alles bij elkaar te brengen. Gebruik ze om een gesprek naar een helder uitkomst te leiden. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Leer meer</a>'
     title: Titel
+    title_placeholder: 'M.a.w. Laten we naar de maan gaan!'
     details: Details
+    details_placeholder: 'Geef genoeg informatie, zodat iedereen weet wat het inhoudt om het eens of oneens te zijn'
     options: Opties
+    closing: Sluit
+    start: Start voorstel
+    update: Actualiseer voorstel
+    proposal_created: Voorstel gemaakt
     proposal_updated: Voorstel bijgewerkt
+  poll_proposal_vote_form:
+    default_reason_placeholder: Licht je gedachtengang toe alsjeblieft
+    abstain_reason_placeholder: Laat mensen weten waarom je niet meer meedoet in deze beslissing
+    agree_reason_placeholder: Wat vind je goed aan het voorstel en wat heeft de groep er aan?
+    disagree_reason_placeholder: 'Hoe kan dit voorstel verbeterd worden, zodat je het zou steunen?'
+    block_reason_placeholder: Verklaar je bezwaar tegen dit voorstel en waarom het niet door zou moeten gaan
+    stance_created: Stemming gemaakt
+    stance_updated: Stemming geactualiseerd
+  poll_proposal_options:
+    agree: Eens
+    agree_verb: ingestemd
+    agree_meaning: dit voorstel is goed genoeg om door de groep over te worden genomen
+    abstain: Onthouden
+    abstain_verb: onthouden
+    abstain_meaning: 'Weet niet zeker, weet niet, of maakt niet uit. Steun de uitkomst toch wel'
+    disagree: Oneens
+    disagree_verb: niet ingestemd
+    disagree_meaning: Ik steun het voorstel niet. Het zou niet door moeten gaan.
+    block: Blokkeer
+    block_verb: geblokkeerd
+    block_meaning: De dringende aandacht van de groep is nodig om een ernstige zorg te delen
   poll_count_options:
     'yes': Ja
     'no': Nee
   poll_count_form:
+    new_count: Start een telling
+    update_count: Pas telling aan
+    tip: 'Een telling is hetzelfde als: "Kan iedereen zijn hand opsteken..". Gebruik het om taken te voltooien of om deelnemers te zoeken.'
     title: Titel
+    title_placeholder: M.a.w. Wie wil deelnemen aan de werkgroep?
     details: Details
+    details_placeholder: 'Leg uit wat meedoen inhoudt, of geef details over hoe deel te nemen.'
+    start: Start telling
+    update: Actualiseer telling
+    count_created: Telling gemaakt
+    count_updated: Telling geactualiseerd
   poll_count_vote_form:
     reason_label: Bericht
+    reason_placeholder: bericht (optioneel)
+    stance_created: Stemming gemaakt
+    stance_updated: Stemming geactualiseerd
+  poll_count_chart_panel:
+    out_of: 'uit {{goal}}'
   poll_poll_form:
+    start_header: Start een peiling
+    edit_header: Pas peiling aan
+    tip: Peilingen kunnen gebruikt worden om steun voor verschillende opties te meten om daarmee voorkeuren in de groep begrijpen.
     title: Vraag
+    title_placeholder: M.a.w. Wat is je lievelingskleur?
     details: Details
+    details_placeholder: Geef verhelderende details die mensen mogelijk nodig hebben om de vraag te beantwoorden.
     options: Opties
+    add_option_placeholder: Voeg optie toe
+    remove_option: Verwijder optie
+    closing: Sluit
+    start: Start peiling
+    update: Actualiseer peiling
+    multiple_choice: Multiple choice
+    multiple_choice_explained: Stemmers kunnen meer dan 1 optie kiezen
+    poll_created: Peiling gemaakt
+    poll_updated: Peiling geactualiseerd
+  poll_poll_vote_form:
+    stance_created: Stemming gemaakt
+    stance_updated: Stemming geactualiseerd
+  poll_thread_item:
+    poll:
+      poll_created: '<strong>{{author}}</strong> is een nieuwe peiling gestart <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> stemde:'
+      poll_edited: '<strong>{{author}}</strong> heeft de peiling aangepast: <span>{{title}}</span>'
+      poll_expired: 'Peiling gesloten: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> heeft de peiling gesloten: <span>{{title}}</span>'
+    proposal:
+      poll_created: '<strong>{{author}}</strong> heeft een voorstel gestart: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong>  stemde:'
+      poll_edited: '<strong>{{author}}</strong> heeft het voorstel aangepast: <span>{{title}}</span>'
+      poll_expired: 'Voorstel gesloten: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> heeft voorstel gesloten: <span>{{title}}</span>'
+    count:
+      poll_created: '<strong>{{author}}</strong> heeft een telling gestart: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> antwoordde:'
+      poll_edited: '<strong>{{author}}</strong> heeft de telling aangepast: <span>{{title}}</span>'
+    outcome_created: '<strong>{{author}}</strong> heeft een uitkomst gedeeld:'

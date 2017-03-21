@@ -28,7 +28,6 @@ sr-RS:
     more_help: Још помоћи
     models:
       proposal: Предлог
-    copy: Копирај текст
     copied: Копирано
     action:
       close: Затвори
@@ -85,7 +84,6 @@ sr-RS:
     mute: Искључено
   change_volume_form:
     loud_label: Сва активност
-    normal_label: Важна активност
     quiet_label: Без еПорука
     mute_label: Утишај
     discussion:

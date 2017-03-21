@@ -28,7 +28,6 @@ fr:
     more_help: "Plus d'aide"
     models:
       proposal: Proposition
-    copy: Copier le texte
     copied: Copié dans le presse papier
     action:
       close: Fermer
@@ -96,7 +95,6 @@ fr:
   change_volume_form:
     aria_label: Changer le formulaire des paramètres des emails
     loud_label: "Toute l'activité"
-    normal_label: Activité importante
     quiet_label: Aucun courriel
     mute_label: Désactivé
     discussion:
@@ -112,32 +110,27 @@ fr:
     membership:
       title: 'Paramètres courriel pour {{title}}'
       loud_description: "Vous recevrez un courriel à chaque fois qu'il y a une activité dans ce groupe."
-      normal_description: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans ce groupe.
       quiet_description: "Vous ne recevrez aucun courriel concernant l'activité de ce groupe."
       apply_to_all: Appliquer ces paramètres à tous mes groupes.
       messages:
         loud: "Vous recevrez un courriel lorsqu'il y aura une activité dans ce groupe."
-        normal: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans ce groupe.
         quiet: Vous ne recevrez aucun courriel concernant ce groupe.
     all_groups:
       messages:
         loud: "Vous recevrez un courriel lorsqu'il y aura une activité dans l'un de vos groupes."
-        normal: "Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans l'un de vos groupes."
         quiet: 'Vous ne recevrez aucun courriel, pour aucun de vos groupes.'
     user:
       title: Paramètres courriel pour les nouveaux groupes
       loud_description: "Vous recevrez un courriel à chaque fois qu'il y a une activité dans les nouveaux groupes rejoints."
-      normal_description: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans chaque groupe auquel vous participez.
       quiet_description: "Vous ne recevrez aucun courriel concernant l'activité des nouveaux groupes auxquels vous participez."
       apply_to_all: Appliquer ces paramètres à tous mes groupes.
       messages:
         loud: "Vous recevrez un courriel à chaque fois qu'il y a une activité dans les nouveaux groupes."
-        normal: Vous recevrez un courriel à chaque nouvelle discussion ou proposition dans les nouveaux groupes
         quiet: Vous ne recevrez aucun courriel concernant les nouveaux groupes.
   mute_explanation_modal:
     aria_label: Rendre muet le fil de discussion
     mute_thread: Désactiver la discussion
-    body_html: "<p>Rendre muet signifie que vous <strong>ne recevrez aucune notification concernant les propositions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu'un vous @mentionnne.</p>\n<p>Les fils de discussion muets sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos fils muets, sélectionnez l'option <strong>Muets</strong> de la barre latérale\_:</p>\n"
+    body_html: "<p>Rendre muet signifie que vous <strong>ne recevrez aucune notification concernant les propositions</strong>, ni sur aucune activité de ce fil de discussion, sauf si quelqu'un vous <strong>@mentionnne.</strong></p>\n<p>Les fils de discussion muets sont également invisibles dans les pages <strong>Récents</strong> et <strong>Non lus</strong>. Pour retrouver vos fils muets, sélectionnez l'option <strong>Muets</strong> de la barre latérale\_:</p>\n"
     image_alt: Option fils de discussion muets dans la barre latérale
   dismiss_explanation_modal:
     aria_label: Passer la discussion

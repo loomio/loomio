@@ -28,7 +28,6 @@ ru:
     more_help: Дополнительная справка
     models:
       proposal: Предложение
-    copy: Копировать текст
     copied: Скопировать в буфер
     action:
       close: Закрыть
@@ -95,13 +94,12 @@ ru:
     unmute: Включить
   change_volume_form:
     loud_label: Вся активность
-    normal_label: Важная активность
     quiet_label: 'Нет '
     mute_label: Заглушен
     discussion:
       title: 'Настройки email для {{title}}'
     membership:
-      title: Настройки Email
+      title: 'Настройки Email {{title}}'
       apply_to_all: Применить эти настройки для всех моих групп
     user:
       title: Настройки почты для новых групп
