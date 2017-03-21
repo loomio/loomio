@@ -2,8 +2,9 @@
   .add-community-form__add{ng-if: "!community.communityType"}
     %h3.lmo-h3{translate: "add_community_form.existing_communities"}
     .add-community-form__existing
-      .add-community-form__community{ng-repeat: "community in poll.communities() track by community.id"}
-      .add-community-form__none-existing.poll-common-helptext{ng-if: "!communities()", translate: "add_community_form.no_communities"}
+      .add-community-form__community{ng-repeat: "community in previousCommunities() track by community.id"}
+        {{community.displayName()}}
+      .add-community-form__none-existing.poll-common-helptext{ng-if: "!previousCommunities().length", translate: "add_community_form.no_communities"}
 
     %h3.lmo-h3{translate: "add_community_form.connect_new_community"}
     %md-list.md-block.add-community-form__new

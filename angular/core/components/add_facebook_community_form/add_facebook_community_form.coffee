@@ -15,6 +15,11 @@ angular.module('loomioApp').directive 'addFacebookCommunityForm', (Records, Load
     LoadingService.applyLoadingFunction $scope, 'fetchFacebookGroups'
     $scope.fetchFacebookGroups()
 
+    alreadyOnPoll = (group) ->
+      _.find $scope.poll.communities(), (community) ->
+        community.customFields.facebook_group_id == group.id
+
     $scope.facebookGroups = ->
       _.filter $scope.allFacebookGroups, (group) ->
-          _.isEmpty($scope.facebook.fragment) or channel.name.match(///#{$scope.facebook.fragment}///i)
+        !alreadyOnPoll(group) and
+        (_.isEmpty($scope.facebook.fragment) or group.name.match(///#{$scope.facebook.fragment}///i))

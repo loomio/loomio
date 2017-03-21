@@ -2,9 +2,13 @@ angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, A
   scope: {poll: '='}
   templateUrl: 'generated/components/add_community_form/add_community_form.html'
   controller: ($scope) ->
+    Records.communities.fetch(params: {types: AppConfig.thirdPartyCommunities})
     Records.communities.fetch(params: {poll_id: $scope.poll.id, types: AppConfig.thirdPartyCommunities})
 
     $scope.community = Records.communities.build(pollIds: $scope.poll.id)
+    $scope.previousCommunities = ->
+      _.filter Session.user().communities(), (community) ->
+        !_.contains(_.pluck($scope.poll.communities(), 'id'), community.id)
 
     $scope.addCommunity = (type) ->
       if $scope.identity(type)
@@ -34,5 +38,8 @@ angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, A
         when 'facebook' then Session.user().facebookIdentity()
         when 'slack'    then Session.user().slackIdentity()
 
-    if $scope.identity($location.search().add_community)
-      $scope.communityForm = $location.search().add_community
+    add_community = $location.search().add_community
+    identity      = $scope.identity(add_community)
+    if identity
+      $scope.community.communityType = add_community
+      $scope.community.identityId    = identity.id
