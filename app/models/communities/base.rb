@@ -8,6 +8,11 @@ class Communities::Base < ActiveRecord::Base
   has_many :polls, through: :poll_communities
   has_many :visitors, foreign_key: :community_id
 
+  delegate :user_id, to: :identity, allow_nil: true
+  delegate :user, to: :identity, allow_nil: true
+
+  THIRD_PARTY_TYPES = %w(facebook slack).freeze
+
   discriminate Communities, on: :community_type
 
   def poll_ids=(ids)

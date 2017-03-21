@@ -69,8 +69,8 @@
       %h3.lmo-h3{translate: "poll_common_share_form.communities"}
 
     %md-list.md-block
-      .poll-common-helptext{translate: "poll_common_share_form.no_communities"}
-      %md-list-item.poll-common-share-form__slack{ng-repeat: "community in communities()"}
+      .poll-common-helptext{ng-if: "!poll.communities().length", translate: "poll_common_share_form.no_communities"}
+      %md-list-item.poll-common-share-form__slack{ng-repeat: "community in poll.communities()"}
         %md-button.lmo-flex.poll-common-share-form__community{layout: "row"}
           %img.poll-common-share-form__community-icon{ng-src: "/img/{{community.communityType}}-icon.svg"}
           .lmo-flex{layout: "column"}

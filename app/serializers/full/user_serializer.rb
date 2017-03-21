@@ -9,15 +9,6 @@ class Full::UserSerializer < UserSerializer
   has_many :visitors,       serializer: VisitorSerializer, root: :visitors
   has_many :identities,     serializer: IdentitySerializer, root: :identities
 
-  def facebook_
-    object.facebook_identity&.id
-  end
-
-  def slack_identity_id
-    object.slack_identity&.id
-  end
-
-
   def memberships
     from_scope :memberships
   end

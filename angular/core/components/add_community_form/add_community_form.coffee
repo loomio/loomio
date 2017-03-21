@@ -2,12 +2,13 @@ angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, R
   scope: {poll: '='}
   templateUrl: 'generated/components/add_community_form/add_community_form.html'
   controller: ($scope) ->
+    Records.communities.fetch(params: {poll_id: $scope.poll.id, types: AppConfig.thirdPartyCommunities})
 
     $scope.community = Records.communities.build(pollIds: $scope.poll.id)
 
     $scope.addCommunity = (type) ->
       if $scope.identity(type)
-        $scope.identityId = $scope.identity(type)
+        $scope.community.identityId = $scope.identity(type).id
         $scope.community.communityType = type
       else
         $scope.fetchAccessToken(type)

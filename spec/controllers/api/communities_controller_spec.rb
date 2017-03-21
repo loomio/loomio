@@ -37,10 +37,11 @@ describe API::CommunitiesController do
   end
 
   describe 'index' do
-    let!(:user_community) { create :community, community_type: :slack, identity: identity }
-    let!(:poll_community) { create :community, community_type: :facebook, poll_ids: poll.id }
-    let!(:identity)       { create :facebook_identity, user: user }
-    let(:poll)            { create :poll, author: user }
+    let!(:slack_community)    { create :community, community_type: :slack, identity: identity }
+    let!(:facebook_community) { create :community, community_type: :facebook, identity: identity }
+    let!(:poll_community)     { create :community, community_type: :facebook, poll_ids: poll.id }
+    let!(:identity)           { create :facebook_identity, user: user }
+    let(:poll)                { create :poll, author: user }
 
     it 'can get a list of communities on a user' do
       sign_in user
@@ -51,7 +52,19 @@ describe API::CommunitiesController do
       json = JSON.parse(response.body)
       community_ids = json['communities'].map { |c| c['id'] }
       expect(community_ids).to_not include poll_community.id
-      expect(community_ids).to include user_community.id
+      expect(community_ids).to include slack_community.id
+      expect(community_ids).to include facebook_community.id
+    end
+
+    it 'can filter by type' do
+      sign_in user
+
+      get :index, types: [:facebook]
+
+      json = JSON.parse(response.body)
+      community_ids = json['communities'].map { |c| c['id'] }
+      expect(community_ids).to_not include slack_community.id
+      expect(community_ids).to include facebook_community.id
     end
 
     it 'can get a list of communities on a poll' do
@@ -63,7 +76,10 @@ describe API::CommunitiesController do
       json = JSON.parse(response.body)
       community_ids = json['communities'].map { |c| c['id'] }
       expect(community_ids).to include poll_community.id
-      expect(community_ids).to_not include user_community.id
+      expect(community_ids).to_not include slack_community.id
+
+      poll_ids = json['communities'].map { |c| c['poll_id'] }
+      expect(poll_ids).to include poll.id
     end
 
     it 'does not show communities to logged out users' do

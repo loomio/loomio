@@ -12,6 +12,7 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'contacts'
       @hasMany 'versions'
       @hasMany 'identities'
+      @hasMany 'communities'
 
     facebookIdentity: ->
       _.detect @identities(), (i) -> i.identityType == 'facebook'

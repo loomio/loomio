@@ -57,7 +57,8 @@ module AngularHelper
         ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_ID'])
       ].compact,
       pollTemplates: Poll::TEMPLATES,
-      pollColors: Poll::COLORS
+      pollColors: Poll::COLORS,
+      thirdPartyCommunities: Communities::Base::THIRD_PARTY_TYPES
     }
   end
 

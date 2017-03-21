@@ -6,3 +6,7 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
 
     defaultValues: ->
       customFields: {}
+
+    relationships: ->
+      @belongsTo 'poll'
+      @belongsTo 'user'
