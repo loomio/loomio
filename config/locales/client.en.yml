@@ -1632,6 +1632,7 @@ en:
     communities: Connect Community
     add_community: Add Community
     community_revoked: This community will no longer be able to participate
+    community_added: Community added to poll
 
   add_community_form:
     title: Add community

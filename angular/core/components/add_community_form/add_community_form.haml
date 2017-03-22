@@ -1,9 +1,12 @@
 .add-community-form
   .add-community-form__add{ng-if: "!community.communityType"}
     %h3.lmo-h3{translate: "add_community_form.existing_communities"}
-    .add-community-form__existing
-      .add-community-form__community{ng-repeat: "community in previousCommunities() track by community.id"}
-        {{community.displayName()}}
+    %md-list.add-community-form__existing
+      %md-list-item.add-community-form__community{ng-repeat: "community in previousCommunities() track by community.id"}
+        %md-button.lmo-flex.add-community-form__community{layout: "row", ng-click: "addExistingCommunity(community)"}
+          %img.add-community-form__community-icon{class: "add-community-form__community-icon--{{community.communityType}}", ng-src: "/img/{{community.communityType}}-icon.svg"}>
+          %h4.lmo-h4.add-community-form__h4 {{community.displayName()}}
+
       .add-community-form__none-existing.poll-common-helptext{ng-if: "!previousCommunities().length", translate: "add_community_form.no_communities"}
 
     %h3.lmo-h3{translate: "add_community_form.connect_new_community"}

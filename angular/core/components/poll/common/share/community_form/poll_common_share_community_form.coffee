@@ -10,8 +10,13 @@ angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, 
 
     $scope.remind = console.log
 
+    $scope.add = (community) ->
+      community.add($scope.poll)
+               .then ->
+                 FlashService.success "poll_common_share_form.community_added"
+
     $scope.revoke = (community) ->
-      community.destroy()
+      community.revoke($scope.poll)
                .then ->
                  community.revoked = true
                  FlashService.success "poll_common_share_form.community_revoked"

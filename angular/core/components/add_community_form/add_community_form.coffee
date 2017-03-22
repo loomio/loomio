@@ -17,6 +17,9 @@ angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, A
       else
         $scope.fetchAccessToken(type)
 
+    $scope.addExistingCommunity = (community) ->
+      community.add($scope.poll).then $scope.backToShareModal
+
     $scope.fetchAccessToken = (type) ->
       delete $location.search().share
       $location.search('add_community', type)

@@ -16,3 +16,9 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
       switch @communityType
         when 'facebook' then @customFields.facebook_group_name
         when 'slack'    then "#{@identity().customFields.slack_team_name} - ##{@customFields.slack_channel_name}"
+
+    add: (poll) ->
+      @remote.postMember @id, 'add', poll_id: poll.id
+
+    revoke: (poll) ->
+      @remote.postMember(@id, 'remove', poll_id: poll.id).then => @revoked = true
