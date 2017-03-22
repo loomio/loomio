@@ -215,7 +215,7 @@ class Poll < ActiveRecord::Base
 
   def require_custom_fields
     Array(required_custom_fields).each do |field|
-      errors.add(field, I18n.t(:"activerecord.errors.messages.blank"))
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].blank?
     end
   end
 end

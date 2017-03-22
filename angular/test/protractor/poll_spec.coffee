@@ -1,5 +1,33 @@
+_ = require('lodash')
+
 describe 'Polls', ->
   page = require './helpers/page_helper.coffee'
+
+  startPollTest = (poll_type, optionsFn) ->
+    ->
+      page.loadPath 'polls/test_discussion'
+      page.click ".decision-tools-card__poll-type--#{poll_type}"
+      page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__title", "A new #{poll_type}"
+      page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__details", "Some details for #{poll_type}"
+      optionsFn() if optionsFn?
+      page.click ".poll-#{_.kebabCase(poll_type)}-form__submit"
+      page.expectText '.poll-common-summary-panel__title', "A new #{poll_type}"
+      page.expectText '.poll-common-summary-panel__details', "Some details for #{poll_type}"
+
+  describe 'start, vote for each poll type', ->
+    it 'starts a proposal', startPollTest('proposal')
+
+    it 'starts a count', startPollTest('count')
+
+    it 'starts a dot vote', startPollTest 'dot_vote', ->
+      page.fillIn ".poll-dot-vote-form__add-option-input", "bananas"
+
+    it 'starts a poll', startPollTest 'poll', ->
+      page.fillIn ".poll-poll-form__add-option-input", "bananas"
+
+    it 'starts a meeting poll', startPollTest 'meeting', ->
+      page.fillIn ".md-datepicker-input", "2030-03-23\n"
+      page.click ".poll-meeting-form__option-button"
 
   it 'can start a poll in a group', ->
     page.loadPath 'polls/test_discussion'

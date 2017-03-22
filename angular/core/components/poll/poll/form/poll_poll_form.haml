@@ -3,12 +3,12 @@
 
   %md-input-container.md-block
     %label{translate: "poll_poll_form.title"}
-    %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
+    %input.lmo-primary-form-input.poll-poll-form__title{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
     %validation_errors{subject: "poll", field: "title"}
 
   %md-input-container.md-block
     %label{translate: "poll_poll_form.details"}
-    %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+    %textarea.lmo-primary-form-input.poll-poll-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
     %outlet{name: "after-poll-form-textarea", model: "poll"}
 
   %md-list.md-block
@@ -34,5 +34,5 @@
 
   .poll-common__actions.lmo-flex
     %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_poll_form.update", aria-label: "{{ 'poll_poll_form.update' | translate }}"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_poll_form.start", aria-label: "{{ 'poll_poll_form.start' | translate }}"}
+    %md-button.md-primary.md-raised.poll-poll-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_poll_form.update", aria-label: "{{ 'poll_poll_form.update' | translate }}"}
+    %md-button.md-primary.md-raised.poll-poll-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_poll_form.start", aria-label: "{{ 'poll_poll_form.start' | translate }}"}

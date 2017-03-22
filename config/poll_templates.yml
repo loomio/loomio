@@ -54,8 +54,16 @@ dot_vote:
   can_remove_options:      true
   must_have_options:       true
   has_variable_score:      true
+
+  # can we make this happen?
+  # validates_custom_fields:
+  #   dots_per_person:
+  #     numericality:
+  #       greater_than: 1
+
   required_custom_fields:
     - dots_per_person
+    
   sort_options:
     - newest_first
     - oldest_first
