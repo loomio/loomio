@@ -1,9 +1,9 @@
 class Communities::LoomioUsers < Communities::Base
   set_community_type :loomio_users
-  set_custom_fields  :loomio_user_ids, :group_key
+  set_custom_fields  :loomio_user_ids
 
   def to_group_community
-    Communities::LoomioGroup.new(group_key: self.group_key)
+    Communities::LoomioGroup.new(group_key: identifier)
   end
 
   def includes?(member)

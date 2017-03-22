@@ -6,7 +6,7 @@ class Identities::SlackController < Identities::BaseController
     @identity ||= current_user.slack_identity
   end
 
-  def build_identity(identity)
+  def complete_identity(identity)
     identity.fetch_user_info
     identity.fetch_team_info
   end

@@ -11,7 +11,7 @@ class CommunityService
   def self.update(community:, params:, actor:)
     actor.ability.authorize! :update, community
 
-    community.assign_attributes(params.slice(:slack_team_id, :slack_team_name, :facebook_group_id, :facebook_group_name))
+    community.assign_attributes(params.slice(:slack_team_name, :facebook_group_name))
     return unless community.valid?
     community.save!
 

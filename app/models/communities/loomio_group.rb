@@ -1,20 +1,19 @@
 class Communities::LoomioGroup < Communities::Base
   set_community_type :loomio_group
-  set_custom_fields  :group_key
 
   validates :group, presence: true
 
   def to_user_community
-    Communities::LoomioUsers.new(loomio_user_ids: members.pluck(:id), group_key: self.group_key)
+    Communities::LoomioUsers.new(loomio_user_ids: members.pluck(:id), group_key: identifier)
   end
 
   def group
-    @group = nil unless @group&.key == self.group_key
-    @group ||= Group.find_by(key: self.group_key)
+    @group = nil unless @group&.key == self.identifier
+    @group ||= Group.find_by(key: self.idenfifier)
   end
 
   def group=(group)
-    self.group_key = group.key
+    self.identifier = group.key
   end
 
   def includes?(member)

@@ -6,5 +6,4 @@
     %modal_header_cancel_button
 
   .modal-body
-    %add_facebook_community_form{community: "community", ng-if: "community.communityType == 'facebook'"}
-    %add_slack_community_form{community: "community", ng-if: "community.communityType == 'slack'"}
+    %add_community_form{community: "community"}

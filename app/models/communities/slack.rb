@@ -1,5 +1,5 @@
 class Communities::Slack < Communities::Base
-  set_custom_fields :slack_channel_id, :slack_channel_name
+  set_custom_fields :slack_channel_name
   set_community_type :slack
 
   def includes?(member)

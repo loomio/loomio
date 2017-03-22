@@ -22,6 +22,7 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
 
     alreadyOnPoll: (poll, obj) ->
       _.find poll.communities(), (community) ->
+        return false if community.revoked
         # obj could be a CommunityModel, or a record returned from an API (like a facebook group or slack channel)
         if _.get(obj, 'constructor.constructor.name') == 'CommunityModel'
           community.id == obj.id

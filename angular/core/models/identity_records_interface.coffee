@@ -2,5 +2,5 @@ angular.module('loomioApp').factory 'IdentityRecordsInterface', (BaseRecordsInte
   class IdentityRecordsInterface extends BaseRecordsInterface
     model: IdentityModel
 
-    perform: (id, command) ->
+    performCommand: (id, command) ->
       @remote.getMember(id, command)

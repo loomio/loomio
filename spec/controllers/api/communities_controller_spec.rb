@@ -23,6 +23,14 @@ describe API::CommunitiesController do
       expect(community.polls).to include poll
     end
 
+    it 'uses an existing community if one exists' do
+      sign_in user
+      existing = create :facebook_community, custom_fields: { facebook_group_id: new_community_params[:custom_fields][:facebook_group_id] }
+
+      expect { post :create, community: new_community_params }.to_not change { Communities::Base.count }
+      expect(poll.reload.communities).to include existing
+    end
+
     it 'does not allow logged out users to create communities' do
       expect { post :create, community: new_community_params }.to_not change { poll.communities.count }
       expect(response.status).to eq 403

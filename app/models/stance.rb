@@ -12,7 +12,6 @@ class Stance < ActiveRecord::Base
   accepts_nested_attributes_for :stance_choices
   attr_accessor :visitor_attributes
 
-  belongs_to :identity
   belongs_to :participant, polymorphic: true, required: true
 
   update_counter_cache :poll, :stances_count

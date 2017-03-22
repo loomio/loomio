@@ -21,7 +21,6 @@ class Identities::BaseController < ApplicationController
     end
   end
 
-
   private
 
   def client
@@ -41,11 +40,11 @@ class Identities::BaseController < ApplicationController
 
   def instantiate_identity
     "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params).tap do |identity|
-      build_identity(identity)
+      complete_identity(identity)
     end
   end
 
-  def build_identity(identity)
+  def complete_identity(identity)
     # override me with follow-up API calls if they're needed to gather more info
     # (such as logo url, user name, etc)
   end

@@ -11,6 +11,9 @@ angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, 
 
     $scope.remind = console.log
 
+    $scope.noCommunities = ->
+      !_.find $scope.poll.communities(), (community) -> !community.revoked
+
     $scope.revoke = (community) ->
       community.revoke($scope.poll)
                .then ->
