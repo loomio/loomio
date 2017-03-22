@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'addFacebookCommunityForm', (Records, LoadingService, Session) ->
+angular.module('loomioApp').directive 'addFacebookCommunityForm', (Records, CommunityService, LoadingService, Session) ->
   templateUrl: 'generated/components/add_facebook_community_form/add_facebook_community_form.html'
   controller: ($scope) ->
     $scope.facebook = {}
@@ -15,11 +15,7 @@ angular.module('loomioApp').directive 'addFacebookCommunityForm', (Records, Load
     LoadingService.applyLoadingFunction $scope, 'fetchFacebookGroups'
     $scope.fetchFacebookGroups()
 
-    alreadyOnPoll = (group) ->
-      _.find $scope.poll.communities(), (community) ->
-        community.customFields.facebook_group_id == group.id
-
     $scope.facebookGroups = ->
       _.filter $scope.allFacebookGroups, (group) ->
-        !alreadyOnPoll(group) and
+        !CommunityService.alreadyOnPoll($scope.poll, group) and
         (_.isEmpty($scope.facebook.fragment) or group.name.match(///#{$scope.facebook.fragment}///i))

@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, AppConfig, Records, Session, FormService, ModalService, LoadingService, PollCommonShareModal) ->
+angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, AppConfig, Records, Session, CommunityService, FormService, ModalService, LoadingService, PollCommonShareModal) ->
   scope: {poll: '='}
   templateUrl: 'generated/components/add_community_form/add_community_form.html'
   controller: ($scope) ->
@@ -8,7 +8,7 @@ angular.module('loomioApp').directive 'addCommunityForm', ($window, $location, A
     $scope.community = Records.communities.build(pollIds: $scope.poll.id)
     $scope.previousCommunities = ->
       _.filter Session.user().communities(), (community) ->
-        !_.contains(_.pluck($scope.poll.communities(), 'id'), community.id)
+        !CommunityService.alreadyOnPoll($scope.poll, community)
 
     $scope.addCommunity = (type) ->
       if $scope.identity(type)

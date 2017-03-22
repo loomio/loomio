@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'addSlackCommunityForm', (Records, Session, LoadingService) ->
+angular.module('loomioApp').directive 'addSlackCommunityForm', (Records, Session, CommunityService, LoadingService) ->
   templateUrl: 'generated/components/add_slack_community_form/add_slack_community_form.html'
   controller: ($scope) ->
     $scope.slack = {}
@@ -15,11 +15,7 @@ angular.module('loomioApp').directive 'addSlackCommunityForm', (Records, Session
     LoadingService.applyLoadingFunction $scope, 'fetchSlackChannels'
     $scope.fetchSlackChannels()
 
-    alreadyOnPoll = (channel) ->
-      _.find $scope.poll.communities(), (community) ->
-        community.customFields.slack_channel_id == channel.id
-
     $scope.slackChannels = ->
       _.filter $scope.allSlackChannels, (channel) ->
-        !alreadyOnPoll(channel) and
+        !CommunityService.alreadyOnPoll($scope.poll, channel) and
         (_.isEmpty($scope.slack.fragment) or channel.name.match(///#{$scope.slack.fragment}///i))

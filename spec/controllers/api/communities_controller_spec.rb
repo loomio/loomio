@@ -89,4 +89,16 @@ describe API::CommunitiesController do
       expect(json['communities']).to be_empty
     end
   end
+
+  describe 'destroy' do
+    #TODO
+    it 'destroys a community for a particular poll' do
+    end
+
+    it 'does not destroy a community' do
+    end
+
+    it 'does not allow unauthorized users to destroy poll communities' do
+    end
+  end
 end
