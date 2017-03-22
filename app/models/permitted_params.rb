@@ -43,7 +43,7 @@ class PermittedParams < Struct.new(:params)
   alias_method :proposal_attributes, :motion_attributes
 
   def community_attributes
-    [:community_type, :poll_ids, :identity_id,
+    [:community_type, :poll_id, :identity_id,
      :custom_fields, {custom_fields: [:facebook_group_id, :facebook_group_name, :slack_channel_id, :slack_channel_name]}]
   end
 

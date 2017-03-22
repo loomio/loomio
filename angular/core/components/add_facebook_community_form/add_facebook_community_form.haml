@@ -1,9 +1,9 @@
 .add-facebook-community-form
   %h3{translate: "add_facebook_community_form.currently_signed_in_as"}
   .add-community-form__header.lmo-flex
-    %img.add-community-form__logo{ng-src: "{{identity().logo}}"}>
-    .add-community-form__name> {{ identity().name }}
-    %a{href: "#", ng-click: "fetchAccessToken('facebook')"}
+    %img.add-community-form__logo{ng-src: "{{community.identity().logo}}"}>
+    .add-community-form__name> {{ community.identity().name }}
+    %a{href: "#", ng-click: "fetchAccessToken()"}
       %span{translate: "add_facebook_community_form.another_account"}
 
   .poll-common-helptext{translate: "add_facebook_community_form.helptext"}
@@ -19,7 +19,7 @@
         {{ group.name }}
 
   .poll-common__actions.lmo-flex
-    %md-button{ng-click: "cancel()"}
+    %md-button{ng-click: "back()"}
       %span{translate: "common.action.back"}
     %md-button.md-raised.md-primary{ng-click: "submit()"}
       %span{translate: "common.action.ok"}

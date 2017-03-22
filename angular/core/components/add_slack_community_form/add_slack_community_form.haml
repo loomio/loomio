@@ -2,9 +2,9 @@
 
   %h3{translate: "add_slack_community_form.currently_signed_in_as"}
   .add-community-form__header.lmo-flex
-    %img.add-community-form__logo{ng-src: "{{identity().customFields.slack_team_logo}}"}>
-    .add-community-form__name> {{ identity().customFields.slack_team_name}}
-    %a{href: "#", ng-click: "fetchAccessToken('slack')"}
+    %img.add-community-form__logo{ng-src: "{{community.identity().customFields.slack_team_logo}}"}>
+    .add-community-form__name> {{ community.identity().customFields.slack_team_name}}
+    %a{href: "#", ng-click: "fetchAccessToken()"}
       %span{translate: "add_slack_community_form.another_team"}
 
   .poll-common-helptext{translate: "add_slack_community_form.helptext"}
@@ -20,7 +20,7 @@
         {{ channel.name }}
 
   .poll-common__actions.lmo-flex
-    %md-button{ng-click: "cancel()"}
+    %md-button{ng-click: "back()"}
       %span{translate: "common.action.back"}
     %md-button.md-raised.md-primary{ng-click: "submit()"}
       %span{translate: "common.action.ok"}

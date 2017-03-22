@@ -15,8 +15,8 @@ class Communities::Base < ActiveRecord::Base
 
   discriminate Communities, on: :community_type
 
-  def poll_ids=(ids)
-    Array(ids).each { |id| poll_communities.build(poll_id: id) }
+  def poll_id=(id)
+    Array(id).each { |id| poll_communities.build(poll_id: id) }
   end
 
   def self.set_community_type(type)

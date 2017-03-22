@@ -17,5 +17,7 @@
       %md-button.lmo-inline-action{ng-click: "revoke(community)"}
         %i.material-icons clear
 
-  %md-button.md-primary.md-raised{ng-click: "addCommunity()"}
-    %span{translate: "poll_common_share_form.add_community"}
+  %md-button.md-primary.md-raised{ng-click: "addCommunity('facebook')"}
+    %span{translate: "poll_common_share_form.add_facebook_community"}
+  %md-button.md-primary.md-raised{ng-click: "addCommunity('slack')"}
+    %span{translate: "poll_common_share_form.add_slack_community"}

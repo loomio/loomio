@@ -6,7 +6,7 @@ describe API::CommunitiesController do
   let(:community) { create :facebook_community }
   let(:new_community_params) {{
     community_type: :facebook,
-    poll_ids: poll.id,
+    poll_id: poll.id,
     custom_fields: {facebook_group_id: "123"}
   }}
 
@@ -40,7 +40,7 @@ describe API::CommunitiesController do
   describe 'index' do
     let!(:slack_community)    { create :slack_community, identity: identity }
     let!(:facebook_community) { create :facebook_community, identity: identity }
-    let!(:poll_community)     { create :facebook_community, poll_ids: poll.id }
+    let!(:poll_community)     { create :facebook_community, poll_id: poll.id }
     let!(:identity)           { create :facebook_identity, user: user }
     let(:poll)                { create :poll, author: user }
 
