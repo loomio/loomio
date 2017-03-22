@@ -7,4 +7,7 @@ angular.module('loomioApp').factory 'CommunityService', ->
 
     alreadyOnPoll: (poll, obj) ->
       _.find poll.communities(), (community) ->
-        community.customFields[idFields[community.communityType]] == obj.id
+        if _.get(obj, 'recordsInterface.constructor.name') == 'CommunityRecordsInterface'
+          community.id == obj.id
+        else
+          community.customFields[idFields[community.communityType]] == obj.id
