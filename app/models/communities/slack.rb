@@ -7,6 +7,7 @@ class Communities::Slack < Communities::Base
   end
 
   def members
+    []
     # @members ||= Array(fetch_members.dig('members')).map do |participant|
     #   Visitor.new(
     #     name:  participant.dig('profile', 'real_name'),

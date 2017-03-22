@@ -8,6 +8,16 @@ class API::CommunitiesController < API::RestfulController
     respond_with_collection
   end
 
+  def add
+    service.add(community: load_resource, actor: current_user, poll: load_and_authorize(:poll))
+    respond_with_resource
+  end
+
+  def remove
+    service.remove(community: load_resource, actor: current_user, poll: load_and_authorize(:poll))
+    respond_with_resource
+  end
+
   private
 
   def accessible_records

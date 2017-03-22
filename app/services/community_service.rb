@@ -18,6 +18,26 @@ class CommunityService
     EventBus.broadcast('community_update', community, actor)
   end
 
+  def self.add(community:, actor:, poll:)
+    actor.ability.authorize! :update, poll
+
+    poll.poll_communities.build(community: community)
+    return unless poll.valid?
+    poll.save!
+
+    EventBus.broadcast('community_add', community, actor, poll)
+  end
+
+  def self.remove(community:, actor:, poll:)
+    actor.ability.authorize! :update, poll
+
+    pc = poll.poll_communities.find_by(community: community)
+    return unless pc.present?
+    pc.destroy
+
+    EventBus.broadcast('community_remove', community, actor, poll)
+  end
+
   def self.destroy(community:, actor:)
     actor.ability.authorize! :destroy, community
 

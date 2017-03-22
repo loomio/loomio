@@ -3,6 +3,7 @@ require 'rails_helper'
 describe API::CommunitiesController do
   let(:user) { create :user }
   let!(:poll) { create :poll, author: user }
+  let(:community) { create :facebook_community }
   let(:new_community_params) {{
     community_type: :facebook,
     poll_ids: poll.id,
@@ -37,9 +38,9 @@ describe API::CommunitiesController do
   end
 
   describe 'index' do
-    let!(:slack_community)    { create :community, community_type: :slack, identity: identity }
-    let!(:facebook_community) { create :community, community_type: :facebook, identity: identity }
-    let!(:poll_community)     { create :community, community_type: :facebook, poll_ids: poll.id }
+    let!(:slack_community)    { create :slack_community, identity: identity }
+    let!(:facebook_community) { create :facebook_community, identity: identity }
+    let!(:poll_community)     { create :facebook_community, poll_ids: poll.id }
     let!(:identity)           { create :facebook_identity, user: user }
     let(:poll)                { create :poll, author: user }
 
@@ -90,15 +91,53 @@ describe API::CommunitiesController do
     end
   end
 
-  describe 'destroy' do
-    #TODO
-    it 'destroys a community for a particular poll' do
+  describe 'add' do
+    before { community }
+
+    it 'adds a community to a poll' do
+      sign_in user
+      expect { post :add, id: community.id, poll_id: poll.id }.to change { poll.communities.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'does not create a new community' do
+      sign_in user
+      expect { post :add, id: community.id, poll_id: poll.id }.to_not change { Communities::Base.count }
+    end
+
+    it 'returns unauthorized if no poll is given' do
+      post :add, id: community.id
+      expect(response.status).to eq 404
+    end
+
+    it 'does not allow unauthorized users to add poll communities' do
+      expect { post :add, id: community.id, poll_id: poll.id }.to_not change { poll.communities.count }
+    end
+  end
+
+  describe 'remove' do
+    before { poll.communities << community }
+
+    it 'removes a community from a particular poll' do
+      sign_in user
+      expect { post :remove, id: community.id, poll_id: poll.id }.to change { poll.communities.count }.by(-1)
+      expect(response.status).to eq 200
     end
 
     it 'does not destroy a community' do
+      sign_in user
+      expect { post :remove, id: community.id, poll_id: poll.id }.to_not change { Communities::Base.count }
+      expect(response.status).to eq 200
+    end
+
+    it 'returns unauthorized if no poll is given' do
+      post :remove, id: community.id
+      expect(response.status).to eq 404
     end
 
     it 'does not allow unauthorized users to destroy poll communities' do
+      expect { post :remove, id: community.id, poll_id: poll.id }.to_not change { poll.communities.count }
+      expect(response.status).to eq 403
     end
   end
 end

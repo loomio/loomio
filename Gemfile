@@ -61,7 +61,7 @@ gem 'premailer-rails'
 gem 'griddler', github: 'loomio/griddler'
 gem "griddler-mailin", github: 'loomio/griddler-mailin'
 gem 'activerecord-import'
-gem 'discriminator'
+gem 'discriminator', '~> 0.1.1'
 gem 'has_secure_token'
 
 group :development, :test do

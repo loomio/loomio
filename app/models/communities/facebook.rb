@@ -7,6 +7,7 @@ class Communities::Facebook < Communities::Base
   end
 
   def members
+    []
     # @members ||= Array(fetch_members.dig('data')).map do |member|
     #   Visitor.new(
     #     name:  member['name'],

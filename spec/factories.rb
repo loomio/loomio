@@ -288,12 +288,10 @@ FactoryGirl.define do
     poll_option
   end
 
-  factory :community, class: Communities::Base do
-    community_type 'test'
-  end
-
   factory :public_community, class: Communities::Public
   factory :email_community, class: Communities::Email
+  factory :facebook_community, class: Communities::Facebook
+  factory :slack_community, class: Communities::Slack
 
   factory :loomio_group_community, class: Communities::LoomioGroup do
     group
