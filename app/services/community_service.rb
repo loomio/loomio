@@ -20,6 +20,13 @@ class CommunityService
 
   def self.add(community:, actor:, poll:)
     actor.ability.authorize! :update, poll
+    actor.ability.authorize! :show, community.identity
+
+    community = Communities::Base.find_by(
+      community_type: community.community_type,
+      identifier:     community.identifier,
+      identity_id:    community.identity_id
+    ) || community
 
     poll.poll_communities.build(community: community)
     return unless poll.valid?
