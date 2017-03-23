@@ -95,6 +95,7 @@ class PollService
         )
         do_closing_work(poll: poll) if motion.closed?
         poll.update_stance_data
+        poll.communities << Communities::Email.new
       end
     end
   end
