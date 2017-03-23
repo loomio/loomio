@@ -29,7 +29,7 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
 
     $scope.groups = ->
       _.filter $scope.allGroups, (group) ->
-        !CommunityService.alreadyOnPoll($scope.community.poll(), group) and
+        !CommunityService.alreadyOnPoll($scope.community.poll(), group, $scope.community.communityType) and
         (_.isEmpty($scope.vars.fragment) or group.name.match(///#{$scope.vars.fragment}///i))
 
     $scope.submit = CommunityService.submitCommunity $scope, $scope.community,

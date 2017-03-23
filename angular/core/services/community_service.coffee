@@ -20,18 +20,11 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
       $window.location = "#{type}/oauth"
       false
 
-    alreadyOnPoll: (poll, obj) ->
+    alreadyOnPoll: (poll, obj, communityType) ->
       _.find poll.communities(), (community) ->
-        return false if community.revoked
-        # obj could be a CommunityModel, or a record returned from an API (like a facebook group or slack channel)
-        if _.get(obj, 'constructor.constructor.name') == 'CommunityModel'
-          community.id == obj.id
-        else
-          community.customFields[idFields[community.communityType]] == obj.id
-
-    idFields =
-      facebook: 'facebook_group_id'
-      slack:    'slack_channel_id'
+        !community.revoked and
+        community.communityType == communityType and
+        community.identifier == obj.id
 
     submitCommunity: (scope, model, options = {}) ->
       FormService.submit scope, model, _.merge(

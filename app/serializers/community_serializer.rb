@@ -1,6 +1,6 @@
 class CommunitySerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :custom_fields, :community_type, :poll_id, :user_id
+  attributes :id, :custom_fields, :community_type, :poll_id, :user_id, :identifier
 
   has_one :identity, serializer: IdentitySerializer, root: :identities
 
