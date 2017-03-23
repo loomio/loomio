@@ -52,6 +52,9 @@ class API::PollsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisiblePolls.new(user: current_user).joins(:discussion).order(created_at: :desc)
+    Poll.where.any_of(
+      current_user.polls,
+      Poll.where(id: Queries::VisiblePolls.new(user: current_user).pluck(:id))
+    )
   end
 end

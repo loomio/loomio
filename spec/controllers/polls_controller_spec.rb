@@ -12,50 +12,6 @@ describe PollsController do
   let(:another_poll) { create :poll }
   let(:closed_poll) { create :poll, author: user, closed_at: 1.day.ago }
 
-  describe 'index' do
-    before { poll; another_poll; closed_poll }
-
-    it 'shows polls I have started' do
-      sign_in user
-      get :index
-
-      json = JSON.parse(response.body)
-      poll_ids = json['polls'].map { |p| p['id'] }
-      expect(poll_ids).to include poll.id
-      expect(poll_ids).to include closed_poll.id
-      expect(poll_ids).to_not include another_poll.id
-    end
-
-    it 'filters by active' do
-      sign_in user
-      get :index, authored_only: true, filter: :active
-
-      json = JSON.parse(response.body)
-      poll_ids = json['polls'].map { |p| p['id'] }
-      expect(poll_ids).to include poll.id
-      expect(poll_ids).to_not include closed_poll.id
-      expect(poll_ids).to_not include another_poll.id
-    end
-
-    it 'filters by closed' do
-      sign_in user
-      get :index, authored_only: true, filter: :closed
-
-      json = JSON.parse(response.body)
-      poll_ids = json['polls'].map { |p| p['id'] }
-      expect(poll_ids).to_not include poll.id
-      expect(poll_ids).to include closed_poll.id
-      expect(poll_ids).to_not include another_poll.id
-    end
-
-    it 'does not display polls for logged out users' do
-      get :index, authored_only: true
-
-      json = JSON.parse(response.body)
-      expect(json).to be_empty
-    end
-  end
-
   describe 'show' do
     it 'sets metadata for public polls' do
       poll.update(anyone_can_participate: true)
