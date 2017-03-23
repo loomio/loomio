@@ -8,7 +8,7 @@
 
   %md-input-container.lmo-search-container{md-no-float: "true"}
     %i.material-icons search
-    %input{ng-model: "vars.fragment", placeholder: "{{add_community_form.fragment_placeholder}}", ng-model-options: "{debounce: 250}"}
+    %input{ng-model: "vars.fragment", placeholder: "{{placeholderKey() | translate }}", ng-model-options: "{debounce: 250}"}
 
   .add-community-form__options
     %loading{ng-if: "fetchExecuting"}
