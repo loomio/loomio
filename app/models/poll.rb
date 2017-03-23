@@ -49,6 +49,7 @@ class Poll < ActiveRecord::Base
   has_many :poll_communities, dependent: :destroy
   has_many :communities, through: :poll_communities
 
+  FILTERS = %w(active closed).freeze
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
