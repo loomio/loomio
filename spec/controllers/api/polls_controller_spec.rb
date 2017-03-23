@@ -8,8 +8,9 @@ describe API::PollsController do
   let(:non_group_discussion) { create :discussion }
   let(:user) { create :user }
   let(:another_user) { create :user }
-  let!(:poll) { create :poll, discussion: discussion, author: user }
-  let(:another_poll) { create :poll, discussion: another_discussion }
+  let!(:poll) { create :poll, title: "POLL!", discussion: discussion, author: user }
+  let(:another_poll) { create :poll, title: "ANOTHER", discussion: another_discussion }
+  let(:closed_poll) { create :poll, title: "CLOSED", author: user, closed_at: 1.day.ago }
   let(:non_group_poll) { create :poll }
   let(:poll_params) {{
     title: "hello",
@@ -39,6 +40,8 @@ describe API::PollsController do
   end
 
   describe 'index' do
+    before { poll; another_poll; closed_poll }
+
     it 'shows polls in a discussion' do
       sign_in user
       get :index, discussion_id: discussion.key
@@ -53,6 +56,46 @@ describe API::PollsController do
       sign_in user
       get :index, discussion_id: non_group_discussion.key
       expect(response.status).to eq 403
+    end
+
+    it 'shows polls I have started' do
+      sign_in user
+      get :index, authored_only: true
+
+      json = JSON.parse(response.body)
+      poll_ids = json['polls'].map { |p| p['id'] }
+      expect(poll_ids).to include poll.id
+      expect(poll_ids).to include closed_poll.id
+      expect(poll_ids).to_not include another_poll.id
+    end
+
+    it 'filters by active' do
+      sign_in user
+      get :index, authored_only: true, filter: :active
+
+      json = JSON.parse(response.body)
+      poll_ids = json['polls'].map { |p| p['id'] }
+      expect(poll_ids).to include poll.id
+      expect(poll_ids).to_not include closed_poll.id
+      expect(poll_ids).to_not include another_poll.id
+    end
+
+    it 'filters by closed' do
+      sign_in user
+      get :index, authored_only: true, filter: :closed
+
+      json = JSON.parse(response.body)
+      poll_ids = json['polls'].map { |p| p['id'] }
+      expect(poll_ids).to_not include poll.id
+      expect(poll_ids).to include closed_poll.id
+      expect(poll_ids).to_not include another_poll.id
+    end
+
+    it 'does not display polls for logged out users' do
+      get :index, authored_only: true
+
+      json = JSON.parse(response.body)
+      expect(json['polls']).to be_empty
     end
   end
 
