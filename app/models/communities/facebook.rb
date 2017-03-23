@@ -2,18 +2,12 @@ class Communities::Facebook < Communities::Base
   set_community_type :facebook
   set_custom_fields :facebook_group_name
 
-  def includes?(member)
-    members.map(&:token).include? member.participation_token
+  def includes?(participant)
+    participant.identities.where(identity_type: :facebook).any? { |i| i.is_member_of?(self) }
   end
 
   def members
     []
-    # @members ||= Array(fetch_members.dig('data')).map do |member|
-    #   Visitor.new(
-    #     name:  member['name'],
-    #     participation_token: member['id']
-    #   )
-    # end
   end
 
   def notify!(event)

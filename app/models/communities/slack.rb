@@ -2,8 +2,8 @@ class Communities::Slack < Communities::Base
   set_custom_fields :slack_channel_name
   set_community_type :slack
 
-  def includes?(member)
-    members.map(&:token).include? member.participation_token
+  def includes?(participant)
+    participant.identities.where(identity_type: :slack).any? { |i| i.is_member_of?(self) }
   end
 
   def members

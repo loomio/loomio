@@ -16,6 +16,10 @@ class Clients::Slack < Clients::Base
     get("channels.list") { |response| response['channels'] }
   end
 
+  def is_member_of?(channel_id, uid)
+    get("channels.info", channel: channel_id) { |response| Array(response.dig('channel', 'members')).include?(uid) }
+  end
+
   def scope
     "users:read,channels:read,team:read"
   end

@@ -16,6 +16,12 @@ class Clients::Facebook < Clients::Base
     get("#{uid}/groups") { |response| response['data'] }
   end
 
+  def is_member_of?(group_id, uid)
+    get("#{group_id}/members") do |response|
+      response['data'].any? { |member| member['id'] == uid }
+    end
+  end
+
   private
 
   def token_name
