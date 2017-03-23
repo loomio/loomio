@@ -17,7 +17,7 @@ class Poll < ActiveRecord::Base
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
-  has_many   :outcomes
+  has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
   belongs_to :motion
@@ -28,7 +28,7 @@ class Poll < ActiveRecord::Base
 
   after_update :remove_poll_options
 
-  has_many :stances
+  has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   has_many :visitors, through: :communities
@@ -46,7 +46,7 @@ class Poll < ActiveRecord::Base
   define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
   define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
 
-  has_many :poll_communities
+  has_many :poll_communities, dependent: :destroy
   has_many :communities, through: :poll_communities
 
   scope :active, -> { where(closed_at: nil) }

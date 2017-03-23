@@ -27,6 +27,8 @@ class Stance < ActiveRecord::Base
   validate :total_score_is_valid
   validate :participant_is_complete
 
+  has_many :events, as: :eventable, dependent: :destroy
+
   delegate :group, to: :poll, allow_nil: true
   alias :author :participant
 
