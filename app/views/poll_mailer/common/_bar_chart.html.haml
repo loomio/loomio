@@ -2,7 +2,7 @@
 %table{style: "width: 100%"}
   - @info.poll.poll_options.each_with_index do |poll_option, index|
     %tr
-      %td= "#{@info.display_name_for(poll_option)} - #{@info.poll.stance_counts[index]}"
+      %td= "#{format_poll_option_name(poll_option)} - #{@info.poll.stance_counts[index]}"
     %tr
       %td
         %table{style: "width: #{percentage_for(@info.poll, index)}%"}
