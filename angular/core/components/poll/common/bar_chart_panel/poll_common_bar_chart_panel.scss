@@ -1,18 +1,18 @@
 .poll-common-bar-chart-panel__chart-container {
   @include displayFlex;
-  flex-flow: column nowrap;
+  flex-direction: column;
+  width: 100%;
 }
 
 .poll-common-bar-chart-panel__bar {
-  height: 50px;
+  height: 48px;
   min-width: 4px;
   margin-top: 10px;
-}
-
-.poll-common-bar-chart-panel__bar-label {
-  float: left;
-  display: inline-block;
-  height: 100%;
-  padding-top: 10px;
-  padding-left: 10px;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 48px;
+  width: 100%;
+  padding-left: 8px;
 }

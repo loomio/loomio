@@ -12,3 +12,6 @@ angular.module('loomioApp').directive 'pollCommonBarChartPanel', (AppConfig, Rec
 
     $scope.barTextFor = (option) ->
       "#{$scope.countFor(option)} - #{option.name}".replace(/\s/g, '\u00a0')
+
+    $scope.backgroundImageFor = (option) ->
+      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
