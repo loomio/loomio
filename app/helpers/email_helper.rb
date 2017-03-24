@@ -1,8 +1,8 @@
 module EmailHelper
   include PrettyUrlHelper
 
-  def formatted_datetime_for(date_string)
-    date_time = DateTime.strptime(date_string, "%FT%T")
+  def formatted_datetime_for(date_string, zone)
+    date_time = DateTime.strptime(date_string).in_time_zone(zone)
     date_time.strftime(date_time.year == Date.today.year ? "%e %b %l:%M %P" : "%e %b %Y %l:%M %P")
   rescue ArgumentError
     formatted_date_for(date_string)
@@ -13,8 +13,8 @@ module EmailHelper
     date.strftime(date.year == Date.today.year ? "%e %b" : "%e %b %Y")
   end
 
-  def format_poll_option_name(poll_option)
-    poll_option.poll.dates_as_options ? formatted_datetime_for(poll_option.name) : poll_option.name
+  def format_poll_option_name(poll_option, zone)
+    poll_option.poll.dates_as_options ? formatted_datetime_for(poll_option.name, zone) : poll_option.name
   end
 
   def reply_to_address(discussion: , user: )
