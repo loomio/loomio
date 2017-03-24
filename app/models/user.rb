@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   include MessageChannel
   include HasExperiences
   include HasGravatar
+  include UsesWithoutScope
 
   AVATAR_KINDS = %w[initials uploaded gravatar]
   LARGE_IMAGE = 170
@@ -131,16 +132,6 @@ class User < ActiveRecord::Base
     joins(:memberships).
     where('memberships.group_id = ?', group.id).
     where('users.email_when_proposal_closing_soon = ?', true)
-  }
-
-  scope :without, -> (users) {
-    users = Array(users).compact
-
-    if users.size > 0
-      where('users.id NOT IN (?)', users)
-    else
-      all
-    end
   }
 
   def user_id
