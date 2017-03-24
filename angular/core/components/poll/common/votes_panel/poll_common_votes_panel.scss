@@ -1,12 +1,3 @@
-.poll-common-votes-panel__stance {
-  @include displayFlex;
-  align-items: flex-start;
-  margin: 7px 0;
-}
-
-.poll-common-votes-panel__stance-content {
-  margin-left: 10px;
-}
 
 .poll-common-votes-panel__no-votes {
   color: $grey-on-white;
