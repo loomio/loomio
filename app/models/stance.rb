@@ -22,6 +22,7 @@ class Stance < ActiveRecord::Base
   scope :oldest_first,   -> { order(created_at: :asc) }
   scope :priority_first, -> { joins(:poll_options).order('poll_options.priority ASC') }
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
+  scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
 
   validates :stance_choices, length: { minimum: 1, message: I18n.t(:"stance.error.too_short") }
   validate :total_score_is_valid
