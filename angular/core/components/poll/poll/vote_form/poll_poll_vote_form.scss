@@ -1,6 +1,9 @@
 .poll-common-vote-form__border-chip {
   border-left: 8px solid;
   padding-left: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .poll-poll-vote-form__options .md-list-item-inner {
