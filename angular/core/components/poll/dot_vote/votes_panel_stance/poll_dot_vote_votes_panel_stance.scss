@@ -1,5 +1,16 @@
-.poll-dot-vote-votes-panel__stance {
+.poll-dot-vote-votes-panel-stance {
   @include displayFlex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.poll-dot-vote-votes-panel-stance__head {
+  @include displayFlex;
+}
+
+.poll-dot-vote-votes-panel-stance__name {
+  text-align: center;
+  padding-left: 8px;
+  line-height: 30px;
 }
 
 .poll-dot-vote-votes-panel__stance-choice {

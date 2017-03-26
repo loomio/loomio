@@ -2,20 +2,20 @@ angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', (PollServic
   scope: {stance: '=', poll: '='}
   templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
   controller: ($scope) ->
-    $scope.countFor = (option) ->
-      $scope.poll.stanceData[option.name] or 0
+    $scope.barTextFor = (choice) ->
+      "#{choice.score} - #{choice.pollOption().name}".replace(/\s/g, '\u00a0')
 
-    $scope.barTextFor = (option) ->
-      "#{$scope.countFor(option)} - #{option.name}".replace(/\s/g, '\u00a0')
-
-    percentageFor = (option) ->
-      max = _.max(_.values($scope.poll.stanceData))
+    percentageFor = (choice) ->
+      max = _.max(_.map($scope.stance.stanceChoices(), (choice) -> choice.score))
       return unless max > 0
-      "#{100 * $scope.countFor(option) / max}%"
+      "#{100 * choice.score / max}%"
 
-    backgroundImageFor = (option) ->
-      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
+    backgroundImageFor = (choice) ->
+      "url(/img/poll_backgrounds/#{choice.pollOption().color.replace('#','')}.png)"
 
-    $scope.styleData = (option) ->
-      'background-image': backgroundImageFor(option)
-      'background-size': percentageFor(option)
+    $scope.styleData = (choice) ->
+      'background-image': backgroundImageFor(choice)
+      'background-size': percentageFor(choice)
+
+    $scope.stanceChoices = ->
+      _.sortBy($scope.stance.stanceChoices(), 'score').reverse()
