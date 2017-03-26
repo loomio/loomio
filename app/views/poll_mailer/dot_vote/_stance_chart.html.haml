@@ -1,0 +1,9 @@
+%table{style: "width: 100%"}
+  - stance.stance_choices.order('score desc').each do |stance_choice|
+    %tr
+      %td= "#{stance_choice.score} - #{format_poll_option_name(stance_choice.poll_option)}"
+    %tr
+      %td
+        %table{style: "width: #{stance_choice_percentage_for(stance, stance_choice)}%"}
+          %tr
+            %td{height: '24px', style: "background-color: #{stance_choice.poll_option.color}"}

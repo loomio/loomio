@@ -2,9 +2,9 @@
 %table{style: "width: 100%"}
   - @info.poll.poll_options.each_with_index do |poll_option, index|
     %tr
-      %td= "#{format_poll_option_name(poll_option)} - #{@info.poll.stance_counts[index]}"
+      %td= "#{@info.poll.stance_counts[index]} - #{format_poll_option_name(poll_option)}"
     %tr
       %td
         %table{style: "width: #{percentage_for(@info.poll, index)}%"}
           %tr
-            %td{height: '40px', style: "background-color: #{Poll::COLORS.dig(@info.poll_type, index)}"}
+            %td{height: '48px', style: "background-color: #{Poll::COLORS.dig(@info.poll_type, index)}"}
