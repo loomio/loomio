@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
   # community, but for now we can just default to no communities
   # Polls override this to look at the communities associated with the poll.
   def communities
-    Communities::Base.none
+    Array(eventable&.group&.community)
   end
 
   def call_thread_item_created

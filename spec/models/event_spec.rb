@@ -17,7 +17,7 @@ describe Event do
   let(:user_mentioned_text) { "Hello @#{user_mentioned.username}" }
 
   let(:discussion) { FactoryGirl.create :discussion, description: user_mentioned_text }
-  let(:mentioned_user) {FactoryGirl.create :user, username: 'sam' }
+  let(:mentioned_user) {FactoryGirl.create :user, username: 'sam', email_when_mentioned: true }
   let(:parent_comment) { FactoryGirl.create :comment, discussion: discussion}
   let(:comment) { FactoryGirl.create :comment, parent: parent_comment, discussion: discussion, body: 'hey @sam' }
   let(:motion) { FactoryGirl.create :motion, discussion: discussion, description: user_mentioned_text }
@@ -25,7 +25,12 @@ describe Event do
   let(:poll) { FactoryGirl.create :poll, discussion: discussion, details: user_mentioned_text }
   let(:outcome) { FactoryGirl.create :outcome, poll: poll, statement: user_mentioned_text }
 
+  def emails_sent
+    ActionMailer::Base.deliveries.count
+  end
+
   before do
+    ActionMailer::Base.deliveries = []
     parent_comment
     discussion.group.add_member!(mentioned_user)
     discussion.group.add_member!(parent_comment.author)
@@ -56,8 +61,8 @@ describe Event do
   end
 
   it 'new_comment' do
-    event = Events::NewComment.publish!(comment)
-    email_users = event.send(:email_recipients)
+    expect { Events::NewComment.publish!(comment) }.to change { emails_sent }
+    email_users = Events::NewComment.last.send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -93,7 +98,8 @@ describe Event do
   end
 
   it 'new_vote' do
-    email_users = Events::NewVote.publish!(vote).send(:email_recipients)
+    expect { Events::NewVote.publish!(vote) }.to change { emails_sent }
+    email_users = Events::NewVote.last.send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -111,7 +117,8 @@ describe Event do
 
   it 'new_discussion' do
     discussion.make_announcement = true
-    email_users = Events::NewDiscussion.publish!(discussion).send(:email_recipients)
+    expect { Events::NewDiscussion.publish!(discussion) }.to change { emails_sent }
+    email_users = Events::NewDiscussion.last.send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -129,7 +136,8 @@ describe Event do
   end
 
   it 'new_motion' do
-    email_users = Events::NewMotion.publish!(motion).send(:email_recipients)
+    expect { Events::NewMotion.publish!(motion) }.to change { emails_sent }
+    email_users = Events::NewMotion.last.send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -147,8 +155,8 @@ describe Event do
   end
 
   it 'motion_closing_soon' do
-    event = Events::MotionClosingSoon.publish!(motion)
-    email_users = event.send(:email_recipients)
+    expect { Events::MotionClosingSoon.publish!(motion) }.to change { emails_sent }
+    email_users = Events::MotionClosingSoon.last.send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -163,7 +171,7 @@ describe Event do
 
     email_users.should     include user_motion_closing_soon
 
-    notification_users = event.send(:notification_recipients)
+    notification_users = Events::MotionClosingSoon.last.send(:notification_recipients)
     notification_users.should     include user_thread_loud
     notification_users.should     include user_membership_loud
 
@@ -181,8 +189,8 @@ describe Event do
 
   it 'motion_outcome' do
     motion.update(outcome_author: user_thread_loud)
-    event = Events::MotionOutcomeCreated.publish!(motion)
-    email_users = event.send(:email_recipients)
+    expect { Events::MotionOutcomeCreated.publish!(motion) }.to change { emails_sent }
+    email_users = Events::MotionOutcomeCreated.last.send(:email_recipients)
     email_users.should_not include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -197,7 +205,7 @@ describe Event do
 
     email_users.should_not include user_motion_closing_soon
 
-    notification_users = event.send(:notification_recipients)
+    notification_users = Events::MotionOutcomeCreated.last.send(:notification_recipients)
     notification_users.should_not include user_thread_loud
     notification_users.should     include user_membership_loud
 
@@ -214,8 +222,8 @@ describe Event do
   end
 
   it 'motion_closed' do
-    event = Events::MotionClosed.publish!(motion)
-    email_users = event.send(:email_recipients)
+    expect { Events::MotionClosed.publish!(motion) }.to change { emails_sent }
+    email_users = Events::MotionClosed.last.send(:email_recipients)
     email_users.should     include user_thread_loud
     email_users.should     include user_membership_loud
 
@@ -228,7 +236,7 @@ describe Event do
     email_users.should_not include user_membership_mute
     email_users.should_not include user_thread_mute
 
-    notification_users = event.send(:notification_recipients)
+    notification_users = Events::MotionClosed.last.send(:notification_recipients)
     notification_users.should_not include user_thread_loud
     notification_users.should_not include user_membership_loud
 
@@ -246,8 +254,8 @@ describe Event do
   describe 'poll_created' do
     it 'makes an announcement' do
       poll.make_announcement = true
-      event = Events::PollCreated.publish!(poll)
-      email_users = event.send(:email_recipients)
+      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      email_users = Events::PollCreated.last.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
 
@@ -261,7 +269,7 @@ describe Event do
       email_users.should_not include user_thread_mute
       email_users.should_not include poll.author
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
       notification_users.should     include user_membership_loud
 
@@ -277,12 +285,12 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      event = Events::PollCreated.publish!(poll)
-      email_users = event.send(:email_recipients)
+      expect { Events::PollCreated.publish!(poll) }.to change { emails_sent }
+      email_users = Events::PollCreated.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollCreated.last.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include user_mentioned
     end
@@ -291,8 +299,8 @@ describe Event do
   describe 'poll_edited' do
     it 'makes an announcement to participants' do
       FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-      event = Events::PollEdited.publish!(poll.versions.last, poll.author, true)
-      email_users = event.send(:email_recipients)
+      expect { Events::PollEdited.publish!(poll.versions.last, poll.author, true) }.to change { emails_sent }
+      email_users = Events::PollEdited.last.send(:email_recipients)
       email_users.should      include user_thread_loud
       email_users.should_not  include user_membership_loud
 
@@ -306,7 +314,7 @@ describe Event do
       email_users.should_not include user_thread_mute
       email_users.should_not include poll.author
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollEdited.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
       notification_users.should_not include user_membership_loud
 
@@ -322,12 +330,12 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      event = Events::PollEdited.publish!(poll.versions.last, poll.author)
-      email_users = event.send(:email_recipients)
+      expect { Events::PollEdited.publish!(poll.versions.last, poll.author) }.to change { emails_sent }
+      email_users = Events::PollEdited.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollEdited.last.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include user_mentioned
     end
@@ -340,13 +348,13 @@ describe Event do
         poll = FactoryGirl.create(:poll_proposal, discussion: discussion)
         Event.create(kind: 'poll_created', announcement: true, eventable: poll)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        event = Events::PollClosingSoon.publish!(poll)
+        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
-        notified_users = event.send(:notification_recipients)
+        notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should include user_thread_loud
         notified_users.should include user_thread_normal
 
-        emailed_users = event.send(:email_recipients)
+        emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
         emailed_users.should include user_thread_loud
         emailed_users.should include user_thread_normal
       end
@@ -354,13 +362,13 @@ describe Event do
       it 'false' do
         Event.create(kind: 'poll_created', announcement: true, eventable: poll)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        event = Events::PollClosingSoon.publish!(poll)
+        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
 
-        notified_users = event.send(:notification_recipients)
+        notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should_not include user_thread_loud
         notified_users.should include user_thread_normal
 
-        emailed_users = event.send(:email_recipients)
+        emailed_users = Events::PollClosingSoon.last.send(:email_recipients)
         emailed_users.should_not include user_thread_loud
         emailed_users.should include user_thread_normal
       end
@@ -370,9 +378,9 @@ describe Event do
         Event.create(kind: 'poll_created', announcement: true, eventable: poll)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: visitor)
         FactoryGirl.create(:stance, poll: poll, choice: poll.poll_options.first.name, participant: user_thread_loud)
-        event = Events::PollClosingSoon.publish!(poll)
+        Events::PollClosingSoon.publish!(poll)
 
-        notified_users = event.send(:notification_recipients)
+        notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should_not include user_thread_loud
         notified_users.should include user_thread_normal
       end
@@ -380,8 +388,8 @@ describe Event do
 
     it 'makes an announcement' do
       Event.create(kind: 'poll_created', announcement: true, eventable: poll)
-      event = Events::PollClosingSoon.publish!(poll)
-      email_users = event.send(:email_recipients)
+      expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
+      email_users = Events::PollClosingSoon.last.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
 
@@ -395,7 +403,7 @@ describe Event do
       email_users.should_not include user_thread_mute
       email_users.should_not include poll.author
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollClosingSoon.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
       notification_users.should     include user_membership_loud
 
@@ -411,23 +419,23 @@ describe Event do
     end
 
     it 'does not notify when not an announcement' do
-      event = Events::PollClosingSoon.publish!(poll)
-      email_users = event.send(:email_recipients)
+      Events::PollClosingSoon.publish!(poll)
+      email_users = Events::PollClosingSoon.last.send(:email_recipients)
       expect(email_users).to be_empty
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollClosingSoon.last.send(:notification_recipients)
       expect(notification_users).to be_empty
     end
   end
 
   describe 'poll_expired' do
     it 'notifies the author' do
-      event = Events::PollExpired.publish!(poll)
-      email_users = event.send(:email_recipients)
+      expect { Events::PollExpired.publish!(poll) }.to change { emails_sent }
+      email_users = Events::PollExpired.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include poll.author
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::PollExpired.last.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include poll.author
     end
@@ -436,8 +444,8 @@ describe Event do
   describe 'outcome_created' do
     it 'makes an announcement' do
       outcome.make_announcement = true
-      event = Events::OutcomeCreated.publish!(outcome)
-      email_users = event.send(:email_recipients)
+      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
+      email_users = Events::OutcomeCreated.last.send(:email_recipients)
       email_users.should     include user_thread_loud
       email_users.should     include user_membership_loud
 
@@ -451,7 +459,7 @@ describe Event do
       email_users.should_not include user_thread_mute
       email_users.should_not include poll.author
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       notification_users.should     include user_thread_loud
       notification_users.should     include user_membership_loud
 
@@ -467,12 +475,12 @@ describe Event do
     end
 
     it 'notifies mentioned users' do
-      event = Events::OutcomeCreated.publish!(outcome)
-      email_users = event.send(:email_recipients)
+      expect { Events::OutcomeCreated.publish!(outcome) }.to change { emails_sent }
+      email_users = Events::OutcomeCreated.last.send(:email_recipients)
       expect(email_users.length).to eq 1
       expect(email_users).to include user_mentioned
 
-      notification_users = event.send(:notification_recipients)
+      notification_users = Events::OutcomeCreated.last.send(:notification_recipients)
       expect(notification_users.length).to eq 1
       expect(notification_users).to include user_mentioned
     end
