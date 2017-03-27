@@ -23,16 +23,11 @@ class Communities::Base < ActiveRecord::Base
     after_initialize { self.community_type = type }
   end
 
-  def includes?(member)
-    raise NotImplementedError.new
-  end
-
-  def members
-    raise NotImplementedError.new
+  def includes?(participant)
+    participant.identities.any? { |i| i.is_member_of?(self) }
   end
 
   def notify!(event)
-    raise NotImplementedError.new
+    identity.notify!(event.kind, event.eventable, identifier) if identity
   end
-
 end

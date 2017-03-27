@@ -1,4 +1,5 @@
 class Identities::Facebook < Identities::Base
+  include Identities::WithClient
   set_identity_type :facebook
 
   def fetch_user_info
@@ -13,9 +14,5 @@ class Identities::Facebook < Identities::Base
 
   def admin_groups
     client.fetch_admin_groups(self.uid)
-  end
-
-  def is_member_of?(community)
-    client.is_member_of?(community.identifier, self.uid)
   end
 end

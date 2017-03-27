@@ -1,11 +1,6 @@
 module Events::NotifyUser
   include PrettyUrlHelper
 
-  def trigger!
-    super
-    notify_users!
-  end
-
   # send event notifications
   def notify_users!
     notifications.import(notification_recipients.without(user).map do |recipient|

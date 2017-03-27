@@ -1,10 +1,5 @@
 module Events::EmailUser
 
-  def trigger!
-    super
-    email_users!
-  end
-
   # send event emails
   def email_users!
     email_recipients.without(user).each { |recipient| email_user!(recipient) }

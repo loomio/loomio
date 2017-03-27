@@ -1,4 +1,5 @@
 class Identities::Slack < Identities::Base
+  include Identities::WithClient
   set_identity_type :slack
   set_custom_fields :slack_team_id, :slack_team_name, :slack_team_logo
 
@@ -14,10 +15,6 @@ class Identities::Slack < Identities::Base
     self.slack_team_id   = response['id']
     self.slack_team_name = response['name']
     self.slack_team_logo = response.dig('icon', 'image_68')
-  end
-
-  def is_member_of?(community)
-    client.is_member_of?(community.identifier, self.uid)
   end
 
   def channels

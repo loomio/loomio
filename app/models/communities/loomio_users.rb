@@ -1,4 +1,5 @@
 class Communities::LoomioUsers < Communities::Base
+  include Communities::NotifyLoomioGroup
   set_community_type :loomio_users
   set_custom_fields  :loomio_user_ids
 
@@ -8,13 +9,5 @@ class Communities::LoomioUsers < Communities::Base
 
   def includes?(member)
     member.is_logged_in? && self.loomio_user_ids.include?(member.id)
-  end
-
-  def members
-    @members ||= User.where(id: loomio_user_ids)
-  end
-
-  def notify!(event)
-    # NOOP for now
   end
 end

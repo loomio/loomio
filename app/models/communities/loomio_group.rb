@@ -1,4 +1,5 @@
 class Communities::LoomioGroup < Communities::Base
+  include Communities::NotifyLoomioGroup
   set_community_type :loomio_group
 
   validates :group, presence: true
@@ -9,7 +10,7 @@ class Communities::LoomioGroup < Communities::Base
 
   def group
     @group = nil unless @group&.key == self.identifier
-    @group ||= Group.find_by(key: self.idenfifier)
+    @group ||= Group.find_by(key: self.identifier)
   end
 
   def group=(group)
@@ -19,15 +20,5 @@ class Communities::LoomioGroup < Communities::Base
   def includes?(member)
     member.is_admin_of?(self.group) ||
     (member.is_member_of?(self.group) && group.members_can_vote?)
-  end
-
-  def members
-    @members ||= group.members
-  end
-
-  def notify!(event)
-    # this is currently handled by Event subclasses, but the logic
-    # could be moved here when we need to notify multiple groups of
-    # poll events
   end
 end

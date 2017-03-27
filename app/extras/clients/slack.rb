@@ -24,6 +24,14 @@ class Clients::Slack < Clients::Base
     "users:read,channels:read,team:read"
   end
 
+  def poll_created(poll, channel_id)
+    # post("", {})
+  end
+
+  def outcome_created(outcome, channel_id)
+    # post("", {})
+  end
+
   private
 
   def host

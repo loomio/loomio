@@ -22,6 +22,14 @@ class Clients::Facebook < Clients::Base
     end
   end
 
+  def poll_created(poll, group_id)
+    # post("")
+  end
+
+  def outcome_created(outcome, group_id)
+    # post("")
+  end
+
   private
 
   def token_name
