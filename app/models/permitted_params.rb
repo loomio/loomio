@@ -47,6 +47,10 @@ class PermittedParams < Struct.new(:params)
      :custom_fields, {custom_fields: [:facebook_group_name, :slack_channel_name]}]
   end
 
+  def poll_community_attributes
+    [:poll_id, :community_id]
+  end
+
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
      :make_announcement, :multiple_choice, :key, :anyone_can_participate,

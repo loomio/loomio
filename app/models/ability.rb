@@ -327,6 +327,11 @@ class Ability
       @user.communities.include? community
     end
 
+    can [:create], PollCommunity do |poll_community|
+      @user.can?(:update, poll_community.poll) &&
+      @user.can?(:update, poll_community.community)
+    end
+
     can [:make_draft, :show], Poll do |poll|
       user_is_author_of?(poll) ||
       can?(:show, poll.discussion) ||

@@ -48,13 +48,4 @@ require 'rails_helper'
      end
    end
 
-   describe 'members' do
-     it 'returns the members of the group' do
-       members = community.members
-       expect(members).to include user
-       expect(members).to_not include non_member
-       expect(members).to_not include visitor
-     end
-   end
-
  end
