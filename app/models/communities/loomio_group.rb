@@ -5,7 +5,7 @@ class Communities::LoomioGroup < Communities::Base
   validates :group, presence: true
 
   def to_user_community
-    Communities::LoomioUsers.new(loomio_user_ids: members.pluck(:id), group_key: identifier)
+    Communities::LoomioUsers.new(loomio_user_ids: group.member_ids, identifier: identifier)
   end
 
   def group

@@ -15,14 +15,14 @@ require 'rails_helper'
 
    describe 'group' do
      it 'allows setting group by key' do
-       community.update(group_key: another_group.key)
-       expect(community.reload.group_key).to eq another_group.key
+       community.update(identifier: another_group.key)
+       expect(community.reload.identifier).to eq another_group.key
        expect(community.group).to eq another_group
      end
 
      it 'allows setting group by reference' do
        community.update(group: another_group)
-       expect(community.reload.group_key).to eq another_group.key
+       expect(community.reload.identifier).to eq another_group.key
        expect(community.group).to eq another_group
      end
    end
