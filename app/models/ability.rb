@@ -327,9 +327,8 @@ class Ability
       @user.communities.include? community
     end
 
-    can [:create], PollCommunity do |poll_community|
-      @user.can?(:update, poll_community.poll) &&
-      @user.can?(:update, poll_community.community)
+    can :destroy, PollCommunity do |poll_community|
+      @user.can? :share, poll_community.poll
     end
 
     can [:make_draft, :show], Poll do |poll|

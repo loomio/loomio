@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user visitor vote motion membership_request membership poll outcome
     stance invitation group_request group discussion discussion_reader comment
     attachment contact_message user_deactivation_response network_membership_request
-    draft oauth_application community
+    draft oauth_application community poll_community
   )
 
   MODELS.each do |kind|
