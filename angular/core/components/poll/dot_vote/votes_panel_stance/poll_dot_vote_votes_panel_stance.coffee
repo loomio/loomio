@@ -6,7 +6,8 @@ angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', (PollServic
       "#{choice.score} - #{choice.pollOption().name}".replace(/\s/g, '\u00a0')
 
     percentageFor = (choice) ->
-      max = _.max(_.map($scope.stance.stanceChoices(), (choice) -> choice.score))
+      # max = _.max(_.map($scope.stance.stanceChoices(), (choice) -> choice.score))
+      max = $scope.stance.poll().customFields.dots_per_person
       return unless max > 0
       "#{100 * choice.score / max}%"
 

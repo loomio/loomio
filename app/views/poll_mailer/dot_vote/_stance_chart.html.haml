@@ -4,6 +4,6 @@
       %td= "#{stance_choice.score} - #{stance_choice.poll_option.name}"
     %tr
       %td
-        %table{style: "width: #{stance_choice_percentage_for(stance, stance_choice)}%"}
+        %table{style: "width: #{dot_vote_stance_choice_percentage_for(stance, stance_choice)}%"}
           %tr
             %td{height: '24px', style: "background-color: #{stance_choice.poll_option.color}"}
