@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'pollCommonBarChart', (AppConfig, Records) ->
-  scope: {poll: '=', size: '@'}
+  scope: {poll: '='}
   templateUrl: 'generated/components/poll/common/bar_chart/poll_common_bar_chart.html'
   controller: ($scope) ->
     $scope.countFor = (option) ->

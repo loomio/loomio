@@ -1,5 +1,5 @@
 angular.module('loomioApp').directive 'pollDotVoteVotesPanelStance', (PollService, RecordLoader) ->
-  scope: {stance: '=', poll: '='}
+  scope: {stance: '='}
   templateUrl: 'generated/components/poll/dot_vote/votes_panel_stance/poll_dot_vote_votes_panel_stance.html'
   controller: ($scope) ->
     $scope.barTextFor = (choice) ->
