@@ -19,6 +19,3 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
 
     add: (poll) ->
       @remote.postMember @id, 'add', poll_id: poll.id
-
-    revoke: (poll) ->
-      @remote.postMember(@id, 'remove', poll_id: poll.id).then => @revoked = true

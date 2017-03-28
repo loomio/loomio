@@ -200,7 +200,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :communities, only: [:create, :update, :index]
-    resources :poll_communities do
+    resources :poll_communities, only: [] do
       delete :destroy, on: :collection
     end
 

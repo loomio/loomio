@@ -15,7 +15,5 @@ angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, 
       !_.find $scope.poll.communities(), (community) -> !community.revoked
 
     $scope.revoke = (community) ->
-      community.revoke($scope.poll)
-               .then ->
-                 community.revoked = true
-                 FlashService.success "poll_common_share_form.community_revoked"
+      Records.pollCommunities.revoke($scope.poll, community).then ->
+        FlashService.success "poll_common_share_form.community_revoked"
