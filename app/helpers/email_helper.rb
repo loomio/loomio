@@ -90,4 +90,13 @@ module EmailHelper
       (100 * poll.stance_counts[index].to_f / poll.stance_counts.max).to_i
     end
   end
+
+  def stance_choice_percentage_for(stance, stance_choice)
+    max = stance.stance_choices.maximum(:score).to_i
+    if max <= 0
+      0
+    else
+      (100 * stance_choice.score.to_f / max).to_i
+    end
+  end
 end
