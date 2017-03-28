@@ -14,6 +14,16 @@ class API::CommunitiesController < API::RestfulController
     load_and_authorize(:poll, :share).communities
   end
 
+  def instantiate_resource
+    self.resource = existing_resource || super
+  end
+
+  def existing_resource
+    resource_class.find_by(resource_params.slice(:identity_id, :identifier, :community_type)).tap do |existing|
+      existing.poll_id = resource_params[:poll_id] if existing
+    end
+  end
+
   def resource_class
     Communities::Base
   end

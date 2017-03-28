@@ -315,7 +315,7 @@ class Ability
       @user.is_logged_in?
     end
 
-    can :show, Communities::Base do |community|
+    can [:show, :manage_visitors], Communities::Base do |community|
       community.polls.any? { |poll| @user.can? :share, poll }
     end
 
@@ -350,14 +350,6 @@ class Ability
 
     can :close, Poll do |poll|
       poll.active? && (user_is_author_of?(poll) || user_is_admin_of?(poll.group_id))
-    end
-
-    can [:destroy], Visitor do |visitor|
-      @user.visitors.include?(visitor)
-    end
-
-    can [:create, :remind], Visitor do |visitor|
-      @user.communities.include?(visitor.community)
     end
 
     can :update, Visitor do |visitor|

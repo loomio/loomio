@@ -1,5 +1,5 @@
 module Communities::NotifyViaEmail
-  EMAIL_EVENTS = %w(outcome_created poll_created).freeze
+  EMAIL_EVENTS = %w(outcome_created poll_created visitor_created visitor_reminded).freeze
 
   def notify!(event)
     visitors.where(revoked: false).where('email IS NOT NULL').each do |recipient|

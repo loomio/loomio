@@ -1,16 +1,10 @@
 class Events::VisitorCreated < Event
-  include Events::EmailUser
+  include Events::VisitorEvent
 
-  def self.publish!(visitor, inviter)
+  def self.publish!(visitor, actor, poll)
     create(kind: "visitor_created",
-           user: inviter,
+           user: actor,
+           custom_fields: {poll_id: poll.id},
            eventable: visitor).tap { |e| EventBus.broadcast('visitor_created_event', e) }
-  end
-
-  private
-
-  def email_users!
-    return unless poll = eventable.community.polls.last
-    PollMailer.send(:poll_created, eventable, poll).deliver_now
   end
 end
