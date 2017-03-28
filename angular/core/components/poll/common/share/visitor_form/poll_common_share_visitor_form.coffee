@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'pollCommonShareVisitorForm', (Records, KeyEventService) ->
+angular.module('loomioApp').directive 'pollCommonShareVisitorForm', (Records, KeyEventService, FlashService) ->
   scope: {poll: '='}
   restrict: 'E'
   templateUrl: 'generated/components/poll/common/share/visitor_form/poll_common_share_visitor_form.html'
@@ -21,7 +21,7 @@ angular.module('loomioApp').directive 'pollCommonShareVisitorForm', (Records, Ke
         $scope.emailValidationError = $translate.instant('poll_common_share_form.email_invalid')
       else
         $scope.emailValidationError = null
-        $scope.newVisitor.save().then ->
+        $scope.newVisitor.invite($scope.poll).then ->
           $scope.init()
           document.querySelector('.poll-common-share-form__add-option-input').focus()
 
