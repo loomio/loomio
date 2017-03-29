@@ -9,6 +9,7 @@
 
 .emoji-picker__menu {
   @include card;
+  min-width: 190px;
   width: 190px;
   padding: 6px;
   position: absolute;
