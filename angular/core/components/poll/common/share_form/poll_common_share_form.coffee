@@ -40,6 +40,7 @@ angular.module('loomioApp').directive 'pollCommonShareForm', ($translate, FormSe
       else
         $scope.emailValidationError = null
         $scope.newVisitor.save().then ->
+          FlashService.success 'poll_common_share_form.email_invited', email: $scope.newVisitor.email
           $scope.init()
           document.querySelector('.poll-common-share-form__add-option-input').focus()
 
