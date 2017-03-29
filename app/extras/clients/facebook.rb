@@ -22,12 +22,12 @@ class Clients::Facebook < Clients::Base
     end
   end
 
-  def poll_created(poll, group_id)
-    # post("")
+  def post_content(event, group_id)
+    post("#{group_id}/feed", serialized_event(event)) { |response| byebug; response['id'] }
   end
 
-  def outcome_created(outcome, group_id)
-    # post("")
+  def scope
+    "user_managed_groups,publish_actions"
   end
 
   private

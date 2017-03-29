@@ -21,15 +21,11 @@ class Clients::Slack < Clients::Base
   end
 
   def scope
-    "users:read,channels:read,team:read"
+    "users:read,channels:read,team:read,chat:write:bot"
   end
 
-  def poll_created(poll, channel_id)
-    # post("", {})
-  end
-
-  def outcome_created(outcome, channel_id)
-    # post("", {})
+  def post_content(event, channel)
+    get("chat.postMessage", serialized_event(event).merge(channel: channel)) { |response| byebug; response['ok'] }
   end
 
   private

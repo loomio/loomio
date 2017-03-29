@@ -8,6 +8,8 @@ class Outcome < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
+  delegate :title, to: :poll
+
   is_mentionable on: :statement
 
   validates :statement, presence: true

@@ -1127,6 +1127,9 @@ en:
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       new_comment: "*%{author}* posted a new comment in *%{name}*"
       new_discussion: "*%{author}* started a new discussion in *%{group}*"
+      outcome_created: "*%{author}* created an outcome for *%{name}*"
+      poll_created: "*%{author}* started a poll: *%{name}*"
+      poll_closing_soon: "*%{name}* is closing soon"
       view_it_on_loomio: View it on Loomio
       have_your_say: Have your say
       position_verbs:

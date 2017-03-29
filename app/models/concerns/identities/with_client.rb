@@ -1,6 +1,6 @@
 module Identities::WithClient
-  def notify!(kind, model, identifier)
-    client.send(kind, model, identifier) if client.respond_to?(kind)
+  def notify!(event, identifier)
+    client.post_content(event, identifier)
   end
 
   def is_member_of?(community)
