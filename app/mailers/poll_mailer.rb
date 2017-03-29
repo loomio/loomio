@@ -1,5 +1,6 @@
 class PollMailer < BaseMailer
   helper :email
+  helper :application
   REPLY_DELIMITER = "--"
 
   # emails sent to the group
