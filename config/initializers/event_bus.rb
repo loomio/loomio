@@ -53,7 +53,7 @@ EventBus.configure do |config|
   config.listen('discussion_reader_viewed!',
                 'discussion_reader_dismissed!') do |discussion, actor|
 
-    reader_cache = DiscussionReaderCache.new(user: actor, discussions: Array(discussion))
+    reader_cache = Caches::DiscussionReader.new(user: actor, parents: Array(discussion))
     collection = ActiveModel::ArraySerializer.new([discussion], each_serializer: MarkedAsRead::DiscussionSerializer, root: 'discussions', scope: { reader_cache: reader_cache } )
 
     MessageChannelService.publish(collection, to: actor)

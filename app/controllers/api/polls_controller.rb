@@ -37,7 +37,11 @@ class API::PollsController < API::RestfulController
 
   private
   def default_scope
-    super.merge my_stances_cache: MyStancesCache.new(participant: current_participant, polls: collection || Array(resource))
+    super.merge(my_stances_cache: Caches::Stance.new(
+      user:               current_participant,
+      parents:            collection || Array(resource),
+      only_owned_by_user: true
+    ))
   end
 
   def accessible_records

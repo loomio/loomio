@@ -40,8 +40,7 @@ class API::MotionsController < API::RestfulController
   private
 
   def closed_motion_scope
-    return {} unless current_user.is_logged_in?
-    { vote_cache: VoteCache.new(current_user, current_user.votes.where(motion: collection)) }
+    { vote_cache: Caches::Vote.new(user: current_user, collection: collection, only_owned_by_user: true) }
   end
 
   def accessible_records

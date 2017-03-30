@@ -70,4 +70,8 @@ class API::DiscussionsController < API::RestfulController
     collection.not_muted.unread.sorted_by_latest_activity
   end
 
+  def default_scope
+    super.merge(poll_cache: Caches::Poll.new(user: current_user, parents: collection))
+  end
+
 end
