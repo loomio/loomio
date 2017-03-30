@@ -2,7 +2,7 @@ module EmailHelper
   include PrettyUrlHelper
 
   def formatted_datetime_for(date_string, zone)
-    date_time = DateTime.strptime(date_string).in_time_zone(zone)
+    date_time = DateTime.strptime(date_string.sub('.000Z', 'Z')).in_time_zone(zone)
     date_time.strftime(date_time.year == Date.today.year ? "%e %b %l:%M %P" : "%e %b %Y %l:%M %P")
   rescue ArgumentError
     formatted_date_for(date_string)
