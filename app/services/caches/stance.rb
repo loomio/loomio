@@ -5,7 +5,7 @@ class Caches::Stance < Caches::Base
     :poll
   end
 
-  def user_column
-    :participant
+  def collection_from(parents)
+    super.where(participant: user)
   end
 end

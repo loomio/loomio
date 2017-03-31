@@ -2,6 +2,7 @@ class API::DiscussionsController < API::RestfulController
   load_and_authorize_resource only: [:show, :mark_as_read, :dismiss, :move]
   load_resource only: [:create, :update, :star, :unstar, :set_volume]
   include UsesDiscussionReaders
+  include UsesPolls
   include UsesFullSerializer
 
   def index
@@ -68,10 +69,6 @@ class API::DiscussionsController < API::RestfulController
 
   def collection_for_inbox(collection)
     collection.not_muted.unread.sorted_by_latest_activity
-  end
-
-  def default_scope
-    super.merge(poll_cache: Caches::Poll.new(user: current_user, parents: collection))
   end
 
 end

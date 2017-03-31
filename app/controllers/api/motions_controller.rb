@@ -40,7 +40,7 @@ class API::MotionsController < API::RestfulController
   private
 
   def closed_motion_scope
-    { vote_cache: Caches::Vote.new(user: current_user, collection: collection, only_owned_by_user: true) }
+    { vote_cache: Caches::Vote.new(user: current_user, collection: collection, single_entry: true) }
   end
 
   def accessible_records
