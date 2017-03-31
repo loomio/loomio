@@ -1,8 +1,8 @@
 class Caches::DiscussionReader < Caches::Base
   private
 
-  def default_cache_value
-    
+  def default_values_for(discussion)
+    DiscussionReader.for(user: @user, discussion: discussion)
   end
 
   def only_owned_by_user

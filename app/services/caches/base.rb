@@ -4,11 +4,11 @@ class Caches::Base
     return unless parents.any?
 
     @user, @only_owned_by_user = user, only_owned_by_user
-    store_in_cache(parents)
+    store_in_cache(collection_from(parents))
   end
 
-  def get_for(model)
-    set = cache.fetch(model.id) { store_in_cache(model) }
+  def get_for(parent)
+    set = cache.fetch(parent.id) { store_in_cache(default_values_for(parent)) }
     if only_owned_by_user then set.first else set.to_a end
   end
 
@@ -36,12 +36,12 @@ class Caches::Base
     self.class.name.demodulize.constantize
   end
 
-  def store_in_cache(parents)
-    collection_from(parents).each { |model| cache[model.send(:"#{relation}_id")].add(model) }
+  def store_in_cache(models)
+    Array(models).each { |model| cache[model.send(:"#{relation}_id")].add(model) }
   end
 
-  def store(model)
-    cache[model.send(:"#{relation}_id")].add(model)
+  def default_values_for(parent)
+    collection_from(parent)
   end
 
   def collection_from(parents)
@@ -49,4 +49,5 @@ class Caches::Base
       relation = relation.where(user_column => @user) if only_owned_by_user
     end
   end
+
 end
