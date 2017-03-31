@@ -11,8 +11,8 @@ describe 'Polls', ->
       page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__details", "Some details for #{poll_type}"
       optionsFn() if optionsFn?
       page.click ".poll-#{_.kebabCase(poll_type)}-form__submit"
-      page.expectText '.poll-common-summary-panel__title', "A new #{poll_type}"
-      page.expectText '.poll-common-summary-panel__details', "Some details for #{poll_type}"
+      page.expectText '.poll-common-summary-panel', "A new #{poll_type}"
+      page.expectText '.poll-common-summary-panel', "Some details for #{poll_type}"
 
   describe 'start, vote for each poll type', ->
     it 'starts a proposal', startPollTest('proposal')
