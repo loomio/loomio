@@ -40,7 +40,7 @@ class API::MotionsController < API::RestfulController
   private
 
   def closed_motion_scope
-    { vote_cache: Caches::Vote.new(user: current_user, parents: resources_to_serialize.map(&:discussion), single_entry: true) }
+    { vote_cache: Caches::Vote.new(user: current_user, parents: resources_to_serialize.map(&:discussion)) }
   end
 
   def accessible_records

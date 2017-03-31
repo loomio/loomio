@@ -1,18 +1,22 @@
 class Caches::Base
-  attr_reader :user, :single_entry
+  attr_reader :user
 
-  def initialize(user:, parents:, single_entry: false)
-    @user         = user
-    @single_entry = single_entry
+  def initialize(parents:, user: nil)
+    raise ArgumentError.new if require_user? && user.blank? 
+    @user = user
     store_in_cache(collection_from(parents))
   end
 
   def get_for(parent)
     set = cache.fetch(parent.id) { store_in_cache(default_values_for(parent)) }
-    if single_entry then set.first else set.to_a end
+    if user.present? then set.first else set.to_a end
   end
 
   private
+
+  def require_user?
+    false
+  end
 
   def relation
     raise NotImplementedError.new
