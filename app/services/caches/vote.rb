@@ -6,6 +6,6 @@ class Caches::Vote < Caches::Base
   end
 
   def collection_from(parents)
-    super.where(user: user)
+    super.latest.where(user: user)
   end
 end

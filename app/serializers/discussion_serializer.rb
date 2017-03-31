@@ -70,7 +70,7 @@ class DiscussionSerializer < ActiveModel::Serializer
   end
 
   def include_active_polls?
-    scope[:poll_cache]
+    scope[:poll_cache].present?
   end
 
   def reader

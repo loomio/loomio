@@ -6,6 +6,6 @@ class Caches::Stance < Caches::Base
   end
 
   def collection_from(parents)
-    super.where(participant: user)
+    super.latest.where(participant: user)
   end
 end
