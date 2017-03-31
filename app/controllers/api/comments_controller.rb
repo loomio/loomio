@@ -1,4 +1,5 @@
 class API::CommentsController < API::RestfulController
+  include UsesDiscussionReaders
 
   def like
     service.like(comment: load_resource, actor: current_user)
