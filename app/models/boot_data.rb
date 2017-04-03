@@ -36,7 +36,7 @@ BootData = Struct.new(:user, :visitor) do
   end
 
   def readers
-    @readers ||= DiscussionReaderCache.new(user: user, discussions: unread)
+    @readers ||= Caches::DiscussionReader.new(user: user, parents: unread)
   end
 
   def visitors
