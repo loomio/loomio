@@ -5,11 +5,11 @@
 
   - if @info.outcome
     %h2= t(:"poll_common.outcome")
-    %p= @info.outcome.statement
+    %p= render_rich_text @info.outcome.statement
 
     %h2= t(:"poll_types.#{@info.poll_type}")
 
-  %p= @info.poll.details
+  %p= render_rich_text @info.poll.details
 
   %p
     - if @info.poll.active?
@@ -18,3 +18,5 @@
     - else
       = t(:closed)
       = formatted_time_in_zone(@info.poll.closed_at, @info.recipient.time_zone)
+
+  = render "thread_mailer/attachments", resource: @info.poll

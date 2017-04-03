@@ -9,16 +9,17 @@ class API::PollsController < API::RestfulController
   def index
     instantiate_collection do |collection|
       collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
+      collection = collection.active                         if params[:active]
       collection = collection.where(author: current_user)    if params[:authored_only]
       collection = collection.send(params[:filter])          if Poll::FILTERS.include?(params[:filter].to_s)
-      collection.order(:created_at)
+      collection
     end
     respond_with_collection
   end
 
   def closed
     instantiate_collection do |collection|
-      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids).order(closed_at: :desc)
+      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids)
     end
     respond_with_collection
   end
@@ -42,9 +43,6 @@ class API::PollsController < API::RestfulController
   end
 
   def accessible_records
-    Poll.where.any_of(
-      current_user.polls,
-      Poll.where(id: Queries::VisiblePolls.new(user: current_user).pluck(:id))
-    )
+    Queries::VisiblePolls.new(user: current_user).order(created_at: :desc)
   end
 end

@@ -125,7 +125,7 @@ describe API::PollsController do
       poll = Poll.last
       expect(poll.discussion).to eq nil
       expect(poll.group).to eq nil
-      expect(poll.communities.length).to eq 1
+      expect(poll.communities.map(&:class)).to include Communities::Public
       expect(poll.communities.map(&:class)).to include Communities::Email
     end
 

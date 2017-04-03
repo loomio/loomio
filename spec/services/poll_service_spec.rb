@@ -161,7 +161,6 @@ describe PollService do
       group.add_member! another_user
 
       poll = Poll.last
-      expect(poll.communities.count).to eq 1
       expect(poll.communities).to include motion.group.community
       expect(poll.communities.first.includes?(vote.user)).to eq true
       expect(poll.communities.first.includes?(another_user)).to eq true
@@ -173,7 +172,6 @@ describe PollService do
       group.add_member! another_user
 
       poll = Poll.last
-      expect(poll.communities.count).to eq 1
       expect(poll.communities.first).to be_a Communities::LoomioUsers
       expect(poll.communities.first.includes?(vote.user)).to eq true
       expect(poll.communities.first.includes?(another_user)).to eq false
