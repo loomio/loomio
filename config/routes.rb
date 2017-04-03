@@ -139,7 +139,6 @@ Loomio::Application.routes.draw do
 
     resources :polls,       only: [:show, :index, :create, :update] do
       post :close, on: :member
-      get  :closed, on: :collection
       get  :search, on: :collection
     end
 
@@ -243,6 +242,7 @@ Loomio::Application.routes.draw do
   get 'dashboard/:filter'                  => 'application#boot_angular_ui'
   get 'inbox'                              => 'application#boot_angular_ui', as: :inbox
   get 'groups'                             => 'application#boot_angular_ui', as: :groups
+  get 'polls'                              => 'application#boot_angular_ui', as: :polls
   get 'explore'                            => 'application#boot_angular_ui', as: :explore
   get 'profile'                            => 'application#boot_angular_ui', as: :profile
   get 'email_preferences'                  => 'application#boot_angular_ui', as: :email_preferences

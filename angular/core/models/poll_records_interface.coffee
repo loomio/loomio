@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'PollRecordsInterface', ($q, BaseRecordsInterface, PollModel) ->
+angular.module('loomioApp').factory 'PollRecordsInterface', (BaseRecordsInterface, PollModel) ->
   class PollRecordsInterface extends BaseRecordsInterface
     model: PollModel
 
@@ -9,13 +9,12 @@ angular.module('loomioApp').factory 'PollRecordsInterface', ($q, BaseRecordsInte
 
     fetchClosedByGroup: (groupKey, options = {}) ->
       options['group_key'] = groupKey
+      options['filter']    = 'inactive'
       @fetch
-        path: 'closed'
+        path: 'search'
         params: options
 
-    search: (groupKey, fragment, options = {}) ->
-      return $q.when() unless fragment
-      options['group_key'] = groupKey
+    search: (fragment, options = {}) ->
       options['q'] = fragment
       @fetch
         path: 'search'

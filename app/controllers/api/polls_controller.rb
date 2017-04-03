@@ -7,20 +7,7 @@ class API::PollsController < API::RestfulController
   end
 
   def index
-    instantiate_collection do |collection|
-      collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
-      collection = collection.active                         if params[:active]
-      collection = collection.where(author: current_user)    if params[:authored_only]
-      collection = collection.send(params[:filter])          if Poll::FILTERS.include?(params[:filter].to_s)
-      collection
-    end
-    respond_with_collection
-  end
-
-  def closed
-    instantiate_collection do |collection|
-      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids)
-    end
+    instantiate_collection { |collection| collection.where(discussion: load_and_authorize(:discussion)) }
     respond_with_collection
   end
 
@@ -30,14 +17,20 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    params.require(:q)
-    instantiate_collection do |collection|
-      collection.where(discussion_id: load_and_authorize(:group).discussion_ids).search_for(params[:q])
-    end
+    instantiate_collection { |collection| filter_collection(collection) }
     respond_with_collection
   end
 
   private
+
+  def filter_collection(collection)
+    collection = collection.where(discussion_id: @group.discussion_ids) if load_and_authorize(:group, optional: true)
+    collection = collection.send(params[:filter])                       if Poll::FILTERS.include?(params[:filter].to_s)
+    collection = collection.where(author: current_user)                 if params[:authored_only]
+    collection = collection.search_for(params[:q])                      if params[:q].present?
+    collection
+  end
+
   def default_scope
     super.merge my_stances_cache: MyStancesCache.new(participant: current_participant, polls: collection || Array(resource))
   end
