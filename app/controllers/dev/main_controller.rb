@@ -53,8 +53,16 @@ class Dev::MainController < Dev::BaseController
 
   def setup_dashboard
     sign_in patrick
-    starred_proposal_discussion; proposal_discussion; starred_discussion
-    recent_discussion; old_discussion; participating_discussion; muted_discussion; muted_group_discussion
+    starred_proposal_discussion
+    starred_poll_discussion
+    starred_discussion
+    poll_discussion
+    proposal_discussion
+    recent_discussion
+    old_discussion
+    participating_discussion
+    muted_discussion
+    muted_group_discussion
     redirect_to dashboard_url
   end
 
