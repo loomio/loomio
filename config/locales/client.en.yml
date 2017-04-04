@@ -1350,6 +1350,9 @@ en:
     share_count: Share count
     start_poll: Start a new poll
 
+  poll_common_attachment_form:
+    label: Attachments
+
   poll_common_card:
     show_results: Show results
 
@@ -1427,7 +1430,7 @@ en:
   poll_proposal_form:
     start_header: Start proposal
     edit_header: Edit proposal
-    tip: Seek collective agreement. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
+    tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
     title_placeholder: E.g. Let's go to the moon!
     details_placeholder: Give enough information so everyone knows what it means to agree or disagree
     proposal_created: Proposal started
@@ -1436,7 +1439,7 @@ en:
   poll_poll_form:
     start_header: Start poll
     edit_header: Edit poll
-    tip: Measure popularity of options.
+    tip: Measure the popularity of different options
     title_placeholder: E.g. Where do you want to go on holiday?
     details_placeholder: Provide any clarifying details people might need to answer the question.
     add_option_placeholder: Add option
