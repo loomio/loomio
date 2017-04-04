@@ -32,7 +32,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    instantiate_collection { |collection| filter_collection(collection) }
+    self.collection = PollSearch.new(current_user).perform(search_filters)
     respond_with_collection
   end
 
@@ -48,6 +48,10 @@ class API::PollsController < API::RestfulController
     collection = collection.where(author: current_user)                 if params[:authored_only]
     collection = collection.search_for(params[:q])                      if params[:q].present?
     collection
+  end
+
+  def search_filters
+    Hash(params[:filters]).slice(:group_key, :status, :user, :query)
   end
 
   def default_scope
