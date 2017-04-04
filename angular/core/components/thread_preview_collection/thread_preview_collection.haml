@@ -1,4 +1,4 @@
 .thread-previews
   %outlet{name: "before-thread-previews", model: "query"}
-  .blank{ng-repeat: "thread in query.threads() | limitTo: limit | orderBy:importance track by thread.key"}
+  .blank{ng-repeat: "thread in query.threads() | limitTo: limit | orderBy:[importance, '-lastActivityAt'] track by thread.key"}
     %thread_preview{thread: "thread"}
