@@ -1667,5 +1667,5 @@ en:
   polls_page:
     heading: My Decisions
     search_placeholder: Search for polls...
-    polls_count: Displaying {{count}} polls
+    polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: Make a decision

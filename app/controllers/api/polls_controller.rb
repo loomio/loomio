@@ -32,8 +32,12 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    self.collection = PollSearch.new(current_user).perform(search_filters)
+    self.collection = page_collection poll_search.perform(search_filters)
     respond_with_collection
+  end
+
+  def search_results_count
+    render json: poll_search.results_count
   end
 
   private
@@ -48,10 +52,13 @@ class API::PollsController < API::RestfulController
     collection = collection.where(author: current_user)                 if params[:authored_only]
     collection = collection.search_for(params[:q])                      if params[:q].present?
     collection
+
+  def poll_search
+    PollSearch.new(current_user)
   end
 
   def search_filters
-    Hash(params[:filters]).slice(:group_key, :status, :user, :query)
+    params.slice(:group_key, :status, :user, :query)
   end
 
   def default_scope

@@ -66,11 +66,19 @@ describe API::PollsController do
     let!(:group_poll) { create :poll, discussion: discussion }
     let!(:another_poll) { create :poll }
 
+    describe 'search_results_count' do
+      it 'returns a count of possible results' do
+        sign_in user
+        get :search_results_count
+        expect(response.body.to_i).to eq 5
+      end
+    end
+
     describe 'signed in' do
       before { sign_in user }
 
       it 'returns visible polls' do
-        get :search, filters: {}
+        get :search
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -82,7 +90,7 @@ describe API::PollsController do
 
       it 'filters by status' do
         authored_poll.update(closed_at: 1.day.ago)
-        get :search, filters: { status: :closed }
+        get :search, status: :closed
 
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
@@ -94,7 +102,7 @@ describe API::PollsController do
       end
 
       it 'filters by group' do
-        get :search, filters: {group_key: group.key}
+        get :search, group_key: group.key
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -105,7 +113,7 @@ describe API::PollsController do
       end
 
       it 'filters by participated' do
-        get :search, filters: {user: :participation_by}
+        get :search, user: :participation_by
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -116,7 +124,7 @@ describe API::PollsController do
       end
 
       it 'filters by authored' do
-        get :search, filters: {user: :authored_by}
+        get :search, user: :authored_by
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 
@@ -128,7 +136,7 @@ describe API::PollsController do
 
       it 'filters by search fragment' do
         authored_poll.update(title: "Made in Korea!")
-        get :search, filters: { query: "Korea" }
+        get :search, query: "Korea"
         json = JSON.parse(response.body)
         poll_ids = json['polls'].map { |p| p['id'] }
 

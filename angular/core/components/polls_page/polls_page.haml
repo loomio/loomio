@@ -9,13 +9,9 @@
       %md-input-container.previous-polls-page__search.lmo-search-container{md-no-float: "true"}
         %i.material-icons search
         %input{ng-model: "pollsPage.fragment", placeholder: "{{'polls_page.search_placeholder' | translate}}", ng-change: "pollsPage.searchPolls()", ng-model-options: "{debounce: 250}"}
-      %h3{"polls_page.polls_i_started"}
-      %poll_common_accordion{poll_collection: "pollsPage.authoredPolls"}
-      %h3{"polls_page.polls_i_participated_in"}
-      %poll_common_accordion{poll_collection: "pollsPage.participatedPolls"}
-      %h3{"polls_page.polls_in_my_groups"}
-      %poll_common_accordion{poll_collection: "pollsPage.groupPolls"}
+      %h3{"polls_page.my_polls"}
+      %poll_common_accordion{poll_collection: "pollsPage.pollCollection"}
       %loading{ng-if: "pollsPage.searchPollsExecuting || pollsPage.loadMoreExecuting"}
-      .previous-polls-page__count{translate: "polls_page.polls_count", translate-value-loaded: "{{pollsPage.pollCollection.polls().length}}"}
-    .previous-polls-page__load-more
-      %md-button.md-primary{translate: "poll_common.load_more", ng-click: "pollsPage.loadMore()", ng-if: "pollsPage.canLoadMore()"}
+      .previous-polls-page__count{translate: "polls_page.polls_count", translate-value-count: "{{pollsPage.loadedCount()}}", translate-value-total: "{{pollsPage.pollsCount}}"}
+      .previous-polls-page__load-more
+        %md-button.md-primary{translate: "poll_common.load_more", ng-click: "pollsPage.loadMore()", ng-if: "pollsPage.canLoadMore()"}

@@ -8,10 +8,12 @@ angular.module('loomioApp').factory 'PollRecordsInterface', (BaseRecordsInterfac
         params: options
 
     fetchClosedByGroup: (groupKey, options = {}) ->
-      @search(_.merge(options, {group_key: groupKey, status: 'inactive'})
+      @search _.merge(options, {group_key: groupKey, status: 'inactive'})
 
     search: (options = {}) ->
       @fetch
         path: 'search'
-        params:
-          filters: options
+        params: options
+
+    searchResultsCount: ->
+      @fetch path: 'search_results_count'
