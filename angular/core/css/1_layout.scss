@@ -25,8 +25,7 @@ body {
 
 md-dialog {
   min-width: $tiny-max-px;
-  // max-height: 90%;
-  // background-color: $modal-background-color;
+  max-height: 90%;
 }
 
 .lmo-sidebar-and-main-container {
