@@ -1,0 +1,5 @@
+.poll-common-form-actions {
+  @include displayFlex;
+  justify-content: flex-end;
+  align-items: center;
+}

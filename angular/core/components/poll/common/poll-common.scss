@@ -36,10 +36,12 @@
   margin-top: 43px;
 }
 
-.poll-common-form__actions {
-  @include displayFlex;
-  justify-content: flex-end;
-  align-items: center;
+.poll-common-form__list-item{
+  padding: 0 2px !important;
+}
+
+.poll-common-attachment-form .attachment-form {
+  float: right;
 }
 
 .poll-common-checkbox-option {
@@ -48,8 +50,4 @@
 }
 .poll-common-checkbox-option__text{
   flex-grow: 1
-}
-
-.poll-common__actions {
-  justify-content: space-between;
 }

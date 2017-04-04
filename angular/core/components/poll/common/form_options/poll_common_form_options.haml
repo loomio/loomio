@@ -1,0 +1,14 @@
+%md-block.poll-common-form-options
+  %label.poll-common-form__options-label.md-caption{translate: "poll_common_form.options"}
+  %md-list.md-block.poll-common-form__options
+    %validation_errors{subject: "poll", field: "pollOptions"}
+    %md-list-item.poll-common-form__list-item{ng-repeat: "name in poll.pollOptionNames track by $index"}
+      %span.poll-poll-form__option-text {{name}}
+      %md-button.poll-poll-form__option-button{ng-click: "removeOption(name)", aria-label: "{{ 'poll_poll_form.remove_option' | translate }}"}
+        %i.material-icons.poll-poll-form__option-icon clear
+    %md-list-item.poll-common-form__add-option{flex: "true", layout: "row"}
+      %md-input-container.poll-poll-form__add-option-field{md-no-float: "true"}
+        %input.poll-poll-form__add-option-input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
+      %div
+        %md-button.poll-poll-form__option-button{ng-click: "addOption()", aria-label: "{{ 'poll_poll_form.add_option_placeholder' | translate }}"}
+          %i.material-icons.poll-poll-form__option-icon add
