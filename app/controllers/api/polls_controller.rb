@@ -36,10 +36,10 @@ class API::PollsController < API::RestfulController
   end
 
   def default_scope
-    super.merge my_stances_cache: MyStancesCache.new(participant: current_participant, polls: collection || Array(resource))
+    super.merge(my_stances_cache: Caches::Stance.new(user: current_participant, parents: resources_to_serialize))
   end
 
   def accessible_records
-    Queries::VisiblePolls.new(user: current_user).order(created_at: :desc)
+    Queries::VisiblePolls.new(user: current_user).joins(:discussion).order(created_at: :desc)
   end
 end

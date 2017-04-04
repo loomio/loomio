@@ -5,11 +5,7 @@ angular.module('loomioApp').factory 'DraftModel', (BaseModel, AppConfig) ->
     @uniqueIndices: ['id']
     @serializableAttributes: AppConfig.permittedParams.draft
 
-    afterConstruction: ->
-      draftPath = => "#{@remote.apiPrefix}/#{@constructor.plural}/#{@draftableType.toLowerCase()}/#{@draftableId}"
-      @remote.collectionPath = @remote.memberPath = draftPath
-
     updateFrom: (model) ->
       payloadField = _.snakeCase(model.constructor.serializationRoot or model.constructor.singular)
       @payload[payloadField] = model.serialize()[payloadField]
-      @save()
+      @remote.post("#{@draftableType.toLowerCase()}/#{@draftableId}", @serialize())

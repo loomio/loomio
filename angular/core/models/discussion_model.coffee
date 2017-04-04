@@ -74,10 +74,16 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       _.filter @polls(), (poll) ->
         poll.isActive()
 
+    hasActivePoll: ->
+      _.any @activePolls()
+
+    hasDecision: ->
+      @hasActiveProposal() or @hasActivePoll()
+
     closedPolls: ->
       _.filter @polls(), (poll) ->
         !poll.isActive()
-    
+
     activePoll: ->
       _.first @activePolls()
 
@@ -95,7 +101,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       !!@description
 
     isImportant: ->
-      @starred or @hasActiveProposal()
+      @starred or @hasDecision()
 
     unreadActivityCount: ->
       @salientItemsCount - @readSalientItemsCount

@@ -51,7 +51,7 @@ describe 'Group Page', ->
 
   describe 'non-member views group', ->
     describe 'logged out user', ->
-      it 'should allow you to join an open group', ->
+      xit 'should allow you to join an open group', ->
         staticPage.ignoreSynchronization ->
           page.loadPath 'view_open_group_as_visitor'
           page.click '.join-group-button__join-group'

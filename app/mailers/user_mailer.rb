@@ -15,7 +15,7 @@ class UserMailer < BaseMailer
                     .last_activity_after(@time_start)
     @groups = @user.groups.order(full_name: :asc)
 
-    @reader_cache = DiscussionReaderCache.new(user: @user, discussions: @discussions)
+    @reader_cache = Caches::DiscussionReader.new(user: @user, parents: @discussions)
 
     unless @discussions.empty? or @user.groups.empty?
       @discussions_by_group = @discussions.group_by(&:group)

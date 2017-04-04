@@ -103,7 +103,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :events, only: :index
-    resources :drafts do
+    resources :drafts, only: [] do
       collection do
         get    '/:draftable_type/:draftable_id', action: :show
         post   '/:draftable_type/:draftable_id', action: :update
