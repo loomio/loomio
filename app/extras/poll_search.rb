@@ -12,11 +12,15 @@ PollSearch = Struct.new(:user) do
     results.order(created_at: :desc)
   end
 
-  def searchable_records
-    @searchable_records ||= Poll.where(id: searchable_ids)
+  def results_count
+    searchable_ids.count
   end
 
   private
+
+  def searchable_records
+    @searchable_records ||= Poll.where(id: searchable_ids)
+  end
 
   # TODO: combine this into a single SQL query, rather than 3 separate plucks
   def searchable_ids

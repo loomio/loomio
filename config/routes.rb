@@ -140,6 +140,7 @@ Loomio::Application.routes.draw do
     resources :polls,       only: [:show, :index, :create, :update] do
       post :close, on: :member
       get  :search, on: :collection
+      get  :search_results_count, on: :collection
     end
 
     resources :visitors,    only: [:index, :create, :update, :destroy] do
