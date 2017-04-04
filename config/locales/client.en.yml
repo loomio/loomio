@@ -1,7 +1,7 @@
 en:
   poll_types:
     proposal: Proposal
-    count: Count
+    count: Check
     poll: Poll
     dot_vote: Dot Vote
     meeting: Meeting
@@ -1347,7 +1347,7 @@ en:
     participant_email: Email address
     share_poll: Share poll
     share_proposal: Share proposal
-    share_count: Share count
+    share_count: Share check
     start_poll: Start a new poll
 
   poll_common_attachment_form:
@@ -1368,12 +1368,12 @@ en:
     helptext: Are you sure you're ready to close this early?
     close_proposal: Close proposal
     close_poll: Close poll
-    close_count: Close count
+    close_count: Close check
     close_dot_vote: Close dot vote
     close_meeting: Close meeting poll
     proposal_closed: Proposal closed
     poll_closed: Poll closed
-    count_closed: Count closed
+    count_closed: Check closed
     dot_vote_closed: Dote vote closed
     meeting_closed: Meeting time poll closed
 
@@ -1404,7 +1404,7 @@ en:
     share_outcome: Share outcome
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
-    count: 'This count has closed. <strong>Share an outcome</strong> to complete the process.'
+    count: 'This check has closed. <strong>Share an outcome</strong> to complete the process.'
     meeting: 'This meeting poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
     dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
 
@@ -1549,11 +1549,11 @@ en:
       poll_closed_by_user: '<strong>{{author}}</strong> closed the proposal: <span>{{title}}</span>'
 
     count:
-      poll_created: '<strong>{{author}}</strong> started a count: <span>{{title}}</span>'
+      poll_created: '<strong>{{author}}</strong> started a check: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
-      poll_edited: '<strong>{{author}}</strong> edited the count: <span>{{title}}</span>'
-      poll_expired: 'Count finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the count: <span>{{title}}</span>'
+      poll_edited: '<strong>{{author}}</strong> edited the check: <span>{{title}}</span>'
+      poll_expired: 'Check finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the check: <span>{{title}}</span>'
 
     dot_vote:
       poll_created: '<strong>{{author}}</strong> started a dot vote: <span>{{title}}</span>'
