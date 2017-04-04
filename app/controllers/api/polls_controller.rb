@@ -17,18 +17,14 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    instantiate_collection { |collection| filter_collection(collection) }
+    self.collection = PollSearch.new(current_user).perform(search_filters)
     respond_with_collection
   end
 
   private
 
-  def filter_collection(collection)
-    collection = collection.where(discussion_id: @group.discussion_ids) if load_and_authorize(:group, optional: true)
-    collection = collection.send(params[:filter])                       if Poll::FILTERS.include?(params[:filter].to_s)
-    collection = collection.where(author: current_user)                 if params[:authored_only]
-    collection = collection.search_for(params[:q])                      if params[:q].present?
-    collection
+  def search_filters
+    Hash(params[:filters]).slice(:group_key, :status, :user, :query)
   end
 
   def default_scope
