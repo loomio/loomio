@@ -222,7 +222,7 @@ en:
   comment_form:
     aria_label: 'Add a comment'
     attachments:
-      add_attachment: 'Attach a file'
+      add_attachment: 'Attach file'
       remove_attachment: 'Remove attachment'
     messages:
       created: 'Comment added'
@@ -1319,17 +1319,15 @@ en:
 
   decision_tools_card:
     title: Facilitation tools
-    purpose: Clear input from everyone. Move the conversation forward. Hear from many people at once. Create shared
-    purpose: Collect individual views to understand the whole.
     proposal_title: Proposal
-    proposal_subtitle: Find consensus
-    count_title: Count
-    count_subtitle: Track who has completed a task
+    proposal_subtitle: Seek collective agreement
+    count_title: Check
+    count_subtitle: Engage people with an offer or request.
     poll_title: Poll
-    poll_subtitle: Measure popularity of different options
+    poll_subtitle: Measure popularity
     dot_vote_title: Dot Vote
-    dot_vote_subtitle: Everyone gets some votes to spend
-    meeting_title: Schedule Meeting
+    dot_vote_subtitle: Allocate resources together
+    meeting_title: Meeting poll
     meeting_subtitle: Find a time to meet
 
   poll_common:
@@ -1383,9 +1381,6 @@ en:
     closing: Closing
     closing_hour: Closing hour
 
-  poll_common_school_link:
-    learn_about: "Learn about:"
-
   poll_card:
     started_by: Started by {{name}}
 
@@ -1424,22 +1419,64 @@ en:
   poll_common_outcome_panel:
     authored_by: 'By {{name}}'
 
-  poll_proposal_form:
-    start_header: Start a proposal
-    edit_header: Edit proposal
-    start_a_proposal: Start a proposal
-    edit_proposal: Edit proposal
-    tip: Proposals are a convergence tool. Use them to bring the discussion to a clear outcome. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
+  poll_common_form:
     title: Title
-    title_placeholder: E.g. Let's go to the moon!
     details: Details
-    details_placeholder: Give enough information so everyone knows what it means to agree or disagree
     options: Options
     closing: Closing
-    start: Start proposal
-    update: Update proposal
-    proposal_created: Proposal created
+    start: Start
+    update: Update
+
+  poll_proposal_form:
+    start_header: Start proposal
+    edit_header: Edit proposal
+    tip: Seek collective agreement. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
+    title_placeholder: E.g. Let's go to the moon!
+    details_placeholder: Give enough information so everyone knows what it means to agree or disagree
+    proposal_created: Proposal started
     proposal_updated: Proposal updated
+
+  poll_poll_form:
+    start_header: Start poll
+    edit_header: Edit poll
+    tip: Measure popularity of options.
+    title_placeholder: E.g. Where do you want to go on holiday?
+    details_placeholder: Provide any clarifying details people might need to answer the question.
+    add_option_placeholder: Add option
+    remove_option: Remove option
+    multiple_choice: Multiple choice
+    multiple_choice_explained: Allow voters to select as many options as they like.
+    poll_created: Poll created
+    poll_updated: Poll updated
+
+  poll_count_form:
+    start_header: Start check
+    edit_header: Edit check
+    tip: Engage people with an offer or request
+    title_placeholder: E.g. Who wants to join the working group?
+    details_placeholder: Explain what committment is involved, or give details about how to participate.
+    count_created: Check started
+    count_updated: Check updated
+
+  poll_dot_vote_form:
+    start_header: Start dot vote
+    edit_header: Edit dot vote
+    tip: Allocate resources collectively
+    title_placeholder: E.g. How should we allocate our budget?
+    details_placeholder: Provide any clarifying details people might need to participate
+    add_option_placeholder: Add option
+    dots_per_person: Dots per person
+    dot_vote_created: Dot vote created
+    dot_vote_updated: Dot vote updated
+
+  poll_meeting_form:
+    start_header: Start meeting poll
+    edit_header: Edit meeting poll
+    tip: Find out when people are available to meet
+    title_placeholder: E.g. When should we have our next meetup?
+    details_placeholder: Provide any clarifying details people might need to participate
+    meeting_created: Meeting poll created
+    meeting_updated: Meeting poll updated
 
   poll_proposal_vote_form:
     default_reason_placeholder: Please explain your reasoning
@@ -1468,21 +1505,6 @@ en:
     'yes': 'Yes'
     'no': 'No'
 
-  poll_count_form:
-    start_header: Start a count
-    edit_header: Edit count
-    new_count: Start a count
-    update_count: Edit count
-    tip: 'A count is like asking: "Can I get a show of hands..". Use it to follow up on tasks or seek participants.'
-    title: Title
-    title_placeholder: E.g. Who wants to join the working group?
-    details: Details
-    details_placeholder: Explain what opting-in involves, or give details about how to participate.
-    start: Start count
-    update: Update count
-    count_created: Count created
-    count_updated: Count updated
-
   poll_count_vote_form:
     reason_label: Message
     reason_placeholder: message (optional)
@@ -1495,61 +1517,15 @@ en:
   poll_meeting_chart_panel:
     total: Total
 
-  poll_poll_form:
-    start_header: Start a poll
-    edit_header: Edit poll
-    tip: Polls can be used to measure support for different options to understand preferences in the group.
-    title: Question
-    title_placeholder: E.g. What's you're favourite colour?
-    details: Details
-    details_placeholder: Provide any clarifying details people might need to answer the question.
-    options: Options
-    add_option_placeholder: Add option
-    remove_option: Remove option
-    closing: Closing
-    start: Start poll
-    update: Update poll
-    multiple_choice: Multiple choice
-    multiple_choice_explained: Voters can choose more than 1 option.
-    poll_created: Poll created
-    poll_updated: Poll updated
 
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
-    stance_created: Your times have been recorded
-    stance_updated: Your times have been updated
+    stance_created: Availability saved
+    stance_created: Availability updated
 
-  poll_dot_vote_form:
-    tip: Dot voting is a form of cumulative voting. Use it to understand preferences with more detail than a single vote.
-    start_header: Start a dot vote
-    edit_header: Edit dot vote
-    title: Title
-    title_placeholder: 'E.g. how should we allocate our resources?'
-    details: Details
-    details_placeholder: Provide any clarifying details people might need to participate
-    options: Options
-    add_option_placeholder: Add option
-    dots_per_person: Dots per person
-    start: Start Dot Vote
-    update: Update Dot Vote
-    dot_vote_created: Dot vote created
-    dot_vote_updated: Dot vote updated
-
-  poll_meeting_form:
-    start_header: Schedule a time
-    tip: Find the time that best suits the group. Provide a list of times to meet and see which ones people can attend <a href='#'>Learn more</a>
-    title: Title
-    title_placeholder: E.g. When should we have our next meetup?
-    details: Details
-    details_placeholder: Provide any clarifying details people might need to participate
-    options: Times
-    start: Schedule a time
-    update: Update schedule
-    meeting_created: Meeting poll created
-    meeting_updated: Meeting poll updated
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
