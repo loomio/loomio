@@ -13,7 +13,10 @@
     %textarea.lmo-primary-form-input.poll-count-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
     %outlet{name: "after-count-form-textarea", model: "poll"}
 
+  .md-input-compensate
+    %poll_common_attachment_form{poll: "poll"}
+
   %poll_common_closing_at_field{poll: "poll"}
-  %poll_common_notify_group{model: "poll"}
-  %poll_common_attachment_form{poll: "poll"}
+  .md-input-compensate
+    %poll_common_notify_group{model: "poll"}
   %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

@@ -5,6 +5,6 @@
       %md-select{ng-model: "option.time", aria-label: "{{ 'poll_meeting_time_field.closing_hour' | translate }}"}
         %md-option{ng-repeat: "time in times track by $index", ng-value: "time", ng-selected: "time == option.time"}
           {{ time }}
-    .poll-meeting-time-field__add.lmo-flex__grow
+    .poll-meeting-time-field__add
       %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "addOption()", aria-label: "{{ 'poll_meeting_form.add_option_placeholder' | translate }}"}
         %i.material-icons.poll-meeting-form__option-icon add
