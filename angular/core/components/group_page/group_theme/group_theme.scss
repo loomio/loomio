@@ -18,7 +18,7 @@
 }
 
 .group-theme__member-actions button{
-  @include fontHelveticaBold;
+  @include fontWeightBold;
   @include fontSmall;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .group-theme__name--compact a {
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   color: white;
 }
 

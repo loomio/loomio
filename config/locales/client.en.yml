@@ -265,7 +265,7 @@ en:
   navbar:
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
-    start_thread: 'Start a new thread'
+    start_thread: 'Start thread'
     notifications: 'Notifications panel'
     search:
       label: 'Search field; search for groups and threads'
@@ -1510,7 +1510,7 @@ en:
 
   poll_count_vote_form:
     reason_label: Message
-    reason_placeholder: message (optional)
+    reason_placeholder: Leave a message if you like
     stance_created: Vote created
     stance_updated: Vote updated
 

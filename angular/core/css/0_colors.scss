@@ -1,0 +1,26 @@
+/* let's only use semantic names for our colours */
+$grey-on-grey:  #666;
+$grey-on-white: #767676;
+$light-grey-on-white: #999999;
+$primary-text-color: #262626;
+$border-color: #dcdcdc;
+$list-hover-color: #E0E0E0;
+$list-hover-transparent-color: rgba(224,224,224,0.8);
+$background-color: #ebebeb;
+$card-background-color: #fff;
+$modal-background-color: #f6f6f6;
+$highlight-red: #D0021B;
+$link-color: #337ab7;
+
+$item-highlight-color: #FFFFE8;
+$progress-bar-color: #176EE3;
+$loomio-orange: #F6A82B;
+
+$agree-color: #00d374;
+$abstain-color: #F6A82B;
+$disagree-color: #F96168;
+$block-color: #CE261B;
+
+.lmo-grey-on-white {
+  color: $grey-on-white;
+}

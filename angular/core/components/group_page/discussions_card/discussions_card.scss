@@ -5,10 +5,12 @@
 .discussions-card__header{
   margin: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
   @include displayFlex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
   -webkit-justify-content: space-between;
   justify-content: space-between;
+}
+
+.discussions-card__placeholder {
+  margin: 0 $cardPaddingSize;
 }
 
 .discussions-card__new-thread-button{

@@ -1,0 +1,47 @@
+@mixin roundedCorners {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+@mixin smallIcon {
+  @include roundedCorners;
+  width: 30px;
+  height: 30px;
+}
+
+@mixin boxTiny {
+  width: 20px;
+  height: 20px;
+}
+
+$boxSmallSize: 30px;
+@mixin boxSmall {
+  width: $boxSmallSize;
+  height: $boxSmallSize;
+}
+
+
+$boxMediumSize: 50px;
+@mixin boxMedium {
+  width: $boxMediumSize;
+  height: $boxMediumSize;
+}
+
+$boxMediumCircularSize: 48px;
+@mixin boxMediumCircular {
+  width: $boxMediumCircularSize;
+  height: $boxMediumCircularSize;
+}
+
+$boxLargeSize: 80px;
+@mixin boxLarge {
+  width: $boxLargeSize;
+  height: $boxLargeSize;
+}
+
+$boxFeaturedSize: 175px;
+@mixin boxFeatured {
+  width: $boxFeaturedSize;
+  height: $boxFeaturedSize;
+}
