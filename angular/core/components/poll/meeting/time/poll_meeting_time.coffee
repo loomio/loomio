@@ -1,20 +1,13 @@
-angular.module('loomioApp').directive 'pollMeetingTime', ->
-  scope: {name: '='}
+angular.module('loomioApp').directive 'pollMeetingTime', (AppConfig) ->
+  scope: {name: '=', zone: '='}
   template: "<span>{{formatDate(name)}}</span>"
   controller: ($scope) ->
-
     $scope.formatDate = (name) ->
       m = moment(name)
-      m.format(formatFor(m))
-
-    formatFor = (m) ->
       if m._f == 'YYYY-MM-DD'
-        if m.year() == moment().year()
-          "D MMMM"
-        else
-          "D MMMM YYYY"
+        m.format("D MMMM#{sameYear(m)}")
       else
-        if m.year() == moment().year()
-          "D MMMM - h:mma"
-        else
-          "D MMMM YYYY - h:mma"
+        m.tz($scope.zone || AppConfig.timeZone).format("D MMMM#{sameYear(m)} - h:mma")
+
+    sameYear = (m) ->
+      if m.year() == moment().year() then "" else " YYYY"

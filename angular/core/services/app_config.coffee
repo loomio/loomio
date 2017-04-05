@@ -6,4 +6,5 @@ angular.module('loomioApp').factory 'AppConfig', ->
 
   configData.pluginConfig = (name) ->
     _.find configData.plugins.installed, (p) -> p.name == name
+  configData.timeZone = jstz.determine().name()
   configData

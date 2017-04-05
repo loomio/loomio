@@ -1,0 +1,5 @@
+%md-input-container.md-block
+  %label{translate: "time_zone_select.time_zone"}
+  %md-select{ng-model: "timeZone", ng-change: "change()", placeholder: "{{'time_zone_select.local' | translate}}", aria-label: "{{ 'time_zone_select.time_zone' | translate }}"}
+    %md-option{ng-repeat: "zone in timeZones track by $index", ng-value: "zone.value"}
+      {{ zone.name }}

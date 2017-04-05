@@ -24,11 +24,7 @@
           %i.material-icons.poll-meeting-form__option-icon clear
       %poll_meeting_time_field{poll: "poll"}
 
-  %md-input-container.md-block
-    %label{translate: "poll_meeting_form.time_zone"}
-  %md-select{ng-model: "poll.customFields.time_zone", placeholder: "{{'poll_meeting_form.local' | translate}}", aria-label: "{{ 'poll_meeting_form.time_zone' | translate }}"}
-      %md-option{ng-repeat: "zone in timeZones track by $index", ng-value: "zone.value"}
-        {{ zone.name }}
+  %time_zone_select
 
   .md-input-compensate
     %poll_common_closing_at_field.md-block.poll-meeting-form__closing-at{poll: "poll"}
