@@ -58,7 +58,7 @@ module AngularHelper
       ].compact,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
-      timeZones:     ActiveSupport::TimeZone.all.map { |zone| { name: zone.to_s, value: zone.name } }
+      timeZones:     ActiveSupport::TimeZone.all.map { |zone| { name: zone.to_s, value: zone.tzinfo.name } }
     }
   end
 

@@ -16,6 +16,7 @@ js:
   - ng-file-upload/dist/angular-file-upload.js
   - ment.io/dist/mentio.js
   - angular-moment/angular-moment.js
+  - moment-timezone/builds/moment-timezone-with-data.js
   - private_pub/app/assets/javascripts/private_pub.js
   - angular-animate/angular-animate.js
   - lokijs/src/lokijs.js

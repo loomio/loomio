@@ -35,10 +35,8 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
           else
             "D MMMM YYYY"
 
-    $scope.timeZones = AppConfig.timeZones
-    currentZone = jstz.determine().name()
-    $scope.poll.customFields.time_zone = _.find _.pluck($scope.timeZones, 'value'), (zone) ->
-      currentZone.match(///#{zone}///i)
+    $scope.$on 'timeZoneSelected', (e, zone) ->
+      $scope.poll.customFields.time_zone = zone
 
     KeyEventService.submitOnEnter($scope)
     KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
