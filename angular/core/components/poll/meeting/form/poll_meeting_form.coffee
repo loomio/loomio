@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'pollMeetingForm', ->
   scope: {poll: '=', back: '=?'}
   templateUrl: 'generated/components/poll/meeting/form/poll_meeting_form.html'
-  controller: ($scope, PollService, AttachmentService, KeyEventService, TranslationService) ->
+  controller: ($scope, AppConfig, PollService, AttachmentService, KeyEventService, TranslationService) ->
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:     'poll_meeting_form.title_placeholder'
       detailsPlaceholder:   'poll_meeting_form.details_placeholder'
@@ -34,6 +34,11 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
             "D MMMM"
           else
             "D MMMM YYYY"
+
+    $scope.timeZones = AppConfig.timeZones
+    currentZone = jstz.determine().name()
+    $scope.poll.customFields.time_zone = _.find _.pluck($scope.timeZones, 'value'), (zone) ->
+      currentZone.match(///#{zone}///i)
 
     KeyEventService.submitOnEnter($scope)
     KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
