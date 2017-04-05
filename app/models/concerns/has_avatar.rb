@@ -1,17 +1,37 @@
-module HasGravatar
+module HasAvatar
   extend ActiveSupport::Concern
+
+  AVATAR_KINDS = %w[initials uploaded gravatar]
+  AVATAR_SIZES = {
+    small:  30,
+    medium: 50,
+    large:  170,
+  }.with_indifferent_access.freeze
 
   included do
     include Gravtastic
     gravtastic rating: :pg, default: :none
+    validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
     before_create :set_default_avatar_kind
   end
 
   def set_default_avatar_kind
     self.avatar_kind = if has_gravatar?
-      "gravatar"
+      :gravatar
     else
-      "initials"
+      :initials
+    end
+  end
+
+  def uploaded_avatar(size)
+    # NOOP: override for users who can upload avatars
+  end
+
+  def avatar_url(size = :medium)
+    if avatar_kind.to_sym == :gravatar
+      gravatar_url(size: AVATAR_SIZES[size])
+    else
+      uploaded_avatar.url(AVATAR_SIZES[size])
     end
   end
 
