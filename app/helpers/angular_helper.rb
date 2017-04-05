@@ -57,8 +57,8 @@ module AngularHelper
         ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_ID'])
       ].compact,
       pollTemplates: Poll::TEMPLATES,
-      pollColors: Poll::COLORS,
-      thirdPartyCommunities: Communities::Base::THIRD_PARTY_TYPES
+      pollColors:    Poll::COLORS,
+      timeZones:     ActiveSupport::TimeZone.all.map { |zone| { name: zone.to_s, value: zone.name } }
     }
   end
 
