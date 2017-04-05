@@ -1,3 +1,12 @@
+@mixin cardMinorAction {
+  @include fontWeightLight;
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
 .lmo-card {
   @include card;
 }
@@ -23,17 +32,18 @@
 }
 
 .lmo-card-heading{
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   @include fontSmall;
   text-transform: uppercase;
   color: $grey-on-white;
   margin-bottom: 10px;
+  margin-top: 0;
   letter-spacing: .3px;
 }
 
 .lmo-card-subheading{
   @include fontSmall;
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   text-transform: uppercase;
   color: $grey-on-white;
   margin-top: 1.5em;

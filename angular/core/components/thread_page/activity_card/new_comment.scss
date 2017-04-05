@@ -1,5 +1,5 @@
 .new-comment__author-name {
-  @include fontHelveticaBold;
+  @include fontWeightBold;
   a { color: $primary-text-color; }
 }
 

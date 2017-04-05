@@ -135,18 +135,18 @@
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
-    @include fontHelveticaBold;
+    @include fontWeightBold;
     margin: 20px 0 10px 0;
   }
   h2 {
     @include fontMedLarge;
-    @include fontHelveticaBold;
+    @include fontWeightBold;
   }
   h3 {
-    @include fontHelveticaBold;
+    @include fontWeightBold;
   }
   h4 {
-    @include fontHelveticaBold;
+    @include fontWeightBold;
   }
   ul{
     padding: 0 0 10px 24px;

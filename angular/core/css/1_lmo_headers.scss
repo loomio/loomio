@@ -2,7 +2,7 @@
   @include lmoH1;
 }
 .lmo-h1-medium{
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   @include fontGrande;
 }
 
@@ -11,12 +11,12 @@
 }
 
 .lmo-h2 {
-  @include fontHelveticaBold;
+  @include fontWeightBold;
   @include fontLarge;
   margin: 8px 0;
 }
 .lmo-h3{
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   @include fontSmall;
   color: $grey-on-white;
   font-weight: bold;
@@ -24,7 +24,7 @@
   text-transform: uppercase;
 }
 .lmo-h4{
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   @include fontSmall;
   color: $grey-on-white;
   margin-top: 22px;

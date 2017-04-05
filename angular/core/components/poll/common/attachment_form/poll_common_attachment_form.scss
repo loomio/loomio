@@ -1,8 +1,5 @@
-@mixin fake-md-input {
-  padding: 0px 2px;
-  margin-bottom: 24px;
-}
-
 .poll-common-attachment-form {
-  @include fake-md-input;
+}
+.poll-common-attachment-form__attachments {
+  margin-bottom: 24px;
 }

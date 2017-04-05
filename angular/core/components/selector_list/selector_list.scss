@@ -11,7 +11,7 @@
   @include fontTiny;
 }
 .selector-list-header {
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   @include fontSmall;
   text-transform: uppercase;
   color: $grey-on-white;
@@ -66,19 +66,16 @@
 .selector-list-item-proposal {
   margin: 5px 0;
   .time-left {
-    @include fontHelvetica;
     @include fontSmall;
   }
 }
 .selector-list-item-discussion-title {
   color: $primary-text-color;
-  @include fontHelvetica;
   @include fontMedium;
   margin-bottom: 5px;
 }
 a .selector-list-item-proposal-details {
   color: $grey-on-white;
-  @include fontHelvetica;
   @include fontSmall;
   margin-bottom: 5px;
   line-height: 16px;
@@ -96,6 +93,5 @@ a .selector-list-item-proposal-details {
 
 .selector-list-item-thread-group-name{
   color: $grey-on-white;
-  @include fontHelvetica;
   @include fontSmall;
 }

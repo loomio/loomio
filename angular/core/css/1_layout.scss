@@ -1,5 +1,13 @@
+@mixin lmoRow {
+  @media (min-width: $tiny-max-px){
+    /* outer padding on all but tiny screens */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 body {
-  position: static;
+  // position: static;
   z-index: -2 !important;
 }
 
