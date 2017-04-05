@@ -3,7 +3,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
 
   @pollIds = []
   from = 0
-  per  = 1
+  per  = 10
 
   Records.polls.searchResultsCount().then (response) =>
     @pollsCount = response
