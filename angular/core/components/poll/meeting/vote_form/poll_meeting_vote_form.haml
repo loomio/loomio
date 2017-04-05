@@ -1,5 +1,5 @@
 %form.poll-poll-vote-form
-  %time_zone_select
+  %time_zone_select{zone: "stance.poll().customFields.time_zone"}
   %md-list.poll-poll-vote-form__options
     %md-list-item{ng-repeat: "option in stance.poll().pollOptions()"}
       %p.poll-poll-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
