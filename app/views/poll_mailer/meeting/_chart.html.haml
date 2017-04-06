@@ -3,7 +3,7 @@
     %tr
       %td
       - @info.poll.poll_options.each do |option|
-        %td.poll-mailer-meeting__cell= format_poll_option_name(option, @info.recipient.time_zone || @info.poll.custom_fields.time_zone)
+        %td.poll-mailer-meeting__cell= format_poll_option_name(option, @info.time_zone)
   %tbody
     %tr
       %td= t(:"poll_mailer.meeting.total")
