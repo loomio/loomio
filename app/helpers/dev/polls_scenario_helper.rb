@@ -3,7 +3,7 @@ module Dev::PollsScenarioHelper
   def poll_created_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor = discussion.group.admins.first
-    user  = saved(fake_user)
+    user  = saved(fake_user(time_zone: "America/New_York"))
     discussion.group.add_member! user
     poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
     event = PollService.create(poll: poll, actor: actor)
