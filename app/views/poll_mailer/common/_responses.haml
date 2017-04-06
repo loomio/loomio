@@ -9,7 +9,7 @@
         - if @info.poll.translate_option_name
           %span= t(:"poll_proposal_options.#{poll_option.name}")
         - else
-          %span= format_poll_option_name(poll_option, @info.recipient.time_zone)
+          %span= format_poll_option_name(poll_option, @info.time_zone)
       %table
         - stance_choices.each do |stance_choice|
           %tr
