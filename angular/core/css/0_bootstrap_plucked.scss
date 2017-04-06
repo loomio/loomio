@@ -1,3 +1,24 @@
+* {
+  @include box-sizing(border-box);
+}
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus {
+    @include tab-focus;
+  }
+}
+
+
 .sr-only {
   position: absolute;
   width: 1px;

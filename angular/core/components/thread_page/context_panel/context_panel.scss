@@ -2,6 +2,9 @@
   @include card;
   .lmo-card-heading { margin-top: 7px; }
 }
+.context-panel__top {
+  @include displayFlex;
+}
 
 .context-panel__thread-actions {
   margin-right: -10px;

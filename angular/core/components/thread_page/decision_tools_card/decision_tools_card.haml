@@ -1,5 +1,5 @@
 .decision-tools-card.lmo-card.lmo-no-print
-  %h2.lmo-h2.decision-tools-card__title{translate: "decision_tools_card.title"}
+  %h2.lmo-card-heading.decision-tools-card__title{translate: "decision_tools_card.title"}
   %md-list.decision-tools-card__poll-types
     %md-list-item.decision-tools-card__poll-type{ng-click: "startPoll(pollType)", ng-repeat: "pollType in pollTypes() track by $index"}
       %i.material-icons.decision-tools-card__icon {{fieldFromTemplate(pollType, 'material_icon')}}

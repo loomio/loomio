@@ -10,6 +10,10 @@
   @include displayFlex;
 }
 
+.lmo-flex__flex-end {
+  justify-content: flex-end;
+}
+
 .lmo-flex__space-between {
   justify-content: space-between;
 }

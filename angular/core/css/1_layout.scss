@@ -1,8 +1,8 @@
 @mixin lmoRow {
   @media (min-width: $tiny-max-px){
     /* outer padding on all but tiny screens */
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -58,6 +58,7 @@ md-dialog {
 }
 
 .modal-body {
+  @include md-body-1;
   max-height: calc(90vh - 125px);
   overflow: auto;
   flex-shrink: 0; // fix for safari and maybe ie11 squishing the modal-body

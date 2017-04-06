@@ -11,6 +11,7 @@ $max-container-size: 1120px;
 $over-intercom: 2147483001; // On top of Intercom's arbitrarily high widget
 
 @mixin card{
+  @include md-body-1;
   @include cardNoPadding;
   @include cardPadding;
 }

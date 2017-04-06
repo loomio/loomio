@@ -29,6 +29,10 @@
         %md_button.sidebar__list-item-button.sidebar__list-item-button--muted{href: "", lmo-href: "/dashboard/show_muted", ng-click: "isActive()", aria-label: "{{ 'sidebar.muted' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
           %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
           %span{translate: "sidebar.muted"}
+      %md_list_item{ng-show: "hasAnyGroups()"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--start-thread{href: "", ng-click: "startThread()", aria-label: "{{ 'sidebar.start_thread' | translate }}"}
+          %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-plus
+          %span{translate: "sidebar.start_thread"}
     .sidebar__divider
     %md_list_item.sidebar__list-subhead{translate: "sidebar.my_groups"}
     %md_list.sidebar__list.sidebar__groups{ng-class: "{'sidebar__no-groups': groups().length < 1}", aria-label: "{{ 'sidebar.aria_labels.groups_list' | translate }}"}
