@@ -375,6 +375,7 @@ en:
       create_outcome: Share outcome
       your_response: Your response
       please_respond: Please respond
+      time_zone: (Times displayed in %{zone})
 
     proposal:
       subject:

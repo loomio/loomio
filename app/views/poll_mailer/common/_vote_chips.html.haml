@@ -3,6 +3,8 @@
   = render 'poll_mailer/common/your_response'
 - else
   %h3= t(:"poll_mailer.common.please_respond")
+  - if @info.poll_time_zone.present?
+    = t(:"poll_mailer.common.time_zone", zone: @info.poll_time_zone)
   %table
     - @info.poll.poll_options.each do |option|
       %tr

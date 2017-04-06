@@ -5,7 +5,7 @@ module Dev::PollsScenarioHelper
     actor = discussion.group.admins.first
     user  = saved(fake_user)
     discussion.group.add_member! user
-    poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type, attachments: [FactoryGirl.create(:attachment)])
+    poll = fake_poll(discussion: discussion, make_announcement: true, poll_type: poll_type)
     event = PollService.create(poll: poll, actor: actor)
 
     {discussion: discussion,

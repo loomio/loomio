@@ -3,7 +3,7 @@
     %thead
       %tr
         %td
-          %time_zone_select{zone: "poll.customFields.time_zone"}
+          %time_zone_select
         %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() track by option.id"}
           %poll_meeting_time{name: "option.name", zone: "zone"}
     %tbody
