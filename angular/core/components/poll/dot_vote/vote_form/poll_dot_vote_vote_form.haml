@@ -1,5 +1,5 @@
 %form.poll-dot-vote-vote-form
-  %md-list.poll-dot-vote-vote-form__options
+  %md-list.poll-common-vote-form__options
     %md-list-item.poll-dot-vote-vote-form__option{ng-repeat: "choice in stanceChoices"}
       %md-input-container.poll-dot-vote-vote-form__input-container
         %p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': optionFor(choice).color}"} {{ optionFor(choice).name }}
