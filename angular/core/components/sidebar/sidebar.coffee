@@ -3,9 +3,21 @@ angular.module('loomioApp').directive 'sidebar', ->
   restrict: 'E'
   templateUrl: 'generated/components/sidebar/sidebar.html'
   replace: true
-  controller: ($scope, Session, $rootScope, $window, RestfulClient, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdMedia, $mdSidenav, LmoUrlService, Records, ModalService, GroupForm) ->
+  controller: ($scope, Session, $rootScope, $window, RestfulClient, ThreadQueryService, UserHelpService, AppConfig, IntercomService, $mdMedia, $mdSidenav, LmoUrlService, Records, ModalService, GroupForm, DiscussionForm, AbilityService) ->
     $scope.currentState = ""
     $scope.showSidebar = true
+
+    $scope.hasAnyGroups = ->
+      Session.user().hasAnyGroups()
+
+    availableGroups = ->
+      _.filter Session.user().groups(), (group) ->
+        AbilityService.canAddMembers(group)
+
+    $scope.currentGroup = ->
+      return _.first(availableGroups()) if availableGroups().length == 1
+      _.find(availableGroups(), (g) -> g.id == Session.currentGroupId()) || Records.groups.build()
+
 
     $scope.$on 'toggleSidebar', (event, show) ->
       if !_.isUndefined(show)
@@ -53,3 +65,6 @@ angular.module('loomioApp').directive 'sidebar', ->
 
     $scope.startGroup = ->
       ModalService.open GroupForm, group: -> Records.groups.build()
+
+    $scope.startThread = ->
+      ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: $scope.currentGroup().id)

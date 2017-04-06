@@ -14,11 +14,11 @@
 }
 
 .discussions-card__new-thread-button{
-  @include lmoBtnFeatured;
-  @include lmoBtnIcon;
-  @include fontSmall;
+  position: relative;
+  top: -7px;
+  right: -9px;
   float: right;
-  margin-bottom: $cardPaddingSize;
+  // margin-bottom: $cardPaddingSize;
 }
 
 .discussions-card__list--empty {

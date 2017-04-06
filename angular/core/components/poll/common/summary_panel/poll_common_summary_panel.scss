@@ -1,6 +1,5 @@
 .poll-common-summary-panel__title {
-  @include fontLarge;
-  @include fontWeightBold;
+  @include md-title;
   margin-bottom: 0.4em;
 }
 

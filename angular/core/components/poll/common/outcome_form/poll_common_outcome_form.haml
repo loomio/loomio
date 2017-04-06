@@ -1,18 +1,20 @@
-%form.poll-common-outcome-form
+%md-dialog.poll-common-outcome-form
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header.poll-common-modal-header
-    %i.material-icons thumbs_up_down
-    %h1.lmo-h1{ng-if: "outcome.isNew()", translate: "poll_common_outcome_form.new_title"}
-    %h1.lmo-h1{ng-if: "!outcome.isNew()", translate: "poll_common_outcome_form.update_title"}
-    %modal_header_cancel_button
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.material-icons thumbs_up_down
+      %h1.lmo-h1{ng-if: "outcome.isNew()", translate: "poll_common_outcome_form.new_title"}
+      %h1.lmo-h1{ng-if: "!outcome.isNew()", translate: "poll_common_outcome_form.update_title"}
+      %material_modal_header_cancel_button
 
-  .modal-body
-    %md-input-container.md-block
-      %label{translate: "poll_common.statement"}
-      %textarea.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
-      %validation_errors{subject: "outcome", field: "statement"}
+  %md-dialog-content
+    .md-dialog-content
+      %md-input-container.md-block
+        %label{translate: "poll_common.statement"}
+        %textarea.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
+        %validation_errors{subject: "outcome", field: "statement"}
 
-    %poll_common_notify_group{model: "outcome"}
+      %poll_common_notify_group{model: "outcome"}
 
-  .modal-footer
-    %md-button.md-primary.md-raised.poll-common-outcome-form__submit{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}
+      %md-dialog-actions
+        %md-button.md-primary.poll-common-outcome-form__submit{ng-click: "submit()", translate: "poll_common_outcome_form.submit", aria-label: "{{poll_common_outcome_form.submit | translate}}"}

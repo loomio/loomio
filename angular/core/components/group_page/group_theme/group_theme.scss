@@ -18,8 +18,7 @@
 }
 
 .group-theme__member-actions button{
-  @include fontWeightBold;
-  @include fontSmall;
+  @include md-body-2;
 }
 
 .group-theme__header--compact {

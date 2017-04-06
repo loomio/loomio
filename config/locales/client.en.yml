@@ -254,6 +254,7 @@ en:
     help: 'Help'
     contact: 'Contact Loomio'
     sign_out: 'Sign out'
+    start_thread: Start thread
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -520,7 +521,7 @@ en:
     pending_invitations: '+ ({{count}}) pending'
     subgroups: 'Subgroups'
     subgroups_placeholder: 'Subgroups let you break the group up into different teams.'
-    invite_people: 'Invite people'
+    invite_people: 'Invite'
     visibility_label: 'Visibility'
     options_label: 'Options'
     options:

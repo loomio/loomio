@@ -7,8 +7,7 @@
 }
 
 .proposal-expanded__proposal-name{
-  @include fontLarge;
-  @include fontWeightBold;
+  @include md-title;
   margin-bottom: 0.4em;
 }
 

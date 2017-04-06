@@ -23,11 +23,16 @@
 }
 
 .comment-form__privacy-notice {
-  font-size: 13px;
+  @include md-caption;
   color: #767676;
 }
 
 .thread-comment-form-actions {
   clear: both;
   padding: 10px 0;
+}
+.comment-form__submit-button {
+  float: right;
+  position: relative;
+  right: -6px;
 }
