@@ -5,10 +5,14 @@
 .poll-dot-vote-vote-form__input-container {
   @include displayFlex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
+  min-height: 48px;
 }
 
 .poll-dot-vote-vote-form__dot-input {
   width: 50px !important;
   text-align: right;
+  position: relative;
+  top: 4px;
 }

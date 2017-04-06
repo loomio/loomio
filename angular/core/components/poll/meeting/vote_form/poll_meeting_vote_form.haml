@@ -1,9 +1,10 @@
 %form.poll-poll-vote-form
+  %h3.lmo-card-subheading{translate: "poll_common.your_response"}
   %md-list.poll-common-vote-form__options
-    %md-list-item{ng-repeat: "option in stance.poll().pollOptions()"}
-      %p.poll-poll-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
+    %md-list-item.poll-common-vote-form__option{ng-repeat: "option in stance.poll().pollOptions()"}
+      %p.poll-common-vote-form__option-name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
         %poll_meeting_time{name: "option.name"}
-      %md-checkbox.md-block.poll-poll-vote-form__checkbox{ng-model: "pollOptionIdsChecked[option.id]"}
+      %md-checkbox.poll-common-vote-form__checkbox{ng-model: "pollOptionIdsChecked[option.id]"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
 
   .poll-common-vote-form__reason
@@ -15,4 +16,5 @@
   %poll_common_participant_form{stance: "stance"}
 
   .poll-common-form-actions
+    %show_results_button{ng-if: "stance.isNew()"}
     %md-button.md-primary.md-raised{ng-click: "submit()", translate: "poll_common.vote", aria-label: "{{ 'poll_meeting_vote_form.vote' | translate }}"}

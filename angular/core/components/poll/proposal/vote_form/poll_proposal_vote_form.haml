@@ -16,4 +16,5 @@
     %poll_common_participant_form{stance: "stance"}
 
     .poll-common-form-actions
+      %show_results_button{ng-if: "stance.isNew()"}
       %md-button.md-primary.md-raised.poll-proposal-vote-form__submit{ng-click: "submit()", translate: "poll_common.vote", aria-label: "{{ 'poll_proposal_vote_form.vote' | translate }}"}
