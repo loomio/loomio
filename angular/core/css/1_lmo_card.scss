@@ -10,6 +10,22 @@
   @include card;
 }
 
+.lmo-card-pad-top {
+  padding-top: $cardPaddingSize;
+}
+
+.lmo-card-pad-sides {
+  padding: 0 $cardPaddingSize;
+}
+
+.lmo-card-pad-bottom {
+  padding-bottom: $cardPaddingSize;
+}
+
+.lmo-card-pad-top-n-sides {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
+}
+
 .lmo-card-minor-action{
   @include cardMinorAction;
 }
