@@ -5,6 +5,8 @@ en:
     poll: Poll
     dot_vote: Dot Vote
     meeting: Meeting
+  timezones:
+    local: Local time ({{value}})
   common:
     confirm_discard_changes: Discard your changes?
     time:
