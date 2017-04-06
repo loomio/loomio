@@ -1,4 +1,4 @@
 .poll-common-form-actions {
   @include displayFlex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
