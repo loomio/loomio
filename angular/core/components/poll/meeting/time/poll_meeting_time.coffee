@@ -1,13 +1,6 @@
-angular.module('loomioApp').directive 'pollMeetingTime', (AppConfig) ->
+angular.module('loomioApp').directive 'pollMeetingTime', (TimeService) ->
   scope: {name: '=', zone: '='}
-  template: "<span>{{formatDate(name)}}</span>"
+  template: "<span>{{displayDate(date, zone)}}</span>"
   controller: ($scope) ->
-    $scope.formatDate = (name) ->
-      m = moment(name)
-      if m._f == 'YYYY-MM-DD'
-        m.format("D MMMM#{sameYear(m)}")
-      else
-        m.tz($scope.zone || AppConfig.timeZone).format("D MMMM#{sameYear(m)} - h:mma")
-
-    sameYear = (m) ->
-      if m.year() == moment().year() then "" else " YYYY"
+    $scope.date = moment($scope.name)
+    $scope.displayDate = TimeService.displayDate
