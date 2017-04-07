@@ -1,4 +1,4 @@
-%md-input-container.md-block
+%md-input-container
   %md-select{ng-model: "zone", ng-change: "change()", aria-label: "{{ 'time_zone_select.time_zone' | translate }}"}
     %md-option{ng-repeat: "z in zones track by $index", ng-value: "z.value"}
       {{ z.name }}
