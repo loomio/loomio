@@ -9,11 +9,16 @@ angular.module('loomioApp').factory 'Session', ($rootScope, $translate, $window,
       Records.polls.remote.defaultParams   = defaultParams
 
     return unless AppConfig.currentUserId?
+    user = @user()
 
-    $translate.use(@user().locale)
-    $rootScope.$broadcast 'loggedIn', @user()
+    $translate.use user.locale
+    $rootScope.$broadcast 'loggedIn', user
 
-    @user()
+    if user.timeZone != AppConfig.timeZone
+      user.timeZone = AppConfig.timeZone
+      Records.users.updateProfile(user)
+
+    user
 
   logout: ->
     AppConfig.loggingOut = true
