@@ -7,5 +7,5 @@
         %span{translate: "poll_thread_item.{{stance.poll().pollType}}.{{event.kind}}", translate-values: "{author: stance.participant().name}"}>
         %poll_common_stance_choice{ng-repeat: "choice in stance.stanceChoices()", ng-if: "choice.score > 0", stance_choice: "choice"}
         &nbsp;
-      %p {{ stance.reason }}
+      %p.lmo-markdown-wrapper{marked: "stance.reason"}
       %timeago.timeago--inline{timestamp: "event.createdAt"}
