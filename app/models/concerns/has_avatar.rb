@@ -31,7 +31,7 @@ module HasAvatar
     if avatar_kind.to_sym == :gravatar
       gravatar_url(size: AVATAR_SIZES[size])
     else
-      uploaded_avatar.url(AVATAR_SIZES[size])
+      uploaded_avatar.url(size)
     end
   end
 
