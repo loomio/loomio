@@ -25,7 +25,6 @@ js:
   - angular-gravatar/build/md5.js
   - angular-scroll/angular-scroll.js
   - svg.js/dist/svg.js
-  - jstimezonedetect/dist/jstz.js
   - angular_record_store/dist/standalone.js
   - angular-elastic/elastic.js
   - checklist-model/checklist-model.js
