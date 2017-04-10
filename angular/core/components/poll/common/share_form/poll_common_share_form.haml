@@ -1,0 +1,64 @@
+.poll-common-share-form
+  %section
+    .lmo-flex
+      %i.material-icons.poll-common-share-form__icon link
+      %h3.md-subhead{translate: "poll_common_share_form.share_a_link"}
+
+    %md-list.md-block
+      %md-list-item.lmo-flex
+        %p{translate: "poll_common_share_form.anyone_can_participate"}
+        %md-checkbox{ng-model: "poll.anyoneCanParticipate", ng-change: "setAnyoneCanParticipate()"}
+      %md-list-item{ng-if: "poll.anyoneCanParticipate"}
+        %md-input-container.lmo-flex.poll-common-share-form__shareable-link{ng-if: "poll.anyoneCanParticipate"}
+          %input.lmo-primary-form-input.lmo-flex__grow{disabled: "true", type: "text", ng-model: "shareableLink"}
+          %md-button.md-primary.md-raised.poll-common-share-form__copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
+            %span{translate: "common.copy"}
+      %md-list-item
+        %p.md-caption{translate: "poll_common_share_form.poll_is_shareable", ng-if: "poll.anyoneCanParticipate"}
+
+  %hr{ng-if: "hasAvailableGroups()"}
+
+  %section{ng-if: "hasAvailableGroups()"}
+    .lmo-flex
+      %i.material-icons.poll-common-share-form__icon group
+      %h3.md-subhead{translate: "poll_common_share_form.loomio_group"}
+
+    %md-list
+      %md-list-item.poll-common-share-form__loomio-group
+        %md-input-container
+          %md-select.md-no-underline{ng-model: "poll.groupId", ng-change: "setGroup()", aria-label: "{{ 'poll_common_share_form.loomio_group_select' | translate }}"}
+            %md-option{ng-repeat: "group in groupOptions()", ng-value: "group.id"}
+              {{group.fullName}}
+        %p.md-caption{ng-if: "poll.groupId", translate: "poll_common_share_form.has_loomio_group"}
+        %p.md-caption{ng-if: "!poll.groupId", translate: "poll_common_share_form.no_loomio_group"}
+
+  %section
+    .lmo-flex
+      %i.material-icons.poll-common-share-form__icon mail
+      %h3.md-subhead{translate: "poll_common_share_form.invite_guests"}
+
+    %p.md-caption{translate: "poll_common_share_form.enter_emails"}
+    %md-list.md-block
+      %md-list-item.poll-common-share-form__emails{layout: "column"}
+        .poll-common-share-form__visitor.lmo-flex{ng-repeat: "visitor in visitors() | orderBy: 'updatedAt'"}
+          .poll-common-share-form__email.lmo-flex__grow {{visitor.email}}
+          %md-button.lmo-inline-action{ng-click: "remind(visitor)", ng-if: "!visitor.reminded && !visitor.processing"}
+            %i.material-icons redo
+          %loading{ng-if: "visitor.processing"}
+          %span.poll-common-share-form__reminded{ng-if: "visitor.reminded", translate: "poll_common_share_form.reminded"}
+          %md-button.lmo-inline-action{ng-click: "revoke(visitor)"}
+            %i.material-icons clear
+
+      %md-list-item.poll-common-share-form__add-option{flex: "true", layout: "row"}
+        %md-input-container.lmo-flex__grow{md-no-float: "true"}
+          %input.poll-common-share-form__add-option-input{type: "text", ng-disabled: "newVisitor.processing", placeholder: "{{ 'poll_common_share_form.enter_email' | translate }}", ng-model: "newVisitor.email"}
+        %div
+          %loading.lmo-inline-action{ng-if: "newVisitor.processing"}
+          %md-button.poll-common-share-form__option-button.lmo-inline-action{ng-if: "!newVisitor.processing", ng-click: "invite()", aria-label: "{{ 'poll_common_share_form.add_email_placeholder' | translate }}"}
+            %i.material-icons.poll-common-share-form__option-icon add
+      .clearfix
+      .lmo-validation-error {{ emailValidationError }}
+
+  .md-actions
+    %md-button.md-primary.md-raised.poll-common-share-form__done{ng-if: "back", ng-click: "back()"}
+      %span{translate: "common.action.done"}

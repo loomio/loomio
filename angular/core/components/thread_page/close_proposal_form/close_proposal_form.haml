@@ -1,12 +1,12 @@
-%form.close-proposal-form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
-  .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "close_proposal_form.close_proposal"}
-
-  .modal-body
-    %span{translate: "close_proposal_form.helptext"}
-
-  .modal-footer
-    %button.lmo-btn--submit.close-proposal-form__submit-btn{type: "submit", translate: "close_proposal_form.close_proposal_submit"}
-    %button.lmo-btn--cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+%md-dialog.close-proposal-form
+  %form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
+    .lmo-disabled-form{ng-show: "isDisabled"}
+    %md-toolbar
+      .md-toolbar-tools.lmo-flex__space-between
+        %h1.lmo-h1{translate: "close_proposal_form.close_proposal"}
+        %material_modal_header_cancel_button
+    .md-dialog-content.md-body-1
+      %p{translate: "close_proposal_form.helptext"}
+      .lmo-md-actions
+        %md-button{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+        %md-button.md-primary.md-raised.close-proposal-form__submit-btn{type: "submit", translate: "close_proposal_form.close_proposal_submit"}

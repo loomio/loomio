@@ -3,7 +3,7 @@ en:
     proposal: Proposal
     count: Check
     poll: Poll
-    dot_vote: Dot Vote
+    dot_vote: Dot vote
     meeting: Meeting
   timezones:
     local: Local time ({{value}})
@@ -66,6 +66,8 @@ en:
       share: Share
       ok: Ok!
       retry: Retry
+      done: Done
+      start: Start
     formatting_help:
       label: 'Formatting help'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -86,8 +88,8 @@ en:
   proposal_outcome_panel:
     heading: Outcome
     set_outcome_hint: Use this space to let everyone know the outcome of the proposal.
-    set_outcome_btn: Set proposal outcome
-    edit_outcome_link: Edit proposal outcome
+    set_outcome_btn: Set outcome
+    edit_outcome_link: Edit outcome
 
   proposal_outcome_form:
     aria_label: Proposal outcome form
@@ -235,7 +237,7 @@ en:
     delete_comment: 'Delete comment'
     cancel_reply: 'Cancel Reply'
     confirm_delete_message: 'Are you sure you want to delete this comment?'
-    confirm_delete: 'Yes, I am sure'
+    confirm_delete: 'Delete comment'
     in_reply_to: "In reply to <strong>{{name}}</strong>:"
     submit_button:
       label: 'Post'
@@ -258,7 +260,7 @@ en:
     help: 'Help'
     contact: 'Contact Loomio'
     sign_out: 'Sign out'
-    start_thread: Start thread
+    start_thread: New thread
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -268,7 +270,7 @@ en:
   navbar:
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
-    start_thread: 'Start thread'
+    start_thread: 'New thread'
     notifications: 'Notifications panel'
     search:
       label: 'Search field; search for groups and threads'
@@ -365,7 +367,7 @@ en:
     aria_label: 'Close proposal'
     close_proposal: 'Close proposal'
     helptext: 'Are you sure you want to close this proposal now?'
-    close_proposal_submit: 'Yes, close proposal'
+    close_proposal_submit: 'Close proposal'
     messages:
       success: Proposal closed
 
@@ -405,7 +407,6 @@ en:
       updated: 'Thread updated'
     new_discussion_title: 'Start new thread'
     edit_discussion_title: 'Edit thread'
-    discussion_helptext: 'The thread is where everyone can discuss a topic and make decisions together.'
     group_label: 'Group'
     group_placeholder: 'Select a group'
     title_label: 'Title'
@@ -416,8 +417,6 @@ en:
     privacy_public: 'Anyone can see the thread. Only members can participate.'
     privacy_private: 'The thread will only be visible to members of {{group}}.'
     privacy_organisation: 'The thread will be visible to members of {{parent}} and members of {{group}}.'
-    new_discussion_submit: 'Start thread'
-    edit_discussion_submit: 'Update thread'
     make_announcement: Announcement
     notified_count: '{{count}} people will be emailed'
 
@@ -469,7 +468,6 @@ en:
 
   join_group_button:
     join_group: Join group
-    ask_to_join_group: Ask to join group
     membership_requested: Membership request pending
     messages:
       joined_group: 'You are now a member of {{group}}'
@@ -480,7 +478,7 @@ en:
     name_label: Name
     email_label: Email
     introduction_label: Why do you want to join?
-    submit_button: Ask to join group
+    submit_button: Ask to join
     introduction_over_limit: Response too long
     messages:
       membership_requested: 'You have requested membership to {{group}}'
@@ -767,7 +765,7 @@ en:
     group: 'Group'
     group_placeholder: 'Select a group'
     shareable_link: 'Shareable link'
-    copy_link: 'Copy link'
+    copy_link: 'Copy'
     email_addresses: 'Email addresses'
     email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
     shareable_link_explanation: 'Copy the link and send it to anyone you want to join the group. This will give them access to all threads in the group.'
@@ -812,7 +810,7 @@ en:
   remove_membership_form:
     aria_label: 'Remove member'
     title: 'Remove member'
-    question: 'Are you sure you want to remove {{name}} as a member of {{group}}?'
+    question: 'Are you sure you want to remove {{name}} from {{group}}?'
     submit: 'Remove'
 
   pending_invitations_card:
@@ -1018,7 +1016,7 @@ en:
     aria_label: 'Delete thread'
     title: Delete thread
     body: Are you sure you want to delete this thread?
-    confirm: 'Yes, delete the thread'
+    confirm: 'Delete thread'
     messages:
       success: Thread deleted
 
@@ -1609,8 +1607,8 @@ en:
     send_emails: Send invitations ({{count}})
     no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
-    poll_is_shareable: Anyone who has the link to this poll can vote. Send the link above to anyone you wish to participate.
-    poll_is_private: Users must be invited in order to view and participate in this poll.
+    poll_is_shareable: Copy the link above and share it. Anyone with the link can pariticpate.
+    enter_emails: Enter an email address to send a single use participation link.
     view_poll: View poll
     email_invited: 'Invitation email sent to {{email}}'
     email_exists: '{{email}} has already been invited'
