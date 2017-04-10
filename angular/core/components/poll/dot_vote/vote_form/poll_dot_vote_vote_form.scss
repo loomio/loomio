@@ -4,6 +4,7 @@
 
 .poll-dot-vote-vote-form__input-container {
   width: 100%;
+  @include displayFlex;
 }
 
 .poll-dot-vote-vote-form__dot-input {
