@@ -132,6 +132,9 @@
 }
 
 .lmo-markdown-wrapper {
+  p {
+    @include md-body-1;
+  }
   img { max-width: 100%; }
   h1 {
     @include fontLarge;

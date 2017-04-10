@@ -14,6 +14,15 @@
   justify-content: flex-end;
 }
 
+.lmo-flex__align-baseline {
+  align-items: baseline;
+}
+
+.lmo-flex__align-top {
+  align-items: flex-start;
+  // justify-content: flex-end;
+}
+
 .lmo-flex__space-between {
   justify-content: space-between;
 }

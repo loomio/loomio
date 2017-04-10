@@ -1,11 +1,11 @@
-%form{ng-submit: "submit()"}
+%md-dialog.deactivation-modal
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "archive_group_form.title"}
-
-  .modal-body
-    %span{translate: "archive_group_form.question"}
-  .modal-footer
-    %button.lmo-btn--submit.archive-group-form__submit{type: "submit", translate: "archive_group_form.submit"}
-    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "archive_group_form.title"}
+      %material_modal_header_cancel_button
+  .md-dialog-content
+    %p{translate: "archive_group_form.question"}
+    .lmo-md-actions
+      %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      %md-button.md-primary.md-raised.archive-group-form__submit{type: "submit", translate: "archive_group_form.submit"}
