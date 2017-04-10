@@ -5,7 +5,6 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
     TranslationService.eagerTranslate $scope,
       titlePlaceholder:     'poll_meeting_form.title_placeholder'
       detailsPlaceholder:   'poll_meeting_form.details_placeholder'
-      addOptionPlaceholder: 'poll_meeting_form.add_option_placeholder'
 
     $scope.removeOption = (name) ->
       _.pull $scope.poll.pollOptionNames, name
@@ -31,5 +30,3 @@ angular.module('loomioApp').directive 'pollMeetingForm', ->
             "D MMMM YYYY"
 
     KeyEventService.submitOnEnter($scope)
-    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.addOption, (active) ->
-      active.classList.contains('poll-meeting-form__add-option-input')
