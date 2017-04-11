@@ -1,9 +1,0 @@
-<p>Hello</p>
-
-<p><%= @inviter.name %> has invited you to participate in group discussion and decision-making using a new tool called Loomio.</p>
-
-<p>Click the link below to accept their invitation.
-
-<p><%= link_to "Accept invitation", accept_invitation_url(@new_user, :invitation_token => @new_user.invitation_token) %></p>
-
-<p>If you have any questions contact #{@inviter.email} or find out more about Loomio here http://loomio.org.</p>
