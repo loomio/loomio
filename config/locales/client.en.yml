@@ -65,7 +65,7 @@ en:
       done: Done
       start: Start
     formatting_help:
-      label: 'Formatting help'
+      label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
 
   devise:
@@ -1000,12 +1000,12 @@ en:
     thread_options: 'Thread options'
     email_settings: 'Email settings'
     edit: 'Edit'
-    edit_thread: 'Edit thread'
+    edit_thread: 'Edit'
     mute_thread: 'Mute'
     move_thread: 'Move'
     print_thread: 'Print'
     delete_thread: 'Delete'
-    add_comment: 'Add comment'
+    add_comment: 'Comment'
 
   delete_thread_form:
     aria_label: 'Delete thread'

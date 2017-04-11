@@ -41,12 +41,11 @@
 
 .context-panel__actions {
   @include displayFlex;
+  justify-content: flex-end;
   margin-top: 16px;
 }
 
 .context-panel__edit,
 .context-panel__add-comment {
-  @include lmoBtnLink;
-  cursor: pointer;
   margin: 16px 16px 0 0;
 }

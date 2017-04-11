@@ -301,7 +301,7 @@ en:
       body: |
         ## Headings
 
-        Use hashes to turn text into a heading.
+        Prefix with a hash and a space to turn text into a heading.
 
         # This is an h1
         ## This is an h2
