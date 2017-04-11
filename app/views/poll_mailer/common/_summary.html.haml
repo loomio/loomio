@@ -1,4 +1,6 @@
 .poll-mailer-common-summary
+  - if @info.poll.discussion
+    = render "poll_mailer/common/discussion_info", discussion: @info.poll.discussion
 
   %h1= link_to @info.poll.title, @info.links[:target]
   %p

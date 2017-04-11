@@ -3,12 +3,36 @@
 }
 
 .poll-dot-vote-vote-form__input-container {
-  @include displayFlex;
-  justify-content: space-between;
   width: 100%;
+  @include displayFlex;
 }
 
 .poll-dot-vote-vote-form__dot-input {
-  width: 50px !important;
-  text-align: right;
+  width: 35px !important;
+  text-align: center;
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.poll-dot-vote-vote-form__dot-button {
+  background: none;
+  border: 1px solid $light-grey-on-white;
+  color: $light-grey-on-white;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  padding: 2px 0px;
+  margin: 0 10px;
+  &[disabled] {
+    border: 1px solid lighten($light-grey-on-white, 20%);
+    color: lighten($light-grey-on-white, 20%);
+  }
+}
+
+.poll-dot-vote-vote-form__dot-input-field {
+  @include displayFlex;
+  margin-left: auto;
+  input { float: none; order: 0; }
 }
