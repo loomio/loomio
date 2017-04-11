@@ -15,17 +15,20 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
       facebook: 'facebook_group_name'
       slack:    'slack_channel_name'
 
-    actionName = ->
-      actionNames[$scope.community.communityType]
-
     customFieldName = ->
       customFieldNames[$scope.community.communityType]
 
     $scope.fetch = ->
-      Records.identities.performCommand($scope.community.identityId, actionName()).then (response) ->
-        $scope.allGroups = response[actionName()]
+      Records.identities.performCommand($scope.community.identityId, actionNames[$scope.community.communityType]).then (response) ->
+        $scope.allGroups = response
+      , (response) ->
+        $scope.error = response.data.error
     LoadingService.applyLoadingFunction $scope, 'fetch'
     $scope.fetch()
+
+    $scope.reauth = ->
+      # Records.identities.find($scope.community.identityId).destroy()
+      CommunityService.fetchAccessToken($scope.community.communityType)
 
     $scope.groups = ->
       _.filter $scope.allGroups, (group) ->
