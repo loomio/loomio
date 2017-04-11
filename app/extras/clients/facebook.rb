@@ -1,29 +1,27 @@
 class Clients::Facebook < Clients::Base
 
   def fetch_oauth(code, uri)
-    post("oauth/access_token", code: code, redirect_uri: uri) { |response| response }
+    post "oauth/access_token", code: code, redirect_uri: uri
   end
 
   def fetch_user_info
-    get("me") { |response| response }
+    get "me"
   end
 
   def fetch_user_avatar(uid)
-    get("#{uid}/picture?redirect=false") { |response| response.dig('data', 'url') }
+    get "#{uid}/picture?redirect=false", {}, ->(response) { response['data']['url'] }
   end
 
   def fetch_admin_groups(uid)
-    get("#{uid}/groups") { |response| response['data'] }
+    get "#{uid}/groups", {}, ->(response) { response['data'] }
   end
 
   def is_member_of?(group_id, uid)
-    get("#{group_id}/members") do |response|
-      response['data'].any? { |member| member['id'] == uid }
-    end
+    get "#{group_id}/members", {}, ->(response) { response['data'].any? { |member| member['id'] == uid } }
   end
 
   def post_content(event, group_id)
-    post("#{group_id}/feed", serialized_event(event)) { |response| byebug; response['id'] }
+    post "#{group_id}/feed", {}, serialized_event(event), ->(response) { response['id'] }
   end
 
   def scope
@@ -31,6 +29,10 @@ class Clients::Facebook < Clients::Base
   end
 
   private
+
+  def is_success?(response)
+    response['data'].present?
+  end
 
   def token_name
     :access_token
