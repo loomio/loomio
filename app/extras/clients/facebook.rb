@@ -1,7 +1,7 @@
 class Clients::Facebook < Clients::Base
 
   def fetch_oauth(code, uri)
-    post "oauth/access_token", code: code, redirect_uri: uri
+    post "oauth/access_token", { code: code, redirect_uri: uri }
   end
 
   def fetch_user_info
@@ -29,10 +29,6 @@ class Clients::Facebook < Clients::Base
   end
 
   private
-
-  def is_success?(response)
-    response['data'].present?
-  end
 
   def token_name
     :access_token

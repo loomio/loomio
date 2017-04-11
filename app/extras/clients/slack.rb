@@ -1,11 +1,11 @@
 class Clients::Slack < Clients::Base
 
   def fetch_oauth(code, uri)
-    get "oauth.access", code: code, redirect_uri: uri
+    get "oauth.access", { code: code, redirect_uri: uri }
   end
 
   def fetch_user_info(id)
-    get "users.info", user: id, ->(response) { response['user'] }
+    get "users.info", { user: id }, ->(response) { response['user'] }
   end
 
   def fetch_team_info
@@ -16,6 +16,10 @@ class Clients::Slack < Clients::Base
     get "channels.list", {}, ->(response) { response['channels'] }
   end
 
+  def post_content(event, channel)
+    get "chat.postMessage", {}, serialized_event(event).merge(channel: channel)
+  end
+
   def is_member_of?(channel_id, uid)
     get "channels.info", { channel: channel_id }, ->(response) { Array(response['channel']['members']).include?(uid) }
   end
@@ -24,15 +28,7 @@ class Clients::Slack < Clients::Base
     "users:read,channels:read,team:read,chat:write:bot"
   end
 
-  def post_content(event, channel)
-    get "chat.postMessage", {}, serialized_event(event).merge(channel: channel)
-  end
-
   private
-
-  def is_success?(response)
-    response['ok'].present?
-  end
 
   def host
     "https://slack.com/api".freeze

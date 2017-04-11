@@ -12,10 +12,10 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def oauth_identity_params
-    response = Hash(client.fetch_oauth(params[:code], redirect_uri))
+    json = client.fetch_oauth(params[:code], redirect_uri).json
     {
-      access_token: response['access_token'],
-      uid:          response['user_id']
+      access_token: json['access_token'],
+      uid:          json['user_id']
     }
   end
 

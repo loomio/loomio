@@ -1,13 +1,5 @@
 class Identities::FacebookController < Identities::BaseController
 
-  def groups
-    if identity.present?
-      render json: identity.fetch_admin_groups
-    else
-      render json: { error: "Not connected to facebook!" }, status: :bad_request
-    end
-  end
-
   private
 
   def complete_identity(identity)

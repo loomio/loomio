@@ -4,7 +4,7 @@ class API::IdentitiesController < API::RestfulController
   def command
     current_participant.ability.authorize! :show, identity
     if valid_command?
-      render json: identity.send(params[:command]), root: params[:command]
+      render json: api_response.json, status: if api_response.success? then :ok else :bad_request end
     else
       render json: { error: "#{params[:command]} is invalid for this identity" }, status: :bad_request
     end
@@ -18,5 +18,9 @@ class API::IdentitiesController < API::RestfulController
 
   def identity
     @identity ||= Identities::Base.find(params[:id])
+  end
+
+  def api_response
+    @api_response ||= identity.send(params[:command])
   end
 end

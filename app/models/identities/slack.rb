@@ -4,20 +4,20 @@ class Identities::Slack < Identities::Base
   set_custom_fields :slack_team_id, :slack_team_name, :slack_team_logo
 
   def fetch_user_info
-    response   = Hash(client.fetch_user_info(self.uid))
-    self.name  = response['real_name']
-    self.email = response.dig('profile', 'email')
-    self.logo  = response.dig('profile', 'image_48')
+    json       = Hash(client.fetch_user_info(self.uid).json)
+    self.name  = json['real_name']
+    self.email = json.dig('profile', 'email')
+    self.logo  = json.dig('profile', 'image_48')
   end
 
   def fetch_team_info
-    response             = Hash(client.fetch_team_info)
-    self.slack_team_id   = response['id']
-    self.slack_team_name = response['name']
-    self.slack_team_logo = response.dig('icon', 'image_68')
+    json                 = Hash(client.fetch_team_info.json)
+    self.slack_team_id   = json['id']
+    self.slack_team_name = json['name']
+    self.slack_team_logo = json.dig('icon', 'image_68')
   end
 
   def channels
-    client.get("channels.list") { |response| response['channels'] }
+    client.fetch_channels
   end
 end

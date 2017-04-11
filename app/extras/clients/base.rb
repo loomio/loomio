@@ -7,11 +7,11 @@ class Clients::Base
     @token  = token
   end
 
-  def get(path, params = {}, success = default_callback, failure = default_callback)
+  def get(path, params = {}, success = default_success, failure = default_failure)
     perform(:get, path, { query: default_params.merge(params) }, success, failure)
   end
 
-  def post(path, params = {}, success = default_callback, failure = default_callback)
+  def post(path, params = {}, success = default_success, failure = default_failure)
     perform(:post, path, { body: default_params.merge(params) }, success, failure)
   end
 
@@ -22,16 +22,16 @@ class Clients::Base
   private
 
   def perform(method, path, params, success, failure)
-    response = JSON.parse HTTParty.send(method, [params.delete(:host) || host, path].join('/'), params.merge(headers: { 'Content-Type' => 'application/json; charset=utf-8' })).body
-    if is_success?(response) then success else failure end.call(response)
+    Clients::Response.new(method, [params.delete(:host) || host, path].join('/'), params).tap do |response|
+      response.callback = if response.success? then success else failure end
+    end
   end
 
-  # override for specific API failure behaviour
-  def is_success?
-    true
+  def default_success
+    ->(response) { response }
   end
 
-  def default_callback
+  def default_failure
     ->(response) { response }
   end
 

@@ -54,7 +54,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def oauth_identity_params
-    { access_token: Hash(client.fetch_oauth(params[:code], redirect_uri))['access_token'] }
+    { access_token: client.fetch_oauth(params[:code], redirect_uri).json['access_token'] }
   end
 
   def oauth_params
