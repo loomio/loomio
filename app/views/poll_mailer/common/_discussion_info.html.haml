@@ -1,0 +1,8 @@
+%table.poll-mailer-common__discussion-info
+  %tr
+    %td
+      %img.poll-mailer-common-avatar__image{src: asset_url(discussion.group.logo.url(:small))}
+    %td
+      = link_to discussion.group.full_name, group_url(discussion.group)
+      %span -
+      = link_to discussion.title, discussion_url(discussion)

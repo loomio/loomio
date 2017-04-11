@@ -3,6 +3,10 @@
   padding-left: 10px;
 }
 
+.poll-mailer-common__discussion-info {
+  margin-top: 20px;
+}
+
 .poll-mailer-common-avatar__initials {
   margin-right: 10px;
   border: 1px solid #dcdcdc;
@@ -15,6 +19,7 @@
 
 .poll-mailer-common-avatar__image {
   margin-right: 10px;
+  width: 30px;
   float: left;
 }
 
