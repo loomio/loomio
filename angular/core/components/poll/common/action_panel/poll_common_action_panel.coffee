@@ -18,4 +18,4 @@ angular.module('loomioApp').directive 'pollCommonActionPanel', ($location, AppCo
       PollService.hasVoted(Session.participant(), $scope.poll)
 
     $scope.openStanceForm = ->
-      ModalService.open PollCommonEditVoteModal, stance: -> $scope.stance
+      ModalService.open PollCommonEditVoteModal, stance: -> $scope.init()
