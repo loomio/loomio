@@ -14,7 +14,7 @@ Clients::Response = Struct.new(:method, :url, :params) do
   end
 
   def success?
-    response.success?
+    response.success? && (response['ok'].nil? || response['ok'])
   end
 
   def headers
