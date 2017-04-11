@@ -28,7 +28,6 @@ ga-IE:
     more_help: Tuilleadh cabhair
     models:
       proposal: Togra
-    copy: Macasamhlaigh an téacs
     copied: Macasamhaltha chuig an ghearrthaisce
     action:
       close: Dún
@@ -92,7 +91,6 @@ ga-IE:
   change_volume_form:
     aria_label: Athraigh foirm shocruithe ríomhphoist
     loud_label: Gach gníomhaíocht
-    normal_label: Gníomhaíocht thábhachtach
     quiet_label: Gan ríomhphoist
     mute_label: Balbh
     discussion:

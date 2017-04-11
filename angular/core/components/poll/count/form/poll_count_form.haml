@@ -5,12 +5,12 @@
 
   %md-input-container.md-block
     %label{translate: "poll_count_form.title"}
-    %input.lmo-primary-form-input{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="200"}
+    %input.lmo-primary-form-input.poll-count-form__title{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="200"}
     %validation_errors{subject: "poll", field: "title"}
 
   %md-input-container.md-block
     %label{translate: "poll_count_form.details"}
-    %textarea.lmo-primary-form-input{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
+    %textarea.lmo-primary-form-input.poll-count-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
     %outlet{name: "after-count-form-textarea", model: "poll"}
 
   %poll_common_closing_at_field{poll: "poll"}
@@ -19,5 +19,5 @@
 
   .poll-common__actions.lmo-flex
     %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_count_form.update", aria-label: "{{ 'poll_count_form.update' | translate }}"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_count_form.start", aria-label: "{{ 'poll_count_form.start' | translate }}"}
+    %md-button.md-primary.md-raised.poll-count-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_count_form.update", aria-label: "{{ 'poll_count_form.update' | translate }}"}
+    %md-button.md-primary.md-raised.poll-count-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_count_form.start", aria-label: "{{ 'poll_count_form.start' | translate }}"}

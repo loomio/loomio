@@ -1407,6 +1407,8 @@ en:
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
     count: 'This count has closed. <strong>Share an outcome</strong> to complete the process.'
+    meeting: 'This meeting poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
+    dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
     new_title: Share an outcome

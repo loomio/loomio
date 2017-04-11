@@ -28,7 +28,6 @@ ko:
     more_help: 도움말 자세히
     models:
       proposal: 제안
-    copy: 복사
     copied: 복사됨
     action:
       close: 닫기
@@ -96,7 +95,6 @@ ko:
   change_volume_form:
     aria_label: 이메일 설정 환경 변경
     loud_label: 모든 활동
-    normal_label: 중요 활동
     quiet_label: 이메일 없음
     mute_label: 음소거
     discussion:
@@ -112,27 +110,22 @@ ko:
     membership:
       title: ' {{title}}을 위한 이메일 환경 설정'
       loud_description: 이 그룹의 모든 활동 내역을 이메일로 받습니다.
-      normal_description: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.
       quiet_description: 당신은 이 그룹의 활동에 대해 이메일을 받지 않습니다.
       apply_to_all: 내 그룹 전체에 이 설정을 적용합니다.
       messages:
         loud: 이 그룹의 활동 내역을 메일로 받습니다.
-        normal: 이 그룹에 새로운 쓰레드나 제안이 있으면 이메일로 받습니다.
         quiet: 이 그룹과 관련한 메일을 받지 않습니다.
     all_groups:
       messages:
         loud: 당신의 모든 그룹의 모든 활동내역을 이메일로 받습니다.
-        normal: 당신의 모든 그룹의 새로운 쓰레드나 제안에 대해 이메일로 받습니다.
         quiet: 당신의 그룹에 대한 어떤 것도 이메일로 받지 않습니다.
     user:
       title: 새로운 그룹을 위한 이메일 환경설정
       loud_description: 당신이 가입한 새로운 그룹에서 활동이 있을 때마다 이메일로 받습니다.
-      normal_description: 당신이 가입한 새로운 그룹에서 일어나는 새로운 쓰레드나 제안에 대해 이메일로 받습니다.
       quiet_description: 당신이 가입한 새로운 그룹에서 일어나는 활동에 대해 이메일로 받지 않습니다.
       apply_to_all: 내 그룹 전체에 이 환경설정을 적용합니다.
       messages:
         loud: 새로운 그룹에 모든 활동내역을 이메일로 받습니다.
-        normal: 새로운 그룹에서 일어나는 새로운 쓰레드와 제안을 이메일로 받습니다.
         quiet: 새로운 그룹에 대해 이메일로 받지 않습니다.
   mute_explanation_modal:
     aria_label: 쓰레드 알림 해제

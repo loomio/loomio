@@ -1,5 +1,6 @@
 class PollMailer < BaseMailer
   helper :email
+  helper :application
   REPLY_DELIMITER = "--"
 
   %w(poll_created poll_edited outcome_created

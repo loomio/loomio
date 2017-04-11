@@ -7,6 +7,7 @@ describe API::DiscussionsController do
   let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
+  let(:poll) { create :poll, discussion: discussion }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
   let(:another_discussion) { create :discussion }
   let(:comment) { create :comment, discussion: discussion}
@@ -429,6 +430,14 @@ describe API::DiscussionsController do
           discussions = json['discussions'].map { |v| v['id'] }
           expect(discussions).to include four_months_ago.id
           expect(discussions).to_not include two_months_ago.id
+        end
+
+        it 'responds with active polls' do
+          poll
+          get :index, group_id: group.id, format: :json
+          json = JSON.parse(response.body)
+          poll_ids = json['polls'].map { |p| p['id'] }
+          expect(poll_ids).to include poll.id
         end
       end
     end

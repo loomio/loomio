@@ -43,6 +43,9 @@ module.exports = new class PageHelper
   fillIn: (selector, value) ->
     element(By.css(selector)).clear().sendKeys(value)
 
+  fillInAndEnter: (selector, value) ->
+    element(By.css(selector)).clear().sendKeys(value).sendKeys(browser.driver.keys('Enter'))
+
   expectInputValue: (selector, value) ->
     expect(element(By.css(selector)).getAttribute('value')).toContain(value)
 

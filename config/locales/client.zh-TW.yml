@@ -3,6 +3,8 @@ zh-TW:
     proposal: 提案
     count: 數量
     poll: 投票
+    dot_vote: 點投票
+    meeting: 會面
   common:
     confirm_discard_changes: 丟棄您的變更？
     time:
@@ -32,7 +34,8 @@ zh-TW:
     more_help: 詳細說明
     models:
       proposal: 提案
-    copy: 複製文字
+    copy: 複製
+    copy_text: 複製文字
     copied: 已經複製到剪貼簿
     action:
       close: 關閉
@@ -57,6 +60,8 @@ zh-TW:
       upload: 上傳
       uploading: 正在上傳
       load_more: 載入更多
+      share: 分享
+      ok: 確定！
     formatting_help:
       label: 格式化說明
       title: 學習如何使用 Markdown 來格式化您在 Loomio 上的文字
@@ -105,7 +110,7 @@ zh-TW:
   change_volume_form:
     aria_label: 變更電子郵件設定表單
     loud_label: 所有動態
-    normal_label: 重要動態
+    normal_label: 公告
     quiet_label: 不寄電子郵件
     mute_label: 靜音
     discussion:
@@ -121,27 +126,27 @@ zh-TW:
     membership:
       title: '{{title}} 的電子郵件設定'
       loud_description: 您將會在這個群組有任何動態時收到電子郵件。
-      normal_description: 您將會收到關於此群組新討論串與提案的電子郵件。
+      normal_description: 您將只會收到在這個群組內關於公告的電子郵件。
       quiet_description: 您將不會收到任何關於此群組動態的電子郵件。
       apply_to_all: 套用這些設定到我所有的群組。
       messages:
         loud: 您將會收到關於此群組所有動態的電子郵件。
-        normal: 您將會收到關於此群組新討論串與提案的電子郵件。
+        normal: 您將只會收到在這個群組內關於公告的電子郵件。
         quiet: 您將不會收到任何關於此群組的電子郵件。
     all_groups:
       messages:
         loud: 您將會收到關於您的所有群組中所有動態的電子郵件。
-        normal: 您將會收到關於您所有的群組中新討論串與提案的電子郵件。
+        normal: 您將只會收到在您的所有群組內關於公告的電子郵件。
         quiet: 您將不會收到任何關於您的群組的電子郵件。
     user:
       title: 新群組的電子郵件設定
       loud_description: 您將會在任何您新加入的群組有動態時收到電子郵件。
-      normal_description: 您將會收到任何您新加入的群組的新討論串與提案的電子郵件。
+      normal_description: 您將會收到您加入的任何新群組與公告相關的電子郵件。
       quiet_description: 您將不會收到任何關於您新加入的群組的動態的電子郵件。
       apply_to_all: 套用這些設定到我所有的群組。
       messages:
         loud: 您將會收到關於您新加入的群組中所有動態的電子郵件。
-        normal: 您將會收到任何新群組的新討論串與提案的電子郵件。
+        normal: 您將會收到在新群組中關於公告的電子郵件。
         quiet: 您將不會收到任何關於新群組的電子郵件。
   mute_explanation_modal:
     aria_label: 討論串設為靜音
@@ -260,6 +265,7 @@ zh-TW:
     start_group: 啟動群組
     start_subgroup: 啟動子群組
     start_thread: 啟動討論串
+    start_poll: 啟動投票
     invite_people: 邀請夥伴
   notifications:
     header: 通知
@@ -1169,7 +1175,7 @@ zh-TW:
     messages:
       success: '「{{name}}」已無法使用您的帳號'
   decision_tools_card:
-    title: 決策工具
+    title: 簡化工具
     purpose: 收集個人觀點來了解全貌。
     proposal_title: 提案
     proposal_subtitle: 尋求共識
@@ -1177,6 +1183,10 @@ zh-TW:
     count_subtitle: 追蹤有誰已經完成任務
     poll_title: 投票
     poll_subtitle: 測量不同選項的人氣
+    dot_vote_title: 點投票
+    dot_vote_subtitle: 每個人都有一些票可以使用
+    meeting_title: 排定會面時間
+    meeting_subtitle: 找到會面的時間
   poll_common:
     your_response: 您的回應
     change_your_response: 變更您的回應
@@ -1192,6 +1202,12 @@ zh-TW:
     change_your_stance: 變更您的投票
     load_more: 載入更多
     details: 詳細內容
+    participant_name: 您的大名
+    participant_email: 電子郵件地址
+    share_poll: 分享投票
+    share_proposal: 分享提案
+    share_count: 分享計數
+    start_poll: 啟動一個新的投票
   poll_common_card:
     show_results: 顯示結果
   poll_common_collapsed:
@@ -1205,9 +1221,13 @@ zh-TW:
     close_proposal: 提議定案
     close_poll: 關閉投票
     close_count: 關閉計數
+    close_dot_vote: 關閉點投票
+    close_meeting: 關閉會面投票
     proposal_closed: 提議已定案
     poll_closed: 投票已關閉
     count_closed: 計數已關閉
+    dot_vote_closed: 點投票已關閉
+    meeting_closed: 會面投票已關閉
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
@@ -1243,6 +1263,8 @@ zh-TW:
   poll_common_outcome_panel:
     authored_by: '由 {{name}}'
   poll_proposal_form:
+    start_header: 啟動提案
+    edit_header: 編輯提案
     start_a_proposal: 啟動提案
     edit_proposal: 編輯提案
     tip: '提案是凝聚共識的工具。使用它們以帶來可以得出清晰結果的討論。<a href="https://www.loomio.school/beginner/proposals.html" target="_blank">更多資訊</a>'
@@ -1281,6 +1303,8 @@ zh-TW:
     'yes': 是
     'no': 否
   poll_count_form:
+    start_header: 啟動一個計數
+    edit_header: 編輯計數
     new_count: 啟動一個計數
     update_count: 編輯計數
     tip: 一個用來詢問「我想知道這裡有多少人」的計數。使用它來看看任務有多少參與者。
@@ -1299,6 +1323,8 @@ zh-TW:
     stance_updated: 已更新投票
   poll_count_chart_panel:
     out_of: '沒有 {{goal}}'
+  poll_meeting_chart_panel:
+    total: 全部
   poll_poll_form:
     start_header: 啟動投票
     edit_header: 編輯投票
@@ -1320,6 +1346,41 @@ zh-TW:
   poll_poll_vote_form:
     stance_created: 已建立投票
     stance_updated: 已更新投票
+  poll_meeting_vote_form:
+    stance_created: 您的時間已記錄
+    stance_updated: 您的時間已更新
+  poll_dot_vote_form:
+    tip: 點投票是累進投票的一種形式。使用它來了解所有人的喜好，比單項投票可以取得更多資訊。
+    start_header: 啟動一個點投票
+    edit_header: 編輯點投票
+    title: 標題
+    title_placeholder: 例如：我們應該如何分配我們的資源？
+    details: 詳細內容
+    details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
+    options: 選項
+    add_option_placeholder: 新增選項
+    dots_per_person: 每人幾點
+    start: 啟動點投票
+    update: 更新點投票
+    dot_vote_created: 點投票已建立
+    dot_vote_updated: 點投票已更新
+  poll_meeting_form:
+    start_header: 排定時間
+    tip: "找到最適合群組的時間。提供一份時間清單，其讓夥伴們可以會面，並看看誰可以參加。<a href='#'>詳細資訊</a>"
+    title: 標題
+    title_placeholder: 例如：我們何時可以進行下一次會面？
+    details: 詳細內容
+    details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
+    options: 時間
+    start: 排定時間
+    update: 更新計畫
+    meeting_created: 會面投票已建立
+    meeting_updated: 會面投票已更新
+  poll_dot_vote_vote_form:
+    dots_remaining: '您還剩 {{count}} 點。'
+    too_many_dots: 您使用了太多點數。
+    stance_created: 已建立投票
+    stance_updated: 已更新投票
   poll_thread_item:
     poll:
       poll_created: '<strong>{{author}}</strong> 已啟動了一個新投票：<span>{{title}}</span>'
@@ -1332,11 +1393,62 @@ zh-TW:
       stance_created: '<strong>{{author}}</strong> 已投票：'
       poll_edited: '<strong>{{author}}</strong> 編輯了提案：<span>{{title}}</span>'
       poll_expired: '提案已定案：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{actor}}</strong> 已定案了一個提案：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 已定案了一個提案：<span>{{title}}</span>'
     count:
       poll_created: '<strong>{{author}}</strong> 已啟動了一個計數：<span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> 已回應：'
       poll_edited: '<strong>{{author}}</strong> 編輯了計數：<span>{{title}}</span>'
       poll_expired: '計數已結束：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 關閉了計數：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉計數：<span>{{title}}</span>'
+    dot_vote:
+      poll_created: '<strong>{{author}}</strong> 已啟動了一個點投票：<span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> 已投票：'
+      poll_edited: '<strong>{{author}}</strong> 編輯了點投票：<span>{{title}}</span>'
+      poll_expired: '點投票已結束：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 關閉了點投票：<span>{{title}}</span>'
+    meeting:
+      poll_created: '<strong>{{author}}</strong> 已啟動了一個會面時間投票：<span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> 已回應：'
+      poll_edited: '<strong>{{author}}</strong> 已編輯會面時間投票：<span>{{title}}</span>'
+      poll_expired: '會面時間投票已結束：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉會面時間投票：<span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> 已分享了成果：'
+  poll_admin_page:
+    title: '管理 - {{title}}'
+  poll_common_share_form:
+    no_group_selected: 未選擇群組
+    share_a_link: 可分享的連結
+    anyone_can_participate: 任何人皆可參與
+    anyone_can_participate_true: 可分享的連結已建立
+    anyone_can_participate_false: 可分享的連結已撤銷
+    set_group: Loomio 群組已更新
+    shareable_link_created: 現在，任何人都可以參與這次的投票
+    shareable_link_revoked: 這個投票僅有被邀請的人可以使用
+    shareable_link: 可分享的連結
+    guests_invited: '已邀請 {{count}} 個來賓'
+    guest_revoked: '已撤銷 {{email}} 的存取權'
+    invite_guests: 邀請來賓
+    existing_guests: 已有的來賓
+    new_guests: 新邀請電子郵件
+    enter_email: 例如：guest@example.com
+    reminded: 提醒電子郵件已寄出！
+    send_emails: '傳送邀請函 ({{count}})'
+    no_loomio_group: 這個投票並未關聯到任何 Loomio 群組
+    has_loomio_group: 這個群組的成員將可以檢視並參與此投票。
+    poll_is_shareable: 任何持有到這個投票的連結的人都可以投票。傳送上面這個連結給您想要讓其參與的人。
+    poll_is_private: 使用者必須被邀請以檢視並參與此投票。
+    view_poll: 檢視投票
+    email_invited: '邀請函已寄送給 {{email}}'
+    email_exists: '{{email}} 已被邀請'
+    email_empty: 請輸入電子郵件
+    email_invalid: 這似乎不是有效的電子郵件
+  poll_common_participant_form:
+    participant_name_placeholder: 您的大名是？
+  poll_common_subscribe_form:
+    receive_updates_title: 您的投票已記錄
+    receive_updates_helptext: 若您想要收到關於此投票的結果的電子郵件，在下面輸入您的電子郵件
+    email_saved: 您將會收到一封關於此投票結果的電子郵件
+    subscribe: 訂閱
+    no_thanks: 不用了，謝謝
+  share_poll_page:
+    title: '分享投票 - {{title}}'

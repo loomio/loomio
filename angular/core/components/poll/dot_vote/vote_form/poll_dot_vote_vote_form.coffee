@@ -9,6 +9,9 @@ angular.module('loomioApp').directive 'pollDotVoteVoteForm', ->
         choice.pollOptionId == option.id
         ).concat({score: 0}))
 
+    $scope.adjust = (choice, amount) ->
+      choice.score += amount
+
     $scope.optionFor = (choice) ->
       Records.pollOptions.find(choice.poll_option_id)
 

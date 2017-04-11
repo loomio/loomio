@@ -4,11 +4,20 @@ class Poll < ActiveRecord::Base
   include MakesAnnouncements
   TEMPLATES = YAML.load_file('config/poll_templates.yml')
   COLORS    = YAML.load_file('config/colors.yml')
+  TEMPLATE_FIELDS = %w(material_icon translate_option_name
+                       can_add_options can_remove_options
+                       must_have_options chart_type has_option_icons
+                       has_variable_score voters_review_responses
+                       dates_as_options required_custom_fields
+                       poll_options_attributes).freeze
+  TEMPLATE_FIELDS.each do |field|
+    define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
+  end
 
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
-  has_many   :outcomes
+  has_many   :outcomes, dependent: :destroy
   has_one    :current_outcome, -> { where(latest: true) }, class_name: 'Outcome'
 
   belongs_to :motion
@@ -19,7 +28,7 @@ class Poll < ActiveRecord::Base
 
   after_update :remove_poll_options
 
-  has_many :stances
+  has_many :stances, dependent: :destroy
   has_many :stance_choices, through: :stances
   has_many :participants, through: :stances, source: :participant, source_type: "User"
   has_many :visitors, through: :communities
@@ -37,7 +46,7 @@ class Poll < ActiveRecord::Base
   define_counter_cache(:stances_count)       { |poll| poll.stances.latest.count }
   define_counter_cache(:did_not_votes_count) { |poll| poll.poll_did_not_votes.count }
 
-  has_many :poll_communities
+  has_many :poll_communities, dependent: :destroy
   has_many :communities, through: :poll_communities
 
   scope :active, -> { where(closed_at: nil) }
@@ -62,6 +71,7 @@ class Poll < ActiveRecord::Base
 
   validate :poll_options_are_valid
   validate :closes_in_future
+  validate :require_custom_fields
 
   alias_method :user, :author
 
@@ -102,46 +112,6 @@ class Poll < ActiveRecord::Base
         end
       end
     ) if chart_type == 'matrix'
-  end
-
-  def material_icon
-    template['material_icon']
-  end
-
-  def translate_option_name
-    template['translate_option_name']
-  end
-
-  def can_add_options
-    template['can_add_options']
-  end
-
-  def can_remove_options
-    template['can_remove_options']
-  end
-
-  def must_have_options
-    template['must_have_options']
-  end
-
-  def chart_type
-    template['chart_type']
-  end
-
-  def has_option_icons
-    template['has_option_icons']
-  end
-
-  def has_variable_score
-    template['has_variable_score']
-  end
-
-  def voters_review_responses
-    template['voters_review_responses']
-  end
-
-  def dates_as_options
-    template['dates_as_options']
   end
 
   def active?
@@ -210,10 +180,6 @@ class Poll < ActiveRecord::Base
     update_stance_data
   end
 
-  def template
-    TEMPLATES.fetch(self.poll_type, {})
-  end
-
   def poll_options_are_valid
     prevent_added_options   unless can_add_options
     prevent_removed_options unless can_remove_options
@@ -244,7 +210,12 @@ class Poll < ActiveRecord::Base
   end
 
   def template_poll_options
-    Array(template['poll_options_attributes']).map { |o| o['name'] }
+    Array(poll_options_attributes).map { |o| o['name'] }
   end
 
+  def require_custom_fields
+    Array(required_custom_fields).each do |field|
+      errors.add(field, I18n.t(:"activerecord.errors.messages.blank")) if custom_fields[field].blank?
+    end
+  end
 end

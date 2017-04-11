@@ -1,4 +1,7 @@
 de:
+  poll_types:
+    proposal: Vorschläge
+    poll: Umfrage
   common:
     confirm_discard_changes: Deine Änderungen verwerfen?
     time:
@@ -28,7 +31,6 @@ de:
     more_help: Weitere Hilfe
     models:
       proposal: Vorschlag
-    copy: Text kopieren
     copied: In Zwischenablage kopiert
     action:
       close: Schließen
@@ -80,6 +82,8 @@ de:
     heading: Vorherige Vorschläge
   previous_proposals_page:
     heading: Frühere Vorschläge
+  previous_polls_page:
+    polls_count: ' Anzeige: {{loaded}} von {{total}} Aktivitäten'
   proposal_collapsed:
     expand: Erweitern
     outcome: 'Ergebnis: {{outcome}}'
@@ -91,7 +95,6 @@ de:
     unmute: Laut
   change_volume_form:
     loud_label: Alle Meldungen
-    normal_label: Wichtige Meldungen
     quiet_label: Keine eMails
     mute_label: Stumm
     discussion:
@@ -107,27 +110,22 @@ de:
     membership:
       title: 'eMail-Einstellungen für {{title}}'
       loud_description: 'Du wirst benachrichtigt, sobald in dieser Gruppe etwas passiert.'
-      normal_description: Du wirst per eMail über Diskussionen und Vorschläge in dieser Gruppe benachrichtigt.
       quiet_description: Du wirst über keine Meldungen in dieser Gruppe benachrichtigt.
       apply_to_all: Diese Einstellungen für alle meine Gruppen übernehmen.
       messages:
         loud: 'Du wirst über alles per eMail benachrichtigt, sobald in dieser Gruppe etwas passiert.'
-        normal: Du wirst per eMail über Vorschläge in dieser Diskussion benachrichtigt.
         quiet: Du wirst über nichts in dieser Gruppe benachrichtigt.
     all_groups:
       messages:
         loud: 'Du wirst über alles per eMail benachrichtigt, sobald in einer Deiner Gruppen etwas passiert.'
-        normal: Du wirst per eMail über neue Diskussionen und Vorschläge in allen Deinen Gruppen benachrichtigt.
         quiet: Du wirst über nichts in Deinen Gruppen benachrichtigt.
     user:
       title: eMail-Einstellungen für neue Gruppen
       loud_description: 'Du wirst benachrichtigt, sobald in Gruppen, denen Du beitrittst, etwas passiert.'
-      normal_description: 'Du wirst per eMail über neue Diskussionen und Vorschläge in Gruppen benachrichtigt, denen Du beitrittst.'
       quiet_description: 'Du wirst über nichts in Gruppen benachrichtigt, denen Du beitrittst.'
       apply_to_all: Diese Einstellungen für alle meine Gruppen übernehmen.
       messages:
         loud: Du wirst per eMail über alle Aktivitäten in Deinen neuen Gruppen benachrichtigt.
-        normal: Du wirst per eMail über neue Diskussionen und Vorschläge in Deinen neuen Gruppen benachrichtigt.
         quiet: Du wirst über nichts aus Deinen neuen Gruppen benachrichtigt.
   mute_explanation_modal:
     mute_thread: Diskussion stumm schalten
@@ -179,6 +177,10 @@ de:
     email_settings: eMail-Einstellungen
     help: Hilfe
     sign_out: Abmelden
+    aria_labels:
+      heading: Sidebar
+      groups_list: Gruppen
+      user_list: Benutzer-Aktionen
   navbar:
     recent_title: Aktuelle Diskussionen sehen
     unread_title: Diskussionen mit ungelesenen Beiträgen lesen
@@ -194,6 +196,7 @@ de:
       comments: Kommentare
     sign_in: Anmelden
   start_menu:
+    label: Benutzer-Aktionen
     start_group: Gruppe gründen
     start_subgroup: Untergruppe gründen
     start_thread: Diskussion eröffnen
@@ -279,6 +282,7 @@ de:
     privacy_organisation: 'Diese Diskussion wird nur für Mitglieder von {{parent}} und {{group}} sichtbar sein.'
     new_discussion_submit: Diskussion eröffnen
     edit_discussion_submit: Diskussion aktualisieren
+    make_announcement: Ankündigung
   proposal_expanded:
     collapse: Kollabieren
     current_votes: Bisherige Stimmen
@@ -473,6 +477,7 @@ de:
   invitation_form:
     invite_people: Leute einladen
     group: Gruppe
+    group_placeholder: Gruppe auswählen
     shareable_link: Teilbarer Link
     copy_link: Link kopieren
     email_addresses: eMail-Adressen
@@ -560,6 +565,7 @@ de:
   dashboard_page:
     aria_label: Schreibtisch
     no_groups:
+      start: Start
       or: oder
     no_threads:
       show_all: Du hast keine aktuellen Diskussionen.
@@ -608,6 +614,7 @@ de:
     unread_threads: Ungelesene Diskussionen
     view_more: Mehr anzeigen
     no_groups:
+      start: Start
       or: oder
   groups_page:
     page_header: Deine Gruppen
@@ -941,3 +948,14 @@ de:
     submit: Zugriff widerrufen
     messages:
       success: "'{{name}}' kann Dein Konto nicht mehr nutzen."
+  decision_tools_card:
+    proposal_title: Vorschläge
+    poll_title: Umfrage
+  poll_common_collapsed:
+    by_who: 'von {{name}}'
+  poll_common_notify_group:
+    notify_group: Ankündigung
+    members_count: '{{count}} Personen werden benachrichtigt'
+  poll_common_close_form:
+    title: Umfrage früher beenden
+    helptext: Willst Du wirklich die Umfrage früher beenden?

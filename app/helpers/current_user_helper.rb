@@ -20,6 +20,6 @@ module CurrentUserHelper
   end
 
   def restricted_user
-    User.find_by(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
+    User.find_by!(params.slice(:unsubscribe_token)).tap { |user| user.restricted = true } if params[:unsubscribe_token]
   end
 end

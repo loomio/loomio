@@ -4,6 +4,7 @@ class PollService
 
     poll.assign_attributes(author: actor)
     poll.community_of_type(:email, build: true)
+    poll.community_of_type(:public, build: true)
 
     return false unless poll.valid?
     poll.save!
@@ -95,6 +96,7 @@ class PollService
         )
         do_closing_work(poll: poll) if motion.closed?
         poll.update_stance_data
+        poll.communities << Communities::Email.new
       end
     end
   end

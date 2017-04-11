@@ -3,18 +3,22 @@ require 'rails_helper'
 describe Queries::ExploreGroups do
   let(:group)              { create :group }
   let(:second_group)       { create :group }
+  let(:archived_group)     { create :group, archived_at: 1.day.ago }
 
   before do
     group.update_attribute(:is_visible_to_public, true)
     second_group.update_attribute(:is_visible_to_public, true)
+    archived_group.update_attribute(:is_visible_to_public, true)
     group.update_attribute(:memberships_count, 4)
     second_group.update_attribute(:memberships_count, 2)
+    archived_group.update_attribute(:memberships_count, 4)
   end
 
   describe 'visible groups' do
 
     it 'shows groups on the explore page' do
       expect(Queries::ExploreGroups.new).to include group
+      expect(Queries::ExploreGroups.new).to_not include archived_group
     end
 
     it 'only shows groups that are visible to public' do

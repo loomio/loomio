@@ -1,0 +1,28 @@
+.poll-dot-vote-votes-panel-stance {
+  @include displayFlex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.poll-dot-vote-votes-panel-stance__head {
+  @include displayFlex;
+}
+
+.poll-dot-vote-votes-panel-stance__name {
+  text-align: center;
+  padding-left: 8px;
+  line-height: 30px;
+}
+
+.poll-dot-vote-votes-panel__stance-choice {
+  display: block;
+  height: 24px;
+  min-width: 4px;
+  margin-top: 4px;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 24px;
+  width: 100%;
+  padding-left: 8px;
+}

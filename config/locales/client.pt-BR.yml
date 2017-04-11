@@ -28,7 +28,6 @@ pt-BR:
     more_help: Mais ajuda
     models:
       proposal: Proposta
-    copy: Copiar texto
     copied: Copiado para o clipboard
     action:
       close: Encerrar
@@ -96,7 +95,6 @@ pt-BR:
   change_volume_form:
     aria_label: Formulário para alteração de configurações de e-mail
     loud_label: Toda atividade
-    normal_label: Atividade importante
     quiet_label: Sem e-mails
     mute_label: Mudo
     discussion:
@@ -112,27 +110,22 @@ pt-BR:
     membership:
       title: 'Configurações de e-mail para {{title}}'
       loud_description: Você receberá e-mail sempre que houver atividade neste grupo.
-      normal_description: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
       quiet_description: Você não receberá e-mail sobre atividade neste grupo.
       apply_to_all: Aplicar estas configurações para todos os meus grupos.
       messages:
         loud: Você receberá e-mails de todas as atividades neste grupo
-        normal: Você receberá e-mail sobre novos tópicos e propostas neste grupo.
         quiet: Você não receberá e-mail sobre este grupo.
     all_groups:
       messages:
         loud: Você receberá e-mails de todas as atividades em todos os seus grupos.
-        normal: Você receberá e-mail sobre novos tópicos e propostas em todos os seus grupos.
         quiet: Você não receberá e-mail sobre nenhum dos seus grupos.
     user:
       title: Configurações de e-mail para novos grupos
       loud_description: Você receberá e-mail sempre que houver atividade em quaisquer novos grupos que você entrar.
-      normal_description: Você receberá e-mails sobre novos tópicos e propostas em quaisquer novos grupos que você entrar.
       quiet_description: Você não receberá e-mail sobre atividade em quaisquer novos grupos que você entrar.
       apply_to_all: Aplicar estas configurações para todos os meus grupos.
       messages:
         loud: Você receberá e-mail de todas as atividades em novos grupos.
-        normal: Você receberá e-mails sobre novos tópicos e propostas em novos grupos.
         quiet: Você não receberá e-mail sobre novos grupos.
   mute_explanation_modal:
     aria_label: Silenciar tópico

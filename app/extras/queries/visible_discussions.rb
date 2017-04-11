@@ -7,7 +7,7 @@ class Queries::VisibleDiscussions < Delegator
                   joins(:group).
                   where('groups.archived_at IS NULL').
                   published.
-                  includes(:author, {current_motion: [:author, :outcome_author]}, {group: [:parent]})
+                  includes(:author, :polls, {current_motion: [:author, :outcome_author]}, {group: [:parent]})
     @relation = self.class.apply_privacy_sql(user: @user, group_ids: @group_ids, relation: @relation)
     super(@relation)
   end
@@ -43,11 +43,26 @@ class Queries::VisibleDiscussions < Delegator
     end
   end
 
+  def join_to_polls
+    unless @joined_to_polls
+      @relation = @relation.joins("LEFT OUTER JOIN polls p ON p.discussion_id = discussions.id AND p.closed_at IS NULL")
+      @joined_to_polls = true
+    end
+  end
+
   def join_to_starred_motions
     unless @joined_to_starred_motions
       join_to_discussion_readers
       @relation = @relation.joins("LEFT OUTER JOIN motions smo ON smo.discussion_id = discussions.id AND smo.closed_at IS NULL AND dv.starred = true")
       @joined_to_starred_motions = true
+    end
+  end
+
+  def join_to_starred_polls
+    unless @joined_to_starred_polls
+      join_to_discussion_readers
+      @relation = @relation.joins("LEFT OUTER JOIN polls sp ON sp.discussion_id = discussions.id AND sp.closed_at IS NULL AND dv.starred = true")
+      @joined_to_starred_polls = true
     end
   end
 
@@ -108,8 +123,13 @@ class Queries::VisibleDiscussions < Delegator
 
   def sorted_by_importance
     if @user.is_logged_in?
-      join_to_starred_motions && join_to_motions
-      @relation = @relation.order('smo.closing_at ASC, mo.closing_at ASC, dv.starred DESC NULLS LAST, last_activity_at DESC')
+      join_to_starred_polls && join_to_polls && join_to_starred_motions && join_to_motions
+      @relation = @relation.order('sp.closing_at ASC,
+                                   p.closing_at ASC,
+                                   smo.closing_at ASC,
+                                   mo.closing_at ASC,
+                                   dv.starred DESC NULLS LAST,
+                                   last_activity_at DESC')
     else
       @relation = @relation.order(last_activity_at: :desc)
     end

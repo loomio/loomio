@@ -9,11 +9,11 @@
         - if @info.poll.translate_option_name
           %span= t(:"poll_proposal_options.#{poll_option.name}")
         - else
-          %span= @info.display_name_for(poll_option)
+          %span= format_poll_option_name(poll_option, @info.recipient.time_zone)
       %table
         - stance_choices.each do |stance_choice|
           %tr
             %td= render partial: 'poll_mailer/common/avatar', locals: { participant: stance_choice.stance.participant }
             %td.poll-mailer-common-responses__reason
               #{stance_choice.stance.participant.name}:
-              = stance_choice.stance.reason
+              = render_rich_text stance_choice.stance.reason

@@ -3,8 +3,16 @@ module Dev::DashboardHelper
     create_discussion!(:starred_proposal_discussion) { |discussion| star!(discussion); add_proposal!(discussion) }
   end
 
+  def starred_poll_discussion
+    create_discussion!(:starred_poll_discussion, group: create_poll_group) { |discussion| star!(discussion); add_poll!(discussion) }
+  end
+
   def proposal_discussion
     create_discussion!(:proposal_discussion) { |discussion| add_proposal!(discussion) }
+  end
+
+  def poll_discussion
+    create_discussion!(:poll_discussion, group: create_poll_group) { |discussion| add_poll!(discussion) }
   end
 
   def starred_discussion
@@ -58,6 +66,10 @@ module Dev::DashboardHelper
 
   def add_proposal!(discussion, name: 'Test proposal', actor: jennifer)
     MotionService.create(motion: Motion.new(name: name, closing_at: 3.days.from_now, discussion: discussion), actor: actor)
+  end
+
+  def add_poll!(discussion, name: 'Test poll', actor: jennifer)
+    PollService.create(poll: Poll.new(poll_type: :poll, poll_option_names: ["Apple", "Banana"], title: name, closing_at: 3.days.from_now, discussion: discussion), actor: actor)
   end
 
 end

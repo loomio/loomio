@@ -11,18 +11,18 @@ nl-NL:
       <h1>Succes.</h1>
 
       <p>Je hebt het gratis plan voor jouw groep geselecteerd <a
-      href="/g/%{group_key}">%{groep}</a></p>
+      href="/g/%{group_key}">%{group}</a></p>
   email:
     reset_password:
       greeting: >
-        Hoi %{naam}
+        Hoi %{name}
 
         Hier is een link die je kunt gebruiken om je wachtwoord voor je Loomio
         account te herstellen:
       link_text: Herstel je wachtwoord
       signoff: >
         Je hebt deze mail ontvangen omdat je emailadres ingevoerd is in het
-        "Wachtwoord vergeten" formulier op %{host naam}.
+        "Wachtwoord vergeten" formulier op %{hostname}.
 
         Je wachtwoord wordt echter niet veranderd totdat je de link hierboven
         volgt en het formulier invult.
@@ -43,25 +43,25 @@ nl-NL:
     view_group: Bekijk groep
     to_join_group:
       subject: '%{member} heeft je uitgenodigd om deel te nemen aan %{group_name} op Loomio'
-      invitation_text: '%{lid} heeft je uitgenodigd om deel te nemen aan hun groep %{naam groep}.'
+      invitation_text: '%{member} heeft je uitgenodigd om deel te nemen aan hun groep %{group_name}.'
       invitation_text_html: heeft je uitgenodigd om deel te nemen aan hun groep
       link_help: 'Klik op de link hieronder om de uitnodiging te accepteren:'
       accept_invitation: Accepteren uitnodiging
     resend_to_join_group:
-      subject: '%{lid} wacht nog op je deelname aan %{naam groep} op Loomio'
+      subject: '%{member} wacht nog op je deelname aan  %{group_name} op Loomio'
     to_start_group:
       subject: 'Stel je nieuwe Loomio groep in: %{group_name}'
-      hi: 'Hoi %{naam},'
-      intro: 'Klik op de link hieronder om je groep %{naam groep} in te stellen:'
+      hi: 'Hoi %{name},'
+      intro: 'Klik op de link hieronder om je groep %{group_name} in te stellen:'
       intro_html: 'Klink hieronder om je groep in te stellen:'
       start_group: Start mijn groep
       closing_message: 'Als je hulp nodig hebt, of je hebt een vraag, reageer dan gewoon op deze email.'
       thanks: 'Dankjewel,'
       loomio_team: Het Loomio Team
     user_added_to_group:
-      subject: '%{wie} heeft je toegevoegd aan %{welke groep} op Loomio'
-      content: '%{wie} heeft je toegevoegd aan %{welke groep}'
-      content_html: '<strong>%{wie}</strong> heeft je toegevoegd aan <strong>%{welke groep} </strong>.'
+      subject: '%{who} heeft je toegevoegd aan %{which_group} op Loomio'
+      content: '%{who} heeft je toegevoegd aan %{which_group}'
+      content_html: '<strong>%{who}</strong> heeft je toegevoegd aan <strong>%{which_group} </strong>.'
       link_help: 'Klik op de link hieronder om naar de groep te gaan:'
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
@@ -88,15 +88,15 @@ nl-NL:
       marked_as_read_success: Alles uit de e-mail is gemarkeerd als gelezen
     comment_replied_to:
       context_html: antwoordde op je opmerking in
-      context: '%{naam auteur} antwoordde op je opmerking in %{gesprek titel}'
+      context: '%{author_name} antwoordde op je opmerking in %{discussion_title}'
       subject: '%{who} reageerde op jouw reactie in de %{which} groep op Loomio'
     new_comment:
       context: reageerde op
     group_membership_approved:
-      intro: 'Je verzoek om toegang tot groep %{naam groep} is goedgekeurd.'
-      intro_html: 'Je verzoek om toegang tot groep <strong>%{naam groep}</strong> is goedgekeurd.'
-      link_help: 'Klik op de link hieronder om deel te nemen aan %{naam groep} en te beginnen:'
-      subject: 'Je verzoek om toegang tot groep %{naam groep} op Loomio is goedgekeurd.'
+      intro: 'Je verzoek om toegang tot groep %{group_name} is goedgekeurd.'
+      intro_html: 'Je verzoek om toegang tot groep <strong>%{group_name}</strong> is goedgekeurd.'
+      link_help: 'Klik op de link hieronder om deel te nemen aan %{group_name} en te beginnen:'
+      subject: 'Je verzoek om toegang tot groep %{group_name} op Loomio is goedgekeurd.'
       join_group: Neem deel aan groep
       view_group_text: 'Klik hieronder om de de groep op Loomio te bekijken:'
     membership_request:
@@ -107,11 +107,11 @@ nl-NL:
       button_text: Bekijk verzoek
     mentioned:
       context_html: vermeldde je in discussie
-      context: '%{naam auteur} heeft je vermeld in het gesprek %{titel gesprek}'
-      subject: '%{wie} heeft je vermeld in een gesprek "%{welk}" '
+      context: '%{author_name} heeft je vermeld in het gesprek %{discussion_title}'
+      subject: '%{who} heeft je vermeld in een gesprek "%{which}" '
     new_motion_created:
       subject: 'Voorstel: %{proposal_title}'
-      context: 'startte een voorstel in %{volledige naam groep}:'
+      context: 'startte een voorstel in %{group_full_name}:'
     proposal_closed:
       proposal_has_closed: Het voorstel is gesloten.
       specify_outcome_and_notify_group: 'Maak een uitkomst en verzend dit naar je groep!'
@@ -136,23 +136,23 @@ nl-NL:
       change_email_preferences_html: "Verander jouw <a href='%{email_preferences_url}'>e-mail voorkeuren</a> om je uit te schrijven van deze e-mails."
       change_preferences: 'Verander je e-mail-voorkeuren:'
       new_motion_html: 'startte een voorstel:'
-      new_motion: '%{wie} startte een voorstel:'
+      new_motion: '%{who} startte een voorstel:'
       motion_closing_soon: 'Voorstel sluit binnen 24 uur:'
       proposal_closed: 'Voorstel sloot:'
       specify_outcome_html: "Je voorstel is gesloten. <a href='%{link}'>Specificeer een uitkomst</a> om iedereen te laten weten wat het resultaat is."
       specify_outcome: 'Je voorstel is gesloten. Specificeer een uitkomst om iedereen te laten weten wat het resultaat is:'
       outcome_created_html: 'deelde een uitkomst van het voorstel:'
-      outcome_created: '%{wie} deelde een uitkomst van het voorstel:'
+      outcome_created: '%{who} deelde een uitkomst van het voorstel:'
       you_agreed: 'Je %{past_tense_position}'
     analytics:
       subject: "%{which_group}'s week op Loomio"
-      title: 'Je samenvatting van de week beginnend %{sinds}'
+      title: 'Je samenvatting van de week beginnend %{since}'
       table_header: 'Naam | Moties gemaakt | Gesprekken gemaakt | Opmerkingen gemaakt | Stemmen gemaakt'
       stats: '<strong>%{active_members}</strong> van <strong>%{group_members}</strong> in je groep waren in de afgelopen week actief. Je groep resulteerde in <strong>%{motions}</strong> en had <strong>%{comments}</strong> in <strong>%{discussions}</strong>.'
       contact_us: "Op zoek naar meer statistieken? <a href='%{contact_link}'>Neem contact op</a>."
       no_activity: "Wil je met een van onze samenwerkingscoaches praten over hoe je het meeste uit Loomio haalt? <a href='%{contact_link}'>Neem contact op</a>"
-      trial_subscription: "%{welke groep} maakt gebruik van <strong>gratis proefabonnement</strong> eindigend op<strong>%{eindigt op}</strong>. Je kunt hier een abonnement kiezen <a href='%{abonnement link}'></a>."
-      trial_expired: '%{welke groep} heeft het einde van zijn gratis Loomio proefperiode bereikt.'
+      trial_subscription: "%{which_group} maakt gebruik van <strong>gratis proefabonnement</strong> eindigend op<strong>%{expires_at}</strong>. Je kunt hier een abonnement kiezen <a href='%{subscription_link}'></a>."
+      trial_expired: '%{which_group} heeft het einde van zijn gratis Loomio proefperiode bereikt.'
       heart: ❤ van team Loomio
       unsubscribe: "Deze email is naar de coördinatoren van actieve Loomio groepen gestuurd.<br />Als je deze emails liever niet ontvangt, <a href='%{contact_link}'>laat het ons weten</a>."
       user_table:
@@ -206,7 +206,7 @@ nl-NL:
     get_started_for_free: Ga gratis aan de slag
     gift_body: Donatie-ondersteund prijsplan voor gemeenschapsgroepen
     standard_body_html: 'Alles wat je nodig hebt voor <nobr>een groep.</nobr>'
-    pro_body_html: Voor organisaties met meerdere groepen
+    pro_body_html: 'Voor organisaties met <nobr>meerdere groepen</nobr>'
     one_group: een groep
     unlimited_members: onbeperkt aantal leden
     unlimited_decisions: onbeperkt aantal beslissingen
@@ -272,7 +272,7 @@ nl-NL:
 
       1. Upload een [profiel foto](/profiel)
 
-      2. Stel jezelf voor in de [Welkom discussie](%{discussie url})
+      2. Stel jezelf voor in de [Welkom discussie](%{thread_url})
 
       3. Post in bestaande discussie, of start een nieuwe
 
@@ -409,12 +409,49 @@ nl-NL:
   poll_mailer:
     common:
       or: of
+      why_send_this: 'Je ontvangt deze e-mail omdat %{reason}'
       view_on_loomio: Bekijk dit Loomio
+      unsubscribe: Abonnement opzeggen
       results: Resultaten
       responses: Antwoorden
       change_your_stance: Veranderen
+      create_outcome: Deel uitkomst
       your_response: Je antwoord
       please_respond: Graag antwoorden
+    proposal:
+      subject:
+        poll_created: '%{actor} startte een voorstel: %{title}'
+        poll_updated: '%{actor} paste het voorstel aan: %{title} '
+        poll_closing_soon_author: 'Je voorstel sluit over 24 uur: %{title}'
+        outcome_created: '%{actor} deelde de uitkomst van een voorstel: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> heeft een voorstel gestart'
+        poll_updated: '<strong>%{actor}</strong> heeft het voorstel aangepast'
+        poll_closing_soon: "<strong>%{actor}</strong>'s voorstel sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen."
+        poll_closing_soon_author: Je voorstel sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.
+        poll_expired: 'Je voorstel is <strong>gesloten</strong>. Neem alstublieft de tijd om na te gaan wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
+        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een voorstel gedeeld.'
+    poll:
+      subject:
+        poll_created: ' %{actor} heeft een peiling gestart: %{title}'
+        poll_updated: '%{actor} heeft de peiling aangepast: %{title}'
+        poll_closing_soon: 'Peiling sluit over 24 uur: %{title}'
+        poll_closing_soon_author: 'Je peiling sluit over 24 uur: %{title}'
+        outcome_created: '%{actor} heeft een uitkomst van een peiling gedeeld: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> heeft een peiling gestart'
+        poll_updated: '<strong>%{actor}</strong> heeft een peiling aangepast'
+        poll_closing_soon: "<strong>%{actor}</strong> 's peiling sluit over 24 uur. Nu is een goed moment om te stemmen, je te bedenken, of anderen aan te moedigen om deel te nemen."
+        poll_closing_soon_author: Je peiling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.
+        poll_expired: 'Je peiling is <strong>gesloten</strong>. Neem alstublieft de tijd om na te gaan wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
+        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een peiling gedeeld.'
     count:
-      body:
-        voted: '<strong>%{participant}</strong> antwoordde:'
+      subject:
+        poll_updated: '%{actor} heeft de telling aangepast: %{title}'
+        poll_closing_soon: 'Telling sluit over 24 uur: %{title}'
+        poll_closing_soon_author: 'Je telling sluit over 24 uur: %{title}'
+      header:
+        poll_updated: '<strong>%{actor}</strong> heeft de telling aangepast'
+        poll_closing_soon: "<strong>%{actor}</strong>'s telling sluit over 24 uur."
+        poll_closing_soon_author: Je telling sluit over 24 uur - nu is een goed moment om mensen er aan te herinneren of de deadline op te schuiven indien nodig.
+        poll_expired: 'Hier zijn de resultaten van je telling. Indien nodig, <strong>deel een uitkomst</strong> om mensen te laten weten wat er hierna gaat gebeuren.'

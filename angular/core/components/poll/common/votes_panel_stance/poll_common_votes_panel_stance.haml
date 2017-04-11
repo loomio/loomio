@@ -1,0 +1,7 @@
+.poll-common-votes-panel__stance
+  %user_avatar.lmo-flex__no-shrink{user: "stance.participant()", size: "small"}
+  .poll-common-votes-panel__stance-content
+    .poll-common-votes-panel__stance-name-and-option
+      %strong> {{stance.participant().name}}
+      %poll_common_stance_choice{stance_choice: "choice", ng-if: "choice.score > 0", ng-repeat: "choice in stance.stanceChoices()"}
+    .poll-common-votes-panel__stance-reason.lmo-markdown-wrapper{ng-if: "stance.reason", marked: "stance.reason"}

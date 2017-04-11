@@ -1,0 +1,15 @@
+.poll-mailer-meeting-responses
+  %h3= t(:"poll_mailer.common.responses")
+  %table
+    - @info.poll.stances.with_reason.each do |stance|
+      %tr
+        %td
+          %table
+            %td= render 'poll_mailer/common/avatar', participant: stance.participant
+            %td.poll-mailer-common-responses__reason
+              %strong
+                #{stance.participant.name}:
+      %tr
+        %td= render_rich_text stance.reason
+      %tr
+        %td= render 'poll_mailer/dot_vote/stance_chart', stance: stance

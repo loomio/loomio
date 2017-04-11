@@ -1,0 +1,18 @@
+.poll-common-bar-chart {
+  @include displayFlex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.poll-common-bar-chart__bar {
+  height: 48px;
+  min-width: 4px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 48px;
+  width: 100%;
+  padding-left: 8px;
+}

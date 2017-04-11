@@ -10,14 +10,14 @@ class API::PollsController < API::RestfulController
     instantiate_collection do |collection|
       collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
       collection = collection.active                         if params[:active]
-      collection.order(:created_at)
+      collection
     end
     respond_with_collection
   end
 
   def closed
     instantiate_collection do |collection|
-      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids).order(closed_at: :desc)
+      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids)
     end
     respond_with_collection
   end
@@ -37,10 +37,10 @@ class API::PollsController < API::RestfulController
 
   private
   def default_scope
-    super.merge my_stances_cache: MyStancesCache.new(participant: current_participant, polls: collection || Array(resource))
+    super.merge(my_stances_cache: Caches::Stance.new(user: current_participant, parents: resources_to_serialize))
   end
 
   def accessible_records
-    Queries::VisiblePolls.new(user: current_user)
+    Queries::VisiblePolls.new(user: current_user).joins(:discussion).order(created_at: :desc)
   end
 end

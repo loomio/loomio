@@ -27,7 +27,6 @@ it:
     more_help: Altro supporto
     models:
       proposal: Proposta
-    copy: Copia testo
     copied: Copiato negli appunti
     action:
       close: Chiudi

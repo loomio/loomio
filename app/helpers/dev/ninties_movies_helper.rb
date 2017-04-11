@@ -72,6 +72,19 @@ module Dev::NintiesMoviesHelper
     @group
   end
 
+  def create_poll_group
+    unless @poll_group
+      @poll_group = Group.create!(name: 'Dirty Dancing Shoes',
+                             group_privacy: 'closed',
+                             discussion_privacy_options: 'public_or_private',
+                             features: {use_polls: true})
+      @poll_group.add_admin!  patrick
+      @poll_group.add_member! jennifer
+      @poll_group.add_member! emilio
+    end
+    @poll_group
+  end
+
   def multiple_groups
     @groups = []
     10.times do

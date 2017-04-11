@@ -3,13 +3,9 @@ class User < ActiveRecord::Base
   include ReadableUnguessableUrls
   include MessageChannel
   include HasExperiences
-  include HasGravatar
+  include HasAvatar
+  include UsesWithoutScope
 
-  AVATAR_KINDS = %w[initials uploaded gravatar]
-  LARGE_IMAGE = 170
-  MED_LARGE_IMAGE = 70
-  MEDIUM_IMAGE = 50
-  SMALL_IMAGE = 30
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
@@ -23,17 +19,15 @@ class User < ActiveRecord::Base
 
   has_attached_file :uploaded_avatar,
     styles: {
-              large: "#{User::LARGE_IMAGE}x#{User::LARGE_IMAGE}#",
-              medlarge: "#{User::MED_LARGE_IMAGE}x#{User::MED_LARGE_IMAGE}#",
-              medium: "#{User::MEDIUM_IMAGE}x#{User::MEDIUM_IMAGE}#",
-              small: "#{User::SMALL_IMAGE}x#{User::SMALL_IMAGE}#",
-            }
+      small:  "#{AVATAR_SIZES[:small]}x#{AVATAR_SIZES[:small]}#",
+      medium: "#{AVATAR_SIZES[:medium]}x#{AVATAR_SIZES[:medium]}#",
+      large:  "#{AVATAR_SIZES[:large]}x#{AVATAR_SIZES[:large]}#",
+    }
+
   validates_attachment :uploaded_avatar,
-    size: { in: 0..User::MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
+    size: { in: 0..MAX_AVATAR_IMAGE_SIZE_CONST.kilobytes },
     content_type: { content_type: /\Aimage/ },
     file_name: { matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i] }
-
-  validates_inclusion_of :avatar_kind, in: AVATAR_KINDS
 
   validates_uniqueness_of :username
   validates_length_of :username, maximum: 30
@@ -248,28 +242,6 @@ class User < ActiveRecord::Base
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?
     super && !deactivated_at
-  end
-
-  def avatar_url(size=nil)
-    size = size ? size.to_sym : :medium
-    case size
-    when :small
-      pixels = User::SMALL_IMAGE
-    when :medium
-      pixels = User::MEDIUM_IMAGE
-    when :"med-large"
-      pixels = User::MED_LARGE_IMAGE
-    when :large
-      pixels = User::LARGE_IMAGE
-    else
-      pixels = User::SMALL_IMAGE
-    end
-
-    if avatar_kind == "gravatar"
-      gravatar_url(:size => pixels)
-    else
-      uploaded_avatar.url(size)
-    end
   end
 
   def locale
