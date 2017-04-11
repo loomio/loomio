@@ -36,20 +36,26 @@
   margin-top: 43px;
 }
 
-.poll-common-form__actions {
-  @include displayFlex;
-  justify-content: flex-end;
-  align-items: center;
+.poll-common-form__list-item{
+  padding: 0 2px !important;
 }
 
 .poll-common-checkbox-option {
   @include displayFlex;
   margin-bottom: 16px;
+  padding-left: 2px;
 }
+
 .poll-common-checkbox-option__text{
   flex-grow: 1
 }
 
-.poll-common__actions {
-  justify-content: space-between;
+.poll-common-form__label {
+  overflow: visible !important;
+  color: rgba(0,0,0,0.38) !important;
+  font-size: 11px;
+}
+
+.md-input-compensate {
+  margin-top: -26px;
 }
