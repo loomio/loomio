@@ -55,5 +55,5 @@
       %attachment_preview{attachment: "attachment", mode: "context"}
 
   .context-panel__actions
-    %button.context-panel__add-comment.lmo-card-minor-action.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
-    %button.context-panel__edit.lmo-card-minor-action.lmo-no-print.lmo-card-minor-action{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}
+    %md-button.md-accent.context-panel__add-comment.lmo-no-print{ng-click: "scrollToCommentForm()", translate: "thread_context.add_comment", ng-if: "canAddComment()"}
+    %md-button.md-accent.context-panel__edit.lmo-no-print{ng-click: "editThread()", translate: "thread_context.edit_thread", ng-if: "canEditThread()"}

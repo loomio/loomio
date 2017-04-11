@@ -18,7 +18,7 @@
       %outlet{name: "after-comment-form", model: "comment"}
       %attachment_form{model: "comment"}
       %md-button#post-comment-cancel{translate: "common.action.cancel", ng-click: "cancel($event)", ng-hide: "comment.isNew()"}
-      %a.comment-form-button{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
+      %a.md-button.md-accent{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
         %span{translate: "common.formatting_help.label"}
       %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
     %validation_errors{subject: "comment", field: "file"}

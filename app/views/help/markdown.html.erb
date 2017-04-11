@@ -12,10 +12,6 @@ td {
 
 <%= t(:'markdown.headers.body')  %>
 
-<%= t(:'markdown.paragraphs.title') %>
-
-<%= t(:'markdown.paragraphs.body')  %>
-
 <%= t(:'markdown.emphasis.title')  %>
 
 <%= t(:'markdown.emphasis.body')  %>
@@ -38,6 +34,3 @@ td {
 <script>
   document.getElementById('content').innerHTML = marked(document.getElementById('markdown-src').innerHTML)
 </script>
-
-
-
