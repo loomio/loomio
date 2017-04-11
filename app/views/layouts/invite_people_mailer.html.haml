@@ -5,6 +5,8 @@
   %body
     .invite-people-mailer
       .invite-people-mailer__container
-        = render '/mailer_header'
+        .mailer__header
+          .mailer__header-logo
+            = image_tag "logo-orange-white-800.png", alt: "Loomio logo", class: "mailer__header-logo-image"
         .invite-people-mailer__body
           = yield
