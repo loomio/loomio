@@ -12,9 +12,10 @@ angular.module('loomioApp').directive 'pollMeetingTimeField', ->
       $scope.times.push moment("2015-01-01 #{i}:30").format('h:mm a')
 
     $scope.addOption = ->
-      return unless $scope.option.date
-      $scope.poll.pollOptionNames.push determineOptionName()
-      $scope.option = {}
+      optionName = determineOptionName()
+      return unless $scope.option.date && !_.contains($scope.poll.pollOptionNames, optionName)
+      $scope.poll.pollOptionNames.push optionName
+    $scope.$on 'addOption', $scope.addOption
 
     $scope.hasTime = ->
       ($scope.option.time or "").length > 0
