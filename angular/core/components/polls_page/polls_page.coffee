@@ -3,13 +3,13 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
 
   @pollIds = []
   from = 0
-  per  = 10
+  per  = 50
 
   Records.polls.searchResultsCount().then (response) =>
     @pollsCount = response
 
   @loadMore = =>
-    Records.polls.search(from: from, per: 1).then (response) =>
+    Records.polls.search(from: from, per: per).then (response) =>
       from += per
       @pollIds = @pollIds.concat _.pluck(response.polls, 'id')
   LoadingService.applyLoadingFunction @, 'loadMore'
@@ -27,7 +27,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
 
   @searchPolls = =>
     if @fragment
-      Records.polls.search(@fragment, per: 10)
+      Records.polls.search(@fragment, per: per)
     else
       $q.when()
   LoadingService.applyLoadingFunction @, 'searchPolls'

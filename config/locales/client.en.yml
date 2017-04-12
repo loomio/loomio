@@ -16,6 +16,8 @@ en:
     notification_volume: 'Notification Volume'
     group: 'Group'
     groups: 'Groups'
+    threads: 'Threads'
+    settings: 'Settings'
     help: 'Help'
     privacy:
       privacy: 'Privacy'
@@ -242,14 +244,11 @@ en:
     sign_in: "Log in to join the conversation"
 
   sidebar:
-    my_decisions: 'My decisions'
-    my_threads: 'My threads'
-    my_groups: 'My groups'
-    my_settings: 'My settings'
-    recent: 'Recent'
-    unread: 'Unread'
-    muted: 'Muted'
-    start_group: 'Start new group'
+    decisions: Decisions
+    recent_threads: 'Recent threads'
+    unread_threads: 'Unread threads ({{count}})'
+    muted_threads: 'Muted threads'
+    start_group: 'New group'
     explore: 'Public groups'
     edit_profile: 'Edit profile'
     email_settings: 'Email settings'
@@ -257,6 +256,7 @@ en:
     contact: 'Contact Loomio'
     sign_out: 'Sign out'
     start_thread: New thread
+    start_decision: New decision
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
@@ -1347,7 +1347,7 @@ en:
     share_poll: Share poll
     share_proposal: Share proposal
     share_count: Share check
-    start_poll: Start a new poll
+    start_poll: Start a decision
 
   poll_common_attachment_form:
     label: Attachments
@@ -1623,7 +1623,7 @@ en:
     title: Share poll - {{title}}
 
   polls_page:
-    heading: My Decisions
+    heading: Decisions
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
-    start_new_poll: Make a decision
+    start_new_poll: New decision
