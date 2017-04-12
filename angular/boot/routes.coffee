@@ -1,6 +1,8 @@
 window.Loomio.routes = [
   {path: '/dashboard', component: 'dashboardPage' },
   {path: '/dashboard/:filter', component: 'dashboardPage'},
+  {path: '/polls', component: 'pollsPage'},
+  {path: '/polls/:filter', component: 'pollsPage'},
   {path: '/inbox', component: 'inboxPage' },
   {path: '/groups', component: 'groupsPage' },
   {path: '/explore', component: 'explorePage'},

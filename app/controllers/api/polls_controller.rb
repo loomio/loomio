@@ -7,18 +7,7 @@ class API::PollsController < API::RestfulController
   end
 
   def index
-    instantiate_collection do |collection|
-      collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
-      collection = collection.active                         if params[:active]
-      collection
-    end
-    respond_with_collection
-  end
-
-  def closed
-    instantiate_collection do |collection|
-      collection.closed.where(discussion_id: load_and_authorize(:group).discussion_ids)
-    end
+    instantiate_collection { |collection| collection.where(discussion: load_and_authorize(:discussion)) }
     respond_with_collection
   end
 
@@ -28,14 +17,24 @@ class API::PollsController < API::RestfulController
   end
 
   def search
-    params.require(:q)
-    instantiate_collection do |collection|
-      collection.where(discussion_id: load_and_authorize(:group).discussion_ids).search_for(params[:q])
-    end
+    self.collection = page_collection poll_search.perform(search_filters)
     respond_with_collection
   end
 
+  def search_results_count
+    render json: poll_search.results_count
+  end
+
   private
+
+  def poll_search
+    PollSearch.new(current_user)
+  end
+
+  def search_filters
+    params.slice(:group_key, :status, :user, :query)
+  end
+
   def default_scope
     super.merge(my_stances_cache: Caches::Stance.new(user: current_participant, parents: resources_to_serialize))
   end

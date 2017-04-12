@@ -47,6 +47,11 @@
   color: $navbar-default-color;
 }
 
+.sidebar__list-item-icon.material-icons {
+  position: relative;
+  top: 8px;
+}
+
 .fa-envelope-o {
   font-size: 20px;
 }

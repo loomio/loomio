@@ -54,6 +54,8 @@ class Poll < ActiveRecord::Base
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
   scope :lapsed_but_not_closed, -> { active.where("polls.closing_at < ?", Time.now) }
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
+  scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_type": participant.class.to_s, "stances.participant_id": participant.id) }
+  scope :authored_by, ->(user) { where(author: user) }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      active

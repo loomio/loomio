@@ -242,6 +242,7 @@ en:
     sign_in: "Log in to join the conversation"
 
   sidebar:
+    my_decisions: 'My decisions'
     my_threads: 'My threads'
     my_groups: 'My groups'
     my_settings: 'My settings'
@@ -1620,3 +1621,9 @@ en:
 
   share_poll_page:
     title: Share poll - {{title}}
+
+  polls_page:
+    heading: My Decisions
+    search_placeholder: Search for polls...
+    polls_count: Displaying {{count}} of {{total}} polls
+    start_new_poll: Make a decision

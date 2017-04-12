@@ -17,7 +17,7 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
   LoadingService.applyLoadingFunction @, 'loadMore'
 
   @searchPolls = =>
-    Records.polls.search(@group.key, @fragment, per: 10)
+    Records.polls.search(@fragment, per: 10, group_key: @group.key)
   LoadingService.applyLoadingFunction @, 'searchPolls'
 
   @pollCollection =

@@ -2,9 +2,12 @@
 require 'rails_helper'
 
 describe PollsController do
+  let(:user) { create :user }
   let(:group) { create :group, is_visible_to_public: true }
   let(:discussion) { create :discussion, private: false, group: group }
-  let(:poll) { create :poll }
+  let(:poll) { create :poll, author: user }
+  let(:another_poll) { create :poll }
+  let(:closed_poll) { create :poll, author: user, closed_at: 1.day.ago }
 
   describe 'show' do
     it 'sets metadata for public polls' do
@@ -21,7 +24,7 @@ describe PollsController do
 
   describe 'share' do
     it 'allows the author to share a poll' do
-      sign_in poll.author
+      sign_in user
       get :share, key: poll.key
       expect(response.status).to eq 200
     end

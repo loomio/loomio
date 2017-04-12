@@ -1,4 +1,4 @@
 .poll-common-accordion
-  .poll-common-accordion__poll{ng-repeat: "poll in pollCollection.polls()"}
+  .poll-common-accordion__poll{ng-repeat: "poll in pollCollection.polls() | orderBy:'-createdAt' track by poll.id"}
     %poll_common_collapsed{poll: "poll", ng-if: "selectedPollId != poll.id", ng-click: "selectPoll(poll)"}
     %poll_common_card{poll: "poll", ng-if: "selectedPollId == poll.id"}
