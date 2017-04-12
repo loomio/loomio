@@ -25,10 +25,14 @@ class Clients::Slack < Clients::Base
   end
 
   def scope
-    "users:read,channels:read,team:read,chat:write:bot"
+    %w(users:read channels:read team:read chat:write:bot).freeze
   end
 
   private
+
+  def default_is_success
+    ->(response) { response.success? && JSON.parse(response.body)['ok'].present? }
+  end
 
   def host
     "https://slack.com/api".freeze

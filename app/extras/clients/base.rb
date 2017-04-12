@@ -7,12 +7,12 @@ class Clients::Base
     @token  = token
   end
 
-  def get(path, params = {}, success = default_success, failure = default_failure)
-    perform(:get, path, { query: default_params.merge(params) }, success, failure)
+  def get(path, params = {}, success = default_success, failure = default_failure, is_success = default_is_success)
+    perform(:get, path, { query: default_params.merge(params) }, success, failure, is_success)
   end
 
-  def post(path, params = {}, success = default_success, failure = default_failure)
-    perform(:post, path, { body: default_params.merge(params) }, success, failure)
+  def post(path, params = {}, success = default_success, failure = default_failure, is_success = default_is_success)
+    perform(:post, path, { body: default_params.merge(params) }, success, failure, is_success)
   end
 
   def scope
@@ -21,10 +21,18 @@ class Clients::Base
 
   private
 
-  def perform(method, path, params, success, failure)
-    Clients::Response.new(method, [params.delete(:host) || host, path].join('/'), params).tap do |response|
+  def perform(method, path, params, success, failure, is_success)
+    Clients::Response.new(method, [params.delete(:host) || host, path].join('/'), params, is_success).tap do |response|
       response.callback = if response.success? then success else failure end
     end
+  end
+
+  # determines whether the response should be deemed successful or not
+  # we override this for things like requesting permissions from facebook,
+  # where the response comes back with status 200, but the permissions contained
+  # within aren't sufficient to operate the API
+  def default_is_success
+    ->(response) { response.success? }
   end
 
   def default_success

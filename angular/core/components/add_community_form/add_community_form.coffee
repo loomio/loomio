@@ -27,7 +27,6 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
     $scope.fetch()
 
     $scope.reauth = ->
-      # Records.identities.find($scope.community.identityId).destroy()
       CommunityService.fetchAccessToken($scope.community.communityType)
 
     $scope.groups = ->

@@ -1,4 +1,4 @@
-Clients::Response = Struct.new(:method, :url, :params) do
+Clients::Response = Struct.new(:method, :url, :params, :success) do
   attr_accessor :callback
 
   def json
@@ -14,7 +14,7 @@ Clients::Response = Struct.new(:method, :url, :params) do
   end
 
   def success?
-    response.success? && (response['ok'].nil? || response['ok'])
+    success.call(response)
   end
 
   def headers

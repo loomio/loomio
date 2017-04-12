@@ -13,6 +13,16 @@ class Identities::Facebook < Identities::Base
   end
 
   def admin_groups
-    client.fetch_admin_groups(self.uid)
+    if permissions_response.success?
+      client.fetch_admin_groups(self.uid)
+    else
+      permissions_response
+    end
+  end
+
+  private
+
+  def permissions_response
+    @permission_response ||= client.fetch_permissions(self.uid)
   end
 end
