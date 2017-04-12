@@ -1,0 +1,17 @@
+.loading-wrapper.lmo-one-column-layout
+  %loading{ng-if: "!pollsPage.loaded"}
+  %main.polls-page{ng-if: "pollsPage.loaded"}
+    .lmo-card
+      %h2.lmo-h2{translate: "polls_page.heading"}
+      %md-button.md-primary.md-raised{ng-click: "pollsPage.startNewPoll()"}
+        .material-icons.polls-page__icon add
+        %span{translate: "polls_page.start_new_poll"}
+      %md-input-container.previous-polls-page__search.lmo-search-container{md-no-float: "true"}
+        %i.material-icons search
+        %input{ng-model: "pollsPage.fragment", placeholder: "{{'polls_page.search_placeholder' | translate}}", ng-change: "pollsPage.searchPolls()", ng-model-options: "{debounce: 250}"}
+      %h3{"polls_page.my_polls"}
+      %poll_common_accordion{poll_collection: "pollsPage.pollCollection"}
+      %loading{ng-if: "pollsPage.searchPollsExecuting || pollsPage.loadMoreExecuting"}
+      .previous-polls-page__count{translate: "polls_page.polls_count", translate-value-count: "{{pollsPage.loadedCount()}}", translate-value-total: "{{pollsPage.pollsCount}}"}
+      .previous-polls-page__load-more
+        %md-button.md-primary{translate: "poll_common.load_more", ng-click: "pollsPage.loadMore()", ng-if: "pollsPage.canLoadMore()"}
