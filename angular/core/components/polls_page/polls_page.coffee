@@ -1,20 +1,23 @@
-angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $rootScope, Records, AbilityService, TranslationService, LoadingService, ModalService, PollCommonStartModal) ->
+angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $rootScope, Records, AbilityService, TranslationService, LoadingService, ModalService, PollCommonStartModal, RecordLoader) ->
   $rootScope.$broadcast('currentComponent', { page: 'pollsPage'})
 
   @pollIds = []
-  from = 0
-  per  = 50
+  @loader = new RecordLoader
+    collection: 'polls'
+    path: 'search'
+    per: 50
 
   Records.polls.searchResultsCount().then (response) =>
     @pollsCount = response
 
   @loadMore = =>
-    Records.polls.search(from: from, per: per).then (response) =>
-      from += per
+    @loader.loadMore().then (response) =>
       @pollIds = @pollIds.concat _.pluck(response.polls, 'id')
   LoadingService.applyLoadingFunction @, 'loadMore'
-  @loadMore().then(null, (error) -> $rootScope.$broadcast('pageError', error))
-             .finally => @loaded = true
+  @loader.fetchRecords().then(
+    (response) => @pollIds = _.pluck(response.polls, 'id'),
+    (error)    -> $rootScope.$broadcast('pageError', error)
+  ).finally => @loaded = true
 
   @loadedCount = ->
     @pollCollection.polls().length
