@@ -1,5 +1,4 @@
 module DeviseControllerHelper
-  include AutodetectTimeZone
   include OmniauthAuthenticationHelper
 
   protected

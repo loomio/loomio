@@ -4,6 +4,7 @@ class Poll < ActiveRecord::Base
   include MakesAnnouncements
   TEMPLATES = YAML.load_file('config/poll_templates.yml')
   COLORS    = YAML.load_file('config/colors.yml')
+  TIMEZONES = YAML.load_file('config/timezones.yml')
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options
                        must_have_options chart_type has_option_icons
@@ -36,7 +37,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, dependent: :destroy
+  has_many :poll_options, ->(object) { order(object.poll_option_order) }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -118,6 +119,10 @@ class Poll < ActiveRecord::Base
 
   def active?
     closed_at.nil?
+  end
+
+  def poll_option_order
+    if dates_as_options then { name: :asc } else :id end
   end
 
   def poll_option_names

@@ -3,8 +3,9 @@
     %thead
       %tr
         %td
+          %time_zone_select
         %td.poll-meeting-chart-panel__cell{ng-repeat: "option in poll.pollOptions() track by option.id"}
-          %poll_meeting_time{name: "option.name"}
+          %poll_meeting_time{name: "option.name", zone: "zone"}
     %tbody
       %tr
         %td{translate: "poll_meeting_chart_panel.total"}

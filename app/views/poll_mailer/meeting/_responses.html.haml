@@ -6,4 +6,4 @@
         %td= render partial: 'poll_mailer/common/avatar', locals: { participant: stance.participant }
         %td.poll-mailer-common-responses__reason
           #{stance.participant.name}:
-          = stance.reason
+          = render_rich_text stance.reason

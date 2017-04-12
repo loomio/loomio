@@ -1,6 +1,6 @@
 class Visitor < ActiveRecord::Base
   include NullUser
-  include HasGravatar
+  include HasAvatar
   include UsesWithoutScope
   has_secure_token :participation_token
 
