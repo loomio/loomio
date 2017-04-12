@@ -30,7 +30,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
 
   @searchPolls = =>
     if @fragment
-      Records.polls.search(@fragment, per: 10)
+      Records.polls.search(@fragment, per: per)
     else
       $q.when()
   LoadingService.applyLoadingFunction @, 'searchPolls'

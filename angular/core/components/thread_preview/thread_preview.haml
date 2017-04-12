@@ -3,7 +3,7 @@
 
     .thread-preview__icon{ng-if: "usePolls()"}
       %user_avatar{ng-if: "!thread.activePoll()", user: "thread.author()", size: "medium"}
-      %poll_common_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
+      %poll_common_chart_preview{ng-if: "thread.activePoll()", poll: "thread.activePoll()"}
 
     .thread-preview__icon{ng-if: "!usePolls()"}
       %user_avatar{ng-if: "!thread.activeProposal()", user: "thread.author()", size: "medium"}
