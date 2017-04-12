@@ -760,7 +760,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.0.1)
   devise (~> 4.2.0)
   devise-i18n
-  discriminator
+  discriminator (~> 0.1.1)
   doorkeeper (~> 3.0.1)
   doorkeeper-i18n
   dotenv-rails
