@@ -18,6 +18,7 @@ angular.module('loomioApp').factory 'RecordLoader', (Records) ->
         params: _.merge(@params, { from: @from, per: @per })
       .then (data) =>
         @numLoaded += data[@collection].length
+        data
 
     loadMore: ->
       @from += @per
