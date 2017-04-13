@@ -27,6 +27,11 @@ class API::PollsController < API::RestfulController
     respond_with_resource
   end
 
+  def publish
+    @event = service.publish(poll: load_resource, params: publish_params, actor: current_user)
+    respond_with_resource
+  end
+
   def search
     params.require(:q)
     instantiate_collection do |collection|
@@ -36,6 +41,11 @@ class API::PollsController < API::RestfulController
   end
 
   private
+
+  def publish_params
+    params.slice(:community_id, :message)
+  end
+
   def default_scope
     super.merge(my_stances_cache: Caches::Stance.new(user: current_participant, parents: resources_to_serialize))
   end

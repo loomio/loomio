@@ -10,10 +10,10 @@
         %img.poll-common-share-form__community-icon{class: "poll-common-share-form__community-icon--{{community.communityType}}", ng-src: "/img/{{community.communityType}}-icon.svg"}
         .poll-common-share-form__h3.lmo-inline-action {{community.displayName()}}
 
-      %md-button.lmo-inline-action{ng-click: "remind(community)", ng-if: "!community.reminded && !community.processing"}
+      %md-button.lmo-inline-action{ng-click: "poll.publish(community)", ng-if: "!poll.published && !poll.processing"}
         %i.material-icons redo
-      %loading{ng-if: "community.processing"}
-      %span.poll-common-share-form__reminded{ng-if: "community.reminded", translate: "poll_common_share_form.reminded"}
+      %loading{ng-if: "poll.processing"}
+      %span.poll-common-share-form__reminded{ng-if: "poll.published", translate: "poll_common_share_form.reminded"}
       %md-button.lmo-inline-action{ng-click: "revoke(community)"}
         %i.material-icons clear
 

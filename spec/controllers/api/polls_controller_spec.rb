@@ -56,6 +56,37 @@ describe API::PollsController do
     end
   end
 
+  describe 'publish' do
+    let(:another_poll) { create :poll }
+    let(:community) { create :facebook_community, poll_id: poll.id }
+    let(:another_community) { create :facebook_community }
+
+    before { sign_in user }
+
+    it 'creates a poll publish event' do
+      expect { post :publish, id: poll.id, community_id: community.id }.to change { Event.where(kind: :poll_published).count }.by(1)
+      e = Events::PollPublished.last
+      expect(e.eventable).to eq poll
+      expect(e.custom_fields['community_id'].to_i).to eq community.id
+    end
+
+    it 'can save a message with the publish' do
+      post :publish, id: poll.id, community_id: community.id, message: "a message"
+      e = Events::PollPublished.last
+      expect(e.custom_fields['message']).to eq "a message"
+    end
+
+    it 'authorizes the poll' do
+      post :publish, id: another_poll.id, community_id: community.id
+      expect(response.status).to eq 403
+    end
+
+    it 'authorizes the community' do
+      post :publish, id: poll.id, community_id: another_community.id
+      expect(response.status).to eq 403
+    end
+  end
+
   describe 'create' do
     it 'creates a poll' do
       sign_in user

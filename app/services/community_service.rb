@@ -18,13 +18,6 @@ class CommunityService
     EventBus.broadcast('community_update', community, actor)
   end
 
-  def self.remind(community:, actor:, poll:)
-    actor.ability.authorize! :remind, community
-
-    EventBus.broadcast('community_remind', community, poll, actor)
-    Events::CommunityReminded.publish!(community, actor, poll)
-  end
-
   def self.destroy(community:, actor:)
     actor.ability.authorize! :destroy, community
 

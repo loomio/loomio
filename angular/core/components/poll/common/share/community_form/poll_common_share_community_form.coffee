@@ -9,9 +9,6 @@ angular.module('loomioApp').directive 'pollCommonShareCommunityForm', (Records, 
       return unless community = CommunityService.buildCommunity($scope.poll, type)
       ModalService.open AddCommunityModal, community: -> community
 
-    $scope.remind = (community) ->
-      community.remind($scope.poll)
-
     $scope.noCommunities = ->
       !_.find $scope.poll.communities(), (community) -> !community.revoked
 
