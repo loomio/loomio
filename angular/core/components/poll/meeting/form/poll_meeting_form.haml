@@ -14,10 +14,11 @@
   .md-input-compensate
     %poll_common_attachment_form{poll: "poll"}
 
-  %time_zone_select
-  
+
   %md-list.md-block
-    %label.poll-common-form__options-label.md-caption{translate: "poll_common_form.options"}
+    .lmo-flex.lmo-flex__space-between.lmo-flex__center
+      %label.poll-common-form__options-label.md-caption.lmo-flex__grow{translate: "poll_common_form.options"}
+      %time_zone_select.lmo-flex__shrink{zone: "poll.customFields.time_zone"}
     %validation_errors{subject: "poll", field: "pollOptions"}
     .poll-meeting-form__options
       %md-list-item.poll-meeting-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
@@ -28,7 +29,6 @@
 
   .md-input-compensate
     %poll_common_closing_at_field.md-block.poll-meeting-form__closing-at{poll: "poll"}
-
 
   .md-input-compensate
     %poll_common_notify_group{model: "poll"}

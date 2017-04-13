@@ -7,9 +7,6 @@ $small-max-px:  $small-max  + px;
 $medium-max-px: $medium-max + px;
 $max-container-size: 1120px;
 
-// z-indexes
-$over-intercom: 2147483001; // On top of Intercom's arbitrarily high widget
-
 @mixin card{
   @include md-body-1;
   @include cardNoPadding;

@@ -89,6 +89,10 @@
 // $body-font-size-base:      rem(1.400) !default;
 // $caption-font-size-base:   rem(1.200) !default;
 
+
+// don't use the mixin's they're just for legacy. Please just include the fontclass
+// on the element directly.
+
 @mixin md-headline {
   font-size: $headline-font-size-base;
   font-weight: 400;

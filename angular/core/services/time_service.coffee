@@ -1,5 +1,10 @@
-angular.module('loomioApp').factory 'TimeService', (AppConfig) ->
+angular.module('loomioApp').factory 'TimeService', (AppConfig, $translate) ->
   new class TimeService
+    nameForZone: (zone) ->
+      if AppConfig.timeZone == zone
+        $translate.instant 'common.local_time'
+      else
+        _.invert(AppConfig.timeZones)[zone]
 
     displayDate: (m, zone) =>
       if m._f == 'YYYY-MM-DD'

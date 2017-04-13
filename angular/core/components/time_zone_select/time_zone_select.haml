@@ -1,4 +1,9 @@
-%md-input-container
-  %md-select{ng-model: "zone", ng-change: "change()", aria-label: "{{ 'time_zone_select.time_zone' | translate }}"}
-    %md-option{ng-repeat: "z in zones track by $index", ng-value: "z.value"}
-      {{ z.name }}
+.time-zone-select
+  .time-zone-select__selected{ng-show: "!isOpen"}
+    -# %span.md-body-1{translate: "common.time_zone"}
+    %md-button.time-zone-select__change-button.md-accent{ng-click: "open()", aria-label:"Change time zone"}
+      {{name}}
+  .time-zone-select__change{ng-show: "isOpen"}
+    %md-autocomplete{md-search-text: "q", md-selected-item: "name", md-selected-item-change: "change()", md-items: "name in names()", placeholder: "Enter time zone"}
+      %md-item-template
+        %span {{name}}
