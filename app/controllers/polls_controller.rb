@@ -14,6 +14,6 @@ class PollsController < ApplicationController
 
   def community_bot_user
     return unless params[:identifier]
-    Communities::Base.with_identity.find_by(identifier: params[:identifier]).user
+    Communities::Base.with_identity.find_by(identifier: params[:identifier])&.user
   end
 end
