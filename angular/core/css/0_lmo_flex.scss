@@ -14,9 +14,18 @@
   justify-content: flex-end;
 }
 
-.lmo-flex__align-baseline {
+.lmo-flex__baseline {
   align-items: baseline;
 }
+
+.lmo-flex__center {
+  align-items: center;
+}
+
+.lmo-flex__shrink {
+  flex-shrink: 1;
+}
+
 
 .lmo-flex__align-top {
   align-items: flex-start;

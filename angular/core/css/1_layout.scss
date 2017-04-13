@@ -53,10 +53,6 @@ md-dialog {
   height: 320px;
 }
 
-.md-dialog-container {
-  z-index: $over-intercom;
-}
-
 .modal-body {
   @include md-body-1;
   max-height: calc(90vh - 125px);

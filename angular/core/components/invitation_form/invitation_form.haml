@@ -10,7 +10,7 @@
       %option{value: "", translate: "invitation_form.group_placeholder"}
 
     %label{translate: "invitation_form.shareable_link"}
-    .lmo-flex.lmo-flex__align-baseline
+    .lmo-flex.lmo-flex__baseline
       %input.invitation-form__shareable-link-field.form-control{value: "{{invitationLink()}}"}
       %md-button.invitation-form__copy-button.md-raised.md-primary{type: "button", clipboard: "true", text: "invitationLink()", on-copied: "copied()"}
         {{ 'invitation_form.copy_link' | translate}}

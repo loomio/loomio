@@ -31,7 +31,7 @@
             %li.lmo-dropdown-menu-item{ng-if: "canDeleteThread()"}
               %a.context-panel__dropdown-options--delete.lmo-dropdown-menu-item-label{href: "", ng-click: "deleteThread()", translate: "thread_context.delete_thread"}
 
-  .context-panel__details
+  .context-panel__details.md-body-1
     %span{translate: "discussion.started_by", translate-value-name: "{{::discussion.authorName()}}"}
     %timeago.nowrap{timestamp: "::discussion.createdAt" }>
     %translate_button.lmo-card-minor-action{model: "discussion", showdot: "true"}>
