@@ -15,6 +15,10 @@ class Communities::Base < ActiveRecord::Base
 
   discriminate Communities, on: :community_type
 
+  def community
+    self
+  end
+
   def poll_id=(id)
     Array(id).each { |id| poll_communities.build(poll_id: id) }
   end

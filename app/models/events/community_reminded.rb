@@ -1,4 +1,6 @@
 class Events::CommunityReminded < Event
+  include Events::VisitorEvent
+
   def self.publish!(community, actor, poll)
     create(kind: "community_reminded",
            user: actor,
