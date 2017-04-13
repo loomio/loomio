@@ -16,6 +16,3 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
       switch @communityType
         when 'facebook' then @customFields.facebook_group_name
         when 'slack'    then "#{@identity().customFields.slack_team_name} - ##{@customFields.slack_channel_name}"
-
-    remind: (poll) ->
-      @remote.postMember @id, 'remind', poll_id: poll.id

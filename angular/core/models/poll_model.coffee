@@ -100,9 +100,6 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     close: =>
       @remote.postMember(@id, 'close')
 
-    publish: (community) =>
-      @processing = true
-      @remote.postMember(@id, 'publish', community_id: community.id).then =>
+    publish: (community, message) =>
+      @remote.postMember(@id, 'publish', community_id: community.id, message: message).then =>
         @published = true
-      .finally =>
-        @processing = false

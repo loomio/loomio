@@ -1352,6 +1352,7 @@ en:
     share_proposal: Share proposal
     share_count: Share count
     start_poll: Start a new poll
+    publish_poll: Share poll
 
   poll_common_card:
     show_results: Show results
@@ -1637,6 +1638,10 @@ en:
     add_slack_community: Add slack channel
     community_revoked: This community will no longer be able to participate
     community_added: Community added to poll
+
+  poll_common_publish_form:
+    message: Enter a message
+    message_placeholder: Add a message to accompany the link to your poll
 
   add_community_form:
     title: Add community

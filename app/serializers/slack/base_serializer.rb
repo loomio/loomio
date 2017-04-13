@@ -25,10 +25,14 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def channel
-    Hash(scope)[:channel]
+    community.identifier
   end
 
   private
+
+  def community
+    @community ||= Communities::Base.find(object.custom_fields['community_id'])
+  end
 
   def text_options;        end
   def attachment_title;    end
@@ -53,7 +57,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def link_options
-    default_url_options.merge(identifier: channel)
+    default_url_options.merge(identifier: community.identifier)
   end
 
 end

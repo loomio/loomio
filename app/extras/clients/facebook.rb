@@ -26,7 +26,7 @@ class Clients::Facebook < Clients::Base
   end
 
   def post_content(event, group_id)
-    post "#{group_id}/feed", serialized_event(event, group_id), ->(response) { response['id'] }
+    post "#{group_id}/feed", serialized_event(event), ->(response) { response['id'] }
   end
 
   def scope
