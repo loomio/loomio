@@ -315,7 +315,7 @@ class Ability
       @user.is_logged_in?
     end
 
-    can [:show, :manage_visitors], Communities::Base do |community|
+    can [:show, :manage_visitors, :remind], Communities::Base do |community|
       community.polls.any? { |poll| @user.can? :share, poll }
     end
 

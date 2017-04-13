@@ -17,5 +17,5 @@ angular.module('loomioApp').factory 'CommunityModel', (BaseModel, AppConfig) ->
         when 'facebook' then @customFields.facebook_group_name
         when 'slack'    then "#{@identity().customFields.slack_team_name} - ##{@customFields.slack_channel_name}"
 
-    add: (poll) ->
-      @remote.postMember @id, 'add', poll_id: poll.id
+    remind: (poll) ->
+      @remote.postMember @id, 'remind', poll_id: poll.id

@@ -8,6 +8,11 @@ class API::CommunitiesController < API::RestfulController
     respond_with_collection
   end
 
+  def remind
+    service.remind(community: load_resource, poll: load_and_authorize(:poll), actor: current_user)
+    respond_with_resource
+  end
+
   private
 
   def accessible_records

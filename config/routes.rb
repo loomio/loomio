@@ -199,7 +199,10 @@ Loomio::Application.routes.draw do
       resource :registrations, only: :create
     end
 
-    resources :communities, only: [:create, :update, :index]
+    resources :communities, only: [:create, :update, :index] do
+      post :remind, on: :member
+    end
+
     resources :poll_communities, only: [] do
       delete :destroy, on: :collection
     end
