@@ -55,12 +55,12 @@ class Clients::Base
     raise NotImplementedError.new
   end
 
-  def serialized_event(event)
+  def serialized_event(event, identifier)
     begin
       "#{self.class.name.demodulize}::#{event.kind.classify}Serializer".constantize
     rescue NameError
       "#{self.class.name.demodulize}::BaseSerializer".constantize
-    end.new(event, root: false).as_json
+    end.new(event, scope: { identifier: identifier }, root: false).as_json
   end
 
   def host

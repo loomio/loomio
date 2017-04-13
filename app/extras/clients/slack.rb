@@ -17,7 +17,7 @@ class Clients::Slack < Clients::Base
   end
 
   def post_content(event, channel)
-    get "chat.postMessage", {}, serialized_event(event).merge(channel: channel)
+    get "chat.postMessage", {}, serialized_event(event, channel)
   end
 
   def is_member_of?(channel_id, uid)

@@ -15,6 +15,8 @@ class Communities::Base < ActiveRecord::Base
 
   discriminate Communities, on: :community_type
 
+  scope :with_identity, -> { where("identity_id IS NOT NULL") }
+
   def community
     self
   end

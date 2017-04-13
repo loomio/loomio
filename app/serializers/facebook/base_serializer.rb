@@ -9,6 +9,6 @@ class Facebook::BaseSerializer < ActiveModel::Serializer
   private
 
   def link_options
-    {}
+    { identifier: Hash(scope)[:identifier] }
   end
 end

@@ -1,6 +1,6 @@
 class Slack::BaseSerializer < ActiveModel::Serializer
   include PrettyUrlHelper
-  attributes :text, :username, :attachments, :icon_url
+  attributes :text, :username, :attachments, :icon_url, :channel
 
   def text
     I18n.t :"webhooks.slack.#{object.kind}", text_options
@@ -24,6 +24,10 @@ class Slack::BaseSerializer < ActiveModel::Serializer
     User.helper_bot.avatar_url
   end
 
+  def channel
+    Hash(scope)[:channel]
+  end
+
   private
 
   def text_options;        end
@@ -37,7 +41,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   def slack_link_for(model, text = nil, params = {})
     return unless model
-    url  =   polymorphic_url(model, params.merge!(default_url_options))
+    url  =   polymorphic_url(model, params.merge!(link_options))
     text ||= (model.respond_to?(:name) && model.name) ||
              (model.respond_to?(:title) && model.title) ||
              (model.respond_to?(:body) && model.body)
@@ -46,6 +50,10 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   def model
     @model || object.eventable
+  end
+
+  def link_options
+    default_url_options.merge(identifier: channel)
   end
 
 end
