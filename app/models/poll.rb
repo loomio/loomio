@@ -118,6 +118,12 @@ class Poll < ActiveRecord::Base
     closed_at.nil?
   end
 
+  def goal_reached?
+    self.custom_fields['goal'].present? &&
+    self.stances_count >= self.custom_fields['goal'] &&
+    !self.events.find_by(kind: :poll_goal_reached) # only create a single goal reached event per poll
+  end
+
   def poll_option_names
     poll_options.pluck(:name)
   end

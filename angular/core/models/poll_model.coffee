@@ -8,8 +8,8 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []
-      @customFields.dots_per_person = 8           if @pollType == 'dot_vote'
-      @customFields.goal = @communitySize() or 10 if @pollType == 'count'
+      @customFields.dots_per_person = 8  if @pollType == 'dot_vote'
+      @customFields.goal = @goal() or 10 if @pollType == 'count'
 
     defaultValues: ->
       discussionId: null

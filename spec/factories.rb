@@ -263,6 +263,17 @@ FactoryGirl.define do
     after(:build) { |poll| poll.community_of_type(:email, build: true) }
   end
 
+  factory :poll_count, class: Poll do
+    poll_type "count"
+    title "This is a count"
+    details "With a description"
+    association :author, factory: :user
+    poll_option_names %w[yes no]
+    custom_fields { { goal: 10 } }
+
+    after(:build) { |poll| poll.community_of_type(:email, build: true) }
+  end
+
   factory :outcome do
     poll
     association :author, factory: :user
