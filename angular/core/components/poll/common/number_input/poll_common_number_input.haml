@@ -1,0 +1,6 @@
+.poll-common-number-input.lmo-flex{layout: "row"}
+  %button.poll-common-number-input__button.poll-common-number-input__button--minus{ng-click: "adjust(-1)", ng-disabled: "model == 0"}
+    .material-icons remove
+  %input.poll-common-number-input__input{type: "number", ng-model: "model", min: "0", step: "1"}
+  %button.poll-common-number-input__button.poll-common-number-input__button--plus{ng-click: "adjust(1)", ng-disabled: "maxReached()"}
+    .material-icons add

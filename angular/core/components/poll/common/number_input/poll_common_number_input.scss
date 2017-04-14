@@ -1,0 +1,31 @@
+.poll-common-number-input__input {
+  width: 35px !important;
+  text-align: center;
+  order: 0 !important;
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.poll-common-number-input__button {
+  background: none;
+  border: 1px solid $light-grey-on-white;
+  color: $light-grey-on-white;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  padding: 2px 0px;
+  &[disabled] {
+    border: 1px solid lighten($light-grey-on-white, 20%);
+    color: lighten($light-grey-on-white, 20%);
+  }
+}
+
+.poll-common-number-input__button--plus {
+  margin-left: 10px;
+}
+
+.poll-common-number-input__button--minus {
+  margin-right: 10px;
+}
