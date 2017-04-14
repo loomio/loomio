@@ -1643,6 +1643,11 @@ en:
     message: Enter a message
     message_placeholder: Add a message to accompany the link to your poll
 
+  poll_common_publish_facebook_preview:
+    shared_a: shared a
+    link: link
+    just_now: Just now
+
   add_community_form:
     title: Add community
     existing_communities: Previously connected communities

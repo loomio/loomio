@@ -10,8 +10,8 @@
     %textarea.lmo-primary-form-input{ng-model: "message", placeholder: "{{'poll_common_publish_form.message_placeholder' | translate}}"}
 
   .poll-common-publish-form__preview
-    %poll_common_publish_facebook_preview{ng-if: "community.communityType == 'facebook'", poll: "poll", community: "community"}
-    %poll_common_publish_facebook_preview{ng-if: "community.communityType == 'slack'", poll: "poll", community: "community"}
+    %poll_common_publish_facebook_preview{ng-if: "community.communityType == 'facebook'", poll: "poll", community: "community", message: "message"}
+    %poll_common_publish_slack_preview{ng-if: "community.communityType == 'slack'", poll: "poll", community: "community", message: "message"}
 
   .poll-common__actions.lmo-flex
     %md-button{ng-click: "back()"}

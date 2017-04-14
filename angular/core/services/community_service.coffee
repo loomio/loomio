@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'CommunityService', ($location, $window, Records, Session, FormService, ModalService, PollCommonShareModal) ->
+angular.module('loomioApp').factory 'CommunityService', ($location, $window, Records, Session, FormService, ModalService, PollCommonPublishModal, PollCommonShareModal) ->
   new class CommunityService
 
     buildCommunity: (poll, type) ->
@@ -30,10 +30,11 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
       FormService.submit scope, model, _.merge(
         flashSuccess: "add_community_form.community_created",
         flashOptions: {type: model.communityType}
-        successCallback: => @back(model.poll())
+        successCallback: =>
+          delete $location.search().add_community
+          $location.search('share', true)
+          ModalService.open PollCommonPublishModal,
+            poll:      -> model.poll()
+            community: -> model
+            back:      -> (-> ModalService.open PollCommonShareModal, poll: -> model.poll())
       , options)
-
-    back: (poll) ->
-      delete $location.search().add_community
-      $location.search('share', true)
-      ModalService.open PollCommonShareModal, poll: -> poll
