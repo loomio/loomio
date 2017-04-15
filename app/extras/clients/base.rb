@@ -51,7 +51,7 @@ class Clients::Base
     :token
   end
 
-  def post_content(event, identifier)
+  def post_content!(event)
     raise NotImplementedError.new
   end
 

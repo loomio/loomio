@@ -5,6 +5,7 @@ class Outcome < ActiveRecord::Base
   belongs_to :author, class_name: 'User', required: true
   has_one :discussion, through: :poll
   has_one :group, through: :discussion
+  has_many :communities, through: :poll, class_name: "Communities::Base"
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 

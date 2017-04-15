@@ -21,11 +21,12 @@ class PollService
   end
 
   def self.publish(poll:, params:, actor:)
+    community = Communities::Base.find(params[:community_id])
+    actor.ability.authorize! :show, community
     actor.ability.authorize! :share, poll
-    actor.ability.authorize! :show, Communities::Base.find(params[:community_id])
 
-    EventBus.broadcast('poll_publish', poll, params, actor)
-    Events::PollPublished.publish!(poll, actor, params.slice(:community_id, :message))
+    EventBus.broadcast('poll_publish', poll, actor, community, params[:message])
+    Events::PollPublished.publish!(poll, actor, community, params[:message])
   end
 
   def self.publish_closing_soon

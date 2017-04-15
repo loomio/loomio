@@ -88,6 +88,11 @@ EventBus.configure do |config|
     config.listen("#{kind}_event") { |event| event.trigger! }
   end
 
+  # notify communities of outcome creation
+  config.listen("outcome_create") do |outcome|
+    outcome.communities.with_identity.each { |community| Events::OutcomePublished.publish!(outcome) }
+  end
+
   # nullify parent_id on children of destroyed comment
   config.listen('comment_destroy') { |comment| Comment.where(parent_id: comment.id).update_all(parent_id: nil) }
 

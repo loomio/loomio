@@ -1,6 +1,6 @@
 module Identities::WithClient
-  def notify!(event, identifier)
-    client.post_content(event, identifier)
+  def notify!(event)
+    client.post_content!(event)
   end
 
   def is_member_of?(community)

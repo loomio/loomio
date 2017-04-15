@@ -11,13 +11,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def attachments
-    [{
-      title:       attachment_title,
-      text:        attachment_text,
-      fields:      attachment_fields,
-      fallback:    attachment_fallback,
-      color:       attachment_color
-    }.compact].to_s
+    [first_attachment].to_s
   end
 
   def icon_url
@@ -30,17 +24,12 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   private
 
-  def community
-    @community ||= Communities::Base.find(object.custom_fields['community_id'])
+  def first_attachment
+    {fields: Array(slack_link_for(model, I18n.t(:"webhooks.slack.view_it_on_loomio")))}
   end
 
-  def text_options;        end
-  def attachment_title;    end
-  def attachment_text;     end
-  def attachment_fallback; end
-  def attachment_color;    end
-  def attachment_fields
-    [{ value: slack_link_for(model, I18n.t(:"webhooks.slack.view_it_on_loomio")) }]
+  def community
+    @community ||= Communities::Base.find(object.custom_fields['community_id'])
   end
 
   def slack_link_for(model, text = nil, params = {})
@@ -54,6 +43,10 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   def model
     @model || object.eventable
+  end
+
+  def text_options
+    {}
   end
 
   def link_options

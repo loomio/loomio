@@ -33,7 +33,8 @@ class Communities::Base < ActiveRecord::Base
     participant.identities.any? { |i| i.is_member_of?(self) }
   end
 
+  # Do nothing, on notify, unless we've specifically included
+  # a concern from concerns/communities to define some behaviour
   def notify!(event)
-    identity.notify!(event.kind, event.eventable, identifier) if identity
   end
 end

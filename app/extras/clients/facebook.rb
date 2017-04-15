@@ -25,8 +25,8 @@ class Clients::Facebook < Clients::Base
     get "#{group_id}/members", {}, ->(response) { response['data'].any? { |member| member['id'] == uid } }
   end
 
-  def post_content(event, group_id)
-    post "#{group_id}/feed", serialized_event(event), ->(response) { response['id'] }
+  def post_content!(event)
+    post "#{event.identifier}/feed", serialized_event(event), ->(response) { response['id'] }
   end
 
   def scope
