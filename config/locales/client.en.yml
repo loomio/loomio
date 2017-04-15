@@ -1360,6 +1360,7 @@ en:
 
   poll_common_notify_group:
     notify_group: Announcement
+    members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
 
   poll_common_close_form:
