@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'pollCountChartPanel', (AppConfig, Records
   scope: {poll: '='}
   templateUrl: 'generated/components/poll/count/chart_panel/poll_count_chart_panel.html'
   controller: ($scope) ->
-    $scope.percentComplete = ->
-      "#{100 * $scope.poll.stanceCounts[0] / $scope.poll.goal()}%"
+    $scope.percentComplete = (index) ->
+      "#{100 * $scope.poll.stanceCounts[index] / $scope.poll.goal()}%"
 
-    $scope.completeColor = $scope.poll.firstOption().color
+    $scope.colors = AppConfig.pollColors.count

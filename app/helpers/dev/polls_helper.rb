@@ -23,9 +23,11 @@ module Dev::PollsHelper
   def create_fake_stances(poll: )
     poll.poll_option_names.each do |name|
       (0..3).to_a.sample.times do
+        u = fake_user
+        poll.group.add_member!(u) if poll.group
         poll.stances.create!(poll: poll,
                              choice: name,
-                             participant: fake_user,
+                             participant: u,
                              reason: Faker::Hipster.sentence)
       end
     end
