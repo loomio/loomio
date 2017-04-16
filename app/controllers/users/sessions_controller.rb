@@ -5,7 +5,6 @@ class Users::SessionsController < Devise::SessionsController
   before_filter :create_parse_user_if_needed, only: :create
 
   before_filter :store_previous_location, only: :new
-  after_filter :set_time_zone_from_javascript, only: :create
 
   def new
     super do |user|
