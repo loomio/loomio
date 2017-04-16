@@ -35,7 +35,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @discussion().group() if @discussion()
 
     voters: ->
-      @recordStore.users.find(_.pluck(@stances(), 'participantId'))
+      @recordStore.users.find(_.pluck(@stances(), 'userId'))
 
     newAttachments: ->
       @recordStore.attachments.find(@newAttachmentIds)
