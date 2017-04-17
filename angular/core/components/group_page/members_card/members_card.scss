@@ -3,7 +3,8 @@
 }
 
 .members-card__list {
-  display: flex;
+  @include displayFlex;
+  flex-wrap: wrap;
 }
 
 .members-card__avatar-link {
