@@ -8,4 +8,7 @@
 
 .poll-meeting-form__label-and-timezone {
   margin-bottom: 16px;
+  @include displayFlex;
+  justify-content: space-between;
+  align-items: baseline;
 }
