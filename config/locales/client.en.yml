@@ -1527,6 +1527,7 @@ en:
     stance_updated: Vote updated
 
   poll_meeting_vote_form:
+    your_response: When can you attend?
     stance_created: Availability saved
     stance_created: Availability updated
 
