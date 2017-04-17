@@ -1,5 +1,5 @@
 class Events::PollGoalReached < Event
-  include Events::EmailUser
+  include Events::PollEvent
 
   def self.publish!(poll)
     create(kind: "poll_goal_reached",
@@ -8,11 +8,11 @@ class Events::PollGoalReached < Event
 
   private
 
-  def communities
-    @communities ||= eventable.communities
-  end
-
   def email_recipients
     User.where(id: eventable.author_id)
+  end
+
+  def notification_recipients
+    User.none # TODO: add a goal_reached notification?
   end
 end

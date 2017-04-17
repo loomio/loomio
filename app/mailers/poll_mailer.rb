@@ -24,6 +24,10 @@ class PollMailer < BaseMailer
     send_poll_email recipient, event
   end
 
+  def poll_goal_reached(recipient, event)
+    send_poll_email recipient, event
+  end
+
   def poll_expired(recipient, event)
     send_poll_email recipient, event
   end
