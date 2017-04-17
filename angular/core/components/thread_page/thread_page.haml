@@ -4,8 +4,8 @@
     %group_theme{group: "threadPage.discussion.group()", compact: "true"}
     .thread-page__main-content
       %outlet.before-column-right.lmo-column-right{name: "before-thread-page-column-right", ng-if: "threadPage.eventsLoaded", model: "threadPage.discussion"}
-      %decision_tools_card.lmo-column-right{ng-if: "threadPage.usePolls", discussion: "threadPage.discussion"}
       %poll_common_card.lmo-card--no-padding.lmo-column-right{ng-if: "threadPage.usePolls", poll: "poll", ng-repeat: "poll in threadPage.discussion.activePolls() track by poll.id"}
+      %decision_tools_card.lmo-column-right{ng-if: "threadPage.usePolls", discussion: "threadPage.discussion"}
       %previous_polls_card.lmo-column-right{ng-if: "threadPage.usePolls && threadPage.hasClosedPolls()", thread: "threadPage.discussion"}
       %start_proposal_card.lmo-no-print.lmo-column-right{in-view: "threadPage.proposalButtonInView($inview)", in-view-options: "{debounce: 200}", ng-if: "!threadPage.usePolls && threadPage.canStartProposal()", discussion: "threadPage.discussion"}
       %current_proposal_card.lmo-column-right{in-view: "threadPage.proposalInView($inview)", in-view-options: "{debounce: 200}", ng-if: "!threadPage.usePolls && threadPage.discussion.hasActiveProposal()", proposal: "threadPage.discussion.activeProposal()", loading: "!threadPage.eventsLoaded"}

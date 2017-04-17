@@ -1,6 +1,6 @@
 %form.poll-proposal-vote-form
   %h3.lmo-card-subheading{translate: "poll_common.your_response"}
-  .poll-proposal-vote-form__option
+  .poll-common-vote-form__options
     %md-radio-group{ng-model: "stance.selectedOption"}
       %md-radio-button.poll-common-vote-form__radio-button{class: "poll-common-vote-form__radio-button--{{option.name}}", ng-repeat: "option in stance.poll().pollOptions()", ng-value: "option", aria-label: "{{option.name}}"}
         %img.poll-proposal-form__icon{ng-src: "/img/{{option.name}}.svg"}
@@ -15,5 +15,6 @@
 
     %poll_common_participant_form{stance: "stance"}
 
-    .poll-common-form__actions
+    .poll-common-form-actions
+      %show_results_button{ng-if: "stance.isNew()"}
       %md-button.md-primary.md-raised.poll-proposal-vote-form__submit{ng-click: "submit()", translate: "poll_common.vote", aria-label: "{{ 'poll_proposal_vote_form.vote' | translate }}"}

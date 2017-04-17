@@ -1,15 +1,15 @@
-.deactivation-modal
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "deactivate_user_form.title"}
-
-  .modal-body
+%md-dialog.deactivation-modal
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "deactivate_user_form.title"}
+      %material_modal_header_cancel_button
+  .md-dialog-content
     %p{translate: "deactivation_modal.introduction"}
     %ul
       %li{translate: "deactivation_modal.no_longer_group_member"}
       %li{translate: "deactivation_modal.name_removed"}
       %li{translate: "deactivation_modal.no_emails"}
       %li{translate: "deactivation_modal.contact_for_reactivation"}
-  .modal-footer
-    %button.deactivation-modal__confirm.lmo-btn--primary{ng-click: "submit()", translate: "deactivation_modal.submit"}
-    %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+    .lmo-md-actions
+      %md-button{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      %md-button.md-primary.md-raised.deactivation-modal__confirm{ng-click: "submit()", translate: "deactivation_modal.submit"}

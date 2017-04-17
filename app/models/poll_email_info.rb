@@ -23,6 +23,14 @@ class PollEmailInfo
     @poll.poll_type
   end
 
+  def time_zone
+    @recipient.time_zone || @poll.custom_fields['time_zone']
+  end
+
+  def formatted_time_zone
+    ActiveSupport::TimeZone[time_zone].to_s if time_zone
+  end
+
   def outcome
     @poll.current_outcome
   end

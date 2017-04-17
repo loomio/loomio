@@ -8,8 +8,7 @@
 }
 
 .membership-requests-card__requestor-name{
-  @include fontSmall;
-  @include fontHelveticaBold;
+  @include md-body-2;
   color: $primary-text-color;
 }
 

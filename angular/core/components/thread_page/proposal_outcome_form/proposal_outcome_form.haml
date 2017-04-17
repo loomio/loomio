@@ -1,12 +1,11 @@
 %form.proposal-form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{ng-if: "!hasOutcome", translate: "proposal_outcome_form.set_outcome"}
-    %h1.lmo-h1{ng-if: "hasOutcome", translate: "proposal_outcome_form.update_outcome"}
-
-  .modal-body
-
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{ng-if: "!hasOutcome", translate: "proposal_outcome_form.set_outcome"}
+      %h1.lmo-h1{ng-if: "hasOutcome", translate: "proposal_outcome_form.update_outcome"}
+      %material_modal_header_cancel_button
+  .md-dialog-content.md-body-1
     %form_errors{record: "proposal"}
 
     %fieldset
@@ -16,6 +15,6 @@
           %textarea.lmo-textarea.proposal-form__outcome-field.form-control#proposal-outcome-field{placeholder: "{{ 'proposal_outcome_form.outcome_placeholder' | translate }}", ng-model: "proposal.outcome", ng-required: "true", mention-field: "true"}
           %emoji_picker.lmo-action-dock{target-selector: "outcomeSelector"}
 
-  .modal-footer
-    %button.lmo-btn--submit.proposal-outcome-form__publish-outcome-btn{type: "submit", translate: "proposal_outcome_form.publish_outcome"}
-    %button.lmo-btn--cancel.proposal-outcome-form__cancel-btn{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+    .lmo-md-actions
+      %md-button.proposal-outcome-form__cancel-btn{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      %md-button.md-raised.md-primary.proposal-outcome-form__publish-outcome-btn{type: "submit", translate: "proposal_outcome_form.publish_outcome"}

@@ -2,39 +2,30 @@
   %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_dot_vote_form.tip"}
 
   %md-input-container.md-block
-    %label{translate: "poll_dot_vote_form.title"}
+    %label{translate: "poll_common_form.title"}
     %input.lmo-primary-form-input.poll-dot-vote-form__title{type: "text", placeholder: "{{translations.titlePlaceholder}}", ng-model: "poll.title", md-maxlength="250"}
     %validation_errors{subject: "poll", field: "title"}
 
   %md-input-container.md-block
-    %label{translate: "poll_dot_vote_form.details"}
+    %label{translate: "poll_common_form.details"}
     %textarea.lmo-primary-form-input.poll-dot-vote-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
     %outlet{name: "after-poll-form-textarea", model: "poll"}
 
-  %md-list.md-block
-    %label{translate: "poll_dot_vote_form.options"}
-    %validation_errors{subject: "poll", field: "pollOptions"}
-    %md-list-item.poll-dot-vote-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
-      %span.poll-dot-vote-form__option-text.lmo-flex__grow {{name}}
-      %md-button.poll-dot-vote-form__option-button.lmo-inline-action{ng-click: "removeOption(name)", aria-label: "{{ 'poll_dot_vote_form.remove_option' | translate }}"}
-        %i.material-icons.poll-dot-vote-form__option-icon clear
-    %md-list-item.poll-dot-vote-form__add-option{flex: "true", layout: "row"}
-      %md-input-container.poll-dot-vote-form__add-option-field{md-no-float: "true"}
-        %input.poll-dot-vote-form__add-option-input{type: "text", placeholder: "{{translations.addOptionPlaceholder}}", ng-model: "newOptionName"}
-      %div
-        %md-button.poll-dot-vote-form__option-button.lmo-inline-action{ng-click: "addOption()", aria-label: "{{ 'poll_dot_vote_form.add_option_placeholder' | translate }}"}
-          %i.material-icons.poll-dot-vote-form__option-icon add
+  .md-input-compensate
+    %poll_common_attachment_form{poll: "poll"}
 
-  %md-input-container.md-block
-    %label{translate: "poll_dot_vote_form.dots_per_person"}
-    %input{type: "number", min: "0", ng-model: "poll.customFields.dots_per_person"}
-    %validation_errors{subject: "poll", field: "dotsPerPerson"}
+  %poll_common_form_options{poll: "poll"}
 
-  %poll_common_closing_at_field.md-block{poll: "poll"}
-  %poll_common_attachment_form{poll: "poll"}
-  %poll_common_notify_group{model: "poll"}
+  .md-input-compensate
+    %poll_common_closing_at_field.md-block{poll: "poll"}
 
-  .poll-common__actions.lmo-flex
-    %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
-    %md-button.md-primary.md-raised.poll-dot-vote-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "!poll.isNew()", translate: "poll_dot_vote_form.update", aria-label: "{{ 'poll_dot_vote_form.update' | translate }}"}
-    %md-button.md-primary.md-raised.poll-dot-vote-form__submit{ng-click: "submit()", ng-class: "{'lmo-flex__grow': !back}", ng-if: "poll.isNew()", translate: "poll_dot_vote_form.start", aria-label: "{{ 'poll_dot_vote_form.start' | translate }}"}
+  .md-input-compensate
+    %md-input-container
+      %label{translate: "poll_dot_vote_form.dots_per_person"}
+      %input{type: "number", min: "0", ng-model: "poll.customFields.dots_per_person"}
+      %validation_errors{subject: "poll", field: "dotsPerPerson"}
+
+  .md-input-compensate
+    %poll_common_notify_group{model: "poll"}
+
+  %poll_common_form_actions{poll: "poll", submit: "submit", back: "back"}

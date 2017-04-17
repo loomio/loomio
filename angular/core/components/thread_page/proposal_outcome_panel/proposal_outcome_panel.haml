@@ -2,6 +2,6 @@
   %h4.lmo-card-subheading{translate: "proposal_outcome_panel.heading"}
   .lmo-wrap{ng-if: "canCreateOutcome()"}
     %p.lmo-hint-text{translate: "proposal_outcome_panel.set_outcome_hint"}
-    %a.lmo-btn--featured.lmo-btn--icon.proposal-outcome-panel__set-outcome-btn{href: "", ng-click: "openProposalOutcomeForm()", translate: "proposal_outcome_panel.set_outcome_btn"}
+    %md-button.md-primary.md-raised.proposal-outcome-panel__set-outcome-btn{ng-click: "openProposalOutcomeForm()", translate: "proposal_outcome_panel.set_outcome_btn"}
   %p.proposal-outcome-panel__outcome.lmo-markdown-wrapper{ng-show: "proposal.hasOutcome()", marked: "proposal.outcome" }
-  %button.lmo-btn-link.lmo-card-minor-action.proposal-outcome-panel__edit-outcome-link{ng-if: "canUpdateOutcome()", ng-click: "openProposalOutcomeForm()", translate: "proposal_outcome_panel.edit_outcome_link"}
+  %md-button.md-accent.proposal-outcome-panel__edit-outcome-link{ng-if: "canUpdateOutcome()", ng-click: "openProposalOutcomeForm()", translate: "proposal_outcome_panel.edit_outcome_link"}

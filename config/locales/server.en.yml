@@ -301,7 +301,7 @@ en:
       body: |
         ## Headings
 
-        Use hashes to turn text into a heading.
+        Prefix with a hash and a space to turn text into a heading.
 
         # This is an h1
         ## This is an h2
@@ -375,6 +375,7 @@ en:
       create_outcome: Share outcome
       your_response: Your response
       please_respond: Please respond
+      time_zone: (Times displayed in %{zone})
 
     proposal:
       subject:
@@ -422,20 +423,20 @@ en:
 
     count:
       subject:
-        poll_created: '%{actor} started a count: %{title}'
-        poll_updated: '%{actor} edited the count: %{title}'
-        poll_closing_soon: 'Count closing in 24 hours: %{title}'
-        poll_closing_soon_author: 'Your count closes in 24 hours: %{title}'
-        poll_expired: 'Your count has closed. Share an outcome for: %{title}'
+        poll_created: '%{actor} started a check: %{title}'
+        poll_updated: '%{actor} edited the check: %{title}'
+        poll_closing_soon: 'Check closing in 24 hours: %{title}'
+        poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
+        poll_expired: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a count'
-        poll_updated: '<strong>%{actor}</strong> edited the count'
-        poll_closing_soon: '<strong>%{actor}</strong>''s count is closing in 24 hours.'
-        poll_closing_soon_author: 'Your count is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-        poll_expired: 'Here are the results of your count. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
+        poll_created: '<strong>%{actor}</strong> started a check'
+        poll_updated: '<strong>%{actor}</strong> edited the check'
+        poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
+        poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
+        poll_expired: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
 

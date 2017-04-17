@@ -1,10 +1,10 @@
 %section.discussions-card{aria-labelledby: "threads-card-title"}
   .discussions-card__header
     %h2#threads-card-title.lmo-card-heading{ translate: "group_page.discussions"}
-    %button.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionForm()", title: "{{ 'navbar.start_thread' | translate }}"}
-      %i.fa.fa-plus>
+    %md-button.md-primary.md-raised.discussions-card__new-thread-button{ng-if: "canStartThread()", ng_click: "openDiscussionForm()", title: "{{ 'navbar.start_thread' | translate }}"}
       %span{translate: "navbar.start_thread"}
 
+  .discussions-card__placeholder
     .lmo-placeholder{translate: "group_page.discussions_placeholder", ng-if: "showThreadsPlaceholder()" }
 
   .discussions-card__list--empty{ng-if: "!loadMoreExecuting && !discussions.any()"}

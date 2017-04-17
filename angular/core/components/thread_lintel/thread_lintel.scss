@@ -35,7 +35,7 @@
 }
 
 .thread-lintel__title {
-  @include fontHelveticaBold;
+  @include md-body-2;
   line-height: 30px;
   cursor: pointer;
 }

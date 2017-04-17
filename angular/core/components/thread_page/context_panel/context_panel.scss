@@ -2,6 +2,9 @@
   @include card;
   .lmo-card-heading { margin-top: 7px; }
 }
+.context-panel__top {
+  @include displayFlex;
+}
 
 .context-panel__thread-actions {
   margin-right: -10px;
@@ -19,7 +22,6 @@
 }
 
 .context-panel__details {
-  @include fontSmall;
   color: $grey-on-white;
   margin-bottom: 15px;
 }
@@ -38,12 +40,11 @@
 
 .context-panel__actions {
   @include displayFlex;
+  justify-content: flex-start;
   margin-top: 16px;
 }
 
 .context-panel__edit,
 .context-panel__add-comment {
-  @include lmoBtnLink;
-  cursor: pointer;
   margin: 16px 16px 0 0;
 }

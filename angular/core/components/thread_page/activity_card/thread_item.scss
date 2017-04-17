@@ -6,7 +6,7 @@
   /* these styles break with BEM but they keep the translations clean*/
   strong {
     color: $primary-text-color;
-    @include fontHelveticaBold;
+    @include md-body-2;
   }
   span span {
     color: $primary-text-color;

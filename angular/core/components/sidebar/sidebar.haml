@@ -11,22 +11,29 @@
         @{{currentUser().username}}
   %md_content.sidebar__content.lmo-no-print{flex: "", layout: "column", ng-click: "sidebarItemSelected()", role: "navigation"}
     %md_list.sidebar__list.sidebar__threads{layout: "column", aria-label: "{{ 'sidebar.aria_labels.threads_list' | translate }}"}
-      %md_list_item.sidebar__list-subhead{translate: "sidebar.my_threads"}
+      -# %md_list_item.sidebar__list-subhead{translate: "sidebar.my_threads"}
+      -# %md_list_item
+      -#   %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", lmo-href: "/polls", ng-click: "isActive()", aria-label: "{{ 'sidebar.my_decisions' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('pollsPage')}"}
+      -#     %md_avatar_icon.sidebar__list-item-icon.material-icons thumbs_up_down
+      -#     %span{translate: "common.decisions"}
       %md_list_item
         %md_button.sidebar__list-item-button.sidebar__list-item-button--recent{href: "", lmo-href: "/dashboard", ng-click: "isActive()", aria-label: "{{ 'sidebar.recent' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage')}"}
           %md_avatar_icon.sidebar__list-item-icon.fa.fa-lg.fa-clock-o
-          %span{translate: "sidebar.recent"}
+          %span{translate: "sidebar.recent_threads"}
       %md_list_item
         %md_button.sidebar__list-item-button.sidebar__list-item-button--unread{href: "", lmo-href: "/inbox", ng-click: "isActive()", aria-label: "{{ 'sidebar.unread' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('inboxPage')}"}
           %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-inbox
-          %span{translate: "sidebar.unread"}
-          %span> ({{unreadThreadCount()}})
+          %span{translate: "sidebar.unread_threads", translate-value-count: "{{unreadThreadCount()}}"}
       %md_list_item
         %md_button.sidebar__list-item-button.sidebar__list-item-button--muted{href: "", lmo-href: "/dashboard/show_muted", ng-click: "isActive()", aria-label: "{{ 'sidebar.muted' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('dashboardPage', nil, 'show_muted')}"}
           %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-times-circle
-          %span{translate: "sidebar.muted"}
+          %span{translate: "sidebar.muted_threads"}
+      %md_list_item{ng-show: "hasAnyGroups()"}
+        %md_button.sidebar__list-item-button.sidebar__list-item-button--start-thread{href: "", ng-click: "startThread()", aria-label: "{{ 'sidebar.start_thread' | translate }}"}
+          %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-plus
+          %span{translate: "sidebar.start_thread"}
     .sidebar__divider
-    %md_list_item.sidebar__list-subhead{translate: "sidebar.my_groups"}
+    %md_list_item.sidebar__list-subhead{translate: "common.groups"}
     %md_list.sidebar__list.sidebar__groups{ng-class: "{'sidebar__no-groups': groups().length < 1}", aria-label: "{{ 'sidebar.aria_labels.groups_list' | translate }}"}
       %md_list_item{ng_repeat: "group in groups() | orderBy: 'fullName' track by group.id"}
         %md_button.sidebar__list-item-button.sidebar__list-item-button--group{href: "", lmo-href: "{{groupUrl(group)}}", aria-label: "{{group.name}}", ng-if: "group.isParent()", ng-class: "{'sidebar__list-item--selected': onPage('groupPage', group.key)}"}
@@ -44,7 +51,7 @@
           %md_avatar_icon.sidebar__list-item-icon.i.fa.fa-lg.fa-globe
           %span{translate: "sidebar.explore"}
     .sidebar__divider
-    %md_list_item.sidebar__list-subhead{translate: "sidebar.my_settings"}
+    %md_list_item.sidebar__list-subhead{translate: "common.settings"}
     %md_list.sidebar__list.sidebar__users{aria-label: "{{ 'sidebar.aria_labels.user_list' | translate }}"}
       %md_list_item
         %md_button.sidebar__list-item-button.sidebar__list-item-button--profile{href: "", lmo-href: "/profile", aria-label: "{{ 'sidebar.edit_profile' | translate }}", ng-class: "{'sidebar__list-item--selected': onPage('profilePage')}"}

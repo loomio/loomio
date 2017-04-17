@@ -16,6 +16,7 @@ js:
   - ng-file-upload/dist/angular-file-upload.js
   - ment.io/dist/mentio.js
   - angular-moment/angular-moment.js
+  - moment-timezone/builds/moment-timezone-with-data.js
   - private_pub/app/assets/javascripts/private_pub.js
   - angular-animate/angular-animate.js
   - lokijs/src/lokijs.js
@@ -24,7 +25,6 @@ js:
   - angular-gravatar/build/md5.js
   - angular-scroll/angular-scroll.js
   - svg.js/dist/svg.js
-  - jstimezonedetect/dist/jstz.js
   - angular_record_store/dist/standalone.js
   - angular-elastic/elastic.js
   - checklist-model/checklist-model.js
@@ -40,10 +40,9 @@ execjs:
   - lodash/index.js
   - emojione/lib/js/emojione.js
 css:
-  - bootstrap-sass/assets/stylesheets/_bootstrap.scss
   - font-awesome/css/font-awesome.css
-  - angular-material/angular-material.css
 css_includes:
-  - bootstrap-sass/assets/stylesheets
+  - bootstrap-sass/assets/stylesheets/
+  - angular-material/modules/scss/
 fonts:
   - font-awesome/fonts/*.*

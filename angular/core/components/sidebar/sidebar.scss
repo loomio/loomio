@@ -6,31 +6,27 @@
   border-top: 1px solid rgba(0,0,0,.14);
 }
 
-.md-whiteframe-4dp {
-  -webkit-box-shadow: 16px 0px 0px 0px rgba(235,235,235,0.3);
-  -moz-box-shadow: 16px 0px 0px 0px rgba(235,235,235,0.3);
-  box-shadow: 16px 0px 0px 0px rgba(235,235,235,0.3);
-}
-
 .sidebar__content {
-  margin: 8px;
+  // margin: 8px;
 }
 
 .sidebar__list-subhead {
-    margin: 0px 0 0 12px;
-    font-size: 12px;
-    color: $navbar-default-color;
+  @include md-caption;
+  margin: 0px 0 16px 16px;
+  color: $navbar-default-color;
 }
 
 .sidebar__list-item-button {
   width: 100%;
   margin: 0;
   padding: 0 15px;
-  display: block;
+  display: flex;
+  align-items: center;
   text-align: left;
   border-radius: 4px;
   text-transform: none;
-  font-size: 13px;
+  // font-size: 13px;
+  @include md-body-1;
   @include truncateText;
 }
 

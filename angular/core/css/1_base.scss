@@ -1,8 +1,7 @@
 body {
-  @include fontHelvetica;
-  @include fontMedium;
+  // @include fontMedium;
   background-color: $background-color;
-  word-wrap: break-word;
+  // word-wrap: break-word;
 }
 
 header {
@@ -10,7 +9,13 @@ header {
   z-index: 100; }
 
 h1, h2, h3, h4{
-  @include fontReset;
+  color: $primary-text-color;
+  text-transform: none;
+  @include fontMedium;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+
 
   /*
   We reset styles on headings for accessibility.
@@ -38,7 +43,7 @@ input[type="file"]{
 }
 
 strong{
-  @include fontHelveticaBold;
+  @include fontWeightBold;
 }
 
 a {

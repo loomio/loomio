@@ -2,14 +2,17 @@ poll_common_manage_card {
   flex-grow: 1;
 }
 
+.poll-common-share-form .md-list-item-inner{
+  padding: 0;
+}
+.poll-common-share-form md-list-item{
+  padding: 0;
+}
+
+
 .poll-common-share-form__icon {
   margin-right: 5px;
   line-height: 20px !important;
-}
-
-.poll-common-share-form__helptext {
-  font-size: 12px;
-  font-style: italic;
 }
 
 .poll-common-share-form__shareable-link {
@@ -42,7 +45,6 @@ poll_common_manage_card {
 
 .poll-common-share-form__email {
   line-height: 48px;
-  padding-left: 16px;
 }
 
 .poll-common-share-form__reminded {

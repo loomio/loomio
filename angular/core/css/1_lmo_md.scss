@@ -1,0 +1,14 @@
+// not used yet.. thinking this is where we put md modifer stuff.
+.lmo-md-actions {
+  @include displayFlex;
+  justify-content: space-between;
+}
+
+.lmo-md-action {
+  @include displayFlex;
+  justify-content: flex-end;
+}
+
+md-dialog {
+  max-width: 640px !important;
+}

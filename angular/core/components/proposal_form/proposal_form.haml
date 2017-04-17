@@ -1,11 +1,11 @@
 %form.proposal-form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{ng-if: "proposal.isNew()", translate: "proposal_form.start_a_proposal"}
-    %h1.lmo-h1{ng-if: "!proposal.isNew()", translate: "proposal_form.edit_proposal"}
-
-  .modal-body
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{ng-if: "proposal.isNew()", translate: "proposal_form.start_a_proposal"}
+      %h1.lmo-h1{ng-if: "!proposal.isNew()", translate: "proposal_form.edit_proposal"}
+      %material_modal_header_cancel_button{aria-hidden: "true"}
+  .md-dialog-content.md-body-1
     %p{ng-if: "proposal.isNew()", translate: "proposal_form.what_does_a_proposal_do"}
     %p{ng-if: "!proposal.isNew()", translate: "proposal_form.editing_title_and_description_forbidden"}
 
@@ -39,7 +39,6 @@
       %closing_at_field{proposal: "proposal"}
       %validation_errors{subject: "proposal", field: "closingAt"}
 
-  .modal-footer
-    %button.lmo-btn--submit.proposal-form__start-btn{ng-if: "proposal.isNew()", type: "submit", translate: "proposal_form.start_proposal"}
-    %button.lmo-btn--submit.proposal-form__save-changes-btn{ng-if: "!proposal.isNew()", type: "submit", translate: "common.action.save_changes"}
-    %button.lmo-btn--cancel.proposal-form__cancel-btn{ng-click: "$close($event)", type: "button", translate: "common.action.cancel"}
+    .lmo-md-action
+      %md-button.md-primary.md-raised.proposal-form__start-btn{ng-if: "proposal.isNew()", type: "submit", translate: "proposal_form.start_proposal"}
+      %md-button.md-primary.md-raised.proposal-form__save-changes-btn{ng-if: "!proposal.isNew()", type: "submit", translate: "common.action.save_changes"}

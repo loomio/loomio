@@ -132,21 +132,24 @@
 }
 
 .lmo-markdown-wrapper {
+  p {
+    @include md-body-1;
+  }
   img { max-width: 100%; }
   h1 {
     @include fontLarge;
-    @include fontHelveticaBold;
+    // @include fontWeightBold;
     margin: 20px 0 10px 0;
   }
   h2 {
     @include fontMedLarge;
-    @include fontHelveticaBold;
+    // @include fontWeightBold;
   }
   h3 {
-    @include fontHelveticaBold;
+    // @include fontWeightBold;
   }
   h4 {
-    @include fontHelveticaBold;
+    // @include fontWeightBold;
   }
   ul{
     padding: 0 0 10px 24px;
@@ -293,7 +296,7 @@
   position: relative;
   overflow: visible;
   min-width: 190px;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+  margin: 0 !important;
 }
 
 .lmo-search-container i {

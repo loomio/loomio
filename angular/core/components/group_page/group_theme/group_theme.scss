@@ -18,8 +18,7 @@
 }
 
 .group-theme__member-actions button{
-  @include fontHelveticaBold;
-  @include fontSmall;
+  @include md-body-2;
 }
 
 .group-theme__header--compact {
@@ -73,7 +72,7 @@
 }
 
 .group-theme__name--compact a {
-  @include fontHelveticaMedium;
+  @include fontWeightMedium;
   color: white;
 }
 

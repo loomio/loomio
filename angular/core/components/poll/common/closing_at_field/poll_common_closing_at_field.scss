@@ -1,5 +1,9 @@
+.poll-common-closing-at-field__label {
+  overflow: visible !important;
+  color: rgba(0,0,0,0.38) !important;
+}
+
 .poll-common-closing-at-field {
-  margin-top: -16px;
   @include displayFlex;
   flex-direction: column;
 }
@@ -10,20 +14,6 @@
   color: rgba(0,0,0,0.38);
 }
 
-
-.poll-common-closing-at-field__label {
-  overflow: visible !important;
-  color: rgba(0,0,0,0.38);
-}
-
 .poll-common-closing-at-field__inputs {
   @include displayFlex;
-}
-
-.md-datepicker-calendar-pane {
-  z-index: $over-intercom !important;
-}
-
-.md-select-menu-container {
-  z-index: $over-intercom !important;
 }
