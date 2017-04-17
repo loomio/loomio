@@ -30,7 +30,7 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
       FormService.submit scope, model, _.merge(
         flashSuccess: "add_community_form.community_created",
         flashOptions: {type: model.communityType}
-        successCallback: ->
+        successCallback: (response) ->
           delete $location.search().add_community
           $location.search('share', true)
           ModalService.open PollCommonPublishModal,
