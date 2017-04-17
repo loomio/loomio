@@ -35,6 +35,6 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
           $location.search('share', true)
           ModalService.open PollCommonPublishModal,
             poll:      -> model.poll()
-            community: -> model
+            community: -> Records.communities.find(response.communities[0].id)
             back:      -> (-> ModalService.open PollCommonShareModal, poll: -> model.poll())
       , options)
