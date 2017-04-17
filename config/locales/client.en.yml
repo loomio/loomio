@@ -1475,7 +1475,7 @@ en:
     title_placeholder: E.g. Who wants to join the working group?
     details: Details
     goal: Goal
-    goal_helptext: How many votes are you expecting to receive for this count? We'll let you know when a count has reached its goal, so you can make a decision sooner.
+    goal_helptext: How many positive responses do you want?
     details_placeholder: Explain what opting-in involves, or give details about how to participate.
     start: Start count
     update: Update count
