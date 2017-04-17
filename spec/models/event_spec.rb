@@ -478,4 +478,13 @@ describe Event do
     end
   end
 
+  describe 'poll_goal_reached' do
+    it 'notifies the poll author' do
+      event = Events::PollGoalReached.publish!(poll)
+      email_users = event.send(:email_recipients)
+      expect(email_users.length).to eq 1
+      expect(email_users).to include poll.author
+    end
+  end
+
 end
