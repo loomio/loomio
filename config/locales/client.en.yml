@@ -1640,13 +1640,21 @@ en:
     community_added: Community added to poll
 
   poll_common_publish_form:
+    community: Inform the following group of your poll
     message: Enter a message
     message_placeholder: Add a message to accompany the link to your poll
+    published: Message successfully sent
 
   poll_common_publish_facebook_preview:
     shared_a: shared a
     link: link
     just_now: Just now
+
+  poll_common_publish_slack_preview:
+    poll_published: "published a poll:"
+    poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
+    view_it_on_loomio: View it on Loomio
+    timestamp: Today at {{timestamp}}
 
   add_community_form:
     title: Add community

@@ -3,7 +3,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   attributes :text, :username, :icon_url, :channel, :attachments
 
   def text
-    I18n.t text_translation_key, text_options
+    object.custom_fields['message']
   end
 
   def username
@@ -20,7 +20,8 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   def attachments
     [{
-      pretext:     object.custom_fields['message'],
+      author_name: object.user.name,
+      author_link: user_url(object.user, default_url_options),
       author_icon: object.user.avatar_url(:small),
       title:       slack_title,
       title_link:  model_url,
@@ -34,12 +35,8 @@ class Slack::BaseSerializer < ActiveModel::Serializer
 
   private
 
-  def text_translation_key
-    if object.eventable.discussion
-      :"webhooks.slack.#{object.kind}_with_discussion"
-    else
-      :"webhooks.slack.#{object.kind}"
-    end
+  def include_text?
+    text.present?
   end
 
   def community
