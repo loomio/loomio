@@ -28,10 +28,9 @@ module HasAvatar
   end
 
   def avatar_url(size = :medium)
-    if avatar_kind.to_sym == :gravatar
-      gravatar_url(size: AVATAR_SIZES[size])
-    else
-      uploaded_avatar.url(size)
+    case avatar_kind.to_sym
+    when :gravatar then gravatar_url(size: AVATAR_SIZES[size])
+    when :uploaded then uploaded_avatar.url(size)
     end
   end
 

@@ -1132,6 +1132,10 @@ en:
       poll_closing_soon: "*%{name}* is closing soon"
       view_it_on_loomio: View it on Loomio
       have_your_say: Have your say
+      poll_published: "*%{author}* published a poll:"
+      poll_published_with_discussion: "*%{author}* published a poll in %{discussion}:"
+      outcome_published: "*%{author}* published an outcome:"
+      outcome_published_with_discussion: "*%{author}* published an outcome in %{discussion}:"
       position_verbs:
         'yes': agreed on
         'no': disagreed on

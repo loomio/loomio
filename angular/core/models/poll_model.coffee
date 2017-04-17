@@ -98,8 +98,8 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @customFields.goal or @communitySize()
 
     close: =>
-      @remote.postMember(@id, 'close')
+      @remote.postMember(@key, 'close')
 
     publish: (community, message) =>
-      @remote.postMember(@id, 'publish', community_id: community.id, message: message).then =>
+      @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
         @published = true
