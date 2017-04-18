@@ -3,13 +3,24 @@ require 'rails_helper'
 describe Queries::VisibleDiscussions do
   let(:user) { create :user }
   let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
+  let(:subgroup) { create :group, parent: group }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
+  let(:subgroup_discussion) { create :discussion, group: subgroup, author: author, private: true }
   let(:motion_discussion) { create :discussion, group: group, author: author }
   let(:motion) { create :motion, discussion: motion_discussion, closing_at: 2.days.from_now }
 
   subject do
     Queries::VisibleDiscussions.new(user: user, groups: [group])
+  end
+
+  describe 'subgroups' do
+    it 'shows subgroup threads even if not a member of the parent' do
+      subgroup_discussion
+      subgroup.add_member! user
+      query = Queries::VisibleDiscussions.new(user: user, group_ids: group.reload.org_group_ids)
+      expect(query).to include subgroup_discussion
+    end
   end
 
   describe 'logged out' do
