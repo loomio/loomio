@@ -2,6 +2,9 @@
   @include card;
   margin-top: 33px;
 }
+.pending-invitations-card__pending-invitations {
+  width: 100%;
+}
 
 .pending-invitations-card__cancel-link {
   @include lmoBtnNude;

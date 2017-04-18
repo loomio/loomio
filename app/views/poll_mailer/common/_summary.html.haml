@@ -16,9 +16,9 @@
   %p
     - if @info.poll.active?
       = t(:closing)
-      = formatted_time_in_zone(@info.poll.closing_at, @info.recipient.time_zone)
+      = formatted_time_in_zone(@info.poll.closing_at, @info.time_zone)
     - else
       = t(:closed)
-      = formatted_time_in_zone(@info.poll.closed_at, @info.recipient.time_zone)
+      = formatted_time_in_zone(@info.poll.closed_at, @info.time_zone)
 
   = render "thread_mailer/attachments", resource: @info.poll

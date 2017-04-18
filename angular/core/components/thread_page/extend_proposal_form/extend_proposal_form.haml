@@ -1,11 +1,12 @@
 %form.extend-proposal-form{ng-submit: "submit()", ng-disabled: "proposal.processing"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "extend_proposal_form.title"}
-
-  .modal-body
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "extend_proposal_form.title"}
+      %material_modal_header_cancel_button
+  .md-dialog-content.md-body-1
     %closing_at_field{proposal: "proposal"}
 
-  .modal-footer
-    %button.lmo-btn--submit.cuke-extend-proposal-btn{type: "submit", translate: "extend_proposal_form.submit"}
-    %button.lmo-btn--cancel{type: "button", ng-click: "cancel($event)", translate: "common.action.cancel"}
+    .lmo-md-actions
+      %md-button{ng-click: "cancel($event)", translate: "common.action.cancel"}
+      %md-button.md-primary.md-raised{type: "submit", translate: "extend_proposal_form.submit"}

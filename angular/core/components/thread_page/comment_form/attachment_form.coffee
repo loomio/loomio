@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'attachmentForm', ->
+angular.module('loomioApp').directive 'attachmentForm', (MdAttachmentFormController) ->
   scope: {model: '=', showLabel: '=?'}
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/attachment_form.html'

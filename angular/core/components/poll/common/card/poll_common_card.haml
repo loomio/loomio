@@ -9,7 +9,5 @@
     .poll-common-card__results-shown{ng-if: "showResults()"}
       %poll_common_directive{poll: "poll", name: "chart_panel"}
     %poll_common_action_panel{poll: "poll"}
-    .poll-common-card__results-hidden{ng-if: "!showResults()"}
-      %md-button.md-primary{ng-click: "press()", translate: "poll_common_card.show_results", aria-label: "{{poll_common_card.show_results | translate}}"}
     .poll-common-card__results-shown{ng-if: "showResults()"}
       %poll_common_votes_panel{poll: "poll"}

@@ -1,6 +1,13 @@
+@mixin lmoRow {
+  @media (min-width: $tiny-max-px){
+    /* outer padding on all but tiny screens */
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 body {
-  position: static;
-  z-index: -2 !important;
+  // position: static;
 }
 
 .lmo-one-column-layout, .lmo-two-column-layout{
@@ -26,7 +33,6 @@ body {
 md-dialog {
   min-width: $tiny-max-px;
   max-height: 90%;
-  background-color: $modal-background-color;
 }
 
 .lmo-sidebar-and-main-container {
@@ -46,11 +52,8 @@ md-dialog {
   height: 320px;
 }
 
-.md-dialog-container {
-  z-index: $over-intercom;
-}
-
 .modal-body {
+  @include md-body-1;
   max-height: calc(90vh - 125px);
   overflow: auto;
   flex-shrink: 0; // fix for safari and maybe ie11 squishing the modal-body

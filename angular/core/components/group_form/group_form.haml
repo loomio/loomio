@@ -1,11 +1,11 @@
-.group-form
+%md-dialog.group-form
   %form{ng-submit: "submit()",  ng-disabled: "group.processing", name: "groupForm" }
     .lmo-disabled-form{ng-show: "isDisabled"}
-    .modal-header
-      %modal_header_cancel_button{aria-hidden: "true"}
-      %h1.lmo-h1{translate: "{{i18n.heading}}"}
-
-    .modal-body
+    %md-toolbar
+      .md-toolbar-tools.lmo-flex__space-between
+        %h1.lmo-h1{translate: "{{i18n.heading}}"}
+        %material_modal_header_cancel_button
+    .md-dialog-content.md-body-1
       .group-form__basic
         .group-form__name
           %label{for: "group-name", translate: "{{i18n.group_name}}"}
@@ -16,7 +16,7 @@
           %label{for: "group-description", translate: "group_form.description"}
           %textarea.lmo-textarea.form-control.lmo-primary-form-input#group-description{placeholder: "{{ 'group_form.description_placeholder' | translate }}", msd-elastic: "true", ng-model: "group.description"}
 
-        .group-form__privacy-statement
+        .group-form__privacy-statement.md-caption
           {{privacyStatement()}}
 
         .group-form__privacy.lmo-form-group
@@ -43,7 +43,6 @@
               %span.seperator
               {{ privacyStringFor("secret") }}
 
-      %button.lmo-link.group-form__advanced-link{type: "button", ng-show: "!expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
 
       .group-form__advanced{ng-show: "expanded"}
         .group-form__joining.lmo-form-group{ng-if: "group.privacyIsOpen()"}
@@ -96,6 +95,7 @@
             %input.group-form__members-can-vote{type: "checkbox", ng-model: "group.membersCanVote"}
             %span{translate: "group_form.members_can_vote"}
 
-    .modal-footer
-      %button.lmo-btn--cancel{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
-      %button.lmo-btn--submit.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}
+      .lmo-md-actions
+        %md-button.md-accent{type: "button", ng-show: "!expanded", ng-click: "expandForm()", translate: "group_form.advanced_settings"}
+        .buh
+        %md-button.md-primary.md-raised.group-form__submit-button{type: "submit", translate: "{{i18n.submit}}"}

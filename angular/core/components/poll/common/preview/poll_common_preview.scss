@@ -1,0 +1,15 @@
+a.poll-common-preview {
+  @include displayFlex;
+  width: 100%;
+  height: 72px;
+  color: $primary-text-color;
+  text-decoration: none;
+
+  :hover {
+    text-decoration: none;
+  }
+}
+
+.poll-common-preview__body {
+  margin-left: 16px;
+}

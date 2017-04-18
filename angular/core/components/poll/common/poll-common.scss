@@ -22,34 +22,75 @@
   max-width: 400px;
 }
 
+.poll-common-vote-form__border-chip {
+  border-left: 8px solid;
+  padding-left: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.poll-common-vote-form__options .md-list-item-inner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.poll-common-vote-form__options md-input-container {
+  margin: 0;
+}
+
+
 .poll-common-vote-form__radio-button .md-container {
   // display radio button floated to right of container
   right: 0;
   left: auto;
 }
 
+.poll-common-vote-form__option {
+  min-height: 48px;
+  margin-bottom: 16px;
+}
+
+.poll-common-vote-form__checkbox {
+  margin-right: 0 !important;
+}
+
 .poll-common-vote-form__radio-button .md-label {
   margin-left: 0;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  // padding: 8px 0;
 }
 
 .poll-common-vote-form__reason {
   margin-top: 43px;
 }
 
-.poll-common-form__actions {
-  @include displayFlex;
-  justify-content: flex-end;
-  align-items: center;
+.poll-common-form__list-item{
+  padding: 0 2px !important;
 }
 
 .poll-common-checkbox-option {
   @include displayFlex;
   margin-bottom: 16px;
+  padding-left: 2px;
 }
+
 .poll-common-checkbox-option__text{
   flex-grow: 1
 }
 
-.poll-common__actions {
-  justify-content: space-between;
+
+.poll-common-form__label {
+  overflow: visible !important;
+  color: rgba(0,0,0,0.38) !important;
+  font-size: 11px;
+}
+
+.md-input-compensate {
+  margin-top: -26px;
 }

@@ -1,0 +1,11 @@
+.md-attachment-form
+  %md-button.md-accent.md-attachment-form__button{type: "button", md-icon-button: "", ng-click: "selectFile()", ng-hide: "files", aria-label: "{{ 'comment_form.attachments.add_attachment' | translate }}"}
+    %i.material-icons.md-attachment-form__icon attach_file
+    %span{translate: "comment_form.attachments.add_attachment", ng-if: "showLabel"}
+
+  %input.md-attachment-form__file-input.hidden{type: "file", ng-model: "files", ng-file-select: "upload(files)"}
+  .md-attachment-form-in-progress{ng-repeat: "file in files"}
+    .progress.active.md-attachment-form-progress-field
+      %span.md-attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
+      %uib-progressbar.md-attachment-form-progress-bar.progress-striped.active{ng-attr-value: "percentComplete"}
+    %button.close.md-attachment-form-cancel.cancel-upload{type: "button", ng-click: "abort()"} &times;

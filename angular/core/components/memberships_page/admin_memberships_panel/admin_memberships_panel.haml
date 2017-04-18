@@ -1,24 +1,17 @@
-.blank
-  .row.memberships-page__table-row
-    .col-xs-7
-    .lmo-bold.col-xs-3.hidden-xs.align-center{translate: "memberships_page.coordinator_label"}
-    .lmo-bold.col-xs-2.hidden-xs.align-center{translate: "memberships_page.remove_member_label"}
-  .row.memberships-page__table-row.memberships-page__membership{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
-    .col-xs-7
-      .media
-        .media-left.hidden-xs
-          %user_avatar{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
-        .media-body
-          .memberships-page__member-info
-            %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
-            %div @{{::membership.user().username}}
-    .col-xs-3.align-center
+%table.memberships-panel
+  %tr.memberships-panel__row
+    %td.memberships-panel__spacer-cell
+    %td.memberships-panel__spacer-cell
+    %td.memberships-panel__header-cell{translate: "memberships_page.coordinator_label"}
+    %td.memberships-panel__header-cell{translate: "memberships_page.remove_member_label"}
+  %tr.memberships-panel__row{ng-repeat: "membership in memberships() | orderBy: '-admin' track by membership.id", data-username: "{{membership.user().username}}"}
+    %td.memberships-panel__avatar-cell
+      %user_avatar{user: "membership.user()", size: "medium", coordinator: "membership.admin"}
+    %td.memberships-panel__member-info-cell
+      %a{lmo-href-for: "membership.user()"} {{::membership.user().name}}
+      %div @{{::membership.user().username}}
+    %td.memberships-panel__admin-checkbox-cell
       %input.memberships-page__make-coordinator{type: "checkbox", ng-model: "membership.admin", ng-change: "toggleAdmin(membership)", ng-disabled: "!canToggleAdmin(membership)"}
-    .col-xs-2.align-center
+    %td.memberships-panel__remove-member-cell
       %button.memberships-page__remove-link{href: "", ng-click: "openRemoveForm(membership)", ng-show: "canRemoveMembership(membership)"}
-        %i.fa.fa-lg.fa-times-circle
-  .row.memberships-page__table-row
-    .members-card__invite-members.col-xs-6{ng-if: "canAddMembers()"}
-      %button.lmo-btn--featured.lmo-btn--block.lmo-btn--icon{href: "", ng_click: "invitePeople()"}
-        %i.fa.fa-lg.fa-plus>
-        %span{translate: "group_page.invite_people" }
+        %i.material-icons remove_circle

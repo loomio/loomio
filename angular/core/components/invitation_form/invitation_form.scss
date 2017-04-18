@@ -2,11 +2,6 @@
   min-height: 100px;
 }
 
-.invitation-form__flex {
-  @include displayFlex;
-  align-items: flex-start; // | flex-end | center | baseline | stretch;
-}
-
 .invitation-form__group-select,
 .invitation-form__shareable-link-field,
 .invitation-form__email-addresses {

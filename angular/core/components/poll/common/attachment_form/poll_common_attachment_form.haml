@@ -1,6 +1,7 @@
 .poll-common-attachment-form
-  %attachment_form{model: "poll", show-label: "true"}
+  %md_attachment_form{model: "poll", show-label: "true"}
   %validation_errors{subject: "poll", field: "file"}
-  %label.lmo-form-labelled-input
-    %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in poll.newAttachments() | orderBy: 'id' track by attachment.id"}
+  %label.poll-common-form__label{ng-if: "poll.newAttachments().length >0", translate: "poll_common_attachment_form.label"}
+  -# %label.lmo-form-labelled-input
+  %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in poll.newAttachments() | orderBy: 'id' track by attachment.id"}
   .clearfix

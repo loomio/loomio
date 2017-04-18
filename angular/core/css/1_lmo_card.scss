@@ -1,5 +1,29 @@
+@mixin cardMinorAction {
+  color: $grey-on-white;
+  margin: 20px 0 0 0;
+  display: block;
+  text-decoration: underline;
+  clear: both;
+}
+
 .lmo-card {
   @include card;
+}
+
+.lmo-card-pad-top {
+  padding-top: $cardPaddingSize;
+}
+
+.lmo-card-pad-sides {
+  padding: 0 $cardPaddingSize;
+}
+
+.lmo-card-pad-bottom {
+  padding-bottom: $cardPaddingSize;
+}
+
+.lmo-card-pad-top-n-sides {
+  padding: $cardPaddingSize $cardPaddingSize 0 $cardPaddingSize;
 }
 
 .lmo-card-minor-action{
@@ -23,18 +47,19 @@
 }
 
 .lmo-card-heading{
-  @include fontHelveticaMedium;
-  @include fontSmall;
-  text-transform: uppercase;
+  // @include fontWeightMedium;
+  // @include fontSmall;
+  @include md-subhead;
   color: $grey-on-white;
   margin-bottom: 10px;
+  margin-top: 0;
   letter-spacing: .3px;
 }
 
 .lmo-card-subheading{
-  @include fontSmall;
-  @include fontHelveticaMedium;
-  text-transform: uppercase;
+  @include md-subhead;
+  // @include fontSmall;
+  // @include fontWeightMedium;
   color: $grey-on-white;
   margin-top: 1.5em;
   margin-bottom: .8em;

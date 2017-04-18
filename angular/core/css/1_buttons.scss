@@ -70,27 +70,11 @@
 
 @mixin lmoBtnFeatured{
   @include lmoBtn;
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
   i.fa{ color: #fff; }
 }
 .lmo-btn--featured {
   @include lmoBtnFeatured;
-}
-
-@mixin lmoBtnInfo{
-  @include lmoBtn;
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
-.lmo-btn--info {
-  @include lmoBtnInfo;
-}
-
-@mixin lmoBtnWarning{
-  @include lmoBtn;
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-.lmo-btn--warning {
-  @include lmoBtnWarning;
 }
 
 @mixin lmoBtnDanger {

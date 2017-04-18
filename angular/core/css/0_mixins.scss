@@ -1,21 +1,3 @@
-/* let's only use semantic names for our colours */
-$grey-on-grey:  #666;
-$grey-on-white: #767676;
-$light-grey-on-white: #999999;
-$primary-text-color: #262626;
-$border-color: #dcdcdc;
-$list-hover-color: #E0E0E0;
-$list-hover-transparent-color: rgba(224,224,224,0.8);
-$background-color: #ebebeb;
-$card-background-color: #fff;
-$modal-background-color: #f6f6f6;
-$highlight-red: #D0021B;
-$link-color: #337ab7;
-
-$item-highlight-color: #FFFFE8;
-$progress-bar-color: #176EE3;
-$loomio-orange: #F6A82B;
-
 $navbar-height: 48px;
 $tiny-max:      480;
 $small-max:     768;
@@ -25,127 +7,8 @@ $small-max-px:  $small-max  + px;
 $medium-max-px: $medium-max + px;
 $max-container-size: 1120px;
 
-$agree-color: #00d374;
-$abstain-color: #F6A82B;
-$disagree-color: #F96168;
-$block-color: #CE261B;
-
-// z-indexes
-$over-intercom: 2147483001; // On top of Intercom's arbitrarily high widget
-
-.lmo-grey-on-white {
-  color: $grey-on-white;
-}
-
-@mixin fontTiny {
-  font-size: 12px;
-  line-height: 14px;
-}
-
-@mixin fontSmall {
-  font-size: 13px;
-  line-height: 19px;
-}
-
-@mixin fontMedium {
-  font-size: 15px;
-  line-height: 23px;
-}
-
-@mixin fontMedLarge {
-  font-size: 18px;
-  line-height: 25px;
-}
-
-@mixin fontLarge {
-  font-size: 20px;
-  line-height: 28px;
-}
-
-@mixin fontGrande {
-  font-size: 24px;
-  line-height: 32px;
-}
-
-@mixin fontHelvetica {
-  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  font-weight:400;
-  font-stretch:normal;
-}
-@mixin fontHelveticaLight {
-  font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  font-weight:300;
-  font-stretch:normal;
-}
-@mixin fontHelveticaBold {
-  font-family: "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold",
-    "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Helvetica", "Tahoma",
-    "Geneva", "Arial", sans-serif;
-  font-weight:600;
-  font-stretch:normal;
-}
-
-@mixin fontHelveticaMedium{
-  font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  font-weight:500;
-  font-stretch:normal;
-}
-
-@mixin truncateText {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@mixin roundedCorners {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
-@mixin smallIcon {
-  @include roundedCorners;
-  width: 30px;
-  height: 30px;
-}
-
-@mixin boxTiny {
-  width: 20px;
-  height: 20px;
-}
-
-$boxSmallSize: 30px;
-@mixin boxSmall {
-  width: $boxSmallSize;
-  height: $boxSmallSize;
-}
-
-
-$boxMediumSize: 50px;
-@mixin boxMedium {
-  width: $boxMediumSize;
-  height: $boxMediumSize;
-}
-
-$boxMediumCircularSize: 48px;
-@mixin boxMediumCircular {
-  width: $boxMediumCircularSize;
-  height: $boxMediumCircularSize;
-}
-
-$boxLargeSize: 80px;
-@mixin boxLarge {
-  width: $boxLargeSize;
-  height: $boxLargeSize;
-}
-
-$boxFeaturedSize: 175px;
-@mixin boxFeatured {
-  width: $boxFeaturedSize;
-  height: $boxFeaturedSize;
-}
-
 @mixin card{
+  @include md-body-1;
   @include cardNoPadding;
   @include cardPadding;
 }
@@ -157,7 +20,7 @@ $boxFeaturedSize: 175px;
   background: #fff;
   margin-bottom: 10px;
   max-width: 100%;
-  i{ color: $grey-on-white; }
+  i.fa{ color: $grey-on-white; }
 }
 
 $thinPaddingSize: 8px;
@@ -169,15 +32,6 @@ $cardPaddingSize: 16px;
 @mixin thinRoundedBorder {
   border: 1px solid $border-color;
   @include roundedCorners;
-}
-
-@mixin fontReset{
-  color: $primary-text-color;
-  text-transform: none;
-  @include fontHelvetica;
-  @include fontMedium;
-  margin: 0;
-  padding: 0;
 }
 
 @mixin box_shadow ($level) {
@@ -194,66 +48,4 @@ $cardPaddingSize: 16px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   }
 
-}
-
-@mixin cardMinorAction {
-  @include fontHelveticaLight;
-  color: $grey-on-white;
-  margin: 20px 0 0 0;
-  display: block;
-  text-decoration: underline;
-  clear: both;
-}
-
-
-@mixin displayFlex {
-  display: flex;
-  /*display: -webkit-box;*/
-  /*display: -moz-box;*/
-  display: -ms-flexbox;
-  display: -webkit-flex;
-}
-
-.lmo-flex {
-  @include displayFlex;
-}
-
-.lmo-flex__grow {
-  flex-grow: 1;
-}
-
-.lmo-flex__no-shrink {
-  flex-shrink: 0;
-}
-
-@mixin flexRow {
-  flex-direction: row;
-  -webkit-flex-direction: row;
-}
-
-@mixin flexColumn {
-  flex-direction: column;
-  -webkit-flex-direction: column;
-}
-
-@mixin lmoRow {
-  @media (min-width: $tiny-max-px){
-    /* outer padding on all but tiny screens */
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@mixin lmoH1{
-  @include fontHelveticaBold;
-  @include fontGrande;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  outline: 0;
-}
-
-.lmo-version {
-  color: #666;
-  font-size: 11px;
 }

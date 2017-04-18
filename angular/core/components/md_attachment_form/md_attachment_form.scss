@@ -1,0 +1,46 @@
+.md-attachment-form {
+}
+
+.md-attachment-form__button {
+  // color: rgba(0,0,0,.38) !important;
+  margin-top: -17px;
+  float: right;
+}
+
+.md-attachment-form__icon{
+  font-size: 15px !important;
+  margin-right: 4px;
+}
+
+.md-attachment-form-in-progress {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.md-attachment-form-progress-field {
+  width: 200px;
+  margin: 0;
+  padding: 7px 0;
+  height: 35px;
+  text-align: center;
+  position: relative;
+}
+
+.md-attachment-form-cancel {
+  margin: 5px;
+}
+
+.md-attachment-form-progress-text {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  color: #444;
+}
+
+.md-attachment-form-progress-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 35px;
+}

@@ -1,5 +1,10 @@
-.poll-common-preview
-  %bar_chart{ng-if: "chartType() == 'bar'", stance_counts: "poll.stanceCounts", size: "50"}
-  %progress_chart{ng-if: "chartType() == 'progress'", stance_counts: "poll.stanceCounts", goal: "poll.goal()", size: "50"}
-  %poll_proposal_chart_preview{ng-if: "chartType() == 'pie'", stance_counts: "poll.stanceCounts", my_stance: "myStance()"}
-  %matrix_chart{ng-if: "chartType() == 'matrix'", matrix_counts: "poll.matrixCounts", size: "50"}
+%a.poll-common-preview{href: "", lmo-href-for: "poll"}
+  %poll_common_chart_preview{poll: "poll"}
+  .poll-common-preview__body
+    .md-subhead
+      %strong> {{formattedPollType(poll.pollType)}}:
+      %span> {{poll.title}}
+    .md-caption.lmo-grey-on-white
+      %span{translate: "poll_common_collapsed.by_who", translate-value-name: "{{poll.author().name}}"}>
+      %span>·
+      %poll_common_closing_at{poll: "poll"}

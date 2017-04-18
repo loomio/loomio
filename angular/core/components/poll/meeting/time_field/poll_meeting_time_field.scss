@@ -3,6 +3,22 @@
   margin-right: 16px;
 }
 
+.poll-meeting-form__poll-option-name {
+  padding: 0 2px !important;
+}
+
+.poll-meeting-time-field {
+  padding: 0 2px !important;
+}
 .poll-meeting-time-field__add {
+  margin-left: 8px;
   text-align: right;
+}
+
+.md-datepicker-expand-triangle {
+  top: 23%;
+}
+
+.md-select-value .md-select-icon:after {
+  font-size: 14px;
 }

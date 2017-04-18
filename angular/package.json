@@ -40,7 +40,7 @@
     "angular-translate": "~2.7.2",
     "angular-translate-loader-url": "~2.7.2",
     "angular-ui-bootstrap": "~> 0.14.3",
-    "angular_record_store": "2.7.6",
+    "angular_record_store": "2.7.8",
     "angulartics": "1.1.2",
     "angulartics-google-tag-manager": "0.0.1",
     "bootstrap-sass": "~> 3.3.5",
@@ -54,6 +54,7 @@
     "loomio-angular-router": "git://github.com/loomio/router#v0.5.3.2",
     "ment.io": "~0.9.15",
     "moment": "latest",
+    "moment-timezone": "latest",
     "ng-file-upload": "~3.2.4",
     "private_pub": "latest",
     "svg.js": "latest"

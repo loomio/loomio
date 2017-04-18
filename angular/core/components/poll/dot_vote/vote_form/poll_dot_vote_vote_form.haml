@@ -1,7 +1,10 @@
 %form.poll-dot-vote-vote-form
-  %md-list.poll-dot-vote-vote-form__options
-    %md-list-item.poll-dot-vote-vote-form__option{ng-repeat: "choice in stanceChoices"}
+  %h3.lmo-card-subheading{translate: "poll_common.your_response"}
+  %md-list.poll-common-vote-form__options
+    %md-list-item.poll-dot-vote-vote-form__option.poll-common-vote-form__option{ng-repeat: "choice in stanceChoices"}
       %md-input-container.poll-dot-vote-vote-form__input-container
+        -# .poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': optionFor(choice).color}"} {{ optionFor(choice).name }}
+        -# %input.poll-dot-vote-vote-form__dot-input{type: "number", ng-model: "choice.score", min: "0", step: "1"}
         %p.poll-dot-vote-vote-form__chosen-option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': optionFor(choice).color}"} {{ optionFor(choice).name }}
         %poll_common_number_input.poll-dot-vote-vote-form__number-input{model: "choice.score", max-reached: "noDotsLeft"}
   %validation_errors{subject: "stance", field: "stanceChoices"}
@@ -16,5 +19,6 @@
 
   %poll_common_participant_form{stance: "stance"}
 
-  .poll-common-form__actions
+  .poll-common-form-actions
+    %show_results_button{ng-if: "stance.isNew()"}
     %md-button.md-primary.md-raised{ng-click: "submit()", ng-disabled: "tooManyDots()", translate: "poll_common.vote", aria-label: "{{ 'poll_poll_vote_form.vote' | translate }}"}

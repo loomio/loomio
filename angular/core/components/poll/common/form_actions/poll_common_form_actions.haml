@@ -1,0 +1,5 @@
+.poll-common-form-actions.lmo-flex
+  %md-button.md-raised{ng-click: "back()", ng-if: "back", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
+  %span{ng-if: "!back"}
+  %md-button.md-primary.md-raised.poll-poll-form__submit{ng-click: "submit()", ng-if: "!poll.isNew()", translate: "poll_common_form.update", aria-label: "{{ 'poll_common_form.update' | translate }}"}
+  %md-button.md-primary.md-raised.poll-poll-form__submit{ng-click: "submit()", ng-if: "poll.isNew()", translate: "poll_common_form.start", aria-label: "{{ 'poll_common_form.start' | translate }}"}

@@ -1,27 +1,28 @@
-%form.membership-request-form{ng-submit: "submit()", ng-disabled: "membership_request.processing"}
-  .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "membership_request_form.heading"}
+%md-dialog.membership-request-form
+  %form{ng-submit: "submit()", ng-disabled: "membership_request.processing"}
+    .lmo-disabled-form{ng-show: "isDisabled"}
+    %md-toolbar
+      .md-toolbar-tools.lmo-flex__space-between
+        %h1.lmo-h1{translate: "membership_request_form.heading"}
+        %material_modal_header_cancel_button
+    .md-dialog-content
+      %fieldset
+        .lmo-form-group
+          %label{for: "membership-request-name", translate: "membership_request_form.name_label"}
+          %input.membership-request-form__name.form-control#membership-request-name{ng-model: "membershipRequest.name", ng-required: "true", ng-disabled: "isLoggedIn()"}
 
-  .modal-body
-    %fieldset
-      .lmo-form-group
-        %label{for: "membership-request-name", translate: "membership_request_form.name_label"}
-        %input.membership-request-form__name.form-control#membership-request-name{ng-model: "membershipRequest.name", ng-required: "true", ng-disabled: "isLoggedIn()"}
+        .lmo-form-group
+          %label{for: "membership-request-email", translate: "membership_request_form.email_label"}
+          %input.membership-request-form__email.form-control#membership-request-email{ng-model: "membershipRequest.email", ng-required: "true", ng-disabled: "isLoggedIn()"}
+          %validation_errors{subject: "membershipRequest", field: "email"}
 
-      .lmo-form-group
-        %label{for: "membership-request-email", translate: "membership_request_form.email_label"}
-        %input.membership-request-form__email.form-control#membership-request-email{ng-model: "membershipRequest.email", ng-required: "true", ng-disabled: "isLoggedIn()"}
-        %validation_errors{subject: "membershipRequest", field: "email"}
+        .lmo-form-group
+          %label{for: "membership-request-introduction", translate: "membership_request_form.introduction_label"}
+          %textarea.lmo-textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: "membershipRequest.introduction", ng-required: "false"}
+          .membership-request-form__chars-left{ng-class: "{ overlimit: membershipRequest.overCharLimit() }"}>
+            {{ membershipRequest.charsLeft() }}
+          .membership-request-form__over-limit.lmo-validation-error{ng-if: "membershipRequest.overCharLimit()", translate: "membership_request_form.introduction_over_limit"}
 
-      .lmo-form-group
-        %label{for: "membership-request-introduction", translate: "membership_request_form.introduction_label"}
-        %textarea.lmo-textarea.membership-request-form__introduction.form-control#membership-request-introduction{ng-model: "membershipRequest.introduction", ng-required: "false"}
-        .membership-request-form__chars-left{ng-class: "{ overlimit: membershipRequest.overCharLimit() }"}>
-          {{ membershipRequest.charsLeft() }}
-        .membership-request-form__over-limit.lmo-validation-error{ng-if: "membershipRequest.overCharLimit()", translate: "membership_request_form.introduction_over_limit"}
-
-  .modal-footer
-    %button.membership-request-form__submit-btn{type: "submit", translate: "membership_request_form.submit_button"}
-    %button.membership-request-form__cancel-btn{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+      .lmo-md-actions
+        %md-button.membership-request-form__cancel-btn{ng-click: "$close()", type: "button", translate: "common.action.cancel"}
+        %md-button.md-raised.md-primary.membership-request-form__submit-btn{type: "submit", translate: "membership_request_form.submit_button"}

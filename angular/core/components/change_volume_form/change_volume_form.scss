@@ -19,14 +19,6 @@
   font-weight: normal;
 }
 
-.change-volume-form__cancel{
-  @include lmoBtnCancel;
-}
-
-.change-volume-form__submit{
-  @include lmoBtnSubmit;
-}
-
 .change-volume-form__apply-to-all-label {
   font-weight: normal;
   margin-left: 10px;

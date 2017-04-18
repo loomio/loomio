@@ -2,6 +2,11 @@
   @include card;
 }
 
+.members-card__list {
+  @include displayFlex;
+  flex-wrap: wrap;
+}
+
 .members-card__avatar-link {
   color: $primary-text-color;
   &:hover {
@@ -11,19 +16,22 @@
 }
 
 .members-card__avatar{
-  float: left;
+  // float: left;
   margin: 0 2px 2px 0;
 }
 
 .members-card__invite-members {
-  clear: both;
-  padding-top: 10px;
+  // clear: both;
+  // padding-top: 10px;
 }
 
 .members-card__invite-members-btn{
-  @include lmoBtnFeatured;
-  @include lmoBtnBlock;
-  @include lmoBtnIcon;
+  position: relative;
+  top: 6px;
+  right: -8px;
+  // @include lmoBtnFeatured;
+  // // @include lmoBtnBlock;
+  // @include lmoBtnIcon;
 }
 
 .members-card__manage-members {
