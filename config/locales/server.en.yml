@@ -354,6 +354,15 @@ en:
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
 
+    blockquotes:
+      title: |
+        ## Blockquotes
+
+      body: |
+        Quote a block of text by starting each line with a greater-than sign.
+
+        > It was a rock lobster
+
   beta_banner:
     new_loomio_html: |
       <strong>The New Loomio is faster, prettier, and better!</strong> We're switching everyone over.
