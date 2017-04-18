@@ -9,7 +9,7 @@ PollSearch = Struct.new(:user) do
     results = results.send(filters[:status])      if STATUS_FILTERS.include?(filters[:status].to_s)
     results = results.send(filters[:user], user)  if USER_FILTERS.include?(filters[:user].to_s)
     results = results.search_for(filters[:query]) if filters[:query].present?
-    results.order(created_at: :desc)
+    results.order filters.fetch(:order_field, :created_at) => filters.fetch(:order_dir, :desc)
   end
 
   def results_count
