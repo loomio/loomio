@@ -178,11 +178,13 @@ describe 'Discussion Page', ->
       page.expectElement '.thread-item__body img'
 
     it 'replies to a comment', ->
-      threadPage.addComment('original comment right heerrr')
-      threadPage.replyLinkOnMostRecentComment().click()
-      threadPage.addComment('hi this is my comment')
-      expect(threadPage.inReplyToOnMostRecentComment()).toContain('in reply to')
-      expect(flashHelper.flashMessage()).toContain('Patrick Swayze notified of reply')
+      page.fillIn '.comment-form__comment-field', 'original comment right heerrr'
+      page.click '.comment-form__submit-button',
+                 '.thread-item__action--reply'
+      page.fillIn '.comment-form__comment-field', 'hi this is my comment'
+      page.click '.comment-form__submit-button'
+      page.expectText '.new-comment__replied-to', 'replied to'
+      page.expectFlash 'Patrick Swayze notified of reply'
 
     it 'likes a comment', ->
       threadPage.addComment('hi')

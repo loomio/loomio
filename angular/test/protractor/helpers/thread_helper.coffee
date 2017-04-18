@@ -60,12 +60,6 @@ module.exports = new class ThreadHelper
   mostRecentComment: ->
     element.all(By.css('.thread-item--comment')).last().getText()
 
-  replyLinkOnMostRecentComment: ->
-    element.all(By.css('.thread-item__action--reply')).last()
-
-  inReplyToOnMostRecentComment: ->
-    element.all(By.css('.new-comment__in-reply-to')).last().getText()
-
   likeLinkOnMostRecentComment: ->
     element.all(By.css('.thread-item__action--like')).last()
 

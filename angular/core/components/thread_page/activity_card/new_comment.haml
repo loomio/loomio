@@ -15,10 +15,12 @@
     .media-left
       %user_avatar{user: "comment.author()", size: "small"}
     .media-body
-      %h3.new-comment__in-reply-to{ng-if: "comment.parentId", id: "event-{{event.id}}"}
+      %h3.new-comment__replied-to{ng-if: "comment.parentId", id: "event-{{event.id}}"}
         %strong
           %a{lmo-href-for: "comment.author()"}> {{ comment.authorName() }}
-        %span{translate: "new_comment_item.in_reply_to", translate-value-recipient: "{{comment.parentAuthorName}}"}
+        %span{translate: "new_comment_item.replied_to", translate-value-recipient: "{{comment.parentAuthorName}}"}
+        %a{lmo-href-for: "comment.parent()"}>
+          %span.new-comment__parent-comment{translate: "new_comment_item.comment"}
       %h3.new-comment__author-name{ng-if: "!comment.parentId"}
         %a{lmo-href-for: "comment.author()"}> {{ comment.authorName() }}
       .sr-only{ng-if: "!comment.parentId", id: "event-{{event.id}}", translate: "new_comment_item.aria_label", translate-value-author: "{{comment.authorName()}}"}
