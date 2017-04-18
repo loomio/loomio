@@ -43,7 +43,7 @@
     .thread-item__actions
       %a{lmo-href-for: "comment"}>
         %timeago{timestamp: "comment.createdAt" }>
-      %span{ng-if: "comment.edited()"}
+      %span.md-caption{ng-if: "comment.edited()"}
         %span{aria-hidden: "true"}·
         %button.thread-item__action--view-edits{ng-click: "showRevisionHistory()", translate: "new_comment_item.edited"}>
 

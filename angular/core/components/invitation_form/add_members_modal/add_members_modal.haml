@@ -1,12 +1,12 @@
-.lmo-blank
+%md-dialog.lmo-blank
   %loading{ng-if: "loadExecuting"}
   .add-members-modal{ng-if: "!loadExecuting"}
-    .lmo-disabled-form{ng-show: "isDisabled"}
-    .modal-header
-      %modal_header_cancel_button{aria-hidden: "true"}
-      %h1.lmo-h1.modal-title{translate: "add_members_modal.heading", translate-values: "{name: group.parentName()}"}
-
-    .modal-body
+    %md-toolbar
+      .md-toolbar-tools.lmo-flex__space-between
+        %h1.lmo-h1.modal-title{translate: "add_members_modal.heading", translate-values: "{name: group.parentName()}"}
+        %material_modal_header_cancel_button
+    .md-dialog-content
+      .lmo-disabled-form{ng-show: "isDisabled"}
       .add-members-modal__empty-list{ng-if: "!canAddMembers()"}
         %p{translate: "add_members_modal.no_members_to_add", translate-value-parent: "{{group.parentName()}}"}
 
@@ -18,6 +18,6 @@
           &nbsp;
           (@{{member.username}})
 
-    .modal-footer.lmo-clearfix
-      %button.lmo-btn--cancel{type: "button", ng-click: "reopenInvitationsForm()", translate: "common.action.back"}
-      %button.lmo-btn--submit.add-members-modal__submit{type: "button", ng-click: "submit()", translate: "add_members_modal.add_members", ng-if: "canAddMembers()"}
+      .lmo-md-actions
+        %md-button{type: "button", ng-click: "reopenInvitationsForm()", translate: "common.action.back"}
+        %md-button.md-primary.md-raised.add-members-modal__submit{type: "button", ng-click: "submit()", translate: "add_members_modal.add_members", ng-if: "canAddMembers()"}
