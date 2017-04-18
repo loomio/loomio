@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Assets for Loomio 1.0",
   "main": "gulpfile.coffee",
+  "engines": {
+    "node": "5.5.0",
+    "npm": "3.3.12"
+  },
   "scripts": {
     "test": "gulp test"
   },
