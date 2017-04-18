@@ -73,7 +73,7 @@ class DiscussionService
   end
 
   def self.mark_as_read(discussion:, params:, actor:)
-    actor.ability.authorize! :show, discussion
+    actor.ability.authorize! :mark_as_read, discussion
 
     target_to_read = Event.where(discussion_id: discussion.id, sequence_id: params[:sequence_id]).first || discussion
     DiscussionReader.for(user: actor, discussion: discussion).viewed! target_to_read.created_at

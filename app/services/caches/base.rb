@@ -2,7 +2,7 @@ class Caches::Base
   attr_reader :user
 
   def initialize(parents:, user: nil)
-    raise ArgumentError.new if require_user? && user.blank? 
+    raise ArgumentError.new("User must be logged in in order to initialize this cache") if require_user? && user.blank? 
     @user = user
     store_in_cache(collection_from(parents))
   end
