@@ -1,5 +1,23 @@
 mentio-menu {
   display: none;
+
+  ul.list-group {
+    list-style-type: none;
+    margin: 12px 0 0 0;
+    padding: 0;
+    @include box_shadow(1);
+    background: $card-background-color;
+  }
+
+  li.list-group-item {
+    padding: 5px 10px;
+    border-bottom: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  li.list-group-item.active {
+    background: $list-hover-color;
+  }
 }
 
 .mentionable-name {
