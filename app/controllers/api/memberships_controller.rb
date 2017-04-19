@@ -1,64 +1,50 @@
 class API::MembershipsController < API::RestfulController
-  load_resource only: [:set_volume]
+  load_resource only: [:set_volume, :make_admin, :remove_admin, :save_experience]
 
   def add_to_subgroup
-    group = load_and_authorize(:group)
-    users = group.parent.members.where('users.id': params[:user_ids])
-    @memberships = MembershipService.add_users_to_group(users: users,
-                                                        group: group,
-                                                        inviter: current_user)
+    self.collection = service.add_users_to_group(users: @group.parent.members.where(id: required_param(:user_ids)),
+                                                 group: @group,
+                                                 inviter: current_user)
     respond_with_collection
   end
 
   def index
-    load_and_authorize :group
-    instantiate_collection { |collection| collection.active.where(group_id: @group.id).order('users.name') }
+    instantiate_collection { |collection| collection.active.where(group: load_and_authorize(:group)).order('users.name') }
     respond_with_collection
   end
 
   def for_user
-    load_and_authorize :user
-    instantiate_collection { |collection| collection.where(user_id: @user.id).order('groups.full_name') }
+    instantiate_collection { |collection| collection.where(user: load_and_authorize(:user)).order('groups.full_name') }
     respond_with_collection
   end
 
   def join_group
-    @group = Group.find(params[:group_id])
-    event = MembershipService.join_group group: @group, actor: current_user
-    @membership = event.eventable
+    @event = service.join_group group: load_and_authorize(:group), actor: current_user
     respond_with_resource
   end
 
   def invitables
-    @memberships = page_collection visible_invitables
-    respond_with_collection scope: { q: params[:q], include_inviter: false }
+    self.collection = page_collection visible_invitables
+    respond_with_collection scope: { q: required_param(:q), include_inviter: false }
   end
 
   def my_memberships
-    @memberships = current_user.memberships.includes(:user, :inviter)
+    self.collection = current_user.memberships.includes(:user, :inviter)
     respond_with_collection
   end
 
   def autocomplete
-    load_and_authorize :group
-    authorize! :members_autocomplete, @group
-
-    @memberships = Queries::VisibleAutocompletes.new(query: params[:q],
-                                                     group: @group,
-                                                     current_user: current_user,
-                                                     limit: 10)
+    self.collection = visible_autocompletes
     respond_with_collection
   end
 
   def make_admin
-    load_resource
-    MembershipService.make_admin(membership: @membership, actor: current_user)
+    service.make_admin membership: resource, actor: current_user
     respond_with_resource
   end
 
   def remove_admin
-    load_resource
-    MembershipService.remove_admin(membership: @membership, actor: current_user)
+    service.remove_admin membership: resource, actor: current_user
     respond_with_resource
   end
 
@@ -68,8 +54,7 @@ class API::MembershipsController < API::RestfulController
   end
 
   def save_experience
-    raise ActionController::ParameterMissing.new(:experience) unless params[:experience]
-    service.save_experience membership: load_resource, actor: current_user, params: { experience: params[:experience] }
+    service.save_experience membership: resource, actor: current_user, params: { experience: required_param(:experience) }
     respond_with_resource
   end
 
@@ -94,8 +79,16 @@ class API::MembershipsController < API::RestfulController
     end
   end
 
+  def visible_autocompletes
+    Queries::VisibleAutocompletes.new(query: required_param(:q),
+                                      group: load_and_authorize(:group, :members_autocomplete),
+                                      current_user: current_user,
+                                      limit: 10)
+  end
+
   def visible_invitables
-    load_and_authorize :group, :invite_people
-    Queries::VisibleInvitableMemberships.new(group: @group, user: current_user, query: params[:q])
+    Queries::VisibleInvitableMemberships.new(query: required_param(:q),
+                                             group: load_and_authorize(:group, :invite_people),
+                                             user: current_user)
   end
 end
