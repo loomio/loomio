@@ -46,13 +46,6 @@ class API::PollsController < API::RestfulController
     params.slice(:community_id, :message)
   end
 
-  def filter_collection(collection)
-    collection = collection.where(discussion_id: @group.discussion_ids) if load_and_authorize(:group, optional: true)
-    collection = collection.send(params[:filter])                       if Poll::FILTERS.include?(params[:filter].to_s)
-    collection = collection.where(author: current_user)                 if params[:authored_only]
-    collection = collection.search_for(params[:q])                      if params[:q].present?
-    collection
-
   def poll_search
     PollSearch.new(current_user)
   end

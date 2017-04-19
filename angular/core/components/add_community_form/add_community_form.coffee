@@ -41,7 +41,7 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
         ).name
 
     $scope.back = ->
-      CommunityService.back($scope.community.poll())
+      ModalService.open PollCommonShareModal, poll: -> $scope.community.poll()
 
     $scope.placeholderKey = ->
       "add_community_form.#{$scope.community.communityType}.fragment_placeholder"
