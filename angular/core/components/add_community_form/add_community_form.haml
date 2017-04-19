@@ -21,7 +21,7 @@
       %md-button.md-primary.md-raised.add-community-form__retry-button{ng-click: "reauth()"}
         %span{translate: "common.action.retry"}
 
-  .poll-common__actions.lmo-flex
+  .lmo-flex.lmo-flex__space-between
     %md-button{ng-click: "back()"}
       %span{translate: "common.action.back"}
     %md-button.md-raised.md-primary{ng-click: "submit()", ng-disabled: "!community.identifier"}
