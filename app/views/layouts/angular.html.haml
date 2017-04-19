@@ -30,7 +30,6 @@
         .lmo-main-background
           %ng_outlet{'ng-if' => '!refreshing && !pageError'}
           %error_page{'ng-if' => 'pageError', 'error' => 'pageError'}
-    -# %start_menu{'ng-if' => 'isLoggedIn()'}
     %outlet{name: 'after-start-menu'}
 
     %script{src: client_asset_path(:"vendor.min.js")}
