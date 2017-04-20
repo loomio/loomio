@@ -28,7 +28,7 @@ PollSearch = Struct.new(:user) do
       Queries::VisiblePolls.new(user: user), # polls in my groups
       Poll.participation_by(user),           # polls I've participated in
       user.polls                             # polls I've started
-    ].map { |c| c.pluck(:id) }.flatten
+    ].map { |c| c.pluck(:id) }.flatten.uniq
   end
 
   def filter_group(key)
