@@ -10,12 +10,20 @@ angular.module('loomioApp').factory 'ThreadQueryService', (Records, AbilityServi
     groupQuery: (group = {}, options = {}) ->
       threadQueryFor createGroupView(group, options['filter'] or 'show_unread', options['queryType'] or 'inbox', options['applyWhere'])
 
+    threadIdQuery: (name, threadIds) ->
+      threadQueryFor createThreadsView name, threadIds
+
     threadQueryFor = (view) ->
       threads: -> view.data()
       length: ->  @threads().length
       any: ->     @length() > 0
       constructor:
         singular: 'query'
+
+    createThreadsView = (name, threadIds) ->
+      view = Records.discussions.collection.addDynamicView name
+      view.applyFind({id: { $in: threadIds() }})
+      view
 
     createBaseView = (filters, queryType) ->
       view = Records.discussions.collection.addDynamicView 'default'
