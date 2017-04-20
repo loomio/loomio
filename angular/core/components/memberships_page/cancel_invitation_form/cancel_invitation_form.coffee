@@ -6,4 +6,3 @@ angular.module('loomioApp').factory 'CancelInvitationForm', ->
     $scope.submit = FormService.submit $scope, $scope.invitation,
       submitFn: $scope.invitation.destroy
       flashSuccess: 'cancel_invitation_form.messages.success'
-      
