@@ -5,7 +5,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
   @loader = new RecordLoader
     collection: 'polls'
     path: 'search'
-    per: 50
+    per: 25
 
   Records.polls.searchResultsCount().then (response) =>
     @pollsCount = response

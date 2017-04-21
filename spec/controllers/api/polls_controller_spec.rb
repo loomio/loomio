@@ -70,7 +70,7 @@ describe API::PollsController do
       it 'returns a count of possible results' do
         sign_in user
         get :search_results_count
-        expect(response.body.to_i).to eq 5
+        expect(response.body.to_i).to eq 4
       end
     end
 

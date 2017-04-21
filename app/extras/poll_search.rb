@@ -9,7 +9,7 @@ PollSearch = Struct.new(:user) do
     results = results.send(filters[:status])      if STATUS_FILTERS.include?(filters[:status].to_s)
     results = results.send(filters[:user], user)  if USER_FILTERS.include?(filters[:user].to_s)
     results = results.search_for(filters[:query]) if filters[:query].present?
-    results.order(created_at: :desc)
+    results.order(closing_at: :asc, closed_at: :desc)
   end
 
   def results_count
@@ -28,7 +28,7 @@ PollSearch = Struct.new(:user) do
       Queries::VisiblePolls.new(user: user), # polls in my groups
       Poll.participation_by(user),           # polls I've participated in
       user.polls                             # polls I've started
-    ].map { |c| c.pluck(:id) }.flatten
+    ].map { |c| c.pluck(:id) }.flatten.uniq
   end
 
   def filter_group(key)
