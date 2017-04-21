@@ -24,7 +24,7 @@ class Stance < ActiveRecord::Base
   scope :priority_last,  -> { joins(:poll_options).order('poll_options.priority DESC') }
   scope :with_reason,    -> { where("reason IS NOT NULL OR reason != ''") }
 
-  validates :stance_choices, length: { minimum: 1, message: I18n.t(:"stance.error.too_short") }
+  validate :enough_stance_choices
   validate :total_score_is_valid
   validate :participant_is_complete
 
@@ -48,6 +48,13 @@ class Stance < ActiveRecord::Base
   end
 
   private
+
+  def enough_stance_choices
+    return unless poll.require_stance_choice
+    if stance_choices.empty?
+      errors.add(:stance_choices, I18n.t(:"stance.error.too_short"))
+    end
+  end
 
   def total_score_is_valid
     return unless poll.poll_type == 'dot_vote'
