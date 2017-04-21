@@ -6,6 +6,23 @@
   cursor: pointer;
 }
 
+.sign-in-form__submit-button {
+  margin-left: auto;
+}
+
+.sign-in-form__providers {
+  @include displayFlex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+
 .sign-in-form__provider {
   padding: 5px 0;
+  @include displayFlex;
+  flex-basis: 50%;
+  -webkit-flex-basis: 50%;
+}
+
+.sign-in-form__provider button {
+  width: 100%;
 }

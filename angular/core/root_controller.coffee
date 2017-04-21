@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -51,8 +51,10 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
 
   $router.config AppConfig.routes.concat AppConfig.plugins.routes
 
+
   AppConfig.records = Records
   AhoyService.init()
+  HotkeyService.init($scope)
   Session.login(AppConfig.bootData)
 
   return

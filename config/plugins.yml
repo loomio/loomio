@@ -6,14 +6,10 @@ loomio_org_plugin:
 
 loomio_tags:
   repo:         loomio/loomio_tags
-  # experimental: true
 
 loomio_truncate_comment:
   repo:         loomio/loomio_truncate_comment
   experimental: true
-
-# loomio_onboarding:
-#   repo:         loomio/loomio_onboarding
 
 loomio_content_preview:
   repo:         loomio/loomio_content_preview

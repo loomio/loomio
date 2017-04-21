@@ -84,6 +84,7 @@
 }
 
 .thread-preview__title{
+  @include md-subhead;
   padding-left: $thinPaddingSize;
   vertical-align: top;
   @include truncateText;

@@ -55,6 +55,7 @@
 
 .thread-item__action--view-edits {
   @include lmoBtnLink;
+  color: $grey-on-white;
 }
 
 .thread-item__timestamp {

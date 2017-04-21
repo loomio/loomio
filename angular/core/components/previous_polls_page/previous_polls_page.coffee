@@ -27,7 +27,7 @@ angular.module('loomioApp').controller 'PreviousPollsPageController', ($scope, $
         _.filter(@group.closedPolls(), (poll) =>
           _.isEmpty(@fragment) or poll.title.match(///#{@fragment}///i)), '-closedAt')
 
-  @translations = TranslationService.eagerTranslate @,
+  TranslationService.eagerTranslate @,
     searchPlaceholder: 'previous_polls_page.search_activities'
 
   @canLoadMore = ->

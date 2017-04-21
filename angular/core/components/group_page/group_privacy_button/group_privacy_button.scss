@@ -4,3 +4,15 @@
   box-shadow: none;
   &:hover { box-shadow: none; }
 }
+
+.group-privacy-button__tooltip {
+  max-width: 200px;
+  text-align: center;
+  @include fontSmall;
+  font-style: italic;
+  padding: 8px;
+  margin-top: 4px !important;
+  white-space: normal;
+  height: auto;
+  line-height: 20px;
+}

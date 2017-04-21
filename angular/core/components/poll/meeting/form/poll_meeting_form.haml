@@ -20,18 +20,14 @@
       %time_zone_select.lmo-flex__shrink{zone: "poll.customFields.time_zone"}
     %validation_errors{subject: "poll", field: "pollOptions"}
     .poll-meeting-form__options
-      %md-list-item.poll-meeting-form__poll-option-name{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
-        %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{name: "name"}
+      %md-list-item.poll-meeting-form__poll-option-names{layout: "row", ng-repeat: "name in poll.pollOptionNames track by $index"}
+        %poll_meeting_time.poll-meeting-form__option-text.lmo-flex__grow{name: "name", zone: "zone"}
         %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "removeOption(name)", aria-label: "{{ 'poll_meeting_form.remove_option' | translate }}"}
           %i.material-icons.poll-meeting-form__option-icon clear
       %poll_meeting_time_field{poll: "poll"}
 
-  %time_zone_select
-
   .md-input-compensate
     %poll_common_closing_at_field.md-block.poll-meeting-form__closing-at{poll: "poll"}
-  %poll_common_attachment_form{poll: "poll"}
-  %poll_common_notify_group{model: "poll"}
 
   .md-input-compensate
     %poll_common_notify_group{model: "poll"}

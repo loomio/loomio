@@ -173,7 +173,6 @@ class Ability
 
     can [:show,
          :print,
-         :mark_as_read,
          :dismiss,
          :subscribe_to], Discussion do |discussion|
       if discussion.archived_at.present?
@@ -185,6 +184,10 @@ class Ability
         user_is_member_of?(discussion.group_id) or
         (discussion.group.parent_members_can_see_discussions? and user_is_member_of?(discussion.group.parent_id))
       end
+    end
+
+    can :mark_as_read, Discussion do |discussion|
+      @user.is_logged_in? && can?(:show, discussion)
     end
 
     can :update_version, Discussion do |discussion|

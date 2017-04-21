@@ -29,6 +29,9 @@
 
 .memberships-page__make-coordinator {
   @include lmoBtnNude;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 .memberships-page__member-info {
