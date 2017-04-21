@@ -10,7 +10,7 @@ class Poll < ActiveRecord::Base
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
-                       poll_options_attributes).freeze
+                       require_stance_choice poll_options_attributes).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
   end

@@ -3,5 +3,6 @@
   .poll-common-votes-panel__stance-content
     .poll-common-votes-panel__stance-name-and-option
       %strong> {{stance.participant().name}}
+      %span.poll-common-helptext{translate: "poll_common_votes_panel.none_of_the_above", ng-if: "!stance.stanceChoices().length"}>
       %poll_common_stance_choice{stance_choice: "choice", ng-if: "choice.score > 0", ng-repeat: "choice in stance.stanceChoices()"}
     .poll-common-votes-panel__stance-reason.lmo-markdown-wrapper{ng-if: "stance.reason", marked: "stance.reason"}
