@@ -5,9 +5,6 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
   @loader = new RecordLoader
     collection: 'polls'
     path: 'search'
-    params:
-      order_field: 'closed_at'
-      order_dir:   'desc'
     per: 25
 
   Records.polls.searchResultsCount().then (response) =>

@@ -32,7 +32,7 @@ class API::PollsController < API::RestfulController
   end
 
   def search_filters
-    params.slice(:group_key, :status, :user, :query, :order_field, :order_dir)
+    params.slice(:group_key, :status, :user, :query)
   end
 
   def default_scope
