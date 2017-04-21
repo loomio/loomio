@@ -6,6 +6,7 @@ describe StanceService do
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion }
+  let(:proposal) { create :poll_proposal, discussion: discussion }
   let(:public_poll) { create :poll, anyone_can_participate: true }
   let(:public_stance) { build :stance, poll: public_poll, stance_choices: [agree_choice], participant: nil }
   let(:user) { create :user }
@@ -29,6 +30,7 @@ describe StanceService do
     end
 
     it 'does not create an invalid stance' do
+      stance_created.poll_id = proposal.id
       stance_created.stance_choices = []
       expect { StanceService.create(stance: stance_created, actor: user) }.to_not change { Stance.count }
     end
