@@ -1,7 +1,7 @@
 %form.poll-meeting-vote-form
   %h3.lmo-card-subheading{translate: "poll_meeting_vote_form.your_response"}
   .lmo-flex.lmo-flex__flex-end
-    %time_zone_select{zone: "stance.poll().customFields.time_zone"}
+    %time_zone_select
   %md-list.poll-common-vote-form__options
     %md-list-item.poll-common-vote-form__option{ng-repeat: "option in stance.poll().pollOptions()"}
       %p.poll-poll-vote-form__option--name.poll-common-vote-form__border-chip{ng-style: "{'border-color': option.color}"}
