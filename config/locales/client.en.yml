@@ -1397,6 +1397,7 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     show_undecided: Show undecided
+    none_of_the_above: (None of the above)
 
   poll_common_did_not_votes_panel:
     undecided: Undecided ({{count}})
