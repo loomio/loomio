@@ -3,13 +3,13 @@ PollSearch = Struct.new(:user) do
   STATUS_FILTERS = %w(active closed).freeze
   USER_FILTERS   = %w(authored_by participation_by).freeze
 
-  def perform(filters)
+  def perform(filters = {})
     results = searchable_records
     results = results.where(discussion_id: filter_group(filters[:group_key]).discussion_ids) if filters[:group_key]
     results = results.send(filters[:status])      if STATUS_FILTERS.include?(filters[:status].to_s)
     results = results.send(filters[:user], user)  if USER_FILTERS.include?(filters[:user].to_s)
     results = results.search_for(filters[:query]) if filters[:query].present?
-    results.order(closing_at: :asc, closed_at: :desc)
+    results.order(closed_at: :desc, closing_at: :asc)
   end
 
   def results_count
