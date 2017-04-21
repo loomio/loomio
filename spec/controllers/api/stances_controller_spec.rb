@@ -4,6 +4,7 @@ describe API::StancesController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:poll) { create :poll, discussion: discussion }
+  let(:proposal) { create :poll_proposal, discussion: discussion }
   let(:poll_option) { create :poll_option, poll: poll }
   let(:old_stance) { create :stance, poll: poll, participant: user, poll_options: [poll_option] }
   let(:discussion) { create :discussion, group: group }
@@ -152,6 +153,7 @@ describe API::StancesController do
 
     it 'does not allow creating an invalid stance' do
       sign_in user
+      stance_params[:poll_id] = proposal.id
       stance_params[:stance_choices_attributes] = []
       expect { post :create, stance: stance_params }.to_not change { Stance.count }
       expect(response.status).to eq 422
