@@ -122,6 +122,7 @@ describe 'Invitations', ->
 
       staticPage.click 'a[href]'
 
+
       staticPage.fillIn '#user_password', 'gh0stmovie'
       staticPage.click '#sign-in-btn'
 

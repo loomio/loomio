@@ -25,7 +25,7 @@ module.exports = new class StaticPageHelper
   click: ->
     _.each given(arguments), (selector) =>
       @elementFor(selector).click()
-    browser.driver.sleep(5000)
+    browser.driver.sleep(2000)
 
   fillIn: (selector, value) ->
     elem = @elementFor(selector)
