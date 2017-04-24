@@ -1517,6 +1517,9 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
 
+  poll_common_percent_voted:
+    sentence: "{{percent}}% of members have stated their position ({{numerator}}/{{denominator}})"
+
   poll_count_chart_panel:
     out_of: out of {{goal}}
 
