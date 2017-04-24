@@ -1489,9 +1489,9 @@ en:
 
   poll_dot_vote_form:
     tool_tip_expanded: |
-      <p>Dot voting is a way to prioritise a list of options</p>
-      <p>Participants are given a limited number of ‘dots’ which they can allocate however they like amoung the options provided to represent their own preferences.</p>
-      <p>In Loomio you can view  both the cumulative view and the individual with their reasoning.</p>
+      <p>Dot voting is a way to prioritise a list of options.</p>
+      <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
+      <p>The process results in a cumulative bar chart as well as and the individual allocations so you can consider various points of view.</p>
     tool_tip_collapsed: Prioritise a list of options
     start_header: Start dot vote
     edit_header: Edit dot vote
