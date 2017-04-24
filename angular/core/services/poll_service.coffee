@@ -37,6 +37,9 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     usePollsFor: (model) ->
       model.group().features.use_polls && !$location.search().proposalView
 
+    optionByName: (poll, name) ->
+      _.find poll.pollOptions(), (option) -> option.name == name
+
     submitPoll: (scope, model, options = {}) ->
       actionName = if scope.poll.isNew() then 'created' else 'updated'
       FormService.submit(scope, model, _.merge(

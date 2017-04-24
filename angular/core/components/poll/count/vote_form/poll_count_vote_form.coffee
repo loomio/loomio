@@ -4,7 +4,11 @@ angular.module('loomioApp').directive 'pollCountVoteForm', (AppConfig, Records, 
   controller: ($scope) ->
     $scope.submit = PollService.submitStance $scope, $scope.stance,
       prepareFn: (option) ->
-        $scope.stance.stanceChoicesAttributes = [poll_option_id: option.id]
+        pollOptionId = if option.name then option.id else $scope.yes.id
+        $scope.stance.stanceChoicesAttributes = [poll_option_id: pollOptionId]
+
+    $scope.yes = PollService.optionByName($scope.stance.poll(), 'yes')
+    $scope.no  = PollService.optionByName($scope.stance.poll(), 'no')
 
     TranslationService.eagerTranslate $scope,
       reasonPlaceholder: 'poll_count_vote_form.reason_placeholder'
