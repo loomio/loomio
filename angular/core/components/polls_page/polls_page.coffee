@@ -7,6 +7,9 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
     path: 'search'
     per: 25
 
+  now = moment()
+  @pollImportance = (poll) => poll.importance(now)
+
   Records.polls.searchResultsCount().then (response) =>
     @pollsCount = response
 
