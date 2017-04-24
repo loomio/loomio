@@ -1,5 +1,5 @@
 .poll-count-form
-  %p.poll-common-tip{ng-if: "poll.isNew()", translate: "poll_count_form.tip"}
+  %poll_common_tool_tip{poll: "poll"}
 
   %input{type: "hidden", ng-model: "poll.pollType"}
 

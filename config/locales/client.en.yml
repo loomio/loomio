@@ -8,6 +8,8 @@ en:
   timezones:
     local: Local time ({{value}})
   common:
+    ok_got_it: Ok, got it
+    learn_more: Learn more
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -1434,6 +1436,12 @@ en:
     update: Update
 
   poll_proposal_form:
+    tool_tip_expanded: |
+      <p>A proposal is a tool for seeking collective agreement about a statement or course of action.</p>
+      <p>Participants vote with their thumb, giving a simple sign of agreement or otherwise, they’re also able to enter a short statement to express their reasoning.<br />
+      A pie chart gives an overview of the feelings in the group, while the statements allow individual voices to be heard. <br />
+      With good participation a proposal is a powerful mandate to take action.</p>
+    tool_tip_collapsed: Seek collective agreement
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
@@ -1443,6 +1451,11 @@ en:
     proposal_updated: Proposal updated
 
   poll_poll_form:
+    tool_tip_expanded: |
+      <p>Use a poll to measure the popularity of different options.</p>
+      <p>Enter a list of options, and select if participants choose one or multiple options as their response.
+      Everyone votes, sharing their reasoning if necessary, and results are represented in a bar graph.</p>
+    tool_tip_collapsed: Measure the popularity of options
     start_header: Start poll
     edit_header: Edit poll
     tip: Measure the popularity of different options
@@ -1456,6 +1469,11 @@ en:
     poll_updated: Poll updated
 
   poll_count_form:
+    tool_tip_expanded: |
+      <p> A check is a great way to ask people to do a task and to let you know when it’s done.<br />
+      A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
+      <p>You can also use it to call for volunteers or RSVP for an event.</p>
+    tool_tip_collapsed: Ask people to do a task, or call for volunteers
     start_header: Start check
     edit_header: Edit check
     tip: Engage people with an offer or request
@@ -1465,6 +1483,11 @@ en:
     count_updated: Check updated
 
   poll_dot_vote_form:
+    tool_tip_expanded: |
+      <p>Dot voting is a way to prioritise a list of options</p>
+      <p>Participants are given a limited number of ‘dots’ which they can allocate however they like amoung the options provided to represent their own preferences.</p>
+      <p>In Loomio you can view  both the cumulative view and the individual with their reasoning.</p>
+    tool_tip_collapsed: Prioritise a list of options
     start_header: Start dot vote
     edit_header: Edit dot vote
     tip: Allocate resources collectively
@@ -1476,6 +1499,12 @@ en:
     dot_vote_updated: Dot vote updated
 
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Use a meeting poll to find when people are available.</p>
+      <p>Enter a list of times when you could have your meeting.<br />
+      Participants tick those which they’re able to attend, or explain their circumstances, so you can update the options if necessary.</p>
+      <p>You can then see who’s available when, and decide when to meet.</p>
+    tool_tip_collapsed: Find a time to meet
     start_header: Start meeting poll
     edit_header: Edit meeting poll
     tip: Find out when people are available to meet
