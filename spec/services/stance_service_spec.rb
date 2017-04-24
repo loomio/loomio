@@ -18,6 +18,9 @@ describe StanceService do
   let(:stance_created) { build :stance, poll: poll, stance_choices: [agree_choice], participant: nil }
   let(:agree_choice) { build(:stance_choice, poll_option: agree) }
   let(:disagree_choice) { build(:stance_choice, poll_option: disagree) }
+  let(:yes_choice) { build(:stance_choice, poll_option: poll_count.poll_options.first) }
+  let(:poll_count) { create :poll_count, discussion: discussion }
+  let(:count_stance_created) { build :stance, poll: poll_count, stance_choices: [yes_choice] }
 
   before do
     group.add_member! user
@@ -65,6 +68,23 @@ describe StanceService do
       stance
       poll.update_stance_data
       expect { StanceService.create(stance: stance_created, actor: user) }.to_not change { poll.stance_data['agree'].to_i }
+    end
+
+    describe 'goal' do
+      it 'publishes a goal event if goal is reached' do
+        poll_count.update(custom_fields: {goal: 1})
+        expect { StanceService.create(stance: count_stance_created, actor: user) }.to change { Event.where(kind: :poll_goal_reached).count }.by(1)
+      end
+
+      it 'does not publish a goal event if goal is not reached' do
+        expect { StanceService.create(stance: count_stance_created, actor: user) }.to_not change { Event.where(kind: :poll_goal_reached).count }
+      end
+
+      it 'does not publish a goal event if goal has already been reached' do
+        poll_count.update(custom_fields: {goal: 1})
+        Events::PollGoalReached.publish!(poll_count)
+        expect { StanceService.create(stance: count_stance_created, actor: user) }.to_not change { Event.where(kind: :poll_goal_reached).count }
+      end
     end
   end
 end

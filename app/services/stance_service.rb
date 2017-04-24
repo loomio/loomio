@@ -9,6 +9,7 @@ class StanceService
     stance.save!
     stance.participant.save!
     EventBus.broadcast 'stance_create', stance, actor
+    Events::PollGoalReached.publish! stance.poll if stance.poll.goal_reached?
     Events::StanceCreated.publish! stance
   end
 end

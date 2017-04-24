@@ -13,4 +13,7 @@ angular.module('loomioApp').directive 'pollCountForm', ->
       affirmativePlaceholder:  'poll_count_form.affirmative_placeholder'
       negativePlaceholder:  'poll_count_form.negative_placeholder'
 
+    $scope.adjustGoal = (count) ->
+      $scope.poll.customFields.goal += count
+
     KeyEventService.submitOnEnter($scope)

@@ -12,9 +12,17 @@
     %label{translate: "poll_common_form.details"}
     %textarea.lmo-primary-form-input.poll-count-form__details{ng-model: "poll.details", placeholder: "{{translations.detailsPlaceholder}}", mention-field: "true"}
     %outlet{name: "after-count-form-textarea", model: "poll"}
-
   .md-input-compensate
     %poll_common_attachment_form{poll: "poll"}
+
+  %md-input-container.md-block.poll-count-form__goal-field
+    %label{translate: "poll_count_form.goal"}
+    %poll_common_number_input{model: "poll.customFields.goal"}
+    %validation_errors{subject: "poll", field: "goal"}
+    .poll-common-helptext{translate: "poll_count_form.goal_helptext"}
+
+  %poll_common_closing_at_field{poll: "poll"}
+  %poll_common_notify_group{model: "poll"}
 
   %poll_common_closing_at_field{poll: "poll"}
   .md-input-compensate

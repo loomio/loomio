@@ -8,7 +8,8 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []
-      @customFields.dots_per_person = 8 if @pollType == 'dot_vote'
+      @customFields.dots_per_person = 8  if @pollType == 'dot_vote'
+      @customFields.goal = @goal() or 10 if @pollType == 'count'
 
     # the polls which haven't closed have the highest importance
     # (and so have the lowest value here)

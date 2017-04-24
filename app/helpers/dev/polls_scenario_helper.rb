@@ -123,6 +123,20 @@ module Dev::PollsScenarioHelper
       poll: poll}
   end
 
+  def poll_goal_reached_scenario(poll_type:)
+    discussion = fake_discussion(group: create_group_with_members)
+    actor      = discussion.group.admins.first
+    poll       = saved fake_poll(discussion: discussion, poll_type: poll_type)
+    poll.update_attribute(:custom_fields, {goal: 1})
+    poll.discussion.group.add_member! poll.author
+
+    StanceService.create(stance: fake_stance(poll: poll), actor: poll.author)
+    { discussion: discussion,
+      actor: actor,
+      observer: poll.author,
+      poll: poll}
+  end
+
   def poll_outcome_created_scenario(poll_type:)
     discussion = saved(fake_discussion(group: create_group_with_members))
     actor      = discussion.group.admins.first

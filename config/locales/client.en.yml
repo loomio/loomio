@@ -1455,14 +1455,6 @@ en:
     poll_created: Poll created
     poll_updated: Poll updated
 
-  poll_count_form:
-    start_header: Start check
-    edit_header: Edit check
-    tip: Engage people with an offer or request
-    title_placeholder: E.g. Who wants to join the working group?
-    details_placeholder: Explain what committment is involved, or give details about how to participate.
-    count_created: Check started
-    count_updated: Check updated
 
   poll_dot_vote_form:
     start_header: Start dot vote
@@ -1510,6 +1502,17 @@ en:
   poll_count_options:
     'yes': 'Yes'
     'no': 'No'
+
+  poll_count_form:
+    start_header: Start check
+    edit_header: Edit check
+    tip: Engage people with an offer or request
+    title_placeholder: E.g. Who wants to join the working group?
+    details_placeholder: Explain what committment is involved, or give details about how to participate.
+    goal: Goal
+    goal_helptext: How many positive responses do you want?
+    count_created: Check started
+    count_updated: Check updated
 
   poll_count_vote_form:
     reason_label: Message
