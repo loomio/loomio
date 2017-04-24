@@ -10,6 +10,16 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       @newAttachmentIds = _.clone(@attachmentIds) or []
       @customFields.dots_per_person = 8 if @pollType == 'dot_vote'
 
+    # the polls which haven't closed have the highest importance
+    # (and so have the lowest value here)
+    # Both are sorted by distance from the current time
+    # (IE, polls which have closed or will close closest to now are most important)
+    importance: (now) ->
+      if @closedAt?
+        Math.abs(@closedAt - now)
+      else
+        0.0001 * Math.abs(@closingAt - now)
+
     defaultValues: ->
       discussionId: null
       title: ''
