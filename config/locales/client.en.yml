@@ -4,7 +4,7 @@ en:
     count: Check
     poll: Poll
     dot_vote: Dot vote
-    meeting: Meeting
+    meeting: Meeting poll
   timezones:
     local: Local time ({{value}})
   common:
@@ -1323,17 +1323,12 @@ en:
       success: "'{{name}}' can no longer use your account."
 
   decision_tools_card:
-    title: Facilitation tools
+    title: Decision tools
     proposal_title: Proposal
-    proposal_subtitle: Seek collective agreement
     count_title: Check
-    count_subtitle: Engage people with an offer or request.
     poll_title: Poll
-    poll_subtitle: Measure popularity
     dot_vote_title: Dot Vote
-    dot_vote_subtitle: Allocate resources together
     meeting_title: Meeting poll
-    meeting_subtitle: Find a time to meet
 
   poll_common:
     your_response: Your response
@@ -1458,7 +1453,7 @@ en:
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
       <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
-    tool_tip_collapsed: Measure popularity or offer a choice.
+    tool_tip_collapsed: Measure popularity of options
     start_header: Start poll
     edit_header: Edit poll
     tip: Measure the popularity of different options
@@ -1473,12 +1468,12 @@ en:
 
   poll_count_form:
     tool_tip_expanded: |
-      <p>A check is a confirmation tool with many possible uses - but only 2 possible responses: Tick or Dash.</p>
-      <p>Tick means yes, dash means something other than yes.
-      <p>You could ask <em>who has done</em> something, as a way to prompt people to get things done.
-        Or ask <em>who wants to</em> do something, like an RSVP.</p>
+      <p>A <em>check</em> is a tool with many possible uses but only 2 responses: Tick or Dash.</p>
+      <p>Use it to engage people with an offer, like an RSVP: "I'm coming to the event" or "I'll join the working group".</p>
+      <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
+      <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
       <p>A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
-    tool_tip_collapsed: Ask people to confirm or do something
+    tool_tip_collapsed: Track participation and find volunteers
     start_header: Start check
     edit_header: Edit check
     tip: Engage people with an offer or request
@@ -1506,7 +1501,8 @@ en:
   poll_meeting_form:
     tool_tip_expanded: |
       <p>Use a meeting poll to find when people are available.</p>
-      <p>Enter a list of possible times when you could have your meeting. Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
+      <p>Enter a list of dates or times when you could have your meeting.</p>
+      <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
       <p>If you add new times during a meeting poll, people who have already voted are prompted to update their response.</p>
       <p>You can then see who’s available when, and decide when to meet.</p>
       <p>Times are automatically converted to the participant's time zone.</p>
