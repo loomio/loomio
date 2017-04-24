@@ -62,6 +62,9 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
       else
         0
 
+    percentVoted: ->
+      100 * @stancesCount / @communitySize() if @communitySize() > 0
+
     undecidedCount: ->
       if @isActive()
         _.max [@communitySize() - @stancesCount, 0]

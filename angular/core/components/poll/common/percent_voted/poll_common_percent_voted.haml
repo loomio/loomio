@@ -1,0 +1,2 @@
+.poll-common-percent-voted.poll-common-helptext{ng-if: "poll.communitySize() > 0"}
+  %span{translate: "poll_common_percent_voted.sentence", translate-value-numerator: "{{poll.stancesCount}}", translate-value-denominator: "{{poll.communitySize()}}", translate-value-percent: "{{poll.percentVoted()}}"}
