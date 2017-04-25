@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'InvitationModel', (BaseModel, AppConfig) ->
     @plural: 'invitations'
     @indices: ['groupId']
     @serializableAttributes: AppConfig.permittedParams.invitation
+    @draftPayloadAttributes: ['emails', 'message']
 
     relationships: ->
       @belongsTo 'group'

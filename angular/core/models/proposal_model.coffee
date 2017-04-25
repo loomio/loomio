@@ -7,6 +7,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel, AppConfig, Draf
     @serializationRoot: 'motion'
     @serializableAttributes: AppConfig.permittedParams.motion
     @draftParent: 'discussion'
+    @draftPayloadAttributes: ['name', 'description']
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []

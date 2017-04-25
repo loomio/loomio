@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'PollCommonOutcomeForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.outcome,
       flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
-      draftFields: ['statement']
+      drafts: true
 
     TranslationService.eagerTranslate $scope,
       statementPlaceholder: 'poll_common_outcome_form.statement_placeholder'

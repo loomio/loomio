@@ -29,7 +29,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
     !@fragment && @loadedCount() < @pollsCount
 
   @startNewPoll = ->
-    ModalService.open PollCommonStartModal, poll: -> Records.polls.build()
+    ModalService.open PollCommonStartModal, poll: -> Records.polls.build(authorId: Session.user().id)
 
   @searchPolls = =>
     if @fragment
