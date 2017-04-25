@@ -4,10 +4,13 @@ en:
     count: Check
     poll: Poll
     dot_vote: Dot vote
-    meeting: Meeting
+    meeting: Meeting poll
   timezones:
     local: Local time ({{value}})
   common:
+    expand: Expand
+    ok_got_it: Ok, got it
+    learn_more: Learn more
     not_found: Not found
     time_zone: Time zone
     local_time: Local time
@@ -1320,17 +1323,12 @@ en:
       success: "'{{name}}' can no longer use your account."
 
   decision_tools_card:
-    title: Facilitation tools
+    title: Decision tools
     proposal_title: Proposal
-    proposal_subtitle: Seek collective agreement
     count_title: Check
-    count_subtitle: Engage people with an offer or request.
     poll_title: Poll
-    poll_subtitle: Measure popularity
     dot_vote_title: Dot Vote
-    dot_vote_subtitle: Allocate resources together
     meeting_title: Meeting poll
-    meeting_subtitle: Find a time to meet
 
   poll_common:
     your_response: Your response
@@ -1434,6 +1432,14 @@ en:
     update: Update
 
   poll_proposal_form:
+    tool_tip_expanded: |
+      <p>A proposal is a tool for seeking collective agreement about a statement or course of action.</p>
+      <p>Participants can agree, abstain, disagree or block - and give a statement to explain their position.</p>
+      <p>A pie chart gives an overview of the positions in the group, while the statements allow individual voices to be heard. </p>
+      <p>Don't be discouraged if you don't see agreement at first, proposals are designed to surface issues that need resolving.</p>
+      <p>With good participation a proposal is a powerful mandate to take action.</p>
+      <p>Find out more in <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Loomio School</a>.</p>
+    tool_tip_collapsed: Seek collective agreement
     start_header: Start proposal
     edit_header: Edit proposal
     tip: Seek collective agreement through a process which allows all voices to be heard. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Learn more</a>
@@ -1443,6 +1449,11 @@ en:
     proposal_updated: Proposal updated
 
   poll_poll_form:
+    tool_tip_expanded: |
+      <p>Use a poll to measure popularity or offer a choice.</p>
+      <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
+      <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
+    tool_tip_collapsed: Measure popularity of options
     start_header: Start poll
     edit_header: Edit poll
     tip: Measure the popularity of different options
@@ -1456,6 +1467,13 @@ en:
     poll_updated: Poll updated
 
   poll_count_form:
+    tool_tip_expanded: |
+      <p>A <em>check</em> is a tool with many possible uses but only 2 responses: Tick or Dash.</p>
+      <p>Use it to engage people with an offer, like an RSVP: "I'm coming to the event" or "I'll join the working group".</p>
+      <p>Or use it to track completion of a task: "I've checked my contact details are correct", or "I've read the document and left my feedback".</p>
+      <p>A check has a <em>goal</em>, which is the number of participants you'd like. The goal indicates to the group if something needs more attention or is well subscribed.</p>
+      <p>A day before the check closes, it will remind those who have not participated to do so - like a digital cat herder.</p>
+    tool_tip_collapsed: Track participation and find volunteers
     start_header: Start check
     edit_header: Edit check
     tip: Engage people with an offer or request
@@ -1465,6 +1483,11 @@ en:
     count_updated: Check updated
 
   poll_dot_vote_form:
+    tool_tip_expanded: |
+      <p>Dot voting is a way to prioritise a list of options.</p>
+      <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
+      <p>The process results in a cumulative bar chart as well as and the individual allocations so you can consider various points of view.</p>
+    tool_tip_collapsed: Prioritise a list of options
     start_header: Start dot vote
     edit_header: Edit dot vote
     tip: Allocate resources collectively
@@ -1476,6 +1499,14 @@ en:
     dot_vote_updated: Dot vote updated
 
   poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Use a meeting poll to find when people are available.</p>
+      <p>Enter a list of dates or times when you could have your meeting.</p>
+      <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
+      <p>If you add new times during a meeting poll, people who have already voted are prompted to update their response.</p>
+      <p>You can then see who’s available when, and decide when to meet.</p>
+      <p>Times are automatically converted to the participant's time zone.</p>
+    tool_tip_collapsed: Find a time to meet
     start_header: Start meeting poll
     edit_header: Edit meeting poll
     tip: Find out when people are available to meet
