@@ -94,8 +94,8 @@ class PollService
             reason:           vote.statement,
             latest:           vote.age.zero?,
             created_at:       vote.created_at,
-            updated_at:       vote.updated_at
-            stance_choices:   Array(stance_choice),
+            updated_at:       vote.updated_at,
+            stance_choices:   Array(stance_choice)
           )
         end
       )
