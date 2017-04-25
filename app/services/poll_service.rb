@@ -71,6 +71,7 @@ class PollService
       poll = Poll.new(
         poll_type:               "proposal",
         poll_options_attributes: Poll::TEMPLATES.dig('proposal', 'poll_options_attributes'),
+        key:                     motion.key,
         discussion:              motion.discussion,
         motion:                  motion,
         title:                   motion.name,
@@ -87,7 +88,7 @@ class PollService
       # convert votes to stances
       poll.update(
         stances: motion.votes.map do |vote|
-          stance_choice = StanceChoice.new(poll_options: poll.poll_options.detect { |o| o.name == vote.position_verb })
+          stance_choice = StanceChoice.new(poll_option: poll.poll_options.detect { |o| o.name == vote.position_verb })
           Stance.new(
             participant_type: 'User',
             participant_id:   vote.user_id,
@@ -101,11 +102,11 @@ class PollService
       )
       poll.update_stance_data
 
-      # add communities
-      poll.communities << Communities::Email.new
-
       # set poll to closed if motion was closed
       do_closing_work(poll: poll) if motion.closed?
+
+      # add communities
+      poll.communities << Communities::Email.new
     end
   end
 
