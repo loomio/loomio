@@ -41,10 +41,10 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       actionName = if scope.poll.isNew() then 'created' else 'updated'
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{model.pollType}_form.#{model.pollType}_#{actionName}"
+        drafts: true
         successCallback: (data) ->
           scope.$emit 'pollSaved', data.polls[0].key
           AttachmentService.cleanupAfterUpdate(data.polls[0], 'poll')
-        draftFields: ['title', 'details']
       , options))
 
     submitStance: (scope, model, options = {}) ->
@@ -52,9 +52,9 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
       pollType   = model.poll().pollType
       FormService.submit(scope, model, _.merge(
         flashSuccess: "poll_#{pollType}_vote_form.stance_#{actionName}"
+        drafts: true
         successCallback: (data) ->
           model.poll().clearStaleStances()
           AppConfig.currentVisitorId = data.stances[0].visitor_id
           scope.$emit 'stanceSaved', data.stances[0].key
-        draftFields: ['reason']
       , options))
