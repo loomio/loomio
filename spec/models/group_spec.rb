@@ -269,4 +269,10 @@ describe Group do
       expect(group.community.group).to eq group
     end
   end
+
+  describe 'uses_polls' do
+    it 'defaults to true' do
+      expect(Group.new.features['use_polls']).to eq true
+    end
+  end
 end

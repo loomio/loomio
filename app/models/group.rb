@@ -469,6 +469,7 @@ class Group < ActiveRecord::Base
     self.is_visible_to_public ||= false
     self.discussion_privacy_options ||= 'private_only'
     self.membership_granted_upon ||= 'approval'
+    self.features['use_polls'] = true
   end
 
   def guess_cohort
