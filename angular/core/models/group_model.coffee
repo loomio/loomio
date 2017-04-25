@@ -6,6 +6,7 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
     @indices: ['parentId']
     @serializableAttributes: AppConfig.permittedParams.group
     @draftParent: 'draftParent'
+    @draftPayloadAttributes: ['name', 'description']
 
     draftParent: ->
       @parent() or @recordStore.users.find(AppConfig.currentUserId)

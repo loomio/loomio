@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'HotkeyService', (ModalService, KeyEventServ
       pressedT:
         execute: -> ModalService.open DiscussionForm, discussion: -> Records.discussions.build(groupId: (Session.currentGroup or {}).id)
       pressedP:
-        execute: -> ModalService.open PollCommonStartModal, poll: -> Records.polls.build()
+        execute: -> ModalService.open PollCommonStartModal, poll: -> Records.polls.build(authorId: Session.user().id)
 
     init: (scope) ->
       _.each @keyboardShortcuts, (args, key) ->

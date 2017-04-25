@@ -24,7 +24,6 @@ count:
     - name:              "no"
   chart_type:            progress
   material_icon:         check_circle
-  translate_option_name: true
   has_option_icons:      true
   must_have_options:     true
   must_have_options:     true

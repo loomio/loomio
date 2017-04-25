@@ -42,7 +42,7 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.init = ->
       $scope.comment = Records.comments.build(discussionId: $scope.discussion.id, authorId: Session.user().id)
       $scope.submit = FormService.submit $scope, $scope.comment,
-        draftFields: ['body']
+        drafts: true
         submitFn: $scope.comment.save
         flashSuccess: successMessage
         flashOptions:

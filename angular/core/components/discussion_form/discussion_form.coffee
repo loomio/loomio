@@ -11,7 +11,7 @@ angular.module('loomioApp').factory 'DiscussionForm', ->
 
     $scope.submit = FormService.submit $scope, $scope.discussion,
       flashSuccess: "discussion_form.messages.#{actionName}"
-      draftFields: ['title', 'description']
+      drafts: true
       successCallback: (response) =>
         discussion = response.discussions[0]
         Records.attachments.find(attachableId: discussion.id, attachableType: 'Discussion')

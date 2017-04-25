@@ -1538,15 +1538,14 @@ en:
     block_verb: "blocked"
     block_meaning: The urgent attention of the group is required to address a deep concern
 
-  poll_count_options:
-    'yes': 'Yes'
-    'no': 'No'
-
   poll_count_vote_form:
     reason_label: Message
     reason_placeholder: Leave a message if you like
     stance_created: Vote created
     stance_updated: Vote updated
+
+  poll_common_percent_voted:
+    sentence: "{{percent}}% of members have stated their position ({{numerator}}/{{denominator}})"
 
   poll_count_chart_panel:
     out_of: out of {{goal}}

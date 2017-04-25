@@ -54,7 +54,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
 
   AppConfig.records = Records
   AhoyService.init()
-  HotkeyService.init($scope)
   Session.login(AppConfig.bootData)
+  HotkeyService.init($scope) if AbilityService.isLoggedIn()
 
   return
