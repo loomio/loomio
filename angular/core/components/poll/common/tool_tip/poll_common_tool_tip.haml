@@ -1,0 +1,9 @@
+.poll-common-tool-tip
+  .poll-common-tool-tip__expanded{ng-if: "!collapsed"}
+    .poll-common-tool-tip__expanded-body.md-body-1{translate: "poll_{{poll.pollType}}_form.tool_tip_expanded"}
+    .lmo-flex.lmo-flex__space-around
+      %md-button.md-accent{translate: "common.ok_got_it", ng-click: "hide()"}
+
+  .poll-common-tool-tip__collapsed.md-caption{ng-if: "collapsed"}
+    %span.poll-common-tool-tip__collapsed-body{translate: "poll_{{poll.pollType}}_form.tool_tip_collapsed"}
+    %span.poll-common-tool-tip__learn-more{translate: "common.expand", ng-click: "show()"}

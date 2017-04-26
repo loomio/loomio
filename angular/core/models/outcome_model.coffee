@@ -5,6 +5,7 @@ angular.module('loomioApp').factory 'OutcomeModel', (DraftableModel, AppConfig, 
     @indices: ['pollId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.outcome
     @draftParent: 'poll'
+    @draftPayloadAttributes: ['statement']
 
     defaultValues: ->
       statement: ''

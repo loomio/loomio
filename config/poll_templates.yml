@@ -1,16 +1,17 @@
 proposal:
   poll_options_attributes:
-    - name:              "agree"
-    - name:              "abstain"
-    - name:              "disagree"
-    - name:              "block"
-  has_option_icons:      true
-  translate_option_name: true
-  chart_type:            pie
-  material_icon:         thumbs_up_down
-  can_remove_options:    true
-  must_have_options:     true
+    - name:                "agree"
+    - name:                "abstain"
+    - name:                "disagree"
+    - name:                "block"
+  chart_type:              pie
+  material_icon:           thumbs_up_down
+  has_option_icons:        true
+  translate_option_name:   true
+  can_remove_options:      true
+  must_have_options:       true
   voters_review_responses: true
+  require_stance_choice:   true
   sort_options:
     - newest_first
     - oldest_first
@@ -19,16 +20,14 @@ proposal:
 
 count:
   poll_options_attributes:
-    - name:           "yes"
-    - name:           "no"
-  translate_option_name: true
+    - name:              "yes"
+    - name:              "no"
+  chart_type:            progress
+  material_icon:         check_circle
   has_option_icons:      true
-  chart_type:         progress
-  material_icon:      check_circle
-  must_have_options:  true
-  can_add_options:    false
-  can_remove_options: false
-  must_have_options:  true
+  must_have_options:     true
+  must_have_options:     true
+  require_stance_choice: true
   sort_options:
     - newest_first
     - oldest_first
@@ -54,16 +53,8 @@ dot_vote:
   can_remove_options:      true
   must_have_options:       true
   has_variable_score:      true
-
-  # can we make this happen?
-  # validates_custom_fields:
-  #   dots_per_person:
-  #     numericality:
-  #       greater_than: 1
-
   required_custom_fields:
     - dots_per_person
-    
   sort_options:
     - newest_first
     - oldest_first

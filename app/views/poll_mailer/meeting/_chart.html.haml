@@ -9,7 +9,7 @@
       %td= t(:"poll_mailer.meeting.total")
       - @info.poll.stance_counts.each do |count|
         %td.poll-mailer-meeting__cell= count
-    - @info.poll.stances.each do |stance|
+    - @info.poll.stances.latest.each do |stance|
       %tr
         %td.poll-mailer-meeting__participant-name= stance.participant.name
         - @info.poll.poll_options.each do |option|

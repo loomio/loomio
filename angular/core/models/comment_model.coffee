@@ -5,6 +5,7 @@ angular.module('loomioApp').factory 'CommentModel', (DraftableModel, AppConfig) 
     @indices: ['discussionId', 'authorId']
     @serializableAttributes: AppConfig.permittedParams.comment
     @draftParent: 'discussion'
+    @draftPayloadAttributes: ['body', 'attachment_ids']
 
     afterConstruction: ->
       @newAttachmentIds = _.clone(@attachmentIds) or []

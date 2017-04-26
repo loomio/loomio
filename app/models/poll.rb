@@ -10,7 +10,7 @@ class Poll < ActiveRecord::Base
                        must_have_options chart_type has_option_icons
                        has_variable_score voters_review_responses
                        dates_as_options required_custom_fields
-                       poll_options_attributes).freeze
+                       require_stance_choice poll_options_attributes).freeze
   TEMPLATE_FIELDS.each do |field|
     define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
   end
@@ -85,7 +85,8 @@ class Poll < ActiveRecord::Base
   # creates a hash which has a PollOption as a key, and a list of stance
   # choices associated with that PollOption as a value
   def grouped_stance_choices(since: nil)
-    @grouped_stance_choices ||= stance_choices.where("stance_choices.created_at > ?", since || 100.years.ago)
+    @grouped_stance_choices ||= stance_choices.reasons_first
+                                              .where("stance_choices.created_at > ?", since || 100.years.ago)
                                               .includes(:poll_option, stance: :participant)
                                               .to_a
                                               .group_by(&:poll_option)

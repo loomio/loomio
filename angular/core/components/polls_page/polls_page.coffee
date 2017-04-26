@@ -5,7 +5,10 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
   @loader = new RecordLoader
     collection: 'polls'
     path: 'search'
-    per: 10
+    per: 25
+
+  now = moment()
+  @pollImportance = (poll) => poll.importance(now)
 
   Records.polls.searchResultsCount().then (response) =>
     @pollsCount = response
@@ -26,7 +29,7 @@ angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $root
     !@fragment && @loadedCount() < @pollsCount
 
   @startNewPoll = ->
-    ModalService.open PollCommonStartModal, poll: -> Records.polls.build()
+    ModalService.open PollCommonStartModal, poll: -> Records.polls.build(authorId: Session.user().id)
 
   @searchPolls = =>
     if @fragment

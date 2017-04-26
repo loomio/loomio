@@ -8,6 +8,8 @@
 
       %poll_common_participant_form{stance: "stance"}
 
-      %md-button.md-raised{ng-repeat: "option in stance.poll().pollOptions()", ng-click: "submit(option)"}
-        %img{ng-src: "/img/{{option.name}}.svg"}
-        %span{translate: "poll_count_options.{{option.name}}"}
+      .poll-count-vote-form__options
+        %md-button.poll-count-vote-form__option.poll-count-vote-form__option--yes{ng-click: "submit(yes)", ng-style: "{background: yes.color}"}
+          %i.material-icons done
+        %md-button.poll-count-vote-form__option.poll-count-vote-form__option--no{ng-click: "submit(no)", ng-style: "{'border-color': no.color}"}
+          %i.material-icons{ng-style: "{color: no.color}"} remove

@@ -11,11 +11,11 @@
 
 .undecided-panel__list-item {
   margin-top: 15px;
-  display: flex;
+  @include displayFlex;
 }
 
 .undecided-panel__actions {
-  display: flex;
+  @include displayFlex;
 }
 
 .undecided-panel__show,

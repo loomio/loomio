@@ -11,6 +11,6 @@
 }
 
 .description-card__actions {
-  display: flex;
+  @include displayFlex;
   justify-content: space-between;
 }

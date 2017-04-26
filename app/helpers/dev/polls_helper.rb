@@ -28,7 +28,7 @@ module Dev::PollsHelper
         poll.stances.create!(poll: poll,
                              choice: name,
                              participant: u,
-                             reason: Faker::Hipster.sentence)
+                             reason: [Faker::Hipster.sentence, ""].sample)
       end
     end
     poll.update_stance_data

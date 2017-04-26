@@ -2,3 +2,7 @@
   display: inline-block;
   color: $primary-text-color;
 }
+
+.poll-common-stance-choice--count .poll-common-stance-choice__option-name {
+  display: none;
+}

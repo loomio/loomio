@@ -10,7 +10,7 @@
   width: 100%;
 }
 .time-zone-select__selected {
-  display: flex;
+  @include displayFlex;
   align-items: baseline;
   justify-content: flex-end;
 }

@@ -4,5 +4,5 @@
     %md-list-item.decision-tools-card__poll-type{ng-click: "startPoll(pollType)", ng-repeat: "pollType in pollTypes() track by $index"}
       %i.material-icons.decision-tools-card__icon {{fieldFromTemplate(pollType, 'material_icon')}}
       .decision-tools-card__content{class: "decision-tools-card__poll-type--{{pollType}}"}
-        .decision-tools-card__poll-type-title.md-body-1{translate: "decision_tools_card.{{pollType}}_title"}
-        .decision-tools-card__poll-type-subtitle.md-caption{translate: "decision_tools_card.{{pollType}}_subtitle"}
+        .decision-tools-card__poll-type-title.md-body-1{translate: "poll_types.{{pollType}}"}
+        .decision-tools-card__poll-type-subtitle.md-caption{translate: "poll_{{pollType}}_form.tool_tip_collapsed"}

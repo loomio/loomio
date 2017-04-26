@@ -1,31 +1,33 @@
-%form.registered-app-form{name: "registeredAppForm", ng_submit: "submit()", ng-disabled: "isDisabled"}
+%md-dialog.poll-common-modal
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1.modal-title{translate: "registered_app_form.new_application_title", ng-show: "application.isNew()"}
-    %h1.lmo-h1.modal-title{translate: "registered_app_form.edit_application_title", ng-hide: "application.isNew()"}
 
-  .modal-body.registered-app-form__modal-body
-    .lmo-form-group.registered-app-form__avatar
-      %img{ng-src: "{{application.logoUrl}}"}
-      %button.lmo-btn--cancel.registered-app-form__logo-upload-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
-        %i.fa.fa-lg.fa-camera>
-        %span{translate: "common.action.upload"}>
-      %input.registered-app-form__logo-input.hidden{type: "file", ng-model: "file", ng-file-select: "upload(file)"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1{translate: "registered_app_form.new_application_title", ng-show: "application.isNew()"}
+      %h1.lmo-h1{translate: "registered_app_form.edit_application_title", ng-hide: "application.isNew()"}
+      %modal_header_cancel_button{aria-hidden: "true"}
 
-    .lmo-form-group.registered-app-form__text-fields
-      %label{for: "application-name", translate: "registered_app_form.name_label"}
-      %input.registered-app-form__name-input.form-control.lmo-primary-form-input{placeholder: "{{ 'registered_app_form.name_placeholder' | translate }}", ng-model: "application.name", ng-required: "true", maxlength: "255"}
-      %validation_errors{subject: "application", field: "name"}
+  %md-dialog-content
+    %form.md-dialog-content.registered-app-form
+      .lmo-flex{layout: "row"}
+        .lmo-form-group.registered-app-form__avatar
+          %img{ng-src: "{{application.logoUrl}}"}
+          %button.lmo-btn--cancel.registered-app-form__logo-upload-button{ng-if: "!application.isNew()", type: "button", ng-click: "clickFileUpload()"}>
+            %i.fa.fa-lg.fa-camera>
+            %span{translate: "common.action.upload"}>
+          %input.registered-app-form__logo-input.hidden{type: "file", ng-model: "file", ng-file-select: "upload(file)"}
 
-      %label{for: "application-redirect-uri", translate: "registered_app_form.redirect_uri_label"}
-      %textarea.lmo-textarea.registered-app-form__redirect-uris-input.form-control{msd-elastic: "true", ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'registered_app_form.redirect_uri_placeholder' | translate }}"}
-      %abbr.registered-app-form__helptext{translate: "registered_app_form.redirect_uri_note"}
-      %validation_errors{subject: "application", field: "redirectUri"}
+        .lmo-form-group.registered-app-form__text-fields
+          %label{for: "application-name", translate: "registered_app_form.name_label"}
+          %input.registered-app-form__name-input.form-control.lmo-primary-form-input{placeholder: "{{ 'registered_app_form.name_placeholder' | translate }}", ng-model: "application.name", ng-required: "true", maxlength: "255"}
+          %validation_errors{subject: "application", field: "name"}
 
-    .clearfix
+          %label{for: "application-redirect-uri", translate: "registered_app_form.redirect_uri_label"}
+          %textarea.lmo-textarea.registered-app-form__redirect-uris-input.form-control{msd-elastic: "true", ng-model: "application.redirectUri", ng-required: "true", placeholder: "{{ 'registered_app_form.redirect_uri_placeholder' | translate }}"}
+          %abbr.registered-app-form__helptext{translate: "registered_app_form.redirect_uri_note"}
+          %validation_errors{subject: "application", field: "redirectUri"}
 
-  .modal-footer
-    %button.lmo-btn--submit.registered-app-form__submit{type: "submit", translate: "registered_app_form.new_application_submit", ng-show: "application.isNew()" }
-    %button.lmo-btn--primary.registered-app-form__update{type: "submit", translate: "registered_app_form.edit_application_submit", ng-hide: "application.isNew()" }
-    %button.lmo-btn--cancel.registered-app-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+      .lmo-flex.lmo-flex__space-between.registered-app-form__actions
+        %button.lmo-btn--cancel.registered-app-form__cancel{type: "button", ng-click: "$close()", translate: "common.action.cancel"}
+        %button.lmo-btn--submit.registered-app-form__submit{ng-click: "submit()", translate: "registered_app_form.new_application_submit", ng-show: "application.isNew()" }
+        %button.lmo-btn--primary.registered-app-form__update{ng-click: "submit()", translate: "registered_app_form.edit_application_submit", ng-hide: "application.isNew()" }
