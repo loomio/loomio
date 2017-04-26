@@ -1,9 +1,15 @@
 .registered-apps-page {
   @include card;
+  margin-top: 16px;
 }
 
-.registered-apps-page__table-row {
-  padding: 10px 0;
+.registered-apps-page__table {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.registered-apps-page__table thead {
+  font-weight: bold;
 }
 
 .registered-apps-page__remove-link {
@@ -17,31 +23,20 @@
 
 .registered-apps-page__code {
   display: block;
+  text-align: left;
+  text-overflow: ellipsis;
   overflow: hidden;
   word-break: normal;
-  margin: 0 5px 15px 0;
-  padding: 0 10px;
-  line-height: 40px;
-}
-
-.registered-apps-page__headlight {
-  border-radius: 100%;
-  width: 10px;
-  height: 10px;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.registered-apps-page--authorized {
-  background-color: $agree-color;
-}
-
-.registered-apps-page--unauthorized {
-  background-color: $grey-on-white;
 }
 
 .registered-apps-page__avatar {
   width: 40px;
   height: 40px;
   border: 4px solid #fff;
+}
+
+.registered-apps-page__actions {
+  @include displayFlex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
 }

@@ -1,28 +1,27 @@
 .lmo-one-column-layout
   %loading{ng-show: "registeredAppsPage.loading"}
   %main.registered-apps-page{ng-if: "!registeredAppsPage.loading"}
-    %h1.lmo-h1{translate: "registered_apps_page.title"}
-    %hr
+    .lmo-flex.lmo-flex__space-between
+      %h1.lmo-h1{translate: "registered_apps_page.title"}
+      %button.lmo-btn.lmo-btn--submit{ng-click: "registeredAppsPage.openApplicationForm()"}
+        %span{translate: "registered_apps_page.create_new_application"}
+
     .lmo-placeholder{ng-if: "registeredAppsPage.applications().length == 0", translate: "registered_apps_page.no_applications"}
-    .registered-apps-page__table{ng-if: "registeredAppsPage.applications().length > 0"}
-      .row.registered-apps-page__table-row
-        .col-xs-1
-        .lmo-bold.col-xs-3{translate: "registered_apps_page.name"}
-        .lmo-bold.col-xs-7{translate: "registered_apps_page.redirect_uris"}
-        .lmo-bold.col-xs-1
-      .row.registered-apps-page__table-row{ng-repeat: "application in registeredAppsPage.applications() | orderBy: 'name' track by application.id"}
-        .col-xs-1.align-right
-          %img.registered-apps-page__avatar{ng-src: "{{application.logoUrl}}"}>
-        .col-xs-3
-          %a.registered-apps-page__name{lmo-href-for: "application"}
-            {{ application.name }}
-        .col-xs-7
-          %code.registered-apps-page__code{ng-repeat: "uri in application.redirectUriArray()"}
-            {{uri}}
-        .col-xs-1.align-center
-          %button.registered-apps-page__remove-link{ng-click: "registeredAppsPage.openDestroyForm(application)"}
-            %i.fa.fa-lg.fa-times-circle
-        .clearfix
-    %hr
-    %button.lmo-btn.lmo-btn--submit{ng-click: "registeredAppsPage.openApplicationForm()"}
-      %span{translate: "registered_apps_page.create_new_application"}
+    %table.registered-apps-page__table{ng-if: "registeredAppsPage.applications().length > 0"}
+      %thead
+        %td
+        %td{translate: "registered_apps_page.name"}
+        %td{translate: "registered_apps_page.redirect_uris"}
+        %td{translate: "common.action.remove"}
+      %tbody
+        %tr{ng-repeat: "application in registeredAppsPage.applications() | orderBy: 'name' track by application.id"}
+          %td
+            %img.registered-apps-page__avatar{ng-src: "{{application.logoUrl}}"}>
+          %td
+            %a.registered-apps-page__name{lmo-href-for: "application"} {{ application.name }}
+          %td
+            %code.registered-apps-page__code{ng-repeat: "uri in application.redirectUriArray()"}
+              {{uri}}
+          %td
+            %button.registered-apps-page__remove-link{ng-click: "registeredAppsPage.openDestroyForm(application)"}
+              %i.fa.fa-lg.fa-times-circle
