@@ -19,7 +19,13 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def attachments
-    [{
+    [first_attachment].to_json
+  end
+
+  private
+
+  def first_attachment
+    {
       author_name: object.user.name,
       author_link: user_url(object.user, default_url_options),
       author_icon: object.user.avatar_url(:small),
@@ -27,13 +33,12 @@ class Slack::BaseSerializer < ActiveModel::Serializer
       title_link:  model_url,
       text:        slack_text,
       ts:          object.created_at.to_i,
+      callback_id: object.eventable_id,
       fields: [{
         value: "<#{model_url}|#{I18n.t(:"webhooks.slack.view_it_on_loomio")}>"
       }]
-    }.compact].to_json
+    }.compact
   end
-
-  private
 
   def include_text?
     text.present?

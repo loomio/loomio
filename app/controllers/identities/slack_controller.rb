@@ -1,5 +1,13 @@
 class Identities::SlackController < Identities::BaseController
 
+  def participate
+    if ::Slack::Participator.delay.participate!(participate_params)
+      head :ok
+    else
+      head :bad_request
+    end
+  end
+
   private
 
   def identity
@@ -21,6 +29,15 @@ class Identities::SlackController < Identities::BaseController
 
   def oauth_url
     "https://slack.com/oauth/authorize"
+  end
+
+  def participate_params
+    payload = JSON.parse(params.require(:payload))
+    {
+      identifier:     payload.dig('user', 'id'),
+      poll_id:        payload.dig('callback_id'),
+      choice:         payload.dig('actions', 0, 'value')
+    }
   end
 
   def oauth_params
