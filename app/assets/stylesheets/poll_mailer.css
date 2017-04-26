@@ -3,8 +3,16 @@
   padding-left: 10px;
 }
 
+.poll-mailer-common-responses__reason p {
+  margin: 10px 0;
+}
+
 .poll-mailer-common__discussion-info {
   margin-top: 20px;
+}
+
+.poll-mailer-common__avatar {
+  vertical-align: top;
 }
 
 .poll-mailer-common-avatar__initials {

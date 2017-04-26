@@ -7,4 +7,9 @@ class StanceChoice < ActiveRecord::Base
   validates_presence_of :poll_option
   validates :score, numericality: { greater_than_or_equal_to: 0 }
   validates :score, numericality: { equal_to: 1 }, unless: :has_variable_score
+
+  scope :reasons_first, -> {
+    joins(:stance).order("CASE coalesce(stances.reason, '') WHEN '' THEN 1 ELSE 0 END")
+                  .order(:created_at)
+  }
 end
