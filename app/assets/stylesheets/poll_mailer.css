@@ -7,6 +7,10 @@
   margin-top: 20px;
 }
 
+.poll-mailer-common__avatar {
+  vertical-align: top;
+}
+
 .poll-mailer-common-avatar__initials {
   margin-right: 10px;
   border: 1px solid #dcdcdc;

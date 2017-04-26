@@ -13,7 +13,7 @@
       %table
         - stance_choices.each do |stance_choice|
           %tr
-            %td= render partial: 'poll_mailer/common/avatar', locals: { participant: stance_choice.stance.participant }
+            %td.poll-mailer-common__avatar= render partial: 'poll_mailer/common/avatar', locals: { participant: stance_choice.stance.participant }
             %td.poll-mailer-common-responses__reason
               #{stance_choice.stance.participant.name}:
               = render_rich_text stance_choice.stance.reason
