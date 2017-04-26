@@ -29,7 +29,7 @@
   overflow: hidden;
   white-space: nowrap;
   min-height: 48px;
-  display: flex;
+  @include displayFlex;
   align-items: center;
 }
 
@@ -60,7 +60,7 @@
 
 .poll-common-vote-form__radio-button .md-label {
   margin-left: 0;
-  display: flex;
+  @include displayFlex;
   align-items: center;
   min-height: 48px;
   // padding: 8px 0;

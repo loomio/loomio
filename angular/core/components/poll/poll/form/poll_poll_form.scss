@@ -4,7 +4,7 @@
 }
 
 .poll-poll-form__option-button {
-  display: flex;
+  @include displayFlex;
 }
 
 .poll-poll-form__option-icon {

@@ -25,6 +25,6 @@
 }
 
 .registered-app-form__modal-body {
-  display: flex;
+  @include displayFlex;
   justify-content: space-between;
 }

@@ -23,7 +23,7 @@
 }
 
 .explore-page__groups {
-  display: flex;
+  @include displayFlex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
