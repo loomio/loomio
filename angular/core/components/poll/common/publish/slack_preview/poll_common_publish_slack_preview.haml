@@ -13,6 +13,6 @@
       .poll-common-publish-slack-preview__poll
         .poll-common-publish-slack-preview__author {{ userName }}
         .poll-common-publish-slack-preview__poll-title {{ poll.title }}
-        .poll-common-publish-slack-preview__poll-details {{ poll.details | truncate }}
+        .poll-common-publish-slack-preview__poll-details{ng-if: "poll.details"} {{ poll.details | truncate }}
         .poll-common-publish-slack-preview__view-it{translate: "poll_common_publish_slack_preview.view_it_on_loomio"}
         .poll-common-publish-slack-preview__timestamp{translate: "poll_common_publish_slack_preview.timestamp", translate-value-timestamp: "{{timestamp()}}"}

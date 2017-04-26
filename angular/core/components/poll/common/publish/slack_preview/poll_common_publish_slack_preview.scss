@@ -52,10 +52,17 @@
 .poll-common-publish-slack-preview__poll-title {
   color: #007AB8;
   font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.poll-common-publish-slack-preview__poll-details {
+  margin-bottom: 5px;
+  font-size: 15px;
 }
 
 .poll-common-publish-slack-preview__view-it {
   color: #007AB8;
+  font-size: 15px;
 }
 
 .poll-common-publish-slack-preview__timestamp {

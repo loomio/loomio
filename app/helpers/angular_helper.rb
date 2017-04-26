@@ -58,7 +58,8 @@ module AngularHelper
       ].compact,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
-      timeZones:     Poll::TIMEZONES
+      timeZones:     Poll::TIMEZONES,
+      thirdPartyCommunities: Communities::Base::THIRD_PARTY_TYPES
     }
   end
 
