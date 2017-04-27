@@ -47,12 +47,15 @@
 .poll-common-publish-slack-preview__author {
   color: #9e9ea6;
   font-weight: 400;
+  margin-bottom: 8px;
+  font-size: 15px;
 }
 
 .poll-common-publish-slack-preview__poll-title {
   color: #007AB8;
   font-weight: 700;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .poll-common-publish-slack-preview__poll-details {
@@ -63,11 +66,31 @@
 .poll-common-publish-slack-preview__view-it {
   color: #007AB8;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .poll-common-publish-slack-preview__timestamp {
   color: #717274;
   font-size: 12px;
   line-height: 14px;
-  padding-top: 8px;
+  padding: 12px 0 8px;
+  cursor: pointer;
+}
+
+.poll-common-publish-slack-preview__option {
+  @include displayFlex;
+  align-items: center;
+  -webkit-align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgba(160,160,162,.5);
+  color: #565759;
+  max-width: 150px;
+  font-size: 13px;
+  font-weight: 700;
+  height: 30px;
+  padding: 0 10px;
+  margin: 0 8px 8px 0;
+  text-shadow: none;
+  border-radius: 4px;
 }
