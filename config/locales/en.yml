@@ -1118,6 +1118,10 @@ en:
   start_your_group: Start your group
   webhooks:
     slack:
+      poll_created: "*%{author}* started a new poll in *%{name}*"
+      poll_closing_soon: "*%{name}* has a poll closing in 24 hours"
+      poll_expired: "*%{name}* has closed"
+      outcome_created: "*%{author}* published an outcome in *%{name}*"
       motion_closed: "*%{name}* has closed"
       motion_closed_by_user: "*%{name}* has been closed by *%{author}*"
       motion_closing_soon: "*%{name}* has a proposal closing in 24 hours"

@@ -2,9 +2,9 @@ class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
   include MakesAnnouncements
-  TEMPLATES = YAML.load_file('config/poll_templates.yml')
-  COLORS    = YAML.load_file('config/colors.yml')
-  TIMEZONES = YAML.load_file('config/timezones.yml')
+  TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
+  COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
+  TIMEZONES = YAML.load_file(Rails.root.join("config", "timezones.yml"))
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options
                        must_have_options chart_type has_option_icons
