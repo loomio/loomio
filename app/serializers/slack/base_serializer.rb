@@ -36,8 +36,13 @@ class Slack::BaseSerializer < ActiveModel::Serializer
       callback_id: object.eventable_id,
       fields: [{
         value: "<#{model_url}|#{I18n.t(:"webhooks.slack.view_it_on_loomio")}>"
-      }]
+      }],
+      actions:     actions,
     }.compact
+  end
+
+  def actions
+    []
   end
 
   def include_text?

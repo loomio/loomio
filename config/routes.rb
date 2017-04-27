@@ -294,6 +294,7 @@ Loomio::Application.routes.draw do
   scope :slack do
     get :oauth,                           to: 'identities/slack#oauth',       as: :slack_oauth
     get :authorize,                       to: 'identities/slack#create',      as: :slack_authorize
+    get :authorized,                      to: 'identities/slack#authorized',  as: :slack_authorized
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post '/',                             to: 'identities/slack#destroy',     as: :slack_unauthorize
   end

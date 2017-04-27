@@ -1,6 +1,6 @@
 class Identities::BaseController < ApplicationController
   def oauth
-    session[:back_to] = request.referrer
+    session[:back_to] = params[:back_to] || request.referrer
     redirect_to "#{oauth_url}?#{oauth_params.to_query}"
   end
 

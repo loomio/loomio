@@ -321,8 +321,10 @@
 }
 
 img.emojione {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 5px;
 }
 
 @keyframes fadeIn {
