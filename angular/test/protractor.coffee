@@ -7,7 +7,7 @@
 paths         = require('../tasks/paths')
 
 exports.config =
-  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.3.1.jar'
+  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.4.0.jar'
   allScriptsTimeout: 40000
   capabilities:
     browserName:     'firefox'
