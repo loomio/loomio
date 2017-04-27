@@ -85,7 +85,8 @@ class Poll < ActiveRecord::Base
   # creates a hash which has a PollOption as a key, and a list of stance
   # choices associated with that PollOption as a value
   def grouped_stance_choices(since: nil)
-    @grouped_stance_choices ||= stance_choices.where("stance_choices.created_at > ?", since || 100.years.ago)
+    @grouped_stance_choices ||= stance_choices.reasons_first
+                                              .where("stance_choices.created_at > ?", since || 100.years.ago)
                                               .includes(:poll_option, stance: :participant)
                                               .to_a
                                               .group_by(&:poll_option)

@@ -1,33 +1,33 @@
 .lmo-one-column-layout
   %loading{ng-if: "!registeredAppPage.application"}
   %main.registered-app-page{ng-if: "registeredAppPage.application"}
-    %img.registered-app-page__avatar{ng-src: "{{registeredAppPage.application.logoUrl}}"}
-    %h1.lmo-h1.registered-app-page__title {{ registeredAppPage.application.name }}
-    %hr
+    .registered-app-page__app.lmo-flex{layout: "column"}
+      .lmo-flex{layout: "row"}
+        %img.registered-app-page__avatar{ng-src: "{{registeredAppPage.application.logoUrl}}"}
+        %h1.lmo-h1.registered-app-page__title {{ registeredAppPage.application.name }}
 
-    %h3.lmo-h3.registered-app-page__header{translate: "registered_app_page.uid"}
-    .registered-app-page__flex
-      %code.registered-app-page__code {{ registeredAppPage.application.uid }}
-      %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "registeredAppPage.application.uid", on-copied: "registeredAppPage.copied()"}
-        %i.fa.fa-copy>
+      %h3.lmo-h3.registered-app-page__header{translate: "registered_app_page.uid"}
+      .registered-app-page__field.lmo-flex{layout: "row"}
+        %code.registered-app-page__code {{ registeredAppPage.application.uid }}
+        %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "registeredAppPage.application.uid", on-copied: "registeredAppPage.copied()"}
+          %i.fa.fa-copy>
 
-    %h3.lmo-h3.registered-app-page__header{translate: "registered_app_page.secret"}
-    .registered-app-page__flex
-      %code.registered-app-page__code {{ registeredAppPage.application.secret }}
-      %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "registeredAppPage.application.secret", on-copied: "registeredAppPage.copied()"}
-        %i.fa.fa-copy>
+      %h3.lmo-h3.registered-app-page__header{translate: "registered_app_page.secret"}
+      .registered-app-page__field.lmo-flex{layout: "row"}
+        %code.registered-app-page__code {{ registeredAppPage.application.secret }}
+        %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "registeredAppPage.application.secret", on-copied: "registeredAppPage.copied()"}
+          %i.fa.fa-copy>
 
-    %h3.lmo-h3.registered-app-page__header{translate: "registered_apps_page.redirect_uris"}
-    .registered-app-page__flex{ng-repeat: "uri in registeredAppPage.application.redirectUriArray()"}
-      %code.registered-app-page__code {{ uri }}
-      %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "uri", on-copied: "registeredAppPage.copied()"}
-        %i.fa.fa-copy>
+      %h3.lmo-h3.registered-app-page__header{translate: "registered_apps_page.redirect_uris"}
+      .registered-app-page__field.lmo-flex{layout: "row", ng-repeat: "uri in registeredAppPage.application.redirectUriArray()"}
+        %code.registered-app-page__code {{ uri }}
+        %button.lmo-btn--nude.registered-app-page__btn--copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "uri", on-copied: "registeredAppPage.copied()"}
+          %i.fa.fa-copy>
 
-    %hr
-
-    %a.lmo-btn--cancel.pull-left{lmo-href: "/apps/registered"}
-      %span{translate: "common.action.back"}
-    %button.lmo-btn--danger.pull-right{type: "button", translate: "common.action.remove", ng-click: "registeredAppPage.openRemoveForm()"}>
-    %button.lmo-btn--primary.pull-right.registered-app-page__edit{type: "button", translate: "common.action.edit", ng-click: "registeredAppPage.openEditForm()"}>
+    .registered-app-page__actions
+      %a.lmo-btn--cancel.pull-left{lmo-href: "/apps/registered"}
+        %span{translate: "common.action.back"}
+      %button.lmo-btn--danger.pull-right{type: "button", translate: "common.action.remove", ng-click: "registeredAppPage.openRemoveForm()"}>
+      %button.lmo-btn--primary.pull-right.registered-app-page__edit{type: "button", translate: "common.action.edit", ng-click: "registeredAppPage.openEditForm()"}>
 
     .clearfix

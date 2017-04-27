@@ -2,13 +2,21 @@
   @include card;
 }
 
+.registered-app-page__field {
+  margin: 8px 0 16px;
+}
+
+.registered-app-page__app {
+  margin-bottom: 16px;
+}
+
 .registered-app-page__title {
   line-height: 50px;
 }
 
-.registered-app-page__flex {
+.registered-app-page__app {
   @include displayFlex;
-  align-items: flex-start;
+  margin: 16px 0;
 }
 
 .registered-app-page__notice {
@@ -26,6 +34,15 @@
 
 .registered-app-page__edit {
   margin-right: 10px;
+}
+
+.registered-app-page__code {
+  background: $background-color;
+  padding: 6px 10px;
+  border-radius: 5px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
 }
 
 .registered-app-page__avatar {

@@ -24,7 +24,6 @@
   flex-grow: 2;
 }
 
-.registered-app-form__modal-body {
-  @include displayFlex;
-  justify-content: space-between;
+.registered-app-form__actions {
+  margin-top: 16px;
 }
