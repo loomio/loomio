@@ -1142,7 +1142,7 @@ en:
         abstain: abstained on
         block: blocked
   slack:
-    request_authorization_message: "Oops! It looks like you haven't authorized Loomio to use your Slack account. <%{url}|Click here> to fix that!"
+    go_to_slack: Go to Slack
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you'd like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
     authorized_message: "Success! You're all set up to vote on slack now."
-    go_to_slack: Go to Slack
+    request_authorization_message: "We'll need to authorize your slack account to vote on this poll; you can do so by <%{url}|here>; it'll just take a second!"

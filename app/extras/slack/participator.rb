@@ -5,8 +5,12 @@ class Slack::Participator
   end
 
   def participate!
-    StanceService.create(stance: @stance, actor: @identity&.user || LoggedOutUser.new)
-  rescue CanCan::AccessDenied
-    false
+    StanceService.create(stance: @stance, actor: @identity.user) if can_participate?
+  end
+
+  private
+
+  def can_participate?
+    @identity && @identity.user.can?(:create, @stance)
   end
 end
