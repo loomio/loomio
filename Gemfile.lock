@@ -734,6 +734,7 @@ DEPENDENCIES
   ahoy_email (~> 0.3.1)
   ahoy_matey!
   airbrake
+  autoprefixer-rails
   awesome_print
   bing_translator
   bootstrap-sass (~> 3.3.4)

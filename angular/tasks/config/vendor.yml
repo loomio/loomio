@@ -1,6 +1,7 @@
 ---
 path: node_modules
 js:
+  - bowser/bowser.js
   - moment/moment.js
   - lodash/index.js
   - ng-file-upload/dist/angular-file-upload-shim.js
