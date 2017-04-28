@@ -59,9 +59,10 @@ describe Identities::SlackController do
       sign_in user
       valid_oauth
       expect { post :create, code: 'code' }.to change { user.identities.count }.by(1)
+      expect(response).to redirect_to root_path
     end
 
-    it 'redirects to the session back_to' do
+    it 'redirects to the session back_to if present' do
       valid_oauth
       session[:back_to] = 'http://example.com'
       post :create, code: 'code'
@@ -76,15 +77,24 @@ describe Identities::SlackController do
       expect(u.identities.pluck(:email)).to include oauth_identity_params[:email]
     end
 
+    it 'does not create a new user if the email is already taken' do
+      valid_oauth
+      create(:user, email: oauth_identity_params[:email])
+      expect { post :create, code: 'code' }.to_not change { User.count }
+      expect(response.status).to eq 400
+    end
+
     it 'does not create an invalid identity for an existing user' do
       sign_in user
       invalid_oauth
       expect { post :create, code: 'code' }.to_not change { user.identities.count }
+      expect(response.status).to eq 400
     end
 
     it 'does not create a new user if the identity is invalid' do
       invalid_oauth
       expect { post :create, code: 'code' }.to_not change { User.count }
+      expect(response.status).to eq 400
     end
   end
 

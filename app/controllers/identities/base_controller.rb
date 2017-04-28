@@ -42,7 +42,7 @@ class Identities::BaseController < ApplicationController
     if user.is_logged_in?
       user.identities.push(identity)
     else
-      User.create(email: identity.email, identities: Array(identity))
+      User.new(email: identity.email, identities: Array(identity)).save
     end
   end
 
