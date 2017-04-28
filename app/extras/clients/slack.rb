@@ -25,7 +25,7 @@ class Clients::Slack < Clients::Base
   end
 
   def scope
-    %w(users:read channels:read team:read chat:write:bot).freeze
+    %w(users:read channels:read team:read chat:write:bot commands).freeze
   end
 
   private

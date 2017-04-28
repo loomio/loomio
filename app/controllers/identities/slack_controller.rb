@@ -10,10 +10,11 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def initiate
-    if url = ::Slack::Initiator.new(initiate_params).initiate!
-      render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
-    else
-      respond_with_unauthorized
+    attempt = ::Slack::Initiator.new(initiate_params).initiate!
+    case attempt[:error]
+    when nil           then respond_with_url(attempt[:url])
+    when :bad_identity then respond_with_unauthorized
+    when :bad_type     then respond_with_help
     end
   end
 
@@ -27,8 +28,16 @@ class Identities::SlackController < Identities::BaseController
     head :ok if params[:ssl_check].present?
   end
 
+  def respond_with_url(url)
+    render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
+  end
+
   def respond_with_unauthorized
     render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json, status: :forbidden
+  end
+
+  def respond_with_help
+    render text: I18n.t(:"slack.slash_command_help", type: initiate_params[:type])
   end
 
   def identity
@@ -53,6 +62,7 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def participate_params
+    payload = JSON.parse(params.require(:payload))
     @participate_params ||= {
       uid:     payload.dig('user', 'id'),
       poll_id: payload.dig('callback_id'),
@@ -61,10 +71,11 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def initiate_params
-    @initiate_params ||= {
-      uid:   payload.dig('user_id'),
-      title: payload.dig('text'),
-      type:  payload.dig('command').split('_').last
+    {
+      uid:     params[:user_id],
+      team_id: params[:team_id],
+      title:   /\s.*$/.match(params[:text]).to_s.strip,
+      type:    /^\S*/.match(params[:text]).to_s.strip
     }
   end
 
