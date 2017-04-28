@@ -296,6 +296,7 @@ Loomio::Application.routes.draw do
     get :authorize,                       to: 'identities/slack#create',      as: :slack_authorize
     get :authorized,                      to: 'identities/slack#authorized',  as: :slack_authorized
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
+    post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
     post '/',                             to: 'identities/slack#destroy',     as: :slack_unauthorize
   end
 

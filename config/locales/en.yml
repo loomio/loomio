@@ -1143,6 +1143,7 @@ en:
         block: blocked
   slack:
     go_to_slack: Go to Slack
+    initiate: Alright, let's start a %{type}! <%{url}|Click here to continue>.
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you'd like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
     time_zone_message: "all times are in the %{zone} time zone"
     authorized_message: "Success! You're all set up to vote on slack now."

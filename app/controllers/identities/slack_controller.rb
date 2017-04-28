@@ -4,7 +4,15 @@ class Identities::SlackController < Identities::BaseController
     if event = ::Slack::Participator.new(participate_params).participate!
       render json: ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
     else
-      render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json, status: :forbidden
+      respond_with_unauthorized
+    end
+  end
+
+  def initiate
+    if url = ::Slack::Initiator.new(initiate_params).initiate!
+      render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
+    else
+      respond_with_unauthorized
     end
   end
 
@@ -13,6 +21,10 @@ class Identities::SlackController < Identities::BaseController
   end
 
   private
+
+  def respond_with_unauthorized
+    render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json, status: :forbidden
+  end
 
   def identity
     @identity ||= current_user.slack_identity
@@ -36,12 +48,23 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def participate_params
-    payload = JSON.parse(params.require(:payload))
-    {
+    @participate_params ||= {
       uid:     payload.dig('user', 'id'),
       poll_id: payload.dig('callback_id'),
       choice:  payload.dig('actions', 0, 'name')
     }
+  end
+
+  def initiate_params
+    @initiate_params ||= {
+      uid:   payload.dig('user_id'),
+      title: payload.dig('text'),
+      type:  payload.dig('command').split('_').last
+    }
+  end
+
+  def payload
+    @payload ||= JSON.parse(params.require(:payload))
   end
 
   def oauth_params
