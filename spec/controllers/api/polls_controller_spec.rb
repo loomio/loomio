@@ -180,6 +180,11 @@ describe API::PollsController do
   end
 
   describe 'create' do
+    let(:identity) { create :slack_identity, user: user }
+    let(:community) { create :slack_community, identity: identity }
+    let(:another_identity) { create :slack_identity }
+    let(:another_community) { create :slack_community, identity: another_identity }
+
     it 'creates a poll' do
       sign_in user
       expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
@@ -218,6 +223,14 @@ describe API::PollsController do
       sign_in another_user
       expect { post :create, poll: poll_params }.to_not change { Poll.count }
       expect(response.status).to eq 403
+    end
+
+    it 'can accept community_ids on a poll' do
+      sign_in user
+      poll_params[:community_ids] = [community.id]
+      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
+      poll = Poll.last
+      expect(poll.community_ids).to include community.id
     end
   end
 

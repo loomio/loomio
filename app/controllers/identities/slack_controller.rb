@@ -72,10 +72,12 @@ class Identities::SlackController < Identities::BaseController
 
   def initiate_params
     {
-      uid:     params[:user_id],
-      team_id: params[:team_id],
-      title:   /\s.*$/.match(params[:text]).to_s.strip,
-      type:    /^\S*/.match(params[:text]).to_s.strip
+      user_id:      params[:user_id],
+      team_id:      params[:team_id],
+      channel_id:   params[:channel_id],
+      channel_name: params[:channel_name],
+      type:         /^\S*/.match(params[:text]).to_s.strip, # use first word as poll type
+      title:        /\s.*$/.match(params[:text]).to_s.strip # use remaining words as poll title
     }
   end
 

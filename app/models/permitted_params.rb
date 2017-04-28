@@ -57,7 +57,8 @@ class PermittedParams < Struct.new(:params)
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone]},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
-     :poll_option_names, {poll_option_names: []}]
+     :poll_option_names, {poll_option_names: []},
+     :community_id, {community_id: []}]
   end
 
   def stance_attributes

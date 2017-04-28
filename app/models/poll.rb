@@ -166,6 +166,10 @@ class Poll < ActiveRecord::Base
     end
   end
 
+  def community_id=(id)
+    Array(id).each { |id| self.poll_communities.build(community_id: id) }
+  end
+
   def community_of_type(community_type, build: false)
     communities.find_by(community_type: community_type) || (build && build_community(community_type)).presence
   end
