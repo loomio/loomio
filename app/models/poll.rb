@@ -76,6 +76,8 @@ class Poll < ActiveRecord::Base
   validate :closes_in_future
   validate :require_custom_fields
 
+  attr_accessor :community_id
+
   alias_method :user, :author
 
   def poll
@@ -164,10 +166,6 @@ class Poll < ActiveRecord::Base
     if g = Group.find_by(id: group_id)
       poll_communities.build(community: g.community)
     end
-  end
-
-  def community_id=(id)
-    Array(id).each { |id| self.poll_communities.build(community_id: id) }
   end
 
   def community_of_type(community_type, build: false)

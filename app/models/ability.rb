@@ -319,7 +319,7 @@ class Ability
     end
 
     can [:show, :manage_visitors, :remind], Communities::Base do |community|
-      community.polls.any? { |poll| @user.can? :share, poll }
+      @user.communities.include?(community)
     end
 
     can :create, Communities::Base do |community|

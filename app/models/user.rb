@@ -83,6 +83,7 @@ class User < ActiveRecord::Base
   has_many :polls, foreign_key: :author_id
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
+  has_many :communities, through: :identities, class_name: "Communities::Base"
 
   has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy

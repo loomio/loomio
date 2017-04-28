@@ -225,12 +225,26 @@ describe API::PollsController do
       expect(response.status).to eq 403
     end
 
-    it 'can accept community_ids on a poll' do
+    it 'can accept community_id on a poll' do
       sign_in user
-      poll_params[:community_ids] = [community.id]
+      poll_params[:community_id] = community.id
       expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
       poll = Poll.last
       expect(poll.community_ids).to include community.id
+    end
+
+    it 'publishes to the community if one is specified' do
+      sign_in user
+      poll_params[:community_id] = community.id
+      expect { post :create, poll: poll_params }.to change { Events::PollPublished.where(kind: :poll_published).count }.by(1)
+    end
+
+    it 'does not allow accept community_id for communities the author does not know about' do
+      sign_in user
+      poll_params[:community_id] = another_community.id
+      expect { post :create, poll: poll_params }.to_not change { Events::PollPublished.where(kind: :poll_published).count }
+      poll = Poll.last
+      expect(poll.community_ids).to_not include another_community.id
     end
   end
 
