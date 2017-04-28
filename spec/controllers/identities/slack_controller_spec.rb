@@ -44,16 +44,47 @@ describe Identities::SlackController do
   end
 
   describe 'create' do
+    let(:user) { create :user }
+    let(:invalid_oauth) { controller.stub(oauth_identity_params: {}) }
+    let(:valid_oauth) { controller.stub(oauth_identity_params: oauth_identity_params) }
+    let(:oauth_identity_params) { {
+      access_token: 'token',
+      email: "bob@builder.com",
+      name: "Bob the BUilder",
+      uid: "U123"
+    } }
+    before { controller.stub(complete_identity: nil) }
+
     it 'creates a new identity' do
+      sign_in user
+      valid_oauth
+      expect { post :create, code: 'code' }.to change { user.identities.count }.by(1)
+    end
+
+    it 'redirects to the session back_to' do
+      valid_oauth
+      session[:back_to] = 'http://example.com'
+      post :create, code: 'code'
+      expect(response).to redirect_to 'http://example.com'
     end
 
     it 'also creates a new user if one is not logged in' do
+      valid_oauth
+      expect { post :create, code: 'code' }.to change { User.count }.by(1)
+      u = User.last
+      expect(u.identities.pluck(:name)).to include oauth_identity_params[:name]
+      expect(u.identities.pluck(:email)).to include oauth_identity_params[:email]
     end
 
     it 'does not create an invalid identity for an existing user' do
+      sign_in user
+      invalid_oauth
+      expect { post :create, code: 'code' }.to_not change { user.identities.count }
     end
 
     it 'does not create a new user if the identity is invalid' do
+      invalid_oauth
+      expect { post :create, code: 'code' }.to_not change { User.count }
     end
   end
 

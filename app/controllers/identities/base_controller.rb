@@ -5,7 +5,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if current_user.identities.push instantiate_identity
+    if associate(user: current_user, identity: instantiate_identity)
       redirect_to session.delete(:back_to) || root_path
     else
       render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
@@ -15,7 +15,7 @@ class Identities::BaseController < ApplicationController
   def destroy
     if identity.present?
       identity.destroy
-      redirect_to request.referrer
+      redirect_to request.referrer || root_path
     else
       render json: { error: "Not connected to #{controller_name}!" }, status: :bad_request
     end
@@ -36,6 +36,14 @@ class Identities::BaseController < ApplicationController
 
   def identity
     current_user.send "#{controller_name}_identity"
+  end
+
+  def associate(user:, identity:)
+    if user.is_logged_in?
+      user.identities.push(identity)
+    else
+      User.create(email: identity.email, identities: Array(identity))
+    end
   end
 
   def instantiate_identity
