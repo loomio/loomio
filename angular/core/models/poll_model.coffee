@@ -120,3 +120,7 @@ angular.module('loomioApp').factory 'PollModel', (DraftableModel, AppConfig, Men
     publish: (community, message) =>
       @remote.postMember(@key, 'publish', community_id: community.id, message: message).then =>
         @published = true
+
+    enableCommunities: ->
+      @group() and @group().features.enable_communities or
+      @author().experiences.enable_communities

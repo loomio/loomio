@@ -3,8 +3,10 @@ class Slack::PollPublishedSerializer < Slack::BaseSerializer
 
   def first_attachment
     super.tap do |att|
-      att[:footer] = I18n.t(:"slack.time_zone_message", zone: object.eventable.custom_fields['time_zone'])
-      att[:ts]     = nil
+      if object.eventable.dates_as_options
+        att[:footer] = I18n.t(:"slack.time_zone_message", zone: object.eventable.custom_fields['time_zone'])
+        att[:ts]     = nil
+      end
     end
   end
 

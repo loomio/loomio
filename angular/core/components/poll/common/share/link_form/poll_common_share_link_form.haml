@@ -13,5 +13,5 @@
         %md-button.md-primary.md-raised.poll-common-share-form__copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
           %span{translate: "common.copy"}
     %md-list-item
-      %p.poll-common-share-form__helptext{translate: "poll_common_share_form.poll_is_shareable", ng-if: "poll.anyoneCanParticipate"}
-      %p.poll-common-share-form__helptext{translate: "poll_common_share_form.poll_is_private", ng-if: "!poll.anyoneCanParticipate"}
+      %p.poll-common-helptext{translate: "poll_common_share_form.poll_is_shareable", ng-if: "poll.anyoneCanParticipate"}
+      %p.poll-common-helptext{translate: "poll_common_share_form.poll_is_private", ng-if: "!poll.anyoneCanParticipate"}
