@@ -12,6 +12,6 @@ class Slack::RequestAuthorizationSerializer < Slack::BaseSerializer
   end
 
   def success_url
-    slack_authorized_url(default_url_options)
+    slack_authorized_url(default_url_options.merge(object))
   end
 end

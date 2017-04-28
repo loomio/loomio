@@ -5,7 +5,7 @@ class Identities::SlackController < Identities::BaseController
     if event = ::Slack::Participator.new(participate_params).participate!
       render json: ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
     else
-      respond_with_unauthorized
+      respond_with_unauthorized(payload.dig('team', 'domain'))
     end
   end
 
@@ -13,12 +13,13 @@ class Identities::SlackController < Identities::BaseController
     attempt = ::Slack::Initiator.new(initiate_params).initiate!
     case attempt[:error]
     when nil           then respond_with_url(attempt[:url])
-    when :bad_identity then respond_with_unauthorized
+    when :bad_identity then respond_with_unauthorized(params[:team_domain])
     when :bad_type     then respond_with_help
     end
   end
 
   def authorized
+    @team = params[:team]
     render template: 'slack/authorized', layout: 'application'
   end
 
@@ -32,8 +33,8 @@ class Identities::SlackController < Identities::BaseController
     render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
   end
 
-  def respond_with_unauthorized
-    render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json
+  def respond_with_unauthorized(team_name)
+    render json: ::Slack::RequestAuthorizationSerializer.new({team: team_name}, root: false).as_json
   end
 
   def respond_with_help
