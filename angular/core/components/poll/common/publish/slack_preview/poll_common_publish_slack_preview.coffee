@@ -4,5 +4,3 @@ angular.module('loomioApp').directive 'pollCommonPublishSlackPreview', ->
   controller: ($scope, $translate, Session) ->
     $scope.userName  = Session.user().name
     $scope.timestamp = -> moment().format('h:ma')
-    $scope.humanized = (option) ->
-      _.capitalize(option.name)

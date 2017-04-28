@@ -8,4 +8,12 @@ class PollOption < ActiveRecord::Base
   def color
     Poll::COLORS.dig(poll.poll_type, self.priority)
   end
+
+  def display_name
+    if poll.dates_as_options
+      DateTime.strptime(self.name.sub('.000Z', 'Z')).strftime('%-d %b - %l:%M%P')
+    else
+      name.humanize
+    end
+  end
 end

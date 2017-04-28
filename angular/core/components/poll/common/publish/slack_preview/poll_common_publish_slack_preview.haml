@@ -18,4 +18,4 @@
         .poll-common-publish-slack-preview__timestamp{translate: "poll_common_publish_slack_preview.timestamp", translate-value-timestamp: "{{timestamp()}}"}
         .poll-common-publish-slack-preview__options.lmo-flex{layout: "row"}
           .poll-common-publish-slack-preview__option{ng-repeat: "option in poll.pollOptions()"}
-            {{ humanized(option) }}
+            {{ option.displayName }}

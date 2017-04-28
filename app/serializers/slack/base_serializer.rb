@@ -19,7 +19,7 @@ class Slack::BaseSerializer < ActiveModel::Serializer
   end
 
   def attachments
-    [first_attachment].to_json
+    [first_attachment, additional_attachments].flatten.to_json
   end
 
   private
@@ -39,6 +39,10 @@ class Slack::BaseSerializer < ActiveModel::Serializer
       }],
       actions:     actions,
     }.compact
+  end
+
+  def additional_attachments
+    # override to add additional attachments to the slack post
   end
 
   def actions

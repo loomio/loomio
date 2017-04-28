@@ -1144,5 +1144,6 @@ en:
   slack:
     go_to_slack: Go to Slack
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you'd like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
+    time_zone_message: "all times are in the %{zone} time zone"
     authorized_message: "Success! You're all set up to vote on slack now."
     request_authorization_message: "We'll need to authorize your slack account to vote on this poll; you can do so by <%{url}|here>; it'll just take a second!"

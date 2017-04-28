@@ -1564,8 +1564,7 @@ en:
   poll_meeting_vote_form:
     your_response: When can you attend?
     stance_created: Availability saved
-    stance_created: Availability updated
-
+    stance_updated: Availability updated
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
