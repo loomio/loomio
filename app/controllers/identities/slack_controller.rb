@@ -1,4 +1,5 @@
 class Identities::SlackController < Identities::BaseController
+  before_filter :respond_with_ok, only: [:participate, :initiate]
 
   def participate
     if event = ::Slack::Participator.new(participate_params).participate!
@@ -21,6 +22,10 @@ class Identities::SlackController < Identities::BaseController
   end
 
   private
+
+  def respond_with_ok
+    head :ok if params[:ssl_check].present?
+  end
 
   def respond_with_unauthorized
     render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json, status: :forbidden
