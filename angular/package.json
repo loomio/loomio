@@ -19,6 +19,9 @@
   "bugs": {
     "url": "https://github.com/loomio/loomio/issues"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "homepage": "https://github.com/loomio/loomio#readme",
   "dependencies": {
     "angular": "1.4.1",
@@ -57,7 +60,8 @@
     "moment-timezone": "latest",
     "ng-file-upload": "~3.2.4",
     "private_pub": "latest",
-    "svg.js": "latest"
+    "svg.js": "latest",
+    "bowser": "latest"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
@@ -80,8 +84,10 @@
     "gulp-sass": "^2.3.1",
     "gulp-uglify": "^1.5.1",
     "gulp-watch": "^4.3.5",
+    "gulp-autoprefixer": "latest",
     "node-yaml-config": "0.0.3",
     "protractor": "5.1.1",
-    "protractor-jasmine2-screenshot-reporter": "^0.3.3"
+    "protractor-jasmine2-screenshot-reporter": "^0.3.3",
+    "geckodriver": "latest"
   }
 }

@@ -1,21 +1,9 @@
-%h1 Yikes! You're on a very old browser!
+%h1 Yikes! You're on a very old web browser!
+
+%h2 Unfortunately loomio won't work on your browser. However, it's possible to fix this problem!
+
+%h3
+  %a{href: "http://browser-update.org/update-browser.html"}
+    Update your browser
 
 =image_tag 'mascot.gif'
-
-%h2 Unfortunately, this is a problem.
-
-- if browser.version.to_i == 9
-  %p
-    We reckon you should
-    = link_to 'upgrade your browser', 'http://outdatedbrowser.com'
-    but if you cannot, you can
-    = link_to 'use Loomio beta in the meantime.', '/angular'
-- else
-  %p
-    You need to
-    = link_to 'upgrade your browser', 'http://outdatedbrowser.com'
-    to use Loomio.
-
-%p If this all seems way too hard - perhaps you have a smartphone or tablet you can use to access Loomio?
-
-%p= browser.version.inspect
