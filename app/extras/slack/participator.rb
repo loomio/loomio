@@ -1,6 +1,6 @@
 class Slack::Participator
-  def initialize(identifier:, poll_id:, choice:)
-    @identity = Identities::Slack.find_by(identity_type: :slack, uid: identifier)
+  def initialize(uid:, poll_id:, choice:)
+    @identity = Identities::Slack.find_by(identity_type: :slack, uid: uid)
     @stance   = Stance.new(poll_id: poll_id, choice: choice)
   end
 

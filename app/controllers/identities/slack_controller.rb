@@ -1,7 +1,11 @@
 class Identities::SlackController < Identities::BaseController
 
   def participate
-    render json: participation_attempt
+    if event = ::Slack::Participator.new(participate_params).participate!
+      render json: ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
+    else
+      render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json, status: :forbidden
+    end
   end
 
   def authorized
@@ -31,20 +35,12 @@ class Identities::SlackController < Identities::BaseController
     "https://slack.com/oauth/authorize"
   end
 
-  def participation_attempt
-    if @event = ::Slack::Participator.new(participate_params).participate!
-      ::Slack::StanceCreatedSerializer.new(@event, root: false).as_json
-    else
-      ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json
-    end
-  end
-
   def participate_params
     payload = JSON.parse(params.require(:payload))
     {
-      identifier:     payload.dig('user', 'id'),
-      poll_id:        payload.dig('callback_id'),
-      choice:         payload.dig('actions', 0, 'name')
+      uid:     payload.dig('user', 'id'),
+      poll_id: payload.dig('callback_id'),
+      choice:  payload.dig('actions', 0, 'name')
     }
   end
 
