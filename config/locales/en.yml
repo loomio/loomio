@@ -1147,7 +1147,7 @@ en:
         block: blocked
   slack:
     go_to_slack: Go to Slack
-    initiate: Alright, let's start a %{type}! <%{url}|Click here to continue>.
+    initiate: "Okay, let's do this! <%{url}|Click here to start your %{type}>. (note : we'll post into this channel once it's created, so that everyone can participate)"
     stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you'd like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
     slash_command_help: |
       Hm.. '%{type}' isn't a decision type we know about yet!
@@ -1157,16 +1157,15 @@ en:
 
       You can choose from the following decision types:
         'proposal': Seek collective agreement
-        'check':    Track participation and find volunteers
-        'poll':     Measure popularity of options
+        'count':      Track participation and find volunteers
+        'poll':         Measure popularity of options
         'dot vote': Prioritise a list of options
-        'meeting':  Find a time to meet
+        'meeting': Find a time to meet
 
       So, for example, you could write
-      /decide count Who's coming to the party on Sunday?
+      /loomio count Who's coming to the party on Sunday?
 
       In order to start a new count.
-
 
     time_zone_message: "all times are in the %{zone} time zone"
     authorized_message: "Success! You're all set up to vote on slack now."

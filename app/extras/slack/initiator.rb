@@ -24,8 +24,8 @@ class Slack::Initiator
   private
 
   def community_id(channel_id, channel_name)
-    @identity.communities.find_or_initialize_by(identifier: channel_id).tap do |community|
-      community.slack_channel_name = channel_name
+    @identity.communities.find_or_initialize_by(identifier: channel_id, community_type: :slack).tap do |community|
+      community.custom_fields['slack_channel_name'] = channel_name
     end.tap(&:save).id unless bad_identity?
   end
 

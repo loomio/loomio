@@ -33,7 +33,7 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def respond_with_unauthorized
-    render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json, status: :forbidden
+    render json: ::Slack::RequestAuthorizationSerializer.new({}, root: false).as_json
   end
 
   def respond_with_help
