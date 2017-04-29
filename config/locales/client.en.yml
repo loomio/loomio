@@ -1706,10 +1706,11 @@ en:
     more_providers: More
 
     email_helptext: "Have a Loomio account already? Enter your email here:"
-    magic_link_helptext: Click the button below and we'll send you a link to sign in instantly.
+    magic_link_helptext: |
+      Click the button below and we'll send you a link to sign in instantly.
+      Or, you can set a password to login with, if you don't want to receive an email
     password_helptext: "Or, you can enter your password below:"
     sign_up_helptext: "Just enter your name below, and we'll send you a link to sign in"
-    set_password_helptext: "Or, you can set a password below if you don't want to check your email"
 
     sign_in_with_email: Sign in with email
     welcome: Nice to meet you!
@@ -1717,6 +1718,7 @@ en:
     magic_link: Send me a magic link
     sign_up: Send me a link
     set_password: Set password
+    set_password_button: I'd rather use a password
 
     name: Name
     email: Email

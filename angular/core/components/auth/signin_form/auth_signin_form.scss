@@ -2,8 +2,19 @@
   text-align: center;
 }
 
+.auth-signin-form__set-password-button {
+  text-align: center;
+}
+
 .auth-signin-form__avatar {
   width: 80px;
   height: 80px;
+  border-radius: 100%;
+  border: 1px solid $border-color;
   margin: auto;
+  background: $background-color;
+}
+
+.auth-signin-form__avatar img {
+  height: 80px;
 }

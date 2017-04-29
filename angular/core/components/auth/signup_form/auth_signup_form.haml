@@ -1,6 +1,8 @@
 .auth-signup-form
-  %h2.lmo-h2{translate: "auth_form.welcome"}
-  %p.poll-common-helptext{translate: "auth_form.sign_up_helptext"}
+  .auth-signup-form__welcome
+    %user_avatar.auth-signin-form__avatar{user: "helperBot", size: "large-circular"}
+    %h2.lmo-h2{translate: "auth_form.welcome"}
+    %p.poll-common-helptext{translate: "auth_form.sign_up_helptext"}
 
   %md-input-container.md-block
     %label{translate: "auth_form.name"}

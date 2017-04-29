@@ -14,3 +14,7 @@ angular.module('loomioApp').directive 'authSigninForm', ->
 
     $scope.setPassword = ->
       console.log("setting password", $scope.user.email, $scope.user.password, $scope.user.passwordConfirm)
+
+    $scope.passwordFormShown = $scope.user.hasPassword
+    $scope.showPasswordForm = ->
+      $scope.passwordFormShown = true

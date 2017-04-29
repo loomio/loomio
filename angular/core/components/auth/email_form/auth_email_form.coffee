@@ -5,5 +5,5 @@ angular.module('loomioApp').directive 'authEmailForm', (Records) ->
     $scope.save = ->
       $scope.$emit 'saveBegin'
       Records.users.emailStatus($scope.email).then (data) ->
-        _.merge $scope.user, Records.users.find(data.users[0].id)
+        _.merge $scope.user, Records.users.find(email: data.users[0].email)[0]
       .finally -> $scope.$emit 'saveComplete'
