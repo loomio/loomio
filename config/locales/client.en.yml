@@ -1701,6 +1701,7 @@ en:
     start_new_poll: New decision
 
   auth_form:
+    sign_in_to_loomio: Sign in to Loomio
     sign_in: Sign in
     choose_an_account: "Select an account to authenticate with:"
     more_providers: More

@@ -11,10 +11,7 @@
   height: 80px;
   border-radius: 100%;
   border: 1px solid $border-color;
+  box-shadow: -1px 1px 2px $border-color;
   margin: auto;
   background: $background-color;
-}
-
-.auth-signin-form__avatar img {
-  height: 80px;
 }

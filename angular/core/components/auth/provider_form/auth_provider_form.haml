@@ -2,7 +2,7 @@
   .poll-common-helptext{translate: "auth_form.choose_an_account"}
   .auth-provider-form__providers.lmo-flex{ng-if: "providers.length > 0", layout: "row"}
     .auth-provider-form__provider{ng-repeat: "provider in providers"}
-      %button.md-button.md-raised{type: "button", ng-click: "select(provider)"}
+      %button.md-button.md-raised{type: "button", class: "{{provider.name}}", ng-click: "select(provider)"}
         %i.fa.fa-lg{class: "fa-{{provider.name}}"}>
         %span> {{provider.name}}
 
