@@ -5,9 +5,11 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if associate(user: current_user, identity: instantiate_identity)
-      redirect_to session.delete(:back_to) || root_path
+    if created_identity.persisted?
+      store_identity
+      redirect_to session.delete(:back_to) || dashboard_path
     else
+      # TODO: this should be an error page, not JSON
       render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
     end
   end
@@ -23,6 +25,10 @@ class Identities::BaseController < ApplicationController
 
   private
 
+  def respond_with_bad_request
+    render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
+  end
+
   def client
     @client ||= "Clients::#{controller_name.classify}".constantize.instance
   end
@@ -35,17 +41,19 @@ class Identities::BaseController < ApplicationController
     current_user.send "#{controller_name}_identity"
   end
 
-  def associate(user:, identity:)
-    if user.is_logged_in?
-      user.identities.push(identity)
-    else
-      User.new(email: identity.email, identities: Array(identity)).save
-    end
+  def created_identity
+    @created_identity ||= instantiate_identity.tap { |identity| complete_identity(identity) }.tap(&:save)
   end
 
   def instantiate_identity
-    "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params).tap do |identity|
-      complete_identity(identity)
+    "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params)
+  end
+
+  def store_identity
+    if current_user.is_logged_in?
+      current_user.identities.push(created_identity)
+    else
+      session[:pending_identity_id] = created_identity.id
     end
   end
 

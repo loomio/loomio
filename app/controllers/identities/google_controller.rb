@@ -14,7 +14,6 @@ class Identities::GoogleController < Identities::BaseController
     {
       redirect_uri: redirect_uri,
       client_id: client.key,
-      access_type: :offline,
       scope: client.scope.join('+'),
       response_type: :code
     }
