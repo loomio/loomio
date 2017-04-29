@@ -40,11 +40,12 @@ class Clients::Base
 
   def perform(method, path, params, headers, options)
     options.reverse_merge!(
-      success: default_success,
-      failure: default_failure,
+      host:       default_host,
+      success:    default_success,
+      failure:    default_failure,
       is_success: default_is_success
     )
-    Clients::Request.new(method, [options.fetch(:host, host), path].join('/'), {
+    Clients::Request.new(method, [options[:host], path].join('/'), {
       options[:params_field] => default_params.merge(params),
       :"headers"             => default_headers.merge(headers)
     }).tap { |request| request.perform!(options) }
@@ -90,7 +91,7 @@ class Clients::Base
     end.new(event, root: false).as_json
   end
 
-  def host
+  def default_host
     raise NotImplementedError.new
   end
 end

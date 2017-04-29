@@ -24,7 +24,7 @@ class Clients::Github < Clients::Base
     :access_token
   end
 
-  def host
+  def default_host
     "https://api.github.com".freeze
   end
 end

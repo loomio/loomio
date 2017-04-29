@@ -14,7 +14,7 @@ class Clients::Twitter < Clients::Base
     :oauth_token
   end
 
-  def host
+  def default_host
     "https://api.twitter.com".freeze
   end
 end

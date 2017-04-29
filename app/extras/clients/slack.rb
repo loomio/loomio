@@ -38,7 +38,7 @@ class Clients::Slack < Clients::Base
     ->(response) { response.success? && JSON.parse(response.body)['ok'].present? }
   end
 
-  def host
+  def default_host
     "https://slack.com/api".freeze
   end
 end

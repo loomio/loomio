@@ -46,7 +46,7 @@ class Clients::Facebook < Clients::Base
     :access_token
   end
 
-  def host
+  def default_host
     "https://graph.facebook.com/v2.8".freeze
   end
 end

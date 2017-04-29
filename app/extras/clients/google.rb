@@ -20,7 +20,7 @@ class Clients::Google < Clients::Base
     :oauth_token
   end
 
-  def host
+  def default_host
     "https://people.googleapis.com/v1".freeze
   end
 end
