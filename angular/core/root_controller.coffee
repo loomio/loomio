@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService, HotkeyService) ->
+angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $location, $router, $mdMedia, AuthModal, KeyEventService, MessageChannelService, IntercomService, ScrollService, Session, AppConfig, Records, ModalService, SignInForm, GroupForm, AbilityService, AhoyService, ViewportService, HotkeyService) ->
   $scope.isLoggedIn = AbilityService.isLoggedIn
   $scope.currentComponent = 'nothing yet'
 
@@ -30,7 +30,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
     ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     $scope.links = options.links or {}
     if AbilityService.requireLoginFor(options.page)
-      ModalService.open(SignInForm, preventClose: -> true)
+      ModalService.open AuthModal, preventClose: -> true
+      # ModalService.open(SignInForm, preventClose: -> true)
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'

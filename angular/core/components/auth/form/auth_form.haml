@@ -1,7 +1,8 @@
 .auth-form
-  %auth_provider_form{session: "session"}
-  %auth_email_form{session: "session", ng-if: "!session.email"}
-  .auth-email{ng-if: "session.email"}
+  .auth-form__no-email-set{ng-if: "!session.email"}
+    %auth_provider_form{session: "session"}
+    %auth_email_form{session: "session"}
+  .auth-form__email-set{ng-if: "session.email"}
     %auth_signin_form{ng-if:   "session.emailStatus == 'active'",   session: "session"}
     %auth_signup_form{ng-if:   "session.emailStatus == 'unused'",   session: "session"}
     %auth_inactive_form{ng-if: "session.emailStatus == 'inactive'", session: "session"}

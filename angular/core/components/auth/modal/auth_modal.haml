@@ -3,7 +3,7 @@
   %md-toolbar
     .md-toolbar-tools.lmo-flex__space-between
       %i.material-icons lock_open
-      %h1.lmo-h1{translate: "auth_modal.sign_in"}
+      %h1.lmo-h1{translate: "auth_form.sign_in"}
       %material_modal_header_cancel_button
   .md-dialog-content
-    %auth_form
+    %auth_form{prevent-close: "preventClose"}

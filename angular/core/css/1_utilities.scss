@@ -21,6 +21,12 @@
   color: $grey-on-white;
 }
 
+.lmo-actions {
+  @include displayFlex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
 .lmo-textarea {
   resize: none;
   min-height: 100px;

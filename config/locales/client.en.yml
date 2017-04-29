@@ -206,13 +206,6 @@ en:
     forgot_password: 'Forgot password?'
     sign_in: 'Login'
     signed_in: 'Signed in successfully'
-    oauth:
-      title: 'Or log in with a thirdparty account:'
-      facebook: 'Log in with Facebook'
-      twitter: 'Log in with Twitter'
-      google: 'Log in with Google'
-      github: 'Log in with Github'
-      slack: 'Log in with Slack'
 
   sign_up_form:
     aria_label: 'Sign up form'
@@ -1706,3 +1699,26 @@ en:
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: New decision
+
+  auth_form:
+    sign_in: Sign in to Loomio
+    choose_an_account: "Select an account to authenticate with:"
+    more_providers: More
+
+    email_helptext: "Have an account already? Enter your email here:"
+    magic_link_helptext: Click the button below and we'll send you a link to sign in instantly.
+    password_helptext: "Or, you can enter your password below:"
+    sign_up_helptext: "Just enter your name below, and we'll send you a link to sign in"
+    set_password_helptext: "Or, you can set a password below if you don't want to check your email"
+
+    sign_in_with_email: Sign in with email
+    welcome: Nice to meet you!
+    welcome_back: Welcome back, {{name}}!
+    magic_link: Send me a magic link
+    sign_up: Send me a link
+    set_password: Set password
+
+    name: Name
+    email: Email
+    password: Password
+    confirm_password: That password again...
