@@ -197,7 +197,9 @@ Loomio::Application.routes.draw do
     namespace(:message_channel) { post :subscribe }
     namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
-      resource :sessions, only: [:create, :destroy]
+      resource :sessions, only: [:create, :destroy] do
+        get :email_status, on: :collection
+      end
       resource :registrations, only: :create
     end
 
@@ -285,35 +287,19 @@ Loomio::Application.routes.draw do
   get '/g/:key/membership_requests/new'    => 'application#gone'
   get '/comments/:id'                      => 'application#gone'
 
-  scope :facebook do
-    get :oauth,                           to: 'identities/facebook#oauth',   as: :facebook_oauth
-    get :authorize,                       to: 'identities/facebook#create',  as: :facebook_authorize
-    post '/',                             to: 'identities/facebook#destroy', as: :facebook_unauthorize
+  Identities::Base::PROVIDERS.each do |provider|
+    scope provider do
+      get :oauth,                           to: "identities/#{provider}#oauth",       as: :"#{provider}_oauth"
+      get :authorize,                       to: "identities/#{provider}#create",      as: :"#{provider}_authorize"
+      get '/',                              to: "identities/#{provider}#destroy",     as: :"#{provider}_unauthorize"
+    end
   end
 
   scope :slack do
-    get :oauth,                           to: 'identities/slack#oauth',       as: :slack_oauth
-    get :authorize,                       to: 'identities/slack#create',      as: :slack_authorize
-    get :authorized,                      to: 'identities/slack#authorized',  as: :slack_authorized
+    get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
-    post '/',                             to: 'identities/slack#destroy',     as: :slack_unauthorize
   end
 
-  scope :github do
-    get :oauth,                           to: 'identities/github#oauth',      as: :github_oauth
-    get :authorize,                       to: 'identities/github#create',     as: :github_authorize
-  end
-
-  scope :twitter do
-    get :oauth,                           to: 'identities/twitter#oauth',      as: :twitter_oauth
-    get :authorize,                       to: 'identities/twitter#create',     as: :twitter_authorize
-  end
-
-  scope :google do
-    get :oauth,                           to: 'identities/google#oauth',      as: :google_oauth
-    get :authorize,                       to: 'identities/google#create',     as: :google_authorize
-  end
-  
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end

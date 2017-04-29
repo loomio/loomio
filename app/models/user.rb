@@ -156,6 +156,10 @@ class User < ActiveRecord::Base
     true
   end
 
+  def email_status
+    if deactivated_at.present? then :inactive else :active end
+  end
+
   def first_name
     name.split(' ').first
   end

@@ -212,6 +212,7 @@ en:
       twitter: 'Log in with Twitter'
       google: 'Log in with Google'
       github: 'Log in with Github'
+      slack: 'Log in with Slack'
 
   sign_up_form:
     aria_label: 'Sign up form'

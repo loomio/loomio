@@ -16,6 +16,10 @@ class LoggedOutUser
     nil
   end
 
+  def email_status
+    :unused
+  end
+
   def avatar_kind
     'initials'
   end

@@ -20,7 +20,15 @@ class API::SessionsController < Devise::SessionsController
     head :ok
   end
 
+  def email_status
+    render json: UserEmailStatusSerializer.new(found_user, root: false).as_json
+  end
+
   private
+
+  def found_user
+    @found_user ||= User.find_by_email(params[:email]) || LoggedOutUser.new
+  end
 
   def pending_identity
     @pending_identity ||= Identities::Base.find(session[:pending_identity_id]) if session[:pending_identity_id]

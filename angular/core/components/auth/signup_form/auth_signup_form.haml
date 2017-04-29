@@ -1,0 +1,5 @@
+.auth-signup-form
+  %md-input-container.md-block
+    %label{translate: "auth_form.name"}
+    %input.lmo-primary-form-input{type: "text", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "session.name"}
+  %md-button.md-primary.md-raised{ng-click: "signUp()", translate: "auth_form.sign_up", aria-label: "{{ 'auth_form.sign_up' | translate }}"}

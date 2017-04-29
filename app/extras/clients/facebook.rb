@@ -1,6 +1,6 @@
 class Clients::Facebook < Clients::Base
 
-  def fetch_oauth(code, uri)
+  def fetch_access_token(code, uri)
     post "oauth/access_token", params: { code: code, redirect_uri: uri }
   end
 

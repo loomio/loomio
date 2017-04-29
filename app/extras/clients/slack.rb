@@ -1,6 +1,6 @@
 class Clients::Slack < Clients::Base
 
-  def fetch_oauth(code, uri)
+  def fetch_access_token(code, uri)
     get "oauth.access", params: { code: code, redirect_uri: uri }
   end
 

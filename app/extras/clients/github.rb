@@ -1,6 +1,6 @@
 class Clients::Github < Clients::Base
 
-  def fetch_oauth(code, uri)
+  def fetch_access_token(code, uri)
     post "login/oauth/access_token",
       params:  { code: code, redirect_uri: uri },
       options: { host: "https://github.com" }

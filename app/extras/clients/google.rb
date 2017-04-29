@@ -1,6 +1,6 @@
 class Clients::Google < Clients::Base
 
-  def fetch_oauth(code, uri)
+  def fetch_access_token(code, uri)
     post "token",
       params: { code: code, redirect_uri: uri, grant_type: :authorization_code },
       options: { host: :"https://www.googleapis.com/oauth2/v4" }

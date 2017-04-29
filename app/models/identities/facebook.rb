@@ -2,10 +2,9 @@ class Identities::Facebook < Identities::Base
   include Identities::WithClient
   set_identity_type :facebook
 
-  def fetch_user_info
-    json        = client.fetch_user_info.json
-    self.uid  ||= json['id']
-    self.name ||= json['name']
+  def apply_user_info(payload)
+    self.uid  ||= payload['id']
+    self.name ||= payload['name']
   end
 
   def fetch_user_avatar

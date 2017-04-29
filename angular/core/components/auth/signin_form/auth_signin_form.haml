@@ -1,0 +1,17 @@
+.auth-signin-form
+  %md-input-container.md-block.auth-signin-form__magic-link
+    .poll-common-helptext{translate: "auth_form.magic_link_helptext"}
+  %md-button.md-button.md-primary.md-raised{ng-click: "magicLink()"}
+    %span{translate: "auth_form.magic_link"}
+
+  .auth-signin-form__password{ng-if: "session.hasPassword"}
+    .poll-common-helptext{translate: "auth_form.password_helptext"}
+    %md-input-container.md-block
+      %label{translate: "auth_form.password"}
+      %input.lmo-primary-form-input{type: "password", ng-required: true, ng-model: "session.password"}
+    %md-button{ng-click: "signIn()"}
+      %span{translate: "auth_form.sign_in"}
+
+  .auth-signin-form__set-password{ng-if: "!session.hasPassword"}
+    %md-button.md-button{ng-click: "setPassword()"}
+      %span{translate: "auth_form.set_password"}

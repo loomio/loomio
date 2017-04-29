@@ -1,0 +1,5 @@
+.sign-in-providers{ng-if: "providers.length > 0"}
+  .sign-in-providers__provider{ng-repeat: "provider in providers"}
+    %button.md-button.md-raised{type: "button", ng-click: "select(provider)"}
+      %i.fa.fa-lg{class: "fa-{{provider.name}}"}>
+      %span{translate: "sign_in_form.oauth.{{provider.name}}"}

@@ -3,11 +3,10 @@ class Identities::Slack < Identities::Base
   set_identity_type :slack
   set_custom_fields :slack_team_id, :slack_team_name, :slack_team_logo
 
-  def fetch_user_info
-    json         = client.fetch_user_info(self.uid).json
-    self.name  ||= json['real_name']
-    self.email ||= json.dig('profile', 'email')
-    self.logo  ||= json.dig('profile', 'image_48')
+  def apply_user_info(payload)
+    self.name  ||= payload['real_name']
+    self.email ||= payload.dig('profile', 'email')
+    self.logo  ||= payload.dig('profile', 'image_48')
   end
 
   def fetch_team_info
