@@ -5,7 +5,7 @@ class Clients::Github < Clients::Base
   end
 
   def fetch_user_info
-    get "user", {}
+    get "user"
   end
 
   def scope

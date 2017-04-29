@@ -30,11 +30,21 @@ class Clients::Base
     }, success, failure, is_success)
   end
 
-  def scope
-    []
+  # make request for initial user information
+  # overwrite if the API has a different endpoint to get a user
+  def fetch_user_info
+    get "me"
+  end
+
+  def scope_query_param
+    scope.join(',')
   end
 
   private
+
+  def scope
+    []
+  end
 
   def perform(method, path, params, success, failure, is_success)
     Clients::Response.new(method, [params.delete(:host) || host, path].join('/'), params, is_success).tap do |response|
@@ -55,7 +65,7 @@ class Clients::Base
   end
 
   def default_failure
-    ->(response) { response }
+    ->(response) { puts response; response }
   end
 
   def default_params

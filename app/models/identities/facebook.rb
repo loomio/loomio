@@ -3,7 +3,7 @@ class Identities::Facebook < Identities::Base
   set_identity_type :facebook
 
   def fetch_user_info
-    json = client.fetch_user_info.json
+    json        = client.fetch_user_info.json
     self.uid  ||= json['id']
     self.name ||= json['name']
   end
