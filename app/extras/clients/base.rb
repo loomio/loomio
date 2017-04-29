@@ -64,7 +64,7 @@ class Clients::Base
   end
 
   def default_failure
-    ->(response) { response }
+    ->(response) { puts response; response }
   end
 
   def default_params

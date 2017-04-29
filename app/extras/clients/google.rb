@@ -16,6 +16,10 @@ class Clients::Google < Clients::Base
 
   private
 
+  def default_headers
+    { 'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8' }
+  end
+
   def token_name
     :oauth_token
   end
