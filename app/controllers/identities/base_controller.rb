@@ -5,7 +5,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if created_identity.persisted?
+    if build_identity.save
       store_identity
       redirect_to session.delete(:back_to) || dashboard_path
     else
@@ -25,10 +25,6 @@ class Identities::BaseController < ApplicationController
 
   private
 
-  def respond_with_bad_request
-    render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
-  end
-
   def client
     @client ||= "Clients::#{controller_name.classify}".constantize.instance
   end
@@ -41,19 +37,17 @@ class Identities::BaseController < ApplicationController
     current_user.send "#{controller_name}_identity"
   end
 
-  def created_identity
-    @created_identity ||= instantiate_identity.tap { |identity| complete_identity(identity) }.tap(&:save)
-  end
-
-  def instantiate_identity
-    "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params)
+  def build_identity
+    @build_identity ||= "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params).tap do |identity|
+      complete_identity(identity)
+    end
   end
 
   def store_identity
     if current_user.is_logged_in?
-      current_user.identities.push(created_identity)
+      current_user.identities.push(build_identity)
     else
-      session[:pending_identity_id] = created_identity.id
+      session[:pending_identity_id] = build_identity.id
     end
   end
 
