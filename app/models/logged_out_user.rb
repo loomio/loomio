@@ -12,7 +12,7 @@ class LoggedOutUser
   NIL_METHODS = [:id, :created_at, :presence, :restricted]
   NIL_METHODS.each { |method| define_method(method, -> { nil }) }
 
-  def avatar_url(size)
+  def avatar_url(size = nil)
     nil
   end
 

@@ -94,6 +94,7 @@ Loomio::Application.routes.draw do
 
     resources :profile, only: [:show] do
       get  :me, on: :collection
+      get  :email_status, on: :collection
       post :update_profile, on: :collection
       post :set_volume, on: :collection
       post :upload_avatar, on: :collection
@@ -197,9 +198,7 @@ Loomio::Application.routes.draw do
     namespace(:message_channel) { post :subscribe }
     namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
-      resource :sessions, only: [:create, :destroy] do
-        get :email_status, on: :collection
-      end
+      resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create
     end
 

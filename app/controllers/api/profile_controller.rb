@@ -42,6 +42,11 @@ class API::ProfileController < API::RestfulController
     respond_with_resource
   end
 
+  def email_status
+    @user = resource_class.find_by_email(params[:email]) || LoggedOutUser.new(email: params[:email])
+    respond_with_resource(serializer: BasicUserSerializer)
+  end
+
   private
 
   def resource

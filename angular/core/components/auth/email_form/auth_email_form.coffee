@@ -1,12 +1,9 @@
 angular.module('loomioApp').directive 'authEmailForm', (Records) ->
-  scope: {session: '=', preventClose: '='}
+  scope: {user: '=', preventClose: '='}
   templateUrl: 'generated/components/auth/email_form/auth_email_form.html'
   controller: ($scope) ->
     $scope.save = ->
       $scope.$emit 'saveBegin'
-      Records.sessions.emailStatus($scope.email).then (data) ->
-        $scope.session.email       = $scope.email
-        $scope.session.emailStatus = data.email_status
-        $scope.session.hasPassword = data.has_password
-        $scope.session.name        = data.first_name
+      Records.users.emailStatus($scope.email).then (data) ->
+        _.merge $scope.user, Records.users.find(data.users[0].id)
       .finally -> $scope.$emit 'saveComplete'

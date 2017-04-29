@@ -1,16 +1,16 @@
 angular.module('loomioApp').directive 'authSigninForm', ->
-  scope: {session: '='}
+  scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
 
     $scope.back = ->
-      $scope.session.email = ''
+      $scope.user.email = ''
 
     $scope.magicLink = ->
-      console.log("magic link", $scope.session.email)
+      console.log("magic link", $scope.user.email)
 
     $scope.signIn = ->
-      console.log("signing in", $scope.session.email, $scope.session.password)
+      console.log("signing in", $scope.user.email, $scope.user.password)
 
     $scope.setPassword = ->
-      console.log("setting password", $scope.session.email, $scope.session.password, $scope.session.passwordConfirm)
+      console.log("setting password", $scope.user.email, $scope.user.password, $scope.user.passwordConfirm)
