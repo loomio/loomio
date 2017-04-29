@@ -1,6 +1,13 @@
 class Clients::Base
   attr_reader :key
 
+  def self.instance
+    new(
+      key:    ENV["#{name.demodulize.upcase}_APP_KEY"],
+      secret: ENV["#{name.demodulize.upcase}_APP_SECRET"]
+    )
+  end
+
   def initialize(key: nil, secret: nil, token: nil)
     @key    = key
     @secret = secret
@@ -8,15 +15,23 @@ class Clients::Base
   end
 
   def get(path, params = {}, success = default_success, failure = default_failure, is_success = default_is_success)
-    perform(:get, path, { query: default_params.merge(params) }, success, failure, is_success)
+    perform(:get, path, {
+      host: params.delete(:host),
+      query: default_params.merge(params),
+      headers: default_headers
+    }, success, failure, is_success)
   end
 
   def post(path, params = {}, success = default_success, failure = default_failure, is_success = default_is_success)
-    perform(:post, path, { body: default_params.merge(params) }, success, failure, is_success)
+    perform(:post, path, {
+      host: params.delete(:host),
+      body: default_params.merge(params),
+      headers: default_headers
+    }, success, failure, is_success)
   end
 
   def scope
-    ""
+    []
   end
 
   private
@@ -45,6 +60,10 @@ class Clients::Base
 
   def default_params
     { client_id: @key, client_secret: @secret, token_name => @token }.delete_if { |k,v| v.nil? }
+  end
+
+  def default_headers
+    { 'Content-Type' => 'application/json; charset=utf-8' }
   end
 
   def token_name

@@ -12,6 +12,6 @@ class Identities::FacebookController < Identities::BaseController
   end
 
   def oauth_params
-    super.merge(app_id: client.key, scope: client.scope.join(','))
+    super.merge(app_id: client.key)
   end
 end

@@ -300,5 +300,10 @@ Loomio::Application.routes.draw do
     post '/',                             to: 'identities/slack#destroy',     as: :slack_unauthorize
   end
 
+  scope :github do
+    get :oauth,                           to: 'identities/github#oauth',      as: :github_oauth
+    get :authorize,                       to: 'identities/github#create',     as: :github_authorize
+  end
+
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end
