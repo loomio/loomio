@@ -3,7 +3,8 @@
   .auth-signin-form__magic-link
     %h2.lmo-h2{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName()}}"}
     %md-input-container.md-block.auth-signin-form__magic-link
-      .poll-common-helptext{translate: "auth_form.magic_link_helptext"}
+      .poll-common-helptext{translate: "auth_form.magic_link_helptext", ng-if: "!user.hasPassword"}
+      .poll-common-helptext{translate: "auth_form.magic_link_helptext_with_password", ng-if: "user.hasPassword"}
     %md-button.md-primary.md-raised{ng-click: "magicLink()"}
       %span{translate: "auth_form.magic_link"}
 
