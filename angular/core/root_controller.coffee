@@ -29,9 +29,8 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
     $scope.$broadcast('clearBackgroundImageUrl')
     ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     $scope.links = options.links or {}
-    if AbilityService.requireLoginFor(options.page)
+    if !options.skipLogin and (AbilityService.requireLoginFor(options.page) or $location.search().invitation_email)
       ModalService.open AuthModal, preventClose: -> true
-      # ModalService.open(SignInForm, preventClose: -> true)
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'

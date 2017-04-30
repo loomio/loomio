@@ -47,6 +47,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
     $rootScope.$broadcast 'setTitle', @group.fullName
     $rootScope.$broadcast 'analyticsSetGroup', @group
     $rootScope.$broadcast 'currentComponent',
+      skipLogin: true
       page: 'groupPage'
       group: @group
       key: @group.key

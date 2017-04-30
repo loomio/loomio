@@ -1706,16 +1706,18 @@ en:
     choose_an_account: "Select an account to authenticate with:"
     more_providers: More
 
-    email_helptext: "Have a Loomio account already? Enter your email here:"
+    email_helptext: |
+      Have an account already, or don't want to use a third party to authenticate?
+      You can also sign enter your email to sign in:"
     magic_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
       Or, you can set a password to login with, if you don't want to receive an email
     magic_link_helptext_with_password: Click the button below and we'll send you a link to sign in instantly.
     password_helptext: "Or, you can enter your password below:"
-    sign_up_helptext: "Just enter your name below, and we'll send you a link to sign in"
+    sign_up_helptext: "Just enter the name you'd like to be known by, and we'll send you a link to sign in"
 
     sign_in_with_email: Sign in with email
-    welcome: Nice to meet you!
+    welcome: Nice to meet you, {{email}}!
     welcome_back: Welcome back, {{name}}!
     magic_link: Send me a magic link
     sign_up: Send me a link
