@@ -1,4 +1,5 @@
 module AngularHelper
+  include PendingActionsHelper
 
   def boot_angular_ui
     redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
@@ -29,7 +30,6 @@ module AngularHelper
       permittedParams:     PermittedParamsSerializer.new({}),
       locales:             angular_locales,
       siteName:            ENV['SITE_NAME'] || 'Loomio',
-      twitterHandle:       ENV['TWITTER_HANDLE'] || '@loomio',
       baseUrl:             root_url,
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
@@ -38,25 +38,26 @@ module AngularHelper
         supportedLangs:    Translation::SUPPORTED_LANGUAGES
       },
       pageSize: {
-        default:           ENV['DEFAULT_PAGE_SIZE'] || 30,
-        groupThreads:      ENV['GROUP_PAGE_SIZE'],
-        threadItems:       ENV['THREAD_PAGE_SIZE'],
-        exploreGroups:     ENV['EXPLORE_PAGE_SIZE'] || 10
+        default:           ENV.fetch('DEFAULT_PAGE_SIZE', 30),
+        groupThreads:      ENV.fetch('GROUP_PAGE_SIZE',   30),
+        threadItems:       ENV.fetch('THREAD_PAGE_SIZE',  30),
+        exploreGroups:     ENV.fetch('EXPLORE_PAGE_SIZE', 10)
       },
       flashTimeout: {
-        short: (ENV['FLASH_TIMEOUT_SHORT'] || 3500).to_i,
-        long:  (ENV['FLASH_TIMEOUT_LONG']  || 2147483645).to_i
+        short: ENV.fetch('FLASH_TIMEOUT_SHORT', 3500).to_i,
+        long:  ENV.fetch('FLASH_TIMEOUT_LONG', 2147483645).to_i
       },
       drafts: {
-        debounce: (ENV['LOOMIO_DRAFT_DEBOUNCE'] || 750).to_i
+        debounce: ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
       },
-      oauthProviders: Identities::Base::PROVIDERS.map do |provider|
-        ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
-      end.compact,
+      pendingIdentity: IdentitySerializer.new(pending_identity, root: false).as_json,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
       timeZones:     Poll::TIMEZONES,
-      thirdPartyCommunities: Communities::Base::PROVIDERS
+      communityProviders: Communities::Base::PROVIDERS,
+      identityProviders: Identities::Base::PROVIDERS.map do |provider|
+        ({ name: provider, href: send("#{provider}_oauth_path") } if ENV["#{provider.upcase}_APP_KEY"])
+      end.compact
     }
   end
 

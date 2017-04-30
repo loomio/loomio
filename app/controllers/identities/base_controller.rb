@@ -9,6 +9,7 @@ class Identities::BaseController < ApplicationController
       # TODO: this should be an error page, not JSON
       return render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
     elsif existing_identity.presence
+      existing_identity.update(access_token: identity.access_token)
       sign_in :user, existing_identity.user
     elsif current_user.presence
       current_user.add_identity(identity)
