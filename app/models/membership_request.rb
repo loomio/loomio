@@ -54,6 +54,10 @@ class MembershipRequest < ActiveRecord::Base
     requestor.blank?
   end
 
+  def convert_to_membership!
+    group.add_member!(requestor) unless from_a_visitor?
+  end
+
   private
 
   def validate_not_in_group_already

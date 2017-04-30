@@ -11,6 +11,6 @@ module PendingActionsHelper
   end
 
   def pending_identity
-    @pending_identity ||= Identities::Base.find_by(id: session.delete(:pending_invitation_id) if session[:pending_identity_id]
+    @pending_identity ||= Identities::Base.find_by(id: session.delete(:pending_invitation_id)) if session[:pending_identity_id]
   end
 end
