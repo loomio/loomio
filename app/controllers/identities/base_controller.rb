@@ -5,18 +5,21 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if build_identity.save
-      current_user.presence&.add_identity(build_identity) || session[:pending_identity_id] = build_identity.id
-      redirect_to session.delete(:back_to) || dashboard_path
-    else
+    if !identity.valid?
       # TODO: this should be an error page, not JSON
-      render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
+      return render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
+    elsif existing_identity.presence
+      sign_in :user, existing_identity.user
+    elsif current_user.presence
+      current_user.add_identity(identity)
+    else
+      session[:pending_identity_id] = identity.tap(&:save).id
     end
+    redirect_to session.delete(:back_to) || dashboard_path
   end
 
   def destroy
-    if identity.present?
-      identity.destroy
+    if current_user.send(:"#{controller_name}_identity")&.destroy
       redirect_to request.referrer || root_path
     else
       render json: { error: "Not connected to #{controller_name}!" }, status: :bad_request
@@ -34,19 +37,24 @@ class Identities::BaseController < ApplicationController
   end
 
   def identity
-    current_user.send "#{controller_name}_identity"
+    @identity ||= identity_class.new(oauth_identity_params).tap { |i| complete_identity(i) }
   end
 
-  def build_identity
-    @build_identity ||= "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params).tap do |identity|
-      complete_identity(identity)
-    end
+  def existing_identity
+    @existing_identity ||= identity_class.find_by(
+      identity_type: identity.identity_type,
+      uid:           identity.uid
+    )
   end
 
   # override with additional follow-up API calls if they're needed to gather more info
   # (such as logo url, user name, etc)
-  def complete_identity(identity)
-    identity.fetch_user_info
+  def complete_identity(i)
+    i.fetch_user_info
+  end
+
+  def identity_class
+    "Identities::#{controller_name.classify}".constantize
   end
 
   def oauth_url
