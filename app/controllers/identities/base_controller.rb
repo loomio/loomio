@@ -10,7 +10,7 @@ class Identities::BaseController < ApplicationController
       return render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
     elsif existing_identity.presence
       existing_identity.update(access_token: identity.access_token)
-      sign_in :user, existing_identity.user
+      sign_in existing_identity.user
     elsif current_user.presence
       current_user.add_identity(identity)
     else
@@ -42,7 +42,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def existing_identity
-    @existing_identity ||= identity_class.find_by(
+    @existing_identity ||= identity_class.with_user.find_by(
       identity_type: identity.identity_type,
       uid:           identity.uid
     )
