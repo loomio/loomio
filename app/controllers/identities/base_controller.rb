@@ -6,7 +6,7 @@ class Identities::BaseController < ApplicationController
 
   def create
     if build_identity.save
-      store_identity
+      current_user.presence&.add_identity(build_identity) || session[:pending_identity_id] = build_identity.id
       redirect_to session.delete(:back_to) || dashboard_path
     else
       # TODO: this should be an error page, not JSON
@@ -40,14 +40,6 @@ class Identities::BaseController < ApplicationController
   def build_identity
     @build_identity ||= "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params).tap do |identity|
       complete_identity(identity)
-    end
-  end
-
-  def store_identity
-    if current_user.is_logged_in?
-      current_user.identities.push(build_identity)
-    else
-      session[:pending_identity_id] = build_identity.id
     end
   end
 

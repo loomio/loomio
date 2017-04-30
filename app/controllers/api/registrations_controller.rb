@@ -1,5 +1,6 @@
 class API::RegistrationsController < Devise::RegistrationsController
   include DeviseControllerHelper
+  include PendingActionsHelper
 
   def create
     if params[resource_name][:honeypot]
@@ -13,6 +14,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def respond_with(resource, args = {})
     if resource.persisted?
+      handle_pending_actions
       flash[:notice] = t(:'devise.registrations.signed_up')
       render json: BootData.new(resource).data
     else

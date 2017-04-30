@@ -144,6 +144,13 @@ class User < ActiveRecord::Base
     identities.find_by(identity_type: :facebook)
   end
 
+  # Adds the given identity to the list of identities if it doesn't exist yet
+  # Always returns truthy.
+  def add_identity(i)
+    identities.push(identity) unless identities.find_by(uid: i.uid, identity_type: i.identity_type)
+    true
+  end
+
   def user_id
     id
   end

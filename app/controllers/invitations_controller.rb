@@ -14,11 +14,11 @@ class InvitationsController < ApplicationController
   def show
     if current_user.is_logged_in?
       InvitationService.redeem(invitation, current_user)
-      session[:invitation_token] = nil
+      session.delete(:pending_invitation_id)
       redirect_to group_url(invitation.invitable)
     else
-      session[:invitation_token] = params[:id]
-      redirect_to login_or_signup_path_for_email(invitation.recipient_email)
+      session[:pending_invitation_id] = params[:id]
+      redirect_to group_url(invitation.invitable, invitation: invitation.recipient_email)
     end
   end
 
