@@ -39,6 +39,10 @@ module NullUser
     false
   end
 
+  def associate_with_identity(identity)
+    nil
+  end
+
   def can?(*args)
     ability.can?(*args)
   end

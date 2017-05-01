@@ -5,21 +5,13 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if !identity.valid?
-      # TODO: this should be an error page, not JSON
-      return render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
-    elsif existing_identity.presence
-      existing_identity.update(access_token: identity.access_token)
-      sign_in existing_identity.user
-    elsif existing_user.presence
-      identity.update(user: existing_user)
-      sign_in existing_user
-    elsif current_user.presence
-      current_user.add_identity(identity)
+    if identity.valid?
+      associate_identity
+      redirect_to session.delete(:back_to) || dashboard_path
     else
-      session[:pending_identity_id] = identity.tap(&:save).id
+      # TODO: this should be an error page, not JSON
+      render json: { error: "Could not connect to #{controller_name}!" }, status: :bad_request
     end
-    redirect_to session.delete(:back_to) || dashboard_path
   end
 
   def destroy
@@ -41,7 +33,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def identity
-    @identity ||= identity_class.new(oauth_identity_params).tap { |i| complete_identity(i) }
+    @identity ||= identity_class.new(identity_params).tap { |i| complete_identity(i) }
   end
 
   def existing_identity
@@ -53,6 +45,20 @@ class Identities::BaseController < ApplicationController
 
   def existing_user
     @existing_user ||= User.find_by_email(identity.email)
+  end
+
+  def associate_identity
+    if user = (existing_identity&.user || existing_user || current_user).presence
+      user.associate_with_identity(identity)
+      sign_in(user)
+    else
+      session[:pending_identity_id] = identity.tap(&:save).id
+    end
+  end
+
+  # override with differing ways to fetch the access token from the response
+  def identity_params
+    { access_token: client.fetch_access_token(params[:code], redirect_uri).json['access_token'] }
   end
 
   # override with additional follow-up API calls if they're needed to gather more info
@@ -75,9 +81,5 @@ class Identities::BaseController < ApplicationController
 
   def oauth_params
     raise NotImplementedError.new
-  end
-
-  def oauth_identity_params
-    { access_token: client.fetch_access_token(params[:code], redirect_uri).json['access_token'] }
   end
 end

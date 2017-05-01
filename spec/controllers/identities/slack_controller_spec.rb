@@ -45,9 +45,9 @@ describe Identities::SlackController do
 
   describe 'create' do
     let(:user) { create :user }
-    let(:invalid_oauth) { controller.stub(oauth_identity_params: {}) }
-    let(:valid_oauth) { controller.stub(oauth_identity_params: oauth_identity_params) }
-    let(:oauth_identity_params) { {
+    let(:invalid_oauth) { controller.stub(identity_params: {}) }
+    let(:valid_oauth) { controller.stub(identity_params: identity_params) }
+    let(:identity_params) { {
       access_token: 'token',
       email: "bob@builder.com",
       name: "Bob the BUilder",
@@ -73,13 +73,13 @@ describe Identities::SlackController do
       valid_oauth
       expect { post :create, code: 'code' }.to change { User.count }.by(1)
       u = User.last
-      expect(u.identities.pluck(:name)).to include oauth_identity_params[:name]
-      expect(u.identities.pluck(:email)).to include oauth_identity_params[:email]
+      expect(u.identities.pluck(:name)).to include identity_params[:name]
+      expect(u.identities.pluck(:email)).to include identity_params[:email]
     end
 
     it 'does not create a new user if the email is already taken' do
       valid_oauth
-      create(:user, email: oauth_identity_params[:email])
+      create(:user, email: identity_params[:email])
       expect { post :create, code: 'code' }.to_not change { User.count }
       expect(response.status).to eq 400
     end

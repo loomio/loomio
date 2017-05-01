@@ -50,7 +50,7 @@ class Identities::SlackController < Identities::BaseController
     identity.fetch_team_info
   end
 
-  def oauth_identity_params
+  def identity_params
     json = client.fetch_access_token(params[:code], redirect_uri).json
     {
       access_token: json['access_token'],
