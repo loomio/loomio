@@ -51,6 +51,7 @@ install:
   - mkdir $TRAVIS_BUILD_DIR/bin
   - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.0 $TRAVIS_BUILD_DIR/bin/geckodriver
   - ls -la $TRAVIS_BUILD_DIR/bin
+  - echo $TRAVIS_BUILD_DIR
   - echo $PATH
   - geckodriver --help
 
