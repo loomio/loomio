@@ -15,6 +15,8 @@ class Poll < ActiveRecord::Base
     define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
   end
 
+  include Translatable
+  is_translatable on: [:title, :details]
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
@@ -49,6 +51,8 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_communities, dependent: :destroy
   has_many :communities, through: :poll_communities
+
+  delegate :locale, to: :author
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
