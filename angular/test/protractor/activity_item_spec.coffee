@@ -14,7 +14,7 @@ describe 'Activity Items', ->
     expect(threadHelper.activityItemList()).toContain('Patrick Swayze updated the thread title and context')
   , 100*1000
 
-  it 'displays proposal activity items correctly', ->
+  xit 'displays proposal activity items correctly', ->
     page.loadPath('setup_proposal', 60000)
     proposalsHelper.editProposalName()
     proposalsHelper.editProposalDescription()

@@ -30,7 +30,7 @@
         %outlet{name: "after-proposal-form-textarea", model: "proposal"}
 
       .proposal-form__attachments
-        %attachment_form.proposal-form__attachment-form{model: "proposal", ng-if: "proposal.discussion().groupId", show-label: "true"}
+        %md_attachment_form.proposal-form__attachment-form{model: "proposal", ng-if: "proposal.discussion().groupId", show-label: "true"}
         %validation_errors.proposal-form__attachment-errors{subject: "proposal", field: "file"}
         %label.lmo-form-labelled-input
           %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in proposal.newAttachments() | orderBy: 'id' track by attachment.id"}

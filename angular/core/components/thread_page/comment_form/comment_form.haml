@@ -13,14 +13,17 @@
     .comment-form__privacy-notice{ng-if: "threadIsPublic()", translate: "comment_form.public_privacy_notice"}
     .comment-form__privacy-notice{ng-if: "threadIsPrivate()", translate: "comment_form.private_privacy_notice", translate-value-group-name: "{{comment.group().fullName}}"}
     %attachment_preview{attachment: "attachment", mode: "thumb", ng-repeat: "attachment in comment.newAttachments() | orderBy: 'id' track by attachment.id"}
-    .thread-comment-form-actions
-      %md-button.comment-form-button{translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null"}
-      %outlet{name: "after-comment-form", model: "comment"}
-      %attachment_form{model: "comment"}
-      %md-button#post-comment-cancel{translate: "common.action.cancel", ng-click: "cancel($event)", ng-hide: "comment.isNew()"}
-      %a.md-button.md-accent{lmo-href: "/markdown", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
-        %span{translate: "common.formatting_help.label"}
-      %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
+    .thread-comment-form-actions.lmo-flex.lmo-flex__space-between
+      %div{ng-if: "submitIsDisabled"}
+      .comment-form__actions--left.lmo-flex{layout: "row", ng-if: "!submitIsDisabled"}
+        %md-button.comment-form-button{translate: "comment_form.cancel_reply", ng-show: "comment.parentId", ng-click: "comment.parentId = null"}
+        %md-button#post-comment-cancel{translate: "common.action.cancel", ng-click: "cancel($event)", ng-if: "!comment.isNew()"}
+        %a.md-button.md-accent{lmo-href: "/markdown", ng-if: "!comment.parentId", target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
+          %span{translate: "common.formatting_help.label"}
+      .comment-form__actions--right.lmo-flex{layout: "row"}
+        %outlet{name: "after-comment-form", model: "comment"}
+        %md_attachment_form{model: "comment", show-label: "true"}
+        %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
     %validation_errors{subject: "comment", field: "file"}
   .comment-form__join-actions{ng-if: "!showCommentForm()"}
     %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}

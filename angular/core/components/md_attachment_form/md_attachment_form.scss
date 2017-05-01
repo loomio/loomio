@@ -1,12 +1,3 @@
-.md-attachment-form {
-}
-
-.md-attachment-form__button {
-  // color: rgba(0,0,0,.38) !important;
-  margin-top: -17px;
-  float: right;
-}
-
 .md-attachment-form__icon{
   font-size: 15px !important;
   margin-right: 4px;
@@ -19,6 +10,9 @@
 
 .md-attachment-form-progress-field {
   width: 200px;
+  @media(max-width: $tiny-max-px) { width: 100px; }
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin: 0;
   padding: 7px 0;
   height: 35px;
@@ -26,21 +20,33 @@
   position: relative;
 }
 
-.md-attachment-form-cancel {
-  margin: 5px;
-}
-
 .md-attachment-form-progress-text {
   position: absolute;
   left: 0;
+  line-height: 35px;
   width: 100%;
   z-index: 10;
   color: #444;
 }
 
+.md-attachment-form__cancel {
+  background: none;
+  border: none;
+  margin: 0;
+  font-size: 30px;
+  color: white;
+  text-shadow: 0 0 3px black;
+}
+
 .md-attachment-form-progress-bar {
-  position: absolute;
-  top: 0;
+  background: $background-color;
   width: 100%;
   height: 35px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
+}
+
+.md-attachment-form-progress-bar .progress-bar {
+  height: 100%;
+  min-width: 0;
+  background: $loomio-orange;
 }

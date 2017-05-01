@@ -7,7 +7,7 @@
 paths         = require('../tasks/paths')
 
 exports.config =
-  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.3.1.jar'
+  seleniumServerJar: '../node_modules/webdriver-manager/selenium/selenium-server-standalone-3.4.0.jar'
   allScriptsTimeout: 40000
   capabilities:
     browserName:     'firefox'
@@ -23,8 +23,9 @@ exports.config =
   #   new Promise (resolve) ->
   #     reporter.beforeLaunch(resolve);
   #
-  # onPrepare: ->
-  #   jasmine.getEnv().addReporter(reporter);
+  onPrepare: ->
+    # jasmine.getEnv().addReporter(reporter);
+    browser.driver.manage().window().setSize(1680, 1024)
   #
   # afterLaunch: (exitCode) ->
   #   new Promise (resolve) ->

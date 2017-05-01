@@ -6,6 +6,6 @@
   %input.md-attachment-form__file-input.hidden{type: "file", ng-model: "files", ng-file-select: "upload(files)"}
   .md-attachment-form-in-progress{ng-repeat: "file in files"}
     .progress.active.md-attachment-form-progress-field
-      %span.md-attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
-      %uib-progressbar.md-attachment-form-progress-bar.progress-striped.active{ng-attr-value: "percentComplete"}
-    %button.close.md-attachment-form-cancel.cancel-upload{type: "button", ng-click: "abort()"} &times;
+      %strong.md-attachment-form-progress-text {{ file.name }}: {{ percentComplete }} %
+      %uib-progressbar.md-attachment-form-progress-bar{ng-attr-value: "percentComplete"}
+    %button.close.md-attachment-form-cancel.cancel-upload.md-attachment-form__cancel{type: "button", ng-click: "abort()"} &times;
