@@ -5,7 +5,7 @@ describe 'Activity Items', ->
   page = require './helpers/page_helper.coffee'
 
   it 'dispays thread activity items correctly', ->
-    page.loadPath('setup_proposal', 60000)
+    page.loadPath('setup_proposal', 90000)
     threadHelper.editThreadTitle()
     threadHelper.editThreadContext()
     threadHelper.editThreadTitleAndContext()
@@ -15,7 +15,7 @@ describe 'Activity Items', ->
   , 100*1000
 
   xit 'displays proposal activity items correctly', ->
-    page.loadPath('setup_proposal', 60000)
+    page.loadPath('setup_proposal', 90000)
     proposalsHelper.editProposalName()
     proposalsHelper.editProposalDescription()
     proposalsHelper.editProposalNameAndDescription()
