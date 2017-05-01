@@ -1,8 +1,8 @@
-# HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
-#
-# reporter = new HtmlScreenshotReporter
-#   dest: 'screenshots',
-#   filename: 'my-report.html'
+HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
+
+reporter = new HtmlScreenshotReporter
+  dest: 'screenshots',
+  filename: 'my-report.html'
 
 paths         = require('../tasks/paths')
 
@@ -17,16 +17,16 @@ exports.config =
     isVerbose: false
     showColors: true
     includeStackTrace: true
-    defaultTimeoutInterval: 40000
+    defaultTimeoutInterval: 60000
 
-  # beforeLaunch: ->
-  #   new Promise (resolve) ->
-  #     reporter.beforeLaunch(resolve);
+  beforeLaunch: ->
+    new Promise (resolve) ->
+      reporter.beforeLaunch(resolve);
   #
   onPrepare: ->
     # jasmine.getEnv().addReporter(reporter);
     browser.driver.manage().window().setSize(1680, 1024)
   #
-  # afterLaunch: (exitCode) ->
-  #   new Promise (resolve) ->
-  #     reporter.afterLaunch(resolve.bind(this, exitCode))
+  afterLaunch: (exitCode) ->
+    new Promise (resolve) ->
+      reporter.afterLaunch(resolve.bind(this, exitCode))
