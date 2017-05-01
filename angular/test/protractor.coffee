@@ -1,7 +1,8 @@
 HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 
 reporter = new HtmlScreenshotReporter
-  dest: 'screenshots',
+  dest: 'screenshots'
+  captureOnlyFailedSpecs: true
   filename: 'my-report.html'
 
 paths         = require('../tasks/paths')
@@ -24,7 +25,7 @@ exports.config =
       reporter.beforeLaunch(resolve);
   #
   onPrepare: ->
-    # jasmine.getEnv().addReporter(reporter);
+    jasmine.getEnv().addReporter(reporter);
     browser.driver.manage().window().setSize(1680, 1024)
   #
   afterLaunch: (exitCode) ->
