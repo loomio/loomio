@@ -43,6 +43,7 @@ before_install:
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
+  - gem install s3_uploader
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - mkdir $TRAVIS_BUILD_DIR/bin
@@ -59,3 +60,6 @@ script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
   - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
   - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
+
+after_script:
+  - s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d `date "+%Y%m%d%H%M%S"` angular/screenshots $ARTIFACTS_BUCKET
