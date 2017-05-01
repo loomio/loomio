@@ -7,6 +7,7 @@ class Comment < ActiveRecord::Base
   is_mentionable  on: :body
 
   belongs_to :discussion
+  has_one :group, through: :discussion
   belongs_to :user
   belongs_to :parent, class_name: 'Comment'
 

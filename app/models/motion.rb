@@ -10,6 +10,7 @@ class Motion < ActiveRecord::Base
   has_one :poll
 
   belongs_to :discussion
+  has_one :group, through: :discussion
   update_counter_cache :discussion, :motions_count
   update_counter_cache :discussion, :closed_motions_count
 
@@ -31,7 +32,6 @@ class Motion < ActiveRecord::Base
 
   delegate :email, to: :author, prefix: :author
   delegate :name, to: :author, prefix: :author
-  delegate :group, :group_id, to: :discussion
   delegate :members, :full_name, to: :group, prefix: :group
   delegate :email_new_motion?, to: :group, prefix: :group
   delegate :name_and_email, to: :user, prefix: :author
@@ -92,6 +92,10 @@ class Motion < ActiveRecord::Base
 
   def voters
     votes.map(&:user).uniq.compact
+  end
+
+  def group_id
+    group.id
   end
 
   def voting?
@@ -201,21 +205,15 @@ class Motion < ActiveRecord::Base
 
   private
 
-    def closes_in_future_unless_closed
-      unless self.closed?
-        if closing_at < Time.zone.now
-          errors.add(:closing_at, I18n.t("validate.motion.must_close_in_future"))
-        end
+  def closes_in_future_unless_closed
+    unless self.closed?
+      if closing_at < Time.zone.now
+        errors.add(:closing_at, I18n.t("validate.motion.must_close_in_future"))
       end
     end
+  end
 
-    def one_motion_voting_at_a_time
-      if voting? and discussion.current_motion.present? and discussion.current_motion != self
-        errors.add(:discussion, I18n.t("validate.motion.one_at_a_time"))
-      end
-    end
-
-    def set_default_closing_at
-      self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
-    end
+  def set_default_closing_at
+    self.closing_at ||= (Time.zone.now + 3.days).at_beginning_of_hour
+  end
 end
