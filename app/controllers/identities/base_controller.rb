@@ -11,6 +11,9 @@ class Identities::BaseController < ApplicationController
     elsif existing_identity.presence
       existing_identity.update(access_token: identity.access_token)
       sign_in existing_identity.user
+    elsif existing_user.presence
+      identity.update(user: existing_user)
+      sign_in existing_user
     elsif current_user.presence
       current_user.add_identity(identity)
     else
@@ -46,6 +49,10 @@ class Identities::BaseController < ApplicationController
       identity_type: identity.identity_type,
       uid:           identity.uid
     )
+  end
+
+  def existing_user
+    @existing_user ||= User.find_by_email(identity.email)
   end
 
   # override with additional follow-up API calls if they're needed to gather more info
