@@ -3,7 +3,7 @@ rvm:
   - 2.3.1
 
 dist: trusty
-sudo: required
+sudo: false
 
 cache:
   bundler: true
@@ -50,18 +50,11 @@ install:
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - mkdir $TRAVIS_BUILD_DIR/bin
   - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.1 $TRAVIS_BUILD_DIR/bin/geckodriver
-  - ls -la $TRAVIS_BUILD_DIR/bin
-  - echo $TRAVIS_BUILD_DIR
-  - echo $PATH
-  - /home/travis/build/loomio/loomio/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.1 --help
-  - /home/travis/build/loomio/loomio/bin/geckodriver --help
-  - geckodriver --help
-
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup
-  # - bundle exec rake plugins:fetch plugins:install
+  - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
   - bundle exec rails server > /dev/null &
 
