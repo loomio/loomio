@@ -20,4 +20,4 @@ module.exports = new class DiscussionFormHelper
     element.all(By.css('.discussion-form__update')).first().click()
 
   clickCancel: ->
-    element.all(By.css('.discussion-form__cancel')).first().click()
+    element.all(By.css('.modal-cancel')).first().click()

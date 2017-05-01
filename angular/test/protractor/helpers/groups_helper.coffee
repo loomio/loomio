@@ -116,8 +116,8 @@ module.exports = new class GroupsHelper
   leaveGroupForm: ->
     element(By.css('.leave-group-form'))
 
-  clickAddCoordinatorButton: ->
-    element(By.css('.leave-group-form__add-coordinator')).click()
+  # clickAddCoordinatorButton: ->
+  #   element(By.css('.leave-group-form__add-coordinator')).click()
 
   clickStartSubgroupLink: ->
     element(By.css('.subgroups-card__add-subgroup-link')).click()

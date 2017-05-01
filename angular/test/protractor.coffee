@@ -23,8 +23,9 @@ exports.config =
   #   new Promise (resolve) ->
   #     reporter.beforeLaunch(resolve);
   #
-  # onPrepare: ->
-  #   jasmine.getEnv().addReporter(reporter);
+  onPrepare: ->
+    # jasmine.getEnv().addReporter(reporter);
+    browser.driver.manage().window().setSize(1680, 1024)
   #
   # afterLaunch: (exitCode) ->
   #   new Promise (resolve) ->
