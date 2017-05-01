@@ -49,6 +49,9 @@ install:
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - sudo ln -s ../angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.0 /usr/local/bin/geckdriver
+  - echo $PATH
+  - ls -la /usr/local/bin/geckdriver 
+
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
