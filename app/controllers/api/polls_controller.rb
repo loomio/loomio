@@ -10,7 +10,6 @@ class API::PollsController < API::RestfulController
     instantiate_collection do |collection|
       collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
       collection = collection.where(author: current_user)    if params[:authored_only]
-      collection = collection.send(params[:filter])          if Poll::FILTERS.include?(params[:filter].to_s)
       collection.order(:created_at)
     end
     respond_with_collection
