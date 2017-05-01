@@ -305,10 +305,5 @@ Loomio::Application.routes.draw do
     get :authorize,                       to: 'identities/github#create',     as: :github_authorize
   end
 
-  scope :twitter do
-    get :oauth,                           to: 'identities/twitter#oauth',      as: :twitter_oauth
-    get :authorize,                       to: 'identities/twitter#create',     as: :twitter_authorize
-  end
-
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end

@@ -4,6 +4,7 @@ class Identities::Github < Identities::Base
 
   def fetch_user_info
     json = client.fetch_user_info.json
+    byebug
     self.uid   ||= json['id']
     self.name  ||= json['name']
     self.email ||= json['email']
