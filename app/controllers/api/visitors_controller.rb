@@ -12,10 +12,6 @@ class API::VisitorsController < API::RestfulController
 
   private
 
-  def poll
-    @poll ||= Poll.find(resource_params[:poll_id])
-  end
-
   def current_user
     current_visitor.presence || super
   end
