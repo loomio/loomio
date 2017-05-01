@@ -12,11 +12,4 @@ class Identities::Base < ActiveRecord::Base
   def self.set_identity_type(type)
     after_initialize { self.identity_type = type }
   end
-
-  # called by default immediately after an access token is obtained.
-  # Define a method here to get some basic information about the user,
-  # like name, email, profile image, etc
-  def fetch_user_info
-    raise NotImplementedError.new
-  end
 end

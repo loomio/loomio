@@ -46,7 +46,7 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def complete_identity(identity)
-    super
+    identity.fetch_user_info
     identity.fetch_team_info
   end
 
@@ -56,6 +56,10 @@ class Identities::SlackController < Identities::BaseController
       access_token: json['access_token'],
       uid:          json['user_id']
     }
+  end
+
+  def oauth_url
+    "https://slack.com/oauth/authorize"
   end
 
   def participate_params
@@ -82,11 +86,7 @@ class Identities::SlackController < Identities::BaseController
     @payload ||= JSON.parse(params.require(:payload))
   end
 
-  def oauth_host
-    "https://slack.com/oauth/authorize"
-  end
-
   def oauth_params
-    { redirect_uri: redirect_uri, client_id: client.key, scope: client.scope.join(',') }
+    super.merge(client_id: client.key)
   end
 end

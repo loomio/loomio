@@ -3,7 +3,7 @@ class Identities::Github < Identities::Base
   set_identity_type :github
 
   def fetch_user_info
-    json         = client.fetch_user_info.json
+    json = client.fetch_user_info.json
     self.uid   ||= json['id']
     self.name  ||= json['name']
     self.email ||= json['email']

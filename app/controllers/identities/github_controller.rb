@@ -2,11 +2,15 @@ class Identities::GithubController < Identities::BaseController
 
   private
 
-  def oauth_host
+  def complete_identity(identity)
+    identity.fetch_user_info
+  end
+
+  def oauth_url
     "https://github.com/login/oauth/authorize"
   end
 
   def oauth_params
-    { redirect_uri: redirect_uri, client_id: client.key, scope: client.scope.join(',') }
+    super.merge(client_id: client.key)
   end
 end

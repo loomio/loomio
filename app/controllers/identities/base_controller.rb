@@ -1,7 +1,7 @@
 class Identities::BaseController < ApplicationController
   def oauth
     session[:back_to] = params[:back_to] || request.referrer
-    redirect_to oauth_url
+    redirect_to "#{oauth_url}?#{oauth_params.to_query}"
   end
 
   def create
@@ -61,25 +61,20 @@ class Identities::BaseController < ApplicationController
     @identity_user ||= User.find_by_email(created_identity.email) || current_user
   end
 
-  # override with additional follow-up API calls if they're needed to gather more info
-  # (such as logo url, user name, etc)
   def complete_identity(identity)
-    identity.fetch_user_info
+    # override me with follow-up API calls if they're needed to gather more info
+    # (such as logo url, user name, etc)
   end
 
   def oauth_url
-    "#{oauth_host}?#{oauth_params.to_query}"
-  end
-
-  def oauth_host
-    raise NotImplementedError.new
-  end
-
-  def oauth_params
     raise NotImplementedError.new
   end
 
   def oauth_identity_params
     { access_token: client.fetch_oauth(params[:code], redirect_uri).json['access_token'] }
+  end
+
+  def oauth_params
+    { redirect_uri: redirect_uri, scope: client.scope.join(',') }
   end
 end

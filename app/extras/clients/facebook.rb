@@ -4,6 +4,11 @@ class Clients::Facebook < Clients::Base
     post "oauth/access_token", { code: code, redirect_uri: uri }
   end
 
+
+  def fetch_user_info
+    get "me"
+  end
+
   def fetch_permissions(uid)
     get "#{uid}/permissions", {}, default_success, permissions_missing, has_all_permissions?
   end
