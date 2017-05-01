@@ -3,7 +3,7 @@ module Plugins
     def const_missing(const_name)
       super.tap do |const|
         callbacks = Plugins::Repository.reload_callbacks
-        callbacks[const_name].map { |proc| proc.call(const) } if callbacks.has_key?(const_name)
+        callbacks[const_name].map { |proc| proc.call(const) } if callbacks.has_key?(const_name) && const_name == const.name
       end
     end
   end
