@@ -39,7 +39,7 @@ describe Identities::SlackController do
     it 'does not create an invalid stance' do
       sign_in user
       expect { post :participate, payload: bad_payload }.to_not change { poll.stances.count }
-      expect(response.status).to eq 403
+      expect(response.status).to eq 200 # we still render out a message to slack, so this response must be 'OK'
     end
   end
 
@@ -59,7 +59,7 @@ describe Identities::SlackController do
       sign_in user
       valid_oauth
       expect { post :create, code: 'code' }.to change { user.identities.count }.by(1)
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to dashboard_path
     end
 
     it 'redirects to the session back_to if present' do
@@ -69,19 +69,22 @@ describe Identities::SlackController do
       expect(response).to redirect_to 'http://example.com'
     end
 
-    it 'also creates a new user if one is not logged in' do
+    it 'sets session with a pending identity id if one is not logged in' do
       valid_oauth
-      expect { post :create, code: 'code' }.to change { User.count }.by(1)
-      u = User.last
-      expect(u.identities.pluck(:name)).to include oauth_identity_params[:name]
-      expect(u.identities.pluck(:email)).to include oauth_identity_params[:email]
+      expect { post :create, code: 'code' }.to change { Identities::Base.count }.by(1)
+      i = Identities::Base.last
+      expect(i.name).to eq oauth_identity_params[:name]
+      expect(i.email).to eq oauth_identity_params[:email]
+      expect(i.identity_type).to eq 'slack'
+      expect(request.env['rack.session'][:pending_identity_id]).to eq i.id
     end
 
-    it 'does not create a new user if the email is already taken' do
+    it 'associates the identity with an existing user if there is an email match' do
       valid_oauth
-      create(:user, email: oauth_identity_params[:email])
+      user = create(:user, email: oauth_identity_params[:email])
       expect { post :create, code: 'code' }.to_not change { User.count }
-      expect(response.status).to eq 400
+      expect(response).to redirect_to dashboard_path
+      expect(Identities::Base.last.user).to eq user
     end
 
     it 'does not create an invalid identity for an existing user' do

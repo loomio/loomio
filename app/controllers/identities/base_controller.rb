@@ -50,11 +50,15 @@ class Identities::BaseController < ApplicationController
   end
 
   def store_identity
-    if current_user.is_logged_in?
-      current_user.identities.push(created_identity)
+    if identity_user.is_logged_in?
+      identity_user.identities.push(created_identity)
     else
       session[:pending_identity_id] = created_identity.id
     end
+  end
+
+  def identity_user
+    @identity_user ||= User.find_by_email(created_identity.email) || current_user
   end
 
   # override with additional follow-up API calls if they're needed to gather more info
