@@ -59,7 +59,7 @@ before_script:
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
   - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
-  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
+  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor_core; fi
 
 after_script:
   - s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d `date "+%Y%m%d%H%M%S"` angular/screenshots $ARTIFACTS_BUCKET
