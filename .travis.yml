@@ -49,7 +49,7 @@ install:
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - echo $PATH
-  - ls -la /usr/local/bin/geckdriver
+  - ls -la /usr/local/bin/geckodriver
   - geckodriver --help &
   - /usr/local/bin/geckodriver --help &
   - echo $TRAVIS_BUILD_DIR/bin
