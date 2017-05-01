@@ -87,7 +87,7 @@
     "gulp-autoprefixer": "latest",
     "node-yaml-config": "0.0.3",
     "protractor": "5.1.1",
-    "protractor-jasmine2-screenshot-reporter": "^0.3.3",
+    "protractor-jasmine2-screenshot-reporter": "^0.3.5",
     "geckodriver": "latest"
   }
 }
