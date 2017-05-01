@@ -49,7 +49,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (DraftableModel, AppConfi
       groupName: @groupName()
 
     authorName: ->
-      @author().name
+      @author().name if @author()
 
     groupName: ->
       @group().name if @group()
