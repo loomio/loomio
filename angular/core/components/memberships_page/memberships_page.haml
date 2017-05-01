@@ -12,5 +12,6 @@
         %input.membership-page__search-filter.form-control{ng-model: "membershipsPage.fragment", ng-model-options: "{debounce: 300}", ng-change: "membershipsPage.fetchMemberships()", placeholder: "{{'memberships_page.fragment_placeholder' | translate}}"}
         %i.fa.fa-lg.fa-search
       %admin_memberships_panel{ng-if: "membershipsPage.canAdministerGroup()", memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
-      %memberships_panel{ng-if: "!membershipsPage.canAdministerGroup()", memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
+      .memberships-page__memberships
+        %memberships_panel{ng-if: "!membershipsPage.canAdministerGroup()", memberships: "membershipsPage.memberships", group: "membershipsPage.group"}
     %pending_invitations_card{group: "membershipsPage.group"}
