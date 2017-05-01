@@ -318,8 +318,12 @@ class Ability
       @user.is_logged_in?
     end
 
-    can [:show, :manage_visitors, :remind], Communities::Base do |community|
+    can [:show, :remind], Communities::Base do |community|
       @user.communities.include?(community)
+    end
+
+    can :manage_visitors, Communities::Base do |community|
+      @user.email_communities.include?(community)
     end
 
     can :create, Communities::Base do |community|
