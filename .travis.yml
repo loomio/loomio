@@ -48,12 +48,12 @@ install:
   - bundle install --without development --deployment --jobs=3 --retry=3
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
+  - cd angular && sudo ln -s node_modules/webdriver-manager/selenium/geckodriver-v0.16.0 /usr/local/bin/geckdriver && cd ..
   - echo $PATH
   - ls -la /usr/local/bin/geckodriver
   - geckodriver --help &
   - /usr/local/bin/geckodriver --help &
   - echo $TRAVIS_BUILD_DIR/bin
-  - cd angular && sudo ln -s node_modules/webdriver-manager/selenium/geckodriver-v0.16.0 /usr/local/bin/geckdriver && cd ..
 
 
 
