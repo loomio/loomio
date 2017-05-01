@@ -14,12 +14,20 @@ class Clients::Base
     @token  = token
   end
 
-  def get(path, params: {}, headers: {}, options: {})
-    perform :get, path, params, headers, options.merge(params_field: :query)
+  def get(path, params = {}, success = default_success, failure = default_failure, is_success = default_is_success)
+    perform(:get, path, {
+      host: params.delete(:host),
+      query: default_params.merge(params),
+      headers: default_headers
+    }, success, failure, is_success)
   end
 
-  def post(path, params: {}, headers: {}, options: {})
-    perform :post, path, params, headers, options.merge(params_field: :body)
+  def post(path, params = {}, success = default_success, failure = default_failure, is_success = default_is_success)
+    perform(:post, path, {
+      host: params.delete(:host),
+      body: default_params.merge(params),
+      headers: default_headers
+    }, success, failure, is_success)
   end
 
   # make request for initial user information
@@ -38,16 +46,10 @@ class Clients::Base
     []
   end
 
-  def perform(method, path, params, headers, options)
-    options.reverse_merge!(
-      success: default_success,
-      failure: default_failure,
-      is_success: default_is_success
-    )
-    Clients::Request.new(method, [options.fetch(:host, host), path].join('/'), {
-      options[:params_field] => default_params.merge(params),
-      :"headers"             => default_headers.merge(headers)
-    }).tap { |request| request.perform!(options) }
+  def perform(method, path, params, success, failure, is_success)
+    Clients::Response.new(method, [params.delete(:host) || host, path].join('/'), params, is_success).tap do |response|
+      response.callback = if response.success? then success else failure end
+    end
   end
 
   # determines whether the response should be deemed successful or not
@@ -63,7 +65,7 @@ class Clients::Base
   end
 
   def default_failure
-    ->(response) { response }
+    ->(response) { puts response; response }
   end
 
   def default_params
