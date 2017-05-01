@@ -25,9 +25,9 @@ PollSearch = Struct.new(:user) do
   # TODO: combine this into a single SQL query, rather than 3 separate plucks
   def searchable_ids
     @searchable_ids ||= [
-      Queries::VisiblePolls.new(user: user), # polls in my groups
-      Poll.participation_by(user),           # polls I've participated in
-      user.polls                             # polls I've started
+      Queries::VisiblePolls.new(user: user, group_ids: user.group_ids), # polls in my groups
+      user.participated_polls,                                          # polls I've participated in
+      user.polls                                                        # polls I've started
     ].map { |c| c.pluck(:id) }.flatten.uniq
   end
 
