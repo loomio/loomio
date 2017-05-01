@@ -10,13 +10,14 @@ Clients::Response = Struct.new(:method, :url, :params, :success) do
   end
 
   def response
-    @response ||= HTTParty.send(method, url, params)
+    @response ||= HTTParty.send(method, url, params.merge(headers))
   end
 
-  # 'success' is a proc which accepts a response and returns true or false based
-  # on whether that response from the API is satisfactory.
-  # (this could be something like 'response.status is 200', or 'response.body[:ok] is true')
   def success?
     success.call(response)
+  end
+
+  def headers
+    { headers: { 'Content-Type' => 'application/json; charset=utf-8' } }
   end
 end

@@ -87,6 +87,6 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def oauth_params
-    super.merge(client_id: client.key)
+    super.merge(client_id: client.key, scope: client.scope.join(','))
   end
 end

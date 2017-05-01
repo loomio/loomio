@@ -30,7 +30,10 @@ class Identities::BaseController < ApplicationController
   end
 
   def client
-    @client ||= "Clients::#{controller_name.classify}".constantize.instance
+    @client ||= "Clients::#{controller_name.classify}".constantize.new(
+      key:    ENV["#{controller_name.classify.upcase}_APP_KEY"],
+      secret: ENV["#{controller_name.classify.upcase}_APP_SECRET"]
+    )
   end
 
   def redirect_uri
@@ -75,6 +78,6 @@ class Identities::BaseController < ApplicationController
   end
 
   def oauth_params
-    { redirect_uri: redirect_uri, scope: client.scope.join(',') }
+    { redirect_uri: redirect_uri }
   end
 end
