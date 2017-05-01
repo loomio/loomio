@@ -53,6 +53,8 @@ install:
   - ls -la $TRAVIS_BUILD_DIR/bin
   - echo $TRAVIS_BUILD_DIR
   - echo $PATH
+  - /home/travis/build/loomio/loomio/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.0 --help
+  - /home/travis/build/loomio/loomio/bin/geckodriver --help
   - geckodriver --help
 
 
