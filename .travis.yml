@@ -49,6 +49,11 @@ install:
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
   - ln -s ../angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.0 $TRAVIS_BUILD_DIR/bin
+  - echo $PATH
+  - which geckodriver
+  - echo $TRAVIS_BUILD_DIR
+  - echo ls -la $TRAVIS_BUILD_DIR
+
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
