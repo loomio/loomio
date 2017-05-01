@@ -13,5 +13,5 @@
       %img.attachment-preview__image{ng-if: "attachment.isAnImage", ng-src: "{{location()}}", alt: "{{ 'activity_card.attachment_display.image_alt' | translate }}"}
       .attachment-preview__file.attachment-preview__file--thumb{ng-if: "!attachment.isAnImage"}
         %i.fa.fa-lg.fa-paperclip
-      %button.close.attachment-preview__destroy{ng-if: "!attachment.commentId", ng-click: "destroy($event)", title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
+      %button.close.attachment-preview__destroy.md-attachment-form__cancel{ng-if: "!attachment.commentId", ng-click: "destroy($event)", title: "{{ 'comment_form.attachments.remove_attachment' | translate }}"}
         %span{aria-hidden: "true"}&times;
