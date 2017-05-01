@@ -41,10 +41,6 @@ class Identities::SlackController < Identities::BaseController
     render text: I18n.t(:"slack.slash_command_help", type: initiate_params[:type])
   end
 
-  def identity
-    @identity ||= current_user.slack_identity
-  end
-
   def complete_identity(identity)
     super
     identity.fetch_team_info

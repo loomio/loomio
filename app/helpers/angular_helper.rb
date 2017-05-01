@@ -50,7 +50,7 @@ module AngularHelper
       drafts: {
         debounce: ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
       },
-      pendingIdentity: IdentitySerializer.new(pending_identity, root: false).as_json,
+      pendingIdentity: IdentitySerializer.new(pending_identity, root: false).as_json || {},
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
       timeZones:     Poll::TIMEZONES,
