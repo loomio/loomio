@@ -1,10 +1,11 @@
 angular.module('loomioApp').directive 'authProviderForm', ->
+  scope: {user: '='}
   templateUrl: 'generated/components/auth/provider_form/auth_provider_form.html'
   controller: ($scope, $window, AppConfig) ->
-    $scope.expanded = AppConfig.identityProviders.length <= 3
-    $scope.providers = _.take AppConfig.identityProviders, 3
-    $scope.expand = ->
-      $scope.expanded = true
-      $scope.providers = AppConfig.identityProviders
+    $scope.providers = AppConfig.identityProviders.concat([{name: 'email', icon: 'envelope-o'}])
 
-    $scope.select = (provider) -> $window.location = provider.href
+    $scope.select = (provider) ->
+      if provider.href
+        $window.location = provider.href
+      else
+        $scope.user.provider = provider.name

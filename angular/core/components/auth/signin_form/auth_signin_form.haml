@@ -25,7 +25,7 @@
   .lmo-actions
     %md-button{ng-click: "back()"}
       %span{translate: "common.action.back"}
-    %md-button{ng-click: "signIn()", ng-if: "user.hasPassword"}
+    %md-button.md-primary{ng-click: "signIn()", ng-if: "user.hasPassword"}
       %span{translate: "auth_form.sign_in"}
-    %md-button{ng-click: "setPassword()", ng-if: "!user.hasPassword && passwordFormShown"}
+    %md-button.md-primary{ng-click: "setPassword()", ng-if: "!user.hasPassword && passwordFormShown"}
       %span{translate: "auth_form.set_password"}
