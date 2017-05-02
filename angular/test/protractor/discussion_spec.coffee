@@ -60,7 +60,7 @@ describe 'Discussion Page', ->
       page.expectNoText('.discussion-form__title-input', 'dumb title')
       page.expectNoText('.discussion-form__description-input', 'rubbish description')
 
-    it 'lets you view thread revision history', ->
+    xit 'lets you view thread revision history', ->
       page.click '.context-panel__dropdown-button',
                  '.context-panel__dropdown-options--edit'
       page.fillIn '.discussion-form__title-input', 'Revised title'
