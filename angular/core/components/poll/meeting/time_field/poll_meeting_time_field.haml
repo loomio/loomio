@@ -3,7 +3,7 @@
     %md-datepicker.poll-meeting-form__datepicker{ng-model: "option.date", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
   %md-input-container
     %md-select{ng-model: "option.time", placeholder: "All day", aria-label: "{{ 'poll_meeting_time_field.closing_hour' | translate }}"}
-      %md-option{ng-value: "undefined", md-option-empty: ""} All day
+      %md-option{ng-value: "undefined", md-option-empty: "", translate: "common.all_day"} All day
       %md-option{ng-repeat: "time in times track by $index", ng-value: "time"}
         {{ time }}
   .poll-meeting-time-field__add
