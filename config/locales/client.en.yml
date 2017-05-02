@@ -1652,6 +1652,7 @@ en:
     communities: Connect Community
     add_facebook_community: Add facebook group
     add_slack_community: Add slack channel
+    add_google_community: Link to google calendar
     community_revoked: This community will no longer be able to participate
     community_added: Community added to poll
 

@@ -20,3 +20,5 @@
     %span{translate: "poll_common_share_form.add_facebook_community"}
   %md-button.md-primary.md-raised{ng-click: "addCommunity('slack')"}
     %span{translate: "poll_common_share_form.add_slack_community"}
+  %md-button.md-primary.md-raised{ng-if: "datesAsOptions()", ng-click: "addCommunity('google')"}
+    %span{translate: "poll_common_share_form.add_google_community"}
