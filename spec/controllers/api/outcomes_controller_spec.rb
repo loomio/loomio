@@ -29,6 +29,20 @@ describe API::OutcomesController do
       expect(response.status).to eq 422
     end
 
+    it 'can associate a poll option with the outcome' do
+      sign_in user
+      outcome_params[:poll_option_id] = poll.poll_options.first.id
+      expect { post :create, outcome: outcome_params }.to change { poll.outcomes.count }.by(1)
+      expect(Outcome.last.poll_option).to eq poll.poll_options.first
+    end
+
+    it 'validates the poll option id' do
+      sign_in user
+      outcome_params[:poll_option_id] = create(:poll_proposal).poll_options.first.id
+      expect { post :create, outcome: outcome_params }.to_not change { poll.outcomes.count }
+      expect(response.status).to eq 422
+    end
+
     it 'does not allow visitors to create outcomes' do
       expect { post :create, outcome: outcome_params }.to_not change { Outcome.count }
       expect(response.status).to eq 403

@@ -38,6 +38,9 @@ en:
   stance:
     error:
       too_short: Please make a selection
+  outcome:
+    error:
+      invalid_poll_option: The poll option for this outcome is invalid
   time:
     formats:
       for_today: "%l:%M %P"

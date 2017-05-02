@@ -1,6 +1,5 @@
-angular.module('loomioApp').directive 'pollCommonOutcomeForm', ->
-  scope: {outcome: '='}
-  templateUrl: 'generated/components/poll/common/outcome_form/poll_common_outcome_form.html'
+angular.module('loomioApp').directive 'pollMeetingOutcomeForm', ->
+  templateUrl: 'generated/components/poll/meeting/outcome_form/poll_meeting_outcome_form.html'
   controller: ($scope, $translate, PollService, TranslationService, MentionService, KeyEventService) ->
     $scope.outcome.makeAnnouncement = $scope.outcome.isNew()
 

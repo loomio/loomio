@@ -40,6 +40,15 @@ angular.module('loomioApp').factory 'PollService', ($window, $location, AppConfi
     optionByName: (poll, name) ->
       _.find poll.pollOptions(), (option) -> option.name == name
 
+    submitOutcome: (scope, model, options = {}) ->
+      actionName = if scope.outcome.isNew() then 'created' else 'updated'
+      FormService.submit(scope, model, _.merge(
+        flashSuccess: "poll_common_outcome_form.outcome_#{actionName}"
+        drafts: true
+        successCallback: (data) ->
+          scope.$emit 'outcomeSaved', data.outcomes[0].id
+      , options))
+
     submitPoll: (scope, model, options = {}) ->
       actionName = if scope.poll.isNew() then 'created' else 'updated'
       FormService.submit(scope, model, _.merge(

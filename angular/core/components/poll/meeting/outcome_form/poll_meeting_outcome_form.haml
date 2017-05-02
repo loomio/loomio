@@ -1,8 +1,12 @@
-.poll-common-outcome-form
+.poll-meeting-outcome-form
   %md-input-container.md-block
     %label{translate: "poll_common.statement"}
     %textarea.lmo-primary-form-input.poll-common-outcome-form__statement{placeholder: "{{translations.statementPlaceholder}}", ng-model: "outcome.statement", mention-field: "true"}
     %validation_errors{subject: "outcome", field: "statement"}
+
+  %md-select{ng-model: "pollOptionId", aria-label: "{{ 'poll_meeting_outcome_form.best_date' | translate }}"}
+    %md-option{ng-repeat: "option in outcome.poll().pollOptions()", ng-value: "id"}
+      %poll_meeting_time{name: "option.name"}
 
   %poll_common_notify_group{model: "outcome"}
 
