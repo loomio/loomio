@@ -75,6 +75,7 @@ en:
       share: Share
       done: Done
       start: Start
+      embed: Embed
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text on Loomio'
@@ -1646,6 +1647,24 @@ en:
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
+
+  poll_common_embed_modal:
+    title: Embed poll
+    helptext: |
+      If you'd like to embed this Loomio poll into another webpage, you can do so by pasting the code below into the <head/> element of your webpage.<br>
+      It will appear on the page in an iframe, which will look like this:&nbsp;
+    display_code: |
+      <;div id="loomio-{{key}}"></div><br/>
+      <;script type="text/javascript"><br/>
+      &nbsp;&nbsp;(function() {<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;var d = document.createElement('script');d.type = 'text/javascript'; d.src = '{{host}}client/common/embed.js'; d.async = true;<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);<br/>
+      &nbsp;&nbsp;})();<br/>
+      <;/script>
+    minified_code: |
+      <div id="loomio-{{key}}"></div>
+      <script type="text/javascript">(function(){var d = document.createElement('script');d.type='text/javascript';d.src='{{host}}client/common/embed.js';d.async = true;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);})();</script>
+    copy_code: Copy embed code
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

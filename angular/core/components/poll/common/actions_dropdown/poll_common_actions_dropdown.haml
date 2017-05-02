@@ -6,6 +6,9 @@
       %li.lmo-dropdown-menu-item{ng-if: "canSharePoll()"}
         %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__share{href: "#", ng-click: "sharePoll()"}
           %span{translate: "common.action.share"}
+      %li.lmo-dropdown-menu-item{ng-if: "canEmbedPoll()"}
+        %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__close{href: "#", ng-click: "embedPoll()"}
+          %span{translate: "common.action.embed"}
       %li.lmo-dropdown-menu-item{ng-if: "canEditPoll()"}
         %a.lmo-dropdown-menu-item-label.poll-actions-dropdown__edit{href: "#", ng-click: "editPoll()"}
           %span{translate: "common.action.edit"}

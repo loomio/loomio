@@ -1,0 +1,16 @@
+%md-dialog.poll-common-modal
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %i.material-icons code
+      %h1.lmo-h1{translate: "poll_common_embed_modal.title"}
+      %material_modal_header_cancel_button
+
+  %md-dialog-content
+    .md-dialog-content
+      %p.poll-common-helptext{translate: "poll_common_embed_modal.helptext"}
+      %code.poll-common-embed-modal__code{translate: "poll_common_embed_modal.display_code", translate-value-host: "{{baseUrl}}", translate-value-key: "{{poll.key}}"}
+      .lmo-flex.lmo-flex__space-between
+        %div
+        %md-button.md-raised.md-primary{clipboard: "true", text: "minifiedCode", on-copied: "copied()"}
+          %span{translate: "poll_common_embed_modal.copy_code"}
