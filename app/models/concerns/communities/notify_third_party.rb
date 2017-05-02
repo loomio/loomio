@@ -5,4 +5,8 @@ module Communities::NotifyThirdParty
     return unless PUBLISH_EVENTS.include?(event.kind)
     identity.notify!(event)
   end
+
+  def includes?(participant)
+    participant.identities.any? { |i| i.is_member_of?(self) }
+  end
 end

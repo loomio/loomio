@@ -1,0 +1,11 @@
+# for providers which provide OAuth login capability
+identity:
+  - google
+  - facebook
+  - slack
+
+# for providers which provide additional API access
+community:
+  - google
+  - facebook
+  - slack
