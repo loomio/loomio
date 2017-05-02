@@ -1335,6 +1335,7 @@ en:
     your_response: Your response
     change_your_response: Change your response
     reason: Reason
+    message: Message
     results: Results
     vote: Vote
     votes: Votes
