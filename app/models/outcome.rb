@@ -18,7 +18,7 @@ class Outcome < ActiveRecord::Base
   validate :has_valid_poll_option
 
   def has_valid_poll_option
-    return if !self.poll_option_id || poll.poll_option_ids.includes?(self.poll_option_id)
+    return if !self.poll_option_id || poll.poll_option_ids.include?(self.poll_option_id)
     errors.add(:poll_option_id, I18n.t(:"outcome.error.invalid_poll_option"))
   end
 end

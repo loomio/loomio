@@ -3,5 +3,6 @@ class OutcomeSerializer < ActiveModel::Serializer
   attributes :id, :statement, :latest, :created_at
 
   has_one :poll, serializer: PollSerializer
+  has_one :poll_option, serializer: PollOptionSerializer
   has_one :author, serializer: UserSerializer
 end
