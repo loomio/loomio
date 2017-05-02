@@ -13,7 +13,7 @@ cache:
     - angular/node_modules
 
 addons:
-  firefox: "52.0"
+  firefox: "53.0"
   postgresql: "9.5"
   apt:
     sources:
@@ -23,9 +23,6 @@ addons:
       - expect
       - heroku-toolbelt
       - g++-4.8
-  # code_climate:
-  #   repo_token:
-  #     secure: "RQcqTqhx9hhcWO97ib8s8I8m/ufPbBuKRfEEh4RHNIsBEMpqekaPNHtK+T2ym2pfbCpD+L+0bZ+nMlSCrYz0gklfNnYJlPH4/g1f0SX2OEdq2eUCi9xlRObi9ayXsz7Ujtk14mncNGx+e02TnAtEjtFBT8uyvxn8Ql4djvOTsCg="
 
 env:
   global:
@@ -46,18 +43,23 @@ before_install:
 
 install:
   - bundle install --without development --deployment --jobs=3 --retry=3
+  - gem install s3_uploader
   - cd angular; yarn; cd ..
   - angular/node_modules/webdriver-manager/bin/webdriver-manager update
-  - mkdir bin && cd bin && ln -s ../angular/node_modules/webdriver-manager/selenium/geckodriver-v0.15.0 geckodriver && cd ..
+  - mkdir $TRAVIS_BUILD_DIR/bin
+  - ln -s $TRAVIS_BUILD_DIR/angular/node_modules/webdriver-manager/selenium/geckodriver-v0.16.1 $TRAVIS_BUILD_DIR/bin/geckodriver
 
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - bundle exec rake db:setup
-  - bundle exec rake plugins:fetch plugins:install
+  # - bundle exec rake plugins:fetch plugins:install
   - bundle exec rake travis:prepare
   - bundle exec rails server > /dev/null &
 
 script:
   - if [ "$TASK" = "rspec" ]; then bundle exec rake travis:rspec; fi
   - if [ "$TASK" = "cucumber" ]; then bundle exec rake travis:cucumber; fi
-  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor; fi
+  - if [ "$TASK" = "protractor" ]; then bundle exec rake travis:protractor_core; fi
+
+after_script:
+  - s3uploader -r us-east-1 -k $ARTIFACTS_KEY -s $ARTIFACTS_SECRET -d `date "+%Y%m%d%H%M%S"` angular/screenshots $ARTIFACTS_BUCKET

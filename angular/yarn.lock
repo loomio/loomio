@@ -2173,11 +2173,11 @@ lodash.values@~2.4.1:
   dependencies:
     lodash.keys "~2.4.1"
 
-lodash@3.10.1, lodash@^3.0.0, lodash@^3.10.1:
+lodash@3.10.1, lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.14.0:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2724,12 +2724,12 @@ process-nextick-args@^1.0.6, process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
 
-protractor-jasmine2-screenshot-reporter@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/protractor-jasmine2-screenshot-reporter/-/protractor-jasmine2-screenshot-reporter-0.3.3.tgz#241d60a8f7d6e451c54ede4907fdea65eef92605"
+protractor-jasmine2-screenshot-reporter@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/protractor-jasmine2-screenshot-reporter/-/protractor-jasmine2-screenshot-reporter-0.3.5.tgz#009d02151da9108f4719560d94a15a24894e4248"
   dependencies:
     hat "0.0.3"
-    lodash "^3.0.0"
+    lodash "^4.17.4"
     mkdirp "^0.5.0"
     rimraf "^2.4.3"
     string.prototype.startswith "^0.2.0"
