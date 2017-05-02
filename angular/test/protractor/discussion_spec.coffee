@@ -66,6 +66,11 @@ describe 'Discussion Page', ->
       page.fillIn '.discussion-form__title-input', 'Revised title'
       page.fillIn '.discussion-form__description-input', 'Revised description'
       page.click '.discussion-form__update'
+      page.click '.context-panel__dropdown-button',
+                 '.context-panel__dropdown-options--edit'
+      page.fillIn '.discussion-form__title-input', 'Revised title'
+      page.fillIn '.discussion-form__description-input', 'Revised description'
+      page.click '.discussion-form__update'
       page.click '.context-panel__edited'
       page.expectText '.revision-history-modal__body', 'Revised title'
       page.expectText '.revision-history-modal__body', 'Revised description'
