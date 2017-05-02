@@ -6,65 +6,62 @@ ar:
       pm: م
     closing_in: ' {{time}} الإغلاق'
     closed_ago: 'مغلق {{time}}'
-    volume: الحجم
-    notification_volume: صوت التبليغات
-    group: المجموعة
-    groups: المجموعات
+    volume: 'الحجم'
+    notification_volume: 'صوت التبليغات'
+    group: 'المجموعة'
+    groups: 'المجموعات'
     privacy:
-      privacy: الخصوصية
-      public: عام
-      open: مفتوحة
-      closed: مغلقة
-      private: خاص
-      secret: سرية
-    selected: مختار
+      privacy: 'الخصوصية'
+      public: 'عام'
+      open: 'مفتوحة'
+      closed: 'مغلقة'
+      private: 'خاص'
+      secret: 'سرية'
+    selected: 'مختار'
     date_range:
-      today: اليوم
-      yesterday: أمس
-      thisweek: هذا الأسبوع
-      thismonth: هذا الشهر
-      older: الأقدم
-    more_help: مساعدة أكبر
+      today: 'اليوم'
+      yesterday: 'أمس'
+      thisweek: 'هذا الأسبوع'
+      thismonth: 'هذا الشهر'
+      older: 'الأقدم'
+    more_help: 'مساعدة أكبر'
     models:
-      proposal: مقترح
-    copied: تم النسخ
+      proposal: 'مقترح'
+    copied: 'تم النسخ'
     action:
-      close: مغلق
-      save: حفظ
-      save_changes: حفظ التغييرات
-      update_settings: تحديث الإعدادات
-      reply: رد
-      edit: تحرير
-      remove: إزالة
-      like: يعجبني
-      back: عودة
-      unlike: لا يعجبني
-      update: تحديث
-      cancel: إلغاء
-      show_more: أظهر المزيد
-      view_all: استعراض الكل
-      new_thread: موضوع جديد
-      add_subgroup: أضف مجموعة فرعية
-      loading: تحميل
-      translate: ترجم
-      translated: ترجم باستخدام مترجم بينغ
-      upload: تحميل
-      uploading: تحميل
+      close: 'مغلق'
+      save: 'حفظ'
+      save_changes: 'حفظ التغييرات'
+      update_settings: 'تحديث الإعدادات'
+      reply: 'رد'
+      edit: 'تحرير'
+      remove: 'إزالة'
+      like: 'يعجبني'
+      back: 'عودة'
+      unlike: 'لا يعجبني'
+      update: 'تحديث'
+      cancel: 'إلغاء'
+      show_more: "أظهر المزيد"
+      view_all: "استعراض الكل"
+      new_thread: "موضوع جديد"
+      add_subgroup: 'أضف مجموعة فرعية'
+      loading: 'تحميل'
+      translate: 'ترجم'
+      translated: 'ترجم باستخدام مترجم بينغ'
+      upload: 'تحميل'
+      uploading: 'تحميل'
     formatting_help:
-      label: مساعدة في التنسيق
-      title: تعلم كيف تستخدم الماركداون لتنسيق النص على موقع لوميو
+      title: 'تعلم كيف تستخدم الماركداون لتنسيق النص على موقع لوميو'
   error_page:
-    forbidden: ليس لديك صلاحية للقيام بذلك.
-    page_not_found: لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.
-    internal_server_error: نحن آسغون، حدث خطأ ما. رجاءً حاول لاحقاً.
+    forbidden: 'ليس لديك صلاحية للقيام بذلك.'
+    page_not_found: 'لم نستطع إيجاد ذلك. من الممكن أن يكون قد جرى حذفه أو نقله.'
+    internal_server_error: 'نحن آسغون، حدث خطأ ما. رجاءً حاول لاحقاً.'
   start_proposal_card:
-    title: إبدأ مقترحاً
+    title: 'إبدأ مقترحاً'
     helptext: جاهز لصنع القرار؟
   proposal_outcome_panel:
     heading: النتيجة
     set_outcome_hint: استخدم هذه المساحة لتعرّف الجميع حول نتائج المقترح.
-    set_outcome_btn: تحديد نتيجة المقترح
-    edit_outcome_link: تعديل نتيجة المقترح
   proposal_outcome_form:
     set_outcome: تحديد نتيجة المقترح
     update_outcome: تحديث نتيجة المقترح
@@ -82,81 +79,76 @@ ar:
     expand: وسّع
     outcome: 'النتيجة: {{outcome}}'
   volume_levels:
-    loud: مرتفع
-    normal: متوسط
-    quiet: هادئ
-    mute: كتم
-    unmute: الغاء الكتم
+    loud: 'مرتفع'
+    normal: 'متوسط'
+    quiet: 'هادئ'
+    mute: 'كتم'
+    unmute: 'الغاء الكتم'
   inbox:
-    clear: مسح
-    latest: الأحدث
-    unread: غير مقروءة
-    closing_in: الإغلاق
+    clear: 'مسح'
+    latest: 'الأحدث'
+    unread: 'غير مقروءة'
+    closing_in: 'الإغلاق'
   comment_form:
-    aria_label: إضافة تعليق
+    aria_label: 'إضافة تعليق'
     attachments:
-      remove_attachment: حذف المرفق
+      remove_attachment: 'حذف المرفق'
     messages:
-      created: تمت إضافة التعليق
+      created: 'تمت إضافة التعليق'
       replied: 'تم إبلاغ {{name}} بالرد'
-      updated: تم تحديث التعليق
-      destroyed: تم حذف التعليق
-    edit_comment: تحرير التعليق
-    delete_comment: حذف التعليق
-    cancel_reply: إلغاء الرد
-    confirm_delete_message: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
-    confirm_delete: نعم، متأكد
-    in_reply_to: 'الرد على <strong>{{name}}</strong>:'
+      updated: 'تم تحديث التعليق'
+      destroyed: 'تم حذف التعليق'
+    edit_comment: 'تحرير التعليق'
+    delete_comment: 'حذف التعليق'
+    cancel_reply: 'إلغاء الرد'
+    confirm_delete_message: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
+    in_reply_to: "الرد على <strong>{{name}}</strong>:"
     submit_button:
-      label: نشر
+      label: 'نشر'
     private_privacy_notice: 'تعليقك سيظهر فقط لأعضاء مجموعة {{groupName}} '
-    public_privacy_notice: تعليقك سيظهر للجميع
+    public_privacy_notice: 'تعليقك سيظهر للجميع'
   sidebar:
-    recent: حديث
-    unread: غير مقروءة
-    muted: صامت
-    email_settings: إرسال الإعدادات برسالة الكترونية
-    help: مساعدة
-    sign_out: الخروج
+    email_settings: 'إرسال الإعدادات برسالة الكترونية'
+    help: 'مساعدة'
+    sign_out: 'الخروج'
   navbar:
-    recent_title: اذهب إلى لوحة التحكم
-    unread_title: أظهر النشاطات الغير مقروءة
-    start_thread: إبدأ موضوعاً جديداً
-    notifications: لوحة التبليغات
+    recent_title: 'اذهب إلى لوحة التحكم'
+    unread_title: 'أظهر النشاطات الغير مقروءة'
+    notifications: 'لوحة التبليغات'
     search:
-      no_results: لا يوجد مواضيع
-      close: أغلق منصة البحث
-      placeholder: بحث
-      loading: تحميل النتائج
-      discussions: المواضيع
-      proposals: المقترحات
-      comments: التعليقات
+      no_results: 'لا يوجد مواضيع'
+      close: 'أغلق منصة البحث'
+      placeholder: 'بحث'
+      loading: 'تحميل النتائج'
+      discussions: 'المواضيع'
+      proposals: 'المقترحات'
+      comments: 'التعليقات'
   start_menu:
-    start_group: إبدأ مجموعة
-    start_subgroup: إبدأ مجموعة فرعية
-    start_thread: إبدأ موضوعاً
-    invite_people: قم بدعوة أشخاص
+    start_group: 'إبدأ مجموعة'
+    start_subgroup: 'إبدأ مجموعة فرعية'
+    start_thread: 'إبدأ موضوعاً'
+    invite_people: 'قم بدعوة أشخاص'
   notifications:
-    header: تبليغات
-    publish_outcome: قم بنشر النتيجة
+    header: "تبليغات"
+    publish_outcome: "قم بنشر النتيجة"
   position_buttons_panel:
     heading: شارك برأيك
   vote_form:
     heading: شارك برأيك
     no_statement: لا تعليق
-    i_agree: موافق
-    i_agree_details: أنا أدعم هذا و أريد الاستمرار.
-    i_abstain: أمتنع
-    i_abstain_details: أنا سعيد بترك المجموعة تقرر عني.
-    i_disagree: غير موافق
-    i_disagree_details: أظن أنه بإمكاننا العمل على قرار أفضل.
-    i_block: أعترض
-    i_block_details: لدي إعتراضات قوية على هذا الإقتراح، ولست موافقا على المضي به قدماً.
-    submit_position: إرسال الموقف
-    change_position: تغيير الموقف
-    select_position: اختيار الموقف
-    statement_placeholder: شارك أفكارك مع المجموعة.
-    aria_statement_label: اختر أن تدخل بياناً ليتم  تسجيله مع موقفك.
+    i_agree: 'موافق'
+    i_agree_details: 'أنا أدعم هذا و أريد الاستمرار.'
+    i_abstain: 'أمتنع'
+    i_abstain_details: 'أنا سعيد بترك المجموعة تقرر عني.'
+    i_disagree: 'غير موافق'
+    i_disagree_details: 'أظن أنه بإمكاننا العمل على قرار أفضل.'
+    i_block: 'أعترض'
+    i_block_details: 'لدي إعتراضات قوية على هذا الإقتراح، ولست موافقا على المضي به قدماً.'
+    submit_position: 'إرسال الموقف'
+    change_position: 'تغيير الموقف'
+    select_position: 'اختيار الموقف'
+    statement_placeholder: 'شارك أفكارك مع المجموعة.'
+    aria_statement_label: 'اختر أن تدخل بياناً ليتم  تسجيله مع موقفك.'
     messages:
       created: تمت إضافة تصويت.
   proposal_positions_panel:
@@ -164,91 +156,81 @@ ar:
     no_votes_yet: لم يصوّت أحد على هذا المقترح بعد.
     change_your_vote: قم بتغيير موقفك.
   undecided_panel:
-    aria_label: الأعضاء الذين لم يقرروا بعد
+    aria_label: 'الأعضاء الذين لم يقرروا بعد'
     hide_undecided: قم بإخفاء الأعضاء الذين لم يقرروا بعد
   proposal_pie_chart:
     participation_statement: '{{percentage}}% من الأعضاء قاموا بتقرير موقفهم ({{number}}/{{total}})'
   close_proposal_form:
-    close_proposal: أغلق المقترح
-    helptext: هل أنت متأكد أنك تريد إغلاق هذا المقترح الآن؟
-    close_proposal_submit: أجل، أغلق المقترح.
+    close_proposal: 'أغلق المقترح'
+    helptext: 'هل أنت متأكد أنك تريد إغلاق هذا المقترح الآن؟'
     messages:
       success: تم إغلاق المقترح.
   extend_proposal_form:
-    title: قم بتغيير زمن الإغلاق.
-    success: تم تحديث زمن إغلاق المقترح.
-    submit: قم بتحديث زمن الإغلاق
+    title: 'قم بتغيير زمن الإغلاق.'
+    success: 'تم تحديث زمن إغلاق المقترح.'
+    submit: 'قم بتحديث زمن الإغلاق'
   proposal_form:
     messages:
-      created: تم البدء بالمقترح
-      updated: تم تحديث المقترح
-    start_proposal: إبدأ المقترح
-    start_a_proposal: إبدأ مقترحاً
-    edit_proposal: تعديل المقترح
-    what_does_a_proposal_do: تتيح لك المقترحات معرفة كيف يشعر الجميع حول نشاط معين.
-    title_label: العنوان
-    closes_at_label: يغلق في
-    closes: يغلق
-    details_label: التفاصيل
+      created: 'تم البدء بالمقترح'
+      updated: 'تم تحديث المقترح'
+    start_proposal: 'إبدأ المقترح'
+    start_a_proposal: 'إبدأ مقترحاً'
+    edit_proposal: 'تعديل المقترح'
+    what_does_a_proposal_do: 'تتيح لك المقترحات معرفة كيف يشعر الجميع حول نشاط معين.'
+    title_label: 'العنوان'
+    closes_at_label: 'يغلق في'
+    closes: 'يغلق'
+    details_label: 'التفاصيل'
   discussion_record:
     created: 'تم بدء موضوع {{title}} في مجموعة {{groupName}} بنجاح.'
     updated: 'حفظ التغييرات في {{title}}'
   discussion_form:
     messages:
-      created: تم بدء الموضوع
-      updated: تم تحديث الموضوع
-    new_discussion_title: البدء بموضوع جديد
-    edit_discussion_title: تعديل الموضوع
-    discussion_helptext: الموضوع هو المكان الذي يمكن للجميع أن يناقشوا نقاطاً معينة و أن يقوموا بصنع قرار معاً.
-    group_label: المجموعة
-    group_placeholder: اختر مجموعة
-    title_label: العنوان
-    title_placeholder: ماهو الموضوع الذي ترغب في مناقشته؟
-    context_label: سياق النقاش
+      created: 'تم بدء الموضوع'
+      updated: 'تم تحديث الموضوع'
+    new_discussion_title: 'البدء بموضوع جديد'
+    edit_discussion_title: 'تعديل الموضوع'
+    group_label: 'المجموعة'
+    group_placeholder: 'اختر مجموعة'
+    title_label: 'العنوان'
+    title_placeholder: 'ماهو الموضوع الذي ترغب في مناقشته؟'
+    context_label: 'سياق النقاش'
     context_placeholder: 'قم بتزويد معلومات كافية حول خلفية الموضوع للمجموعة ليكون النقاش مفيداً. يمكن تحديث هذا خلال سير النقاش. '
-    privacy_label: خصوصية
-    privacy_public: يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.
+    privacy_label: 'خصوصية'
+    privacy_public: 'يمكن للجميع رؤية الموضوع. يمكن للأعضاء فقط المشاركة.'
     privacy_private: 'سيكون الموضوع ظاهراً فقط لأعضاء مجموعة {{group}}.'
     privacy_organisation: 'سيكون الموضوع ظاهراً لأعضاء {{parent}} و أعضاء {{group}}.'
-    new_discussion_submit: إبدأ موضوعاً
-    edit_discussion_submit: حدث الموضوع
   proposal_expanded:
     collapse: انهيار
     current_votes: الأصوات الحالية
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong>'
-    only_voter_is_you: لم يقم أي عضو بالتصويت بعد.
-    extend_proposal: قم بتغيير وقت الإغلاق
-    edit_proposal: تعديل المقترح
-    close_proposal: أغلق المقترح
+    only_voter_is_you: 'لم يقم أي عضو بالتصويت بعد.'
+    extend_proposal: 'قم بتغيير وقت الإغلاق'
+    edit_proposal: 'تعديل المقترح'
+    close_proposal: 'أغلق المقترح'
     closed_badge: مغلق
-  proposal_position_yes: أوافق
-  proposal_position_abstain: أمتنع
-  proposal_position_no: لا أوافق
-  proposal_position_block: أعترض
+  proposal_position_yes: 'أوافق'
+  proposal_position_abstain: 'أمتنع'
+  proposal_position_no: 'لا أوافق'
+  proposal_position_block: 'أعترض'
   legacy_trial_expired_modal:
-    heading: 'شكراً لاستخدامك لوميو في هذا العام!'
-    body: >
-      <p>نحن ممتنون كثيراً لدعمكم خلال هذا العام، و متحمسون لجعل لوميو أفضل في
-      عام 2016.</p>
+    heading: "شكراً لاستخدامك لوميو في هذا العام!"
+    body: |+
+      <p>نحن ممتنون كثيراً لدعمكم خلال هذا العام، و متحمسون لجعل لوميو أفضل في عام 2016.</p>
 
+      <p>هل كان لوميو مفيداً لمجموعتك؟ لقد قمنا للتو بإطلاق خطة التسعير و نحن نقوم بسؤال المجموعات حول مدى استخدام لوميو لنستطيع اختيار الخطة المناسبة للمجموعة</p>
 
-
-      <p>هل كان لوميو مفيداً لمجموعتك؟ لقد قمنا للتو بإطلاق خطة التسعير و نحن
-      نقوم بسؤال المجموعات حول مدى استخدام لوميو لنستطيع اختيار الخطة المناسبة
-      للمجموعة</p>
-    submit: أرني الخطط
+    submit: "أرني الخطط"
   group_welcome_modal:
-    ok_got_it: 'حسناً، لقد فهمت!'
+    ok_got_it: "حسناً، لقد فهمت!"
   join_group_button:
     join_group: انضم للمجموعة
-    ask_to_join_group: قم بطلب الانضمام للمجموعة
     messages:
       joined_group: 'أنت الآن عضو في مجموعة {{group}}'
   membership_request_form:
     heading: قم بطلب الانضمام للمجموعة
     name_label: الإسم
     email_label: البريد الإلكتروني
-    submit_button: قم بطلب الانضمام للمجموعة
     messages:
       membership_requested: 'لقد قمت بطلب الانضمام لمجموعة {{group}}'
   revision_history_modal:
@@ -260,45 +242,44 @@ ar:
   group_page:
     thread_list:
       empty:
-        no_discussions_in_group: هذه المجموعة لا تحتوي أي مواضيع بعد
+        no_discussions_in_group: "هذه المجموعة لا تحتوي أي مواضيع بعد"
         no_discussions_matching_filters_html: "ليس هناك أي مواضيع توافق هذه الخيارات. <a href='%{link}'>Clear filters</a>."
-        no_public_discussions: ليس هناك أي مواضيع عامة في هذه المجموعة.
-        discussions_are_private: كل المواضيع في هذه المجموعة خاصة.
-        join_group: لرؤية المواضيع الخاصة، عليك الانضمام للمجموعة.
-        request_membership: لرؤية المواضيع الخاصة قم بطلب الانضمام للمجموعة.
-        membership_is_invitation_only: للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل أحد الأعضاء.
-        membership_is_invitation_by_admin_only: للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل منسق المجموعة.
+        no_public_discussions: "ليس هناك أي مواضيع عامة في هذه المجموعة."
+        discussions_are_private: "كل المواضيع في هذه المجموعة خاصة."
+        join_group: "لرؤية المواضيع الخاصة، عليك الانضمام للمجموعة."
+        request_membership: "لرؤية المواضيع الخاصة قم بطلب الانضمام للمجموعة."
+        membership_is_invitation_only: "للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل أحد الأعضاء."
+        membership_is_invitation_by_admin_only: "للانضمام لهذه المجموعة يجب أن تكون مدعوّاً من قبل منسق المجموعة."
     messages:
       privacy:
-        members: هذه المجموعة ظاهرة الآن للأعضاء فقط.
-        parent_members: هذه المجموعة ظاهرة الآن فقط لأعضاء منظمتك.
-        public: هذه المجموعة ظاهرة الآن للعموم.
-      leave_group_success: لقد قمت بمغادرة المجموعة.
-      archive_group_success: تم إلغاء المجموعة.
-    group_logo: شعار المجموعة
-    new_photo: صورة جديدة
-    discussions: المواضيع
-    discussions_placeholder: الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.
-    members: أعضاء
+        members: 'هذه المجموعة ظاهرة الآن للأعضاء فقط.'
+        parent_members: 'هذه المجموعة ظاهرة الآن فقط لأعضاء منظمتك.'
+        public: 'هذه المجموعة ظاهرة الآن للعموم.'
+      leave_group_success: 'لقد قمت بمغادرة المجموعة.'
+      archive_group_success: 'تم إلغاء المجموعة.'
+    group_logo: 'شعار المجموعة'
+    new_photo: 'صورة جديدة'
+    discussions: 'المواضيع'
+    discussions_placeholder: 'الموضوع هو حيث يمكن للجميع مناقشة نقاط معينة و صنع قرارات معاً.'
+    members: 'أعضاء'
     members_placeholder: 'أنت الشخص الوحيد هنا: قم بدعوة أشخاص للانضمام!'
     member_options: خيارات الأعضاء
-    subgroups: مجموعة فرعية
-    subgroups_placeholder: تتيح لك المجموعات الفرعية تقسيم المجموعة إلى فرق مختلفة.
-    invite_people: قم بدعوة أشخاص
-    visibility_label: الظهور
-    options_label: الخيارات
+    subgroups: 'مجموعة فرعية'
+    subgroups_placeholder: 'تتيح لك المجموعات الفرعية تقسيم المجموعة إلى فرق مختلفة.'
+    visibility_label: 'الظهور'
+    options_label: 'الخيارات'
     options:
-      label: الخيارات
-      edit_group: تعديل خيارات المجموعة
-      manage_members: إدارة الأعضاء
-      add_subgroup: زيادة مجموعة فرعية
-      manage_subscription: إدارة اشتراكات المجموعة
-      leave_group: غادر المجموعة
-      deactivate_group: إلغاء المجموعة
+      label: 'الخيارات'
+      edit_group: 'تعديل خيارات المجموعة'
+      manage_members: 'إدارة الأعضاء'
+      add_subgroup: 'زيادة مجموعة فرعية'
+      manage_subscription: 'إدارة اشتراكات المجموعة'
+      leave_group: 'غادر المجموعة'
+      deactivate_group: 'إلغاء المجموعة'
     volume:
       loud: قم بإرسال رسالة الكترونية عندما يكون هناك أي نشاط.
       loud_aria_description: صوت التنبيه لتبليغات هذه المجموعة عالٍ. سيتم إبلاغك برسالة الكترونية عندما يكون هناك أي نشاط.
-      loud_message: 'سيتم إبلاغك  برسالة الكترونية حول كل النشاطات في "{{name}}."'
+      loud_message: سيتم إبلاغك  برسالة الكترونية حول كل النشاطات في "{{name}}."
       normal: 'قم بإرسال رسالة الكترونية للنشاطات المهمة فقط: المواضيع و المقترحات الجديدة و النتائج، الخ...'
       normal_aria_description: صوت تنبيه التبليغات لهذه المجموعة متوسط. سيتم إبلاغك ببريد إلكتروني حول النشاطات المهمة فقط، مثل بداية موضوع جديد، رفع مقترح، أو تقرير نتيجة.
       normal_message: 'سيتم إبلاغك ببريد إلكتروني حول النشاطات المهمة فقط في "{{name}}".'
@@ -314,15 +295,15 @@ ar:
       public: 'الخصوصية: هذه المجموعة ظاهرة على الشبكة.'
       aria_label: 'خصوصية المجموعة: {{privacy}}'
   donation_modal:
-    body: لوميو هو مشروع اجتماعي. مهمتنا هي خلق عالم حيث يكون من السهل للأشخاص المشاركة في صناعة القرارات التي تؤثر عليهم.
+    body: "لوميو هو مشروع اجتماعي. مهمتنا هي خلق عالم حيث يكون من السهل للأشخاص المشاركة في صناعة القرارات التي تؤثر عليهم."
     contribute: قم بالمساهمة
   gift_card:
     heading: خطة منحة
     make_a_contribution: قم بالمساهمة
   trial_card:
-    choose_plan: قم باختيار خطة التسعير خاصتك
+    choose_plan: 'قم باختيار خطة التسعير خاصتك'
     in_progress_body: 'شكراً جزيلاً لتجربة لوميو في <strong>{{name}}</strong>. يمكنك اختيار خطة التسعير التي تناسب مجموعتك في أي وقت.'
-    expired_body_html: 'لقد بلغت <strong>{{name}}</strong> نهاية المدة التجريبية للوميو. للاستمرار في استخدامه عليك اختيار خطة تسعير تناسب مجموعتك.'
+    expired_body_html: "لقد بلغت <strong>{{name}}</strong> نهاية المدة التجريبية للوميو. للاستمرار في استخدامه عليك اختيار خطة تسعير تناسب مجموعتك."
   choose_plan_modal:
     heading: الرجاء اختيار خطة تناسب مجموعتك.
     standard: قياسية
@@ -330,55 +311,55 @@ ar:
   subscription_success_modal:
     contact_link: الرجاء الاتصال بنا
     sign_off: ❤ من فريق لوميو
-    ok_got_it: 'حسناً، لقد فهمت!'
+    ok_got_it: حسناً، لقد فهمت!
   group_form:
-    start_group_heading: إبدأ مجموعة
-    start_subgroup_heading: إبدأ مجموعة فرعية.
-    edit_group_heading: تعديل إعدادات المجموعة
-    edit_subgroup_heading: تعديل إعدادات المجموعة الفرعية
-    group_name: اسم المجموعة
-    group_name_placeholder: ماذا تريد أن تدعو مجموعتك؟
-    subgroup_name: اسم المجموعة الفرعية
+    start_group_heading: 'إبدأ مجموعة'
+    start_subgroup_heading: 'إبدأ مجموعة فرعية.'
+    edit_group_heading: 'تعديل إعدادات المجموعة'
+    edit_subgroup_heading: 'تعديل إعدادات المجموعة الفرعية'
+    group_name: 'اسم المجموعة'
+    group_name_placeholder: 'ماذا تريد أن تدعو مجموعتك؟'
+    subgroup_name: 'اسم المجموعة الفرعية'
     description: 'وصف '
-    description_placeholder: قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.
+    description_placeholder: 'قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.'
     privacy_statement:
-      public_on_web: سيكون ظهور اسم ووصف المجموعةعامّاً على الشبكة.
-      private_to_group: سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.
+      public_on_web: 'سيكون ظهور اسم ووصف المجموعةعامّاً على الشبكة.'
+      private_to_group: 'سيكون اسم ووصف المجموعة ظاهرين لأعضاء المجموعة فقط.'
       private_to_parent_members: 'اسم ووصف المجموعة سيكونون ظاهرين لأعضاء {{parent}}'
-    privacy: الخصوصية
-    confirm_change_to_secret: في حالة الاستمرار، سيتم تحويل كل الموضوعات في المجموعة و المجموعات الفرعية لموضوعات خاصة.
-    confirm_change_to_secret_subgroup: في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.
-    confirm_change_to_public: في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.
-    confirm_change_to_private_discussions_only: في حالة الاستمرار سيتم تحويل كافة المواضيع العامة في المجموعة إلى خاصة.
-    advanced_settings: إعدادات متقدمة
-    how_do_people_join: كيف يمكن للأشخاص الانضمام؟
-    membership_granted_upon_request: يمكن لأي شخص الانضمام
-    membership_granted_upon_approval: يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.
-    thread_privacy: خصوصية المواضيع
-    public_threads: المواضيع العامة فقط
+    privacy: 'الخصوصية'
+    confirm_change_to_secret: "في حالة الاستمرار، سيتم تحويل كل الموضوعات في المجموعة و المجموعات الفرعية لموضوعات خاصة."
+    confirm_change_to_secret_subgroup: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى خاصة.'
+    confirm_change_to_public: 'في حالة الاستمرار سيتم تحويل كافة المواضيع إلى عامة على الشبكة.'
+    confirm_change_to_private_discussions_only: 'في حالة الاستمرار سيتم تحويل كافة المواضيع العامة في المجموعة إلى خاصة.'
+    advanced_settings: "إعدادات متقدمة"
+    how_do_people_join: "كيف يمكن للأشخاص الانضمام؟"
+    membership_granted_upon_request: 'يمكن لأي شخص الانضمام'
+    membership_granted_upon_approval: 'يمكن لأي شخص طلب الانضمام و لكن يجب الموافقة على طلب الانضمام.'
+    thread_privacy: 'خصوصية المواضيع'
+    public_threads: 'المواضيع العامة فقط'
     public_discussions_subgroup: 'يمكن لأي شخص من {{parentGroupName}} رؤية النقاش'
-    public_or_private_threads: السماح بموضوعات خاصة و عامة
-    private_threads: يمكن للأعضاء فقط رؤية النقاشات
-    permissions: السماح
-    allow_public_threads: السماح بمواضيع عامة في هذه المجموعة.
+    public_or_private_threads: 'السماح بموضوعات خاصة و عامة'
+    private_threads: 'يمكن للأعضاء فقط رؤية النقاشات'
+    permissions: 'السماح'
+    allow_public_threads: 'السماح بمواضيع عامة في هذه المجموعة.'
     parent_members_can_see_discussions: 'يمكن لأعضاء {{parent}} رؤية المواضيع الخاصة.'
-    members_can_add_members: يمكن للأعضاء دعوة أشخاص و الموافقة عى طلبات الانضمام.
-    members_can_create_subgroups: يمكن للأعضاء بدء مجموعات فرعية.
-    members_can_edit_discussions: يمكن للأعضاء تحديث سياق و عنوان الموضوع.
-    members_can_edit_comments: يمكن للأعضاء تعديل تعليقاتهم في أي وقت.
-    members_can_start_discussions: يمكن للأعضاء بدء مواضيع جديدة.
-    members_can_vote: يمكن للأعضاء التصويت على المقترحات.
-    members_can_raise_motions: يمكن للأعضاء بدء مقترحات.
-    submit_start_group: بدء مجموعة.
-    submit_start_subgroup: بدء مجموعة فرعية.
-    submit_update: تحديث الإعدادات
+    members_can_add_members: 'يمكن للأعضاء دعوة أشخاص و الموافقة عى طلبات الانضمام.'
+    members_can_create_subgroups: 'يمكن للأعضاء بدء مجموعات فرعية.'
+    members_can_edit_discussions: 'يمكن للأعضاء تحديث سياق و عنوان الموضوع.'
+    members_can_edit_comments: 'يمكن للأعضاء تعديل تعليقاتهم في أي وقت.'
+    members_can_start_discussions: 'يمكن للأعضاء بدء مواضيع جديدة.'
+    members_can_vote: 'يمكن للأعضاء التصويت على المقترحات.'
+    members_can_raise_motions: 'يمكن للأعضاء بدء مقترحات.'
+    submit_start_group: 'بدء مجموعة.'
+    submit_start_subgroup: 'بدء مجموعة فرعية.'
+    submit_update: 'تحديث الإعدادات'
     messages:
-      group_created: تم البدء بالمجموعة.
-      group_updated: تم تحديث المجموعة.
+      group_created: 'تم البدء بالمجموعة.'
+      group_updated: 'تم تحديث المجموعة.'
   membership_requests_card:
-    heading: طلبات العضوية
+    heading: 'طلبات العضوية'
     manage_requests: إدارة الطلبات
-    manage_requests_with_count: 'إدارة الطلبات ({{count}})'
+    manage_requests_with_count: إدارة الطلبات ({{count}})
   group_help_card:
     title: مساعدة
     ten_tips_article_title: 10 نصائح لمساعدتك في صناعة نقاشات رائعة مع لوميو
@@ -398,45 +379,44 @@ ar:
     heading: المقترحات السابقة
     see_more: إظهار المزيد
   invitation_form:
-    invite_people: قم بدعوة أشخاص
-    group: مجموعة
-    shareable_link: رابط قابل للمشاركة
-    copy_link: نسخ الرابط
-    email_addresses: عناوين البريد الإلكتروني
+    invite_people: 'قم بدعوة أشخاص'
+    group: 'مجموعة'
+    shareable_link: 'رابط قابل للمشاركة'
+    email_addresses: 'عناوين البريد الإلكتروني'
     email_addresses_placeholder: 'مثال: helperbot@loomio.org, friendlybot@loomio.org'
-    email_explanation: عوضاً عن ذلك، يمكنك إدخال عناوين البريد الإلكتروني في الأسفل و سيقوم لوميو بإرسال الدعوات لهم عبر البريد الإلكتروني.
-    add_custom_message: قم بجعل دعوتك شخصية،
-    add_custom_message_link: قم بإضافة رسالة مخصصة.
-    custom_message: تخصيص الرسالة
-    custom_message_placeholder: قم بإدخال رسالة شخصية لإرفاقها مع الدعوة.
+    email_explanation: 'عوضاً عن ذلك، يمكنك إدخال عناوين البريد الإلكتروني في الأسفل و سيقوم لوميو بإرسال الدعوات لهم عبر البريد الإلكتروني.'
+    add_custom_message: 'قم بجعل دعوتك شخصية،'
+    add_custom_message_link: 'قم بإضافة رسالة مخصصة.'
+    custom_message: 'تخصيص الرسالة'
+    custom_message_placeholder: 'قم بإدخال رسالة شخصية لإرفاقها مع الدعوة.'
     team_invitation_message: 'عوضاً عن ذلك، '
-    team_invitation_link: احصل على رابط للمشاركة.
-    add_members: قم بإضافة أعضاء.
+    team_invitation_link: 'احصل على رابط للمشاركة.'
+    add_members: 'قم بإضافة أعضاء.'
     from_parent_group: 'من {{name}}.'
-    send: أرسل
-    done: تم
+    send: 'أرسل'
+    done: 'تم'
     messages:
-      invitation_sent: تم إرسال الدعوة.
+      invitation_sent: 'تم إرسال الدعوة.'
       invitations_sent: 'تم إرسال {{count}} دعوات.'
-      max_invitations: إن كنت تريد إرسال أكثر من 100 دعوة، قم باستخدام رابط فريق.
+      max_invitations: 'إن كنت تريد إرسال أكثر من 100 دعوة، قم باستخدام رابط فريق.'
   add_members_modal:
     heading: 'قم بإضافة أشخاص من {{name}}'
-    add_members: قم بإضافة أعضاء.
+    add_members: 'قم بإضافة أعضاء.'
     user_added_to_subgroup: 'تمت إضافة {{name}} للمجموعة الفرعية'
     users_added_to_subgroup: 'تمت إضافة {{count}} أعضاء للمجموعة الفرعية'
     no_members_to_add: 'كافة أعضاء {{parent}} ينتمون لهذه المجموعة الفرعية.'
   memberships_page:
-    members: الأعضاء
-    name_label: الإسم
-    coordinator_label: المنسق
-    remove_member_label: إزالة
-    fragment_placeholder: اختيار المستخدمين حسب الاسم أو اسم المستخدم..
+    members: 'الأعضاء'
+    name_label: 'الإسم'
+    coordinator_label: 'المنسق'
+    remove_member_label: 'إزالة'
+    fragment_placeholder: 'اختيار المستخدمين حسب الاسم أو اسم المستخدم..'
     messages:
       remove_member_success: 'تمت إزالة {{name}}'
       make_admin_success: 'تم تعيين {{name}} منسقاً'
       remove_admin_success: '{{name}} لم يعد منسقاً'
     remove_admin_from_self:
-      question: هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟
+      question: 'هل أنت متأكد أنك لا ترغب أن تكون منسقاً بعد الآن؟'
   pending_invitations_card:
     heading: دعوات في الانتظار
     email: بريد الكتروني
@@ -445,35 +425,35 @@ ar:
   cancel_invitation_form:
     heading: إلغاء الدعوة
     question: هل أنت متأكد من أنك تريد إلغاء الدعوة؟
-    submit: أجل، قم بإلغاء الدعوة
-    cancel: لا
+    submit: "أجل، قم بإلغاء الدعوة"
+    cancel: 'لا'
     messages:
       success: تم إلغاء الدعوة
   profile_page:
     messages:
-      updated: تم تحديث الملف الشخصي
-      picture_changed: تم تحديث صورة الملف الشخصي
-      password_changed: تم تحديث كلمة المرور
-      deactivated: تم إلغاء الحساب
-    change_picture_link: تغيير الصورة
-    change_password_link: تغيير كلمة المرور
-    deactivate_user_link: إلغاء الحساب
-    profile: ملف شخصي
-    edit_profile: تعديل الملف الشخصي
-    picture_label: صورة
-    name_label: الإسم
-    username_label: إسم المستخدم
-    email_label: البريد الإلكتروني
-    locale_label: اللغة
-    update_profile: تحديث الملف الشخصي
+      updated: 'تم تحديث الملف الشخصي'
+      picture_changed: 'تم تحديث صورة الملف الشخصي'
+      password_changed: 'تم تحديث كلمة المرور'
+      deactivated: 'تم إلغاء الحساب'
+    change_picture_link: 'تغيير الصورة'
+    change_password_link: 'تغيير كلمة المرور'
+    deactivate_user_link: 'إلغاء الحساب'
+    profile: 'ملف شخصي'
+    edit_profile: 'تعديل الملف الشخصي'
+    picture_label: 'صورة'
+    name_label: 'الإسم'
+    username_label: 'إسم المستخدم'
+    email_label: 'البريد الإلكتروني'
+    locale_label: 'اللغة'
+    update_profile: 'تحديث الملف الشخصي'
   email_settings_page:
     header: إعدادات البريد الإلكتروني
     daily_summary_label: الرسالة الكترونية للملخص اليومي
-    mentioned_description: عندما يريد أحد ما تنبيه، سيقومون @بذكرك. نحن ننصح أن تبقي هذا الخيار فعالاً، لكي تستقبل بريداً إلكترونياً في حال حدوث هذا.
+    mentioned_description: "عندما يريد أحد ما تنبيه، سيقومون @بذكرك. نحن ننصح أن تبقي هذا الخيار فعالاً، لكي تستقبل بريداً إلكترونياً في حال حدوث هذا."
     messages:
       updated: تم تحديث إعدادات البريد الإلكتروني
   dashboard_page:
-    aria_label: لوحة التحكم
+    aria_label: 'لوحة التحكم'
     no_threads:
       show_all: ليس لديك أي مواضيع حديثة.
       show_starred: ليس لديك أي مواضيع مميزة.
@@ -503,29 +483,29 @@ ar:
       current_proposal: 'الموضوع الحالي: {{name}}.'
       you_voted: 'لقد قمت بالتصويت: {{position}}.'
     threads_from:
-      group: المواضيع من
+      group: 'المواضيع من'
       proposals: 'المقترحات '
-      starred: المواضيع المميزة
-      today: اليوم
-      yesterday: أمس
-      thisweek: هذا الأسبوع
-      thismonth: هذا الشهر
-      older: أقدم من شهر
+      starred: 'المواضيع المميزة'
+      today: 'اليوم'
+      yesterday: 'أمس'
+      thisweek: 'هذا الأسبوع'
+      thismonth: 'هذا الشهر'
+      older: 'أقدم من شهر'
   star_toggle:
     star: موضوع مفضل
   inbox_page:
-    no_threads: 'مبروك! لقد قمت بقراءة كل المواضيع في بريدك.'
+    no_threads: مبروك! لقد قمت بقراءة كل المواضيع في بريدك.
     unread_threads: المواضيع الغير مقروءة
     view_more: إظهار المزيد
   groups_page:
     page_header: مجموعاتك
   discussion:
-    activity: نشاط
+    activity: 'نشاط'
     activity_placeholder: 'لا يوجد نشاط بعد!'
     proposals: 'المقترحات '
-    previous_proposals: المقترحات السابقة
-    load_previous: تحميل النشاطات السابقة
-    you_like_this: أعجبك هذا.
+    previous_proposals: 'المقترحات السابقة'
+    load_previous: 'تحميل النشاطات السابقة'
+    you_like_this: 'أعجبك هذا.'
     liked_by_you_and_someone: 'أنت و {{name}} أعجبتم بهذا'
     liked_by_you_and_others: 'تم الإعجاب من قبلك، {{joinedNames}}  و {{name}}.'
     liked_by_someone: '{{name}} أعجب بهذا.'
@@ -534,19 +514,18 @@ ar:
     liked_by_name: 'تم الإعجاب من قبل {{name}}.'
     liked_by_names_and_name: 'تم الإعجاب من قبل {{joinedNames}} و{{name}}. '
     started_by: 'تم بدؤه من قبل <strong>{{name}}</strong> '
-    edited: معدّل
+    edited: 'معدّل'
   thread_group:
-    aria_label: اسم المجموعة
+    aria_label: 'اسم المجموعة'
   thread_context:
-    aria_label: سياق الموضوع
-    thread_options: خيارات الموضوع
-    move_thread: نقل
-    print_thread: طباعة
-    delete_thread: حذف
+    aria_label: 'سياق الموضوع'
+    thread_options: 'خيارات الموضوع'
+    move_thread: 'نقل'
+    print_thread: 'طباعة'
+    delete_thread: 'حذف'
   delete_thread_form:
     title: حذف الموضوع
     body: هل أنت متأكد أنك تريد حذف الموضوع؟
-    confirm: أجل، قم بحذف الموضوع
     messages:
       success: تم حذف الموضوع
   move_thread_form:
@@ -555,29 +534,29 @@ ar:
     confirm: 'نقل الموضوع '
     confirm_change_to_private_thread: '{{groupName}} هي مجموعة مفتوحة. إن اخترت الاستمرار، سيتم تحويل هذا الموضوع إلى عام.'
     messages:
-      success: 'تم نقل الموضوع إلى {{name}}'
+      success: تم نقل الموضوع إلى {{name}}
   activity_card:
     new_activity: نشاط جديد
     attachment_display:
       aria_label: 'الملف المرفق: '
-      image_alt: صورة مرفقة
+      image_alt: 'صورة مرفقة'
   delete_comment_dialog:
-    title: احذف التعليق
-    question: هل أنت متأكد من أنك تريد حذف هذا التعليق؟
-    confirm: احذف التعليق
+    title: 'احذف التعليق'
+    question: 'هل أنت متأكد من أنك تريد حذف هذا التعليق؟'
+    confirm: 'احذف التعليق'
   new_comment_item:
     aria_label: 'تعليق من قبل {{author}}'
     context_menu:
-      aria_label: خيارات التعليقات
-      edit_comment: تعديل التعليق
-      delete_comment: احذف التعليق
+      aria_label: 'خيارات التعليقات'
+      edit_comment: 'تعديل التعليق'
+      delete_comment: 'احذف التعليق'
     in_reply_to: 'رداً على <strong>{{recipient}}</strong>'
     edited: 'معدّل '
   new_vote_item:
-    agree: موافق
-    abstain: يمتنع
-    disagree: غير موافق
-    block: أعترض
+    agree: 'موافق'
+    abstain: 'يمتنع'
+    disagree: 'غير موافق'
+    block: 'أعترض'
     agree_with_statement: 'موافق: <span>{{statement}}</span>'
     abstain_with_statement: 'يمتنع: <span>{{statement}}</span>'
     disagree_with_statement: 'غير موافق: <span>{{statement}}</span>'
@@ -590,165 +569,128 @@ ar:
     proposal_closed_by_user: 'تم إغلاق المقترح: <span>{{title}}</span>'
   proposal_edited_item:
     name: 'تم تحديث عنوان المقترح: <span>{{title}}</span>'
-    description: تم تحديث وصف المقترح
+    description: 'تم تحديث وصف المقترح'
     closing_at: 'تم تحديث المقترح ليغلق في <span>{{time}}</span>'
-    description_name: تم تحديث عنوان ووصف المقترح
-    closing_at_name: تم تحديث عنوان المقترح ووقت الإغلاق
-    closing_at_description: تم تحديث وصف المقترح ووقت الإغلاق
-    closing_at_description_name: تم تحديث عنوان المقترح، الوصف ووقت الإغلاق
+    description_name: 'تم تحديث عنوان ووصف المقترح'
+    closing_at_name: 'تم تحديث عنوان المقترح ووقت الإغلاق'
+    closing_at_description: 'تم تحديث وصف المقترح ووقت الإغلاق'
+    closing_at_description_name: 'تم تحديث عنوان المقترح، الوصف ووقت الإغلاق'
   proposal_outcome_created_item:
     proposal_outcome_created: 'تم نشر نتيجة مقترح: '
   proposal_outcome_updated_item:
     proposal_outcome_updated: 'تم تحديث نتيجة المقترح:'
   discussion_edited_item:
     title: 'تم تحديث عنوان الموضوع: <span>{{title}}</span>'
-    description: تم تحديث سياق الموضوع
-    description_title: تم تحديث عنوان و سياق الموضوع
-    private: تم تحديث خصوصية الموضوع إلى
-    public_to_private: خاص
-    private_to_public: عام
-    description_private_title: تم تحديث عنوان الموضوع، السياق و الخصوصية.
+    description: 'تم تحديث سياق الموضوع'
+    description_title: 'تم تحديث عنوان و سياق الموضوع'
+    private: 'تم تحديث خصوصية الموضوع إلى'
+    public_to_private: 'خاص'
+    private_to_public: 'عام'
+    description_private_title: 'تم تحديث عنوان الموضوع، السياق و الخصوصية.'
   contact_message_form:
-    contact_us: اتصل بنا
-    name_label: اسمك
-    name_placeholder: ادخل اسمك...
-    email_label: عنوان بريدك الإلكتروني
-    email_placeholder: ادخل عنوان بريدك الالكتروني...
-    message_label: رسالتك
-    message_placeholder: ادخل رسالتك...
-    send_message: أرسل الرسالة
+    contact_us: 'اتصل بنا'
+    name_label: 'اسمك'
+    name_placeholder: 'ادخل اسمك...'
+    email_label: 'عنوان بريدك الإلكتروني'
+    email_placeholder: 'ادخل عنوان بريدك الالكتروني...'
+    message_label: 'رسالتك'
+    message_placeholder: 'ادخل رسالتك...'
+    send_message: 'أرسل الرسالة'
     new_contact_message: 'شكرا لرسالتك؛ سنقوم بالتواصل معك قريباً!'
   help_page:
-    coordinating: قم بتنسيق مجموعة لوميو الخاصة بك
-    coordinating_details: >
-      كمنسق أنت مسؤول عن إعداد مجموعة لوميو الخاصة بك و دعوة الجميع للانضمام.
-      بالإضافة إلى تعلّم
-
-      كيفية استخدام البرنامج الجديد، سوف تتعلّم مجموعتك عمليات جديدة للتعاون بشكل
-      أكثر فاعلية و
-
+    coordinating: 'قم بتنسيق مجموعة لوميو الخاصة بك'
+    coordinating_details: |
+      كمنسق أنت مسؤول عن إعداد مجموعة لوميو الخاصة بك و دعوة الجميع للانضمام. بالإضافة إلى تعلّم
+      كيفية استخدام البرنامج الجديد، سوف تتعلّم مجموعتك عمليات جديدة للتعاون بشكل أكثر فاعلية و
       لصنع قرارات جيدة معاً. هنا بعض النصائح لدعم مجموعتك للنجاح:
-    different_ways: الطرق المختلفة لاستخدام لوميو
-    example1_html: >
+    different_ways: 'الطرق المختلفة لاستخدام لوميو'
+    example1_html: |
       <h3>ستحتاج مجموعتك لأن تناقش موضوعاً عاماً و تطور حلولاً سوياً</h3>
-
       <p>استراتيجية: قم بمناقشة موضوع لفترة قبل إنشاء مقترح.</p>
-
-      </p> غالباً ما تبلغ النقاشات أفضل النتائج عندما تقوم ببناء تفاهمات مشتركة
-      حول المشكلة قبل القفز إلى حل معين. عندما يتشارك الأشخاص في العملية، فمن
-      المرجح أن يتقبلوا النتائج بشكل أفضل.</p>
-    get_in_touch: تواصل معنا
+      </p> غالباً ما تبلغ النقاشات أفضل النتائج عندما تقوم ببناء تفاهمات مشتركة حول المشكلة قبل القفز إلى حل معين. عندما يتشارك الأشخاص في العملية، فمن المرجح أن يتقبلوا النتائج بشكل أفضل.</p>
+    get_in_touch: "تواصل معنا"
     get_in_touch_description_html: "إذا كان لديك أي أسئلة أو تعليقات، <'{a href='%{link>تواصل معنا</a>."
-    getting_started: من أجل البدء
-    getting_started_description: على اليسار، تناقش المجموعة موضوعاً و تتبادل الأفكار و المعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين.
-    getting_the_most: لإقصى استفادة من لوميو
-    have_your_say: 'شارك برأيك '
-    have_your_say_details_html: >
-      <p>عندما تكون مستعداً للمشاركة برأيك، اضغط على واحد من أزرار القرارات
-      الأربعة.</p>
-
-      <p> عندما تقوم بمشاركة قرارك، قم بنشر شرح بسيط. يمكنك رؤية ما يعتقده الجميع
-      تحت الشكل البياني. يجعل هذا من السهل أن تقوم باللحاق بالنقاشات بسرعة. يمكنك
-      تغيير رأيك بأي وقت مع ظهور معلومات جديدة.</p>
-    have_a_discussion: أجر نقاشاً
-    have_a_discussion_description: يتم وضع موضوع النقاش وأي معلومات لازمة متعلقة به في أعلى الصفحة. يمكنك استخدام مربع التعليق لإضافة صوتك في النقاش.
-    help: مساعدة
-    how_it_works: كيفية عمل لوميو
-    invitation_html: >
+    getting_started: "من أجل البدء"
+    getting_started_description: "على اليسار، تناقش المجموعة موضوعاً و تتبادل الأفكار و المعلومات. عندما يكون هناك قرار يتعين على المجموعة اتخاذه، فإنه يظهر على اليمين."
+    getting_the_most: 'لإقصى استفادة من لوميو'
+    have_your_say: "شارك برأيك "
+    have_your_say_details_html: |
+      <p>عندما تكون مستعداً للمشاركة برأيك، اضغط على واحد من أزرار القرارات الأربعة.</p>
+      <p> عندما تقوم بمشاركة قرارك، قم بنشر شرح بسيط. يمكنك رؤية ما يعتقده الجميع تحت الشكل البياني. يجعل هذا من السهل أن تقوم باللحاق بالنقاشات بسرعة. يمكنك تغيير رأيك بأي وقت مع ظهور معلومات جديدة.</p>
+    have_a_discussion: "أجر نقاشاً"
+    have_a_discussion_description: "يتم وضع موضوع النقاش وأي معلومات لازمة متعلقة به في أعلى الصفحة. يمكنك استخدام مربع التعليق لإضافة صوتك في النقاش."
+    help: "مساعدة"
+    how_it_works: "كيفية عمل لوميو"
+    invitation_html: |
       <h2>كتابة دعوة رائعة</h2>
-
       <p>السؤال الأول الذي يسأله كل عضو جديد هو "ماهو هدف هذه المجموعة؟"</p>
-
-      <p> فكر بأبسط طريقة يمكنك من خلالها شرح المجموعة: ماذا تريد أن يحقق أعضاء
-      المجموعة معاً؟ ما نوع القرارات التي ستقومون باتخاذها؟ من هو المعني
-      بالأمر؟</p>
-
-      <p>قد تكون فكرة جيدة أن تناقش الأمر مع مجموعتك قبل أن تدعوهم للانضمام
-      للوميو.</p>
-
-      <p>سيرغب الأشخاص أن يعرفوا لماذا تمت دعوتهم، و ماهو المتوقع منهم، و لماذا
-      يستحق الأمر أن يمضوا وقتهم لتعلم كيفية استخدام الأدوات الجديدة.</p>
-    join_the_community: إنضم للمجتمع
+      <p> فكر بأبسط طريقة يمكنك من خلالها شرح المجموعة: ماذا تريد أن يحقق أعضاء المجموعة معاً؟ ما نوع القرارات التي ستقومون باتخاذها؟ من هو المعني بالأمر؟</p>
+      <p>قد تكون فكرة جيدة أن تناقش الأمر مع مجموعتك قبل أن تدعوهم للانضمام للوميو.</p>
+      <p>سيرغب الأشخاص أن يعرفوا لماذا تمت دعوتهم، و ماهو المتوقع منهم، و لماذا يستحق الأمر أن يمضوا وقتهم لتعلم كيفية استخدام الأدوات الجديدة.</p>
+    join_the_community: "إنضم للمجتمع"
     join_the_community_description_html: "الجميع مرحب به للانضمام لمجتمع لوميو، حيث نتحدث حول كيفية الاستفادة من الأدوات، و كيفية تطويرها. <br/><br/><a href='https://www.loomio.org/g/WmPCB3IR'> اضغط هنا للذهاب إلى مجموعة مجتمع لوميو.<a/>"
-    images_and_text_formatting: تنسيق النص و الصور
-    images_and_text_formatting_html: >
-      <p>يستخدم لوميو نظام التخفيض لتضمين الصور و تنسيق النصوص. يمكنك تفعيل نظام
-      التخفيض عبر الأيقونة الصغيرة الرمادية تحت صندوق التعليقات.</p>
-
-      <p><a href='https://www.loomio.org/discussions/1124'>اضغط هنا</a> للمعلومات
-      حول كيفية استخدام نظام التخفيض.</p>
-    keep_up_to_date: البقاء على تواصل
-    keep_up_to_date_html: >
-      <p>بالضغط على اسم مجموعتك في أعلى الصفحة ستنتقل إلى صفحة مجموعتك، حيث يمكنك
-      رؤية قائمة بكل النقاشات و القرارات لهذه المجموعة. إن كنت في أكثر من مجموعة،
-      يمكنك رؤية كل النشاطات في كل مجموعاتك مرة واحدة على الصفحة الرئيسية.</p>
-
-      <p>سوف تستقبل التبليغات عبر البريد الإلكتروني عندما تحدث أشياء مهمة في
-      مجموعتك. يمكنك تغيير تفضيلات البريد الإلكتروني خاصتك <a
-      href="%{link}"">هنا</a>.</p>
-    make_a_decision: اتخذ قراراً
-    make_a_decision_description: عندما تصبح المجموعة جاهزة لاتخاذ قرار، فإنه يمكن لأي كان أن يطرح مقترحاً. ضع خطاً واضحاً لمسار العمل وأعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها.
-    prompt_people_details: 'إن أردت تنبيه شخص معين في مجموعتك، أكتب "@" متبوعة باسم الشخص. سوف يستقبل هذا الشخص رسالة الكترونية ليعرف أنك قد ذكرته في تعليق.'
+    images_and_text_formatting: "تنسيق النص و الصور"
+    images_and_text_formatting_html: |
+      <p>يستخدم لوميو نظام التخفيض لتضمين الصور و تنسيق النصوص. يمكنك تفعيل نظام التخفيض عبر الأيقونة الصغيرة الرمادية تحت صندوق التعليقات.</p>
+      <p><a href='https://www.loomio.org/discussions/1124'>اضغط هنا</a> للمعلومات حول كيفية استخدام نظام التخفيض.</p>
+    keep_up_to_date: "البقاء على تواصل"
+    keep_up_to_date_html: |
+      <p>بالضغط على اسم مجموعتك في أعلى الصفحة ستنتقل إلى صفحة مجموعتك، حيث يمكنك رؤية قائمة بكل النقاشات و القرارات لهذه المجموعة. إن كنت في أكثر من مجموعة، يمكنك رؤية كل النشاطات في كل مجموعاتك مرة واحدة على الصفحة الرئيسية.</p>
+      <p>سوف تستقبل التبليغات عبر البريد الإلكتروني عندما تحدث أشياء مهمة في مجموعتك. يمكنك تغيير تفضيلات البريد الإلكتروني خاصتك <a href="%{link}"">هنا</a>.</p>
+    make_a_decision: "اتخذ قراراً"
+    make_a_decision_description: "عندما تصبح المجموعة جاهزة لاتخاذ قرار، فإنه يمكن لأي كان أن يطرح مقترحاً. ضع خطاً واضحاً لمسار العمل وأعط ما يكفي من المعلومات بحيث يدرك الجميع مالذي تعنيه الموافقة أو عدمها."
+    prompt_people_details: "إن أردت تنبيه شخص معين في مجموعتك، أكتب \"@\" متبوعة باسم الشخص. سوف يستقبل هذا الشخص رسالة الكترونية ليعرف أنك قد ذكرته في تعليق."
     prompt_people_html: "قم بتشجيع الأشخاص عبر <span class='blue'>@ذكرهم</span>"
-    positions_agree_description: '<span>"موافق"</span> تعني أنك راض بالمقترح.'
-    positions_abstain_description: '<span>"امتنع"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك.'
-    positions_disagree_description: '<span>"غير موافق"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة.'
-    positions_block_description: '<span>"أعترض"</span> تعني أنه لديك اعتراضات جدية وأنك ستكون غير راضٍ إذا تم تبني المقترح.'
-    start_discussion: البدء بنقاش تشاركي
-    start_proposal: كتابة مقترح واضح
-    start_proposal_html: >
-      <p>عندما تجعل العنوان واضحاً و موجزاً، فإن الأشخاص سيعلمون فوراً ماذا تعني
-      موافقتهم أو رفضهم.</p>
-
+    positions_agree_description: "<span>\"موافق\"</span> تعني أنك راض بالمقترح."
+    positions_abstain_description: "<span>\"امتنع\"</span> تعني أنك غير متأكد، أو أنك سعيد بترك المجموعة تقرر عنك."
+    positions_disagree_description: "<span>\"غير موافق\"</span> تعني أنك تظن أن هناك بديل أفضل، ولكنك على استعداد للمضي مع قرار المجموعة."
+    positions_block_description: "<span>\"أعترض\"</span> تعني أنه لديك اعتراضات جدية وأنك ستكون غير راضٍ إذا تم تبني المقترح."
+    start_discussion: "البدء بنقاش تشاركي"
+    start_proposal: "كتابة مقترح واضح"
+    start_proposal_html: |
+      <p>عندما تجعل العنوان واضحاً و موجزاً، فإن الأشخاص سيعلمون فوراً ماذا تعني موافقتهم أو رفضهم.</p>
       <p> ليست نهاية العالم إن لم تحصل على موافقة فورية على المقترح.
-
       إن لم تحب المجموعة المقترح الأول، يمكن لأي شخص البدء بمقترح جديد
-
-      للاستجابة للمخاوف التي تم طرحها، الحكمة الجمعية في مجموعتك ستولد أفكاراً
-      أفضل
-
+      للاستجابة للمخاوف التي تم طرحها، الحكمة الجمعية في مجموعتك ستولد أفكاراً أفضل
       من أي شيء قد يأتي به شخص بمفرده.</p>
-
       <p>يمكن تمديد الموعد النهائي للمقترح في أي وقت، إن كان يبدو أن القرار
-
-      بحاجة لبعض المساحة. سوف يستقبل الجميع رسالة الكترونية تبلغهم قبل 24 ساعة من
-      إغلاق المقترح.
-    video_id: '52025402'
-    video_tutorial: الفيديو التعليمي
-    video_tutorial_description: شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام لوميو.
+      بحاجة لبعض المساحة. سوف يستقبل الجميع رسالة الكترونية تبلغهم قبل 24 ساعة من إغلاق المقترح.
+    video_id: "52025402"
+    video_tutorial: "الفيديو التعليمي"
+    video_tutorial_description: "شاهد الفيديو لتحصل على عرض سريع حول كيفية استخدام لوميو."
   hint:
-    context: نصائح حول استخدام منصة السياق
-    discussion: نصائح للبدء بنقاش تشاركي
-    invitation: نصائح لكتابة دعوة رائعة
-    proposal: نصائح لكتابة مقترح واضح
-    vote: يمكنك تغيير رأيك في أي وقت
+    context: 'نصائح حول استخدام منصة السياق'
+    discussion: 'نصائح للبدء بنقاش تشاركي'
+    invitation: 'نصائح لكتابة دعوة رائعة'
+    proposal: 'نصائح لكتابة مقترح واضح'
+    vote: 'يمكنك تغيير رأيك في أي وقت'
   angular:
-    switch_back: استخدم النسخة القديمة من لوميو
-    give_feedback: قم بإعطاء رأيك
+    switch_back: 'استخدم النسخة القديمة من لوميو'
+    give_feedback: 'قم بإعطاء رأيك'
     collapse: 'انهيار '
     enable:
       invite: 'جرب لوميو الجديد!'
       title: 'جرب لوميو الجديد!'
-      button_text: قم بتفعيل لوميو الجديد
+      button_text: 'قم بتفعيل لوميو الجديد'
     disable:
-      title: شكراً لاستخدامك لوميو الجديد
-      body_html: '<p>حظ سيء، هل أخطأنا في شيء؟ نحن نعتذر إن قضيت وقتاً سيئاً على لوميو الجديد.</p>'
-      give_feedback: قبل أن تذهب نرجوك أن تأخذ بعين الاعتبار أن تزودنا بتعليقاتك لكي نستطيع التطور.
-      button_text: قم بالعودة إلى لوميو القديم
+      title: 'شكراً لاستخدامك لوميو الجديد'
+      body_html: "<p>حظ سيء، هل أخطأنا في شيء؟ نحن نعتذر إن قضيت وقتاً سيئاً على لوميو الجديد.</p>"
+      give_feedback: "قبل أن تذهب نرجوك أن تأخذ بعين الاعتبار أن تزودنا بتعليقاتك لكي نستطيع التطور."
+      button_text: 'قم بالعودة إلى لوميو القديم'
   global:
     messages:
-      app_update: نسخة جديدة من لوميو متاحة الآن
-      reload: إعادة تحميل
+      app_update: 'نسخة جديدة من لوميو متاحة الآن'
+      reload: 'إعادة تحميل'
   emoji_picker:
-    search: إيجاد رموز تعبيرية
+    search: "إيجاد رموز تعبيرية"
     no_emojis_found: "لم يتم إيجاد أي رموز تعبيرية ل'{{term}}'!"
   authorized_apps_page:
     title: التطبيقات المخولة
-    no_applications: لم تقم بتخويل أي تطبيقات من طرف ثالث بعد.
+    no_applications: "لم تقم بتخويل أي تطبيقات من طرف ثالث بعد."
     revoke: سحب
   registered_apps_page:
     title: التطبيقات المسجلة
-    no_applications: 'ليس لديك أي تطبيقات ل OAuth بعد! اضغط في الأسفل لتنشئ واحداً.'
+    no_applications: "ليس لديك أي تطبيقات ل OAuth بعد! اضغط في الأسفل لتنشئ واحداً."
     name: الاسم
     redirect_uris: إعادة توجيه الرابط
     create_new_application: طلب جديد
@@ -761,8 +703,8 @@ ar:
     name_label: 'الاسم '
     name_placeholder: ماذا يدعى طلبك؟
     redirect_uri_label: 'إعادة توجيه معرف الموارد '
-    redirect_uri_placeholder: 'إعادة الاتصال من قبل معرف الموارد بشأن طلبك، مثال:  https://myapplication.com/loomio/callback'
-    redirect_uri_note: "(سطر واحد لكل معرف موارد، استخدم 'urn:ietf:wg:oauth:2.0:oob' من أجل الفحوصات المحلية)"
+    redirect_uri_placeholder: "إعادة الاتصال من قبل معرف الموارد بشأن طلبك، مثال:  https://myapplication.com/loomio/callback"
+    redirect_uri_note: (سطر واحد لكل معرف موارد، استخدم 'urn:ietf:wg:oauth:2.0:oob' من أجل الفحوصات المحلية)
     new_application_submit: انشئ طلباً
     edit_application_submit: 'تحديث الطلب '
     messages:
@@ -770,13 +712,13 @@ ar:
       created: "تم إنشاء '{{name}}'"
       updated: "تم تحديث '{{name}}'"
   remove_app_form:
-    title: "تمت إزالة '{{name}}'"
+    title: تمت إزالة '{{name}}'
     question: "هل أنت متأكد أنك تريد إلغاء طلبك '{{name}}'؟ لن يكون بإمكانك التراجع."
     submit: إلغاء
     messages:
       success: "تم إلغاء '{{name}}' بنجاح"
   revoke_app_form:
-    title: "قم بسحب إمكانية الدخول ل'{{name}}'"
+    title: قم بسحب إمكانية الدخول ل'{{name}}'
     question: "هل أنت واثق أنك تريد منع '{{name}}' من استخدام حسابك؟"
     submit: سحب إمكانية الدخول
     messages:
