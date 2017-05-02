@@ -32,9 +32,9 @@
 
       .discussion-form__attachments
         .lmo-md-actions
-          %a.discussion-form__formatting-help{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
+          %a.discussion-form__formatting-help.md-button.md-accent{lmo-href: "/markdown", tabindex: 0, target: "_blank", title: "{{ 'common.formatting_help.title' | translate }}"}
             %span{translate: "common.formatting_help.label"}
-          %attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
+          %md_attachment_form.discussion-form__attachment-form{model: "discussion", ng-if: "discussion.groupId", show-label: "true"}
 
         %validation_errors.discussion-form__attachment-errors{subject: "discussion", field: "file"}
         %label.lmo-form-labelled-input

@@ -6,6 +6,9 @@ class Vote < ActiveRecord::Base
   belongs_to :previous_vote, class_name: 'Vote'
   has_many :events, as: :eventable, dependent: :destroy
 
+  has_one :discussion, through: :motion
+  has_one :group, through: :discussion
+
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
   validates_length_of :statement, maximum: 250
@@ -22,7 +25,6 @@ class Vote < ActiveRecord::Base
 
   delegate :name, to: :user, prefix: :user # deprecated
   delegate :name, to: :user, prefix: :author
-  delegate :group, :discussion, to: :motion
   delegate :users, to: :group, prefix: :group
   delegate :author, to: :motion, prefix: :motion
   delegate :author, to: :discussion, prefix: :discussion

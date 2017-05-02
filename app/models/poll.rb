@@ -2,9 +2,9 @@ class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
   include MakesAnnouncements
-  TEMPLATES = YAML.load_file('config/poll_templates.yml')
-  COLORS    = YAML.load_file('config/colors.yml')
-  TIMEZONES = YAML.load_file('config/timezones.yml')
+  TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
+  COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
+  TIMEZONES = YAML.load_file(Rails.root.join("config", "timezones.yml"))
   TEMPLATE_FIELDS = %w(material_icon translate_option_name
                        can_add_options can_remove_options
                        must_have_options chart_type has_option_icons
@@ -15,6 +15,8 @@ class Poll < ActiveRecord::Base
     define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
   end
 
+  include Translatable
+  is_translatable on: [:title, :details]
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
@@ -49,6 +51,8 @@ class Poll < ActiveRecord::Base
 
   has_many :poll_communities, dependent: :destroy
   has_many :communities, through: :poll_communities
+
+  delegate :locale, to: :author
 
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }

@@ -10,6 +10,7 @@ class Motion < ActiveRecord::Base
   has_one :poll
 
   belongs_to :discussion
+  has_one :group, through: :discussion
   update_counter_cache :discussion, :motions_count
   update_counter_cache :discussion, :closed_motions_count
 
