@@ -1,0 +1,4 @@
+.loomio-poll
+  = render "poll_mailer/common/summary"
+  = render "poll_mailer/#{@info.poll_type}/chart" if @info.poll.stances.any?
+  = "Vote!" if @info.poll.anyone_can_participate && @info.poll.active?
