@@ -13,7 +13,7 @@ module.exports = new class PageHelper
   loadPath: (path, timeout = 40000) ->
     browser.get('dev/'+path, timeout)
 
-  waitForReload: (time=3000)->
+  waitForReload: (time=5000)->
     browser.driver.sleep(time)
     browser.waitForAngular()
 
