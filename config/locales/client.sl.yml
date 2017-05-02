@@ -3,156 +3,151 @@ sl:
     time:
       am: dopoldan
       pm: popoldan
-    volume: Pogostost obveščanj
-    group: Skupina
-    groups: Skupine
+    volume: 'Pogostost obveščanj'
+    group: 'Skupina'
+    groups: 'Skupine'
     privacy:
-      public: Javno
-      private: Zasebno
+      public: 'Javno'
+      private: 'Zasebno'
     date_range:
-      today: Danes
-      yesterday: Včeraj
-      thisweek: Ta teden
-      thismonth: Ta mesec
-      older: Starejše
+      today: 'Danes'
+      yesterday: 'Včeraj'
+      thisweek: 'Ta teden'
+      thismonth: 'Ta mesec'
+      older: 'Starejše'
     models:
-      proposal: Predlog
+      proposal: 'Predlog'
     action:
-      save: Shrani
-      save_changes: Shrani spremembe
-      reply: Odvrni
-      edit: Uredi
-      like: Všečkaj
-      unlike: Ne všečkaj
-      cancel: Prekliči
-      show_more: Pokaži več
-      view_all: Pokaži vse
-      add_subgroup: Dodaj podskupino
-      loading: Nalagam
+      save: 'Shrani'
+      save_changes: 'Shrani spremembe'
+      reply: 'Odvrni'
+      edit: 'Uredi'
+      like: 'Všečkaj'
+      unlike: 'Ne všečkaj'
+      cancel: 'Prekliči'
+      show_more: "Pokaži več"
+      view_all: "Pokaži vse"
+      add_subgroup: 'Dodaj podskupino'
+      loading: 'Nalagam'
   error_page:
-    forbidden: Nimaš dovoljenja za to.
+    forbidden: 'Nimaš dovoljenja za to.'
   proposal_outcome_panel:
     heading: Izid
   proposal_outcome_form:
     outcome_label: Izid predloga
     publish_outcome: Objavi izid
   volume_levels:
-    loud: Glasno
-    normal: Normalno
-    quiet: Tiho
-    mute: Neslišno
+    loud: 'Glasno'
+    normal: 'Normalno'
+    quiet: 'Tiho'
+    mute: 'Neslišno'
   inbox:
-    clear: Počisti
-    unread: Neprebrano
+    clear: 'Počisti'
+    unread: 'Neprebrano'
   comment_form:
-    edit_comment: Uredi komentar
-    delete_comment: Izbriši komentar
+    edit_comment: 'Uredi komentar'
+    delete_comment: 'Izbriši komentar'
     confirm_delete_message: 'Si prepričan/a, da želiš izbrisati ta komentar?'
   sidebar:
-    recent: Nedavno
-    unread: Neprebrano
-    edit_profile: Urejanje profila
-    email_settings: Email nastavitve
-    help: Pomoč
-    sign_out: Odjavi se
+    edit_profile: 'Urejanje profila'
+    email_settings: 'Email nastavitve'
+    help: 'Pomoč'
+    sign_out: 'Odjavi se'
   navbar:
     search:
-      placeholder: Išči
-      discussions: Razprave
+      placeholder: 'Išči'
+      discussions: 'Razprave'
   notifications:
-    header: Obvestila
+    header: "Obvestila"
   position_buttons_panel:
     heading: Izrazi svoje mnenje
   vote_form:
     heading: Izrazi svoje mnenje
-    i_agree: Strinjam se
-    i_abstain: Vzdržujem se
+    i_agree: 'Strinjam se'
+    i_abstain: 'Vzdržujem se'
     i_abstain_details: 'Vesel/a bom, če se skupina odloči brez mene.'
-    i_disagree: Ne strinjam se
+    i_disagree: 'Ne strinjam se'
     i_disagree_details: 'Mislim, da znamo tudi bolje.'
-    i_block: Ugovarjam
-    i_block_details: Močno ugovarjam temu predlogu in nisem OK z njegovim sprejetjem.
-    submit_position: Oddaj svoj glas
+    i_block: 'Ugovarjam'
+    i_block_details: 'Močno ugovarjam temu predlogu in nisem OK z njegovim sprejetjem.'
+    submit_position: 'Oddaj svoj glas'
   proposal_positions_panel:
     heading: Stališča
   close_proposal_form:
-    close_proposal: Zapri predlog
+    close_proposal: 'Zapri predlog'
   proposal_form:
-    start_proposal: Ustvari predlog
-    edit_proposal: Uredi predlog
-    title_label: Naslov
-    closes_at_label: Zaključi se ob
-    details_label: Podrobnosti
+    start_proposal: 'Ustvari predlog'
+    edit_proposal: 'Uredi predlog'
+    title_label: 'Naslov'
+    closes_at_label: 'Zaključi se ob'
+    details_label: 'Podrobnosti'
   discussion_form:
-    group_label: Skupina
-    title_label: Naslov
-    context_label: Opis
-    privacy_label: Zasebnost
+    group_label: 'Skupina'
+    title_label: 'Naslov'
+    context_label: 'Opis'
+    privacy_label: 'Zasebnost'
   proposal_expanded:
     started_by: 'Začel/a <strong>{{name}}</strong>'
-    edit_proposal: Uredi predlog
-    close_proposal: Zapri predlog
+    edit_proposal: 'Uredi predlog'
+    close_proposal: 'Zapri predlog'
   join_group_button:
     join_group: Pridruži se skupini
-    ask_to_join_group: Prosi za pridružitev skupini
     messages:
       joined_group: 'Sedaj si član/ica {{group}}'
   membership_request_form:
     heading: Prosi za pridružitev skupini
     name_label: Ime
     email_label: Email
-    submit_button: Prosi za pridružitev skupini
     messages:
       membership_requested: 'Zaprosil/a si za članstvo v {{group}}'
   group_page:
     thread_list:
       empty:
-        membership_is_invitation_only: Za pridružitev tej skupini moraš biti povabljen/a s strani člana.
-        membership_is_invitation_by_admin_only: Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja.
-    discussions: Razprave
-    invite_people: Povabi še koga
-    options_label: Možnosti
+        membership_is_invitation_only: "Za pridružitev tej skupini moraš biti povabljen/a s strani člana."
+        membership_is_invitation_by_admin_only: "Za pridružitev tej skupini moraš biti povabljen/a s strani koordinatorja."
+    discussions: 'Razprave'
+    options_label: 'Možnosti'
     options:
-      label: Možnosti
+      label: 'Možnosti'
     volume:
       loud: Pošlji email ob vsaki aktivnosti.
       quiet: Ne pošiljaj emailov za to skupino. Nove aktivnosti bodo objavljene na nadzorni plošči.
-      mute: 'Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.'
+      mute: Skrij to skupino iz nadzorne plošče in me ne obveščaj, razen če sem @omenjen/a.
   membership_requests_page:
     approve: Potrdi
     ignore: Prezri
   memberships_page:
-    members: Člani
-    name_label: Ime
-    coordinator_label: Koordinator
-    remove_member_label: Odstrani
+    members: 'Člani'
+    name_label: 'Ime'
+    coordinator_label: 'Koordinator'
+    remove_member_label: 'Odstrani'
   pending_invitations_card:
     email: Email
   profile_page:
-    profile: Profil
-    picture_label: Slika
-    name_label: Ime
-    username_label: Uporabniško ime
-    email_label: Email
-    locale_label: Jezik
+    profile: 'Profil'
+    picture_label: 'Slika'
+    name_label: 'Ime'
+    username_label: 'Uporabniško ime'
+    email_label: 'Email'
+    locale_label: 'Jezik'
   email_settings_page:
     header: Email nastavitve
     daily_summary_label: Dnevni email s povzetki
     messages:
       updated: Email nastavitve posodobljene
   dashboard_page:
-    aria_label: Nadzorna plošča
+    aria_label: 'Nadzorna plošča'
     no_groups:
       or: ali
     mark_as_read: Označi kot prebrano
     threads_from:
-      today: Danes
-      yesterday: Včeraj
+      today: 'Danes'
+      yesterday: 'Včeraj'
   inbox_page:
     no_groups:
       or: ali
   discussion:
-    you_like_this: Ti si všečkal/a.
+    you_like_this: 'Ti si všečkal/a.'
     liked_by_you_and_someone: 'Ti in {{name}} sta všečkala.'
     liked_by_you_and_others: 'Všečkali ti, {{joinedNames}} in {{name}}.'
     liked_by_someone: '{{name}} je všekal/a.'
@@ -162,134 +157,94 @@ sl:
     liked_by_names_and_name: 'Všečkala {{joinedNames}} in {{name}}.'
     started_by: 'Začel/a <strong>{{name}}</strong>'
   thread_group:
-    aria_label: Ime skupine
+    aria_label: 'Ime skupine'
   delete_comment_dialog:
-    title: Izbriši komentar
+    title: 'Izbriši komentar'
     question: 'Si prepričan/a, da želiš izbrisati ta komentar?'
-    confirm: Izbriši komentar
+    confirm: 'Izbriši komentar'
   new_comment_item:
     context_menu:
-      edit_comment: Uredi komentar
-      delete_comment: Izbriši komentar
+      edit_comment: 'Uredi komentar'
+      delete_comment: 'Izbriši komentar'
   contact_message_form:
-    name_label: Tvoje ime
-    email_label: Tvoj email naslov
-    email_placeholder: Vnesi svoj email ...
-    message_label: Tvoje sporočilo
+    name_label: 'Tvoje ime'
+    email_label: 'Tvoj email naslov'
+    email_placeholder: 'Vnesi svoj email ...'
+    message_label: 'Tvoje sporočilo'
   help_page:
-    coordinating: Koordiniraj svojo Loomio skupino
-    coordinating_details: >
-      Kot koordinator/ka si odgovoren/na za vzpostavitev Loomio skupine in
-      vabljenja članov. Poleg učenja novega programa, se bo tvoja skupina učila
-      novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih
-      odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:
-    different_ways: Različni načini uporabe Loomia
-    example1_html: >
+    coordinating: 'Koordiniraj svojo Loomio skupino'
+    coordinating_details: |
+      Kot koordinator/ka si odgovoren/na za vzpostavitev Loomio skupine in vabljenja članov. Poleg učenja novega programa, se bo tvoja skupina učila novih načinov učinkovitejšega sodelovanja in sprejemanja dobrih skupnih odločitev. Tukaj je nekaj nasvetov kako podpreti tvojo skupino k uspehu:
+    different_ways: 'Različni načini uporabe Loomia'
+    example1_html: |
       <h3>Skupina mora o neki temi razpravljati in skupaj razviti rešitev</h3>
-
-      <p>Strategija: O temi nekaj časa razpravljajte, preden ustvarite
-      predlog.</p>
-
-      <p>Razprave pogosto dosežejo najboljši rezultat takrat, ko se vzpostavi
-      skupno razumevanje problema, preden se predlaga določeno rešitev. Kadar
-      lahko vsi sodelujejo že v procesu, bodo namreč veliko verjetneje sprejeli
-      rezultat.</p>
-    get_in_touch: Stopi v stik
+      <p>Strategija: O temi nekaj časa razpravljajte, preden ustvarite predlog.</p>
+      <p>Razprave pogosto dosežejo najboljši rezultat takrat, ko se vzpostavi skupno razumevanje problema, preden se predlaga določeno rešitev. Kadar lahko vsi sodelujejo že v procesu, bodo namreč veliko verjetneje sprejeli rezultat.</p>
+    get_in_touch: "Stopi v stik"
     get_in_touch_description_html: "Če imaš kakšna vprašanja ali pripombe, <a href='%{link}'>nam piši</a>."
-    getting_started: Prvi koraki
-    getting_started_description: 'Na levi strani skupina obravnava temo, izmenjuje ideje in informacije. Morebitna odločitev se prikaže na desni strani.'
-    getting_the_most: Kako od Loomia dobiti največ
-    have_your_say: Izrazi svoje mnenje
-    have_your_say_details_html: >
-      <p>Ko si pripravljen/a izraziti svoje mnenje, klikni enega od štirih gumbov
-      za odločanje.</p>
-
+    getting_started: "Prvi koraki"
+    getting_started_description: "Na levi strani skupina obravnava temo, izmenjuje ideje in informacije. Morebitna odločitev se prikaže na desni strani."
+    getting_the_most: 'Kako od Loomia dobiti največ'
+    have_your_say: "Izrazi svoje mnenje"
+    have_your_say_details_html: |
+      <p>Ko si pripravljen/a izraziti svoje mnenje, klikni enega od štirih gumbov za odločanje.</p>
       <p>Ko se odločiš, to na kratko obrazloži. Pod tortnim diagramom
-
       lahko vidiš, mnenja ostalih. To ti omogoča hitro in enostavno sledenje
-
       razpravi. Če te nova informacija prepriča, lahko svoje
-
       stališče kadarkoli spremeniš.</p>
-    have_a_discussion: Začni razpravo
-    have_a_discussion_description: 'Tema in ostale pomembne informacije so na vrhu strani. Uporabi polje za komentiranje, da dodaš svoj glas k razpravi.'
-    help: Pomoč
-    how_it_works: Kako deluje
-    invitation_html: >
+    have_a_discussion: "Začni razpravo"
+    have_a_discussion_description: "Tema in ostale pomembne informacije so na vrhu strani. Uporabi polje za komentiranje, da dodaš svoj glas k razpravi."
+    help: "Pomoč"
+    how_it_works: "Kako deluje"
+    invitation_html: |+
       <h2>Pisanje super povabila</h2>
-
-      <p>Prvo vprašanje vsakega novega člana/ice, bo "kaj je namen te
-      skupine?’</p>
-
+      <p>Prvo vprašanje vsakega novega člana/ice, bo "kaj je namen te skupine?’</p>
       <p>Skušaj napisati najenostavnejši opis skupine: Kaj bi rad/a,
+      da skupaj dosežete? O katerih odločitvah boste odločali? Kdo bo pri tem sodeloval? </p>
+      <p>Mogoče je dobro, da se najprej pogovoriš s svojo skupino, preden jih povabiš na Loomio.</p>
+      <p>Ljudje bodo želeli vedeti, zakaj so bili povabljeni, kaj se od njih pričakuje,
+      in zakaj je vredno njihovega časa, da se naučijo uporabljati novo orodje.</p>
 
-      da skupaj dosežete? O katerih odločitvah boste odločali? Kdo bo pri tem
-      sodeloval? </p>
-
-      <p>Mogoče je dobro, da se najprej pogovoriš s svojo skupino, preden jih
-      povabiš na Loomio.</p>
-
-      <p>Ljudje bodo želeli vedeti, zakaj so bili povabljeni, kaj se od njih
-      pričakuje,
-
-      in zakaj je vredno njihovega časa, da se naučijo uporabljati novo
-      orodje.</p>
-    join_the_community: Pridruži se skupnosti
-    images_and_text_formatting: Urejanje slik in teksta
+    join_the_community: "Pridruži se skupnosti"
+    images_and_text_formatting: "Urejanje slik in teksta"
     images_and_text_formatting_html: |
       <p>Loomio uporablja 'Markdown' za vgrajevanje slik in urejanje besedil.
       Markdown lahko vklopiš z majhno sivo ikono pod oknom s komentarji..</p>
       <p><a href='https://www.loomio.org/discussions/1124'>Klikni sem</a>
       za več informacij o uporabi Markdown-a.</p>
-    keep_up_to_date: Ostani na tekočem
-    keep_up_to_date_html: >
+    keep_up_to_date: "Ostani na tekočem"
+    keep_up_to_date_html: |
       <p>Klik na ime skupine na vrhu zaslona te popelje na Stran Skupine,
-
       kjer lahko vidiš seznam vseh razprav in odločitev v tej skupini. Če
-
-      si včlanjen/a v več skupin, boš tu videl/a vse aktivnosti v teh
-      skupinah.</p>
-
+      si včlanjen/a v več skupin, boš tu videl/a vse aktivnosti v teh skupinah.</p>
       <p>Ko se zgodi kaj pomembnega v tvoji skupini, boš prejel/a email.
-
       Email nastavitve lahko spremeniš <a href="%{link}"">tukaj</a>.</p>
-    make_a_decision: Odloči se
-    make_a_decision_description: 'Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.'
-    prompt_people_details: 'Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju.'
+    make_a_decision: "Odloči se"
+    make_a_decision_description: "Ko je skupina pripravljena sprejeti odločitev, lahko vsak pripravi predlog. Opiši jasen postopek in navedi dovolj informacij, da bodo vsi točno vedeli, kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo."
+    prompt_people_details: "Če želiš dobiti pozornost določene osebe v skupini, vtipkaj ‘@’, kateri sledi še ime te osebe. Prejeli bodo email s sporočilom, da si jih omenil/a v komentarju."
     prompt_people_html: "Pozovi člane z <span class='blue'>@omenjanjem</span>"
-    positions_agree_description: '<span>Strinjam se</span> pomeni, da predlog podpiraš.'
-    positions_abstain_description: '<span>Vzdržan/a</span> pomeni, da nisi odločen/a, oziroma, da zaupaš skupini, da se odloči brez tebe.'
-    positions_disagree_description: '<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine.'
-    positions_block_description: '<span>Ugovarjam</span> pomeni, da imaš resna nasprotovanja in boš skrajno nesrečen/na, če bo predlog sprejet.'
-    start_discussion: Kako začeti angažirano razpravo?
-    start_proposal: Kako napisati jasen predlog
-    start_proposal_html: >
+    positions_agree_description: "<span>Strinjam se</span> pomeni, da predlog podpiraš."
+    positions_abstain_description: "<span>Vzdržan/a</span> pomeni, da nisi odločen/a, oziroma, da zaupaš skupini, da se odloči brez tebe."
+    positions_disagree_description: "<span>Ne strinjam se</span> pomeni, da bi po tvojem mnenju lahko našli boljšo rešitev, a si pripravljen/a sprejeti odločitev večine."
+    positions_block_description: "<span>Ugovarjam</span> pomeni, da imaš resna nasprotovanja in boš skrajno nesrečen/na, če bo predlog sprejet."
+    start_discussion: "Kako začeti angažirano razpravo?"
+    start_proposal: "Kako napisati jasen predlog"
+    start_proposal_html: |
       <p> Če napišeš jasen in jedrnat naslov, bodo vsi točno vedeli,
-
       kaj pomeni, če se s predlogom strinjajo ali mu nasprotujejo.</p>
-
       <p>Ni konec sveta, če predlog ne dobi jasnega odobravanja takoj.
-
-      Če skupina ni navdušena nad prvim predlogom, lahko vsak začne nov predlog,
-      da
-
+      Če skupina ni navdušena nad prvim predlogom, lahko vsak začne nov predlog, da
       naslovi vse pomisleke in da proces vodi naprej.</p>
-
-      <p>S tem dinamičnim procesom lahko kolektivna modrost skupine ustvarja
-      boljše
-
+      <p>S tem dinamičnim procesom lahko kolektivna modrost skupine ustvarja boljše
       ideje, kot bi jih posamezniki. </p>
-
       <p>Rok na predlog se lahko kadarkoli podaljša, če odločitev
-
-      potrebuje nekaj več prostora. Vsi boste dobili email obvestilo 24 ur pred
-      zaprtjem predloga.</p>
-    video_id: '52025402'
-    video_tutorial: Video z navodili
-    video_tutorial_description: 'Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio.'
+      potrebuje nekaj več prostora. Vsi boste dobili email obvestilo 24 ur pred zaprtjem predloga.</p>
+    video_id: "52025402"
+    video_tutorial: "Video z navodili"
+    video_tutorial_description: "Oglej si video, ki na kratko prikazuje, kako uporabljati Loomio."
   hint:
-    context: Nasveti za uporabo polja Opis
-    discussion: Nasveti za začetek angažirane razprave
-    invitation: Nasveti za pisanje prepričljivih vabil
-    proposal: Nasveti za pisanje jasnih predlogov
-    vote: Svojo odločitev lahko spremeniš kadarkoli
+    context: 'Nasveti za uporabo polja Opis'
+    discussion: 'Nasveti za začetek angažirane razprave'
+    invitation: 'Nasveti za pisanje prepričljivih vabil'
+    proposal: 'Nasveti za pisanje jasnih predlogov'
+    vote: 'Svojo odločitev lahko spremeniš kadarkoli'
