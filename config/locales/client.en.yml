@@ -9,6 +9,7 @@ en:
     local: Local time ({{value}})
   common:
     expand: Expand
+    all_day: All day
     ok_got_it: Ok, got it
     learn_more: Learn more
     not_found: Not found
@@ -1336,6 +1337,7 @@ en:
     your_response: Your response
     change_your_response: Change your response
     reason: Reason
+    message: Message
     results: Results
     vote: Vote
     votes: Votes

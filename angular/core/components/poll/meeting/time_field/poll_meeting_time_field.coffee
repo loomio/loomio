@@ -4,9 +4,10 @@ angular.module('loomioApp').directive 'pollMeetingTimeField', ->
   controller: ($scope) ->
     $scope.dateToday = moment().format('YYYY-MM-DD')
     $scope.option = {}
-    $scope.times = ['']
+    $scope.times = []
 
     _.times 24, (i) ->
+      i = (i + 8) % 24
       i = "0#{i}" if i < 10
       $scope.times.push moment("2015-01-01 #{i}:00").format('h:mm a')
       $scope.times.push moment("2015-01-01 #{i}:30").format('h:mm a')

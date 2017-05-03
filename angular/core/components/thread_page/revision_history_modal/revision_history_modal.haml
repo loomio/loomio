@@ -1,9 +1,10 @@
 .revision-history-modal
-  .modal-header
-    %modal_header_cancel_button{aria-hidden: "true"}
-    %h1.lmo-h1{translate: "{{header}}"}
   %loading{ng-if: "loadExecuting"}
-  .modal-body.revision-history-modal__body{ng-if: "!loadExecuting"}
+  %md-toolbar
+    .md-toolbar-tools.lmo-flex__space-between
+      %h1.lmo-h1.modal-title.lmo-flex__grow{translate: "{{header}}"}
+      %material_modal_header_cancel_button{aria-hidden: "true"}
+  .md-dialog-content.revision-history-modal__body{ng-if: "!loadExecuting"}
     %h2.lmo-h2{ng-if: "commentRevision()"} {{model.authorName()}}
     .lmo-wrap{ng-repeat: "version in model.versions() | orderBy: '-createdAt' track by version.id", id: "version-{{version.id}}"}
       .revision-history-modal__revision
@@ -14,6 +15,3 @@
           %span> {{versionCreatedAt(version.createdAt)}}
           %span{ng-if: "version.isCurrent(version)"}> (current)
         .revision-history-modal__revision-body.lmo-markdown-wrapper{marked: "revisionBody(version)"}
-
-  .modal-footer
-    %button.revision-history-modal__close{type: "button", translate: "common.action.close", ng-click: "$close()"}

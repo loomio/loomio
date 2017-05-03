@@ -178,8 +178,8 @@ module Dev::NintiesMoviesHelper
   def create_proposal
     unless @proposal
       @proposal = Motion.new(name: 'lets go hiking to the moon and never ever ever come back!',
-                                closing_at: 3.days.from_now.beginning_of_hour,
-                                discussion: create_discussion)
+                             closing_at: 3.days.from_now.beginning_of_hour,
+                             discussion: create_discussion)
       MotionService.create(motion: @proposal, actor: jennifer)
     end
     @proposal

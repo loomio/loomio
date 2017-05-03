@@ -1,4 +1,4 @@
-describe 'Proposals', ->
+xdescribe 'Proposals', ->
 
   page = require './helpers/page_helper.coffee'
   threadHelper = require './helpers/thread_helper.coffee'
@@ -73,11 +73,11 @@ describe 'Proposals', ->
       page.expectText '.proposal-expanded', 'lets go hiking'
       page.expectText '.proposal-expanded', 'Closed a few seconds ago'
 
-  describe 'setting a proposal outcome', ->
+  xdescribe 'setting a proposal outcome', ->
     beforeEach ->
       # resize the window for the freak case of navbar covering the button and
       # the driver not finding the element
-      browser.driver.manage().window().setSize(1280, 1024);
+      # browser.driver.manage().window().setSize(1280, 1024);
 
     it 'creates a proposal outcome', ->
       page.loadPath 'setup_closed_proposal'
