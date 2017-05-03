@@ -664,8 +664,8 @@ ActiveRecord::Schema.define(version: 20170330032610) do
     t.string   "uid"
     t.string   "name"
     t.string   "access_token",  default: ""
-    t.jsonb    "custom_fields", default: {}, null: false
     t.string   "logo"
+    t.jsonb    "custom_fields", default: {}, null: false
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree
