@@ -5,7 +5,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if identity.persisted?
+    if identity.save
       associate_identity
       redirect_to session.delete(:back_to) || dashboard_path
     else
@@ -60,7 +60,7 @@ class Identities::BaseController < ApplicationController
       user.associate_with_identity(identity)
       sign_in(user)
     else
-      session[:pending_identity_id] = identity.tap(&:save).id
+      session[:pending_identity_id] = identity.id
     end
   end
 
