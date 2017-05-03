@@ -4,7 +4,7 @@ en:
     count: Check
     poll: Poll
     dot_vote: Dot vote
-    meeting: Meeting poll
+    meeting: Time poll
   timezones:
     local: Local time ({{value}})
   common:
@@ -1331,7 +1331,7 @@ en:
     count_title: Check
     poll_title: Poll
     dot_vote_title: Dot Vote
-    meeting_title: Meeting poll
+    meeting_title: Time poll
 
   poll_common:
     your_response: Your response
@@ -1378,7 +1378,7 @@ en:
     close_poll: Close poll
     close_count: Close check
     close_dot_vote: Close dot vote
-    close_meeting: Close meeting poll
+    close_meeting: Close time poll
     proposal_closed: Proposal closed
     poll_closed: Poll closed
     count_closed: Check closed
@@ -1414,7 +1414,7 @@ en:
     poll: 'This poll has closed. <strong>Share the outcome</strong> with the group.'
     proposal: 'This proposal has closed. Please consider what as been said and <strong>share an outcome</strong>, so people know what’ll happen next.'
     count: 'This check has closed. <strong>Share an outcome</strong> to complete the process.'
-    meeting: 'This meeting poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
+    meeting: 'This time poll has closed. <strong>Share an outcome</strong> to let others know when the meeting will happen.'
     dot_vote: 'This dot vote has closed. <storng>Share an outcome</strong> with the group.'
 
   poll_common_outcome_form:
@@ -1458,7 +1458,7 @@ en:
       <p>Use a poll to measure popularity or offer a choice.</p>
       <p>Provide some options to choose from. Decide if participants choose single or multiple options as their response.</p>
       <p>Everyone votes, and can enter a statement too if they like. Results are represented in a bar graph.</p>
-    tool_tip_collapsed: Measure popularity of options
+    tool_tip_collapsed: Measure popularity or offer a choice
     start_header: Start poll
     edit_header: Edit poll
     tip: Measure the popularity of different options
@@ -1492,7 +1492,7 @@ en:
       <p>Dot voting is a way to prioritise a list of options.</p>
       <p>Participants are given a limited number of ‘dots’ which they can allocate however they like among the options provided to represent their own preferences.</p>
       <p>The process results in a cumulative bar chart as well as and the individual allocations so you can consider various points of view.</p>
-    tool_tip_collapsed: Prioritise a list of options
+    tool_tip_collapsed: Prioritise options
     start_header: Start dot vote
     edit_header: Edit dot vote
     tip: Allocate resources collectively
@@ -1505,20 +1505,20 @@ en:
 
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>Use a meeting poll to find when people are available.</p>
+      <p>Use a time poll to find when people are available.</p>
       <p>Enter a list of dates or times when you could have your meeting.</p>
       <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
-      <p>If you add new times during a meeting poll, people who have already voted are prompted to update their response.</p>
+      <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
       <p>You can then see who’s available when, and decide when to meet.</p>
       <p>Times are automatically converted to the participant's time zone.</p>
     tool_tip_collapsed: Find a time to meet
-    start_header: Start meeting poll
-    edit_header: Edit meeting poll
+    start_header: Start time poll
+    edit_header: Edit time poll
     tip: Find out when people are available to meet
     title_placeholder: E.g. When should we have our next meetup?
     details_placeholder: Provide any clarifying details people might need to participate
-    meeting_created: Meeting poll created
-    meeting_updated: Meeting poll updated
+    meeting_created: Time poll created
+    meeting_updated: Time poll updated
 
   poll_proposal_vote_form:
     default_reason_placeholder: Please explain your reasoning

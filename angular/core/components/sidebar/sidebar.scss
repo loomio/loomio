@@ -25,8 +25,7 @@
   text-align: left;
   border-radius: 4px;
   text-transform: none;
-  // font-size: 13px;
-  @include md-body-1;
+  @include md-body-2;
   @include truncateText;
 }
 
@@ -38,7 +37,7 @@
   border-radius: 4px;
   text-align: left;
   padding-left: 53px;
-  font-size: 13px;
+  @include md-body-1;
 }
 
 .sidebar__list-item-icon {

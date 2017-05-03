@@ -28,7 +28,7 @@ describe 'Polls', ->
       page.fillIn ".poll-poll-form__add-option-input", "bananas"
 
     # TODO
-    xit 'starts a meeting poll', startPollTest 'meeting', ->
+    xit 'starts a time poll', startPollTest 'meeting', ->
       page.fillIn ".poll-meeting-form__datepicker", "2030-03-23\n"
       page.click ".poll-meeting-form__option-button"
 
