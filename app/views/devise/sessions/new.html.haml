@@ -5,7 +5,7 @@
         .col-md-6.col-md-offset-3.col-xs-12
           - if omniauth_authenticated_and_waiting?
             %h1= t :link_up_your_account
-            %p= t :log_in_to_your_loomio_account, provider_name: @omniauth_authentication.provider_name
+            %p= t :log_in_to_your_loomio_account, provider_name: @omniauth_authentication.identity_type.humanize
           -else
             %h1
               - if @invitation

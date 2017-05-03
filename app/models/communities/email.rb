@@ -1,5 +1,5 @@
 class Communities::Email < Communities::Base
-  include Communities::EmailVisitors
+  include Communities::NotifyViaEmail
   set_community_type :email
 
   def add_members!(emails)
@@ -8,11 +8,7 @@ class Communities::Email < Communities::Base
     save if persisted?
   end
 
-  def includes?(member)
-    members.pluck(:participation_token).include?(member.participation_token)
-  end
-
-  def members
-    @members ||= visitors.where(revoked: false)
+  def includes?(participant)
+    visitors.where(revoked: false).pluck(:participation_token).include?(participant.participation_token)
   end
 end

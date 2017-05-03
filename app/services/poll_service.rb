@@ -20,6 +20,15 @@ class PollService
     Events::PollClosedByUser.publish!(poll, actor)
   end
 
+  def self.publish(poll:, params:, actor:)
+    community = Communities::Base.find(params[:community_id])
+    actor.ability.authorize! :show, community
+    actor.ability.authorize! :share, poll
+
+    EventBus.broadcast('poll_publish', poll, actor, community, params[:message])
+    Events::PollPublished.publish!(poll, actor, community, params[:message])
+  end
+
   def self.publish_closing_soon
     hour_start = 1.day.from_now.at_beginning_of_hour
     hour_finish = hour_start + 1.hour

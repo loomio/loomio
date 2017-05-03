@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
              motion_edited motion_closing_soon motion_closed motion_closed_by_user motion_outcome_created visitor_created
              motion_outcome_updated membership_requested invitation_accepted user_added_to_group user_joined_group
              new_coordinator membership_request_approved comment_liked comment_replied_to user_mentioned invitation_accepted
-             poll_created stance_created outcome_created poll_closed_by_user poll_expired poll_edited poll_closing_soon visitor_reminded).freeze
+             poll_created stance_created outcome_created poll_closed_by_user poll_expired poll_edited poll_closing_soon
+             visitor_reminded poll_published outcome_published).freeze
 
   has_many :notifications, dependent: :destroy
   belongs_to :eventable, polymorphic: true
@@ -42,7 +43,7 @@ class Event < ActiveRecord::Base
   # community, but for now we can just default to no communities
   # Polls override this to look at the communities associated with the poll.
   def communities
-    Communities::Base.none
+    Array(eventable&.group&.community)
   end
 
   def call_thread_item_created

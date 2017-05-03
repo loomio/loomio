@@ -5,4 +5,8 @@ class Events::DiscussionEdited < Event
            user: editor,
            discussion_id: discussion.id).tap { |e| EventBus.broadcast('discussion_edited_event', e) }
   end
+
+  def communities
+    Array(eventable&.item&.group&.community)
+  end
 end

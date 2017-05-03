@@ -1,0 +1,28 @@
+.add-facebook-community-form
+  %h3{translate: "add_community_form.currently_signed_in_as"}
+  .add-community-form__header.lmo-flex
+    %img.add-community-form__logo{ng-src: "{{community.identity().logo}}"}>
+    .add-community-form__name> {{ community.identity().name }}
+    %a{href: "#", ng-click: "fetchAccessToken()"}
+      %span{translate: "add_community_form.{{community.communityType}}.another_account"}
+
+  %md-input-container.lmo-search-container{md-no-float: "true"}
+    %i.material-icons search
+    %input{ng-model: "vars.fragment", placeholder: "{{placeholderKey() | translate }}", ng-model-options: "{debounce: 250}"}
+
+  .add-community-form__options
+    %loading{ng-if: "fetchExecuting"}
+    %md-radio-group{ng-if: "!fetchExecuting && !error", ng-model: "community.identifier"}
+      %md-radio-button.add-community-form__radio-button{ng-repeat: "group in groups() track by group.id", ng-value: "group.id", aria-label: "{{group.name}}"}
+        {{ group.name }}
+    .add-community-form__oops{ng-if: "!fetchExecuting && error"}
+      .add-community-form__error-icon.material-icons warning
+      .add-community-form__error-explanation.poll-common-helptext{translate: "add_community_form.error_explanation", translate-value-type: "{{community.communityType}}"}
+      %md-button.md-primary.md-raised.add-community-form__retry-button{ng-click: "reauth()"}
+        %span{translate: "common.action.retry"}
+
+  .lmo-flex.lmo-flex__space-between
+    %md-button{ng-click: "back()"}
+      %span{translate: "common.action.back"}
+    %md-button.md-raised.md-primary{ng-click: "submit()", ng-disabled: "!community.identifier"}
+      %span{translate: "common.action.ok"}

@@ -1,0 +1,17 @@
+%section
+  .lmo-flex
+    %i.material-icons.poll-common-share-form__icon link
+    %h3.lmo-h3{translate: "poll_common_share_form.share_a_link"}
+
+  %md-list.md-block
+    %md-list-item.lmo-flex
+      %p{translate: "poll_common_share_form.anyone_can_participate"}
+      %md-checkbox{ng-model: "poll.anyoneCanParticipate", ng-change: "setAnyoneCanParticipate()"}
+    %md-list-item{ng-if: "poll.anyoneCanParticipate"}
+      %md-input-container.lmo-flex.poll-common-share-form__shareable-link{ng-if: "poll.anyoneCanParticipate"}
+        %input.lmo-primary-form-input.lmo-flex__grow{disabled: "true", type: "text", ng-model: "shareableLink"}
+        %md-button.md-primary.md-raised.poll-common-share-form__copy{type: "button", title: "{{ 'common.copy' | translate }}", clipboard: "true", text: "shareableLink", on-copied: "copied()"}
+          %span{translate: "common.copy"}
+    %md-list-item
+      %p.poll-common-helptext{translate: "poll_common_share_form.poll_is_shareable", ng-if: "poll.anyoneCanParticipate"}
+      %p.poll-common-helptext{translate: "poll_common_share_form.poll_is_private", ng-if: "!poll.anyoneCanParticipate"}

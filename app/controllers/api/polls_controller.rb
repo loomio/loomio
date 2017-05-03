@@ -7,12 +7,26 @@ class API::PollsController < API::RestfulController
   end
 
   def index
+    instantiate_collection do |collection|
+      collection = collection.where(discussion: @discussion) if load_and_authorize(:discussion, optional: true)
+      collection = collection.where(author: current_user)    if params[:authored_only]
+      collection.order(:created_at)
+    end
+    respond_with_collection
+  end
+
+  def closed
     instantiate_collection { |collection| collection.where(discussion: load_and_authorize(:discussion)) }
     respond_with_collection
   end
 
   def close
     @event = service.close(poll: load_resource, actor: current_user)
+    respond_with_resource
+  end
+
+  def publish
+    @event = service.publish(poll: load_resource, params: publish_params, actor: current_user)
     respond_with_resource
   end
 
@@ -27,6 +41,10 @@ class API::PollsController < API::RestfulController
 
   private
 
+  def publish_params
+    params.slice(:community_id, :message)
+  end
+
   def poll_search
     PollSearch.new(current_user)
   end
@@ -40,6 +58,9 @@ class API::PollsController < API::RestfulController
   end
 
   def accessible_records
-    Queries::VisiblePolls.new(user: current_user).joins(:discussion).order(created_at: :desc)
+    Poll.where.any_of(
+      current_user.polls,
+      Poll.where(id: Queries::VisiblePolls.new(user: current_user).pluck(:id))
+    )
   end
 end

@@ -51,14 +51,15 @@ module AngularHelper
         debounce: (ENV['LOOMIO_DRAFT_DEBOUNCE'] || 750).to_i
       },
       oauthProviders: [
-        ({ name: :facebook, href: user_facebook_omniauth_authorize_path } if ENV['FACEBOOK_KEY']),
-        ({ name: :twitter,  href: user_twitter_omniauth_authorize_path  } if ENV['TWITTER_KEY']),
-        ({ name: :google,   href: user_google_omniauth_authorize_path   } if ENV['OMNI_CONTACTS_GOOGLE_KEY']),
-        ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_ID'])
+        ({ name: :facebook, href: user_facebook_omniauth_authorize_path } if ENV['FACEBOOK_APP_KEY']),
+        ({ name: :twitter,  href: user_twitter_omniauth_authorize_path  } if ENV['TWITTER_APP_KEY']),
+        ({ name: :google,   href: user_google_omniauth_authorize_path   } if ENV['GOOGLE_APP_KEY']),
+        ({ name: :github,   href: user_github_omniauth_authorize_path   } if ENV['GITHUB_APP_KEY'])
       ].compact,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
-      timeZones:     Poll::TIMEZONES
+      timeZones:     Poll::TIMEZONES,
+      thirdPartyCommunities: Communities::Base::THIRD_PARTY_TYPES
     }
   end
 

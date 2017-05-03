@@ -80,6 +80,8 @@ class Poll < ActiveRecord::Base
   validate :closes_in_future
   validate :require_custom_fields
 
+  attr_accessor :community_id
+
   alias_method :user, :author
 
   def poll

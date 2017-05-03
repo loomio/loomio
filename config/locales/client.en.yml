@@ -74,6 +74,8 @@ en:
       uploading: 'Uploading'
       load_more: 'Load More'
       share: Share
+      ok: Ok!
+      retry: Retry
       done: Done
       start: Start
     formatting_help:
@@ -1353,6 +1355,7 @@ en:
     share_proposal: Share proposal
     share_count: Share check
     start_poll: Start a decision
+    publish_poll: Share poll
 
   poll_common_attachment_form:
     label: Attachments
@@ -1563,8 +1566,7 @@ en:
   poll_meeting_vote_form:
     your_response: When can you attend?
     stance_created: Availability saved
-    stance_created: Availability updated
-
+    stance_updated: Availability updated
 
   poll_dot_vote_vote_form:
     dots_remaining: You have {{count}} dots remaining.
@@ -1623,6 +1625,7 @@ en:
 
   poll_common_share_form:
     no_group_selected: No group selected
+    no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
     share_a_link: Shareable link
     anyone_can_participate: Anyone can participate
     anyone_can_participate_true: Shareable link created
@@ -1637,7 +1640,7 @@ en:
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
-    reminded: Reminder email sent!
+    reminded: Reminder sent!
     send_emails: Send invitations ({{count}})
     no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
@@ -1648,6 +1651,43 @@ en:
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
+    communities: Connect Community
+    add_facebook_community: Add facebook group
+    add_slack_community: Add slack channel
+    community_revoked: This community will no longer be able to participate
+    community_added: Community added to poll
+
+  poll_common_publish_form:
+    community: Inform the following group of your poll
+    message: Enter a message
+    message_placeholder: Add a message to accompany the link to your poll
+    published: Message successfully sent
+
+  poll_common_publish_facebook_preview:
+    shared_a: shared a
+    link: link
+    just_now: Just now
+
+  poll_common_publish_slack_preview:
+    poll_published: "published a poll:"
+    poll_published_with_discussion: "published a poll in <strong>{{discussion}}</strong>:"
+    view_it_on_loomio: View it on Loomio
+    timestamp: Today at {{timestamp}}
+
+  add_community_form:
+    title: Add community
+    existing_communities: Previously connected communities
+    no_communities: You haven't connected any communities yet. Select one below to get started.
+    connect_new_community: Connect a new community
+    currently_signed_in_as: "Currently signed in as:"
+    community_created: This poll is now connected to a {{type}} community
+    error_explanation: Oops! We had some trouble connecting to {{type}}. Click below to retry.
+    slack:
+      another_account: (Switch teams)
+      fragment_placeholder: Search for channels...
+    facebook:
+      another_account: (Sign in to another account)
+      fragment_placeholder: Search for groups...
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?

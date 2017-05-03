@@ -5,4 +5,8 @@ class Events::MotionEdited < Event
            user: editor,
            discussion_id: motion.discussion_id).tap { |e| EventBus.broadcast('motion_edited_event', e) }
   end
+
+  def communities
+    Array(eventable&.item&.group&.community)
+  end
 end

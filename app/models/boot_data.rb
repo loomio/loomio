@@ -18,7 +18,8 @@ BootData = Struct.new(:user, :visitor) do
       hash.merge!(
         notifications:      notifications,
         unread:             unread,
-        reader_cache:       readers
+        reader_cache:       readers,
+        identities:         identities
       ) if user.is_logged_in? && !user.restricted
     end
   end
@@ -41,5 +42,9 @@ BootData = Struct.new(:user, :visitor) do
 
   def visitors
     @visitors ||= Array(visitor.presence)
+  end
+
+  def identities
+    @identities ||= user.identities.order(created_at: :desc)
   end
 end

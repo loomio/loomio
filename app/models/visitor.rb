@@ -8,4 +8,6 @@ class Visitor < ActiveRecord::Base
 
   belongs_to :community, class_name: "Communities::Base"
   has_many :stances, as: :participant
+
+  scope :can_receive_email, -> { where(revoked: false).where('email IS NOT NULL') }
 end

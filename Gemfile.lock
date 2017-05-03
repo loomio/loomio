@@ -209,7 +209,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (0.12.0)
     diff-lcs (1.2.5)
-    discriminator (0.1.0)
+    discriminator (0.1.1)
       activerecord (>= 4.0.2)
     docile (1.1.5)
     doorkeeper (3.0.1)
@@ -754,7 +754,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.0.1)
   devise (~> 4.2.0)
   devise-i18n
-  discriminator
+  discriminator (~> 0.1.1)
   doorkeeper (~> 3.0.1)
   doorkeeper-i18n
   dotenv-rails

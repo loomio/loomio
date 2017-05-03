@@ -38,6 +38,29 @@ FactoryGirl.define do
     end
   end
 
+  factory :slack_identity, class: Identities::Slack do
+    user
+    identity_type "slack"
+    access_token "dat_access"
+    uid "U123"
+    sequence(:name) { Faker::Name.name }
+    sequence(:email) { Faker::Internet.email }
+    custom_fields {{
+      slack_team_id: "T123",
+      slack_team_name: "Hojo's Honchos"
+    }}
+  end
+
+  factory :facebook_identity, class: Identities::Facebook do
+    user
+    identity_type "facebook"
+    access_token "access_dat"
+    uid "U123"
+    sequence(:name) { Faker::Name.name }
+    sequence(:email) { Faker::Internet.email }
+    custom_fields { { facebook_group_id: "G123" } }
+  end
+
   factory :contact do
     user
     sequence(:email) { Faker::Internet.email }
@@ -278,12 +301,10 @@ FactoryGirl.define do
     poll_option
   end
 
-  factory :community, class: Communities::Base do
-    community_type 'test'
-  end
-
   factory :public_community, class: Communities::Public
   factory :email_community, class: Communities::Email
+  factory :facebook_community, class: Communities::Facebook
+  factory :slack_community, class: Communities::Slack
 
   factory :loomio_group_community, class: Communities::LoomioGroup do
     group

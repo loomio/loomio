@@ -3,38 +3,15 @@ class PollMailer < BaseMailer
   helper :application
   REPLY_DELIMITER = "--"
 
-  # emails sent to the group
-  def poll_created(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def poll_edited(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def outcome_created(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def poll_closing_soon(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def poll_closing_soon_author(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def poll_expired(recipient, event)
-    send_poll_email recipient, event
-  end
-
-  def visitor_reminded(recipient, event)
-    send_poll_email recipient, event
+  %w(poll_created poll_edited outcome_created
+     poll_closing_soon poll_closing_soon_author
+     poll_expired visitor_reminded visitor_created).each do |action|
+    define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
   end
 
   private
 
-  def send_poll_email(recipient, event)
+  def send_poll_email(recipient, event, action_name)
     headers = {
       "Precedence":               :bulk,
       "X-Auto-Response-Suppress": :OOF,

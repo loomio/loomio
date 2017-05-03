@@ -28,7 +28,10 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
                                                 StanceChoiceRecordsInterface,
                                                 OutcomeRecordsInterface,
                                                 PollDidNotVoteRecordsInterface,
-                                                VisitorRecordsInterface) ->
+                                                VisitorRecordsInterface,
+                                                IdentityRecordsInterface,
+                                                CommunityRecordsInterface,
+                                                PollCommunityRecordsInterface) ->
   db = new loki(RecordStoreDatabaseName)
   recordStore = new RecordStore(db)
   recordStore.addRecordsInterface(AttachmentRecordsInterface)
@@ -60,4 +63,7 @@ angular.module('loomioApp').factory 'Records', (RecordStore,
   recordStore.addRecordsInterface(OutcomeRecordsInterface)
   recordStore.addRecordsInterface(PollDidNotVoteRecordsInterface)
   recordStore.addRecordsInterface(VisitorRecordsInterface)
+  recordStore.addRecordsInterface(IdentityRecordsInterface)
+  recordStore.addRecordsInterface(CommunityRecordsInterface)
+  recordStore.addRecordsInterface(PollCommunityRecordsInterface)
   recordStore

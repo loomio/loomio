@@ -19,7 +19,6 @@ class Vote < ActiveRecord::Base
   include HasTimeframe
 
   scope :for_user,      -> (user_id) { where(user_id: user_id) }
-  scope :by_discussion, -> (discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
   scope :most_recent,   -> { where(age: 0) }
   scope :chronologically, -> { order('created_at asc') }
 
@@ -31,10 +30,8 @@ class Vote < ActiveRecord::Base
   delegate :name, to: :motion, prefix: :motion
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :locale, to: :user
-  delegate :discussion_id, to: :motion
   delegate :title, to: :discussion, prefix: :discussion
   delegate :key, to: :motion
-  delegate :id, to: :group, prefix: :group
 
   before_create :age_previous_votes, :associate_previous_vote
 
@@ -67,18 +64,6 @@ class Vote < ActiveRecord::Base
     user
   end
 
-  def motion_followers_without_voter
-    motion.followers.where('users.id != ?', author.id)
-  end
-
-  def other_group_members
-    group.users.where(User.arel_table[:id].not_eq(user.id))
-  end
-
-  def can_be_edited_by?(current_user)
-    current_user && user == current_user
-  end
-
   def position_verb
     case position
     when 'yes' then 'agree'
@@ -94,18 +79,6 @@ class Vote < ActiveRecord::Base
 
   def previous_position
     previous_vote.position if previous_vote
-  end
-
-  def previous_position_is_block?
-    previous_vote.try(:is_block?)
-  end
-
-  def is_block?
-    position == 'block'
-  end
-
-  def has_statement?
-    statement.present?
   end
 
   private

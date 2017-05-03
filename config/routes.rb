@@ -139,6 +139,8 @@ Loomio::Application.routes.draw do
 
     resources :polls,       only: [:show, :index, :create, :update] do
       post :close, on: :member
+      post :publish, on: :member
+      get  :closed, on: :collection
       get  :search, on: :collection
       get  :search_results_count, on: :collection
     end
@@ -198,6 +200,13 @@ Loomio::Application.routes.draw do
       resource :sessions, only: [:create, :destroy]
       resource :registrations, only: :create
     end
+
+    resources :communities, only: [:create, :update, :index]
+    resources :poll_communities, only: [] do
+      delete :destroy, on: :collection
+    end
+
+    get "identities/:id/:command", to: "identities#command"
   end
 
   get '/discussions/:id', to: 'redirect#discussion_id'
@@ -275,6 +284,21 @@ Loomio::Application.routes.draw do
   get '/u/:key(/:stub)'                    => 'application#gone'
   get '/g/:key/membership_requests/new'    => 'application#gone'
   get '/comments/:id'                      => 'application#gone'
+
+  scope :facebook do
+    get :oauth,                           to: 'identities/facebook#oauth',   as: :facebook_oauth
+    get :authorize,                       to: 'identities/facebook#create',  as: :facebook_authorize
+    post '/',                             to: 'identities/facebook#destroy', as: :facebook_unauthorize
+  end
+
+  scope :slack do
+    get :oauth,                           to: 'identities/slack#oauth',       as: :slack_oauth
+    get :authorize,                       to: 'identities/slack#create',      as: :slack_authorize
+    get :authorized,                      to: 'identities/slack#authorized',  as: :slack_authorized
+    post :participate,                    to: 'identities/slack#participate', as: :slack_participate
+    post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
+    post '/',                             to: 'identities/slack#destroy',     as: :slack_unauthorize
+  end
 
   get '/donate', to: redirect('https://loomio-donation.chargify.com/subscribe/9wnjv4g2cc9t/donation')
 end

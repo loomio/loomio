@@ -1,0 +1,9 @@
+%head
+  = stylesheet_link_tag "doorkeeper"
+%body
+  %main.doorkeeper
+    .doorkeeper-tableau
+      %img.doorkeeper-logo.doorkeeper-third-party-logo{src: '/img/slack-icon.svg'}
+      %img.doorkeeper-logo.doorkeeper-loomio-logo{src: '/img/mascot.png'}
+    %p.h4= I18n.t(:"slack.authorized_message")
+    %a.btn.btn-success.btn-lg{href: "https://#{@team}.slack.com"}= I18n.t(:"slack.go_to_slack")

@@ -148,7 +148,44 @@ describe API::PollsController do
     end
   end
 
+  describe 'publish' do
+    let(:another_poll) { create :poll }
+    let(:identity) { create :facebook_identity, user: user }
+    let(:community) { create :facebook_community, poll_id: poll.id, identity: identity }
+    let(:another_community) { create :facebook_community }
+
+    before { sign_in user }
+
+    it 'creates a poll publish event' do
+      expect { post :publish, id: poll.id, community_id: community.id }.to change { Event.where(kind: :poll_published).count }.by(1)
+      e = Events::PollPublished.last
+      expect(e.eventable).to eq poll
+      expect(e.custom_fields['community_id'].to_i).to eq community.id
+    end
+
+    it 'can save a message with the publish' do
+      post :publish, id: poll.id, community_id: community.id, message: "a message"
+      e = Events::PollPublished.last
+      expect(e.custom_fields['message']).to eq "a message"
+    end
+
+    it 'authorizes the poll' do
+      post :publish, id: another_poll.id, community_id: community.id
+      expect(response.status).to eq 403
+    end
+
+    it 'authorizes the community' do
+      post :publish, id: poll.id, community_id: another_community.id
+      expect(response.status).to eq 403
+    end
+  end
+
   describe 'create' do
+    let(:identity) { create :slack_identity, user: user }
+    let(:community) { create :slack_community, identity: identity }
+    let(:another_identity) { create :slack_identity }
+    let(:another_community) { create :slack_community, identity: another_identity }
+
     it 'creates a poll' do
       sign_in user
       expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
@@ -187,6 +224,28 @@ describe API::PollsController do
       sign_in another_user
       expect { post :create, poll: poll_params }.to_not change { Poll.count }
       expect(response.status).to eq 403
+    end
+
+    it 'can accept community_id on a poll' do
+      sign_in user
+      poll_params[:community_id] = community.id
+      expect { post :create, poll: poll_params }.to change { Poll.count }.by(1)
+      poll = Poll.last
+      expect(poll.community_ids).to include community.id
+    end
+
+    it 'publishes to the community if one is specified' do
+      sign_in user
+      poll_params[:community_id] = community.id
+      expect { post :create, poll: poll_params }.to change { Events::PollPublished.where(kind: :poll_published).count }.by(1)
+    end
+
+    it 'does not allow accept community_id for communities the author does not know about' do
+      sign_in user
+      poll_params[:community_id] = another_community.id
+      expect { post :create, poll: poll_params }.to_not change { Events::PollPublished.where(kind: :poll_published).count }
+      poll = Poll.last
+      expect(poll.community_ids).to_not include another_community.id
     end
   end
 

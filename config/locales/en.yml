@@ -1131,10 +1131,44 @@ en:
       new_vote: "*%{author}* %{position} *%{proposal}* in *%{name}*"
       new_comment: "*%{author}* posted a new comment in *%{name}*"
       new_discussion: "*%{author}* started a new discussion in *%{group}*"
+      outcome_created: "*%{author}* created an outcome for *%{name}*"
+      poll_created: "*%{author}* started a poll: *%{name}*"
+      poll_closing_soon: "*%{name}* is closing soon"
       view_it_on_loomio: View it on Loomio
       have_your_say: Have your say
+      poll_published: "*%{author}* published a poll:"
+      poll_published_with_discussion: "*%{author}* published a poll in %{discussion}:"
+      outcome_published: "*%{author}* published an outcome:"
+      outcome_published_with_discussion: "*%{author}* published an outcome in %{discussion}:"
       position_verbs:
         'yes': agreed on
         'no': disagreed on
         abstain: abstained on
         block: blocked
+  slack:
+    go_to_slack: Go to Slack
+    stance_created: Thanks for participating! You voted *%{position}* on the poll <%{poll_url}|%{title}>. If you''d like to change your vote, or give a reason for why you feel this way, <%{stance_url}|click here>.
+    time_zone_message: all times are in the %{zone} time zone
+    authorized_message: Success! You're all set up to vote on slack now.
+    request_authorization_message: One last step! We need to <%{url}|authorize your slack account> in order for you to vote on this poll; it''ll only take a second!
+    community_poll_published: "@%{username} started a new %{type}:"
+    initiate: |
+      Okay, let's do this! <%{url}|Click here to start your %{type}>.
+      (note: we'll post into this channel once it's created, so that everyone can participate)
+    slash_command_help: |
+      Hm.. '%{type}' isn't a decision type we know about yet!
+
+      Looking to make it really easy to make decisions with your group?
+      Simply enter a decision type and a question you'd like to pose, and we'll take it from there.
+
+      You can choose from the following decision types:
+      'proposal': Seek collective agreement
+      'count':      Track participation and find volunteers
+      'poll':         Measure popularity of options
+      'dot vote': Prioritise a list of options
+      'meeting': Find a time to meet
+
+      So, for example, you could write
+      /loomio count Who's coming to the party on Sunday?
+
+      In order to start a new count.
