@@ -2,4 +2,4 @@
   %td= image_tag "poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: 'poll-mailer-proposal__option-icon--small'
 - else
   %td= render 'poll_mailer/common/chip', color: poll_option.color
-%td= format_poll_option_name(poll_option, @recipient.time_zone)
+%td= poll_option.display_name(zone: @recipient.time_zone)
