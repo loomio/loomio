@@ -259,6 +259,14 @@ class User < ActiveRecord::Base
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
+  def associate_with_identity(identity)
+    if existing = identities.find_by(uid: identity.uid, identity_type: identity.identity_type)
+      existing.update(access_token: identity.access_token)
+    else
+      identities.push(identity)
+    end
+  end
+
   protected
   def password_required?
     !password.nil? || !password_confirmation.nil?
