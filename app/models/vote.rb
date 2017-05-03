@@ -48,6 +48,10 @@ class Vote < ActiveRecord::Base
     motion_id
   end
 
+  def group_id
+    group&.id
+  end
+
   def proposal_id=(id)
     self.motion_id=id
   end
