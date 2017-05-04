@@ -28,6 +28,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :login_token do
+    user
+  end
+
   factory :admin_user, class: User do
     sequence(:email) { Faker::Internet.email }
     sequence(:name) { Faker::Name.name }

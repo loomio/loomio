@@ -58,4 +58,12 @@ class UserMailer < BaseMailer
                      subject_params: { which_group: @group.name },
                      locale: locale_for(@user)
   end
+
+  def login(user:, token:)
+    @user = user
+    @token = token
+    send_single_mail to: @user.email,
+                     subject_key: "email.login.subject",
+                     locale: locale_for(@user)
+  end
 end

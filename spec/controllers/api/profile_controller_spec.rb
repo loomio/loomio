@@ -204,4 +204,16 @@ describe API::ProfileController do
     end
   end
 
+  describe 'login' do
+    it 'successfully sends a login link if the email exists' do
+      expect { post :login, email: user.email }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect(response.status).to eq 200
+    end
+
+    it 'returns unprocessable if the email doesnt exist' do
+      expect { post :login, email: "non@email.com" }.to_not change { ActionMailer::Base.deliveries.count }
+      expect(response.status).to eq 400
+    end
+  end
+
 end

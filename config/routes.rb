@@ -101,7 +101,11 @@ Loomio::Application.routes.draw do
       post :change_password, on: :collection
       post :deactivate, on: :collection
       post :save_experience, on: :collection
+      get  :login, on: :collection
+      post :login_token, on: :collection
     end
+
+    resource :login_tokens, only: [:show, :create]
 
     resources :events, only: :index
     resources :drafts do
