@@ -1,6 +1,6 @@
 .user-mailer__context
   = t(:"email.login.intro_html")
 .user-mailer__message-container
-  = link_to t(:"email.login.login_html"), api_login_token_url(@token.token, @utm_hash), class: "invite-people-mailer__button"
+  = link_to t(:"email.login.login_html"), login_token_url(@token.token, @utm_hash), class: "invite-people-mailer__button"
 .user-mailer__resend
   = t(:"email.login.resend_html")

@@ -103,7 +103,7 @@ Loomio::Application.routes.draw do
       post :save_experience, on: :collection
     end
 
-    resources :login_tokens, only: [:show, :create]
+    resources :login_tokens, only: [:create]
 
     resources :events, only: :index
     resources :drafts do
@@ -228,6 +228,7 @@ Loomio::Application.routes.draw do
   end
 
   resources :invitations, only: [:show]
+  resources :login_tokens, only: [:show]
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 
   namespace :email_actions do
