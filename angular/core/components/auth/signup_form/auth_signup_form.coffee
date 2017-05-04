@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig) ->
+angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig, AuthService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
   controller: ($scope) ->
@@ -12,4 +12,4 @@ angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig) -
       $scope.user.email = ''
 
     $scope.signUp = ->
-      console.log("signing up", $scope.user.email, $scope.user.name)
+      AuthService.signUp($scope.user.email, $scope.user.name)

@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authSigninForm', ->
+angular.module('loomioApp').directive 'authSigninForm', (AuthService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
@@ -6,14 +6,14 @@ angular.module('loomioApp').directive 'authSigninForm', ->
     $scope.back = ->
       $scope.user.email = ''
 
-    $scope.magicLink = ->
-      console.log("magic link", $scope.user.email)
+    $scope.sendLoginLink = ->
+      AuthService.sendLoginLink($scope.user.email)
 
     $scope.signIn = ->
-      console.log("signing in", $scope.user.email, $scope.user.password)
+      AuthService.signIn($scope.user.email, $scope.user.password)
 
     $scope.setPassword = ->
-      console.log("setting password", $scope.user.email, $scope.user.password, $scope.user.passwordConfirm)
+      AuthService.forgotPassword($scope.user.email)
 
     $scope.passwordFormShown = $scope.user.hasPassword
     $scope.showPasswordForm = ->

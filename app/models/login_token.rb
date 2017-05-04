@@ -1,14 +1,7 @@
 class LoginToken < ActiveRecord::Base
   belongs_to :user, required: true
   has_secure_token :token
+  EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 15)
 
-  def useable?
-    !(expired? || used?)
-  end
-
-  private
-
-  def expired?
-    Time.now - self.created_at > ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 15).minutes
-  end
+  scope :useable, -> { where(used: false).where('created_at > ?', EXPIRATION.minutes.ago) }
 end

@@ -5,7 +5,7 @@
     %md-input-container.md-block.auth-signin-form__magic-link
       .poll-common-helptext{translate: "auth_form.magic_link_helptext", ng-if: "!user.hasPassword"}
       .poll-common-helptext{translate: "auth_form.magic_link_helptext_with_password", ng-if: "user.hasPassword"}
-    %md-button.md-primary.md-raised{ng-click: "magicLink()"}
+    %md-button.md-primary.md-raised{ng-click: "sendLoginLink()"}
       %span{translate: "auth_form.magic_link"}
 
   .auth-signin-form__set-password-button{ng-if: "!passwordFormShown"}
