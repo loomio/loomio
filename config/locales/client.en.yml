@@ -1627,7 +1627,8 @@ en:
     no_group_selected: No group selected
     no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
     share_a_link: Shareable link
-    anyone_can_participate: Anyone can participate
+    anyone_can_participate: Anyone with link can participate
+    get_link: Copy link
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
     set_group: Loomio group updated
@@ -1636,7 +1637,7 @@ en:
     shareable_link: Shareable link
     guests_invited: Invited {{count}} guests
     guest_revoked: Revoked access for {{email}}
-    invite_guests: Invite guests
+    invite_guests: Email
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
