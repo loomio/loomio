@@ -1626,7 +1626,7 @@ en:
   poll_common_share_form:
     no_group_selected: No group selected
     no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
-    share_a_link: Shareable link
+    share_a_link: Share Link
     anyone_can_participate: Anyone with link can participate
     get_link: Copy link
     anyone_can_participate_true: Shareable link created
@@ -1637,7 +1637,7 @@ en:
     shareable_link: Shareable link
     guests_invited: Invited {{count}} guests
     guest_revoked: Revoked access for {{email}}
-    invite_guests: Email
+    invite_guests: Send Email
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
@@ -1652,9 +1652,11 @@ en:
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
-    communities: Connect Community
-    add_facebook_community: Add facebook group
-    add_slack_community: Add slack channel
+    communities: Communities
+    add_community: Communities
+    add_facebook_community: facebook group
+    add_slack_community: slack channel
+    add_loomio_community: loomio group
     community_revoked: This community will no longer be able to participate
     community_added: Community added to poll
 
