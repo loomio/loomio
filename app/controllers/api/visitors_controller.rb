@@ -26,7 +26,7 @@ class API::VisitorsController < API::RestfulController
 
   def community
     @community ||= Communities::Base.find_by(id: params[:community_id]).tap do |community|
-      current_user.ability.authorize!(:show, community)
+      current_user.ability.authorize!(:manage_visitors, community)
     end
   end
 

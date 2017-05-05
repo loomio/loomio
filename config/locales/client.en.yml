@@ -1383,7 +1383,7 @@ en:
     poll_closed: Poll closed
     count_closed: Check closed
     dot_vote_closed: Dote vote closed
-    meeting_closed: Meeting time poll closed
+    meeting_closed: Time poll closed
 
   poll_common_closing_at_field:
     closing: Closing
@@ -1505,7 +1505,7 @@ en:
 
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>Use a time poll to find when people are available.</p>
+      <p>Use a time poll to find when people are available to meet.</p>
       <p>Enter a list of dates or times when you could have your meeting.</p>
       <p>Participants tick those which they’re able to attend, or they can use the statement field to explain their circumstances, so you can update the options if necessary.</p>
       <p>If you add new times during a time poll, people who have already voted are prompted to update their response.</p>
@@ -1611,11 +1611,11 @@ en:
       poll_closed_by_user: '<strong>{{author}}</strong> closed the dot vote: <span>{{title}}</span>'
 
     meeting:
-      poll_created: '<strong>{{author}}</strong> started a meeting time poll: <span>{{title}}</span>'
+      poll_created: '<strong>{{author}}</strong> started a time poll: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> responded:'
-      poll_edited: '<strong>{{author}}</strong> edited the meeting time poll: <span>{{title}}</span>'
-      poll_expired: 'Meeting time poll finished: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> closed the meeting time poll: <span>{{title}}</span>'
+      poll_edited: '<strong>{{author}}</strong> edited the time poll: <span>{{title}}</span>'
+      poll_expired: 'Time poll finished: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> closed the time poll: <span>{{title}}</span>'
 
     # outcome
     outcome_created: '<strong>{{author}}</strong> shared an outcome:'
