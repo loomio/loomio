@@ -100,10 +100,10 @@ module.exports = new class ThreadHelper
     element(By.css('.discussion-form__description-input'))
 
   clickUpdateThreadButton: ->
-    element(By.buttonText('Update thread')).click()
+    element(By.css('.discussion-form__update')).click()
 
   clickMoveThreadButton: ->
-    element(By.buttonText('Move thread')).click()
+    element(By.css('.move-thread-form__submit')).click()
 
   editThreadTitle: ->
     @clickThreadOptionsDropdownButton()

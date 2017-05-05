@@ -5,7 +5,7 @@ class Identities::SlackController < Identities::BaseController
     if event = ::Slack::Participator.new(participate_params).participate!
       render json: ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
     else
-      respond_with_unauthorized(payload.dig('team', 'domain'))
+      respond_with_unauthorized(payload)
     end
   end
 
@@ -33,8 +33,8 @@ class Identities::SlackController < Identities::BaseController
     render text: I18n.t(:"slack.initiate", type: initiate_params[:type], url: url)
   end
 
-  def respond_with_unauthorized(team_name)
-    render json: ::Slack::RequestAuthorizationSerializer.new({team: team_name}, root: false).as_json
+  def respond_with_unauthorized(payload)
+    render json: ::Slack::RequestAuthorizationSerializer.new(payload, root: false).as_json
   end
 
   def respond_with_help
@@ -42,12 +42,12 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def complete_identity(identity)
-    super
+    identity.fetch_user_info
     identity.fetch_team_info
   end
 
-  def identity_params
-    json = client.fetch_access_token(params[:code], redirect_uri).json
+  def oauth_identity_params
+    json = client.fetch_oauth(params[:code], redirect_uri).json
     {
       access_token: json['access_token'],
       uid:          json['user_id']

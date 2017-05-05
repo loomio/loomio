@@ -39,15 +39,15 @@ describe Identities::SlackController do
     it 'does not create an invalid stance' do
       sign_in user
       expect { post :participate, payload: bad_payload }.to_not change { poll.stances.count }
-      expect(response.status).to eq 403
+      expect(response.status).to eq 200 # we still render out a message to slack, so this response must be 'OK'
     end
   end
 
   describe 'create' do
     let(:user) { create :user }
-    let(:invalid_oauth) { controller.stub(identity_params: {}) }
-    let(:valid_oauth) { controller.stub(identity_params: identity_params) }
-    let(:identity_params) { {
+    let(:invalid_oauth) { controller.stub(oauth_identity_params: {}) }
+    let(:valid_oauth) { controller.stub(oauth_identity_params: oauth_identity_params) }
+    let(:oauth_identity_params) { {
       access_token: 'token',
       email: "bob@builder.com",
       name: "Bob the BUilder",
@@ -59,7 +59,7 @@ describe Identities::SlackController do
       sign_in user
       valid_oauth
       expect { post :create, code: 'code' }.to change { user.identities.count }.by(1)
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to dashboard_path
     end
 
     it 'redirects to the session back_to if present' do

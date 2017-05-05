@@ -439,6 +439,11 @@ describe Event do
       expect(notification_users.length).to eq 1
       expect(notification_users).to include poll.author
     end
+
+    it 'does not notify loomio helper bot' do
+      poll.author = User.helper_bot
+      expect { Events::PollExpired.publish!(poll) }.to_not change { ActionMailer::Base.deliveries.count }
+    end
   end
 
   describe 'outcome_created' do

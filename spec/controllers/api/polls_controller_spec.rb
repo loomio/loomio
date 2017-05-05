@@ -150,7 +150,8 @@ describe API::PollsController do
 
   describe 'publish' do
     let(:another_poll) { create :poll }
-    let(:community) { create :facebook_community, poll_id: poll.id }
+    let(:identity) { create :facebook_identity, user: user }
+    let(:community) { create :facebook_community, poll_id: poll.id, identity: identity }
     let(:another_community) { create :facebook_community }
 
     before { sign_in user }

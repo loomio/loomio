@@ -1,9 +1,10 @@
 %md-list-item.poll-meeting-time-field{flex: "true", layout: "row"}
   %md-input-container.poll-meeting-time-field__datepicker-container
-    %md-datepicker{ng-model: "option.date", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
+    %md-datepicker.poll-meeting-form__datepicker{ng-model: "option.date", ng-min-date: "dateToday", md-hide-icons: "calendar"}>
   %md-input-container
-    %md-select{ng-model: "option.time", aria-label: "{{ 'poll_meeting_time_field.closing_hour' | translate }}"}
-      %md-option{ng-repeat: "time in times track by $index", ng-value: "time", ng-selected: "time == option.time"}
+    %md-select{ng-model: "option.time", placeholder: "All day", aria-label: "{{ 'poll_meeting_time_field.closing_hour' | translate }}"}
+      %md-option{ng-value: "undefined", md-option-empty: "", translate: "common.all_day"} All day
+      %md-option{ng-repeat: "time in times track by $index", ng-value: "time"}
         {{ time }}
   .poll-meeting-time-field__add
     %md-button.poll-meeting-form__option-button.lmo-inline-action{ng-click: "addOption()", aria-label: "{{ 'poll_meeting_form.add_option_placeholder' | translate }}"}

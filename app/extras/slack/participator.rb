@@ -11,6 +11,6 @@ class Slack::Participator
   private
 
   def can_participate?
-    @identity && @identity.user.can?(:create, @stance)
+    @identity&.user&.can?(:create, @stance)
   end
 end

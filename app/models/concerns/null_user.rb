@@ -15,6 +15,10 @@ module NullUser
   TRUE_METHODS.each  { |method| define_method(method, -> { true }) }
   NONE_METHODS.each  { |method| define_method(method, -> { method.to_s.singularize.classify.constantize.none }) }
 
+  def participated_polls
+    Poll.none
+  end
+
   def communities
     Communities::Base.none
   end

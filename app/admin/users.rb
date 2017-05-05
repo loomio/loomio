@@ -104,6 +104,12 @@ ActiveAdmin.register User do
     active_admin_comments
   end
 
+  member_action :enable_communities, method: :put do
+    user = User.friendly.find(params[:id])
+    user.experiences['enable_communities'] = true
+    user.save
+  end
+
   member_action :deactivate, method: :put do
     user = User.friendly.find(params[:id])
     user.deactivate!

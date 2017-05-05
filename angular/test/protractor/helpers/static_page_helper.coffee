@@ -16,7 +16,7 @@ module.exports = new class StaticPageHelper
 
   loadPath: (path, timeout = 20000) ->
     browser.driver.get('http://localhost:3000/dev/'+path, timeout)
-    browser.driver.manage().window().setSize(1280, 1024)
+    # browser.driver.manage().window().setSize(1280, 1024)
     browser.driver.sleep(3000)
 
   elementFor: (selector) ->

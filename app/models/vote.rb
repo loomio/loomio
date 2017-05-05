@@ -6,6 +6,9 @@ class Vote < ActiveRecord::Base
   belongs_to :previous_vote, class_name: 'Vote'
   has_many :events, as: :eventable, dependent: :destroy
 
+  has_one :discussion, through: :motion
+  has_one :group, through: :discussion
+
   validates_presence_of :motion, :user, :position
   validates_inclusion_of :position, in: POSITIONS
   validates_length_of :statement, maximum: 250
@@ -16,23 +19,19 @@ class Vote < ActiveRecord::Base
   include HasTimeframe
 
   scope :for_user,      -> (user_id) { where(user_id: user_id) }
-  scope :by_discussion, -> (discussion_id = nil) { joins(:motion).where("motions.discussion_id = ? OR ? IS NULL", discussion_id, discussion_id) }
   scope :most_recent,   -> { where(age: 0) }
   scope :chronologically, -> { order('created_at asc') }
 
   delegate :name, to: :user, prefix: :user # deprecated
   delegate :name, to: :user, prefix: :author
-  delegate :group, :discussion, to: :motion
   delegate :users, to: :group, prefix: :group
   delegate :author, to: :motion, prefix: :motion
   delegate :author, to: :discussion, prefix: :discussion
   delegate :name, to: :motion, prefix: :motion
   delegate :name, :full_name, to: :group, prefix: :group
   delegate :locale, to: :user
-  delegate :discussion_id, to: :motion
   delegate :title, to: :discussion, prefix: :discussion
   delegate :key, to: :motion
-  delegate :id, to: :group, prefix: :group
 
   before_create :age_previous_votes, :associate_previous_vote
 
@@ -47,6 +46,14 @@ class Vote < ActiveRecord::Base
 
   def proposal_id
     motion_id
+  end
+
+  def group_id
+    group&.id
+  end
+
+  def discussion_id
+    discussion&.id
   end
 
   def proposal_id=(id)
@@ -65,18 +72,6 @@ class Vote < ActiveRecord::Base
     user
   end
 
-  def motion_followers_without_voter
-    motion.followers.where('users.id != ?', author.id)
-  end
-
-  def other_group_members
-    group.users.where(User.arel_table[:id].not_eq(user.id))
-  end
-
-  def can_be_edited_by?(current_user)
-    current_user && user == current_user
-  end
-
   def position_verb
     case position
     when 'yes' then 'agree'
@@ -92,18 +87,6 @@ class Vote < ActiveRecord::Base
 
   def previous_position
     previous_vote.position if previous_vote
-  end
-
-  def previous_position_is_block?
-    previous_vote.try(:is_block?)
-  end
-
-  def is_block?
-    position == 'block'
-  end
-
-  def has_statement?
-    statement.present?
   end
 
   private

@@ -290,6 +290,16 @@ FactoryGirl.define do
     after(:build) { |poll| poll.community_of_type(:email, build: true) }
   end
 
+  factory :poll_meeting, class: Poll do
+    poll_type "meeting"
+    title "This is a meeting"
+    details "with a description"
+    association :author, factory: :user
+    poll_option_names ['01-01-2015']
+
+    after(:build) { |poll| poll.community_of_type(:email, build: true) }
+  end
+
   factory :outcome do
     poll
     association :author, factory: :user

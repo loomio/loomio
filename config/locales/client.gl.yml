@@ -3,135 +3,131 @@ gl:
     time:
       am: am
       pm: pm
-    group: Grupo
-    groups: Grupos
+    group: 'Grupo'
+    groups: 'Grupos'
     privacy:
-      public: Público
-      private: Privado
+      public: 'Público'
+      private: 'Privado'
     date_range:
-      today: Hoxe
+      today: 'Hoxe'
     models:
-      proposal: Proposta
+      proposal: 'Proposta'
     action:
-      save: Gardar
-      edit: Editar
-      like: Gústame
-      unlike: Desgustar
-      cancel: Cancelar
+      save: 'Gardar'
+      edit: 'Editar'
+      like: 'Gústame'
+      unlike: 'Desgustar'
+      cancel: 'Cancelar'
   error_page:
-    forbidden: Non tes permisos para facer iso.
+    forbidden: 'Non tes permisos para facer iso.'
   proposal_outcome_panel:
     heading: Resultado
   inbox:
-    clear: Eliminar
-    unread: Sin ler
+    clear: 'Eliminar'
+    unread: 'Sin ler'
   comment_form:
-    edit_comment: Editar commentario
-    delete_comment: Borrar comentario
+    edit_comment: 'Editar commentario'
+    delete_comment: 'Borrar comentario'
   sidebar:
-    unread: Sin ler
-    edit_profile: Editar perfíl
-    email_settings: Opcións do correo
-    help: Axuda
-    sign_out: Pechar sesión
+    edit_profile: 'Editar perfíl'
+    email_settings: 'Opcións do correo'
+    help: 'Axuda'
+    sign_out: 'Pechar sesión'
   navbar:
     search:
-      placeholder: Buscar
-      discussions: Debates
+      placeholder: 'Buscar'
+      discussions: 'Debates'
   notifications:
-    header: Notificacións
+    header: "Notificacións"
   vote_form:
-    i_agree: Estou de acordo
-    i_abstain: Abstéñome
-    i_abstain_details: Paréceme ben que o grupo decida por min
-    i_disagree: Estou en desacordo
-    i_disagree_details: Penso que o podemos facer mellor
-    i_block: O bloqueo
-    submit_position: Enviar posición
+    i_agree: 'Estou de acordo'
+    i_abstain: 'Abstéñome'
+    i_abstain_details: 'Paréceme ben que o grupo decida por min'
+    i_disagree: 'Estou en desacordo'
+    i_disagree_details: 'Penso que o podemos facer mellor'
+    i_block: 'O bloqueo'
+    submit_position: 'Enviar posición'
   proposal_positions_panel:
     heading: Postura
   close_proposal_form:
-    close_proposal: Pechar proposta
+    close_proposal: 'Pechar proposta'
   proposal_form:
-    start_proposal: Comezar proposta
-    edit_proposal: Editar proposta
-    title_label: Título
-    details_label: Detalles
+    start_proposal: 'Comezar proposta'
+    edit_proposal: 'Editar proposta'
+    title_label: 'Título'
+    details_label: 'Detalles'
   discussion_form:
-    group_label: Grupo
-    title_label: Título
-    context_label: Contexto
-    privacy_label: Privacidade
+    group_label: 'Grupo'
+    title_label: 'Título'
+    context_label: 'Contexto'
+    privacy_label: 'Privacidade'
   proposal_expanded:
-    edit_proposal: Editar proposta
-    close_proposal: Pechar proposta
+    edit_proposal: 'Editar proposta'
+    close_proposal: 'Pechar proposta'
   join_group_button:
     join_group: Unirse ó grupo
-    ask_to_join_group: Pedir unirse ó grupo
   membership_request_form:
     heading: Pedir unirse ó grupo
     name_label: Nome
     email_label: Correo electrónico
-    submit_button: Pedir unirse ó grupo
   group_page:
-    discussions: Debates
-    invite_people: Invitar xente
-    options_label: Opcións
+    discussions: 'Debates'
+    options_label: 'Opcións'
     options:
-      label: Opcións
+      label: 'Opcións'
   membership_requests_page:
     approve: Dar o visto bo
     ignore: ignorar
   memberships_page:
-    members: Membros
-    name_label: Nome
-    coordinator_label: Coordinador/a
-    remove_member_label: Borrar
+    members: 'Membros'
+    name_label: 'Nome'
+    coordinator_label: 'Coordinador/a'
+    remove_member_label: 'Borrar'
   profile_page:
-    profile: Perfil
-    picture_label: Imaxe
-    name_label: Nome
-    username_label: Usuario
-    email_label: Correo electrónico
-    locale_label: Lingua
+    profile: 'Perfil'
+    picture_label: 'Imaxe'
+    name_label: 'Nome'
+    username_label: 'Usuario'
+    email_label: 'Correo electrónico'
+    locale_label: 'Lingua'
   dashboard_page:
-    aria_label: Panel de control
+    aria_label: 'Panel de control'
     no_groups:
       or: ou
     threads_from:
-      today: Hoxe
+      today: 'Hoxe'
   inbox_page:
     no_groups:
       or: ou
   thread_group:
-    aria_label: Nome do grupo
+    aria_label: 'Nome do grupo'
   delete_comment_dialog:
-    title: Borrar comentario
-    confirm: Borrar comentario
+    title: 'Borrar comentario'
+    confirm: 'Borrar comentario'
   new_comment_item:
     context_menu:
-      edit_comment: Editar commentario
-      delete_comment: Borrar comentario
+      edit_comment: 'Editar commentario'
+      delete_comment: 'Borrar comentario'
   contact_message_form:
-    name_label: O teu nome
-    email_label: A túa dirección de correo electrónico
-    message_label: A túa mensaxe
+    name_label: 'O teu nome'
+    email_label: 'A túa dirección de correo electrónico'
+    message_label: 'A túa mensaxe'
   help_page:
-    coordinating: Coordinando o teu grupo de Loomio
-    different_ways: Formas diferentes de empregar Loomio
-    getting_started: Comezando
-    have_a_discussion: Ter un debate
-    have_a_discussion_description: O asunto e calquera información relevante van no alto da páxina. Usa a caixa de comentario para dicir algo no debate.
-    help: Axuda
-    how_it_works: Como funciona
-    join_the_community: Unirse á comunidade
-    images_and_text_formatting: Formato de texto e imaxes
-    keep_up_to_date: Manter ó día
-    make_a_decision: Tomar unha decisión
-    start_discussion: Comezar un debate aberto
-    video_id: '52025402'
-    video_tutorial: Videotutorial
+    coordinating: 'Coordinando o teu grupo de Loomio'
+    different_ways: 'Formas diferentes de empregar Loomio'
+    getting_started: "Comezando"
+    have_a_discussion: "Ter un debate"
+    have_a_discussion_description: "O asunto e calquera información relevante van no alto da páxina. Usa a caixa de comentario para dicir algo no debate."
+    help: "Axuda"
+    how_it_works: "Como funciona"
+    join_the_community: "Unirse á comunidade"
+    images_and_text_formatting: "Formato de texto e imaxes"
+    keep_up_to_date: "Manter ó día"
+    make_a_decision: "Tomar unha decisión"
+    start_discussion: "Comezar un debate aberto"
+    video_id: "52025402"
+    video_tutorial: "Videotutorial"
   hint:
-    discussion: Recomendacións para comezar un debate aberto
-    proposal: Trucos para escribir unha proposta clara
-    vote: Podes cambiar a proposta en calquera momento
+    discussion: 'Recomendacións para comezar un debate aberto'
+    proposal: 'Trucos para escribir unha proposta clara'
+    vote: 'Podes cambiar a proposta en calquera momento'

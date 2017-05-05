@@ -5,7 +5,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if identity.valid?
+    if identity.save
       associate_identity
       redirect_to session.delete(:back_to) || dashboard_path
     else
@@ -15,7 +15,8 @@ class Identities::BaseController < ApplicationController
   end
 
   def destroy
-    if current_user.send(:"#{controller_name}_identity")&.destroy
+    if i = current_user.send(:"#{controller_name}_identity")
+      i.destroy
       redirect_to request.referrer || root_path
     else
       render json: { error: "Not connected to #{controller_name}!" }, status: :bad_request

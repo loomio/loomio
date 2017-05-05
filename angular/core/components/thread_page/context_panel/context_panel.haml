@@ -1,14 +1,13 @@
 %section.context-panel{aria-label: "{{ 'thread_context.aria_label' | translate }}"}
   .context-panel__top
-    .context-panel__h1.lmo-flex__grow
-      %h1.lmo-h1.context-panel__heading{in-view: "showLintel(!$inview)"}
+    .context-panel__h1.lmo-flex__grow{in-view: "showLintel(!$inview)"}
+      %h1.lmo-h1.context-panel__heading{ng-if: "!translation"}
         {{discussion.title}}
-      %h1{ng-if: "translation"}
+      %h1.lmo-h1{ng-if: "translation"}
         %translation{translation: "translation", field: "title"}
 
     .context-panel__thread-actions.pull-right.lmo-no-print
       %outlet{name: "before-thread-actions", model: "discussion"}
-      -# %star_toggle{thread: "discussion"}
       %span{uib-dropdown: "true",  ng-if: "showContextMenu()"}
         %button.context-panel__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true"}
           .sr-only{translate: "thread_context.thread_options"}
@@ -36,9 +35,9 @@
     %timeago.nowrap{timestamp: "::discussion.createdAt" }>
     %translate_button.lmo-card-minor-action{model: "discussion", showdot: "true"}>
     %span{aria-hidden: "true"}·
-    %span{ng-if: "discussion.edited()"}
-      %button.context-panel__edited.lmo-btn-link{ng-click: "showRevisionHistory()", translate: "discussion.edited"}>
-      %span{aria-hidden: "true"}·
+    -# %span{ng-if: "discussion.edited()"}
+    -#   %button.context-panel__edited.lmo-btn-link{ng-click: "showRevisionHistory()", translate: "discussion.edited"}>
+    -#   %span{aria-hidden: "true"}·
     %span.nowrap.context-panel__discussion-privacy--private{ng-show: "discussion.private"}>
       %i.fa.fa-lock>
       %span{translate: "common.privacy.private"}
@@ -47,8 +46,8 @@
       %span{translate: "common.privacy.public"}
     %outlet{name: "after-thread-title", model: "discussion"}
 
-  .context-panel__description.lmo-markdown-wrapper{marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
-  %translation{ng-if: "translation && discussion.description", translation: "translation", field: "description"}
+  .context-panel__description.lmo-markdown-wrapper{ng-if: "!translation", marked: "discussion.cookedDescription()", aria-label: "{{ 'thread_context.aria_label' | translate }}" }
+  %translation.lmo-markdown-wrapper{ng-if: "translation", translation: "translation", field: "description"}
 
   .context-panel__attachments{ng-if: "discussion.hasAttachments()"}
     .context-panel__attachment{ng-repeat: "attachment in discussion.attachments() | orderBy:'createdAt' track by attachment.id"}

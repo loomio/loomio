@@ -1,4 +1,6 @@
 class PollOption < ActiveRecord::Base
+  include FormattedDateHelper
+
   belongs_to :poll
   validates :name, presence: true
 
@@ -9,9 +11,9 @@ class PollOption < ActiveRecord::Base
     Poll::COLORS.dig(poll.poll_type, self.priority)
   end
 
-  def display_name
+  def display_name(zone: nil)
     if poll.dates_as_options
-      DateTime.strptime(self.name.sub('.000Z', 'Z')).strftime('%-d %b - %l:%M%P')
+      formatted_datetime(name, zone || poll.custom_fields['time_zone'])
     else
       name.humanize
     end

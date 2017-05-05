@@ -1,5 +1,5 @@
 Given(/^I have authenticated with omniauth/) do
-  @omniauth_identity = OmniauthIdentity.create(uid: '123', provider: 'google', email: 'bill@example.com')
+  @omniauth_identity = OmniauthIdentity.create(uid: '123', identity_type: 'google', email: 'bill@example.com')
   page.set_rack_session(omniauth_identity_id: @omniauth_identity.id)
 end
 
@@ -26,4 +26,3 @@ Then(/^my omniauth_identity should be linked to my account$/) do
   expect(@omniauth_identity.user).to eq User.find_by_email('bill@example.com')
   page.get_rack_session.should_not have_key :omniauth_identity_id
 end
-
