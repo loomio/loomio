@@ -7,6 +7,8 @@ class GroupExporter
               :comments,    :comment_fields,
               :proposals,   :proposal_fields,
               :votes,       :vote_fields,
+              :polls,       :poll_fields,
+              :stances,     :stance_fields,
               :field_names
 
   def initialize(group)
