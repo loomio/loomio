@@ -3,11 +3,13 @@ module PendingActionsHelper
 
   def handle_pending_actions
     if pending_invitation
-      pending_invitation.group.add_member!(current_user) && session.delete(:pending_invitation_id)
+      pending_invitation.group.add_member!(current_user)
+      session.delete(:pending_invitation_id)
     end
 
     if pending_identity
-      current_user.identities.push(pending_identity) && session.delete(:pending_identity_id)
+      current_user.identities.push(pending_identity)
+      session.delete(:pending_identity_id)
     end
   end
 

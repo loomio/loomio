@@ -1,5 +1,4 @@
 class API::RegistrationsController < Devise::RegistrationsController
-  include DeviseControllerHelper
   include PendingActionsHelper
 
   def create

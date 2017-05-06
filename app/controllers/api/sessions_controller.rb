@@ -1,5 +1,4 @@
 class API::SessionsController < Devise::SessionsController
-  include DeviseControllerHelper
   include PendingActionsHelper
 
   def create
