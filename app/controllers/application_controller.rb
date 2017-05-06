@@ -50,45 +50,12 @@ class ApplicationController < ActionController::Base
     current_user.is_logged_in? ? dashboard_path : root_path
   end
 
-  def store_previous_location
-    session[:user_return_to] ||= URI.unescape(params.fetch(:return_to, '')).chomp('/') || request.env['HTTP_REFERER']
-  end
-
-  def clear_stored_location
-    session[:user_return_to] = nil
-  end
-
-  def after_sign_in_path_for(resource)
-    resource.update_attribute(:detected_locale, locales_from_browser_detection.first)
-    user_return_path.tap { clear_stored_location }
-  end
-
-  def user_return_path
-    if invalid_return_urls.include? session[:user_return_to]
-      case current_user_groups.count
-      when 0 then explore_path
-      when 1 then group_path(current_user_groups.first)
-      else        dashboard_or_root_path
-      end
-    else
-      session[:user_return_to]
-    end
-  end
-
-  def current_user_groups
-    @current_user_groups ||= current_user.groups
-  end
-
   def user_signed_in?
     current_user.is_logged_in?
   end
 
   def user_time_zone(&block)
     Time.use_zone(current_user.time_zone_city, &block)
-  end
-
-  def invalid_return_urls
-    [nil, root_url, new_user_password_url, '']
   end
 
   before_filter :configure_permitted_parameters, if: :devise_controller?

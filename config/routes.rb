@@ -219,9 +219,7 @@ Loomio::Application.routes.draw do
 
   get "/browser_not_supported", to: "application#browser_not_supported"
 
-  devise_for :users, controllers: { sessions: 'users/sessions',
-                                    registrations: 'users/registrations',
-                                    omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users
 
   namespace(:subscriptions) do
     get :select_gift_plan
