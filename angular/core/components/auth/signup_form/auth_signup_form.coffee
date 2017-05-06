@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig, AuthService) ->
+angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig, AuthService, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
   controller: ($scope) ->
@@ -9,7 +9,12 @@ angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig, A
       avatarUrl:  '/img/mascot.png'
 
     $scope.back = ->
-      $scope.user.email = ''
+      $scope.user.emailStatus = null
 
-    $scope.signUp = ->
-      AuthService.signUp($scope.user.email, $scope.user.name)
+    $scope.submit = ->
+      AuthService.signUp($scope.user).then ->
+
+
+    document.querySelector('.auth-signup-form__name input').focus()
+
+    KeyEventService.submitOnEnter($scope, anyEnter: true)

@@ -1,8 +1,10 @@
 .auth-form
-  %auth_provider_form{ng-if: "!user.provider", user: "user"}
-  .auth-form__set-email{ng-if: "user.provider"}
-    %auth_email_form{ng-if: "!user.email", user: "user"}
-    .auth-form__authenticate{ng-if: "user.email"}
+  .auth-form__logging-in{ng-if: "!loginComplete()"}
+    .auth-form__email-not-set{ng-if: "!user.emailStatus"}
+      %auth_provider_form{user: "user"}
+      %auth_email_form{user: "user"}
+    .auth-form__email-set{ng-if: "user.emailStatus"}
       %auth_signin_form{ng-if:   "user.emailStatus == 'active'",   user: "user"}
       %auth_signup_form{ng-if:   "user.emailStatus == 'unused'",   user: "user"}
       %auth_inactive_form{ng-if: "user.emailStatus == 'inactive'", user: "user"}
+  %auth_complete{ng-if: "loginComplete()", user: "user"}

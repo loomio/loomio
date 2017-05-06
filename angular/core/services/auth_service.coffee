@@ -1,15 +1,17 @@
-angular.module('loomioApp').factory 'AuthService', (Records, RestfulClient) ->
+angular.module('loomioApp').factory 'AuthService', ($window, Records, RestfulClient) ->
   new class AuthService
-    signIn: (email, password) ->
-      Records.sessions.build(email: email, password: password).save()
+    signIn: (user) ->
+      Records.sessions.build(email: user.email, password: user.password).save().then ->
+        $window.location.reload()
 
-    signUp: (email, name) ->
-      Records.registrations.build(email: email, name: name).save()
+    signUp: (user) ->
+      Records.registrations.build(email: user.email, name: user.name).save().then ->
+        user.sentLoginLink = true
 
-    sendLoginLink: (email) ->
-      new RestfulClient('login_tokens').post('', email: email)
+    sendLoginLink: (user) ->
+      new RestfulClient('login_tokens').post('', email: user.email).then ->
+        user.sentLoginLink = true
 
-    forgotPassword: (email) ->
-      Records.users.remote.post
-        path: 'password'
-        params: {email: email}
+    forgotPassword: (user) ->
+      Records.users.remote.post('password', email: user.email).then ->
+        user.sentPasswordLink = true

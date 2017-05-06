@@ -1,20 +1,24 @@
-angular.module('loomioApp').directive 'authSigninForm', (AuthService) ->
+angular.module('loomioApp').directive 'authSigninForm', (AuthService, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
 
     $scope.back = ->
-      $scope.user.email = ''
-
-    $scope.sendLoginLink = ->
-      AuthService.sendLoginLink($scope.user.email)
+      $scope.user.emailStatus = null
 
     $scope.signIn = ->
-      AuthService.signIn($scope.user.email, $scope.user.password)
+      AuthService.signIn($scope.user)
+
+    $scope.sendLoginLink = ->
+      AuthService.sendLoginLink($scope.user)
+
+    $scope.submit = ->
+      if $scope.user.hasPassword
+        $scope.signIn()
+      else
+        $scope.sendLoginLink()
 
     $scope.setPassword = ->
-      AuthService.forgotPassword($scope.user.email)
+      AuthService.forgotPassword($scope.user)
 
-    $scope.passwordFormShown = $scope.user.hasPassword
-    $scope.showPasswordForm = ->
-      $scope.passwordFormShown = true
+    KeyEventService.registerKeyEvent $scope, 'pressedEnter', $scope.submit

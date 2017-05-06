@@ -7,3 +7,6 @@ angular.module('loomioApp').directive 'authForm', (AppConfig, Records) ->
       name:        AppConfig.pendingIdentity.name
       email:       AppConfig.pendingIdentity.email
       emailStatus: AppConfig.pendingIdentity.email_status
+
+    $scope.loginComplete = ->
+      $scope.user.sentLoginLink or $scope.user.sentPasswordLink

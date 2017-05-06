@@ -1,31 +1,27 @@
 .auth-signin-form
   %user_avatar.auth-signin-form__avatar{user: "user", size: "large-circular"}
-  .auth-signin-form__magic-link
-    %h2.lmo-h2{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName()}}"}
-    %md-input-container.md-block.auth-signin-form__magic-link
-      .poll-common-helptext{translate: "auth_form.magic_link_helptext", ng-if: "!user.hasPassword"}
-      .poll-common-helptext{translate: "auth_form.magic_link_helptext_with_password", ng-if: "user.hasPassword"}
-    %md-button.md-primary.md-raised{ng-click: "sendLoginLink()"}
-      %span{translate: "auth_form.magic_link"}
+  %md-input-container.md-block.auth-signin-form__magic-link
+    %h2.lmo-h2{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName() || user.email}}"}
+    %p.poll-common-helptext
+      %span{translate: "auth_form.login_link_helptext", ng-if: "!user.hasPassword"}>
+      %span{translate: "auth_form.login_link_helptext_with_password", ng-if: "user.hasPassword"}>
+      %span{translate: "auth_form.thats_not_me"}>
+      %a{href: "#", ng-click: "back()", translate: "auth_form.sign_in_as_someone_else"}
 
-  .auth-signin-form__set-password-button{ng-if: "!passwordFormShown"}
-    %md-button.md-raised{ng-click: "showPasswordForm()"}
-      %span{translate: "auth_form.set_password_button"}
-
-  .auth-signin-form__password{ng-if: "passwordFormShown"}
-    %p.poll-common-helptext{translate: "auth_form.password_helptext", ng-if: "user.hasPassword"}
-
+  .auth-signin-form__password{ng-if: "user.hasPassword"}
     %md-input-container.md-block
       %label{translate: "auth_form.password"}
       %input.lmo-primary-form-input{type: "password", ng-required: true, ng-model: "user.password"}
-    %md-input-container.md-block{ng-if: "!user.hasPassword"}
-      %label{translate: "auth_form.confirm_password"}
-      %input.lmo-primary-form-input{type: "passwordConfirm", ng-required: true, ng-model: "user.passwordConfirm"}
 
-  .lmo-actions
-    %md-button{ng-click: "back()"}
-      %span{translate: "common.action.back"}
-    %md-button.md-primary{ng-click: "signIn()", ng-if: "user.hasPassword"}
-      %span{translate: "auth_form.sign_in"}
-    %md-button.md-primary{ng-click: "setPassword()", ng-if: "!user.hasPassword && passwordFormShown"}
-      %span{translate: "auth_form.set_password"}
+    .lmo-actions
+      %md-button{ng-click: "sendLoginLink()"}
+        %span{translate: "auth_form.login_link"}
+      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "user.hasPassword"}
+        %span{translate: "auth_form.sign_in"}
+
+  .auth-signin-form__no-password{ng-if: "!user.hasPassword"}
+    .lmo-actions
+      %md-button{ng-click: "setPassword()"}
+        %span{translate: "auth_form.set_password_button"}
+      %md-button.md-primary.md-raised{ng-click: "sendLoginLink()"}
+        %span{translate: "auth_form.login_link"}

@@ -9,10 +9,10 @@
     %label{translate: "auth_form.email"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{auth_form.email_placeholder | translate}}", ng-model: "user.email"}
 
-  %md-input-container.md-block
+  %md-input-container.md-block.auth-signup-form__name
     %label{translate: "auth_form.name"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "name"}
 
   .lmo-actions
     %md-button{ng-click: "back()", translate: "common.action.back", aria-label: "{{ 'common.action.back' | translate }}"}
-    %md-button.md-primary{ng-click: "signUp()", translate: "auth_form.sign_up", aria-label: "{{ 'auth_form.sign_up' | translate }}"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "auth_form.login_link", aria-label: "{{ 'auth_form.login_link' | translate }}"}
