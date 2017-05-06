@@ -12,7 +12,8 @@ angular.module('loomioApp').directive 'authSignupForm', ($location, AppConfig, A
       $scope.user.emailStatus = null
 
     $scope.submit = ->
-      AuthService.signUp($scope.user).then ->
+      $scope.$emit 'processing'
+      AuthService.signUp($scope.user).then -> $scope.$emit 'doneProcessing'
 
 
     document.querySelector('.auth-signup-form__name input').focus()

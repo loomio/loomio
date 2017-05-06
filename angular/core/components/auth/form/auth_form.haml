@@ -1,4 +1,5 @@
 .auth-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
   .auth-form__logging-in{ng-if: "!loginComplete()"}
     .auth-form__email-not-set{ng-if: "!user.emailStatus"}
       %auth_provider_form{user: "user"}

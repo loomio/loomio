@@ -47,8 +47,8 @@ class API::ProfileController < API::RestfulController
   end
 
   def set_password
-    if self.resource.presence
-      self.resource.send_reset_password_instructions
+    if resource.presence
+      resource.send_reset_password_instructions
       head :ok
     else
       head :not_found

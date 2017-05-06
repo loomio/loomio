@@ -10,3 +10,6 @@ angular.module('loomioApp').directive 'authForm', (AppConfig, Records) ->
 
     $scope.loginComplete = ->
       $scope.user.sentLoginLink or $scope.user.sentPasswordLink
+
+    $scope.$on 'processing',     -> $scope.isDisabled = true
+    $scope.$on 'doneProcessing', -> $scope.isDisabled = false
