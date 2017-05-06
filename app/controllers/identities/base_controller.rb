@@ -49,7 +49,7 @@ class Identities::BaseController < ApplicationController
   end
 
   def associate_identity
-    if user = (existing_identity&.user || existing_user || current_user).presence
+    if user = (existing_identity&.user || current_user || existing_user).presence
       user.associate_with_identity(identity)
       sign_in(user)
     else
