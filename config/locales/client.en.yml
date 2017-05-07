@@ -1718,7 +1718,7 @@ en:
       Enter your password below to sign in.
       Or, we can email you a link to sign in instantly.
     sign_up_helptext: |
-      Just enter the name you'd like to be known by, and we'll send you a link to sign in
+      Just enter the name you'd like to be known by, and we'll send you a link to log in.
 
     sign_in_with_email: Sign in with email
     welcome: Nice to meet you, {{email}}!
@@ -1731,8 +1731,7 @@ en:
 
     check_your_email: Check your email!
     login_link_sent: "Ok, We've sent an email to {{email}} with a link to instantly log in. See you soon!"
-    password_link_sent: "We've sent an email to {{email}} with instructions on how to reset your password."
-
+    password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
 
     name: Name
     email: Email

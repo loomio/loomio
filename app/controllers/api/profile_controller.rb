@@ -43,7 +43,7 @@ class API::ProfileController < API::RestfulController
   end
 
   def email_status
-    respond_with_resource(serializer: BasicUserSerializer)
+    respond_with_resource(serializer: Pending::UserSerializer)
   end
 
   def set_password

@@ -19,8 +19,8 @@ class InvitationsController < ApplicationController
     else
       session[:pending_invitation_id] = params[:id]
       redirect_to group_url(invitation.invitable,
-        invitation_email: invitation.recipient_email,
-        invitation_name:  invitation.recipient_name
+        sign_in_email: invitation.recipient_email,
+        sign_in_name:  invitation.recipient_name
       )
     end
   end

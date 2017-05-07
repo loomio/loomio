@@ -3,7 +3,7 @@ module PendingActionsHelper
 
   def handle_pending_actions
     if pending_invitation
-      pending_invitation.group.add_member!(current_user)
+      pending_invitation.group&.add_member!(current_user)
       session.delete(:pending_invitation_id)
     end
 

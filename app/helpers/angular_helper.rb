@@ -50,7 +50,7 @@ module AngularHelper
       drafts: {
         debounce: ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
       },
-      pendingIdentity: IdentitySerializer.new(pending_identity, root: false).as_json || {},
+      pendingIdentity: serialized_pending_identity,
       pollTemplates: Poll::TEMPLATES,
       pollColors:    Poll::COLORS,
       timeZones:     Poll::TIMEZONES,
@@ -67,5 +67,10 @@ module AngularHelper
 
   def angular_asset_folder
     Rails.env.production? ? Loomio::Version.current : :development
+  end
+
+  def serialized_pending_identity
+    Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
+    Pending::InvitationSerializer.new(pending_invitation, root: false).as_json
   end
 end

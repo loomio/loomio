@@ -4,20 +4,21 @@ angular.module('loomioApp').directive 'authSigninForm', (AuthService, KeyEventSe
   controller: ($scope) ->
 
     $scope.back = ->
-      $scope.user.emailStatus = null
+      $scope.user.email_status = null
 
     $scope.signIn = ->
-      AuthService.signIn($scope.user)
+      $scope.$emit 'processing'
+      AuthService.signIn($scope.user).finally -> $scope.$emit 'doneProcessing'
 
     $scope.sendLoginLink = ->
-      AuthService.sendLoginLink($scope.user)
+      $scope.$emit 'processing'
+      AuthService.sendLoginLink($scope.user).finally -> $scope.$emit 'doneProcessing'
 
     $scope.submit = ->
-      $scope.$emit 'processing'
-      if $scope.user.hasPassword
-        $scope.signIn().finally -> $scope.$emit 'doneProcessing'
+      if $scope.user.has_password
+        $scope.signIn()
       else
-        $scope.sendLoginLink().finally -> $scope.$emit 'doneProcessing'
+        $scope.sendLoginLink()
 
     $scope.setPassword = ->
       $scope.$emit 'processing'

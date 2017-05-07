@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'AuthService', ($window, Records, RestfulCli
 
     emailStatus: (user) ->
       Records.users.emailStatus(user.email).then (data) ->
-        _.merge user, _.first(Records.users.find(email: _.first(data.users).email))
+        _.merge user, _.first(data.users)
 
     signIn: (user) ->
       Records.sessions.build(email: user.email, password: user.password).save().then ->

@@ -29,7 +29,7 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
     $scope.$broadcast('clearBackgroundImageUrl')
     ScrollService.scrollTo(options.scrollTo or 'h1') unless options.skipScroll
     $scope.links = options.links or {}
-    $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or $location.search().invitation_email
+    $scope.forceSignIn() if AbilityService.requireLoginFor(options.page) or AppConfig.pendingIdentity?
 
   $scope.$on 'setTitle', (event, title) ->
     document.querySelector('title').text = _.trunc(title, 300) + ' | Loomio'
@@ -53,7 +53,6 @@ angular.module('loomioApp').controller 'RootController', ($scope, $timeout, $loc
   $scope.keyDown = (event) -> KeyEventService.broadcast(event)
 
   $router.config AppConfig.routes.concat AppConfig.plugins.routes
-
 
   AppConfig.records = Records
   AhoyService.init()
