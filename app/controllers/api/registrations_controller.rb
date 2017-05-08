@@ -1,14 +1,6 @@
 class API::RegistrationsController < Devise::RegistrationsController
   include PendingActionsHelper
 
-  def create
-    if params[resource_name][:honeypot]
-      head :bad_request
-    else
-      super
-    end
-  end
-
   private
 
   def respond_with(resource, args = {})
@@ -19,5 +11,9 @@ class API::RegistrationsController < Devise::RegistrationsController
     else
       render json: { errors: resource.errors }, status: 422
     end
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :recaptcha).tap { |p| p.require(:recaptcha) }
   end
 end

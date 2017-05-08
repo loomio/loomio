@@ -27,6 +27,9 @@ en:
     messages:
       email: Not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
+  user:
+    error:
+      recaptcha: "We weren't able to verify that you're not a robot 🤖. Please try again!"
   attachment:
     error:
       too_large: The file you tried to attach is larger than 50MB, please choose a smaller file.

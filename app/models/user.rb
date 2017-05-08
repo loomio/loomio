@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :trackable, :omniauthable, :validatable
-  attr_accessor :honeypot
+  attr_accessor :recaptcha
   attr_accessor :restricted
 
   validates :email, presence: true, uniqueness: true, email: true
@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 
   validates_length_of :password, minimum: 8, allow_nil: true
   validates :password, nontrivial_password: true, allow_nil: true
+  validate  :ensure_recaptcha, if: :recaptcha
 
   has_many :contacts, dependent: :destroy
   has_many :admin_memberships,
@@ -285,6 +286,11 @@ class User < ActiveRecord::Base
 
   def ensure_email_api_key
     self.email_api_key ||= SecureRandom.hex(16)
+  end
+
+  def ensure_recaptcha
+    return if Clients::Recaptcha.instance.validate(self.recaptcha)
+    self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 
   def ensure_unsubscribe_token

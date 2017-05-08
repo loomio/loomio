@@ -17,6 +17,7 @@
   %md-input-container.md-block.auth-signup-form__name
     %label{translate: "auth_form.name"}
     %input.lmo-primary-form-input{type: "text", placeholder: "{{auth_form.name_placeholder | translate}}", ng-model: "name"}
+  %div{vc-recaptcha: "true", key: "recaptchaKey", ng-if: "recaptchaKey", ng-model: "user.recaptcha"}
 
   .lmo-actions
     %div
