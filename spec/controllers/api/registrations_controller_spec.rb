@@ -19,6 +19,10 @@ describe API::RegistrationsController do
       expect(u.email).to eq registration_params[:email]
     end
 
+    it 'sends a login email' do
+      expect { post :create, user: registration_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
     it 'does not create a new user if recaptcha is not present' do
       registration_params[:recaptcha] = ''
       expect { post :create, user: registration_params }.to raise_error { ActionController::ParameterMissing }
