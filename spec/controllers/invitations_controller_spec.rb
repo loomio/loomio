@@ -39,11 +39,11 @@ describe InvitationsController do
       end
 
       it "sets session attribute of the invitation token" do
-        expect(session[:invitation_token]).to eq invitation.token
+        expect(session[:pending_invitation_id]).to eq invitation.token
       end
 
-      it "redirects to sign in" do
-        response.should redirect_to(new_user_session_path)
+      it "redirects to the group" do
+        response.should redirect_to(group_url(invitation.group))
       end
 
       it 'does not accept the invitation' do
@@ -71,7 +71,7 @@ describe InvitationsController do
 
       context 'and has invitation_token in session' do
         before do
-          session[:invitation_token] = invitation.token
+          session[:pending_invitation_id] = invitation.token
         end
 
         it 'accepts the invitation, redirects to group, and clears token from session' do
@@ -80,7 +80,7 @@ describe InvitationsController do
           invitation.reload
           expect(invitation.accepted?).to be true
           expect(Membership.find_by(group: group, user: user)).to be_present
-          session[:invitation_token].should be_nil
+          session[:pending_invitation_id].should be_nil
         end
       end
     end

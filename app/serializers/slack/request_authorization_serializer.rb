@@ -8,7 +8,7 @@ class Slack::RequestAuthorizationSerializer < Slack::BaseSerializer
   private
 
   def team
-    Hash(object)['team']
+    object.fetch('team', {})
   end
 
   def request_authorization_url

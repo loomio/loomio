@@ -7,7 +7,7 @@ module NullUser
                    :email_when_proposal_closing_soon, :email_missed_yesterday, :email_when_mentioned, :email_on_participation, :is_group_admin?]
   EMPTY_METHODS = [:groups, :group_ids, :adminable_group_ids, :errors]
   TRUE_METHODS  = [:angular_ui_enabled, :angular_ui_enabled?]
-  NONE_METHODS  = [:votes, :memberships, :notifications, :polls, :stances]
+  NONE_METHODS  = [:votes, :memberships, :notifications, :polls, :stances, :login_tokens]
 
   NIL_METHODS.each   { |method| define_method(method, -> { nil }) }
   FALSE_METHODS.each { |method| define_method(method, -> { false }) }

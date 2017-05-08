@@ -15,14 +15,10 @@ class InvitationsController < ApplicationController
     if current_user.is_logged_in?
       InvitationService.redeem(invitation, current_user)
       session.delete(:pending_invitation_id)
-      redirect_to group_url(invitation.invitable)
     else
       session[:pending_invitation_id] = params[:id]
-      redirect_to group_url(invitation.invitable,
-        sign_in_email: invitation.recipient_email,
-        sign_in_name:  invitation.recipient_name
-      )
     end
+    redirect_to group_url(invitation.invitable)
   end
 
   private
