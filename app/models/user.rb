@@ -176,7 +176,7 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    name.split(' ').first
+    name.to_s.split(' ').first
   end
 
   def name_and_email

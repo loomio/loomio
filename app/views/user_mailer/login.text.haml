@@ -1,7 +1,7 @@
-= t("email.login.intro_text")
+= t("email.login.intro")
 \
-= t('email.login.login_text')
+= t('email.login.login')
 \
-= dashboard_url
+= login_token_url(@token.token, @utm_hash)
 \
 = t('email.login.resend_text')

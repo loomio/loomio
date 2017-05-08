@@ -1,7 +1,5 @@
-%p.user-mailer__context= t(:"email.login.intro_html", name: @user.name)
+%p.user-mailer__context= t(:"email.login.intro", name: @user.first_name || @user.email)
 %p.user-mailer__message-container
-  = link_to t(:"email.login.login_html"), login_token_url(@token.token, @utm_hash), class: "invite-people-mailer__button"
+  = link_to t(:"email.login.login", name: @user.name || @user.email), login_token_url(@token.token, @utm_hash), class: "invite-people-mailer__button"
 %p.user-mailer__resend
-  %span= t(:"email.login.resend_html")
-  %a= t(:"email.login.resend_link_html")  
-%p.user-mailer__ignore= t(:"email.login.ignore_html")
+  %span= t(:"email.login.resend_html", expires_at: @token.expires_at.strftime('%H:%m %P'))
