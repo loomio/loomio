@@ -1,7 +1,7 @@
 class UserMailer < BaseMailer
   helper :email
   helper :application
-  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group]
+  layout 'invite_people_mailer', only: [:membership_request_approved, :user_added_to_group, :login]
 
   def missed_yesterday(user, time_since = nil)
     @recipient = @user = user

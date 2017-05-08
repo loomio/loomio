@@ -14,6 +14,15 @@ en:
       <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
   email:
+    login:
+      intro_html: |
+        Hi %{name}!
+        Someone has requested a link to access your Loomio account. Click below to log in instantly
+      login_html: Login to Loomio
+      resend_html: "If this link doesn't work for you, it may have expired, or been used already."
+      resend_link_html: "Click here to get another link"
+      ignore_html: "If you didn't a request a link to log in, please ignore this email."
+
     reset_password:
       greeting: |
         Hi %{name}
