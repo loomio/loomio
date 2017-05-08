@@ -72,6 +72,7 @@ module AngularHelper
 
   def serialized_pending_identity
     Pending::IdentitySerializer.new(pending_identity, root: false).as_json ||
-    Pending::InvitationSerializer.new(pending_invitation, root: false).as_json
+    Pending::InvitationSerializer.new(pending_invitation, root: false).as_json ||
+    Pending::UserSerializer.new(pending_user, root: false).as_json
   end
 end

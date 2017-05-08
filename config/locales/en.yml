@@ -60,7 +60,7 @@ en:
     registrations:
       sign_up: Create account
     sessions:
-      token_unusable: This token has expired, or it's been used already. Click 'resend' to get another one.
+      token_unusable: This token has expired, or it's been used already. Please send another login link.
       signed_out: Signed out successfully
   error:
     access_denied: You do not have permission to do this.

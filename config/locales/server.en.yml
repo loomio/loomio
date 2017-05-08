@@ -18,8 +18,7 @@ en:
       subject: Loomio | Your instant log in link
       intro: Hi %{name}, here is a link to sign into your Loomio account.
       login: Login to Loomio as %{name}
-      resend_html: This link will expire at %{expires_at}. If that time has passed, you can <a href="#">click here</a> to get another link.
-      resend_text: This link will expire at %{expires_at}. If that time has passed, you can click the link below to get another email sent.
+      resend: This link will expire at %{expires_at}. If that time has passed, you can follow the link above to get another link.
 
     reset_password:
       greeting: |

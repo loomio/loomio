@@ -8,16 +8,16 @@ describe LoginToken do
   end
 
   it 'is useable by default' do
-    expect(LoginToken.useable).to include token
+    expect(token.useable?).to eq true
   end
 
   it 'is not useable if it has been used before' do
     token.update(used: true)
-    expect(LoginToken.useable).to_not include token
+    expect(token.useable?).to eq false
   end
 
   it 'is not useable if it is old' do
     token.update(created_at: 30.minutes.ago)
-    expect(LoginToken.useable).to_not include token
+    expect(token.useable?).to eq false
   end
 end

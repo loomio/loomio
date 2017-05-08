@@ -1,12 +1,19 @@
 class LoginTokensController < ApplicationController
 
   def show
-    if token = LoginToken.useable.find_by(token: params[:id])
+    if login_token.useable?
       token.update(used: true)
-      sign_in(token.user)
+      sign_in(login_token.user)
     else
+      session[:pending_user_id] = login_token.user_id
       flash[:notice] = t(:"devise.sessions.token_unusable")
     end
     redirect_to dashboard_path
+  end
+
+  private
+
+  def login_token
+    @login_token ||= LoginToken.find_by!(token: params[:id])
   end
 end
