@@ -1,4 +1,6 @@
 class API::SessionsController < Devise::SessionsController
+  before_filter :configure_permitted_parameters
+
   def create
     if user = warden.authenticate(scope: resource_name)
       sign_in(resource_name, user)
@@ -14,4 +16,13 @@ class API::SessionsController < Devise::SessionsController
     flash[:notice] = t(:'devise.sessions.signed_out')
     head :ok
   end
+
+  private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in) do |u|
+      u.permit(:email, :password, :remember_me)
+    end
+  end
+
 end

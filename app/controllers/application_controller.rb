@@ -64,15 +64,4 @@ class ApplicationController < ActionController::Base
     Time.use_zone(current_user.time_zone_city, &block)
   end
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.permit(:email, :name, :password, :password_confirmation)
-    end
-
-    devise_parameter_sanitizer.permit(:sign_in) do |u|
-      u.permit(:email, :password, :remember_me)
-    end
-  end
 end

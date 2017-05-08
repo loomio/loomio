@@ -1,4 +1,6 @@
 class API::RegistrationsController < Devise::RegistrationsController
+  before_filter :configure_permitted_parameters
+
   def create
     build_resource(sign_up_params)
     if resource.save
@@ -11,7 +13,10 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def sign_up_params
-    params.require(:user).permit(:name, :email, :recaptcha).tap { |p| p.require(:recaptcha) }
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.require(:recaptcha)
+      u.permit(:name, :email, :recaptcha)
+    end
   end
 end
