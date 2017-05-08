@@ -189,6 +189,10 @@ body { max-width: 600px; font-family: 'FontAwesome',"HelveticaNeue", "Helvetica 
   font-size: small;
 }
 
+.user-mailer__message-container {
+  margin: 40px 0;
+}
+
 .align-left {
   text-align: left;
 }

@@ -3,8 +3,9 @@ class Identities::Facebook < Identities::Base
   set_identity_type :facebook
 
   def apply_user_info(payload)
-    self.uid  ||= payload['id']
-    self.name ||= payload['name']
+    self.uid   ||= payload['id']
+    self.name  ||= payload['name']
+    self.email ||= payload['email']
   end
 
   def fetch_user_avatar

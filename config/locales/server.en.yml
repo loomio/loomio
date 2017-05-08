@@ -15,9 +15,10 @@ en:
 
   email:
     login:
+      subject: Loomio | Your instant log in link
       intro_html: |
         Hi %{name}!
-        Someone has requested a link to access your Loomio account. Click below to log in instantly
+        Someone has requested a link to access your Loomio account. Click below to log in instantly:
       login_html: Login to Loomio
       resend_html: "If this link doesn't work for you, it may have expired, or been used already."
       resend_link_html: "Click here to get another link"

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include AngularHelper
   include ProtectedFromForgery
   include LoadAndAuthorize
+  include PendingActionsHelper
   include CurrentUserHelper
 
   helper :analytics_data
@@ -37,6 +38,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def sign_in(resource_name, user = nil)
+    flash[:notice] = t(:'devise.sessions.signed_in')
+    super
+    handle_pending_actions
+  end
 
   def respond_with_error(message, status: :bad_request)
     render 'application/display_error', locals: { message: t(message) }, status: status

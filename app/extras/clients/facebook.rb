@@ -5,7 +5,7 @@ class Clients::Facebook < Clients::Base
   end
 
   def fetch_user_info
-    get "me"
+    get "me?fields=id,name,email"
   end
 
   def fetch_permissions(uid)
@@ -37,7 +37,7 @@ class Clients::Facebook < Clients::Base
   end
 
   def scope
-    %w(user_managed_groups publish_actions).freeze
+    %w(email user_managed_groups publish_actions).freeze
   end
 
   private
