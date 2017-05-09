@@ -67,9 +67,15 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_dashboard_as_visitor
-    patrick
+    patrick; jennifer
     recent_discussion
     redirect_to dashboard_url
+  end
+
+  def setup_explore_as_visitor
+    patrick
+    recent_discussion
+    redirect_to explore_url
   end
 
   def setup_inbox
