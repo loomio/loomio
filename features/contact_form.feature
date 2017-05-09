@@ -1,6 +1,5 @@
 Feature: Person contacts Loomio using contact form
 
-@javascript
 Scenario: Guest contacts Loomio using contact form
 When I visit the contact page
 And I fill in and submit the contact form
