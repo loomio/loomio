@@ -14,14 +14,14 @@
       %input.lmo-primary-form-input{type: "password", ng-required: true, ng-model: "user.password"}
 
     .lmo-actions
-      %md-button{ng-click: "sendLoginLink()"}
+      %md-button.auth-signin-form__login-link{ng-click: "sendLoginLink()"}
         %span{translate: "auth_form.login_link"}
-      %md-button.md-primary.md-raised{ng-click: "submit()", ng-if: "user.has_password"}
+      %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "submit()", ng-if: "user.has_password"}
         %span{translate: "auth_form.sign_in"}
 
   .auth-signin-form__no-password{ng-if: "!user.has_password"}
     .lmo-actions
-      %md-button{ng-click: "setPassword()"}
+      %md-button.auth-signin-form__set-password{ng-click: "setPassword()"}
         %span{translate: "auth_form.set_password_button"}
-      %md-button.md-primary.md-raised{ng-click: "sendLoginLink()"}
+      %md-button.md-primary.md-raised.auth-signin-form__submit{ng-click: "sendLoginLink()"}
         %span{translate: "auth_form.login_link"}
