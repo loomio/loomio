@@ -26,7 +26,6 @@ module AngularHelper
       currentVisitorId:    current_visitor.id,
       currentUserLocale:   current_user.locale,
       currentUrl:          request.original_url,
-      canTranslate:        TranslationService.available?,
       permittedParams:     PermittedParamsSerializer.new({}),
       locales:             angular_locales,
       siteName:            ENV.fetch('SITE_NAME', 'Loomio'),
@@ -35,8 +34,8 @@ module AngularHelper
       safeThreadItemKinds: Discussion::THREAD_ITEM_KINDS,
       plugins:             Plugins::Repository.to_config,
       inlineTranslation: {
-        isAvailable:       TranslationService.available?,
-        supportedLangs:    Translation::SUPPORTED_LANGUAGES
+        isAvailable:       TranslationService.app_key.present?,
+        supportedLangs:    TranslationService.supported_languages
       },
       pageSize: {
         default:           ENV.fetch('DEFAULT_PAGE_SIZE', 30),

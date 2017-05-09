@@ -16,6 +16,6 @@ class Slack::RequestAuthorizationSerializer < Slack::BaseSerializer
   end
 
   def success_url
-    slack_authorized_url(default_url_options.merge(team_name: team['domain']))
+    slack_authorized_url(default_url_options.merge(team: team['domain']))
   end
 end

@@ -1,8 +1,8 @@
 %li.selector-list-item{ng-class: "{'lmo-active': !notification.viewed}"}
   %a.notification{class: "navbar-notifications__{{notification.kind}}", href: "{{notification.url}}", ng-click: "broadcastThreadEvent(notification)"}
     .notification__avatar
-      %user_avatar{ng-if: "actor", user: "actor", size: "small"}
-      .thread-item__proposal-icon{ng-if: "showProposalPie()"}
+      %user_avatar{ng-if: "actor()", user: "actor()", size: "small"}
+      .thread-item__proposal-icon{ng-if: "!actor()"}
     .notification__content
       %span{ng-bind-html: "notification.content()"}>
       %timeago{timestamp: "notification.createdAt" }>

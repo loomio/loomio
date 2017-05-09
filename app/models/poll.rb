@@ -61,6 +61,7 @@ class Poll < ActiveRecord::Base
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
   scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_type": participant.class.to_s, "stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
+  scope :chronologically, -> { order('created_at asc') }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      active
