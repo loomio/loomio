@@ -20,6 +20,7 @@ describe API::RegistrationsController do
     end
 
     it 'sends a login email' do
+      Clients::Recaptcha.instance.stub(:validate) { true }
       expect { post :create, user: registration_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 

@@ -27,8 +27,7 @@ describe LoginTokensController do
 
     it 'does not sign in a user with an invalid token id' do
       expect(controller).to_not receive(:sign_in)
-      get :show, id: "notatoken"
-      expect(response).to redirect_to dashboard_path
+      expect { get :show, id: "notatoken" }.to raise_error { ActiveRecord::RecordNotFound }
     end
   end
 end

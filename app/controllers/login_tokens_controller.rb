@@ -2,8 +2,8 @@ class LoginTokensController < ApplicationController
 
   def show
     if login_token.useable?
-      token.update(used: true)
-      sign_in(login_token.user)
+      login_token.update(used: true)
+      sign_in(login_token.user || LoggedOutUser.new)
     else
       session[:pending_user_id] = login_token.user_id
       flash[:notice] = t(:"devise.sessions.token_unusable")
