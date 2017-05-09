@@ -1,7 +1,7 @@
 describe 'Login', ->
   page = require './helpers/page_helper.coffee'
 
-  describe 'logging in as an existing user', ->
+  fdescribe 'logging in as an existing user', ->
     it 'forces login on dashboard', ->
       page.loadPath 'view_dashboard_as_visitor'
       page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
