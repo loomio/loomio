@@ -8,7 +8,6 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
-      page.expectElement '.sidebar__content'
       page.expectFlash 'Signed in successfully'
 
     it 'can log in from the explore page', ->
@@ -18,7 +17,6 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
-      page.expectElement '.sidebar__content'
       page.expectFlash 'Signed in successfully'
 
     it 'can log in from a discussion page', ->
@@ -79,7 +77,7 @@ describe 'Login', ->
       page.expectText '.dashboard-page', 'Recent Threads'
 
     it 'does not log in when password is incorrect', ->
-      page.loadPath 'visit_explore_as_visitor'
+      page.loadPath 'setup_explore_as_visitor'
       page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
       page.click '.auth-email-form__submit'
