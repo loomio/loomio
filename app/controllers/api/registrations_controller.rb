@@ -15,7 +15,7 @@ class API::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u.require(:recaptcha)
+      u.require(:recaptcha) if ENV['RECAPTCHA_APP_KEY'].present?
       u.permit(:name, :email, :recaptcha)
     end
   end

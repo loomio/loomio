@@ -29,6 +29,9 @@ describe 'Login', ->
       page.click '.auth-signin-form__submit'
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
 
     it 'can send login link to user with a password', ->
       page.loadPath 'setup_dashboard_as_visitor'
@@ -38,6 +41,9 @@ describe 'Login', ->
       page.click '.auth-signin-form__login-link'
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
 
     it 'can set a password', ->
       page.loadPath 'setup_dashboard_as_visitor'
@@ -57,6 +63,9 @@ describe 'Login', ->
       page.click '.auth-signup-form__submit'
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
 
     it 'does not log in when password is incorrect', ->
       page.loadPath 'visit_explore_as_visitor'

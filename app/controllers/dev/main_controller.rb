@@ -17,6 +17,10 @@ class Dev::MainController < Dev::BaseController
     redirect_to(create_group)
   end
 
+  def use_last_login_token
+    redirect_to(login_token_url(LoginToken.last))
+  end
+
   def setup_login
     patrick
     redirect_to new_user_session_url
