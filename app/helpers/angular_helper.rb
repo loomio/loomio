@@ -1,5 +1,6 @@
 module AngularHelper
   include PendingActionsHelper
+  EMOJIS = YAML.load_file(Rails.root.join("config", "emojis.yml")).as_json
 
   def boot_angular_ui
     redirect_to :browser_not_supported and return if browser.ie? && browser.version.to_i < 10
@@ -49,6 +50,9 @@ module AngularHelper
       },
       drafts: {
         debounce: ENV.fetch('LOOMIO_DRAFT_DEBOUNCE', 750).to_i
+      },
+      emojis: {
+        defaults: EMOJIS.fetch('default', []).map { |e| ":#{e}:" }
       },
       pendingIdentity: serialized_pending_identity,
       pollTemplates: Poll::TEMPLATES,
