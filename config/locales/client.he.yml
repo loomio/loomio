@@ -3,119 +3,115 @@ he:
     time:
       am: am
       pm: pm
-    group: קבוצה
-    groups: קבוצות
+    group: 'קבוצה'
+    groups: 'קבוצות'
     privacy:
-      public: פתוח לציבור
-      private: פרטי
+      public: 'פתוח לציבור'
+      private: 'פרטי'
     date_range:
-      today: היום
+      today: 'היום'
     models:
-      proposal: הצעה
+      proposal: 'הצעה'
     action:
-      save: שמירה
-      edit: עריכה
-      like: אהבתי
-      unlike: ביטול לייק
-      cancel: ביטול
+      save: 'שמירה'
+      edit: 'עריכה'
+      like: 'אהבתי'
+      unlike: 'ביטול לייק'
+      cancel: 'ביטול'
   error_page:
-    forbidden: אין לך הרשאות לעשות זאת.
+    forbidden: 'אין לך הרשאות לעשות זאת.'
   proposal_outcome_panel:
     heading: תוצאה
   proposal_outcome_form:
     outcome_label: תוצאת ההצעה
   inbox:
-    clear: נקה/י
-    unread: לא-נקרא
+    clear: 'נקה/י'
+    unread: 'לא-נקרא'
   comment_form:
-    delete_comment: מחקו תגובה
-    confirm_delete_message: למחוק את התגובה? בטוחים?
+    delete_comment: 'מחקו תגובה'
+    confirm_delete_message: 'למחוק את התגובה? בטוחים?'
   sidebar:
-    unread: לא-נקרא
-    edit_profile: עריכת פרופיל
-    email_settings: הגדרות דוא״ל
-    help: עזרה
-    sign_out: התנתקות
+    edit_profile: 'עריכת פרופיל'
+    email_settings: 'הגדרות דוא״ל'
+    help: 'עזרה'
+    sign_out: 'התנתקות'
   navbar:
     search:
-      placeholder: חיפוש
-      discussions: דיונים
+      placeholder: 'חיפוש'
+      discussions: 'דיונים'
   notifications:
-    header: התרעות
+    header: "התרעות"
   vote_form:
-    i_agree: אני מסכימ/ה
-    i_abstain: אני נמנע/ת
-    i_abstain_details: אעדיף שהקבוצה תחליט בלעדיי
-    i_disagree: אני לא מסכימ/ה
-    i_disagree_details: אני מאמינ/ה שאנחנו יכולים למצוא פתרון טוב יותר
-    i_block: אני חוסמ/ת
-    submit_position: הגשת עמדה
+    i_agree: 'אני מסכימ/ה'
+    i_abstain: 'אני נמנע/ת'
+    i_abstain_details: 'אעדיף שהקבוצה תחליט בלעדיי'
+    i_disagree: 'אני לא מסכימ/ה'
+    i_disagree_details: 'אני מאמינ/ה שאנחנו יכולים למצוא פתרון טוב יותר'
+    i_block: 'אני חוסמ/ת'
+    submit_position: 'הגשת עמדה'
   proposal_positions_panel:
     heading: עמדות
   close_proposal_form:
-    close_proposal: סגירת הצעה
+    close_proposal: 'סגירת הצעה'
   proposal_form:
-    start_proposal: התחלת הצעה
-    edit_proposal: עריכת הצעה
-    title_label: תואר
-    details_label: פרטים
+    start_proposal: 'התחלת הצעה'
+    edit_proposal: 'עריכת הצעה'
+    title_label: 'תואר'
+    details_label: 'פרטים'
   discussion_form:
-    group_label: קבוצה
-    title_label: תואר
-    context_label: הקשר
-    privacy_label: פרטיות
+    group_label: 'קבוצה'
+    title_label: 'תואר'
+    context_label: 'הקשר'
+    privacy_label: 'פרטיות'
   proposal_expanded:
-    edit_proposal: עריכת הצעה
-    close_proposal: סגירת הצעה
+    edit_proposal: 'עריכת הצעה'
+    close_proposal: 'סגירת הצעה'
   join_group_button:
     join_group: הצטרפו לקבוצה
-    ask_to_join_group: בקשת הצטרפות לקבוצה
   membership_request_form:
     heading: בקשת הצטרפות לקבוצה
     name_label: שם
     email_label: דואל
-    submit_button: בקשת הצטרפות לקבוצה
   group_page:
-    discussions: דיונים
-    invite_people: הזמינו אנשים
-    options_label: אפשרויות
+    discussions: 'דיונים'
+    options_label: 'אפשרויות'
     options:
-      label: אפשרויות
+      label: 'אפשרויות'
   membership_requests_page:
     approve: אישור
     ignore: התעלמ/י
   memberships_page:
-    members: חברים
-    name_label: שם
-    coordinator_label: מתאם
-    remove_member_label: הסרה
+    members: 'חברים'
+    name_label: 'שם'
+    coordinator_label: 'מתאם'
+    remove_member_label: 'הסרה'
   profile_page:
-    profile: פרופיל
-    picture_label: תמונה
-    name_label: שם
-    email_label: דואל
-    locale_label: שפה
+    profile: 'פרופיל'
+    picture_label: 'תמונה'
+    name_label: 'שם'
+    email_label: 'דואל'
+    locale_label: 'שפה'
   dashboard_page:
-    aria_label: לוח מכוונים
+    aria_label: 'לוח מכוונים'
     mark_as_read: סמן כנקרא
     threads_from:
-      today: היום
+      today: 'היום'
   thread_group:
-    aria_label: שם הקבוצה
+    aria_label: 'שם הקבוצה'
   delete_comment_dialog:
-    title: מחקו תגובה
-    question: למחוק את התגובה? בטוחים?
-    confirm: מחקו תגובה
+    title: 'מחקו תגובה'
+    question: 'למחוק את התגובה? בטוחים?'
+    confirm: 'מחקו תגובה'
   new_comment_item:
     context_menu:
-      delete_comment: מחקו תגובה
+      delete_comment: 'מחקו תגובה'
   contact_message_form:
-    name_label: שמך
-    email_label: כתובת הדוא״ל שלך
-    message_label: ההודעה שלך
+    name_label: 'שמך'
+    email_label: 'כתובת הדוא״ל שלך'
+    message_label: 'ההודעה שלך'
   help_page:
-    getting_started: מתחילים
-    help: עזרה
-    start_discussion: מתחיל בדיון מרתק
+    getting_started: "מתחילים"
+    help: "עזרה"
+    start_discussion: "מתחיל בדיון מרתק"
   hint:
-    discussion: טיפים להתחלת דיון מרתק
+    discussion: 'טיפים להתחלת דיון מרתק'

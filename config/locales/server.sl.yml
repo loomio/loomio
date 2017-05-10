@@ -1,25 +1,25 @@
 sl:
   email:
     group_email:
-      intro: '%{who} je sporočil/a skupini %{group}:'
+      intro: "%{who} je sporočil/a skupini %{group}:"
     by_who: '%{person}'
     reply_to_this_discussion: Odgovori na to razpravo
     to_join_discussion:
-      subject: '%{who} želi, da se pridružiš razpravi na Loomiu'
+      subject: "%{who} želi, da se pridružiš razpravi na Loomiu"
       content: 'Povabljen/a si bil/a k sodelovanju v razpravi: %{discussion}'
-      message_intro: '%{who} pravi:'
+      message_intro: "%{who} pravi:"
       link: Pridruži se razpravi
     to_join_group:
-      subject: '%{member} te je povabil, da se pridružiš %{group_name} na Loomiu'
+      subject: "%{member} te je povabil, da se pridružiš %{group_name} na Loomiu"
     to_start_group:
-      subject: 'Vzpostavi svojo novo skupino na Loomiu: %{group_name}'
+      subject: "Vzpostavi svojo novo skupino na Loomiu: %{group_name}"
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
     view_comment: Klikni sem za ogled komentarja na Loomiu
     view_discussion: Klikni sem za ogled razprave
     view_proposal: Poglej ta predlog na Loomiu
     create_proposal:
-      intro: 'Nov predlog je bil dodan v skupini na Loomiu, katere član/ica si.'
+      intro: Nov predlog je bil dodan v skupini na Loomiu, katere član/ica si.
       closes_in: Zaključi se čez
       subject: 'Nov predlog: %{which}'
     daily_activity:
@@ -30,39 +30,39 @@ sl:
       subject: Včeraj na Loomiu
       headlines: Razprave
       mark_as_read: Označi kot prebrano
-      thanks_for_reading: 'Super, prebral/a si vse novice. Lep dan!'
+      thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
     membership_request:
-      intro: '%{name} (%{email}) je zaprosil za dostop do ene od tvojih skupin na Loomiu.'
-      subject: '%{who} je zaprosil za vstop v %{which_group}'
+      intro: "%{name} (%{email}) je zaprosil za dostop do ene od tvojih skupin na Loomiu."
+      subject: "%{who} je zaprosil za vstop v %{which_group}"
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
     new_motion_created:
       subject: 'Predlog: %{proposal_title}'
     proposal_closed:
       proposal_has_closed: Predlog je zaprt.
-      specify_outcome_and_notify_group: 'Opiši izid in ga pošlji svoji skupini!'
-      specify_outcome_and_notify_group_html: 'Opiši izid in ga pošlji svoji skupini!'
-      subject: 'Zaključen predlog - %{which}'
+      specify_outcome_and_notify_group: Opiši izid in ga pošlji svoji skupini!
+      specify_outcome_and_notify_group_html: Opiši izid in ga pošlji svoji skupini!
+      subject: Zaključen predlog - %{which}
     proposal_closing_soon:
       closes_on: Zaključi se
       closes_at: Zaključi se ob
       closes_in: Zaključi se čez
       subject: 'Zaključi se čez 24 ur: %{proposal_title}'
-      headline: 'Predlog, ki ga je predlagal/a %{author} v %{group}, bo kmalu zaključen:'
+      headline: "Predlog, ki ga je predlagal/a %{author} v %{group}, bo kmalu zaključen:"
       summary: Povzetek
     thread_mailer:
       footer_text: 'Odgovori na ta email, ali ga poglej na %{hostname}:'
-      reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
+      reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
       turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
       turn_off_notifications_text: 'Izklopi emaile za to razpravo: %{url}'
       turn_on_notifications_text: 'Vklopi email za obveščanje o novih aktivnostih v tej razpravi: %{url}'
-      change_email_preferences_html: "Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>."
+      change_email_preferences_html: Za odjavo od teh sporočil spremeni svoje <a href='%{email_preferences_url}'>email nastavitve</a>.
       change_preferences: 'Spremeni svoje email nastavitve:'
       motion_closing_soon: 'Predlog se zaključi v 24 urah:'
       proposal_closed: 'Zaključen predlog:'
-      specify_outcome_html: "Tvoj predlog je zaključen. <a href='%{link}'>Opiši izid</a> in obvesti še ostale o rezultatu."
+      specify_outcome_html: Tvoj predlog je zaključen. <a href='%{link}'>Opiši izid</a> in obvesti še ostale o rezultatu.
       specify_outcome: 'Tvoj predlog je zaključen. Opiši izid, da lahko vse obvestiš o rezultatu.'
-      you_agreed: 'Ti si %{past_tense_position}'
+      you_agreed: Ti si %{past_tense_position}
   footer:
     about: O nas
     blog: Blog
@@ -79,7 +79,7 @@ sl:
     group_name: Ime skupine
     group_description: Opis skupine
     success:
-      header: 'Skoraj si opravil/a! Preveri svoj email.'
+      header: Skoraj si opravil/a! Preveri svoj email.
   contact_page:
     contact_us: Kontaktiraj nas
     labels:

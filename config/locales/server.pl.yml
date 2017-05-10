@@ -6,7 +6,7 @@ pl:
       closes_at: 'Zamyka się o '
       summary: Podsumowanie
     thread_mailer:
-      change_preferences: Zmiana ustawień poczty.
+      change_preferences: 'Zmiana ustawień poczty.'
       motion_closing_soon: 'Zamknięcie propozycji w ciągu 24 godzin:'
       proposal_closed: 'Propozycja zamknięta:'
   footer:
@@ -29,10 +29,10 @@ pl:
     group_name: Nazwa grupy
     group_description: Opis grupy
     group_name_error: Nazwa grupy jest wymagana
-    terms_html: "Uruchamiając grupę, zgadzasz się na określone przez Loomio  <a href='%{link}' target='_blank'>zasady usług</a>."
+    terms_html: Uruchamiając grupę, zgadzasz się na określone przez Loomio  <a href='%{link}' target='_blank'>zasady usług</a>.
     success:
-      header: 'Prawie zakończone! Odbierz pocztę.'
-      email_delivered: 'Wysłaliśmy wiadomość na adres %{email}. Kliknij na link znajdujący się w wiadomości aby uruchomić nową grupę.'
+      header: Prawie zakończone! Odbierz pocztę.
+      email_delivered: Wysłaliśmy wiadomość na adres %{email}. Kliknij na link znajdujący się w wiadomości aby uruchomić nową grupę.
       email_not_arrived: Czy wiadomość nie dotarła?
       please_hold: Prosimy o oczekiwanie do 5 minut na wiadomość mail oraz sprawdzenie folderu spam.
     start_making_decisions: 'Aby rozpocząć wspólne podejmowanie decyzji z użyciem Loomio, ustaw bezpłatną grupę:'

@@ -1,7 +1,7 @@
 ru:
   email:
     to_join_discussion:
-      message_intro: '%{who} сказал(а):'
+      message_intro: "%{who} сказал(а):"
       link: Присоедениться к обсуждению
     missed_yesterday:
       subject: Вчера на Loomio
@@ -11,11 +11,11 @@ ru:
     thread_mailer:
       change_preferences: 'Измените настройки уведомлений:'
       motion_closing_soon: 'Предложение закроется через 24 часа:'
-      proposal_closed: Предложение закрыто
-      you_agreed: 'Вы %{past_tense_position}'
+      proposal_closed: 'Предложение закрыто'
+      you_agreed: Вы %{past_tense_position}
     analytics:
       user_table:
-        motions_created: Голосования
+        motions_created: "Голосования"
   footer:
     about: О нас
     blog: Блог
@@ -32,7 +32,7 @@ ru:
     group_name: Название группы
     group_description: Описание группы
     success:
-      header: 'Почти готово! Проверьте почту.'
+      header: Почти готово! Проверьте почту.
   contact_page:
     contact_us: Наши контакты
     labels:

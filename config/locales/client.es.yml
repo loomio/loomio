@@ -9,6 +9,7 @@ es:
     local: Hora local ({{value}})
   common:
     expand: Expandir
+    all_day: Todo el día
     ok_got_it: Bien, ¡lo tengo!
     learn_more: Aprender más
     not_found: 'No encontrado '
@@ -72,6 +73,8 @@ es:
       uploading: 'Cargando'
       load_more: 'Cargar Más'
       share: Compartir
+      ok: ¡Ok!
+      retry: 'Reintentar '
       done: Listo
       start: 'Empezar '
     formatting_help:
@@ -1155,11 +1158,12 @@ es:
     count_title: Comprobación
     poll_title: 'Encuesta '
     dot_vote_title: Voto de Punto
-    meeting_title: Coordinación de horario
+    meeting_title: Coordinar horario
   poll_common:
     your_response: Tu respuesta
     change_your_response: Cambie su respuesta
     reason: Razón
+    message: Mensaje
     results: Resultados
     vote: Votar
     votes: Votos
@@ -1177,6 +1181,7 @@ es:
     share_proposal: Compartir propuesta
     share_count: 'Compartir Comprobación '
     start_poll: 'Iniciar una decisión '
+    publish_poll: Compartir encuesta
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_card:
@@ -1199,7 +1204,7 @@ es:
     poll_closed: Encuesta cerrada
     count_closed: 'Comprobación cerrada '
     dot_vote_closed: Voto por puntos cerrado
-    meeting_closed: Coordinación de horario ha cerrado
+    meeting_closed: Coordinación de horario cerrada
   poll_common_closing_at_field:
     closing: Cerrando
     closing_hour: Hora de cierre
@@ -1224,7 +1229,7 @@ es:
     poll: 'Esta encuesta ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
     proposal: 'Esta propuesta se ha cerrado. Por favor, considere lo que se ha dicho y <strong> comparta un resultado</strong>, para que la gente sepa lo que sucederá a continuación.'
     count: 'Esta comprobación ha cerrado. <strong>Comparte el resultado</strong> para completar el proceso. '
-    meeting: 'Esta coordinación de horario ha cerrado. <strong> Compartir un resultado</strong> para que otros sepan cuándo ocurrirá la reunión.'
+    meeting: 'Esta coordinación de horario ha cerrado. <strong>Comparte un resultado</strong> para que otros sepan el mejor horario.'
     dot_vote: 'Este voto por puntos ha cerrado. <strong>Comparte un resultado</strong> con el grupo.'
   poll_common_outcome_form:
     new_title: Comparte un resultado
@@ -1252,7 +1257,7 @@ es:
     proposal_created: Propuesta iniciada
     proposal_updated: Propuesta actualizada
   poll_poll_form:
-    tool_tip_collapsed: Mide la popularidad de las opciones
+    tool_tip_collapsed: 'Mida la popularidad u ofrezca una opción '
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
     tip: Mida la popularidad de diferentes opciones
@@ -1274,7 +1279,7 @@ es:
     count_created: 'Comprobación iniciada '
     count_updated: 'Comprobación actualizada '
   poll_dot_vote_form:
-    tool_tip_collapsed: 'Prioriza una lista de opciones '
+    tool_tip_collapsed: Priorizar opciones
     start_header: Iniciar voto de puntos
     edit_header: Editar voto de puntos
     tip: 'Asignar recursos colectivamente '
@@ -1286,13 +1291,13 @@ es:
     dot_vote_updated: Voto de punto actualizado
   poll_meeting_form:
     tool_tip_collapsed: Encuentra un tiempo para reunirse
-    start_header: Iniciar coordinación de horario
-    edit_header: 'Editar coordinación de horario '
+    start_header: Iniciar coordinación horaria
+    edit_header: Editar coordinación horaria
     tip: 'Averigua cuando la gente está disponible para reunirse '
     title_placeholder: Ej. ¿Cuándo debemos tener nuestra próxima reunión?
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
-    meeting_created: Coordinación de horario ha sido creada
-    meeting_updated: Coordinación de horario actualizada
+    meeting_created: Coordinación horaria iniciada
+    meeting_updated: Coordinación horaria editada
   poll_proposal_vote_form:
     default_reason_placeholder: Por favor explique su razonamiento
     abstain_reason_placeholder: Deje a la gente saber porqué usted se está omitiendo de esta decisión
@@ -1330,7 +1335,8 @@ es:
     stance_updated: Voto actualizado
   poll_meeting_vote_form:
     your_response: ¿Cuándo puedes?
-    stance_created: Disponibilidad actualizada
+    stance_created: Disponibilidad salvada
+    stance_updated: Disponibilidad actualizada
   poll_dot_vote_vote_form:
     dots_remaining: Tienes {{count}} votos restantes
     too_many_dots: Usaste demasiados votos.
@@ -1362,16 +1368,17 @@ es:
       poll_expired: 'Voto de puntos finalizado: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> cerró el voto de puntos: <span>{{title}}</span>'
     meeting:
-      poll_created: '<strong>{{author}}</strong> inició una coordinación de horario: <span>{{title}}</span>'
+      poll_created: '<strong>{{author}}</strong> inició una coordinación horaria: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> respondió:'
-      poll_edited: '<strong>{{author}}</strong> editó la coordinación de horario: <span>{{title}}</span>'
-      poll_expired: 'Coordinación de horario finalizada: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> cerró la coordinación de horario: <span>{{title}}</span>'
+      poll_edited: '<strong>{{author}}</strong> editó la coordinación horaria: <span>{{title}}</span>'
+      poll_expired: 'Coordinación horaria cerrada: <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> cerró la coordinación horaria: <span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> publicó el resultado:'
   poll_admin_page:
     title: Administrador - {{title}}
   poll_common_share_form:
     no_group_selected: Ningún grupo seleccionado
+    no_communities: "No haz conectado ninguna comunidad aún. Clic 'añadir comunidad' debajo para conectar una. "
     share_a_link: Enlace para compartir
     anyone_can_participate: Cualquiera puede participar
     anyone_can_participate_true: Enlace para compartir creado
@@ -1386,7 +1393,7 @@ es:
     existing_guests: Invitados
     new_guests: 'Nuevos emails para invitar '
     enter_email: "ej. invitado@ejemplo.com "
-    reminded: 'Correo recordatorio enviado '
+    reminded: 'Recordatorio enviado '
     send_emails: Invitaciones enviadas ({{count}})
     no_loomio_group: Esta encuesta no está asociada actualmente a ningún grupo de Loomio
     has_loomio_group: 'Miembros de este grupo podrán ver y participar en la encuesta. '
@@ -1397,6 +1404,22 @@ es:
     email_exists: '{{email}} ya ha sido invitado'
     email_empty: 'Por favor ingresa una dirección de email '
     email_invalid: "No parece ser una dirección de email valida"
+    communities: Conectar Comunidad
+    add_facebook_community: Añade grupo de Facebook
+    add_slack_community: Añade canal de Slack
+    community_revoked: Esta comunidad ya no podrá participar
+    community_added: Comunidad añadida a la encuesta
+  poll_common_publish_form:
+    community: Informar al siguiente grupo de tu encuesta
+    message: Ingresa un mensaje
+    message_placeholder: Añade un mensaje que acompañe el enlace de tu encuesta
+    published: Mensaje enviado
+  poll_common_publish_facebook_preview:
+    shared_a: Comparte un
+    link: enlace
+    just_now: Ahora
+  poll_common_publish_slack_preview:
+    poll_published: "publicar encuesta"
   poll_common_participant_form:
     participant_name_placeholder: ¿Cuál es tu nombre?
   poll_common_subscribe_form:
