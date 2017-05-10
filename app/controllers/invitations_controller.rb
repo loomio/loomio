@@ -12,8 +12,9 @@ class InvitationsController < ApplicationController
   end
 
   def show
-    if current_user.is_logged_in?
-      InvitationService.redeem(invitation, current_user)
+    if invitation_user
+      sign_in invitation_user
+      InvitationService.redeem(invitation, invitation_user)
       session.delete(:pending_invitation_id)
     else
       session[:pending_invitation_id] = params[:id]
@@ -25,5 +26,9 @@ class InvitationsController < ApplicationController
 
   def invitation
     @invitation ||= Invitation.find_by_token!(params[:id])
+  end
+
+  def invitation_user
+    @invitation_user ||= current_user.presence || invitation.user_from_recipient!
   end
 end

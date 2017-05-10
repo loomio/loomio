@@ -3,14 +3,16 @@ require 'rails_helper'
 describe InvitationsController do
   let(:group) { FactoryGirl.create(:group) }
   let(:user) { FactoryGirl.create(:user) }
+  let(:another_group) { FactoryGirl.create(:group) }
+  let(:another_user) { FactoryGirl.create(:user) }
 
   before do
     group.add_admin!(user)
   end
 
   describe "GET 'show'" do
-    let(:group) { create(:group) }
     let(:invitation) { create(:invitation, token: 'abc', invitable: group, recipient_email: user.email) }
+    let(:start_group_invitation) { create :invitation, token: 'bcd', invitable: another_group, recipient_email: "something@something.com", intent: :start_group, to_be_admin: true }
 
     context 'invitation not found' do
       render_views
@@ -50,6 +52,22 @@ describe InvitationsController do
         InvitationService.should_not_receive(:redeem)
       end
 
+    end
+
+    context "to start group" do
+      it 'creates a user' do
+        start_group_invitation
+        expect { get :show, id: start_group_invitation.token }.to change { User.count }.by(1)
+        u = User.last
+        expect(start_group_invitation.group.reload.admins).to include u
+        expect(u.email).to eq start_group_invitation.recipient_email
+      end
+
+      it 'uses an existing user if one exists' do
+        start_group_invitation.update(recipient_email: another_user.email)
+        expect { get :show, id: start_group_invitation.token }.to_not change { User.count }
+        expect(start_group_invitation.group.reload.admins).to include another_user
+      end
     end
 
     context "user is signed in" do
