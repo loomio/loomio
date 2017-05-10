@@ -52,7 +52,7 @@ fdescribe 'Login', ->
 
     it 'can accept an invitation', ->
       page.loadPath 'setup_invitation_to_user_with_password'
-      page.fillIn '.auth-signin-form__password', 'gh0stmovie'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
