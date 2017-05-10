@@ -335,6 +335,15 @@ class Dev::MainController < Dev::BaseController
     redirect_to group_url(@group)
   end
 
+  def view_open_discussion_as_visitor
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+                           membership_granted_upon: 'request',
+                           group_privacy: 'open')
+    @group.add_admin! jennifer
+    @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    redirect_to discussion_url(@discussion)
+  end
+
   def view_closed_group_as_visitor
     @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
                                 membership_granted_upon: 'approval',

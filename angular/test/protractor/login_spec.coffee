@@ -21,6 +21,17 @@ describe 'Login', ->
       page.expectElement '.sidebar__content'
       page.expectFlash 'Signed in successfully'
 
+    it 'can log in from a discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      page.expectElement '.sidebar__content'
+      page.expectElement '.comment-form__submit-button'
+      page.expectFlash 'Signed in successfully'
+
     it 'can send login link', ->
       page.loadPath 'setup_dashboard_as_visitor'
       page.click '.navbar__sign-in'
