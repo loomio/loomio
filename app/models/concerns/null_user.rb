@@ -19,6 +19,10 @@ module NullUser
     Poll.none
   end
 
+  def email_communities
+    Communities::Base.none
+  end
+
   def communities
     Communities::Base.none
   end
