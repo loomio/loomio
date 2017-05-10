@@ -3,10 +3,13 @@ fr:
     proposal: Proposition
     count: Vérification
     poll: Sondage
+    dot_vote: Vote à points
+    meeting: Sondage Réunion
   timezones:
     local: Heure locale ({{value}})
   common:
     expand: Étendre
+    all_day: Toute la journée
     ok_got_it: Ok, j'ai compris !
     learn_more: En savoir plus
     not_found: Introuvable
@@ -70,6 +73,8 @@ fr:
       uploading: 'Téléchargement'
       load_more: 'Plus'
       share: Partager
+      ok: Ok !
+      retry: Réessayer
       done: Terminé
       start: Démarrer
     formatting_help:
@@ -283,8 +288,24 @@ fr:
     publish_outcome: "Publier un résultat"
     motion_closed_by_user: "<strong>{{name}}</strong> a fermé une proposition: <strong>{{title}}</strong>"
     motion_closed_by_expiry: "La proposition a été fermée : <strong>{{title}}</strong>"
+    new_vote: "<strong>{{name}}</strong> {{position}} sur la proposition <strong>{{title}}</strong>"
+    new_comment: "<strong>{{name}}</strong> a commenté sur <strong>{{title}}</strong>"
+    comment_replied_to: "<strong>{{name}}</strong> a répondu à votre commentaire sur <strong>{{title}}</strong>"
+    comment_liked: "<strong>{{name}}</strong> a aimé votre commentaire dans <strong>{{title}}</strong>"
+    user_mentioned: "<strong>{{name}}</strong> vous a mentionné dans <strong>{{title}}</strong"
+    membership_requested: "<strong>{{name}}</strong> a demandé à être membre de <strong>{{title}}</strong>"
+    membership_request_approved: '<strong>{{name}}</strong> a approuvé votre demande de rejoindre <strong>{{title}}</strong>'
     user_added_to_group: "<strong>{{name}}</strong> vous a ajouté au groupe <strong>{{title}}</strong>"
     user_added_to_group_no_inviter: "Vous avez été ajouté au groupe <strong>{{title}}</strong>"
+    motion_closing_soon: "Cette proposition se termine bientôt : <strong>{{title}}</strong>"
+    motion_outcome_created: "<strong>{{name}}</strong>  a publié un résultat pour la proposition <strong>{{title}}</strong>"
+    motion_outcome_updated: "<strong>{{name}}</strong> a mis à jour le résultat de la proposition <strong>{{title}}</strong>"
+    invitation_accepted: "<strong>{{name}}</strong> a accepté votre invitation à rejoindre <strong>{{title}}</strong>"
+    new_coordinator: "<strong>{{name}}</strong> vous a nommé coordinateur de <strong>{{title}}</strong>"
+    poll_created: "<strong>{{name}}</strong> a démarré un {{poll_type}}: <strong>{{title}}</strong>"
+    poll_edited: "<strong>{{name}}</strong> a édité un {{poll_type}}: <strong>{{title}}</strong>"
+    poll_closing_soon: "{{poll_type}} ferme bientôt : <strong>{{title}}</strong>"
+    poll_expired: "{{poll_type}} fermé : <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> a renseigné un résultat <strong>{{title}}</strong>"
   position_buttons_panel:
     heading: Prenez la parole
@@ -605,6 +626,7 @@ fr:
     how_do_people_join: "Comment les personnes peuvent-elles rejoindre le groupe ?"
     membership_granted_upon_request: 'N''importe qui peut rejoindre le groupe'
     membership_granted_upon_approval: 'N''importe qui peut demander de rejoindre le groupe, mais la demande doit être approuvée.'
+    membership_granted_upon_approval_secret_parent: '<strong>Sur proposition,</strong> n''importe qui de {{parent}} peut demander à rejoindre le groupe.'
     thread_privacy: 'Confidentialité de la discussion'
     public_threads: 'Discussions publiques seulement'
     public_discussions_subgroup: 'N''importe qui de {{parentGroupName}} peut voir les discussions'
@@ -648,6 +670,9 @@ fr:
   group_previous_proposals_card:
     heading: Propositions précédentes
     see_more: Voir plus
+  group_previous_polls_card:
+    heading: Activités passées
+    see_more: "Voir tout : ({{count}}) activités"
   invitation_form:
     aria_label: 'Formulaire d''invitation'
     invite_people: 'Inviter des personnes'
@@ -672,6 +697,7 @@ fr:
     messages:
       invitation_sent: 'Invitation envoyée.'
       invitations_sent: '{{count}} invitation(s) envoyée(s).'
+      no_invitations: 'Oh-oh ! Merci de vérifier l''adresse mail puis de réessayer.'
       max_invitations: 'Si vous voulez envoyer plus de 100 invitations, vous devez utiliser un lien d''équipe.'
   add_members_modal:
     aria_label: 'Ajoutez des membres du groupe parent'
@@ -1044,6 +1070,14 @@ fr:
     positions_disagree_description: "<span>Pas d'accord</span> signifie que vous pensez qu'il y a une meilleure alternative, mais que vous souhaitez continuer à trouver la bonne décision."
     positions_block_description: "<span>Bloque</span> signifie que vous avez des objections sérieuses et vous seriez très contrarié si la position devait être adoptée."
     start_discussion: "Débutez une discussion stimulante"
+    start_discussion_html: |
+      <p>Quand vous commencez une discussion, assurez vous que le titre explique le sujet de manière succinte.
+      Utilisez le "Panneau de contexte" pour donner toutes les informations nécessaires pour le
+      groupe afin d'avoir une discussion productive et informée.</p>
+      <p>Durant la discussion, le "Panneau de contexte" peut être mis à jour lorsque de nouvelles informations
+      apparaissent. Vous pouvez utiliser cet espace pour pour clarifier le sujet,
+      partager des ressources, résumer la discussion ou pour décrire les
+      outils d'aide à la décision que votre groupe utilise.</p>
     start_proposal: "Ecrire une proposition claire"
     start_proposal_html: |
       <p> Si vous choisissez un titre clair et succinct, les gens sauront exactement
@@ -1152,9 +1186,19 @@ fr:
     proposal_title: Proposition
     count_title: Vérification
     poll_title: Sondage
+    dot_vote_title: Vote à points
+    meeting_title: Sondage Réunion
   poll_common:
     your_response: Votre réponse
+    change_your_response: Changer votre réponse
+    reason: Raison
+    message: Message
     results: Résultats
+    vote: Vote
+    votes: Votes
+    update_outcome: Mettre à jour le résultat
+    outcome: Résultat
+    statement: Déclaration
     change_your_stance_title: Changé d'avis?
     change_your_stance_text: Les meilleures décisions collectives sont prises quand les personnes essaient de comprendre les positions des autres. Si ce qu'ont dit d'autres personnes vous a fait changer d'avis, changez votre vote.
     change_your_stance: Changer votre vote
@@ -1166,6 +1210,7 @@ fr:
     share_proposal: Partager la proposition
     share_count: Partager la vérification
     start_poll: Prendre une décision
+    publish_poll: Partager le sondage
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_card:
@@ -1174,21 +1219,96 @@ fr:
     by_who: "par {{name}}"
   poll_common_notify_group:
     notify_group: Annonce
+    members_helptext: Votre groupe sera notifié
+    members_count: "{{count}} personnes sera notifiées"
   poll_common_close_form:
+    title: Fermer un sondage en avance
+    helptext: Êtes-vous sûr de vouloir fermer en avance ?
     close_proposal: Clôturer la proposition
+    close_poll: Fermer le sondage
     close_count: Clôturer la vérification
+    close_dot_vote: Fermer le vote à points
+    close_meeting: Fermer le sondage réunion
     proposal_closed: Proposition clôturée
+    poll_closed: Sondage fermé
     count_closed: Vérification clôturée
+    dot_vote_closed: Vote à points fermé
+    meeting_closed: Sondage réunion fermé
+  poll_common_closing_at_field:
+    closing: Fermeture
+    closing_hour: Heure de fermeture
+  poll_card:
+    started_by: Démarré par {{name}}
+  poll_common_votes_panel:
+    newest_first: Les plus récents en premier
+    oldest_first: Les plus anciens en premier
+    priority_first: Accord en premier
+    priority_last: Bloquer en premier
+    no_votes_yet: Aucun vote n'a été enregistré.
+    change_results_order: Changer l'ordre des résultats
+    show_undecided: Montrer les indécis
+    none_of_the_above: (Aucun des choix ci-dessus)
+  poll_common_did_not_votes_panel:
+    undecided: Indécis ({{count}})
+    show_undecided: Montrer les indécis
+  poll_common_accordion:
+    title: Activité récente
   poll_common_set_outcome_panel:
     share_outcome: Partager le résultat
+    poll: 'Ce sondage est fermé. <strong>Partager le résultat</strong> avec les groupes.'
+    proposal: 'Cette proposition est fermée. Considérez ce qui a été dit et <strong>partagez un résultat</strong>, afin que les gens sachent ce qui va suivre.'
     count: 'Cette vérification est clôturée. <strong>Renseignez un résultat</strong> pour terminer le processus.'
+    meeting: 'Le sondage réunion est fermé. <strong>Partagez le résultat</strong> pour informer les autres de la date choisie pour la réunion.'
+    dot_vote: 'Ce vote à point est fermé. <strong>Partagez un résultat</strong> avec le groupe.'
   poll_common_outcome_form:
+    new_title: Partager un résultat
+    update_title: Mettre à jour le résultat
+    outcome_created: Résultat créé
+    outcome_updated: Résultat mis à jour
+    statement_placeholder: Résumez les réponses et expliquez ce qui va suivre.
     submit: Partager le résultat
+  poll_common_outcome_panel:
+    authored_by: 'Par {{name}}'
   poll_common_form:
+    title: Titre
     details: Détails
+    options: Options
+    closing: Fermeture
     start: Démarrer
+    update: Mettre à jour
   poll_proposal_form:
+    tool_tip_expanded: |
+      <p>Une proposition est un outil pour atteindre un accord collectif à propos d'une déclaration ou d'actions à mener.</p>
+      <p>Les participants peuvent être d'accord, s'abstenir, être en désaccord ou être contre - et expliquer leur positionnement.</p>
+      <p>Un graphique en secteur donne un aperçu des positions dans le groupe, tandis que les déclarations permettent à chaque voix d'être entendue.</p>
+      <p>Ne soyez pas découragé si l'accord ne paraît pas évident au début, les proposition sont là pour faire émerger des différends qu'il faut résoudre.</p>
+      <p>Avec une bonne participation, une proposition est un outil puissant pour avancer.</p>
+      <p>Découvrez plus de conseils sur <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Loomio School</a>.</p>
+    tool_tip_collapsed: Chercher l'accord collectif
     start_header: Faire une proposition
+    edit_header: Editer la proposition
+    tip: Rechercher l'accord collectif à travers un processus qui permet à toutes les voix d'être entendues. <a href="https://www.loomio.school/beginner/proposals.html" target="_blank">Apprenez-en plus</a>
+    title_placeholder: Par exemple "Allons sur la lune!"
+    details_placeholder: Donnez assez d'informations pour que tout le monde sache ce que veut dire être d'accord et être en désaccord
+    proposal_created: Proposition démarrée
+    proposal_updated: Proposition mise à jour
+  poll_poll_form:
+    tool_tip_expanded: |
+      <p>Utilisez un sondage pour mesurer l'opinion des gens ou proposer un choix.</p>
+      <p>Proposez différentes options. Décidez si les participants peuvent choisir une ou plusieurs réponses.</p>
+      <p>Tout le monde vote et peut ajouter une déclaration s'il veut. Les résultats sont présentés sur un graphique en barres.</p>
+    tool_tip_collapsed: Mesurez une opinion ou proposez un choix
+    start_header: Démarrer le sondage
+    edit_header: Editer le sondage
+    tip: Mesurez la popularité de différentes options
+    title_placeholder: Par exemple "Où voulez-vous aller en vacances ?"
+    details_placeholder: Donnez toutes les clarifications qui permettent aux personnes de répondre à la question
+    add_option_placeholder: Ajouter une option
+    remove_option: Retirer une option
+    multiple_choice: Choix multiple
+    multiple_choice_explained: Permettre aux votants de sélectionner autant d'options qu'ils veulent.
+    poll_created: Sondage créé
+    poll_updated: Sondage mis à jour
   poll_count_form:
     tool_tip_expanded: |
       <p>Une <em>vérification</em> est un outil qui peut être utilisé dans différents cas, mais qui propose seulement 2 réponses: coche ou tiret.</p>
@@ -1196,16 +1316,198 @@ fr:
       <p>Ou utilisez-le pour suivre la progression d'une tâche: « J'ai vérifié mes coordonnées » ou « J'ai lu le document et ai fait mes retours »</p>
       <p>Une vérification a un <em>objectif</em>, qui est le nombre de participants souhaité. L'objectif indique au groupe si un point nécessite leur attention ou s'il est déjà bien suivi.</p>
       <p>Un jour avant la fin de la vérification, une notification sera envoyée à ceux qui n'ont pas répondu, pour obtenir la plus grande participation sans que vous n'ayez à relancer les membres.</p>
+    tool_tip_collapsed: Suivez la participation et trouvez des volontaires
     start_header: Démarrer la vérification
     edit_header: Modifier la vérification
+    tip: Engagez les gens avec une offre ou une demande
+    title_placeholder: Par exemple "Qui veut rejoindre le groupe de travail ?"
+    details_placeholder: Expliquer quelle implication est demandée ou donner des détails sur comment participer.
     count_created: Vérification démarrée
     count_updated: Vérification mise à jour
+  poll_dot_vote_form:
+    tool_tip_expanded: |+
+      <p>Le vote à points est une manière de prioriser une liste d'options.</p>
+      <p>Les participants disposent d'un nombre limité de "points" qu'ils peuvent allouer comme ils le veulent aux différentes options pour refléter leurs préférences.</p>
+      <p>Ce procédé résulte en un graphique à barres cumulatives, tout en laissant la possibilité de voir les votes individuels pour vous permettre de considérer différents points de vue.</p>
+
+
+    tool_tip_collapsed: Prioriser des options
+    start_header: Démarrer un vote à points
+    edit_header: Editer le vote à points
+    tip: Allouer des ressources collectivement
+    title_placeholder: Par exemple "Comment devrions nous allouer notre budget ?"
+    details_placeholder: Donnez toutes les clarifications qui permettent aux personnes de participer
+    add_option_placeholder: Ajouter une option
+    dots_per_person: Points par personne
+    dot_vote_created: Vote à points créé
+    dot_vote_updated: Vote à points mis à jour
+  poll_meeting_form:
+    tool_tip_expanded: |
+      <p>Utilisez un sondage réunion pour connaître la disponibilité des gens.</p>
+      <p>Choisissez une liste de dates ou horaires possibles pour la réunion.</p>
+      <p>Les participants cochent les moments qui auxquels ils peuvent assister, ou ils peuvent ajouter une déclaration pour expliquer les circonstances afin que puissiez mettre à jour les options si nécessaire.</p>
+      <p>Si vous ajoutez de nouvelles options pendant un sondage réunion, ceux qui ont déjà voté sont sollicités pour mettre à jour leur réponse.</p>
+      <p>Vous pouvez voir qui est disponible à quel moment et décider quand aura lieu la rencontre..</p>
+      <p>Les horaires sont automatiquement convertis dans le fuseau horaires des participants.</p>
+    tool_tip_collapsed: Trouver un moment pour se réunir
+    start_header: Commencer un sondage réunion
+    edit_header: Editer le sondage réunion
+    tip: Trouvez quand les personnes sont disponibles pour se réunir
+    title_placeholder: Par exemple "Quand devrions avoir notre prochaine rencontre ?"
+    details_placeholder: Donnez toutes les clarifications qui permettent aux personnes de participer
+    meeting_created: Sondage réunion créé
+    meeting_updated: Sondage réunion mis à jour
+  poll_proposal_vote_form:
+    default_reason_placeholder: Veuillez expliquer votre raisonnement
+    abstain_reason_placeholder: Expliquez aux gens pourquoi vous vous abstenez
+    agree_reason_placeholder: Qu'aimez vous dans cette proposition et comment va-t-elle bénéficier au groupe ?
+    disagree_reason_placeholder: Comment cette proposition pourrait être améliorée pour que vous puissiez la soutenir ?
+    block_reason_placeholder: Expliquez vos objections et pourquoi cette proposition ne devrait pas être soutenue
+    stance_created: Vote créé
+    stance_updated: Vote mis à jour
+  poll_proposal_options:
+    agree: D'accord
+    agree_verb: "est d'accord"
+    agree_meaning: Cette proposition est suffisamment bonne pour être adoptée par le group
+    abstain: S'abstenir
+    abstain_verb: "s'est abstenu"
+    abstain_meaning: 'Je ne suis pas sûr,  je ne sais pas ou ce sujet ne me concerne pas. Je supporterai le résultat de toute façon '
+    disagree: Désaccord
+    disagree_verb: "est en désaccord"
+    disagree_meaning: Je ne soutiens pas la proposition. Elle ne devrait pas être adoptée.
+    block: Contre
+    block_verb: "est contre"
+    block_meaning: L'attention du groupe est nécessaire pour étudier de profonds différends
+  poll_count_vote_form:
+    reason_label: Message
+    reason_placeholder: Laissez un message si vous le voulez
+    stance_created: Vote créé
+    stance_updated: Vote mis à jour
+  poll_common_percent_voted:
+    sentence: "{{percent}}% des membres ont donné leur avis ({{numerator}}/{{denominator}})"
+  poll_count_chart_panel:
+    out_of: sur {{goal}}
+  poll_meeting_chart_panel:
+    total: Total
+  poll_poll_vote_form:
+    stance_created: Vote créé
+    stance_updated: Vote mis à jour
+  poll_meeting_vote_form:
+    your_response: Quand êtes-vous disponible ?
+    stance_created: Disponibilité enregistrée
+    stance_updated: Disponibilité mise à jour
+  poll_dot_vote_vote_form:
+    dots_remaining: Il vous reste {{count}} points à utiliser.
+    too_many_dots: Vous avez utilisé trop de points
+    stance_created: Vote créé
+    stance_updated: Vote mis à jour
   poll_thread_item:
+    poll:
+      poll_created: '<strong>{{author}}</strong> a commencé un nouveau sondage : <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> a voté :'
+      poll_edited: '<strong>{{author}}</strong> a édité le sondage : <span>{{title}}</span>'
+      poll_expired: 'Sondage fermé : <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> a fermé le sondage : <span>{{title}}</span>'
+    proposal:
+      poll_created: '<strong>{{author}}</strong> a démarré une proposition : <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> a voté :'
+      poll_edited: '<strong>{{author}}</strong> a édité la proposition : <span>{{title}}</span>'
+      poll_expired: 'Proposition fermée : <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> a fermé la proposition : <span>{{title}}</span>'
     count:
       poll_created: '<strong>{{author}}</strong> a démarré une vérification: <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> a répondu :'
       poll_edited: '<strong>{{author}}</strong> a modifié une vérification: <span>{{title}}</span>'
       poll_expired: 'Vérification terminée: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> a clôturé la vérification : <span>{{title}}</span>'
+    dot_vote:
+      poll_created: '<strong>{{author}}</strong> a démarré un vote à points : <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> a voté :'
+      poll_edited: '<strong>{{author}}</strong> a édité un vote à points : <span>{{title}}</span>'
+      poll_expired: 'Vote à points terminé : <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> a fermé le vote à points : <span>{{title}}</span>'
+    meeting:
+      poll_created: '<strong>{{author}}</strong> a démarré un sondage réunion : <span>{{title}}</span>'
+      stance_created: '<strong>{{author}}</strong> a répondu :'
+      poll_edited: '<strong>{{author}}</strong> a édité le sondage réunion : <span>{{title}}</span>'
+      poll_expired: 'Sondage réunion terminé : <span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> a fermé le sondage réunion : <span>{{title}}</span>'
+    outcome_created: '<strong>{{author}}</strong> a partagé un résultat :'
+  poll_admin_page:
+    title: Administration - {{title}}
+  poll_common_share_form:
+    no_group_selected: Aucun groupe sélectionné
+    no_communities: "Vous n'êtes connecté à aucune communauté. Cliquez \"ajouter une communauté\" ci-dessous pour en ajouter une."
+    share_a_link: Lien partageable
+    anyone_can_participate: Tout le monde peut participer
+    anyone_can_participate_true: Lien partageable créé
+    anyone_can_participate_false: Lien partageable révoqué
+    set_group: Groupe Loomio mis à jour
+    shareable_link_created: Tout le monde peut maintenant participer à ce sondage
+    shareable_link_revoked: Ce sondage est maintenant accessible sur invitation uniquement
+    shareable_link: Lien partageable
+    guests_invited: '{{count}} personnes ont été invitées'
+    guest_revoked: Accès révoqué pour {{email}}
+    invite_guests: Inviter des personnes
+    existing_guests: Invités
+    new_guests: Nouvelles adresses mail à inviter
+    enter_email: "Par exemple guest@example.com"
+    reminded: Rappel envoyé !
+    send_emails: Envoyer les invitations ({{count}})
+    no_loomio_group: Ce sondage n'est pour l'instant associé à aucun groupe Loomio
+    has_loomio_group: Les membres de ce groupe seront capable de voir et de participer à ce sondage.
+    poll_is_shareable: Copiez le lien ci-dessus et partagez le. N'importe qui peut participer grâce au lien.
+    enter_emails: Entrez une adresse mail pour envoyer un lien de participation à usage unique.
+    view_poll: Voir le sondage
+    email_invited: 'Invitation envoyée à {{email}}'
+    email_exists: '{{email}} a déjà été invité'
+    email_empty: 'Merci de renseigner une adresse mail'
+    email_invalid: "Cette adresse mail n'a pas l'air valide"
+    communities: Se connecter à la communauté
+    add_facebook_community: Ajouter un groupe facebook
+    add_slack_community: Ajouter un canal slack
+    community_revoked: Cette communauté ne sera plus capable de participer
+    community_added: Communauté ajoutée au sondage
+  poll_common_publish_form:
+    community: Informer le groupe suivant de votre sondage
+    message: Ajouter un message
+    message_placeholder: Ajouter un message pour accompagner le lien de votre sondage
+    published: Message envoyé avec succès
+  poll_common_publish_facebook_preview:
+    shared_a: a partagé un
+    link: lien
+    just_now: A l'instant
+  poll_common_publish_slack_preview:
+    poll_published: "a publié un sondage"
+    poll_published_with_discussion: "a publié un sondage dans <strong>{{discussion}}</strong>:"
+    view_it_on_loomio: Voir sur Loomio
+    timestamp: Aujourd'hui à {{timestamp}}
+  add_community_form:
+    title: Ajouter une communauté
+    existing_communities: Communautés précédemment connectées
+    no_communities: Vous n'êtes pour l'instant connecté à aucune communauté. Choisissez-en une ci-dessous pour commencer.
+    connect_new_community: Se connecter à une nouvelle communauté
+    currently_signed_in_as: "Actuellement connecté comme :"
+    community_created: Ce sondage est maintenant connecté à un communauté {{type}}
+    error_explanation: Oups ! Nous avons rencontré un problème lors de la connexion à {{type}}. Cliquez ci-dessous pour réessayer.
+    slack:
+      another_account: (Echanger les équipes)
+      fragment_placeholder: Chercher des canaux...
+    facebook:
+      another_account: (Se connecter avec un autre compte)
+      fragment_placeholder: Chercher des groupes...
+  poll_common_participant_form:
+    participant_name_placeholder: Quel est votre nom ?
+  poll_common_subscribe_form:
+    receive_updates_title: Votre vote a bien été enregistré
+    receive_updates_helptext: Pour recevoir le résultat de ce sondage par mail, merci de renseigner votre adresse mail ci-dessous
+    email_saved: Vous recevrez un mail à propos du résultat de ce sondage
+    subscribe: Souscrire
+    no_thanks: Non merci
+  share_poll_page:
+    title: Partager le sondage - {{title}}
   polls_page:
     heading: Décisions
+    search_placeholder: Chercher des sondages...
+    polls_count: '{{count}} sondages sur {{total}} affichés'
     start_new_poll: Nouvelle décision

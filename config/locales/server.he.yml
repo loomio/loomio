@@ -2,7 +2,7 @@ he:
   email:
     reply_to_this_discussion: השיבו לדיון זה
     to_join_discussion:
-      message_intro: '%{who} אמר/ה:'
+      message_intro: "%{who} אמר/ה:"
       link: הצטרפות לדיון
     view_discussion: לחצו כאן להצגת דיון זה
     view_proposal: הצגת הצעה זו ב Loomio
@@ -14,7 +14,7 @@ he:
     missed_yesterday:
       subject: אתמול בLoomio
       mark_as_read: סמן כנקרא
-      thanks_for_reading: 'תודה שקראת. יום טוב!'
+      thanks_for_reading: תודה שקראת. יום טוב!
     proposal_closing_soon:
       summary: סיכום
     thread_mailer:

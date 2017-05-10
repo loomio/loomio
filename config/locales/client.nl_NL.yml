@@ -1166,11 +1166,9 @@ nl_NL:
     close_proposal: Sluit voorstel
     close_poll: Sluit peiling
     close_dot_vote: Sluit stippen stemming
-    close_meeting: Sluit overleg peiling
     proposal_closed: Voorstel gesloten
     poll_closed: Peiling gesloten
     dot_vote_closed: Stippen stemming gesloten
-    meeting_closed: Overleg tijd peiling gesloten
   poll_common_closing_at_field:
     closing: Sluit
     closing_hour: Sluitingstijd
@@ -1227,8 +1225,6 @@ nl_NL:
   poll_meeting_form:
     title_placeholder: M.a.w. Wanneer moeten we weer bij elkaar komen?
     details_placeholder: Geef verhelderende details die mensen nodig kunnen hebben om mee te kunnen doen
-    meeting_created: Overleg peiling gemaakt
-    meeting_updated: Overleg peiling aangepast
   poll_proposal_vote_form:
     default_reason_placeholder: Licht je gedachtengang toe alsjeblieft
     abstain_reason_placeholder: Laat mensen weten waarom je niet meer meedoet in deze beslissing
@@ -1288,11 +1284,7 @@ nl_NL:
       poll_expired: 'Stippen stemming afgelopen: <span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> heeft de stippen stemming gesloten: <span>{{title}}</span>'
     meeting:
-      poll_created: '<strong>{{author}}</strong> heeft een vergadertijd peiling gestart: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> antwoordde:'
-      poll_edited: '<strong>{{author}}</strong> heeft de vergadertijd peiling aangepast: <span>{{title}}</span>'
-      poll_expired: 'Vergadertijd peiling afgelopen: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> heeft de overlegtijd peiling gesloten: <span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> heeft een uitkomst gedeeld:'
   poll_admin_page:
     title: Admin - {{title}}
@@ -1312,7 +1304,6 @@ nl_NL:
     existing_guests: Bestaande gasten
     new_guests: Nieuwe e-mails om uit te nodigen
     enter_email: "M.a.w. guest@example.com"
-    reminded: Herinneringsemail verstuurd!
     send_emails: Stuur uitnodigingen ({{count}})
     no_loomio_group: Deze peiling is op dit moment niet gekoppeld aan een Loomio groep
     has_loomio_group: Leden van deze groep zijn in staat om deze peiling te bekijken en er aan mee te doen

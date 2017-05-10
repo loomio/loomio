@@ -1,18 +1,19 @@
 de:
   poll_types:
-    proposal: Vorschläge
+    proposal: Vorschlag
     poll: Umfrage
   common:
     confirm_discard_changes: Deine Änderungen verwerfen?
     time:
       am: am
       pm: pm
-    closing_in: 'Endet {{time}}'
+    closing_in: 'Endet um {{time}}'
     closed_ago: 'Endete um {{time}}'
     volume: 'Lautstärke'
-    notification_volume: 'Benachritigungseinstellungen'
+    notification_volume: 'Benachritigungslautstärke'
     group: 'Gruppe'
     groups: 'Gruppen'
+    threads: 'Diskussionsbeiträge'
     help: 'Hilfe'
     privacy:
       privacy: 'Privatsphäre'
@@ -31,45 +32,55 @@ de:
     more_help: 'Weitere Hilfe'
     models:
       proposal: 'Vorschlag'
-    copied: 'In Zwischenablage kopiert'
+    copy: 'Kopieren'
+    copy_text: 'Text kopieren'
+    copied: 'In die Zwischenablage kopiert'
     action:
       close: 'Schließen'
-      save: 'Sichern'
+      save: 'Speichern'
       save_changes: 'Änderungen speichern'
       update_settings: 'Einstellungen aktualisieren'
       reply: 'Antworten'
       edit: 'Bearbeiten'
-      remove: 'Enternen'
+      remove: 'Entfernen'
       like: 'Gefällt mir'
       back: 'Zurück'
-      unlike: 'Gefällt mir nicht'
+      unlike: 'Gefällt mir nicht mehr'
       update: 'Aktualisieren'
       cancel: 'Abbrechen'
-      show_more: "Mehr zeigen"
+      show_more: "Mehr anzeigen"
       view_all: "Zeige alle"
-      new_thread: "Neuer Strang"
+      new_thread: "Neue Diskussion"
       add_subgroup: 'Untergruppe anlegen'
       loading: 'Laden'
-      translate: 'Übersetze'
-      translated: 'Übersetzung mit Bing Translator'
+      translate: 'Übersetzen'
+      translated: 'Übersetzung durch Bing Translator'
       upload: 'Hochladen'
-      uploading: 'Hochladen'
+      uploading: 'Hochladen ...'
+      load_more: 'Mehr anzeigen'
+      share: Teilen
+      ok: OK!
+      retry: Nochmal versuchen
+      done: Erledigt
     formatting_help:
-      title: 'Lerne, wie Du Markdown nutzen kannst um Deinen Text auf Loomio zu formatieren'
+      title: 'Lerne die Verwendung von Markdown, um Deinen Text auf Loomio zu formatieren.'
+  devise:
+    failure:
+      inactive: 'Diese Email-Adresse ist mit einem deaktivierten Account verknüpft. Wenn Sie den Account wieder aktivieren möchten, nehmen Sie Kontakt mit uns auf.'
   error_page:
-    forbidden: 'Du bist nicht berechtigt, das zu tun.'
-    page_not_found: 'Das konnten wir nicht finden. Es wurden entweder gelöscht oder verschoben.'
+    forbidden: 'Sie haben nicht die notwendige Berechtigung für diese Aktion.'
+    page_not_found: 'Das konnten wir nicht finden. Es wurde entweder gelöscht oder verschoben.'
     internal_server_error: 'Entschuldige bitte. Etwas lief falsch. Bitte erneut versuchen.'
   start_proposal_card:
     title: 'Einen Vorschlag machen'
     helptext: Bereit, um eine Entscheidung zu trefffen?
   proposal_outcome_panel:
     heading: Ergebnis
-    set_outcome_hint: Benutze dieses Feld um jedem das Ergebnis des Vorschlages mitzuteilen
+    set_outcome_hint: Benutze dieses Feld, um den TeilnehmerInnen das Ergebnis der Abstimmung mitzuteilen.
   proposal_outcome_form:
     set_outcome: Das Voschlagsergebnis festhalten
     update_outcome: Vorschlagergebnis aktualisieren
-    outcome_label: Ergebnis des Vorschlags
+    outcome_label: Ergebnis der Abstimmung
     outcome_placeholder: Gib das Ergebnis des Vorschlages bekannt.
     publish_outcome: Ergebnis bekanntgeben
     messages:
@@ -92,7 +103,7 @@ de:
     unmute: 'Laut'
   change_volume_form:
     loud_label: "Alle Meldungen"
-    quiet_label: "Keine eMails"
+    quiet_label: "Keine Emails"
     mute_label: "Stumm"
     discussion:
       title: "eMail-Einstellungen für {{title}}"
@@ -132,14 +143,14 @@ de:
     unread: 'Ungelesen'
     closing_in: 'Wird geschlossen'
   sign_in_form:
-    title: 'Auf Loomio registrieren'
+    title: 'Auf Loomio anmelden'
     email_label: 'eMail:'
     email_placeholder: 'du@Beispiel.de'
     password_label: 'Passwort:'
     remember_me: 'Angemeldet bleiben'
     forgot_password: 'Passwort vergessen?'
     sign_in: 'Login'
-    signed_in: 'Erfolgreich registriert'
+    signed_in: 'Erfolgreich angemeldet'
     oauth:
       facebook: 'Anmelden mit Facebook'
       twitter: 'Anmelden mit Twitter'
@@ -151,7 +162,7 @@ de:
       remove_attachment: 'Anhang entfernen'
     messages:
       created: 'Kommentar hinzugefügt'
-      replied: '{{name}} wurde benachrichtigt'
+      replied: '{{name}} wurde über die Antwort benachrichtigt'
       updated: 'Kommentar aktualisiert'
       destroyed: 'Kommenar gelöscht'
     edit_comment: 'Kommentar bearbeiten'
@@ -169,6 +180,7 @@ de:
     email_settings: 'eMail-Einstellungen'
     help: 'Hilfe'
     sign_out: 'Abmelden'
+    start_thread: Neues Thema
     aria_labels:
       heading: 'Sidebar'
       groups_list: 'Gruppen'
@@ -176,6 +188,7 @@ de:
   navbar:
     recent_title: 'Aktuelle Diskussionen sehen'
     unread_title: 'Diskussionen mit ungelesenen Beiträgen lesen'
+    start_thread: 'Neues Thema'
     notifications: 'Benachrichtigungspanel'
     search:
       no_results: 'Keine Diskussionen gefunden'
@@ -221,7 +234,7 @@ de:
     change_your_vote: Deine Meinung ändern.
   undecided_panel:
     aria_label: 'Unentschlossene Mitglieder'
-    hide_undecided: Verstecke unentschlossene Mitglieder
+    hide_undecided: Unentschlossene Mitglieder verbergen
   proposal_pie_chart:
     participation_statement: '{{percentage}}% der Mitglieder haben bereits abgestimmt ({{number}}/{{total}})'
   close_proposal_form:
@@ -230,7 +243,8 @@ de:
     messages:
       success: Vorschlag geschlossen
   extend_proposal_form:
-    title: 'Endzeit ändern'
+    aria_label: Abstimmungsende ändern
+    title: 'Abstimmungsende ändern'
     success: 'Endzeit wurde aktualisiert'
     submit: 'Endzeit aktualisieren'
   proposal_form:
@@ -369,6 +383,8 @@ de:
       parent_members: 'Privatsphäre: Diese Gruppe ist nur für Mitglieder von {{parentGroupName}} und {{groupName}} sichtbar.'
       public: 'Privatsphäre: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Gruppen-Privatsphäre: {{privacy}}'
+  confirm_gift_plan_modal:
+    go_back: Upgrade
   donation_modal:
     body: "Loomio ist ein gemeinnütziges Unternehmen. Unsere Mission ist eine Welt zu erschaffen, in der es für jeden einfach ist an Entscheidungen teilzuhaben, die ihn betreffen."
     contribute: Mache eine Spende
@@ -462,6 +478,7 @@ de:
     group: 'Gruppe'
     group_placeholder: 'Gruppe auswählen'
     shareable_link: 'Teilbarer Link'
+    copy_link: 'Kopieren'
     email_addresses: 'eMail-Adressen'
     email_addresses_placeholder: 'z.B. helperbot@loomio.org, friendlybot@loomio.org'
     email_explanation: 'Alternativ kannst Du eMail-Adressen hier unterhalb eitragen und Loomio wird ihnen Einladungsmails senden.'
@@ -497,6 +514,8 @@ de:
       remove_admin_success: '{{name}} ist nun kein Koordinator mehr'
     remove_admin_from_self:
       question: 'Bist Du sicher, dass Du nicht mehr Koordinator bleiben willst?'
+  remove_membership_form:
+    submit: 'Entfernen'
   pending_invitations_card:
     heading: Ausstehende Einladungen
     email: eMail
