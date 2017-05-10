@@ -18,13 +18,21 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
     customFieldName = ->
       customFieldNames[$scope.community.communityType]
 
+
     $scope.fetch = ->
       Records.identities.performCommand($scope.community.identityId, actionNames[$scope.community.communityType]).then (response) ->
         $scope.allGroups = response
       , (response) ->
         $scope.error = response.data.error
     LoadingService.applyLoadingFunction $scope, 'fetch'
-    $scope.fetch()
+
+    if $scope.community.isLoomio()
+      $scope.allGroups = _.map Session.user().groups(), (group) ->
+        name: group.fullName
+        id: group.key
+      console.log $scope.allGroups
+    else
+      $scope.fetch()
 
     $scope.reauth = ->
       CommunityService.fetchAccessToken($scope.community.communityType)
@@ -36,6 +44,7 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
 
     $scope.submit = CommunityService.submitCommunity $scope, $scope.community,
       prepareFn: ->
+        return unless customFieldName()
         $scope.community.customFields[customFieldName()] = _.find($scope.allGroups, (group) ->
           $scope.community.identifier == group.id
         ).name

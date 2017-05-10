@@ -763,7 +763,7 @@ en:
     see_more: See more
 
   group_previous_polls_card:
-    heading: Previous Activities
+    heading: Decisions
     see_more: "See all: ({{count}}) activities"
 
   invitation_form:

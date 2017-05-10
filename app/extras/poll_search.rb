@@ -5,7 +5,8 @@ PollSearch = Struct.new(:user) do
 
   def perform(filters = {})
     results = searchable_records
-    results = results.where(discussion_id: filter_group(filters[:group_key]).discussion_ids) if filters[:group_key]
+    results = results.where(group_id: filter_group(filters[:group_key]).id) if filters[:group_key]
+    # results = results.joins(:communities).where('communities.community_type = ?', 'loomio_group').where("communities.identifier": filter_group(filters[:group_key]).key) if filters[:group_key]
     results = results.send(filters[:status])      if STATUS_FILTERS.include?(filters[:status].to_s)
     results = results.send(filters[:user], user)  if USER_FILTERS.include?(filters[:user].to_s)
     results = results.search_for(filters[:query]) if filters[:query].present?

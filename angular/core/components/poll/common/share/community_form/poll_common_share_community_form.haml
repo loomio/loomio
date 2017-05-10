@@ -4,7 +4,7 @@
   %md-list.md-block
     %md-list-item.poll-common-share-form__community.lmo-flex{ng-if: "!community.revoked", ng-repeat: "community in poll.communities()"}
       .lmo-flex__grow.lmo-flex{layout: "row"}
-        %img.poll-common-share-form__community-icon{class: "poll-common-share-form__community-icon--{{community.communityType}}", ng-src: "/img/{{community.communityType}}-icon.svg"}
+        %img.poll-common-share-form__community-icon{class: "poll-common-share-form__community-icon--{{community.communityType}}", ng-src: "{{community.logo()}}"}
         .poll-common-share-form__h3.lmo-inline-action {{community.displayName()}}
 
       %md-button.lmo-inline-action{ng-click: "publish(community)", ng-if: "!poll.published && !poll.processing"}
@@ -14,7 +14,7 @@
         %i.material-icons clear
 
   .lmo-flex
-    %md-button.md-primary.md-raised{ng-click: "addCommunity('loomio')"}
+    %md-button.md-primary.md-raised{ng-click: "addCommunity('loomio_group')"}
       %span{translate: "poll_common_share_form.add_loomio_community"}
     %md-button.md-primary.md-raised{ng-click: "addCommunity('slack')"}
       %span{translate: "poll_common_share_form.add_slack_community"}

@@ -2,7 +2,11 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
   new class CommunityService
 
     buildCommunity: (poll, type) ->
-      if identityId = identityIdFor(type)
+      if type == 'loomio_group'
+        Records.communities.build
+          pollId:        poll.id
+          communityType: type
+      else if identityId = identityIdFor(type)
         Records.communities.build
           pollId:        poll.id
           communityType: type
@@ -33,8 +37,11 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
         successCallback: (response) ->
           delete $location.search().add_community
           $location.search('share', true)
-          ModalService.open PollCommonPublishModal,
-            poll:      -> model.poll()
-            community: -> Records.communities.find(response.communities[0].id)
-            back:      -> (-> ModalService.open PollCommonShareModal, poll: -> model.poll())
+          if model.isLoomio()
+            ModalService.open PollCommonShareModal, poll: -> model.poll()
+          else
+            ModalService.open PollCommonPublishModal,
+              poll:      -> model.poll()
+              community: -> Records.communities.find(response.communities[0].id)
+              back:      -> (-> ModalService.open PollCommonShareModal, poll: -> model.poll())
       , options)

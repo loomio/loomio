@@ -4,6 +4,7 @@ class CommunityService
 
     return unless community.valid?
     community.save!
+    community.polls.update_all(group_id: Group.find_by_key!(community.identifier).id) if community.is_loomio
 
     EventBus.broadcast('community_create', community, actor)
   end

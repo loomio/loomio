@@ -11,7 +11,7 @@ class Communities::Base < ActiveRecord::Base
   delegate :user_id, to: :identity, allow_nil: true
   delegate :user, to: :identity, allow_nil: true
 
-  THIRD_PARTY_TYPES = %w(facebook slack).freeze
+  THIRD_PARTY_TYPES = %w(facebook slack loomio_group).freeze
 
   discriminate Communities, on: :community_type
 
@@ -19,6 +19,10 @@ class Communities::Base < ActiveRecord::Base
 
   def community
     self
+  end
+
+  def is_loomio
+    community_type == 'loomio_group'
   end
 
   def poll_id=(id)
