@@ -219,7 +219,9 @@ Loomio::Application.routes.draw do
 
   get "/browser_not_supported", to: "application#browser_not_supported"
 
-  devise_for :users
+  get '/users/sign_in', to: redirect('/dashboard')
+  get '/users/sign_up', to: redirect('/dashboard')
+  devise_for :users, controllers: { passwords: :"users/passwords" }
 
   namespace(:subscriptions) do
     get :select_gift_plan
