@@ -40,7 +40,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def sign_in(resource_name, user = nil)
-    flash[:notice] = t(:'devise.sessions.signed_in')
     super.tap { handle_pending_actions }
   end
 

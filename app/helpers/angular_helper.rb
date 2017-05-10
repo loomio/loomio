@@ -23,7 +23,6 @@ module AngularHelper
       environment:         Rails.env,
       loadVideos:          (ENV.has_key?('LOOMIO_LOAD_VIDEOS') or Rails.env.production?),
       flash:               flash.to_h,
-      currentUserId:       current_user.id,
       currentVisitorId:    current_visitor.id,
       currentUserLocale:   current_user.locale,
       currentUrl:          request.original_url,

@@ -6,8 +6,7 @@ angular.module('loomioApp').factory 'AuthService', ($window, Records, RestfulCli
         _.merge user, _.first(data.users)
 
     signIn: (user) ->
-      Records.sessions.build(email: user.email, password: user.password).save().then ->
-        $window.location.reload()
+      Records.sessions.build(email: user.email, password: user.password).save()
 
     signUp: (user) ->
       Records.registrations.build(email: user.email, name: user.name, recaptcha: user.recaptcha).save().then ->

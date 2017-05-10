@@ -80,4 +80,4 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'w0rstmovie'
       page.click '.auth-signin-form__submit'
-      page.expectText '.auth-form', 'that password is incorrect'
+      page.expectText '.auth-form', 'that password does not match'

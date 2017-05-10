@@ -52,6 +52,7 @@ class Identities::BaseController < ApplicationController
     if user = existing_identity&.user || current_user.presence || existing_user
       user.associate_with_identity(identity)
       sign_in(user)
+      flash[:notice] = t(:'devise.sessions.signed_in')
     else
       session[:pending_identity_id] = identity.tap(&:save).id
     end

@@ -12,6 +12,7 @@
     %md-input-container.md-block
       %label{translate: "auth_form.password"}
       %input.lmo-primary-form-input{type: "password", ng-required: true, ng-model: "user.password"}
+      %validation_errors{subject: "user", field: "password"}
 
     .lmo-actions
       %md-button.auth-signin-form__login-link{ng-click: "sendLoginLink()"}
