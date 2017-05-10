@@ -4,7 +4,6 @@ mi:
     count: Whakatika
     poll: Pōti
     dot_vote: Pōti ira
-    meeting: Pōti hui
   common:
     expand: Whakanui
     ok_got_it: Kei te pai, kua mau
@@ -209,7 +208,6 @@ mi:
     proposal_title: He whakatakoto
     count_title: Whakatika
     poll_title: Pōti
-    meeting_title: Pōti hui
   poll_common_form:
     start: Tīmatatia
   polls_page:

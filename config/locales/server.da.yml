@@ -1,18 +1,18 @@
 da:
   email:
     group_email:
-      intro: '%{who} oprettede en bekendtgørelse til %{group}:'
-    by_who: 'af %{person}'
+      intro: "%{who} oprettede en bekendtgørelse til %{group}:"
+    by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
     to_join_discussion:
-      subject: '%{who} ønsker at du deltager i en diskussion på Loomio'
+      subject: "%{who} ønsker at du deltager i en diskussion på Loomio"
       content: 'Du er blevet inviteret til at deltage i diskussionen: %{discussion}'
-      message_intro: '%{who} siger:'
+      message_intro: "%{who} siger:"
       link: Deltag i diskussionen
     to_join_group:
-      subject: '%{member} har inviteret dig til at blive medlem af %{group_name} på Loomio'
+      subject: "%{member} har inviteret dig til at blive medlem af %{group_name} på Loomio"
     to_start_group:
-      subject: 'Indstil din nye Loomio-gruppe: %{group_name}'
+      subject: "Indstil din nye Loomio-gruppe: %{group_name}"
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     view_comment: Klik her for at se kommentaren på Loomio
@@ -29,19 +29,19 @@ da:
     missed_yesterday:
       subject: I går på Loomio
       mark_as_read: Marker som læst
-      thanks_for_reading: 'Tak fordi du læste, hav en god dag!'
+      thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
     membership_request:
-      intro: '%{name} (%{email}) har anmodet om adgang til en af dine Loomio-grupper.'
-      subject: '%{who} har anmodet om medlemskab af %{which_group}'
+      intro: "%{name} (%{email}) har anmodet om adgang til en af dine Loomio-grupper."
+      subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
     new_motion_created:
       subject: 'Forslag: %{proposal_title}'
     proposal_closed:
       proposal_has_closed: Forslaget er lukket.
-      specify_outcome_and_notify_group: 'Opret et resultat og send det til din gruppe!'
-      specify_outcome_and_notify_group_html: 'Opret et resultat og send det til din gruppe!'
-      subject: 'Forslag lukket - %{which}'
+      specify_outcome_and_notify_group: Opret et resultat og send det til din gruppe!
+      specify_outcome_and_notify_group_html: Opret et resultat og send det til din gruppe!
+      subject: Forslag lukket - %{which}
     proposal_closing_soon:
       closes_on: 'Lukker d. '
       closes_at: Lukker
@@ -53,9 +53,9 @@ da:
       change_preferences: 'Rediger dine e-mail-indstillinger:'
       motion_closing_soon: 'Forslag lukket om 24 timer:'
       proposal_closed: 'Forslag lukket:'
-      specify_outcome_html: "Dit forslag er lukket. <a href='%{link}'>Angiv et resultat</a> for at lade alle vide hvad resultatet blev."
+      specify_outcome_html: Dit forslag er lukket. <a href='%{link}'>Angiv et resultat</a> for at lade alle vide hvad resultatet blev.
       specify_outcome: 'Dit forslag er lukket. Angiv et resultat for at lade alle vide hvad resultatet er:'
-      you_agreed: 'Dit standpunkt var %{past_tense_position}'
+      you_agreed: Dit standpunkt var %{past_tense_position}
   footer:
     about: Om
     blog: Blog
@@ -71,7 +71,7 @@ da:
     group_name: Gruppenavn
     group_description: Gruppebeskrivelse
     success:
-      header: 'Du er næsten færdig! Tjek din email.'
+      header: Du er næsten færdig! Tjek din email.
   contact_page:
     contact_us: Kontakt os
     labels:
