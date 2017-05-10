@@ -9,7 +9,7 @@ class LoginTokensController < ApplicationController
       session[:pending_user_id] = login_token.user_id
       flash[:notice] = t(:"devise.sessions.token_unusable")
     end
-    redirect_to dashboard_path
+    redirect_to pending_group || dashboard_path
   end
 
   private

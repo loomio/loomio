@@ -5,7 +5,7 @@ module PendingActionsHelper
     return unless user.presence
 
     if pending_invitation
-      pending_invitation.group&.add_member!(user)
+      pending_group&.add_member!(user) if pending_group
       session.delete(:pending_invitation_id)
     end
 
@@ -17,6 +17,10 @@ module PendingActionsHelper
     if pending_user
       session.delete(:pending_user_id)
     end
+  end
+
+  def pending_group
+    @pending_group ||= pending_invitation&.group
   end
 
   def pending_invitation
