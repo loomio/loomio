@@ -26,13 +26,11 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
-      page.expectElement '.sidebar__content'
       page.expectElement '.comment-form__submit-button'
       page.expectFlash 'Signed in successfully'
 
     it 'can send login link', ->
       page.loadPath 'setup_dashboard_as_visitor'
-      page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
       page.click '.auth-email-form__submit'
       page.click '.auth-signin-form__submit'

@@ -27,7 +27,6 @@ module Dev::NintiesMoviesHelper
                   User.create!(name: 'Jennifer Grey',
                                email: 'jennifer_grey@example.com',
                                username: 'jennifergrey',
-                               password: 'gh0stmovie',
                                angular_ui_enabled: true)
     @jennifer.experienced!("introductionCarousel")
     @jennifer

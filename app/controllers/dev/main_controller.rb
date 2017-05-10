@@ -336,6 +336,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_open_discussion_as_visitor
+    patrick
     @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                            membership_granted_upon: 'request',
                            group_privacy: 'open')
