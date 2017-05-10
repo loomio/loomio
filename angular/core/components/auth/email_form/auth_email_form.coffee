@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authEmailForm', ($location, $translate, Records, KeyEventService, AuthService) ->
+angular.module('loomioApp').directive 'authEmailForm', ($translate, KeyEventService, AuthService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/email_form/auth_email_form.html'
   controller: ($scope) ->
@@ -16,6 +16,5 @@ angular.module('loomioApp').directive 'authEmailForm', ($location, $translate, R
         $scope.user.errors.email = [$translate.instant('auth_form.invalid_email')]
       !$scope.user.errors.email?
 
-    document.querySelector('.auth-email-form__email input').focus()
-
     KeyEventService.submitOnEnter($scope, anyEnter: true)
+    $scope.$emit 'focus'

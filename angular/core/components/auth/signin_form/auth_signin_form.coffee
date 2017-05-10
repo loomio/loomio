@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authSigninForm', ($timeout, $translate, Session, AuthService, KeyEventService) ->
+angular.module('loomioApp').directive 'authSigninForm', ($translate, Session, AuthService, FlashService, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
@@ -30,7 +30,5 @@ angular.module('loomioApp').directive 'authSigninForm', ($timeout, $translate, S
       $scope.$emit 'processing'
       AuthService.forgotPassword($scope.user).finally -> $scope.$emit 'doneProcessing'
 
-    if $scope.user.has_password
-      $timeout -> document.querySelector('.auth-signin-form__password input').focus()
-
     KeyEventService.submitOnEnter($scope, anyEnter: true)
+    $scope.$emit 'focus'
