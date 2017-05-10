@@ -39,8 +39,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def sign_in(resource_name, user = nil)
-    handle_pending_actions(super)
+  def sign_in(user_or_resource, user = nil)
+    super && handle_pending_actions(user_or_resource)
   end
 
   def respond_with_error(message, status: :bad_request)

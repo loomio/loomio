@@ -3,7 +3,7 @@ class API::SessionsController < Devise::SessionsController
 
   def create
     if user = warden.authenticate(scope: resource_name)
-      sign_in(resource_name, user)
+      sign_in(user)
       render json: BootData.new(user).data
     else
       render json: { errors: { password: [t(:"devise.failure.invalid")] } }, status: 401

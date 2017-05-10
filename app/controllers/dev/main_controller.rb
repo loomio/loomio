@@ -37,6 +37,22 @@ class Dev::MainController < Dev::BaseController
     redirect_to invitation_url(invitation.token)
   end
 
+  def setup_invitation_to_user
+    invitation = Invitation.create!(
+      intent: :join_group,
+      inviter: patrick,
+      invitable: create_group,
+      recipient_email: jennifer.email,
+      recipient_name: jennifer.name
+    )
+    redirect_to invitation_url(invitation.token)
+  end
+
+  def setup_invitation_to_user_with_password
+    jennifer.update(password: "gh0stmovie")
+    setup_invitation_to_user
+  end
+
   def setup_spanish_user
     patrick.update(selected_locale: :es)
     redirect_to explore_path
