@@ -20,6 +20,10 @@ class TranslationService
   end
 
   def self.supported_languages
-    @@supported_languages ||= translator.supported_language_codes if app_key.present?
+    @@supported_languages ||= if app_key.present?
+      translator.supported_language_codes
+    else
+      []
+    end
   end
 end
