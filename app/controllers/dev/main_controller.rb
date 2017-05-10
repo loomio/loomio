@@ -347,10 +347,10 @@ class Dev::MainController < Dev::BaseController
   end
 
   def view_open_discussion_as_visitor
-    patrick
     @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                            membership_granted_upon: 'request',
                            group_privacy: 'open')
+    @group.add_member! patrick
     @group.add_admin! jennifer
     @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
     redirect_to discussion_url(@discussion)
