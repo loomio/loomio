@@ -63,7 +63,6 @@ describe 'Login', ->
 
     it 'can sign up a user', ->
       page.loadPath 'setup_dashboard_as_visitor'
-      page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
