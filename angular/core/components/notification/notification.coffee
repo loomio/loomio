@@ -5,14 +5,12 @@ angular.module('loomioApp').directive 'notification', ->
   replace: true
   controller: ($scope, Records) ->
     $scope.actor = ->
-      $scope.notification.actor() or $scope.membershipActor()
+      $scope.membershipRequestActor || $scope.notification.actor()
 
-    $scope.membershipActor = ->
-      return unless $scope.notification.kind == 'membership_requested'
-      name = $scope.notification.translationValues.name
-      Records.users.build
-        name:           name
-        avatarInitials: name.toString().split(' ').map((n) -> n[0]).join('')
+    if $scope.notification.kind == 'membership_requested'
+      $scope.membershipRequestActor = Records.users.build
+        name:           $scope.notification.translationValues.name
+        avatarInitials: $scope.notification.translationValues.name.toString().split(' ').map((n) -> n[0]).join('')
         avatarKind:     'initials'
 
     return
