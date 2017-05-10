@@ -4,7 +4,7 @@ class API::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     if resource.save
-      LoginTokenService.create(actor: resource)
+      LoginTokenService.create(actor: resource, uri: URI::parse(request.referrer.to_s))
       head :ok
     else
       render json: { errors: resource.errors }, status: 422

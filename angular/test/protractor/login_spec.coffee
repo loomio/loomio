@@ -1,72 +1,13 @@
-describe 'Login', ->
+fdescribe 'Login', ->
   page = require './helpers/page_helper.coffee'
 
-  fdescribe 'logging in as an existing user', ->
-    it 'forces login on dashboard', ->
-      page.loadPath 'setup_dashboard_as_visitor'
-      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
-      page.click '.auth-email-form__submit'
-      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
-      page.click '.auth-signin-form__submit'
-      page.expectFlash 'Signed in successfully'
-
-    it 'can log in from the explore page', ->
-      page.loadPath 'setup_explore_as_visitor'
-      page.click '.navbar__sign-in'
-      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
-      page.click '.auth-email-form__submit'
-      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
-      page.click '.auth-signin-form__submit'
-      page.expectFlash 'Signed in successfully'
-
-    it 'can log in from a discussion page', ->
-      page.loadPath 'view_open_discussion_as_visitor'
-      page.click '.comment-form__sign-in-btn'
-      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
-      page.click '.auth-email-form__submit'
-      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
-      page.click '.auth-signin-form__submit'
-      page.expectElement '.comment-form__submit-button'
-      page.expectFlash 'Signed in successfully'
-
-    it 'can send login link', ->
-      page.loadPath 'setup_dashboard_as_visitor'
-      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
-      page.click '.auth-email-form__submit'
-      page.click '.auth-signin-form__submit'
-      page.expectText '.auth-form', 'Check your email'
-      page.expectText '.auth-form', 'instantly log in'
-      page.loadPath 'use_last_login_token'
-      page.expectFlash 'Signed in successfully'
-      page.expectText '.dashboard-page', 'Recent Threads'
-
+  describe 'via password', ->
     it 'can send login link to user with a password', ->
       page.loadPath 'setup_dashboard_as_visitor'
       page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
       page.click '.auth-email-form__submit'
       page.click '.auth-signin-form__login-link'
-      page.expectText '.auth-form', 'Check your email'
-      page.expectText '.auth-form', 'instantly log in'
-      page.loadPath 'use_last_login_token'
-      page.expectFlash 'Signed in successfully'
-      page.expectText '.dashboard-page', 'Recent Threads'
-
-    it 'can set a password', ->
-      page.loadPath 'setup_dashboard_as_visitor'
-      page.click '.navbar__sign-in'
-      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
-      page.click '.auth-email-form__submit'
-      page.click '.auth-signin-form__set-password'
-      page.expectText '.auth-form', 'Check your email'
-      page.expectText '.auth-form', 'set your password'
-
-    it 'can sign up a user', ->
-      page.loadPath 'setup_dashboard_as_visitor'
-      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
-      page.click '.auth-email-form__submit'
-      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
-      page.click '.auth-signup-form__submit'
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
@@ -82,15 +23,101 @@ describe 'Login', ->
       page.click '.auth-signin-form__submit'
       page.expectText '.auth-form', 'that password doesn\'t match'
 
-    it 'can log someone in from an invitation', ->
-      page.loadPath 'setup_invitation_to_visitor'
-      page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
-      page.click '.auth-signup-form__submit'
-      page.loadPath 'use_last_login_token'
+    it 'can login from the dashboard', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      page.expectFlash 'Signed in successfully'
+
+    it 'can login from the explore page', ->
+      page.loadPath 'setup_explore_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      page.expectFlash 'Signed in successfully'
+
+    it 'can login from a discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
+      page.expectElement '.comment-form__submit-button'
+      page.expectFlash 'Signed in successfully'
+
+    it 'can accept an invitation', ->
+      page.loadPath 'setup_invitation_to_user'
+      page.fillIn '.auth-signin-form__password', 'gh0stmovie'
+      page.click '.auth-signin-form__submit'
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
 
-    it 'can log someone in from a group request', ->
+  describe 'via link', ->
+    it 'can login from the dashboard', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
+
+    it 'can login from the explore page via link', ->
+      page.loadPath 'setup_explore_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.explore-page', 'Explore Loomio groups'
+
+    it 'can login from a discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectElement '.comment-form__submit-button'
+
+    it 'can set a password', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.click '.navbar__sign-in'
+      page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__set-password'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'set your password'
+
+  describe 'new account'
+    it 'can sign up a user', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
+
+    it 'can sign up a new user through the discussion page', ->
+
+    it 'can sign up a new user through the request to join flow', ->
+
+
+    it 'can log someone in from an invitation', ->
       page.loadPath 'setup_invitation_to_visitor'
       page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
       page.click '.auth-signup-form__submit'
