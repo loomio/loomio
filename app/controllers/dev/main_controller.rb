@@ -18,7 +18,7 @@ class Dev::MainController < Dev::BaseController
   end
 
   def use_last_login_token
-    redirect_to(login_token_url(LoginToken.last))
+    redirect_to(login_token_url(LoginToken.last.token))
   end
 
   def setup_login
