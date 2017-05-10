@@ -4,7 +4,7 @@ class LoginToken < ActiveRecord::Base
   EXPIRATION = ENV.fetch('LOGIN_TOKEN_EXPIRATION_MINUTES', 15)
 
   def useable?
-    !used && expires_at > DateTime.now
+    !used && expires_at > DateTime.now && user.present?
   end
 
   def expires_at

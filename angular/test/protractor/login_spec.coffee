@@ -81,3 +81,19 @@ describe 'Login', ->
       page.fillIn '.auth-signin-form__password input', 'w0rstmovie'
       page.click '.auth-signin-form__submit'
       page.expectText '.auth-form', 'that password doesn\'t match'
+
+    it 'can log someone in from an invitation', ->
+      page.loadPath 'setup_invitation_to_visitor'
+      page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+
+    it 'can log someone in from a group request', ->
+      page.loadPath 'setup_invitation_to_visitor'
+      page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'

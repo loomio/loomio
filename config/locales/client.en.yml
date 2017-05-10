@@ -1711,6 +1711,8 @@ en:
       Or, we can email you a link to sign in instantly.
     sign_up_helptext: |
       Just enter the name you'd like to be known by, and we'll send you a link to log in.
+    oauth_confirm_helptext: |
+      Just confirm your details below, and we'll send you a link to log in.
 
     sign_in_with_email: Sign in with email
     welcome: Nice to meet you, {{email}}!

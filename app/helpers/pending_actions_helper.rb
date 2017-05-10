@@ -1,14 +1,16 @@
 module PendingActionsHelper
   private
 
-  def handle_pending_actions
+  def handle_pending_actions(user)
+    return unless user.presence
+
     if pending_invitation
-      pending_invitation.group&.add_member!(current_user)
+      pending_invitation.group&.add_member!(user)
       session.delete(:pending_invitation_id)
     end
 
     if pending_identity
-      current_user.identities.push(pending_identity)
+      user.identities.push(pending_identity)
       session.delete(:pending_identity_id)
     end
 
@@ -18,7 +20,7 @@ module PendingActionsHelper
   end
 
   def pending_invitation
-    @pending_invitation ||= Invitation.find_by(id: session[:pending_invitation_id]) if session[:pending_invitation_id]
+    @pending_invitation ||= Invitation.find_by(token: session[:pending_invitation_id]) if session[:pending_invitation_id]
   end
 
   def pending_identity

@@ -2,8 +2,10 @@ angular.module('loomioApp').directive 'authSignupForm', (AppConfig, AuthService,
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signup_form/auth_signup_form.html'
   controller: ($scope) ->
-    $scope.recaptchaKey = AppConfig.recaptchaKey
-    $scope.name = $scope.user.name
+    $scope.pendingIdentity = AppConfig.pendingIdentity
+    $scope.recaptchaKey    = AppConfig.recaptchaKey
+    $scope.name  = $scope.user.name
+    $scope.email = $scope.user.email
 
     $scope.helperBot =
       constructor: {singular: 'user'}
@@ -15,7 +17,8 @@ angular.module('loomioApp').directive 'authSignupForm', (AppConfig, AuthService,
 
     $scope.submit = ->
       $scope.$emit 'processing'
-      $scope.user.name = $scope.name
+      $scope.user.name  = $scope.name
+      $scope.user.email = $scope.email
       AuthService.signUp($scope.user).finally -> $scope.$emit 'doneProcessing'
 
     KeyEventService.submitOnEnter($scope, anyEnter: true)

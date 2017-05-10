@@ -26,6 +26,17 @@ class Dev::MainController < Dev::BaseController
     redirect_to new_user_session_url
   end
 
+  def setup_invitation_to_visitor
+    invitation = Invitation.create!(
+      intent: :join_group,
+      inviter: patrick,
+      invitable: create_group,
+      recipient_email: "max@example.com",
+      recipient_name: "Max Von Sydow"
+    )
+    redirect_to invitation_url(invitation.token)
+  end
+
   def setup_spanish_user
     patrick.update(selected_locale: :es)
     redirect_to explore_path

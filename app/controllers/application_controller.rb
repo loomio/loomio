@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def sign_in(resource_name, user = nil)
-    super.tap { handle_pending_actions }
+    handle_pending_actions(super)
   end
 
   def respond_with_error(message, status: :bad_request)
