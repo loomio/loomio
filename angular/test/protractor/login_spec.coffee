@@ -99,7 +99,7 @@ fdescribe 'Login', ->
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'set your password'
 
-  describe 'new account'
+  describe 'new account', ->
     it 'can sign up a user', ->
       page.loadPath 'setup_dashboard_as_visitor'
       page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
@@ -112,10 +112,9 @@ fdescribe 'Login', ->
       page.expectFlash 'Signed in successfully'
       page.expectText '.dashboard-page', 'Recent Threads'
 
-    it 'can sign up a new user through the discussion page', ->
+    xit 'can sign up a new user through the discussion page', ->
 
-    it 'can sign up a new user through the request to join flow', ->
-
+    xit 'can sign up a new user through the request to join flow', ->
 
     it 'can log someone in from an invitation', ->
       page.loadPath 'setup_invitation_to_visitor'
