@@ -1,5 +1,5 @@
 .auth-signin-form
-  %user_avatar.auth-signin-form__avatar{user: "user", size: "large-circular"}
+  %auth_avatar{user: "user"}
   %md-input-container.md-block.auth-signin-form__magic-link
     %h2.lmo-h2{translate: "auth_form.welcome_back", translate-value-name: "{{user.firstName() || user.email}}"}
     %p.poll-common-helptext

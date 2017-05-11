@@ -51,6 +51,7 @@ en:
     copied: 'Copied to clipboard'
     action:
       back: 'Back'
+      next: 'Next'
       close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'
@@ -1688,7 +1689,7 @@ en:
     start_new_poll: New decision
 
   auth_form:
-    sign_in_to_loomio: Sign in to Loomio
+    sign_in_to_loomio: Log in or Sign up
     sign_in: Sign in
     choose_an_account: "Select an account to authenticate with:"
     more_providers: More
@@ -1699,6 +1700,7 @@ en:
     email_helptext: |
       Have an account already, or don't want to use a third party?
       Enter your email address instead:
+    email_placeholder: you@example.com
     login_link_helptext: |
       Click the button below and we'll send you a link to sign in instantly.
       Or, you can set a password to login with, if you don't want to receive an email.
