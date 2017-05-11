@@ -119,9 +119,19 @@ fdescribe 'Login', ->
       page.expectFlash 'Signed in successfully'
       page.expectText '.dashboard-page', 'Recent Threads'
 
-    xit 'can sign up a new user through the discussion page', ->
-
-    xit 'can sign up a new user through the request to join flow', ->
+    it 'can sign up a new user through the discussion page', ->
+      page.loadPath 'view_open_discussion_as_visitor'
+      page.click '.comment-form__sign-in-btn'
+      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
+      page.click 'auth-email-form__submit'
+      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.context-panel__heading', 'Open Dirty Dancing Shoes'
+      page.click '.comment-form__join-actions button'
+      page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
+      page.expectElement '.comment-form__submit-button'
 
     it 'can log someone in from an invitation', ->
       page.loadPath 'setup_invitation_to_visitor'
