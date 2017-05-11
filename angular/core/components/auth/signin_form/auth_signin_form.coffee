@@ -4,7 +4,7 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, Session, Au
   controller: ($scope) ->
 
     $scope.back = ->
-      $scope.user.email_status = null
+      $scope.user.emailStatus = null
 
     $scope.signIn = ->
       $scope.$emit 'processing'
@@ -21,7 +21,7 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, Session, Au
       AuthService.sendLoginLink($scope.user).finally -> $scope.$emit 'doneProcessing'
 
     $scope.submit = ->
-      if $scope.user.has_password
+      if $scope.user.hasPassword
         $scope.signIn()
       else
         $scope.sendLoginLink()

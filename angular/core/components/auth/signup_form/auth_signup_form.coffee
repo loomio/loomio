@@ -13,7 +13,7 @@ angular.module('loomioApp').directive 'authSignupForm', (AppConfig, AuthService,
       avatarUrl:  '/img/mascot.png'
 
     $scope.back = ->
-      $scope.user.email_status = null
+      $scope.user.emailStatus = null
 
     $scope.submit = ->
       $scope.$emit 'processing'

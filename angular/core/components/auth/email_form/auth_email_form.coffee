@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authEmailForm', ($translate, KeyEventService, AuthService) ->
+angular.module('loomioApp').directive 'authEmailForm', ($translate, AppConfig, KeyEventService, AuthService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/email_form/auth_email_form.html'
   controller: ($scope) ->
@@ -6,7 +6,11 @@ angular.module('loomioApp').directive 'authEmailForm', ($translate, KeyEventServ
       return unless $scope.validateEmail()
       $scope.$emit 'processing'
       $scope.user.email = $scope.email
-      AuthService.emailStatus($scope.user).finally -> $scope.$emit 'doneProcessing'
+      AuthService.emailStatus($scope.user).then (data) ->
+        keys = ['avatar_kind', 'avatar_initials', 'gravatar_md5', 'avatar_url', 'has_password', 'email_status']
+        $scope.user.update _.mapKeys _.pick(data, keys), (v,k) -> _.camelCase(k)
+      .finally ->
+        $scope.$emit 'doneProcessing'
 
     $scope.validateEmail = ->
       $scope.user.errors = {}
