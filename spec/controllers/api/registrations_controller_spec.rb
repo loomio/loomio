@@ -11,7 +11,7 @@ describe API::RegistrationsController do
 
   describe 'create' do
     it 'creates a new user' do
-      Clients::Recaptcha.instance.stub(:validate) { true }
+      Clients::Recaptcha.any_instance.stub(:validate) { true }
       expect { post :create, user: registration_params }.to change { User.count }.by(1)
       expect(response.status).to eq 200
       u = User.last
@@ -20,7 +20,7 @@ describe API::RegistrationsController do
     end
 
     it 'sends a login email' do
-      Clients::Recaptcha.instance.stub(:validate) { true }
+      Clients::Recaptcha.any_instance.stub(:validate) { true }
       expect { post :create, user: registration_params }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
@@ -30,7 +30,7 @@ describe API::RegistrationsController do
     end
 
     it 'does not create a new user if the recaptcha is invalid' do
-      Clients::Recaptcha.instance.stub(:validate) { false }
+      Clients::Recaptcha.any_instance.stub(:validate) { false }
       expect { post :create, user: registration_params }.to_not change { User.count }
       expect(response.status).to eq 422
     end
