@@ -921,7 +921,6 @@ it:
     count_title: Controlla
     poll_title: Sondaggio
     dot_vote_title: Voto a punti
-    meeting_title: Sondaggio per incontro
   poll_common:
     your_response: La tua risposta
     change_your_response: Cambia la tua risposta
@@ -968,7 +967,6 @@ it:
     stance_updated: Voto aggiornato
   poll_meeting_vote_form:
     your_response: Quando puoi esserci?
-    stance_created: Disponibilità aggiornata
   poll_dot_vote_vote_form:
     dots_remaining: Hai {{count}} punti rimanenti.
     too_many_dots: Hai usato troppi punti

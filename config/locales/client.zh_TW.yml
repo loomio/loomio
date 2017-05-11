@@ -4,11 +4,12 @@ zh_TW:
     count: 勾選
     poll: 投票
     dot_vote: 點投票
-    meeting: 會面投票
+    meeting: 時間投票
   timezones:
     local: 本地時間 ({{value}})
   common:
     expand: 展開
+    all_day: 全天
     ok_got_it: 好的，我知道了
     learn_more: 取得更多資訊
     not_found: 找不到
@@ -72,6 +73,8 @@ zh_TW:
       uploading: '正在上傳'
       load_more: '載入更多'
       share: 分享
+      ok: 確定！
+      retry: 重試
       done: 完成
       start: 啟動
     formatting_help:
@@ -1160,11 +1163,12 @@ zh_TW:
     count_title: 勾選
     poll_title: 投票
     dot_vote_title: 點投票
-    meeting_title: 會面投票
+    meeting_title: 時間投票
   poll_common:
     your_response: 您的回應
     change_your_response: 變更您的回應
     reason: 理由
+    message: 訊息
     results: 結果
     vote: 投票
     votes: 投票
@@ -1182,6 +1186,7 @@ zh_TW:
     share_proposal: 分享提案
     share_count: 分享勾選
     start_poll: 啟動決策
+    publish_poll: 分享投票
   poll_common_attachment_form:
     label: 附件
   poll_common_card:
@@ -1199,12 +1204,12 @@ zh_TW:
     close_poll: 關閉投票
     close_count: 關閉勾選
     close_dot_vote: 關閉點投票
-    close_meeting: 關閉會面投票
+    close_meeting: 關閉時間投票
     proposal_closed: 提議已定案
     poll_closed: 投票已關閉
     count_closed: 勾選已關閉
     dot_vote_closed: 點投票已關閉
-    meeting_closed: 會面投票已關閉
+    meeting_closed: 時間投票已關閉
   poll_common_closing_at_field:
     closing: 關閉
     closing_hour: 關閉時間
@@ -1229,7 +1234,7 @@ zh_TW:
     poll: '此提案已關閉。與群組<strong>分享成果</strong>。'
     proposal: '此提案已<strong>定案</strong>。請花點時間考慮要說些什麼，以及與群組<strong>分享成果</strong>，這樣人們才能知道接下來會發生什麼事情。'
     count: '這個勾選已關閉。<strong>分享成果</strong>以完成整個過程。'
-    meeting: '此會面時間投票已關閉。<strong>分享成果</strong>以讓其他人知道會面時間訂在什麼時候。'
+    meeting: '此時間投票已關閉。<strong>分享成果</strong>以讓其他人知道會面何時舉行。'
     dot_vote: '此點投票已關閉。與群組<strong>分享成果</strong>。'
   poll_common_outcome_form:
     new_title: 分享成果
@@ -1268,7 +1273,7 @@ zh_TW:
       <p>使用投票來衡量人氣或是提供選項。</p>
       <p>提供一些選項來供群組成員選取。決定參與者可以選取一個或多個選項來當做他們的回應。</p>
       <p>每個人投票，且如果他們想要的話也可以同時輸入一段陳述。結果會以長條圖呈現。</p>
-    tool_tip_collapsed: 測量選項的人氣
+    tool_tip_collapsed: 測量人氣或是提供選項
     start_header: 啟動投票
     edit_header: 編輯投票
     tip: 測量不同選項的人氣
@@ -1300,7 +1305,7 @@ zh_TW:
       <p>點投票是列出選項清單順序的方法。</p>
       <p>參與者會被給予有限的「點」，其可以被分配在他們喜歡的的選項來表示自己的偏好。</p>
       <p>這個過程會產生一個累計的長條圖以及個別分配，讓您可以考慮各種觀點。</p>
-    tool_tip_collapsed: 將選項清單按優先順序排放
+    tool_tip_collapsed: 選項排序
     start_header: 啟動點投票
     edit_header: 編輯點投票
     tip: 共同分配資源
@@ -1312,20 +1317,20 @@ zh_TW:
     dot_vote_updated: 點投票已更新
   poll_meeting_form:
     tool_tip_expanded: |
-      <p>使用會面投票來找到人們何時有空。</p>
+      <p>使用時間投票來看看夥伴們何時可以會面。</p>
       <p>輸入您想要舉辦會面的日期或是時間清單。</p>
       <p>參與者勾選他們可以參與的時間，或是他們可以使用陳述欄來解釋他們的狀況，所以如果需要的話，您可以更新選項。</p>
-      <p>若您在會面投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
+      <p>若您在時間投票中新增了新的時間，已經投票的夥伴將會被提醒要更新他們的回應。</p>
       <p>您可以看到哪些人什麼時候有空，並決定何時要會面。</p>
       <p>時間將會被自動轉換為參與者的時區。</p>
     tool_tip_collapsed: 找到會面的時間
-    start_header: 啟動會面投票
-    edit_header: 編輯會面投票
+    start_header: 啟動時間投票
+    edit_header: 編輯時間投票
     tip: 了解人們何時可以會面
     title_placeholder: 例如：我們何時可以進行下一次會面？
     details_placeholder: 提供更詳細的資訊給需要參與的夥伴們
-    meeting_created: 會面投票已建立
-    meeting_updated: 會面投票已更新
+    meeting_created: 時間投票已建立
+    meeting_updated: 時間投票已更新
   poll_proposal_vote_form:
     default_reason_placeholder: 請解釋您的理由
     abstain_reason_placeholder: 讓人們知道您為什麼作出了這個決定
@@ -1363,7 +1368,8 @@ zh_TW:
     stance_updated: 已更新投票
   poll_meeting_vote_form:
     your_response: 您何時能參加？
-    stance_created: 可用度已更新
+    stance_created: 可用度已儲存
+    stance_updated: 可用度已更新
   poll_dot_vote_vote_form:
     dots_remaining: 您還剩 {{count}} 點。
     too_many_dots: 您使用了太多點數。
@@ -1395,16 +1401,17 @@ zh_TW:
       poll_expired: '點投票已結束：<span>{{title}}</span>'
       poll_closed_by_user: '<strong>{{author}}</strong> 關閉了點投票：<span>{{title}}</span>'
     meeting:
-      poll_created: '<strong>{{author}}</strong> 已啟動了一個會面時間投票：<span>{{title}}</span>'
+      poll_created: '<strong>{{author}}</strong> 已啟動了一個時間投票：<span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> 已回應：'
-      poll_edited: '<strong>{{author}}</strong> 已編輯會面時間投票：<span>{{title}}</span>'
-      poll_expired: '會面時間投票已結束：<span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉會面時間投票：<span>{{title}}</span>'
+      poll_edited: '<strong>{{author}}</strong> 編輯了時間投票：<span>{{title}}</span>'
+      poll_expired: '時間投票已結束：<span>{{title}}</span>'
+      poll_closed_by_user: '<strong>{{author}}</strong> 已關閉時間投票：<span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> 已分享了成果：'
   poll_admin_page:
     title: 管理 - {{title}}
   poll_common_share_form:
     no_group_selected: 未選擇群組
+    no_communities: "您尚未連到任何社群。點選下方的「加入社群」來新增一個"
     share_a_link: 可分享的連結
     anyone_can_participate: 任何人皆可參與
     anyone_can_participate_true: 可分享的連結已建立
@@ -1419,7 +1426,7 @@ zh_TW:
     existing_guests: 已有的來賓
     new_guests: 新邀請電子郵件
     enter_email: "例如：guest@example.com"
-    reminded: 提醒電子郵件已寄出！
+    reminded: 提醒已傳送！
     send_emails: 傳送邀請函 ({{count}})
     no_loomio_group: 這個投票並未關聯到任何 Loomio 群組
     has_loomio_group: 這個群組的成員將可以檢視並參與此投票。
@@ -1430,6 +1437,39 @@ zh_TW:
     email_exists: '{{email}} 已被邀請'
     email_empty: '請輸入電子郵件'
     email_invalid: "這似乎不是有效的電子郵件"
+    communities: 連接社群
+    add_facebook_community: 新增 facebook 群組
+    add_slack_community: 新增 slack 頻道
+    community_revoked: 這個社群將不再可供參與
+    community_added: 社群已被加入投票
+  poll_common_publish_form:
+    community: 通知以下群組關於您的投票
+    message: 輸入訊息
+    message_placeholder: 新增一條訊息以附加連結到您的投票中
+    published: 訊息成功傳送
+  poll_common_publish_facebook_preview:
+    shared_a: 分享一個
+    link: 連結
+    just_now: 就是現在
+  poll_common_publish_slack_preview:
+    poll_published: "發佈投票："
+    poll_published_with_discussion: "在 <strong>{{discussion}}</strong> 中發佈投票。"
+    view_it_on_loomio: 在 Loomio 上檢視
+    timestamp: 今日 {{timestamp}}
+  add_community_form:
+    title: 新增社群
+    existing_communities: 先前連接的社群
+    no_communities: 您尚未連到任何社群。從下方選取一個來開始。
+    connect_new_community: 連到新的社群
+    currently_signed_in_as: "目前登入為："
+    community_created: 這個投票現在連線到 {{type}} 社群
+    error_explanation: 喔喔！我們連線到 {{type}} 的時候發生了一些問題。點選下面來重試。
+    slack:
+      another_account: （切換團隊）
+      fragment_placeholder: 搜尋頻道⋯
+    facebook:
+      another_account: （以其他帳號登入）
+      fragment_placeholder: 搜尋群組⋯
   poll_common_participant_form:
     participant_name_placeholder: 您的大名是？
   poll_common_subscribe_form:

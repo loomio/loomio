@@ -6,7 +6,7 @@ te:
     create_proposal:
       subject: 'కొత్త ప్రతిపాదన: %{which}'
     proposal_closed:
-      subject: 'ప్రతిపాదన మూసివేయబడింది - %{which}'
+      subject: ప్రతిపాదన మూసివేయబడింది - %{which}
     proposal_closing_soon:
       summary: సారాంశం
   footer:

@@ -414,20 +414,9 @@ nl_NL:
         voted: '<strong>%{participant}</strong>:'
     meeting:
       subject:
-        poll_created: '%{actor} heeft een vergadertijd peiling gestart: %{title}'
-        poll_updated: '%{actor} heeft de vergadertijd peiling aangepast: %{title}'
-        poll_closing_soon: 'Vergadertijd peiling sluit over 24 uur: %{title}'
-        poll_closing_soon_author: 'Je vergadertijd peiling sluit over 24 uur: %{title}'
-        poll_expired: 'Je vergadertijd peiling is gesloten. Deel een uitkomst voor: %{title}'
         outcome_created: '%{actor} heeft een uitkomst gedeeld: %{title}'
         visitor_reminded: '%{actor} wacht op je antwoord: %{title}'
       header:
-        poll_created: '<strong>%{actor}</strong> is een vergadertijd peiling gestart'
-        poll_updated: '<strong>%{actor}</strong> heeft de vergadertijd peiling aangepast'
-        poll_closing_soon: '<strong>%{actor}</strong>''s vergadertijd peiling sluit over 24 uur. Dit is het goede moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.'
-        poll_closing_soon_author: 'Je vergadertijd peiling sluit over 24 uur- je wil misschien mensen eraan herinneren of de deadline verlengen indien mogelijk.'
-        poll_expired: 'Je overlegtijd peiling is <strong>gesloten</strong>. denk na over wat er gezegd is en <strong>deel een uitkomst</strong> met de groep, zodat mensen weten wat er hierna gebeurt.'
-        outcome_created: '<strong>%{actor}</strong> heeft een uitkomst van een vergadertijd peiling gedeeld.'
         visitor_reminded: '<strong>%{actor}</strong> wacht op je reactie: %{title}'
       body:
         voted: '<strong>%{participant}</strong>:'

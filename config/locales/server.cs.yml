@@ -1,50 +1,50 @@
 cs:
   email:
     group_email:
-      intro: '%{who} oznámil(a) skupině %{group}:'
-    by_who: 'od %{person}'
+      intro: "%{who} oznámil(a) skupině %{group}:"
+    by_who: od %{person}
     reply_to_this_discussion: Odpovědět na této diskusi
     to_join_discussion:
-      subject: '%{who} chce, aby ses zapojil(a) do diskuze na Loomio'
+      subject: "%{who} chce, aby ses zapojil(a) do diskuze na Loomio"
       content: 'Byl(a) jste pozván(a), abyste se zapojil(a) do diskuze: %{discussion}'
-      message_intro: '%{who} říká:'
+      message_intro: "%{who} říká:"
       link: Zapojte se do diskuze
     to_join_group:
-      subject: '%{member} vás pozval(a) do skupiny %{group_name} na Loomio'
+      subject: "%{member} vás pozval(a) do skupiny %{group_name} na Loomio"
     to_start_group:
-      subject: 'Zřiďte si svou novou Loomio skupinu: %{group_name}'
+      subject: "Zřiďte si svou novou Loomio skupinu: %{group_name}"
     unsubscribe: 'Odhlašte se nebo si změňte nastavení emailu:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
     view_comment: Klikněte sem pro zobrazení komentáře na Loomio
     view_discussion: Klikněte sem pro zobrazení této diskuze
     view_proposal: Zobrazte si tento návrh na Loomio
     create_proposal:
-      intro: 'Nový návrh byl vytvořen v Loomio skupině, ke které patříte'
+      intro: Nový návrh byl vytvořen v Loomio skupině, ke které patříte
       closes_in: Uzavře se
       subject: 'Nový návrh: %{which}'
     daily_activity:
       heading: Vaše aktivita na Loomiu
-      intro: 'Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin'
+      intro: Zobrazuje se, co se dělo ve vašich Loomio skupinách během posledních 24 hodin
       subject: Loomio -- Souhrn posledních 24 hodin
     missed_yesterday:
       subject: Včera na Loomio
       mark_as_read: Označit jako přečtené
-      thanks_for_reading: 'Děkujeme za přečtení a přejeme hezký den!'
+      thanks_for_reading: Děkujeme za přečtení a přejeme hezký den!
     membership_request:
-      intro: '%{name} (%{email}) zažádal(a) o přístup k jedné z vašich Loomio skupin.'
-      subject: '%{who} zažádal(a) o členství v %{which_group}'
+      intro: "%{name} (%{email}) zažádal(a) o přístup k jedné z vašich Loomio skupin."
+      subject: "%{who} zažádal(a) o členství v %{which_group}"
       view_group: Můžete schválit či odmítnout žádost zde
     proposal_closed:
       proposal_has_closed: Návrh je uzavřen.
-      specify_outcome_and_notify_group: 'Vytvořte výsledek a pošlete ho své skupině!'
-      specify_outcome_and_notify_group_html: 'Vytvořte výsledek a pošlete ho své skupině!'
-      subject: 'Návrh uzavřen - %{which}'
+      specify_outcome_and_notify_group: Vytvořte výsledek a pošlete ho své skupině!
+      specify_outcome_and_notify_group_html: Vytvořte výsledek a pošlete ho své skupině!
+      subject: Návrh uzavřen - %{which}
     proposal_closing_soon:
       closes_on: Uzavírá se
       closes_at: Uzavírá se
       closes_in: Uzavře se
       subject: 'Uzavřeno během 24 hodin: %{proposal_title}'
-      headline: 'návrh %{author} v %{group} se brzy uzavírá:'
+      headline: "návrh %{author} v %{group} se brzy uzavírá:"
       summary: Shrnutí
     thread_mailer:
       change_preferences: 'Změna nastavení e-mailu:'
@@ -64,7 +64,7 @@ cs:
       header: Spuštění nových skupin v Loomio 1.0
       subtitle: 'Chcete-li spustit novou skupinu, budete muset přepnout na zcela novou verzi Loomio:'
       switch_to_angular: Spuštění skupiny na novém Loomio
-      helptext: 'Loomio je od základů přestavěno. Můžete si o tom, co je nového přečíst <a href="/angular">zde</a>.<br/>Zpět na starou verzi budete moci přepnout kdykoli budete chtít.'
+      helptext: Loomio je od základů přestavěno. Můžete si o tom, co je nového přečíst <a href="/angular">zde</a>.<br/>Zpět na starou verzi budete moci přepnout kdykoli budete chtít.
     header: Vytvořit novou skupinu
     form_error: Některé informace chybí nebo jsou nesprávné.
     name: Vaše jméno
@@ -73,18 +73,18 @@ cs:
     email_error: Neplatná e-mailová adresa.
     group_name: Název skupiny
     group_description: Popis skupiny
-    group_description_placeholder: 'Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.'
+    group_description_placeholder: Můžete popsat účel vaší skupiny, takže Vaši členové skupiny budou vědět, proč jsou tady.
     group_name_error: Je požadován název skupiny
-    pricing_html: "Za 30 dní, Vás požádáme, abyste si vybraly <a href='%{link}' target='_blank'>cenový plán</a>."
+    pricing_html: Za 30 dní, Vás požádáme, abyste si vybraly <a href='%{link}' target='_blank'>cenový plán</a>.
     success:
-      header: 'Jste téměř u konce! Zkontrolujte si email.'
+      header: Jste téměř u konce! Zkontrolujte si email.
       email_not_arrived: E-mail nebyl doručen?
     start_making_decisions: 'Abyste začali společně rozhodovat na Loomio, založte skupinu zdarma:'
   pricing_page:
     gift: Bezplatný
     standard: Standardní
     plus: Profesionální
-    free_trial_html: 'Po uplynutí <span>30-ti denní bezplatné zkušební verze</span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.'
+    free_trial_html: Po uplynutí <span>30-ti denní bezplatné zkušební verze</span> Vás požádáme, abyste provedly výběr cenového plánu. Není nutná žádná kreditní karta.
     unlimited_members: neomezený počet členů
     unlimited_decisions: neomezený počet rozhodnutí
     email_support: e-mailová podpora

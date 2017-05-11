@@ -1147,10 +1147,8 @@ uk:
     helptext: Ви дійсно бажаєте закрити цю пропозицію раніше?
     close_proposal: Закрити пропозицію
     close_poll: Закрити опитування
-    close_meeting: 'Закрити опитування '
     proposal_closed: Пропозицію закрито
     poll_closed: Опитування закрито
-    meeting_closed: Опитування під час зустрічі закрито
   poll_common_closing_at_field:
     closing: Закривається
     closing_hour: Час закриття
@@ -1195,8 +1193,6 @@ uk:
     add_option_placeholder: Додати варіант
   poll_meeting_form:
     title_placeholder: Наприклад, коли ми маємо провести нашу наступну зустріч?
-    meeting_created: Опитування під час зустрічі створено
-    meeting_updated: Опитування під час зустрічі оновлено
   poll_proposal_vote_form:
     default_reason_placeholder: Будь ласка, поясніть ваші аргументи
     abstain_reason_placeholder: Нехай люди знають, чому ви вибрали саме це рішення
@@ -1241,11 +1237,7 @@ uk:
     dot_vote:
       stance_created: '<strong>{{author}}</strong> проголосував:'
     meeting:
-      poll_created: '<strong>{{author}}</strong> почав опитування під час зустрічі: <span>{{title}}</span>'
       stance_created: '<strong>{{author}}</strong> відповів:'
-      poll_edited: '<strong>{{author}}</strong> відредагував опитування під час зустрічі: <span>{{title}}</span>'
-      poll_expired: 'Опитування під час зустрічі завершено: <span>{{title}}</span>'
-      poll_closed_by_user: '<strong>{{author}}</strong> закрив опитування під час зустрічі: <span>{{title}}</span>'
     outcome_created: '<strong>{{author}}</strong> опублікував(ла) рішення:'
   poll_admin_page:
     title: Адміністратор - {{title}}
@@ -1265,7 +1257,6 @@ uk:
     existing_guests: Існуючі гості
     new_guests: Нові адреси для запрошення
     enter_email: "Наприклад guest@example.com"
-    reminded: Лист з нагадуванням надісланий!
     send_emails: Надіслати запрошення ({{count}})
     no_loomio_group: Це опитування наразі не пов'язане з жодною групою у Люмії
     has_loomio_group: Учасники цієї групи будуть мати можливість бачити результати та брати участь в цьому опитуванні.

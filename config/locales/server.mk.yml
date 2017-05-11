@@ -1,15 +1,15 @@
 mk:
   email:
     group_email:
-      intro: '%{who} направи најава во %{group}:'
+      intro: "%{who} направи најава во %{group}:"
     reply_to_this_discussion: Врати на дискусијата
     to_join_discussion:
-      subject: '%{who} сака да се приклучиш во дискусија на Loomio'
+      subject: "%{who} сака да се приклучиш во дискусија на Loomio"
       content: 'Треба да си поканет/а за да учествуваш во дискусијата: %{discussion}'
-      message_intro: '%{who} кажува:'
+      message_intro: "%{who} кажува:"
       link: Приклучи се на дискусијата
     to_join_group:
-      subject: '%{member} те покани да се приклучиш во %{group_name} на Loomio'
+      subject: "%{member} те покани да се приклучиш во %{group_name} на Loomio"
     view_comment: Кликни овде за да го видиш коментарот на Loomio
     view_discussion: Кликни овде за да ја видиш дискусијата
     view_proposal: Види го предлогот на Loomio
@@ -23,10 +23,10 @@ mk:
       subject: Вчера на Loomio
       mark_as_read: Означи го како прочитано
     membership_request:
-      subject: '%{who} побара да се приклучи во %{which_group}'
+      subject: "%{who} побара да се приклучи во %{which_group}"
       view_group: Можете да го одобрите или одбиете барањето овде
     proposal_closed:
-      subject: 'Предлогот е затворен - %{which}'
+      subject: Предлогот е затворен - %{which}
     proposal_closing_soon:
       closes_on: Се затвора на
       closes_at: Се затвора во
@@ -47,7 +47,7 @@ mk:
     group_name: Име на групата
     group_description: Опис на групата
     success:
-      header: 'Речиси си готов/а! Провери ја твојата електронска пошта.'
+      header: Речиси си готов/а! Провери ја твојата електронска пошта.
   contact_page:
     contact_us: Контактирајте не
     labels:

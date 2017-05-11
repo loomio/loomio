@@ -5,6 +5,6 @@ class ContactMessageMailer < BaseMailer
     @name = contact_message.name
     @message = contact_message.message
     @user_id = contact_message.user_id
-    mail(from: "#{@name} <#{@email}>", subject: "Enquiry - #{@name}")
+    mail(from: "#{@name} <#{NOTIFICATIONS_EMAIL_ADDRESS}>", reply_to: "#{@name} <#{@email}>", subject: "Enquiry - #{@name}")
   end
 end

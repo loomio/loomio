@@ -1,19 +1,19 @@
 an:
   email:
     group_email:
-      intro: '%{who} fació un anuncio en %{group}:'
-    by_who: 'por %{person}'
+      intro: "%{who} fació un anuncio en %{group}:"
+    by_who: por %{person}
     reply_to_this_discussion: Contestar a ista discusión
     to_join_discussion:
       subject: "%{who} deseya que t'unas a una discusión en Loomio"
       content: 'Has estau convidau/a a participar en a discusión: %{discussion}'
-      message_intro: '%{who} diz:'
+      message_intro: "%{who} diz:"
       link: Unir a la discusión
     to_join_group:
       subject: "%{member} t'ha convidau a unir-te a %{group_name} en Loomio"
     to_start_group:
-      subject: 'Configura o tuyo nuevo grupo en Loomio: %{group_name}'
-    unsubscribe: "Da de baixa u cambea as preferencias d'o tuyo correu electronico:   "
+      subject: "Configura o tuyo nuevo grupo en Loomio: %{group_name}"
+    unsubscribe: 'Da de baixa u cambea as preferencias d''o tuyo correu electronico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> ta dar de baixa u cambiar as preferencias de correu electronico."
     view_comment: Fe clic aquí ta veyer o comentario en Loomio
     view_discussion: 'Fe clic aquí ta veyer ista discusión '
@@ -25,35 +25,35 @@ an:
     daily_activity:
       heading: A tuya actividat en Loomio
       intro: Isto ye o que ha pasau en as zagueras 24 horas en os tuyos grupos de Loomio
-      subject: "Loomio - Resumen d'as zagueras 24 horas"
+      subject: Loomio - Resumen d'as zagueras 24 horas
     missed_yesterday:
       subject: Ahiere en Loomio
       mark_as_read: Marcar como leyiu
-      thanks_for_reading: 'Gracias por leyer, que tiengas un buen día!'
-      marked_as_read_success: "Tot o conteniu d''o correu ha estau marcau como leyiu"
+      thanks_for_reading: Gracias por leyer, que tiengas un buen día!
+      marked_as_read_success: Tot o conteniu d''o correu ha estau marcau como leyiu
     membership_request:
       intro: "%{name} (%{email}) ha pediu acceso a un d''os tuyos grupos de Loomio."
-      subject: '%{who} ha pediu acceso a %{which_group}'
+      subject: "%{who} ha pediu acceso a %{which_group}"
       view_group: Puetz acceptar u refusar a petición aquí
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
     proposal_closed:
-      proposal_has_closed: "A propuesta s'ha zarrau"
-      specify_outcome_and_notify_group: 'Crear un resultau y ninviar-lo a o tuyo grupo!'
-      specify_outcome_and_notify_group_html: 'Crear un resultau y ninviar-lo a o tuyo grupo!'
-      subject: 'Propuesta zarrada - %{which}'
+      proposal_has_closed: A propuesta s'ha zarrau
+      specify_outcome_and_notify_group: Crear un resultau y ninviar-lo a o tuyo grupo!
+      specify_outcome_and_notify_group_html: Crear un resultau y ninviar-lo a o tuyo grupo!
+      subject: Propuesta zarrada - %{which}
     proposal_closing_soon:
       closes_on: Se zarrará en
       closes_at: Se zarrará a las
       closes_in: Se zarrará en
       subject: 'Se zarrará en 24 Horas: %{proposal_title}'
-      headline: 'A propuesta de %{author} en %{group} se zarrará luego:'
+      headline: "A propuesta de %{author} en %{group} se zarrará luego:"
       summary: Resumen
     thread_mailer:
-      change_preferences: "Cambiar as tuyas preferencias d'email:"
-      motion_closing_soon: A propuesta se zarrará en 24 horas
+      change_preferences: 'Cambiar as tuyas preferencias d''email:'
+      motion_closing_soon: 'A propuesta se zarrará en 24 horas'
       proposal_closed: 'Propuesta zarrada:'
-      specify_outcome_html: "A tuya propuesta s'ha zarrau. <a href='%{link}'>Especifica un resultau</a> ta que totz en sigan sabedors."
+      specify_outcome_html: A tuya propuesta s'ha zarrau. <a href='%{link}'>Especifica un resultau</a> ta que totz en sigan sabedors.
       specify_outcome: ' A tuya propuesta ha zarrau. Especifica un resultau ta que totz en sigan sabedors:'
       you_agreed: '%{past_tense_position}'
   footer:
@@ -68,8 +68,8 @@ an:
   start_group_form:
     header: Empecipiar un nuevo grupo
     name: O tuyo nombre
-    group_name: "Nombre d'o grupo"
-    group_description: "Descripción d'o grupo"
+    group_name: Nombre d'o grupo
+    group_description: Descripción d'o grupo
     success:
       header: 'Ya quasi has rematau! Revisa o tuyo correu electronico. '
   contact_page:
