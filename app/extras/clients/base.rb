@@ -2,7 +2,7 @@ class Clients::Base
   attr_reader :key
 
   def self.instance
-    @@instance ||= new(
+    new(
       key:    ENV["#{name.demodulize.upcase}_APP_KEY"],
       secret: ENV["#{name.demodulize.upcase}_APP_SECRET"]
     )
