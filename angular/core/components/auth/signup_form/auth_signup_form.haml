@@ -1,6 +1,7 @@
 .auth-signup-form
   .auth-signup-form__welcome
-    %user_avatar.lmo-helper-avatar.auth-signup-form__avatar{user: "helperBot", size: "large-circular"}
+    %user_avatar.lmo-helper-avatar.auth-signup-form__avatar{ng-if: "!user.avatarUrl", user: "helperBot", size: "large-circular"}
+    %user_avatar.lmo-helper-avatar.auth-signup-form__avatar{ng-if: "user.avatarUrl", user: "user", size: "large-circular"}
     %h2.lmo-h2{translate: "auth_form.welcome", translate-value-email: "{{user.name || user.email}}"}
     %p.poll-common-helptext{ng-if: "!pendingIdentity"}
       %span{translate: "auth_form.sign_up_helptext", ng-if: "!pendingIdentity"}>

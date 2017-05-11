@@ -156,6 +156,7 @@ class User < ActiveRecord::Base
       existing.update(access_token: identity.access_token)
     else
       identities.push(identity)
+      identity.assign_logo! if avatar_kind == 'initials'
     end
   end
 

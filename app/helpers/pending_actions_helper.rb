@@ -10,7 +10,7 @@ module PendingActionsHelper
     end
 
     if pending_identity
-      user.identities.push(pending_identity)
+      user.associate_with_identity(pending_identity)
       session.delete(:pending_identity_id)
     end
 

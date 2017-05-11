@@ -15,6 +15,12 @@ class Identities::Base < ActiveRecord::Base
     after_initialize { self.identity_type = type }
   end
 
+  def assign_logo!
+    return unless user && logo
+    user.uploaded_avatar = URI.parse(logo)
+    user.update(avatar_kind: :uploaded)
+  end
+
   def fetch_user_info
     apply_user_info(client.fetch_user_info.json)
   end

@@ -17,7 +17,7 @@ class Clients::Facebook < Clients::Base
   end
 
   def fetch_user_avatar(uid)
-    get "#{uid}/picture?redirect=false", options: {
+    get "#{uid}/picture?redirect=false&type=normal", options: {
       success: ->(response) { response['data']['url'] } }
   end
 

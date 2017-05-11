@@ -16,7 +16,7 @@ class Pending::BaseSerializer < ActiveModel::Serializer
   end
 
   def avatar_url
-    user.avatar_url
+    user.avatar_url(:large)
   end
 
   def email_status
