@@ -1696,6 +1696,7 @@ en:
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"
     invalid_password: "Sorry, that password doesn't match the one we have on file"
+    email_not_found: "Sorry, we couldn't find an account with that email address"
 
     email_helptext: |
       Have an account already, or don't want to use a third party?
@@ -1735,4 +1736,3 @@ en:
     name: Name
     email: Email
     password: Password
-    confirm_password: That password again...

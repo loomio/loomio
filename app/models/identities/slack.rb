@@ -10,7 +10,7 @@ class Identities::Slack < Identities::Base
   def apply_user_info(payload)
     self.name  ||= payload['real_name']
     self.email ||= payload.dig('profile', 'email')
-    self.logo  ||= payload.dig('profile', 'image_48')
+    self.logo  ||= payload.dig('profile', 'image_72')
   end
 
   def fetch_team_info
