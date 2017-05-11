@@ -123,7 +123,7 @@ fdescribe 'Login', ->
       page.loadPath 'view_open_discussion_as_visitor'
       page.click '.comment-form__sign-in-btn'
       page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
-      page.click 'auth-email-form__submit'
+      page.click '.auth-email-form__submit'
       page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
       page.click '.auth-signup-form__submit'
       page.loadPath 'use_last_login_token'
