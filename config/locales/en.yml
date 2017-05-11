@@ -59,6 +59,7 @@ en:
         subject: Someone has invited you to join their Loomio group
     registrations:
       sign_up: Create account
+      signed_up: You're all signed up!
     sessions:
       token_unusable: This token has expired, or it's been used already. Please send another login link.
       signed_out: Signed out successfully

@@ -10,11 +10,16 @@ angular.module('loomioApp').factory 'AuthService', ($window, Records, RestfulCli
       user
 
     signIn: (user) ->
-      Records.sessions.build(email: user.email, password: user.password).save()
+      Records.sessions.build(email: user.email, password: user.password).save().then ->
+        $window.location.reload()
 
     signUp: (user) ->
       Records.registrations.build(email: user.email, name: user.name, recaptcha: user.recaptcha).save().then ->
         user.sentLoginLink = true
+
+    confirmOauth: ->
+      Records.registrations.remote.post('oauth').then ->
+        $window.location.reload()
 
     sendLoginLink: (user) ->
       new RestfulClient('login_tokens').post('', email: user.email).then ->

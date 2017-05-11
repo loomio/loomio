@@ -15,6 +15,10 @@ class Identities::Base < ActiveRecord::Base
     after_initialize { self.identity_type = type }
   end
 
+  def create_user!
+    User.new(name: self.name, email: self.email).associate_with_identity(self)
+  end
+
   def assign_logo!
     return unless user && logo
     user.uploaded_avatar = URI.parse(logo)

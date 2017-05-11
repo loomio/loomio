@@ -5,7 +5,9 @@
       %auth_provider_form{user: "user"}
       %auth_email_form{user: "user"}
     .auth-form__email-set{ng-if: "user.emailStatus"}
-      %auth_signin_form{ng-if:   "user.emailStatus == 'active'",   user: "user"}
-      %auth_signup_form{ng-if:   "user.emailStatus == 'unused'",   user: "user"}
-      %auth_inactive_form{ng-if: "user.emailStatus == 'inactive'", user: "user"}
+      %auth_identity_form{ng-if: "pendingIdentity", user: "user", identity: "pendingIdentity"}
+      .auth-form__no-pending-identity{ng-if: "!pendingIdentity"}
+        %auth_signin_form{ng-if:   "user.emailStatus == 'active'",   user: "user"}
+        %auth_signup_form{ng-if:   "user.emailStatus == 'unused'",   user: "user"}
+        %auth_inactive_form{ng-if: "user.emailStatus == 'inactive'", user: "user"}
   %auth_complete{ng-if: "loginComplete()", user: "user"}

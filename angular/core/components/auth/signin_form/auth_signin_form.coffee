@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'authSigninForm', ($translate, Session, AuthService, FlashService, KeyEventService) ->
+angular.module('loomioApp').directive 'authSigninForm', ($translate, $window, Session, AuthService, FlashService, KeyEventService) ->
   scope: {user: '='}
   templateUrl: 'generated/components/auth/signin_form/auth_signin_form.html'
   controller: ($scope) ->
@@ -8,11 +8,7 @@ angular.module('loomioApp').directive 'authSigninForm', ($translate, Session, Au
 
     $scope.signIn = ->
       $scope.$emit 'processing'
-      AuthService.signIn($scope.user).then (response) ->
-        Session.login(response)
-        FlashService.success 'auth_form.signed_in'
-        $scope.$emit 'signedIn'
-      , ->
+      AuthService.signIn($scope.user).then (->), ->
         $scope.user.errors = {password: [$translate.instant('auth_form.invalid_password')] }
         $scope.$emit 'doneProcessing'
 

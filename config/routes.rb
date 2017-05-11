@@ -202,7 +202,9 @@ Loomio::Application.routes.draw do
     namespace(:sessions)        { get :unauthorized }
     devise_scope :user do
       resource :sessions, only: [:create, :destroy]
-      resource :registrations, only: :create
+      resource :registrations, only: :create do
+        post :oauth, on: :collection
+      end
     end
 
     resources :communities, only: [:create, :update, :index]

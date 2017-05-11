@@ -1721,6 +1721,12 @@ en:
     thats_not_me: Is this not you?
     sign_in_as_someone_else: Sign in as someone else
 
+    hello: "Hello, {{name}}!"
+    new_to_loomio: New to Loomio? Create a new account
+    create_account: Create account
+    already_a_user: Already have a Loomio account? Enter your email address to link this account to yours
+    link_accounts: Link accounts
+
     check_your_email: Check your email!
     login_link_sent: "Ok, We've sent an email to {{email}} with a link to instantly log in. See you soon!"
     password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
