@@ -1,13 +1,13 @@
 .auth-form
   .lmo-disabled-form{ng-show: "isDisabled"}
-  .auth-form__logging-in{ng-if: "!loginComplete()"}
-    .auth-form__email-not-set{ng-if: "!user.emailStatus"}
+  .auth-form__logging-in.animate{ng-if: "!loginComplete()"}
+    .auth-form__email-not-set.animate{ng-if: "!user.emailStatus"}
       %auth_provider_form{user: "user"}
       %auth_email_form{user: "user"}
-    .auth-form__email-set{ng-if: "user.emailStatus"}
-      %auth_identity_form{ng-if: "pendingIdentity", user: "user", identity: "pendingIdentity"}
-      .auth-form__no-pending-identity{ng-if: "!pendingIdentity"}
-        %auth_signin_form{ng-if:   "user.emailStatus == 'active'",   user: "user"}
-        %auth_signup_form{ng-if:   "user.emailStatus == 'unused'",   user: "user"}
-        %auth_inactive_form{ng-if: "user.emailStatus == 'inactive'", user: "user"}
-  %auth_complete{ng-if: "loginComplete()", user: "user"}
+    .auth-form__email-set.animate{ng-if: "user.emailStatus"}
+      %auth_identity_form.animate{ng-if: "pendingIdentity", user: "user", identity: "pendingIdentity"}
+      .auth-form__no-pending-identity.animate{ng-if: "!pendingIdentity"}
+        %auth_signin_form.animate{ng-if:   "user.emailStatus == 'active'",   user: "user"}
+        %auth_signup_form.animate{ng-if:   "user.emailStatus == 'unused'",   user: "user"}
+        %auth_inactive_form.animate{ng-if: "user.emailStatus == 'inactive'", user: "user"}
+  %auth_complete.animate{ng-if: "loginComplete()", user: "user"}

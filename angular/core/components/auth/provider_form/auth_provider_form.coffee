@@ -5,4 +5,5 @@ angular.module('loomioApp').directive 'authProviderForm', ->
     $scope.providers = AppConfig.identityProviders
 
     $scope.select = (provider) ->
+      $scope.$emit 'processing'
       $window.location = provider.href
