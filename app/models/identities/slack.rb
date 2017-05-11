@@ -4,7 +4,7 @@ class Identities::Slack < Identities::Base
   set_custom_fields :slack_team_id, :slack_team_name, :slack_team_logo
 
   def fetch_user_info
-    client.fetch_user_info(self.uid)
+    apply_user_info(client.fetch_user_info(self.uid).json)
   end
 
   def apply_user_info(payload)
