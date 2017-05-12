@@ -4,7 +4,6 @@ fdescribe 'Login', ->
   describe 'via password', ->
     it 'can send login link to user with a password', ->
       page.loadPath 'setup_dashboard_as_visitor'
-      page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
       page.click '.auth-email-form__submit'
       page.click '.auth-signin-form__login-link'

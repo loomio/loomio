@@ -7,7 +7,8 @@ angular.module('loomioApp').directive 'authForm', (AppConfig, Records, AuthServi
     $scope.loginComplete = ->
       $scope.user.sentLoginLink or $scope.user.sentPasswordLink
 
-    $scope.pendingIdentity = AppConfig.pendingIdentity
+    if _.contains(_.pluck(AppConfig.identityProviders, 'name'), (AppConfig.pendingIdentity or {}).identity_type)
+      $scope.pendingProviderIdentity = AppConfig.pendingIdentity
 
     $scope.$on 'processing',     -> $scope.isDisabled = true
     $scope.$on 'doneProcessing', -> $scope.isDisabled = false

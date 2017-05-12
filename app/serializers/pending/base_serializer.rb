@@ -1,7 +1,11 @@
 class Pending::BaseSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :name, :email, :email_status, :has_password
+  attributes :name, :email, :email_status, :has_password, :identity_type
   attributes :avatar_kind, :avatar_initials, :gravatar_md5, :avatar_url
+
+  def identity_type
+    # no-op, only included for oauth pending identities
+  end
 
   def avatar_kind
     user.avatar_kind
