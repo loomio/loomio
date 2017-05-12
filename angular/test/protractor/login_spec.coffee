@@ -2,17 +2,6 @@ fdescribe 'Login', ->
   page = require './helpers/page_helper.coffee'
 
   describe 'via password', ->
-    it 'can send login link to user with a password', ->
-      page.loadPath 'setup_dashboard_as_visitor'
-      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
-      page.click '.auth-email-form__submit'
-      page.click '.auth-signin-form__login-link'
-      page.expectText '.auth-form', 'Check your email'
-      page.expectText '.auth-form', 'instantly log in'
-      page.loadPath 'use_last_login_token'
-      page.expectFlash 'Signed in successfully'
-      page.expectText '.dashboard-page', 'Recent Threads'
-
     it 'does not log in when password is incorrect', ->
       page.loadPath 'setup_explore_as_visitor'
       page.click '.navbar__sign-in'
@@ -46,8 +35,8 @@ fdescribe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
-      page.expectElement '.comment-form__submit-button'
       page.expectFlash 'Signed in successfully'
+      page.expectElement '.comment-form__submit-button'
 
     it 'can accept an invitation', ->
       page.loadPath 'setup_invitation_to_user_with_password'
@@ -57,6 +46,17 @@ fdescribe 'Login', ->
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
 
   describe 'via link', ->
+    it 'can send login link to user with a password', ->
+      page.loadPath 'setup_dashboard_as_visitor'
+      page.fillIn '.auth-email-form__email input', 'patrick_swayze@example.com'
+      page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__login-link'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.dashboard-page', 'Recent Threads'
+
     it 'can login from the dashboard', ->
       page.loadPath 'setup_dashboard_as_visitor'
       page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
