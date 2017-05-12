@@ -26,19 +26,6 @@ When /^I accept popup$/ do
   page.driver.browser.switch_to.alert.accept unless Capybara.javascript_driver == :poltergeist #poltergeist always confirms these
 end
 
-Then /^I would like to stop the test and look at it$/ do
-  step 'debugger'
-end
-
-Then /^debugger$/ do
-  debugger
-end
-
-When(/^[I\s]?debug$/) do
-  binding.pry
-end
-
-
 And /^show me the page$/ do
   save_and_open_page
 end

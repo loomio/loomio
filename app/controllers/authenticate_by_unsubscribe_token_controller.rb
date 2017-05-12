@@ -1,5 +1,4 @@
-class AuthenticateByUnsubscribeTokenController < BaseController
-  skip_before_filter :authenticate_user!
+class AuthenticateByUnsubscribeTokenController < ApplicationController
   before_filter :authenticate_user_by_unsubscribe_token_or_fallback
 
   private

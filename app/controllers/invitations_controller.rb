@@ -12,19 +12,23 @@ class InvitationsController < ApplicationController
   end
 
   def show
-    if current_user.is_logged_in?
-      InvitationService.redeem(invitation, current_user)
-      session[:invitation_token] = nil
-      redirect_to group_url(invitation.invitable)
+    if invitation_user
+      sign_in invitation_user
+      InvitationService.redeem(invitation, invitation_user)
+      session.delete(:pending_invitation_id)
     else
-      session[:invitation_token] = params[:id]
-      redirect_to login_or_signup_path_for_email(invitation.recipient_email)
+      session[:pending_invitation_id] = params[:id]
     end
+    redirect_to group_url(invitation.invitable)
   end
 
   private
 
   def invitation
     @invitation ||= Invitation.find_by_token!(params[:id])
+  end
+
+  def invitation_user
+    @invitation_user ||= current_user.presence || invitation.user_from_recipient!
   end
 end

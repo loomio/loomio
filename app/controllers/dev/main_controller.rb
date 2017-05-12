@@ -3,7 +3,7 @@ class Dev::MainController < Dev::BaseController
   include Dev::NintiesMoviesHelper
   include PrettyUrlHelper
 
-  before_filter :cleanup_database, except: [:last_email, :index, :accept_last_invitation]
+  before_filter :cleanup_database, except: [:last_email, :use_last_login_token, :index, :accept_last_invitation]
 
   def index
     @routes = self.class.action_methods.select do |action|
@@ -17,9 +17,40 @@ class Dev::MainController < Dev::BaseController
     redirect_to(create_group)
   end
 
+  def use_last_login_token
+    redirect_to(login_token_url(LoginToken.last.token))
+  end
+
   def setup_login
     patrick
     redirect_to new_user_session_url
+  end
+
+  def setup_invitation_to_visitor
+    invitation = Invitation.create!(
+      intent: :join_group,
+      inviter: patrick,
+      invitable: create_group,
+      recipient_email: "max@example.com",
+      recipient_name: "Max Von Sydow"
+    )
+    redirect_to invitation_url(invitation.token)
+  end
+
+  def setup_invitation_to_user
+    invitation = Invitation.create!(
+      intent: :join_group,
+      inviter: patrick,
+      invitable: create_group,
+      recipient_email: jennifer.email,
+      recipient_name: jennifer.name
+    )
+    redirect_to invitation_url(invitation.token)
+  end
+
+  def setup_invitation_to_user_with_password
+    jennifer.update(password: "gh0stmovie")
+    setup_invitation_to_user
   end
 
   def setup_spanish_user
@@ -67,9 +98,15 @@ class Dev::MainController < Dev::BaseController
   end
 
   def setup_dashboard_as_visitor
-    patrick
+    patrick; jennifer
     recent_discussion
     redirect_to dashboard_url
+  end
+
+  def setup_explore_as_visitor
+    patrick
+    recent_discussion
+    redirect_to explore_url
   end
 
   def setup_inbox
@@ -323,6 +360,16 @@ class Dev::MainController < Dev::BaseController
     @proposal = @discussion.motions.create!(name: 'Let\'s go to the moon!', closed_at: 3.days.ago, closing_at: 3.days.ago, author: jennifer)
     @proposal.close!
     redirect_to group_url(@group)
+  end
+
+  def view_open_discussion_as_visitor
+    @group = Group.create!(name: 'Open Dirty Dancing Shoes',
+                           membership_granted_upon: 'request',
+                           group_privacy: 'open')
+    @group.add_member! patrick
+    @group.add_admin! jennifer
+    @discussion = @group.discussions.create!(title: 'I carried a watermelon', private: false, author: jennifer)
+    redirect_to discussion_url(@discussion)
   end
 
   def view_closed_group_as_visitor

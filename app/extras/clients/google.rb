@@ -1,15 +1,30 @@
 class Clients::Google < Clients::Base
-  def is_member_of?(calendar_id, uid)
-    # TODO: write calendar access google API query
+
+  def fetch_access_token(code, uri)
+    post "token",
+      params: { code: code, redirect_uri: uri, grant_type: :authorization_code },
+      options: { host: :"https://www.googleapis.com/oauth2/v4" }
   end
 
-  def post_content!
-    # TODO: write calendar create event google API query
-    # post "calendar/#{}/events", params: serialized_event(event)
+  def fetch_user_info
+    get "people/me"
   end
 
-  def host
-    # TODO: get correct endpoint
-    "https://googleapps.com/apis/calendar".freeze
+  def scope
+    %w(email profile).freeze
+  end
+
+  private
+
+  def default_headers
+    { 'Content-Type' => 'application/x-www-form-urlencoded; charset=UTF-8' }
+  end
+
+  def token_name
+    :oauth_token
+  end
+
+  def default_host
+    "https://people.googleapis.com/v1".freeze
   end
 end

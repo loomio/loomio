@@ -51,6 +51,7 @@ en:
     copied: 'Copied to clipboard'
     action:
       back: 'Back'
+      next: 'Next'
       close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'
@@ -196,23 +197,6 @@ en:
     latest: 'Latest'
     unread: 'Unread'
     closing_in: 'Closing '
-
-  sign_in_form:
-    aria_label: 'Sign in form'
-    title: 'Sign In to Loomio'
-    email_label: 'Email:'
-    email_placeholder: 'you@example.com'
-    password_label: 'Password:'
-    remember_me: 'Remember me'
-    forgot_password: 'Forgot password?'
-    sign_in: 'Login'
-    signed_in: 'Signed in successfully'
-    oauth:
-      title: 'Or log in with a thirdparty account:'
-      facebook: 'Log in with Facebook'
-      twitter: 'Log in with Twitter'
-      google: 'Log in with Google'
-      github: 'Log in with Github'
 
   sign_up_form:
     aria_label: 'Sign up form'
@@ -841,7 +825,7 @@ en:
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
     change_picture_link: 'Change picture'
-    change_password_link: 'Change password'
+    change_password_link: 'Reset password'
     deactivate_user_link: 'Deactivate account...'
     profile: 'Profile'
     edit_profile: 'Edit Profile'
@@ -862,13 +846,9 @@ en:
     use_uploaded: 'Upload new picture'
 
   change_password_form:
-    aria_label: 'Change password form'
-    title: 'Change Password'
-    helptext: 'Passwords must be 8 characters long. Common passwords such as "password" are forbidden to keep your account safe.'
-    current_password_label: 'Current password'
-    new_password_label: 'New password'
-    password_confirmation_label: 'Confirm new password'
-    submit: 'Update password'
+    title: Reset password
+    helptext: Forgotten your password? No problem! Click the link below and we'll send you instructions for setting a new one.
+    reset_my_password: Reset my password
 
   deactivation_modal:
     aria_label: 'Deactivate account'
@@ -1709,3 +1689,52 @@ en:
     search_placeholder: Search for polls...
     polls_count: Displaying {{count}} of {{total}} polls
     start_new_poll: New decision
+
+  auth_form:
+    sign_in_to_loomio: Log in or Sign up
+    sign_in: Sign in
+    choose_an_account: "Select an account to authenticate with:"
+    more_providers: More
+    email_not_present: An email address is required
+    invalid_email: "Sorry, that doesn't look like a valid email address"
+    invalid_password: "Sorry, that password doesn't match the one we have on file"
+    email_not_found: "Sorry, we couldn't find an account with that email address"
+
+    email_helptext: |
+      Have an account already, or don't want to use a third party?
+      Enter your email address instead:
+    email_placeholder: you@example.com
+    login_link_helptext: |
+      Click the button below and we'll send you a link to sign in instantly.
+      Or, you can set a password to login with, if you don't want to receive an email.
+    login_link_helptext_with_password: |
+      Enter your password below to sign in.
+      Or, we can email you a link to sign in instantly.
+    sign_up_helptext: |
+      Just enter the name you'd like to be known by, and we'll send you a link to log in.
+    oauth_confirm_helptext: |
+      Just confirm your details below, and we'll send you a link to log in.
+
+    sign_in_with_email: Sign in with email
+    welcome: Nice to meet you, {{email}}!
+    welcome_back: Welcome back, {{name}}!
+    login_link: Send me a login link
+    set_password: Set password
+    set_password_button: Set a password
+    thats_not_me: Is this not you?
+    sign_in_as_someone_else: Sign in as someone else
+
+    hello: "Hello, {{name}}!"
+    new_to_loomio: New to Loomio? Create a new account
+    create_account: Create account
+    already_a_user: Already have a Loomio account? Enter your email address to link this account to yours
+    link_accounts: Link accounts
+
+    check_your_email: Check your email!
+    login_link_sent: "Ok, We've sent an email to {{email}} with a link to instantly log in. See you soon!"
+    password_link_sent: "We've sent an email to {{email}} with instructions on how to set your password."
+    signed_in: Signed in successfully
+
+    name: Name
+    email: Email
+    password: Password

@@ -14,6 +14,12 @@ en:
       <p>You've selected the Free plan for your group <a href="/g/%{group_key}">%{group}</a></p>
 
   email:
+    login:
+      subject: Loomio | Your instant log in link
+      intro: Hi %{name}, here is a link to sign into your Loomio account.
+      login: Login to Loomio as %{name}
+      resend: This link will expire at %{expires_at}. If that time has passed, you can follow the link above to get another link.
+
     reset_password:
       greeting: |
         Hi %{name}

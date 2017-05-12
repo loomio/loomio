@@ -9,6 +9,7 @@
 
 .comment-form__sign-in-btn {
   @include lmoBtnFeatured;
+  width: 100%;
 }
 
 .comment-form-button {
@@ -25,6 +26,10 @@
 .comment-form__privacy-notice {
   @include md-caption;
   color: #767676;
+}
+
+.comment-form__join-actions button {
+  width: 100%;
 }
 
 .thread-comment-form-actions {

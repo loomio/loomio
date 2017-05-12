@@ -462,6 +462,15 @@ ActiveRecord::Schema.define(version: 20170512024242) do
   add_index "invitations", ["invitable_type", "invitable_id"], name: "index_invitations_on_invitable_type_and_invitable_id", using: :btree
   add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
+  create_table "login_tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.boolean  "used",       default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "redirect"
+  end
+
   create_table "membership_requests", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -664,6 +673,8 @@ ActiveRecord::Schema.define(version: 20170512024242) do
     t.string   "uid"
     t.string   "name"
     t.string   "access_token",  default: ""
+    t.jsonb    "custom_fields", default: {}, null: false
+    t.string   "logo"
   end
 
   add_index "omniauth_identities", ["email"], name: "index_omniauth_identities_on_email", using: :btree

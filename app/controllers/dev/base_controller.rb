@@ -24,6 +24,7 @@ class Dev::BaseController < ApplicationController
   end
 
   def cleanup_database
+    reset_session
     User.delete_all
     Group.delete_all
     Membership.delete_all

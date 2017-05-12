@@ -36,11 +36,8 @@
     %script{src: client_asset_path(:"vendor.min.js")}
     :javascript
       window.Loomio = #{@appConfig.to_json.html_safe}
-      window.Loomio.emojis = {
-        source: (emojione.shortnames || "").split('|'),
-        render: emojione.shortnameToImage,
-        defaults: ':heart:|:smiley:|:sweat_smile:|:star:|:rabbit:|:ok:|:thumbsup:|:nz:|:walking:|:clap:'.split('|')
-      }
+      window.Loomio.emojis.source = (emojione.shortnames || "").split("|")
+      window.Loomio.emojis.render = emojione.shortnameToImage
     %script{src: client_asset_path(:"app.js")}
 
     - if Rails.application.secrets.faye_url.present?

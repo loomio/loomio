@@ -1,6 +1,5 @@
 Feature: Person contacts Loomio using contact form
 
-@javascript
 Scenario: Guest contacts Loomio using contact form
 When I visit the contact page
 And I fill in and submit the contact form
@@ -9,7 +8,7 @@ And an email should be sent to @incoming.intercom.io
 And the message should be saved to the database
 
 Scenario: User contacts Loomio using contact form
-Given I am a current user
+Given I sign in
 When I visit the contact page
 Then I should see my name and email pre-filled
 

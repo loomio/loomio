@@ -30,15 +30,9 @@ Then(/^the message should be saved to the database$/) do
   ContactMessage.where(message: "Message Body").should exist
 end
 
-Given(/^I am a current user$/) do
-  @current_user = FactoryGirl.create :user, name: "Bob",
-                                     email: "bob@log.com"
-  login_automatically @current_user
-end
-
 Then(/^I should see my name and email pre\-filled$/) do
-  expect(find_field('Your name').value).to eq  "Bob"
-  expect(find_field('Your email address').value).to eq  "bob@log.com"
+  expect(find_field('Your name').value).to eq  @user.name
+  expect(find_field('Your email address').value).to eq  @user.email
 end
 
 Then(/^the message should be saved to the database with my user id$/) do
