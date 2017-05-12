@@ -8,4 +8,8 @@ class Identities::Google < Identities::Base
     self.email ||= payload.dig('emailAddresses', 0, 'value')
     self.logo  ||= payload.dig('photos', 0, 'url')
   end
+
+  def calendars
+    client.fetch_calendars
+  end
 end

@@ -14,11 +14,8 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel, AppConfig) ->
       @hasMany 'identities'
       @hasMany 'communities'
 
-    facebookIdentity: ->
-      _.detect @identities(), (i) -> i.identityType == 'facebook'
-
-    slackIdentity: ->
-      _.detect @identities(), (i) -> i.identityType == 'slack'
+    identityFor: (type) ->
+      _.detect @identities(), (i) -> i.identityType == type
 
     membershipFor: (group) ->
       _.first @recordStore.memberships.find(groupId: group.id, userId: @id)

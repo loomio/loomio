@@ -44,7 +44,7 @@ class PermittedParams < Struct.new(:params)
 
   def community_attributes
     [:community_type, :poll_id, :identity_id, :identifier,
-     :custom_fields, {custom_fields: [:facebook_group_name, :slack_channel_name]}]
+     :custom_fields, {custom_fields: [:facebook_group_name, :slack_channel_name, :google_calendar_name]}]
   end
 
   def poll_community_attributes

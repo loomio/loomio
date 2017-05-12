@@ -11,8 +11,7 @@ angular.module('loomioApp').factory 'CommunityService', ($location, $window, Rec
         @fetchAccessToken(type)
 
     identityIdFor = (type) ->
-      return unless identityFn = Session.user()["#{type}Identity"]
-      (identityFn.call(Session.user()) or {}).id
+      (Session.user().identityFor(type) or {}).id
 
     fetchAccessToken: (type) ->
       delete $location.search().share

@@ -10,10 +10,12 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
     actionNames =
       facebook: 'admin_groups'
       slack:    'channels'
+      google:   'calendars'
 
     customFieldNames =
       facebook: 'facebook_group_name'
       slack:    'slack_channel_name'
+      google:   'google_calendar_name'
 
     customFieldName = ->
       customFieldNames[$scope.community.communityType]
@@ -36,6 +38,7 @@ angular.module('loomioApp').directive 'addCommunityForm', (Records, CommunitySer
 
     $scope.submit = CommunityService.submitCommunity $scope, $scope.community,
       prepareFn: ->
+        return unless customFieldName()
         $scope.community.customFields[customFieldName()] = _.find($scope.allGroups, (group) ->
           $scope.community.identifier == group.id
         ).name

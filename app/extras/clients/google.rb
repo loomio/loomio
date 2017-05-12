@@ -7,11 +7,19 @@ class Clients::Google < Clients::Base
   end
 
   def fetch_user_info
-    get "people/me"
+    get "people/me", options: { host: "https://people.googleapis.com/v1" }
+  end
+
+  def fetch_calendars
+    get "users/me/calendarList", options: {
+      success: ->(response) {
+        response['items'].map { |item| { id: item['etag'], name: item['summary'] } }
+      }
+    }
   end
 
   def scope
-    %w(email profile).freeze
+    %w(email profile https://www.googleapis.com/auth/calendar).freeze
   end
 
   private
@@ -25,6 +33,6 @@ class Clients::Google < Clients::Base
   end
 
   def default_host
-    "https://people.googleapis.com/v1".freeze
+    "https://www.googleapis.com/calendar/v3".freeze
   end
 end

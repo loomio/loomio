@@ -143,14 +143,6 @@ class User < ActiveRecord::Base
     end
   }
 
-  def slack_identity
-    identities.find_by(identity_type: :slack)
-  end
-
-  def facebook_identity
-    identities.find_by(identity_type: :facebook)
-  end
-
   def associate_with_identity(identity)
     if existing = identities.find_by(uid: identity.uid, identity_type: identity.identity_type)
       existing.update(access_token: identity.access_token)

@@ -1670,6 +1670,9 @@ en:
     facebook:
       another_account: (Sign in to another account)
       fragment_placeholder: Search for groups...
+    google:
+      another_account: (Sign in to another account)
+      fragment_placeholder: Search for calendars...
 
   poll_common_participant_form:
     participant_name_placeholder: What is your name?
