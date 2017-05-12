@@ -73,6 +73,7 @@ fdescribe 'Login', ->
       page.click '.navbar__sign-in'
       page.fillIn '.auth-email-form__email input', 'jennifer_grey@example.com'
       page.click '.auth-email-form__submit'
+      page.click '.auth-signin-form__submit'
       page.expectText '.auth-form', 'Check your email'
       page.expectText '.auth-form', 'instantly log in'
       page.loadPath 'use_last_login_token'
