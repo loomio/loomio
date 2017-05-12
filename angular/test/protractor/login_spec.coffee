@@ -1,4 +1,4 @@
-fdescribe 'Login', ->
+describe 'Login', ->
   page = require './helpers/page_helper.coffee'
 
   describe 'via password', ->
