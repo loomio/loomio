@@ -700,6 +700,9 @@ ActiveRecord::Schema.define(version: 20170330032610) do
     t.integer "community_id", null: false
   end
 
+  add_index "poll_communities", ["community_id"], name: "index_poll_communities_on_community_id", using: :btree
+  add_index "poll_communities", ["poll_id"], name: "index_poll_communities_on_poll_id", using: :btree
+
   create_table "poll_did_not_votes", force: :cascade do |t|
     t.integer "poll_id"
     t.integer "user_id"
@@ -741,6 +744,9 @@ ActiveRecord::Schema.define(version: 20170330032610) do
     t.jsonb    "matrix_counts",       default: [],    null: false
   end
 
+  add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
+  add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
+
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"
     t.integer  "poll_option_id"
@@ -761,6 +767,9 @@ ActiveRecord::Schema.define(version: 20170330032610) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "stances", ["participant_id", "participant_type"], name: "index_stances_on_participant_id_and_participant_type", using: :btree
+  add_index "stances", ["poll_id"], name: "index_stances_on_poll_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.string  "kind"
