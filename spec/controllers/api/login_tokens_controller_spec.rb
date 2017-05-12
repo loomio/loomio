@@ -16,7 +16,7 @@ describe API::LoginTokensController do
 
     it 'does not create a login token for an email we dont have' do
       expect { post :create, email: "notathing@example.com" }.to_not change { LoginToken.count }
-      expect(response.status).to eq 200
+      expect(response.status).to eq 404
     end
   end
 end
