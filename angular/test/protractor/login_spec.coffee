@@ -9,6 +9,7 @@ fdescribe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'w0rstmovie'
       page.click '.auth-signin-form__submit'
+      page.waitForReload(2000)
       page.expectText '.auth-form', 'that password doesn\'t match'
 
     it 'can login from the dashboard', ->
@@ -17,6 +18,7 @@ fdescribe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
+      page.waitForReload(2000)
       page.expectFlash 'Signed in successfully'
 
     it 'can login from the explore page', ->
@@ -26,6 +28,7 @@ fdescribe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
+      page.waitForReload(2000)
       page.expectFlash 'Signed in successfully'
 
     it 'can login from a discussion page', ->
@@ -35,7 +38,7 @@ fdescribe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
-      browser.wait(500)
+      page.waitForReload(2000)
       page.expectFlash 'Signed in successfully'
       page.expectElement '.comment-form__submit-button'
 
@@ -43,6 +46,7 @@ fdescribe 'Login', ->
       page.loadPath 'setup_invitation_to_user_with_password'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
+      page.waitForReload(2000)
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
 
