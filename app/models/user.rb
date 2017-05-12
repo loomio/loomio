@@ -84,7 +84,11 @@ class User < ActiveRecord::Base
 
   has_many :identities, class_name: "Identities::Base", dependent: :destroy
   has_many :communities, through: :identities, class_name: "Communities::Base"
-  has_many :email_communities, -> { where(community_type: :email) }, through: :polls, source: :communities, class_name: "Communities::Base"
+  has_many :email_communities,
+           -> { where(community_type: [:email, :public]) },
+           through: :polls,
+           source: :communities,
+           class_name: "Communities::Base"
 
   has_many :votes, dependent: :destroy
   has_many :comment_votes, dependent: :destroy
@@ -257,6 +261,14 @@ class User < ActiveRecord::Base
 
   def send_devise_notification(notification, *args)
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
+  def associate_with_identity(identity)
+    if existing = identities.find_by(uid: identity.uid, identity_type: identity.identity_type)
+      existing.update(access_token: identity.access_token)
+    else
+      identities.push(identity)
+    end
   end
 
   protected

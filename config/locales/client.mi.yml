@@ -1,94 +1,214 @@
 mi:
+  poll_types:
+    proposal: He whakatakoto
+    count: Whakatika
+    poll: Pōti
+    dot_vote: Pōti ira
   common:
-    volume: Te kaha o te reo
-    notification_volume: Tohu kaha o te reo
-    group: Rōpū
-    groups: Ngā Rōpū
-    help: Awhina mai
+    expand: Whakanui
+    ok_got_it: Kei te pai, kua mau
+    learn_more: Ako ano
+    not_found: Kāhore e kitea ana
+    time_zone: Rohe wā
+    confirm_discard_changes: Kei te pīrangi ki te whakakore i āu whakahuri?
+    time:
+      am: i te ata
+      pm: i te ahiahi
+    closing_in: 'Ko te wā kāti {{time}}'
+    closed_ago: 'I kāti i {{time}}'
+    volume: 'Te kaha o te reo'
+    notification_volume: 'Tohu kaha o te reo'
+    group: 'Rōpū'
+    groups: 'Ngā Rōpū'
+    threads: 'Ngā miro'
+    decisions: 'Ngā whakatau'
+    settings: 'Ngā kōwhiringa'
+    help: 'Awhina mai'
     privacy:
-      privacy: Matatapunga
-      public: Matawhanui
-      open: E huaki ana
-      closed: Kua kati
-      private: Matatapu
-      secret: Korero muna
-    selected: Kua kowhiria
+      privacy: 'Matatapunga'
+      public: 'Matawhanui'
+      open: 'E huaki ana'
+      closed: 'Kua kati'
+      private: 'Matatapu'
+      secret: 'Korero muna'
+    selected: 'Kua kowhiria'
     date_range:
-      today: I tenei ra
-      yesterday: Inanahi
-      thisweek: I tenei wiki
-      thismonth: I tenei marama
-      older: no mua noa atu
-    more_help: He awhina ano
+      today: 'I tenei ra'
+      yesterday: 'Inanahi'
+      thisweek: 'I tenei wiki'
+      thismonth: 'I tenei marama'
+      older: 'no mua noa atu'
+    more_help: 'He awhina ano'
     models:
-      proposal: Tono
-    copied: Kua taruatia ki te papa whakapine
+      proposal: 'Tono'
+    copied: 'Kua taruatia ki te papa whakapine'
     action:
-      close: Katia
-      save: Tiaki
-      save_changes: Puritia nga panonitanga
-      update_settings: Whakahoungia nga ritenga
-      reply: Whakautua
-      edit: Whakatikaina
-      remove: Unuhia
-      like: Rawe
-      back: E hoki
-      unlike: Kaua te rawe
-      update: Whakahoungia
-      cancel: Whakakorea
-      show_more: Me whakaatu etahi atu
-      view_all: Tirohia katoatia
-      new_thread: Aho hou
-      add_subgroup: Tapirihia he ropu whaiti
+      close: 'Katia'
+      save: 'Tiaki'
+      save_changes: 'Puritia nga panonitanga'
+      update_settings: 'Whakahoungia nga ritenga'
+      reply: 'Whakautua'
+      edit: 'Whakatikaina'
+      remove: 'Unuhia'
+      like: 'Rawe'
+      back: 'E hoki'
+      unlike: 'Kaua te rawe'
+      update: 'Whakahoungia'
+      cancel: 'Whakakorea'
+      show_more: "Me whakaatu etahi atu"
+      view_all: "Tirohia katoatia"
+      new_thread: "Aho hou"
+      add_subgroup: 'Tapirihia he ropu whaiti'
       loading: 'Kei te utaina '
-      translate: Whakawhitihia te reo
-      translated: Whakawhitihia ma te whakawhiti Bing
-      upload: Whakautangia atu
-      uploading: Kei te whakautangia
+      translate: 'Whakawhitihia te reo'
+      translated: 'Whakawhitihia ma te whakawhiti Bing'
+      upload: 'Whakautangia atu'
+      uploading: 'Kei te whakautangia'
+      load_more: 'Tukua mai anō'
+      share: Pānui whānui
+      done: Kua mutu
+      start: Tīmatahia
     formatting_help:
-      label: Awhina whakahoahoa
-      title: Akona te Markdown hei whakahoahoa i o tuhinga i runga o Loomio
+      label: 'He whakanikoniko pūreta'
+      title: 'Akona te Markdown hei whakahoahoa i o tuhinga i runga o Loomio'
+  error_page:
+    forbidden: 'Kāhore e tukua ana tāu mahi'
+  start_proposal_card:
+    title: 'Hangā tētahi whakatakoto'
+    helptext: Kua mau tāu whakatau?
+  proposal_collapsed:
+    expand: Whakanui
+  volume_levels:
+    loud: 'Hoihoi'
+    mute: 'Whakahāngūtia'
+    unmute: 'Whakahoitia'
+  change_volume_form:
+    aria_label: "Whakahuritia ngā kōwhiringa īmēra"
+    mute_label: "Whakahāngūtia"
+    discussion:
+      title: "Kōwhiringa īmēra o {{title}}"
+    membership:
+      title: "Kōwhiringa īmēra o {{title}}"
+  mute_explanation_modal:
+    aria_label: Whakahāngūtia te miro
+    mute_thread: Whakahāngūtia te miro
+  inbox:
+    latest: 'Hou ake'
+    unread: 'Kāhore anō kia kitea'
+    closing_in: 'Kei te tata te mutu'
+  sign_in_form:
+    email_label: 'Wāhi īmēra:'
+    email_placeholder: 'koe@whakatauira.govt.nz'
+    password_label: 'Kupu huna:'
+    remember_me: 'Maumahara au'
+    forgot_password: 'Kua ngaro tōu kupu huna?'
+    sign_in: 'Takiuru mai'
+    oauth:
+      title: 'Takiuru mai mā tētahi atu'
+      facebook: 'Takiuru mai mā Pukamata'
+      twitter: 'Takiuru mai mā Pae Tīhau'
+      google: 'Takiuru mai mā Kūkara'
+      github: 'Takiuru mai mā Github'
+  sign_up_form:
+    title: "Nau mai, haere mai ki a Loomio!  Ko tēnei te wā whakatau i a koe."
+    name_label: 'Tōu ingoa:'
+    name_placeholder: 'Hēni Tia'
+    email_label: 'Wāhi īmēra:'
+    email_placeholder: 'koe@whakatauira.nz'
+    password_label: 'Kupu huna:'
+  comment_form:
+    submit_button:
+      label: 'Pānui'
+    sign_in: "Me takiuru mai, he whakamana mō te whakawhiti kōrero"
   sidebar:
-    help: Āwhina
+    muted_threads: 'Ngā miro kāhore e kōrero ana'
+    help: 'Āwhina'
   navbar:
     search:
-      placeholder: Rapu
+      placeholder: 'Rapu'
+      loading: 'E tukua ana ētahi mea...'
+      discussions: 'Ngā miro'
+      proposals: 'Ngā whakatakoto'
+      comments: 'Ngā kōrero poto'
+    sign_in: 'Takiuru mai'
+  start_menu:
+    title: 'Mahi'
+    start_group: 'Whakatūhia tētahi rōpū hou'
+    start_subgroup: 'Whakatūhia tētahi rōpū kei roto'
+    start_thread: 'Pānuihia tētahi miro hou'
+    start_poll: 'Whakatūhia tētahi pōti hou'
+    invite_people: 'Pōwhiri atu'
+  notifications:
+    header: "Ngā kōrero pūrongo"
+    no_notifications: "Kāhore he kōrero pūrongo mōku"
+  vote_form:
+    submit_position: 'Tonongia tōu whakapono-ā-tuhi'
+    change_position: 'Whakahuritia tōu whakapono-ā-tuhi'
   proposal_form:
-    title_label: Taitara
-    details_label: Ngā Taipitopito
+    start_a_proposal: 'Hangā tētahi whakatakoto'
+    title_label: 'Taitara'
+    details_label: 'Ngā Taipitopito'
   discussion_form:
-    group_label: Rōpū
-    title_label: Taitara
-    privacy_label: Matatapu
+    group_label: 'Rōpū'
+    title_label: 'Taitara'
+    privacy_label: 'Matatapu'
   proposal_expanded:
     closed_badge: Kua kati
   membership_request_form:
     name_label: Ingoa
     email_label: Īmēra
   group_page:
-    options_label: Ngā Kōwhiringa
+    discussions: 'Ngā miro'
+    options_label: 'Ngā Kōwhiringa'
     options:
-      label: Ngā Kōwhiringa
+      label: 'Ngā Kōwhiringa'
   group_form:
-    privacy: Matatapu
-    submit_update: Whakahoungia nga ritenga
+    privacy: 'Matatapu'
+    submit_update: 'Whakahoungia nga ritenga'
   group_help_card:
     title: Awhina mai
+  invitation_form:
+    invite_people: 'Pōwhiri atu'
+    done: 'Kua mutu'
   memberships_page:
-    members: Ngā Mema
-    name_label: Ingoa
-    remove_member_label: Tango
+    members: 'Ngā Mema'
+    name_label: 'Ingoa'
+    remove_member_label: 'Tango'
   profile_page:
-    name_label: Ingoa
-    email_label: Īmēra
-    locale_label: Reo
+    name_label: 'Ingoa'
+    email_label: 'Īmēra'
+    locale_label: 'Reo'
   email_settings_page:
     edit: Whakatikaina
   dashboard_page:
+    no_groups:
+      start: Tīmatatia
+    filtering:
+      proposals: Ngā whakatakoto
+      muted: Kua whakahāngūtia
     threads_from:
-      today: Ākuanei
-      yesterday: Inanahi
+      proposals: 'Ngā whakatakoto'
+      today: 'Ākuanei'
+      yesterday: 'Inanahi'
+  inbox_page:
+    no_groups:
+      start: Tīmatatia
+  discussion:
+    proposals: 'Ngā whakatakoto'
+    volume:
+      mute_message: 'Kua whakahāngūtia te miro'
+      unmute_message: 'Kua whakahoitia'
   thread_group:
-    aria_label: Ingoa rōpū
+    aria_label: 'Ingoa rōpū'
+  thread_context:
+    mute_thread: 'Whakahāngū'
   help_page:
-    help: Āwhina
+    help: "Āwhina"
+  decision_tools_card:
+    proposal_title: He whakatakoto
+    count_title: Whakatika
+    poll_title: Pōti
+  poll_common_form:
+    start: Tīmatatia
+  polls_page:
+    heading: Ngā whakatau

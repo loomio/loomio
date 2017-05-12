@@ -15,6 +15,8 @@ class Poll < ActiveRecord::Base
     define_method field, -> { TEMPLATES.dig(self.poll_type, field) }
   end
 
+  include Translatable
+  is_translatable on: [:title, :details]
   is_mentionable on: :details
 
   belongs_to :author, class_name: "User", required: true
@@ -37,7 +39,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, ->(object) { order(object.poll_option_order) }, dependent: :destroy
+  has_many :poll_options, ->(object) { order(object&.poll_option_order) }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -50,6 +52,8 @@ class Poll < ActiveRecord::Base
   has_many :poll_communities, dependent: :destroy
   has_many :communities, through: :poll_communities
 
+  delegate :locale, to: :author
+
   scope :active, -> { where(closed_at: nil) }
   scope :closed, -> { where("closed_at IS NOT NULL") }
   scope :search_for, ->(fragment) { where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
@@ -57,6 +61,14 @@ class Poll < ActiveRecord::Base
   scope :active_or_closed_after, ->(since) { where("closed_at IS NULL OR closed_at > ?", since) }
   scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_type": participant.class.to_s, "stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
+  scope :chronologically, -> { order('created_at asc') }
+  scope :with_includes, -> { includes(
+    :attachments,
+    :poll_options,
+    :outcomes,
+    {poll_communities: [:community]},
+    {stances: [:stance_choices]})
+  }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      active

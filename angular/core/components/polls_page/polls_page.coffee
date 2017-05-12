@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $rootScope, Records, AbilityService, TranslationService, LoadingService, ModalService, PollCommonStartModal, RecordLoader) ->
+angular.module('loomioApp').controller 'PollsPageController', ($scope, $q, $rootScope, Records, Session, AbilityService, TranslationService, LoadingService, ModalService, PollCommonStartModal, RecordLoader) ->
   $rootScope.$broadcast('currentComponent', { page: 'pollsPage'})
 
   @pollIds = []

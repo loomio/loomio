@@ -7,7 +7,7 @@ module Translatable
   end
 
   def translatable_fields_modified?
-    return unless TranslationService.available?
+    return unless TranslationService.app_key.present?
     (self.changed.map(&:to_sym) & self.class.translatable_fields).any?
   end
 

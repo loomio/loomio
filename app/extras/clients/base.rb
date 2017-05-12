@@ -40,7 +40,10 @@ class Clients::Base
   end
 
   def default_failure
-    ->(response) { response }
+    ->(response) {
+      Airbrake.notify Exception.new(message: "Failed #{self.class.name.demodulize} api request", data: response)
+      response
+    }
   end
 
   def default_params

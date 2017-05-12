@@ -1,17 +1,17 @@
 ko:
   email:
     group_email:
-      intro: '%{group} 그룹에 %{who}님이 알림글을 올렸습니다.'
+      intro: "%{group} 그룹에 %{who}님이 알림글을 올렸습니다."
     to_join_discussion:
-      subject: '%{who}님이 당신을 루미오의 토론에 참여하기를 원합니다.'
+      subject: "%{who}님이 당신을 루미오의 토론에 참여하기를 원합니다."
       content: '토론에 참여하기 위해서 초대를 받았습니다. %{discussion} '
-      message_intro: '%{who} 말합니다:'
+      message_intro: "%{who} 말합니다:"
       link: 토론 참여하기
     to_join_group:
-      subject: '%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다.'
+      subject: "%{member}님이 루미오의 %{group_name} 그룹에 당신을 초대했습니다."
     to_start_group:
-      subject: '새로운 루미오 그룹 설정 : %{group_name}'
-    unsubscribe: 구독중지 혹은 이메일 설정을 변경하세요.
+      subject: "새로운 루미오 그룹 설정 : %{group_name}"
+    unsubscribe: '구독중지 혹은 이메일 설정을 변경하세요.'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
     view_comment: 루미오에 댓글을 보기 위해서는 여기를 클릭하세요.
     view_discussion: 토론을 보기 위해서 여기를 선택하세요.
@@ -27,18 +27,18 @@ ko:
     missed_yesterday:
       mark_as_read: 읽음으로 표시
     membership_request:
-      intro: '%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다.'
-      subject: '%{who}님이  %{which_group}에 가입을 요청했습니다. '
+      intro: "%{name} (%{email}) 이 당신의 루미오 그룹에 접근 요청을 했습니다."
+      subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
       view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
     proposal_closed:
       specify_outcome_and_notify_group: 결과를 만들고 그룹 멤버들에게 보내기
       specify_outcome_and_notify_group_html: 결과를 만들고 그룹 멤버들에게 보내기
-      subject: '닫힌 제안 - %{which}'
+      subject: 닫힌 제안 - %{which}
     proposal_closing_soon:
       closes_on: 닫습니다.
       closes_at: 에 종료됩니다.
       closes_in: '닫습니다. '
-      headline: '%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다.'
+      headline: "%{group} 그룹에 %{author}님의 제안이 곧 마감이 됩니다."
       summary: 요약
   footer:
     about: 소개
@@ -60,7 +60,7 @@ ko:
   pricing_page:
     gift: 무료
     standard: 일반
-    free_trial_html: '<span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.'
+    free_trial_html: <span>30일 무료 시범사용</span>후 가격 체계를 선택하세요. 지금은 크레딧 카드 등록이 필요없습니다.
     get_started_for_free: 무료로 시작하기
     unlimited_members: 멤버 제한 없음
     unlimited_decisions: 의사결정 횟수 제한 없음

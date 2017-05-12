@@ -1,20 +1,22 @@
 class API::TranslationsController < API::RestfulController
 
-  class TranslationUnavailableError < Exception; end
-  rescue_from(TranslationUnavailableError) { |e| respond_with_standard_error e, 400 }
-
   def show
     render json: translations_for(:en, params[:lang])
   end
 
   def inline
-    params[:model] = 'motion' if params[:model] == 'proposal' # >:-o
-    raise TranslationUnavailableError.new unless TranslationService.available?
-    self.resource = TranslationService.new.translate(load_and_authorize(params[:model]), to: params[:to])
+    self.resource = service.create(model: translation_model, to: params[:to])
     respond_with_resource
   end
 
   private
+
+  def translation_model
+    case params[:model]
+    when 'proposal' then load_and_authorize(:motion)
+    else                 load_and_authorize(params[:model])
+    end
+  end
 
   def translations_for(*locales)
     locales.map(&:to_s).uniq.reduce({}) do |translations, locale|

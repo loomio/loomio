@@ -7,10 +7,11 @@ describe 'Polls', ->
     ->
       page.loadPath 'polls/test_discussion'
       page.click ".decision-tools-card__poll-type--#{poll_type}"
+      page.click ".poll-common-tool-tip__collapse"
       page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__title", "A new #{poll_type}"
       page.fillIn ".poll-#{_.kebabCase(poll_type)}-form__details", "Some details for #{poll_type}"
       optionsFn() if optionsFn?
-      page.click ".poll-#{_.kebabCase(poll_type)}-form__submit"
+      page.click ".poll-common-form__submit"
       page.expectText '.poll-common-summary-panel', "A new #{poll_type}"
       page.expectText '.poll-common-summary-panel', "Some details for #{poll_type}"
 
@@ -26,16 +27,18 @@ describe 'Polls', ->
     it 'starts a poll', startPollTest 'poll', ->
       page.fillIn ".poll-poll-form__add-option-input", "bananas"
 
-    it 'starts a meeting poll', startPollTest 'meeting', ->
-      page.fillIn ".md-datepicker-input", "2030-03-23\n"
+    # TODO
+    xit 'starts a time poll', startPollTest 'meeting', ->
+      page.fillIn ".poll-meeting-form__datepicker", "2030-03-23\n"
       page.click ".poll-meeting-form__option-button"
 
   it 'can start a poll in a group', ->
     page.loadPath 'polls/test_discussion'
     page.click '.decision-tools-card__poll-type--proposal'
+    page.click ".poll-common-tool-tip__collapse"
     page.fillIn '.poll-proposal-form__title', 'A new proposal'
     page.fillIn '.poll-proposal-form__details', 'Some details'
-    page.click '.poll-proposal-form__submit'
+    page.click '.poll-common-form__submit'
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
 
@@ -58,9 +61,10 @@ describe 'Polls', ->
   it 'can start a standalone poll', ->
     page.loadPath 'polls/start_poll'
     page.click '.poll-common-start-poll__poll-type--proposal'
+    page.click ".poll-common-tool-tip__collapse"
     page.fillIn '.poll-proposal-form__title', 'A new proposal'
     page.fillIn '.poll-proposal-form__details', 'Some details'
-    page.click '.poll-proposal-form__submit'
+    page.click '.poll-common-form__submit'
 
     page.click '.poll-common-share-form__ok'
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
@@ -109,6 +113,5 @@ describe 'Polls', ->
     page.loadPath 'polls/test_proposal_poll_share'
     page.fillIn '.poll-common-share-form__add-option-input', 'loo@m.io'
     page.click '.poll-common-share-form__option-icon'
-    browser.driver.sleep(500)
 
     page.expectFlash 'Invitation email sent to loo@m.io'

@@ -5,8 +5,8 @@ class Identities::BaseController < ApplicationController
   end
 
   def create
-    if created_identity.persisted?
-      store_identity
+    if identity.save
+      associate_identity
       redirect_to session.delete(:back_to) || dashboard_path
     else
       # TODO: this should be an error page, not JSON
@@ -41,27 +41,31 @@ class Identities::BaseController < ApplicationController
   end
 
   def identity
-    current_user.send "#{controller_name}_identity"
+    @identity ||= identity_class.new(oauth_identity_params).tap { |i| complete_identity(i) }
   end
 
-  def created_identity
-    @created_identity ||= instantiate_identity.tap { |identity| complete_identity(identity) }.tap(&:save)
+  def existing_identity
+    @existing_identity ||= identity_class.with_user.find_by(
+      identity_type: identity.identity_type,
+      uid:           identity.uid
+    )
   end
 
-  def instantiate_identity
-    "Identities::#{controller_name.classify}".constantize.new(oauth_identity_params)
+  def existing_user
+    @existing_user ||= User.find_by_email(identity.email)
   end
 
-  def store_identity
-    if identity_user.is_logged_in?
-      identity_user.identities.push(created_identity)
+  def associate_identity
+    if user = (existing_identity&.user || existing_user || current_user).presence
+      user.associate_with_identity(identity)
+      sign_in(user)
     else
-      session[:pending_identity_id] = created_identity.id
+      session[:pending_identity_id] = identity.id
     end
   end
 
-  def identity_user
-    @identity_user ||= User.find_by_email(created_identity.email) || current_user
+  def identity_class
+    "Identities::#{controller_name.classify}".constantize
   end
 
   def complete_identity(identity)

@@ -9,6 +9,6 @@ We build our frontend assets using [gulp](http://gulpjs.com/). Valid commands ar
 - `gulp dev`: Build all assets and rebuild once changes are made (best for use while developing on Loomio)
 - `gulp protractor`: Build all assets and run the [Protractor](https://angular.github.io/protractor/) tests.
 - `gulp protractor:now`: Run all tests without building assets (If you haven't made any changes to the app, this is the way to go.)
-- `gulp deploy`: Build all assets and place them in the `public` folder
+- `gulp compile`: Build all assets and place them in the `public` folder
 
 Asset building should take ~10 seconds at the first run, and ~3-6 seconds on subsequent builds.

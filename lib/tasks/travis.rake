@@ -22,6 +22,13 @@ namespace :travis do
     raise "cucumber failed!" unless $?.exitstatus == 0
   end
 
+  task :protractor_core => :environment do
+    puts "Starting to run protractor..."
+    system("cd angular && gulp protractor:core")
+    core_passed = $?.exitstatus == 0
+    raise "protractor:plugins failed!" unless core_passed
+  end
+
   task :protractor => :environment do
     puts "Starting to run protractor..."
     system("cd angular && gulp protractor:core")

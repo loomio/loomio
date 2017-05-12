@@ -82,7 +82,6 @@ class ThreadMailer < BaseMailer
     @discussion = @motion.discussion
     @group = @discussion.group
     @link = polymorphic_url(@motion, @utm_hash)
-    return if @author == User.helper_bot
     send_thread_email(subject_key: "email.proposal_closing_soon.subject",
                       subject_params: {proposal_title: @motion.title})
   end
@@ -108,7 +107,6 @@ class ThreadMailer < BaseMailer
     @motion = @motion
     @group = @motion.group
     @link = polymorphic_url(@motion, @utm_hash)
-    return if @author == User.helper_bot
     send_thread_email(subject_key: "email.proposal_closed.subject",
                       subject_params: {which: @motion.name})
   end
