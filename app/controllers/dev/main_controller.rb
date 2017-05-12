@@ -377,6 +377,7 @@ class Dev::MainController < Dev::BaseController
                                 membership_granted_upon: 'approval',
                                 group_privacy: 'closed',
                                 discussion_privacy_options: 'public_or_private')
+    @group.add_member! patrick                                
     @group.add_admin! jennifer
     @discussion = @group.discussions.create!(title: 'This thread is private', private: true, author: jennifer)
     @public_discussion = @group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
