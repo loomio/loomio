@@ -127,9 +127,9 @@ fdescribe 'Login', ->
       page.click '.auth-signup-form__submit'
       page.loadPath 'use_last_login_token'
       page.expectFlash 'Signed in successfully'
-      page.expectText '.context-panel__heading', 'I carried a watermelon'
+      page.expectText '.context-panel__heading', 'Open Dirty Dancing Shoes'
       page.click '.comment-form__join-actions button'
-      page.expectFlash 'You are now a member of I carried a watermelon'
+      page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
       page.expectElement '.comment-form__submit-button'
 
     it 'can log someone in from an invitation', ->
