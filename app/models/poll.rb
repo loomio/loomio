@@ -151,6 +151,11 @@ class Poll < ActiveRecord::Base
     @poll_option_removed_names = (existing - names)
   end
 
+  def is_new_version?
+    !self.poll_options.map(&:persisted?).all? ||
+    (['title', 'details', 'closing_at'] & self.changes.keys).any?
+  end
+
   def anyone_can_participate
     @anyone_can_participate ||= community_of_type(:public).present?
   end
