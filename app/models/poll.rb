@@ -39,7 +39,7 @@ class Poll < ActiveRecord::Base
 
   has_many :events, -> { includes(:eventable) }, as: :eventable, dependent: :destroy
 
-  has_many :poll_options, ->(object) { order(object.poll_option_order) }, dependent: :destroy
+  has_many :poll_options, ->(object) { order(object&.poll_option_order) }, dependent: :destroy
   accepts_nested_attributes_for :poll_options, allow_destroy: true
 
   has_many :poll_did_not_votes, dependent: :destroy
@@ -62,6 +62,13 @@ class Poll < ActiveRecord::Base
   scope :participation_by, ->(participant) { joins(:stances).where("stances.participant_type": participant.class.to_s, "stances.participant_id": participant.id) }
   scope :authored_by, ->(user) { where(author: user) }
   scope :chronologically, -> { order('created_at asc') }
+  scope :with_includes, -> { includes(
+    :attachments,
+    :poll_options,
+    :outcomes,
+    {poll_communities: [:community]},
+    {stances: [:stance_choices]})
+  }
 
   scope :closing_soon_not_published, ->(timeframe, recency_threshold = 2.days.ago) do
      active
