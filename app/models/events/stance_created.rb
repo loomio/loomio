@@ -17,6 +17,14 @@ class Events::StanceCreated < Event
 
   private
 
+  def notification_url
+    @notification_url ||= polymorphic_url(eventable.poll)
+  end
+
+  def notification_translation_title
+    eventable.poll.title
+  end
+
   def notification_recipients
     if poll.notify_on_participate?
       User.where(id: poll.author_id).without(eventable.participant)
