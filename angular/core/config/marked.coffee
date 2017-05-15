@@ -15,7 +15,7 @@ angular.module('loomioApp').config (markedProvider) ->
       _super.heading(emojione.shortnameToImage(text), level, text)
 
     renderer.link      = (href, title, text) ->
-      _super.link(href, title, text).replace('<a ', '<a target="_blank" ')
+      _super.link(href, title, text).replace('<a ', '<a rel="noopener noreferrer" target="_blank" ')
 
     renderer
 
