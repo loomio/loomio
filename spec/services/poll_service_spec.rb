@@ -122,6 +122,12 @@ describe PollService do
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
+    it 'creates a new poll edited event for poll option changes' do
+      expect {
+        PollService.update(poll: poll_created, params: { poll_option_names: ["new_option"] }, actor: user)
+      }.to change { Events::PollEdited.count }.by(1)
+    end
+
     it 'creates a new poll edited event for major changes' do
       expect {
         PollService.update(poll: poll_created, params: { title: "BIG CHANGES!" }, actor: user)

@@ -1370,6 +1370,7 @@ en:
     notify_group: Announcement
     members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
+    participants_count: "The {{count}} people who have voted will be notified"
 
   poll_common_close_form:
     title: Close a poll early

@@ -62,8 +62,7 @@ class PollService
   def self.update(poll:, params:, actor:)
     actor.ability.authorize! :update, poll
     poll.assign_attributes(params.except(:poll_type, :discussion_id, :communities_attributes))
-    is_new_version = (['title', 'details', 'closing_at'] & poll.changes.keys).any?
-
+    is_new_version = poll.is_new_version?
     return false unless poll.valid?
     poll.save!
 
