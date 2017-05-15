@@ -1373,7 +1373,7 @@ en:
 
   poll_common_notify_on_participate:
     notify_on_participate: Notify me when someone participates
-    helptext_on: You will receive a notification whenever someone participates in this poll
+    helptext_on: You will receive a notification when anyone participates in this poll
     helptext_off: You will receive an update when this poll closes
 
   poll_common_close_form:
