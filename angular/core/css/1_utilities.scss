@@ -327,6 +327,10 @@ img.emojione {
   height: 20px;
 }
 
+.md-dialog-container {
+  z-index: 10000000000;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
