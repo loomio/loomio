@@ -1371,6 +1371,11 @@ en:
     members_helptext: Your group will not be notified
     members_count: "{{count}} people will be notified"
 
+  poll_common_notify_on_participate:
+    notify_on_participate: Notify me when someone participates
+    helptext_on: You will receive a notification whenever someone participates in this poll
+    helptext_off: You will receive an update when this poll closes
+
   poll_common_close_form:
     title: Close a poll early
     helptext: Are you sure you're ready to close this early?
