@@ -121,6 +121,18 @@ describe PollService do
         PollService.update(poll: poll_created, params: { details: "A new description", make_announcement: true }, actor: user)
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
+
+    it 'creates a new poll edited event for major changes' do
+      expect {
+        PollService.update(poll: poll_created, params: { title: "BIG CHANGES!" }, actor: user)
+      }.to change { Events::PollEdited.count }.by(1)
+    end
+
+    it 'does not create a new poll edited event for minor changes' do
+      expect {
+        PollService.update(poll: poll_created, params: { anyone_can_participate: false }, actor: user)
+      }.to_not change { Events::PollEdited.count }
+    end
   end
 
   describe 'convert' do
