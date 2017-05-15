@@ -1626,6 +1626,7 @@ en:
     no_loomio_group: This poll is not currently associated with any Loomio group
     has_loomio_group: Members of this group will be able to view and participate in this poll.
     poll_is_shareable: Copy the link above and share it. Anyone with the link can pariticpate.
+    poll_is_private: Only members of the group or people you've invited will be able to participate.
     enter_emails: Enter an email address to send a single use participation link.
     view_poll: View poll
     email_invited: 'Invitation email sent to {{email}}'
