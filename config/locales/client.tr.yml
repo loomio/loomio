@@ -4,7 +4,6 @@ tr:
     count: Kontrol et
     poll: Anket
     dot_vote: Oy kullan
-    meeting: Toplantı anketi
   timezones:
     local: Yerel saat ({{value}})
   common:
@@ -811,7 +810,6 @@ tr:
     proposal_title: Öneri
     count_title: Kontrol et
     poll_title: Anket
-    meeting_title: Toplantı anketi
   poll_common_notify_group:
     notify_group: Duyuru
   poll_common_close_form:

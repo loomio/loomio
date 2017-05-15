@@ -1,18 +1,18 @@
 eo:
   email:
     group_email:
-      intro: '%{who} anoncis al %{group}'
-    by_who: 'de %{person}'
+      intro: "%{who} anoncis al %{group}"
+    by_who: de %{person}
     reply_to_this_discussion: Respondi al ĉi tiu diskuto
     to_join_discussion:
-      subject: '%{who} volas ke vi aliĝu al diskuto en Loomio'
+      subject: "%{who} volas ke vi aliĝu al diskuto en Loomio"
       content: 'Vi estas invitita por partopreni en la diskuto: %{discussion}'
-      message_intro: '%{who} diras:'
+      message_intro: "%{who} diras:"
       link: Aliĝi al la diskuto
     to_join_group:
-      subject: '%{member} invitis vin por aliĝi al %{group_name} en Loomio'
+      subject: "%{member} invitis vin por aliĝi al %{group_name} en Loomio"
     to_start_group:
-      subject: 'Konfiguri vian novan Loomio-grupon: %{group_name}'
+      subject: "Konfiguri vian novan Loomio-grupon: %{group_name}"
     unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
     view_comment: Klaku ĉi tie por vidi vian komenton en Loomio
@@ -29,33 +29,33 @@ eo:
     missed_yesterday:
       subject: Hieraŭ en Loomio
       mark_as_read: Marki kiel legita
-      thanks_for_reading: 'Dankon por legi, havu bonegan tagon!'
+      thanks_for_reading: Dankon por legi, havu bonegan tagon!
       marked_as_read_success: Ĉio de la retpoŝtaĵo markiĝis kiel legita
     membership_request:
-      intro: '%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj.'
-      subject: '%{who} petis aliĝi al %{which_group}'
+      intro: "%{name} (%{email}) petis aliron al unu el viaj Loomio-grupoj."
+      subject: "%{who} petis aliĝi al %{which_group}"
       view_group: Vi povas aprobi aŭ malaprobi la peton ĉi tie
     new_motion_created:
       subject: 'Propono: %{proposal_title}'
     proposal_closed:
       proposal_has_closed: La propono fermiĝis.
-      specify_outcome_and_notify_group: 'Kreu rezulton kaj sendu ĝin al via grupo!'
-      specify_outcome_and_notify_group_html: 'Kreu rezulton kaj sendu ĝin al via grupo!'
-      subject: 'Propono fermita - %{which}'
+      specify_outcome_and_notify_group: Kreu rezulton kaj sendu ĝin al via grupo!
+      specify_outcome_and_notify_group_html: Kreu rezulton kaj sendu ĝin al via grupo!
+      subject: Propono fermita - %{which}
     proposal_closing_soon:
       closes_on: Fermiĝos dum
       closes_at: Fermiĝos je
       closes_in: Fermiĝos post
       subject: 'Fermiĝos en 24 horoj: %{proposal_title}'
-      headline: 'La propono de %{author} en %{group} baldaŭ fermiĝos:'
+      headline: "La propono de %{author} en %{group} baldaŭ fermiĝos:"
       summary: Resumo
     thread_mailer:
       change_preferences: 'Ŝanĝi viajn retpoŝtajn preferojn:'
       motion_closing_soon: 'Propono fermiĝos en 24 horoj:'
       proposal_closed: 'Propono fermita:'
-      specify_outcome_html: "Via propono estas fermita. <a href='%{link}'>Decidu rezulton</a> por sciigi al ĉiuj kiel elturniĝis."
+      specify_outcome_html: Via propono estas fermita. <a href='%{link}'>Decidu rezulton</a> por sciigi al ĉiuj kiel elturniĝis.
       specify_outcome: 'Via propono estas fermita. Decidu rezulton por sciigi al ĉiuj kiel elturniĝis:'
-      you_agreed: 'Vi %{past_tense_position}'
+      you_agreed: Vi %{past_tense_position}
   footer:
     about: Pri
     blog: Blogo
@@ -71,7 +71,7 @@ eo:
     group_name: Grupnomo
     group_description: Grupa priskribo
     success:
-      header: 'Vi preskaŭ pretas! Kontrolu vian retpoŝton.'
+      header: Vi preskaŭ pretas! Kontrolu vian retpoŝton.
   contact_page:
     contact_us: Kontakti nin
     labels:

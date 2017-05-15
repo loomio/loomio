@@ -1,79 +1,72 @@
 hr:
   common:
     privacy:
-      public: Javno
+      public: 'Javno'
     models:
-      proposal: Prijedlog
+      proposal: 'Prijedlog'
   error_page:
-    forbidden: Nepostojeća dozvola za izvršenje.
+    forbidden: 'Nepostojeća dozvola za izvršenje.'
   proposal_outcome_form:
     publish_outcome: Objavi ishod
   inbox:
-    clear: Obriši
+    clear: 'Obriši'
   comment_form:
-    edit_comment: Ažuriranje komentara
-    delete_comment: Obriši komentar
-    confirm_delete_message: Jeste li sigurni da želite obrisati komentar?
+    edit_comment: 'Ažuriranje komentara'
+    delete_comment: 'Obriši komentar'
+    confirm_delete_message: 'Jeste li sigurni da želite obrisati komentar?'
   sidebar:
-    email_settings: Postavke emaila
-    sign_out: Odjava
+    email_settings: 'Postavke emaila'
+    sign_out: 'Odjava'
   notifications:
-    header: Notifikacije
+    header: "Notifikacije"
   vote_form:
-    i_agree: Slažem se
-    i_abstain: Suzdržan / a sam
+    i_agree: 'Slažem se'
+    i_abstain: 'Suzdržan / a sam'
     i_abstain_details: ' Slažem se da grupa odluči bez mene.'
-    i_disagree: Ne slažem se
-    i_disagree_details: Mislim da vjerojatno možemo bolje.
-    i_block: Blokiram
-    i_block_details: Imam snažne prigovore na ovaj prijedlog i nisam za to da prođe.
+    i_disagree: 'Ne slažem se'
+    i_disagree_details: 'Mislim da vjerojatno možemo bolje.'
+    i_block: 'Blokiram'
+    i_block_details: 'Imam snažne prigovore na ovaj prijedlog i nisam za to da prođe.'
   proposal_positions_panel:
     heading: Stavovi
   close_proposal_form:
-    close_proposal: Zatvori prijedlog
+    close_proposal: 'Zatvori prijedlog'
   discussion_form:
-    privacy_label: Privatnost
+    privacy_label: 'Privatnost'
   proposal_expanded:
-    close_proposal: Zatvori prijedlog
+    close_proposal: 'Zatvori prijedlog'
   join_group_button:
     join_group: 'Pridruži se grupi '
-    ask_to_join_group: Zahtjev za pridruženjem grupi
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
-    submit_button: Zahtjev za pridruženjem grupi
   group_page:
     thread_list:
       empty:
-        membership_is_invitation_only: Za pridruživanje grupi mora vas pozvati član / ica grupe.
-        membership_is_invitation_by_admin_only: U ovu grupu mora vas pozvati koordinator / ica.
-    invite_people: Pozovi ljude
+        membership_is_invitation_only: "Za pridruživanje grupi mora vas pozvati član / ica grupe."
+        membership_is_invitation_by_admin_only: "U ovu grupu mora vas pozvati koordinator / ica."
   membership_requests_page:
     ignore: Ignoriraj
   memberships_page:
-    members: Članovi
+    members: 'Članovi'
   profile_page:
-    profile: Profil
+    profile: 'Profil'
   thread_group:
-    aria_label: Ime grupe
+    aria_label: 'Ime grupe'
   delete_comment_dialog:
-    title: Obriši komentar
-    question: Jeste li sigurni da želite obrisati komentar?
-    confirm: Obriši komentar
+    title: 'Obriši komentar'
+    question: 'Jeste li sigurni da želite obrisati komentar?'
+    confirm: 'Obriši komentar'
   new_comment_item:
     context_menu:
-      edit_comment: Ažuriranje komentara
-      delete_comment: Obriši komentar
+      edit_comment: 'Ažuriranje komentara'
+      delete_comment: 'Obriši komentar'
   help_page:
-    coordinating: Koordinacije vaše Loomio grupe
-    coordinating_details: >
-      Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe
-      i pozivanje
-
-      članova. Također se morate naučiti koristiti novi softver, pa će i vaša
-      grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje
-      odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:
-    different_ways: Različiti načini korištenja Loomia
-    get_in_touch: Stupite u kontakt
+    coordinating: 'Koordinacije vaše Loomio grupe'
+    coordinating_details: |
+      Kao koordinator / ica, odgovorni ste za postavljanje vaše Loomio grupe i pozivanje
+      članova. Također se morate naučiti koristiti novi softver, pa će i vaša grupa učinkovitije učiti nove procese kolaboracije i zajedno donositi bolje odluke. Ovo su neke smjernice za bolji uspjeh vaše grupe:
+    different_ways: 'Različiti načini korištenja Loomia'
+    get_in_touch: "Stupite u kontakt"
     get_in_touch_description_html: "Ako imate pitanje ili prijedlog, <a href='%{link}'>javite nam se</a>."
-    getting_started: Početak rada
-    getting_started_description: 'S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane.'
+    getting_started: "Početak rada"
+    getting_started_description: "S lijeve strane grupa raspravlja o temi razmjenjujući ideje i informacije. Kad grupa mora donijeti odluku, ona se pojavljuje s desne strane."

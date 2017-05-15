@@ -1,73 +1,67 @@
 es:
+  time:
+    formats:
+      closing_soon_subject: "%d %b %H:%M"
   validate:
     motion:
       must_close_in_future: La propuesta debe cerrar en el futuro.
       one_at_a_time: Ya hay una propuesta activa.
   subscriptions:
-    gift_plan_selected_for_group_html: >
+    gift_plan_selected_for_group_html: |
       <h1>Listo!</h1>
-
-      <p>Seleccionaste el plan Gratis para tu grupo <a
-      href="/g/%{group_key}">%{group}</a></p>
+      <p>Seleccionaste el plan Gratis para tu grupo <a href="/g/%{group_key}">%{group}</a></p>
   email:
     reset_password:
-      greeting: >
+      greeting: |
         Hola %{name}
-
-        Aquí esta el enlace que puedes usar para restablecer tu contraseña en tu
-        cuenta de Loomio:
+        Aquí esta el enlace que puedes usar para restablecer tu contraseña en tu cuenta de Loomio:
       link_text: Restablece tu contraseña
-      signoff: >
-        Recibes este email porque tu dirección de correo electrónico fue
-        ingresada en el formulario "Olvidaste tu contraseña" en %{hostname}.
-
-        Tu contraseña no será cambiada hasta que sigas el enlace y completes el
-        formulario.
-
-        Si continúas teniendo problemas para acceder a tu cuenta, responde a este
-        email para contactar nuestro equipo de soporte técnico.
-    custom: '%{text}'
+      signoff: |
+        Recibes este email porque tu dirección de correo electrónico fue ingresada en el formulario "Olvidaste tu contraseña" en %{hostname}.
+        Tu contraseña no será cambiada hasta que sigas el enlace y completes el formulario.
+        Si continúas teniendo problemas para acceder a tu cuenta, responde a este email para contactar nuestro equipo de soporte técnico.
+    custom: "%{text}"
     group_email:
-      intro: '%{who} hizo un anuncio en %{group}:'
-    by_who: 'por %{person}'
+      intro: "%{who} hizo un anuncio en %{group}:"
+    by_who: por %{person}
     reply_to_this_discussion: Contestar a esta discusión
     to_join_discussion:
-      subject: '%{who} desea que te unas a una discusión en Loomio'
+      subject: "%{who} desea que te unas a una discusión en Loomio"
       content: 'Has sido invitado/a a participar en la discusión: %{discussion}'
-      message_intro: '%{who} dice:'
+      message_intro: "%{who} dice:"
       link: Únete a la discusión
-    value_proposition: 'Loomio es un espacio para que grupos tomen decisiones juntos. '
+    value_proposition: "Loomio es un espacio para que grupos tomen decisiones juntos. "
     view_group: Ver grupo
     to_join_group:
-      subject: '%{member} te ha invitado a unirte a %{group_name} en Loomio'
-      invitation_text: '%{member} te ha invitado a unirte a su grupo %{group_name} '
-      invitation_text_html: te ha invitado a unirte a su grupo
-      link_help: 'Haz clic en el enlace para unirte al grupo:'
+      subject: "%{member} te ha invitado a unirte a %{group_name} en Loomio"
+      invitation_text: "%{member} te ha invitado a unirte a su grupo %{group_name} "
+      invitation_text_html: "te ha invitado a unirte a su grupo"
+      link_help: "Haz clic en el enlace para unirte al grupo:"
       accept_invitation: "Aceptar invitación\n "
     resend_to_join_group:
-      subject: '%{member} todavía está esperando que te sumes al grupo %{group_name} en Loomio'
+      subject: "%{member} todavía está esperando que te sumes al grupo %{group_name} en Loomio"
     to_start_group:
-      subject: 'Configura tu nuevo grupo en Loomio: %{group_name}'
-      hi: 'Hola %{name},'
-      intro: 'Haz clic en el siguiente enlace para configurar tu grupo %{group_name}:'
-      intro_html: 'Haz clic en el siguiente enlace para configurar tu grupo:'
-      start_group: Iniciar mi grupo
-      closing_message: 'Si necesitas ayuda o si tienes alguna pregunta, responde a este email.'
-      thanks: 'Gracias, '
-      loomio_team: El Equipo de Loomio
+      subject: "Configura tu nuevo grupo en Loomio: %{group_name}"
+      hi: "Hola %{name},"
+      intro: "Haz clic en el siguiente enlace para configurar tu grupo %{group_name}:"
+      intro_html: "Haz clic en el siguiente enlace para configurar tu grupo:"
+      start_group: "Iniciar mi grupo"
+      closing_message: "Si necesitas ayuda o si tienes alguna pregunta, responde a este email."
+      thanks: "Gracias, "
+      loomio_team: "El Equipo de Loomio"
     user_added_to_group:
-      subject: '%{who} te ha adherido a %{which_group} en Loomio'
-      content: '%{who} te ha adherido a %{which_group}'
-      content_html: '<strong>%{who}</strong> te ha añadido a <strong>%{which_group}</strong>.'
-      link_help: 'Haz clic en el enlace para ir al grupo:'
+      subject: "%{who} te ha adherido a %{which_group} en Loomio"
+      content: "%{who} te ha adherido a %{which_group}"
+      content_html: "<strong>%{who}</strong> te ha añadido a <strong>%{which_group}</strong>."
+      link_help: "Haz clic en el enlace para ir al grupo:"
     unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:   '
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
     view_comment: Haz clic aquí para ver el comentario en Loomio
     view_discussion: 'Haz clic aquí para ver esta discusión '
     view_proposal: Ver esta propuesta en Loomio
     create_discussion:
-      intro_html: 'inicio un hilo:'
-      intro: '%{who} inicio un hilo: '
+      intro_html: "inicio un hilo:"
+      intro: "%{who} inicio un hilo: "
     create_proposal:
       intro: Una nueva propuesta fue creada en un grupo de Loomio al que tu perteneces.
       closes_in: Cierra en
@@ -80,40 +74,40 @@ es:
       subject: Ayer en Loomio
       headlines: 'Titulo '
       mark_as_read: Marcar como leído
-      thanks_for_reading: 'Gracias por leer, ¡que tengas un buen día!'
-      heres_what_happened: 'Esto es lo que paso en Loomio ayer. '
+      thanks_for_reading: Gracias por leer, ¡que tengas un buen día!
+      heres_what_happened: "Esto es lo que paso en Loomio ayer. "
       marked_as_read_success: Todo el contenido del correo ha sido marcado como leído
     comment_replied_to:
-      context_html: contestó a tu comentario en
+      context_html: 'contestó a tu comentario en'
       context: '%{author_name} respondió a tu comentario en %{discussion_title}'
-      subject: '%{who} respondió a tu comentario en el grupo %{which} en Loomio.'
+      subject: "%{who} respondió a tu comentario en el grupo %{which} en Loomio."
     new_comment:
       context: 'comentó en  '
     group_membership_approved:
-      intro: 'Tu solicitud para acceder al grupo %{group_name} ha sido aprobada.'
-      intro_html: 'Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada.'
-      link_help: 'Haz clic en el siguiente enlace para unirte a %{group_name} y comenzar:'
-      subject: 'Tu solicitud para unirte al grupo %{group_name} en Loomio ha sido aprobada.'
-      join_group: Unirte al grupo
-      view_group_text: 'Haz clic en el siguiente enlace para ver el grupo en Loomio:'
+      intro: "Tu solicitud para acceder al grupo %{group_name} ha sido aprobada."
+      intro_html: "Tu solicitud para acceder al grupo <strong>%{group_name}</strong> ha sido aprobada."
+      link_help: "Haz clic en el siguiente enlace para unirte a %{group_name} y comenzar:"
+      subject: "Tu solicitud para unirte al grupo %{group_name} en Loomio ha sido aprobada."
+      join_group: "Unirte al grupo"
+      view_group_text: "Haz clic en el siguiente enlace para ver el grupo en Loomio:"
     membership_request:
-      intro: '%{name} (%{email}) ha solicitado el acceso a uno de tus grupos de Loomio.'
+      intro: "%{name} (%{email}) ha solicitado el acceso a uno de tus grupos de Loomio."
       intro_html: ha solicitado el acceso a uno de tus grupos.
-      subject: '%{who} solicitó el acceso a %{which_group}'
+      subject: "%{who} solicitó el acceso a %{which_group}"
       view_group: Puedes aceptar o denegar la solicitud aquí
       button_text: Ver solicitudes
     mentioned:
-      context_html: 'te mencionó en la discusión '
-      context: '%{author_name} te mencionó en la discusión %{discussion_title}'
+      context_html: "te mencionó en la discusión "
+      context: "%{author_name} te mencionó en la discusión %{discussion_title}"
       subject: '%{who} te ha mencionado en la discusión "%{which}" '
     new_motion_created:
       subject: 'Propuesta: %{proposal_title}'
-      context: 'comenzó una propuesta en %{group_full_name}:'
+      context: "comenzó una propuesta en %{group_full_name}:"
     proposal_closed:
       proposal_has_closed: La propuesta se ha cerrado
-      specify_outcome_and_notify_group: '¡Crear un resultado y envíalo a tu grupo!'
-      specify_outcome_and_notify_group_html: '¡Crear un resultado y envíalo a tu grupo!'
-      subject: 'Propuesta cerrada - %{which}'
+      specify_outcome_and_notify_group: ¡Crear un resultado y envíalo a tu grupo!
+      specify_outcome_and_notify_group_html: ¡Crear un resultado y envíalo a tu grupo!
+      subject: Propuesta cerrada - %{which}
     proposal_outcome:
       subject: 'Resultado de la propuesta: %{motion}'
     proposal_closing_soon:
@@ -121,42 +115,42 @@ es:
       closes_at: Cierra a las
       closes_in: Cierra en
       subject: 'Cierra en 24 Horas: %{proposal_title}'
-      headline: 'La propuesta de %{author} en %{group} cerrará pronto:'
+      headline: "La propuesta de %{author} en %{group} cerrará pronto:"
       summary: Resumen
     thread_mailer:
       footer_text: 'Responder a este correo electrónico directamente o léelo en %{hostname}:'
-      reply_or_view_online_html: "Responde a este correo electrónico directamente o <a href='%{url}'>léelo en %{hostname}</a>."
+      reply_or_view_online_html: Responde a este correo electrónico directamente o <a href='%{url}'>léelo en %{hostname}</a>.
       turn_off_notifications_html: "<a href='%{url}'>Desactivar el correo electrónico</a> para esta discusión."
       turn_off_notifications_text: 'Desactivar el correo electrónico para esta discusión: %{url}'
       turn_on_notifications_html: "<a href='%{url}'>Activar el correo electrónico para esta discusión</a> para recibir la actividad futura."
       turn_on_notifications_text: 'Activar el correo electrónico para recibir la actividad futura en esta discusión: %{url}'
-      change_email_preferences_html: "Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos."
-      change_preferences: Cambiar sus preferencias de email
+      change_email_preferences_html: Cambia tus <a href='%{email_preferences_url}'>preferencias de correo electrónico</a> para darte de baja de estos correos electrónicos.
+      change_preferences: 'Cambiar sus preferencias de email'
       new_motion_html: 'Comenzó una propuesta:'
       new_motion: '%{who} comenzó una propuesta:'
-      motion_closing_soon: Cierra en 24 Horas
+      motion_closing_soon: 'Cierra en 24 Horas'
       proposal_closed: 'Proposición cerrada:'
-      specify_outcome_html: "Tu propuesta se ha cerrado. <a href='%{link}'>Especifica un resultado </a> para que todos los conozcan."
+      specify_outcome_html: Tu propuesta se ha cerrado. <a href='%{link}'>Especifica un resultado </a> para que todos los conozcan.
       specify_outcome: ' Su propuesta ha cerrado. Especifique un resultado para que todos lo conozcan:'
-      outcome_created_html: 'publicó el resultado para la propuesta:'
-      outcome_created: '%{who} publicó el resultado para la propuesta:'
-      you_agreed: 'Tú %{past_tense_position}'
+      outcome_created_html: "publicó el resultado para la propuesta:"
+      outcome_created: "%{who} publicó el resultado para la propuesta:"
+      you_agreed: Tú %{past_tense_position}
     analytics:
-      subject: 'semana de %{which_group} en Loomio'
-      title: 'Tu resumen para la semana del %{since}'
-      table_header: 'Nombre | Propuestas creadas | Discusiones creadas | Comentarios creados | Votos creados'
-      stats: '<strong>%{active_members}</strong> de <strong>%{group_members}</strong> en tu grupo eran activos durante la semana pasada. Tu grupo presentó <strong>%{motions}</strong> e hizo <strong>%{comments}</strong> en <strong>%{discussions}</strong>.'
+      subject: "semana de %{which_group} en Loomio"
+      title: "Tu resumen para la semana del %{since}"
+      table_header: "Nombre | Propuestas creadas | Discusiones creadas | Comentarios creados | Votos creados"
+      stats: "<strong>%{active_members}</strong> de <strong>%{group_members}</strong> en tu grupo eran activos durante la semana pasada. Tu grupo presentó <strong>%{motions}</strong> e hizo <strong>%{comments}</strong> en <strong>%{discussions}</strong>."
       contact_us: "Buscas mas estadísticas? <a href='%{contact_link}'>Contáctanos</a>."
       no_activity: "¿Quieres hablar con uno de nuestros entrenadores en colaboración, para obtener el mejor resultado en tu grupo? <a href='%{contact_link}'>Contáctanos </a>"
       trial_subscription: "%{which_group} sigue con una <strong>prueba gratis</strong> hasta <strong>%{expires_at}</strong>. Se puede escoger un plan de suscripción <a href='%{subscription_link}'>aqui</a>."
-      trial_expired: '%{which_group} ha llegado al fin de su periodo de prueba gratis de Loomio.'
-      heart: ❤ de parte del equipo de Loomio
+      trial_expired: "%{which_group} ha llegado al fin de su periodo de prueba gratis de Loomio."
+      heart: "❤ de parte del equipo de Loomio"
       unsubscribe: "Enviamos este mensaje a los coordinadores de grupos activos en Loomio. <br />Si prefieres no recibir estos mensajes, <a href='%{contact_link}'>dejanos saber</a>."
       user_table:
-        motions_created: Propuestas
-        discussions_created: Discusiones
-        comments_created: Comentarios
-        votes_created: Votos
+        motions_created: "Propuestas"
+        discussions_created: "Discusiones"
+        comments_created: "Comentarios"
+        votes_created: "Votos"
   footer:
     about: Sobre Loomio
     blog: Blog
@@ -172,7 +166,7 @@ es:
       header: Nuevos grupos comienzan en Loomio 1.0
       subtitle: 'Para comenzar un nuevo grupo, necesitas cambiar a la nueva versión de Loomio:'
       switch_to_angular: Empezar un grupo en en nuevo Loomio
-      helptext: 'Reconstruimos Loomio desde cero. Puedes enterarte sobre lo que es nuevo  <a href="/angular">aquí</a>.<br/> Puedes cambiar al viejo Loomio en cualquier momento.'
+      helptext: Reconstruimos Loomio desde cero. Puedes enterarte sobre lo que es nuevo  <a href="/angular">aquí</a>.<br/> Puedes cambiar al viejo Loomio en cualquier momento.
     header: Empieza un nuevo grupo
     form_error: 'Falta alguna información o es incorrecta. '
     name: Tu nombre
@@ -183,17 +177,17 @@ es:
     group_description: Descripción del grupo
     group_description_placeholder: 'Describe el propósito de tu grupo para que los miembros sepan porque están aquí. '
     group_name_error: 'Se requiere el nombre del grupo. '
-    pricing_html: "En 30 días te pediremos que elijas un <a href='%{link}' target='_blank'>plan de pago</a>."
-    terms_html: "Al empezar un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio."
+    pricing_html: En 30 días te pediremos que elijas un <a href='%{link}' target='_blank'>plan de pago</a>.
+    terms_html: Al empezar un grupo, aceptas los <a href='%{link}' target='_blank'>términos de servicio</a> de Loomio.
     success:
       header: '¡Ya casi has terminado! Revisa tu correo electrónico. '
-      email_delivered: 'Hemos enviado un correo electrónico a %{email}. Por favor sigue el link que hay dentro para configurar tu grupo'
+      email_delivered: Hemos enviado un correo electrónico a %{email}. Por favor sigue el link que hay dentro para configurar tu grupo
       email_not_arrived: No te ha llegado el correo electrónico?
       please_hold: Por favor espera hasta 5 minutos para que te llegue el correo electrónico y asegurate de mirar en la la carpeta de correo no solicitado.
     start_making_decisions: 'Para empezar a tomar decisiones juntos con Loomio, crea un grupo. Es gratis.'
   invitation_form:
     error:
-      all_email_addresses_belong_to_members: 'No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo.'
+      all_email_addresses_belong_to_members: "No hemos enviado un invitación a las direcciones de email añadidas, porque esos emails le pertenecen a personas que ya están en el grupo."
   pricing_page:
     header: 'Planes grupales '
     gift: 'Gratis '
@@ -202,8 +196,8 @@ es:
     free_trial_html: 'Te pediremos que elijas tu plan de pago luego de <span>30 días de prueba gratis</span>. No se requiere tarjeta de crédito. '
     get_started_for_free: 'Comienza gratis '
     gift_body: 'Plan suportado a donación para grupos comunitarios. '
-    standard_body_html: 'Todo lo que necesitas para <nobr>un grupo </nobr>.'
-    pro_body_html: 'Para organizaciones con <nobr>múltiples grupos.</nobr>'
+    standard_body_html: Todo lo que necesitas para <nobr>un grupo </nobr>.
+    pro_body_html: Para organizaciones con <nobr>múltiples grupos.</nobr>
     one_group: un grupo
     unlimited_members: Cantidad ilimitada de miembros
     unlimited_decisions: 'Cantidad ilimitada de decisiones '
@@ -214,107 +208,68 @@ es:
     gift_price_html: '<strong>$0</strong>'
     plus_includes_standard: 'Todo en Estándar, más: '
     standard_includes_free: 'Todo en Gratis, más: '
-    multiple_groups: Hasta 10 grupos
+    multiple_groups: "Hasta 10 grupos"
     premium_support: 'soporte especial '
     help_with_setup: Ayuda con la configuración inicial
     custom_subdomain: 'Dominio personalizado '
     analytics_reports: 'Reporte analítico '
-    contact_us_html: >
-      Precios en dolares US, más impuestos a la venta donde aplique. ¿Necesitas
-      algo más? <a href="/contact">Hablemos</a>
+    data_export: Exportación de datos
+    contact_us_html: |
+      Precios en dolares US, más impuestos a la venta donde aplique. ¿Necesitas algo más? <a href="/contact">Hablemos</a>
     custom_subdomain_html: |
       subdominio personalizado<br />
       ej. <strong>tugrupo</strong>.loomio.org
     usage_statistics: Estadísticas de uso
     plus_price_html: '<strong>$99</strong>/al mes'
   password_reset:
-    email_guidelines_html: >
-      <p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en
-      el espacio de abajo y se te enviará un enlace para restablecer tu
-      contraseña.</p>
-
-      <p>Si normalmente inicias sesión mediante Facebook, Google, Twitter
-      o Persona, introduce el correo electrónico asociado con esa cuenta.</p>
+    email_guidelines_html: |
+      <p>Introduce la dirección de correo electrónico de tu cuenta de Loomio en el espacio de abajo y se te enviará un enlace para restablecer tu contraseña.</p>
+      <p>Si normalmente inicias sesión mediante Facebook, Google, Twitter o Persona, introduce el correo electrónico asociado con esa cuenta.</p>
     reset_email_timeframe: Puede tardar hasta 5 minutos para que llegue el correo electrónico. si no lo recibes asegúrate de mirar en tu carpeta de correo no deseado.
     length_restriction: La contraseña debe tener al menos 8 caracteres.
-    forbidden_passwords: "Contraseñas comunes como \"contraseña' están prohibidas para mantener tu cuenta segura."
+    forbidden_passwords: Contraseñas comunes como "contraseña' están prohibidas para mantener tu cuenta segura.
   introduction_thread:
-    title: 'Bienvenid@! Por favor  preséntate al grupo'
-    description: >
-      Tomate un momento para dejarle saber al grupo algo sobre ti. Añade un
-      comentario debajo.
+    title: Bienvenid@! Por favor  preséntate al grupo
+    description: |
+      Tomate un momento para dejarle saber al grupo algo sobre ti. Añade un comentario debajo.
 
-
-
-      ¿Cuál es tu rol o porque te unes al grupo? ¿Qué es lo que la gente debería
-      saber sobre ti para entender de donde vienes?
+      ¿Cuál es tu rol o porque te unes al grupo? ¿Qué es lo que la gente debería saber sobre ti para entender de donde vienes?
   how_it_works_thread:
     title: Cómo usar Loomio
-    description: >
+    description: |+
       Bienvenida/o a Loomio, un lugar online donde tomar decisiones juntos.
 
+      Este es un **Hilo** de discusión de ejemplo. Usa este espacio para dar la información relevante que el grupo necesite para tener una discusión productiva. Este hilo es sobre como Loomio funciona, así que añade cualquier pregunta al respecto aquí.
 
-
-      Este es un **Hilo** de discusión de ejemplo. Usa este espacio para dar la
-      información relevante que el grupo necesite para tener una discusión
-      productiva. Este hilo es sobre como Loomio funciona, así que añade
-      cualquier pregunta al respecto aquí.
-
-
-
-      Estas leyendo el **Contexto** del hilo, un espacio para la información
-      relevante. Puedes cambiarlo a medida que la discusión avanza.
-
-
+      Estas leyendo el **Contexto** del hilo, un espacio para la información relevante. Puedes cambiarlo a medida que la discusión avanza.
 
       Para comenzar en Loomio:
-
       1. Añade una [foto de perfil](/profile)
-
       2. Preséntate al grupo en el [Hilo de bienvenida](%{thread_url})
-
       3. Comenta en hilos existentes o inicia uno nuevo
 
-
-
       Consejos para comentar en Loomio:
-
       * Para notificar a una persona en particular escribe @seguido de su nombre
-
       * Haz clic en el icono del sujetapapeles para añadir adjuntos
 
-
-
       Si tienes preguntas lee el [Manual de Usuario](http://help.loomio.org).
+
   first_proposal:
     name: Propuesta de demostración
-    description: >
-      Esta es una **Propuesta**, donde tomas las decisiones juntos. Puedes
-      iniciar un propuesta una vez que la discusión está en camino.
+    description: |
+      Esta es una **Propuesta**, donde tomas las decisiones juntos. Puedes iniciar un propuesta una vez que la discusión está en camino.
 
+      Se les pide a todos que **tomen una posición** antes de la **fecha de cierre**. Puedes extender la fecha de cierre si lo necesitas o puedes cerrar la propuesta con anticipación.
 
+      Puede que reconsideres tu posición al escuchar a otros, podrás **cambiar tu posición** en cualquier momento mientras la propuesta aún esté activa.
 
-      Se les pide a todos que **tomen una posición** antes de la **fecha de
-      cierre**. Puedes extender la fecha de cierre si lo necesitas o puedes
-      cerrar la propuesta con anticipación.
-
-
-
-      Puede que reconsideres tu posición al escuchar a otros, podrás **cambiar tu
-      posición** en cualquier momento mientras la propuesta aún esté activa.
-
-
-
-      A veces grupo trabajan con una **serie de propuestas** para construir una
-      solución juntos. Puedes crear propuestas en secuencia en este hilo.
-
-
+      A veces grupo trabajan con una **serie de propuestas** para construir una solución juntos. Puedes crear propuestas en secuencia en este hilo.
 
       **Prueba participar, haz clic en uno de los 4 botones**
   contact_page:
     contact_us: Contáctanos
-    faq_prompt_html: 'Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes.'
-    contact_information: 'Si no encuentras lo que buscas, puedes encontrar nuestra información de contacto al final de la pagina.'
+    faq_prompt_html: Tienes una pregunta para el equipo de Loomio? antes de contactarnos, quizás puedas encontrar la respuesta en nuestra sección de preguntas frecuentes.
+    contact_information: Si no encuentras lo que buscas, puedes encontrar nuestra información de contacto al final de la pagina.
     contact_form: Formulario de contacto.
     labels:
       name: Tu nombre
@@ -355,11 +310,8 @@ es:
     emphasis:
       title: |
         ## Énfasis
-      body: >
-        Puedes hacer que una palabra sea itálica con _guiones bajos_
-        o *asteriscos*.
-
-
+      body: |
+        Puedes hacer que una palabra sea itálica con _guiones bajos_ o *asteriscos*.
 
         Haz una palabra __Negrita__ doblando los **énfasis**.
     lists:
@@ -374,35 +326,118 @@ es:
     links:
       title: |
         ## Enlaces e imágenes
-      body: >
+      body: |
         Repite en voz alta:
 
-
-
-        Corchetes para los nombres luego paréntesis para las URL. Sin espacio
-        entre ellos.
-
-
+        Corchetes para los nombres luego paréntesis para las URL. Sin espacio entre ellos.
 
         [Loomio Homepage](https://www.loomio.org/)
 
-
-
         Las imágenes son iguales, pero precedidas por un signo de exclamación.
-
-
 
         ![loomio logo](https://i.imgur.com/Fvtworb.png)
   beta_banner:
-    new_loomio_html: >
-      <strong>El nuevo Loomio es más rápido, bonito y mejor!</strong> Estamos
-      moviendo a todos para ahí.
-    upgrade_browser_html: >
-      Solo apoyamos versiones nuevas de Internet Explorer (10+). Deberas  <a
-      href='http://outdatedbrowser.com/en' target='_blank'>actualizar tu
-      navegador</a> para seguir usando Loomio.
-
-      <strong>El nuevo Loomio está aquí!</strong> Es más rápido, bonito
-      y preparado para el móvil.
+    new_loomio_html: |
+      <strong>El nuevo Loomio es más rápido, bonito y mejor!</strong> Estamos moviendo a todos para ahí.
+    upgrade_browser_html: |
+      Solo apoyamos versiones nuevas de Internet Explorer (10+). Deberas  <a href='http://outdatedbrowser.com/en' target='_blank'>actualizar tu navegador</a> para seguir usando Loomio.
+      <strong>El nuevo Loomio está aquí!</strong> Es más rápido, bonito y preparado para el móvil.
     more_info: 'Más información... '
     button_text: Cambia al nuevo Loomio
+  poll_mailer:
+    common:
+      or: o
+      why_send_this: Recibes este correo porque %{reason}
+      view_on_loomio: Ver en Loomio
+      unsubscribe: Cancelar la suscripción al correo
+      results: Resultados
+      responses: Respuestas
+      change_your_stance: Cambiar
+      create_outcome: Compartr resultado
+      your_response: Tu respuesta
+      please_respond: 'Por favor responde '
+      time_zone: (horario en %{zone})
+    proposal:
+      subject:
+        poll_created: '*%{actor} comenzó una propuesta: %{title}'
+        poll_updated: '*%{actor} edito la propuesta: %{title}'
+        poll_closing_soon: 'Propuesta cerrando en 24hr: %{title}'
+        poll_closing_soon_author: 'Tu propuesta cierra en 24hr: %{title}'
+        poll_expired: ' Tu propuesta ha cerrado. Especifica un resultado para: %{title}'
+        outcome_created: '%{actor} publicó el resultado de la propuesta: %{title}'
+        visitor_reminded: '%{actor} está esperando que votes en: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> inicio una propuesta'
+        poll_updated: '<strong>%{actor}</strong> edito la propuesta'
+        poll_closing_soon: 'La propuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu propuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_expired: 'Tu propuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
+        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la propuesta.'
+        visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    poll:
+      subject:
+        poll_created: '*%{actor} comenzó una encuesta: %{title}'
+        poll_updated: '*%{actor} edito la encuesta: %{title}'
+        poll_closing_soon: 'Encuesta cerrando en 24hr: %{title}'
+        poll_closing_soon_author: 'Tu encuesta cierra en 24hr: %{title}'
+        poll_expired: ' Tu encuesta ha cerrado. Comparte un resultado para: %{title}'
+        outcome_created: '%{actor} publicó el resultado de la encuesta: %{title}'
+        visitor_reminded: '%{actor} está esperando que votes en: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> inicio una encuesta'
+        poll_updated: '<strong>%{actor}</strong> edito la encuesta'
+        poll_closing_soon: 'La encuesta de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu encuesta cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_expired: 'Tu encuesta ha <strong>cerrado</strong>. Por favor tomate el tiempo para considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
+        outcome_created: '<strong>%{actor}</strong> publicó el resultado de la encuesta.'
+        visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    count:
+      subject:
+        poll_created: '%{actor} inició una comprobación: %{title}'
+        poll_updated: '%{actor} editó la comprobación: %{title}'
+        poll_closing_soon: 'Comprobación cerrando en 24hr: %{title}'
+        poll_closing_soon_author: 'Tu comprobación cierra en 24hr: %{title}'
+        poll_expired: ' Tu comprobación ha cerrado. Comparte un resultado para: %{title}'
+        outcome_created: '%{actor} publicó el resultado: %{title}'
+        visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> inició una comprobación'
+        poll_updated: '<strong>%{actor}</strong> editó la comprobación'
+        poll_closing_soon: 'La comprobació de <strong>%{actor}</strong> cierra en 24hrs'
+        poll_closing_soon_author: 'Tu comprobación cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra.'
+        poll_expired: 'Este es el resultado de tu comprobación. De ser necesario <strong> comparte el resultado</strong> para que la gente sepa lo que sucederá a continuación.'
+        outcome_created: '<strong>%{actor}</strong> publicó el resultado.'
+        visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    dot_vote:
+      subject:
+        poll_created: '%{actor} inició un voto de puntos: %{title}'
+        poll_updated: '%{actor} editó un voto de puntos: %{title}'
+        poll_closing_soon: 'Voto de puntos cerrando en 24hr: %{title}'
+        poll_closing_soon_author: 'Tu voto de puntos cierra en 24hr: %{title}'
+        poll_expired: ' Tu voto de puntos ha cerrado. Comparte un resultado para: %{title}'
+        outcome_created: '%{actor} publicó el resultado: %{title}'
+        visitor_reminded: '%{actor} está esperando que votes en: %{title}'
+      header:
+        poll_created: '<strong>%{actor}</strong> inició un voto de puntos'
+        poll_updated: '<strong>%{actor}</strong> editó el voto de puntos'
+        poll_closing_soon: 'El voto de puntos de <strong>%{actor}</strong> cierra en 24hrs. Ahora es un buen momento para votar, cambiar tu voto o motivar a otros a participar. '
+        poll_closing_soon_author: 'Tu voto de puntos cierra en 24hrs. Ahora es un buen momento para recordarle a la gente que participe o extender la fecha de cierra si es necesario.'
+        poll_expired: 'Tu voto de puntos ha <strong>cerrado</strong>. Considerar lo que se ha dicho y <strong>compartir el resultado</strong> con el grupo para que todos estén informados.  '
+        outcome_created: '<strong>%{actor}</strong> publicó el resultado del voto de puntos.'
+        visitor_reminded: '<strong>%{actor}</strong> está esperando que votes en: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'
+    meeting:
+      subject:
+        outcome_created: '%{actor} publicó el resultado: %{title}'
+        visitor_reminded: '%{actor} está esperando tu respuesta en: %{title}'
+      header:
+        visitor_reminded: '<strong>%{actor}</strong está esperando tu respuesta en: %{title}'
+      body:
+        voted: '<strong>%{participant}</strong>:'

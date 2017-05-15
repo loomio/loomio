@@ -1,19 +1,19 @@
 ar:
   email:
-    custom: '%{text}'
+    custom: "%{text}"
     group_email:
-      intro: '%{who}قام بإعلان على %{group}:'
-    by_who: 'من قبل %{person}'
+      intro: "%{who}قام بإعلان على %{group}:"
+    by_who: من قبل %{person}
     reply_to_this_discussion: شارك في هذا النقاش
     to_join_discussion:
-      subject: '%{who} يريدك أن تنضم إلى نقاش على لوميو'
+      subject: "%{who} يريدك أن تنضم إلى نقاش على لوميو"
       content: 'لقد تمت دعوتك للمشاركة في النقاش: %{discussion}'
-      message_intro: '%{who} يقول:'
+      message_intro: "%{who} يقول:"
       link: إنضم للنقاش
     to_join_group:
-      subject: 'لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على لوميو'
+      subject: "لقد قام %{member} بدعوتك للإنضمام إلى %{group_name} على لوميو"
     to_start_group:
-      subject: 'قم بإنشاء مجموعة لوميو جديدة: %{group_name}'
+      subject: "قم بإنشاء مجموعة لوميو جديدة: %{group_name}"
     unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
     view_comment: انقر هنا لاستعراض التعليق على لوميو
@@ -31,22 +31,22 @@ ar:
       subject: أحداث الأمس على لوميو
       headlines: العناوين
       mark_as_read: مقروء
-      thanks_for_reading: 'شكرا للقراءة، نتمنى لك يوماً سعيداً!'
-      heres_what_happened: هاك ما حصل على لوميو أمس.
+      thanks_for_reading: شكرا للقراءة، نتمنى لك يوماً سعيداً!
+      heres_what_happened: "هاك ما حصل على لوميو أمس."
       marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
     comment_replied_to:
-      subject: '%{who} قام بالرد على تعليقك في مجموعة لوميو %{which}'
+      subject: "%{who} قام بالرد على تعليقك في مجموعة لوميو %{which}"
     membership_request:
-      intro: '%{name} (%{email}) قام بطلب الدخول إلى أحد مجموعاتك على لوميو.'
-      subject: '%{who} قام بطلب الانضمام إلى %{which_group}'
+      intro: "%{name} (%{email}) قام بطلب الدخول إلى أحد مجموعاتك على لوميو."
+      subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا
     new_motion_created:
       subject: 'المقترح: %{proposal_title}'
     proposal_closed:
       proposal_has_closed: لقد تم إغلاق المقترح.
-      specify_outcome_and_notify_group: 'قم بإنشاء نتيجة و إرسالها إلى مجموعتك!'
+      specify_outcome_and_notify_group: قم بإنشاء نتيجة و إرسالها إلى مجموعتك!
       specify_outcome_and_notify_group_html: 'قم بإنشاء نتيجة و إرسالها إلى مجموعتك! '
-      subject: 'تم إغلاق المقترح - %{which}'
+      subject: تم إغلاق المقترح - %{which}
     proposal_outcome:
       subject: 'نتيجة المقترح: %{motion}'
     proposal_closing_soon:
@@ -54,20 +54,20 @@ ar:
       closes_at: يغلق في
       closes_in: سيغلق خلال
       subject: 'سيغلق خلال 24 ساعة: %{proposal_title}'
-      headline: 'مقترح %{author} في %{group} سيغلق قريباً: '
+      headline: "مقترح %{author} في %{group} سيغلق قريباً: "
       summary: ملخص
     thread_mailer:
       footer_text: 'قم بالرد مباشرة على هذه الرسالة أو استعرضها على %{hostname}:'
-      reply_or_view_online_html: "قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>."
+      reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
       turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
       turn_off_notifications_text: 'قم بإطفاء الرسائل الالكترونية لهذا النقاش: %{url}'
       turn_on_notifications_html: "<a href='%{url}'>قم بتشغيل الرسائل الالكترونية لهذا النقاش</a> لاستقبال المزيد من النشاطات. "
       turn_on_notifications_text: 'قم بتشغيل الرسائل الالكترونية لاستقبال المزيد من النشاطات في هذا النقاش: %{url}'
-      change_email_preferences_html: "قم بتغيير <a href='%{email_preferences_url}'>تفضيلات البريد الالكتروني</a> لإلغاء الإشتراك في هذه الرسالة الالكترونية."
+      change_email_preferences_html: قم بتغيير <a href='%{email_preferences_url}'>تفضيلات البريد الالكتروني</a> لإلغاء الإشتراك في هذه الرسالة الالكترونية.
       change_preferences: 'تغيير تفضيلات البريد الالكتروني خاصتك:'
       motion_closing_soon: 'مقترحات ستغلق خلال 24 ساعة: '
       proposal_closed: 'مقترح تم إغلاقه: '
-      specify_outcome_html: "لقد تم إغلاق مقترحك. <a href='%{link}'>حدد نتيجة</a> لتدع الآخرين يعرفو ماهي النتيجة."
+      specify_outcome_html: لقد تم إغلاق مقترحك. <a href='%{link}'>حدد نتيجة</a> لتدع الآخرين يعرفو ماهي النتيجة.
       specify_outcome: 'لقد تم إغلاق مقترحك. حدد النتيجة لتدع الآخرين يعرفون ما هي النتيجة: '
       you_agreed: 'أنت %{past_tense_position} '
   footer:
@@ -96,20 +96,20 @@ ar:
     group_description: وصف المجموعة
     group_description_placeholder: قم بوصف هدف هذه المجموعة ليستطيع أعضاء مجموعتك معرفة لماذا هم هنا.
     group_name_error: يطلب اسم المجموعة.
-    pricing_html: "في غضون 30 يوماً سنطلب منك أن تختار <a href='%{link}' target='_blank'>خطة تسعير</a>."
-    terms_html: "عبر بدء مجموعة، أنت توافق على <a href='%{link}' target='_blank'>شروط الخدمة</a> الخاصة بلوميو. "
+    pricing_html: في غضون 30 يوماً سنطلب منك أن تختار <a href='%{link}' target='_blank'>خطة تسعير</a>.
+    terms_html: 'عبر بدء مجموعة، أنت توافق على <a href=''%{link}'' target=''_blank''>شروط الخدمة</a> الخاصة بلوميو. '
     success:
-      header: 'لقد انتهيت تقريباً! راجع بريدك الالكتروني.'
-      email_delivered: 'لقد قمنا بإرسال رسالة الكترونية إلى %{email}. الرجاء اتباع الرابط في داخل الرسالة لإنشاء مجموعتك الجديدة.'
+      header: لقد انتهيت تقريباً! راجع بريدك الالكتروني.
+      email_delivered: لقد قمنا بإرسال رسالة الكترونية إلى %{email}. الرجاء اتباع الرابط في داخل الرسالة لإنشاء مجموعتك الجديدة.
       email_not_arrived: لم يتم استقبال الرسالة الالكترونية؟
       please_hold: الرجاء انتظار وصول الرسالة الالكترونية حتى 5 دقائق و قم بالتأكد من صندوق البريد المؤذي.
     start_making_decisions: 'لنبدأ باتخاذ القرارات معاً على لوميو، أنشئ مجموعتك مجاناً: '
   invitation_form:
     error:
-      all_email_addresses_belong_to_members: لم نقم بإرسال دعوات لعناوين البريد الالكتروني التي زودتها لأنها تعود لأشخاص هم مسبقاً أعضاء في المجموعة.
+      all_email_addresses_belong_to_members: "لم نقم بإرسال دعوات لعناوين البريد الالكتروني التي زودتها لأنها تعود لأشخاص هم مسبقاً أعضاء في المجموعة."
   pricing_page:
     standard: قياسية
-    free_trial_html: 'سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.'
+    free_trial_html: سنطلب منك اختيار خطة التسعير بعد <span>مدة تجريبية ل 30 يوماً<span>. لن يتم طلب بطاقة ائتمانية.
     get_started_for_free: قم بالبدء مجاناً
     unlimited_members: عدد غير محدود من الأعضاء.
     unlimited_decisions: عدد غير محدود من القرارات.
@@ -117,15 +117,12 @@ ar:
     premium_support: دعم ممتاز
     usage_statistics: إحصائيات الاستخدام
   password_reset:
-    email_guidelines_html: >
-      <p>قم بإدخال عنوان البريد الإلكتروني لحسابك على لوميو في الحقل في الأسفل
-      و سيتم تزويدك برابط لإعادة ضبط كلمة المرور.</p>
-
-      <p>إن كنت معتاداً على تسجيل الدخول عبر فيسبوك، غوغل، تويتر، أو بيرسونا، قم
-      بإدخال عنوان البريد الالكتروني المرتبط بذاك الحساب.</p>
+    email_guidelines_html: |
+      <p>قم بإدخال عنوان البريد الإلكتروني لحسابك على لوميو في الحقل في الأسفل و سيتم تزويدك برابط لإعادة ضبط كلمة المرور.</p>
+      <p>إن كنت معتاداً على تسجيل الدخول عبر فيسبوك، غوغل، تويتر، أو بيرسونا، قم بإدخال عنوان البريد الالكتروني المرتبط بذاك الحساب.</p>
     reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
     length_restriction: على كلمة المرور أن تتألف من 8 محارف.
-    forbidden_passwords: 'كلمات المرور المألوفة مثل "password" ممنوعة لإبقاء حسابك آمناً.'
+    forbidden_passwords: كلمات المرور المألوفة مثل "password" ممنوعة لإبقاء حسابك آمناً.
   contact_page:
     contact_us: اتصل بنا
     faq_prompt_html: لديك سؤال لفريق لوميو؟ قبل أن تتصل بنا، قد تجد إجابة سؤالك في الأسئلة المتكررة.

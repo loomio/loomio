@@ -1,84 +1,83 @@
 cmn:
   common:
-    group: 组
-    groups: 组群
+    group: '组'
+    groups: '组群'
     action:
-      save: 保存
-      edit: 编辑
-      like: 喜欢
-      unlike: 不喜欢
-      cancel: 取消
+      save: '保存'
+      edit: '编辑'
+      like: '喜欢'
+      unlike: '不喜欢'
+      cancel: '取消'
   proposal_outcome_panel:
     heading: 结果
   comment_form:
-    delete_comment: 删掉评论
-    confirm_delete_message: 你确定你想要删掉这条评论吗？
+    delete_comment: '删掉评论'
+    confirm_delete_message: '你确定你想要删掉这条评论吗？'
   sidebar:
-    sign_out: 推出
+    sign_out: '推出'
   navbar:
     search:
-      discussions: 讨论
+      discussions: '讨论'
   vote_form:
-    i_agree: 我同意
-    i_abstain: 我弃权。
-    i_abstain_details: 我很开心我不在时集团所做的决定。
-    i_disagree: 我不同意
-    i_disagree_details: 我认为我们可以做的更好。
-    i_block: 我反对
-    i_block_details: 我强烈反对这个提议并且我不希望它继续下去
-    submit_position: 提交位置
+    i_agree: '我同意'
+    i_abstain: '我弃权。'
+    i_abstain_details: '我很开心我不在时集团所做的决定。'
+    i_disagree: '我不同意'
+    i_disagree_details: '我认为我们可以做的更好。'
+    i_block: '我反对'
+    i_block_details: '我强烈反对这个提议并且我不希望它继续下去'
+    submit_position: '提交位置'
   proposal_positions_panel:
     heading: 位置
   close_proposal_form:
-    close_proposal: 关闭的提议
+    close_proposal: '关闭的提议'
   proposal_form:
-    start_proposal: 开始提议
-    title_label: 标题
-    details_label: 细节
+    start_proposal: '开始提议'
+    title_label: '标题'
+    details_label: '细节'
   discussion_form:
-    group_label: 组
-    title_label: 标题
-    context_label: 上下文
+    group_label: '组'
+    title_label: '标题'
+    context_label: '上下文'
   proposal_expanded:
-    close_proposal: 关闭的提议
+    close_proposal: '关闭的提议'
   membership_request_form:
     name_label: 名字
     email_label: 邮件
   group_page:
-    discussions: 讨论
-    invite_people: 邀请人
-    options_label: 选项
+    discussions: '讨论'
+    options_label: '选项'
     options:
-      label: 选项
+      label: '选项'
   membership_requests_page:
     approve: 批准
   memberships_page:
-    members: 成员
-    name_label: 名字
+    members: '成员'
+    name_label: '名字'
   profile_page:
-    picture_label: 图片
-    name_label: 名字
-    email_label: 邮件
-    locale_label: 语言
+    picture_label: '图片'
+    name_label: '名字'
+    email_label: '邮件'
+    locale_label: '语言'
   delete_comment_dialog:
-    title: 删掉评论
-    question: 你确定你想要删掉这条评论吗？
-    confirm: 删掉评论
+    title: '删掉评论'
+    question: '你确定你想要删掉这条评论吗？'
+    confirm: '删掉评论'
   new_comment_item:
     context_menu:
-      delete_comment: 删掉评论
+      delete_comment: '删掉评论'
   help_page:
-    get_in_touch: 联系我们
-    getting_started: 开始吧
-    getting_started_description: 在左手边你的团体能讨论一个题目，交换主义以及咨询。当你的团体要做决定的时候，就会在右手边出现。
-    have_a_discussion: 讨论吧
-    how_it_works: 怎么使用？
-    join_the_community: 加入社会
-    make_a_decision: 做决定
-    positions_agree_description: '<span>同意</span>意思就是满意提议的内容'
-    start_proposal: 写一个很清晰的提议
-    video_id: '52025402'
-    video_tutorial: 视频教育
-    video_tutorial_description: 看看使用Loomio的示范视频
+    get_in_touch: "联系我们"
+    getting_started: "开始吧"
+    getting_started_description: "在左手边你的团体能讨论一个题目，交换主义以及咨询。当你的团体要做决定的时候，就会在右手边出现。"
+    have_a_discussion: "讨论吧"
+    how_it_works: "怎么使用？"
+    join_the_community: "加入社会"
+    make_a_decision: "做决定"
+    positions_agree_description: "<span>同意</span>意思就是满意提议的内容"
+    start_proposal: "写一个很清晰的提议"
+    video_id: "52025402"
+    video_tutorial: "视频教育"
+    video_tutorial_description: "看看使用Loomio的示范视频"
   hint:
-    vote: 任何时候你都可以更改位置
+    vote: '任何时候你都可以更改位置'
