@@ -27,7 +27,7 @@ PollSearch = Struct.new(:user) do
       Queries::VisiblePolls.new(user: user, group_ids: user.group_ids),
       user.participated_polls,
       user.polls
-    ].map(&:to_sql).join(" UNION ")
+    ].map(&:to_sql).map(&:presence).compact.join(" UNION ")
   end
 
   def filter_group(key)
