@@ -330,6 +330,7 @@ en:
     poll_closing_soon: "{{poll_type}} is closing soon: <strong>{{title}}</strong>"
     poll_expired: "{{poll_type}} closed: <strong>{{title}}</strong>"
     outcome_created: "<strong>{{name}}</strong> shared an outcome: <strong>{{title}}</strong>"
+    stance_created: "<strong>{{name}}</strong> participated in your poll: <strong>{{title}}</strong>"
 
   position_buttons_panel:
     heading: Have your say

@@ -67,6 +67,15 @@ module Dev::PollsScenarioHelper
      actor:    actor}
   end
 
+  def poll_stance_created_scenario(poll_type:)
+    scenario = poll_created_scenario(poll_type: poll_type)
+    choices  =  [{poll_option_id: scenario[:poll].poll_option_ids[0]}]
+    StanceService.create(stance: fake_stance(poll: scenario[:poll], stance_choices_attributes: choices), actor: scenario[:observer])
+
+    scenario.merge(observer: scenario[:poll].author)
+  end
+
+
   def poll_closing_soon_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     non_voter  = saved(fake_user)

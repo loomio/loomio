@@ -10,11 +10,16 @@ class Events::StanceCreated < Event
            created_at: stance.created_at).tap { |e| EventBus.broadcast('stance_created_event', e) }
   end
 
+  def trigger!
+    notify_users!
+    email_users!
+  end
+
   private
 
   def notification_recipients
     if poll.notify_on_participate?
-      User.where(id: poll.author_id)
+      User.where(id: poll.author_id).without(eventable.participant)
     else
       User.none
     end

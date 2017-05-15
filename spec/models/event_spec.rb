@@ -506,6 +506,14 @@ describe Event do
       expect(notification_users).to include poll.author
     end
 
+    it 'does not notify the author of her own stance' do
+      poll.update(notify_on_participate: true)
+      stance.update(participant: poll.author)
+      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
+      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
+      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
+    end
+
     it 'does not notify the author if not notify_on_participate' do
       expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
       expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
