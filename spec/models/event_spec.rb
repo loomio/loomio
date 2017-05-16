@@ -435,8 +435,11 @@ describe Event do
       expect(email_users).to be_empty # the author is notified via a separate email
 
       notification_users = Events::PollExpired.last.send(:notification_recipients)
-      expect(notification_users.length).to eq 1
-      expect(notification_users).to include poll.author
+      expect(notification_users).to be_empty
+      expect(notification_users).to_not include poll.author
+      n = Notification.last
+      expect(n.user).to eq poll.author
+      expect(n.kind).to eq 'poll_expired'
     end
 
     it 'does not notify loomio helper bot' do
@@ -463,7 +466,7 @@ describe Event do
 
       email_users.should_not include user_membership_mute
       email_users.should_not include user_thread_mute
-      email_users.should_not include poll.author # the author gets a separate email!
+      email_users.should_not include poll.author
 
       notification_users = event.send(:notification_recipients)
       notification_users.should     include user_thread_loud
@@ -477,7 +480,7 @@ describe Event do
 
       notification_users.should     include user_membership_mute
       notification_users.should     include user_thread_mute
-      notification_users.should     include poll.author
+      notification_users.should_not include poll.author
     end
   end
 

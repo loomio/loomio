@@ -9,6 +9,11 @@ class Events::PollExpired < Event
            created_at: poll.closed_at).tap { |e| EventBus.broadcast('poll_expired_event', e) }
   end
 
+  def notify_users!
+    super
+    notification_for(poll.author).save
+  end
+
   def email_users!
     super
     mailer.poll_expired_author(poll.author, self).deliver_now
@@ -16,13 +21,13 @@ class Events::PollExpired < Event
 
   private
 
-  # this gnarly-looking code simply tacks on the poll author as a notification recipient \o/
+  # the author is always notified above, so don't notify them twice
   def notification_recipients
-    User.from("(#{notification_recipients_sql(super)}) as users").uniq
+    super.without(poll.author)
   end
 
-  def notification_recipients_sql(_super)
-    [_super, User.where(id: eventable.author_id)].map(&:to_sql).map(&:presence).compact.join(' UNION ')
+  def email_recipients
+    super.without(poll.author)
   end
 
   # don't notify mentioned users for poll expired
