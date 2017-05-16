@@ -32,11 +32,15 @@ class Clients::Base
     scope.join(',')
   end
 
-  private
+  def client_key_name
+    :client_id
+  end
 
-  def scope
+  def scope(type = nil)
     []
   end
+
+  private
 
   def perform(method, path, params, headers, options)
     options.reverse_merge!(

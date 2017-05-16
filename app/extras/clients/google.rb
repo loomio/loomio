@@ -10,7 +10,7 @@ class Clients::Google < Clients::Base
     get "people/me"
   end
 
-  def scope
+  def scope(type = nil)
     %w(email profile).freeze
   end
 

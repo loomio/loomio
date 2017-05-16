@@ -63,6 +63,7 @@ en:
     sessions:
       token_unusable: This token has expired, or it's been used already. Please send another login link.
       signed_out: Signed out successfully
+      signed_up: Welcome to Loomio!
   error:
     access_denied: You do not have permission to do this.
     cant_join_subgroup: You cannot join a sub-group if you are not a member of the parent group.

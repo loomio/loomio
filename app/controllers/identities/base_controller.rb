@@ -82,6 +82,14 @@ class Identities::BaseController < ApplicationController
   end
 
   def oauth_params
-    raise NotImplementedError.new
+    { client.client_key_name => client.key, redirect_uri: redirect_uri, scope: oauth_scope }
+  end
+
+  def oauth_client_id_field
+    :client_id
+  end
+
+  def oauth_scope
+    client.scope(params[:oauth_type]).join(',')
   end
 end

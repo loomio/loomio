@@ -10,8 +10,4 @@ class Identities::FacebookController < Identities::BaseController
   def oauth_host
     "https://www.facebook.com/v2.8/dialog/oauth"
   end
-
-  def oauth_params
-    { redirect_uri: redirect_uri, app_id: client.key, scope: client.scope.join(',') }
-  end
 end

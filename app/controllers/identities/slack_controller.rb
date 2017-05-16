@@ -81,8 +81,4 @@ class Identities::SlackController < Identities::BaseController
   def oauth_host
     "https://slack.com/oauth/authorize"
   end
-
-  def oauth_params
-    { redirect_uri: redirect_uri, client_id: client.key, scope: client.scope.join(',') }
-  end
 end

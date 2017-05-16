@@ -36,8 +36,16 @@ class Clients::Facebook < Clients::Base
       success: ->(response) { response['id'] } }
   end
 
-  def scope
-    %w(email user_managed_groups publish_actions).freeze
+  # NB: this switch sucks, but it's too early to extract to something else
+  def scope(type = nil)
+    case type.to_s
+    when 'community' then %w(email)
+    else                  %w(email user_managed_groups publish_actions)
+    end
+  end
+
+  def client_key_name
+    :app_id
   end
 
   private
