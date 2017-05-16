@@ -4,7 +4,7 @@ PollSearch = Struct.new(:user) do
   USER_FILTERS   = %w(authored_by participation_by).freeze
 
   def perform(filters = {})
-    results = searchable_records
+    results = searchable_records.with_includes
     results = results.where(discussion_id: filter_group(filters[:group_key]).discussion_ids) if filters[:group_key]
     results = results.send(filters[:status])      if STATUS_FILTERS.include?(filters[:status].to_s)
     results = results.send(filters[:user], user)  if USER_FILTERS.include?(filters[:user].to_s)
@@ -13,22 +13,21 @@ PollSearch = Struct.new(:user) do
   end
 
   def results_count
-    searchable_ids.count
+    searchable_records.count
   end
 
   private
 
   def searchable_records
-    @searchable_records ||= Poll.where(id: searchable_ids)
+    @searchable_records ||= Poll.from("(#{searchable_records_sql}) as polls")
   end
 
-  # TODO: combine this into a single SQL query, rather than 3 separate plucks
-  def searchable_ids
-    @searchable_ids ||= [
-      Queries::VisiblePolls.new(user: user, group_ids: user.group_ids), # polls in my groups
-      user.participated_polls,                                          # polls I've participated in
-      user.polls                                                        # polls I've started
-    ].map { |c| c.pluck(:id) }.flatten.uniq
+  def searchable_records_sql
+    [
+      Queries::VisiblePolls.new(user: user, group_ids: user.group_ids),
+      user.participated_polls,
+      user.polls
+    ].map(&:to_sql).map(&:presence).compact.join(" UNION ")
   end
 
   def filter_group(key)
