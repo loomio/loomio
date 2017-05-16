@@ -36,7 +36,7 @@ class Clients::Base
     :client_id
   end
 
-  def scope(type = nil)
+  def scope
     []
   end
 

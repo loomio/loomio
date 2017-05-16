@@ -37,11 +37,8 @@ class Clients::Facebook < Clients::Base
   end
 
   # NB: this switch sucks, but it's too early to extract to something else
-  def scope(type = nil)
-    case type.to_s
-    when 'community' then %w(email)
-    else                  %w(email user_managed_groups publish_actions)
-    end
+  def scope
+    %w(email user_managed_groups publish_actions)
   end
 
   def client_key_name

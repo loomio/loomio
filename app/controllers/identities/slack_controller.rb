@@ -42,7 +42,7 @@ class Identities::SlackController < Identities::BaseController
   end
 
   def complete_identity(identity)
-    identity.fetch_user_info
+    super
     identity.fetch_team_info
   end
 

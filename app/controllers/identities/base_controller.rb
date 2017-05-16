@@ -90,6 +90,6 @@ class Identities::BaseController < ApplicationController
   end
 
   def oauth_scope
-    client.scope(params[:oauth_type]).join(',')
+    client.scope.join(',')
   end
 end

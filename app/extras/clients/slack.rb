@@ -25,12 +25,8 @@ class Clients::Slack < Clients::Base
       success: ->(response) { Array(response['channel']['members']).include?(uid) } }
   end
 
-  # NB: this switch sucks, but it's too early to extract to something else
-  def scope(type = nil)
-    case type.to_s
-    when 'community' then %w(users.profile:read channels:read team:read chat:write:bot commands)
-    else                  %w(users.profile:read team:read)
-    end
+  def scope
+    %w(users.profile:read channels:read team:read chat:write:bot commands)
   end
 
   private
