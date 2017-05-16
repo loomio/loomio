@@ -432,8 +432,7 @@ describe Event do
     it 'notifies the author' do
       expect { Events::PollExpired.publish!(poll) }.to change { emails_sent }
       email_users = Events::PollExpired.last.send(:email_recipients)
-      expect(email_users.length).to eq 1
-      expect(email_users).to include poll.author
+      expect(email_users).to be_empty # the author is notified via a separate email
 
       notification_users = Events::PollExpired.last.send(:notification_recipients)
       expect(notification_users.length).to eq 1
@@ -443,6 +442,42 @@ describe Event do
     it 'does not notify loomio helper bot' do
       poll.author = User.helper_bot
       expect { Events::PollExpired.publish!(poll) }.to_not change { ActionMailer::Base.deliveries.count }
+    end
+
+    it 'notifies everyone if announcement' do
+      poll.make_announcement = true
+      Events::PollCreated.publish!(poll)
+      Events::PollExpired.publish!(poll)
+      event = Events::PollExpired.last
+
+      expect(event.announcement).to eq true
+      email_users = event.send(:email_recipients)
+      email_users.should     include user_thread_loud
+      email_users.should     include user_membership_loud
+
+      email_users.should     include user_membership_normal
+      email_users.should     include user_thread_normal
+
+      email_users.should_not include user_membership_quiet
+      email_users.should_not include user_thread_quiet
+
+      email_users.should_not include user_membership_mute
+      email_users.should_not include user_thread_mute
+      email_users.should_not include poll.author # the author gets a separate email!
+
+      notification_users = event.send(:notification_recipients)
+      notification_users.should     include user_thread_loud
+      notification_users.should     include user_membership_loud
+
+      notification_users.should     include user_membership_normal
+      notification_users.should     include user_thread_normal
+
+      notification_users.should     include user_membership_quiet
+      notification_users.should     include user_thread_quiet
+
+      notification_users.should     include user_membership_mute
+      notification_users.should     include user_thread_mute
+      notification_users.should     include poll.author
     end
   end
 

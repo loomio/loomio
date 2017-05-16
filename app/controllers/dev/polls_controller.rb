@@ -55,6 +55,7 @@ class Dev::PollsController < Dev::BaseController
   observe_scenario :poll_closing_soon_with_vote, email: true
   observe_scenario :poll_closing_soon_author,    email: true
   observe_scenario :poll_expired,                email: true
+  observe_scenario :poll_expired_author,         email: true
   observe_scenario :poll_outcome_created,        email: true
   observe_scenario :poll_missed_yesterday,       email: true
   observe_scenario :poll_notifications
