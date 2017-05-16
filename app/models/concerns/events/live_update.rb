@@ -6,7 +6,12 @@ module Events::LiveUpdate
 
   # send client live updates
   def notify_clients!
-    MessageChannelService.publish(EventCollection.new(self).serialize!, to: eventable.group)
+    MessageChannelService.publish(event_collection, to: eventable.group)
+    MessageChannelService.publish(event_collection, to: eventable.poll) if eventable.respond_to?(:poll)
   end
   handle_asynchronously :notify_clients!
+
+  def event_collection
+    @event_collection ||= EventCollection.new(self).serialize!
+  end
 end

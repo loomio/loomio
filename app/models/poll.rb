@@ -2,6 +2,8 @@ class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
   include MakesAnnouncements
+  include MessageChannel
+
   TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
   COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
   TIMEZONES = YAML.load_file(Rails.root.join("config", "timezones.yml"))
