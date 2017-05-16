@@ -40,7 +40,7 @@ describe 'Login', ->
       page.click '.auth-email-form__submit'
       page.fillIn '.auth-signin-form__password input', 'gh0stmovie'
       page.click '.auth-signin-form__submit'
-      page.waitForReload(2000)
+      page.waitForReload(3000)
       page.expectFlash 'Signed in successfully'
       page.expectText '.group-theme__name', 'Secret Dirty Dancing Shoes'
       page.expectElement '.sidebar__content'
