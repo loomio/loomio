@@ -10,7 +10,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       $location.hash('')
 
   @performScroll = ->
-    ScrollService.scrollTo @elementToFocus(), 150
+    ScrollService.scrollTo @elementToFocus(), offset: 150
     $rootScope.$broadcast 'triggerVoteForm', $location.search().position if @openVoteModal()
     (ModalService.open ProposalOutcomeForm, proposal: => @proposal) if @openOutcomeModal()
     $location.url($location.path())
