@@ -2,7 +2,7 @@ module Events::EmailUser
 
   # send event emails
   def email_users!
-    email_recipients.without([user, User.helper_bot]).each { |recipient| email_user!(recipient) }
+    email_recipients.without(user).each { |recipient| email_user!(recipient) }
   end
   handle_asynchronously :email_users!
 

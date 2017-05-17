@@ -123,11 +123,18 @@ module Dev::PollsScenarioHelper
   end
 
   def poll_expired_scenario(poll_type:)
+    scenario = poll_expired_author_scenario(poll_type: poll_type)
+    scenario.merge(observer: scenario[:actor])
+  end
+
+  def poll_expired_author_scenario(poll_type:)
     discussion = fake_discussion(group: create_group_with_members)
     actor      = discussion.group.admins.first
     poll       = create_fake_poll_with_stances(discussion: discussion, poll_type: poll_type)
     poll.update_attribute(:closing_at, 1.day.ago)
+    poll.make_announcement = true
     poll.discussion.group.add_member! poll.author
+    Events::PollCreated.publish!(poll)
     PollService.expire_lapsed_polls
     { discussion: discussion,
       actor: actor,
