@@ -9,6 +9,7 @@ module AngularHelper
   end
 
   def client_asset_path(filename)
+    filename = filename.to_s.gsub(".min", '') if Rails.env.development?
     ['', :client, angular_asset_folder, filename].join('/')
   end
 

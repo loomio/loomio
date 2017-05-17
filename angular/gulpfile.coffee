@@ -7,7 +7,7 @@ gulp.task 'app',    require('./tasks/app')
 gulp.task 'vendor', require('./tasks/vendor')
 gulp.task 'scss',   require('./tasks/scss')
 gulp.task 'execjs', require('./tasks/execjs')
-gulp.task 'minify-app', require('./tasks/minify_js')
+gulp.task 'minify-js', require('./tasks/minify_js')
 gulp.task 'minify-css', require('./tasks/minify_css')
 gulp.task 'minify', ['minify-js', 'minify-css']
 
