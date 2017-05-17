@@ -3,16 +3,20 @@ module Events::NotifyUser
 
   # send event notifications
   def notify_users!
-    notifications.import(notification_recipients.without(user).map do |recipient|
-      notifications.build(user:               recipient,
-                          actor:              notification_actor,
-                          url:                notification_url,
-                          translation_values: notification_translation_values)
-    end)
+    notifications.import(notification_recipients.without(user).map { |recipient| notification_for(recipient) })
   end
   handle_asynchronously :notify_users!
 
   private
+
+  def notification_for(recipient)
+    notifications.build(
+      user:               recipient,
+      actor:              notification_actor,
+      url:                notification_url,
+      translation_values: notification_translation_values
+    )
+  end
 
   # which users should receive an in-app notification about this event?
   # (NB: This must return an ActiveRecord::Relation)

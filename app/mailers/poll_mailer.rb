@@ -5,7 +5,8 @@ class PollMailer < BaseMailer
 
   %w(poll_created poll_edited outcome_created
      poll_closing_soon poll_closing_soon_author
-     poll_expired visitor_reminded visitor_created
+     poll_expired  poll_expired_author
+     visitor_reminded visitor_created
      stance_created).each do |action|
     define_method action, ->(recipient, event) { send_poll_email(recipient, event, action) }
   end
@@ -13,6 +14,7 @@ class PollMailer < BaseMailer
   private
 
   def send_poll_email(recipient, event, action_name)
+    return if recipient == User.helper_bot
     headers = {
       "Precedence":               :bulk,
       "X-Auto-Response-Suppress": :OOF,
