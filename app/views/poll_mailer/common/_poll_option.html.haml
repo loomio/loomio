@@ -1,4 +1,5 @@
 - poll = poll_option.poll
+- time_zone = (@info || @recipient).time_zone
 - class_name = local_assigns.fetch(:small, false) ? "poll-mailer-#{poll.poll_type}__option-icon--small" : "poll-mailer-#{poll.poll_type}__option-icon"
 - if poll.has_option_icons
   %td= image_tag "poll_mailer/vote-button-#{poll_option.name}.png", alt: "#{poll_option.name} icon", class: class_name
@@ -9,6 +10,6 @@
 - else
   %td= render 'poll_mailer/common/chip', color: poll_option.color
   - if local_assigns.fetch :link, false
-    %td= link_to poll_option.display_name(zone: @info.time_zone), poll_url(poll, poll_option_id: poll_option.id)
+    %td= link_to poll_option.display_name(zone: time_zone), poll_url(poll, poll_option_id: poll_option.id)
   - else
-    %td= poll_option.display_name(zone: @info.recipient.time_zone)
+    %td= poll_option.display_name(zone: time_zone)
