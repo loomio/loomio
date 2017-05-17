@@ -1736,3 +1736,23 @@ en:
     name: Name
     email: Email
     password: Password
+
+  install_slack_page:
+    heading: Link Loomio up with your Slack community
+    why_should_i: Loomio and Slack work great together!
+    it_does_this: Engage users where they are
+    and_also_this: Start polls instantly and get feedback in real time
+    and_also_also_this: Let people know outcome and iterate your thinking quickly
+    create_new_group: Add slack to a new Loomio Group
+    create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
+    group_name: Group name
+    group_name_placeholder: Name your new Loomio group...
+    install_slack: Install Slack Now
+
+  slack_added_modal:
+    title: Success!
+    helptext: |
+      You've successfully added Slack to your Loomio group <strong>{{name}}</strong>.
+      Now, whenever anyone starts a poll in this group, they'll have the option to
+      post updates about that poll into a channel in your slack team.
+    start_poll_now: Make a decision now

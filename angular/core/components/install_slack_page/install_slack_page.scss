@@ -1,28 +1,3 @@
 .install-slack-page {
   margin-top: 16px;
 }
-
-.install-slack-page__tableau {
-  height: 200px;
-  width: 200px;
-  margin: auto;
-}
-
-.install-slack-page__logo {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  background: white;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #ccc, 0 0 0 6px white, 0 0 0 8px #ccc;
-}
-
-.install-slack-page__loomio-logo {
-  top: 15px;
-  right: 20px;
-}
-
-.install-slack-page__third-party-logo {
-  top: 75px;
-  left: 20px;
-  z-index: 1;
-}

@@ -1,15 +1,17 @@
 .loading-wrapper.lmo-one-column-layout
   %main.install-slack-page
   .lmo-card
-    .install-slack-page__tableau
-      %img.install-slack-page__logo.install-slack-page__third-party-logo{src: "/img/slack-icon.svg"}
-      %img.install-slack-page__logo.install-slack-page__loomio-logo{src: "/img/mascot.png"}
-    %h1.lmo-h1{translate: "install_slack_page.heading"}
-    %p.poll-common-helptext{translate: "install_slack_page.why_should_i"}
-    %ul
-      %li{translate: "install_slack_page.it_does_this"}
-      %li{translate: "install_slack_page.and_also_this"}
-      %li{translate: "install_slack_page.and_also_also_this"}
+    %slack_tableau
+    .install-slack-page__instructions{ng-if: "showTooltip"}
+      %h1.lmo-h1{translate: "install_slack_page.heading"}
+      %p.poll-common-helptext{translate: "install_slack_page.why_should_i"}
+      %ul
+        %li{translate: "install_slack_page.it_does_this"}
+        %li{translate: "install_slack_page.and_also_this"}
+        %li{translate: "install_slack_page.and_also_also_this"}
+
+      .lmo-flex.lmo-flex__space-around
+        %md-button.md-accent{translate: "common.ok_got_it", ng-click: "hideTooltip()"}
 
     .install-slack-page__add-to-group{ng-if: "group.id"}
       %h2.lmo-h2{translate: "install_slack_page.add_to_group"}
