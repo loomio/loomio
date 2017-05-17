@@ -2,7 +2,8 @@ class Stance < ActiveRecord::Base
   include HasMentions
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
-
+  include Translatable
+  is_translatable on: :reason
   is_mentionable  on: :reason
 
   belongs_to :poll, required: true
@@ -31,6 +32,7 @@ class Stance < ActiveRecord::Base
 
   has_many :events, as: :eventable, dependent: :destroy
 
+  delegate :locale, to: :author
   delegate :group, to: :poll, allow_nil: true
   alias :author :participant
 

@@ -1,6 +1,6 @@
 class StanceSerializer < ActiveModel::Serializer
   embed :ids, include: true
-  attributes :id, :reason, :latest, :mentioned_usernames, :created_at
+  attributes :id, :reason, :latest, :mentioned_usernames, :created_at, :locale
 
   has_one :poll, serializer: PollSerializer
   has_one :user, serializer: UserSerializer, root: :users
