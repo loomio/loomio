@@ -66,7 +66,7 @@ describe 'Polls', ->
     page.fillIn '.poll-proposal-form__details', 'Some details'
     page.click '.poll-common-form__submit'
 
-    page.click '.poll-common-share-form__ok'
+    page.click '.modal-cancel'
     page.expectText '.poll-common-summary-panel__title', 'A new proposal'
     page.expectText '.poll-common-summary-panel__details', 'Some details'
 
