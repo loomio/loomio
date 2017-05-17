@@ -25,6 +25,7 @@ class PollMailer < BaseMailer
       recipient:   recipient,
       poll:        event.poll,
       actor:       event.user,
+      eventable:   event.eventable,
       action_name: action_name
     )
 
