@@ -11,8 +11,5 @@ module.exports = ->
   pipe gulp.src(paths.js.vendor), [
     expect({errorOnFailure: true}, paths.js.vendor), # ensure all vendor files are present
     concat('vendor.js'),                      # concatenate vendor files
-    gulp.dest(paths.dist.assets),             # write assets/vendor.js
-    uglify(),                                 # minify vendor.js
-    rename(suffix: '.min'),                   # rename stream to vendor.min.js
-    gulp.dest(paths.dist.assets)              # write assets/vendor.min.js
+    gulp.dest(paths.dist.assets)              # write assets/vendor.js
   ]
