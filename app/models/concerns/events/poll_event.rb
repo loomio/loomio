@@ -1,4 +1,3 @@
-#TODO: there are some discussion dependencies that will need to be resolved here
 module Events::PollEvent
   include Events::NotifyUser
   include Events::EmailUser
