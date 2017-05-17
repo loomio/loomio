@@ -15,6 +15,10 @@ class PollEmailInfo
     @action_name = action_name
   end
 
+  def actor_stance
+    @actor_stance ||= @poll.stances.latest.find_by(participant: @actor)
+  end
+
   def recipient_stance
     @recipient_stance ||= @poll.stances.latest.find_by(participant: @recipient)
   end
