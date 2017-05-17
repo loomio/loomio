@@ -301,6 +301,7 @@ Loomio::Application.routes.draw do
   end
 
   scope :slack do
+    get  :install,                        to: 'identities/slack#install',     as: :slack_install
     get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
     post :participate,                    to: 'identities/slack#participate', as: :slack_participate
     post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate

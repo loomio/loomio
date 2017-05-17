@@ -1,6 +1,15 @@
 class Identities::SlackController < Identities::BaseController
   before_filter :respond_with_ok, only: [:participate, :initiate]
 
+  def install
+    if current_user.slack_identity || pending_identity
+      boot_angular_ui
+    else
+      params[:back_to] = slack_install_url
+      oauth
+    end
+  end
+
   def participate
     if event = ::Slack::Participator.new(participate_params).participate!
       render json: ::Slack::StanceCreatedSerializer.new(event, root: false).as_json
