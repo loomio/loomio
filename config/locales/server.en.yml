@@ -498,7 +498,7 @@ en:
         poll_edited: '<strong>%{actor}</strong> edited the time poll'
         poll_closing_soon: '<strong>%{actor}</strong>''s time poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your time poll is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
-        poll_expired: '<strong>%{actor}'s</strong> time poll has closed'
+        poll_expired: "<strong>%{actor}'s</strong> time poll has closed"
         poll_expired_author: 'Your time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
         visitor_created: '<strong>%{actor}</strong> is scheduling: %{title}'
