@@ -385,8 +385,9 @@ en:
         poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
         poll_expired: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
-        visitor_created: '%{actor} wants to hear your opinion: %{title}'
+        visitor_created: '%{actor} wants your opinion: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        stance_created: "%{actor} voted on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a proposal'
@@ -397,6 +398,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
         visitor_created: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -408,9 +410,10 @@ en:
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
         poll_expired: 'Your poll has closed. Share an outcome for: %{title}'
-        outcome_created: '%{actor} shared a poll outcome: %{title}'
+        outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_created: '%{actor} invited you to join a poll: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        stance_created: "%{actor} voted on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a poll'
@@ -421,30 +424,33 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
         visitor_created: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
         voted: '<strong>%{participant}</strong>:'
 
     count:
       subject:
-        poll_created: '%{actor} started a check: %{title}'
+        poll_created: '%{actor} is checking: %{title}'
         poll_updated: '%{actor} edited the check: %{title}'
-        poll_closing_soon: 'Check closing in 24 hours: %{title}'
+        poll_closing_soon: '24 hours left to check: %{title}'
         poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
         poll_expired: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} is asking a question: %{title}'
+        visitor_created: '%{actor} is checking: %{title}'
         visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
+        stance_created: "%{actor} participated in: %{title}"
 
       header:
-        poll_created: '<strong>%{actor}</strong> started a check'
+        poll_created: '<strong>%{actor}</strong> is checking'
         poll_updated: '<strong>%{actor}</strong> edited the check'
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
-        poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
+        poll_closing_soon_author: 'Your check is closing in 24 hours - time to remind people about it or extend the closing time if necessary.'
         poll_expired: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
-        visitor_created: '<strong>%{actor}</strong> is asking a question: %{title}'
+        visitor_created: '<strong>%{actor}</strong> is checking: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
+        stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -459,6 +465,7 @@ en:
         outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_created: '%{actor} invited you to join a dot vote: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
+        stance_created: "%{actor} voted on: %{title}"
 
       header:
         poll_created: '<strong>%{actor}</strong> started a dot vote'
@@ -469,6 +476,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
         visitor_created: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
+        stance_created: "<strong>%{actor}</strong> voted on: %{title}"
 
       body:
         voted: '<strong>%{participant}</strong>:'
@@ -483,6 +491,7 @@ en:
         outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_created: '%{actor} wants to know when you can meet: %{title}'
         visitor_reminded: '%{actor} is waiting for your response: %{title}'
+        stance_created: '%{actor} participated in: %{title}'
 
       header:
         poll_created: '<strong>%{actor}</strong> started a time poll'
@@ -493,6 +502,7 @@ en:
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
         visitor_created: '<strong>%{actor}</strong> wants to set up a time: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
+        stance_created: "<strong>%{actor}</strong> participated in: %{title}"
 
       body:
         voted: '<strong>%{participant}</strong>:'
