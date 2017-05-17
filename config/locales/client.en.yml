@@ -51,6 +51,7 @@ en:
     copied: 'Copied to clipboard'
     action:
       back: 'Back'
+      next: 'Next'
       close: 'Close'
       save: 'Save'
       save_changes: 'Save changes'

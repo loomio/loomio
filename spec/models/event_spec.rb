@@ -426,6 +426,11 @@ describe Event do
       notification_users = Events::PollClosingSoon.last.send(:notification_recipients)
       expect(notification_users).to be_empty
     end
+
+    it 'does not email helper bot' do
+      poll.update(author: User.helper_bot)
+      expect { Events::PollClosingSoon.publish!(poll) }.to_not change { emails_sent }
+    end
   end
 
   describe 'poll_expired' do

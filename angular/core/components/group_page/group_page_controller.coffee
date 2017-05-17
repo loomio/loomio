@@ -27,7 +27,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
   @init = (group) =>
     @group = group
     @performLaunch()
-    MessageChannelService.subscribeToGroup(@group) if AbilityService.isLoggedIn()
+    MessageChannelService.subscribeToGroup(@group)
 
     @usePolls = PollService.usePollsFor(@group)
 

@@ -386,7 +386,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
-        visitor_created: '%{actor} wants to hear your opinion: %{title}'
+        visitor_created: '%{actor} wants you to vote: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
 
       header:
@@ -397,7 +397,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
-        visitor_created: '<strong>%{actor}</strong> wants to hear your opinion: %{title}'
+        visitor_created: '<strong>%{actor}</strong> wants you to vote: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
 
       body:
@@ -412,7 +412,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a poll outcome: %{title}'
-        visitor_created: '%{actor} invited you to join a poll: %{title}'
+        visitor_created: '%{actor} wants you to vote: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
 
       header:
@@ -423,7 +423,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
-        visitor_created: '<strong>%{actor}</strong> invited you to join a poll: %{title}'
+        visitor_created: '<strong>%{actor}</strong> wants you to vote: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
 
       body:
@@ -438,7 +438,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} is asking a question: %{title}'
+        visitor_created: '%{actor} wants to check: %{title}'
         visitor_reminded: '%{actor} is waiting for you to respond: %{title}'
 
       header:
@@ -449,7 +449,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
-        visitor_created: '<strong>%{actor}</strong> is asking a question: %{title}'
+        visitor_created: '<strong>%{actor}</strong> wants to check: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to respond: %{title}'
 
       body:
@@ -464,7 +464,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your dot vote has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} invited you to join a dot vote: %{title}'
+        visitor_created: '%{actor} wants you to prioitise: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
 
       header:
@@ -475,7 +475,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your dot vote has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
-        visitor_created: '<strong>%{actor}</strong> invited you to join a dot vote: %{title}'
+        visitor_created: '<strong>%{actor}</strong> wants you to prioritise: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
 
       body:
@@ -490,7 +490,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your time poll has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
-        visitor_created: '%{actor} wants to know when you can meet: %{title}'
+        visitor_created: '%{actor} is scheduling: %{title}'
         visitor_reminded: '%{actor} is waiting for your response: %{title}'
 
       header:
@@ -501,7 +501,7 @@ en:
         poll_expired: "TODO: poll_expired"
         poll_expired_author: 'Your time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
-        visitor_created: '<strong>%{actor}</strong> wants to set up a time: %{title}'
+        visitor_created: '<strong>%{actor}</strong> is scheduling: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for your response: %{title}'
 
       body:
