@@ -22,7 +22,8 @@ angular.module('loomioApp').directive 'notifications', ->
       'poll_closing_soon',
       'poll_edited',
       'poll_expired',
-      'outcome_created'
+      'outcome_created',
+      'stance_created'
     ]
 
     notificationsView = Records.notifications.collection.addDynamicView("notifications")

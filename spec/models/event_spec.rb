@@ -496,4 +496,33 @@ describe Event do
     end
   end
 
+  describe 'stance_created' do
+    let(:stance) { build :stance, poll: poll }
+
+    it 'notifies the author if notify_on_participate' do
+      poll.update(notify_on_participate: true)
+      expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
+      email_users = Events::StanceCreated.last.send(:email_recipients)
+      expect(email_users.length).to eq 1
+      expect(email_users).to include poll.author
+
+      notification_users = Events::StanceCreated.last.send(:notification_recipients)
+      expect(notification_users.length).to eq 1
+      expect(notification_users).to include poll.author
+    end
+
+    it 'does not notify the author of her own stance' do
+      poll.update(notify_on_participate: true)
+      stance.update(participant: poll.author)
+      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
+      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
+      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
+    end
+
+    it 'does not notify the author if not notify_on_participate' do
+      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
+      expect(Events::StanceCreated.last.send(:email_recipients)).to be_empty
+      expect(Events::StanceCreated.last.send(:notification_recipients)).to be_empty
+    end
+  end
 end

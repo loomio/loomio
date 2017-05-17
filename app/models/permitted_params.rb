@@ -53,7 +53,7 @@ class PermittedParams < Struct.new(:params)
 
   def poll_attributes
     [:title, :details, :poll_type, :discussion_id, :group_id, :closing_at,
-     :make_announcement, :multiple_choice, :key, :anyone_can_participate,
+     :make_announcement, :multiple_choice, :key, :anyone_can_participate, :notify_on_participate,
      :custom_fields, {custom_fields: [:dots_per_person, :time_zone]},
      :attachment_ids, {attachment_ids: []},
      :communities_attributes, {communities_attributes: [:community_type, :custom_fields]},
