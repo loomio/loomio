@@ -2,6 +2,8 @@ class Poll < ActiveRecord::Base
   include ReadableUnguessableUrls
   include HasMentions
   include MakesAnnouncements
+  include MessageChannel
+
   TEMPLATES = YAML.load_file(Rails.root.join("config", "poll_templates.yml"))
   COLORS    = YAML.load_file(Rails.root.join("config", "colors.yml"))
   TIMEZONES = YAML.load_file(Rails.root.join("config", "timezones.yml"))
@@ -149,6 +151,11 @@ class Poll < ActiveRecord::Base
     existing = Array(poll_options.pluck(:name))
     (names - existing).each_with_index { |name, priority| poll_options.build(name: name, priority: priority) }
     @poll_option_removed_names = (existing - names)
+  end
+
+  def is_new_version?
+    !self.poll_options.map(&:persisted?).all? ||
+    (['title', 'details', 'closing_at'] & self.changes.keys).any?
   end
 
   def anyone_can_participate

@@ -1,10 +1,11 @@
-angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, CommunityService, Records, $location, ModalService, PollService, PollCommonOutcomeForm, PollCommonEditVoteModal, AddCommunityModal, PollCommonShareModal, Session) ->
+angular.module('loomioApp').controller 'PollPageController', ($scope, $rootScope, $routeParams, CommunityService, MessageChannelService, Records, $location, ModalService, PollService, PollCommonOutcomeForm, PollCommonEditVoteModal, AddCommunityModal, PollCommonShareModal, Session) ->
   $rootScope.$broadcast('currentComponent', { page: 'pollPage', skipScroll: true })
 
   @init = (poll) =>
     if poll and !@poll?
       @poll = poll
       $rootScope.$broadcast 'setTitle', @poll.title
+      MessageChannelService.subscribeToPoll(@poll)
 
       if $location.search().add_community
         ModalService.open AddCommunityModal, community: =>

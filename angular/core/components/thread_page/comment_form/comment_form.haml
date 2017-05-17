@@ -22,8 +22,8 @@
           %span{translate: "common.formatting_help.label"}
       .comment-form__actions--right.lmo-flex{layout: "row"}
         %outlet{name: "after-comment-form", model: "comment"}
-        %md_attachment_form{model: "comment", show-label: "true"}
         %md-button.md-primary.md-raised.comment-form__submit-button{type: "submit", ng-disabled: "submitIsDisabled", translate: "comment_form.submit_button.label"}
+        %md_attachment_form{model: "comment", show-label: "true"}
     %validation_errors{subject: "comment", field: "file"}
   .comment-form__join-actions{ng-if: "!showCommentForm()"}
     %join_group_button{group: "comment.discussion().group()", ng-if: "isLoggedIn()", block: "true"}

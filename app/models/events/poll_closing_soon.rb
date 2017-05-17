@@ -10,7 +10,7 @@ class Events::PollClosingSoon < Event
 
   def email_users!
     super
-    mailer.poll_closing_soon_author(user, self).deliver_now
+    mailer.poll_closing_soon_author(user, self).deliver_now unless user == User.helper_bot
   end
 
   private
