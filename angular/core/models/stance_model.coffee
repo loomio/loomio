@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
   class StanceModel extends DraftableModel
     @singular: 'stance'
     @plural: 'stances'
-    @indices: ['pollId', 'authorId']
+    @indices: ['pollId', 'participantId']
     @serializableAttributes: AppConfig.permittedParams.stance
     @draftParent: 'poll'
     @draftPayloadAttributes: ['reason']
@@ -17,6 +17,9 @@ angular.module('loomioApp').factory 'StanceModel', (DraftableModel, AppConfig, M
 
     participant: ->
       @recordStore.users.find(@userId) or @recordStore.visitors.find(@visitorId)
+
+    author: ->
+      @participant()
 
     stanceChoice: ->
       _.first @stanceChoices()
