@@ -383,10 +383,10 @@ en:
         poll_edited: '%{actor} edited the proposal: %{title}'
         poll_closing_soon: 'Proposal closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your proposal closes in 24 hours: %{title}'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "Proposal closed: %{title}"
         poll_expired_author: 'Your proposal has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a proposal outcome: %{title}'
-        visitor_created: '%{actor} wants you to vote: %{title}'
+        visitor_created: '%{actor} wants your vote: %{title}'
         visitor_reminded: '%{actor} is waiting for you to vote on: %{title}'
 
       header:
@@ -394,10 +394,10 @@ en:
         poll_edited: '<strong>%{actor}</strong> edited the proposal'
         poll_closing_soon: '<strong>%{actor}</strong>''s proposal is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your proposal is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "<strong>%{actor}'s</strong> proposal has closed: %{title}"
         poll_expired_author: 'Your proposal has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a proposal outcome.'
-        visitor_created: '<strong>%{actor}</strong> wants you to vote: %{title}'
+        visitor_created: '<strong>%{actor}</strong> wants your vote: %{title}'
         visitor_reminded: '<strong>%{actor}</strong> is waiting for you to vote on: %{title}'
 
       body:
@@ -409,7 +409,7 @@ en:
         poll_edited: '%{actor} edited the poll: %{title}'
         poll_closing_soon: 'Poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your poll closes in 24 hours: %{title}'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "Poll results: %{title}"
         poll_expired_author: 'Your poll has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared a poll outcome: %{title}'
         visitor_created: '%{actor} wants you to vote: %{title}'
@@ -420,7 +420,7 @@ en:
         poll_edited: '<strong>%{actor}</strong> edited the poll'
         poll_closing_soon: '<strong>%{actor}</strong>''s poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your poll is closing in 24 hours - now is a great time to remind people about it or extend the deadline if necessary.'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "<strong>%{actor}'s</strong> poll closed: %{title}"
         poll_expired_author: 'Your poll has <strong>closed</strong>. Please take time to consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a poll outcome.'
         visitor_created: '<strong>%{actor}</strong> wants you to vote: %{title}'
@@ -435,7 +435,7 @@ en:
         poll_edited: '%{actor} edited the check: %{title}'
         poll_closing_soon: 'Check closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your check closes in 24 hours: %{title}'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "Check closed: %{title}"
         poll_expired_author: 'Your check has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_created: '%{actor} wants to check: %{title}'
@@ -446,7 +446,7 @@ en:
         poll_edited: '<strong>%{actor}</strong> edited the check'
         poll_closing_soon: '<strong>%{actor}</strong>''s check is closing in 24 hours.'
         poll_closing_soon_author: 'Your check is closing in 24 hours - now is a great time to remind people about it or extend the closing time if necessary.'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "<strong>%{actor}'s</strong> check closed: %{title}"
         poll_expired_author: 'Here are the results of your check. If necessary, <strong>share an outcome</strong> to let people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared an outcome.'
         visitor_created: '<strong>%{actor}</strong> wants to check: %{title}'
@@ -461,7 +461,7 @@ en:
         poll_edited: '%{actor} edited the dot vote: %{title}'
         poll_closing_soon: 'Dot vote closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your dot vote closes in 24 hours: %{title}'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "Dot vote results: %{title}"
         poll_expired_author: 'Your dot vote has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_created: '%{actor} wants you to prioitise: %{title}'
@@ -472,7 +472,7 @@ en:
         poll_edited: '<strong>%{actor}</strong> edited the dot vote'
         poll_closing_soon: '<strong>%{actor}</strong>''s dot vote is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your dot vote is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "Results for <strong>%{actor}'s</strong> dot vote: %{title}"
         poll_expired_author: 'Your dot vote has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a dot vote outcome.'
         visitor_created: '<strong>%{actor}</strong> wants you to prioritise: %{title}'
@@ -487,7 +487,7 @@ en:
         poll_edited: '%{actor} edited the time poll: %{title}'
         poll_closing_soon: 'Time poll closing in 24 hours: %{title}'
         poll_closing_soon_author: 'Your time poll closes in 24 hours: %{title}'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: "Time poll results: %{title}"
         poll_expired_author: 'Your time poll has closed. Share an outcome for: %{title}'
         outcome_created: '%{actor} shared an outcome: %{title}'
         visitor_created: '%{actor} is scheduling: %{title}'
@@ -498,7 +498,7 @@ en:
         poll_edited: '<strong>%{actor}</strong> edited the time poll'
         poll_closing_soon: '<strong>%{actor}</strong>''s time poll is closing in 24 hours. Now is a good time to vote, change your mind or encourage others to participate.'
         poll_closing_soon_author: 'Your time poll is closing in 24 hours - you may wish to remind people about it or extend the deadline if necessary.'
-        poll_expired: "TODO: poll_expired"
+        poll_expired: '<strong>%{actor}'s</strong> time poll has closed'
         poll_expired_author: 'Your time poll has <strong>closed</strong>. Consider what as been said and <strong>share an outcome</strong> with the group, so people know what’ll happen next.'
         outcome_created: '<strong>%{actor}</strong> shared a time poll outcome.'
         visitor_created: '<strong>%{actor}</strong> is scheduling: %{title}'
