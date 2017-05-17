@@ -366,6 +366,10 @@ class Ability
       @user.identities.include? identity
     end
 
+    can :show, Stance do |stance|
+      @user.can?(:show, stance.poll)
+    end
+
     can [:make_draft, :create], Stance do |stance|
       poll = stance.poll
       if !poll.active?
