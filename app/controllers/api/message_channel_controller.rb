@@ -15,8 +15,9 @@ class API::MessageChannelController < API::RestfulController
   end
 
   def subscription_models
-    (params[:group_key] && load_and_authorize(:group)) ||
-    (params[:discussion_key] && load_and_authorize(:discussion)) ||
+    load_and_authorize(:poll, optional: true)       ||
+    load_and_authorize(:discussion, optional: true) ||
+    load_and_authorize(:group, optional: true)      ||
     subscriptions_for_user
   end
 
