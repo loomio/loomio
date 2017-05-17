@@ -7,7 +7,11 @@ gulp.task 'app',    require('./tasks/app')
 gulp.task 'vendor', require('./tasks/vendor')
 gulp.task 'scss',   require('./tasks/scss')
 gulp.task 'execjs', require('./tasks/execjs')
+gulp.task 'minify-app', require('./tasks/minify_app')
+gulp.task 'minify-css', require('./tasks/minify_css')
+gulp.task 'minify', ['minify-app', 'minify-css']
 
+gulp.task 'compile-minify', (done) -> sequence('compile', 'minify', -> done())
 gulp.task 'compile', ['fonts', 'app','vendor','scss', 'execjs']
 
 gulp.task 'dev', -> sequence('compile', require('./tasks/watch'))

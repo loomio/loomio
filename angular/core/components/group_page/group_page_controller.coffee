@@ -76,7 +76,6 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $loca
 
   @showPreviousPolls = ->
     @usePolls and
-    AbilityService.canViewPreviousPolls(@group) and
-    @group.closedPollsCount > 0
+    AbilityService.canViewPreviousPolls(@group)
 
   return
