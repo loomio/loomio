@@ -1,4 +1,4 @@
-# writes dist/javascripts/vendor(.min).js
+# writes dist/javascripts/vendor.js
 paths    = require './paths'
 gulp     = require 'gulp'
 pipe     = require 'gulp-pipe'

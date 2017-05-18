@@ -11,12 +11,17 @@ rename   = require 'gulp-rename'
 
 module.exports = ->
   pipe gulp.src(paths.dist.assets+'/app.js'), [
-    uglify(),                                   # minify app.js file
+    uglify(mangle: false),                      # minify app.js file
     rename(suffix: '.min'),                     # rename stream to app.min.js
     gulp.dest(paths.dist.assets)                # write assets/app.min.js
   ]
   pipe gulp.src(paths.dist.assets+'/vendor.js'), [
     uglify(),                                 # minify vendor.js
+    rename(suffix: '.min'),                   # rename stream to vendor.min.js
+    gulp.dest(paths.dist.assets)              # write assets/vendor.min.js
+  ]
+  pipe gulp.src(paths.dist.assets+'/execjs.js'), [
+    uglify(mangle: false),                      # minify app.js file
     rename(suffix: '.min'),                   # rename stream to vendor.min.js
     gulp.dest(paths.dist.assets)              # write assets/vendor.min.js
   ]
