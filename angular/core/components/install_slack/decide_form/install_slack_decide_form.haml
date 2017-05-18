@@ -1,0 +1,4 @@
+.install-slack-decide-form
+  .lmo-flex{layout: "column"}
+    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "install_slack.make_a_decision"}
+    %md-button{ng-click: "$emit('decideComplete')", translate: "install_slack.do_this_later"}
