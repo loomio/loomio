@@ -159,6 +159,9 @@ angular.module('loomioApp').factory 'GroupModel', (DraftableModel, AppConfig) ->
       else
         @coverUrls[size] || @coverUrls.small
 
+    publish: (identifier) =>
+      @remote.postMember(@key, 'publish', { identifier: identifier })
+
     archive: =>
       @remote.patchMember(@key, 'archive').then =>
         @remove()
