@@ -164,6 +164,18 @@ describe 'Login', ->
       page.expectFlash 'You are now a member of Open Dirty Dancing Shoes'
       page.expectElement '.comment-form__submit-button'
 
+    it 'can use a shareable link', ->
+      page.loadPath 'view_closed_group_with_shareable_link'
+      page.fillIn '.auth-email-form__email input', 'max_von_sydow@example.com'
+      page.click '.auth-email-form__submit'
+      page.fillIn '.auth-signup-form__name input', 'Max Von Sydow'
+      page.click '.auth-signup-form__submit'
+      page.expectText '.auth-form', 'Check your email'
+      page.expectText '.auth-form', 'instantly log in'
+      page.loadPath 'use_last_login_token'
+      page.expectFlash 'Signed in successfully'
+      page.expectText '.group-theme__name', 'Dirty Dancing Shoes'
+
     it 'can log someone in from an invitation', ->
       page.loadPath 'setup_invitation_to_visitor'
       page.expectText '.auth-form', 'Nice to meet you, Max Von Sydow'
