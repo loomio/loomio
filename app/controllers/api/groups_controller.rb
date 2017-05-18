@@ -17,9 +17,9 @@ class API::GroupsController < API::RestfulController
     create_action
     respond_with_resource(scope: {current_user: current_user})
   end
-  
+
   def publish
-    service.publish(group: load_resource, actor: current_user)
+    service.publish(group: load_resource, params: {identifier: params.require(:identifier)}, actor: current_user)
     respond_with_resource
   end
 

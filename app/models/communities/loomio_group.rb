@@ -1,16 +1,12 @@
 class Communities::LoomioGroup < Communities::Base
   include Communities::NotifyLoomioGroup
+  include Communities::NotifyThirdParty
   set_community_type :loomio_group
 
   validates :group, presence: true
 
   def to_user_community
     Communities::LoomioUsers.new(loomio_user_ids: group.member_ids, identifier: identifier)
-  end
-
-  def notify!
-    super
-    group.slack_identity&.notify!(self)
   end
 
   def group

@@ -17,10 +17,10 @@ module GroupService
     EventBus.broadcast('group_create', group, actor)
   end
 
-  def self.publish(group:, actor:)
+  def self.publish(group:, params:, actor:)
     actor.ability.authorize! :publish, group
-    
-    Events::GroupPublished.publish!(group)
+
+    Events::GroupPublished.publish!(group, params[:identifier])
     EventBus.broadcast('group_publish', group, actor)
   end
 

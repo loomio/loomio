@@ -6,5 +6,5 @@
       %span &#35;{{ channel.name }}
 
   .lmo-flex.install-slack-form__actions{layout: "column"}
-    %md-button.md-primary.md-raised{ng-disabled: "!community.identifier", translate: "install_slack.invite.invite_to_group", ng-click: "submit()"}
+    %md-button.md-primary.md-raised{ng-disabled: "!identifier", translate: "install_slack.invite.invite_to_group", ng-click: "submit()"}
     %md-button{ng-click: "$emit('inviteComplete')", type: "button", translate: "install_slack.common.do_it_later"}

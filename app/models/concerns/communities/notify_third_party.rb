@@ -1,8 +1,7 @@
 module Communities::NotifyThirdParty
-  PUBLISH_EVENTS = %w(outcome_published poll_published).freeze
+  PUBLISH_EVENTS = %w(group_published outcome_published poll_published).freeze
 
   def notify!(event)
-    return unless PUBLISH_EVENTS.include?(event.kind)
-    identity.notify!(event)
+    identity.notify!(event) if PUBLISH_EVENTS.include?(event.kind)
   end
 end

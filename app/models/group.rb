@@ -197,6 +197,11 @@ class Group < ActiveRecord::Base
     super
   end
 
+  delegate :identity_id, to: :community
+  def identity_id=(id)
+    community.update(identity_id: id)
+  end
+
   # default_cover_photo is the name of the proc used to determine the url for the default cover photo
   # default_group_cover is the associated DefaultGroupCover object from which we get our default cover photo
   def default_cover_photo

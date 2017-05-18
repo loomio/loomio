@@ -1764,7 +1764,7 @@ en:
     decide:
       heading: 'Step 3: Make a decision together'
       helptext: |
-        Now that you're all set up, it's time to start making decisions. Select from one of the options below:
+        Okay, we've let your slack team know. Now that you're all set up, it's time to start making decisions. Select from one of the options below:
 
     common:
       do_it_later: I'll do this later

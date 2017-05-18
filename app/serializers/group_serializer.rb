@@ -42,7 +42,7 @@ class GroupSerializer < ActiveModel::Serializer
              :experiences,
              :features,
              :recent_activity_count,
-             :slack_identity_id
+             :identity_id
 
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships
 

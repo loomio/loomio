@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517061853) do
+ActiveRecord::Schema.define(version: 20170518074536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -424,7 +424,6 @@ ActiveRecord::Schema.define(version: 20170517061853) do
     t.integer  "community_id"
     t.integer  "closed_polls_count",                 default: 0,     null: false
     t.integer  "announcement_recipients_count",      default: 0,     null: false
-    t.integer  "slack_identity_id"
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
