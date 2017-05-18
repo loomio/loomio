@@ -16,7 +16,5 @@ module.exports = ->
       coffee({bare: true})                    # convert initializers to js
     ])
     concat('execjs.js'),                      # concatenate execjs files
-    gulp.dest(paths.dist.assets),             # write assets/execjs.js
-    rename(suffix: '.min'),                   # rename stream to vendor.min.js
-    gulp.dest(paths.dist.assets)              # write assets/vendor.min.js
+    gulp.dest(paths.dist.assets)             # write assets/execjs.js
   ]
