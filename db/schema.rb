@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518013021) do
+ActiveRecord::Schema.define(version: 20170518015225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -748,6 +748,7 @@ ActiveRecord::Schema.define(version: 20170518013021) do
 
   add_index "polls", ["author_id"], name: "index_polls_on_author_id", using: :btree
   add_index "polls", ["discussion_id"], name: "index_polls_on_discussion_id", using: :btree
+  add_index "polls", ["group_id"], name: "index_polls_on_group_id", using: :btree
 
   create_table "stance_choices", force: :cascade do |t|
     t.integer  "stance_id"
