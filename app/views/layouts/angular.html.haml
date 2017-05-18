@@ -41,7 +41,8 @@
         render: emojione.shortnameToImage,
         defaults: ':heart:|:smiley:|:sweat_smile:|:star:|:rabbit:|:ok:|:thumbsup:|:nz:|:walking:|:clap:'.split('|')
       }
-    %script{src: client_asset_path(:"app.js")}
+
+    %script{src: client_asset_path(:"app.min.js")}
 
     - if Rails.application.secrets.faye_url.present?
       %script{src: "#{Rails.application.secrets.faye_url}/client.js", type: 'text/javascript'}
