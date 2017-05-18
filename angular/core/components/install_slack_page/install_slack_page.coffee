@@ -1,5 +1,5 @@
-angular.module('loomioApp').controller 'InstallSlackPageController', ($rootScope, ModalService, InstallSlackModal) ->
+angular.module('loomioApp').controller 'InstallSlackPageController', ($rootScope, Session, ModalService, InstallSlackModal) ->
   $rootScope.$broadcast('currentComponent', { page: 'installSlackPage' })
-  ModalService.open InstallSlackModal
+  ModalService.open InstallSlackModal if Session.user().slackIdentity()
 
   return

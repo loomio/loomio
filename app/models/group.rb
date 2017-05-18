@@ -198,6 +198,7 @@ class Group < ActiveRecord::Base
   end
 
   delegate :identity_id, to: :community
+  delegate :identity,    to: :community
   def identity_id=(id)
     community.update(identity_id: id)
   end

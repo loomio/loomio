@@ -23,6 +23,6 @@ class Slack::GroupPublishedSerializer < Slack::BaseSerializer
   end
 
   def invitation_link_options
-    default_url_options.merge(auth_type: :slack)
+    default_url_options.merge(auth_as: :slack, team: model.identity.custom_fields['slack_team_id'])
   end
 end
