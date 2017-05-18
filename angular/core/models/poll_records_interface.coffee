@@ -17,3 +17,6 @@ angular.module('loomioApp').factory 'PollRecordsInterface', (BaseRecordsInterfac
 
     searchResultsCount: ->
       @fetch path: 'search_results_count'
+
+    fetchByGroup: (groupKey, options = {}) ->
+      @search _.merge(options, {group_key: groupKey})

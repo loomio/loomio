@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515063729) do
+ActiveRecord::Schema.define(version: 20170518013021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -424,6 +424,7 @@ ActiveRecord::Schema.define(version: 20170515063729) do
     t.integer  "community_id"
     t.integer  "closed_polls_count",                 default: 0,     null: false
     t.integer  "announcement_recipients_count",      default: 0,     null: false
+    t.integer  "polls_count",                        default: 0,     null: false
   end
 
   add_index "groups", ["category_id"], name: "index_groups_on_category_id", using: :btree
@@ -723,25 +724,25 @@ ActiveRecord::Schema.define(version: 20170515063729) do
   end
 
   create_table "polls", force: :cascade do |t|
-    t.integer  "author_id",                           null: false
-    t.string   "title",                               null: false
+    t.integer  "author_id",                             null: false
+    t.string   "title",                                 null: false
     t.text     "details"
     t.datetime "closing_at"
     t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "discussion_id"
-    t.string   "key",                                 null: false
-    t.string   "poll_type",                           null: false
+    t.string   "key",                                   null: false
+    t.string   "poll_type",                             null: false
     t.integer  "motion_id"
-    t.jsonb    "stance_data",         default: {}
-    t.integer  "stances_count",       default: 0,     null: false
-    t.boolean  "multiple_choice",     default: false, null: false
-    t.jsonb    "custom_fields",       default: {},    null: false
-    t.jsonb    "stance_counts",       default: [],    null: false
-    t.integer  "did_not_votes_count", default: 0,     null: false
+    t.jsonb    "stance_data",           default: {}
+    t.integer  "stances_count",         default: 0,     null: false
+    t.boolean  "multiple_choice",       default: false, null: false
+    t.jsonb    "custom_fields",         default: {},    null: false
+    t.jsonb    "stance_counts",         default: [],    null: false
+    t.integer  "did_not_votes_count",   default: 0,     null: false
     t.integer  "group_id"
-    t.jsonb    "matrix_counts",       default: [],    null: false
+    t.jsonb    "matrix_counts",         default: [],    null: false
     t.boolean  "notify_on_participate", default: false, null: false
   end
 

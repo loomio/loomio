@@ -5,8 +5,8 @@ angular.module('loomioApp').directive 'groupPreviousPollsCard', ->
   replace: true
   controller: ($scope, Session, Records, AbilityService) ->
     if AbilityService.canViewPreviousPolls($scope.group)
-      Records.polls.fetchClosedByGroup($scope.group.key, per: 3).then ->
+      Records.polls.fetchByGroup($scope.group.key, per: 3).then ->
         Records.stances.fetchMyStances($scope.group.key) if AbilityService.isLoggedIn()
 
     $scope.pollCollection =
-      polls: => _.take $scope.group.closedPolls(), 3
+      polls: => _.take $scope.group.polls(), 5

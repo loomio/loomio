@@ -121,8 +121,8 @@ en:
 
   previous_polls_page:
     heading: Activities in {{name}}
-    polls_count: Showing {{loaded}} of {{total}} activities
-    search_activities: Search activities
+    polls_count: Showing {{loaded}} of {{total}} decisions
+    search_activities: Search decisions
 
   proposal_collapsed:
     expand: Expand
@@ -765,8 +765,7 @@ en:
     see_more: See more
 
   group_previous_polls_card:
-    heading: Previous Activities
-    see_more: "See all: ({{count}}) activities"
+    see_more: "See all: ({{count}}) decisions"
 
   invitation_form:
     aria_label: 'Invitation form'
@@ -1627,17 +1626,18 @@ en:
   poll_common_share_form:
     no_group_selected: No group selected
     no_communities: "You haven't connected any communities yet. Click 'add community' below to add one"
-    share_a_link: Shareable link
-    anyone_can_participate: Anyone can participate
+    share_a_link: Share link
+    anyone_can_participate: Anyone with link can participate
     anyone_can_participate_true: Shareable link created
     anyone_can_participate_false: Shareable link revoked
+    get_link: Copy link
     set_group: Loomio group updated
     shareable_link_created: Anyone can now participate in this poll
     shareable_link_revoked: This poll is now invite-only
     shareable_link: Shareable link
     guests_invited: Invited {{count}} guests
     guest_revoked: Revoked access for {{email}}
-    invite_guests: Invite guests
+    invite_guests: Send email
     existing_guests: Existing guests
     new_guests: New emails to invite
     enter_email: "E.g. guest@example.com"
@@ -1653,7 +1653,7 @@ en:
     email_exists: '{{email}} has already been invited'
     email_empty: 'Please enter an email'
     email_invalid: "That doesn't appear to be a valid email"
-    communities: Connect Community
+    communities: Communities
     add_facebook_community: Add facebook group
     add_slack_community: Add slack channel
     community_revoked: This community will no longer be able to participate
