@@ -8,6 +8,11 @@ class Communities::LoomioGroup < Communities::Base
     Communities::LoomioUsers.new(loomio_user_ids: group.member_ids, identifier: identifier)
   end
 
+  def notify!
+    super
+    group.slack_identity&.notify!(self)
+  end
+
   def group
     @group = nil unless @group&.key == self.identifier
     @group ||= Group.find_by(key: self.identifier)
