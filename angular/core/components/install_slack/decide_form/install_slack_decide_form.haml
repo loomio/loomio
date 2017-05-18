@@ -1,4 +1,6 @@
 .install-slack-decide-form
-  .lmo-flex{layout: "column"}
-    %md-button.md-primary.md-raised{ng-click: "submit()", translate: "install_slack.make_a_decision"}
-    %md-button{ng-click: "$emit('decideComplete')", translate: "install_slack.do_this_later"}
+  %h2.lmo-h2{translate: "install_slack.decide.heading"}
+  %p.poll-common-helptext{translate: "install_slack.decide.helptext"}
+  %poll_common_start_form{group: "group()"}
+  .lmo-flex.install-slack-form__actions
+    %md-button{ng-click: "$emit('decideComplete')", translate: "install_slack.common.do_it_later"}

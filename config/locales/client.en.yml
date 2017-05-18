@@ -1742,13 +1742,11 @@ en:
     modal_title: Install Slack
 
     install:
-      heading: Loomio and Slack work great together!
+      heading: 'Step 1: Install slack onto a Loomio group'
       it_does_this: Engage users where they are
       and_also_this: Start polls instantly and get feedback in real time
       and_also_also_this: Let people know outcome and iterate your thinking quickly
-      add_to_group: Add slack to your Loomio group
       add_to_group_helptext: Select a group to link with Slack
-      create_new_group: Add slack to a new Loomio Group
       create_new_group_helptext: Don't have a Loomio group? Simply enter a name and we'll make one for you
       group_name: Group name
       group_name_placeholder: Name your new Loomio group...
@@ -1757,16 +1755,16 @@ en:
       use_existing_group: Use an existing group
 
     invite:
-      helptext_1: |
-        Success! You've linked your slack team with the Loomio group {{name}}. Now it's time to invite people in.
-      helptext_2: |
-        To do this, simply choose a Slack channel, and we'll post an invitation link to join Loomio there.
-        It will look like this:
+      heading: 'Step 2: Invite people to join'
+      helptext: |
+        Success! Now it's time to invite people in. Select a slack channel, and we'll post a link to join this group.
       select_a_channel: Select a channel
       invite_to_group: Post invitation link
 
     decide:
-
+      heading: 'Step 3: Make a decision together'
+      helptext: |
+        Now that you're all set up, it's time to start making decisions. Select from one of the options below:
 
     common:
       do_it_later: I'll do this later
