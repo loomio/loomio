@@ -1,7 +1,7 @@
-angular.module('loomioApp').directive 'groupPreviousPollsCard', ->
+angular.module('loomioApp').directive 'groupDecisionsCard', ->
   scope: {group: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/group_page/group_previous_polls_card/group_previous_polls_card.html'
+  templateUrl: 'generated/components/group_page/group_decisions_card/group_decisions_card.html'
   replace: true
   controller: ($scope, Session, Records, AbilityService) ->
     if AbilityService.canViewPreviousPolls($scope.group)

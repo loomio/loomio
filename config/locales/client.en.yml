@@ -764,7 +764,7 @@ en:
     heading: Previous proposals
     see_more: See more
 
-  group_previous_polls_card:
+  group_decisions_card:
     see_more: "See all: ({{count}}) decisions"
 
   invitation_form:
