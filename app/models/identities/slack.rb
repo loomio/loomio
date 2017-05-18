@@ -8,7 +8,7 @@ class Identities::Slack < Identities::Base
   end
 
   def apply_user_info(payload)
-    self.name  ||= [payload['first_name'], payload['last_name']].compact.join(' ')
+    self.name  ||= payload['real_name_normalized']
     self.email ||= payload['email']
     self.logo  ||= payload['image_72']
   end
